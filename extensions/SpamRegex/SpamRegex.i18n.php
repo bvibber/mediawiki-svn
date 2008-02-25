@@ -221,6 +221,36 @@ $messages['nl'] = array(
 	'spamregex-summary-log'          => '(Samenvatting)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'spamregex'                      => 'SpamRegex',
+	'spamregex_summary'              => 'Teksten ble funnet i sidens sammendrag.',
+	'spamregex-intro'                => 'Bruk dette skjemaet for å effektivt blokkere uttrykk fra å bli lagret på sidene. Om teksten inneholder gitt uttrykk, vil endringen ikke bli lagret, og en forklaring vil vises til brukeren som prøvde å lagre siden. Vær obs på at uttrykk ikke bør være for korte eller for vanlige.',
+	'spamregex-page-title'           => 'Blokkering av uønskede uttrykk med regulære uttrykk',
+	'spamregex-currently-blocked'    => "'''Nåværende blokkerte fraser:'''",
+	'spamregex-no-currently-blocked' => "'''Det er ingen blokkerte fraser.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 fjern]) lagt til av",
+	'spamregex-log-2'                => ' $1',
+	'spamregex-page-title-1'         => 'Blokker frase ved hjelp av regulære uttrykk',
+	'spamregex-unblock-success'      => 'Avblokkering lyktes',
+	'spamregex-unblock-message'      => "Frasen '''$1''' er ikke lenger blokkert.",
+	'spamregex-page-title-2'         => 'Blokker fraser fra å kunne lagres ved hjelp av regulære uttrykk.',
+	'spamregex-block-success'        => 'Blokkering lyktes',
+	'spamregex-block-message'        => "Frasen '''$1''' er blokkert.",
+	'spamregex-warning-1'            => 'Oppgi en frase å blokkere.',
+	'spamregex-error-1'              => 'Ugyldig regulært uttrykk.',
+	'spamregex-warning-2'            => 'Du må velge minst en blokkeringsmodus.',
+	'spamregex-already-blocked'      => "''$1'' er allerede blokkert",
+	'spamregex-phrase-block'         => 'Frase å blokkere:',
+	'spamregex-phrase-block-text'    => 'blokker frase i sidetekst',
+	'spamregex-phrase-block-summary' => 'blokker frase i sammendrag',
+	'spamregex-block-submit'         => 'Blokker&nbsp;denne&nbsp;frasen',
+	'spamregex-text'                 => '(Tekst)',
+	'spamregex-summary-log'          => '(Sammendrag)',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -303,7 +333,17 @@ $messages['sma'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',
 	'spamregex-summary-log' => '(Sammanfattning)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'spamregex_summary'     => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
+	'spamregex-text'        => '(పాఠ్యం)',
+	'spamregex-summary-log' => '(సంగ్రహం)',
 );
 

@@ -238,6 +238,13 @@ $messages['cs'] = array(
 	'badimages-page'           => '{{ns:help}}:Seznam špatných souborů',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'badimages-name' => 'Navn:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -461,9 +468,11 @@ $messages['gag'] = array(
  * @author Alma
  * @author Xosé
  * @author SPQRobin
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'badimages'                => 'Listaxe de imaxes con fallas',
+	'badimages-desc'           => 'Incluír a listaxe de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn'        => 'Engadir',
 	'badimages-added'          => '$1 foi engadida á listaxe.',
 	'badimages-count'          => "Hai '''$1''' imaxes na listaxe de imaxes con fallas.",
@@ -664,7 +673,13 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'badimages-remove' => '(ដកចេញ)',
+	'badimages-add-btn'        => 'បន្ថែម',
+	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
+	'badimages-name'           => 'ឈ្មោះ៖',
+	'badimages-reason'         => 'ហេតុផល៖',
+	'badimages-remove'         => '(ដកចេញ)',
+	'badimages-remove-btn'     => 'ដកចេញ',
+	'badimages-remove-confirm' => 'សូមបញ្ជាក់ទទួលស្គាល់ ថា អ្នកប្រាថ្នា ដកចេញ $1 ពីបញ្ជី ៖',
 );
 
 /** Kurdish (Kurdî / كوردی)
@@ -734,6 +749,20 @@ $messages['loz'] = array(
 	'badimages-remove'     => '(afi kulobala)',
 	'badimages-remove-btn' => 'Afi kulobala',
 	'badimages-removed'    => '$1 sa afi kulobala di mukoloko.',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'badimages'                => 'Blogas paveikslėlių sąrašas',
+	'badimages-add-btn'        => 'Pridėti',
+	'badimages-added'          => '$1 buvo pridėtas prie sąrašo.',
+	'badimages-name'           => 'Pavadinimas:',
+	'badimages-reason'         => 'Priežastis:',
+	'badimages-remove'         => '(pašalinti)',
+	'badimages-remove-btn'     => 'Pašalinti',
+	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 );
 
 /** Malayalam (മലയാളം)
@@ -1242,6 +1271,17 @@ $messages['te'] = array(
 	'badimages-subheading'     => 'ప్రస్తుత అంశాలు',
 	'badimages-log-name'       => 'చెడు బొమ్మల జాబితా',
 	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'badimages-add-btn'    => 'เพิ่ม',
+	'badimages-added'      => '$1 ถูกเพิ่มไปยังรายชื่อเรียบร้อยแล้ว',
+	'badimages-count'      => "มีภาพทั้งหมด '''$1''' ภาพในรายชื่อภาพ",
+	'badimages-reason'     => 'เหตุผล :',
+	'badimages-remove-btn' => 'เอาออก',
 );
 
 /** Turkish (Türkçe)

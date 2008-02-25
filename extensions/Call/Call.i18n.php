@@ -99,6 +99,18 @@ M'ho pez kudennoù e c'hallit klask ober gant <b>Special:Call/DebuG</b>",
 $messages['cs'] = array(
 	'call'              => 'Call',
 	'call-desc'         => 'Vytvoří hyperodkaz na šablonu (nebo na běžnou wiki stránku) s odevzdáním parametrů. Je možné použít z řádku s adresou v prohlížečí nebo ve wiki textu.',
+	'call-text'         => "Doplněk Call očekává jako argumenty wiki stránku a volitelné parametry dané stránky.<br /><br />
+Příklad 1: &nbsp; <tt>[[Special:Call/Moje šablona,parm1=value1]]</tt><br />
+Příklad 2: &nbsp; <tt>[[Special:Call/Diskuse:Moje diskuse,parm1=value1]]</tt><br />
+Příklad 3: &nbsp; <tt>[[Special:Call/:Moje stránka,parm1=value1,parm2=value2]]</tt><br /><br />
+Příklad 4 (URL prohlížeče): &nbsp; <tt>http://mojedomena/mojewiki/index.php?Special:Call/:Moje stránka,parm1=value1</tt><br /><br />
+
+<i>Doplněk Call</i> zavolá danbou stránku a odevzdá jí parametry.<br />
+Uvidíte obsah zavolané stránky a její název, ale její 'typ' bude speciální stránka,<br />tj. takovou stránku není možné uprovat.<br />
+Obsah, který uvidíte se může lišit v závislosti na parametrech, které jste odevzdali.<br /><br />
+<i>Doplněk Call</i> je užitečný při budovaní interaktivních aplikací pomocí MediaWiki.<br />
+Jako příklad se můžete podívat na <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
+V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
 	'call-save'         => "Výstup této stránky byl uložen do stránky s názvem ''$1''.",
 	'call-save-success' => 'Následující text byl uložený do stránky <big>[[$1]]</big>',
 	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
@@ -131,8 +143,10 @@ L’extension <i>Appel</i> appellera la page indiquée en lui passant les param�
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
+	'call'              => 'Chamada',
 	'call-save'         => "A saída desta chamada gardaríase nunha páxina chamada ''$1''.",
 	'call-save-success' => 'O texto seguinte gardouse na páxina <big>[[$1]]</big>.',
 	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',
@@ -230,6 +244,20 @@ Bij problemen kan u gebruik maken van <b>Special:Call/DebuG</b>",
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'call'              => 'Kall opp',
+	'call-desc'         => 'Gir mulighet til å skape linker til maler (eller vanlige wikisider) med angitte parametre. Lenkene kan brukes i nettleserens adressefelt eller i wikitekst.',
+	'call-text'         => 'Utvidelsen Kall opp (Call) forventer seg at en wikiside og valgfrie parametere for den siden angis som et argument.<br /><br />
+Eksempel 1: &nbsp; <tt>[[Special:Call/Min mal,parm1=verdi1]]</tt><br />
+Eksempel 2: &nbsp; <tt>[[Special:Call/Talk:Min diskusjonsside,parm1=verdi1]]</tt><br /><br />
+Eksempel 3: &nbsp; <tt>[[Special:Call/:Min side,parm1=verdi1,parm2=verdi2]]</tt><br /><br />
+Eksempel 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?Special:Call/:Min_side,parm1=verdi1</tt><br /><br />
+
+<i>Kall opp</i>-tillegget anroper den angitte siden og sender med parameterne.<br />Du kommer til å se den anropte sidens innhold og tittel, men siden som vises er en spesialside og kan derfor ikke redigeres.<br />
+Innholdet som vises kan variere avhengig av verdiene til de parameterne som sendes med.<br /><br />
+Tillegget <i>Kall opp</i> kan brukes for å skape interaktive applikasjoner med MediaWiki.<br />
+Se for eksempel <a href="http://semeb.com/dpldemo/Template:Catlist">grensesnittet for DPL</a><br />
+Om du har noen problemer kan du prøve <b>Special:Call/DebuG</b>.',
+	'call-save'         => "Resultatet av denne oppkallingen ville blitt lagret på en side ved navn ''$1''.",
 	'call-save-success' => 'Følgende tekst har blitt lagret på siden <big>[[$1]]</big>.',
 	'call-save-failed'  => 'Følgende tekst har IKKE blitt lagret på siden <big>[[$1]]</big> fordi siden allerede finnes.',
 );
@@ -284,6 +312,7 @@ Em caso de problemas, poderá experimentar <b>Special:Call/DebuG</b>",
  */
 $messages['ru'] = array(
 	'call'              => 'Вызов',
+	'call-desc'         => 'Создаёт гиперссылку на шаблон (или обычную вики-страницу) с передачей параметров. Может использоваться в адресной строке браузера или в вики-тексте.',
 	'call-text'         => "Расширение «Вызов» (Call) принимает в качестве входных данных название страницы и значения параметров.<br><br>
 Пример 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>
 Пример 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>

@@ -665,6 +665,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-bookinformation',
 		'ext-categorytree',
 		'ext-centralauth', # not yet in production (see http://test.wikipedia.org)
+		'ext-centralnotice',
 		'ext-checkuser',
 		'ext-cite',
 		'ext-citespecial',
@@ -673,6 +674,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-crossnamespacelinks',
 		'ext-deletedcontribs',
 		'ext-dismissablesitenotice',
+		'ext-doublewiki',
 		'ext-expandtemplates',
 		'ext-flaggedrevs', # not yet in production (see http://test.wikipedia.org)
 		'ext-flaggedrevsmakereviewer', # not yet in production (see http://test.wikipedia.org)
@@ -680,6 +682,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-imagemap',
 		'ext-inputbox',
 		'ext-intersection',
+		'ext-labeledsectiontransclusion',
 		'ext-linksearch',
 		'ext-lucenesearch',
 		'ext-newuserlog',
@@ -688,6 +691,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-oversight',
 		'ext-parserdifftest',
 		'ext-parserfunctions',
+		'ext-poem',
 		'ext-proofreadpage',
 		'ext-quiz',
 		'ext-renameuser',
@@ -695,8 +699,10 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-sitematrix',
 		'ext-spamblacklist',
 		'ext-syntaxhighlightgeshi',
+		'ext-timeline',
 		'ext-titleblacklist',
 		'ext-usernameblacklist',
+		'ext-wikihiero',
 	);
 
 	protected function init() {
@@ -858,6 +864,14 @@ class CentralAuthMessageGroup extends ExtensionMessageGroup {
 	protected $messageFile = 'CentralAuth/CentralAuth.i18n.php';
 }
 
+class CentralNoticeMessageGroup extends ExtensionMessageGroup {
+	protected $label   = 'Central Notice';
+	protected $id      = 'ext-centralnotice';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'CentralNotice/CentralNotice.i18n.php';
+}
+
 class ChangeAuthorMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Change Author';
 	protected $id    = 'ext-changeauthor';
@@ -955,6 +969,14 @@ class CleanChangesMessageGroup extends ExtensionMessageGroup {
 
 	protected $arrName = 'messages';
 	protected $messageFile  = 'CleanChanges/CleanChanges.i18n.php';
+}
+
+class CollectionMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Collection';
+	protected $id    = 'ext-collection';
+
+	protected $arrName = 'messages';
+	protected $messageFile  = 'Collection/Collection.i18n.php';
 }
 
 class CommentPagesMessageGroup extends ExtensionMessageGroup {
@@ -1071,6 +1093,22 @@ class CrosswikiBlockMessageGroup extends ExtensionMessageGroup {
 	protected $messageFile = 'Crosswiki/Block/CrosswikiBlock.i18n.php';
 }
 
+class CrowdAuthenticationMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Crowd Authentication';
+	protected $id    = 'ext-crowdauthentication';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'CrowdAuthentication/CrowdAuthentication.i18n.php';
+}
+
+class DataTransferMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Data Transfer';
+	protected $id    = 'ext-datatransfer';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'DataTransfer/languages/DT_Messages.php';
+}
+
 class DeletedContribsMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Deleted Contributions';
 	protected $id    = 'ext-deletedcontribs';
@@ -1091,6 +1129,14 @@ class DismissableSiteNoticeMessageGroup extends ExtensionMessageGroup {
 	);
 }
 
+class DoubleWikiMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Double Wiki';
+	protected $id    = 'ext-doublewiki';
+
+	protected $arrName = 'messages';
+	protected $messageFile  = 'DoubleWiki/DoubleWiki.i18n.php';
+}
+
 class DuplicatorMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Duplicator';
 	protected $id    = 'ext-duplicator';
@@ -1105,6 +1151,14 @@ class EditcountMessageGroup extends ExtensionMessageGroup {
 
 	protected $arrName = 'messages';
 	protected $messageFile  = 'Editcount/SpecialEditcount.i18n.php';
+}
+
+class EditOwnMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Edit Own';
+	protected $id    = 'ext-editown';
+
+	protected $arrName = 'messages';
+	protected $messageFile  = 'EditOwn/EditOwn.i18n.php';
 }
 
 class EditUserMessageGroup extends ExtensionMessageGroup {
@@ -1215,8 +1269,32 @@ class GadgetsMessageGroup extends ExtensionMessageGroup {
 	);
 }
 
+class GlobalUsageMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Global Usage';
+	protected $id    = 'ext-globalusage';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'GlobalUsage/GlobalUsage.i18n.php';
+}
+
+class GoogleAnalyticsMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Google Analytics';
+	protected $id    = 'ext-googleanalytics';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'googleAnalytics/googleAnalytics.i18n.php';
+}
+
+class GoogleMapsMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Google Maps';
+	protected $id    = 'ext-googlemaps';
+
+	protected $arrName     = 'wgGoogleMapsMessages';
+	protected $messageFile = 'GoogleMaps/GoogleMaps.i18n.php';
+}
+
 class I18nTagsMessageGroup extends ExtensionMessageGroup {
-	protected $label = 'Parser i18n tags ';
+	protected $label = 'Parser i18n tags';
 	protected $id    = 'ext-i18ntags';
 
 	protected $arrName     = 'messages';
@@ -1299,6 +1377,14 @@ class InterwikiMessageGroup extends ExtensionMessageGroup {
 		'interwiki_logentry',
 		'interwiki_url',
 	);
+}
+
+class LabeledSectionTransclusionMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Labeled Section Transclusion';
+	protected $id    = 'ext-labeledsectiontransclusion';
+
+	protected $arrName = 'messages';
+	protected $messageFile = 'LabeledSectionTransclusion/lst.i18n.php';
 }
 
 class LanguageNamesMessageGroup extends ExtensionMessageGroup {
@@ -1625,6 +1711,14 @@ class PlayerMessageGroup extends ExtensionMessageGroup {
 	);
 }
 
+class PoemMessageGroup extends ExtensionMessageGroup {
+	protected $label   = 'Poem';
+	protected $id      = 'ext-poem';
+
+	protected $arrName = 'messages';
+	protected $messageFile  = 'Poem/Poem.i18n.php';
+}
+
 class PostCommentMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Post Comment';
 	protected $id    = 'ext-postcomment';
@@ -1690,12 +1784,28 @@ class QuizMessageGroup extends ExtensionMessageGroup {
 	protected $messageFile = 'Quiz/Quiz.i18n.php';
 }
 
+class RandomImageMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Random Image';
+	protected $id    = 'ext-randomimage';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'RandomImage/RandomImage.i18n.php';
+}
+
 class RandomInCategoryMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Random in Category';
 	protected $id    = 'ext-randomincategory';
 
 	protected $arrName     = 'messages';
 	protected $messageFile = 'RandomInCategory/SpecialRandomincategory.i18n.php';
+}
+
+class RandomRootpageMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Random Root Page';
+	protected $id    = 'ext-randomrootpage';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'RandomRootPage/Randomrootpage.i18n.php';
 }
 
 class RegexBlockMessageGroup extends ExtensionMessageGroup {
@@ -1929,6 +2039,14 @@ class ThrottleMessageGroup extends ExtensionMessageGroup {
 	protected $messageFile = 'Throttle/UserThrottle.i18n.php';
 }
 
+class TimelineMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Timeline';
+	protected $id    = 'ext-timeline';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'timeline/Timeline.i18n.php';
+}
+
 class TitleBlacklistMessageGroup extends ExtensionMessageGroup {
 	protected $label = 'Title Blacklist';
 	protected $id    = 'ext-titleblacklist';
@@ -2069,6 +2187,14 @@ class WikidataLanguageManagerMessageGroup extends ExtensionMessageGroup {
 	protected $messageFile = 'Wikidata/SpecialLanguages.i18n.php';
 
 	protected $ignored = array( 'ow_editing_policy_url' );
+}
+
+class WikihieroMessageGroup extends ExtensionMessageGroup {
+	protected $label = 'Wikihiero';
+	protected $id    = 'ext-wikihiero';
+
+	protected $arrName     = 'messages';
+	protected $messageFile = 'wikihiero/wikihiero.i18n.php';
 }
 
 class FreeColMessageGroup extends MessageGroup {

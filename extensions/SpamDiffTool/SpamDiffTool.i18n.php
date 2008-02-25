@@ -134,11 +134,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'spamdifftool'                  => 'Administrar a Listaxe Negra de Spam',
 	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
-	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>here</a> para continuar.",
+	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
 	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
 	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
 	'spamdifftool_spam_link_text'   => 'engadir a spam',
@@ -149,21 +150,32 @@ $messages['gl'] = array(
 	'spamdifftool_block'            => 'Bloqueo:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
-	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
-	'spamdifftool_notext' => 'Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href=\'$1\'>sem</a>, zo by pokročował.',
-	'spamdifftool_confirm' => 'Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href=\'$1\' target=\'new\'>sem</a>, zo by wo problemje rozprawjał.)',
-	'spamdifftool_summary' => 'Spamowej čornej lisćinje přidać',
-	'spamdifftool_urls_detected' => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
-	'spamdifftool_no_urls_detected' => 'Njebuchu žane url wotkryte. Klikń <a href=\'$1\'>sem</a>, zo by so wróćił.',
-	'spamdifftool_spam_link_text' => 'k spamej přidać',
-	'spamdifftool_option_domain' => 'wšo z tuteje domejny',
+	'spamdifftool'                  => 'Spamowu čornu lisćinu zrjadować',
+	'spamdifftool-desc'             => 'Skići zakładne wašnje přidawanja nowych zapiskow spamowej čornej lisćinje ze stronow z rozdźělemi wersijow',
+	'spamdifftool_cantedit'         => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool_notext'           => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
+	'spamdifftool_confirm'          => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
+	'spamdifftool_summary'          => 'Spamowej čornej lisćinje přidać',
+	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
+	'spamdifftool_no_urls_detected' => "Njebuchu žane url wotkryte. Klikń <a href='$1'>sem</a>, zo by so wróćił.",
+	'spamdifftool_spam_link_text'   => 'k spamej přidać',
+	'spamdifftool_option_domain'    => 'wšo z tuteje domejny',
 	'spamdifftool_option_subdomain' => 'wšě z tuteje poddomejny',
 	'spamdifftool_option_directory' => 'tutu poddomejnu a tutón zapis',
-	'spamdifftool_option_none' => 'ničo',
-	'spamdifftool_block' => 'Blokować:',
-	'spamdifftool_submit_buttom' => 'Wotesłać',
+	'spamdifftool_option_none'      => 'ničo',
+	'spamdifftool_block'            => 'Blokować:',
+	'spamdifftool_submit_buttom'    => 'Wotesłać',
+);
+
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'spamdifftool_option_none' => 'ekkert',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -182,6 +194,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'spamdifftool'                  => 'Zwarte Lijst beheren',
+	'spamdifftool-desc'             => 'Maakt het mogelijk nieuwe regels aan de zwarte lijst voor spam toe te voegen op basis van verschillen',
 	'spamdifftool_cantedit'         => 'Sorry - u heeft geen toelating om de Zwarte Lijst tegen Spam te bewerken.',
 	'spamdifftool_notext'           => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
 	'spamdifftool_confirm'          => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",
@@ -195,6 +208,27 @@ $messages['nl'] = array(
 	'spamdifftool_option_none'      => 'niets',
 	'spamdifftool_block'            => 'Blokkeren:',
 	'spamdifftool_submit_buttom'    => 'OK',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'spamdifftool'                  => 'Håndter spamsvartelisten',
+	'spamdifftool-desc'             => 'Gir en enkel måte å legge til nye elementer i spamsvartelisten fra diffsider',
+	'spamdifftool_cantedit'         => 'Du har dessverre ikke rettighet til å redigere spamsvartelisten.',
+	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
+	'spamdifftool_confirm'          => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
+	'spamdifftool_summary'          => 'Legger til i spamsvartelisten',
+	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen; hvilken av dem vil du legge til i spamsvartelisten? Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.<br /><br />Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost.com, geocities.com osv.',
+	'spamdifftool_no_urls_detected' => "Ingen URL-er funnet. <a href='$1'>Gå tilbake</a>.",
+	'spamdifftool_spam_link_text'   => 'legg til i spamlisten',
+	'spamdifftool_option_domain'    => 'hele domenet',
+	'spamdifftool_option_subdomain' => 'hele underdomenet',
+	'spamdifftool_option_directory' => 'dette underdomenet og mappen',
+	'spamdifftool_option_none'      => 'ingenting',
+	'spamdifftool_block'            => 'Blokker:',
+	'spamdifftool_submit_buttom'    => 'Legg til',
 );
 
 /** Occitan (Occitan)

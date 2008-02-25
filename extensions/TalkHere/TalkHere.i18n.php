@@ -266,6 +266,21 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
 	'talkhere-collapse'    => 'editor verbergen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'talkhere-foottext'    => 'Kommentarene ovenfor ble lagt igjen av besøkende.
+
+Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
+	'talkhere-talkpage'    => 'diskusjonsside',
+	'talkhere-notalk'      => "''(ingen kommentarer ennå)''",
+	'talkhere-addcomment'  => 'legg til kommentar',
+	'talkhere-beforeinput' => 'Du kan legge til en kommentar nedenfor',
+	'talkhere-loading'     => 'laster redigerer...',
+	'talkhere-collapse'    => 'skjul redigerer',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -374,12 +389,30 @@ $messages['sv'] = array(
 	'talkhere-collapse'    => 'dölj redigerare',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'talkhere-talkpage'   => 'చర్చా పేజీ',
+	'talkhere-notalk'     => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
+	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'talkhere-talkpage'   => 'Tartışma sayfası',
 	'talkhere-addcomment' => 'Yorumu ekle',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'talkhere-talkpage' => 'trang thảo luận',
+	'talkhere-loading'  => 'đang nạp bộ soạn…',
+	'talkhere-collapse' => 'giấu bộ soạn',
 );
 
 /** Volapük (Volapük)

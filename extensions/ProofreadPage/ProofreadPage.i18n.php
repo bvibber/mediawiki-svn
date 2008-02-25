@@ -312,6 +312,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Dereckson
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -322,9 +323,9 @@ $messages['fr'] = array(
 	'proofreadpage_index'             => 'Index',
 	'proofreadpage_nextpage'          => 'Page suivante',
 	'proofreadpage_prevpage'          => 'Page précédente',
-	'proofreadpage_header'            => 'En-tête (noinclude):',
-	'proofreadpage_body'              => 'Contenu (transclusion):',
-	'proofreadpage_footer'            => 'Pied de page (noinclude):',
+	'proofreadpage_header'            => 'En-tête (noinclude) :',
+	'proofreadpage_body'              => 'Contenu (transclusion) :',
+	'proofreadpage_footer'            => 'Pied de page (noinclude) :',
 	'proofreadpage_toggleheaders'     => 'masquer/montrer les sections noinclude',
 	'proofreadpage_quality1_category' => 'Page non corrigée',
 	'proofreadpage_quality2_category' => 'Page à problème',
@@ -332,7 +333,7 @@ $messages['fr'] = array(
 	'proofreadpage_quality4_category' => 'Page validée',
 	'proofreadpage_index_listofpages' => 'Liste des pages',
 	'proofreadpage_image_message'     => "Lien vers l'index",
-	'proofreadpage_page_status'       => 'Etat de la page',
+	'proofreadpage_page_status'       => 'État de la page',
 	'proofreadpage_js_attributes'     => 'Auteur Titre Année Éditeur',
 	'proofreadpage_index_attributes'  => 'Auteur
 Titre
@@ -348,6 +349,7 @@ Commentaires||10',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'proofreadpage_desc'              => 'Pèrmèt una comparèson ésiê entre lo tèxte et la numerisacion originâla.',
 	'proofreadpage_namespace'         => 'Pâge',
 	'proofreadpage_index_namespace'   => 'Endèxe',
 	'proofreadpage_image'             => 'émâge',
@@ -397,6 +399,7 @@ $messages['gl'] = array(
 	'proofreadpage_quality4_category' => 'Validado',
 	'proofreadpage_index_listofpages' => 'Listaxe de páxinas',
 	'proofreadpage_image_message'     => 'Ligazón a páxina do índice',
+	'proofreadpage_page_status'       => 'Status da páxina',
 	'proofreadpage_js_attributes'     => 'Autor Título Ano Publicación',
 	'proofreadpage_index_attributes'  => 'Autor
 Título
@@ -533,6 +536,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'proofreadpage_desc'              => 'Consente un facile confronto tra un testo e la sua scansione originale',
 	'proofreadpage_namespace'         => 'Pagina',
 	'proofreadpage_index_namespace'   => 'Indice',
 	'proofreadpage_image'             => 'immagine',
@@ -549,6 +553,49 @@ $messages['it'] = array(
 	'proofreadpage_quality4_category' => 'Verificata',
 	'proofreadpage_index_listofpages' => 'Lista delle pagine',
 	'proofreadpage_image_message'     => 'Collegamento alla pagina indice',
+	'proofreadpage_page_status'       => 'Status della pagina',
+	'proofreadpage_js_attributes'     => 'Autore Titolo Anno Editore',
+	'proofreadpage_index_attributes'  => 'Autore
+Titolo
+Anno|Anno di pubblicazione
+Editore
+Fonte
+Immagine|Immagine di copertina
+Pagine||20
+Note||10',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'proofreadpage_desc'              => 'オリジナルのスキャン画像とテキストとの比較を容易にする',
+	'proofreadpage_namespace'         => 'ページ',
+	'proofreadpage_index_namespace'   => '文献概要',
+	'proofreadpage_image'             => 'スキャン画像',
+	'proofreadpage_index'             => '文献概要',
+	'proofreadpage_nextpage'          => '次のページ',
+	'proofreadpage_prevpage'          => '前のページ',
+	'proofreadpage_header'            => 'ヘッダ（埋め込み対象外）:',
+	'proofreadpage_body'              => 'ページ本体（埋め込み参照の対象）:',
+	'proofreadpage_footer'            => 'フッタ（埋め込み対象外）:',
+	'proofreadpage_toggleheaders'     => '埋め込み対象外項目の表示切替',
+	'proofreadpage_quality1_category' => '未校正',
+	'proofreadpage_quality2_category' => '問題あり',
+	'proofreadpage_quality3_category' => '校正済',
+	'proofreadpage_quality4_category' => '検証済',
+	'proofreadpage_index_listofpages' => 'ページの一覧',
+	'proofreadpage_image_message'     => '文献概要ページへ',
+	'proofreadpage_page_status'       => '校正状況',
+	'proofreadpage_js_attributes'     => '著者 書名 出版年 出版元',
+	'proofreadpage_index_attributes'  => '著者
+書名
+出版年|出版年
+出版元
+引用元
+画像|表紙画像
+ページ||20
+注釈||10',
 );
 
 $messages['ka'] = array(
@@ -565,6 +612,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'proofreadpage_namespace'         => 'Säit',
+	'proofreadpage_image'             => 'Bild',
 	'proofreadpage_nextpage'          => 'Nächst Säit',
 	'proofreadpage_prevpage'          => 'Virescht Säit',
 	'proofreadpage_index_listofpages' => 'Säitelëscht',
@@ -742,10 +790,13 @@ Comentaris||10',
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'proofreadpage_desc'            => 'Umożliwia łatwe porównanie treści ze skanem oryginału',
 	'proofreadpage_namespace'       => 'Strona',
 	'proofreadpage_index_namespace' => 'Indeks',
 	'proofreadpage_image'           => 'Grafika',
 	'proofreadpage_index'           => 'Indeks',
+	'proofreadpage_nextpage'        => 'Następna strona',
+	'proofreadpage_prevpage'        => 'Poprzednia strona',
 	'proofreadpage_page_status'     => 'Status strony',
 );
 
@@ -782,6 +833,28 @@ $messages['pt'] = array(
 	'proofreadpage_index_listofpages' => 'Lista de páginas',
 	'proofreadpage_image_message'     => 'Link para a página de índice',
 	'proofreadpage_page_status'       => 'Estado da página',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'proofreadpage_namespace'         => 'مخ',
+	'proofreadpage_index_namespace'   => 'ليکلړ',
+	'proofreadpage_image'             => 'انځور',
+	'proofreadpage_index'             => 'ليکلړ',
+	'proofreadpage_nextpage'          => 'بل مخ',
+	'proofreadpage_prevpage'          => 'تېر مخ',
+	'proofreadpage_index_listofpages' => 'د مخونو لړليک',
+	'proofreadpage_page_status'       => 'د مخ دريځ',
+	'proofreadpage_index_attributes'  => 'ليکوال
+سرليک
+کال|د خپرېدو کال
+خپرونکی
+سرچينه
+انځور|د پښتۍ انځور
+مخونه||20
+تبصرې||10',
 );
 
 /** Portuguese (Português)
@@ -855,6 +928,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'proofreadpage_desc'              => 'Оригинаалы уонна скаанердаммыт ойууну тэҥнээн көрөр кыаҕы биэрэр',
 	'proofreadpage_namespace'         => 'Сирэй',
 	'proofreadpage_index_namespace'   => 'Индекс',
 	'proofreadpage_image'             => 'ойуу',
@@ -862,6 +936,7 @@ $messages['sah'] = array(
 	'proofreadpage_nextpage'          => 'Аныгыскы сирэй',
 	'proofreadpage_prevpage'          => 'Иннинээҕи сирэй',
 	'proofreadpage_header'            => 'Аата (киллэриллибэт):',
+	'proofreadpage_body'              => 'Сирэй иһэ (холбонуо):',
 	'proofreadpage_footer'            => 'Аллараа колонтитул (киллэриллибэт):',
 	'proofreadpage_toggleheaders'     => 'киллэриллибэт разделлары көрдөр',
 	'proofreadpage_quality1_category' => 'Ааҕыллыбатах',
@@ -1063,6 +1138,27 @@ $messages['tr'] = array(
 	'proofreadpage_index'     => 'Dizin',
 	'proofreadpage_nextpage'  => 'Gelecek sayfa',
 	'proofreadpage_prevpage'  => 'Önceki sayfa',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'proofreadpage_desc'              => 'So sánh văn bản với hình quét gốc',
+	'proofreadpage_namespace'         => 'Trang',
+	'proofreadpage_image'             => 'hình',
+	'proofreadpage_nextpage'          => 'Trang trước',
+	'proofreadpage_prevpage'          => 'Trang sau',
+	'proofreadpage_index_listofpages' => 'Danh sách các trang',
+	'proofreadpage_page_status'       => 'Tình trạng của trang',
+	'proofreadpage_index_attributes'  => 'Author|Tác giả
+Title|Tên
+Year|Năm xuất bản
+Publisher|Nhà xuất bản
+Source|Nguồn
+Image|Hình bìa
+Pages|Các trang|20
+Remarks|Ghi chú|10',
 );
 
 /** Volapük (Volapük)

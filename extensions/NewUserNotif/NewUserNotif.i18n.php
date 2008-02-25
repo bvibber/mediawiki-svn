@@ -177,6 +177,15 @@ $messages['sv'] = array(
 Ett nytt användar konto, $2, har skapats på $3 som $4.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newusernotifbody' => 'హలో $1,
+
+$3లో $2 అనే కొత్త వాడుకరి ఖాతాని $4కి సృష్టించాం.',
+);
+
 $messages['tet'] = array(
 	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
 	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',

@@ -38,9 +38,11 @@ $messages['avk'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'filelist'              => 'Списък на файловете',
+	'filelist-desc'         => 'Специална страница със списък на качените файлове',
 	'filelist-show-list'    => 'Показване на списъка',
 	'filelist-show-gallery' => 'Показване на галерията',
 );
@@ -70,6 +72,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'filelist'              => 'Listaxe de arquivos',
+	'filelist-desc'         => 'Páxina especial para listar ficheiros cargados',
 	'filelist-show-list'    => 'Amosar listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
 );
@@ -119,6 +122,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'filelist'              => 'Filliste',
+	'filelist-desc'         => 'Spesialside som viser en liste over opplastede filer',
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
 );
@@ -131,6 +135,16 @@ $messages['oc'] = array(
 	'filelist-desc'         => 'Pagina especiala per enumerar los fichièrs telecargats.',
 	'filelist-show-list'    => 'Veire la lista',
 	'filelist-show-gallery' => 'Veire la galariá',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'filelist'              => 'د دوتنو لړليک',
+	'filelist-desc'         => 'د پورته شويو دوتنو د لړليک ځانګړی مخ',
+	'filelist-show-list'    => 'لړليک ښکاره کول',
+	'filelist-show-gallery' => 'نندارتون ښکاره کول',
 );
 
 /** Slovak (Slovenčina)
@@ -154,11 +168,20 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'filelist'              => 'Fil lista',
-	'filelist-desc'         => 'Special sida för att lista uppladdade filer',
+	'filelist'              => 'Fillista',
+	'filelist-desc'         => 'Specialsida som visar en lista över uppladdade filer',
 	'filelist-show-list'    => 'Visa lista',
 	'filelist-show-gallery' => 'Visa galleri',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'filelist'           => 'ఫైళ్ళ జాబితా',
+	'filelist-show-list' => 'జాబితాని చూపించు',
 );
 

@@ -55,7 +55,8 @@ $messages['br'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'cleanchanges-desc' => 'Kompaktnější zobrazení [[Special:RecentChanges|seznamu posledních změn]]',
+	'cleanchanges-changerightslink' => 'změnit skupiny',
+	'cleanchanges-desc'             => 'Kompaktnější zobrazení [[Special:RecentChanges|seznamu posledních změn]]',
 );
 
 /** German (Deutsch)
@@ -106,7 +107,15 @@ $messages['hsb'] = array(
  */
 $messages['ja'] = array(
 	'cleanchanges-changerightslink' => '権限の変更',
-	'cleanchanges-desc'             => '[[{{ns:Special}}:RecentChanges|最近更新したページ]]をコンパクトな表示にします',
+	'cleanchanges-desc'             => '[[{{ns:Special}}:RecentChanges|最近更新したページ]]をコンパクトな表示にする',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'cleanchanges-changerightslink' => "ännert d'Gruppen",
+	'cleanchanges-desc'             => '[[Special:RecentChanges|Lëscht vun de rezenten Ännerunge]] méi kompakt uweisen',
 );
 
 /** Dutch (Nederlands)
@@ -141,6 +150,14 @@ $messages['pt'] = array(
 	'cleanchanges-desc'             => 'Apresentação mais compacta da [[{{ns:special}}:RecentChanges|lista de mudanças recentes]]',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'cleanchanges-changerightslink' => 'изменить группы',
+	'cleanchanges-desc'             => 'Более сжатое представление [[Special:RecentChanges|списка свежих правок]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -158,9 +175,12 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
+ * @author Lejonel
  * @author Max sonnelid
  */
 $messages['sv'] = array(
 	'cleanchanges-changerightslink' => 'ändra grupper',
+	'cleanchanges-desc'             => 'Visar [[Special:RecentChanges|senaste ändringarna]] på ett mer kompakt sätt',
 );
 

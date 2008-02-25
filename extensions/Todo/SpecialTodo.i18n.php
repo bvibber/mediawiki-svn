@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'todo' => 'Todo list',
+	'todo-desc' => 'Experimental personal [[Special:Todo|todo list]] extension',
 	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
 	'todo-mail-subject' => "Completed item on $1's todo list",
@@ -96,6 +97,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array (
 	'todo'              => 'Liste des tâches à exécuter',
+	'todo-desc'         => 'Extension expérimentale d’une [[Special:Todo|liste personnelle de tâche à accomplir]]',
 	'todo-tab'          => 'à faire',
 	'todo-new-queue'    => 'Nouveau',
 	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
@@ -136,6 +138,7 @@ $messages['gl'] = array(
 	'todo-list-change'      => 'Cambiar',
 	'todo-list-cancel'      => 'Cancelar',
 	'todo-new-item'         => 'Novo artigo',
+	'todo-issue-summary'    => 'Resumo do tema:',
 	'todo-form-details'     => 'Detalles:',
 	'todo-form-email'       => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
 	'todo-form-submit'      => 'Presentar Consulta',
@@ -146,6 +149,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'todo'                  => 'Lisćina nadawkow',
+	'todo-desc'             => 'Eksperimentelne rozšěrjenje za wosobinsku [[Special:Todo|lisćinu nadawkow]]',
 	'todo-tab'              => 'nadawk',
 	'todo-new-queue'        => 'nowy',
 	'todo-mail-subject'     => 'Sčinjeny nadawk na lisćinje nadawkow $1',
@@ -227,6 +231,7 @@ $4',
  */
 $messages['no'] = array(
 	'todo'                  => 'Oppgaveliste',
+	'todo-tab'              => 'oppgaver',
 	'todo-new-queue'        => 'ny',
 	'todo-mail-subject'     => 'Fullførte oppgave på $1s oppgaveliste',
 	'todo-mail-body'        => 'Du ba om en e-postbekreftelse om fullføringen av en oppgave på $1s oppgaveliste.
@@ -253,7 +258,6 @@ $4',
 	'todo-form-details'     => 'Detaljer:',
 	'todo-form-email'       => 'For å motta beskjed på e-post når oppgaven er fullført, skriv inn e-postadressen din her:',
 	'todo-form-submit'      => 'Utfør',
-
 );
 
 /** Occitan (Occitan)
@@ -284,6 +288,13 @@ $messages['oc'] = array(
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'todo-new-queue' => 'نوی',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -297,6 +308,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'todo'                  => 'Zoznam úloh',
+	'todo-desc'             => 'Experimentálne rozšírenie osobný [[Special:Todo|Zoznam úloh]]',
 	'todo-tab'              => 'zoznam úloh',
 	'todo-new-queue'        => 'nová',
 	'todo-mail-subject'     => 'Dokončená úloha zo zoznamu používateľa $1',
@@ -335,6 +347,26 @@ $messages['sv'] = array(
 	'todo-unrecognize-type' => 'Okänd typ',
 	'todo-list-change'      => 'Ändra',
 	'todo-form-details'     => 'Detaljer:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'todo-new-queue'        => 'కొత్తది',
+	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
+	'todo-item-list'        => 'మీ అంశాలు',
+	'todo-list-change'      => 'మార్చు',
+	'todo-new-item'         => 'కొత్త అంశం',
+	'todo-form-details'     => 'వివరాలు:',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'todo-list-change' => 'เปลี่ยน',
+	'todo-list-cancel' => 'ยกเลิก',
 );
 
 /** Turkish (Türkçe)

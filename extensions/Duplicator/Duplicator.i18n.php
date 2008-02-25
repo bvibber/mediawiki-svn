@@ -258,6 +258,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'duplicator'                       => 'Duplicar unha páxina',
+	'duplicator-desc'                  => 'Crear copias independentes das páxinas cos historiais completos de edición',
 	'duplicator-toolbox'               => 'Duplicar esta páxina',
 	'duplicator-header'                => 'Esta páxina permite a duplicación completa dunha páxina e crea copias independentes
 de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
@@ -451,6 +452,7 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
  */
 $messages['no'] = array(
 	'duplicator'                       => 'Kopier en side',
+	'duplicator-desc'                  => 'Opprett uavhengige kopier av sider med full redigeringshistorikk',
 	'duplicator-toolbox'               => 'Kopier denne siden',
 	'duplicator-header'                => 'Denne siden muliggjør fullstendig kopiering av en side, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av sider, etc.',
 	'duplicator-options'               => 'Alternativer',
@@ -465,9 +467,9 @@ $messages['no'] = array(
 	'duplicator-success-talknotcopied' => 'Diskusjonssiden kunne ikke kopieres.',
 	'duplicator-failed'                => 'Siden kunne ikke kopieres. En ukjent feil forekom.',
 	'duplicator-source-invalid'        => 'Vennligst angi en gyldig kildetittel.',
-	'duplicator-source-notexist'       => '[[$1]] finnes ikike. Oppgi tittelen til en eksisterende side.',
+	'duplicator-source-notexist'       => '[[$1]] finnes ikike. Angi tittelen til en eksisterende side.',
 	'duplicator-dest-invalid'          => 'Angi en gyldig måltittel.',
-	'duplicator-dest-exists'           => '[[$1]] finnes allerede. Oppgi en måltittel som ikke eksisterer.',
+	'duplicator-dest-exists'           => '[[$1]] finnes allerede. Angi en måltittel som ikke eksisterer.',
 	'duplicator-toomanyrevisions'      => '[[$1]] har for mange revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
 );
 
@@ -585,27 +587,30 @@ $messages['pt'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] possui demasiadas ($2) revisões e não pode ser copiada. O limite actual é $3.',
 );
 
-/* Russian */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'duplicator' => 'Клонировать статью',
-	'duplicator-toolbox' => 'Клонировать статью',
-	'duplicator-header' => 'Эта страница позволяет полностью клонировать статью, создать независимую копию истории её изменений. Данная функция полезна при разделении статьи на две отдельные.',
-	'duplicator-options' => 'Настройки',
-	'duplicator-source' => 'Откуда:',
-	'duplicator-dest' => 'Куда:',
-	'duplicator-dotalk' => 'Клонировать страницу обсуждения (если возможно)',
-	'duplicator-submit' => 'Клонировать',
-	'duplicator-summary' => 'Копия [[$1]]',
-	'duplicator-success' => "<big>'''[[$1]] клонирована в [[$2]].'''</big>",
-	'duplicator-success-revisions' => '$1 {{PLURAL:$1|изменение было|изменения было|изменений было}} скопировано.',
-	'duplicator-success-talkcopied' => 'Страница обсуждения была скопирована.',
+	'duplicator'                       => 'Клонировать статью',
+	'duplicator-desc'                  => 'Создаёт независимые копии страниц с полными историями изменений',
+	'duplicator-toolbox'               => 'Клонировать статью',
+	'duplicator-header'                => 'Эта страница позволяет полностью клонировать статью, создать независимую копию истории её изменений. Данная функция полезна при разделении статьи на две отдельные.',
+	'duplicator-options'               => 'Настройки',
+	'duplicator-source'                => 'Откуда:',
+	'duplicator-dest'                  => 'Куда:',
+	'duplicator-dotalk'                => 'Клонировать страницу обсуждения (если возможно)',
+	'duplicator-submit'                => 'Клонировать',
+	'duplicator-summary'               => 'Копия [[$1]]',
+	'duplicator-success'               => "<big>'''[[$1]] клонирована в [[$2]].'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|изменение было|изменения было|изменений было}} скопировано.',
+	'duplicator-success-talkcopied'    => 'Страница обсуждения была скопирована.',
 	'duplicator-success-talknotcopied' => 'Страница обсуждения не была скопирована.',
-	'duplicator-failed' => 'Страница не может быть клопирована. Неизвестная ошибка.',
-	'duplicator-source-invalid' => 'Пожалуйста, введите корректное название статьи-источника.',
-	'duplicator-source-notexist' => 'Страница «[[$1]]» не существует. Пожалуйста, введите название страницы, которая существует.',
-	'duplicator-dest-invalid' => 'Пожалуйста введите корректное название страницы-назначения.',
-	'duplicator-dest-exists' => 'Страница «[[$1]]» уже существует. Пожалуйста, введите название несуществующей страницы-назначения.',
-	'duplicator-toomanyrevisions' => 'Страница «[[$1]]» имеет слишком много ($2) изменений. Текущим ограничением является $3.',
+	'duplicator-failed'                => 'Страница не может быть клопирована. Неизвестная ошибка.',
+	'duplicator-source-invalid'        => 'Пожалуйста, введите корректное название статьи-источника.',
+	'duplicator-source-notexist'       => 'Страница «[[$1]]» не существует. Пожалуйста, введите название страницы, которая существует.',
+	'duplicator-dest-invalid'          => 'Пожалуйста введите корректное название страницы-назначения.',
+	'duplicator-dest-exists'           => 'Страница «[[$1]]» уже существует. Пожалуйста, введите название несуществующей страницы-назначения.',
+	'duplicator-toomanyrevisions'      => 'Страница «[[$1]]» имеет слишком много ($2) изменений. Текущим ограничением является $3.',
 );
 
 /** Slovak (Slovenčina)
@@ -661,9 +666,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'duplicator'                       => 'Duplicera en sida',
+	'duplicator-desc'                  => 'Skapa självständiga kopior av sidor med full redigerings historik',
 	'duplicator-toolbox'               => 'Duplicera denna sida',
 	'duplicator-header'                => 'Med den här specialsidan är det möjligt att duplicera en sida, och på så sätt skapa två oberoende versioner av hela dess historik. Det kan vara användbart t.ex. om en sida ska delas upp på flera sidor.',
 	'duplicator-options'               => 'Alternativ',
@@ -682,6 +689,16 @@ $messages['sv'] = array(
 	'duplicator-dest-invalid'          => 'Du har inte angivit någon giltig målsida.',
 	'duplicator-dest-exists'           => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
 	'duplicator-toomanyrevisions'      => '[[$1]] kan inte dupliceras eftersom den har för många ($2) versioner. Gränsen för duplicering är $3 sidversioner.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'duplicator-options' => 'ఎంపికలు',
+	'duplicator-source'  => 'స్కోరు:',
+	'duplicator-dest'    => 'గమ్యస్థానం:',
+	'duplicator-summary' => '[[$1]] నుండి కాపీ చేసారు',
 );
 
 /** Turkish (Türkçe)

@@ -256,6 +256,21 @@ $messages['hsb'] = array(
 	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje.',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'createsigndoc-pagename' => 'Síða:',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'createsigndoc-email'   => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
+	'createsigndoc-address' => 'អាស័យដ្ឋាន ផ្ទះ ៖',
+);
+
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
@@ -321,25 +336,26 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'createsigndocument'              => 'Slå på dokumentsignering',
-	'createsigndoc-head'              => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
+	'createsigndocument'                 => 'Slå på dokumentsignering',
+	'createsigndoc-head'                 => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
 
 <b>Det er ingen måte å slette eller endre signaturdokumenter etter at de opprettes</b> uten direkte databasetilgang. Teksten på siden på signatursiden vil også være den ''nåværende'' teksten, uavhengig av hvilke endringer som gjøres etter i dag. Vær hundre prosent sikker på at dokumentet er stabilt når det signeres, og vær også sikker på at du oppgir alle felt som de burde være, ''før du lagrer dette skjemaet''.",
-	'createsigndoc-pagename'          => 'Side:',
-	'createsigndoc-allowedgroup'      => 'Tillatt gruppe:',
-	'createsigndoc-email'             => 'E-postadresse:',
-	'createsigndoc-address'           => 'Hjemmeadresse:',
-	'createsigndoc-extaddress'        => 'By, stat, land:',
-	'createsigndoc-phone'             => 'Telefonnummer:',
-	'createsigndoc-bday'              => 'Fødselsdato:',
-	'createsigndoc-minage'            => 'Minimumsalder:',
-	'createsigndoc-introtext'         => 'Introduksjon:',
-	'createsigndoc-hidden'            => 'Skjult',
-	'createsigndoc-optional'          => 'Valgfri',
-	'createsigndoc-create'            => 'Opprett',
-	'createsigndoc-error-generic'     => 'Feil: $1',
-	'createsigndoc-error-pagenoexist' => 'Feil: Siden [[$1]] eksisterer ikke.',
-	'createsigndoc-success'           => 'Dokumentsignering har blitt slått på for [[$1]]. For å signere det, besøk [{{fullurl:Special:SignDocument|doc=$2}} denne siden].',
+	'createsigndoc-pagename'             => 'Side:',
+	'createsigndoc-allowedgroup'         => 'Tillatt gruppe:',
+	'createsigndoc-email'                => 'E-postadresse:',
+	'createsigndoc-address'              => 'Hjemmeadresse:',
+	'createsigndoc-extaddress'           => 'By, stat, land:',
+	'createsigndoc-phone'                => 'Telefonnummer:',
+	'createsigndoc-bday'                 => 'Fødselsdato:',
+	'createsigndoc-minage'               => 'Minimumsalder:',
+	'createsigndoc-introtext'            => 'Introduksjon:',
+	'createsigndoc-hidden'               => 'Skjult',
+	'createsigndoc-optional'             => 'Valgfri',
+	'createsigndoc-create'               => 'Opprett',
+	'createsigndoc-error-generic'        => 'Feil: $1',
+	'createsigndoc-error-pagenoexist'    => 'Feil: Siden [[$1]] eksisterer ikke.',
+	'createsigndoc-success'              => 'Dokumentsignering har blitt slått på for [[$1]]. For å signere det, besøk [{{fullurl:Special:SignDocument|doc=$2}} denne siden].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen «$1» finnes allerede.',
 );
 
 /** Occitan (Occitan)
@@ -466,8 +482,10 @@ $messages['ss'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'createsigndocument'              => 'Möjliggör dokument signering',
 	'createsigndoc-pagename'          => 'Sida:',
 	'createsigndoc-email'             => 'E-postadress:',
 	'createsigndoc-address'           => 'Gatuadress:',
@@ -475,11 +493,29 @@ $messages['sv'] = array(
 	'createsigndoc-phone'             => 'Telefonnummer:',
 	'createsigndoc-bday'              => 'Födelsedatum:',
 	'createsigndoc-minage'            => 'Minimiålder:',
+	'createsigndoc-introtext'         => 'Introduktion:',
 	'createsigndoc-hidden'            => 'dolt',
 	'createsigndoc-optional'          => 'frivilligt',
 	'createsigndoc-create'            => 'Skapa',
 	'createsigndoc-error-generic'     => 'Fel: $1',
 	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'createsigndoc-pagename'          => 'పేజీ:',
+	'createsigndoc-email'             => 'ఈ-మెయిల్ చిరునామా:',
+	'createsigndoc-address'           => 'ఇంటి చిరునామా:',
+	'createsigndoc-extaddress'        => 'నగరం, రాష్ట్రం, దేశం:',
+	'createsigndoc-phone'             => 'ఫోన్ నంబర్:',
+	'createsigndoc-bday'              => 'పుట్టినరోజు:',
+	'createsigndoc-minage'            => 'కనిష్ట వయసు:',
+	'createsigndoc-introtext'         => 'పరిచయం:',
+	'createsigndoc-optional'          => 'ఐచ్చికం',
+	'createsigndoc-error-generic'     => 'పొరపాటు: $1',
+	'createsigndoc-error-pagenoexist' => 'పొరపాటు: [[$1]] అనే పేజీ లేనే లేదు.',
 );
 
 /** Volapük (Volapük)

@@ -365,20 +365,20 @@ $messages['el'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Cimon Avaro
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'math_noblahtex'                        => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
 	'math_CannotChangeDirectory'            => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile'              => 'Tex-tiedoston luominen epäonnistui.',
-	'math_CannotWriteTexFile'               => 'Ei voitu kirjoittaa tex tiedostoon',
-	'math_IllegalCharacter'                 => 'Asiaankuulumaton merkki syötteessä',
+	'math_CannotWriteTexFile'               => 'Tex-tiedostoon kirjoittaminen epäonnistui.',
+	'math_IllegalCharacter'                 => 'Kelpaamaton merkki syötteessä',
 	'math_NotEnoughArguments'               => 'Liian vähän argumentteja komennolle $1.',
-	'math_PngIncompatibleCharacter'         => 'Ei onnistu tuottaa oikein PNG:iä joka sisältää merkin $1',
-	'math_ReservedCommand'                  => 'Komento "$1" on varattu blahtexin sisäiseen käyttöön',
+	'math_PngIncompatibleCharacter'         => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
+	'math_ReservedCommand'                  => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',
 	'math_TooManyTokens'                    => 'Syöte on liian pitkä.',
-	'math_UnavailableSymbolFontCombination' => 'Symbolia "$1" ei löydy fontista "$2"',
+	'math_UnavailableSymbolFontCombination' => 'Symbolia <tt>$1</tt> ei löydy fontista $2.',
 	'math_UnrecognisedCommand'              => 'Tunnistamaton komento ”$1”',
 );
 
@@ -506,6 +506,7 @@ $messages['frp'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'math_noblahtex'                        => 'Non se pode executar blahtex, que debe estar en $1',
@@ -518,13 +519,13 @@ $messages['gl'] = array(
 	'math_CannotWriteTexFile'               => 'Non se puido escribir no ficheiro de tex',
 	'math_CasesRowTooBig'                   => 'Só pode haber dúas entradas en cada fila do bloque "cases"',
 	'math_DoubleSubscript'                  => 'Atopados dous subíndices adxuntos á mesma base (só a un se lle permite)',
-	'math_DoubleSuperscript'                => 'Atopados dous superíndoces adxuntos á mesma base (só a un se lle permite)',
+	'math_DoubleSuperscript'                => 'Atopados dous superíndices adxuntos á mesma base (só a un se lle permite)',
 	'math_IllegalCharacter'                 => 'Carácter non válido na entrada',
 	'math_IllegalCommandInMathMode'         => 'O comando "$1" non é válido no modo math',
 	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" non é válido no modo math (tal vez pretendía usar "$2" no seu sitio?)',
 	'math_IllegalCommandInTextMode'         => 'O comando "$1" non é válido no modo texto',
 	'math_IllegalCommandInTextModeWithHint' => 'O comando "$1" non é válido no modo texto (tal vez pretendía usar "$2" no seu lugar?)',
-	'math_IllegalDelimiter'                 => 'Deliminator non válido a continuación de "$1"',
+	'math_IllegalDelimiter'                 => 'Delimitador non válido a continuación de "$1"',
 	'math_IllegalFinalBackslash'            => 'Barra para atrás "\\" non válida ao final da entrada',
 	'math_IllegalNestedFontEncodings'       => 'Os comandos de codificación da fonte non poden estar aniñados',
 	'math_IllegalRedefinition'              => 'Xa se definiu o comando "$1"; non o pode redefinir',
@@ -541,7 +542,7 @@ $messages['gl'] = array(
 	'math_MissingOpenBraceBefore'           => 'Falta unha chave de apertura "{" antes de "$1"',
 	'math_MissingOrIllegalParameterCount'   => 'Falta ou non é válida a contaxe de parámetros na definición de "$1" (ten que ser un díxito único entre 1 e 9 inclusive)',
 	'math_MissingOrIllegalParameterIndex'   => 'Falta ou non é válido un índice de parámetro na definición de "$1"',
-	'math_NonAsciiInMathMode'               => 'Os caracteres fora do conxunto ASCII só se poden usasr no modo texto (tente encerrar os caracteres problemáticos dentro de "\\text{...}")',
+	'math_NonAsciiInMathMode'               => 'Os caracteres fóra do conxunto ASCII só se poden usar no modo texto (tente encerrar os caracteres problemáticos dentro de "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Non se forneceron argumentos dabondo para "$1"',
 	'math_PngIncompatibleCharacter'         => 'Non se pode xerar correctamente un PNG que conteña o carácter $1',
 	'math_ReservedCommand'                  => 'O comando "$1" está reservado para uso interno de blahtex',
@@ -859,6 +860,13 @@ $messages['ja'] = array(
 	'math_WrongFontEncodingWithHint'        => 'シンボル "$1" は、文字エンコード "$2" で利用できません（"$3{...}" をお試しください）',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'math_InvalidColour' => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -941,12 +949,60 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'math_CannotChangeDirectory'   => 'Kan ikke endre arbeidsmappe',
-	'math_CannotCreateTexFile'     => 'Kan ikke opprette tex-fil',
-	'math_CannotRunDvipng'         => 'Kan ikke kjøre dvipng',
-	'math_CannotRunLatex'          => 'Kan ikke kjøre latex',
-	'math_CannotWritePngDirectory' => 'Kan ikke skrive til PNG-mappe',
-	'math_CannotWriteTexFile'      => 'Kan ikke skriv til tex-fil',
+	'math_noblahtex'                        => 'Kan ikke kjøre blahtex, som burde være på $1',
+	'math-desc'                             => 'MathML-resultat for &lt;math&gt;-tagger',
+	'math_AmbiguousInfix'                   => 'Tvetydig plassering av «$1» (prøv å bruke ekstra parenteser «{ ... }» for å gjøre entydig)',
+	'math_CannotChangeDirectory'            => 'Kan ikke endre arbeidsmappe',
+	'math_CannotCreateTexFile'              => 'Kan ikke opprette tex-fil',
+	'math_CannotRunDvipng'                  => 'Kan ikke kjøre dvipng',
+	'math_CannotRunLatex'                   => 'Kan ikke kjøre latex',
+	'math_CannotWritePngDirectory'          => 'Kan ikke skrive til PNG-mappe',
+	'math_CannotWriteTexFile'               => 'Kan ikke skriv til tex-fil',
+	'math_CasesRowTooBig'                   => 'Det kan kun være ett element i hver rad av en «cases»-blokk',
+	'math_DoubleSubscript'                  => 'Fant to instanser av senket tekst koblet til samme base (kun én er tillatt)',
+	'math_DoubleSuperscript'                => 'Fant to instanser av hevet tekst koblet til samme base (kun én er tillatt)',
+	'math_IllegalCharacter'                 => 'Ulovlig tegn i opphavstekst',
+	'math_IllegalCommandInMathMode'         => 'Kommandoen «$1» er ulovlig i mattemodus',
+	'math_IllegalCommandInMathModeWithHint' => 'Kommandoen «$1» er ulovlig i mattemodus (kanskje du mente å bruke «$2» i stedet?)',
+	'math_IllegalCommandInTextMode'         => 'Kommandoen «$1» er ulovlig i tekstmodus',
+	'math_IllegalCommandInTextModeWithHint' => 'Kommandoen «$1» er ulovlig i tekstmodus (kanskje du mente å bruke «$2» i stedet?)',
+	'math_IllegalDelimiter'                 => 'Ugyldig skilletegn etter «$1»',
+	'math_IllegalFinalBackslash'            => 'Ugyldig omvendt skråstrek «\\» på slutten av innskrevet tekst',
+	'math_IllegalNestedFontEncodings'       => 'Tegnkodingskommandoer kan ikke nøstes',
+	'math_IllegalRedefinition'              => 'Kommandoen «$1» har allerede blitt definert; du kan ikke omdefinere den',
+	'math_InvalidColour'                    => 'Fargen «$1» er ugyldig',
+	'math_InvalidUtf8Input'                 => 'Den innskrevne teksten var ikke gyldig UTF-8',
+	'math_LatexFontNotSpecified'            => 'Ingen LaTeX-skrifttype har blitt angitt for «$1»',
+	'math_LatexPackageUnavailable'          => 'Kunne ikke tegne PNG fordi LaTeX-pakken «$1» ikke er tilgjengelig',
+	'math_MismatchedBeginAndEnd'            => 'Kommandoene «$1» og «$2» stemmer ikke overens',
+	'math_MisplacedLimits'                  => 'Kommandoen «$1» kan bare opptre etter en matteoperator (overvei å bruke «\\mathop»)',
+	'math_MissingCommandAfterNewcommand'    => 'Manglende eller ulovlig ny kommando etter «\\newcommand» (nøyaktig én kommentar må være definert; den må begynne med en omvendt skråstrek «\\» og inneholde kun bokstaver)',
+	'math_MissingDelimiter'                 => 'Manglende skilletegn etter «$1»',
+	'math_MissingOpenBraceAfter'            => 'Mangler åpen krøllparentes «{» etter «$1»',
+	'math_MissingOpenBraceAtEnd'            => 'Mangler åpen krøllparentes «{» på slutten av den innskrevne teksten',
+	'math_MissingOpenBraceBefore'           => 'Mangler åpen krøllparentes «{» før «$1»',
+	'math_MissingOrIllegalParameterCount'   => 'Manglende eller ulovlig parameterantall funnet i definisjonen av «$1» (må være et enkelt siffer fra og med 1 til og med 9)',
+	'math_MissingOrIllegalParameterIndex'   => 'Manglende eller ulovlig parameterindeks i definisjonen av «$1»',
+	'math_NonAsciiInMathMode'               => 'Tegn som ikke er i ASCII kan kun brukes i tekstmodus (prøv å omringe problemtegnene med «\\text{...}»)',
+	'math_NotEnoughArguments'               => 'For få argumenter ble gitt for «$1»',
+	'math_PngIncompatibleCharacter'         => 'Kunne ikke generere PNG med tegnet $1',
+	'math_ReservedCommand'                  => 'Kommandoen «$1» er reservert for intern bruk av blahtex',
+	'math_SubstackRowTooBig'                => 'Det kan kun være ett element i hver rad av en «substack»-blokk',
+	'math_TooManyMathmlNodes'               => 'Det er for mange noder i MathML-treet',
+	'math_TooManyTokens'                    => 'Den innskrevne teksten er for lang',
+	'math_UnavailableSymbolFontCombination' => 'Symbolet «$1» er ikke tilgjengelig i skrifttypen «$2»',
+	'math_UnexpectedNextCell'               => 'Kommandoen «&» kan kun opptre inne i en «\\begin ... \\end»-blokk',
+	'math_UnexpectedNextRow'                => 'Kommandoen «\\\\» kan kun opptre inne i en «\\begin ... \\end»-blokk',
+	'math_UnmatchedBegin'                   => 'Fant «\\begin» uten tilsvarende «\\end»',
+	'math_UnmatchedCloseBrace'              => 'Fant lukkende krøllparentes «}» uten tilsvarende åpen krøllparentes «{»',
+	'math_UnmatchedEnd'                     => 'Fant «\\end» uten tilsvarende «\\begin»',
+	'math_UnmatchedLeft'                    => 'Fant «\\left» uten tilsvarende «\\right»',
+	'math_UnmatchedOpenBrace'               => 'Fant åpen krøllparentes «{» uten tilsvarende lukkende krøllparentes «}»',
+	'math_UnmatchedOpenBracket'             => 'Fant åpen hakeparentes «[» uten tilsvarende lukkende hakeparentes «]»',
+	'math_UnmatchedRight'                   => 'Fant «\\right» uten tilsvarende «\\left»',
+	'math_UnrecognisedCommand'              => 'Ugjenkjennelig kommando «$1»',
+	'math_WrongFontEncoding'                => 'Symbolet «$1» kan ikke opptre i tegnkodingen «$2»',
+	'math_WrongFontEncodingWithHint'        => 'Symbolet «$1» kan ikke opptre i tegnkodingen «$2» (prøv å bruke kommandoen «$3{...}»)',
 );
 
 /** Occitan (Occitan)
@@ -1292,11 +1348,28 @@ $messages['sv'] = array(
 	'math_TooManyTokens'           => 'Inmatningen är för lång',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'math_InvalidColour'       => '"$1" అనే రంగు సరైంది కాదు',
+	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'math_TooManyTokens' => 'สิ่งที่ใส่ลงไปยาวเกินกว่าที่ระบบจะรับได้',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'math_noblahtex'                        => 'Không thể thực thi blahtex, đáng ra phải ở $1',
+	'math-desc'                             => 'Cho ra mã MathML khi gặp những thẻ &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'Dùng "$1" gây khó hiểu (hãy thử dùng thêm dấu ngoặc móc "{ ... }" để rõ ràng hơn)',
 	'math_CannotChangeDirectory'            => 'Không thể thay đổi thư mục hiện hành',
 	'math_CannotCreateTexFile'              => 'Không thể tạo được tập tin tex',

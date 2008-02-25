@@ -158,32 +158,40 @@ $messages['fi'] = array(
 	'newestpages-hideredir' => 'Piilota uudelleenohjaukset',
 );
 
-/* French (Bertrand GRONDIN) */
+/** French (Français)
+ * @author Grondin
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
 	'newestpages'            => 'Pages les plus récentes',
-	'newestpages-desc'       => 'Affiche les [[Special:Newestpages|X dernières pages]] ajoutées au wiki.',
+	'newestpages-desc'       => 'Affiche les [[Special:Newestpages|dernières pages]] ajoutées au wiki.',
 	'newestpages-header'     => "'''Cette page liste les $1 pages les plus récentes sur le wiki.'''",
 	'newestpages-limitlinks' => 'Afficher jusqu’à $1 pages',
 	'newestpages-namespace'  => 'Espace Wiki :',
 	'newestpages-none'       => 'Aucune page n’a été trouvée',
-	'newestpages-ns-header'  => "'''Cette page liste les $1 pages les plus récente dans l’espace $2.'''",
+	'newestpages-ns-header'  => "'''Cette page liste les $1 pages les plus récentes dans l’espace $2.'''",
 	'newestpages-showing'    => 'Affichage des $1 pages les plus récentes :',
 	'newestpages-submit'     => 'Lancer',
 	'newestpages-showredir'  => 'Afficher les pages de redirection.',
 	'newestpages-hideredir'  => 'Cacher les pages de redirection.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'newestpages' => 'Páxinas máis novas',
-	'newestpages-header' => '\'\'\'Esta páxina lista as $1 páxinas novas no wiki.\'\'\'',
+	'newestpages'            => 'Páxinas máis novas',
+	'newestpages-desc'       => 'Amosa [[Special:Newestpages|X últimas páxinas]] engadidas ao wiki',
+	'newestpages-header'     => "'''Esta páxina lista as $1 páxinas novas no wiki.'''",
 	'newestpages-limitlinks' => 'Amosar $1 páxinas',
-	'newestpages-namespace' => 'Espazo de nomes:',
-	'newestpages-none' => 'Ningunhas entradas foron atopadas.',
-	'newestpages-ns-header' => '\'\'\'Esta páxina lista as $1 páxinas novas no espazo de nomes $2.\'\'\'',
-	'newestpages-showing' => 'Listando $1 páxinas novas:',
-	'newestpages-submit' => 'Ir',
-	'newestpages-showredir' => 'Amosar páxinas redirixidas',
-	'newestpages-hideredir' => 'Ocultar páxinas redirixidas',
+	'newestpages-namespace'  => 'Espazo de nomes:',
+	'newestpages-none'       => 'Ningunhas entradas foron atopadas.',
+	'newestpages-ns-header'  => "'''Esta páxina lista as $1 páxinas novas no espazo de nomes $2.'''",
+	'newestpages-showing'    => 'Listando $1 páxinas novas:',
+	'newestpages-submit'     => 'Ir',
+	'newestpages-showredir'  => 'Amosar páxinas redirixidas',
+	'newestpages-hideredir'  => 'Ocultar páxinas redirixidas',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -257,6 +265,13 @@ $messages['it'] = array(
 	'newestpages-submit' => 'Vai',
 	'newestpages-showredir' => 'Mostra i redirect',
 	'newestpages-hideredir' => 'Nascondi i redirect',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newestpages-namespace' => 'វាលឈ្មោះ ៖',
 );
 
 $messages['la'] = array(
@@ -498,11 +513,27 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'newestpages'            => 'Nyaste sidor',
+	'newestpages-desc'       => 'Visar dom [[Special:Newestpages|sista X sidorna]] tillaggda till wikin',
 	'newestpages-header'     => "'''Denna sida listar dom $1 nyaste sidorna på denna wiki.'''",
 	'newestpages-limitlinks' => 'Visa upp till $1 sidor',
 	'newestpages-namespace'  => 'Namnrymd:',
+	'newestpages-none'       => 'Inga entréer hittades.',
 	'newestpages-ns-header'  => "'''Denna sida listar dom $1 nyaste sidorna i $2 namnrymden.'''",
+	'newestpages-showing'    => 'Listar dom $1 nyaste sidorna:',
 	'newestpages-submit'     => 'Gå',
+	'newestpages-showredir'  => 'Visa omdirigerings sidor',
+	'newestpages-hideredir'  => 'Dölj omdirigerings sidor',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newestpages'            => 'కొంగొత్త పేజీలు',
+	'newestpages-limitlinks' => '$1 పేజీల వరకు చూపించు',
+	'newestpages-submit'     => 'వెళ్ళు',
+	'newestpages-showredir'  => 'దారిమార్పు పేజీలను చూపించు',
+	'newestpages-hideredir'  => 'దారిమార్పు పేజీలను దాచు',
 );
 
 /** Tonga (faka-Tonga)

@@ -549,7 +549,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 		}
 		$editPageAjax = new MV_EditPageAjax( $Article);
-		$editPageAjax->mvd_id = $mvd_id;	
+		$editPageAjax->mvd_id = $mvd_id;			
 		
 		//if preview just retun the parsed preview 
 		//@@todo refactor to use as much EditPage code as possible

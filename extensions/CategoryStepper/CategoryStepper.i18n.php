@@ -122,6 +122,14 @@ $messages['ja'] = array(
 	'categorystepper-end'   => '（カテゴリの最後）',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'categorystepper-end'   => '(ការបញ្ចាប់ នៃចំណាត់ក្រុម)',
+	'categorystepper-start' => '(ការចាប់ផ្តើម នៃចំណាត់ក្រុម)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -141,11 +149,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
+ * @author Lejonel
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'categorystepper-start' => '(Kategorislutt)',
-	'categorystepper-end'   => '(Kategoristart)',
+	'categorystepper-desc'  => 'Vis en boks med kategoristeg på alle sider som er i et sett av kategorier.',
+	'categorystepper-end'   => '(Kategorislutt)',
+	'categorystepper-start' => '(Kategoristart)',
 );
 
 /** Occitan (Occitan)
@@ -170,8 +180,9 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'categorystepper-start' => '(начало категории)',
+	'categorystepper-desc'  => 'Показывает навигационную панель на страницах, относящихся к множеству категорий.',
 	'categorystepper-end'   => '(конец категории)',
+	'categorystepper-start' => '(начало категории)',
 );
 
 /** Slovak (Slovenčina)
@@ -185,10 +196,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'categorystepper-start' => '(Start av kategori)',
-	'categorystepper-end'   => '(Slut av kategori)',
+	'categorystepper-desc'  => 'Visar en kategoribläddrarruta (länkar till nästa och föregående sida) på sidor i en grupp av kategorier.',
+	'categorystepper-end'   => '(Slut på kategorin)',
+	'categorystepper-start' => '(Början på kategorin)',
 );
 
 /** Telugu (తెలుగు)

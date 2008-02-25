@@ -52,6 +52,27 @@ $messages['dsb'] = array(
 	'breadcrumbs-desc' => 'Pokazujo drogu wužywarja pśez wiki.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'breadcrumbs-desc' => 'Montras la vojon de uzanto tra la vikio.',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'breadcrumbs-desc' => 'Näyttää käyttäjän reitin wikissä.',
+);
+
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -127,5 +148,12 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'breadcrumbs-desc' => 'Visar användarens väg genom wikin.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 

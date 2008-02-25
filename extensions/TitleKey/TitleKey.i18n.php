@@ -49,11 +49,25 @@ $messages['hsb'] = array(
 	'titlekey-desc' => 'Pozadkowy proces za namjety tituloweho pytanja',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'titlekey-desc' => 'タイトルの前方一致検索を容易にする内部機構',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'titlekey-desc' => 'Bakstykke for søk etter tittelprefiks',
 );
 
 /** Occitan (Occitan)

@@ -23,6 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Todo',
 	'description' => 'Experimental personal todo list extension',
 	'author' => 'Brion Vibber, Bertrand Grondin',
+	'descriptionmsg' => 'todo-desc',
 );
 
 $wgExtensionFunctions[] = 'todoSetup';

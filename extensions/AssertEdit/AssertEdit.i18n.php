@@ -18,6 +18,7 @@ $messages['en'] = array(
  */
 $messages['an'] = array(
 	'assert_edit_title'   => "L'aserzión ha fallato",
+	'assert_edit_desc'    => "Adibe aserzions d'edizión emplegatas por os bots",
 	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
 );
 
@@ -174,6 +175,7 @@ $messages['hu'] = array(
  */
 $messages['it'] = array(
 	'assert_edit_title'   => 'Asserzione non riuscita',
+	'assert_edit_desc'    => 'Aggiunge asserzioni di modifica ad uso dei bot',
 	'assert_edit_message' => "L'asserzione indicata ($1) non è riuscita.",
 );
 
@@ -236,6 +238,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'assert_edit_title'   => 'Redigeringsforsikring mislyktes.',
+	'assert_edit_desc'    => 'Legger til redigeringsforsikring til bruk for roboter',
 	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
 );
 

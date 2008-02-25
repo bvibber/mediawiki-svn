@@ -73,14 +73,15 @@ $messages['ee'] = array(
 );
 
 /** French (Français)
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
-	'inspectcache'         => 'Inspection du Cache',
-	'inspectcache-desc'    => 'Un simple outil de déboggage pour inspecter les éléments dans le cache partagé.',
+	'inspectcache'         => 'Inspection du cache',
+	'inspectcache-desc'    => 'Un simple outil de débogage pour inspecter les éléments dans le cache partagé.',
 	'inspectcache-ok'      => 'Lancer',
 	'inspectcache-general' => 'Cache général',
-	'inspectcache-parser'  => 'Cache des parsers',
+	'inspectcache-parser'  => 'Cache des parseurs',
 	'inspectcache-message' => 'Cache des messages',
 	'inspectcache-get'     => 'Obtenir',
 	'inspectcache-delete'  => 'Supprimer',
@@ -135,6 +136,14 @@ $messages['hu'] = array(
 	'inspectcache-list'    => 'Listázás',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'inspectcache-delete'  => 'លុបចេញ',
+	'inspectcache-deleted' => 'លុបចេញ សតិភ្ជាប់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -160,15 +169,20 @@ $messages['nl'] = array(
 	'inspectcache-list'    => 'Tonen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'inspectcache' => 'Inspiser mellomlagring',
-	'inspectcache-ok' => 'OK',#identical but defined
+	'inspectcache'         => 'Inspiser mellomlagring',
+	'inspectcache-desc'    => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
+	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Generell mellomlagring',
-	'inspectcache-parser' => 'Parsermellomlagring',
+	'inspectcache-parser'  => 'Parsermellomlagring',
 	'inspectcache-message' => 'Mellomlagring av meldinger',
-	'inspectcache-get' => 'Skaff',
-	'inspectcache-delete' => 'Slett',
+	'inspectcache-get'     => 'Skaff',
+	'inspectcache-delete'  => 'Slett',
 	'inspectcache-deleted' => 'Slettet mellomlagring',
+	'inspectcache-list'    => 'Liste',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -225,6 +239,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'inspectcache'         => 'Просмотр кэша',
+	'inspectcache-desc'    => 'Простой инструмент отладки для просмотра содержимого общего кеша',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'Общий кэш',
 	'inspectcache-parser'  => 'Кэш парсера',
@@ -275,5 +290,14 @@ $messages['sv'] = array(
 	'inspectcache-get'    => 'Hämta',
 	'inspectcache-delete' => 'Ta bort',
 	'inspectcache-list'   => 'Lista',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'inspectcache-ok'     => 'సరే',
+	'inspectcache-delete' => 'తొలగించు',
+	'inspectcache-list'   => 'జాబితా',
 );
 

@@ -108,10 +108,11 @@ $messages['el'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'player'               => 'Lecteur',
-	'player-desc'          => "Lecteur multimedia incorporé utilisant les plugins courants du navigateur ainsi qu'une [[Special:Player|page spéciale]]",
+	'player-desc'          => 'Lecteur multimedia incorporé utilisant les plugiciels courants du navigateur ainsi qu’une [[Special:Player|page spéciale]]',
 	'player-title'         => 'Lecteur',
 	'player-playertitle'   => 'Lecteur : $1',
 	'player-file'          => 'Nom de fichier',
@@ -183,6 +184,13 @@ $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'player-file' => 'ឈ្មោះឯកសារ',
+);
+
 $messages['la'] = array(
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',
@@ -215,20 +223,23 @@ $messages['nl'] = array(
 	'player-goto-file'     => 'bestand',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'player' => 'Avspiller',
-	'player-title' => 'Avspiller',
-	'player-playertitle' => 'Avspiller: $1',
-	'player-file' => 'Filnavn',
-	'player-play' => 'Spill av',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-allowed' => 'ikke tillatt format',
-	'player-not-found' => 'fil ikke funnet',
+	'player'               => 'Avspiller',
+	'player-desc'          => 'Inkludert multimediespiller med vanlige programtillegg for nettlesere og en [[Special:Player|spesialside]]',
+	'player-title'         => 'Avspiller',
+	'player-playertitle'   => 'Avspiller: $1',
+	'player-file'          => 'Filnavn',
+	'player-play'          => 'Spill av',
+	'player-not-allowed'   => 'ikke tillatt format',
+	'player-not-found'     => 'fil ikke funnet',
 	'player-invalid-title' => 'ugyldig tittel',
-	'player-clicktoplay' => 'Spill av $1',
-	'player-goto-player' => 'avspiller',
-	'player-goto-page' => 'Side',
-	'player-goto-file' => 'fil',
+	'player-clicktoplay'   => 'Spill av $1',
+	'player-goto-player'   => 'avspiller',
+	'player-goto-page'     => 'Side',
+	'player-goto-file'     => 'fil',
 );
 
 /** Occitan (Occitan)
@@ -291,6 +302,7 @@ $messages['pt'] = array(
 	'player-not-found'     => 'ficheiro não encontrado',
 	'player-invalid-title' => 'título inválido',
 	'player-goto-page'     => 'Página',
+	'player-goto-file'     => 'ficheiro',
 );
 
 /** Russian (Русский)
@@ -364,6 +376,18 @@ $messages['sv'] = array(
 	'player-goto-player'   => 'spelare',
 	'player-goto-page'     => 'Sida',
 	'player-goto-file'     => 'fil',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'player-file'          => 'ఫైలు పేరు',
+	'player-play'          => 'ఆడించు',
+	'player-not-found'     => 'ఫైలు కనబడలేదు',
+	'player-invalid-title' => 'తప్పుడు శీర్షిక',
+	'player-goto-page'     => 'పేజీ',
+	'player-goto-file'     => 'ఫైలు',
 );
 
 /** Volapük (Volapük)

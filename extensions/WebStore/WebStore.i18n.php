@@ -293,54 +293,58 @@ $1',
 	'webstore_no_handler'              => 'Ce type MIME ne peut être transformé.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'inplace_access_disabled' => 'Desactivouse o acceso a este servizo para todos os clientes.',
-	'inplace_access_denied' => 'Este servizo está restrinxido polo IP do cliente.',
-	'inplace_scaler_no_temp' => 'Non é un directorio temporal válido; configure $wgLocalTmpDirectory nun directorio no que se poida escribir.',
+	'inplace_access_disabled'          => 'Desactivouse o acceso a este servizo para todos os clientes.',
+	'inplace_access_denied'            => 'Este servizo está restrinxido polo IP do cliente.',
+	'inplace_scaler_no_temp'           => 'Non é un directorio temporal válido; configure $wgLocalTmpDirectory nun directorio no que se poida escribir.',
 	'inplace_scaler_not_enough_params' => 'Os parámetros son insuficientes.',
-	'inplace_scaler_invalid_image' => 'A imaxe non é válida, non se puido determinar o seu tamaño.',
-	'inplace_scaler_failed' => 'Atopouse un erro mentres se ampliaba a imaxe: $1',
-	'inplace_scaler_no_handler' => 'Non se definiu un programa para transformar este tipo MIME',
-	'inplace_scaler_no_output' => 'Non se produciu ningún ficheiro de saída da transformación.',
-	'inplace_scaler_zero_size' => 'A transformación produciu un ficheiro de saída de tamaño 0.',
-	'webstore_access' => 'Este servizo está restrinxido polo IP do cliente.',
-	'webstore_path_invalid' => 'O nome do ficheiro non era válido.',
-	'webstore_dest_open' => 'Foi imposíbel abrir o ficheiro de destino "$1".',
-	'webstore_dest_lock' => 'Non se puido bloquear o ficheiro de destino "$1".',
-	'webstore_dest_mkdir' => 'Non se puido crear o directorio de destino "$1".',
-	'webstore_archive_lock' => 'Non se puido bloquear o ficheiro de arquivo "$1".',
-	'webstore_archive_mkdir' => 'Non se puido crear o directorio de arquivo "$1".',
-	'webstore_src_open' => 'Non se puido abrir o ficheiro de orixe "$1".',
-	'webstore_src_close' => 'Erro ao pechar o ficheiro de orixe "$1".',
-	'webstore_src_delete' => 'Erro ao eliminar o ficheiro de orixe "$1".',
-	'webstore_rename' => 'Erro ao lle mudar o nome a "$1" para "$2".',
-	'webstore_lock_open' => 'Erro ao abrir o ficheiro de bloqueo "$1".',
-	'webstore_lock_close' => 'Erro ao fechar o ficheiro de bloqueo "$1".',
-	'webstore_dest_exists' => 'Erro, xa existe o ficheiro de destino "$1".',
-	'webstore_temp_open' => 'Erro ao abrir o ficheiro temporal "$1".',
-	'webstore_temp_copy' => 'Erro ao copiar o ficheiro temporal "$1" no ficheiro de destino "$2".',
-	'webstore_temp_close' => 'Erro ao fechar o ficheiro temporal "$1".',
-	'webstore_temp_lock' => 'Erro ao bloquear o ficheiro temporal "$1".',
-	'webstore_no_archive' => 'O ficheiro de destino xa existe e non se deu un arquivo.',
-	'webstore_no_file' => 'Non se enviou ningún ficheiro.',
-	'webstore_move_uploaded' => 'Erro ao mover o ficheiro enviado "$1" para a localización temporal "$2".',
-	'webstore_invalid_zone' => 'Zona "$1" non válida.',
-	'webstore_no_deleted' => 'Non se definiu un directorio de arquivo para os ficheiros eliminados.',
-	'webstore_curl' => 'Erro de cURL: $1',
-	'webstore_404' => 'Non se atopou o ficheiro.',
-	'webstore_php_warning' => 'Aviso de PHP: $1',
-	'webstore_metadata_not_found' => 'Non se atopou o ficheiro: $1',
-	'webstore_postfile_not_found' => 'Non se atopou o ficheiro enviado.',
-	'webstore_scaler_empty_response' => 'O redimensionador de imaxes deu unha resposta baleira co código de resposta 200. Isto podería deberse a un erro fatal de PHP no redimensionador.',
-	'webstore_invalid_response' => 'Resposta non válida do servidor:
+	'inplace_scaler_invalid_image'     => 'A imaxe non é válida, non se puido determinar o seu tamaño.',
+	'inplace_scaler_failed'            => 'Atopouse un erro mentres se ampliaba a imaxe: $1',
+	'inplace_scaler_no_handler'        => 'Non se definiu un programa para transformar este tipo MIME',
+	'inplace_scaler_no_output'         => 'Non se produciu ningún ficheiro de saída da transformación.',
+	'inplace_scaler_zero_size'         => 'A transformación produciu un ficheiro de saída de tamaño 0.',
+	'webstore_access'                  => 'Este servizo está restrinxido polo IP do cliente.',
+	'webstore_path_invalid'            => 'O nome do ficheiro non era válido.',
+	'webstore_dest_open'               => 'Foi imposíbel abrir o ficheiro de destino "$1".',
+	'webstore_dest_lock'               => 'Non se puido bloquear o ficheiro de destino "$1".',
+	'webstore_dest_mkdir'              => 'Non se puido crear o directorio de destino "$1".',
+	'webstore_archive_lock'            => 'Non se puido bloquear o ficheiro de arquivo "$1".',
+	'webstore_archive_mkdir'           => 'Non se puido crear o directorio de arquivo "$1".',
+	'webstore_src_open'                => 'Non se puido abrir o ficheiro de orixe "$1".',
+	'webstore_src_close'               => 'Erro ao pechar o ficheiro de orixe "$1".',
+	'webstore_src_delete'              => 'Erro ao eliminar o ficheiro de orixe "$1".',
+	'webstore_rename'                  => 'Erro ao lle mudar o nome a "$1" para "$2".',
+	'webstore_lock_open'               => 'Erro ao abrir o ficheiro de bloqueo "$1".',
+	'webstore_lock_close'              => 'Erro ao fechar o ficheiro de bloqueo "$1".',
+	'webstore_dest_exists'             => 'Erro, xa existe o ficheiro de destino "$1".',
+	'webstore_temp_open'               => 'Erro ao abrir o ficheiro temporal "$1".',
+	'webstore_temp_copy'               => 'Erro ao copiar o ficheiro temporal "$1" no ficheiro de destino "$2".',
+	'webstore_temp_close'              => 'Erro ao fechar o ficheiro temporal "$1".',
+	'webstore_temp_lock'               => 'Erro ao bloquear o ficheiro temporal "$1".',
+	'webstore_no_archive'              => 'O ficheiro de destino xa existe e non se deu un arquivo.',
+	'webstore_no_file'                 => 'Non se enviou ningún ficheiro.',
+	'webstore_move_uploaded'           => 'Erro ao mover o ficheiro enviado "$1" para a localización temporal "$2".',
+	'webstore_invalid_zone'            => 'Zona "$1" non válida.',
+	'webstore_no_deleted'              => 'Non se definiu un directorio de arquivo para os ficheiros eliminados.',
+	'webstore_curl'                    => 'Erro de cURL: $1',
+	'webstore_404'                     => 'Non se atopou o ficheiro.',
+	'webstore_php_warning'             => 'Aviso de PHP: $1',
+	'webstore_metadata_not_found'      => 'Non se atopou o ficheiro: $1',
+	'webstore_postfile_not_found'      => 'Non se atopou o ficheiro enviado.',
+	'webstore_scaler_empty_response'   => 'O redimensionador de imaxes deu unha resposta baleira co código de resposta 200. Isto podería deberse a un erro fatal de PHP no redimensionador.',
+	'webstore_invalid_response'        => 'Resposta non válida do servidor:
 
 $1',
-	'webstore_no_response' => 'Sen resposta desde os servidor',
-	'webstore_backend_error' => 'Erro do servidor de almacenamento:
+	'webstore_no_response'             => 'Sen resposta desde o servidor',
+	'webstore_backend_error'           => 'Erro do servidor de almacenamento:
 
 $1',
-	'webstore_php_error' => 'Atopáronse erros de PHP:',
-	'webstore_no_handler' => 'Non hai un programa para transformar este tipo MIME',
+	'webstore_php_error'               => 'Atopáronse erros de PHP:',
+	'webstore_no_handler'              => 'Non hai un programa para transformar este tipo MIME',
 );
 
 $messages['hsb'] = array(
@@ -459,54 +463,57 @@ $1',
 	'webstore_no_handler'              => 'Dit MIME-type kan niet getransformeerd worden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'inplace_access_disabled' => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
-	'inplace_access_denied' => 'Denne tjenesten begrenses av klientens IP.',
-	'inplace_scaler_no_temp' => 'Ingen gyldig midlertidig mappe, sett $wgLocalTmpDirectory til en skrivbar mappe.',
+	'inplace_access_disabled'          => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
+	'inplace_access_denied'            => 'Denne tjenesten begrenses av klientens IP.',
+	'inplace_scaler_no_temp'           => 'Ingen gyldig midlertidig mappe, sett $wgLocalTmpDirectory til en skrivbar mappe.',
 	'inplace_scaler_not_enough_params' => 'Ikke not parametere.',
-	'inplace_scaler_invalid_image' => 'Ugyldig bilde, kunne ikke fastslå størrelse.',
-	'inplace_scaler_failed' => 'En feil oppsto under bildeskalering: $1',
-	'inplace_scaler_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
-	'inplace_scaler_no_output' => 'Ingen endringsresultatfil ble produsert.',
-	'inplace_scaler_zero_size' => 'Endringen produserte en tom resultatfil.',
-	'webstore_access' => 'Tjenesten begrenses av klientens IP.',
-	'webstore_path_invalid' => 'Filnavnet var ugyldig.',
-	'webstore_dest_open' => 'Kunne ikke åpne målfil «$1».',
-	'webstore_dest_lock' => 'Kunne ikke låses på målfil «$1».',
-	'webstore_dest_mkdir' => 'Kunne ikke opprette målmappe «$1».',
-	'webstore_archive_lock' => 'Kunne ikke låses på arkivfil «$1».',
-	'webstore_archive_mkdir' => 'Kunne ikke opprette arkivmappe «$1».',
-	'webstore_src_open' => 'Kunne ikke åpne kildefil «$1».',
-	'webstore_src_close' => 'Feil under lukking av kildefil «$1».',
-	'webstore_src_delete' => 'Feil under sletting av kildefil «$1».',
-	'webstore_rename' => 'Feil under omdøping av «$1» til «$2».',
-	'webstore_lock_open' => 'Feil under åpning av låsfil «$1».',
-	'webstore_lock_close' => 'Feil under lukking av låsfil «$1».',
-	'webstore_dest_exists' => 'Feil, målfilen «$1» finnes.',
-	'webstore_temp_open' => 'Feil under åpning av midlertidig fil «$1».',
-	'webstore_temp_copy' => 'Feil under kopiering av midlertidig fil «$1» til målfil «$2».',
-	'webstore_temp_close' => 'Feil under lukking av midlertidig fil «$1».',
-	'webstore_temp_lock' => 'Feil under låsing av midlertidig fil «$1».',
-	'webstore_no_archive' => 'Målfilen finnes og ikke noe arkiv ble gitt.',
-	'webstore_no_file' => 'Ingen fil ble lastet opp.',
-	'webstore_move_uploaded' => 'Feil under flytting av opplastet fil «$1» til midlertidig sted «$2».',
-	'webstore_invalid_zone' => 'Ugyldig sone «$1».',
-	'webstore_no_deleted' => 'Ingen arkivmappe for slettede filer er oppgitt.',
-	'webstore_curl' => 'Feil fra cURL: $1',
-	'webstore_404' => 'Fil ikke funnet.',
-	'webstore_php_warning' => 'PHP-advarsel: $1',
-	'webstore_metadata_not_found' => 'Fil ikke funnet: $1',
-	'webstore_postfile_not_found' => 'Fil  som skal postes ikke funnet.',
-	'webstore_scaler_empty_response' => 'Bildeskalereren ga et tomt svar med en 200-responskode. Dette kan være på grunn av en fatal PHP-feil i  skalereren.',
-	'webstore_invalid_response' => 'Ugyldig svar fra tjener:
+	'inplace_scaler_invalid_image'     => 'Ugyldig bilde, kunne ikke fastslå størrelse.',
+	'inplace_scaler_failed'            => 'En feil oppsto under bildeskalering: $1',
+	'inplace_scaler_no_handler'        => 'Ingen behandler for endring av denne MIME-typen',
+	'inplace_scaler_no_output'         => 'Ingen endringsresultatfil ble produsert.',
+	'inplace_scaler_zero_size'         => 'Endringen produserte en tom resultatfil.',
+	'webstore_access'                  => 'Tjenesten begrenses av klientens IP.',
+	'webstore_path_invalid'            => 'Filnavnet var ugyldig.',
+	'webstore_dest_open'               => 'Kunne ikke åpne målfil «$1».',
+	'webstore_dest_lock'               => 'Kunne ikke låses på målfil «$1».',
+	'webstore_dest_mkdir'              => 'Kunne ikke opprette målmappe «$1».',
+	'webstore_archive_lock'            => 'Kunne ikke låses på arkivfil «$1».',
+	'webstore_archive_mkdir'           => 'Kunne ikke opprette arkivmappe «$1».',
+	'webstore_src_open'                => 'Kunne ikke åpne kildefil «$1».',
+	'webstore_src_close'               => 'Feil under lukking av kildefil «$1».',
+	'webstore_src_delete'              => 'Feil under sletting av kildefil «$1».',
+	'webstore_rename'                  => 'Feil under omdøping av «$1» til «$2».',
+	'webstore_lock_open'               => 'Feil under åpning av låsfil «$1».',
+	'webstore_lock_close'              => 'Feil under lukking av låsfil «$1».',
+	'webstore_dest_exists'             => 'Feil, målfilen «$1» finnes.',
+	'webstore_temp_open'               => 'Feil under åpning av midlertidig fil «$1».',
+	'webstore_temp_copy'               => 'Feil under kopiering av midlertidig fil «$1» til målfil «$2».',
+	'webstore_temp_close'              => 'Feil under lukking av midlertidig fil «$1».',
+	'webstore_temp_lock'               => 'Feil under låsing av midlertidig fil «$1».',
+	'webstore_no_archive'              => 'Målfilen finnes og ikke noe arkiv ble gitt.',
+	'webstore_no_file'                 => 'Ingen fil ble lastet opp.',
+	'webstore_move_uploaded'           => 'Feil under flytting av opplastet fil «$1» til midlertidig sted «$2».',
+	'webstore_invalid_zone'            => 'Ugyldig sone «$1».',
+	'webstore_no_deleted'              => 'Ingen arkivmappe for slettede filer er angitt.',
+	'webstore_curl'                    => 'Feil fra cURL: $1',
+	'webstore_404'                     => 'Fil ikke funnet.',
+	'webstore_php_warning'             => 'PHP-advarsel: $1',
+	'webstore_metadata_not_found'      => 'Fil ikke funnet: $1',
+	'webstore_postfile_not_found'      => 'Fil  som skal postes ikke funnet.',
+	'webstore_scaler_empty_response'   => 'Bildeskalereren ga et tomt svar med en 200-responskode. Dette kan være på grunn av en fatal PHP-feil i  skalereren.',
+	'webstore_invalid_response'        => 'Ugyldig svar fra tjener:
 
 $1',
-	'webstore_no_response' => 'Ingen respons fra tjener.',
-	'webstore_backend_error' => 'Feil fra lagringstjener:
+	'webstore_no_response'             => 'Ingen respons fra tjener.',
+	'webstore_backend_error'           => 'Feil fra lagringstjener:
 
 $1',
-	'webstore_php_error' => 'PHP-feil ble funnet:',
-	'webstore_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
+	'webstore_php_error'               => 'PHP-feil ble funnet:',
+	'webstore_no_handler'              => 'Ingen behandler for endring av denne MIME-typen',
 );
 
 /** Occitan (Occitan)
@@ -700,11 +707,31 @@ $messages['sv'] = array(
 	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'webstore_path_invalid'       => 'ఫైలుపేరు తప్పుగా ఉంది.',
+	'webstore_dest_exists'        => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
+	'webstore_404'                => 'ఫైలు కనబడలేదు.',
+	'webstore_php_warning'        => 'PHP హెచ్చరిక: $1',
+	'webstore_metadata_not_found' => 'ఫైలు కనబడలేదు: $1',
+	'webstore_no_response'        => 'సర్వరునుండి స్పందన లేదు',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'webstore_404'                => 'Dosya bulunamadı.',
 	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'webstore_curl'        => 'Lỗi cURL: $1',
+	'webstore_php_warning' => 'Cảnh báo PHP: $1',
 );
 

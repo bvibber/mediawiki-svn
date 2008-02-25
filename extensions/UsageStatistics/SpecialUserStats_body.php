@@ -1,87 +1,106 @@
 <?php
 class SpecialUserStats extends SpecialPage
 {
-	function SpecialUserStats() {
-		SpecialPage::SpecialPage("SpecialUserStats");
-		wfLoadExtensionMessages( 'UserStats' );
-		return true;
-	}
+    function SpecialUserStats() {
+        SpecialPage::SpecialPage("SpecialUserStats");
+        
+        # the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
+        # so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
+        if (function_exists('wfLoadExtensionMessages'))
+            wfLoadExtensionMessages( 'UserStats' );
+        else
+            self::loadMessages();
+            
+        return true;
+    }
 
-	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser;
+    function loadMessages() {
+        static $messagesLoaded = false;
+        global $wgMessageCache;
+        if ( !$messagesLoaded ) {
+            $messagesLoaded = true;
 
-		$this->setHeaders();
-		$wgOut->setPagetitle(wfMsg('usagestatistics'));
+            require( dirname( __FILE__ ) . '/SpecialUserStats.i18n.php' );
+            foreach ( $messages as $lang => $langMessages ) {
+                $wgMessageCache->addMessages( $langMessages, $lang );
+            }
+        }
+        return true;
+    }
 
-		$user = $wgUser->getName();
-		$wgOut->addWikiText(wfMsg('usagestatisticsfor', $user));
+    function execute( $par ) {
+        global $wgRequest, $wgOut, $wgUser;
 
-		$interval = $wgRequest->getVal('interval', '');
-		$type = $wgRequest->getVal('type', '');
-		$start = $wgRequest->getVal('start', '');
-		$end = $wgRequest->getVal('end', '');
+        $this->setHeaders();
+        $wgOut->setPagetitle(wfMsg('usagestatistics'));
 
-		self::AddCalendarJavascript();
+        $user = $wgUser->getName();
+        $wgOut->addWikiText(wfMsg('usagestatisticsfor', $user));
 
-		if ($start == "" || $end == "") {
-			if ($start == "") {
-				$wgOut->addWikiText(wfMsg('usagestatisticsnostart'));
-			}
+        $interval = $wgRequest->getVal('interval', '');
+        $type = $wgRequest->getVal('type', '');
+        $start = $wgRequest->getVal('start', '');
+        $end = $wgRequest->getVal('end', '');
 
-			if ($end == "") {
-				$wgOut->addWikiText(wfMsg('usagestatisticsnoend'));
-			}
+        self::AddCalendarJavascript();
 
-			self::DisplayForm($start,$end);
-		} else {
-			$db = wfGetDB( DB_SLAVE );
-			self::GetUserUsage($db,$user,$start,$end,$interval,$type);
-		}
-	}
+        if ($start == "" || $end == "") {
+            if ($start == "") {
+                $wgOut->addWikiText(wfMsg('usagestatisticsnostart'));
+            }
+            if ($end == "") {
+                $wgOut->addWikiText(wfMsg('usagestatisticsnoend'));
+            }
+            self::DisplayForm($start,$end);
+        } else {
+            $db = wfGetDB( DB_SLAVE );
+            self::GetUserUsage($db,$user,$start,$end,$interval,$type);
+        }
 
-	function GetUserUsage($db,$user,$start,$end,$interval,$type) {
-		global $wgOut, $wgUser;
+    }
 
-		list($start_m, $start_d, $start_y) = split('/', $start);
-		$start_t = mktime(0, 0, 0, $start_m, $start_d, $start_y);
-		list($end_m, $end_d, $end_y) = split('/', $end);
-		$end_t = mktime(0, 0, 0, $end_m, $end_d, $end_y);
+    function GetUserUsage($db,$user,$start,$end,$interval,$type) {
+        global $wgOut, $wgUser, $wgUserStatsGlobalRight;
 
-		if ($start_t >= $end_t) {
-			$wgOut->addHTML(wfMsg('usagestatisticsbadstartend'));
-			return;
-		}
+        list($start_m, $start_d, $start_y) = split('/', $start);
+        $start_t = mktime(0, 0, 0, $start_m, $start_d, $start_y);
+        list($end_m, $end_d, $end_y) = split('/', $end);
+        $end_t = mktime(0, 0, 0, $end_m, $end_d, $end_y);
 
-		$dates = array();
-		$csv = 'Username,';
-		$cur_t = $start_t;
+        if ($start_t >= $end_t) {
+            $wgOut->addHTML(wfMsg('usagestatisticsbadstartend'));
+            return;
+        }
 
-		while ($cur_t <= $end_t) {
-			$dates[date("Ymd", $cur_t).'000000'] = array();
-			$cur_t += $interval;
-		}
+        $dates = array();
+        $csv = 'Username,';
+        $cur_t = $start_t;
+        while ($cur_t <= $end_t) {
+            $dates[date("Ymd", $cur_t).'000000'] = array();
+            $cur_t += $interval;
+        }
 
-		$u = array();
-		$sql = "SELECT rev_user_text,rev_timestamp,page_id FROM " .
-			$db->tableName('page') . "," . $db->tableName('revision') .
-			" WHERE rev_page=page_id"; # AND (page_id=3763 OR page_id=9517)
+        $u = array();
+        $sql = "SELECT rev_user_text,rev_timestamp,page_id FROM " .
+               $db->tableName('page') . "," . $db->tableName('revision') .
+               " WHERE rev_page=page_id"; # AND (page_id=3763 OR page_id=9517)
 
-		$res = $db->query($sql, __METHOD__);
+        $res = $db->query($sql, __METHOD__);
 
-		for ($j=0; $j<$db->numRows($res); $j++) {
-			$row = $db->fetchRow($res);
-			if (!isset($u[$row[0]]))
-			$u[$row[0]] = $dates;
-			foreach ($u[$row[0]] as $d => $v)
-			if ($d > $row[1]) {
-				$u[$row[0]][$d][$row[2]]++;
-				break;
-			}
-		}
-		$db->freeResult($res);
+        for ($j=0; $j<$db->numRows($res); $j++) {
+            $row = $db->fetchRow($res);
+            if (!isset($u[$row[0]]))
+                $u[$row[0]] = $dates;
+            foreach ($u[$row[0]] as $d => $v)
+                if ($d > $row[1]) {
+                    $u[$row[0]][$d][$row[2]]++;
+                    break;
+                }
+        }
+        $db->freeResult($res);
 
-		# plot the user statistics
-		$gnuplot ="<gnuplot>
+        # plot the user statistics
+        $gnuplot ="<gnuplot>
 set xdata time
 set xtics rotate by 90
 set timefmt \"%m/%d/%Y\"
@@ -94,41 +113,41 @@ set y2tics
 set key left top
 plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  with linesp lt 2 lw 3 axis x1y2
 ";
-		$gnuplot_pdata = '';
-		$first = true;
-		foreach ($u[$user] as $d => $v) {
-			$date = '';
-			if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
-			$date = "$matches[2]/$matches[3]/$matches[1]";
-			$csv .= "$date,";
-			if ($type == 'incremental') {
-				# the first data point includes all edits up to that date, so skip it
-				if ($first) {
-					$first = false;
-					continue;
-				}
-				$e = 0;
-				$p = 0;
-			}
-			foreach ($v as $pageid => $edits) {
-				$p++;
-				$e += $edits;
-			}
-			$gnuplot .= "$date $e\n";
-			$gnuplot_pdata .= "$date $p\n";
-		}
-		$gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
-		
-		//$wgOut->addHTML($gnuplot);
-		$wgOut->addWikiText("<center>$gnuplot</center>");
-		
-		
-		if (!$wgUser->isAllowedToCreateAccount())
-		return;
-		
-		# plot overall usage statistics
-		$wgOut->addWikiText(wfMsg('usagestatisticsfor', wfMsg('usagestatisticsallusers')));
-		$gnuplot ="<gnuplot>
+        $gnuplot_pdata = '';
+        $first = true;
+        foreach ($u[$user] as $d => $v) {
+            $date = '';
+            if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
+                $date = "$matches[2]/$matches[3]/$matches[1]";
+            $csv .= "$date,";
+            if ($type == 'incremental') {
+                # the first data point includes all edits up to that date, so skip it
+                if ($first) {
+                    $first = false;
+                    continue;
+                }
+                $e = 0;
+                $p = 0;
+            }
+            foreach ($v as $pageid => $edits) {
+                $p++;
+                $e += $edits;
+            }
+            $gnuplot .= "$date $e\n";
+            $gnuplot_pdata .= "$date $p\n";
+        }
+        $gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
+        
+        //$wgOut->addHTML($gnuplot);
+        $wgOut->addWikiText("<center>$gnuplot</center>");
+
+        
+        if (!in_array($wgUserStatsGlobalRight, $wgUser->getRights()))
+            return;
+            
+        # plot overall usage statistics
+        $wgOut->addWikiText(wfMsg('usagestatisticsfor', wfMsg('usagestatisticsallusers')));
+        $gnuplot ="<gnuplot>
 set xdata time
 set xtics rotate by 90
 set timefmt \"%m/%d/%Y\"
@@ -141,89 +160,91 @@ set y2tics
 set key left top
 plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  with linesp lt 2 lw 3 axis x1y2
 ";
-		$gnuplot_pdata = '';
-		$first = true;
-		$totals = array();
-		foreach ($dates as $d => $v) {
-			if ($type == 'incremental') {
-				# the first data point includes all edits up to that date, so skip it
-				if ($first) {
-					$first = false;
-					continue;
-				}
-				$totals = array();
-			}
-			$date = '';
-			if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
-			$date = "$matches[2]/$matches[3]/$matches[1]";
-			foreach ($u as $usr => $q)
-			foreach ($u[$usr][$d] as $pageid => $numedits)
-			$totals[$pageid] += $numedits;
-			$pages = 0;
-			$edits = 0;
-			foreach ($totals as $pageid => $e) {
-				$pages++;
-				$edits += $e;
-			}
-			$gnuplot .= "$date $edits\n";
-			$gnuplot_pdata .= "$date $pages\n";
-		}
-		$gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
-		
-		//$wgOut->addHTML($gnuplot);
-		$wgOut->addWikiText("<center>$gnuplot</center>");
-		
-		# output detailed usage statistics
-		ksort($u);
-		$csv_edits = '';
-		$csv_pages = '';
-		foreach ($u as $usr => $q) {
-			$first = true;
-			$totals = array();
-			$prev_totals = array();
-			$csv_edits .= "\n$usr,";
-			$csv_pages .= "\n$usr,";
-			foreach ($u[$usr] as $d => $v) {
-				if ($type == 'incremental') {
-					# the first data point includes all edits up to that date, so skip it
-					if ($first) {
-						$first = false;
-						$csv_edits .= ',';
-						$csv_pages .= ',';
-						continue;
-					}
-					$totals = array();
-				}
-				foreach ($u[$usr][$d] as $pageid => $numedits)
-				$totals[$pageid] += $numedits;
-				$pages = 0;
-				$edits = 0;
-				foreach ($totals as $pageid => $e) {
-					$pages++;
-					$edits += $e;
-				}
-				$csv_edits .= "$edits,";
-				$csv_pages .= "$pages,";
-			}
-		}
-		if ($type == 'cumulative') {
-			$nature = wfMsg('usagestatisticscumulative-text');
-		}
-		else {
-			$nature = wfMsg ('usagestatisticsincremental-text');
-		}
-		$wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editindividual', $nature) ." ==");
-		$wgOut->AddWikiText("<pre>$csv$csv_edits</pre>");
-		$wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editpages', $nature) ."  ==");
-		$wgOut->AddWikiText("<pre>$csv$csv_pages</pre>");
-		
-		return;
-	}
+        $gnuplot_pdata = '';
+        $first = true;
+        $totals = array();
+        foreach ($dates as $d => $v) {
+            if ($type == 'incremental') {
+                # the first data point includes all edits up to that date, so skip it
+                if ($first) {
+                    $first = false;
+                    continue;
+                }
+                $totals = array();
+            }
+            $date = '';
+            if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
+                $date = "$matches[2]/$matches[3]/$matches[1]";
+            foreach ($u as $usr => $q)
+                foreach ($u[$usr][$d] as $pageid => $numedits)
+                    $totals[$pageid] += $numedits;
+            $pages = 0;
+            $edits = 0;
+            foreach ($totals as $pageid => $e) {
+                $pages++;
+                $edits += $e;
+            }
+            $gnuplot .= "$date $edits\n";
+            $gnuplot_pdata .= "$date $pages\n";
+        }
+        $gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
+        
+        //$wgOut->addHTML($gnuplot);
+        $wgOut->addWikiText("<center>$gnuplot</center>");
 
-	function DisplayForm($start,$end) {
-		global $wgOut;
-	
-		$wgOut->addHTML("
+        # output detailed usage statistics
+        ksort($u);
+        $csv_edits = '';
+        $csv_pages = '';
+        foreach ($u as $usr => $q) {
+            $first = true;
+            $totals = array();
+            $prev_totals = array();
+            $csv_edits .= "\n$usr,";
+            $csv_pages .= "\n$usr,";
+            foreach ($u[$usr] as $d => $v) {
+                if ($type == 'incremental') {
+                    # the first data point includes all edits up to that date, so skip it
+                    if ($first) {
+                        $first = false;
+                        $csv_edits .= ',';
+                        $csv_pages .= ',';
+                        continue;
+                    }
+                    $totals = array();
+                }
+                foreach ($u[$usr][$d] as $pageid => $numedits)
+                    $totals[$pageid] += $numedits;
+                $pages = 0;
+                $edits = 0;
+                foreach ($totals as $pageid => $e) {
+                    $pages++;
+                    $edits += $e;
+                }
+                $csv_edits .= "$edits,";
+                $csv_pages .= "$pages,";
+            }
+        }
+        if ($type == 'cumulative') {
+            $nature = wfMsg('usagestatisticscumulative-text');
+        }
+        else {
+            $nature = wfMsg ('usagestatisticsincremental-text');
+        }
+        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editindividual', $nature) ." ==");
+        # $wgOut->AddWikiText("<pre>$csv$csv_edits</pre>");
+        $wgOut->AddWikiText("<ShowHideDiv default=hide showmsg='Individual user $type edits statistics'><pre>$csv$csv_edits</pre></ShowHideDiv>");
+        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editpages', $nature) ."  ==");
+        # $wgOut->AddWikiText("<pre>$csv$csv_pages</pre>");
+        $wgOut->AddWikiText("<ShowHideDiv default=hide showmsg='Individual user $type edits statistics'><pre>$csv$csv_pages</pre></ShowHideDiv>");
+        
+        return;
+    }
+
+    function DisplayForm($start,$end) {
+        global $wgOut;
+        
+        $wgOut->addHTML("
 <script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>
 <form id=\"userstats\" method=\"post\">
 <table border='0'>
@@ -254,8 +275,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
       var cal1 = new CalendarPopup('testdiv1');
       cal1.showNavigationDropdowns();
     </SCRIPT>
-    <A HREF='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" NAME='anchor1'
-ID='anchor1'>". wfMsg('usagestatisticscalselect') ."</A>
+    <A HREF='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" NAME='anchor1' ID='anchor1'>". wfMsg('usagestatisticscalselect') ."</A>
   </td>
 </tr>
 <tr>
@@ -266,23 +286,21 @@ ID='anchor1'>". wfMsg('usagestatisticscalselect') ."</A>
       var cal2 = new CalendarPopup('testdiv1');
       cal2.showNavigationDropdowns();
     </SCRIPT>
-    <A HREF='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" NAME='anchor2'
-ID='anchor2'>". wfMsg('usagestatisticscalselect')."</A>
+    <A HREF='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" NAME='anchor2' ID='anchor2'>". wfMsg('usagestatisticscalselect') ."</A>
   </td>
 </tr>
 </table>
 <input type='submit' name=\"wpSend\" value=\"".wfMsg('usagestatisticssubmit')."\" />
 </form>
-<DIV ID=\"testdiv1\"
-STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\"></DIV>
+<DIV ID=\"testdiv1\" STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\"></DIV>
         " );
-	}
+    }
 
-	function AddCalendarJavascript() {
-		global $wgOut;
-	
-		ob_start();
-		print  <<<END
+    function AddCalendarJavascript() {
+        global $wgOut;
+        
+        ob_start();
+        print  <<<END
 <script type="text/javascript">
 // ===================================================================
 // Author: Matt Kruse <matt@mattkruse.com>
@@ -297,7 +315,7 @@ STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-backgro
 // use. That means, you can include it in your product, or your web
 // site, or any other form where the code is actually being used. You
 // may not put the plain javascript up on your site for download or
-// include it in your javascript libraries for download.
+// include it in your javascript libraries for download. 
 // If you wish to share this code with others, please just point them
 // to the URL instead.
 // Please DO NOT link directly to my .js files from your site. Copy
@@ -307,7 +325,7 @@ STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-backgro
 
 /* SOURCE FILE: AnchorPosition.js */
 
-/*
+/* 
 AnchorPosition.js
 Author: Matt Kruse
 Last modified: 10/11/02
@@ -316,7 +334,7 @@ DESCRIPTION: These functions find the position of an <A> tag in a document,
 so other elements can be positioned relative to it.
 
 COMPATABILITY: Netscape 4.x,6.x,Mozilla, IE 5.x,6.x on Windows. Some small
-positioning errors - usually with Window positioning - occur on the
+positioning errors - usually with Window positioning - occur on the 
 Macintosh platform.
 
 FUNCTIONS:
@@ -330,16 +348,16 @@ getAnchorWindowPosition(anchorname)
 
 NOTES:
 
-1) For popping up separate browser windows, use getAnchorWindowPosition.
+1) For popping up separate browser windows, use getAnchorWindowPosition. 
    Otherwise, use getAnchorPosition
 
-2) Your anchor tag MUST contain both NAME and ID attributes which are the
+2) Your anchor tag MUST contain both NAME and ID attributes which are the 
    same. For example:
    <A NAME="test" ID="test"> </A>
 
-3) There must be at least a space between <A> </A> for IE5.5 to see the
+3) There must be at least a space between <A> </A> for IE5.5 to see the 
    anchor tag correctly. Do not do <A></A> with no space.
-*/
+*/ 
 
 // getAnchorPosition(anchorname)
 //   This function returns an object having .x and .y properties which are the coordinates
@@ -425,7 +443,7 @@ function AnchorPosition_getPageOffsetLeft (el) {
         }
 function AnchorPosition_getWindowOffsetLeft (el) {
         return AnchorPosition_getPageOffsetLeft(el)-document.body.scrollLeft;
-        }
+        }       
 function AnchorPosition_getPageOffsetTop (el) {
         var ot=el.offsetTop;
         while((el=el.offsetParent) != null) { ot += el.offsetTop; }
@@ -442,14 +460,14 @@ function AnchorPosition_getWindowOffsetTop (el) {
 // May 17, 2003: Fixed bug in parseDate() for dates <1970
 // March 11, 2003: Added parseDate() function
 // March 11, 2003: Added "NNN" formatting option. Doesn't match up
-//                 perfectly with SimpleDateFormat formats, but
+//                 perfectly with SimpleDateFormat formats, but 
 //                 backwards-compatability was required.
 
 // ------------------------------------------------------------------
-// These functions use the same 'format' strings as the
+// These functions use the same 'format' strings as the 
 // java.text.SimpleDateFormat class, with minor exceptions.
 // The format string consists of the following abbreviations:
-//
+// 
 // Field        | Full Form          | Short Form
 // -------------+--------------------+-----------------------
 // Year         | yyyy (4 digits)    | yy (2 digits), y (2 or 4 digits)
@@ -475,10 +493,8 @@ function AnchorPosition_getWindowOffsetTop (el) {
 //  "MMM dd, yyyy hh:mm:ssa" matches: "January 01, 2000 12:30:45AM"
 // ------------------------------------------------------------------
 
-var MONTH_NAMES=new
-Array('January','February','March','April','May','June','July','August','September','October','November','December','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-var DAY_NAMES=new
-Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+var MONTH_NAMES=new Array('January','February','March','April','May','June','July','August','September','October','November','December','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+var DAY_NAMES=new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 function LZ(x) {return(x<0||x>9?"":"0")+x}
 
 // ------------------------------------------------------------------
@@ -574,7 +590,7 @@ function formatDate(date,format) {
                 }
         return result;
         }
-
+        
 // ------------------------------------------------------------------
 // Utility functions for parsing in getDateFromFormat()
 // ------------------------------------------------------------------
@@ -593,12 +609,12 @@ function _getInt(str,i,minlength,maxlength) {
                 }
         return null;
         }
-
+        
 // ------------------------------------------------------------------
 // getDateFromFormat( date_string , format_string )
 //
 // This function takes a date string and a format string. It matches
-// If the date string matches the format string, it returns the
+// If the date string matches the format string, it returns the 
 // getTime() of the date. If it does not match, it returns 0.
 // ------------------------------------------------------------------
 function getDateFromFormat(val,format) {
@@ -618,7 +634,7 @@ function getDateFromFormat(val,format) {
         var mm=now.getMinutes();
         var ss=now.getSeconds();
         var ampm="";
-
+        
         while (i_format < format.length) {
                 // Get next token from format string
                 c=format.charAt(i_format);
@@ -757,7 +773,7 @@ function parseDate(val) {
 
 /* SOURCE FILE: PopupWindow.js */
 
-/*
+/* 
 PopupWindow.js
 Author: Matt Kruse
 Last modified: 02/16/04
@@ -767,20 +783,20 @@ in a certain place. The window can either be a DIV or a separate browser
 window.
 
 COMPATABILITY: Works with Netscape 4.x, 6.x, IE 5.x on Windows. Some small
-positioning errors - usually with Window positioning - occur on the
-Macintosh platform. Due to bugs in Netscape 4.x, populating the popup
+positioning errors - usually with Window positioning - occur on the 
+Macintosh platform. Due to bugs in Netscape 4.x, populating the popup 
 window with <STYLE> tags may cause errors.
 
 USAGE:
 // Create an object for a WINDOW popup
-var win = new PopupWindow();
+var win = new PopupWindow(); 
 
 // Create an object for a DIV window using the DIV named 'mydiv'
-var win = new PopupWindow('mydiv');
+var win = new PopupWindow('mydiv'); 
 
-// Set the window to automatically hide itself when the user clicks
+// Set the window to automatically hide itself when the user clicks 
 // anywhere else on the page except the popup
-win.autoHide();
+win.autoHide(); 
 
 // Show the window relative to the anchor name passed in
 win.showPopup(anchorname);
@@ -791,7 +807,7 @@ win.hidePopup();
 // Set the size of the popup window (only applies to WINDOW popups
 win.setSize(width,height);
 
-// Populate the contents of the popup window that will be shown. If you
+// Populate the contents of the popup window that will be shown. If you 
 // change the contents while it is displayed, you will need to refresh()
 win.populate(string);
 
@@ -811,18 +827,18 @@ win.offsetY = 100;
 NOTES:
 1) Requires the functions in AnchorPosition.js
 
-2) Your anchor tag MUST contain both NAME and ID attributes which are the
+2) Your anchor tag MUST contain both NAME and ID attributes which are the 
    same. For example:
    <A NAME="test" ID="test"> </A>
 
-3) There must be at least a space between <A> </A> for IE5.5 to see the
+3) There must be at least a space between <A> </A> for IE5.5 to see the 
    anchor tag correctly. Do not do <A></A> with no space.
 
 4) When a PopupWindow object is created, a handler for 'onmouseup' is
    attached to any event handler you may have already defined. Do NOT define
    an event handler for 'onmouseup' after you define a PopupWindow object or
    the autoHide() will not work correctly.
-*/
+*/ 
 
 // Set the position of the popup window based on the anchor
 function PopupWindow_getXYPosition(anchorname) {
@@ -861,11 +877,11 @@ function PopupWindow_refresh() {
                 if (this.use_gebi) {
                         document.getElementById(this.divName).innerHTML = this.contents;
                         }
-                else if (this.use_css) {
+                else if (this.use_css) { 
                         document.all[this.divName].innerHTML = this.contents;
                         }
-                else if (this.use_layers) {
-                        var d = document.layers[this.divName];
+                else if (this.use_layers) { 
+                        var d = document.layers[this.divName]; 
                         d.document.open();
                         d.document.writeln(this.contents);
                         d.document.close();
@@ -927,10 +943,8 @@ function PopupWindow_showPopup(anchorname) {
                                         this.x = screen.availWidth - this.width;
                                         }
                                 }
-                        var avoidAboutBlank = window.opera || ( document.layers && !navigator.mimeTypes['*'] ) ||
-navigator.vendor == 'KDE' || ( document.childNodes && !document.all && !navigator.taintEnabled );
-                        this.popupWindow =
-window.open(avoidAboutBlank?"":"about:blank","window_"+anchorname,this.windowProperties+",width="+this.width+",height="+this.height+",screenX="+this.x+",left="+this.x+",screenY="+this.y+",top="+this.y+"");
+                        var avoidAboutBlank = window.opera || ( document.layers && !navigator.mimeTypes['*'] ) || navigator.vendor == 'KDE' || ( document.childNodes && !document.all && !navigator.taintEnabled );
+                        this.popupWindow = window.open(avoidAboutBlank?"":"about:blank","window_"+anchorname,this.windowProperties+",width="+this.width+",height="+this.height+",screenX="+this.x+",left="+this.x+",screenY="+this.y+",top="+this.y+"");
                         }
                 this.refresh();
                 }
@@ -962,8 +976,7 @@ function PopupWindow_isClicked(e) {
                         var clickX = e.pageX;
                         var clickY = e.pageY;
                         var t = document.layers[this.divName];
-                        if ((clickX > t.left) && (clickX < t.left+t.clip.width) && (clickY > t.top) && (clickY <
-t.top+t.clip.height)) {
+                        if ((clickX > t.left) && (clickX < t.left+t.clip.width) && (clickY > t.top) && (clickY < t.top+t.clip.height)) {
                                 return true;
                                 }
                         else { return false; }
@@ -1043,11 +1056,10 @@ function PopupWindow() {
         this.populated = false;
         this.visible = false;
         this.autoHideEnabled = false;
-
+        
         this.contents = "";
         this.url="";
-
-this.windowProperties="toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable,alwaysRaised,dependent,titlebar=no";
+        this.windowProperties="toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable,alwaysRaised,dependent,titlebar=no";
         if (arguments.length>0) {
                 this.type="DIV";
                 this.divName = arguments[0];
@@ -1093,13 +1105,13 @@ this.windowProperties="toolbar=no,location=no,status=no,menubar=no,scrollbars=au
 //      CSS prefix.
 // August 19, 2003: Renamed the function to get styles, and made it
 //      work correctly without an object reference
-// August 18, 2003: Changed showYearNavigation and
+// August 18, 2003: Changed showYearNavigation and 
 //      showYearNavigationInput to optionally take an argument of
 //      true or false
 // July 31, 2003: Added text input option for year navigation.
-//      Added a per-calendar CSS prefix option to optionally use
+//      Added a per-calendar CSS prefix option to optionally use 
 //      different styles for different calendars.
-// July 29, 2003: Fixed bug causing the Today link to be clickable
+// July 29, 2003: Fixed bug causing the Today link to be clickable 
 //      even though today falls in a disabled date range.
 //      Changed formatting to use pure CSS, allowing greater control
 //      over look-and-feel options.
@@ -1107,35 +1119,35 @@ this.windowProperties="toolbar=no,location=no,status=no,menubar=no,scrollbars=au
 //      under certain cases when some days of week are disabled
 // March 14, 2003: Added ability to disable individual dates or date
 //      ranges, display as light gray and strike-through
-// March 14, 2003: Removed dependency on graypixel.gif and instead
+// March 14, 2003: Removed dependency on graypixel.gif and instead 
 ///     use table border coloring
 // March 12, 2003: Modified showCalendar() function to allow optional
 //      start-date parameter
 // March 11, 2003: Modified select() function to allow optional
 //      start-date parameter
-/*
+/* 
 DESCRIPTION: This object implements a popup calendar to allow the user to
 select a date, month, quarter, or year.
 
 COMPATABILITY: Works with Netscape 4.x, 6.x, IE 5.x on Windows. Some small
-positioning errors - usually with Window positioning - occur on the
+positioning errors - usually with Window positioning - occur on the 
 Macintosh platform.
-The calendar can be modified to work for any location in the world by
+The calendar can be modified to work for any location in the world by 
 changing which weekday is displayed as the first column, changing the month
 names, and changing the column headers for each day.
 
 USAGE:
 // Create a new CalendarPopup object of type WINDOW
-var cal = new CalendarPopup();
+var cal = new CalendarPopup(); 
 
 // Create a new CalendarPopup object of type DIV using the DIV named 'mydiv'
-var cal = new CalendarPopup('mydiv');
+var cal = new CalendarPopup('mydiv'); 
 
-// Easy method to link the popup calendar with an input box.
+// Easy method to link the popup calendar with an input box. 
 cal.select(inputObject, anchorname, dateFormat);
 // Same method, but passing a default date other than the field's current value
 cal.select(inputObject, anchorname, dateFormat, '01/02/2000');
-// This is an example call to the popup calendar from a link to populate an
+// This is an example call to the popup calendar from a link to populate an 
 // input box. Note that to use this, date.js must also be included!!
 <A HREF="#" onClick="cal.select(document.forms[0].date,'anchorname','MM/dd/yyyy'); return false;">Select</A>
 
@@ -1172,7 +1184,7 @@ cal.showYearNavigation();
 // Show month and year dropdowns, for quicker selection of month of dates
 cal.showNavigationDropdowns();
 
-// Set the text to be used above each day column. The days start with
+// Set the text to be used above each day column. The days start with 
 // sunday regardless of the value of WeekStartDay
 cal.setDayHeaders("S","M","T",...);
 
@@ -1199,7 +1211,7 @@ cal.addDisabledDates("Jan 01, 2003", null);
 // Pass two dates to disable all dates inbetween and including the two
 cal.addDisabledDates("January 01, 2003", "Dec 31, 2003");
 
-// When the 'year' select is displayed, set the number of years back from the
+// When the 'year' select is displayed, set the number of years back from the 
 // current year to start listing years. Default is 2.
 // This is also used for year drop-down, to decide how many years +/- to display
 cal.setYearSelectStartOffset(2);
@@ -1232,21 +1244,21 @@ cal.offsetY = 20;
 NOTES:
 1) Requires the functions in AnchorPosition.js and PopupWindow.js
 
-2) Your anchor tag MUST contain both NAME and ID attributes which are the
+2) Your anchor tag MUST contain both NAME and ID attributes which are the 
    same. For example:
    <A NAME="test" ID="test"> </A>
 
-3) There must be at least a space between <A> </A> for IE5.5 to see the
+3) There must be at least a space between <A> </A> for IE5.5 to see the 
    anchor tag correctly. Do not do <A></A> with no space.
 
 4) When a CalendarPopup object is created, a handler for 'onmouseup' is
    attached to any event handler you may have already defined. Do NOT define
-   an event handler for 'onmouseup' after you define a CalendarPopup object
+   an event handler for 'onmouseup' after you define a CalendarPopup object 
    or the autoHide() will not work correctly.
-
+   
 5) The calendar popup display uses style sheets to make it look nice.
 
-*/
+*/ 
 
 // CONSTRUCTOR for the CalendarPopup Object
 function CalendarPopup() {
@@ -1262,8 +1274,7 @@ function CalendarPopup() {
         c.offsetY = 25;
         c.autoHide();
         // Calendar-specific properties
-        c.monthNames = new
-Array("January","February","March","April","May","June","July","August","September","October","November","December");
+        c.monthNames = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
         c.monthAbbreviations = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
         c.dayHeaders = new Array("S","M","T","W","T","F","S");
         c.returnFunction = "CP_tmpReturnFunction";
@@ -1314,7 +1325,7 @@ Array("January","February","March","April","May","June","July","August","Septemb
         return c;
         }
 function CP_copyMonthNamesToWindow() {
-        // Copy these values over to the date.js
+        // Copy these values over to the date.js 
         if (typeof(window.MONTH_NAMES)!="undefined" && window.MONTH_NAMES!=null) {
                 window.MONTH_NAMES = new Array();
                 for (var i=0; i<this.monthNames.length; i++) {
@@ -1326,25 +1337,23 @@ function CP_copyMonthNamesToWindow() {
         }
 }
 // Temporary default functions to be called when items clicked, so no error is thrown
-function CP_tmpReturnFunction(y,m,d) {
+function CP_tmpReturnFunction(y,m,d) { 
         if (window.CP_targetInput!=null) {
                 var dt = new Date(y,m-1,d,0,0,0);
                 if (window.CP_calendarObject!=null) { window.CP_calendarObject.copyMonthNamesToWindow(); }
                 window.CP_targetInput.value = formatDate(dt,window.CP_dateFormat);
                 }
         else {
-                alert('Use setReturnFunction() to define which function will get the clicked results!');
+                alert('Use setReturnFunction() to define which function will get the clicked results!'); 
                 }
         }
-function CP_tmpReturnMonthFunction(y,m) {
-        alert('Use setReturnMonthFunction() to define which function will get the clicked results!You clicked: year='+y+' ,
-month='+m);
+function CP_tmpReturnMonthFunction(y,m) { 
+        alert('Use setReturnMonthFunction() to define which function will get the clicked results!You clicked: year='+y+' , month='+m);
         }
-function CP_tmpReturnQuarterFunction(y,q) {
-        alert('Use setReturnQuarterFunction() to define which function will get the clicked results!You clicked: year='+y+'
-, quarter='+q);
+function CP_tmpReturnQuarterFunction(y,q) { 
+        alert('Use setReturnQuarterFunction() to define which function will get the clicked results!You clicked: year='+y+' , quarter='+q);
         }
-function CP_tmpReturnYearFunction(y) {
+function CP_tmpReturnYearFunction(y) { 
         alert('Use setReturnYearFunction() to define which function will get the clicked results!You clicked: year='+y);
         }
 
@@ -1380,8 +1389,7 @@ function CP_showYearNavigation() { this.isShowYearNavigation = (arguments.length
 
 // Which type of calendar to display
 function CP_setDisplayType(type) {
-        if (type!="date"&&type!="week-end"&&type!="month"&&type!="quarter"&&type!="year") { alert("Invalid display type!
-Must be one of: date,week-end,month,quarter,year"); return false; }
+        if (type!="date"&&type!="week-end"&&type!="month"&&type!="quarter"&&type!="year") { alert("Invalid display type! Must be one of: date,week-end,month,quarter,year"); return false; }
         this.displayType=type;
         }
 
@@ -1393,29 +1401,28 @@ function CP_setDisabledWeekDays() {
         this.disabledWeekDays = new Object();
         for (var i=0; i<arguments.length; i++) { this.disabledWeekDays[arguments[i]] = true; }
         }
-
+        
 // Disable individual dates or ranges
 // Builds an internal logical test which is run via eval() for efficiency
 function CP_addDisabledDates(start, end) {
         if (arguments.length==1) { end=start; }
         if (start==null && end==null) { return; }
         if (this.disabledDatesExpression!="") { this.disabledDatesExpression+= "||"; }
-        if (start!=null) { start = parseDate(start);
-start=""+start.getFullYear()+LZ(start.getMonth()+1)+LZ(start.getDate());}
+        if (start!=null) { start = parseDate(start); start=""+start.getFullYear()+LZ(start.getMonth()+1)+LZ(start.getDate());}
         if (end!=null) { end=parseDate(end); end=""+end.getFullYear()+LZ(end.getMonth()+1)+LZ(end.getDate());}
         if (start==null) { this.disabledDatesExpression+="(ds<="+end+")"; }
         else if (end  ==null) { this.disabledDatesExpression+="(ds>="+start+")"; }
         else { this.disabledDatesExpression+="(ds>="+start+"&&ds<="+end+")"; }
         }
-
+        
 // Set the text to use for the "Today" link
 function CP_setTodayText(text) {
         this.todayText = text;
         }
 
 // Set the prefix to be added to all CSS classes when writing output
-function CP_setCssPrefix(val) {
-        this.cssPrefix = val;
+function CP_setCssPrefix(val) { 
+        this.cssPrefix = val; 
         }
 
 // Show the navigation as an dropdowns that can be manually changed
@@ -1433,7 +1440,7 @@ function CP_hideCalendar() {
 // Refresh the contents of the calendar display
 function CP_refreshCalendar(index) {
         var calObject = window.popupWindowObjects[index];
-        if (arguments.length>1) {
+        if (arguments.length>1) { 
                 calObject.populate(calObject.getCalendar(arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]));
                 }
         else {
@@ -1467,8 +1474,8 @@ function CP_select(inputobj, linkname, format) {
                 alert("calendar.select: This function can only be used with displayType 'date' or 'week-end'");
                 return;
                 }
-        if (inputobj.type!="text" && inputobj.type!="hidden" && inputobj.type!="textarea") {
-                alert("calendar.select: Input object passed is not a valid form input object");
+        if (inputobj.type!="text" && inputobj.type!="hidden" && inputobj.type!="textarea") { 
+                alert("calendar.select: Input object passed is not a valid form input object"); 
                 window.CP_targetInput=null;
                 return;
                 }
@@ -1490,31 +1497,23 @@ function CP_select(inputobj, linkname, format) {
         window.CP_dateFormat = format;
         this.showCalendar(linkname);
         }
-
+        
 // Get style block needed to display the calendar correctly
 function getCalendarStyles() {
         var result = "";
         var p = "";
-        if (this!=null && typeof(this.cssPrefix)!="undefined" && this.cssPrefix!=null && this.cssPrefix!="") {
-p=this.cssPrefix; }
+        if (this!=null && typeof(this.cssPrefix)!="undefined" && this.cssPrefix!=null && this.cssPrefix!="") { p=this.cssPrefix; }
         result += "<STYLE>";
-        result += "."+p+"cpYearNavigation,."+p+"cpMonthNavigation { background-color:#C0C0C0; text-align:center;
-vertical-align:center; text-decoration:none; color:#000000; font-weight:bold; }";
-        result += "."+p+"cpDayColumnHeader,
-."+p+"cpYearNavigation,."+p+"cpMonthNavigation,."+p+"cpCurrentMonthDate,."+p+"cpCurrentMonthDateDisabled,."+p+"cpOtherMonthDate,."+p+"cpOtherMonthDateDisabled,."+p+"cpCurrentDate,."+p+"cpCurrentDateDisabled,."+p+"cpTodayText,."+p+"cpTodayTextDisabled,."+p+"cpText
-{ font-family:arial; font-size:8pt; }";
+        result += "."+p+"cpYearNavigation,."+p+"cpMonthNavigation { background-color:#C0C0C0; text-align:center; vertical-align:center; text-decoration:none; color:#000000; font-weight:bold; }";
+        result += "."+p+"cpDayColumnHeader, ."+p+"cpYearNavigation,."+p+"cpMonthNavigation,."+p+"cpCurrentMonthDate,."+p+"cpCurrentMonthDateDisabled,."+p+"cpOtherMonthDate,."+p+"cpOtherMonthDateDisabled,."+p+"cpCurrentDate,."+p+"cpCurrentDateDisabled,."+p+"cpTodayText,."+p+"cpTodayTextDisabled,."+p+"cpText { font-family:arial; font-size:8pt; }";
         result += "TD."+p+"cpDayColumnHeader { text-align:right; border:solid thin #C0C0C0;border-width:0px 0px 1px 0px; }";
-        result += "."+p+"cpCurrentMonthDate, ."+p+"cpOtherMonthDate, ."+p+"cpCurrentDate  { text-align:right;
-text-decoration:none; }";
-        result += "."+p+"cpCurrentMonthDateDisabled, ."+p+"cpOtherMonthDateDisabled, ."+p+"cpCurrentDateDisabled {
-color:#D0D0D0; text-align:right; text-decoration:line-through; }";
+        result += "."+p+"cpCurrentMonthDate, ."+p+"cpOtherMonthDate, ."+p+"cpCurrentDate  { text-align:right; text-decoration:none; }";
+        result += "."+p+"cpCurrentMonthDateDisabled, ."+p+"cpOtherMonthDateDisabled, ."+p+"cpCurrentDateDisabled { color:#D0D0D0; text-align:right; text-decoration:line-through; }";
         result += "."+p+"cpCurrentMonthDate, .cpCurrentDate { color:#000000; }";
         result += "."+p+"cpOtherMonthDate { color:#808080; }";
-        result += "TD."+p+"cpCurrentDate { color:white; background-color: #C0C0C0; border-width:1px; border:solid thin
-#800000; }";
+        result += "TD."+p+"cpCurrentDate { color:white; background-color: #C0C0C0; border-width:1px; border:solid thin #800000; }";
         result += "TD."+p+"cpCurrentDateDisabled { border-width:1px; border:solid thin #FFAAAA; }";
-        result += "TD."+p+"cpTodayText, TD."+p+"cpTodayTextDisabled { border:solid thin #C0C0C0; border-width:1px 0px 0px
-0px;}";
+        result += "TD."+p+"cpTodayText, TD."+p+"cpTodayTextDisabled { border:solid thin #C0C0C0; border-width:1px 0px 0px 0px;}";
         result += "A."+p+"cpTodayText, SPAN."+p+"cpTodayTextDisabled { height:20px; }";
         result += "A."+p+"cpTodayText { color:black; }";
         result += "."+p+"cpTodayTextDisabled { color:#D0D0D0; }";
@@ -1532,13 +1531,11 @@ function CP_getCalendar() {
         var result = "";
         // If POPUP, write entire HTML document
         if (this.type == "WINDOW") {
-                result += "<HTML><HEAD><TITLE>Calendar</TITLE>"+this.getStyles()+"</HEAD><BODY MARGINWIDTH=0 MARGINHEIGHT=0
-TOPMARGIN=0 RIGHTMARGIN=0 LEFTMARGIN=0>";
+                result += "<HTML><HEAD><TITLE>Calendar</TITLE>"+this.getStyles()+"</HEAD><BODY MARGINWIDTH=0 MARGINHEIGHT=0 TOPMARGIN=0 RIGHTMARGIN=0 LEFTMARGIN=0>";
                 result += '<CENTER><TABLE WIDTH=100% BORDER=0 BORDERWIDTH=0 CELLSPACING=0 CELLPADDING=0>';
                 }
         else {
-                result += '<TABLE CLASS="'+this.cssPrefix+'cpBorder" WIDTH=144 BORDER=1 BORDERWIDTH=1 CELLSPACING=0
-CELLPADDING=1>';
+                result += '<TABLE CLASS="'+this.cssPrefix+'cpBorder" WIDTH=144 BORDER=1 BORDERWIDTH=1 CELLSPACING=0 CELLPADDING=1>';
                 result += '<TR><TD ALIGN=CENTER>';
                 result += '<CENTER>';
                 }
@@ -1560,7 +1557,7 @@ CELLPADDING=1>';
                 var display_date = 1;
                 var weekday= current_month.getDay();
                 var offset = 0;
-
+                
                 offset = (weekday >= this.weekStartDay) ? weekday-this.weekStartDay : 7-this.weekStartDay+weekday ;
                 if (offset > 0) {
                         display_month--;
@@ -1581,22 +1578,16 @@ CELLPADDING=1>';
                 var refresh = windowref+'CP_refreshCalendar';
                 var refreshLink = 'javascript:' + refresh;
                 if (this.isShowNavigationDropdowns) {
-                        result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="78" COLSPAN="3"><select
-CLASS="'+this.cssPrefix+'cpMonthNavigation" name="cpMonth"
-onChange="'+refresh+'('+this.index+',this.options[this.selectedIndex].value-0,'+(year-0)+');">';
+                        result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="78" COLSPAN="3"><select CLASS="'+this.cssPrefix+'cpMonthNavigation" name="cpMonth" onChange="'+refresh+'('+this.index+',this.options[this.selectedIndex].value-0,'+(year-0)+');">';
                         for( var monthCounter=1; monthCounter<=12; monthCounter++ ) {
                                 var selected = (monthCounter==month) ? 'SELECTED' : '';
-                                result += '<option value="'+monthCounter+'"
-'+selected+'>'+this.monthNames[monthCounter-1]+'</option>';
+                                result += '<option value="'+monthCounter+'" '+selected+'>'+this.monthNames[monthCounter-1]+'</option>';
                                 }
                         result += '</select></TD>';
                         result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10">&nbsp;</TD>';
 
-                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="56" COLSPAN="3"><select
-CLASS="'+this.cssPrefix+'cpYearNavigation" name="cpYear"
-onChange="'+refresh+'('+this.index+','+month+',this.options[this.selectedIndex].value-0);">';
-                        for( var yearCounter=year-this.yearSelectStartOffset; yearCounter<=year+this.yearSelectStartOffset;
-yearCounter++ ) {
+                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="56" COLSPAN="3"><select CLASS="'+this.cssPrefix+'cpYearNavigation" name="cpYear" onChange="'+refresh+'('+this.index+','+month+',this.options[this.selectedIndex].value-0);">';
+                        for( var yearCounter=year-this.yearSelectStartOffset; yearCounter<=year+this.yearSelectStartOffset; yearCounter++ ) {
                                 var selected = (yearCounter==year) ? 'SELECTED' : '';
                                 result += '<option value="'+yearCounter+'" '+selected+'>'+yearCounter+'</option>';
                                 }
@@ -1604,39 +1595,24 @@ yearCounter++ ) {
                         }
                 else {
                         if (this.isShowYearNavigation) {
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10"><A
-CLASS="'+this.cssPrefix+'cpMonthNavigation"
-HREF="'+refreshLink+'('+this.index+','+last_month+','+last_month_year+');">&lt;</A></TD>';
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="58"><SPAN
-CLASS="'+this.cssPrefix+'cpMonthNavigation">'+this.monthNames[month-1]+'</SPAN></TD>';
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10"><A
-CLASS="'+this.cssPrefix+'cpMonthNavigation"
-HREF="'+refreshLink+'('+this.index+','+next_month+','+next_month_year+');">&gt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10"><A CLASS="'+this.cssPrefix+'cpMonthNavigation" HREF="'+refreshLink+'('+this.index+','+last_month+','+last_month_year+');">&lt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="58"><SPAN CLASS="'+this.cssPrefix+'cpMonthNavigation">'+this.monthNames[month-1]+'</SPAN></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10"><A CLASS="'+this.cssPrefix+'cpMonthNavigation" HREF="'+refreshLink+'('+this.index+','+next_month+','+next_month_year+');">&gt;</A></TD>';
                                 result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="10">&nbsp;</TD>';
 
-                                result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="10"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="'+refreshLink+'('+this.index+','+month+','+(year-1)+');">&lt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="10"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="'+refreshLink+'('+this.index+','+month+','+(year-1)+');">&lt;</A></TD>';
                                 if (this.isShowYearNavigationInput) {
-                                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="36"><INPUT
-NAME="cpYear" CLASS="'+this.cssPrefix+'cpYearNavigation" SIZE="4" MAXLENGTH="4" VALUE="'+year+'"
-onBlur="'+refresh+'('+this.index+','+month+',this.value-0);"></TD>';
+                                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="36"><INPUT NAME="cpYear" CLASS="'+this.cssPrefix+'cpYearNavigation" SIZE="4" MAXLENGTH="4" VALUE="'+year+'" onBlur="'+refresh+'('+this.index+','+month+',this.value-0);"></TD>';
                                         }
                                 else {
-                                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="36"><SPAN
-CLASS="'+this.cssPrefix+'cpYearNavigation">'+year+'</SPAN></TD>';
+                                        result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="36"><SPAN CLASS="'+this.cssPrefix+'cpYearNavigation">'+year+'</SPAN></TD>';
                                         }
-                                result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="10"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="'+refreshLink+'('+this.index+','+month+','+(year+1)+');">&gt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="10"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="'+refreshLink+'('+this.index+','+month+','+(year+1)+');">&gt;</A></TD>';
                                 }
                         else {
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="22"><A
-CLASS="'+this.cssPrefix+'cpMonthNavigation"
-HREF="'+refreshLink+'('+this.index+','+last_month+','+last_month_year+');">&lt;&lt;</A></TD>';
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="100"><SPAN
-CLASS="'+this.cssPrefix+'cpMonthNavigation">'+this.monthNames[month-1]+' '+year+'</SPAN></TD>';
-                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="22"><A
-CLASS="'+this.cssPrefix+'cpMonthNavigation"
-HREF="'+refreshLink+'('+this.index+','+next_month+','+next_month_year+');">&gt;&gt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="22"><A CLASS="'+this.cssPrefix+'cpMonthNavigation" HREF="'+refreshLink+'('+this.index+','+last_month+','+last_month_year+');">&lt;&lt;</A></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="100"><SPAN CLASS="'+this.cssPrefix+'cpMonthNavigation">'+this.monthNames[month-1]+' '+year+'</SPAN></TD>';
+                                result += '<TD CLASS="'+this.cssPrefix+'cpMonthNavigation" WIDTH="22"><A CLASS="'+this.cssPrefix+'cpMonthNavigation" HREF="'+refreshLink+'('+this.index+','+next_month+','+next_month_year+');">&gt;&gt;</A></TD>';
                                 }
                         }
                 result += '</TR></TABLE>';
@@ -1644,8 +1620,7 @@ HREF="'+refreshLink+'('+this.index+','+next_month+','+next_month_year+');">&gt;&
                 result += '<TR>';
                 for (var j=0; j<7; j++) {
 
-                        result += '<TD CLASS="'+this.cssPrefix+'cpDayColumnHeader" WIDTH="14%"><SPAN
-CLASS="'+this.cssPrefix+'cpDayColumnHeader">'+this.dayHeaders[(this.weekStartDay+j)%7]+'</TD>';
+                        result += '<TD CLASS="'+this.cssPrefix+'cpDayColumnHeader" WIDTH="14%"><SPAN CLASS="'+this.cssPrefix+'cpDayColumnHeader">'+this.dayHeaders[(this.weekStartDay+j)%7]+'</TD>';
                         }
                 result += '</TR>';
                 for (var row=1; row<=6; row++) {
@@ -1657,8 +1632,7 @@ CLASS="'+this.cssPrefix+'cpDayColumnHeader">'+this.dayHeaders[(this.weekStartDay
                                         eval("disabled=("+this.disabledDatesExpression+")");
                                         }
                                 var dateClass = "";
-                                if ((display_month == this.currentDate.getMonth()+1) &&
-(display_date==this.currentDate.getDate()) && (display_year==this.currentDate.getFullYear())) {
+                                if ((display_month == this.currentDate.getMonth()+1) && (display_date==this.currentDate.getDate()) && (display_year==this.currentDate.getFullYear())) {
                                         dateClass = "cpCurrentDate";
                                         }
                                 else if (display_month == month) {
@@ -1668,8 +1642,7 @@ CLASS="'+this.cssPrefix+'cpDayColumnHeader">'+this.dayHeaders[(this.weekStartDay
                                         dateClass = "cpOtherMonthDate";
                                         }
                                 if (disabled || this.disabledWeekDays[col-1]) {
-                                        result += '     <TD CLASS="'+this.cssPrefix+dateClass+'"><SPAN
-CLASS="'+this.cssPrefix+dateClass+'Disabled">'+display_date+'</SPAN></TD>';
+                                        result += '     <TD CLASS="'+this.cssPrefix+dateClass+'"><SPAN CLASS="'+this.cssPrefix+dateClass+'Disabled">'+display_date+'</SPAN></TD>';
                                         }
                                 else {
                                         var selected_date = display_date;
@@ -1683,9 +1656,7 @@ CLASS="'+this.cssPrefix+dateClass+'Disabled">'+display_date+'</SPAN></TD>';
                                                 selected_month = d.getMonth()+1;
                                                 selected_date = d.getDate();
                                                 }
-                                        result += '     <TD CLASS="'+this.cssPrefix+dateClass+'"><A
-HREF="javascript:'+windowref+this.returnFunction+'('+selected_year+','+selected_month+','+selected_date+');'+windowref+'CP_hideCalendar(\''+this.index+'\');"
-CLASS="'+this.cssPrefix+dateClass+'">'+display_date+'</A></TD>';
+                                        result += '     <TD CLASS="'+this.cssPrefix+dateClass+'"><A HREF="javascript:'+windowref+this.returnFunction+'('+selected_year+','+selected_month+','+selected_date+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+this.cssPrefix+dateClass+'">'+display_date+'</A></TD>';
                                         }
                                 display_date++;
                                 if (display_date > daysinmonth[display_month]) {
@@ -1710,12 +1681,10 @@ CLASS="'+this.cssPrefix+dateClass+'">'+display_date+'</A></TD>';
                         eval("disabled=("+this.disabledDatesExpression+")");
                         }
                 if (disabled || this.disabledWeekDays[current_weekday+1]) {
-                        result += '             <SPAN
-CLASS="'+this.cssPrefix+'cpTodayTextDisabled">'+this.todayText+'</SPAN>';
+                        result += '             <SPAN CLASS="'+this.cssPrefix+'cpTodayTextDisabled">'+this.todayText+'</SPAN>';
                         }
                 else {
-                        result += '             <A CLASS="'+this.cssPrefix+'cpTodayText"
-HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''+(now.getMonth()+1)+'\',\''+now.getDate()+'\');'+windowref+'CP_hideCalendar(\''+this.index+'\');">'+this.todayText+'</A>';
+                        result += '             <A CLASS="'+this.cssPrefix+'cpTodayText" HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''+(now.getMonth()+1)+'\',\''+now.getDate()+'\');'+windowref+'CP_hideCalendar(\''+this.index+'\');">'+this.todayText+'</A>';
                         }
                 result += '             <BR>';
                 result += '     </TD></TR></TABLE></CENTER></TD></TR></TABLE>';
@@ -1725,25 +1694,21 @@ HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''
         // ------------------------------------
         if (this.displayType=="month" || this.displayType=="quarter" || this.displayType=="year") {
                 if (arguments.length > 0) { var year = arguments[0]; }
-                else {
+                else { 
                         if (this.displayType=="year") { var year = now.getFullYear()-this.yearSelectStartOffset; }
                         else { var year = now.getFullYear(); }
                         }
                 if (this.displayType!="year" && this.isShowYearNavigation) {
                         result += "<TABLE WIDTH=144 BORDER=0 BORDERWIDTH=0 CELLSPACING=0 CELLPADDING=0>";
                         result += '<TR>';
-                        result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="22"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation"
-HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year-1)+');">&lt;&lt;</A></TD>';
+                        result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="22"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year-1)+');">&lt;&lt;</A></TD>';
                         result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="100">'+year+'</TD>';
-                        result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="22"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation"
-HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year+1)+');">&gt;&gt;</A></TD>';
+                        result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="22"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year+1)+');">&gt;&gt;</A></TD>';
                         result += '</TR></TABLE>';
                         }
                 }
-
-        // Code for MONTH display
+                
+        // Code for MONTH display 
         // ----------------------
         if (this.displayType=="month") {
                 // If POPUP, write entire HTML document
@@ -1752,15 +1717,13 @@ HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year+1)+');">
                         result += '<TR>';
                         for (var j=0; j<3; j++) {
                                 var monthindex = ((i*3)+j);
-                                result += '<TD WIDTH=33% ALIGN=CENTER><A CLASS="'+this.cssPrefix+'cpText"
-HREF="javascript:'+windowref+this.returnMonthFunction+'('+year+','+(monthindex+1)+');'+windowref+'CP_hideCalendar(\''+this.index+'\');"
-CLASS="'+date_class+'">'+this.monthAbbreviations[monthindex]+'</A></TD>';
+                                result += '<TD WIDTH=33% ALIGN=CENTER><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnMonthFunction+'('+year+','+(monthindex+1)+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">'+this.monthAbbreviations[monthindex]+'</A></TD>';
                                 }
                         result += '</TR>';
                         }
                 result += '</TABLE></CENTER></TD></TR></TABLE>';
                 }
-
+        
         // Code for QUARTER display
         // ------------------------
         if (this.displayType=="quarter") {
@@ -1769,9 +1732,7 @@ CLASS="'+date_class+'">'+this.monthAbbreviations[monthindex]+'</A></TD>';
                         result += '<TR>';
                         for (var j=0; j<2; j++) {
                                 var quarter = ((i*2)+j+1);
-                                result += '<TD WIDTH=50% ALIGN=CENTER><BR><A CLASS="'+this.cssPrefix+'cpText"
-HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');"
-CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
+                                result += '<TD WIDTH=50% ALIGN=CENTER><BR><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
                                 }
                         result += '</TR>';
                         }
@@ -1784,20 +1745,14 @@ CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
                 var yearColumnSize = 4;
                 result += "<TABLE WIDTH=144 BORDER=0 BORDERWIDTH=0 CELLSPACING=0 CELLPADDING=0>";
                 result += '<TR>';
-                result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="50%"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation"
-HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year-(yearColumnSize*2))+');">&lt;&lt;</A></TD>';
-                result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="50%"><A
-CLASS="'+this.cssPrefix+'cpYearNavigation"
-HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year+(yearColumnSize*2))+');">&gt;&gt;</A></TD>';
+                result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="50%"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year-(yearColumnSize*2))+');">&lt;&lt;</A></TD>';
+                result += '     <TD CLASS="'+this.cssPrefix+'cpYearNavigation" WIDTH="50%"><A CLASS="'+this.cssPrefix+'cpYearNavigation" HREF="javascript:'+windowref+'CP_refreshCalendar('+this.index+','+(year+(yearColumnSize*2))+');">&gt;&gt;</A></TD>';
                 result += '</TR></TABLE>';
                 result += '<TABLE WIDTH=120 BORDER=0 CELLSPACING=1 CELLPADDING=0 ALIGN=CENTER>';
                 for (var i=0; i<yearColumnSize; i++) {
                         for (var j=0; j<2; j++) {
                                 var currentyear = year+(j*yearColumnSize)+i;
-                                result += '<TD WIDTH=50% ALIGN=CENTER><A CLASS="'+this.cssPrefix+'cpText"
-HREF="javascript:'+windowref+this.returnYearFunction+'('+currentyear+');'+windowref+'CP_hideCalendar(\''+this.index+'\');"
-CLASS="'+date_class+'">'+currentyear+'</A></TD>';
+                                result += '<TD WIDTH=50% ALIGN=CENTER><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnYearFunction+'('+currentyear+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">'+currentyear+'</A></TD>';
                                 }
                         result += '</TR>';
                         }
@@ -1811,7 +1766,8 @@ CLASS="'+date_class+'">'+currentyear+'</A></TD>';
         }
 </script>
 END;
-		$wgOut->addHTML(ob_get_contents());
-		ob_clean();
-	}
+        $wgOut->addHTML(ob_get_contents());
+        ob_clean();
+    }
 }
+?>

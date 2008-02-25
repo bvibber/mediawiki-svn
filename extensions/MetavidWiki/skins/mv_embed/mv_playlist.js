@@ -39,7 +39,7 @@ var mv_clip_colors = new Array('aqua', 'blue', 'fuchsia', 'green', 'lime', 'maro
 if(typeof wgServer=='undefined'){
 	var defaultMetaDataProvider = 'http://metavid.ucsc.edu/overlay/archive_browser/export_cmml?stream_name=';
 }else{
-	var defaultMetaDataProvider = wgServer+wgScript+'?title=Special:MvExportStream&feed_format=cmml&stream_name=';
+	var defaultMetaDataProvider = wgServer+wgScript+'?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }
 
 var mvPlayList = function(element) {		
@@ -48,6 +48,7 @@ var mvPlayList = function(element) {
 //set up the mvPlaylist object
 mvPlayList.prototype = {
 	pl_duration:null,
+	update_tl_hook:null,
 	cur_clip:null,	
 	start_clip:null, 
 	start_clip_src:null,
@@ -403,13 +404,25 @@ mvPlayList.prototype = {
 		var track_len = $j('#slider_'+this.id).css('width').replace(/px/, '');
 		//assume the duration is static and present at .duration during playback
 		var clip_perc = this.cur_clip.embed.duration / this.getPlDuration();
-		var perc_offset =0;
+		var perc_offset =time_offset = 0;
 		for(var i in this.tracks[0].clips){
 			var clip = this.tracks[0].clips[i];
 			if(this.cur_clip.id ==clip.id)break;
 			perc_offset+=(clip.embed.duration /  plObj.getPlDuration());
+			time_offset+=clip.embed.duration;
 		} 		
-		//handle offset:
+		//run any update time line hooks:		
+		if(this.update_tl_hook){	
+			var cur_time_ms = time_offset + Math.round(this.cur_clip.embed.duration*prec_done);
+			if(typeof update_tl_hook =='function'){
+				this.update_tl_hook(cur_time_ms);
+			}else{
+				//string type passed use eval: 
+				eval(this.update_tl_hook+'('+cur_time_ms+');');
+			}
+		}
+		
+		//handle offset hack @@todo fix so this is not needed:
 		if(perc_offset > .66)
 			perc_offset+=(8/track_len);
 		//js_log('perc:'+ perc_offset +' c:'+ clip_perc + '*' + prec_done + ' v:'+(clip_perc*prec_done));
@@ -752,39 +765,45 @@ mvClip.prototype = {
 				thisClip.mvMetaDataProvider = defaultMetaDataProvider;
 			}
 			//get xml data to resolve location of the media, desc + caption data
-			var url = thisClip.mvMetaDataProvider +
-						'?title=Special:MvExportStream&feed_format=cmml&stream_name='+
-						this.mvclip.replace(/\?/, "&");			
+			var url = thisClip.mvMetaDataProvider +	this.mvclip.replace(/\?/, "&");			
 			
 			do_request(url, function(data){
 				//ajax return (done loading) 
 				thisClip.loading=false;
 				//search for and set video src:
 				js_log('data:'+data);
-				$j.each(data.getElementsByTagName('import'), function(inx,n){	
-					if(n.getAttribute('id')=='videosrc'){
-						thisClip.src=n.getAttribute('src');
-						if(!thisClip.title)
-							thisClip.title = n.getAttribute('title');
+				$j.each(data.getElementsByTagName('video'), function(inx,n){	
+					if(n.getAttribute('default')=='true'){
+						thisClip.src=n.getAttribute('src');						
 					};
 				});				
 				js_log('set src: '+ thisClip.src);
-				//search for and set linkback: 
-				if(!thisClip.linkback){
-					$j.each(data.getElementsByTagName('a'), function(inx,n){	
-						if(n.getAttribute('id')=='stream_link'){
+				
+				//idorate through top head nodes: 			
+				$j.each(data.getElementsByTagName('head')[0].childNodes, function(inx,n){
+					//js_log('node:'+ n.nodeName+ ' inx:'+inx);
+					if(!thisClip.title){
+						if(n.nodeName.toLowerCase()=='title'){
+							thisClip.title = n.textContent;
+						}
+					}
+					//search for and set linkback: 
+					if(!thisClip.linkback){							
+						if(n.nodeName.toLowerCase()=='link' && n.getAttribute('type')=='text/html'){
 							thisClip.linkback=n.getAttribute('href');
 						};
-					});	
-				}
-				//search for and set img:
-				if(!thisClip.img){
-					$j.each(data.getElementsByTagName('img'), function(inx,n){	
-						if(n.getAttribute('id')=='stream_img'){
+					}
+					//search for and set img:
+					if(!thisClip.img){
+						if(n.nodeName.toLowerCase()=='img'){
 							thisClip.img=n.getAttribute('src');
 						};
-					});	
-				}												
+					}
+				});
+				js_log('set title to: ' + thisClip.title + "\n"+
+					   'set linkback to: '+ thisClip.linkback + "\n"+
+					   'set img to: ' + thisClip.img);
+																				
 				//now build the desc (if not already set) 
 				if(!thisClip.desc){
 					thisClip.desc='';
@@ -1135,9 +1154,7 @@ PlMvEmbed.prototype = {
 		this.pe_setStatus(pl_value + value);
 	},
 	setSliderValue:function(value){		
-		var sliderVal = this.pc.pp.getPlayHeadPos(value);
-		//if in sequence mode expose this value 
-		
+		var sliderVal = this.pc.pp.getPlayHeadPos(value);		
 		//js_log('set slider value:c:'+this.id+' v:'+ value + ' trueVa:'+ sliderVal);
 		this.pe_setSliderValue(sliderVal);
 	},
@@ -1153,10 +1170,12 @@ PlMvEmbed.prototype = {
 		for(var i in plObj.tracks[0].clips){
 			var clip = plObj.tracks[0].clips[i];		
 			perc_offset+=(clip.embed.duration /  plObj.getPlDuration());
-			if(perc_offset > v ){								
-				this.playMovieAt(i);				
-				plObj.cur_clip = clip;
-				return '';
+			if(perc_offset > v ){	
+				if(this.playMovieAt){							
+					this.playMovieAt(i);				
+					plObj.cur_clip = clip;
+					return '';
+				}
 			}
 		} 	
 	}

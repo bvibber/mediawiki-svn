@@ -173,6 +173,13 @@ Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 Twój přećelny zdźělenski system %s.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -225,7 +232,7 @@ $messages['no'] = array(
 	'tasklist'               => 'Oppgaveliste',
 	'tasklistbyproject'      => 'Oppgaveliste etter prosjekt',
 	'tasklistunknownproject' => 'Ukjent prosjekt',
-	'tasklistunspecuser'     => 'Bruker ikke oppgitt',
+	'tasklistunspecuser'     => 'Bruker ikke angitt',
 	'tasklistincorrectuser'  => 'Ukorrekt brukernavn',
 	'tasklistemail'          => 'Kjære %s',
 	'tasklistemailsubject'   => '[%s] Oppgavelisteendring',
@@ -236,6 +243,13 @@ $messages['no'] = array(
 	'tasklistprojdisp'       => 'Vis',
 	'tasklistbyname'         => '== Oppgaveliste for %s ==',
 	'tasklistnoprojects'     => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
+	'tasklistemailbody'      => ',
+
+Noen har gitt deg en ny oppgave på %s.
+
+For å se den fullstendige oppgavelisten din, gå til %s.
+
+Fra %ss varslingssystem',
 );
 
 /** Occitan (Occitan)
@@ -347,6 +361,15 @@ $messages['sv'] = array(
 	'tasklistunknownproject' => 'Okänt projekt',
 	'tasklistincorrectuser'  => 'Felaktigt användarnamn',
 	'tasklistchooseproj'     => 'Välj projekt:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
+	'tasklistemail'         => 'ప్రియమైన %s',
+	'tasklistmytasks'       => 'నా పనులు',
 );
 
 /** Turkish (Türkçe)

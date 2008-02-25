@@ -97,10 +97,15 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
+	'edituser-desc'     => 'Permitir que usuarios con privilexios poidan editar as preferencias doutros usuarios',
+	'edituser'          => 'Editar Usuario',
+	'edituser-logout'   => 'Saír do sistema',
 	'edituser-username' => 'Nome',
+	'edituser-dosearch' => 'Procurar',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -112,6 +117,14 @@ $messages['hsb'] = array(
 	'edituser-logout'   => 'Wužiwarja wotzjewić',
 	'edituser-username' => 'Mjeno',
 	'edituser-dosearch' => 'Pytanje',
+);
+
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'edituser-username' => 'Nafn',
+	'edituser-dosearch' => 'Leita',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -144,6 +157,17 @@ $messages['nl'] = array(
 	'edituser-logout'   => 'Gebruiker afmelden',
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Zoeken',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'edituser-desc'     => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
+	'edituser'          => 'Rediger bruker',
+	'edituser-logout'   => 'Logg ut brukeren',
+	'edituser-username' => 'Navn',
+	'edituser-dosearch' => '{{int:Search}}',
 );
 
 /** Occitan (Occitan)
@@ -182,6 +206,7 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'edituser-desc'     => 'Позволяет привилегированным участникам править настройки других участников',
 	'edituser'          => 'Изменить участника',
+	'edituser-logout'   => 'Завершить сеанс участника',
 	'edituser-username' => 'Имя',
 	'edituser-dosearch' => 'Найти',
 );
@@ -206,6 +231,14 @@ $messages['sv'] = array(
 	'edituser-logout'   => 'Logga ut användare',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Sök',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'edituser-username' => 'పేరు',
+	'edituser-dosearch' => 'వెతుకు',
 );
 
 /** Volapük (Volapük)

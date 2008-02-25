@@ -58,6 +58,14 @@ $messages['el'] = array(
 	'seealso' => 'Δείτε επίσης',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'seealso'      => 'Vidu ankaŭ',
+	'seealso-desc' => "Asimilita 'Vidu ankaŭ' sekcio-titolo uzante la markojn <code><nowiki><seealso></nowiki></code>.",
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
  */
@@ -67,17 +75,20 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
-	'seealso' => 'Véxase tamén',
+	'seealso'      => 'Véxase tamén',
+	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'seealso' => 'Hlej tež',
+	'seealso'      => 'Hlej tež',
+	'seealso-desc' => "Lokalizowane nadpisma 'Hlej tež' z pomocu taflički <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Hungarian (Magyar)
@@ -101,6 +112,13 @@ $messages['lb'] = array(
 	'seealso' => 'Kuckt och',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'seealso' => 'Žiūrėkite taip pat',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */
@@ -120,7 +138,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'seealso' => 'Se også',
+	'seealso'      => 'Se også',
+	'seealso-desc' => 'Oversatte «Se også»-overskrifter med bruk av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Occitan (Occitan)
@@ -157,6 +176,20 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'seealso' => 'Se även',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'seealso' => 'ఇవి కూడా చూడండి',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'seealso' => 'Xem thêm',
 );
 
 /** Volapük (Volapük)

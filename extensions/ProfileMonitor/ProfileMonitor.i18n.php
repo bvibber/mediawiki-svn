@@ -37,17 +37,21 @@ $messages['ar'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'profiling' => 'Données pour évaluer',
-	'profiling-process' => 'Chaîne de caractères à traiter :',
-	'profiling-wildcard' => 'Utilisez des « joker »',
-	'profiling-ok' => 'Accepter',
-	'profiling-data' => 'Données d\'évaluation de « $1 »',
+	'profiling'              => 'Données pour évaluer',
+	'profiling-process'      => 'Chaîne de caractères à traiter :',
+	'profiling-wildcard'     => 'Utilisez un passe-partout',
+	'profiling-ok'           => 'Accepter',
+	'profiling-data'         => "Données d'évaluation de « $1 »",
 	'profiling-data-process' => 'Traiter',
-	'profiling-data-count' => 'Compter',
-	'profiling-data-time' => 'Durée (tout)',
+	'profiling-data-count'   => 'Compter',
+	'profiling-data-time'    => 'Durée (totale)',
 	'profiling-data-average' => 'Durée (moyenne)',
-	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
+	'profiling-no-data'      => 'Aucune donnée correspondante trouvée',
 );
 
 /** Galician (Galego)
@@ -205,6 +209,25 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'profiling-data-count' => 'täl',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'profiling-ok'         => 'OK',
+	'profiling-data-count' => 'Räkna',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'profiling-ok'           => 'సరే',
+	'profiling-data-process' => 'ప్రక్రియ',
+	'profiling-data-time'    => 'సమయం (అన్నీ)',
+	'profiling-data-average' => 'సమయం (సగటు)',
+	'profiling-no-data'      => 'సరిపోలిన డాటా కనబడలేదు.',
 );
 
 /** Turkish (Türkçe)

@@ -37,9 +37,17 @@ $messages['am'] = array(
 	'newuserlog-create2-entry' => 'ለ$1 አባልነት ተፈጥሯል',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ * @author SPQRobin
+ */
 $messages['an'] = array(
 	'newuserlogpage'           => 'Rechistro de nuebos usuarios',
+	'newuserlogpagetext'       => "Isto ye un rechistro de creyazión d'usuarios",
+	'newuserlog-desc'          => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
+	'newuserlog-byemail'       => 'Palabra de paso nimbiata por correu electronico',
 	'newuserlog-create-entry'  => 'Nuebo usuario',
+	'newuserlog-create2-entry' => "S'ha creyato una cuenta ta $1",
 );
 
 /** Arabic (العربية)
@@ -116,11 +124,17 @@ $messages['br'] = array(
 	'newuserlog-create2-entry' => 'kont krouet evit $1',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ * @author SMP
+ */
 $messages['ca'] = array(
-	'newuserlogpage'           => 'Registre de creació de l\'usuari',
+	'newuserlogpage'           => "Registre de creació de l'usuari",
 	'newuserlogpagetext'       => 'Aquest és un registre de creació de nous usuaris',
+	'newuserlog-desc'          => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
+	'newuserlog-byemail'       => 'contrasenya enviada per correu electrònic',
 	'newuserlog-create-entry'  => 'Nou usuari',
-	'newuserlog-create2-entry' => 's\'ha creat un compte per a $1',
+	'newuserlog-create2-entry' => "s'ha creat un compte per a $1",
 );
 
 $messages['cdo'] = array(
@@ -265,9 +279,13 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
+	'newuserlog-desc'          => 'Lisää lokin [[Special:Log/newusers|luoduista käyttäjätunnuksista]].',
 	'newuserlog-create-entry'  => 'Uusi käyttäjä',
 	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
 );
@@ -296,6 +314,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'newuserlogpage'           => 'Historico de les crèacions de comptos',
 	'newuserlogpagetext'       => 'Cen est un jornal de les crèacions de comptos utilisators.',
+	'newuserlog-desc'          => 'Apond un [[Special:Log/newusers|jornal de les crèacions de comptos]] a [[Special:Log]].',
 	'newuserlog-byemail'       => 'mot de pâssa emmandâ per mèl',
 	'newuserlog-create-entry'  => 'Novél utilisator',
 	'newuserlog-create2-entry' => 'compto crèâ por $1',
@@ -319,11 +338,13 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Prevert
  */
 $messages['gl'] = array(
 	'newuserlogpage'           => 'Rexistro de usuarios',
 	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
+	'newuserlog-desc'          => 'Engada un [[Special:Log/newusers|rexistro de creación de contas]] a [[Special:Log]]',
 	'newuserlog-byemail'       => 'contrasinal enviado por correo electrónico',
 	'newuserlog-create-entry'  => 'Novo usuario',
 	'newuserlog-create2-entry' => 'creada conta para $1',
@@ -407,9 +428,14 @@ $messages['is'] = array(
 	'newuserlog-create2-entry' => 'bjó til notanda fyrir $1',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'newuserlogpage'           => 'Registro nuovi utenti',
 	'newuserlogpagetext'       => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
+	'newuserlog-desc'          => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
+	'newuserlog-byemail'       => 'password inviata via mail',
 	'newuserlog-create-entry'  => 'si è registrato',
 	'newuserlog-create2-entry' => 'ha registrato il nome utente $1',
 );
@@ -446,6 +472,18 @@ $messages['kk-latn'] = array(
 	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
 	'newuserlog-create-entry'  => 'Jaña qatıswşı',
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newuserlogpage'           => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
+	'newuserlogpagetext'       => 'នេះជា កំណត់ហេតុ នៃការបង្កើតអ្នកប្រើប្រាស់',
+	'newuserlog-desc'          => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃការបង្កើតគណនី]] ទៅ [[Special:Log]]',
+	'newuserlog-byemail'       => 'ពាក្យសំងាត់ ត្រូវបានផ្ញើ ដោយអ៊ីមែវល៍',
+	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ ថ្មី',
+	'newuserlog-create2-entry' => 'បានបង្កើតគណនី សំរាប់ $1',
 );
 
 /** Korean (한국어)
@@ -515,10 +553,15 @@ $messages['lo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
-	'newuserlog-create-entry' => 'Naujas naudotojas',
+	'newuserlogpage'           => 'Naudotojo kūrimo registras',
+	'newuserlogpagetext'       => 'Tai yra naudotojų kūrimo registras',
+	'newuserlog-byemail'       => 'slaptažodis nusiųstas elektroniniu paštu',
+	'newuserlog-create-entry'  => 'Naujas naudotojas',
+	'newuserlog-create2-entry' => 'sukurta paskyra $1',
 );
 
 /** Latvian (Latviešu)
@@ -658,6 +701,17 @@ $messages['pms'] = array(
 	'newuserlog-create2-entry' => 'Cont doertà për $1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newuserlogpage'           => 'د کارن-نوم د جوړېدو يادښت',
+	'newuserlogpagetext'       => 'دا د کارن-نوم د جوړېدو يادښت دی',
+	'newuserlog-byemail'       => 'پټنوم مو برېښناليک ته درولېږه',
+	'newuserlog-create-entry'  => 'نوی کارونکی',
+	'newuserlog-create2-entry' => 'د $1 لپاره کارن-حساب جوړ شو',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -705,6 +759,7 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'newuserlogpage'           => 'Кыттааччылары бэлиэтиир сурунаал',
 	'newuserlogpagetext'       => 'Соторутааҕыта бэлиэтэммит кыттааччылар',
+	'newuserlog-desc'          => '[[Special:Log/newusers|Саҥа ааттары тиһэр сурунаалы]] бу [[Special:Log]] сирэйгэ эбэр',
 	'newuserlog-byemail'       => 'киирии тыл эл. почтаннан ыытылынна',
 	'newuserlog-create-entry'  => 'Саҥа кыттааччы',
 	'newuserlog-create2-entry' => 'саҥа киһи бэлиэтэннэ $1',

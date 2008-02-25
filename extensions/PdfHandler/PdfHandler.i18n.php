@@ -37,9 +37,13 @@ $messages['cs'] = array(
 	'pdf_page_error'  => 'Číslo stránky není v rozsahu',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
+	'pdf-desc'        => 'Schnittstelle für die Ansicht von PDF-Dateien im Bilder-Modus',
 	'pdf_no_metadata' => 'Keine Metadaten im PDF vorhanden.',
-	'pdf_page_error' => 'Seitenzahl außerhalb des Dokumentes.',
+	'pdf_page_error'  => 'Seitenzahl außerhalb des Dokumentes.',
 );
 
 /** French (Français)
@@ -97,6 +101,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'pdf-desc'        => 'Behandler for visning av PDF-filer i bildemodus',
 	'pdf_no_metadata' => 'kan ikke hente metadata fra PDF',
 	'pdf_page_error'  => 'Sidenummer overstiger antall sider i dokumentet',
 );
@@ -125,6 +130,7 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'pdf-desc'        => 'Manuseador de visualização de ficheiros PDF em modo de imagem',
 	'pdf_no_metadata' => 'não foi possível obter os metadados do PDF',
 	'pdf_page_error'  => 'Número de página fora do intervalo',
 );

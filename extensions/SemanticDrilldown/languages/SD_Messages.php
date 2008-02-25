@@ -261,6 +261,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'browsedata'                            => 'Chercher les données',
@@ -284,9 +285,9 @@ $messages['fr'] = array(
 	'sd_createfilter_usepropertyvalues'     => 'Utiliser, pour ce filtre, toutes les valeurs de cette propriété',
 	'sd_createfilter_usecategoryvalues'     => 'Obtenir les valeurs pour ce filtre à partir de cette catégorie :',
 	'sd_createfilter_usedatevalues'         => 'Utilise des blocs de date pour ce filtre avec cette période temporelle :',
-	'sd_createfilter_entervalues'           => 'Entrer manuellement les valeurs pour ce filtre (les valeurs devront être séparées par des virgules - si une valeur contient une virgule, remplacez-la par « \\, ») :',
+	'sd_createfilter_entervalues'           => 'Entrez manuellement les valeurs pour ce filtre (les valeurs devront être séparées par des virgules - si une valeur contient une virgule, remplacez-la par « \\, ») :',
 	'sd_createfilter_label'                 => 'Étiquette pour ce filtre (facultatif) :',
-	'sd_createfilter_requirefilter'         => 'Nécessite un filtre devant être sélectionné avant que celui-ci ne soit affiché :',
+	'sd_createfilter_requirefilter'         => 'Exiger qu’un autre filtre soit sélectionné avant que celui-ci ne soit affiché :',
 	'sd_blank_error'                        => 'ne peut être laissé en blanc',
 	'sd_filter_coversproperty'              => 'Ce filtre couvre la propriété $1.',
 	'sd_filter_getsvaluesfromcategory'      => 'Il obtient ses valeurs à partir de la catégorie $1.',
@@ -295,7 +296,7 @@ $messages['fr'] = array(
 	'sd_filter_month'                       => 'Mois',
 	'sd_filter_hasvalues'                   => 'Il a $1 comme valeur',
 	'sd_filter_requiresfilter'              => 'Il nécessite la présence du filtre $1.',
-	'sd_filter_haslabel'                    => 'Il dispose du label $1.',
+	'sd_filter_haslabel'                    => 'Étiqueté $1.',
 );
 
 /** Galician (Galego)
@@ -313,11 +314,17 @@ $messages['gl'] = array(
 	'sd_browsedata_nonefilter'              => 'Amosar páxinas con ningún valor para este filtro',
 	'sd_browsedata_removefilter'            => 'Eliminar este filtro',
 	'sd_browsedata_removesubcategoryfilter' => 'Eliminar este filtro de subcategorías',
+	'sd_browsedata_resetfilters'            => 'Eliminar filtros',
 	'filters'                               => 'Filtros',
 	'sd_filters_docu'                       => 'Os seguintes filtros existen en {{SITENAME}}:',
 	'createfilter'                          => 'Crear un filtro',
 	'sd_createfilter_name'                  => 'Nome:',
+	'sd_createfilter_property'              => 'Propiedade que o filtro inclúe:',
+	'sd_createfilter_usepropertyvalues'     => 'Usar todos os valores da propiedade para o filtro',
+	'sd_createfilter_usecategoryvalues'     => 'Obter os valores para o filtro desta categoría:',
 	'sd_createfilter_entervalues'           => 'Introduza valores para filtrar manualmente (os valores deben separarse por comas - se o valor contén unha coma, substitúaa por "\\,"):',
+	'sd_blank_error'                        => 'non pode estar en branco',
+	'sd_filter_coversproperty'              => 'O filtro inclúe a propiedade $1.',
 	'sd_filter_year'                        => 'Ano',
 	'sd_filter_month'                       => 'Mes',
 );
@@ -369,10 +376,21 @@ $messages['hu'] = array(
 	'sd_filter_month' => 'Hónap',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'sd_browsedata_choosecategory' => 'ជ្រើសរើស មួយចំណាត់ក្រុម',
+	'sd_browsedata_viewcategory'   => 'មើល ចំណាត់ក្រុម',
+	'sd_browsedata_subcategory'    => 'ចំណាត់ក្រុមរង',
+	'sd_createfilter_name'         => 'ឈ្មោះ ៖',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'filters'              => 'Filteren',
 	'sd_createfilter_name' => 'Numm:',
 	'sd_filter_year'       => 'Joer',
 	'sd_filter_month'      => 'Mount',
@@ -422,8 +440,39 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'sd_filter_year'  => 'År',
-	'sd_filter_month' => 'Måned',
+	'browsedata'                            => 'Bla gjennom data',
+	'sd_browsedata_choosecategory'          => 'Velg en kategori',
+	'sd_browsedata_viewcategory'            => 'se kategori',
+	'sd_browsedata_subcategory'             => 'Underkategori',
+	'sd_browsedata_other'                   => 'Annen',
+	'sd_browsedata_none'                    => 'Ingen',
+	'sd_browsedata_filterbyvalue'           => 'Foøtrer etter denne verdien',
+	'sd_browsedata_filterbysubcategory'     => 'Filtrer etter denne underkategorien',
+	'sd_browsedata_otherfilter'             => 'Vis sider med en annen verdi for dette filteret',
+	'sd_browsedata_nonefilter'              => 'Vis sider uten noen verdi for dette filteret',
+	'sd_browsedata_removefilter'            => 'Fjern dette filteret',
+	'sd_browsedata_removesubcategoryfilter' => 'Fjern dette underkategorifilteret',
+	'sd_browsedata_resetfilters'            => 'Resett filtre',
+	'filters'                               => 'Filtre',
+	'sd_filters_docu'                       => 'Følgende filtre finnes på {{SITENAME}}:',
+	'createfilter'                          => 'Opprett et filter',
+	'sd_createfilter_name'                  => 'Navn:',
+	'sd_createfilter_property'              => 'Egenskap dette filteret dekker:',
+	'sd_createfilter_usepropertyvalues'     => 'Bruk alle verdier av denne egenskapen for filteret',
+	'sd_createfilter_usecategoryvalues'     => 'Få verdier for filteret fra denne kategorien:',
+	'sd_createfilter_usedatevalues'         => 'Bruk datoområder for dette filteret med denne tidsperioden:',
+	'sd_createfilter_entervalues'           => 'Skriv inn verdier for filteret manuelt (verdier burde adskilles med komma – om en verdi inneholder et komma, erstatt det med «\\,»);',
+	'sd_createfilter_label'                 => 'Etikett for dette filteret (valgfritt):',
+	'sd_createfilter_requirefilter'         => 'Krev at et annet filter velges før dette vises:',
+	'sd_blank_error'                        => 'kan ikke være blank',
+	'sd_filter_coversproperty'              => 'Dette filteret dekker egenskapen $1.',
+	'sd_filter_getsvaluesfromcategory'      => 'Det får verdiene sine fra kategorien $1.',
+	'sd_filter_usestimeperiod'              => 'Det bruker $1 som tidsperiode.',
+	'sd_filter_year'                        => 'År',
+	'sd_filter_month'                       => 'Måned',
+	'sd_filter_hasvalues'                   => 'Den har verdiene $1.',
+	'sd_filter_requiresfilter'              => 'Det krever at filteret $1 er til stede.',
+	'sd_filter_haslabel'                    => 'Det har etiketten $1.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -589,6 +638,23 @@ $messages['sv'] = array(
 	'sd_browsedata_choosecategory' => 'Välj en kategori',
 	'sd_browsedata_viewcategory'   => 'visa kategori',
 	'sd_browsedata_subcategory'    => 'Subkategori',
+	'sd_browsedata_other'          => 'Andra',
+	'sd_createfilter_name'         => 'Namn:',
+	'sd_filter_year'               => 'År',
+	'sd_filter_month'              => 'Månad',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sd_browsedata_choosecategory' => 'ఓ వర్గాన్ని ఎంచుకోండి',
+	'sd_browsedata_viewcategory'   => 'వర్గాన్ని చూడండి',
+	'sd_browsedata_subcategory'    => 'ఉపవర్గం',
+	'sd_browsedata_other'          => 'ఇతర',
+	'sd_createfilter_name'         => 'పేరు:',
+	'sd_filter_year'               => 'సంవత్సరం',
+	'sd_filter_month'              => 'నెల',
 );
 
 /** Volapük (Volapük)

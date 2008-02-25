@@ -53,8 +53,13 @@ $messages['fr'] = array(
 	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur la page [[Special:Contributions]]',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'contributionseditcount' => 'Este usuario ten $1 edicións.',
+	'contributionseditcount'      => 'Este usuario ten $1 edicións.',
+	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -76,11 +81,25 @@ $messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ មាន $1 កំណែប្រែ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+);
+
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'contributionseditcount' => 'ຜູ້ໃຊ້ຮາຍນີ້ ທຳການດັດແກ້ທັງໝົດ $1 ຄັ້ງ',
 );
 
 /** Dutch (Nederlands)
@@ -98,8 +117,12 @@ $messages['nn'] = array(
 	'contributionseditcount' => 'Denne brukaren har gjort $1 endringar.',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount'      => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions]]',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -137,7 +160,8 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'contributionseditcount' => 'Этот участник сделал $1 правок.',
+	'contributionseditcount'      => 'Этот участник сделал $1 правок.',
+	'contributionseditcount-desc' => 'Показывает количество правок на странице [[Special:Contributions]]',
 );
 
 $messages['sah'] = array(
@@ -160,10 +184,26 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'contributionseditcount' => 'Denna användare har gjort $1 redigeringar.',
+	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
+	'contributionseditcount-desc' => 'Visar antalet redigeringar på [[Special:Contributions]]',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
 );
 
 /** Volapük (Volapük)

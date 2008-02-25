@@ -26,6 +26,17 @@ $messages['af'] = array(
 	'syntaxhighlight-err-language' => 'Ongeldige taal.',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'syntaxhighlight-desc'         => 'Premite o resalte sintactico <tt><nowiki><source></nowiki></tt> usando [http://qbnz.com/highlighter/ GeSHi Highlighter]',
+	'syntaxhighlight-specify'      => "Ha d'endicar un lenguache asinas:",
+	'syntaxhighlight-supported'    => 'Lenguaches suportatos ta o resalte sintactico:',
+	'syntaxhighlight-err-loading'  => '(error cargando a lista de lenguaches suportatos)',
+	'syntaxhighlight-err-language' => 'Lenguache incorreuto.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -171,11 +182,12 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'syntaxhighlight-desc'         => 'Fornét la misa en relièf de la sintaxa per la balisa <tt><nowiki><source></nowiki></tt> en utilisent [http://qbnz.com/highlighter/ la coloracion sintaxica GeSHi].',
 	'syntaxhighlight-specify'      => 'Vos dête spècefiar un lengâjo d’ense :',
 	'syntaxhighlight-supported'    => 'Lengâjos sotegnus por la coloracion sintaxica :',
 	'syntaxhighlight-err-loading'  => '(èrror en chargient la lista des lengâjos sotegnus)',
 	'syntaxhighlight-err-language' => 'Lengâjo envalido',
-	'geshi.css'                    => '/* Lo css placiê ique serat aplicâ per GeSHi por la coloracion sintaxica. */',
+	'geshi.css'                    => '/* Lo CSS placiê ique serat aplicâ per GeSHi por la coloracion sintaxica. */',
 );
 
 $messages['gl'] = array(
@@ -235,6 +247,7 @@ $messages['id'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'syntaxhighlight-desc'         => 'Evidenzia la sintassi dei linguaggi di programmazione <tt><nowiki><source></nowiki></tt> tramite [http://qbnz.com/highlighter/ GeSHi Highlighter]',
 	'syntaxhighlight-specify'      => 'È necessario specificare un linguaggio in questo modo:',
 	'syntaxhighlight-supported'    => 'Linguaggi di cui è possibile evidenziare la sintassi in colore:',
 	'syntaxhighlight-err-loading'  => "(errore nel caricamento dell'elenco dei linguaggi supportati)",
@@ -242,12 +255,16 @@ $messages['it'] = array(
 	'geshi.css'                    => "/* Gli stili CSS inseriti qui si applicano all'evidenziazione di sintassi con GeSHi */",
 );
 
-/* Japanese */
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'syntaxhighlight-specify' => '以下のように言語を指定する必要があります:',
-	'syntaxhighlight-supported' => 'シンタックスハイライト機能に対応している言語は以下の通りです:',
-	'syntaxhighlight-err-loading' => '（対応言語のロード時にエラーが発生しました）',
+	'syntaxhighlight-desc'         => '[http://qbnz.com/highlighter/ GeSHi 構文ハイライト機能] を利用したタグ <tt><nowiki><source></nowiki></tt> を提供する',
+	'syntaxhighlight-specify'      => '以下のように言語を指定する必要があります:',
+	'syntaxhighlight-supported'    => '構文ハイライト機能に対応している言語は以下の通りです:',
+	'syntaxhighlight-err-loading'  => '（対応言語のロード時にエラーが発生しました）',
 	'syntaxhighlight-err-language' => '不正な言語名です。',
+	'geshi.css'                    => '/* ここへ、GeShi 構文ハイライト機能に適用する CSS を記述してください */',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -328,7 +345,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'syntaxhighlight-desc'         => 'Gir syntaks som framhever <tt><nowiki><source></nowiki></tt> ved hjelp av [http://qbnz.com/highlighter/ GeSHi Highlighter]',
-	'syntaxhighlight-specify'      => 'Du må oppgi et språk slik:',
+	'syntaxhighlight-specify'      => 'Du må angi et språk slik:',
 	'syntaxhighlight-supported'    => 'Støttede språk for syntaksutheving:',
 	'syntaxhighlight-err-loading'  => '(feil under last av liste over støttede språk)',
 	'syntaxhighlight-err-language' => 'Ugyldig språk.',
@@ -368,6 +385,13 @@ $messages['pms'] = array(
 	'geshi.css' => '/* ël CSS piassà ambelessì a sarà aplicà a l\'evidensiassion ëd sintassi GeSHi */',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'syntaxhighlight-err-language' => 'ناسمه ژبه.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -396,6 +420,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'syntaxhighlight-desc'         => '[http://qbnz.com/highlighter/ GeSHi Highlighter] көмөтүнэн синтаксис подсветкатын холбуурга <tt><nowiki><source></nowiki></tt> тиэги туһанар кыах биэрэр.',
 	'syntaxhighlight-specify'      => 'Омугун тылын маннык ыйыахтааххын:',
 	'syntaxhighlight-supported'    => 'Өйөнүллэр тыллара:',
 	'syntaxhighlight-err-loading'  => '(тылларын испииһэгэ кыайан көрдөрүллүбэтэ)',
@@ -467,7 +492,12 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'syntaxhighlight-desc'         => 'Tô màu cú pháp trong thẻ <tt><nowiki><source></nowiki></tt> dùng [http://qbnz.com/highlighter/ GeSHi Highlighter]',
+	'syntaxhighlight-specify'      => 'Bạn cần phải định rõ một ngôn ngữ như vầy:',
+	'syntaxhighlight-supported'    => 'Các ngôn ngữ được tô màu cú pháp:',
+	'syntaxhighlight-err-loading'  => '(gặp lỗi khi nạp danh sách các ngôn ngữ được hỗ trợ)',
 	'syntaxhighlight-err-language' => 'Ngôn ngữ không hợp lệ.',
+	'geshi.css'                    => '/* Bộ tô màu cú pháp GeSHi sẽ áp dụng mã CSS ở đây */',
 );
 
 /** Volapük (Volapük)

@@ -67,6 +67,13 @@ $messages['pt'] = array(
 	'contributorsaddon-desc' => 'Adiciona janelas "popup" JS do tipo onMouseOver às ligações de "Principais Contribuidores"',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'contributorsaddon-desc' => 'Добавляет всплывающее JavaScript-поле для ссылки «Основные авторы»',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

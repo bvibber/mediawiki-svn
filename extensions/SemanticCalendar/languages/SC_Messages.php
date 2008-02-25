@@ -76,13 +76,14 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'sc_previousmonth'    => 'Mois précédent',
 	'sc_nextmonth'        => 'Mois suivant',
 	'sc_today'            => "Aujourd'hui",
 	'sc_gotomonth'        => 'Aller vers le mois',
-	'sc_error_year2038'   => "Erreur : ce système ne supporte les dates après 2038, dû au [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bogue de l'an 2038]",
+	'sc_error_year2038'   => 'Erreur : ce système ne supporte pas les dates postérieures à 2038, à cause du [http://fr.wikipedia.org/wiki/Bogue_de_l%27an_2038 Bogue de l’an 2038]',
 	'sc_error_beforeyear' => 'Erreur : ce système ne peut supporter les dates antérieures au $1.',
 );
 
@@ -140,6 +141,17 @@ $messages['lb'] = array(
 	'sc_error_beforeyear' => 'Feeler: Dëse System kann net mat Datume virum $1 ëmgoen.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'sc_previousmonth'    => 'Praeitas mėnuo',
+	'sc_nextmonth'        => 'Ateinantis mėnuo',
+	'sc_today'            => 'Šiandien',
+	'sc_gotomonth'        => 'Eiti į mėnesį',
+	'sc_error_beforeyear' => 'Klaida: Ši sistema negali suprasti datų, ankstesnių nei $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author GerardM
@@ -195,6 +207,7 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'sc_previousmonth'    => 'Mês anterior',
 	'sc_nextmonth'        => 'Mês seguinte',
+	'sc_today'            => 'Hoje',
 	'sc_error_year2038'   => 'Erro: Este sistema não consegue tratar datas posteriores a 2038 devido ao [http://pt.wikipedia.org/wiki/Problema_do_ano_2038 problema do ano 2038]',
 	'sc_error_beforeyear' => 'Erro: Este sistema não consegue tratar datas anteriores a $1',
 );
@@ -221,6 +234,16 @@ $messages['sv'] = array(
 	'sc_gotomonth'        => 'Gå till månad',
 	'sc_error_year2038'   => 'Error: Detta system kan inte hantera datum efter år 2038, vederbörlig till [http://sv.wikipedia.org/wiki/År 2038-problemet år 2038 problemet]',
 	'sc_error_beforeyear' => 'Error: Detta system kan inte hantera datum före $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sc_previousmonth' => 'క్రితం నెల',
+	'sc_nextmonth'     => 'తర్వాతి నెల',
+	'sc_today'         => 'ఈరోజు',
+	'sc_gotomonth'     => 'నెలకి వెళ్ళండి',
 );
 
 /** Vietnamese (Tiếng Việt)

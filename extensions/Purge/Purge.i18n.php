@@ -7,7 +7,9 @@
 
 $messages = array();
 
-/*Original text by Ævar Arnfjörð Bjarmason*/
+/** English
+ * @author Ævar Arnfjörð Bjarmason
+ */
 $messages['en'] = array(
 	'purge' => 'purge',
 	'purge-desc' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
@@ -35,8 +37,12 @@ $messages['ca'] = array(
 	'purge' => 'purga',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'purge' => 'Cache leeren',
+	'purge'      => 'Cache leeren',
+	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
 /*Translation by Bertrand GRONDIN*/
@@ -49,8 +55,12 @@ $messages['gl'] = array(
 	'purge' => 'limpar',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'purge' => 'rjedźić',
+	'purge'      => 'wuprózdnić',
+	'purge-desc' => 'Přidawa rajtark "wuprózdnić" za spěšne wurjedźenje pufrowaka na wšěch normalnych stronach a wobeńdźe kontrolu za anonymnych wužiwarjow',
 );
 
 /** Hungarian (Magyar)
@@ -146,5 +156,12 @@ $messages['to'] = array(
  */
 $messages['tr'] = array(
 	'purge' => 'Temizle',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'purge' => 'làm tươi',
 );
 

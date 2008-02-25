@@ -138,6 +138,15 @@ $messages['hu'] = array(
 	'lookupuser_useroptions'       => 'Beállításai:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'lookupuser_intro'    => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
+	'lookupuser_email'    => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'ឈ្មោះពិត ៖ $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -210,6 +219,8 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'lookupuser'                   => 'Procurar informação de utilizador',
+	'lookupuser-desc'              => '[[{{ns:special}}:LookupUser|Retorna informação]] sobre um utilizador tal como o endereço de email e o ID',
 	'lookupuser_intro'             => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
 	'lookupuser_nonexistent'       => 'Erro: Utilizador não existe',
 	'lookupuser_authenticated'     => 'Autenticação por email: $1',
@@ -277,9 +288,21 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'lookupuser_nonexistent'  => 'Error: Användare existerar inte',
+	'lookupuser_id'           => 'Användar ID: <tt>#$1</tt>',
 	'lookupuser_email'        => 'E-post: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'Riktigt namn: $1',
 	'lookupuser_registration' => 'Registrerings datum: $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lookupuser_nonexistent'  => 'పొరపాటు: వాడుకరి ఉనికిలో లేరు',
+	'lookupuser_realname'     => 'నిజమైన పేరు: $1',
+	'lookupuser_registration' => 'నమోదైన తేదీ: $1',
+	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',
 );
 
 /** Volapük (Volapük)

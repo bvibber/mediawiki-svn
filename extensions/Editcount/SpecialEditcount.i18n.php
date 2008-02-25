@@ -8,7 +8,7 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
@@ -68,12 +68,16 @@ $messages['ca'] = array(
 	'editcount_username' => 'Usuari:',
 );
 
-// German by Leon Weber
+/** German (Deutsch)
+  * @author Leon Weber
+  * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'editcount' => 'Anzahl der Seitenbearbeitungen',
+	'editcount'          => 'Anzahl der Seitenbearbeitungen',
+	'editcount-desc'     => 'Zeigt die [[Special:Editcount|Anzahl der Bearbeitungen]] eines Benutzers',
 	'editcount_username' => 'Benutzer:',
-	'editcount_submit' => 'Absenden',
-	'editcount_total' => 'Gesamt',
+	'editcount_submit'   => 'Absenden',
+	'editcount_total'    => 'Gesamt',
 );
 
 /** Ewe (Eʋegbe)
@@ -117,11 +121,16 @@ $messages['fr'] = array(
 	'editcount_total'    => 'Total',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'editcount' => 'Total de edicións',
+	'editcount'          => 'Total de edicións',
+	'editcount-desc'     => 'Mostra [[Special:Editcount|a conta de edicións]] dun usuario',
 	'editcount_username' => 'Usuario:',
-	'editcount_submit' => 'Enviar',
-	'editcount_total' => 'Total',#identical but defined
+	'editcount_submit'   => 'Enviar',
+	'editcount_total'    => 'Total',
 );
 
 /** Croatian (Hrvatski)
@@ -170,12 +179,30 @@ $messages['id'] = array(
 	'editcount_total' => 'Total',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'editcount_username' => 'Notandi:',
+);
+
 // Italian Version by BrokenArrow
 $messages['it'] = array(
 	'editcount' => 'Conteggio delle modifiche',
 	'editcount_username' => 'Utente:',
 	'editcount_submit' => 'Invia',
 	'editcount_total' => 'Totale',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'editcount'          => 'របាប់កំណែប្រែ',
+	'editcount-desc'     => 'បង្ហាញ [[Special:Editcount|របាប់កំណែប្រែ]] នៃអ្នកប្រើប្រាស់ ម្នាក់',
+	'editcount_username' => 'អ្នកប្រើប្រាស់ ៖',
+	'editcount_submit'   => 'ដាក់ស្នើ',
+	'editcount_total'    => 'សរុប',
 );
 
 $messages['la'] = array(
@@ -194,9 +221,11 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
+ * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'editcount'          => 'Naudotojo indėlis',
+	'editcount-desc'     => 'Rodo naudotojo [[Special:Editcount|keitimų skaičių]]',
 	'editcount_username' => 'Naudotojas:',
 	'editcount_submit'   => 'Patvirtinti',
 	'editcount_total'    => 'Viso',
@@ -223,12 +252,15 @@ $messages['nn'] = array(
 	'editcount_total'    => 'Totalt',
 );
 
-// Norwegian (Jon Harald Søby)
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'editcount' => 'Redigeringsteller',
+	'editcount'          => 'Redigeringsteller',
+	'editcount-desc'     => 'Viser [[Special:Editcount|redigeringsteller]] for en bruker',
 	'editcount_username' => 'Bruker:',
-	'editcount_submit' => 'OK',
-	'editcount_total' => 'Totalt',
+	'editcount_submit'   => 'OK',
+	'editcount_total'    => 'Totalt',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -290,9 +322,11 @@ $messages['rm'] = array(
 
 /** Russian (Русский)
  * @author VasilievVV
+ * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'editcount'          => 'Счётчик правок',
+	'editcount-desc'     => 'Показывает [[Special:Editcount|количество правок]] участника',
 	'editcount_username' => 'Участник:',
 	'editcount_submit'   => 'Посчитать',
 	'editcount_total'    => 'Всего',
@@ -359,11 +393,22 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'editcount'          => 'Redigerings räkning',
 	'editcount-desc'     => 'Visar [[Special:Editcount|redigerings räkning]] för en användare',
 	'editcount_username' => 'Användare:',
+	'editcount_submit'   => 'Räkna',
+	'editcount_total'    => 'Total',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'editcount_username' => 'వాడుకరి:',
+	'editcount_total'    => 'మొత్తం',
 );
 
 /** Turkish (Türkçe)
@@ -372,6 +417,17 @@ $messages['sv'] = array(
 $messages['tr'] = array(
 	'editcount_username' => 'Kullanıcı:',
 	'editcount_total'    => 'Toplam',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'editcount'          => 'Số lần sửa đổi',
+	'editcount-desc'     => 'Hiển thị [[Special:Editcount|số lần sửa đổi]] của một người dùng',
+	'editcount_username' => 'Thành viên:',
+	'editcount_submit'   => 'Hiển thị',
+	'editcount_total'    => 'Tổng cộng',
 );
 
 /** Volapük (Volapük)

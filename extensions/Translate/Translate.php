@@ -11,15 +11,15 @@ if (!defined('MEDIAWIKI')) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'TRANSLATE_VERSION', '8.5' );
+define( 'TRANSLATE_VERSION', '8.12' );
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Translate',
-	'version' => TRANSLATE_VERSION,
-	'author' => array( 'Niklas Laxström', 'Siebrand Mazeland' ),
-	'description' => '[[Special:Translate|Special page]] for translating Mediawiki and beyond',
+	'name'           => 'Translate',
+	'version'        => TRANSLATE_VERSION,
+	'author'         => array( 'Niklas Laxström', 'Siebrand Mazeland' ),
+	'description'    => '[[Special:Translate|Special page]] for translating Mediawiki and beyond',
 	'descriptionmsg' => 'translate-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Translate',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Translate',
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -105,6 +105,7 @@ $wgTranslateAC = array(
 'ext-categorytree'          => 'CategoryTreeMessageGroup',
 'ext-catfeed'               => 'CatFeedMessageGroup',
 'ext-centralauth'           => 'CentralAuthMessageGroup',
+'ext-centralnotice'         => 'CentralNoticeMessageGroup',
 'ext-changeauthor'          => 'ChangeAuthorMessageGroup',
 'ext-charinsert'            => 'CharInsertMessageGroup',
 'ext-checkuser'             => 'CheckUserMessageGroup',
@@ -113,6 +114,7 @@ $wgTranslateAC = array(
 'ext-citespecial'           => 'CiteSpecialMessageGroup',
 'ext-cldr'                  => 'LanguageNamesMessageGroup',
 'ext-cleanchanges'          => 'CleanChangesMessageGroup',
+'ext-collection'            => 'CollectionMessageGroup',
 'ext-commentpages'          => 'CommentPagesMessageGroup',
 'ext-commentspammer'        => 'CommentSpammerMessageGroup',
 'ext-confirmaccount'        => 'ConfirmAccountMessageGroup',
@@ -126,10 +128,14 @@ $wgTranslateAC = array(
 'ext-countedits'            => 'CountEditsMessageGroup',
 'ext-crossnamespacelinks'   => 'CrossNamespaceLinksMessageGroup',
 'ext-crosswikiblock'        => 'CrosswikiBlockMessageGroup',
+'ext-crowdauthentication'   => 'CrowdAuthenticationMessageGroup',
+'ext-datatransfer'          => 'DataTransferMessageGroup',
 'ext-deletedcontribs'       => 'DeletedContribsMessageGroup',
 'ext-dismissablesitenotice' => 'DismissableSiteNoticeMessageGroup',
+'ext-doublewiki'            => 'DoubleWikiMessageGroup',
 'ext-duplicator'            => 'DuplicatorMessageGroup',
 'ext-editcount'             => 'EditcountMessageGroup',
+'ext-editown'               => 'EditOwnMessageGroup',
 'ext-edituser'              => 'EditUserMessageGroup',
 'ext-eval'                  => 'EvalMessageGroup',
 'ext-expandtemplates'       => 'ExpandTemplatesMessageGroup',
@@ -141,15 +147,19 @@ $wgTranslateAC = array(
 'ext-forcepreview'          => 'ForcePreviewMessageGroup',
 'ext-formatemail'           => 'FormatEmailMessageGroup',
 'ext-gadgets'               => 'GadgetsMessageGroup',
+'ext-globalusage'           => 'GlobalUsageMessageGroup',
+'ext-googleanalytics'       => 'GoogleAnalyticsMessageGroup',
+'ext-googlemaps'            => 'GoogleMapsMessageGroup',
 'ext-i18ntags'              => 'I18nTagsMessageGroup',
 'ext-icon'                  => 'IconMessageGroup',
 'ext-imagemap'              => 'ImageMapMessageGroup',
 'ext-importfreeimages'      => 'ImportFreeImagesMessageGroup',
-'ext-importusers'            => 'ImportUsersMessageGroup',  
+'ext-importusers'           => 'ImportUsersMessageGroup',  
 'ext-inputbox'              => 'InputBoxMessageGroup',
 'ext-inspectcache'          => 'InspectCacheMessageGroup',
 'ext-intersection'          => 'IntersectionMessageGroup',
 'ext-interwiki'             => 'InterwikiMessageGroup',
+'ext-labeledsectiontransclusion' => 'LabeledSectionTransclusionMessageGroup',
 'ext-languageselector'      => 'LanguageSelectorMessageGroup',
 'ext-latexdoc'              => 'LatexDocMessageGroup',
 'ext-linksearch'            => 'LinkSearchMessageGroup',
@@ -182,6 +192,7 @@ $wgTranslateAC = array(
 'ext-patroller'             => 'PatrollerMessageGroup',
 'ext-pdfhandler'            => 'PdfHandlerMessageGroup',
 'ext-player'                => 'PlayerMessageGroup',
+'ext-poem'                  => 'PoemMessageGroup',
 'ext-postcomment'           => 'PostCommentMessageGroup',
 'ext-povwatch'              => 'PovWatchMessageGroup',
 'ext-profilemonitor'        => 'ProfileMonitorMessageGroup',
@@ -190,7 +201,9 @@ $wgTranslateAC = array(
 'ext-purge'                 => 'PurgeMessageGroup',
 'ext-purgecache'            => 'PurgeCacheMessageGroup',
 'ext-quiz'                  => 'QuizMessageGroup',
+'ext-randomimage'           => 'RandomImageMessageGroup',
 'ext-randomincategory'      => 'RandomInCategoryMessageGroup',
+'ext-randomrootpage'        => 'RandomRootpageMessageGroup',
 'ext-regexblock'            => 'RegexBlockMessageGroup',
 'ext-renameuser'            => 'RenameUserMessageGroup',
 'ext-review'                => 'ReviewMessageGroup',
@@ -219,6 +232,7 @@ $wgTranslateAC = array(
 'ext-throttle'              => 'ThrottleMessageGroup',
 'ext-tidytab'               => 'TidyTabMessageGroup',
 'ext-titleblacklist'        => 'TitleBlacklistMessageGroup',
+'ext-timeline'              => 'TimelineMessageGroup',
 'ext-titlekey'              => 'TitleKeyMessageGroup',
 'ext-todo'                  => 'TodoMessageGroup',
 'ext-todotasks'             => 'TodoTasksMessageGroup',
@@ -235,6 +249,7 @@ $wgTranslateAC = array(
 'ext-whoiswatching'         => 'WhoIsWatchingMessageGroup',
 'ext-whosonline'            => 'WhosOnlineMessageGroup',
 'ext-wikidatalanguagemanager' => 'WikidataLanguageManagerMessageGroup',
+'ext-wikihiero'             => 'WikihieroMessageGroup',
 'out-freecol'               => 'FreeColMessageGroup',
 );
 

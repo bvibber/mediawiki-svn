@@ -102,6 +102,13 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'backforth-next' => 'Næste ($1)',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -181,6 +188,7 @@ $messages['gag'] = array(
  */
 $messages['gl'] = array(
 	'backforth-next' => 'Seguinte ($1)',
+	'backforth-desc' => 'Engade "Seguinte" e "Anterior" ao buscar as ligazóns alfabéticas na cabeceira das páxinas',
 	'backforth-prev' => 'Anterior ($1)',
 );
 
@@ -338,6 +346,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'backforth-next' => 'راتلونکی ($1)',
+	'backforth-prev' => 'پخوانی ($1)',
 );
 
 /** Portuguese (Português)
@@ -415,6 +424,13 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'backforth-next' => 'తర్వాత ($1)',
 	'backforth-prev' => 'గత ($1)',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'backforth-next' => 'ต่อไป ($1)',
 );
 
 /** Turkish (Türkçe)

@@ -197,6 +197,16 @@ $messages['hsb'] = array(
 	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'formnoname'      => 'គ្មាន ឈ្មោះបែបបទ',
+	'formbadname'     => 'ឈ្មោះបែបបទ មិនល្អ',
+	'formbadnametext' => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
+	'formbadpagename' => 'ឈ្មោះទំព័រ មិនល្អ',
+);
+
 $messages['la'] = array(
 	'formsave' => 'Servare',
 	'formarticleexiststext' => 'Pagina [[$1]] iam existit.',
@@ -240,7 +250,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'form'                         => 'Skjema',
 	'formnoname'                   => 'Intet skjemanavn',
-	'formnonametext'               => 'Du må oppgi et skjemanavn, som «Special:Form/Skjemanavn».',
+	'formnonametext'               => 'Du må angi et skjemanavn, som «Special:Form/Skjemanavn».',
 	'formbadname'                  => 'Ugyldig skjemanavn',
 	'formbadnametext'              => 'Det er ingen skjema ved det navnet.',
 	'formpattern'                  => '$1-skjema',
@@ -380,9 +390,24 @@ $messages['stq'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
+	'form'                  => 'Formulär',
+	'formnoname'            => 'Formulärnamn saknas',
+	'formnonametext'        => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',
+	'formbadname'           => 'Felaktigt formulärnamn',
+	'formbadnametext'       => 'Det finns inget formulär med det namnet.',
 	'formsave'              => 'Spara',
 	'formarticleexists'     => 'Sidan existerar',
 	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',
 	'formbadpagename'       => 'Dåligt sidnamn',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'formsave'              => 'భద్రపరచు',
+	'formarticleexists'     => 'పేజీ ఉంది',
+	'formarticleexiststext' => '[[$1]] అనే పేజీ ఇప్పటికే ఉంది.',
+	'formbadpagename'       => 'తప్పుడు పేజీ పేరు',
 );
 

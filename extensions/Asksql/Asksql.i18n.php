@@ -207,6 +207,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'asksql'          => 'SQL-kysely',
+	'asksql-desc'     => 'Mahdollistaa SQL-kyselyiden tekemisen [[Special:Asksql|toimintosivun]] kautta',
 	'asksqltext'      => "Käytä alla olevaa lomaketta tehdäksesi suoria kyselyitä tietokannasta. Merkkijonovakioita merkitään yksinkertaisilla lainausmerkeillä ('näin'). Kyselyt voivat usein kuormittaa palvelinta huomattavasti, joten käytä tätä toimintoa säästeliäästi.",
 	'sqlislogged'     => 'Huomioithan, että kaikki kyselyt kirjataan.',
 	'sqlquery'        => 'Kirjoita kysely',
@@ -267,6 +268,7 @@ cela fonccion avouéc parcimonie.",
  */
 $messages['gl'] = array(
 	'asksql'          => 'Consulta SQL',
+	'asksql-desc'     => 'Facer consultas SQL a través dunha [[Special:Asksql|páxina especial]]',
 	'asksqltext'      => 'Use o formulario de embaixo para facer unha consulta directa na base de datos.
 Use só as comiñas ("desta maneira") para delimitar cadeas literais.
 Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que por favor use esta función moderadamente.',
@@ -388,20 +390,28 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'asksql'      => 'SQL Offro',
-	'asksqltext'  => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze rrichten.
+	'asksql'          => 'SQL Offro',
+	'asksqltext'      => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze rrichten.
 Benotzt dëst Zeechen' ('esou wéi hei') fir Werter an der Ufro ofzegrenzen.
 Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir froe mir iech dës Funktioun mat Moderatioun ze benotzen.",
-	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
-	'sqlquery'    => 'Ufro aginn',
-	'querybtn'    => 'Ufro schécken',
+	'sqlislogged'     => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
+	'sqlquery'        => 'Ufro aginn',
+	'querybtn'        => 'Ufro schécken',
+	'querysuccessful' => "D'Offro gouf mat Erfolleg ausgefouert",
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
-	'asksql' => 'SQL prieiga',
+	'asksql'          => 'SQL prieiga',
+	'asksql-desc'     => 'Daryti SQL užklausas [[Special:Asksql|specialiajame puslapyje]]',
+	'sqlislogged'     => 'Atminkite, kad visos užklausos yra įregistruotos.',
+	'sqlquery'        => 'Įvesti užklausą',
+	'querybtn'        => 'Patvirtinti užklausą',
+	'selectonly'      => 'Tiktai neredaguojamos užklausos yra leidžiamos.',
+	'querysuccessful' => 'Užklausa sėkminga.',
 );
 
 /** Dutch (Nederlands)

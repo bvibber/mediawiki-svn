@@ -111,6 +111,15 @@ $messages['lb'] = array(
 	'userimages-noimages' => '$1 huet keng Biller eropgelueden.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'userimages-caption'  => 'Iliustracijos, įkeltos $1',
+	'userimages-noname'   => 'Neteisingas naudotojo vardas arba netiekiama.',
+	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',
+);
+
 /* nld / Dutch */
 $messages['nl'] = array(
 	'userimages-caption' => 'Afbeeldingen toegevoegd door $1',
@@ -118,10 +127,12 @@ $messages['nl'] = array(
 	'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'userimages-caption' => 'Bilder lastet opp av $1',
-	'userimages-noname' => 'Ugyldig brukernavn, eller intet oppgitt brukernavn.',
+	'userimages-caption'  => 'Bilder lastet opp av $1',
+	'userimages-noname'   => 'Ugyldig brukernavn, eller intet angitt brukernavn.',
 	'userimages-noimages' => '$1 har ingen bildeopplastinger.',
 );
 
@@ -142,6 +153,15 @@ $messages['pms'] = array(
 	'userimages-caption' => 'Figure carià da $1',
 	'userimages-noname' => 'Stranòm nen bon ò ch\'a-i é nen d\'autut.',
 	'userimages-noimages' => '$1 a l\'ha pa carià gnun-a figura.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'userimages-caption'  => 'انځورونه د $1 له خوا پورته شوي',
+	'userimages-noname'   => 'ناسم کارن-نوم او يا هم هېڅ کارن-نوم نه دی ورکړ شوی.',
+	'userimages-noimages' => '$1 هېڅ کوم انځور نه دی پورته کړی.',
 );
 
 /** Portuguese (Português)

@@ -50,22 +50,44 @@ $messages['gl'] = array(
 	'signaturelogentry' => 'asinou o documento $1',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'signaturelogpage' => 'Proatokol podpisow',
+	'signaturelogpage'     => 'Proatokol podpisow',
+	'signature-desc'       => 'Zmóžnja [[Special:SignDocument|podpisowanje]] dokumenta',
 	'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
-	'signaturelogentry' => 'je dokument $1 podpisał',
+	'signaturelogentry'    => 'je dokument $1 podpisał',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'signaturelogpage'     => 'Lëscht vun den Ënnerschreften',
+	'signature-desc'       => "Aktivéiert d'[[Special:SignDocument|ënnerschreiwen]] vun Dokumenten",
+	'signaturelogpagetext' => "Dëst ass d'Lëscht vun allen Ënnnerschreften déi op dëst Dokument iwwer [[Special:SignDocument]] derbäigesat goufen.",
+	'signaturelogentry'    => "huet d'Dokument $1 ënnerschriwwen",
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'signaturelogpage'      => 'Logboek ondertekeningen',
-	'signaturelogpagetext'  => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
-	'signaturelogentry'     => 'ondertekende het document $1',
+	'signaturelogpage'     => 'Logboek ondertekeningen',
+	'signature-desc'       => 'Maakt het [[Special:SignDocument|ondertekenen]] van documenten mogelijk',
+	'signaturelogpagetext' => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
+	'signaturelogentry'    => 'ondertekende het document $1',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'signaturelogpage' => 'Signaturlogg',
+	'signaturelogpage'     => 'Signaturlogg',
+	'signature-desc'       => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
-	'signaturelogentry' => 'signerte dokumentet $1',
+	'signaturelogentry'    => 'signerte dokumentet $1',
 );
 
 $messages['oc'] = array(
@@ -108,9 +130,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'signaturelogpage'     => 'Signeringslogg',
+	'signature-desc'       => 'Gör det möjligt att [[Special:SignDocument|signera]] dokument',
 	'signaturelogpagetext' => 'Detta är en logg över alla signaturer som lagts till dokument via [[Special:SignDocument]].',
 	'signaturelogentry'    => 'signerade dokumentet $1',
 );

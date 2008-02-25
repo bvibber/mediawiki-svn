@@ -64,7 +64,13 @@ $messages['ast'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'pdtest_diff' => 'Разлики',
+	'pdtest_no_target'    => 'Не беше посочена цел.',
+	'pdtest_page_missing' => 'Поисканата страница не беше открита в базата данни.',
+	'pdtest_no_changes'   => 'Не са направени промени.',
+	'pdtest_time_report'  => '<b>$1</b> отне $2 секунди, <b>$3</b> отне $4 секунди.',
+	'pdtest_ok'           => 'Добре',
+	'pdtest_get_text'     => 'Извличане на текст от страница',
+	'pdtest_diff'         => 'Разлики',
 );
 
 /** Bengali (বাংলা)
@@ -154,12 +160,13 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'parserdifftest'      => 'Test de diff pour parser',
+	'parserdifftest'      => 'Test de diff pour parseur',
 	'pdtest-desc'         => 'Page spéciale pour comparer la sortie de deux parseurs différents.',
 	'pdtest_no_target'    => "Aucune cible d'indiquée",
-	'pdtest_page_missing' => "La page indiquée n'a pas été trouvée dans la base de donnée.",
+	'pdtest_page_missing' => 'La page indiquée n’a pas été trouvée dans la base de données.',
 	'pdtest_no_changes'   => 'Aucun changement de détecté.',
 	'pdtest_time_report'  => '<b>$1</b> a pris $2 secondes, <b>$3</b> a pris $4 secondes.',
 	'pdtest_title'        => 'Titre du contexte :',
@@ -168,7 +175,7 @@ $messages['fr'] = array(
 	'pdtest_get_text'     => 'Obtenir le texte depuis la page',
 	'pdtest_diff'         => 'Différences',
 	'pdtest_side_by_side' => 'Comparaison en sortie',
-	'pdt_comparing_page'  => 'Comparaison du parser en sortie à partir de [[$1]]',
+	'pdt_comparing_page'  => 'Comparaison des sorties du parseur pour [[$1]]',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -176,6 +183,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'parserdifftest'      => 'Èprôva de dif por parsar',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pâge spèciâla]] por comparar la sortia de doux parsors difèrents.',
 	'pdtest_no_target'    => 'Niona ciba endicâ.',
 	'pdtest_page_missing' => 'La pâge endicâ at pas étâ trovâ dens la bâsa de balyês.',
 	'pdtest_no_changes'   => 'Nion changement dècelâ.',
@@ -190,15 +198,16 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
-	'pdtest_no_target'  => 'Non se especificou o destino.',
-	'pdtest_no_changes' => 'Non foron detectados cambios.',
-	'pdtest_ok'         => 'De acordo',
-	'pdtest_get_text'   => 'Obter texto da páxina',
-	'pdtest_diff'       => 'Diferenzas',
+	'pdtest_no_target'    => 'Non se especificou o destino.',
+	'pdtest_page_missing' => 'A páxina especificada non foi atopada na base de datos.',
+	'pdtest_no_changes'   => 'Non foron detectados cambios.',
+	'pdtest_ok'           => 'De acordo',
+	'pdtest_get_text'     => 'Obter texto da páxina',
+	'pdtest_diff'         => 'Diferenzas',
 );
 
 /** Hebrew (עברית)
@@ -289,6 +298,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'parserdifftest'      => 'Verifica delle modifiche introdotte nel parser',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pagina speciale]] per mettere a confronto il risultato di due parser diversi',
 	'pdtest_no_target'    => 'Nessuna pagina specificata.',
 	'pdtest_page_missing' => 'La pagina richiesta non è stata trovata nel database.',
 	'pdtest_no_changes'   => 'Non sono state rilevate differenze.',
@@ -300,6 +310,25 @@ $messages['it'] = array(
 	'pdtest_diff'         => 'Differenze',
 	'pdtest_side_by_side' => 'Confronto tra gli output',
 	'pdt_comparing_page'  => 'Confronto tra gli output del parser per [[$1]]',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'parserdifftest'      => 'パーサー比較テスト',
+	'pdtest-desc'         => '2つの異なるパーサー間での出力結果を比較する[[{{ns:special}}:ParserDiffTest|{{int:specialpage}}]]。',
+	'pdtest_no_target'    => '対象が指定されていません。',
+	'pdtest_page_missing' => '指定されたページはデータベースに存在していません。',
+	'pdtest_no_changes'   => '違いが検出できませんでした。',
+	'pdtest_time_report'  => '<b>$1</b> の処理に $2 秒、<b>$3</b> の処理に $4 秒かかりました。',
+	'pdtest_title'        => '比較元のページタイトル:',
+	'pdtest_text'         => '比較するテキスト:',
+	'pdtest_ok'           => '比較',
+	'pdtest_get_text'     => 'ページからテキストを取得',
+	'pdtest_diff'         => '差異',
+	'pdtest_side_by_side' => '出力の比較',
+	'pdt_comparing_page'  => '[[$1]]のパーサー出力を比較',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -315,9 +344,11 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Matthias
  */
 $messages['li'] = array(
 	'parserdifftest'      => 'Parserversjèlletes',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciale pagina]] voor het vergelijken van de uitvoer van twee verschillende parsers',
 	'pdtest_no_target'    => 'Gein doel aangegaeve.',
 	'pdtest_page_missing' => 'De aangegaeve pazjena is neet aangetroffe inne database.',
 	'pdtest_no_changes'   => 'Gein verangeringe vasgesteld.',
@@ -381,13 +412,18 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'parserdifftest'      => 'Parserdifftest',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Spesialside]] for sammenligning av resultatet fra to forskjellige parsere',
 	'pdtest_no_target'    => 'Intet mål oppgitt.',
+	'pdtest_page_missing' => 'Den angitte siden ble ikke funnet i databasen.',
 	'pdtest_no_changes'   => 'Ingen endringer oppdaget.',
+	'pdtest_time_report'  => '<b>$1</b> tok $2 sekunder, <b>$3</b> tok $4 sekunder.',
 	'pdtest_title'        => 'Konteksttittel:',
+	'pdtest_text'         => 'Skriv inn tekst:',
 	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Få tekst fra siden',
 	'pdtest_diff'         => 'Forskjeller',
 	'pdtest_side_by_side' => 'Resultatsammenligning',
+	'pdt_comparing_page'  => 'Sammeligner parserresultat fra [[$1]]',
 );
 
 /** Occitan (Occitan)
@@ -424,6 +460,15 @@ $messages['pl'] = array(
 	'pdtest_diff'         => 'Różnice',
 	'pdtest_side_by_side' => 'Porównanie wyników',
 	'pdt_comparing_page'  => 'Porównuję wynik działania analizatora składni z [[$1]]',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pdtest_text' => 'ځايونکی متن:',
+	'pdtest_ok'   => 'ښه/هو',
+	'pdtest_diff' => 'توپيرونه',
 );
 
 /** Portuguese (Português)
@@ -469,6 +514,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'parserdifftest'      => 'Синтаксис анализаторын (парсер) уларыйыытын көрүү',
+	'pdtest-desc'         => 'Икки тус туспа парсердар таһаарыыларын уратытын көрдөрөр [[Special:ParserDiffTestSpecial|аналлаах сирэй]]',
 	'pdtest_no_target'    => 'Соруга ыйыллыбатах.',
 	'pdtest_page_missing' => 'Ыйыллыбыт сирэй билэ тиһигэр көстүбэтэ.',
 	'pdtest_no_changes'   => 'Уларыйыы көстүбэтэ.',
@@ -576,9 +622,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'parserdifftest'      => 'So sánh kiểm thử bằng hàm phân tích',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Trang đặc biệt]] để so sánh mã nguồn được sản xuất bởi hai bộ xử lý khác nhau',
 	'pdtest_no_target'    => 'Chưa xác định mục tiêu',
 	'pdtest_page_missing' => 'Trang chỉ định không tìm thấy trong cơ sở dữ liệu.',
 	'pdtest_no_changes'   => 'Không tìm thấy sự khác biệt nào.',

@@ -55,6 +55,7 @@ enableMetavid();
 == base templates ==
 These base Templates (for structuring output of metadata) can be added by running the
 maintenance/metavid2mvWiki.php with the "update_templates" option.
+(this also includes congress templates that may or may not be of use to you. 
 
 
 ==sql that must be run on install==

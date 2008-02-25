@@ -194,25 +194,29 @@ sphinx|Sphinx",
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'vote' => 'Votación',
-	'vote-header' => 'Pode votar aquí polo \'\'\'Mellor Candidato do Mundo\'\'\'!',
-	'vote-current' => 'O seu voto actual é para \'\'\'$1\'\'\'.',
-	'vote-legend' => 'Votar ou modificar o voto',
-	'vote-caption' => 'A súa escolla:',
-	'vote-choices' => 'joker|O Joker
+	'vote'                => 'Votación',
+	'vote-header'         => "Pode votar aquí polo '''Mellor Candidato do Mundo'''!",
+	'vote-current'        => "O seu voto actual é para '''$1'''.",
+	'vote-legend'         => 'Votar ou modificar o voto',
+	'vote-caption'        => 'A súa escolla:',
+	'vote-choices'        => 'joker|O Joker
 penguin|O Pingüín
 riddler|Riddler',
-	'vote-submit' => 'Votar',
-	'vote-registered' => 'O seu voto foi rexistrado.',
-	'vote-view-results' => 'Ver os resultados',
-	'vote-results' => 'Resultados da votación',
+	'vote-submit'         => 'Votar',
+	'vote-registered'     => 'O seu voto foi rexistrado.',
+	'vote-view-results'   => 'Ver os resultados',
+	'vote-results'        => 'Resultados da votación',
 	'vote-results-choice' => 'Escolla',
-	'vote-results-count' => 'Reconto',
-	'vote-results-none' => 'Aínda non se rexistrou ningún voto.',
-	'vote-login' => 'Ten que $1 para votar.',
-	'vote-login-link' => 'rexistrarse',
-	'vote-invalid-choice' => 'Ten que escoller unha das opcións disponíbeis.',
+	'vote-results-count'  => 'Reconto',
+	'vote-results-none'   => 'Aínda non se rexistrou ningún voto.',
+	'vote-login'          => 'Ten que $1 para votar.',
+	'vote-login-link'     => 'rexistrarse',
+	'vote-invalid-choice' => 'Ten que escoller unha das opcións dispoñíbeis.',
 );
 
 $messages['hsb'] = array(
@@ -266,6 +270,19 @@ $messages['lb'] = array(
 	'vote-view-results'   => "Kuckt d'Resultater",
 	'vote-results'        => 'Resultater vun der Ofstëmmung',
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'vote'              => 'Balsuoti',
+	'vote-current'      => "Tavo dabartinis balsas yra už '''$1'''.",
+	'vote-caption'      => 'Tavo pasirinkimas:',
+	'vote-submit'       => 'Balsuoti',
+	'vote-registered'   => 'Jūsų balsas buvo užregistruotas.',
+	'vote-view-results' => 'Žiūrėti rezultatus',
+	'vote-login-link'   => 'registruotis',
 );
 
 $messages['nl'] = array(
@@ -453,6 +470,14 @@ riddler|Gåtan',
 	'vote-invalid-choice' => 'Du måste välja något av de angivna alternativen.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'vote-caption'      => 'మీ ఎంపిక:',
+	'vote-view-results' => 'ఫలితాలు చూడండి',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -462,6 +487,22 @@ $messages['tr'] = array(
 	'vote-submit'         => 'Oy',
 	'vote-results-choice' => 'Seçim',
 	'vote-results-count'  => 'Sayma',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'vote'                => 'Bỏ phiếu',
+	'vote-legend'         => 'Bỏ hay đổi phiếu',
+	'vote-caption'        => 'Lựa chọn của bạn:',
+	'vote-submit'         => 'Bỏ phiếu',
+	'vote-view-results'   => 'Xem kết quả',
+	'vote-results'        => 'Kết quả bỏ phiếu',
+	'vote-results-choice' => 'Lựa chọn',
+	'vote-results-count'  => 'Đếm',
+	'vote-login'          => 'Bạn cần $1 trước khi bỏ phiếu.',
+	'vote-login-link'     => 'đăng nhập',
 );
 
 /** Volapük (Volapük)

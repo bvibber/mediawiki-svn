@@ -22,6 +22,13 @@ $messages['bn'] = array(
 	'cldr-desc' => 'এই এক্সটেনশনটি ভাষাগুলির স্থানীয়কৃত নাম প্রদান করে',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'cldr-desc' => 'Doplňek, který poskytuje lokalizované názvy jazyků',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -45,6 +52,13 @@ $messages['hsb'] = array(
  */
 $messages['ja'] = array(
 	'cldr-desc' => 'MediaWiki が対応している言語名のリスト',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'cldr-desc' => 'Erweiderung déi iwwersate Sproochenimmm zur Verfügung stellt',
 );
 
 /** Dutch (Nederlands)
@@ -75,10 +89,25 @@ $messages['pt'] = array(
 	'cldr-desc' => 'Extensão que providencia nomes localizados de línguas',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'cldr-desc' => 'Расширение, предоставляющее переводы названий языков',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'cldr-desc' => 'Rozšírenie, ktoré poskytuje lokalizované názvy jazykov',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'cldr-desc' => 'Tillägg som ger översättningar av språknamn',
 );
 

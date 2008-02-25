@@ -111,6 +111,7 @@ $1
  * @author SPQRobin
  */
 $messages['ast'] = array(
+	'lucene-desc'           => 'Interfaz pal motor de busca Apache Lucene',
 	'searchnumber'          => '<strong>Resultaos $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Ant</span>",
 	'searchnext'            => "<span style='font-size: small'>Sig</span> &#x00BB;",
@@ -147,6 +148,7 @@ $messages['bg'] = array(
 	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
+	'lucene-searchscore'    => 'Релевантност: $1%',
 	'lucene-resultsize'     => '$1 ($2 думи)',
 	'searchnoresults'       => 'За съжаление нямаше точни съвпадения със заявката ви.',
 	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
@@ -276,6 +278,31 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lucene-desc'           => 'Interfejs za pytański program Apache "Lucene"',
+	'searchnumber'          => '<strong>Wuslědki $1-$2 z $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Slědny</span>",
+	'searchnext'            => "<span style='font-size: small'>Pśiducy</span> &#x00BB;",
+	'lucene-searchscore'    => 'Relewanca: $1%',
+	'lucene-resultsize'     => '$1 ($2 słowow)',
+	'searchdidyoumean'      => 'Sy "<a href="$1">$2</a>" měnił?',
+	'searchnoresults'       => 'Bóžko njejsu žedne góźbne boki za twóje pytańske wótpšašanje.',
+	'searchnearmatches'     => '<b>Toś te boki maju k pytańskemu wótpšašanjoju pódobne titule:</b>',
+	'lucenepowersearchtext' => 'Pytanje w mjenjowych rumach:
+
+$1
+
+Pytanje za $3 $9 $10',
+	'lucenefallback'        => 'Pśi wikijowym pytanju jo problem nastał.
+To jo nejskerjej tuchylu; wopytaj pózdźej hyšći raz abo móžoš teke wiki z eksterneju pytańskej słužbu pśepytaś:',
+	'searchexactcase'       => 'Pytanje z eksaktnym wjelikopisanjom/małopisanjom',
+	'searchall'             => 'wše',
+	'searchincategory'      => 'w kategoriji',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author MF-Warburg
@@ -390,8 +417,11 @@ u pueis landeal nel güiqui a través dun landeru esternu:',
 	'searchincategory'      => 'encategoria',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'lucene-desc'           => 'رابطی برای موتور جستجوی لوسین آپاچی',
 	'searchnumber'          => '<strong>نتایج $1-$2 از $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>قبلی</span>",
 	'searchnext'            => "<span style='font-size: small'>بعدی</span> »",
@@ -410,7 +440,6 @@ $1
 	'searchexactcase'       => 'جستجوی حساس به حروف بزرگ و کوچک',
 	'searchall'             => 'همه',
 	'searchincategory'      => 'دررده',
-
 );
 
 /** Finnish (Suomi)
@@ -475,6 +504,7 @@ Texte à rechercher : $3 $9 $10',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'lucene-desc'           => 'Entèrface por lo motor de rechèrche Apache Lucene',
 	'searchnumber'          => '<strong>Rèsultats $1 – $2 dessus $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prèc.</span>",
 	'searchnext'            => "<span style='font-size: small'>Siuv.</span> &#x00BB;",
@@ -558,10 +588,15 @@ $1
 	'searchincategory'      => 'בקטגוריה',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dnik
+ */
 $messages['hr'] = array(
+	'lucene-desc'           => 'Sučelje prema tražilici Apache Lucene',
 	'searchnumber'          => '<strong>Rezultati $1-$2 od $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prethodno</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Slijedeći</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prethodno</span>",
+	'searchnext'            => "<span style='font-size: small'>Slijedeći</span> &#x00BB;",
 	'lucene-searchscore'    => 'Povezanost: $1%',
 	'lucene-resultsize'     => '$1 ($2 riječi)',
 	'searchdidyoumean'      => 'Da li ste mislili: "<a href="$1">$2</a>"?',
@@ -665,6 +700,7 @@ Leita að $3 $9',
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'lucene-desc'           => 'Interfaccia per il motore di ricerca Lucene di Apache',
 	'searchnumber'          => '<strong>Risultati da $1 a $2 su un totale di $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
 	'searchnext'            => "<span style='font-size: small'>Successivo</span> &#x00BB;",
@@ -786,6 +822,13 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 	'searchincategory'      => 'sanatta',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'searchincategory' => 'ក្នុងចំណាត់ក្រុម',
+);
+
 $messages['la'] = array(
 	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
 
@@ -825,6 +868,7 @@ Dir kënnt awer och déi extern Sichméiglichkeete benotzen:',
  * @author Matthias
  */
 $messages['li'] = array(
+	'lucene-desc'           => 'Interface veur de zeukmachine Apache Lucene',
 	'searchnumber'          => '<strong>Resultate $1-$2 van $3</strong>',
 	'searchprev'            => "« <span style='font-size: small'>Vorige</span>",
 	'searchnext'            => "<span style='font-size: small'>Volgende</span> »",
@@ -1168,6 +1212,7 @@ $1
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'lucene-desc'           => 'Apache Lucene диэн көрдүүр движок интерфейса',
 	'searchnumber'          => '<strong>Результаты $1—$2 из $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Инн.</span>",
 	'searchnext'            => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
@@ -1401,11 +1446,13 @@ $messages['ur'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'lucene-desc'           => 'Giao diện của bộ tìm kiếm Apache Lucene',
 	'searchnumber'          => '<strong>Kết quả từ $1 đến $2 trong tổng số $3</strong>',
 	'searchprev'            => '« <span style="font-size: small;">Trước</span>',
-	'searchnext'            => '<span style="font-size: small;">Tiếp</span> »',
+	'searchnext'            => "<span style='font-size: small'>Tiếp</span> &#x00BB;",
 	'lucene-searchscore'    => 'Độ phù hợp: $1%',
 	'lucene-resultsize'     => '$1 ($2 chữ)',
 	'searchdidyoumean'      => 'Bạn có muốn “<a href="$1">$2</a>” không?',

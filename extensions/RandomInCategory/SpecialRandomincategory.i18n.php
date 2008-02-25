@@ -43,6 +43,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'randomincategory'                => 'Zufällige Seite in einer Kategorie',
+	'randomincategory-desc'           => '[[Special:Randomincategory|Spezialseite]], um eine zufällige Seite auf einer Kategorie zu holen',
 	'randomincategory-toolbox'        => 'Zufällige Seite',
 	'randomincategory-nocategory'     => 'Kategorie $1 ist nicht vorhanden oder leer',
 	'randomincategory-label'          => 'Kategorie:',
@@ -72,9 +73,12 @@ $messages['gl'] = array(
 	'randomincategory-submit'     => 'Adiante',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'randomincategory'            => 'Připadna strona w kategoriji',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Specialna strona]], zo by připadnu stronu do kategorije přewzała',
 	'randomincategory-toolbox'    => 'Připadna strona',
 	'randomincategory-nocategory' => 'Kategorija $1 njeeksistuje abo je prózdna',
 	'randomincategory-label'      => 'Kategorija:',
@@ -90,6 +94,18 @@ $messages['hu'] = array(
 	'randomincategory-nocategory' => '$1 névvel nem létezik kategória vagy üres.',
 	'randomincategory-label'      => 'Kategória:',
 	'randomincategory-submit'     => 'Menj',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'randomincategory'            => 'ទំព័រព្រាវ ក្នុងចំណាត់ក្រុម',
+	'randomincategory-desc'       => '[[Special:Randomincategory|ទំព័រពិសេស]] ដើម្បីទទួលបាន ទំព័រព្រាវ ក្នុងចំណាត់ក្រុម',
+	'randomincategory-toolbox'    => 'ទំព័រព្រាវ',
+	'randomincategory-nocategory' => 'ចំណាត់ក្រុម $1 មិនមាន ឬ ទទេ',
+	'randomincategory-label'      => 'ចំណាត់ក្រុម ៖',
+	'randomincategory-submit'     => 'ទៅ',
 );
 
 /** Latin (Latina)
@@ -108,6 +124,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'randomincategory'            => 'Zoufälleg Säit an däer Kategorie',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Spezialsäit]], fir eng zoufälleg Säite vun enger Kategorie ze weisen',
 	'randomincategory-toolbox'    => 'Zoufälleg Säit',
 	'randomincategory-nocategory' => "D'Kategorie $1 gëtt et net oder si ass eidel",
 	'randomincategory-label'      => 'Kategorie:',
@@ -170,10 +187,11 @@ $messages['pt'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Michawiki
  */
 $messages['sk'] = array(
 	'randomincategory'            => 'Náhodná stránka v kategórii',
-	'randomincategory-desc'       => '[Special:Randomincategory|Špeciálna stránka]] na výber náhodnej stránky z kategórie',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Špeciálna stránka]] na výber náhodnej stránky z kategórie',
 	'randomincategory-toolbox'    => 'Náhodná stránka',
 	'randomincategory-nocategory' => 'Kategória $1 neexistuje alebo je prázdna',
 	'randomincategory-label'      => 'Kategória:',
@@ -193,10 +211,24 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'randomincategory-label'  => 'Kategori:',
-	'randomincategory-submit' => 'Gå',
+	'randomincategory'         => 'Slump sida i kategori',
+	'randomincategory-toolbox' => 'Slump sida',
+	'randomincategory-label'   => 'Kategori:',
+	'randomincategory-submit'  => 'Gå',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'randomincategory'            => 'వర్గంలోని యాదృచ్చిక పేజీ',
+	'randomincategory-toolbox'    => 'యాదృచ్ఛిక పేజీ',
+	'randomincategory-nocategory' => '$1 అనే వర్గం లేదు లేదా ఖాళీగా ఉంది',
+	'randomincategory-label'      => 'వర్గం:',
+	'randomincategory-submit'     => 'వెళ్ళు',
 );
 
 /** Volapük (Volapük)

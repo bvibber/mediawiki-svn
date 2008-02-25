@@ -92,7 +92,7 @@ function mvSetupExtension(){
 	//$wgHooks['ArticleSave'][] = 'mvSaveHook';
 	$wgHooks['ArticleSaveComplete'][] = 'mvSaveHook';
 	$wgHooks['ArticleDelete'][] = 'mvDeleteHook';
-	$wgHooks['ArticleFromTitle'][] = 'mvDoMvPage';		
+	$wgHooks['ArticleFromTitle'][] = 'mvDoMvPage';			
 		
 	$wgHooks['TitleMoveComplete'][]='mvMoveHook';
 	$wgHooks['TitleisValidMove'][]='mvisValidMoveOperation';	
@@ -102,7 +102,7 @@ function mvSetupExtension(){
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
 
-
+	$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';
 	
 	
 	/**********************************************/
@@ -114,7 +114,7 @@ function mvSetupExtension(){
 	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
 		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br>' .
-				'[http://metavid.ucsc.edu/wiki/index.php/Metavid Wiki Software]'
+				'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }	
 /**********************************************/
@@ -123,15 +123,15 @@ function mvSetupExtension(){
 
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags
-	*  into the html header of each page.  It is either called by pages 
-	*  that will be embedding video
+	*  into the html header of each page.  It is called by pages 
+	*  that will be embedding video or use metavid interfaces 
 	* 
 	* @@todo split up embed js & interface js include calls
 	*
 	*  $out is the modified OutputPage.
 	*/
 	function mvfAddHTMLHeader($head_set='') {
-		global $mvgHeadersInPlace; // record whether headers were created already
+		global $mvgHeadersInPlace; // record whether headers were created already (hopefully you don't call addHeader twice)
 		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
 		global $mvgScriptPath, $wgJsMimeType, $wgOut;		
 			
@@ -139,7 +139,7 @@ function mvSetupExtension(){
 			//all sets use mv_common script: *not used much yet*  
 			$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>");
 					
-			if($head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed')
+			if($head_set=='smw_ext'|| $head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 			
 			if($head_set=='search' || $head_set=='sequence'){	
@@ -155,7 +155,8 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>");																				
 			if($head_set=='stream_interface')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
-
+			if($head_set=='smw_ext')
+				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
 			 
 			$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 			$wgOut->addLink(array(
@@ -172,7 +173,9 @@ function mvSetupExtension(){
 							  	'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
 							  '<![endif]-->'
 					);
-			
+			//add in the semantic wiki css if in stream interface
+			if($head_set=='stream_interface')
+				$wgOut->addScript('<link rel="stylesheet" type="text/css" media="screen, projection" href="/mvWiki/extensions/SemanticMediaWiki/skins/SMW_custom.css" />');
 			$mvgHeadersInPlace=true;
 		}
 		return true; // always return true, in order not to stop MW's hook processing!
@@ -483,12 +486,7 @@ function mvDoMetavidStreamPage(&$title, &$article){
 		$streamTitle = Title::newFromText( $mvTitle->getStreamName(), MV_NS_STREAM);
 		//print " new title: " . $streamTitle . "\n";		
 		$article = new MV_StreamPage($streamTitle, $mvTitle);
-	}else{		
-		//if its key word Main_Page (present the default interface)
-		if($title->getDBkey()=='Main_Page'){
-			$title->mNamespace= NS_SPECIAL;				
-			$article = new MV_StreamPage($title, $mvTitle);
-		}		
+	}else{				
 		mvMissingStreamPage($mvTitle->stream_name);
 	}	
 }

@@ -68,7 +68,7 @@ class SpecialSmoothGallery extends SpecialPage {
 			$this->mInput = str_replace( array('|', ':::'), $wgSmoothGalleryDelimiter, $this->mInput );
 
 
-			$wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser, true ) );
+			$wgOut->addHTML( initSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser, true ) );
 		} else {
 			$gId = $wgRequest->getInt( 'gallery' );
 			if ( $gId == NULL ) {

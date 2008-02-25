@@ -44,6 +44,17 @@ $messages['ca'] = array(
 	'purgecache-button'  => 'Purga',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'purgecache'         => 'Cache löschen',
+	'purgecache-desc'    => '[[Special:PurgeCache|Spezialseite]], um die OBJECTCACHE-Tabelle zu löschen',
+	'purgecache-warning' => 'Dies löscht den Cache.',
+	'purgecache-purged'  => 'Der Cache wurde gelöscht.',
+	'purgecache-button'  => 'Löschen',
+);
+
 $messages['fr'] = array(
 	'purgecache'         => 'Purger le cache',
 	'purgecache-desc'    => '[[Special:PurgeCache|Page spéciale]] utilisée pour effacer la table OBJECTCACHE',
@@ -52,11 +63,19 @@ $messages['fr'] = array(
 	'purgecache-button'  => 'Purger',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'purgecache-button' => 'Depurar',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'purgecache'         => 'Pufrowak wuprózdnić',
+	'purgecache-desc'    => '[[Special:PurgeCache|Specialna strona]], zo by so tabela OBJECTCACHE wuprózdniła',
 	'purgecache-warning' => 'To budźe tabele pufrowaka prózdnić.',
 	'purgecache-purged'  => 'Pufrowak je so wuprózdnił.',
 	'purgecache-button'  => 'Prózdnić',
@@ -173,5 +192,14 @@ $messages['sr-ec'] = array(
 	'purgecache-warning' => 'Ово ће освежити кеш',
 	'purgecache-purged'  => 'Кеш је освежен.',
 	'purgecache-button'  => 'Освежи',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'purgecache'        => 'Tẩy sạch vùng nhớ đệm',
+	'purgecache-purged' => 'Đã tẩy sạch vùng nhớ đệm.',
+	'purgecache-button' => 'Làm tươi',
 );
 

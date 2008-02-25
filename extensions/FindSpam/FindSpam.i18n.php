@@ -66,18 +66,26 @@ $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'findspam' => 'Recherche de spam',
-	'findspam-desc' => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des spam ajoutés récemment',
-	'findspam-ip' => 'Adresse IP :',
-	'findspam-ok' => 'Rechercher',
+	'findspam'             => 'Recherche de pollupostages',
+	'findspam-desc'        => 'Ajoute une [[Special:FindSpam|page spéciale]] qui permet de trouver des pollupostages ajoutés récemment',
+	'findspam-ip'          => 'Adresse IP :',
+	'findspam-ok'          => 'Rechercher',
 	'findspam-notextfound' => 'Aucune contribution trouvée',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'findspam' => 'Atopar spam',
-	'findspam-ip' => 'Enderezo IP:',
-	'findspam-ok' => 'De acordo',
+	'findspam'             => 'Atopar spam',
+	'findspam-desc'        => 'Engada unha [[Special:FindSpam|páxina especial]] que permita atopar recentemente spam engadido',
+	'findspam-ip'          => 'Enderezo IP:',
+	'findspam-ok'          => 'De acordo',
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 
@@ -99,6 +107,13 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'findspam'    => 'Spam keresése',
 	'findspam-ip' => 'IP-cím:',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'findspam-ip' => 'អាស័យដ្ឋាន IP ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -142,10 +157,14 @@ $messages['nl'] = array(
 	'findspam-notextfound' => 'Geen bijdragen gevonden',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'findspam' => 'Finn forsøpling',
-	'findspam-ip' => 'IP-adresse:',
-	'findspam-ok' => 'OK',#identical but defined
+	'findspam'             => 'Finn forsøpling',
+	'findspam-desc'        => 'Legger til en [[Special:FindSpam|spesialside]] som lar deg finne spam som er blitt lagt til nylig',
+	'findspam-ip'          => 'IP-adresse:',
+	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Ingen bidrag funnet',
 );
 
@@ -190,6 +209,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'findspam'             => 'Поиск спама',
+	'findspam-desc'        => 'Добавляет [[Special:FindSpam|служебную страницу]], позволяющую найти недавно добавленный спам',
 	'findspam-ip'          => 'IP-адрес:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Не найдено вклада',
@@ -234,6 +254,14 @@ $messages['sv'] = array(
 	'findspam-ip'          => 'IP-adress:',
 	'findspam-ok'          => 'Sök',
 	'findspam-notextfound' => 'Inga bidrag hittades',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'findspam-ip' => 'IP చిరునామా:',
+	'findspam-ok' => 'సరే',
 );
 
 /** Turkish (Türkçe)

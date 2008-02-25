@@ -44,6 +44,13 @@ $messages['hsb'] = array(
 	'i18ntags-desc' => 'Přistup k funkcijam i18n za formatowanje ličbow, gramatiku a plural w kóždej k dispoziciji stejacej rěči',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'i18ntags-desc' => '対応言語における数値書式、文法、複数形に関するi18n関数へのアクセスを提供する',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
@@ -84,5 +91,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'i18ntags-desc' => 'Prístup k i18n funkciám pre formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'i18ntags-desc' => 'Truy cập các hàm quốc tế hóa về định dạng số, ngữ pháp, và biến cách trong các ngôn ngữ có sẵn',
 );
 

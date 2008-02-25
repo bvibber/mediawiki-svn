@@ -199,6 +199,33 @@ $messages['el'] = array(
 	'usagestatisticstype' => 'Τύπος',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'specialuserstats'                => 'Statistiko de uzado',
+	'usagestatistics'                 => 'Statistiko de uzado',
+	'usagestatistics-desc'            => 'Montru individuan uzanton kaj ĉiun statistikon pri uzado de vikio',
+	'usagestatisticsfor'              => '<h2>Statistiko pri uzado por [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'Ĉiuj uzantoj',
+	'usagestatisticsinterval'         => 'Intervalo',
+	'usagestatisticstype'             => 'Tipo',
+	'usagestatisticsstart'            => 'Komenco-dato',
+	'usagestatisticsend'              => 'Fino-dato',
+	'usagestatisticssubmit'           => 'Generu statistikojn',
+	'usagestatisticsnostart'          => '* <font color=red>Bonvolu entajpi komenco-daton.</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Bonvolu entajpi fino-daton.</font>',
+	'usagestatisticsbadstartend'      => '<b>Malbona <i>Komenca</i> kaj/aŭ <i>Fina</i> dato!</b>',
+	'usagestatisticsintervalday'      => 'Tago',
+	'usagestatisticsintervalweek'     => 'Semajno',
+	'usagestatisticsintervalmonth'    => 'Monato',
+	'usagestatisticsincremental'      => 'Krementa <!-- laŭ Komputada Leksikono -->',
+	'usagestatisticsincremental-text' => 'Krementa <!-- laŭ Komputada Leksikono -->',
+	'usagestatisticscalselect'        => 'Elektu',
+	'usagestatistics-editindividual'  => 'Individua uzanto $1 redaktoj statistikoj',
+	'usagestatistics-editpages'       => 'Individua uzanto $1 paĝoj statistikoj',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  */
@@ -249,23 +276,27 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'specialuserstats'             => 'Estatísticas do Uso',
-	'usagestatistics'              => 'Estatísticas do Uso',
-	'usagestatisticsfor'           => '<h2>Estatísticas de uso para [[:usuario:$1|$1]]</h2>',
-	'usagestatisticsallusers'      => 'Todos os Usuarios',
-	'usagestatisticsinterval'      => 'Intervalo',
-	'usagestatisticstype'          => 'Clase',
-	'usagestatisticsstart'         => 'Data de comezo',
-	'usagestatisticsend'           => 'Data de fin',
-	'usagestatisticssubmit'        => 'Xenerar Estatísticas',
-	'usagestatisticsnostart'       => '* <font color=red>Especifique unha data de comezo</font>',
-	'usagestatisticsnoend'         => '* <font color=red>Especifique unha data de fin</font>',
-	'usagestatisticsbadstartend'   => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
-	'usagestatisticsintervalday'   => 'Día',
-	'usagestatisticsintervalweek'  => 'Semana',
-	'usagestatisticsintervalmonth' => 'Mes',
+	'specialuserstats'               => 'Estatísticas do Uso',
+	'usagestatistics'                => 'Estatísticas do Uso',
+	'usagestatisticsfor'             => '<h2>Estatísticas de uso para [[:usuario:$1|$1]]</h2>',
+	'usagestatisticsallusers'        => 'Todos os Usuarios',
+	'usagestatisticsinterval'        => 'Intervalo',
+	'usagestatisticstype'            => 'Clase',
+	'usagestatisticsstart'           => 'Data de comezo',
+	'usagestatisticsend'             => 'Data de fin',
+	'usagestatisticssubmit'          => 'Xerar Estatísticas',
+	'usagestatisticsnostart'         => '* <font color=red>Especifique unha data de comezo</font>',
+	'usagestatisticsnoend'           => '* <font color=red>Especifique unha data de fin</font>',
+	'usagestatisticsbadstartend'     => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
+	'usagestatisticsintervalday'     => 'Día',
+	'usagestatisticsintervalweek'    => 'Semana',
+	'usagestatisticsintervalmonth'   => 'Mes',
+	'usagestatisticscalselect'       => 'Seleccionar',
+	'usagestatistics-editindividual' => 'Estatísticas das edicións do usuario individual $1',
+	'usagestatistics-editpages'      => 'Páxinas estatísticas do usuario individual $1',
 );
 
 /** Croatian (Hrvatski)
@@ -315,22 +346,34 @@ $messages['hsb'] = array(
 	'usagestatistics-editpages'       => 'Indiwiduelna statistika stronow wužiwarja $1',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'usagestatisticsintervalday'   => 'Dagur',
+	'usagestatisticsintervalweek'  => 'Vika',
+	'usagestatisticsintervalmonth' => 'Mánuður',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'specialuserstats'           => 'Benotzungs-Statistiken',
-	'usagestatistics'            => 'Benotzungs-Statistiken',
-	'usagestatisticsfor'         => '<h2>Benotzungs-Statistik fir [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'All Benotzer',
-	'usagestatisticsinterval'    => 'Intervall',
-	'usagestatisticstype'        => 'Typ',
-	'usagestatisticsstart'       => 'Ufanksdatum',
-	'usagestatisticsend'         => 'Schlussdatum',
-	'usagestatisticssubmit'      => 'Statistik opstellen',
-	'usagestatisticsnostart'     => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
-	'usagestatisticsbadstartend' => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+	'specialuserstats'             => 'Benotzungs-Statistiken',
+	'usagestatistics'              => 'Benotzungs-Statistiken',
+	'usagestatisticsfor'           => '<h2>Benotzungs-Statistik fir [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'All Benotzer',
+	'usagestatisticsinterval'      => 'Intervall',
+	'usagestatisticstype'          => 'Typ',
+	'usagestatisticsstart'         => 'Ufanksdatum',
+	'usagestatisticsend'           => 'Schlussdatum',
+	'usagestatisticssubmit'        => 'Statistik opstellen',
+	'usagestatisticsnostart'       => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
+	'usagestatisticsbadstartend'   => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Woch',
+	'usagestatisticsintervalmonth' => 'Mount',
 );
 
 /** Dutch (Nederlands)
@@ -395,8 +438,8 @@ $messages['no'] = array(
 	'usagestatisticsstart'            => 'Starttid',
 	'usagestatisticsend'              => 'Sluttid',
 	'usagestatisticssubmit'           => 'Generer statistikk',
-	'usagestatisticsnostart'          => '* <font color="red">Vennligst oppgi en starttid</font>',
-	'usagestatisticsnoend'            => '* <font color="red">Vennligst oppgi en sluttid</font>',
+	'usagestatisticsnostart'          => '* <font color="red">Vennligst angi en starttid</font>',
+	'usagestatisticsnoend'            => '* <font color="red">Vennligst angi en sluttid</font>',
 	'usagestatisticsbadstartend'      => '<b>Ugyldig <i>start-</i> og/eller <i>slutttid</i>!</b>',
 	'usagestatisticsintervalday'      => 'Dag',
 	'usagestatisticsintervalweek'     => 'Uke',
@@ -503,20 +546,24 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Veeven
  */
 $messages['te'] = array(
-	'specialuserstats'           => 'వాడుక గణాంకాలు',
-	'usagestatistics'            => 'వాడుక గణాంకాలు',
-	'usagestatisticsfor'         => '<h2>[[:user:$1|$1]] కు వాడుక గణాంకాలు</h2>',
-	'usagestatisticsallusers'    => 'వాడుకరులందరూ',
-	'usagestatisticsinterval'    => 'సమయాంతరం',
-	'usagestatisticstype'        => 'రకం',
-	'usagestatisticsstart'       => 'ప్రారంభ తేదీ',
-	'usagestatisticsend'         => 'ముగింపు తేదీ',
-	'usagestatisticssubmit'      => 'గణాంకాలను సృష్టించు',
-	'usagestatisticsnostart'     => '* <font color=red>ప్రారంభ తేదీ ఇవ్వండి</font>',
-	'usagestatisticsnoend'       => '* <font color=red>ముగింపు తేదీ ఇవ్వండి</font>',
-	'usagestatisticsbadstartend' => '<b><i>ప్రారంభ</i> మరియు/లేదా <i>ముగింపు</i> తేదీ సరైనది కాదు!</b>',
+	'specialuserstats'             => 'వాడుక గణాంకాలు',
+	'usagestatistics'              => 'వాడుక గణాంకాలు',
+	'usagestatisticsfor'           => '<h2>[[:user:$1|$1]] కు వాడుక గణాంకాలు</h2>',
+	'usagestatisticsallusers'      => 'వాడుకరులందరూ',
+	'usagestatisticsinterval'      => 'సమయాంతరం',
+	'usagestatisticstype'          => 'రకం',
+	'usagestatisticsstart'         => 'ప్రారంభ తేదీ',
+	'usagestatisticsend'           => 'ముగింపు తేదీ',
+	'usagestatisticssubmit'        => 'గణాంకాలను సృష్టించు',
+	'usagestatisticsnostart'       => '* <font color=red>ప్రారంభ తేదీ ఇవ్వండి</font>',
+	'usagestatisticsnoend'         => '* <font color=red>ముగింపు తేదీ ఇవ్వండి</font>',
+	'usagestatisticsbadstartend'   => '<b><i>ప్రారంభ</i> మరియు/లేదా <i>ముగింపు</i> తేదీ సరైనది కాదు!</b>',
+	'usagestatisticsintervalday'   => 'రోజు',
+	'usagestatisticsintervalweek'  => 'వారం',
+	'usagestatisticsintervalmonth' => 'నెల',
 );
 
 /** Turkish (Türkçe)
@@ -527,6 +574,24 @@ $messages['tr'] = array(
 	'usagestatisticsinterval' => 'Zaman',
 	'usagestatisticsstart'    => 'Başlangıç tarihi',
 	'usagestatisticsend'      => 'Bitiş tarihi',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'specialuserstats'             => 'Thống kê sử dụng',
+	'usagestatistics'              => 'Thống kê sử dụng',
+	'usagestatisticsfor'           => '<h2>Thống kê sử dụng về [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Mọi người dùng',
+	'usagestatisticstype'          => 'Loại',
+	'usagestatisticsstart'         => 'Ngày đầu',
+	'usagestatisticsend'           => 'Ngày cuối',
+	'usagestatisticssubmit'        => 'Tính ra thống kê',
+	'usagestatisticsintervalday'   => 'Ngày',
+	'usagestatisticsintervalweek'  => 'Tuần',
+	'usagestatisticsintervalmonth' => 'Tháng',
+	'usagestatisticscalselect'     => 'Chọn',
 );
 
 /** Volapük (Volapük)

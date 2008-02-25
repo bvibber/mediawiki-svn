@@ -215,12 +215,13 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
-	'review_sidebar_title'  => 'Révision',
-	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
-	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
+	'review_sidebar_title'                                   => 'Révision',
+	'review-desc'                                            => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
+	'review_topics'                                          => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
 # ....
@@ -237,7 +238,7 @@ $messages['fr'] = array(
 1:Qualité:5:mauvais:bon
 2:Prêt pour 1.0:2:non:oui",
 	'review_topic_page'                                      => 'Sujets à révision',
-	'review_sidebar_explanation'                             => 'La boîte à cocher à la gauche toute signifie toujours « sans opinion ».',
+	'review_sidebar_explanation'                             => 'La boîte à cocher la plus à gauche toute signifie toujours « sans opinion ».',
 	'review_save'                                            => 'Sauvegarder la révision',
 	'review_your_review'                                     => 'Votre révision de cette page ou révision :',
 	'review_sidebar_you_have_other_reviews_for_this_article' => 'Vous avez déjà révisé les autres versions de cette page. Vos autres évaluations seront fusionnées avec celle-ci si vous avez sélectionné « sans opinion ».',
@@ -245,7 +246,7 @@ $messages['fr'] = array(
 	'review_sidebar_final'                                   => 'Pour voir les données de révision de la vue de cette page, aller à $1',
 	'review_for_page'                                        => 'Révision pour la page « $1 »',
 	'review_for_user'                                        => 'Révision pour contributeur « $1 »',
-	'review_error'                                           => 'Quelque chose est brisé.',
+	'review_error'                                           => 'Quelque chose cloche.',
 	'review_no_reviews_for_page'                             => "Il n'y a pas de révisions pour « $1 ».",
 	'review_total_statistics'                                => 'Total',
 	'review_statistics_left_corner'                          => 'Révision',
@@ -273,12 +274,13 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Siebrand
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'review_sidebar_title'                   => 'Revisado',
 	'review_topic_page'                      => 'Revisados os temas',
 	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
-	'review_your_review'                     => 'O seu examen desta páxina/revisión:',
+	'review_your_review'                     => 'O seu exame desta páxina/revisión:',
 	'review_page_link'                       => 'revisar estatísticas',
 	'review_sidebar_final'                   => 'Para revisar os datos desta páxina, véxase $1',
 	'review_for_page'                        => 'Revisión para a páxina "$1"',
@@ -314,6 +316,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'review_sidebar_title'                                   => 'Přepruwować',
+	'review-desc'                                            => 'Wobnowjena [[Special:Review|pruwowanska]] funkcija.',
 	'review_topics'                                          => "# Deleka je lisćina temow a wobwodow za rozšěrjenje Review.
 # Kóžda tema definuje so přez linku pjeć hódnotow wotdźělenych přez ':' (wšě druhe linki ignoruja so).
 # Porjad je: numeriski kluč (>0), mjeno, maksimalny wobwod (>1; 2=haj/ně), woznam najnišeje hódnoty (na př. 'špatny'), woznam najwyšeje hódnoty (na př. 'dobry').
@@ -357,7 +360,10 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_statistics_left_corner' => 'Versioun',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
+	'review_user_details_link'      => '(Detailer)',
+	'review_no_opinion'             => 'Keng Meenung',
 	'review_comment'                => 'Bemierkung',
 );
 
@@ -367,7 +373,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'review_sidebar_title'                                   => 'Beoordelen',
-	'review-desc'                                            => 'De wederopstanding van de optie [[Special:Review|validatie]]',
+	'review-desc'                                            => 'De wederopstanding van de [[Special:Review|waarderingsfunctie]]',
 	'review_topics'                                          => "# The following is the list of topics and ranges for the review extension.
 # Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
 # The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (e.g., 'bad'), meaning of highest value (e.g., 'good').
@@ -405,6 +411,24 @@ $messages['nl'] = array(
 	'review_no_opinion'                                      => 'Geen mening',
 	'review_rating'                                          => 'Waardering',
 	'review_comment'                                         => 'Opmerking',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'review_sidebar_explanation'    => 'Den venstre avmerkingsboksen betyr alltid «ingen mening».',
+	'review_error'                  => 'Noe er feil!',
+	'review_total_statistics'       => 'Totalt',
+	'review_statistics_left_corner' => 'Revisjon',
+	'review_version_link'           => 'Revisjon #$1',
+	'review_statistic_cell'         => 'Gjennomsnitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_version_statistic_cell' => '$1 av $2',
+	'review_user_details_link'      => '(detaljer)',
+	'review_blocked'                => 'Du er blokkert, gå vekk.',
+	'review_topic'                  => 'Emne',
+	'review_no_opinion'             => 'Ingen mening',
+	'review_comment'                => 'Kommentar',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -532,6 +556,29 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'review_comment' => 'Kommentar',
+	'review_sidebar_title'     => 'Granska',
+	'review_page_link'         => 'granska statistik',
+	'review_user_details_link' => '(detaljer)',
+	'review_comment'           => 'Kommentar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'review_sidebar_title'                   => 'సమీక్ష',
+	'review_your_review'                     => 'ఈ పేజీ/కూర్పు పై మీ సమీక్ష:',
+	'review_total_statistics'                => 'మొత్తం',
+	'review_statistics_left_corner'          => 'కూర్పు',
+	'review_version_link'                    => 'కూర్పు #$1',
+	'review_version_reviews_link'            => '<small>(కూర్పు సమీక్షలు)</small>',
+	'review_concerns_page'                   => 'ఈ సమీక్ష "$1" అనే పేజీ గురించి.',
+	'review_user_reviews'                    => '<small>(ఈ వాడుకరి చేసిన సమీక్షలు)</small>',
+	'review_user_page_list'                  => 'ఆ వాడుకరి ఈ క్రింద పేర్కొన్న పేజీలను సమీక్షించారు:',
+	'review_user_details_link'               => '(వివరాలు)',
+	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
+	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
+	'review_blocked'                         => 'మిమ్మల్ని నిరోధించారు, వెళ్ళిపోండి.',
+	'review_comment'                         => 'వ్యాఖ్య',
 );
 

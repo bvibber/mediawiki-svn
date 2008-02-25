@@ -30,6 +30,13 @@ $messages['fr'] = array(
 	'forcepreview-desc' => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ */
+$messages['gl'] = array(
+	'forcepreview' => 'Gardar páxina (usar vista previa)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -54,6 +61,30 @@ $messages['nl'] = array(
 	'forcepreview-desc' => 'Toont bewerkingen eerst ter controle voor gebruikers zonder rechten',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'forcepreview'      => 'Lagre side (forhåndsvis først)',
+	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'forcepreview'      => 'Gravar página (use a previsão primeiro)',
+	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'forcepreview'      => 'Сохранить страницу (сначала используйте предпросмотр)',
+	'forcepreview-desc' => 'Обязательно использование предпросмотра для непривилегированных участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -68,6 +99,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'forcepreview'      => 'Spara (förhandsgranska först)',
 	'forcepreview-desc' => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'forcepreview' => 'పేజీని భద్రపరచండి (ముందుగా సరిచూడండి)',
 );
 
 /** Vietnamese (Tiếng Việt)

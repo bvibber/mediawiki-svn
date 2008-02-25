@@ -21,7 +21,8 @@ $wgExtensionFunctions[] = 'wfRegexBlockSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Name Block',
 	'author' => 'Bartek',
-	'description' => 'alternate user block (by given name, using regular expressions)'
+	'description' => 'alternate user block (by given name, using regular expressions)',
+	'descriptionmsg' => 'regexblock-special-desc',
 );
 
 /* special page init */

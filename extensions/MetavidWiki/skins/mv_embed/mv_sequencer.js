@@ -169,12 +169,13 @@ mvSequencer.prototype = {
 		}
 	},
 	plReadyInit:function(){
-		js_log('plReadyInit:');							
+		js_log('plReadyInit');							
 		//update playlist (since if its empty right now) 
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
-		}				
-		
+		}						
+		//add playlist hook to update timeline
+		this.plObj.update_tl_hook = this.instance_name+'.update_tl_hook';		
 		var this_sq = this;
 		var top_pos=25;		
 		//add tracks:
@@ -213,6 +214,14 @@ mvSequencer.prototype = {
 			top_pos+=track_height+10;		
 		}					
 		this.do_render_timeline();
+	},
+	update_tl_hook:function(jh_time_ms){			
+		//put into seconds scale: 
+		var jh_time_sec_float = jh_time_ms/1000;
+		//render playline at given time
+		//js_log('tl scale: '+this.timeline_scale);
+		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time_sec_float/this.timeline_scale)+'px' );
+		//js_log('at time:'+ jh_time_sec + ' px:'+ Math.round(jh_time_sec_float/this.timeline_scale));
 	},
 	/*returns a inline or json format for current sequence */
 	getSeqText:function(mode){

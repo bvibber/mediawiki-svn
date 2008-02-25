@@ -181,9 +181,10 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'imagemap_desc'               => 'Permet une carte image cliente à être cliquée en utilisant la balise <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_desc'               => 'Permet les cartes images clientes cliquables, grâce à la balise <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’image est invalide ou n’existe pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : aucun lien valide n’a été trouvé à la fin de la ligne $1',
@@ -200,6 +201,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'imagemap_desc'               => 'Pèrmèt una mapa émâge clianta a étre clicâ en utilisent la balisa <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image'           => '&lt;imagemap&gt; : vos dête spècefiar una émâge dens la premiére legne',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’émâge est envalida ou ègziste pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : nion lim valido at étâ trovâ a la fin de la legne $1',
@@ -319,24 +321,30 @@ $messages['is'] = array(
 	'imagemap_description' => 'Um þessa mynd',
 );
 
-/* Italian (AnyFile, fixed typos by BrokenArrow) */
+/** Italian (Italiano)
+ * @author Anyfile
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'imagemap_no_image'             => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
-	'imagemap_invalid_image'        => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
-	'imagemap_no_link'              => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Forma (shape) non riconosciuta nella riga $1, ogni riga deve iniziare con uno dei seguenti: default, rect, circle o poly',
-	'imagemap_no_areas'             => "&lt;imagemap&gt;: deve essere specificata almeno un'area",
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
-	'imagemap_description'          => 'Informazioni sull\'immagine',
+	'imagemap_desc'               => "Consente di realizzare ''image map'' cliccabili lato client con il tag <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
+	'imagemap_invalid_image'      => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
+	'imagemap_no_link'            => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: Forma (shape) non riconosciuta nella riga $1, ogni riga deve iniziare con uno dei seguenti: default, rect, circle o poly',
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: deve essere specificata almeno un'area",
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
+	'imagemap_description'        => "Informazioni sull'immagine",
 );
 
 /** Japanese (日本語)
  * @author Kahusi
+ * @author JtFuruhata
  */
 $messages['ja'] = array(
+	'imagemap_desc'               => '<tt><nowiki><imagemap></nowiki></tt>タグによるクライアントサイドのクリッカブルマップ機能を有効にする',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: 最初の行で画像を指定して下さい。',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 画像が無効、又は存在しません。',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: 有効なリンクが$1行目の最後に存在しません。',
@@ -476,18 +484,21 @@ $messages['nl'] = array(
 	'imagemap_description'        => 'Over deze afbeelding',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: må angi et bilde i første linje',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: ugyldig tittel i lenke på linje $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: ikke nok koordinater for form på linje $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: minst en områdespesifikasjon må gis',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
-	'imagemap_description'          => 'Om dette bildet',
+	'imagemap_desc'               => 'Gjør at man kan bruke klikkbare bilder ved hjelp av <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: må angi et bilde i første linje',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: ugyldig tittel i lenke på linje $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: ikke nok koordinater for form på linje $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: minst en områdespesifikasjon må gis',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
+	'imagemap_description'        => 'Om dette bildet',
 );
 
 /** Occitan (Occitan)
@@ -591,6 +602,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'imagemap_desc'               => 'Бу <tt><nowiki><imagemap></nowiki></tt> тиэги туһанан клиент өттүгэр каартаны баттааһын үлэлиирин көҥүллүүр',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: бастакы строкатыгар ойуу баар буолуохтаах',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: ойуу сыыһа бэриллибит, эбэтэр отой суох',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 строка бүтэһигэр сыыһа ыйынньык турбут',
@@ -652,9 +664,10 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'imagemap_desc'               => 'Tillåt klient-sid klickbara bild kartor använande <tt><nowiki><imagemap></nowiki></tt> tillägget',
+	'imagemap_desc'               => 'Lägger till taggen <tt><nowiki><imagemap></nowiki></tt> för klickbara bilder',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: en bild måste anges på första raden',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
@@ -669,8 +682,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Chaduvari
  */
 $messages['te'] = array(
+	'imagemap_desc'          => '<tt><nowiki><imagemap></nowiki></tt> ట్యాగును వాడటం ద్వారా క్లిక్కదగ్గ క్లయంటు-వైపు ఇమేజి మ్యాపులను అనుమతిస్తుంది',
 	'imagemap_no_image'      => '&lt;imagemap&gt;: తప్పనిసరిగా మొదటి లైనులో ఓ బొమ్మని ఇవ్వాలి',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: తప్పుడు లేదా ఉనికిలో లేని బొమ్మ',
 	'imagemap_no_link'       => '&lt;imagemap&gt;: $1వ లైను చివర సరియైన లింకు కనబడలేదు',
@@ -704,6 +719,7 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'imagemap_desc'               => 'Thêm những bản đồ hình có liên kết dùng thẻ <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: phải đưa tên hình vào dòng đầu tiên',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: hình không hợp lệ hay không tồn tại',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: không có liên kết hợp lệ ở cuối dòng $1',

@@ -61,6 +61,13 @@ $messages['nl'] = array(
 	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'catfeed-desc' => 'Bruker informasjon fra siste endringer. Man kan lage versjoner til bruk på innholdssider, noe som er spesielt nyttig for Wikinews.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -73,6 +80,13 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'catfeed-desc' => 'Usa pedaços de "feeds" de alterações recentes. Cria uma versão dentro de uma página, especialmente útil para Wikinotícias.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'catfeed-desc' => 'Использует некоторые части ленты свежих правок, создаёт её версию внутри страницы. Особенно полезно для Викиновостей.',
 );
 
 /** Slovak (Slovenčina)

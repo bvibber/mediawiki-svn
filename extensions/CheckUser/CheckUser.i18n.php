@@ -390,6 +390,14 @@ Z výkonnostních důvodů lze zobrazit maximálně 5000 editací. Používejte 
 	'checkuser-log-ipusers-xff'  => '$1 zjišťuje uživatele s XFF $2',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'checkuser-search'        => 'Søg',
+	'checkuser-search-submit' => 'Søg',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -1014,33 +1022,46 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
- * @author Gianfranco
  * @author BrokenArrow
+ * @author Gianfranco
  * @author .anaconda
  */
 $messages['it'] = array(
-	'checkuser-summary'      => 'Questo strumento analizza le modifiche recenti per recuperare gli indirizzi IP utilizzati da un utente o mostrare contributi e dati di un IP. Utenti e contributi di un client IP possono essere rintracciati attraverso gli header XFF aggiungendo all\'IP il suffisso "/xff". Sono supportati IPv4 (CIDR 16-32) e IPv6 (CIDR 64-128). Non saranno restituite più di 5.000 modifiche, per ragioni di prestazioni. Usa questo strumento in stretta conformità alle policy.',
-	'checkuser-logcase'      => "La ricerca nei log è ''case sensitive'' (distingue fra maiuscole e minuscole).",
-	'checkuser'              => 'Controllo utenze',
-	'group-checkuser'        => 'Controllori',
-	'group-checkuser-member' => 'Controllore',
-	'grouppage-checkuser'    => '{{ns:project}}:Controllo utenze',
-	'checkuser-reason'       => 'Motivazione',
-	'checkuser-showlog'      => 'Mostra il log',
-	'checkuser-log'          => 'Log dei checkuser',
-	'checkuser-query'        => 'Cerca nelle ultime modifiche',
-	'checkuser-target'       => 'Utente o IP',
-	'checkuser-users'        => 'Cerca utenti',
-	'checkuser-edits'        => 'Vedi i contributi degli IP',
-	'checkuser-ips'          => 'Cerca IP',
-	'checkuser-search'       => 'Cerca',
-	'checkuser-empty'        => 'Il log non contiene dati.',
-	'checkuser-nomatch'      => 'Nessun risultato trovato.',
-	'checkuser-check'        => 'Controlla',
-	'checkuser-log-fail'     => 'Impossibile aggiungere la voce al log',
-	'checkuser-nolog'        => 'Non è stato trovato alcun file di log.',
-	'checkuser-blocked'      => 'Bloccato',
-	'checkuser-too-many'     => 'Il numero di risultati è eccessivo, usare un CIDR più ristretto. Di seguito sono indicati gli indirizzi IP utilizzati (fino a un massimo di 5000, ordinati per indirizzo):',
+	'checkuser-summary'          => 'Questo strumento analizza le modifiche recenti per recuperare gli indirizzi IP utilizzati da un utente o mostrare contributi e dati di un IP. Utenti e contributi di un client IP possono essere rintracciati attraverso gli header XFF aggiungendo all\'IP il suffisso "/xff". Sono supportati IPv4 (CIDR 16-32) e IPv6 (CIDR 64-128). Non saranno restituite più di 5.000 modifiche, per ragioni di prestazioni. Usa questo strumento in stretta conformità alle policy.',
+	'checkuser-desc'             => 'Consente agli utenti con le opportune autorizzazioni di sottoporre a verifica gli indirizzi IP e altre informazioni relative agli utenti',
+	'checkuser-logcase'          => "La ricerca nei log è ''case sensitive'' (distingue fra maiuscole e minuscole).",
+	'checkuser'                  => 'Controllo utenze',
+	'group-checkuser'            => 'Controllori',
+	'group-checkuser-member'     => 'Controllore',
+	'grouppage-checkuser'        => '{{ns:project}}:Controllo utenze',
+	'checkuser-reason'           => 'Motivazione',
+	'checkuser-showlog'          => 'Mostra il log',
+	'checkuser-log'              => 'Log dei checkuser',
+	'checkuser-query'            => 'Cerca nelle ultime modifiche',
+	'checkuser-target'           => 'Utente o IP',
+	'checkuser-users'            => 'Cerca utenti',
+	'checkuser-edits'            => 'Vedi i contributi degli IP',
+	'checkuser-ips'              => 'Cerca IP',
+	'checkuser-search'           => 'Cerca',
+	'checkuser-empty'            => 'Il log non contiene dati.',
+	'checkuser-nomatch'          => 'Nessun risultato trovato.',
+	'checkuser-check'            => 'Controlla',
+	'checkuser-log-fail'         => 'Impossibile aggiungere la voce al log',
+	'checkuser-nolog'            => 'Non è stato trovato alcun file di log.',
+	'checkuser-blocked'          => 'Bloccato',
+	'checkuser-too-many'         => 'Il numero di risultati è eccessivo, usare un CIDR più ristretto. Di seguito sono indicati gli indirizzi IP utilizzati (fino a un massimo di 5000, ordinati per indirizzo):',
+	'checkuser-user-nonexistent' => "L'utente indicato non esiste.",
+	'checkuser-search-form'      => 'Trova le voci del log per le quali $1 è $2',
+	'checkuser-search-submit'    => 'Ricerca',
+	'checkuser-search-initiator' => 'iniziatore',
+	'checkuser-search-target'    => 'obiettivo',
+	'checkuser-log-subpage'      => 'Log',
+	'checkuser-log-return'       => 'Torna al modulo principale di Controllo utenze',
+	'checkuser-log-userips'      => '$1 ha ottenuto gli indirizzi IP di $2',
+	'checkuser-log-ipedits'      => '$1 ha ottenuto le modifiche di $2',
+	'checkuser-log-ipusers'      => '$1 ha ottenuto le utenze di $2',
+	'checkuser-log-ipedits-xff'  => '$1 ha ottenuto le modifiche di $2 via XFF',
+	'checkuser-log-ipusers-xff'  => '$1 ha ottenuto le utenze di $2 via XFF',
 );
 
 /** Japanese (日本語)
@@ -1225,6 +1246,22 @@ $messages['kk-latn'] = array(
 	'checkuser-log-ipusers-xff'  => 'XFF $2 üşin $1 qatıswşı alındı',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'checkuser'               => 'ឆែក អ្នកប្រើប្រាស់',
+	'group-checkuser'         => 'ឆែក អ្នកប្រើប្រាស់',
+	'group-checkuser-member'  => 'ឆែក អ្នកប្រើប្រាស់',
+	'checkuser-reason'        => 'ហេតុផល',
+	'checkuser-showlog'       => 'បង្ហាញ កំណត់ហេតុ',
+	'checkuser-target'        => 'អ្នកប្រើប្រាស់ ឬ IP',
+	'checkuser-search'        => 'ស្វែងរក',
+	'checkuser-check'         => 'ឆែក',
+	'checkuser-search-submit' => 'ស្វែងរក',
+	'checkuser-log-subpage'   => 'កំណត់ហេតុ',
+);
+
 $messages['kn'] = array(
 	'checkuser'              => 'ಸದಸ್ಯನನ್ನು ಚೆಕ್ ಮಾಡಿ',
 );
@@ -1252,19 +1289,29 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'checkuser-logcase'          => "D'Sich am Logbuch mecht en Ënnerscheed tëschent groussen a klenge Buchstawen (Caractèren).",
 	'checkuser'                  => 'Benotzer-Check',
+	'group-checkuser'            => 'Benotzer Kontrolleren',
+	'group-checkuser-member'     => 'Benotzer Kontroller',
+	'grouppage-checkuser'        => '{{ns:projet}}:Benotzer Kontroller',
 	'checkuser-reason'           => 'Grond',
 	'checkuser-showlog'          => 'Logbuch weisen',
+	'checkuser-log'              => 'Lëscht vun de Benotzer Kontrollen',
 	'checkuser-query'            => 'Rezent Ännerungen offroen',
 	'checkuser-target'           => 'Benotzer oder IP-Adress',
+	'checkuser-users'            => 'Benotzer kréien',
+	'checkuser-edits'            => "Weis d'Ännerungen vun der IP-Adress",
+	'checkuser-ips'              => 'IP-Adresse kréien/uweisen',
 	'checkuser-search'           => 'Sichen',
 	'checkuser-empty'            => 'Dës Lëscht ass eidel.',
 	'checkuser-nomatch'          => 'Et goufe keng Iwwereneestëmmunge fonnt.',
+	'checkuser-check'            => 'Kontrolléieren',
 	'checkuser-nolog'            => "D'Logbuch gouf net fonnt.",
 	'checkuser-blocked'          => 'Gespaart',
 	'checkuser-user-nonexistent' => 'De gesichte Benotzer gëtt et net.',
 	'checkuser-search-submit'    => 'Sichen',
+	'checkuser-search-initiator' => 'Initiator',
 	'checkuser-search-target'    => 'Zil',
 	'checkuser-log-subpage'      => 'Lëscht',
+	'checkuser-log-return'       => 'Zréck op den Haaptformulair vun der Benotzer Kontroll',
 );
 
 /** Limburgish (Limburgs)
@@ -1613,6 +1660,7 @@ $messages['ps'] = array(
 	'checkuser-reason'        => 'سبب',
 	'checkuser-search'        => 'لټون',
 	'checkuser-search-submit' => 'لټون',
+	'checkuser-log-subpage'   => 'يادښت',
 );
 
 /** Portuguese (Português)
@@ -1958,6 +2006,9 @@ På grund av prestandaskäl så visas inte mer än 5000 redigeringar. Använd ve
  * @author Mpradeep
  */
 $messages['te'] = array(
+	'checkuser-summary'          => 'ఈ పరికరం ఓ వాడుకరి వాడిన ఐపీలను, లేదా ఒక ఐపీకి చెందిన దిద్దుబాట్లు, వాడుకరుల డేటాను చూపిస్తుంది.
+క్లయంటు ఐపీకి చెందిన వాడుకరులు, దిద్దుబాట్లను ఐపీకి /xff అని చేర్చి, XFF హెడర్ల ద్వారా వెలికితీయవచ్చు. IPv4 (CIDR 16-32) and IPv6 (CIDR 64-128) లు పనిచేస్తాయి.
+పనితనపు కారణాల వలన 5000 దిద్దుబాట్లకు మించి చూపించము. విధానాల కనుగుణంగా దీన్ని వాడండి.',
 	'checkuser-desc'             => 'వాడుకరి ఐపీ అడ్రసు, ఇతర సమాచారాన్ని చూడగలిగే అనుమతులను వాడుకరులకు ఇస్తుంది',
 	'checkuser-logcase'          => 'లాగ్ అన్వేషణ కోసం ఇంగ్లీషు అన్వేషకం ఇస్తే.., అది కేస్ సెన్సిటివ్.',
 	'checkuser'                  => 'సభ్యుల తనిఖీ',
@@ -2078,6 +2129,7 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'checkuser-summary'          => 'Công cụ này sẽ quét các thay đổi gần đây để lấy ra các IP được một thành viên sử dụng hoặc hiển thị dữ liệu sửa đổi/tài khoản của một IP. Các tài khoản và sửa đổi của một IP có thể được trích ra từ tiêu đề XFF bằng cách thêm vào IP “/xff”. IPv4 (CIDR 16-32) và IPv6 (CIDR 64-128) đều được hỗ trợ. Không quá 5000 sửa đổi sẽ được trả về vì lý do hiệu suất. Hãy dùng công cụ này theo đúng quy định.',
+	'checkuser-desc'             => 'Cung cấp cho những người đủ tiêu chuẩn khả năng kiểm tra địa chỉ IP và thông tin khác của người dùng khác',
 	'checkuser-logcase'          => 'Tìm kiếm nhật trình có phân biệt chữ hoa chữ thường',
 	'checkuser'                  => 'Kiểm tra thành viên',
 	'group-checkuser'            => 'Kiểm tra thành viên',

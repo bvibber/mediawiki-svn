@@ -131,10 +131,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'languageselector'         => 'Lingua',
-	'languageselector-setlang' => 'elexir',
+	'languageselector-desc'    => 'Seleccionador da lingua en todas as páxinas, tamén para os visitantes',
+	'languageselector-setlang' => 'elixir',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -155,11 +157,19 @@ $messages['hu'] = array(
 	'languageselector-setlang' => 'beállítás',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'languageselector' => 'Tungumál',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'languageselector'         => '言語選択',
+	'languageselector-desc'    => 'ログイン状況を問わず利用できる、各ページの言語選択機能',
 	'languageselector-setlang' => '設定',
 );
 
@@ -201,6 +211,14 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'languageselector'         => 'Sprooch',
 	'languageselector-setlang' => 'Wielt',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'languageselector'         => 'Kalba',
+	'languageselector-setlang' => 'nustatyti',
 );
 
 /** Low German (Plattdüütsch)
@@ -249,7 +267,8 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'languageselector' => 'ژبه',
+	'languageselector'      => 'ژبه',
+	'languageselector-desc' => 'د ژب ټاکنې پټه دې په هر مخ وي، د کتونکو لپاره هم',
 );
 
 /** Portuguese (Português)
@@ -275,6 +294,7 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'languageselector'         => 'Язык',
+	'languageselector-desc'    => 'Выбор языка на каждой странице, также и для посетителей',
 	'languageselector-setlang' => 'установить',
 );
 
@@ -304,6 +324,13 @@ $messages['sv'] = array(
 	'languageselector-setlang' => 'välj',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'languageselector' => 'భాష',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
@@ -317,6 +344,15 @@ $messages['tet'] = array(
  */
 $messages['tr'] = array(
 	'languageselector' => 'Dil',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'languageselector'         => 'Ngôn ngữ',
+	'languageselector-desc'    => 'Hộp để chọn ngôn ngữ ở các trang, cũng được cung cấp cho những người vô danh',
+	'languageselector-setlang' => 'đổi',
 );
 
 /** Volapük (Volapük)

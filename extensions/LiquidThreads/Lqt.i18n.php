@@ -347,8 +347,9 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Sherbrooke
- * @author Grondin
+ * @author Urhixidur
  * @author Dereckson
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'lqt-desc'                              => 'Ajoute des fils de discussion dans les pages de discussion',
@@ -372,8 +373,8 @@ $messages['fr'] = array(
 	'lqt_fragment'                          => 'un fragment de $1 à partir de $2',
 	'lqt_discussion_link'                   => 'discussion',
 	'lqt_from_talk'                         => 'de $1',
-	'lqt_newer'                             => '«plus récent',
-	'lqt_older'                             => 'plus ancien»',
+	'lqt_newer'                             => '« plus récent',
+	'lqt_older'                             => 'plus ancien »',
 	'lqt_hist_comment_edited'               => 'Commentaire modifié',
 	'lqt_hist_summary_changed'              => 'Sommaire modifié',
 	'lqt_hist_reply_created'                => 'Nouvelle réponse créée',
@@ -402,7 +403,7 @@ $messages['fr'] = array(
 	'lqt_thread_deleted_for_sysops'         => 'Ce fil a été $1. Seuls les administrateurs peuvent le voir.',
 	'lqt_thread_deleted_for_sysops_deleted' => 'effacé',
 	'lqt_thread_deleted'                    => 'Ce fil a été effacé.',
-	'lqt_summary_notice'                    => "Il n'y a eu aucun changement dans cette discussuion de puis au moins $2 jours. Si elle a été conclue, vous pouvez avoir besoin de $1.",
+	'lqt_summary_notice'                    => 'Il n’y a eu aucun changement dans cette discussion depuis au moins $2 jours. Si elle a été conclue, vous pouvez avoir besoin de $1.',
 	'lqt_summary_notice_link'               => 'écrire un résumé',
 	'lqt_summary_label'                     => 'Ce fil a été résumé par :',
 	'lqt_summary_subtitle'                  => 'le résumé de $1.',
@@ -419,7 +420,7 @@ $messages['fr'] = array(
 	'lqt_move_success'                      => 'Le fil a été déplacé dans $1.',
 	'lqt_delete_undeleting'                 => 'Récupération de $1',
 	'lqt_delete_undeletethread'             => 'Fil récupéré',
-	'lqt_delete_partof'                     => 'Ce fil est partie de $1.',
+	'lqt_delete_partof'                     => 'Ce fil fait partie de $1.',
 	'lqt_delete_deleting'                   => 'Suppression du fil $1 et de $2.',
 	'lqt_delete_deleting_allreplies'        => 'toutes les réponses',
 	'lqt_delete_deletethread'               => 'Effacer le fil et répondre',
@@ -435,9 +436,9 @@ $messages['fr'] = array(
 	'lqt_header_warning_new_discussion'     => 'lancer un nouveau fil de discussion',
 	'lqt_sorting_order'                     => 'Ordre de tri :',
 	'lqt_remember_sort'                     => 'Rappeler cette préférence',
-	'lqt_sort_newest_changes'               => 'dernier modifié en premier',
-	'lqt_sort_newest_threads'               => 'Les fils de discussion les plus récents en premier',
-	'lqt_sort_oldest_threads'               => 'Les fils de discussion les plus anciens en premier',
+	'lqt_sort_newest_changes'               => 'fils de discussion plus récemment modifiés en premier',
+	'lqt_sort_newest_threads'               => 'fils de discussion les plus récents en premier',
+	'lqt_sort_oldest_threads'               => 'fils de discussion les plus anciens en premier',
 );
 
 /** Galician (Galego)
@@ -847,6 +848,19 @@ $messages['ja'] = array(
 	'lqt_sort_oldest_threads'               => '古いスレッドを上に',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'lqt_delete'                            => 'លុបចេញ',
+	'lqt_undelete'                          => 'លែងលុបចេញ',
+	'lqt_hist_deleted'                      => 'បានត្រូវលុបចេញ',
+	'lqt_hist_undeleted'                    => 'លែងបានត្រូវលុបចេញ',
+	'lqt_noreason'                          => 'គ្មានហេតុផល ត្រូវបានផ្តល់អោយ ។',
+	'lqt_thread_deleted_for_sysops_deleted' => 'បានត្រូវលុបចេញ',
+	'lqt_move_noreason'                     => 'គ្មានហេតុផល ត្រូវបានផ្តល់អោយ ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -864,6 +878,7 @@ $messages['lb'] = array(
 	'lqt_hist_deleted'                      => 'Geläscht',
 	'lqt_hist_undeleted'                    => 'Restauréiert',
 	'lqt_hist_moved_talkpage'               => 'Geréckelt',
+	'lqt_revision_as_of'                    => 'Versioun vum $1.',
 	'lqt_youhavenewmessages'                => 'Dir hutt $1',
 	'lqt_changes_from'                      => ' vun',
 	'lqt_changes_summary_of'                => ' vun',
@@ -877,6 +892,7 @@ $messages['lb'] = array(
 	'lqt_delete_deleting_allreplies'        => 'all Äntwerten',
 	'lqt_delete_return'                     => 'Zréck op $1',
 	'lqt_delete_return_link'                => "d'Diskussiounssäit",
+	'lqt_header_warning_big'                => 'Dir ännert een/eng $1',
 	'lqt_header_warning_bold'               => 'Iwwerschrëft vun enger Diskussiounssäit',
 	'lqt_header_warning_new_discussion'     => 'Eng nei Diskussioun ufénken.',
 );
@@ -993,6 +1009,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'lqt-desc'                              => 'Legger til trådede diskusjoner til diskusjonssider',
+	'lqt-nothread'                          => 'Det er ingen tråder i arkivet.',
 	'lqt_newmessages'                       => 'Nye beskjeder',
 	'lqt_movethread'                        => 'Flytt tråd til en annen side',
 	'lqt_deletethread'                      => 'Slett eller gjenopprett tråd',
@@ -1033,6 +1051,7 @@ $messages['no'] = array(
 	'lqt_change_edited_root'                => 'Den markerte kommentaren ble redigert i denne revisjonen.',
 	'lqt_youhavenewmessages'                => 'Du har $1.',
 	'lqt_changes_from'                      => ' fra',
+	'lqt_changes_summary_of'                => '  av',
 	'lqt_protectedfromreply'                => 'Denne tråden har blitt $1 for svar.',
 	'lqt_protectedfromreply_link'           => 'låst',
 	'lqt_subject'                           => 'Emne:',
@@ -1044,15 +1063,16 @@ $messages['no'] = array(
 	'lqt_summary_notice'                    => 'Det har ikke vært noen endringer på denne diskusjonssiden på minst $2 dager. Om diskusjonen er ferdig, vil du muligens $1.',
 	'lqt_summary_notice_link'               => 'skrive et sammendrag',
 	'lqt_summary_label'                     => 'Denne tråden har fått følgende sammendrag:',
+	'lqt_summary_subtitle'                  => 'sammendraget av $1.',
 	'lqt_nosuchrevision'                    => 'Det er ingen slik revisjon av denne tråden.',
 	'lqt_nosuchthread'                      => 'Det er ingen slik tråd.',
-	'lqt_threadrequired'                    => 'Du må oppgi et tråd i URL-en.',
+	'lqt_threadrequired'                    => 'Du må angi en tråd i URL-en.',
 	'lqt_move_movingthread'                 => 'Flytter $1. Denne tråden er del av $2.',
 	'lqt_move_torename'                     => 'For å omdøpe denne tråden, $1 og endre «Emne»-feltet.',
 	'lqt_move_torename_edit'                => 'rediger den',
 	'lqt_move_destinationtitle'             => 'Tittel på måldiskusjonsside:',
 	'lqt_move_move'                         => 'Flytt',
-	'lqt_move_nodestination'                => 'Du må oppgi et mål.',
+	'lqt_move_nodestination'                => 'Du må angi et mål.',
 	'lqt_move_noreason'                     => 'Ingen grunn oppgitt.',
 	'lqt_move_success'                      => 'Denne tråden ble flyttet til $1.',
 	'lqt_delete_undeleting'                 => 'Gjenoppretter $1.',
@@ -1071,6 +1091,11 @@ $messages['no'] = array(
 	'lqt_header_warning_after_big'          => 'Hodeseksjoner er for annonseringer og innledninger. Du vil muligens i stedet $2.',
 	'lqt_header_warning_bold'               => 'diskusjonssideinnledning',
 	'lqt_header_warning_new_discussion'     => 'start en ny diskusjon',
+	'lqt_sorting_order'                     => 'Sorteringsrekkefølge:',
+	'lqt_remember_sort'                     => 'Husk denne preferansen',
+	'lqt_sort_newest_changes'               => 'de sist endrede først',
+	'lqt_sort_newest_threads'               => 'nyeste tråder først',
+	'lqt_sort_oldest_threads'               => 'eldste tråder først',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -1228,6 +1253,7 @@ $messages['pt'] = array(
 	'lqt_subject'                       => 'Assunto:',
 	'lqt_nosubject'                     => '«sem assunto»',
 	'lqt_noreason'                      => 'Nenhum motivo foi especificado.',
+	'lqt_summary_notice_link'           => 'escrever um sumário',
 	'lqt_summary_subtitle'              => 'o sumário de $1.',
 	'lqt_move_destinationtitle'         => 'Título da página de discussão destino:',
 	'lqt_move_move'                     => 'Mover',
@@ -1435,6 +1461,8 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'lqt_newmessages'                       => 'Nya meddelanden',
+	'lqt_browse_archive_with_recent'        => 'äldre',
+	'lqt_add_header'                        => 'Lägg till rubrik',
 	'lqt_new_thread'                        => 'Starta en ny diskussion',
 	'lqt_edited_notice'                     => 'Redigerad',
 	'lqt_delete'                            => 'Ta bort',
@@ -1442,18 +1470,92 @@ $messages['sv'] = array(
 	'lqt_from_talk'                         => 'från $1',
 	'lqt_newer'                             => '«nyare',
 	'lqt_older'                             => 'äldre»',
+	'lqt_hist_summary_changed'              => 'Sammanfattning ändrad',
 	'lqt_hist_deleted'                      => 'Borttagen',
 	'lqt_hist_moved_talkpage'               => 'Flyttad',
 	'lqt_youhavenewmessages'                => 'Du har $1.',
 	'lqt_changes_from'                      => ' från',
 	'lqt_changes_summary_of'                => ' av',
 	'lqt_protectedfromreply_link'           => 'skyddad',
+	'lqt_subject'                           => 'Motiv:',
+	'lqt_nosubject'                         => '«inget motiv»',
+	'lqt_noreason'                          => 'Ingen anledning given.',
 	'lqt_thread_deleted_for_sysops_deleted' => 'raderad',
 	'lqt_summary_notice_link'               => 'skriv en sammanfattning',
+	'lqt_summary_subtitle'                  => 'sammanfattningen av $1.',
 	'lqt_move_move'                         => 'Flytta',
+	'lqt_move_noreason'                     => 'Ingen anledning given.',
 	'lqt_delete_return'                     => 'Tillbaka till $1.',
 	'lqt_delete_return_link'                => 'diskussionssidan',
 	'lqt_header_warning_new_discussion'     => 'starta en ny diskussion',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lqt_newmessages'                   => 'కొత్త సందేశాలు',
+	'lqt_browse_archive_with_recent'    => 'పాతవి',
+	'lqt_contents_title'                => 'విషయాలు:',
+	'lqt_reply'                         => 'స్పందించు',
+	'lqt_delete'                        => 'తొలగించు',
+	'lqt_permalink'                     => 'స్థిరలింకు',
+	'lqt_discussion_link'               => 'చర్చ',
+	'lqt_from_talk'                     => '$1 నుండి',
+	'lqt_newer'                         => '«కొత్తవి',
+	'lqt_older'                         => 'పాతవి»',
+	'lqt_hist_summary_changed'          => 'సంగ్రహం మార్చారు',
+	'lqt_revision_as_of'                => '$1 నాటి కూర్పు.',
+	'lqt_changes_from'                  => 'నుండి',
+	'lqt_changes_summary_of'            => ' యొక్క',
+	'lqt_subject'                       => 'విషయం:',
+	'lqt_nosubject'                     => '«విషయం లేదు»',
+	'lqt_noreason'                      => 'కారణం తెలుపలేదు.',
+	'lqt_summary_notice_link'           => 'సంగ్రహం వ్రాయండి',
+	'lqt_summary_subtitle'              => '$1 యొక్క సంగ్రహం.',
+	'lqt_move_noreason'                 => 'కారణం తెలుపలేదు.',
+	'lqt_delete_deleting_allreplies'    => 'అన్ని స్పందనలు',
+	'lqt_delete_return_link'            => 'చర్చా పేజీ',
+	'lqt_header_warning_new_discussion' => 'కొత్త చర్చను మొదలుపెట్టండి',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'lqt-desc'                          => 'Thêm những thảo luận có cấu trúc vào trang thảo luận',
+	'lqt_newmessages'                   => 'Tin nhắn mới',
+	'lqt_deletethread'                  => 'Xóa hay phục hồi cuộc thảo luận',
+	'lqt_browse_archive_without_recent' => 'Xem thảo luận được lưu trữ',
+	'lqt_browse_archive_with_recent'    => 'cũ hơn',
+	'lqt_recently_archived'             => 'Mới được lưu trữ:',
+	'lqt_contents_title'                => 'Nội dung:',
+	'lqt_new_thread'                    => 'Bắt đầu thảo luận mới:',
+	'lqt_in_response_to'                => 'Trả lời $1 bởi $2 ở trên:',
+	'lqt_reply'                         => 'Trả lời',
+	'lqt_delete'                        => 'Xóa',
+	'lqt_undelete'                      => 'Phục hồi',
+	'lqt_permalink'                     => 'Liên kết thường trực',
+	'lqt_discussion_link'               => 'thảo luận',
+	'lqt_from_talk'                     => 'từ $1',
+	'lqt_newer'                         => '«mới hơn',
+	'lqt_older'                         => 'cũ hơn»',
+	'lqt_revision_as_of'                => 'Phiên bản vào lúc $1.',
+	'lqt_youhavenewmessages'            => 'Bạn có $1.',
+	'lqt_changes_from'                  => '  từ',
+	'lqt_subject'                       => 'Chủ đề:',
+	'lqt_nosubject'                     => '«không có chủ đề»',
+	'lqt_move_torename'                 => 'Để đổi tên cuộc thảo luận này, $1 và đổi dòng “Chủ đề”.',
+	'lqt_move_torename_edit'            => 'sửa đổi nó',
+	'lqt_move_move'                     => 'Di chuyển',
+	'lqt_delete_undeletethread'         => 'Phục hồi cuộc thảo luận',
+	'lqt_delete_deleting_allreplies'    => 'các trả lời',
+	'lqt_delete_deletethread'           => 'Xóa cuộc thảo luận và các trả lời',
+	'lqt_delete_return'                 => 'Trở về $1.',
+	'lqt_delete_return_link'            => 'trang thảo luận',
+	'lqt_header_warning_big'            => 'Bạn đang sửa đổi một $1.',
+	'lqt_sorting_order'                 => 'Thứ tự xếp:',
+	'lqt_remember_sort'                 => 'Nhớ lựa chọn này',
 );
 
 /** Volapük (Volapük)

@@ -23,6 +23,7 @@ $messages['af'] = array(
  */
 $messages['an'] = array(
 	'crossnamespacelinks'         => 'Binclos entre espazios de nombres diferents',
+	'crossnamespacelinks-desc'    => "[[Special:CrossNamespaceLinks|Listas de binclos entre espazios de nombres]] que no abrían d'esistir en {{SITENAME}}",
 	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de binclos dende pachinas d'o espazio de nombre prenzipal ta pachinas en atros espazios de nombres (sacaus os espazios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que son aconsellables.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|binclo|binclos}} ta $3',
 );
@@ -72,9 +73,13 @@ $messages['br'] = array(
 	'crossnamespacelinks'         => 'Liammoù esaouennoù anv kroaziet',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
 	'crossnamespacelinks'         => 'Enllaços entre espais de noms',
-	'crossnamespacelinks-summary' => 'Aquesta pàgina conté una llista d\'enllaços des de pàgines de l\'espai de noms principal a pàgines d\'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.',
+	'crossnamespacelinks-desc'    => "[[Special:CrossNamespaceLinks|Mostra els enllaços entre espais de noms]], que no haurien d'existir al projecte {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Aquesta pàgina conté una llista d'enllaços des de pàgines de l'espai de noms principal a pàgines d'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaç|enllaços}} a $3',
 );
 
@@ -143,12 +148,13 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Énumère les liens à travers les espaces de nommages]] qui ne devraient pas exister sur {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
+	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est pas recommandé.',
 	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »',
 );
 
@@ -162,8 +168,13 @@ $messages['frp'] = array(
 	'crossnamespacelinkstext'     => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Listaxe ás ligazóns aos espazos de nomes]] que non existían en {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara $3',
 );
@@ -231,16 +242,25 @@ $messages['is'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|tengja|tengir}} $3',
 );
 
+/** Italian (Italiano)
+ * @author .anaconda
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'crossnamespacelinks'         => 'Collegamenti tra namespace',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Elenco dei collegamenti tra namespace]] che non dovrebbero esistere su {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Questa pagina presenta un elenco di collegamenti tra le pagine del namespace principale e le pagine di altri namespace, che non dovrebbero essere usati.
 
 Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} などを除いた、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
 );
@@ -424,10 +444,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Illusion
  */
 $messages['ru'] = array(
 	'crossnamespacelinks'         => 'Ссылки между пространствами имён',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Выводит список ссылок между пространствами имён]], которых не должно быть в {{SITENAME}}',
+	'crossnamespacelinks-desc'    => 'Выводит [[Special:CrossNamespaceLinks|список ссылок между пространствами имён]], которых не должно быть в {{grammar:genitive|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением пространств имён: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Подобные ссылки не рекомендуется ставить.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3',
 );
@@ -532,9 +553,11 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'crossnamespacelinks'         => 'Liên kết qua tên miền không gian',
+	'crossnamespacelinks-desc'    => 'Liệt kê [[Special:CrossNamespaceLinks|các liên kết giữa không gian tên]] mà không nên có tại {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Trang này liệt danh sách các liên kết từ một trang ở không gian tên chính đến một trang ở không gian tên khác (trừ không gian tên {{ns:special}}, {{ns:talk}}, {{ns:project}} và {{ns:template}}), là điều không khuyến khích sử dụng.',
 	'crossnamespacelinkstext'     => '$1: $2 liên kết đến $3',
 );
@@ -545,6 +568,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'crossnamespacelinks'         => 'Yüms bevü nemaspads',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lisedön yümis vü nemaspads]], kels no dabinabons in {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Su pad at palisedons yüms de pad nemaspada cifik lü pad nemaspadas votik (pläamü nemaspads: {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), kelas geb no pakomandon.',
 	'crossnamespacelinkstext'     => '$1: {{PLURAL:$2|yüm|yüms}} $2 lü $3',
 );

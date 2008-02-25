@@ -90,6 +90,18 @@ $messages['nl'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'eval'        => 'Eval',
+	'eval-desc'   => 'Legger til [[Special:Eval|et grensesnitt]] til <code>eval()</code>-funksjonen',
+	'eval_submit' => 'Evaluer',
+	'eval_escape' => 'Unnvik utdata',
+	'eval_out'    => 'Resultat',
+	'eval_code'   => 'Kode',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -119,6 +131,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'eval'        => 'Вычисление',
+	'eval-desc'   => 'Добавляет [[Special:Eval|интерфейс]] для функции <code>eval()</code>',
 	'eval_submit' => 'Вычислить',
 	'eval_escape' => 'Экранировать вывод',
 	'eval_out'    => 'Вывод',
@@ -145,10 +158,14 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'eval_code' => 'Kod',
+	'eval'        => 'Eval',
+	'eval-desc'   => 'Lägger till [[Special:Eval|ett gränssnitt]] till <code>eval()</code> funktionen',
+	'eval_submit' => 'Evalvera',
+	'eval_code'   => 'Kod',
 );
 
 /** Turkish (Türkçe)
@@ -156,6 +173,13 @@ $messages['sv'] = array(
  */
 $messages['tr'] = array(
 	'eval_code' => 'Kod',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'eval_code' => 'Mã nguồn',
 );
 
 /** Volapük (Volapük)

@@ -13,182 +13,7 @@
  /*
   * Templates: 
   */
- function upTemplates($force=false){
-/***************************************************
- * Transcripts: 
- * updates transcript templates
- ***************************************************/
- 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Ht_en');
-	do_update_wiki_page($wgTemplateTitle, '<noinclude>
-		This is the default Template for the display of transcript text. 
-		</noinclude><includeonly>{{ #if:  {{{PersonName|}}} | {{ #ifexist: Image:{{{PersonName}}}.jpg | [[Image:{{{PersonName}}}.jpg|44px|left]]|[[Image:Missing person.jpg|44px|left]]}} |}}{{ #if:{{{PersonName|}}}|[[{{{PersonName}}}]]: |}}{{{BodyText}}}
-		</includeonly>',null, $force);
-/****************************************************
- * Archive.org file type semantics
- ****************************************************/  
-	$archive_org_ftypes = array('64Kb_MPEG4','256Kb_MPEG4','MPEG1','MPEG2','flash_flv');
-	foreach($archive_org_ftypes as $ftype){
-		$pTitle= Title::makeTitle(SMW_NS_PROPERTY, 'Ao_file_'.$ftype );
-		do_update_wiki_page($pTitle, '[[has type::URL]]',null, $force);
-	}
-/*****************************************************
- * Bill Templates
- ****************************************************/
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');	
-	do_update_wiki_page($wgTemplateTitle, '<noinclude>Bill Person Template simplifies the structure of articles about Bills.
-<pre>{{Bill|
-GovTrackID=The GovTrack Bill ID (used to key-into GovTracks Bill info)|
-ThomasID=The bill\'s Tomas id (used for Thomas linkback)|
-Title Description=The short title/description of the bill|
-Date Introduced=The date the bill was introduced|
-Session=The session of congress (110 for 2007-08) |
-Bill Key=The short bill name ie: H.R. #|
-Sponsor=Who the Bill was Sponsored By|
-Cosponsor #= Where # is 1-70 for listing all cosponsors|
-}}</pre>The template name (Bill) should be given as the \'\'first\'\' thing on a page. The Cosponsored list should come at the end.
-</noinclude><includeonly>
-==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
-{{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
-
-<span style="background:#eee">{{ #if: {{{Bill Key|}}}| Media tagged/categorized with [[:Category:{{{Bill Key}}}]] |}}</span>
-{{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
-{{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}
-{{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}{{ #if: {{{Cosponsor 2|}}}|, [[Bill Cosponsor:={{{Cosponsor 2}}}]] |}}{{ #if: {{{Cosponsor 3|}}}|, [[Bill Cosponsor:={{{Cosponsor 3}}}]] |}}{{ #if: {{{Cosponsor 4|}}}|, [[Bill Cosponsor:={{{Cosponsor 4}}}]] |}}{{ #if: {{{Cosponsor 5|}}}|, [[Bill Cosponsor:={{{Cosponsor 5}}}]] |}}{{ #if: {{{Cosponsor 6|}}}|, [[Bill Cosponsor:={{{Cosponsor 6}}}]] |}}{{ #if: {{{Cosponsor 7|}}}|, [[Bill Cosponsor:={{{Cosponsor 7}}}]] |}}{{ #if: {{{Cosponsor 8|}}}|, [[Bill Cosponsor:={{{Cosponsor 8}}}]] |}}{{ #if: {{{Cosponsor 9|}}}|, [[Bill Cosponsor:={{{Cosponsor 9}}}]] |}}{{ #if: {{{Cosponsor 10|}}}|, [[Bill Cosponsor:={{{Cosponsor 10}}}]] |}}{{ #if: {{{Cosponsor 11|}}}|, [[Bill Cosponsor:={{{Cosponsor 11}}}]] |}}{{ #if: {{{Cosponsor 12|}}}|, [[Bill Cosponsor:={{{Cosponsor 12}}}]] |}}{{ #if: {{{Cosponsor 13|}}}|, [[Bill Cosponsor:={{{Cosponsor 13}}}]] |}}{{ #if: {{{Cosponsor 14|}}}|, [[Bill Cosponsor:={{{Cosponsor 14}}}]] |}}{{ #if: {{{Cosponsor 15|}}}|, [[Bill Cosponsor:={{{Cosponsor 15}}}]] |}}{{ #if: {{{Cosponsor 16|}}}|, [[Bill Cosponsor:={{{Cosponsor 16}}}]] |}}{{ #if: {{{Cosponsor 17|}}}|, [[Bill Cosponsor:={{{Cosponsor 17}}}]] |}}{{ #if: {{{Cosponsor 18|}}}|, [[Bill Cosponsor:={{{Cosponsor 18}}}]] |}}{{ #if: {{{Cosponsor 19|}}}|, [[Bill Cosponsor:={{{Cosponsor 19}}}]] |}}{{ #if: {{{Cosponsor 20|}}}|, [[Bill Cosponsor:={{{Cosponsor 20}}}]] |}}{{ #if: {{{Cosponsor 21|}}}|, [[Bill Cosponsor:={{{Cosponsor 21}}}]] |}}{{ #if: {{{Cosponsor 22|}}}|, [[Bill Cosponsor:={{{Cosponsor 22}}}]] |}}{{ #if: {{{Cosponsor 23|}}}|, [[Bill Cosponsor:={{{Cosponsor 23}}}]] |}}{{ #if: {{{Cosponsor 24|}}}|, [[Bill Cosponsor:={{{Cosponsor 24}}}]] |}}{{ #if: {{{Cosponsor 25|}}}|, [[Bill Cosponsor:={{{Cosponsor 25}}}]] |}}{{ #if: {{{Cosponsor 26|}}}|, [[Bill Cosponsor:={{{Cosponsor 26}}}]] |}}{{ #if: {{{Cosponsor 27|}}}|, [[Bill Cosponsor:={{{Cosponsor 27}}}]] |}}{{ #if: {{{Cosponsor 28|}}}|, [[Bill Cosponsor:={{{Cosponsor 28}}}]] |}}{{ #if: {{{Cosponsor 29|}}}|, [[Bill Cosponsor:={{{Cosponsor 29}}}]] |}}{{ #if: {{{Cosponsor 30|}}}|, [[Bill Cosponsor:={{{Cosponsor 30}}}]] |}}{{ #if: {{{Cosponsor 31|}}}|, [[Bill Cosponsor:={{{Cosponsor 31}}}]] |}}{{ #if: {{{Cosponsor 32|}}}|, [[Bill Cosponsor:={{{Cosponsor 32}}}]] |}}{{ #if: {{{Cosponsor 33|}}}|, [[Bill Cosponsor:={{{Cosponsor 33}}}]] |}}{{ #if: {{{Cosponsor 34|}}}|, [[Bill Cosponsor:={{{Cosponsor 34}}}]] |}}{{ #if: {{{Cosponsor 35|}}}|, [[Bill Cosponsor:={{{Cosponsor 35}}}]] |}}{{ #if: {{{Cosponsor 36|}}}|, [[Bill Cosponsor:={{{Cosponsor 36}}}]] |}}{{ #if: {{{Cosponsor 37|}}}|, [[Bill Cosponsor:={{{Cosponsor 37}}}]] |}}{{ #if: {{{Cosponsor 38|}}}|, [[Bill Cosponsor:={{{Cosponsor 38}}}]] |}}{{ #if: {{{Cosponsor 39|}}}|, [[Bill Cosponsor:={{{Cosponsor 39}}}]] |}}{{ #if: {{{Cosponsor 40|}}}|, [[Bill Cosponsor:={{{Cosponsor 40}}}]] |}}{{ #if: {{{Cosponsor 41|}}}|, [[Bill Cosponsor:={{{Cosponsor 41}}}]] |}}{{ #if: {{{Cosponsor 42|}}}|, [[Bill Cosponsor:={{{Cosponsor 42}}}]] |}}{{ #if: {{{Cosponsor 43|}}}|, [[Bill Cosponsor:={{{Cosponsor 43}}}]] |}}{{ #if: {{{Cosponsor 44|}}}|, [[Bill Cosponsor:={{{Cosponsor 44}}}]] |}}{{ #if: {{{Cosponsor 45|}}}|, [[Bill Cosponsor:={{{Cosponsor 45}}}]] |}}{{ #if: {{{Cosponsor 46|}}}|, [[Bill Cosponsor:={{{Cosponsor 46}}}]] |}}{{ #if: {{{Cosponsor 47|}}}|, [[Bill Cosponsor:={{{Cosponsor 47}}}]] |}}{{ #if: {{{Cosponsor 48|}}}|, [[Bill Cosponsor:={{{Cosponsor 48}}}]] |}}{{ #if: {{{Cosponsor 49|}}}|, [[Bill Cosponsor:={{{Cosponsor 49}}}]] |}}{{ #if: {{{Cosponsor 50|}}}|, [[Bill Cosponsor:={{{Cosponsor 50}}}]] |}}{{ #if: {{{Cosponsor 51|}}}|, [[Bill Cosponsor:={{{Cosponsor 51}}}]] |}}{{ #if: {{{Cosponsor 52|}}}|, [[Bill Cosponsor:={{{Cosponsor 52}}}]] |}}{{ #if: {{{Cosponsor 53|}}}|, [[Bill Cosponsor:={{{Cosponsor 53}}}]] |}}{{ #if: {{{Cosponsor 54|}}}|, [[Bill Cosponsor:={{{Cosponsor 54}}}]] |}}{{ #if: {{{Cosponsor 55|}}}|, [[Bill Cosponsor:={{{Cosponsor 55}}}]] |}}{{ #if: {{{Cosponsor 56|}}}|, [[Bill Cosponsor:={{{Cosponsor 56}}}]] |}}{{ #if: {{{Cosponsor 57|}}}|, [[Bill Cosponsor:={{{Cosponsor 57}}}]] |}}{{ #if: {{{Cosponsor 58|}}}|, [[Bill Cosponsor:={{{Cosponsor 58}}}]] |}}{{ #if: {{{Cosponsor 59|}}}|, [[Bill Cosponsor:={{{Cosponsor 59}}}]] |}}{{ #if: {{{Cosponsor 60|}}}|, [[Bill Cosponsor:={{{Cosponsor 60}}}]] |}}{{ #if: {{{Cosponsor 61|}}}|, [[Bill Cosponsor:={{{Cosponsor 61}}}]] |}}{{ #if: {{{Cosponsor 62|}}}|, [[Bill Cosponsor:={{{Cosponsor 62}}}]] |}}{{ #if: {{{Cosponsor 63|}}}|, [[Bill Cosponsor:={{{Cosponsor 63}}}]] |}}{{ #if: {{{Cosponsor 64|}}}|, [[Bill Cosponsor:={{{Cosponsor 64}}}]] |}}{{ #if: {{{Cosponsor 65|}}}|, [[Bill Cosponsor:={{{Cosponsor 65}}}]] |}}{{ #if: {{{Cosponsor 66|}}}|, [[Bill Cosponsor:={{{Cosponsor 66}}}]] |}}{{ #if: {{{Cosponsor 67|}}}|, [[Bill Cosponsor:={{{Cosponsor 67}}}]] |}}{{ #if: {{{Cosponsor 68|}}}|, [[Bill Cosponsor:={{{Cosponsor 68}}}]] |}}{{ #if: {{{Cosponsor 69|}}}|, [[Bill Cosponsor:={{{Cosponsor 69}}}]] |}}
-
-
-==External Sources==
-{{ #if: {{{ThomasID|}}}|* Thomas Official Information:[http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
-{{ #if: {{{GovTrackID|}}}|* GovTrack Bill Overview:[http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
-[[Category:Bill]]
-</includeonly>
-',null, $force);
-	//update some semnatic property types:
-	$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
-	do_update_wiki_page($wgPropTitle, '[[has type::URL]]',null, $force);
-	
-	$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
-	do_update_wiki_page($wgPropTitle, '[[has type::Date]]',null, $force);
-
-/***************************************
- *  Update people templates
- ***************************************/ 
-	global $valid_attributes;
-	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Congress Person');
-	$wgTemplateArticle = new Article($wgTemplateTitle);
-	$template_body = '<noinclude>Congress Person template simplifies 
-			the structure of articles about Congress People.
-			<pre>{{Congress Person|' . "\n";
-	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;
-		$template_body .= $name . '=' . $desc . "|\n";
-	}
-	$template_body .= '}}</pre>' .
-	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
-			</noinclude>' .
-	'<includeonly>' . "\n";
-	//include the image if present: 
-	$template_body .= '{{ #if: { Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]] |}}' . "\n";
-	foreach ($valid_attributes as $dbKey => $attr) {
-		list ($name, $desc) = $attr;
-		//raw semantic data (@@todo make pretty template table thing)
-		$template_body .= "{{ #if: {{{" . $name . "}}}| [[$name:={{{" . $name . "}}}| ]] |}} \n";
-	}
-	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
-			</includeonly>';
-	echo "updated 'Congress Person' template\n";
-	do_update_wiki_page($wgTemplateTitle, $template_body,null, $force);
-}
-function do_people_insert() {
-	global $valid_attributes, $states_ary;
-	$dbr = wfGetDB(DB_SLAVE);
-
-	//check person
-	upTemplate_person();
-	//do people query:
-	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
-	if ($dbr->numRows($res) == 0)
-		die('could not find people: ' . "\n");
-	$person_ary = array ();
-	while ($person = $dbr->fetchObject($res)) {
-		$person_ary[] = $person;
-	}
-	foreach ($person_ary as $person) {
-		$person_title = Title :: newFromUrl($person->name_clean);
-		//semantic data via template:
-		$page_body = '{{Congress Person|' . "\n";
-		foreach ($valid_attributes as $dbKey => $attr) {
-			list ($name, $desc) = $attr;
-			if (trim($person-> $dbKey) != '') {
-				if ($dbKey == 'state')
-					$person->state = $states_ary[$person->state];
-				$page_body .= "|{$name}={$person->$dbKey}|  \n";
-			}
-		}
-		//add in the full name attribute: 
-		$page_body .= "|Full Name=" . $person->title . ' ' . $person->first .
-		' ' . $person->middle . ' ' . $person->last . "|  \n";
-		$page_body .= '}}';
-		//add in basic info to be overwitten by tranclude (from
-		$full_name = $person->title . ' ' . $person->first .
-		' ' . $person->middle . ' ' . $person->last;
-		if (trim($full_name) == '')
-			$full_name = $person->name_clean;			
-		 
-		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br>\n".
-				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
-				;
-		do_update_wiki_page($person_title, $page_body);		
-	}
-	foreach ($person_ary as $person) {
-		//download/upload all the photos:
-		$imgTitle = Title :: makeTitle(NS_IMAGE, $person->name_clean . '.jpg');
-		//if(!$imgTitle->exists()){			
-		global $wgTmpDirectory;
-		$url = 'http://www.opensecrets.org/politicians/img/pix/' . $person->osid . '.jpg';
-		//print $wgTmpDirectory . "\n";
-		$local_file = tempnam($wgTmpDirectory, 'WEBUPLOAD');
-		//copy file:
-
-		# Check if already there existence
-		$image = wfLocalFile($imgTitle);
-		if ($image->exists()) {
-			echo ($imgTitle->getDBkey() . " already in the wiki\n");
-			continue;
-		}
-
-		for ($ct = 0; $ct < 10; $ct++) {
-			if (!@ copy($url, $local_file)) {
-				print ("failed to copy $url to local_file (tring again) \n");
-			} else {
-				print "copy success\n";
-				$ct = 10;
-			}
-			if ($ct == 9)
-				print 'complete failure' . "\n";
-		}
-
-		# Stash the file
-		echo ("Saving " . $imgTitle->getDBkey() . "...");
-		$image = wfLocalFile($imgTitle);
-
-		$archive = $image->publish($local_file);
-		if (WikiError :: isError($archive)) {
-			echo ("failed.\n");
-			continue;
-		}
-		echo ("importing...");
-		$comment = 'Image file for [[' . $person->name_clean . ']]';
-		$license = '';
-
-		if ($image->recordUpload($archive, $comment, $license)) {
-			# We're done!
-			echo ("done.\n");
-		} else {
-			echo ("failed.\n");
-		}
-		//}
-	}
-}
+ 
 //$i=0;
 function do_stream_attr_check($old_stream) {
 	global $i;
@@ -210,7 +35,7 @@ function do_stream_attr_check($old_stream) {
 	//$i++;
 }
 function do_stream_file_check(& $old_stream) {
-	global $mvgIP;
+	global $mvgIP, $mvVideoArchivePaths;
 	$mvStream = & mvGetMVStream(array (
 		'name' => $old_stream->name
 	));
@@ -218,7 +43,7 @@ function do_stream_file_check(& $old_stream) {
 
 	if ($old_stream->trascoded != 'none') {
 		//print "transcode is: " . $old_stream->trascoded;
-		if ($old_stream->trascoded == 'low')
+		/*if ($old_stream->trascoded == 'low')
 			$set = array (
 				'mv_ogg_low_quality'
 			);
@@ -230,7 +55,33 @@ function do_stream_file_check(& $old_stream) {
 			$set = array (
 				'mv_ogg_high_quality',
 				'mv_ogg_low_quality'
-			);
+		);*/
+		//find the files and check for them on the servers:
+		//@@todo have multiple file locations for same file? 
+		$set=array();
+		foreach($mvVideoArchivePaths as $path){
+			if(url_exists($path . $old_stream->name . '.ogg')){
+				$set['mv_ogg_low_quality']=$path . $old_stream->name . '.ogg';
+				//force cap1 path @@todo remove!: 
+				$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->name . '.ogg';
+			}
+			if(url_exists($path . $old_stream->name . '.HQ.ogg')){
+				$set['mv_ogg_high_quality']=$path . $old_stream->name . '.HQ.ogg';
+				//force cap1 path @@todo remove!: 
+				$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->name . '.HQ.ogg';
+			}
+		}		
+		if(count($set)==0){
+			//no files present (remove stream) 
+			print 'no files present remove from wiki)'."\n";
+			//make a valid mv title (with requted time: )
+			$mvTitle = new MV_Title( $old_stream->name); 
+			
+			$streamTitle = Title::newFromText( $old_stream->name, MV_NS_STREAM);
+			//print " new title: " . $streamTitle . "\n";		
+			$article = new MV_StreamPage($streamTitle, $mvTitle);
+			$article->doDelete('no files present for stream');		
+		}
 		//print "set: " . print_r($set);
 		//remove old file pointers: 
 		$dbw = wfGetDB(DB_WRITE);
@@ -238,8 +89,8 @@ function do_stream_file_check(& $old_stream) {
 				"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
 		$dbw->query($sql);
 		//update files:
-		foreach ($set as $qf) {
-			do_insert_stream_file($mvStream, $old_stream, $qf);
+		foreach ($set as $qf=>$path_url) {
+			do_insert_stream_file($mvStream, $path_url, $qf);
 		}
 	}
 	//check for archive.org stuff too..
@@ -252,17 +103,12 @@ function do_stream_file_check(& $old_stream) {
 		}
 		if(!$found)do_insert_stream_file($mvStream, $old_stream, 'mv_archive_org_link');
 	}*/	
-}
-function do_insert_stream_file($mvStream, $old_stream, $quality_msg) {
+} 
+
+function do_insert_stream_file($mvStream, $path, $quality_msg) {
 	global $mvVideoArchivePaths;
 	$dbw = wfGetDB(DB_WRITE);
-	if ($quality_msg == 'mv_ogg_low_quality') {		
-		$path = $mvVideoArchivePaths[$old_stream->archive_server] . $mvStream->name. '.ogg';		
-	} else if ($quality_msg == 'mv_ogg_high_quality') {
-		$path = $mvVideoArchivePaths[$old_stream->archive_server] .$mvStream->name.'.HQ.ogg';
-	}else{
-		return '';
-	}
+
 	//get file duration from nfo file (if avaliable ): 
 	$nfo_url = $path . '.nfo';
 	$nfo_txt = file($nfo_url);	
@@ -284,8 +130,7 @@ function do_insert_stream_file($mvStream, $old_stream, $quality_msg) {
 	}else{
 		echo "missing nfo file: $nfo_url \n";
 		$dur=0;
-	}
-	
+	}	
 	$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path`, `duration`)" .
 		" VALUES ('{$mvStream->id}', '{$quality_msg}', " ." '{$path}', {$dur} )";
 	$dbw->query($sql);
@@ -318,6 +163,7 @@ function do_stream_insert($mode, $stream_name = '') {
 	}
 	print "working on " . count($streams) . ' streams'."\n";
 	foreach ($streams as $stream) {
+		print "on stream $stream->name \n";
 		//init the stream
 		$MVStreams[$stream->name] = new MV_Stream($stream);
 		//check if the stream has already been added to the wiki (if not add it)	
@@ -337,6 +183,7 @@ function do_stream_insert($mode, $stream_name = '') {
 		//do insert/copy all media images 
 		if(!isset($options['noimage'])){
 			do_proccess_images($stream);
+			print "done with images";
 		}
 
 		//check for files (make sure they match with metavid db values
@@ -435,7 +282,7 @@ function do_proccess_images($stream) {
 	print "Found " . $img_count . " images for stream " . $stream->name . "\n";
 	//grab from metavid and copy to local directory structure: 
 	$i=$j= 0;	
-	while ($row = $dbr->fetchObject($image_res)) {
+	while ($row = $dbr->fetchObject($image_res)) {		
 		$relative_time = $row->time - $stream->adj_start_time;
 		//status updates: 
 		if ($i == 10) {			
@@ -447,7 +294,7 @@ function do_proccess_images($stream) {
 		//get streamImage obj:
 		$mv_stream_id = $MVStreams[$stream->name]->getStreamId();
 		$local_img_dir = MV_StreamImage :: getLocalImageDir($mv_stream_id);
-		$metavid_img_url = 'http://metavid.ucsc.edu/image_media/' . $row->id . '.jpg';
+		$metavid_img_url = 'http://mvbox2.cse.ucsc.edu/image_media/' . $row->id . '.jpg';
 		
 		$local_img_file = $local_img_dir . '/' . $relative_time . '.jpg';
 		//check if the image already exist in the new table
@@ -459,7 +306,7 @@ function do_proccess_images($stream) {
 		if ($dbr->numRows($img_check) != 0) {
 			//make sure its there: 
 			if (is_file($local_img_file)) {
-				//print "skiped stream_id:" . $mv_stream_id . " time: " . $relative_time . "\n";
+				print "skiped stream_id:" . $mv_stream_id . " time: " . $relative_time . "\n";
 				continue;
 			} else {
 				//grab but don't insert: 
@@ -471,17 +318,19 @@ function do_proccess_images($stream) {
 			$dbw->insert('mv_stream_images', array (
 				'stream_id' => $MVStreams[$stream->name]->getStreamId(), 'time' => $relative_time));
 			$img_id = $dbw->insertId();
-			//$grab = exec('cd ' . $img_path . '; wget ' . $im_url);
+			//$grab = exec('cd ' . $img_path . '; wget ' . $im_url);			
 		}
 
 		if (is_file($local_img_file)) {
 			echo "skipped $local_img_file \n";
 			continue;
 		}
+		//print "run copy: $metavid_img_url, $local_img_file \n";
 		if (!copy($metavid_img_url, $local_img_file)) {
 			echo "failed to copy $metavid_img_url to $local_img_file...\n";
 		} else {
-			//all good don't report anything'		
+			//all good don't report anything'
+			//print "all good\n";		
 		}
 	}
 }
@@ -587,6 +436,160 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	
 	return $out;
 }
+function do_people_insert() {
+	global $valid_attributes, $states_ary;
+	$dbr = wfGetDB(DB_SLAVE);
+
+	include_once('scrape_and_insert.inc.php');		
+	$mvScrape = new MV_BaseScraper();
+	
+	//do people query:
+	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
+	if ($dbr->numRows($res) == 0)
+		die('could not find people: ' . "\n");
+	$person_ary = array ();
+	while ($person = $dbr->fetchObject($res)) {
+		$person_ary[] = $person;
+	}
+	foreach ($person_ary as $person) {		
+		$person_title = Title :: newFromUrl($person->name_clean);
+		//semantic data via template:
+		$page_body = '{{Congress Person|' . "\n";
+		foreach ($valid_attributes as $dbKey => $attr) {			
+			list ($name, $desc) = $attr;							
+			if ($dbKey == 'district'){
+				//special case for district:
+				if($person->district){
+					if($person->district!=0){
+						$page_body .= "{$name}=".text_number($person->district).' District'."|\n";
+					}
+				}
+			}else if($dbKey=='maplight_id'){
+				//print 'do_maplight_id'."\n";
+				//try to grab the maplight id
+				$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
+				preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
+				
+				//do point system for match
+				$point=array();
+				$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
+				if(isset($matches['2'])){			
+					foreach($matches['2'] as $k=>$name_html){
+						if(!isset($point[$k]))$point[$k]=0;
+						list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
+						if(strtolower($person->first)==strtolower($fname))$point[$k]+=2;
+						if(strtolower($person->last)==strtolower($lname))$point[$k]+=2;
+						if($person->state==$matches['3'][$k])$point[$k]++;
+						if($person->district==$matches['4'][$k])$point[$k]++;
+						if($person->party==$matches['5'][$k])$point[$k]++;				
+						if($title_lookup[$person->title]==$matches['6'])$point[$k]++;						
+					}
+					$max=0;					
+					$mapk=null;				
+					//print_r($point);
+					foreach($point as $k=>$v){
+						if($v>$max){
+							$mapk=$matches[1][$k];
+							$max=$v;
+						}						
+					}							
+					print "MapLightKey $mapk best match:".strtolower(trim(strip_tags($matches['2'][$mapk]))). " for $person->last  $person->first\n";
+					/*if(strtolower($person->last)=='yarmuth'){					
+						print_r($person);
+						for($i=0;$i<7;$i++){
+							print $matches[$i][$mapk]."\n";
+						}						
+					}*/
+					$page_body .="{$name}=".$mapk."|\n";					
+				}			
+			}else{			
+				if (trim($person->$dbKey) != '') {		
+					if ($dbKey == 'state')	$person->state = $states_ary[$person->state];				
+					$page_body .= "{$name}={$person->$dbKey}|  \n";
+				}
+			}
+		}
+			
+		//add in the full name attribute: 
+		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
+			' ' . $person->middle . ' ' . $person->last . "|  \n";			
+		
+			
+			
+		$page_body .= '}}';
+		//add in basic info to be overwitten by tranclude (from
+		$full_name = $person->title . ' ' . $person->first .
+		' ' . $person->middle . ' ' . $person->last;
+		if (trim($full_name) == '')
+			$full_name = $person->name_clean;			
+		 
+		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br>\n".
+				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
+				;
+		do_update_wiki_page($person_title, $page_body);		
+	}
+	foreach ($person_ary as $person) {
+		//download/upload all the photos:
+		$imgTitle = Title :: makeTitle(NS_IMAGE, $person->name_clean . '.jpg');
+		//if(!$imgTitle->exists()){			
+		global $wgTmpDirectory;
+		$url = 'http://www.opensecrets.org/politicians/img/pix/' . $person->osid . '.jpg';
+		//print $wgTmpDirectory . "\n";
+		$local_file = tempnam($wgTmpDirectory, 'WEBUPLOAD');
+		//copy file:
+
+		# Check if already there existence
+		$image = wfLocalFile($imgTitle);
+		if ($image->exists()) {
+			echo ($imgTitle->getDBkey() . " already in the wiki\n");
+			continue;
+		}
+
+		for ($ct = 0; $ct < 10; $ct++) {
+			if (!@ copy($url, $local_file)) {
+				print ("failed to copy $url to local_file (tring again) \n");
+			} else {
+				print "copy success\n";
+				$ct = 10;
+			}
+			if ($ct == 9)
+				print 'complete failure' . "\n";
+		}
+
+		# Stash the file
+		echo ("Saving " . $imgTitle->getDBkey() . "...");
+		$image = wfLocalFile($imgTitle);
+
+		$archive = $image->publish($local_file);
+		if (WikiError :: isError($archive)) {
+			echo ("failed.\n");
+			continue;
+		}
+		echo ("importing...");
+		$comment = 'Image file for [[' . $person->name_clean . ']]';
+		$license = '';
+
+		if ($image->recordUpload($archive, $comment, $license)) {
+			# We're done!
+			echo ("done.\n");
+		} else {
+			echo ("failed.\n");
+		}
+		//}
+	}
+}
+function do_rm_congress_persons(){
+	$dbr =& wfGetDB(DB_SLAVE);		
+	$result = $dbr->query( " SELECT *
+	FROM `categorylinks`
+	WHERE `cl_to` LIKE 'Congress_Person' ");
+	while($row = $dbr->fetchObject($result)){		
+		$pTitle = Title::makeTitle(NS_MAIN, $row->cl_sortkey);
+		$pArticle = new Article($pTitle);
+		$pArticle->doDeleteArticle( 'removed reason' );
+		print "removed title: " .$pTitle->getText() . "\n";
+	}
+}
 function mv_proccess_attr($table, $stream_id) {
 	global $start_time, $end_time;
 	$dbr = wfGetDB(DB_SLAVE);
@@ -644,4 +647,144 @@ function getTypeTitle($type) {
 			break;
 	}
 }
+//valid attributes dbkey=>semantic name
+$valid_attributes = array (
+	'name_ocr' => array (
+		'Name OCR',
+		'The Name as it appears in on screen video text',
+		'string'
+	),
+	'maplight_id' => array(
+		'MAPLight Person ID',
+		'MAPLight person id for linking into maplight data',
+		'string'
+	),
+	'osid' => array (
+		'Open Secrets ID',
+		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
+		'string'
+	),
+	'gov_track_id' => array (
+		'GovTrack Person ID',
+		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID',
+		'string'
+	),	
+	'bioguide' => array (
+		'Bio Guide ID',
+		'Congressional Biographical Directory id',
+		'string'
+	),
+	'title' => array (
+		'Title',
+		'Title (Sen. or Rep.)',
+		'string'	
+	),
+	'state' => array (
+		'State',
+		'State',
+		'page'
+	), //do look up
+	'party' => array (
+		'Party',
+		'The Cogress Persons Political party',
+		'page'	
+	),
+	'first' => array(
+		'First Name',
+		'(first name)',
+		'string'
+	),
+	'middle' => array(
+		'Middle Name',
+		'(middle name)',
+		'string'
+	),
+	'last'	=> array(
+		'Last Name',
+		'(last name)',
+		'string'
+	),
+	'district'=>array(
+		'District',
+		'The district # page ie: 3rd District',
+		'page'
+	)	
+);
+//state look up:
+$states_ary = array (
+	'AL' => 'Alabama',
+	'AK' => 'Alaska',
+	'AS' => 'American Samoa',
+	'AZ' => 'Arizona',
+	'AR' => 'Arkansas',
+	'AE' => 'Armed Forces - Europe',
+	'AP' => 'Armed Forces - Pacific',
+	'AA' => 'Armed Forces - USA/Canada',
+	'CA' => 'California',
+	'CO' => 'Colorado',
+	'CT' => 'Connecticut',
+	'DE' => 'Delaware',
+	'DC' => 'District of Columbia',
+	'FM' => 'Federated States of Micronesia',
+	'FL' => 'Florida',
+	'GA' => 'Georgia',
+	'GU' => 'Guam',
+	'HI' => 'Hawaii',
+	'ID' => 'Idaho',
+	'IL' => 'Illinois',
+	'IN' => 'Indiana',
+	'IA' => 'Iowa',
+	'KS' => 'Kansas',
+	'KY' => 'Kentucky',
+	'LA' => 'Louisiana',
+	'ME' => 'Maine',
+	'MH' => 'Marshall Islands',
+	'MD' => 'Maryland',
+	'MA' => 'Massachusetts',
+	'MI' => 'Michigan',
+	'MN' => 'Minnesota',
+	'MS' => 'Mississippi',
+	'MO' => 'Missouri',
+	'MT' => 'Montana',
+	'NE' => 'Nebraska',
+	'NV' => 'Nevada',
+	'NH' => 'New Hampshire',
+	'NJ' => 'New Jersey',
+	'NM' => 'New Mexico',
+	'NY' => 'New York',
+	'NC' => 'North Carolina',
+	'ND' => 'North Dakota',
+	'OH' => 'Ohio',
+	'OK' => 'Oklahoma',
+	'OR' => 'Oregon',
+	'PA' => 'Pennsylvania',
+	'PR' => 'Puerto Rico',
+	'RI' => 'Rhode Island',
+	'SC' => 'South Carolina',
+	'SD' => 'South Dakota',
+	'TN' => 'Tennessee',
+	'TX' => 'Texas',
+	'UT' => 'Utah',
+	'VT' => 'Vermont',
+	'VI' => 'Virgin Islands',
+	'VA' => 'Virginia',
+	'WA' => 'Washington',
+	'WV' => 'West Virginia',
+	'WI' => 'Wisconsin',
+	'WY' => 'Wyoming',
+	'AB' => 'Alberta',
+	'BC' => 'British Columbia',
+	'MB' => 'Manitoba',
+	'NB' => 'New Brunswick',
+	'NF' => 'Newfoundland',
+	'MP' => 'Northern Mariana Island ',
+	'NT' => 'Northwest Territories',
+	'NS' => 'Nova Scotia',
+	'ON' => 'Ontario',
+	'PW' => 'Palau Island',
+	'PE' => 'Prince Edward Island',
+	'QC' => 'Quebec',
+	'SK' => 'Saskatchewan',
+	'YT' => 'Yukon Territory'
+);
 ?>

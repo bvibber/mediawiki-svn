@@ -153,6 +153,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'interwiki'               => 'Voir et manipuler les données interwiki',
@@ -163,7 +164,7 @@ $messages['fr'] = array(
 	'interwiki_error'         => "Erreur : la table des interwikis est vide ou un processus s'est mal déroulé.",
 	'interwiki_delquestion'   => 'Suppression "$1"',
 	'interwiki_deleting'      => 'Vous effacez présentement le préfixe « $1 ».',
-	'interwiki_deleted'       => '$1 a été enlevée avec succès de la table interwiki.',
+	'interwiki_deleted'       => '$1 a été enlevé avec succès de la table interwiki.',
 	'interwiki_delfailed'     => "$1 n'a pas pu être enlevé de la table interwiki.",
 	'interwiki_addtext'       => 'Ajoute un préfixe interwiki',
 	'interwiki_addintro'      => "Vous êtes en train d'ajouter un préfixe interwiki. Rappelez-vous qu'il ne peut pas contenir d'espaces ( ), de double points (:), d'éperluettes (&) ou de signes égal (=)",
@@ -185,15 +186,17 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
  * @author Xosé
+ * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'interwiki'               => 'Ver e manipular datos interwiki',
+	'interwiki-desc'          => 'Engade unha [[Special:Interwiki|páxina especial]] para ver e editar a táboa interwiki',
 	'interwiki_prefix'        => 'Prefixo',
 	'interwiki_reasonfield'   => 'Razón',
 	'interwiki_intro'         => 'Vexa $1 para máis información acerca da táboa interwiki. Hai un [[Special:Log/interwiki|rexistro de cambios]] á táboa interwiki.',
-	'interwiki_error'         => 'ERRO: A táboa interwiki está baleira, ou algo máis saleu mal.',
+	'interwiki_error'         => 'ERRO: A táboa interwiki está baleira, ou algo máis saíu mal.',
 	'interwiki_delquestion'   => 'Eliminando "$1"',
 	'interwiki_deleting'      => 'Vai eliminar o prefixo "$1".',
 	'interwiki_deleted'       => 'Eliminouse sen problemas o prefixo "$1" da táboa interwiki.',
@@ -285,6 +288,14 @@ $messages['hu'] = array(
 	'interwiki_log_deleted'   => '„$1” előtag eltávolítva az interwiki táblából: $2',
 	'interwiki_logpagetext'   => 'Ez az [[Special:Interwiki|interwiki táblában]] történt változások naplója.',
 	'interwiki_defaultreason' => 'nincs ok megadva',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'interwiki_reasonfield'   => 'ហេតុផល',
+	'interwiki_defaultreason' => 'គ្មានហេតុផល ត្រូវបានផ្តល់អោយ',
 );
 
 /** Latin (Latina)
@@ -433,7 +444,11 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'interwiki_reasonfield' => 'سبب',
+	'interwiki_prefix'        => 'مختاړی',
+	'interwiki_reasonfield'   => 'سبب',
+	'interwiki_deleting'      => 'تاسو د "$1" مختاړی ړنګوی.',
+	'interwiki_addbutton'     => 'ورګډول',
+	'interwiki_defaultreason' => 'هېڅ کوم سبب نه دی ورکړ شوی',
 );
 
 /** Portuguese (Português)
@@ -469,6 +484,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'interwiki'               => 'Просмотр и изменение настроек интервики',
+	'interwiki-desc'          => 'Добавляет [[Special:Interwiki|служебную страницу]] для просмотра и редактирования таблицы префиксов интервики.',
 	'interwiki_prefix'        => 'Приставка',
 	'interwiki_reasonfield'   => 'Причина',
 	'interwiki_intro'         => 'См. $1, чтобы получить более подробную информацию о таблице интервики. Существует также  [[Special:Log/interwiki|журнал изменений]] таблицы интервики.',
@@ -560,12 +576,36 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'interwiki'             => 'Visa och redigera interwiki-data',
-	'interwiki-desc'        => 'Lägger till en [[Special:Interwiki|special sida]] till att visa och redigera interwiki tabellen',
-	'interwiki_prefix'      => 'Prefix',
-	'interwiki_reasonfield' => 'Anledning',
-	'interwiki_intro'       => 'Se $1 för mer information om interwiki tebellen. Det är en [[Special:Log/interwiki|logg av ändringar]] till interwiki tabellen.',
-	'interwiki_delquestion' => 'Tar bort "$1"',
-	'interwiki_addbutton'   => 'Lägg till',
+	'interwiki'               => 'Visa och redigera interwiki-data',
+	'interwiki-desc'          => 'Lägger till en [[Special:Interwiki|special sida]] till att visa och redigera interwiki tabellen',
+	'interwiki_prefix'        => 'Prefix',
+	'interwiki_reasonfield'   => 'Anledning',
+	'interwiki_intro'         => 'Se $1 för mer information om interwiki tebellen. Det är en [[Special:Log/interwiki|logg av ändringar]] till interwiki tabellen.',
+	'interwiki_delquestion'   => 'Tar bort "$1"',
+	'interwiki_addtext'       => 'Lägg till ett interwiki prefix',
+	'interwiki_addbutton'     => 'Lägg till',
+	'interwiki_logpagename'   => 'Interwiki tabells logg',
+	'interwiki_defaultreason' => 'ingen anledning given',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'interwiki_reasonfield'   => 'కారణం',
+	'interwiki_delquestion'   => '"$1"ని తొలగిస్తున్నారు',
+	'interwiki_addbutton'     => 'చేర్చు',
+	'interwiki_defaultreason' => 'కారణం ఇవ్వలేదు',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'interwiki'             => 'Xem và sửa đổi dữ liệu về liên kết liên wiki',
+	'interwiki_prefix'      => 'Tiền tố',
+	'interwiki_reasonfield' => 'Lý do',
+	'interwiki_addtext'     => 'Thêm tiền tố liên kết liên wiki',
+	'interwiki_addbutton'   => 'Thêm',
 );
 

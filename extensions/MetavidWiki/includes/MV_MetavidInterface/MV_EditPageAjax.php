@@ -110,6 +110,224 @@
 		$wgOut->addHTML('</td>' .	
 			'<td>');
 	}
+	/* copy of edit() from edit page (to overide empty page)*/
+	function edit() {
+		global $wgOut, $wgUser, $wgRequest, $wgTitle;
+
+		$fname = 'MV_EditPage::edit';
+		wfProfileIn( $fname );
+		wfDebug( "$fname: enter\n" );
+
+		// this is not an article
+		$wgOut->setArticleFlag(false);
+
+		$this->importFormData( $wgRequest );
+		$this->firsttime = false;
+
+		if( $this->live ) {
+			$this->livePreview();
+			wfProfileOut( $fname );
+			return;
+		}
+
+		$permErrors = $this->mTitle->getUserPermissionsErrors('edit', $wgUser);
+		if( !$this->mTitle->exists() )
+			$permErrors += array_diff( $this->mTitle->getUserPermissionsErrors('create', $wgUser), $permErrors );
+
+		# Ignore some permissions errors.
+		$remove = array();
+		foreach( $permErrors as $error ) {
+			if ($this->preview || $this->diff &&
+				($error[0] == 'blockedtext' || $error[0] == 'autoblockedtext'))
+			{
+				// Don't worry about blocks when previewing/diffing
+				$remove[] = $error;
+			}
+
+			if ($error[0] == 'readonlytext')
+			{
+				if ($this->edit) {
+					$this->formtype = 'preview';
+				} elseif ($this->save || $this->preview || $this->diff) {
+					$remove[] = $error;
+				}
+			}
+		}
+		# array_diff returns elements in $permErrors that are not in $remove.
+		$permErrors = array_diff( $permErrors, $remove );
+
+		if ( !empty($permErrors) )
+		{
+			wfDebug( "$fname: User can't edit\n" );
+			//limt rows for ajax:
+			$non_ajax_rows = $wgUser->getIntOption( 'rows' );			
+			$wgUser->setOption('rows', 5);
+			
+			$sk = $wgUser->getSkin();
+			$cancel = '<a href="javascript:mv_disp_mvd(\''.$this->mTitle->getDBkey(). '\',\''.
+					 $this->mvd_id.'\');">' . wfMsgExt('cancel', array('parseinline')).'</a>';
+			
+			//get the stream parent:
+			$mvd = MV_Index::getMVDbyId($this->mvd_id);
+			$stream_name = MV_Stream::getStreamNameFromId($mvd->stream_id);
+			
+			$lTitle = Title::makeTitle(NS_SPECIAL, 'Userlogin');
+			$loginLink = $sk->makeLinkObj( $lTitle,wfMsg('login'), 'returnto='.Namespace::getCanonicalName(MV_NS_STREAM).':'.$stream_name);
+								
+			$wgOut->addHTML(wfMsg('mv_user_cant_edit',$loginLink, $cancel));
+			$wgOut->readOnlyPage(  $this->mArticle->getContent(), true, $permErrors );
+			$wgUser->setOption('rows', $non_ajax_rows);
+			wfProfileOut( $fname );
+			return;
+		} else {
+			if ( $this->save ) {
+				$this->formtype = 'save';
+			} else if ( $this->preview ) {
+				$this->formtype = 'preview';
+			} else if ( $this->diff ) {
+				$this->formtype = 'diff';
+			} else { # First time through
+				$this->firsttime = true;
+				if( $this->previewOnOpen() ) {
+					$this->formtype = 'preview';
+				} else {
+					$this->extractMetaDataFromArticle () ;
+					$this->formtype = 'initial';
+				}
+			}
+		}
+
+		wfProfileIn( "$fname-business-end" );
+
+		$this->isConflict = false;
+		// css / js subpages of user pages get a special treatment
+		$this->isCssJsSubpage      = $this->mTitle->isCssJsSubpage();
+		$this->isValidCssJsSubpage = $this->mTitle->isValidCssJsSubpage();
+
+		/* Notice that we can't use isDeleted, because it returns true if article is ever deleted
+		 * no matter it's current state
+		 */
+		$this->deletedSinceEdit = false;
+		if ( $this->edittime != '' ) {
+			/* Note that we rely on logging table, which hasn't been always there,
+			 * but that doesn't matter, because this only applies to brand new
+			 * deletes. This is done on every preview and save request. Move it further down
+			 * to only perform it on saves
+			 */
+			if ( $this->mTitle->isDeleted() ) {
+				$this->lastDelete = $this->getLastDelete();
+				if ( !is_null($this->lastDelete) ) {
+					$deletetime = $this->lastDelete->log_timestamp;
+					if ( ($deletetime - $this->starttime) > 0 ) {
+						$this->deletedSinceEdit = true;
+					}
+				}
+			}
+		}
+
+		# Show applicable editing introductions
+		if( $this->formtype == 'initial' || $this->firsttime )
+			$this->showIntro();
+	
+		if( $this->mTitle->isTalkPage() ) {
+			$wgOut->addWikiText( wfMsg( 'talkpagetext' ) );
+		}
+
+		# Attempt submission here.  This will check for edit conflicts,
+		# and redundantly check for locked database, blocked IPs, etc.
+		# that edit() already checked just in case someone tries to sneak
+		# in the back door with a hand-edited submission URL.
+
+		if ( 'save' == $this->formtype ) {
+			if ( !$this->attemptSave() ) {
+				wfProfileOut( "$fname-business-end" );
+				wfProfileOut( $fname );
+				return;
+			}
+		}
+
+		# First time through: get contents, set time for conflict
+		# checking, etc.
+		if ( 'initial' == $this->formtype || $this->firsttime ) {
+			if ($this->initialiseForm() === false) {
+				$this->noSuchSectionPage();
+				wfProfileOut( "$fname-business-end" );
+				wfProfileOut( $fname );
+				return;
+			}
+			if( !$this->mTitle->getArticleId() ) 
+				wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
+		}
+
+		$this->showEditForm();
+		wfProfileOut( "$fname-business-end" );
+		wfProfileOut( $fname );
+	}
+	/********would not have to overide if they where not "private" functions 
+		/**
+	 * Should we show a preview when the edit form is first shown?
+	 *
+	 * @return bool
+	 */
+	private function previewOnOpen() {
+		global $wgRequest, $wgUser;
+		if( $wgRequest->getVal( 'preview' ) == 'yes' ) {
+			// Explicit override from request
+			return true;
+		} elseif( $wgRequest->getVal( 'preview' ) == 'no' ) {
+			// Explicit override from request
+			return false;
+		} elseif( $this->section == 'new' ) {
+			// Nothing *to* preview for new sections
+			return false;
+		} elseif( ( $wgRequest->getVal( 'preload' ) !== '' || $this->mTitle->exists() ) && $wgUser->getOption( 'previewonfirst' ) ) {
+			// Standard preference behaviour
+			return true;
+		} elseif( !$this->mTitle->exists() && $this->mTitle->getNamespace() == NS_CATEGORY ) {
+			// Categories are special
+			return true;
+		} else {
+			return false;
+		}
+	}
+	private function showDeletionLog( $out ) {
+		$title = $this->mTitle;
+		$reader = new LogReader(
+			new FauxRequest(
+				array(
+					'page' => $title->getPrefixedText(),
+					'type' => 'delete',
+					)
+			)
+		);
+		if( $reader->hasRows() ) {
+			$out->addHtml( '<div id="mw-recreate-deleted-warn">' );
+			$out->addWikiText( wfMsg( 'recreate-deleted-warn' ) );
+			$viewer = new LogViewer( $reader );
+			$viewer->showList( $out );
+			$out->addHtml( '</div>' );
+		}
+	}
+	/**
+	 * Attempt to show a custom editing introduction, if supplied
+	 *
+	 * @return bool
+	 */
+	private function showCustomIntro() {
+		if( $this->editintro ) {
+			$title = Title::newFromText( $this->editintro );
+			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
+				global $wgOut;
+				$revision = Revision::newFromTitle( $title );
+				$wgOut->addSecondaryWikiText( $revision->getText() );
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 	function do_post_HtEdit(){
 		global $wgOut;
 		/*"<textarea name=\"wpTextbox{$mvd_id}\" 
@@ -356,13 +574,12 @@
 				$wgRightsText ) . "\n</div>";
 		*/
 	
-		/*if( $wgUser->getOption('showtoolbar') and !$this->isCssJsSubpage ) {
+		if( $wgUser->getOption('showtoolbar') and !$this->isCssJsSubpage ) {
 			# prepare toolbar for edit buttons
 			$toolbar = $this->getEditToolbar();
 		} else {
 			$toolbar = '';
-		}*/
-		$toolbar='';
+		}		
 
 		// activate checkboxes if user wants them to be always active
 		if( !$this->preview && !$this->diff ) {
@@ -687,6 +904,7 @@ END
 		//}
 		//$wgOut->addHTML( '</div>' );
 	}
+	
 	/*function getPreviewText() {
 		global $wgOut, $wgUser, $wgTitle, $wgParser;
 

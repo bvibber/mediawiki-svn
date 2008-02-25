@@ -31,6 +31,24 @@ $messages['af'] = array(
 	'bookinfo-result-year' => 'Jaar:',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'bookinfo-header'            => "Informazión d'o libro",
+	'bookinfo-desc'              => 'Estendilla [[Special:Booksources]] con informazión sobre un serbizio web',
+	'bookinfo-result-title'      => 'Títol:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editorial:',
+	'bookinfo-result-year'       => 'Año:',
+	'bookinfo-error-invalidisbn' => "S'ha escrito un ISBN incorreuto.",
+	'bookinfo-error-nosuchitem'  => "No esiste l'elemento u no s'ha puesto trobar.",
+	'bookinfo-error-nodriver'    => "No s'ha puesto enzetar un Driver de Informazión de Libros (Book Information Driver) conforme.",
+	'bookinfo-error-noresponse'  => "No bi ha garra respuesta u o tiempo de respuesta s'ha acotolato.",
+	'bookinfo-purchase'          => 'Mercar iste libro dende $1',
+	'bookinfo-provider'          => 'Furnidor de datos: $1',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -406,19 +424,22 @@ $messages['is'] = array(
 	'bookinfo-provider'          => 'Upplýsingaveitandi: $1',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'bookinfo-header' => 'Informazioni sui libri',
-	'bookinfo-result-title' => 'Titolo:',
-	'bookinfo-result-author' => 'Autore:',
-	'bookinfo-result-publisher' => 'Editore:',
-	'bookinfo-result-year' => 'Anno:',
+	'bookinfo-header'            => 'Informazioni sui libri',
+	'bookinfo-desc'              => 'Aggiunge a [[Special:Booksources]] informazioni provenienti da un servizio Web',
+	'bookinfo-result-title'      => 'Titolo:',
+	'bookinfo-result-author'     => 'Autore:',
+	'bookinfo-result-publisher'  => 'Editore:',
+	'bookinfo-result-year'       => 'Anno:',
 	'bookinfo-error-invalidisbn' => 'Codice ISBN errato.',
-	'bookinfo-error-nosuchitem' => 'Elemento inesistente o non trovato.',
-	'bookinfo-error-nodriver' => 'Impossibile inizializzare un driver corretto per le Informazioni sui libri.',
-	'bookinfo-error-noresponse' => 'Mancata risposta o risposta assente.',
-	'bookinfo-purchase' => 'Acquista il libro presso: $1',
-	'bookinfo-provider' => 'Dati estratti da: $1',
+	'bookinfo-error-nosuchitem'  => 'Elemento inesistente o non trovato.',
+	'bookinfo-error-nodriver'    => 'Impossibile inizializzare un driver corretto per le Informazioni sui libri.',
+	'bookinfo-error-noresponse'  => 'Mancata risposta o risposta assente.',
+	'bookinfo-purchase'          => 'Acquista il libro presso: $1',
+	'bookinfo-provider'          => 'Dati estratti da: $1',
 );
 
 /** Japanese (日本語)
@@ -492,6 +513,21 @@ $messages['kk-arab'] = array(
 	'bookinfo-provider'          => 'دەرەك جەتىستىرۋشىسى: $1',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'bookinfo-header'           => 'ពត៌មានសៀវភៅ',
+	'bookinfo-desc'             => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន ពីសេវាវ៉ែប',
+	'bookinfo-result-title'     => 'ចំណងជើង៖',
+	'bookinfo-result-author'    => 'អ្នកនិពន្ធ៖',
+	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
+	'bookinfo-result-year'      => 'ឆ្នាំ៖',
+	'bookinfo-error-nosuchitem' => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
+	'bookinfo-purchase'         => 'ជាវសៀវភៅនេះ ពី $1',
+	'bookinfo-provider'         => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
+);
+
 $messages['la'] = array(
 	'bookinfo-result-title' => 'Titulus:',
 	'bookinfo-result-author' => 'Auctor:',
@@ -503,13 +539,16 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
+	'bookinfo-desc'              => '[[Special:Booksources|Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Editeur:',
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
+	'bookinfo-error-noresponse'  => "Keng Äntwert oder d'Ufro huet ze laang gebraucht (timed out)",
 	'bookinfo-purchase'          => 'Dëst Buch op $1 kafen',
+	'bookinfo-provider'          => 'Informatioune vun: $1',
 );
 
 /** Limburgish (Limburgs)
@@ -601,7 +640,7 @@ $messages['no'] = array(
 	'bookinfo-result-author'     => 'Forfatter:',
 	'bookinfo-result-publisher'  => 'Utgiver:',
 	'bookinfo-result-year'       => 'År:',
-	'bookinfo-error-invalidisbn' => 'Ugyldig ISBN oppgitt.',
+	'bookinfo-error-invalidisbn' => 'Ugyldig ISBN angitt.',
 	'bookinfo-error-nosuchitem'  => 'Boken eksisterer ikke, eller kunne ikke finnes.',
 	'bookinfo-error-nodriver'    => 'Kunne ikke sette i gang en passende bokinformasjonsdriver.',
 	'bookinfo-error-noresponse'  => 'Ingen respons eller tidsavbrudd.',
@@ -639,18 +678,23 @@ $messages['oc'] = array(
 	'bookinfo-provider'          => 'Fornidor de donadas : $1',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'bookinfo-header' => 'Informacja o książce',
-	'bookinfo-result-title' => 'Tytuł:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Wydawca:',
-	'bookinfo-result-year' => 'Rok:',
+	'bookinfo-header'            => 'Informacja o książce',
+	'bookinfo-desc'              => 'Prezentuje [[Special:Booksources|informacje o źródłach]] korzystając z serwisów internetowych o książkach',
+	'bookinfo-result-title'      => 'Tytuł:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Wydawca:',
+	'bookinfo-result-year'       => 'Rok:',
 	'bookinfo-error-invalidisbn' => 'Wprowadzono niepoprawny ISBN',
-	'bookinfo-error-nosuchitem' => 'Pozycja nie istnieje lub nie może być znaleziona',
-	'bookinfo-error-nodriver' => 'Nie udało się zainicjalizować odpowiedniego Book Information Driver',
-	'bookinfo-error-noresponse' => 'Brak odpowiedzi lub przekroczony czas odpowiedzi',
-	'bookinfo-purchase' => 'Zakup tę książkę w $1',
-	'bookinfo-provider' => 'Dostawca danych: $1',
+	'bookinfo-error-nosuchitem'  => 'Pozycja nie istnieje lub nie może być znaleziona',
+	'bookinfo-error-nodriver'    => 'Nie udało się zainicjalizować odpowiedniego Book Information Driver',
+	'bookinfo-error-noresponse'  => 'Brak odpowiedzi lub przekroczony czas odpowiedzi',
+	'bookinfo-purchase'          => 'Zakup tę książkę w $1',
+	'bookinfo-provider'          => 'Dostawca danych: $1',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -678,6 +722,7 @@ $messages['ps'] = array(
 	'bookinfo-result-publisher'  => 'خپرونکی:',
 	'bookinfo-result-year'       => 'کال:',
 	'bookinfo-error-invalidisbn' => 'تاسو يو ناسم ISBN ليکلی.',
+	'bookinfo-purchase'          => 'همدا کتاب د $1 نه وپېرۍ',
 );
 
 /** Portuguese (Português)
@@ -916,6 +961,7 @@ $messages['vo'] = array(
 	'bookinfo-error-nosuchitem'  => 'No dabinon u no petuvon.',
 	'bookinfo-error-noresponse'  => 'No edabinon geükam, u tim tulunüpik ya epasetikon.',
 	'bookinfo-purchase'          => 'Remolös buki at se $1',
+	'bookinfo-provider'          => 'Nüns pesedons se: $1',
 );
 
 /* Cantonese (Shinjiman) */

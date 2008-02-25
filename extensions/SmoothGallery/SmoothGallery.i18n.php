@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'smoothgallery-gallery-not-found'   => 'The gallery requested does not exist.',
 	'smoothgallery-not-found'           => 'No images were added into the gallery. Please add at least one image.',
 	'smoothgallery-no-images'           => 'No images were found in this gallery. Make sure all images requested exist. The following images were not found: $1',
+	'smoothgallery-invalid-images'      => 'The following requested images were of an invalid type: $1',
 	'smoothgallery-unexpected-error'    => 'There was an unexpected error. Please file a bug report.',
 	'smoothgallery-javascript-disabled' => 'Javascript is required to view this gallery properly.',
 );
@@ -34,6 +35,7 @@ $messages['ar'] = array(
 	'smoothgallery-gallery-not-found'   => 'المعرض المطلوب غير موجود.',
 	'smoothgallery-not-found'           => 'لا صور تمت إضافتها للسجل. من فضلك أضف صورة واحدة على الأقل.',
 	'smoothgallery-no-images'           => 'لم يتم العثور على صور في هذا المعرض. تأكد من أن كل الصور المطلوبة موجودة. الصور التالية لم يتم العثور عليها: $1',
+	'smoothgallery-invalid-images'      => 'الصور المطلوبة التالية كانت من نوع غير صحيح: $1',
 	'smoothgallery-unexpected-error'    => 'حدث خطأ غير متوقع. من فضلك أبلغ عن هذا الخطأ.',
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
 );
@@ -43,15 +45,34 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'smoothgallery-desc'                => 'Позволява на потребителите да създават галерии с качените от тях файлове.',
+	'smoothgallery-gallery-not-found'   => 'Поисканата галерия не съществува',
 	'smoothgallery-not-found'           => 'Не бяха добавени картинки в галерията. Необходимо е да се добави поне една картинка.',
 	'smoothgallery-no-images'           => 'Не бяха открити картинки в галерията. Необходимо е всички картинки да съществуват. Следните картинки не бяха намерени: $1',
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'smoothgallery'                     => 'SmoothGallery',
+	'smoothgallery-desc'                => 'Ermöglicht die Erstellung von interaktiven Bildgalerien',
+	'smoothgallery-title'               => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
+
+	'smoothgallery-error'               => '<b>SmoothGallery-Fehler:</b>',
+	'smoothgallery-gallery-not-found'   => 'Die angeforderte Galerie ist nicht vorhanden.',
+	'smoothgallery-not-found'           => 'Die Galerie enthält keine Bilder. Bitte mindestens ein Bild hinzufügen.',
+	'smoothgallery-no-images'           => 'In der Galerie sind keine Bilder zu finden. Sind alle angeforderten Bilder vorhanden?. Es fehlen: $1',
+	'smoothgallery-invalid-images'      => 'Die folgenden Bilder haben einen ungültigen Typ: $1',
+	'smoothgallery-unexpected-error'    => 'Es ist ein unerwarteter Fehler aufgetreten. Bitte schreibe eine Fehlermeldung.',
+	'smoothgallery-javascript-disabled' => 'JavaScript wird benötigt, um die Galerie darzustellen.',
+);
+
 /** French (Français)
  * @author Sherbrooke
- * @author Dereckson
  * @author Grondin
+ * @author Dereckson
  */
 $messages['fr'] = array(
 	'smoothgallery'                     => 'SmoothGallery',
@@ -62,6 +83,7 @@ $messages['fr'] = array(
 	'smoothgallery-gallery-not-found'   => "La galerie demandée n'existe pas.",
 	'smoothgallery-not-found'           => 'Aucune image ajoutée à la galerie. Ajoutez au moins une image.',
 	'smoothgallery-no-images'           => "Aucune image trouvée dans cette galerie. Vérifiez que toutes les images requises existent. Ces images n'ont pas été trouvées : $1.",
+	'smoothgallery-invalid-images'      => 'Les images demandées suivantes sont d’un format incorrect : $1',
 	'smoothgallery-unexpected-error'    => 'Erreur inattendue. Prière de remplir un rapport de bogue.',
 	'smoothgallery-javascript-disabled' => "JavaScript est nécessaire pour voir cette galerie d'images (<code><nowiki><gallery>...</gallery></nowiki></code>).",
 );
@@ -85,6 +107,7 @@ $messages['hsb'] = array(
 	'smoothgallery-gallery-not-found'   => 'Požadana galerija njeeksistuje.',
 	'smoothgallery-not-found'           => 'Žane wobrazy njebuchu ke galeriji přidate. Prošu přidaj znajmjeńša jedyn wobraz.',
 	'smoothgallery-no-images'           => 'W tutej galeriji njebuchu wobrazy namakane. Zawěsć, zo wšě wobrazy eksistuja. Slědowace wobrazy njebuchu namakane: $1',
+	'smoothgallery-invalid-images'      => 'Slědowace požadane wobrazy maja njepłaćiwy typ:',
 	'smoothgallery-unexpected-error'    => 'Běše njewočakowany zmylk. Prošu spisaj zmylkowu rozprawu.',
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
@@ -102,6 +125,7 @@ $messages['nl'] = array(
 	'smoothgallery-gallery-not-found'   => 'De gevraagde galerij bestaat niet.',
 	'smoothgallery-not-found'           => 'Er zijn geen afbeeldingen opgenomen in een galerij. Voeg alstublieft tenminste één afbeelding toe.',
 	'smoothgallery-no-images'           => 'Er zijn geen afbeeldingen aangetroffen in deze galerij. Zorg ervoor dat alle afbeeldingen bestaan. De volgende afbeeldingen zijn niet aangetroffen: $1',
+	'smoothgallery-invalid-images'      => 'De volgende aangevraagde afbeeldingen hadden een ongeldig type: $1',
 	'smoothgallery-unexpected-error'    => 'Er is een onverwachte fout opgetreden. Dien alstublieft een foutrapport in.',
 	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',
 );
@@ -118,6 +142,7 @@ $messages['no'] = array(
 	'smoothgallery-gallery-not-found'   => 'Det etterspurte galleriet finnes ikke.',
 	'smoothgallery-not-found'           => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
 	'smoothgallery-no-images'           => 'Ingen bilder ble funnet i dette galleriet. Forsikre deg om at alle bilder finnes. Følgende bilder ble ikke funnet. $1',
+	'smoothgallery-invalid-images'      => 'Følgende etterspurte bilder var av en ugyldig type: $1',
 	'smoothgallery-unexpected-error'    => 'Det var en uventet feil. Lever en feilrapport.',
 	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
 );
@@ -178,6 +203,7 @@ $messages['sk'] = array(
 	'smoothgallery-gallery-not-found'   => 'Požadovaná galéria neexistuje.',
 	'smoothgallery-not-found'           => 'Žiadne obrázky neboli pridané do galérie. Prosím, pridajte aspoň jeden obrázok.',
 	'smoothgallery-no-images'           => 'V tejto galérii neboli nájdené žiadne obrázky. Uistite sa, že všetky požadované obrázky existujú. Nasledovné obrázky neboli nájdené: $1',
+	'smoothgallery-invalid-images'      => 'Nasledovné požadované obrázky boli neplatného typu: $1',
 	'smoothgallery-unexpected-error'    => 'Nastala neočakávaná chyba. Prosím, podajte správu o chybe.',
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );
@@ -194,5 +220,12 @@ $messages['sr-ec'] = array(
 	'smoothgallery-no-images'           => 'Није пронађена слика у галерији. Уверите се да тражене слике постоје. Следеће слиек нису пронађене: $1',
 	'smoothgallery-unexpected-error'    => 'Десила се неочекивана грешка. Молимо обавестите администраторе.',
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'smoothgallery-error' => '<b>Lỗi SmoothGallery:</b>',
 );
 

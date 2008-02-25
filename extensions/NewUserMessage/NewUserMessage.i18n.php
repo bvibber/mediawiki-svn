@@ -43,11 +43,25 @@ $messages['dsb'] = array(
 	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'newusermessage-desc' => 'Aldonu [[MediaWiki:NewUserMessage|mesaĝon]] al diskuto-paĝo de nove kreita uzanto',
+);
+
 /** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
 	'newusermessage-desc' => "Ajoute un [[MediaWiki:NewUserMessage|message]] dans la page de discussion d'un nouvel utilisateur.",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'newusermessage-desc' => 'Engade unha [[MediaWiki:NewUserMessage|mensaxe]] ás páxinas de conversa dos usuarios novos',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -104,6 +118,13 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'newusermessage-desc' => 'Pridáva [[MediaWiki:NewUserMessage|správu]] do novo vytvorených používateľských diskusných stránok',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'newusermessage-desc' => 'Lägger till ett [[MediaWiki:NewUserMessage|meddelande]] till nyligen skapade användardiskussions sidor',
 );
 
 /** Vietnamese (Tiếng Việt)

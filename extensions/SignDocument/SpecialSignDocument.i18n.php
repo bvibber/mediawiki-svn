@@ -570,6 +570,25 @@ $messages['hu'] = array(
 	'sign-email'    => 'E-mail cím:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'sign-realname'                   => 'ឈ្មោះ ៖',
+	'sign-address'                    => 'អាស័យដ្ឋាន ផ្លូវ ៖',
+	'sign-email'                      => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
+	'sign-list-hideaddress'           => 'មិនរាយ អាស័យដ្ឋាន',
+	'sign-list-hideemail'             => 'មិនរាយបញ្ជី អ៊ីមែវល៍',
+	'sign-viewfield-realname'         => 'ឈ្មោះ',
+	'sign-viewfield-address'          => 'អាស័យដ្ឋាន',
+	'sign-viewfield-ip'               => 'អាស័យដ្ឋាន IP',
+	'sign-viewfield-email'            => 'អ៊ីមែវល៍',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-uniquequery-similarname'    => 'ឈ្មោះ ស្រដៀង',
+	'sign-uniquequery-similaraddress' => 'អាស័យដ្ឋាន ស្រដៀង',
+	'sign-uniquequery-similaremail'   => 'អ៊ីមែវល៍ ស្រដៀងគ្នា',
+);
+
 $messages['la'] = array(
 	'sign-realname' => 'Nomen:',
 	'sign-city' => 'Urbs:',
@@ -583,13 +602,20 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'sign-selectdoc'               => 'Dokument:',
 	'sign-realname'                => 'Numm:',
+	'sign-zip'                     => 'Postleitzuel:',
 	'sign-country'                 => 'Land:',
+	'sign-phone'                   => 'Telefonsnummer:',
 	'sign-bday'                    => 'Alter:',
 	'sign-email'                   => 'E-Mail-Adress:',
 	'sign-viewfield-realname'      => 'Numm',
 	'sign-viewfield-address'       => 'Adress',
+	'sign-viewfield-ip'            => 'IP-Adress',
+	'sign-viewfield-email'         => 'E-Mail',
 	'sign-viewfield-age'           => 'Alter',
+	'sign-viewfield-options'       => 'Optiounen',
+	'sig-anonymous'                => '<i>Anonym</i>',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
 	'sign-review-comment'          => 'Bemierkung',
 );
@@ -1087,37 +1113,107 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'signdocument'            => 'Signera dokument',
-	'sign-nodocselected'      => 'Välj det dokument du vill signera.',
-	'sign-selectdoc'          => 'Dokument:',
-	'sign-docheader'          => '<div class="noarticletext">Använd det här formuläret för att signera dokumentet "[[$1]]," som visas härunder. Var god läs igenom hela dokumentet, och om du vill visa ditt stöd för det, fyll i de nödvändiga fälten för att signera.</div>',
-	'sign-error-nosuchdoc'    => 'Dokumentet du efterfrågade ($1) existerar inte.',
-	'sign-realname'           => 'Namn:',
-	'sign-address'            => 'Gatuadress:',
-	'sign-city'               => 'Ort:',
-	'sign-state'              => 'Stat:',
-	'sign-zip'                => 'Postnummer:',
-	'sign-country'            => 'Land:',
-	'sign-phone'              => 'Telefonnummer:',
-	'sign-bday'               => 'Ålder:',
-	'sign-email'              => 'E-postadress:',
-	'sign-indicates-req'      => '<small><i><font color="red">*</font> betyder att fältet måste fyllas i.</i></small>',
-	'sign-hide-note'          => '<small><i><font color="red">**</font> Observera: Dold informationen är fortfarande tillgänglig för moderatorer.</i></small>',
-	'sign-viewfield-realname' => 'Namn',
-	'sign-viewfield-address'  => 'Adress',
-	'sign-viewfield-city'     => 'Stad',
-	'sign-viewfield-state'    => 'Stat',
-	'sign-viewfield-country'  => 'Land',
-	'sign-viewfield-zip'      => 'Postnummer',
-	'sign-viewfield-ip'       => 'IP-adress',
-	'sign-viewfield-phone'    => 'Telefon',
-	'sign-viewfield-email'    => 'E-post',
-	'sign-viewfield-age'      => 'Ålder',
-	'sign-signatures'         => 'Signaturer',
+	'signdocument'                 => 'Signera dokument',
+	'sign-nodocselected'           => 'Välj det dokument du vill signera.',
+	'sign-selectdoc'               => 'Dokument:',
+	'sign-docheader'               => '<div class="noarticletext">Använd det här formuläret för att signera dokumentet "[[$1]]," som visas härunder. Var god läs igenom hela dokumentet, och om du vill visa ditt stöd för det, fyll i de nödvändiga fälten för att signera.</div>',
+	'sign-error-nosuchdoc'         => 'Dokumentet du efterfrågade ($1) existerar inte.',
+	'sign-realname'                => 'Namn:',
+	'sign-address'                 => 'Gatuadress:',
+	'sign-city'                    => 'Ort:',
+	'sign-state'                   => 'Stat:',
+	'sign-zip'                     => 'Postnummer:',
+	'sign-country'                 => 'Land:',
+	'sign-phone'                   => 'Telefonnummer:',
+	'sign-bday'                    => 'Ålder:',
+	'sign-email'                   => 'E-postadress:',
+	'sign-indicates-req'           => '<small><i><font color="red">*</font> betyder att fältet måste fyllas i.</i></small>',
+	'sign-hide-note'               => '<small><i><font color="red">**</font> Observera: Dold informationen är fortfarande tillgänglig för moderatorer.</i></small>',
+	'sign-list-anonymous'          => 'Lista anonymt',
+	'sign-list-hideaddress'        => 'Lista inte adress',
+	'sign-list-hideextaddress'     => 'Lista inte ort, stat, postnummer eller land',
+	'sign-list-hidephone'          => 'Lista inte telefon',
+	'sign-list-hidebday'           => 'Lista inte ålder',
+	'sign-list-hideemail'          => 'Lista inte e-post',
+	'sign-submit'                  => 'Signera dokument',
+	'sig-success'                  => 'Du har signerat dokumentet lyckat.',
+	'sign-view-selectfields'       => '<b>Fält som visas:</b>',
+	'sign-viewfield-timestamp'     => 'Tidssttämpel',
+	'sign-viewfield-realname'      => 'Namn',
+	'sign-viewfield-address'       => 'Adress',
+	'sign-viewfield-city'          => 'Stad',
+	'sign-viewfield-state'         => 'Stat',
+	'sign-viewfield-country'       => 'Land',
+	'sign-viewfield-zip'           => 'Postnummer',
+	'sign-viewfield-ip'            => 'IP-adress',
+	'sign-viewfield-phone'         => 'Telefon',
+	'sign-viewfield-email'         => 'E-post',
+	'sign-viewfield-age'           => 'Ålder',
+	'sign-signatures'              => 'Signaturer',
+	'sign-viewsignatures'          => 'visa signaturer',
+	'sign-closed'                  => 'stängd',
+	'sign-error-closed'            => 'Signering av detta dokument är just nu stängd.',
+	'sig-anonymous'                => '<i>Anonym</i>',
+	'sig-private'                  => '<i>Privat</i>',
+	'sign-sigdetails'              => 'Signatur detaljer',
+	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|diskussion]] • <!--
+-->[[Special:Contributions/$1|ändringar]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|blockera användare]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blockerings logg] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kontrollera IP])<!--
+--></span>',
+	'sign-viewfield-stricken'      => 'Struken',
+	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-detail-strike'           => 'Stryk signatur',
+	'sign-reviewsig'               => 'Granska signatur',
+	'sign-review-comment'          => 'Kommentar',
+	'sign-uniquequery-similarname' => 'Liknande namn',
+	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerade [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sign-realname'                => 'పేరు:',
+	'sign-address'                 => 'వీధి చిరునామా:',
+	'sign-city'                    => 'నగరం:',
+	'sign-state'                   => 'రాష్ట్రం:',
+	'sign-country'                 => 'దేశం:',
+	'sign-phone'                   => 'ఫోన్ నెంబర్:',
+	'sign-bday'                    => 'వయసు:',
+	'sign-email'                   => 'ఈ-మెయిల్ చిరునామా:',
+	'sign-list-hideaddress'        => 'చిరునామాని చూపించకు',
+	'sign-list-hidebday'           => 'వయసుని చూపించకు',
+	'sign-list-hideemail'          => 'ఈ-మెయిలుని చూపించకు',
+	'sign-viewfield-timestamp'     => 'కాలముద్ర',
+	'sign-viewfield-realname'      => 'పేరు',
+	'sign-viewfield-address'       => 'చిరునామా',
+	'sign-viewfield-city'          => 'నగరం',
+	'sign-viewfield-state'         => 'రాష్ట్రం',
+	'sign-viewfield-country'       => 'దేశం',
+	'sign-viewfield-ip'            => 'IP చిరునామా',
+	'sign-viewfield-phone'         => 'ఫోన్',
+	'sign-viewfield-email'         => 'ఈమెయిల్',
+	'sign-viewfield-age'           => 'వయసు',
+	'sign-viewfield-options'       => 'ఎంపికలు',
+	'sig-anonymous'                => '<i>అనామకం</i>',
+	'sig-private'                  => '<i>అంతరంగికం</i>',
+	'sign-sigdetails'              => 'సంతకం వివరాలు',
+	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-reviewedby'    => 'సమీక్షకులు',
+	'sign-viewfield-reviewcomment' => 'వ్యాఖ్య',
+	'sign-review-comment'          => 'వ్యాఖ్య',
 );
 
 /** Volapük (Volapük)

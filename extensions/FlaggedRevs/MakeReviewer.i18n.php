@@ -40,7 +40,9 @@ Type the name of the user in the box and press the button to set the user\'s rig
 	'rights-editor-revoke'          => 'removed editor status from [[$1]]',
 );
 
-/* Arabic (Meno25) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'makereviewer'                  => 'ترقية/عزل المحررين',
 	'makereviewer-header'           => '<strong>هذه الاستمارة تستخدم بواسطة مدراء النظام و البيروقراطيين لترقية المستخدمين لمصححي مقالات.</strong>
@@ -67,14 +69,11 @@ $messages['ar'] = array(
 	'makereviewer-granted-r'        => '[[User:$1|$1]] لديه الآن صلاحية مراجع.',
 	'makereviewer-revoked-r'        => '[[User:$1|$1]] لم يعد لديه صلاحية مراجع.',
 	'makereviewer-logpage'          => 'سجل صلاحية المحرر',
-	'makereviewer-logpagetext'      => 'هذا سجل بالتغيير في صلاحيات [[{{MediaWiki:Makevalidate-page}}|تصحيح المقالات]].',
-	'makereviewer-page'             => '{{ns:help}}:توكيد المقالات',
 	'makereviewer-logentrygrant-e'  => 'منح صلاحية محرر إلى [[$1]]',
 	'makereviewer-logentryrevoke-e' => 'سحب صلاحية محرر من [[$1]]',
 	'makereviewer-logentrygrant-r'  => 'منح صلاحية مراجع إلى [[$1]]',
 	'makereviewer-logentryrevoke-r' => 'سحب صلاحية مراجع من [[$1]]',
 	'makereviewer-autosum'          => 'ترقية تلقائية',
-	'rights-editor-grant'           => 'منح صلاحية محرر إلى [[$1]]',
 	'rights-editor-revoke'          => 'أزال حالة محرر من [[$1]]',
 );
 
@@ -127,6 +126,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'makereviewer-username' => 'Име на потребителя:',
+	'makereviewer-legend'   => 'Промяна на потребителските права',
 	'makereviewer-grant1'   => 'Предоставяне',
 	'makereviewer-revoke1'  => 'Отнемане',
 	'makereviewer-grant2'   => 'Предоставяне',
@@ -332,14 +332,15 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Urhixidur
  * @author Sherbrooke
  * @author ChrisPtDe
  */
 $messages['fr'] = array(
 	'makereviewer'                  => 'Promouvoir/Démettre les éditeurs',
-	'makereviewer-header'           => "'''Ce formulaire est utilisé par les administrateurs et les bureaucrates pour promouvoir les contributeurs au poste de réviseur d'articles.'''
+	'makereviewer-header'           => "'''Ce formulaire est utilisé par les administrateurs et les bureaucrates pour promouvoir les contributeurs au poste de réviseur d’articles.'''
 
-Saisir le nom du contributeur dans la boîte de dialogue pour lui donner ces droits. Donner les droits de réviseur donne automatiquement les droits d'éditeur. Révoquer les droits de réviseur révoquen automatiquement les droits d'éditeur.",
+Saisir le nom du contributeur dans la boîte de dialogue pour lui donner ces droits. Donner les droits de réviseur donne automatiquement les droits d’éditeur. Révoquer les droits de réviseur révoque automatiquement les droits d’éditeur.",
 	'makereviewer-username'         => 'Nom du contributeur :',
 	'makereviewer-search'           => 'Aller',
 	'makereviewer-iseditor'         => "[[User:$1|$1]] a les droits d'éditeur.",
@@ -352,7 +353,7 @@ Saisir le nom du contributeur dans la boîte de dialogue pour lui donner ces dro
 	'makereviewer-grant1'           => 'Accorder',
 	'makereviewer-revoke1'          => 'Révoquer',
 	'makereviewer-grant2'           => 'Accorder',
-	'makereviewer-revoke2'          => 'Révoquer.',
+	'makereviewer-revoke2'          => 'Révoquer',
 	'makereviewer-comment'          => 'Commentaire :',
 	'makereviewer-granted-e'        => "[[User:$1|$1]] a les droits d'éditeur.",
 	'makereviewer-revoked-e'        => "[[User:$1|$1]] n'a plus les droits d'éditeur.",
@@ -555,6 +556,41 @@ $messages['is'] = array(
 	'makereviewer-comment'  => 'Athugasemd:',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'makereviewer'                  => '記事査読権限の付与/剥奪',
+	'makereviewer-header'           => '<strong>{{int:group-sysop}}または{{int:group-bureaucrat}}が利用者の記事査読権限を変更するためのフォームです。</strong>
+
+権限を変更する利用者名を入力してボタンを押してください。査読者権限を付与すると、自動的に編集者権限も付与されます。編集者権限を剥奪すると、自動的に査読者権限も剥奪されます。',
+	'makereviewer-username'         => '利用者名:',
+	'makereviewer-search'           => '査読権限表示',
+	'makereviewer-iseditor'         => '[[{{ns:user}}:$1|$1]] には、編集者権限が付与されています。',
+	'makereviewer-noteditor'        => '[[{{ns:user}}:$1|$1]] に、編集者権限は付与されていません。',
+	'makereviewer-isvalidator'      => '[[{{ns:user}}:$1|$1]] には、査読者権限が付与されています。',
+	'makereviewer-notvalidator'     => '[[{{ns:user}}:$1|$1]] に、査読者権限は付与されていません。',
+	'makereviewer-legend'           => '利用者権限の変更',
+	'makereviewer-change-e'         => '編集者権限:',
+	'makereviewer-change-r'         => '査読者権限:',
+	'makereviewer-grant1'           => '付与する',
+	'makereviewer-revoke1'          => '付与しない',
+	'makereviewer-grant2'           => '付与する',
+	'makereviewer-revoke2'          => '付与しない',
+	'makereviewer-comment'          => '変更内容の要約:',
+	'makereviewer-granted-e'        => '[[{{ns:user}}:$1|$1]] に、編集者権限が付与されました。',
+	'makereviewer-revoked-e'        => '[[{{ns:user}}:$1|$1]] に、編集者権限はありません。',
+	'makereviewer-granted-r'        => '[[{{ns:user}}:$1|$1]] に、査読者権限が付与されました。',
+	'makereviewer-revoked-r'        => '[[{{ns:user}}:$1|$1]] に、査読者権限はありません。',
+	'makereviewer-logpage'          => '記事査読権限変更ログ',
+	'makereviewer-logentrygrant-e'  => '[[$1]] へ編集者権限付与',
+	'makereviewer-logentryrevoke-e' => '[[$1]] の編集者権限取り消し',
+	'makereviewer-logentrygrant-r'  => '[[$1]] へ査読者権限付与',
+	'makereviewer-logentryrevoke-r' => '[[$1]] の査読者権限取り消し',
+	'makereviewer-autosum'          => '自動権限付与',
+	'rights-editor-revoke'          => '[[$1]] の編集者権限取り消し',
+);
+
 /** Kazakh (Arabic) (قازاقشا (توتە))
  * @author AlefZet
  */
@@ -662,6 +698,13 @@ Qatıswşı quqıqtarın tapsırw üşin qatıswşı atın jolaqta teriñiz de b
 	'makereviewer-autosum'          => 'ataq özdiktik berildi',
 	'rights-editor-revoke'          => 'tüzetwşi küýin [[$1]] degennen alastadı',
 
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'makereviewer-username' => 'ឈ្មោះ នៃអ្នកប្រើប្រាស់ ៖',
 );
 
 $messages['la'] = array(
@@ -780,14 +823,16 @@ Voer de naam van een gebruiker in het invoerveld in en klik op de knop om de geb
 	'rights-editor-revoke'          => 'verwijderde redacteurstatus van [[$1]]',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'makereviewer'                  => 'Forfrem eller degrader bidragsytere',
 	'makereviewer-header'           => '<strong>Dette skjemaet brukes av administratorer og byråkrater for å forfremme brukere til artikkelgodkjennere.</strong>
 
 Skriv inn navnet på brukeren i boksen og trykk knappen for å sette brukerrettigheter. Å gi brukere godkjennerstatus vil automatisk gi dem redaktørstatus. Fjerning av redaktørstatus vil automatisk føre til fjerning av godkjennerstatus.',
 	'makereviewer-username'         => 'Brukernavn:',
-	'makereviewer-search'           => 'Gå',
+	'makereviewer-search'           => '{{int:Go}}',
 	'makereviewer-iseditor'         => '[[User:$1|$1]] har redaktørstatus.',
 	'makereviewer-noteditor'        => '[[User:$1|$1]] har ikke redaktørstatus.',
 	'makereviewer-isvalidator'      => '[[User:$1|$1]] har godkjennerstatus.',
@@ -805,13 +850,11 @@ Skriv inn navnet på brukeren i boksen og trykk knappen for å sette brukerretti
 	'makereviewer-granted-r'        => '[[User:$1|$1]] har nå godkjennerstatus.',
 	'makereviewer-revoked-r'        => '[[User:$1|$1]] har ikke lenger godkjennerstatus.',
 	'makereviewer-logpage'          => 'Godkjennerstatuslogg',
-	'makereviewer-logpagetext'      => 'Dette er en logg over endringer i brukeres [[{{MediaWiki:Makevalidate-page}}|artikkelvalderingsstatus]].',
 	'makereviewer-logentrygrant-e'  => 'ga redaktørstatus til [[User:$1|$1]]',
 	'makereviewer-logentryrevoke-e' => 'fjernet redaktørstatus fra [[User:$1|$1]]',
 	'makereviewer-logentrygrant-r'  => 'ga godkjennerstatus til [[User:$1|$1]]',
 	'makereviewer-logentryrevoke-r' => 'fjernet godkjennerstatus fra [[User:$1|$1]]',
 	'makereviewer-autosum'          => 'autoforfremmet',
-	'rights-editor-grant'           => 'ga [[$1]] redaktørstatus',
 	'rights-editor-revoke'          => 'fjernet redaktørstatus fra [[$1]]',
 );
 
@@ -1098,7 +1141,8 @@ $messages['sv'] = array(
 	'makereviewer'                  => 'Befordra/degradera redaktörer',
 	'makereviewer-header'           => '<strong>Det här formuläret används av administratörer och byråkrater för att befordra användare till sidgranskare</strong>
 
-Skriv användarens namn i rutan  och tryck på knappen för att ändra användarens rättigheter. Att ge användare granskarstatus ger dem automatiskt också redaktörstatus. Om redaktörstatus tas ifrån användare, så tas samtidigt automatiskt deras granskarstatus ifrån dem.',
+Skriv användarens namn i rutan och tryck på knappen för att ändra användarens rättigheter.
+När användare ges granskarstatus så får de automatiskt också redaktörstatus. Om redaktörstatus tas ifrån användare, så tas samtidigt automatiskt deras granskarstatus ifrån dem.',
 	'makereviewer-username'         => 'Användarnamn:',
 	'makereviewer-search'           => 'Gå till',
 	'makereviewer-iseditor'         => '[[User:$1|$1]] har redaktörsbehörighet.',
@@ -1129,8 +1173,10 @@ Skriv användarens namn i rutan  och tryck på knappen för att ändra användar
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author వైజాసత్య
+ * @author Chaduvari
  */
 $messages['te'] = array(
+	'makereviewer'                  => 'రచయితలను పదోన్నతి/నిమ్నత చెయ్యండి',
 	'makereviewer-username'         => 'వాడుకరి పేరు:',
 	'makereviewer-search'           => 'వెళ్ళు',
 	'makereviewer-iseditor'         => '[[User:$1|$1]]కి ఎడిటర్ హోదా ఉంది.',
@@ -1154,6 +1200,7 @@ $messages['te'] = array(
 	'makereviewer-logentryrevoke-e' => '[[$1]] నుండి ఎడిటర్ హోదా తొలగించారు',
 	'makereviewer-logentrygrant-r'  => '[[$1]]కి సమీక్షకుల హోదా ఇచ్చారు',
 	'makereviewer-logentryrevoke-r' => '[[$1]] నుండి సమీక్షకుల హోదా తొలగించారు',
+	'makereviewer-autosum'          => 'ఆటోమాటిగ్గా పదోన్నతి చెయ్యబడ్డారు',
 	'rights-editor-revoke'          => '[[$1]] నుండి ఎడిటర్ హోదా తొలగించారు',
 );
 
@@ -1181,6 +1228,13 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'makereviewer-username' => 'Tên thành viên:',
+	'makereviewer-search'   => 'Hiển thị',
+	'makereviewer-grant1'   => 'Phong cờ',
+	'makereviewer-revoke1'  => 'Rút cờ',
+	'makereviewer-grant2'   => 'Phong cờ',
+	'makereviewer-revoke2'  => 'Rút cờ',
+	'makereviewer-comment'  => 'Lý do:',
+	'makereviewer-autosum'  => 'tự phong cờ',
 );
 
 /** Volapük (Volapük)

@@ -90,14 +90,17 @@ $messages['br'] = array(
 );
 
 /** Czech (Česky)
- * @author Li-sung
  * @author Matěj Grabovský
+ * @author Li-sung
  */
 $messages['cs'] = array(
-	'ajax-se-desc'    => 'Zobrazuje uživatele, kteří upravují stejnou stránku',
-	'ajax-se-title'   => 'Právě edituje:',
-	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
-	'ajax-se-idling'  => '(před $1 s)',
+	'ajax-se-desc'             => 'Zobrazuje uživatele, kteří upravují stejnou stránku',
+	'ajax-se-title'            => 'Právě edituje:',
+	'ajax-se-pending'          => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
+	'ajax-se-idling'           => '(před $1 s)',
+	'ajax-se-pagedoesnotexist' => 'stránka neexistuje',
+	'ajax-se-userinvalid'      => 'CHYBA: neplatný uživatel',
+	'ajax-se-usernotfound'     => 'CHYBA: uživatel nebly nalezen',
 );
 
 /** German (Deutsch)
@@ -148,13 +151,15 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Cimon Avaro
  */
 $messages['fi'] = array(
-	'ajax-se-desc'    => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
-	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
-	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
-	'ajax-se-idling'  => '($1 s sitten)',
+	'ajax-se-desc'             => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
+	'ajax-se-title'            => 'Samanaikaiset muokkaajat:',
+	'ajax-se-pending'          => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
+	'ajax-se-idling'           => '($1 s sitten)',
+	'ajax-se-pagedoesnotexist' => 'sivua ei ole',
 );
 
 /** French (Français)
@@ -268,14 +273,17 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
- * @author Broad-Sky
  * @author JtFuruhata
+ * @author Broad-Sky
  */
 $messages['ja'] = array(
-	'ajax-se-desc'    => '同じページを編集している利用者を表示する',
-	'ajax-se-title'   => '現在編集中:',
-	'ajax-se-pending' => '更新します（この枠内をクリックするか編集を始めてください）',
-	'ajax-se-idling'  => '（$1秒前）',
+	'ajax-se-desc'             => '同じページを編集している利用者を表示する',
+	'ajax-se-title'            => '現在編集中:',
+	'ajax-se-pending'          => '更新します（この枠内をクリックするか編集を始めてください）',
+	'ajax-se-idling'           => '（$1秒前）',
+	'ajax-se-pagedoesnotexist' => 'このページは一度も保存されていません',
+	'ajax-se-userinvalid'      => 'エラー: 不正な利用者です',
+	'ajax-se-usernotfound'     => 'エラー: 利用者情報が存在しません',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -303,17 +311,22 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'ajax-se-title' => 'កំពុង កែប្រែ ៖',
+	'ajax-se-title'            => 'កំពុង កែប្រែ ៖',
+	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
+	'ajax-se-usernotfound'     => 'កំហុស៖ រកមិនឃើញ អ្នកប្រើប្រាស់',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'ajax-se-desc'    => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
-	'ajax-se-title'   => 'Elo geännert vum:',
-	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
-	'ajax-se-idling'  => '(viru(n) $1 Sekonnen)',
+	'ajax-se-desc'             => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
+	'ajax-se-title'            => 'Elo geännert vum:',
+	'ajax-se-pending'          => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
+	'ajax-se-idling'           => '(viru(n) $1 Sekonnen)',
+	'ajax-se-pagedoesnotexist' => "d'Säit gëtt et net",
+	'ajax-se-userinvalid'      => 'Feeler: Benotzer ongëlteg',
+	'ajax-se-usernotfound'     => 'Feeler: Benotzer net fonnt',
 );
 
 /** Limburgish (Limburgs)
@@ -326,13 +339,18 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Hugo.arg
  * @author Garas
  * @author Vpovilaitis
  */
 $messages['lt'] = array(
-	'ajax-se-title'   => 'Dabar redaguojama:',
-	'ajax-se-pending' => 'laukiama atnaujinimo... (paspauskite šį laukelį arba pradėkite redaguoti)',
-	'ajax-se-idling'  => '(prieš $1 s)',
+	'ajax-se-desc'             => 'Rodo redaguojančius naudotojus, kurie redaguoja tuo pat metu',
+	'ajax-se-title'            => 'Dabar redaguojama:',
+	'ajax-se-pending'          => 'laukiama atnaujinimo... (paspauskite šį laukelį arba pradėkite redaguoti)',
+	'ajax-se-idling'           => '(prieš $1 s)',
+	'ajax-se-pagedoesnotexist' => 'puslapis neegzistuoja',
+	'ajax-se-userinvalid'      => 'ERR: naudotojas neteisingas',
+	'ajax-se-usernotfound'     => 'ERR: naudotojas nerastas',
 );
 
 /** Malayalam (മലയാളം)
@@ -369,10 +387,13 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'ajax-se-desc'    => 'Vis hvilke brukere som redigerer samme side',
-	'ajax-se-title'   => 'Redigerer:',
-	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
-	'ajax-se-idling'  => '($1s siden)',
+	'ajax-se-desc'             => 'Vis hvilke brukere som redigerer samme side',
+	'ajax-se-title'            => 'Redigerer:',
+	'ajax-se-pending'          => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
+	'ajax-se-idling'           => '($1s siden)',
+	'ajax-se-pagedoesnotexist' => 'siden finnes ikke',
+	'ajax-se-userinvalid'      => 'Feil: ugyldig bruker',
+	'ajax-se-usernotfound'     => 'Feil: bruker ikke funnet',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -416,10 +437,13 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'ajax-se-desc'    => 'Mostra utilizadores que estão a editar a mesma página',
-	'ajax-se-title'   => 'Editando no momento:',
-	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
-	'ajax-se-idling'  => '($1 segundos atrás)',
+	'ajax-se-desc'             => 'Mostra utilizadores que estão a editar a mesma página',
+	'ajax-se-title'            => 'Editando no momento:',
+	'ajax-se-pending'          => 'atualização pendente... (clique neste box ou inicie a edição)',
+	'ajax-se-idling'           => '($1 segundos atrás)',
+	'ajax-se-pagedoesnotexist' => 'página não existe',
+	'ajax-se-userinvalid'      => 'ERR: utilizador inválido',
+	'ajax-se-usernotfound'     => 'ERR: utilizador não encontrado',
 );
 
 /** Romanian (Română)
@@ -521,9 +545,23 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'ajax-se-title'   => 'ప్రస్తుతం మారుస్తున్నది:',
-	'ajax-se-pending' => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
-	'ajax-se-idling'  => '($1s క్రితం)',
+	'ajax-se-title'            => 'ప్రస్తుతం మారుస్తున్నది:',
+	'ajax-se-pending'          => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
+	'ajax-se-idling'           => '($1s క్రితం)',
+	'ajax-se-pagedoesnotexist' => 'పేజీ ఉనికిలో లేదు',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'ajax-se-desc'             => 'แสดงผู้ใช้ที่กำลังแก้ไขหน้าเดียวกันอยู่',
+	'ajax-se-title'            => 'กำลังแก้ไข :',
+	'ajax-se-pending'          => 'จนกว่าจะโหลดใหม่ ... (คลิกกล่องนี้หรือเริ่มแก้ไข)',
+	'ajax-se-idling'           => '($1 วินาทีผ่านไป)',
+	'ajax-se-pagedoesnotexist' => 'หน้าที่ยังไม่ได้ถูกสร้าง',
+	'ajax-se-userinvalid'      => 'ผิดพลาด : ชื่อผู้ใช้ไม่ถูกต้อง',
+	'ajax-se-usernotfound'     => 'ผิดพลาด : ไม่พบผู้ใช้นี้',
 );
 
 /** Turkish (Türkçe)

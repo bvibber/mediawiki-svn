@@ -31,8 +31,17 @@ $messages['en'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'usernameblacklist-desc'          => "Usa una [[MediaWiki:Usernameblacklist|lista negra de nombres d'usuario]] ta restrinchir a creyazión de cuentas d'usuario que consonen con una u más espresions regulars",
 	'blacklistedusername'             => "Nombre d'usuario en a lista negra",
 	'blacklistedusernametext'         => "O nombre d'usuario que ha trigato concuerda con belún d'os nombre en a [[MediaWiki:Usernameblacklist|lista negra]]. Por fabor, eslicha un atro nombre.",
+	'usernameblacklist'               => "<pre>
+# As linias d'ista lista se ferán serbir como espresions regulars (regexp)
+# ta pribar o rechistro de bels nombres d'usuario.
+# Cada ítem ha d'estar aintro d'una lista no ordenata. Por exemplo:
+#
+# * Falso
+# * [Pp]reba
+</pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|A linia|As linias}} siguients d'a lista negra de nombres d'usuarios no {{PLURAL:$1|ye|son}} correutas; por fabor, corricha-{{PLURAL:$1|lo|los}} antes d'alzar-la:",
 );
 
@@ -223,7 +232,8 @@ $messages['de-formal'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'blacklistedusername' => 'Malpermesita uzantnomo',
+	'usernameblacklist-desc' => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
+	'blacklistedusername'    => 'Malpermesita uzantnomo',
 );
 
 $messages['eu'] = array(
@@ -298,6 +308,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'usernameblacklist-desc'          => 'Apond una [[MediaWiki:Usernameblacklist|lista nêre des noms d’utilisator]] por rètrendre la crèacion des comptos d’utilisators étent dens yona ou plusiors èxprèssions règuliéres.',
 	'blacklistedusername'             => 'Noms d’utilisator en lista nêre',
 	'blacklistedusernametext'         => 'Lo nom d’utilisator que vos éd chouèsi/cièrdu sè trove sur la [[MediaWiki:Usernameblacklist|lista des noms dèfendus]]. Volyéd chouèsir/cièrdre un ôtro nom.',
 	'usernameblacklist'               => '<pre>
@@ -427,6 +438,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'usernameblacklist-desc'          => 'Aggiunge una [[MediaWiki:Usernameblacklist|blacklist dei nomi utente]] per impedire la creazione di account corrispondenti a una o più espressioni regolari',
 	'blacklistedusername'             => 'Nome utente non consentito',
 	'blacklistedusernametext'         => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
 	'usernameblacklist'               => '<pre>
@@ -691,6 +703,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|czarnej listy użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
 	'blacklistedusername'             => 'Nazwa użytkownika na czarnej liście',
 	'blacklistedusernametext'         => 'Wybrana przez ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|czarnej listy]]. Prosimy o wybranie innej nazwy.',
 	'usernameblacklist'               => '<pre>
@@ -772,6 +785,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'usernameblacklist-desc'          => '[[MediaWiki:Usernameblacklist|Кыттааччылар бобуллубут ааттарын]] эбэр, ол оннук ааттары бэлиэтиири көҥүллээбэт.',
 	'blacklistedusername'             => 'Бобуллубут аат',
 	'blacklistedusernametext'         => 'Талбыт аатыҥ [[MediaWiki:Usernameblacklist|бобуллубут ааттар испииһэктэригэр]] киирэр эбит. Атын ааты таларыҥ буоллар.',
 	'usernameblacklist'               => '<pre>
@@ -889,8 +903,10 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'usernameblacklist-desc'          => 'Thêm [[MediaWiki:Usernameblacklist|danh sách đen về tên người dùng]] để cấm không được mở tài khoản dùng tên trùng với một biểu thức chính quy',
 	'blacklistedusername'             => 'Danh sách đen về tên người dùng',
 	'blacklistedusernametext'         => 'Tên người dùng mà bạn chọn trùng khớp với [[MediaWiki:Usernameblacklist|danh sách đen về tên người dùng]]. Xin hãy chọn một tên khác.',
 	'usernameblacklist'               => '<pre>

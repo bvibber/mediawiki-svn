@@ -111,6 +111,14 @@ $messages['nl'] = array(
 	'icon-badwidth' => 'Onjuiste breedte',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'icon-badimage' => 'Dårlig bilde',
+	'icon-badwidth' => 'Dårlig bredde',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -180,5 +188,13 @@ $messages['sv'] = array(
  */
 $messages['tr'] = array(
 	'icon-badimage' => 'Kötü resim',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'icon-badimage' => 'Hình không hợp lệ',
+	'icon-badwidth' => 'Độ ngang không hợp lệ',
 );
 

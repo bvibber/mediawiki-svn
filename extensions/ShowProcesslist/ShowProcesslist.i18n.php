@@ -108,6 +108,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'showprocesslist'         => 'Lisćinu procesow pokazać',
+	'showprocesslist-desc'    => 'Wudaće [[Special:showProcesslist|DOSPOŁNU LISĆINU PROCESOW POKAZAĆ]] zwobraznić',
 	'showprocesslist-user'    => 'Wužiwar',
 	'showprocesslist-host'    => 'Serwer',
 	'showprocesslist-command' => 'Přikaz',
@@ -131,6 +132,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'showprocesslist'         => 'Proceslijst bekijken',
+	'showprocesslist-desc'    => 'Toont de uitvoer van [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Gebruiker',
 	'showprocesslist-host'    => 'Host',
@@ -146,6 +148,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'showprocesslist'         => 'Vis prosessliste',
+	'showprocesslist-desc'    => 'Vis resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Bruker',
 	'showprocesslist-host'    => 'Vert',
@@ -230,6 +233,16 @@ $messages['sv'] = array(
 	'showprocesslist-time'    => 'Tid',
 	'showprocesslist-state'   => 'Tillstånd',
 	'showprocesslist-info'    => 'Information',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'showprocesslist-user'    => 'వాడుకరి',
+	'showprocesslist-command' => 'ఆదేశం',
+	'showprocesslist-time'    => 'సమయం',
+	'showprocesslist-state'   => 'స్థితి',
 );
 
 /** Volapük (Volapük)

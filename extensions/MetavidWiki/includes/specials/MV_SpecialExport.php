@@ -47,11 +47,13 @@ class MV_SpecialExport {
 		$html='';
 		//set universal variables: 
 		$this->feed_format = $wgRequest->getVal('feed_format');	
-		
+		$error_page = '';
 		switch($this->export_type){
 			case 'stream':
-				$this->stream_name = $wgRequest->getVal('stream_name');	
+				$this->stream_name = $wgRequest->getVal('stream_name');				
+				if($this->stream_name=='')$error_page.=wfMsg('edit_stream_missing').", ";
 				$this->req_time = $wgRequest->getVal('t');		
+				if($this->req_time=='')$error_page.=wfMsg('mv_missing_req_time');
 				if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
 				
 				switch($this->feed_format ){
@@ -65,18 +67,26 @@ class MV_SpecialExport {
 			break;
 			case 'category':
 				$this->cat=$wgRequest->getVal('cat'); 	
-				$this->get_category_feed();		
+				if($this->cat==''){
+					$error_page.=wfMsg('mv_missing_cat');
+				}else{
+					$this->get_category_feed();
+				}		
 			break;
 			case 'search':
 				$this->get_search_feed();
 			break;
 			case 'sequence':			
-				$this->seq_title = $this->par;
+				$this->seq_title = $this->par;				
 				$this->get_sequence_xspf();
 			break;			
 		}
 		//@@todo cleaner exit? 
-		exit();
+		if($error_page==''){
+			exit();
+		}else{
+			$wgOut->addHTML($error_page);
+		}	
 	}    
 	function get_sequence_xspf(){		
 		//get the sequence article and export in xspf format: 		
@@ -136,14 +146,16 @@ class MV_SpecialExport {
 	<head>
 		<link rel="alternate" type="text/html" href="<?=htmlentities($streamPageTitle->getFullURL() )?>" />
 		<img id="stream_thumb" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
+		<title><?=htmlentities($streamTitle->getTitleDesc())?></title>
 	</head>
 	<body>
 		<track id="v" provides="video">
 			<switch distinction="quality">
 		<? foreach($file_list as $file){ 				
-				$dAttr= ($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
+				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
+				$dSrc=($file->getPathType()=='url_anx')?$streamTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
 			?>
-				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
+				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
 		<?}?>
 	</switch>
 		</track>
@@ -156,7 +168,7 @@ class MV_SpecialExport {
 					$query = 'stream_name='.$this->stream_name.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
 					$clink = $sTitle->getFullURL($query);					
 ?>
-				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" node_count="<?=$row->count?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
 <?
 					//output inline cmml: 
 					if(in_array(strtolower($row->mvd_type), $mvcp->mvd_tracks)){
@@ -181,13 +193,16 @@ class MV_SpecialExport {
 		//set cmml name space if inline: 
 		$ns = ($inline)?'cmml:':'';
 		$ns='';
+		$encap=false;//if we should have a parent cmml tag
 		if(!$force_track){
 			//check the request to get trac set:
 			$mvcp = new MV_Component();
 			$mvcp->procMVDReqSet();
 			$tracks = $mvcp->mvd_tracks;
+			if(count($mvcp->mvd_tracks)>1)$encap=true;
 		}else{
 			$tracks = $force_track;
+			$encap=false;
 		}
 		
 		//get the stream title	
@@ -221,8 +236,8 @@ class MV_SpecialExport {
 				$wgOut->clearHTML();
 			}
 		}		
+		if($encap)print '<cmml_set>';
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
-
 		foreach($tracks as $role=>$body_string){
 ?>
 					<cmml lang="en" id="<?=$role?>" role="<?=wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
@@ -231,10 +246,11 @@ class MV_SpecialExport {
 							<<?=$ns?>description><?=htmlentities(wfMsg($role.'_desc'))?></<?=$ns?>description>				
 						</<?=$ns?>head>
 						<?=$body_string?>
-						
+												
 					</cmml>
 <?
 		}
+		if($encap)print '</cmml_set>';
 	}
 	// @@todo integrate cache query (similar to SpecialRecentChanges::rcOutputFeed ))
 	function get_category_feed(){

@@ -79,6 +79,13 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist'     => '„$1” nem létezik',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'mediafunctions-not-exist' => '"$1" gëtt et net',
+);
+
 $messages['nds'] = array(
 	'mediafunctions-invalid-title' => '„$1“ is keen validen Titel',
 	'mediafunctions-not-exist'     => '„$1“ gifft dat nich',
@@ -155,6 +162,21 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'mediafunctions-invalid-title' => '"$1" är inte en giltig titel',
 	'mediafunctions-not-exist'     => '"$1" existerar inte',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mediafunctions-invalid-title' => '"$1" అనేది సరైన శీర్షిక కాదు',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mediafunctions-invalid-title' => 'Tên “$1” không hợp lệ',
+	'mediafunctions-not-exist'     => '“$1” không tồn tại',
 );
 
 /** Volapük (Volapük)

@@ -25,6 +25,7 @@ $messages['en'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'antispoof-desc'          => "Bloqueya a creyazión de cuentas confusas, con tipografía mezclata y nombres d'usuario parellanos.",
 	'antispoof-name-conflict' => 'O nombre "$1" ye masiau parexiu á o nombre d\'a cuenta "$2", ya esistents. Por fabor, eslicha un atro nombre.',
 	'antispoof-name-illegal'  => 'No se premite rechistrar-se con o nombre "$1" ta pribar confusions y suplantazions con os nombres d\'usuario: $2. Por fabor, eslicha una atro nombre.',
 	'antispoof-badtype'       => 'Tipo de datos no conforme',
@@ -606,6 +607,13 @@ $messages['kk-latn'] = array(
 	'antispoof-tooshort'      => 'Erejelengen atawı tım qısqa',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'antispoof-noletters' => 'មិនមានផ្ទុកអក្សរណាមួយ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  */
@@ -1070,6 +1078,7 @@ $messages['uk'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'antispoof-desc'          => 'Cấm không được mở tài khoản dưới tên dùng hơn một hệ thống viết, gây nhầm lẫn, hay giống tên của người khác',
 	'antispoof-name-conflict' => 'Tên “$1” quá giống với tài khoản đã có “$2”. Xin hãy chọn tên khác.',
 	'antispoof-name-illegal'  => 'Không được phép dùng tên “$1” để tránh tên người dùng $2 dễ gây lầm lẫn hoặc lừa gạt. Xin hãy chọn tên khác.',
 	'antispoof-badtype'       => 'Kiểu dữ liệu không hợp lệ',
@@ -1087,6 +1096,7 @@ $messages['vi'] = array(
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'antispoof-desc'          => 'Blokön jafi kalas labü gebananems kofudik, tu sümiks u labü lafabs distik',
 	'antispoof-name-conflict' => 'Gebananem: „$1“ binon tu sümik ad gebananem ya dabinöl: „$2“. Välolös, begö! nemi votik.',
 	'antispoof-name-illegal'  => 'Nem: „$1“ no padälon, ad vitön gebananemis kofudik u smilöfikis: $2. Välolös, begö! nemi votik.',
 	'antispoof-badtype'       => 'Nünasot badik',

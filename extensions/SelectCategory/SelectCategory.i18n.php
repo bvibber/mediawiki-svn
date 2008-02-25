@@ -79,9 +79,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
 	'selectcategory-title'    => 'Seleccionar categorías',
+	'selectcategory-desc'     => 'Amosa ao usuario para seleccionar das categorías existentes cando edita unha páxina',
 	'selectcategory-subtitle' => 'Faga clic co botón de maiúsculas e o rato para seleccionar varias entradas contiguas. Co botón Ctrl e o rato para seleccionar entradas non contiguas.',
 );
 
@@ -98,6 +100,7 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'selectcategory-title'    => 'Kategorije wubrać',
+	'selectcategory-desc'     => 'Zmóžnja wužiwarjej z eksistowacych kategorijow wubrać, hdyž stronu wobdźěłuje',
 	'selectcategory-subtitle' => 'Umschalt-Myš, zo bychu so wjacore susodne zapiski wubrali, Strg-myš, zo bychu so njesusodne zapiski wubrali.',
 );
 
@@ -131,6 +134,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'selectcategory-title'    => 'Selecteer categorieën',
+	'selectcategory-desc'     => 'Stelt gebruikers in staat uit bestaande categorieën te kiezen bij het bewerken van een pagina',
 	'selectcategory-subtitle' => 'Shiftklik om meerdere opeenvolgende categorieën te selecteren, Ctrlklik om niet-openvolgende categorieën te selecteren.',
 );
 
@@ -167,6 +171,13 @@ $messages['pms'] = array(
 	'selectcategory-subtitle' => "Ch'a dòvra sò rat con la ciav dlë Shift sgnacà për sërne ëd categorìe ch'as ven-o l'un-a dapress a l'àotra, ò pura con ën sgmacand la ciav Ctrl për pieje un-a pr'un-a.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'selectcategory-title' => 'وېشنيزې ټاکل',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -197,6 +208,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'selectcategory-title' => 'Välj kategorier',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'selectcategory-title' => 'వర్గాలను ఎంచుకోండి',
 );
 
 /** Yue (粵語)

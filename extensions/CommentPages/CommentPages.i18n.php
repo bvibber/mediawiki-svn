@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'nstab-comments'    => 'تعليق',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'commentpages-desc' => 'Diskusní stránky hlavního jmenného prostoru',
+	'nstab-comments'    => 'Komentář',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -42,7 +50,8 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'nstab-comments' => 'Comentario',
+	'commentpages-desc' => 'Páxinas de comentario para o espazo de nomes principal',
+	'nstab-comments'    => 'Comentario',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -77,11 +86,35 @@ $messages['nl'] = array(
 	'nstab-comments'    => 'Opmerkingen',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'commentpages-desc' => 'Legger til kommentarsider for sider i hovednavnerommet',
+	'nstab-comments'    => 'Kommentarer',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'nstab-comments' => 'Comentari',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'commentpages-desc' => 'Páginas de comentários para o espaço nominal principal',
+	'nstab-comments'    => 'Comentário',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'commentpages-desc' => 'Страницы комментариев для основного пространства имён',
+	'nstab-comments'    => 'Примечание',
 );
 
 /** Slovak (Slovenčina)

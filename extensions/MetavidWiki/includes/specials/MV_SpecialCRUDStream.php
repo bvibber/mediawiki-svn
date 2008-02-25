@@ -40,8 +40,7 @@ class MV_SpecialCRUDStream {
         # Get request data from, e.g.
         $title_str = $wgRequest->getVal('title');
                       
-        //get Mv_Title to normalize the stream name:
-        require_once($mvgIP . '/includes/MV_Title.php');
+        //get Mv_Title to normalize the stream name:       
         $this->stream_name = ($wgRequest->getVal( 'stream_name')=='')?'':
         	 MV_Title::normalizeTitle( $wgRequest->getVal( 'stream_name') );
         	 

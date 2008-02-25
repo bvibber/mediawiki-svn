@@ -94,6 +94,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'categorytree'                  => 'Árbol de categorías',
 	'categorytree-tab'              => 'Árbol',
+	'categorytree-desc'             => "Traste basato en AJAX t'amostrar a [[Special:CategoryTree|estrutura de categorías]] d'una wiki",
 	'categorytree-header'           => "Escriba un nombre de categoría ta beyer os suyos contenius en forma d'árbol. Pare cuenta que ista pachina requiere as funzions JavaScriptz abanzatas conoixitas como AJAX. Si tiene un nabegador antigo, u tiene desautibato JavaScript, a pachina no funzionará.",
 	'categorytree-category'         => 'Categoría',
 	'categorytree-go'               => "Amostrar l'Árbol",
@@ -614,6 +615,7 @@ $messages['et'] = array(
 	'categorytree-category'         => 'Kategooria',
 	'categorytree-mode-categories'  => 'ainult kategooriad',
 	'categorytree-mode-pages'       => 'leheküljed, välja arvatud pildid',
+	'categorytree-mode-all'         => 'kõik leheküljed',
 	'categorytree-no-subcategories' => 'alamkategooriaid ei ole',
 	'categorytree-show-list'        => 'Näita nimekirjana',
 	'categorytree-show-tree'        => 'Näita kategooriapuuna',
@@ -1070,6 +1072,7 @@ Ef þú notast við gamlan vafra eða hefur slökkt á JavaScript mun þetta ekk
 $messages['it'] = array(
 	'categorytree'                  => 'Struttura ad albero delle categorie',
 	'categorytree-tab'              => 'Albero',
+	'categorytree-desc'             => 'Accessorio AJAX per visualizzare la [[Special:CategoryTree|struttura delle categorie]] del sito',
 	'categorytree-header'           => 'Inserire il nome della categoria di cui si desidera vedere il contenuto sotto forma di struttura ad albero. Si noti che la pagina richiede le funzionalità avanzate di JavaScript chiamate AJAX; qualora si stia usando un browser molto vecchio o le funzioni JavaScript siano disabilitate, questa pagina non funzionerà.',
 	'categorytree-category'         => 'Categoria',
 	'categorytree-go'               => 'Carica',
@@ -1214,6 +1217,31 @@ Eger şolğışıñız öte eski, nemese JavaScript öşirilgen bolsa, bul iske 
 	'categorytree-too-many-subcats' => 'Sanatşalar tım köp bolğandıqtan, butaqtarı körsetilmeýdi.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'categorytree'                  => 'ដើមឈើចំណាត់ក្រុម',
+	'categorytree-tab'              => 'ដើមឈើ',
+	'categorytree-category'         => 'ចំណាត់ក្រុម',
+	'categorytree-go'               => 'បង្ហាញដើមឈើ',
+	'categorytree-mode-categories'  => 'ចំណាត់ក្រុម តែប៉ុណ្ណោះ',
+	'categorytree-mode-pages'       => 'ទំព័រ លើកលែងតែរូបភាព',
+	'categorytree-mode-all'         => 'គ្រប់ទំព័រ',
+	'categorytree-expand'           => 'ពង្រីក',
+	'categorytree-load'             => 'ផ្ទុក',
+	'categorytree-loading'          => 'កំពុងផ្ទុក',
+	'categorytree-nothing-found'    => 'រកមិនឃើញអ្វី',
+	'categorytree-no-subcategories' => 'គ្មាន ចំណាត់ក្រុមរង',
+	'categorytree-no-pages'         => 'គ្មានទំព័រ ឬ ចំណាត់ក្រុមរង',
+	'categorytree-not-found'        => 'រកមិនឃើញ ចំណាត់ក្រុម <i>$1</i>',
+	'categorytree-error'            => 'មានបញ្ហា ផ្ទុកទិន្នន័យ។',
+	'categorytree-retry'            => 'ចាំមួយភ្លែត សឹម ព្យាយាមម្តងទៀត ។',
+	'categorytree-show-list'        => 'បង្ហាញជា បញ្ជី',
+	'categorytree-show-tree'        => 'បង្ហាញជា ដើមឈើ',
+	'categorytree-too-many-subcats' => 'មិនអាចបង្ហាញ ចំណាត់ក្រុមរង ជា ដើមឈើ, វាមានចំណាត់ក្រុមរង ច្រើនពេក ។',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  */
@@ -1339,7 +1367,9 @@ Esse 'ne erg verajerdje browser höbs of JavaScript steit oet, den werk dees fun
 	'categorytree-too-many-subcats' => "Kin de óngercategorië neet es boumstructuur toeane, d'r zeen d'rs te väöl.",
 );
 
-/** Lao (ລາວ) */
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
 $messages['lo'] = array(
 	'categorytree'                  => 'ໂຄງສ້າງໝວດ',
 	'categorytree-tab'              => 'ໂຄງສ້າງ',
@@ -1703,13 +1733,21 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'categorytree'                 => 'د وېشنيزو ونه',
-	'categorytree-category'        => 'وېشنيزه',
-	'categorytree-mode-categories' => 'يوازې وېشنيزې',
-	'categorytree-mode-all'        => 'ټول مخونه',
-	'categorytree-not-found'       => 'د <i>$1</i> وېشنيزه و نه موندل شوه',
-	'categorytree-show-list'       => 'د لړليک په څېر ښکاره کول',
-	'categorytree-show-tree'       => 'د ونې په څېر ښکاره کول',
+	'categorytree'                  => 'د وېشنيزو ونه',
+	'categorytree-tab'              => 'ونه',
+	'categorytree-category'         => 'وېشنيزه',
+	'categorytree-go'               => 'ونه ښکاره کول',
+	'categorytree-mode-categories'  => 'يوازې وېشنيزې',
+	'categorytree-mode-all'         => 'ټول مخونه',
+	'categorytree-expand'           => 'غځول',
+	'categorytree-nothing-found'    => 'هېڅ هم و نه موندل شو',
+	'categorytree-no-subcategories' => 'هېڅ وړې-وېشنيزې نشته',
+	'categorytree-no-pages'         => 'هېڅ مخ يا وړه-وېشنيزه نشته',
+	'categorytree-not-found'        => 'د <i>$1</i> وېشنيزه و نه موندل شوه',
+	'categorytree-retry'            => 'مهرباني وکړی لږ څه تم شی او بيا يې وآزمايۍ',
+	'categorytree-show-list'        => 'د لړليک په څېر ښکاره کول',
+	'categorytree-show-tree'        => 'د ونې په څېر ښکاره کول',
+	'categorytree-too-many-subcats' => 'وړې-وېشنيزې د ونې په څېر نه شو ښکاره کولای، همدلته ډېرې زياتې وړې وېشنيزې دي.',
 );
 
 /** Portuguese (Português)
@@ -2153,6 +2191,7 @@ $messages['tg'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Passawuth
  */
 $messages['th'] = array(
 	'categorytree-category'         => 'หมวดหมู่',

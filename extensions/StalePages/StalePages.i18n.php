@@ -76,9 +76,25 @@ $messages['lb'] = array(
 	'stalepages-summary' => 'Dëst ass eng Lëscht vu Säiten, déi an de läschte(n) $1 Deeg net verännert goufen.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jacob.jose
+ */
+$messages['ml'] = array(
+	'stalepages'         => 'പഴക്കം തട്ടിയ താളുകള്‍',
+	'stalepages-summary' => 'കഴിഞ്ഞ $1 ദിവസങ്ങളാ‍യി ഒരിക്കല്‍പ്പോലും തിരുത്തപ്പെടാത്ത താളുകളുടെ പട്ടികയാണ് ഇത്.',
+);
+
 $messages['nl'] = array(
 	'stalepages' => 'Vergeten pagina\'s',
 	'stalepages-summary' => 'Dit is een lijst van pagina\'s die niet bewerkt zijn in de afgelopen $1 dagen.',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'stalepages'         => 'Foreldede sider',
+	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert på de siste $1 dagene.',
 );
 
 /** Occitan (Occitan)

@@ -68,20 +68,23 @@ $messages['eo'] = array(
 	'latexdoc_no_text' => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'latexdoc_no_text' => 'L’article ne contient pas de texte. Impossible de créer DVI',
+	'latexdoc_no_text'         => 'L’article ne contient pas de texte. Impossible de créer DVI',
 	'latexdoc_cant_create_dir' => 'Impossible de créer le répertoire temporaire $1',
-	'latexdoc_cant_write' => 'Impossible d’écrige dans le fichier $1',
-	'latexdoc_error' => "Erreur LaTeX
+	'latexdoc_cant_write'      => 'Impossible d’écrire dans le fichier $1',
+	'latexdoc_error'           => 'Erreur LaTeX
 
 Commande : $1
 
 Sortie : $2
 
-$3",
-	'latexdoc_get_dvi' => 'Obtenir DVI',
-	'latexdoc_get_pdf' => 'Obtenir PDF',
-	'latexdoc-desc'    => 'Document LaTex.',
+$3',
+	'latexdoc_get_dvi'         => 'Obtenir DVI',
+	'latexdoc_get_pdf'         => 'Obtenir PDF',
+	'latexdoc-desc'            => 'Document LaTeX.',
 );
 
 /** Galician (Galego)
@@ -159,6 +162,25 @@ $3',
 	'latexdoc-desc'            => 'Collaboratief bewerken van LaTeX-documenten',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'latexdoc_no_text'         => 'Siden inneholder ikke noe tekst, kan ikke generere DVI',
+	'latexdoc_cant_create_dir' => 'Kan ikke opprette midlertid mappe $1',
+	'latexdoc_cant_write'      => 'Kan ikke skrive til filen $1',
+	'latexdoc_error'           => 'LaTeX-feil
+
+Kommando: $1
+
+Resultat: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Hent DVI',
+	'latexdoc_get_pdf'         => 'Hent PDF',
+	'latexdoc-desc'            => 'Felles redigering av LaTeX-dokumenter',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -225,6 +247,7 @@ $messages['ru'] = array(
 $3',
 	'latexdoc_get_dvi'         => 'Получить DVI',
 	'latexdoc_get_pdf'         => 'Получить PDF',
+	'latexdoc-desc'            => 'Совместное редактирование документов LaTeX',
 );
 
 /** Slovak (Slovenčina)
@@ -252,6 +275,14 @@ $3',
 $messages['sv'] = array(
 	'latexdoc_get_dvi' => 'Hämta DVI',
 	'latexdoc_get_pdf' => 'Hämta PDF',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'latexdoc_no_text' => 'పేజీలో పాఠ్యమేమీ లేదు, DVIని సృష్టించలేము',
+	'latexdoc_get_pdf' => 'PDFని పొందండి',
 );
 
 /** Volapük (Volapük)

@@ -33,7 +33,8 @@
 
 		$params = array( 'width' => $this->mWidths, 'height' => $this->mHeights );
 		$i = 0;
-		foreach ( $this->mImages as $pair ) {
+		$this->already_named_resource=array();
+		foreach ( $this->mImages as $pair ) {			
 			$nt = $pair[0];
 			$text = $pair[1];
 			
@@ -48,11 +49,11 @@
 				$nt->getNamespace() == MV_NS_STREAM || 
 				$nt->getNamespace() == MV_NS_SEQUENCE ){
 				//$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;				
-				$mvTitle = new MV_Title($nt);	
+				$mvTitle = new MV_Title($nt);							
 				
 				//remap MVD namespace links into the Stream view (so contextual metadata is present)
 				if($nt->getNamespace() == MV_NS_MVD ){
-					$nt = Title::MakeTitle(MV_NS_STREAM,$mvTitle->getWikiTitle() );
+					$nt = Title::MakeTitle(MV_NS_STREAM,ucfirst($mvTitle->getStreamName()).'/'.$mvTitle->getTimeRequest() );
 				}					
 				$vidH = round($this->mWidths*$mvDefaultAspectRatio);
 				$vidRes = $this->mWidths.'x'.$vidH;
@@ -76,7 +77,8 @@
 					'</div>';
 					 
 					$nb = '';
-					$textlink='';					
+					$textlink='';				
+						
 			}else{
 				
 				if( $nt->getNamespace() != NS_IMAGE || !$img ) {

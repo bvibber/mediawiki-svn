@@ -54,7 +54,9 @@ function wfCheckWhitelist(&$title, &$wgUser, $action, &$result) {
 		if( !isset($wgWhitelistOverride['never']['edit']) )
 			$wgWhitelistOverride['never']['edit'] = array();
 		
-		
+		if (!$title)
+                        return $hideMe;
+                        
 		/* Check if never allowed - check both read and write to be extra safe */
 		if( ('edit' == $action) && (in_array( $title->getPrefixedText(), $wgWhitelistOverride['never']['edit'])) )
 		{

@@ -69,6 +69,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'passwordreset'                    => 'Passwort zurücksetzen',
+	'passwordreset'                    => "Zurücksetzen eines Benutzer-Passwortes - ''passwordreset''-Recht notwendig",
 	'passwordreset-invalidusername'    => 'Ungültiger Benutzername',
 	'passwordreset-emptyusername'      => 'Leerer Benutzername',
 	'passwordreset-nopassmatch'        => 'Passwörter stimmen nicht überein',
@@ -101,22 +102,22 @@ $messages['el'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
-	'passwordreset-desc'               => "Réinitialise les mots de passe wiki des utilisateurs - nécessite les privilièges « passwordreset »",
 	'passwordreset-invalidusername'    => "Nom d'usager inconnu",
 	'passwordreset-emptyusername'      => "Nom d'usager vide",
 	'passwordreset-nopassmatch'        => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
-	'passwordreset-badtoken'           => 'Token de modification inconnu',
+	'passwordreset-badtoken'           => 'Jeton de modification inconnu',
 	'passwordreset-username'           => "Nom d'usager",
 	'passwordreset-newpass'            => 'Nouveau mot de passe',
 	'passwordreset-confirmpass'        => 'Confirmez le mot de passe',
 	'passwordreset-submit'             => 'Remise à zéro du mot de passe',
-	'passwordreset-success'            => "Le mot de passe a été remis à zréo pour le ''user_id'' $1.",
+	'passwordreset-success'            => 'Le mot de passe a été remis à zéro pour l’usager $1.',
 	'passwordreset-disableuser'        => 'Désactiver le compte utilisateur ?',
-	'passwordreset-disableuserexplain' => "(règle un hash de mot de passe non valide - l'utilisateur ne peut pas se connecter)",
+	'passwordreset-disableuserexplain' => '(spécifie un hachage de mot de passe invalide - l’utilisateur ne pourra pas se connecter)',
 	'passwordreset-disablesuccess'     => 'Compte utilisateur désactivé (user_id : $1)',
 	'passwordreset-accountdisabled'    => 'Ce compte a été désactivé.',
 	'disabledusers'                    => 'Utilisateurs désactivés',
@@ -125,6 +126,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
@@ -140,7 +142,8 @@ $messages['gl'] = array(
 	'passwordreset-disableuser'     => 'Desactivar a Conta de Usuario?',
 	'passwordreset-disablesuccess'  => 'Desactivouse a conta do usuario (user_id: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
-
+	'disabledusers'                 => 'Usuarios desabilitados',
+	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que teñen desabilitada a vía PasswordReset.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -195,11 +198,29 @@ $messages['io'] = array(
 	'passwordreset-newpass' => 'Nova Kontrolajo',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'passwordreset-username' => 'Notandanafn',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
+	'passwordreset-emptyusername'   => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
+	'passwordreset-username'        => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'passwordreset-confirmpass'     => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
+	'passwordreset-nopassmatch'   => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
 	'passwordreset-username'      => 'Benotzernumm',
 	'passwordreset-newpass'       => 'Neit Passwuert',
 	'passwordreset-confirmpass'   => 'Passwuert confirméieren',
@@ -299,6 +320,17 @@ $messages['pms'] = array(
 	'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'passwordreset-invalidusername' => 'ناسم کارن-نوم',
+	'passwordreset-emptyusername'   => 'تش کارن-نوم',
+	'passwordreset-nopassmatch'     => 'پټنومونه مو کټ مټ د يو بل سره سمون نه خوري',
+	'passwordreset-username'        => 'کارن-نوم',
+	'passwordreset-newpass'         => 'نوی پټنوم',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -312,6 +344,8 @@ $messages['pt'] = array(
 	'passwordreset-confirmpass'     => 'Confirme Palavra-Chave',
 	'passwordreset-submit'          => 'Repor Palavra-Chave',
 	'passwordreset-disableuser'     => 'Desactivar Conta de Utilizador?',
+	'passwordreset-accountdisabled' => 'A conta foi desactivada',
+	'disabledusers'                 => 'Utilizadores desactivados',
 );
 
 $messages['rm'] = array(
@@ -382,10 +416,30 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'passwordreset-username' => 'Användarnamn',
+	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
+	'passwordreset-emptyusername'   => 'Tomt användarnamn',
+	'passwordreset-nopassmatch'     => 'Lösenordet matchar inte',
+	'passwordreset-username'        => 'Användarnamn',
+	'passwordreset-newpass'         => 'Nytt lösenord',
+	'passwordreset-confirmpass'     => 'Konfirmera lösenord',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'passwordreset-invalidusername' => 'తప్పుడు వాడుకరిపేరు',
+	'passwordreset-emptyusername'   => 'ఖాళీ వాడుకరి పేరు',
+	'passwordreset-nopassmatch'     => 'సంకేతపదాలు సరిపోలలేదు',
+	'passwordreset-username'        => 'వాడుకరిపేరు',
+	'passwordreset-newpass'         => 'కొత్త సంకేతపదం',
+	'passwordreset-confirmpass'     => 'సంకేతపదాన్ని నిర్ధారించండి',
+	'passwordreset-disableuser'     => 'వాడుకరి ఖాతాని అచేతనం చేయాలా?',
+	'passwordreset-accountdisabled' => 'ఖాతాని అచేతనం చేసారు',
 );
 
 /** Volapük (Volapük)

@@ -21,6 +21,14 @@ $messages['am'] = array(
 	'sitenotice_close' => '<-- ይህን አውጣ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'sitenotice_close' => 'amagar',
+	'sitenotice-desc'  => 'Premitir que os usuario zarren o "sitenotice"',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
@@ -58,8 +66,12 @@ $messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
 $messages['ca'] = array(
 	'sitenotice_close' => 'amaga',
+	'sitenotice-desc'  => "Permet als usuaris tancar el ''sitenotice''",
 );
 
 $messages['cdo'] = array(
@@ -147,10 +159,12 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dnik
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'sitenotice_close' => 'sakrij',
+	'sitenotice-desc'  => 'Dopušta korisnicima zatvaranje obavijesti',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -185,12 +199,20 @@ $messages['is'] = array(
 	'sitenotice_close' => 'fela',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
 	'sitenotice_close' => 'nascondi',
+	'sitenotice-desc'  => 'Consente agli utenti di chiudere il sitenotice',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'sitenotice_close' => '非表示',
+	'sitenotice-desc'  => 'サイトからのお知らせを利用者が非表示にすることを可能とする',
 );
 
 $messages['kk-arab'] = array(
@@ -212,8 +234,13 @@ $messages['ko'] = array(
 	'sitenotice_close' => '숨기기',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ * @author SPQRobin
+ */
 $messages['lb'] = array(
 	'sitenotice_close' => 'verstoppen',
+	'sitenotice-desc'  => "Erlaabt et de Benotzer fir d'Sitenotice zouzemaachen",
 );
 
 /** Limburgish (Limburgs)
@@ -314,6 +341,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'sitenotice_close' => 'кистээ',
+	'sitenotice-desc'  => 'Саайт биллэриилэрин көрбөт гынар',
 );
 
 /** Sassarese (Sassarese)
@@ -396,7 +424,8 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'sitenotice-desc' => 'Dälon gebanes ad nemogükön jonami topädanunama',
+	'sitenotice_close' => 'klänedön',
+	'sitenotice-desc'  => 'Dälon gebanes ad nemogükön jonami topädanunama',
 );
 
 $messages['yue'] = array(

@@ -197,19 +197,22 @@ $messages['fi'] = array(
 	'contributors-others-long' => 'Tällä sivulla on $1 muuta muokkaajaa.',
 );
 
-/* French */
+/** French (Français)
+ * @author Sherbrooke
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'contributors' => 'Contributeurs',
-	'contributors-desc' => 'Met en sommaire les principaux contributeurs d’un page',
-	'contributors-toolbox' => 'Principaux contributeurs',
-	'contributors-legend' => 'Lister les principaux contributeurs de l’article',
-	'contributors-target' => 'Titre :',
-	'contributors-submit' => 'Montrer',
-	'contributors-subtitle' => 'Principaux contributeurs de $1',
+	'contributors'             => 'Contributeurs',
+	'contributors-desc'        => 'Met en sommaire les principaux contributeurs d’une page',
+	'contributors-toolbox'     => 'Principaux contributeurs',
+	'contributors-legend'      => 'Lister les principaux contributeurs de l’article',
+	'contributors-target'      => 'Titre :',
+	'contributors-submit'      => 'Montrer',
+	'contributors-subtitle'    => 'Principaux contributeurs de $1',
 	'contributors-others-long' => 'Il y a {{PLURAL:$1|$1 autre contributeur|$1 autres contributeurs}} pour cette page.',
-	'contributors-others' => 'et {{PLURAL:$1|$1 autre|$1 autres}}',
-	'contributors-badtitle' => 'Titre incorrect.',
-	'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
+	'contributors-others'      => 'et {{PLURAL:$1|$1 autre|$1 autres}}',
+	'contributors-badtitle'    => 'Titre incorrect.',
+	'contributors-nosuchpage'  => 'L’article $1 n’existe pas.',
 );
 
 /** Galician (Galego)
@@ -431,15 +434,16 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'contributors'             => 'Bidragsytere',
+	'contributors-desc'        => 'Gir sammendrag av hovedbidragsyterne på en side',
 	'contributors-toolbox'     => 'Hovedbidragsytere',
-	'contributors-legend'      => 'Liste over hovedbidragsytere til en artikkel',
+	'contributors-legend'      => 'Liste over hovedbidragsytere til en side',
 	'contributors-target'      => 'Tittel:',
 	'contributors-submit'      => 'Vis',
 	'contributors-subtitle'    => 'Hovedbidragsytere på $1',
 	'contributors-others-long' => 'Det er $1 andre bidragsytere på denne siden.',
 	'contributors-others'      => 'og $1 andre',
 	'contributors-badtitle'    => 'Ugyldig tittel.',
-	'contributors-nosuchpage'  => 'Artikkelen $1 eksisterer ikke.',
+	'contributors-nosuchpage'  => 'Siden $1 eksisterer ikke.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -551,18 +555,21 @@ $messages['ro'] = array(
 	'contributors-nosuchpage'  => 'Articolul $1 nu există.',
 );
 
-/* Russian */
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
 $messages['ru'] = array(
-	'contributors' => 'Авторы',
-	'contributors-toolbox' => 'Основные авторы',
-	'contributors-legend' => 'Формирует список основных авторов статьи',
-	'contributors-target' => 'Название:',
-	'contributors-submit' => 'Показать',
-	'contributors-subtitle' => 'Основные авторы $1',
+	'contributors'             => 'Авторы',
+	'contributors-desc'        => 'Определяет основных участников работы над страницей',
+	'contributors-toolbox'     => 'Основные авторы',
+	'contributors-legend'      => 'Формирует список основных авторов статьи',
+	'contributors-target'      => 'Название:',
+	'contributors-submit'      => 'Показать',
+	'contributors-subtitle'    => 'Основные авторы $1',
 	'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 авторов.',
-	'contributors-others' => 'и ещё $1 других',
-	'contributors-badtitle' => 'Ошибочное название.',
-	'contributors-nosuchpage' => 'Статья «$1» не существует.',
+	'contributors-others'      => 'и ещё $1 других',
+	'contributors-badtitle'    => 'Ошибочное название.',
+	'contributors-nosuchpage'  => 'Статья «$1» не существует.',
 );
 
 /** Slovak (Slovenčina)
@@ -658,19 +665,56 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'contributors'             => 'Bidragsgivare',
-	'contributors-toolbox'     => 'Huvud bidragsgivare',
-	'contributors-legend'      => 'Lista huvud bidragsgivarna till en sida',
-	'contributors-target'      => 'Titel:',
+	'contributors-desc'        => 'Ger en sammanställning över de huvudsakliga bidragarna till en sida',
+	'contributors-toolbox'     => 'Huvudsakliga bidragsgivare',
+	'contributors-legend'      => 'Visa de huvudsakliga bidragsgivarna till en sida',
+	'contributors-target'      => 'Sidtitel:',
 	'contributors-submit'      => 'Visa',
-	'contributors-subtitle'    => 'Huvud bidragsgivarna till $1',
-	'contributors-others-long' => 'Det är $1 andra bidragsgivare till denna sida.',
+	'contributors-subtitle'    => 'Huvudsakliga bidragsgivare till $1',
+	'contributors-others-long' => '$1 andra användare har bidragit till denna sida.',
 	'contributors-others'      => 'och $1 andra',
 	'contributors-badtitle'    => 'Ogiltig titel.',
 	'contributors-nosuchpage'  => 'Sidan $1 existerar inte.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contributors-target'     => 'శీర్షిక:',
+	'contributors-submit'     => 'చూపించు',
+	'contributors-badtitle'   => 'తప్పుడు శీర్షిక.',
+	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'contributors'         => 'ผู้เขียน',
+	'contributors-toolbox' => 'ผู้เขียนหลัก',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'contributors'             => 'Những người đóng góp',
+	'contributors-desc'        => 'Liệt kê những người đóng góp chính của một trang',
+	'contributors-toolbox'     => 'Những người đóng góp chính',
+	'contributors-legend'      => 'Liệt kê những người đóng góp chính của một trang',
+	'contributors-target'      => 'Tên trang:',
+	'contributors-submit'      => 'Liệt kê',
+	'contributors-subtitle'    => 'Những người đóng góp chính của $1',
+	'contributors-others-long' => 'Cũng có $1 người thêm đóng góp vào trang này.',
+	'contributors-others'      => 'vào $1 người khác',
+	'contributors-badtitle'    => 'Tên trang không hợp lệ.',
+	'contributors-nosuchpage'  => 'Trang $1 không tồn tại.',
 );
 
 /** Volapük (Volapük)

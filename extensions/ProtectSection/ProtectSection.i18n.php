@@ -111,6 +111,13 @@ $messages['oc'] = array(
 	'protectsection_forbidden'  => 'Interdich',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'protectsection_forbidden' => 'Proibido',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -127,5 +134,12 @@ $messages['stq'] = array(
 	'protectsection_add_remove' => 'Du hääst fersoacht, n schutseden Ousnit bietoutouföigjen of wächtouhoaljen.',
 	'protectsection_modify'     => 'Du hääst fersoacht, n schutseden Text tou beoarbaidjen.',
 	'protectsection_forbidden'  => 'Ferbeeden',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'protectsection_modify' => 'సంరక్షిత పాఠ్యాన్ని మార్చడానికి మీరు ప్రయత్నించారు',
 );
 

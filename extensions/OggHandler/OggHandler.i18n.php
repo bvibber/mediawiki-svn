@@ -372,6 +372,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Seb35
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -384,7 +385,7 @@ $messages['fr'] = array(
 	'ogg-long-multiplexed'    => '(Fichier multiplexé audio/vidéo Ogg, $1, durée $2, $4×$5 pixels, $3)',
 	'ogg-long-general'        => '(Fichier média Ogg, durée $2, $3)',
 	'ogg-long-error'          => '(Fichier Ogg invalide : $1)',
-	'ogg-play'                => 'Lire',
+	'ogg-play'                => 'Lecture',
 	'ogg-pause'               => 'Pause',
 	'ogg-stop'                => 'Arrêt',
 	'ogg-play-video'          => 'Lire la vidéo',
@@ -392,7 +393,7 @@ $messages['fr'] = array(
 	'ogg-no-player'           => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
 	'ogg-no-xiphqt'           => 'Vous n\'avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 	'ogg-player-videoElement' => 'Élément <video>',
-	'ogg-player-oggPlugin'    => 'Plugin Ogg',
+	'ogg-player-oggPlugin'    => 'Plugiciel Ogg',
 	'ogg-player-thumbnail'    => 'Image statique seulement',
 	'ogg-player-soundthumb'   => 'Aucun lecteur',
 	'ogg-player-selected'     => '(sélectionné)',
@@ -407,6 +408,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'ogg-desc'                => 'Supôrt por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript',
 	'ogg-short-audio'         => 'Fichiér son Ogg $1, $2',
 	'ogg-short-video'         => 'Fichiér vidèô Ogg $1, $2',
 	'ogg-short-general'       => 'Fichiér multimèdia Ogg $1, $2',
@@ -625,6 +627,7 @@ $messages['is'] = array(
  * @author .anaconda
  */
 $messages['it'] = array(
+	'ogg-desc'                => 'Gestore per i file Ogg Theora e Vorbis, con programma di riproduzione in JavaScript',
 	'ogg-short-audio'         => 'File audio Ogg $1, $2',
 	'ogg-short-video'         => 'File video Ogg $1, $2',
 	'ogg-short-general'       => 'File multimediale Ogg $1, $2',
@@ -952,32 +955,36 @@ $messages['nn'] = array(
 	'ogg-desc-link'           => 'Om denne fila',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
-	'ogg-short-video' => 'Ogg $1 videofil, $2',
-	'ogg-short-general' => 'Ogg $1 mediefil, $2',
-	'ogg-long-audio' => '(Ogg $1 lydfil, lengde $2, $3)',
-	'ogg-long-video' => '(Ogg $1 videofil, lengde $2, $4×$5 piksler, $3)',
-	'ogg-long-multiplexed' => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
-	'ogg-long-general' => '(Ogg mediefil, lengde $2, $3)',
-	'ogg-long-error' => '(Ugyldig ogg-fil: $1)',
-	'ogg-play' => 'Spill',
-	'ogg-pause' => 'Pause',#identical but defined
-	'ogg-stop' => 'Stopp',
-	'ogg-play-video' => 'Spill av video',
-	'ogg-play-sound' => 'Spill av lyd',
-	'ogg-no-player' => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
-	'ogg-no-xiphqt' => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
+	'ogg-desc'                => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
+	'ogg-short-audio'         => 'Ogg $1 lydfil, $2',
+	'ogg-short-video'         => 'Ogg $1 videofil, $2',
+	'ogg-short-general'       => 'Ogg $1 mediefil, $2',
+	'ogg-long-audio'          => '(Ogg $1 lydfil, lengde $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 videofil, lengde $2, $4×$5 piksler, $3)',
+	'ogg-long-multiplexed'    => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
+	'ogg-long-general'        => '(Ogg mediefil, lengde $2, $3)',
+	'ogg-long-error'          => '(Ugyldig ogg-fil: $1)',
+	'ogg-play'                => 'Spill',
+	'ogg-pause'               => 'Pause',
+	'ogg-stop'                => 'Stopp',
+	'ogg-play-video'          => 'Spill av video',
+	'ogg-play-sound'          => 'Spill av lyd',
+	'ogg-no-player'           => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
+	'ogg-no-xiphqt'           => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
 	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin' => 'Ogg-plugin',
-	'ogg-player-thumbnail' => 'Kun stillbilder',
-	'ogg-player-soundthumb' => 'Ingen medieavspiller',
-	'ogg-player-selected' => '(valgt)',
-	'ogg-use-player' => 'Bruk avspiller:',
-	'ogg-more' => 'Mer...',
-	'ogg-dismiss' => 'Lukk',
-	'ogg-download' => 'Last ned fil',
-	'ogg-desc-link' => 'Om denne filen',
+	'ogg-player-oggPlugin'    => 'Ogg-plugin',
+	'ogg-player-thumbnail'    => 'Kun stillbilder',
+	'ogg-player-soundthumb'   => 'Ingen medieavspiller',
+	'ogg-player-selected'     => '(valgt)',
+	'ogg-use-player'          => 'Bruk avspiller:',
+	'ogg-more'                => 'Mer...',
+	'ogg-dismiss'             => 'Lukk',
+	'ogg-download'            => 'Last ned fil',
+	'ogg-desc-link'           => 'Om denne filen',
 );
 
 /** Occitan (Occitan)
@@ -1077,12 +1084,17 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'ogg-short-audio' => 'Ogg $1 غږيزه دوتنه، $2',
-	'ogg-play'        => 'غږول',
-	'ogg-play-sound'  => 'غږ غږول',
-	'ogg-dismiss'     => 'تړل',
-	'ogg-download'    => 'دوتنه ښکته کول',
-	'ogg-desc-link'   => 'د همدې دوتنې په اړه',
+	'ogg-short-audio'   => 'Ogg $1 غږيزه دوتنه، $2',
+	'ogg-short-video'   => 'Ogg $1 ويډيويي دوتنه، $2',
+	'ogg-short-general' => 'Ogg $1 رسنيزه دوتنه، $2',
+	'ogg-play'          => 'غږول',
+	'ogg-stop'          => 'درول',
+	'ogg-play-video'    => 'ويډيو غږول',
+	'ogg-play-sound'    => 'غږ غږول',
+	'ogg-more'          => 'نور...',
+	'ogg-dismiss'       => 'تړل',
+	'ogg-download'      => 'دوتنه ښکته کول',
+	'ogg-desc-link'     => 'د همدې دوتنې په اړه',
 );
 
 /** Portuguese (Português)
@@ -1172,6 +1184,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'ogg-desc'                => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',
 	'ogg-short-audio'         => 'Звуковой файл Ogg $1, $2',
 	'ogg-short-video'         => 'Видео-файл Ogg $1, $2',
 	'ogg-short-general'       => 'Медиа-файл Ogg $1, $2',
@@ -1388,6 +1401,7 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'ogg-desc'                => 'Bộ trình bày các tập tin Ogg Theora và Vorbis dùng hộp chơi phương tiện bằng JavaScript',
 	'ogg-short-audio'         => 'Tập tin âm thanh Ogg $1, $2',
 	'ogg-short-video'         => 'Tập tin video Ogg $1, $2',
 	'ogg-short-general'       => 'Tập tin Ogg $1, $2',

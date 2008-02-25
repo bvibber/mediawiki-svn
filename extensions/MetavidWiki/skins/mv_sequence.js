@@ -135,13 +135,12 @@ function mv_manual_hooks(){
 					vid_seq['play'] = function(){
 						vid_seq.old_play();
 						$j('#mv_seq_manual_embed').css('height', (mv_seq_base_height+70) +'px');
-						js_log('height is: ' + $j('#mv_seq_manual_embed').css('height'));
-					}
+						js_log('height is: ' + $j('#mv_seq_manual_embed').css('height'));										}
 					vid_seq['stop']=function(){
 						$j('#mv_seq_manual_embed').css('height',mv_seq_base_height +'px');
 						vid_seq.old_stop();
 					}
-					//add_drag_drop_hook();
+					//@@todo add_drag_drop_hook();
 					
 					//add a title output: 
 					$j('#mv_seq_manual_embed').append('<span id="mv_seq_player_time" class="mv_video_time_hr">0:00:00 to 0:00:30</span>');	

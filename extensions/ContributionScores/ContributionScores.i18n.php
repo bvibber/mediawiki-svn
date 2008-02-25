@@ -61,6 +61,14 @@ $messages['cs'] = array(
 	'contributionscores-desc' => 'Zjišťuje největší [[Special:ContributionScores|objem uživatelských příspěvků]] z databáze wiki',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'contributionscores-pages'    => 'Sider',
+	'contributionscores-username' => 'Brugernavn',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -129,16 +137,17 @@ Näin laskettuna pisteet painottavat monipuolisuutta määrän sijaan. Käytänn
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'contributionscores'              => 'Pointage des contributions',
-	'contributionscores-desc'         => 'Scrute la base de donnée wiki pour les [[Special:ContributionScores|utilisateurs contribuant le plus]]',
-	'contributionscores-info'         => "Les scores sont calculés de la manière suivante :
+	'contributionscores-desc'         => 'Scrute la base de données wiki pour les [[Special:ContributionScores|utilisateurs contribuant le plus]]',
+	'contributionscores-info'         => 'Les pointages sont calculés de la manière suivante :
 * 1 point pour chaque page modifiée ;
 * racine carrée de (nombre de modifications) - (nombre de pages différentes) * 2.
 
-De cette façon, les scores ainsi calculés privilégient la diversité par rapport à la quantité. Écrits d'une autre façon, ils s'intéressent principalement à indiquer le nombre de modifications des pages différentes, puis leur nombre total.",
+De cette façon, les pointages ainsi calculés privilégient la diversité par rapport à la quantité. Écrits d’une autre façon, ils s’intéressent principalement à indiquer le nombre de modifications des pages différentes, puis leur nombre total.',
 	'contributionscores-top'          => '(Les $1 meilleures)',
 	'contributionscores-days'         => 'Dans {{PLURAL:$1|le dernier jour|les derniers $1 jours}}',
 	'contributionscores-allrevisions' => 'Toutes les révisions',
@@ -221,6 +230,14 @@ Az így számolt pontszámok a szerkesztés sokszínűségét mutatják a szerke
 	'contributionscores-pages'        => 'Oldalak',
 	'contributionscores-changes'      => 'Változtatások',
 	'contributionscores-username'     => 'Felhasználó',
+);
+
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'contributionscores-pages'    => 'Síður',
+	'contributionscores-username' => 'Notandanafn',
 );
 
 /** Italian (Italiano)
@@ -314,6 +331,13 @@ $messages['lb'] = array(
 	'contributionscores-username'     => 'Benotzernumm',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'contributionscores-username' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -365,10 +389,11 @@ In scores die op deze wijze berekend worden weegt divers bewerkingsgedrag zwaard
  */
 $messages['no'] = array(
 	'contributionscores'              => 'Bidragspoeng',
+	'contributionscores-desc'         => 'Spør wikidatabasen etter det høyeste [[Special:ContributionScores|bidragsvolumet]]',
 	'contributionscores-info'         => 'Bidragspoeng regnes ut på følgende måte:
 * 1 poeng for hver unike side som er redigert
 * Kvadratrota av (totalt antall redigeringer) &minus; (unike sider redigert) × 2
-Poeng som regnes ut på denne måte veier redigeringsmangfold høyere enn redigeringsvolum. Dette betyr i bunn og grunn at dette primært måler hvor mange forskjellige sider som er redigert, med hensyn til høyt redigeringsvolum &ndash; antatt å føre til artikler av høyere kvalitet.',
+Poeng som regnes ut på denne måte veier redigeringsmangfold høyere enn redigeringsvolum. Dette betyr i bunn og grunn at dette primært måler hvor mange forskjellige sider som er redigert, med hensyn til høyt redigeringsvolum &ndash; antatt å føre til sider av høyere kvalitet.',
 	'contributionscores-top'          => '(Topp $1)',
 	'contributionscores-days'         => 'Siste $1 dager',
 	'contributionscores-allrevisions' => 'Alle revisjoner',
@@ -473,6 +498,7 @@ Pontuações calculadas desta forma pesam a diversidade de edições relativamen
  */
 $messages['ru'] = array(
 	'contributionscores'              => 'Оценка вклада',
+	'contributionscores-desc'         => 'Определяет из базы данных [[Special:ContributionScores|участников с наибольшим числом правок]]',
 	'contributionscores-info'         => 'Оценка рассчитывается сложением следующих слагаемых:
 * 1 очко за редактирование каждой уникальной страницы;
 * 2 * квадратный корень из разности: (общее количество правок) - (всего уникальных страниц).
@@ -528,6 +554,7 @@ Ouschätsengen ap disse Gruundloage weege ju Fuulfoold fon do Biedraage swarrer 
  */
 $messages['sv'] = array(
 	'contributionscores'              => 'Bidragspoäng',
+	'contributionscores-desc'         => 'Hämtar information från databasen om de användare som gjort [[Special:ContributionScores|flest bidrag]]',
 	'contributionscores-info'         => 'Poängen beräknas på följande vis:
 * 1 poäng för varje unik sida som redigerats
 * kvadratroten av (antal gjorda redigeringar) - (antal unika sidor) * 2
@@ -545,9 +572,13 @@ När poängen beräknas på detta sätt, så väger bidrag spridda över många 
  * @author Veeven
  */
 $messages['te'] = array(
-	'contributionscores-days'    => 'చివరి $1 రోజులు',
-	'contributionscores-pages'   => 'పేజీలు',
-	'contributionscores-changes' => 'మార్పులు',
+	'contributionscores-top'          => '(పై $1)',
+	'contributionscores-days'         => 'చివరి $1 రోజులు',
+	'contributionscores-allrevisions' => 'అన్ని కూర్పులు',
+	'contributionscores-score'        => 'స్కోరు',
+	'contributionscores-pages'        => 'పేజీలు',
+	'contributionscores-changes'      => 'మార్పులు',
+	'contributionscores-username'     => 'వాడుకరిపేరు',
 );
 
 /** Turkish (Türkçe)
@@ -555,6 +586,14 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'contributionscores-username' => 'Kullanıcı',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'contributionscores-score'    => 'Điểm số',
+	'contributionscores-username' => 'Tên hiệu',
 );
 
 /** Volapük (Volapük)

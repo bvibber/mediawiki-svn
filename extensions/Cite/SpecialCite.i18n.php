@@ -38,6 +38,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'cite_article_desc' => 'Adibe un binclo y una pachina espezial de [[Special:Cite|zita]]',
 	'cite_article_link' => 'Zitar ista pachina',
 	'cite'              => 'Zitar',
 	'cite_page'         => 'Pachina:',
@@ -455,6 +456,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'cite_article_desc' => 'Aggiunge una pagina speciale per le [[Special:Cite|citazioni]] e un collegamento negli strumenti',
 	'cite_article_link' => 'Cita questa pagina',
 	'cite'              => 'Citazione',
 	'cite_page'         => 'Pagina da citare:',
@@ -497,6 +499,13 @@ $messages['kk-latn'] = array(
 	'cite'              => 'Däýeksöz alw',
 	'cite_page'         => 'Bet atawı:',
 	'cite_submit'       => 'Däýeksöz al!',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'cite_page' => 'ទំព័រ ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)
@@ -707,6 +716,7 @@ $messages['pam'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'cite_article_desc' => 'Dodaje stronę specjalną i guzik w toolbarze edycyjnym do obsługi [[Special:Cite|cytowania]]',
 	'cite_article_link' => 'Cytuj ten artykuł',
 	'cite'              => 'Cytowanie',
 	'cite_page'         => 'Strona:',

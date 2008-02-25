@@ -13,7 +13,9 @@
  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  
  /*@@TODO document 
-  * 
+  * @@todo title implementation is a bit messy ..
+  * MV_Title should really just extend title and be passed around as a title
+  *  instead of having two objects (Title and MV_title)
   */
  class MV_Title extends Title{
  	var $stream_name=null;
@@ -171,7 +173,11 @@
 		return $this->stream_name . '/'.$start_ntp . $end_ntp;
 	}
 	function getTimeDesc(){	
-		return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+		if($this->getStartTime() && $this->getEndTime()){
+			return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+		}else{
+			return '';
+		}
 	}
 	function getStreamImageURL($size=null, $req_time=null, $foce_server=''){		
 		global $mvImageArchive, $mvDefaultVideoPlaybackRes;
@@ -198,20 +204,21 @@
 	 * @@todo point to MV_OggSplit (for segmenting the ogg stream)
 	 * (for now using anx)
 	 */
-	function getWebStreamURL(){
+	function getWebStreamURL($quality=null){
 		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		//@@todo make sure file exisits
+		if(!$quality)$quality=$mvDefaultVideoQualityKey;
 		$anx_req='';
 		if( $this->getStartTime()!='' && $this->getEndTime()!=''){
 			$anx_req  ='.anx?t='. $this->getStartTime() . '/' . $this->getEndTime();
 		}
 		if( $this->doesStreamExist() ){			
-			//@@todo cache this:
+			//@@todo cache this / have a more organized store for StreamFiles in streamTitle
 			$dbr = & wfGetDB(DB_READ);
 			$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
 				'stream_id' => $this->mvStream->id,
-				'file_desc_msg'=>$mvDefaultVideoQualityKey
+				'file_desc_msg'=>$quality
 			));
 			$streamFile  =$dbr->fetchObject($result);					
 			//make sure we have streamFiles (used to generate the link)				

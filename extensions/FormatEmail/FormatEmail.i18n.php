@@ -87,6 +87,7 @@ $2',
  * @author Robby
  */
 $messages['lb'] = array(
+	'email-desc'   => "Erlaabt et personaliséiert Entêten an Foussnouten an déi E-Mailen dranzesetzen déi un d'Benotzer vun anere Benotzer geschéckt ginn.",
 	'email_footer' => '
 ------------------------------------------------------------------------------
 Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt.
@@ -152,6 +153,7 @@ $2',
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'email-desc'   => 'Позволяет добавлять пользовательские шапку или окончание к письмам от участника к участнику',
 	'email_footer' => '----------------------------------------------------------------------------
 Это сообщение было отправлено через сайт {{SITENAME}} пользователем $1.
 

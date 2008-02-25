@@ -28,6 +28,19 @@ $messages['am'] = array(
 	'fancycaptcha-createaccount' => 'ያልተፈለገ የመኪናነት አባልነት ለመከላከል፥ አባል ለመሆን በዚህ ምስል የታዩት እንግሊዝኛ ቃላት ወይም ቁጥር መልስ በትክክል መጻፍ ግዴታ ነው። ([[Special:Captcha/help|ይህ ምንድነው?]]) (To help protect against automated spam, you must type in the words or correct number answer exactly as seen beneath here before registering your account:)<br />',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'fancycaptcha-addurl'        => "Ha encluyito binclos esternos en a suya edizión. Ta aduyar a protecher contra o spam automatico, escriba por fabor as palabras que amanixen en a caxa d'o cobaxo ([[Special:Captcha/help|más informazión]]):",
+	'fancycaptcha-badlogin'      => "Ta aduyar a protecher contra o trenque automatico de palabras de paso, escriba por fabor as palabras que amanixen en a caxa d'o cobaxo ([[Special:Captcha/help|más informazión]]):",
+	'fancycaptcha-createaccount' => 'Ta aduyar a protecher contra a creyazión automatica de cuentas, escriba por fabor en o cuatrón as palabras que amanixen debaxo ([[Special:Captcha/help|más informazión]]):',
+	'fancycaptcha-create'        => "Ta creyar a pachina, escriba por fabor as palabras que amanixen en a caxa d'o cobaxo
+([[Special:Captcha/help|más informazión]]):",
+	'fancycaptcha-edit'          => "Ta editar ista pachian, escriba por fabor as palabras que amaneixen en a caixa d'o cobaxo
+([[Special:Captcha/help|más informazión]]):",
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'fancycaptcha-addurl' => 'تعديلك يتضمن وصلات خارجية جديدة. للحماية من السخام الأوتوماتيكي، من فضلك أدخل الكلمات التي تظهر بالأسفل في الصندوق ([[Special:Captcha/help|معلومات إضافية]]):',
@@ -330,6 +343,21 @@ $messages['la'] = array(
 	'fancycaptcha-edit' => 'Ad hanc paginam recensendum, necesse est tibi in capsam inscribere verba quae sub capsa monstrantur ([[Special:Captcha/help|Quidst illud?]]):',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'fancycaptcha-addurl'        => 'Uw bewerking bevat nieuwe externe links. Voer alstublieft de woorden die
+hieronder verschijnen in het invoerveld in als bescherming tegen automatische spam ([[Special:Captcha/help|meer informatie]]):',
+	'fancycaptcha-badlogin'      => 'Voer alstublieft de woorden die hieronder verschijnen in het invoerveld in als bescherming tegen het automatisch kraken van wachtwoorden ([[Special:Captcha/help|meer informatie]]):',
+	'fancycaptcha-createaccount' => 'Voer alstublieft de woorden die hieronder verschijnen in het invoerveld in
+ter bescherming tegen het automatisch aanmaken van gebruikers ([[Special:Captcha/help|meer informatie]]):',
+	'fancycaptcha-create'        => 'Uw bewerking bevat nieuwe externe links. Voer alstublieft de woorden die
+hieronder verschijnen in het invoerveld in als bescherming tegen automatische spam ([[Special:Captcha/help|meer informatie]]):',
+	'fancycaptcha-edit'          => 'Uw bewerking bevat nieuwe externe links. Voer alstublieft de woorden die
+hieronder verschijnen in het invoerveld in als bescherming tegen automatische spam ([[Special:Captcha/help|mie informatie]]):',
+);
+
 /* Lao */
 $messages['lo'] = array(
 	'fancycaptcha-addurl'        => 'ການດັດແກ້ຂອງທ່ານ ມີລິ້ງຄ໌ພາຍນອກ. ເພື່ອປ້ອງກັນ ສະແປມອັດຕະໂນມັດ, ກະລຸນາ ພິມຄຳສັບຂ້າງລຸ່ມນີ້ ໃສ່ໃນກັບ ([[Special:Captcha/help|ຂໍ້ມູນເພີ່ມຕື່ມ]]):',
@@ -394,6 +422,14 @@ ch\'a l\'arbata le paròle ch\'a s-ciàira ambelessì sota ([[Special:Captcha/he
 ch\'a l\'arbata le paròle ch\'a s-ciàira ambelessì sota ([[Special:Captcha/help|për savejne dë pì]]):',
 	'fancycaptcha-edit' => 'Për fe-ie dle modìfiche ansima a sta pàgina-sì, për piasì, 
 ch\'a l\'arbata le paròle ch\'a s-ciàira ambelessì sota ([[Special:Captcha/help|për savejne dë pì]]):',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'fancycaptcha-create' => 'ددې لپاره چې يو مخ جوړ شي، مهرباني وکړی لاندې ورکړ شوي توري څنګه چې تاسو ته ښکاري هماغسې کټ مټ په لانديني چوکاټ کې وليکی
+([[Special:Captcha/help|نور مالومات]]):',
 );
 
 /* Portuguese */

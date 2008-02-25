@@ -99,6 +99,66 @@ $messages['af'] = array(
 	'boardvote_welcome'       => 'Welkom \'\'\'$1\'\'\'!',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'boardvote'              => "Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia",
+	'boardvote-desc'         => "[[meta:Board elections|Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia]]",
+	'boardvote_entry'        => "* [[Special:Boardvote/vote|Botar]]
+* [[Special:Boardvote/list|Amostrar os botos dica agora]]
+* [[Special:Boardvote/dump|Bulcar o rechistro zifrato d'a elezión]]",
+	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere 
+fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada 
+candidato que quiera aprebar</p>",
+	'boardvote_entered'      => "Grazias, o suyo boto s'ha rechistrato.
+
+Si lo deseya, puede alzar os siguients detalles. O suyo rechistro de boto ye:
+
+<pre>$1</pre>
+
+S'ha zifrato con a clau publica d'os Almenistradors d'a Elezión:
+
+<pre>$2</pre>
+
+A bersión zifrata resultant ye a que sigue. S'amuestra publicament en [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Enta zaga]]",
+	'boardvote_nosession'    => "No puedo identificar-le como usuario de Wikimedia. Por fabor, dentre ta una wiki an que pueda botar y baiga ta <nowiki>[[Special:Boardvote]]</nowiki>. Ta poder botar ha de tener una cuenta con un menimo de  $1 contrebuzions antes d'o $2, y con a primer edizión antes d'o $3.",
+	'boardvote_notloggedin'  => "No ha enzetato garra sesión. Ta poder botar, ha d'usar una cuenta con un menimo de $1 contrebuzions feitas antes de $2, y con a primer edizión feita antes de $3.",
+	'boardvote_notqualified' => "No cumple as condizions ta poder botar en ista elezión. Amenista aber feito $3 edizions antes d'o $2 y a suya primer edizión ha d'estar anterior á o $5.",
+	'boardvote_novotes'      => 'Dengún no ha botato encara.',
+	'boardvote_time'         => 'Tiempo',
+	'boardvote_user'         => 'Usuario',
+	'boardvote_edits'        => 'Edizions',
+	'boardvote_days'         => 'Días',
+	'boardvote_ip'           => 'Adreza IP',
+	'boardvote_ua'           => "Representant de l'usuario",
+	'boardvote_listintro'    => "<p>Esta ye una lista de toz os botos que s'han rechistrato
+dica agora. $1 ta beyer os datos zifratos.</p>",
+	'boardvote_dumplink'     => 'Faiga click aquí',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Nular',
+	'boardvote_unstrike'     => 'Recuperar',
+	'boardvote_needadmin'    => "Sólo os Almenistradors d'a Elezión puede fer ista operazión.",
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezions ta o Consello de Wikimedia</a>:  Botazión ubierta dica o 12 de chulio',
+	'boardvote_notstarted'   => 'A botazión no ha prenzipiato encara',
+	'boardvote_closed'       => "A botazión ya ye zarrata, mire-se [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En a pachina d'as elezions ta beyer os resultaus] luego.",
+	'boardvote_edits_many'   => 'muitos',
+	'group-boardvote'        => "Almenistradors d'a botazión",
+	'group-boardvote-member' => "Almenistrador d'a botazión",
+	'boardvote_blocked'      => 'Lo sentimos, pero ye estato bloqueyato en a wiki en que ye rechistrato. Os usuarios bloqueyatos no pueden botar.',
+	'boardvote_welcome'      => "Biemplegau '''$1'''!",
+	'go_to_board_vote'       => 'Elezions ta o Consello de Wikimedia 2007',
+	'boardvote_redirecting'  => "Ta amillorar a seguranza y a transparenzia, a botazión s'está fendo en un serbidor esterno y controlato independientment. 
+
+Será endrezato enta este serbidor esterno en 20 segundos. [$1 Punche aquí] ta ir-ie agora.
+
+Puestar que s'amuestre una albertenzia de seguranza sobre un zertificato no siñato..",
+);
+
 $messages['ang'] = array(
 	'boardvote_user'          => 'Brūcend',
 );
@@ -582,6 +642,14 @@ Budete přesměrování na tuto externí stránku za 20 sekund. Okamžitě tam m
 Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
+/** Danish (Dansk)
+ * @author M.M.S.
+ */
+$messages['da'] = array(
+	'boardvote_user'    => 'Bruger',
+	'boardvote_welcome' => "Velkommen '''$1'''!",
+);
+
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
 	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',
@@ -1041,6 +1109,13 @@ Vos seréd redirigiê vers cél sèrvior de defôr en 20 secondes. [$1 Clicâd i
 Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'boardvote_ip' => 'IP',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
@@ -1054,6 +1129,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'boardvote'              => 'Elección dos Membros do Consello de Administración de Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Elección dos Membros do Consello de Administración de Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
 * [[Special:Boardvote/dump|Crear un vaciado do rexistro cifrado de eleccións]]',
@@ -1557,6 +1633,7 @@ sem að þú styður.</p>',
  */
 $messages['it'] = array(
 	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Elezioni del Consiglio direttivo Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]',
@@ -1622,19 +1699,60 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 );
 
 /** Japanese (日本語)
- * @author Broad-Sky
  * @author JtFuruhata
+ * @author Broad-Sky
  */
 $messages['ja'] = array(
-	'boardvote'              => 'ウィキメディア財団理事選挙',
-	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団理事選挙]]',
+	'boardvote'              => 'ウィキメディア財団 理事選挙',
+	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団 理事選挙]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|投票]]
+* [[Special:Boardvote/list|現在までの投票]]
+* [[Special:Boardvote/dump|暗号化された投票データのダンプ]]',
+	'boardvote_intro'        => '2006年度の選挙は終了しました。
+
+<p>より詳細な情報はこちらをご覧ください:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">候補者一覧</a></li></ul>',
+	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票する候補者の変更は、以下のフォームから行うことができます。支持する候補者の投票欄をチェックしてください。</p>',
+	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
+
+あなたが望むなら、以下の詳細を記録しておくとよいでしょう。あなたの投票記録は:
+
+<pre>$1</pre>
+
+これを、選挙管理委員会の公開鍵を用いて暗号化します:
+
+<pre>$2</pre>
+
+暗号化された投票データは以下のとおりです。これは[[Special:Boardvote/dump|暗号化された投票データのダンプ]]から一般に公開されます。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|戻る]]',
+	'boardvote_nosession'    => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
+	'boardvote_notloggedin'  => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
+	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
 	'boardvote_novotes'      => 'まだ誰も投票していません。',
+	'boardvote_time'         => '時刻',
 	'boardvote_user'         => '利用者',
-	'boardvote_dumplink'     => 'ここをクリック',
+	'boardvote_edits'        => '編集回数',
+	'boardvote_days'         => '日数',
+	'boardvote_ip'           => 'IPアドレス',
+	'boardvote_ua'           => 'ユーザーエージェント',
+	'boardvote_listintro'    => '<p>現在までに行われた投票の記録です。暗号化されたデータは$1。<p>',
+	'boardvote_dumplink'     => 'こちらをクリックしてください',
+	'boardvote_submit'       => '投票',
+	'boardvote_strike'       => '抹消',
+	'boardvote_unstrike'     => '抹消取り消し',
+	'boardvote_needadmin'    => 'この処理は選挙管理委員のみ行うことができます。',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  7月12日まで投票実施中',
 	'boardvote_notstarted'   => 'まだ投票は始まっていません',
+	'boardvote_closed'       => '投票は終了しました。後日[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En 選挙結果のページ]をご覧ください。',
+	'boardvote_edits_many'   => '多数',
 	'group-boardvote'        => '選挙管理委員会',
 	'group-boardvote-member' => '選挙管理委員',
+	'grouppage-boardvote'    => '{{ns:project}}:選挙管理委員',
+	'boardvote_blocked'      => '申し訳ありません、あなたは登録されているウィキでブロック対象となっています。ブロックされた利用者は投票することができません。',
 	'boardvote_welcome'      => "'''$1'''さん ようこそ!",
 	'go_to_board_vote'       => 'ウィキメディア財団総選挙2007',
 	'boardvote_redirecting'  => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。
@@ -1836,6 +1954,19 @@ $messages['kk-arab'] = array(
 
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'boardvote_user'     => 'អ្នកប្រើប្រាស់',
+	'boardvote_edits'    => 'កំណែប្រែ នានា',
+	'boardvote_days'     => 'ថ្ងៃ',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'ចុចទីនេះ',
+	'boardvote_submit'   => 'យល់ព្រម',
+	'boardvote_welcome'  => "ស្វាគម '''$1'''!",
+);
+
 $messages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
@@ -2031,9 +2162,11 @@ $messages['loz'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
+ * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
+	'boardvote-desc'         => '[[meta:Board elections|Vikimedijos Valdytojų tarybos rinkimai]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
 * [[Special:Boardvote/dump|Koduoti rinkimų rezultatai]]',
@@ -3399,6 +3532,7 @@ Bạn có thể gặp lời cảnh cáo nói về một giấy chứng nhận ch
  */
 $messages['vo'] = array(
 	'boardvote'              => 'Daväl Kipedalefa Fünoda: Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Daväl Kipedalefa Fünoda: Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vögodön]]
 * [[Special:Boardvote/list|Lised vögodas jünuik]]
 * [[Special:Boardvote/dump|Davälaregistar pejüföl]]',

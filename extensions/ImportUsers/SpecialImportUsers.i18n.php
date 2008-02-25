@@ -56,6 +56,18 @@ $messages['ar'] = array(
 	'importusers-realname'                => 'الاسم الحقيقي',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'importusers'                 => 'Внасяне на потребители',
+	'importusers-uploadfile'      => 'Качване на файл',
+	'importusers-form-button'     => 'Внасяне',
+	'importusers-log'             => 'Дневник на внасянията',
+	'importusers-log-summary-all' => 'Всички',
+	'importusers-password'        => 'парола',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  */
@@ -82,37 +94,45 @@ $messages['de'] = array(
 	'importusers-realname'                => 'Echter Name',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'importusers' => 'Importer des utilisateurs' ,
-	'importusers-desc' => 'Importe des utilisateurs en bloc depuis un fichier CVS ; encodage : UTF-8.',
-	'importusers-uploadfile' => 'Importer le fichier',
-	'importusers-form-caption' => 'Entrez un fichier CVS (UTF-8)' ,
-	'importusers-form-file' => 'Format du fichier utilisateur (csv) : ',
-	'importusers-form-replace-present' => 'Remplace les utilisateurs existants' ,
-	'importusers-form-button' => 'Importer' ,
-	'importusers-user-added' => 'L’utilisateur <b>%s</b> a été ajouté.' ,
-	'importusers-user-present-update' => 'l’utilisateur <b>%s</b> existe déjà. Mise à jour effectuée.' ,
-	'importusers-user-present-not-update' => 'L’utilisateur <b>%s</b> existe déjà. Non mis à jour.' ,
-	'importusers-user-invalid-format' => 'Les données utilisateur dans la ligne #%s sont dans un mauvais format ou bien sont inexistantes. Aucune action.' ,
-	'importusers-log' => 'Journal des imports' ,
-	'importusers-log-summary' => 'Sommaire' ,
-	'importusers-log-summary-all' => 'Total' ,
-	'importusers-log-summary-added' => 'Ajouté' ,
-	'importusers-log-summary-updated' => 'Mise à jour',
-	'importusers-login-name' => 'Nom du pseudo',
-	'importusers-password' => 'mot de passe',
-	'importusers-email' => 'adresse courriel',
-	'importusers-realname' => 'nom réel',
+	'importusers'                         => 'Importer des utilisateurs',
+	'importusers-desc'                    => 'Importe des utilisateurs en bloc depuis un fichier CVS ; encodage : UTF-8.',
+	'importusers-uploadfile'              => 'Importer le fichier',
+	'importusers-form-caption'            => 'Entrez un fichier CVS (UTF-8)',
+	'importusers-form-file'               => 'Format du fichier utilisateur (csv) : ',
+	'importusers-form-replace-present'    => 'Remplace les utilisateurs existants',
+	'importusers-form-button'             => 'Importer',
+	'importusers-user-added'              => 'L’utilisateur <b>%s</b> a été ajouté.',
+	'importusers-user-present-update'     => 'l’utilisateur <b>%s</b> existe déjà. Mise à jour effectuée.',
+	'importusers-user-present-not-update' => 'L’utilisateur <b>%s</b> existe déjà. Non mis à jour.',
+	'importusers-user-invalid-format'     => 'Les données utilisateur dans la ligne #%s sont dans un mauvais format ou bien sont inexistantes. Aucune action.',
+	'importusers-log'                     => 'Journal des importations',
+	'importusers-log-summary'             => 'Sommaire',
+	'importusers-log-summary-all'         => 'Total',
+	'importusers-log-summary-added'       => 'Ajouté',
+	'importusers-log-summary-updated'     => 'Mise à jour',
+	'importusers-login-name'              => 'Nom d’utilisateur',
+	'importusers-password'                => 'mot de passe',
+	'importusers-email'                   => 'adresse courriel',
+	'importusers-realname'                => 'nom réel',
 );
 
 /** Galician (Galego)
  * @author Alma
  */
 $messages['gl'] = array(
+	'importusers'                   => 'Importar Usuarios',
 	'importusers-uploadfile'        => 'Cargar ficheiro',
+	'importusers-form-button'       => 'Importar',
+	'importusers-user-added'        => 'Usuario <b>%s</b> foi engadido.',
+	'importusers-log'               => 'Importar rexistro',
 	'importusers-log-summary'       => 'Resumo',
 	'importusers-log-summary-all'   => 'Todo',
 	'importusers-log-summary-added' => 'Engadido',
+	'importusers-login-name'        => 'Rexistrar nome',
 	'importusers-password'          => 'contrasinal',
 	'importusers-email'             => 'correo electrónico',
 	'importusers-realname'          => 'nome real',
@@ -142,6 +162,15 @@ $messages['hsb'] = array(
 	'importusers-password'                => 'hesło',
 	'importusers-email'                   => 'e-mejl',
 	'importusers-realname'                => 'woprawdźite mjeno',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'importusers-login-name' => 'ឈ្មោះ ពិនិត្យចូល',
+	'importusers-email'      => 'អ៊ីមែវល៍',
+	'importusers-realname'   => 'ឈ្មោះពិត',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -186,6 +215,32 @@ $messages['nl'] = array(
 	'importusers-password'                => 'wachtwoord',
 	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'echte naam',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'importusers'                         => 'Importer brukere',
+	'importusers-desc'                    => 'Importer brukere fra CSV-fil; tegnkoding: UTF-8',
+	'importusers-uploadfile'              => 'Last opp fil',
+	'importusers-form-caption'            => 'Sett inn CSV-fil (UTF-8)',
+	'importusers-form-file'               => 'Brukerfilformat (csv):',
+	'importusers-form-replace-present'    => 'Erstatt eksisterende brukere',
+	'importusers-form-button'             => 'Importer',
+	'importusers-user-added'              => 'Brukeren <b>%s</b> har blitt lagt til.',
+	'importusers-user-present-update'     => 'Brukeren <b>%s</b> finnes allerede. Oppdatert.',
+	'importusers-user-present-not-update' => 'Brukeren <b>%s</b> finnes allerede. Ikke oppdatert.',
+	'importusers-user-invalid-format'     => 'Brukerdataene på linje #%s har ugyldig format eller er blank. Hoppet over.',
+	'importusers-log'                     => 'Brukerimporteringslogg',
+	'importusers-log-summary'             => 'Sammendrag',
+	'importusers-log-summary-all'         => 'Alle',
+	'importusers-log-summary-added'       => 'Lagt til',
+	'importusers-log-summary-updated'     => 'Oppdatert',
+	'importusers-login-name'              => 'Innloggingsnavn',
+	'importusers-password'                => 'passord',
+	'importusers-email'                   => 'e-post',
+	'importusers-realname'                => 'virkelig navn',
 );
 
 /** Occitan (Occitan)
@@ -250,6 +305,32 @@ $messages['pt'] = array(
 	'importusers-realname'                => 'nome real',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'importusers'                         => 'Импортирование участников',
+	'importusers-desc'                    => 'Импорт большого количества участников из CSV-файла; кодировка: UTF-8',
+	'importusers-uploadfile'              => 'Загрузить файл',
+	'importusers-form-caption'            => 'Введите CVS-файл (UTF-8)',
+	'importusers-form-file'               => 'Формат файла участников (csv):',
+	'importusers-form-replace-present'    => 'Заменять существующих участников',
+	'importusers-form-button'             => 'Импортировать',
+	'importusers-user-added'              => 'Был добавлен участник <b>%s</b>.',
+	'importusers-user-present-update'     => 'Участник <b>%s</b> уже существует. Обновлён.',
+	'importusers-user-present-not-update' => 'Участник <b>%s</b> уже существует. Не обновлён.',
+	'importusers-user-invalid-format'     => 'Данные участника в строке #%s имеют неправильный формат или пусты. Пропущен.',
+	'importusers-log'                     => 'Журнал импорта',
+	'importusers-log-summary'             => 'Итого',
+	'importusers-log-summary-all'         => 'Всего',
+	'importusers-log-summary-added'       => 'Добавлено',
+	'importusers-log-summary-updated'     => 'Обновлено',
+	'importusers-login-name'              => 'Имя учётной записи',
+	'importusers-password'                => 'пароль',
+	'importusers-email'                   => 'эл. почта',
+	'importusers-realname'                => 'настоящее имя',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -285,6 +366,8 @@ $messages['sv'] = array(
 	'importusers-uploadfile'          => 'Ladda upp fil',
 	'importusers-form-caption'        => 'Sätt in CSV-fil (UTF-8)',
 	'importusers-form-button'         => 'Importera',
+	'importusers-user-added'          => 'Användare <b>%s</b> hat blivigt tillagd.',
+	'importusers-user-present-update' => 'Användare <b>%s</b> existerar redan. Uppdaterad.',
 	'importusers-log'                 => 'Import logg',
 	'importusers-log-summary'         => 'Sammanfattning',
 	'importusers-log-summary-all'     => 'Alla',
@@ -293,6 +376,20 @@ $messages['sv'] = array(
 	'importusers-login-name'          => 'Inloggningsnamn',
 	'importusers-password'            => 'lösenord',
 	'importusers-email'               => 'e-post',
+	'importusers-realname'            => 'riktigt namn',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'importusers-user-added'      => '<b>%s</b> అనే వాడుకరిని చేర్చాం.',
+	'importusers-log-summary'     => 'సంగ్రహం',
+	'importusers-log-summary-all' => 'అన్నీ',
+	'importusers-login-name'      => 'ప్రవేశపు పేరు',
+	'importusers-password'        => 'సంకేతపదం',
+	'importusers-email'           => 'ఈ-మెయిల్',
+	'importusers-realname'        => 'నిజమైన పేరు',
 );
 
 /** Volapük (Volapük)

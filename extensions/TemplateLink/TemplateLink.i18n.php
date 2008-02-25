@@ -79,6 +79,13 @@ $messages['hsb'] = array(
 		'templatelink_newtitle' => '$1 (narunany)',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'templatelink' => 'តំណភ្ជាប់គំរូខ្នាត',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -94,10 +101,13 @@ $messages['nl'] = array(
                 'templatelink_newtitle' => '$1 (getranscludeerd)',
 );
 
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-		'templatelink' => 'Mallenke',
-		'templatelink_empty' => 'Du må oppgi et parameter.',
-		'templatelink_newtitle' => '$1 (inkluderes)',
+	'templatelink'          => 'Mallenke',
+	'templatelink_empty'    => 'Du må angi en parameter.',
+	'templatelink_newtitle' => '$1 (inkluderes)',
 );
 
 $messages['oc'] = array(
@@ -139,5 +149,12 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'templatelink' => 'Mallänk',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'templatelink' => 'మూస లింకు',
 );
 

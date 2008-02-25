@@ -43,6 +43,11 @@ var cur_mvd_over = false;
 var mv_flag_fdOver=false;
 var golobal_org_ptext=false;
 
+var mv_open_edit_mvd=null;
+if(!gMsg){var gMsg={};}
+
+gMsg['mv_open_edit'] =
+
 //@@todo context sensitive init scripts
 //init the interface on page load
 mv_addLoadEvent(mv_load_interface_libs);
@@ -254,7 +259,12 @@ function getMvdObject(mvd_id){
 }
 
 function mv_disp_add_mvd(mvdType){
-	sajax_request_type='GET';
+	if(mv_open_edit_mvd){
+		alert('');
+		return ;
+	}
+	mv_open_edit_mvd=mvdType;
+	sajax_request_type='GET';	
 	time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
 	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, time_range], f );
 	//insert before the first mvd:
@@ -283,10 +293,35 @@ function mv_disp_add_mvd(mvdType){
 			if(mvdType=='anno_en'){
 				add_adjust_hooks('new'); 
 			}
+			//add edit buttons 
+			mwSetupToolbar();
+			mwEditButtons = []; //empty edit buttons
 		}
 	}
 }
-/* interface ajax actions */
+function mv_edit_disp(titleKey, mvd_id){	 
+	if(mv_open_edit_mvd){
+		alert('you can only edit one at a time, please close other open edits first');
+		return ;
+	}
+	mv_open_edit_mvd=mvd_id;
+	 //set sajax to do a GET request
+	 sajax_request_type='GET';
+	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
+	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
+	 //handle the response:
+	 function f( request ) {
+		result= request.responseText;		 		 
+		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";           
+		$j('#mv_fcontent_'+mvd_id).html( result );
+		//add javascript hooks     
+		add_autocomplete(mvd_id);     
+		add_adjust_hooks(mvd_id);            
+		//add buttons			
+		mwSetupToolbar();
+		mwEditButtons = []; //empty edit buttons
+	  }
+}/* interface ajax actions */
 function mv_disp_mvd(titleKey, mvd_id){
 	if(mvd_id=='new'){
 		//@@todo confirm (user will lose text in window
@@ -302,6 +337,8 @@ function mv_disp_mvd(titleKey, mvd_id){
 		div = document.getElementById('mv_fcontent_'+mvd_id);
 		div.innerHTML=global_loading_txt;	  
 	}
+	//free the editor slot:
+	mv_open_edit_mvd=null;
 	function f( request ) {
   		result= request.responseText;		 	
   		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";           
@@ -311,21 +348,7 @@ function mv_disp_mvd(titleKey, mvd_id){
         //add_adjust_hooks(mvd_id);   
   	}
 }
-function mv_edit_disp(titleKey, mvd_id){	 
-	 //set sajax to do a GET request
-	 sajax_request_type='GET';
-	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
-	 //handle the response:
-	 function f( request ) {
-		result= request.responseText;		 		 
-		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";           
-		$j('#mv_fcontent_'+mvd_id).html( result );
-		//add javascript hooks     
-		add_autocomplete(mvd_id);     
-		add_adjust_hooks(mvd_id);            
-      }
-}
+
 function mv_history_disp(titleKey, mvd_id){
 	 sajax_request_type='GET';
 	 sajax_do_call( "mv_history_disp", [titleKey, mvd_id], f );
@@ -695,7 +718,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		  		
 		  		mv_init_interface.addHoverHooks('#mv_fd_mvd_'+mvd_id);
 		  		//scroll to the new mvd:
-		  		scroll_to_pos(mv_result['mvd_id']);	
+		  		scroll_to_pos(mv_result['mvd_id']);			  		
   			}
 		}
         if(post_vars['do_adjust']){
@@ -728,6 +751,8 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
         }         		
         //unlock the interface updates
 		mv_lock_vid_updates=false;
+		//free the editor slot:
+		mv_open_edit_mvd=null;
 	}	
 	//return false to prevent the form being submitted
 	return false;

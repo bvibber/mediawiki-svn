@@ -65,13 +65,14 @@ $messages['el'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'minipreview-desc'                => "Affiche un mini aperçu, après vers une image, petits aperçus d'autres médias dans les mêmes catégories ou bien affiché dans les mêmes pages.",
+	'minipreview-desc'                => 'Affiche un mini-aperçu, à côté d’une image, d’autres médias appartenant aux mêmes catégories ou affichés dans les mêmes pages.',
 	'minipreview-files_in_category'   => 'Il y {{PLURAL:$1|un fichier|$1 fichiers}} au total dans cette catégorie.',
 	'minipreview-files_in_gallery'    => "Il y {{PLURAL:$1|un fichier|$1 fichiers}} au total dans cette galerie d'images.",
-	'minipreview-no_more_files_here'  => 'Plus aucun fichier dans cette direction',
-	'minipreview-no_category_gallery' => 'Pas de catégorie ni de galerie!',
+	'minipreview-no_more_files_here'  => 'Plus aucun fichier dans cette direction.',
+	'minipreview-no_category_gallery' => 'Pas de catégorie ni de galerie !',
 	'minipreview-ignore_categories'   => "Ceci est la lsite des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n'affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
 * GFDL-
 * GFDL
@@ -144,6 +145,23 @@ $messages['nl'] = array(
 	'minipreview-no_more_files_here'  => 'Er zijn geen bestanden meer in deze richting.',
 	'minipreview-no_category_gallery' => 'Geen categorieꬠof galerijen!',
 	'minipreview-ignore_categories'   => 'Hieronder staat een lijst met (het begin van) categorienamen. Deze categorieꬠworden niet getoond door by MiniPreview. "* PD-" toont bijvoorbeeld niet alle categorieꬠdie beginnen met "PD-", zoals "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
+/** Norwegian (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'minipreview-desc'                => 'Miniforhåndsvisning viser små forhåndsvisninger av media i samme kategorier eller fra samme sider',
+	'minipreview-files_in_category'   => 'Totalt $1 filer i denne kategorien.',
+	'minipreview-files_in_gallery'    => 'Totalt $1 filer i dette galleriet.',
+	'minipreview-no_more_files_here'  => 'Ingen flere filer i denne retningen.',
+	'minipreview-no_category_gallery' => 'Ingen kategorier eller gallerier!',
+	'minipreview-ignore_categories'   => 'Følgende er en liste over kategorinavn eller begynnelser på såden. Disse kategoriene vil ikke vises av Miniforhåndsvisning. For eksempel vil «* PD-» gjøre at bilder ikke velges ut fordi de er i kategorier som begynner med «PD-», slik som «PD-old».
 * GFDL-
 * GFDL
 * CC-
@@ -233,8 +251,16 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'minipreview-files_in_category' => '$1 filer totelt in denna kategori.',
-	'minipreview-files_in_gallery'  => '$1 filer totalt i detta galleri.',
+	'minipreview-files_in_category'   => '$1 filer totelt in denna kategori.',
+	'minipreview-files_in_gallery'    => '$1 filer totalt i detta galleri.',
+	'minipreview-no_category_gallery' => 'Inga kategorier eller gallerier!',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'minipreview-files_in_category' => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
 );
 
 /** Turkish (Türkçe)

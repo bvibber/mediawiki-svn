@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'titleblacklist-desc' => 'Allows to forbid creation of pages with specified titles: [[MediaWiki:Titleblacklist]] and [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist' =>
 "# This is a title blacklist. Titles that match a regex here cannot be created.
 # Use \"#\" for comments.
@@ -23,6 +24,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'titleblacklist-desc'             => 'يسمح بمنع إنشاء الصفحات بعناوين محددة: [[MediaWiki:Titleblacklist]] و [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# هذه قائمة سوداء للعناوين. العناوين التي تطابق ريجيكس هنا لا يمكن إنشاؤها.
 # استخدم "#" للتعليقات.',
 	'titlewhitelist'                  => '# هذه قائمة بيضاء للعناوين. استخدم "#" للتعليقات',
@@ -76,6 +78,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'titleblacklist-desc'             => 'Umožňuje zakázat tvorbu stránek s určitými názvy: [[MediaWiki:Titleblacklist|Černá listina názvů]] a [[MediaWiki:Titlewhitelist|Bílá listina názvů]]',
 	'titleblacklist'                  => '# Toto je černá listina názvů. Název, který bude odpovídat regulárnímu výrazu, nebude možné vytvořit.
 # Používejte „#“ pro označení komentáře.',
 	'titlewhitelist'                  => '# Toto je bílá listina názvů stránek. Řádky komentářů začínají znakem „#“',
@@ -86,20 +89,26 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'titleblacklist' =>
+	'titleblacklist-desc'             => 'Ergänzt eine schwarze Liste unerwünschter Seitennamen: [[MediaWiki:Titleblacklist]] und [[MediaWiki:Titlewhitelist]]',
+	'titleblacklist'                  =>
 "# Dies ist die Schwarze Liste unerwünschter Seitennamen.
 # Jeder Seitenname, auf den die folgenden regulären Ausdrücke zutreffen, kann nicht erstellt werden.
 # Text hinter einer Raute „#“ wird als Kommentar gesehen.",
+	'titlewhitelist'                  => '# Dies ist die Ausnahmeliste von der Schwarzen Liste unerwünschter Seitennamen. Benutze „#“ für Kommentare',
 	'titleblacklist-forbidden-edit'   => "'''Eine Seite mit dem Titel „$2“ kann nicht erstellt werden.'''<br />Der Titel kollidiert mit diesem Sperrbegriff: '''''\$1'''''",
 	'titleblacklist-forbidden-move'   => "'''Die Seite „$2“ kann nicht nach „$3“ verschoben werden.'''<br />Der Titel kollidiert mit diesem Sperrbegriff: '''''\$1'''''",
 	'titleblacklist-forbidden-upload' => "'''Eine Datei mit dem Namen „$2“ kann nicht hochgeladen werden.'''<br />Der Titel kollidiert mit diesem Sperrbegriff: '''''\$1'''''",
 	'titleblacklist-invalid'          => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Sperrliste {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere diese vor dem Speichern:',
 );
 
-# فارسی (Huji)
+/** فارسی (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
+	'titleblacklist-desc'             => 'امکان جلوگیری از ایجاد صفحه‌هایی با عنوان‌های خاص را می‌دهد: [[MediaWiki:Titleblacklist]] و [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# این یک فهرست سیاه عنوان‌ها است. عنوان‌هایی که با یک regex در این صفحه مطابقت کنند را نمی‌توان ایجاد کرد.
 # از «#» برای توضیحات استفاده کنید.',
 	'titlewhitelist'                  => '# این یک فهرست سفید برای عنوان‌ها است. از «#» برای افزودن توضیحات استفاده کنید.',
@@ -108,16 +117,19 @@ $messages['fa'] = array(
 	'titleblacklist-forbidden-upload' => 'ایجاد نام «$2» برای پرونده‌ها ممنوع است، زیرا با این دستور از فهرست سیاه مطابقت می‌کند: <code>\\$1</code>',
 	'titleblacklist-invalid'          => '
 {{PLURAL:$1|سطر|سطرهای}} زیر در فهرست سیاه عنوان‌ها غیرمجاز {{PLURAL:$1|است|هستند}}؛ لطفاً {{PLURAL:$1|آن|آن‌ها}} را قبل از ذخیره کردن اصلاح کنید:',
+
 );
 
 /** Finnish (Suomi)
  * @author Nike
  * @author Crt
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'titleblacklist'                  => '# Tämä sivu sisältää sääntöjä, jotka estävät tietyn nimisten uusien sivujen luomisen.
 # Estettyjä ovat sivut, joiden sivunimet vastaavat täällä määritettyjä säännöllisiä lausekkeita.
 # Käytä #-merkkiä kommentointiin.',
+	'titlewhitelist'                  => '# Tämä sivu sisältää sivujen sallittuja nimiä. Käytä #-merkkiä kommentointia varten.',
 	'titleblacklist-forbidden-edit'   => 'Sivun ”$2” luonti on estetty, koska se täsmää seuraavaan osaan estolistassa: <code>$1</code>',
 	'titleblacklist-forbidden-move'   => 'Sivua ”$2” ei voi siirtää nimelle ”$3”, koska sivun ”$3” luonti on estetty. Se täsmää seuraavaan osaan estolistassa: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => 'Tiedoston ”$2” luonti on estetty, koska se täsmää seuraavaan osaan estolistassa: <code>$1</code>',
@@ -126,8 +138,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Meithal
  */
 $messages['fr'] = array(
+	'titleblacklist-desc'             => "Permet d'interdire la création de pages en fonction d'une [[MediaWiki:Titleblacklist|liste noire]] et d'une [[MediaWiki:Titlewhitelist|liste blanche]] de titres",
 	'titleblacklist'                  => "# Ceci est un titre mis en liste noire
 # Chaque titre qu'indique ici le code regex ne peux être créé.
 # Utilisez « # » pour écrire des commentaires",
@@ -143,6 +157,7 @@ Dans la liste noire, il est détecté par l'entrée suivante : <code>$1</code>",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'titleblacklist-desc'             => 'Pèrmèt de dèfendre la crèacion de pâges d’aprés una [[MediaWiki:Titleblacklist|lista nêre]] et una [[MediaWiki:Titlewhitelist|lista blanche]] de titros.',
 	'titleblacklist'                  => '# Cen est la lista nêre des titros. Châque titro qu’endique ique lo code RegEx pôt pas étre crèâ.
 # Utilisâd « # » por los comentèros.',
 	'titlewhitelist'                  => '# Cen est la lista blanche des titros. Utilisâd « # » por los comentèros.',
@@ -181,6 +196,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'titleblacklist-desc'             => 'Dowola wutworjenje stronow z podatymi titulemi zakazać: [[MediaWiki:Titleblacklist]] a [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# To je čorna lisćina nastawkowych mjenow. Titule, kotrež so na regularny wuraz hodźa,  njehodźa so wutworjeć.
 # Wužij "#" za komentary.',
 	'titlewhitelist'                  => '# Tuta je běła lisćina titulow. Wužij "#" za komentary',
@@ -195,6 +211,7 @@ Kryje so ze slědowacym zaspiskom čorneje lisćiny: <code>$1</code>',
  * @author Bdanee
  */
 $messages['hu'] = array(
+	'titleblacklist-desc'             => 'Lehetővé teszi adott címmel rendelkező lapok elkészítését: [[MediaWiki:Titleblacklist]] és [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Ez a címek feketelistája. Azon címek, amelyek illeszkednek az itt található reguláris kifejezésekre, nem hozhatóak létre.
 # Használd a „#” karaktert megjegyzések írásához.',
 	'titlewhitelist'                  => '# Ez egy engedélyező lista. A # karakterrel írhatsz megjegyzéseket.',
@@ -208,6 +225,7 @@ $messages['hu'] = array(
  * @author BrokenArrow
  */
 $messages['it'] = array(
+	'titleblacklist-desc'             => 'Consente di proibire la creazione di pagine con i titoli indicati in [[MediaWiki:Titleblacklist]] e [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Lista dei titoli non consentiti. 
 # È impedita la creazione delle pagine il cui titolo corrisponde a un\'espressione regolare indicata di seguito.
 # Usare "#" per le righe di commento.',
@@ -216,6 +234,20 @@ $messages['it'] = array(
 	'titleblacklist-forbidden-move'   => 'Impossibile spostare la pagina "$2" al titolo "$3" in quanto la creazione di pagine con titolo "$3" è stata impedita. La voce corrispondente nell\'elenco dei titoli non consentiti è la seguente: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => 'La creazione di file con titolo "$2" è stato impedito. La voce corrispondente nell\'elenco dei titoli non consentiti è la seguente: <code>$1</code>',
 	'titleblacklist-invalid'          => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} dell'elenco dei titoli non consentiti {{PLURAL:$1|non è valida|non sono valide}}; si prega di correggere {{PLURAL:$1|l'errore|gli errori}} prima di salvare la pagina.",
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'titleblacklist-desc'             => '指定したページ名での新規作成を禁止する: [[MediaWiki:Titleblacklist|タイトルブラックリスト]] および [[MediaWiki:Titlewhitelist|タイトルホワイトリスト]]',
+	'titleblacklist'                  => '# これは、タイトルブラックリストです。正規表現に一致するタイトルでの新規作成を禁止します。
+# "#"以降はコメントとして扱われます。',
+	'titlewhitelist'                  => '# これは、タイトルホワイトリストです。"#"以降はコメントとして扱われます。',
+	'titleblacklist-forbidden-edit'   => '"$2" という名前での新規作成は禁止されています。これは以下のブラックリスト項目に一致します: <code>$1</code>',
+	'titleblacklist-forbidden-move'   => '"$3" という名前での新規作成は禁止されているため、"$2" を移動することはできません。これは以下のブラックリスト項目に一致します: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => '"$2" というファイル名でのアップロードは禁止されています。これは以下のブラックリスト項目に一致します: <code>$1</code>',
+	'titleblacklist-invalid'          => 'タイトルブラックリスト{{PLURAL:$1|に|に}}不正な{{PLURAL:$1|行が|行が複数}}存在します。保存する前に{{PLURAL:$1|これ|これら}}を修正してください:',
 );
 
 /** Kazakh (Қазақша)
@@ -262,11 +294,26 @@ $messages['la'] = array(
 	'titleblacklist-forbidden-upload' => 'Fasciculus cum titulo "$2" onerari non potest. Hic titulus congruit cum expressione regulari: <code>\\$1</code>',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'titleblacklist-desc'             => "Voorkomt het aanmake van pagina's met aangegeve name: [[MediaWiki:Titleblacklist]] en [[MediaWiki:Titlewhitelist]]",
+	'titleblacklist'                  => '# Dit is een zwarte lijst voor paginanamen. Iedere paginanaam die voldoet aan een regex kan niet aangemaakt en bewerkt worden.
+# Gebruik "#" voor opmerkingen.',
+	'titlewhitelist'                  => '# Dit is een witte lijst voor paginanamen. Gebruik "#" voor opmerkingen.',
+	'titleblacklist-forbidden-edit'   => 'Een pagina met de naam "$2" kan niet aangemaakt worden. Deze paginanaam voldoet aan de volgende beperking op de zwarte lijst: <code>$1</code>',
+	'titleblacklist-forbidden-move'   => '"$2" kan niet hernoemd worden naar "$3", omdat pagina\'s met de naam "$3" niet aangemaakt kunnen worden. Deze paginanaam voldoet aan de volgende beperking op de zwarte lijst: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => 'Het bestand "$2" kan niet toegevoegd worden. Deze bestandsnaam voldoet aan de volgende beperking op de zwarte lijst: <code>$1</code>',
+	'titleblacklist-invalid'          => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst veur paginaname {{PLURAL:$1|is|zijn}} ongeldig. Verbeter die {{PLURAL:$1|regel|regels}} asjeblieft veurdat ge de lijst opslaat:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'titleblacklist-desc'             => "Voorkomt het aanmaken van pagina's met aangegeven namen: [[MediaWiki:Titleblacklist]] en [[MediaWiki:Titlewhitelist]]",
 	'titleblacklist'                  => '# Dit is een zwarte lijst voor paginanamen. Iedere paginanaam die voldoet aan een regex kan niet aangemaakt en bewerkt worden.
 # Gebruik "#" voor opmerkingen.',
 	'titlewhitelist'                  => '# Dit is een witte lijst voor paginanamen. Gebruik "#" voor opmerkingen.',
@@ -280,6 +327,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'titleblacklist-desc'             => 'Gir muligheten til å forhindre at sider med visse titler opprettes, ved å bruke [[MediaWiki:Titleblacklist]] og [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Dette er en svartlisting for titler. Titler som passer med regulære uttrykk her kan ikke opprettes.
 # Bruk «#» for kommentarer.',
 	'titlewhitelist'                  => '# Dette er en hvitelisting for titler. Bruk «#» for kommentarer.',
@@ -306,6 +354,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'titleblacklist-desc'             => 'Pozwala zabezpieczyć przed możliwością utworzenia stron o określonych tytułach: [[MediaWiki:Titleblacklist]] i [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# To jest lista zabronionych nazw artykułów. Artykuły o nazwach odpowiadających tym wzorcom, zapisanym wyrażeniami regularnymi, nie będą mogły zostać utworzone.
 # Użyj znaku "#" by utworzyć komentarz.',
 	'titlewhitelist'                  => '# To jest lista dopuszczalnych nazw artykułów. 
@@ -321,6 +370,7 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'titleblacklist-desc'             => 'Permite a proibição da criação de páginas com títulos específicos: [[MediaWiki:Titleblacklist]] e [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Esta é uma lista negra de títulos. Títulos que se encaixem em uma regex não poderão ser criados.
 # Utilize "#" para fazer comentários.',
 	'titlewhitelist'                  => '# Esta é uma lista branca de títulos. Utilize "#" para fazer comentários',
@@ -334,6 +384,7 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'titleblacklist-desc'             => 'Позволяет запретить создание страниц с указанными названиями: [[MediaWiki:Titleblacklist]] и [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Это список запрещённый названий
 # Любая статья, название которой попадает под этот список, не может быть создана
 # Используйте « # » для комментариев',
@@ -353,10 +404,31 @@ $messages['ru'] = array(
 	'titleblacklist-invalid'          => '{{PLURAL:$1|Следующая строка|Следующие строки}} в списке запрещенный названий {{PLURAL:$1|не является правильным регулярным выражением|не являются правильными регулярными выражениями}}. Пожалуйста, исправьте {{PLURAL:$1|её|их}} перед сохранением:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'titleblacklist'                  => '# Бу бобуллубут ааттар испииһэктэрэ. Бу испииһэккэ киирбит ханнык баҕарар ыстатыйа оҥоһуллар кыаҕа суох.
+# Ырытарга « # » бэлиэни туһаныҥ.',
+	'titlewhitelist'                  => '# Бу ааттар «үрүҥ испииһэктэрэ». Ырытарга «#» бэлиэни туһаныҥ.',
+	'titleblacklist-forbidden-edit'   => "<div align=\"center\" style=\"border: 1px solid #f88; padding: 0.5em; margin-bottom: 3px; font-size: 95%; width: auto;\">
+'''Маннык ааттаах сирэй \"\$2\" кыайан оҥоһуллубат''' <br />
+Бобуллубут ааттар испииһэктэригэр киирэр: '''''\$1'''''
+</div>",
+	'titleblacklist-forbidden-move'   => "<span class=\"error\">
+'''Маннык ааттаах сирэй \"\$2\" маннык ааттанар \"\$3\" кыаҕа суох, тоҕо диэтэххэ \"\$3\" оҥоһуллара бобуллубут''' <br />
+Бобуллубут ааттар испииһэктэригэр киирэр: '''''\$1'''''
+</span>",
+	'titleblacklist-forbidden-upload' => "'''Маннык ааттаах билэ \"\$2\" кыстанар (киллэриллэр) кыаҕа суох''' <br />
+Бобуллубут ааттар испииһэктэригэр киирэр: '''''\$1'''''",
+	'titleblacklist-invalid'          => 'Бобуллубут ааттар испииһэктэрин бу {{PLURAL:$1|строката|строкаалара}} {{PLURAL:$1|сыыһалаах|сыыһалаахтар}}. Бука диэн ону көннөр:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
+	'titleblacklist-desc'             => 'Umožňuje zakázať tvorbu stránok s určenými názvami: [[MediaWiki:Titleblacklist|Čierna listina názvov]] a [[MediaWiki:Titlewhitelist|Biela listina názvov]]',
 	'titleblacklist'                  => '# Toto je čierna listina názvov stránok. Názvy, ktoré zodpovedajú tu uvedenému regulárnemu výrazu nebude možné vytvoriť.
 # Komentáre začínajú znakom „#“.',
 	'titlewhitelist'                  => '# Toto je biela listina názvov stránok. Riadky komentárov začínajú znakom „#“',
@@ -386,6 +458,7 @@ Die Tittel kollidiert mäd dissen Speerbegriep: <code>\\$1</code>",
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'titleblacklist-desc'             => 'Ger möjlighet att förhindra att sidor med vissa titlar skapas, genom att använda  [[MediaWiki:Titleblacklist]] och [[MediaWiki:Titlewhitelist]]',
 	'titleblacklist'                  => '# Det här är en lista över förbjudna sidtitlar. Titlar som matchar ett reguljärt uttryck här kan inte skapas.
 # Använd "#" för kommentarer.',
 	'titlewhitelist'                  => '# Det är en lista över tillåtna sidtitlar. Använd "#" för att skriva kommentarer.',
@@ -406,6 +479,20 @@ $messages['te'] = array(
 	'titleblacklist-forbidden-move'   => '"$2"ని "$3"కి తరలించలేము, ఎందుకంటే "$3" అన్న శీర్షికని సృష్టించడంపై నిషేధం ఉంది. ఇది నిరోధపు జాబితాలోని ఈ పద్దుకి సరిపోలుతుంది: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => '"$2" అన్న పేరు గల ఫైలుని సృష్టించడాన్ని నిషేధించారు. ఇది నిషేధపు జాబితాలోని ఈ పద్దుకి సరిపోలుతుంది: <code>\\$1</code>',
 	'titleblacklist-invalid'          => 'శీర్షికల నిరోధపు జాబితాలోని ఈ క్రింద పేర్కొన్న {{PLURAL:$1|లైను|లైన్లు}} తప్పుగా {{PLURAL:$1|ఉంది|ఉన్నాయి}}; భద్రపరిచేముందు {{PLURAL:$1|దాన్ని|వాటిని}} సరిదిద్దండి:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'titleblacklist-desc'             => 'Cấm không được tạo ra trang có các tên được định rõ: [[MediaWiki:Titleblacklist]] và [[MediaWiki:Titlewhitelist]]',
+	'titleblacklist'                  => '# Đây là danh sách đen về tên trang. Không được tạo ra các trang trùng với một biểu thức chính quy ở đây.
+# Hãy bắt đầu lời ghi chú với “#”.',
+	'titlewhitelist'                  => '# Đây là “danh sách trắng” về tên trang. Hãy bắt đầu lời ghi chú với “#”.',
+	'titleblacklist-forbidden-edit'   => 'Không được tạo ra trang dưới tên “$2”, vì tên này trùng với khoản sau trong danh sách đen: <code>$1</code>',
+	'titleblacklist-forbidden-move'   => 'Không được di chuyển “$2” đến “$3”, vì tên thứ hai bị cấm. Nó trùng với khoản sau trong danh sách đen: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => 'Không được tải lên tập tin dưới tên “$2”, vì tên này trùng với khoản sau trong danh sách đen: <code>\\$1</code>',
+	'titleblacklist-invalid'          => 'Những dòng sau đây trong danh sách đen về tên trang không hợp lệ; xin hãy sửa chữa chúng để tuân theo cú pháp biểu thức chính quy trước khi lưu trang:',
 );
 
 /** Cantonese (粵語 / 廣東話)

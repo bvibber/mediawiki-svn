@@ -183,15 +183,19 @@ $messages['fo'] = array(
 	'linksearch-ns'    => 'Navnarúm:',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
 	'linksearch'       => 'Rechercher des liens Internet',
-	'linksearch-desc'       => 'Recherche des pages dans lesquelles un lien externe apparaît.',
+	'linksearch-desc'  => 'Recherche des pages dans lesquelles un lien externe apparaît.',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
 	'linksearch-ok'    => 'Rechercher',
-	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « joker » peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères passe-partout peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
-	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.',
+	'linksearch-error' => 'Les caractères passe-partout ne peuvent être utilisés qu’au début du nom de domaine.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -199,6 +203,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'linksearch'       => 'Rechèrchiér des lims Malyâjo',
+	'linksearch-desc'  => '[[Special:Linksearch|Rechèrche des pâges dens lesquintes un lim de defôr]] aparêt.',
 	'linksearch-pat'   => 'Rechèrchiér l’èxprèssion :',
 	'linksearch-ns'    => 'Èspâço de nom :',
 	'linksearch-ok'    => 'Rechèrchiér',
@@ -301,6 +306,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
+	'linksearch-desc'  => '[[Special:Linksearch|Trova le pagine con collegamenti esterni]] che corrispondono a criteri specificati',
 	'linksearch-pat'   => 'Pattern di ricerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Cerca',
@@ -309,8 +315,12 @@ $messages['it'] = array(
 	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
+	'linksearch-desc'  => '指定されたパターンに一致する[[{{ns:special}}:Linksearch|外部リンクを含むページを検索する]]',
 	'linksearch-pat'   => '検索パターン:',
 	'linksearch-ns'    => '名前空間:',
 	'linksearch-ok'    => '検索',
@@ -349,6 +359,13 @@ $messages['kk-latn'] = array(
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'linksearch-ns' => 'វាលឈ្មោះ ៖',
+);
+
 $messages['la'] = array(
 	'linksearch'       => 'Quaerere nexus externos',
 	'linksearch-ns'    => 'Spatium nominale:',
@@ -366,11 +383,18 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Matthias
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'linksearch-ns' => 'Naamruumdje:',
-	'linksearch-ok' => 'Zeuk',
+	'linksearch'       => 'Extern links zeuke',
+	'linksearch-desc'  => "Pagina's zoeken met externe links die aan een bepaald patroon voldoen",
+	'linksearch-pat'   => 'Zeukpatroon:',
+	'linksearch-ns'    => 'Naamruumdje:',
+	'linksearch-ok'    => 'Zeuk',
+	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" of "*.org" zeen toegestaon.',
+	'linksearch-line'  => '$1 gelink vanaaf $2',
+	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );
 
 $messages['lo'] = array(
@@ -506,8 +530,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'linksearch-ns' => 'نوم-تشيال:',
-	'linksearch-ok' => 'لټون',
+	'linksearch-pat' => 'د پلټنې مخبېلګه:',
+	'linksearch-ns'  => 'نوم-تشيال:',
+	'linksearch-ok'  => 'لټون',
 );
 
 /** Portuguese (Português)
@@ -560,6 +585,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'linksearch'       => 'Тас сигэлэри көрдөөһүн',
+	'linksearch-desc'  => 'Этиллибит халыыпка сөп түбэһэр [[Special:Linksearch|тас сигэлээх (ыйынньыктаах) сирэйдэри көрдөрөр]]',
 	'linksearch-pat'   => 'Көрдөөһүн халыыба:',
 	'linksearch-ok'    => 'Бул',
 	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, <code>*.wikipedia.org</code>.',
@@ -669,9 +695,12 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'linksearch'       => 'Tìm liên kết ngoài',
+	'linksearch-desc'  => '[[Special:Linksearch|Tìm những trang có liên kết ngoài]] trùng với mẫu chỉ định',
+	'linksearch-pat'   => 'Mẫu liên kết:',
 	'linksearch-ns'    => 'Không gian tên:',
 	'linksearch-ok'    => 'Tìm kiếm',
 	'linksearch-text'  => "Có thể sử dụng ký tự đại diện (''wildcard'') ở đầu tiên, ví dụ “*.wikipedia.org”.<br />Hiện hỗ trợ các giao thức: <tt>$1</tt>",

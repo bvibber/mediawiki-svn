@@ -474,7 +474,7 @@ class WhiteList extends SpecialPage
 {
     function WhiteList() {
         global $wgWhiteListRestrictedRight;
-        
+       
         SpecialPage::SpecialPage("WhiteList", $wgWhiteListRestrictedRight);
         self::loadMessages();
         return true;
@@ -486,13 +486,27 @@ class WhiteList extends SpecialPage
     }
 
     function execute($user = '') {
-        global $wgRequest, $wgOut, $wgUser, $wgWhitelistOverride, $wgWhiteListManagerGroup, $wgSitename;
+        global $wgRequest, $wgOut, $wgUser, $wgWhitelistOverride, $wgWhiteListManagerGroup, $wgWhiteListRestrictedGroup, $wgSitename;
         $dbr = wfGetDB( DB_SLAVE );
 
-        $user = ($user == '') ? $wgUser : User::newFromId($user);
+        if ($user == '')
+            $user = $wgUser;
+        else
+        {
+            $dummy = NULL;
+            $user = User::newFromId($user);
+            # this is a hack to get properly fill in the $wgWhitelistOverride array with defaults
+            wfCheckWhitelist($dummy, $user, $dummy, $dummy);
+        }
 
         $this->setHeaders();
-        $wgOut->setPagetitle(wfMsgTL('whitelist'));
+        $wgOut->setPagetitle(wfMsg('whitelist'));
+
+        if (!in_array($wgWhiteListRestrictedGroup, $user->getGroups()))
+        {
+             $wgOut->addWikiText(wfMsg('whitelistnonrestricted', $user->getRealName()));
+             return true;
+        }
 
         if ($wgRequest->getVal('submit', '') == wfMsg('whitelistnewtableprocess'))
         {
@@ -520,7 +534,7 @@ class WhiteList extends SpecialPage
 
         $res = WhitelistEdit::contractorWhitelistTable($dbr, $user->getId());
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
-            $wgOut->addWikiText("* [[$row->wl_page_title]]");
+            $wgOut->addWikiText("* [[:$row->wl_page_title|$row->wl_page_title]]");
         }
         $dbr->freeResult($res);
         $pages = array();
