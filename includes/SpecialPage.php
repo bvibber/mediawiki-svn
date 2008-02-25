@@ -144,6 +144,7 @@ class SpecialPage
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
 		'Randomredirect'            => 'SpecialRandomredirect',
 		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
+		'Filepath'                  => array( 'SpecialPage', 'Filepath' ),
 
 		'Mypage'                    => array( 'SpecialMypage' ),
 		'Mytalk'                    => array( 'SpecialMytalk' ),
@@ -689,9 +690,10 @@ class SpecialPage
 		global $wgOut, $wgContLang;
 
 		$msg = $wgContLang->lc( $this->name() ) . '-summary';
-		$out = wfMsg( $msg );
-		if ( ! wfEmptyMsg( $msg, $out ) and  $out !== '' and ! $this->including() )
+		$out = wfMsgNoTrans( $msg );
+		if ( ! wfEmptyMsg( $msg, $out ) and  $out !== '' and ! $this->including() ) {
 			$wgOut->addWikiText( $out );
+		}
 
 	}
 

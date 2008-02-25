@@ -583,10 +583,10 @@ class LocalFile extends File
 		$conds = $opts = array();
 		$conds[] = "oi_name = " . $dbr->addQuotes( $this->title->getDBKey() );
 		if( $start !== null ) {
-			$conds[] = "oi_timestamp < '" . $dbr->timestamp( $start ) . "'";
+			$conds[] = "oi_timestamp <= " . $dbr->addQuotes( $dbr->timestamp( $start ) );
 		}
 		if( $end !== null ) {
-			$conds[] = "oi_timestamp > '" . $dbr->timestamp( $end ). "'";
+			$conds[] = "oi_timestamp >= " . $dbr->addQuotes( $dbr->timestamp( $end ) );
 		}
 		if( $limit ) {
 			$opts['LIMIT'] = $limit;
@@ -1308,15 +1308,15 @@ class LocalFileDeleteBatch {
 	function doDBDeletes() {
 		$dbw = $this->file->repo->getMasterDB();
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
-		if ( $deleteCurrent ) {
-			$dbw->delete( 'image', array( 'img_name' => $this->file->getName() ), __METHOD__ );
-		}
 		if ( count( $oldRels ) ) {
 			$dbw->delete( 'oldimage', 
 				array(
 					'oi_name' => $this->file->getName(),
 					'oi_archive_name IN (' . $dbw->makeList( array_keys( $oldRels ) ) . ')' 
 				), __METHOD__ );
+		}
+		if ( $deleteCurrent ) {
+			$dbw->delete( 'image', array( 'img_name' => $this->file->getName() ), __METHOD__ );
 		}
 	}
 

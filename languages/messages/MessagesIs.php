@@ -447,9 +447,10 @@ $messages = array(
 'viewdeleted'             => 'Skoða $1?',
 'restorelink'             => '{{PLURAL:$1|eina eydda breytingu|$1 eyddar breytingar}}',
 'feedlinks'               => 'Nippan:',
+'red-link-title'          => '$1 (ekki enn skrifuð)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Grein',
+'nstab-main'      => 'Síða',
 'nstab-user'      => 'Notandi',
 'nstab-media'     => 'Margmiðlunarsíða',
 'nstab-special'   => 'Kerfissíða',
@@ -572,9 +573,9 @@ Aðgangurinn þinn hefur verið búinn til. Ekki gleyma að breyta [[Special:Pre
 'nocookieslogin'             => '{{SITENAME}} notar vefkökur til innskráningar. Vafrinn þinn er ekki að taka á móti þeim sem gerir það ókleyft að innskrá þig. Vinsamlegast virkjaðu móttöku kakna í vafranum þínum til að geta skráð þig inn.',
 'noname'                     => 'Ógilt notandanafn.',
 'loginsuccesstitle'          => 'Innskráning tókst',
-'loginsuccess'               => 'Þú ert nú innskráð(ur) á {{SITENAME}} sem „[[Notandi:$1|$1]]“.',
+'loginsuccess'               => 'Þú ert nú innskráð(ur) á {{SITENAME}} sem „[[User:$1|$1]]“.',
 'nosuchuser'                 => 'Enginn notandi er til undir nafninu „$1“.',
-'nosuchusershort'            => 'Það er enginn notandi með nafnið „$1“. Athugaðu hvort nafnið er ritað rétt.',
+'nosuchusershort'            => 'Það er enginn notandi með nafnið „<nowiki>$1</nowiki>“. Athugaðu hvort nafnið er ritað rétt.',
 'nouserspecified'            => 'Þú verður að taka fram notandanafn.',
 'wrongpassword'              => 'Uppgefið lykilorð er rangt. Vinsamlegast reyndu aftur.',
 'wrongpasswordempty'         => 'Lykilorðsreiturinn var auður. Vinsamlegast reyndu aftur.',
@@ -892,8 +893,8 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 Óvaldir flokkar verða ekki vistaðir. Þú getur afvalið flokk með CTRL + hægri smella',
 'userrights-reason'           => 'Ástæða fyrir breytingunni:',
 'userrights-available-none'   => 'Þú getur ekki breytt notendaréttindum.',
-'userrights-available-add'    => 'Þú getur bætt notendum við $1.',
-'userrights-available-remove' => 'Þú getur fjarlægt notendur af $1.',
+'userrights-available-add'    => 'Þú getur bætt notendum við {{PLURAL:$2|þessum hóp|þessum hópum}}: $1.',
+'userrights-available-remove' => 'Þú getur fjarlægt notendur af {{PLURAL:$2|þessum hóp|þessum hópum}}: $1.',
 
 # Groups
 'group'               => 'Flokkur:',
@@ -1281,6 +1282,8 @@ Til að fjarlægja síðu þessa af vaktlistanum þarft þú að ýta á tengili
 'excontentauthor'             => "innihaldið var: '$1' (og öll framlög voru frá '[[{{ns:special}}:Contributions/$2|$2]]')",
 'exbeforeblank'               => "innihald fyrir tæmingu var: '$1'",
 'exblank'                     => 'síðan var tóm',
+'delete-confirm'              => 'Eyða „$1“',
+'delete-legend'               => 'Eyða',
 'historywarning'              => 'Athugið: Síðan sem þú ert um það bil að eyða á sér:',
 'confirmdeletetext'           => 'Þú ert um það bil að eyða síðu eða mynd ásamt
 breytingaskrá hennar úr gagnagrunninum.
@@ -1322,7 +1325,7 @@ Síðasta breyting er frá [[User:$3|$3]] ([[User_talk:$3|Spjall]]).',
 'protectexpiry'               => 'Rennur út:',
 'unprotectsub'                => '(Afvernda „$1“)',
 'protect-unchain'             => 'Opna fyrir færslur',
-'protect-text'                => 'Hér getur þú skoðað og breytt verndunarstigi síðunnar <strong>$1</strong>.',
+'protect-text'                => 'Hér getur þú skoðað og breytt verndunarstigi síðunnar <strong><nowiki>$1</nowiki></strong>.',
 'protect-default'             => '(sjálfgefið)',
 'protect-fallback'            => '„$1“ réttindi nauðsynleg',
 'protect-level-autoconfirmed' => 'Banna óinnskráða notendur',
@@ -1365,6 +1368,7 @@ Skoðaðu [[{{ns:special}}:Log/delete|eyðingaskrána]] til að skoða eyðingar
 'undelete-search-prefix'   => 'Sýna síður sem byrja á:',
 'undelete-search-submit'   => 'Leita',
 'undelete-no-results'      => 'Engar samsvarandi síður fundust í eyðingarskjalasafninu.',
+'undelete-error-short'     => 'Villa við endurvakningu skráar: $1',
 
 # Namespace form on various pages
 'namespace'      => 'Nafnrými:',
@@ -1391,7 +1395,7 @@ Skoðaðu [[{{ns:special}}:Log/delete|eyðingaskrána]] til að skoða eyðingar
 'whatlinkshere'       => 'Hvað tengist hingað',
 'whatlinkshere-title' => 'Síður sem tengjast $1',
 'whatlinkshere-page'  => 'Síða:',
-'linklistsub'         => '(Listi yfir ítengdar síður)',
+'linklistsub'         => '(Listi yfir tengla)',
 'linkshere'           => "Eftirfarandi síður tengjast á '''[[:$1]]''':",
 'nolinkshere'         => "Engar síður tengjast á '''[[:$1]]'''.",
 'nolinkshere-ns'      => "Engar síður tengjast '''[[:$1]]''' í þessu nafnrými.",
@@ -1559,7 +1563,6 @@ Síðan „[[$1]]“ er þegar til. Viltu eyða henni til þess að rýma til fy
 
 # Thumbnails
 'thumbnail-more' => 'Stækka',
-'missingimage'   => '<b>Mynd vantar</b><br /><i>$1</i>',
 'filemissing'    => 'Skrá vantar',
 
 # Special:Import
@@ -1681,13 +1684,27 @@ Allir innflutningar eru skráð í [[{{ns:special}}:Log/import|innflutningsskrá
 'mw_math_modern' => 'Mælt með fyrir nýja vafra',
 'mw_math_mathml' => 'MathML ef mögulegt (tilraun)',
 
+# Patrolling
+'markaspatrolleddiff'                 => 'Merkja sem yfirfarið',
+'markaspatrolledtext'                 => 'Merkja þessa síðu sem yfirfarna',
+'markedaspatrolled'                   => 'Merkja sem yfirfarið',
+'markedaspatrolledtext'               => 'Valin breyting hefur verið merkt sem yfirfarin.',
+'rcpatroldisabled'                    => 'Slökkt á yfirferð nýlegra breytinga',
+'rcpatroldisabledtext'                => 'Yfirferð nýlegra breytinga er ekki virk.',
+'markedaspatrollederror'              => 'Get ekki merkt sem yfirfarið',
+'markedaspatrollederrortext'          => 'Þú verður að velja breytingu til að merkja sem yfirfarið.',
+'markedaspatrollederror-noautopatrol' => 'Þú hefur ekki réttindi til að merkja eigin breytingar sem yfirfarnar.',
+
 # Patrol log
+'patrol-log-page' => 'Yfirferðarskrá',
+'patrol-log-line' => 'merkti $1 eftir $2 sem yfirfarið $3',
 'patrol-log-auto' => '(sjálfkrafa)',
 
 # Image deletion
 'deletedrevision'       => 'Eydd gömul útgáfu $1',
 'filedeleteerror-short' => 'Villa við eyðingu: $1',
 'filedeleteerror-long'  => 'Það kom upp villa við eyðingu skráarinnar: $1',
+'filedelete-missing'    => 'Skránni „$1“ er ekki hægt að eyða vegna þess að hún er ekki til.',
 
 # Browsing diffs
 'previousdiff' => '← Fyrri breyting',
@@ -1700,6 +1717,7 @@ Allir innflutningar eru skráð í [[{{ns:special}}:Log/import|innflutningsskrá
 'file-info'            => '(stærð skráar: $1, MIME tegund: $2)',
 'file-info-size'       => '($1 × $2 depplar, stærð skráar: $3, MIME gerð: $4)',
 'file-nohires'         => '<small>Það er engin hærri upplausn til.</small>',
+'svg-long-desc'        => '(SVG-skrá, lágmark $1 × $2 dílar, skráarstærð: $3)',
 'show-big-image'       => 'Mesta upplausn',
 'show-big-image-thumb' => '<small>Myndin er í upplausninni $1 × $2 </small>',
 
@@ -1875,5 +1893,13 @@ $1',
 'watchlisttools-view' => 'Sýna viðeigandi breytingar',
 'watchlisttools-edit' => 'Skoða og breyta vaktalistanum',
 'watchlisttools-raw'  => 'Breyta opnum vaktlistanum',
+
+# Special:Version
+'version-specialpages' => 'Kerfissíður',
+
+# Special:Filepath
+'filepath'        => 'Slóð skráar',
+'filepath-page'   => 'Skrá:',
+'filepath-submit' => 'Slóð',
 
 );

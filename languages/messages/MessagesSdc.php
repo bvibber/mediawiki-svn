@@ -148,6 +148,7 @@ Li sighenti cullegamenti so in linga ingrese:
 'mytalk'         => "Li me' dischussioni",
 'anontalk'       => 'Dischussioni pa chisthu IP',
 'navigation'     => 'Nabiggazioni',
+'and'            => 'e',
 
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
@@ -398,7 +399,7 @@ La registhrazioni è isthadda criadda currettamenti. No dimintiggà di passunari
 'loginsuccesstitle'          => 'Intradda effettuadda',
 'loginsuccess'               => "'''Lu cullegamentu a l'elaburaddori sivvidori di {{SITENAME}} cu l'innòmu utenti \"\$1\" è attibu.'''",
 'nosuchuser'                 => 'Nò è registhraddu caschunu utenti d\'innòmu "$1". Verifiggà l\'innòmu insiriddu o crià una noba registhrazioni.',
-'nosuchusershort'            => 'Nò è registhraddu caschunu utenti d\'innòmu "$1". Verifiggà l\'innòmu insiriddu.',
+'nosuchusershort'            => 'Nò è registhraddu caschunu utenti d\'innòmu "<nowiki>$1</nowiki>". Verifiggà l\'innòmu insiriddu.',
 'nouserspecified'            => "È nezzessàriu ippizzificà un'innòmu utenti.",
 'wrongpassword'              => "La paràura d'órdhini insiridda nò è curretta. Riprubà.",
 'wrongpasswordempty'         => "La paràura d'órdhini insiridda è biodda. Riprubà.",
@@ -1216,12 +1217,12 @@ Si daboi s'à gana d'eliminà la pàgina da la listha di l'abbaidaddi ippiziarii
 'unwatchthispage'      => 'Zissa di sighì',
 'notanarticle'         => 'Chistha pàgina nò è una bozi',
 'watchnochange'        => "Nisciuna di li pàgini abbaidaddi è isthadda mudìfiggadda i' lu perìodu cunsidaraddu.",
-'watchlist-details'    => 'La listha di li abbaidaddi ippiziari cunteni {{PLURAL:$1|una pàgina (e la rippettiba pàgina di dischussioni)|$1 pàgini (e li rippettibi pàgini di dischussioni)}}.',
+'watchlist-details'    => "La listha di l'abbaidaddi ippiziari cunteni {{PLURAL:$1|una pàgina (e la rippettiba pàgina di dischussioni)|$1 pàgini (e li rippettibi pàgini di dischussioni)}}.",
 'wlheader-enotif'      => '* La nutìfica via postha erettrònica è attiba.',
 'wlheader-showupdated' => "* Li pàgini chi so isthaddi mudìfiggaddi daboi l'ulthima vìsita so evidenziaddi in '''grasseddu'''",
 'watchmethod-recent'   => "cuntrollu di li mudìfigghi rizzenti pa l'abbaidaddi ippiziari",
 'watchmethod-list'     => "cuntrollu di l'abbaidaddi ippiziari pa mudìfigghi rizzenti",
-'watchlistcontains'    => 'La listha di li abbaidaddi ippiziari cunteni {{PLURAL:$1|una pàgina|$1 pàgini}}.',
+'watchlistcontains'    => "La listha di l'abbaidaddi ippiziari cunteni {{PLURAL:$1|una pàgina|$1 pàgini}}.",
 'iteminvalidname'      => "Probremi cu' la pàgina '$1', innòmmu nò vàriddu...",
 'wlnote'               => "Inogghi {{PLURAL:$1|è erencadda la mudìfigga più rizzenti arriggadda|so erencaddi li '''$1''' mudìfigghi più rizzenti arriggaddi}} {{PLURAL:$2|i' la ulthima ora|i' li ulthimi '''$2''' ori}}.",
 'wlshowlast'           => 'Musthra li ulthimi $1 ori $2 dì $3',
@@ -1281,7 +1282,7 @@ Pa dì cosa ni pensi e dumandà assisthènzia:
 'confirmdeletetext'           => "Sei canzillendi pa sempri da la bancati una pàgina o un'immàgina, umpari a la cronologia d'edda.
 Pa piazzeri, cunfèimma chi vói canzillà avveru, ch'ài cumpresu li cunsiguènzi di l'azioni tóia e ch'edda è cunfòimmi a li [[{{MediaWiki:Policy-url}}|lìni ghia]].",
 'actioncomplete'              => 'Azioni cumpritadda',
-'deletedtext'                 => 'La pàgina "$1" è isthadda canzilladda. Cunsultha lu $2 pa un\'erencu di li pàgini canzilladdi da poggu tempu.',
+'deletedtext'                 => 'La pàgina "<nowiki>$1</nowiki>" è isthadda canzilladda. Cunsultha lu $2 pa un\'erencu di li pàgini canzilladdi da poggu tempu.',
 'deletedarticle'              => 'ha canzilladdu "[[$1]]"',
 'dellogpage'                  => 'Canzilladduri',
 'dellogpagetext'              => 'Inogghi so erencaddi li pàgini canzilladdi da poggu tempu.',
@@ -1315,7 +1316,7 @@ Pa piazzeri, cunfèimma chi vói canzillà avveru, ch'ài cumpresu li cunsiguèn
 'protect_expiry_old'          => 'Ischadènzia già passadda.',
 'unprotectsub'                => '(Ibbruccu di "$1")',
 'protect-unchain'             => "Ischulliga i primmissi d'ippusthamentu",
-'protect-text'                => 'Chisthu mòdulu cunsenti di vidé e mudìfiggà lu libellu di prutizioni pa la pàgina <strong>$1</strong>.',
+'protect-text'                => 'Chisthu mòdulu cunsenti di vidé e mudìfiggà lu libellu di prutizioni pa la pàgina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => "Nò è pussìbiri mudìfiggà i libelli di prutizioni cand'è attibu un broccu. L'impusthazioni currenti pa la pàgina so <strong>$1</strong>:",
 'protect-locked-access'       => "Nò si diponi di li primmissi nezzessàri pa mudìfiggà lu libellu di prutizioni di la pàgina.
 L'impusthazioni currenti pa la pàgina so <strong>$1</strong>:",
@@ -1388,7 +1389,7 @@ $1",
 'nocontribs'    => 'Nò so isthaddi acciappaddi mudìfigghi cunfòimmi a li critéri sciubaraddi.',
 'ucnote'        => "Inogghi sò erencaddi li <b>$1</b> mudìfigghi più rizzenti arriggaddi da l'utenti i' l'ulthimi <b>$2</b> dì.",
 'uclinks'       => 'Musthra li ulthimi $1 mudìfigghi; musthra li ulthimi $2 dì.',
-'uctop'         => ' (ulthima pa la pàgina)',
+'uctop'         => '(ulthima pa la pàgina)',
 'month'         => 'A parthì da lu mesi (e prizzidenti):',
 'year'          => "A parthì da l'anni (e prizzidenti):",
 
@@ -1569,7 +1570,6 @@ In chisth'ulthimu casu si pó utilizzà puru un cullegamentu, pa esempiu [[{{ns:
 
 # Thumbnails
 'thumbnail-more'           => 'Immannitta',
-'missingimage'             => '<b>Immàgina mancanti</b><br /><i>$1</i>',
 'filemissing'              => 'File mancanti',
 'thumbnail_error'          => "Errori i' la criazioni di la miniadduri: $1",
 'djvu_page_error'          => 'Nùmaru di pàgina DjVu ibbagliaddu',
@@ -1682,7 +1682,6 @@ Tutti l'operazioni d'impurthazioni trans-wiki so rigisthraddi i' lu [[Special:Lo
 'anonymous'        => 'utenti anònimi di {{SITENAME}}',
 'siteuser'         => '$1, utenti di {{SITENAME}}',
 'lastmodifiedatby' => "Chistha pàgina è isthadda mudìfiggadda pa l'ulthima voltha lu $2, $1 da $3.", # $1 date, $2 time, $3 user
-'and'              => 'e',
 'othercontribs'    => "Lu testhu attuari è basaddu i' li cuntributi di $1.",
 'others'           => 'althri',
 'siteusers'        => '$1, utenti di {{SITENAME}}',
@@ -1921,11 +1920,10 @@ $1',
 'useajaxsearch'    => "Zercha cu'AJAX",
 
 # Multipage image navigation
-'imgmultipageprev'   => '← pàgina prizzidenti',
-'imgmultipagenext'   => 'pàgina sighenti →',
-'imgmultigo'         => 'Vai',
-'imgmultigotopre'    => 'Vai a la pàgina',
-'imgmultiparseerror' => "Lu file immàgina è ibbagliaddu o danniggiaddu, {{SITENAME}} nò è bonu à prisintà l'erencu di li pàgini.",
+'imgmultipageprev' => '← pàgina prizzidenti',
+'imgmultipagenext' => 'pàgina sighenti →',
+'imgmultigo'       => 'Vai',
+'imgmultigotopre'  => 'Vai a la pàgina',
 
 # Table pager
 'ascending_abbrev'         => 'crisc',

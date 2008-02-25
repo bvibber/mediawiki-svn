@@ -210,6 +210,7 @@ $messages = array(
 'mytalk'         => "Menin' sa'wbetim",
 'anontalk'       => "Usı IP sa'wbeti",
 'navigation'     => 'Navigatsiya',
+'and'            => "ha'm",
 
 # Metadata in edit box
 'metadata_help' => "Metamag'lıwmat:",
@@ -439,7 +440,7 @@ Akkauntın'ız jaratıldı. {{SITENAME}} sazlawların'ızdı o'zgertiwdi umıtpa
 'loginsuccesstitle'          => "Kiriw tabıslı a'melge asırıldı",
 'loginsuccess'               => "'''{{SITENAME}} saytına \"\$1\" paydalanıwshı atı menen kirdin'iz.'''",
 'nosuchuser'                 => "\"\$1\" atlı paydalanıwshı joq. Tuwrı jazılg'anlıg'ın tekserin' yamasa taza akkaunt jaratın'.",
-'nosuchusershort'            => '"$1" atlı paydalanıwshı joq. Tuwrı jazılg\'anlıg\'ın tekserin\'.',
+'nosuchusershort'            => '"<nowiki>$1</nowiki>" atlı paydalanıwshı joq. Tuwrı jazılg\'anlıg\'ın tekserin\'.',
 'nouserspecified'            => "Siz paydalanıwshı atın ko'rsetpedin'iz.",
 'wrongpassword'              => "Qate parol kiritlgen. Qaytadan kiritin'.",
 'wrongpasswordempty'         => "Parol kiritilmegen. Qaytadan ha'reket etin'.",
@@ -1048,7 +1049,7 @@ Eger siz bul betti baqlaw dizimin'izden o'shirmekshi bolsan'ız bettin' joqarg'�
 'confirmdeletetext'           => "Siz bul betti yamasa su'wretti barliq tariyxı menen mag'lıwmatlar bazasınan o'shirejaqsız.
 Bunın' aqıbetin tu'singenin'izdi ha'm [[{{MediaWiki:Policy-url}}]] siyasatına ılayıqlı ekenligin tastıyıqlan'.",
 'actioncomplete'              => "Ha'reket tamamlandı",
-'deletedtext'                 => "\"\$1\" o'shirildi.
+'deletedtext'                 => "\"<nowiki>\$1</nowiki>\" o'shirildi.
 Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'deletedarticle'              => '"[[$1]]" o\'shirildi',
 'dellogpage'                  => "O'shiriw jurnalı",
@@ -1073,7 +1074,7 @@ Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'protect_expiry_old'          => "Kushin joytıw waqtı o'tip ketken.",
 'unprotectsub'                => '("$1" qorg\'almawmaqta)',
 'protect-unchain'             => "Ko'shiriw ruxsatın beriw",
-'protect-text'                => "<strong>$1</strong> betinin' qorg'aw da'rejesin ko're yamasa o'zgerte alasız.",
+'protect-text'                => "<strong><nowiki>\$1</nowiki></strong> betinin' qorg'aw da'rejesin ko're yamasa o'zgerte alasız.",
 'protect-locked-access'       => "Akkauntın'ızdın' bettın' qorg'aw da'rejesin o'zgertiwge ruxsatı joq.
 <strong>$1</strong> betinin' ha'zirgi sazlawları:",
 'protect-cascadeon'           => "Bul bet ha'zirgi waqıtta qorg'alg'an, sebebi usı bet kaskadlı qorg'awı bar {{PLURAL:$1|betke|betlerine}} qosılg'an. Bul bettin' qorg'aw da'rejesin o'zgerte alasız, biraq bul kaskadlı qorg'awg'a ta'sir etpeydi.",
@@ -1128,7 +1129,7 @@ Aqırg'ı o'shirilgenlerdin' dizimin ko'riw ushin \$2 ni qaran'",
 'contribsub2'   => '$1 ushın ($2)',
 'ucnote'        => "To'mende usı paydalanıwshının' aqırg'ı <b>$2</b> ku'ndegi, aqırg'ı <b>$1</b> o'zgerisleri bar.",
 'uclinks'       => "Aqırg'ı $1 o'zgeristi ko'riw; aqırg'ı $2 ku'ndi ko'riw.",
-'uctop'         => " (joqarg'ı)",
+'uctop'         => "(joqarg'ı)",
 'month'         => "Aydag'ı (ha'm onnanda erterek):",
 'year'          => "Jıldag'ı (ha'm onnanda erterek):",
 
@@ -1283,7 +1284,6 @@ Basqa atama saylan'",
 
 # Thumbnails
 'thumbnail-more'           => "U'lkeytiw",
-'missingimage'             => "<b>Tabılmag'an su'wret </b><br /><i>$1</i>",
 'filemissing'              => 'Fayl tabılmadı',
 'thumbnail_error'          => "Miniatyura jaratıw qa'teligi: $1",
 'thumbnail_invalid_params' => 'Miniatyura sazlawları natuwrı',
@@ -1366,7 +1366,6 @@ Basqa atama saylan'",
 'anonymous'        => '{{SITENAME}} anonim paydalanıwshı(ları)',
 'siteuser'         => '{{SITENAME}} paydalanıwshısı $1',
 'lastmodifiedatby' => "Bul bettin' aqırg'ı ma'rte $3 o'zgertken waqtı: $2, $1.", # $1 date, $2 time, $3 user
-'and'              => "ha'm",
 'others'           => 'basqalar',
 'siteusers'        => '{{SITENAME}} paydalanıwshı(ları) $1',
 'creditspage'      => 'Bet avtorları',
@@ -1519,5 +1518,8 @@ Sol qatardag'ı keyingi ha'r bir siltewler tısqarı qabıl etiledi, mısalı qa
 'watchlisttools-view' => "Baylanıslı o'zgerislerdi qaraw",
 'watchlisttools-edit' => "Baqlaw dizimin ko'riw ha'm o'zgertiw",
 'watchlisttools-raw'  => '"Shiyki" baqlaw dizimin o\'zgertiw',
+
+# Special:Filepath
+'filepath' => 'Fayl jolı',
 
 );

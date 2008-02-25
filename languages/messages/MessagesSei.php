@@ -138,6 +138,7 @@ $messages = array(
 'mytalk'         => 'Heczaxö',
 'anontalk'       => 'Czaxöde IP',
 'navigation'     => 'Navigacion',
+'and'            => 'ö',
 
 # Metadata in edit box
 'metadata_help' => 'Datade Meta:',
@@ -385,7 +386,7 @@ Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
 'loginsuccesstitle'          => 'Caápo tampua',
 'loginsuccess'               => "'''Me coccebj caápo {{SITENAME}} itide \"\$1\".'''",
 'nosuchuser'                 => 'Jan caitom necoccebj zo, ID "$1". Cohuatlöx mecuáxiit jöx creatom huncaitom.',
-'nosuchusershort'            => 'Jan caitom necoccebj zo, ID "$1". Cohuatlöx mecuáxiit.',
+'nosuchusershort'            => 'Jan caitom necoccebj zo, ID "<nowiki>$1</nowiki>". Cohuatlöx mecuáxiit.',
 'nouserspecified'            => 'Me coccebj IDde caitom caápo.',
 'wrongpassword'              => 'Römjde quimx canj. Vanquimx canj.',
 'wrongpasswordempty'         => 'Quimx canj blankanj. Vanquimx canj.',
@@ -989,7 +990,7 @@ iitom e-iitomde diijömde caitóm.',
 # Contributions
 'contributions' => 'Contribuciónde caitom',
 'mycontris'     => 'Hecontribución',
-'uctop'         => ' (quániit)',
+'uctop'         => '(quániit)',
 
 'sp-contributions-search'   => 'Yahöx contribución mii',
 'sp-contributions-username' => 'Addressade IP jöx caitom ID:',
@@ -1092,7 +1093,6 @@ iitom e-iitomde diijömde caitóm.',
 
 # Attribution
 'siteuser'      => '{{SITENAME}} caitom $1',
-'and'           => 'ö',
 'othercontribs' => 'Pacdan $1 mii.',
 'others'        => "pac'detazo",
 'siteusers'     => '{{SITENAME}} cait(o/ó)m $1',
@@ -1141,4 +1141,3 @@ iitom e-iitomde diijömde caitóm.',
 'autosumm-new' => 'Hunpáhina: $1',
 
 );
-

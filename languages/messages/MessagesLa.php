@@ -256,6 +256,7 @@ $messages = array(
 'mytalk'         => 'Disputatum meum',
 'anontalk'       => 'Disputatio huius IP',
 'navigation'     => 'Navigatio',
+'and'            => 'et',
 
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Redire ad $1.',
@@ -349,6 +350,7 @@ $messages = array(
 'hidetoc'                 => 'celare',
 'thisisdeleted'           => 'Videre aut restituere $1?',
 'restorelink'             => '{{PLURAL:$1|unam emendationem deletam|$1 emendationes deletas}}',
+'red-link-title'          => '$1 (pagina nondum scripta est)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Res',
@@ -385,7 +387,7 @@ $1',
 'protectedpagetext'   => 'Haec pagina protecta est, ut emendationes prohibeantur.',
 'viewsourcetext'      => 'Fontem videas et exscribeas:',
 'protectedinterface'  => 'Haec pagina dat textum interfaciei pro logiciali, et est protecta ad vandalismum vetandum.',
-'editinginterface'    => "'''Caveat censor:''' Emendas iam paginam quae textum interfaciei logicialem dat. Mutationes vultum {{grammar:genitive|{{SITENAME}}}} omnibus usoribus afficient. In nuntia MediaWiki vertendo, quaesumus te uti [http://translatewiki.net/wiki/Translating:Intro Betawiki].",
+'editinginterface'    => "'''Caveat censor:''' Emendas iam paginam quae textum interfaciei logicialem dat. Mutationes vultum {{grammar:genitive|{{SITENAME}}}} omnibus usoribus afficient. In nuntia MediaWiki vertendo, quaesumus te uti [http://translatewiki.net/wiki/Main_Page?setlang=la Betawiki].",
 'ns-specialprotected' => 'Paginae in spatio nominali "{{ns:special}}" recenseri non possunt.',
 'titleprotected'      => 'Hic titulus protectus est ab usore [[User:$1|$1]] ne creetur. Ratio data est <i>$2</i>.',
 
@@ -436,7 +438,7 @@ Ratio tua iam creata est. Noli oblivisci praeferentias tuas mutare.',
 'loginsuccesstitle'          => 'Conventum prospere apertum est',
 'loginsuccess'               => "'''Apud {{grammar:accusative|{{SITENAME}}}} agnosceris ut \"\$1\".'''",
 'nosuchuser'                 => 'Nomen usoris "$1" non est. Orthographiam confirma, aut novam rationem usoris crea.',
-'nosuchusershort'            => 'Nomen usoris "$1" non est. Orthographiam confirma.',
+'nosuchusershort'            => 'Nomen usoris "<nowiki>$1</nowiki>" non est. Orthographiam confirma.',
 'nouserspecified'            => 'Nomen usoris indicare debes.',
 'wrongpassword'              => 'Tessera quam scripsisti non constat. Conare denuo.',
 'wrongpasswordempty'         => 'Tesseram vacuam scripsisti. Conare denuo.',
@@ -455,8 +457,7 @@ ignorare, et tessera seni uti continuare.',
 'accountcreated'             => 'Ratio creata',
 'accountcreatedtext'         => 'Ratio pro usore $1 creata est.',
 'createaccount-title'        => 'Ratio creata apud {{grammar:accusative|{{SITENAME}}}}',
-'createaccount-text'         => 'Aliquis ($1) creavit rationem pro $2 apud {{grammar:accusative|{{SITENAME}}}}
-($4). Tessera usoris "$2" est "$3". Conventum aperias et statim tesseram tuam mutes.
+'createaccount-text'         => 'Aliquis creavit rationem pro inscriptione electronica tua apud {{grammar:accusative|{{SITENAME}}}} ($4). Nomen usoris est "$2" et tessera est "$3". Conventum aperias et statim tesseram tuam mutes.
 
 Hunc nuntium ignorare potes, si nolis hac ratione uti.',
 'loginlanguagelabel'         => 'Lingua: $1',
@@ -549,7 +550,7 @@ Si hic es propter errorem, solum '''Retrorsum''' in navigatro tuo preme.",
 'note'                      => '<strong>Nota:</strong>',
 'previewnote'               => '<strong>Memento hanc paginam solum praevisum esse, neque iam servatam!</strong>',
 'editing'                   => 'Recensio paginae "$1"',
-'editinguser'               => 'Recensio <b>$1</b>',
+'editinguser'               => "Modificare iura usoris '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Recensens $1 (partem)',
 'editingcomment'            => 'Recensens $1 (adnotum)',
 'editconflict'              => 'Contentio recensionis: $1',
@@ -760,9 +761,10 @@ Titulus: (nov) = dissimilis ab forma novissima, (prox) = dissimilis ab forma pro
 'uploadnologin'     => 'Conventum non apertum est',
 'uploadnologintext' => '[[Special:Userlogin|Aperire conventum]] debes ut fasciculos oneres.',
 'uploaderror'       => 'Error onerati',
-'uploadtext'        => "Utere formam subter ad fasciculos onerandos. Ut videas aut quaeras fasciculos oneratos antea, adi [[Special:Imagelist|indicem fasciculorum oneratorum]]. Onerata et deleta in [[Special:Log/upload|notatione oneratorum]] notata sunt.
+'uploadtext'        => "Utere formam subter ad fasciculos onerandos.
+Ut videas aut quaeras fasciculos oneratos antea, adi [[Special:Imagelist|indicem fasciculorum oneratorum]]. Onerata et deleta in [[Special:Log/upload|notatione oneratorum]] notata sunt.
 
-Ad imaginem includendum in pagina, utere nexu
+Ad fasciculum includendum in pagina, utere nexu
 '''<nowiki>[[</nowiki>{{ns:image}}:File.jpg]]''' aut
 '''<nowiki>[[</nowiki>{{ns:image}}:File.png|verba alia]]''' aut
 '''<nowiki>[[</nowiki>{{ns:media}}:File.ogg]]''' pro nexum directum ad fasciculum.",
@@ -1054,7 +1056,7 @@ Si paginam ex indice paginarum custoditarum removere vis, imprime \"decustodire\
 'confirmdeletetext'         => 'Paginam cum tota historia eius delebis.
 Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, et actionem tuam [[{{MediaWiki:Policy-url}}|consilio]] congruere.',
 'actioncomplete'            => 'Actum perfectum',
-'deletedtext'               => '"$1" deletum est. Vide $2 pro indice deletionum recentum.',
+'deletedtext'               => '"<nowiki>$1</nowiki>" deletum est. Vide $2 pro indice deletionum recentum.',
 'deletedarticle'            => 'delevit "[[$1]]"',
 'dellogpage'                => 'Index deletionum',
 'dellogpagetext'            => 'Subter est index deletionum recentissimarum.',
@@ -1106,6 +1108,7 @@ Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, e
 Si pagina nova cum ipso nomine post deletionem creata est, recensita restituta in historia prior apparebit, et recensitum recentissimum paginae necessario non renovabitur.',
 'undelete-revision'      => 'Emendatio deleta paginae $1 (ex $2) ab usore $3:',
 'undeletebtn'            => 'Restituere',
+'undeletelink'           => 'restituere',
 'undeletecomment'        => 'Sententia:',
 'undeletedarticle'       => 'restituit "[[$1]]"',
 'cannotundelete'         => 'Abrogatio deletionis fefellit; fortasse aliquis iam paginam restituit.',
@@ -1340,7 +1343,6 @@ Quaesitum "[[$1]]" etiam existit. Vin tu eam delere ut moveas?',
 'anonymous'        => 'Usor ignotus {{grammar:genitive|{{SITENAME}}}}',
 'siteuser'         => '{{SITENAME}} usor $1',
 'lastmodifiedatby' => 'Ultima mutatio: $2, $1 ab $3.', # $1 date, $2 time, $3 user
-'and'              => 'et',
 
 # Spam protection
 'subcategorycount'     => 'Huic categoriae {{PLURAL:$1|est una subcategoria|sunt $1 subcategoriae}}.',
@@ -1426,11 +1428,10 @@ Quaesumus, adfirma ut iterum hanc paginam crees.",
 'articletitles' => "Paginae ab ''$1''",
 
 # Multipage image navigation
-'imgmultipageprev'   => '← pagina superior',
-'imgmultipagenext'   => 'pagina proxima →',
-'imgmultigo'         => 'I!',
-'imgmultigotopre'    => 'Ire ad paginam',
-'imgmultiparseerror' => 'Imago corrupta vel invalida videtur, ergo {{SITENAME}} indicem paginarum extrahere non potest.',
+'imgmultipageprev' => '← pagina superior',
+'imgmultipagenext' => 'pagina proxima →',
+'imgmultigo'       => 'I!',
+'imgmultigotopre'  => 'Ire ad paginam',
 
 # Table pager
 'table_pager_next'         => 'Pagina proxima',
@@ -1456,11 +1457,22 @@ Quaesumus, adfirma ut iterum hanc paginam crees.",
 'livepreview-ready'   => 'Onerans… Factum!',
 
 # Watchlist editor
-'watchlistedit-raw-titles' => 'Tituli:',
+'watchlistedit-normal-title'  => 'Indicem paginarum custoditarum recensere',
+'watchlistedit-normal-submit' => 'Removere titulos',
+'watchlistedit-raw-titles'    => 'Tituli:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Mutationes paginarum custoditarum monstrare',
 'watchlisttools-edit' => 'Indicem paginarum custoditarum inspicere vel recensere',
 'watchlisttools-raw'  => 'Indicem paginarum custoditarum quasi textum inspicere vel recensere',
+
+# Special:Version
+'version-specialpages' => 'Paginae speciales',
+'version-other'        => 'Alia',
+'version-version'      => 'Versio',
+
+# Special:Filepath
+'filepath'      => 'Fasciculorum inscriptio',
+'filepath-page' => 'Fasciculus:',
 
 );

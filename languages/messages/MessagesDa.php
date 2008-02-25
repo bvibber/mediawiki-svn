@@ -7,6 +7,8 @@
  * @author Anders Wegge Jakobsen <awegge@gmail.com>
  * @author Morten LJ
  * @author Max sonnelid
+ * @author Jon Harald Søby
+ * @author M.M.S.
  */
 
 $namespaceNames = array(
@@ -271,6 +273,7 @@ $messages = array(
 'mytalk'         => 'Min diskussion',
 'anontalk'       => 'Diskussionsside for denne IP-adresse',
 'navigation'     => 'Navigation',
+'and'            => 'og',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -515,7 +518,7 @@ Det kan også bruges til at fremsende en ny adgangskode til dig, hvis du glemmer
 'loginsuccesstitle'          => 'Du er nu logget på',
 'loginsuccess'               => 'Du er nu logget på {{SITENAME}} som "$1".',
 'nosuchuser'                 => 'Der er ingen bruger med navnet "$1". Kontrollér stavemåden igen, eller brug formularen herunder til at oprette en ny brugerkonto.',
-'nosuchusershort'            => 'Der er ingen bruger ved navn "$1". Tjek din stavning.',
+'nosuchusershort'            => 'Der er ingen bruger ved navn "<nowiki>$1</nowiki>". Tjek din stavning.',
 'nouserspecified'            => 'Angiv venligst et brugernavn.',
 'wrongpassword'              => 'Den indtastede adgangskode var forkert. Prøv igen.',
 'wrongpasswordempty'         => 'Du glemte at indtaste password. Prøv igen.',
@@ -1147,17 +1150,18 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'filerevert-badversion'     => 'Der findes ingen lokal udgave af denne fil med det opgivne tidsstempel.',
 
 # File deletion
-'filedelete'             => 'Slet $1',
-'filedelete-legend'      => 'Slet fil',
-'filedelete-intro'       => "Du er ved at slette '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'   => '<span class="plainlinks">Du er ved at slette en tidligere version af \'\'\'[[Media:$1|$1]]\'\'\' fra [$4 $2, $3].</span>',
-'filedelete-comment'     => 'Kommentar:',
-'filedelete-submit'      => 'Slet',
-'filedelete-success'     => "'''$1''' er blevet slettet.",
-'filedelete-success-old' => '<span class="plainlinks">En gamllem version af \'\'\'[[Media:$1|$1]]\'\'\' fra $2, $3 er blevet slettet.</span>',
-'filedelete-nofile'      => "'''$1''' findes ikke på dette websted.",
-'filedelete-nofile-old'  => "Der findes ikke en version af '''$1''' fra $2, $3.",
-'filedelete-iscurrent'   => 'Du har forsøgt at slette den nyeste version. Gendan en tidligere udgave først.',
+'filedelete'                  => 'Slet $1',
+'filedelete-legend'           => 'Slet fil',
+'filedelete-intro'            => "Du er ved at slette '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'        => '<span class="plainlinks">Du er ved at slette en tidligere version af \'\'\'[[Media:$1|$1]]\'\'\' fra [$4 $2, $3].</span>',
+'filedelete-comment'          => 'Kommentar:',
+'filedelete-submit'           => 'Slet',
+'filedelete-success'          => "'''$1''' er blevet slettet.",
+'filedelete-success-old'      => '<span class="plainlinks">En gamllem version af \'\'\'[[Media:$1|$1]]\'\'\' fra $2, $3 er blevet slettet.</span>',
+'filedelete-nofile'           => "'''$1''' findes ikke på dette websted.",
+'filedelete-nofile-old'       => "Der findes ikke en version af '''$1''' fra $2, $3.",
+'filedelete-iscurrent'        => 'Du har forsøgt at slette den nyeste version. Gendan en tidligere udgave først.',
+'filedelete-reason-otherlist' => 'Anden grund',
 
 # MIME search
 'mimesearch'         => 'Søge efter MIME-type',
@@ -1377,9 +1381,9 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'watchnologin'         => 'Ikke logget på',
 'watchnologintext'     => 'Du skal være [[Special:Userlogin|logget på]] for at kunne ændre din overvågningsliste.',
 'addedwatch'           => 'Tilføjet til din overvågningsliste',
-'addedwatchtext'       => "Siden \"\$1\" er blevet tilføjet til din [[Special:Watchlist|overvågningsliste]]. Fremtidige ændringer til denne side og den tilhørende diskussionsside vil blive listet der, og siden vil fremstå '''fremhævet''' i [[Special:Recentchanges|listen med de seneste ændringer]] for at gøre det lettere at finde den. Hvis du senere vil fjerne siden fra din overvågningsliste, så klik \"Fjern overvågning\".",
+'addedwatchtext'       => "Siden \"<nowiki>\$1</nowiki>\" er blevet tilføjet til din [[Special:Watchlist|overvågningsliste]]. Fremtidige ændringer til denne side og den tilhørende diskussionsside vil blive listet der, og siden vil fremstå '''fremhævet''' i [[Special:Recentchanges|listen med de seneste ændringer]] for at gøre det lettere at finde den. Hvis du senere vil fjerne siden fra din overvågningsliste, så klik \"Fjern overvågning\".",
 'removedwatch'         => 'Fjernet fra overvågningsliste',
-'removedwatchtext'     => 'Siden "$1" er blevet fjernet fra din overvågningsliste.',
+'removedwatchtext'     => 'Siden "<nowiki>$1</nowiki>" er blevet fjernet fra din overvågningsliste.',
 'watch'                => 'Overvåg',
 'watchthispage'        => 'Overvåg side',
 'unwatch'              => 'Fjern overvågning',
@@ -1444,14 +1448,14 @@ Tilbagemelding og yderligere hjælp:
 'excontentauthor'             => "indholdet var: '$1' (og den eneste forfatter var '$2')",
 'exbeforeblank'               => "indholdet før siden blev tømt var: '$1'",
 'exblank'                     => 'siden var tom',
-'confirmdelete'               => 'Bekræft sletning',
-'deletesub'                   => '(Sletter "$1")',
+'delete-confirm'              => 'Slet «$1»',
+'delete-legend'               => 'Slet',
 'historywarning'              => 'Advarsel: Siden du er ved at slette har en historie:',
 'confirmdeletetext'           => 'Du er ved permanent at slette en side
 eller et billede sammen med hele den tilhørende historie fra databasen. Bekræft venligst at du virkelig vil gøre dette, at du forstår konsekvenserne, og at du gør dette i overensstemmelse med
 [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Gennemført',
-'deletedtext'                 => '"$1" er slettet. Se $2 for en fortegnelse over de nyeste sletninger.',
+'deletedtext'                 => '"<nowiki>$1</nowiki>" er slettet. Se $2 for en fortegnelse over de nyeste sletninger.',
 'deletedarticle'              => 'slettede "$1"',
 'dellogpage'                  => 'Sletningslog',
 'dellogpagetext'              => 'Herunder vises de nyeste sletninger. Alle tider er serverens tid (UTC).',
@@ -1490,7 +1494,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'protect_expiry_old'          => 'Udløbstiden ligger i fortiden.',
 'unprotectsub'                => '(Fjern beskyttelse af "$1")',
 'protect-unchain'             => 'Ændre flytningsbeskyttelse',
-'protect-text'                => "Her kan beskyttelsesstatus for siden '''$1''' ses og ændres.",
+'protect-text'                => "Her kan beskyttelsesstatus for siden '''<nowiki>$1</nowiki>''' ses og ændres.",
 'protect-locked-blocked'      => 'Du kan ikke ændre sidens status, da din brugerkonto er spærret. Her er de aktuelle beskyttelsesindstillinger for siden <strong>„$1“:</strong>',
 'protect-locked-dblock'       => 'Databasen er spærret, sidebeskyttelsen kan derfor ikke ændres. her er de aktuelle beskyttelsesindstillinger for siden <strong>„$1“:</strong>',
 'protect-locked-access'       => 'Den brugerkonto har ikke de nødvendige rettigheder til at ændre sidebeskyttelsen. Her er de aktuelle beskyttelsesindstillinger for siden <strong>„$1“:</strong>',
@@ -1543,6 +1547,7 @@ Den aktuelle tekst for den slettede side er kun tilgængelig for administratorer
 'undeleterevision-missing'     => 'Ugyldig eller manglende version. Enten er henvisningen forkert eller versionen blev fjernet eller gendannet fra arkivet.',
 'undelete-nodiff'              => 'Der findes ingen tidligere version.',
 'undeletebtn'                  => 'Gendan!',
+'undeletelink'                 => 'gendan',
 'undeletereset'                => 'Afbryde',
 'undeletecomment'              => 'Begrundelse:',
 'undeletedarticle'             => 'gendannede "$1"',
@@ -1579,7 +1584,7 @@ $1',
 'nocontribs'    => 'Ingen ændringer er fundet som opfylder disse kriterier.',
 'ucnote'        => 'Herunder er denne brugers sidste <b>$1</b> ændringer i de sidste <b>$2</b> dage.',
 'uclinks'       => 'Vis de sidste $1 ændringer; vis de sidste $2 dage.',
-'uctop'         => ' (seneste)',
+'uctop'         => '(seneste)',
 'month'         => 'Måned:',
 'year'          => 'År:',
 
@@ -1772,7 +1777,6 @@ Artiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads til f
 
 # Thumbnails
 'thumbnail-more'           => 'Forstør',
-'missingimage'             => '<b>Mangler billede</b><br /><i>$1</i>',
 'filemissing'              => 'Filen mangler',
 'thumbnail_error'          => 'Fejl ved oprettelse af thumbnail: $1',
 'djvu_page_error'          => 'DjVu-side udenfor sideområdet',
@@ -1893,7 +1897,6 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'anonymous'        => 'Anonym(e) bruger(e) af {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} bruger $1',
 'lastmodifiedatby' => 'Denne side blev senest ændret $2, $1 af $3.', # $1 date, $2 time, $3 user
-'and'              => 'og',
 'othercontribs'    => 'Baseret på arbejde af $1.',
 'others'           => 'andre',
 'siteusers'        => '{{SITENAME}} bruger(e) $1',
@@ -2329,11 +2332,10 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'useajaxsearch'    => 'Brug AJAX-søgning',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← forrige side',
-'imgmultipagenext'   => 'næste side →',
-'imgmultigo'         => 'OK',
-'imgmultigotopre'    => 'Gå til side',
-'imgmultiparseerror' => 'Filen er tilsyneladende defekt, så {{SITENAME}} ikke kan oprette en sideliste.',
+'imgmultipageprev' => '← forrige side',
+'imgmultipagenext' => 'næste side →',
+'imgmultigo'       => 'OK',
+'imgmultigotopre'  => 'Gå til side',
 
 # Table pager
 'ascending_abbrev'         => 'op',
@@ -2386,5 +2388,18 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 
 # Core parser functions
 'unknown_extension_tag' => 'Ukendt extension-tag: $1',
+
+# Special:Version
+'version-specialpages'     => 'Specielle sider',
+'version-other'            => 'Andre',
+'version-version'          => 'Version',
+'version-license'          => 'Licens',
+'version-software-product' => 'Produkt',
+'version-software-version' => 'Version',
+
+# Special:Filepath
+'filepath'        => 'Filsti',
+'filepath-page'   => 'Fil:',
+'filepath-submit' => 'Sti',
 
 );

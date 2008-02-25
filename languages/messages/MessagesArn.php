@@ -4,6 +4,7 @@
  * @addtogroup Language
  *
  * @author Lin linao
+ * @author Poquil
  */
 
 $fallback = 'es';
@@ -64,11 +65,15 @@ $messages = array(
 'nov'           => 'konlu nofiempüre küyeṉ mew',
 'dec'           => 'konlu disiempüre küyeṉ mew',
 
-'qbfind' => 'Kintun',
-'qbedit' => 'Welukan',
-'mytalk' => 'Tañi nütramkawe',
+'qbfind'      => 'Kintun',
+'qbedit'      => 'Welukan',
+'qbmyoptions' => 'tañi nütramkawe',
+'mypage'      => 'tañi nütramkawe',
+'mytalk'      => 'Tañi nütramkawe',
+'and'         => 'ka',
 
 'returnto'         => 'Wüñonge $1 püle.',
+'tagline'          => '{{SITENAME}} mew',
 'help'             => 'Kellu',
 'search'           => 'Kintun',
 'searchbutton'     => 'Kintun',
@@ -78,8 +83,16 @@ $messages = array(
 'history_short'    => 'Pünon',
 'edit'             => 'Welukan',
 'talkpagelinktext' => 'Nütramkawe',
+'articlepage'      => 'adkintun artículo',
 'talk'             => 'Nütramkawe',
 'toolbox'          => 'Küdawpeyüm',
+'userpage'         => 'adkintun página de usuario',
+'projectpage'      => 'adkintun página meta',
+'imagepage'        => 'adkintun página de imagen',
+'mediawikipage'    => 'adkintun página de mensaje',
+'templatepage'     => 'adkintun página de plantilla',
+'viewhelppage'     => 'adkintun página de ayuda',
+'categorypage'     => 'adkintun página de categoría',
 'viewtalkpage'     => 'Pen ti nütramkawe',
 'otherlanguages'   => 'Kake dungun',
 'jumpto'           => 'Amun:',
@@ -98,7 +111,7 @@ $messages = array(
 'hidetoc'                 => 'ellkan',
 'viewdeleted'             => 'Küpaadkintuymi $1 am?',
 
-# Short words for each namespace, by default used in the 'article' tab in monobook
+# Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-user'      => 'Lludüchi',
 'nstab-special'   => 'Kangelu',
 'nstab-mediawiki' => 'Dungu',
@@ -221,9 +234,6 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-mytalk' => 'Tañi nütramkawe',
 'tooltip-pt-logout' => 'Tripan',
-
-# Attribution
-'and' => 'ka',
 
 # Spam protection
 'listingcontinuesabbrev' => 'ramt.',

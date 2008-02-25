@@ -510,6 +510,7 @@ $messages = array(
 'mytalk'         => 'Талқылауым',
 'anontalk'       => 'IP талқылауы',
 'navigation'     => 'Бағыттау',
+'and'            => 'және',
 
 # Metadata in edit box
 'metadata_help' => 'Қосымша деректер:',
@@ -769,7 +770,7 @@ $2',
 'loginsuccesstitle'          => 'Кіруіңіз сәтті өтті',
 'loginsuccess'               => "'''Сіз енді {{SITENAME}} жобасына «$1» ретінде кіріп отырсыз.'''",
 'nosuchuser'                 => 'Мында «$1» атаулы қатысушы жоқ. Емлеңізді тексеріңіз, немесе жаңадан тіркеліңіз.',
-'nosuchusershort'            => 'Мында «$1» атаулы қатысушы жоқ. Емлеңізді тексеріңіз.',
+'nosuchusershort'            => 'Мында «<nowiki>$1</nowiki>» атаулы қатысушы жоқ. Емлеңізді тексеріңіз.',
 'nouserspecified'            => 'Қатысушы атын енгізіуіңіз керек.',
 'wrongpassword'              => 'Бұрыс құпия сөз енгізілген. Қайта байқап көріңіз.',
 'wrongpasswordempty'         => 'Құпия сөз бос болған. Қайта байқап көріңіз.',
@@ -1496,9 +1497,9 @@ $3 келтірілген себебі: ''$2''",
 'brokenredirects-edit'   => '(өңдеу)',
 'brokenredirects-delete' => '(жою)',
 
-'withoutinterwiki'         => 'Еш тілге сілтeмеген беттер',
-'withoutinterwiki-header'  => 'Келесі беттер басқа тілдерге сілтемейді:',
-'withoutinterwiki-submit'  => 'Көрсет',
+'withoutinterwiki'        => 'Еш тілге сілтeмеген беттер',
+'withoutinterwiki-header' => 'Келесі беттер басқа тілдерге сілтемейді:',
+'withoutinterwiki-submit' => 'Көрсет',
 
 'fewestrevisions' => 'Ең аз түзетілген беттер',
 
@@ -1719,7 +1720,7 @@ $NEWPAGE
 'confirmdeletetext'           => 'Бетті немесе суретті барлық тарихымен бірге дерекқордан әрдайым жойығыңыз келетін сияқты.
 Бұны жоюдың зардабын түсініп шын ниеттенгеніңізді, және [[{{{{ns:mediawiki}}:Policy-url}}]] дегенге лайықты деп сенгеніңізді құптаңыз.',
 'actioncomplete'              => 'Әрекет бітті',
-'deletedtext'                 => '«$1» жойылды. Жуықтағы жоюлар туралы жазбаларын $2 дегеннен қараңыз.',
+'deletedtext'                 => '«<nowiki>$1</nowiki>» жойылды. Жуықтағы жоюлар туралы жазбаларын $2 дегеннен қараңыз.',
 'deletedarticle'              => '«[[$1]]» бетін жойды',
 'dellogpage'                  => 'Жою_журналы',
 'dellogpagetext'              => 'Төменде жуықтағы жоюлардың тізімі берілген.',
@@ -1761,7 +1762,7 @@ $NEWPAGE
 'protect_expiry_old'          => 'Бітетін уақыты өтіп кеткен.',
 'unprotectsub'                => '(«$1» қорғамауда)',
 'protect-unchain'             => 'Жылжыту рұқсаттарын беру',
-'protect-text'                => '<strong>$1</strong> бетінің қорғау деңгейін қарап және өзгертіп шыға аласыз.',
+'protect-text'                => '<strong><nowiki>$1</nowiki></strong> бетінің қорғау деңгейін қарап және өзгертіп шыға аласыз.',
 'protect-locked-blocked'      => 'Бұғаттауыңыз өшірілгенше дейін қорғау деңгейін өзгерте алмайсыз.
 Мына <strong>$1</strong> беттің ағымдық баптаулары:',
 'protect-locked-dblock'       => 'Дерекқордың құлыптауы белсенді болғандықтан қорғау деңгейлері өзгертілмейді.
@@ -2083,7 +2084,6 @@ $1',
 
 # Thumbnails
 'thumbnail-more'           => 'Үлкейту',
-'missingimage'             => '<b>Жоғалған сурет </b><br /><i>$1</i>',
 'filemissing'              => 'Жоғалған файл',
 'thumbnail_error'          => 'Нобай жаратылу қатесі: $1',
 'djvu_page_error'          => 'DjVu беті мүмкінді аумақтың сыртындда',
@@ -2200,7 +2200,6 @@ $1',
 'anonymous'        => '{{SITENAME}} тіркелгісіз қатысушы(лары)',
 'siteuser'         => '{{SITENAME}} қатысушы $1',
 'lastmodifiedatby' => 'Бұл бетті $3 қатысушы соңғы өзгерткен кезі: $2, $1.', # $1 date, $2 time, $3 user
-'and'              => 'және',
 'othercontribs'    => 'Шығарма негізін $1 жазған.',
 'others'           => 'басқалар',
 'siteusers'        => '{{SITENAME}} қатысушы(лар) $1',
@@ -2655,11 +2654,10 @@ $1',
 'comma-separator'     => ',&#32;',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← алдыңғы бетке',
-'imgmultipagenext'   => 'келесі бетке →',
-'imgmultigo'         => 'Өт!',
-'imgmultigotopre'    => 'Мына бетке өту',
-'imgmultiparseerror' => 'Сурет файлы қираған не бұрыс сияқты, сондықтан {{SITENAME}} бет тізімін келтіре алмайды.',
+'imgmultipageprev' => '← алдыңғы бетке',
+'imgmultipagenext' => 'келесі бетке →',
+'imgmultigo'       => 'Өт!',
+'imgmultigotopre'  => 'Мына бетке өту',
 
 # Table pager
 'ascending_abbrev'         => 'өсу',
@@ -2762,5 +2760,13 @@ $1',
 
 # Core parser functions
 'unknown_extension_tag' => 'Танылмаған кеңейтпе белгісі «$1»',
+
+# Special:Filepath
+'filepath'         => 'Файл орналасуы ',
+'filepath-page'    => 'Файл аты:',
+'filepath-submit'  => 'Орналасуын табу ',
+'filepath-summary' => 'Бұл арнайы бет файл орналасуы толық жолын қайтарады. Суреттер толық ажыратылымдығымен көрсетіледі, басқа файл түрлеріне қатысты бағдарламасы тура жегіледі.
+
+Файл атауын «{{ns:image}}:» деген бастауышсыз еңгізіңіз.',
 
 );

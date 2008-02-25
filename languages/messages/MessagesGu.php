@@ -92,6 +92,7 @@ $messages = array(
 'mypage'        => 'મારું પાનું',
 'mytalk'        => 'મારી ચર્ચા',
 'navigation'    => 'પ્રદક્ષિણા',
+'and'           => 'અને',
 
 'tagline'          => '{{SITENAME}} થી',
 'help'             => 'મદદ',
@@ -159,7 +160,7 @@ $messages = array(
 'createaccount'   => 'ખાતું સર્જન કરવું',
 'yourrealname'    => 'સાચું નામ:',
 'yourlanguage'    => 'ભાષા',
-'nosuchusershort' => '"$1" નામનું કોઈ નથી. તમારી જોડણી તપાસ કરો.',
+'nosuchusershort' => '"<nowiki>$1</nowiki>" નામનું કોઈ નથી. તમારી જોડણી તપાસ કરો.',
 'accountcreated'  => 'સર્જન કરેલું ખાતું',
 
 # Edit pages
@@ -353,9 +354,6 @@ $messages = array(
 'tooltip-n-recentchanges' => 'વિકિ માં હાલમા થયેલા ફેરફારો ની સૂચિ.',
 'tooltip-n-sitesupport'   => 'અમારું સમર્થન કરો',
 'tooltip-t-specialpages'  => 'ખાસ પાનાંઓની સૂચિ',
-
-# Attribution
-'and' => 'અને',
 
 # Info page
 'infosubtitle' => 'પાના વિષે માહિતી',

@@ -268,7 +268,12 @@ class Title {
 	 * @return Title the new object
 	 */
 	public static function newMainPage() {
-		return Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		$title = Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		// Don't give fatal errors if the message is broken
+		if ( !$title ) {
+			$title = Title::newFromText( 'Main Page' );
+		}
+		return $title;
 	}
 
 	/**
@@ -1190,7 +1195,7 @@ class Title {
 		foreach( $this->getRestrictions($action) as $right ) {
 			// Backwards compatibility, rewrite sysop -> protect
 			if ( $right == 'sysop' ) {
-				$right = 'protect';
+				$right = 'editprotected';
 			}
 			if( '' != $right && !$user->isAllowed( $right ) ) {
 				$errors[] = array( 'protectedpagetext', $right );
@@ -2032,7 +2037,9 @@ class Title {
 		       strpos( $dbkey, './' ) === 0  ||
 		       strpos( $dbkey, '../' ) === 0 ||
 		       strpos( $dbkey, '/./' ) !== false ||
-		       strpos( $dbkey, '/../' ) !== false ) )
+		       strpos( $dbkey, '/../' ) !== false  ||
+		       substr( $dbkey, -2 ) == '/.' ||
+		       substr( $dbkey, -3 ) == '/..' ) )
 		{
 			return false;
 		}
@@ -2425,6 +2432,8 @@ class Title {
 		# Update message cache for interface messages
 		if( $nt->getNamespace() == NS_MEDIAWIKI ) {
 			global $wgMessageCache;
+			$oldarticle = new Article( $this );
+			$wgMessageCache->replace( $this->getDBkey(), $oldarticle->getContent() );
 			$newarticle = new Article( $nt );
 			$wgMessageCache->replace( $nt->getDBkey(), $newarticle->getContent() );
 		}
@@ -2457,13 +2466,25 @@ class Title {
 		$newid = $nt->getArticleID();
 		$oldid = $this->getArticleID();
 		$dbw = wfGetDB( DB_MASTER );
-		$linkCache =& LinkCache::singleton();
 
 		# Delete the old redirect. We don't save it to history since
 		# by definition if we've got here it's rather uninteresting.
 		# We have to remove it so that the next step doesn't trigger
 		# a conflict on the unique namespace+title index...
 		$dbw->delete( 'page', array( 'page_id' => $newid ), $fname );
+		if ( !$dbw->cascadingDeletes() ) {
+			$dbw->delete( 'revision', array( 'rev_page' => $newid ), __METHOD__ );
+			global $wgUseTrackbacks;
+			if ($wgUseTrackbacks)
+				$dbw->delete( 'trackbacks', array( 'tb_page' => $newid ), __METHOD__ );
+			$dbw->delete( 'pagelinks', array( 'pl_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'imagelinks', array( 'il_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'categorylinks', array( 'cl_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'templatelinks', array( 'tl_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'externallinks', array( 'el_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'langlinks', array( 'll_from' => $newid ), __METHOD__ );
+			$dbw->delete( 'redirect', array( 'rd_from' => $newid ), __METHOD__ );
+		}
 
 		# Save a null revision in the page's history notifying of the move
 		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
@@ -2480,7 +2501,7 @@ class Title {
 			/* WHERE */ array( 'page_id' => $oldid ),
 			$fname
 		);
-		$linkCache->clearLink( $nt->getPrefixedDBkey() );
+		$nt->resetArticleID( $oldid );
 
 		# Recreate the redirect, this time in the other direction.
 		if($createRedirect || !$wgUser->isAllowed('suppressredirect'))
@@ -2495,7 +2516,6 @@ class Title {
 				'text'    => $redirectText ) );
 			$redirectRevision->insertOn( $dbw );
 			$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
-			$linkCache->clearLink( $this->getPrefixedDBkey() );
 
 			# Now, we record the link from the redirect to the new title.
 			# It should have no other outgoing links...
@@ -2506,6 +2526,8 @@ class Title {
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
 				$fname );
+		} else {
+			$this->resetArticleID( 0 );
 		}
 		
 		# Log the move
@@ -2539,13 +2561,12 @@ class Title {
 		$oldid = $this->getArticleID();
 		$dbw = wfGetDB( DB_MASTER );
 		$now = $dbw->timestamp();
-		$linkCache =& LinkCache::singleton();
 
 		# Save a null revision in the page's history notifying of the move
 		$nullRevision = Revision::newNullRevision( $dbw, $oldid, $comment, true );
 		$nullRevId = $nullRevision->insertOn( $dbw );
 
-		# Rename cur entry
+		# Rename page entry
 		$dbw->update( 'page',
 			/* SET */ array(
 				'page_touched'   => $now,
@@ -2556,8 +2577,7 @@ class Title {
 			/* WHERE */ array( 'page_id' => $oldid ),
 			$fname
 		);
-
-		$linkCache->clearLink( $nt->getPrefixedDBkey() );
+		$nt->resetArticleID( $oldid );
 
 		if($createRedirect || !$wgUser->isAllowed('suppressredirect'))
 		{
@@ -2572,7 +2592,7 @@ class Title {
 				'text'    => $redirectText ) );
 			$redirectRevision->insertOn( $dbw );
 			$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
-			$linkCache->clearLink( $this->getPrefixedDBkey() );
+
 			# Record the just-created redirect's linking to the page
 			$dbw->insert( 'pagelinks',
 				array(
@@ -2580,6 +2600,8 @@ class Title {
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
 				$fname );
+		} else {
+			$this->resetArticleID( 0 );
 		}
 
 		# Log the move

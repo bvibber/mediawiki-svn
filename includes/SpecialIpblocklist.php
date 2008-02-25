@@ -80,7 +80,7 @@ class IPUnblockForm {
 		global $wgOut, $wgUser, $wgSysopUserBans, $wgContLang;
 
 		$wgOut->setPagetitle( wfMsg( 'unblockip' ) );
-		$wgOut->addWikiText( wfMsg( 'unblockiptext' ) );
+		$wgOut->addWikiMsg( 'unblockiptext' );
 
 		$ipa = wfMsgHtml( $wgSysopUserBans ? 'ipadressorusername' : 'ipaddress' );
 		$ipr = wfMsgHtml( 'ipbreason' );
@@ -91,7 +91,7 @@ class IPUnblockForm {
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
-			$wgOut->addWikitext( "<span class='error'>{$err}</span>\n" );
+			$wgOut->addWikiText( "<span class='error'>{$err}</span>\n" );
 		}
 		$token = htmlspecialchars( $wgUser->editToken() );
 
@@ -263,9 +263,9 @@ class IPUnblockForm {
 			);
 		} elseif ( $this->ip != '') {
 			$wgOut->addHTML( $this->searchForm() );
-			$wgOut->addWikiText( wfMsg( 'ipblocklist-no-results' ) );
+			$wgOut->addWikiMsg( 'ipblocklist-no-results' );
 		} else {
-			$wgOut->addWikiText( wfMsg( 'ipblocklist-empty' ) );
+			$wgOut->addWikiMsg( 'ipblocklist-empty' );
 		}
 	}
 
@@ -393,7 +393,7 @@ class IPBlocklistPager extends ReverseChronologicalPager {
 		# Usernames and titles are in fact related by a simple substitution of space -> underscore
 		# The last few lines of Title::secureAndSplit() tell the story.
 		while ( $row = $this->mResult->fetchObject() ) {
-			$name = str_replace( ' ', '_', $row->user_name );
+			$name = str_replace( ' ', '_', $row->ipb_by_text );
 			$lb->add( NS_USER, $name );
 			$lb->add( NS_USER_TALK, $name );
 			$name = str_replace( ' ', '_', $row->ipb_address );
@@ -414,10 +414,9 @@ class IPBlocklistPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		$conds = $this->mConds;
 		$conds[] = 'ipb_expiry>' . $this->mDb->addQuotes( $this->mDb->timestamp() );
-		$conds[] = 'ipb_by=user_id';
 		return array(
-			'tables' => array( 'ipblocks', 'user' ),
-			'fields' => $this->mDb->tableName( 'ipblocks' ) . '.*,user_name',
+			'tables' => 'ipblocks',
+			'fields' => '*',
 			'conds' => $conds,
 		);
 	}

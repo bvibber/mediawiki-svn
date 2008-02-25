@@ -6,6 +6,7 @@
  * @author SPQRobin
  * @author Siebrand
  * @author Max sonnelid
+ * @author M.M.S.
  */
 
 
@@ -15,39 +16,49 @@ $messages = array(
 'tog-rememberpassword' => 'ᐃᖅᑑ ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ ᖃᑯᒍᖅ ᐊᑐᐃᓐᓇᓯᕗᖅ ᐅᕙᓗᒪᔪᖅ ᖃᕆᑕᐅᔭᖅ',
 
 # Dates
-'sunday'       => 'ᓴᓇᑦᑕᐃᓕ',
-'monday'       => 'ᓇᒡᒐᔭᖅ',
-'wednesday'    => 'ᐱᖓᔪᐊ',
-'friday'       => 'ᐸᒐᐃᑖᒃ',
-'sun'          => 'ᓴᓇ',
-'mon'          => 'ᓇᒡ',
-'wed'          => 'ᐱᖓ',
-'january'      => 'ᔭᓐᓄᐊᓕ',
-'february'     => 'ᕕᐳᐊᕆ',
-'march'        => 'ᒫᕐᓯ',
-'april'        => 'ᐊᐃᐳᕆᓪ',
-'may_long'     => 'ᒪᐃ',
-'june'         => 'ᔪᓂ',
-'july'         => 'ᔪᓚᐃ',
-'august'       => 'ᐊᐅᒍᔅ',
-'october'      => 'ᐅᒃᑐᐳᕆ',
-'november'     => 'ᓄᕕᒻᐳᕆ',
-'december'     => 'ᑎᓯᒻᐳᕆ',
-'january-gen'  => 'ᔭᓐᓄᐊᓕ',
-'february-gen' => 'ᕕᐳᐊᕆ',
-'march-gen'    => 'ᒫᕐᓯ',
-'april-gen'    => 'ᐊᐃᐳᕆᓪ',
-'may-gen'      => 'ᒪᐃ',
-'june-gen'     => 'ᔪᓂ',
-'july-gen'     => 'ᔪᓚᐃ',
-'august-gen'   => 'ᐊᐅᒍᔅ',
-'october-gen'  => 'ᐅᒃᑐᐳᕆ',
-'november-gen' => 'ᓄᕕᒻᐳᕆ',
-'december-gen' => 'ᑎᓯᒻᐳᕆ',
-'apr'          => 'ᐊᐃᐳ',
-'may'          => 'ᒪᐃ',
-'aug'          => 'ᐊᐅᒍ',
-'nov'          => 'ᓄᕕ',
+'sunday'        => 'ᓴᓇᑦᑕᐃᓕ',
+'monday'        => 'ᓇᒡᒐᔭᖅ',
+'wednesday'     => 'ᐱᖓᔪᐊ',
+'friday'        => 'ᐸᒐᐃᑖᒃ',
+'sun'           => 'ᓴᓇ',
+'mon'           => 'ᓇᒡ',
+'wed'           => 'ᐱᖓ',
+'january'       => 'ᔭᓐᓄᐊᓕ',
+'february'      => 'ᕕᐳᐊᕆ',
+'march'         => 'ᒫᕐᓯ',
+'april'         => 'ᐊᐃᐳᕆᓪ',
+'may_long'      => 'ᒪᐃ',
+'june'          => 'ᔪᓂ',
+'july'          => 'ᔪᓚᐃ',
+'august'        => 'ᐊᐅᒍᔅ',
+'september'     => 'ᓯᑎᒻᐳᕆ',
+'october'       => 'ᐅᒃᑐᐳᕆ',
+'november'      => 'ᓄᕕᒻᐳᕆ',
+'december'      => 'ᑎᓯᒻᐳᕆ',
+'january-gen'   => 'ᔭᓐᓄᐊᓕ',
+'february-gen'  => 'ᕕᐳᐊᕆ',
+'march-gen'     => 'ᒫᕐᓯ',
+'april-gen'     => 'ᐊᐃᐳᕆᓪ',
+'may-gen'       => 'ᒪᐃ',
+'june-gen'      => 'ᔪᓂ',
+'july-gen'      => 'ᔪᓚᐃ',
+'august-gen'    => 'ᐊᐅᒍᔅ',
+'september-gen' => 'ᓯᑎᒻᐳᕆ',
+'october-gen'   => 'ᐅᒃᑐᐳᕆ',
+'november-gen'  => 'ᓄᕕᒻᐳᕆ',
+'december-gen'  => 'ᑎᓯᒻᐳᕆ',
+'jan'           => 'ᔭᓐᓄ',
+'feb'           => 'ᕕᐳᐊ',
+'mar'           => 'ᓇᑦᓯ',
+'apr'           => 'ᐊᐃᐳ',
+'may'           => 'ᒪᐃ',
+'jun'           => 'ᔪᓂ',
+'jul'           => 'ᔪᓚᐃ',
+'aug'           => 'ᐊᐅᒍ',
+'sep'           => 'ᓯᑎᒻ',
+'oct'           => 'ᐅᒃᑐ',
+'nov'           => 'ᓄᕕ',
+'dec'           => 'ᑎᓯᒻ',
 
 # Bits of text used by many pages
 'categories' => 'ᓄᐊᑉᐳᑦ',
@@ -56,12 +67,15 @@ $messages = array(
 'article'        => 'ᐃᓗᓕᒃ ᒪᑉᐱᑕᖅ',
 'newwindow'      => '(ᐅᐃᑦᑐᖅ ᖃᕋᓴᐅᔭᖅ ᐃᑭᐊᖅ ᐱᒋᕗᖅ ᐃᒐᓛᖅ)',
 'cancel'         => 'ᐃᓂᖅᑎᐹ',
+'qbedit'         => 'ᓱᖁᓯᖅᐹ',
 'qbspecialpages' => 'ᐱᔨ ᒪᑉᐱᑕᖅ',
 'moredotdotdot'  => 'ᐱᓪᓗᐊᕆᕚ...',
 'mypage'         => 'ᐊᒥ ᒪᑉᐱᑕᖅ',
 'mytalk'         => 'ᐊᓪᓚᖁᑎᒃᑲ',
 'navigation'     => 'ᒥᐊᓂᕆᕚ',
+'and'            => 'ᐊᒻᒪ',
 
+'errorpagetitle'    => 'ᑕᒻᒪᓇᖅᑐᖅ',
 'help'              => 'ᖃᔭᓕᑉᐹ',
 'search'            => 'ᐃᕚᖅᐳᖅ',
 'searchbutton'      => 'ᐃᕚᖅᐳᖅ',
@@ -106,12 +120,15 @@ $messages = array(
 'editsection'         => 'ᓱᖁᓯᖅᐹ ᐃᓚ',
 'editold'             => 'ᓱᖁᓯᖅᐹ',
 'editsectionhint'     => 'ᓱᖁᓯᖅᐹ ᐃᓚᖏᐅᑎᑎᑦᓯᒍᑎ: $1',
+'showtoc'             => 'ᐊᓚᒃᑲᑎᖅᐹ',
+'hidetoc'             => 'ᐃᔨᖅᐳᖅ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ᒪᑉᐱᑕᖅ',
 'nstab-user'      => 'ᐃᓄᒃ ᒪᑉᐱᑕᖅ',
 'nstab-special'   => 'ᐱᔨ',
 'nstab-project'   => 'ᐱᓕᕆᐊᒃᓴᐃᑦ ᐱᕙᓪᓕᐊᔾᔪᑎᒃᓴᓄᑦ ᒪᑉᐱᑕᖅ',
+'nstab-image'     => 'ᐊᒋᐅᑦ',
 'nstab-mediawiki' => 'ᑭᒡᒐᐹ',
 'nstab-template'  => 'ᒥᐊᓂᕆᕚ-ᕿᔪᖁᑦ',
 'nstab-category'  => 'ᓄᐊᑉᐳᑦ',
@@ -170,6 +187,7 @@ $messages = array(
 'nextrevision'        => 'ᐱᓪᓗᐊᕆᕚ ᐱᒋᕗᖅ ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ→',
 'currentrevisionlink' => 'ᒫᓐᓇ ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ',
 'next'                => 'ᑕᒡᒐ',
+'last'                => 'ᐊᓐᓂᑐᔪᖅ',
 
 # Revision feed
 'history-feed-title'       => 'ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ ᒪᑉᐱᑕᖅ ᑭᖑᓂᑦᑎᓐᓂ',
@@ -194,7 +212,11 @@ $messages = array(
 'searchresultshead'     => 'ᐃᕚᖅᐳᖅ',
 
 # Recent changes
-'recentchanges' => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
+'recentchanges'   => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
+'hide'            => 'ᐃᔨᖅᐳᖅ',
+'show'            => 'ᐊᓚᒃᑲᑎᖅᐹ',
+'minoreditletter' => 'ᐅ',
+'newpageletter'   => 'ᐱ',
 
 # Recent changes linked
 'recentchangeslinked'          => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
@@ -315,6 +337,7 @@ $messages = array(
 '1movedto2'       => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]]',
 '1movedto2_redir' => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]] ᒥᓯᑉᐹ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',
 'movelogpage'     => 'ᐅᐊᔪᖅ ᓂᐱ',
+'movereason'      => 'ᐃᓱᒪᒃᓴᖅᓯᐅᕈᓐᓇᑦᑎᐊᕐᓂᖅ:',
 'delete_and_move' => 'ᓂᐸᖅᑎᐹ  ᐊᒻᒪ ᐅᐊᔪᖅ',
 
 # Namespace 8 related
@@ -326,6 +349,9 @@ $messages = array(
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ|ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ}} ᐃᑭᐊᖅ $2',
 
 # Tooltip help for the actions
+'tooltip-pt-mytalk'               => 'ᐊᓪᓚᖁᑎᒃᑲ',
+'tooltip-pt-preferences'          => 'ᐊᒥ ᐱᒃᑯᒪᓂᖅᐹᖅ',
+'tooltip-pt-logout'               => 'ᐊᓂᕝᕕᒃ',
 'tooltip-ca-protect'              => 'ᓴᐳᒻᒥᕚ ᒪᑉᐱᑕᖅ',
 'tooltip-search'                  => 'ᐃᕚᖅᐳᖅ {{SITENAME}}',
 'tooltip-minoredit'               => 'ᑐᐊᐸᖅ ᐊᓯᐊᙳᑐᖅ',
@@ -334,7 +360,6 @@ $messages = array(
 
 # Attribution
 'anonymous' => 'ᐃᓕᓴᕐᓇᙱᑎᑦᑐᖅ ᖃᑕᙳᑎ ᓇᑭᑦ {{SITENAME}}',
-'and'       => 'ᐊᒻᒪ',
 
 # Image deletion
 'deletedrevision' => 'ᓂᐸᖅ ᐅᑐᖃᖅ ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ $1',

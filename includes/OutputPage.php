@@ -270,23 +270,47 @@ class OutputPage {
 	/**
 	 * Add an array of categories, with names in the keys
 	 */
-	public function addCategoryLinks($categories) {
+	public function addCategoryLinks( $categories ) {
 		global $wgUser, $wgContLang;
 
-		if ( !is_array( $categories ) ) {
+		if ( !is_array( $categories ) || count( $categories ) == 0 ) {
 			return;
 		}
-		# Add the links to the link cache in a batch
+
+		# Add the links to a LinkBatch
 		$arr = array( NS_CATEGORY => $categories );
 		$lb = new LinkBatch;
 		$lb->setArray( $arr );
-		$lb->execute();
 
+		# Fetch existence plus the hiddencat property
+		$dbr = wfGetDB( DB_SLAVE );
+		$pageTable = $dbr->tableName( 'page' );
+		$where = $lb->constructSet( 'page', $dbr );
+		$propsTable = $dbr->tableName( 'page_props' );
+		$sql = "SELECT page_id, page_namespace, page_title, pp_value FROM $pageTable LEFT JOIN $propsTable " . 
+			" ON pp_propname='hiddencat' AND pp_page=page_id WHERE $where";
+		$res = $dbr->query( $sql, __METHOD__ );
+
+		# Add the results to the link cache
+		$lb->addResultToCache( LinkCache::singleton(), $res );
+
+		# Set all the values to 'normal'. This can be done with array_fill_keys in PHP 5.2.0+
+		$categories = array_combine( array_keys( $categories ),
+			array_fill( 0, count( $categories ), 'normal' ) );
+
+		# Mark hidden categories
+		foreach ( $res as $row ) {
+			if ( isset( $row->pp_value ) ) {
+				$categories[$row->page_title] = 'hidden';
+			}
+		}
+
+		# Add the remaining categories to the skin
 		$sk = $wgUser->getSkin();
-		foreach ( $categories as $category => $unused ) {
+		foreach ( $categories as $category => $type ) {
 			$title = Title::makeTitleSafe( NS_CATEGORY, $category );
 			$text = $wgContLang->convertHtml( $title->getText() );
-			$this->mCategoryLinks[] = $sk->makeLinkObj( $title, $text );
+			$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
 		}
 	}
 
@@ -389,11 +413,11 @@ class OutputPage {
 		// Versioning...
 		$this->mTemplateIds += (array)$parserOutput->mTemplateIds;
 		
-		# Display title
+		// Display title
 		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
 			$this->setPageTitle( $dt );
 
-		# Hooks registered in the object
+		// Hooks registered in the object
 		global $wgParserOutputHooks;
 		foreach ( $parserOutput->getOutputHooks() as $hookInfo ) {
 			list( $hookName, $data ) = $hookInfo;
@@ -519,25 +543,77 @@ class OutputPage {
 		return wfSetVar( $this->mEnableClientCache, $state );
 	}
 
-	function uncacheableBecauseRequestvars() {
+	function getCacheVaryCookies() {
+		global $wgCookiePrefix;
+		return array( 
+			"{$wgCookiePrefix}Token",
+			"{$wgCookiePrefix}LoggedOut",
+			session_name() );
+	}
+
+	function uncacheableBecauseRequestVars() {
 		global $wgRequest;
 		return	$wgRequest->getText('useskin', false) === false
 			&& $wgRequest->getText('uselang', false) === false;
+	}
+
+	/**
+	 * Check if the request has a cache-varying cookie header
+	 * If it does, it's very important that we don't allow public caching
+	 */
+	function haveCacheVaryCookies() {
+		global $wgRequest, $wgCookiePrefix;
+		$cookieHeader = $wgRequest->getHeader( 'cookie' );
+		if ( $cookieHeader === false ) {
+			return false;
+		}
+		$cvCookies = $this->getCacheVaryCookies();
+		foreach ( $cvCookies as $cookieName ) {
+			# Check for a simple string match, like the way squid does it
+			if ( strpos( $cookieHeader, $cookieName ) ) {
+				wfDebug( __METHOD__.": found $cookieName\n" );
+				return true;
+			}
+		}
+		wfDebug( __METHOD__.": no cache-varying cookies found\n" );
+		return false;
+	}
+
+	/** Get a complete X-Vary-Options header */
+	public function getXVO() {
+		global $wgCookiePrefix;
+		$cvCookies = $this->getCacheVaryCookies();
+		$xvo = 'X-Vary-Options: Accept-Encoding;list-contains=gzip,Cookie;';
+		$first = true;
+		foreach ( $cvCookies as $cookieName ) {
+			if ( $first ) {
+				$first = false;
+			} else {
+				$xvo .= ';';
+			}
+			$xvo .= 'string-contains=' . $cookieName;
+		}
+		return $xvo;
 	}
 
 	public function sendCacheControl() {
 		global $wgUseSquid, $wgUseESI, $wgUseETag, $wgSquidMaxage, $wgRequest;
 		$fname = 'OutputPage::sendCacheControl';
 
+		$response = $wgRequest->response();
 		if ($wgUseETag && $this->mETag)
-			$wgRequest->response()->header("ETag: $this->mETag");
+			$response->header("ETag: $this->mETag");
 
 		# don't serve compressed data to clients who can't handle it
 		# maintain different caches for logged-in users and non-logged in ones
-		$wgRequest->response()->header( 'Vary: Accept-Encoding, Cookie' );
-		if( !$this->uncacheableBecauseRequestvars() && $this->mEnableClientCache ) {
+		$response->header( 'Vary: Accept-Encoding, Cookie' );
+
+		# Add an X-Vary-Options header for Squid with Wikimedia patches
+		$response->header( $this->getXVO() );
+
+		if( !$this->uncacheableBecauseRequestVars() && $this->mEnableClientCache ) {
 			if( $wgUseSquid && session_id() == '' &&
-			  ! $this->isPrintable() && $this->mSquidMaxage != 0 )
+			  ! $this->isPrintable() && $this->mSquidMaxage != 0 && !$this->haveCacheVaryCookies() )
 			{
 				if ( $wgUseESI ) {
 					# We'll purge the proxy cache explicitly, but require end user agents
@@ -546,8 +622,8 @@ class OutputPage {
 					wfDebug( "$fname: proxy caching with ESI; {$this->mLastModified} **\n", false );
 					# start with a shorter timeout for initial testing
 					# header( 'Surrogate-Control: max-age=2678400+2678400, content="ESI/1.0"');
-					$wgRequest->response()->header( 'Surrogate-Control: max-age='.$wgSquidMaxage.'+'.$this->mSquidMaxage.', content="ESI/1.0"');
-					$wgRequest->response()->header( 'Cache-Control: s-maxage=0, must-revalidate, max-age=0' );
+					$response->header( 'Surrogate-Control: max-age='.$wgSquidMaxage.'+'.$this->mSquidMaxage.', content="ESI/1.0"');
+					$response->header( 'Cache-Control: s-maxage=0, must-revalidate, max-age=0' );
 				} else {
 					# We'll purge the proxy cache for anons explicitly, but require end user agents
 					# to revalidate against the proxy on each visit.
@@ -556,24 +632,24 @@ class OutputPage {
 					wfDebug( "$fname: local proxy caching; {$this->mLastModified} **\n", false );
 					# start with a shorter timeout for initial testing
 					# header( "Cache-Control: s-maxage=2678400, must-revalidate, max-age=0" );
-					$wgRequest->response()->header( 'Cache-Control: s-maxage='.$this->mSquidMaxage.', must-revalidate, max-age=0' );
+					$response->header( 'Cache-Control: s-maxage='.$this->mSquidMaxage.', must-revalidate, max-age=0' );
 				}
 			} else {
 				# We do want clients to cache if they can, but they *must* check for updates
 				# on revisiting the page.
 				wfDebug( "$fname: private caching; {$this->mLastModified} **\n", false );
-				$wgRequest->response()->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
-				$wgRequest->response()->header( "Cache-Control: private, must-revalidate, max-age=0" );
+				$response->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
+				$response->header( "Cache-Control: private, must-revalidate, max-age=0" );
 			}
-			if($this->mLastModified) $wgRequest->response()->header( "Last-modified: {$this->mLastModified}" );
+			if($this->mLastModified) $response->header( "Last-modified: {$this->mLastModified}" );
 		} else {
 			wfDebug( "$fname: no caching **\n", false );
 
 			# In general, the absence of a last modified header should be enough to prevent
 			# the client from using its cache. We send a few other things just to make sure.
-			$wgRequest->response()->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
-			$wgRequest->response()->header( 'Cache-Control: no-cache, no-store, max-age=0, must-revalidate' );
-			$wgRequest->response()->header( 'Pragma: no-cache' );
+			$response->header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', 0 ) . ' GMT' );
+			$response->header( 'Cache-Control: no-cache, no-store, max-age=0, must-revalidate' );
+			$response->header( 'Pragma: no-cache' );
 		}
 	}
 
@@ -594,11 +670,8 @@ class OutputPage {
 		wfProfileIn( $fname );
 
 		if ( '' != $this->mRedirect ) {
-			if( substr( $this->mRedirect, 0, 4 ) != 'http' ) {
-				# Standards require redirect URLs to be absolute
-				global $wgServer;
-				$this->mRedirect = $wgServer . $this->mRedirect;
-			}
+			# Standards require redirect URLs to be absolute
+			$this->mRedirect = wfExpandUrl( $this->mRedirect );
 			if( $this->mRedirectCode == '301') {
 				if( !$wgDebugRedirects ) {
 					$wgRequest->response()->header("HTTP/1.1 {$this->mRedirectCode} Moved Permanently");
@@ -810,7 +883,7 @@ class OutputPage {
 		 * This could be a username, an ip range, or a single ip. */
 		$intended = $wgUser->mBlock->mAddress;
 
-		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp ) );
+		$this->addWikiMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp );
 
 		# Don't auto-return to special pages
 		if( $return ) {
@@ -885,7 +958,7 @@ class OutputPage {
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
-		$this->addWikiText( wfMsg( 'versionrequiredtext', $version ) );
+		$this->addWikiMsg( 'versionrequiredtext', $version );
 		$this->returnToMain();
 	}
 
@@ -987,7 +1060,7 @@ class OutputPage {
 	 * @return string The wikitext error-messages, formatted into a list.
 	 */
 	public function formatPermissionsErrorMessage( $errors ) {
-		$text = wfMsgExt( 'permissionserrorstext', array( 'parsemag' ), count( $errors ) ) . "\n\n";
+		$text = wfMsgNoTrans( 'permissionserrorstext', count( $errors ) ) . "\n\n";
 
 		if (count( $errors ) > 1) {
 			$text .= '<ul class="permissions-errors">' . "\n";
@@ -995,12 +1068,12 @@ class OutputPage {
 			foreach( $errors as $error )
 			{
 				$text .= '<li>';
-				$text .= call_user_func_array( 'wfMsg', $error );
+				$text .= call_user_func_array( 'wfMsgNoTrans', $error );
 				$text .= "</li>\n";
 			}
 			$text .= '</ul>';
 		} else {
-			$text .= '<div class="permissions-errors">' . call_user_func_array( 'wfMsg', $errors[0]) . '</div>';
+			$text .= '<div class="permissions-errors">' . call_user_func_array( 'wfMsgNoTrans', reset( $errors ) ) . '</div>';
 		}
 
 		return $text;
@@ -1026,7 +1099,7 @@ class OutputPage {
 	 * @param array  $reasons   List of reasons for this error, as returned by Title::getUserPermissionsErrors().
 	 */
 	public function readOnlyPage( $source = null, $protected = false, $reasons = array() ) {
-		global $wgUser, $wgReadOnlyFile, $wgReadOnly, $wgTitle;
+		global $wgUser, $wgTitle;
 		$skin = $wgUser->getSkin();
 
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -1050,18 +1123,13 @@ class OutputPage {
 		} else {
 			// Wiki is read only
 			$this->setPageTitle( wfMsg( 'readonly' ) );
-			if ( $wgReadOnly ) {
-				$reason = $wgReadOnly;
-			} else {
-				// Should not happen, user should have called wfReadOnly() first
-				$reason = file_get_contents( $wgReadOnlyFile );
-			}
-			$this->addWikiText( wfMsg( 'readonlytext', $reason ) );
+			$reason = wfReadOnlyReason();
+			$this->addWikiMsg( 'readonlytext', $reason );
 		}
 
 		// Show source, if supplied
 		if( is_string( $source ) ) {
-			$this->addWikiText( wfMsg( 'viewsourcetext' ) );
+			$this->addWikiMsg( 'viewsourcetext' );
 			$text = wfOpenElement( 'textarea',
 						array( 'id'   => 'wpTextbox1',
 						       'name' => 'wpTextbox1',
@@ -1266,7 +1334,7 @@ class OutputPage {
 	 * @return string HTML tag links to be put in the header.
 	 */
 	public function getHeadLinks() {
-		global $wgRequest;
+		global $wgRequest, $wgFeed;
 		$ret = '';
 		foreach ( $this->mMetatags as $tag ) {
 			if ( 0 == strcasecmp( 'http:', substr( $tag[0], 0, 5 ) ) ) {
@@ -1301,32 +1369,34 @@ class OutputPage {
 			$ret .= " />\n";
 		}
 		
-		foreach( $this->getSyndicationLinks() as $format => $link ) {
-			# Use the page name for the title (accessed through $wgTitle since
-			# there's no other way).  In principle, this could lead to issues
-			# with having the same name for different feeds corresponding to
-			# the same page, but we can't avoid that at this low a level.
-			global $wgTitle;
-
+		if( $wgFeed ) {
+			foreach( $this->getSyndicationLinks() as $format => $link ) {
+				# Use the page name for the title (accessed through $wgTitle since
+				# there's no other way).  In principle, this could lead to issues
+				# with having the same name for different feeds corresponding to
+				# the same page, but we can't avoid that at this low a level.
+				global $wgTitle;
+	
+				$ret .= $this->feedLink(
+					$format,
+					$link,
+					wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
+			}
+	
+			# Recent changes feed should appear on every page
+			# Put it after the per-page feed to avoid changing existing behavior.
+			# It's still available, probably via a menu in your browser.
+			global $wgSitename;
+			$rctitle = SpecialPage::getTitleFor( 'Recentchanges' );
 			$ret .= $this->feedLink(
-				$format,
-				$link,
-				wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
+				'rss',
+				$rctitle->getFullURL( 'feed=rss' ),
+				wfMsg( 'site-rss-feed', $wgSitename ) );
+			$ret .= $this->feedLink(
+				'atom',
+				$rctitle->getFullURL( 'feed=atom' ),
+				wfMsg( 'site-atom-feed', $wgSitename ) );
 		}
-
-		# Recent changes feed should appear on every page
-		# Put it after the per-page feed to avoid changing existing behavior.
-		# It's still available, probably via a menu in your browser.
-		global $wgSitename;
-		$rctitle = SpecialPage::getTitleFor( 'Recentchanges' );
-		$ret .= $this->feedLink(
-			'rss',
-			$rctitle->getFullURL( 'feed=rss' ),
-			wfMsg( 'site-rss-feed', $wgSitename ) );
-		$ret .= $this->feedLink(
-			'atom',
-			$rctitle->getFullURL( 'feed=atom' ),
-			wfMsg( 'site-atom-feed', $wgSitename ) );
 
 		return $ret;
 	}
@@ -1378,7 +1448,7 @@ class OutputPage {
 		$this->mRedirect = '';
 		$this->clearHTML();
 		$this->setStatusCode(503);
-		$this->addWikiText( wfMsg('actionthrottledtext') );
+		$this->addWikiMsg( 'actionthrottledtext' );
 
 		$this->returnToMain( false, $wgTitle );
 	}
@@ -1412,4 +1482,71 @@ class OutputPage {
 		}
 	}
 
+	/**
+	 * Add a wikitext-formatted message to the output.
+	 * This is equivalent to:
+	 *
+	 *    $wgOut->addWikiText( wfMsgNoTrans( ... ) )
+	 */
+	public function addWikiMsg( /*...*/ ) {
+		$args = func_get_args();
+		$name = array_shift( $args );
+		$this->addWikiMsgArray( $name, $args );
+	}
+
+	/**
+	 * Add a wikitext-formatted message to the output.
+	 * Like addWikiMsg() except the parameters are taken as an array
+	 * instead of a variable argument list.
+	 *
+	 * $options is passed through to wfMsgExt(), see that function for details.
+	 */
+	public function addWikiMsgArray( $name, $args, $options = array() ) {
+		$options[] = 'parse';
+		$text = wfMsgExt( $name, $options, $args );
+		$this->addHTML( $text );
+	}
+
+	/**
+	 * This function takes a number of message/argument specifications, wraps them in 
+	 * some overall structure, and then parses the result and adds it to the output.
+	 *
+	 * In the $wrap, $1 is replaced with the first message, $2 with the second, and so 
+	 * on. The subsequent arguments may either be strings, in which case they are the 
+	 * message names, or an arrays, in which case the first element is the message name,
+	 * and subsequent elements are the parameters to that message.
+	 *
+	 * The special named parameter 'options' in a message specification array is passed
+	 * through to the $options parameter of wfMsgExt(). 
+	 *
+	 * For example:
+	 *
+	 *    $wgOut->wrapWikiMsg( '<div class="error">$1</div>', 'some-error' );
+	 * 
+	 * Is equivalent to:
+	 *
+	 *    $wgOut->addWikiText( '<div class="error">' . wfMsgNoTrans( 'some-error' ) . '</div>' );
+	 */
+	public function wrapWikiMsg( $wrap /*, ...*/ ) {
+		$msgSpecs = func_get_args();
+		array_shift( $msgSpecs );
+		$msgSpecs = array_values( $msgSpecs );
+		$s = $wrap;
+		foreach ( $msgSpecs as $n => $spec ) {
+			$options = array();
+			if ( is_array( $spec ) ) {
+				$args = $spec;
+				$name = array_shift( $args );
+				if ( isset( $args['options'] ) ) {
+					$options = $args['options'];
+					unset( $args['options'] );
+				}
+			}  else {
+				$args = array();
+				$name = $spec;
+			}
+			$s = str_replace( '$' . ($n+1), wfMsgExt( $name, $options, $args ), $s );
+		}
+		$this->addHTML( $this->parse( $s ) );
+	}
 }

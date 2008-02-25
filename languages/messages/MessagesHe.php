@@ -112,7 +112,7 @@ $magicWords = array(
 	'subpagenamee'          => array( 1,    'שם דף המשנה מקודד',                      'SUBPAGENAMEE'           ),
 	'basepagename'          => array( 1,    'שם דף הבסיס',                            'BASEPAGENAME'           ),
 	'basepagenamee'         => array( 1,    'שם דף הבסיס מקודד',                      'BASEPAGENAMEE'          ),
-	'talkpagename'          => array( 1,    'שם דף השיחה',                            'TALKPAGENAME'           ),
+	'talkpagename'          => array( 1,    'שם דף השיחה',                           'TALKPAGENAME'           ),
 	'talkpagenamee'         => array( 1,    'שם דף השיחה מקודד',                      'TALKPAGENAMEE'          ),
 	'subjectpagename'       => array( 1,    'שם דף הנושא', 'שם הערך',                 'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
 	'subjectpagenamee'      => array( 1,    'שם דף הנושא מקודד', 'שם הערך מקודד',     'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
@@ -177,17 +177,18 @@ $magicWords = array(
 	'currenttimestamp'      => array( 1,    'זמן נוכחי',                           'CURRENTTIMESTAMP'       ),
 	'localtimestamp'        => array( 1,    'זמן מקומי',                           'LOCALTIMESTAMP'         ),
 	'directionmark'         => array( 1,    'סימן כיווניות',                       'DIRECTIONMARK', 'DIRMARK' ),
-	'language'              => array( 0,    '#שפה:',                              '#LANGUAGE:'             ),
-	'contentlanguage'       => array( 1,    'שפת תוכן',                           'CONTENTLANGUAGE', 'CONTENTLANG' ),
-	'pagesinnamespace'      => array( 1,    'דפים במרחב השם:',                   'PAGESINNAMESPACE:', 'PAGESINNS:' ),
+	'language'              => array( 0,    '#שפה:',                           '#LANGUAGE:'             ),
+	'contentlanguage'       => array( 1,    'שפת תוכן',                         'CONTENTLANGUAGE', 'CONTENTLANG' ),
+	'pagesinnamespace'      => array( 1,    'דפים במרחב השם:',                  'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'        => array( 1,    'מספר מפעילים',                      'NUMBEROFADMINS'         ),
 	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM'              ),
 	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT'                ),
-	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT'               ),
+	'padright'              => array( 0,    'ריפוד מימין',                         'PADRIGHT'               ),
 	'special'               => array( 0,    'מיוחד',                             'special'                ),
-	'defaultsort'           => array( 1,    'מיון רגיל:',                        'DEFAULTSORT:'           ),
-	'filepath'              => array( 0,    'נתיב לקובץ:',                       'FILEPATH:'              ),
+	'defaultsort'           => array( 1,    'מיון רגיל:',                          'DEFAULTSORT:'           ),
+	'filepath'              => array( 0,    'נתיב לקובץ:',                        'FILEPATH:'              ),
 	'tag'                   => array( 0,    'תגית',                              'tag'                    ),
+	'hiddencat'             => array( 1,    '__קטגוריה_מוסתרת__',                  '__HIDDENCAT__'          ),
 );
 
 $specialPageAliases = array(
@@ -332,6 +333,7 @@ $messages = array(
 'tog-nolangconversion'        => 'ביטול המרת גרסאות שפה',
 'tog-ccmeonemails'            => 'שלח אלי העתקים של הודעות דואר אלקטרוני שאני שולח למשתמשים אחרים',
 'tog-diffonly'                => 'ביטול הצגת תוכן הדף מתחת להשוואות הגרסאות',
+'tog-showhiddencats'          => 'הצגת קטגוריות מוסתרות',
 
 'underline-always'  => 'תמיד',
 'underline-never'   => 'אף פעם',
@@ -392,12 +394,14 @@ $messages = array(
 'dec'           => "דצמ'",
 
 # Bits of text used by many pages
-'categories'            => 'קטגוריות',
-'pagecategories'        => '{{plural:$1|קטגוריה|קטגוריות}}',
-'category_header'       => 'דפים בקטגוריה "$1"',
-'subcategories'         => 'קטגוריות משנה',
-'category-media-header' => 'קובצי מדיה בקטגוריה "$1"',
-'category-empty'        => "'''קטגוריה זו אינה כוללת דפים או קובצי מדיה.'''",
+'categories'               => 'קטגוריות',
+'pagecategories'           => '{{plural:$1|קטגוריה|קטגוריות}}',
+'category_header'          => 'דפים בקטגוריה "$1"',
+'subcategories'            => 'קטגוריות משנה',
+'category-media-header'    => 'קובצי מדיה בקטגוריה "$1"',
+'category-empty'           => "'''קטגוריה זו אינה כוללת דפים או קובצי מדיה.'''",
+'hidden-categories'        => '{{plural:$1|קטגוריה מוסתרת|קטגוריות מוסתרות}}',
+'hidden-category-category' => 'קטגוריות מוסתרות', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => "'''תוכנת מדיה־ויקי הותקנה בהצלחה.'''",
 'mainpagedocfooter' => 'היעזרו ב[http://meta.wikimedia.org/wiki/Help:Contents מדריך למשתמש] למידע על שימוש בתוכנת הוויקי.
@@ -534,10 +538,12 @@ $messages = array(
 'restorelink'             => '{{plural:$1|גרסה מחוקה אחת|$1 גרסאות מחוקות}}',
 'feedlinks'               => 'הזנה:',
 'feed-invalid'            => 'סוג הזנת המנוי שגוי.',
+'feed-unavailable'        => 'הזנות אינן זמינות ב{{grammar:תחילית|{{SITENAME}}}}',
 'site-rss-feed'           => 'RSS של $1',
 'site-atom-feed'          => 'Atom של $1',
 'page-rss-feed'           => 'RSS של $1',
 'page-atom-feed'          => 'Atom של $1',
+'red-link-title'          => '$1 (לא נכתב עדיין)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'דף תוכן',
@@ -702,7 +708,7 @@ $2',
 'nosuchuser'                 => 'אין משתמש בשם "$1".
 
 אנא ודאו שהאיות נכון, או השתמשו בטופס שלהלן ליצירת חשבון משתמש חדש.',
-'nosuchusershort'            => 'אין משתמש בשם "$1". אנא ודאו שהאיות נכון.',
+'nosuchusershort'            => 'אין משתמש בשם "<nowiki>$1</nowiki>". אנא ודאו שהאיות נכון.',
 'nouserspecified'            => 'עליכם לציין שם משתמש.',
 'wrongpassword'              => 'הסיסמה שהקלדתם שגויה, אנא נסו שנית.',
 'wrongpasswordempty'         => 'הסיסמה שהקלדתם ריקה. אנא נסו שנית.',
@@ -726,7 +732,7 @@ $2',
 'accountcreated'             => 'החשבון נוצר',
 'accountcreatedtext'         => 'חשבון המשתמש $1 נוצר.',
 'createaccount-title'        => 'יצירת חשבון ב{{grammar:תחילית|{{SITENAME}}}}',
-'createaccount-text'         => 'מישהו ($1) יצר חשבון בשם $2 ב{{grammar:תחילית|{{SITENAME}}}} ($4). הסיסמה לחשבון "$2" היא "$3". עליכם להיכנס ולשנות עכשיו את הסיסמה.
+'createaccount-text'         => 'מישהו יצר חשבון בשם $2 ב{{grammar:תחילית|{{SITENAME}}}} ($4), והסיסמה הזמנית של החשבון היא "$3". עליכם להיכנס ולשנות עכשיו את הסיסמה.
 
 באפשרותכם להתעלם מהודעה זו, אם החשבון נוצר בטעות.',
 'loginlanguagelabel'         => 'שפה: $1',
@@ -851,7 +857,7 @@ $2',
 <strong>אם זהו ניסיון עריכה לגיטימי, אנא נסו שנית. אם זה לא עוזר, נסו לצאת מהחשבון ולהיכנס אליו שנית.</strong>',
 'token_suffix_mismatch'     => '<strong>עריכתכם נדחתה כיוון שהדפדפן שלכם מחק את תווי הניקוד בסימון העריכה. העריכה נדחתה כדי למנוע בעיות כאלה בטקסט של הדף. ייתכן שזה קרה בגלל שירות פרוקסי אנונימי פגום.</strong>',
 'editing'                   => 'עריכת $1',
-'editinguser'               => 'עריכת המשתמש <b>$1</b>',
+'editinguser'               => "משנה את הרשאות המשתמש של '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'עריכת $1 (פסקה)',
 'editingcomment'            => 'עריכת $1 (הערה)',
 'editconflict'              => 'התנגשות עריכה: $1',
@@ -875,6 +881,7 @@ $2',
 'templatesusedsection'      => 'תבניות המופיעות בפיסקה זו:',
 'template-protected'        => '(מוגנת)',
 'template-semiprotected'    => '(מוגנת חלקית)',
+'hiddencategories'          => '{{plural:$1|קטגוריה מוסתרת שדף זה חבר בה|קטגוריות מוסתרות שדף זה חבר בהן}}:',
 'edittools'                 => '<!-- הטקסט הנכתב כאן יוצג מתחת לטפסי עריכת דפים והעלאת קבצים, ולפיכך ניתן לכתוב להציג בו תווים קשים לכתיבה, קטעים מוכנים של טקסט ועוד. -->',
 'nocreatetitle'             => 'יצירת הדפים הוגבלה',
 'nocreatetext'              => 'אתר זה מגביל את האפשרות ליצור דפים חדשים. באפשרותכם לחזור אחורה ולערוך דף קיים, או [[Special:Userlogin|להיכנס לחשבון]].',
@@ -1012,6 +1019,7 @@ $2',
 'searchsubtitleinvalid' => "לחיפוש המונח '''$1'''",
 'noexactmatch'          => 'אין דף שכותרתו "$1". באפשרותכם [[:$1|ליצור את הדף]].',
 'noexactmatch-nocreate' => 'אין דף שכותרתו "$1".',
+'toomanymatches'        => 'יותר מדי תוצאות נמצאו, אנא נסו מילות חיפוש אחרות',
 'titlematches'          => 'כותרות דפים תואמות',
 'notitlematches'        => 'אין כותרות דפים תואמות',
 'textmatches'           => 'דפים עם תוכן תואם',
@@ -1206,7 +1214,7 @@ $2',
 'largefileserver'             => 'גודל הקובץ שהעליתם חורג ממגבלת השרת.',
 'emptyfile'                   => 'הקובץ שהעליתם ריק. ייתכן שהסיבה לכך היא שגיאת הקלדה בשם הקובץ. אנא ודאו שזהו הקובץ שברצונך להעלות.',
 'fileexists'                  => 'קובץ בשם זה כבר קיים, אנא בדקו את <strong><tt>$1</tt></strong> אם אינכם בטוחים שברצונכם להחליף אותו.',
-'filepageexists'              => 'דף (שאינו תמונה) בשם זה כבר קיים, אנא בדקו את <strong><tt>$1</tt></strong> אם אינכם בטוחים שברצונכם לשנות אותו.',
+'filepageexists'              => 'דף תיאור התמונה עבור קובץ זה כבר נוצר ב<strong><tt>$1</tt></strong>, אך לא קיים קובץ בשם זה. תיאור התמונה שתכתבו לא יופיע בדף תיאור התמונה. כדי לגרום לו להופיע שם, יהיה עליכם לערוך אותו ידנית.',
 'fileexists-extension'        => 'קובץ עם שם דומה כבר קיים:<br />
 שם הקובץ המועלה: <strong><tt>$1</tt></strong><br />
 שם הקובץ הקיים: <strong><tt>$2</tt></strong><br />
@@ -1287,6 +1295,7 @@ $2',
 'nolinkstoimage'            => 'אין דפים המשתמשים בתמונה זו.',
 'sharedupload'              => 'קובץ זה הוא קובץ משותף וניתן להשתמש בו גם באתרים אחרים.',
 'shareduploadwiki'          => 'למידע נוסף, ראו את $1.',
+'shareduploadwiki-desc'     => 'תיאורו ב$1 מוצג למטה.',
 'shareduploadwiki-linktext' => 'דף תיאור הקובץ',
 'noimage'                   => 'לא נמצא קובץ בשם זה, אך יש באפשרותכם $1 חלופי.',
 'noimage-linktext'          => 'להעלות קובץ',
@@ -1517,9 +1526,7 @@ $2',
 'addedwatch'           => 'הדף נוסף לרשימת המעקב',
 'addedwatchtext'       => 'הדף [[:$1]] נוסף ל[[Special:Watchlist|רשימת המעקב]]. שינויים שייערכו בעתיד, בדף זה ובדף השיחה שלו, יוצגו ברשימת המעקב.
 
-בנוסף, הדף יופיע בכתב מודגש ב[[Special:Recentchanges|רשימת השינויים האחרונים]], כדי להקל עליכם את המעקב אחריו.
-
-אם תרצו להסיר את הדף מרשימת המעקב, לחצו על הלשונית "הפסקת מעקב" שלמעלה.',
+בנוסף, הדף יופיע בכתב מודגש ב[[Special:Recentchanges|רשימת השינויים האחרונים]], כדי להקל עליכם את המעקב אחריו.',
 'removedwatch'         => 'הדף הוסר מרשימת המעקב',
 'removedwatchtext'     => 'הדף [[:$1]] הוסר מ[[Special:Watchlist|רשימת המעקב]].',
 'watch'                => 'מעקב',
@@ -1596,7 +1603,7 @@ $NEWPAGE
 
 אנא אשרו שזה אכן מה שאתם מתכוונים לעשות, שאתם מבינים את התוצאות של מעשה כזה, ושהמעשה מבוצע בהתאם לנהלי האתר.',
 'actioncomplete'              => 'הפעולה בוצעה',
-'deletedtext'                 => '[[:$1]] נמחק. ראו $2 לרשימת המחיקות האחרונות.',
+'deletedtext'                 => '<strong><nowiki>$1</nowiki></strong> נמחק. ראו $2 לרשימת המחיקות האחרונות.',
 'deletedarticle'              => 'מחק את [[$1]]',
 'dellogpage'                  => 'יומן מחיקות',
 'dellogpagetext'              => 'להלן רשימה של המחיקות האחרונות שבוצעו.',
@@ -1637,7 +1644,7 @@ $NEWPAGE
 'protect_expiry_old'          => 'זמן פקיעת ההגנה כבר עבר.',
 'unprotectsub'                => '(ביטול ההגנה על "$1")',
 'protect-unchain'             => 'שינוי הרשאות העברה',
-'protect-text'                => 'באפשרותכם לראות ולשנות כאן את רמת ההגנה של הדף [[:$1]]. אנא ודאו שאתם פועלים בהתאם בהתאם לנהלי האתר.',
+'protect-text'                => 'באפשרותכם לראות ולשנות כאן את רמת ההגנה של הדף <strong><nowiki>$1</nowiki></strong>. אנא ודאו שאתם פועלים בהתאם בהתאם לנהלי האתר.',
 'protect-locked-blocked'      => 'אינכם יכולים לשנות את רמת ההגנה של הדף בעודכם חסומים.
 להלן ההגדרות הנוכחיות עבור הדף <strong>$1</strong>:',
 'protect-locked-dblock'       => 'אינכם יכולים לשנות את רמת ההגנה על הדף שכן מסד הנתונים חסום ברגע זה.
@@ -1683,6 +1690,7 @@ $NEWPAGE
 'undeleterevision-missing'     => 'הגרסה שגויה או חסרה. ייתכן שמדובר בקישור שבור, או שהגרסה שוחזרה או הוסרה מהארכיון.',
 'undelete-nodiff'              => 'לא נמצאה גרסה קודמת.',
 'undeletebtn'                  => 'שחזור',
+'undeletelink'                 => 'שחזור',
 'undeletereset'                => 'איפוס',
 'undeletecomment'              => 'תקציר:',
 'undeletedarticle'             => 'שחזר את [[$1]]',
@@ -1934,9 +1942,6 @@ $1',
 
 # Thumbnails
 'thumbnail-more'           => 'הגדל',
-'missingimage'             => "'''תמונה חסרה'''
-
-'''$1''",
 'filemissing'              => 'קובץ חסר',
 'thumbnail_error'          => 'שגיאה ביצירת תמונה ממוזערת: $1',
 'djvu_page_error'          => 'דף ה־DjVu מחוץ לטווח',
@@ -1957,7 +1962,7 @@ $1',
 'importstart'                => 'מייבא דפים…',
 'import-revision-count'      => '{{plural:$1|גרסה אחת|$1 גרסאות}}',
 'importnopages'              => 'אין דפים לייבוא.',
-'importfailed'               => 'הייבוא נכשל: $1',
+'importfailed'               => 'הייבוא נכשל: <nowiki>$1</nowiki>',
 'importunknownsource'        => 'סוג ייבוא בלתי ידוע',
 'importcantopen'             => 'פתיחת קובץ הייבוא נכשלה',
 'importbadinterwiki'         => 'קישור אינטרוויקי שגוי',
@@ -2489,11 +2494,10 @@ $1',
 'useajaxsearch'    => 'שימוש בחיפוש AJAX',
 
 # Multipage image navigation
-'imgmultipageprev'   => '&rarr; לדף הקודם',
-'imgmultipagenext'   => 'לדף הבא &larr;',
-'imgmultigo'         => 'הצגה',
-'imgmultigotopre'    => 'מעבר לדף',
-'imgmultiparseerror' => 'קובץ התמונה פגום או שגוי, ולפיכך אין אפשרות לקבל רשימת דפים.',
+'imgmultipageprev' => '&rarr; לדף הקודם',
+'imgmultipagenext' => 'לדף הבא &larr;',
+'imgmultigo'       => 'הצגה',
+'imgmultigotopre'  => 'מעבר לדף',
 
 # Table pager
 'ascending_abbrev'         => 'עולה',
@@ -2612,5 +2616,17 @@ $1',
 'version-hook-name'                => 'שם ה־Hook',
 'version-hook-subscribedby'        => 'הפונקציה הרושמת',
 'version-version'                  => 'גרסה',
+'version-license'                  => 'רישיון',
+'version-software'                 => 'תוכנות מותקנות',
+'version-software-product'         => 'תוכנה',
+'version-software-version'         => 'גרסה',
+
+# Special:Filepath
+'filepath'         => 'נתיב לקובץ',
+'filepath-page'    => 'הקובץ:',
+'filepath-submit'  => 'מציאת הנתיב',
+'filepath-summary' => 'דף זה מציג את הנתיב המלא לקבצים שהועלו. תמונות מוצגות ברזולוציה מלאה, ואילו סוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
+
+יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
 
 );

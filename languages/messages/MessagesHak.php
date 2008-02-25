@@ -143,6 +143,7 @@ $messages = array(
 'mytalk'         => 'Ngô-ke tui-fa-hong',
 'anontalk'       => 'Ke-IP ke tui-fa hong',
 'navigation'     => 'Thô-hòng',
+'and'            => 'lâu',
 
 # Metadata in edit box
 'metadata_help' => 'Ngièn sṳ-kí:',
@@ -361,7 +362,7 @@ Ngì khó-yî ki-siu̍k yî ngia̍k-miàng fông-sṳt sṳ́-yung {{SITENAME}},
 'loginsuccesstitle'          => 'Tên-ngi̍p sṳ̀n-kûng',
 'loginsuccess'               => "'''Ngì hien-chhai yî \"\$1\" ke sṳ̂n-fun tên-ngi̍p {{SITENAME}}.'''",
 'nosuchuser'                 => 'Chhìm-cháu put-to yung-fu "$1". Kiám-chhà ngì-ke piang-siá, fe̍t-chá yung ha-mien ke péu-kak kien-li̍p yit-ke sîn chong-ho.',
-'nosuchusershort'            => 'Mò-yû yit-ke miàng vi "$1" ke yung-fu. Chhiáng kiám-chhà ngì-ke sû-ngi̍p ke vùn-sṳ he-féu yû chho-ngu.',
+'nosuchusershort'            => 'Mò-yû yit-ke miàng vi "<nowiki>$1</nowiki>" ke yung-fu. Chhiáng kiám-chhà ngì-ke sû-ngi̍p ke vùn-sṳ he-féu yû chho-ngu.',
 'nouserspecified'            => 'Ngì sî-yeu chṳ́-thin yit-ke yung-fu-miàng.',
 'wrongpassword'              => 'Ngì sû-ngi̍p ke me̍t-me̍t chho-ngu, chhiáng chai chhṳ yit-chhṳ.',
 'wrongpasswordempty'         => 'Hàn-mò sû-ngi̍p me̍t-me̍t! chhiáng chhûng-chhṳ.',
@@ -1042,7 +1043,7 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.',
 'historywarning'              => 'Kín-ko: Ngì chiông-yeu chhù-hi ke chông-nui hàm-yû li̍t-sṳ́:',
 'confirmdeletetext'           => 'Ngì chiông-voi chhiùng chṳ̂-liau-khu chûng yún-yén chhù-thet yit-ke vùn-chông fe̍t-chá thù-chhiong yî-khi̍p li̍t-sṳ́. Chhiáng khok-thin ngì-yeu chin-hàng chhâu-chok, pin liáu-kié heu-kó, thùng-sṳ̀ ngì-ke hàng-vì fù-ha̍p [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'              => 'Chhâu-chok vàn-sṳ̀n',
-'deletedtext'                 => '"$1" yí-kîn pûn chhù-thet. Chui-khiûn chhù-hi ke ki-liu̍k chhiáng chhâm-siòng $2.',
+'deletedtext'                 => '"<nowiki>$1</nowiki>" yí-kîn pûn chhù-thet. Chui-khiûn chhù-hi ke ki-liu̍k chhiáng chhâm-siòng $2.',
 'deletedarticle'              => 'Yí-kîn chhù-thet "[[$1]]"',
 'dellogpage'                  => 'Chhù-chhiang ki-liu̍k',
 'dellogpagetext'              => 'Yî-ha he chui-khiûn chhù-thet ke ki-liu̍k lie̍t-péu.',
@@ -1070,7 +1071,7 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.',
 'protect_expiry_old'          => 'Chûng-chṳ́ sṳ̀-kiên yí-kîn ko-hi.',
 'unprotectsub'                => '(Chang-chhai kié-chhù pó-fu "$1")',
 'protect-unchain'             => 'Yì-thung khièn-han kié-só',
-'protect-text'                => 'Ngì khó-yî chhai liá-piên chhùng-siû tui vùn-chông <strong>$1</strong> ke pó-fu kip-phe̍t.',
+'protect-text'                => 'Ngì khó-yî chhai liá-piên chhùng-siû tui vùn-chông <strong><nowiki>$1</nowiki></strong> ke pó-fu kip-phe̍t.',
 'protect-locked-blocked'      => 'Ngì put-nèn chhai pûn chhà-fûng sṳ̀ kiên-kói pó-fu khi̍p-phe̍t. Yî-ha he <strong>$1</strong> hien-sṳ̀ ke pó-fu khi̍p-phe̍t:',
 'protect-locked-dblock'       => 'Chhai chṳ̂-liau-khu só-thin sṳ̀ mò-fap kiên-kói pó-fu khi̍p-phe̍t. 
 Yî-ha he <strong>$1</strong> hien-sṳ̀ ke pó-fu khi̍p-phe̍t:',
@@ -1309,7 +1310,6 @@ Muk-phêu vùn-chông "[[$1]]" yí-kîn chhùn-chhai. Ngì khok-ngin sî-yeu chh
 
 # Thumbnails
 'thumbnail-more'           => 'Fong-thai',
-'missingimage'             => '<b>Khiet-séu thù-chhiong</b><br /><i>$1</i>',
 'filemissing'              => 'Mò-fap cháu-to tóng-on',
 'thumbnail_error'          => 'Chhóng-kien suk-thù chho-ngu: $1',
 'djvu_page_error'          => 'DjVu hong-mien chhêu-chhut fam-vì',
@@ -1422,7 +1422,6 @@ Muk-phêu vùn-chông "[[$1]]" yí-kîn chhùn-chhai. Ngì khok-ngin sî-yeu chh
 'anonymous'        => '{{SITENAME}} ke ngia̍k-miàng yung-fu',
 'siteuser'         => '{{SITENAME}} Yung-fu-chá $1',
 'lastmodifiedatby' => 'Chhṳ́-chông yù $3 yî $1 $2 ke chui-heu kiên-kói.', # $1 date, $2 time, $3 user
-'and'              => 'lâu',
 'othercontribs'    => 'Chhai $1-ke kûng-chok kî-chhú song.',
 'others'           => 'khì-thâ',
 'siteusers'        => '{{SITENAME}} Yung-fu-chá $1',
@@ -1578,11 +1577,10 @@ $1',
 'hideresults'      => 'Yún-chhòng kiet-kó',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← sông yit-chông',
-'imgmultipagenext'   => 'hâ yit-chông →',
-'imgmultigo'         => 'Khok-thin!',
-'imgmultigotopre'    => 'To-thi',
-'imgmultiparseerror' => 'Kiang-chhiong tóng-on khó-nèn yí-kîn sún-fái fe̍t-chá chang-chhai, yîn-chhṳ́ {{SITENAME}} vù-fap cháu-fì vùn-chông lie̍t-péu.',
+'imgmultipageprev' => '← sông yit-chông',
+'imgmultipagenext' => 'hâ yit-chông →',
+'imgmultigo'       => 'Khok-thin!',
+'imgmultigotopre'  => 'To-thi',
 
 # Table pager
 'ascending_abbrev'         => 'Suk-siá chen',

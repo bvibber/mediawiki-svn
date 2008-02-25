@@ -31,7 +31,7 @@ require_once( "$IP/includes/SiteConfiguration.php" );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.12alpha';
+$wgVersion			= '1.13alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -459,7 +459,7 @@ $wgHashedSharedUploadDirectory = true;
  *
  * Please specify the namespace, as in the example below.
  */
-$wgRepositoryBaseUrl="http://commons.wikimedia.org/wiki/Image:";
+$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
 
 /**
  * Experimental feature still under debugging.
@@ -679,7 +679,7 @@ $wgDBmysql5			= false;
  * account.
  * Array numeric key => database name
  */
-$wgLocalDatabases   = array();
+$wgLocalDatabases = array();
 
 /**
  * For multi-wiki clusters with multiple master servers; if an alternate
@@ -736,7 +736,7 @@ $wgCachedMessageArrays = false;
 # Language settings
 #
 /** Site language code, should be one of ./languages/Language(.*).php */
-$wgLanguageCode     = 'en';
+$wgLanguageCode = 'en';
 
 /**
  * Some languages need different word forms, usually for different cases.
@@ -908,7 +908,7 @@ $wgRedirectSources = false;
 
 $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxNameChars		= 255;  # Maximum number of bytes in username
-$wgMaxSigChars      = 255;  # Maximum number of Unicode characters in signature
+$wgMaxSigChars		= 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
@@ -1011,6 +1011,11 @@ $wgEnableParserCache = true;
  * don't update as expected.
  */
 $wgEnableSidebarCache = false;
+
+/**
+ * Expiry time for the sidebar cache, in seconds
+ */
+$wgSidebarCacheExpiry = 86400;
 
 /**
  * Under which condition should a page in the main namespace be counted
@@ -1127,6 +1132,7 @@ $wgGroupPermissions['sysop']['move']            = true;
 $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['autopatrol']      = true;
 $wgGroupPermissions['sysop']['protect']         = true;
+$wgGroupPermissions['sysop']['editprotected']   = true;
 $wgGroupPermissions['sysop']['proxyunbannable'] = true;
 $wgGroupPermissions['sysop']['rollback']        = true;
 $wgGroupPermissions['sysop']['trackback']       = true;
@@ -1320,7 +1326,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '107';
+$wgStyleVersion = '117';
 
 
 # Server-side caching:
@@ -1813,7 +1819,7 @@ $wgIgnoreImageErrors = false;
 $wgGenerateThumbnailOnParse = true;
 
 /** Obsolete, always true, kept for compatibility with extensions */
-$wgUseImageResize		= true;
+$wgUseImageResize = true;
 
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
@@ -1981,6 +1987,12 @@ $wgTidyInternal = extension_loaded( 'tidy' );
  */
 $wgDebugTidy = false;
 
+/**
+ * Validate the overall output using tidy and refuse 
+ * to display the page if it's not valid.
+ */
+$wgValidateAllHtml = false;
+
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
 
@@ -2093,8 +2105,9 @@ $wgSpecialPages = array();
 $wgAutoloadClasses = array();
 
 /**
- * An array of extension types and inside that their names, versions, authors
- * and urls, note that the version and url key can be omitted.
+ * An array of extension types and inside that their names, versions, authors,
+ * urls, descriptions and pointers to localized description msgs. Note that
+ * the version, url, description and descriptionmsg key can be omitted.
  *
  * <code>
  * $wgExtensionCredits[$type][] = array(
@@ -2102,10 +2115,12 @@ $wgAutoloadClasses = array();
  *      'version' => 1.9,
  *	'author' => 'Foo Barstein',
  *	'url' => 'http://wwww.example.com/Example%20Extension/',
+ *	'description' => 'An example extension',
+ *	'descriptionmsg' => 'exampleextension-desc',
  * );
  * </code>
  *
- * Where $type is 'specialpage', 'parserhook', or 'other'.
+ * Where $type is 'specialpage', 'parserhook', 'variable', 'media' or 'other'.
  */
 $wgExtensionCredits = array();
 /*
@@ -2149,6 +2164,9 @@ $wgUseRCPatrol = true;
 
 /** Use new page patrolling to check new pages on special:Newpages */
 $wgUseNPPatrol = true;
+
+/** Provide syndication feeds (RSS, Atom) for eg REcentchanges, Newpages. */
+$wgFeed = true;
 
 /** Set maximum number of results to return in syndication feeds (RSS, Atom) for
  * eg Recentchanges, Newpages. */
@@ -2434,13 +2452,13 @@ $wgLogActions = array(
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
 	'upload/upload'     => 'uploadedimage',
-	'upload/overwrite'	=> 'overwroteimage',
+	'upload/overwrite'  => 'overwroteimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
 	'move/move_redir'   => '1movedto2_redir',
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
-	'merge/merge'        => 'pagemerge-logentry',
+	'merge/merge'       => 'pagemerge-logentry',
 );
 
 /**
@@ -2485,8 +2503,15 @@ $wgNoFollowLinks = true;
 $wgNoFollowNsExceptions = array();
 
 /**
+ * Default robot policy.
+ * The default policy is to encourage indexing and following of links.
+ * It may be overridden on a per-namespace and/or per-page basis.
+ */
+$wgDefaultRobotPolicy = 'index,follow';
+
+/**
  * Robot policies per namespaces.
- * The default policy is 'index,follow', the array is made of namespace
+ * The default policy is given above, the array is made of namespace
  * constants as defined in includes/Defines.php
  * Example:
  *   $wgNamespaceRobotPolicies = array( NS_TALK => 'noindex' );
@@ -2916,3 +2941,11 @@ $wgParserConf = array(
  * Hooks should return strings or false
  */
 $wgExceptionHooks = array();
+
+/**
+ * Page property link table invalidation lists.
+ * Should only be set by extensions.
+ */
+$wgPagePropLinkInvalidations = array(
+	'hiddencat' => 'categorylinks',
+);

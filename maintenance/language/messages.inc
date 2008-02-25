@@ -50,6 +50,7 @@ $wgMessageStructure = array(
 		'tog-nolangconversion',
 		'tog-ccmeonemails',
 		'tog-diffonly',
+		'tog-showhiddencats',
 	),
 	'underline' => array(
 		'underline-always',
@@ -119,6 +120,8 @@ $wgMessageStructure = array(
 		'subcategories',
 		'category-media-header',
 		'category-empty',
+		'hidden-categories',
+		'hidden-category-category',
 	),
 	'mainpage' => array(
 		'linkprefix',
@@ -263,6 +266,7 @@ $wgMessageStructure = array(
 		'restorelink',
 		'feedlinks',
 		'feed-invalid',
+		'feed-unavailable',
 		'site-rss-feed',
 		'site-atom-feed',
 		'page-rss-feed',
@@ -272,6 +276,7 @@ $wgMessageStructure = array(
 		'sitenotice',
 		'anonnotice',
 		'newsectionheaderdefaultlevel',
+		'red-link-title',
 	),
 	'nstab' => array(
 		'nstab-main',
@@ -530,6 +535,7 @@ $wgMessageStructure = array(
 		'templatesusedsection',
 		'template-protected',
 		'template-semiprotected',
+		'hiddencategories',
 		'edittools',
 		'nocreatetitle',
 		'nocreatetext',
@@ -655,6 +661,7 @@ $wgMessageStructure = array(
 		'searchsubtitleinvalid',
 		'noexactmatch',
 		'noexactmatch-nocreate',
+		'toomanymatches',
 		'titlematches',
 		'notitlematches',
 		'textmatches',
@@ -928,6 +935,7 @@ $wgMessageStructure = array(
 		'nolinkstoimage',
 		'sharedupload',
 		'shareduploadwiki',
+		'shareduploadwiki-desc',
 		'shareduploadwiki-linktext',
 		'shareddescriptionfollows',
 		'noimage',
@@ -1326,6 +1334,7 @@ $wgMessageStructure = array(
 		'undeleterevision-missing',
 		'undelete-nodiff',
 		'undeletebtn',
+		'undeletelink',
 		'undeletereset',
 		'undeletecomment',
 		'undeletedarticle',
@@ -1538,7 +1547,6 @@ $wgMessageStructure = array(
 	),
 	'thumbnails' => array(
 		'thumbnail-more',
-		'missingimage',
 		'filemissing',
 		'thumbnail_error',
 		'djvu_page_error',
@@ -2235,7 +2243,6 @@ $wgMessageStructure = array(
 		'imgmultigo',
 		'imgmultigotopre',
 		'imgmultigotopost',
-		'imgmultiparseerror',
 	),
 	'tablepager' => array(
 		'ascending_abbrev',
@@ -2361,6 +2368,16 @@ $wgMessageStructure = array(
 		'version-hook-name',
 		'version-hook-subscribedby',
 		'version-version',
+		'version-license',
+		'version-software',
+		'version-software-product',
+		'version-software-version',
+	),
+	'filepath' => array(
+		'filepath',
+		'filepath-page',
+		'filepath-submit',
+		'filepath-summary',
 	),
 );
 /** Comments for each block */
@@ -2536,12 +2553,14 @@ Variants for Chinese language",
 	'iranian-dates'         => 'Iranian month names',
 	'hebrew-dates'          => 'Hebrew month names',
 	'signatures'            => 'Signatures',
-	'CoreParserFunctions' => 'Core parser functions',
-	'version'             => 'Special:Version',
+	'CoreParserFunctions'   => 'Core parser functions',
+	'version'               => 'Special:Version',
+	'filepath'              => 'Special:Filepath',
 );
 
 /** Short comments for standalone messages */
 $wgMessageComments = array(
+	'hidden-category-category'    => 'Name of the category where hidden categories will be listed',
 	'lastmodifiedat'              => '$1 date, $2 time',
 	'sitenotice'                  => 'the equivalent to wgSiteNotice',
 	'history-feed-item-nocomment' => 'user at time',

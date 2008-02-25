@@ -558,7 +558,7 @@ class UploadForm {
 			}
 			// Success, redirect to description page
 			$img = null; // @todo: added to avoid passing a ref to null - should this be defined somewhere?
-			wfRunHooks( 'UploadComplete', array( &$img ) );
+			wfRunHooks( 'UploadComplete', array( &$this ) );
 			return self::SUCCESS;
 		}
 	}
@@ -570,17 +570,21 @@ class UploadForm {
 	 * Returns an empty string if there is no warning
 	 */
 	static function getExistsWarning( $file ) {
-		global $wgUser;
+		global $wgUser, $wgContLang;
 		// Check for uppercase extension. We allow these filenames but check if an image
 		// with lowercase extension exists already
 		$warning = '';
-		
+		$align = $wgContLang->isRtl() ? 'left' : 'right';
+
 		if( strpos( $file->getName(), '.' ) == false ) {
 			$partname = $file->getName();
 			$rawExtension = '';
 		} else {
-			list( $partname, $rawExtension ) = explode( '.', $file->getName(), 2 );
+			$n = strrpos( $file->getName(), '.' );
+			$rawExtension = substr( $file->getName(), $n + 1 );
+			$partname = substr( $file->getName(), 0, $n );
 		}
+
 		$sk = $wgUser->getSkin();
 
 		if ( $rawExtension != $file->getExtension() ) {
@@ -598,31 +602,31 @@ class UploadForm {
 		if( $file->exists() ) {
 			$dlink = $sk->makeKnownLinkObj( $file->getTitle() );
 			if ( $file->allowInlineDisplay() ) {
-				$dlink2 = $sk->makeImageLinkObj( $file->getTitle(), wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), 
-					$file->getName(), 'right', array(), false, true );
+				$dlink2 = $sk->makeImageLinkObj( $file->getTitle(), wfMsgExt( 'fileexists-thumb', 'parseinline' ),
+					$file->getName(), $align, array(), false, true );
 			} elseif ( !$file->allowInlineDisplay() && $file->isSafeFile() ) {
 				$icon = $file->iconThumb();
-				$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+				$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' . 
 					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . $dlink . '</div>';
 			} else {
 				$dlink2 = '';
 			}
 
-			$warning .= '<li>' . wfMsgExt( 'fileexists', 'parseline', $dlink ) . '</li>' . $dlink2;
+			$warning .= '<li>' . wfMsgExt( 'fileexists', array('parseinline','replaceafter'), $dlink ) . '</li>' . $dlink2;
 
 		} elseif( $file->getTitle()->getArticleID() ) {
 			$lnk = $sk->makeKnownLinkObj( $file->getTitle(), '', 'redirect=no' );
-			$warning .= '<li>' . wfMsgExt( 'filepageexists', 'parseline', $lnk ) . '</li>';
+			$warning .= '<li>' . wfMsgExt( 'filepageexists', array( 'parseinline', 'replaceafter' ), $lnk ) . '</li>';
 		} elseif ( $file_lc && $file_lc->exists() ) {
 			# Check if image with lowercase extension exists.
 			# It's not forbidden but in 99% it makes no sense to upload the same filename with uppercase extension
 			$dlink = $sk->makeKnownLinkObj( $nt_lc );
 			if ( $file_lc->allowInlineDisplay() ) {
-				$dlink2 = $sk->makeImageLinkObj( $nt_lc, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), 
-					$nt_lc->getText(), 'right', array(), false, true );
+				$dlink2 = $sk->makeImageLinkObj( $nt_lc, wfMsgExt( 'fileexists-thumb', 'parseinline' ),
+					$nt_lc->getText(), $align, array(), false, true );
 			} elseif ( !$file_lc->allowInlineDisplay() && $file_lc->isSafeFile() ) {
 				$icon = $file_lc->iconThumb();
-				$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+				$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' . 
 					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . $dlink . '</div>';
 			} else {
 				$dlink2 = '';
@@ -641,11 +645,11 @@ class UploadForm {
 				$dlink = $sk->makeKnownLinkObj( $nt_thb);
 				if ( $file_thb->allowInlineDisplay() ) {
 					$dlink2 = $sk->makeImageLinkObj( $nt_thb, 
-						wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), 
-						$nt_thb->getText(), 'right', array(), false, true );
+						wfMsgExt( 'fileexists-thumb', 'parseinline' ),
+						$nt_thb->getText(), $align, array(), false, true );
 				} elseif ( !$file_thb->allowInlineDisplay() && $file_thb->isSafeFile() ) {
 					$icon = $file_thb->iconThumb();
-					$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+					$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' . 
 						$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . 
 						$dlink . '</div>';
 				} else {
@@ -965,7 +969,7 @@ wgAjaxLicensePreview = {$alp};
 			  "<span class='error'>{$msg}</span>\n" );
 		}
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiText( wfMsgNoTrans( 'uploadtext', $this->mDesiredDestName ) );
+		$wgOut->addWikiMsg( 'uploadtext', $this->mDesiredDestName );
 		$wgOut->addHTML( "</div>\n" );
 
 		# Print a list of allowed file extensions, if so configured.  We ignore
@@ -1027,7 +1031,7 @@ wgAjaxLicensePreview = {$alp};
 				   "onfocus='" . 
 				     "toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\");" .
 				     "toggle_element_check(\"wpSourceTypeFile\",\"wpSourceTypeURL\")'" .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFile\")' ") . "size='40' />" .
+				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFile\")' ") . "size='60' />" .
 				wfMsgHTML( 'upload_source_file' ) . "<br/>" .
 				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='web' " .
 				  "onchange='toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\")' />" .
@@ -1035,13 +1039,13 @@ wgAjaxLicensePreview = {$alp};
 				  "onfocus='" .
 				    "toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\");" .
 				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")'" .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFileURL\")' ") . "size='40' DISABLED />" .
+				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFileURL\")' ") . "size='60' DISABLED />" .
 				wfMsgHtml( 'upload_source_url' ) ;
 		} else {
 			$filename_form =
 				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
 				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFile\")' ") .
-				"size='40' />" .
+				"size='60' />" .
 				"<input type='hidden' name='wpSourceType' value='file' />" ;
 		}
 		if ( $useAjaxDestCheck ) {
@@ -1069,7 +1073,7 @@ wgAjaxLicensePreview = {$alp};
 		<tr>
 			<td align='$align1'><label for='wpDestFile'>{$destfilename}:</label></td>
 			<td align='$align2'>
-				<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='40' 
+				<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60' 
 					value="$encDestName" $destOnkeyup />
 			</td>
 		</tr>
@@ -1116,12 +1120,12 @@ EOT
 			$wgOut->addHTML( "
 			        <td align='$align1' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus:</label></td>
 					<td><input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' 
-					  value=\"$copystatus\" size='40' /></td>
+					  value=\"$copystatus\" size='60' /></td>
 		        </tr>
 			<tr>
 		        	<td align='$align1'><label for='wpUploadCopyStatus'>$filesource:</label></td>
 					<td><input tabindex='6' type='text' name='wpUploadSource' id='wpUploadCopyStatus' 
-					  value=\"$uploadsource\" size='40' /></td>
+					  value=\"$uploadsource\" size='60' /></td>
 			</tr>
 			<tr>
 		");
@@ -1635,7 +1639,7 @@ EOT
 		);
 		if( $reader->hasRows() ) {
 			$out->addHtml( '<div id="mw-upload-deleted-warn">' );
-			$out->addWikiText( wfMsg( 'upload-wasdeleted' ) );
+			$out->addWikiMsg( 'upload-wasdeleted' );
 			$viewer = new LogViewer( $reader );
 			$viewer->showList( $out );
 			$out->addHtml( '</div>' );

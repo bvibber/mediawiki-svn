@@ -66,7 +66,7 @@
 	'de' => 'Deutsch',		# German ("Du")
 	'de-formal' => 'Deutsch (Sie-Form)',		# German - formal address ("Sie")
 	'diq' => 'Zazaki',		# Zazaki
-	'dk' => 'Dansk', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
+	'dk' => 'Dansk (deprecated:da)', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
 	'dsb' => 'Dolnoserbski', # Lower Sorbian
 	'dum' => 'Middelnederlands', # Middle Dutch
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
@@ -132,6 +132,7 @@
 	'iu' => 'ᐃᓄᒃᑎᑐᑦ/inuktitut',	# Inuktitut (macro language - do no localise, see ike/ikt - falls back to ike-cans)
 	'ja' => '日本語',	# Japanese
 	'jbo' => 'Lojban',		# Lojban
+	'jut' => 'Jysk',	# Jutish / Jutlandic
 	'jv' => 'Basa Jawa',	# Javanese
 	'ka' => 'ქართული',	# Georgian
 	'kaa' => 'Qaraqalpaqsha',	# Karakalpak
@@ -178,6 +179,7 @@
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
 	'lzz' => 'Lazuri Nena',	#Laz
+	'mai' => 'मैथिली', # Maithili
 	'map-bms' => 'Basa Banyumasan', # Banyumasan 
 	'mdf' => 'мокшень кяль',		# Moksha
 	'mg' => 'Malagasy',		# Malagasy
@@ -242,6 +244,10 @@
 	'roa-rup' => 'Armãneashce', # Aromanian
 	'roa-tara' => 'Tarandíne',	# Tarantino
 	'ru' => 'Русский',	# Russian
+	'ruq' => 'Vlăheşte',	# Megleno-Romanian (redirects to ruq-latn)
+	'ruq-cyrl' => 'Влахесте',	# Megleno-Romanian (Cyrillic script)
+	'ruq-grek' => 'Βλαεστε',	# Megleno-Romanian (Greek script)
+	'ruq-latn' => 'Vlăheşte',	# Megleno-Romanian (Latin script)
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit
 	'sah' => 'Саха тыла', # Sakha
@@ -288,7 +294,7 @@
 	'tn' => 'Setswana',		# Setswana
 	'to' => 'faka-Tonga',		# Tonga (Tonga Islands)
 	'tokipona' => 'Toki Pona',      # Toki Pona
-	'tp' => 'Toki Pona',	# Toki Pona - non-standard language code
+	'tp' => 'Toki Pona (deprecated:tokipona)',	# Toki Pona - non-standard language code
 	'tpi' => 'Tok Pisin',	# Tok Pisin
 	'tr' => 'Türkçe',	# Turkish
 	'ts' => 'Xitsonga',		# Tsonga

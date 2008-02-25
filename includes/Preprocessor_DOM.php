@@ -588,6 +588,8 @@ class Preprocessor_DOM implements Preprocessor {
 class PPDStack {
 	var $stack, $rootAccum, $top;
 	var $out;
+	var $elementClass = 'PPDStackElement';
+	
 	static $false = false;
 
 	function __construct() {
@@ -614,10 +616,11 @@ class PPDStack {
 	}
 
 	function push( $data ) {
-		if ( $data instanceof PPDStackElement ) {
+		if ( $data instanceof $this->elementClass ) {
 			$this->stack[] = $data;
 		} else {
-			$this->stack[] = new PPDStackElement( $data );
+			$class = $this->elementClass;
+			$this->stack[] = new $class( $data );
 		}
 		$this->top = $this->stack[ count( $this->stack ) - 1 ];
 		$this->accum =& $this->top->getAccum();
@@ -664,8 +667,11 @@ class PPDStackElement {
 		$parts,             // Array of PPDPart objects describing pipe-separated parts.
 		$lineStart;         // True if the open char appeared at the start of the input line. Not set for headings.
 
+	var $partClass = 'PPDPart';
+
 	function __construct( $data = array() ) {
-		$this->parts = array( new PPDPart );
+		$class = $this->partClass;
+		$this->parts = array( new $class );
 
 		foreach ( $data as $name => $value ) {
 			$this->$name = $value;
@@ -677,7 +683,8 @@ class PPDStackElement {
 	}
 
 	function addPart( $s = '' ) {
-		$this->parts[] = new PPDPart( $s );
+		$class = $this->partClass;
+		$this->parts[] = new $class( $s );
 	}
 
 	function getCurrentPart() {
@@ -733,7 +740,7 @@ class PPDPart {
 }
 
 /**
- * An expansion frame, used as a context to expand the result of preprocessToDom()
+ * An expansion frame, used as a context to expand the result of preprocessToObj()
  */
 class PPFrame_DOM implements PPFrame {
 	var $preprocessor, $parser, $title;
@@ -1290,8 +1297,10 @@ class PPNode_DOM implements PPNode {
 	}
 
 	/**
-	 * Split an <arg> node into a three-element array: 
-	 *    PPNode name, string index and PPNode value
+	 * Split a <part> node into an associative array containing:
+	 *    name          PPNode name
+	 *    index         String index
+	 *    value         PPNode value 
 	 */
 	function splitArg() {
 		$names = $this->xpath->query( 'name', $this->node );

@@ -8,8 +8,6 @@
  * @author JJohnson
  */
 
-
-
 $messages = array(
 # User preference toggles
 'tog-underline' => 'Undermearcian bendas:',
@@ -197,7 +195,7 @@ $messages = array(
 'loginsuccess'               => "'''Þu eart nū inmeldod tō {{SITENAME}} swā \"\$1\".'''",
 'nosuchuser'                 => 'Þǣr is nān brūcere be þǣm naman "$1".
 Edscēawa þīne wrītunge, oþþe brūc þone form under tō settene nīwne brūcendhordcleofan.',
-'nosuchusershort'            => 'Þǣr is nān brūcend mid þǣm naman "$1".  Edscēawa on þīne wrītunge.',
+'nosuchusershort'            => 'Þǣr is nān brūcend mid þǣm naman "<nowiki>$1</nowiki>".  Edscēawa on þīne wrītunge.',
 'acct_creation_throttle_hit' => 'Hwæt, þu hæfst gēo geseted $1 hordcleofan. Þu ne canst settan ǣnige māran.',
 'accountcreated'             => 'Hordcleofan gescapen',
 'loginlanguagelabel'         => 'Sprǣc: $1',
@@ -258,15 +256,20 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'histfirst' => 'Ǣrest',
 'histlast'  => 'Endenīehst',
 
+# Revision deletion
+'rev-delundel' => 'scēawian/hȳdan',
+
 # Diffs
 'difference'              => '(Scēadung betwēonan hweorfungum)',
-'lineno'                  => 'Líne $1:',
+'lineno'                  => 'Līne $1:',
 'compareselectedversions' => 'Geefnettan gecorena fadunga',
+'editundo'                => 'undōn',
 
 # Search results
 'searchresults'         => 'Sōcnfintan',
 'searchsubtitle'        => "Þu sōhtest '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Þu sōhtest '''$1'''",
+'notextmatches'         => 'Nāne trametrahtes mæccan',
 'nextn'                 => 'nīehst $1',
 'showingresults'        => 'Īewan under oþ <b>$1</b> tōhīgunga onginnenda mid #<b>$2</b>.',
 'showingresultsnum'     => 'Under sind <b>$3</b> tóhígunga onginnende mid #<b>$2</b>.',

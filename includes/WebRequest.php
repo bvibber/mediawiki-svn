@@ -42,8 +42,19 @@ if ( !function_exists( '__autoload' ) ) {
  *
  */
 class WebRequest {
+	var $data = array();
+	var $headers;
+	private $_response;
+	
 	function __construct() {
+		/// @fixme This preemptive de-quoting can interfere with other web libraries
+		///        and increases our memory footprint. It would be cleaner to do on
+		///        demand; but currently we have no wrapper for $_SERVER etc.
 		$this->checkMagicQuotes();
+		
+		// POST overrides GET data
+		// We don't use $_REQUEST here to avoid interference from cookies...
+		$this->data = array_merge( $_GET, $_POST );
 	}
 	
 	/**
@@ -110,7 +121,7 @@ class WebRequest {
 				$matches['title'] = substr( $_SERVER['PATH_INFO'], 1 );
 			}
 			foreach( $matches as $key => $val) {
-				$_GET[$key] = $_REQUEST[$key] = $val;
+				$this->data[$key] = $_GET[$key] = $_REQUEST[$key] = $val;
 			}
 		}
 	}
@@ -143,8 +154,6 @@ class WebRequest {
 		}
 		return array();
 	}
-	
-	private $_response;
 
 	/**
 	 * Recursively strips slashes from the given array;
@@ -172,7 +181,7 @@ class WebRequest {
 	 * @private
 	 */
 	function checkMagicQuotes() {
-		if ( get_magic_quotes_gpc() ) {
+		if ( function_exists( 'get_magic_quotes_gpc' ) && get_magic_quotes_gpc() ) {
 			$this->fix_magic_quotes( $_COOKIE );
 			$this->fix_magic_quotes( $_ENV );
 			$this->fix_magic_quotes( $_GET );
@@ -236,7 +245,7 @@ class WebRequest {
 	 * @return string
 	 */
 	function getVal( $name, $default = NULL ) {
-		$val = $this->getGPCVal( $_REQUEST, $name, $default );
+		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_array( $val ) ) {
 			$val = $default;
 		}
@@ -257,7 +266,7 @@ class WebRequest {
 	 * @return array
 	 */
 	function getArray( $name, $default = NULL ) {
-		$val = $this->getGPCVal( $_REQUEST, $name, $default );
+		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_null( $val ) ) {
 			return null;
 		} else {
@@ -362,7 +371,7 @@ class WebRequest {
 	function getValues() {
 		$names = func_get_args();
 		if ( count( $names ) == 0 ) {
-			$names = array_keys( $_REQUEST );
+			$names = array_keys( $this->data );
 		}
 
 		$retVal = array();
@@ -579,7 +588,34 @@ class WebRequest {
 		} 
 		return $this->_response;
 	}
-	
+
+	/**
+	 * Get a request header, or false if it isn't set
+	 * @param string $name Case-insensitive header name
+	 */
+	function getHeader( $name ) {
+		$name = strtoupper( $name );
+		if ( function_exists( 'apache_request_headers' ) ) {
+			if ( !isset( $this->headers ) ) {
+				$this->headers = array();
+				foreach ( apache_request_headers() as $tempName => $tempValue ) {
+					$this->headers[ strtoupper( $tempName ) ] = $tempValue;
+				}
+			}
+			if ( isset( $this->headers[$name] ) ) {
+				return $this->headers[$name];
+			} else {
+				return false;
+			}
+		} else {
+			$name = 'HTTP_' . str_replace( '-', '_', $name );
+			if ( isset( $_SERVER[$name] ) ) {
+				return $_SERVER[$name];
+			} else {
+				return false;
+			}
+		}
+	}
 }
 
 /**
@@ -587,7 +623,6 @@ class WebRequest {
  *
  */
 class FauxRequest extends WebRequest {
-	var $data = null;
 	var $wasPosted = false;
 
 	/**
@@ -602,15 +637,12 @@ class FauxRequest extends WebRequest {
 			throw new MWException( "FauxRequest() got bogus data" );
 		}
 		$this->wasPosted = $wasPosted;
-	}
-
-	function getVal( $name, $default = NULL ) {
-		return $this->getGPCVal( $this->data, $name, $default );
+		$this->headers = array();
 	}
 
 	function getText( $name, $default = '' ) {
 		# Override; don't recode since we're using internal data
-		return $this->getVal( $name, $default );
+		return (string)$this->getVal( $name, $default );
 	}
 
 	function getValues() {
@@ -631,6 +663,10 @@ class FauxRequest extends WebRequest {
 
 	function appendQuery( $query ) {
 		throw new MWException( 'FauxRequest::appendQuery() not implemented' );
+	}
+
+	function getHeader( $name ) {
+		return isset( $this->headers[$name] ) ? $this->headers[$name] : false;
 	}
 
 }

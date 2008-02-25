@@ -8,6 +8,8 @@
  * @author Matasg
  * @author Pdxx
  * @author Garas
+ * @author SPQRobin
+ * @author Hugo.arg
  */
 
 $namespaceNames = array(
@@ -308,6 +310,7 @@ $messages = array(
 'site-atom-feed'          => '$1 Atom šaltinis',
 'page-rss-feed'           => '„$1“ RSS šaltinis',
 'page-atom-feed'          => '„$1“ Atom šaltinis',
+'red-link-title'          => '$1 (dar neparašytas)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Puslapis',
@@ -390,7 +393,7 @@ Užklausa: $2',
 'protectedpagetext'    => 'Šis puslapis yra užrakintas, saugant jį nuo redagavimo.',
 'viewsourcetext'       => 'Jūs galite žiūrėti ir kopijuoti puslapio kodą:',
 'protectedinterface'   => 'Šiame puslapyje yra programinės įrangos sąsajos tekstas ir yra apsaugotas, kad būtų apsisaugota nuo piktnaudžiavimo.',
-'editinginterface'     => "'''Dėmesio:''' Jūs redaguojate puslapį, kuris yra naudojamas programinės įrangos sąsajos tekste. Pakeitimai šiame puslapyje taip pat pakeis naudotojo sąsajos išvaizdą ir kitiems naudojams. Jei norite išversti, siūlome pasinaudoti [http://translatewiki.net/wiki/Translating:Intro Betawiki], MediaWiki lokalizacijos projektu.",
+'editinginterface'     => "'''Dėmesio:''' Jūs redaguojate puslapį, kuris yra naudojamas programinės įrangos sąsajos tekste. Pakeitimai šiame puslapyje taip pat pakeis naudotojo sąsajos išvaizdą ir kitiems naudojams. Jei norite išversti, siūlome pasinaudoti [http://translatewiki.net/wiki/Main_Page?setlang=lt Betawiki], MediaWiki lokalizacijos projektu.",
 'sqlhidden'            => '(SQL užklausa paslėpta)',
 'cascadeprotected'     => 'Šis puslapis buvo apsaugotas nuo redagavimo, kadangi jis yra įtrauktas į {{PLURAL:$1|šį puslapį, apsaugotą|šiuos puslapius, apsaugotus}} „pakopinės apsaugos“ pasirinktimi:
 $2',
@@ -449,7 +452,7 @@ Jūsų paskyra buvo sukurta. Nepamirškite pakeisti savo {{SITENAME}} nustatymų
 'loginsuccesstitle'          => 'Sėkmingai prisijungėte',
 'loginsuccess'               => "'''Dabar jūs prisijungęs prie {{SITENAME}} kaip „$1“.'''",
 'nosuchuser'                 => 'Nėra jokio naudotojo pavadinto „$1“. Patikrinkite rašybą, arba sukurkite naują paskyrą.',
-'nosuchusershort'            => 'Nėra jokio naudotojo pavadinto „$1“. Patikrinkite rašybą.',
+'nosuchusershort'            => 'Nėra jokio naudotojo pavadinto „<nowiki>$1</nowiki>“. Patikrinkite rašybą.',
 'nouserspecified'            => 'Jums reikia nurodyti naudotojo vardą.',
 'wrongpassword'              => 'Įvestas neteisingas slaptažodis. Pamėginkite dar kartą.',
 'wrongpasswordempty'         => 'Įvestas slaptažodis yra tuščias. Pamėginkite vėl.',
@@ -789,6 +792,7 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'searchsubtitleinvalid' => "Ieškoma '''$1'''",
 'noexactmatch'          => "'''Nėra jokio puslapio, pavadinto „$1“.''' Jūs galite [[:$1|sukurti šį puslapį]].",
 'noexactmatch-nocreate' => "'''Nėra puslapio su pavadinimu „$1“.'''",
+'toomanymatches'        => 'Perdaug atitikmenų buvo grąžinta. Prašome pabandyti kitokią užklausą',
 'titlematches'          => 'Puslapių pavadinimų atitikmenys',
 'notitlematches'        => 'Jokių pavadinimo atitikmenų',
 'textmatches'           => 'Puslapio turinio atitikmenys',
@@ -1378,7 +1382,7 @@ Atsiliepimai ir pagalba:
 'confirmdeletetext'           => 'Jūs pasirinkote ištrinti puslapį ar paveikslėlį kartu su visa jo istorija.
 Prašome patvirtinti, kad jūs tikrai norite tai padaryti, žinote apie galimus padarinius, ir kad jūs tai darote atsižvelgdami į [[{{MediaWiki:Policy-url}}|politiką]].',
 'actioncomplete'              => 'Veiksmas atliktas',
-'deletedtext'                 => '„$1“ ištrintas.
+'deletedtext'                 => '„<nowiki>$1</nowiki>“ ištrintas.
 Paskutinių šalinimų istorija - $2.',
 'deletedarticle'              => 'ištrynė „[[$1]]“',
 'dellogpage'                  => 'Šalinimų istorija',
@@ -1421,7 +1425,7 @@ Prašome paspausti „atgal“ ir perkraukite puslapį iš kurio atėjote, ir pa
 'protect_expiry_old'          => 'Galiojimo laikas yra praeityje.',
 'unprotectsub'                => '(Atrakinamas „$1“)',
 'protect-unchain'             => 'Atrakinti pervardinimo teises',
-'protect-text'                => 'Čia jūs gali matyti ir keisti apsaugos lygį puslapiui <strong>$1</strong>.',
+'protect-text'                => 'Čia jūs gali matyti ir keisti apsaugos lygį puslapiui <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Jūs negalite keisti apsaugos lygių, kol esate užbluokuotas.
 Čia yra dabartiniai nustatymai puslapiui <strong>$1</strong>:',
 'protect-locked-dblock'       => 'Apsaugos lygiai negali būti pakeisti dėl duomenų bazės užrakinimo.
@@ -1473,6 +1477,7 @@ Failų versijos, kurių neturite teisių žiūrėti, nebus atkurtos.',
 'undeleterevision-missing'     => 'Neteisinga arba dingusi versija. Jūs turbūt turite blogą nuorodą, arba versija buvo atkurta arba pašalinta iš archyvo.',
 'undelete-nodiff'              => 'Nerasta jokių ankstesnių versijų.',
 'undeletebtn'                  => 'Atkurti',
+'undeletelink'                 => 'atstatyti',
 'undeletereset'                => 'Iš naujo',
 'undeletecomment'              => 'Komentaras:',
 'undeletedarticle'             => 'atkurta „[[$1]]“',
@@ -1735,7 +1740,6 @@ Pastaruoju atveju, jūs taip pat galite naudoti nuorodą, pvz. [[{{ns:special}}:
 
 # Thumbnails
 'thumbnail-more'           => 'Padidinti',
-'missingimage'             => '<b>Trūkstamas paveikslėlis</b><br /><i>$1</i>',
 'filemissing'              => 'Dingęs failas',
 'thumbnail_error'          => 'Klaida kuriant sumažintą paveikslėlį: $1',
 'djvu_page_error'          => 'DjVu puslapis nepasiekiamas',
@@ -2298,11 +2302,10 @@ $1',
 'useajaxsearch'    => 'Naudoti AJAX paiešką',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← ankstesnis puslapis',
-'imgmultipagenext'   => 'kitas puslapis →',
-'imgmultigo'         => 'Eiti!',
-'imgmultigotopre'    => 'Pereiti į puslapį',
-'imgmultiparseerror' => 'Paveikslėlio failas atrodo yra pažeistas arba neteisingas, taigi {{SITENAME}} negali gauti puslapių sąrašo.',
+'imgmultipageprev' => '← ankstesnis puslapis',
+'imgmultipagenext' => 'kitas puslapis →',
+'imgmultigo'       => 'Eiti!',
+'imgmultigotopre'  => 'Pereiti į puslapį',
 
 # Table pager
 'ascending_abbrev'         => 'didėjanti tvarka',
@@ -2360,5 +2363,28 @@ $1',
 
 # Core parser functions
 'unknown_extension_tag' => 'Nežinoma priedo žymė „$1“',
+
+# Special:Version
+'version-extensions'               => 'Instaliuoti priedai',
+'version-specialpages'             => 'Specialieji puslapiai',
+'version-variables'                => 'Kintamieji',
+'version-other'                    => 'Kita',
+'version-mediahandlers'            => 'Media dresiruotojai',
+'version-extension-functions'      => 'Papildomos funkcijos',
+'version-skin-extension-functions' => 'Išvaizdos papildinių funkcijos',
+'version-hook-subscribedby'        => 'Užsakyta',
+'version-version'                  => 'versija',
+'version-license'                  => 'Licenzija',
+'version-software'                 => 'Instaliuota programinė įranga',
+'version-software-product'         => 'Produktas',
+'version-software-version'         => 'Versija',
+
+# Special:Filepath
+'filepath'         => 'Failo kelias',
+'filepath-page'    => 'Failas:',
+'filepath-submit'  => 'Kelias',
+'filepath-summary' => 'Šis specialusis puslapis parašo pilną kelią iki failo. Paveikslėliai yra rodomi pilna raiška, kiti failų tipai paleidžiami tiesiogiai su jų susietąja programa.
+
+Įveskite failo pavadinimą be „{{ns:image}}:“ priedėlio.',
 
 );

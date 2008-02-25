@@ -83,7 +83,7 @@ class PageHistory {
 		 * Fail if article doesn't exist.
 		 */
 		if( !$this->mTitle->exists() ) {
-			$wgOut->addWikiText( wfMsg( 'nohistory' ) );
+			$wgOut->addWikiMsg( 'nohistory' );
 			wfProfileOut( $fname );
 			return;
 		}
@@ -483,10 +483,17 @@ class PageHistory {
 	function feed( $type ) {
 		require_once 'SpecialRecentchanges.php';
 		
-		global $wgFeedClasses;
+		global $wgFeed, $wgFeedClasses;
+		
+		if ( !$wgFeed ) {
+			global $wgOut;
+			$wgOut->addWikiMsg( 'feed-unavailable' );
+			return;
+		}
+		
 		if( !isset( $wgFeedClasses[$type] ) ) {
 			global $wgOut;
-			$wgOut->addWikiText( wfMsg( 'feed-invalid' ) );
+			$wgOut->addWikiMsg( 'feed-invalid' );
 			return;
 		}
 		

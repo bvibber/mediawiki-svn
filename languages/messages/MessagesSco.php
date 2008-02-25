@@ -8,7 +8,11 @@
  * @author Nike
  * @author OchAyeTheNoo
  * @author לערי ריינהארט
+ * @author Siebrand
+ * @author Malafaya
  */
+
+
 
 $messages = array(
 # User preference toggles
@@ -142,6 +146,7 @@ $messages = array(
 'mytalk'         => 'Ma collogue',
 'anontalk'       => 'Collogue for this IP',
 'navigation'     => 'Navigation',
+'and'            => 'an',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -333,7 +338,9 @@ $2',
 # Login and logout pages
 'logouttitle'                => 'Uiser logoot',
 'logouttext'                 => "Ye'r nou loggit oot. Ye can continue to uise {{SITENAME}} namelessly, or ye can log in again as the same or as a different uiser. Mynd that some pages micht continue tae be displayed as if ye war aye loggit in, till ye clear yer brouser cache.",
-'welcomecreation'            => '== Guid tae see ye, $1! == Yer accoont haes been creatit. Mynd an chynge yer {{SITENAME}} preferences.',
+'welcomecreation'            => '== Guid tae see ye, $1! ==
+
+Yer accoont haes been creatit. Mynd an chynge yer {{SITENAME}} preferences.',
 'loginpagetitle'             => 'Uiser login',
 'yourname'                   => 'Yer uiser name',
 'yourpassword'               => 'Yer password',
@@ -376,7 +383,7 @@ $2',
 'loginsuccesstitle'          => 'Login fine',
 'loginsuccess'               => 'Ye\'re nou loggit in tae {{SITENAME}} as "$1".',
 'nosuchuser'                 => 'The\'r nae sic uiser as "$1". Check yer spellin, or uise the form ablo tae mak a new uiser accoont.',
-'nosuchusershort'            => 'The\'r nae sic uiser as "$1". Check yer spellin.',
+'nosuchusershort'            => 'The\'r nae sic uiser as "<nowiki>$1</nowiki>". Check yer spellin.',
 'nouserspecified'            => 'Ye hae tae merk up a uisername.',
 'wrongpassword'              => 'The password ye entered is wrang. Please gie it anither shot.',
 'wrongpasswordempty'         => 'The password ye entered is blank. Please gie it anither shot.',
@@ -865,7 +872,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'watchnologin'         => 'Nae loggit in',
 'watchnologintext'     => 'Ye maun be [[Special:Userlogin|loggit in]] tae modify yer watchleet.',
 'addedwatch'           => 'Eikit ti watchleet',
-'addedwatchtext'       => "The page \"\$1\" haes been eikit ti yer [[Special:Watchlist|watchleet]]. Futur chynges ti this page an its associate Collogue page will be leetit thare, an the page will kythe '''bauldit''' in the [[Special:Recentchanges|leet o recent chynges]] ti mak it mair eith tae pick oot. <p>Gin ye want ti remuve the page frae yer watchleet later, dab \"Stop watching\" in the sidebar.",
+'addedwatchtext'       => "The page \"<nowiki>\$1</nowiki>\" haes been eikit ti yer [[Special:Watchlist|watchleet]]. Futur chynges ti this page an its associate Collogue page will be leetit thare, an the page will kythe '''bauldit''' in the [[Special:Recentchanges|leet o recent chynges]] ti mak it mair eith tae pick oot. <p>Gin ye want ti remuve the page frae yer watchleet later, dab \"Stop watching\" in the sidebar.",
 'removedwatch'         => 'Remuved frae watchleet',
 'removedwatchtext'     => 'The page "[[:$1]]" haes been remuved frae yer watchleet.',
 'notanarticle'         => 'No a content page',
@@ -887,13 +894,12 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'excontentauthor'     => "content wis: '$1' (an the ae contreibutor wis '[[Special:Contributions/$2|$2]]')",
 'exbeforeblank'       => "content afore blankin wis: '$1'",
 'exblank'             => 'page wis tuim',
-'deletesub'           => '(Deletin "$1")',
 'historywarning'      => "Warnin: The page ye're aboot tae delete haes a history:",
 'confirmdeletetext'   => "Ye'r aboot tae permanently delete a page or eimage alang wi aa its history frae the database.
 Please confirm that ye intend tae dae this, that ye unnerstaun the consequences,
 an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'      => 'Action duin',
-'deletedtext'         => '"$1" haes been delete. See $2 for a record o recent deletions.',
+'deletedtext'         => '"<nowiki>$1</nowiki>" haes been delete. See $2 for a record o recent deletions.',
 'deletedarticle'      => 'deletit "[[$1]]"',
 'dellogpagetext'      => 'Ablo is a leet o the maist recent deletions.',
 'reverted'            => 'Revertit tae aulder reveision',
@@ -905,14 +911,14 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'cantrollback'        => 'Canna revert edit; last contreibutor is the ae author o this page.',
 'alreadyrolled'       => 'Canna rowback last edit o [[$1]] bi [[User:$2|$2]] ([[User talk:$2|Talk]]); some ither bodie haes editit or rowed back the page aareadies. Last edit wis bi [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'         => 'The edit comment wis: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'          => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]',
+'revertpage'          => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogtext'      => 'Ablo is a leet o page locks/unlocks. See the [[Special:Protectedpages|protected pages list]] for the list of currently operational page protections.',
 'protectedarticle'    => 'protectit "[[$1]]"',
 'unprotectedarticle'  => 'unprotectit "[[$1]]"',
 'protectsub'          => '(Protectin "$1")',
 'protectcomment'      => 'Raeson for protectin',
 'unprotectsub'        => '(Unprotectin "$1")',
-'protect-text'        => 'Ye can see an chynge the protection level here for the page <strong>$1</strong>.',
+'protect-text'        => 'Ye can see an chynge the protection level here for the page <strong><nowiki>$1</nowiki></strong>.',
 'protect-level-sysop' => 'Juist administrators',
 
 # Undelete
@@ -1038,8 +1044,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'allmessagesmodified'       => 'Juist shaw chynged',
 
 # Thumbnails
-'missingimage' => '<b>Missin eimage</b><br /><i>$1</i>',
-'filemissing'  => 'File missin',
+'filemissing' => 'File missin',
 
 # Special:Import
 'importtext'            => 'Please export the file frae the soorce wiki uisin the Special:Export utility, hain it in yer disc an uplaid it here.',
@@ -1066,7 +1071,6 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 # Attribution
 'anonymous'     => 'Nameless uiser(s) o {{SITENAME}}',
 'siteuser'      => '{{SITENAME}} uiser $1',
-'and'           => 'an',
 'othercontribs' => 'Based on wark bi $1.',
 'others'        => 'ithers',
 'siteusers'     => '{{SITENAME}} uiser(s) $1',

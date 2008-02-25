@@ -519,6 +519,10 @@ Alternatively, modifying $error and returning true will cause the contents of $e
 to be echoed at the top of the edit form as wikitext. Return true without altering
 $error to allow the edit to proceed.
 
+'EditPageBeforeEditButtons':  allows modifying the edit buttons below the textarea in the edit form
+&$editpage: The current EditPage object
+&$buttons: Array of edit buttons "Save", "Preview", "Live", and "Diff"
+
 'EditSectionLink': Override the return value of Linker::editSectionLink()
 $skin: Skin rendering the UI
 $title: Title being linked to
@@ -636,6 +640,12 @@ $lang: laguage code (string)
 'LanguageGetSpecialPageAliases': Use to define aliases of special pages names depending of the language
 $specialPageAliases: associative array of magic words synonyms
 $lang: laguage code (string)
+
+'LinksUpdate': At the beginning of LinksUpdate::doUpdate() just before the actual update
+&$linksUpdate: the LinkUpdate object
+
+'LinksUpdateComplete': At the end of LinksUpdate::doUpdate() when updating has completed
+&$linksUpdate: the LinkUpdate object
 
 'LinksUpdateConstructed': At the end of LinksUpdate() is contruction.
 &$linksUpdate: the LinkUpdate object
@@ -755,6 +765,9 @@ $parser: Parser object being used
 $text: actual text
 
 'ParserClearState': called at the end of Parser::clearState()
+$parser: Parser object being cleared
+
+'ParserFirstCallInit': called when the ther parser initialises for the first time
 $parser: Parser object being cleared
 
 'ParserGetVariableValueSwitch': called when the parser need the value of a custom magic word

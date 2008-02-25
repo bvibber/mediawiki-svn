@@ -7,6 +7,7 @@
  * @author Helix84
  * @author לערי ריינהארט
  * @author Siebrand
+ * @author Malafaya
  */
 
 $skinNames = array(
@@ -167,6 +168,7 @@ $messages = array(
 'mytalk'         => 'Nire eztabaida',
 'anontalk'       => 'IP honen eztabaida',
 'navigation'     => 'Nabigazioa',
+'and'            => 'eta',
 
 'errorpagetitle'    => 'Errorea',
 'returnto'          => '$1(e)ra itzuli.',
@@ -393,7 +395,7 @@ Zure kontua sortu egin da. Ez ahaztu {{SITENAME}}(e)ko hobespenak aldatzea.',
 'loginsuccesstitle'          => 'Saio hasiera egina',
 'loginsuccess'               => "'''Saioa hasi duzu {{SITENAME}}(e)n \"\$1\" izenarekin.'''",
 'nosuchuser'                 => 'Ez dago "$1" izena duen lankiderik. Mesedez, egiaztatu ondo idatzi duzun edo kontu berria sor ezazu.',
-'nosuchusershort'            => 'Ez dago "$1" izena duen erabiltzailerik. Egiaztatu ongi idatzi duzula.',
+'nosuchusershort'            => 'Ez dago "<nowiki>$1</nowiki>" izena duen erabiltzailerik. Egiaztatu ongi idatzi duzula.',
 'nouserspecified'            => 'Erabiltzaile izena zehaztu beharra daukazu.',
 'wrongpassword'              => 'Pasahitza ez da zuzena. Saiatu berriz.',
 'wrongpasswordempty'         => 'Pasahitza hutsik dago. Saiatu berriz.',
@@ -994,7 +996,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'watchnologin'         => 'Saioa hasi gabe',
 'watchnologintext'     => '[[Special:Userlogin|Saioa hasi]] behar duzu zure jarraipen zerrenda aldatzeko.',
 'addedwatch'           => 'Jarraipen zerrendan gehitu da',
-'addedwatchtext'       => "\"\$1\" orrialdea zure [[Special:Watchlist|jarraipen edo zelatatuen zerrendara]] erantsi da. Orrialde honen hurrengo aldaketak zerrenda horretan ageriko dira aurrerantzean, eta gainera [[Special:Recentchanges|aldaketa berrien zerrendan]] beltzez ageriko da, erraztasunez antzeman ahal izateko.
+'addedwatchtext'       => "\"<nowiki>\$1</nowiki>\" orrialdea zure [[Special:Watchlist|jarraipen edo zelatatuen zerrendara]] erantsi da. Orrialde honen hurrengo aldaketak zerrenda horretan ageriko dira aurrerantzean, eta gainera [[Special:Recentchanges|aldaketa berrien zerrendan]] beltzez ageriko da, erraztasunez antzeman ahal izateko.
 
 Jarraipen zerrendatik artikulua kentzeko, artikuluan ''ez jarraitu''ri eman.",
 'removedwatch'         => 'Jarraipen zerrendatik ezabatuta',
@@ -1059,12 +1061,10 @@ Laguntza:
 'excontentauthor'             => "edukia honakoa zen: '$1' (parte hartu duen lankide bakarra: '$2')",
 'exbeforeblank'               => "hustu aurreko edukiera: '$1'",
 'exblank'                     => 'orrialdea hutsik zegoen',
-'confirmdelete'               => 'Ezabaketa baieztatu',
-'deletesub'                   => '("$1" ezabatzen)',
 'historywarning'              => 'Kontuz! Ezabatuko duzun orrialdeak honako historia du:',
 'confirmdeletetext'           => 'Orrialde edo irudi bat eta beste historia guztia datu-basetik ezabatzear zaude. Mesedez, egiaztatu hori egin nahi duzula, ondorioak zeintzuk diren badakizula, eta [[{{MediaWiki:Policy-url}}|politikak]] errespetatuz egingo duzula.',
 'actioncomplete'              => 'Ekintza burutu da',
-'deletedtext'                 => '"$1" ezabatu egin da. Ikus $2 azken ezabaketen erregistroa ikusteko.',
+'deletedtext'                 => '"<nowiki>$1</nowiki>" ezabatu egin da. Ikus $2 azken ezabaketen erregistroa ikusteko.',
 'deletedarticle'              => '"[[$1]]" ezabatu da',
 'dellogpage'                  => 'Ezabaketa erregistroa',
 'dellogpagetext'              => 'Behean ikus daiteke azken ezabaketen zerrenda.',
@@ -1078,7 +1078,7 @@ Laguntza:
 'cantrollback'                => 'Ezin da aldaketa desegin; erabiltzaile bakarrak hartu du parte.',
 'alreadyrolled'               => 'Ezin da [[User:$2|$2]](e)k ([[User talk:$2|Eztabaida]]) [[$1]](e)n egindako azken aldaketa desegin; beste norbaitek editatu du edo jada desegin du. Azken aldaketa [[User:$3|$3]](e)k ([[User talk:$3|Eztabaida]]) egin du.',
 'editcomment'                 => 'Aldaketaren iruzkina: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => '$2ren aldaketak ezabatu dira, $1ren azken bertsiora itzuliz.',
+'revertpage'                  => '$2ren aldaketak ezabatu dira, $1ren azken bertsiora itzuliz.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'sessionfailure'              => 'Badirudi saioarekin arazoren bat dagoela; bandalismoak saihesteko ekintza hau ezeztatu egin da. Mesedez, nabigatzaileko "atzera" botoian klik egin, hona ekarri zaituen orrialde hori berriz kargatu, eta saiatu berriz.',
 'protectlogpage'              => 'Babes erregistroa',
 'protectlogtext'              => 'Orrialdeen blokeo eta desblokeo zerrenda azaltzen da jarraian.',
@@ -1090,7 +1090,7 @@ Laguntza:
 'protectcomment'              => 'Babesteko arrazoia',
 'unprotectsub'                => '(babesa kentzen: "$1")',
 'protect-unchain'             => 'Mugitzeko blokeoa kendu',
-'protect-text'                => '<strong>$1</strong> orrialdearen babes maila ikusi eta aldatu egin beharko zenuke.',
+'protect-text'                => '<strong><nowiki>$1</nowiki></strong> orrialdearen babes maila ikusi eta aldatu egin beharko zenuke.',
 'protect-default'             => '(lehenetsia)',
 'protect-level-autoconfirmed' => 'Erregistratu gabeko erabiltzaileak blokeatu',
 'protect-level-sysop'         => 'Administratzaileak bakarrik',
@@ -1180,7 +1180,7 @@ $1',
 'ipbcreateaccount'            => 'Kontua sortzea debekatu',
 'ipbsubmit'                   => 'Erabiltzaile hau blokeatu',
 'ipbother'                    => 'Beste denbora-tarte bat',
-'ipboptions'                  => '15 minutu:15 minutes,30 minutu:30 minutes,ordu 1:1 hour,2 ordu:2 hours,egun bat:1 day,3 egun:3 days,aste 1:1 week,2 aste:2 weeks,hilabete 1:1 month,betirako:infinite',
+'ipboptions'                  => '15 minutu:15 minutes,30 minutu:30 minutes,ordu 1:1 hour,2 ordu:2 hours,egun bat:1 day,3 egun:3 days,aste 1:1 week,2 aste:2 weeks,hilabete 1:1 month,betirako:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'beste bat',
 'badipaddress'                => 'Baliogabeko IP helbidea',
 'blockipsuccesssub'           => 'Blokeoa burutu da',
@@ -1201,7 +1201,7 @@ $1',
 'contribslink'                => 'ekarpenak',
 'autoblocker'                 => '"[[User:$1|$1]]"(e)k berriki erabili duen IP helbidea duzulako autoblokeatu zaizu. $1(e)k emandako arrazoia zera da: "\'\'\'$2\'\'\'"',
 'blocklogpage'                => 'Blokeo erregistroa',
-'blocklogentry'               => '"[[User:$1|$1]]" $2(e)ko iraungipenarekin blokeatu da.',
+'blocklogentry'               => '"[[$1]]" $2(e)ko iraungipenarekin blokeatu da. $3',
 'blocklogtext'                => 'Erabiltzaileen blokeoen ezarpen eta ezabaketen erregistroa da hau. Ez dira automatikoki blokeatutako IP helbideak zerrendatzen. Ikus [[Special:Ipblocklist|IP blokeoen zerrenda]] aktibo dauden blokeoak aztertzeko.',
 'unblocklogentry'             => '$1 desblokeatu da',
 'block-log-flags-anononly'    => 'erabiltzaile anonimoak bakarrik',
@@ -1301,7 +1301,6 @@ Horrez gain, lotura zuzena ere erabil dezakezu; adibidez, [[{{ns:special}}:Expor
 
 # Thumbnails
 'thumbnail-more'  => 'Handitu',
-'missingimage'    => '<b>Irudia falta da</b><br /><i>$1</i>',
 'filemissing'     => 'Fitxategia falta da',
 'thumbnail_error' => 'Errorea irudi txikia sortzerakoan: $1',
 
@@ -1325,7 +1324,6 @@ Horrez gain, lotura zuzena ere erabil dezakezu; adibidez, [[{{ns:special}}:Expor
 'importhistoryconflict'      => 'Gatazka sortzen ari den berrikuspen historia dago (baliteke orrialdea lehenago inportatu izana)',
 'importnosources'            => 'Ez dago wikien arteko inportazio iturririk eta historialak zuzenean igotzea ezgaituta dago.',
 'importnofile'               => 'Ez da inportazio fitxategirik igo.',
-'importuploaderror'          => 'Inportazio fitxategiaren igoerak huts egin du; baliteke fitxategiaren tamaina baimendutakoa baino handiagoa izatea.',
 
 # Import log
 'importlogpage'                    => 'Inportazio erregistroa',
@@ -1405,7 +1403,6 @@ Horrez gain, lotura zuzena ere erabil dezakezu; adibidez, [[{{ns:special}}:Expor
 'anonymous'        => '{{SITENAME}}(e)ko lankide anonimoak',
 'siteuser'         => '{{SITENAME}}(e)ko $1 erabiltzailea',
 'lastmodifiedatby' => 'Orrialdearen azken aldaketa: $2, $1. Nork: $3.', # $1 date, $2 time, $3 user
-'and'              => 'eta',
 'othercontribs'    => '$1(r)en lanean oinarrituta.',
 'others'           => 'besteak',
 'siteusers'        => '{{SITENAME}}(e)ko $1 erabiltzailea(k)',
@@ -1488,7 +1485,7 @@ Zerrenda elementuak (hasieran * duten lerroak) baino ez dira kontuan hartzen. Le
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength',
+* focallength', # Do not translate list items
 
 # External editor support
 'edit-externally'      => 'Fitxategi hau editatu kanpo-aplikazio bat erabiliz',

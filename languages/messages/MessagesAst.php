@@ -222,7 +222,7 @@ $messages = array(
 'toolbox'           => 'Ferramientes',
 'userpage'          => "Ver páxina d'usuariu",
 'projectpage'       => 'Ver la páxina de proyeutu',
-'imagepage'         => "Ver la páxina d'imaxe",
+'imagepage'         => "Ver la páxina d'archivos multimedia",
 'mediawikipage'     => 'Ver la páxina de mensaxe',
 'templatepage'      => 'Ver la páxina de plantía',
 'viewhelppage'      => "Ver la páxina d'aida",
@@ -290,10 +290,12 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|una edición borrada|$1 ediciones borraes}}',
 'feedlinks'               => 'Canal:',
 'feed-invalid'            => 'Suscripción non válida a la triba de canal.',
+'feed-unavailable'        => 'Les canales de sindicación nun tán disponibles en {{SITENAME}}',
 'site-rss-feed'           => 'Canal RSS $1',
 'site-atom-feed'          => 'Canal Atom $1',
 'page-rss-feed'           => 'Canal RSS "$1"',
 'page-atom-feed'          => 'Canal Atom "$1"',
+'red-link-title'          => '$1 (tovía non escritu)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Páxina',
@@ -435,7 +437,7 @@ La to cuenta ta creada. Nun t'escaezas d'escoyer les tos preferencies de {{SITEN
 'loginsuccesstitle'          => 'Identificación correuta',
 'loginsuccess'               => "'''Quedasti identificáu en {{SITENAME}} como \"\$1\".'''",
 'nosuchuser'                 => 'Nun hai nengún usuariu col nome "$1". Corrixi la escritura o crea una nueva cuenta d\'usuariu.',
-'nosuchusershort'            => 'Nun hai nengún usuariu col nome "$1". Mira que tea bien escritu.',
+'nosuchusershort'            => 'Nun hai nengún usuariu col nome "<nowiki>$1</nowiki>". Mira que tea bien escritu.',
 'nouserspecified'            => "Has especificar un nome d'usuariu.",
 'wrongpassword'              => 'Clave errónea.  Inténtalo otra vuelta.',
 'wrongpasswordempty'         => 'La clave taba en blanco. Inténtalo otra vuelta.',
@@ -472,8 +474,7 @@ non válidu. Por favor escribi una direición con formatu afayadizu o dexa vaciu
 'accountcreated'             => 'Cuenta creada',
 'accountcreatedtext'         => "La cuenta d'usuariu de $1 ta creada.",
 'createaccount-title'        => 'Creación de cuenta pa {{SITENAME}}',
-'createaccount-text'         => 'Daquién ($1) creó una cuenta pa $2 en {{SITENAME}}
-($4). La clave de "$2" ye "$3". Habríes identificate y camudar la to clave agora.
+'createaccount-text'         => 'Daquién creó una cuenta pa la to direición de corréu electrónicu en {{SITENAME}} ($4) nomada "$2", asociada a la clave "$3". Habríes identificate y camudar la to clave agora.
 
 Pues inorar esti mensaxe si la cuenta foi creada por error.',
 'loginlanguagelabel'         => 'Llingua: $1',
@@ -506,7 +507,7 @@ Pues inorar esti mensaxe si la cuenta foi creada por error.',
 'image_sample'    => 'Exemplu.jpg',
 'image_tip'       => 'Inxertar imaxe',
 'media_sample'    => 'Exemplu.ogg',
-'media_tip'       => 'Enllaz a archivu multimedia',
+'media_tip'       => 'Enllaz a archivu',
 'sig_tip'         => 'La to firma con fecha',
 'hr_tip'          => 'Llinia horizontal (úsala con moderación)',
 
@@ -783,6 +784,7 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'searchsubtitleinvalid' => "Buscasti '''$1'''",
 'noexactmatch'          => "'''Nun esiste la páxina \"\$1\".''' Pues [[:\$1|crear esta páxina]].",
 'noexactmatch-nocreate' => "'''Nun hai nenguna páxina col títulu \"\$1\".'''",
+'toomanymatches'        => 'Atopáronse demasiaes coincidencies, por favor fai una consulta diferente',
 'titlematches'          => 'Coincidencies de los títulos de la páxina',
 'notitlematches'        => 'Nun hai coincidencies nel títulu de la páxina',
 'textmatches'           => 'Coincidencies del testu de la páxina',
@@ -949,9 +951,10 @@ Los grupos non seleicionaos nun se van modificar. Pues deseleicionar un grupu ca
 'uploadnologintext'           => 'Tienes que tar [[Special:Userlogin|identificáu]] pa poder xubir archivos.',
 'upload_directory_read_only'  => "El servidor nun pue modificar el direutoriu de xubida d'archivos ($1).",
 'uploaderror'                 => 'Error de xubida',
-'uploadtext'                  => "Usa'l formulariu d'abaxo pa xubir archivos. Pa ver o buscar imáxenes xubíes previamente, vete a la [[Special:Imagelist|llista d'imáxenes]]. Les xubíes y los borraos tamién queden conseñaos nel [[Special:Log/upload|rexistru de xubíes]].
+'uploadtext'                  => "Usa'l formulariu d'abaxo pa xubir archivos.
+Pa ver o buscar archivos xubíos previamente, vete a la [[Special:Imagelist|llista d'archivos xubíos]]. Les xubíes y los borraos tamién queden conseñaos nel [[Special:Log/upload|rexistru de xubíes]].
 
-P'amiestar la imaxe nuna páxina, usa un enllaz col formatu
+P'amiestar un archivu nuna páxina, usa un enllaz col formatu
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivu.jpg]]</nowiki>''',
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivu.png|testu alternativu]]</nowiki>''' o
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Archivu.ogg]]</nowiki>''' pa enllazar direutamente al archivu.",
@@ -980,12 +983,12 @@ P'amiestar la imaxe nuna páxina, usa un enllaz col formatu
 'largefileserver'             => 'Esti archivu ye mayor de lo que permite la configuración del servidor.',
 'emptyfile'                   => "L'archivu que xubisti paez tar vaciu. Esto podría ser pola mor d'un enquivocu nel nome l'archivu. Por favor, camienta si daveres quies xubir esti archivu.",
 'fileexists'                  => 'Yá esiste un archivu con esti nome, por favor comprueba <strong><tt>$1</tt></strong> si nun tas seguru de quere camudalu.',
-'filepageexists'              => 'Yá esiste una páxina (non imaxe) con esti nome, por favor revisa <strong><tt>$1</tt></strong> por si nun tas seguru de querer camudala.',
+'filepageexists'              => 'Yá esiste una páxina (que nun ye un archivu) con esti nome, por favor revisa <strong><tt>$1</tt></strong> por si nun tas seguru de querer camudala.',
 'fileexists-extension'        => 'Yá esiste un archivu con un nome asemeyáu:<br />
 Nome del archivu que se quier xubir: <strong><tt>$1</tt></strong><br />
 Nome del archivu esistente: <strong><tt>$2</tt></strong><br />
 Por favor escueyi un nome diferente.',
-'fileexists-thumb'            => "<center>'''Imaxe esistente'''</center>",
+'fileexists-thumb'            => "<center>'''Archivu esistente'''</center>",
 'fileexists-thumbnail-yes'    => "L'archivu paez ser una imaxe de tamañu menguáu <i>(miniatura)</i>. Por favor comprueba l'archivu <strong><tt>$1</tt></strong>.<br />
 Si l'archivu comprobáu tien el mesmu tamañu que la imaxe orixinal, nun ye necesario xubir una miniatura extra.",
 'file-thumbnail-no'           => "L'archivu entama con <strong><tt>$1</tt></strong>. Paez ser una imaxe de tamañu menguáu <i>(miniatura)</i>.
@@ -995,8 +998,8 @@ Si tienes esta imaxe a resolución completa xúbila; si non, por favor camuda'l 
 'successfulupload'            => 'Xubida correuta',
 'uploadwarning'               => "Avisu de xubíes d'archivos",
 'savefile'                    => 'Grabar archivu',
-'uploadedimage'               => 'Xubíu "[[$1]]"',
-'overwroteimage'              => 'xubida una versión nueva de "[[$1]]"',
+'uploadedimage'               => 'xubió "[[$1]]"',
+'overwroteimage'              => 'xubió una versión nueva de "[[$1]]"',
 'uploaddisabled'              => 'Deshabilitaes les xubíes',
 'uploaddisabledtext'          => "Les xubíes d'archivos tán desactivaes en {{SITENAME}}.",
 'uploadscripted'              => 'Esti archivu contién códigu HTML o scripts que puen ser interpretaos erróneamente por un navegador.',
@@ -1059,6 +1062,7 @@ Amuésase equí'l rexistru de borraos pa esti archivu a los efeutos oportunos:",
 'nolinkstoimage'            => "Nun hai páxines qu'enllacien a esti archivu.",
 'sharedupload'              => "L'archivu ye una xubida compartida y pue tar siendo usáu por otros proyeutos.",
 'shareduploadwiki'          => 'Por favor mira la $1 pa más información.',
+'shareduploadwiki-desc'     => "La descripción del so $1 ye l'amosada embaxo.",
 'shareduploadwiki-linktext' => 'páxina de descripción del archivu',
 'noimage'                   => 'Nun esiste archivu dalu con esi nome, pues $1.',
 'noimage-linktext'          => 'xubilu',
@@ -1068,7 +1072,7 @@ Amuésase equí'l rexistru de borraos pa esti archivu a los efeutos oportunos:",
 'imagelist_user'            => 'Usuariu',
 'imagelist_size'            => 'Tamañu',
 'imagelist_description'     => 'Descripción',
-'imagelist_search_for'      => "Buscar por nome d'imaxe:",
+'imagelist_search_for'      => "Buscar por nome d'archivu multimedia:",
 
 # File reversion
 'filerevert'                => 'Revertir $1',
@@ -1171,7 +1175,7 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue cola de xeres] ye de '''\$7'''
 'lonelypagestext'         => 'Les páxines siguientes nun tán enllaciaes dende otres páxines de {{SITENAME}}.',
 'uncategorizedpages'      => 'Páxines non categorizaes',
 'uncategorizedcategories' => 'Categoríes non categorizaes',
-'uncategorizedimages'     => 'Imáxenes non categorizaes',
+'uncategorizedimages'     => 'Archivos non categorizaos',
 'uncategorizedtemplates'  => 'Plantíes non categorizaes',
 'unusedcategories'        => 'Categoríes non usaes',
 'unusedimages'            => 'Imáxenes non usaes',
@@ -1182,7 +1186,7 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue cola de xeres] ye de '''\$7'''
 'mostlinkedcategories'    => 'Categoríes más enllaciaes',
 'mostlinkedtemplates'     => 'Plantíes más enllaciaes',
 'mostcategories'          => 'Páxines con más categoríes',
-'mostimages'              => 'Imáxenes más enllaciaes',
+'mostimages'              => 'Archivos más enllaciaos',
 'mostrevisions'           => 'Páxines con más revisiones',
 'allpages'                => 'Toles páxines',
 'prefixindex'             => 'Páxines por prefixu',
@@ -1206,9 +1210,7 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue cola de xeres] ye de '''\$7'''
 'intl'                    => 'Interwikis',
 'move'                    => 'Treslladar',
 'movethispage'            => 'Treslladar esta páxina',
-'unusedimagestext'        => "<p>Por favor, fíxate qu'otros sitios web puen enllazar a una
-imaxe con una URL direuta, polo que tán llistaos equí, magar
-que tean n'usu activu.</p>",
+'unusedimagestext'        => "<p>Por favor, fíxate qu'otros sitios web puen enllazar a una imaxe con una URL direuta, polo que seique tean tovía llistaos equí, magar que tean n'usu activu.</p>",
 'unusedcategoriestext'    => "Les siguientes categoríes esisten magar que nengún artículu o categoría faiga usu d'elles.",
 'notargettitle'           => 'Nun hai oxetivu',
 'notargettext'            => 'Nun especificasti una páxina oxetivu o un usuariu sobre los que realizar esta función.',
@@ -1368,7 +1370,7 @@ Más aida y sofitu:
 'confirmdeletetext'           => "Tas a piques de borrar una páxina xunto con tol so historial.
 Por favor confirma que ye lo que quies facer, qu'entiendes les consecuencies, y que lo tas faciendo acordies coles [[{{MediaWiki:Policy-url}}|polítiques]].",
 'actioncomplete'              => 'Aición completada',
-'deletedtext'                 => 'Borróse "$1".
+'deletedtext'                 => 'Borróse "<nowiki>$1</nowiki>".
 Mira en $2 la llista de les últimes páxines borraes.',
 'deletedarticle'              => 'borró "[[$1]]"',
 'dellogpage'                  => 'Rexistru de borraos',
@@ -1412,7 +1414,7 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 'protect_expiry_old'          => 'La fecha de caducidá ta pasada.',
 'unprotectsub'                => '(Desprotexendo "$1")',
 'protect-unchain'             => 'Camudar los permisos pa tresllaos',
-'protect-text'                => 'Equí pues ver y camudar el nivel de proteición de la páxina <strong>$1</strong>.',
+'protect-text'                => 'Equí pues ver y camudar el nivel de proteición de la páxina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Nun pues camudar los niveles de proteición mentes teas bloquiáu. Esta
 ye la configuración actual de la páxina <strong>$1</strong>:',
 'protect-locked-dblock'       => "Los niveles de proteición nun puen ser camudaos pol mor d'un bloquéu activu de
@@ -1470,6 +1472,7 @@ de ser borrada. El testu actual d'estes revisiones borraes ta disponible namái 
 revisión fuera restaurada o eliminada del archivu.",
 'undelete-nodiff'              => "Nun s'atopó revisión previa.",
 'undeletebtn'                  => 'Restaurar',
+'undeletelink'                 => 'restaurar',
 'undeletereset'                => 'Llimpiar',
 'undeletecomment'              => 'Comentariu:',
 'undeletedarticle'             => 'restauró "[[$1]]"',
@@ -1506,7 +1509,7 @@ $1",
 'nocontribs'    => "Nun s'atoparon cambeos que coincidan con esi criteriu.",
 'ucnote'        => "Abaxo amuésense los caberos <b>$1</b> cambeos d'esti usuariu nos caberos <b>$2</b> díes.",
 'uclinks'       => 'Ver los caberos $1 cambeos; ver los caberos $2 díes.',
-'uctop'         => ' (últimu cambéu)',
+'uctop'         => '(últimu cambéu)',
 'month'         => "Dende'l mes (y anteriores):",
 'year'          => "Dende l'añu (y anteriores):",
 
@@ -1517,7 +1520,7 @@ $1",
 'sp-contributions-username'    => "Direición IP o nome d'usuariu:",
 'sp-contributions-submit'      => 'Buscar',
 
-'sp-newimages-showfrom' => 'Amosar les imáxenes nueves emprimando dende $1',
+'sp-newimages-showfrom' => 'Amosar los archivos nuevos emprimando dende $1',
 
 # What links here
 'whatlinkshere'       => "Lo qu'enllaza equí",
@@ -1727,7 +1730,6 @@ Por último, tamién pues usar un enllaz: p.e. [[{{ns:special}}:Export/{{MediaWi
 
 # Thumbnails
 'thumbnail-more'           => 'Agrandar',
-'missingimage'             => '<b>Falta la imaxe</b><br /><i>$1</i>',
 'filemissing'              => 'Falta archivu',
 'thumbnail_error'          => 'Error al crear la miniatura: $1',
 'djvu_page_error'          => 'Páxina DjVu fuera de llímites',
@@ -1812,7 +1814,7 @@ Toles aiciones d'importación treswiki queden rexistraes nel [[Special:Log/impor
 'tooltip-feed-atom'               => 'Canal Atom pa esta páxina',
 'tooltip-t-contributions'         => "Amuesa la llista de contribuciones d'esti usuariu",
 'tooltip-t-emailuser'             => 'Unvia un corréu a esti usuariu',
-'tooltip-t-upload'                => 'Xube imáxenes o archivos multimedia',
+'tooltip-t-upload'                => 'Xube archivos',
 'tooltip-t-specialpages'          => 'Llista de toles páxines especiales',
 'tooltip-t-print'                 => "Versión imprentable d'esta páxina",
 'tooltip-t-permalink'             => 'Enllaz permanente a esta versión de la páxina',
@@ -1821,7 +1823,7 @@ Toles aiciones d'importación treswiki queden rexistraes nel [[Special:Log/impor
 'tooltip-ca-nstab-media'          => 'Amuesa la páxina de multimedia',
 'tooltip-ca-nstab-special'        => 'Esta ye una páxina especial, nun puedes editar la páxina',
 'tooltip-ca-nstab-project'        => 'Amuesa la páxina de proyeutu',
-'tooltip-ca-nstab-image'          => 'Amuesa la páxina de la imaxe',
+'tooltip-ca-nstab-image'          => 'Amuesa la páxina del archivu',
 'tooltip-ca-nstab-mediawiki'      => "Amuesa'l mensaxe de sistema",
 'tooltip-ca-nstab-template'       => 'Amuesa la plantía',
 'tooltip-ca-nstab-help'           => "Amuesa la páxina d'aida",
@@ -1929,12 +1931,11 @@ $1",
 # Bad image list
 'bad_image_list' => "El formatu ye'l que sigue:
 
-Namái se tienen en cuenta les llinies qu'emprimen por un *. El primer enllaz d'una llinia ha ser ún qu'enllacie a una imaxe non válida.
-Los demás enllaces de la mesma llinia considérense esceiciones, p.ex. páxines nes que la imaxe ha apaecer.",
+Namái tienen en cuenta los elementos de llista (llinies qu'emprimen por un *). El primer enllaz d'una llinia ha ser ún qu'enllacie a un archivu non válidu. Los demás enllaces de la mesma llinia considérense esceiciones, p.ex. páxines nes que l'archivu ha apaecer.",
 
 # Metadata
 'metadata'          => 'Metadatos',
-'metadata-help'     => "Esti archivu contién información adicional, probablemente añadida pola cámara dixital o l'escáner usaos pa crealu o dixitalizalu. Si l'archivu foi modificáu dende'l so estáu orixinal, seique dalgunos detalles nun tean reflexando la imaxe modificada.",
+'metadata-help'     => "Esti archivu contién información adicional, probablemente añadida pola cámara dixital o l'escáner usaos pa crealu o dixitalizalu. Si l'archivu foi modificáu dende'l so estáu orixinal, seique dalgunos detalles nun tean reflexando l'archivu modificáu.",
 'metadata-expand'   => 'Amosar detalles estendíos',
 'metadata-collapse' => 'Esconder detalles estendíos',
 'metadata-fields'   => "Los campos de metadatos EXIF llistaos nesti mensaxe van ser
@@ -2281,11 +2282,10 @@ $1",
 'useajaxsearch'    => 'Usar la busca AJAX',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← páxina anterior',
-'imgmultipagenext'   => 'páxina siguiente →',
-'imgmultigo'         => '¡Dir!',
-'imgmultigotopre'    => 'Dir a la páxina',
-'imgmultiparseerror' => "L'archivu d'imaxe paez corruptu o incorreutu, polo que {{SITENAME}} nun pue obtener una llista de páxines.",
+'imgmultipageprev' => '← páxina anterior',
+'imgmultipagenext' => 'páxina siguiente →',
+'imgmultigo'       => '¡Dir!',
+'imgmultigotopre'  => 'Dir a la páxina',
 
 # Table pager
 'ascending_abbrev'         => 'asc',
@@ -2357,5 +2357,17 @@ Tamién pues [[Special:Watchlist/edit|usar l'editor estándar]].",
 'version-hook-name'                => 'Nome del hook',
 'version-hook-subscribedby'        => 'Suscritu por',
 'version-version'                  => 'Versión',
+'version-license'                  => 'Llicencia',
+'version-software'                 => 'Software instaláu',
+'version-software-product'         => 'Productu',
+'version-software-version'         => 'Versión',
+
+# Special:Filepath
+'filepath'         => "Ruta d'archivu",
+'filepath-page'    => 'Archivu:',
+'filepath-submit'  => 'Ruta',
+'filepath-summary' => "Esta páxina especial devuelve la ruta completa d'un archivu. Les imáxenes amuésense a resolución completa; les demás tribes d'archivu execútense direutamente col so programa asociáu.
+
+Escribi'l nome d'archivu ensin el prefixu \"{{ns:image}}:\".",
 
 );

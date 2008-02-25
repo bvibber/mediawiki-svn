@@ -56,7 +56,7 @@ $messages = array(
 
 # Bits of text used by many pages
 'categories'            => 'Тобаш',
-'pagecategories'        => '{{PLURAL:$1|Тоба|||Тобаш}}',
+'pagecategories'        => '{{PLURAL:$1|Тоба|Тобаш}}',
 'category-media-header' => 'Файлош тобашахь «$1»',
 
 'about'     => 'Цунах лаьцна',
@@ -66,6 +66,7 @@ $messages = array(
 'qbfind'    => 'Лахар',
 'mytalk'    => 'Сан цІера дийцар',
 'anontalk'  => 'ХІар IP-адреси дийцар',
+'and'       => 'а',
 
 'errorpagetitle'    => 'ГІалат',
 'help'              => 'ГIo',
@@ -234,10 +235,9 @@ $messages = array(
 'wlshowlast'   => 'Гайт тІаьххара $1 сахьташ $2 денош $3',
 
 # Delete/protect/revert
-'confirm'       => 'Бакъдар',
-'confirmdelete' => 'ДIадайъар бакъде',
-'dellogpage'    => 'ДІадайан таптараш',
-'deletionlog'   => 'дІадайан таптараш',
+'confirm'     => 'Бакъдар',
+'dellogpage'  => 'ДІадайан таптараш',
+'deletionlog' => 'дІадайан таптараш',
 
 # Namespace form on various pages
 'blanknamespace' => '(Коьртаниг)',
@@ -273,7 +273,6 @@ $messages = array(
 
 # Attribution
 'siteuser' => 'Юзер {{grammar:genitive|{{SITENAME}}}} $1',
-'and'      => 'а',
 'others'   => 'Вуьш',
 
 # Media information

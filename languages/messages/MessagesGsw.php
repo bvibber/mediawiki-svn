@@ -106,6 +106,7 @@ $messages = array(
 'mypage'         => 'Minni Syte',
 'mytalk'         => 'mini Diskussionsyte',
 'anontalk'       => 'Diskussionssyste vo sellere IP',
+'and'            => 'un',
 
 'errorpagetitle'    => 'Fähler',
 'returnto'          => 'Zrügg zur Syte $1.',
@@ -292,7 +293,7 @@ Im Fall dass Si mol Ihr Basswort vergässe hen cha Ihne au e ziitwiiligs Eimol-B
 'nosuchuser'                 => 'Dr Benutzername "$1" exischtiert nit.
 
 Yberprüf d Schribwis, odr meld dich als neijer Benutzer ô.',
-'nosuchusershort'            => 'S gibt kei Benutzername „$1“. Bitte yberprüf mol d Schribwis.',
+'nosuchusershort'            => 'S gibt kei Benutzername „<nowiki>$1</nowiki>“. Bitte yberprüf mol d Schribwis.',
 'nouserspecified'            => 'Bitte gib ä Benutzername ii.',
 'wrongpassword'              => "Sell Basswort isch falsch (odr fählt). Bitte versuech's nomol.",
 'wrongpasswordempty'         => 'Du hesch vagässe diin Basswort iizgeh. Bitte probiers nomol.',
@@ -661,20 +662,18 @@ Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:Helppage}}}}',
 'deletepage'        => 'Syte lösche',
 'confirm'           => 'Bestätige',
 'excontentauthor'   => "einzigen Inhalt: '$1' (bearbeitet worde nume dür '$2')",
-'confirmdelete'     => 'Löschig bestätige',
-'deletesub'         => '(«$1» lösche)',
 'historywarning'    => '<span style="color:#ff0000">WARNUNG:</span> Die Seite die Sie zu löschen gedenken hat eine Versionsgeschichte:',
 'confirmdeletetext' => 'Du bisch drann, en Artikel oder es Bild mitsamt Versionsgschicht permanänt us der Datebank z lösche.
 Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[{{MediaWiki:Policy-url}}|Leitlinien]] haltisch.',
 'actioncomplete'    => 'Uftrag usgfuehrt.',
-'deletedtext'       => '«$1» isch glösche worde.
+'deletedtext'       => '«<nowiki>$1</nowiki>» isch glösche worde.
 Im $2 het’s e Lischte vo de letschte Löschige.',
 'deletionlog'       => 'Lösch-Logbuech',
 'deletecomment'     => 'Löschigsgrund',
 'alreadyrolled'     => 'Cha d Änderig uf [[:$1]] wo [[User:$2|$2]] ([[User talk:$2|Talk]]) gmacht het nit zruckneh will des öbber anderscht scho gmacht het.
 
 Di letschti Änderig het [[User:$3|$3]] ([[User talk:$3|Talk]]) gmacht.',
-'revertpage'        => 'Rückgängig gmacht zuer letschte Änderig vo $1',
+'revertpage'        => 'Rückgängig gmacht zuer letschte Änderig vo $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogtext'    => 'Dies ist eine Liste der blockierten Seiten. Siehe [[Special:Protectedpages|Geschützte Seiten]] für mehr Informationen.',
 'protectcomment'    => 'Grund der Sperrung',
 
@@ -801,7 +800,6 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde."
 # Attribution
 'anonymous'        => 'Anonyme Benutzer uff {{SITENAME}}',
 'lastmodifiedatby' => 'Diese Seite wurde zuletzt geändert um $2, $1 von $3.', # $1 date, $2 time, $3 user
-'and'              => 'un',
 'othercontribs'    => 'Basiert auf der Arbeit von $1.',
 
 # Spam protection

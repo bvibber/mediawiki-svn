@@ -6,7 +6,6 @@
  * @author WikedKentaur
  * @author SPQRobin
  * @author Nike
- * @author G - ג
  * @author Võrok
  * @author Siebrand
  * @author לערי ריינהארט
@@ -209,6 +208,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'mytalk'         => 'Minu arutelu',
 'anontalk'       => 'Arutelu selle IP jaoks',
 'navigation'     => 'Navigeerimine',
+'and'            => 'ja',
 
 'errorpagetitle'    => 'Viga',
 'returnto'          => 'Naase $1 juurde',
@@ -254,7 +254,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'redirectpagesub'   => 'Ümbersuunamisleht',
 'lastmodifiedat'    => 'Viimane muutmine: $2, $1', # $1 date, $2 time
 'viewcount'         => 'Seda lehekülge on külastatud {{plural:$1|üks kord|$1 korda}}.',
-'protectedpage'     => 'Kaitstud artikkel',
+'protectedpage'     => 'Kaitstud lehekülg',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} tiitelandmed',
@@ -363,6 +363,7 @@ Funktsioon: $1<br />
 Päring: $2',
 'viewsource'           => 'Vaata lähteteksti',
 'viewsourcefor'        => '$1',
+'viewsourcetext'       => 'Võite vaadata ja kopeerida lehekülje algteksti:',
 'protectedinterface'   => 'Sellel leheküljel on tarkvara kasutajaliidese tekst. Kuritahtliku muutmise vältimiseks on lehekülg lukustatud.',
 'editinginterface'     => "'''Hoiatus:''' Te redigeerite tarkvara kasutajaliidese tekstiga lehekülge. Muudatused siin mõjutavad kõikide kasutajate kasutajaliidest.",
 
@@ -376,6 +377,7 @@ Võite kasutada süsteemi anonüümselt, aga ka sama või mõne teise kasutajana
 'yourpassword'               => 'Teie parool',
 'yourpasswordagain'          => 'Sisestage parool uuesti',
 'remembermypassword'         => 'Parooli meeldejätmine tulevasteks seanssideks.',
+'yourdomainname'             => 'Teie domeen:',
 'loginproblem'               => '<b>Sisselogimine ei õnnestunud.</b><br />Proovige uuesti!',
 'login'                      => 'Logi sisse',
 'loginprompt'                => 'Teie brauser peab nõustuma küpsistega, et saaksite {{SITENAME}} lehele sisse logida.',
@@ -407,7 +409,7 @@ Võite kasutada süsteemi anonüümselt, aga ka sama või mõne teise kasutajana
 'loginsuccesstitle'          => 'Sisselogimine õnnestus',
 'loginsuccess'               => 'Te olete sisse loginud. Teie kasutajanimi on "$1".',
 'nosuchuser'                 => 'Kasutajat nimega "$1" ei ole olemas. Kontrollige kirjapilti või kasutage alljärgnevat vormi uue kasutajakonto loomiseks.',
-'nosuchusershort'            => 'Kasutajat nimega "$1" ei ole olemas. Kontrollige kirjapilti.',
+'nosuchusershort'            => 'Kasutajat nimega "<nowiki>$1</nowiki>" ei ole olemas. Kontrollige kirjapilti.',
 'wrongpassword'              => 'Vale parool. Proovige uuesti.',
 'passwordtooshort'           => 'Sisestatud parool on vigane või liiga lühike. See peab koosnema vähemalt $1 tähemärgist ning peab erinema kasutajanimest.',
 'mailmypassword'             => 'Saada mulle meili teel uus parool',
@@ -817,8 +819,9 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).',
 'doubleredirects'     => 'Kahekordsed ümbersuunamised',
 'doubleredirectstext' => 'Igal real on ära toodud esimene ja teine ümbersuunamisleht ning samuti teise ümbersuunamislehe viide, mis tavaliselt on viiteks, kuhu esimene ümbersuunamisleht peaks otse suunama.',
 
-'brokenredirects'     => 'Vigased ümbersuunamised',
-'brokenredirectstext' => 'Järgmised leheküljed on ümber suunatud olematutele lehekülgedele.',
+'brokenredirects'        => 'Vigased ümbersuunamised',
+'brokenredirectstext'    => 'Järgmised leheküljed on ümber suunatud olematutele lehekülgedele.',
+'brokenredirects-delete' => '(kustuta)',
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|bait|baiti}}',
@@ -845,6 +848,7 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).',
 'shortpages'              => 'Lühikesed artiklid',
 'longpages'               => 'Pikad artiklid',
 'deadendpages'            => 'Edasipääsuta artiklid',
+'protectedpages'          => 'Kaitstud leheküljed',
 'listusers'               => 'Kasutajad',
 'specialpages'            => 'Erileheküljed',
 'spheading'               => 'Erileheküljed',
@@ -908,7 +912,7 @@ siin toodud pildid olla ikkagi aktiivses kasutuses.',
 'watchnologin'         => 'Ei ole sisse logitud',
 'watchnologintext'     => 'Jälgimisloendi muutmiseks peate [[Special:Userlogin|sisse logima]].',
 'addedwatch'           => 'Lisatud jälgimisloendile',
-'addedwatchtext'       => 'Lehekülg "$1" on lisatud Teie [[Special:Watchlist|jälgimisloendile]].
+'addedwatchtext'       => 'Lehekülg "<nowiki>$1</nowiki>" on lisatud Teie [[Special:Watchlist|jälgimisloendile]].
 
 Edasised muudatused käesoleval lehel ja sellega seotud aruteluküljel reastatakse jälgimisloendis ning [[Special:Recentchanges|viimaste muudatuste lehel]] tuuakse jälgitava lehe pealkiri esile <b>rasvase</b> kirja abil.
 
@@ -941,12 +945,12 @@ Kui tahad seda lehte hiljem jälgimisloendist eemaldada, klõpsa päisenupule "L
 'excontentauthor'             => "sisu oli: '$1' (ja ainuke kirjutaja oli '[[Special:Contributions/$2|$2]]')",
 'exbeforeblank'               => "sisu enne lehekülje tühjendamist: '$1'",
 'exblank'                     => 'lehekülg oli tühi',
-'confirmdelete'               => 'Kinnita kustutamine',
-'deletesub'                   => '(Kustutan "$1")',
+'delete-confirm'              => 'Kustuta "$1"',
+'delete-legend'               => 'Kustuta',
 'historywarning'              => 'Hoiatus: leheküljel, mida tahate kustutada, on ajalugu:&nbsp;',
 'confirmdeletetext'           => 'Sa oled andmebaasist jäädavalt kustutamas lehte või pilti koos kogu tema ajalooga. Palun kinnita, et sa tahad seda tõepoolest teha, et sa mõistad tagajärgi ja et sinu tegevus on kooskõlas siinse [[{{MediaWiki:Policy-url}}|sisekorraga]].',
 'actioncomplete'              => 'Toiming sooritatud',
-'deletedtext'                 => '"$1" on kustutatud. $2 lehel on nimekiri viimastest kustutatud lehekülgedest.',
+'deletedtext'                 => '"<nowiki>$1</nowiki>" on kustutatud. $2 lehel on nimekiri viimastest kustutatud lehekülgedest.',
 'deletedarticle'              => '"$1" kustutatud',
 'dellogpage'                  => 'Kustutatud_leheküljed',
 'dellogpagetext'              => 'Allpool on esitatud nimekiri viimastest kustutamistest.
@@ -954,13 +958,14 @@ Kõik toodud kellaajad järgivad serveriaega (UTC).',
 'deletionlog'                 => 'Kustutatud leheküljed',
 'reverted'                    => 'Pöörduti tagasi varasemale versioonile',
 'deletecomment'               => 'Kustutamise põhjus',
+'deleteotherreason'           => 'Muu/täiendav põhjus:',
 'rollback'                    => 'Tühista muudatused',
 'rollback_short'              => 'Tühista',
 'rollbacklink'                => 'tühista',
 'rollbackfailed'              => 'Muudatuste tühistamine ebaõnnestus',
 'cantrollback'                => 'Ei saa muudatusi tagasi pöörata; viimane kaastööline on artikli ainus autor.',
 'editcomment'                 => 'Artikli sisu oli: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'                  => 'Pöörduti tagasi viimasele muudatusele, mille tegi $1',
+'revertpage'                  => 'Pöörduti tagasi viimasele muudatusele, mille tegi $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'Kaitsmise logi',
 'protectlogtext'              => 'Allpool on loetletud lehekülgede kaitsmised ja kaitsete eemaldamised. Praegu kaitstud lehekülgi vaata [[Special:Protectedpages|kaitstud lehtede loetelust]].',
 'protectedarticle'            => 'kaitses lehekülje "[[$1]]"',
@@ -969,15 +974,24 @@ Kõik toodud kellaajad järgivad serveriaega (UTC).',
 'confirmprotect'              => 'Kinnita kaitsmine',
 'protectcomment'              => 'Põhjus',
 'unprotectsub'                => '(Lehekülje "$1" kaitse alt võtmine)',
-'protect-text'                => 'Siin võite vaadata ja muuta lehekülje <strong>$1</strong> kaitsesätteid.',
+'protect-text'                => 'Siin võite vaadata ja muuta lehekülje <strong><nowiki>$1</nowiki></strong> kaitsesätteid.',
 'protect-default'             => '(tavaline)',
 'protect-level-autoconfirmed' => 'Ainult registreeritud kasutajad',
 'protect-level-sysop'         => 'Ainult administraatorid',
+'restriction-type'            => 'Lubatud:',
+'restriction-level'           => 'Kaitsmise tase:',
+'minimum-size'                => 'Min suurus',
+'maximum-size'                => 'Max suurus',
 'pagesize'                    => '(baiti)',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Redigeerimine',
 'restriction-move' => 'Teisaldamine',
+
+# Restriction levels
+'restriction-level-sysop'         => 'täielikult kaitstud',
+'restriction-level-autoconfirmed' => 'poolkaitstud',
+'restriction-level-all'           => 'kõik tasemed',
 
 # Undelete
 'undelete'               => 'Taasta kustutatud lehekülg',
@@ -1104,6 +1118,7 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 'movelogpagetext'  => 'See logi sisaldab infot lehekülgede teisaldamistest.',
 'movereason'       => 'Põhjus',
 'revertmove'       => 'taasta',
+'delete_and_move'  => 'Kustuta ja teisalda',
 
 # Export
 'export' => 'Lehekülgede eksport',
@@ -1117,7 +1132,6 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 
 # Thumbnails
 'thumbnail-more' => 'Suurenda',
-'missingimage'   => '<b>Puudub pildifail</b><br /><i>$1</i>',
 
 # Special:Import
 'import'          => 'Lehekülgede import',
@@ -1186,7 +1200,6 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 # Attribution
 'anonymous' => '{{SITENAME}} anonüümsed kasutajad',
 'siteuser'  => 'Viki kasutaja $1',
-'and'       => 'ja',
 'others'    => 'teised',
 'siteusers' => 'Viki kasutaja(d) $1',
 
@@ -1209,6 +1222,7 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 'nextdiff'     => 'Järgmised erinevused →',
 
 # Media information
+'mediawarning' => "'''Hoiatus''': See fail võib sisaldada pahatahtlikku koodi, mille käivitamime võib kahjustada teie arvutisüsteemi.<hr />",
 'imagemaxsize' => 'Maksimaalne pildi suurus kirjelduslehekülgedel:',
 'thumbsize'    => 'Pisipildi suurus:',
 
@@ -1284,4 +1298,3 @@ Kui see *ei* ole sinu loodud konto, siis ära kliki lingil. Kinnituskood aegub $
 'watchlisttools-raw'  => 'Redigeeri lähtefaili',
 
 );
-

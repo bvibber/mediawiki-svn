@@ -180,7 +180,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'yourlanguage'               => 'Lengua:',
 'loginerror'                 => "Probblema 'e accièsso",
 'loginsuccesstitle'          => 'Acciesso affettuato',
-'nosuchusershort'            => 'Nun ce stanno utente cu o nòmme "$1". Cuntrolla si scrivìste buòno.',
+'nosuchusershort'            => 'Nun ce stanno utente cu o nòmme "<nowiki>$1</nowiki>". Cuntrolla si scrivìste buòno.',
 'nouserspecified'            => "Tiene 'a dìcere nu nomme pricìso.",
 'acct_creation_throttle_hit' => 'Ce dispiace, haje già criato $1 utente. Nun ne pô crià ate.',
 'accountcreated'             => 'Cunto criato',
@@ -216,9 +216,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 
 # Revision deletion
 'rev-delundel' => 'faje vedé/annascunne',
-
-# Diffs
-'editcurrent' => "Cagna 'a verzione 'e mmo 'e chesta paggena",
 
 # Search results
 'searchresults'    => 'Risultato d&#39;&#39;a recerca',
@@ -312,15 +309,14 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'excontentauthor' => "'o cuntenuto era: '$1' (e ll'unneco cuntribbutore era '[[Special:Contributions/$2|$2]]')",
 'exbeforeblank'   => "'O cuntenuto apprimm' 'a ll'arrevacamento era: '$1'",
 'exblank'         => "'a paggena era vacante",
-'deletesub'       => '(Scancellazione \'e "$1")',
 'actioncomplete'  => 'Azzione fernuta',
-'deletedtext'     => 'Qauccheruno ha scancellata \'a paggena "$1".  Addumannà \'o $2 pe na lista d"e ppaggene scancellate urdemamente.',
+'deletedtext'     => 'Qauccheruno ha scancellata \'a paggena "<nowiki>$1</nowiki>".  Addumannà \'o $2 pe na lista d"e ppaggene scancellate urdemamente.',
 'deletedarticle'  => 'ha scancellato "[[$1]]"',
 'dellogpage'      => 'Scancellazione',
 'deletionlog'     => 'Log d"e scancellazione',
 'deletecomment'   => 'Mutivo d"a scancellazione',
 'rollback'        => "Ausa na revizione 'e primma",
-'revertpage'      => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]",
+'revertpage'      => "Cangiaje 'e cagnamiénte 'e [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), cu â verzione 'e pprimma 'e  [[User:$1|$1]]", # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Undelete
 'viewdeletedpage' => "Vìre 'e ppàggine scancellate",
@@ -332,9 +328,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'contributions' => 'Contribbute utente',
 'mycontris'     => 'Mie contribbute',
 
-'sp-contributions-newest' => 'Urdeme',
-'sp-contributions-newer'  => '$1 cchiù frische',
-
 # What links here
 'whatlinkshere'       => 'Paggene ca cullegano a chesta',
 'whatlinkshere-title' => 'Paggene ca cullegano a $1',
@@ -343,7 +336,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Block/unblock
 'blockip'            => 'Ferma utelizzatóre',
 'ipadressorusername' => 'Nnerizzo IP o nomme utente',
-'ipboptions'         => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite',
+'ipboptions'         => '2 ore:2 hours,1 juorno:1 day,3 juorne:3 days,1 semmana:1 week,2 semmane:2 weeks,1 mise:1 month,3 mese:3 months,6 mese:6 months,1 anno:1 year,infinito:infinite', # display1:time1,display2:time2,...
 'blockipsuccesssub'  => 'Blocco aseguito',
 'blocklistline'      => '$1, $2 ha fermato $3 ($4)',
 'blocklink'          => 'ferma',

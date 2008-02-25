@@ -196,6 +196,7 @@ pe titlul secţiunii (JavaScript)',
 'mytalk'         => 'Discuţii',
 'anontalk'       => 'Discuţia pentru această adresă IP',
 'navigation'     => 'Navigare',
+'and'            => 'şi',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -422,7 +423,7 @@ Contul dumneavoatră a fost creat. Nu uitaţi să vă personalizaţi preferinţe
 'loginsuccesstitle'          => 'Autentificare reuşită',
 'loginsuccess'               => 'Aţi fost autentificat în {{SITENAME}} ca "$1".',
 'nosuchuser'                 => 'Nu există nici un utilizator cu numele "$1". Verifică dacă ai scris corect sau foloseşte această pagină pentru a crea un nou utilizator.',
-'nosuchusershort'            => 'Nu este nici un utilizator cu numele "$1". Verificaţi dacă aţi scris corect.',
+'nosuchusershort'            => 'Nu este nici un utilizator cu numele "<nowiki>$1</nowiki>". Verificaţi dacă aţi scris corect.',
 'nouserspecified'            => 'Trebuie să specificaţi un nume de utilizator.',
 'wrongpassword'              => 'Parola pe care ai introdus-o este greşită. Te rugăm să încerci din nou.',
 'wrongpasswordempty'         => 'Spaţiul pentru introducerea parolei nu a fost completat. Vă rugăm să încercaţi din nou.',
@@ -552,6 +553,7 @@ Identificatorul dumneavoastră de blocare este $5. Vă rugăm să îl includeţi
 'newarticletext'            => 'Ai ajuns la o pagină care nu există. Pentru a o crea, începe să scrii în caseta de mai jos (vezi [[{{MediaWiki:Helppage}}|pagina de ajutor]] pentru mai multe informaţii). Dacă ai ajuns aici din greşeală, întoarce-te folosind controalele browser-ului tău',
 'anontalkpagetext'          => "---- ''Aceasta este pagina de discuţii pentru un utilizator care nu şi-a creat un cont încă, sau care nu s-a autentificat. De aceea trebuie să folosim adresă IP pentru a identifica această persoană. O adresă IP poate fi folosită în comun de mai mulţi utilizatori. Dacă sunteţi un astfel de utilizator şi credeţi că vă sunt adresate mesaje irelevante, vă rugăm să [[Special:Userlogin|vă creaţi un cont sau să vă autentificaţi]] pentru a evita confuzii cu alţi utilizatori anonimi în viitor.''",
 'noarticletext'             => '{{SITENAME}} nu are încă un articol referitor la această pagină. Puteţi [[Special:Search/{{PAGENAME}}|căuta titlul paginii cu acest nume]] în alte pagini sau [{{fullurl:{{FULLPAGENAME}}|action=edit}} edita această pagină].',
+'userpage-userdoesnotexist' => 'Contul de utilizator "$1" nu este înregistrat. Verificaţi dacă doriţi să creaţi/modificaţi această pagină.',
 'clearyourcache'            => "'''Notă:''' După salvare, trebuie să treceţi peste cache-ul browser-ului pentru a vedea modificările. '''Mozilla/Safari/Konqueror:''' ţineţi apăsat ''Shift'' în timp ce apăsaţi ''Reload'' (sau apăsaţi ''Ctrl-Shift-R''), '''IE:''' apăsaţi ''Ctrl-F5'', '''Opera:''' apăsaţi ''F5''.",
 'usercssjsyoucanpreview'    => "<strong>Sfat:</strong> Foloseşte butonul 'Arată previzualizare' pentru a testa noul tău css/js înainte de a salva.",
 'usercsspreview'            => "'''Reţine că urmăreşti doar o previzualizare a css-ului tău de utilizator, acesta nu este încă salvat!'''",
@@ -944,14 +946,19 @@ Te rugăm reţine că, la fel ca şi în cazul celorlalte secţiuni din {{SITENA
 'filerevert-submit'         => 'Revenire',
 
 # File deletion
-'filedelete'            => 'Şterge $1',
-'filedelete-legend'     => 'Şterge fişierul',
-'filedelete-intro'      => "Ştergi '''[[Media:$1|$1]]'''.",
-'filedelete-comment'    => 'Comentariu:',
-'filedelete-submit'     => 'Şterge',
-'filedelete-success'    => "'''$1''' a fost şters.",
-'filedelete-nofile'     => "'''$1''' nu există pe acest sit.",
-'filedelete-nofile-old' => "Nu există nicio versiune arhivată a '''$1''' cu atributele specificate.",
+'filedelete'                  => 'Şterge $1',
+'filedelete-legend'           => 'Şterge fişierul',
+'filedelete-intro'            => "Ştergi '''[[Media:$1|$1]]'''.",
+'filedelete-comment'          => 'Comentariu:',
+'filedelete-submit'           => 'Şterge',
+'filedelete-success'          => "'''$1''' a fost şters.",
+'filedelete-nofile'           => "'''$1''' nu există pe acest sit.",
+'filedelete-nofile-old'       => "Nu există nicio versiune arhivată a '''$1''' cu atributele specificate.",
+'filedelete-otherreason'      => 'Alt motiv (adiţional):',
+'filedelete-reason-otherlist' => 'Alt motiv',
+'filedelete-reason-dropdown'  => '*Motive uzuale
+** Încălcare drepturi de autor
+** Fişier duplicat',
 
 # MIME search
 'mimesearch' => 'Căutare MIME',
@@ -1196,7 +1203,7 @@ Asistenţă şi suport:
 'historywarning'              => 'Atenţie! Pagina pe care o ştergi are istorie:',
 'confirmdeletetext'           => 'Sunteţi pe cale să ştergeţi permanent o pagină sau imagine din baza de date, împreună cu istoria asociată acesteia. Vă rugăm să confirmaţi alegerea făcută de dvs., faptul că înţelegeţi consecinţele acestei acţiuni şi faptul că o faceţi în conformitate cu [[{{MediaWiki:Policy-url}}|Politica oficială]].',
 'actioncomplete'              => 'Acţiune finalizată',
-'deletedtext'                 => 'Pagina "$1" a fost ştearsă. Vedeţi $2 pentru o listă a elementelor şterse recent.',
+'deletedtext'                 => 'Pagina "<nowiki>$1</nowiki>" a fost ştearsă. Vedeţi $2 pentru o listă a elementelor şterse recent.',
 'deletedarticle'              => 'a şters "[[$1]]"',
 'dellogpage'                  => 'Jurnal pagini şterse',
 'dellogpagetext'              => 'Mai jos se află lista celor mai recente elemente şterse.',
@@ -1233,7 +1240,7 @@ Ultima editare a fost făcută de către [[User:$3|$3]] ([[User talk:$3|discuţi
 'protect_expiry_old'          => 'Timpul de expirare este în trecut.',
 'unprotectsub'                => '(Deprotejând "$1")',
 'protect-unchain'             => 'Deblochează permisiunile de mutare',
-'protect-text'                => 'Poţi vizualiza sau modifica nivelul de protecţie pentru pagina <strong>$1</strong>.',
+'protect-text'                => 'Poţi vizualiza sau modifica nivelul de protecţie pentru pagina <strong><nowiki>$1</nowiki></strong>.',
 'protect-default'             => '(standard)',
 'protect-fallback'            => 'Cere permisiunea "$1"',
 'protect-level-autoconfirmed' => 'Blochează utilizatorii neînregistraţi',
@@ -1298,7 +1305,7 @@ $1',
 'nocontribs'    => 'Nu a fost găsită nici o modificare care să satisfacă acest criteriu.',
 'ucnote'        => 'Mai jos se află ultimele <b>$1</b> modificări ale utilizatorului din ultimele <b>$2</b> zile.',
 'uclinks'       => 'Vezi ultimele $1 modificări; vezi ultimele $2 zile.',
-'uctop'         => ' (sus)',
+'uctop'         => '(sus)',
 'month'         => 'Din luna (şi dinainte):',
 
 'sp-contributions-newbies'     => 'Arată doar contribuţiile conturilor noi',
@@ -1499,8 +1506,6 @@ Articolul de destinaţie "[[$1]]" există deja. Doriţi să îl ştergeţi pentr
 
 # Thumbnails
 'thumbnail-more'  => 'Extinde',
-'missingimage'    => '<b>Imagine lipsă</b><br />
-<i>$1</i>',
 'filemissing'     => 'Fişier lipsă',
 'thumbnail_error' => 'Eroare la generarea previzualizării: $1',
 
@@ -1604,7 +1609,6 @@ Articolul de destinaţie "[[$1]]" există deja. Doriţi să îl ştergeţi pentr
 'anonymous'        => 'Utilizator(i) anonimi ai {{SITENAME}}',
 'siteuser'         => 'Utilizator {{SITENAME}} $1',
 'lastmodifiedatby' => 'Această pagină a fost modificată $2, $1 de către $3.', # $1 date, $2 time, $3 user
-'and'              => 'şi',
 'othercontribs'    => 'Bazat pe munca lui $1.',
 'others'           => 'alţii',
 'siteusers'        => 'Utilizator(i) {{SITENAME}} $1',

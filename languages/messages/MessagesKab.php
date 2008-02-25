@@ -160,6 +160,7 @@ $messages = array(
 'mytalk'         => 'Amyannan inu',
 'anontalk'       => 'Amyannan n IP-yagi',
 'navigation'     => 'Ẓer isebtar',
+'and'            => 'u',
 
 'errorpagetitle'    => 'Agul',
 'returnto'          => 'Uɣal ar $1.',
@@ -386,7 +387,7 @@ Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{
 'loginsuccesstitle'          => 'Tkecmeḍ !',
 'loginsuccess'               => "'''Tkecmeḍ ar {{SITENAME}} s yisem n wemseqdac \"\$1\".'''",
 'nosuchuser'                 => 'Ulac isem n wemseqdac s yisem "$1". Ssenqed tira n yisem-nni, neɣ xelq isem n wemseqdac amaynut.',
-'nosuchusershort'            => 'Ulac isem n wemseqdac s yisem "$1". Ssenqed tira n yisem-nni.',
+'nosuchusershort'            => 'Ulac isem n wemseqdac s yisem "<nowiki>$1</nowiki>". Ssenqed tira n yisem-nni.',
 'nouserspecified'            => 'Yessefk ad tefkeḍ isem n wemseqdac.',
 'wrongpassword'              => 'Awal n tbaḍnit ɣaleṭ. Ɛreḍ daɣen.',
 'wrongpasswordempty'         => 'Awal n tbaḍnit ulac-it. Ɛreḍ daɣen.',
@@ -1151,7 +1152,7 @@ Tadhelt:
 'exblank'                 => 'asebter yella d ilem',
 'historywarning'          => 'Aɣtal: Asebter i ara temḥuḍ yesɛa amezruy:',
 'actioncomplete'          => 'Axdam yekfa',
-'deletedtext'             => '"$1" yettumḥa.
+'deletedtext'             => '"<nowiki>$1</nowiki>" yettumḥa.
 Ẓer $2 i aɣmis n yimḥayin imaynuten.',
 'deletedarticle'          => '"[[$1]]" yettumḥa',
 'dellogpage'              => 'Aɣmis n umḥay',
@@ -1201,7 +1202,7 @@ G leɛnayek wekki ɣef taqeffalt "Back/Précédent" n browser/explorateur inek, 
 'nocontribs'    => 'Ur yufi ara abddel i tebɣiḍ.',
 'ucnote'        => 'Deg ukessar llan <b>$1</b> n yibeddlen ineggura deg <b>$2</b> n wussan ineggura.',
 'uclinks'       => 'Ẓer $1 n yibeddlen ineggura; ẓer $2 n wussan ineggura.',
-'uctop'         => ' (taneggarut)',
+'uctop'         => '(taneggarut)',
 
 'sp-contributions-newbies'     => 'Ssken tikkin n yimseqdacen imaynuten kan',
 'sp-contributions-newbies-sub' => 'I yisem yimseqdacen imaynuten',
@@ -1311,7 +1312,6 @@ Anda tebɣiḍ tesmimeḍ "[[$1]]" yella yagi. tebɣiḍ ad temḥuḍ iwakken y
 
 # Thumbnails
 'thumbnail-more'  => 'Ssemɣer',
-'missingimage'    => '<b>Tugna ulac-itt</b><br /><i>$1</i>',
 'filemissing'     => 'Afaylu ulac-it',
 'thumbnail_error' => 'Agul asmi yexleq tugna tamecṭuḥt: $1',
 
@@ -1403,7 +1403,6 @@ Anda tebɣiḍ tesmimeḍ "[[$1]]" yella yagi. tebɣiḍ ad temḥuḍ iwakken y
 'anonymous'        => 'Amseqdac udrig (Imseqdacen udrigen) n {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} amseqdac $1',
 'lastmodifiedatby' => 'Tikkelt taneggarut asmi yettubeddel asebter-agi $2, $1 sɣur $3.', # $1 date, $2 time, $3 user
-'and'              => 'u',
 'othercontribs'    => 'Tikkin n wemseqdac-agi.',
 'others'           => 'wiyaḍ',
 'siteusers'        => '{{SITENAME}} amseqdac(imseqdacen) $1',
@@ -1563,11 +1562,10 @@ $1',
 'hideresults'      => 'Ffer igmad',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← asebter ssabeq',
-'imgmultipagenext'   => 'asebter ameḍfir →',
-'imgmultigo'         => 'Ruḥ!',
-'imgmultigotopre'    => 'Ruḥ s asebtar',
-'imgmultiparseerror' => 'Afaylu n tugna yexser, ihi {{SITENAME}} ur yezmir ara a d-yaf umuɣ n isebtar.',
+'imgmultipageprev' => '← asebter ssabeq',
+'imgmultipagenext' => 'asebter ameḍfir →',
+'imgmultigo'       => 'Ruḥ!',
+'imgmultigotopre'  => 'Ruḥ s asebtar',
 
 # Table pager
 'ascending_abbrev'         => 'asawen',

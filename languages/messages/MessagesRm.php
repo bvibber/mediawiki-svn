@@ -64,6 +64,7 @@ $messages = array(
 'mytalk'     => 'Mia pagina da discussiun',
 'anontalk'   => 'Pagina da discussiun da questa IP',
 'navigation' => 'Navigaziun',
+'and'        => 'e',
 
 'returnto'         => 'Enavos tar $1.',
 'help'             => 'Agid',
@@ -274,7 +275,6 @@ Ponderai per plaschair da divider quest artitgel en pli pitschnas parts. </stron
 
 # Diffs
 'lineno'                  => 'Lingia $1:',
-'editcurrent'             => 'Editar la versiun actuala da quest artitgel',
 'compareselectedversions' => 'cumparegliar las versiuns selecziunadas',
 
 # Search results
@@ -461,7 +461,7 @@ La lunghezza da la [http://meta.wikimedia.org/wiki/Help:Job_queue job queue]: ''
 'watchnologin'         => "Ti n'es betg s'annunzià!",
 'watchnologintext'     => "Ti stos [[Special:Userlogin|t'annunziar]] per midar tia glista d'observaziun.",
 'addedwatch'           => 'Agiuntà a la glista dad observaziun',
-'addedwatchtext'       => "L'artitgel \"\$1\" è vegnì agiuntà a vossa [[Special:Watchlist|glista dad observaziun]]. 
+'addedwatchtext'       => "L'artitgel \"<nowiki>\$1</nowiki>\" è vegnì agiuntà a vossa [[Special:Watchlist|glista dad observaziun]]. 
 Midadas futuras vid quai artitgel e la pagina da discussiun appertegnenta vegnan enumeradas là e l'artitgel vegn marcà '''grass''' en la [[Spezial:Recentchanges|glista da las ultimas midadas]]. 
 
 <p>Sche vus vulais stidar l'artitgel da la [[Special:Watchlist|glista dad observaziun]], cliccai sin la pagina dil artitgel pertutgant sin \"Betg pli observar\".",
@@ -483,12 +483,10 @@ Midadas futuras vid quai artitgel e la pagina da discussiun appertegnenta vegnan
 # Delete/protect/revert
 'deletepage'                  => 'Stidar la pagina',
 'confirm'                     => 'Confermar',
-'confirmdelete'               => 'Confermar il stidar',
-'deletesub'                   => '(Stidar "$1")',
 'confirmdeletetext'           => 'Ti es vidlonder da stidar permanentamain in artitgel u in maletg e tut las versiuns pli veglias ord la datoteca. <br /> 
 Conferma per plaschair che ti ta es conscient da las consequenzas e che ti ageschas tenor las [[{{MediaWiki:Policy-url}}|directivas da {{SITENAME}}]].',
 'actioncomplete'              => "L' acziun è terminada.",
-'deletedtext'                 => '"$1" è vegnì stidà.
+'deletedtext'                 => '"<nowiki>$1</nowiki>" è vegnì stidà.
 Sin $2 chattas ti ina glista dals davos artitgels stidads.',
 'deletedarticle'              => '"[[$1]]" è stidà',
 'deletecomment'               => 'Motiv per il stidar',
@@ -513,10 +511,6 @@ Sin $2 chattas ti ina glista dals davos artitgels stidads.',
 'contributions' => "contribuziuns da l'utilisader",
 'mycontris'     => 'mias contribuziuns',
 
-'sp-contributions-newest' => 'ils pli novs',
-'sp-contributions-oldest' => 'ils pli vegls',
-'sp-contributions-newer'  => '$1 pli novs',
-'sp-contributions-older'  => '$1 pli vegls',
 'sp-contributions-submit' => 'Tschertga',
 
 # What links here
@@ -568,7 +562,6 @@ L\'artitgel da destinaziun "[[$1]]" exista gia. Vul ti stidar el per far plaz pe
 
 # Attribution
 'anonymous'     => 'Utilisader(s) anonim(s) da {{SITENAME}}',
-'and'           => 'e',
 'othercontribs' => 'Basescha sin la lavur da $1.',
 'others'        => 'auters',
 'creditspage'   => 'Statistica da la pagina',

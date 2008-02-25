@@ -105,6 +105,7 @@ $messages = array(
 'mytalk'         => 'Alea ʻaʻaku',
 'anontalk'       => 'Alea maʻa e IP´ ni',
 'navigation'     => 'ʻai taumuʻa ki he…',
+'and'            => 'mo e',
 
 'errorpagetitle'    => 'Halaʻi',
 'returnto'          => 'Foki ki he $1',
@@ -284,7 +285,7 @@ Kuo fakatupu hoʻo tohi kau-ki-ai. ʻOua ʻe ngalo ke liliu hoʻo faʻiteliha {{
 'loginsuccesstitle'          => 'Kuo ola ʻa e kau-ki-ai',
 'loginsuccess'               => "'''ʻOku ke kau-ki-ai he taimí ni ki he {{SITENAME}} hangē \"\$1\".'''",
 'nosuchuser'                 => 'ʻOku ʻikai ʻi ai ha ʻetita mo hono hingoa "$1". Sivi hoʻo sipela pe fakatupu haʻo kau-ki-ai foʻou.',
-'nosuchusershort'            => 'ʻOku ʻikai ʻi ai ha ʻetita mo hono hingoa "$1". Sivi hoʻo sipela.',
+'nosuchusershort'            => 'ʻOku ʻikai ʻi ai ha ʻetita mo hono hingoa "<nowiki>$1</nowiki>". Sivi hoʻo sipela.',
 'nouserspecified'            => 'ʻOku pau te ke ʻoatu ha hingoa ʻo e ʻetita.',
 'wrongpassword'              => 'ʻOku ʻikai totonu ʻa e leatapu, kātaki ʻe toki feinga.',
 'wrongpasswordempty'         => 'Naʻe maha ʻa e tapulea, kātaki ʻe toki feinga.',
@@ -775,12 +776,10 @@ Kapau ʻaho ʻe taha, te ke fietoʻo ʻa e pēsí mei hoʻo hokohoko leʻo, lomi
 'excontentauthor'     => "ko e kakano naʻe: '$1', mei he ʻetita ʻe taha pē: '[[Special:Contributions/$2|$2]]'",
 'exbeforeblank'       => "ko e kakano ʻi muʻa ʻene fakaʻatā naʻe: '$1'",
 'exblank'             => 'Naʻe maha ʻa e peesi',
-'confirmdelete'       => 'Fakamoʻoniʻi tāmateʻi',
-'deletesub'           => '(ʻOku tāmateʻi "$1")',
 'historywarning'      => 'Tokanga: ko e peesi te ke fietāmateʻi, ʻoku ʻi ai haʻane histolia.',
 'confirmdeletetext'   => 'Te ke tāmateʻi, ʻikai ala fūlihi, ʻa e peesi pe faitā mo hono hisitōlia kātoa mei he tānekingaʻilo. Kātaki fakamoʻoniʻi ʻoku sai ia, ʻoku ke ʻilo ʻa e fua, pea ʻoku ke fai pehē ototaha ia mo e [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'      => 'ʻOsi ngāue',
-'deletedtext'         => 'Kuo tāmateʻi "$1"
+'deletedtext'         => 'Kuo tāmateʻi "<nowiki>$1</nowiki>"
 Vakai ki he $2 maʻa e fakamatala ʻo e ngaahi toki tāmateʻi.',
 'deletedarticle'      => 'ʻosi tamateʻi "[[$1]]"',
 'dellogpage'          => 'Tohinoa ʻo e tāmateʻi',
@@ -964,8 +963,7 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 'allmessagesmodified'       => 'ʻAsi mai meʻa kuo liliu pē',
 
 # Thumbnails
-'missingimage' => '<b>Hala faitā</b><br /><i>$1</i>',
-'filemissing'  => 'ʻOku pulia ʻa e faile',
+'filemissing' => 'ʻOku pulia ʻa e faile',
 
 # Special:Import
 'import'                     => 'Hū mai ngaahi peesi',
@@ -995,7 +993,6 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 # Attribution
 'anonymous'   => 'Kau ʻetita taʻehingoa ʻo e {{SITENAME}}',
 'siteuser'    => 'Ko e ʻetita {{SITENAME}} $1',
-'and'         => 'mo e',
 'others'      => 'ngaahi toe',
 'siteusers'   => 'Kau ʻetita {{SITENAME}} $1',
 'creditspage' => 'Peesi fakangeiaʻi',
@@ -1232,5 +1229,10 @@ $1',
 'watchlisttools-view' => 'Sio ki he ngaahi liliu maʻongoʻonga',
 'watchlisttools-edit' => 'Sio pea fatu ʻete hokohoko leʻo',
 'watchlisttools-raw'  => 'Fatu ʻa e hokohoko leʻo taʻengaohi',
+
+# Special:Filepath
+'filepath'        => 'Hala ki he faile',
+'filepath-page'   => 'Faile:',
+'filepath-submit' => 'Ko e hala',
 
 );

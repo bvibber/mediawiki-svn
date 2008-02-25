@@ -9,6 +9,8 @@
  * @author SPQRobin
  * @author Siebrand
  * @author לערי ריינהארט
+ * @author Max sonnelid
+ * @author M.M.S.
  */
 
 $skinNames = array(
@@ -196,11 +198,12 @@ $messages = array(
 'dec'           => 'des',
 
 # Bits of text used by many pages
-'categories'      => 'Bólkar',
-'pagecategories'  => '{{PLURAL:$1|Bólkur|Bólkar}}',
-'category_header' => 'Greinir í bólki "$1"',
-'subcategories'   => 'Undirbólkur',
-'category-empty'  => "''Hesin bólkur inniheldur ongar greinir ella miðlar í løtuni.''",
+'categories'            => 'Bólkar',
+'pagecategories'        => '{{PLURAL:$1|Bólkur|Bólkar}}',
+'category_header'       => 'Greinir í bólki "$1"',
+'subcategories'         => 'Undirbólkur',
+'category-media-header' => 'Media í bólkur "$1"',
+'category-empty'        => "''Hesin bólkur inniheldur ongar greinir ella miðlar í løtuni.''",
 
 'mainpagetext' => "<big>'''Innlegging av Wiki-ritbúnaði væleydnað.'''</big>",
 
@@ -220,6 +223,7 @@ $messages = array(
 'mytalk'         => 'Mítt kjak',
 'anontalk'       => 'Kjak til hesa ip-adressuna',
 'navigation'     => 'Navigatión',
+'and'            => 'og',
 
 'errorpagetitle'    => 'Villa',
 'returnto'          => 'Vend aftur til $1.',
@@ -301,6 +305,8 @@ $messages = array(
 'viewdeleted'             => 'Vís $1?',
 'restorelink'             => '{{PLURAL:$1|strikaða rætting|$1 strikaðar rættingar}}',
 'feedlinks'               => 'Føðing:',
+'site-rss-feed'           => '$1 RSS Fóðurið',
+'site-atom-feed'          => '$1 Atom Fóðurið',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Grein',
@@ -391,7 +397,7 @@ Tín konto er nú stovnað. Gloym ikki at broyta tínar {{SITENAME}} innstilling
 'loginsuccesstitle'          => 'Innritan væleydnað',
 'loginsuccess'               => "'''Tú hevur nú ritað inn í {{SITENAME}} sum \"\$1\".'''",
 'nosuchuser'                 => 'Eingin brúkari er við navninum "$1". Kanna stavseting ella nýt frymilin niðanfyri til at stovna nýggja kontu.',
-'nosuchusershort'            => 'Eingin brúkari er við navninum "$1". Kanna stavseting.',
+'nosuchusershort'            => 'Eingin brúkari er við navninum "<nowiki>$1</nowiki>". Kanna stavseting.',
 'wrongpassword'              => 'Loyniorðið, sum tú skrivaði, er skeivt. Vinaliga royn aftur.',
 'wrongpasswordempty'         => 'Loyniorð manglar. Vinarliga royn aftur.',
 'mailmypassword'             => 'Send mær eitt nýtt loyniorð',
@@ -597,6 +603,8 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 'hist'            => 'søga',
 'hide'            => 'fjal',
 'show'            => 'Skoða',
+'minoreditletter' => 's',
+'newpageletter'   => 'N',
 
 # Recent changes linked
 'recentchangeslinked' => 'Viðkomandi broytingar',
@@ -637,6 +645,7 @@ fyri at leggja fílur upp.',
 'bysize'         => 'eftir stød',
 'imgdelete'      => 'strik',
 'imgdesc'        => 'lýs',
+'filehist'       => 'Mynd søga',
 'filehist-user'  => 'Brúkari',
 'imagelinks'     => 'Myndarslóðir',
 'linkstoimage'   => 'Hesar síður slóða til hesa mynd:',
@@ -648,6 +657,9 @@ fyri at leggja fílur upp.',
 # File deletion
 'filedelete'        => 'Strika $1',
 'filedelete-submit' => 'Strika',
+
+# MIME search
+'mimesearch' => 'MIME leita',
 
 # List redirects
 'listredirects' => 'Sýn ávísingar',
@@ -676,7 +688,7 @@ síðani henda wikan varð sett up.
 Tað gevur í miðal '''$5''' broytingar fyri hvørja síðu og '''$6''' skoðanir fyri hvørja broyting.
 
 <!--The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.-->",
-'userstatstext' => "Tilsamans  {{PLURAL:$1|er '''1''' skrásettur [[Special:Listusers|brúkari]]|eru '''$1''' skrásettir [[Special:Listusers|brúkarar]]}}. '''$2''' (ella '''$4%''') av hesum {{PLURAL:$2|er umboðsstjóri|eru umboðsstjórar}} (sí $3).",
+'userstatstext' => "Tilsamans  {{PLURAL:$1|er '''1''' skrásettur [[Special:Listusers|brúkari]]|eru '''$1''' skrásettir [[Special:Listusers|brúkarar]]}}. '''$2''' (ella '''$4%''') av hesum {{PLURAL:$2|er umboðsstjóri|eru umboðsstjórar}} (sí $5).",
 
 'disambiguations'     => 'Síður við fleirfaldum týdningi',
 'disambiguationspage' => 'Template:fleiri týdningar',
@@ -783,7 +795,7 @@ ella hevur hann valt ikki at taka ímóti t-posti frá øðrum brúkarum.',
 'nowatchlist'          => 'Tú hevur ongar lutir í eftirlitinum.',
 'watchnologin'         => 'Tú hevur ikki ritað inn',
 'addedwatch'           => 'Lagt undir eftirlit',
-'addedwatchtext'       => "Síðan \"\$1\" er løgd undir [[Special:Watchlist|eftirlit]] hjá tær.
+'addedwatchtext'       => "Síðan \"<nowiki>\$1</nowiki>\" er løgd undir [[Special:Watchlist|eftirlit]] hjá tær.
 Framtíðar broytingar á hesi síðu og tilknýttu kjaksíðuni verða at síggja her.
 Tá sæst síðan sum '''feit skrift''' í [[Special:Recentchanges|broytingaryvirlitinum]] fyri at gera hana lættari at síggja.
 
@@ -823,7 +835,7 @@ Vinarliga vátta at tú ætlar at gera hetta, at tú skilur
 avleiðingarnar og at tú gert tað í tráð við
 [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'     => 'Verkið er fullgjørt',
-'deletedtext'        => '"$1" er nú strikað.
+'deletedtext'        => '"<nowiki>$1</nowiki>" er nú strikað.
 Sí $2 fyri fulla skráseting av strikingum.',
 'deletedarticle'     => 'strikaði "[[$1]]"',
 'dellogpage'         => 'Striku logg',
@@ -859,7 +871,7 @@ Sí $2 fyri fulla skráseting av strikingum.',
 'mycontris'     => 'Mítt íkast',
 'contribsub2'   => 'Eftir $1 ($2)',
 'uclinks'       => 'Skoða seinastu $1 broytingarnar; skoða seinastu $2 dagarnar.',
-'uctop'         => ' (ovast)',
+'uctop'         => '(ovast)',
 'month'         => 'Frá mánaði (og áðrenn):',
 'year'          => 'Frá ár (og áðrenn):',
 
@@ -966,7 +978,6 @@ Grein við navninum "[[$1]]" finst longu. Ynskir tú at strika hana til tess at 
 
 # Thumbnails
 'thumbnail-more' => 'Víðka',
-'missingimage'   => '<b>Horvin mynd</b><br /><i>$1</i>',
 'filemissing'    => 'Fíla vantar',
 
 # Special:Import
@@ -996,6 +1007,7 @@ Grein við navninum "[[$1]]" finst longu. Ynskir tú at strika hana til tess at 
 'tooltip-n-mainpage'            => 'Vitja høvuðssíðuna',
 'tooltip-n-portal'              => 'Um verkætlanina, hvat tú kanst gera, hvar tú finnur ymiskt',
 'tooltip-n-currentevents'       => 'Finn bakgrundsupplýsingar um aktuellar hendingar',
+'tooltip-n-recentchanges'       => 'Listi av seinastu broytingar í wikin.',
 'tooltip-n-randompage'          => 'Far til tilvildarliga síðu',
 'tooltip-n-help'                => 'Staðurin at finna út.',
 'tooltip-n-sitesupport'         => 'Stuðla okkum',
@@ -1021,7 +1033,6 @@ Grein við navninum "[[$1]]" finst longu. Ynskir tú at strika hana til tess at 
 # Attribution
 'anonymous'     => 'Dulnevndir brúkarar í {{SITENAME}}',
 'siteuser'      => '{{SITENAME}}brúkari $1',
-'and'           => 'og',
 'othercontribs' => 'Grundað á arbeiði eftir $1.',
 'others'        => 'onnur',
 'siteusers'     => '{{SITENAME}}brúkari(ar) $1',
@@ -1116,5 +1127,8 @@ fer úr gildi tann $4.',
 'watchlisttools-view' => 'Vís viðkomandi broytingar',
 'watchlisttools-edit' => 'Vís og rætta eftirlit',
 'watchlisttools-raw'  => 'Rætta rátt eftirlit',
+
+# Special:Filepath
+'filepath-page' => 'Fíla:',
 
 );

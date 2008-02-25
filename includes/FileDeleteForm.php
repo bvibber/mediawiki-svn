@@ -77,7 +77,7 @@ class FileDeleteForm {
 				if( $status->ok ) {
 					// Need to do a log item
 					$log = new LogPage( 'delete' );
-					$logComment = wfMsg( 'deletedrevision', $this->oldimage );
+					$logComment = wfMsgForContent( 'deletedrevision', $this->oldimage );
 					if( trim( $reason ) != '' )
 						$logComment .= ": {$reason}";
 					$log->addEntry( 'delete', $this->title, $logComment );
@@ -134,13 +134,13 @@ class FileDeleteForm {
 					Xml::label( wfMsg( 'filedelete-otherreason' ), 'wpReason' ) .
 				"</td>
 				<td>" .
-					Xml::input( 'wpReason', 60, $wgRequest->getText( 'wpReason' ), array( 'type' => 'text', 'maxlength' => '255', 'tabindex' => '1', 'id' => 'wpReason' ) ) .
+					Xml::input( 'wpReason', 60, $wgRequest->getText( 'wpReason' ), array( 'type' => 'text', 'maxlength' => '255', 'tabindex' => '2', 'id' => 'wpReason' ) ) .
 				"</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>" .
-					Xml::submitButton( wfMsg( 'filedelete-submit' ), array( 'name' => 'mw-filedelete-submit', 'id' => 'mw-filedelete-submit' ) ) .
+					Xml::submitButton( wfMsg( 'filedelete-submit' ), array( 'name' => 'mw-filedelete-submit', 'id' => 'mw-filedelete-submit', 'tabindex' => '3' ) ) .
 				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
@@ -178,16 +178,16 @@ class FileDeleteForm {
 	 * @return string
 	 */
 	private function prepareMessage( $message ) {
-		global $wgLang, $wgServer;
+		global $wgLang;
 		if( $this->oldimage ) {
+			$url = $this->file->getArchiveUrl( $this->oldimage );
 			return wfMsgExt(
 				"{$message}-old", # To ensure grep will find them: 'filedelete-intro-old', 'filedelete-nofile-old', 'filedelete-success-old'
 				'parse',
 				$this->title->getText(),
 				$wgLang->date( $this->getTimestamp(), true ),
 				$wgLang->time( $this->getTimestamp(), true ),
-				$wgServer . $this->file->getArchiveUrl( $this->oldimage )
-			);
+				wfExpandUrl( $this->file->getArchiveUrl( $this->oldimage ) ) );
 		} else {
 			return wfMsgExt(
 				$message,

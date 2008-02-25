@@ -262,6 +262,11 @@ $messages = array(
 
 # General errors
 'error'                => 'Njuumte',
+'databaseerror'        => 'Njuumtey dattub njoxe bi',
+'dberrortext'          => 'Njuumtey mbindin ci laaj bi nga yóonne dattub njobe bi. Man na nekk it ab njuumte ci tëriin wi. Laaj bi ñu mujje yónne ci dattub njoxe bi moo doonoon:
+<blockquote><tt>$1</tt></blockquote>
+bàyyikoo ci bii solo « <tt>$2</tt> ». MySQL moo yónnewaat bii njuumte « <tt>$3 : $4</tt> ».',
+'dberrortextcl'        => 'Ab laaj ca dattub njoxe ba jur na ab njuumtey mbindin. Laaj bi ñu mujje yónne dattub njoxe bi moo doonoon : « $1 » bàyyikoo ci bii solo « $2 ». MySQL delloo na njuumte li « $3 : $4 ».',
 'noconnect'            => 'Jéggalu! ngir ay tolof-tolofi xarala, fi mu ne nii duggu gi jàppandiwul. <br />
 $1',
 'nodb'                 => 'Falug dattub njoxe bii di $1 antuwul',
@@ -282,6 +287,7 @@ L’administrateur ayant verrouillé la base de données a donné l’explicatio
 'cannotdelete'         => 'Farug xët walla dencukaay bi nga joxoñ antuwul. (xayna far gi am na keneen ku ko def ba noppi.)',
 'badtitle'             => 'Koj bu baaxul',
 'badtitletext'         => 'Kojug xët wi nga laaj baaxul, amul dara walla  day di kojjug diggantelàkk walla diggantesémb yu seen lonkoo baaxul. Xayna it dafa am benn walla ay araf yu ñu manuta jëfandikoo cib koj.',
+'perfdisabled'         => 'Jéggalu! bii jëfukaay dañ kaa doxadilandi ndaxte day yeexal lool dattub njoxe bi, ba tax kenn manatul a jëfandikoo bi wiki.',
 'querypage-no-updates' => 'Yeesal yu xët wii dañ leen a doxadil fi mu ne nii. Xibaar yi ne fii ci suuf beesuñu.',
 'viewsource'           => 'Xool gongikuwaayam',
 'viewsourcefor'        => 'ngir $1',
@@ -342,7 +348,7 @@ Sag mbindu sotti na. Bul fatte soppi say tànneef ni nga ko bëggee ci {{SITENAM
 'loginsuccesstitle'          => 'Sag xammeeku jàll na',
 'loginsuccess'               => 'Léegi nag duggu nga ci {{SITENAME}} yaay « $1 ».',
 'nosuchuser'                 => 'Amul benn jëfandikukat bu tuddu « $1 ». Xoolaatal bu baax mbindiin mi walla nga sos meneen sàqum jëfandikukat.',
-'nosuchusershort'            => 'Amul benn jëfandikukat bu tuddu « $1 ». Xoolaatal mbidiin mi.',
+'nosuchusershort'            => 'Amul benn jëfandikukat bu tuddu « <nowiki>$1</nowiki> ». Xoolaatal mbidiin mi.',
 'nouserspecified'            => 'Laaj na nga tànn ab turu jëfandikukat',
 'wrongpassword'              => 'Bii baatujàll baaxul. Jéemaatal.',
 'wrongpasswordempty'         => 'Duggaloo ab baatujàll, jéemaatal.',
@@ -394,9 +400,10 @@ Jéelaleel bataaxal bii su fekkee ci njuumte nga sosee mii sàq.',
 'headline_tip'    => 'Ron-koj 2° dayoo',
 'nowiki_sample'   => 'Duggalal fii mbind mi ñu daytalul',
 'nowiki_tip'      => 'Jéelaleel mbindinu wiki',
-'image_tip'       => 'Nataal bu roofu',
+'image_tip'       => 'Roof ab nataal',
+'media_tip'       => 'Lëkkalekaay buy jëme cib dencukaay',
 'sig_tip'         => 'Xaatimee waxtu wi',
-'hr_tip'          => 'Buum bu tëdd (bul ci ëppal)',
+'hr_tip'          => 'Rëbb wu tëdd (bul ci ëppal)',
 
 # Edit pages
 'summary'                   => 'Koj&nbsp;',
@@ -438,10 +445,12 @@ Man ngaa jookkook $1 walla ak kenn ci [[{{MediaWiki:Grouppage-sysop}}|yorekat yi
 Su fekkee joxe nga ab màkkaanu m-bataaxal ci say [[Special:Preferences|tànneef]] te terewuñula nga jëfandikoo ko, man ngaa jëfandikoo jumtukaay bii di "yónne ab m-bataaxal bii jëfandikukat" ngir jookkook ab yorekat.
 
 Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen fuñ la leen laajee.',
-'blockededitsource'         => "Ndefug '''say coppite''' yi nga def fii '''$1''' mooy lii ci suuf:",
-'whitelistedittitle'        => 'Laaj na nga bindi ngir mana soppi ndef gi',
-'whitelistedittext'         => 'Da ngay  wara doon $1 ngir am sañ-sañu soppi ngef gi.',
-'whitelistreadtitle'        => 'Laaj na nga bindu ngir mana jàng ndef gi',
+'blockednoreason'           => 'Joxewul benn ngirte',
+'blockedoriginalsource'     => "Yoonu gongikuwaay wu wii xët '''$1''' moo ne nii ci suuf:",
+'blockededitsource'         => "Ëmbitu '''say coppite''' yi nga def fii '''$1''' mooy lii ci suuf:",
+'whitelistedittitle'        => 'Laaj na nga bindi ngir man a soppi ëmbit li',
+'whitelistedittext'         => 'Faawu nga doon $1 ngir am sañ-sañu soppi ëmbit li.',
+'whitelistreadtitle'        => 'Laaj na nga bindu ngir man a jàng ëmbit li',
 'whitelistreadtext'         => 'Ngir man a jàng ëmbit li, laaj na nga [[Special:Userlogin|duggu]].',
 'whitelistacctitle'         => 'Amoo sañ-sañu bindu.',
 'whitelistacctext'          => 'Ngir nga man a sos yeneeni sàq ci bii wiki, laaj na nga [[Special:Userlogin|duggu]] te it xaar ba am sañ-sañ yi mu laaj.',
@@ -459,49 +468,192 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 'anontalkpagetext'          => "---- ''Yaa ngi ci xëtu waxtaanuwaayu ab jëfandikukat bu kenn-xamul, bu bindoogul walla du jëfandikoo sàqam. Kon ngir xamme ko faaw nga jëfandikoo màkkaanub IP wan. Te màkkaanub IP jëfandikukat yu bari man nañ ka bokk. Su fekkee jëfandikukat bu kenn-xamul nga, te nga gis ne dañ laa féetale ay sànni-kaddu yoo moomul, man ngaa [[Special:Userlogin|bindu walla duggu]] ngi benn jaxase bañatee am ëllëg .''",
 'noarticletext'             => 'Fi mu ne ni amul benn mbind ci xët wii; man ngaa [[{{ns:special}}:Search/{{PAGENAME}}|tambli ab seet ci koju xët wii]] walla [{{fullurl:{{FULLPAGENAME}}|action=edit}} soppi xët wii].',
 'userpage-userdoesnotexist' => 'Bii sàqum jëfandikukat « $1 » du bu ku bindu. Seetal bu baax ndax da ngaa namma sos walla soppi wii xët.',
-'clearyourcache'            => "'''Karma :''' Soo dence xët wi ba noppi, faaw nga bës ci si sa arafukaay yii di toftal, te nga bàyyi xel ci joowukaay bi ngay jëfandikoo : '''Mozilla / Konqueror / Firefox :''' ''Shift-Ctrl-R'', '''Internet Explorer / Opera :''' ''Ctrl-F5'', '''Safari :''' ''Cmd-R''.",
+'clearyourcache'            => "'''Karmat :''' Soo dence xët wi ba noppi, faaw nga bës ci si sa arafukaay yii di toftal, te nga bàyyi xel ci joowukaay bi ngay jëfandikoo : '''Mozilla / Konqueror / Firefox :''' ''Shift-Ctrl-R'', '''Internet Explorer / Opera :''' ''Ctrl-F5'', '''Safari :''' ''Cmd-R''.",
+'usercssjsyoucanpreview'    => "'''Xelal :''' di la digël nga cuq ci «Wonendi» ngir gis say xobi CSS walla JavaScript yu bees laata nga leen di denc.",
+'usercsspreview'            => "'''Bul fatte ne lii wonendib sa CSS rekk la; dencagoo say coppite!'''",
+'userjspreview'             => "'''Bul fatte ne lii ab wonendib sa yoonu javaScript rekk la; dencagoo say coppite!'''",
+'userinvalidcssjstitle'     => "'''Moytul :''' amul wenn melin wu tuddu « $1 ». Bul fatte ne xët yiy jeexee .css ak .js seeni koj ay araf yu tuut ñoo ciy tegu/.<br />ci misaal, {{ns:user}}:Foo/'''m'''onobook.css moo baax, waaye bii du baax {{ns:user}}:Foo/'''M'''onobook.css .",
+'updated'                   => '(bees na)',
+'note'                      => '<strong>Karmat :</strong>',
+'previewnote'               => 'Lii ab wonendi rekk la; coppite yi ci xët wi dencagoo leen!',
+'previewconflict'           => "Wonendi bi mengóo na ak mbind yi ne ci boyotu coppite bi te nii lay mel soo cuqe ci 'Denc xët wi'.",
+'session_fail_preview'      => '<strong>Jéegalu! manu noo denc say coppite ngir ñakkub ay njoxe ñeel sag duggu. Di la ñaan nga jéemaat. Su tolof-tolof bi wéyee, Jéemal a génn te duggaat. </strong>',
+'session_fail_preview_html' => "<strong>Jéegalu ! manu noo denc say coppite ngir ab ñakkub ay njoxe ñeel sag duggu.</strong>
+
+''Segam ci bii dal dañ fee doxal HTML bu ñumm, ngir ay ngirtey kaaraange, wonendi gi du gisuwu.''
+
+<strong>Su tolof-tolof bi wéyee, man nga jéem a génn te duggaat .</strong>",
 'token_suffix_mismatch'     => '<strong>Votre édition n’a été acceptée car votre navigateur a mélangé les caractères de ponctuation dans l’identifiant d’édition. L’édition a été rejetée afin d’empêcher la corruption du texte de l’article. Ce problème se produit lorsque vous utilisez un proxy anonyme à problème.</strong>',
 'editing'                   => 'Coppiteg $1',
 'editinguser'               => 'Coppiteg $1',
+'editingsection'            => 'Coppiteg $1 (xaaj)',
+'editingcomment'            => 'Coppiteg $1 (sanni-kàddu)',
+'editconflict'              => 'jàppanteb coppite ci: $1',
+'explainconflict'           => "<b>Am na beneen jëfandikukat bu soppi xët wi, mu gën a bees, ci bi ngay soog a door say coppite. Mbind yi ne ci boyotu coppite bi ci kaw, ñooy yi teew nii ci dattub njoxe bi, ni ko beneen jëfandikukat bi soppee. Yaw nag say coppite ñoo nekk ci boyotu coppite bi ci suuf. Soo nammee denc say coppite, faaw nga duggal leen ci boyot bi ci kaw. Soo cuqe ci 'Denc xët wi', mbind yi ne ci boyot bi ci kaw rekk ñooy dencu .</b><br />",
 'yourtext'                  => 'Sa mbind',
 'nonunicodebrowser'         => '<strong>Attention : Votre navigateur ne supporte pas l’unicode. Une solution temporaire a été trouvée pour vous permettre de modifier en tout sûreté un article : les caractères non-ASCII apparaîtront dans votre boîte de modification en tant que codes hexadécimaux. Vous devriez utiliser un navigateur plus récent.</strong>',
 'editingold'                => '<strong>Attention : vous êtes en train de modifier une version obsolète de cette page. Si vous sauvegardez, toutes les modifications effectuées depuis cette version seront perdues.</strong>',
 'yourdiff'                  => 'Wuute',
-'cascadeprotectedwarning'   => '<strong>MOYTUL : Xët mii dañ kaa aar ba nga xamne [[{{MediaWiki:Grouppage-sysop}}|yorkat yi]] rek ñoo koy mana soppi. Kaaraange googu dañ kaa def ndaxte xët mii dañ kaa boole ci {{PLURAL:$1|am xët mu ñu aar|ay xët yu ñu aar}} ak « kaaraange cig toppante » te dañ kaa taal.</strong>',
-'templatesused'             => 'Royuwaay yi nekk ci mii xët :',
+'copyrightwarning'          => 'Bépp cëru ci {{SITENAME}} dañ leen di jàppe niki ay siiwal yoo def te teg leen ci $2 (xoolal $1 ngir yeneeni xamle). Soo bëggul keneen jël say mbind soppi leen, tas leen teg ci, bu leen fi duggal.<br /> 
+Te it na wóor ne li nga fiy duggal yaa leen moom, yaa leen bind, walla fa nga leen jële gongikuwaay bu ubbeeku la, lu kenn moomul. <strong>BUL FI DUGGAL LIGGÉEYI KENEEN YU AQI KI-SOS AAR TE AMOO CI BENN NDIGËL!</strong>',
+'copyrightwarning2'         => 'Karmat: Bépp cëru ci {{SITENAME}} yeneen jëfandikukat yi man nañ leen a soppi walla far leen. Soo bëggul keneen jël say mbind soppi leen, tas leen teg ci, bu leen fi duggal.<br />  
+Te it na wóor ne li nga fiy duggal yaa leen moom, yaa leen bind, walla fa nga leen jële gongikuwaay bu ubbeeku la, lu kenn moomul (xoolal $1 ngir yeneeni xamle) 
+<strong>BUL FI DUGGAL LIGGÉEYI KENEEN YU AQI KI-SOS AAR TE AMOO CI BENN NDIGËL!</strong>',
+'longpagewarning'           => "'''Muytul: guddaayu xët wi da fa romb $1 kio ;
+yenn joowukaay yi, man nañoo wone ay tolof-tolof ci bu ñuy soppi xët yi romb dayoob 32 kio. Li doon gën mooy nga séddatle ko ci ay xaaj yu bari.'''",
+'longpageerror'             => '<strong>NJUUMTE : mbind mi nga yónne guddee na $1 kio, kon romb na dig bi di $2 kio. Mbind mi maneesu kaa denc.</strong>',
+'readonlywarning'           => "'''Moytul: dattub njoxe bi dañ kaa caabi ngir ay liggéey,
+kon doo man a denc say coppite fi mu nekk nii. Man ngaa duppi mbind mi taf ko cib tëriin bu ñuy binde te taaxirlu ñu ubbi dattub njoxe bi.'''",
+'protectedpagewarning'      => "'''Moytul : wii xët dañ kaa aar.
+Jëfandikukat yi nekk yorkat rekk a ko man a soppi.'''",
+'semiprotectedpagewarning'  => "'''Karmat :''' wii xët dañ kaa aar ba nga xam ne ñi bindu rekk a ko man a soppi.",
+'cascadeprotectedwarning'   => '<strong>MOYTUL : Xët wii dañ kaa aar ba nga xam ne [[{{MediaWiki:Grouppage-sysop}}|yorkat yi]] rek ñoo koy man a soppi. Kaaraange googu dañ kaa def ndaxte xët wii dañ kaa dugal ci biir {{PLURAL:$1|aw xët wu ñu aar|ay xët yu ñu aar}}.</strong>',
+'titleprotectedwarning'     => '<strong>MOYTUL: wii xët dañ kaa aar ci anam boo xam ne yenn jëfandikukat yi rekk a ko man a sos.</strong>',
+'templatesused'             => 'Royuwaay yi nekk ci wii xët :',
 'templatesusedpreview'      => 'Royuwaay yi nekk ci gii wonendi :',
+'templatesusedsection'      => 'Royuwaay yi ne ci bii xaaj:',
 'template-protected'        => '(aar)',
+'nocreatetitle'             => 'Digalu sosteefu xët',
+'nocreatetext'              => 'Jëfandikukat yi bindu rekk a man a sosi xët ci {{SITENAME}}. Man nga dellu ginnaaw walla soppi aw xët wu am ba noppi, [[Special:Userlogin|duggu walla sos am sàq]].',
+'nocreate-loggedin'         => 'Amuloo sañ-sañ yu doy ngir man a sosi xët yu bees ci {{SITENAME}}.',
+'permissionserrors'         => 'Njuumte ci sañ-sañ yi',
+'permissionserrorstext'     => 'Amuloo sañ-sañu àggali jëf ji nga tambali, ngax {{PLURAL:$1|lii toftal|yii toftal}} :',
+'recreate-deleted-warn'     => "'''Moytul: yaa ngi nekk di sosaat aw xët wu ñu faroon.'''
+
+Wóorluwul bu baax ndax sosaat xët wi di na doon li gën. Xoolal yéenekaayu far gi ci suuf.",
+
+# "Undo" feature
+'undo-success' => 'Gii coppite man nga kaa neenal. Xoolal méngale gi ne ci suuf ngir wóorlu ne ni ëmbit li mel na ni nga ko bëgge, te nga denc xët wi ngir jeexal.',
+'undo-failure' => 'Neenalug coppite gi defuwul: man naa jur ab jàppante ci coppite yi ci diggante bi',
+'undo-summary' => 'Neenalug coppite $1 yu [[Special:Contributions/$2|$2]]',
 
 # Account creation failure
-'cantcreateaccounttitle' => 'sag mbindu Mënu la nekk .',
+'cantcreateaccounttitle' => 'sag mbindu Manu la nekk .',
+'cantcreateaccount-text' => "Sosum sàq mu bàyyikoo ci bii màkkaanu IP (<b>$1</b>) dañ kaa téye [[User:$3|$3]].
+
+Ngirtey téye gi $3 joxe, mooy ne: ''$2''.",
 
 # History pages
-'viewpagelogs' => 'Xool yéenekaayu xët mii',
+'viewpagelogs' => 'Xool yéenekaayu xët wii',
 'nohistory'    => 'Xët wii amulub jaar-jaar.',
-'cur'          => 'Xibaar',
+'loadhist'     => 'Yebub jaar-jaaru xët wi',
+'cur'          => 'xamle',
 'next'         => 'tegu',
-'histlast'     => 'Li ñu mujje indi',
+'last'         => 'mujj',
+'orig'         => 'cosaa',
+'page_first'   => 'jiitu',
+'page_last'    => 'mujj',
+'deletedrev'   => '[far nañ ko]',
+'histfirst'    => 'Cëru yi njëkk',
+'histlast'     => 'Cëru yi mujj',
+'historyempty' => '(këmm)',
+
+# Revision feed
+'history-feed-item-nocomment' => '$1 ci $2', # user at time
+'history-feed-empty'          => 'Xët wi nga laaj amul. Xej-na dañ koo dindi ci dal bi walla ñu tuddewaat ko. Man nga jéem a [[Special:Search|seet ci wiki bi]] ndax ay xët yu bees am nañ fi.',
+
+# Revision deletion
+'rev-deleted-comment'       => '(sanni-kàddu bi far nañ ko)',
+'rev-deleted-user'          => '(turu jëfandikukat bi far nañ ko)',
+'rev-deleted-event'         => '(duggit li far nañ ko)',
+'rev-delundel'              => 'wone/nëbb',
+'revdelete-nooldid-title'   => 'Sag jagal amul njeexit',
+'logdelete-selected'        => "{{PLURAL:$2|Xew-xewu yéenekaay bi falu|xew-xewi yéenekaay yi falu}} ngir '''$1''' :",
+'revdelete-hide-name'       => 'Nëbb jëf ji ak njeexitam',
+'revdelete-hide-comment'    => 'Nëbb sanni-kàddub coppite gi',
+'revdelete-hide-user'       => 'Nëbb tur walla màkkaanu IP bu soppikat bi',
+'revdelete-hide-restricted' => 'jëfel digal yu yorkat yi ak yeneen jëfandikukat yi.',
+'revdelete-suppress'        => 'Nëbb xibaar yi yorkat yi tamit.',
+'revdelete-hide-image'      => 'Nëbb ëmbitu dencukaay bi',
+'revdelete-log'             => 'Sanni-kàddu ngir yéenekaay bi :',
+'logdelete-logentry'        => 'Gisub xew-xew bii [[$1]] dañ kaa soppi',
+'logdelete-logaction'       => 'Soppi nga doxaliin bi di $2 ngir {{plural:$1|ab xew-xew bu|ay xew-xew yu}} ñeel [[$3]]',
+'logdelete-success'         => 'Gisub xew-xew bi soppiku na bu baax',
+
+# Oversight log
+'overlogpagetext' => 'Lim bii ci suuf day wone farte yeek téye yi mujj te seen ëmbit nëbbu ci ñépp, ba ci yorkat yi sax. yëral [[Special:Ipblocklist|limu sàq yi ñu téye]] ngir gis limu téye yi teew.',
+
+# History merging
+'mergehistory'                     => 'Booleb jaar-jaar yu aw xët',
+'mergehistory-from'                => 'Xëtu gongikuwaay :',
+'mergehistory-into'                => 'Xëtu jëmuwaay :',
+'mergehistory-list'                => 'Jaar-jaar yi boolewu',
+'mergehistory-go'                  => 'Wone coppite yi boolewu',
+'mergehistory-submit'              => 'Boole jagal yi',
+'mergehistory-fail'                => 'Booleb jaar-jaar yi antuwul. Falaatal xët wi ak taariix yi',
+'mergehistory-no-source'           => 'Xëtu gongikuwaay bii $1 amul.',
+'mergehistory-no-destination'      => 'Xëtu jëmuwaay bii $1 amul.',
+'mergehistory-invalid-source'      => 'Xëtu gongikuwaay bi daa war a am koj bu baax.',
+'mergehistory-invalid-destination' => 'Xëtu jëmuwaay bi daa war a am koj bu baax.',
+
+# Merge log
+'mergelog'         => 'Yéenekaayu boole yi',
+'revertmerge'      => 'Neenal boole yi',
+'mergelogpagetext' => 'Lii ci suuf ab lim la ci boole yu mujj yu jaar-jaaru aw xët ak weneen .',
+
+# Diffs
+'lineno'   => 'Rëdd $1 :',
+'editundo' => 'neenal',
 
 # Search results
-'noexactmatch' => "'''Amul wenn xët wu tudd « $1 » wu am.''' man ngaa [[:$1|sakk xët wi]].",
-'nextn'        => '$1 yi tegu',
-'viewprevnext' => 'Xool ($1) ($2) ($3).',
+'searchresults'         => 'Ngértey ceet gi',
+'searchresulttext'      => 'Ngir yeneeni xibaar ci ceet gi ci {{SITENAME}}, xoolal [[{{MediaWiki:Helppage}}|{{int:help}}]].',
+'searchsubtitle'        => 'Yaa ngi seet « [[:$1]] »',
+'searchsubtitleinvalid' => 'Yaa ngi seet « $1 »',
+'noexactmatch'          => "'''Amul wenn xët wu tudd « $1 » wu am.''' man ngaa [[:$1|sakk xët wi]].",
+'noexactmatch-nocreate' => "'''Amul wenn xët wu tuddu« $1 ».'''",
+'titlematches'          => 'Koju xët yi ñoo yam',
+'notitlematches'        => 'Amul benn koju xët wu yam ak ceet gi',
+'textmatches'           => 'Mbindu jukki yi ñoo yam.',
+'notextmatches'         => 'Amul benn mbindu jukki bu yam ak ceet gi.',
+'prevn'                 => '$1 yi jiitu',
+'nextn'                 => '$1 yi toftal',
+'viewprevnext'          => 'Xool ($1) ($2) ($3).',
+'showingresults'        => 'Woneg <b>$1</b> {{plural:$1|ngérte|ciy ngérte}} doore ko ci #<b>$2</b>.',
+'showingresultsnum'     => 'Woneg <b>$3</b> {{plural:$3|ngérte|ciy ngérte}} doore ko ci #<b>$2</b>.',
+'nonefound'             => '<strong>Karmat</strong> : liy waral ñakkug ay ngérte yenn saa yi, mooy jëfandikoo ab baatu ceet bu gàtt, niki « am » walla « jëm », walla jëfandikoo baati ceet yu bari (xët yi ëmb baat yi nga bind yépp, rekk ñooy feeñ).',
+'powersearch'           => 'Seet',
+'powersearchtext'       => 'Seet ci barabi tur yi :<br />
+$1<br />
+$2 boole ci xëti yoonalaat yi<br /> Seet $3 $9',
+'searchdisabled'        => 'Ceet gi ci {{SITENAME}} doxul. Ci négandiku doxal gi, man nga seet ci Google. Jàppal ne, xéj-na ëmbiti {{SITENAME}} gi ci bii seetukaay yeesaluñ leen.',
 
 # Preferences page
-'mypreferences'        => 'Samay tànneef',
-'changepassword'       => 'Coppiteeg baatu duggu bi',
-'skin'                 => 'Apparence',
-'prefs-watchlist'      => 'Limu toppte',
-'prefs-watchlist-days' => 'Limu bes yi nga koy ba ci sa limu toppte :',
-'saveprefs'            => 'Duggal tànneef yi',
-'oldpassword'          => 'Baatu duggu bu yagg :',
-'newpassword'          => 'Baatu duggu bu bees :',
-'retypenew'            => 'Dëggalal baatu dugg bu bees bi :',
-'searchresultshead'    => 'Seet',
-'recentchangesdays'    => 'Limu bes yi nga koy wone ci coppite yu mujj yi :',
-'recentchangescount'   => 'Limu coppite yi ngay wone ci coppite yu mujj yi :',
-'savedprefs'           => 'Tànneey yi duggal nañ leen.',
-'allowemail'           => 'ndigëlël yeneeni jëfëndikookat mën laa yòonnee bataaxal',
+'preferences'              => 'Tànneef',
+'mypreferences'            => 'Samay tànneef',
+'prefs-edits'              => 'Limu coppite yi:',
+'prefsnologin'             => 'Duggoo',
+'prefsnologintext'         => 'Laaj na nga [[Special:Userlogin|duggu]] ngir soppi say tànneef.',
+'prefsreset'               => 'Tànneef yi loppanti nañ leen.',
+'qbsettings'               => 'Banqaasu jumtukaay',
+'qbsettings-none'          => 'Kenn',
+'qbsettings-fixedleft'     => 'Cammooñ',
+'qbsettings-fixedright'    => 'Ndayjoor',
+'qbsettings-floatingleft'  => 'ci cammooñ',
+'qbsettings-floatingright' => 'Ci ndayjoor',
+'changepassword'           => 'Coppiteg baatujàll bi',
+'skin'                     => 'Melokaan',
+'math'                     => 'Xayma',
+'dateformat'               => 'Dayoob taariix bi',
+'datedefault'              => 'Benn tànneef',
+'datetime'                 => 'Taariix ak waxtu',
+'math_failure'             => 'Njuumte ci xayma',
+'math_unknown_error'       => 'Njuumte li xamuñ ko',
+'math_unknown_function'    => 'Solo si xamuñ ko',
+'math_lexing_error'        => 'Njuumteg mbindin',
+'prefs-watchlist'          => 'Limu toppte',
+'prefs-watchlist-days'     => 'Limu bes yi nga koy ba ci sa limu toppte :',
+'saveprefs'                => 'Denc tànneef yi',
+'resetprefs'               => 'Loppanti tànneef yi',
+'oldpassword'              => 'Baatujàll bu yàgg :',
+'newpassword'              => 'Baatujàll bu bees :',
+'retypenew'                => 'Bindaatal baatujàll bu bees bi :',
+'textboxsize'              => 'Boyotu coppite',
+'searchresultshead'        => 'Seet',
+'recentchangesdays'        => 'Limu bes yi nga koy wone ci coppite yu mujj yi :',
+'recentchangescount'       => 'Limu coppite yi ngay wone ci coppite yu mujj yi :',
+'savedprefs'               => 'Tànneey yi duggal nañ leen.',
+'allowemail'               => 'ndigëlël yeneeni jëfëndikookat mën laa yòonnee bataaxal',
 
 # User rights
 'userrights-lookup-user'     => 'Yorinu yelleefu jëfëndikookat',
@@ -526,7 +678,7 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|coppite|ciy coppite}}',
 'recentchanges'                     => 'Coppite yu mujj',
-'recentchangestext'                 => 'Toppal ci mii xët coppite yu mujj ci {{SITENAME}}.',
+'recentchangestext'                 => 'Toppal ci wii xët coppite yu mujj ci {{SITENAME}}.',
 'recentchanges-feed-description'    => 'Toppal coppite yu mujj gu wiki gii.',
 'rcshowhideminor'                   => '$1 Coppite yu néew',
 'rcshowhideliu'                     => '$1 jëfëndikookat gu bindu',
@@ -697,7 +849,7 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 
 # Contributions
 'contributions' => 'Li jëfëndikookat bii indi',
-'mycontris'     => 'Li ma indiwoon',
+'mycontris'     => 'Samay cërute',
 'nocontribs'    => 'Amul benn coppite bu melokaanoo nii bu ñu gis.',
 'month'         => 'Tambalee ci weeru (ak yi jiitu) :',
 'year'          => 'Tambalee ci attum (ak yi jiitu) :',

@@ -591,7 +591,11 @@ class LoginForm {
 				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
 				break;
 			case self::NOT_EXISTS:
-				$this->mainLoginForm( wfMsg( 'nosuchuser', htmlspecialchars( $this->mName ) ) );
+				if( $wgUser->isAllowed( 'createaccount' ) ){
+					$this->mainLoginForm( wfMsg( 'nosuchuser', htmlspecialchars( $this->mName ) ) );
+				} else {
+					$this->mainLoginForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->mName ) ) );
+				}
 				break;
 			case self::WRONG_PASS:
 				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
@@ -727,7 +731,7 @@ class LoginForm {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
-		$wgOut->addWikiText( wfMsg( 'whitelistacctext' ) );
+		$wgOut->addWikiMsg( 'whitelistacctext' );
 
 		$wgOut->returnToMain( false );
 	}
@@ -752,7 +756,7 @@ class LoginForm {
 		$blocker = User::whoIs( $wgUser->mBlock->mBy );
 		$block_reason = $wgUser->mBlock->mReason;
 
-		$wgOut->addWikiText( wfMsg( 'cantcreateaccount-text', $ip, $block_reason, $blocker ) );
+		$wgOut->addWikiMsg( 'cantcreateaccount-text', $ip, $block_reason, $blocker );
 		$wgOut->returnToMain( false );
 	}
 
@@ -921,7 +925,7 @@ class LoginForm {
 	function throttleHit( $limit ) {
 		global $wgOut;
 
-		$wgOut->addWikiText( wfMsg( 'acct_creation_throttle_hit', $limit ) );
+		$wgOut->addWikiMsg( 'acct_creation_throttle_hit', $limit );
 	}
 
 	/**

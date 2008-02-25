@@ -214,6 +214,7 @@ $messages = array(
 'mytalk'         => '我的对话页',
 'anontalk'       => '该IP的对话页',
 'navigation'     => '导航',
+'and'            => '和',
 
 # Metadata in edit box
 'metadata_help' => '元数据:',
@@ -255,7 +256,7 @@ $messages = array(
 'toolbox'           => '工具箱',
 'userpage'          => '查看用户页面',
 'projectpage'       => '查看计划页面',
-'imagepage'         => '查看图像页面',
+'imagepage'         => '查看媒体页面',
 'mediawikipage'     => '查看信息页面',
 'templatepage'      => '查看模板页面',
 'viewhelppage'      => '查看帮助页面',
@@ -327,6 +328,7 @@ $messages = array(
 'site-atom-feed'          => '$1的Atom订阅',
 'page-rss-feed'           => '“$1”的RSS订阅',
 'page-atom-feed'          => '“$1”的Atom订阅',
+'red-link-title'          => '$1 (尚未撰写)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '页面',
@@ -407,7 +409,7 @@ MySQL返回错误“$3: $4”。',
 'protectedpagetext'    => '该页面已被锁定以防止编辑。',
 'viewsourcetext'       => '您可以查看并复制此页面的源码:',
 'protectedinterface'   => '该页提供了软件的界面文本，它已被锁定以防止随意的修改。',
-'editinginterface'     => "'''警告:''' 您正在编辑的页面是用于提供软件的界面文本。改变此页将影响其他用户的界面外观。如要翻译，请考虑使用[http://translatewiki.net/wiki/Translating:Intro Betawiki]，一个用来为MediaWiki软件本地化的计划。",
+'editinginterface'     => "'''警告:''' 您正在编辑的页面是用于提供软件的界面文本。改变此页将影响其他用户的界面外观。如要翻译，请考虑使用[http://translatewiki.net/wiki/Main_Page?setlang=zh-hans Betawiki]，一个用来为MediaWiki软件本地化的计划。",
 'sqlhidden'            => '(SQL查询已隐藏)',
 'cascadeprotected'     => '这个页面已经被保护，因为这个页面被以下已标注"联锁保护"的{{PLURAL:$1|一个|多个}}被保护页面包含:
 $2',
@@ -466,7 +468,7 @@ $2',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => '你现在以"$1"的身份登录{{SITENAME}}。',
 'nosuchuser'                 => '找不到用户"$1"。检查您的拼写，或者建立一个新账户。',
-'nosuchusershort'            => '没有一个名为“$1”的用户。请检查您输入的文字是否有错误。',
+'nosuchusershort'            => '没有一个名为“<nowiki>$1</nowiki>”的用户。请检查您输入的文字是否有错误。',
 'nouserspecified'            => '你需要指定一个用户名。',
 'wrongpassword'              => '您输入的密码错误，请再试一次。',
 'wrongpasswordempty'         => '您没有输入密码，请重试！',
@@ -490,7 +492,7 @@ $2',
 'accountcreated'             => '已建立账户',
 'accountcreatedtext'         => '$1的账户已经被创建。',
 'createaccount-title'        => '在{{SITENAME}}中创建新账户',
-'createaccount-text'         => '有人 ($1) 在{{SITENAME}}中为 $2 创建了一个新账户($4)。 "$2" 的密码是 "$3" 。您应该立即登入并更改密码。
+'createaccount-text'         => '有人在{{SITENAME}}中利用您的邮箱创建了一个名为 "$2" 的新帐户($4)，密码是 "$3" 。您应该立即登入并更改密码。
 
 如果该账户创建错误的话，您可以忽略此信息。',
 'loginlanguagelabel'         => '语言: $1',
@@ -521,8 +523,8 @@ $2',
 'math_tip'        => '插入数学公式 (LaTeX)',
 'nowiki_sample'   => '在此插入非格式文本',
 'nowiki_tip'      => '插入非格式文本',
-'image_tip'       => '嵌入图像',
-'media_tip'       => '媒体文件链接',
+'image_tip'       => '嵌入文件',
+'media_tip'       => '文件链接',
 'sig_tip'         => '带有时间的签名',
 'hr_tip'          => '水平线 (小心使用)',
 
@@ -611,7 +613,7 @@ $2',
 'token_suffix_mismatch'     => '<strong>由于您用户端中的编辑令牌毁损了一些标点符号字元，为防止编辑的文字损坏，您的编辑已经被拒绝。
 这种情况通常出现于使用含有很多臭虫、以网络为主的匿名代理服务的时候。</strong>',
 'editing'                   => '正在编辑$1',
-'editinguser'               => '正在编辑用户<b>$1</b>',
+'editinguser'               => "正在更改用户'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 的用户权限",
 'editingsection'            => '正在编辑$1 (段落)',
 'editingcomment'            => '正在编辑$1 (评论)',
 'editconflict'              => '编辑冲突: $1',
@@ -787,6 +789,7 @@ $2',
 'searchsubtitleinvalid' => "搜索'''$1'''",
 'noexactmatch'          => "'''没找到标题为\"\$1\"的页面。''' 您可以[[:\$1|创建此页面]]。",
 'noexactmatch-nocreate' => "'''没找到标题为\"\$1\"的页面。'''",
+'toomanymatches'        => '过多的匹配已反应，请尝试一个不同的查询',
 'titlematches'          => '页面题目相符',
 'notitlematches'        => '没有找到匹配页面题目',
 'textmatches'           => '页面内容相符',
@@ -833,7 +836,7 @@ $2',
 'prefs-personal'           => '用户资料',
 'prefs-rc'                 => '最近更改',
 'prefs-watchlist'          => '监视列表',
-'prefs-watchlist-days'     => '监视列表中显示记录的最长天数:',
+'prefs-watchlist-days'     => '监视列表中显示记录的天数:',
 'prefs-watchlist-edits'    => '在增强的监视列表中显示最多更改次数:',
 'prefs-misc'               => '杂项',
 'saveprefs'                => '保存参数设置',
@@ -950,12 +953,12 @@ $2',
 'uploadnologintext'           => '您必须先[[Special:Userlogin|登录]]才能上传文件。',
 'upload_directory_read_only'  => '上传目录($1)不存在或无写权限。',
 'uploaderror'                 => '上载错误',
-'uploadtext'                  => "使用下面的表单来上传用在页面内新的图像文件。 
-要查看或搜索以前上传的图片
-可以进入[[Special:Imagelist|图像列表]]，
+'uploadtext'                  => "使用下面的表单来上传用在页面内新的文件。 
+要查看或搜索以前上传的文件
+可以进入[[Special:Imagelist|文件上传列表]]，
 上传和删除将在[[Special:Log/upload|上传日志]]中记录。
 
-要在页面中加入图像，使用以下形式的连接:
+要在页面中加入文件，使用以下形式的连接:
 '''<nowiki>[[{{ns:image}}:file.jpg]]</nowiki>'''，
 '''<nowiki>[[{{ns:image}}:file.png|替换文字]]</nowiki>''' 或
 '''<nowiki>[[{{ns:media}}:file.ogg]]</nowiki>'''。",
@@ -989,7 +992,7 @@ $2',
 上载文件的档名: <strong><tt>$1</tt></strong><br />
 现有文件的档名: <strong><tt>$2</tt></strong><br />
 请选择一个不同的名字。',
-'fileexists-thumb'            => "<center>'''已经存在的图像'''</center>",
+'fileexists-thumb'            => "<center>'''已经存在的文件'''</center>",
 'fileexists-thumbnail-yes'    => '这个文件好像是一幅图像的缩图版本<i>(缩图)</i>。请检查清楚该文件<strong><tt>$1</tt></strong>。<br />
 如果检查后的文件是同原本图像的大小是一样的话，就不用再上载多一幅缩图。',
 'file-thumbnail-no'           => '该档名是以<strong><tt>$1</tt></strong>开始。它好像一幅图像的缩图版本<i>(缩图)</i>。
@@ -1063,6 +1066,7 @@ $2',
 'nolinkstoimage'            => '没有页面链接到本文件。',
 'sharedupload'              => '该文件是一个共享上传，它可能在其它项目中被应用。',
 'shareduploadwiki'          => '请参阅$1以了解其相关信息。',
+'shareduploadwiki-desc'     => '它在$1上的描述于下面显示。',
 'shareduploadwiki-linktext' => '文件描述页面',
 'noimage'                   => '不存在此名称的文件，您可以$1。',
 'noimage-linktext'          => '上传它',
@@ -1072,7 +1076,7 @@ $2',
 'imagelist_user'            => '用户',
 'imagelist_size'            => '大小',
 'imagelist_description'     => '描述',
-'imagelist_search_for'      => '按图像名称搜索:',
+'imagelist_search_for'      => '按媒体名称搜索:',
 
 # File reversion
 'filerevert'                => '恢复$1',
@@ -1164,9 +1168,9 @@ Template:消除歧義',
 'brokenredirects-edit'   => '(编辑)',
 'brokenredirects-delete' => '(删除)',
 
-'withoutinterwiki'         => '未有语言链接的页面',
-'withoutinterwiki-header'  => '以下的页面是未有语言链接到其它语言版本:',
-'withoutinterwiki-submit'  => '显示',
+'withoutinterwiki'        => '未有语言链接的页面',
+'withoutinterwiki-header' => '以下的页面是未有语言链接到其它语言版本:',
+'withoutinterwiki-submit' => '显示',
 
 'fewestrevisions' => '最少修订的页面',
 
@@ -1182,7 +1186,7 @@ Template:消除歧義',
 'lonelypagestext'         => '以下页面尚未被{{SITENAME}}中的其它页面链接。',
 'uncategorizedpages'      => '未归类页面',
 'uncategorizedcategories' => '未归类分类',
-'uncategorizedimages'     => '未归类图像',
+'uncategorizedimages'     => '未归类文件',
 'uncategorizedtemplates'  => '未归类模版',
 'unusedcategories'        => '未使用分类',
 'unusedimages'            => '未使用图像',
@@ -1193,7 +1197,7 @@ Template:消除歧義',
 'mostlinkedcategories'    => '最多链接分类',
 'mostlinkedtemplates'     => '最多链接模版',
 'mostcategories'          => '最多分类页面',
-'mostimages'              => '最多链接图像',
+'mostimages'              => '最多链接文件',
 'mostrevisions'           => '最多修订页面',
 'allpages'                => '所有页面',
 'prefixindex'             => '前缀索引',
@@ -1217,7 +1221,7 @@ Template:消除歧義',
 'intl'                    => '跨语言链接',
 'move'                    => '移动',
 'movethispage'            => '移动此页',
-'unusedimagestext'        => '<p>请注意其它网站可能直接通过 URL 链接此图像，所以这里列出的图像有可能依然被使用。</p>',
+'unusedimagestext'        => '<p>请注意其它网站可能直接通过 URL 链接此文件，所以这里列出的图像有可能依然被使用。</p>',
 'unusedcategoriestext'    => '虽然没有被其它页面或者分类所采用，但列表中的分类页依然存在。',
 'notargettitle'           => '无目标',
 'notargettext'            => '您还没有指定一个目标页面或用户以进行此项操作。',
@@ -1303,11 +1307,9 @@ Template:消除歧義',
 'addedwatchtext'       => "页面\"[[:\$1]]\"已经被加入到您的[[Special:Watchlist|监视列表]]中。
 将来有关此页面及其讨论页的任何修改将会在那里列出，
 而且还会在[[Special:Recentchanges|最近更改]]中
-以'''粗体'''形式列出以使起更容易识别。
-
-如果您之后想将该页面从监视列表中删除，可点击导航条中的\"停止监视\"链接。",
+以'''粗体'''形式列出以使起更容易识别。",
 'removedwatch'         => '已停止监视',
-'removedwatchtext'     => '页面"$1"已经从您的监视页面中移除。',
+'removedwatchtext'     => '页面"<nowiki>$1</nowiki>"已经从您的监视页面中移除。',
 'watch'                => '监视',
 'watchthispage'        => '监视此页',
 'unwatch'              => '取消监视',
@@ -1382,7 +1384,7 @@ $NEWPAGE
 'confirmdeletetext'           => '您即将删除一个页面或图像以及其历史。
 请确定您要进行此项操作，并且了解其后果，同时您的行为符合[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'              => '操作完成',
-'deletedtext'                 => '"$1"已经被删除。最近删除的纪录请参见$2。',
+'deletedtext'                 => '"<nowiki>$1</nowiki>"已经被删除。最近删除的纪录请参见$2。',
 'deletedarticle'              => '已删除"$1"',
 'dellogpage'                  => '删除日志',
 'dellogpagetext'              => '以下是最近删除的纪录列列表:',
@@ -1408,7 +1410,7 @@ $NEWPAGE
 
 最后编辑者: [[User:$3|$3]] ([[User talk:$3|讨论]])。',
 'editcomment'                 => '编辑说明: "<i>$1</i>"。', # only shown if there is an edit comment
-'revertpage'                  => '恢复由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])的编辑；更改回[[User:$1|$1]]的最后一个版本',
+'revertpage'                  => '恢复由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])的编辑；更改回[[User:$1|$1]]的最后一个版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => '恢复由$1的编辑；更改回$2的最后一个版本。',
 'sessionfailure'              => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
 'protectlogpage'              => '保护日志',
@@ -1424,7 +1426,7 @@ $NEWPAGE
 'protect_expiry_old'          => '终止时间已过去。',
 'unprotectsub'                => '(正在取消保护"$1")',
 'protect-unchain'             => '移动权限解锁',
-'protect-text'                => '你可以在这里浏览和修改对页面<strong>$1</strong>的保护级别。',
+'protect-text'                => '你可以在这里浏览和修改对页面<strong><nowiki>$1</nowiki></strong>的保护级别。',
 'protect-locked-blocked'      => '您不能在被查封时更改保护级别。
 以下是<strong>$1</strong>现时的保护级别:',
 'protect-locked-dblock'       => '在资料库锁定时无法更改保护级别。
@@ -1472,6 +1474,7 @@ $NEWPAGE
 'undeleterevision-missing'     => '无效或丢失的修订版本。您可能使用了错误的链接，或者此修订版本已经被从存档中恢复或移除。',
 'undelete-nodiff'              => '找不到先前的修订版本。',
 'undeletebtn'                  => '恢复',
+'undeletelink'                 => '恢复',
 'undeletereset'                => '重设',
 'undeletecomment'              => '评论:',
 'undeletedarticle'             => '已恢复的"[[$1]]"',
@@ -1508,7 +1511,7 @@ $1',
 'nocontribs'    => '没有找到符合特征的更改。',
 'ucnote'        => '以下是该用户最近<b>$2</b>天内的最后<b>$1</b>次修改。',
 'uclinks'       => '参看最后$1次修改；参看最后$2天。',
-'uctop'         => ' (最新修改)',
+'uctop'         => '(最新修改)',
 'month'         => '从该月份 (或更早):',
 'year'          => '从该年份 (或更早):',
 
@@ -1519,7 +1522,7 @@ $1',
 'sp-contributions-username'    => 'IP地址或用户名称：',
 'sp-contributions-submit'      => '搜索',
 
-'sp-newimages-showfrom' => '从$1开始显示新图像',
+'sp-newimages-showfrom' => '从$1开始显示新文件',
 
 # What links here
 'whatlinkshere'       => '链入页面',
@@ -1560,7 +1563,7 @@ $1',
 'ipbenableautoblock'          => '自动查封此用户最后所用的IP地址，以及后来试图编辑所用的所有地址',
 'ipbsubmit'                   => '查封该地址',
 'ipbother'                    => '其它时间:',
-'ipboptions'                  => '2小时:2 hours,1天:1 day,3天:3 days,1周:1 week,2周:2 weeks,1个月:1 month,3个月:3 months,6个月:6 months,1年:1 year,永久:infinite',
+'ipboptions'                  => '2小时:2 hours,1天:1 day,3天:3 days,1周:1 week,2周:2 weeks,1个月:1 month,3个月:3 months,6个月:6 months,1年:1 year,永久:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => '其它',
 'ipbotherreason'              => '其它／附带原因:',
 'ipbhidename'                 => '在查封日志、活跃查封列表以及用户列表中隐藏用户名／IP',
@@ -1609,12 +1612,12 @@ $1',
 'ipb_already_blocked'         => '已经封锁"$1"',
 'ipb_cant_unblock'            => '错误: 找不到查封ID$1。可能已经解除封禁。',
 'ipb_blocked_as_range'        => '错误: 该IP $1 无直接查封，不可以解除封禁。但是它是在 $2 的查封范围之内，该段范围是可以解除封禁的。',
-'ip_range_invalid'            => '无效的IP范围。\n',
+'ip_range_invalid'            => '无效的IP范围。\\n',
 'blockme'                     => '禁封我',
 'proxyblocker'                => '代理封锁器',
 'proxyblocker-disabled'       => '这个功能已经禁用。',
 'proxyblockreason'            => '您的IP地址是一个开放的代理，它已经被封锁。请联系您的因特网服务提供商或技术支持者并告知告知他们该严重的安全问题。',
-'proxyblocksuccess'           => '完成。\n',
+'proxyblocksuccess'           => '完成。\\n',
 'sorbsreason'                 => '您的IP地址在{{SITENAME}}中被 DNSBL 列为属于开放代理服务器。',
 'sorbs_create_account_reason' => '由于您的IP地址在{{SITENAME}}中被 DNSBL 列为属于开放代理服务器，所以您不能创建新账户。',
 
@@ -1722,7 +1725,6 @@ $1',
 
 # Thumbnails
 'thumbnail-more'           => '放大',
-'missingimage'             => '<b>缺少图像</b><br /><i>$1</i>',
 'filemissing'              => '无法找到文件',
 'thumbnail_error'          => '创建缩略图错误: $1',
 'djvu_page_error'          => 'DjVu页面超出范围',
@@ -1743,7 +1745,7 @@ $1',
 'importstart'                => '正在导入页面...',
 'import-revision-count'      => '$1个修订',
 'importnopages'              => '没有导入的页面。',
-'importfailed'               => '导入失败: $1',
+'importfailed'               => '导入失败: <nowiki>$1</nowiki>',
 'importunknownsource'        => '未知的源导入类型',
 'importcantopen'             => '无法打开导入文件',
 'importbadinterwiki'         => '损坏的内部 wiki 链接',
@@ -1807,7 +1809,7 @@ $1',
 'tooltip-feed-atom'               => '此页的 Atom 订阅',
 'tooltip-t-contributions'         => '查看该用户的贡献列表',
 'tooltip-t-emailuser'             => '向该用户发送一封邮件',
-'tooltip-t-upload'                => '上传图像或媒体文件',
+'tooltip-t-upload'                => '上传文件',
 'tooltip-t-specialpages'          => '所有特殊页面列表',
 'tooltip-t-print'                 => '这个页面的可打印版本',
 'tooltip-t-permalink'             => '这个页面版本的永久链接',
@@ -1816,7 +1818,7 @@ $1',
 'tooltip-ca-nstab-media'          => '查看媒体页面',
 'tooltip-ca-nstab-special'        => '这是一个特殊页面，您不能对它进行编辑',
 'tooltip-ca-nstab-project'        => '查看计划页面',
-'tooltip-ca-nstab-image'          => '查看图像页面',
+'tooltip-ca-nstab-image'          => '查看文件页面',
 'tooltip-ca-nstab-mediawiki'      => '查看系统界面消息',
 'tooltip-ca-nstab-template'       => '查看模板',
 'tooltip-ca-nstab-help'           => '查看帮助页面',
@@ -1847,7 +1849,6 @@ $1',
 'anonymous'        => '{{SITENAME}}的匿名用户',
 'siteuser'         => '{{SITENAME}}用户$1',
 'lastmodifiedatby' => '此页由$3于$1 $2的最后更改。', # $1 date, $2 time, $3 user
-'and'              => '和',
 'othercontribs'    => '在$1的工作基础上。',
 'others'           => '其他',
 'siteusers'        => '{{SITENAME}}用户$1',
@@ -1915,7 +1916,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''警告''': 该文件可能包含恶意代码，运行它可能对您的系统带来危险。<hr>",
-'imagemaxsize'         => '在图像描述页对图像大小限制为:',
+'imagemaxsize'         => '在文件描述页对图像大小限制为:',
 'thumbsize'            => '缩略图大小:',
 'widthheightpage'      => '$1×$2, $3页',
 'file-info'            => '(文件大小: $1, MIME 类型: $2)',
@@ -1933,8 +1934,8 @@ $1',
 # Bad image list
 'bad_image_list' => '请根据以下的格式去编写:
 
-只有列示项目（以 * 开头的项目）会被考虑。第一个连结一定要连接去坏图像中。
-然后在同一行的连结会考虑作例外，即是幅图像可以在哪一个页面中同时显示。',
+只有列示项目（以 * 开头的项目）会被考虑。第一个连结一定要连接去坏文件中。
+然后在同一行的连结会考虑作例外，即是該文件可以在哪一个页面中同时显示。',
 
 /*
 Short names for language variants used for language conversion links.
@@ -2265,10 +2266,7 @@ $3
 'scarytranscludetoolong'  => '[抱歉，URL 过长]',
 
 # Trackbacks
-'trackbackbox'      => '<div id="mw_trackbacks">
-此页面的引用:<br />
-$1
-</div>',
+'trackbackbox'      => '<div id="mw_trackbacks">此页面的引用:<br />$1</div>',
 'trackbackremove'   => '([$1删除])',
 'trackbacklink'     => '引用',
 'trackbackdeleteok' => '该引用已被成功删除。',
@@ -2282,7 +2280,7 @@ $1
 'redirectingto' => '重定向到[[$1]]...',
 
 # action=purge
-'confirm_purge'        => '要清除此页面的缓存吗?\n\n$1',
+'confirm_purge'        => '要清除此页面的缓存吗?\\n\\n$1',
 'confirm_purge_button' => '确定',
 
 # AJAX search
@@ -2293,12 +2291,11 @@ $1
 'useajaxsearch'    => '使用AJAX搜索',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← 上一页',
-'imgmultipagenext'   => '下一页 →',
-'imgmultigo'         => '确定！',
-'imgmultigotopre'    => '到第',
-'imgmultigotopost'   => '页',
-'imgmultiparseerror' => '镜像文件可能已损坏或不正确，因此{{SITENAME}}无法找回页面列表。',
+'imgmultipageprev' => '← 上一页',
+'imgmultipagenext' => '下一页 →',
+'imgmultigo'       => '确定！',
+'imgmultigotopre'  => '到第',
+'imgmultigotopost' => '页',
 
 # Table pager
 'ascending_abbrev'         => '升',
@@ -2354,5 +2351,33 @@ $1
 
 # Core parser functions
 'unknown_extension_tag' => '不明的扩展标签 "$1"',
+
+# Special:Version
+'version-extensions'               => '已经安装的扩展',
+'version-specialpages'             => '特殊页面',
+'version-parserhooks'              => '语法钩',
+'version-variables'                => '变数',
+'version-other'                    => '其它',
+'version-mediahandlers'            => '媒体处理器',
+'version-hooks'                    => '钩',
+'version-extension-functions'      => '扩展函数',
+'version-parser-extensiontags'     => '语法扩展标签',
+'version-parser-function-hooks'    => '语法函数钩',
+'version-skin-extension-functions' => '皮肤扩展函数',
+'version-hook-name'                => '钩名',
+'version-hook-subscribedby'        => '利用於',
+'version-version'                  => '版本',
+'version-license'                  => '授权',
+'version-software'                 => '已经安装的软件',
+'version-software-product'         => '产品',
+'version-software-version'         => '版本',
+
+# Special:Filepath
+'filepath'         => '文件路径',
+'filepath-page'    => '文件名:',
+'filepath-submit'  => '查找路径',
+'filepath-summary' => '这个特殊页面撷取一个文件的完整路径。图像会以完整的解像度显示，其它的文件类型会以同它们已关联程序启动。
+
+请输入档名，不要包含"{{ns:image}}:"开头。',
 
 );

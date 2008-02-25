@@ -23,22 +23,23 @@ $wgRenamedTables = array(
 
 $wgNewTables = array(
 #            table          patch file (in maintenance/archives)
-	array( 'hitcounter',    'patch-hitcounter.sql' ),
-	array( 'querycache',    'patch-querycache.sql' ),
-	array( 'objectcache',   'patch-objectcache.sql' ),
-	array( 'categorylinks', 'patch-categorylinks.sql' ),
-	array( 'logging',       'patch-logging.sql' ),
-	array( 'user_newtalk',  'patch-usernewtalk2.sql' ),
-	array( 'transcache',	'patch-transcache.sql' ),
-	array( 'trackbacks',	'patch-trackbacks.sql' ),
-	array( 'externallinks', 'patch-externallinks.sql' ),
-	array( 'job',           'patch-job.sql' ),
-	array( 'langlinks',     'patch-langlinks.sql' ),
-	array( 'querycache_info', 'patch-querycacheinfo.sql' ),
-	array( 'filearchive',   'patch-filearchive.sql' ),
-	array( 'querycachetwo',	'patch-querycachetwo.sql' ),
-	array( 'redirect', 'patch-redirect.sql' ),
+	array( 'hitcounter',       'patch-hitcounter.sql' ),
+	array( 'querycache',       'patch-querycache.sql' ),
+	array( 'objectcache',      'patch-objectcache.sql' ),
+	array( 'categorylinks',    'patch-categorylinks.sql' ),
+	array( 'logging',          'patch-logging.sql' ),
+	array( 'user_newtalk',     'patch-usernewtalk2.sql' ),
+	array( 'transcache',	   'patch-transcache.sql' ),
+	array( 'trackbacks',	   'patch-trackbacks.sql' ),
+	array( 'externallinks',    'patch-externallinks.sql' ),
+	array( 'job',              'patch-job.sql' ),
+	array( 'langlinks',        'patch-langlinks.sql' ),
+	array( 'querycache_info',  'patch-querycacheinfo.sql' ),
+	array( 'filearchive',      'patch-filearchive.sql' ),
+	array( 'querycachetwo',    'patch-querycachetwo.sql' ),
+	array( 'redirect',         'patch-redirect.sql' ),
 	array( 'protected_titles', 'patch-protected_titles.sql' ),
+	array( 'page_props',       'patch-page_props.sql' ),
 );
 
 $wgNewFields = array(
@@ -84,6 +85,7 @@ $wgNewFields = array(
 	array( 'oldimage',      'oi_metadata',      'patch-oi_metadata.sql'),
 	array( 'archive',       'ar_page_id',       'patch-archive-page_id.sql'),
 	array( 'image',         'img_sha1',         'patch-img_sha1.sql' ),
+	array( 'ipblocks',      'ipb_by_text',      'patch-ipb_by_text.sql' ),
 );
 
 # For extensions only, should be populated via hooks
@@ -1261,6 +1263,10 @@ END;
 function do_postgres_updates() {
 	global $wgDatabase, $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgShowExceptionDetails, $wgDBuser;
 
+	## Gather version numbers in case we need them
+	$version = $wgDatabase->getServerVersion(); ## long string
+	$numver = $wgDatabase->numeric_version; ## X.Y e.g. 8.3
+
 	$wgShowExceptionDetails = 1;
 
 	# Just in case their LocalSettings.php does not have this:
@@ -1323,6 +1329,7 @@ function do_postgres_updates() {
 		array("mwuser",            "patch-mwuser.sql"),
 		array("pagecontent",       "patch-pagecontent.sql"),
 		array("querycachetwo",     "patch-querycachetwo.sql"),
+		array("page_props",        "patch-page_props.sql"),
 		array("page_restrictions", "patch-page_restrictions.sql"),
 		array("profiling",         "patch-profiling.sql"),
 		array("protected_titles",  "patch-protected_titles.sql"),
@@ -1335,6 +1342,7 @@ function do_postgres_updates() {
 		array("archive",       "ar_page_id",           "INTEGER"),
 		array("image",         "img_sha1",             "TEXT NOT NULL DEFAULT ''"),
 		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_by_text",          "TEXT NOT NULL DEFAULT ''"),
 		array("ipblocks",      "ipb_block_email",      "CHAR NOT NULL DEFAULT '0'"),
 		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
 		array("ipblocks",      "ipb_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
@@ -1364,9 +1372,10 @@ function do_postgres_updates() {
 	);
 
 
-	# table, column, desired type, USING clause if needed
+	# table, column, desired type, USING clause if needed (with new default if needed)
 	$typechanges = array(
 		array("archive",      "ar_deleted",      "smallint", ""),
+		array("archive",      "ar_minor_edit",   "smallint", "ar_minor_edit::smallint DEFAULT 0"),
 		array("filearchive",  "fa_deleted",      "smallint", ""),
 		array("filearchive",  "fa_height",       "integer",  ""),
 		array("filearchive",  "fa_metadata",     "bytea",    "decode(fa_metadata,'escape')"),
@@ -1378,6 +1387,13 @@ function do_postgres_updates() {
 		array("image",        "img_size",        "integer",  ""),
 		array("image",        "img_width",       "integer",  ""),
 		array("image",        "img_height",      "integer",  ""),
+		array("interwiki",    "iw_local",        "smallint", "iw_local::smallint DEFAULT 0"),
+		array("interwiki",    "iw_trans",        "smallint", "iw_trans::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_auto",        "smallint", "ipb_auto::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_anon_only",        "smallint", "ipb_anon_only::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_create_account",        "smallint", "ipb_create_account::smallint DEFAULT 1"),
+		array("ipblocks",     "ipb_enable_autoblock",        "smallint", "ipb_enable_autoblock::smallint DEFAULT 1"),
+		array("ipblocks",     "ipb_block_email",        "smallint", "ipb_block_email::smallint DEFAULT 0"),
 		array("ipblocks",     "ipb_address",     "text",     "ipb_address::text"),
 		array("ipblocks",     "ipb_deleted",     "smallint", ""),
 		array("math",         "math_inputhash",  "bytea",    "decode(math_inputhash,'escape')"),
@@ -1388,9 +1404,17 @@ function do_postgres_updates() {
 		array("oldimage",     "oi_height",       "integer",  ""),
 		array("oldimage",     "oi_size",         "integer",  ""),
 		array("oldimage",     "oi_width",        "integer",  ""),
+		array("page",         "page_is_redirect","smallint", "page_is_redirect::smallint DEFAULT 0"),
+		array("page",         "page_is_new",     "smallint", "page_is_new::smallint DEFAULT 0"),
 		array("querycache",   "qc_value",        "integer",  ""),
 		array("querycachetwo","qcc_value",       "integer",  ""),
+		array("recentchanges","rc_bot",          "smallint", "rc_bot::smallint DEFAULT 0"),
 		array("recentchanges","rc_deleted",      "smallint", ""),
+		array("recentchanges","rc_minor",        "smallint", "rc_minor::smallint DEFAULT 0"),
+		array("recentchanges","rc_new",          "smallint", "rc_new::smallint DEFAULT 0"),
+		array("recentchanges","rc_type",         "smallint", "rc_type::smallint DEFAULT 0"),
+		array("recentchanges","rc_patrolled",    "smallint", "rc_patrolled::smallint DEFAULT 0"),
+		array("revision",     "rev_minor_edit",  "smallint", "rev_minor_edit::smallint DEFAULT 0"),
 		array("templatelinks","tl_namespace",    "smallint", "tl_namespace::smallint"),
 		array("user_newtalk", "user_ip",         "text",     "host(user_ip)"),
 	);
@@ -1465,6 +1489,12 @@ function do_postgres_updates() {
 			echo "Changing column type of \"$tc[0].$tc[1]\" from \"{$fi->type()}\" to \"$tc[2]\"\n";
 			$sql = "ALTER TABLE $tc[0] ALTER $tc[1] TYPE $tc[2]";
 			if (strlen($tc[3])) {
+				$default = array();
+				if (preg_match( '/DEFAULT (.+)/', $tc[3], $default)) {
+					$sqldef = "ALTER TABLE $tc[0] ALTER $tc[1] SET DEFAULT $default[1]";
+					$wgDatabase->query($sqldef);
+					$tc[3] = preg_replace( '/\s*DEFAULT .+/', '', $tc[3]);
+				}
 				$sql .= " USING $tc[3]";
 			}
 			$sql .= ";\nCOMMIT;\n";
@@ -1580,7 +1610,12 @@ function do_postgres_updates() {
 
 	# Tweak the page_title tsearch2 trigger to filter out slashes
 	# This is create or replace, so harmless to call if not needed
-	dbsource(archive("patch-ts2pagetitle.sql"));
+	dbsource(archive('patch-ts2pagetitle.sql'));
+
+	## If the server is 8.3 or higher, rewrite teh tsearch2 triggers
+	## in case they have the old 'default' versions
+	if ( $numver >= 8.3 )
+		dbsource(archive('patch-tsearch2funcs.sql'));
 
 	return;
 }

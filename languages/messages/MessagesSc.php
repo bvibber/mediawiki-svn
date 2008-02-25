@@ -237,7 +237,6 @@ Se la salvi così, tutti i cambiamenti apportati dopo questa revisione verranno 
 'yourdiff'        => 'Differenze',
 
 # History pages
-'revhistory'      => 'Cronologia delle versioni di questa pagina.',
 'nohistory'       => 'Cronologia delle versioni di questa pagina non reperibile.',
 'revnotfound'     => 'Versione non trovata',
 'revnotfoundtext' => 'La versione precedente di questo articolo che hai richiesto, non è stata trovata.
@@ -252,10 +251,8 @@ Controlla per favore la URL che hai usato per accedere a questa pagina.',
 (prec) = differenze con la versione precedente, M = modifica minore',
 
 # Diffs
-'difference'  => '(Differenze fra le revisioni)',
-'loadingrev'  => 'caricamento revisione per differenze',
-'lineno'      => 'Riga $1:',
-'editcurrent' => 'Modifica la versione corrente di questa pagina',
+'difference' => '(Differenze fra le revisioni)',
+'lineno'     => 'Riga $1:',
 
 # Search results
 'searchresults'         => 'Risultato della ricerca',
@@ -379,7 +376,7 @@ Tutti i tempi indicati sono calcolati sul fuso orario del server (UTC).',
 'linkstoimage'   => 'Le pagine seguenti linkano questa immagine:',
 'nolinkstoimage' => 'Nessuna pagina linka questa immagine.',
 
-# Random pages
+# Random page
 'randompage' => 'Una pagina a caso',
 
 # Statistics
@@ -417,7 +414,6 @@ Ogni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga
 'listusers'        => 'Elenco degli Utenti',
 'specialpages'     => 'Pagine speciali',
 'spheading'        => 'Pagine speciali',
-'rclsub'           => '(alle pagine linkate da "$1")',
 'newpages'         => 'Pagine nuove',
 'movethispage'     => 'Sposta questa pagina',
 'unusedimagestext' => '<p>Nota che altri siti web, come la {{SITENAME}} internazionale, potrebbero aver messo un link ad una immagine per mezzo di una URL diretta, perciò le immagini potrebbero essere listate qui anche essendo magari in uso.',
@@ -444,12 +440,12 @@ oppure ha scelto di non ricevere  posta elettronica dagli altri Utenti.',
 'watchnologintext' => 'Devi prima fare il [[Special:Userlogin|login]]
 per modificare la tua lista di osservati speciali.',
 'addedwatch'       => 'Aggiunto agli Osservati Speciali',
-'addedwatchtext'   => ' La pagina  "$1" è stata aggiunta alla tua [[Special:Watchlist|lista di osservati speciali]].
+'addedwatchtext'   => ' La pagina  "<nowiki>$1</nowiki>" è stata aggiunta alla tua [[Special:Watchlist|lista di osservati speciali]].
 Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle [[Special:Recentchanges|modifiche recenti]] per essere più facile da tener d\'occhio.
 
 Se in seguito vorrai togliere questo articolo dalla tua lista di osservati speciali, clicca " Smetti di seguire " nella barra dei menu.',
 'removedwatch'     => 'Rimosso dalla lista degli Osservati Speciali',
-'removedwatchtext' => 'La pagina  "$1" è stata rimossa dalla lista degli Osservati Speciali.',
+'removedwatchtext' => 'La pagina  "<nowiki>$1</nowiki>" è stata rimossa dalla lista degli Osservati Speciali.',
 'watchthispage'    => 'Segui questo articolo',
 'unwatchthispage'  => 'Smetti di seguire',
 'notanarticle'     => 'Non è un articolo',
@@ -457,13 +453,11 @@ Se in seguito vorrai togliere questo articolo dalla tua lista di osservati speci
 # Delete/protect/revert
 'deletepage'        => 'Cancella pagina',
 'confirm'           => 'Conferma',
-'confirmdelete'     => 'Conferma cancellazione',
-'deletesub'         => '(Cancellazione di "$1")',
 'confirmdeletetext' => 'Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia.
 Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, conferma che hai piena consapevolezza delle conseguenze della tua azione, e conferma che la tua azione è pienamente ottemperante alle regole stabilite nella
 [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'    => 'Azione completata',
-'deletedtext'       => 'La pagina "$1" è stata cancellata.
+'deletedtext'       => 'La pagina "<nowiki>$1</nowiki>" è stata cancellata.
 Vedi $2 per un elenco delle pagine cancellate di recente.',
 'deletedarticle'    => 'Cancellata "$1"',
 'dellogpage'        => 'Deletion_log',
@@ -473,7 +467,7 @@ Tutti i tempi sono in ora del server (UTC).',
 'deletecomment'     => 'Motivazione della cancellazione',
 'rollback'          => 'Usa una revisione precdente',
 'cantrollback'      => "Impossibile tornare ad una versione precedente: l'ultima modifica è stata apportata dall'unico utente che abbia lavorato a questo articolo.",
-'revertpage'        => 'Riportata alla revisione precedente da $1',
+'revertpage'        => 'Riportata alla revisione precedente da $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Undelete
 'undelete'          => 'Recupera una pagina cancellata',

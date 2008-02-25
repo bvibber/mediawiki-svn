@@ -70,7 +70,7 @@ class IPBlockForm {
 		global $wgOut, $wgUser, $wgSysopUserBans, $wgContLang;
 
 		$wgOut->setPagetitle( wfMsg( 'blockip' ) );
-		$wgOut->addWikiText( wfMsg( 'blockiptext' ) );
+		$wgOut->addWikiMsg( 'blockiptext' );
 
 		if($wgSysopUserBans) {
 			$mIpaddress = Xml::label( wfMsg( 'ipadressorusername' ), 'mw-bi-target' );
@@ -299,7 +299,7 @@ class IPBlockForm {
 						$userId = $user->getID();
 						$this->BlockAddress = $user->getName();
 					} else {
-						return array('nosuchusershort', htmlspecialchars($user->getName()));
+						return array('nosuchusershort', htmlspecialchars( $user ? $user->getName() : $this->BlockAddress ) );
 					}
 				} else {
 					return array('badipaddress');
@@ -392,8 +392,8 @@ class IPBlockForm {
 
 		$wgOut->setPagetitle( wfMsg( 'blockip' ) );
 		$wgOut->setSubtitle( wfMsg( 'blockipsuccesssub' ) );
-		$text = wfMsg( 'blockipsuccesstext', $this->BlockAddress );
-		$wgOut->addWikiText( $text );
+		$text = wfMsgExt( 'blockipsuccesstext', array( 'parse' ), $this->BlockAddress );
+		$wgOut->addHtml( $text );
 	}
 
 	function showLogFragment( $out, $title ) {

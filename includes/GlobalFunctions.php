@@ -87,6 +87,29 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	}
 }
 
+/**
+ * Like array_diff( $a, $b ) except that it works with two-dimensional arrays.
+ */
+function wfArrayDiff2( $a, $b ) {
+	return array_udiff( $a, $b, 'wfArrayDiff2_cmp' );
+}
+function wfArrayDiff2_cmp( $a, $b ) {
+	if ( !is_array( $a ) ) {
+		return strcmp( $a, $b );
+	} elseif ( count( $a ) !== count( $b ) ) {
+		return count( $a ) < count( $b ) ? -1 : 1;
+	} else {
+		reset( $a );
+		reset( $b );
+		while( ( list( $keyA, $valueA ) = each( $a ) ) && ( list( $keyB, $valueB ) = each( $b ) ) ) {
+			$cmp = strcmp( $valueA, $valueB );
+			if ( $cmp !== 0 ) {
+				return $cmp;
+			}
+		}
+		return 0;
+	}
+}
 
 /**
  * Wrapper for clone(), for compatibility with PHP4-friendly extensions.
@@ -282,17 +305,17 @@ function wfReadOnly() {
 	return (bool)$wgReadOnly;
 }
 
+function wfReadOnlyReason() {
+	global $wgReadOnly;
+	wfReadOnly();
+	return $wgReadOnly;
+}
 
 /**
  * Get a message from anywhere, for the current user language.
  *
  * Use wfMsgForContent() instead if the message should NOT
  * change depending on the user preferences.
- *
- * Note that the message may contain HTML, and is therefore
- * not safe for insertion anywhere. Some functions such as
- * addWikiText will do the escaping for you. Use wfMsgHtml()
- * if you need an escaped message.
  *
  * @param $key String: lookup key for the message, usually
  *    defined in languages/Language.php
@@ -470,15 +493,13 @@ function wfMsgReplaceArgs( $message, $args ) {
 	// Replace arguments
 	if ( count( $args ) ) {
 		if ( is_array( $args[0] ) ) {
-			foreach ( $args[0] as $key => $val ) {
-				$message = str_replace( '$' . $key, $val, $message );
-			}
-		} else {
-			foreach( $args as $n => $param ) {
-				$replacementKeys['$' . ($n + 1)] = $param;
-			}
-			$message = strtr( $message, $replacementKeys );
+			$args = array_values( $args[0] );
 		}
+		$replacementKeys = array();
+		foreach( $args as $n => $param ) {
+			$replacementKeys['$' . ($n + 1)] = $param;
+		}
+		$message = strtr( $message, $replacementKeys );
 	}
 
 	return $message;
@@ -978,6 +999,21 @@ function wfAppendQuery( $url, $query ) {
 		$url .= $query;
 	}
 	return $url;
+}
+
+/**
+ * Expand a potentially local URL to a fully-qualified URL.
+ * Assumes $wgServer is correct. :)
+ * @param string $url, either fully-qualified or a local path + query
+ * @return string Fully-qualified URL
+ */
+function wfExpandUrl( $url ) {
+	if( substr( $url, 0, 1 ) == '/' ) {
+		global $wgServer;
+		return $wgServer . $url;
+	} else {
+		return $url;
+	}
 }
 
 /**
@@ -1826,10 +1862,12 @@ function wfShellExec( $cmd, &$retval=null ) {
 	}
 	wfDebug( "wfShellExec: $cmd\n" );
 	
-	$output = array();
 	$retval = 1; // error by default?
-	exec( $cmd, $output, $retval ); // returns the last line of output.
-	return implode( "\n", $output );
+	ob_start();
+	passthru( $cmd, $retval );
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
 	
 }
 
@@ -2269,7 +2307,7 @@ function &wfGetDB( $db = DB_LAST, $groups = array() ) {
  * @param mixed $title Title object or string. May be interwiki.
  * @param mixed $time Requested time for an archived image, or false for the 
  *                    current version. An image object will be returned which 
- *                    existed at or before the specified time.
+ *                    existed at the specified time.
  * @return File, or false if the file does not exist
  */
 function wfFindFile( $title, $time = false ) {

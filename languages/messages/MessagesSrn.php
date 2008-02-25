@@ -5,6 +5,8 @@
  *
  * @author Adfokati
  * @author Jordi
+ * @author Siebrand
+ * @author Ooswesthoesbes
  */
 
 $fallback = 'nl';
@@ -131,6 +133,7 @@ $messages = array(
 'mytalk'         => 'Mi taki',
 'anontalk'       => 'Taki fu disi IP',
 'navigation'     => 'Lukubun',
+'and'            => 'nanga',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -295,7 +298,7 @@ $messages = array(
 'loginsuccesstitle'     => 'Gu e kon',
 'loginsuccess'          => "'''Yu ben e kon opo {{SITENAME}} leki masyin \"\$1\".'''",
 'nosuchuser'            => 'A masyin "$1" ben no da. Luku a yu skrifi efu skopu wan nyun masyin.',
-'nosuchusershort'       => 'A masyin "$1" ben no da. Luku a yu skrifi.',
+'nosuchusershort'       => 'A masyin "<nowiki>$1</nowiki>" ben no da. Luku a yu skrifi.',
 'nouserspecified'       => 'Yu mu wan masyinnen opogi.',
 'wrongpassword'         => 'Waktiwortu ben fowtu. Du noma gi.',
 'wrongpasswordempty'    => 'A waktiwortu ben leyti. Du noma gi.',
@@ -337,7 +340,7 @@ Kon na yu a abi kisi.',
 'nowiki_sample'   => 'Presi dyaso a si fu a no wiki-opomeki',
 'nowiki_tip'      => 'No wiki-opomeki',
 'image_tip'       => 'Gefre',
-'media_tip'       => 'Skaki na wan gefre',
+'media_tip'       => 'Skaki na a gefre',
 'sig_tip'         => 'Yu sinaturi nanga datum nanga ten',
 'hr_tip'          => 'Lina dy lupiti ben (teki sparsa)',
 
@@ -824,10 +827,10 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'historywarning'              => 'Atessi: a papira dy yu wana trowe abi pasa si:',
 'confirmdeletetext'           => 'Yu wanaefru ben trowen wan papira, nanga si stori. Gi klari a dyaso-ondro ini a box taki disi we fuli yu miki ben, taki yu den folo luku nanga taki a trowe gu ben nanga a [[{{MediaWiki:Policy-url}}|polisi]].',
 'actioncomplete'              => 'Aksi e du',
-'deletedtext'                 => '"$1" ben e trowe. Si a $2 fu wan sibuku fu bakaseywan trowe.',
+'deletedtext'                 => '"<nowiki>$1</nowiki>" ben e trowe. Si a $2 fu wan sibuku fu bakaseywan trowe.',
 'deletedarticle'              => 'abi "[[$1]]" e trowe',
 'dellogpage'                  => 'Trowebuku',
-'deletecomment'               => 'Yesikrari fu trowe',
+'deletecomment'               => 'Yesikrari fu trowe:',
 'deleteotherreason'           => 'Trawan/okwan yesikrari:',
 'deletereasonotherlist'       => 'Trawan yesikrari',
 'rollbacklink'                => 'draywatra',
@@ -838,7 +841,7 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'protect_expiry_invalid'      => 'A lasi ben fowtu.',
 'protect_expiry_old'          => 'A lasi ben ini iksini.',
 'protect-unchain'             => 'Gi dribi u',
-'protect-text'                => 'Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira <strong>$1</strong>.',
+'protect-text'                => 'Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-access'       => "'''Yu masyin abi no lesi tu kenki a tapunivo.'''
 Disi ben a tapunivo fu a papira <strong>[[$1]]</strong> now:",
 'protect-cascadeon'           => 'Disi papira ben tapu sins a ini den folo {{PLURAL:$1|papira|peprewoysi}} ben e presi, dy tapu ben nanga a kaskade-opsi. A tapunivo kenki abi no efekti.',
@@ -866,7 +869,7 @@ Disi ben a tapunivo fu a papira <strong>[[$1]]</strong> now:",
 'contributions' => 'Masyinkenki',
 'mycontris'     => 'Mi kenki',
 'contribsub2'   => 'Fu $1 ($2)',
-'uctop'         => ' (nyunse kenki)',
+'uctop'         => '(nyunse kenki)',
 'month'         => 'Fu mun (nanga owrur):',
 'year'          => 'Fu yari (nanga owrur):',
 
@@ -991,7 +994,6 @@ Gi wan trawan papiranen.',
 
 # Attribution
 'siteuser'  => '{{SITENAME}}-masyin $1',
-'and'       => 'nanga',
 'siteusers' => '{{SITENAME}}-masyin $1',
 
 # Spam protection
@@ -1025,7 +1027,7 @@ Ala trawan skaki dy opo se lina ben, ben awroko leki spesyal, leki fru eksempre 
 
 # Metadata
 'metadata'          => 'Metadata',
-'metadata-help'     => 'Disi gefre abi eksra infrumasi, dy via wan fotokamera, skennar efu fotokenki-aplikasi presi kan ben. Leki a gefre ben kenki, kan infrumasi ski no gu ben nanga a kenki gefre.',
+'metadata-help'     => 'Disi gefre e abi eksra infrumasi, dy via wan fotokamera, skennar efu fotokenki-aplikasi e presi kan ben. Leki a gefre ben kenki, kan infrumasi ski no gu ben nanga a kenki gefre.',
 'metadata-expand'   => 'Granmeki infrumasi libi si',
 'metadata-collapse' => 'Granmeki infrumasi no libi si',
 'metadata-fields'   => 'Den EXIF-metadatabox ini disi boskopu sey ok libi si opo wan gefrepapira leki a metadatatabel ben inipotu. Trawan box sey no libi si.

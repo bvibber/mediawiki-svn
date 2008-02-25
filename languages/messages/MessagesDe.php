@@ -139,6 +139,7 @@ $specialPageAliases = array(
 	'Resetpass'                 => array( 'Passwort_zurücksetzen' ),
 	'Withoutinterwiki'          => array( 'Fehlende_Interwikis' ),
 	'MergeHistory'              => array( 'Versionsgeschichten_vereinen' ),
+	'Filepath'                  => array( 'Dateipfad' ),
 );
 
 $datePreferences = array(
@@ -198,10 +199,10 @@ $messages = array(
 'tog-previewontop'            => 'Vorschau oberhalb des Bearbeitungsfensters anzeigen',
 'tog-previewonfirst'          => 'Beim ersten Bearbeiten immer die Vorschau anzeigen',
 'tog-nocache'                 => 'Seitencache deaktivieren',
-'tog-enotifwatchlistpages'    => 'Bei Änderungen an beobachteten Seiten E-Mails senden.',
-'tog-enotifusertalkpages'     => 'Bei Änderungen an meiner Benutzer-Diskussionsseite E-Mails senden.',
-'tog-enotifminoredits'        => 'Auch bei kleinen Änderungen an beobachteten Seiten E-Mails senden.',
-'tog-enotifrevealaddr'        => 'Deine E-Mail-Adresse wird in Benachrichtigungsmails angezeigt.',
+'tog-enotifwatchlistpages'    => 'Bei Änderungen an beobachteten Seiten E-Mails senden',
+'tog-enotifusertalkpages'     => 'Bei Änderungen an meiner Benutzer-Diskussionsseite E-Mails senden',
+'tog-enotifminoredits'        => 'Auch bei kleinen Änderungen an beobachteten Seiten E-Mails senden',
+'tog-enotifrevealaddr'        => 'Deine E-Mail-Adresse wird in Benachrichtigungs-E-Mails angezeigt',
 'tog-shownumberswatching'     => 'Anzahl der beobachtenden Benutzer anzeigen',
 'tog-fancysig'                => 'Signatur ohne Verlinkung zur Benutzerseite',
 'tog-externaleditor'          => 'Externen Editor als Standard benutzen',
@@ -213,7 +214,7 @@ $messages = array(
 'tog-watchlisthidebots'       => 'Bearbeitungen durch Bots in der Beobachtungsliste ausblenden',
 'tog-watchlisthideminor'      => 'Kleine Bearbeitungen in der Beobachtungsliste ausblenden',
 'tog-nolangconversion'        => 'Konvertierung von Sprachvarianten deaktivieren',
-'tog-ccmeonemails'            => 'Schicke mir Kopien der E-Mails, die ich anderen Benutzern sende.',
+'tog-ccmeonemails'            => 'Schicke mir Kopien der E-Mails, die ich anderen Benutzern sende',
 'tog-diffonly'                => 'Zeige beim Versionsvergleich nur die Unterschiede, nicht die vollständige Seite',
 
 'underline-always'  => 'immer',
@@ -349,7 +350,7 @@ $messages = array(
 'toolbox'           => 'Werkzeuge',
 'userpage'          => 'Benutzerseite',
 'projectpage'       => 'Meta-Text',
-'imagepage'         => 'Bildseite',
+'imagepage'         => 'Dateiseite',
 'mediawikipage'     => 'Inhaltsseite anzeigen',
 'templatepage'      => 'Vorlagenseite anzeigen',
 'viewhelppage'      => 'Hilfeseite anzeigen',
@@ -422,6 +423,7 @@ $messages = array(
 'site-atom-feed'          => 'Atom-Feed für $1',
 'page-rss-feed'           => 'RSS-Feed für „$1“',
 'page-atom-feed'          => 'Atom-Feed für „$1“',
+'red-link-title'          => '$1 (Seite nicht vorhanden)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Seite',
@@ -553,7 +555,7 @@ Dein Benutzerkonto wurde eingerichtet. Vergiss nicht, deine Einstellungen anzupa
 'loginsuccesstitle'          => 'Anmeldung erfolgreich',
 'loginsuccess'               => 'Du bist jetzt als „$1“ bei {{SITENAME}} angemeldet.',
 'nosuchuser'                 => 'Der Benutzername „$1“ existiert nicht. Überprüfe die Schreibweise oder melde dich als neuer Benutzer an.',
-'nosuchusershort'            => 'Der Benutzername „$1“ existiert nicht. Bitte überprüfe die Schreibweise.',
+'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfe die Schreibweise.',
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Das eingegebene Passwort war leer. Bitte versuche es erneut.',
@@ -585,7 +587,7 @@ Bevor eine E-Mail von anderen Benutzern über die E-Mail-Funktion empfangen werd
 'accountcreated'             => 'Benutzerkonto erstellt',
 'accountcreatedtext'         => 'Das Benutzerkonto $1 wurde eingerichtet.',
 'createaccount-title'        => 'Erstellung eines Benutzerkontos für {{SITENAME}}',
-'createaccount-text'         => 'Jemand ($1) hat für dich ein Benutzerkonto "$2" auf {{SITENAME}} ($4) erstellt. Das automatisch generierte Passwort für "$2" ist "$3". Du solltest dich nun anmelden und das Passwort ändern.
+'createaccount-text'         => 'Es wurde für dich ein Benutzerkonto "$2" auf {{SITENAME}} ($4) erstellt. Das automatisch generierte Passwort für "$2" ist "$3". Du solltest dich nun anmelden und das Passwort ändern.
 
 Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ignorieren.',
 'loginlanguagelabel'         => 'Sprache: $1',
@@ -616,7 +618,7 @@ Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ig
 'nowiki_sample'   => 'Unformatierten Text hier einfügen',
 'nowiki_tip'      => 'Unformatierter Text',
 'image_sample'    => 'Beispiel.jpg',
-'image_tip'       => 'Bildlink',
+'image_tip'       => 'Dateilink',
 'media_sample'    => 'Beispiel.ogg',
 'media_tip'       => 'Mediendatei-Link',
 'sig_tip'         => 'Deine Signatur mit Zeitstempel',
@@ -724,7 +726,7 @@ Sollte das Problem bestehen bleiben, melde dich ab und danach wieder an.</strong
 'token_suffix_mismatch'     => '<strong>Deine Bearbeitung wurde zurückgewiesen, da dein Browser Zeichen im Bearbeiten-Token verstümmelt hat.
 Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durch die Benutzung eines anonymen Proxy-Dienstes, der fehlerhaft arbeitet.</strong>',
 'editing'                   => 'Bearbeiten von $1',
-'editinguser'               => 'Bearbeiten von Benutzer „<b>$1</b>“.',
+'editinguser'               => "Ändere Benutzerrechte von '''[[{{ns:User}}:$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[{{#Special:Contributions}}/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Bearbeiten von $1 (Absatz)',
 'editingcomment'            => 'Bearbeiten von $1 (Kommentar)',
 'editconflict'              => 'Bearbeitungskonflikt: $1',
@@ -902,6 +904,7 @@ Alternativ kannst du auch den [[Special:Allpages|alphabetischen Index]] nach äh
 
 Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ verfassen.",
 'noexactmatch-nocreate' => "'''Es existiert keine Seite mit dem Titel „$1“.'''",
+'toomanymatches'        => 'Es Anzahl der Suchergnisse ist zu groß, bitte versuche eine andere Abfrage.',
 'titlematches'          => 'Übereinstimmungen mit Seitentiteln',
 'notitlematches'        => 'Keine Übereinstimmungen mit Seitentiteln',
 'textmatches'           => 'Übereinstimmungen mit Inhalten',
@@ -948,7 +951,7 @@ Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ ve
 'prefs-personal'           => 'Benutzerdaten',
 'prefs-rc'                 => 'Anzeige von „Letzte Änderungen“',
 'prefs-watchlist'          => 'Beobachtungsliste',
-'prefs-watchlist-days'     => 'Maximale Anzahl der Tage, die die Beobachtungsliste standardmäßig umfassen soll:',
+'prefs-watchlist-days'     => 'Anzahl der Tage, die die Beobachtungsliste standardmäßig umfassen soll:',
 'prefs-watchlist-edits'    => 'Maximale Anzahl der Einträge in der erweiterten Beobachtungsliste:',
 'prefs-misc'               => 'Verschiedenes',
 'saveprefs'                => 'Einstellungen speichern',
@@ -965,7 +968,7 @@ Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ ve
 'contextchars'             => 'Zeichen pro Zeile:',
 'stub-threshold'           => 'Linkformatierung <a href="#" class="stub">kleiner Seiten</a> (in Byte):',
 'recentchangesdays'        => 'Anzahl der Tage, die die Liste der „Letzten Änderungen“ standardmäßig umfassen soll:',
-'recentchangescount'       => 'Anzahl der Einträge in „Letzte Änderungen“ und „Neue Seiten“:',
+'recentchangescount'       => 'Anzahl der Einträge in „Letzte Änderungen“:',
 'savedprefs'               => 'Deine Einstellungen wurden gespeichert.',
 'timezonelegend'           => 'Zeitzone',
 'timezonetext'             => 'Gib die Anzahl der Stunden ein, die zwischen deiner Zeitzone und UTC liegen.',
@@ -973,7 +976,7 @@ Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ ve
 'timezoneoffset'           => 'Unterschied¹:',
 'servertime'               => 'Aktuelle Zeit auf dem Server:',
 'guesstimezone'            => 'Vom Browser übernehmen',
-'allowemail'               => 'E-Mail-Empfang von anderen Benutzern ermöglichen.',
+'allowemail'               => 'E-Mail-Empfang von anderen Benutzern ermöglichen',
 'defaultns'                => 'In diesen Namensräumen soll standardmäßig gesucht werden:',
 'default'                  => 'Voreinstellung',
 'files'                    => 'Dateien',
@@ -1066,9 +1069,9 @@ Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ ve
 'uploadnologintext'           => 'Du musst [[Special:Userlogin|angemeldet sein]], um Dateien hochladen zu können.',
 'upload_directory_read_only'  => 'Der Webserver hat keine Schreibrechte für das Upload-Verzeichnis ($1).',
 'uploaderror'                 => 'Fehler beim Hochladen',
-'uploadtext'                  => "Gehe zu der [[Special:Imagelist|Liste hochgeladener Dateien]], um vorhandene Dateien zu suchen und anzuzeigen.
+'uploadtext'                  => "Gehe zu der [[{{#special:Imagelist}}|Liste hochgeladener Dateien]], um vorhandene Dateien zu suchen und anzuzeigen.
 
-Benutze dieses Formular, um neue Dateien hochzuladen. Klicke auf '''„Durchsuchen...“''', um einen Dateiauswahl-Dialog zu öffnen.
+Benutze dieses Formular, um neue Dateien hochzuladen. Klicke auf '''„Durchsuchen …“''', um einen Dateiauswahl-Dialog zu öffnen.
 Nach der Auswahl einer Datei wird der Dateiname im Textfeld '''„Quelldatei“''' angezeigt.
 Bestätige dann die Lizenz-Vereinbarung und klicke anschließend auf '''„Datei hochladen“'''.
 Dies kann eine Weile dauern, besonders bei einer langsamen Internet-Verbindung.
@@ -1107,12 +1110,12 @@ Bitte beachte, dass, genau wie bei normalen Seiteninhalten, andere Benutzer dein
 'largefileserver'             => 'Die Datei ist größer als die vom Server eingestellte Maximalgröße.',
 'emptyfile'                   => 'Die hochgeladene Datei ist leer. Der Grund kann ein Tippfehler im Dateinamen sein. Bitte kontrolliere, ob du die Datei wirklich hochladen willst.',
 'fileexists'                  => 'Eine Datei mit diesem Namen existiert bereits. Wenn du auf „Datei speichern“ klickst, wird die Datei überschrieben. Bitte prüfe <strong><tt>$1</tt></strong>, wenn du dir nicht sicher bist.',
-'filepageexists'              => 'Eine Seite (kein Bild) mit diesem Namen existiert bereits. Bitte prüfe <strong><tt>$1</tt></strong>, ob du eine Datei unter diesem Namen hochladen willst.',
+'filepageexists'              => 'Eine Seite (keine Datei) mit diesem Namen existiert bereits. Bitte prüfe <strong><tt>$1</tt></strong>, ob du eine Datei unter diesem Namen hochladen willst.',
 'fileexists-extension'        => 'Eine Datei mit ähnlichem Namen existiert bereits:<br />
 Name der hochzuladenden Datei: <strong><tt>$1</tt></strong><br />
 Name der vorhandenen Datei: <strong><tt>$2</tt></strong><br />
 Nur die Dateiendung unterscheidet sich in Groß-/Kleinschreibung. Bitte prüfe, ob die Dateien inhaltlich identisch sind.',
-'fileexists-thumb'            => "<center>'''Vorhandenes Bild'''</center>",
+'fileexists-thumb'            => "<center>'''Vorhandene Datei'''</center>",
 'fileexists-thumbnail-yes'    => 'Bei der Datei scheint es sich um ein Bild verringerter Größe <i>(thumbnail)</i> zu handeln. Bitte prüfe die Datei <strong><tt>$1</tt></strong>.<br />
 Wenn es sich um das Bild in Originalgröße handelt, so braucht kein separates Vorschaubild hochgeladen zu werden.',
 'file-thumbnail-no'           => 'Der Dateiname beginnt mit <strong><tt>$1</tt></strong>. Dies deutet auf ein Bild verringerter Größe <i>(thumbnail)</i> hin.
@@ -1187,7 +1190,8 @@ Bitte gib der Datei einen Namen, der den Inhalt besser beschreibt.',
 'linkstoimage'              => 'Die folgenden Seiten benutzen diese Datei:',
 'nolinkstoimage'            => 'Keine Seite benutzt diese Datei.',
 'sharedupload'              => 'Diese Datei ist ein gemeinsam genutzter Upload und kann von anderen Projekten verwendet werden.',
-'shareduploadwiki'          => 'Für weitere Informationen siehe $1.',
+'shareduploadwiki'          => 'Für weitere Informationen siehe die $1.',
+'shareduploadwiki-desc'     => 'Es folgt der Inhalt der $1.',
 'shareduploadwiki-linktext' => 'Datei-Beschreibungsseite',
 'noimage'                   => 'Eine Datei mit diesem Namen existiert nicht, du kannst sie jedoch $1.',
 'noimage-linktext'          => 'hochladen',
@@ -1292,9 +1296,9 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'brokenredirects-edit'    => '(bearbeiten)',
 'brokenredirects-delete'  => '(löschen)',
 
-'withoutinterwiki'         => 'Seiten ohne Links zu anderen Sprachen',
-'withoutinterwiki-header'  => 'Die folgenden Seiten verlinken nicht auf andere Sprachversionen:',
-'withoutinterwiki-submit'  => 'Zeige',
+'withoutinterwiki'        => 'Seiten ohne Links zu anderen Sprachen',
+'withoutinterwiki-header' => 'Die folgenden Seiten verlinken nicht auf andere Sprachversionen:',
+'withoutinterwiki-submit' => 'Zeige',
 
 'fewestrevisions'         => 'Seiten mit den wenigsten Versionen',
 'fewestrevisions-summary' => 'Diese Spezialseite zeigt eine Liste von Seiten mit den wenigsten Bearbeitungen.',
@@ -1318,7 +1322,7 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'uncategorizedimages-summary'     => 'Diese Spezialseite zeigt alle Dateien, die in keine Kategorie eingeordnet wurden.',
 'uncategorizedtemplates'          => 'Nicht kategorisierte Vorlagen',
 'uncategorizedtemplates-summary'  => 'Diese Spezialseite zeigt alle Vorlagen, die in keine Kategorie eingeordnet wurden.',
-'unusedcategories'                => 'Verwaiste Kategorien',
+'unusedcategories'                => 'Unbenutzte Kategorien',
 'unusedimages'                    => 'Unbenutzte Dateien',
 'popularpages'                    => 'Beliebteste Seiten',
 'wantedcategories'                => 'Benutzte, aber nicht angelegte Kategorien',
@@ -1370,8 +1374,8 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'intl'                            => 'Interwiki-Links',
 'move'                            => 'Verschieben',
 'movethispage'                    => 'Seite verschieben',
-'unusedimagestext'                => '<p>Bitte beachte, dass andere Webseiten dieses Bild mit einer direkten URL verlinken können. Diese wird nicht als Verwendung erkannt, so dass das Bild hier aufgeführt wird.</p>',
-'unusedcategoriestext'            => 'Diese Spezialseite zeigt alle Kategorien, die selber keiner Kategorie zugewiesen wurden.',
+'unusedimagestext'                => '<p>Bitte beachte, dass andere Webseiten diese Datei mit einer direkten URL verlinken können. Diese wird nicht als Verwendung erkannt, so dass die Datei hier aufgeführt wird.</p>',
+'unusedcategoriestext'            => 'Diese Spezialseite zeigt alle Kategorien, die leer sind, also selbst keine Kategorien oder Seiten enthalten.',
 'notargettitle'                   => 'Keine Seite angegeben',
 'notargettext'                    => 'Du hast nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
 'pager-newer-n'                   => '{{PLURAL:$1|nächster|nächste $1}}',
@@ -1450,14 +1454,14 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'watchnologin'         => 'Du bist nicht angemeldet',
 'watchnologintext'     => 'Du musst [[Special:Userlogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
 'addedwatch'           => 'Zur Beobachtungsliste hinzugefügt',
-'addedwatchtext'       => 'Die Seite „$1“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
+'addedwatchtext'       => 'Die Seite „<nowiki>$1</nowiki>“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
 
 Spätere Änderungen an dieser Seite und der dazugehörigen Diskussionsseite werden dort gelistet und
 in der Übersicht der [[Special:Recentchanges|letzten Änderungen]] in Fettschrift dargestellt. 
 
 Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klicke auf der jeweiligen Seite auf „nicht mehr beobachten“.',
 'removedwatch'         => 'Von der Beobachtungsliste entfernt',
-'removedwatchtext'     => 'Die Seite „$1“ wurde von deiner Beobachtungsliste entfernt.',
+'removedwatchtext'     => 'Die Seite „<nowiki>$1</nowiki>“ wurde von deiner Beobachtungsliste entfernt.',
 'watch'                => 'Beobachten',
 'watchthispage'        => 'Seite beobachten',
 'unwatch'              => 'nicht mehr beobachten',
@@ -1527,7 +1531,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'historywarning'              => 'Achtung, die Seite, die du löschen möchtest, hat eine Versionsgeschichte:',
 'confirmdeletetext'           => 'Du bist dabei, eine Seite mit allen zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass du in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handelst.',
 'actioncomplete'              => 'Aktion beendet',
-'deletedtext'                 => '„$1“ wurde gelöscht. Im $2 findest du eine Liste der letzten Löschungen.',
+'deletedtext'                 => '„<nowiki>$1</nowiki>“ wurde gelöscht. Im $2 findest du eine Liste der letzten Löschungen.',
 'deletedarticle'              => 'hat „[[$1]]“ gelöscht',
 'dellogpage'                  => 'Lösch-Logbuch',
 'dellogpagetext'              => 'Dies ist das Logbuch der gelöschten Seiten und Dateien.',
@@ -1551,7 +1555,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'alreadyrolled'               => "Das Zurücksetzen der Änderungen von [[{{ns:user}}:$2|$2]] <span style='font-size: smaller'>([[{{ns:user talk}}:$2|Diskussion]], [[{{#special:Contributions}}/$2|Beiträge]])</span> an Seite [[:$1]] war nicht erfolgreich, da in der Zwischenzeit bereits ein anderer Benutzer 
 Änderungen an dieser Seite vorgenommen hat.<br />Die letzte Änderung stammt von [[{{ns:user}}:$3|$3]] <span style='font-size: smaller'>([[{{ns:user talk}}:$3|Diskussion]])</span>.",
 'editcomment'                 => 'Der Änderungskommentar lautet: „<i>$1</i>“.', # only shown if there is an edit comment
-'revertpage'                  => 'Änderungen von [[User:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt',
+'revertpage'                  => 'Änderungen von [[User:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Die Änderungen von $1 wurden rückgängig gemacht und die letzte Version von $2 wurde wiederhergestellt.',
 'sessionfailure'              => 'Es gab ein Problem mit deiner Benutzersitzung.
 Diese Aktion wurde aus Sicherheitsgründen abgebrochen, um eine falsche Zuordnung deiner Änderungen zu einem anderen Benutzer zu verhindern.
@@ -1569,7 +1573,7 @@ Bitte gehe zurück und versuche den Vorgang erneut auszuführen.',
 'protect_expiry_old'          => 'Die Sperrzeit liegt in der Vergangenheit.',
 'unprotectsub'                => '(Aufhebung der Sperrung von „$1“)',
 'protect-unchain'             => 'Verschiebeschutz ändern',
-'protect-text'                => "Hier kannst du den Schutzstatus für die Seite '''$1''' einsehen und ändern.",
+'protect-text'                => "Hier kannst du den Schutzstatus für die Seite '''<nowiki>\$1</nowiki>''' einsehen und ändern.",
 'protect-locked-blocked'      => 'Du kannst den Seitenschutz nicht ändern, da dein Benutzerkonto gesperrt ist. Hier sind die aktuellen Seitenschutz-Einstellungen für die Seite <strong>„$1“:</strong>',
 'protect-locked-dblock'       => 'Die Datenbank ist gesperrt, der Seitenschutz kann daher nicht geändert werden. Hier sind die aktuellen Seitenschutz-Einstellungen für die Seite <strong>„$1“:</strong>',
 'protect-locked-access'       => 'Dein Benutzerkonto verfügt nicht über die notwendigen Rechte zur Änderung des Seitenschutzes. Hier sind die aktuellen Seitenschutzeinstellungen für die Seite <strong>„$1“:</strong>',
@@ -1621,6 +1625,7 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeleterevision-missing'     => 'Ungültige oder fehlende Version. Entweder ist der Link falsch oder die Version wurde aus dem Archiv wiederhergestellt oder entfernt.',
 'undelete-nodiff'              => 'Keine vorhergehende Version vorhanden.',
 'undeletebtn'                  => 'Wiederherstellen',
+'undeletelink'                 => 'wiederherstellen',
 'undeletereset'                => 'Abbrechen',
 'undeletecomment'              => 'Begründung:',
 'undeletedarticle'             => 'hat „[[$1]]“ wiederhergestellt',
@@ -1657,7 +1662,7 @@ $1',
 'nocontribs'    => 'Es wurden keine Benutzerbeiträge mit diesen Kriterien gefunden.',
 'ucnote'        => 'Dies sind die letzten <b>$1</b> Beiträge des Benutzers in den letzten <b>$2</b> Tagen.',
 'uclinks'       => 'Zeige die letzten $1 Beiträge; zeige die letzten $2 Tage.',
-'uctop'         => ' (aktuell)',
+'uctop'         => '(aktuell)',
 'month'         => 'und Monat:',
 'year'          => 'bis Jahr:',
 
@@ -1858,7 +1863,6 @@ Alternativ ist der Export auch mit der Syntax <tt><nowiki>[[</nowiki>{{ns:specia
 
 # Thumbnails
 'thumbnail-more'           => 'vergrößern',
-'missingimage'             => '<b>Fehlendes Bild</b><br /><i>$1</i>',
 'filemissing'              => 'Datei fehlt',
 'thumbnail_error'          => 'Fehler beim Erstellen des Vorschaubildes: $1',
 'djvu_page_error'          => 'DjVu-Seite ausserhalb des Seitenbereichs',
@@ -1894,7 +1898,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'import-parse-failure'       => 'Fehler beim XML-Import:',
 'import-noarticle'           => 'Es wurde kein zu importierender Artikel angegeben!',
 'import-nonewrevisions'      => 'Es sind keine neuen Versionen zum Import vorhanden, alle Versionen wurden bereits früher importiert.',
-'xml-error-string'           => '$1 Zeile $2, Spalte $3, (Byte $4): $5' ,
+'xml-error-string'           => '$1 Zeile $2, Spalte $3, (Byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Import-Logbuch',
@@ -1952,7 +1956,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'tooltip-ca-nstab-media'          => 'Mediendateienseite anzeigen',
 'tooltip-ca-nstab-special'        => 'Dies ist eine Spezialseite. Sie kann nicht verändert werden.',
 'tooltip-ca-nstab-project'        => 'Portalseite anzeigen',
-'tooltip-ca-nstab-image'          => 'Bilderseite anzeigen',
+'tooltip-ca-nstab-image'          => 'Dateiseite anzeigen',
 'tooltip-ca-nstab-mediawiki'      => 'MediaWiki-Systemtext anzeigen',
 'tooltip-ca-nstab-template'       => 'Vorlage anzeigen',
 'tooltip-ca-nstab-help'           => 'Hilfeseite anzeigen',
@@ -2421,11 +2425,10 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'useajaxsearch'    => 'Benutze AJAX-unterstützte Suche',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← vorige Seite',
-'imgmultipagenext'   => 'nächste Seite →',
-'imgmultigo'         => 'OK',
-'imgmultigotopre'    => 'Gehe zu Seite',
-'imgmultiparseerror' => 'Die Datei scheint defekt zu sein, so dass {{SITENAME}} keine Seitenliste erstellen kann.',
+'imgmultipageprev' => '← vorige Seite',
+'imgmultipagenext' => 'nächste Seite →',
+'imgmultigo'       => 'OK',
+'imgmultigotopre'  => 'Gehe zu Seite',
 
 # Table pager
 'ascending_abbrev'         => 'auf',
@@ -2497,4 +2500,17 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'version-hook-name'                => 'Schnittstellenname',
 'version-hook-subscribedby'        => 'Aufruf von',
 'version-version'                  => 'Version',
+'version-license'                  => 'Lizenz',
+'version-software'                 => 'Installierte Software',
+'version-software-product'         => 'Produkt',
+'version-software-version'         => 'Version',
+
+# Special:Filepath
+'filepath'         => 'Dateipfad',
+'filepath-page'    => 'Datei:',
+'filepath-submit'  => 'Pfad suchen',
+'filepath-summary' => 'Mit dieser Spezialseite lässt sich der komplette Pfad der aktuellen Version einer Datei ohne Umweg abfragen. Die angefragte Datei wird direkt dargestellt bzw. mit der verknüpften Anwendung gestartet.
+
+Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
+
 );

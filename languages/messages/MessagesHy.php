@@ -407,6 +407,7 @@ $messages = array(
 'mytalk'         => 'Իմ քննարկումները',
 'anontalk'       => 'Քննարկում այս IP-հասցեի համար',
 'navigation'     => 'Շրջել կայքում',
+'and'            => 'և',
 
 # Metadata in edit box
 'metadata_help' => 'Մետատվյալներ։',
@@ -657,7 +658,7 @@ $2',
 'loginsuccess'               => "'''Դուք մուտք գործեցիք {{SITENAME}}, որպես \"\$1\"։'''",
 'nosuchuser'                 => '$1 անունով մասնակից գոյություն չունի։
 Ստուգեք ձեր ուղղագրությունը կամ գրանցեք նոր հաշիվ ստորև փակցված ձևով։',
-'nosuchusershort'            => '$1 անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
+'nosuchusershort'            => '<nowiki>$1</nowiki> անունով մասնակից գոյություն չունի։ Ստուգեք ձեր ուղղագրությունը։',
 'nouserspecified'            => 'Հարկավոր է նշել մասնակցային անուն։',
 'wrongpassword'              => 'Մուտքագրված գաղտնաբառը սխալ էր։ Խնդրում ենք կրկին փորձել։',
 'wrongpasswordempty'         => 'Մուտքագրված գաղտնաբառը դատարկ էր։ Խնդրում ենք կրկին փորձել։',
@@ -1492,7 +1493,7 @@ $NEWPAGE
 'historywarning'              => 'Զգուշացում. էջը, որը դուք պատրաստվում եք ջնջել ունի փոփոխությունների պատմություն։',
 'confirmdeletetext'           => 'Դուք պատրաստվում եք ընդմիշտ ջնջել էջը կամ պատկերը տվյալների բազայից իր փոփոխությունների պատմությամբ հանդերձ։ Խնդրում ենք հաստատել, որ դուք իրոք մտադրված եք դա անել, հասկանում եք դրա հետևանքները և գործում եք [[{{MediaWiki:Policy-url}}|կանոնադրության]] սահմաններում։',
 'actioncomplete'              => 'Գործողությունը ավարտված  է',
-'deletedtext'                 => '«$1» էջը ջնջված է։
+'deletedtext'                 => '«<nowiki>$1</nowiki>» էջը ջնջված է։
 Տես $2՝ վերջին ջնջումների պատմության համար։',
 'deletedarticle'              => 'ջնջված է «[[$1]]»',
 'dellogpage'                  => 'Ջնջման տեղեկամատյան',
@@ -1801,7 +1802,6 @@ $1',
 
 # Thumbnails
 'thumbnail-more'           => 'Ընդարձակել',
-'missingimage'             => '<b>Պատկերը չգտնվեց</b><br /><i>$1</i>',
 'filemissing'              => 'Նման ֆայլ չկա',
 'thumbnail_error'          => 'Պատկերիկի ստեղծման սխալ. $1',
 'djvu_page_error'          => 'DjVu էջը լայնույթից դուրս է',
@@ -1920,7 +1920,6 @@ The wiki server can't provide data in a format your client can read.",
 'anonymous'        => '{{grammar:genitive|{{SITENAME}}}} անանուն մասնակիցները',
 'siteuser'         => '{{grammar:genitive|{{SITENAME}}}} մասնակից $1',
 'lastmodifiedatby' => 'Այս էջը վերջին անգամ փոփոխվել է $2, $1 $3 մասնակցի կողմից։', # $1 date, $2 time, $3 user
-'and'              => 'և',
 'othercontribs'    => 'Հիմնված է {{grammar:genitive|$1}} գործի վրա։',
 'others'           => 'այլոք',
 'siteusers'        => '{{grammar:genitive|{{SITENAME}}}} մասնակից(ներ) $1',
@@ -2110,11 +2109,10 @@ $1',
 'hideresults'      => 'Թաքցնել արդյունքները',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← նախորդ էջ',
-'imgmultipagenext'   => 'հաջորդ էջ →',
-'imgmultigo'         => 'Անցնե՜լ',
-'imgmultigotopre'    => 'Անցնել էջին',
-'imgmultiparseerror' => 'Պատկերի ֆայլը խաթարված է կամ սպարունակում է սխալ, այս պատճառով անհնարին է ստանալ էջերի ցանկը։',
+'imgmultipageprev' => '← նախորդ էջ',
+'imgmultipagenext' => 'հաջորդ էջ →',
+'imgmultigo'       => 'Անցնե՜լ',
+'imgmultigotopre'  => 'Անցնել էջին',
 
 # Table pager
 'ascending_abbrev'         => 'աճմ. կարգ.',

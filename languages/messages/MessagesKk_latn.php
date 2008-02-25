@@ -512,6 +512,7 @@ $messages = array(
 'mytalk'         => 'Talqılawım',
 'anontalk'       => 'IP talqılawı',
 'navigation'     => 'Bağıttaw',
+'and'            => 'jäne',
 
 # Metadata in edit box
 'metadata_help' => 'Qosımşa derekter:',
@@ -771,7 +772,7 @@ Tirkelgiñiz jaratıldı. {{SITENAME}} baptawıñızdı qalawıñızben özgertw
 'loginsuccesstitle'          => 'Kirwiñiz sätti ötti',
 'loginsuccess'               => "'''Siz endi {{SITENAME}} jobasına «$1» retinde kirip otırsız.'''",
 'nosuchuser'                 => 'Mında «$1» atawlı qatıswşı joq. Emleñizdi tekseriñiz, nemese jañadan tirkeliñiz.',
-'nosuchusershort'            => 'Mında «$1» atawlı qatıswşı joq. Emleñizdi tekseriñiz.',
+'nosuchusershort'            => 'Mında «<nowiki>$1</nowiki>» atawlı qatıswşı joq. Emleñizdi tekseriñiz.',
 'nouserspecified'            => 'Qatıswşı atın engiziwiñiz kerek.',
 'wrongpassword'              => 'Burıs qupïya söz engizilgen. Qaýta baýqap köriñiz.',
 'wrongpasswordempty'         => 'Qupïya söz bos bolğan. Qaýta baýqap köriñiz.',
@@ -1204,25 +1205,25 @@ barlıq şart sözder kedesse körsetiledi) bolwı mümkin.",
 'files'                    => 'Faýldar',
 
 # User rights
-'userrights-lookup-user'      => 'Qatıswşı toptarın rettew',
-'userrights-user-editname'    => 'Qatıswşı atın engiziñiz:',
-'editusergroup'               => 'Qatıswşı toptarın öñdew',
-'userrights-editusergroup'    => 'Qatıswşı toptarın öñdew',
-'saveusergroups'              => 'Qatıswşı toptarın saqtaw',
-'userrights-groupsmember'     => 'Müşeligi:',
-'userrights-groupsremovable'  => 'Alastalatın toptar:',
-'userrights-groupsavailable'  => 'Jetimdi toptar:',
+'userrights-lookup-user'           => 'Qatıswşı toptarın rettew',
+'userrights-user-editname'         => 'Qatıswşı atın engiziñiz:',
+'editusergroup'                    => 'Qatıswşı toptarın öñdew',
+'userrights-editusergroup'         => 'Qatıswşı toptarın öñdew',
+'saveusergroups'                   => 'Qatıswşı toptarın saqtaw',
+'userrights-groupsmember'          => 'Müşeligi:',
+'userrights-groupsremovable'       => 'Alastalatın toptar:',
+'userrights-groupsavailable'       => 'Jetimdi toptar:',
 'userrights-groupshelp'            => 'Qatıswşını topqa üsteýmin ne toptan alastaýmın degen toptardı bölekteñiz. Bölektenbegen toptar özgertilimeýdi. Toptardıñ bölektewin CTRL + Sol jaq nuqwmen öşirwiñizge boladı.',
-'userrights-reason'           => 'Özgertw sebebi:',
-'userrights-available-none'   => 'Top müşeligin özgerte almaýsız.',
+'userrights-reason'                => 'Özgertw sebebi:',
+'userrights-available-none'        => 'Top müşeligin özgerte almaýsız.',
 'userrights-available-add'         => 'Qatıswşılardı mına {{PLURAL:$2|topqa|toptarğa}} üsteý alasız: $1.',
 'userrights-available-remove'      => 'Qatıswşılardı mına {{PLURAL:$2|toptan|toptardan}} alastaý alasız: $1.',
 'userrights-available-add-self'    => 'Öziñizdi mına {{PLURAL:$2|topqa|toptarğa}} üsteý alasız: $1.',
 'userrights-available-remove-self' => 'Öziñizdi mına {{PLURAL:$2|toptan|toptardan}} alastaý alasız: $1.',
-'userrights-no-interwiki'     => 'Basqa wïkïlerdegi paýdalanwşı quqıqtarın öñdewge ruqsatıñız joq.',
-'userrights-nodatabase'       => '$1 derekqorı joq ne jergilikti emes.',
-'userrights-nologin'          => 'Qatıswşı quqıqtarın tağaýındaw üşin äkimşi tirkelgisimen [[{{ns:special}}:Userlogin|kirwiñiz]] jön.',
-'userrights-notallowed'       => 'Qatıswşı quqıqtarın tağaýındaw üşin tirkelgiñizde ruqsat joq.',
+'userrights-no-interwiki'          => 'Basqa wïkïlerdegi paýdalanwşı quqıqtarın öñdewge ruqsatıñız joq.',
+'userrights-nodatabase'            => '$1 derekqorı joq ne jergilikti emes.',
+'userrights-nologin'               => 'Qatıswşı quqıqtarın tağaýındaw üşin äkimşi tirkelgisimen [[{{ns:special}}:Userlogin|kirwiñiz]] jön.',
+'userrights-notallowed'            => 'Qatıswşı quqıqtarın tağaýındaw üşin tirkelgiñizde ruqsat joq.',
 
 # Groups
 'group'               => 'Top:',
@@ -1500,7 +1501,7 @@ Ağımdıq [http://meta.wikimedia.org/wiki/Help:Job_queue tapsırım kezegi] uz�
 
 'withoutinterwiki'        => 'Eş tilge siltemegen better',
 'withoutinterwiki-header' => 'Kelesi better basqa tilderge siltemeýdi:',
-'withoutinterwiki-submit'  => 'Körset',
+'withoutinterwiki-submit' => 'Körset',
 
 'fewestrevisions' => 'Eñ az tüzetilgen better',
 
@@ -1721,7 +1722,7 @@ Sın-pikir berw jäne bılaýğı järdem alw üşin:
 'confirmdeletetext'           => 'Betti nemese swretti barlıq tarïxımen birge derekqordan ärdaýım joýığıñız keletin sïyaqtı.
 Bunı joywdıñ zardabın tüsinip şın nïettengeniñizdi, jäne [[{{{{ns:mediawiki}}:Policy-url}}]] degenge laýıqtı dep sengeniñizdi quptañız.',
 'actioncomplete'              => 'Äreket bitti',
-'deletedtext'                 => '«$1» joýıldı. Jwıqtağı joywlar twralı jazbaların $2 degennen qarañız.',
+'deletedtext'                 => '«<nowiki>$1</nowiki>» joýıldı. Jwıqtağı joywlar twralı jazbaların $2 degennen qarañız.',
 'deletedarticle'              => '«[[$1]]» betin joýdı',
 'dellogpage'                  => 'Joyw_jwrnalı',
 'dellogpagetext'              => 'Tömende jwıqtağı joywlardıñ tizimi berilgen.',
@@ -1763,7 +1764,7 @@ Soñğı öñdewdi [[User:$3|$3]] ([[User_talk:$3|talqılawı]]) istegen.',
 'protect_expiry_old'          => 'Bitetin waqıtı ötip ketken.',
 'unprotectsub'                => '(«$1» qorğamawda)',
 'protect-unchain'             => 'Jıljıtw ruqsattarın berw',
-'protect-text'                => '<strong>$1</strong> betiniñ qorğaw deñgeýin qarap jäne özgertip şığa alasız.',
+'protect-text'                => '<strong><nowiki>$1</nowiki></strong> betiniñ qorğaw deñgeýin qarap jäne özgertip şığa alasız.',
 'protect-locked-blocked'      => 'Buğattawıñız öşirilgenşe deýin qorğaw deñgeýin özgerte almaýsız.
 Mına <strong>$1</strong> bettiñ ağımdıq baptawları:',
 'protect-locked-dblock'       => 'Derekqordıñ qulıptawı belsendi bolğandıqtan qorğaw deñgeýleri özgertilmeýdi.
@@ -2085,7 +2086,6 @@ Soñğı jağdaýda siltemeni de, mısalı «{{{{ns:mediawiki}}:Mainpage}}» bet
 
 # Thumbnails
 'thumbnail-more'           => 'Ülkeýtw',
-'missingimage'             => '<b>Joğalğan swret </b><br /><i>$1</i>',
 'filemissing'              => 'Joğalğan faýl',
 'thumbnail_error'          => 'Nobaý jaratılw qatesi: $1',
 'djvu_page_error'          => 'DjVu beti mümkindi awmaqtıñ sırtındda',
@@ -2202,7 +2202,6 @@ Barlıq wïkï-tasımaldap sırttan alw äreketter [[{{ns:special}}:Log/import|s
 'anonymous'        => '{{SITENAME}} tirkelgisiz qatıswşı(ları)',
 'siteuser'         => '{{SITENAME}} qatıswşı $1',
 'lastmodifiedatby' => 'Bul betti $3 qatıswşı soñğı özgertken kezi: $2, $1.', # $1 date, $2 time, $3 user
-'and'              => 'jäne',
 'othercontribs'    => 'Şığarma negizin $1 jazğan.',
 'others'           => 'basqalar',
 'siteusers'        => '{{SITENAME}} qatıswşı(lar) $1',
@@ -2657,11 +2656,10 @@ $1',
 'comma-separator'     => ',&#32;',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← aldıñğı betke',
-'imgmultipagenext'   => 'kelesi betke →',
-'imgmultigo'         => 'Öt!',
-'imgmultigotopre'    => 'Mına betke ötw',
-'imgmultiparseerror' => 'Swret faýlı qïrağan ne burıs sïyaqtı, sondıqtan {{SITENAME}} bet tizimin keltire almaýdı.',
+'imgmultipageprev' => '← aldıñğı betke',
+'imgmultipagenext' => 'kelesi betke →',
+'imgmultigo'       => 'Öt!',
+'imgmultigotopre'  => 'Mına betke ötw',
 
 # Table pager
 'ascending_abbrev'         => 'ösw',
@@ -2764,5 +2762,13 @@ Tağı da [[Special:Watchlist/edit|qalıptı öñdewişti paýdalana]] alasız.'
 
 # Core parser functions
 'unknown_extension_tag' => 'Tanılmağan keñeýtpe belgisi «$1»',
+
+# Special:Filepath
+'filepath'         => 'Faýl ornalaswı ',
+'filepath-page'    => 'Faýl atı:',
+'filepath-submit'  => 'Ornalaswın tabw ',
+'filepath-summary' => 'Bul arnaýı bet faýl ornalaswı tolıq jolın qaýtaradı. Swretter tolıq ajıratılımdığımen körsetiledi, basqa faýl türlerine qatıstı bağdarlaması twra jegiledi.
+
+Faýl atawın «{{ns:image}}:» degen bastawışsız eñgiziñiz.',
 
 );

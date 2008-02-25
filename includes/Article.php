@@ -41,7 +41,7 @@ class Article {
 	 * @param $title Reference to a Title object.
 	 * @param $oldId Integer revision ID, null to fetch from request, zero for current
 	 */
-	function __construct( &$title, $oldId = null ) {
+	function __construct( Title $title, $oldId = null ) {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
 		$this->clear();
@@ -613,6 +613,7 @@ class Article {
 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
 		global $wgEnableParserCache, $wgStylePath, $wgParser;
 		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies;
+		global $wgDefaultRobotPolicy;
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( __METHOD__ );
@@ -647,8 +648,7 @@ class Article {
 			# Honour customised robot policies for this namespace
 			$policy = $wgNamespaceRobotPolicies[$ns];
 		} else {
-			# Default to encourage indexing and following links
-			$policy = 'index,follow';
+			$policy = $wgDefaultRobotPolicy;
 		}
 		$wgOut->setRobotPolicy( $policy );
 
@@ -770,11 +770,11 @@ class Article {
 					$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
 					if( $this->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
 						if( !$this->mRevision->userCan( Revision::DELETED_TEXT ) ) {
-							$wgOut->addWikiText( wfMsg( 'rev-deleted-text-permission' ) );
+							$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
 							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 							return;
 						} else {
-							$wgOut->addWikiText( wfMsg( 'rev-deleted-text-view' ) );
+							$wgOut->addWikiMsg( 'rev-deleted-text-view' );
 							// and we are allowed to see...
 						}
 					}
@@ -852,7 +852,7 @@ class Article {
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 		if( $ns == NS_USER_TALK &&
 			User::isIP( $this->mTitle->getText() ) ) {
-			$wgOut->addWikiText( wfMsg('anontalkpagetext') );
+			$wgOut->addWikiMsg('anontalkpagetext');
 		}
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
@@ -904,14 +904,14 @@ class Article {
 					$o->tb_name,
 					$rmvtxt);
 		}
-		$wgOut->addWikitext(wfMsg('trackbackbox', $tbtext));
+		$wgOut->addWikiMsg( 'trackbackbox', $tbtext );
 	}
 
 	function deletetrackback() {
 		global $wgUser, $wgRequest, $wgOut, $wgTitle;
 
 		if (!$wgUser->matchEditToken($wgRequest->getVal('token'))) {
-			$wgOut->addWikitext(wfMsg('sessionfailure'));
+			$wgOut->addWikiMsg( 'sessionfailure' );
 			return;
 		}
 
@@ -926,7 +926,7 @@ class Article {
 		$db = wfGetDB(DB_MASTER);
 		$db->delete('trackbacks', array('tb_id' => $wgRequest->getInt('tbid')));
 		$wgTitle->invalidateCache();
-		$wgOut->addWikiText(wfMsg('trackbackdeleteok'));
+		$wgOut->addWikiMsg('trackbackdeleteok');
 	}
 
 	function render() {
@@ -977,6 +977,15 @@ class Article {
 			// Send purge
 			$update = SquidUpdate::newSimplePurge( $this->mTitle );
 			$update->doUpdate();
+		}
+		if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+			global $wgMessageCache;
+			if ( $this->getID() == 0 ) {
+				$text = false;
+			} else {
+				$text = $this->getContent();
+			}
+			$wgMessageCache->replace( $this->mTitle->getDBkey(), $text );
 		}
 		$this->view();
 	}
@@ -1560,7 +1569,7 @@ class Article {
 				# The user made this edit, and can't patrol it
 				# Tell them so, and then back off
 				$wgOut->setPageTitle( wfMsg( 'markedaspatrollederror' ) );
-				$wgOut->addWikiText( wfMsgNoTrans( 'markedaspatrollederror-noautopatrol' ) );
+				$wgOut->addWikiMsg( 'markedaspatrollederror-noautopatrol' );
 				$wgOut->returnToMain( false, $return );
 				return;
 			}
@@ -1573,7 +1582,7 @@ class Article {
 
 		# Inform the user
 		$wgOut->setPageTitle( wfMsg( 'markedaspatrolled' ) );
-		$wgOut->addWikiText( wfMsgNoTrans( 'markedaspatrolledtext' ) );
+		$wgOut->addWikiMsg( 'markedaspatrolledtext' );
 		$wgOut->returnToMain( false, $return );
 	}
 
@@ -1598,9 +1607,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
-			$text = wfMsg( 'addedwatchtext', $link );
-			$wgOut->addWikiText( $text );
+			$wgOut->addWikiMsg( 'addedwatchtext', $this->mTitle->getPrefixedText() );
 		}
 
 		$wgOut->returnToMain( true, $this->mTitle->getPrefixedText() );
@@ -1645,9 +1652,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
-			$text = wfMsg( 'removedwatchtext', $link );
-			$wgOut->addWikiText( $text );
+			$wgOut->addWikiMsg( 'removedwatchtext', $this->mTitle->getPrefixedText() );
 		}
 
 		$wgOut->returnToMain( true, $this->mTitle->getPrefixedText() );
@@ -1734,7 +1739,7 @@ class Article {
 
 				$expiry_description = '';
 				if ( $encodedExpiry != 'infinity' ) {
-					$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) ).')';
+					$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry, false, false ) ).')';
 				}
 
 				# Prepare a null revision to be added to the history
@@ -1766,7 +1771,6 @@ class Article {
 				if ( $cascade )
 					$comment .= "$cascade_description";
 				
-				$rowsAffected = false;
 				# Update restrictions table
 				foreach( $limit as $action => $restrictions ) {
 					if ($restrictions != '' ) {
@@ -1774,18 +1778,11 @@ class Article {
 							array( 'pr_page' => $id, 'pr_type' => $action
 								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ? 1 : 0
 								, 'pr_expiry' => $encodedExpiry ), __METHOD__  );
-						if($dbw->affectedRows() != 0)
-							$rowsAffected = true;
 					} else {
 						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
 							'pr_type' => $action ), __METHOD__ );
-						if($dbw->affectedRows() != 0)
-							$rowsAffected = true;
 					}
 				}
-				if(!$rowsAffected)
-					// No change
-					return true;
 
 				# Insert a null revision
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
@@ -1969,10 +1966,8 @@ class Article {
 		$bigHistory = $this->isBigDeletion();
 		if( $bigHistory && !$this->mTitle->userCan( 'bigdelete' ) ) {
 			global $wgLang, $wgDeleteRevisionsLimit;
-			$wgOut->addWikiText( "<div class='error'>\n" .
-				wfMsg( 'delete-toobig',
-					$wgLang->formatNum( $wgDeleteRevisionsLimit ) ) .
-				"</div>\n" );
+			$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n",
+				array( 'delete-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
 			return;
 		}
 
@@ -1996,10 +1991,8 @@ class Article {
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
 			if( $bigHistory ) {
 				global $wgLang, $wgDeleteRevisionsLimit;
-				$wgOut->addWikiText( "<div class='error'>\n" .
-					wfMsg( 'delete-warning-toobig',
-						$wgLang->formatNum( $wgDeleteRevisionsLimit ) ) .
-					"</div>\n" );
+				$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n",
+					array( 'delete-warning-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
 			}
 		}
 		
@@ -2089,13 +2082,13 @@ class Article {
 
 		$wgOut->setSubtitle( wfMsg( 'delete-backlink', $wgUser->getSkin()->makeKnownLinkObj( $this->mTitle ) ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
-		$wgOut->addWikiText( wfMsg( 'confirmdeletetext' ) );
+		$wgOut->addWikiMsg( 'confirmdeletetext' );
 
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mTitle->getLocalURL( 'action=delete' . $par ), 'id' => 'deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'delete-legend' ) ) .
 			Xml::openElement( 'table' ) .
-			"<tr id=\"wpDeleteReasonListRow\" name=\"wpDeleteReasonListRow\">
+			"<tr id=\"wpDeleteReasonListRow\">
 				<td align='$align'>" .
 					Xml::label( wfMsg( 'deletecomment' ), 'wpDeleteReasonList' ) .
 				"</td>
@@ -2105,7 +2098,7 @@ class Article {
 						wfMsgForContent( 'deletereasonotherlist' ), '', 'wpReasonDropDown', 1 ) .
 				"</td>
 			</tr>
-			<tr id=\"wpDeleteReasonRow\" name=\"wpDeleteReasonRow\">
+			<tr id=\"wpDeleteReasonRow\">
 				<td align='$align'>" .
 					Xml::label( wfMsg( 'deleteotherreason' ), 'wpReason' ) .
 				"</td>
@@ -2158,15 +2151,14 @@ class Article {
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason))) {
 			if ( $this->doDeleteArticle( $reason ) ) {
-				$deleted = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
+				$deleted = $this->mTitle->getPrefixedText();
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-				$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
-				$text = wfMsg( 'deletedtext', $deleted, $loglink );
+				$loglink = '[[Special:Log/delete|' . wfMsgNoTrans( 'deletionlog' ) . ']]';
 
-				$wgOut->addWikiText( $text );
+				$wgOut->addWikiMsg( 'deletedtext', $deleted, $loglink );
 				$wgOut->returnToMain( false );
 				wfRunHooks('ArticleDeleteComplete', array(&$this, &$wgUser, $reason));
 			} else {
@@ -3072,6 +3064,36 @@ class Article {
 			if ( $dbr->numRows( $res ) ) {
 				while ( $row = $dbr->fetchObject( $res ) ) {
 					$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
+				}
+			}
+		}
+		$dbr->freeResult( $res );
+		return $result;
+	}
+
+	/**
+	 * Returns a list of hidden categories this page is a member of.
+	 * Uses the page_props and categorylinks tables.
+	 *
+	 * @return array Array of Title objects
+	 */
+	function getHiddenCategories() {
+		$result = array();
+		$id = $this->mTitle->getArticleID();
+		if( $id == 0 ) {
+			return array();
+		}
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( array( 'categorylinks', 'page_props', 'page' ),
+			array( 'cl_to' ),
+			array( 'cl_from' => $id, 'pp_page=page_id', 'pp_propname' => 'hiddencat', 
+				'page_namespace' => NS_CATEGORY, 'page_title=cl_to'),
+			'Article:getHiddenCategories' );
+		if ( false !== $res ) {
+			if ( $dbr->numRows( $res ) ) {
+				while ( $row = $dbr->fetchObject( $res ) ) {
+					$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
 				}
 			}
 		}

@@ -597,6 +597,9 @@ CREATE TABLE /*$wgDBprefix*/ipblocks (
   -- User ID who made the block.
   ipb_by int unsigned NOT NULL default '0',
   
+  -- User name of blocker
+  ipb_by_text varchar(255) binary NOT NULL default '',
+  
   -- Text comment made by blocker.
   ipb_reason tinyblob NOT NULL,
   
@@ -1179,6 +1182,15 @@ CREATE TABLE /*$wgDBprefix*/protected_titles (
   pt_create_perm varbinary(60) NOT NULL,
   PRIMARY KEY (pt_namespace,pt_title),
   KEY pt_timestamp (pt_timestamp)
+) /*$wgDBTableOptions*/;
+
+-- Name/value pairs indexed by page_id
+CREATE TABLE /*$wgDBprefix*/page_props (
+  pp_page int NOT NULL,
+  pp_propname varbinary(60) NOT NULL,
+  pp_value blob NOT NULL,
+
+  PRIMARY KEY (pp_page,pp_propname)
 ) /*$wgDBTableOptions*/;
 
 -- vim: sw=2 sts=2 et

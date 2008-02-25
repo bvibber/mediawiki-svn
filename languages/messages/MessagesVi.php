@@ -352,7 +352,7 @@ $messages = array(
 'badaccess-groups' => 'Chỉ những thành viên trong các nhóm $1 mới được làm thao tác này.',
 
 'versionrequired'     => 'Cần phiên bản $1 của MediaWiki',
-'versionrequiredtext' => 'Cần phiên bản $1 của MediaWiki để sử dụng trang này. Xem [[Special:Version|phiên bản trang]].',
+'versionrequiredtext' => 'Cần phiên bản $1 của MediaWiki để sử dụng trang này. Xem [[Special:Version|trang phiên bản]].',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Lấy từ “$1”',
@@ -371,10 +371,12 @@ $messages = array(
 'restorelink'             => '$1 sửa đổi đã xóa',
 'feedlinks'               => 'Nạp:',
 'feed-invalid'            => 'Định dạng feed không hợp lệ.',
+'feed-unavailable'        => 'Không có feed tại {{SITENAME}}',
 'site-rss-feed'           => '$1 mục RSS',
 'site-atom-feed'          => '$1 mục Atom',
 'page-rss-feed'           => 'Mục RSS của “$1”',
 'page-atom-feed'          => 'Mục Atom của “$1”',
+'red-link-title'          => '$1 (chưa được viết)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Nội dung',
@@ -447,7 +449,7 @@ Truy vấn: $2',
 'protectedpagetext'    => 'Trang này đã bị khóa không cho sửa đổi.',
 'viewsourcetext'       => 'Bạn vẫn có thể xem và chép xuống mã nguồn của trang này:',
 'protectedinterface'   => 'Trang này cung cấp một thông báo trong giao diện phần mềm, và bị khóa để tránh phá hoại.',
-'editinginterface'     => "'''Lưu ý:''' Bạn đang sửa chữa một trang dùng để cung cấp thông báo giao diện cho phần mềm. Những thay đổi tại trang này sẽ ảnh hưởng đến giao diện của rất nhiều người dùng website này. Để dịch luật, hãy xem xét việc sử dụng [http://translatewiki.net/wiki/Translating:Intro Betawiki], dự án địa phương hóa của MediaWiki.",
+'editinginterface'     => "'''Lưu ý:''' Bạn đang sửa chữa một trang dùng để cung cấp thông báo giao diện cho phần mềm. Những thay đổi tại trang này sẽ ảnh hưởng đến giao diện của rất nhiều người dùng website này. Để dịch luật, hãy xem xét việc sử dụng [http://translatewiki.net/wiki/Main_Page?setlang=vi Betawiki], dự án địa phương hóa của MediaWiki.",
 'sqlhidden'            => '(giấu truy vấn SQL)',
 'cascadeprotected'     => 'Trang này đã bị khóa không cho sửa đổi, vì nó được nhúng vào {{PLURAL:$1|trang|những trang}} đã bị khóa với tùy chọn “khóa theo tầng” được kích hoạt:
 $2',
@@ -505,7 +507,7 @@ Tài khoản của bạn đã mở. Đừng quên thay đổi tùy chọn cá nh
 'loginsuccesstitle'          => 'Đăng nhập thành công',
 'loginsuccess'               => "'''Bạn đã đăng nhập vào {{SITENAME}} với tên “$1”.'''",
 'nosuchuser'                 => 'Thành viên “$1” không tồn tại. Xin kiểm tra lại tên, hoặc mở tài khoản mới.',
-'nosuchusershort'            => 'Không có thành viên nào có tên “$1”. Xin hãy kiểm tra lại chính tả.',
+'nosuchusershort'            => 'Không có thành viên nào có tên “<nowiki>$1</nowiki>”. Xin hãy kiểm tra lại chính tả.',
 'nouserspecified'            => 'Bạn phải đưa ra tên đăng ký.',
 'wrongpassword'              => 'Mật khẩu sai. Xin vui lòng nhập lại.',
 'wrongpasswordempty'         => 'Bạn chưa gõ vào mật khẩu. Xin thử lần nữa.',
@@ -530,7 +532,7 @@ Nếu một người nào khác yêu cầu điều này hoặc nếu bạn đã 
 'accountcreated'             => 'Mở tài khoản thành công',
 'accountcreatedtext'         => 'Tài khoản thành viên cho $1 đã được mở.',
 'createaccount-title'        => 'Tài khoản mới tại {{SITENAME}}',
-'createaccount-text'         => 'Ai đó (ở địa chỉ $1) đã tạo một tài khoản với tên $2 tại {{SITENAME}} ($4). Mật khẩu của "$2" là "$3". Bạn nên đăng nhập và đổi mật khẩu ngay bây giờ.
+'createaccount-text'         => 'Ai đó đã tạo một tài khoản với tên $2 tại {{SITENAME}} ($4). Mật khẩu của "$2" là "$3". Bạn nên đăng nhập và đổi mật khẩu ngay bây giờ.
 
 Xin hãy bỏ qua thông báo này nếu tài khoản này không phải do bạn tạo ra.',
 'loginlanguagelabel'         => 'Ngôn ngữ: $1',
@@ -653,7 +655,7 @@ Xin hãy thử lần nữa. Nếu vẫn không thành công, bạn hãy thử đ
 sửa đổi. Việc hủy bỏ này nhằm tránh nội dung trang bị hỏng.
 Điều này thường xảy ra khi bạn sử dụng một dịch vụ proxy vô danh trên web có vấn đề.</strong>',
 'editing'                   => 'Sửa đổi $1',
-'editinguser'               => 'Sửa đổi $1',
+'editinguser'               => "Thay đổi quyền hạn của thành viên '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Sửa đổi $1',
 'editingcomment'            => 'Sửa đổi $1',
 'editconflict'              => 'Sửa đổi mâu thuẫn : $1',
@@ -825,6 +827,7 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'searchsubtitleinvalid' => "Tìm '''$1'''",
 'noexactmatch'          => "'''Trang “$1” không tồn tại.''' Bạn có thể [[:$1|tạo trang này]].",
 'noexactmatch-nocreate' => "'''Không có trang nào có tên “$1”.'''",
+'toomanymatches'        => 'Có quá nhiều kết quả được trả về, xin hãy thử câu tìm kiếm khác',
 'titlematches'          => 'Đề mục tương tự',
 'notitlematches'        => 'Không có tên trang nào có nội dung tương tự',
 'textmatches'           => 'Câu chữ tương tự',
@@ -870,7 +873,7 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'prefs-personal'           => 'Thông tin cá nhân',
 'prefs-rc'                 => 'Thay đổi gần đây',
 'prefs-watchlist'          => 'Theo dõi',
-'prefs-watchlist-days'     => 'Số ngày hiển thị tối đa trong danh sách theo dõi:',
+'prefs-watchlist-days'     => 'Số ngày hiển thị trong danh sách theo dõi:',
 'prefs-watchlist-edits'    => 'Số lần sửa đổi tối đa trong danh sách theo dõi mở rộng:',
 'prefs-misc'               => 'Linh tinh',
 'saveprefs'                => 'Lưu lựa chọn',
@@ -987,12 +990,11 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'uploadnologintext'           => 'Bạn phải [[Special:Userlogin|đăng nhập]] để tải tập tin lên.',
 'upload_directory_read_only'  => 'Máy chủ không thể sửa đổi thư mục tải lên ($1) được.',
 'uploaderror'                 => 'Lỗi khi tải lên',
-'uploadtext'                  => "Hãy sử dụng mẫu sau để tải tập tin, để xem hoặc tìm kiếm những hình ảnh đã được tải lên trước đây xin mời xem [[Special:Imagelist|danh sách các tập tin đã tải lên]], việc tải lên và xóa đi cũng được ghi lại trong [[Special:Log/upload|nhật trình tải lên]].
+'uploadtext'                  => "Hãy sử dụng mẫu sau để tải tập tin. 
+Để xem hoặc tìm kiếm những hình ảnh đã được tải lên trước đây, xin mời xem [[Special:Imagelist|danh sách các tập tin đã tải lên]]; việc tải lên và xóa đi cũng được ghi lại trong [[Special:Log/upload|nhật trình tải lên]].
 
-Để đưa hình vào trang, hãy dùng một liên kết theo dạng
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Tập tin.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Tập tin.png|văn bản thay thế]]</nowiki>''' hoặc
-'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Tập tin.ogg]]</nowiki>''' để trực tiếp liên kết đến tập tin.",
+Để đưa hình vào trang, hãy dùng một liên kết theo dạng '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Tập tin.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Tập tin.png|văn bản thay thế]]</nowiki>''' hoặc '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Tập tin.ogg]]</nowiki>''' để trực tiếp liên kết đến tập tin.",
 'upload-permitted'            => 'Các định dạng tập tin được phép tải lên: $1.',
 'upload-preferred'            => 'Các định dạng tập tin nên dùng: $1.',
 'upload-prohibited'           => 'Các định dạng tập tin bị cấm: $1.',
@@ -1000,7 +1002,7 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'uploadlogpage'               => 'Nhật trình tải lên',
 'uploadlogpagetext'           => 'Danh sách các tập tin đã tải lên, theo  giờ máy chủ (UTC).',
 'filename'                    => 'Tên tập tin:',
-'filedesc'                    => 'Mô tả:',
+'filedesc'                    => 'Miêu tả:',
 'fileuploadsummary'           => 'Tóm lược:',
 'filestatus'                  => 'Bản quyền',
 'filesource'                  => 'Nguồn',
@@ -1010,25 +1012,25 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'minlength1'                  => 'Tên tập tin phải có ít nhất một ký tự.',
 'illegalfilename'             => 'Tên tập tin “$1” có chứa ký tự không được phép dùng cho tựa trang. Xin hãy đổi tên và tải lên lại.',
 'badfilename'                 => 'Tên tập tin đã được đổi thành “$1”.',
-'filetype-badmime'            => 'Không thể truyền lên các tập tin có định dạng MIME “$1”.',
+'filetype-badmime'            => 'Không thể tải lên các tập tin có định dạng MIME “$1”.',
 'filetype-unwanted-type'      => "'''“.$1”''' là định dạng tập tin không mong muốn.  Những loại tập tin thích hợp hơn là $2.",
 'filetype-banned-type'        => "'''“.$1”''' là định dạng tập tin không được chấp nhận.  Những loại tập tin được chấp nhận là $2.",
 'filetype-missing'            => 'Tập tin không có phần mở rộng (ví dụ “.jpg”).',
 'large-file'                  => 'Các tập tin được khuyến cáo không được lớn hơn $1; tập tin này lớn đến $2.',
 'largefileserver'             => 'Tập tin này quá lớn so với khả năng phục vụ của máy chủ.',
-'emptyfile'                   => 'Tập tin bạn vừa mới truyền lên có vẻ trống không. Điều này có thể xảy ra khi bạn đánh sai tên tập tin. Xin hãy chắc chắn rằng bạn thật sự muốn tải lên tập tin này.',
+'emptyfile'                   => 'Tập tin bạn vừa mới tải lên có vẻ trống không. Điều này có thể xảy ra khi bạn đánh sai tên tập tin. Xin hãy chắc chắn rằng bạn thật sự muốn tải lên tập tin này.',
 'fileexists'                  => 'Một tập tin với tên này đã tồn tại, xin hãy kiểm tra lại <strong><tt>$1</tt></strong> nếu bạn không chắc bạn có muốn thay đổi nó hay không.',
-'filepageexists'              => 'Đã có một trang (không phải trang chứa hình) tồn tại ở tên mới, xin hãy đánh dấu chọn <strong><tt>$1</tt></strong> nếu bạn không chắc chắn mình có muốn đổi tên hay không.',
+'filepageexists'              => 'Đã có một trang (không phải tập tin) tồn tại ở tên này. Xin hãy đánh dấu chọn <strong><tt>$1</tt></strong> nếu bạn không chắc chắn mình có muốn đổi tập tin hay không.',
 'fileexists-extension'        => 'Hiện có một tập tin trùng tên:<br />
 Tên tập tin đang tải lên: <strong><tt>$1</tt></strong><br />
 Tên tập tin có từ trước: <strong><tt>$2</tt></strong><br />
 Xin hãy chọn một tên tập tin khác.',
-'fileexists-thumb'            => "<center>'''Hình đã có sẵn'''</center>",
+'fileexists-thumb'            => "<center>'''Tập tin đã tồn tại'''</center>",
 'fileexists-thumbnail-yes'    => 'Tập tin này có vẻ là hình có kích thước thu gọn <i>(hình thu nhỏ)</i>. Xin kiểm tra lại tập tin <strong><tt>$1</tt></strong>.<br />
 Nếu tập tin được kiểm tra trùng với hình có kích cỡ gốc thì không cần thiết tải lên một hình thu nhỏ khác.',
 'file-thumbnail-no'           => 'Tên tập tin bắt đầu bằng <strong><tt>$1</tt></strong>. Có vẻ đây là bản có kích thước thu nhỏ của hình <i>(thumbnail)</i>.
 Nếu bạn có bản ở độ phân giải tối đa, mời bạn tải bản này lên, nếu không hãy đổi lại tên tập tin.',
-'fileexists-forbidden'        => 'Đã có tập tin với tên gọi này; xin quay lại để tải tập tin này lên dưới tên khác. [[Image:$1|nhỏ|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Đã có tập tin với tên gọi này; xin quay lại để tải tập tin này lên dưới tên khác. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Một tập tin với tên này đã tồn tại ở kho tập tin dùng chung; xin hãy quay lại và tải tập tin này lên với tên khác.
 [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Đã tải xong',
@@ -1048,7 +1050,7 @@ Nếu bạn có bản ở độ phân giải tối đa, mời bạn tải bản 
 'upload-wasdeleted'           => "'''Cảnh báo: Bạn đang tải lên một tập tin từng bị xóa trước đây.'''
 
 Bạn nên cân nhắc trong việc tiếp tục tải lên tập tin này. Nhật trình xóa của tập tin được đưa ra dưới đây để tiện theo dõi:",
-'filename-bad-prefix'         => 'Tên cho tập tin mà bạn đang tải lên bắt đầu bằng <strong>“$1”</strong>, đây không phải là dạng tên tiêu biểu có tính chất mô tả do các máy chụp ảnh số tự động đặt. Xin hãy chọn một tên có tính chất mô tả và gợi nhớ hơn cho tập tin của bạn.',
+'filename-bad-prefix'         => 'Tên cho tập tin mà bạn đang tải lên bắt đầu bằng <strong>“$1”</strong>, đây không phải là dạng tên tiêu biểu có tính chất miêu tả do các máy chụp ảnh số tự động đặt. Xin hãy chọn một tên có tính chất miêu tả và gợi nhớ hơn cho tập tin của bạn.',
 'filename-prefix-blacklist'   => ' #<!-- xin để nguyên hàng này --> <pre>
 # Cú pháp như sau:
 #   * Các ký tự từ dấu "#" trở đến cuối hàng là chú thích
@@ -1065,7 +1067,7 @@ PICT # khác
  #</pre> <!-- xin để nguyên hàng này -->',
 
 'upload-proto-error'      => 'Giao thức sai',
-'upload-proto-error-text' => 'Phải đưa vào URL bắt đầu với <code>http://</code> hay <code>ftp://</code> để truyền lên tập tin từ website khác.',
+'upload-proto-error-text' => 'Phải đưa vào URL bắt đầu với <code>http://</code> hay <code>ftp://</code> để tải lên tập tin từ trang web khác.',
 'upload-file-error'       => 'Lỗi nội bộ',
 'upload-file-error-text'  => 'Có lỗi nội bộ khi tạo ra tập tin tạm trên máy chủ. Xin hãy liên lạc với người quản lý hệ thống.',
 'upload-misc-error'       => 'Có lỗi lạ khi tải lên',
@@ -1110,8 +1112,9 @@ PICT # khác
 'linkstoimage'              => 'Các trang sau có liên kết đến hình:',
 'nolinkstoimage'            => 'Không có trang nào chứa liên kết đến hình.',
 'sharedupload'              => 'Tập tin này được tải lên để dùng chung và có thể dùng ở các dự án khác.',
-'shareduploadwiki'          => 'Xin xem $1 để biết thêm thông tin.',
-'shareduploadwiki-linktext' => 'trang miêu tả tập tin',
+'shareduploadwiki'          => 'Xin xem $1 để biết thêm thông tin về tập tin.',
+'shareduploadwiki-desc'     => 'Dưới đây có lời miêu tả của nó, được sao chép từ $1.',
+'shareduploadwiki-linktext' => 'trang miêu tả',
 'noimage'                   => 'Không có tập tin có tên này, bạn có thể $1.',
 'noimage-linktext'          => 'tải tập tin lên',
 'uploadnewversion-linktext' => 'Tải lên phiên bản mới',
@@ -1125,11 +1128,11 @@ PICT # khác
 # File reversion
 'filerevert'                => 'Lùi lại phiên bản của $1',
 'filerevert-legend'         => 'Lùi lại tập tin',
-'filerevert-intro'          => '<span class="plainlinks">Bạn đang lùi \'\'\'[[{{ns:Media}}:$1|$1]]\'\'\' về [phiên bản $4 lúc $3, $2].</span>',
+'filerevert-intro'          => '<span class="plainlinks">Bạn đang lùi \'\'\'[[{{ns:Media}}:$1|$1]]\'\'\' về [$4 phiên bản lúc $3, $2].</span>',
 'filerevert-comment'        => 'Lý do:',
 'filerevert-defaultcomment' => 'Đã lùi về phiên bản lúc $2, $1',
 'filerevert-submit'         => 'Lùi lại',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[{{ns:Media}}:$1|$1]]\'\'\' đã được lùi về [phiên bản $4 lúc $3, $2].</span>',
+'filerevert-success'        => '<span class="plainlinks">\'\'\'[[{{ns:Media}}:$1|$1]]\'\'\' đã được lùi về [$4 phiên bản lúc $3, $2].</span>',
 'filerevert-badversion'     => 'Không tồn tại phiên bản trước đó của tập tin tại thời điểm trên.',
 
 # File deletion
@@ -1254,7 +1257,7 @@ Có '''$8''' tập tin đã được tải lên.
 'intl'                    => 'Liên kết liên ngôn ngữ',
 'move'                    => 'Di chuyển',
 'movethispage'            => 'Di chuyển trang này',
-'unusedimagestext'        => '<p>Xin lưu ý là các trang web bên ngoài có thể liên kết đến một hình ở đây qua một địa chỉ URL trực tiếp, do đó nhiều hình vẫn được liệt kê ở đây dù có thể nó đang được sử dụng.</p>',
+'unusedimagestext'        => '<p>Xin lưu ý là các trang Web bên ngoài có thể liên kết đến một tập tin ở đây qua một địa chỉ URL trực tiếp, do đó nhiều tập tin vẫn được liệt kê ở đây dù có thể nó đang được sử dụng.</p>',
 'unusedcategoriestext'    => 'Các trang thể loại này tồn tại mặc dù không có trang hay tiểu thể loại nào thuộc về nó.',
 'notargettitle'           => 'Chưa có mục tiêu',
 'notargettext'            => 'Xin chỉ rõ trang hoặc thành viên cần thực hiện tác vụ.',
@@ -1334,7 +1337,7 @@ Bạn có thể thu hẹp kết quả bằng cách chọn loại nhật trình, 
 'watchnologin'         => 'Chưa đăng nhập',
 'watchnologintext'     => 'Bạn phải [[Special:Userlogin|đăng nhập]] mới sửa đổi được danh sách theo dõi.',
 'addedwatch'           => 'Đã thêm vào danh sách theo dõi',
-'addedwatchtext'       => 'Trang “$1” đã được cho vào [[{{ns:Special}}:Watchlist|danh sách theo dõi]]. Những sửa đổi đối với trang này và trang thảo luận của nó sẽ được liệt kê, và được <b>tô đậm</b> trong [[{{ns:Special}}:Recentchanges|danh sách các thay đổi mới]].
+'addedwatchtext'       => 'Trang “<nowiki>$1</nowiki>” đã được cho vào [[{{ns:Special}}:Watchlist|danh sách theo dõi]]. Những sửa đổi đối với trang này và trang thảo luận của nó sẽ được liệt kê, và được <b>tô đậm</b> trong [[{{ns:Special}}:Recentchanges|danh sách các thay đổi mới]].
 
 Nếu bạn muốn cho trang này ra khỏi danh sách theo dõi, nhấn vào "Ngừng theo dõi" ở trên.',
 'removedwatch'         => 'Đã ra khỏi danh sách theo dõi',
@@ -1414,7 +1417,7 @@ Xóa “$1”',
 'confirmdeletetext'           => 'Bạn sắp xóa hẳn một trang cùng với tất cả lịch sử của nó. 
 Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy của nó, và bạn thực hiện nó theo đúng đúng [[{{MediaWiki:Policy-url}}|quy định]].',
 'actioncomplete'              => 'Đã thực hiện xong',
-'deletedtext'                 => 'Đã xóa “$1”. Xem danh sách các xóa bỏ gần nhất tại $2.',
+'deletedtext'                 => 'Đã xóa “<nowiki>$1</nowiki>”. Xem danh sách các xóa bỏ gần nhất tại $2.',
 'deletedarticle'              => 'đã xóa “$1”',
 'dellogpage'                  => 'Nhật trình xóa',
 'dellogpagetext'              => 'Dưới đây là danh sách các trang bị xóa gần đây nhất.',
@@ -1454,7 +1457,7 @@ Sửa đổi lần cuối bởi [[User:$3|$3]] ([[User talk:$3|Thảo luận]]).
 'protect_expiry_old'          => 'Thời hạn đã qua.',
 'unprotectsub'                => '(Sắp mở khóa cho “$1”)',
 'protect-unchain'             => 'Vẫn cho đổi tên trang',
-'protect-text'                => 'Bạn có thể xem và đổi kiểu khóa trang <strong>$1</strong> ở đây.',
+'protect-text'                => 'Bạn có thể xem và đổi kiểu khóa trang <strong><nowiki>$1</nowiki></strong> ở đây.',
 'protect-locked-blocked'      => 'Bạn không thể đổi mức khóa khi bị cấm. Đây là trạng thái
 hiện tại của trang <strong>$1</strong>:',
 'protect-locked-dblock'       => 'Hiện không thể đổi mức khóa do cơ sở dữ liệu bị khóa.
@@ -1501,10 +1504,11 @@ Nếu một trang mới có cùng tên đã được tạo ra kể từ khi xóa
 'undeletehistorynoadmin'       => 'Trang này đã bị xóa. Lý do xóa trang được 
 hiển thị dưới đây, cùng với thông tin về các người đã sửa đổi trang này 
 trước khi bị xóa. Chỉ cóngười quản lý mới xem được văn bản đầy đủ của những phiên bản trang bị xóa.',
-'undelete-revision'            => 'Đã xóa phiên bản của $1 (vào lúc $2) sửa đổi bởi $3:',
+'undelete-revision'            => 'Phiên bản của $1 do $3 xóa (vào lúc $2):',
 'undeleterevision-missing'     => 'Phiên bản này không hợp lệ hay không tồn tại. Đây có thể là một địa chỉ sai, hoặc là phiên bản đã được phục hồi hoặc đã xóa khỏi kho lưu trữ.',
 'undelete-nodiff'              => 'Không tìm thấy phiên bản cũ hơn.',
 'undeletebtn'                  => 'Phục hồi',
+'undeletelink'                 => 'phục hồi',
 'undeletereset'                => 'Tẩy trống',
 'undeletecomment'              => 'Lý do:',
 'undeletedarticle'             => 'đã phục hồi “$1”',
@@ -1541,7 +1545,7 @@ $1',
 'nocontribs'    => 'Không tìm thấy thay đổi nào khớp với yêu cầu.',
 'ucnote'        => 'Dưới đây là <b>$1</b> sửa đổi mới nhất của thành viên này trong <b>$2</b> ngày qua.',
 'uclinks'       => 'Xem $1 sửa đổi cuối cùng; trong $2 ngày qua.',
-'uctop'         => ' (mới nhất)',
+'uctop'         => '(mới nhất)',
 'month'         => 'Từ tháng (trở về trước):',
 'year'          => 'Từ năm (trở về trước):',
 
@@ -1552,7 +1556,7 @@ $1',
 'sp-contributions-username'    => 'Địa chỉ IP hay tên thành viên:',
 'sp-contributions-submit'      => 'Tìm kiếm',
 
-'sp-newimages-showfrom' => 'Trưng bày những hình mới, bắt đầu từ $1',
+'sp-newimages-showfrom' => 'Trưng bày những tập tin mới, bắt đầu từ $1',
 
 # What links here
 'whatlinkshere'       => 'Các liên kết đến đây',
@@ -1764,7 +1768,6 @@ Trong trường hợp sau bạn cũng có thể dùng một liên kết, ví d�
 
 # Thumbnails
 'thumbnail-more'           => 'Phóng lớn',
-'missingimage'             => '<b>Không có hình</b><br /><i>$1</i>',
 'filemissing'              => 'Không có tập tin',
 'thumbnail_error'          => 'Hình thu nhỏ có lỗi: $1',
 'djvu_page_error'          => 'Trang DjVu quá xa',
@@ -1955,7 +1958,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Cảnh báo''': Tập tin này có thể chứa mã hiểm độc, nếu thực thi nó máy tính của bạn có thể bị tiếm quyền.<hr />",
-'imagemaxsize'         => 'Giới hạn độ phân giải trên trang mô tả ảnh:',
+'imagemaxsize'         => 'Giới hạn độ phân giải trên trang miêu tả tập tin:',
 'thumbsize'            => 'Kích thước thu nhỏ:',
 'widthheightpage'      => '$1×$2, $3 trang',
 'file-info'            => '(kích thước tập tin: $1, định dạng MIME: $2)',
@@ -1973,8 +1976,8 @@ $1',
 # Bad image list
 'bad_image_list' => 'Định dạng như sau:
 
-Chỉ có những mục được liệt kê (những dòng bắt đầu bằng *) mới được tính tới. Liên kết đầu tiên tại một dòng phải là liên kết đến hình ảnh phản cảm.
-Các liên kết sau đó trên cùng một dòng được xem là các ngoại lệ, có nghĩa là các trang mà tại đó có thể dùng được hình.',
+Chỉ có những mục được liệt kê (những dòng bắt đầu bằng *) mới được tính tới. Liên kết đầu tiên tại một dòng phải là liên kết đến tập tin phản cảm.
+Các liên kết sau đó trên cùng một dòng được xem là các ngoại lệ, có nghĩa là các trang mà tại đó có thể dùng được tập tin.',
 
 # Metadata
 'metadata'          => 'Đặc tính hình',
@@ -2325,11 +2328,10 @@ $1',
 'useajaxsearch'    => 'Dùng tìm kiếm AJAX',
 
 # Multipage image navigation
-'imgmultipageprev'   => '← trang trước',
-'imgmultipagenext'   => 'trang sau →',
-'imgmultigo'         => 'Hiển thị',
-'imgmultigotopre'    => 'Xem trang',
-'imgmultiparseerror' => 'Tập tin hình có vẻ bị hỏng nên {{SITENAME}} không thể lấy được danh sách các trang.',
+'imgmultipageprev' => '← trang trước',
+'imgmultipagenext' => 'trang sau →',
+'imgmultigo'       => 'Hiển thị',
+'imgmultigotopre'  => 'Xem trang',
 
 # Table pager
 'ascending_abbrev'         => 'tăng',
@@ -2400,6 +2402,18 @@ $1',
 'version-skin-extension-functions' => 'Hàm mở rộng skin',
 'version-hook-name'                => 'Tên hook',
 'version-hook-subscribedby'        => 'Được theo dõi bởi',
-'version-version'                  => 'Phiên bản',
+'version-version'                  => 'phiên bản',
+'version-license'                  => 'Giấy phép bản quyền',
+'version-software'                 => 'Phần mềm được cài đặt',
+'version-software-product'         => 'Phần mềm',
+'version-software-version'         => 'Phiên bản',
+
+# Special:Filepath
+'filepath'         => 'Đường dẫn tập tin',
+'filepath-page'    => 'Tập tin:',
+'filepath-submit'  => 'Hiển thị tập tin',
+'filepath-summary' => 'Trang này chuyển bạn thẳng đến địa chỉ của một tập tin. Nếu là hình, địa chỉ là của hình kích thước tối đa; các loại tập tin khác sẽ được mở lên ngay trong chương trình đúng.
+
+Hãy ghi vào tên tập tin, không bao gồm tiền tố “{{ns:image}}:”.',
 
 );

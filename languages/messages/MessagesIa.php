@@ -198,7 +198,6 @@ Non oblida personalisar {{SITENAME}} secundo tu preferentias.',
 'yourpasswordagain'     => 'Confirmar contrasigno',
 'remembermypassword'    => 'Recordar contrasigno inter sessiones.',
 'loginproblem'          => '<b>Occurreva problemas pro initiar tu session.</b><br />Tenta de nove!',
-'alreadyloggedin'       => '<strong>Usator $1, tu session ja es aperte!</strong><br />',
 'login'                 => 'Aperir session',
 'userlogin'             => 'Aperir session',
 'logout'                => 'Clauder session',
@@ -272,7 +271,6 @@ paginas de approximatemente o plus de 32kb.
 Considera fragmentar le pagina in sectiones minor.',
 
 # History pages
-'revhistory'      => 'Chronologia de versiones',
 'nohistory'       => 'Iste pagina non ha versiones precedente.',
 'revnotfound'     => 'Revision non trovate',
 'revnotfoundtext' => 'Impossibile trovar le version anterior del pagina que tu ha demandate.
@@ -288,26 +286,14 @@ Verifica le URL que tu ha usate pro accessar iste pagina.',
 (prec) = differentia con le version precedente, M = modification minor',
 
 # Diffs
-'difference'  => '(Differentia inter revisiones)',
-'loadingrev'  => 'carga del revision pro diff',
-'lineno'      => 'Linea $1:',
-'editcurrent' => 'Modificar le version actual de iste pagina',
+'difference' => '(Differentia inter revisiones)',
+'lineno'     => 'Linea $1:',
 
 # Search results
 'searchresults'         => 'Resultatos del recerca',
 'searchresulttext'      => 'Pro plus information super le recerca de {{SITENAME}}, vide [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Pro le consulta "[[:$1]]"',
 'searchsubtitleinvalid' => 'Pro le consulta "$1"',
-'badquery'              => 'Consulta de recerca mal formate',
-'badquerytext'          => 'Impossibile processar tu consulta.
-Probabilemente tu ha tentate recercar un parola con minus
-de tres litteras de longitude, situation que le systema non
-permitte. Es equalmente possibile que tu ha committite un
-error syntactic in le consulta, per exemplo,
-"pisce and and squama".
-Reformula tu consulta.',
-'matchtotals'           => 'Le consulta "$1" coincide con le titulos de $2 articulos
-e le texto de $3 articulos.',
 'noexactmatch'          => 'Non existe un pagina con iste titulo exacte, io recurre al recerca de texto integral.',
 'titlematches'          => 'Coincidentias con titulos de articulos',
 'notitlematches'        => 'Necun coincidentia',
@@ -442,27 +428,22 @@ Tote le tempores monstrate es in le fuso horari del servitor (UCT).',
 'uploadedimage'     => '"[[$1]]" cargate',
 
 # Image list
-'imagelist'           => 'Lista de imagines',
-'imagelisttext'       => 'Infra es un lista de $1 imagines ordinate $2.',
-'getimagelist'        => 'recuperation del lista de imagines',
-'ilsubmit'            => 'Recercar',
-'showlast'            => 'Monstrar le ultime $1 imagines ordinate $2.',
-'byname'              => 'per nomine',
-'bydate'              => 'per data',
-'bysize'              => 'per dimension',
-'imgdelete'           => 'elim',
-'imgdesc'             => 'desc',
-'imglegend'           => 'Legenda: (desc) = monstrar/modificar description del imagine.',
-'imghistory'          => 'Chronologia del imagine',
-'revertimg'           => 'rev',
-'deleteimg'           => 'elim',
-'deleteimgcompletely' => 'elim',
-'imghistlegend'       => 'Legend: (actu) = iste es le imagine actual, (elim) = elimina
-iste version antique, (rev) = reverte a iste version antique.
-<br /><i>Clica super le data pro vider le imagine cargate in ille die.</i>',
-'imagelinks'          => 'Ligamines al imagine',
-'linkstoimage'        => 'Le paginas sequente se liga a iste imagine:',
-'nolinkstoimage'      => 'Necun pagina se liga a iste imagine.',
+'imagelist'      => 'Lista de imagines',
+'imagelisttext'  => 'Infra es un lista de $1 imagines ordinate $2.',
+'getimagelist'   => 'recuperation del lista de imagines',
+'ilsubmit'       => 'Recercar',
+'showlast'       => 'Monstrar le ultime $1 imagines ordinate $2.',
+'byname'         => 'per nomine',
+'bydate'         => 'per data',
+'bysize'         => 'per dimension',
+'imgdelete'      => 'elim',
+'imgdesc'        => 'desc',
+'imagelinks'     => 'Ligamines al imagine',
+'linkstoimage'   => 'Le paginas sequente se liga a iste imagine:',
+'nolinkstoimage' => 'Necun pagina se liga a iste imagine.',
+
+# Random page
+'randompage' => 'Pagina aleatori',
 
 # Statistics
 'statistics'    => 'Statisticas',
@@ -501,19 +482,20 @@ al qual le prime redirection deberea referer se.',
 'popularpages'     => 'Paginas popular',
 'wantedpages'      => 'Paginas plus demandate',
 'allpages'         => 'Tote le paginas',
-'randompage'       => 'Pagina aleatori',
 'shortpages'       => 'Paginas curte',
 'longpages'        => 'Paginas longe',
 'listusers'        => 'Lista de usatores',
 'specialpages'     => 'Paginas special',
 'spheading'        => 'Paginas special',
-'rclsub'           => '(a paginas ligate a partir de "$1")',
 'newpages'         => 'Nove paginas',
 'movethispage'     => 'Mover iste pagina',
 'unusedimagestext' => '<p>Nota que altere sitos del web
 tal como le {{SITENAME}}s international pote ligar se a un imagine
 con un URL directe, e consequentemente illos pote esser listate
 hic malgrado esser in uso active.',
+'notargettitle'    => 'Sin scopo',
+'notargettext'     => 'Tu non ha specificate un pagina o usator super le qual
+executar iste function.',
 
 # Book sources
 'booksources' => 'Fornitores de libros',
@@ -549,14 +531,14 @@ o ha optate pro non reciper e-mail de altere usatores.',
 'watchnologintext' => 'Tu debe [[Special:Userlogin|aperir un session]]
 pro modificar tu lista de paginas sub observation.',
 'addedwatch'       => 'Ponite sub observation',
-'addedwatchtext'   => "Le pagina \"\$1\" es ora in tu [[Special:Watchlist||lista de paginas sub observation]].
+'addedwatchtext'   => "Le pagina \"<nowiki>\$1</nowiki>\" es ora in tu [[Special:Watchlist||lista de paginas sub observation]].
 Modificationes futur a iste pagina e su pagina de discussion associate essera listate la,
 e le pagina apparera '''in nigretto''' in le [[Special:Recentchanges|lista de modificationes recente]] pro
 facilitar su identification.
 
 Si tu vole cessar le obsevation de iste pagina posteriormente, clicca \"Cancellar observation\" in le barra de navigation.",
 'removedwatch'     => 'Observation cancellate',
-'removedwatchtext' => 'Le pagina "$1" non es plus sub observation.',
+'removedwatchtext' => 'Le pagina "<nowiki>$1</nowiki>" non es plus sub observation.',
 'watchthispage'    => 'Poner iste pagina sub observation',
 'unwatchthispage'  => 'Cancellar observation',
 'notanarticle'     => 'Non es un articulo',
@@ -564,14 +546,12 @@ Si tu vole cessar le obsevation de iste pagina posteriormente, clicca \"Cancella
 # Delete/protect/revert
 'deletepage'        => 'Eliminar pagina',
 'confirm'           => 'Confirmar',
-'confirmdelete'     => 'Confirmar elimination',
-'deletesub'         => '(Elimination de "$1")',
 'confirmdeletetext' => 'Tu es a puncto de eliminar permanentemente un pagina
 o imagine del base de datos, conjunctemente con tote su chronologia de versiones.
 Per favor, confirma que, si tu intende facer lo, tu comprende le consequentias,
 e tu lo face de accordo con [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'    => 'Action complete',
-'deletedtext'       => '"$1" ha essite eliminate.
+'deletedtext'       => '"<nowiki>$1</nowiki>" ha essite eliminate.
 Vide $2 pro un registro de eliminationes recente.',
 'deletedarticle'    => '"$1" eliminate',
 'dellogpage'        => 'Registro_de_eliminationes',
@@ -580,11 +560,10 @@ Tote le horas es in le fuso horari del servitor (UTC).',
 'deletionlog'       => 'registro de eliminationes',
 'reverted'          => 'Revertite a revision anterior',
 'deletecomment'     => 'Motivo del elimination',
-'imagereverted'     => 'Reversion con successo a version anterior.',
 'rollback'          => 'Revocar modificationes',
 'rollbacklink'      => 'revocar',
 'cantrollback'      => 'Impossibile revocar le modification; le ultime contribuente es le unic autor de iste articulo.',
-'revertpage'        => 'Revertite al ultime modification per $1',
+'revertpage'        => 'Revertite al ultime modification per $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Undelete
 'undelete'          => 'Restaurar pagina eliminate',
@@ -610,9 +589,6 @@ non essera automaticamente substituite.',
 
 # What links here
 'whatlinkshere' => 'Referentias a iste pagina',
-'notargettitle' => 'Sin scopo',
-'notargettext'  => 'Tu non ha specificate un pagina o usator super le qual
-executar iste function.',
 'linklistsub'   => '(Lista de ligamines)',
 'linkshere'     => 'Le paginas sequente se liga a iste pagina:',
 'nolinkshere'   => 'Necun pagina se liga a iste.',

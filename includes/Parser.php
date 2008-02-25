@@ -88,7 +88,7 @@ class Parser
 	 */
 	# Persistent:
 	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables,
-		$mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerSuffix,
+		$mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerSuffix, $mMarkerIndex,
 		$mExtLinkBracketedRegex, $mPreprocessor, $mDefaultStripList, $mVarCache, $mConf;
 
 
@@ -98,7 +98,7 @@ class Parser
 	var $mInterwikiLinkHolders, $mLinkHolders;
 	var $mIncludeSizes, $mPPNodeCount, $mDefaultSort;
 	var $mTplExpandCache; // empty-frame expansion cache
-	var $mTplRedirCache, $mTplDomCache, $mHeadings;
+	var $mTplRedirCache, $mTplDomCache, $mHeadings, $mDoubleUnderscores;
 
 	# Temporary
 	# These are variables reset at least once per parse regardless of $clearState
@@ -133,6 +133,7 @@ class Parser
 		} else {
 			$this->mPreprocessorClass = 'Preprocessor_DOM';
 		}
+		$this->mMarkerIndex = 0;
 		$this->mFirstCall = true;
 	}
 	
@@ -146,51 +147,9 @@ class Parser
 		$this->mFirstCall = false;
 		
 		wfProfileIn( __METHOD__ );
-		global $wgAllowDisplayTitle, $wgAllowSlowParserFunctions;
 
 		$this->setHook( 'pre', array( $this, 'renderPreTag' ) );
-
-		# Syntax for arguments (see self::setFunctionHook):
-		#  "name for lookup in localized magic words array",
-		#  function callback,
-		#  optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}
-		#    instead of {{#int:...}})
-		$this->setFunctionHook( 'int',              array( 'CoreParserFunctions', 'intFunction'      ), SFH_NO_HASH );
-		$this->setFunctionHook( 'ns',               array( 'CoreParserFunctions', 'ns'               ), SFH_NO_HASH );
-		$this->setFunctionHook( 'urlencode',        array( 'CoreParserFunctions', 'urlencode'        ), SFH_NO_HASH );
-		$this->setFunctionHook( 'lcfirst',          array( 'CoreParserFunctions', 'lcfirst'          ), SFH_NO_HASH );
-		$this->setFunctionHook( 'ucfirst',          array( 'CoreParserFunctions', 'ucfirst'          ), SFH_NO_HASH );
-		$this->setFunctionHook( 'lc',               array( 'CoreParserFunctions', 'lc'               ), SFH_NO_HASH );
-		$this->setFunctionHook( 'uc',               array( 'CoreParserFunctions', 'uc'               ), SFH_NO_HASH );
-		$this->setFunctionHook( 'localurl',         array( 'CoreParserFunctions', 'localurl'         ), SFH_NO_HASH );
-		$this->setFunctionHook( 'localurle',        array( 'CoreParserFunctions', 'localurle'        ), SFH_NO_HASH );
-		$this->setFunctionHook( 'fullurl',          array( 'CoreParserFunctions', 'fullurl'          ), SFH_NO_HASH );
-		$this->setFunctionHook( 'fullurle',         array( 'CoreParserFunctions', 'fullurle'         ), SFH_NO_HASH );
-		$this->setFunctionHook( 'formatnum',        array( 'CoreParserFunctions', 'formatnum'        ), SFH_NO_HASH );
-		$this->setFunctionHook( 'grammar',          array( 'CoreParserFunctions', 'grammar'          ), SFH_NO_HASH );
-		$this->setFunctionHook( 'plural',           array( 'CoreParserFunctions', 'plural'           ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberofpages',    array( 'CoreParserFunctions', 'numberofpages'    ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberofusers',    array( 'CoreParserFunctions', 'numberofusers'    ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberofarticles', array( 'CoreParserFunctions', 'numberofarticles' ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberoffiles',    array( 'CoreParserFunctions', 'numberoffiles'    ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberofadmins',   array( 'CoreParserFunctions', 'numberofadmins'   ), SFH_NO_HASH );
-		$this->setFunctionHook( 'numberofedits',    array( 'CoreParserFunctions', 'numberofedits'    ), SFH_NO_HASH );
-		$this->setFunctionHook( 'language',         array( 'CoreParserFunctions', 'language'         ), SFH_NO_HASH );
-		$this->setFunctionHook( 'padleft',          array( 'CoreParserFunctions', 'padleft'          ), SFH_NO_HASH );
-		$this->setFunctionHook( 'padright',         array( 'CoreParserFunctions', 'padright'         ), SFH_NO_HASH );
-		$this->setFunctionHook( 'anchorencode',     array( 'CoreParserFunctions', 'anchorencode'     ), SFH_NO_HASH );
-		$this->setFunctionHook( 'special',          array( 'CoreParserFunctions', 'special'          ) );
-		$this->setFunctionHook( 'defaultsort',      array( 'CoreParserFunctions', 'defaultsort'      ), SFH_NO_HASH );
-		$this->setFunctionHook( 'filepath',         array( 'CoreParserFunctions', 'filepath'         ), SFH_NO_HASH );
-		$this->setFunctionHook( 'tag',              array( 'CoreParserFunctions', 'tagObj'           ), SFH_OBJECT_ARGS );
-
-		if ( $wgAllowDisplayTitle ) {
-			$this->setFunctionHook( 'displaytitle', array( 'CoreParserFunctions', 'displaytitle' ), SFH_NO_HASH );
-		}
-		if ( $wgAllowSlowParserFunctions ) {
-			$this->setFunctionHook( 'pagesinnamespace', array( 'CoreParserFunctions', 'pagesinnamespace' ), SFH_NO_HASH );
-		}
-
+		CoreParserFunctions::register( $this );
 		$this->initialiseVariables();
 
 		wfRunHooks( 'ParserFirstCallInit', array( &$this ) );
@@ -242,6 +201,7 @@ class Parser
 		# Changed to \x7f to allow XML double-parsing -- TS
 		$this->mUniqPrefix = "\x7fUNIQ" . Parser::getRandomString();
 
+
 		# Clear these on every parse, bug 4549
 		$this->mTplExpandCache = $this->mTplRedirCache = $this->mTplDomCache = array();
 
@@ -254,6 +214,7 @@ class Parser
 		$this->mPPNodeCount = 0;
 		$this->mDefaultSort = false;
 		$this->mHeadings = array();
+		$this->mDoubleUnderscores = array();
 
 		# Fix cloning
 		if ( isset( $this->mPreprocessor ) && $this->mPreprocessor->parser !== $this ) {
@@ -514,7 +475,7 @@ class Parser
 
 	/**
 	 * Replaces all occurrences of HTML-style comments and the given tags
-	 * in the text with a random marker and returns teh next text. The output
+	 * in the text with a random marker and returns the next text. The output
 	 * parameter $matches will be an associative array filled with data in
 	 * the form:
 	 *   'UNIQ-xxxxx' => array(
@@ -650,9 +611,8 @@ class Parser
 	 * @private
 	 */
 	function insertStripItem( $text ) {
-		static $n = 0;
-		$rnd = "{$this->mUniqPrefix}-item-$n-{$this->mMarkerSuffix}";
-		++$n;
+		$rnd = "{$this->mUniqPrefix}-item-{$this->mMarkerIndex}-{$this->mMarkerSuffix}";
+		$this->mMarkerIndex++;
 		$this->mStripState->general->setPair( $rnd, $text );
 		return $rnd;
 	}
@@ -990,8 +950,7 @@ class Parser
 
 		$text = preg_replace( '/(^|\n)-----*/', '\\1<hr />', $text );
 
-		$text = $this->stripToc( $text );
-		$this->stripNoGallery( $text );
+		$text = $this->doDoubleUnderscore( $text );
 		$text = $this->doHeadings( $text );
 		if($this->mOptions->getUseDynamicDates()) {
 			$df =& DateFormatter::getInstance();
@@ -3214,13 +3173,12 @@ class Parser
 	 */
 	function extensionSubstitution( $params, $frame ) {
 		global $wgRawHtml, $wgContLang;
-		static $n = 1;
 
 		$name = $frame->expand( $params['name'] );
 		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
 		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
 
-		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $n++) . $this->mMarkerSuffix;
+		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $this->mMarkerIndex++) . $this->mMarkerSuffix;
 		
 		if ( $this->ot['html'] ) {
 			$name = strtolower( $name );
@@ -3302,32 +3260,11 @@ class Parser
 	}
 
 	/**
-	 * Detect __NOGALLERY__ magic word and set a placeholder
+	 * Strip double-underscore items like __NOGALLERY__ and __NOTOC__
+	 * Fills $this->mDoubleUnderscores, returns the modified text
 	 */
-	function stripNoGallery( &$text ) {
-		# if the string __NOGALLERY__ (not case-sensitive) occurs in the HTML,
-		# do not add TOC
-		$mw = MagicWord::get( 'nogallery' );
-		$this->mOutput->mNoGallery = $mw->matchAndRemove( $text ) ;
-	}
-
-	/**
-	 * Find the first __TOC__ magic word and set a <!--MWTOC-->
-	 * placeholder that will then be replaced by the real TOC in
-	 * ->formatHeadings, this works because at this points real
-	 * comments will have already been discarded by the sanitizer.
-	 *
-	 * Any additional __TOC__ magic words left over will be discarded
-	 * as there can only be one TOC on the page.
-	 */
-	function stripToc( $text ) {
-		# if the string __NOTOC__ (not case-sensitive) occurs in the HTML,
-		# do not add TOC
-		$mw = MagicWord::get( 'notoc' );
-		if( $mw->matchAndRemove( $text ) ) {
-			$this->mShowToc = false;
-		}
-
+	function doDoubleUnderscore( $text ) {
+		// The position of __TOC__ needs to be recorded
 		$mw = MagicWord::get( 'toc' );
 		if( $mw->match( $text ) ) {
 			$this->mShowToc = true;
@@ -3338,6 +3275,27 @@ class Parser
 
 			// Only keep the first one.
 			$text = $mw->replace( '', $text );
+		}
+
+		// Now match and remove the rest of them
+		$mwa = MagicWord::getDoubleUnderscoreArray();
+		$this->mDoubleUnderscores = $mwa->matchAndRemove( $text );
+
+		if ( isset( $this->mDoubleUnderscores['nogallery'] ) ) {
+			$this->mOutput->mNoGallery = true;
+		}
+		if ( isset( $this->mDoubleUnderscores['notoc'] ) && !$this->mForceTocPosition ) {
+			$this->mShowToc = false;
+		}
+		if ( isset( $this->mDoubleUnderscores['hiddencat'] ) ) {
+			$this->mOutput->setProperty( 'hiddencat', 'y' );
+
+			$containerCategory = Title::makeTitleSafe( NS_CATEGORY, wfMsg( 'hidden-category-category' ) );
+			if ( $containerCategory ) {
+				$this->mOutput->addCategory( $containerCategory->getDBkey(), $this->getDefaultSort() );
+			} else {
+				wfDebug( __METHOD__.": [[MediaWiki:hidden-category-category]] is not a valid title!\n" );
+			}
 		}
 		return $text;
 	}
@@ -3367,8 +3325,7 @@ class Parser
 		}
 
 		# Inhibit editsection links if requested in the page
-		$esw =& MagicWord::get( 'noeditsection' );
-		if( $esw->matchAndRemove( $text ) ) {
+		if ( isset( $this->mDoubleUnderscores['noeditsection'] ) ) {
 			$showEditLink = 0;
 		}
 
@@ -3384,14 +3341,13 @@ class Parser
 
 		# Allow user to stipulate that a page should have a "new section"
 		# link added via __NEWSECTIONLINK__
-		$mw =& MagicWord::get( 'newsectionlink' );
-		if( $mw->matchAndRemove( $text ) )
+		if ( isset( $this->mDoubleUnderscores['newsectionlink'] ) ) {
 			$this->mOutput->setNewSection( true );
+		}
 
 		# if the string __FORCETOC__ (not case-sensitive) occurs in the HTML,
 		# override above conditions and always show TOC above first header
-		$mw =& MagicWord::get( 'forcetoc' );
-		if ($mw->matchAndRemove( $text ) ) {
+		if ( isset( $this->mDoubleUnderscores['forcetoc'] ) ) {
 			$this->mShowToc = true;
 			$enoughToc = true;
 		}
@@ -3657,16 +3613,20 @@ class Parser
 		 * the database, we use $wgContLang here in order to give
 		 * everyone the same signature and use the default one rather
 		 * than the one selected in each user's preferences.
+		 *
+		 * (see also bug 12815)
 		 */
+		$ts = $this->mOptions->getTimestamp();
+		$tz = 'UTC';
 		if ( isset( $wgLocaltimezone ) ) {
+			$unixts = wfTimestamp( TS_UNIX, $ts );
 			$oldtz = getenv( 'TZ' );
 			putenv( 'TZ='.$wgLocaltimezone );
-		}
-		$d = $wgContLang->timeanddate( $this->mOptions->getTimestamp(), false, false) .
-		  ' (' . date( 'T' ) . ')';
-		if ( isset( $wgLocaltimezone ) ) {
+			$ts = date( 'YmdHis', $unixts );
+			$tz = date( 'T', $unixts );  # might vary on DST changeover!
 			putenv( 'TZ='.$oldtz );
 		}
+		$d = $wgContLang->timeanddate( $ts, false, false ) . " ($tz)";
 
 		# Variable replacement
 		# Because mOutputType is OT_WIKI, this will only process {{subst:xxx}} type tags
@@ -4011,9 +3971,9 @@ class Parser
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
 						$current = $ns;
-						$query =  "SELECT page_id, page_namespace, page_title";
+						$query =  "SELECT page_id, page_namespace, page_title, page_is_redirect";
 						if ( $threshold > 0 ) {
-							$query .= ', page_len, page_is_redirect';
+							$query .= ', page_len';
 						}
 						$query .= " FROM $page WHERE (page_namespace=$ns AND page_title IN(";
 					} elseif ( $current != $ns ) {
@@ -4102,9 +4062,9 @@ class Parser
 					// construct query
 					$titleClause = $linkBatch->constructSet('page', $dbr);
 
-					$variantQuery =  "SELECT page_id, page_namespace, page_title";
+					$variantQuery =  "SELECT page_id, page_namespace, page_title, page_is_redirect";
 					if ( $threshold > 0 ) {
-						$variantQuery .= ', page_len, page_is_redirect';
+						$variantQuery .= ', page_len';
 					}
 
 					$variantQuery .= " FROM $page WHERE $titleClause";
@@ -4489,6 +4449,8 @@ class Parser
 
 		$params['frame']['alt'] = $alt;
 		$params['frame']['caption'] = $caption;
+
+		wfRunHooks( 'ParserMakeImageParams', array( $title, $file, &$params ) );
 
 		# Linker does the rest
 		$ret = $sk->makeImageLink2( $title, $file, $params['frame'], $params['handler'] );
