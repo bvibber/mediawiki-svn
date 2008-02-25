@@ -51,7 +51,7 @@ Return to:
 Return to:
 * [[Special:CrosswikiBlock|Block form]]
 * [[$4]]",
-	'crosswikiunblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:Ipblocklist]]',
+	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
 /** Arabic (العربية)
@@ -146,6 +146,18 @@ $messages['de'] = array(
 	'crosswikiblock-autoblock'  => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
 	'crosswikiblock-noemail'    => 'E-Mail-Versand sperren',
 
+	# Special:Unblock
+	'crosswikiunblock'              => 'Entsperre Benutzer in einem anderen Wiki',
+	'crosswikiunblock-header'       => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
+	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
+	'crosswikiunblock-user'         => 'IP-Adresse oder Benutzername und Zielwiki:',
+	'crosswikiunblock-reason'       => 'Begründung:',
+	'crosswikiunblock-submit'       => 'Sperre für IP-Adresse/Benutzer aufheben',
+	'crosswikiunblock-success'      => "Benutzer '''„$1“''' erfolgreich entsperrt.
+
+Zurück zu:
+* [[Special:CrosswikiBlock|Sperrformular]]
+* [[$2]]",
 	# Errors and success message
 	'crosswikiblock-nousername'     => 'Es wurde kein Benutzername eingegeben',
 	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[{{#special:Blockip}}]]',
@@ -156,11 +168,13 @@ $messages['de'] = array(
 	'crosswikiblock-noreason'       => 'Begründung fehlt.',
 	'crosswikiblock-notoken'        => 'Ungültiges Bearbeitungs-Token.',
 	'crosswikiblock-alreadyblocked' => 'Benutzer „$3“ ist bereits gesperrt.',
+	'crosswikiblock-noblock'        => 'Dieser Benutzer ist nicht gesperrt.',
 	'crosswikiblock-success'        => "Benutzer '''„$3“''' erfolgreich gesperrt.
 
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
+'crosswikiunblock-local'                => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
 );
 
 /** French (Français)
