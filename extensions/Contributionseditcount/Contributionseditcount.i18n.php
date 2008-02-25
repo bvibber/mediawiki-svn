@@ -189,7 +189,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
-	'contributionseditcount-desc' => 'Visa en redigerings räkning på [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Visar antalet redigeringar på [[Special:Contributions]]',
 );
 
 /** Telugu (తెలుగు)

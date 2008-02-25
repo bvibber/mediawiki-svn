@@ -119,6 +119,14 @@ $messages['hsb'] = array(
 	'edituser-dosearch' => 'Pytanje',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'edituser-username' => 'Nafn',
+	'edituser-dosearch' => 'Leita',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

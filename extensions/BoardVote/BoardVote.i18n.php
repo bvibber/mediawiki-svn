@@ -1109,6 +1109,13 @@ Vos seréd redirigiê vers cél sèrvior de defôr en 20 secondes. [$1 Clicâd i
 Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'boardvote_ip' => 'IP',
+);
+
 /** Irish (Gaeilge)
  * @author SPQRobin
  */
@@ -1945,6 +1952,19 @@ $messages['kk-arab'] = array(
 
 قول قويىلماعان كۋالىك تۋرالى قاۋىپسىزدىك اڭعارتۋ كورسەتىلۋگە مۇمكىن.',
 
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'boardvote_user'     => 'អ្នកប្រើប្រាស់',
+	'boardvote_edits'    => 'កំណែប្រែ នានា',
+	'boardvote_days'     => 'ថ្ងៃ',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'ចុចទីនេះ',
+	'boardvote_submit'   => 'យល់ព្រម',
+	'boardvote_welcome'  => "ស្វាគម '''$1'''!",
 );
 
 $messages['ksh'] = array(

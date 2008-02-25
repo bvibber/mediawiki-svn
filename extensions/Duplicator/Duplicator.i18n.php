@@ -698,6 +698,7 @@ $messages['te'] = array(
 	'duplicator-options' => 'ఎంపికలు',
 	'duplicator-source'  => 'స్కోరు:',
 	'duplicator-dest'    => 'గమ్యస్థానం:',
+	'duplicator-summary' => '[[$1]] నుండి కాపీ చేసారు',
 );
 
 /** Turkish (Türkçe)

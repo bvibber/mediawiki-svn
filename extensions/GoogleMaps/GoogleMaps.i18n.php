@@ -940,6 +940,7 @@ $wgGoogleMapsMessages['te'] = array(
 	'gm-searching'     => 'వెతుకుతున్నాం...',
 	'gm-width'         => 'వెడల్పు',
 	'gm-height'        => 'ఎత్తు',
+	'gm-zoom-control'  => 'మార్గదర్శకం',
 	'gm-large'         => 'పెద్ద',
 	'gm-medium'        => 'మధ్యస్థం',
 	'gm-small'         => 'చిన్న',

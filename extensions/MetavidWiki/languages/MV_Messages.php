@@ -837,6 +837,15 @@ $messages['hu'] = array(
 	'mv_search_not'           => 'nem',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'mv_remove_reason'   => 'ហេតុផល ចំពោះការលុបចេញ ៖',
+	'mv_search_category' => 'ចំណាត់ក្រុម',
+	'mv_category'        => 'ចំណាត់ក្រុម',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1817,6 +1826,7 @@ $messages['te'] = array(
 	'mv_remove_reason'   => 'తొలగింపునకు కారణం:',
 	'mv_external_file'   => 'బయటి ఫైలు',
 	'mv_tool_search'     => 'వెతుకు',
+	'video_feed_cat'     => 'వర్గానికి వీడియో ఫీడు:',
 	'mv_play'            => 'ఆడించు',
 	'mv_history'         => 'చరిత్ర',
 	'mv_start_desc'      => 'ప్రారంభ సమయం',
@@ -1825,5 +1835,6 @@ $messages['te'] = array(
 	'mv_search_and'      => 'మరియు',
 	'mv_search_or'       => 'లేదా',
 	'mv_category'        => 'వర్గం',
+	'mv_view_wiki_page'  => 'వికీ పేజీని చూడండి',
 );
 

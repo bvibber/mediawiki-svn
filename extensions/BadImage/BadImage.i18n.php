@@ -673,7 +673,13 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'badimages-remove' => '(ដកចេញ)',
+	'badimages-add-btn'        => 'បន្ថែម',
+	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
+	'badimages-name'           => 'ឈ្មោះ៖',
+	'badimages-reason'         => 'ហេតុផល៖',
+	'badimages-remove'         => '(ដកចេញ)',
+	'badimages-remove-btn'     => 'ដកចេញ',
+	'badimages-remove-confirm' => 'សូមបញ្ជាក់ទទួលស្គាល់ ថា អ្នកប្រាថ្នា ដកចេញ $1 ពីបញ្ជី ៖',
 );
 
 /** Kurdish (Kurdî / كوردی)

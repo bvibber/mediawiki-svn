@@ -224,6 +224,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'randomincategory'            => 'వర్గంలోని యాదృచ్చిక పేజీ',
 	'randomincategory-toolbox'    => 'యాదృచ్ఛిక పేజీ',
 	'randomincategory-nocategory' => '$1 అనే వర్గం లేదు లేదా ఖాళీగా ఉంది',
 	'randomincategory-label'      => 'వర్గం:',

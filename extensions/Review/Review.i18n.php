@@ -567,13 +567,18 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'review_sidebar_title'                   => 'సమీక్ష',
+	'review_your_review'                     => 'ఈ పేజీ/కూర్పు పై మీ సమీక్ష:',
 	'review_total_statistics'                => 'మొత్తం',
 	'review_statistics_left_corner'          => 'కూర్పు',
 	'review_version_link'                    => 'కూర్పు #$1',
 	'review_version_reviews_link'            => '<small>(కూర్పు సమీక్షలు)</small>',
+	'review_concerns_page'                   => 'ఈ సమీక్ష "$1" అనే పేజీ గురించి.',
+	'review_user_reviews'                    => '<small>(ఈ వాడుకరి చేసిన సమీక్షలు)</small>',
+	'review_user_page_list'                  => 'ఆ వాడుకరి ఈ క్రింద పేర్కొన్న పేజీలను సమీక్షించారు:',
 	'review_user_details_link'               => '(వివరాలు)',
 	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
 	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
+	'review_blocked'                         => 'మిమ్మల్ని నిరోధించారు, వెళ్ళిపోండి.',
 	'review_comment'                         => 'వ్యాఖ్య',
 );
 

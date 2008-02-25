@@ -519,6 +519,17 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 	'expand_templates_preview'         => 'Qarap şığw',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'expandtemplates'                  => 'ពង្រីក គំរូខ្នាត នានា',
+	'expand_templates_output'          => 'លទ្ធផល',
+	'expand_templates_ok'              => 'យល់ព្រម',
+	'expand_templates_remove_comments' => 'ដកចេញ វិចារនានា',
+	'expand_templates_preview'         => 'មើលមុន',
+);
+
 $messages['ko'] = array(
 	'expandtemplates'                  => '틀 확장',
 );

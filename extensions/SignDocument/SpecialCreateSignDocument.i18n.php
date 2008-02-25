@@ -256,6 +256,21 @@ $messages['hsb'] = array(
 	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje.',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'createsigndoc-pagename' => 'Síða:',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'createsigndoc-email'   => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
+	'createsigndoc-address' => 'អាស័យដ្ឋាន ផ្ទះ ៖',
+);
+
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',

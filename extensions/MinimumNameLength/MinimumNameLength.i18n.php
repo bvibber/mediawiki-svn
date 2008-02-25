@@ -119,6 +119,13 @@ $messages['kk-tr'] = array(
 	'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'minnamelength-error' => 'ឈ្មោះអ្នកប្រើប្រាស់ របស់អ្នក ខ្លី ពេក។ ប្រវែងអប្បបរិមា គឺ $1 ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

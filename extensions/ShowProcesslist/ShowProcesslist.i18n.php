@@ -239,8 +239,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'showprocesslist-user' => 'వాడుకరి',
-	'showprocesslist-time' => 'సమయం',
+	'showprocesslist-user'    => 'వాడుకరి',
+	'showprocesslist-command' => 'ఆదేశం',
+	'showprocesslist-time'    => 'సమయం',
+	'showprocesslist-state'   => 'స్థితి',
 );
 
 /** Volapük (Volapük)

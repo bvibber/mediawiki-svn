@@ -311,7 +311,9 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'ajax-se-title' => 'កំពុង កែប្រែ ៖',
+	'ajax-se-title'            => 'កំពុង កែប្រែ ៖',
+	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
+	'ajax-se-usernotfound'     => 'កំហុស៖ រកមិនឃើញ អ្នកប្រើប្រាស់',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

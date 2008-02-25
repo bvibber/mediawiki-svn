@@ -136,6 +136,14 @@ $messages['hu'] = array(
 	'inspectcache-list'    => 'Listázás',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'inspectcache-delete'  => 'លុបចេញ',
+	'inspectcache-deleted' => 'លុបចេញ សតិភ្ជាប់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

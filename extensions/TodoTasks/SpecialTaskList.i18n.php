@@ -173,6 +173,13 @@ Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 Twój přećelny zdźělenski system %s.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -360,7 +367,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'tasklistemail' => 'ప్రియమైన %s',
+	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
+	'tasklistemail'         => 'ప్రియమైన %s',
+	'tasklistmytasks'       => 'నా పనులు',
 );
 
 /** Turkish (Türkçe)

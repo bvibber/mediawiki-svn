@@ -323,6 +323,14 @@ $messages['ja'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: 入力エラー！',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'chemFunctions_Formula' => 'រូបមន្ត',
+	'chemFunctions_Name'    => 'ឈ្មោះ IUPAC',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

@@ -247,6 +247,13 @@ $messages['id'] = array(
 	'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'countedits-username' => 'Notandanafn:',
+);
+
 /* Italian (BrokenArrow) */
 $messages['it'] = array(
 	'countedits' => 'Conteggio delle modifiche',
@@ -297,6 +304,13 @@ $messages['kk-latn'] = array(
 	'countedits-resulttext' => '$1 degen $2 tüzetw istegen',
 	'countedits-mostactive' => 'Eñ belsendi üleskerler',
 	'countedits-nocontribs' => 'Bul wïkïde eş üles bolğan joq.',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'countedits-username' => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

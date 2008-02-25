@@ -171,6 +171,13 @@ $messages['hsb'] = array(
 	'spamdifftool_submit_buttom'    => 'Wotesłać',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'spamdifftool_option_none' => 'ekkert',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

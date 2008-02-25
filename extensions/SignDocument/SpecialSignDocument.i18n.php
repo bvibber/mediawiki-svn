@@ -570,6 +570,25 @@ $messages['hu'] = array(
 	'sign-email'    => 'E-mail cím:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'sign-realname'                   => 'ឈ្មោះ ៖',
+	'sign-address'                    => 'អាស័យដ្ឋាន ផ្លូវ ៖',
+	'sign-email'                      => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
+	'sign-list-hideaddress'           => 'មិនរាយ អាស័យដ្ឋាន',
+	'sign-list-hideemail'             => 'មិនរាយបញ្ជី អ៊ីមែវល៍',
+	'sign-viewfield-realname'         => 'ឈ្មោះ',
+	'sign-viewfield-address'          => 'អាស័យដ្ឋាន',
+	'sign-viewfield-ip'               => 'អាស័យដ្ឋាន IP',
+	'sign-viewfield-email'            => 'អ៊ីមែវល៍',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-uniquequery-similarname'    => 'ឈ្មោះ ស្រដៀង',
+	'sign-uniquequery-similaraddress' => 'អាស័យដ្ឋាន ស្រដៀង',
+	'sign-uniquequery-similaremail'   => 'អ៊ីមែវល៍ ស្រដៀងគ្នា',
+);
+
 $messages['la'] = array(
 	'sign-realname' => 'Nomen:',
 	'sign-city' => 'Urbs:',
@@ -1174,6 +1193,9 @@ $messages['te'] = array(
 	'sign-phone'                   => 'ఫోన్ నెంబర్:',
 	'sign-bday'                    => 'వయసు:',
 	'sign-email'                   => 'ఈ-మెయిల్ చిరునామా:',
+	'sign-list-hideaddress'        => 'చిరునామాని చూపించకు',
+	'sign-list-hidebday'           => 'వయసుని చూపించకు',
+	'sign-list-hideemail'          => 'ఈ-మెయిలుని చూపించకు',
 	'sign-viewfield-timestamp'     => 'కాలముద్ర',
 	'sign-viewfield-realname'      => 'పేరు',
 	'sign-viewfield-address'       => 'చిరునామా',
@@ -1187,6 +1209,9 @@ $messages['te'] = array(
 	'sign-viewfield-options'       => 'ఎంపికలు',
 	'sig-anonymous'                => '<i>అనామకం</i>',
 	'sig-private'                  => '<i>అంతరంగికం</i>',
+	'sign-sigdetails'              => 'సంతకం వివరాలు',
+	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-reviewedby'    => 'సమీక్షకులు',
 	'sign-viewfield-reviewcomment' => 'వ్యాఖ్య',
 	'sign-review-comment'          => 'వ్యాఖ్య',
 );

@@ -241,10 +241,11 @@ $messages['eo'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Cimon Avaro
+ * @author Siebrand
  */
 $messages['fi'] = array(
 	'changeauthor'                      => 'Muuta muokkausversion tekijä',
-	'changeauthor-desc'                 => 'Mahdollistaa muokkausversion tekijän muuttamisen.',
+	'changeauthor-desc'                 => 'Mahdollistaa muokkausversion tekijän muuttamisen',
 	'changeauthor-title'                => 'Muuta muokkausversion tekijä',
 	'changeauthor-search-box'           => 'Hae muokkausversioita',
 	'changeauthor-pagenameform-go'      => 'Siirry',
@@ -445,6 +446,16 @@ $messages['ja'] = array(
 	'changeauthor-success'              => '要求された処理が完了しました。',
 	'changeauthor-logentry'             => '編集者の変更 $1 の特定版 $2、$3 から $4 へ',
 	'changeauthor-logpagename'          => '編集者の変更ログ',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'changeauthor-pagenameform-go'      => 'ទៅ',
+	'changeauthor-comment'              => 'វិចារ ៖',
+	'changeauthor-changeauthors-multi'  => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
+	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

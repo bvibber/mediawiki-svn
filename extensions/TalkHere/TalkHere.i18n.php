@@ -393,8 +393,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'talkhere-talkpage' => 'చర్చా పేజీ',
-	'talkhere-notalk'   => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
+	'talkhere-talkpage'   => 'చర్చా పేజీ',
+	'talkhere-notalk'     => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
+	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',
 );
 
 /** Turkish (Türkçe)

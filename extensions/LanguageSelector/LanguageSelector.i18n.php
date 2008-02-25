@@ -157,6 +157,13 @@ $messages['hu'] = array(
 	'languageselector-setlang' => 'beállítás',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'languageselector' => 'Tungumál',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

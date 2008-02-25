@@ -359,6 +359,13 @@ $messages['kk-latn'] = array(
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'linksearch-ns' => 'វាលឈ្មោះ ៖',
+);
+
 $messages['la'] = array(
 	'linksearch'       => 'Quaerere nexus externos',
 	'linksearch-ns'    => 'Spatium nominale:',

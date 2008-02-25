@@ -342,6 +342,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'spamregex_summary'     => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
 	'spamregex-text'        => '(పాఠ్యం)',
 	'spamregex-summary-log' => '(సంగ్రహం)',
 );

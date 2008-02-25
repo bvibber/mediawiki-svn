@@ -665,16 +665,18 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'contributors'             => 'Bidragsgivare',
-	'contributors-toolbox'     => 'Huvud bidragsgivare',
-	'contributors-legend'      => 'Lista huvud bidragsgivarna till en sida',
-	'contributors-target'      => 'Titel:',
+	'contributors-desc'        => 'Ger en sammanställning över de huvudsakliga bidragarna till en sida',
+	'contributors-toolbox'     => 'Huvudsakliga bidragsgivare',
+	'contributors-legend'      => 'Visa de huvudsakliga bidragsgivarna till en sida',
+	'contributors-target'      => 'Sidtitel:',
 	'contributors-submit'      => 'Visa',
-	'contributors-subtitle'    => 'Huvud bidragsgivarna till $1',
-	'contributors-others-long' => 'Det är $1 andra bidragsgivare till denna sida.',
+	'contributors-subtitle'    => 'Huvudsakliga bidragsgivare till $1',
+	'contributors-others-long' => '$1 andra användare har bidragit till denna sida.',
 	'contributors-others'      => 'och $1 andra',
 	'contributors-badtitle'    => 'Ogiltig titel.',
 	'contributors-nosuchpage'  => 'Sidan $1 existerar inte.',

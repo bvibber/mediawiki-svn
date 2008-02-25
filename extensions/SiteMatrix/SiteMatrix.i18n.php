@@ -395,7 +395,8 @@ $messages['io'] = array(
  * @author SPQRobin
  */
 $messages['is'] = array(
-	'sitematrix' => 'Listi yfir Wikimedia verkefni',
+	'sitematrix'          => 'Listi yfir Wikimedia verkefni',
+	'sitematrix-language' => 'Tungumál',
 );
 
 /** Italian (Italiano)
@@ -457,6 +458,13 @@ $messages['kk-latn'] = array(
 	'sitematrix-language' => 'Tili',
 	'sitematrix-project'  => 'Joba atawı, joba aralıq siltemesi jäne wïkï aralıq siltemesi',
 	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'sitematrix-project' => 'ឈ្មោះ នៃគំរោង, តំណភ្ជាប់ អន្តរគំរោង និង តំណភ្ជាប់ អន្តរវិគី',
 );
 
 /** Korean (한국어)

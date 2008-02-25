@@ -282,6 +282,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'latexdoc_no_text' => 'పేజీలో పాఠ్యమేమీ లేదు, DVIని సృష్టించలేము',
+	'latexdoc_get_pdf' => 'PDFని పొందండి',
 );
 
 /** Volapük (Volapük)

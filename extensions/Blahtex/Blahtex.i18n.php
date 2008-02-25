@@ -860,6 +860,13 @@ $messages['ja'] = array(
 	'math_WrongFontEncodingWithHint'        => 'シンボル "$1" は、文字エンコード "$2" で利用できません（"$3{...}" をお試しください）',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'math_InvalidColour' => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

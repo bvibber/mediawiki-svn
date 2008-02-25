@@ -138,6 +138,15 @@ $messages['hu'] = array(
 	'lookupuser_useroptions'       => 'Beállításai:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'lookupuser_intro'    => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
+	'lookupuser_email'    => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'ឈ្មោះពិត ៖ $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

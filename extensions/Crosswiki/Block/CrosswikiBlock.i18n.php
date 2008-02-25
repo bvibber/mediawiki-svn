@@ -254,6 +254,17 @@ Prošu pruwuj, hač maš dowolnosć na tym wikiju skutkować a swoje akcije wš�
 	'crosswikiblock-nocreate'       => 'Wutworjenju konta zadźěwać',
 	'crosswikiblock-autoblock'      => 'Awtomatisce poslednju IPa-dresu wužitu wot tutoho wužiwarja blokować, inkluziwnje naslědnych IP-adresow, z kotrychž pospytuje wobdźěłać',
 	'crosswikiblock-noemail'        => 'Słanju e-mejlkow wot wužiwarja zadźěwać',
+	'crosswikiunblock'              => 'Wužiwarja na druhim wikiju wotblokować',
+	'crosswikiunblock-header'       => 'Tuta strona zmóžnja wužiwarja na druhim wikiju wotblokować.
+Přepruwuj prošu, hač směš na tutym wikiju skutkować a hač twoje akcije wšěm prawidłam wotpowěduja.',
+	'crosswikiunblock-user'         => 'Wužiwarske mjeno, IP-adresa abo ID blokowanja a cilowy wiki:',
+	'crosswikiunblock-reason'       => 'Přičina:',
+	'crosswikiunblock-submit'       => 'Tutoho wužiwarja wotblokować',
+	'crosswikiunblock-success'      => "Wužiwar '''$1''' bu wuspěšnje wotblokowany.
+
+Wróćo k:
+* [[Special:CrosswikiBlock|Formular blokowanjow]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Njebu wužiwarske mjeno zapodate',
 	'crosswikiblock-local'          => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'Datowa banka $1 njeeksistuje',
@@ -263,11 +274,25 @@ Prošu pruwuj, hač maš dowolnosć na tym wikiju skutkować a swoje akcije wš�
 	'crosswikiblock-noreason'       => 'Žana přičina podata.',
 	'crosswikiblock-notoken'        => 'Njepłaćiwy wobdźełanski token.',
 	'crosswikiblock-alreadyblocked' => 'Wužiwar $3 je hižo zablokowany.',
+	'crosswikiblock-noblock'        => 'Tutón wužiwar njeje zablokowany.',
 	'crosswikiblock-success'        => "Wužiwar '''$3''' wuspěšnje zablokowany.
 
 Wróćo k:
 * [[Special:CrosswikiBlock|Blokowanski formular]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist]]',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'crosswikiblock-target'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
+	'crosswikiblock-reason'     => 'ហេតុផល ៖',
+	'crosswikiunblock-reason'   => 'ហេតុផល ៖',
+	'crosswikiblock-nousername' => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
+	'crosswikiblock-noname'     => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
+	'crosswikiblock-noreason'   => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -525,9 +550,11 @@ Tillbaka till:
  */
 $messages['te'] = array(
 	'crosswikiblock-reason'   => 'కారణం:',
+	'crosswikiblock-submit'   => 'ఈ వాడుకరిని నిరోధించండి',
 	'crosswikiblock-nocreate' => 'ఖాతా సృష్టింపుని నివారించు',
 	'crosswikiunblock-reason' => 'కారణం:',
 	'crosswikiblock-noname'   => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
+	'crosswikiblock-nouser'   => '"$3" అనే వాడుకరి కనబడలేదు.',
 	'crosswikiblock-noreason' => 'కారణం తెలుపలేదు.',
 );
 

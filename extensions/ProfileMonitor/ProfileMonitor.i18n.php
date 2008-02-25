@@ -225,6 +225,9 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'profiling-ok'           => 'సరే',
 	'profiling-data-process' => 'ప్రక్రియ',
+	'profiling-data-time'    => 'సమయం (అన్నీ)',
+	'profiling-data-average' => 'సమయం (సగటు)',
+	'profiling-no-data'      => 'సరిపోలిన డాటా కనబడలేదు.',
 );
 
 /** Turkish (Türkçe)

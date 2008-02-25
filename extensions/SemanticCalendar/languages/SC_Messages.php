@@ -243,6 +243,7 @@ $messages['te'] = array(
 	'sc_previousmonth' => 'క్రితం నెల',
 	'sc_nextmonth'     => 'తర్వాతి నెల',
 	'sc_today'         => 'ఈరోజు',
+	'sc_gotomonth'     => 'నెలకి వెళ్ళండి',
 );
 
 /** Vietnamese (Tiếng Việt)

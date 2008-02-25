@@ -197,6 +197,16 @@ $messages['hsb'] = array(
 	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'formnoname'      => 'គ្មាន ឈ្មោះបែបបទ',
+	'formbadname'     => 'ឈ្មោះបែបបទ មិនល្អ',
+	'formbadnametext' => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
+	'formbadpagename' => 'ឈ្មោះទំព័រ មិនល្អ',
+);
+
 $messages['la'] = array(
 	'formsave' => 'Servare',
 	'formarticleexiststext' => 'Pagina [[$1]] iam existit.',
@@ -395,8 +405,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'formsave'          => 'భద్రపరచు',
-	'formarticleexists' => 'పేజీ ఉంది',
-	'formbadpagename'   => 'తప్పుడు పేజీ పేరు',
+	'formsave'              => 'భద్రపరచు',
+	'formarticleexists'     => 'పేజీ ఉంది',
+	'formarticleexiststext' => '[[$1]] అనే పేజీ ఇప్పటికే ఉంది.',
+	'formbadpagename'       => 'తప్పుడు పేజీ పేరు',
 );
 

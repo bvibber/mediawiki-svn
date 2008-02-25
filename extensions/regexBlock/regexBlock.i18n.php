@@ -352,6 +352,27 @@ $messages['hsb'] = array(
 	'regexblock-view-time'            => '$1',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'regexblock-stats-username' => 'Fyrir $1',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'regexblock-unblock-log'       => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ លែងរាំងខ្ទប់។",
+	'regexblock-form-username'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ ៖',
+	'regexblock-form-reason'       => 'ហេតុផល ៖',
+	'regexblock-block-log'         => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
+	'regexblock-stats-username'    => 'សំរាប់ $1',
+	'regexblock-stats-logging'     => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
+	'regexblock-currently-blocked' => 'អាស័យដ្ឋាន ដែលបានត្រូវរាំងខ្ទប់ បច្ចុប្បន្ន ៖',
+	'regexblock-view-reason'       => 'ហេតុផល ៖ $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -377,12 +398,13 @@ $messages['lb'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Meno25
  */
 $messages['nl'] = array(
 	'regexblock'                      => 'RegexBlokkeren',
 	'regexblock-desc'                 => 'Uitbreiding die wordt gebruikt voor het blokkeren van gebruikers en IP-adress met een reguliere expressie. Bevat zowel een blokkademechanisme als een [[Special:Regexblock|speciale pagina]] voor het toevoegen en beheren van blokkades',
 	'regexblock-special-desc'         => 'alternatieve gebruikersblokkade (via gebruikersnaam met reguliere expressies)',
-	'regexblock-stat-desc'            => 'Toont [[Special:Regexblockstats|blokkadestatistieken]] voor de extensie regexblock',
+	'regexblock-stat-desc'            => "Toont [[Special:Regexblockstats|blokkadestatistieken]] voor de uitbreiding ''regexblock''",
 	'regexblock-page-title'           => 'Namen blokkeren met reguliere uitdrukkingen',
 	'regexblockstats'                 => 'Statistieken van regex-blokkeren',
 	'regexblock-reason-ip'            => 'Dit IP-adres is door u of door iemand met hetzelfde IP-adres geblokkeerd van bewerken door vandalisme of een andere reden. Als u gelooft dat dit een fout is, gelieve $1',
@@ -640,6 +662,7 @@ $messages['te'] = array(
 	'regexblock-view-reason'         => 'కారణం: $1',
 	'regexblock-view-reason-default' => 'సాధారణ కారణం',
 	'regexblock-view-block-infinite' => 'శాశ్వత నిరోధం',
+	'regexblock-view-stats'          => '(గణాంకాలు)',
 );
 
 /** Volapük (Volapük)

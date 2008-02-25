@@ -136,3 +136,10 @@ $messages['stq'] = array(
 	'protectsection_forbidden'  => 'Ferbeeden',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'protectsection_modify' => 'సంరక్షిత పాఠ్యాన్ని మార్చడానికి మీరు ప్రయత్నించారు',
+);
+

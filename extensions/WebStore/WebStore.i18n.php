@@ -711,8 +711,12 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'webstore_404'         => 'ఫైలు కనబడలేదు.',
-	'webstore_php_warning' => 'PHP హెచ్చరిక: $1',
+	'webstore_path_invalid'       => 'ఫైలుపేరు తప్పుగా ఉంది.',
+	'webstore_dest_exists'        => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
+	'webstore_404'                => 'ఫైలు కనబడలేదు.',
+	'webstore_php_warning'        => 'PHP హెచ్చరిక: $1',
+	'webstore_metadata_not_found' => 'ఫైలు కనబడలేదు: $1',
+	'webstore_no_response'        => 'సర్వరునుండి స్పందన లేదు',
 );
 
 /** Turkish (Türkçe)

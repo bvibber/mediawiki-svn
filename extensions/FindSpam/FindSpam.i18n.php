@@ -109,6 +109,13 @@ $messages['hu'] = array(
 	'findspam-ip' => 'IP-cím:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'findspam-ip' => 'អាស័យដ្ឋាន IP ៖',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -184,6 +184,13 @@ $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'player-file' => 'ឈ្មោះឯកសារ',
+);
+
 $messages['la'] = array(
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',
@@ -375,11 +382,12 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'player-file'      => 'ఫైలు పేరు',
-	'player-play'      => 'ఆడించు',
-	'player-not-found' => 'ఫైలు కనబడలేదు',
-	'player-goto-page' => 'పేజీ',
-	'player-goto-file' => 'ఫైలు',
+	'player-file'          => 'ఫైలు పేరు',
+	'player-play'          => 'ఆడించు',
+	'player-not-found'     => 'ఫైలు కనబడలేదు',
+	'player-invalid-title' => 'తప్పుడు శీర్షిక',
+	'player-goto-page'     => 'పేజీ',
+	'player-goto-file'     => 'ఫైలు',
 );
 
 /** Volapük (Volapük)

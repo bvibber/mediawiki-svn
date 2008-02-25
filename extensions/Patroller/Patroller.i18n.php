@@ -312,6 +312,13 @@ $messages['it'] = array(
 	'patrol-resume' => 'Fare clic qui per riprendere.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'patrol-revert-reason' => 'ហេតុផល ៖',
+);
+
 $messages['la'] = array(
 	'patrol-revert-reason' => 'Causa:',
 );

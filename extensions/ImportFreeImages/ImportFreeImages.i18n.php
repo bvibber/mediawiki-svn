@@ -158,6 +158,13 @@ $messages['hu'] = array(
 	'importfreeimages_returntoform'          => "Vagy kattints <a href='$1'>ide</a>, hogy visszatérj az eredmények listájához",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -342,7 +349,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'importfreeimages_next' => 'తర్వాతి $1',
+	'importfreeimages_next'                  => 'తర్వాతి $1',
+	'importfreeimages_promptuserforfilename' => 'గమ్యస్థానపు ఫైలు పేరుని ఇవ్వండి:',
 );
 
 /** Volapük (Volapük)

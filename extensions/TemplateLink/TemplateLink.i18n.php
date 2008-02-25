@@ -79,6 +79,13 @@ $messages['hsb'] = array(
 		'templatelink_newtitle' => '$1 (narunany)',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'templatelink' => 'តំណភ្ជាប់គំរូខ្នាត',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

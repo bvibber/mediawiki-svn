@@ -346,6 +346,15 @@ $messages['hsb'] = array(
 	'usagestatistics-editpages'       => 'Indiwiduelna statistika stronow wužiwarja $1',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'usagestatisticsintervalday'   => 'Dagur',
+	'usagestatisticsintervalweek'  => 'Vika',
+	'usagestatisticsintervalmonth' => 'Mánuður',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

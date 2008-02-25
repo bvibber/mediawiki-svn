@@ -892,6 +892,14 @@ derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
 Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'hiderevision-reason'   => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
+	'hiderevision-noreason' => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
+);
+
 $messages['ksh'] = array(
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
 );

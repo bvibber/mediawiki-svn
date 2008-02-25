@@ -198,6 +198,23 @@ $messages['io'] = array(
 	'passwordreset-newpass' => 'Nova Kontrolajo',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'passwordreset-username' => 'Notandanafn',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
+	'passwordreset-emptyusername'   => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
+	'passwordreset-username'        => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'passwordreset-confirmpass'     => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -422,6 +439,7 @@ $messages['te'] = array(
 	'passwordreset-newpass'         => 'కొత్త సంకేతపదం',
 	'passwordreset-confirmpass'     => 'సంకేతపదాన్ని నిర్ధారించండి',
 	'passwordreset-disableuser'     => 'వాడుకరి ఖాతాని అచేతనం చేయాలా?',
+	'passwordreset-accountdisabled' => 'ఖాతాని అచేతనం చేసారు',
 );
 
 /** Volapük (Volapük)

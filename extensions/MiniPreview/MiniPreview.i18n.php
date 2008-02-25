@@ -256,6 +256,13 @@ $messages['sv'] = array(
 	'minipreview-no_category_gallery' => 'Inga kategorier eller gallerier!',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'minipreview-files_in_category' => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

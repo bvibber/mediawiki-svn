@@ -822,6 +822,13 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 	'searchincategory'      => 'sanatta',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'searchincategory' => 'ក្នុងចំណាត់ក្រុម',
+);
+
 $messages['la'] = array(
 	'lucenepowersearchtext' => 'In spatiis nominalibus petere:
 

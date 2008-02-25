@@ -164,6 +164,15 @@ $messages['hsb'] = array(
 	'importusers-realname'                => 'woprawdźite mjeno',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'importusers-login-name' => 'ឈ្មោះ ពិនិត្យចូល',
+	'importusers-email'      => 'អ៊ីមែវល៍',
+	'importusers-realname'   => 'ឈ្មោះពិត',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -374,6 +383,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'importusers-user-added'      => '<b>%s</b> అనే వాడుకరిని చేర్చాం.',
 	'importusers-log-summary'     => 'సంగ్రహం',
 	'importusers-log-summary-all' => 'అన్నీ',
 	'importusers-login-name'      => 'ప్రవేశపు పేరు',

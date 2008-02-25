@@ -149,6 +149,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'todo'                  => 'Lisćina nadawkow',
+	'todo-desc'             => 'Eksperimentelne rozšěrjenje za wosobinsku [[Special:Todo|lisćinu nadawkow]]',
 	'todo-tab'              => 'nadawk',
 	'todo-new-queue'        => 'nowy',
 	'todo-mail-subject'     => 'Sčinjeny nadawk na lisćinje nadawkow $1',
@@ -307,6 +308,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'todo'                  => 'Zoznam úloh',
+	'todo-desc'             => 'Experimentálne rozšírenie osobný [[Special:Todo|Zoznam úloh]]',
 	'todo-tab'              => 'zoznam úloh',
 	'todo-new-queue'        => 'nová',
 	'todo-mail-subject'     => 'Dokončená úloha zo zoznamu používateľa $1',
