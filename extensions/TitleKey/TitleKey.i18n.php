@@ -49,6 +49,13 @@ $messages['hsb'] = array(
 	'titlekey-desc' => 'Pozadkowy proces za namjety tituloweho pytanja',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'titlekey-desc' => 'Backend proses pencarian prefiks judul',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

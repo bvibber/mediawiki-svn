@@ -108,8 +108,8 @@ $messages['an'] = array(
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Botar]]
 * [[Special:Boardvote/list|Amostrar os botos dica agora]]
 * [[Special:Boardvote/dump|Bulcar o rechistro zifrato d'a elezión]]",
-	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere 
-fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada 
+	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere
+fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada
 candidato que quiera aprebar</p>",
 	'boardvote_entered'      => "Grazias, o suyo boto s'ha rechistrato.
 
@@ -152,7 +152,7 @@ dica agora. $1 ta beyer os datos zifratos.</p>",
 	'boardvote_blocked'      => 'Lo sentimos, pero ye estato bloqueyato en a wiki en que ye rechistrato. Os usuarios bloqueyatos no pueden botar.',
 	'boardvote_welcome'      => "Biemplegau '''$1'''!",
 	'go_to_board_vote'       => 'Elezions ta o Consello de Wikimedia 2007',
-	'boardvote_redirecting'  => "Ta amillorar a seguranza y a transparenzia, a botazión s'está fendo en un serbidor esterno y controlato independientment. 
+	'boardvote_redirecting'  => "Ta amillorar a seguranza y a transparenzia, a botazión s'está fendo en un serbidor esterno y controlato independientment.
 
 Será endrezato enta este serbidor esterno en 20 segundos. [$1 Punche aquí] ta ir-ie agora.
 
@@ -190,7 +190,7 @@ $messages['ar'] = array(
 <li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006" class="external">أسئلة متكررة حول الانتخابات</a></li>
 <li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2006" class="external">المرشحين</a></li>
 </ul>',
-	'boardvote_intro_change' => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك باستخدام الاستمارة التالية. 
+	'boardvote_intro_change' => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك باستخدام الاستمارة التالية.
 يرجى وضع إشارة في الصندوق بجانب المرشح الذي تود التصويت له.</p>',
 	'boardvote_entered'      => 'شكرا لك، لقد تم اعتماد صوتك.
 
@@ -249,19 +249,19 @@ $messages['ast'] = array(
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
-	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia. 
-Tamos votando pa que dos persones representen a la comunidá d'usuarios de 
-los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición 
-futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, 
-y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración. 
+	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia.
+Tamos votando pa que dos persones representen a la comunidá d'usuarios de
+los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición
+futura que los proyectos Wikimedia van siguir, en forma individual y en grupu,
+y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración.
 Ellos decidirán les formes de xenerar ingresos y la destinación de los mesmos.</p>
 
 <p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
-enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó 
-con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu 
+enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó
+con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu
 col enfotu de distribuyir llibremente'l conocimientu humanu.</p>
 
-<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada 
+<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada
 posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevaráse a
 cabu una eleición de desempate.</p>
 
@@ -281,7 +281,7 @@ Encriptóse cola clave pública de los Alministradores de la Eleición:
 
 <pre>$2</pre>
 
-A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]]. 
+A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -1538,8 +1538,12 @@ szerveren bonyolítjuk a szavazást.
 Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmezetés jelenhet meg.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
+	'boardvote-desc'          => '[[meta:Board elections|Pemilihan Dewan Kepercayaan Wikimedia]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Berikan suara]]
 * [[Special:Boardvote/list|Daftar suara hingga saat ini]]
 * [[Special:Boardvote/dump|Data pemilihan terenkripsi]]",
@@ -1598,6 +1602,11 @@ Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk 
 	'boardvote_blocked'       => 'Maaf, Anda telah diblokir pada wiki tempat Anda terdaftar. Pengguna yang diblokir tidak diizinkan untuk memberikan suaranya.',
 	'boardvote_welcome'       => "Selamat datang '''$1'''!",
 	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
+	'boardvote_redirecting'   => 'Untuk keamanan dan transparansi yang lebih baik, kami melakukan pemungutan suara dengan menggunakan suatu server eksternal dan dikontrol secara independen.
+
+Anda akan dialihkan ke server eksternal tersebut dalam waktu 20 detil. [$1 Klik di sini] untuk langsung menuju ke sana.
+
+Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.',
 );
 
 /** Icelandic (Íslenska)
@@ -1836,9 +1845,9 @@ $messages['kk-cyrl'] = array(
 	'boardvote_blocked'      => 'Ғафу етіңіз, тіркелген уикиіңізде бұғатталғансыз. Бұғатталған қатысушыларға дауыс беру үшін рұқсат жоқ.',
 	'boardvote_welcome'      => "'''$1''', қөш келдіңіз!",
 	'boardvote_redirecting'  => 'Нығайтылған қауіпсіздік пен мөлдірлік үшін, біз сайлауды тәуелсіз меңгерілген
-сыртқы серверде өткіземіз. 
+сыртқы серверде өткіземіз.
 
-20 секунд мезгілінде осы сыртқы серверке  айдатыласыз. Соған қазір өтіп кету үшін [$1 мында нұқыңыз]. 
+20 секунд мезгілінде осы сыртқы серверке  айдатыласыз. Соған қазір өтіп кету үшін [$1 мында нұқыңыз].
 
 Қол қойылмаған куәлік туралы қауіпсіздік аңғарту көрсетілуге мүмкін.',
 
@@ -1891,9 +1900,9 @@ Muqamdalğan derekter üşin $1.</p>',
 	'boardvote_blocked'      => 'Ğafw etiñiz, tirkelgen wïkïiñizde buğattalğansız. Buğattalğan qatıswşılarğa dawıs berw üşin ruqsat joq.',
 	'boardvote_welcome'      => "'''$1''', qöş keldiñiz!",
 	'boardvote_redirecting'  => 'Nığaýtılğan qawipsizdik pen möldirlik üşin, biz saýlawdı täwelsiz meñgerilgen
-sırtqı serverde ötkizemiz. 
+sırtqı serverde ötkizemiz.
 
-20 sekwnd mezgilinde osı sırtqı serverke  aýdatılasız. Soğan qazir ötip ketw üşin [$1 mında nuqıñız]. 
+20 sekwnd mezgilinde osı sırtqı serverke  aýdatılasız. Soğan qazir ötip ketw üşin [$1 mında nuqıñız].
 
 Qol qoýılmağan kwälik twralı qawipsizdik añğartw körsetilwge mümkin.',
 
@@ -1946,9 +1955,9 @@ $messages['kk-arab'] = array(
 	'boardvote_blocked'      => 'عافۋ ەتىڭىز, تىركەلگەن ۋىيكىيىڭىزدە بۇعاتتالعانسىز. بۇعاتتالعان قاتىسۋشىلارعا داۋىس بەرۋ ٴۇشىن رۇقسات جوق.',
 	'boardvote_welcome'      => "'''$1''', قوش كەلدىڭىز!",
 	'boardvote_redirecting'  => 'نىعايتىلعان قاۋىپسىزدىك پەن مولدىرلىك ٴۇشىن, ٴبىز سايلاۋدى تاۋەلسىز مەڭگەرىلگەن
-سىرتقى سەرۆەردە وتكىزەمىز. 
+سىرتقى سەرۆەردە وتكىزەمىز.
 
-20 سەكۋند مەزگىلىندە وسى سىرتقى سەرۆەركە  ايداتىلاسىز. سوعان قازىر ٴوتىپ كەتۋ ٴۇشىن [$1 مىندا نۇقىڭىز]. 
+20 سەكۋند مەزگىلىندە وسى سىرتقى سەرۆەركە  ايداتىلاسىز. سوعان قازىر ٴوتىپ كەتۋ ٴۇشىن [$1 مىندا نۇقىڭىز].
 
 قول قويىلماعان كۋالىك تۋرالى قاۋىپسىزدىك اڭعارتۋ كورسەتىلۋگە مۇمكىن.',
 
@@ -2296,8 +2305,8 @@ $messages['nds'] = array(
  * @author SPQRobin
  */
 $messages['ne'] = array(
-	'boardvote_entry'      => '* [[Special:Boardvote/vote|भोट हाल्नुहोस्]] 
-* [[Special:Boardvote/list|हालसम्मको सुची]] 
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|भोट हाल्नुहोस्]]
+* [[Special:Boardvote/list|हालसम्मको सुची]]
 * [[Special:Boardvote/dump| encrypt गरिएको रद्दी निर्वाचन सुची]]',
 	'boardvote_time'       => 'समय',
 	'boardvote_user'       => 'प्रयोगकर्ता',
@@ -2474,19 +2483,19 @@ $messages['oc'] = array(
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
-	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
+	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat.
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
-Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion :
 
-<pre>$2</pre> 
+<pre>$2</pre>
 
 La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
 
-<pre>$3</pre> 
+<pre>$3</pre>
 
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
@@ -3177,7 +3186,7 @@ Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmeng
 Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
 <pre>$2</pre>',
-	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
+	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese.
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
@@ -3338,7 +3347,7 @@ $messages['te'] = array(
 
 <pre>$2</pre>
 
-కోడీకరించబడిన సంపుటి ఇది. దీన్ని [[Special:Boardvote/dump]] లో అందరూ చూడవచ్చు. 
+కోడీకరించబడిన సంపుటి ఇది. దీన్ని [[Special:Boardvote/dump]] లో అందరూ చూడవచ్చు.
 
 <pre>$3</pre>
 

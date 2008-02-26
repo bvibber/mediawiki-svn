@@ -366,17 +366,23 @@ $messages['hy'] = array(
 	'createarticle' => 'Հոդված ստեղծել',
 );
 
-$messages['id'] = array(
-	'tryexact'       => 'Coba pencocokan eksak',
-	'searchfulltext' => 'Cari di teks lengkap',
-	'createarticle'  => 'Buat artikel',
-);
-
 /** Iloko (Ilokano)
  * @author SPQRobin
  */
 $messages['ilo'] = array(
 	'createarticle' => 'Mangaramid iti articulo',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'inputbox-desc'           => 'Memungkinkan penggunaan form HTML yang telah ditentukan',
+	'inputbox-error-no-type'  => 'Anda harus menentukan tipe kotak input yang ingin dibuat.',
+	'inputbox-error-bad-type' => 'Tipe kotak input "$1" tak dikenal. Tolong gunakan "create", "comment", "search" atau "search2".',
+	'tryexact'       => 'Coba pencocokan eksak',
+	'searchfulltext' => 'Cari di teks lengkap',
+	'createarticle'  => 'Buat artikel',
 );
 
 /** Icelandic (Íslenska)
@@ -908,7 +914,7 @@ $messages['yue'] = array(
 
 $messages['zh-classical'] = array(
 	'inputbox-error-no-type'  => '汝未定輸入盒之類也。',
-	'inputbox-error-bad-type' => '輸入盒之類"$1"無認耳。指"create"、"comment"、"search"或"search2"之。',	
+	'inputbox-error-bad-type' => '輸入盒之類"$1"無認耳。指"create"、"comment"、"search"或"search2"之。',
 	'tryexact'       => '查全合',
 	'searchfulltext' => '尋全文',
 	'createarticle'  => '撰文',

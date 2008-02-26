@@ -604,6 +604,42 @@ $messages['hu'] = array(
 	'ogg-desc-link'           => 'Fájlinformációk',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'ogg-desc'             => 'Menangani berkas Ogg Theora dan Vorbis dengan pemutar JavaScript',
+	'ogg-short-audio'      => 'Berkas suara $1 ogg, $2',
+	'ogg-short-video'      => 'Berkas video $1 ogg, $2',
+	'ogg-short-general'    => 'Berkas media $1 ogg, $2',
+	'ogg-long-audio'       => '(Berkas suara $1 ogg, panjang $2, $3)',
+	'ogg-long-video'       => '(Berkas video $1 ogg, panjang $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
+	'ogg-long-general'     => '(Berkas media ogg, panjang $2, $3)',
+	'ogg-long-error'       => '(Berkas ogg tak valid: $1)',
+	'ogg-play'             => 'Putar',
+	'ogg-pause'            => 'Jeda',
+	'ogg-stop'             => 'Berhenti',
+	'ogg-play-video'       => 'Putar video',
+	'ogg-play-sound'       => 'Putar suara',
+	'ogg-no-player'        => 'Maaf, sistem Anda tampaknya tak memiliki satupun perangkat lunak yang didukung. ' .
+		'Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">untuk salah satu pemutar</a>.',
+	'ogg-no-xiphqt'        => 'Tampaknya Anda tak memiliki komponen XiphQT untuk QuickTime. QuickTime tak dapat memutar ' .
+		'berkas Ogg tanpa komponen ini. Silakan ' .
+		'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mengunduh XiphQT</a> atau pilih pemutar lain.',
+
+	'ogg-player-videoElement' => 'elemen <video>',
+	'ogg-player-oggPlugin' => 'plugin Ogg',
+	'ogg-player-thumbnail' => 'Hanya gambar statis',
+	'ogg-player-soundthumb' => 'Tak ada pemutar',
+	'ogg-player-selected'  => '(terpilih)',
+	'ogg-use-player'       => 'Gunakan pemutar: ',
+	'ogg-more'             => 'Lainnya...',
+	'ogg-dismiss'          => 'Tutup',
+	'ogg-download'         => 'Unduh berkas',
+	'ogg-desc-link'        => 'Mengenai berkas ini',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  * @author Spacebirdy
@@ -1277,7 +1313,7 @@ $messages['stq'] = array(
 	'ogg-play-video'          => 'Video ouspielje',
 	'ogg-play-sound'          => 'Audio ouspielje',
 	'ogg-no-player'           => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-	'ogg-no-xiphqt'           => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
+	'ogg-no-xiphqt'           => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje.
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
 	'ogg-player-videoElement' => '<video>-Element>',
 	'ogg-player-oggPlugin'    => 'Ogg-Plugin',

@@ -299,8 +299,11 @@ $messages['hu'] = array(
 	'imagemap_description'        => 'Kép leírása',
 );
 
-/* Indonesian (Ivan Lanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
+	'imagemap_desc'                 => 'Menyediakan peta gambar yang dapat diklik dari klien dengan menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: gambar tidak sah atau tidak ditemukan',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: tidak ditemukan pranala yang sah di akhir baris ke $1',

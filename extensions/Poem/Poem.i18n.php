@@ -74,6 +74,13 @@ $messages['hu'] = array(
 	'poem-desc' => '<tt>&lt;poem&gt;</tt> tag a versek formázásához',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'poem-desc' => 'Menambahkan tag <tt>&lt;poem&gt;</tt> tag untuk pemformatan puisi',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

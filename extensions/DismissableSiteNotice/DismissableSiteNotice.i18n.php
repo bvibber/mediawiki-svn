@@ -188,8 +188,12 @@ $messages['hy'] = array(
 	'sitenotice_close' => 'փակել',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'sitenotice_close' => 'tutup',
+	'sitenotice-desc'  => 'Memungkinkan pengguna untuk menutup pengumuman situs',
 );
 
 /** Icelandic (Íslenska)

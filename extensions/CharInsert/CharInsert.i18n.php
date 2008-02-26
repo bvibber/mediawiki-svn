@@ -66,6 +66,13 @@ $messages['hsb'] = array(
 	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za [[MediaWiki:Edittools|zasunjenje specialnych znamješkow]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'charinsert-desc' => 'Mengizinkan pembuatan kotak JavaScript untuk [[MediaWiki:Edittools|menyisipkan karakter non-standar]]',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
