@@ -24,10 +24,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 define('Invitations',1);
 
 $wgExtensionCredits['specialpage'][] = array(
-	'author' => 'Andrew Garrett',
-	'name' => 'Invitations',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Invitations',
-	'description' => 'Allows management of new features by restricting them to an invitation-based system.'
+	'author'         => 'Andrew Garrett',
+	'version'        => '$Revision$',
+	'name'           => 'Invitations',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Invitations',
+	'description'    => 'Allows management of new features by restricting them to an invitation-based system.'
+	'descriptionmsg' => 'invitations-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -48,4 +50,4 @@ $wgInvitationTypes = array();
 $wgLogTypes[] = 'invite';
 $wgLogNames['invite'] = 'invite-logpage';
 $wgLogHeaders['invite'] = 'invite-logpagetext';
-$wgLogActions['invite/invite']  = 'invite-logentry';
+$wgLogActions['invite/invite'] = 'invite-logentry';

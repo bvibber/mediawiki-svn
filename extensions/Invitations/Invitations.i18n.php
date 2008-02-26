@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'invitations-desc' => 'Allows [[Special:Invitations|management of new features]] by restricting them to an invitation-based system',
 	'invitations-invitedlist-description' => 'You have access to the following invitation-only software features. To manage invitations for an individual feature, click on its name.',
 	'invitations-invitedlist-none' => 'You have not been invited to use any invitation-only software features.',
 	'invitations-invitedlist-item' => '<b>$1</b> ($2 invitations available)',
