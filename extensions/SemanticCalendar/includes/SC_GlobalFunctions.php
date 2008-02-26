@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.1.2');
+define('SC_VERSION','0.2');
 
 // constants for special properties
 
@@ -17,6 +17,7 @@ $wgHooks['LanguageGetMagic'][] = 'scgLanguageGetMagic';
 $wgExtensionMessagesFiles['SemanticCalendar'] = $scgIP . '/languages/SC_Messages.php';
 
 require_once($scgIP . '/includes/SC_ParserFunctions.php');
+require_once($scgIP . '/includes/SC_HistoricalDate.php');
 require_once($scgIP . '/languages/SC_Language.php');
 
 /**
@@ -145,12 +146,6 @@ function scfLoadMessagesManually() {
 /**********************************************/
 /***** other global helpers               *****/
 /**********************************************/
-
-// replacement for cal_days_in_month(), since not all versions of PHP
-// have it; code taken from http://www.webmasterworld.com/forum88/10544.htm
-function scfDaysInMonth($month, $year) {
-	return date('t', mktime(0, 0, 0, $month + 1, 0, $year));
-}
 
 function scfGetEvents_1_0($date_property, $filter_query) {
 	global $smwgIP;
