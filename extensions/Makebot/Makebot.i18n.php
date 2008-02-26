@@ -523,9 +523,12 @@ $messages['hu'] = array(
 	'makebot-logentryrevoke' => '[[$1]] botstátuszát elvette',
 );
 
-/* Indonesian (Ivan Lanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'makebot'                 => 'Pemberian atau penarikan status bot',
+	'makebot-desc'            => 'Halaman istimewa yang mengizinkan birokrat lokal untuk memberikan atau menarik hak akses bot',
 	'makebot-header'          => '\'\'\'Birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik [[{{MediaWiki:Grouppage-bot}}|status bot]] untuk akun pengguna lain.\'\'\'<br />Status bot akan menyembunyikan suntingan pengguna dari [[Special:Recentchanges|perubahan terbaru]] dan daftar serupa lainnya, dan berguna untuk menandai pengguna yang melakukan penyuntingan otomatis. Hal ini harus dilakukan sesuai dengan kebijakan yang telah digariskan.',
 	'makebot-username'        => 'Nama pengguna:',
 	'makebot-search'          => 'Cari',

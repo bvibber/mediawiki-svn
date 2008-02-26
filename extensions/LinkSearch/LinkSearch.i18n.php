@@ -279,8 +279,12 @@ $messages['hu'] = array(
 
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'linksearch'       => 'Pencarian pranala luar',
+	'linksearch-desc'  => '[[Special:Linksearch|Mencari halaman dengan pranala luar]] yang cocok dengan pola tertentu',
 	'linksearch-pat'   => 'Pola pencarian:',
 	'linksearch-ns'    => 'Ruang nama:',
 	'linksearch-ok'    => 'Cari',

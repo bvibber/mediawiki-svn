@@ -75,7 +75,7 @@ $1
 
 Mirar $3 $9',
 	'lucenefallback'        => 'Bi ha abito uno problema fendo a busca en a wiki.
-Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos, 
+Prebablement sía temporal. Prebe de fer-lo una atra begada dimpués de bels menutos,
 u faiga serbir bel buscador esterno ta esplorar a wiki.',
 	'searchexactcase'       => 'Mirar esautament (mayusclas e minusclas)',
 	'searchall'             => 'toz',
@@ -373,7 +373,7 @@ $1
 
 Buscar $3 $9',
 	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
-Probablemente sea temporal. Intentelo de nuevo en unos minutos, 
+Probablemente sea temporal. Intentelo de nuevo en unos minutos,
 o emplee algún buscador externo para explorar la wiki.',
 	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
 	'searchall'             => 'todos',
@@ -672,7 +672,11 @@ A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a w
 	'searchincategory'      => 'kategóriában',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
+	'lucene-desc'           => 'Antarmuka untuk mesin pencari Lucene Apache',
 	'searchnumber'          => "<strong>Hasil pencarian $1-$2 dari $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Sebelumnya</span>",
 	'searchnext'            => "<span style='font-size: small'>Selanjutnya</span> &#x00BB;",
@@ -688,7 +692,10 @@ $1
 Pencarian terhadap $3 $9 $10",
 	'lucenefallback'        => "Ada masalah pada pencarian wiki.
 Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
-atau gunakan layanan pencari eksternal:\n"
+atau gunakan layanan pencari eksternal:\n",
+	'searchexactcase'       => 'Pencarian kapitalisasi persis',
+	'searchall'             => 'semua',
+	'searchincategory'      => 'dalam kategori',
 );
 
 /** Icelandic (Íslenska)

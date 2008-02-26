@@ -649,9 +649,11 @@ Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elves
 
 /** Indonesian (Bahasa Indonesia)
  * @author Borgx
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'hiderevision'                => 'Sembunyikan revisi',
+	'hiderevision-desc'           => 'Menyembunyikan revisi-revisi individu dari semua pengguna untuk alasan legal, dll.',
 	'hiderevision-prompt'         => 'Nomor revisi untuk dihilangkan:',
 	'hiderevision-continue'       => 'Lanjutkan',
 	'hiderevision-text'           => "Ini hanya diproses '''hanya''' dalam kasus:
@@ -1180,9 +1182,9 @@ $messages['pms'] = array(
 	'hiderevision'                => 'Stërmé le revision na vira për tute',
 	'hiderevision-prompt'         => 'Nùmer ëd revision da gavé:',
 	'hiderevision-continue'       => 'Tiré anans',
-	'hiderevision-text'           => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia: 
-* dj'anformassion personaj nen aproprià 
-*: ''adrësse ëd ca e nùmer ëd teléfono, còdes fiscaj e via fòrt'' 
+	'hiderevision-text'           => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia:
+* dj'anformassion personaj nen aproprià
+*: ''adrësse ëd ca e nùmer ëd teléfono, còdes fiscaj e via fòrt''
 '''A dovré sta fonsion-sì fòra via un a va ancontra a dle consegoense aministrative.''' Lòn ch'as gava via a resta gava da tut ël sit, ma jë scancelament a resto ant ij registr e a peulo esse pijait andré a man da n'aministratore dla base dat, s'a-i fusso dj'eror.",
 	'hiderevision-reason'         => 'Rason (a resta ant ij registr an forma privà):',
 	'hiderevision-submit'         => 'Stërmé sti dat-sì na vira për tute',
@@ -1195,8 +1197,8 @@ $messages['pms'] = array(
 	'hiderevision-error-current'  => "As peul pa scancelesse la version corenta. Anans che fe sòn ch'a buta corenta n'àotra version.",
 	'hiderevision-error-delete'   => "A l'é pa podusse archivié; ch'a sia stait scancelà anans d'ës moment-sì?",
 	'hiderevision-archive-status' => 'Scancelà le revision da $1: $2',
-	'oversight-nodiff'            => "As peulo pa trové ij cambiament për via che al moment a-i é gnun-a revision pì veja dë sta pàgina. Dle doe l'un-a: 
-*la pàgina a l'é staita scancelà 
+	'oversight-nodiff'            => "As peulo pa trové ij cambiament për via che al moment a-i é gnun-a revision pì veja dë sta pàgina. Dle doe l'un-a:
+*la pàgina a l'é staita scancelà
 *sta revision stërmà a l'era la prima",
 	'oversight-log-hiderev'       => 'gavà e modificà da $1',
 	'oversight'                   => 'Gafada',
@@ -1316,7 +1318,7 @@ $messages['sah'] = array(
 	'hiderevision-error-current'  => 'Сирэй бу торумун сотор табыллыбата. Бастаан урукку торумугар төннөр.',
 	'hiderevision-error-delete'   => 'Архыыптанар кыаҕа суох; баҕар бу иннинэ сотуллубута буолаарай?',
 	'hiderevision-archive-status' => '$1 сирэй торума сотулунна: $2',
-	'oversight-nodiff'            => 'Сирэй бу иннинээҕи торума тахсыбакка уларыйыылар кыайан көрдөрүллүбэтилэр. 
+	'oversight-nodiff'            => 'Сирэй бу иннинээҕи торума тахсыбакка уларыйыылар кыайан көрдөрүллүбэтилэр.
 Баҕар:
 *Сирэй сотуллубута буолуо
 *Кистэниллибит торум бастакы буолуо',

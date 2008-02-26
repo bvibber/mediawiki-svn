@@ -721,14 +721,19 @@ $messages['hy'] = array(
 	'makesysopname'        => 'Մասնակցի անունը`',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'makesysoptitle'       => 'Pemberian status pengurus',
+	'makesysop-desc'       => 'Memberi kemampuan bagi birokrat/steward untuk mengganti tingkat pengguna',
 	'makesysoptext'        => 'Formulir ini digunakan oleh para birokrat untuk menjadikan pengguna biasa menjadi seorang pengurus. Ketikkan nama pengguna yang dimaksud dalam kotak dan tekan tombol untuk menjadikan pengguna tersebut seorang pengurus.',
 	'makesysopname'        => 'Nama pengguna:',
 	'makesysopsubmit'      => 'Jadikan pengurus',
 	'makesysopok'          => "<strong>Pengguna \"$1\" sekarang telah dijadikan pengurus</strong>",
 	'makebureaucratok'     => "<strong>Pengguna \"$1\" sekarang telah dijadikan birokrat</strong>",
 	'makesysopfail'        => "<strong>Pengguna \"$1\" tidak dapat dijadikan pengurus. (Apakah Anda mengetikkan namanya dengan benar?)</strong>",
+	'makesysop-see-userrights' => 'Lihat [[Special:Userrights]] untuk pilihan lain.',
 	'setbureaucratflag'    => 'Beri tanda birokrat',
 	'rights'               => 'Hak-hak:',
 	'set_user_rights'      => 'Atur hak-hak pengguna',
@@ -739,7 +744,7 @@ $messages['id'] = array(
 	'already_bureaucrat'   => 'Pengguna ini telah berstatus birokrat',
 	'group-steward'        => 'Steward',
 	'group-steward-member' => 'Steward',
-	'grouppage-steward'    => 'Project:Steward',
+	'grouppage-steward'    => '{{ns:project}}:Steward',
 );
 
 /** Icelandic (Íslenska)
@@ -1263,7 +1268,7 @@ $messages['sd'] = array(
  */
 $messages['sk'] = array(
 	'makesysoptitle'           => 'Urob z používateľa správcu',
-	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
+	'makesysoptext'            => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom.
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
 	'makesysopname'            => 'Meno používateľa:',
 	'makesysopsubmit'          => 'Urob z tohto redaktora správcu',

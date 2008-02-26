@@ -285,6 +285,25 @@ $messages['hu'] = array(
 	'pdt_comparing_page'  => '[[$1]] kimeneteinek összehasonlítása',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'parserdifftest' => 'Uji parser pembeda',
+	'pdtest-desc' => '[[Special:ParserDiffTest|Halaman istimewa]] untuk membandingkan keluaran dari dua parser yang berbeda',
+	'pdtest_no_target' => 'Tak ada target yang diberikan.',
+	'pdtest_page_missing' => 'Halaman yang diberikan tak ditemukan dalam basis data.',
+	'pdtest_no_changes' => 'Tak ditemukan perubahan.',
+	'pdtest_time_report' => '<b>$1</b> memerlukan $2 detik, <b>$3</b> memerlukan $4 detik.',
+	'pdtest_title' => 'Judul konteks:',
+	'pdtest_text' => 'Teks masukan:',
+	'pdtest_ok' => 'OK',
+	'pdtest_get_text' => 'Ambil teks dari halaman',
+	'pdtest_diff' => 'Perbedaan',
+	'pdtest_side_by_side' => 'Perbandingan keluaran',
+	'pdt_comparing_page' => 'Membandingkan keluaran parser dari [[$1]]',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

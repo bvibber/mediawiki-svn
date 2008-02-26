@@ -392,8 +392,17 @@ $messages['hy'] = array(
 	'sitematrix-others' => 'Վիքիմեդիայի այլ նախագծեր',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
-	"sitematrix" => "Daftar wiki Wikimedia",
+	"sitematrix"           => "Daftar wiki Wikimedia",
+	'sitematrix-desc'      => 'Menampilkan suatu [[Special:SiteMatrix|daftar wiki Wikimedia]]',
+	'sitematrix-language'  => 'Bahasa',
+	'sitematrix-project'   => 'Nama proyek, pranala interproyek dan pranala interwiki',
+	'sitematrix-others'    => 'Proyek lain Wikimedia',
+	'sitematrix-total'     => "'''Jumlah total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['io'] = array(
