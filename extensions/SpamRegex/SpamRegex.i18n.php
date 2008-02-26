@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'spamregex' => 'SpamRegex',
+	'spamregex-desc' => '[[Special:Spamregex|Filter]] out unwanted phrases in edited pages, based on regular expressions',
 	'spamregex_summary' => 'The text was found in the page\'s summary.',
 	'spamregex-intro' => 'Use this form to effectively block expressions from saving into a page\'s text. If the text contains the given expression, change would not be saved and an explanation will be displayed to user that tried to save the page. Caution advised, expressions should not be too short or too common.',
 	'spamregex-page-title' => 'Spam Regex Unwanted Expressions Block',
@@ -104,6 +105,7 @@ $messages['el'] = array(
 
 $messages['fr'] = array(
 	'spamregex' => 'Expressions régulières de Spams',
+	'spamregex-desc' => '[[Special:Spamregex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
 	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',
 	'spamregex-intro' => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',
 	'spamregex-page-title' => 'Blocage des expressions régulières de spams',

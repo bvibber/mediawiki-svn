@@ -15,7 +15,8 @@ $wgExtensionFunctions[] = 'wfSpamRegexSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Spam Block',
 	'author' => 'Bartek',
-	'description' => 'filters out unwanted phrases in edited pages, based on regular expressions'
+	'description' => 'filters out unwanted phrases in edited pages, based on regular expressions',
+	'descriptionmsg' => 'spamregex-desc',
 );
 
 /* special page init */
