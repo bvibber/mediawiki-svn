@@ -21,4 +21,4 @@ $scgIP = $IP . '/extensions/SemanticCalendar';
 //$pathfix = $IP . $scgScriptPath;
 
 // load global functions
-require_once('SC_GlobalFunctions.php');
+require_once($scgIP . '/includes/SC_GlobalFunctions.php');
