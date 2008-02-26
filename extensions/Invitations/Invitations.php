@@ -12,8 +12,8 @@
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with MediaWiki.  If not, see <http://www.gnu.org/licenses/>.
+#You should have received a copy of the GNU General Public License
+#along with MediaWiki.  If not, see <http://www.gnu.org/licenses/>.
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "Invitations extension\n";
@@ -28,7 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '$Revision$',
 	'name'           => 'Invitations',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Invitations',
-	'description'    => 'Allows management of new features by restricting them to an invitation-based system.'
+	'description'    => 'Allows management of new features by restricting them to an invitation-based system.',
 	'descriptionmsg' => 'invitations-desc',
 );
 
