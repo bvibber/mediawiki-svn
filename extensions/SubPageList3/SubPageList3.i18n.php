@@ -25,15 +25,18 @@
  * @licence GNU General Public Licence 2.0 or later
  * @author McCormack, James
  */
- 
+
 /**
  * Messages list.
  */
- 
+
 $messages = array();
- 
+
+/** English
+ * @author McCormack, James
+ */
 $messages['en'] = array(
-        'spl3-desc'         => 'Automatically creates a list of the subpages of a page.',
+        'spl3-desc'         => 'Automatically creates a list of the subpages of a page using the tag <code><nowiki><splist /></nowiki></code>',
         'spl3_debug'        => 'Unknown value for option $1.',
         'spl3_nosubpages'   => '$1 has no subpages to list.',
 );
