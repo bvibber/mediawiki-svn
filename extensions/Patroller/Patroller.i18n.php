@@ -472,6 +472,9 @@ $messages['pt'] = array(
 	'patrol-revert-reason'   => 'Motivo:',
 	'patrol-skip'            => 'Saltar',
 	'patrol-reverting'       => 'Revertendo: $1',
+	'patrol-reasons'         => '* Simples vandalismo
+* Teste de principiante
+* Ver página de discussão',
 	'group-patroller'        => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',
 	'grouppage-patroller'    => '{{ns:project}}:Patrulhador',

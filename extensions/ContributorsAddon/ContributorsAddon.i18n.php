@@ -81,3 +81,10 @@ $messages['sk'] = array(
 	'contributorsaddon-desc' => 'Pridáva vyskakovacie okná nad odkazy „Hlavní prispievatelia“',
 );
 
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'contributorsaddon-desc' => 'Läger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
+);
+

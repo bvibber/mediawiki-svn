@@ -1252,6 +1252,23 @@ $messages['sv'] = array(
 	'badimages-page'           => '{{ns:help}}:Lista över dåliga bilder',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'badimages'             => 'பழுதான படிமங்களின் பட்டியல்',
+	'badimages-add-btn'     => 'சேர்',
+	'badimages-added'       => '$1 பட்டியலில் இணைக்கப்பட்டது.',
+	'badimages-count'       => "பழுதான படிமங்களின் பட்டியலில் '''$1''' படிமங்கள் உள்ளன.",
+	'badimages-name'        => 'பெயர்:',
+	'badimages-not-added'   => 'படிமத்தை இணைக்க முடியவில்லை.',
+	'badimages-not-removed' => 'படிமத்தை நீக்க முடியவில்லை.',
+	'badimages-reason'      => 'காரணம்:',
+	'badimages-remove'      => '(நீக்கு)',
+	'badimages-remove-btn'  => 'நீக்கு',
+	'badimages-log-name'    => 'பழுதான படிமங்களின் பட்டியல்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author Mpradeep

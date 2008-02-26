@@ -164,6 +164,14 @@ $messages['sv'] = array(
 	'mediafunctions-not-exist'     => '"$1" existerar inte',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'mediafunctions-invalid-title' => '"$1" செல்லுபடியற்றத் தலைப்பாகும்',
+	'mediafunctions-not-exist'     => '"$1" இல்லை',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

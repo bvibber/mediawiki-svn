@@ -47,6 +47,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'viewxml'                     => 'Преглед на XML',
 	'dt_viewxml_categories'       => 'Категории',
 	'dt_viewxml_namespaces'       => 'Именни пространства',
 	'dt_viewxml_simplifiedformat' => 'Опростен формат',

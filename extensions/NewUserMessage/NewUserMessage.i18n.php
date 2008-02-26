@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف [[MediaWiki:NewUserMessage|رسالة]] إلى صفحات نقاش المستخدمين الجدد',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'newusermessage-desc' => 'Добавя [[MediaWiki:NewUserMessage|съобщение]] на беседата на новорегистрираните потребители',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Li-sung

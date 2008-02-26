@@ -76,6 +76,16 @@ $messages['hu'] = array(
 	'eval_code'   => 'Kód',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'eval'        => 'Bewerten',
+	'eval_submit' => 'Bewerten',
+	'eval_out'    => 'Resultat',
+	'eval_code'   => 'Code',
+);
+
 /** Dutch (Nederlands)
  * @author Annabel
  * @author SPQRobin

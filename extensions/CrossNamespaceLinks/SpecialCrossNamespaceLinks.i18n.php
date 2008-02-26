@@ -313,6 +313,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'crossnamespacelinks'         => 'Säite ma Linken an aner Nimmräim',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lëscht vun de Linken op Säiten vun andere Nimmraim]], déi et op {{SITENAME}} net sollt ginn',
 	'crossnamespacelinks-summary' => "Dës Säit weist eng Lëscht vun de Linke vun enger Säit aus dem Haaptnummraum op Säiten an anere Nimmräim (ausser fir d'Nimmräim {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}), déi net solle benotzt ginn.",
 	'crossnamespacelinkstext'     => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',
 );
@@ -522,6 +523,14 @@ $messages['sv'] = array(
 	'crossnamespacelinks-desc'    => 'Skapar en [[Special:CrossNamespaceLinks|lista över länkar mellan namnrymder]] som inte borde finnas på {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'crossnamespacelinks'     => 'மாற்றுப் பெயர்வெளி இணைப்புகள்',
+	'crossnamespacelinkstext' => '$1: $3 பெயர்வெளிக்கு $2 {{PLURAL:$2|இணைப்பு|இணைப்புகள்}}',
 );
 
 /** Telugu (తెలుగు)

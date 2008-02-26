@@ -256,3 +256,20 @@ With regards,
 $2',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'userrightsnotifysubject' => 'Nhóm thành viên đã thay đổi vào $1',
+	'userrightsnotifybody'    => 'Xin chào $1
+
+Xin thông báo với bạn rằng nhóm thành viên của bạn tại $2 đã được $3 thay đổi vào $4.
+
+Thêm: $5
+Bớt: $6
+
+Trân trọng,
+
+$2',
+);
+

@@ -418,6 +418,14 @@ $messages['sv'] = array(
 	'backforth-prev' => 'Föregående ($1)',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'backforth-next' => 'அடுத்த ($1)',
+	'backforth-prev' => 'முந்தைய ($1)',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

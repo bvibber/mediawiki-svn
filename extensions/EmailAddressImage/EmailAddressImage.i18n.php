@@ -14,6 +14,20 @@ $messages['en'] = array(
 	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an email address as image',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'emailaddressimage-desc' => 'Setzt <tt>&lt;E-Mail&gt;</tt> derbäi fir eng E-Mailadress als Bild unzeweisen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

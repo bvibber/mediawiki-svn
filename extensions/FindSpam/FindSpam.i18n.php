@@ -248,9 +248,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'findspam'             => 'Hitta spam',
+	'findspam-desc'        => 'Lägger till en [[Special:FindSpam|special sida]] som hittar nyligen tillaggt spam',
 	'findspam-ip'          => 'IP-adress:',
 	'findspam-ok'          => 'Sök',
 	'findspam-notextfound' => 'Inga bidrag hittades',

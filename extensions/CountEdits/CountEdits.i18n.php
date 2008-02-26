@@ -608,16 +608,19 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'countedits'              => 'Räkna redigeringar',
+	'countedits-desc'         => '[[Special:CountEdits|Specialsida]] som räknar användares redigeringar och visar en topp-10-lista över de användare som gjort flest redigeringar',
+	'countedits-warning'      => "'''Varning:''' Döm inte hunden efter håren. Döm inte användaren efter antalet redigeringar.",
 	'countedits-username'     => 'Användarnamn:',
-	'countedits-ok'           => 'OK',
+	'countedits-ok'           => 'Visa',
 	'countedits-nosuchuser'   => 'Det finns ingen användare med namnet $1.',
 	'countedits-resultheader' => 'Resultat för $1',
 	'countedits-resulttext'   => '$1 har gjort $2 redigeringar',
 	'countedits-mostactive'   => 'Mest aktiva bidragsgivare',
-	'countedits-nocontribs'   => 'Det har inte blivigt några redigeringar på denna wiki.',
+	'countedits-nocontribs'   => 'Det har inte gjorts några redigeringar på denna wiki.',
 );
 
 /** Telugu (తెలుగు)

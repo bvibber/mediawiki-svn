@@ -22,6 +22,13 @@ $messages['ar'] = array(
 	'nstab-comments'    => 'تعليق',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'commentpages-desc' => 'Страници за коментари към основното именно пространство',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

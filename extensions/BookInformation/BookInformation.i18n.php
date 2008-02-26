@@ -895,6 +895,17 @@ $messages['sv'] = array(
 	'bookinfo-provider'          => 'Data hämtat från: $1',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'bookinfo-header'           => 'நூல் விபரம்',
+	'bookinfo-result-title'     => 'தலைப்பு:',
+	'bookinfo-result-author'    => 'ஆசிரியர்:',
+	'bookinfo-result-publisher' => 'வெளியீட்டாளர்:',
+	'bookinfo-result-year'      => 'ஆண்டு:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author Chaduvari

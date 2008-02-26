@@ -60,9 +60,10 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'ajax-se-desc'   => 'Показва потребителите, които редактират същата страница',
-	'ajax-se-title'  => 'Редактиращ потребител:',
-	'ajax-se-idling' => '(преди $1 секунди)',
+	'ajax-se-desc'             => 'Показва потребителите, които редактират същата страница',
+	'ajax-se-title'            => 'Редактиращ потребител:',
+	'ajax-se-idling'           => '(преди $1 секунди)',
+	'ajax-se-pagedoesnotexist' => 'страницата не съществува',
 );
 
 /** Bengali (বাংলা)
@@ -541,6 +542,13 @@ $messages['sv'] = array(
 	'ajax-se-usernotfound'     => 'Fel: användaren hittades inte',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'ajax-se-idling' => '($1 செக்கன்களுக்கு முன்)',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -549,6 +557,8 @@ $messages['te'] = array(
 	'ajax-se-pending'          => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
 	'ajax-se-idling'           => '($1s క్రితం)',
 	'ajax-se-pagedoesnotexist' => 'పేజీ ఉనికిలో లేదు',
+	'ajax-se-userinvalid'      => 'పొరపాటు: తప్పుడు వాడుకరి',
+	'ajax-se-usernotfound'     => 'పొరపాటు: వాడుకరి కనబడలేదు',
 );
 
 /** Thai (ไทย)

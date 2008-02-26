@@ -334,6 +334,13 @@ $messages['sv'] = array(
 	'multiupload-fileuploaded'    => 'Fil uppladdad.',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'multipleupload-saveallfiles' => 'அனைத்துக் கோப்புகளையும் சேமி',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -748,6 +748,9 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-map'                   => 'Mapa',
 	'gm-are-you-sure'          => 'Tem a certeza?',
 	'gm-selector-control'      => 'Selector de mapa/satélite',
+	'gm-large'                 => 'Grande',
+	'gm-medium'                => 'Médio',
+	'gm-small'                 => 'Pequeno',
 	'gm-yes'                   => 'Sim',
 	'gm-no'                    => 'Não',
 	'gm-meters'                => 'metros',
@@ -899,6 +902,10 @@ $wgGoogleMapsMessages['sk'] = array(
  */
 $wgGoogleMapsMessages['sv'] = array(
 	'gm-balloon-title'         => 'Titel:',
+	'gm-remove'                => 'radera',
+	'gm-caption'               => 'Texta',
+	'gm-tab-title'             => 'Märkes titel',
+	'gm-tab'                   => 'Märke',
 	'gm-save-point'            => 'spara &amp; stäng',
 	'gm-load-map-from-article' => 'Ladda en karta från sidan:',
 	'gm-load-map'              => 'Ladda karta',
@@ -927,6 +934,13 @@ $wgGoogleMapsMessages['sv'] = array(
 	'gm-make-map'              => 'skapa en karta',
 	'gm-hide-map'              => 'dölj karta',
 	'gm-kml-loading'           => 'laddar...',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$wgGoogleMapsMessages['ta'] = array(
+	'gm-save-path' => 'சேமி',
 );
 
 /** Telugu (తెలుగు)

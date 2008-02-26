@@ -1397,6 +1397,7 @@ $messages['pt'] = array(
 	'mv_duration_label'           => 'duração',
 	'mv_save_changes'             => 'Salvar alterações',
 	'mv_removed_file_stream'      => 'Foi removido o ficheiro de stream: $1',
+	'mv_user_cant_edit'           => 'Poderá ter que $1 para editar, $2',
 	'mv_add_stream_file'          => 'Adicionar ficheiro de stream',
 	'mv_file_list'                => 'Ficheiros de stream',
 	'mv_label_stream_name'        => 'Nome do stream',
@@ -1803,6 +1804,7 @@ $messages['sv'] = array(
 	'mv_edit'                => 'Redigera',
 	'mv_history'             => 'Historik',
 	'mv_edit_title'          => 'Redigera Text',
+	'mv_remove'              => 'radera',
 	'mv_adjust_preview_stop' => 'Stoppa förhandsgranskning',
 	'mv_start_desc'          => 'Starta tid',
 	'mv_end_desc'            => 'Stoppa tid',
@@ -1812,9 +1814,20 @@ $messages['sv'] = array(
 	'mv_search_category'     => 'Kategori',
 	'mv_search_and'          => 'och',
 	'mv_search_or'           => 'eller',
+	'mv_search_not'          => 'inte',
 	'mv_category'            => 'kategori',
+	'mv_advaced_search'      => 'Avancerat Media Sök',
 	'mv_view_wiki_page'      => 'Visa wiki sida',
+	'mv_match_text'          => '~ $1 matchningar',
+	'mv_match_text_one'      => '~ 1 matchning',
 	'mv_sequence_add_manual' => 'Lägg till efter namn',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'mv_save_changes' => 'மாற்றங்களைச் சேமி',
 );
 
 /** Telugu (తెలుగు)

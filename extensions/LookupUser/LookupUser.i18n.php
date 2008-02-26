@@ -229,6 +229,7 @@ $messages['pt'] = array(
 	'lookupuser_email'             => 'Email: [[{{ns:special}}:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'Nome real: $1',
 	'lookupuser_registration'      => 'Data de registo: $1',
+	'lookupuser_touched'           => 'Registo de utilizador alterado pela última vez: $1',
 	'lookupuser_useroptions'       => 'Opções de utilizador:',
 );
 
@@ -288,6 +289,7 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'lookupuser'              => 'Kolla upp användar info',
 	'lookupuser_nonexistent'  => 'Error: Användare existerar inte',
 	'lookupuser_id'           => 'Användar ID: <tt>#$1</tt>',
 	'lookupuser_email'        => 'E-post: [[Special:Emailuser/$2|$1]]',

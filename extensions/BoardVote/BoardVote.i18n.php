@@ -3316,6 +3316,20 @@ Du kommer bli omdirigerad till den externa servern inom 20 sekunder. [$1 Klicka 
 En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'boardvote_time'     => 'நேரம்',
+	'boardvote_user'     => 'பயனர்',
+	'boardvote_edits'    => 'தொகுப்புகள்',
+	'boardvote_days'     => 'நாட்கள்',
+	'boardvote_ip'       => 'ஐ.பி.',
+	'boardvote_dumplink' => 'இங்கே சொடுகவும்',
+	'boardvote_submit'   => 'சரி',
+	'boardvote_welcome'  => "நல்வரவு '''$1'''!",
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author Mpradeep

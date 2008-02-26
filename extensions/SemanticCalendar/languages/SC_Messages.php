@@ -176,9 +176,10 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'sc_previousmonth'    => 'Mês anterior',
-	'sc_nextmonth'        => 'Mês seguinte',
-	'sc_today'            => 'Hoje',
+	'sc_previousmonth' => 'Mês anterior',
+	'sc_nextmonth'     => 'Mês seguinte',
+	'sc_today'         => 'Hoje',
+	'sc_gotomonth'     => 'Ir para mês',
 );
 
 /** Slovak (Slovenčina)

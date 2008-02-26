@@ -40,3 +40,31 @@ $messages['en'] = array(
         'spl3_debug'        => 'Unknown value for option $1.',
         'spl3_nosubpages'   => '$1 has no subpages to list.',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'spl3-desc'       => "Crée automatiqumeent une liste de sous-pages d'une page utilisant la balise <code><nowiki><splist /></nowiki></code>",
+	'spl3_debug'      => 'Valeur pour l’option $1 inconnue.',
+	'spl3_nosubpages' => "$1 n'a pas de sous-pages à énumérer.",
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'spl3-desc'       => "Maakt automatisch een lijst met de subpagina's van een pagina met de tag <code><nowiki><splist /></nowiki></code>",
+	'spl3_debug'      => 'Onbekende waarde voor optie $1.',
+	'spl3_nosubpages' => "$1 heeft geen weer te geven subpagina's",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'spl3-desc'       => 'Lager automatisk en liste over undersidene til en side ved å bruke taggen <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug'      => 'Ukjent verdi for valg $1.',
+	'spl3_nosubpages' => '$1 har ingen undersider å vise.',
+);
+

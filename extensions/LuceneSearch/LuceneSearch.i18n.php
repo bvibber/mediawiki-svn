@@ -477,6 +477,7 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Meithal
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -487,7 +488,7 @@ $messages['fr'] = array(
 	'lucene-searchscore'    => 'Pertinence : $1%',
 	'lucene-resultsize'     => '$1 ($2 mots)',
 	'searchdidyoumean'      => 'Pensiez-vous à : « <a href="$1">$2</a> » ?',
-	'searchnoresults'       => 'Désolé, il n’existe aucune correspondance exacte à votre requête.',
+	'searchnoresults'       => "Le moteur de recherche n'a trouvé aucune correspondance exacte à votre requête.",
 	'searchnearmatches'     => '<strong>Ces pages ont un titre similaire à votre requête.</strong>',
 	'lucenepowersearchtext' => 'Rechercher dans les espaces :
 

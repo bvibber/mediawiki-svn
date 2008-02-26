@@ -213,6 +213,15 @@ $messages['lb'] = array(
 	'languageselector-setlang' => 'Wielt',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'languageselector'         => 'Taal',
+	'languageselector-desc'    => 'Taalseleksie op edere pazjena, ouch veur gebroekers die neet aangemeldj zeen',
+	'languageselector-setlang' => 'instèlle',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */

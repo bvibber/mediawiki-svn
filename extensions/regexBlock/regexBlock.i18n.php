@@ -573,7 +573,9 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'regexblock-unblock-log'         => "O nome de utilizador ou endereço IP '''$1''' foi desbloqueado.",
 	'regexblock-form-reason'         => 'Motivo:',
+	'regexblock-form-submit'         => 'Bloquear&nbsp;este&nbsp;Utilizador',
 	'regexblock-block-success'       => 'Bloqueio com sucesso',
 	'regexblock-already-blocked'     => '$1 já está bloqueada.',
 	'regexblock-stats-username'      => 'Para $1',
@@ -643,10 +645,12 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'regexblock-form-username' => 'IP adress eller användarnamn:',
-	'regexblock-form-reason'   => 'Anledning:',
-	'regexblock-view-go'       => 'Gå',
-	'regexblock-view-time'     => 'på $1',
+	'regexblock-form-username'  => 'IP adress eller användarnamn:',
+	'regexblock-form-reason'    => 'Anledning:',
+	'regexblock-form-expiry'    => 'Utgång:&#160;',
+	'regexblock-stats-username' => 'För $1',
+	'regexblock-view-go'        => 'Gå',
+	'regexblock-view-time'      => 'på $1',
 );
 
 /** Telugu (తెలుగు)

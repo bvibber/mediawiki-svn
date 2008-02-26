@@ -204,6 +204,14 @@ $messages['sv'] = array(
 	'categorystepper-start' => '(Början på kategorin)',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'categorystepper-end'   => '(பகுப்பின் முடிவு)',
+	'categorystepper-start' => '(பகுப்பின் தொடக்கம்)',
+);
+
 /** Telugu (తెలుగు)
  * @author వైజాసత్య
  * @author Veeven

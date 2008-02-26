@@ -273,6 +273,13 @@ $3',
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'latexdoc_error'   => 'LaTeX fel
+
+Order: $1
+
+Produktion: $2
+
+$3',
 	'latexdoc_get_dvi' => 'Hämta DVI',
 	'latexdoc_get_pdf' => 'Hämta PDF',
 );

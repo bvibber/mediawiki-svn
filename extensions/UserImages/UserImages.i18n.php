@@ -227,6 +227,15 @@ $messages['tr'] = array(
 	'userimages-noimages' => '$1 resmi yüklenemedi.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'userimages-caption'  => 'Các hình do $1 tải lên',
+	'userimages-noname'   => 'Tên thành viên sai hoặc trống.',
+	'userimages-noimages' => '$1 chưa tải lên hình nào.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'userimages-caption' => '由$1上載嘅圖像',

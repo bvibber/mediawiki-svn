@@ -114,6 +114,17 @@ $messages['bg'] = array(
 	'crosswikiblock-nocreate'       => 'Без създаване на сметки',
 	'crosswikiblock-autoblock'      => 'Автоматично блокиране на посления използван от потребителя IP адрес и всички адреси, от които направи опит за редактиране',
 	'crosswikiblock-noemail'        => 'Без възможност за изпращане на е-поща',
+	'crosswikiunblock'              => 'Отблокиране на потребител на друго уики',
+	'crosswikiunblock-header'       => 'Тази страница позволява отблокирането на потребители на други уикита.
+Убедете се, че имате необходимите права за извършване на действието и че действието не е в разрез с текущата политика.',
+	'crosswikiunblock-user'         => 'Потребителско име, IP адрес или номер на блокирането и целево уики:',
+	'crosswikiunblock-reason'       => 'Причина:',
+	'crosswikiunblock-submit'       => 'Отблокиране на потребителя',
+	'crosswikiunblock-success'      => "Потребител '''$1''' беше успешно отблокиран.
+
+Връщане към:
+* [[Special:CrosswikiBlock|Формуляра за блокиране]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Не беше въведено потребителско име',
 	'crosswikiblock-local'          => 'Локалните блокирания не се поддържат от този интерфейс. Използва се [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'Не съществува база данни $1',
@@ -121,11 +132,13 @@ $messages['bg'] = array(
 	'crosswikiblock-nouser'         => 'Не беше намерен потребител „$3“',
 	'crosswikiblock-noreason'       => 'Не е посочена причина.',
 	'crosswikiblock-alreadyblocked' => 'Потребител $3 е вече блокиран.',
+	'crosswikiblock-noblock'        => 'Този потребител не е блокиран.',
 	'crosswikiblock-success'        => "Потребител '''$3''' беше блокиран успешно.
 
 Връщане към:
 * [[Special:CrosswikiBlock|Формуляра за блокиране]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:Ipblocklist]]',
 );
 
 /** German (Deutsch)
@@ -432,6 +445,8 @@ $messages['pt'] = array(
 	'crosswikiblock-anononly'       => 'Bloquear apenas utilizadores anónimos',
 	'crosswikiblock-nocreate'       => 'Impedir criação de conta',
 	'crosswikiblock-noemail'        => 'Impedir utilizador de enviar email',
+	'crosswikiunblock-reason'       => 'Motivo:',
+	'crosswikiunblock-submit'       => 'Desbloquear este utilizador',
 	'crosswikiblock-nousername'     => 'Nenhum nome de utilizador foi introduzido',
 	'crosswikiblock-dbnotfound'     => 'A base de dados $1 não existe',
 	'crosswikiblock-noname'         => '"$1" não é um nome de utilizador válido.',
@@ -537,26 +552,48 @@ Vrátiť sa na:
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'crosswikiblock-desc'           => 'Gör det möjligt att blockera användare på andra wikier med hjälp av en [[Special:Crosswikiblock|specialsida]]',
 	'crosswikiblock'                => 'Blockera användare på en annan wiki',
-	'crosswikiblock-expiry'         => 'Utgång:',
+	'crosswikiblock-header'         => 'Den här sidan används för att blockera användare på andra wikier.
+Kontrollera att du har tillåtelse att utföra åtgärder på den andra wikin, och att du följer alla policyer.',
+	'crosswikiblock-target'         => 'IP-adress eller användarnamn och målwiki:',
+	'crosswikiblock-expiry'         => 'Varaktighet:',
 	'crosswikiblock-reason'         => 'Anledning:',
-	'crosswikiblock-submit'         => 'Blockera denna användare',
+	'crosswikiblock-submit'         => 'Blockera användaren',
+	'crosswikiblock-anononly'       => 'Blockera bara oinloggade användare',
+	'crosswikiblock-nocreate'       => 'Förhindra registrering av användarkonton',
+	'crosswikiblock-autoblock'      => 'Blockera automatiskt den IP-adress som användaren använde senast, samt alla adresser som användaren försöker redigera ifrån',
+	'crosswikiblock-noemail'        => 'Hindra användaren från att skicka e-post',
+	'crosswikiunblock'              => 'Ta bort blockering av användare på en annan wiki',
+	'crosswikiunblock-header'       => 'Den här sidan används för att ta bort blockeringar av användare på andra wikier.
+Kontrollera att du har tillåtelse att utföra åtgärder på den andra wikin, och att du följer alla policyer.',
+	'crosswikiunblock-user'         => 'Användarnamn, IP-adress eller blockerings-ID och målwiki:',
 	'crosswikiunblock-reason'       => 'Anledning:',
-	'crosswikiblock-dbnotfound'     => 'Databasen $1 existerar inte',
-	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
-	'crosswikiblock-nouser'         => 'Användare "$3" hittades inte.',
-	'crosswikiblock-noexpiry'       => 'Ogiltig utgång: $1.',
-	'crosswikiblock-alreadyblocked' => 'Användare $3 är redan blockerad.',
-	'crosswikiblock-success'        => "Användare '''$3''' blev lyckat blockerad.
+	'crosswikiunblock-submit'       => 'Ta bort blockeringen',
+	'crosswikiunblock-success'      => "Blockeringen av '''$1''' har tagits bort.
 
-Tillbaka till:
-* [[Special:CrosswikiBlock|Blockerings sätt]]
+Gå tillbaka till:
+* [[Special:CrosswikiBlock|Blockeringsformuläret]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Inget användarnamn angavs',
+	'crosswikiblock-local'          => 'Lokala blockeringar kan inte göras från den här sidan. Använd [[Special:Blockip]] istället.',
+	'crosswikiblock-dbnotfound'     => 'Databasen "$1" existerar inte',
+	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
+	'crosswikiblock-nouser'         => 'Användaren "$3" hittades inte.',
+	'crosswikiblock-noexpiry'       => 'Ogiltig varaktighet: $1.',
+	'crosswikiblock-noreason'       => 'Ingen anledning angavs.',
+	'crosswikiblock-alreadyblocked' => 'Användaren $3 är redan blockerad.',
+	'crosswikiblock-noblock'        => 'Användaren är inte blockerad.',
+	'crosswikiblock-success'        => "Blockeringen av användaren '''$3''' lyckades.
+
+Gå tillbaka till:
+* [[Special:CrosswikiBlock|Blockeringsformuläret]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:Ipblocklist]] istället.',
 );
 
 /** Telugu (తెలుగు)

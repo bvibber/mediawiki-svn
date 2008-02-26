@@ -985,14 +985,27 @@ $wdMessages['id'] = array(
  * @author JtFuruhata
  */
 $wdMessages['ja'] = array(
-	'datasearch'      => 'ウィキデータ: データ検索',
-	'langman_title'   => '言語マネージャ',
-	'languages'       => 'ウィキデータ: 言語マネージャ',
-	'ow_save'         => '保存',
-	'ow_history'      => '履歴',
-	'ow_datasets'     => 'データセット',
-	'ow_noedit_title' => '編集権限がありません',
-	'ow_noedit'       => 'データセット "$1" の編集権限がありません。[[{{MediaWiki:Ow editing policy url}}|編集方針]]をご覧ください。',
+	'datasearch'                            => 'ウィキデータ: データ検索',
+	'langman_title'                         => '言語マネージャ',
+	'languages'                             => 'ウィキデータ: 言語マネージャ',
+	'ow_save'                               => '保存',
+	'ow_history'                            => '履歴',
+	'ow_datasets'                           => 'データセット',
+	'ow_noedit_title'                       => '編集権限がありません',
+	'ow_noedit'                             => 'データセット "$1" の編集権限がありません。[[{{MediaWiki:Ow editing policy url}}|編集方針]]をご覧ください。',
+	'ow_uipref_datasets'                    => 'デフォルト表示',
+	'ow_uiprefs'                            => 'ウィキデータ',
+	'ow_none_selected'                      => '（選択なし）',
+	'ow_conceptmapping_help'                => '<p>可能な操作: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  関連付けを作成</li>
+<li>&action=get&concept=<concept_id>  関連する内容を取得</li>
+<li>&action=list_sets  取得可能なデータの接頭辞とその関連項目の一覧を取得</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> ある概念に対する意味定義の一つから他の意味定義すべてを取得</li>
+<li>&action=help  ヘルプの表示</li>
+</ul></p>',
+	'ow_conceptmapping_uitext'              => '<p>コンセプトマップでは、あるデータセットに登録されている意味定義と他のデータセットにある同一概念の意味定義を関連付けることが可能です。</p>',
+	'ow_conceptmapping_no_action_specified' => '申し訳ありません、"$1" という操作は定義されていません。',
+	'ow_dm_OK'                              => 'OK',
 );
 
 /** Georgian (ქართული)
@@ -2268,6 +2281,13 @@ $wdMessages['sv'] = array(
 	'ow_Property'                     => 'Attribut',
 	'ow_Value'                        => 'Värde',
 	'ow_meaningsofsubtitle'           => '<em>Wiki länk:</em> [[$1]]',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$wdMessages['ta'] = array(
+	'ow_save' => 'சேமி',
 );
 
 /** Telugu (తెలుగు)

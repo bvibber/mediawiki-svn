@@ -64,6 +64,7 @@ $messages['bg'] = array(
 	'importusers-uploadfile'      => 'Качване на файл',
 	'importusers-form-button'     => 'Внасяне',
 	'importusers-log'             => 'Дневник на внасянията',
+	'importusers-log-summary'     => 'Резюме',
 	'importusers-log-summary-all' => 'Всички',
 	'importusers-password'        => 'парола',
 );
