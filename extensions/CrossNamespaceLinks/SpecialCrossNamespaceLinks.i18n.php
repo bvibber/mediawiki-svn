@@ -227,10 +227,14 @@ $messages['hy'] = array(
 	'crossnamespacelinkstext'     => '$1. $2 {{PLURAL:$2|հղում|հղում}} դեպի $3',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
-	'crossnamespacelinks'     => 'Pranala lintas ruang nama',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Memberikan daftar pranala lintas ruang nama]] yang seharusnya tak dibolehkan ada di {{SITENAME}}',
+	'crossnamespacelinks'         => 'Pranala lintas ruang nama',
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',
-	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
+	'crossnamespacelinkstext'     => '$1: $2 terpaut ke $3'
 );
 
 /** Icelandic (Íslenska)

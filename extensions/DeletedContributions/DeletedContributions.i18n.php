@@ -214,8 +214,12 @@ $messages['hy'] = array(
 	'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
-	'deletedcontributions' => 'Kontribusi yang dihapus',
+	'deletedcontributions'      => 'Kontribusi yang dihapus',
+	'deletedcontributions-desc' => 'Memberikan fasilitas bagi pengurus untuk [[Special:DeletedContributions|melihat suntingan yang dihapus dari seorang pengguna]]',
 );
 
 $messages['is'] = array(

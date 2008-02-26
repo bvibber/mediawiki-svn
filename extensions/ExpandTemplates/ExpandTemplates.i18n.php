@@ -395,14 +395,21 @@ $messages['hy'] = array(
 	'expandtemplates'                  => 'Կաղապարների ընդարձակում',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'expandtemplates'                  => 'Pengembangan templat',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Mengembangkan templat, fungsi parser dan variables]] untuk menunjukkan hasil teks wiki dan pratayang halaman hasilnya',
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',
 	'expand_templates_title'           => 'Judul konteks, untuk {{PAGENAME}} dll.:',
 	'expand_templates_input'           => 'Teks sumber:',
 	'expand_templates_output'          => 'Hasil',
+	'expand_templates_xml_output'      => 'Hasil XML',
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
+	'expand_templates_generate_xml'    => 'Tampilkan pohon parser XML',
+	'expand_templates_preview'         => 'Pratayang',
 );
 
 /** Icelandic (Íslenska)
