@@ -155,35 +155,13 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$next_month_text = wfMsg('sc_nextmonth');
 	$go_to_month_text = wfMsg('sc_gotomonth');
 
-	// error-checking - many UNIX-based systems, and Windows, can't handle
-	// years that are after the beginning of 2038, or before either 1970,
-	// 1901 or 1900, depending on the OS
-	// (see http://en.wikipedia.org/wiki/Year_2038_problem)
-	$date_error = NULL;
-	if ($cur_year >= 2038 && date("w", mktime(0, 0, 0, 2, 1, 2038)) != 1) {
-		$date_error = wfMsg('sc_error_year2038');
-	} elseif ($cur_year <= 1970 && date("w", mktime(0, 0, 0, 1, 1, 1969)) != 3) {
-		$date_error = wfMsg('sc_error_beforeyear', '1970');
-	} elseif ($cur_year <= 1901 && date("w", mktime(0, 0, 0, 1, 1, 1900)) != 1) {
-		$date_error = wfMsg('sc_error_beforeyear', '1901');
-	} elseif ($cur_year <= 1900 && date("w", mktime(0, 0, 0, 1, 1, 1899)) != 0) {
-		$date_error = wfMsg('sc_error_beforeyear', '1900');
-	}
-	if ($date_error != NULL)
-		$text .= "<div class=\"errorbox\"><strong>$date_error</strong></div>\n<div style=\"clear: both\">";
-
-
 	// get day of the week that the first of this month falls on
-	$day_of_week_of_1 = date("w", mktime(0, 0, 0, $cur_month_num, 1, $cur_year));
+	$first_day = new SCHistoricalDate();
+	$first_day->create($cur_year, $cur_month_num, 1);
+	$day_of_week_of_1 = $first_day->getDayOfWeek();
 	$start_day = 1 - $day_of_week_of_1;
-	$days_in_prev_month = scfDaysInMonth($prev_month_num, $prev_year);
-	$days_in_cur_month = scfDaysInMonth($cur_month_num, $cur_year);
-	// fix strange bug for December, 1 B.C.
-	if ($cur_month_num == 12 && $cur_year == -1) {
-		$days_in_cur_month = 31;
-	} elseif ($cur_month_num == 1 & $cur_year == 1) {
-		$days_in_prev_month = 31;
-	}
+	$days_in_prev_month = SCHistoricalDate::daysInMonth($prev_year, $prev_month_num);
+	$days_in_cur_month = SCHistoricalDate::daysInMonth($cur_year, $cur_month_num);
 	$today_string = date("Y n j", mktime());
 	$url_year = $wgRequest->getVal('year');
 	$title = str_replace(' ', '_', $wgTitle->getText());
