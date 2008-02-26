@@ -1,0 +1,85 @@
+CategoryStepper
+
+	Version 1.5
+	Copyright © 2007-2008 MinuteElectron.
+	Licensed under the GNU General Public License 2.0 or later.
+
+The CategoryStepper extension displays a category stepper box allowing one to
+navigate forward and backwards alphabetically through one or more categories a
+page is in, as specified via a MediaWiki: namespace page or the
+$wgCategoryStepper configuration variable.
+
+== Requirements ==
+
+The CategoryStepper extension requires MediaWiki 1.11.0 or later.
+
+== Installation ==
+
+1. Place the CategoryStepper.php source code into
+   extensions/CategoryStepper/CategoryStepper.php.
+2. Place the CategoryStepper.i18n.php source code into
+   extensions/CategoryStepper/CategoryStepper.i18n.php.
+3. If desired place the CategoryStepper.css source code into
+   skins/CategoryStepper.css.
+4. Add require_once( "$IP/extensions/CategoryStepper/CategoryStepper.php" ); to
+   LocalSettings.php.
+5. Enjoy!
+
+Installation can be verified through the [[Special:Version]] page on the wiki.
+
+== Using the extension ==
+
+CategoryStepper adds a box to the bottom of the content area on pages which are
+in a specified category.  Categories can be configured either via using the
+$wgCategoryStepper configuration variable or by mofifying the page
+MediaWiki:categorystepper.
+
+Fill the $wgCategoryStepper variable with a list of category names to stepper
+box titles; e.g.
+$wgCategoryStepper[ "Astronauts" ] = "Astronauts Box Title";
+
+Alternatively set the $wgCategoryStepper variable to false and use the
+MediaWiki:Categorystepper page to set options; e.g.
+
+LocalSettings.php:
+	$wgCategoryStepper = false;
+MediaWiki:Categorystepper:
+	* Astronauts|Astronauts Box Title
+
+== Change log ==
+
+Version 1.1
+2008-01-19
+	Original version.
+
+Version 1.2
+2008-01-20
+	Added missing space in i18n file.
+
+Version 1.3
+2008-02-16
+	No longer render on edit, protect or delete pages.
+	Allow modification of categories and title via the
+		MediaWiki:categorystepper page.
+
+Version 1.4
+2008-02-17
+	The second parameter of each row on the	MediaWiki:categorystepper page is
+		now optional and defaults to the first parameter.
+
+Version 1.5
+2008-02-26
+	Default wikitable-like styling is now included and can optionally be used,
+		or overridden via MediaWiki:Common.css or the individual skins CSS
+		MediaWiki namespace pages.
+	README added.
+	Function wfCategoryStepper renamed to efCategoryStepper.
+	ltrim() now used instead of preg_replace().
+
+== Feedback ==
+
+Bugs and feature requests should be reported via MediaZilla
+<http://bugzilla.wikimedia.org/> and placed in the 'MediaWiki extensions'
+product under the CategoryStepper component.  Alternatively send an e-mail to
+<minuteelectron@googlemail.com> with any comments or suggestions, all are
+welcome.

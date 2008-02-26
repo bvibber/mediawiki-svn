@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'categorystepper'       => '',
-	'categorystepper-desc'  => 'Display a category stepper box on pages that are in a set of categories.',
+	'categorystepper-desc'  => 'Displays a category stepper box allowing one to navigate forward and backwards alphabetically through one or more categories a page is in',
 	'categorystepper-end'   => '(End of category)',
 	'categorystepper-start' => '(Start of category)',
 );
@@ -36,7 +36,6 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
- * @author Zaheen
  */
 $messages['bn'] = array(
 	'categorystepper-desc'  => 'যেসব পাতা বিষয়শ্রেণীসমূহের একটি সেটে আছে, সেসব পাতাতে একটি বিষয়শ্রেণী স্টেপার বক্স দেখানো হোক।',

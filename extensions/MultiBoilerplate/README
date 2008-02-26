@@ -1,0 +1,97 @@
+MultiBoilerplate
+
+	Version 1.6
+	Copyright © 2007-2008 MinuteElectron.
+	Licensed under the GNU General Public License 2.0 or later.
+
+The MultiBoilerplate extension allows a boilerplate to be selected from a drop
+down box located above the edit form when editing non-exstant pages or
+optionally (based upon configuration variable $wgMultiBoilerplateOverwrite),
+load the template over the current contents. 
+
+== Requirements ==
+
+The MultiBoilerplate extension requires MediaWiki 1.11.0 or later.
+
+== Installation ==
+
+1. Place the MultiBoilerplater.php source code into
+   extensions/MultiBoilerplate/MultiBoilerplate.php.
+2. Place the MultiBoilerplater.i18n.php source code into
+   extensions/MultiBoilerplate/MultiBoilerplate.i18n.php.
+3. Add require_once( "$IP/extensions/MultiBoilerplate/MultiBoilerplate.php" );
+   to LocalSettings.php.
+4. Enjoy!
+
+Installation can be verified through the [[Special:Version]] page on the wiki.
+
+== Using the extension ==
+
+MultiBoilerplate adds a box to the edit page above the edit form
+allowing users to load a boilerplate into the edit window.
+
+Fill the $wgMultiBoilerplateOptions variable with a list of boilerplate names
+to templates; e.g.
+$wgMultiBoilerplateOptions[ "My Boilerplate" ] = "Template:My Boilerplate";
+
+Alternatively set the variable to false and use the MediaWiki:Multiboilerplate
+page to set options
+
+LocalSettings.php:
+	$wgMultiBoilerplateOptions = false;
+MediaWiki:Multiboilerplate:
+	* My Boilerplate|Template:My Boilerplate
+
+Optionally set whether or not the selection box is displayed on pages that
+already exist (defaults to false) using $wgMultiBoilerplateOverwrite.
+$wgMultiBoilerplateOverwrite = true;
+
+== Change log ==
+
+Version 1.1
+2007-12-18
+	Original version.
+
+Version 1.2
+2008-01-07
+	Refactor code, fix major bug that made the extension useless and add
+		comments.
+
+Version 1.3
+2008-01-19
+	Use Xml:: instead of manually created HTML, converted all double-quotes	to
+		single-quotes.
+	Added an optional message multiboilerplate-label to	display a label before
+		the drop-down box, and rename multiboilerplate-select to
+		multiboilerplate-legend and	multiboilerplate-load to
+		multiboilerplate-submit to be less ambiguous.
+
+Version 1.4
+2008-02-06
+	It is now (optionally) possible to specify boilerplates in a MediaWiki
+		namespace message instead of a LocalSettings.php configuration variable.
+	The extension now uses descriptionmsg (allowing description
+		internationalisation).
+	Part of the code that used direct database interfacing to check for article
+		existence has been replaced with a call to the $wgTitle global.
+	The $wgMultiBoilerplateThings global has been renamed to
+		$wgMultiBoilerplateOptions for a greater level of self-explanation.
+	The boilerplate selection box is no longer displayed if there are no
+		options.
+
+Version 1.5
+2008-02-06
+	Now handles <noinclude> and<includeonly> tags.
+
+Version 1.6
+2008-02-26
+	Added README.
+	ltrim() now used instead of preg_replace().
+
+== Feedback ==
+
+Bugs and feature requests should be reported via MediaZilla
+<http://bugzilla.wikimedia.org/> and placed in the 'MediaWiki extensions'
+product under the 'MultiBoilerplate' component.  Alternatively send an e-mail to
+<minuteelectron@googlemail.com> with any comments or suggestions, all are
+welcome.

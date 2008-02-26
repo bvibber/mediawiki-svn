@@ -1,7 +1,10 @@
 <?php
 
 /**
- * Display a category stepper box on pages that are in a set set of categories.
+ * Displays a category stepper box allowing one to navigate forward and
+ * backwards alphabetically through one or more categories a page is in,
+ * as specified via a MediaWiki: namespace page or the $wgCategoryStepper
+ * configuration variable.
  *
  * @addtogroup Extensions
  *
@@ -18,15 +21,15 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 // Extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
 	'name'           => 'CategoryStepper',
-	'description'    => 'Display a category stepper box on pages that are in a set of categories.',
+	'description'    => 'Displays a category stepper box allowing one to navigate forward and backwards alphabetically through one or more categories a page is in.',
 	'descriptionmsg' => 'categorystepper-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryStepper',
-	'version'        => '1.4',
+	'version'        => '1.5',
 );
 
-// Hook into OutputPageBeforeHTML to add content to the end of the content.
-$wgHooks[ 'OutputPageBeforeHTML' ][] = 'wfCategoryStepper';
+// Hook into OutputPageBeforeHTML to add code to the end of the content area.
+$wgHooks[ 'OutputPageBeforeHTML' ][] = 'efCategoryStepper';
 
 // Set extension messages file.
 $wgExtensionMessagesFiles[ 'CategoryStepper' ] = dirname( __FILE__ ) . '/CategoryStepper.i18n.php';
@@ -51,10 +54,10 @@ $wgCategoryStepper = array();
  *
  * @return true
  */
-function wfCategoryStepper( &$out, &$text ) {
+function efCategoryStepper( $out, $text ) {
 
 	// Get various variables needed for this extension.
-	global $wgCategoryStepper, $wgTitle, $wgArticlePath, $wgRequest;
+	global $wgCategoryStepper, $wgTitle, $wgArticlePath, $wgRequest, $IP, $wgOut;
 
 	// Only render on the actual view page; not edit, delete etc.
 	if( $wgRequest->getBool( 'action' ) ) return true;
@@ -71,7 +74,7 @@ function wfCategoryStepper( &$out, &$text ) {
 		$things = wfMsg( 'categorystepper' );
 		$things = explode( "\n", str_replace( "\r", "\n", str_replace( "\r\n", "\n", $things ) ) ); // Ensure line-endings are \n
 		foreach( $things as $row ) {
-			$row = preg_replace( '#^\*( *)#', '', $row ); // Remove the asterix (and a space if found) from the start of the line.
+			$row = ltrim( $row, '* ' ); // Remove the asterix (and a space if found) from the start of the line.
 			$row = explode( '|', $row );
 			if( !isset( $row[ 1 ] ) ) $row[ 1 ] = $row[ 0 ];
 			$wgCategoryStepper[ $row[ 0 ] ] = $row[ 1 ];
@@ -116,7 +119,8 @@ function wfCategoryStepper( &$out, &$text ) {
 				$next = Xml::element( "span", array( "style" => "font-style:italic;" ), wfMsg( "categorystepper-end" ) );
 			}
 
-			// Generate the table at the bottom of the page and add it to the page text.
+			// Generate the table at the bottom of the page and add it to the
+			// page text.
 			$text .=
 				Xml::openElement( "table", array( "class" => 'categorystepper', 'style' => 'margin-left:auto;margin-right:auto;' ) ) .
 					Xml::openElement( "tr" ) .
@@ -134,6 +138,9 @@ function wfCategoryStepper( &$out, &$text ) {
 		}
 
 	}
+
+	// Add style file to the output headers if it exists.
+	if( file_exists( "$IP/skins/CategoryStepper.css" ) ) $wgOut->addStyle( 'CategoryStepper.css' );
 
 	// Return true so things don't break.
 	return true;

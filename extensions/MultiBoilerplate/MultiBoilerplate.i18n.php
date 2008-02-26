@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'multiboilerplate'        => '',
-	'multiboilerplate-desc'   => 'Displays a box at the top of the edit page to select and load a boilerplate',
+	'multiboilerplate-desc'   => 'Allows a boilerplate to be selected from a drop down box located above the edit form when editing pages',
 	'multiboilerplate-label'  => '',
 	'multiboilerplate-legend' => 'Select boilerplate',
 	'multiboilerplate-submit' => 'Load',
