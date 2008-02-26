@@ -57,7 +57,8 @@ $wgCategoryStepper = array();
 function efCategoryStepper( $out, $text ) {
 
 	// Get various variables needed for this extension.
-	global $wgCategoryStepper, $wgTitle, $wgArticlePath, $wgRequest, $IP, $wgOut;
+	global $wgCategoryStepper, $wgTitle, $wgArticlePath, $wgRequest, $IP,
+		$wgUser, $wgOut;
 
 	// Only render on the actual view page; not edit, delete etc.
 	if( $wgRequest->getBool( 'action' ) ) return true;
@@ -105,16 +106,16 @@ function efCategoryStepper( $out, $text ) {
 
 			// Get the title of the element before this.
 			if( $prevI ) {
-				$row = $dbr->fetchRow( $dbr->select( "page", "page_title", array( "page_id" => $prevI ) ) );
-				$previous = Xml::element( "a", array( "href" => str_replace( "$1", $row[ 'page_title' ], $wgArticlePath ) ), str_replace( "_", ' ', $row[ 'page_title' ] ) );
+				$prevtitle = Title::newFromId( $prevI );
+				$previous = $wgUser->getSkin()->makeKnownLinkObj( $prevtitle );
 			} else {
 				$previous = Xml::element( "span", array( "style" => "font-style:italic;" ), wfMsg( "categorystepper-start" ) );
 			}
 
 			// Get the title of the element after this.
 			if( $nextI ) {
-				$row = $dbr->fetchRow( $dbr->select( "page", "page_title", array( "page_id" => $nextI ) ) );
-				$next = Xml::element( "a", array( "href" => str_replace( "$1", $row[ 'page_title' ], $wgArticlePath ) ), str_replace( "_", ' ', $row[ 'page_title' ] ) );
+				$nexttitle = Title::newFromId( $nextI );
+				$next = $wgUser->getSkin()->makeKnownLinkObj( $nexttitle );
 			} else {
 				$next = Xml::element( "span", array( "style" => "font-style:italic;" ), wfMsg( "categorystepper-end" ) );
 			}
