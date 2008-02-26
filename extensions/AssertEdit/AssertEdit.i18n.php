@@ -170,6 +170,15 @@ $messages['hu'] = array(
 	'assert_edit_message' => 'Az előfeltételezés ($1) hamis értéket adott vissza.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'assert_edit_title' => 'Penegasan gagal',
+	'assert_edit_desc'  => 'Menambahkan penegasan suntingan untuk digunakan oleh bot',
+	'assert_edit_message' => 'Penegasan yang dimaksud ($1) gagal.',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

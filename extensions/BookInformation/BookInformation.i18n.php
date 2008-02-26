@@ -402,9 +402,12 @@ $messages['hu'] = array(
 	'bookinfo-provider'          => 'Adat ellátó: $1',
 );
 
-/* Indonesian (Ivan Lanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'bookinfo-header' => 'Informasi buku',
+	'bookinfo-desc' => 'Mengembangkan [[Special:Booksources]] dengan informasi dari sumber-sumber buku',
 	'bookinfo-result-title' => 'Judul:',
 	'bookinfo-result-author' => 'Pengarang:',
 	'bookinfo-result-publisher' => 'Penerbit:',
