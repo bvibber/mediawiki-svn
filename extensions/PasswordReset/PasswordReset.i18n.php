@@ -8,7 +8,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'passwordreset' => 'Password Reset',
-	'passwordreset' => "Resets Wiki user's passwords - requires 'passwordreset' privileges",
+	'passwordreset-desc' => "Resets Wiki user's passwords - requires 'passwordreset' privileges",
 	'passwordreset-invalidusername' => 'Invalid Username',
 	'passwordreset-emptyusername' => 'Empty Username',
 	'passwordreset-nopassmatch' => 'Passwords do not match',
@@ -69,7 +69,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'passwordreset'                    => 'Passwort zurücksetzen',
-	'passwordreset'                    => "Zurücksetzen eines Benutzer-Passwortes - ''passwordreset''-Recht notwendig",
+	'passwordreset-desc'               => "Zurücksetzen eines Benutzer-Passwortes - ''passwordreset''-Recht notwendig",
 	'passwordreset-invalidusername'    => 'Ungültiger Benutzername',
 	'passwordreset-emptyusername'      => 'Leerer Benutzername',
 	'passwordreset-nopassmatch'        => 'Passwörter stimmen nicht überein',
