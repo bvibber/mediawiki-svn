@@ -7,7 +7,7 @@ CREATE TABLE /*$wgDBprefix*/invitation (
 	PRIMARY KEY (inv_id),
 	KEY (inv_invitee,inv_type),
 	KEY (inv_inviter),
-	KEY (inv_type),
+	KEY (inv_type)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/invite_count (
@@ -15,5 +15,5 @@ CREATE TABLE /*$wgDBprefix*/invite_count (
 	ic_type varchar(255) NOT NULL,
 	ic_count BIGINT NOT NULL DEFAULT 0,
 	PRIMARY KEY (ic_user,ic_type),
-	KEY (ic_user,ic_type,ic_count),
+	KEY (ic_user,ic_type,ic_count)
 ) /*$wgDBTableOptions*/;
