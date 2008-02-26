@@ -1,15 +1,16 @@
 == About ==
-Metavid Wiki is a project for extending MediaWiki with media
-functions that enable community engagement with audio video metdata.
+MetaVidWiki is a project for extending MediaWiki with interfaces 
+that enable community engagement with audio video metdata.
 For more details visit metavid.ucsc.edu
 
 == Disclaimer ==
-Metavid Wiki is still under development. 
+MetaVidWiki is still under development. (we have not done a official release yet) 
 For more info come by #metavid or email dale@ucsc.edu 
 
 ==Short technical Description==
-Metavid builds off of semantic mediaWiki but is not dependent on it. Its
-just a matter of how structured you want your metadata ;) 
+Metavid builds off of semantic mediaWiki but is should not be too difficult
+to set up without semantic wiki... Its just a matter of how structured you 
+want your temporal metadata.
 
 Metavid Wiki adds the following namespaces:
 MV_NS_STREAM : Stream : The base namespace for media with temporal meta data.
@@ -30,11 +31,19 @@ Mv_Embed is a stand alone javascript library for playing back ogg theora
 video in the browser. It extends oggHandler's plugin detect script and dynamically
 calls javascript libraries which generalize plugin api's to something near
 html5 video tag. Mv_embed also supports basic sequences via rss, xspf,
-m3u or custom inline format and includes a basic in-browser sequence editor. 
+m3u or custom inline format and includes a basic in-browser sequence editor (still under development) 
+More info at  http://metavid.ucsc.edu/wiki/index.php/Mv_Embed
+
+==Dependencies for MetaVidWiki ==
+* MediaWiki: MetaVid is an extension to MediaWiki (we run off the svn but should work with anything > 1.10 or so.)
+* SemanticMediaWiki: you can get semantic wiki from http://semantic-mediawiki.org/ we use 1.0.1 release
+* mod_annodex: you will need a server side ogg segment server we use mod_annodex you can get that at annodex.net
+
+
 
 ==Install:==
 
-==add to local settings.php ==
+===add to LocalSettings.php ===
 ParserFunctions are necessary
 require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
 
@@ -51,13 +60,11 @@ enableSemantics('localhost');
 //include after enableSemantics to enable metavid Extension semantic wiki overrides
 enableMetavid();
 
-
-== base templates ==
+=== base templates ===
 These base Templates (for structuring output of metadata) can be added by running the
 maintenance/metavid2mvWiki.php with the "update_templates" option.
 (this also includes congress templates that may or may not be of use to you. 
 
-
-==sql that must be run on install==
-Have to update some tables: maintenance/updateTables.sql
- (will eventually be just one "update" script and integrated into the web based metavid admin)
+===sql that must be run on install===
+Run the sql: maintenance/mv_tables.sql
+ having a web based install is on the todo list ;)
