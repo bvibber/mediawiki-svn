@@ -72,13 +72,17 @@ var video_attributes = {
     "innerHTML":null,
     "width":"320",
     "height":"240",
-    
+
+    //video attributes:
     "src":null,      
     "autoplay":false,   
     "start":0,
     "end":null,
     "controls":true,            
     
+    //roe url (for grabbing metadata)
+    "roe":null,
+            
     //custom attributes for mv_embed: 
     "play_button":true,
     "thumbnail":null, 

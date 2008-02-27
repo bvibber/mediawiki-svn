@@ -181,7 +181,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
- 		$ftq=$snq=$toplq_cat=$date_range_join=$date_range_where=$asql=''; //top query and full text query ='' 		 	
+ 		$ftq_match_asql=$last_person_aon=$ftq_match=$ftq=$snq=$toplq_cat=$date_range_join=$date_range_where=$asql=''; //top query and full text query ='' 		 	
  		if($filters=='')return array(); 		
  		
  		$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':''; 
@@ -189,6 +189,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
  		//print_r($filters);
  		//print_r($_GET);
+ 		$group_spoken=true;
  		$categoryTable =  $dbr->tableName( 'categorylinks');
  		foreach($filters as $f){
  			//proocc and or for fulltext:
@@ -200,14 +201,22 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			}
  			//add to the fulltext query: 
  			switch($f['t']){
- 				case 'spoken_by': 		
+ 				case 'spoken_by': 	 
+ 					//if we have an OR set prev to OR
+ 					if($last_person_aon=='+' && $aon==''){
+ 						$ftq=str_replace('+"spoken by', '"spoken by', $ftq);
+ 						$group_spoken=false;
+ 					}
  					//full text based semantic query:			
  					$ftq.=' '.$aon.'"spoken by '.mysql_escape_string($f['v']).'"';
- 					//table based query:
- 					
+ 					//table based query: 	
+ 					$last_person_aon=$aon;				
  				break; 			
  				case 'match':
- 					$ftq.=' '.$aon.'"'.mysql_escape_string($f['v']).'"';
+ 					$ftq_match.=' '.$aon.'"'.mysql_escape_string($f['v']).'"'; 
+ 					//only need to split out ftq match if spoken by is more than one		
+ 					if($ftq_match_asql!='')
+ 						$ftq_match_asql = $asql;			
  				break;
  				//top level queries  (sets up time ranges )
  				case 'category':
@@ -302,7 +311,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 						'`end_time`<='.$row->end_time.' ) ';						
  				$or=' OR ';
  			} 			
- 			$sql.=') '; 
+ 			$sql.=') ';  			
  			//if($ftq!='')
  			//	$sql.=" AND MATCH (text) 
 	 		//		AGAINST('$ftq' IN BOOLEAN MODE) ";	 		
@@ -322,14 +331,25 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  					"AND `smw_relations`.`relation_title`='Spoken_By') ";
  			}
 	 		$sql.="WHERE $snq ";
-	 		if($ftq!=''){
-	 			$sql.="	MATCH ( $searchindexTable.`si_text` ) 
-	 				AGAINST('$ftq' IN BOOLEAN MODE) ";
+	 		$two_part_anor='';
+	 		if($group_spoken){
+	 			$ftq.=$ftq_match;		 				 		
+	 		}else{
+	 			if($ftq_match_asql)$sql.=' '.$ftq_match_asql.' ';
+	 			if($ftq_match!=''){
+		 			$sql.="	MATCH ( $searchindexTable.`si_text` ) 
+			 				AGAINST('$ftq_match' IN BOOLEAN MODE) ";
+			 		if($ftq!='')$sql.=' AND ';
+	 			}	 			
 	 		}
-	 		$sql.=" $date_range_where ";
+	 		if($ftq!=''){
+		 		$sql.="	MATCH ( $searchindexTable.`si_text` ) 
+		 			AGAINST('$ftq' IN BOOLEAN MODE) ";
+		 	}
+	 		$sql.=" $date_range_where ";	 		
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
- 		//echo "SQL:".$sql;  			
+		//echo "SQL:".$sql;  			
  		$result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
  		
  		$this->numResults=$dbr->numRows($result);

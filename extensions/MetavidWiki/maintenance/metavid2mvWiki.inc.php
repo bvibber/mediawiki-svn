@@ -30,7 +30,7 @@ function do_stream_attr_check($old_stream) {
 		$mvStream->duration = ($old_stream->adj_end_time - $old_stream->adj_start_time);
 	}	
 	$mvStream->updateStreamDB();
-	print "\nran stream db update: " .$mvStream->duration . ' ' . $mvStream->date_start_time."\n";
+	print "$old_stream->name update: duration:" .seconds2ntp($mvStream->duration) . ' startDay:' . date('m-d-y',$mvStream->date_start_time)."\n";
 	//if($i==3)die;
 	//$i++;
 }
@@ -111,7 +111,7 @@ function do_insert_stream_file($mvStream, $path, $quality_msg) {
 
 	//get file duration from nfo file (if avaliable ): 
 	$nfo_url = $path . '.nfo';
-	$nfo_txt = file($nfo_url);	
+	$nfo_txt = @file($nfo_url);	
 	if($nfo_txt){
 		if( isset($nfo_txt[0])){
 			list($na, $len) = explode('n:', $nfo_txt[0]);					
@@ -145,12 +145,14 @@ function do_add_stream(& $mvTitle, & $stream) {
 	$MV_SpecialAddStream->add_stream();
 }
 function do_stream_insert($mode, $stream_name = '') {
-	global $mvgIP, $MVStreams, $options;
+	global $mvgIP, $MVStreams, $options, $wgDBname;
 	$dbr = wfGetDB(DB_SLAVE);
 	if ($mode == 'all'){
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `sync_status`='in_sync'";
 	}else if($mode=='files') {
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `trascoded` != 'none'";
+	}else if($mode=='all_in_wiki'){
+		$sql = "SELECT `metavid`.`streams`.* FROM `$wgDBname`.`mv_streams` LEFT JOIN `metavid`.`streams` ON (`$wgDBname`.`mv_streams`.`name` = `metavid`.`streams`.`name`) ";
 	}else{
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `name` LIKE '{$stream_name}'";
 	}	
@@ -177,18 +179,19 @@ function do_stream_insert($mode, $stream_name = '') {
 				do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM,$force);
 			//$updated = ' updated' echo "stream " . $mvTitle->getStreamName() . " already present $updated\n";
 		}
-		//add duration and start_time attr		
-		do_stream_attr_check($stream);
-
+		if($mode!='all_in_wiki'){
+			//add duration and start_time attr		
+			do_stream_attr_check($stream);
+		}
 		//do insert/copy all media images 
 		if(!isset($options['noimage'])){
 			do_proccess_images($stream);
-			print "done with images";
+			print "done with images\n";
 		}
-
-		//check for files (make sure they match with metavid db values
-		do_stream_file_check($stream);
-		
+		if(!isset($options['skipfiles'])){
+			//check for files (make sure they match with metavid db values
+			do_stream_file_check($stream);
+		}
 		if(!isset($options['skiptext'])){
 			//proccess all stream text: 
 			do_proccess_text($stream);
@@ -306,7 +309,8 @@ function do_proccess_images($stream) {
 		if ($dbr->numRows($img_check) != 0) {
 			//make sure its there: 
 			if (is_file($local_img_file)) {
-				print "skiped stream_id:" . $mv_stream_id . " time: " . $relative_time . "\n";
+				$row = $dbr->fetchObject($img_check);
+				//print "file $local_img_file skiped, stream_id:" . $mv_stream_id . " time: " . seconds2ntp($relative_time) . "\n";							
 				continue;
 			} else {
 				//grab but don't insert: 

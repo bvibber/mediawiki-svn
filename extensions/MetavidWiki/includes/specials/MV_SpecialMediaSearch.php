@@ -410,19 +410,19 @@ class MV_SpecialMediaSearch extends SpecialPage {
 							'</span>';
 				$wgOut->clearHTML();
 								
+												
 				$title = Title::MakeTitle(MV_NS_MVD,$mvd->wiki_title);
 				$article = new Article($title);
 				$MvOverlay = new MV_Overlay();	
 				
 				$text = $article->getContent();
 				//do highlight: 					
-				//$text = $this->termHighlightText($text, $terms_ary);
-						
-				$MvOverlay->parse_format_text($text, $mvTitle);
-				$bgcolor = $MvOverlay->getMvdBgColor($mvd);
-				$pageHTML = $wgOut->getHTML();
+				//$text = $this->termHighlightText($text, $terms_ary);										
+				//$bgcolor = $MvOverlay->getMvdBgColor($mvd);				
 				//encasulate page html: 
-				$pageHTML='<span style="padding-top:10px;float:left;width:450px">'.$pageHTML.'</span>';						
+				$pageHTML='<span style="padding-top:10px;float:left;width:450px">'.
+								$MvOverlay->parse_format_text($text, $mvTitle) .
+						  '</span>';						
 				return $embedHTML. $pageHTML. '<div style="clear: both;"/>';
 			}else{
 				return wfMsg('mvBadMVDtitle');

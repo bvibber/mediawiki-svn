@@ -82,10 +82,12 @@ ie: senate_proceeding_04-11-07
 options:
 		--noimage will skip image downloading 
 		--skiptext skips text sync
+		--skipfiles skips files
 		--force will force updates (normally if edited by a human its skiped)
 actions:
 		\$stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
+		'all_in_wiki' will run on all streams in the wiki 
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
 		[stream_name] will insert all records for the given stream name
 		'people' will insert all the people articles 	
@@ -103,6 +105,9 @@ EOT;
 switch ($args[0]) {
 	case 'all_in_sync' :
 		do_stream_insert('all');
+	break;
+	case 'all_in_wiki':
+		do_stream_insert('all_in_wiki');
 	break;
 	case 'all_with_files':
 		do_stream_insert('files');

@@ -52,7 +52,7 @@ $mvServeImageRedirect=false;
 // (early on we did less frequent image grabs)
 // that have less frequent frames for the same person showing up more than once
 //normally you would want a lower value like 5 seconds or so  
-$mvImageGranularityRate = '200';
+$mvImageGranularityRate = '600'; //up to 10 min apart images (not normal)
 //the ffmpeg command to generate thumbnail (to disable generating images set to '')
 $mvShellOggFrameGrab = '';
  

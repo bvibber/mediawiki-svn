@@ -60,6 +60,10 @@ class MV_SpecialExport {
 					case 'cmml':
 						$this->get_stream_cmml();
 					break;
+					case 'jroe':
+						//returns roe stream info in json object for easy DOM injection
+						$this->get_jroe_desc();
+					break;
 					case 'roe':
 						$this->get_roe_desc();
 					break;
@@ -112,30 +116,39 @@ class MV_SpecialExport {
  		$o.='</playlist>';
  		print $o;
 	}
+	function get_row_data(){		
+		//returns a high level description with cmml links (or inline-populated upon request)
+		$this->mvTitle = new MV_Title($this->stream_name.'/'.$this->req_time);
+		if(!$this->mvTitle->doesStreamExist()){
+			//@@todo we should output the error in XML friendly manner
+			die('stream does not exist');
+		}
+		$this->streamPageTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
+		//get the default mvd set: 
+		$this->mvcp = new MV_Component();
+		$this->mvcp->procMVDReqSet();
+		
+		//get all track types avaliable in current range: 
+		$this->mvd_type_res = MV_Index::getMVDTypeInRange($this->mvTitle->getStreamId(),
+				$this->mvTitle->getStartTimeSeconds(), 
+				$this->mvTitle->getEndTimeSeconds());		
+		
+		//get all avaliable files
+		$this->file_list =$this->mvTitle->mvStream->getFileList(); 		
+	}
+	function get_jroe_desc(){
+		$this->get_row_data();
+		$dbr =& wfGetDB(DB_SLAVE);			
+		//sucks to do big XML page operations ... 
+		//but we should be able to cache it
+		
+	}
 	//start high level: 
 	function get_roe_desc(){
 		global $mvDefaultVideoQualityKey;
 		$dbr =& wfGetDB(DB_SLAVE);		
-		//returns a high level description with cmml links (or inline-populated upon request)
-		 $streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);
-		if(!$streamTitle->doesStreamExist()){
-			//@@todo we should output the error in XML friendly manner
-			die('stream does not exist');
-		}
-		$streamPageTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
-		//get the default mvd set: 
-		$mvcp = new MV_Component();
-		$mvcp->procMVDReqSet();
-		
-		//get all track types avaliable in current range: 
-		$mvd_type_res = MV_Index::getMVDTypeInRange($streamTitle->getStreamId(),
-				$streamTitle->getStartTimeSeconds(), 
-				$streamTitle->getEndTimeSeconds());		
-		
-		//get all avaliable files
-		$file_list =$streamTitle->mvStream->getFileList(); 	
 	
-		
+		$this->get_row_data();
 		//get the stream stream req 
 		header('Content-Type: text/xml');
 		//print the header:
@@ -144,16 +157,16 @@ class MV_SpecialExport {
 <!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 <ROE>
 	<head>
-		<link rel="alternate" type="text/html" href="<?=htmlentities($streamPageTitle->getFullURL() )?>" />
-		<img id="stream_thumb" src="<?=htmlentities($streamTitle->getStreamImageURL())?>"/>
-		<title><?=htmlentities($streamTitle->getTitleDesc())?></title>
+		<link rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
+		<img id="stream_thumb" src="<?=htmlentities($this->mvTitle->getStreamImageURL())?>"/>
+		<title><?=htmlentities($this->mvTitle->getTitleDesc())?></title>
 	</head>
 	<body>
 		<track id="v" provides="video">
 			<switch distinction="quality">
-		<? foreach($file_list as $file){ 				
+		<? foreach($this->file_list as $file){ 				
 				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
-				$dSrc=($file->getPathType()=='url_anx')?$streamTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
+				$dSrc=($file->getPathType()=='url_anx')?$this->mvTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
 			?>
 				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
 		<?}?>
@@ -161,7 +174,7 @@ class MV_SpecialExport {
 		</track>
 		<track id="t" provides="text layers">
 			<switch distinction="layer">
-<?				while($row = $dbr->fetchObject($mvd_type_res)){
+<?				while($row = $dbr->fetchObject($this->mvd_type_res)){
 					//output cmml header: 
 					//@@todo lookup language for layer key paterns 
 					$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');
@@ -171,7 +184,7 @@ class MV_SpecialExport {
 				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" node_count="<?=$row->count?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
 <?
 					//output inline cmml: 
-					if(in_array(strtolower($row->mvd_type), $mvcp->mvd_tracks)){
+					if(in_array(strtolower($row->mvd_type), $this->mvcp->mvd_tracks)){
 						$this->get_stream_cmml(true, $row->mvd_type);
 					}	
 					//close text track
@@ -220,20 +233,18 @@ class MV_SpecialExport {
 		$tracks=array();
 		if(count($dbr->numRows($mvd_res))!=0){ 
 			global $wgOut;
-			$MV_Overlay = new MV_Overlay();	
-			$wgOut->clearHTML();	
+			$MV_Overlay = new MV_Overlay();				
 			while($mvd = $dbr->fetchObject($mvd_res)){	
-				$MV_Overlay->get_article_html($mvd);	
+			
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
 						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
 							<'.$ns.'img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
 							<'.$ns.'body><![CDATA[
-									'.$wgOut->getHTML().'
+									'.	$MV_Overlay->get_article_html($mvd, $absolute_links=true).'
 								]]></'.$ns.'body> 
 						</'.$ns.'clip>';			 					
-				//clear wgOutput
-				$wgOut->clearHTML();
+				//clear wgOutput				
 			}
 		}		
 		if($encap)print '<cmml_set>';
