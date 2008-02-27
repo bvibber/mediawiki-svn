@@ -41,7 +41,7 @@ function do_stream_file_check(& $old_stream) {
 	));
 	$file_list = $mvStream->getFileList();
 
-	if ($old_stream->trascoded != 'none') {
+	//if ($old_stream->trascoded != 'none') {
 		//print "transcode is: " . $old_stream->trascoded;
 		/*if ($old_stream->trascoded == 'low')
 			$set = array (
@@ -56,43 +56,43 @@ function do_stream_file_check(& $old_stream) {
 				'mv_ogg_high_quality',
 				'mv_ogg_low_quality'
 		);*/
-		//find the files and check for them on the servers:
-		//@@todo have multiple file locations for same file? 
-		$set=array();
-		foreach($mvVideoArchivePaths as $path){
-			if(url_exists($path . $old_stream->name . '.ogg')){
-				$set['mv_ogg_low_quality']=$path . $old_stream->name . '.ogg';
-				//force cap1 path @@todo remove!: 
-				$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->name . '.ogg';
-			}
-			if(url_exists($path . $old_stream->name . '.HQ.ogg')){
-				$set['mv_ogg_high_quality']=$path . $old_stream->name . '.HQ.ogg';
-				//force cap1 path @@todo remove!: 
-				$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->name . '.HQ.ogg';
-			}
-		}		
-		if(count($set)==0){
-			//no files present (remove stream) 
-			print 'no files present remove from wiki)'."\n";
-			//make a valid mv title (with requted time: )
-			$mvTitle = new MV_Title( $old_stream->name); 
-			
-			$streamTitle = Title::newFromText( $old_stream->name, MV_NS_STREAM);
-			//print " new title: " . $streamTitle . "\n";		
-			$article = new MV_StreamPage($streamTitle, $mvTitle);
-			$article->doDelete('no files present for stream');		
+	//find the files and check for them on the servers:
+	//@@todo have multiple file locations for same file? 
+	$set=array();
+	foreach($mvVideoArchivePaths as $path){
+		if(url_exists($path . $old_stream->name . '.ogg')){
+			$set['mv_ogg_low_quality']=$path . $old_stream->name . '.ogg';
+			//force cap1 path @@todo remove!: 
+			//$set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->name . '.ogg';
 		}
-		//print "set: " . print_r($set);
-		//remove old file pointers: 
-		$dbw = wfGetDB(DB_WRITE);
-		$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=".$mvStream->id . " AND " .
-				"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
-		$dbw->query($sql);
-		//update files:
-		foreach ($set as $qf=>$path_url) {
-			do_insert_stream_file($mvStream, $path_url, $qf);
+		if(url_exists($path . $old_stream->name . '.HQ.ogg')){
+			$set['mv_ogg_high_quality']=$path . $old_stream->name . '.HQ.ogg';
+			//force cap1 path @@todo remove!: 
+			//$set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->name . '.HQ.ogg';
 		}
+	}		
+	if(count($set)==0){
+		//no files present (remove stream) 
+		print 'no files present should remove: '.$old_stream->name."\n";
+		//make a valid mv title (with requted time: )
+		/*$mvTitle = new MV_Title( $old_stream->name); 
+		
+		$streamTitle = Title::newFromText( $old_stream->name, MV_NS_STREAM);
+		//print " new title: " . $streamTitle . "\n";		
+		$article = new MV_StreamPage($streamTitle, $mvTitle);
+		$article->doDelete('no files present for stream');*/		
 	}
+	//print "set: " . print_r($set);
+	//remove old file pointers: 
+	$dbw = wfGetDB(DB_WRITE);
+	$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=".$mvStream->id . " AND " .
+			"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
+	$dbw->query($sql);
+	//update files:
+	foreach ($set as $qf=>$path_url) {
+		do_insert_stream_file($mvStream, $path_url, $qf);
+	}
+	//}
 	//check for archive.org stuff too..
 	/*if($old_stream->archive_org!=''){
 		$found=false;
