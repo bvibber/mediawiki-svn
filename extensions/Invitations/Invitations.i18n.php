@@ -8,6 +8,10 @@
 $messages = array();
 
 $messages['en'] = array(
+	'invite-logpage' => 'Invitation Log',
+	'invite-logpagetext' => 'This is a log of users inviting each other to use various software features.',
+	'invite-logentry' => 'invited $1 to use the <i>$2</i> feature.',
+	'invitations' => 'Manage invitations to software features',
 	'invitations-desc' => 'Allows [[Special:Invitations|management of new features]] by restricting them to an invitation-based system',
 	'invitations-invitedlist-description' => 'You have access to the following invitation-only software features. To manage invitations for an individual feature, click on its name.',
 	'invitations-invitedlist-none' => 'You have not been invited to use any invitation-only software features.',
