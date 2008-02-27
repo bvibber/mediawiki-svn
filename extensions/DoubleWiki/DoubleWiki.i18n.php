@@ -89,6 +89,13 @@ $messages['hu'] = array(
 	'doublewiki-desc' => 'Az adott lap mellett megjeleníti annak fordítását egy másik wikiből, két oszlopban, ugyanazon az oldalon',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'doublewiki-desc' => 'Menampilkan suatu halaman dan terjemahannya dari wiki lain pada dua kolom pada halaman yang sama',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
