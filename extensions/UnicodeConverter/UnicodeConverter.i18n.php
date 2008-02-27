@@ -10,15 +10,19 @@ $messages = array();
 
 $messages['en'] = array(
 	'unicodeconverter' => 'Unicode Converter',
-	'unicodeconverter-desc' => 'A simple example of a special page module. Given a string in UTF-8, it converts it to HTML entities suitable for an ISO 8859-1 web page',
+	'unicodeconverter-desc' => 'A simple example of a special page module. [[Special:UnicodeConverter|Given a string in UTF-8]], it converts it to HTML entities suitable for an ISO 8859-1 web page',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Original text:',
 	'unicodeconverter-newtext' => 'Converted text:',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'unicodeconverter' => 'Unicode-Konverter',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter'         => 'Unicode-Konverter',
+	'unicodeconverter-desc'    => 'Einfaches Beispiel für eine Spezialseite. [[Special:UnicodeConverter|Eingabe eines Zeichens in UTF-8]], Ausgabe als HTML-Entität zum Gebrauch in einer ISO 8859-1 Webseite',
+	'unicodeconverter-ok'      => 'OK',
 	'unicodeconverter-oldtext' => 'Original Text:',
 	'unicodeconverter-newtext' => 'Konvertierter Text:',
 );

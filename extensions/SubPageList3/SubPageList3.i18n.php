@@ -22,12 +22,8 @@
  *
  * @version 1.02
  * @link http://www.mediawiki.org/wiki/Extension:SubPageList3
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  * @author McCormack, James
- */
-
-/**
- * Messages list.
  */
 
 $messages = array();
@@ -36,9 +32,18 @@ $messages = array();
  * @author McCormack, James
  */
 $messages['en'] = array(
-        'spl3-desc'         => 'Automatically creates a list of the subpages of a page using the tag <code><nowiki><splist /></nowiki></code>',
-        'spl3_debug'        => 'Unknown value for option $1.',
-        'spl3_nosubpages'   => '$1 has no subpages to list.',
+        'spl3-desc'       => 'Automatically creates a list of the subpages of a page using the tag <code><nowiki><splist /></nowiki></code>',
+        'spl3_debug'      => 'Unknown value for option $1.',
+        'spl3_nosubpages' => '$1 has no subpages to list.',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+        'spl3-desc'       => 'Automatisches Erstellen einer Liste von Unterseiten zu eine Seite mit Hilfe des <tt><nowiki><splist /></nowiki></tt>-Tags.',
+        'spl3_debug'      => 'Unbekannter Wert für Option $1.',
+        'spl3_nosubpages' => '$1 hat keine Unterseiten.',
 );
 
 /** French (Français)

@@ -34,6 +34,35 @@ $messages['en'] = array(
 	'invitations-invite-success' => 'You have successfully invited $1 to use this feature!',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'invite-logpage'                        => 'Einladungs-Logbuch',
+	'invite-logpagetext'                    => 'Dies ist das Logbuch der einladungsbasierten Softwarefunktionen.',
+	'invite-logentry'                       => 'hat $1 eingeladen, um die Softwarefunktionen <i>$2</i> zu nutzen.',
+	'invitations'                           => 'Manage invitations to software features',
+	'invitations-desc'                      => 'Ermöglicht die [[Special:Invitations|Verwaltung von Softwarefunktionen]] auf Basis von Einladungen',
+	'invitations-invitedlist-description'   => 'Du hast Zugang zu den folgenden einladungsbasierten Softwarefunktionen. Um Einladungen für eine bestimmte Softwarefunktion zu verwalten, klicke auf ihren Namen.',
+	'invitations-invitedlist-none'          => 'Du hast bisher keine Einladung zur Nutzung von einladungsbasierten Softwarefunktionen erhalten.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 Einladungen verfügbar)',
+	'invitations-pagetitle'                 => 'Softwarefunktionen auf Einladungs-Basis',
+	'invitations-uninvitedlist-description' => 'Du hast keinen Zugang zu anderen einladungsbasierten Softwarefunktionen.',
+	'invitations-uninvitedlist-none'        => 'Zur Zeit sind keine weiteren Softwarefunktionen einladungsbasiert.',
+	'invitations-feature-pagetitle'         => 'Einladungs-Verwaltung - $1',
+	'invitations-feature-access'            => 'Du hast Zugang zur Nutzung von <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Dir stehen noch <b>$1</b> von insgesamt $2 Einladungen zur Verfügung.',
+	'invitations-feature-noneleft'          => 'Du hast alle dir zugewiesenen Einladungen für diese Softwarefunktion verbraucht.',
+	'invitations-feature-noneyet'           => 'Dir wurden noch keine Einladungen für diese Softwarefunktion zugewiesen.',
+	'invitations-feature-notallowed'        => 'Du hast keine Berechtigung, um <i>$1</i> zu nutzen.',
+	'invitations-inviteform-title'          => 'Lade einen Benutzer zu der Funktion $1 ein',
+	'invitations-inviteform-username'       => 'Einzuladender Benutzer',
+	'invitations-inviteform-submit'         => 'Einladen',
+	'invitations-error-baduser'             => 'Der angegebene Benutzer ist nicht vorhanden.',
+	'invitations-error-alreadyinvited'      => 'Der angegebene Benutzer hat bereits Zugang zu dieser Softwarefunktion!',
+	'invitations-invite-success'            => 'Du hast erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
+);
+
 /** French (Français)
  * @author Grondin
  */
