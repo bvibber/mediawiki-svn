@@ -255,6 +255,24 @@ $messages['hu'] = array(
 	'scanset_prev'                      => '← Előző',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'scanset-desc'                      => 'Tampilkan gambar halaman terpindai dari set CD/DVD Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: Anda harus memasukkan nama set pemindai, mis. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Set pemindai tak valid atau tak ditemukan.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Format indeks tak diketahui',
+	'scanset_opendir_error'             => 'ScanSet: Tidak dapat membuka direktori $1',
+	'scanset_no_files'                  => 'ScanSet: Tidak ada berkas pada direktori yang diberikan.',
+	'scanset_no_volumes'                => 'ScanSet: Direktori jilid tak ditemukan',
+	'scanset_missing_index_file'        => 'ScanSet: Berkas indeks $1 tak ditemukan',
+	'scanset_index_file_error'          => 'ScanSet: Kesalahan format berkas indeks pada baris $1',
+	'scanset_invalid_volume'            => 'ScanSet: Jilid tak valid',
+	'scanset_next'                      => 'Selanjutnya &gt;',
+	'scanset_prev'                      => '&lt; Sebelumnya',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

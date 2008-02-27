@@ -172,6 +172,17 @@ $messages['hu'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Tartalmaznod kell legalább egy kategóriát különösképpen a névtérre!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'intersection-desc'          => 'Menghasilkan suatu daftar item terbaru pada suatu kategori atau gabungan beberapa kategori',
+	'intersection_toomanycats'   => 'DynamicPageList: Terlalu banyak kategori!',
+	'intersection_toofewcats'    => 'DynamicPageList: Terlalu sedikit kategori!',
+	'intersection_noresults'     => 'DynamicPageList: Tak ada hasil yang sesuai!',
+	'intersection_noincludecats' => 'DynamicPageList: Anda perlu mencantumkan paling tidak satu kategori, atau menyebutkan satu ruang nama!',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
