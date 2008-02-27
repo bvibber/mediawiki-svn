@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'url'           => 'http://www.mediawiki.org/wiki/Extension:EditOwn',
 	'version'       => '1.0.1',
 	'description'   => 'Users without the editall right can only edit pages they\'ve created',
-	'descriptiomsg' => '',
+	'descriptionmsg' => 'editown-desc',
 );
 
 $wgExtensionMessagesFiles['EditOwn'] = dirname(__FILE__) . '/EditOwn.i18n.php';
