@@ -19,7 +19,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'AssertEdit',
-	'version' => '2008-01-31',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Steve Sanbeg',
 	'description' => 'Adds edit assertions for use by bots',
 	'descriptionmsg' => 'assert_edit_desc',

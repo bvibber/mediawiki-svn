@@ -10,7 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Desysop',
-	'version' => '2008-01-09',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description' => 'Gives bureaucrats the ability to revoke Sysop access',
 	'author' => 'Andrew Garrett',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Desysop',

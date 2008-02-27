@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Cross-namespace links',
-	'version' => '2008-02-01',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description' => 'lists links across namespaces that shouldn\'t exist on Wikimedia projects',
 	'descriptionmsg' => 'crossnamespacelinks-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',

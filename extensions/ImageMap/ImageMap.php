@@ -7,7 +7,7 @@ $wgExtensionFunctions[] = 'wfSetupImageMap';
 
 $wgExtensionCredits['parserhook']['ImageMap'] = array(
 	'name'           => 'ImageMap',
-	'version'        => '2008-02-08',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImageMap',
 	'description'    => 'Allows client-side clickable image maps using <nowiki><imagemap></nowiki> tag.',

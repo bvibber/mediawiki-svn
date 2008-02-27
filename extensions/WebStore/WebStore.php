@@ -69,7 +69,7 @@ $wgAutoloadClasses['WebStorePostFile'] = $dir . 'WebStorePostFile.php';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'WebStore',
-	'version' => '2008-01-11',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WebStore',

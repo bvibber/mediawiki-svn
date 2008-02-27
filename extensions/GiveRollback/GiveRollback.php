@@ -14,7 +14,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Give Rollback',
-	'version' => '2008-01-11',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Rob Church',
 	'description' => 'Allows local bureaucrats to give [[Special:Giverollback|rollback permissions]] to a non-sysop user',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Giverollback',

@@ -10,7 +10,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Filepath',
-	'version' => '2008-01-09',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'description' => '[[Special:Filepath|a special page]] to get the full path of a file from its name',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Filepath'

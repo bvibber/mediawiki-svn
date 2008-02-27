@@ -23,7 +23,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Poem',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poem',
-	'version'        => '2008-02-18',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description'    => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 	'descriptionmsg' => 'poem-desc',
 );

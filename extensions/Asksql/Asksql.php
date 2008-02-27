@@ -16,7 +16,7 @@ if (!defined('MEDIAWIKI'))
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Ask SQL',
-	'version' => '2008-01-31',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description' => 'Do SQL queries through a [[Special:Asksql|special page]]',
 	'descriptionmsg' => 'asksql-desc',
 	'author' => 'Brion Vibber',

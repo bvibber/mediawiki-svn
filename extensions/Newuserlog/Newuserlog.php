@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Newuserlog',
-	'version'        => '2008-02-08',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description'    => 'Ads a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'descriptionmsg' => 'newuserlog-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',

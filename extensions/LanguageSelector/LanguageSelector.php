@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Language Selector', 
 	'author'         => 'Daniel Kinzler', 
 	'url'            => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
-	'version'	 => '2008-02-10',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description'    => 'language selector on every page, also for visitors',
 	'descriptionmsg' => 'languageselector-desc',
 );

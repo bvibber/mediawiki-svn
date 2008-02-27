@@ -14,7 +14,7 @@ $wgSpecialPages['ParserDiffTest'] = 'ParserDiffTest';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Parser Diff Test',
-	'version' => '2008-01-29',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Tim Starling',
 	'description' => 'Special page for comparing the output of two different parsers.',
 	'descriptionmsg' => 'pdtest-desc',

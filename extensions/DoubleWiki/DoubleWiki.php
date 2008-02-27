@@ -26,8 +26,8 @@ $wgHooks['OutputPageBeforeHTML'][] = 'addMatchedText' ;
 $wgExtensionCredits['other'][] = array(
 	'name' => 'DoubleWiki',
 	//'author' => '',
-	//'url' => '',
-	'version'        => '2008-02-18',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DoubleWiki',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description'    => 'Displays a page and its translation from another wiki on two columns of the same page',
 	'descriptionmsg' => 'doublewiki-desc',
 );

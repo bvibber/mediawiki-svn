@@ -7,11 +7,11 @@
  */
  
 $wgExtensionCredits['specialpage'][] = array(
-    'name' => 'PreferencesExtension',
-    'version' => '2006/11/16',
-    'author' => 'Austin Che',
-    'url' => 'http://openwetware.org/wiki/User:Austin/Extensions/PreferencesExtension',
-    'description' => 'Enables extending user preferences',
+	'name' => 'PreferencesExtension',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'author' => 'Austin Che',
+	'url' => 'http://openwetware.org/wiki/User:Austin/Extensions/PreferencesExtension',
+	'description' => 'Enables extending user preferences',
 );
 $wgHooks['SpecialPage_initList'][] = 'wfOverridePreferences';
  

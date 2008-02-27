@@ -17,7 +17,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'ChemFunctions',
-	'version'        => '2008-01-08',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description'    => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
 	'descriptionmsg' => 'chemicalsource-desc',
 	'author'         => 'Dirk Beetstra',

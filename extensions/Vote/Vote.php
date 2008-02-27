@@ -15,7 +15,7 @@ exit(1);
  
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Vote',
-	'version' => '2008-01-11',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Vote',
