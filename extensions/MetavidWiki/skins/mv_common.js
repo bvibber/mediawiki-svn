@@ -138,9 +138,8 @@ function add_adjust_hooks(mvd_id, track_dur, o){
 			}else{
 				$j('#mv_start_hr_'+mvd_id).val(org_start);
 			}
-			//if in seq mode:update the clip 
-			if(mvd_id=='seq')do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
-			
+			//update the clip 
+			do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );			
 		},
 		resize: function(e,ui) {	
 			mv_slider_update_stats(mvd_id);

@@ -297,7 +297,7 @@ function do_proccess_images($stream) {
 		//get streamImage obj:
 		$mv_stream_id = $MVStreams[$stream->name]->getStreamId();
 		$local_img_dir = MV_StreamImage :: getLocalImageDir($mv_stream_id);
-		$metavid_img_url = 'http://mvbox2.cse.ucsc.edu/image_media/' . $row->id . '.jpg';
+		$metavid_img_url = 'http://metavid.ucsc.edu/image_media/' . $row->id . '.jpg';
 		
 		$local_img_file = $local_img_dir . '/' . $relative_time . '.jpg';
 		//check if the image already exist in the new table

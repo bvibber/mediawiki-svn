@@ -46,7 +46,7 @@ var golobal_org_ptext=false;
 var mv_open_edit_mvd=null;
 if(!gMsg){var gMsg={};}
 
-gMsg['mv_open_edit'] =
+gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel other open edits first';
 
 //@@todo context sensitive init scripts
 //init the interface on page load
@@ -260,7 +260,7 @@ function getMvdObject(mvd_id){
 
 function mv_disp_add_mvd(mvdType){
 	if(mv_open_edit_mvd){
-		alert('');
+		js_error(gMsg['mv_open_edit']);
 		return ;
 	}
 	mv_open_edit_mvd=mvdType;
@@ -301,7 +301,7 @@ function mv_disp_add_mvd(mvdType){
 }
 function mv_edit_disp(titleKey, mvd_id){	 
 	if(mv_open_edit_mvd){
-		alert('you can only edit one at a time, please close other open edits first');
+		alert(gMsg['mv_open_edit']);
 		return ;
 	}
 	mv_open_edit_mvd=mvd_id;
@@ -852,21 +852,20 @@ function de_highlight_fd(mvd_id){
 	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #2F6FAB');
 }
 
-/* should be a way to do this with css */
 function highlight_tl_ts(mvd_id){
 	//make sure we don't set the original as red: 
 	if($j('#mv_tl_mvd_'+mvd_id).get(0)){
 		if($j('#mv_tl_mvd_'+mvd_id).css('background').indexOf("red")==-1)
 			mv_tl_mvd_org_color[mvd_id] = $j('#mv_tl_mvd_'+mvd_id).css('background');
 		//js_log(mvd_id + ' org color: ' + mv_tl_mvd_org_color[mvd_id]);
-		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.4});
+		$j('#mv_tl_mvd_'+mvd_id).css({background:'red',opacity:.4}).css("z-index",10);
 	}
 }
 function de_highlight_tl_ts(mvd_id){
 	if(mv_tl_mvd_org_color[mvd_id]){
 		//js_log(mvd_id + ' restore ' + mv_tl_mvd_org_color[mvd_id]);
 		if($j('#mv_tl_mvd_'+mvd_id).get(0)){
-			$j('#mv_tl_mvd_'+mvd_id).css({background:mv_tl_mvd_org_color[mvd_id],opacity:1});
+			$j('#mv_tl_mvd_'+mvd_id).css({background:mv_tl_mvd_org_color[mvd_id],opacity:1}).css("z-index",0);
 		}
 	}
 }

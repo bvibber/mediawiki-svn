@@ -43,26 +43,37 @@ class MV_StreamPage extends Article{
  		$this->mvTitle = $mvTitle;
  		//check request type (if base request set to special)
  		return parent::__construct($title);
- 	}
- 	/*purge the cache*/
- 	/*public function purge(){
- 		return '';
- 	}
- 	public function getLatest(){ 		
- 	}*/
- 	/**
-	 * Overwrite view() from Article.php to add additional html to the output.
-	 */
-	public function view() {
-		global $mvgIP, $wgRequest, $wgUser, $wgOut, $wgTitle;			
+ 	} 
+	function outputWikiText( $text, $cache = true ) {
+		global $wgOut, $wgUser;
 		wfProfileIn( __METHOD__ );
-		
 		$MV_MetavidInterface = new MV_MetavidInterface('stream', $this);				
 		//will require the mv_embed script for video playback:		
-		mvfAddHTMLHeader('stream_interface');
-		
+		mvfAddHTMLHeader('stream_interface');		
 		$MV_MetavidInterface->render_full();	
 		wfProfileOut( __METHOD__ );	
+	}
+	function tryFileCache() {
+		static $called = false;
+		if( $called ) {
+			wfDebug( "Article::tryFileCache(): called twice!?\n" );
+			return;
+		}
+		$called = true;
+		if($this->isFileCacheable()) {
+			$touched = $this->mTouched;
+			$cache = new HTMLFileCache( $this->mTitle );
+			if($cache->isFileCacheGood( $touched )) {
+				wfDebug( "Article::tryFileCache(): about to load file\n" );
+				$cache->loadFromFileCache();
+				return true;
+			} else {
+				wfDebug( "Article::tryFileCache(): starting buffer\n" );
+				ob_start( array(&$cache, 'saveToFileCache' ) );
+			}
+		} else {
+			wfDebug( "Article::tryFileCache(): not cacheable\n" );
+		}
 	}
 	/*
 	 * test if this is a base editable request
@@ -111,5 +122,6 @@ class MV_StreamPage extends Article{
  		//update text button to delete stream rather than delete stream
  		parent::delete();
  	}
+ 	
  }
 ?>
