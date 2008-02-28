@@ -10,7 +10,4 @@
 		};
 		var request = YAHOO.util.Connect.asyncRequest('POST', url, callback, pars);
 
-	}	
-	
-	
-	
+	}

@@ -38,7 +38,7 @@ add the following line (changing path as neccessary)
 global $IP;
 Require_once ("$IP/extensions/UserRelationship/Relationship_AjaxFunctions.php" );
 
-*Please note: If you have installed this to a folder other than /$IP/extensions/UserRelationship, you will also have to 
-update a path in "Relationship_AjaxFunctions.php" 
+*Please note: If you have installed this to a folder other than /$IP/extensions/UserRelationship, you will also have to
+update a path in "Relationship_AjaxFunctions.php"
 
 require_once ( "$IP/extensions/UserRelationship/UserRelationship.i18n.php" );

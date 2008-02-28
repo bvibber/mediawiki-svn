@@ -2,7 +2,7 @@
 function efWikiaUserRelationship() {
 
 	return array(
-	
+
 	'en' => array(
 		'ur-error-title'=>'Woops, you took a wrong turn!',
 		'ur-error-message-no-user'=>'We cannot complete your request, because no user with this name exists.',
@@ -63,9 +63,9 @@ Thanks
 
 ---
 
-Hey, want to stop getting emails from us?  
+Hey, want to stop getting emails from us?
 
-Click $4 
+Click $4
 and change your settings to disable email notifications.',
 		'foe_request_subject' => 'It\'s war! $1 has added you to as a foe on {{SITENAME}}!',
 		'foe_request_body' => 'Hi $1:
@@ -92,9 +92,9 @@ Thanks,
 
 ---
 
-Hey, want to stop getting emails from us?  
+Hey, want to stop getting emails from us?
 
-Click $4 
+Click $4
 and change your settings to disable email notifications.',
 		'foe_accept_subject' => 'It\'s on! $1 has accepted your foe request on {{SITENAME}}!',
 		'foe_accept_body' => 'Hi $1:
@@ -107,27 +107,27 @@ Thanks
 
 ---
 
-Hey, want to stop getting emails from us?  
+Hey, want to stop getting emails from us?
 
-Click $4 
+Click $4
 and change your settings to disable email notifications.',
 		'friend_removed_subject' => 'Oh No! $1 has removed you as a friend on {{SITENAME}}!',
 		'friend_removed_body' => 'Hi $1:
 
-$2 has removed you as a friend on {{SITENAME}}!  
+$2 has removed you as a friend on {{SITENAME}}!
 
 Thanks
 
 ---
 
-Hey, want to stop getting emails from us?  
+Hey, want to stop getting emails from us?
 
-Click $4 
+Click $4
 and change your settings to disable email notifications.',
 		'foe_removed_subject' => 'Woohoo! $1 has removed you as a foe on {{SITENAME}}!',
 		'foe_removed_body' => 'Hi $1:
 
-		$2 has removed you as a foe on {{SITENAME}}!  
+		$2 has removed you as a foe on {{SITENAME}}!
 
 Perhaps you two are on your way to becoming friends?
 
@@ -135,14 +135,12 @@ Thanks
 
 ---
 
-Hey, want to stop getting emails from us?  
+Hey, want to stop getting emails from us?
 
-Click $4 
+Click $4
 and change your settings to disable email notifications.'
 
-		
-		),
-	); 
-}
 
-?>
+		),
+	);
+}

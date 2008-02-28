@@ -3,11 +3,11 @@
 }
 
 .clearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
 }
 
 .clearfix {display: inline-block;}
@@ -34,7 +34,6 @@
 	font-weight:bold;
 	padding:4px;
 	height:17px;
-	
 }
 
 #blast-friends-list div.blast-friend-unselected, #blast-friends-list div.blast-foe-unselected {

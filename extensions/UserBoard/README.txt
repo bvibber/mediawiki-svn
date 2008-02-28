@@ -3,7 +3,7 @@ Requirements
 
 Mediawiki 1.10
 YUI
-UserStats package 
+UserStats package
 
 Installation
 =======================

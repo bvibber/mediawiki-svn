@@ -35,4 +35,3 @@ CREATE TABLE `user_relationship_request` (
   KEY `ur_user_id_from` (`ur_user_id_from`),
   KEY `ur_user_id_to` (`ur_user_id_to`)
 ) DEFAULT CHARSET=utf8;
-

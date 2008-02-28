@@ -56,7 +56,7 @@ Function.prototype.bind = function() {
 YAHOO.util.Dom.getDimensions = function(element){
     element = YAHOO.util.Dom.get(element);
     var display = YAHOO.util.Dom.getStyle( element, 'display');
-    
+
     if (display != 'none' && display != null) // Safari bug
       return {width: element.offsetWidth, height: element.offsetHeight};
 
@@ -75,17 +75,17 @@ YAHOO.util.Dom.getDimensions = function(element){
     els.display = originalDisplay;
     els.position = originalPosition;
     els.visibility = originalVisibility;
-  
+
     return {width: originalWidth, height: originalHeight};
 }
 
-function Element_Show() { 
+function Element_Show() {
 	this.setStyle('display', 'block');
 	this.setStyle('visibility', 'visible');
 
 }
 
-function Element_Hide() { 
+function Element_Hide() {
 	this.setStyle('display', 'none');
 	this.setStyle('visibility', 'hidden');
 }
@@ -168,7 +168,7 @@ YAHOO.widget.Effects.Appear = function(inElm, opts) {
     * @type Object
     */
     this.onEffectComplete = new YAHOO.util.CustomEvent('oneffectcomplete', this);
-    
+
     var ease = ((opts && opts.ease) ? opts.ease : YAHOO.util.Easing.easeOut);
     var secs = ((opts && opts.seconds) ? opts.seconds : 3);
     var delay = ((opts && opts.delay) ? opts.delay : false);
@@ -239,19 +239,19 @@ YAHOO.widget.Effects.BlindUp = function(inElm, opts) {
     * @type Object
     */
 	this.effect = new YAHOO.util.Anim(this.element, attributes, secs, ease);
-	
+
 	this.effect.onComplete.subscribe(function() {
 		if (this._opts && this._opts.bind && (this._opts.bind == 'bottom')) {
 			YAHOO.util.Dom.setStyle(this.element, 'top', this._top + 'px');
 		} else {
-			    
+
 			YAHOO.widget.Effects.Hide(this.element);
 			YAHOO.util.Dom.setStyle(this.element, 'height', this._height+"px");
 		}
 		YAHOO.util.Dom.setStyle(this.element, 'opacity', 1);
 		this.onEffectComplete.fire();
 	}, this, true);
-	
+
 	if (!delay) {
 		this.animate();
 	}
@@ -261,7 +261,7 @@ YAHOO.widget.Effects.BlindUp = function(inElm, opts) {
 */
 YAHOO.widget.Effects.BlindUp.prototype.prepStyle = function() {
     if (this._opts && this._opts.bind && (this._opts.bind == 'bottom')) {
-	
+
         YAHOO.util.Dom.setStyle(this.element, 'height', '0px');
         YAHOO.util.Dom.setStyle(this.element, 'top', this._height);
     }
@@ -287,9 +287,9 @@ YAHOO.widget.Effects.BlindDown = function(inElm, opts) {
 
     this._opts = opts;
     this._height = parseInt($D.getDimensions(this.element).height );
-   
+
     this._top = parseInt($D.getStyle(this.element, 'top'));
-    
+
     YAHOO.util.Dom.setStyle(this.element, 'overflow', 'hidden');
     var attributes = {
         height: { from: 0, to: this._height }
@@ -326,7 +326,7 @@ YAHOO.widget.Effects.BlindDown = function(inElm, opts) {
     */
 
     this.effect = new YAHOO.util.Anim(this.element, attributes, secs, ease);
-    
+
     if (opts && opts.bind && (opts.bind == 'bottom')) {
         this.effect.onComplete.subscribe(function() {
             YAHOO.widget.Effects.Hide(this.element);
@@ -351,10 +351,10 @@ YAHOO.widget.Effects.BlindDown = function(inElm, opts) {
 YAHOO.widget.Effects.BlindDown.prototype.prepStyle = function() {
     if (this._opts && this._opts.bind && (this._opts.bind == 'bottom')) {
     } else {
-	   
+
         YAHOO.util.Dom.setStyle(this.element, 'height', '0px');
     }
-  
+
     YAHOO.widget.Effects.Show(this.element);
 }
 /**
@@ -471,7 +471,7 @@ YAHOO.widget.Effects.BlindLeft = function(inElm, opts) {
             from: 1
         }
     }
-    
+
     /**
     * Custom Event fired after the effect completes
     * @type Object
@@ -491,7 +491,7 @@ YAHOO.widget.Effects.BlindLeft = function(inElm, opts) {
             }
         }
     }
-    
+
     /**
     * YUI Animation Object
     * @type Object
@@ -550,7 +550,7 @@ YAHOO.widget.Effects.Pulse = function(inElm, opts) {
     if (opts && opts.maxcount) {
         this._maxCount = opts.maxcount;
     }
-    
+
     /**
     * Custom Event fired after the effect completes
     * @type Object
@@ -623,7 +623,7 @@ YAHOO.widget.Effects.Shadow = function(inElm, opts) {
 
     this.element = YAHOO.util.Dom.get(inElm);
 
-    
+
     if (YAHOO.util.Dom.get(this.element.id + '_shadow')) {
         this.shadow = YAHOO.util.Dom.get(this.element.id + '_shadow');
     } else {
@@ -654,8 +654,8 @@ YAHOO.widget.Effects.Shadow = function(inElm, opts) {
     * @type Object
     */
     this.onEffectComplete = new YAHOO.util.CustomEvent('oneffectcomplete', this);
-    
-    
+
+
     var attributes = {
         opacity: { from: 0, to: shadowOpacity },
         top: {
@@ -720,7 +720,7 @@ YAHOO.widget.Effects.ContainerEffect = function() {
 * @type Object
 */
 YAHOO.widget.Effects.ContainerEffect.BlindUpDownBinded = function(overlay, dur) {
-    var bupdownbinded = new YAHOO.widget.ContainerEffect(overlay, 
+    var bupdownbinded = new YAHOO.widget.ContainerEffect(overlay,
         { attributes: {
             effect: 'BlindUp',
             opts: {
@@ -988,7 +988,7 @@ YAHOO.widget.Effects.Container = function(el, attrs, dur) {
     //var eff = eval('new YAHOO.widget.Effects.' + attrs.effect + '("' + el.id + '", {delay: true' + opts + '})');
     var func = eval('YAHOO.widget.Effects.' + attrs.effect);
     var eff = new func(el, opts);
-    
+
     /**
     * Empty event handler to make ContainerEffects happy<br>
     * May try to attach them to my effects later
@@ -1012,4 +1012,3 @@ YAHOO.widget.Effects.Container = function(el, attrs, dur) {
     eff.onComplete = eff.onEffectComplete;
     return eff;
 }
-

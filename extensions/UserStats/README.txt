@@ -1,7 +1,7 @@
 Requirements
 =======================
 
-Mediawiki 1.10
+Mediawiki 1.11
 
 Installation
 =======================

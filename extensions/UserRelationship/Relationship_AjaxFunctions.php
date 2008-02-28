@@ -2,30 +2,30 @@
 /*
  * Ajax Functions used by Wikia extensions
  */
- 
+
 $wgAjaxExportList [] = 'wfRelationshipRequestResponse';
 function wfRelationshipRequestResponse($response, $request_id){
-	global $wgUser, $wgOut, $IP, $wgMessageCache; 
+	global $wgUser, $wgOut, $IP, $wgMessageCache;
 	$out = "";
-	
+
 	//languages
 	require_once ( "$IP/extensions/UserRelationship/UserRelationship.i18n.php" );
 	foreach( efWikiaUserRelationship() as $lang => $messages ){
 		$wgMessageCache->addMessages( $messages, $lang );
 	}
-	
+
 	$rel = new UserRelationship($wgUser->getName() );
 	if($rel->verifyRelationshipRequest($request_id) == true ){
 		$request = $rel->getRequest($request_id);
 		$user_name_from = $request[0]["user_name_from"];
 		$user_id_from = User::idFromName($user_name_from);
 		$rel_type = strtolower($request[0]["type"]);
-		
+
 		$rel->updateRelationshipRequestStatus($request_id,$_POST["response"]);
-	
+
 		$avatar = new wAvatar($user_id_from,"l");
 		$avatar_img = $avatar->getAvatarURL();
-	
+
 		if($response==1){
 			$rel->addRelationship($request_id);
 			$out.= "<div class=\"relationship-action red-text\">
@@ -41,10 +41,6 @@ function wfRelationshipRequestResponse($response, $request_id){
 			</div>";
 		}
 		$rel->deleteRequest($request_id);
-	} 
+	}
 	return $out;
 }
-
-
-
-?>
