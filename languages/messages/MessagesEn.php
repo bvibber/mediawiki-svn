@@ -395,7 +395,7 @@ $specialPageAliases = array(
 	'Emailuser'                 => array( 'Emailuser' ),
 	'Confirmemail'              => array( 'Confirmemail' ),
 	'Whatlinkshere'             => array( 'Whatlinkshere' ),
-	'Recentchangeslinked'       => array( 'Recentchangeslinked' ),
+	'Recentchangeslinked'       => array( 'Recentchangeslinked', 'RelatedChanges' ),
 	'Movepage'                  => array( 'Movepage' ),
 	'Blockme'                   => array( 'Blockme' ),
 	'Booksources'               => array( 'Booksources' ),
@@ -1066,7 +1066,7 @@ Please consider breaking the page into smaller sections.</strong>',
 'templatesusedsection'      => 'Templates used in this section:',
 'template-protected'        => '(protected)',
 'template-semiprotected'    => '(semi-protected)',
-'hiddencategories'          => '{{PLURAL:$1|Hidden category|Hidden categories}} this page is a member of:',
+'hiddencategories'          => 'This page is a member of {{PLURAL:$1|1 hidden category|$1 hidden categories}}:',
 'edittools'                 => '<!-- Text here will be shown below edit and upload forms. -->', # only translate this message to other languages if you have to change it
 'nocreatetitle'             => 'Page creation limited',
 'nocreatetext'              => '{{SITENAME}} has restricted the ability to create new pages.
@@ -1238,6 +1238,9 @@ Make sure that this change will maintain historical page continuity.
     <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
   </div>
 </form>', # don't translate or duplicate this message to other languages
+
+# OpenSearch description
+'opensearch-desc'          => '{{SITENAME}} ({{CONTENTLANGUAGE}})', # don't translate or duplicate this message to other languages
 
 # Preferences page
 'preferences'              => 'Preferences',

@@ -394,10 +394,6 @@ class EditPage {
 			wfProfileOut( __METHOD__ );
 			return;
 		} else {
-			if( $wgRequest->getVal( 'action' ) == 'editredlink' ) {
-				$wgOut->redirect( $this->mTitle->getFullUrl( 'action=edit' ) );
-				return;
-			}
 			if ( $this->save ) {
 				$this->formtype = 'save';
 			} else if ( $this->preview ) {
@@ -485,11 +481,11 @@ class EditPage {
 	/**
 	 * Show a read-only error
 	 * Parameters are the same as OutputPage:readOnlyPage()
-	 * Redirect to the article page if action=editredlink
+	 * Redirect to the article page if redlink=1
 	 */
 	function readOnlyPage( $source = null, $protected = false, $reasons = array() ) {
 		global $wgRequest, $wgOut;
-		if ( $wgRequest->getVal( 'action' ) === 'editredlink' ) {
+		if ( $wgRequest->getBool( 'redlink' ) ) {
 			// The edit page was reached via a red link.
 			// Redirect to the article page and let them click the edit tab if 
 			// they really want a permission error.
@@ -534,6 +530,9 @@ class EditPage {
 		global $wgLang, $wgUser;
 		$fname = 'EditPage::importFormData';
 		wfProfileIn( $fname );
+
+		# Section edit can come from either the form or a link
+		$this->section = $request->getVal( 'wpSection', $request->getVal( 'section' ) );
 
 		if( $request->wasPosted() ) {
 			# These fields need to be checked for encoding.
@@ -618,12 +617,13 @@ class EditPage {
 			$this->minoredit = false;
 			$this->watchthis = false;
 			$this->recreate  = false;
+
+			if ( $this->section == 'new' && $request->getVal( 'preloadtitle' ) ) {
+				$this->summary = $request->getVal( 'preloadtitle' );
+			}
 		}
 
 		$this->oldid = $request->getInt( 'oldid' );
-
-		# Section edit can come from either the form or a link
-		$this->section = $request->getVal( 'wpSection', $request->getVal( 'section' ) );
 
 		$this->live = $request->getCheck( 'live' );
 		$this->editintro = $request->getText( 'editintro' );
@@ -1236,14 +1236,26 @@ class EditPage {
 		# if this is a comment, show a subject line at the top, which is also the edit summary.
 		# Otherwise, show a summary field at the bottom
 		$summarytext = htmlspecialchars( $wgContLang->recodeForEdit( $this->summary ) ); # FIXME
+		
+		# If a blank edit summary was previously provided, and the appropriate
+		# user preference is active, pass a hidden tag as wpIgnoreBlankSummary. This will stop the
+		# user being bounced back more than once in the event that a summary
+		# is not required.
+		#####
+		# For a bit more sophisticated detection of blank summaries, hash the
+		# automatic one and pass that in the hidden field wpAutoSummary.
+		$summaryhiddens =  '';
+		if( $this->missingSummary ) $summaryhiddens .= wfHidden( 'wpIgnoreBlankSummary', true );
+		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
+		$summaryhiddens .= wfHidden( 'wpAutoSummary', $autosumm );
 		if( $this->section == 'new' ) {
-			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
 			$editsummary = '';
 			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('subject-preview').':'.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
-			$editsummary="<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$editsummary="<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
 			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('summary-preview').':'.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$subjectpreview = '';
 		}
@@ -1346,21 +1358,6 @@ END
 </div><!-- editButtons -->
 </div><!-- editOptions -->");
 
-		$wgOut->addHtml( '<div class="mw-editTools">' );
-		$wgOut->addWikiMsgArray( 'edittools', array(), array( 'content' ) );
-		$wgOut->addHtml( '</div>' );
-
-		$wgOut->addHTML( $this->editFormTextAfterTools );
-
-		$wgOut->addHTML( "
-<div class='templatesUsed'>
-{$formattedtemplates}
-</div>
-<div class='hiddencats'>
-{$formattedhiddencats}
-</div>
-");
-
 		/**
 		 * To make it harder for someone to slip a user a page
 		 * which submits an edit form to the wiki without their
@@ -1376,19 +1373,20 @@ END
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$wgOut->addHTML( "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n" );
 
+		$wgOut->addHtml( '<div class="mw-editTools">' );
+		$wgOut->addWikiMsgArray( 'edittools', array(), array( 'content' ) );
+		$wgOut->addHtml( '</div>' );
 
-		# If a blank edit summary was previously provided, and the appropriate
-		# user preference is active, pass a hidden tag here. This will stop the
-		# user being bounced back more than once in the event that a summary
-		# is not required.
-		if( $this->missingSummary ) {
-			$wgOut->addHTML( "<input type=\"hidden\" name=\"wpIgnoreBlankSummary\" value=\"1\" />\n" );
-		}
+		$wgOut->addHTML( $this->editFormTextAfterTools );
 
-		# For a bit more sophisticated detection of blank summaries, hash the
-		# automatic one and pass that in a hidden field.
-		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
-		$wgOut->addHtml( wfHidden( 'wpAutoSummary', $autosumm ) );
+		$wgOut->addHTML( "
+<div class='templatesUsed'>
+{$formattedtemplates}
+</div>
+<div class='hiddencats'>
+{$formattedhiddencats}
+</div>
+");
 
 		if ( $this->isConflict ) {
 			$wgOut->wrapWikiMsg( '==$1==', "yourdiff" );

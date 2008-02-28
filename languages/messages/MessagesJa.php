@@ -98,6 +98,7 @@ $messages = array(
 'tog-nolangconversion'        => '字形変換を無効にする',
 'tog-ccmeonemails'            => '他ユーザーに送信したメールの控えを自分にも送る',
 'tog-diffonly'                => '差分表示の下に記事本文を表示しない',
+'tog-showhiddencats'          => '非公開カテゴリを表示する',
 
 'underline-always'  => '常に付ける',
 'underline-never'   => '常に付けない',
@@ -158,12 +159,14 @@ $messages = array(
 'dec'           => '12月',
 
 # Bits of text used by many pages
-'categories'            => 'カテゴリ',
-'pagecategories'        => 'カテゴリ',
-'category_header'       => 'カテゴリ “$1” にあるページ',
-'subcategories'         => 'サブカテゴリ',
-'category-media-header' => 'カテゴリ “$1” にあるメディア',
-'category-empty'        => 'このカテゴリにはページまたはメディアがひとつもありません。',
+'categories'               => 'カテゴリ',
+'pagecategories'           => 'カテゴリ',
+'category_header'          => 'カテゴリ “$1” にあるページ',
+'subcategories'            => 'サブカテゴリ',
+'category-media-header'    => 'カテゴリ “$1” にあるメディア',
+'category-empty'           => 'このカテゴリにはページまたはメディアがひとつもありません。',
+'hidden-categories'        => '{{PLURAL:$1|非公開カテゴリ|非公開カテゴリ}}',
+'hidden-category-category' => '非公開カテゴリ', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => 'MediaWikiが正常にインストールされました。',
 'mainpagedocfooter' => '使い方・設定に関しては[http://meta.wikimedia.org/wiki/ヘルプ:目次 ユーザーズガイド]を参照してください。
@@ -622,6 +625,7 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'templatesusedsection'      => 'この節で使われているテンプレート:',
 'template-protected'        => '（保護）',
 'template-semiprotected'    => '（半保護）',
+'hiddencategories'          => 'このページは{{PLURAL:$1|1個の非公開カテゴリ|$1個の非公開カテゴリ}}に属しています:',
 'edittools'                 => '<!-- ここに書いたテキストは編集及びアップロードのフォームの下に表示されます。 -->',
 'nocreatetitle'             => 'ページを作成できません',
 'nocreatetext'              => '{{SITENAME}} ではページの新規作成を制限しています。元のページに戻って既存のページを編集するか、[[Special:Userlogin|ログインまたはアカウントを作成]]してください。',
@@ -952,7 +956,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'largefileserver'             => 'ファイルが大きすぎます。サーバー設定で許されている最大値を超過しました。',
 'emptyfile'                   => 'あなたがアップロードしようとしているファイルは内容が空であるか、もしくはファイル名の指定が間違っています。もう一度、ファイル名が正しいか、あるいはアップロードしようとしたファイルであるかどうかを確認してください。',
 'fileexists'                  => 'この名前のファイルは既に存在しています。$1と置き換えるかどうかお確かめください。',
-'filepageexists'              => '同じ名前の（ファイルではなく）ページが既に存在しています。置き換えるかどうか、まずは <strong><tt>$1</tt></strong> を確認してください。',
+'filepageexists'              => 'このファイル <strong><tt>$1</tt></strong> に関する説明ページは既に存在しますが、ファイル自体が存在していない現状です。よって、この名前でファイルをアップロードすることは可能ですが、説明ページには入力された概要が反映されません。新しい概要へ更新するためには、説明ページを手動で編集する必要があります。',
 'fileexists-extension'        => '類似した名前のファイルが既に存在しています:<br />
 アップロード中のファイル: <strong><tt>$1</tt></strong><br />
 既存のファイル: <strong><tt>$2</tt></strong><br />

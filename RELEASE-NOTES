@@ -20,36 +20,132 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === Configuration changes in 1.13 ===
 
-* ...
+* New option $wgFeed can be set false to turn off syndication feeds
+* (bug 13137) Allow setting 'editprotected' right separately from 'protect',
+  so groups may optionally edit protected pages without being able to protect
+  pages themselves
 
 === New features in 1.13 ===
 
-* __HIDDENCAT__ on a category page causes the category to be hidden on the 
+* __HIDDENCAT__ on a category page causes the category to be hidden on the
   article page.
-* Don't show edit permissions errors on a red link click, just redirect to the 
-  article. This is so that readers who don't know what a red link is aren't 
+* Don't show edit permissions errors on a red link click, just redirect to the
+  article. This is so that readers who don't know what a red link is aren't
   confused when they are told they are range-blocked.
-* One can turn off syndicatino feeds by setting $wgFeed to false
-* (bug 13137) Bots now able to edit protected pages.
+* Add a new hook ImageBeforeProduceHTML to allow extensions to modify wikitext
+  image syntax output.
+* (bug 13100) Added 'preloadtitle' parameter to action=edit&section=new that
+  pre-fills the section title field.
+* (bug 13112) Added Special:RelatedChanges alias to Special:Recentchangeslinked
+* (bug 13130) Moved edit token and autosummary fields above edit tools to
+  reduce broken form submissions
+
 
 === Bug fixes in 1.13 ===
 
 * (bug 10677) Add link to the file description page on the shared repository
 * (bug 13084) Increase size of source/destination filename fields in upload form
 * (bug 13115) rebuildrecentchanges should print the current value of $wgRCMaxAge
-* (bug 13132) Unable to unprotect pages protected with earlier versions of MediaWiki
 * (bug 13140) Show parent categories in category namespace
-* (bug 13149) Correctly format 'fileexists' message on Upload page.
-* Make filepageexists accurate.
+* (bug 13149) Correctly format 'fileexists' message on Upload page
+* Make the default filepageexists message accurate
+* (bug 12988) $wgMinimalPasswordLength no longer breaks create user by email
+* (bug 13022) Fix upload from URL on PHP 5.0.x
+* (bug 13132) Unable to unprotect pages protected with earlier versions of MediaWiki
+* (bug 12723) OpenSearch description name now uses more compact language code
+  to avoid passing the length limit as often, is customizable per site via
+  'opensearch-desc' message.
+* (bug 13135) Special:Userrights now passes IDs through form submission
+  to allow functionality on not-quite-right usernames
+
 
 === API changes in 1.13 ===
 
 * Fixing main page display in meta=siteinfo
-* (bug 13128) Add patrolled flag to list=recentchanges
+* (bug 13128) Added patrolled flag to list=recentchanges
+* Implemented {bl,ei,iu}redirect (lists links through redirects as well)
+* (bug 13154) Introduced subpages flag to meta=siteinfo&siprop=namespaces
+* (bug 13157) Added ucuserprefix parameter to list=usercontibs
+* (bug 12394) Added rctitles parameter to list=recentchanges, making rcid retrieval easier
 
 === Languages updated in 1.13 ===
 
-* ...
+* Afrikaans (af)
+* Gheg Albanian (aln)
+* Amharic (am)
+* Aragonese (an)
+* Arabic (ar)
+* Asturian (ast)
+* Kotava (avk)
+* Samogitian (bat-smg)
+* Bulgarian (bg)
+* Catalan (ca)
+* Crimean Turkish (Cyrillic) (crh-cyrl)
+* Crimean Turkish (Latin) (crh-latn)
+* Czech (cs)
+* Welsh (cy)
+* Danish (da)
+* Lower Sorbian (dsb)
+* Greek (el)
+* Esperanto (eo)
+* Spanish (es)
+* Estonian (et)
+* Extremaduran (ext)
+* Finnish (fi)
+* Faroese (fo)
+* French (fr)
+* Franco-Provençal (frp)
+* Friulian (fur)
+* Irish (ga)
+* Gan (gan)
+* Galician (gl)
+* Croatian (hr)
+* Upper Sorbian (hsb)
+* Hungarian (hu)
+* Indonesian (id)
+* Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ike-cans)
+* Icelandic (is)
+* Italian (it)
+* Japanese (ja)
+* Georgian (ka)
+* Kalaallisut (kl)
+* Khmer (km)
+* Latin (la)
+* Luxembourgish (lb)
+* Limburgish (li)
+* Lao (lo)
+* Lithuanian (lt)
+* Malayalam (ml)
+* Moldavian (mo)
+* Marathi (mr)
+* Low German (nds)
+* Dutch (nl)
+* Norwegian Nynorsk (nn)
+* Norwegian (bokmål)‬ (no)
+* Polish (pl)
+* Pashto (ps)
+* Portuguese (pt)
+* Russian (ru)
+* Yakut (sah)
+* Sassaresu (sdc)
+* Slovak (sk)
+* Somali (so)
+* Albanian (sq)
+* Sranan Tongo (srn)
+* Seeltersk (stq)
+* Swedish (sv)
+* Tamil (ta)
+* Telugu (te)
+* Tajik (tg)
+* Thai (th)
+* Turkish (tr)
+* Tuvinian (tyv)
+* Venda (ve)
+* Vietnamese (vi)
+* Volapük (vo)
+* Wolof (wo)
+* Mingrelian (xmf)
+* Yiddish (yi)
 
 == Compatibility ==
 

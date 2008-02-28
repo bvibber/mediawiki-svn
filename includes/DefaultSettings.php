@@ -1326,7 +1326,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '117';
+$wgStyleVersion = '118';
 
 
 # Server-side caching:
@@ -2162,10 +2162,10 @@ $wgExternalDiffEngine = false;
 /** Use RC Patrolling to check for vandalism */
 $wgUseRCPatrol = true;
 
-/** Use new page patrolling to check new pages on special:Newpages */
+/** Use new page patrolling to check new pages on Special:Newpages */
 $wgUseNPPatrol = true;
 
-/** Provide syndication feeds (RSS, Atom) for eg REcentchanges, Newpages. */
+/** Provide syndication feeds (RSS, Atom) for, e.g., Recentchanges, Newpages */
 $wgFeed = true;
 
 /** Set maximum number of results to return in syndication feeds (RSS, Atom) for
