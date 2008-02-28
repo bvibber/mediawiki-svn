@@ -22,6 +22,7 @@ $messages['en'] = array(
 	'dt_xml_field'                => 'Field',
 	'dt_xml_name'                 => 'Name',
 	'dt_xml_title'                => 'Title',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Free Text',
 );
 
