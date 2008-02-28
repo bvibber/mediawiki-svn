@@ -28,7 +28,7 @@
 
 /* IE ignores css styles with [attributes], so it will skip the following. */
 .sv_select_box[class] {
-	background:url('sv_blend.png') top left no-repeat;
+	background:url('../images/sv_blend.png') top left no-repeat;
 }
 
 .h_select_box {
@@ -40,7 +40,7 @@
 	margin:0px;
 	margin-left:5px;
 	float:left;
-	background-image:url('hue_blend.png');
+	background-image:url('../images/hue_blend.png');
 }
 
 .hue_cursor {

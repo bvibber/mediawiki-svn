@@ -5,7 +5,9 @@
 # Copyright Evan Miller (emmiller@gmail.com)
 # Modifications copyright Hartmut Holzgraefe, Joshua Hodge
 
-# Version 0.9.0, 20 Feb 2008
+# Version 0.9.1, 26 Feb 2008
+
+define('GOOGLE_MAPS_EXTENSION_VERSION', '0.9.2a');
 
 // if we're not in the mediawiki framework just die
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -16,13 +18,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 // require the message file
 require( 'extensions/GoogleMaps/GoogleMaps.i18n.php' );
-
-require( 'extensions/GoogleMaps/GoogleMapsJsOutputter.php' );
-
-require( 'extensions/GoogleMaps/GoogleMapsKmlOutputter.php' );
-
+require( 'extensions/GoogleMaps/export/GoogleMapsExporter.php' );
+require( 'extensions/GoogleMaps/export/GoogleMapsJsExporter.php' );
+require( 'extensions/GoogleMaps/export/GoogleMapsKmlExporter.php' );
+require( 'extensions/GoogleMaps/export/GoogleMapsImgExporter.php' );
 require( 'extensions/GoogleMaps/SpecialGoogleMapsKML.php' );
-
 require( 'extensions/GoogleMaps/GoogleMaps.body.php' );
 
 /**
@@ -179,7 +179,7 @@ $wgExtensionFunctions[] = 'wfGoogleMaps_Install'; # array( $wgGoogleMapExtension
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'Google Maps Extension',
 	'author'      => 'Evan Miller',
-	'version'     => '0.9.1',
+	'version'     => GOOGLE_MAPS_EXTENSION_VERSION,
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Google_Maps',
 	'description' => 'Easily create maps with wiki-fied markers'
 );

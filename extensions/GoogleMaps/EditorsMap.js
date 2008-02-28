@@ -67,7 +67,7 @@ EditorsMarker.prototype = {
           this.caption = caption;
           if (!this.icon_name) {
               if (this.caption || this.gmarker.getTitle()) {
-                  this.setIcon(G_DEFAULT_ICON);
+                  this.setIcon(this.emap.default_icon);
               } else if (this.path) {
                   this.setIcon(GME_SMALL_ICON);
               }
@@ -83,7 +83,7 @@ EditorsMarker.prototype = {
               this.rebuildMarker(title, this.getIcon());
               if (!this.icon_name) {
                   if (this.caption || title) {
-                      this.setIcon(G_DEFAULT_ICON);
+                      this.setIcon(this.emap.default_icon);
                   } else {
                       this.setIcon(GME_SMALL_ICON);
                   }
@@ -122,7 +122,7 @@ EditorsMarker.prototype = {
     addTab: function(title, content) {
               this.tabs[this.tabs.length] = { 'title':title, 'content':content };
               if (this.getIcon() == GME_SMALL_ICON)
-                this.setIcon(G_DEFAULT_ICON);
+                this.setIcon(this.emap.default_icon);
               this.dump();
             },
 
@@ -143,10 +143,15 @@ EditorsMarker.prototype = {
 	       GEvent.addListener(this.gmarker, 'dragend', function() { this_marker.updateLocation() } );
                    },
     setIcon: function(icon) {
-                 if (this.getIcon() != icon) {
-                     this.rebuildMarker(this.gmarker.getTitle(), icon);
-                 }
-	     },
+        if (this.getIcon() != icon) {
+            this.rebuildMarker(this.gmarker.getTitle(), icon);
+        }
+    },
+
+    setIconImage: function(label, url) {
+        this.gmarker.setImage(url);
+        this.icon_name = label;
+    },
 
     getPoint: function() {
                 return this.gmarker.getPoint();
@@ -178,9 +183,6 @@ EditorsMarker.prototype = {
                     // we need this logic in a couple places, so might as well put it here.
     getBalloonFooter: function() {
       var message = '';
-      if (this.search_result) {
-          message += '<a href="javascript:void(0)" onclick="emap.removeActiveMarkerAndJumpBack()">'+_['gm-back']+'</a>&nbsp;&nbsp;';
-      }
       message += '<a href="javascript:void(0)" onclick="emap.updateActiveMarker()">'+_['gm-save-point']+'</a>'+
 	  '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.removeActiveMarker()">'+_['gm-remove']+'</a>';
       if (GME_PATHS_SUPPORTED && this.path == undefined) {
@@ -200,8 +202,8 @@ EditorsMarker.prototype = {
               content = _['gm-tab-title']+':<br />'+'<input size="24" id="tab_title_'+t+'" value="'+this.tabs[t].title+'" />'+
 		      '<br />'+_['gm-caption']+':<br />'+
 		      '<textarea class="balloon_textarea" id="tab_content_'+t+'">'+
-		      this.tabs[t].content+'</textarea><br />'+
-		      this.getBalloonFooter();
+		      this.tabs[t].content+'</textarea><br />';
+              content += this.getBalloonFooter();
               if (this.emap.rtl) {
                   content = '<div style="direction: rtl;">'+content+'</div>';
               }
@@ -217,6 +219,11 @@ EditorsMarker.prototype = {
           content += '<br /><textarea style="width: 260px;" id="balloon_textarea" class="balloon_textarea">';
           content += this.caption;
           content += '</textarea><br />';
+          if (this.getIcon() != GME_SMALL_ICON) {
+              content += 'Icon label: ';
+              content += '<select onchange="emap.changeActiveMarkerIcon(this.value)"><option></option>'+this.optionRange('A', 'Z', this.icon_name)+'</select>';
+              content += '<br />';
+          }
           content += this.getBalloonFooter();
 
           if (this.emap.rtl) {
@@ -225,6 +232,21 @@ EditorsMarker.prototype = {
           this.gmarker.openInfoWindowHtml( content, { maxWidth:270 });
       }
     },
+
+    optionRange: function(first, last, selected) {
+                     var content = '';
+         var start = first.charCodeAt(0);
+         var end = last.charCodeAt(0);
+          for(var i=start; i<=end; i++) {
+              var str = String.fromCharCode(i);
+              if (str == selected) {
+              content += '<option selected="selected">'+str+'</option>';
+              } else {
+              content += '<option>'+str+'</option>';
+              }
+          }
+          return content;
+     },
 
     caption: ''
 };
@@ -270,14 +292,14 @@ EditorsSingletons.prototype = {
 
             doomed_marker.previous_marker = undefined;
             doomed_marker.next_marker = undefined;
-                  },
+    },
 
     addMarker: function(marker) {
          marker.previous_marker = this.head;
          if (this.head) { this.head.next_marker = marker; }
          this.head = marker;
          this.container.appendChild(marker.container);
-   }
+    }
 };
 
 // A slightly more complicated linked list. This object also stores
@@ -485,7 +507,7 @@ EditorsPath.prototype = {
 
     deselect: function() {
         for(var i=0;i<this.markers.length;i++) {
-            if (!this.markers[i].caption) {
+            if (!this.markers[i].caption && !this.markers[i].gmarker.getTitle()) {
                 this.markers[i].hide();
             }
         }
@@ -512,6 +534,19 @@ EditorsMap.prototype = {
 	}
           // Initialize
 	this.icon_base = options.icons;
+        this.icon_labels = options.iconlabels.split(",");
+        this.default_icon = new GIcon(G_DEFAULT_ICON, options.icon);
+        this.default_icon.shadow = options.shadow;
+
+        var iconSize = options.iconsize.split("x");
+        this.default_icon.iconSize = new GSize(iconSize[0], iconSize[1]);
+        var shadowSize = options.shadowsize.split("x");
+        this.default_icon.shadowSize = new GSize(shadowSize[0], shadowSize[1]);
+        var iconAnchor = options.iconanchor.split("x");
+        this.default_icon.iconAnchor = new GPoint(iconAnchor[0], iconAnchor[1]);
+        var infoWindowAnchor = options.windowanchor.split("x");
+        this.default_icon.infoWindowAnchor = new GPoint(infoWindowAnchor[0], infoWindowAnchor[1]);
+
 	this.precision = options.precision; // how many decimal places?
 	this.paths_supported = GME_PATHS_SUPPORTED;
 	this.default_color = options.color.replace(/#/, '');
@@ -531,8 +566,21 @@ EditorsMap.prototype = {
 
 	this.singletons = new EditorsSingletons();
 
+	// Closures are great, but they make it harder to have short-ish functions.
+	// Here's how we cheat and let the closure bind to "this" but stick the workhorse
+	// function somewhere else.
+	var this_emap = this;
+
 	// Now make the API components and attach to the appropriate places.
-	this.gmap = new GMap2(this.map_div);
+	this.gmap = new GMap2(this.map_div, { 'googleBarOptions': 
+                { 'showOnLoad': options.localsearch,
+                'onGenerateMarkerHtmlCallback': function(marker, info, result) { 
+                var result_div = document.createElement("div");
+                result_div.innerHTML = this_emap.generateResultText(result);
+                this_emap.active_result_marker = marker;
+                return result_div; }
+                } } );
+        this.gmap.enableGoogleBar();
         this.gmap.addMapType(G_PHYSICAL_MAP);
 	this.controls = { 'selector':new GHierarchicalMapTypeControl(), 'scale':new GScaleControl(), 'overview':new GOverviewMapControl() };
 	this.active_controls = {};
@@ -540,27 +588,17 @@ EditorsMap.prototype = {
 	if (options.geocoder) {
 	    this.geocoder = new GClientGeocoder();
 	}
-	if (options.localsearch) {
-	    this.localSearch = new GlocalSearch();
-	    this.localSearch.setCenterPoint(this.gmap);
-	    this.localSearch.setSearchCompleteCallback(this, EditorsMap.prototype.populateResults);
-	}
 
 	this.configureMap( options );
 
 	if (this.maps_in_article == 1)
 	    this.loadMap(1);
 
-	// Closures are great, but they make it harder to have short-ish functions.
-	// Here's how we cheat and let the closure bind to "this" but stick the workhorse
-	// function somewhere else.
-	var this_map = this;
-
 	// Keep the map's center up-to-date.
-	GEvent.addListener(this.gmap, 'moveend', function() { this_map.dumpMapAttributes() });
+	GEvent.addListener(this.gmap, 'moveend', function() { this_emap.dumpMapAttributes() });
 
 	// one click listener to rule them all...
-	GEvent.addListener(this.gmap, 'click', function(overlay, point) { this_map.clickMap(overlay, point); });
+	GEvent.addListener(this.gmap, 'click', function(overlay, point) { this_emap.clickMap(overlay, point); });
     },
 
     getEditorsMapNode: function(options) {
@@ -571,36 +609,7 @@ EditorsMap.prototype = {
          this.map_div.style.direction = "ltr";
 
          this.search_div = document.createElement("div");
-         if (options.geocoder || options.localsearch) {
-             if (options.localsearch) {
-                 this.search_div.innerHTML = _['gm-search-preface'];
-             } else {
-                 this.search_div.innerHTML = _['gm-geocode-preface'];
-             }
-             this.search_div.innerHTML +=
-                 '<br /><input type="text" size="40" id="address_input" onkeypress="emap.findAddressIfEnter(event)" />&nbsp;&nbsp;&nbsp;'+
-                 '<a href="javascript:void(0)" onclick="emap.findAddress();">'+_['gm-search']+'</a>&nbsp;&nbsp;&nbsp;'+
-                 '<a href="javascript:void(0)" onclick="emap.clearResults()" id="clear_search_results" style="display: none;">'+
-                 _['gm-clear-search']+'</a>';
-             this.searching_div = document.createElement("div");
-             this.searching_div.innerHTML = _['gm-searching'];
-             this.searching_div.style.display = 'none';
-         } else {
-             this.search_div.innerHTML = _['gm-no-search-preface'];
-         }
-
-         if (options.localsearch) {
-             this.map_table = document.createElement("table");
-             this.map_table.setAttribute("cellspacing", "8");
-             this.map_table.style.display = 'none';
-
-             this.map_body = document.createElement("tbody");
-
-             this.local_search_results = document.createElement("tr");
-
-             this.map_table.appendChild(this.map_body);
-             this.map_body.appendChild(this.local_search_results);
-         }
+         this.search_div.innerHTML = _['gm-no-search-preface'];
 
          // We need to hang on to this reference for later,
          // so this is scoped for the object, not just the initializer
@@ -638,9 +647,6 @@ EditorsMap.prototype = {
 
          this.root_div.appendChild(this.search_div);
 
-         if (this.searching_div) {
-             this.root_div.appendChild(this.searching_div);
-         }
          if (this.map_table) {
              this.root_div.appendChild(this.map_table);
          }
@@ -649,8 +655,8 @@ EditorsMap.prototype = {
          this.kml_list = document.createElement("ul");
          this.kml_div.appendChild(this.kml_list);
 
-         this.root_div.appendChild(this.path_info_div);
          this.root_div.appendChild(this.map_div);
+         this.root_div.appendChild(this.path_info_div);
          this.root_div.appendChild(this.getControlPanelNode());
          this.root_div.appendChild(this.kml_div);
          this.root_div.appendChild(this.instructions_div);
@@ -899,7 +905,6 @@ getKmlNode: function() {
 
 // Could be removing from a path, or from the singletons
     updateActiveMarker: function() {
-        this.active_marker.search_result = false; // no more "back" button
         // we could have a caption, or some tabs.
         if (document.getElementById('balloon_textarea')) {
             var caption = document.getElementById('balloon_textarea').value;
@@ -935,6 +940,10 @@ getKmlNode: function() {
         this.zapGMarker(this.active_marker.gmarker);
     },
 
+    changeActiveMarkerIcon: function(label) {
+        this.active_marker.setIconImage(label, label ? this.icon_base.replace('{label}', label) : this.default_icon.image);
+    },
+
     removeActiveMarkerAndJumpBack: function() {
        this.removeActiveMarker();
        this.gmap.returnToSavedPosition();
@@ -957,114 +966,37 @@ getKmlNode: function() {
 
 /************** Search methods ***************/
 
-// this is called on every keypress in the search box.
-// If the user pressed "enter", kick off a search.
-    findAddressIfEnter: function(e) {
-                          if (e.keyCode == 13 || e.which == 13) { // keyCode => IE, which => Mozilla
-                            this.findAddress();
-                          }
-                        },
-
-// This is called when you click "Search". First we try to geo-code it,
-// and, failing that, we do a local search.
-    findAddress: function() {
-	     var addr = document.getElementById('address_input').value;
-             this.gmap.savePosition();
-             if (this.localSearch) {
-                 this.map_table.style.display = '';
-             }
-	     this.searching_div.style.display = ''; // "searching..."
-
-	     // make some variables available to the closure
-	     var editors_map = this;
-
-	     if (!this.geocoder) {
-		 if (this.localSearch) {
-		     this.localSearch.execute(addr);
-		 }
-		 return;
-	     }
-	     this.geocoder.getLocations(addr, function(response) {
-		     if (!response || response.Status.code != 200) { // i.e., the geocode failed.
-			 if (editors_map.localSearch) {
-			     editors_map.localSearch.execute(addr);
-			 } else {
-                             editors_map.searching_div.style.display = 'none';
-			     alert(_['gm-no-results']);
-			 }
-		     } else { // We have a geo-code!
-			 editors_map.searching_div.style.display = 'none';
-                         if (editors_map.map_table) {
-                         editors_map.map_table.style.display = 'none';
-                         }
-			 var place = response.Placemark[0];
-			 var point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]);
-			 editors_map.gmap.setCenter(point,
-			     2 * place.AddressDetails.Accuracy + 3); // just a lazy guess on how zoomed in we should be.
-
-			 var my_marker = new EditorsMarker(point, editors_map);
-                         my_marker.search_result = true;
-
-			 var address = '';
-			 if (place.AddressDetails.Accuracy >= 6) { // take formatting into our own hands
-			     var state =  place.AddressDetails.Country.AdministrativeArea.AdministrativeAreaName;
-			     var city =   place.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName;
-			     var street = place.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.Thoroughfare.ThoroughfareName;
-			     address = street+"\r\n"+city+', '+state;
-			 } else {
-			     address = place.address;
-			 }
-			 editors_map.newMarker(my_marker, undefined, address);
-		     }
-			   });
-		 },
-
-// Called by the local search. Formats the results nice and pretty,
-// and provides a link to "add marker here"
-    populateResults: function() {
-                       this.searching_div.style.display = 'none';
-                       document.getElementById('clear_search_results').style.display = '';
-                       for(var r=0; r<this.localSearch.results.length; r++) {
-                         var text = '';
-                         var result = this.localSearch.results[r];
+    generateResultTextCaption: function(result, sep) {
                          var phone = '';
-                         var result_div = document.createElement("td");
-                         result_div.setAttribute("width", (100 / this.localSearch.results.length)+"%");
-                         result_div.setAttribute("valign", "top");
-                         for (var p=0; p < result.phoneNumbers.length; p++) {
-                           if (result.phoneNumbers[p].type == "main") {
-                             phone = result.phoneNumbers[p].number;
-                           }
+                         var text = '';
+                         if (result.phoneNumbers) {
+                             for (var p=0; p < result.phoneNumbers.length; p++) {
+                                 if (result.phoneNumbers[p].type == "main") {
+                                     phone = result.phoneNumbers[p].number;
+                                 }
+                             }
                          }
-                         text += "<b>"+result.title+"</b><br />";
                          if (result.streetAddress)
-                           text += result.streetAddress+"<br />";
-                         text += result.city+", "+result.region+'<br />';
+                             text += result.streetAddress+sep;
+                         text += result.city+", "+result.region;
                          if (phone)
-                           text += phone+'<br />';
+                             text += sep+phone;
+                         return text;
+                   },
+    generateResultText: function(result) {
+                         var text = '';
+                         text += "<b>"+result.title+"</b><br />";
+                         text += this.generateResultTextCaption(result, "<br />") + "<br />";
                          text += '<a href="javascript:void(0)" onclick="emap.clipResult(\''+result.titleNoFormatting.replace(/'/g, '\\\'')+
-                             '\', '+result.lat+', '+result.lng+')">'+_['gm-clip-result']+'</a>';
-                         result_div.innerHTML = text;
-                         this.local_search_results.appendChild(result_div);
-                       }
-                       if(!this.localSearch.results[0]) {
-                         // probably shouldn't alert, but it gets attention.
-                         alert(_['gm-no-results']);
-                       }
-                     },
+                             '\', \''+this.generateResultTextCaption(result, '\\r\\n').replace(/'/g, '\\\'')+'\', '+result.lat+', '+result.lng+')">'+_['gm-clip-result']+'</a>';
+                         return text;
 
-// Called by the "clear search results" link. Shocking, I know.
-    clearResults: function() {
-		    while(this.local_search_results.hasChildNodes()) {
-		      this.local_search_results.removeChild(this.local_search_results.childNodes[0]);
-		    }
-		    document.getElementById('clear_search_results').style.display = 'none';
-		  },
+                    },
 
-    clipResult: function(title, lat, lng) {
+    clipResult: function(title, caption, lat, lng) {
           var my_marker = new EditorsMarker(new GLatLng(lat, lng), this);
-          this.gmap.setCenter(my_marker.getPoint());
-          this.newMarker(my_marker, title, '');
+          this.newMarker(my_marker, title, caption);
+          if (this.active_result_marker) { this.active_result_marker.hide(); }
     },
 
 /************ Super-boring "set" methods **************/
@@ -1339,7 +1271,7 @@ getKmlNode: function() {
                 var existing_maps = [];
                 var i = 0;
                 for(var l=0; l < lines.length; l++) {
-                  if (lines[l].match(/<googlemap/)) {
+                  if (lines[l].match(/<googlemap[ >]/)) {
                     attrs = this.getXMLishAttributes(lines[l]);
                     if (attrs['name'] != undefined) {
                       existing_maps[i] = attrs['name'];
@@ -1461,7 +1393,7 @@ PARSE_STATE_POINTS: 1,
                  var lon = parseFloat(RegExp.$3);
                  var caption = RegExp.$4;
                  if (icon && !mapIcons[icon]) { // Just-in-time icon creation
-                     mapIcons[icon] = new GIcon(G_DEFAULT_ICON, this.icon_base.replace('{label}', icon));
+                     mapIcons[icon] = new GIcon(this.default_icon, this.icon_base.replace('{label}', icon));
                  }
                  if (lat && lon) {
                      var mkr = new EditorsMarker(new GLatLng(lat, lon), this, '', mapIcons[icon]);
@@ -1492,7 +1424,7 @@ PARSE_STATE_POINTS: 1,
                  var lon = parseFloat(RegExp.$3);
                  var title = RegExp.$4;
                  if (icon && !mapIcons[icon]) { // Just-in-time icon creation
-                     mapIcons[icon] = new GIcon(G_DEFAULT_ICON, this.icon_base.replace('{label}', icon));
+                     mapIcons[icon] = new GIcon(this.default_icon, this.icon_base.replace('{label}', icon));
                  }
                  if (lat && lon) {
                      var mkr = new EditorsMarker(new GLatLng(lat, lon), this, title, mapIcons[icon]);

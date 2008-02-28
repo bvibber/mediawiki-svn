@@ -1,12 +1,11 @@
 <?php
 
-class GoogleMapsKmlOutputter {
-	var $mOutput;
+class GoogleMapsKmlExporter extends GoogleMapsExporter {
 	var $mIcons;
 	var $mIcon;
 	var $mMarkerCount;
 
-	function GoogleMapsKmlOutputter(&$pLanguage, $pIcon) {
+	function GoogleMapsKmlExporter(&$pLanguage, $pIcon) {
 		$this->mOutput = '';
 		$this->mIcons = array();
 		$this->mIcon = $pIcon;
@@ -85,7 +84,7 @@ class GoogleMapsKmlOutputter {
 			$this->mOutput .= '<description><![CDATA['.
 			GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($pCaption), $this->mLanguage->isRTL()).
 			']]></description>';
-			} else if (is_array($pCaption)) { // TODO (?)
+                } else if (is_array($pCaption)) { // TODO tabs and max content
 		}
 		$this->mOutput .= "</Placemark>\n";
 	}
@@ -112,9 +111,5 @@ class GoogleMapsKmlOutputter {
 
 	function addTrailer() {
 		$this->mOutput .= "</Folder>";
-	}
-
-	function render() {
-		return $this->mOutput;
 	}
 }

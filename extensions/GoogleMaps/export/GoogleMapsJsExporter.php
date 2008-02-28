@@ -1,12 +1,11 @@
 <?php
 
-class GoogleMapsJsOutputter {
+class GoogleMapsJsExporter extends GoogleMapsExporter {
     var $mEnablePaths;
-    var $mOutput;
     var $mLanguage;
     var $mProxyKey;
 
-    function GoogleMapsJsOutputter(&$pLanguage, &$pProxyKey, $pEnablePaths = true) {
+    function GoogleMapsJsExporter(&$pLanguage, &$pProxyKey, $pEnablePaths = true) {
         $this->mOutput = '';
         $this->mLanguage =& $pLanguage;
         $this->mProxyKey =& $pProxyKey;
@@ -75,7 +74,7 @@ JAVASCRIPT;
      * @return string - the javascript for adding the tabs to the map
      **/
 
-    function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pCaption, $pIsLine ) {
+    function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pCaption, $pMaxContent, $pIsLine ) {
         $title = GoogleMaps::fixStringDirection($pTitle, $this->mLanguage->isRTL());
 
         if (is_string($pCaption)) {
@@ -99,12 +98,15 @@ JAVASCRIPT;
             $this->mOutput .= " 'clickable': {$options['clickable']} ";
             $this->mOutput .= "});";
         }
+        if ($pMaxContent) {
+            $this->mOutput .= " marker.maxContent = '".addslashes($pMaxContent)."';";
+        }
 
         if (is_string($pCaption)) {
             // if there's a caption, set it
             $this->mOutput .= " marker.caption = '';";
             if ($title) {
-                $this->mOutput .= " marker.caption += '<p><b>" . addslashes($title) . "</b></p>';";
+                $this->mOutput .= " marker.title = '".addslashes($title)."';";
             }
             if( $caption ) {
                 $this->mOutput .= " marker.caption += '" .
@@ -128,18 +130,36 @@ JAVASCRIPT;
         $this->mOutput .= " map.addOverlay(marker);";
     }
 
-    function addIcon($icon, $template) {
+    function addIcon($icon, $options) {
         $this->mOutput .= " mapIcons['{$icon}'] = new GIcon(G_DEFAULT_ICON, '" .
-            addslashes( str_replace( "{label}", $icon, $template ) ) . "');";
+            addslashes( str_replace( "{label}", $icon, $options['icons']) ) . "');";
+        list($x, $y) = sscanf($options['iconsize'], "%dx%d");
+        if (!is_null($x) && !is_null($y)) {
+            $this->mOutput .= " mapIcons['{$icon}'].iconSize = new GSize({$x}, {$y});";
+        }
+        list($x, $y) = sscanf($options['shadowsize'], "%dx%d");
+        if (!is_null($x) && !is_null($y)) {
+            $this->mOutput .= " mapIcons['{$icon}'].shadowSize = new GSize({$x}, {$y});";
+        }
+        list($x, $y) = sscanf($options['iconanchor'], "%dx%d");
+        if (!is_null($x) && !is_null($y)) {
+            $this->mOutput .= " mapIcons['{$icon}'].iconAnchor = new GPoint({$x}, {$y});";
+        }
+        list($x, $y) = sscanf($options['windowanchor'], "%dx%d");
+        if (!is_null($x) && !is_null($y)) {
+            $this->mOutput .= " mapIcons['{$icon}'].infoWindowAnchor = new GPoint({$x}, {$y});";
+        }
+        $this->mOutput .= " mapIcons['{$icon}'].shadow = '{$options['shadow']}';";
     }
 
-    function addHeader($o) {
+    function addHeader($o, $fallback) {
         $numberOfMaps = $o['number_of_maps'];
         $incompatibleMessage = $o['incompatible_message'];
+        $incompatibleMessageLink = $o['incompatible_message_link'];
       // output the main dif with the specified height/width/direction
-      $this->mOutput .= '<div id="map' . $numberOfMaps . '" style="width: ' . $o['width'].'px; height: ' . $o['height'].'px; direction: ltr;"></div>';
+        $this->mOutput .= '<div id="map' . $numberOfMaps . '" style="width: ' . $o['width'].'px; height: ' . $o['height'].'px; direction: ltr; '.$o['style'].'">';
+        $this->mOutput .= '<noscript>'.$fallback.'</noscript><div id="map'.$numberOfMaps.'_fallback" style="display: none;">'.$fallback.'</div></div>';
 
-      $incompatibleMessage = addslashes($incompatibleMessage);
       // The Google Maps API shows polylines incorrectly in IE if the direction
       // of the Map is RTL. So for RTL languages, we set the map div to LTR,
       // then make the info balloons RTL.
@@ -153,7 +173,7 @@ JAVASCRIPT;
       $this->mOutput .= <<<JAVASCRIPT
       function makeMap{$numberOfMaps}() {
       if (!GBrowserIsCompatible()) {
-          document.getElementById("map{$numberOfMaps}").innerHTML = "{$incompatibleMessage}";
+          document.getElementById("map{$numberOfMaps}_fallback").style.display = '';
           return;
       }
       var map = new GMap2(document.getElementById("map{$numberOfMaps}"));
@@ -164,12 +184,23 @@ JAVASCRIPT;
           if (overlay) {
             if (overlay.tabs) {
               overlay.openInfoWindowTabsHtml(overlay.tabs);
-            } else if (overlay.caption) {
-              overlay.openInfoWindowHtml(overlay.caption);
-            }
+            } else if (overlay.caption || overlay.maxContent) {
+                overlay.openInfoWindowHtml('<div class="gmapinfowindow">'+
+                    (overlay.title?('<p><b>'+overlay.title+'</b></p>'):'')+overlay.caption+'</div>', 
+                    { 'maxTitle': overlay.title, 'maxContent': overlay.maxContent });
+                if (overlay.maxContent) {
+                    map.getInfoWindow().enableMaximize();
+                } else {
+                    map.getInfoWindow().disableMaximize();
+                }
+            } 
           }
       });
 JAVASCRIPT;
+                if ($pMaxContent) {
+                    $this->mOutput .= " 'maxTitle': '".addslashes($title)."', ";
+                    $this->mOutput .= " 'maxContent': '".addslashes($pMaxContent)."', ";
+                }
 
           // make gmap api calls to implement the various settings
           if( $o['zoomstyle'] == 'smooth' ) {

@@ -11,7 +11,8 @@ $wgGoogleMapsMessages = array();
  * @author Evan Miller
  */
 $wgGoogleMapsMessages['en'] = array(
-	'gm-incompatible-browser' => 'In order to see the map that would go in this space, you will need to use a <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">compatible web browser</a>.',
+    'gm-incompatible-browser' => 'In order to see the map that would go in this space, you will need to use a compatible web browser.',
+    'gm-incompatible-browser-link' => 'Click here to see a list of compatible browsers.',
 	'gm-no-editor' => 'Unfortunately, your browser does not support the interactive map-making features. Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
 	'gm-balloon-title' => 'Title:',
 	'gm-make-marker' => 'Caption (wiki mark-up OK):',
@@ -80,7 +81,7 @@ $wgGoogleMapsMessages['en'] = array(
  * @author Meno25
  */
 $wgGoogleMapsMessages['ar'] = array(
-	'gm-incompatible-browser'  => 'لكي تشاهد الخريطة المراد ادخالها في هذا الفضاء، ستحتاج لإستخدام <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">متصفح ويب متوافق</a>.',
+	'gm-incompatible-browser'  => 'لكي تشاهد الخريطة المراد ادخالها في هذا الفضاء، ستحتاج لإستخدام متصفح ويب متوافق.',
 	'gm-no-editor'             => 'لسوء الحظ ، متصفّحك لا يدعم ميزّات انشاء الخريطة التفاعلية. جرّب آخر نسخة <a href="http://www.microsoft.com/ie">لمستكشف أنترنت</a> (ويندوز) او <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، و لينكس).',
 	'gm-balloon-title'         => 'العنوان:',
 	'gm-make-marker'           => 'تعليق (wiki mark-up OK):',
@@ -148,7 +149,7 @@ $wgGoogleMapsMessages['ar'] = array(
  * @author DCLXVI
  */
 $wgGoogleMapsMessages['bg'] = array(
-	'gm-incompatible-browser'  => 'За правилното визуализиране на картата, която трябва да бъде показана на това място, е необходим <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">съвместим уеб браузър</a>.',
+	'gm-incompatible-browser'  => 'За правилното визуализиране на картата, която трябва да бъде показана на това място, е необходим съвместим уеб браузър.',
 	'gm-no-editor'             => 'Използваният браузър не поддържа показването на интерактивните карти. Опитайте с последните версии на <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac и Linux).',
 	'gm-balloon-title'         => 'Заглавие:',
 	'gm-make-marker'           => 'Легенда (уики-синтаксисът е вкл.):',
@@ -216,7 +217,7 @@ $wgGoogleMapsMessages['bg'] = array(
  * @author <anonymous>
  */
 $wgGoogleMapsMessages['br'] = array(
-	'gm-incompatible-browser' => 'Para ver o mapa que iria neste espaço, você precisará usar um <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">navegador compatível</a>.',
+	'gm-incompatible-browser' => 'Para ver o mapa que iria neste espaço, você precisará usar um navegador compatível.',
 	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta o recurso de mapa interativo. Experimente uma versão mais recente do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou do <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, Linux).',
 	'gm-make-marker' => 'Texto explicativo (Marcar wiki OK):',
 	'gm-remove' => 'remover',
@@ -272,7 +273,7 @@ $wgGoogleMapsMessages['br'] = array(
 );
 
 $wgGoogleMapsMessages['ca'] = array(
-	'gm-incompatible-browser' => 'Per veure el mapa que hi ha en aquesta p&agrave;gina, has d\'utilitzar un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navegador compatible</a>.',
+	'gm-incompatible-browser' => 'Per veure el mapa que hi ha en aquesta p&agrave;gina, has d\'utilitzar un navegador compatible.',
 	'gm-no-editor' => 'Desgraciadament, el teu navegador no suporta la funci&oacute; interactiva de construcci&oacute; de mapes. Prova la darrera versi&oacute; de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac i Linux).',
 	'gm-make-marker' => 'Llegenda (sintaxi wiki OK):',
 	'gm-remove' => 'eliminar',
@@ -326,7 +327,7 @@ $wgGoogleMapsMessages['ca'] = array(
  * @author Raimond Spekking
  */
 $wgGoogleMapsMessages['de'] = array(
-	'gm-incompatible-browser'  => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchst du einen <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatiblen Browser</a>.',
+	'gm-incompatible-browser'  => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchst du einen kompatiblen Browser.',
 	'gm-no-editor'             => 'Leider unterstützt dein Browser den interaktiven Karten-Editor nicht. Versuche es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
 	'gm-make-marker'           => 'Beschreibung (Wiki-Syntax ist OK):',
 	'gm-remove'                => 'Entfernen',
@@ -380,7 +381,7 @@ $wgGoogleMapsMessages['de'] = array(
  * @author Raimond Spekking
  */
 $wgGoogleMapsMessages['de-formal'] = array(
-	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatiblen Browser</a>.',
+	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen kompatiblen Browser.',
 	'gm-no-editor'            => 'Leider unterstützt Ihr Browser den interaktiven Karten-Editor nicht. Versuchen Sie es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
 	'gm-note'                 => 'Achtung: Kopieren Sie die Wiki-Syntax in den Artikel (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
 	'gm-are-you-sure'         => 'Sind Sie sicher?',
@@ -395,7 +396,7 @@ $wgGoogleMapsMessages['de-formal'] = array(
  * @author <anonymous>
  */
 $wgGoogleMapsMessages['es'] = array(
-	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navegador compatible</a>.',
+	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un navegador compatible.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
 	'gm-make-marker' => 'Leyenda (sintaxis wiki OK):',
 	'gm-remove' => 'eliminar',
@@ -450,7 +451,7 @@ $wgGoogleMapsMessages['es'] = array(
  * @author Meithal
  */
 $wgGoogleMapsMessages['fr'] = array(
-	'gm-incompatible-browser'  => 'Pour voir la carte qui devrait être dans cet espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
+	'gm-incompatible-browser'  => 'Pour voir la carte qui devrait être dans cet espace, utilisez un navigateur compatible.',
 	'gm-no-editor'             => 'Malheureusement, votre navigateur ne supporte pas la création interactive de carte. Essayez d’installer la dernière version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title'         => 'Titre :',
 	'gm-make-marker'           => 'Légende (wiki annotation OK):',
@@ -602,7 +603,7 @@ $wgGoogleMapsMessages['lb'] = array(
  * @author Siebrand
  */
 $wgGoogleMapsMessages['nl'] = array(
-	'gm-incompatible-browser'  => 'Om deze kaart te bekijken dient u gebruik te maken van een <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">geschikte browser</a>.',
+	'gm-incompatible-browser'  => 'Om deze kaart te bekijken dient u gebruik te maken van een geschikte browser.',
 	'gm-no-editor'             => 'Helaas ondersteunt uw browser het interactief maken van kaarten niet. Probeer het eens met de nieuwste versie van <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Mac, Linux en Windows) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
 	'gm-balloon-title'         => 'Titel:',
 	'gm-make-marker'           => 'Beschrijving (wikiopmaak toegestaan):',
@@ -670,7 +671,7 @@ $wgGoogleMapsMessages['nl'] = array(
  * @author Jon Harald Søby
  */
 $wgGoogleMapsMessages['no'] = array(
-	'gm-incompatible-browser'  => 'For å kunne se kartet som skulle ha vært her, må du bruke en <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettleser</a>.',
+	'gm-incompatible-browser'  => 'For å kunne se kartet som skulle ha vært her, må du bruke en kompatibel nettleser.',
 	'gm-no-editor'             => 'Dessverre støtter ikke nettleseren din de interaktive kartlagingstjenestene. Prøv den nyeste versjonen av <a href="http://www.microsoft.com/norge/windows/ie/default.mspx">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla-europe.org/no/products/firefox/">Firefox</a> (Windows, Mac og Linux).',
 	'gm-balloon-title'         => 'Tittel:',
 	'gm-make-marker'           => 'Bildetekst (wikikoding kan brukes):',
@@ -904,7 +905,7 @@ $wgGoogleMapsMessages['ru'] = array(
  * @author Helix84
  */
 $wgGoogleMapsMessages['sk'] = array(
-	'gm-incompatible-browser'  => 'Aby ste mohli vidieť mapu, ktorá patrí do tejto oblasti, museli by ste použiť <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibilný webový prehliadač</a>.',
+	'gm-incompatible-browser'  => 'Aby ste mohli vidieť mapu, ktorá patrí do tejto oblasti, museli by ste použiť kompatibilný webový prehliadač.',
 	'gm-no-editor'             => 'Nanešťastie váš webový prehliadač nepodporuje interaktívne možnosti tvorby máp. Skúste najnovšiu verziu prehliadača <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) alebo <a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a> (Windows, Mac a Linux).',
 	'gm-balloon-title'         => 'Nadpis:',
 	'gm-make-marker'           => 'Nadpis (môže byť aj wiki text):',
@@ -1044,7 +1045,7 @@ $wgGoogleMapsMessages['te'] = array(
  * @author Minh Nguyen
  */
 $wgGoogleMapsMessages['vi'] = array(
-	'gm-incompatible-browser'  => 'Để xem bản đồ ở đây, bạn sẽ cần phải có một <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">trình duyệt tương thích</a>.',
+	'gm-incompatible-browser'  => 'Để xem bản đồ ở đây, bạn sẽ cần phải có một trình duyệt tương thích.',
 	'gm-no-editor'             => 'Thật không may, trình duyệt của bạn không hỗ trợ tính năng tạo ra bản đồ tương tác. Xin vui lòng thử phiên bản mới nhất của <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) hoặc <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, và Linux).',
 	'gm-balloon-title'         => 'Tựa đề:',
 	'gm-make-marker'           => 'Chú thích (có thể dùng mã wiki):',
