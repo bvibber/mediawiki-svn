@@ -16,6 +16,8 @@ $messages['en'] = array(
 	'edituser-logout' => 'Log user out',
 	'edituser-username' => 'Name',
 	'edituser-dosearch' => 'Search',
+	'edituser-nouser' => 'The specified user does not exist',
+	'edituser-exempt' => 'The specified user cannot be edited',
 );
 
 /** Arabic (العربية)

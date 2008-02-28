@@ -104,6 +104,15 @@ class EditUser extends SpecialPage {
 		$this->target = (isset($par)) ? $par : $wgRequest->getText('username', '');
 		if($this->target === '')
 			return;
+		$targetuser = User::NewFromName( $this->target );
+		if( $targetuser->getID() == 0 ) {
+			$wgOut->addWikiText( wfMsg( 'edituser-nouser' ) );
+			return;
+		}
+		if( $targetuser->isAllowed('edituser-exempt') ) {
+			$wgOut->addWikiText( wfMsg( 'edituser-exempt' ) );
+			return;
+		}
 		$this->loadGlobals($this->target);
 		$wgOut->addHtml('<br />');
 		if ( wfReadOnly() ) {

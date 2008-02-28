@@ -10,9 +10,9 @@ if(!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'EditUser',
-	'version' => '1.3',
+	'version' => '1.4',
 	'author' => 'Ryan Schmidt',
-	#'description' => 'Allows privileged users to edit other users\' preferences',
+	'description' => 'Allows privileged users to edit other users\' preferences',
 	'descriptionmsg' => 'edituser-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditUser',
 );
@@ -22,3 +22,4 @@ $wgExtensionMessagesFiles['EditUser'] = $dir .'EditUser.i18n.php';
 $wgAutoloadClasses['EditUser'] = $dir . 'EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
 $wgAvailableRights[] = 'edituser';
+$wgAvaliableRights[] = 'edituser-exempt';
