@@ -12,6 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	//set up defaults: 
  	var $req = 'stream_transcripts'; 
  	var $tl_width = '16';
+ 	var $parserOutput = null;
  	/*structures the component output and call html code generation */
  	function getHTML(){ 	 		
  		switch($this->req){
@@ -128,7 +129,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				"</legend>");			
 		$wgOut->addHTML("<div id=\"mv_fcontent_{$mvd_page->id}\">");
 		if($content==''){				
-			$wgOut->addHTML( $this->get_article_html($mvd_page) );
+			$this->outputMVD($mvd_page);
 		}else{
 			$wgOut->addHTML($content);
 		}			
@@ -145,8 +146,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	function get_fd_mvd_request($titleKey, $mvd_id, $mode='inner'){
 		global $wgOut;			
 		$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyTitle($titleKey);		
-		if($mode=='inner'){
-			$wgOut->addHTML( $this->get_article_html($this->mvd_pages[$mvd_id]) );
+		if($mode=='inner'){			
+			$this->outputMVD($this->mvd_pages[$mvd_id]);			
 		}else if($mode=='enclosed'){
 			$this->get_fd_mvd_page($this->mvd_pages[$mvd_id]);
 		}
@@ -192,37 +193,64 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 		return $out;
 	}
+	
+	function getMVDhtml(&$mvd_page, $absolute_links=false){
+		global $wgOut;
+		//incase we call mid output (but really should use outputMVD in thouse cases)
+		$pre_out = $wgOut->getHTML();
+		$wgOut->clearHTML();	
+		$this->outputMVD($mvd_page, $absolute_links);
+		$value = $wgOut->getHTML();
+		$wgOut->clearHTML();
+		$wgOut->addHTML($pre_out);
+		return $value;
+	}
 	/*@@TODO we will get the some millage if CACHE THIS 
 	 * with purge on mvd_edit/move/delete */
-	function get_article_html(&$mvd_page, $absolute_links=false){
-		global $wgOut;				
-		$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );				
-		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
-		if($mvdTile->exists()){	
-			//grab the article text:
-			$curRevision = Revision::newFromTitle($mvdTile);			
-			$wikiText = $curRevision->getText();
-		}else{
-			if(isset($this->preMoveArtileText)){
-				$wikiText = & $this->preMoveArtileText; 				 
-			}else{
-				//@@todo throw error: 
-				//print "error article: "	.  $mvd_page->wiki_title . " not there \n";
-				print "js_log('missing: " .$mvd_page->wiki_title."');\n";
-				return ;				
-			}						
-		}		
-		$mvdTile = new MV_Title( $mvd_page->wiki_title );					
-		$page =  $this->parse_format_text($wikiText, $mvdTile);
-		//if absolute_links set preg_replace with the server for every relative link:				
-		if($absolute_links==true){
-			global $wgServer;
-			$page = str_replace(array('href="/', 'src="/'), array('href="'.$wgServer.'/', 'src="'.$wgServer.'/'), $page);
-		}			
-		return $page; 	
-	}
-	function get_wiki_text(&$mvd_page){
+	function outputMVD(&$mvd_page, $absolute_links=false){
+		global $wgOut,$wgUser, $wgEnableParserCache;				
+		//$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );
+		$mvdTitle = new MV_Title( $mvd_page->wiki_title );
+		$mvdArticle = new Article($mvdTitle);
 		
+		/*try to pull from cache: (should do new key on edits)*/
+		$MvParserCache =& MV_ParserCache::singleton();
+		$add_opt = ($absolute_links)?'a':'';
+		$MvParserCache->addToKey($add_opt);
+		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );
+		if ( $parserOutput !== false ) {
+			//print "found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser );
+			//found in cache output and be done with it: 					
+			$wgOut->addParserOutput( $parserOutput );
+		}else{
+			//print "not found in cache<br><br>";
+			//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
+			if($mvdTitle->exists()){	
+				//grab the article text:
+				$curRevision = Revision::newFromTitle($mvdTitle);			
+				$wikiText = $curRevision->getText();
+			}else{
+				if(isset($this->preMoveArtileText)){
+					$wikiText = & $this->preMoveArtileText; 				 
+				}else{
+					//@@todo throw error: 
+					//print "error article: "	.  $mvd_page->wiki_title . " not there \n";
+					print "js_log('missing: " .$mvd_page->wiki_title."');\n";
+					return ;				
+				}						
+			}		
+								
+			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle);
+			
+			//if absolute_links set preg_replace with the server for every relative link:				
+			if($absolute_links==true){
+				global $wgServer;
+				$parserOutput->mText = str_replace(array('href="/', 'src="/'), array('href="'.$wgServer.'/', 'src="'.$wgServer.'/'), $parserOutput->mText);
+			}					
+			//output the page and save to cache
+			$wgOut->addParserOutput( $parserOutput); 	
+			$MvParserCache->save( $parserOutput, $mvdArticle, $wgUser );
+		}										
 	}
 	function parse_format_text(&$text, &$mvdTile){
 		global $wgOut;
@@ -232,10 +260,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		
 		//pull up relevent template for given mvd type: 
-		//@@todo add in automated template_key lookup
+		//@@todo convert into automated template_key lookup
 		switch(strtolower($template_key)){
 			case 'ht_en':			
-				global $wgParser, $wgUser, $wgTitle, $wgContLang;
+				global $wgParser, $wgUser, $wgContLang;
 				$templetTitle = Title::makeTitle(NS_TEMPLATE, $template_key );	
 				if($templetTitle->exists()){	
 					$smw_attr = $this->get_and_strip_semantic_tags($text);			
@@ -262,13 +290,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$parserOptions->setEditSection( false );
 		$parserOptions->setTidy(true);
 		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
-		$wgOut->addCategoryLinks( $parserOutput->getCategories() );		
-		$o='';
-		$o.= $parserOutput->mText;
-		$o.= $sk->getCategories();		
+		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
+		//@@TODO a less ugly hack here: 			
+		$parserOutput->mText.=	$sk->getCategories();			
 		//empty out the categories
 		$wgOut->mCategoryLinks = array();
-		return $o;								
+		return $parserOutput;
 	}
 	function get_add_disp($baseTitle, $mvdType, $time_range){
 		global $wgUser, $wgOut, $mvDefaultClipLength,$mvMVDTypeAllAvailable, $wgRequest;					
@@ -567,7 +594,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			//$wgOut->addHTML($out);			
 			$mvTitle = new MV_Title($_REQUEST['title']);
 				
-			$wgOut->addHTML( $this->parse_format_text($_REQUEST['wpTextbox1'], $mvTitle) );				
+			$parserOutput = $this->parse_format_text($_REQUEST['wpTextbox1'], $mvTitle);	
+			$wgOut->addParserOutput($parserOutput);		
 			return $wgOut->getHTML() . '<div style="clear:both;"><hr></div>';
 		}	
 						

@@ -35,6 +35,8 @@
 	/*function getStreamPage(){
 		return ;		
 	}*/	
+	
+	/* @@todo cache this */
 	function get_tool_html($tool_id, $ns='', $title_str=''){		
 		global $wgUser;
 		if($title_str=='')$title_str = $this->mv_interface->article->mvTitle->getStreamName();

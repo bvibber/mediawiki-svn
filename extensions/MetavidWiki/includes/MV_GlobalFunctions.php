@@ -51,6 +51,7 @@ $wgAutoloadClasses['MV_Image'] = dirname(__FILE__)  . '/MV_Image.php';
 $wgAutoloadClasses['MV_Stream'] =  dirname(__FILE__)  .'/MV_Stream.php';
 $wgAutoloadClasses['MV_StreamFile']=dirname(__FILE__)  . '/MV_StreamFile.php';
 $wgAutoloadClasses['MV_StreamImage'] = dirname(__FILE__)  . '/MV_StreamImage.php';
+$wgAutoloadClasses['MV_ParserCache'] = dirname(__FILE__) . '/MV_ParserCache.php';
 		
 $markerList = array(); 
 

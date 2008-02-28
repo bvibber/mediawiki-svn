@@ -100,7 +100,7 @@ define('SEQUENCE_TAG', 'sequence');
 						$MV_Overlay = new MV_Overlay();	
 						$wgOut->clearHTML();	
 						while($mvd = $dbr->fetchObject($mvd_res)){								
-							$MV_Overlay->get_article_html($mvd);	
+							$MV_Overlay->outputMVD($mvd);	
 						}
 						$clip['desc']=$wgOut->getHTML();
 						$wgOut->clearHTML();	

@@ -31,16 +31,22 @@
  	var $mvStream = null;
  	var $wiki_title='';
  	//default namespace for mvTitle MV_NS_MVD
- 	function __construct($title){ 	
+ 	function __construct($title, $ns=MV_NS_MVD){ 	 		
  		//handle title object	
- 		if(is_object($title)){ 			 			
- 			$title = $title->getDBkey();
- 		}
- 		$title = $this->normalizeTitle($title);
+ 		if(is_string($title)){ 			 			 			
+ 			$title = parent::makeTitle($ns, $title);
+ 		}  		 		
+ 		$this->inheritTitle( $title) ;
+ 		 		 	
  		//its just a plain string generate the parse info
- 		$this->wiki_title = $title;
- 		$this->parseTitle($title);
+ 		$this->wiki_title = $title->getDBKey();
+ 		$this->parseTitle($title->getDBKey());
  		//print "mv_title stream name: " . $this->stream_name. "\n";
+ 	}
+ 	function inheritTitle($tilte){
+ 		foreach($tilte as $k=>$v){
+ 			$this->$k= $v;
+ 		}
  	}
  	function hasMVDType(){ return $this->hasMVDType;}
  	/*

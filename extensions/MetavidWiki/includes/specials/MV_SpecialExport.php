@@ -62,10 +62,10 @@ class MV_SpecialExport {
 					break;
 					case 'jroe':
 						//returns roe stream info in json object for easy DOM injection
-						$this->get_jroe_desc();
+						$this->get_roe_json();
 					break;
 					case 'roe':
-						$this->get_roe_desc();
+						$this->get_roe_xml();
 					break;
 				}				
 			break;
@@ -136,21 +136,29 @@ class MV_SpecialExport {
 		//get all avaliable files
 		$this->file_list =$this->mvTitle->mvStream->getFileList(); 		
 	}
-	function get_jroe_desc(){
-		$this->get_row_data();
-		$dbr =& wfGetDB(DB_SLAVE);			
+	function get_roe_json(){
+		$fname = 'Mv_SpecialExport::get_roe_json';
+		wfProfileIn( $fname );
+		$this->get_row_data();		
 		//sucks to do big XML page operations ... 
-		//but we should be able to cache it
-		
+		//but we should be able to cache it?
+		ob_start();
+		$this->get_roe_xml(false);
+		$xml_page = ob_get_clean();
+		include_once('xml2json/xml2json.php');
+		$jsonContents = xml2json::transformXmlStringToJson($xml_page);
+		print $jsonContents;
+		wfProfileOut($fname);
 	}
 	//start high level: 
-	function get_roe_desc(){
+	function get_roe_xml($header=true){
 		global $mvDefaultVideoQualityKey;
 		$dbr =& wfGetDB(DB_SLAVE);		
 	
 		$this->get_row_data();
 		//get the stream stream req 
-		header('Content-Type: text/xml');
+		if($header)
+			header('Content-Type: text/xml');
 		//print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 		?>		
@@ -241,7 +249,7 @@ class MV_SpecialExport {
 						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
 							<'.$ns.'img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
 							<'.$ns.'body><![CDATA[
-									'.	$MV_Overlay->get_article_html($mvd, $absolute_links=true).'
+									'.	$MV_Overlay->getMVDhtml($mvd, $absolute_links=true).'
 								]]></'.$ns.'body> 
 						</'.$ns.'clip>';			 					
 				//clear wgOutput				
@@ -249,8 +257,7 @@ class MV_SpecialExport {
 		}		
 		if($encap)print '<cmml_set>';
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
-		foreach($tracks as $role=>$body_string){
-?>
+		foreach($tracks as $role=>$body_string){ ?>
 					<cmml lang="en" id="<?=$role?>" role="<?=wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
 						<<?=$ns?>head>
 							<<?=$ns?>title><?=wfMsg($role)?></<?=$ns?>title>	

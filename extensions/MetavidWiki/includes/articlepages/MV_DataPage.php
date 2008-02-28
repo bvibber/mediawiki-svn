@@ -105,7 +105,8 @@
 		//get the count of near by metadata (-1 as to not count the current) 
 		//$nearCount = ($MvIndex->getNearCount() - 1);
 	
-		$nearTitle = Title::makeTitle(MV_NS_STREAM, $this->mvTitle->getNearStreamName(0,0) );
+		$nearTitle = Title::makeTitle(MV_NS_STREAM, $this->mvTitle->getStreamName() 
+			.'/'. $this->mvTitle->getTimeRequest() );
 		$nearLinkTxt = $this->mvTitle->getTimeDesc();
 		//force a known link for time queries in the metavid namespace:
 		$nearLink = $sk->makeKnownLinkObj( $nearTitle, $nearLinkTxt );
