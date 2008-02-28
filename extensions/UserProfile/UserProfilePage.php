@@ -1,14 +1,14 @@
 <?php
 /**#@+
-*	User profile Wiki Page
-*
-* @package MediaWiki
-* @subpackage Article
-*
-* @author David Pean <david.pean@gmail.com>
-* @copyright Copyright © 2007, Wikia Inc.
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
-*/
+ * User profile Wiki Page
+ *
+ * @package MediaWiki
+ * @subpackage Article
+ *
+ * @author David Pean <david.pean@gmail.com>
+ * @copyright Copyright © 2007, Wikia Inc.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 
 class UserProfilePage extends Article{
 
@@ -21,7 +21,7 @@ class UserProfilePage extends Article{
 		$this->user_id = User::idFromName($this->user_name);
 		$this->user = User::newFromId($this->user_id);
 		$this->user->loadFromDatabase();
-		
+
 		if( $this->user_name == $wgUser->getName() ){
 			$this->is_owner = true;
 		}
@@ -32,137 +32,130 @@ class UserProfilePage extends Article{
 	function isOwner(){
 		return $this->is_owner;
 	}
-	
+
 	function view(){
 		global $wgOut, $wgUser, $wgRequest, $wgTitle, $wgSitename;
-				
+
 		$sk = $wgUser->getSkin();
 		$wgOut->setHTMLTitle(wfMsg( 'pagetitle', "User:{$this->user_name}" ));
-	
+
 		if ( !$this->user_id ) {
 			parent::view();
 			return "";
-		} 
-		
+		}
+
 		$wgOut->addHTML("<div id=\"profile-top\">");
 		$wgOut->addHTML($this->getProfileTop($this->user_id, $this->user_name));
 		$wgOut->addHTML("<div class=\"cleared\"></div></div>");
-		
+
 		//User does not want social profile for User:user_name, so we just show header + page content
 		if( $wgTitle->getNamespace() == NS_USER && $this->profile_data["user_id"] && $this->profile_data["user_page_type"] == 0 ){
 			parent::view();
 			return "";
 		}
-			
-	
+
 		//left side
 		$wgOut->addHTML("<div id=\"user-page-left\">");
-		
+
 		if ( ! wfRunHooks( 'UserProfileBeginLeft', array( &$this  ) ) ) {
 			wfDebug( __METHOD__ . ": UserProfileBeginLeft messed up profile!\n" );
 		}
-		
+
 		$wgOut->addHTML($this->getRelationships($this->user_name, 1) );
 		$wgOut->addHTML($this->getRelationships($this->user_name, 2) );
 		$wgOut->addHTML( $this->getCustomInfo($this->user_name) );
 		$wgOut->addHTML( $this->getInterests($this->user_name) );
-	
-			
+
 		if ( ! wfRunHooks( 'UserProfileEndLeft', array( &$this  ) ) ) {
 			wfDebug( __METHOD__ . ": UserProfileEndLeft messed up profile!\n" );
 		}
-		
+
 		$wgOut->addHTML("</div>");
-		
+
 		wfDebug("profile start right\n");
-		
+
 		//right side
-		
+
 		$wgOut->addHTML("<div id=\"user-page-right\">");
-		
+
 		if ( ! wfRunHooks( 'UserProfileBeginRight', array( &$this  ) ) ) {
 			wfDebug( __METHOD__ . ": UserProfileBeginRight messed up profile!\n" );
 		}
-		
+
 		$wgOut->addHTML( $this->getPersonalInfo($this->user_id, $this->user_name) );
 		$wgOut->addHTML( $this->getUserBoard($this->user_id, $this->user_name) );
-		
+
 		if ( ! wfRunHooks( 'UserProfileEndRight', array( &$this  ) ) ) {
 			wfDebug( __METHOD__ . ": UserProfileEndRight messed up profile!\n" );
 		}
-		
+
 		$wgOut->addHTML("</div><div class=\"cleared\"></div>");
-
 	}
-	
 
-	
 	function sortItems($x, $y){
 		if ( $x["timestamp"] == $y["timestamp"] )
-		 return 0;
+			return 0;
 		else if ( $x["timestamp"] > $y["timestamp"] )
-		 return -1;
+			return -1;
 		else
-		 return 1;
+			return 1;
 	}
-	
+
 	function getProfileSection($label,$value,$required=true){
 		global $wgUser, $wgTitle, $wgOut;
-		
+
 		if($value || $required) {
 			if(!$value) {
 				if ( $wgUser->getName() == $wgTitle->getText()  ) {
-					$value = 'Update Your Profile';	
+					$value = 'Update Your Profile';
 				} else {
-					$value = 'Not Provided';	
+					$value = 'Not Provided';
 				}
 			}
-			
+
 			$value = $wgOut->parse( trim($value), false );
-			 
+
 			$output = "<div>
 				<b>{$label}</b>{$value}
 			</div>";
-		}	
-				
+		}
 		return $output;
-	
 	}
-	
+
 	function getPersonalInfo($user_id, $user_name) {
 		global $IP, $wgTitle, $wgUser, $wgMemc, $wgUserProfileDisplay;
-		
+
 		if ($wgUserProfileDisplay['personal'] == false) {
 			return "";
 		}
-		
+
 		$stats = new UserStats($user_id,$user_name);
 		$stats_data = $stats->getUserStats();
-		
+
 		if( !$this->profile_data ){
 			$profile = new UserProfile($user_name);
 			$this->profile_data = $profile->getProfile();
 		}
 		$profile_data = $this->profile_data;
-		
+
 		$location = $profile_data["location_city"] . ", " . $profile_data["location_state"];
 		if($profile_data["location_country"]!="United States"){
 			$location = "";
 			$location .= $profile_data["location_country"];
-		}	
-		
+		}
+
 		if($location==", ")$location="";
-		
+
 		$hometown = $profile_data["hometown_city"] . ", " . $profile_data["hometown_state"];
 		if($profile_data["hometown_country"]!="United States"){
 			$hometown = "";
 			$hometown .= $profile_data["hometown_country"];
 		}
 		if($hometown==", ")$hometown="";
-		
+
 		$joined_data = $profile_data["real_name"] . $location.$hometown . $profile_data["birthday"] . $profile_data["occupation"] . $profile_data["websites"] . $profile_data["places_lived"] . $profile_data["schools"] . $profile_data["about"];
 		$edit_info_link = Title::MakeTitle(NS_SPECIAL,"UpdateProfile");
-	
+
 		if ($joined_data) {
 			$output .= "<div class=\"user-section-heading\">
 				<div class=\"user-section-title\">
@@ -185,7 +178,7 @@ class UserProfilePage extends Article{
 				$this->getProfileSection(wfMsg("user-personal-info-websites"),$profile_data["websites"], false).
 				$this->getProfileSection(wfMsg("user-personal-info-places-lived"),$profile_data["places_lived"],false).
 				$this->getProfileSection(wfMsg("user-personal-info-schools"),$profile_data["schools"],false).
-				$this->getProfileSection(wfMsg("user-personal-info-about-me"),$profile_data["about"],false).	
+				$this->getProfileSection(wfMsg("user-personal-info-about-me"),$profile_data["about"],false).
 			"</div>";
 		} else if ($wgUser->getName()==$user_name) {
 			$output .= "<div class=\"user-section-heading\">
@@ -206,26 +199,26 @@ class UserProfilePage extends Article{
 				".wfMsg("user-no-personal-info")."
 			</div>";
 		}
-		
+
 		return $output;
 	}
-	
+
 	function getCustomInfo($user_name) {
 		global $IP, $wgTitle, $wgUser, $wgMemc, $wgUserProfileDisplay;
 
 		if ($wgUserProfileDisplay['custom'] == false) {
 			return "";
 		}
-		
+
 		if( !$this->profile_data ){
 			$profile = new UserProfile($user_name);
 			$this->profile_data = $profile->getProfile();
 		}
 		$profile_data = $this->profile_data;
-		
-		$joined_data = $profile_data["custom_1"] . $profile_data["custom_2"] . $profile_data["custom_3"] . $profile_data["custom_4"]; 
+
+		$joined_data = $profile_data["custom_1"] . $profile_data["custom_2"] . $profile_data["custom_3"] . $profile_data["custom_4"];
 		$edit_info_link = Title::MakeTitle(NS_SPECIAL,"UpdateProfile");
-		
+
 		if ($joined_data) {
 			$output .= "<div class=\"user-section-heading\">
 				<div class=\"user-section-title\">
@@ -264,29 +257,27 @@ class UserProfilePage extends Article{
 				".wfMSg("custom-no-info")."
 			</div>";
 		}
-		
+
 		return $output;
 	}
-	
+
 	function getInterests($user_name) {
 		global $IP, $wgTitle, $wgUser, $wgMemc, $wgUserProfileDisplay;
 
 		if ($wgUserProfileDisplay['interests'] == false) {
 			return "";
 		}
-		
+
 		if( !$this->profile_data ){
 			$profile = new UserProfile($user_name);
 			$this->profile_data = $profile->getProfile();
 		}
 		$profile_data = $this->profile_data;
-		
 		$joined_data = $profile_data["movies"] . $profile_data["tv"] . $profile_data["music"] . $profile_data["books"] . $profile_data["video_games"] . $profile_data["magazines"] . $profile_data["drinks"] . $profile_data["snacks"];
-		
 		$edit_info_link = Title::MakeTitle(NS_SPECIAL,"UpdateProfile");
-		
+
 		if ($joined_data) {
-			
+
 			$output .= "<div class=\"user-section-heading\">
 				<div class=\"user-section-title\">
 					".wfMsg("other-info-title")."
@@ -309,7 +300,7 @@ class UserProfilePage extends Article{
 				$this->getProfileSection(wfMsg("other-info-snacks"),$profile_data["snacks"],false).
 				$this->getProfileSection(wfMsg("other-info-drinks"),$profile_data["drinks"],false).
 			"</div>";
-			
+
 		} else if ($wgUser->getName()==$user_name) {
 			$output .= "<div class=\"user-section-heading\">
 				<div class=\"user-section-title\">
@@ -327,31 +318,28 @@ class UserProfilePage extends Article{
 					".wfMsg("other-no-info")."
 			</div>";
 		}
-		
 		return $output;
 	}
-	
+
 	function getProfileTop($user_id, $user_name) {
-		
 		global $IP, $wgTitle, $wgUser, $wgMemc, $wgUploadPath;
-	
-		
+
 		$stats = new UserStats($user_id,$user_name);
 		$stats_data = $stats->getUserStats();
-		
+
 		if( !$this->profile_data ){
 			$profile = new UserProfile($user_name);
 			$this->profile_data = $profile->getProfile();
 		}
 		$profile_data = $this->profile_data;
-		
+
 		//variables and other crap
 		$page_title = $wgTitle->getText();
 		$title_parts = explode("/",$page_title);
 		$user = $title_parts[0];
 		$id=User::idFromName($user);
 		$user_safe = urlencode($user);
-		
+
 		//safe urls
 		$add_relationship = Title::makeTitle(NS_SPECIAL, "AddRelationship");
 		$remove_relationship = Title::makeTitle(NS_SPECIAL, "RemoveRelationship");
@@ -367,32 +355,32 @@ class UserProfilePage extends Article{
 		$user_page = Title::makeTitle(NS_USER,$user);
 		$user_social_profile = Title::makeTitle(NS_USER_PROFILE,$user);
 		$user_wiki = Title::makeTitle(NS_USER_WIKI,$user);
-		
+
 		if($id!=0) $relationship = UserRelationship::getUserRelationshipByID($id,$wgUser->getID());
 		$avatar = new wAvatar($this->user_id,"l");
-		
+
 		wfDebug("profile type" . $profile_data["user_page_type"] . "\n");
 		if ( $this->isOwner() ) {
 			$toggle_title = Title::makeTitle(NS_SPECIAL, "ToggleUserPage");
 			$output .= "<div id=\"profile-toggle-button\"><a href=\"".$toggle_title->escapeFullURL()."\" rel=\"nofollow\">". (( $this->profile_data["user_page_type"] == 1 )? wfMsg("user-type-toggle-old"):wfMsg("user-type-toggle-new") ) ."</a></div>";
 		}
-		
+
 		$output .= "<div id=\"profile-image\">
 		<img src=\"{$wgUploadPath}/avatars/".$avatar->getAvatarImage()."\" alt=\"\" border=\"0\"/>
 		</div>";
-				
+
 		$output .= "<div id=\"profile-right\">";
-			
+
 			$output .= "<div id=\"profile-title-container\">
 				<div id=\"profile-title\">
 					{$user_name}
 				</div>
 				";
-				
+
 				$output .= "<div class=\"cleared\"></div>
 			</div>
 			<div class=\"profile-actions\">";
-		
+
 		if ( $this->isOwner() ) {
 			$output .= "
 			<a href=\"".$update_profile->escapeFullURL()."\">".wfMsg("user-edit-profile")."</a> |
@@ -401,19 +389,18 @@ class UserProfilePage extends Article{
 			";
 		} else if ($wgUser->isLoggedIn()) {
 			if($relationship==false) {
-				$output .= "<a href=\"".$add_relationship->escapeFullURL('user='.$user_safe.'&rel_type=1')."\" rel=\"nofollow\">".wfMsg("user-add-friend")."</a> | 
+				$output .= "<a href=\"".$add_relationship->escapeFullURL('user='.$user_safe.'&rel_type=1')."\" rel=\"nofollow\">".wfMsg("user-add-friend")."</a> |
 				<a href=\"".$add_relationship->escapeFullURL('user='.$user_safe.'&rel_type=2')."\" rel=\"nofollow\">".wfMsg("user-add-foe")."</a> |";
 			} else {
 				if ($relationship==1)$output .= "<a href=\"".$remove_relationship->escapeFullURL('user='.$user_safe)."\">".wfMsg("user-remove-friend")."</a> |";
 				if ($relationship==2)$output .= "<a href=\"".$remove_relationship->escapeFullURL('user='.$user_safe)."\">".wfMsg("user-remove-foe")."</a> |";
 			}
-			
+
 			$output .= "<a href=\"".$send_message->escapeFullURL('user='.$wgUser->getName().'&conv='.$user_safe)."\" rel=\"nofollow\">".wfMsg("user-send-message")."</a> |";
-			
 		}
-		
+
 			$output .= "<a href=\"".$contributions->escapeFullURL()."/{$user_safe}\" rel=\"nofollow\">".wfMsg("user-contributions")."</a>";
-			
+
 			//Links to User:user_name  from User_profile:
 			if( $wgTitle->getNamespace() == NS_USER_PROFILE && $this->profile_data["user_id"] && $this->profile_data["user_page_type"] == 0){
 				$output .= "| <a href=\"".$user_page->escapeFullURL()."\" rel=\"nofollow\">".wfMsg("user-page-link")."</a>";
@@ -422,27 +409,25 @@ class UserProfilePage extends Article{
 			if( $wgTitle->getNamespace() == NS_USER && $this->profile_data["user_id"] && $this->profile_data["user_page_type"] == 0){
 				$output .= "| <a href=\"".$user_social_profile->escapeFullURL()."\" rel=\"nofollow\">".wfMsg("user-social-profile-link")."</a>";
 			}
-			
+
 			if( $wgTitle->getNamespace() == NS_USER && ( !$this->profile_data["user_id"] || $this->profile_data["user_page_type"] == 1) ){
 				$output .= "| <a href=\"".$user_wiki->escapeFullURL()."\" rel=\"nofollow\">".wfMsg("user-wiki-link")."</a>";
 			}
-			
-			
+
 		$output .= "</div>
-		
+
 		</div>";
-		
+
 		return $output;
-		
 	}
-	
+
 	function getProfileImage($user_name){
-		
+
 		global $wgUser, $wgUploadPath;
-		
+
 		$avatar = new wAvatar($this->user_id,"l");
 		$avatar_title = Title::makeTitle( NS_SPECIAL , "UploadAvatar");
-		
+
 		$output .= "<div class=\"profile-image\">";
 			if ($wgUser->getName()==$this->user_name) {
 				$output .= "<a href=\"{$avatar->escapeFullURL()}\" rel=\"nofollow\">
@@ -453,13 +438,13 @@ class UserProfilePage extends Article{
 				$output .= "<img src=\"{$wgUploadPath}/avatars/".$avatar->getAvatarImage()."\" alt=\"\" border=\"0\"/>";
 			}
 		$output .= "</div>";
-		
+
 		return $output;
 	}
-	
+
 	function getRelationships($user_name,$rel_type){
 		global $IP, $wgMemc, $wgUser, $wgTitle, $wgUserProfileDisplay, $wgUploadPath;
-		
+
 		//If not enabled in site settings, don't display
 		if ($rel_type == 1) {
 			if ($wgUserProfileDisplay['friends'] == false) {
@@ -468,15 +453,15 @@ class UserProfilePage extends Article{
 		} else {
 			if ($wgUserProfileDisplay['foes'] == false) {
 				return "";
-			}	
+			}
 		}
-		
+
 
 		$count = 4;
-		$rel = new UserRelationship($user_name);		
+		$rel = new UserRelationship($user_name);
 		$key = wfMemcKey( 'relationship', 'profile', "{$rel->user_id}-{$rel_type}" );
 		$data = $wgMemc->get( $key );
-	 
+
 		//try cache
 		if(!$data) {
 			$friends = $rel->getRelationshipList($rel_type,$count);
@@ -485,25 +470,25 @@ class UserProfilePage extends Article{
 			wfDebug( "Got profile relationship type {$rel_type} for user {$user_name} from cache\n" );
 			$friends = $data;
 		}
-		
+
 		$stats = new UserStats($rel->user_id,$user_name);
 		$stats_data = $stats->getUserStats();
 		$user_safe = urlencode(   $user_name  );
 		$view_all_title = Title::makeTitle(NS_SPECIAL,"ViewRelationships");
-		
+
 		if ($rel_type==1) {
 			$relationship_count = $stats_data["friend_count"];
 			$relationship_title = wfMsg("user-friends-title");
-			
+
 		} else {
 			$relationship_count = $stats_data["foe_count"];
 			$relationship_title = wfMsg("user-foes-title");
 		}
-		
+
 		if (count($friends)>0) {
 			$x = 1;
 			$per_row = 4;
-			
+
 			$output .= "<div class=\"user-section-heading\">
 				<div class=\"user-section-title\">{$relationship_title}</div>
 				<div class=\"user-section-actions\">
@@ -522,7 +507,7 @@ class UserProfilePage extends Article{
 			</div>
 			<div class=\"cleared\"></div>
 			<div class=\"user-relationship-container\">";
-			
+
 				foreach ($friends as $friend) {
 					$user =  Title::makeTitle( NS_USER  , $friend["user_name"]  );
 					$avatar = new wAvatar($friend["user_id"],"ml");
@@ -539,35 +524,32 @@ class UserProfilePage extends Article{
 					if($x==count($friends) || $x!=1 && $x%$per_row ==0)$output.="<div class=\"cleared\"></div>";
 					$x++;
 				}
-			
 			$output .= "</div>";
 		}
-		
 		return $output;
 	}
-	
-	
+
+
 	function getUserBoard($user_id,$user_name){
 		global $IP, $wgMemc, $wgUser, $wgTitle, $wgOut, $wgUserProfileDisplay, $wgUserProfileScripts;
 		if($user_id == 0)return "";
-	
+
 		if ($wgUserProfileDisplay['board'] == false) {
 			return "";
 		}
-		
+
 		$wgOut->addScript("<script type=\"text/javascript\" src=\"{$wgUserProfileScripts}/UserProfilePage.js\"></script>\n");
-		
-		
+
 		$rel = new UserRelationship($user_name);
 		$friends = $rel->getRelationshipList(1,4);
-	
+
 		$user_safe = str_replace("&","%26",$user_name);
 		$stats = new UserStats($user_id, $user_name);
 		$stats_data = $stats->getUserStats();
 		$total = $stats_data["user_board"];
-			
+
 		if($wgUser->getName() == $user_name)$total=$total+$stats_data["user_board_priv"];
-		
+
 		$output .= "<div class=\"user-section-heading\">
 			<div class=\"user-section-title\">
 				".wfMsg("user-board-title")."
@@ -591,7 +573,7 @@ class UserProfilePage extends Article{
 			</div>
 		</div>
 		<div class=\"cleared\"></div>";
-		
+
 		if($wgUser->getName() !== $user_name){
 			if($wgUser->isLoggedIn() && !$wgUser->isBlocked()){
 				$output .= "<div class=\"user-page-message-form\">
@@ -603,9 +585,8 @@ class UserProfilePage extends Article{
 						</div>
 					</div>";
 			} else {
-				
 				$login_link = Title::makeTitle(NS_SPECIAL, "UserLogin");
-				
+
 				$output .= "<div class=\"user-page-message-form\">
 						".wfMsg("user-board-login-message", $login_link->escapeFullURL())."
 				</div>";
@@ -614,13 +595,9 @@ class UserProfilePage extends Article{
 		$output .= "<div id=\"user-page-board\">";
 		$b = new UserBoard();
 		$output .= $b->displayMessages($user_id,0,10);
-		
+
 		$output .= "</div>";
-		
-		
+
 		return $output;
-	}	
+	}
 }
-
-
-?>

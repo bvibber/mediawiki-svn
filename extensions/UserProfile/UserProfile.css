@@ -3,10 +3,10 @@
 }
 
 .clearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
     visibility: hidden;
 }
 
@@ -409,7 +409,7 @@
 }
 
 .article-title {
-	
+
 }
 
 /**Pictures**/
@@ -605,7 +605,7 @@
 	float:left;
 	width:450px;
 	font-size:10px;
-	color:#797979;	
+	color:#797979;
 }
 
 .profile-update-row {
@@ -620,13 +620,13 @@
 }
 
 .profile-update-links a {
-	text-decoration:none;	
+	text-decoration:none;
 }
 
 .profile-status {
 	background-color:#FFFB9B;
 	font-weight:bold;
-	padding:0px 5px 0px 5px;	
+	padding:0px 5px 0px 5px;
 }
 
 .profile-on {
@@ -648,4 +648,3 @@
 	color:#fff;
 	font-weight:bold;
 }
-

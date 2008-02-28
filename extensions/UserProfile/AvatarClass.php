@@ -1,23 +1,21 @@
 <?php
 
 class wAvatar{
-
 	var $user_name = NULL;
 	var $user_id;
 	var $avatar_type = 0;
-	
+
 	function wAvatar($userid,$size){
 		$this->user_id = $userid;
 		$this->avatar_size = $size;
 	}
-	
-	
+
 	function getAvatarImage(){
 		global $wgUser, $wgDBname, $wgUploadDirectory, $wgMemc;
-		
+
 		$key = wfMemcKey( 'user', 'profile', 'avatar', $this->user_id, $this->avatar_size );
 		$data = $wgMemc->get( $key );
-		
+
 		if( $data ){
 			//wfDebug("loaded avatar filename from cache\n");
 			$avatar_filename = $data;
@@ -32,10 +30,9 @@ class wAvatar{
 		}
 		return $avatar_filename ;
 	}
-	
+
 	function getAvatarURL(){
 		global $wgUploadPath;
 		return "<img src=\"{$wgUploadPath}/avatars/{$this->getAvatarImage()}\" alt=\"avatar\" border=\"0\" />";
 	}
 }
-?>
