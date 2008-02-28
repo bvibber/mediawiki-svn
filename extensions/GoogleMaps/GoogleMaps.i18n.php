@@ -11,11 +11,11 @@ $wgGoogleMapsMessages = array();
  * @author Evan Miller
  */
 $wgGoogleMapsMessages['en'] = array(
-    'gm-incompatible-browser' => 'In order to see the map that would go in this space, you will need to use a compatible web browser.',
-    'gm-incompatible-browser-link' => 'Click here to see a list of compatible browsers.',
+	'gm-incompatible-browser' => 'In order to see the map that would go in this space, you will need to use a compatible web browser.',
+	'gm-incompatible-browser-link' => 'Click here to see a list of compatible browsers.',
 	'gm-no-editor' => 'Unfortunately, your browser does not support the interactive map-making features. Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
 	'gm-balloon-title' => 'Title:',
-	'gm-balloon-link-article' => 'Link to this article (optional):',
+	'gm-balloon-link-article' => 'Link to this page (optional):',
 	'gm-make-marker' => 'Caption (wiki mark-up OK):',
 	'gm-remove' => 'remove',
 	'gm-caption' => 'Caption',
