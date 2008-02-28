@@ -102,9 +102,7 @@ function getSubpagesForPageGrouping($page_name, $relation_name) {
                 $subpages[$subpage_name] = $display_order;
         }
         $dbr->freeResult($res);
-	//print_r($subpages);
         uasort($subpages, "cmp");
-	//print_r($subpages);
         return array_keys($subpages);
 }
 
@@ -208,14 +206,15 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
 
   $namespace_labels = $wgContLang->getNamespaces();
   $template_label = $namespace_labels[NS_TEMPLATE];
-  $namespace_str = wfMsgForContent('dt_xml_namespace');
-  $page_str = wfMsgForContent('dt_xml_page');
-  $field_str = wfMsgForContent('dt_xml_field');
-  $name_str = wfMsgForContent('dt_xml_name');
-  $title_str = wfMsgForContent('dt_xml_title');
-  $free_text_str = wfMsgForContent('dt_xml_freetext');
+  $namespace_str = str_replace(' ', '_', wfMsgForContent('dt_xml_namespace'));
+  $page_str = str_replace(' ', '_', wfMsgForContent('dt_xml_page'));
+  $field_str = str_replace(' ', '_', wfMsgForContent('dt_xml_field'));
+  $name_str = str_replace(' ', '_', wfMsgForContent('dt_xml_name'));
+  $title_str = str_replace(' ', '_', wfMsgForContent('dt_xml_title'));
+  $id_str = str_replace(' ', '_', wfMsgForContent('dt_xml_id'));
+  $free_text_str = str_replace(' ', '_', wfMsgForContent('dt_xml_freetext'));
 
-  // if this page belongs to the exclusion categoryy, exit
+  // if this page belongs to the exclusion category, exit
   $parent_categories = $title->getParentCategoryTree(array());
   $dt_props = $dtgContLang->getSpecialPropertiesArray();
   //$exclusion_category = $title->newFromText($dt_props[DT_SP_IS_EXCLUDED_FROM_XML], NS_CATEGORY);
@@ -226,9 +225,9 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
   $page_title = str_replace('"', '&quot;', $title->getText());
   $page_title = str_replace('&', '&amp;', $page_title);
   if ($simplified_format)
-    $text = "<$page_str><$title_str>$page_title</$title_str>";
+    $text = "<$page_str><$id_str>{$article->getID()}</$id_str><$title_str>$page_title</$title_str>\n";
   else
-    $text = "<$page_str $title_str=\"" . $page_title . "\">";
+    $text = "<$page_str $id_str=\"" . $article->getID() . "\" $title_str=\"" . $page_title . '" >';
 
   // traverse the page contents, one character at a time
   $uncompleted_curly_brackets = 0;
