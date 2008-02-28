@@ -132,7 +132,6 @@ function wfGoogleMaps_Install() {
 		$wgJsMimeType,
 		$wgLanguageCode,
 		$wgContLang,
-		$wgParser,
 		$wgProxyKey,
 		$wgTitle );
 

@@ -20,7 +20,7 @@ class GoogleMapsImgExporter extends GoogleMapsExporter {
         $this->mOutput .= "&markers=";
     }
 
-    function addMarker($pLat, $pLon, $pIcon, $pTitle, $pCaption, $pMaxContent, $pIsLine) {
+    function addMarker($pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pMaxContent, $pIsLine) {
         $label = '';
         if ($pIcon) {
             $label = urlencode(strtolower(substr($pIcon, 0, 1)));

@@ -74,7 +74,7 @@ JAVASCRIPT;
      * @return string - the javascript for adding the tabs to the map
      **/
 
-    function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pCaption, $pMaxContent, $pIsLine ) {
+    function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pMaxContent, $pIsLine ) {
         $title = GoogleMaps::fixStringDirection($pTitle, $this->mLanguage->isRTL());
 
         if (is_string($pCaption)) {
@@ -107,6 +107,7 @@ JAVASCRIPT;
             $this->mOutput .= " marker.caption = '';";
             if ($title) {
                 $this->mOutput .= " marker.title = '".addslashes($title)."';";
+                $this->mOutput .= " marker.title_link = '".addslashes($pTitleLink)."';";
             }
             if( $caption ) {
                 $this->mOutput .= " marker.caption += '" .
@@ -186,8 +187,8 @@ JAVASCRIPT;
               overlay.openInfoWindowTabsHtml(overlay.tabs);
             } else if (overlay.caption || overlay.maxContent) {
                 overlay.openInfoWindowHtml('<div class="gmapinfowindow">'+
-                    (overlay.title?('<p><b>'+overlay.title+'</b></p>'):'')+overlay.caption+'</div>', 
-                    { 'maxTitle': overlay.title, 'maxContent': overlay.maxContent });
+                    (overlay.title?('<p><b>'+overlay.title_link+'</b></p>'):'')+overlay.caption+'</div>', 
+                    { 'maxTitle': overlay.maxContent?overlay.title:undefined, 'maxContent': overlay.maxContent });
                 if (overlay.maxContent) {
                     map.getInfoWindow().enableMaximize();
                 } else {
@@ -197,11 +198,6 @@ JAVASCRIPT;
           }
       });
 JAVASCRIPT;
-                if ($pMaxContent) {
-                    $this->mOutput .= " 'maxTitle': '".addslashes($title)."', ";
-                    $this->mOutput .= " 'maxContent': '".addslashes($pMaxContent)."', ";
-                }
-
           // make gmap api calls to implement the various settings
           if( $o['zoomstyle'] == 'smooth' ) {
               $this->mOutput .= ' map.enableContinuousZoom(); ';
@@ -244,6 +240,6 @@ JAVASCRIPT;
 
     // strip out the tabs and newlines
       function render() {
-          return preg_replace( '/[\t\n]/', '', $this->mOutput );
+          return preg_replace( '/[\t\n]/', ' ', $this->mOutput );
       }
 }

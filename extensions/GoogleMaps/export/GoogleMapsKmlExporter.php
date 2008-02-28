@@ -71,7 +71,7 @@ class GoogleMapsKmlExporter extends GoogleMapsExporter {
 		$this->mOutput .= "</coordinates>\n";
 	}
 
-	function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pCaption, $pIsLine ) {
+	function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pIsLine ) {
 		$this->mMarkerCount++;
 		$this->mOutput .= "<Placemark>\n<name>";
 		$this->mOutput .= $pTitle ? $pTitle : "point {$this->mMarkerCount}";

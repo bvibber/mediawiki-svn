@@ -212,7 +212,7 @@ EditorsMarker.prototype = {
 	  this.gmarker.openInfoWindowTabsHtml(tabs);
       } else {
           var content = '';
-          content += _['gm-balloon-title'];
+          content += _['gm-balloon-link-article'];
           content += '<br /><input style="width: 260px;" type="text" id="balloon_title" value="'+this.gmarker.getTitle()+'"/>';
           content += '<br />';
           content += _['gm-make-marker'];

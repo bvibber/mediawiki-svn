@@ -66,9 +66,6 @@ class GoogleMaps {
 	// whether the current language is read right-to-left
 	var $mLanguage = null;
 
-	// a reference to the global parser object
-	var $mGlobalParser = null;
-
 	// a secret key used in parsing
 	var $wgProxyKey = null;
 
@@ -114,7 +111,6 @@ class GoogleMaps {
 		&$pJsMimeType,
 		&$pLanguageCode,
 		&$pContLang,
-		&$pGlobalParser,
 		&$pProxyKey,
 		&$pTitle ) {
 
@@ -128,7 +124,6 @@ class GoogleMaps {
 		$this->mCustomMessages			  =& $pCustomMessages;
 		$this->mProcessTemplateVariables  =& $pProcessTemplateVariables;
 		$this->mLanguage =& $pContLang;
-		$this->mGlobalParser =& $pGlobalParser;
 		$this->mProxyKey =& $pProxyKey;
 		$this->mTitle =& $pTitle;
 	}
@@ -152,7 +147,7 @@ class GoogleMaps {
 	function editForm ( $pForm ) {
 
 		// get the current map settings
-		$o = GoogleMaps::getMapSettings( $this->mTitle, $this->mMapDefaults );
+		$o = self::getMapSettings( $this->mTitle, $this->mMapDefaults );
 
 		$output = '';
 
@@ -307,7 +302,7 @@ JAVASCRIPT;
 		// check to see if the proxy token appears in the page output (if not, we don't have a map so
 		// no need to output our stuff)
 		if( isset( $this->mGoogleMapsOnThisPage ) && strstr( $pValue, "%%BEGINJAVASCRIPT" . $this->mProxyKey . "%%" ) ) {
-			$o = GoogleMaps::getMapSettings( $this->mTitle, $this->mMapDefaults );
+			$o = self::getMapSettings( $this->mTitle, $this->mMapDefaults );
 
 		// output our standard css and script include
 		$prefix = '
@@ -353,7 +348,7 @@ JAVASCRIPT;
 		global $wgGoogleMaps;
 		// pass through to the main render function, creating a new parser
 		// for parsing the local content
-	return $wgGoogleMaps->render( $pContent, $pArgv, $pParser, new Parser( ) );
+	return $wgGoogleMaps->render( $pContent, $pArgv, $pParser, new Parser() );
 	}
 
 	/**
@@ -384,13 +379,13 @@ JAVASCRIPT;
 		}
 
 		// a dictionary for validating and interpreting some options.
-		$o = GoogleMaps::getMapSettings( $this->mTitle, $this->mMapDefaults );
+		$o = self::getMapSettings( $this->mTitle, $this->mMapDefaults );
 
 		// Override the defaults with what the user specified.
 		foreach( array_keys( $o ) as $key ) {
 			if( is_numeric( $o[$key] ) && isset( $pArgv[$key] ) && is_numeric( $pArgv[$key] ) ) {
 				$o[$key] = $pArgv[$key];
-			} elseif( isset($pArgv[$key] ) && GoogleMaps::isOptionLegal( $key, $pArgv[$key] ) ) {
+			} elseif( isset($pArgv[$key] ) && self::isOptionLegal( $key, $pArgv[$key] ) ) {
 				$o[$key] = $this->translateOption( $key, $pArgv[$key] );
 			} else { // and translate
 				$o[$key] = $this->translateOption( $key, $o[$key] );
@@ -402,12 +397,12 @@ JAVASCRIPT;
                     'incompatible_message_link' => $this->translateMessage( 'gm-incompatible-browser-link' )));
 		$img_exporter = new GoogleMapsImgExporter($this->mApiKey);
 		$img_exporter->addHeader($o);
-		GoogleMaps::renderContent($pContent, $pParser, $pLocalParser, $img_exporter, $o);
+		self::renderContent($pContent, $pParser, $pLocalParser, $img_exporter, $o);
 		$img_exporter->addTrailer();
 
 		$js_exporter = new GoogleMapsJsExporter($this->mLanguage, $this->mProxyKey, $this->mEnablePaths);
 		$js_exporter->addHeader($o, $img_exporter->render());
-		GoogleMaps::renderContent($pContent, $pParser, $pLocalParser, $js_exporter, $o);
+		self::renderContent($pContent, $pParser, $pLocalParser, $js_exporter, $o);
 		$js_exporter->addTrailer($o);
 		return $js_exporter->render();
 	}
@@ -421,7 +416,6 @@ JAVASCRIPT;
 	}
 
 	static function renderContent($pContent, &$pParser, &$pLocalParser, &$exporter, $o) {
-            // parse the content of the tag
             $lines        = preg_split( "/[\r\n]/", $pContent );
             $tabs         = array( ); // the tabs for the current marker
             $polyline     = array( ); // points in a polyline
@@ -430,7 +424,7 @@ JAVASCRIPT;
             $lineOpacity  = null;
             $fillColor    = null;
             $fillOpacity  = null;
-            $state        = GoogleMaps::PARSE_INCLUDES;
+            $state        = self::PARSE_INCLUDES;
 
             $icon    = null;
             $lat     = null;
@@ -439,8 +433,6 @@ JAVASCRIPT;
             $title   = null;
             $stroke  = null;
             $syntax  = $o['version'];
-
-            $pParser->mOptions->enableLimitReport(false);
 
             // The meat of the extension. Translate the content of the tag
             // into JS that produces a set of points, lines, and markers
@@ -464,35 +456,34 @@ JAVASCRIPT;
 
                 // if the line matches the tab format, add the tabs
                 else if( $syntax == "0" && preg_match( '/^\/([^\\\\]+)\\\\ *(.*)$/', $line, $matches ) ) {
-                    $parsed = $pLocalParser->parse( $matches[2], $pParser->mTitle, $pParser->mOptions, false );
-                    $tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed->getText());
-                    $state = GoogleMaps::PARSE_ADD_MARKER;
+                    $parsed = self::parseWikiText($pParser, $pLocalParser, $matches[2], $pParser->mTitle, $pParser->mOptions);
+                    $tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed);
+                    $state = self::PARSE_ADD_MARKER;
                 }
                 else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\$/', $line, $matches ) ) {
                     if (count($tabs)) {
-                        $parsed = $pLocalParser->parse( $caption, $pParser->mTitle, $pParser->mOptions, false );
-                        $tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
+                        $parsed = self::parseWikiText($pParser, $pLocalParser, $caption, $pParser->mTitle, $pParser->mOptions);
+                        $tabs[count($tabs)-1]['gm-caption'] = $parsed;
                         $caption = '';
                     }
                     $tabs[] = array( 'title' => $matches[1] );
                 }
-                else if( $state == GoogleMaps::PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
+                else if( $state == self::PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
                     $exporter->addXmlSource($line);
                 }
                 // the line is a regular point
                 else if( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\) *)?([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
                     // first create the previous marker, now that we have all the tab/caption info
-                    if( $state == GoogleMaps::PARSE_ADD_MARKER ) {
-                        GoogleMaps::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
+                    if( $state == self::PARSE_ADD_MARKER ) {
+                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
                             $icon, $title, $tabs, $caption, isset($lineColor));
-                        // This parse function above lets us insert wiki markup into the map markers.
 
                         $tabs    = array( );
                         $caption = '';
                         $title   = null;
                     }
 
-                    $state = GoogleMaps::PARSE_POINTS;
+                    $state = self::PARSE_POINTS;
 
                     // extract the individual fields from the regex match
                     $icon = isset( $matches[1] ) ? $matches[1] : null;
@@ -515,7 +506,7 @@ JAVASCRIPT;
 
                         // if it has an icon override, a caption, or is not in a path, add the marker
                         if ( $icon || count($tabs) > 0 || $caption || $title || !isset( $lineColor ) ) {
-                            $state = GoogleMaps::PARSE_ADD_MARKER;
+                            $state = self::PARSE_ADD_MARKER;
                         }
 
                         // If we're making a path, record the location and move on.
@@ -525,17 +516,17 @@ JAVASCRIPT;
                     }
                 }
 
-                else if (($state == GoogleMaps::PARSE_POINTS || $state == GoogleMaps::PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
+                else if (($state == self::PARSE_POINTS || $state == self::PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
                     if ($line != '') {
                         $caption .= $line . "\r\n";
-                        $state = GoogleMaps::PARSE_ADD_MARKER;
+                        $state = self::PARSE_ADD_MARKER;
                     }
                 }
             }
 
                 // if the last iteration was to add a marker, add it
-                if( $state == GoogleMaps::PARSE_ADD_MARKER ) {
-                    GoogleMaps::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon, $title, $tabs, $caption, isset($lineColor));
+                if( $state == self::PARSE_ADD_MARKER ) {
+                    self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon, $title, $tabs, $caption, isset($lineColor));
                 }
 
                 // if the last iteration was to	add	a polyline,	add	it
@@ -546,21 +537,32 @@ JAVASCRIPT;
 
         static function addMarker($pExporter, $pParser, $pLocalParser, $pLat, $pLon, 
             $pIcon, $pTitle, $pTabs, $pCaption, $pLineColorSet) {
-            $parsed = $pLocalParser->parse( $pCaption, $pParser->mTitle, $pParser->mOptions, false );
+            global $wgUser, $wgVersion;
+            $parsed = self::parseWikiText($pParser, $pLocalParser, $pCaption, $pParser->mTitle, $pParser->mOptions);
             $title = Title::newFromText($pTitle);
             $revision = is_null($title) ? null :
                 Revision::newFromTitle($title);
-            $parsedArticle = is_null($revision) ? null : 
-                $pLocalParser->parse($revision->getText(), $revision->getTitle(), $pParser->mOptions, false );
-            $parsedArticleText = is_null($parsedArticle) ? null : $parsedArticle->getText();
+            $parsedArticleText = is_null($revision) ? null : 
+                self::parseWikiText($pParser, $pLocalParser, $revision->getText(), $revision->getTitle(), $pParser->mOptions);
+            $titleMaybeNonexistent = is_null($title) ? Title::makeTitleSafe(NS_MAIN, $pTitle) : $title;
+            $skin = $wgUser->getSkin();
+            $titleLink = is_null($titleMaybeNonexistent) ? '' : $skin->makeLinkObj($titleMaybeNonexistent);
             if (count($tabs)) {
                 $tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
-                $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, 
+                $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, $titleLink,
                     $pTabs, $parsedArticleText, $pLineColorSet );
             } else {
-                $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, 
-                    $parsed->getText(), $parsedArticleText, $pLineColorSet);
+                $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, $titleLink,
+                    $parsed, $parsedArticleText, $pLineColorSet);
             }
+        }
+
+        static function parseWikiText($pParser, $pLocalParser, $pText, $pTitle, $pOptions) {
+            if (method_exists($pParser, 'recursiveTagParse')) {
+                return $pParser->recursiveTagParse($pText);
+            }
+            $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
+            return $parsed->getText();
         }
 
 	//----------------------------------------------
@@ -720,9 +722,9 @@ JAVASCRIPT;
 			}
 			else {
 				if( isset( $pDefaults[$title] ) && is_array( $pDefaults[$title] ) &&
-				  isset( $pDefaults[$title][$key] ) && GoogleMaps::isOptionLegal( $key, $pDefaults[$title][$key] ) ) {
+				  isset( $pDefaults[$title][$key] ) && self::isOptionLegal( $key, $pDefaults[$title][$key] ) ) {
 					$o[$key] = $pDefaults[$title][$key];
-				} elseif( isset( $pDefaults[$key] ) && GoogleMaps::isOptionLegal( $key, $pDefaults[$key] ) ) {
+				} elseif( isset( $pDefaults[$key] ) && self::isOptionLegal( $key, $pDefaults[$key] ) ) {
 					$o[$key] = $pDefaults[$key];
 				}
 			}
@@ -739,7 +741,7 @@ JAVASCRIPT;
 	static function isOptionLegal ( $pKey, $pValue ) {
 
 		// get the set of approved values to check
-		$approvedValues = GoogleMaps::getApprovedValues( );
+		$approvedValues = self::getApprovedValues( );
 
 		// if it's in the approved list, explicitly check the value against the approved values
 		if( isset( $approvedValues[$pKey] ) ) {
@@ -803,7 +805,7 @@ JAVASCRIPT;
 
 		// replace multiple spaces with a single space and strip newlines and tabs (make sure no tabs
 		// are used within a line of code!)
-		return preg_replace( '/  +/', ' ', preg_replace( '/[\n\t]/', '', $js ) );
+		return preg_replace( '/  +/', ' ', preg_replace( '/[\n\t]+/', '', $js ) );
 	}
 
 	/**
