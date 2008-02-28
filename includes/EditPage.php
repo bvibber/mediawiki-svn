@@ -1010,6 +1010,13 @@ class EditPage {
 	 */
 	function showEditForm( $formCallback=null ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize, $wgTitle;
+		
+		# If $wgTitle is null, that means we're in API mode.
+		# Some hook probably called this function  without checking
+		# for is_null($wgTitle) first. Bail out right here so we don't
+		# do lots of work just to discard it right after.
+		if(is_null($wgTitle))
+			return;
 
 		$fname = 'EditPage::showEditForm';
 		wfProfileIn( $fname );

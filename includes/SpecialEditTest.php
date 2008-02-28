@@ -71,6 +71,8 @@ class SpecialEditTest extends SpecialPage
 								'cols' => 50)) .
 						Xml::closeElement('textarea')
 		);
+		$retval .= $this->buildInputLine('CAPTCHA ID', 'captchaid');
+		$retval .= $this->buildInputLine('CAPTCHA answer', 'captchaword');
 		$retval .= Xml::closeElement('table');
 		$retval .= Xml::submitButton("Submit");
 		$retval .= Xml::closeElement('form');

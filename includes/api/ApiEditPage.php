@@ -57,7 +57,6 @@ class ApiEditPage extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-		# TODO: ConfirmEdit support
 		# TODO: Watch/stopwatching support + respect prefs
 		$this->getMain()->requestWriteMode();
 
@@ -81,8 +80,7 @@ class ApiEditPage extends ApiBase {
 			$errors = array_merge($errors, $titleObj->getUserPermissionsErrors('create', $wgUser));
 		if(!empty($errors))
 			$this->dieUsageMsg($errors[0]);
-			
-		$wgTitle = $titleObj;
+
 		$articleObj = new Article($titleObj);
 		$ep = new EditPage($articleObj);
 
@@ -105,12 +103,37 @@ class ApiEditPage extends ApiBase {
 			$reqArr['wpMinoredit'] = '';
 		if($params['recreate'])
 			$reqArr['wpRecreate'] = '';
+		if(!is_null($params['captchaid']))
+			$reqArr['wpCaptchaId'] = $params['captchaid'];
+		if(!is_null($params['captchaword']))
+			$reqArr['wpCaptchaWord'] = $params['captchaword'];
 		$req = new FauxRequest($reqArr, true);
 		$ep->importFormData($req);
+
+		# Run hooks
+		# We need to fake $wgRequest for some of them
+		global $wgRequest;
+		$wgRequest = $req;
+		$r = array();
+		if(!wfRunHooks('APIEditBeforeSave', array(&$ep, $ep->textbox1, &$r)))
+		{
+			if(!empty($r))
+			{
+				$r['result'] = "Failure";
+				$this->getResult()->addValue(null, $this->getModuleName(), $r);
+				return; 
+			}	
+			else
+				$this->dieUsageMsg(array('hookaborted'));
+		}
 		
-		# Now let's try whether we can save this
+		# Do the actual save
 		$oldRevId = $articleObj->getRevIdFetched();
 		$result = null;
+		# *Something* is setting $wgTitle to a title corresponding to "Msg",
+		# but that breaks API mode detection through is_null($wgTitle)
+		global $wgTitle;
+		$wgTitle = null;
 		$retval = $ep->internalAttemptSave($result, $wgUser->isAllowed('bot') && $params['bot']);
 		switch($retval)
 		{
@@ -156,6 +179,7 @@ class ApiEditPage extends ApiBase {
 			case EditPage::AS_SUCCESS_NEW_ARTICLE:
 				$r['new'] = '';
 			case EditPage::AS_SUCCESS_UPDATE:
+				$r['result'] = "Success";
 				$r['pageid'] = $titleObj->getArticleID();
 				$r['title'] = $titleObj->getPrefixedText();
 				$newRevId = $titleObj->getLatestRevId();
@@ -210,8 +234,8 @@ class ApiEditPage extends ApiBase {
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
 			'watch' => 'Put article in watchlist',
 			'stopwatching' => 'Take the article off the watchlist',
-			'captchaid' => 'question',
-			'captchaword' => 'answer',
+			'captchaid' => 'CAPTCHA ID from previous request',
+			'captchaword' => 'Answer to the CAPTCHA',
 		);
 	}
 
