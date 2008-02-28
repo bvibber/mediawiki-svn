@@ -458,8 +458,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			array('mv_page_id'=>$id) );	
  		if($dbr->numRows($result)==0){
  			return array();
- 		}else{			 			
- 			return $dbr->fetchObject( $result );
+ 		}else{			
+ 			//(mvd->id got renamed to more accurate mv_page_id) 			
+ 			$row = $dbr->fetchObject( $result );
+ 			$row->id=$row->mv_page_id;
+ 			return $row;
  		} 		
  	} 	
  	function getMVDbyTitle($title_key, $fields='*'){ 	
@@ -470,7 +473,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		if($dbr->numRows($result)==0){
  			return null;
  		}else{			 			
- 			return $dbr->fetchObject( $result );
+ 			$row =  $dbr->fetchObject( $result );
+ 			$row->id=$row->mv_page_id;
+ 			return $row;
  		} 		
  	}
  	function update_index_title($old_title, $new_title){

@@ -878,6 +878,7 @@ function do_video_mvd_update(mvd_id){
 		if(!vid_elm)return '';
 		do_video_time_update(time_ary[1], time_ary[2]);
 		//update the thumbnail: 
+		//we should not need this:
 		if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail)
 				$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));			
 	}

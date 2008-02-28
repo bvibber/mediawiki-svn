@@ -53,28 +53,6 @@ class MV_StreamPage extends Article{
 		$MV_MetavidInterface->render_full();	
 		wfProfileOut( __METHOD__ );	
 	}
-	function tryFileCache() {
-		static $called = false;
-		if( $called ) {
-			wfDebug( "Article::tryFileCache(): called twice!?\n" );
-			return;
-		}
-		$called = true;
-		if($this->isFileCacheable()) {
-			$touched = $this->mTouched;
-			$cache = new HTMLFileCache( $this->mTitle );
-			if($cache->isFileCacheGood( $touched )) {
-				wfDebug( "Article::tryFileCache(): about to load file\n" );
-				$cache->loadFromFileCache();
-				return true;
-			} else {
-				wfDebug( "Article::tryFileCache(): starting buffer\n" );
-				ob_start( array(&$cache, 'saveToFileCache' ) );
-			}
-		} else {
-			wfDebug( "Article::tryFileCache(): not cacheable\n" );
-		}
-	}
 	/*
 	 * test if this is a base editable request
 	 * of type Metavid:streamname

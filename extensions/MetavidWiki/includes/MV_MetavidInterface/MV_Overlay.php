@@ -115,15 +115,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	function get_fd_mvd_page(&$mvd_page, $content=''){
 		global $wgOut;
+		//print_r($mvd_page);
 		//"<div id=\"mv_ctail_{$mvd_page->id}\" style=\"position:relative\">"
 		$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
 		$wgOut->addHTML("<fieldset class=\"mv_fd_mvd\" style=\"background:#".$this->getMvdBgColor($mvd_page)."\" " .
 					"id=\"mv_fd_mvd_{$mvd_page->id}\" name=\"{$mvd_page->wiki_title}\" " .
 					"image_url=\"{$img_url}\" >" );
-		/* (mouse over added by jQuery now)
-		 * "onmouseover=\"mv_fdOver('{$mvd_page->id}')\" " .
-					"onmouseout=\"mv_fdOut('{$mvd_page->id}')\" 
-		 */ 
+
 		$wgOut->addHTML("<legend id=\"mv_ld_{$mvd_page->id}\">" .  
 				$this->get_mvd_menu($mvd_page) . 
 				"</legend>");			
@@ -138,25 +136,25 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
 	function get_tl_mvd_request($titleKey, $mvd_id){
 		global $mvgIP;
-		if(!isset($this->mvd_pages[$mvd_id])){			
-			$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyTitle($titleKey);
-		}
+		if(!isset($this->mvd_pages[$mvd_id]))			
+			$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyTitle($titleKey);			
 		return $this->get_timeline_html($this->mvd_pages[$mvd_id]);
 	}
-	function get_fd_mvd_request($titleKey, $mvd_id, $mode='inner'){
-		global $wgOut;			
-		$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyTitle($titleKey);		
+	function get_fd_mvd_request($titleKey, $mvd_id, $mode='inner', $content=''){
+		global $wgOut;		
+		if(!isset($this->mvd_pages[$mvd_id]))				
+			$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyId($mvd_id);		
 		if($mode=='inner'){			
 			$this->outputMVD($this->mvd_pages[$mvd_id]);			
-		}else if($mode=='enclosed'){
-			$this->get_fd_mvd_page($this->mvd_pages[$mvd_id]);
+		}else if($mode=='enclosed'){		
+			$this->get_fd_mvd_page($this->mvd_pages[$mvd_id], $content);
 		}
 		return $wgOut->getHTML();
 	}
 	function get_timeline_html(&$mvd_page){							
 		$out= '<div id="mv_tl_mvd_'.$mvd_page->id.'" ' .			
 			'class="mv_timeline_mvd_jumper" '.
-			'title="'.wfMsg('mv_play').seconds2ntp($mvd_page->start_time).'" '. 
+			'title="'.wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time).'" '. 
 			/*
 			 * time_line actions added by jQuery
 			'onmouseover="mv_mvd_tlOver(\''.$mvd_page->id.'\')" '.
@@ -211,19 +209,27 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		global $wgOut,$wgUser, $wgEnableParserCache;				
 		//$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );
 		$mvdTitle = new MV_Title( $mvd_page->wiki_title );
+		//print "js_log('outputMVD: ".$mvdTitle->getText()."');\n";
 		$mvdArticle = new Article($mvdTitle);
+		if(!$mvdArticle->exists()){
+			//print "js_log('missing: " .$mvd_page->wiki_title."');\n";
+			return ;	
+		}
+		//use the cache by default: 
+		//$usepCache = (isset($mvd_page->usePcache))?$mvd_page->usePcache:true;
 		
-		/*try to pull from cache: (should do new key on edits)*/
+		/*try to pull from cache: (should do new key on edits)*/		
 		$MvParserCache =& MV_ParserCache::singleton();
 		$add_opt = ($absolute_links)?'a':'';
 		$MvParserCache->addToKey($add_opt);
+		
 		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );
 		if ( $parserOutput !== false ) {
-			//print "found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser );
+			//print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
 			//found in cache output and be done with it: 					
 			$wgOut->addParserOutput( $parserOutput );
 		}else{
-			//print "not found in cache<br><br>";
+			//print "js_log('not found in cache');\n";
 			//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 			if($mvdTitle->exists()){	
 				//grab the article text:
@@ -553,7 +559,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	//}
 	
 	/*@@TODO document */
-	function do_edit_submit($titleKey, $mvd_id){
+	function do_edit_submit($titleKey, $mvd_id, $returnEncapsulated=false){
 		global $wgOut, $wgScriptPath, $wgUser, $wgTitle, $wgRequest;			
 		
 		if($mvd_id=='new'){
@@ -599,23 +605,33 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			return $wgOut->getHTML() . '<div style="clear:both;"><hr></div>';
 		}	
 						
-		if($editPageAjax->edit()==false){
+		if($editPageAjax->edit()==false){			
 			if($mvd_id=='new'){
 				//get context info to position timeline element: 
-				$this->get_overlay_context_from_title();
+				$rt = (isset($_REQUEST['wgTitle']))?$_REQUEST['wgTitle']:null;
+				$this->get_overlay_context_from_title($rt);
 
 				//get updated mvd_id: 				
 				$dbr =& wfGetDB(DB_SLAVE);
 				$result = & MV_Index::getMVDbyTitle($titleKey, 'mv_page_id');			
 				$mvd_id = $result->id;															
 				
-				//return $this->get_fd_mvd_request($titleKey, $mvd_id, 'enclosed');
+				//purge cache for parent stream 
+				MV_MVD::onEdit($this->mvd_pages, $mvd_id);
+				
+				//return Encapsulated (since its a new mvd)
+				$returnEncapsulated=true;
+			}else{
+				//purge cache for parent stream 
+				MV_MVD::onEdit($this->mvd_pages, $mvd_id);				
+			}
+			if($returnEncapsulated){
 				return php2jsObj(array('status'=>'ok',	
 						'mvd_id'=>$mvd_id,						
 						'titleKey'=>$titleKey,
 						'fd_mvd'=>$this->get_fd_mvd_request($titleKey, $mvd_id,'enclosed'),
 						'tl_mvd'=>$this->get_tl_mvd_request($titleKey, $mvd_id) 
-				));	
+				));		
 			}else{
 				return $this->get_fd_mvd_request($titleKey, $mvd_id);
 			}
@@ -645,12 +661,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 * although special move_page is not very complex. 
 	 */
 	 //very similar to SpecialMovepage.php doSubmit()
-	function do_adjust_submit($titleKey, $mvd_id, $newTitle, $contextTitle){
+	function do_adjust_submit($titleKey, $mvd_id, $newTitle, $contextTitle, $outputMVD=''){
 		global $wgOut, $mvgIP, $wgUser;		
-		//print "do_adjust_submit move to: $newTitle \n";
+		//print "js_log('do_adjust_submit, move $titleKey to: $newTitle ')\n";
 		//get context from MVStream request title:
-		$this->get_overlay_context_from_title($contextTitle);
-		//forced values (@@todo integrate into adjust form input) 
+		$this->get_overlay_context_from_title($contextTitle);		
 		
 		$this->reason =isset($_REQUEST['wpSummary'])?$_REQUEST['wpSummary']:wfMsg('mv_adjust_default_reason');
 		$this->moveTalk = true;
@@ -660,19 +675,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if ( $wgUser->pingLimiter( 'move' ) ) {
 			$wgOut->rateLimited();
 			return php2jsObj(array('status'=>'error','error_txt'=>$wgOut->getHTML()));
-		}
-		//require_once($mvgIP . '/includes/MV_Title.php');		
-		//make sure the new title is valid (not needed cuz move hook should check:)
-		/*$mvTitle = new MvTitle($newTitle);
-  		if(!$mvTitle->validRequestTitle()){
-  			//print $newTitle;
-  			$wgOut->addHTML( '<p class="error">' . wfMsg('mvMVDFormat') . "</p>\n" );
-  			return php2jsObj(array('status'=>'error','error_txt'=>$wgOut->getHTML()));
-  		}*/			
-  		//we should only be adjusting MVD namespace items:
-		$ot = Title::newFromText( $titleKey, MV_NS_MVD);
-		$nt = Title::newFromText( $newTitle, MV_NS_MVD);
+		}				
 		
+  		//we should only be adjusting MVD namespace items:
+		$ot = Title::newFromText( $titleKey, MV_NS_MVD);		
+		$nt = Title::newFromText( $newTitle, MV_NS_MVD);
 		//make sure the old title exist (what we are moving from)
 		if(!$ot->exists()){
 			$wgOut->addHTML( '<p class="error">' . wfMsg('mv_adjust_old_title_missing', $ot->getText() ) . "</p>\n" );
@@ -712,6 +719,19 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if ( $error !== true ) {
 			$wgOut->addWikiText( '<p class="error">' . wfMsg($error) . "</p>\n" );
 			return php2jsObj(array('status'=>'error','error_txt'=>$wgOut->getHTML()));
+		}else{
+			/*print "js_log('should have moved the page');\n";
+			print "js_log('new page title: ".$nt->getText()."');\n";
+			//clear cache for title: 	
+			//$nt->invalidateCache();					
+			//Article::onArticleEdit($nt);
+			global $wgDeferredUpdateList, $mediaWiki;
+			$mediaWiki->doUpdates( $wgDeferredUpdateList );
+			//try again:
+			$newTitle = Title::newFromText($nt->getText(), MV_NS_MVD);
+			$na = new Article($newTitle);
+			print "js_log('new page content: " .$na->getContent() . "');\n";
+			*/ 
 		}
 		//wfRunHooks( 'SpecialMovepageAfterMove', array( &$this , &$ot , &$nt ) )	;
 		
@@ -743,6 +763,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$wgUser->removeWatch( $ot );
 			$wgUser->removeWatch( $nt );
 		}
+		//purge cache of parent stream: 
+		MV_MVD::onEdit($this->mvd_pages, $mvd_id);
+		MV_MVD::onMove($this->mvd_pages, $mvd_id, $newTitle);
+		//MV_MVD::disableCache($this->mvd_pages, $mvd_id);
 		
 		//$tsTitle = Title::newFromText( $newTitle, MV_NS_MVD);
 		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
@@ -750,14 +774,16 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			print "js_log('{$tsTitle->getDBkey()}  presnet:');\n";
 		}else{
 			print "js_log('{$tsTitle->getDBkey()}  not present');\n";
-		}*/		
-		
+		}*/				
+	
+			
 		#return the javascript object (so that the inteface can update the user)
+		//get_fd_mvd_request($titleKey, $mvd_id, $mode='inner', $content='')
 		return php2jsObj(array('status'=>'ok',
 						'error_txt'=>$wgOut->getHTML(), 
-						'mv_adjust_ok_move'=>wfMsg('mv_adjust_ok_move'),
+						'mv_adjust_ok_move'=>wfMsg('mv_adjust_ok_move'),						
 						'titleKey'=>$newTitle,
-						'fd_mvd'=>$this->get_fd_mvd_request($newTitle, $mvd_id,'enclosed'),
+						'fd_mvd'=>$this->get_fd_mvd_request($newTitle, $mvd_id,'enclosed', $outputMVD),
 						'tl_mvd'=>$this->get_tl_mvd_request($newTitle, $mvd_id) 
 			));		
 	}
@@ -805,6 +831,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		global $wgOut;
 		$title = Title::newFromText($titleKey, MV_NS_MVD);
 		$article = new Article($title);
+		//purge parent article: 
+		MV_MVD::onEdit($this->mvd_pages, $mvd_id);
 		//run the delete function: 
 		$article->doDelete( $_REQUEST['wpReason'] );
 		//check if delete happend
@@ -817,9 +845,28 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	}
  }
 //base class mvd_page
-//@@todo re-factor some functions that run on (mvd_page) to methods in the mvd_page obj
-class mvd_pageObj{
-	
+//@@todo re-factor some functions that run on (mvd_page) to methods a MV_MVD obj
+class MV_MVD{
+	/*actions for mvd page edits */
+	function onEdit(&$mvd_pages_cache, $mvd_id){
+		//force update local mvd_page_cache from db: 				
+		$mvd_pages_cache[$mvd_id] = MV_Index::getMVDbyId($mvd_id);			
+		
+		$stream_name = MV_Stream::getStreamNameFromId($this->mvd_pages[$mvd_id]->stream_id);
+		$streamTitle = Title::newFromText($stream_name, MV_NS_STREAM); 
+		//clear the cache for the parent stream page: 
+		Article::onArticleEdit($streamTitle);
+	}
+	//updates the current version cached version of mvd
+	function onMove(&$mvd_pages_cache, $mvd_id){
+	//	if(!isset($mvd_pages_cache[$mvd_id]))				
+	//		$mvd_pages_cache[$mvd_id] = MV_Index::getMVDbyId($mvd_id);		
+	}
+	/*function disableCache($mvd_id){
+		if(!isset($mvd_pages_cache[$mvd_id]))				
+			$mvd_pages_cache[$mvd_id] = MV_Index::getMVDbyId($mvd_id);	
+		$mvd_pages_cache[$mvd_id]->usePCache=false;
+	}*/
 }
 function mvParsePropertiesCallback($maches){
 	global $mvMatchesSST, $mv_smw_tag_arry;	

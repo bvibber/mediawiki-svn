@@ -48,6 +48,10 @@ class MV_Stream {
 		}
 		//normalize stream title: 		
 	}
+	function newStreamByID($id){
+		$s = new MV_Stream(array('id'=>$id));
+		return $s;
+	}
 	function setMvTitle(&$mvTitle){
 		$this->mvTitle=$mvTitle;
 	}

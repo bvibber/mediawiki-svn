@@ -232,10 +232,12 @@
 		}*/
 		if(!isset($_POST['do_adjust']))$_POST['do_adjust']=false;		
 		if($_POST['do_adjust']=='true'){
-			$MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
+			//first edit then move
+			$outputMVD = $MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
 			//clear the wgOut var: 
 			$wgOut->clearHTML();
-			return $MV_Overlay->do_adjust_submit($_POST['titleKey'], $_POST['mvd_id'], $_POST['newTitle'], $_POST['wgTitle']);				
+			//do move and display output page 			
+			return $MV_Overlay->do_adjust_submit($_POST['titleKey'], $_POST['mvd_id'], $_POST['newTitle'], $_POST['wgTitle'], $outputMVD);
 		}else{
 			return $MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
 		}
@@ -251,12 +253,12 @@
 		$MV_Overlay = new MV_Overlay();				
 		return $MV_Overlay->get_adjust_disp($titleKey, $mvd_id);
 	}*/
-	function mv_adjust_submit(){
+	/*function mv_adjust_submit(){
 		$MV_Overlay = new MV_Overlay();		
 		if(!isset($_POST['titleKey']) || !isset($_POST['newTitle']))
 			return 'error: missing titleKey or newTitle';		
 		return $MV_Overlay->do_adjust_submit($_POST['titleKey'], $_POST['newTitle']);
-	}
+	}*/
 	function mv_seqtool_disp($tool_id){		
 		$MV_SequenceTools = new MV_SequenceTools();		
 		return $MV_SequenceTools->get_tool_html($tool_id);
