@@ -169,9 +169,21 @@ $messages['hsb'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'importusers-login-name' => 'ឈ្មោះ ពិនិត្យចូល',
-	'importusers-email'      => 'អ៊ីមែវល៍',
-	'importusers-realname'   => 'ឈ្មោះពិត',
+	'importusers'                         => 'នាំចូល អ្នកប្រើប្រាស់',
+	'importusers-uploadfile'              => 'ផ្ទុកឡើង ឯកសារ',
+	'importusers-form-button'             => 'នាំចូល',
+	'importusers-user-added'              => 'បានបន្ថែមហើយ អ្នកប្រើប្រាស់ <b>%s</b> ។',
+	'importusers-user-present-update'     => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ បានបន្ទាន់សម័យ។',
+	'importusers-user-present-not-update' => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ មិនទាន់បានបន្ទាន់សម័យ។',
+	'importusers-log'                     => 'កំណត់ហេតុ នាំចូល',
+	'importusers-log-summary'             => 'សេចក្តីសង្ខេប',
+	'importusers-log-summary-all'         => 'ទាំងអស់',
+	'importusers-log-summary-added'       => 'បានបន្ថែម',
+	'importusers-log-summary-updated'     => 'បានបន្ទាន់សម័យ',
+	'importusers-login-name'              => 'ឈ្មោះ ពិនិត្យចូល',
+	'importusers-password'                => 'ពាក្យសំងាត់',
+	'importusers-email'                   => 'អ៊ីមែវល៍',
+	'importusers-realname'                => 'ឈ្មោះពិត',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -286,6 +286,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Seb35
  * @author Sherbrooke
+ * @author Urhixidur
  * @author SPQRobin
  */
 $messages['fr'] = array(
@@ -295,7 +296,7 @@ $messages['fr'] = array(
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
 	'usernameblacklist'               => "<pre>
 # Les entrées de cette liste seront utilisées en tant qu'expressions rationnelles
-# afin d'empêcher la création de noms d'utilisateurs interdits. Chaque item doit
+# afin d'empêcher la création de noms d'utilisateurs interdits. Chaque entrée doit
 # faire partie d'une liste à puces, par exemple
 #
 # * Foo

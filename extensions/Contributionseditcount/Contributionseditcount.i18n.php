@@ -81,6 +81,14 @@ $messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'contributionseditcount'      => 'この利用者は、$1回の編集を行いました。',
+	'contributionseditcount-desc' => '[[Special:Contributions|利用者の投稿記録]]で編集回数を表示する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

@@ -114,22 +114,25 @@ $messages['el'] = array(
 	'spamdifftool_option_none' => 'τίποτα',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'spamdifftool' => 'Gestion de la Liste Noire des Spams',
-	'spamdifftool-desc' => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des Spam à partir des diff',
-	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste Noire des Spams.',
-	'spamdifftool_notext' => 'Il n’y a pas de texte à ajouter à la Liste Noire des Spams. Cliquez <a href=\'$1\'>ici</a> pour continuer. ',
-	'spamdifftool_confirm' => 'Confirmez que vous voulez ajouter ces entrées dans la Liste Noire des Spams. (Cliquez <a href=\'$1\' target=\'new\'>ici</a> pour signaler tout problème.)',
-	'spamdifftool_summary' => 'Ajouté à la Liste Noire des Spams',
-	'spamdifftool_urls_detected' => 'Les URLs suivantes ont été détectées dans ces éditions. Quelles sont lesquelles que vous voulez ajouter à la Liste Noire des Spams ? Ces options vont des plus restrictives vers les moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.<br/><br/>Assurez-vous de ne pas bloquer des domaines entiers que détiennent certains compteurs utilisateurs tels que blogpost.com, geocities.com, etc. ',
-	'spamdifftool_no_urls_detected' => 'Aucune URL n’a été détectée. Cliquez <a href=\'$1\'>ici</a> pour revenir en arrière.',
-	'spamdifftool_spam_link_text' => 'ajouter aux spams',
-	'spamdifftool_option_domain' => 'tout depuis ce domaine',
+	'spamdifftool'                  => 'Gestion de la Liste noire des pourriels',
+	'spamdifftool-desc'             => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des pourriels à partir des diff',
+	'spamdifftool_cantedit'         => 'Désolé - Vous n’avez pas la permission d’éditer la Liste noire des pourriels.',
+	'spamdifftool_notext'           => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
+	'spamdifftool_confirm'          => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
+	'spamdifftool_summary'          => 'Ajouté à la Liste noire des pourriels',
+	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces éditions. Lesquelles voulez-vous ajouter à la Liste noire des pourriels ? Ces options vont des plus restrictives vers les moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.<br/><br/>Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
+	'spamdifftool_no_urls_detected' => "Aucune URL n’a été détectée. Cliquez <a href='$1'>ici</a> pour revenir en arrière.",
+	'spamdifftool_spam_link_text'   => 'ajouter aux pourriels',
+	'spamdifftool_option_domain'    => 'tout depuis ce domaine',
 	'spamdifftool_option_subdomain' => 'tout depuis ce sous-domaine',
 	'spamdifftool_option_directory' => 'ce sous-domaine et ce répertoire',
-	'spamdifftool_option_none' => 'néant',
-	'spamdifftool_block' => 'Bloquer :',
-	'spamdifftool_submit_buttom' => 'Soumettre',
+	'spamdifftool_option_none'      => 'néant',
+	'spamdifftool_block'            => 'Bloquer :',
+	'spamdifftool_submit_buttom'    => 'Soumettre',
 );
 
 /** Galician (Galego)
@@ -236,6 +239,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'spamdifftool'                  => 'Gestion de la Lista Negra dels Spams',
+	'spamdifftool-desc'             => "Provesís un metòde simple per ajustar d'entradas dins la lista negra dels spams a partir de las dif",
 	'spamdifftool_cantedit'         => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
 	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm'          => "Confirmatz que volètz ajustar aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",

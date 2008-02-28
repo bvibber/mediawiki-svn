@@ -159,6 +159,8 @@ $messages['nl'] = array(
 	'edituser-logout'   => 'Gebruiker afmelden',
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Zoeken',
+	'edituser-nouser'   => 'De opgegeven gebruiker bestaat niet',
+	'edituser-exempt'   => 'De opgegeven gebruiker kan niet bewerkt worden',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

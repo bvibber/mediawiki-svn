@@ -173,6 +173,7 @@ $messages['ext'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -181,7 +182,7 @@ $messages['fr'] = array(
 
 '''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de l'article affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite. Pour cette raison, soyez certain que le document soit sufisamment stable pour être authentifié et, ''avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu'ils soient.",
 	'createsigndoc-pagename'             => 'Page :',
-	'createsigndoc-allowedgroup'         => 'Groupe authorisé :',
+	'createsigndoc-allowedgroup'         => 'Groupe autorisé :',
 	'createsigndoc-email'                => 'Addresse de courriel :',
 	'createsigndoc-address'              => 'Adresse résidentielle :',
 	'createsigndoc-extaddress'           => 'Ville, état (département ou province), pays :',

@@ -88,32 +88,33 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
-	'tasklist'                => 'Liste de tâches',
-	'tasklist-parser-desc'    => 'Ajoute <nowiki>{{#todo:}}</nowiki> une fonction parser pour assigner des tâches',
-	'tasklist-special-desc'   => 'Ajoute une page spéciale pour réviser [[Special:TaskList|la liste des tâches assignées]]',
-	'tasklistbyproject'       => 'Liste de tâches par projet',
+	'tasklist'               => 'Liste de tâches',
+	'tasklist-parser-desc'   => 'Ajoute <nowiki>{{#todo:}}</nowiki> une fonction parseur pour assigner des tâches',
+	'tasklist-special-desc'  => 'Ajoute une page spéciale pour réviser [[Special:TaskList|la liste des tâches assignées]]',
+	'tasklistbyproject'      => 'Liste de tâches par projet',
 	'tasklistunknownproject' => 'Projet inconnu',
-	'tasklistunspecuser'      => 'Contributeur inconnu',
-	'tasklistincorrectuser'   => 'Pseudonyme incorrect',
-	'tasklistemail'           => 'Cher %s',
-	'tasklistemailsubject'    => '[%s] Changement à la liste de tâches',
-	'tasklistmytasks'         => 'Mes tâches',
-	'tasklistbyprojectbad'    => "Le projet '''%s''' n'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].",
-	'tasklistbyprojname'      => "Tâches assignées pour '''%s'''.",
-	'tasklistchooseproj'      => 'Projet sélectionné :',
-	'tasklistprojdisp'        => 'Afficher',
-	'tasklistbyname'          => '== Liste de tâches à faire pour %s ==',
-	'tasklistnoprojects'      => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
-	'tasklistemailbody'       => ",
+	'tasklistunspecuser'     => 'Contributeur inconnu',
+	'tasklistincorrectuser'  => 'Pseudonyme incorrect',
+	'tasklistemail'          => 'Cher %s',
+	'tasklistemailsubject'   => '[%s] Changement à la liste de tâches',
+	'tasklistmytasks'        => 'Mes tâches',
+	'tasklistbyprojectbad'   => "Le projet '''%s''' n'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].",
+	'tasklistbyprojname'     => "Tâches assignées pour '''%s'''.",
+	'tasklistchooseproj'     => 'Projet sélectionné :',
+	'tasklistprojdisp'       => 'Afficher',
+	'tasklistbyname'         => '== Liste de tâches à faire pour %s ==',
+	'tasklistnoprojects'     => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
+	'tasklistemailbody'      => ',
 
-Quelqu'un vous a assigné une nouvelle tâche pour vous sur %s.
+Quelqu’un vous a assigné une nouvelle tâche sur %s.
 
 Pour voir votre liste complète des tâches à effectuer, allez sur %s.
 
-Votre bien aimable système de notification de %s",
+Votre bien aimable système de notification de %s',
 );
 
 $messages['gl'] = array(
@@ -204,9 +205,12 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'tasklist'               => 'Takenlijst',
+	'tasklist-parser-desc'   => 'voegt de parserfunctie <nowiki>{{#todo:}}</nowiki> toe om taken toe te wijzen',
+	'tasklist-special-desc'  => 'Voegt een speciale pagina toe om [[Special:TaskList|takentoewijzingen]] na te kijken',
 	'tasklistbyproject'      => 'Takenlijst per project',
 	'tasklistunknownproject' => 'Onbekend project',
 	'tasklistunspecuser'     => 'Gebruiker niet aangegeven',
@@ -261,6 +265,8 @@ Fra %ss varslingssystem',
  */
 $messages['oc'] = array(
 	'tasklist'               => 'Lista de prètzfaches',
+	'tasklist-parser-desc'   => 'Ajusta <nowiki>{{#todo:}}</nowiki> una foncion parsaire per assignar de prètzfaches',
+	'tasklist-special-desc'  => 'Ajusta una pagina especiala per revisar [[Special:TaskList|la lista dels prètzfaches assignats]]',
 	'tasklistbyproject'      => 'Lista de prètzfaches per projècte',
 	'tasklistunknownproject' => 'Projècte desconegut',
 	'tasklistunspecuser'     => 'Contributor desconegut',
@@ -303,10 +309,11 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'tasklistemail'      => 'Caro %s',
-	'tasklistbyprojname' => "Tarefas atribuídas a '''%s'''",
-	'tasklistchooseproj' => 'Seleccione Projecto:',
-	'tasklistprojdisp'   => 'Mostrar',
+	'tasklistincorrectuser' => 'Nome de utilizador incorrecto',
+	'tasklistemail'         => 'Caro %s',
+	'tasklistbyprojname'    => "Tarefas atribuídas a '''%s'''",
+	'tasklistchooseproj'    => 'Seleccione Projecto:',
+	'tasklistprojdisp'      => 'Mostrar',
 );
 
 /** Slovak (Slovenčina)
@@ -314,6 +321,8 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'tasklist'               => 'Zoznam úloh',
+	'tasklist-parser-desc'   => 'pridáva funkciu syntaktického analyzátora <nowiki>{{#todo:}}</nowiki> na prideľovanie úloh',
+	'tasklist-special-desc'  => 'Pridáva špeciálnu stránku na kontrolu [[Special:TaskList|pridelených úloh]]',
 	'tasklistbyproject'      => 'Zoznam úloh podľa projektov',
 	'tasklistunknownproject' => 'Neznámy projekt',
 	'tasklistunspecuser'     => 'Nešpecifikovaný používateľ',

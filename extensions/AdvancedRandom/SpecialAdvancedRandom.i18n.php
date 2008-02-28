@@ -144,6 +144,13 @@ $messages['lb'] = array(
 	'advancedrandom-desc' => 'Eng zoufälleg Säit weisen, z. B. mat [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], fir eng zoufälleg Diskussiounssäit vun enger exzellenter Säit oder mat [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], fir een zoufällege Fichier ze weisen, den als GFDL lizenzéiert ass.',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'advancedrandom' => 'प्रगत अविशीष्ट',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

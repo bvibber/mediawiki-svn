@@ -150,8 +150,12 @@ $messages['no'] = array(
 	'minnamelength-desc'  => 'Innfør minstelengde på brukernavn',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
+	'minnamelength-error' => "Vòstre nom d'utilizaire es tròp cort. La longor minimom es $1.",
+	'minnamelength-desc'  => 'Exigís una longor minimala per un nom d’utilizaire.',
 );
 
 $messages['pl'] = array(

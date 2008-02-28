@@ -683,6 +683,7 @@ $wdMessages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $wdMessages['fr'] = array(
 	'datasearch'                            => 'Wikidata: Recherche de données',
@@ -696,22 +697,22 @@ $wdMessages['fr'] = array(
 	'ow_uipref_datasets'                    => 'Vue par défaut',
 	'ow_uiprefs'                            => 'Données wiki',
 	'ow_none_selected'                      => '<Aucune sélection>',
-	'ow_conceptmapping_help'                => "<p>actions possibles : <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  insérer une carte</li>
-<li>&action=get&concept=<concept_id>  revoir une carte</li>
+	'ow_conceptmapping_help'                => '<p>actions possibles : <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  insérer une correspondance</li>
+<li>&action=get&concept=<concept_id>  revoir une correspondance</li>
 <li>&action=list_sets  retourner une liste des préfixes de contextes possibles et à quoi ils réfèrent.</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pour un défini dans le sens d'un concept, retourner tous les autres.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pour une définition d’un concept, retourner toutes les autres.</li>
 <li>&action=help  Voir l’aide complète.</li>
-</ul></p>",
+</ul></p>',
 	'ow_conceptmapping_uitext'              => "<p>Le carte des concepts vous permet d'identifier quel sens défini d'un ensemble de données est identique aux sens définis pour les autres ensembles de données.</p>",
 	'ow_conceptmapping_no_action_specified' => 'Désolé, je ne sais pas comment exécuter « $1 ».',
 	'ow_dm_OK'                              => 'Valider',
 	'ow_dm_not_present'                     => 'non inscrit',
-	'ow_dm_not_found'                       => 'non trouvé dans la base de donnée ou mal rédigé',
-	'ow_mapping_successful'                 => 'Planifie tous les champs marqués avec [Valider]<br>',
-	'ow_mapping_unsuccessful'               => 'Nécessite au moins deux sens définis avant que je ne puisse les relier.',
+	'ow_dm_not_found'                       => 'non trouvé dans la base de données ou mal rédigé',
+	'ow_mapping_successful'                 => 'Tous les champs marqués avec [{{MediaWiki:Ow_dm_OK}}] ont été insérés<br>',
+	'ow_mapping_unsuccessful'               => 'Il faut qu’au moins deux sens soient définis avant qu’ils ne puissent être reliés.',
 	'ow_will_insert'                        => 'Insèrera les suivants :',
-	'ow_contents_of_mapping'                => 'Contenu de la planification',
+	'ow_contents_of_mapping'                => 'Correspondances',
 	'ow_available_contexts'                 => 'Contextes disponibles',
 	'ow_add_concept_link'                   => 'Ajouter un lien aux autres concepts',
 	'ow_concept_panel'                      => 'Éventail de concepts',
@@ -1006,6 +1007,17 @@ $wdMessages['ja'] = array(
 	'ow_conceptmapping_uitext'              => '<p>コンセプトマップでは、あるデータセットに登録されている意味定義と他のデータセットにある同一概念の意味定義を関連付けることが可能です。</p>',
 	'ow_conceptmapping_no_action_specified' => '申し訳ありません、"$1" という操作は定義されていません。',
 	'ow_dm_OK'                              => 'OK',
+	'ow_dm_not_present'                     => '指定がありません',
+	'ow_dm_not_found'                       => 'データベースに存在しないか、不正な指定です',
+	'ow_mapping_successful'                 => '関連する全てのフィールドを[OK]とマークしました<br />',
+	'ow_mapping_unsuccessful'               => '関連付けを作成するには、少なくとも意味定義が2つ登録されている必要があります。',
+	'ow_will_insert'                        => '以下の内容で作成します:',
+	'ow_contents_of_mapping'                => '関連付けの内容',
+	'ow_available_contexts'                 => '有効な関連内容',
+	'ow_add_concept_link'                   => '他の概念とのリンクを作成',
+	'ow_concept_panel'                      => '概念パネル',
+	'ow_dm_badtitle'                        => 'このページが指し示す意味定義（概念）は何もありません。URLの指定が正しいか確認してください。',
+	'ow_dm_missing'                         => 'このページは存在しない意味定義（概念）を指し示しているように見えます。URLの指定が正しいか確認してください。',
 );
 
 /** Georgian (ქართული)
@@ -1129,6 +1141,7 @@ $wdMessages['km'] = array(
 	'ow_OptionAttributeValues'        => 'តំលៃ នានា នៃ ជំរើស',
 	'ow_Relations'                    => 'ទំនាក់ទំនង',
 	'ow_RelationType'                 => 'ប្រភេទ ទំនាក់ទំនង',
+	'ow_Synonyms'                     => 'វេវចនៈស័ព្ទ',
 	'ow_Text'                         => 'អត្ថបទ',
 	'ow_TranslatedText'               => 'អត្ថបទ ត្រូវបានប្រែសំរួល',
 	'ow_TranslatedTextAttributeValue' => 'អត្ថបទ',
@@ -1220,9 +1233,14 @@ $wdMessages['mr'] = array(
 	'ow_ClassAttributeType'                 => 'प्रकार',
 	'ow_Definition'                         => 'व्याख्या',
 	'ow_ExactMeanings'                      => 'नेमका अर्थ',
+	'ow_IncomingRelations'                  => 'येते संबध',
 	'ow_GotoSource'                         => 'स्रोताकडे जा',
 	'ow_Language'                           => 'भाषा',
+	'ow_OptionAttribute'                    => 'वैशिष्ट्य',
 	'ow_OptionAttributeOption'              => 'पर्याय',
+	'ow_OptionAttributeOptions'             => 'पर्याय',
+	'ow_OptionAttributeValues'              => 'पर्याय मुल्ये',
+	'ow_OtherDefinedMeaning'                => 'इअतर व्यक्त अर्थ',
 	'ow_Relations'                          => 'नाते',
 	'ow_RelationType'                       => 'नाते प्रकार',
 	'ow_Spelling'                           => 'स्पेलींग',
@@ -1233,18 +1251,23 @@ $wdMessages['mr'] = array(
 	'ow_TextAttribute'                      => 'मालमत्ता',
 	'ow_Text'                               => 'मसुदा',
 	'ow_TextAttributeValues'                => 'केवळ साधा मजकुर',
-	'ow_TranslatedTextAttribute'            => 'मालमत्ता',
+	'ow_TranslatedTextAttribute'            => 'वैशिष्ट्य',
 	'ow_TranslatedText'                     => 'भाषांतरीत मजकुर',
 	'ow_TranslatedTextAttributeValue'       => 'मजकुर',
 	'ow_TranslatedTextAttributeValues'      => 'भाशांतरकरण्या योग्य मजकुर',
-	'ow_LinkAttribute'                      => 'मालमत्ता',
+	'ow_LinkAttribute'                      => 'वैशिष्ट्य',
 	'ow_LinkAttributeValues'                => 'दुवे',
 	'ow_Property'                           => 'मालमत्ता',
 	'ow_Value'                              => 'मुल्य',
 	'ow_meaningsoftitle'                    => '"$1"चे अर्थ',
 	'ow_meaningsofsubtitle'                 => '<em>विकिदुवा:</em> [[$1]]',
+	'ow_Permission_denied'                  => '<h2>परवानगी नाकारली</h2>',
 	'ow_copy_no_action_specified'           => 'कृपया कृती निर्देशीत करा',
 	'ow_copy_help'                          => 'एकदिवस आम्ही तुम्हाला मदत करु शकु',
+	'ow_copy_successful'                    => '<h2>नक्कल यशस्वी</h2>तुमची विदा यशस्वीपणे नकलली गेल्याचे दिसते.निश्चित करण्यासाठी पुन्हाएकदा पडताळून पहा!',
+	'ow_copy_unsuccessful'                  => '<h3>नक्कल अयशस्वी</h3> नकलण्याचे कोणतेही काम झाले नाही.',
+	'ow_no_action_specified'                => '<h3>कोणतीही कृती सांगीतली नाही</h3>काय तुम्ही या पानापाशी सरळच पोहचले आहात? सर्वसाधारणता तुम्ही येथे पोहचण्याची आवशकता नाही.',
+	'ow_db_consistency_not_found'           => '<h2>त्रूटी</h2>विदेच्या सुरळीतपणाचा प्रश्न आहे ,विकिविदा या व्यक्त ID शी संबधीत सुयोग्य विदा शोधूशकत नाही.ती हरवली असण्याची शक्यता आहे.कृपया प्रचालक अथवा प्रबंधकांशी संपर्क करा.',
 );
 
 /** Dutch (Nederlands)

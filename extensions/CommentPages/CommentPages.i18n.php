@@ -105,7 +105,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'nstab-comments' => 'Comentari',
+	'commentpages-desc' => "Paginas de comentaris per l'espaci principal",
+	'nstab-comments'    => 'Comentari',
 );
 
 /** Portuguese (Português)

@@ -49,6 +49,13 @@ $messages['no'] = array(
 	'editown-desc' => "Brukere uten ''editall''-rettigheter kan kun redigere sider de selv har opprettet",
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'editown-desc' => "Los utilizaires privats del drech de modificar las paginas pòdon pas editar sonque las qu'an creadas",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

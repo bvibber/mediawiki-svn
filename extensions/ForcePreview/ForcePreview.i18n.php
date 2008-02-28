@@ -69,6 +69,14 @@ $messages['no'] = array(
 	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'forcepreview'      => 'Salvagarda la pagina (amòda en primièr la previsualizacion)',
+	'forcepreview-desc' => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

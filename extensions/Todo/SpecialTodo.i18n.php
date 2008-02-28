@@ -95,36 +95,39 @@ $messages['el'] = array(
 	'todo-form-details' => 'Λεπτομέρειες:',
 );
 
-$messages['fr'] = array (
-	'todo'              => 'Liste des tâches à exécuter',
-	'todo-desc'         => 'Extension expérimentale d’une [[Special:Todo|liste personnelle de tâche à accomplir]]',
-	'todo-tab'          => 'à faire',
-	'todo-new-queue'    => 'Nouveau',
-	'todo-mail-subject' => "Article achevé sur la liste des tâches de $1",
-	'todo-mail-body'    => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.
+/** French (Français)
+ * @author Urhixidur
+ */
+$messages['fr'] = array(
+	'todo'                  => 'Liste des tâches à exécuter',
+	'todo-desc'             => 'Extension expérimentale d’une [[Special:Todo|liste personnelle de tâches à accomplir]]',
+	'todo-tab'              => 'à faire',
+	'todo-new-queue'        => 'Nouveau',
+	'todo-mail-subject'     => 'Article achevé sur la liste des tâches de $1',
+	'todo-mail-body'        => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.
 
 Article : $2
 Soumis : $3
 
 Cet article a été marqué comme terminé avec le commentaire suivant :
 $4",
-	'todo-invalid-item' => "Article manquant ou invalide",
-	'todo-update-else-item' => "Tentative de mettre à jour les articles de quelqu'un d'autre",
-	'todo-unrecognize-type' => "Type non reconnu",
-	'todo-user-invalide' => "Tâche à faire invalide, manquante, ou utilisateur ne disposant pas des droits nécessaires pour cela.",
-	'todo-item-list' => 'Vos articles',
-	'todo-no-item' => 'Aucune tâche à exécuter',
-	'todo-invalid-owner' => 'Propriétaire de cet article invalide',
-	'todo-add-queue' => 'Ajouter à la queue…',
-	'todo-move-queue' => 'Déplacer vers la queue…',
-	'todo-list-for' => 'Liste des tâches à exécuter pour',
-	'todo-list-change' => 'Modifier',
-	'todo-list-cancel' => 'Annuler',
-	'todo-new-item' => 'Nouvel article',
-	'todo-issue-summary' => 'Résumé sommaire :',
-	'todo-form-details' => 'Précisions :',
-	'todo-form-email' => 'Pour recevoir les notifications par courriel une fois l’article cloturé, inscrivez votre adresse dans le cadre ci-dessous :',
-	'todo-form-submit' => 'Soumettre la requête',
+	'todo-invalid-item'     => 'Article manquant ou invalide',
+	'todo-update-else-item' => "Tentative de mise à jour des articles de quelqu'un d'autre",
+	'todo-unrecognize-type' => 'Type non reconnu',
+	'todo-user-invalide'    => 'Tâche à faire invalide, manquante, ou utilisateur ne disposant pas des droits nécessaires pour cela.',
+	'todo-item-list'        => 'Vos articles',
+	'todo-no-item'          => 'Aucune tâche à exécuter',
+	'todo-invalid-owner'    => 'Propriétaire de cet article invalide',
+	'todo-add-queue'        => 'Ajouter à la queue…',
+	'todo-move-queue'       => 'Déplacer vers la queue…',
+	'todo-list-for'         => 'Liste des tâches à exécuter pour',
+	'todo-list-change'      => 'Modifier',
+	'todo-list-cancel'      => 'Annuler',
+	'todo-new-item'         => 'Nouvel article',
+	'todo-issue-summary'    => 'Résumé sommaire :',
+	'todo-form-details'     => 'Précisions :',
+	'todo-form-email'       => 'Pour recevoir les notifications par courriel une fois l’article clôturé, inscrivez votre adresse dans le cadre ci-dessous :',
+	'todo-form-submit'      => 'Soumettre la requête',
 );
 
 /** Galician (Galego)
@@ -267,6 +270,7 @@ $4',
  */
 $messages['oc'] = array(
 	'todo'                  => "Lista dels prètzfaches d'executar",
+	'todo-desc'             => 'Extension experimentala d’una [[Special:Todo|lista personala de prètzfaches de realizar]]',
 	'todo-tab'              => 'todo',
 	'todo-new-queue'        => 'Novèl',
 	'todo-mail-subject'     => 'Article acabat sus la lista dels prètzfaches de $1',
@@ -301,6 +305,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'todo-item-list'    => 'Seus itens',
 	'todo-list-cancel'  => 'Cancelar',
 	'todo-form-details' => 'Detalhes:',
 );

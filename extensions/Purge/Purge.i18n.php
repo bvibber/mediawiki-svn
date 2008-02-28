@@ -112,7 +112,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'purge' => 'purgar',
+	'purge'      => 'purgar',
+	'purge-desc' => "Ajusta un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
 );
 
 /** Portuguese (Português)

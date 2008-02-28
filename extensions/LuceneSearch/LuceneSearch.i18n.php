@@ -141,8 +141,8 @@ $messages['bcl'] = array(
 );
 
 /** Bulgarian (Български)
- * @author DCLXVI
  * @author Borislav
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
@@ -150,13 +150,15 @@ $messages['bg'] = array(
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
 	'lucene-searchscore'    => 'Релевантност: $1%',
 	'lucene-resultsize'     => '$1 ($2 думи)',
+	'searchdidyoumean'      => 'Да нямате предвид „<a href="$1">$2</a>“?',
 	'searchnoresults'       => 'За съжаление нямаше точни съвпадения със заявката ви.',
-	'searchnearmatches'     => '<b>Следните страници имат сходни с търсенето имена:</b>',
+	'searchnearmatches'     => '<b>Следните страници имат сходни със заявката ви имена:</b>',
 	'lucenepowersearchtext' => 'Търсене в именни пространства:
 
 $1
 
 Търсене на $3 $9 $10',
+	'lucenefallback'        => 'В момента има проблем с търсачката на {{SITENAME}}. Възможно е това да е само временно, затова опитайте отново след минута-две. В краен случай можете да ползвате услугите на външни търсачки:',
 	'searchall'             => 'всички',
 );
 
@@ -1065,6 +1067,7 @@ Søk etter $3 $9 $10',
  * @author Siebrand
  */
 $messages['oc'] = array(
+	'lucene-desc'           => 'Interfàcia pel motor de recèrca Apache Lucene',
 	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prec.</span>",
 	'searchnext'            => "<span style='font-size: small'>Seg.</span> &#x00BB;",
@@ -1201,6 +1204,7 @@ ichataq hawa maskanawan wikipi maskay.",
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'lucene-desc'           => 'Интерфейс для поискового движка Apache Lucene',
@@ -1449,6 +1453,13 @@ $messages['tr'] = array(
 	'lucene-resultsize'  => '$1 ($2 kelimeler)',
 	'searchdidyoumean'   => 'Bunu mu demek istediniz: "<a href="$1">$2</a>"?',
 	'searchall'          => 'hepsi',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'searchnoresults' => 'На жаль, за вашим запитом не було знайдено точних відповідників.',
 );
 
 $messages['ur'] = array(

@@ -32,7 +32,7 @@ $messages['ar'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'multiboilerplate-desc'   => "Affiche une boîte en haut de la page d'édition afin de sélectionner et charger une page ou un modèle.",
+	'multiboilerplate-desc'   => "Permet de sélectionner une page ou un modèle à incorporer à partir d'une boîte en haut du formulaire d'édition d'une page.",
 	'multiboilerplate-legend' => 'Sélectionner la page à incorporer',
 	'multiboilerplate-submit' => 'Charger',
 );
@@ -41,7 +41,7 @@ $messages['fr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'multiboilerplate-desc'   => 'Zwobraznja horjeka na wobdźěłowanskej stronje polo za wuběranje a začitanje tekstoweho elementa',
+	'multiboilerplate-desc'   => 'Zmóžnja tekstowy element z padaceho kašćika wubrać, kotrež je wyše wobdźěłanskeho pola na wobdźełanskich stronach',
 	'multiboilerplate-legend' => 'Tekstowy element wubrać',
 	'multiboilerplate-submit' => 'Začitać',
 );
@@ -59,12 +59,12 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'multiboilerplate-desc'   => 'Toont een venster bovenaan een bewerkingspagina voor het selecteren en laden van een standaard tekstblok',
+	'multiboilerplate-desc'   => 'Biedt de mogelijkheid een standaard tekstblok te selecteren uit een selectievenster bovenaan een bewerkingspagina',
 	'multiboilerplate-legend' => 'Sjabloon selecteren',
 	'multiboilerplate-submit' => 'Laden',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -101,7 +101,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'multiboilerplate-desc'   => 'Zobrazuje pole na vrchu editovacej stránky na výber a načítanie šablóny',
+	'multiboilerplate-desc'   => 'Umožňuje výber šablóny, ktoré sa zobrazuje na vrchu editovacej stránky',
 	'multiboilerplate-legend' => 'Vyberte nápis',
 	'multiboilerplate-submit' => 'Načítať',
 );

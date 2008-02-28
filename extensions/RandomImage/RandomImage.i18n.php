@@ -53,6 +53,13 @@ $messages['no'] = array(
 	'randomimage-desc' => 'Gir en tilfeldig mediefil ved å bruke <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'randomimage-desc' => "Provesís un mèdia a l'azard en utilizant <tt>&lt;randomimage /&gt;</tt>",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

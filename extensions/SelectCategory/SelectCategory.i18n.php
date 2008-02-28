@@ -152,6 +152,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'selectcategory-title'    => 'Causida de categorias',
+	'selectcategory-desc'     => 'Permet a l’utilizaire de seleccionar de categorias existentas al moment de l’edicion d’una pagina',
 	'selectcategory-subtitle' => "Maj+click pr'amor de (de)seleccionar mantuna categoria d’arrèu, Ctrl+click pr'amor de (de)seleccionar de categorias individualament.",
 );
 

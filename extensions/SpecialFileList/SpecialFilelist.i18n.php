@@ -57,14 +57,15 @@ $messages['dsb'] = array(
 	'filelist-show-gallery' => 'Galeriju pokazaś',
 );
 
-/** French
+/** French (Français)
  * @author Bertrand Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'filelist'              => 'Liste des fichiers',
 	'filelist-desc'         => 'Page spéciale pour énumérer les fichiers téléchargés.',
 	'filelist-show-list'    => 'Voir la liste',
-	'filelist-show-gallery' => 'Voir la gallerie',
+	'filelist-show-gallery' => 'Voir la galerie',
 );
 
 /** Galician (Galego)
@@ -175,6 +176,16 @@ $messages['sv'] = array(
 	'filelist-desc'         => 'Specialsida som visar en lista över uppladdade filer',
 	'filelist-show-list'    => 'Visa lista',
 	'filelist-show-gallery' => 'Visa galleri',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'filelist'              => 'கோப்புப் பட்டியல்',
+	'filelist-desc'         => 'பதிவேற்றப்பட்ட கோப்புகளைக் காட்டுவதற்கான சிறப்புப் பக்கம்',
+	'filelist-show-list'    => 'பட்டியலைக் காட்டு',
+	'filelist-show-gallery' => 'படத்தொகுப்பைக் காட்டு',
 );
 
 /** Telugu (తెలుగు)

@@ -123,6 +123,13 @@ $messages['no'] = array(
 	'poem-desc' => 'Legger til taggen <tt>&lt;poem&gt;</tt> for å kunne formatere dikt',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'poem-desc' => 'Ajusta la balisa <tt>&lt;poem&gt;</tt> pel formatatge dels poèmas',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

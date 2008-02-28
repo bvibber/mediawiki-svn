@@ -99,6 +99,14 @@ $messages['ml'] = array(
 	'whosonline-desc' => 'നിലവില്‍ ലോഗിന്‍ ചെയ്തും അജ്ഞാ‍തരായും ഓണ്‍ലൈന്‍ ആയിട്ടുള്ള ഉപയോക്താക്കളുടെ [[Special:WhosOnline|ഒരു പട്ടിക]] പ്രദര്‍ശിപ്പിക്കുന്നു',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'whosonline'      => 'ऑनलाईन कोण आहे?',
+	'whosonline-desc' => 'दाखवा सध्या ऑनलाईन असलेल्या दाखल झालेल्या सदस्यांची आणि अनामिक नवशागवशांची [[Special:WhosOnline|सूची]] दाखवा',
+);
+
 $messages['nl'] = array(
 	'whosonline'      => 'Wie is er online',
 	'whosonline-desc' => 'Toont [[Special:WhosOnline|een lijst]] van aangemelde en anonieme gebruikers die actief zijn',
@@ -146,6 +154,14 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'whosonline'      => 'Vem är ansluten',
 	'whosonline-desc' => 'Visar [[Special:WhosOnline|en lista]] över inloggade och anonyma användare som för närvarande är anslutna',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'whosonline'      => 'இணைப்பில் யார் உள்ளார்',
+	'whosonline-desc' => '[[Special:WhosOnline| இணைப்பிலுள்ள]] பயனர்களையும் அடையாளம் காட்டாத பயனர்களையும் காட்டுகிறது.',
 );
 
 /** Telugu (తెలుగు)

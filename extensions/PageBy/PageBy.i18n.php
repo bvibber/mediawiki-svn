@@ -171,6 +171,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'pageby-desc'         => 'Aficha los contributors en linha sus una pagina wiki utilizant la balisa <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Pagina creada per $1, $2',
 	'pageby-last'         => 'Darrièr <a href="$3">cambiament</a> lo $1, $2',
 	'pageby-contributors' => 'Contributors :',

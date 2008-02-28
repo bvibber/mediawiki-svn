@@ -366,13 +366,6 @@ $messages['hy'] = array(
 	'createarticle' => 'Հոդված ստեղծել',
 );
 
-/** Iloko (Ilokano)
- * @author SPQRobin
- */
-$messages['ilo'] = array(
-	'createarticle' => 'Mangaramid iti articulo',
-);
-
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -383,6 +376,13 @@ $messages['id'] = array(
 	'tryexact'       => 'Coba pencocokan eksak',
 	'searchfulltext' => 'Cari di teks lengkap',
 	'createarticle'  => 'Buat artikel',
+);
+
+/** Iloko (Ilokano)
+ * @author SPQRobin
+ */
+$messages['ilo'] = array(
+	'createarticle' => 'Mangaramid iti articulo',
 );
 
 /** Icelandic (Íslenska)
@@ -463,6 +463,14 @@ $messages['kk-latn'] = array(
 	'tryexact'                => 'Däl säýkesin sınap köriñiz',
 	'searchfulltext'          => 'Tolıq mätinimen izdew',
 	'createarticle'           => 'Betti bastaw',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'searchfulltext' => 'ស្វែងរក ពាក្យពេញ',
+	'createarticle'  => 'បង្កើតទំព័រ',
 );
 
 /** Korean (한국어)

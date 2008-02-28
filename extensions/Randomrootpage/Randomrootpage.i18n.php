@@ -71,6 +71,14 @@ $messages['no'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialside]] som henter en tilfeldig rotside',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'randomrootpage'      => 'Pagina raiç aleatòria',
+	'randomrootpage-desc' => "[[Special:Randomrootpage|Pagina especiala]] que va quérre una pagina raiç a l'azard",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

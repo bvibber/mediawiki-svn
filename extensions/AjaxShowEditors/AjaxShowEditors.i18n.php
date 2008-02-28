@@ -165,6 +165,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'ajax-se-desc'             => 'Visualise les utilisateurs qui sont en train de modifier la même page.',
@@ -172,7 +173,7 @@ $messages['fr'] = array(
 	'ajax-se-pending'          => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling'           => '(il y a $1 s)',
 	'ajax-se-pagedoesnotexist' => 'la page n’existe pas',
-	'ajax-se-userinvalid'      => 'ERREUR : utilisateur incorrect',
+	'ajax-se-userinvalid'      => 'ERREUR : Utilisateur incorrect',
 	'ajax-se-usernotfound'     => 'ERREUR : Utilisateur introuvable',
 );
 
@@ -361,6 +362,19 @@ $messages['ml'] = array(
 	'ajax-se-title' => 'നിലവില്‍ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'ajax-se-desc'             => 'हेच पान संपादीत करित असलेले  सदस्य दाखवा',
+	'ajax-se-title'            => 'सध्या संपादत आहे:',
+	'ajax-se-pending'          => 'ताजेतवाने करण्याचे बाकी ... (या पेटीवर टिचकी द्या अथवा संपादन सुरू करा)',
+	'ajax-se-idling'           => '$1च्या पूर्वी',
+	'ajax-se-pagedoesnotexist' => 'पान अस्तीत्वात नाही',
+	'ajax-se-userinvalid'      => 'त्रूटी: अयोग्य सदस्य',
+	'ajax-se-usernotfound'     => 'त्रूटी:सदस्य मिळाला नाही',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -410,10 +424,13 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'ajax-se-desc'    => 'Visualiza los utilizaires que son a modificar la meteissa pagina.',
-	'ajax-se-title'   => 'A èsser modificat per :',
-	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
-	'ajax-se-idling'  => '(i a $1 s)',
+	'ajax-se-desc'             => 'Visualiza los utilizaires que son a modificar la meteissa pagina.',
+	'ajax-se-title'            => 'A èsser modificat per :',
+	'ajax-se-pending'          => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
+	'ajax-se-idling'           => '(i a $1 s)',
+	'ajax-se-pagedoesnotexist' => 'la pagina existís pas',
+	'ajax-se-userinvalid'      => 'ERROR : Utilizaire incorrècte',
+	'ajax-se-usernotfound'     => 'ERROR : Utilizaire introbable',
 );
 
 /** Polish (Polski)

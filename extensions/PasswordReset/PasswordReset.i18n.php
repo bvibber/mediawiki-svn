@@ -102,11 +102,12 @@ $messages['el'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
- * @author Urhixidur
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
+	'passwordreset-desc'               => 'Réinitialise le mot de passe wiki d’un utilisateur - nécessite les droits de « passwordreset »',
 	'passwordreset-invalidusername'    => "Nom d'usager inconnu",
 	'passwordreset-emptyusername'      => "Nom d'usager vide",
 	'passwordreset-nopassmatch'        => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
@@ -151,6 +152,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'passwordreset'                    => 'Hesło wróćo stajić',
+	'passwordreset-desc'               => "Staja wužiwarske hesła wróćo - wužaduje prawa 'passwordreset'",
 	'passwordreset-invalidusername'    => 'Njepłaćiwe wužiwarske mjeno',
 	'passwordreset-emptyusername'      => 'Žane wužiwarske mjeno',
 	'passwordreset-nopassmatch'        => 'Hesle njerunatej so',
@@ -229,9 +231,11 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'passwordreset'                    => 'Wachtwoord opnieuw instellen',
+	'passwordreset-desc'               => "Voegt een [[Special:Passwordreset|speciale pagina]] toe om wachtwoorden van gebruikers opnieuw in te stellen - het recht 'passwordreset' is hiervoor nodig",
 	'passwordreset-invalidusername'    => 'Onjuiste gebruiker',
 	'passwordreset-emptyusername'      => 'Gebruiker niet ingegeven',
 	'passwordreset-nopassmatch'        => 'De wachtwoorden komen niet overeen',
@@ -378,6 +382,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'passwordreset'                    => 'Reset hesla',
+	'passwordreset-desc'               => 'Umožňuje vygenerovanie nového hesla používateľovi. Vyžaduje oprávnenie „passwordreset“.',
 	'passwordreset-invalidusername'    => 'Neplatné používateľské meno',
 	'passwordreset-emptyusername'      => 'Nevyplnené používateľské meno',
 	'passwordreset-nopassmatch'        => 'Heslá sa nezhodujú',

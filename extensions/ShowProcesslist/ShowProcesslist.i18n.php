@@ -77,17 +77,20 @@ $messages['el'] = array(
 	'showprocesslist-info' => 'Πληροφορίες',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'showprocesslist' => 'Voir la liste des processus',
-	'showprocesslist-desc' => 'Affiche la sortie de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
-	'showprocesslist-id' => 'n°',
-	'showprocesslist-user' => 'Utilisateur',
-	'showprocesslist-host' => 'Hôte',
-	'showprocesslist-db' => 'Base de donnée',
+	'showprocesslist'         => 'Voir la liste des processus',
+	'showprocesslist-desc'    => 'Affiche la sortie de la [[Special:ShowProcesslist|Liste des processus]]',
+	'showprocesslist-id'      => 'n°',
+	'showprocesslist-user'    => 'Utilisateur',
+	'showprocesslist-host'    => 'Hôte',
+	'showprocesslist-db'      => 'Base de données',
 	'showprocesslist-command' => 'Commande',
-	'showprocesslist-time' => 'Durée',
-	'showprocesslist-state' => 'État',
-	'showprocesslist-info' => 'Informations',
+	'showprocesslist-time'    => 'Durée',
+	'showprocesslist-state'   => 'État',
+	'showprocesslist-info'    => 'Informations',
 );
 
 /** Galician (Galego)
@@ -171,6 +174,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'showprocesslist'         => 'Veire la lista dels procediments',
+	'showprocesslist-desc'    => 'Aficha la sortida de la [[Special:ShowProcesslist|Lista dels procediments]]',
 	'showprocesslist-id'      => 'n°',
 	'showprocesslist-user'    => 'Utilizaire',
 	'showprocesslist-host'    => 'Òste',

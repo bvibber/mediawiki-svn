@@ -228,6 +228,7 @@ $messages['oc'] = array(
 	'importfreeimages_description'           => "Aquesta pagina vos permet de recercar propriament d'imatges jos licéncias dempuèi flickr e de los importar dins vòstre wiki.",
 	'importfreeimages_noapikey'              => "Avètz pas configurat vòstra Clau API Flickr. Per o far, obtengatz una clau API a partir d' [http://www.flickr.com/services/api/misc.api_keys.html aqueste ligam] e configuratz wgFlickrAPIKey dins ImportFreeImages.php.",
 	'importfreeimages_nophotosfound'         => "Cap de fòto es pas estada trobada a partir de vòstres critèris de recèrcas '$1', ensajatz tornamai.",
+	'importfreeimages_invalidurl'            => "L'adreça « $1 » es pas un imatge Flickr corrècte.",
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'l’importar',
 	'importfreeimages_next'                  => '$1 seguents',

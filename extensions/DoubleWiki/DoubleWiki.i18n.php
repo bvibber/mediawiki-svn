@@ -138,6 +138,13 @@ $messages['no'] = array(
 	'doublewiki-desc' => 'Viser en side og dens oversettelse fra en annen wiki side ved side',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'doublewiki-desc' => 'Aficha una pagina e sa traduccion dempuèi un autre wiki en doas colomnas sus la meteissa pagina',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

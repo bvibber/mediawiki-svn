@@ -58,6 +58,13 @@ $messages['no'] = array(
 	'crowdauthentication-desc' => 'Autentiseringsprogramtillegg for Atlassian Crowd',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'crowdauthentication-desc' => 'Plugin d’autenficacion per l’afluéncia de l’Atlàs',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

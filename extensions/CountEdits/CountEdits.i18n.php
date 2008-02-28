@@ -267,6 +267,22 @@ $messages['it'] = array(
 	'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'countedits'              => '編集回数の集計',
+	'countedits-desc'         => '利用者の編集回数を集計し、トップ10投稿者を表示する[[Special:CountEdits|{{int:specialpages}}]]',
+	'countedits-warning'      => "'''注意:''' 表紙でその本の優劣を判断してはならないように、編集回数でその投稿者の優劣を判断してはなりません。",
+	'countedits-username'     => '利用者名:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => '$1 という名前の利用者は存在しません。',
+	'countedits-resultheader' => '$1 の集計結果',
+	'countedits-resulttext'   => '$1 は、これまでに $1回の編集を行いました',
+	'countedits-mostactive'   => '最も活発な投稿者',
+	'countedits-nocontribs'   => 'このウィキにおける投稿記録はありません。',
+);
+
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
 	'countedits' => 'تٷزەتۋ ساناۋ',

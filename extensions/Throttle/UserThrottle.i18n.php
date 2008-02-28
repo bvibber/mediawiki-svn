@@ -22,9 +22,12 @@ $messages['de'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann den Neuladen-Knopf an deinem Browser.',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'acct_creation_global_soft_throttle_hit' => "La création du compte a été automatiquement suspendue pour un certain temps. Ceci est du à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.",
-	'acct_creation_global_hard_throttle_hit' => "La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par l'enregistrements en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger »  dans votre navigateur pour soumettre, une nouvelle fois, la demande.",
+	'acct_creation_global_soft_throttle_hit' => 'La création du compte a été automatiquement suspendue pour un certain temps. Ceci est dû à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.',
+	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger »  dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 );
 
 $messages['hsb'] = array(

@@ -67,6 +67,13 @@ $messages['ja'] = array(
 	'ajax-qp-desc' => 'AJAXを用いて[[Special:Shortpages]]のようなページ要求を行う',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'ajax-qp-desc' => 'पृच्छापानांना [[Special:Shortpages]] सारखे थोडे AJAX  वाढवा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

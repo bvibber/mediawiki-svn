@@ -94,6 +94,13 @@ $messages['no'] = array(
 	'newsextension-desc' => 'Viser egendefinerte siste endringer på en wikiside, eller en RSS- eller Atom-føde',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'newsextension-desc' => 'Visiona las modificacions recentas especificas sus una pagina wiki o coma un flus RSS o Atom.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

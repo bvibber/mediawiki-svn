@@ -242,10 +242,11 @@ $messages['ext'] = array(
  * @author Grondin
  * @author Dereckson
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'inplace_access_disabled'          => "L'accès à ce service est désactivé pour tous les clients.",
-	'inplace_access_denied'            => 'Ce service est restreint sur la base du IP du client.',
+	'inplace_access_denied'            => 'Ce service est restreint sur la base de l’IP du client.',
 	'inplace_scaler_no_temp'           => "Aucun dossier temporaire valide, \$wgLocalTmpDirectory doit contenir le nom d'un dossier avec droits d'écriture.",
 	'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres',
 	'inplace_scaler_invalid_image'     => 'Image incorrecte, ne peut déterminer sa taille',
@@ -256,9 +257,9 @@ $messages['fr'] = array(
 	'webstore_access'                  => 'Ce service est restreint par adresse IP.',
 	'webstore_path_invalid'            => "Le nom de fichier n'est pas correct.",
 	'webstore_dest_open'               => 'Impossible d\'ouvrir le fichier de destination "$1".',
-	'webstore_dest_lock'               => 'Échec pour obtenir le verrouillage sur le fichier de destination « $1 ».',
+	'webstore_dest_lock'               => 'Échec d’obtention du verrou sur le fichier de destination « $1 ».',
 	'webstore_dest_mkdir'              => 'Impossible de créer le répertoire "$1".',
-	'webstore_archive_lock'            => 'Échec pour obtenir le verrouillage du fichier archivé « $1 ».',
+	'webstore_archive_lock'            => 'Échec d’obtention du verrou du fichier archivé « $1 ».',
 	'webstore_archive_mkdir'           => "Impossible de créer le répertoire d'archivage « $1 ».",
 	'webstore_src_open'                => 'Impossible d’ouvrir le fichier source « $1 ».',
 	'webstore_src_close'               => 'Erreur de fermeture du fichier source « $1 ».',
@@ -272,8 +273,8 @@ $messages['fr'] = array(
 	'webstore_temp_close'              => 'Erreur de fermeture du fichier temporaire « $1 ».',
 	'webstore_temp_lock'               => 'Erreur de verrouillage du fichier temporaire « $1 ».',
 	'webstore_no_archive'              => "Le fichier de destination existe et aucune archive n'a été donnée.",
-	'webstore_no_file'                 => "Aucun fichier n'a été téléchargé.",
-	'webstore_move_uploaded'           => 'Erreur de déplacement du fichier téléchargé « $1 » vers l’emplacement temporaire « $2 ».',
+	'webstore_no_file'                 => 'Aucun fichier n’a été importé.',
+	'webstore_move_uploaded'           => 'Erreur de déplacement du fichier importé « $1 » vers l’emplacement temporaire « $2 ».',
 	'webstore_invalid_zone'            => 'Zone « $1 » invalide.',
 	'webstore_no_deleted'              => "Aucun répertoire d’archive pour les fichiers supprimés n'a été défini.",
 	'webstore_curl'                    => 'Erreur depuis cURL : $1',
@@ -281,7 +282,7 @@ $messages['fr'] = array(
 	'webstore_php_warning'             => 'PHP Warning: $1',
 	'webstore_metadata_not_found'      => 'Fichier non trouvé : $1',
 	'webstore_postfile_not_found'      => 'Fichier à enregistrer non trouvé.',
-	'webstore_scaler_empty_response'   => "L’échantillonnage de l'image a donné une réponse nulle avec un code de 200 réponses. Ceci pourrait être du à une erreur de l'échantillonage.",
+	'webstore_scaler_empty_response'   => "L’échantillonnage de l'image a donné une réponse nulle avec un code de 200 réponses. Ceci pourrait être dû à une erreur de l'échantillonage.",
 	'webstore_invalid_response'        => 'Réponse invalide depuis le serveur : 
 
 $1',
@@ -397,6 +398,15 @@ $1',
 	'webstore_no_handler' => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'webstore_no_file'            => 'គ្មានឯកសារ ​បានត្រូវផ្ទុកឡើង ។',
+	'webstore_metadata_not_found' => 'រកមិនឃើញ ឯកសារ ៖ $1',
+	'webstore_no_response'        => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -408,6 +418,13 @@ $messages['lb'] = array(
 	'webstore_metadata_not_found'      => 'De Fichier $1 gouf net fonnt',
 	'webstore_no_response'             => 'De Server äntwert net',
 	'webstore_php_error'               => 'Dës PHP Feeler sinn opgetratt:',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'webstore_no_file' => 'कोणतीही संचिका चढवली नाही',
 );
 
 /** Dutch (Nederlands)

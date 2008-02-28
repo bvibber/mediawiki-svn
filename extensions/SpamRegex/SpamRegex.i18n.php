@@ -103,32 +103,35 @@ $messages['el'] = array(
 	'spamregex-summary-log' => '(περίληψη)',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'spamregex' => 'Expressions régulières de Spams',
-	'spamregex-desc' => '[[Special:Spamregex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
-	'spamregex_summary' => 'Le texte en question a été détecté dans le commentaire de la page.',
-	'spamregex-intro' => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',
-	'spamregex-page-title' => 'Blocage des expressions régulières de spams',
-	'spamregex-currently-blocked' => "'''Phrases actuellement bloquées :'''",
+	'spamregex'                      => 'Expressions régulières de pourriels',
+	'spamregex-desc'                 => '[[Special:Spamregex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
+	'spamregex_summary'              => 'Le texte en question a été détecté dans le commentaire de la page.',
+	'spamregex-intro'                => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',
+	'spamregex-page-title'           => 'Blocage des expressions régulières de pourriels',
+	'spamregex-currently-blocked'    => "'''Phrases actuellement bloquées :'''",
 	'spamregex-no-currently-blocked' => "'''Il n’y a aucune phrase bloquée.'''",
-	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 supprimer]) ajouté par ',
-	'spamregex-log-2' => ' le $1',
-	'spamregex-page-title-1' => 'Blocage d’une phrase utilisant des expressions régulières',
-	'spamregex-unblock-success' => 'Le déblocage a réussi',
-	'spamregex-unblock-message' => 'La phrase \'\'\'$1\'\'\' a été débloquée à l’édition.',
-	'spamregex-page-title-2' => 'Blocage des phrases en utilisant des expression régulières',
-	'spamregex-block-success' => 'Le blocage a réussi',
-	'spamregex-block-message' => 'La phrase \'\'\'$1\'\'\' a été bloquée.',
-	'spamregex-warning-1' => 'Indiquez une phrase à bloquer.',
-	'spamregex-error-1' =>'Expression régulière invalide.',
-	'spamregex-warning-2' => 'Choisissez au moins un mode de blocage.',
-	'spamregex-already-blocked' => '« $1 » est déjà bloqué',
-	'spamregex-phrase-block' => 'Phrase à bloquer :',
-	'spamregex-phrase-block-text' => 'bloquer la phrase dans le texte de l’article',
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 supprimer]) ajouté par ",
+	'spamregex-log-2'                => ' le $1',
+	'spamregex-page-title-1'         => 'Blocage d’une phrase utilisant des expressions régulières',
+	'spamregex-unblock-success'      => 'Le déblocage a réussi',
+	'spamregex-unblock-message'      => "La phrase '''$1''' a été débloquée à l’édition.",
+	'spamregex-page-title-2'         => 'Blocage des phrases en utilisant des expression régulières',
+	'spamregex-block-success'        => 'Le blocage a réussi',
+	'spamregex-block-message'        => "La phrase '''$1''' a été bloquée.",
+	'spamregex-warning-1'            => 'Indiquez une phrase à bloquer.',
+	'spamregex-error-1'              => 'Expression régulière invalide.',
+	'spamregex-warning-2'            => 'Choisissez au moins un mode de blocage.',
+	'spamregex-already-blocked'      => '« $1 » est déjà bloqué',
+	'spamregex-phrase-block'         => 'Phrase à bloquer :',
+	'spamregex-phrase-block-text'    => 'bloquer la phrase dans le texte de l’article',
 	'spamregex-phrase-block-summary' => 'bloquer la phrase dans le commentaire',
-	'spamregex-block-submit' => 'Bloquer&nbsp;cette&nbsp;phrase',
-	'spamregex-text' => '(Texte)',
-	'spamregex-summary-log' => '(Commentaire)',
+	'spamregex-block-submit'         => 'Bloquer&nbsp;cette&nbsp;phrase',
+	'spamregex-text'                 => '(Texte)',
+	'spamregex-summary-log'          => '(Commentaire)',
 );
 
 /** Galician (Galego)
@@ -198,6 +201,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'spamregex'                      => 'SpamRegex',
+	'spamregex-desc'                 => "Ongewilde zinnen [[Special:Spamfilter|uitfilteren]] in bewerkte pagina's, gebaseerd op reguliere expressies",
 	'spamregex_summary'              => 'De tekst is gevonden in de paginasamenvatting.',
 	'spamregex-intro'                => 'Gebruik dit formulier om doeltreffend uitdrukkingen te blokkeren van opslaan in een paginatekst. Als de tekst de gegeven uitdrukkingen bevat, dan zal de wijziging niet worden opgeslaan en zal een uitleg getoond worden aan de gebruiker die de pagina probeerde op te slaan. Het wordt aangeraden dat de uitdrukkingen niet te kort of te veelvoorkomend zouden mogen zijn.',
 	'spamregex-page-title'           => 'Blokkeren van uitdrukkingen met regex',
@@ -258,6 +262,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'spamregex'                      => 'Expressions regularas de Spams',
+	'spamregex-desc'                 => "[[Special:Spamregex|Filtre]], dins las paginas, las frasas o mots indesirables, basat sus d'expressions regularas",
 	'spamregex_summary'              => 'Lo tèxt en question es estat detectat dins lo comentari de la pagina.',
 	'spamregex-intro'                => "Utilizatz aqueste formulari per blocar efièchament las expressions que pòdon èsser salvagardadas dins una pagina tèxt. Se lo tèxt conten las expressions definidas, los cambiaments poiràn pas èsser salvagardats e un motiu explicatiu serà afichat a l’utilizaire qu'a volgut salvagardar la pagina. Es important de prendre en consideracion que las expressions deuràn pas èsser ni tròp longas ni tròp correntas.",
 	'spamregex-page-title'           => 'Blocatge de las expressions regularas de spams',
@@ -299,6 +304,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'spamregex'                      => 'SpamRegex',
+	'spamregex-desc'                 => '[[Special:Spamregex|Filtrovanie]] neželaných výrazov v upravovaných stránkach na základe regulárnych výrazov',
 	'spamregex_summary'              => 'Text bol nájdený v zhrnutí úprav stránky.',
 	'spamregex-intro'                => 'Tento formulár slúži na efektívne zamedzenie ukladania nežiaduceho textu stránok. Ak text obsahuje uvedený výraz, zmeny nebude možné uložiť a používateľovi sa zobrazí upozornenie. Odporúča sa opatrnosť - výrazy by nemali byť príliš krátke ani bežne sa vyskytujúce.',
 	'spamregex-page-title'           => 'Blokovanie nežiaduceho spamu pomocou regulárnych výrazov',
@@ -338,6 +344,14 @@ $messages['sv'] = array(
 	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',
 	'spamregex-summary-log' => '(Sammanfattning)',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'spamregex-text'        => '(உரை)',
+	'spamregex-summary-log' => '(சுருக்கம்)',
 );
 
 /** Telugu (తెలుగు)

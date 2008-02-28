@@ -355,6 +355,24 @@ $messages['is'] = array(
 	'usagestatisticsintervalmonth' => 'Mánuður',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'specialuserstats'             => 'ស្ថិតិ នៃ បំរើបំរាស់',
+	'usagestatistics'              => 'ស្ថិតិ នៃ បំរើប្រាស់',
+	'usagestatisticsfor'           => '<h2>ស្ថិតិ នៃ បំរើបំរាស់ របស់ [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'គ្រប់អ្នកប្រើប្រាស់',
+	'usagestatisticstype'          => 'ប្រភេទ',
+	'usagestatisticsstart'         => 'ថ្ងៃខែឆ្នាំ ចាប់ផ្តើម',
+	'usagestatisticsend'           => 'ថ្ងៃខែឆ្នាំ បញ្ចប់',
+	'usagestatisticsintervalday'   => 'ថ្ងៃ',
+	'usagestatisticsintervalweek'  => 'សប្តាហ៍',
+	'usagestatisticsintervalmonth' => 'ខែ',
+	'usagestatisticscalselect'     => 'ជ្រើសយក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -374,6 +392,20 @@ $messages['lb'] = array(
 	'usagestatisticsintervalday'   => 'Dag',
 	'usagestatisticsintervalweek'  => 'Woch',
 	'usagestatisticsintervalmonth' => 'Mount',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'usagestatisticsallusers'      => 'सर्व सदस्य',
+	'usagestatisticsinterval'      => 'मध्यंतर',
+	'usagestatisticstype'          => 'प्रकार',
+	'usagestatisticsend'           => 'शेवटची तारीख',
+	'usagestatisticsintervalday'   => 'दिवस',
+	'usagestatisticsintervalweek'  => 'आठवडा',
+	'usagestatisticsintervalmonth' => 'महीना',
+	'usagestatisticscalselect'     => 'निवडा',
 );
 
 /** Dutch (Nederlands)

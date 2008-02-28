@@ -447,6 +447,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'review_sidebar_title'                                   => 'Revision',
+	'review-desc'                                            => 'Relança la foncionalitat de [[Special:Review|validacion]] d’un article.',
 	'review_topics'                                          => "# Lista de subjèctes per l'extension « review » de MediaWiki. 
 # .... 
 # Cada subjècte es definit per una lista de donadas separadas per « : » (tota autra lista es ignorada).

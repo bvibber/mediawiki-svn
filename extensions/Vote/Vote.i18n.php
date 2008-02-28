@@ -172,26 +172,28 @@ $messages['fa'] = array(
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
 );
 
-/* French (Ashar Voultoiz) */
+/** French (Français)
+ * @author Ashar Voultoiz
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'vote' => 'Vote',
-	'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
-	'vote-current' => "Votre vote actuel est pour '''$1'''.",
-	'vote-legend' => 'Placer ou modifier un vote',
-	'vote-caption' => 'Votre sélection :',
-	'vote-choices' => "joker|Le Joker
+	'vote-header'         => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
+	'vote-current'        => "Votre vote actuel est pour '''$1'''.",
+	'vote-legend'         => 'Placer ou modifier un vote',
+	'vote-caption'        => 'Votre sélection :',
+	'vote-choices'        => 'joker|Le Joker
 pingouin|Le Pingouin
-sphinx|Sphinx",
-	'vote-submit' => 'Voter',
-	'vote-registered' => 'Votre vote a été enregistré.',
-	'vote-view-results' => 'Résultats',
-	'vote-results' => 'Résultats',
+sphinx|Sphinx',
+	'vote-submit'         => 'Voter',
+	'vote-registered'     => 'Votre vote a été enregistré.',
+	'vote-view-results'   => 'Résultats',
+	'vote-results'        => 'Résultats',
 	'vote-results-choice' => 'Choix',
-	'vote-results-count' => 'Voix',
-	'vote-results-none' => 'Aucun vote n\'a été placé pour le moment.',
-	'vote-login' => 'Vous devez $1 pour voter.',
-	'vote-login-link' => 'vous connecter',
-	'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
+	'vote-results-count'  => 'Voix',
+	'vote-results-none'   => "Aucun vote n'a été placé pour le moment.",
+	'vote-login'          => 'Vous devez $1 pour voter.',
+	'vote-login-link'     => 'vous connecter',
+	'vote-invalid-choice' => 'Vous devez choisir une des options disponibles.',
 );
 
 /** Galician (Galego)
@@ -283,6 +285,15 @@ $messages['lt'] = array(
 	'vote-registered'   => 'Jūsų balsas buvo užregistruotas.',
 	'vote-view-results' => 'Žiūrėti rezultatus',
 	'vote-login-link'   => 'registruotis',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'vote'            => 'कौल',
+	'vote-submit'     => 'कौल',
+	'vote-login-link' => 'दाखल व्हा',
 );
 
 $messages['nl'] = array(

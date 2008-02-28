@@ -42,9 +42,13 @@ $messages['el'] = array(
 	'stalepages-summary' => 'Αυτός είναι ένας κατάλογος από σελίδες που δεν έχουν υποστεί επεξεργασίες τις τελευταίες $1 ημέρες.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Urhixidur
+ */
 $messages['fr'] = array(
-	'stalepages' => 'Pages dépassées',
-	'stalepages-summary' => 'Ceci est une liste de pages qui n\'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.',
+	'stalepages'         => 'Pages vieillies',
+	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.",
 );
 
 /** Galician (Galego)

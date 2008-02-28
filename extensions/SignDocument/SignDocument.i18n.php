@@ -90,10 +90,14 @@ $messages['no'] = array(
 	'signaturelogentry'    => 'signerte dokumentet $1',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'signaturelogpage' => 'Jornal de las signaturas',
+	'signaturelogpage'     => 'Jornal de las signaturas',
+	'signature-desc'       => 'Activa la [[Special:SignDocument|signatura]] dels documents',
 	'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',
-	'signaturelogentry' => 'a signat lo document $1.',
+	'signaturelogentry'    => 'a signat lo document $1.',
 );
 
 $messages['pms'] = array(

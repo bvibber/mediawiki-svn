@@ -199,6 +199,24 @@ $messages['no'] = array(
 	'dt_xml_freetext'             => 'Fritekst',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'dt-desc'                     => "Autoriza l’impòrt e l’expòrt de donadas estructuradas contengudas dins d'apèls de modèls",
+	'viewxml'                     => 'Veire XML',
+	'dt_viewxml_docu'             => 'Secconatz demest las categorias e los espacis de nomenatges per visionar en format XML.',
+	'dt_viewxml_categories'       => 'Categorias',
+	'dt_viewxml_namespaces'       => 'Espacis de nomenatge',
+	'dt_viewxml_simplifiedformat' => 'Format simplificat',
+	'dt_xml_namespace'            => 'Espaci de nomenatge',
+	'dt_xml_page'                 => 'Pagina',
+	'dt_xml_field'                => 'Camp',
+	'dt_xml_name'                 => 'Nom',
+	'dt_xml_title'                => 'Títol',
+	'dt_xml_freetext'             => 'Tèxt Liure',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -255,6 +273,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'viewxml'                     => 'Visa XML',
@@ -267,7 +286,7 @@ $messages['sv'] = array(
 	'dt_xml_field'                => 'Fält',
 	'dt_xml_name'                 => 'Namn',
 	'dt_xml_title'                => 'Titel',
-	'dt_xml_freetext'             => 'Fri Text',
+	'dt_xml_freetext'             => 'Fritext',
 );
 
 /** Telugu (తెలుగు)

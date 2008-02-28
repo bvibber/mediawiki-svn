@@ -312,6 +312,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'povwatch'                         => 'Susvelhança de las guèrras d’edicions',
+	'povwatch_desc'                    => 'Extension permetent d’[[Special:PovWatch|ajustar de paginas a la lista de seguit]] d’autres utilizaires',
 	'povwatch_no_session'              => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la session.',
 	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas ajustar los articles dins la lista correspondenta.',
 	'povwatch_already_subscribed'      => 'Ja sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',

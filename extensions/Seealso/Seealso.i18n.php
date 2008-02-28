@@ -146,7 +146,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'seealso' => 'Vejatz tanben',
+	'seealso'      => 'Vejatz tanben',
+	'seealso-desc' => 'Entèsta « Vejatz tanben » utilizada per la balisa <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Portuguese (Português)

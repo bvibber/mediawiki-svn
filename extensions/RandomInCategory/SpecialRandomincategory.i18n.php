@@ -52,6 +52,7 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Cedric31
  */
 $messages['fr'] = array(
 	'randomincategory'            => 'Page au hasard dans la catégorie',
@@ -168,6 +169,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'randomincategory'            => "Pagina a l'azard dins la categoria",
+	'randomincategory-desc'       => "[[Special:Randomincategory|Pagina especiala]] per obténer una pagina a l'azard dins una categoria.",
 	'randomincategory-toolbox'    => "Pagina a l'azard",
 	'randomincategory-nocategory' => 'La categoria « $1 » existís pas o es voida',
 	'randomincategory-label'      => 'Categoria :',

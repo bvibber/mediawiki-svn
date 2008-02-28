@@ -222,6 +222,7 @@ Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-pag
  */
 $messages['oc'] = array(
 	'multipleupload'                   => 'Telecargar de fichièrs',
+	'multipleupload-desc'              => 'Permet als utilizaires d’importar (televersar), [[Special:MultipleUpload|en un sol còp, mantun fichièr]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''totes los avertiments''' e salvagardar los fichièrs en question.",
 	'multipleupload-saveallfiles'      => 'Salvagardar totes los fichièrs',
 	'multipleupload-addresswarnings'   => 'Verificatz los avertiments afichats abans de telecargar los fichièrs tornamai.',

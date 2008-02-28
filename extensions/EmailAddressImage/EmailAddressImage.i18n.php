@@ -42,6 +42,20 @@ $messages['no'] = array(
 	'emailaddressimage-desc' => 'Legger til <tt>&lt;email&gt;</tt> for å vise en e-postadresse som bilde',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'emailaddressimage-desc' => 'Ajusta <tt>&lt;email&gt;</tt> per afichar una adreça de corrièr electronic coma imatge',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'emailaddressimage-desc' => 'Добавляет <tt>&lt;email&gt;</tt> чтобы показывать адреса электронной почты в виде изображений',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

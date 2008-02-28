@@ -22,9 +22,9 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'categorystepper-start' => '(بداية التصنيف)',
 	'categorystepper-desc'  => 'يعرض صندوق تصنيف في الصفحات الموجودة في مجموعة من التصنيفات.',
 	'categorystepper-end'   => '(نهاية التصنيف)',
+	'categorystepper-start' => '(بداية التصنيف)',
 );
 
 /** Bulgarian (Български)
@@ -36,6 +36,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Zaheen
  */
 $messages['bn'] = array(
 	'categorystepper-desc'  => 'যেসব পাতা বিষয়শ্রেণীসমূহের একটি সেটে আছে, সেসব পাতাতে একটি বিষয়শ্রেণী স্টেপার বক্স দেখানো হোক।',
@@ -47,9 +48,9 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'categorystepper-start' => '(penn-kentañ ar rummad)',
 	'categorystepper-desc'  => 'Diskouez a ra ur voest rummata war pajennoù zo en un strobad rummadoù.',
 	'categorystepper-end'   => '(Dibenn ar rummad)',
+	'categorystepper-start' => '(penn-kentañ ar rummad)',
 );
 
 /** Czech (Česky)
@@ -57,9 +58,9 @@ $messages['br'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'categorystepper-start' => '(začátek kategorie)',
-	'categorystepper-desc'  => 'Zobrazuje navigační pole na stránkách, které se nacházejí v množině kategorií.',
+	'categorystepper-desc'  => 'Zobrazuje na stránce navigační pole, které umožňuje abecedně procházet jednu nebo několik kategoriích, do kterých je stránka zařazena',
 	'categorystepper-end'   => '(konec kategorie)',
+	'categorystepper-start' => '(začátek kategorie)',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -91,9 +92,9 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'categorystepper-start' => '(Spočatk kategorije)',
-	'categorystepper-desc'  => 'Polo category stepper na stronach zwobraznić, kotrež su w sadźbje kategorijow.',
+	'categorystepper-desc'  => 'Zwobraznja nawigaciske polo, kotrež zmóžnja alfabetisce přez jednu kategoriju abo wjacore kategorije, w kotrychž strona je nutřka, doprědka a dozady nawigować',
 	'categorystepper-end'   => '(Kónc kategorije)',
+	'categorystepper-start' => '(Spočatk kategorije)',
 );
 
 /** Hungarian (Magyar)
@@ -116,9 +117,9 @@ $messages['is'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'categorystepper-start' => '（カテゴリの先頭）',
-	'categorystepper-desc'  => '指定されたカテゴリに所属するページへ、カテゴリ内ページが順番に表示できるボックスを追加する',
+	'categorystepper-desc'  => '1つ以上のカテゴリに所属するページを、辞書順に前後へ１つずつ表示できるボックスを追加する',
 	'categorystepper-end'   => '（カテゴリの最後）',
+	'categorystepper-start' => '（カテゴリの先頭）',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -139,20 +140,19 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
- * @author Siebrand
  */
 $messages['nl'] = array(
-	'categorystepper-start' => '(Begin van categorie)',
-	'categorystepper-desc'  => "Toont een categoriebladervenster op pagina's die zich in een verzameling categorieën bevinden.",
+	'categorystepper-desc'  => "Toont een categoriebladervenster dat toelaat om alfabetisch terug en verder te navigeren op pagina's die zich in één of meerdere categorieën bevinden",
 	'categorystepper-end'   => '(Einde van categorie)',
+	'categorystepper-start' => '(Begin van categorie)',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Lejonel
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'categorystepper-desc'  => 'Vis en boks med kategoristeg på alle sider som er i et sett av kategorier.',
+	'categorystepper-desc'  => 'Viser en rute for kategoriblaing (lenker til neste og foregående side) på sider i en gruppe av kategorier',
 	'categorystepper-end'   => '(Kategorislutt)',
 	'categorystepper-start' => '(Kategoristart)',
 );
@@ -161,25 +161,25 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'categorystepper-start' => '(Començament de categoria)',
 	'categorystepper-desc'  => 'Aficha una boita de categoria sus de paginas que son indicadas dins una categoria.',
 	'categorystepper-end'   => '(Fin de categoria)',
+	'categorystepper-start' => '(Començament de categoria)',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'categorystepper-start' => '(Início da categoria)',
-	'categorystepper-desc'  => 'Apresenta uma caixa de passo de categorias nas páginas que estão num conjunto de categorias.',
+	'categorystepper-desc'  => 'Apresenta uma caixa de passo de categorias que permite a uma pessoa navegar alfabeticamente para a frente e para trás através de uma ou mais categorias a que pertence uma página',
 	'categorystepper-end'   => '(Fim da categoria)',
+	'categorystepper-start' => '(Início da categoria)',
 );
 
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'categorystepper-desc'  => 'Показывает навигационную панель на страницах, относящихся к множеству категорий.',
+	'categorystepper-desc'  => 'Показывает навигационную панель, позволяющую переходить вперёд и назад по алфавитному списку содержания категории, к которой относится страница.',
 	'categorystepper-end'   => '(конец категории)',
 	'categorystepper-start' => '(начало категории)',
 );
@@ -188,9 +188,9 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'categorystepper-start' => '(začiatok kategórie)',
-	'categorystepper-desc'  => 'Zobrazuje navigačné pole na stránkach, ktoré sa nachádzajú v množine kategórií',
+	'categorystepper-desc'  => 'Zobrazuje navigačné pole na abecedné prechádzanie kategórií, v ktorých sa stránka nachádza',
 	'categorystepper-end'   => '(koniec kategórie)',
+	'categorystepper-start' => '(začiatok kategórie)',
 );
 
 /** Swedish (Svenska)

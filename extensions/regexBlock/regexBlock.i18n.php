@@ -524,6 +524,9 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'regexblock'                      => 'Expressions regularas per blocar un utilizaire o una IP',
+	'regexblock-desc'                 => "Extension utilizada per blocar d'utilizaires o d'adreças IP amb d'expressions regularas. Conten a l'encòp un mecanisme de blocatge e mai [[Special:Regexblock|una pagina]] podent ajustar e gerir los blocatges",
+	'regexblock-special-desc'         => "Blocatge alternatiu d’un utilizaire (per un nom balhat o per d'expressions regularas)",
+	'regexblock-stat-desc'            => 'Aficha las [[Special:Regexblockstats|estatisticas de blocatges]] per l’extension regexblock.',
 	'regexblock-page-title'           => 'Blocatge d’un nom per una expression regulara',
 	'regexblockstats'                 => 'Estatisticas suls blocatges per expressions regularas',
 	'regexblock-reason-ip'            => 'Aquesta adreça IP es apartat de tota edicon per causa de vandalisme o autres faches analògs per vos o qualqu’un d’autre partejant vòstra adreça IP. Se sètz persuadit(-ida) que s’agís d’una error, $1',

@@ -88,10 +88,11 @@ $messages['bcl'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Borislav
  */
 $messages['bg'] = array(
 	'newuserlogpage'           => 'Дневник на регистрациите',
-	'newuserlogpagetext'       => 'Тази страница съдържа дневник на потребителските регистрации',
+	'newuserlogpagetext'       => 'В този дневник се записват регистрациите на потребители.',
 	'newuserlog-desc'          => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с [[Special:Log|дневниците]]',
 	'newuserlog-byemail'       => 'паролата е изпратена по е-поща',
 	'newuserlog-create-entry'  => 'Нов потребител',

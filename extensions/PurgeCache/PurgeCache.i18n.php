@@ -148,6 +148,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'purgecache'         => "Purgar l'amagatal",
+	'purgecache-desc'    => '[[Special:PurgeCache|Pagina especiala]] utilizada per escafar la taula OBJECTCACHE',
 	'purgecache-warning' => "Aquò purgarà las taulas de l'amagatal.",
 	'purgecache-purged'  => "L'amagatal es estat purgat.",
 	'purgecache-button'  => 'Purgar',

@@ -139,12 +139,13 @@ $messages['ext'] = array(
 
 /** French (Français)
  * @author Rémi Kaupp
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'talkhere-foottext'    => 'Les commentaires ci-dessus ont été laissés par des visiteurs.
 
 Le gestionnaire du site n’est pas responsable de leur contenu.',
-	'talkhere-talkpage'    => 'page de dscussion',
+	'talkhere-talkpage'    => 'page de discussion',
 	'talkhere-notalk'      => "''(aucun commentaire actuellement)''",
 	'talkhere-addcomment'  => 'ajouter un commentaire',
 	'talkhere-beforeinput' => 'Vous pouvez ajouter un commentaire ci-dessous.',
@@ -249,6 +250,19 @@ Bul mändemeler mağlumatına torap meñgerwşilerdiñ jawapkerşiligi bolmawı 
  */
 $messages['lb'] = array(
 	'talkhere-talkpage' => 'Diskussiounssäit',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'talkhere-foottext'    => 'वरील प्रतिक्रिया भेट दणार्‍या अतिथींनी सोडल्या असतील.या संकेतस्थाळाचे चालक अशा प्रतिक्रियातील मजकुराची जबाबदारी घेवू शकत नाहीत.',
+	'talkhere-talkpage'    => 'चर्चा पान',
+	'talkhere-notalk'      => 'अजून प्रतिक्रिया नाहीत',
+	'talkhere-addcomment'  => 'प्रतिक्रिया द्या',
+	'talkhere-beforeinput' => 'आपण आपल्या प्रतिक्रिया खाली नोंदवू शकता',
+	'talkhere-loading'     => 'संपादनस्थळ चढवले जात आहे',
+	'talkhere-collapse'    => 'संपादनस्थळ लपवा',
 );
 
 /** Dutch (Nederlands)

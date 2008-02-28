@@ -59,6 +59,15 @@ $messages['no'] = array(
 	'rightfunctions' => 'Rettighetsbaserte parserfunksjoner',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'rightfunctions'          => 'Permissions de basa de las foncions parsaires',
+	'rightfunctions-restboth' => '$1 (a partir de la pagina locala), $2 (a partir de las fonts en cascada)',
+	'rightfunctions-restcasc' => '$1 (a partir de las fonts en cascada)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

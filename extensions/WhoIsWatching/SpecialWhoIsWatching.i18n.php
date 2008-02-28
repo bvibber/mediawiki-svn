@@ -164,6 +164,17 @@ $messages['lt'] = array(
 	'specialwhoiswatchingusage'   => 'Šis specialus puslapis negali būti naudojamas paprastai. Prašome naudoti [[MediaWiki:Number_of_watching_users_pageview]] puslapį, kad apibrėžtumėte įėjimo punktą į šį specialųjį puslapį.',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'whoiswatching'                => 'विकिपान कोण पहात आहे',
+	'specialwhoiswatchingthepage'  => '% कोण पहात आहे',
+	'specialwhoiswatchingusage'    => 'हे विशेषपान स्वावलंबीपणे वापरता येत नाही. कृपया, या विशेष पानाचे एक प्रवेशस्थळ नक्की करण्याकरिता [[MediaWiki:Number_of_watching_users_pageview]] हे पान वापरा.',
+	'specialwhoiswatchingaddusers' => 'पानावर पहारा ठेवण्याकरिता सदस्य वाढवा',
+	'specialwhoiswatchingaddbtn'   => 'निवडलेले सदस्य वाढवा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

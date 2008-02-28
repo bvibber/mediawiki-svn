@@ -292,18 +292,21 @@ $messages['it'] = array(
 	'contributors-nosuchpage' => 'La pagina $1 non esiste.',
 );
 
-/* Japanese */
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
 $messages['ja'] = array(
-	'contributors' => '投稿者',
-	'contributors-toolbox' => '主な投稿者',
-	'contributors-legend' => '投稿者一覧の作成',
-	'contributors-target' => 'タイトル:',
-	'contributors-submit' => '表示',
-	'contributors-subtitle' => '$1 への主な投稿者',
+	'contributors'             => '投稿者',
+	'contributors-desc'        => 'あるページにおける主な投稿者を提示する',
+	'contributors-toolbox'     => '主な投稿者',
+	'contributors-legend'      => '投稿者一覧の作成',
+	'contributors-target'      => 'タイトル:',
+	'contributors-submit'      => '表示',
+	'contributors-subtitle'    => '$1 への主な投稿者',
 	'contributors-others-long' => 'ほかに $1 名の投稿者がいます。',
-	'contributors-others' => '及びその他 $1 名',
-	'contributors-badtitle' => '不正なページ名です。',
-	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
+	'contributors-others'      => '及びその他 $1 名',
+	'contributors-badtitle'    => '不正なページ名です。',
+	'contributors-nosuchpage'  => 'ページ $1 は存在しません。',
 );
 
 /** Kabyle (Taqbaylit)
@@ -393,6 +396,23 @@ $messages['lb'] = array(
 	'contributors-others'      => 'a(n) $1 anerer',
 	'contributors-badtitle'    => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage'  => "D'Säit $1 gëtt et net.",
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'contributors'             => 'योगदानकर्ते',
+	'contributors-desc'        => 'पानाच्या मुख्य योगदानकर्त्यांची संक्षीप्तसूची',
+	'contributors-toolbox'     => 'मुख्य योगदानकर्ते',
+	'contributors-legend'      => 'पानाच्या मुख्य योगदानकर्त्यांची यादी द्या',
+	'contributors-target'      => 'शीर्षक',
+	'contributors-submit'      => 'दाखवा',
+	'contributors-subtitle'    => '$1चे योगदानकर्ते',
+	'contributors-others-long' => 'या पानास इतर योगदानकर्ते $1 आहेत.',
+	'contributors-others'      => 'आणि $1  इतर',
+	'contributors-badtitle'    => 'अयोग्य शीर्षक',
+	'contributors-nosuchpage'  => 'पान $1 अस्तीत्वात नाही.',
 );
 
 /** Low German (Plattdüütsch)

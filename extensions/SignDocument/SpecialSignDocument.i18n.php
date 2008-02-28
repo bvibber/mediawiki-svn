@@ -301,6 +301,7 @@ $messages['ext'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -327,13 +328,13 @@ $messages['fr'] = array(
 	'sign-list-hidebday'              => "Ne pas lister l'âge",
 	'sign-list-hideemail'             => "Ne pas lister l'adresse de courriel",
 	'sign-submit'                     => 'Authentifier le document',
-	'sign-information'                => "<div class=\"noarticletext\">Merci d'avoir complètement lu ce document. Si vous êtes d'accord avec son contenu, signifiez votre appui en remplissant les champs requis ci-dessous et en cliquant « Authentifier document ». Prière de vérifier que vos informations personnelles sont exactes et que nous possédons un moyen de vous contacter pour valider votre identité. Votre adresse IP et d'autres informations qui peuvent vous identifier sont notées et seront utilisées par les modérateurs pour éliminer des signatures en doublon et confirmer les informations saisies. Les proxys ne nous permettent pas d'identifier à coup sûr le signataire, les signatures obtenues à travers les proxys ne seront probablement pas comptées. Si vous êtes connecté à travers un proxy, prière d'utiliser un compte qui ne l'utilise pas.</div>
+	'sign-information'                => '<div class="noarticletext">Merci d’avoir complètement lu ce document. Si vous êtes d’accord avec son contenu, signifiez votre appui en remplissant les champs requis ci-dessous et en cliquant « Authentifier document ». Prière de vérifier que vos informations personnelles sont exactes et que nous possédons un moyen de vous contacter pour valider votre identité. Votre adresse IP et d’autres informations qui peuvent vous identifier sont notées et seront utilisées par les modérateurs pour éliminer les signatures en doublon et confirmer les informations saisies. Les mandataires (proxys) ne nous permettant pas d’identifier à coup sûr le signataire, les signatures obtenues à travers ceux-ci ne seront probablement pas comptées. Si vous êtes connecté à travers un mandataire, prière d’utiliser un compte qui n’en utilise pas.</div>
 
-\$1",
+$1',
 	'sig-success'                     => 'Vous avez authentifié le document.',
 	'sign-view-selectfields'          => "'''Champs à afficher :'''",
 	'sign-viewfield-entryid'          => "ID de l'entrée",
-	'sign-viewfield-timestamp'        => 'Timestamp',
+	'sign-viewfield-timestamp'        => 'Date et heure',
 	'sign-viewfield-realname'         => 'Nom',
 	'sign-viewfield-address'          => 'Adresse',
 	'sign-viewfield-city'             => 'Ville',
@@ -341,7 +342,7 @@ $messages['fr'] = array(
 	'sign-viewfield-country'          => 'Pays',
 	'sign-viewfield-zip'              => 'Code postal',
 	'sign-viewfield-ip'               => 'Adresse IP',
-	'sign-viewfield-agent'            => 'User-Agent',
+	'sign-viewfield-agent'            => 'Agent utilisateur',
 	'sign-viewfield-phone'            => 'Numéro de téléphone',
 	'sign-viewfield-email'            => 'Adresse de courriel',
 	'sign-viewfield-age'              => 'Âge',
@@ -371,7 +372,7 @@ $messages['fr'] = array(
 		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
 		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
 		--></span>',
-	'sign-viewfield-stricken'         => 'Fautif',
+	'sign-viewfield-stricken'         => 'Biffé',
 	'sign-viewfield-reviewedby'       => 'Réviseur',
 	'sign-viewfield-reviewcomment'    => 'Commentaire',
 	'sign-detail-uniquequery'         => 'Entités semblables',

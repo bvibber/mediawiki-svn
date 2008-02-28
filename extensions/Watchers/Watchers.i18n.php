@@ -117,13 +117,17 @@ $messages['el'] = array(
 	'watchers_less_than_x'   => 'Λιγότεροι από $1 άνθρωποι παρακολουθούν αυτήν την σελίδα.',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
 	'watchers'               => 'Observateurs',
 	'watchers_link_title'    => 'Qui suit cette page ?',
 	'watchers_error_article' => '<b>Erreur :</b> La page n’existe pas.',
 	'watchers_header'        => 'Personnes qui suivent « $1 »',
 	'watchers_noone_watches' => 'Personne ne suit cette page.',
-	'watchers_x_or_more'     => 'Au moins $1 utilisateur(s) suit cette page.',
+	'watchers_x_or_more'     => 'Au moins $1 utilisateur(s) sui(ven)t cette page.',
 	'watchers_less_than_x'   => 'Moins de $1 utilisateurs suivent cette page.',
 );
 
@@ -186,6 +190,13 @@ $messages['lb'] = array(
 	'watchers_noone_watches' => 'Keen iwwerwaacht dës Säit.',
 	'watchers_x_or_more'     => '$1 oder méi Benotzer iwwerwaachen dës Säit.',
 	'watchers_less_than_x'   => 'Manner wéi $1 Benotzer iwwerwaachen dës Säit.',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'watchers' => 'दर्शक',
 );
 
 $messages['nl'] = array(

@@ -426,6 +426,52 @@ Tilbake til:
 	'crosswikiunblock-local'        => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:Ipblocklist]].',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'crosswikiblock-desc'           => "Permet de blocar d'utilizaires sus d'autres wikis en utilizant [[Special:Crosswikiblock|una pagina especiala]]",
+	'crosswikiblock'                => 'Blocar un utilizaire sus un autre wiki',
+	'crosswikiblock-header'         => 'Aquesta pagina permet de blocar un utilizaire sus un autre wiki.
+
+Verificatz se sètz abilitat per agir sus aqueste wiki e que vòstras accions respèctan totas las règlas.',
+	'crosswikiblock-target'         => "Adreça IP o nom d'utilizaire e wiki de destinacion :",
+	'crosswikiblock-expiry'         => 'Expiracion :',
+	'crosswikiblock-reason'         => 'Motiu :',
+	'crosswikiblock-submit'         => 'Blocar aqueste utilizaire',
+	'crosswikiblock-anononly'       => 'Blocar unicament los utilizaires anonims',
+	'crosswikiblock-nocreate'       => 'Interdire la creacion de compte',
+	'crosswikiblock-autoblock'      => "Bloca automaticament la darrièra adreça IP utilizada per aqueste utilizaire, e totas las IP subsequentas que ensajan d'editar",
+	'crosswikiblock-noemail'        => "Interdire a l'utilizaire de mandar un corrièr electronic",
+	'crosswikiunblock'              => "Deblocar en escritura un utilizaire d'un autre wiki",
+	'crosswikiunblock-header'       => "Aquesta pagina permet de deblocar en escritura un utilizaire d'un autre wiki.
+Asseguratz-vos qu'avètz los dreches e respectatz las règlas en vigor sus aqueste wiki.",
+	'crosswikiunblock-user'         => "Nom d'utilizaire, adreça IP o l'id de blocatge e lo wiki ciblat :",
+	'crosswikiunblock-reason'       => 'Motiu :',
+	'crosswikiunblock-submit'       => 'Deblocar en escritura aqueste utilizaire',
+	'crosswikiunblock-success'      => "L'utilizaire '''1$''' es estat deblocat en escritura amb succès.
+
+Tornar a :
+* [[Special:CrosswikiBlock|Formulari de blocatge]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => "Cap de nom d'utilizaire es pas estat indicat",
+	'crosswikiblock-local'          => 'Los blocatges locals son pas suportats a travèrs aquesta interfàcia. Utilizatz [[Special:Blockip]].',
+	'crosswikiblock-dbnotfound'     => 'La banca de donadas « $1 » existís pas',
+	'crosswikiblock-noname'         => '« $1 » es pas un nom d’utilizaire valid.',
+	'crosswikiblock-nouser'         => 'L’utilizaire « $3 » es introbable.',
+	'crosswikiblock-noexpiry'       => 'Data o durada d’expiracion incorrècta : $1.',
+	'crosswikiblock-noreason'       => 'Cap de motiu indicat.',
+	'crosswikiblock-notoken'        => 'Edicion presa incorrècta.',
+	'crosswikiblock-alreadyblocked' => 'L’utilizaire « $3 » ja es blocat.',
+	'crosswikiblock-noblock'        => 'Aqueste utilizaire es pas blocat en escritura.',
+	'crosswikiblock-success'        => "L’utilizaire '''$3''' es estat blocat amb succès.
+
+Tornar vèrs :
+* [[Special:CrosswikiBlock|Lo formulari de blocatge]] ;
+* [[$4]].",
+	'crosswikiunblock-local'        => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:Ipblocklist]]',
+);
+
 /** Polish (Polski)
  * @author Equadus
  */
@@ -439,6 +485,7 @@ $messages['pl'] = array(
 $messages['pt'] = array(
 	'crosswikiblock-desc'           => 'Permite bloquear utilizadores noutros wikis usando uma [[{{ns:special}}:Crosswikiblock|página especial]]',
 	'crosswikiblock'                => 'Bloquear utilizador noutro wiki',
+	'crosswikiblock-target'         => 'Endereço IP ou nome de utilizador e wiki destino:',
 	'crosswikiblock-expiry'         => 'Expiração:',
 	'crosswikiblock-reason'         => 'Motivo:',
 	'crosswikiblock-submit'         => 'Bloquear este utilizador',

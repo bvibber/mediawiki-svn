@@ -63,10 +63,68 @@ $messages['de'] = array(
 	'invitations-invite-success'            => 'Du hast erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'invite-logpage'                        => 'Αρχείο καταγραφών προσκλήσεων',
+	'invite-logpagetext'                    => 'Καταγραφές των προσκλήσεων σε χρήστες να χρησιμοποιήσουν διάφορες λειτουργίες λογισμικού.',
+	'invite-logentry'                       => 'προσκάλεσε τον/την $1 να χρησιμοποιήσει τη λειτουργία <i>$2</i>.',
+	'invitations'                           => 'Διαχείριση προσκλήσεων σε λειτουργίες λογισμικού',
+	'invitations-desc'                      => 'Επιτρέπει τη [[Special:Invitations|διαχείριση καινούργιων λειτουργιών]] μέσω του περιορισμού τους σε ένα σύστημα βασισμένο σε προσκλήσεις',
+	'invitations-invitedlist-description'   => 'Έχετε πρόσβαση στις ακόλουθες λειτουργίες λογισμικού που χρειάζονται πρόσκληση. Για να διαχειριστείτε προσκλήσεις για μια μεμονωμένη λειτουργία, κάντε κλικ στο όνομά της.',
+	'invitations-invitedlist-none'          => 'Δεν προσκληθήκατε να χρησιμοποιήσετε καμία λειτουργία λογισμικού που χρειάζεται πρόσκληση.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 προσκλήσεις διαθέσιμες)',
+	'invitations-pagetitle'                 => 'Λειτουργίες λογισμικού που χρειάζονται πρόσκληση',
+	'invitations-uninvitedlist-description' => 'Δεν έχετε πρόσβαση σε αυτές τις άλλες λειτουργίες λογισμικού που χρειάζονται πρόσκληση.',
+	'invitations-uninvitedlist-none'        => 'Αυτή τη στιγμή, καμία άλλη λειτουργία λογισμικού δεν ορίζεται ως λειτουργία που χρειάζεται πρόσκληση.',
+	'invitations-feature-pagetitle'         => 'Διαχείριση Προσκλήσεων - $1',
+	'invitations-feature-access'            => 'Έχετε τώρα πρόσβαση να χρησιμοποιήσετε <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Ακόμη σας μένουν <b>$1</b> από τις $2 προσκλήσεις σας.',
+	'invitations-feature-noneleft'          => 'Έχετε χρησιμοποιήσει όλες τις κατανεμημένες προσκλήσεις σας για αυτή τη λειτουργία.',
+	'invitations-feature-noneyet'           => 'Δεν έχετε πάρει τη δική σας κατανομή των προσκλήσεων για αυτή τη λειτουργία.',
+	'invitations-feature-notallowed'        => 'Δεν έχετε πρόσβαση να χρησιμοποιήσετε <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Πρόσκληση σε ένα χρήστη να χρησιμοποιήσει $1',
+	'invitations-inviteform-username'       => 'Χρήστης προς πρόσκληση',
+	'invitations-inviteform-submit'         => 'Πρόσκληση',
+	'invitations-error-baduser'             => 'Ο χρήστης που καθορίσατε δεν φαίνεται να υπάρχει.',
+	'invitations-error-alreadyinvited'      => 'Ο χρήστης που καθορίσατε έχει πρόσβαση ήδη σε αυτή τη λειτουργία!',
+	'invitations-invite-success'            => 'Έχετε προκαλέσει επιτυχώς τον/την $1 να χρησιμοποιήσει αυτή τη λειτουργία!',
+);
+
+/** Spanish (Español)
+ * @author Dmcdevit
+ */
+$messages['es'] = array(
+	'invitations-desc'                      => 'Permite [[Especial:Invitaciones|control de funciones nuevas]] por restringirlas a un sistema basado en invitaciones.',
+	'invitations-invitedlist-description'   => 'Tiene acceso a los siguientes funciones sólo por invitación. Para manejar invitaciones a una función específica, haga clic en su nombre.',
+	'invitations-invitedlist-none'          => 'No ha sido invitado usar ninguna función sólo por invitación.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 invitaciones disponibles)',
+	'invitations-pagetitle'                 => 'Funciones sólo por invitación',
+	'invitations-uninvitedlist-description' => 'No tiene acceso a estas otras functiones sólo por invitación.',
+	'invitations-uninvitedlist-none'        => 'Ahora mismo, ninguna otra función está designado sólo por invitación.',
+	'invitations-feature-pagetitle'         => 'Gestión de invitaciones - $1',
+	'invitations-feature-access'            => 'Tiene permiso para usar <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Todavía tiene <b>$1</b> de sus $1 invitaciones.',
+	'invitations-feature-noneleft'          => 'Ha usado todo de sus invitaciones destinado a esta función.',
+	'invitations-feature-noneyet'           => 'No ha recibido su cuota de invitaciones para esta función.',
+	'invitations-feature-notallowed'        => 'No tiene permiso para usar <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Invitar a un usuario a usar $1',
+	'invitations-inviteform-username'       => 'Usuario para invitar',
+	'invitations-inviteform-submit'         => 'Invitar',
+	'invitations-error-baduser'             => 'El usuario que usted eligió no existe.',
+	'invitations-error-alreadyinvited'      => 'El usuario que usted eligío ya tiene acceso a esta función!',
+	'invitations-invite-success'            => 'Ha invitado con éxito a $1 usar esta función.',
+);
+
 /** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
+	'invite-logpage'                        => 'Journal des invitations',
+	'invite-logpagetext'                    => 'Voici un journal des utilisateurs en invitant d’autres pour utiliser les fonctionnalités de divers programmes',
+	'invite-logentry'                       => 'a invité $1 à utiliser la fonctionnalité de <i>$2</i>.',
+	'invitations'                           => 'Gère les invitations des fonctionnalités logicielles',
 	'invitations-desc'                      => 'Permet [[Special:Invitations|la gestion des nouvelles fonctionnalités]] en les restreignant par une système basé sur l’invitation.',
 	'invitations-invitedlist-description'   => "Vous avez l'accès aux caractéristiques suivantes du logiciel d’invite seule. Pour gérer les invitations pour une catactéristique individuelle, cliquez sur son nom.",
 	'invitations-invitedlist-none'          => 'Vous n’avez pas été invité pour utiliser les fonctionnalités du logiciel d’invite seule.',
@@ -88,10 +146,32 @@ $messages['fr'] = array(
 	'invitations-invite-success'            => 'Vous invité $1 avec succès pour utiliser cette fonctionnalité !',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'invitations-feature-pagetitle'    => 'Gestioun vun der Invitatioun - $1',
+	'invitations-feature-numleft'      => 'Dir hutt nach <b>$1</b> vun ären $2 Invitatiounen iwwreg.',
+	'invitations-feature-noneleft'     => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',
+	'invitations-feature-noneyet'      => 'Dir hutt är Invitatioune fir dës Fonctioun nach net kritt.',
+	'invitations-feature-notallowed'   => 'Dir hutt keen Zougang fir <i>$1</i> ze benotzen.',
+	'invitations-inviteform-title'     => 'Ee Benotzer alueden fir $1 ze benotzen',
+	'invitations-inviteform-username'  => 'Benotzer fir anzelueden',
+	'invitations-inviteform-submit'    => 'Alueden',
+	'invitations-error-baduser'        => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
+	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
+	'invitations-invite-success'       => 'Dir hutt de(n) $1 mat Succès invitéiert fir dës Fonctioun ze benotzen!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
+	'invite-logpage'                        => 'Uitnodigingslogboek',
+	'invite-logpagetext'                    => 'Dit is een logboek van gebruikers die elkaar uitnodigen om verschillende softwarefuncties te gebruiken.',
+	'invite-logentry'                       => 'heeft $1 uitgenodigd om de functie <i>$2</i> te gebruiken.',
+	'invitations'                           => 'Uitnodigingen voor softwarefuncties beheren',
 	'invitations-desc'                      => 'Maakt het mogelijk het gebruik van [[Special:Invitations|nieuwe functionaliteit te beheren]] door deze alleen op uitnodiging beschikbaar te maken',
 	'invitations-invitedlist-description'   => 'U hebt toegang tot de volgende alleen op uitnodiging beschikbare functionaliteit. Om te verzenden uitnodigingen per functionaliteit te beheren, kunt u op de naam van de functionaliteit klikken.',
 	'invitations-invitedlist-none'          => 'U bent niet uitgenodigd om alleen op uitnodiging beschikbare functionaliteit te gebruiken.',
@@ -138,6 +218,34 @@ $messages['no'] = array(
 	'invitations-invite-success'            => 'Du har invitert $1 til å bruke denne funksjonen!',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'invite-logpagetext'                    => 'Vaquí un jornal dels utilizaires en convidant d’autres per utilizar las foncionalitats de divèrses programas',
+	'invite-logentry'                       => 'a convidat $1 a utilizar la foncionalitat de <i>$2</i>.',
+	'invitations'                           => 'Gerís los convits de las foncionalitats logicialas',
+	'invitations-desc'                      => 'Permet [[Special:Invitations|la gestion de las foncionalitats novèlas]] en las restrenhent per un sistèma basat sul convit.',
+	'invitations-invitedlist-description'   => 'Avètz accès a las caracteristicas seguentas del logicial de convit sol. Per gerir los convits per una catacteristica individuala, clicatz sus son nom.',
+	'invitations-invitedlist-none'          => 'Sètz pas estat convidat per utilizar las foncionalitats del logicial de convit sol.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 convits disponibles)',
+	'invitations-pagetitle'                 => 'Foncionalitats del logiciel de convit sol',
+	'invitations-uninvitedlist-description' => 'Avètz pas accès a aquestas autras caracteristicas del programa de convit sol.',
+	'invitations-uninvitedlist-none'        => 'En aqueste moment, cap de foncionalitat logiciala es pas estada designada pel convit sol.',
+	'invitations-feature-pagetitle'         => 'Gestion del convit - $1',
+	'invitations-feature-access'            => "Actualament, avètz l'accès per utilizar <i>$1</i>.",
+	'invitations-feature-numleft'           => 'Avètz encara <b>$1</b> de vòstres $2 convits que son daissats.',
+	'invitations-feature-noneleft'          => "Avètz utilizat l'ensemble de vòstres convits permeses per aquesta foncionalitat",
+	'invitations-feature-noneyet'           => 'Çaquelà, avètz pas recebut vòstra assignacion dels convits per aquesta foncionalitat.',
+	'invitations-feature-notallowed'        => 'Avètz pas l’accès per utilizar <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Convidar un utilizaire per utilizar $1',
+	'invitations-inviteform-username'       => 'Utilizaire de convidar',
+	'invitations-inviteform-submit'         => 'Convidar',
+	'invitations-error-baduser'             => "L’utilizaire qu'avètz indicat sembla pas existir.",
+	'invitations-error-alreadyinvited'      => "L’utilizaire qu'avètz indicat ja dispausa de l’accès a aquesta foncionalitat !",
+	'invitations-invite-success'            => 'Avètz convidat $1 amb succès per utilizar aquesta foncionalitat !',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -163,10 +271,91 @@ $messages['pt'] = array(
 	'invitations-invite-success'            => 'Convidou $1 para usar esta funcionalidade com sucesso!',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'invite-logpage'                        => 'Журнал приглашений',
+	'invite-logpagetext'                    => 'Это журнал приглашений использовать возможности программного обеспечения',
+	'invite-logentry'                       => 'пригласил $1 использовать возможность <i>$2</i>',
+	'invitations'                           => 'Управление приглашениями на возможности ПО',
+	'invitations-desc'                      => 'Позволяет [[Special:Invitations|управлять новыми возможностями]], ограничивая к ним доступ с помощью системы приглашений',
+	'invitations-invitedlist-description'   => 'Вы имеете доступ к следующим возможностям программного обеспечения, доступным только по приглашениям. Чтобы управлять приглашениями каждой возможности ПО, щёлкните по её имени.',
+	'invitations-invitedlist-none'          => 'Вы не были приглашены использовать какую-либо возможность программы, из доступных только по приглашениям.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 приглашений доступно)',
+	'invitations-pagetitle'                 => 'Возможность ПО только по приглашению',
+	'invitations-uninvitedlist-description' => 'У вас нет доступа к другим возможностям ПО, доступным только по приглашениям.',
+	'invitations-uninvitedlist-none'        => 'В настоящее время нет других возможностей ПО, доступных только по приглашениям.',
+	'invitations-feature-pagetitle'         => 'Управление приглашениями — $1',
+	'invitations-feature-access'            => 'Сейчас вы имеете доступ к использованию <i>$1</i>.',
+	'invitations-feature-numleft'           => 'У вас остаётся <b>$1</b> из $2 приглашений.',
+	'invitations-feature-noneleft'          => 'Вы использовали все выделенные вам приглашения для этой возможности',
+	'invitations-feature-noneyet'           => 'Вам ещё не было выделено приглашений для рассылки для этой возможности',
+	'invitations-feature-notallowed'        => 'У вас нет доступа к использованию <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Приглашение участника использовать $1',
+	'invitations-inviteform-username'       => 'Участник',
+	'invitations-inviteform-submit'         => 'Пригласить',
+	'invitations-error-baduser'             => 'Участника, которого вы указали, по-видимому не существует.',
+	'invitations-error-alreadyinvited'      => 'Участник, которого вы указали, уже имеет доступ к этой возможности!',
+	'invitations-invite-success'            => 'Вы успешно пригласили участника $1 использовать эту возможность!',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'invite-logpage'                        => 'Záznam pozvánok',
+	'invite-logpagetext'                    => 'Toto je záznam používateľov pozývajúcich sa navzájom používať rozličné možnosti softvéru.',
+	'invite-logentry'                       => 'pozval $1 používať možnosť <i>$2</i>.',
+	'invitations'                           => 'Spravovať pozvánky možností softvéru',
+	'invitations-desc'                      => 'Umožňuje [[Special:Invitations|správu nových možností]] obmedzením prístupu k nim na báze pozvánok',
+	'invitations-invitedlist-description'   => 'Máte prístup k nasledovným možnostiam softvéru, ktoré sú prístupné iba na báze pozvánok. Spravovať pozvánky jednotlivých možností môžete po kliknutí na jej názov.',
+	'invitations-invitedlist-none'          => 'Neboli ste pozvaný používať žiadnu z možností softvéru s prístupom len na pozvanie.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 dostupných pozvánok)',
+	'invitations-pagetitle'                 => 'Možnosti softvéru s prístupom len na pozvanie.',
+	'invitations-uninvitedlist-description' => 'Nemáte prístup k týmto ostatným možnostiam softvéru s prístupom len na pozvanie.',
+	'invitations-uninvitedlist-none'        => 'Momentálne nie je prístup k žiadnym iným možnostiam softvéru určený len na pozvanie.',
+	'invitations-feature-pagetitle'         => 'Správa pozvánok - $1',
+	'invitations-feature-access'            => 'Momentálne máte prístup na používanie <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Zostáva vám <b>$1</b> z vašich $2 pozvánok.',
+	'invitations-feature-noneleft'          => 'Využili ste všetky z vašich vyhradených pozvánok na prístup k tejto možnosti',
+	'invitations-feature-noneyet'           => 'Zatiaľ ste nedostali svoj podiel pozvánok na prístup k tejto možnosti.',
+	'invitations-feature-notallowed'        => 'Nemáte právo na prístup k <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Pozvať používateľa na používanie $1',
+	'invitations-inviteform-username'       => 'Pozvať používateľa',
+	'invitations-inviteform-submit'         => 'Pozvať',
+	'invitations-error-baduser'             => 'Zdá sa, že používateľ, ktorého ste uviedli neexistuje.',
+	'invitations-error-alreadyinvited'      => 'Používateľ, ktorého ste uviedli, už má prístup k tejto možnosti.',
+	'invitations-invite-success'            => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
+);
+
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'invitations-inviteform-submit' => 'Mời',
+	'invite-logpage'                        => 'Nhật trình thư mời',
+	'invite-logpagetext'                    => 'Đây là nhật trình ghi lại những lời mời từ người dùng này tới người dùng khác để sử dụng những tính năng phần mềm khác nhau.',
+	'invite-logentry'                       => 'đã mời $1 dùng tính năng <i>$2</i>.',
+	'invitations'                           => 'Quản lý thư mời đối với các tính năng phần mềm',
+	'invitations-desc'                      => 'Cho phép [[Special:Invitations|quản lý các tính năng mới]] bằng cách hạn chế họ dựa vào hệ thống thư mời',
+	'invitations-invitedlist-description'   => 'Bạn đã truy cập vào các tính năng phần mềm chỉ cho phép thư mời sau đây. Để quản lú các thư mời cho một tính năng riêng lẻ, hãy nhấn vào tên của nó.',
+	'invitations-invitedlist-none'          => 'Bạn chưa được mời sử dụng tính năng phần mềm chỉ dành cho thư mời nào.',
+	'invitations-invitedlist-item'          => '<b>$1</b> (hiện có $2 thư mời)',
+	'invitations-pagetitle'                 => 'Các tính năng phần mềm chỉ cho phép thư mời',
+	'invitations-uninvitedlist-description' => 'Bạn không có quyền truy cập vào những tính năng phần mềm chỉ cho phép thư mời sau.',
+	'invitations-uninvitedlist-none'        => 'Vào lúc này, không có tính năng phần mềm nào khác được chỉ định chỉ cho phép thư mời.',
+	'invitations-feature-pagetitle'         => 'Quản lý Thư mời - $1',
+	'invitations-feature-access'            => 'Bạn hiện có quyền sử dụng <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Bạn vẫn còn lại <b>$1</b> trong tổng số $2 lời mời.',
+	'invitations-feature-noneleft'          => 'Bạn đã dùng tất cả các lời mời cho phép dành cho tính năng này',
+	'invitations-feature-noneyet'           => 'Bạn chưa nhận được lượng thư mời cung cấp dành cho tính năng này.',
+	'invitations-feature-notallowed'        => 'Bạn không có quyền sử dụng <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Mời một thành viên sử dụng $1',
+	'invitations-inviteform-username'       => 'Thành viên được mời',
+	'invitations-inviteform-submit'         => 'Mời',
+	'invitations-error-baduser'             => 'Thành viên bạn chỉ định dường như không tồn tại.',
+	'invitations-error-alreadyinvited'      => 'Thành viên bạn chỉ định đã có quyền sử dụng tính năng này rồi!',
+	'invitations-invite-success'            => 'Bạn đã mời $1 sử dụng tính năng này!',
 );
 
