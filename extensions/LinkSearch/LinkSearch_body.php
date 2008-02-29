@@ -90,8 +90,16 @@ class LinkSearchPage extends QueryPage {
 	/**
 	 * Return an appropriately formatted LIKE query
 	 */
-	static function mungeQuery( $query , $prot ) {
-		return LinkFilter::makeLike( $query , $prot );
+	static function mungeQuery( $query , $prot, $clause="" ) {
+		$rv = LinkFilter::makeLike( $query , $prot );
+		if ($rv === false) {
+			//makeLike doesn't handle wildcard in IP, so we'll have to munge here.
+			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$/', $query)) {
+				$rv = $prot . rtrim($query, " \t*") . '%';
+		    		$clause = 'el_to';
+		  	}
+		}
+		return $rv;
 	}
 
 	function linkParameters() {
@@ -103,16 +111,17 @@ class LinkSearchPage extends QueryPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
 		$externallinks = $dbr->tableName( 'externallinks' );
+		$clause = 'el_index';
 
 		/* strip everything past first wildcard, so that index-based-only lookup would be done */
-		$munged = self::mungeQuery( $this->mQuery, $this->mProt );
+		$munged = self::mungeQuery( $this->mQuery, $this->mProt, &$clause );
 		$stripped = substr($munged,0,strpos($munged,'%')+1);
 		$encSearch = $dbr->addQuotes( $stripped );
 
 		$encSQL = '';
 		if ( isset ($this->mNs) && !$wgMiserMode ) $encSQL = 'AND page_namespace=' . $this->mNs;
-
-		$use_index = $dbr->useIndexClause( 'el_index' );
+		
+		$use_index = $dbr->useIndexClause( $clause );
 		return
 			"SELECT
 				page_namespace AS namespace,
@@ -124,7 +133,7 @@ class LinkSearchPage extends QueryPage {
 				$externallinks $use_index
 			WHERE
 				page_id=el_from
-				AND el_index LIKE $encSearch
+				AND $clause LIKE $encSearch
 				$encSQL";
 	}
 
