@@ -231,12 +231,18 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         else {
             $nature = wfMsg ('usagestatisticsincremental-text');
         }
-        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editindividual', $nature) ." ==");
-        # $wgOut->AddWikiText("<pre>$csv$csv_edits</pre>");
-        $wgOut->AddWikiText("<ShowHideDiv default=hide showmsg='Individual user $type edits statistics'><pre>$csv$csv_edits</pre></ShowHideDiv>");
-        $wgOut->AddWikiText("== ". wfMsg ('usagestatistics-editpages', $nature) ."  ==");
-        # $wgOut->AddWikiText("<pre>$csv$csv_pages</pre>");
-        $wgOut->AddWikiText("<ShowHideDiv default=hide showmsg='Individual user $type edits statistics'><pre>$csv$csv_pages</pre></ShowHideDiv>");
+        
+        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        $wgOut->addWikiText(wfMsg ('usagestatistics-editindividual', $nature));
+        $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');  
+        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br>");
+        
+        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        $wgOut->addWikiText(wfMsg ('usagestatistics-editpages', $nature));
+        $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');  
+        $wgOut->AddWikiText("<pre>$csv$csv_pages</pre></div></div>");
         
         return;
     }
@@ -297,10 +303,24 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
     }
 
     function AddCalendarJavascript() {
-        global $wgOut;
+        global $wgOut, $wgContLang;
+
+        $monthnames = '';
+        for($i = 1; $i <= 12; $i++)
+            $monthnames .= "'" . $wgContLang->getMonthName($i) . "',";
+        for($i = 1; $i <= 12; $i++)
+            $monthnames .= "'" . $wgContLang->getMonthAbbreviation($i) . "',";
+        $monthnames = substr($monthnames, 0, -1);
+
+        $daynames = '';
+        for($i = 1; $i <= 12; $i++)
+            $daynames .= "'" . $wgContLang->getWeekdayName($i) . "',";
+        for($i = 1; $i <= 12; $i++)
+            $daynames .= "'" . $wgContLang->getWeekdayAbbreviation($i) . "',";
+        $daynames = substr($daynames, 0, -1);
         
-        ob_start();
-        print  <<<END
+        
+        $wgOut->addScript(<<<END
 <script type="text/javascript">
 // ===================================================================
 // Author: Matt Kruse <matt@mattkruse.com>
@@ -493,8 +513,8 @@ function AnchorPosition_getWindowOffsetTop (el) {
 //  "MMM dd, yyyy hh:mm:ssa" matches: "January 01, 2000 12:30:45AM"
 // ------------------------------------------------------------------
 
-var MONTH_NAMES=new Array('January','February','March','April','May','June','July','August','September','October','November','December','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-var DAY_NAMES=new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+var MONTH_NAMES=new Array($monthnames);
+var DAY_NAMES=new Array($daynames);
 function LZ(x) {return(x<0||x>9?"":"0")+x}
 
 // ------------------------------------------------------------------
@@ -1765,9 +1785,8 @@ function CP_getCalendar() {
         return result;
         }
 </script>
-END;
-        $wgOut->addHTML(ob_get_contents());
-        ob_clean();
+END
+        );
     }
 }
 ?>
