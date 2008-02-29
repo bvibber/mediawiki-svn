@@ -312,7 +312,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			# Or we could throw an exception:
 			#throw new MWException( __METHOD__ . ' called invalid mvdType.' );		
 		
-		$mvd_page = new mvd_pageObj();
+		$mvd_page = new MV_MVD();
 		$mvd_page->id = 'new';
 		
 		//print 'st ' . $this->start_context . "<br>" ;		
