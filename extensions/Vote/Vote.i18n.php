@@ -173,10 +173,12 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Grondin
  * @author Ashar Voultoiz
  * @author Urhixidur
  */
 $messages['fr'] = array(
+	'vote'                => 'Voter',
 	'vote-header'         => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
 	'vote-current'        => "Votre vote actuel est pour '''$1'''.",
 	'vote-legend'         => 'Placer ou modifier un vote',

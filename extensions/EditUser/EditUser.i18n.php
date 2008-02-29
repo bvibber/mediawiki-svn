@@ -96,6 +96,8 @@ $messages['fr'] = array(
 	'edituser-logout'   => 'Ferme la session utilisateur',
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Rechercher',
+	'edituser-nouser'   => 'L’utilisateur indiqué n’existe pas',
+	'edituser-exempt'   => 'L’utilisateur indiqué ne peut être modifié.',
 );
 
 /** Galician (Galego)
