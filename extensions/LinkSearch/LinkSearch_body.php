@@ -94,7 +94,7 @@ class LinkSearchPage extends QueryPage {
 		$rv = LinkFilter::makeLike( $query , $prot );
 		if ($rv === false) {
 			//makeLike doesn't handle wildcard in IP, so we'll have to munge here.
-			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$/', $query)) {
+			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$|^(:?[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*\*\s*$/', $query)) {
 				$rv = $prot . rtrim($query, " \t*") . '%';
 		    		$clause = 'el_to';
 		  	}
