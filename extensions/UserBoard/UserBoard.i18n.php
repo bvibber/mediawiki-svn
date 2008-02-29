@@ -61,3 +61,62 @@ Hey, want to stop getting emails from us?
 Click $4
 and change your settings to disable email notifications.'
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$wgUserBoardMessages['fr'] = array(
+	'boardblastlogintitle'      => 'Vous devez être en session pour envoyer le tableau en rafale',
+	'boardblastlogintext'       => 'Vous devez être en session pour envoyer le tableau en rafales. Cliquez <a href="index.php?title=Special:UserLogin">ici pour ouvrir une session</a>',
+	'messagesenttitle'          => 'Messages envoyés',
+	'boardblasttitle'           => 'Envoyer le tableau en rafale',
+	'boardblaststep1'           => 'Étape 1 - Écrivez votre message',
+	'boardblastprivatenote'     => 'Tous les messages seront envoyés comme des messages privés',
+	'boardblaststep2'           => 'Étape 2 - Sélectionnez aussi à qui vous voulez envoyer votre message',
+	'boardlinkselectall'        => 'Tout sélectionner',
+	'boardlinkunselectall'      => 'Tout déselectionner',
+	'boardlinkselectfriends'    => 'Sélectionnez les amis',
+	'boardlinkunselectfriends'  => 'Désélectionner les amis',
+	'boardlinkselectfoes'       => 'Sélectionner les ennemis',
+	'boardlinkunselectfoes'     => 'Désélectionner les ennemis',
+	'boardsendbutton'           => 'Envoyez le tableau en rafale',
+	'boardnofriends'            => 'Vous n’avez aucun ami à qui envoyer le message',
+	'messagesentsuccess'        => 'Votre message a été envoyé avec succès',
+	'userboard_noexist'         => 'L’utilisateur que vous êtes en train d’essayer de visionner n’existe pas.',
+	'userboard_yourboard'       => 'Votre tableau',
+	'userboard_owner'           => 'Le tableau de $1',
+	'userboard_yourboardwith'   => 'Votre tableau à tableau avec $1',
+	'userboard_otherboardwith'  => 'Le tableau à tableau de $1 avec $2',
+	'userboard_backprofile'     => 'Retour vers le profil de $1',
+	'userboard_backyourprofile' => 'Retour vers votre profil',
+	'userboard_boardtoboard'    => 'Tableau à tableau',
+	'userboard_confirmdelete'   => 'Êtes-vous certain de vouloir supprimer ce message ?',
+	'userboard_sendmessage'     => 'Envoyer un message à $1',
+	'userboard_delete'          => 'Supprimer',
+	'userboard_myboard'         => 'Mon tableau',
+	'userboard_private'         => 'privé',
+	'userboard_public'          => 'public',
+	'userboard_messagetype'     => 'Type de message',
+	'userboard_nextpage'        => 'suivant',
+	'userboard_prevpage'        => 'précédent',
+	'userboard_nomessages'      => 'Aucun message.',
+	'userboard_sendbutton'      => 'envoyé',
+	'userboard_loggedout'       => 'Vous devez être <a href="$1">en session</a> pour poster des messages à d’autres utilisateurs.',
+	'userboard_showingmessages' => 'Visionnement de $2-$3 de {{PLURAL:$1|$1 message|$1 messages}}',
+	'message_received_subject'  => '$1 a écrit sur votre tableau sur {{SITENAME}}',
+	'message_received_body'     => "Salut $1 : 
+
+$2 vient juste d'écrire sur votre tableau sur {{SITENAME}} !
+
+Cliquez sur le lien ci-dessous pour allez sur votre tableau !
+
+$3
+
+---
+
+Hé ! Voulez-vous arrêter d’obtenir, de nous, les courriels ?
+
+Cliquer $4
+et modifiez vos paramètres pour désactiver les notifications des courriels.",
+);
+
