@@ -483,6 +483,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-scale-control'             => 'Échelle',
 	'gm-overview-control'          => "Vue d'ensemble",
 	'gm-selector-control'          => 'Sélection Carte/Satellite',
+	'gm-zoom-control'              => 'Navigation',
 	'gm-large'                     => 'Grande',
 	'gm-medium'                    => 'Moyenne',
 	'gm-small'                     => 'Petite',
