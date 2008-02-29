@@ -54,8 +54,8 @@ class File_Ogg_Theora extends File_Ogg_Media
         // First make some "numeric strings"
         // These might not fit into PHP's integer type, but they will fit into 
         // the 53-bit mantissa of a double-precision number
-        $topWord = floatval( '0x' . substr( $this->_lastGranulePos, 0, 8 ) );
-        $bottomWord = floatval( '0x' . substr( $this->_lastGranulePos, 8, 8 ) );
+        $topWord = floatval( base_convert( substr( $this->_lastGranulePos, 0, 8 ), 16, 10 ) );
+        $bottomWord = floatval( base_convert( substr( $this->_lastGranulePos, 8, 8 ), 16, 10 ) );
         // Calculate the keyframe position by shifting right by KFGSHIFT
         // We don't use PHP's shift operators because they're terribly broken
         // This is made slightly simpler by the fact that KFGSHIFT < 32
