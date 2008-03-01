@@ -39,22 +39,6 @@ class ApiEditPage extends ApiBase {
 		parent :: __construct($query, $moduleName);
 	}
 
-	/**
-	* Return the link to the captcha generated
-	*/
-	function captchaSupport($myCaptcha, &$result) {
-		$info = $myCaptcha->pickImage();
-		if( !$info ) {
-			return -1;
-		} else {
-			$index = $myCaptcha->storeCaptcha( $info );
-			$title = Title::makeTitle( NS_SPECIAL, 'Captcha/image' );
-			$result['captchaId']  = $index;
-			$result['captchaURL'] = $title->getLocalUrl( 'wpCaptchaId=' . urlencode( $index ) );
-		}
-		return true;
-	}
-
 	public function execute() {
 		global $wgUser;
 		# TODO: Watch/stopwatching support + respect prefs
@@ -99,7 +83,7 @@ class ApiEditPage extends ApiBase {
 		# Fake wpStartime; if the requester knows the page doesn't exist,
 		# wpEdittime will be NOW and no warning will be triggered
 		$reqArr['wpStarttime'] = $reqArr['wpEdittime'];
-		if($params['minor'])
+		if($params['minor'] || (!$params['nonminor'] && $wgUser->getOption('minordefault')))
 			$reqArr['wpMinoredit'] = '';
 		if($params['recreate'])
 			$reqArr['wpRecreate'] = '';
@@ -107,6 +91,22 @@ class ApiEditPage extends ApiBase {
 			$reqArr['wpCaptchaId'] = $params['captchaid'];
 		if(!is_null($params['captchaword']))
 			$reqArr['wpCaptchaWord'] = $params['captchaword'];
+		
+		if($params['watch'])
+			$watch = true;
+		else if($params['dontwatch'])
+			$watch = false;
+		else if($titleObj->userIsWatching())
+			$watch = true;
+		else if($wgUser->getOption('watchdefault'))
+			$watch = true;
+		else if($wgUser->getOption('watchcreations') && !$titleObj->exists())
+			$watch = true;
+		else
+			$watch = false;
+		if($watch)
+			$reqArr['wpWatchthis'] = '';
+
 		$req = new FauxRequest($reqArr, true);
 		$ep->importFormData($req);
 
@@ -208,6 +208,7 @@ class ApiEditPage extends ApiBase {
 			'token' => null,
 			'summary' => null,
 			'minor' => false,
+			'notminor' => false,
 			'bot' => false,
 			'basetimestamp' => array(
 				ApiBase :: PARAM_TYPE => 'timestamp'
@@ -226,7 +227,8 @@ class ApiEditPage extends ApiBase {
 			'text' => 'Article content',
 			'token' => 'Edit token. You can get one of these through prop=info',
 			'summary' => 'Edit summary',
-			'minor' => 'Set this flag if the edit is minor',
+			'minor' => 'Minor edit',
+			'notminor' => 'Non-minor edit',
 			'bot' => 'Mark this edit as bot',
 			'basetimestamp' => array('Timestamp of the base revision (gotten through prop=revisions&rvprop=timestamp).',
 						'Used to detect edit conflicts; leave blank to ignore conflicts.'
