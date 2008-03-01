@@ -47,6 +47,11 @@ function wfGoogleMaps_RenderKmlLink15 ( $pContent, $pArgv ) {
 	return $wgGoogleMaps->renderKmlLink( $pContent, $pArgv );
 }
 
+function wfGoogleMaps_CommentJS(&$pParser, &$pText) {
+    global $wgGoogleMaps;
+    return $wgGoogleMaps->commentJS($pParser, $pText);
+}
+
 /**
  * This function registers all of the MW hook functions necessary for the
  * map extension to function.  These hooks are added using the array_unshift
@@ -137,23 +142,25 @@ function wfGoogleMaps_Install() {
 
 	// This hook will add the interactive editing map to the article edit page.
 	// This hook was introduced in MW 1.6
+        $editHook = array( $wgGoogleMaps, 'editForm' );
 	if( version_compare( $wgVersion, "1.6" ) >= 0 ) {
 		if( !$wgGoogleMapsDisableEditorsMap ) {
 			if( isset( $wgHooks['EditPage::showEditForm:initial'] )
 				&& is_array( $wgHooks['EditPage::showEditForm:initial'] ) ) {
-					array_unshift( $wgHooks['EditPage::showEditForm:initial'], array( $wgGoogleMaps, 'editForm' ) );
+					array_unshift( $wgHooks['EditPage::showEditForm:initial'], $editHook );
 			} else {
-				$wgHooks['EditPage::showEditForm:initial'] = array( array( $wgGoogleMaps, 'editForm' ) );
+				$wgHooks['EditPage::showEditForm:initial'] = array( $editHook );
 			}
 		}
 	}
 
 	// This hook will do some post-processing on the javascript that has been added
 	// to an article.
+        $hook = 'wfGoogleMaps_CommentJS';
 	if( isset( $wgHooks['ParserAfterTidy'] ) && is_array( $wgHooks['ParserAfterTidy'] ) ) {
-		array_unshift( $wgHooks['ParserAfterTidy'], array( $wgGoogleMaps, 'commentJS' ) );
+		array_unshift( $wgHooks['ParserAfterTidy'], $hook );
 	} else {
-		$wgHooks['ParserAfterTidy'] = array( array( $wgGoogleMaps, 'commentJS' ) );
+		$wgHooks['ParserAfterTidy'] = array( $hook );
 	}
 
 	// This hook will be called any time the parser encounters a <googlemap>
