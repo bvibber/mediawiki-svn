@@ -240,7 +240,7 @@ class LuceneSearch extends SpecialPage
 
 				$top = wfMsg('searchnumber', $offset + 1,
 					min($results->getTotalHits(), $offset+$limit), $results->getTotalHits());
-				$out = "<ul>";
+				$out = '<ul id="lucene-results">';
 				$numchunks = ceil($results->getTotalHits() / $limit);
 				$whichchunk = $offset / $limit;
 				$prevnext = "";
