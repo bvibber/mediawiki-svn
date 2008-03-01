@@ -29,6 +29,6 @@ class GoogleMapsImgExporter extends GoogleMapsExporter {
     }
 
     function addTrailer() {
-        $this->mOutput .= "\" /></div>";
+        $this->mOutput .= "\" />";
     }
 }
