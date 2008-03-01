@@ -547,7 +547,7 @@ JAVASCRIPT;
                 }
         }
 
-        static function addMarker($pExporter, $pParser, $pLocalParser, $pLat, $pLon, 
+        static function addMarker(&$pExporter, &$pParser, &$pLocalParser, $pLat, $pLon, 
             $pIcon, $pTitle, $pTabs, $pCaption, $pLineColorSet) {
             global $wgUser, $wgVersion;
             $parsed = self::parseWikiText($pParser, $pLocalParser, preg_replace('/\r\n/', '<br />', $pCaption), $pParser->mTitle, $pParser->mOptions);
@@ -569,12 +569,14 @@ JAVASCRIPT;
             }
         }
 
-        static function parseWikiText($pParser, $pLocalParser, $pText, $pTitle, $pOptions) {
+        static function parseWikiText(&$pParser, &$pLocalParser, $pText, $pTitle, $pOptions) {
             if (method_exists($pParser, 'recursiveTagParse')) {
-                return $pParser->recursiveTagParse($pText);
+                $html = $pParser->recursiveTagParse($pText);
+            } else {
+                $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
+                $html = $parsed->getText();
             }
-            $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
-            return $parsed->getText();
+            return preg_replace('/<script.*?<\/script>/', '', $html);
         }
 
 	//----------------------------------------------
