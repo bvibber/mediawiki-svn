@@ -50,8 +50,7 @@ class LinkSearchSpecialPage extends SpecialPage {
 			Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
 			'<fieldset>' .
 			Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
-			Xml::label( wfMsg( 'linksearch-pat' ), 'target' ) . ' ' .
-			Xml::input( 'target', 50 , $target ) . ' ';
+			Xml::inputLabel( wfMsg( 'linksearch-pat' ), 'target', 'target', 50, $target ) . ' ';
 		if ( !$wgMiserMode ) {
 			$s .= Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) . ' ' .
 				XML::namespaceSelector( $namespace, '' );
@@ -76,8 +75,8 @@ class LinkSearchPage extends QueryPage {
 		$this->mProt = $prot;
 	}
 
-	function getName() { 	 
-		return 'Linksearch'; 	 
+	function getName() {
+		return 'Linksearch';
 	}
 	
 	/**
@@ -156,7 +155,8 @@ class LinkSearchPage extends QueryPage {
 			$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
 		} else {
 			// For debugging
-			$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
+			// Generates invalid xhtml with patterns that contain --
+			//$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
 			parent::doQuery( $offset, $limit, $shownavigation );
 		}
 	}

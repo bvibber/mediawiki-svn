@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description'    => 'Find pages with external links matching specific patterns',
 	'descriptionmsg' => 'linksearch-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
-	'version'        => '1.2',
+	'version'        => '1.3',
 );
 
 $wgExtensionMessagesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.i18n.php';
