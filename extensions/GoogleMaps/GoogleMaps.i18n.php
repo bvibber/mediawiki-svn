@@ -329,7 +329,10 @@ $wgGoogleMapsMessages['ca'] = array(
  */
 $wgGoogleMapsMessages['de'] = array(
 	'gm-incompatible-browser'  => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchst du einen kompatiblen Browser.',
+	'gm-incompatible-browser-link' => 'Klicke hier für eine Liste kompatibler Browser.',
 	'gm-no-editor'             => 'Leider unterstützt dein Browser den interaktiven Karten-Editor nicht. Versuche es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
+	'gm-balloon-title'         => 'Titel:',
+	'gm-balloon-link-article'  => 'Link zu dieser Seite (optional):',
 	'gm-make-marker'           => 'Beschreibung (Wiki-Syntax ist OK):',
 	'gm-remove'                => 'Entfernen',
 	'gm-caption'               => 'Beschreibung',
@@ -383,6 +386,7 @@ $wgGoogleMapsMessages['de'] = array(
  */
 $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen kompatiblen Browser.',
+	'gm-incompatible-browser-link' => 'Klicken Sie hier für eine Liste kompatibler Browser.',
 	'gm-no-editor'            => 'Leider unterstützt Ihr Browser den interaktiven Karten-Editor nicht. Versuchen Sie es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
 	'gm-note'                 => 'Achtung: Kopieren Sie die Wiki-Syntax in den Artikel (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
 	'gm-are-you-sure'         => 'Sind Sie sicher?',

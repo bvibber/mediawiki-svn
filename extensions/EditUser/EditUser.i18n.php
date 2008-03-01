@@ -7,8 +7,8 @@
 
 $messages = array();
 
-/* English
- @ author Ryan Schmidt
+/** English
+ * @author Ryan Schmidt
  */
 $messages['en'] = array(
 	'edituser-desc' => 'Allows privileged users to edit other users\' preferences',
@@ -50,6 +50,7 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author MF-Warburg
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'edituser-desc'     => 'Erlaubt berechtigten Benutzern, die Einstellungen anderer Benutzer zu verändern',
@@ -57,6 +58,8 @@ $messages['de'] = array(
 	'edituser-logout'   => 'Benutzer abmelden',
 	'edituser-username' => 'Name',
 	'edituser-dosearch' => 'Suchen',
+	'edituser-nouser'   => 'Der angegebene Benutzer ist nicht vorhanden',
+	'edituser-exempt'   => 'Der angegebene Benutzer kann nicht bearbeitet werden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
