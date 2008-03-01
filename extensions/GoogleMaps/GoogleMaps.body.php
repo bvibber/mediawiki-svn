@@ -5,6 +5,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( );
 }
 
+define(GOOGLE_MAPS_PARSE_INCLUDES, 0);
+define(GOOGLE_MAPS_PARSE_ADD_MARKER, 1);
+define(GOOGLE_MAPS_PARSE_POINTS, 2);
 /**
  * This is a class for adding Google maps to Mediawiki articles.  The class
  * takes care of all hook registration and output of both the map editing
@@ -22,9 +25,6 @@ class GoogleMaps {
 	// MEMBER FIELDS
 	//----------------------------------------------
 
-	const PARSE_INCLUDES = 0;
-	const PARSE_ADD_MARKER = 1;
-	const PARSE_POINTS = 2;
 	// the Google API key (obtained from
 	// http://www.google.com/apis/maps/signup.html)
 	var $mApiKey = null;
@@ -178,6 +178,17 @@ class GoogleMaps {
 			'container':'toolbar', 'textbox':'wpTextbox1', 'toggle':'google_maps_toggle_link',
 JAVASCRIPT;
 
+        if ($o['icondir'] && is_dir($o['icondir'])) {
+            $labels = array();
+            if ($dh = opendir($o['icondir'])) {
+                while (($file = readdir($dh)) !== false) {
+                    if (substr($file, 0, 1) != "." && substr($file, -4) == ".png") {
+                        $labels[] = substr($file, 0, -4);
+                    }
+                }
+            }
+            $o['iconlabels'] = implode(",", $labels);
+        }
 	// add all of the map settings to the editors_options JS variable
 	foreach( array_keys( $o ) as $key ) {
 		if( is_numeric( $o[$key] ) ) {
@@ -424,7 +435,7 @@ JAVASCRIPT;
             $lineOpacity  = null;
             $fillColor    = null;
             $fillOpacity  = null;
-            $state        = self::PARSE_INCLUDES;
+            $state        = GOOGLE_MAPS_PARSE_INCLUDES;
 
             $icon    = null;
             $lat     = null;
@@ -458,7 +469,7 @@ JAVASCRIPT;
                 else if( $syntax == "0" && preg_match( '/^\/([^\\\\]+)\\\\ *(.*)$/', $line, $matches ) ) {
                     $parsed = self::parseWikiText($pParser, $pLocalParser, $matches[2], $pParser->mTitle, $pParser->mOptions);
                     $tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed);
-                    $state = self::PARSE_ADD_MARKER;
+                    $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
                 }
                 else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\$/', $line, $matches ) ) {
                     if (count($tabs)) {
@@ -468,13 +479,13 @@ JAVASCRIPT;
                     }
                     $tabs[] = array( 'title' => $matches[1] );
                 }
-                else if( $state == self::PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
+                else if( $state == GOOGLE_MAPS_PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
                     $exporter->addXmlSource($line);
                 }
                 // the line is a regular point
                 else if( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\) *)?([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
                     // first create the previous marker, now that we have all the tab/caption info
-                    if( $state == self::PARSE_ADD_MARKER ) {
+                    if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
                         self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
                             $icon, $title, $tabs, $caption, isset($lineColor));
 
@@ -483,7 +494,7 @@ JAVASCRIPT;
                         $title   = null;
                     }
 
-                    $state = self::PARSE_POINTS;
+                    $state = GOOGLE_MAPS_PARSE_POINTS;
 
                     // extract the individual fields from the regex match
                     $icon = isset( $matches[1] ) ? $matches[1] : null;
@@ -506,7 +517,7 @@ JAVASCRIPT;
 
                         // if it has an icon override, a caption, or is not in a path, add the marker
                         if ( $icon || count($tabs) > 0 || $caption || $title || !isset( $lineColor ) ) {
-                            $state = self::PARSE_ADD_MARKER;
+                            $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
                         }
 
                         // If we're making a path, record the location and move on.
@@ -516,17 +527,18 @@ JAVASCRIPT;
                     }
                 }
 
-                else if (($state == self::PARSE_POINTS || $state == self::PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
+                else if (($state == GOOGLE_MAPS_PARSE_POINTS || $state == GOOGLE_MAPS_PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
                     if ($line != '') {
                         $caption .= $line . "\r\n";
-                        $state = self::PARSE_ADD_MARKER;
+                        $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
                     }
                 }
             }
 
                 // if the last iteration was to add a marker, add it
-                if( $state == self::PARSE_ADD_MARKER ) {
-                    self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon, $title, $tabs, $caption, isset($lineColor));
+                if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
+                    self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon, 
+                        $title, $tabs, $caption, isset($lineColor));
                 }
 
                 // if the last iteration was to	add	a polyline,	add	it
@@ -538,7 +550,7 @@ JAVASCRIPT;
         static function addMarker($pExporter, $pParser, $pLocalParser, $pLat, $pLon, 
             $pIcon, $pTitle, $pTabs, $pCaption, $pLineColorSet) {
             global $wgUser, $wgVersion;
-            $parsed = self::parseWikiText($pParser, $pLocalParser, $pCaption, $pParser->mTitle, $pParser->mOptions);
+            $parsed = self::parseWikiText($pParser, $pLocalParser, preg_replace('/\r\n/', '<br />', $pCaption), $pParser->mTitle, $pParser->mOptions);
             $title = Title::newFromText($pTitle);
             $revision = is_null($title) ? null :
                 Revision::newFromTitle($title);
@@ -548,7 +560,7 @@ JAVASCRIPT;
             $skin = $wgUser->getSkin();
             $titleLink = is_null($titleMaybeNonexistent) ? '' : $skin->makeLinkObj($titleMaybeNonexistent);
             if (count($tabs)) {
-                $tabs[count($tabs)-1]['gm-caption'] = $parsed->getText();
+                $tabs[count($tabs)-1]['gm-caption'] = $parsed;
                 $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, $titleLink,
                     $pTabs, $parsedArticleText, $pLineColorSet );
             } else {
@@ -583,7 +595,9 @@ JAVASCRIPT;
 				'normal',
 				'hybrid',
 				'terrain',
-				'satellite'
+                                'satellite',
+                                'elevation',
+                                'infrared'
 			),
 			'controls' => array(
 				'small',
@@ -608,6 +622,11 @@ JAVASCRIPT;
 				'smooth',
 				'fast'
 			),
+                        'world' => array(
+                            'earth',
+                            'moon',
+                            'mars'
+                        ),
 			'scrollwheel' => array(
 				'zoom',
 				'nothing'
@@ -636,16 +655,8 @@ JAVASCRIPT;
 	 *   are dictionaries containing the mappings for that setting
 	 **/
 	function &getOptionDictionary ( ) {
-
 		if( empty( $this->mOptionDictionary ) ) {
 			$this->mOptionDictionary = array(
-				'type' => array(
-					'map'       => 'G_NORMAL_MAP',
-					'normal'    => 'G_NORMAL_MAP',
-					'hybrid'    => 'G_HYBRID_MAP',
-					'terrain'   => 'G_PHYSICAL_MAP',
-					'satellite' => 'G_SATELLITE_MAP'
-				),
 				'controls' => array(
 					'small'  => 'GSmallZoomControl',
 					'medium' => 'GSmallMapControl',
@@ -677,6 +688,7 @@ JAVASCRIPT;
 			'icon'        => 'http://www.google.com/mapfiles/marker.png',
 			'icons'       => 'http://maps.google.com/mapfiles/marker{label}.png',
                         'iconlabels'  => 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z',
+                        'icondir'     => false,
 			'shadow'      => 'http://maps.google.com/intl/en_us/mapfiles/shadow50.png',
                         'shadowsize'  => '37x34',
                         'windowanchor'=> '9x2',
@@ -687,6 +699,7 @@ JAVASCRIPT;
 			'lon'         => -73.205112,
 			'opacity'     => 0.7,
 			'overview'    => 'no',
+                        'world'      => 'earth',
 			'precision'   => 6,
 			'scale'       => 'no',
 			'scrollwheel' => 'nothing',
@@ -696,7 +709,7 @@ JAVASCRIPT;
 			'type'        => 'hybrid',
 			'units'       => 'kilometers',
 			'version'     => 0,
-			'width'       => 400,
+			'width'       => 600,
 			'zoom'        => 12,
 			'zoomstyle'   => 'fast',
 		);

@@ -78,10 +78,10 @@ JAVASCRIPT;
         $title = GoogleMaps::fixStringDirection($pTitle, $this->mLanguage->isRTL());
 
         if (is_string($pCaption)) {
-            $caption = preg_replace('/[\r\n]+/', '', $pCaption);
+            $caption = preg_replace('/[\r\n]+/', ' ', $pCaption);
         } else if (is_array($pCaption)) {
             foreach ($pCaption as $tab) {
-                $tab['gm-caption'] = preg_replace('/[\r\n]+/', '', $tab['gm-caption']);
+                $tab['gm-caption'] = preg_replace('/[\r\n]+/', ' ', $tab['gm-caption']);
             }
         }
         $options = array();
@@ -157,6 +157,8 @@ JAVASCRIPT;
         $numberOfMaps = $o['number_of_maps'];
         $incompatibleMessage = $o['incompatible_message'];
         $incompatibleMessageLink = $o['incompatible_message_link'];
+        $mapType = self::convertMapType($o['world'], $o['type']);
+        $mapTypeArray = self::getMapTypeArray($o['world']);
       // output the main dif with the specified height/width/direction
         $this->mOutput .= '<div id="map' . $numberOfMaps . '" style="width: ' . $o['width'].'px; height: ' . $o['height'].'px; direction: ltr; '.$o['style'].'">';
         $this->mOutput .= '<noscript>'.$fallback.'</noscript><div id="map'.$numberOfMaps.'_fallback" style="display: none;">'.$fallback.'</div></div>';
@@ -177,17 +179,16 @@ JAVASCRIPT;
           document.getElementById("map{$numberOfMaps}_fallback").style.display = '';
           return;
       }
-      var map = new GMap2(document.getElementById("map{$numberOfMaps}"));
-      map.addMapType(G_PHYSICAL_MAP);
+      var map = new GMap2(document.getElementById("map{$numberOfMaps}"), { 'mapTypes': {$mapTypeArray} });
       GME_DEFAULT_ICON = G_DEFAULT_ICON;
-      map.setCenter(new GLatLng({$o['lat']}, {$o['lon']}), {$o['zoom']}, {$o['type']});
+      map.setCenter(new GLatLng({$o['lat']}, {$o['lon']}), {$o['zoom']}, {$mapType});
       GEvent.addListener(map, 'click', function(overlay, point) {
           if (overlay) {
             if (overlay.tabs) {
               overlay.openInfoWindowTabsHtml(overlay.tabs);
             } else if (overlay.caption || overlay.maxContent) {
                 overlay.openInfoWindowHtml('<div class="gmapinfowindow">'+
-                    (overlay.title?('<p><b>'+overlay.title_link+'</b></p>'):'')+overlay.caption+'</div>', 
+                    (overlay.title?('<b>'+overlay.title_link+'</b><br />'):'')+overlay.caption+'</div>', 
                     { 'maxTitle': overlay.maxContent?overlay.title:undefined, 'maxContent': overlay.maxContent });
                 if (overlay.maxContent) {
                     map.getInfoWindow().enableMaximize();
@@ -237,6 +238,43 @@ JAVASCRIPT;
         $this->mOutput .= '} addLoadEvent(makeMap' . $numberOfMaps . ');%%ENDJAVASCRIPT' .
             $this->mProxyKey . '%%';
     }
+
+      static function convertMapType($world, $type) {
+          $types = array(
+              'earth' => array(
+                  'map'       => 'G_NORMAL_MAP',
+                  'normal'    => 'G_NORMAL_MAP',
+                  'hybrid'    => 'G_HYBRID_MAP',
+                  'terrain'   => 'G_PHYSICAL_MAP',
+                  'satellite' => 'G_SATELLITE_MAP'
+              ),
+              'moon' => array(
+                  'map' => 'G_MOON_VISIBLE_MAP',
+                  'elevation' => 'G_MOON_ELEVATION_MAP'
+              ),
+              'mars' => array(
+                  'map' => 'G_MARS_VISIBLE_MAP',
+                  'infrared' => 'G_MARS_INFRARED_MAP'
+              )
+          );
+          if (isset($types[$world][$type])) {
+              return $types[$world][$type];
+          }
+          return $types[$world][0];
+      }
+
+      static function getMapTypeArray($world) {
+          if ($world == 'earth') {
+              return '[G_NORMAL_MAP, G_HYBRID_MAP, G_PHYSICAL_MAP, G_SATELLITE_MAP]';
+          }
+          if ($world == 'moon') {
+              return 'G_MOON_MAP_TYPES';
+          }
+          if ($world == 'mars') {
+              return 'G_MARS_MAP_TYPES';
+          }
+          return '[]';
+      }
 
     // strip out the tabs and newlines
       function render() {

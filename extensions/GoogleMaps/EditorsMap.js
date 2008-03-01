@@ -35,8 +35,13 @@ var Class = { create: function() { return function() { this.initialize.apply(thi
 var emap;
 
 // Used for measuring paths.
-var conversion_factor = { 'kilometers':1 / 1000, 'meters':1, 'miles': 100 / 2.54 / 12 / 5280 };
-var sigfigs = 4;
+var GME_CONVERSION = { 'kilometers':1 / 1000, 'meters':1, 'miles': 100 / 2.54 / 12 / 5280 };
+var GME_RADII = { 'earth': 6378137,
+    'mars':3389.5 * 1000,
+    'moon': 1737.4 * 1000
+};
+var GME_SIGFIGS = 4;
+
 var abbreviations = { 'kilometers':'km', 'meters':'m', 'miles':'mi' };
 
 var colorSelectorRegistry = Array();
@@ -165,10 +170,6 @@ EditorsMarker.prototype = {
         return this.gmarker.show();
     },
 
-    distanceFrom: function(marker) {
-                    return this.getPoint().distanceFrom(marker.getPoint());
-                  },
-
 // Called at the end of a drag. We recalculate the
 // path's distance and draw new Polyline segments.
     updateLocation: function() {
@@ -188,9 +189,9 @@ EditorsMarker.prototype = {
       if (GME_PATHS_SUPPORTED && this.path == undefined) {
 	  message += '&nbsp;&nbsp;<a href="javascript:void(0)" onclick="emap.startPath()">'+_['gm-start-path']+'</a>';
       }
-      message += '<div style="color: #aaa; font-size: 10px;">'+
+      message += '<br /><span style="color: #aaa; font-size: 10px;">'+
 	  this.emap.round(this.getPoint().lat())+', '+
-	  this.emap.round(this.getPoint().lng())+'</div>';
+	  this.emap.round(this.getPoint().lng())+'</span><br /><br />';
       return message;
     },
 
@@ -220,25 +221,25 @@ EditorsMarker.prototype = {
           content += this.caption;
           content += '</textarea><br />';
           if (this.getIcon() != GME_SMALL_ICON) {
-              content += 'Icon label: ';
-              content += '<select onchange="emap.changeActiveMarkerIcon(this.value)"><option></option>'+this.optionRange('A', 'Z', this.icon_name)+'</select>';
+              content += 'Icon: ';
+              content += '<select onchange="emap.changeActiveMarkerIcon(this.value)"><option value="">default</option>'+this.optionRange(this.icon_name)+'</select>';
               content += '<br />';
           }
           content += this.getBalloonFooter();
 
           if (this.emap.rtl) {
               content = '<div style="direction: rtl;">'+content+'</div>';
+          } else {
+              content = '<div>'+content+'</div>';
           }
           this.gmarker.openInfoWindowHtml( content, { maxWidth:270 });
       }
     },
 
-    optionRange: function(first, last, selected) {
+    optionRange: function(selected) {
                      var content = '';
-         var start = first.charCodeAt(0);
-         var end = last.charCodeAt(0);
-          for(var i=start; i<=end; i++) {
-              var str = String.fromCharCode(i);
+          for(var i=0; i<this.emap.icon_labels.length; i++) {
+              var str = this.emap.icon_labels[i];
               if (str == selected) {
               content += '<option selected="selected">'+str+'</option>';
               } else {
@@ -306,7 +307,7 @@ EditorsSingletons.prototype = {
 // information about the path, such as its color and total distance.
 var EditorsPath = Class.create();
 EditorsPath.prototype = {
-    initialize: function(lineColor, lineOpacity, fillColor, fillOpacity, stroke, map, units, isPoly) {
+    initialize: function(lineColor, lineOpacity, fillColor, fillOpacity, stroke, editors_map, isPoly) {
         this.poly = isPoly;
         this.container = document.createElement("span");
         this.container.appendChild( document.createTextNode( '' ) );
@@ -321,8 +322,9 @@ EditorsPath.prototype = {
         colorSelectorRegistry[this.colorSelectorFill.id] = { 'path':this, 'type':'fill' };
         this.setFillColor(fillColor, fillOpacity);
 
-        this.gmap = map;
-        this.units = units;
+        this.emap = editors_map;
+        this.gmap = editors_map.gmap;
+        this.units = editors_map.units;
         this.stroke = stroke;
         this.size = 0;
         this.distance = 0;
@@ -406,20 +408,18 @@ EditorsPath.prototype = {
 
     distanceExpression: function() {
       if( this.distance == 0 ) {
-          // if (this.overlay.getLength) this.distance = this.overlay.getLength(); } else {
-              this.updateDistance();
-          // }
+          this.updateDistance();
       }
-      dist = this.distance * conversion_factor[this.units];
-      return this.formatNumber(dist, sigfigs)+' '+abbreviations[this.units];
+      dist = this.distance * GME_CONVERSION[this.units];
+      return this.formatNumber(dist, GME_SIGFIGS)+' '+abbreviations[this.units];
     },
 
     areaExpression: function() {
         if (this.distance == 0) {
             this.updateDistance();
         }
-        area = this.overlay.getArea() * Math.pow(conversion_factor[this.units], 2);
-        return this.formatNumber(area, sigfigs)+' '+abbreviations[this.units]+'<sup>2</sup>';
+        area = this.overlay.getArea() * Math.pow(GME_CONVERSION[this.units], 2) * Math.pow(this.emap.radius / GME_RADII['earth'], 2);
+        return this.formatNumber(area, GME_SIGFIGS)+' '+abbreviations[this.units]+'<sup>2</sup>';
     },
 
     updateDistance: function() {
@@ -427,16 +427,16 @@ EditorsPath.prototype = {
         if (this.markers.length) {
             this.distance = 0;
             for( var i = 1; i < this.markers.length; i ++ ) {
-                this.distance += this.markers[i].getPoint().distanceFrom( this.markers[i-1].getPoint() );
+                this.distance += this.markers[i].getPoint().distanceFrom( this.markers[i-1].getPoint(), this.emap.radius );
             }
             if (this.overlay.getArea) {
-                this.distance += this.markers[0].getPoint().distanceFrom( this.markers[this.markers.length - 1].getPoint() );
+                this.distance += this.markers[0].getPoint().distanceFrom( this.markers[this.markers.length - 1].getPoint(), this.emap.radius );
             }
         }
     },
 
-    formatNumber: function(num, sigfigs) {
-      places = Math.max(sigfigs - (Math.round(num)+'').length, 0);
+    formatNumber: function(num, GME_SIGFIGS) {
+      places = Math.max(GME_SIGFIGS - (Math.round(num)+'').length, 0);
       return Math.round(num * Math.pow(10, places)) / Math.pow(10, places);
     },
 
@@ -535,7 +535,7 @@ EditorsMap.prototype = {
           // Initialize
 	this.icon_base = options.icons;
         this.icon_labels = options.iconlabels.split(",");
-        this.default_icon = new GIcon(G_DEFAULT_ICON, options.icon);
+        this.default_icon = this.copyIcon(G_DEFAULT_ICON);
         this.default_icon.shadow = options.shadow;
 
         var iconSize = options.iconsize.split("x");
@@ -555,6 +555,7 @@ EditorsMap.prototype = {
 	this.paths = new Array();
         this.includes = new Array();
 	this.units = options.units;
+        this.world = options.world;
         this.rtl = options.rtl;
 	this.textbox = document.getElementById(options.textbox);
 	this.defaults = options; // keep a copy for later
@@ -579,10 +580,10 @@ EditorsMap.prototype = {
                 result_div.innerHTML = this_emap.generateResultText(result);
                 this_emap.active_result_marker = marker;
                 return result_div; }
-                } } );
+                },
+               'mapTypes': this.getMapTypes(this.world) });
         this.gmap.enableGoogleBar();
-        this.gmap.addMapType(G_PHYSICAL_MAP);
-	this.controls = { 'selector':new GHierarchicalMapTypeControl(), 'scale':new GScaleControl(), 'overview':new GOverviewMapControl() };
+	this.controls = { 'selector': new GMapTypeControl(), 'scale':new GScaleControl(), 'overview':new GOverviewMapControl() };
 	this.active_controls = {};
 
 	if (options.geocoder) {
@@ -679,16 +680,22 @@ getKmlNode: function() {
             },
 
     getControlPanelNode: function() {
-		  /* of course, at some point, DOM methods are more pain than they're worth.
-           That's when innerHTML comes to the rescue. (I like to think of it as the
-           literal syntax for DOM objects.) */
+          /* of course, at some point, DOM methods are more pain than they're worth.
+           That's when innerHTML comes to the rescue. */ 
           var control_panel_div = document.createElement("div");
 		  control_panel_div.style.fontSize = "10px";
           var text_sep = '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;';
-		  var html = _['gm-zoom-control']+': '+
+          var html = '';
+          html += '<select id="select_world" onchange="emap.configureMap({\'world\':this.value})">';
+          html += '<option value="earth">'+_['gm-earth']+'</option>';
+          html += '<option value="moon">'+_['gm-moon']+'</option>';
+          html += '<option value="mars">'+_['gm-mars']+'</option>';
+          html += '</select>'+
+              '&nbsp;&nbsp;&nbsp;';
+          html += _['gm-zoom-control']+': '+
               this.getRadioOption('controls', 'large', _['gm-large'])+
               this.getRadioOption('controls', 'medium', _['gm-medium'])+
               this.getRadioOption('controls', 'small', _['gm-small'])+
@@ -745,6 +752,13 @@ getKmlNode: function() {
                       this.setMapWidth(attrs.width);
                     if (attrs.height)
                       this.setMapHeight(attrs.height);
+                    if (attrs.lat && attrs.lon)
+                      this.gmap.setCenter(new GLatLng(parseFloat(attrs.lat), 
+                              parseFloat(attrs.lon)), attrs.zoom ? parseInt(attrs.zoom) : undefined);
+                    if (attrs.world)
+                      this.setWorld(attrs.world, attrs.type);
+                    if (attrs.type)
+                        this.setType(attrs.type);
                     if (attrs.selector)
                       this.setControl('selector', attrs.selector);
                     if (attrs.scale)
@@ -753,8 +767,6 @@ getKmlNode: function() {
                       this.setControl('overview', attrs.overview);
                     if (attrs.controls)
                       this.setControlSize(attrs.controls);
-                    if (attrs.lat && attrs.lon)
-                      this.gmap.setCenter(new GLatLng(parseFloat(attrs.lat), parseFloat(attrs.lon)), attrs.zoom ? parseInt(attrs.zoom) : undefined, attrs.type ? this.translateMapNameToType(attrs.type) : undefined);
                     this.dumpMapAttributes();
     },
 
@@ -813,7 +825,7 @@ getKmlNode: function() {
 /************* Path methods *************/
 
     addPath: function(lineColor, lineOpacity, lineWeight, fillColor, fillOpacity, isPoly) {
-	   var path = new EditorsPath(lineColor, lineOpacity, fillColor, fillOpacity, lineWeight, this.gmap, this.units, isPoly);
+	   var path = new EditorsPath(lineColor, lineOpacity, fillColor, fillOpacity, lineWeight, this, isPoly);
 	   this.active_path = this.paths.length;
 	   this.paths[this.paths.length] = path;
            this.selectPath(path);
@@ -1050,6 +1062,48 @@ getKmlNode: function() {
             }
     },
 
+    setType: function(type) {
+                  var set_map_type = this.translateMapNameToType(this.world, type);
+                  this.gmap.setCenter(this.gmap.getCenter(), this.gmap.getZoom(), set_map_type);
+             },
+
+    setWorld: function(world, type) {
+                  document.getElementById('select_world').value = world;
+                  var i;
+                  var old_world = this.world;
+                  this.world = world;
+                  var map_types_orig = this.gmap.getMapTypes().slice();
+                  var map_types = this.getMapTypes(world);
+
+                  var map_types_orig_check = {};
+                  var map_types_check = {};
+                  for(i=0;i<map_types_orig.length;i++) {
+                      map_types_orig_check[old_world+map_types_orig[i].getName()] = 1;
+                  }
+                  for(i=0;i<map_types.length;i++) {
+                      map_types_check[world+map_types[i].getName()] = 1;
+                  }
+
+                  for(i=0;i<map_types.length;i++) {
+                      if (!map_types_orig_check[world+map_types[i].getName()]) {
+                          this.gmap.addMapType(map_types[i]);
+                      }
+                  }
+
+                  this.setType(type)
+
+                  for(i=0;i<map_types_orig.length;i++) {
+                      if (!map_types_check[old_world+map_types_orig[i].getName()]) {
+                          this.gmap.removeMapType(map_types_orig[i]);
+                      }
+                  }
+                  this.setRadius(GME_RADII[this.world]);
+              },
+
+    setRadius: function(radius) {
+                   this.radius = radius;
+               },
+
 /********* Slightly less boring "dump" methods *********/
 
     dumpMapAttributes: function() {
@@ -1059,9 +1113,12 @@ getKmlNode: function() {
        str += ' version="0.9"';
        str += ' lat="'+this.round(this.gmap.getCenter().lat())+'"';
        str += ' lon="'+this.round(this.gmap.getCenter().lng())+'"';
-       var type = this.translateMapTypeToName(this.gmap.getCurrentMapType());
+       var type = this.translateMapTypeToName(this.world, this.gmap.getCurrentMapType());
        if (this.defaults.type != type)
 	       str += ' type="'+type+'"';
+       var world = this.world;
+       if (this.defaults.world != world)
+           str += ' world="'+world+'"';
        var zoom = this.gmap.getZoom();
        if (this.defaults.zoom != zoom)
 	       str += ' zoom="'+zoom+'"';
@@ -1313,25 +1370,69 @@ getKmlNode: function() {
        return attr_hash;
     },
 
-    translateMapNameToType: function(type) {
-        if (type == 'hybrid')
-            return G_HYBRID_MAP;
-        if (type == 'satellite')
-            return G_SATELLITE_MAP;
-        if (type == 'terrain')
-            return G_PHYSICAL_MAP;
+    translateMapNameToType: function(world, type) {
+        if (world == 'earth') {
+            if (type == 'hybrid')
+                return G_HYBRID_MAP;
+            if (type == 'satellite')
+                return G_SATELLITE_MAP;
+            if (type == 'terrain')
+                return G_PHYSICAL_MAP;
+            return G_NORMAL_MAP;
+        }
+        if (world == 'moon') {
+            if (type =='elevation') {
+                return G_MOON_ELEVATION_MAP;
+            }
+            return G_MOON_VISIBLE_MAP;
+        }
+        if (world == 'mars') {
+            if (type == 'elevation') {
+                return G_MARS_ELEVATION_MAP;
+            }
+            return G_MARS_VISIBLE_MAP;
+        }
         return G_NORMAL_MAP;
     },
 
-    translateMapTypeToName: function(type) {
-         if (type == G_HYBRID_MAP)
-             return 'hybrid';
-         if (type == G_SATELLITE_MAP)
-             return 'satellite';
-         if (type == G_PHYSICAL_MAP)
-             return 'terrain';
-         return 'map';
+    translateMapTypeToName: function(world, type) {
+         if (world == 'earth') {
+             if (type == G_HYBRID_MAP)
+                 return 'hybrid';
+             if (type == G_SATELLITE_MAP)
+                 return 'satellite';
+             if (type == G_PHYSICAL_MAP)
+                 return 'terrain';
+             return 'map';
+         }
+         if (world == 'moon') {
+             if (type == G_MOON_ELEVATION_MAP) {
+                 return 'elevation';
+             }
+             return 'map';
+         }
+         if (world == 'mars') {
+             if (type == G_MARS_ELEVATION_MAP) {
+                 return 'elevation';
+             }
+             return 'map';
+         }
      },
+
+    getMapTypes: function(world) {
+                     if (world == 'earth') {
+                         return [G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP, G_PHYSICAL_MAP];
+                     }
+                     if (world == 'moon') {
+                         return G_MOON_MAP_TYPES;
+                     }
+                     if (world == 'mars') {
+                         return G_MARS_MAP_TYPES;
+                     }
+                     return [];
+                 },
+
+
 
     loadMap: function(which) {
                var text = this.textbox.value;
@@ -1367,6 +1468,15 @@ getKmlNode: function() {
                }
              },
 
+             /* constructor is broken in Safari */
+copyIcon: function(orig) {
+              icon = {};
+              for (var i in orig) {
+                  icon[i] = orig[i];
+              }
+              return icon;
+          },
+
 PARSE_STATE_INCLUDES: 0,
 PARSE_STATE_POINTS: 1,
 
@@ -1393,7 +1503,8 @@ PARSE_STATE_POINTS: 1,
                  var lon = parseFloat(RegExp.$3);
                  var caption = RegExp.$4;
                  if (icon && !mapIcons[icon]) { // Just-in-time icon creation
-                     mapIcons[icon] = new GIcon(this.default_icon, this.icon_base.replace('{label}', icon));
+                     mapIcons[icon] = this.copyIcon(this.default_icon);
+                     mapIcons[icon].image = this.icon_base.replace('{label}', icon);
                  }
                  if (lat && lon) {
                      var mkr = new EditorsMarker(new GLatLng(lat, lon), this, '', mapIcons[icon]);
@@ -1424,7 +1535,8 @@ PARSE_STATE_POINTS: 1,
                  var lon = parseFloat(RegExp.$3);
                  var title = RegExp.$4;
                  if (icon && !mapIcons[icon]) { // Just-in-time icon creation
-                     mapIcons[icon] = new GIcon(this.default_icon, this.icon_base.replace('{label}', icon));
+                     mapIcons[icon] = this.copyIcon(this.default_icon);
+                     mapIcons[icon].image = this.icon_base.replace('{label}', icon);
                  }
                  if (lat && lon) {
                      var mkr = new EditorsMarker(new GLatLng(lat, lon), this, title, mapIcons[icon]);

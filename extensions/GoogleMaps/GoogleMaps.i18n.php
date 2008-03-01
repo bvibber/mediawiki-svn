@@ -75,6 +75,9 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-kml-include-link' => 'add to map',
 	'gm-kml-loading' => 'loading...',
 	'gm-kml-export' => 'Export this map to KML',
+        'gm-earth' => 'Earth',
+        'gm-moon' => 'Moon',
+        'gm-mars' => 'Mars',
 );
 
 /** Arabic (العربية)
