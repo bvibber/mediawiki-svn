@@ -5,9 +5,9 @@
  * @addtogroup Extensions
  */
 
-$wgUserBoardMessages = array();
+$messages = array();
 
-$wgUserBoardMessages['en'] = array(
+$messages['en'] = array(
 	'boardblastlogintitle'           => 'You must be logged in to send board blasts',
 	'boardblastlogintext'       => 'You must be logged in to send board blasts.  Click <a href="index.php?title=Special:UserLogin">here to login</a>',
 	'messagesenttitle'          => 'Messages Sent',
@@ -24,6 +24,7 @@ $wgUserBoardMessages['en'] = array(
 	'boardsendbutton'          => 'Send Board Blast',
 	'boardnofriends' 	=> 'You have no friends to send a message to!',
 	'messagesentsuccess'	=> 'Your message was successfully sent',
+	'userboard' => 'User Board',
 	'userboard_noexist' => 'The user you are trying to view does not exist.',
 	'userboard_yourboard' => 'Your Board',
 	'userboard_owner' => '$1\'s Board',
@@ -65,7 +66,7 @@ and change your settings to disable email notifications.'
 /** French (Français)
  * @author Grondin
  */
-$wgUserBoardMessages['fr'] = array(
+$messages['fr'] = array(
 	'boardblastlogintitle'      => 'Vous devez être en session pour envoyer le tableau en rafale',
 	'boardblastlogintext'       => 'Vous devez être en session pour envoyer le tableau en rafales. Cliquez <a href="index.php?title=Special:UserLogin">ici pour ouvrir une session</a>',
 	'messagesenttitle'          => 'Messages envoyés',

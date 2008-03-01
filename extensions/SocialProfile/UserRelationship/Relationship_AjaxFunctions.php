@@ -1,18 +1,14 @@
 <?php
 /*
- * Ajax Functions used by Wikia extensions
+ * Ajax Functions used by UserRelationship extensions
  */
 
 $wgAjaxExportList [] = 'wfRelationshipRequestResponse';
 function wfRelationshipRequestResponse($response, $request_id){
-	global $wgUser, $wgOut, $IP, $wgMessageCache;
+	global $wgUser, $wgOut;
 	$out = "";
 
-	//languages
-	require_once ( "$IP/extensions/UserRelationship/UserRelationship.i18n.php" );
-	foreach( efWikiaUserRelationship() as $lang => $messages ){
-		$wgMessageCache->addMessages( $messages, $lang );
-	}
+	wfLoadExtensionMessages( 'SocialProfileUserRelationship' );
 
 	$rel = new UserRelationship($wgUser->getName() );
 	if($rel->verifyRelationshipRequest($request_id) == true ){

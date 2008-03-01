@@ -11,22 +11,16 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfSpecialToggleUserPage';
-
-function wfSpecialToggleUserPage(){
-	global $wgUser,$IP;
-	include_once("includes/SpecialPage.php");
-
-class ToggleUserPage extends SpecialPage {
-	function ToggleUserPage(){
-		UnlistedSpecialPage::UnlistedSpecialPage("ToggleUserPage");
+class SpecialToggleUserPage extends UnlistedSpecialPage {
+	function __construct() {
+		parent::__construct( "ToggleUserPage" );
 	}
 
-	function execute(){
+	function execute( $params ) {
 		global $wgRequest, $IP, $wgOut, $wgUser, $wgMemc;
 
 		if( !$wgUser->isLoggedIn() ){
-			$wgOut->errorpage('error', 'noaccess');
+			$wgOut->errorpage('error', 'badaccess');
 			return "";
 		}
 
@@ -73,7 +67,4 @@ class ToggleUserPage extends SpecialPage {
 		$title = Title::makeTitle( NS_USER, $wgUser->getName() );
 		$wgOut->redirect( $title->getFullURL() );
 	}
-}
-
-SpecialPage::addPage( new ToggleUserPage );
 }

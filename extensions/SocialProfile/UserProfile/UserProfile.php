@@ -87,9 +87,5 @@ $wgExtensionFunctions[] = 'wfUserProfileReadLang';
 
 //read in localisation messages
 function wfUserProfileReadLang(){
-	global $wgMessageCache, $IP, $wgUserProfileDirectory;
-	require_once ( "{$wgUserProfileDirectory}/UserProfile.i18n.php" );
-	foreach( efWikiaUserProfile() as $lang => $messages ){
-		$wgMessageCache->addMessages( $messages, $lang );
-	}
+	wfLoadExtensionMessages( 'SocialProfileUserProfile' );
 }

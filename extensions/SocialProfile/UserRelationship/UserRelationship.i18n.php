@@ -1,9 +1,15 @@
 <?php
-function efWikiaUserRelationship() {
+/**
+ * Internationalisation file for UserRelantionShip extension pages.
+ *
+ * @addtogroup Extensions
+ */
 
-	return array(
+$messages = array();
 
-	'en' => array(
+$messages['en'] = array(
+		'viewrelationships' => 'View Relationship',
+		'viewrelationshiprequests' => 'View Relationship Requests',
 		'ur-error-title'=>'Woops, you took a wrong turn!',
 		'ur-error-message-no-user'=>'We cannot complete your request, because no user with this name exists.',
 		'ur-main-page'=>'Main Page',
@@ -138,9 +144,5 @@ Thanks
 Hey, want to stop getting emails from us?
 
 Click $4
-and change your settings to disable email notifications.'
-
-
-		),
-	);
-}
+and change your settings to disable email notifications.',
+);
