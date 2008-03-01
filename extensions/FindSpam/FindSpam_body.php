@@ -78,7 +78,7 @@ class FindSpamPage extends SpecialPage {
 			if ( $s == '' ) {
 				$s = wfMsg('findspam-notextfound');
 			}
-			$wgOut->addWikiText( $s."<br/>" );
+			$wgOut->addWikiText( $s."<br />" );
 		}
 	}
 }

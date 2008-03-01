@@ -32,7 +32,7 @@ END
 
 		if ( !is_null( $q ) ) {
 			$html = wfUtf8ToHTML( htmlspecialchars( $q ) );
-			$wgOut->addHTML( "<br /><b>". wfMsg('unicodeconverter-oldtext'). "</b><br /><br />" . nl2br( $html ) . "<br/><br /><hr /><br /><b>" . wfMsg('unicodeconverter-newtext'). "</b><br /><br />".
+			$wgOut->addHTML( "<br /><b>". wfMsg('unicodeconverter-oldtext'). "</b><br /><br />" . nl2br( $html ) . "<br /><br /><hr /><br /><b>" . wfMsg('unicodeconverter-newtext'). "</b><br /><br />".
 			  nl2br( htmlspecialchars( $html ) ) . "<br /><br />" );
 		}
 	}

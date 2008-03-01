@@ -71,7 +71,7 @@ function parseGeo ( $text, $params, &$parser ) {
 	  		  var WikiMapsZoom = '.$defaultZoom.';
 			' . exportWikiMapsGlobals() . '
 		       </script>
-		<div id="wikimaps"><div class="wikimapslabel" >Map</div><div class="wikimapslabel" id="wikimapsfullscreen">Fullscreen</div><br><div id="map" style="width:300px; height:300px;"></div><div id="selectbox" style="display:none;XXposition: absolute; XXtop:10em; XXleft:10em; width:300px;background:#02048C;color: white; padding-bottom:1px;"><div id="close" style="float:right; background:grey; color:black;font-size:small;margin:1px;padding-left:3px; padding-right:3px;pointer:hand;">X</div><span style="margin-left:3px;">Result</span><div id="selectboxbody" style="background:white; margin:1px; padding:3px; color:black;"></div></div></div>';
+		<div id="wikimaps"><div class="wikimapslabel" >Map</div><div class="wikimapslabel" id="wikimapsfullscreen">Fullscreen</div><br /><div id="map" style="width:300px; height:300px;"></div><div id="selectbox" style="display:none;XXposition: absolute; XXtop:10em; XXleft:10em; width:300px;background:#02048C;color: white; padding-bottom:1px;"><div id="close" style="float:right; background:grey; color:black;font-size:small;margin:1px;padding-left:3px; padding-right:3px;pointer:hand;">X</div><span style="margin-left:3px;">Result</span><div id="selectboxbody" style="background:white; margin:1px; padding:3px; color:black;"></div></div></div>';
 	}
 	
 	return  $r;

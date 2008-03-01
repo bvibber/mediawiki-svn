@@ -117,7 +117,7 @@ class regexBlockList {
 		$action_unblock = $titleObj->escapeLocalURL("action=delete") ."&".wfGetListBits() ;
 		list( $limit, $offset ) = $wgRequest->getLimitOffset() ;
 
-		$wgOut->addWikiText ("<br/>'''".wfMsg('regexblock-currently-blocked')."'''") ;
+		$wgOut->addWikiText ("<br />'''".wfMsg('regexblock-currently-blocked')."'''") ;
 		$this->fetchNumResults () ;
 		$this->showPrevNext ($wgOut) ;
 
@@ -126,7 +126,7 @@ class regexBlockList {
 		/* allow display by specific blockers only */
 		$wgOut->addHTML (wfMsg('regexblock-view-blocked')." <select name=\"filter\"><option value=\"\">".wfMsg('regexblock-view-all')."</option>") ;
 		$blockers =  $this->fetchBlockers () ;
-		$wgOut->addHTML("</select>&#160;<input type=\"submit\" value=".wfMsg('regexblock-view-go')."><br/><br/>
+		$wgOut->addHTML("</select>&#160;<input type=\"submit\" value=".wfMsg('regexblock-view-go')."><br /><br />
 		") ;
 		$current = $wgRequest->getVal ('filter') ;
 
@@ -172,7 +172,7 @@ class regexBlockList {
 		$dbr->freeResult ($res) ;
 		$wgOut->addHTML ("</ul></form>") ;
 		} else { /* empty list */
-			$wgOut->addHTML (wfMsg('regexblock-view-empty')."<br/><br/>") ;
+			$wgOut->addHTML (wfMsg('regexblock-view-empty')."<br /><br />") ;
 		}
 		$this->showPrevNext ($wgOut) ;
 	}

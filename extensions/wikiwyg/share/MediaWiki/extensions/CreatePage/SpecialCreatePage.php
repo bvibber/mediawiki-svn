@@ -183,10 +183,10 @@ class CreatePageForm {
 <form name=\"editform\" method=\"post\" action=\"{$action}\">
 	<div id=\"createpage_messenger\" style=\"display:none; color:red \" ></div>
         <b>".wfMsg ('createpage_title_caption')."</b>
-	<br/>
-	<input name=\"title\" id=\"title\" value=\"\" size=\"100\" /><br/><br/>
+	<br />
+	<input name=\"title\" id=\"title\" value=\"\" size=\"100\" /><br /><br />
              	<b>".wfMsg ('createpage_enter_text')."</b>
-		<br><div id=\"wikiwyg\"></div>
+		<br /><div id=\"wikiwyg\"></div>
 		<div id=\"loading_mesg\"><b>".wfMsg('createpage_loading_mesg')."</b></div>
 
 		<noscript>
@@ -204,7 +204,7 @@ class CreatePageForm {
 		<input type=\"hidden\" name=\"wpCreatePage\" value=\"true\" />
 
 		<input type=\"hidden\" value=\"{$this->edittime}\" name=\"wpEdittime\" />
-		<br/>
+		<br />
 		<div id=\"category_wrapper\">
 		<table id=\"editpage_table\">
 			<tr style=\"padding: 6px 0px 6px 0px\">
@@ -224,7 +224,7 @@ class CreatePageForm {
 
 		$wgOut->addHtml( $html );
 		$wgOut->addHTML ("
-			</div><br/>
+			</div><br />
 </form>"
 		);
 

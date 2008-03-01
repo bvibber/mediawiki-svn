@@ -44,8 +44,8 @@
 		
 		//proccess the requested changes
  		$this->proccessReq($streamFiles);  	
-		if($this->status_error!='')$html.='<span class="error">'.$this->status_error.'</span><br>';
-		if($this->status_ok!='')$html.=$this->status_ok . '<br>';		 		
+		if($this->status_error!='')$html.='<span class="error">'.$this->status_error.'</span><br />';
+		if($this->status_ok!='')$html.=$this->status_ok . '<br />';		 		
 		
 		if(count($streamFiles)==0){
 			$html.='<b>'.wfMsg('mv_no_stream_files').'</b>';

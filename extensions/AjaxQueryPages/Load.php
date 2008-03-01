@@ -8,7 +8,7 @@ $aqpCredits = array(
 // We require 1.11alpha or later:
 if( version_compare( $wgVersion, '1.12alpha', '<' ) ) {
 	$wgExtensionCredits['other'][] = $aqpCredits + array(
-		'description' => "Add some AJAX to QueryPages such as [[Special:Shortpages]].<br/>'''Disabled''', requires MediaWiki 1.12alpha or later.",
+		'description' => "Add some AJAX to QueryPages such as [[Special:Shortpages]].<br />'''Disabled''', requires MediaWiki 1.12alpha or later.",
 		);
 } else {
 	$wgExtensionCredits['other'][] = array(

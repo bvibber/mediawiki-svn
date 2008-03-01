@@ -66,7 +66,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		$m_pageObj->$m_place .= "</select>\n";
 #		$m_pageObj->$m_place .= "</noscript>\n";
 		# Print localised help string:
-		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br/>\n";
+		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br />\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
 	}

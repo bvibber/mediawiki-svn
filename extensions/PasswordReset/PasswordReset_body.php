@@ -48,13 +48,13 @@ class PasswordReset extends SpecialPage
  
                     if ( !is_object( $objUser ) || $userID == 0 ) {
                       $validUser = false;
-                      $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-invalidusername') . "</span><br>\n" );
+                      $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-invalidusername') . "</span><br />\n" );
                     } else {
                       $validUser = true;
                     }
                   } else {
                     $validUser = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-emptyusername') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-emptyusername') . "</span><br />\n" );
                   }
  
                   $newpass = $wgRequest->getText( 'newpass' );
@@ -66,13 +66,13 @@ class PasswordReset extends SpecialPage
                   } else {
                     //Passwords DO NOT match
                     $passMatch = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-nopassmatch') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-nopassmatch') . "</span><br />\n" );
                   }
  
                   if (!$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
                     $validUser = false;
                     $passMatch = false;
-                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-badtoken') . "</span><br>\n" );
+                    $wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg('passwordreset-badtoken') . "</span><br />\n" );
  
                   }
                 } else {

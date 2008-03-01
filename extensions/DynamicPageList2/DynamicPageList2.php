@@ -196,9 +196,9 @@ $wgDPL2Options = array(
 	 *    - 'ul' for unordered
 	 *    - 'div' for others
      *
-	 * Can be used with pseudo 'mode=inline' where 'inlinetext' contains one or more <BR/>.
+	 * Can be used with pseudo 'mode=inline' where 'inlinetext' contains one or more <br />.
 	 *
-	 * Not applicable to 'mode=category' or 'mode=inline' (with no <BR/> in inlinetext).
+	 * Not applicable to 'mode=category' or 'mode=inline' (with no <br /> in inlinetext).
 	 *
 	 * @todo Make 'listattr' param applicable to 'mode=category'.
 	 *
@@ -220,7 +220,7 @@ $wgDPL2Options = array(
 
 	/**
 	 * Mode for list of pages (possibly within a heading, see 'headingmode' param).
-	 * 'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
+	 * 'none' mode is implemented as a specific submode of 'inline' with <br /> as inline text
 	 */
 	'mode' => array('default' => 'unordered', 'category', 'inline', 'none', 'ordered', 'unordered'),
 
@@ -627,10 +627,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				
 			case 'mode':
 				if( in_array($sArg, $wgDPL2Options['mode']) )
-					//'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
+					//'none' mode is implemented as a specific submode of 'inline' with <br /> as inline text
 					if($sArg == 'none') {
 						$sPageListMode = 'inline';
-						$sInlTxt = '<BR/>';
+						$sInlTxt = '<br />';
 					} else
 					$sPageListMode = $sArg;
 				else

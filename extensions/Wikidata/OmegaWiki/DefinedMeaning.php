@@ -268,14 +268,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		global 
 			$wgScriptPath, $wgCommunity_dc;
 		
-		$html="Copy to:<br>\n"; 
+		$html="Copy to:<br />\n"; 
 		$datasets=wdGetDatasets();
 		$dataset=$datasets[$wgCommunity_dc];
 		$dmid=$this->definedMeaningModel->getId();
 		$dc1=$this->definedMeaningModel->getDataSet();
 		$name=$dataset->fetchName(); 
 		$dc2=$wgCommunity_dc;
-		$html.="<a href='index.php?title=Special:Copy&action=copy&dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
+		$html.="<a href='index.php?title=Special:Copy&action=copy&dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br />\n";
 
 		return $html;
 	}

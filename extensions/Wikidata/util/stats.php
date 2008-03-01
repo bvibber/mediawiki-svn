@@ -42,7 +42,7 @@ $start=stopwatch();
 
 echo"<center>
 <h1>Number of Expressions per language</h1>
-<hr width=950 size=1 noshade><br>
+<hr width=950 size=1 noshade><br />
 ";
 
 $expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression WHERE remove_transaction_id IS NULL");
@@ -52,7 +52,7 @@ $expressions=$expressions_a[0];
 $defined_meanings_r=mysql_query("SELECT  COUNT(*) FROM uw_defined_meaning WHERE remove_transaction_id IS NULL");
 $defined_meanings_a=mysql_fetch_row($defined_meanings_r);
 $defined_meanings=$defined_meanings_a[0];
-echo"<br>\n";
+echo"<br />\n";
 echo"Total <b>$defined_meanings</b> DefinedMeanings in database, linking together <b>$expressions</b> Expressions. Broken down per language:\n";
 echo"</br>\n";
 echo"<hr>\n";
@@ -63,7 +63,7 @@ where name_language_id = 85
 ")or die ("error ".mysql_error());
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-//echo $row[0]." - ".$row[1]." - ".$row[2]."<br>";
+//echo $row[0]." - ".$row[1]." - ".$row[2]."<br />";
 $lang[$row[0]]=$row[2];
 }
 
@@ -119,7 +119,7 @@ if(strlen($ar[$i])>20)filewrite("out/".$lang[$i].".txt",$ar[$i]);
 //echo "<pre>".$ar[85]."</pre>";
 
 echo "
-<br>
+<br />
 <hr size=1 noshade width=950>
 <table width=950><tr><td>
 <small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small>
@@ -129,7 +129,7 @@ echo "
 </small>
 </td>
 </tr></table>
-<br>";
+<br />";
 
 
 function filewrite($file,$txt){

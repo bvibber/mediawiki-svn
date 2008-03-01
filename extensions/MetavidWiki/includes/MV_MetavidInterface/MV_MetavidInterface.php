@@ -156,7 +156,7 @@
  		//for now output spacers 
 		//@@todo output a dynamic spacer javascript layout		
 		//$out='';  	
- 		//for($i=0;$i<28;$i++)$out.="<br>";
+ 		//for($i=0;$i<28;$i++)$out.="<br />";
  		//$wgOut->addHTML($out);
  		//} 		 		
  	} 	

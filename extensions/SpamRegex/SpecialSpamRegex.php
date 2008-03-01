@@ -98,11 +98,11 @@ class spamRegexList {
 		$action_unblock = $titleObj->escapeLocalURL("action=delete") ."&".wfSpamRegexGetListBits() ;
 		list( $limit, $offset ) = $wgRequest->getLimitOffset() ;
 
-		$wgOut->addWikiText('<br/><br/>'.wfMsg('spamregex-currently-blocked')) ;
+		$wgOut->addWikiText('<br /><br />'.wfMsg('spamregex-currently-blocked')) ;
 		$this->showPrevNext ($wgOut) ;
 
 		if (0 == $this->fetchNumResults ()) {
-			$wgOut->addWikiText('<br/>'.wfMsg('spamregex-no-currently-blocked').'<br/><br/>') ;
+			$wgOut->addWikiText('<br />'.wfMsg('spamregex-no-currently-blocked').'<br /><br />') ;
 		}
 
 		$wgOut->addHTML ("<form name=\"spamregexlist\" method=\"get\" action=\"{$action}\">") ;

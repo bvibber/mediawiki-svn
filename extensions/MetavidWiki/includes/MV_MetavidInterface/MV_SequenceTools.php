@@ -86,7 +86,7 @@
 		list($iw, $ih) = 	explode('x',$mvDefaultSearchVideoPlaybackRes);	
 		$wgOut->addHTML('<h3>'.wfMsg('mv_add_clip_by_name').':</h3>' .			
 			'<form id="mv_add_to_seq_form" action="">' .
-			'<div id="mv_seq_manual_embed" style="display:none;position:relative;border:solid thin black;width:'.$iw.'px;height:'.$ih.'px;"> </div><br>'.			 
+			'<div id="mv_seq_manual_embed" style="display:none;position:relative;border:solid thin black;width:'.$iw.'px;height:'.$ih.'px;"> </div><br />'.			 
 			wfMsg('mv_label_stream_name') . ': <input id="mv_add_stream_name" name="mv_add_stream_name" ' .
 			' size="25" maxlength="65" ' .
 			'value="">');

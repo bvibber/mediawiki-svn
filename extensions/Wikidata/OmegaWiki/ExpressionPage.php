@@ -68,11 +68,11 @@ class ExpressionPage extends DefaultWikidataApplication {
 <div style="float:right;"><span style="background:#eeeeee;border-style:solid;order-color:black;padding:3px;border-width:1px;"><B>$name</B></span>
 </div>
 $templatesAsHTML
-<br/>
+<br />
 <B>Add new meaning:</B>
 <form>
-Language: $lang_select<br/>
-Definition:<br/><textarea cols="80"></textarea>
+Language: $lang_select<br />
+Definition:<br /><textarea cols="80"></textarea>
 <input type="submit" value="Add meaning">
 
 </form>

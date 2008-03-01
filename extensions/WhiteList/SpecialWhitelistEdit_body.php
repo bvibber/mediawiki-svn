@@ -315,7 +315,7 @@ END;
         $wgOut->addHtml(wfMsg('whitelistfor', $ContractorUser->getRealName()));
         $wgOut->addHtml('</td></tr><tr><th><center>' .
                         wfMsg('whitelisttablemodify') .
-                        "<br><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
+                        "<br /><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
                         wfMsg('whitelisttablemodifyall') .
                         "</a> <a href=\"javascript:SetChecked(0,'cb_modify[]')\">" .
                         wfMsg('whitelisttablemodifynone') .

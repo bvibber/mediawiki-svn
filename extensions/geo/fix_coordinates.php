@@ -91,9 +91,9 @@ if ( $title != "" )
 else $ret = array () ;
 print "<html><head></head><body>" ;
 print "<p>This form is to mass-move coordinates. Enter the page title and the coordinate difference.</p>" ;
-print "<form method=post>Title : <input type=text name='title' value='{$title}'/><br/>" ;
-print "X : <input type=text name='tx' value='{$tx}'/><br/>";
-print "Y : <input type=text name='ty' value='{$ty}'/><br/>";
+print "<form method=post>Title : <input type=text name='title' value='{$title}'/><br />" ;
+print "X : <input type=text name='tx' value='{$tx}'/><br />";
+print "Y : <input type=text name='ty' value='{$ty}'/><br />";
 print "<input type=submit name='OK'/>" ;
 print "</body></html>" ;
 

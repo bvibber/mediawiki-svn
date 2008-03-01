@@ -2506,13 +2506,13 @@ class BotQueryProcessor {
 		<title>MediaWiki Query Interface</title>
 	</head>
 	<body>
-		<br/>
+		<br />
 	<?php
 		if( !array_key_exists('usage', $data) ) {
 	?>
 		<small>
-		This page is being rendered in <?=$format?> format, which might not be suitable for your application.<br/>
-		See <a href="query.php">query.php</a> for more information.<br/>
+		This page is being rendered in <?=$format?> format, which might not be suitable for your application.<br />
+		See <a href="query.php">query.php</a> for more information.<br />
 		</small>
 	<?php
 		}

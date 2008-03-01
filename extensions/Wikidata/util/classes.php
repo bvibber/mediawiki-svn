@@ -37,7 +37,7 @@ $start=stopwatch();
 
 echo"
 <h1>Classes</h1>
-<hr width=950 size=1 noshade><br>
+<hr width=950 size=1 noshade><br />
 ";
 
 $collection_esc=mysql_real_escape_string( $collection_id);

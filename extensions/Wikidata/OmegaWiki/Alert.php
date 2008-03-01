@@ -137,8 +137,8 @@ $startDate 		= ConvertIsoToEpoch( $epochStartDate );
 $epochEndDate 	= $_GET["endDate"];
 
 if ( $epochStartDate == "" ){
-	echo 'This alert utility requires a start date in ISO format to be specified as parameter<BR>';
-	echo 'Usage: alert.php?startDate=2007-05-01-T00:00:00[&endDate=2007-06-31-T00:00:00][&output=(xml|raw)]<BR>';
+	echo 'This alert utility requires a start date in ISO format to be specified as parameter<br />';
+	echo 'Usage: alert.php?startDate=2007-05-01-T00:00:00[&endDate=2007-06-31-T00:00:00][&output=(xml|raw)]<br />';
 	die(-1);
 }
 

@@ -680,7 +680,7 @@ class NewsRenderer {
 			$output = '';
 			if ($tagName == '!--') $output = $tag; //keep comments for now, may be stripped later
 
-			#print "* $marker => " . htmlspecialchars($output) . "<br/>\n";
+			#print "* $marker => " . htmlspecialchars($output) . "<br />\n";
 			$text = str_replace($marker, $output, $text);
 		}
 

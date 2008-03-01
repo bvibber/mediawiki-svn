@@ -280,13 +280,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					}
 					$mvd_out.='</span>';
 					$mvd_out .= '<div id="mvr_' . $mvd->id . '" style="display:none;background:#'.$bgcolor.';" ></div>';
-					$mvd_out .= '<br>' . "\n";					
+					$mvd_out .= '<br />' . "\n";					
 				}			
 				$stream_out .= $mvd_out;
 				/*if(count($srange['rows'])!=1){					
 					$stream_out .= '&nbsp;' . $cat_html . ' In range:' . 
 					seconds2ntp($srange['s']) . ' to ' . seconds2ntp($srange['e']) .
-					wfMsg('mv_match_text', count($srange['rows'])).'<br>' . "\n";
+					wfMsg('mv_match_text', count($srange['rows'])).'<br />' . "\n";
 					$stream_out .= $mvd_out;
 				}else{								
 					$stream_out .= $mvd_out;
@@ -294,7 +294,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			}
 			$nsary = $mvgContLang->getNamespaces();
 			//output stream name and mach count
-			/*$o.='<br><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
+			/*$o.='<br /><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
 				$mvTitle->getStreamName() .
 					'" align="left" src="'.$mvgScriptPath.'/skins/mv_embed/images/vid_play_sm.png">';
 			*/					

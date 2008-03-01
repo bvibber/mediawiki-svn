@@ -213,7 +213,7 @@ preg_match_all($preg, $text, $matches);
 							border: 1px solid #ccc; 
 						}
 				</style> " . wfMsg('spamdifftool_urls_detected') . "
-			<br/><br/><table cellpadding='5px' width='100%'>");
+			<br /><br /><table cellpadding='5px' width='100%'>");
 		
 			$urls = array();	
 			foreach ($matches as $match) {
@@ -222,7 +222,7 @@ preg_match_all($preg, $text, $matches);
 					$urls[$url] = true;
 					$name = htmlspecialchars(str_replace(".", "%2E", $url));
 					$wgOut->addHTML("<tr>
-						<td class='spam-url-row'><b>$url</b><br/>
+						<td class='spam-url-row'><b>$url</b><br />
 						" . wfMsg('spamdifftool_block') . " &nbsp;&nbsp;
 						<INPUT type='radio' name=\"" . $name . "\"	value='domain' checked> " . wfMsg('spamdifftool_option_domain') . "
 						<INPUT type='radio' name=\"" . $name . "\"	value='subdomain'> " . wfMsg('spamdifftool_option_subdomain') . " 

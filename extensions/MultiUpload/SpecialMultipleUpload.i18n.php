@@ -243,12 +243,12 @@ $messages['pl'] = array(
 	'multipleupload-ignoreallwarnings' => "Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.",
 	'multipleupload-saveallfiles' => "Zapisz wszystkie pliki",
 	'multipleupload-addresswarnings' => "Rozwiąż wszystkie problemy, zanim prześlesz pliki.",
-	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br/><br/>
+	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br /><br />
 			Kliknij 'Przeglądaj...' i wybierz plik, który chcesz wysłac. Możesz wysłać od 1 do $1
-			plików za jednym razem. <br/><br/>
-			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br/><br/>
-			<br/>
-			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br/><br/>
+			plików za jednym razem. <br /><br />
+			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br /><br />
+			<br />
+			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br /><br />
 				",
 );
 

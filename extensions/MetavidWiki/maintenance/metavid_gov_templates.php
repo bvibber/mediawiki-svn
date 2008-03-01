@@ -46,7 +46,7 @@ Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests
 $bill_template.='
 {{ #if: {{{Cosponsor 1|}}}|* Cosponsor: [[Bill Cosponsor:={{{Cosponsor 1}}}]] |}}';
 
-//$bill_template.='{{ #for: {{{n}}} | {{{Cosponsor $n$}}}<br/> }}';
+//$bill_template.='{{ #for: {{{n}}} | {{{Cosponsor $n$}}}<br /> }}';
 for($i=2;$i<70;$i++){	
 	$bill_template.='{{ #if: {{{Cosponsor '.$i.'|}}}|, [[Bill Cosponsor:={{{Cosponsor '.$i.'}}}]] |}}';
 }

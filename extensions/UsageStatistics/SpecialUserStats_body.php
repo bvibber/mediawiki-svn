@@ -236,7 +236,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editindividual', $nature));
         $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');  
-        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br>");
+        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br />");
         
         $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
@@ -1706,7 +1706,7 @@ function CP_getCalendar() {
                 else {
                         result += '             <A CLASS="'+this.cssPrefix+'cpTodayText" HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''+(now.getMonth()+1)+'\',\''+now.getDate()+'\');'+windowref+'CP_hideCalendar(\''+this.index+'\');">'+this.todayText+'</A>';
                         }
-                result += '             <BR>';
+                result += '             <br />';
                 result += '     </TD></TR></TABLE></CENTER></TD></TR></TABLE>';
         }
 
@@ -1747,12 +1747,12 @@ function CP_getCalendar() {
         // Code for QUARTER display
         // ------------------------
         if (this.displayType=="quarter") {
-                result += '<BR><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
+                result += '<br /><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
                 for (var i=0; i<2; i++) {
                         result += '<TR>';
                         for (var j=0; j<2; j++) {
                                 var quarter = ((i*2)+j+1);
-                                result += '<TD WIDTH=50% ALIGN=CENTER><BR><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
+                                result += '<TD WIDTH=50% ALIGN=CENTER><br /><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><br /><br /></TD>';
                                 }
                         result += '</TR>';
                         }

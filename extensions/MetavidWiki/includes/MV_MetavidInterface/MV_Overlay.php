@@ -315,7 +315,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$mvd_page = new MV_MVD();
 		$mvd_page->id = 'new';
 		
-		//print 'st ' . $this->start_context . "<br>" ;		
+		//print 'st ' . $this->start_context . "<br />" ;		
 		//$mvd_page->start_time = $start_context; //seconds2ntp(0);		
  		//$mvd_page->end_time  = seconds2ntp( ntp2seconds($start_context) +  $mvDefaultClipLength);
  		$mvd_page->wiki_title = $mvdType.':'. strtolower($baseTitle).'/_new';
@@ -466,8 +466,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//some good old fasioned variable overloading: 
 		if($mvd_id=='new'||$mvd_id=='seq'){
 			global $mvDefaultClipLength;	
-			//$out.='start context: ' .$this->start_context . '<br>';
-			//$out.='end context: ' .$this->end_context . '<br>';		
+			//$out.='start context: ' .$this->start_context . '<br />';
+			//$out.='end context: ' .$this->end_context . '<br />';		
 			$start_time = isset($this->start_context)?$this->start_context:seconds2ntp(0);
  			$end_time  = isset($this->end_context)?
 	 			seconds2ntp( ntp2seconds($this->start_context)+$mvDefaultClipLength):
@@ -512,7 +512,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 '</td><td width="50">
 <span id="track_time_end_'.$mvd_id.'" style="font-size:small">0:00:00</span>
 	</td></tr></table>
-  <br>';
+  <br />';
   		//output a dummy form 
 		/*$out.='<form class="mv_css_form" id="mvd_adj_form_'.$mvd_id.'" method="GET" action="" ' . 
 			'onSubmit="mv_adjust_submit(\''.$mvd_id.'\');return false;">';*/
@@ -533,7 +533,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		'<tr><td>'.wfMsg('mv_start_desc').'</td>'.
 		'<td><input name="mv_start_hr_'.$mvd_id.'" type="text" value=""></td>'.
 		'</tr><tr>'.
-		'<input type="text" value=""><br>
+		'<input type="text" value=""><br />
 		*/
 		//clear any floats:
 		$out.='<div style="clear:both"></div>';

@@ -320,7 +320,7 @@ function nesting_delta ( $text ) {
 			$counter--;
 			#if( ($tt != null) && ($tt[1] != $t[1]) ) {
 			#	#input html is buggy...
-			#	echo "Warning: ".$t[1]." encountered, expected ".$tt[1]."<br>\n";
+			#	echo "Warning: ".$t[1]." encountered, expected ".$tt[1]."<br />\n";
 			#}
 		}
 	}

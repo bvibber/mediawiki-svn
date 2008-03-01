@@ -4,11 +4,11 @@ if(!extension_loaded('MediaWiki')) {
 }
 $module = 'MediaWiki';
 $functions = get_extension_funcs($module);
-echo "Functions available in the test extension:<br>\n";
+echo "Functions available in the test extension:<br />\n";
 foreach($functions as $func) {
-    echo $func."<br>\n";
+    echo $func."<br />\n";
 }
-echo "<br>\n";
+echo "<br />\n";
 $function = 'confirm_MediaWiki_compiled';
 #if (extension_loaded($module)) {
 #	$str = $function($module);

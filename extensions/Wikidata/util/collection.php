@@ -56,7 +56,7 @@ $collection= $row[0];
 echo"<center>
 <h1> $collection </h1>
 <h2> Number of Expressions per language in this collection </h2>
-<hr width=950 size=1 noshade><br>
+<hr width=950 size=1 noshade><br />
 ";
 
 
@@ -66,7 +66,7 @@ where name_language_id = 85
 ")or die ("error ".mysql_error());
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-//echo $row[0]." - ".$row[1]." - ".$row[2]."<br>";
+//echo $row[0]." - ".$row[1]." - ".$row[2]."<br />";
 $lang[$row[0]]=$row[2];
 }
 
@@ -129,7 +129,7 @@ if(strlen($ar[$i])>20)filewrite("out/".$lang[$i].".txt",$ar[$i]);
 //echo "<pre>".$ar[85]."</pre>";
 
 echo "
-<br>
+<br />
 <hr size=1 noshade width=950>
 <table width=950><tr><td>
 <small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small>
@@ -139,7 +139,7 @@ echo "
 </small>
 </td>
 </tr></table>
-<br>";
+<br />";
 
 
 function filewrite($file,$txt){

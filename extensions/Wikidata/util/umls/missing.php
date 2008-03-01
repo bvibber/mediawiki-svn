@@ -61,7 +61,7 @@ echo"
 <h1>$collection</h1>
 <h2>$language</h2>
 <small><i>For large collections, this query might take up to a minute. Please be patient</i></small>
-<hr width=950 size=1 noshade><br>
+<hr width=950 size=1 noshade><br />
 <h3> Missing defined meanings </h3>
 
 ";
@@ -184,7 +184,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 		# Malafaya: English translation exists; use it
 		print "<a href=\"../../../index.php?title=DefinedMeaning:".$spelling_dm."_($id)\">$spelling_dm</a>;\n";
 }
-print "<br>\n";
+print "<br />\n";
 
 
 print "<hr>\n

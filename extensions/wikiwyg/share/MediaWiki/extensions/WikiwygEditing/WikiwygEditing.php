@@ -152,7 +152,7 @@ function WikiwygEditTagCloud ($epage) {
             }
 
 	    $wgOut->addHTML ("
-	    	<br/>
+	    	<br />
                 <div id=\"wikiwyg_lower_wrapper\">
 		<table id=\"editpage_table\">
 		<tr>

@@ -527,7 +527,7 @@ function do_people_insert() {
 		if (trim($full_name) == '')
 			$full_name = $person->name_clean;			
 		 
-		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br>\n".
+		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br />\n".
 				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
 				;
 		do_update_wiki_page($person_title, $page_body);		

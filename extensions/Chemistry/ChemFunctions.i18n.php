@@ -571,7 +571,7 @@ $messages['su'] = array(
 	'chemicalsources'                  => 'Rujukan kimia',
 	'chemicalsource-desc'              => 'Nambahkeun tag <nowiki><chemform></nowiki>, pikeun rumus kimia',
 	'chemFunctions_ListPage'           => 'Rujukan kimia',
-	'chemFunctions_DataList'           => 'Di handap ieu dibéréndélkeun tumbu ka loka-loka nu sugan nyadiakeun émbaran ngeunaan jat kimia anu keur ditéang.<br/><br/>
+	'chemFunctions_DataList'           => 'Di handap ieu dibéréndélkeun tumbu ka loka-loka nu sugan nyadiakeun émbaran ngeunaan jat kimia anu keur ditéang.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (teu bisa nyusud)</a><br />',
 	'chemFunctions_CAS'                => 'Nomer CAS',

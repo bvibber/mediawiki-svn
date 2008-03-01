@@ -194,15 +194,15 @@
 				}else{
 					$out.=wfMsg('mv_bad_tool_request');	
 				}
-				$out.='<br>';			
+				$out.='<br />';			
 			}
 		}*/
 		return '<h3>'.$heading.'</h3>' . $out;
 		/*$out='<h3>Tool listing</h3>
-			<a href="javascript:tool_disp(\'search\')>Search Current Stream</a><br>
-			<a href="javascript:tool_disp(\'navigate\')>Navigate Current Stream</a><br>
-			<a href="javascript:tool_disp(\'embed\')>External Embed Options</a><br>
-			<a href="javascript:tool_disp(\'overlay\')>Overlay Set</a><br>
+			<a href="javascript:tool_disp(\'search\')>Search Current Stream</a><br />
+			<a href="javascript:tool_disp(\'navigate\')>Navigate Current Stream</a><br />
+			<a href="javascript:tool_disp(\'embed\')>External Embed Options</a><br />
+			<a href="javascript:tool_disp(\'overlay\')>Overlay Set</a><br />
 		';*/			
 	}
 	//returns layers overview text 
@@ -215,7 +215,7 @@
 			//@@todo use something better than "title" for type_key description 
 			$checked = (in_array($type_key, $this->mvd_tracks))?' checked':'';
 			$out.='<input type="checkbox" name="option_'.$type_key.'"  id="option_'.$type_key.'" value="'.$type_key.'" '.$checked.'/> '.
-				'<a class="mv_mang_layers" id="a_'.$type_key.'" title="'.wfMsg($type_key.'_desc').'" href="#">'.wfMsg($type_key).'</a><br>';
+				'<a class="mv_mang_layers" id="a_'.$type_key.'" title="'.wfMsg($type_key.'_desc').'" href="#">'.wfMsg($type_key).'</a><br />';
 		}		
 		$out.='<input id="submit_mang_layers" type="submit" value="'.wfMsg('mv_update_layers').'">';
 		return $out;
@@ -229,7 +229,7 @@
 		
 		//get the total length of the stream: 		
 		$stream =  new MV_Stream(array('name'=>$stream_title));
-		//$out.= "sn: ". $stream->name . '<br>';
+		//$out.= "sn: ". $stream->name . '<br />';
 		$duration = $stream->getDuration();
 		//$out.=" duration: $duration";			
 		$MvOverlay = new MV_Overlay();					

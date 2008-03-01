@@ -54,7 +54,7 @@ Soek vir $3 $9',
 $messages['am'] = array(
 	'searchnumber'          => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
 	'searchnoresults'       => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
-	'lucenepowersearchtext' => 'ባመለከቱት ክፍለ-ዊኪዎች ውስጥ ፍለጋ ለማድረግ፦ <br/> $1 ይኸው ጥያቄ ይፈለግ፡- $3 $9',
+	'lucenepowersearchtext' => 'ባመለከቱት ክፍለ-ዊኪዎች ውስጥ ፍለጋ ለማድረግ፦ <br /> $1 ይኸው ጥያቄ ይፈለግ፡- $3 $9',
 );
 
 /** Aragonese (Aragonés)

@@ -62,7 +62,7 @@ class MV_StreamImage{
 		if($req_time==false){			
 			return MV_StreamImage::getMissingImageURL($req_size);
 		}		
-		//print "got req time: $req_time<br>";
+		//print "got req time: $req_time<br />";
 		//first check if the file exist
 		if(is_file(MV_StreamImage::getLocalImagePath($stream_id, $req_time, $req_size))){			
 			if($req_size==null){

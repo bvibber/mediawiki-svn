@@ -76,14 +76,14 @@
 							$langCode = substr($columnName, strrpos($columnName, '_')+1);
 							if (!getLanguageIdForIso639_3($langCode)) {
 								$wgOut->setPageTitle('Import failed');
-								$wgOut->addHTML("<p>Unknown or incorrect language: $langCode. <br/>");
+								$wgOut->addHTML("<p>Unknown or incorrect language: $langCode. <br />");
 								$wgOut->addHTML("Languages must be ISO-639_3 language codes.</p>");
 								return false;
 							}
 						}
 						else { // column name does not start with definition or translations. 
 								$wgOut->setPageTitle('Import failed');
-								$wgOut->addHTML("<p>Incorrect column name<br/>");
+								$wgOut->addHTML("<p>Incorrect column name<br />");
 								$wgOut->addHTML("Columns should be named 'definition_iso' ");
 								$wgOut->addHTML("or 'translations_iso', where iso is the language code.</p>");
 								return false;
@@ -128,12 +128,12 @@
 						// perfomr some tests
 						if ($dmRecord = $dbr->fetchRow($dmResult)) {
 							if ($dmRecord['spelling'] != $exp) {
-								$wgOut->addHTML("Skipped line $line: defined meaning id $dmid does not match defining expression. Should be '{$dmRecord['spelling']}', found '$exp'.<br/>");
+								$wgOut->addHTML("Skipped line $line: defined meaning id $dmid does not match defining expression. Should be '{$dmRecord['spelling']}', found '$exp'.<br />");
 								continue;
 							}
 						}
 						else {
-							$wgOut->addHTML("Skipped line $line: unknown defined meaning id $dmid. The id may have been altered in the imported file, or the defined meaning or defining expression was removed from the database.<br/>");
+							$wgOut->addHTML("Skipped line $line: unknown defined meaning id $dmid. The id may have been altered in the imported file, or the defined meaning or defining expression was removed from the database.<br />");
 							continue; 
 						}
 						
@@ -162,10 +162,10 @@
 							if (strpos($columnName, 'definition') === 0) {
 								if (!translatedTextExists($tcid, $langId)) {
 									if ($testRun) {
-										$wgOut->addHTML("Would add definition for $exp ($dmid) in $langCode: $columnValue.<br/>");
+										$wgOut->addHTML("Would add definition for $exp ($dmid) in $langCode: $columnValue.<br />");
 									} else {
 										addTranslatedText($tcid, $langId, $columnValue);
-										$wgOut->addHTML("Added definition for $exp ($dmid) in $langCode: $columnValue.<br/>");
+										$wgOut->addHTML("Added definition for $exp ($dmid) in $langCode: $columnValue.<br />");
 										$definitions++;
 									}
 								}
@@ -177,7 +177,7 @@
 									$expression = findExpression($spelling, $langId);
 									if (!$expression) { // expression does not exist
 										if ($testRun) {
-											$wgOut->addHTML("Would add translation for $exp ($dmid) in $langCode: $spelling. Would also add new page.<br/>");
+											$wgOut->addHTML("Would add translation for $exp ($dmid) in $langCode: $spelling. Would also add new page.<br />");
 										}
 										else {
 											$expression = createExpression($spelling, $langId);
@@ -187,18 +187,18 @@
 											$title = getPageTitle($spelling);
 											createPage(16, $title);
 	
-											$wgOut->addHTML("Added translation for $exp ($dmid) in $langCode: $spelling. Also added new page.<br/>");
+											$wgOut->addHTML("Added translation for $exp ($dmid) in $langCode: $spelling. Also added new page.<br />");
 											$translations++;
 										}
 									} 
 									else { // expression exists, but may not be bound to this defined meaning.
 										if (!$expression->isBoundToDefinedMeaning($dmid)) {
 											if ($testRun) {
-												$wgOut->addHTML("Would add translation for $exp ($dmid) in $langCode: $spelling.<br/>");
+												$wgOut->addHTML("Would add translation for $exp ($dmid) in $langCode: $spelling.<br />");
 											}
 											else {
 												$expression->bindToDefinedMeaning($dmid, 1);
-												$wgOut->addHTML("Added translation for $exp ($dmid) in $langCode: $spelling.<br/>");
+												$wgOut->addHTML("Added translation for $exp ($dmid) in $langCode: $spelling.<br />");
 												$translations++;
 											}
 										}
@@ -210,14 +210,14 @@
 					
 					
 					if ($definitions == 0 && $translations == 0) {
-						$wgOut->addHTML("<br/>Nothing added");
+						$wgOut->addHTML("<br />Nothing added");
 						if ($testRun) {
 							$wgOut->addHTML(" (you did a test run)");
 						}
-						$wgOut->addHTML(".<br/>");
+						$wgOut->addHTML(".<br />");
 					}
 					else {
-						$wgOut->addHTML("<br/>Added $definitions definitions and $translations translations.<br/>");
+						$wgOut->addHTML("<br />Added $definitions definitions and $translations translations.<br />");
 					}
 						
 				}

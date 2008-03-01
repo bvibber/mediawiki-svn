@@ -298,9 +298,9 @@ class MultipleUploadForm extends UploadForm {
 		else $ew = '';
 
 		if ( '' != $msg ) {
-			$wgOut->addHTML( "<b>{$this->mUploadSaveName}</b>\n<br/>" );
+			$wgOut->addHTML( "<b>{$this->mUploadSaveName}</b>\n<br />" );
 			$sub = wfMsgHtml( 'multipleupload-addresswarnings' );
-			$wgOut->addHTML( "<b>{$sub}</b><br/><span class='error'>{$msg}</span>\n" );
+			$wgOut->addHTML( "<b>{$sub}</b><br /><span class='error'>{$msg}</span>\n" );
 		}
 		$wgOut->addHTML( '<div id="uploadtext">' );
 		$wgOut->addWikiText( wfMsg('multipleupload-text', $wgMaxUploadFiles) );

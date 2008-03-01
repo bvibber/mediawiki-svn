@@ -204,7 +204,7 @@ define('SEQUENCE_TAG', 'sequence');
 			}
 		}
 		$vidtag.='>';
-		$vidtag.='<!--'.$inline_out.'--></playlist></div><br>';
+		$vidtag.='<!--'.$inline_out.'--></playlist></div><br />';
 		
 		$marker = "xx-marker".count($markerList)."-xx";
 	    $markerList[] = $vidtag;

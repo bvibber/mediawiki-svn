@@ -118,7 +118,7 @@ function wfSpecialConceptMapping() {
 						}
 					}
 				}
-				$wgOut->addHTML("<br>\n");	
+				$wgOut->addHTML("<br />\n");	
 			}
 			if (sizeOf($mappings)>1) { 
 				createConceptMapping($mappings);

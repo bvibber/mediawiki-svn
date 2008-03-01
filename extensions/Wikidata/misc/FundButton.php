@@ -25,7 +25,7 @@ src="http://www.paypal.com/images/x-click-but04.gif" border="0" name=
           </font>
         </form>
 
-<br/>
+<br />
 <a href="http://openprogress.org/Donations%2C_putting_your_money_where_your_mouth_is">More information</A>
   
 ENDHTML;

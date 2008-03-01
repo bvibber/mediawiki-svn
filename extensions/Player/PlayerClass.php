@@ -433,7 +433,7 @@ class Player {
 		}
 
 		if ($caption != '') $caption = htmlspecialchars($caption); //TODO: use parser to convert wikitext -> html!
-		if ($caption != '') $caption .= ' <br/> ';
+		if ($caption != '') $caption .= ' <br /> ';
 		if ($iplink != '') $iplink .= ' | ';
 		if ($splink != '') $splink .= ' | ';
 

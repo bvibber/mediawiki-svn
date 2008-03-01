@@ -135,7 +135,7 @@ $wgPlayerCortadoPlayerTemplate =
 
 			{{{plainalt}}}
 		</applet>
-		{{{#ifunset:terse|<br/><button onclick="document.getElementById(&quot;{{{uniq}}}&quot;).restart();">Restart</button>}}}
+		{{{#ifunset:terse|<br /><button onclick="document.getElementById(&quot;{{{uniq}}}&quot;).restart();">Restart</button>}}}
 		</div>';
 
 # force generic (pseudo-mime)

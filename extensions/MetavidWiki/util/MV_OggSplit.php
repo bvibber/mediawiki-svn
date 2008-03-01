@@ -25,7 +25,7 @@
 	//if( !$f ) die('can\t read file');
 	$ogg_stream = new oggStream($file);
 	$ogg_stream->close();
-	echo "<br>RunTime: " .  round((microtime_float()- $time_start),5);
+	echo "<br />RunTime: " .  round((microtime_float()- $time_start),5);
 	die;
 		
 	//gets the time range
@@ -75,7 +75,7 @@
 			} else {
 			  $this->subtype = "unknown";
 			}
-			echo " type:<tt>".$this->subtype."</tt><br>";				
+			echo " type:<tt>".$this->subtype."</tt><br />";				
 			if ($this->subtype == "audio/x-vorbis") {
 				  $this->channels = ord($header[27+$this->segments+11]);
 				  $this->rate = ord($header[27+$this->segments+15]);
@@ -136,9 +136,9 @@
 				  } else {
 				  	$this->rate = $this->fps_numerator/$this->fps_denominator;
 				  }
-				  echo " ".$this->width."x".$this->height . "<br>";
-				  echo " ".$this->rate." fps <br>";
-				  echo " serial: ".$this->serial. '<br>';
+				  echo " ".$this->width."x".$this->height . "<br />";
+				  echo " ".$this->rate." fps <br />";
+				  echo " serial: ".$this->serial. '<br />';
 			}	
 			echo " (".$this->stream_size." bytes)";
 			//now get the stream length (for educated page location guessing)												
@@ -157,7 +157,7 @@
 				$prev_offset = strlen($end_bytes);
 				foreach($reverse_positions as $offset){
 					$page_length = ($prev_offset - $offset);
-					print "page is " . $offset . " for " . $page_length . ' bytes<br>';
+					print "page is " . $offset . " for " . $page_length . ' bytes<br />';
 					//@@todo store in $this->pages[] with byteoffset from base as key		
 					$cur_page = new oggPage( substr($end_bytes, $offset, $page_length), 
 												$this ) ;
@@ -165,7 +165,7 @@
 				  	if ($cur_page->getSerial() == $this->serial) {
 				  		$this->stream_length = $cur_page->getGranuleposAbsTime();
 				  		// break out of the for loop
-				  		//print "match $offset <br>";
+				  		//print "match $offset <br />";
 				  		break;
 				  	}
 				  	$prev_offset = $offset;
@@ -207,30 +207,30 @@ class oggPage{
 	function getGranulepos(){
 		if(!isset($this->granulepos)){
 			//fine for getting the audio sample:
-			print 'building granulepos from: ' . substr($this->page, 6, 13) . "<br>"; 			
+			print 'building granulepos from: ' . substr($this->page, 6, 13) . "<br />"; 			
 			$granulepos = ord($this->page[6]);
-			print "adding: " . decbin((ord($this->page[6]))) . "<br>";
+			print "adding: " . decbin((ord($this->page[6]))) . "<br />";
 			
 		    $granulepos = $granulepos | (ord($this->page[7]) << 8);
-		    print "adding: " . decbin((ord($this->page[7]) << 8)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[7]) << 8)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[8]) << 16);
-		    print "adding: " . decbin((ord($this->page[8]) << 16)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[8]) << 16)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[9]) << 24);
-		    print "adding: " . decbin((ord($this->page[9]) << 24)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[9]) << 24)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[10]) << 32);
-		    print "adding: " . decbin((ord($this->page[10]) << 32)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[10]) << 32)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[11]) << 40);
-		    print "adding: " . decbin((ord($this->page[11]) << 40)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[11]) << 40)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[12]) << 48);
-		    print "adding: " . decbin((ord($this->page[12]) << 48)) . "<br>";
+		    print "adding: " . decbin((ord($this->page[12]) << 48)) . "<br />";
 		    
 		    $granulepos = $granulepos | (ord($this->page[13]) << 56);
-		    print "adding: " . decbin((ord($this->page[13]) << 56)) . "<br>";	    		    	    		  
+		    print "adding: " . decbin((ord($this->page[13]) << 56)) . "<br />";	    		    	    		  
 		    
 		    $this->granulepos =  $granulepos;		    		    
 		}
@@ -245,10 +245,10 @@ class oggPage{
 	 */
 	function getGranuleposAbsTime(){		
 		if(!isset($this->granule_pos_abs_time)){
-			//echo "div: ". $this->getGranulepos() . " / " . $this->parent_stream->rate . "<br>";
+			//echo "div: ". $this->getGranulepos() . " / " . $this->parent_stream->rate . "<br />";
 			//$this->time_in_stream = $this->getGranulepos()/$this->parent_stream->rate;
-			print "gran full:" .$this->getGranulepos() . "<br>";	
-			print "kfg shift:" . $this->parent_stream->kfgshfit . "<br>";
+			print "gran full:" .$this->getGranulepos() . "<br />";	
+			print "kfg shift:" . $this->parent_stream->kfgshfit . "<br />";
 			//convert kfg shift to binnary mask
 			
 			$granulepos = $this->getGranulepos();
@@ -257,20 +257,20 @@ class oggPage{
 			//for($i=0;$i< $this->parent_stream->kfgshfit;$i++){
 			//	$bit_mask = $bit_mask | (1 << $i);
 			//}			
-			//print "bit mask: " .decbin($bit_mask) . " ". strlen(decbin($bit_mask)) . "<br>";
+			//print "bit mask: " .decbin($bit_mask) . " ". strlen(decbin($bit_mask)) . "<br />";
 			
 			//shift the $granulepos by kfgshfit			
 			$iframe = $granulepos >>  ord($this->parent_stream->kfgshfit);
-			print "iframe: " . $iframe . "<br>";			
+			print "iframe: " . $iframe . "<br />";			
 			
 			$pframe = $granulepos - ($iframe << $this->parent_stream->kfgshfit) ;			
-			print "pframe: " . $pframe . "<br>";
+			print "pframe: " . $pframe . "<br />";
 			
 			$granulepos = ($iframe + $pframe);
-			print "granulespos: " . $granulepos . "<br>";
+			print "granulespos: " . $granulepos . "<br />";
 			
 			$unit = ($granulepos * OGGZ_AUTO_MULT) / $this->parent_stream->rate;
-			print "unit: " . $unit . "<br>";
+			print "unit: " . $unit . "<br />";
 			$this->granule_pos_abs_time = $unit;			
 			/*
 			$num_bytes = floor( $this->parent_stream->kfgshfit / 8 );
@@ -292,10 +292,10 @@ class oggPage{
 		    $granulepos = $granulepos | (ord($this->page[12]) << 48);
 			 		    			
 		    		    
-		    echo "gran piece: " . $granulepos . "<br>";
-		    echo "stream time: " . seconds2ntp($granulepos/1000) . "<br>";
+		    echo "gran piece: " . $granulepos . "<br />";
+		    echo "stream time: " . seconds2ntp($granulepos/1000) . "<br />";
 		    */
-			//echo " gran time: " .substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8 ). "<br>";
+			//echo " gran time: " .substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8 ). "<br />";
 			//echo " time: " . seconds2ntp(substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8));
 			 			
 		}

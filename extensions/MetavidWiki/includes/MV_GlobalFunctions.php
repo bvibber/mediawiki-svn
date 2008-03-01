@@ -114,7 +114,7 @@ function mvSetupExtension(){
 	    'author' => 'Michael Dale',
 	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
-		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br>' .
+		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br />' .
 				'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }	
