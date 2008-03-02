@@ -35,6 +35,13 @@ $messages['hsb'] = array(
 	'editown-desc' => 'Wužiwarjo, kotřiž nimaja prawo wšo wobdźěłować, móža jenož strony wobdźěłać, kotrež su sami wutworili.',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'editown-desc' => '全編集（editall）権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

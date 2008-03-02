@@ -162,6 +162,8 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'importfreeimages'                       => 'នាំចូល រូបភាព សេរី',
+	'importfreeimages_owner'                 => 'អ្នកនិពន្ធ',
 	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
 );
 
@@ -303,9 +305,11 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'importfreeimages'                       => 'Import fon fräie Bielden',
+	'importfreeimages-desc'                  => 'Moaket dän [[Special:ImportFreeImages|Import fon fräie Bielden]] muugelk fon [http://www.flickr.com Flickr]',
 	'importfreeimages_description'           => 'Disse Siede ferlööwet die, ap Flickr ätter Bielden unner ne fräie Lizenz tou säiken un do in dien Wiki tou importierjen.',
 	'importfreeimages_noapikey'              => 'Du hääst noch naan Flickr-API-Koai konfigurierd. Jädden beandraach him [http://www.flickr.com/services/api/misc.api_keys.html hier] un sät him in $wgFlickrAPIKey in ImportFreeImages.php ien.',
 	'importfreeimages_nophotosfound'         => 'Der wuuden neen Fotos mäd do Säikkriterien „$1“ fuunen.',
+	'importfreeimages_invalidurl'            => 'Ju URL "$1" is neen gultige Flickr-Bielde.',
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importierje',
 	'importfreeimages_next'                  => 'Naiste $1',

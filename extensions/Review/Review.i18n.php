@@ -356,6 +356,17 @@ $messages['hsb'] = array(
 	'review_comment'                                         => 'Komentar',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'review_total_statistics'  => 'សរុប',
+	'review_user_details_link' => '(លំអិត)',
+	'review_topic'             => 'ប្រធានបទ',
+	'review_no_opinion'        => 'គ្មានមតិ',
+	'review_comment'           => 'វិចារ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -568,7 +579,11 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'review_sidebar_title'                   => 'సమీక్ష',
+	'review_save'                            => 'సమీక్షని భద్రపరచు',
 	'review_your_review'                     => 'ఈ పేజీ/కూర్పు పై మీ సమీక్ష:',
+	'review_for_page'                        => '"$1" అనే పేజీకై సమీక్ష',
+	'review_for_user'                        => '"$1" అనే వాడుకరికై సమీక్ష',
+	'review_error'                           => 'ఏదో తప్పు జరిగింది!',
 	'review_total_statistics'                => 'మొత్తం',
 	'review_statistics_left_corner'          => 'కూర్పు',
 	'review_version_link'                    => 'కూర్పు #$1',

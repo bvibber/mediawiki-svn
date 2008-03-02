@@ -385,10 +385,13 @@ Om du har några problem så kan du prova <b>Special:Call/DebuG</b>.",
 );
 
 /** Telugu (తెలుగు)
+ * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'call' => 'పిలువు',
+	'call'              => 'పిలువు',
+	'call-save-success' => 'ఈ క్రింది పాఠ్యాన్ని <big>[[$1]]</big> అనే పేజీలో భద్రపరిచాం.',
+	'call-save-failed'  => '<big>[[$1]]</big> అనే పేజీ ఈసరికే ఉన్నందువల్ల ఈ క్రింది పాఠ్యాన్ని అందులో భద్రపరచలేకపోయాం.',
 );
 
 /** Volapük (Volapük)

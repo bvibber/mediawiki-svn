@@ -598,6 +598,7 @@ $messages['id'] = array(
  */
 $messages['is'] = array(
 	'badimages'                => 'Slæmur myndalisti',
+	'badimages-desc'           => 'Lengja slæma myndalistann á MediaWiki',
 	'badimages-add-btn'        => 'Bæta við',
 	'badimages-added'          => '$1 var bætt við listann.',
 	'badimages-count'          => "Það eru '''$1''' myndir á slæma myndalistanum.",
@@ -673,13 +674,23 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'badimages'                => 'បញ្ជី រូបភាពអន់',
 	'badimages-add-btn'        => 'បន្ថែម',
 	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
+	'badimages-count'          => "មាន '''$1''' រូបភាព លើបញ្ជី​ រូបភាពអន់ ។",
 	'badimages-name'           => 'ឈ្មោះ៖',
+	'badimages-not-added'      => 'រូបភាព មិនអាចត្រូវបាន បន្ថែម ។',
+	'badimages-not-removed'    => 'រូបភាព មិនអាចត្រូវបាន ដកចេញ ។',
 	'badimages-reason'         => 'ហេតុផល៖',
 	'badimages-remove'         => '(ដកចេញ)',
 	'badimages-remove-btn'     => 'ដកចេញ',
 	'badimages-remove-confirm' => 'សូមបញ្ជាក់ទទួលស្គាល់ ថា អ្នកប្រាថ្នា ដកចេញ $1 ពីបញ្ជី ៖',
+	'badimages-removed'        => '$1 បានត្រូវ ដកចេញ ពី បញ្ជី ។',
+	'badimages-log-name'       => 'បញ្ជី រូបភាពអន់',
+	'badimages-log-header'     => 'មានកំណត់ហេតុ នៃ បំលាស់ប្តូរ នៅ [[{{MediaWiki:Badimages-page}}|បញ្ជី រូបភាពអន់]]។',
+	'badimages-log-add'        => 'បានបន្ថែម [[$1]] ទៅ បញ្ជី រូបភាពអន់',
+	'badimages-log-remove'     => 'បានដកចេញ [[$1]] ពី បញ្ជី រូបភាពអន់',
+	'badimages-page'           => '{{ns:help}}:បញ្ជី រូបភាពអន់',
 );
 
 /** Kurdish (Kurdî / كوردی)
@@ -739,6 +750,13 @@ $messages['lb'] = array(
 	'badimages-log-add'        => "huet [[$1]] op d'Lëscht vun den onerwënschte Biller derbäigesat",
 	'badimages-log-remove'     => 'huet [[$1]] vun der Lëscht vun den onerwënschte Biller erofgeholl',
 	'badimages-page'           => '{{ns:help}}: Lëscht vun den onerwënschte Biller',
+);
+
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'badimages-name' => 'ຊື່ອ :',
 );
 
 /** Lozi (Silozi)

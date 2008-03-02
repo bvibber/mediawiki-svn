@@ -55,6 +55,17 @@ $messages['de'] = array(
 	'purgecache-button'  => 'Löschen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'purgecache'         => 'Ĝisdatigu kaŝmemoron.',
+	'purgecache-desc'    => '[[Special:PurgeCache|Speciala paĝo]] por forviŝi la OBJECTCACHE-tabelon',
+	'purgecache-warning' => 'Ĉi tiu ĝisdatigos la kaŝmemorajn tabelojn.',
+	'purgecache-purged'  => 'La kaŝmemoro estas ĝisdatigita.',
+	'purgecache-button'  => 'Ĝisdatigu',
+);
+
 $messages['fr'] = array(
 	'purgecache'         => 'Purger le cache',
 	'purgecache-desc'    => '[[Special:PurgeCache|Page spéciale]] utilisée pour effacer la table OBJECTCACHE',

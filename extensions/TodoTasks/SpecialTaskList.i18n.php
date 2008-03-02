@@ -60,13 +60,15 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'tasklist'             => 'Списък със задачи',
-	'tasklistbyproject'    => 'Списък със задачи по проект',
-	'tasklistmytasks'      => 'Моите задачи',
-	'tasklistbyprojectbad' => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistchooseproj'   => 'Избор на проект:',
-	'tasklistprojdisp'     => 'Показване',
-	'tasklistbyname'       => '== Списък със задачи за %s ==',
+	'tasklist'               => 'Списък със задачи',
+	'tasklist-special-desc'  => 'Добавя специална страница със [[Special:TaskList|списък със задачи]].',
+	'tasklistbyproject'      => 'Списък със задачи по проект',
+	'tasklistunknownproject' => 'Неизвестен проект',
+	'tasklistmytasks'        => 'Моите задачи',
+	'tasklistbyprojectbad'   => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistchooseproj'     => 'Избор на проект:',
+	'tasklistprojdisp'       => 'Показване',
+	'tasklistbyname'         => '== Списък със задачи за %s ==',
 );
 
 $messages['de'] = array(
@@ -233,11 +235,13 @@ Op %s kan u uw complete takenlijst bekijken.
 Het waarschuwingssysteem',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'tasklist'               => 'Oppgaveliste',
+	'tasklist-parser-desc'   => 'legger til <nowiki>{{#todo:}}</nowiki> for tildeling av oppgaver',
+	'tasklist-special-desc'  => 'Legger til en spesialside for gjennomgang av [[Special:TaskList|oppgaver]]',
 	'tasklistbyproject'      => 'Oppgaveliste etter prosjekt',
 	'tasklistunknownproject' => 'Ukjent prosjekt',
 	'tasklistunspecuser'     => 'Bruker ikke angitt',

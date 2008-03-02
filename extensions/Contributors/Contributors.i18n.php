@@ -360,6 +360,15 @@ $messages['kk-tr'] = array(
 	'contributors-nosuchpage' => '$1 degen maqala bizde joq.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'contributors'            => 'អ្នករួមចំណែក',
+	'contributors-submit'     => 'បង្ហាញ',
+	'contributors-nosuchpage' => 'គ្មានទំព័រ $1 ។',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
@@ -708,6 +717,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'contributors-target'     => 'శీర్షిక:',
 	'contributors-submit'     => 'చూపించు',
+	'contributors-others'     => 'మరియు $1గురు ఇతరులు',
 	'contributors-badtitle'   => 'తప్పుడు శీర్షిక.',
 	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
 );

@@ -129,6 +129,13 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 	'minipreview-no_category_gallery' => 'Nincsenek kategóriák vagy galériák!',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ក្រុម ឬ ទីតាំងពិពណ៌!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -260,7 +267,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'minipreview-files_in_category' => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
+	'minipreview-files_in_category'  => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
+	'minipreview-no_more_files_here' => 'ఇటువైపు ఇంకేమీ ఫైళ్ళు లేవు.',
 );
 
 /** Turkish (Türkçe)

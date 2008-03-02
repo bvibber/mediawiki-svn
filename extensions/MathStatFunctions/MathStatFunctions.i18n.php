@@ -111,6 +111,15 @@ $messages['ja'] = array(
         'msfunc_div_zero' => "0で割り算しました",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'msfunc_nan'      => 'លទ្ធផល មិនជា តួលេខ',
+	'msfunc_inf'      => 'លទ្ធផល ជា តំលៃគ្មានកំណត់',
+	'msfunc_div_zero' => 'ចែក នឹង សូន្យ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -197,6 +206,13 @@ $messages['stq'] = array(
 	'msfunc_nan'      => 'Resultoat is neen Taal',
 	'msfunc_inf'      => 'Resultoatwäid is uuneendelk',
 	'msfunc_div_zero' => 'Division truch Nul',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'msfunc_div_zero' => 'సున్నాతో భాగాహారం',
 );
 
 $messages['yue'] = array(

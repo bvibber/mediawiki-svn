@@ -92,6 +92,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Meithal
  */
 $messages['fr'] = array(
 	'edituser-desc'     => "Permet aux utilisateurs disposant de certains privilèges d'éditer les préférences des autres utilisateurs.",
@@ -99,8 +100,8 @@ $messages['fr'] = array(
 	'edituser-logout'   => 'Ferme la session utilisateur',
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Rechercher',
-	'edituser-nouser'   => 'L’utilisateur indiqué n’existe pas',
-	'edituser-exempt'   => 'L’utilisateur indiqué ne peut être modifié.',
+	'edituser-nouser'   => "L'utilisateur spécifié n'existe pas",
+	'edituser-exempt'   => "L'utilisateur spécifié ne peut pas être modifié",
 );
 
 /** Galician (Galego)
@@ -113,6 +114,8 @@ $messages['gl'] = array(
 	'edituser-logout'   => 'Saír do sistema',
 	'edituser-username' => 'Nome',
 	'edituser-dosearch' => 'Procurar',
+	'edituser-nouser'   => 'O usuario especificado non existe',
+	'edituser-exempt'   => 'O usuario especificado non pode ser editado',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -132,6 +135,19 @@ $messages['hsb'] = array(
 $messages['is'] = array(
 	'edituser-username' => 'Nafn',
 	'edituser-dosearch' => 'Leita',
+);
+
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'edituser-desc'     => '権限を持つ利用者が、他利用者のオプションを変更できるようにする',
+	'edituser'          => '利用者情報の編集',
+	'edituser-logout'   => 'ログアウト',
+	'edituser-username' => '利用者名',
+	'edituser-dosearch' => '検索',
+	'edituser-nouser'   => '指定された利用者は存在しません',
+	'edituser-exempt'   => '指定された利用者は編集できません',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -168,7 +184,7 @@ $messages['nl'] = array(
 	'edituser-exempt'   => 'De opgegeven gebruiker kan niet bewerkt worden',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -177,6 +193,8 @@ $messages['no'] = array(
 	'edituser-logout'   => 'Logg ut brukeren',
 	'edituser-username' => 'Navn',
 	'edituser-dosearch' => '{{int:Search}}',
+	'edituser-nouser'   => 'Den angitte brukeren finnes ikke',
+	'edituser-exempt'   => 'Det angitte brukeren kan ikke redigeres',
 );
 
 /** Occitan (Occitan)
@@ -188,6 +206,8 @@ $messages['oc'] = array(
 	'edituser-logout'   => "Tampa la session d'utilizaire",
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Recercar',
+	'edituser-nouser'   => "L'utilizaire especificat existís pas",
+	'edituser-exempt'   => "L'utilizaire especificat pòt pas èsser modificat",
 );
 
 /** Pashto (پښتو)
@@ -229,6 +249,8 @@ $messages['sk'] = array(
 	'edituser-logout'   => 'Odhlásiť používateľa',
 	'edituser-username' => 'Meno',
 	'edituser-dosearch' => 'Hľadať',
+	'edituser-nouser'   => 'Uvedený používateľ neexistuje',
+	'edituser-exempt'   => 'Uvedeného používateľa nie je možné upravovať',
 );
 
 /** Swedish (Svenska)

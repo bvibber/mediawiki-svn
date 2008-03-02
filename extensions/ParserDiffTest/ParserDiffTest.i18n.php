@@ -350,6 +350,13 @@ $messages['ja'] = array(
 	'pdt_comparing_page'  => '[[$1]]のパーサー出力を比較',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'pdtest_ok' => 'យល់ព្រម',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -51,13 +51,14 @@ $messages['ast'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author Borislav
  * @author DCLXVI
  */
 $messages['bg'] = array(
 	'crossnamespacelinks'         => 'Препратки между различни именни пространства',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Списък с препратки между именните пространства]], които не би трябвало да съществуват в {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Тази страница съдържа списък от препратки от страница от основното именно пространство към страници в други именни пространства (с изключение на {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), които препратки не е препоръчително да се използват.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|сочат|сочи}} към $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|препратки|препратка}} към $3',
 );
 
 /** Bengali (বাংলা)
@@ -122,6 +123,14 @@ $messages['et'] = array(
 	'crossnamespacelinks'         => 'Lingid teise nimeruumi',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'crossnamespacelinks'         => 'Izen ezberdineko orrialdeen arteko loturak',
+	'crossnamespacelinks-summary' => 'Orrialde honek izen-tarte nagusikoak izanik beste izen-tarte batzuetan dauden orrialdeetara loturak dituzten orrialdeak zerrendatzen ditu ({{ns:special}}, {{ns:talk}}, {{ns:project}} eta {{ns:template}} izen-tarteak izan ezik), eta hori ez da gomendagarria.',
+);
+
 /** فارسی (فارسی)
  * @author Huji
  */
@@ -170,13 +179,14 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
 	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Listaxe ás ligazóns aos espazos de nomes]] que non existían en {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara a $3',
 );
 
 $messages['hak'] = array(
@@ -498,13 +508,13 @@ $messages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 
-
 /** Seeltersk (Seeltersk)
  * @author Pyt
  * @author Maartenvdbent
  */
 $messages['stq'] = array(
 	'crossnamespacelinks'         => 'Sieden mäd Links ätter uur Noomensruume',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lieste fon do  Ferbiendengen ap Sieden fon uur Noomensruume]], do der in {{SITENAME}} nit foarhounden weese schuulen',
 	'crossnamespacelinks-summary' => 'Disse Lieste wiest Sieden, do der Ferbiendengen ap Sieden fon uur Noomensruume änthoolde. Uutgenuumen sunt deerbie do Noomensruume {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}}.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|Ferbiendenge wiest|Ferbiendengen wiese}} in dän $3-Noomensruum',
 );

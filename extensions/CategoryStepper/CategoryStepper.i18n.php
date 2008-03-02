@@ -194,11 +194,11 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'categorystepper-desc'  => 'Visar en kategoribläddrarruta (länkar till nästa och föregående sida) på sidor i en grupp av kategorier.',
+	'categorystepper-desc'  => 'Visar en kategoribläddrarruta som tillåter en att navigera fram och tillbaka alfabetiskt genom en eller fler kategorier en sida är i',
 	'categorystepper-end'   => '(Slut på kategorin)',
 	'categorystepper-start' => '(Början på kategorin)',
 );

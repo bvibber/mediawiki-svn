@@ -119,16 +119,21 @@ $messages['el'] = array(
 	'countedits-ok' => 'ΟΚ',
 );
 
+/** Esperanto (Esperanto)
+ * @author Tlustulimu
+ * @author Yekrats
+ */
 $messages['eo'] = array(
-	'countedits' => 'Nombro de redaktoj',
-	'countedits-warning' => '\'\'\'Averto:\'\'\' Ne juĝu libron laŭ ĝia kovrilo. Ne juĝu kontribuanton laŭ lia redaktaro.',
-	'countedits-username' => 'Uzantonomo:',
-	'countedits-ok' => 'Ek',
-	'countedits-nosuchuser' => 'Ne ekzistas uzanto kun la nomo $1.',
+	'countedits'              => 'Nombro de redaktoj',
+	'countedits-desc'         => '[[Special:CountEdits|Speciala paĝo]] kiu kontas redaktojn de uzantoj kaj montras liston de la 10 plej aktivaj kontribuantoj.',
+	'countedits-warning'      => "'''Averto:''' Ne juĝu libron laŭ ĝia kovrilo. Ne juĝu kontribuanton laŭ lia redaktaro.",
+	'countedits-username'     => 'Uzantonomo:',
+	'countedits-ok'           => 'Ek',
+	'countedits-nosuchuser'   => 'Ne ekzistas uzanto kun la nomo $1.',
 	'countedits-resultheader' => 'Rezultoj por $1',
-	'countedits-resulttext' => '$1 faris $2 redaktojn',
-	'countedits-mostactive' => 'Plej aktivaj kontribuantoj',
-	'countedits-nocontribs' => 'Ne estas iuj kontribuaĵoj por ĉi tiu vikio.',
+	'countedits-resulttext'   => '$1 faris $2 redaktojn',
+	'countedits-mostactive'   => 'Plej aktivaj kontribuantoj',
+	'countedits-nocontribs'   => 'Ne estas iuj kontribuaĵoj por ĉi tiu vikio.',
 );
 
 $messages['ext'] = array(
@@ -327,6 +332,7 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'countedits-username' => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
+	'countedits-ok'       => 'យល់ព្រម',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -647,6 +653,7 @@ $messages['te'] = array(
 	'countedits-ok'           => 'సరే',
 	'countedits-nosuchuser'   => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',
 	'countedits-resultheader' => '$1కి ఫలితాలు',
+	'countedits-resulttext'   => '$1 $2 మార్పులు చేసారు',
 );
 
 $messages['tet'] = array(

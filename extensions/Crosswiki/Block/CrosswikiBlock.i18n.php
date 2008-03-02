@@ -190,6 +190,51 @@ Zurück zu:
 'crosswikiunblock-local'                => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'crosswikiblock-desc'           => 'Permesas forbari uzantojn ĉe aliaj vikioj uzante [[Special:Crosswikiblock|specialan paĝon]]',
+	'crosswikiblock'                => 'Forbaru uzanton ĉe alia vikio',
+	'crosswikiblock-header'         => 'Ĉi paĝo permesas forbari uzanton ĉe alia vikio.
+Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutmanierojn.',
+	'crosswikiblock-target'         => 'IP-adreso aŭ uzanto-nomo kaj cela vikio:',
+	'crosswikiblock-expiry'         => 'Findato:',
+	'crosswikiblock-reason'         => 'Kialo:',
+	'crosswikiblock-submit'         => 'Forbaru ĉi uzanton',
+	'crosswikiblock-anononly'       => 'Forbaru nur anonimajn uzantojn',
+	'crosswikiblock-nocreate'       => 'Preventu kreadon de kontoj',
+	'crosswikiblock-autoblock'      => 'Aŭtomate forbaru la lastan IP-adreson uzatan de ĉi uzanto, kaj iujn ajn postajn el kiujn ili provas redakti.',
+	'crosswikiblock-noemail'        => 'Preventu de uzanto sendi retpoŝton',
+	'crosswikiunblock'              => 'Malforbaru uzanton ĉe alia vikio',
+	'crosswikiunblock-header'       => 'Ĉi paĝo permesas malforbari uzanton ĉe alia vikio.
+Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutmanierojn.',
+	'crosswikiunblock-user'         => 'Uzanto-nomo, IP-adreso, aŭ forbaro-identigo kaj cela vikio:',
+	'crosswikiunblock-reason'       => 'Kialo:',
+	'crosswikiunblock-submit'       => 'Malforbaru ĉi uzanton',
+	'crosswikiunblock-success'      => "Uzanto '''$1''' malforbarita sukcese.
+
+Reen:
+* [[Special:CrosswikiBlock|Forbarpaĝo]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Neniu uzanto-nomo estis entajpita',
+	'crosswikiblock-local'          => 'Lokaj forbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Datumbazo $1 ne ekzistas.',
+	'crosswikiblock-noname'         => '"$1" ne estas valida uzanto-nomo.',
+	'crosswikiblock-nouser'         => 'Uzanto "$3" ne estas trovita.',
+	'crosswikiblock-noexpiry'       => 'Nevalida findato: $1.',
+	'crosswikiblock-noreason'       => 'Nenia kialo donata.',
+	'crosswikiblock-notoken'        => 'Nevalida redakta ĵetono.',
+	'crosswikiblock-alreadyblocked' => 'Uzanto $3 jam estas forbarita.',
+	'crosswikiblock-noblock'        => 'Ĉi uzanto ne estas forbarita.',
+	'crosswikiblock-success'        => "Uzanto '''$3''' sukcese forbarita.
+
+Reen:
+* [[Special:CrosswikiBlock|Forbarpaĝo]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:Ipblocklist]]',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Meithal
@@ -240,6 +285,7 @@ Revenir vers :
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
@@ -252,12 +298,21 @@ $messages['gl'] = array(
 	'crosswikiblock-anononly'       => 'Bloquear só usuarios anónimos',
 	'crosswikiblock-nocreate'       => 'Impedir a creación de contas',
 	'crosswikiblock-noemail'        => 'Advertir ao usuario do envío de correo electrónico',
+	'crosswikiunblock'              => 'Desbloquear este usuario noutro wiki',
+	'crosswikiunblock-reason'       => 'Razón:',
+	'crosswikiunblock-submit'       => 'Desbloquear este usuario',
+	'crosswikiunblock-success'      => "O usuario '''$1''' foi desbloqueado con éxito.
+
+Voltar a:
+* [[Special:CrosswikiBlock|Formulario de bloqueo]]
+* [[$2]]",
 	'crosswikiblock-dbnotfound'     => 'A base de datos $1 non existe',
 	'crosswikiblock-noname'         => '"$1" non é un nome de usuario válido.',
 	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
 	'crosswikiblock-noexpiry'       => 'Caducidade non válida: $1.',
 	'crosswikiblock-noreason'       => 'Ningunha razón especificada.',
 	'crosswikiblock-alreadyblocked' => 'O usuario $3 xa está bloqueado.',
+	'crosswikiblock-noblock'        => 'Este usuario non está bloqueado.',
 	'crosswikiblock-success'        => "O usuario '''$3''' foi bloqueado con éxito.
 
 Voltar a:
@@ -310,15 +365,66 @@ Wróćo k:
 	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist]]',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'crosswikiblock-desc'           => '他ウィキでも利用者をブロックすることができる[[Special:Crosswikiblock|{{int:specialpage}}]]。',
+	'crosswikiblock'                => '他ウィキの利用者をブロック',
+	'crosswikiblock-header'         => 'このページでは他ウィキの利用者をブロックすることができます。
+あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
+	'crosswikiblock-target'         => 'IPアドレスか利用者名、および対象となるウィキ:',
+	'crosswikiblock-expiry'         => 'ブロック期限:',
+	'crosswikiblock-reason'         => 'ブロック理由:',
+	'crosswikiblock-submit'         => 'この利用者をブロック',
+	'crosswikiblock-anononly'       => '匿名利用者以外はブロックできません',
+	'crosswikiblock-nocreate'       => 'アカウント作成が拒否されています',
+	'crosswikiblock-autoblock'      => 'この利用者が最近編集に使用したIPアドレスは、全て自動的にブロックされているものです',
+	'crosswikiblock-noemail'        => '電子メールを送ることのできない利用者です',
+	'crosswikiunblock'              => '他ウィキの利用者をブロック解除',
+	'crosswikiunblock-header'       => 'このページでは他ウィキの利用者をブロック解除することができます。
+あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
+	'crosswikiunblock-user'         => '利用者名かIPアドレスまたはブロックID、および対象となるウィキ:',
+	'crosswikiunblock-reason'       => 'ブロック解除理由:',
+	'crosswikiunblock-submit'       => 'この利用者のブロックを解除',
+	'crosswikiunblock-success'      => "利用者 '''$1''' のブロックを解除しました。
+
+元のページへ戻る:
+* [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => '利用者名が入力されていません',
+	'crosswikiblock-local'          => 'このウィキ自身における利用者ブロックを、このページでは行えません。[[{{ns:special}}:Blockip]]を利用してください。',
+	'crosswikiblock-dbnotfound'     => 'データベース $1 が存在しません',
+	'crosswikiblock-noname'         => '"$1" は、不正な利用者名です。',
+	'crosswikiblock-nouser'         => '利用者 "$3" が見つかりません。',
+	'crosswikiblock-noexpiry'       => '不正な期限指定です: $1',
+	'crosswikiblock-noreason'       => '理由が記入されていません。',
+	'crosswikiblock-notoken'        => '編集トークンが不正です。',
+	'crosswikiblock-alreadyblocked' => '利用者 $3 は、既にブロックされています。',
+	'crosswikiblock-noblock'        => 'この利用者は、ブロックされていません。',
+	'crosswikiblock-success'        => "利用者 '''$1''' をブロックしました。
+
+元のページへ戻る:
+* [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
+* [[$2]]",
+	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[{{ns:special}}:Ipblocklist]]を利用してください。',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
 $messages['km'] = array(
 	'crosswikiblock-target'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
 	'crosswikiblock-reason'     => 'ហេតុផល ៖',
+	'crosswikiblock-submit'     => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
+	'crosswikiblock-anononly'   => 'រាំងខ្ទប់ តែ អ្នកប្រើប្រាស់ អនាមិក',
+	'crosswikiunblock'          => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគី ផ្សេង',
 	'crosswikiunblock-reason'   => 'ហេតុផល ៖',
+	'crosswikiunblock-submit'   => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
 	'crosswikiblock-nousername' => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
+	'crosswikiblock-dbnotfound' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
 	'crosswikiblock-noname'     => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
+	'crosswikiblock-nouser'     => 'រកមិនឃើញ អ្នកប្រើប្រាស់ "$3" ។',
 	'crosswikiblock-noreason'   => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 );
 
@@ -598,6 +704,51 @@ Vrátiť sa na:
 	'crosswikiunblock-local'        => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:Ipblocklist]].',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'crosswikiblock-desc'           => "Ferlööwet ju Speere fon Benutsere in uur Wiki's uur ne [[Special:Crosswikiblock|Spezioalsiede]]",
+	'crosswikiblock'                => 'Speer Benutser in n uur Wiki',
+	'crosswikiblock-header'         => 'Disse Spezioalsiede ferlööwet ju Speere fon n Benutser in n uur Wiki.
+Wröich, of du ju Beföichnis hääst, in dissen uur Wiki tou speeren un of dien Aktion do Gjuchtlienjen fon do äntspräkt.',
+	'crosswikiblock-target'         => 'IP-Adresse of Benutsernoome un Sielwiki:',
+	'crosswikiblock-expiry'         => 'Speerduur:',
+	'crosswikiblock-reason'         => 'Begruundenge:',
+	'crosswikiblock-submit'         => 'IP-Adresse/Benutser speere',
+	'crosswikiblock-anononly'       => 'Speer bloot anonyme Benutsere (anmäldede Benutsere mäd disse IP-Adresse wäide nit speerd). In fuul Falle is dät beeter.',
+	'crosswikiblock-nocreate'       => 'Dät Moakjen fon Benutserkonten ferhinnerje',
+	'crosswikiblock-autoblock'      => 'Speer ju aktuell fon dissen Benutser bruukte IP-Adresse as uk automatisk aal do foulgjende, fon do uut hie Beoarbaidengen of dät Anlääsen fon Benutserkonten fersäkt.',
+	'crosswikiblock-noemail'        => 'E-Mail-Ferseenden speere',
+	'crosswikiunblock'              => 'Äntspeer Benutser in n uur Wiki',
+	'crosswikiunblock-header'       => 'Disse Spezioalsiede ferlööwet ju Aphieuwenge fon ne Benutserspeere in n uur Wiki.
+Wröich, of du ju Beföichnis hääst, in dissen uur Wiki tou speeren un of dien Aktion hiere Gjuchlienjen äntspräkt.',
+	'crosswikiunblock-user'         => 'IP-Adresse of Benutsernoome un Sielwiki:',
+	'crosswikiunblock-reason'       => 'Begruundenge:',
+	'crosswikiunblock-submit'       => 'Speere foar IP-Adresse/Benutser aphieuwje',
+	'crosswikiunblock-success'      => "Benutser '''„$1“''' mäd Ärfoulch äntspeerd.
+
+Tourääch tou:
+* [[Special:CrosswikiBlock|Speerformular]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Der wuude naan Benutsernoome ienroat',
+	'crosswikiblock-local'          => 'Lokoale Speeren wäide truch disse Interface nit unnerstutsed. Benutsje [[{{#special:Blockip}}]]',
+	'crosswikiblock-dbnotfound'     => 'Doatenboank $1 is nit deer',
+	'crosswikiblock-noname'         => '„$1“ is naan gultigen Benutsernoome.',
+	'crosswikiblock-nouser'         => 'Benutser "$3" nit fuunen.',
+	'crosswikiblock-noexpiry'       => 'Uungultige Speerduur: $1.',
+	'crosswikiblock-noreason'       => 'Begruundenge failt.',
+	'crosswikiblock-notoken'        => 'Uungultich Beoarbaidengs-Token.',
+	'crosswikiblock-alreadyblocked' => 'Benutser "$3" is al speerd.',
+	'crosswikiblock-noblock'        => 'Dissen Benutser is nit speerd.',
+	'crosswikiblock-success'        => "Benutser '''„$3“''' mäd Ärfoulch speerd.
+
+Tourääch tou:
+* [[Special:CrosswikiBlock|Speerformular]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Lokoale Speeren wäide uur dit Interface nit unnerstutsed. Benutsje [[{{#special:Ipblocklist}}]].',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -647,12 +798,16 @@ Gå tillbaka till:
  * @author Veeven
  */
 $messages['te'] = array(
-	'crosswikiblock-reason'   => 'కారణం:',
-	'crosswikiblock-submit'   => 'ఈ వాడుకరిని నిరోధించండి',
-	'crosswikiblock-nocreate' => 'ఖాతా సృష్టింపుని నివారించు',
-	'crosswikiunblock-reason' => 'కారణం:',
-	'crosswikiblock-noname'   => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
-	'crosswikiblock-nouser'   => '"$3" అనే వాడుకరి కనబడలేదు.',
-	'crosswikiblock-noreason' => 'కారణం తెలుపలేదు.',
+	'crosswikiblock-target'     => 'IP చిరునామా లేదా వాడుకరిపేరు మరియు గమ్యస్థానపు వికీ:',
+	'crosswikiblock-reason'     => 'కారణం:',
+	'crosswikiblock-submit'     => 'ఈ వాడుకరిని నిరోధించండి',
+	'crosswikiblock-anononly'   => 'అనామక వాడుకరులను మాత్రమే నిరోధించు',
+	'crosswikiblock-nocreate'   => 'ఖాతా సృష్టింపుని నివారించు',
+	'crosswikiunblock-reason'   => 'కారణం:',
+	'crosswikiblock-nousername' => 'వాడుకరిపేరు ఇవ్వలేదు',
+	'crosswikiblock-dbnotfound' => '$1 అనే డాటాబేసు లేదు',
+	'crosswikiblock-noname'     => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
+	'crosswikiblock-nouser'     => '"$3" అనే వాడుకరి కనబడలేదు.',
+	'crosswikiblock-noreason'   => 'కారణం తెలుపలేదు.',
 );
 

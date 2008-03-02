@@ -204,6 +204,7 @@ $messages['hy'] = array(
  */
 $messages['is'] = array(
 	'block_title_error_page_title' => 'Bannaður Titill',
+	'block_title_error-desc'       => 'Gerir það kleift á einfaldan hátt að banna að síður með ákveðna titila séu vistaðar eða búnar til',
 	'block_title_error'            => 'Því miður, ekki er heimilt að vista titil þessara síðu.',
 );
 
@@ -262,6 +263,13 @@ Mändemeler üşin «#» nışanın qoldanıñız.',
 	'titleblacklist-forbidden-move'   => '«$2» degen «$3» degenge jıljıtılmaýdı, sebebi «$3» degen ataw jaratwı qulıptalğan. Bul qara tizimniñ jazbasına säýkes: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => '«$2» degen faýl atı jaratwı qulıptalğan.  Bul qara tizimniñ jazbasına säýkes: <code>$1</code>',
 	'titleblacklist-invalid'          => 'Atawlardıñ qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} {{PLURAL:$1||}} jaramsız; saqtaw aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'block_title_error_page_title' => 'ចំណងជើង ត្រូវបាន រាំងខ្ទប់',
 );
 
 /** Latin (Latina)

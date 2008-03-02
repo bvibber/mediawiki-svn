@@ -68,6 +68,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'spamdifftool_confirm'          => "Необходимо е потвърждение за добавяне на записите в списъка със спам (Нередности могат да се съобщават <a href='$1' target='new'>на тази страница</a>.)",
 	'spamdifftool_summary'          => 'Добавяне към черния списък със спам',
 	'spamdifftool_spam_link_text'   => 'добавяне в спам',
 	'spamdifftool_option_domain'    => 'всичко от този домейн',
@@ -179,6 +180,13 @@ $messages['hsb'] = array(
  */
 $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'spamdifftool_submit_buttom' => 'ដាក់ស្នើ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

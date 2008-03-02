@@ -145,6 +145,7 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'lucene-desc'           => 'Интерфейс за търсещата машина Apache Lucene',
 	'searchnumber'          => '<strong>Резултати $1–$2 от $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Предишни</span>",
 	'searchnext'            => "<span style='font-size: small'>Следващи</span> &#x00BB;",
@@ -394,6 +395,18 @@ See on tõenäoliselt ainult ajutine;
 proovige mõne hetke pärast uuesti või otsige välise teenuse abil:',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'searchnumber'      => '<strong>$3tik, $1-$2 emaitzak </strong>',
+	'searchprev'        => "&#x00AB; <span style='font-size: small'>Aurrekoa</span>",
+	'searchnext'        => "<span style='font-size: small'>Hurrengoa</span> &#x00BB;",
+	'searchdidyoumean'  => '"<a href="$1">$2</a>" esan nahi zenuen?',
+	'searchnoresults'   => 'Barkatu, ez dago erantzunik zure bilaketarentzat.',
+	'searchnearmatches' => '<b>Orrialde hauek zure kontsultaren antzeko izenburuak dituzte:</b>',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -490,7 +503,7 @@ $messages['fr'] = array(
 	'lucene-searchscore'    => 'Pertinence : $1%',
 	'lucene-resultsize'     => '$1 ($2 mots)',
 	'searchdidyoumean'      => 'Pensiez-vous à : « <a href="$1">$2</a> » ?',
-	'searchnoresults'       => "Le moteur de recherche n'a trouvé aucune correspondance exacte à votre requête.",
+	'searchnoresults'       => "<big>Le moteur de recherche n'a trouvé aucune correspondance exacte à votre requête.</big>",
 	'searchnearmatches'     => '<strong>Ces pages ont un titre similaire à votre requête.</strong>',
 	'lucenepowersearchtext' => 'Rechercher dans les espaces :
 
@@ -845,7 +858,16 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
  * @author Chhorran
  */
 $messages['km'] = array(
-	'searchincategory' => 'ក្នុងចំណាត់ក្រុម',
+	'searchnumber'          => '<strong>លទ្ធផល ពី $1 ដល់ $2 នៃ $3</strong>',
+	'searchnext'            => "<span style='font-size: small'>បន្ទាប់</span> &#x00BB;",
+	'lucene-resultsize'     => '$1 ($2 ពាក្យ)',
+	'lucenepowersearchtext' => 'ស្វែងរក ក្នុង វាលឈ្មោះ ៖
+
+$1
+
+ស្វែងរក $3 $9 $10',
+	'searchall'             => 'ទាំងអស់',
+	'searchincategory'      => 'ក្នុងចំណាត់ក្រុម',
 );
 
 $messages['la'] = array(
@@ -1074,7 +1096,7 @@ $messages['oc'] = array(
 	'lucene-searchscore'    => 'Pertinéncia : $1%',
 	'lucene-resultsize'     => '$1 ($2 mots)',
 	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
-	'searchnoresults'       => 'O planhem, existís pas cap de correspondéncia exacta a vòstra requèsta.',
+	'searchnoresults'       => 'O planhèm, existís pas cap de correspondéncia exacta a vòstra requèsta.',
 	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
 	'lucenepowersearchtext' => 'Recercar dins los espacis :
 

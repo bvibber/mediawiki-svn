@@ -40,6 +40,17 @@ Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 $2',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'email-desc'   => 'Permesas proprajn subtitolojn/supratitolojn esti aldonata al retpoŝtoj al uzantoj.',
+	'email_footer' => '---------------------------------------------------------------------------
+Ĉi retpoŝto estis sendita al vi per la {{SITENAME}} retpoŝta sistemo de $1.
+
+$2',
+);
+
 $messages['fa'] = array (
 	'email_footer' => '----------------------------------------------------------------------------
 این نامه از طریق سامانه پست الکترونیکی {{SITENAME}} توسط $1 برای شما ارسال شده‌است.

@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'multiboilerplate-submit' => 'Začitać',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'multiboilerplate-submit' => 'ផ្ទុក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

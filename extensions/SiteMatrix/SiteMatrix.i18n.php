@@ -216,6 +216,15 @@ $messages['et'] = array(
 	'sitematrix-language' => 'Keel',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'sitematrix'          => 'Wikimediako beste hizkuntzatako proiektuen zerrenda',
+	'sitematrix-language' => 'Hizkuntza',
+	'sitematrix-others'   => 'Wikimediaren beste proiektuak',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -482,7 +491,9 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'sitematrix-project' => 'ឈ្មោះ នៃគំរោង, តំណភ្ជាប់ អន្តរគំរោង និង តំណភ្ជាប់ អន្តរវិគី',
+	'sitematrix-language'  => 'ភាសា',
+	'sitematrix-project'   => 'ឈ្មោះ នៃគំរោង, តំណភ្ជាប់ អន្តរគំរោង និង តំណភ្ជាប់ អន្តរវិគី',
+	'sitematrix-sitetotal' => 'សរុប',
 );
 
 /** Korean (한국어)

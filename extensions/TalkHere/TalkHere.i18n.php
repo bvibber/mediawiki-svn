@@ -245,6 +245,19 @@ Bul mändemeler mağlumatına torap meñgerwşilerdiñ jawapkerşiligi bolmawı 
 	'talkhere-collapse'    => 'öñdewişti jasır',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'talkhere-foottext'    => 'សារខាងលើ អាចបានត្រូវដាក់ ដោយ អ្នកចូលទស្សនា។
+
+អ្នកថែទាំសៃថ៍ អាចមិនទទួលខុសត្រូវ ចំពោះខ្លឹមសារ នៃ វិចារបែបនោះ។',
+	'talkhere-talkpage'    => 'ទំព័រពិភាក្សា',
+	'talkhere-notalk'      => "''(មិនទាន់មាន វិចារ)''",
+	'talkhere-addcomment'  => 'បន្ថែម វិចារ',
+	'talkhere-beforeinput' => 'អ្នកអាចបន្ថែម វិចារ ខាងក្រោម',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

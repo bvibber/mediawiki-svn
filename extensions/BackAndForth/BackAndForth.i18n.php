@@ -230,6 +230,7 @@ $messages['hy'] = array(
  */
 $messages['is'] = array(
 	'backforth-next' => 'Næsta ($1)',
+	'backforth-desc' => 'Setur „Næsta“ og „Fyrri“ tengla á stafrófsraðar síður efst á síðurnar',
 	'backforth-prev' => 'Síðasta ($1)',
 );
 

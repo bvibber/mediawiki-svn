@@ -607,9 +607,11 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'chemicalsources'        => 'రసాయన మూలాలు',
+	'chemicalsource-desc'    => 'రసాయనిక సూత్రాలకి <nowiki><chemform></nowiki> అనే టాగుని చేరుస్తుంది',
 	'chemFunctions_ListPage' => 'రసాయన మూలాలు',
 	'chemFunctions_CAS'      => 'CAS సంఖ్య',
 	'chemFunctions_Formula'  => 'సూత్రం',
+	'chemFunctions_Name'     => 'IUPAC పేరు',
 );
 
 /** Turkish (Türkçe)

@@ -83,6 +83,9 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'form'                         => 'Формуляр',
+	'formnonametext'               => 'Необходимо е да се посочи име на формуляр, напр. „Special:Form/ИмеНаФормуляр“',
+	'formbadname'                  => 'Грешно име на формуляр',
+	'formbadnametext'              => 'Не съществува формуляр с това име.',
 	'formsave'                     => 'Съхранение',
 	'formarticleexists'            => 'Страницата съществува',
 	'formarticleexiststext'        => 'Страницата [[$1]] вече съществува.',
@@ -359,6 +362,13 @@ $messages['sk'] = array(
 	'formsavesummary'              => 'Nová stránka pomocou [[Special:Form/$1]]',
 	'formsaveerror'                => 'Chyba pri ukladaní formulára',
 	'formsaveerrortext'            => 'Pri ukladaní formulára sa vyskytla neznáma chyba „$1“.',
+);
+
+/** Somali (Soomaaliga)
+ * @author Yariiska
+ */
+$messages['so'] = array(
+	'formsave' => 'Kaydi',
 );
 
 /** Seeltersk (Seeltersk)

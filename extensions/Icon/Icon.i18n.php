@@ -82,6 +82,13 @@ $messages['hu'] = array(
 	'icon-badwidth' => 'Érvénytelen szélesség',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'icon-badimage' => 'រូបភាព អន់',
+);
+
 $messages['la'] = array(
 	'icon-badimage' => 'Imago mala',
 	'icon-badwidth' => 'Latitudo mala',

@@ -31,10 +31,12 @@ $messages['ar'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'seealso' => 'Вижте също',
+	'seealso'      => 'Вижте също',
+	'seealso-desc' => "Добавя възможност за използване на раздел 'Вижте също' с помощта на етикет <code><nowiki><seealso></nowiki></code>",
 );
 
 /** German (Deutsch)

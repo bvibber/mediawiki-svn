@@ -113,6 +113,13 @@ $messages['it'] = array(
 	'profiling-no-data' => 'Nessun dato corrispondente.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'profiling-ok' => 'យល់ព្រម',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -227,11 +227,12 @@ $messages['nl'] = array(
 	'spamregex-summary-log'          => '(Samenvatting)',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'spamregex'                      => 'SpamRegex',
+	'spamregex-desc'                 => '[[Special:Spamregex|Filtrer ut]] uønskede fraser i redigerte sider, basert på regulære uttrykk',
 	'spamregex_summary'              => 'Teksten ble funnet i sidens sammendrag.',
 	'spamregex-intro'                => 'Bruk dette skjemaet for å effektivt blokkere uttrykk fra å bli lagret på sidene. Om teksten inneholder gitt uttrykk, vil endringen ikke bli lagret, og en forklaring vil vises til brukeren som prøvde å lagre siden. Vær obs på at uttrykk ikke bør være for korte eller for vanlige.',
 	'spamregex-page-title'           => 'Blokkering av uønskede uttrykk med regulære uttrykk',

@@ -360,9 +360,9 @@ $messages['is'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'specialuserstats'             => 'ស្ថិតិ នៃ បំរើបំរាស់',
+	'specialuserstats'             => 'ស្ថិតិ នៃ បំរើប្រាស់',
 	'usagestatistics'              => 'ស្ថិតិ នៃ បំរើប្រាស់',
-	'usagestatisticsfor'           => '<h2>ស្ថិតិ នៃ បំរើបំរាស់ របស់ [[:user:$1|$1]]</h2>',
+	'usagestatisticsfor'           => '<h2>ស្ថិតិ នៃ បំរើប្រាស់ របស់ [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'      => 'គ្រប់អ្នកប្រើប្រាស់',
 	'usagestatisticstype'          => 'ប្រភេទ',
 	'usagestatisticsstart'         => 'ថ្ងៃខែឆ្នាំ ចាប់ផ្តើម',

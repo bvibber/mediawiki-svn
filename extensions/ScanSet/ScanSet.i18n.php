@@ -309,6 +309,14 @@ $messages['ja'] = array(
 	'scanset_prev'                      => '&lt; 前へ',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'scanset_next' => 'បន្ទាប់ &gt;',
+	'scanset_prev' => '&lt; មុន',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias

@@ -93,6 +93,13 @@ $messages['sk'] = array(
 	'i18ntags-desc' => 'Prístup k i18n funkciám pre formátovanie čísel, gramatiku a plurál v ktoromkoľvek z dostupných jazykov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'i18ntags-desc' => 'Tougriep ap do i18n-Funktione tou ju Taalenformatierenge, Pluroal- un Grammatikbieldenge in älke ferföichboare Sproake',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -231,7 +231,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'deletedcontributions'      => 'Contributi utente cancellati',
-	'deletedcontributions-desc' => 'fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
+	'deletedcontributions-desc' => 'Fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
 );
 
 /** Japanese (日本語)
@@ -436,7 +436,8 @@ $messages['srn'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'deletedcontributions' => 'Läskede Benutserbiedraage',
+	'deletedcontributions'      => 'Läskede Benutserbiedraage',
+	'deletedcontributions-desc' => 'Rakt Administratore ju Muugelkaid, [[Special:DeletedContributions|läskede Benutserbiedraage]] ientoukiekjen',
 );
 
 /** Swedish (Svenska)

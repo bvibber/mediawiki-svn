@@ -140,6 +140,7 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'inspectcache-ok'      => 'យល់ព្រម',
 	'inspectcache-delete'  => 'លុបចេញ',
 	'inspectcache-deleted' => 'លុបចេញ សតិភ្ជាប់',
 );

@@ -405,6 +405,13 @@ $messages['kk-latn'] = array(
 	'imagemap_description'          => 'Bul swret twralı',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'imagemap_description' => 'អំពី រូបភាព នេះ',
+);
+
 $messages['la'] = array(
 	'imagemap_description'          => 'De hac imagine',
 );
@@ -646,6 +653,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'imagemap_desc'               => "Moaket dät muugelk ferwies-sensitive Grafike ''(image maps)'' tou moakjen mäd Hälpe fon ju <tt><nowiki><imagemap></nowiki></tt>-Syntax",
 	'imagemap_no_image'           => '&lt;imagemap&gt;-Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;-Failer: Bielde is uungultich of is nit deer',
 	'imagemap_no_link'            => '&lt;imagemap&gt;-Failer: Ap Eende fon Riege $1 wuude neen gultige Link fuunen',

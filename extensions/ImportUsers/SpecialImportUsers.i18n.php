@@ -370,6 +370,23 @@ $messages['sk'] = array(
 	'importusers-realname'                => 'skutočné meno',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'importusers'                         => 'Benutsere importierje',
+	'importusers-desc'                    => 'Importiert Benutsere uut ne CSV-Doatäi; Codierenge: UTF-8',
+	'importusers-uploadfile'              => 'Doatäi hoochleede',
+	'importusers-form-caption'            => 'CSV-Doatäi (UTF-8)',
+	'importusers-form-file'               => 'Benutserdoatäiformoat (csv):',
+	'importusers-form-replace-present'    => 'Bestoundene Benutsere ärsätte',
+	'importusers-form-button'             => 'Importierje',
+	'importusers-user-added'              => 'Die Benutser <b>%s</b> wuude importierd.',
+	'importusers-user-present-update'     => 'N Benutser <b>%s</b> existiert al. Aktualisierd.',
+	'importusers-user-present-not-update' => 'N Benutser <b>%s</b> existiert al. Nit aktualisierd.',
+	'importusers-user-invalid-format'     => 'Do Benutserdoaten in Riege #%s hääbe n uungultich Formoat of sunt loos. Uursproangen.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
@@ -396,13 +413,19 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'importusers-user-added'      => '<b>%s</b> అనే వాడుకరిని చేర్చాం.',
-	'importusers-log-summary'     => 'సంగ్రహం',
-	'importusers-log-summary-all' => 'అన్నీ',
-	'importusers-login-name'      => 'ప్రవేశపు పేరు',
-	'importusers-password'        => 'సంకేతపదం',
-	'importusers-email'           => 'ఈ-మెయిల్',
-	'importusers-realname'        => 'నిజమైన పేరు',
+	'importusers'                         => 'వాడుకరులను దిగుమతి చేయి',
+	'importusers-user-added'              => '<b>%s</b> అనే వాడుకరిని చేర్చాం.',
+	'importusers-user-present-update'     => '<b>%s</b> అనే వాడుకరి ఈసరికే ఉన్నారు. తాజాకరించాం.',
+	'importusers-user-present-not-update' => '<b>%s</b> అనే వాడుకరి ఈసరికే ఉన్నారు. తాజాకరించలేదు.',
+	'importusers-log'                     => 'దిగుమతి దినచర్య',
+	'importusers-log-summary'             => 'సంగ్రహం',
+	'importusers-log-summary-all'         => 'అన్నీ',
+	'importusers-log-summary-added'       => 'చేర్చినవి',
+	'importusers-log-summary-updated'     => 'తాజాకరించినవి',
+	'importusers-login-name'              => 'ప్రవేశపు పేరు',
+	'importusers-password'                => 'సంకేతపదం',
+	'importusers-email'                   => 'ఈ-మెయిల్',
+	'importusers-realname'                => 'నిజమైన పేరు',
 );
 
 /** Volapük (Volapük)

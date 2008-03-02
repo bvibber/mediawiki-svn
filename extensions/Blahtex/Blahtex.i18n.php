@@ -864,7 +864,9 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'math_InvalidColour' => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
+	'math_CannotCreateTexFile' => 'មិនអាច​បង្កើត ឯកសារ អក្សរសុទ្ធ',
+	'math_CannotWriteTexFile'  => 'មិនអាចសរសេរ ទៅ ឯកសារ អក្សរសុទ្ធ',
+	'math_InvalidColour'       => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

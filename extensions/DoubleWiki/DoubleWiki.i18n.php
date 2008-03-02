@@ -53,6 +53,13 @@ $messages['de'] = array(
 	'doublewiki-desc' => 'Zeigt eine Seite und ihre Übersetzung aus einem anderen Wiki zweispaltig auf derselben Seite an',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'doublewiki-desc' => 'Montras paĝon kaj ties tradukon de aliaj vikio kun du kolumnoj en la sama paĝo',
+);
+
 /** فارسی (فارسی)
  * @author Huji
  */
@@ -171,6 +178,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a jej preklad z inej wiki v dvoch stĺpcoch na jednej stránke',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'doublewiki-desc' => 'Wiest ne Siede un hiere Uursättenge uut n uur Wiki twospaltich ap jusälge Siede an',
 );
 
 /** Swedish (Svenska)

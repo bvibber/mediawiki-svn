@@ -73,6 +73,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'vote'                => 'Гласуване',
+	'vote-current'        => "В момента сте гласували за '''$1'''.",
 	'vote-caption'        => 'Текущ избор:',
 	'vote-submit'         => 'Гласуване',
 	'vote-registered'     => 'Вашият глас беше отчетен.',
@@ -176,9 +177,10 @@ $messages['fa'] = array(
  * @author Grondin
  * @author Ashar Voultoiz
  * @author Urhixidur
+ * @author Meithal
  */
 $messages['fr'] = array(
-	'vote'                => 'Voter',
+	'vote'                => 'Vote',
 	'vote-header'         => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
 	'vote-current'        => "Votre vote actuel est pour '''$1'''.",
 	'vote-legend'         => 'Placer ou modifier un vote',
@@ -293,9 +295,22 @@ $messages['lt'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'vote'            => 'कौल',
-	'vote-submit'     => 'कौल',
-	'vote-login-link' => 'दाखल व्हा',
+	'vote'                => 'कौल',
+	'vote-header'         => "'''विश्वाचा सर्वोच्च ओव्हरलॉर्ड'''ची तुम्ही येथे निवड करु शकता!",
+	'vote-current'        => "तुमचे सध्याचे मत '''$1'''करिता आहे.",
+	'vote-legend'         => 'मतदानात सहभागी व्हा अथवा बदल करा',
+	'vote-caption'        => 'तुमची निवड',
+	'vote-choices'        => 'जोकर|जोकर पेग्वीन|पेग्वीन रीड्लर |रीडलर',
+	'vote-submit'         => 'कौल',
+	'vote-registered'     => 'तुमच्या मताची नोंद झाली आहे.',
+	'vote-view-results'   => 'निकाल पहा',
+	'vote-results'        => 'मतदान निकाल',
+	'vote-results-choice' => 'पर्याय',
+	'vote-results-count'  => 'मत मोजणी',
+	'vote-results-none'   => 'या वेळेपर्यंत कोणतेही मत आले नाही.',
+	'vote-login'          => 'मतदानात सहभागी होण्याकरिता $1 केलेच पाहिजे.',
+	'vote-login-link'     => 'दाखल व्हा',
+	'vote-invalid-choice' => 'तुम्ही उपलब्ध पर्यायांपैकीच एक पर्याय निवडला पाहिजे.',
 );
 
 $messages['nl'] = array(

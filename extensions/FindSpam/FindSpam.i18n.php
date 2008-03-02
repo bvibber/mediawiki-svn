@@ -114,6 +114,7 @@ $messages['hu'] = array(
  */
 $messages['km'] = array(
 	'findspam-ip' => 'អាស័យដ្ឋាន IP ៖',
+	'findspam-ok' => 'យល់ព្រម',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

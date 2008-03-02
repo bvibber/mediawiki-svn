@@ -230,6 +230,18 @@ $messages['el'] = array(
 	'bookinfo-purchase' => 'Αγοράστε αυτό το βιβλίο από $1',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'bookinfo-result-title'      => 'Titolo:',
+	'bookinfo-result-author'     => 'Aŭtoro:',
+	'bookinfo-result-publisher'  => 'Eldonejo:',
+	'bookinfo-result-year'       => 'Jaro',
+	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
+	'bookinfo-purchase'          => 'Aĉetu ĉi libron de $1',
+);
+
 /** Spanish (Español)
  * @author Dmcdevit
  */
@@ -609,11 +621,13 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'bookinfo-header'            => 'ग्रंथ माहिती',
 	'bookinfo-result-title'      => 'शिर्षक:',
 	'bookinfo-result-author'     => 'लेखक:',
 	'bookinfo-result-publisher'  => 'प्रकाशक:',
 	'bookinfo-result-year'       => 'वर्ष',
 	'bookinfo-error-invalidisbn' => 'चूकीचा ISBN भरला',
+	'bookinfo-purchase'          => 'हे पुस्तक $1कडून खरेदी करा',
 	'bookinfo-provider'          => 'विदा दाता: $1',
 );
 

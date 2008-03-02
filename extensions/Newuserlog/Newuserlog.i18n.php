@@ -50,6 +50,14 @@ $messages['an'] = array(
 	'newuserlog-create2-entry' => "S'ha creyato una cuenta ta $1",
 );
 
+/** Old English (Anglo Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'newuserlogpage'          => 'Brūcend ġesceaft talu',
+	'newuserlog-create-entry' => 'Nīwe brūcend',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido

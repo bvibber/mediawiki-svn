@@ -51,6 +51,13 @@ $messages['dsb'] = array(
 	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za zasajźenje specielnych znamješkow',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'charinsert-desc' => 'Permesas kreadon de JavaScript skatolon por [[MediaWiki:Edittools|entajpi nekutimajn signojn]]',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Meithal
@@ -133,7 +140,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'charinsert-desc' => 'Ferlööwet dät Moakjen fon n JavaScript stjuurden Box toun Ienföigjen fon Sunnerteekene',
+	'charinsert-desc' => 'Ferlööwet dät Moakjen fon ne JavaScript stjuurde Lieste toun [[MediaWiki:Edittools|Ienföigjen fon Sunnerteekene]]',
 );
 
 /** Swedish (Svenska)

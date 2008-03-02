@@ -121,6 +121,14 @@ $messages['it'] = array(
 	'selectcategory-subtitle' => 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'selectcategory-title' => 'ជ្រើសយក ចំណាត់ក្រុម',
+	'selectcategory-desc'  => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

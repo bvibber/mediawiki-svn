@@ -48,6 +48,14 @@ $messages['el'] = array(
 	'mediafunctions-not-exist'     => '"$1" δεν υπάρχει',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mediafunctions-invalid-title' => '"$1" ne estas valida titolo',
+	'mediafunctions-not-exist'     => '"$1" ne ekzistas',
+);
+
 $messages['fr'] = array(
 	'mediafunctions-invalid-title' => '« $1 » n\'est pas un titre valide.',
 	'mediafunctions-not-exist'     => '« $1 » n\'existe pas.',

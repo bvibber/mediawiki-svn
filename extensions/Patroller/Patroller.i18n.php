@@ -317,6 +317,7 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'patrol-revert-reason' => 'ហេតុផល ៖',
+	'patrol-skip'          => 'រំលង',
 );
 
 $messages['la'] = array(

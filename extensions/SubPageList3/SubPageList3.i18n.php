@@ -37,6 +37,13 @@ $messages['en'] = array(
         'spl3_nosubpages' => '$1 has no subpages to list.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'spl3_nosubpages' => '$1 не съдържа подстраници, които да бъдат показани.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

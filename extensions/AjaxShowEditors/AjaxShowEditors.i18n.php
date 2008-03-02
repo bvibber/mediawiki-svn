@@ -262,9 +262,13 @@ $messages['id'] = array(
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'ajax-se-title'   => 'Breyti:',
-	'ajax-se-pending' => 'beðið er eftir glæðingu ... (smelltu á þennan kassa eða breyttu efninu)',
-	'ajax-se-idling'  => '(fyrir $1 sekúndum)',
+	'ajax-se-desc'             => 'Sýnir notendur sem eru að breyta sömu síðu',
+	'ajax-se-title'            => 'Breyti:',
+	'ajax-se-pending'          => 'beðið er eftir glæðingu ... (smelltu á þennan kassa eða breyttu efninu)',
+	'ajax-se-idling'           => '(fyrir $1 sekúndum)',
+	'ajax-se-pagedoesnotexist' => 'síðan er ekki til',
+	'ajax-se-userinvalid'      => 'Villa: ógildur notandi',
+	'ajax-se-usernotfound'     => 'Villa: notandi ekki fundinn',
 );
 
 /** Italian (Italiano) */
@@ -338,6 +342,13 @@ $messages['li'] = array(
 	'ajax-se-title'   => 'Memènteel aant bewèrke:',
 	'ajax-se-pending' => "Herfrisse aant äöbere... (klik op deze bóks of sjtart 't bewèrke)",
 	'ajax-se-idling'  => '($1s geleje)',
+);
+
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'ajax-se-title' => 'ພວມດັດແກ້ :',
 );
 
 /** Lithuanian (Lietuvių)

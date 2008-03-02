@@ -134,6 +134,14 @@ $messages['it'] = array(
 	'pageby-anon'         => '<i>anonimo</i>',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'pageby-contributors' => 'អ្នក រួមចំណែក ៖',
+	'pageby-anon'         => '<i>អនាមិក</i>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

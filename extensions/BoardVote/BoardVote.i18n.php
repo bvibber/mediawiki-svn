@@ -765,7 +765,16 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'boardvote_welcome' => "Bonvenon '''$1'''!",
+	'boardvote_time'       => 'Tempo',
+	'boardvote_user'       => 'Uzanto',
+	'boardvote_edits'      => 'Redaktoj',
+	'boardvote_days'       => 'Tagoj',
+	'boardvote_ip'         => 'IP-adreso',
+	'boardvote_dumplink'   => 'Klaku ĉi tien',
+	'boardvote_submit'     => 'Ek!',
+	'boardvote_edits_many' => 'multaj',
+	'boardvote_blocked'    => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
+	'boardvote_welcome'    => "Bonvenon '''$1'''!",
 );
 
 /** Spanish (Español)
@@ -798,12 +807,16 @@ Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aqu�
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
 $messages['eu'] = array(
-	'boardvote'               => 'Wikimediaren Administrazio Kontseiluaren aukeraketa',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Bozkatu]]
+	'boardvote'              => 'Wikimediaren Administrazio Kontseiluaren aukeraketa',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Bozkatu]]
 * [[Special:Boardvote/list|Orain arteko botuen zerrenda]]
 * [[Special:Boardvote/dump|Erregistroa]]',
-	'boardvote_entered'       => 'Mila esker, zure botua gorde egin da.
+	'boardvote_intro_change' => '<p>Lehenago ere bozkatu duzu. Dena dela, beheko formularioa erabiliz zure botua aldatu dezakezu. Hautatu ezazu bozkatu nahi duzun aukera.</p>',
+	'boardvote_entered'      => 'Mila esker, zure botua gorde egin da.
 
 Nahi izanez gero, hurrengo datuak gorde ditzakezu. Zure botu erregistroa:
 
@@ -818,27 +831,21 @@ Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Atzera]]',
-	'boardvote_novotes'       => 'Oraindik ez du inork bozkatu.',
-	'boardvote_time'          => 'Ordua',
-	'boardvote_user'          => 'Erabiltzaile',
-	'boardvote_edits'         => 'aldaketak',
-	'boardvote_days'          => 'Egunak',
-	'boardvote_ua'            => 'Erabiltzaile agentea',
-	'boardvote_listintro'     => '<p>Honako hau orain arteko botu guztien zerrenda da. Zifratutako datuentzako $1.</p>',
-	'boardvote_dumplink'      => 'Egin klik hemen',
-	'boardvote_needadmin'     => 'Hauteskundeko administratzaileek baino ezin dute eragiketa hori burutu.',
-	'boardvote_notstarted'    => 'Oraindik ez da bozketa hasi',
-	'boardvote_edits_many'    => 'hainbat',
-	'boardvote_welcome'       => 'Ongi etorri \'\'\'$1\'\'\'!',
-);
-$messages['ext'] = array(
-	'boardvote_novotes'       => 'Naidi á votau entovia.',
-	'boardvote_time'          => 'Ora',
-	'boardvote_user'          => 'Usuáriu',
-	'boardvote_edits'         => 'Eicionis',
-	'boardvote_days'          => 'Dias',
-	'boardvote_dumplink'      => 'Pulsa aquí',
-	'boardvote_welcome'       => 'Bienviniu \'\'\'$1\'\'\'!',
+	'boardvote_notloggedin'  => 'Ez duzu saioa hasi. $2 baino lehenago $1 ekarpen izatea eta lehen aldaketa $3 baino lehenagokoa izatea beharrezkoa da bozkatu ahal izateko.',
+	'boardvote_notqualified' => 'Ez duzu hauteskunde hauetan bozkatzeko baimenik. $2 baino lehenago $3 ekarpen eginda izatea beharrezkoa da, eta zuk $1 egin dituzu. Gainera, lehen aldaketa $4 egin zenuen, eta $5 baino lehenagokoa izan beharra dauka.',
+	'boardvote_novotes'      => 'Oraindik ez du inork bozkatu.',
+	'boardvote_time'         => 'Ordua',
+	'boardvote_user'         => 'Erabiltzaile',
+	'boardvote_edits'        => 'aldaketak',
+	'boardvote_days'         => 'Egunak',
+	'boardvote_ua'           => 'Erabiltzaile agentea',
+	'boardvote_listintro'    => '<p>Honako hau orain arteko botu guztien zerrenda da. Zifratutako datuentzako $1.</p>',
+	'boardvote_dumplink'     => 'Egin klik hemen',
+	'boardvote_needadmin'    => 'Hauteskundeko administratzaileek baino ezin dute eragiketa hori burutu.',
+	'boardvote_notstarted'   => 'Oraindik ez da bozketa hasi',
+	'boardvote_closed'       => 'Bozketa itxita dago orain, ikus [[meta:Board elections/2006/en|hauteskundeen orrialdea]] emaitzak jakiteko.',
+	'boardvote_edits_many'   => 'hainbat',
+	'boardvote_welcome'      => "Ongi etorri '''$1'''!",
 );
 
 /** فارسی (فارسی)
@@ -1967,13 +1974,18 @@ $messages['kk-arab'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'boardvote_user'     => 'អ្នកប្រើប្រាស់',
-	'boardvote_edits'    => 'កំណែប្រែ នានា',
-	'boardvote_days'     => 'ថ្ងៃ',
-	'boardvote_ip'       => 'IP',
-	'boardvote_dumplink' => 'ចុចទីនេះ',
-	'boardvote_submit'   => 'យល់ព្រម',
-	'boardvote_welcome'  => "ស្វាគម '''$1'''!",
+	'boardvote_novotes'      => 'គ្មានអ្នក ​បានបោះឆ្នោត នៅឡើយ។',
+	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
+	'boardvote_edits'        => 'កំណែប្រែ នានា',
+	'boardvote_days'         => 'ថ្ងៃ',
+	'boardvote_ip'           => 'IP',
+	'boardvote_dumplink'     => 'ចុចទីនេះ',
+	'boardvote_submit'       => 'យល់ព្រម',
+	'boardvote_notstarted'   => 'ការបោះឆ្នោត មិនទាន់បាន ចាប់ផ្តើម',
+	'group-boardvote'        => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
+	'group-boardvote-member' => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
+	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
+	'boardvote_welcome'      => "ស្វាគម '''$1'''!",
 );
 
 $messages['ksh'] = array(
@@ -2254,15 +2266,19 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'boardvote'            => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
 	'boardvote_time'       => 'वेळ',
 	'boardvote_user'       => 'सदस्य',
 	'boardvote_edits'      => 'संपादने',
+	'boardvote_days'       => 'दिवस',
 	'boardvote_ip'         => 'अंकपत्ता',
 	'boardvote_ua'         => 'सदस्य एजंट',
+	'boardvote_dumplink'   => 'येथे टिचकी मारा',
 	'boardvote_submit'     => 'ठीक',
 	'boardvote_strike'     => 'खोडा',
 	'boardvote_unstrike'   => 'खोडणे रद्द',
 	'boardvote_edits_many' => 'खूप',
+	'boardvote_welcome'    => "सुस्वागतम्‌ '''$1'''!",
 );
 
 /** Erzya (эрзянь кель)
@@ -2483,19 +2499,19 @@ $messages['oc'] = array(
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
-	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat.
+	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
-Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion :
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
 
-<pre>$2</pre>
+<pre>$2</pre> 
 
 La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
 
-<pre>$3</pre>
+<pre>$3</pre> 
 
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
@@ -2521,8 +2537,9 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'group-boardvote'        => 'Membres votants del conselh d’administracion',
 	'group-boardvote-member' => 'Membre votant del conselh d’administracion',
 	'grouppage-boardvote'    => '{{ns:project}}:membre votant del conselh d’administracion',
-	'boardvote_blocked'      => 'O planhem, mas sètz estat(ada) blocat(ada) sus vòstra wiki d’origina. Los utilizaires blocats pòdon pas votar.',
+	'boardvote_blocked'      => 'O planhèm, mas sètz estat(ada) blocat(ada) sus vòstra wiki d’origina. Los utilizaires blocats pòdon pas votar.',
 	'boardvote_welcome'      => "Benvengut '''$1'''!",
+	'go_to_board_vote'       => 'Tablèu de las eleccions Wikimèdia 2007',
 	'boardvote_redirecting'  => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
 );
 

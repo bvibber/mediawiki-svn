@@ -280,6 +280,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'passwordreset'                    => 'Remesa a zèro del senhal',
+	'passwordreset-desc'               => 'Reïnicializa lo senhal wiki d’un utilizaire - necessita los dreches de « passwordreset »',
 	'passwordreset-invalidusername'    => "Nom d'utilizaire desconegut",
 	'passwordreset-emptyusername'      => "Nom d'utilizaire void",
 	'passwordreset-nopassmatch'        => "Los senhals qu'avètz picats son pas identics.",

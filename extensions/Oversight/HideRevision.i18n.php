@@ -900,8 +900,13 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
  * @author Chhorran
  */
 $messages['km'] = array(
-	'hiderevision-reason'   => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
-	'hiderevision-noreason' => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
+	'hiderevision-continue'      => 'បន្ត',
+	'hiderevision-reason'        => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
+	'hiderevision-noreason'      => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
+	'hiderevision-error-missing' => 'រកមិនឃើញ ក្នុង មូលដ្ឋានទិន្នន័យ',
+	'oversight-log-hiderev'      => 'បានដកចេញ កំណែប្រែ ពី $1',
+	'oversight'                  => 'ការត្រួតមើល ពីលើ',
+	'oversight-view'             => 'លំអិត',
 );
 
 $messages['ksh'] = array(

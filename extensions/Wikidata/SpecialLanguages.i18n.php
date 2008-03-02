@@ -2090,6 +2090,14 @@ $wdMessages['sk'] = array(
 	'ow_db_consistency_not_found'           => '<h2>Chyba</h2>Nastal problém s konzistenciou databázy. Wikidata nemôže nájsť platné údaje spojené s týmto ID Definovaného významu. Je možné, že sú stratené. Prosím kontaktujte správcu servera.',
 );
 
+/** Somali (Soomaaliga)
+ * @author Yariiska
+ */
+$wdMessages['so'] = array(
+	'ow_save'    => 'Kaydi',
+	'ow_history' => 'Taariikh',
+);
+
 /** ћирилица (ћирилица)
  * @author Millosh
  */

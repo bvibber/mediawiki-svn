@@ -399,6 +399,32 @@ $messages['ja'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'duplicator'                       => 'ページの複製',
+	'duplicator-desc'                  => '全ての編集履歴と共に、全く同じ複製ページを作成する',
+	'duplicator-toolbox'               => 'このページを複製',
+	'duplicator-header'                => 'ここではではページを複製することができます。履歴を含む同じ内容の複製が新たに作成されます。記事の分割などに利用してください。',
+	'duplicator-options'               => '設定',
+	'duplicator-source'                => '複製元:',
+	'duplicator-dest'                  => '複製先:',
+	'duplicator-dotalk'                => '可能なら{{int:talk}}も複製する',
+	'duplicator-submit'                => '複製',
+	'duplicator-summary'               => '[[$1]] を複製しました。',
+	'duplicator-success'               => "<big>'''[[$1]] を [[$2]] へ複製しました'''</big>",
+	'duplicator-success-revisions'     => '$1 版を複製しました。',
+	'duplicator-success-talkcopied'    => '{{int:talk}}ページも複製しました。',
+	'duplicator-success-talknotcopied' => '{{int:talk}}は複製できませんでした。',
+	'duplicator-failed'                => '不明なエラーです。このページの複製に失敗しました。',
+	'duplicator-source-invalid'        => '複製元に有効なタイトルを指定してください。',
+	'duplicator-source-notexist'       => '[[$1]] は既に存在しています。複製元には存在するページを指定してください。',
+	'duplicator-dest-invalid'          => '複製先に有効なタイトルを指定してください。',
+	'duplicator-dest-exists'           => '[[$1]] は既に存在しています。複製先には存在しないページを指定してください。',
+	'duplicator-toomanyrevisions'      => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -705,10 +731,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'duplicator-options' => 'ఎంపికలు',
-	'duplicator-source'  => 'స్కోరు:',
-	'duplicator-dest'    => 'గమ్యస్థానం:',
-	'duplicator-summary' => '[[$1]] నుండి కాపీ చేసారు',
+	'duplicator-options'            => 'ఎంపికలు',
+	'duplicator-source'             => 'స్కోరు:',
+	'duplicator-dest'               => 'గమ్యస్థానం:',
+	'duplicator-summary'            => '[[$1]] నుండి కాపీ చేసారు',
+	'duplicator-success-talkcopied' => 'చర్చాపేజీ కూడా కాపీ అయ్యింది.',
 );
 
 /** Turkish (Türkçe)

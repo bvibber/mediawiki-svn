@@ -808,6 +808,24 @@ $messages['kk-latn'] = array(
 	'ogg-desc-link'           => 'Bul faýl twralı',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'ogg-play'                => 'លេង',
+	'ogg-pause'               => 'ផ្អាក',
+	'ogg-stop'                => 'ឈប់',
+	'ogg-play-video'          => 'លេង វិឌីអូ',
+	'ogg-play-sound'          => 'លេង សំលេង',
+	'ogg-player-videoElement' => 'ធាតុ <វិឌីអូ>',
+	'ogg-player-soundthumb'   => 'គ្មាន អ្នកលេង',
+	'ogg-player-selected'     => '(បានជ្រើសយក)',
+	'ogg-more'                => 'បន្ថែម...',
+	'ogg-dismiss'             => 'បិទ',
+	'ogg-download'            => 'ទាញយក ឯកសារ',
+	'ogg-desc-link'           => 'អំពី ឯកសារនេះ',
+);
+
 $messages['la'] = array(
 	'ogg-more' => 'Plus...',
 );
@@ -1041,7 +1059,7 @@ $messages['oc'] = array(
 	'ogg-stop'                => 'Stòp',
 	'ogg-play-video'          => 'Legir la vidèo',
 	'ogg-play-sound'          => 'Legir lo son',
-	'ogg-no-player'           => 'O planhem, vòstre sistèma possedís aparentament pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un dels lectors suportats</a>.',
+	'ogg-no-player'           => 'O planhèm, vòstre sistèma possedís aparentament pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un dels lectors suportats</a>.',
 	'ogg-no-xiphqt'           => 'Aparentament avètz pas lo compausant XiphQT per Quicktime. Quicktime pòt pas legir los fiquièrs Ogg sens aqueste compausant. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr"> Telecargatz-lo XiphQT</a> o causissetz un autre lector.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin'    => 'Plugin Ogg',

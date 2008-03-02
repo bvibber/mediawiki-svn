@@ -50,6 +50,7 @@ $messages['bg'] = array(
 	'lookupuser_email'        => 'Е-поща: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'Име и фамилия: $1',
 	'lookupuser_registration' => 'Дата на регистрация: $1',
+	'lookupuser_touched'      => 'Последна промяна на потребителските настройки: $1',
 	'lookupuser_useroptions'  => 'Потребителски настройки:',
 );
 
@@ -142,9 +143,12 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'lookupuser_intro'    => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
-	'lookupuser_email'    => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'ឈ្មោះពិត ៖ $1',
+	'lookupuser'             => 'រកមើល ពត៌មាន នៃ អ្នកប្រើប្រាស់',
+	'lookupuser_intro'       => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
+	'lookupuser_id'          => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
+	'lookupuser_email'       => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'    => 'ឈ្មោះពិត ៖ $1',
+	'lookupuser_useroptions' => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

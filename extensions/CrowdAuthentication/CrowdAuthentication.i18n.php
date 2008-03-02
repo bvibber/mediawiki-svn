@@ -44,6 +44,13 @@ $messages['hsb'] = array(
 	'crowdauthentication-desc' => 'Awtentifikaciski tykač za Atlassian Crowd',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -77,6 +84,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'crowdauthentication-desc' => 'Zásuvný modul na overenie služby Atlassian Crowd',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'crowdauthentication-desc' => 'Authentisiereng-Ärwiederenge foar Atlassian Crowd',
 );
 
 /** Vietnamese (Tiếng Việt)

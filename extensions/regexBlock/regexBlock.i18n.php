@@ -370,6 +370,7 @@ $messages['km'] = array(
 	'regexblock-stats-username'    => 'សំរាប់ $1',
 	'regexblock-stats-logging'     => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
 	'regexblock-currently-blocked' => 'អាស័យដ្ឋាន ដែលបានត្រូវរាំងខ្ទប់ បច្ចុប្បន្ន ៖',
+	'regexblock-view-go'           => 'ទៅ',
 	'regexblock-view-reason'       => 'ហេតុផល ៖ $1',
 );
 
@@ -652,7 +653,9 @@ $messages['sv'] = array(
 	'regexblock-form-reason'    => 'Anledning:',
 	'regexblock-form-expiry'    => 'Utgång:&#160;',
 	'regexblock-stats-username' => 'För $1',
+	'regexblock-view-all'       => 'Alla',
 	'regexblock-view-go'        => 'Gå',
+	'regexblock-view-reason'    => 'anledning: $1',
 	'regexblock-view-time'      => 'på $1',
 );
 
@@ -670,6 +673,7 @@ $messages['te'] = array(
 	'regexblock-view-reason-default' => 'సాధారణ కారణం',
 	'regexblock-view-block-infinite' => 'శాశ్వత నిరోధం',
 	'regexblock-view-stats'          => '(గణాంకాలు)',
+	'regexblock-view-time'           => '$1 నాడు',
 );
 
 /** Volapük (Volapük)

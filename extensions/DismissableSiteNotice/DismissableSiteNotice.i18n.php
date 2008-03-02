@@ -98,6 +98,14 @@ $messages['el'] = array(
 	'sitenotice_close' => 'απομάκρυνση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'sitenotice_close' => 'For!',
+	'sitenotice-desc'  => 'Permesas al uzantoj fermi la vikinoticon.',
+);
+
 $messages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 );
@@ -229,6 +237,13 @@ $messages['kk-cyrl'] = array(
 
 $messages['kk-latn'] = array(
 	'sitenotice_close' => 'tasalatw',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'sitenotice_close' => 'លែងអោយ ធ្វើការ',
 );
 
 /** Korean (한국어)
@@ -379,6 +394,7 @@ $messages['sq'] = array(
  */
 $messages['stq'] = array(
 	'sitenotice_close' => 'Sluute',
+	'sitenotice-desc'  => 'Ferlööwet Benutsere dät Sluuten fon ju Sitenotice',
 );
 
 $messages['su'] = array(

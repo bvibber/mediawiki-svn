@@ -457,6 +457,7 @@ $messages['km'] = array(
 	'changeauthor-comment'              => 'វិចារ ៖',
 	'changeauthor-changeauthors-multi'  => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
+	'changeauthor-nosuchuser'           => 'គ្មាន អ្នកប្រើប្រាស់ ឈ្មោះ "$1"  ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

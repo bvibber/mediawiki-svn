@@ -80,6 +80,7 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Siebrand
  */
 $messages['fr'] = array(
 	'dt-desc'                     => 'Autorise l’import et l’export de données structurées contenues dans des appels de modèles',
@@ -93,6 +94,7 @@ $messages['fr'] = array(
 	'dt_xml_field'                => 'Champ',
 	'dt_xml_name'                 => 'Nom',
 	'dt_xml_title'                => 'Titre',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Texte Libre',
 );
 
@@ -131,6 +133,25 @@ $messages['hsb'] = array(
 	'dt_xml_freetext'             => 'Swobodny tekst',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'dt-desc'                     => 'テンプレート呼び出しに関わるデータ構造の入出力を行う',
+	'viewxml'                     => 'XML表示',
+	'dt_viewxml_docu'             => 'XML形式で表示するカテゴリや名前空間を以下から選択してください。',
+	'dt_viewxml_categories'       => 'カテゴリ',
+	'dt_viewxml_namespaces'       => '名前空間',
+	'dt_viewxml_simplifiedformat' => '簡易形式',
+	'dt_xml_namespace'            => 'Namespace',
+	'dt_xml_page'                 => 'Page',
+	'dt_xml_field'                => 'Field',
+	'dt_xml_name'                 => 'Name',
+	'dt_xml_title'                => 'Title',
+	'dt_xml_id'                   => 'ID',
+	'dt_xml_freetext'             => 'Free Text',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -144,6 +165,7 @@ $messages['km'] = array(
 	'dt_xml_page'                 => 'ទំព័រ',
 	'dt_xml_name'                 => 'ឈ្មោះ',
 	'dt_xml_title'                => 'ចំណងជើង',
+	'dt_xml_id'                   => 'អត្តសញ្ញាណ',
 	'dt_xml_freetext'             => 'អត្ថបទសេរី',
 );
 
@@ -179,10 +201,11 @@ $messages['nl'] = array(
 	'dt_xml_field'                => 'Veld',
 	'dt_xml_name'                 => 'Naam',
 	'dt_xml_title'                => 'Titel',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Vrije tekst',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -197,6 +220,7 @@ $messages['no'] = array(
 	'dt_xml_field'                => 'Felt',
 	'dt_xml_name'                 => 'Navn',
 	'dt_xml_title'                => 'Tittel',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Fritekst',
 );
 
@@ -215,6 +239,7 @@ $messages['oc'] = array(
 	'dt_xml_field'                => 'Camp',
 	'dt_xml_name'                 => 'Nom',
 	'dt_xml_title'                => 'Títol',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Tèxt Liure',
 );
 
@@ -256,6 +281,7 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'dt-desc'                     => 'Umožňuje import a export štruktúrovaných údajov obsiahnutých v bunkách šablón',
@@ -269,7 +295,25 @@ $messages['sk'] = array(
 	'dt_xml_field'                => 'Pole',
 	'dt_xml_name'                 => 'Názov',
 	'dt_xml_title'                => 'Nadpis',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Voľný text',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'dt-desc'                     => 'Ferlööwet dän Import un Export fon strukturierde Doaten, do der in Aproupen un Foarloagen ferwoand wäide.',
+	'viewxml'                     => 'XML ankiekje',
+	'dt_viewxml_docu'             => 'Wääl uut, wäkke Kategorien in dät XML-Formoat anwiesd wäide schällen.',
+	'dt_viewxml_categories'       => 'Kategorien',
+	'dt_viewxml_namespaces'       => 'Noomensruume',
+	'dt_viewxml_simplifiedformat' => 'Fereenfacht Formoat',
+	'dt_xml_namespace'            => 'Noomensruum',
+	'dt_xml_page'                 => 'Siede',
+	'dt_xml_field'                => 'Fäild',
+	'dt_xml_name'                 => 'Noome',
+	'dt_xml_title'                => 'Tittel',
 );
 
 /** Swedish (Svenska)

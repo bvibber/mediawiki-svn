@@ -26,6 +26,13 @@ this function sparingly.",
 	'querysuccessful' => 'Query successful',
 );
 
+/** Old English (Anglo Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'asksql-desc' => 'Dō SQL sēcung þurh [[Special:Asksql|sundrum tramete]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -345,6 +352,7 @@ $messages['id'] = array(
  */
 $messages['is'] = array(
 	'asksql'          => 'SQL-fyrirspurn',
+	'asksql-desc'     => 'Framkvæma SQL-fyrirspurn í gegnum [[Special:Asksql|kerfissíðu]]',
 	'asksqltext'      => "Notaðu eyðublaðið fyrir neðan til að gera beina fyrirspurn til gagnagrunnsins. Notaðu einfaldar gæsalappir ('eins og þessar') til að afmarka strenglesgildi. Þetta getur bætt töluverðugu álagi á vefþjónin, svo notaðu þessa aðgerð sparlega.",
 	'sqlislogged'     => 'Athugið að allar fyrirspurnir eru skráðar.',
 	'sqlquery'        => 'Skrifaðu fyrirspurn',

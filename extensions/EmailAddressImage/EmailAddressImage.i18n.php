@@ -21,6 +21,13 @@ $messages['fr'] = array(
 	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
 );
 
+/** Japanese (日本語)
+ * @author JtFuruhata
+ */
+$messages['ja'] = array(
+	'emailaddressimage-desc' => '電子メールアドレスを画像で表示する<tt>&lt;email&gt;</tt>タグを追加する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

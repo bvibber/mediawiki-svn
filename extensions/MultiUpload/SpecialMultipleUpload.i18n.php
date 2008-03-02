@@ -166,6 +166,17 @@ $messages['hu'] = array(
 	'multiupload-toolbox'              => 'Több fájl feltöltése',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'multipleupload'              => 'ផ្ទុកឡើង ឯកសារ',
+	'multipleupload-desc'         => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង ច្រើនឯកសារ]]',
+	'multipleupload-saveallfiles' => 'រក្សាទុក គ្រប់ឯកសារ',
+	'multiupload-fileuploaded'    => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
+	'multiupload-toolbox'         => 'ផ្ទុកឡើង ច្រើនឯកសារ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -346,10 +357,11 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'multipleupload'              => 'ఫైళ్ళను ఎగుమతించు',
-	'multipleupload-saveallfiles' => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
-	'multipleupload-page'         => '{{ns:project}}:ఫైలు తొలగింపు విధానం',
-	'multiupload-fileuploaded'    => 'ఫైలు ఎగుమతయ్యింది.',
+	'multipleupload'                   => 'ఫైళ్ళను ఎగుమతించు',
+	'multipleupload-ignoreallwarnings' => "'''అన్ని హెచ్చరికల'''ను పట్టించుకోకుండా ఎలాగైనా ఆ ఫైళ్ళను భద్రపరచు.",
+	'multipleupload-saveallfiles'      => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
+	'multipleupload-page'              => '{{ns:project}}:ఫైలు తొలగింపు విధానం',
+	'multiupload-fileuploaded'         => 'ఫైలు ఎగుమతయ్యింది.',
 );
 
 /** Thai (ไทย)

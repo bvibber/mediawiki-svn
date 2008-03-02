@@ -609,6 +609,7 @@ $messages['lt'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'expand_templates_output'  => 'निकाल',
 	'expand_templates_ok'      => 'ठिक',
 	'expand_templates_preview' => 'झलक',
 );
@@ -870,6 +871,7 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
  */
 $messages['stq'] = array(
 	'expandtemplates'                  => 'Foarloagen expandierje',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expandiert Foarloagen, Parser-Funktione un Variablen]] toun fulboodigen Wikitext un wiest ju renderde Foarschau',
 	'expand_templates_intro'           => "In disse Spezialsiede kon Text ienroat wäide un aal Foarloagen in hier wäide rekursiv expandierd. Uk Parserfunktione as <nowiki>{{</nowiki>#if:...}} un Variabelen as <nowiki>{{</nowiki>CURRENTDAY}} wäide benutsed - faktisk alles wät twiske dubbelde swoangene Klammere '''{{}}''' stoant. Dit geböärt truch dän Aproup fon apstuunse Parser-Phasen in MediaWiki.",
 	'expand_templates_title'           => 'Kontexttittel, foar {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Iengoawefäild:',

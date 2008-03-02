@@ -81,6 +81,13 @@ $messages['hsb'] = array(
 	'breadcrumbs-desc' => 'Pokazuje wužiwarjam puć přez wiki',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'breadcrumbs-desc' => 'Sýnir flakk notenda á wiki-síðunni',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

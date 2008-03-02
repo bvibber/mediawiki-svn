@@ -367,7 +367,9 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'linksearch'    => 'ស្វែងរក តំណភ្ជាប់ វ៉ែបសៃថ៍',
 	'linksearch-ns' => 'វាលឈ្មោះ ៖',
+	'linksearch-ok' => 'ស្វែងរក',
 );
 
 $messages['la'] = array(

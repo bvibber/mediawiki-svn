@@ -34,6 +34,20 @@ $messages['en'] = array(
 	'invitations-invite-success' => 'You have successfully invited $1 to use this feature!',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'invite-logpage'                  => 'Дневник на поканите',
+	'invite-logentry'                 => 'покани $1 да използва <i>$2</i>.',
+	'invitations-pagetitle'           => 'Възможности на софтуера, достъпни с покана',
+	'invitations-feature-pagetitle'   => 'Управление на поканите - $1',
+	'invitations-feature-notallowed'  => 'Нямате достъп да използвате <i>$1</i>.',
+	'invitations-inviteform-title'    => 'Изпращане на покана на потребител да използва $1',
+	'invitations-inviteform-username' => 'Потребител',
+	'invitations-inviteform-submit'   => 'Изпращане на покана',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -197,6 +211,10 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'invite-logpage'                        => 'Invitasjonslogg',
+	'invite-logpagetext'                    => 'Dette er en logg over hvilke brukere som har invitert hverandre til å bruke diverse programvarefunksjoner.',
+	'invite-logentry'                       => 'inviterte $1 til å bruke funksjonen <i>$2</i>',
+	'invitations'                           => 'Behandling av intiasjoner til programvarefunksjoner',
 	'invitations-desc'                      => 'Muliggjør [[Special:Invitations|behandling av nye funksjoner]] ved å begrense dem til et invitasjonsbasert system',
 	'invitations-invitedlist-description'   => 'Du har tilgang til følgende funksjoner som krever invitasjon. For å behandle invitasjoner for individuelle funksjoner, klikk på funksjonens navn.',
 	'invitations-invitedlist-none'          => 'Du har ikke blitt invitert til å bruke noen funksjoner som krever invitasjon.',
@@ -222,6 +240,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'invite-logpage'                        => 'Jornal dels convits',
 	'invite-logpagetext'                    => 'Vaquí un jornal dels utilizaires en convidant d’autres per utilizar las foncionalitats de divèrses programas',
 	'invite-logentry'                       => 'a convidat $1 a utilizar la foncionalitat de <i>$2</i>.',
 	'invitations'                           => 'Gerís los convits de las foncionalitats logicialas',
@@ -327,6 +346,15 @@ $messages['sk'] = array(
 	'invitations-error-baduser'             => 'Zdá sa, že používateľ, ktorého ste uviedli neexistuje.',
 	'invitations-error-alreadyinvited'      => 'Používateľ, ktorého ste uviedli, už má prístup k tejto možnosti.',
 	'invitations-invite-success'            => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',
+	'invitations-inviteform-submit' => 'ఆహ్వానించు',
+	'invitations-error-baduser'     => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
 );
 
 /** Vietnamese (Tiếng Việt)

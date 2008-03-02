@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'forcepreview-desc' => 'إجبار على العرض المسبق للمستخدمين الذين لا يمتلكون الصلاحيات اللازمة',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'forcepreview'      => 'Konservu paĝon (post rigardanta ĝin)',
+	'forcepreview-desc' => 'Devigu antaŭrigardon por senrajtajn uzantojn',
+);
+
 /** French (Français)
  * @author Grondin
  */

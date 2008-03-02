@@ -42,6 +42,15 @@ $messages['de'] = array(
 	'protectsection_forbidden'  => 'Verboten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'protectsection_add_remove' => 'Vi provis aldoni aŭ forigi protektitan sekcion',
+	'protectsection_modify'     => 'Vi provis ŝanĝi protektitan tekston',
+	'protectsection_forbidden'  => 'Malpermesita',
+);
+
 $messages['fr'] = array(
 	'protectsection_add_remove' => 'Vous avez tenté d\'ajouter ou d\'effacer une section protégée.',
 	'protectsection_modify'     => 'Vous avez tenté de modifier du texte protégé.',

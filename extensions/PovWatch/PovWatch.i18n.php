@@ -76,6 +76,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'povwatch_desc'            => 'Разширение за [[Special:PovWatch|добавяне на страници в списъка за наблюдение]] на други потребители',
 	'povwatch_invalid_title'   => 'Посоченото заглавие е невалидно',
 	'povwatch_unknown_subpage' => 'Непозната подстраница.',
 	'povwatch_title'           => 'Заглавие:',
@@ -210,6 +211,13 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_subscribe_intro'         => 'Njejsy PovWatch abonował. Klikń na tłóčatko deleka, zo by jón abonował.',
 	'povwatch_subscribe'               => 'Abonować',
 	'povwatch_added'                   => 'přidaty',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'povwatch_added' => 'បានបន្ថែម',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

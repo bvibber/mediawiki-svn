@@ -93,6 +93,18 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'postcomment_notloggedin'              => 'អ្នកមិនបាន ត្រូវពិនិត្យចូល ។',
+	'postcomment_youareloggedinas'         => 'អ្នកបានត្រូវ ពិនិត្យចូល ជា $1',
+	'postcomment_addcommentdiscussionpage' => 'បន្ថែម វិចារ របស់អ្នក លើ ទំព័រពិភាក្សា',
+	'postcomment_leavemessagefor'          => 'ទំលាក់សារ សំរាប់ $1',
+	'postcomment_post'                     => 'ប្រកាស',
+	'postcomment_replyto'                  => 'ឆ្លើយតប ទៅ $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -210,6 +222,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'postcomment_on'      => 'నాడు',
 	'postcomment_said'    => 'అన్నారు',
 	'postcomment_replyto' => '$1కి స్పందన',
 );

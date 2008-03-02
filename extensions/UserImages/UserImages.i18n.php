@@ -102,6 +102,13 @@ $messages['ja'] = array(
 	'userimages-noimages' => '$1 は画像をアップロードしていません。',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'userimages-caption' => 'រូបភាព ត្រូវបានផ្ទុកឡើង ដោយ $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

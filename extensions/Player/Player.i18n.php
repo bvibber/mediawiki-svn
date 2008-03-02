@@ -188,7 +188,9 @@ $messages['io'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'player-file' => 'ឈ្មោះឯកសារ',
+	'player-file'      => 'ឈ្មោះឯកសារ',
+	'player-goto-page' => 'ទំព័រ',
+	'player-goto-file' => 'ឯកសារ',
 );
 
 $messages['la'] = array(
