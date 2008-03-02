@@ -458,6 +458,17 @@ JAVASCRIPT;
                         $polyline = array( );
                     }
 
+                    if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
+                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
+                            $icon, $title, $tabs, $caption, isset($lineColor));
+
+                        $tabs    = array( );
+                        $caption = '';
+                        $title   = null;
+                    }
+
+                    $state = GOOGLE_MAPS_PARSE_POINTS;
+
                     $stroke      = isset($matches[1]) && $matches[1] ? $matches[1] : $o['stroke'];
                     $lineOpacity = isset($matches[2]) && $matches[2] ? $matches[2] : "ff";
                     $lineColor   = isset($matches[3]) && $matches[3] ? $matches[3] : null;
