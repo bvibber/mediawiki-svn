@@ -85,3 +85,8 @@ extAddSpecialPage( dirname(__FILE__) . '/LuceneSearch_body.php', 'Search', 'Luce
 
 $wgExtensionMessagesFiles['LuceneSearch'] = dirname(__FILE__) . '/LuceneSearch.i18n.php';
 $wgAutoloadClasses['LuceneResult'] = dirname(__FILE__) . '/LuceneSearch_body.php';
+
+$wgAutoloadClasses['ApiQueryLuceneSearch'] = dirname(__FILE__) . '/ApiQueryLuceneSearch.php';
+// Override the default search engine
+$wgApiQueryListModules['search'] = 'ApiQueryLuceneSearch';
+
