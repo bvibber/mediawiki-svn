@@ -41,7 +41,6 @@ class ApiEditPage extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-		# TODO: Watch/stopwatching support + respect prefs
 		$this->getMain()->requestWriteMode();
 
 		$params = $this->extractRequestParams();
@@ -94,7 +93,7 @@ class ApiEditPage extends ApiBase {
 		
 		if($params['watch'])
 			$watch = true;
-		else if($params['dontwatch'])
+		else if($params['unwatch'])
 			$watch = false;
 		else if($titleObj->userIsWatching())
 			$watch = true;
@@ -217,14 +216,14 @@ class ApiEditPage extends ApiBase {
 			'captchaword' => null,
 			'captchaid' => null,
 			'watch' => false,
-			'stopwatching' => false,
+			'unwatch' => false,
 		);
 	}
 
 	protected function getParamDescription() {
 		return array (
-			'title' => 'Title of article',
-			'text' => 'Article content',
+			'title' => 'Page title',
+			'text' => 'Page content',
 			'token' => 'Edit token. You can get one of these through prop=info',
 			'summary' => 'Edit summary',
 			'minor' => 'Minor edit',
@@ -234,8 +233,8 @@ class ApiEditPage extends ApiBase {
 						'Used to detect edit conflicts; leave blank to ignore conflicts.'
 			),
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
-			'watch' => 'Put article in watchlist',
-			'stopwatching' => 'Take the article off the watchlist',
+			'watch' => 'Add the page to your watchlist',
+			'unwatch' => 'Remove the page from your watchlist',
 			'captchaid' => 'CAPTCHA ID from previous request',
 			'captchaword' => 'Answer to the CAPTCHA',
 		);

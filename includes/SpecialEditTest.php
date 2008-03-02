@@ -63,6 +63,8 @@ class SpecialEditTest extends SpecialPage
 		$retval .= $this->buildCheckBoxLine('Minor edit', 'minor');
 		$retval .= $this->buildCheckBoxLine('Bot edit', 'bot');
 		$retval .= $this->buildCheckBoxLine('Recreate page if deleted in the meantime', 'recreate');
+		$retval .= $this->buildCheckBoxLine('Watch page', 'watch');
+		$retval .= $this->buildCheckBoxLine('Unwatch page', 'unwatch');
 		$retval .= $this->buildTableRow(Xml::label('Article content', 'text'),
 						Xml::openElement('textarea', array(
 								'name' => 'text',
