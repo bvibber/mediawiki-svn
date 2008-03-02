@@ -848,6 +848,19 @@ Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
 	'boardvote_welcome'      => "Ongi etorri '''$1'''!",
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
+$messages['ext'] = array(
+	'boardvote_novotes'  => 'Naidi á votau entovia.',
+	'boardvote_time'     => 'Ora',
+	'boardvote_user'     => 'Usuáriu',
+	'boardvote_edits'    => 'Eicionis',
+	'boardvote_days'     => 'Dias',
+	'boardvote_dumplink' => 'Pulsa aquí',
+	'boardvote_welcome'  => "Bienviniu '''$1'''!",
+);
+
 /** فارسی (فارسی)
  * @author Huji
  */
