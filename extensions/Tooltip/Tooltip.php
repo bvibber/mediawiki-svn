@@ -3,13 +3,18 @@
 $wgExtensionFunctions[]             = "wfToolTipExtension";
 $wgHooks['LanguageGetMagic'][]      = 'wfTooltipParserFunction_Magic';
 $wgExtensionCredits['parserhook'][] = array(
-    'name'        => 'ToolTip',
-    'author'      => 'Paul Grinberg',
-    'description' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
-    'version'     => '0.5.2'
+	'name'           => 'ToolTip',
+	'author'         => 'Paul Grinberg',
+	'description'    => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki>tag',
+	'descriptionmsg' => 'tooltip-desc',
+	'version'        => '0.5.2',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Tooltip'] = $dir . 'Tooltip.i18n.php';
+
 function wfToolTipExtension() {
+    wfLoadExtensionMessages( 'Tooltip' );
     global $wgParser;
     global $wgOut;
     global $wgScriptPath;
