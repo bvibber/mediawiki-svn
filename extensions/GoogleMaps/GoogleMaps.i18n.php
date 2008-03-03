@@ -75,9 +75,9 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-kml-include-link' => 'add to map',
 	'gm-kml-loading' => 'loading...',
 	'gm-kml-export' => 'Export this map to KML',
-        'gm-earth' => 'Earth',
-        'gm-moon' => 'Moon',
-        'gm-mars' => 'Mars',
+	'gm-earth' => 'Earth',
+	'gm-moon' => 'Moon',
+	'gm-mars' => 'Mars',
 );
 
 /** Arabic (العربية)
@@ -383,6 +383,9 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-color-path'            => 'Farbe ändern',
 	'gm-make-map'              => 'Karte erstellen',
 	'gm-hide-map'              => 'Karte verbergen',
+	'gm-earth'                 => 'Erde',
+	'gm-moon'                  => 'Mond',
+	'gm-mars'                  => 'Mars',
 );
 
 /** German - formal address (Deutsch - förmliche Anrede)

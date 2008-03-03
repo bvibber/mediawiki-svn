@@ -6,7 +6,14 @@
 $messages = array();
 
 $messages['en'] = array (
-	'tooltip-desc' => 'adds <nowiki><tooltip></nowiki> and <nowiki>{{#tooltip:}}</nowiki> tag'
+	'tooltip-desc' => 'Adds <tt><nowiki><tooltip></nowiki></tt> and <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag'
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['en'] = array (
+	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt> und <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags'
 );
 
 /** French (Français)

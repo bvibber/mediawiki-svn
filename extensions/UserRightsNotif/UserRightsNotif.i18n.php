@@ -95,6 +95,9 @@ Atentament,
 $2",
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'userrightsnotifysubject' => 'Änderung der Gruppenzugehörigkeit vom $1',
 	'userrightsnotifybody'    => "Hallo $1
@@ -102,7 +105,24 @@ $messages['de'] = array(
 Dies ist eine Information, dass deine Gruppenzugehörigkeit von $2 durch $3 am $4 geändert wurde.
 
 Hinzugefügt: $5
-Entfernt: $6\
+Entfernt: $6
+
+Mit freundlichen Grüßen,
+
+$2",
+	'userrightsnotif-desc'    => 'Sendet E-Mail-Benachrichtungen über Rechteänderungen an den Benutzer',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'userrightsnotifybody'    => "Hallo $1
+
+Dies ist eine Information, dass Ihre Gruppenzugehörigkeit von $2 durch $3 am $4 geändert wurde.
+
+Hinzugefügt: $5
+Entfernt: $6
 
 Mit freundlichen Grüßen,
 

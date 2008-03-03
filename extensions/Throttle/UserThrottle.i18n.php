@@ -18,9 +18,21 @@ $messages['ar'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'إنشاء الحسابات تم تعليقه لعدة ثواني لتقليل هجوم التسجيل. من فضلك انتظر لحظة واضغط \'reload\' في متصفحك لإعادة التنفيذ.',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
-	'acct_creation_global_soft_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte warte einige Minuten und versuche es dann erneut.',
-	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann den Neuladen-Knopf an deinem Browser.',
+	'acct_creation_global_soft_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte warte einige Minuten und versuche es dann erneut.',
+	'acct_creation_global_hard_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann die Neuladen-Schaltfläche an deinem Browser.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Drosselung der Neuanmeldungen',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'acct_creation_global_soft_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte wartem Sie einige Minuten und versuchen Sie es dann erneut.',
+	'acct_creation_global_hard_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
 );
 
 /** French (Français)
