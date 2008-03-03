@@ -214,7 +214,7 @@ function mv_ex(mvd_id){
 		{action:'ajax',rs:'mv_expand_wt', "rsargs[0]":mvd_id, "st":terms},
 		function(data){				
 			//run highlighter on data: 
-			js_log('set to: '+ data);
+			//js_log('set to: '+ data);
 			$j('#mvr_'+mvd_id).html(data);
 			hl_search_terms('#mvr_'+mvd_id);
 			//re run mv_embed rewrite: 

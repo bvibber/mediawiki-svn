@@ -17,12 +17,22 @@ $mvgIP = $IP . '/extensions/MetavidWiki';
 //include the global functions & init the extension 
 include_once('MV_GlobalFunctions.php');
 
+
+//if the search portlet should autoComplete
+//(causes the inclution of jquery into every page.. can slow things down a bit)   
+$mvEnableAutoComplete=true;
+
+//if you want every page have the little powered by metavid software link 
+//(note this is done with javascript rewrite client side 
+//(normally you could just add it to your site skin)  
+$mvEnableJSLinkBack=true;
+
+
 ##########################
 # semanticWiki integration options
 ##########################
 //if you want to include spoken by relation in search results:  
 $mvSpokenByInSearchResult = true;
-
 
 #########################
 # metavid paths 

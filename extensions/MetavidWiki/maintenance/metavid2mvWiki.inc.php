@@ -440,7 +440,7 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	
 	return $out;
 }
-function do_people_insert() {
+function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false) {
 	global $valid_attributes, $states_ary;
 	$dbr = wfGetDB(DB_SLAVE);
 
@@ -448,7 +448,11 @@ function do_people_insert() {
 	$mvScrape = new MV_BaseScraper();
 	
 	//do people query:
-	$res = $dbr->query("SELECT * FROM `metavid`.`people`");
+	if($forcePerson!=''){
+		$res = $dbr->query("SELECT * FROM `metavid`.`people` WHERE `name_clean` LIKE '$forcePerson'");
+	}else{
+		$res = $dbr->query("SELECT * FROM `metavid`.`people`");
+	}
 	if ($dbr->numRows($res) == 0)
 		die('could not find people: ' . "\n");
 	$person_ary = array ();
@@ -458,6 +462,7 @@ function do_people_insert() {
 	foreach ($person_ary as $person) {		
 		$person_title = Title :: newFromUrl($person->name_clean);
 		//semantic data via template:
+		$mapk=null;
 		$page_body = '{{Congress Person|' . "\n";
 		foreach ($valid_attributes as $dbKey => $attr) {			
 			list ($name, $desc) = $attr;							
@@ -466,6 +471,26 @@ function do_people_insert() {
 				if($person->district){
 					if($person->district!=0){
 						$page_body .= "{$name}=".text_number($person->district).' District'."|\n";
+					}
+				}
+			}else if($dbKey=='total_received'){
+				if(!$mapk){
+					die('out of order attr proccess missing mapk'."\n");
+				}else{
+					$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
+					preg_match('/Contributions\sReceived\:\s\$([^<]*)/',$raw_results, $matches);
+					if(isset($matches[1])){
+						$page_body .="{$name}=".str_replace(',','',$matches[1])."|\n";		
+					}
+				}
+			}else if($dbKey=='contribution_date_range'){
+				if(!$mapk){
+					die('out of order attr proccess missing mapk'."\n");
+				}else{
+					$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
+					preg_match('/Showing\scontributions<\/dt><dd>([^<]*)</',$raw_results, $matches);
+					if(isset($matches[1])){
+						$page_body .="{$name}=".$matches[1]."|\n";		
 					}
 				}
 			}else if($dbKey=='maplight_id'){
@@ -497,7 +522,7 @@ function do_people_insert() {
 							$max=$v;
 						}						
 					}							
-					print "MapLightKey $mapk best match:".strtolower(trim(strip_tags($matches['2'][$mapk]))). " for $person->last  $person->first\n";
+					//print "MapLightKey $mapk best match:".strtolower(trim(strip_tags($matches['2'][$mapk]))). " for $person->last  $person->first\n";
 					/*if(strtolower($person->last)=='yarmuth'){					
 						print_r($person);
 						for($i=0;$i<7;$i++){
@@ -513,7 +538,25 @@ function do_people_insert() {
 				}
 			}
 		}
-			
+		//if we have the maplight key add in all contributions and procces contributers 
+		if(!$mapk){
+			die('out of order attr proccess missing mapk'."\n");
+		}else{
+			$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
+			preg_match_all('/\/map\/us\/interest\/([^"]*)">([^<]*)<.*\$([^\<]*)</U',$raw_results, $matches);		
+			if(isset($matches[1])){
+				foreach($matches[1] as $k=>$val){
+					$hr_inx = $k+1;
+					$page_body .="Funding Interest $hr_inx=".html_entity_decode($matches[2][$k])."|\n";	
+					$page_body .="Funding Amount $hr_inx=".str_replace(',','',$matches[3][$k])."|\n"; 			
+					if($doInterestLookup){			
+						//make sure the intrest has been proccessed:
+						do_proc_interest($matches[1][$k], html_entity_decode($matches[2][$k]));
+					}	
+					//do_proc_interest('G1100','Chambers of commerce');
+				}				
+			}
+		}
 		//add in the full name attribute: 
 		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
 			' ' . $person->middle . ' ' . $person->last . "|  \n";			
@@ -527,10 +570,11 @@ function do_people_insert() {
 		if (trim($full_name) == '')
 			$full_name = $person->name_clean;			
 		 
-		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br />\n".
-				 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
+		$page_body .= "\n" .'Basic Person page For <b>' . $full_name . "</b><br />\n";
+			//	 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] "; 
 				;
-		do_update_wiki_page($person_title, $page_body);		
+		do_update_wiki_page($person_title, $page_body, '',$force);		
+		//die('only run on first person'."\n");
 	}
 	foreach ($person_ary as $person) {
 		//download/upload all the photos:
@@ -581,6 +625,53 @@ function do_people_insert() {
 		}
 		//}
 	}
+}
+function do_proc_interest($intrestKey, $intrestName){
+	global $mvMaxContribPerInterest,$mvMaxForAgainstBills;
+	include_once('scrape_and_insert.inc.php');		
+	$mvScrape = new MV_BillScraper();
+	
+	$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/interest/'.$intrestKey.'/view/all');
+	$page_body ='{{Interest Group|'."\n";
+	$page_body.='MAPLight Interest ID='.$intrestKey."|\n";
+	//get all people contributions: 
+	preg_match_all('/\/map\/us\/legislator\/([^"]*)">.*\$([^<]*)</U',$raw_results, $matches);
+	if(isset($matches[2])){
+		$i=0;
+		foreach($matches[1] as $i=>$person_id){
+			$hr_inx = $i+1;
+			//we have to lookup the name: 
+			$personName = $mvScrape->get_wiki_name_from_maplightid($person_id);
+			if($personName){
+				$page_body.="Funded Name $hr_inx=".$personName."|\n";
+				$page_body.="Funded Amount $hr_inx=".str_replace(',','',$matches[2][$i])."|\n";
+			}
+			if($hr_inx==$mvMaxContribPerInterest)break;
+			$i++;
+		}
+	}	
+	$raw_results =  $mvScrape->doRequest('http://maplight.org/map/us/interest/'.$intrestKey.'/bills'); 
+	//get all bills supported or opposed 
+	preg_match_all('/\/map\/us\/bill\/([^"]*)".*\/map\/us\/legislator.*<td>([^<]*)</U',$raw_results, $matches);	
+	if(isset($matches[1][0])){
+		$support_count=$oppse_count=0;
+		foreach($matches[1] as $i=>$bill_id){			
+			//skip if we are maxed out
+			if($support_count==$mvMaxForAgainstBills)continue;
+			if($oppse_count==$mvMaxForAgainstBills)continue;	
+			$hr_inx = $i+1;		
+			$bill_name = $mvScrape->get_bill_name_from_mapLight_id($bill_id);
+			if($matches[2][$i]=='Support'){
+				$page_body.="Supported Bill $hr_inx=$bill_name|\n";
+			}else if($matches[2][$i]=='Oppose'){
+				$page_body.="Opposed Bill $hr_inx=$bill_name|\n";
+			}												
+		}
+	}
+	$page_body.='}}';	
+	print "Interest Page: $intrestName\n";	
+	$wTitle =Title::makeTitle(NS_MAIN,$intrestName);
+	do_update_wiki_page( $wTitle, $page_body);		
 }
 function do_rm_congress_persons(){
 	$dbr =& wfGetDB(DB_SLAVE);		
@@ -712,7 +803,22 @@ $valid_attributes = array (
 		'District',
 		'The district # page ie: 3rd District',
 		'page'
-	)	
+	),	
+	'url'=>array(
+		'Home Page',
+		'The representatives home page',
+		'URL'
+	),
+	'total_received'=>array(
+		'Total Received',
+		'The Total Contributions Received',
+		'number'
+	),
+	'contribution_date_range'=>array(
+		'Contributions Date Range',
+		'The date range of contributions',
+		'string'
+	)
 );
 //state look up:
 $states_ary = array (

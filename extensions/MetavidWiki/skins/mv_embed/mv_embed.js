@@ -517,7 +517,6 @@ if(embedTypes.safari){
 window.onload = init_mv_embed;
 /*
 * Coverts all occurrences of <video> tag into video object
-* (if a native support is not found) 
 */
 function mv_embed(){  	  
 	//get mv_embed location if it has not been set
@@ -640,11 +639,10 @@ function swapEmbedVideoElement(video_element, videoInterface){
     
     //append the object into the dom: 
     parent_elm.appendChild(embed_video);  
-   
-    
+       
     //now run the getHTML on the new embedVideo Obj:
     embed_video.getHTML(); 
-    js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
+   	//js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
     
     //store a reference to the id 
     //(for single instance plugins that need to keep track of other instances on the page)
@@ -1231,16 +1229,7 @@ embedVideo.prototype = {
 							'z-index:5;height:4px; background: url('+mv_embed_path+'images/bd-gray.gif) repeat scroll 5px 0px;">'+
 								' <div id="playhead_'+id+'" class="mv_playhead" ' +
 									'style="z-index:5;background-image: url('+mv_embed_path+'images/slider_handle.gif);"></div>' + 						
-						'</div>';
-				//use style for bg (to use paths
-				//position: absolute;'+
-				//					'height: 21px; left: 0px; top: 10px; width: 17px;'+
-				/*return '<div id="track_'+id+'" class="mv_track" ' +
-						'style="background: url('+mv_embed_path+'images/bd-gray.gif);' +
-						'width:'+(this.width)+'px; height:4px;">'+
-				'<div id="playhead_'+id+'" style="background:url(\''+mv_embed_path+'images/slider_handle.gif\');"' +
-					' class="mv_playhead"></div>'+
-				'</div>';*/					
+						'</div>';				
 			break;
 			case 'info_span':
 				return '<span id="info_cnt_'+id+'" style="float:left">' +
@@ -1262,22 +1251,6 @@ function getTransparentPng(image){
 			image.src + '">';
 	}
 }
-//returns the original name to the faded img (	//take off the new_)
-/*function thumbnail_restore_id(obj){
-	if(obj.element){
-		var default_id=obj.element.id.substr(4);
-		var this_id = obj.element.id.substr(14);
-		//remove original 
-		img_container = document.getElementById('dc_'+this_id);
-		if(img_container){
-			org_img = document.getElementById(default_id);
-			img_container.removeChild(org_img);
-			//set the new obj id to the default:
-			obj.element.id=default_id;
-		}
-		//console.log('restore ' + obj.element.id);
-	}
-}*/
 
 /*
 * EMBED OBJECTS:

@@ -90,7 +90,8 @@ actions:
 		'all_in_wiki' will run on all streams in the wiki 
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
 		[stream_name] will insert all records for the given stream name
-		'people' will insert all the people articles 	
+		'people' [person_name] will insert all the people articles optional followed by a person name 	
+		'interest' will insert interests (uses people as base so run people first) 
 		'update_templates' will update templates & some semantic properties  
 		'file_check' checks inserted streams file urls/pointers
 
@@ -113,7 +114,12 @@ switch ($args[0]) {
 		do_stream_insert('files');
 	break;
 	case 'people' :
-		do_people_insert();
+		$force = (isset($options['force']))?true:false;	
+		$person_name = (isset($args[1]))?$args[1]:'';
+		do_people_insert('',$person_name, $force);
+	break;
+	case 'interest':
+		do_people_insert($lookUpInterest=true);
 	break;
 	case 'update_templates' :
 		$force = (isset($options['force']))?true:false;

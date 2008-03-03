@@ -9,7 +9,7 @@ function mv_pre_setup_smw_ext(){
 	//make sure we have jQuery 
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
  		_global['$j'] = jQuery.noConflict();
-		mv_swm_rewrite();
+		mv_swm_rewrite();		
 	});
 }
 
@@ -19,7 +19,7 @@ function mv_swm_rewrite(){
 	var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/?([0-9]+:[0-9]+:[^\/]+)?");
 	$j('a').each(function(){
 		res = this.href.match(patt_mvd);
-		if(res){
+		if(res){			
 			js_log(this.href);
 			js_log(res);
 		}

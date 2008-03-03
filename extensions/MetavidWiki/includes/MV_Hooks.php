@@ -213,7 +213,10 @@
 		return $MV_Overlay->get_edit_disp($titleKey, $mvd_id);
 	}
 	function mv_auto_complete_person($val=null){		
-		return MV_Overlay::auto_complete_person($val);
+		return MV_SpecialMediaSearch::auto_complete_person($val);
+	}
+	function mv_auto_complete_all($val=null){
+		return MV_SpecialMediaSearch::auto_complete_all($val);
 	}
 	function mv_auto_complete_stream_name($val=null){	
 		return 	MV_SequenceTools::auto_complete_stream_name($val);

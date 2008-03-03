@@ -17,7 +17,6 @@ function doSpecialSearch($par = null) {
 //metavid search page (only search video media)
 SpecialPage :: addPage(new SpecialPage('MediaSearch', '', true, 'doSpecialSearch', false));
 
-
 /*
  * adds media results to top of special page: 
  */
@@ -169,8 +168,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getResultsHTML() {
 		global $mvgIP, $wgOut, $mvgScriptPath, $mvgContLang, $wgUser, $wgParser;
 		$sk = & $wgUser->getSkin();
-		$o = '';				
-				
+		$o = '';								
 		//media paging:
 		$prevnext = wfViewPrevNext( $this->offset, $this->limit,
 				SpecialPage::getTitleFor( 'MediaSearch' ),
@@ -219,8 +217,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					//output indent if not the first and count more than one 
 					if(count($srange['rows'])!=1 && $inx!=0)
 						$mvd_out.='&nbsp; &nbsp; &nbsp; &nbsp;';
-						
-					$mvd_out .= '<span style="background:#'.$bgcolor.'">&nbsp; &nbsp; &nbsp; &nbsp;' . $mvTitle->getTimeDesc() . '&nbsp;</span>';
+					//'<img src="'. $mvgScriptPath . '/skins/images/film.png">'
+					$mvd_out .= '<span title="' . wfMsg('mv_expand_play') . '" onclick="mv_ex(\'' . $mvd->id . '\')" style="cursor:pointer;background:#'.$bgcolor.'">&nbsp; &nbsp; &nbsp; &nbsp;' 
+								. $mvTitle->getTimeDesc() . '&nbsp;</span>';
 					$mvd_out .= '<a title="' . wfMsg('mv_expand_play') . '" href="javascript:mv_ex(\'' . $mvd->id . '\')"><img id="mv_img_ex_'.$mvd->id.'" border="0" src="' . $mvgScriptPath . '/skins/images/closed.png"></a>' .
 					'&nbsp;';
 					//output control links:
@@ -599,6 +598,96 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$s = '<input '.$more_attr.' class="mv_search_text'.$more_class.'" style="font-size: 12px;" onchange="" 
 						size="9" type="text" name="f[' . $i . '][' . $key . ']" value="' . $val . '">';
 		return $s;
+	}
+	/*again here is some possibly metavid specific stuff:*/
+	function auto_complete_all($val){
+		//make sure people know they can "search" too (formated by  
+		$out='do_search|'.wfMsg('mv_search_trasncripts_for').' <b>$1</b>|no_image'."\n";
+		//get people
+		$person_out = MV_SpecialMediaSearch::auto_complete_person($val, 3);
+		if($person_out!=''){
+			$out.='Category:Person|<h2>People:</h2> |no_image'."\n";
+			$out.=$person_out;
+		}
+		//get bills		
+		$bill_out = MV_SpecialMediaSearch::auto_complete_category('Bill', $val, 3);
+		if($bill_out!=''){
+			$out.='Category:Bill|<h2>Bills:</h2>|no_image'."\n";
+			$out.=$bill_out;
+		}
+		return $out;
+	}
+	function auto_complete_category($category, $val,  $result_limit='5'){
+		$dbr =& wfGetDB(DB_SLAVE);		
+		$val = ucfirst($val);
+		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
+			array('cl_to'=>$category, 
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\''),
+			__METHOD__,
+			array('LIMIT'=>$result_limit));
+		//mention_bill catebory Bill
+		if($dbr->numRows($result) == 0)return '';
+		$out='';
+		while($row = $dbr->fetchObject($result)){
+			$page_title = $row->cl_sortkey;
+			//bold matching part of title: 
+			$page_title_bold = str_replace($val, '<b>'.$val.'</b>',$page_title);
+			$out.=$page_title.'|'.$page_title_bold.'|no_image'."\n";
+		}
+		return $out;
+	}
+	/*@@todo cache result for given values*/
+	function auto_complete_person($val, $result_limit='5'){
+		$dbr =& wfGetDB(DB_SLAVE);		
+		//check against anybody in category 'Person' do an or for case insensitivity
+        //@@TODO look into a mysql way to correlate in a non case sensitive manner
+        $val = ucfirst($val);
+		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
+			array('cl_to'=>'Person', 
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\''),
+			__METHOD__,
+			array('LIMIT'=>$result_limit));
+		//print "ran: " . $dbr->lastQuery();
+		if($dbr->numRows($result) == 0)return '';
+		//$out='<ul>'."\n";
+		$out='';
+		while($row = $dbr->fetchObject($result)){
+			$person_name = $row->cl_sortkey;
+			//make sure the person page exists: 
+			$personTitle = Title::makeTitle(NS_MAIN, $person_name);
+			if($personTitle->exists()){
+				//get person full name from semantic table if available
+				$person_result = $dbr->select('smw_attributes', 'value_xsd', array('attribute_title'=>'Full_Name',
+										'subject_title'=>$personTitle->getDBkey()),
+										__METHOD__);
+				if($dbr->numRows($person_result)== 0){
+					$person_full_name = $person_name;
+				}else{
+					$pvalue = $dbr->fetchObject($person_result);
+					$person_full_name = $pvalue->value_xsd;
+				}
+				//bold the part of the selected title 
+				$person_full_name = str_replace($val, '<b>'.$val.'</b>', $person_full_name);
+				//if we have a image toss that in there too 				
+				$imgHTML='';
+				$imgTitle = Title::makeTitle(NS_IMAGE, $person_name.'.jpg');
+				if($imgTitle->exists()){
+					$img= wfFindFile($imgTitle);
+					if ( !$img ) {
+						$img = wfLocalFile( $imgTitle );										
+					}										
+				}else{
+					$imgTitle = Title::makeTitle(NS_IMAGE, MV_MISSING_PERSON_IMG);
+					$img= wfFindFile($imgTitle);	
+				}
+				//$imgHTML="<img src=\"{$img->getURL()}\" width=\"44\">";
+				$out.=  $person_name.'|'.$person_full_name .'|'.$img->getURL() . "\n";
+				//$out.="<li name=\"{$person_name}\"> $imgHTML $person_full_name</il>\n";
+			} 			
+		}
+		//$out.='</ul>';
+		//return people people in the Person Category
+		return $out;
 	}
 	//return a json date obj 
 	//@@todo fix for big sites...(will start to be no fun if number of streams > 1000 ... over many years)

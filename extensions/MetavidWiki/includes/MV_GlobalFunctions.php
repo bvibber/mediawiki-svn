@@ -67,15 +67,21 @@ function enableMetavid() {
 	$smwgNamespacesWithSemanticLinks[MV_NS_SEQUENCE] = true;
 	$smwgNamespacesWithSemanticLinks[MV_NS_SEQUENCE_TALK] = false;  
 	$smwgNamespacesWithSemanticLinks[MV_NS_MVD] = true;
-	$smwgNamespacesWithSemanticLinks[MV_NS_MVD_TALK] = false;
+	$smwgNamespacesWithSemanticLinks[MV_NS_MVD_TALK] = false;	
 	return true;
 }
 function mvSetupExtension(){
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore, 
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions,$markerList;
+	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions,$markerList,
+	$mvEnableAutoComplete, $mvEnableJSLinkBack;
+	
 
 	mvfInitMessages();
-
+	//add header for autoComplete if enabled: 
+	if($mvEnableAutoComplete || $mvEnableJSLinkBack ){
+		mvfAutoAllPageHeader();
+	}
+	
 	/**********************************************/
 	/***** register special pages hooks       *****/
 	/**********************************************/		
@@ -115,13 +121,31 @@ function mvSetupExtension(){
 	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
 		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br />' .
-				'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
+			'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }	
 /**********************************************/
 /***** Header modifications               *****/
 /**********************************************/
-
+	/**
+	 * header script to be added to all pages: 
+	 * enables linkback and autocomplete for search
+	 */
+	function mvfAutoAllPageHeader(){
+		global $mvgScriptPath, $wgJsMimeType, $wgOut;	
+		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
+		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
+		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
+		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
+		
+		$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
+		$wgOut->addLink(array(
+				'rel'   => 'stylesheet',
+				'type'  => 'text/css',
+				'media' => 'all',
+				'href'  => $mvCssUrl
+		));								
+	}
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags
 	*  into the html header of each page.  It is called by pages 
@@ -130,11 +154,11 @@ function mvSetupExtension(){
 	* @@todo split up embed js & interface js include calls
 	*
 	*  $out is the modified OutputPage.
-	*/
+	*/		
 	function mvfAddHTMLHeader($head_set='') {
-		global $mvgHeadersInPlace; // record whether headers were created already (hopefully you don't call addHeader twice)
+		global $mvgHeadersInPlace; // record whether headers were created already (don't call mvfAddHTMLHeader twice)
 		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
-		global $mvgScriptPath, $wgJsMimeType, $wgOut;		
+		global $mvgScriptPath, $wgJsMimeType, $wgOut , $mvEnableAutoComplete, $mvEnableJSLinkBack;		
 			
 		if (!$mvgHeadersInPlace) {			
 			//all sets use mv_common script: *not used much yet*  
@@ -144,10 +168,13 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 			
 			if($head_set=='search' || $head_set=='sequence'){	
-				//get jquery and autocomplete for seq/search			
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");			
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");		
+				//get jquery and autocomplete for seq/search	
+				//already included for all pages to support autoComplete 
+				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack) ){
+					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
+					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");								 
+					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
+				}							
 			}
 			
 			if($head_set=='search')
@@ -158,14 +185,16 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
 			if($head_set=='smw_ext')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
-			 
-			$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
-			$wgOut->addLink(array(
-				'rel'   => 'stylesheet',
-				'type'  => 'text/css',
-				'media' => 'all',
-				'href'  => $mvCssUrl
-			));				
+			
+			if(!($mvEnableAutoComplete || $mvEnableJSLinkBack) ){
+				$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
+				$wgOut->addLink(array(
+					'rel'   => 'stylesheet',
+					'type'  => 'text/css',
+					'media' => 'all',
+					'href'  => $mvCssUrl
+				));				
+			}
 			//add extra IE styles fixes 
 			$wgOut->addScript('<!--[if IE 7]>' .
 								'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
@@ -292,6 +321,7 @@ function sffLoadMessagesManually() {
 
 	# add messages
 	require($mvgIP . '/languages/MV_Messages.php');
+	global $messages;
 	foreach($messages as $key => $value) {
 		$wgMessageCache->addMessages($messages[$key], $key);
 	}
@@ -299,6 +329,7 @@ function sffLoadMessagesManually() {
 /*
  * Ajax Hooks 
  */
+$wgAjaxExportList[] = 'mv_auto_complete_all';
 $wgAjaxExportList[] = 'mv_auto_complete_person';
 $wgAjaxExportList[] = 'mv_auto_complete_stream_name';
 $wgAjaxExportList[] = 'mv_disp_mvd';

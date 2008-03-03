@@ -40,7 +40,7 @@ Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests
 ==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
 <span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Category:{{{Bill Key}}}}}</span>
 {{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
-{{ #if: {{{Bill Key|}}}| Media in [[:Category:{{{Bill Key}}}]] |}}
+{{ #if: {{{Bill Key|}}}| <br>Media in [[:Category:{{{Bill Key}}}]] |}}
 {{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
 {{ #if: {{{Sponsor|}}}|* Sponsor: [[Bill Sponsor:={{{Sponsor}}}]] |}}';
 $bill_template.='
@@ -51,11 +51,11 @@ for($i=2;$i<70;$i++){
 	$bill_template.='{{ #if: {{{Cosponsor '.$i.'|}}}|, [[Bill Cosponsor:={{{Cosponsor '.$i.'}}}]] |}}';
 }
 //output mapLight info if present:
-$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Intrests who<span style="color:green">support</span> bill becoming law=='."\n".' |}}';
+$bill_template.='{{ #if: {{{Supporting Interest 1|}}}|<h2>Intrests who <span style="color:green">support</span> bill becoming law</h2>'."\n".' |}}';
 for($i=1;$i<20;$i++){
 	$bill_template.='{{ #if: {{{Supporting Interest '.$i.'|}}}|* [[Supporting Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".' |}}';
 }
-$bill_template.='{{ #if: {{{MapLightBillID|}}}|==Interests who<span style="color:red">oppose</span> bill becoming law=='."\n".' |}}';
+$bill_template.='{{ #if: {{{Opposing Interest 1|}}}|<h2>Interests who <span style="color:red">oppose</span> bill becoming law</h2>'."\n".' |}}';
 for($i=1;$i<20;$i++){
 	$bill_template.='{{ #if: {{{Opposing Interest '.$i.'|}}}|* [[Opposing Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".'|}}';
 }
@@ -72,71 +72,62 @@ $bill_template.='
 ==Data Sources==  		
 {{ #if: {{{ThomasID|}}}|* [[Metavid Sources#Thomas|Thomas]] Official Bill Information:[[Data_Source_URL:=http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:]] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
 {{ #if: {{{GovTrackID|}}}|* [[Metavid Sources#GovTrack|GovTrack]] Bill Overview:[[Data_Source_URL:=http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}]] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
-{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[Map Light Bill ID:={{{MapLightBillID}}}| ]] |}}
+{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[MAPLight_Bill_ID:={{{MapLightBillID}}}| ]] |}}
 [[Category:Bill]]
 </includeonly>';	
 	//update bill template:
 	$wgTemplateTitle = Title :: makeTitle(NS_TEMPLATE, 'Bill');
 		do_update_wiki_page($wgTemplateTitle,$bill_template ,null, $force);
 			
-	//update semnatic property types:	
-	$wgPropTitle = Title::newFromText('Bill_Key', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::Page]]',null, $force);
-			
-	$wgPropTitle = Title::newFromText('Congress Session', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::Page]]',null, $force);
-		
-	$wgPropTitle = Title::newFromText('Thomas Bill ID', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::String]]',null, $force);
-	
-	$wgPropTitle = Title::newFromText('Open_Congress_Bill_ID', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::String]]',null, $force);
-		
-	$wgPropTitle = Title::newFromText('GovTrack_Bill_ID', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::String]]',null, $force);	
-		
-	$wgPropTitle = Title::newFromText('Map_Light_Bill_ID', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::String]]',null, $force);
-			
-	$wgPropTitle = Title::newFromText('Data_Source_URL', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::URL]]',null, $force);		
-		
-	$wgPropTitle = Title::newFromText('Date_Bill_Introduced', SMW_NS_PROPERTY);
-		do_update_wiki_page($wgPropTitle, '[[has type::Date]]',null, $force);
+	//update semnatic property types:
+	foreach(array('Page'=>array('Bill Key', 'Bill Sponsor', 'Bill Cosponsor', 'Congress Session'),
+				  'String'=>array('Thomas Bill ID','Open_Congress_Bill_ID','GovTrack_Bill_ID','MAPLight_Bill_ID'),
+				  'URL'=>array('Data_Source_URL'),
+				  'Date'=>array('Date_Bill_Introduced')
+	) as $type=>$type_set){
+		foreach($type_set as $propName){
+				$wgPropTitle = Title::newFromText($propName, SMW_NS_PROPERTY);
+					do_update_wiki_page($wgPropTitle, '[[has type::'.$type.']]',null, $force);
+			}
+	}
 /***************************************
  * Interest Group templates:
  **************************************/
+ 
+  global $mvMaxContribPerInterest, $mvMaxForAgainstBills;
  $interest_template = '<noinclude>Interest Group Template simplifies the structure of articles about Interest Groups.
 <pre>{{Interest Group|
-MapLightInterestID=The MapLight Interest ID|
-Funded Name #=funded name where 1 is 1-100 for top 100 contributions|
+MAPLight Interest ID=The MapLight Interest ID|
+Funded Name #=funded name where 1 is 1-'.$mvMaxContribPerInterest.' for top '.$mvMaxContribPerInterest.' contributions|
 Funded Amount #=funded amount to name 1 (required pair to funded name #)|	
-Supported Bill #=Bills the Interest group supported (long name) 1-100|
-Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
+Supported Bill #=Bills the Interest group supported (long name) 1-'.$mvMaxForAgainstBills.'|
+Opposed Bill #=Bills Interest group Opposed (long name) 1-'.$mvMaxForAgainstBills.'|
 }}</pre>
 </noinclude><includeonly>
 {{ #if: {{{Funded Name 1|}}}|==Recipients Funded==
-Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
+Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MAPLight Interest ID}}}|MAPLight source]]
 |}}';
 /*
  * output top $mvMaxContribPerInterest contributers
  */
- global $mvMaxContribPerInterest, $mvMaxForAgainstBills;
- $interest_template.='{{ #if: {{{Funded Name 1|}}}|==Bill Supported Funded==
-Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}|source]]
-|}}';
-for($i=1;$i<$mvMaxContribPerInterest;$i++){
-	 $interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount 1}}}]]
-|}}';
+for($i=1;$i<=$mvMaxContribPerInterest;$i++){
+	if($i<=10){ //only display 10:
+		$interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount '.$i.'}}}]] |}}';
+		if($i!=10)$interest_template.="\n";
+	}else{
+		$interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount '.$i.'}}}|]] |}}'."\n";
+	}
 }
+
 /*
  * output bills supported / opposed template vars:
  */
 foreach(array('Supported','Opposed') as $pos){
-	$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|=='.$pos.' Bills==
-Pulled from maplight [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MapLightInterestID}}}/bills|source]]
+	//$interest_template.='\nShowing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MAPLight Interest ID}}}|MAPLight source]]';
+	$interest_template.='{{ #if: {{{'.$pos.' Bill 1|}}}|<h3>'.$pos.' Bills</h3>
+Pulled from maplight [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MAPLight Interest ID}}}/bills|source]]
 |}}'; 
-	for($i=1;$i<$mvMaxForAgainstBills;$i++){	 
+	for($i=1;$i<=$mvMaxForAgainstBills;$i++){	 
 		$interest_template.='{{ #if: {{{'.$pos.' Bill '.$i.'|}}}|*[['.$pos.' Bill:={{{'.$pos.' Bill '.$i.'}}}]]
 |}}';
 	}
@@ -163,23 +154,65 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 		list ($name, $desc) = $attr;				 
 		$template_body .= $name . '=' . $desc . "|\n";
 	}
-	
+	//$template_body .= "Committee Member #= The name of the Committee (where # is 1-15)|\n";
+	//$template_body .= "Committee Chair #= The name of the Committee (where # is 1-15)|\n";
+	$template_body .= "Funding Interest #= Funding Interest Name (where # is 1-10)|\n";
+	$template_body .= "Funding Amount #= Funding Amount for Interest (where # is 1-10 and aligns with Funding Interest Name)|\n";
 	$template_body .= '}}</pre>' .
 	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
 			</noinclude>' .
 	'<includeonly>' . "\n";
 	//include the image if present: 
-	$template_body .= '{{ #if: {Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg]]'."\n".'|}}';
+	$template_body .= '{{ #if: {Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg|left]]'."\n".'|}}';
 	foreach ($valid_attributes as $dbKey => $attr) {
 		list ($name, $desc) = $attr;	
 			$template_body .= "{{ #if: {{{" . $name . "|}}}| [[$name:={{{" . $name . "}}}| ]] |}}";		
 	}	
+	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
+	//ask for media:	
+	$template_body.='{{#ask: [[Speech_By::{{PAGENAME}}]] |
+| intro=<h3>Speeches By {{PAGENAME}}</h3>
+| default= | limit=5}}';	
+	$template_body.='{{#ask: [[Spoken_By::{{PAGENAME}}]] |
+| intro=<h3>Spoken Text By {{PAGENAME}}</h3> 
+| default= | limit=5}}';	 
+
+	//ask for inverse relations (bills) : 
+	$template_body.='{{#ask: [[Bill Sponsor::{{PAGENAME}}]] |
+| intro=<h3>Bills Sponsored</h3>
+| default= | limit=5}}';
+
+	$template_body.='{{#ask: [[Bill Cosponsor::{{PAGENAME}}]] |
+| intro=<h3>Bills Cosponsored</h3>
+| default= | limit=5}}';
+
+
+	//$template_body.="\n".'[[Special:MediaSearch/person/{{PAGENAME}}|Media Search]]<br>'; 
+	//include space for Top 10 Interests Funding	
+	$template_body.="\n===Interests Funding===\n";
+	$template_body.="{{ #if: {{{Total Received|}}}|Total Campaign Contributions for {{PAGENAME}}: \${{{Total Received}}} <br>|}}\n";
+	$template_body.="{{ #if: {{{Contributions Date Range|}}}|Contributions Date Range: {{{Contributions Date Range}}} |}}\n";	
+	for($i=1;$i<=10;$i++){
+		$template_body.="{{ #if: {{{Funding Interest $i|}}}|*[[Funding Interest:={{{Funding Interest $i}}};{{{Funding Amount $i}}}]] \n|}}";
+	}
+	$template_body.="\n";
+	$template_body.="{{ #if: {{{MAPLight Person ID|}}}|[[Data_Source_URL:=http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}}|MAPLight Source]] \n|}}";
+	
+	//comm
+	$template_body.="{{ #if: {{{Committee Member $i|}}}|\n===Committee Membership===\n|}}";
+	for($i=1;$i<=15;$i++){
+		$template_body.="{{ #if: {{{Committee Member $i|}}}|*[[Committee Member:={{{Member of Committee $i}}}]] \n|}}";
+	}
+	//news feeds:
+	//$template_body.="\n===RSS feeds===\n".
+	//$template_body.="<rss>http://www.opencongress.org/people/atom_news/
+	
 	//include some external links:
 	$template_body .="\n===External Links===\n".
-'{{ #if: {{{Bio Guide ID|}}}|* [http://bioguide.congress.gov/scripts/biodisplay.pl?index={{{Bio Guide ID}}} Offical Biography] |}}'."\n".
-'{{ #if: {{{MAPLight Person ID|}}}|* [http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}} MapLight Page] |}}'."\n".
-'{{ #if: {{{Open Secrets ID|}}}|* [http://www.opensecrets.org/politicians/summary.asp?CID={{{Open Secrets ID}}} Open Secrets Page] |}}'."\n".
-'{{ #if: {{{GovTrack Person ID|}}}|* [http://www.govtrack.us/congress/person.xpd?id={{{GovTrack Person ID}}} GovTrack Page] |}}'."\n";
+'{{ #if: {{{Bio Guide ID|}}}|* [http://bioguide.congress.gov/scripts/biodisplay.pl?index={{{Bio Guide ID}}} Offical Biography] <br>|}}'.
+'{{ #if: {{{MAPLight Person ID|}}}|* [http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}} MapLight Page] <br>|}}'.
+'{{ #if: {{{Open Secrets ID|}}}|* [http://www.opensecrets.org/politicians/summary.asp?CID={{{Open Secrets ID}}} Open Secrets Page] <br>|}}'.
+'{{ #if: {{{GovTrack Person ID|}}}|* [http://www.govtrack.us/congress/person.xpd?id={{{GovTrack Person ID}}} GovTrack Page] <br>|}}';
 	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
 			</includeonly>';
 	echo "updated 'Congress Person' template\n";
@@ -191,9 +224,12 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 		$wgPropTitle = Title::newFromText($name, SMW_NS_PROPERTY);
 		do_update_wiki_page($wgPropTitle, "[[has type:=$type]]",null, $force);
 	}
+	//update special types: 
+	$wgPropTitle = Title::newFromText('Funding Interest',SMW_NS_PROPERTY);
+	do_update_wiki_page($wgPropTitle, "[[has type:=Page;Number]]",null,$force); 
 		
 /************************************
- * page helpers
+ *  page helpers
  ************************************/
  $wgTempNavImg = Title::makeTitle(NS_TEMPLATE, 'Navimg');
  do_update_wiki_page($wgTempNavImg, '<div style="position: relative; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; font-size: 200pt; width: {{{xsize|{{{size|}}}}}}px; height: {{{ysize|{{{size|}}}}}}px;  overflow: hidden; line-height: {{{ysize|{{{size|}}}}}}px; z-index: 3;">[[:{{{link|}}}|{{{linktext|&nbsp;}}}]]</div><div style="position: absolute; top: 0; left: 0; z-index: 2;">[[Image:{{{image|}}}|{{{xsize|{{{size|}}}}}}px|image page]]</div></div><noinclude>

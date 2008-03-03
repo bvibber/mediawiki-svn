@@ -25,6 +25,10 @@ if ( !$wgUser ) {
 if ( $wgUser->isAnon() ) {
 	$wgUser->addToDatabase();
 }
+//some global configs; 
+$mvMaxContribPerInterest=300;
+$mvMaxForAgainstBills=100;
+
 
  //returns true if person found in the wiki 
  $mv_valid_people_cache = array();

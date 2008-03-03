@@ -82,6 +82,7 @@ $messages['en'] = array(
 	#tools
 	'mv_tool_search'         => 'Search',
 	'mv_tool_search_title'   => 'Search within this Stream',
+	'mv_search_trasncripts_for'=>'Search Trasncripts for',
 	'mv_tool_navigate'       => 'Navigate',
 	'mv_tool_navigate_title' => 'Navigate the full stream',
 	'mv_tool_export'         => 'Export',

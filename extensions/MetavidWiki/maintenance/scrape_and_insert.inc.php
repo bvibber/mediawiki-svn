@@ -19,7 +19,8 @@ class MV_BillScraper extends MV_BaseScraper{
 	
 	var $mapLightInterestG 		= 'http://maplight.org/map/us/interest/$1/view/all';
 	var $mapLightInterestGBills = 'http://maplight.org/map/us/interest/$1/bills';
-	
+	//flag to control maplight lookup
+	var $bill_name_maplight_lookup=true;
 	//swich on letter types:
 	var $bill_types = array('H.J.RES.'=>'hj', 'H.R.'=>'h', 'H.RES.'=>'hr', 
 							'S.CON.RES.'=>'sc', 'S.J.RES'=>'sj', 'S.RES.1'=>'sr', 'S.'=>'s');
@@ -488,18 +489,27 @@ class MV_BillScraper extends MV_BaseScraper{
 		 }
 	}
 	/* converts c-span bill_id to gov_track bill id */
-	function get_and_proccess_billid($bill_key, $stream_date){
+	function get_and_proccess_billid($bill_key, $stream_date='',$session=''){
 		global $MvBillTypes;
-		//first get the year to detrim the house session: 
-		$year =date('y', $stream_date);
-		$session='';
-		if($year=='01'||$year=='02'){$session='107';
-		}else if($year=='03'||$year=='04'){$session='108';
-		}else if($year=='06'||$year=='05'){$session='109';
-		}else if($year=='07'||$year=='08'){$session='110';
-		}else if($year=='09'||$year=='10'){$session='111';
-		}else if($year=='11'||$year=='12'){$session='112';}
-		$this->cur_session=$session;	
+		//add a space to bill key after $bill_type key
+		foreach($this->bill_types as $bk=>$na){
+			if(strpos($bill_key, $bk)!==false){
+				if(strpos($bill_key, $bk.' ')===false){
+					$bill_key = str_replace($bk, $bk.' ',$bill_key);
+				}
+			}			
+		}
+		//first get the year to detrim the house session:				
+		if($session==''){	
+			$year =date('y', $stream_date);
+			if($year=='01'||$year=='02'){$session='107';
+			}else if($year=='03'||$year=='04'){$session='108';
+			}else if($year=='06'||$year=='05'){$session='109';
+			}else if($year=='07'||$year=='08'){$session='110';
+			}else if($year=='09'||$year=='10'){$session='111';
+			}else if($year=='11'||$year=='12'){$session='112';}
+			$this->cur_session=$session;
+		}	
 		foreach($this->bill_types as $cspanT=>$govtrakT){
 			$bill_key = trim($bill_key);
 			if(substr($bill_key, 0,strlen($cspanT))==$cspanT){
@@ -528,7 +538,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		$raw_map_light = $this->doRequest($this->mapLightBillSearch. str_replace(' ','+',$bill_key));
 		$patern = '/<a href=\"\/map\/us\/bill\/([^"]*)">'.str_replace(' ', '\s?',$bill_key).'\s\('.$session.'/i';
 		preg_match($patern, $raw_map_light,$matches );
-		print $patern; 
+		//print $patern; 
 		//print_r($matches);
 		if(isset($matches[1])){
 			return $matches[1];			
@@ -587,7 +597,7 @@ class MV_BillScraper extends MV_BaseScraper{
 			'GovTrackID='.$govTrackBillId."|\n";
 		if(isset($thomas_match[1]))$bp.='ThomasID='.$thomas_match[1]."|\n";
 		if($openCongBillId)$bp.='OpenCongressBillID='.$openCongBillId."|\n";
-		if($mapLightBillId)$bp.='MAPLightBillID='.$mapLightBillId."|\n";
+		if($mapLightBillId)$bp.='MapLightBillID='.$mapLightBillId."|\n";
 		if(isset($this->cur_session))$bp.='Session='.$this->cur_session."th session|\n";
 		$bp.='Bill Key='.$bill_key."|\n";							
 		if(isset($date_intro_match[1]))$bp.='Date Introduced='.$date_intro_match[1]."|\n";
@@ -636,42 +646,16 @@ class MV_BillScraper extends MV_BaseScraper{
 		$wgCatPageTitle =Title::newFromText($bill_key, NS_CATEGORY);		
 		do_update_wiki_page($wgCatPageTitle, 'See Bill Page For More Info: [[:'.$wgBillTitle->getText().']]');		
 	}
-	function procMapLightInterest($intrest){
+	function procMapLightInterest($interest){
 		 global $mvMaxContribPerInterest, $mvMaxForAgainstBills;
-		//grab the interest page: 
-		$page_contributions = $this->doRequest(str_replace('$1', $intrest['key'], $this->mapLightInterestG));
-		$page_contributions = $this->doRequest('http://maplight.org/map/us/interest/E1600/view/all');
-		
-		$page_bill_pos =  $this->doRequest(str_replace('$1', $intrest['key'], $this->mapLightInterestGBills)); 
-		
-		$wp = '{{Interest Group|
-MapLightInterestID='.$intrest['key']."|\n";			
-		//get all contributions: 
-		preg_match_all('/map\/us\/legislator\/([^"]*)">([^<]*).*>\$([^<]*)/',$page_contributions, $matches);		
-		if(isset($matches[1])){
-			foreach($matches[1] as $inx =>$mapPersonKey){
-				$i = $inx+1;
-				$wp.="Funded Name $i=".$matches[2][$inx]."|\n";
-				$wp.="Funded Amount $i=".$matches[3][$inx]."\n";
-				
-				if($i>$mvMaxContribPerInterest)break;						
-			}
-		}			
-		die;
-		//build the wikipage for interst  
-		
-		$wp.='Funded Name #=funded name where 1 is 1-100 for top 100 contributions|
-Funded Amount #=funded amount to name 1 (required pair to funded name #)|	
-Supported Bill #=Bills the Interest group supported (long name) 1-100|
-Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
-}}';
-		//build wiki page
-		
-		//confim wiki-page is up-to-date
+		 if($this->bill_name_maplight_lookup){
+		 	include_once('metavid2mvWiki.inc.php');
+		 	do_proc_interest($interest['key'], $interest['name']);
+		 }	
 	}
 	//returns an array of interest in ['support'] & ['opposition'] .. also procces interest links
 	function proccMapLightBillIntrests($mapLightBillId){
-		print "map info: $this->mapLightBillInfo \n";
+		//print "map info: $this->mapLightBillInfo \n";
 		print str_replace('$1', $mapLightBillId, $this->mapLightBillInfo). "\n\n";
 		$ret_ary = array('support'=>array(),'oppose'=>array() );	
 		$bill_page = $this->doRequest(str_replace('$1', $mapLightBillId, $this->mapLightBillInfo));
@@ -697,6 +681,37 @@ Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
 			}
 		}
 		return $ret_ary;
+	}
+	function get_bill_name_from_mapLight_id($mapBillId, $doLookup=true){
+		if(!isset($this->mapLight_bill_cache)){
+			$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Bill_ID\'';
+			$dbr = wfGetDB( DB_SLAVE );	
+			$res = $dbr->query($sql);
+			while ($row = $dbr->fetchObject($res)) {
+				$this->mapLight_bill_cache[$row->value_xsd]=$row->subject_title;
+			}
+		}
+		if(!isset($this->mapLight_bill_cache[$mapBillId])){
+			if($doLookup){
+				print "missing bill by mapId: $mapBillId retrive it: \n";
+				$raw_bill_page = $this->doRequest('http://www.maplight.org/map/us/bill/'.$mapBillId.'/default');
+				preg_match('/title">([^-]*)-/', $raw_bill_page, $matches);				
+				if(isset($matches[1]))$bill_key = trim($matches[1]);			
+				preg_match('/map-bill-title">([^t]*)t/',$raw_bill_page, $matches);
+				if(isset($matches[1]))$session_num = trim($matches[1]);			
+				print " found bill key:$session_num $bill_key \n";
+				//set a flag as to not get caught in infintate loop: 
+				$this->bill_name_maplight_lookup=false;
+				$this->get_and_proccess_billid($bill_key, '', $session_num);
+				print " found bill title: ". $this->cur_bill_short_title . "\n";
+				//should now have the bill name update the cache and return
+				$this->mapLight_bill_cache[$mapBillId]= $this->cur_bill_short_title;
+			}else{
+				print "unable to find bill 	mapId: $mapBillId \n";
+				return false;
+			}
+		}
+		return $this->mapLight_bill_cache[$mapBillId];
 	}
 	function get_wiki_name_from_govid($govID){
 		if(!isset($this->govTrack_cache)){
@@ -726,7 +741,8 @@ Opposed Bill #=Bills Interest group Opposed (long name) 1-100|
 		}
 		if(!isset($this->mapLight_cache[$mapID])){
 			$wgTitle = Title::newFromText('CongressVid:Missing_People');
-			append_to_wiki_page($wgTitle, "Missing MapLight person: [http://maplight.org/map/us/legislator/$mapID $mapID]");
+			print "Missing MAPLight key for $mapID (have you insertd maplight ID for everyone yet?)\n";			
+			//append_to_wiki_page($wgTitle, "Missing MapLight person: [http://maplight.org/map/us/legislator/$mapID $mapID]");
 			return false;	
 		}
 		return str_replace('_',' ',$this->mapLight_cache[$mapID]);

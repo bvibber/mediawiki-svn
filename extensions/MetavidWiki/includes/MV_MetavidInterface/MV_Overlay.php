@@ -299,8 +299,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
 		//@@TODO a less ugly hack here: 			
 		$parserOutput->mText.=	$sk->getCategories();			
-		//empty out the categories
-		$wgOut->mCategoryLinks = array();
+		//empty out the categories (should work) 
+		$wgOut->mCategoryLinks = array();		
 		return $parserOutput;
 	}
 	function get_add_disp($baseTitle, $mvdType, $time_range){
@@ -407,59 +407,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$mv_smw_tag_arry = array();
 		$text = preg_replace_callback($semanticLinkPattern, 'mvParsePropertiesCallback',$text);
 		return $mv_smw_tag_arry;
-	}	
-	function auto_complete_person($val){
-		$dbr =& wfGetDB(DB_SLAVE);		
-		//check against anybody in category 'Person' do an or for case insensitivity
-        //@@TODO look into a mysql way to correlate in a non case sensitive manner
-        $val = ucfirst($val);
-		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
-			array('cl_to'=>'Person', 
-			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\''),
-			__METHOD__,
-			array('LIMIT'=>'5'));
-		//print "ran: " . $dbr->lastQuery();
-		if($dbr->numRows($result) == 0)return '';
-		//$out='<ul>'."\n";
-		$out='';
-		while($row = $dbr->fetchObject($result)){
-			$person_name = $row->cl_sortkey;
-			//make sure the person page exists: 
-			$personTitle = Title::makeTitle(NS_MAIN, $person_name);
-			if($personTitle->exists()){
-				//get person full name from semantic table if available
-				$person_result = $dbr->select('smw_attributes', 'value_xsd', array('attribute_title'=>'Full_Name',
-										'subject_title'=>$personTitle->getDBkey()),
-										__METHOD__);
-				if($dbr->numRows($person_result)== 0){
-					$person_full_name = $person_name;
-				}else{
-					$pvalue = $dbr->fetchObject($person_result);
-					$person_full_name = $pvalue->value_xsd;
-				}
-				//bold the part of the selected title 
-				$person_full_name = str_replace($val, '<b>'.$val.'</b>', $person_full_name);
-				//if we have a image toss that in there too 				
-				$imgHTML='';
-				$imgTitle = Title::makeTitle(NS_IMAGE, $person_name.'.jpg');
-				if($imgTitle->exists()){
-					$img= wfFindFile($imgTitle);
-					if ( !$img ) {
-						$img = wfLocalFile( $imgTitle );										
-					}										
-				}else{
-					$imgTitle = Title::makeTitle(NS_IMAGE, MV_MISSING_PERSON_IMG);
-					$img= wfFindFile($imgTitle);	
-				}
-				//$imgHTML="<img src=\"{$img->getURL()}\" width=\"44\">";
-				$out.=  $person_name.'|'.$person_full_name .'|'.$img->getURL() . "\n";
-				//$out.="<li name=\"{$person_name}\"> $imgHTML $person_full_name</il>\n";
-			} 			
-		}
-		//$out.='</ul>';
-		//return people people in the Person Category
-		return $out;
-	}
+	}		
 	function get_adjust_disp($titleKey='new', $mvd_id='new', $disp_buttons=true){
 		global $mvgScriptPath;		//
 		$out='';

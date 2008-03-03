@@ -16,9 +16,6 @@ require_once( '../../../maintenance/commandLine.inc' );
 require_once('maintenance_util.inc.php');
 require_once('scrape_and_insert.inc.php');
 
-//some global configs; 
-$mvMaxContribPerInterest=300;
-$mvMaxForAgainstBills=300;
 
  if ( count( $args ) == 0 || isset( $options['help'] ) ) {
  	usage();

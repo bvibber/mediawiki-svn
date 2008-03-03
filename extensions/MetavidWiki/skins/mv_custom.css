@@ -63,7 +63,7 @@ textarea.mv_ajax_textarea{
 	font-variant:normal;
 	font-weight:normal;
 }
-   div.autocomplete {   
+div.autocomplete {   
       position:absolute;
       min-width:250px;
       overflow:hidden;
@@ -72,21 +72,21 @@ textarea.mv_ajax_textarea{
       border:1px solid #888;
       margin:0px;
       padding:0px;
-    }
-    div.autocomplete ul {
+}
+div.autocomplete ul {
       list-style-type:none;       
       margin:0px;
       padding:0px;
-    }
-    div.autocomplete ul li.selected { background-color: #ffb;}
-    div.autocomplete ul li {
+}
+div.autocomplete ul li.selected { background-color: #ffb;}
+div.autocomplete ul li {
       list-style-type:none;
       display:block;
       margin:0;      
       padding:2px;
-      height:52px;
       cursor:pointer;
-    }
+      font-size:1.3em;
+}
 
 #resizable css:    
 .ui-resizable-handle { position: absolute; background: #ddd; display: none; }
