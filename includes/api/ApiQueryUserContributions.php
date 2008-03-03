@@ -62,6 +62,10 @@ class ApiQueryContributions extends ApiQueryBase {
 
 		if(isset($this->params['userprefix']))
 		{
+			global $wgAPIUCUserPrefixMinLength;
+			if(strlen($this->params['userprefix']) < $wgAPIUCUserPrefixMinLength)
+				$this->dieUsage("User prefixes must be at least $wgAPIUCUserPrefixMinLength characters", 'userprefix-tooshort');
+
 			$this->prefixMode = true;
 			$this->userprefix = $this->params['userprefix'];
 		}
@@ -137,7 +141,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->addWhereFld('rev_deleted', 0);
 		// We only want pages by the specified users.
 		if($this->prefixMode)
-			$this->addWhere("rev_user_text LIKE '" . $this->getDb()->escapeLike(ApiQueryBase::titleToKey($this->userprefix)) . "%'");
+			$this->addWhere("rev_user_text LIKE '" . $this->getDb()->escapeLike($this->userprefix) . "%'");
 		else 
 			$this->addWhereFld( 'rev_user_text', $this->usernames );
 		// ... and in the specified timeframe.

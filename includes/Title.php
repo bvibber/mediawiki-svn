@@ -1037,6 +1037,7 @@ class Title {
 	 * FIXME: This *does not* check throttles (User::pingLimiter()).
 	 *
 	 * @param string $action action that permission needs to be checked for
+	 * @param User $user user to check
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
 	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
 	 */
@@ -1045,7 +1046,7 @@ class Title {
 
 		global $wgContLang;
 		global $wgLang;
-		global $wgEmailConfirmToEdit, $wgUser;
+		global $wgEmailConfirmToEdit;
 
 		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() ) {
 			$errors[] = array( 'confirmedittext' );
@@ -1108,6 +1109,7 @@ class Title {
 	 * checks on wfReadOnly() and blocks)
 	 *
 	 * @param string $action action that permission needs to be checked for
+	 * @param User $user user to check
 	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
 	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
 	 */
@@ -1195,7 +1197,7 @@ class Title {
 		foreach( $this->getRestrictions($action) as $right ) {
 			// Backwards compatibility, rewrite sysop -> protect
 			if ( $right == 'sysop' ) {
-				$right = 'editprotected';
+				$right = 'protect';
 			}
 			if( '' != $right && !$user->isAllowed( $right ) ) {
 				$errors[] = array( 'protectedpagetext', $right );
@@ -2105,8 +2107,9 @@ class Title {
 		$this->mUrlform = wfUrlencode( $dbkey );
 
 		$this->mTextform = str_replace( '_', ' ', $dbkey );
-
-		return true;
+		
+		# Hooks can reject titles by returning false
+		return wfRunHooks('TitleSecureAndSplit', array( $this, &$dbkey )); 
 	}
 
 	/**
