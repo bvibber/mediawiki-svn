@@ -28,7 +28,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	$wgExtensionMessagesFiles['BadImages'] = $dir . 'BadImage.i18n.php';
 
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List' );
 	$wgExtensionFunctions[] = 'efBadImageSetup';
 	
 	$wgAvailableRights[] = 'badimages';
