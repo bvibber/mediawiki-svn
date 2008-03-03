@@ -68,7 +68,7 @@ function EditSubpages(&$user, &$aRights) {
 				$talkpage = $talk->getPrefixedText();
 				if($talkpage == $talktext || $talkpage == $text || strpos( $talktext, $talkpage . '/' ) === 0 || strpos( $text, $talkpage . '/' ) === 0 ) {
 					$aRights = array_merge($aRights, array('edit', 'createpage', 'createtalk'));
-					array_unique(&$aRights);
+					$aRights = array_unique($aRights);
 					break;
 				}
 			}
