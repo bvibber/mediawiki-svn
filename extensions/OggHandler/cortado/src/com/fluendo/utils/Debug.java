@@ -17,6 +17,7 @@
  */
 
 package com.fluendo.utils;
+import java.util.Arrays;
 
 public class Debug {
   public static final int NONE = 0;
@@ -29,6 +30,8 @@ public class Debug {
 
   /* static id counter */
   private static int counter = 0;
+  private static long startTime = 0;
+
   public static final int genId() {
     synchronized (Debug.class) {
       return counter++;
@@ -36,16 +39,38 @@ public class Debug {
   }
 
   public static final String[] prefix = {
-       "[NONE] ",
-       "[ERRO] ",
-       "[WARN] ",
-       "[INFO] ",
-       "[DBUG] "};
+       "NONE",
+       "ERRO",
+       "WARN",
+       "INFO",
+       "DBUG"};
+
+  public static String rpad(String s, int length) {
+    if ( length > s.length() ) {
+      char arr[] = new char[length - s.length()];
+      Arrays.fill( arr, ' ' );
+      return s + new String( arr );
+    } else {
+      return s;
+    }
+  }
 
   public static void log(int lev, String line) 
   {
-    if (lev <= level) {
-      System.out.println(prefix[lev]+line);
+    long t = System.currentTimeMillis();
+    if ( startTime == 0 ) {
+      startTime = t;
     }
+    t -= startTime;
+    
+    if (lev <= level) {
+      System.out.println( "[" + Debug.rpad( Thread.currentThread().getName(), 30 ) + " " 
+	  + Debug.rpad( Long.toString( t ), 6 ) + " " + prefix[lev] + "] " + line );
+    }
+  }
+
+  public static void debug(String line)
+  {
+    Debug.log( Debug.DEBUG, line );
   }
 }

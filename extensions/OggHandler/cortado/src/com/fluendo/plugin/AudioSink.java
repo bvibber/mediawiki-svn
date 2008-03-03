@@ -417,9 +417,9 @@ public abstract class AudioSink extends Sink implements ClockProvider
     }
   }
 
-  protected int doSync (long time)
+  protected WaitStatus doSync (long time)
   {
-    return Clock.OK;
+    return WaitStatus.newOK();
   }
   protected boolean doEvent (Event event)
   {

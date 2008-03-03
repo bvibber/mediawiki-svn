@@ -25,52 +25,57 @@ public class SystemClock extends Clock {
   {
     return System.currentTimeMillis() * Clock.MSECOND;	  
   }
-  protected int waitFunc(ClockID id)
+  protected WaitStatus waitFunc(ClockID id)
   {
-    int res;
+    WaitStatus res = new WaitStatus();
 
     long real = getInternalTime();
     long entryt = id.time;
     long now = adjust (real);
-    long diff = entryt - now;
+    long systemTime = System.currentTimeMillis();
 
-    //Debug.log(Debug.DEBUG, "now: "+now+", entry: "+entryt+", diff: "+diff);
+    res.jitter = now - entryt;
 
-    if (diff > 0) {
+    if (res.jitter < 0) {
+      Debug.log(Debug.DEBUG, "Waiting from "+now+" until "+entryt+" ("+(-res.jitter)+"us)");
       long millis;
       int nanos;
 
-      millis = diff / Clock.MSECOND;
-      nanos = (int) ((diff % Clock.MSECOND) * Clock.MSECOND);
+      millis = -res.jitter / Clock.MSECOND;
+      nanos = (int) ((-res.jitter % Clock.MSECOND) * Clock.MSECOND);
 
       synchronized (this) {
-        if (id.status == UNSCHEDULED)
-	  return id.status;
+        if (id.status == WaitStatus.UNSCHEDULED) {
+	  res.status = WaitStatus.UNSCHEDULED;
+	  return res;
+	}
 
-        id.status = OK;
+        id.status = WaitStatus.OK;
         try {
           wait (millis, nanos);
         }
         catch (InterruptedException e) {}
       }
-      res = id.status;
+      res.status = id.status;
     }
-    else if (diff == 0) {
-      res = OK;
+    else if (res.jitter == 0) {
+      res.status = WaitStatus.OK;
     }
     else {
-      res = EARLY;
+      Debug.log(Debug.DEBUG, "Wait for timestamp " + now + " is late by " + res.jitter + "us");
+      res.status = WaitStatus.LATE;
     }
+
     return res;
   }
-  protected int waitAsyncFunc(ClockID id)
+  protected WaitStatus waitAsyncFunc(ClockID id)
   {
-    return OK;
+    return WaitStatus.newOK();
   }
   protected void unscheduleFunc(ClockID id)
   {
     synchronized (this) {
-      id.status = UNSCHEDULED;
+      id.status = WaitStatus.UNSCHEDULED;
       notifyAll();
     }
   }

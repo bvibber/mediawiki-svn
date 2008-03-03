@@ -39,8 +39,9 @@ information about the original project see:
 
 See LICENSE.cortado, LICENSE.jheora and LICENSE.smoke for license information. 
 
-Our fork contains bug fixes and feature additions which we hope will be
-incorporated into the official Cortado release. 
+Our fork contains several bug fixes and feature additions. Fluendo appears to 
+have stopped maintaining Cortado. We recommend you file bug reports in
+Wikimedia's bug tracker.
 
 PEAR File_Ogg
 -------------

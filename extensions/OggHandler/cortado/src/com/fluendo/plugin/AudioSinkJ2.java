@@ -137,11 +137,43 @@ public class AudioSinkJ2 extends AudioSink
   }
 
   protected int write (byte[] data, int offset, int length) {
-    int written;
+    int written = 0;
+    
+    if ( offset < 0 || offset >= data.length || offset + length > data.length || length <= 0 ) {
+      // This happens on stop for some reason
+      Debug.debug( "Invalid audio write offset=" + offset + ", length=" + length + ", data.length=" + data.length );
+      return length;
+    }
 
-    written = line.write (data, offset, length);
+
+    // Need to avoid blocking due to lock contention in line.getFramePosition() in Java 6.
+    while ( true ) {
+      int available = line.available();
+      if ( length > available ) {
+	if ( available > 0 ) {
+	  Debug.debug( "Doing partial audio write of " + available + " bytes" );
+	  written += line.write( data, offset, available );
+	  offset += available;
+	  length -= available;
+	}
+	if ( length > 0 ) {
+	  try {
+	    // Sleep for a quarter of the buffer time before we fill it up again
+	    AudioFormat format = line.getFormat();
+	    long sleepTime = (long)(line.getBufferSize() * 1000 
+	      / format.getSampleRate() / format.getSampleSizeInBits() * 8 / 4);
+	    Debug.debug( "Sleeping for " + sleepTime + "ms" );
+	    Thread.sleep(sleepTime);
+	  } catch ( InterruptedException e ) {}
+	  continue;
+	}
+      } else {
+	Debug.debug( "Doing complete audio write of " + length + " bytes" );
+	written += line.write( data, offset, length );
+      }
+      break;
+    }
     samplesWritten += written / (2 * channels);
-
     return written;
   }
 
@@ -149,16 +181,8 @@ public class AudioSinkJ2 extends AudioSink
     int frame; 
     long delay;
 
-    //size = line.getBufferSize();
-    //avail = line.available();
     frame = line.getFramePosition();
-    //time = line.getMicrosecondPosition();
-
     delay = samplesWritten - frame;
-
-    //System.out.println("size: "+size+" avail: "+avail+" frame: "+frame+" time: "+time+" delay: "+delay);
-
-    //return (size - avail) / (2 * channels);
     return delay;
   }
 

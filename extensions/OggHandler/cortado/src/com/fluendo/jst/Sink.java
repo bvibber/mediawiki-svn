@@ -34,7 +34,11 @@ public abstract class Sink extends Element
   protected long segPosition;
   protected long pauseTime;
   protected long lastTime;
-  
+
+  // Maximum lateness before the buffer is dropped, or -1 for no limit
+  // property max-lateness
+  protected long maxLateness = -1;
+
   protected Pad sinkpad = new Pad(Pad.SINK, "sink") {
     private int finishPreroll(Buffer buf)
     {
@@ -154,7 +158,7 @@ public abstract class Sink extends Element
 	    havePreroll = false;
 	  }
 	  synchronized (streamLock) {
-	    Debug.log(Debug.DEBUG, this+" synced "+havePreroll+" "+needPreroll);
+	    Debug.debug(this+" synced "+havePreroll+" "+needPreroll);
 	    lostState();
 	  }
 	  break;
@@ -190,7 +194,7 @@ public abstract class Sink extends Element
     protected int chainFunc (Buffer buf)
     {
       int res;
-      int status;
+      WaitStatus status;
       long time;
 
       if (buf.isFlagSet (com.fluendo.jst.Buffer.FLAG_DISCONT))
@@ -198,9 +202,12 @@ public abstract class Sink extends Element
 
       time = buf.timestamp;
 
+      Debug.debug(parent.getName() + " <<< " + time);
+
       /* clip to segment */
       if (time != -1) {
 	if (time < segStart) {
+	  Debug.debug(parent.getName() + " " + time + " >>> PRE-SEGMENT DROP" );
 	  buf.free();
           return OK;
 	}
@@ -212,14 +219,23 @@ public abstract class Sink extends Element
       buf.setFlag (com.fluendo.jst.Buffer.FLAG_DISCONT, discont);
       discont = false;
 
-      if ((res = finishPreroll(buf)) != Pad.OK)
+      if ((res = finishPreroll(buf)) != Pad.OK) {
+	Debug.debug(parent.getName() + " " + time + " >>> PREROLL DROP" );
         return res;
+      }
 
+      Debug.debug(parent.getName() + " sync " + time );
       status = doSync(time);
-      switch (status) {
-        case Clock.EARLY:
-        case Clock.OK:
+      switch (status.status) {
+        case WaitStatus.LATE:
+	  if (maxLateness != -1 && status.jitter > maxLateness) {
+	    Debug.debug(parent.getName() + " " + time + " >>> LATE, DROPPED" );
+	    break;
+	  }
+	  // Not too late, fall through...
+        case WaitStatus.OK:
           try {
+	    Debug.debug(parent.getName() + " >>> " + time);
             res = render (buf);
 	  }
 	  catch (Throwable t) {
@@ -228,6 +244,7 @@ public abstract class Sink extends Element
 	  }
 	  break;
 	default:
+	  Debug.debug(parent.getName() + " " + time + " >>> SYNC DROP" );
 	  res = Pad.OK;
 	  break;
       }
@@ -274,16 +291,20 @@ public abstract class Sink extends Element
     return true;
   }
 
-  protected int doSync(long time) {
-    int ret;
+  protected WaitStatus doSync(long time) {
+    WaitStatus ret = new WaitStatus();
     Clock.ClockID id = null;
 
     synchronized (this) {
-      if (flushing)
-        return Clock.UNSCHEDULED;
+      if (flushing) {
+	ret.status = WaitStatus.UNSCHEDULED;
+	return ret;
+      }
 
-      if (time == -1)
-        return Clock.OK;
+      if (time == -1) {
+	ret.status = WaitStatus.OK;
+	return ret;
+      }
 
       time = time - segStart + baseTime;
 
@@ -295,7 +316,7 @@ public abstract class Sink extends Element
       ret = id.waitID();
     }
     else
-      ret = Clock.OK;
+      ret.status = WaitStatus.OK;
 
     synchronized (this) {
       clockID = null;
@@ -386,7 +407,7 @@ public abstract class Sink extends Element
 
     presult = super.changeState(transition);
     if (presult == FAILURE) {
-      Debug.log(Debug.DEBUG, this+" super state change failed");
+      Debug.debug(this+" super state change failed");
       return presult;
     }
 
@@ -394,19 +415,19 @@ public abstract class Sink extends Element
       case PLAY_PAUSE:
       {
         boolean checkEOS;
-        Debug.log(Debug.DEBUG, this+" play->paused");
+        Debug.debug(this+" play->paused");
 
         /* unlock clock */
         synchronized (this) {
 	  if (clockID != null) {
-            Debug.log(Debug.DEBUG, this+" unschedule clockID: "+ clockID);
+            Debug.debug(this+" unschedule clockID: "+ clockID);
 	    clockID.unschedule();
 	  }
 	  checkEOS = this.isEOS;
-          Debug.log(Debug.DEBUG, this+" checkEOS: "+ checkEOS);
+          Debug.debug(this+" checkEOS: "+ checkEOS);
 	}
         synchronized (prerollLock) {
-          Debug.log(Debug.DEBUG, this+" havePreroll: "+ havePreroll);
+          Debug.debug(this+" havePreroll: "+ havePreroll);
 	  if (!havePreroll && !checkEOS && pendingState == PAUSE) {
 	    needPreroll = true;
 	    result = ASYNC;
@@ -421,5 +442,15 @@ public abstract class Sink extends Element
     }
 
     return result;
+  }
+
+  public synchronized boolean setProperty(String name, java.lang.Object value) {
+    boolean res = true;
+    if (name.equals("max-lateness")) {
+      maxLateness = Long.parseLong((String)value);
+    } else {
+      res = false;
+    }
+    return res;
   }
 }

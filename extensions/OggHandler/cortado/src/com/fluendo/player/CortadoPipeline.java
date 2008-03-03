@@ -281,7 +281,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
     if (bufferLow != -1)
       buffer.setProperty("lowPercent", new Integer (bufferLow));
     if (bufferHigh != -1)
-      buffer.setProperty("highercent", new Integer (bufferHigh));
+      buffer.setProperty("highPercent", new Integer (bufferHigh));
 
     add(demux);
     add(buffer);
@@ -397,6 +397,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
         return false;
       }
       videosink.setProperty ("component", component);
+      videosink.setProperty ("max-lateness", Long.toString(Clock.MSECOND * 20));
       vsinkpad = videosink.getPad("sink");
       add(videosink);
     }

@@ -30,15 +30,6 @@ public abstract class Clock {
   public static final int SINGLE = 0;
   public static final int PERIODIC = 0;
 
-  /* status */
-  public static final int OK          =  0;
-  public static final int EARLY       =  1;
-  public static final int UNSCHEDULED =  2;
-  public static final int BUSY        =  3;
-  public static final int BADTIME     =  4;
-  public static final int ERROR       =  5;
-  public static final int UNSUPPORTED =  6;
-
   public class ClockID {
     long time;
     long interval;
@@ -55,8 +46,8 @@ public abstract class Clock {
       return time;
     }
 
-    public int waitID() {
-      int res;
+    public WaitStatus waitID() {
+      WaitStatus res;
       
       res = waitFunc (this);
 
@@ -91,8 +82,8 @@ public abstract class Clock {
 
   protected abstract long getInternalTime();
 
-  protected abstract int waitFunc(ClockID id);
-  protected abstract int waitAsyncFunc(ClockID id);
+  protected abstract WaitStatus waitFunc(ClockID id);
+  protected abstract WaitStatus waitAsyncFunc(ClockID id);
   protected abstract void unscheduleFunc(ClockID id);
 
   public synchronized long getTime() {

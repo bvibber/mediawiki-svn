@@ -81,6 +81,8 @@ public class VideoSink extends Sink
     Image image;
     int x, y, w, h;
 
+    Debug.log( Debug.DEBUG, this.getName() + " starting buffer " + buf );
+
     if (buf.object instanceof ImageProducer) {
       image = component.createImage((ImageProducer)buf.object);
     }
@@ -133,6 +135,7 @@ public class VideoSink extends Sink
       y = 0;
     }
     graphics.drawImage (image, x, y, w, h, null);
+    Debug.log( Debug.DEBUG, this.getName() + " done with buffer " + buf );
 
     return Pad.OK;
   };
@@ -152,8 +155,9 @@ public class VideoSink extends Sink
     else if (name.equals("scale")) {
       scale = String.valueOf(value).equals("true");
     }
-    else
-      return false;
+    else {
+      return super.setProperty(name, value);
+    }
 
     return true;
   }
@@ -164,8 +168,9 @@ public class VideoSink extends Sink
     }
     else if (name.equals("keep-aspect")) {
       return (keepAspect ? "true": "false");
+    } else {
+      return super.getProperty(name);
     }
-    return null;
   }
 
   protected int changeState (int transition) {

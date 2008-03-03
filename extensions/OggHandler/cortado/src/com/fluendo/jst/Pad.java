@@ -19,6 +19,7 @@
 package com.fluendo.jst;
 
 import java.util.*;
+import com.fluendo.utils.*;
 
 public class Pad extends com.fluendo.jst.Object implements Runnable
 {
