@@ -64,7 +64,8 @@ class ApiQueryLuceneSearch extends ApiQueryGeneratorBase {
 		}
 
 		$data = array_values( $results->iterateResults( 
-			'ApiQueryLuceneSearch::formatItem', is_null($resultPageSet) ) );
+			array( 'ApiQueryLuceneSearch', 'formatItem'), 
+			is_null($resultPageSet) ) );
 		
 		if ( $results->getTotalHits() >= ($params['offset'] + $params['limit']) )
 			$this->setContinueEnumParameter('offset', $params['offset'] + $params['limit']);
