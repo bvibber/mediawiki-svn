@@ -459,8 +459,8 @@ $wgGoogleMapsMessages['es'] = array(
 );
 
 /** French (Français)
- * @author Urhixidur
  * @author Grondin
+ * @author Urhixidur
  * @author Meithal
  */
 $wgGoogleMapsMessages['fr'] = array(
@@ -528,6 +528,9 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-kml-include-link'          => 'ajouter à la carte',
 	'gm-kml-loading'               => 'chargement…',
 	'gm-kml-export'                => 'Exporte cette carte vers KML',
+	'gm-earth'                     => 'Terre',
+	'gm-moon'                      => 'Lune',
+	'gm-mars'                      => 'Mars',
 );
 
 /** Galician (Galego)
