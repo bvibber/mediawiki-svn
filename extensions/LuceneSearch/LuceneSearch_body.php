@@ -911,7 +911,8 @@ class LuceneSearchSet {
 	function iterateResults( $callback, $userdata = null ) {
 		$out = array();
 		foreach( $this->mResults as $key => $line ) {
-			$out[$key] = call_user_func( $callback, new LuceneResult( $line ), $userdata );
+			$item = call_user_func( $callback, new LuceneResult( $line ), $userdata );
+			if ( !is_null($item) ) $out[$key] = $item;
 		}
 		return $out;
 	}

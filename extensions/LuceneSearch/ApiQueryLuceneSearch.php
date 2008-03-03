@@ -63,7 +63,8 @@ class ApiQueryLuceneSearch extends ApiQueryGeneratorBase {
 			$this->dieUsage( 'There was a problem with Lucene backend', 'lucene-backend' );
 		}
 
-		$data = $results->iterateResults( 'ApiQueryLuceneSearch::formatItem', is_null($resultPageSet) );
+		$data = array_values( $results->iterateResults( 
+			'ApiQueryLuceneSearch::formatItem', is_null($resultPageSet) ) );
 		
 		if ( $results->getTotalHits() >= ($params['offset'] + $params['limit']) )
 			$this->setContinueEnumParameter('offset', $params['offset'] + $params['limit']);
@@ -79,6 +80,8 @@ class ApiQueryLuceneSearch extends ApiQueryGeneratorBase {
 	
 	public static function formatItem( $result, $asArray ) {
 		$title = $result->getTitle();
+		// Broken title
+		if ( is_null( $title ) ) return null;
 		if ( $asArray ) {
 			return array(
 				'ns' => intval($title->getNamespace()),
@@ -128,7 +131,7 @@ class ApiQueryLuceneSearch extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id:  $';
+		return __CLASS__ . ': $Id$';
 	}
 }
 
