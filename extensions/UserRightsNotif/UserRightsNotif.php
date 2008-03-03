@@ -18,6 +18,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification',
 		'author' => 'Rob Church',
 		'description' => 'Sends email notification to users upon rights changes',
+		'descriptionmsg' => 'userrightsnotif-desc',
 	);
 
 	$dir = dirname(__FILE__) . '/';

@@ -10,6 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'userrightsnotifysubject' => 'Group membership change on $1',
 	'userrightsnotifybody'    => "Hello $1\n\nThis is to inform you that your group memberships on $2 were changed by $3 at $4.\n\nAdded: $5\nRemoved: $6\n\nWith regards,\n\n$2",
+	'userrightsnotif-desc'    => 'Sends email notification to users upon rights changes',
 );
 
 $messages['ar'] = array(
@@ -108,9 +109,22 @@ Mit freundlichen Grüßen,
 $2",
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'userrightsnotifysubject' => 'Changement d’appartenance à des groupes d’utilisateurs sur $1',
-	'userrightsnotifybody'    => "Bonjour $1,\n\nJ’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.\n\nAjouté : $5\nRetiré : $6\n\nCordialement,\n\n$2",
+	'userrightsnotifybody'    => "Bonjour $1,
+
+J’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.
+
+Ajouté : $5
+Retiré : $6
+
+Cordialement,
+
+$2",
+	'userrightsnotif-desc'    => 'Envoie une notification, par courriel, aux utilisateurs concernés lors de la modification de leurs droits',
 );
 
 /** Galician (Galego)
