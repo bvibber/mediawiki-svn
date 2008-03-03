@@ -61,6 +61,7 @@ class SpecialEditTest extends SpecialPage
 		$retval .= $this->buildInputLine('Edit token', 'token');
 		$retval .= $this->buildInputLine('Base timestamp', 'basetimestamp');
 		$retval .= $this->buildCheckBoxLine('Minor edit', 'minor');
+		$retval .= $this->buildCheckBoxLine('Non-minor edit', 'notminor');
 		$retval .= $this->buildCheckBoxLine('Bot edit', 'bot');
 		$retval .= $this->buildCheckBoxLine('Recreate page if deleted in the meantime', 'recreate');
 		$retval .= $this->buildCheckBoxLine('Watch page', 'watch');

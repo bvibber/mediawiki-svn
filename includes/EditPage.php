@@ -318,6 +318,25 @@ class EditPage {
 		$this->mArticle->mContent = $t ;
 		$this->mMetaData = $s ;
 	}
+	
+	protected function wasDeletedSinceLastEdit() {
+		/* Note that we rely on the logging table, which hasn't been always there,
+		 * but that doesn't matter, because this only applies to brand new
+		 * deletes. 
+		 */
+		if ( $this->deletedSinceEdit )
+			return true;
+		if ( $this->mTitle->isDeleted() ) {
+			$this->lastDelete = $this->getLastDelete();
+			if ( !is_null($this->lastDelete) ) {
+				$deletetime = $this->lastDelete->log_timestamp;
+				if ( ($deletetime - $this->starttime) > 0 ) {
+					$this->deletedSinceEdit = true;
+				}
+			}
+		}
+		return $this->deletedSinceEdit;
+	}
 
 	function submit() {
 		$this->edit();
@@ -417,27 +436,6 @@ class EditPage {
 		// css / js subpages of user pages get a special treatment
 		$this->isCssJsSubpage      = $this->mTitle->isCssJsSubpage();
 		$this->isValidCssJsSubpage = $this->mTitle->isValidCssJsSubpage();
-
-		/* Notice that we can't use isDeleted, because it returns true if article is ever deleted
-		 * no matter it's current state
-		 */
-		$this->deletedSinceEdit = false;
-		if ( $this->edittime != '' ) {
-			/* Note that we rely on logging table, which hasn't been always there,
-			 * but that doesn't matter, because this only applies to brand new
-			 * deletes. This is done on every preview and save request. Move it further down
-			 * to only perform it on saves
-			 */
-			if ( $this->mTitle->isDeleted() ) {
-				$this->lastDelete = $this->getLastDelete();
-				if ( !is_null($this->lastDelete) ) {
-					$deletetime = $this->lastDelete->log_timestamp;
-					if ( ($deletetime - $this->starttime) > 0 ) {
-						$this->deletedSinceEdit = true;
-					}
-				}
-			}
-		}
 
 		# Show applicable editing introductions
 		if( $this->formtype == 'initial' || $this->firsttime )
@@ -797,7 +795,7 @@ class EditPage {
 
 		# If the article has been deleted while editing, don't save it without
 		# confirmation
-		if ( $this->deletedSinceEdit && !$this->recreate ) {
+		if ( $this->wasDeletedSinceLastEdit() && !$this->recreate ) {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_ARTICLE_WAS_DELETED;
@@ -1280,7 +1278,7 @@ class EditPage {
 
 		$hidden = '';
 		$recreate = '';
-		if ($this->deletedSinceEdit) {
+		if ($this->wasDeletedSinceLastEdit()) {
 			if ( 'save' != $this->formtype ) {
 				$wgOut->addWikiMsg('deletedwhileediting');
 			} else {

@@ -75,14 +75,15 @@ class ApiEditPage extends ApiBase {
 		);
 		if(!is_null($params['summary']))
 			$reqArr['wpSummary'] = $params['summary'];
-		if(!is_null($params['basetimestamp']))
+		# Watch out for basetimestamp == ''
+		# wfTimestamp() treats it as NOW, almost certainly causing an edit conflict
+		if(!is_null($params['basetimestamp']) && $params['basetimestamp'] != '')
 			$reqArr['wpEdittime'] = wfTimestamp(TS_MW, $params['basetimestamp']);
 		else
 			$reqArr['wpEdittime'] = $articleObj->getTimestamp();
-		# Fake wpStartime; if the requester knows the page doesn't exist,
-		# wpEdittime will be NOW and no warning will be triggered
+		# Fake wpStartime
 		$reqArr['wpStarttime'] = $reqArr['wpEdittime'];
-		if($params['minor'] || (!$params['nonminor'] && $wgUser->getOption('minordefault')))
+		if($params['minor'] || (!$params['notminor'] && $wgUser->getOption('minordefault')))
 			$reqArr['wpMinoredit'] = '';
 		if($params['recreate'])
 			$reqArr['wpRecreate'] = '';
@@ -197,7 +198,7 @@ class ApiEditPage extends ApiBase {
 	}
 
 	protected function getDescription() {
-		return 'Create and edit articles.';
+		return 'Create and edit pages.';
 	}
 
 	protected function getAllowedParams() {
@@ -209,9 +210,7 @@ class ApiEditPage extends ApiBase {
 			'minor' => false,
 			'notminor' => false,
 			'bot' => false,
-			'basetimestamp' => array(
-				ApiBase :: PARAM_TYPE => 'timestamp'
-			),
+			'basetimestamp' => null,
 			'recreate' => false,
 			'captchaword' => null,
 			'captchaid' => null,
@@ -230,7 +229,7 @@ class ApiEditPage extends ApiBase {
 			'notminor' => 'Non-minor edit',
 			'bot' => 'Mark this edit as bot',
 			'basetimestamp' => array('Timestamp of the base revision (gotten through prop=revisions&rvprop=timestamp).',
-						'Used to detect edit conflicts; leave blank to ignore conflicts.'
+						'Used to detect edit conflicts; leave unset to ignore conflicts.'
 			),
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
 			'watch' => 'Add the page to your watchlist',
