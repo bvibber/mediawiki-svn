@@ -14,7 +14,6 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Tooltip'] = $dir . 'Tooltip.i18n.php';
 
 function wfToolTipExtension() {
-    wfLoadExtensionMessages( 'Tooltip' );
     global $wgParser;
     global $wgOut;
     global $wgScriptPath;
