@@ -190,7 +190,7 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	//$template_body.="\n".'[[Special:MediaSearch/person/{{PAGENAME}}|Media Search]]<br>'; 
 	//include space for Top 10 Interests Funding	
 	$template_body.="\n===Interests Funding===\n";
-	$template_body.="{{ #if: {{{Total Received|}}}|Total Campaign Contributions for {{PAGENAME}}: \${{{Total Received}}} <br>|}}\n";
+	$template_body.="{{ #if: {{{Total Received|}}}|Total Campaign Contributions for {{PAGENAME}}: {{{Total Received}}} <br>|}}\n";
 	$template_body.="{{ #if: {{{Contributions Date Range|}}}|Contributions Date Range: {{{Contributions Date Range}}} |}}\n";	
 	for($i=1;$i<=10;$i++){
 		$template_body.="{{ #if: {{{Funding Interest $i|}}}|*[[Funding Interest:={{{Funding Interest $i}}};{{{Funding Amount $i}}}]] \n|}}";

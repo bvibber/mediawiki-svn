@@ -345,8 +345,8 @@ class MV_SpecialExport {
 		$msTitle = Title::MakeTitle(NS_SPECIAL, 'MediaSearch');
 		
 		$this->feed = new mvRSSFeed(
-			$wgSitename . ' - ' .wfMsg('mediasearch'). ' : '. $sms->getFilterDesc(), //title 
-			$sms->getFilterDesc(), //description
+			$wgSitename . ' - ' .wfMsg('mediasearch'). ' : '. strip_tags($sms->getFilterDesc()), //title 
+			strip_tags($sms->getFilterDesc()), //description
 			$msTitle->getFullUrl().'?'.$sms->get_httpd_filters_query() //link 
 		);
 		$this->feed->outHeader();	

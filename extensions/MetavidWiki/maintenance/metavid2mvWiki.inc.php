@@ -532,7 +532,7 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 					$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
 					preg_match('/Contributions\sReceived\:\s\$([^<]*)/',$raw_results, $matches);
 					if(isset($matches[1])){
-						$page_body .="{$name}=".str_replace(',','',$matches[1])."|\n";		
+						$page_body .="{$name}=\$".$matches[1]."|\n";		
 					}
 				}
 			}else if($dbKey=='contribution_date_range'){
@@ -599,7 +599,7 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 				foreach($matches[1] as $k=>$val){
 					$hr_inx = $k+1;
 					$page_body .="Funding Interest $hr_inx=".html_entity_decode($matches[2][$k])."|\n";	
-					$page_body .="Funding Amount $hr_inx=".str_replace(',','',$matches[3][$k])."|\n"; 			
+					$page_body .="Funding Amount $hr_inx=\$".$matches[3][$k]."|\n"; 			
 					if($doInterestLookup){			
 						//make sure the intrest has been proccessed:
 						do_proc_interest($matches[1][$k], html_entity_decode($matches[2][$k]));
