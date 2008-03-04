@@ -169,14 +169,14 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 			$template_body .= "{{ #if: {{{" . $name . "|}}}| [[$name:={{{" . $name . "}}}| ]] |}}";		
 	}	
 	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
-	//ask for media:	
-	$template_body.='{{#ask: [[Speech_By::{{PAGENAME}}]] |
+	//don't ask for media~	
+	/*$template_body.='{{#ask: [[Speech_By::{{PAGENAME}}]] |
 | intro=<h3>Speeches By {{PAGENAME}}</h3>
 | default= | limit=5}}';	
 	$template_body.='{{#ask: [[Spoken_By::{{PAGENAME}}]] |
-| intro=<h3>Spoken Text By {{PAGENAME}}</h3> 
+| intro=<h3>[[Special:MediaSearch/person/{{PAGENAME}}|Spoken Text]] By {{PAGENAME}}</h3> 
 | default= | limit=5}}';	 
-
+*/
 	//ask for inverse relations (bills) : 
 	$template_body.='{{#ask: [[Bill Sponsor::{{PAGENAME}}]] |
 | intro=<h3>Bills Sponsored</h3>

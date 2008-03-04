@@ -599,8 +599,11 @@ class MV_SpecialMediaSearch extends SpecialPage {
 						size="9" type="text" name="f[' . $i . '][' . $key . ']" value="' . $val . '">';
 		return $s;
 	}
-	/*again here is some possibly metavid specific stuff:*/
+	/*again here is some possibly metavid congress archive specific stuff:*/
 	function auto_complete_all($val){
+		//everything is db key based so swap space for underscore:
+		$val = str_replace(' ','_',$val);				
+		
 		//make sure people know they can "search" too (formated by  
 		$out='do_search|'.wfMsg('mv_search_trasncripts_for').' <b>$1</b>|no_image'."\n";
 		//get people
@@ -614,6 +617,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		if($bill_out!=''){
 			$out.='Category:Bill|<h2>Bills:</h2>|no_image'."\n";
 			$out.=$bill_out;
+		}
+		//get intrests
+		$intrest_out = MV_SpecialMediaSearch::auto_complete_category('Interest_Group', $val, 3);
+		if($intrest_out!=''){
+			$out.='Category:Interest Group|<h2>Interest Group:</h2>|no_image'."\n";
+			$out.=$intrest_out;
 		}
 		return $out;
 	}

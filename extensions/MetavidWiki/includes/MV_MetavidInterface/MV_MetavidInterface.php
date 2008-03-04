@@ -77,7 +77,8 @@
 		$this->components['MV_Overlay']->setReq('Recentchanges');
  	}*/
  	function setupStreamView(){
- 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 		 	 	
+ 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 	 		
+ 			 	 	
  		//set default time range if null time range request
  		$this->article->mvTitle->setStartEndIfEmpty(
  			seconds2ntp(0), 

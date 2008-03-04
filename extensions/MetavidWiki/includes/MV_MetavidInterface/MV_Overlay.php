@@ -6,7 +6,11 @@
  * for more info visit http:/metavid.ucsc.edu/code
  */
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
- 
+
+//hide the fact box in any MV_Overlay driven view of mvd
+global $smwgShowFactbox; 
+$smwgShowFactbox=SMW_FACTBOX_HIDDEN;
+ 		
  class MV_Overlay extends MV_Component{
  	/*init function should load the target overlay*/
  	//set up defaults: 

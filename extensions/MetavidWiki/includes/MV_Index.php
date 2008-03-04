@@ -240,10 +240,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  					$sts = mktime(0,0,0,$month, $day, $year);
  					list($month, $day, $year) = explode('/',$f['ve']);
  					$ets = mktime(0,0,0,$month, $day+1, $year); //(the start of the next day) 			
- 					$date_range_where.= $asql . '( `mv_streams`.`date_start_time` > '
+ 					$date_range_where.= '( `mv_streams`.`date_start_time` > '
  														. mysql_escape_string($sts) . 
 												 ' AND `mv_streams`.`date_start_time` < '. mysql_escape_string($ets) . 
 												 ')';
+					$date_range_andor = ' '.$asql.' ';
  				break;
  				case 'stream_name':
  					if($snq!=''){
@@ -280,7 +281,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 			WHERE `mvd_type`='Anno_en' " .
 	 			" $toplq_cat " .
 	 			" $snq " .  	
-	 			" $date_range_where " .	
+	 			"$date_range_andor $date_range_where " .	
 	 			"LIMIT 0, 200";
 	 		//echo "topQ: $sql \n\n";
  			$top_result = $dbr->query($sql, 'MV_Index:doFiltersQuery_topQ'); 			
@@ -346,6 +347,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		 		$sql.="	MATCH ( $searchindexTable.`si_text` ) 
 		 			AGAINST('$ftq' IN BOOLEAN MODE) ";
 		 	}
+		 	//date range stuff is SLOW (pulls up matches for everything)
+		 	//@@todo 
+		 	if($snq!='' || $ftq!='')
+		 		$sql.=$date_range_andor;
 	 		$sql.=" $date_range_where ";	 		
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}

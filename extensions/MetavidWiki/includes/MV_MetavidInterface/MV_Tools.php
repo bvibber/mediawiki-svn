@@ -56,7 +56,8 @@
 					$this->innerHTML =  $wgOut->getHTML();
 				}else{				
 					$sk =& $wgUser->getSkin();
-						
+					//empty out the categories
+					$wgOut->mCategoryLinks = array();
 					//run via parser to add in Category info: 
 					$parserOptions = ParserOptions::newFromUser( $wgUser );
 					$parserOptions->setEditSection( false );
