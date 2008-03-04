@@ -378,7 +378,7 @@ class SubpageList3 {
 				$parent = $this->ptitle->getDBkey();
 				$this->parent = $parent;
 				$this->namespace = $this->ptitle->getNsText();
-				$nsi = $this->title->getNamespace();
+				$nsi = $this->ptitle->getNamespace();
 			} else {
 				$this->error( wfMsg('spl3_debug','parent') );
 				return null;
