@@ -953,15 +953,18 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'bookinfo-header'           => 'Иттилооти китоб',
-	'bookinfo-result-title'     => 'Унвон:',
-	'bookinfo-result-author'    => 'Муаллиф:',
-	'bookinfo-result-publisher' => 'Нашриёт:',
-	'bookinfo-result-year'      => 'Соли интишор:',
-	'bookinfo-error-nosuchitem' => 'Ин маврид вуҷуд надорад ё пайдо нашуд.',
-	'bookinfo-error-noresponse' => 'Посухе вуҷуд надошт ё мӯҳлати дархост сипарӣ шуд.',
-	'bookinfo-purchase'         => 'Харидани ин китоб аз $1',
-	'bookinfo-provider'         => 'Муҳаёкунандаи иттилоот: $1',
+	'bookinfo-header'            => 'Иттилооти китоб',
+	'bookinfo-desc'              => '[[Special:Booksources]]ро бо истифода аз иттилооти як вебхидмати Интернетӣ густариш медиҳад',
+	'bookinfo-result-title'      => 'Унвон:',
+	'bookinfo-result-author'     => 'Муаллиф:',
+	'bookinfo-result-publisher'  => 'Нашриёт:',
+	'bookinfo-result-year'       => 'Соли интишор:',
+	'bookinfo-error-invalidisbn' => 'ISBN-ии ғайримиҷоз ворид шудааст.',
+	'bookinfo-error-nosuchitem'  => 'Ин маврид вуҷуд надорад ё пайдо нашуд.',
+	'bookinfo-error-nodriver'    => 'Роҳандози муносиби иттилооти китоб қобил ба коргирӣ нест.',
+	'bookinfo-error-noresponse'  => 'Посухе вуҷуд надошт ё мӯҳлати дархост сипарӣ шуд.',
+	'bookinfo-purchase'          => 'Харидани ин китоб аз $1',
+	'bookinfo-provider'          => 'Муҳаёкунандаи иттилоот: $1',
 );
 
 /** Turkish (Türkçe)

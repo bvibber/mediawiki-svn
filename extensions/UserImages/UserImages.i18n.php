@@ -106,7 +106,9 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'userimages-caption' => 'រូបភាព ត្រូវបានផ្ទុកឡើង ដោយ $1',
+	'userimages-caption'  => 'រូបភាព ត្រូវបានផ្ទុកឡើង ដោយ $1',
+	'userimages-noname'   => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ ឬ ទទេ ។',
+	'userimages-noimages' => '$1 មិនបាន ផ្ទុកឡើង រូបភាព ណាមួយ ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

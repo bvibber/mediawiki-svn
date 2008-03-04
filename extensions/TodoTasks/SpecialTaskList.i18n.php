@@ -64,6 +64,7 @@ $messages['bg'] = array(
 	'tasklist-special-desc'  => 'Добавя специална страница със [[Special:TaskList|списък със задачи]].',
 	'tasklistbyproject'      => 'Списък със задачи по проект',
 	'tasklistunknownproject' => 'Неизвестен проект',
+	'tasklistincorrectuser'  => 'Невалидно потребителско име',
 	'tasklistmytasks'        => 'Моите задачи',
 	'tasklistbyprojectbad'   => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj'     => 'Избор на проект:',
@@ -158,6 +159,8 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'tasklist'               => 'Lisćina nadawkow',
+	'tasklist-parser-desc'   => 'přidawa <nowiki>{{#todo:}}</nowiki> parserowu funkciju za připokazowanje nadawkow',
+	'tasklist-special-desc'  => 'Přidawa specialnu stronu za pruwowanje [[Special:TaskList|připokazanjow nadawkow]]',
 	'tasklistbyproject'      => 'Lisćina nadawkow po projekće',
 	'tasklistunknownproject' => 'Njeznaty projekt',
 	'tasklistunspecuser'     => 'Wužiwar njepodaty',
@@ -184,7 +187,10 @@ Twój přećelny zdźělenski system %s.',
  * @author Chhorran
  */
 $messages['km'] = array(
-	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+	'tasklist'               => 'បញ្ជីពិភាក្សា',
+	'tasklistunknownproject' => 'គំរោង មិនបានស្គាល់',
+	'tasklistincorrectuser'  => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+	'tasklistchooseproj'     => 'ជ្រើសយក គំរោង ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -384,6 +390,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'tasklist'              => 'పనుల జాబితా',
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
 	'tasklistemail'         => 'ప్రియమైన %s',
 	'tasklistmytasks'       => 'నా పనులు',

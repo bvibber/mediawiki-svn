@@ -107,6 +107,13 @@ $messages['kk-cyrl'] = array(
 	'seealso' => 'Тағы қараңыз',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'seealso' => 'មើល ផងដែរ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -150,6 +157,13 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'seealso'      => 'Vejatz tanben',
 	'seealso-desc' => 'Entèsta « Vejatz tanben » utilizada per la balisa <code><nowiki><seealso></nowiki></code>',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'seealso' => 'دا هم وګورۍ',
 );
 
 /** Portuguese (Português)

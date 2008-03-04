@@ -39,6 +39,13 @@ $messages['bcl'] = array(
 		'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
+);
+
 $messages['de'] = array(
                 'templatelink' => 'Vorlagen-Link',
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
@@ -149,6 +156,14 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'templatelink' => 'Mallänk',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'templatelink'          => 'வார்ப்புரு இணைப்பு',
+	'templatelink_newtitle' => '$1 (இணைக்கப்பட்டுள்ளது)',
 );
 
 /** Telugu (తెలుగు)

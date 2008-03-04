@@ -60,6 +60,13 @@ $messages['hsb'] = array(
 	'signaturelogentry'    => 'je dokument $1 podpisał',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'signaturelogpage' => 'កំណត់ហេតុ នៃ ហត្ថលេខា',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

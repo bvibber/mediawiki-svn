@@ -52,6 +52,8 @@ $messages['avk'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'whoiswatching'                => 'Кой наблюдава страница в уикито',
+	'specialwhoiswatchingthepage'  => 'Кой наблюдава %s',
 	'specialwhoiswatchingaddusers' => 'Добавяне на потребители да наблюдават страницата',
 	'specialwhoiswatchingaddbtn'   => 'Добавяне на избраните потребители',
 );

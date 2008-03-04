@@ -394,6 +394,17 @@ $messages['ja'] = array(
 	'querysuccessful' => 'クエリは成功しました',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'asksql'          => 'សំណួរអង្កេត របស់ SQL',
+	'sqlquery'        => 'បញ្ចូល សំណួរអង្កេត',
+	'querybtn'        => 'ដាក់ស្នើ សំណួរអង្កេត',
+	'selectonly'      => 'អនុញ្ញាតិ ចំពោះតែ សំណួរអង្កេត "ត្រឹមតែអាន" ។',
+	'querysuccessful' => 'សំណួរអង្កេត បានជោគជ័យ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -420,6 +431,13 @@ $messages['lt'] = array(
 	'querybtn'        => 'Patvirtinti užklausą',
 	'selectonly'      => 'Tiktai neredaguojamos užklausos yra leidžiamos.',
 	'querysuccessful' => 'Užklausa sėkminga.',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'asksql' => 'SQL पृच्छा',
 );
 
 /** Dutch (Nederlands)

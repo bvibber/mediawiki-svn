@@ -23,8 +23,26 @@ $messages['en'] = array(
 	'pdt_comparing_page' => 'Comparing parser output from [[$1]]',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pachina espezial]] ta contimparar a salida de dos pársers diferents',
+	'pdtest_no_target'    => "No s'ha espezificato un obchetibo.",
+	'pdtest_page_missing' => "A pachina espezificata no s'ha trobato en a base de datos.",
+	'pdtest_no_changes'   => "No s'han deteutato cambeos",
+	'pdtest_time_report'  => '<b>$1</b> ha costato $2 segundos, <b>$3</b> ha costato $4 segundos.',
+	'pdtest_title'        => 'Títol de contesto:',
+	'pdtest_text'         => 'Testo de dentrada:',
+	'pdtest_ok'           => "D'alcuerdo",
+	'pdtest_get_text'     => "Prener o testo d'a pachina",
+	'pdtest_diff'         => 'Esferenzias',
+	'pdtest_side_by_side' => "Comparanza d'as salidas",
+);
+
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'parserdifftest'      => 'اختبار فرق البارسر',
@@ -139,6 +157,21 @@ $messages['de'] = array(
 	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pdtest_no_target'    => 'Neniu celo specifigita.',
+	'pdtest_no_changes'   => 'Neniuj ŝanĝoj malkovritaj.',
+	'pdtest_time_report'  => '<b>$1</b> daŭris $2 sekundojn, <b>$3</b> daŭris $4 sekundojn.',
+	'pdtest_title'        => 'Kunteksta titolo:',
+	'pdtest_text'         => 'Enigu tekston:',
+	'pdtest_ok'           => 'Ek!',
+	'pdtest_get_text'     => 'Prenu tekston el paĝo',
+	'pdtest_diff'         => 'Malsamaĵoj',
+	'pdtest_side_by_side' => 'Komparo de eligaĵoj.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -198,8 +231,8 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
  * @author Xosé
+ * @author Alma
  */
 $messages['gl'] = array(
 	'pdtest_no_target'    => 'Non se especificou o destino.',
@@ -208,6 +241,7 @@ $messages['gl'] = array(
 	'pdtest_ok'           => 'De acordo',
 	'pdtest_get_text'     => 'Obter texto da páxina',
 	'pdtest_diff'         => 'Diferenzas',
+	'pdtest_side_by_side' => 'Comparación da saída',
 );
 
 /** Hebrew (עברית)
@@ -354,7 +388,8 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'pdtest_ok' => 'យល់ព្រម',
+	'pdtest_ok'   => 'យល់ព្រម',
+	'pdtest_diff' => 'ភាពខុសគ្នា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

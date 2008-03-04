@@ -164,6 +164,14 @@ $messages['oc'] = array(
 	'postcomment_nopostingtoadd'           => "Cap de messatge d'ajustar",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'postcomment_leavemessagefor' => 'د $1 لپاره يو پيغام پرېږدی',
+	'postcomment_invalidrequest'  => 'ناسمه غوښتنه.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -216,15 +224,21 @@ $messages['sv'] = array(
 	'postcomment_notloggedin'              => 'Du är inte inloggad.',
 	'postcomment_youareloggedinas'         => 'Du är inloggad som $1',
 	'postcomment_addcommentdiscussionpage' => 'Lägg till din kommentar på denna diskussions sida',
+	'postcomment_leavemessagefor'          => 'Lämna ett meddelande för $1',
+	'postcomment_post'                     => 'Posta',
+	'postcomment_on'                       => 'På',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'postcomment_on'      => 'నాడు',
-	'postcomment_said'    => 'అన్నారు',
-	'postcomment_replyto' => '$1కి స్పందన',
+	'postcomment_notloggedin'              => 'మీరు లోనికి ప్రవేశించలేదు.',
+	'postcomment_youareloggedinas'         => 'మీరు $1గా లోనికి ప్రవేశించారు',
+	'postcomment_addcommentdiscussionpage' => 'ఈ చర్చా పేజీకి మీ వ్యాఖ్యని చేర్చండి',
+	'postcomment_on'                       => 'నాడు',
+	'postcomment_said'                     => 'అన్నారు',
+	'postcomment_replyto'                  => '$1కి స్పందన',
 );
 
 /** Turkish (Türkçe)

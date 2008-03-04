@@ -157,6 +157,13 @@ $messages['el'] = array(
 	'imagemap_description'          => 'Σχετικά με αυτήν την εικόνα',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'imagemap_description' => 'Irudi honen inguruan',
+);
+
 $messages['ext'] = array(
 	'imagemap_description'          => 'Al tentu esta imahin',
 );

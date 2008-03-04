@@ -72,6 +72,13 @@ $messages['hsb'] = array(
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'stalepages-summary' => 'នេះ ជា បញ្ជី នៃ ទំព័រ បានត្រូវ កែប្រែ ក្នុង $1 ថ្ងៃចុងក្រោយ ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

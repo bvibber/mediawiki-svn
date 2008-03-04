@@ -141,8 +141,11 @@ $messages['hu'] = array(
  */
 $messages['km'] = array(
 	'inspectcache-ok'      => 'យល់ព្រម',
+	'inspectcache-general' => 'សតិភ្ជាប់',
+	'inspectcache-message' => 'សតិភ្ជាប់ របស់សារ',
 	'inspectcache-delete'  => 'លុបចេញ',
 	'inspectcache-deleted' => 'លុបចេញ សតិភ្ជាប់',
+	'inspectcache-list'    => 'បញ្ជី',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

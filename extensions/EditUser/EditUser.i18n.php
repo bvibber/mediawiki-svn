@@ -36,8 +36,11 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'edituser-desc'     => 'Позволява на привилегировани потребители да редактират настройките на останалите потребители',
+	'edituser'          => 'Редактиране на потребителската сметка',
 	'edituser-username' => 'Потребителско име',
 	'edituser-dosearch' => 'Търсене',
+	'edituser-nouser'   => 'Посочената потребителска сметка не съществува',
+	'edituser-exempt'   => 'Посочената потребителска сметка не може да бъде редактирана',
 );
 
 /** Breton (Brezhoneg)
@@ -80,14 +83,18 @@ $messages['ee'] = array(
 	'edituser-dosearch' => 'Dii',
 );
 
-/* Finnish
+/** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Nike
  */
 $messages['fi'] = array(
-	'edituser' => 'Muokkaa käyttäjää',
-	'edituser-logout' => 'Kirjaa käyttäjä ulos',
+	'edituser-desc'     => 'Oikeutetut käyttäjät voivat muokata toisten käyttäjien asetuksia',
+	'edituser'          => 'Muokkaa käyttäjää',
+	'edituser-logout'   => 'Kirjaa käyttäjä ulos',
 	'edituser-username' => 'Nimi',
 	'edituser-dosearch' => 'Hae',
+	'edituser-nouser'   => 'Määriteltyä käyttäjää ei ole olemassa',
+	'edituser-exempt'   => 'Määriteltyä käyttäjää ei voida muokata',
 );
 
 /** French (Français)
@@ -127,6 +134,8 @@ $messages['hsb'] = array(
 	'edituser-logout'   => 'Wužiwarja wotzjewić',
 	'edituser-username' => 'Mjeno',
 	'edituser-dosearch' => 'Pytanje',
+	'edituser-nouser'   => 'Podaty wužiwar njeeksistuje.',
+	'edituser-exempt'   => 'Podaty wužiwar njehodźi so wobdźěłać',
 );
 
 /** Icelandic (Íslenska)
@@ -238,6 +247,8 @@ $messages['ru'] = array(
 	'edituser-logout'   => 'Завершить сеанс участника',
 	'edituser-username' => 'Имя',
 	'edituser-dosearch' => 'Найти',
+	'edituser-nouser'   => 'Указанный участник не существует',
+	'edituser-exempt'   => 'Указанный участник не может быть отредактирован',
 );
 
 /** Slovak (Slovenčina)

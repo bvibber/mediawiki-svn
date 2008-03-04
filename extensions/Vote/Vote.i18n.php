@@ -73,6 +73,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'vote'                => 'Гласуване',
+	'vote-header'         => "На тази страница можете да гласувате за '''Върховен повелител на Света'''!",
 	'vote-current'        => "В момента сте гласували за '''$1'''.",
 	'vote-caption'        => 'Текущ избор:',
 	'vote-submit'         => 'Гласуване',
@@ -416,6 +417,15 @@ Gioanin|Gioanin',
 	'vote-login' => 'Për voté a venta $1.',
 	'vote-login-link' => 'ch\'a rintra ant ël sistema',
 	'vote-invalid-choice' => 'A venta ch\'as selession-a un-a dj\'opsion disponibij.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'vote'            => 'رايه ورکول',
+	'vote-submit'     => 'رايه ورکول',
+	'vote-login-link' => 'ننوتنه',
 );
 
 /** Portuguese (Português)

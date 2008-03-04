@@ -85,6 +85,14 @@ $messages['lb'] = array(
 	'nstab-comments'    => 'Kommentar',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'commentpages-desc' => 'मुख्य नामविश्वाकरिता प्रतिक्रीया पाने',
+	'nstab-comments'    => 'समीक्षा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

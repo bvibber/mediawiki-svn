@@ -778,6 +778,7 @@ $messages['ss'] = array(
  * @author Maartenvdbent
  */
 $messages['stq'] = array(
+	'inputbox-desc'           => 'Ferlööwet dät Apniemen fon foardefinierde HTML-Formulare',
 	'inputbox-error-no-type'  => 'Du hääst naan Inputbox-Typ ounroat.',
 	'inputbox-error-bad-type' => 'Die Inputbox-Typ „$1“ is uunbekoand. Reek n gultigen Typ an: „create“, „comment“, „search“ of „search2“.',
 	'tryexact'                => 'Fersäik exakte Säike:',

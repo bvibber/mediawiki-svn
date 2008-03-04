@@ -206,6 +206,14 @@ $messages['lb'] = array(
 	'player-playertitle' => 'Spiller: $1',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'player-goto-page' => 'पान',
+	'player-goto-file' => 'संचिका',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -172,6 +172,16 @@ $messages['oc'] = array(
 	'sc_gotomonth'        => 'Anar vèrs lo mes',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'sc_previousmonth' => 'پخوانۍ مياشت',
+	'sc_nextmonth'     => 'راتلونکې مياشت',
+	'sc_today'         => 'نن',
+	'sc_gotomonth'     => 'مياشت ته ورځه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

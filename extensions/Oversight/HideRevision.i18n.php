@@ -153,10 +153,12 @@ $messages['bg'] = array(
 	'hiderevision-noreason'       => 'Необходимо е да се посочи причина за това премахване.',
 	'hiderevision-status'         => 'Редакция $1: $2',
 	'hiderevision-success'        => 'Архивирано и изтрито успешно.',
+	'hiderevision-error-missing'  => 'Не е намерена в базата от данни.',
 	'hiderevision-error-current'  => 'Последната редакция на страницата не може да бъде изтрита. Необходимо е първо да бъде върната.',
 	'hiderevision-archive-status' => 'Изтрита версия от $1: $2',
 	'oversight-log-hiderev'       => 'премахната редакция от $1',
 	'oversight-view'              => 'детайли',
+	'oversight-prev'              => 'Последна предишна версия',
 	'oversight-hidden'            => 'Скрита редакция',
 	'oversight-header'            => 'По-долу е посочен списък на версии, които наскоро са били перманентно премахнати от публичния архив.
 Изнасянето на тази информация може да доведе до отнемане на правата за достъп до този инструмент.',
@@ -296,6 +298,36 @@ $messages['de-formal'] = array(
 $messages['el'] = array(
 	'hiderevision-continue' => 'Συνέχεια',
 	'oversight-view'        => 'λεπτομέρειες',
+);
+
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'hiderevision'                => 'Berrikuspenak mugagabe ezkutatu',
+	'hiderevision-prompt'         => 'Ezabatzeko berrikuspen zenbakia:',
+	'hiderevision-continue'       => 'Jarraitu',
+	'hiderevision-text'           => "Hau hurrengo kasuetan erabili beharko litzateke '''soilik''':
+* Informazio pertsonal ezegokia
+*: ''etxeko helbide eta telefono zenbakiak, segurtasun sozialeko zenbakiak, eta abar''
+
+'''Sistema hau gaizki erabiltzeak pribilegioak galtzea suposatu dezake.'''
+
+Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak gordeta daude eta eskuz leheneratu ditzake datu-basearen administratzaile batek.",
+	'hiderevision-reason'         => 'Arrazoia (modu pribatuan gordeko da):',
+	'hiderevision-submit'         => 'Datu hauek mugagabe ezkutatu',
+	'hiderevision-tab'            => 'Berrikuspena ezkutatu',
+	'hiderevision-norevisions'    => 'Ez da berrikuspenik zehaztu ezabatzeko.',
+	'hiderevision-noreason'       => 'Ezabaketa hau burutzeko arraozoia zehaztu beharra daukazu.',
+	'hiderevision-status'         => '$1 berrikuspena: $2',
+	'hiderevision-success'        => 'Artxibatu eta ezabatu egin da.',
+	'hiderevision-error-missing'  => 'Ez da datu-basean aurkitu.',
+	'hiderevision-error-current'  => 'Ezin da orrialdean egindako azken aldaketa ezabatu. Aldaketa hau desegin lehenago.',
+	'hiderevision-error-delete'   => 'Ezin izan da artxibatu; lehenago ezabatu egin da?',
+	'hiderevision-archive-status' => '$1(e)tik berrikuspena ezabatu da: $2',
+	'oversight-log-hiderev'       => '$1(e)tik aldaketa bat ezabatu da',
+	'oversight'                   => 'Oharkabetasuna',
+	'oversight-view'              => 'xehetasunak',
 );
 
 /** فارسی (فارسی)
@@ -900,10 +932,19 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
  * @author Chhorran
  */
 $messages['km'] = array(
+	'hiderevision'               => 'បិទបាំង កំណែ ជា អចិន្ត្រៃ',
+	'hiderevision-desc'          => 'បិទបាំង បំលាស់ប្តូរ ជាបុគ្គល ពី​ គ្រប់អ្នកប្រើប្រាស់ ដោយហេតុផល ស្របច្បាប់, ល ។',
+	'hiderevision-prompt'        => 'លេខ កំណែប្រែ ត្រូវ ដកចេញ ៖',
 	'hiderevision-continue'      => 'បន្ត',
 	'hiderevision-reason'        => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
+	'hiderevision-submit'        => 'បិទបាំង ទិន្នន័យ នេះ ជា អចិន្ត្រៃ',
+	'hiderevision-tab'           => 'បិទបាំង បំលាស់ប្តូរ',
+	'hiderevision-norevisions'   => 'គ្មានបំលាស់ប្តូរ សំដៅ លុបចេញ ។',
 	'hiderevision-noreason'      => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
+	'hiderevision-status'        => 'បំលាស់ប្តូរ $1​ ៖ $2',
+	'hiderevision-success'       => 'បានដាក់ ជាបណ្ណសារ និង បានលុបចេញ​ ដោយជោគជ័យ ។',
 	'hiderevision-error-missing' => 'រកមិនឃើញ ក្នុង មូលដ្ឋានទិន្នន័យ',
+	'hiderevision-error-current' => 'មិនអាច លុបចេញ កំណែប្រែ ចុងក្រោយបំផុត របស់ ទំព័រនេះ។ ត្រលប់ទៅដើម បំលាស់ប្តូរនេះ ។',
 	'oversight-log-hiderev'      => 'បានដកចេញ កំណែប្រែ ពី $1',
 	'oversight'                  => 'ការត្រួតមើល ពីលើ',
 	'oversight-view'             => 'លំអិត',

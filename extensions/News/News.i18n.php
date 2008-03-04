@@ -51,6 +51,13 @@ $messages['dsb'] = array(
 	'newsextension-desc' => 'Pokazujo pśiměrjone aktualne změny na wikijowych bokach abo ako RSS abo kanal Atom',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'newsextension-desc' => 'Montras proprajn lastatempajn ŝanĝojn en vikiaj paĝoj aŭ kiel RSS aŭ Atom-fonto',
+);
+
 $messages['fr'] = array(
 	'newsextension-desc'          => 'Visionne les modifications récentes spécifiques sur une page wiki ou comme un flux RSS ou Atom.',
 	'newsextension-unknownformat' => '$1 : format de flux inconnu : $2<br />',
@@ -74,6 +81,13 @@ $messages['fr'] = array(
  */
 $messages['hsb'] = array(
 	'newsextension-desc' => 'Pokazuje přiměrjene aktualne změny na wikijowych stronach abo jako RSS abo kanal Atom',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newsextension-desc' => 'បង្ហាញ បំលាស់ប្តូរបានសំដៅ ថ្មីៗ លើ ទំព័រ វិគី ឬ បំរែបំរួល RSS ឬ Atom ។',
 );
 
 /** Dutch (Nederlands)

@@ -32,10 +32,13 @@ or you can search the wiki through an external search service:\n",
 	'searchaliases'         => ""
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Siebrand
+ */
 $messages['af'] = array(
 	'searchnumber'          => '<strong>Resultate $1-$2 van $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vorige</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Volgende</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Vorige</span>",
+	'searchnext'            => "<span style='font-size: small'>Volgende</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevansie: $1%',
 	'lucene-resultsize'     => '$1 ($2 woorde)',
 	'searchdidyoumean'      => 'Het u "<a href="$1">$2</a>" bedoel?',
@@ -45,16 +48,21 @@ $messages['af'] = array(
 
 $1
 
-Soek vir $3 $9',
+Soek vir $3 $9 $10',
 );
 
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
+ * @author Siebrand
  */
 $messages['am'] = array(
 	'searchnumber'          => '<strong><big>ውጤቶች #$1 እስከ $2 (ከ$3):</big></strong>',
 	'searchnoresults'       => 'ውጤት፦ ለጥያቄዎ ምንም ተመሳሳይ ጽሕፈት በማናቸውም ጽሁፍ አይገኝም።',
-	'lucenepowersearchtext' => 'ባመለከቱት ክፍለ-ዊኪዎች ውስጥ ፍለጋ ለማድረግ፦ <br /> $1 ይኸው ጥያቄ ይፈለግ፡- $3 $9',
+	'lucenepowersearchtext' => 'ባመለከቱት ክፍለ-ዊኪዎች ውስጥ ፍለጋ ለማድረግ፦
+
+$1
+
+ይኸው ጥያቄ ይፈለግ፡- $3 $9 $10',
 );
 
 /** Aragonese (Aragonés)
@@ -160,6 +168,7 @@ $1
 
 Търсене на $3 $9 $10',
 	'lucenefallback'        => 'В момента има проблем с търсачката на {{SITENAME}}. Възможно е това да е само временно, затова опитайте отново след минута-две. В краен случай можете да ползвате услугите на външни търсачки:',
+	'searchexactcase'       => 'Търсене с чувствителност за малки и главни букви',
 	'searchall'             => 'всички',
 );
 
@@ -399,12 +408,20 @@ proovige mõne hetke pärast uuesti või otsige välise teenuse abil:',
  * @author SPQRobin
  */
 $messages['eu'] = array(
-	'searchnumber'      => '<strong>$3tik, $1-$2 emaitzak </strong>',
-	'searchprev'        => "&#x00AB; <span style='font-size: small'>Aurrekoa</span>",
-	'searchnext'        => "<span style='font-size: small'>Hurrengoa</span> &#x00BB;",
-	'searchdidyoumean'  => '"<a href="$1">$2</a>" esan nahi zenuen?',
-	'searchnoresults'   => 'Barkatu, ez dago erantzunik zure bilaketarentzat.',
-	'searchnearmatches' => '<b>Orrialde hauek zure kontsultaren antzeko izenburuak dituzte:</b>',
+	'searchnumber'          => '<strong>$3tik, $1-$2 emaitzak </strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Aurrekoa</span>",
+	'searchnext'            => "<span style='font-size: small'>Hurrengoa</span> &#x00BB;",
+	'lucene-searchscore'    => 'Adierazgarritasuna: %$1',
+	'lucene-resultsize'     => '$1 ($2 hitz)',
+	'searchdidyoumean'      => '"<a href="$1">$2</a>" esan nahi zenuen?',
+	'searchnoresults'       => 'Barkatu, ez dago erantzunik zure bilaketarentzat.',
+	'searchnearmatches'     => '<b>Orrialde hauek zure kontsultaren antzeko izenburuak dituzte:</b>',
+	'lucenepowersearchtext' => 'Markaturikoetan soilik bilatu:
+
+$1
+
+Bilatu: $3 $9 $10',
+	'lucenefallback'        => 'Arazo bat gertatu da wiki bilaketan. Uneko arazoa da ziurrenik; saiatu beranduxeago, edo wikian bilatu dezakezu kanpoko bilaketa zerbitzu bat erabiliz:',
 );
 
 /** Extremaduran (Estremeñu)
@@ -858,16 +875,23 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
  * @author Chhorran
  */
 $messages['km'] = array(
+	'lucene-desc'           => 'អន្តរមុខ សំរាប់ ឧបករស្វែងរក Apache Lucene',
 	'searchnumber'          => '<strong>លទ្ធផល ពី $1 ដល់ $2 នៃ $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>មុន</span>",
 	'searchnext'            => "<span style='font-size: small'>បន្ទាប់</span> &#x00BB;",
 	'lucene-resultsize'     => '$1 ($2 ពាក្យ)',
+	'searchdidyoumean'      => 'អ្នក គិត ដល់ ៖ "<a href="$1">$2</a>" ឬ?',
 	'lucenepowersearchtext' => 'ស្វែងរក ក្នុង វាលឈ្មោះ ៖
 
 $1
 
 ស្វែងរក $3 $9 $10',
+	'lucenefallback'        => 'មានបញ្ហា ជាមួយ ការស្វែងរក វិគី។ វា​អាចជា បណ្តោះអាសន្ន, ព្យាយាមឡើងវិញ ក្នុង មួយសន្ទុះ ទៀត, 
+
+ឬ អ្នកអាចស្វែងរក វិគី តាម សេវាស្វែងរក ខាងក្រៅ ៖',
+	'searchexactcase'       => 'ស្វែងរក (គិត អក្សរធំ/អក្សតូច)',
 	'searchall'             => 'ទាំងអស់',
-	'searchincategory'      => 'ក្នុងចំណាត់ក្រុម',
+	'searchincategory'      => 'ស្វែងរក ក្នុង ចំណាត់ក្រុម',
 );
 
 $messages['la'] = array(
@@ -884,7 +908,7 @@ Petere $3 $9 $10',
  */
 $messages['lb'] = array(
 	'searchnumber'          => '<strong>Resultater $1–$2 vun $3</strong>',
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Virescht</span>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Vireg</span>",
 	'searchnext'            => "<span style='font-size: smaller'>Nächst</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevanz: $1 %',
 	'lucene-resultsize'     => '$1 ($2 Wierder)',

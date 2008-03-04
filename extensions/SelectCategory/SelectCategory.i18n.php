@@ -83,7 +83,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'selectcategory-title'    => 'Seleccionar categorías',
-	'selectcategory-desc'     => 'Amosa ao usuario para seleccionar das categorías existentes cando edita unha páxina',
+	'selectcategory-desc'     => 'Permite que o usuario seleccione das categorías existentes cando edita unha páxina',
 	'selectcategory-subtitle' => 'Faga clic co botón de maiúsculas e o rato para seleccionar varias entradas contiguas. Co botón Ctrl e o rato para seleccionar entradas non contiguas.',
 );
 

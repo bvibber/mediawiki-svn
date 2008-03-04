@@ -195,7 +195,9 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'languageselector' => 'ភាសា',
+	'languageselector'         => 'ភាសា',
+	'languageselector-desc'    => 'ឧបករជ្រើសយក ភាសា លើ​ រាល់ទំព័រ, សំរាប់ផងដែរ អ្នកទស្សនា',
+	'languageselector-setlang' => 'ប្តូរ',
 );
 
 /** Latin (Latina)
@@ -321,6 +323,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'languageselector'         => 'Sproake',
+	'languageselector-desc'    => 'Sproakenuutwoal ap älke Siede, uk foar Besäikere',
 	'languageselector-setlang' => 'sätte',
 );
 

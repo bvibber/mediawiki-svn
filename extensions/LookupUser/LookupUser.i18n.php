@@ -143,12 +143,18 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'lookupuser'             => 'រកមើល ពត៌មាន នៃ អ្នកប្រើប្រាស់',
-	'lookupuser_intro'       => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
-	'lookupuser_id'          => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
-	'lookupuser_email'       => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname'    => 'ឈ្មោះពិត ៖ $1',
-	'lookupuser_useroptions' => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
+	'lookupuser'                   => 'រកមើល ពត៌មាន នៃ អ្នកប្រើប្រាស់',
+	'lookupuser-desc'              => '[[Special:LookupUser|ដកស្រង់ ពត៌មាន]] អំពី មួយអ្នកប្រើប្រាស់ ដូចជា អាស័យដ្ឋានអ៊ីមែវល៍ និង អត្តសញ្ញាណ',
+	'lookupuser_intro'             => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
+	'lookupuser_nonexistent'       => 'កំហុស ៖ អ្នកប្រើប្រាស់ មិនមាន',
+	'lookupuser_authenticated'     => 'ភាពពិតប្រាកដ នៃ អ៊ីមែវល៍ ៖ $1',
+	'lookupuser_not_authenticated' => 'មិនបានស្គាល់ ភិនភាគ',
+	'lookupuser_id'                => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
+	'lookupuser_email'             => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'ឈ្មោះពិត ៖ $1',
+	'lookupuser_registration'      => 'ថ្ងៃ ខែ ឆ្នាំ ចុះឈ្មោះ​ ៖ $1',
+	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
+	'lookupuser_useroptions'       => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -162,6 +168,13 @@ $messages['lb'] = array(
 	'lookupuser_realname'     => 'Richtege Numm: $1',
 	'lookupuser_registration' => 'Datum vun der Umeldung: $1',
 	'lookupuser_useroptions'  => 'Astellunge vum Benotzer:',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'lookupuser_email' => 'विपत्र: [[Special:Emailuser/$2|$1]]',
 );
 
 /** Dutch (Nederlands)
@@ -242,6 +255,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'lookupuser'                   => 'Показать сведения об участнике',
+	'lookupuser-desc'              => '[[Special:LookupUser|получение сведений]] об участнике, таких как почтовый адрес и идентификатор',
 	'lookupuser_intro'             => 'Введите имя участника, чтобы просмотреть его пользовательские настройки.',
 	'lookupuser_nonexistent'       => 'Ошибка. Участника не существует',
 	'lookupuser_authenticated'     => 'Аутентификация по эл. почте: $1',
@@ -306,6 +320,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'lookupuser_nonexistent'  => 'పొరపాటు: వాడుకరి ఉనికిలో లేరు',
+	'lookupuser_email'        => 'ఈ-మెయిల్: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'నిజమైన పేరు: $1',
 	'lookupuser_registration' => 'నమోదైన తేదీ: $1',
 	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',

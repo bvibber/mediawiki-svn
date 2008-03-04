@@ -67,6 +67,8 @@ $messages['bg'] = array(
 	'importusers-log-summary'     => 'Резюме',
 	'importusers-log-summary-all' => 'Всички',
 	'importusers-password'        => 'парола',
+	'importusers-email'           => 'е-поща',
+	'importusers-realname'        => 'истинско име',
 );
 
 /** German (Deutsch)
@@ -93,6 +95,30 @@ $messages['de'] = array(
 	'importusers-password'                => 'Passwort',
 	'importusers-email'                   => 'E-Mail',
 	'importusers-realname'                => 'Echter Name',
+);
+
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'importusers'                         => 'Tuo käyttäjiä',
+	'importusers-uploadfile'              => 'Tallenna tiedosto',
+	'importusers-form-file'               => 'Käyttäjätiedoston muoto (csv):',
+	'importusers-form-replace-present'    => 'Korvaa olemassaolevat käyttäjät',
+	'importusers-form-button'             => 'Tuo',
+	'importusers-user-added'              => 'Käyttäjä <b>%s</b> on lisätty.',
+	'importusers-user-present-update'     => 'Käyttäjä <b>%s</b> on jo olemassa. Päivitetty.',
+	'importusers-user-present-not-update' => 'Käyttäjä <b>%s</b> on jo olemassa. Ei päivitetty.',
+	'importusers-user-invalid-format'     => 'Käyttäjätiedolla rivillä #%s on kelvoton muoto tai on tyhjä. Ohitettu.',
+	'importusers-log'                     => 'Tuontiloki',
+	'importusers-log-summary'             => 'Yhteenveto',
+	'importusers-log-summary-all'         => 'Kaikki',
+	'importusers-log-summary-added'       => 'Lisätty',
+	'importusers-log-summary-updated'     => 'Päivitetty',
+	'importusers-login-name'              => 'Kirjautumisnimi',
+	'importusers-password'                => 'salasana',
+	'importusers-email'                   => 'sähköposti',
+	'importusers-realname'                => 'oikea nimi',
 );
 
 /** French (Français)
@@ -385,6 +411,15 @@ $messages['stq'] = array(
 	'importusers-user-present-update'     => 'N Benutser <b>%s</b> existiert al. Aktualisierd.',
 	'importusers-user-present-not-update' => 'N Benutser <b>%s</b> existiert al. Nit aktualisierd.',
 	'importusers-user-invalid-format'     => 'Do Benutserdoaten in Riege #%s hääbe n uungultich Formoat of sunt loos. Uursproangen.',
+	'importusers-log'                     => 'Benutserimport-Logbouk',
+	'importusers-log-summary'             => 'Touhoopefoatenge',
+	'importusers-log-summary-all'         => 'Aal',
+	'importusers-log-summary-added'       => 'Bietouföiged',
+	'importusers-log-summary-updated'     => 'Aktualisierd',
+	'importusers-login-name'              => 'Benutsernoome',
+	'importusers-password'                => 'Paaswoud',
+	'importusers-email'                   => 'E-Mail',
+	'importusers-realname'                => 'Ächten Noome',
 );
 
 /** Swedish (Svenska)

@@ -119,86 +119,91 @@ $messages['ang'] = array(
 	'sign-realname' => 'Nama:',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author ترجمان05
+ */
 $messages['ar'] = array(
-	'signdocument' => 'توقيع الوثيقة',
-	'sign-nodocselected' => 'من فضلك اختر الوثيقة التي تود توقيعها.',
-	'sign-selectdoc' => 'وثيقة:',
-	'sign-docheader' => '<div class="noarticletext">من فضلك استخدم هذه الاستمارة لتوقيع الوثيقة "[[$1]]," المعروضة بالأسفل. من فضلك اقرأ الوثيقة كلها، وإذا كنت تود التعبير عن تأييدك لها، من فضلك املأ الحقول المطلوبة لتوقعها.</div>',
-	'sign-error-nosuchdoc' => 'الوثيقة التي طلبتها ($1) غير موجودة.',
-	'sign-realname' => 'الاسم:',
-	'sign-address' => 'عنوان الشارع:',
-	'sign-city' => 'المدينة:',
-	'sign-state' => 'الولاية:',
-	'sign-zip' => 'كود الرقم البريدي:',
-	'sign-country' => 'البلد:',
-	'sign-phone' => 'رقم الهاتف:',
-	'sign-bday' => 'العمر:',
-	'sign-email' => 'عنوان البريد الإلكتروني:',
-	'sign-indicates-req' => '<small><i><font color="red">*</font> يشير إلى حقل مطلوب.</i></small>',
-	'sign-hide-note' => '<small><i><font color="red">**</font> ملاحظة: المعلومات غير المعروضة ستظل مرئية للمديرين.</i></small>',
-	'sign-list-anonymous' => 'عرض المجهول',
-	'sign-list-hideaddress' => 'لا تعرض العنوان',
-	'sign-list-hideextaddress' => 'لا تعرض المدينة، الولاية، الرقم البريدي، أو البلد',
-	'sign-list-hidephone' => 'لا تعرض الهاتف',
-	'sign-list-hidebday' => 'لا تعرض العمر',
-	'sign-list-hideemail' => 'لا تعرض البريد الإلكتروني',
-	'sign-submit' => 'توقيع الوثيقة',
-	'sign-information' => '<div class="noarticletext">شكرا لك لقضائك وقتا في قراءة هذه الوثيقة. لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة." من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك. لاحظ أن [[wikipedia:IP address|عنوان الأيبي]] الخاص بك و other معلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية. بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها. لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع. <br /><br /> $1',
-	'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
-	'sign-view-selectfields' => '<b>الحقول للعرض:</b>',
-	'sign-viewfield-entryid' => 'رقم المدخلة',
-	'sign-viewfield-timestamp' => 'طابع الزمن',
-	'sign-viewfield-realname' => 'اسم',
-	'sign-viewfield-address' => 'عنوان',
-	'sign-viewfield-city' => 'مدينة',
-	'sign-viewfield-state' => 'ولاية',
-	'sign-viewfield-country' => 'بلد',
-	'sign-viewfield-zip' => 'الرقم البريدي',
-	'sign-viewfield-ip' => 'عنوان الأيبي',
-	'sign-viewfield-agent' => 'وكيل المستخدم',
-	'sign-viewfield-phone' => 'هاتف',
-	'sign-viewfield-email' => 'بريد إلكتروني',
-	'sign-viewfield-age' => 'عمر',
-	'sign-viewfield-options' => 'اختيارات',
-	'sign-viewsigs-intro' => 'معروض بالأسفل التوقيعات المسجلة ل<span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
-	'sign-sigadmin-currentlyopen' => 'التوقيع مفعل حاليا لهذه الوثيقة.',
-	'sign-sigadmin-close' => 'عطل التوقيع',
-	'sign-sigadmin-currentlyclosed' => 'التوقيع معطل حاليا لهذه الوثيقة.',
-	'sign-sigadmin-open' => 'فعل التوقيع',
-	'sign-signatures' => 'توقيعات',
-	'sign-sigadmin-closesuccess' => 'تم تعطيل التوقيع بنجاح.',
-	'sign-sigadmin-opensuccess' => 'تم تفعيل التوقيع بنجاح.',
-	'sign-viewsignatures' => 'عرض التوقيعات',
-	'sign-closed' => 'مغلق',
-	'sign-error-closed' => 'توقيع هذه الوثيقة معطل حاليا.',
-	'sig-anonymous' => '<i>مجهول</i>',
-	'sig-private' => '<i>خاص</i>',
-	'sign-sigdetails' => 'تفاصيل التوقيع',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',#identical but defined
-	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
-	-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
-	-->[[Special:Contributions/$1|contribs]] • <!--
-	-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-	-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-	-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-	-->[[Special:Blockip/$1|منع المستخدم]] • <!--
-	-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
-	-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
-	--></span>',
-	'sign-viewfield-stricken' => 'مشطوب',
-	'sign-viewfield-reviewedby' => 'مراجع',
-	'sign-viewfield-reviewcomment' => 'تعليق',
-	'sign-detail-uniquequery' => 'كيانات مشابهة',
-	'sign-detail-uniquequery-run' => 'تنفيذ الكويري',
-	'sign-detail-strike' => 'شطب التوقيع',
-	'sign-reviewsig' => 'راجع التوقيع',
-	'sign-review-comment' => 'تعليق',
-	'sign-submitreview' => 'تنفيذ المراجعة',
-	'sign-uniquequery-similarname' => 'اسم مشابه',
+	'signdocument'                    => 'توقيع الوثيقة',
+	'sign-nodocselected'              => 'من فضلك اختر الوثيقة التي تود توقيعها.',
+	'sign-selectdoc'                  => 'وثيقة:',
+	'sign-docheader'                  => '<div class="noarticletext">من فضلك استخدم هذه الاستمارة لتوقيع الوثيقة "[[$1]]," المعروضة بالأسفل. من فضلك اقرأ الوثيقة كلها، وإذا كنت تود التعبير عن تأييدك لها، من فضلك املأ الحقول المطلوبة لتوقعها.</div>',
+	'sign-error-nosuchdoc'            => 'الوثيقة التي طلبتها ($1) غير موجودة.',
+	'sign-realname'                   => 'الاسم:',
+	'sign-address'                    => 'عنوان الشارع:',
+	'sign-city'                       => 'المدينة:',
+	'sign-state'                      => 'الولاية:',
+	'sign-zip'                        => 'كود الرقم البريدي:',
+	'sign-country'                    => 'البلد:',
+	'sign-phone'                      => 'رقم الهاتف:',
+	'sign-bday'                       => 'العمر:',
+	'sign-email'                      => 'عنوان البريد الإلكتروني:',
+	'sign-indicates-req'              => '<small><i><font color="red">*</font> يشير إلى حقل مطلوب.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> ملاحظة: المعلومات غير المعروضة ستظل مرئية للمديرين.</i></small>',
+	'sign-list-anonymous'             => 'عرض المجهول',
+	'sign-list-hideaddress'           => 'لا تعرض العنوان',
+	'sign-list-hideextaddress'        => 'لا تعرض المدينة، الولاية، الرقم البريدي، أو البلد',
+	'sign-list-hidephone'             => 'لا تعرض الهاتف',
+	'sign-list-hidebday'              => 'لا تعرض العمر',
+	'sign-list-hideemail'             => 'لا تعرض البريد الإلكتروني',
+	'sign-submit'                     => 'توقيع الوثيقة',
+	'sign-information'                => '<div class="noarticletext">شكرا لك لقضائك وقتا في قراءة هذه الوثيقة. لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة." من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك. لاحظ أن [[wikipedia:IP address|عنوان الأيبي]] الخاص بك و other معلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية. بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها. لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع. <br /><br /> $1',
+	'sig-success'                     => 'لقد وقعت الوثيقة بنجاح.',
+	'sign-view-selectfields'          => '<b>الحقول للعرض:</b>',
+	'sign-viewfield-entryid'          => 'رقم المدخلة',
+	'sign-viewfield-timestamp'        => 'طابع الزمن',
+	'sign-viewfield-realname'         => 'اسم',
+	'sign-viewfield-address'          => 'عنوان',
+	'sign-viewfield-city'             => 'مدينة',
+	'sign-viewfield-state'            => 'ولاية',
+	'sign-viewfield-country'          => 'بلد',
+	'sign-viewfield-zip'              => 'الرقم البريدي',
+	'sign-viewfield-ip'               => 'عنوان الأيبي',
+	'sign-viewfield-agent'            => 'وكيل المستخدم',
+	'sign-viewfield-phone'            => 'هاتف',
+	'sign-viewfield-email'            => 'بريد إلكتروني',
+	'sign-viewfield-age'              => 'عمر',
+	'sign-viewfield-options'          => 'اختيارات',
+	'sign-viewsigs-intro'             => 'معروض بالأسفل التوقيعات المسجلة ل<span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen'     => 'التوقيع مفعل حاليا لهذه الوثيقة.',
+	'sign-sigadmin-close'             => 'عطل التوقيع',
+	'sign-sigadmin-currentlyclosed'   => 'التوقيع معطل حاليا لهذه الوثيقة.',
+	'sign-sigadmin-open'              => 'فعل التوقيع',
+	'sign-signatures'                 => 'توقيعات',
+	'sign-sigadmin-closesuccess'      => 'تم تعطيل التوقيع بنجاح.',
+	'sign-sigadmin-opensuccess'       => 'تم تفعيل التوقيع بنجاح.',
+	'sign-viewsignatures'             => 'عرض التوقيعات',
+	'sign-closed'                     => 'مغلق',
+	'sign-error-closed'               => 'توقيع هذه الوثيقة معطل حاليا.',
+	'sig-anonymous'                   => '<i>مجهول</i>',
+	'sig-private'                     => '<i>خاص</i>',
+	'sign-sigdetails'                 => 'تفاصيل التوقيع',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                    => '<div dir="rtl">
+<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|نقاش]] • <!--
+-->[[Special:Contributions/$1|مساهمات]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|منع المستخدم]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
+--></span>',
+	'sign-viewfield-stricken'         => 'مشطوب',
+	'sign-viewfield-reviewedby'       => 'مراجع',
+	'sign-viewfield-reviewcomment'    => 'تعليق',
+	'sign-detail-uniquequery'         => 'كيانات مشابهة',
+	'sign-detail-uniquequery-run'     => 'تنفيذ الكويري',
+	'sign-detail-strike'              => 'شطب التوقيع',
+	'sign-reviewsig'                  => 'راجع التوقيع',
+	'sign-review-comment'             => 'تعليق',
+	'sign-submitreview'               => 'تنفيذ المراجعة',
+	'sign-uniquequery-similarname'    => 'اسم مشابه',
 	'sign-uniquequery-similaraddress' => 'عنوان مشابه',
-	'sign-uniquequery-similarphone' => 'هاتف مشابه',
-	'sign-uniquequery-similaremail' => 'بريد إلكتروني مشابه',
-	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	'sign-uniquequery-similarphone'   => 'هاتف مشابه',
+	'sign-uniquequery-similaremail'   => 'بريد إلكتروني مشابه',
+	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 $messages['bcl'] = array(
@@ -571,12 +576,22 @@ $messages['hu'] = array(
 	'sign-email'    => 'E-mail cím:',
 );
 
+/** Icelandic (Íslenska)
+ * @author SPQRobin
+ */
+$messages['is'] = array(
+	'sign-realname' => 'Nafn:',
+	'sign-city'     => 'Staður:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
 $messages['km'] = array(
 	'sign-realname'                   => 'ឈ្មោះ ៖',
 	'sign-address'                    => 'អាស័យដ្ឋាន ផ្លូវ ៖',
+	'sign-phone'                      => 'លេខ ទូរស័ព្ទ ៖',
+	'sign-bday'                       => 'អាយុ ៖',
 	'sign-email'                      => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
 	'sign-list-hideaddress'           => 'មិនរាយ អាស័យដ្ឋាន',
 	'sign-list-hideemail'             => 'មិនរាយបញ្ជី អ៊ីមែវល៍',
@@ -594,6 +609,7 @@ $messages['km'] = array(
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-uniquequery-similarname'    => 'ឈ្មោះ ស្រដៀង',
 	'sign-uniquequery-similaraddress' => 'អាស័យដ្ឋាន ស្រដៀង',
+	'sign-uniquequery-similarphone'   => 'ទូរស័ព្ទ ស្រដៀង',
 	'sign-uniquequery-similaremail'   => 'អ៊ីមែវល៍ ស្រដៀងគ្នា',
 );
 
@@ -829,7 +845,7 @@ $messages['oc'] = array(
 	'sign-bday'                       => 'Edat :',
 	'sign-email'                      => 'Adreça de corrièr electronic :',
 	'sign-indicates-req'              => '<small><i><font color="red">*</font> indica los camps obligatòris.</i></small>',
-	'sign-hide-note'                  => '<small><i><font color="red">**</font> Las entre-senhas pas listadas son totjorn visiblas pels moderaires.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> Las entresenhas pas listadas son totjorn visiblas pels moderaires.</i></small>',
 	'sign-list-anonymous'             => 'Listar de biais anonim',
 	'sign-list-hideaddress'           => "Listar pas l'adreça",
 	'sign-list-hideextaddress'        => "Listar pas la vila, l'estat (lo departament o la província), lo còde postal o lo país",
@@ -1193,6 +1209,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'sign-error-nosuchdoc'         => 'మీరు అభ్యర్థించిన పత్రం ($1) ఇక్కడ లేదు.',
 	'sign-realname'                => 'పేరు:',
 	'sign-address'                 => 'వీధి చిరునామా:',
 	'sign-city'                    => 'నగరం:',

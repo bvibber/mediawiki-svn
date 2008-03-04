@@ -256,6 +256,8 @@ $messages['km'] = array(
 	'talkhere-notalk'      => "''(មិនទាន់មាន វិចារ)''",
 	'talkhere-addcomment'  => 'បន្ថែម វិចារ',
 	'talkhere-beforeinput' => 'អ្នកអាចបន្ថែម វិចារ ខាងក្រោម',
+	'talkhere-loading'     => 'កំពុងផ្ទុក ឧបករកែប្រែ...',
+	'talkhere-collapse'    => 'បិទបាំង ឧបករកែប្រែ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -314,7 +316,7 @@ Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
 $messages['oc'] = array(
 	'talkhere-foottext'    => 'Los comentaris çaisús son estats daissats per de vesitaires.
 
-Lo gestionari del site es pas responsable de lor contengut.',
+Lo gestionari del sit es pas responsable de lor contengut.',
 	'talkhere-talkpage'    => 'pagina de dscussion',
 	'talkhere-notalk'      => "''(cap de comentari actualament)''",
 	'talkhere-addcomment'  => 'ajustar un comentari',

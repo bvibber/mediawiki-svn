@@ -30,6 +30,14 @@ $messages['eo'] = array(
 	'forcepreview-desc' => 'Devigu antaŭrigardon por senrajtajn uzantojn',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'forcepreview'      => 'Tallenna sivu (esikatsele ensin)',
+	'forcepreview-desc' => 'Pakottaa oikeudettomat käyttäjät käyttämään esikatselua',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -51,6 +59,13 @@ $messages['gl'] = array(
 $messages['hsb'] = array(
 	'forcepreview'      => 'Stronu składować (wužij najprjedy přehlad)',
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'forcepreview' => 'រក្សាទុក ទំព័រ (ជាដំបូង ត្រូវប្រើប្រាស់ មើលមុន)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

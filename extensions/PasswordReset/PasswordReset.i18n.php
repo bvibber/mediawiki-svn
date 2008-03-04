@@ -127,8 +127,8 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
- * @author Toliño
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'passwordreset'                 => 'Eliminar o contrasinal',
@@ -144,7 +144,7 @@ $messages['gl'] = array(
 	'passwordreset-disablesuccess'  => 'Desactivouse a conta do usuario (user_id: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 	'disabledusers'                 => 'Usuarios desabilitados',
-	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que teñen desabilitada a vía PasswordReset.',
+	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -214,6 +214,7 @@ $messages['km'] = array(
 	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
 	'passwordreset-emptyusername'   => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
 	'passwordreset-username'        => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'passwordreset-newpass'         => 'ពាក្យសំងាត់ ថ្មី',
 	'passwordreset-confirmpass'     => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
 );
 

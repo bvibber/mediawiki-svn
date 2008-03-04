@@ -64,6 +64,7 @@ $messages['bg'] = array(
 	'ajax-se-title'            => 'Редактиращ потребител:',
 	'ajax-se-idling'           => '(преди $1 секунди)',
 	'ajax-se-pagedoesnotexist' => 'страницата не съществува',
+	'ajax-se-userinvalid'      => 'Грешка: невалиден потребител',
 );
 
 /** Bengali (বাংলা)
@@ -138,9 +139,12 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'ajax-se-title'   => 'Nune redaktas:',
-	'ajax-se-pending' => 'atendas por refreŝigo ... (klaku ĉi tiun skatolon aŭ ekredaktu)',
-	'ajax-se-idling'  => '(antaŭ $1s)',
+	'ajax-se-title'            => 'Nune redaktas:',
+	'ajax-se-pending'          => 'atendas por refreŝigo ... (klaku ĉi tiun skatolon aŭ ekredaktu)',
+	'ajax-se-idling'           => '(antaŭ $1s)',
+	'ajax-se-pagedoesnotexist' => 'paĝo ne ekzistas',
+	'ajax-se-userinvalid'      => 'Eraro: uzanto estas nevalida',
+	'ajax-se-usernotfound'     => 'Eraro: Uzanto ne estas trovita',
 );
 
 /** Extremaduran (Estremeñu)
@@ -317,7 +321,9 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'ajax-se-desc'             => 'បង្ហាញ អ្នកប្រើប្រាស់ ដែលកំពុង​កែប្រែ ទំព័រដូចគ្នា',
 	'ajax-se-title'            => 'កំពុង កែប្រែ ៖',
+	'ajax-se-idling'           => '($1 វិនាទី កន្លងមក)',
 	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
 	'ajax-se-usernotfound'     => 'កំហុស៖ រកមិនឃើញ អ្នកប្រើប្រាស់',
 );
@@ -581,6 +587,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ajax-se-desc'             => 'పేజీని మారుస్తున్న వాడుకరులకు అదే పేజీని ఇంకా ఎవరు మారుస్తున్నారో చూపిస్తుంది',
 	'ajax-se-title'            => 'ప్రస్తుతం మారుస్తున్నది:',
 	'ajax-se-pending'          => 'తాజాకరణకై వేచివున్నాం... (ఈ పెట్టెపై నొక్కండి లేదా మార్చడం మొదలుపెట్టండి)',
 	'ajax-se-idling'           => '($1s క్రితం)',
@@ -610,6 +617,15 @@ $messages['tr'] = array(
 	'ajax-se-title'   => 'Şu an düzenleyen:',
 	'ajax-se-pending' => 'yenileme bekleniyor ... (bu kutuya tıklayın veya düzenlemeye başlayın)',
 	'ajax-se-idling'  => '($1s önce)',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'ajax-se-desc'             => 'Показує користувачів, що редагують одну й ту саму сторінку',
+	'ajax-se-title'            => 'Зараз редагують:',
+	'ajax-se-pagedoesnotexist' => 'сторінка не існує',
 );
 
 /** Vietnamese (Tiếng Việt)

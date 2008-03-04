@@ -112,6 +112,14 @@ $messages['hsb'] = array(
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'smoothgallery-gallery-not-found'   => 'គ្មាន ទីតាំងពិពណ៌ ដែលត្រូវបានស្នើ ។',
+	'smoothgallery-javascript-disabled' => 'តំរូវអោយមាន Javascript ដើម្បី មើលបានល្អ ទីតាំងពិពណ៌ នេះ ។',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

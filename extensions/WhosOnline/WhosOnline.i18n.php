@@ -20,6 +20,14 @@ $messages['ar'] = array(
 	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'whosonline'      => 'Quién ta coneutáu',
+	'whosonline-desc' => 'Amuesa [[Special:WhosOnline|una llista]] de los usuarios identificaos y anónimos que tán coneutaos nestos momentos',
+);
+
 /** Kotava (Kotava)
  * @author Nkosi ya Cabinda
  */
@@ -130,6 +138,13 @@ $messages['oc'] = array(
 
 $messages['pl'] = array(
 	'whosonline' => 'Kto online',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'whosonline' => 'څوک پرليکه دي؟',
 );
 
 /** Portuguese (Português)

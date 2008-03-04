@@ -42,6 +42,7 @@ $messages['bg'] = array(
 Поздрави,
 
 $2',
+	'userrightsnotif-desc'    => 'Изпраща оповестяване по е-поща при промяна на потребителски права',
 );
 
 /** Bengali (বাংলা)
@@ -183,6 +184,9 @@ Erausgeholl: $6\
 Mat beschte Gréiss,',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
 	'userrightsnotifysubject' => 'Groepslidmaatschap is gewijzigd op $1',
 	'userrightsnotifybody'    => 'Hallo $1
@@ -195,6 +199,7 @@ Verwijderd: $6
 Vriendelijke groeten,
 
 $2',
+	'userrightsnotif-desc'    => 'Verstuurt e-mails om gebruikers te melden van wijzingen in hun gebruikersrechten',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -220,6 +225,7 @@ $2',
 $messages['oc'] = array(
 	'userrightsnotifysubject' => 'Cambiament d’apartenéncia a de gropes d’utilizaires sus $1',
 	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Ajustat : $5 Levat : $6 Coralament, $2",
+	'userrightsnotif-desc'    => 'Manda una notificacion, per corrièr electronic, als utilizaires concernits al moment de la modificacion de lors dreches',
 );
 
 /** Slovak (Slovenčina)
@@ -237,6 +243,7 @@ Odstránené: $6
 S pozdravom,
 
 $2',
+	'userrightsnotif-desc'    => 'Posiela upozornenia na emaily používateľom pri zmene oprávnení',
 );
 
 /** Seeltersk (Seeltersk)

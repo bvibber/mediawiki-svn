@@ -32,6 +32,13 @@ $messages['de'] = array(
 	'poem-desc' => 'Fügt das <tt>&lt;poem&gt;</tt>-Tag zur Formatierung von Gedichten hinzu',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'poem-desc' => 'Aldonas <tt>&lt;poem&gt;</tt> etikedon por formatado de poezio.',
+);
+
 /** فارسی (فارسی)
  * @author Huji
  */

@@ -97,6 +97,7 @@ $messages['ar'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Siebrand
  */
 $messages['ast'] = array(
 	'review_sidebar_title'                                   => 'Revisar',
@@ -505,6 +506,14 @@ $messages['pl'] = array(
 	'review_sidebar_title' => 'Ocenianie',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'review_total_statistics'  => 'ټولټال',
+	'review_user_details_link' => '(تفصيل)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -568,10 +577,12 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'review_sidebar_title'     => 'Granska',
-	'review_page_link'         => 'granska statistik',
-	'review_user_details_link' => '(detaljer)',
-	'review_comment'           => 'Kommentar',
+	'review_sidebar_title'          => 'Granska',
+	'review_page_link'              => 'granska statistik',
+	'review_total_statistics'       => 'Total',
+	'review_version_statistic_cell' => '$1 av $2',
+	'review_user_details_link'      => '(detaljer)',
+	'review_comment'                => 'Kommentar',
 );
 
 /** Telugu (తెలుగు)
@@ -595,6 +606,8 @@ $messages['te'] = array(
 	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
 	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
 	'review_blocked'                         => 'మిమ్మల్ని నిరోధించారు, వెళ్ళిపోండి.',
+	'review_no_opinion'                      => 'అభిప్రాయం లేదు',
+	'review_rating'                          => 'రేటింగు',
 	'review_comment'                         => 'వ్యాఖ్య',
 );
 

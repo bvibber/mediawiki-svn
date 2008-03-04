@@ -22,6 +22,24 @@ $messages['en'] = array(
 	'scanset_prev' => '&lt; Prev',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'scanset-desc'                      => "Beyer as imachens dichitalizatas dende os sets CD/DVD d'Andreas Grosz.",
+	'scanset_no_name'                   => 'ScanSet: Ha d\'espezificar un nombre de scan set, e.g. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Scan set no conforme u no present.',
+	'scanset_unrecognised_index_format' => "ScanSet: Formato d'endize esconoxito",
+	'scanset_opendir_error'             => 'ScanSet: Error, no se puede obrir o direutorio $1',
+	'scanset_no_files'                  => 'ScanSet: No bi ha garra archibo en o direutorio espezificato.',
+	'scanset_no_volumes'                => "ScanSet: No s'han trobato direutorios de bolúmens",
+	'scanset_missing_index_file'        => "ScanSet: No s'ha trobato l'archibo d'endize $1",
+	'scanset_index_file_error'          => "ScanSet: Error en o formato de l'archibo endize en a linia $1",
+	'scanset_invalid_volume'            => 'ScanSet: Bolumen no conforme',
+	'scanset_next'                      => 'Siguient &gt;',
+	'scanset_prev'                      => '&lt; anterior',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -193,12 +211,14 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
-	'scanset_opendir_error' => 'ScanSet: Erro, non se pode abrir o directorio $1',
-	'scanset_next'          => 'Seguinte &gt;',
-	'scanset_prev'          => '&lt; Anterior',
-
+	'scanset_opendir_error'  => 'ScanSet: Erro, non se pode abrir o directorio $1',
+	'scanset_no_files'       => 'ScanSet: Non existen ficheiros no directorio indicado.',
+	'scanset_invalid_volume' => 'ScanSet: Volume non válido',
+	'scanset_next'           => 'Seguinte &gt;',
+	'scanset_prev'           => '&lt; Anterior',
 );
 
 /** Croatian (Hrvatski)

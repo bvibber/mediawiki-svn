@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an email address as image',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'emailaddressimage-desc' => 'Добавя <tt>&lt;email&gt;</tt> за показване на адреси за е-поща като картинки',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -21,11 +28,25 @@ $messages['fr'] = array(
 	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'emailaddressimage-desc' => 'Přidawa <tt>&lt;email&gt;</tt>, zo by e-mejlowu adresu jako wobraz zwobrazniło',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'emailaddressimage-desc' => '電子メールアドレスを画像で表示する<tt>&lt;email&gt;</tt>タグを追加する',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'emailaddressimage-desc' => 'បន្ថែម <tt>&lt;email&gt;</tt> ដើម្បីបង្ហាញ អាស័យដ្ឋាន​អ៊ីមែវល៍ ជារូបភាព',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -68,5 +89,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'emailaddressimage-desc' => 'Pridáva značku <tt>&lt;email&gt;</tt> na zobrazenie emailu vo forme obrázka',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'emailaddressimage-desc' => 'ఈ-మెయిల్ చిరునామాని బొమ్మగా చూపించడానికి <tt>&lt;email&gt;</tt>ని చేరుస్తుంది',
 );
 

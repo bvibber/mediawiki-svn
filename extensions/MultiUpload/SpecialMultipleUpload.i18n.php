@@ -90,6 +90,29 @@ $messages['el'] = array(
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
 );
 
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ * @author Crt
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'multipleupload'                   => 'Tallenna tiedostoja',
+	'multipleupload-desc'              => 'Käyttäjät voivat [[Special:MultipleUpload|tallentaa monta tiedosta kerralla]]',
+	'multipleupload-ignoreallwarnings' => "Ohita '''kaikki varoitukset''' ja tallenna tiedostot kaikesta huolimatta.",
+	'multipleupload-saveallfiles'      => 'Tallenna kaikki tiedostot',
+	'multipleupload-addresswarnings'   => 'Ota huomioon kaikki varoitukset ennen kuin tallennat tiedostoja uudelleen.',
+	'multipleupload-page'              => '{{ns:project}}:Tiedostojen poistokäytäntö',
+	'multipleupload-text'              => "Tallenna useampia tiedostoja täällä.
+
+Valitse <tt>Selaa...</tt> ja valitse jokainen tiedosto, jonka haluat tallentaa. Voit ladata 1–$1 tiedostoa kerrallaan.
+
+Voit antaa vapaaehtoisen '''kohdetiedostonimen''' ja antaa '''yhteenvedon''', joka kuvailee tiedostoasi.
+
+Sopimattomat tiedostot poistetaan välittömästi; katso [[{{MediaWiki:Multipleupload-page}}|tiedostojen poistokäytäntö]].",
+	'multiupload-fileuploaded'         => 'Tiedosto tallennettu.',
+	'multiupload-toolbox'              => 'Tallenna useampia tiedostoja',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Dereckson
@@ -170,11 +193,12 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'multipleupload'              => 'ផ្ទុកឡើង ឯកសារ',
-	'multipleupload-desc'         => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង ច្រើនឯកសារ]]',
-	'multipleupload-saveallfiles' => 'រក្សាទុក គ្រប់ឯកសារ',
-	'multiupload-fileuploaded'    => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
-	'multiupload-toolbox'         => 'ផ្ទុកឡើង ច្រើនឯកសារ',
+	'multipleupload'                   => 'ផ្ទុកឡើង ឯកសារ',
+	'multipleupload-desc'              => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង ច្រើនឯកសារ]]',
+	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
+	'multipleupload-saveallfiles'      => 'រក្សាទុក គ្រប់ឯកសារ',
+	'multiupload-fileuploaded'         => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
+	'multiupload-toolbox'              => 'ផ្ទុកឡើង ច្រើនឯកសារ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

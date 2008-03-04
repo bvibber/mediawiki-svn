@@ -92,6 +92,16 @@ $messages['ja'] = array(
 $4、$3上に$2でユーザーアカウントを作成しました。',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newusernotifsubj' => 'បណ្តល់ដំណឹង នៃ អ្នកប្រើប្រាស់ថ្មី ចំពោះ $1',
+	'newusernotifbody' => 'សួស្តី $1,
+
+មួយគណនី របស់ អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
+);
+
 $messages['nl'] = array(
 	'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
 	'newusernotifbody' => 'Hallo $1.
@@ -117,6 +127,16 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
 	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newusernotifsubj' => 'د $1 لپاره د نوي کارونکي يادونه',
+	'newusernotifbody' => '$1، سلامونه!
+
+د $2 په نوم يو نوی کارن-حساب په $4 نېټه $3 کې جوړ شوی.',
 );
 
 /** Portuguese (Português)

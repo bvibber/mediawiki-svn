@@ -113,8 +113,11 @@ $messages['be'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Borislav
  */
 $messages['bg'] = array(
+	'usernameblacklist-desc'          => 'Добавя [[MediaWiki:Usernameblacklist|черен списък на потребителски имена]] за ограничаване създаването на сметки, съвпадащи с един или повече регулярни израза',
+	'blacklistedusername'             => 'Потребителско име в черния списък',
 	'blacklistedusernametext'         => 'Избраното потребителско име съвпада със запис от [[MediaWiki:Usernameblacklist|списъка с непозволени имена]]. Изберете друго.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следният ред|Следните редове}} в черния списък за потребителски имена {{PLURAL:$1|е невалиден|са невалидни}}; Необходимо е да {{PLURAL:$1|бъде поправен|бъдат поправени}} преди да {{PLURAL:$1|бъде съхранен|бъдат съхранени}}:',
 );
@@ -340,10 +343,16 @@ $messages['ga'] = array(
 	'usernameblacklist-invalid-lines' => "Tá {{PLURAL:$1|líne|na líonta}} seo a leanas neamhbhailí sa liosta na ainm úsáideoira; ceartaigh {{PLURAL:$1|é|iad}}  le d'thoil roimh a shábháil:",
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Prevert
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'blacklistedusername' => 'Nome de usuario non permitido',
-	'blacklistedusernametext' => 'O nome de usuario que elixiu está na [[MediaWiki:Usernameblacklist| lista de nomes de usuario non permitidos]]. Por favor escolla outro nome.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist-desc'          => 'Engade unha [[MediaWiki:Usernameblacklist|listaxe negra de nomes de usuario]] para restrinxir a creación de contas de usuario que coincidan cunha ou máis expresións regulares',
+	'blacklistedusername'             => 'Nome de usuario non permitido',
+	'blacklistedusernametext'         => 'O nome de usuario que elixiu está na [[MediaWiki:Usernameblacklist| lista de nomes de usuario non permitidos]]. Por favor escolla outro nome.',
+	'usernameblacklist'               => '<pre>
 # As entradas desta listaxe empregaranse como parte dunha expresión regular
 # ao incluír os nomes de usuario nunha lista negra de rexistro. Cada elemento
 # deberá incluírse nunha listaxe sen numerar, p.ex.:
@@ -895,7 +904,9 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'blacklistedusername' => 'Номи корбарии ғайри миҷоз',
+	'blacklistedusername'             => 'Номи корбарии ғайри миҷоз',
+	'blacklistedusernametext'         => 'Номи корбарии интихобкардаи шумо бо [[MediaWiki:Usernameblacklist|феҳристи сиёҳи номҳои корбарӣ]] мутобиқат дорад. Лутфан як номи корбарии дигареро интихоб кунед.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Сатри|Сатрҳои}} зерин аз феҳристи сиёҳи номи корбари ғайрмиҷоз {{PLURAL:$1|аст|ҳастанд}}; лутфан {{PLURAL:$1|он|онҳо}}ро қабл аз захира кардани саҳифа, ислоҳ кунед:',
 );
 
 /** Tagalog (Tagalog)

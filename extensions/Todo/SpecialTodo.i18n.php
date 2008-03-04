@@ -79,10 +79,12 @@ $4',
  */
 $messages['bg'] = array(
 	'todo'              => 'Списък със задачи',
+	'todo-desc'         => 'Експериментално разширение за създаване на персонален [[Special:Todo|списък със задачи]]',
 	'todo-list-for'     => 'Списък със задачи за',
 	'todo-list-change'  => 'Промяна',
 	'todo-list-cancel'  => 'Отмяна',
 	'todo-form-details' => 'Детайли:',
+	'todo-form-submit'  => 'Изпращане на заявка',
 );
 
 /** Greek (Ελληνικά)
@@ -180,6 +182,18 @@ $4',
 	'todo-form-details'     => 'Podrobnosće',
 	'todo-form-email'       => 'Zo by zdźělenje z e-mejlu dóstał, hdyž so nadawk kónči, zapodaj tu swoju adresu:',
 	'todo-form-submit'      => 'Naprašowanje wotesłać',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'todo-new-queue'    => 'ថ្មី',
+	'todo-add-queue'    => 'បន្ថែម ជួររង់ចាំ...',
+	'todo-list-change'  => 'ផ្លាស់ប្តូរ',
+	'todo-list-cancel'  => 'បោះបង់',
+	'todo-new-item'     => 'របស់ថ្មី',
+	'todo-form-details' => 'លំអិត ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

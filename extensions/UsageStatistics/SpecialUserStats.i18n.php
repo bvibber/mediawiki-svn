@@ -102,6 +102,7 @@ $messages['avk'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'usagestatistics-desc'         => 'Показване на статистика за отделни потребители или за цялото уики',
 	'usagestatisticsallusers'      => 'Всички потребители',
 	'usagestatisticsinterval'      => 'Интервал',
 	'usagestatisticstype'          => 'Вид',
@@ -114,6 +115,7 @@ $messages['bg'] = array(
 	'usagestatisticsintervalday'   => 'Ден',
 	'usagestatisticsintervalweek'  => 'Седмица',
 	'usagestatisticsintervalmonth' => 'Месец',
+	'usagestatisticscalselect'     => 'Избиране',
 );
 
 /** Bengali (বাংলা)
@@ -276,6 +278,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Xosé
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -296,7 +299,7 @@ $messages['gl'] = array(
 	'usagestatisticsintervalmonth'   => 'Mes',
 	'usagestatisticscalselect'       => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Estatísticas das edicións do usuario individual $1',
-	'usagestatistics-editpages'      => 'Páxinas estatísticas do usuario individual $1',
+	'usagestatistics-editpages'      => 'Páxinas estatísticas $1 do usuario individual',
 );
 
 /** Croatian (Hrvatski)
@@ -364,6 +367,7 @@ $messages['km'] = array(
 	'usagestatistics'              => 'ស្ថិតិ នៃ បំរើប្រាស់',
 	'usagestatisticsfor'           => '<h2>ស្ថិតិ នៃ បំរើប្រាស់ របស់ [[:user:$1|$1]]</h2>',
 	'usagestatisticsallusers'      => 'គ្រប់អ្នកប្រើប្រាស់',
+	'usagestatisticsinterval'      => 'ចន្លោះ',
 	'usagestatisticstype'          => 'ប្រភេទ',
 	'usagestatisticsstart'         => 'ថ្ងៃខែឆ្នាំ ចាប់ផ្តើម',
 	'usagestatisticsend'           => 'ថ្ងៃខែឆ្នាំ បញ្ចប់',

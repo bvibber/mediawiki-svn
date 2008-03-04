@@ -175,6 +175,15 @@ $messages['pl'] = array(
 	'purgecache-button'  => 'Czyść',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'purgecache'        => 'ساتلې حافظه سپينول',
+	'purgecache-purged' => 'د همدې مخ ساتل شوې حافظه سپينه شوه.',
+	'purgecache-button' => 'سپينول',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -204,6 +213,16 @@ $messages['sr-ec'] = array(
 	'purgecache-warning' => 'Ово ће освежити кеш',
 	'purgecache-purged'  => 'Кеш је освежен.',
 	'purgecache-button'  => 'Освежи',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'purgecache'         => 'Очистити кеш',
+	'purgecache-warning' => 'Буде здійснене очищення кеш-таблиць.',
+	'purgecache-purged'  => 'Кеш було очищено.',
+	'purgecache-button'  => 'Очистити',
 );
 
 /** Vietnamese (Tiếng Việt)

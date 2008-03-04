@@ -138,6 +138,8 @@ $messages['it'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'pageby-first'        => 'ទំព័រ ត្រូវបាន បង្កើតឡើង ដោយ $1, $2',
+	'pageby-last'         => '<a href="$3">ផ្លាស់ប្តូរ</a> ចុងក្រោយ ដោយ $1, $2',
 	'pageby-contributors' => 'អ្នក រួមចំណែក ៖',
 	'pageby-anon'         => '<i>អនាមិក</i>',
 );
@@ -150,6 +152,17 @@ $messages['lb'] = array(
 	'pageby-last'         => 'Lescht <a href="$3">Ännerung</a> vum $1, $2',
 	'pageby-contributors' => 'Kontributioune vum:',
 	'pageby-anon'         => '<i>anonym Benotzer</i>',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'pageby-desc'         => '<code><nowiki><pageby></nowiki></code>खूण वापरून योगदानकर्ते एका पानावर क्रमवार दाखवा',
+	'pageby-first'        => 'ने पान निर्माण केले',
+	'pageby-last'         => 'शेवटचा <a href="$3">बदल</a> $1, $2 ने',
+	'pageby-contributors' => 'योगदानकर्ते :',
+	'pageby-anon'         => '<i>अनामिक</i>',
 );
 
 /** Dutch (Nederlands)
@@ -261,7 +274,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'pageby-anon' => '<i>అనామకులు</i>',
+	'pageby-first' => 'పేజీని సృష్టించినది $1, $2',
+	'pageby-last'  => 'చివరగా <a href="$3">మార్చినది</a> $1, $2',
+	'pageby-anon'  => '<i>అనామకులు</i>',
 );
 
 /** Turkish (Türkçe)

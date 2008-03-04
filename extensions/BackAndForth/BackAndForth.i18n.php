@@ -259,6 +259,15 @@ $messages['kaa'] = array(
 	'backforth-prev' => "Aldın'g'ı ($1)",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'backforth-next' => 'បន្ទាប់ ($1)',
+	'backforth-desc' => 'បន្ថែម "បន្ទាប់" និង "មុន" លើទំព័រ តាមលំដាប់អក្សរ នៅ ផ្នែកកំពូល នៃ ទំព័រ',
+	'backforth-prev' => 'មុន ($1)',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Shushruth
  */

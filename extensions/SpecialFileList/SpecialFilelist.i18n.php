@@ -89,6 +89,14 @@ $messages['hsb'] = array(
 	'filelist-show-gallery' => 'Galeriju pokazać',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'filelist-show-list'    => 'បង្ហាញ បញ្ជី',
+	'filelist-show-gallery' => 'បង្ហាញ ទីតាំងពិពណ៌',
+);
+
 /** Latin (Latina)
  * @author UV
  */

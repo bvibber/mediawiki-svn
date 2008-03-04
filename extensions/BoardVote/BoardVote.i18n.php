@@ -357,6 +357,7 @@ $messages['bcl'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Borislav
  */
 $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
@@ -365,6 +366,21 @@ $messages['bg'] = array(
 * [[Special:Boardvote/list|Списък на гласовете до ммента]]
 * [[Special:Boardvote/dump|Извличане на криптирана информация]]',
 	'boardvote_intro_change' => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
+	'boardvote_entered'      => 'Благодарим ви, гласът ви беше отчетен.
+
+Ако желаете, можете да си запишете следните детайли. Запис на гласуването:
+
+<pre>$1</pre>
+
+Гласуването ви беше криптирано с публичния ключ на Администраторите по гласуването:
+
+<pre>$2</pre>
+
+По-долу е включена и криптираната версия. Тя ще бъде публичнодостъпна на [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Обратно]]',
 	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
 	'boardvote_notqualified' => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
 	'boardvote_novotes'      => 'Все още никой не е гласувал.',
@@ -374,6 +390,8 @@ $messages['bg'] = array(
 	'boardvote_ip'           => 'IP',
 	'boardvote_dumplink'     => 'Тук',
 	'boardvote_submit'       => 'Гласуване',
+	'boardvote_strike'       => 'Задраскване',
+	'boardvote_unstrike'     => 'Махане на задраскването',
 	'boardvote_notstarted'   => 'Гласуването все още не е започнало',
 	'boardvote_closed'       => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
 	'boardvote_edits_many'   => 'много',
@@ -1987,18 +2005,28 @@ $messages['kk-arab'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'boardvote'              => 'ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា',
+	'boardvote-desc'         => '[[meta:Board elections|ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា]]',
 	'boardvote_novotes'      => 'គ្មានអ្នក ​បានបោះឆ្នោត នៅឡើយ។',
 	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
 	'boardvote_edits'        => 'កំណែប្រែ នានា',
 	'boardvote_days'         => 'ថ្ងៃ',
 	'boardvote_ip'           => 'IP',
+	'boardvote_listintro'    => '<p>នេះជា បញ្ជី នៃគ្រប់សន្លឹកឆ្នោត បានត្រូវកត់ទុក មកទល់ពេលនេះ ។ $1 សំរាប់ ទិន្នន័យ បំលែង ជា អក្សរកូដ ។</p>',
 	'boardvote_dumplink'     => 'ចុចទីនេះ',
 	'boardvote_submit'       => 'យល់ព្រម',
+	'boardvote_strike'       => 'គូសចេញ',
+	'boardvote_unstrike'     => 'លែងគូសចេញ',
+	'boardvote_needadmin'    => 'មានតែ អ្នកអភិបាល ជាប់ឆ្នោត ទើបអាចធ្វើ ការងារនេះ ។',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">បោះឆ្នោត ក្រុមប្រឹក្សា វិគីមីឌា </a> ៖  បោះឆ្នោតចំហ រហូតដល់ថ្ងៃ ១២ ខែកក្កដា ។',
 	'boardvote_notstarted'   => 'ការបោះឆ្នោត មិនទាន់បាន ចាប់ផ្តើម',
+	'boardvote_closed'       => 'ការបោះឆ្នោត បានត្រូវបញ្ចប់, មើល [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En លទ្ធផលបោះឆ្នោត] ក្នុងពេល ឆាប់ៗ ខាងមុខ ។',
+	'boardvote_edits_many'   => 'ច្រើន',
 	'group-boardvote'        => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
 	'group-boardvote-member' => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
 	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
 	'boardvote_welcome'      => "ស្វាគម '''$1'''!",
+	'go_to_board_vote'       => 'បោះឆ្នោត ​ក្រុមប្រឹក្សា វិគីមីឌា ឆ្នាំ ២០០៧',
 );
 
 $messages['ksh'] = array(
@@ -2280,6 +2308,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'boardvote'            => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
+	'boardvote-desc'       => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
 	'boardvote_time'       => 'वेळ',
 	'boardvote_user'       => 'सदस्य',
 	'boardvote_edits'      => 'संपादने',
@@ -2292,6 +2321,7 @@ $messages['mr'] = array(
 	'boardvote_unstrike'   => 'खोडणे रद्द',
 	'boardvote_edits_many' => 'खूप',
 	'boardvote_welcome'    => "सुस्वागतम्‌ '''$1'''!",
+	'go_to_board_vote'     => 'विकिमीडिया मंडळ निवडणूक २००७',
 );
 
 /** Erzya (эрзянь кель)
@@ -2427,6 +2457,13 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>',
 U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er nu heen te gaan.
 
 Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certificaat.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'boardvote_welcome' => "Velkomen, '''$1'''!",
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -3464,6 +3501,8 @@ $messages['tg'] = array(
 
 [[Special:Boardvote/entry|Бозгашт]]',
 	'boardvote_nosession'    => 'Система қодир ба ташхиси номи корбарии шумо дар Викимедиа нест. Лутфан ба викие, ки дар он миҷоз ба раъй додан ҳастед ворид шавед, ва ба он шумо бояд аз як ҳисоби корбарӣ истифода кунед, ки ҳадди ақал $1 ҳиссагузорӣ пеш аз $2 дошта бошад, ва аввалин вироиш тавассути он пеш аз $3 анҷом шуда бошад.',
+	'boardvote_notloggedin'  => 'Шумо ба систем ворид нашудаед. Барои раъй додан, шумо бояд аз як ҳисоби корбарӣ бо $1 ҳиссагузориҳо то пеш аз $2, ки аввалин вироиш тавассути он қабл аз $3 анҷом шуда бошад, истифода кунед.',
+	'boardvote_notqualified' => 'Шумо миҷоз ба раъй додан нестед. Шумо бояд дасти кам $3 вироиш то қабл аз  $2 дошта бошед, ва аввалин вироиши шумо қабл аз $5 анчом шуда бошад.',
 	'boardvote_novotes'      => 'Ҳанӯз касе раъй надодааст.',
 	'boardvote_time'         => 'Вақт',
 	'boardvote_user'         => 'Корбар',
@@ -3477,7 +3516,9 @@ $messages['tg'] = array(
 	'boardvote_strike'       => 'Хат задан',
 	'boardvote_unstrike'     => 'Ах хат задан озод кардан',
 	'boardvote_needadmin'    => 'Фақат мудирони интихобот метавонанд ин коро анҷом диҳанд',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Интихоботи Ҳайати Амнои Википедиа</a>:  Овоздиҳӣ то 12 июл идома дорад',
 	'boardvote_notstarted'   => 'Раъйпурсӣ ҳануз шурӯъ нашудааст',
+	'boardvote_closed'       => 'Овоздиҳӣ поён ёфтааст, нигаред ба  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En саҳифаи натоиҷи интихобот].',
 	'boardvote_edits_many'   => 'бисёр',
 	'group-boardvote'        => 'Мудирияти интихоботи ҳайати амно',
 	'group-boardvote-member' => 'Мудири интихоботи ҳайати амно',
@@ -3485,6 +3526,11 @@ $messages['tg'] = array(
 	'boardvote_blocked'      => 'Мутаасифона, дастрасии шумо дар викии мавриди назар қатъ шудааст. Корбароне, ки дастрасиашон қатъ шудааст, иҷозати раъй додан надоранд.',
 	'boardvote_welcome'      => "Хуш омадед '''$1'''!",
 	'go_to_board_vote'       => 'Интихоботи соли 2007 Ҳайати Амнои Викимедиа',
+	'boardvote_redirecting'  => 'Барои афзоиши амният ва шаффофият, мо раъйгириро рӯи як коргузори хориҷӣ, ки ба таври мустақил идора мешавад, анҷом медиҳем.
+
+Шумо зарфи 20 сония ба коргузори хориҷӣ ҳидоят мешавед. Барои он, ки ҳозир онҷо биравед [$1 инҷо клик кунед].
+
+Мумкин аст як пайёми амнияти дар мавриди гувоҳиномаи  ғайримиҷоз дарёфт кунед.',
 );
 
 /** Tonga (faka-Tonga)

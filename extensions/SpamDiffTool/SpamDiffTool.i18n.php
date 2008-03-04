@@ -44,6 +44,7 @@ $messages['ar'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'spamdifftool'                  => 'التحكم في قائمة السبام السوداء',
@@ -68,6 +69,9 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'spamdifftool'                  => 'Управление на Черния списък за спам',
+	'spamdifftool_cantedit'         => 'Нямате права да редактирате Черния списък за спам.',
+	'spamdifftool_notext'           => "Не е въведен текст, който да бъде добавен в Черния списък за спам. <a href='$1'>Продължаване</a>.",
 	'spamdifftool_confirm'          => "Необходимо е потвърждение за добавяне на записите в списъка със спам (Нередности могат да се съобщават <a href='$1' target='new'>на тази страница</a>.)",
 	'spamdifftool_summary'          => 'Добавяне към черния списък със спам',
 	'spamdifftool_spam_link_text'   => 'добавяне в спам',
@@ -186,7 +190,13 @@ $messages['is'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'spamdifftool_submit_buttom' => 'ដាក់ស្នើ',
+	'spamdifftool_no_urls_detected' => "រកមិនឃើញ url ។ ចុច <a href='$1'>ទីនេះ</a> ដើម្បី ត្រលប់ក្រោយ ។",
+	'spamdifftool_option_domain'    => 'ទាំងអស់ ពី កម្មសិទ្ធិ នេះ',
+	'spamdifftool_option_subdomain' => 'ទាំងអស់ ពី កម្មសិទ្ធិរង នេះ',
+	'spamdifftool_option_directory' => 'កម្មសិទ្ធិរង និង ថតឯកសារ នេះ',
+	'spamdifftool_option_none'      => 'ទទេ',
+	'spamdifftool_block'            => 'រាំងខ្ទប់ ៖',
+	'spamdifftool_submit_buttom'    => 'ដាក់ស្នើ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -224,6 +224,7 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'profiling-ok'         => 'OK',
 	'profiling-data-count' => 'Räkna',
+	'profiling-data-time'  => 'Tid (alla)',
 );
 
 /** Telugu (తెలుగు)

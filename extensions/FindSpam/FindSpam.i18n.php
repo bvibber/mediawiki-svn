@@ -66,6 +66,17 @@ $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'findspam'             => 'Etsi spämmiä',
+	'findspam-desc'        => 'Lisää [[Special:FindSpam|toimintosivun]] tuoreen spämmin löytämiseksi',
+	'findspam-ip'          => 'IP-osoite',
+	'findspam-notextfound' => 'Muokkauksia ei löytynyt',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin
@@ -113,8 +124,9 @@ $messages['hu'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'findspam-ip' => 'អាស័យដ្ឋាន IP ៖',
-	'findspam-ok' => 'យល់ព្រម',
+	'findspam-ip'          => 'អាស័យដ្ឋាន IP ៖',
+	'findspam-ok'          => 'យល់ព្រម',
+	'findspam-notextfound' => 'រកមិនឃើញ ការរួមចំណែក',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -263,8 +275,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'findspam-ip' => 'IP చిరునామా:',
-	'findspam-ok' => 'సరే',
+	'findspam'      => 'స్పాముని కనుక్కోండి',
+	'findspam-desc' => 'ఇటీవల వచ్చిన స్పాముని కనుగొనడానికి ఓ [[Special:FindSpam|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
+	'findspam-ip'   => 'IP చిరునామా:',
+	'findspam-ok'   => 'సరే',
 );
 
 /** Turkish (Türkçe)

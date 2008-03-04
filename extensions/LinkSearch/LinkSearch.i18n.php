@@ -150,6 +150,18 @@ $messages['es'] = array(
 	'linksearch-error' => 'Los comodines sólo pueden aparecer al principio del nombre de sitio.',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'linksearch'       => 'Web loturak bilatu',
+	'linksearch-pat'   => 'Bilaketa katea:',
+	'linksearch-ns'    => 'Izen-tartea:',
+	'linksearch-ok'    => 'Bilatu',
+	'linksearch-line'  => '$1, $2(e)tik lotuta',
+	'linksearch-error' => 'Komodinak izenaren hasieran bakarrik agertu beharko lirateke.',
+);
+
 $messages['ext'] = array(
 	'linksearch-ok'    => 'Landeal',
 );
@@ -367,9 +379,12 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'linksearch'    => 'ស្វែងរក តំណភ្ជាប់ វ៉ែបសៃថ៍',
-	'linksearch-ns' => 'វាលឈ្មោះ ៖',
-	'linksearch-ok' => 'ស្វែងរក',
+	'linksearch'      => 'ស្វែងរក តំណភ្ជាប់ អិនរើណែត',
+	'linksearch-desc' => '[[Special:Linksearch|រកមើលទំព័រ មានតំណភ្ជាប់ ខាងក្រៅ]] ឆបនឹង គំរូបានសំដៅ',
+	'linksearch-pat'  => 'ស្វែងរក គំរូ ៖',
+	'linksearch-ns'   => 'វាលឈ្មោះ ៖',
+	'linksearch-ok'   => 'ស្វែងរក',
+	'linksearch-line' => '$1 បានតភ្ជាប់ ពី $2',
 );
 
 $messages['la'] = array(
@@ -637,6 +652,7 @@ $messages['ss'] = array(
  */
 $messages['stq'] = array(
 	'linksearch'       => 'Webferbiendenge-Säike',
+	'linksearch-desc'  => '[[Special:Linksearch|Fint Sieden mäd externe Ferbiendengen]], do n foarroat Säikmuster äntspreeken dwo.',
 	'linksearch-pat'   => 'Säikmuster:',
 	'linksearch-ns'    => 'Noomensruum:',
 	'linksearch-ok'    => 'Säike',

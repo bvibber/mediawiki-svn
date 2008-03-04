@@ -205,6 +205,16 @@ $messages['ja'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: 1つ以上のカテゴリ、または名前空間を指定する必要があります！',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: ចំណាត់ក្រុម ច្រើនពេក!',
+	'intersection_toofewcats'    => 'DynamicPageList: ចំណាត់ក្រុម តិចពេក!',
+	'intersection_noresults'     => 'DynamicPageList: គ្មានលទ្ធផល!',
+	'intersection_noincludecats' => 'DynamicPageList: អ្នកត្រូវតែមាន យ៉ាងតិច មួយចំណាត់ក្រុម, ឬ សំដៅ មួយ វាលឈ្មោះ​!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -326,6 +336,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'intersection-desc'          => 'Uutgoawe fon ne Lieste fon do aktuälste Iendraage in ne Kategorie, of n Truchsnit fon moorere Kategorien.',
 	'intersection_toomanycats'   => 'DynamicPageList: Toufuul Kategorien!',
 	'intersection_toofewcats'    => 'DynamicPageList: Toumin Kategorien!',
 	'intersection_noresults'     => 'DynamicPageList: Neen Resultoat!',

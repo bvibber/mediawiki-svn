@@ -120,6 +120,14 @@ $messages['hsb'] = array(
 	'showprocesslist-info'    => 'Informacija',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
+	'showprocesslist-info' => 'ពត៌មាន',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

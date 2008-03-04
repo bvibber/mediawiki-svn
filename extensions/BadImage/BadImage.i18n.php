@@ -675,6 +675,7 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'badimages'                => 'បញ្ជី រូបភាពអន់',
+	'badimages-desc'           => 'បន្ថែម សមត្ថភាព នៃ បញ្ជីរូបភាពអន់ របស់ មីឌាវិគី',
 	'badimages-add-btn'        => 'បន្ថែម',
 	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
 	'badimages-count'          => "មាន '''$1''' រូបភាព លើបញ្ជី​ រូបភាពអន់ ។",
@@ -686,6 +687,8 @@ $messages['km'] = array(
 	'badimages-remove-btn'     => 'ដកចេញ',
 	'badimages-remove-confirm' => 'សូមបញ្ជាក់ទទួលស្គាល់ ថា អ្នកប្រាថ្នា ដកចេញ $1 ពីបញ្ជី ៖',
 	'badimages-removed'        => '$1 បានត្រូវ ដកចេញ ពី បញ្ជី ។',
+	'badimages-subheading'     => 'បញ្ជី បច្ចុប្បន្ន',
+	'badimages-unprivileged'   => '(អ្នកគ្មានសិទ្ធិ គ្រប់គ្រាន់ ដើម្បី ផ្លាស់ប្តូរ​បញ្ជី)',
 	'badimages-log-name'       => 'បញ្ជី រូបភាពអន់',
 	'badimages-log-header'     => 'មានកំណត់ហេតុ នៃ បំលាស់ប្តូរ នៅ [[{{MediaWiki:Badimages-page}}|បញ្ជី រូបភាពអន់]]។',
 	'badimages-log-add'        => 'បានបន្ថែម [[$1]] ទៅ បញ្ជី រូបភាពអន់',
@@ -803,6 +806,14 @@ $messages['ml'] = array(
 	'badimages-log-name'       => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
 	'badimages-log-add'        => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയിലേയ്ക്ക് [[$1]] ചേര്‍ത്തു',
 	'badimages-log-remove'     => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍നിന്ന് [[$1]] നീക്കംചെയ്തു',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'badimages-name'   => 'नाव:',
+	'badimages-reason' => 'कारण:',
 );
 
 /** Dutch (Nederlands)
@@ -1295,6 +1306,7 @@ $messages['te'] = array(
 	'badimages'                => 'పాడైన బొమ్మల జాబితా',
 	'badimages-add-btn'        => 'చేర్చు',
 	'badimages-added'          => '$1ని జాబితాలో చేర్చాం.',
+	'badimages-count'          => "చెడు బొమ్మల జాబితాలో '''$1''' బొమ్మలున్నాయి.",
 	'badimages-name'           => 'పేరు:',
 	'badimages-not-added'      => 'బొమ్మని చేర్చలేకపోయాం.',
 	'badimages-not-removed'    => 'బొమ్మని తొలగించలేకపోయాం.',
@@ -1304,7 +1316,10 @@ $messages['te'] = array(
 	'badimages-remove-confirm' => '$1ని జాబితా నుండి తొలగించాలనుకుంటున్నారని నిర్ధారించండి:',
 	'badimages-removed'        => '$1ని జాబితా నుండి తొలగించాం.',
 	'badimages-subheading'     => 'ప్రస్తుత అంశాలు',
+	'badimages-unprivileged'   => '(ఈ జాబితాని మార్చడానికి మీకు తగిన అనుమతి లేదు)',
 	'badimages-log-name'       => 'చెడు బొమ్మల జాబితా',
+	'badimages-log-add'        => '[[$1]]ని చెడు బొమ్మల జాబితాలో చేర్చారు',
+	'badimages-log-remove'     => '[[$1]]ని చెడు బొమ్మల జాబితా నుండి తీసివేసారు',
 	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',
 );
 

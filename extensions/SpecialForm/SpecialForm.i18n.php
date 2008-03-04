@@ -89,6 +89,7 @@ $messages['bg'] = array(
 	'formsave'                     => 'Съхранение',
 	'formarticleexists'            => 'Страницата съществува',
 	'formarticleexiststext'        => 'Страницата [[$1]] вече съществува.',
+	'formbadpagename'              => 'Грешно име на страница',
 	'formrequiredfieldpluralerror' => 'Този формуляр изисква полетата $1 да бъдат попълнени.',
 	'formrequiredfielderror'       => 'Този формуляр изисква полето $1 да бъде попълнено.',
 	'formsaveerror'                => 'Грешка при съхранение на формуляра',
@@ -204,10 +205,15 @@ $messages['hsb'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'form'            => 'បែបបទ',
 	'formnoname'      => 'គ្មាន ឈ្មោះបែបបទ',
 	'formbadname'     => 'ឈ្មោះបែបបទ មិនល្អ',
 	'formbadnametext' => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
+	'formpattern'     => '$1-បែបបទ',
+	'formsave'        => 'រក្សាទុក',
 	'formbadpagename' => 'ឈ្មោះទំព័រ មិនល្អ',
+	'formsavesummary' => 'ទំព័រថ្មី ប្រើប្រាស់ [[Special:Form/$1]]',
+	'formsaveerror'   => 'កំហុស រក្សាទុក បែបបទ',
 );
 
 $messages['la'] = array(

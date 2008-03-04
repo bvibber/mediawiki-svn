@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'breadcrumbs-desc' => 'Показва текущото място на потребителя в уикито.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */
@@ -156,6 +163,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'breadcrumbs-desc' => 'Visar användarens väg genom wikin.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'breadcrumbs-desc' => 'వాడుకరులకు వికీలో తోవ చూపిస్తుంది',
 );
 
 /** Vietnamese (Tiếng Việt)

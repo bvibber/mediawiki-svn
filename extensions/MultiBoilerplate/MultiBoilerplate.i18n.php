@@ -84,7 +84,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'multiboilerplate-desc'   => "Aficha una boita en naut de la pagina d'edicion per seleccionar e cargar una pagina o un modèl.",
+	'multiboilerplate-desc'   => "Permet de seleccionar una pagina o un modèl d'incorporar a partir d'una boita en naut del formulari d'edicion d'una pagina.",
 	'multiboilerplate-legend' => "Seleccionar la pagina d'incorporar",
 	'multiboilerplate-submit' => 'Cargar',
 );

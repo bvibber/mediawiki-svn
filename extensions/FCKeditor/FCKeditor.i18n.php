@@ -60,6 +60,8 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'textrichditor'                        => 'Разширен редактор',
+	'textrichditor-desc'                   => 'Използване на FCKeditor за редактиране на страниците в уикито',
 	'tog-riched_disable'                   => 'Изключване на разширения редактор',
 	'tog-riched_disable_ns_main'           => 'Изключване на разширения редактор в основното именно пространство',
 	'tog-riched_disable_ns_talk'           => 'Изключване на разширения редактор в именно пространство „{{ns:Talk}}“',

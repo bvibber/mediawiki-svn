@@ -71,6 +71,14 @@ $messages['dsb'] = array(
 	'categorystepper-end'   => '(Kóńc kategorije)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'categorystepper-end'   => '(Fino de kategorio)',
+	'categorystepper-start' => '(Komenco de kategorio)',
+);
+
 /** French (Français)
  * @author Grondin
  */

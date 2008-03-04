@@ -81,6 +81,7 @@ $messages['bg'] = array(
 	'spamregex_summary'              => 'Текстът е намерен в резюмето на страницата.',
 	'spamregex-currently-blocked'    => "'''Текущо блокирани фрази:'''",
 	'spamregex-no-currently-blocked' => "'''Няма блокирани фрази.'''",
+	'spamregex-log-2'                => ' на $1',
 	'spamregex-page-title-1'         => 'Блокиране на фрази чрез регулярни изрази',
 	'spamregex-unblock-success'      => 'Успешно разблокиране',
 	'spamregex-page-title-2'         => 'Блокиране на съхранението на фраза посредством регулярни изрази',
@@ -91,6 +92,7 @@ $messages['bg'] = array(
 	'spamregex-phrase-block'         => 'Фраза за блокиране:',
 	'spamregex-phrase-block-text'    => 'блокиране на фраза в текста на статията',
 	'spamregex-phrase-block-summary' => 'блокиране на фраза в резюмето',
+	'spamregex-block-submit'         => 'Блокиране&nbsp;на&nbsp;фразата',
 	'spamregex-text'                 => '(Текст)',
 	'spamregex-summary-log'          => '(Резюме)',
 );
@@ -163,6 +165,7 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'spamregex-desc'                 => 'Njewitane frazy na wobdźěłanych stronach z pomocu regularnych wurazow [[Special:Spamregex|wufiltrować]]',
 	'spamregex_summary'              => 'Tekst je so w zjeću strony namakał.',
 	'spamregex-intro'                => 'Wužij tutón formular, zo by wurazy skutkownje přećiwo składowanju w teksće strony blokował. Jel tekst daty wuraz wobsahuje, změna njeby so składowała a wujasnjenje so wužiwarjej, kiž je spytał stronu składować, pokaza. Jewi so warnowanje, zo wurazy njesmědźa překrótke abo přepowšitkowne być.',
 	'spamregex-page-title'           => 'Spam Regex Blokowanje njepožadanych wurazow',
@@ -186,6 +189,13 @@ $messages['hsb'] = array(
 	'spamregex-block-submit'         => 'Tutu&nbsp;frazu&nbsp;blokować',
 	'spamregex-text'                 => '(Tekst)',
 	'spamregex-summary-log'          => '(Zjeće)',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'spamregex-summary-log' => '(សេចក្តីសង្ខេប)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -359,8 +369,9 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'spamregex_summary'     => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
-	'spamregex-text'        => '(పాఠ్యం)',
-	'spamregex-summary-log' => '(సంగ్రహం)',
+	'spamregex_summary'       => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
+	'spamregex-block-success' => 'నిరోధం విజయవంతమయ్యింది',
+	'spamregex-text'          => '(పాఠ్యం)',
+	'spamregex-summary-log'   => '(సంగ్రహం)',
 );
 

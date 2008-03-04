@@ -163,7 +163,10 @@ $messages['hu'] = array(
  */
 $messages['km'] = array(
 	'importfreeimages'                       => 'នាំចូល រូបភាព សេរី',
+	'importfreeimages_noapikey'              => 'អ្នកមិនបាន ធ្វើទំរង់ សោ Flickr API របស់អ្នក។ ដើម្បីធ្វើវា, ត្រូវយក សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច កំណត់​ wgFlickrAPIKey ក្នុង ImportFreeImages.php ។',
+	'importfreeimages_invalidurl'            => 'URL "$1" មិនមែនជា រូបភាព ត្រឹមត្រូវ របស់ Flickr ។',
 	'importfreeimages_owner'                 => 'អ្នកនិពន្ធ',
+	'importfreeimages_importthis'            => 'នាំចូល នេះ',
 	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
 );
 
@@ -354,6 +357,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'importfreeimages_owner'                 => 'కృతికర్త',
 	'importfreeimages_next'                  => 'తర్వాతి $1',
 	'importfreeimages_promptuserforfilename' => 'గమ్యస్థానపు ఫైలు పేరుని ఇవ్వండి:',
 );

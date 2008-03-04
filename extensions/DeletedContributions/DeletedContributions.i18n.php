@@ -177,8 +177,13 @@ $messages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'deletedcontributions' => 'Contribucións eliminadas do usuario',
+	'deletedcontributions'      => 'Contribucións eliminadas do usuario',
+	'deletedcontributions-desc' => 'Dálles aos administradores a posibilidade de [[Special:DeletedContributions|examinar as edicións eliminadas dun usuario]]',
 );
 
 $messages['he'] = array(
@@ -258,7 +263,7 @@ $messages['kk-arab'] = array(
  */
 $messages['km'] = array(
 	'deletedcontributions'      => 'ការរួមចំណែក ត្រូវបានលុបចេញ',
-	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់អ្នកប្រើប្រាស់]]',
+	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់ អ្នកប្រើប្រាស់]]',
 );
 
 $messages['ku-latn'] = array(

@@ -573,6 +573,16 @@ $messages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'sitematrix'          => 'विकिमीडियाच्या विकिंची यादी',
+	'sitematrix-language' => 'भाषा',
+	'sitematrix-project'  => 'प्रकल्पाचे नाव, आंतरप्रकल्प दुवे आणि आंतरविकि दुवे',
+	'sitematrix-others'   => 'विकिमीडियाचे इतर प्रकल्प',
+);
+
 /** Erzya (эрзянь кель)
  * @author Amdf
  */

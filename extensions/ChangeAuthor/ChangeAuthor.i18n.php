@@ -235,6 +235,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'changeauthor-comment'     => 'Komento:',
+	'changeauthor-nosuchuser'  => 'Neniu uzanto "$1".',
+	'changeauthor-revview'     => 'Revizio #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Estas neniu pagxo titolata "$1".',
 );
 
@@ -742,6 +745,8 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'changeauthor'                      => 'కూర్పు యొక్క రచయితని మార్చండి',
+	'changeauthor-desc'                 => 'కూర్పు యొక్క రచయితని మార్చే వీలుకల్పిస్తుంది',
 	'changeauthor-search-box'           => 'కూర్పులను వెతకండి',
 	'changeauthor-pagename-or-revid'    => 'పేజీ పేరు లేదా కూర్పు ఐడీ:',
 	'changeauthor-pagenameform-go'      => 'వెళ్ళు',

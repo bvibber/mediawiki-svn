@@ -130,20 +130,25 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Borislav
  */
 $messages['bg'] = array(
-	'ogg-short-audio' => 'Ogg $1 звуков файл, $2',
-	'ogg-short-video' => 'Ogg $1 видео файл, $2',
-	'ogg-long-audio'  => '(Ogg $1 звуков файл, продължителност $2, $3)',
-	'ogg-long-video'  => '(Ogg $1 видео файл, продължителност $2, $4×$5 пиксела, $3)',
-	'ogg-long-error'  => '(Невалиден ogg файл: $1)',
-	'ogg-play'        => 'Пускане',
-	'ogg-pause'       => 'Пауза',
-	'ogg-stop'        => 'Спиране',
-	'ogg-more'        => 'Повече...',
-	'ogg-dismiss'     => 'Затваряне',
-	'ogg-download'    => 'Изтеглене на файла',
-	'ogg-desc-link'   => 'Информация за файла',
+	'ogg-short-audio'       => 'Ogg $1 звуков файл, $2',
+	'ogg-short-video'       => 'Ogg $1 видео файл, $2',
+	'ogg-long-audio'        => '(Ogg $1 звуков файл, продължителност $2, $3)',
+	'ogg-long-video'        => '(Ogg $1 видео файл, продължителност $2, $4×$5 пиксела, $3)',
+	'ogg-long-error'        => '(Невалиден ogg файл: $1)',
+	'ogg-play'              => 'Пускане',
+	'ogg-pause'             => 'Пауза',
+	'ogg-stop'              => 'Спиране',
+	'ogg-player-oggPlugin'  => 'Плъгин за Ogg',
+	'ogg-player-soundthumb' => 'Няма плеър',
+	'ogg-player-selected'   => '(избран)',
+	'ogg-use-player'        => 'Ползване на плеър:',
+	'ogg-more'              => 'Повече...',
+	'ogg-dismiss'           => 'Затваряне',
+	'ogg-download'          => 'Изтеглене на файла',
+	'ogg-desc-link'         => 'Информация за файла',
 );
 
 /** Bengali (বাংলা)
@@ -298,6 +303,16 @@ $messages['es'] = array(
 	'ogg-more' => 'Opciones...',
 	'ogg-dismiss' => 'Cerrar',
 	'ogg-download' => 'Bajar archivo',
+);
+
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
+$messages['eu'] = array(
+	'ogg-more'      => 'Gehiago...',
+	'ogg-dismiss'   => 'Itxi',
+	'ogg-download'  => 'Fitxategia jaitsi',
+	'ogg-desc-link' => 'Fitxategi honen inguruan',
 );
 
 /** فارسی (فارسی)
@@ -812,14 +827,27 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'ogg-desc'                => 'គាំទ្រ ចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករអាន JavaScript',
+	'ogg-short-audio'         => 'ឯកសារ សំលេង Ogg $1, $2',
+	'ogg-short-video'         => 'ឯកសារ វិឌីអូ Ogg $1, $2',
+	'ogg-short-general'       => 'ឯកសារ មីឌា Ogg $1, $2',
+	'ogg-long-audio'          => '(ឯកសារ សំលេង Ogg $1, វែង $2, $3)',
+	'ogg-long-video'          => '(ឯកសារ វិឌីអូ Ogg $1, វែង $2, $4×$5 ធាតុរូបភាព, $3)',
+	'ogg-long-multiplexed'    => '(ឯកសារ Ogg ចំរុះ សំលេង/វិឌីអូ, $1, វែង $2, $4×$5 ធាតុរូបភាព, $3 ទាំងអស់)',
+	'ogg-long-general'        => '(ឯកសារ មីឌា Ogg, វែង $2, $3)',
+	'ogg-long-error'          => '(ឯកសារ ogg មិនមាន សុពលភាព ៖ $1)',
 	'ogg-play'                => 'លេង',
 	'ogg-pause'               => 'ផ្អាក',
 	'ogg-stop'                => 'ឈប់',
 	'ogg-play-video'          => 'លេង វិឌីអូ',
 	'ogg-play-sound'          => 'លេង សំលេង',
+	'ogg-no-player'           => 'អភ័យទោស, ប្រព័ន្ធ របស់អ្នក មិនបង្ហាញ ផ្នែកទន់ឧបករអាន គាំទ្រ ណាមួយ ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">និង តំលើង មួយឧបករអាន គាំទ្រ</a> ។',
+	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'ធាតុ <វិឌីអូ>',
+	'ogg-player-thumbnail'    => 'នៅតែ ជា រូបភាព',
 	'ogg-player-soundthumb'   => 'គ្មាន អ្នកលេង',
 	'ogg-player-selected'     => '(បានជ្រើសយក)',
+	'ogg-use-player'          => 'ប្រើប្រាស់ ឧបករអាន ៖',
 	'ogg-more'                => 'បន្ថែម...',
 	'ogg-dismiss'             => 'បិទ',
 	'ogg-download'            => 'ទាញយក ឯកសារ',

@@ -101,6 +101,18 @@ $messages['ca'] = array(
 	'countedits-nocontribs' => 'No hi ha hagut cap col·laboració en aquest wiki.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'countedits'              => 'Počítadlo editací',
+	'countedits-username'     => 'Uživatelské jméno:',
+	'countedits-ok'           => 'OK',
+	'countedits-resultheader' => 'Výsledky pro $1',
+	'countedits-resulttext'   => '$1 má $2 editac{{plural:$2|i|e|í}}',
+	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'countedits' => 'Beitragszähler',
@@ -331,8 +343,13 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'countedits-username' => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
-	'countedits-ok'       => 'យល់ព្រម',
+	'countedits'              => 'រាប់ កំណែប្រែ',
+	'countedits-warning'      => "'''ប្រយ័ត្ន ៖''' មិនត្រូវវិនិច្ឆ័យ សៀវភៅ ដោយសារ ក្រប របស់វា ។ មិនត្រូវវិនិច្ឆ័យ អ្នករួមចំណែក ដោយសារ របាប់ កំណែប្រែ របស់ពួកគេ។",
+	'countedits-username'     => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
+	'countedits-ok'           => 'យល់ព្រម',
+	'countedits-resultheader' => 'លទ្ធផល ចំពោះ $1',
+	'countedits-mostactive'   => 'អ្នករួមចំណែក សកម្មបំផុត',
+	'countedits-nocontribs'   => 'គ្មានការរួមចំណែក ទៅ វិគី នេះ ។',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

@@ -40,6 +40,7 @@ $messages['en'] = array(
 $messages['bg'] = array(
 	'invite-logpage'                  => 'Дневник на поканите',
 	'invite-logentry'                 => 'покани $1 да използва <i>$2</i>.',
+	'invitations'                     => 'Управление на поканите за различните услуги',
 	'invitations-pagetitle'           => 'Възможности на софтуера, достъпни с покана',
 	'invitations-feature-pagetitle'   => 'Управление на поканите - $1',
 	'invitations-feature-notallowed'  => 'Нямате достъп да използвате <i>$1</i>.',
@@ -160,6 +161,14 @@ $messages['fr'] = array(
 	'invitations-invite-success'            => 'Vous invité $1 avec succès pour utiliser cette fonctionnalité !',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'invite-logpage'                => 'កំណត់ហេតុ នៃ ការអញ្ជើញ',
+	'invitations-inviteform-submit' => 'អញ្ជើញ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -269,6 +278,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'invite-logpage'                        => 'Registo de Convites',
 	'invitations-desc'                      => 'Permite [[{{ns:special}}:Invitations|a gestão de novas funcionalidades]] através da sua restrição a um sistema baseado em convites',
 	'invitations-invitedlist-description'   => 'Você tem acesso às seguintes funcionalidades do software atribuídas apenas por convite. Para gerir convites para uma funcionalidade individual, clique no seu nome.',
 	'invitations-invitedlist-none'          => 'Você não foi convidado a usar nenhuma funcionalidade do software atribuída apenas por convite.',
@@ -348,10 +358,40 @@ $messages['sk'] = array(
 	'invitations-invite-success'            => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'invite-logpage'                        => 'Ienleedengs-Logbouk',
+	'invite-logpagetext'                    => 'Dit is dät Logbouk fon do ienleedengsbasierde Softwarefunktione.',
+	'invite-logentry'                       => 'häd $1 ienleeden, uum do Softwarefunktione <i>$2</i> tou bruuken.',
+	'invitations-desc'                      => 'Moaket ju [[Special:Invitations|Ferwaltenge fon Softwarefunktione]] ap Gruund fon Ienleedengen muugelk',
+	'invitations-invitedlist-description'   => 'Du hääst Tougoang tou do foulgjende ienleedengsbasierde Softwarefunktione. Uum Ienleedengen foar ne bestimde Softwarefunktion tou ferwaltjen, klik ap hieren Noome.',
+	'invitations-invitedlist-none'          => 'Du hääst tou nu tou neen Ienleedengen foar dät Bruuken fon ienleedengsbasierde Softwarefunktione kriegen.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 Ienleedengen ferföigboar)',
+	'invitations-pagetitle'                 => 'Softwarefunktione ap Ienleedengs-Basis',
+	'invitations-uninvitedlist-description' => 'Du hääst naan Tougoang tou uur ienleedengsbasierde Softwarefunktione',
+	'invitations-uninvitedlist-none'        => 'Apstuuns sunt neen wiedere Softwarefunktione ienleedengsbasierd',
+	'invitations-feature-pagetitle'         => 'Ienleedengsferwaltenge - $1',
+	'invitations-feature-access'            => 'Du hääst Tougoang toun Gebruuk fon <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Die stounde noch <b>$1</b> fon mädnunner $2 Ienleedengen tou Ferföigenge.',
+	'invitations-feature-noneleft'          => 'Du hääst aal die touwiesde Ienleedengen foar disse Softwarefunktion ferbruukt.',
+	'invitations-feature-noneyet'           => 'Die wuuden noch neen Ienleedengen foar disse Softwarefunktion touwiesd.',
+	'invitations-feature-notallowed'        => 'Du hääst neen Begjuchtigenge, uum <i>$1</i> tou bruuken.',
+	'invitations-inviteform-title'          => 'Leede n Benutser tou ju Funktion $1 ien',
+	'invitations-inviteform-username'       => 'Ientouleedenden Benutser',
+	'invitations-inviteform-submit'         => 'Ienleede',
+	'invitations-error-baduser'             => 'Dät lät, as wan die anroate Benutser nit bestoant.',
+	'invitations-error-alreadyinvited'      => 'Die anroate Benutser häd al Tougoang tou disse Softwarefunktion!',
+	'invitations-invite-success'            => 'Du hääst mäd Ärfoulch $1 tou disse Softwarefunktion ienleeden!',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
+	'invite-logpage'                => 'ఆహ్వానాల దినచర్య',
+	'invitations-invitedlist-item'  => '<b>$1</b> ($2 ఆహ్వానాలు మిగిలివున్నాయి)',
 	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',
 	'invitations-inviteform-submit' => 'ఆహ్వానించు',
 	'invitations-error-baduser'     => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',

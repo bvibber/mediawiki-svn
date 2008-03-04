@@ -178,13 +178,13 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
- * @author Toliño
  * @author Xosé
+ * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
 	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Listaxe ás ligazóns aos espazos de nomes]] que non existían en {{SITENAME}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Listaxe ás ligazóns aos espazos de nomes]] que non deberían existir en {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara a $3',
 );
@@ -414,7 +414,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'crossnamespacelinks'         => 'Linki między przestrzeniami nazw',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Generuje spis linków pomiędzy przestrzeniami nazw]], których nie powinno być na {{GRAMMAR:Ms.lp|{{SITENAME}}}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Generuje spis linków pomiędzy przestrzeniami nazw]], których nie powinno być na {{GRAMMAR:MS.lp|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'Ta strona podaje listę linków ze stron w głównej przestrzeni nazw do stron w innych przestrzeniach nazw (poza przestrzeniami {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}). Odradza się używanie takich linków.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|linki}} do $3',
 );

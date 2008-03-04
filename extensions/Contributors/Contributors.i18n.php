@@ -134,6 +134,19 @@ $messages['ca'] = array(
 	'contributors-nosuchpage'  => 'La pàgina «$1» no existeix.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'contributors'          => 'Přispěvatelé',
+	'contributors-toolbox'  => 'Hlavní přispěvatelé',
+	'contributors-target'   => 'Název:',
+	'contributors-submit'   => 'Zobrazit',
+	'contributors-subtitle' => 'Hlavní přispěvatelé článku $1',
+	'contributors-others'   => 'a $1 {{plural:$1|další|další|dalších}}',
+	'contributors-badtitle' => 'Neplatný název.',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'contributors' => 'Hauptautoren',
@@ -364,9 +377,11 @@ $messages['kk-tr'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'contributors'            => 'អ្នករួមចំណែក',
-	'contributors-submit'     => 'បង្ហាញ',
-	'contributors-nosuchpage' => 'គ្មានទំព័រ $1 ។',
+	'contributors'             => 'អ្នករួមចំណែក',
+	'contributors-toolbox'     => 'អ្នករួមចំណែក ចំបង',
+	'contributors-submit'      => 'បង្ហាញ',
+	'contributors-others-long' => 'មាន $1 ការរួមចំណែក ដទៃទៀត ចំពោះ ទំព័រនេះ។',
+	'contributors-nosuchpage'  => 'គ្មានទំព័រ $1 ។',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

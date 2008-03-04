@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'cspammer-log-page'           => 'سجل تعليق السبام',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'commentspammer-log-msg' => 'редакция от [[Special:Contributions/$1|$1]] в [[:$2]].',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -243,8 +250,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author వైజాసత్య
+ * @author Veeven
  */
 $messages['te'] = array(
-	'cspammer-log-page' => 'వ్యాఖ్యల స్పామింగు లాగ్',
+	'commentspammer-save-blocked' => 'మీ IP చిరునామా ఓ అనుమానాస్పద వ్యాఖ్యా స్పామర్, కనుక పేజీని భద్రపరచలేదు. దీన్ని నివారించడానికి [[Special:Userlogin|లోనికి ప్రవేశించండి లేదా ఖాతా సృష్టించుకోండి]].',
+	'cspammer-log-page'           => 'వ్యాఖ్యల స్పామింగు లాగ్',
 );
 

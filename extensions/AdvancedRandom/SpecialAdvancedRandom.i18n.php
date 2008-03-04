@@ -136,6 +136,13 @@ $messages['ja'] = array(
 	'advancedrandom-desc' => '[[Special:AdvancedRandom/Template:Featured/Talk]]でノート上の利用者ページ、または[[Special:AdvancedRandom/Template:GFDL/Image]]でページにあるGFDLファイルといったように、与えられたページに含まれるリンクからランダムで表示を行う',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'advancedrandom' => 'ឥតព្រាងទុក កំរិតខ្ពស់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

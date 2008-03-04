@@ -85,6 +85,13 @@ $messages['ja'] = array(
 	'newusermessage-desc' => '新規登録利用者のトークページに[[MediaWiki:NewUserMessage|メッセージ]]を書き込む',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'newusermessage-desc' => 'បន្ថែម [[MediaWiki:NewUserMessage|មួយ សារ]] ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

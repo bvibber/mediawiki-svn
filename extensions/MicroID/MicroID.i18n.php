@@ -42,7 +42,7 @@ $messages['hsb'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'tog-microid' => 'ផ្សព្វផ្សាយ <a href="http://microid.org/">MicroID</a> ដើម្បី បញ្ជាក់ទទួលស្គាល់ គណនី រួមនឹង សេវា ខាងក្រៅ',
+	'tog-microid' => 'ផ្សព្វផ្សាយ <a href="http://microid.org/">MicroID</a> ដើម្បី បញ្ជាក់ទទួលស្គាល់ គណនី និង សេវា ខាងក្រៅ',
 );
 
 $messages['nl'] = array(

@@ -337,6 +337,13 @@ $messages['lb'] = array(
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'patrol-revert-reason' => 'कारणे:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -87,11 +87,26 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist'     => '„$1” nem létezik',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'mediafunctions-invalid-title' => '"$1" មិនជា ចំណងជើង មានសុពលភាព',
+	'mediafunctions-not-exist'     => '"$1" មិនមាន',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'mediafunctions-not-exist' => '"$1" gëtt et net',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'mediafunctions-not-exist' => '"$1" अस्तीत्वात नाही',
 );
 
 $messages['nds'] = array(

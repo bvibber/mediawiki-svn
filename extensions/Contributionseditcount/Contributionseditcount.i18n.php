@@ -32,6 +32,13 @@ $messages['bn'] = array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'contributionseditcount' => 'Tento uživatel má {{plural:$1|editaci|editace|editací}}.',
+);
+
 $messages['de'] = array(
 	'contributionseditcount'  =>  'Dieser Benutzer hat $1 Bearbeitungen.',
 );
@@ -198,6 +205,14 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
 	'contributionseditcount-desc' => 'Visar antalet redigeringar på [[Special:Contributions]]',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'contributionseditcount'      => 'இப்பயன்ர் $1 தொகுப்புக்களைச் செய்துள்ளார்.',
+	'contributionseditcount-desc' => '[[Special:Contributions|பயனர் பங்களிப்புகள்]] பக்கத்தில் தொகுப்பு எண்ணிக்கையைக் காட்டும்',
 );
 
 /** Telugu (తెలుగు)

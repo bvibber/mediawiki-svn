@@ -448,6 +448,18 @@ $messages['lb'] = array(
 	'duplicator-success-talknotcopied' => "D'Diskussiounssäit konnt net kopéiert ginn.",
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'duplicator-options'               => 'पर्याय',
+	'duplicator-source'                => 'स्रोत:',
+	'duplicator-dest'                  => 'लक्ष्य',
+	'duplicator-submit'                => 'हुबहू',
+	'duplicator-summary'               => '[[$1]]कडून नक्कल केली',
+	'duplicator-success-talknotcopied' => 'चर्चापान नकलवले जाऊ शकले नाही.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -731,11 +743,16 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'duplicator-options'            => 'ఎంపికలు',
-	'duplicator-source'             => 'స్కోరు:',
-	'duplicator-dest'               => 'గమ్యస్థానం:',
-	'duplicator-summary'            => '[[$1]] నుండి కాపీ చేసారు',
-	'duplicator-success-talkcopied' => 'చర్చాపేజీ కూడా కాపీ అయ్యింది.',
+	'duplicator-options'               => 'ఎంపికలు',
+	'duplicator-source'                => 'స్కోరు:',
+	'duplicator-dest'                  => 'గమ్యస్థానం:',
+	'duplicator-summary'               => '[[$1]] నుండి కాపీ చేసారు',
+	'duplicator-success'               => "<big>'''[[$1]]ని [[$2]]కి కాపీ చేసాం.'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|కూర్పు కాపీ అయ్యింది|కూర్పులు కాపీ అయ్యియి}}.',
+	'duplicator-success-talkcopied'    => 'చర్చాపేజీ కూడా కాపీ అయ్యింది.',
+	'duplicator-success-talknotcopied' => 'చర్చా పేజీని కాపీ చేయ్యలేకపోయాం.',
+	'duplicator-source-notexist'       => '[[$1]] అన్నది లేదు. ఏదైనా ఉన్న పేజీ యొక్క శీర్షిక ఇవ్వండి.',
+	'duplicator-dest-exists'           => '[[$1]] అనేది ఇప్పటికే ఉంది. దయచేసి ఉనికిలోనేని గమ్యస్థానపు శీర్షికను ఇవ్వండి.',
 );
 
 /** Turkish (Türkçe)

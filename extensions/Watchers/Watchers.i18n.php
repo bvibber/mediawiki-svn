@@ -279,3 +279,13 @@ $messages['sv'] = array(
 	'watchers_less_than_x'   => 'Färre än $1 användare bevakar sidan.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'watchers'               => 'వీక్షకులు',
+	'watchers_link_title'    => 'ఈ పేజీని ఎవరెవరు గమనిస్తున్నారు?',
+	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
+	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
+);
+

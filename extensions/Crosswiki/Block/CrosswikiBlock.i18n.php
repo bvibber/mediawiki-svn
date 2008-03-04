@@ -108,6 +108,7 @@ $messages['bg'] = array(
 	'crosswikiblock-header'         => 'Тази страница позволява блокирането на потребители в други уикита.
 Необходимо е да проверите дали имате права да изпълните действието на това уики и дали не е в разрез с действащите политики.',
 	'crosswikiblock-target'         => 'IP адрес или потребителско име и целево уики:',
+	'crosswikiblock-expiry'         => 'Изтича на:',
 	'crosswikiblock-reason'         => 'Причина:',
 	'crosswikiblock-submit'         => 'Блокиране на този потребител',
 	'crosswikiblock-anononly'       => 'Блокиране само на нерегистрирани потребители',
@@ -130,6 +131,7 @@ $messages['bg'] = array(
 	'crosswikiblock-dbnotfound'     => 'Не съществува база данни $1',
 	'crosswikiblock-noname'         => '„$1“ не е валидно потребителско име.',
 	'crosswikiblock-nouser'         => 'Не беше намерен потребител „$3“',
+	'crosswikiblock-noexpiry'       => 'Невалиден срок за изтичане: $1.',
 	'crosswikiblock-noreason'       => 'Не е посочена причина.',
 	'crosswikiblock-alreadyblocked' => 'Потребител $3 е вече блокиран.',
 	'crosswikiblock-noblock'        => 'Този потребител не е блокиран.',
@@ -139,6 +141,20 @@ $messages['bg'] = array(
 * [[Special:CrosswikiBlock|Формуляра за блокиране]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:Ipblocklist]]',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'crosswikiblock-expiry'   => 'Vypršení:',
+	'crosswikiblock-reason'   => 'Důvod:',
+	'crosswikiblock-submit'   => 'Zablokovat tohoto uživatele',
+	'crosswikiblock-anononly' => 'Zablokovat všechny anonymní uživatele',
+	'crosswikiblock-nocreate' => 'Zabránit tvorbě účtů',
+	'crosswikiblock-noemail'  => 'Zabránit uživateli odesílat e-mail',
+	'crosswikiunblock'        => 'Odblokovat uživatele na jiné wiki',
+	'crosswikiunblock-submit' => 'Odblokovat tohoto uživatele',
 );
 
 /** German (Deutsch)
@@ -233,6 +249,30 @@ Reen:
 * [[Special:CrosswikiBlock|Forbarpaĝo]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:Ipblocklist]]',
+);
+
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'crosswikiblock'           => 'Estä käyttäjä toisessa wikissä',
+	'crosswikiblock-header'    => 'Tämä sivu mahdollistaa käyttäjien estämisen toisessa wikissä.
+Tarkista, saatko toimia tässä wikissä ja että toimesi ovat käytäntöjen mukaisia.',
+	'crosswikiblock-target'    => 'IP-osoite tai käyttäjänimi kohdewikissä',
+	'crosswikiblock-expiry'    => 'Kesto',
+	'crosswikiblock-reason'    => 'Syy',
+	'crosswikiblock-submit'    => 'Estä tämä käyttäjä',
+	'crosswikiblock-anononly'  => 'Estä vain kirjautumattomat käyttäjät',
+	'crosswikiblock-nocreate'  => 'Estä tunnusten luonti',
+	'crosswikiblock-autoblock' => 'Estä viimeisin IP-osoite, josta käyttäjä on muokannut, sekä ne osoitteet, joista hän jatkossa yrittää muokata.',
+	'crosswikiblock-noemail'   => 'Estä käyttäjää lähettämästä sähköpostia',
+	'crosswikiunblock'         => 'Poista käyttäjän muokkausesto toisesta wikistä',
+	'crosswikiunblock-header'  => 'Tämä sivu mahdollistaa käyttäjien muokkauseston poistamisen toisesta wikistä.
+Tarkista, saatko toimia tässä wikissä ja että toimesi ovat käytäntöjen mukaisia.',
+	'crosswikiunblock-user'    => 'Käyttäjänimi, IP-osoite tai eston ID ja kohdewiki',
+	'crosswikiunblock-reason'  => 'Syy',
+	'crosswikiunblock-submit'  => 'Poista tämän käyttäjän muokkausesto',
 );
 
 /** French (Français)
@@ -414,18 +454,26 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'crosswikiblock-target'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
-	'crosswikiblock-reason'     => 'ហេតុផល ៖',
-	'crosswikiblock-submit'     => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
-	'crosswikiblock-anononly'   => 'រាំងខ្ទប់ តែ អ្នកប្រើប្រាស់ អនាមិក',
-	'crosswikiunblock'          => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគី ផ្សេង',
-	'crosswikiunblock-reason'   => 'ហេតុផល ៖',
-	'crosswikiunblock-submit'   => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
-	'crosswikiblock-nousername' => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
-	'crosswikiblock-dbnotfound' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
-	'crosswikiblock-noname'     => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
-	'crosswikiblock-nouser'     => 'រកមិនឃើញ អ្នកប្រើប្រាស់ "$3" ។',
-	'crosswikiblock-noreason'   => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
+	'crosswikiblock-desc'           => 'អនុញ្ញាតិ អោយរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ​ វិគីផ្សេង ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
+	'crosswikiblock'                => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគីផ្សេង',
+	'crosswikiblock-target'         => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
+	'crosswikiblock-expiry'         => 'ផុតកំណត់ ៖',
+	'crosswikiblock-reason'         => 'ហេតុផល ៖',
+	'crosswikiblock-submit'         => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
+	'crosswikiblock-anononly'       => 'រាំងខ្ទប់ តែ អ្នកប្រើប្រាស់ អនាមិក',
+	'crosswikiblock-nocreate'       => 'បង្ការ ការបង្កើត គណនី',
+	'crosswikiblock-noemail'        => 'បង្ការ អ្នកប្រើប្រាស់ ពី ការផ្ញើ អ៊ីមែវល៍',
+	'crosswikiunblock'              => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគី ផ្សេង',
+	'crosswikiunblock-user'         => 'ឈ្មោះអ្នកប្រើប្រាស់, អាស័យដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
+	'crosswikiunblock-reason'       => 'ហេតុផល ៖',
+	'crosswikiunblock-submit'       => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
+	'crosswikiblock-nousername'     => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
+	'crosswikiblock-dbnotfound'     => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
+	'crosswikiblock-noname'         => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
+	'crosswikiblock-nouser'         => 'រកមិនឃើញ អ្នកប្រើប្រាស់ "$3" ។',
+	'crosswikiblock-noreason'       => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
+	'crosswikiblock-alreadyblocked' => 'អ្នកប្រើប្រាស់ $3 ត្រូវបាន រាំងខ្ទប់ ហើយ ។',
+	'crosswikiblock-noblock'        => 'អ្នកប្រើប្រាស់នេះ មិនត្រូវបាន​ រាំងខ្ទប់ ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -598,6 +646,8 @@ $messages['pt'] = array(
 	'crosswikiblock-anononly'       => 'Bloquear apenas utilizadores anónimos',
 	'crosswikiblock-nocreate'       => 'Impedir criação de conta',
 	'crosswikiblock-noemail'        => 'Impedir utilizador de enviar email',
+	'crosswikiunblock'              => 'Desbloquear utilizador noutro wiki',
+	'crosswikiunblock-user'         => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason'       => 'Motivo:',
 	'crosswikiunblock-submit'       => 'Desbloquear este utilizador',
 	'crosswikiblock-nousername'     => 'Nenhum nome de utilizador foi introduzido',
@@ -607,6 +657,7 @@ $messages['pt'] = array(
 	'crosswikiblock-noexpiry'       => 'Expiração inválida: $1.',
 	'crosswikiblock-noreason'       => 'Nenhum motivo especificado.',
 	'crosswikiblock-alreadyblocked' => 'O utilizador $3 já está bloqueado.',
+	'crosswikiblock-noblock'        => 'Este utilizador não está bloqueado.',
 	'crosswikiblock-success'        => "Utilizador '''$3''' bloqueado com sucesso.
 
 Voltar para:
@@ -803,11 +854,19 @@ $messages['te'] = array(
 	'crosswikiblock-submit'     => 'ఈ వాడుకరిని నిరోధించండి',
 	'crosswikiblock-anononly'   => 'అనామక వాడుకరులను మాత్రమే నిరోధించు',
 	'crosswikiblock-nocreate'   => 'ఖాతా సృష్టింపుని నివారించు',
+	'crosswikiblock-noemail'    => 'వాడుకరి ఈ-మెయిల్ పంపించడం నియంత్రించండి',
 	'crosswikiunblock-reason'   => 'కారణం:',
 	'crosswikiblock-nousername' => 'వాడుకరిపేరు ఇవ్వలేదు',
 	'crosswikiblock-dbnotfound' => '$1 అనే డాటాబేసు లేదు',
 	'crosswikiblock-noname'     => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
 	'crosswikiblock-nouser'     => '"$3" అనే వాడుకరి కనబడలేదు.',
+	'crosswikiblock-noexpiry'   => 'తప్పుడు కాలపరిమితి: $1.',
 	'crosswikiblock-noreason'   => 'కారణం తెలుపలేదు.',
+	'crosswikiblock-noblock'    => 'ఈ వాడుకరిని నిరోధించలేదు.',
+	'crosswikiblock-success'    => "'''$3''' అనే వాడుకరిని విజయవంతంగా నిరోధించాం.
+
+తిరిగి:
+* [[Special:CrosswikiBlock|నిరోధపు ఫారం]]
+* [[$4]]",
 );
 

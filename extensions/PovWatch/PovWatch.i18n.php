@@ -438,7 +438,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'povwatch_title' => 'శీర్షిక:',
+	'povwatch_invalid_title'         => 'మీరిచ్చిన శీర్షిక సరైనది కాదు',
+	'povwatch_subscriber_list_intro' => '<strong>చందాదార్ల జాబితా</strong>',
+	'povwatch_title'                 => 'శీర్షిక:',
+	'povwatch_no_subscribers'        => 'చందాదార్లు ఎవరూ లేరు.',
 );
 
 /** Vietnamese (Tiếng Việt)

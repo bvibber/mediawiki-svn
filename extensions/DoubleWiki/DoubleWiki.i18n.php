@@ -32,6 +32,13 @@ $messages['ast'] = array(
 	'doublewiki-desc' => "Amuesa una páxina y la so traducción d'otra wiki en dos columnes na mesma páxina",
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'doublewiki-desc' => 'Показва страница и нейният превод от друго уики в две колони на една и съща страница',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -82,6 +89,13 @@ $messages['frp'] = array(
 	'doublewiki-desc' => 'Afiche una pâge et sa traduccion dês un ôtro vouiqui en doves colones sur la méma pâge.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ */
+$messages['gl'] = array(
+	'doublewiki-desc' => 'Amosa unha páxina e a súa tradución doutro wiki en dúas columnas na mesma páxina',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -115,6 +129,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'doublewiki-desc' => 'あるページと、他ウィキにある別言語の該当ページを、横に並べて同一ページに表示する',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'doublewiki-desc' => 'បង្ហាញ ទំព័រ និង បំរែសំរួលរបស់វា ពី វិគីផ្សេង លើ ពីរ ជួរឈរ នៃ​ ទំព័រតែមួយ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

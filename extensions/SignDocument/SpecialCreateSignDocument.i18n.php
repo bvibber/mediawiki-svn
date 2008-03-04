@@ -270,6 +270,8 @@ $messages['is'] = array(
 $messages['km'] = array(
 	'createsigndoc-email'   => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
 	'createsigndoc-address' => 'អាស័យដ្ឋាន ផ្ទះ ៖',
+	'createsigndoc-phone'   => 'លេខ ទូរស័ព្ទ ៖',
+	'createsigndoc-hidden'  => 'ត្រូវបាន បិទបាំង',
 );
 
 $messages['la'] = array(
@@ -290,6 +292,14 @@ $messages['lb'] = array(
 	'createsigndoc-hidden'            => 'Verstoppt',
 	'createsigndoc-error-generic'     => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'createsigndoc-hidden'   => 'छूपा',
+	'createsigndoc-optional' => 'पर्यायी',
 );
 
 /** Dutch (Nederlands)

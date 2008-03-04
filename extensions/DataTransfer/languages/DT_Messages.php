@@ -57,6 +57,7 @@ $messages['bg'] = array(
 	'dt_xml_field'                => 'Поле',
 	'dt_xml_name'                 => 'Име',
 	'dt_xml_title'                => 'Заглавие',
+	'dt_xml_id'                   => 'Номер',
 	'dt_xml_freetext'             => 'Свободен текст',
 );
 
@@ -245,6 +246,7 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Siebrand
  */
 $messages['pt'] = array(
 	'dt-desc'                     => 'Permite importação e exportação de dados estruturados contidos em chamadas de predefinições',
@@ -258,6 +260,7 @@ $messages['pt'] = array(
 	'dt_xml_field'                => 'Campo',
 	'dt_xml_name'                 => 'Nome',
 	'dt_xml_title'                => 'Título',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Texto Livre',
 );
 
@@ -276,6 +279,7 @@ $messages['ru'] = array(
 	'dt_xml_field'                => 'Поле',
 	'dt_xml_name'                 => 'Имя',
 	'dt_xml_title'                => 'Заголовок',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Свободный текст',
 );
 
@@ -338,6 +342,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'viewxml'               => 'XMLని చూడండి',
 	'dt_viewxml_categories' => 'వర్గాలు',
 	'dt_xml_page'           => 'పేజీ',
 	'dt_xml_name'           => 'పేరు',

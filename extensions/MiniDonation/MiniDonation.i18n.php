@@ -35,6 +35,13 @@ $messages['el'] = array(
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'donationform-submit' => 'Donacu per PayPal',
+);
+
 /** Spanish (Español)
  * @author Lin linao
  */
@@ -95,6 +102,13 @@ $messages['kk-cyrl'] = array(
 
 $messages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'donationform-submit' => 'ផ្តល់អំណោយ តាម PayPal',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -178,6 +192,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'donationform-submit' => 'Donera via PayPal',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'donationform-submit' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 );
 
 /** Vietnamese (Tiếng Việt)

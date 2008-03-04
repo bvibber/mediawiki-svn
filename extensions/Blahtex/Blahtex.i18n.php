@@ -364,6 +364,14 @@ $messages['el'] = array(
 	'math_InvalidColour' => 'Το χρώμα "$1" είναι άκυρο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'math_InvalidColour' => 'La koloro "$1" estas nevalida',
+	'math_TooManyTokens' => 'La enigo estas tro longa',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Cimon Avaro
@@ -864,9 +872,22 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'math_CannotCreateTexFile' => 'មិនអាច​បង្កើត ឯកសារ អក្សរសុទ្ធ',
-	'math_CannotWriteTexFile'  => 'មិនអាចសរសេរ ទៅ ឯកសារ អក្សរសុទ្ធ',
-	'math_InvalidColour'       => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
+	'math_noblahtex'                        => 'មិនអាចប្រើប្រាស់ blahtex, ដែលគួរតែ នៅ $1',
+	'math-desc'                             => 'អោយចេញជា អក្សរកូដ MathML កាលបើ ជួប ប្លាក &lt;math&gt;',
+	'math_CannotChangeDirectory'            => 'មិនអាចផ្លាស់ប្តូរ ថតឯកសារកំពុងងធ្វើការ',
+	'math_CannotCreateTexFile'              => 'មិនអាច​បង្កើត ឯកសារ អក្សរសុទ្ធ',
+	'math_CannotRunDvipng'                  => 'មិនអាចរត់ dvipng',
+	'math_CannotRunLatex'                   => 'មិនអាចរត់ latex',
+	'math_CannotWritePngDirectory'          => 'មិនអាច សរសេរ ទៅ ថតឯកសារ PNG',
+	'math_CannotWriteTexFile'               => 'មិនអាចសរសេរ ទៅ ឯកសារ អក្សរសុទ្ធ',
+	'math_IllegalCommandInMathMode'         => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបគណិត',
+	'math_IllegalCommandInMathModeWithHint' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបគណិត (អ្នកចង់ប្រើប្រាស់ "$2" ជំនួស ?)',
+	'math_IllegalCommandInTextMode'         => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបអត្ថបទ',
+	'math_InvalidColour'                    => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
+	'math_LatexFontNotSpecified'            => 'គ្មាន ក្រមអក្សរ LaTeX ត្រូវបានបញ្ជាក់ សំរាប់ "$1"',
+	'math_LatexPackageUnavailable'          => 'មិនអាច ទៅជា PNG ព្រោះ គ្មានកញ្ចប់ LaTeX "$1"',
+	'math_MismatchedBeginAndEnd'            => 'បញ្ជា "$1" និង "$2" មិនសមគ្នា',
+	'math_UnavailableSymbolFontCombination' => 'និមិត្តសញ្ញា "$1" មិនមាន ក្នុង ក្រមអក្សរ "$2"',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1354,6 +1375,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'math_IllegalRedefinition' => '"$1" అనే ఆదేశం ఈపాటికే నిర్వచించబడిందిచ మీరు దాన్నీ మళ్ళీ నిర్వచించలేరు',
 	'math_InvalidColour'       => '"$1" అనే రంగు సరైంది కాదు',
 	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
 );

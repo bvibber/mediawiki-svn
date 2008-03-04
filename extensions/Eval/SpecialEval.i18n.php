@@ -92,7 +92,8 @@ $messages['ja'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'eval_code' => 'អក្សរកូដ',
+	'eval_submit' => 'វាយតំលៃ',
+	'eval_code'   => 'អក្សរកូដ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

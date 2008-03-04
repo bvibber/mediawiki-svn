@@ -133,6 +133,9 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
  * @author Chhorran
  */
 $messages['km'] = array(
+	'minipreview-files_in_category'   => '$1 ឯកសារសរុប ក្នុង ចំណាត់ក្រុមនេះ ។',
+	'minipreview-files_in_gallery'    => '$1 ឯកសារសរុប ក្នុង ទីតាំងពិពណ៌ នេះ ។',
+	'minipreview-no_more_files_here'  => 'គ្មានឯកសារ បន្ថែម ក្នុង ទិសនេះ ។',
 	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ក្រុម ឬ ទីតាំងពិពណ៌!',
 );
 

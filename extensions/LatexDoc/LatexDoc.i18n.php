@@ -143,6 +143,25 @@ $3',
 	'latexdoc_get_pdf'         => 'PDF letöltése',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Chhorran
+ */
+$messages['km'] = array(
+	'latexdoc_no_text'         => 'ទំព័រ គ្មានអត្ថបទ, មិនអាចបង្កើត DVI',
+	'latexdoc_cant_create_dir' => 'មិនអាចបង្កើត ថតឯកសារ បណ្តោះអាសន្ន $1',
+	'latexdoc_cant_write'      => 'មិនអាចសរសេរ ក្នុង ឯកសារ $1',
+	'latexdoc_error'           => 'កំហុស LaTeX
+
+បញ្ជា ៖ $1
+
+លទ្ធផល ៖ $2
+
+$3',
+	'latexdoc_get_dvi'         => 'យក DVI',
+	'latexdoc_get_pdf'         => 'យក PDF',
+	'latexdoc-desc'            => 'សំណុំឯកសារ LaTeX',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

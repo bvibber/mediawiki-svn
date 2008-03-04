@@ -124,6 +124,7 @@ $messages['kk-tr'] = array(
  */
 $messages['km'] = array(
 	'minnamelength-error' => 'ឈ្មោះអ្នកប្រើប្រាស់ របស់អ្នក ខ្លី ពេក។ ប្រវែងអប្បបរិមា គឺ $1 ។',
+	'minnamelength-desc'  => 'បង្ខំអោយមាន ប្រវែងឈ្មោះអ្នកប្រើប្រាស់ ជាអប្បបរិមា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
