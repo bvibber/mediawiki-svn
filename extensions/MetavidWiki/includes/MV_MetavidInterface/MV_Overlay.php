@@ -529,15 +529,16 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			if(substr($key, 0, 4)=='smw_'){
 				//try attribute		
 				$swmTitle = Title::newFromText(substr($key, 4), SMW_NS_PROPERTY);
-				if(!$swmTitle->exists()){					
-					$do_swm_include=false;
-				}				
-				if($do_swm_include){
+				if($swmTitle->exists()){																	
 					//make sure the person is not empty: 
 					if(trim($val)!=''){
-						$_REQUEST['wpTextbox1']=trim($_REQUEST['wpTextbox1']).
-						"\n\n[[".$swmTitle->getText().'::'.$val.'| ]]';
-					}
+						//@@todo update for other smw types: 
+						if($key=='smw_Spoken_By'){
+							//update the request wpTextBox:
+							$wgRequest->data['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']] '.
+								trim($_REQUEST['wpTextbox1']);
+						}
+					}				
 				}
 			}
 		}

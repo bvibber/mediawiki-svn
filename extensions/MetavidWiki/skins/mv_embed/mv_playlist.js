@@ -196,7 +196,7 @@ mvPlayList.prototype = {
 		}
 	},
 	getSourceType:function(){
-		//js_log('data type of: '+ this.src + ' = ' + typeof (this.data) + "\n"+ this.data);
+		js_log('data type of: '+ this.src + ' = ' + typeof (this.data) + "\n"+ this.data);
 		this.srcType =null;
 		//if not external use different detection matrix
 		if(this.external_data){				

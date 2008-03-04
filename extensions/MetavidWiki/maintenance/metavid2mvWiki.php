@@ -84,6 +84,7 @@ options:
 		--skiptext skips text sync
 		--skipfiles skips files
 		--force will force updates (normally if edited by a human its skiped)
+		--doSpeechMeta  will do a annotation track with Speech By tags for continues Spoken By attr 
 actions:
 		\$stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
@@ -107,7 +108,7 @@ switch ($args[0]) {
 	case 'all_in_sync' :
 		do_stream_insert('all');
 	break;
-	case 'all_in_wiki':
+	case 'all_in_wiki':	
 		do_stream_insert('all_in_wiki');
 	break;
 	case 'all_with_files':

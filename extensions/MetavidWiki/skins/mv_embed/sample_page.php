@@ -28,8 +28,16 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 					//'<a href="javascript:document.getElementById(\'v1\').mute();">Get Time</a> | ';
 //'thumbnail="http://metavid.ucsc.edu/image_media/senate_proceeding_06-20-07_09?t=3:50:27&size=320x240" ' .
 //'src="'.$mv_path.'sample.ogg"/>';		
-$sample_embed[1]['tag'] = '<video id="roe_vid" roe="http://localhost/wiki/index.php?title=Special:MvExportStream&feed_format=jroe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:20:00">';
-$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
+
+//$plurl = 'http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Ba%5D=and&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=John+Sarbanes';
+$plurl = 'http://localhost/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=Saxby+Chambliss';
+$sample_embed[1]['tag'] = '<playlist id="playlist2"
+src="'.$plurl.'"/>';
+$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
+		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
+
+//$sample_embed[1]['tag'] = '<video id="roe_vid" roe="http://localhost/wiki/index.php?title=Special:MvExportStream&feed_format=jroe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:20:00">';
+//$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
 
 $sample_embed[2]['tag'] = '<video id="v2" controls="true"

@@ -350,17 +350,18 @@ class MV_SpecialExport {
 			$msTitle->getFullUrl().'?'.$sms->get_httpd_filters_query() //link 
 		);
 		$this->feed->outHeader();	
+		$MV_Overlay = new MV_Overlay();				
 		//for each search result: 		
 		foreach ($sms->results as $stream_id => & $stream_set) {			
 			$matches = 0;
 			$stream_out = $mvTitle = '';			
-			foreach ($stream_set as & $srange) {
+			foreach ($stream_set as & $srange) {				
 				$cat_html = $mvd_out = '';
 				$range_match=0;						
 				foreach ($srange['rows'] as $inx=> & $mvd) {								
 					$matches++;			
 					$wTitle = Title::MakeTitle(MV_NS_MVD, $mvd->wiki_title);
-					$this->feed->outPutItem($wTitle);
+					$this->feed->outPutItem($wTitle, $MV_Overlay->getMVDhtml($mvd, $absolute_links=true));
 				}
 			}
 		}
@@ -387,25 +388,24 @@ class mvRSSFeed extends ChannelFeed{
 	<description><?=$this->getDescription()?></description>	
 	<?
 	}
-	function outPutItem($wikiTitle, $desc_text=''){
+	function outPutItem($wikiTitle, $desc_html=''){
 		global $wgOut;		
 		$mvTitle = new MV_Title($wikiTitle);
+		$mStreamTitle = Title::makeTitle(MV_NS_STREAM, ucfirst($mvTitle->getStreamName()) . '/'.$mvTitle->getTimeRequest());
+
 		//@@todo this should be done cleaner/cached 
-		//@@todo we need absolute links
-		
+		//@@todo we need absolute links		
 		$thumb_ref = $mvTitle->getStreamImageURL('320x240');
-		if($desc_text==''){
+		if($desc_html==''){
 			$article = new Article($wikiTitle);
 			$wgOut->clearHTML(); 			
 			$wgOut->addWikiText($article->getContent() );
 			$desc_html = $wgOut->getHTML();		
 			$wgOut->clearHTML();					
-		}else{
-			$desc_html = &$desc_text;
 		}
 		$desc_xml ='<![CDATA[				
 			<center class="mv_rss_view_only">
-			<a href="'.$wikiTitle->getFullUrl().'"><img src="'.$thumb_ref.'" border="0" /></a>
+				<a href="'.$mStreamTitle->getFullUrl().'"><img src="'.$thumb_ref.'" border="0" /></a>
 			</center>
 			<br />'.
 			$desc_html. 
@@ -432,6 +432,12 @@ class mvRSSFeed extends ChannelFeed{
   		</media:group>
   		*/ ?> 
 		</item>
+		<?
+	}
+	function outFooter(){
+		?>
+		</channel>
+</rss>
 		<?
 	}
 }

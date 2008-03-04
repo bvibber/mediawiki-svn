@@ -51,7 +51,7 @@ for($i=2;$i<70;$i++){
 	$bill_template.='{{ #if: {{{Cosponsor '.$i.'|}}}|, [[Bill Cosponsor:={{{Cosponsor '.$i.'}}}]] |}}';
 }
 //output mapLight info if present:
-$bill_template.='{{ #if: {{{Supporting Interest 1|}}}|<h2>Intrests who <span style="color:green">support</span> bill becoming law</h2>'."\n".' |}}';
+$bill_template.='{{ #if: {{{Supporting Interest 1|}}}|<h2>Intrests who <span style="color:green">support</span> bill becoming law</h2>'."\n[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}|MAPLight Source]]".' |}}';
 for($i=1;$i<20;$i++){
 	$bill_template.='{{ #if: {{{Supporting Interest '.$i.'|}}}|* [[Supporting Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".' |}}';
 }
@@ -169,11 +169,11 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 			$template_body .= "{{ #if: {{{" . $name . "|}}}| [[$name:={{{" . $name . "}}}| ]] |}}";		
 	}	
 	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
-	//don't ask for media~	
-	/*$template_body.='{{#ask: [[Speech_By::{{PAGENAME}}]] |
+	//ask for speeches media~	
+	$template_body.="\n".'{{#ask: [[Speech_by::{{PAGENAME}}]] |
 | intro=<h3>Speeches By {{PAGENAME}}</h3>
 | default= | limit=5}}';	
-	$template_body.='{{#ask: [[Spoken_By::{{PAGENAME}}]] |
+	/*$template_body.='{{#ask: [[Spoken_By::{{PAGENAME}}]] |
 | intro=<h3>[[Special:MediaSearch/person/{{PAGENAME}}|Spoken Text]] By {{PAGENAME}}</h3> 
 | default= | limit=5}}';	 
 */
@@ -209,10 +209,10 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	
 	//include some external links:
 	$template_body .="\n===External Links===\n".
-'{{ #if: {{{Bio Guide ID|}}}|* [http://bioguide.congress.gov/scripts/biodisplay.pl?index={{{Bio Guide ID}}} Offical Biography] <br>|}}'.
-'{{ #if: {{{MAPLight Person ID|}}}|* [http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}} MapLight Page] <br>|}}'.
-'{{ #if: {{{Open Secrets ID|}}}|* [http://www.opensecrets.org/politicians/summary.asp?CID={{{Open Secrets ID}}} Open Secrets Page] <br>|}}'.
-'{{ #if: {{{GovTrack Person ID|}}}|* [http://www.govtrack.us/congress/person.xpd?id={{{GovTrack Person ID}}} GovTrack Page] <br>|}}';
+'{{ #if: {{{Bio Guide ID|}}}|* [http://bioguide.congress.gov/scripts/biodisplay.pl?index={{{Bio Guide ID}}} Offical Biography] |}}'."\n";
+'{{ #if: {{{MAPLight Person ID|}}}|* [http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}} MapLight Page] |}}'."\n";
+'{{ #if: {{{Open Secrets ID|}}}|* [http://www.opensecrets.org/politicians/summary.asp?CID={{{Open Secrets ID}}} Open Secrets Page] |}}'."\n";
+'{{ #if: {{{GovTrack Person ID|}}}|* [http://www.govtrack.us/congress/person.xpd?id={{{GovTrack Person ID}}} GovTrack Page] |}}'."\n";
 	$template_body .= '[[Category:Congress Person]] [[Category:Person]]
 			</includeonly>';
 	echo "updated 'Congress Person' template\n";

@@ -48,6 +48,10 @@ class MV_Stream {
 		}
 		//normalize stream title: 		
 	}
+	function newStreamByName($name){
+		$s = new MV_Stream(array('name'=>$name));
+		return $s;
+	}
 	function newStreamByID($id){
 		$s = new MV_Stream(array('id'=>$id));
 		return $s;
@@ -89,6 +93,14 @@ class MV_Stream {
 			return $this->id;
 		}else{
 			return $this->id;
+		}
+	}
+	function getStreamName(){
+		if($this->name==''){
+			$this->db_load_stream();
+			return $this->name;
+		}else{
+			return $this->name;
 		}
 	}
 	/*

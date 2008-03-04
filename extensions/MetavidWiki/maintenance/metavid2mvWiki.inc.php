@@ -196,6 +196,58 @@ function do_stream_insert($mode, $stream_name = '') {
 			//proccess all stream text: 
 			do_proccess_text($stream);
 		}
+		if(isset($options['doSpeechMeta'])){									
+			//do annoative track for continus speches 
+			do_annotate_speeches($stream); 
+		}
+	}
+}
+function do_annotate_speeches($stream){
+	//get all mvd's 	
+	$mvStream =MV_Stream::newStreamByName($stream->name);
+	if($mvStream->doesStreamExist()){
+		$dbr =& wfGetDB(DB_SLAVE);
+		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by'); 
+		if(count($dbr->numRows($mvd_res))!=0){
+			$prev_person =''; 			
+			$prev_st=$prev_et=0;
+			while($mvd = $dbr->fetchObject($mvd_res)){				
+				if($mvd->Spoken_by){
+					if($prev_person==''){
+						$prev_person=$mvd->Spoken_by; //init case:
+						$prev_st = $mvd->start_time;
+						$prev_et = $mvd->end_time;						
+					}else{						
+						if($prev_person==$mvd->Spoken_by){
+							//continue
+							$prev_et = $mvd->end_time;
+						}else{
+							//diffrent person: if more than 1 min long
+							if( $prev_et - $prev_st > 60){ 
+								$doSpeechUpdate=true;
+								print "insert annotation $prev_person: $prev_st to $prev_et \n";
+								//check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges)
+								$mvd_anno_res = MV_Index::getMVDInRange($mvStream->getStreamId(), $prev_st+1, $prev_et-1, 'Anno_en',false, 'Speech_by'); 
+								while($row = $dbr->fetchObject($mvd_anno_res)){
+									if($row->Speech_by){
+										print ".. range already has: $row->Speech_by skip\n";
+										$doSpeechUpdate=false;
+										break;
+									}
+								}
+								if($doSpeechUpdate){
+									$page_txt = 'Speech By: [[Speech by:='.str_replace('_', ' ', $prev_person).']]';
+									$annoTitle = Title::makeTitle(MV_NS_MVD, 'Anno_en:'.$mvStream->getStreamName().'/'.seconds2ntp($prev_st).'/'.seconds2ntp($prev_et)); 
+									do_update_wiki_page( $annoTitle, $page_txt);
+								}					
+								$prev_person=$mvd->Spoken_by; //init case:
+								$prev_st = $mvd->start_time; 
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 function do_proccess_text($stream){
@@ -475,7 +527,7 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 				}
 			}else if($dbKey=='total_received'){
 				if(!$mapk){
-					die('out of order attr proccess missing mapk'."\n");
+					print 'no mapkey for total_received'."\n";
 				}else{
 					$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
 					preg_match('/Contributions\sReceived\:\s\$([^<]*)/',$raw_results, $matches);
@@ -485,7 +537,7 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 				}
 			}else if($dbKey=='contribution_date_range'){
 				if(!$mapk){
-					die('out of order attr proccess missing mapk'."\n");
+					print 'out of order attr proccess missing mapk'."\n";
 				}else{
 					$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
 					preg_match('/Showing\scontributions<\/dt><dd>([^<]*)</',$raw_results, $matches);
@@ -493,44 +545,43 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 						$page_body .="{$name}=".$matches[1]."|\n";		
 					}
 				}
-			}else if($dbKey=='maplight_id'){
-				//print 'do_maplight_id'."\n";
-				//try to grab the maplight id
-				$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
-				preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
-				
-				//do point system for match
-				$point=array();
-				$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
-				if(isset($matches['2'])){			
-					foreach($matches['2'] as $k=>$name_html){
-						if(!isset($point[$k]))$point[$k]=0;
-						list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
-						if(strtolower($person->first)==strtolower($fname))$point[$k]+=2;
-						if(strtolower($person->last)==strtolower($lname))$point[$k]+=2;
-						if($person->state==$matches['3'][$k])$point[$k]++;
-						if($person->district==$matches['4'][$k])$point[$k]++;
-						if($person->party==$matches['5'][$k])$point[$k]++;				
-						if($title_lookup[$person->title]==$matches['6'])$point[$k]++;						
-					}
-					$max=0;					
-					$mapk=null;				
-					//print_r($point);
-					foreach($point as $k=>$v){
-						if($v>$max){
-							$mapk=$matches[1][$k];
-							$max=$v;
-						}						
-					}							
-					//print "MapLightKey $mapk best match:".strtolower(trim(strip_tags($matches['2'][$mapk]))). " for $person->last  $person->first\n";
-					/*if(strtolower($person->last)=='yarmuth'){					
-						print_r($person);
-						for($i=0;$i<7;$i++){
-							print $matches[$i][$mapk]."\n";
-						}						
-					}*/
-					$page_body .="{$name}=".$mapk."|\n";					
-				}			
+			}else if($dbKey=='maplight_id'){							
+				if(!$person->$dbKey){
+					//print 'do_maplight_id'."\n";
+					//try to grab the maplight id
+					$raw_results = $mvScrape->doRequest('http://maplight.org/map/us/legislator/search/'.$person->last.'+'.$person->first);
+					preg_match_all('/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U',$raw_results, $matches);
+					
+					//do point system for match
+					$point=array();
+					$title_lookup=array('Rep.'=>'House','Sen.'=>'Senate');	
+					if(isset($matches['2'][0])){			
+						foreach($matches['2'] as $k=>$name_html){
+							if(!isset($point[$k]))$point[$k]=0;						
+							list($lname,$fname) = explode(',',trim(strip_tags($name_html)));
+							if(strtolower($person->first)==strtolower($fname))$point[$k]+=2;
+							if(strtolower($person->last)==strtolower($lname))$point[$k]+=2;
+							if($person->state==$matches['3'][$k])$point[$k]++;
+							if($person->district==$matches['4'][$k])$point[$k]++;
+							if($person->party==$matches['5'][$k])$point[$k]++;		
+							if(isset($title_lookup[$person->title])){	
+								if($title_lookup[$person->title]==$matches['6'])$point[$k]++;
+							}						
+						}
+						$max=0;					
+						$mapk=null;				
+						//print_r($point);
+						foreach($point as $k=>$v){
+							if($v>$max){
+								$mapk=$matches[1][$k];
+								$max=$v;
+							}						
+						}											
+					}								
+				}else{					
+					$mapk = $person->$dbKey; 
+				}
+				$page_body .="{$name}=".$mapk."|\n";				
 			}else{			
 				if (trim($person->$dbKey) != '') {		
 					if ($dbKey == 'state')	$person->state = $states_ary[$person->state];				
@@ -540,7 +591,7 @@ function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false
 		}
 		//if we have the maplight key add in all contributions and procces contributers 
 		if(!$mapk){
-			die('out of order attr proccess missing mapk'."\n");
+			print 'missing mapkey'."\n";
 		}else{
 			$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/legislator/'.$mapk);
 			preg_match_all('/\/map\/us\/interest\/([^"]*)">([^<]*)<.*\$([^\<]*)</U',$raw_results, $matches);		

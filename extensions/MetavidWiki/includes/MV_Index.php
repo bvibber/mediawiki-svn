@@ -104,7 +104,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	 * getMVDInRange returns the mvd titles that are in the given range
  	 * param list got kind of crazy long... @@todo refactor int a request object or something cleaner
  	 */
- 	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties=array(), $limit='LIMIT 0, 200'){
+ 	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties='', $limit='LIMIT 0, 200'){
  		global $mvIndexTableName, $mvDefaultClipLength; 		
  		$dbr =& wfGetDB(DB_SLAVE);	 		
  		//set mvd_type if empty: 
@@ -112,7 +112,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		
  		$sql_sel = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` ";
  		$sql_from=" FROM {$dbr->tableName($mvIndexTableName)} ";
- 		if(count($smw_properties)!=0){
+ 		if($smw_properties!=''){
+ 			$smw_properties = (is_string($smw_properties))?array($smw_properties):$smw_properties; 			
  			foreach($smw_properties as $prop_name){
  				$sql_sel.=", `$prop_name`.`object_title` as `$prop_name`";
  				$sql_from.="LEFT JOIN `smw_relations` as `$prop_name` ON (`mv_mvd_index`.`mv_page_id`=`$prop_name`.`subject_id` " .
@@ -122,9 +123,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$sql = $sql_sel . $sql_from; 	
  		$sql.= "WHERE `stream_id`={$stream_id} ";
 		if($mvd_type!='all'){
+			$mvd_type=(is_object($mvd_type))?get_object_vars($mvd_type):$mvd_type;
 			//check if mvd_type is array:
 			if(is_array($mvd_type)){
-				$sql.='AND (';
+				$sql.=' AND (';
 				$or='';
 				foreach($mvd_type as $mtype){
 					//confirm its a valid mvd_type: 

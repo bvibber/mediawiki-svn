@@ -27,14 +27,19 @@ class MV_BillScraper extends MV_BaseScraper{
 	var $bill_titles=array();							
 	
 	function procArguments(){
-		global $options, $args;		
+		global $options, $args;				
 		if( !isset($options['stream_name']) && !isset($options['s'])){				
 			die("error missing stream name\n");
 		}else{			
 			$stream_inx = (isset($options['stream_name']))?$options['stream_name']:$options['s'];
 			if($args[$stream_inx]=='all'){
-				//put all in sync into stream list
+				$dbr =& wfGetDB(DB_SLAVE);
+				//put all in wiki into stream list
 				print "do all streams\n";
+				$result = $dbr->query('SELECT * FROM `mv_streams`');
+				while($row = $dbr->fetchObject($result)){
+					$this->streams[$row->name]= new MV_Stream($row);					
+				}	
 			}else{
 				$stream_name = $args[$stream_inx];
 				$this->streams[$stream_name]= new MV_Stream(array('name'=>$stream_name));		
@@ -44,7 +49,7 @@ class MV_BillScraper extends MV_BaseScraper{
 				print "Proccessing Stream: $stream_name \n";
 			}
 		}				
-	}
+	}	
 	function doScrapeInsert(){
 		foreach($this->streams as & $stream){
 			if(!isset($stream->date_start_time))$stream->date_start_time=0;
@@ -103,6 +108,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		   
 		    //retrive db rows to find match: 
 		   	$dbr =& wfGetDB(DB_SLAVE);
+		   	
 		    //$mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');		    
 		    /*while ($row = $dbr->fetchObject($mvd_res)) {	   	   
 		    $db_person_ary=$g_row_matches=array();
@@ -135,7 +141,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		    	   LEFT JOIN `metavid`.`people` as `person_lookup` ON  `person_lookup`.`id` = `people_time`.`people_fk` 
 		    	   WHERE `streams`.`name`=\''.$stream->name.'\' 		    	   		
 		    	   ORDER BY `people_time`.`time` ';		    
-			$people_res = $dbr->query($sql);			
+			$people_res = $dbr->query($sql);	
 			$cur_person = '';
 			$curKey=0;
 			while ($row = $dbr->fetchObject($people_res)) {
