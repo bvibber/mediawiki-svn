@@ -450,14 +450,38 @@ class MV_BillScraper extends MV_BaseScraper{
 		   			if(trim($title)!=''){
 		   				$annotate_body.="[[Category:$title]]\n";
 		   			}
-		   					   			
-		   			$anno_title_str =  'Anno_en:'.$stream->name.'/'.
-		   				seconds2ntp($pData['wiki_start_time']).'/'.
-		   				seconds2ntp($pData['wiki_end_time']);
-		   						   			
-		   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
-		   			//print "do edit ".$annoTitle->getText()."\n";
-		   			do_update_wiki_page($annoTitle, $annotate_body);
+		   			
+		   			
+		   			//see if we can align with an existing speech page: 
+		   			
+		   			$mvd_anno_res = MV_Index::getMVDInRange($stream->getStreamId(), 
+		   					$pData['wiki_start_time'],$pData['wiki_end_time'],
+		   					$mvd_type='Anno_en',$getText=false,$smw_properties='Speech_by');
+		   					
+		   			$doSpeechInsert=true;									
+					while($row = $dbr->fetchObject($mvd_anno_res)){
+						if($row->Speech_by){
+							if($row->Speech_by == $pData['Spoken_by']){
+								print "match update existing: $row->Speech_by  == ". $pData['Spoken_by']. "\n";
+								$anno_title_str =  'Anno_en:'.$stream->name.'/'.
+					   				seconds2ntp($row->start_time).'/'.
+					   				seconds2ntp($row->end_time);			   						   			
+					   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
+					   			do_update_wiki_page($annoTitle, $annotate_body);		
+					   			$doSpeechInsert=false;
+					   			break;
+							}else{
+								print "no existing speech match:$row->Speech_by != " .$pData['Spoken_by']. "\n"; 
+							}														
+						}
+					}
+					if($doSpeechInsert){			 
+						$anno_title_str =  'Anno_en:'.$stream->name.'/'.
+			   				seconds2ntp($pData['wiki_start_time']).'/'.
+			   				seconds2ntp($pData['wiki_end_time']);			   						   			
+			   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
+			   			do_update_wiki_page($annoTitle, $annotate_body);		  			
+					}
 		   			//[Page: S14580] replaced with:  [[Category:BillName]]
 		   			//would be good to link into the official record for "pages"
 		   			

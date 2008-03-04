@@ -83,13 +83,14 @@ options:
 		--noimage will skip image downloading 
 		--skiptext skips text sync
 		--skipfiles skips files
+		--skipSpeechMeta  skips annotation track with Speech By tags for continues Spoken By attr 
 		--force will force updates (normally if edited by a human its skiped)
-		--doSpeechMeta  will do a annotation track with Speech By tags for continues Spoken By attr 
 actions:
 		\$stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync
-		'all_in_wiki' will run on all streams in the wiki 
+		'all_in_wiki' will run on all streams in the wiki 		
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
+		'all_sync_past_date' --date [mm/dd/yy] all in_sync streams past date (-d option required)
 		[stream_name] will insert all records for the given stream name
 		'people' [person_name] will insert all the people articles optional followed by a person name 	
 		'interest' will insert interests (uses people as base so run people first) 
@@ -113,6 +114,10 @@ switch ($args[0]) {
 	break;
 	case 'all_with_files':
 		do_stream_insert('files');
+	break;
+	case 'all_sync_past_date':
+		if(!isset($options['date']))die('date missing'."\n");
+		do_stream_insert('all_sync_past_date');
 	break;
 	case 'people' :
 		$force = (isset($options['force']))?true:false;	

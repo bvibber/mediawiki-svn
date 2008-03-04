@@ -145,7 +145,7 @@ function do_add_stream(& $mvTitle, & $stream) {
 	$MV_SpecialAddStream->add_stream();
 }
 function do_stream_insert($mode, $stream_name = '') {
-	global $mvgIP, $MVStreams, $options, $wgDBname;
+	global $mvgIP, $MVStreams, $options, $args,$wgDBname;
 	$dbr = wfGetDB(DB_SLAVE);
 	if ($mode == 'all'){
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `sync_status`='in_sync'";
@@ -153,6 +153,11 @@ function do_stream_insert($mode, $stream_name = '') {
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `trascoded` != 'none'";
 	}else if($mode=='all_in_wiki'){
 		$sql = "SELECT `metavid`.`streams`.* FROM `$wgDBname`.`mv_streams` LEFT JOIN `metavid`.`streams` ON (`$wgDBname`.`mv_streams`.`name` = `metavid`.`streams`.`name`) ";
+	}else if($mode=='all_sync_past_date'){	
+		print "doing all after: ".$args[$options['date']]. "\n";
+		list($month, $day, $year) = explode('/',$args[$options['date']]);		
+		$date_time = mktime(0,0,0,$month, $day, $year);		
+		$sql = "SELECT * FROM `metavid`.`streams` WHERE `sync_status`= 'in_sync' AND `adj_start_time` > $date_time";
 	}else{
 		$sql = "SELECT * FROM `metavid`.`streams` WHERE `name` LIKE '{$stream_name}'";
 	}	
@@ -196,7 +201,7 @@ function do_stream_insert($mode, $stream_name = '') {
 			//proccess all stream text: 
 			do_proccess_text($stream);
 		}
-		if(isset($options['doSpeechMeta'])){									
+		if(!isset($options['skipSpeechMeta'])){									
 			//do annoative track for continus speches 
 			do_annotate_speeches($stream); 
 		}
@@ -207,7 +212,8 @@ function do_annotate_speeches($stream){
 	$mvStream =MV_Stream::newStreamByName($stream->name);
 	if($mvStream->doesStreamExist()){
 		$dbr =& wfGetDB(DB_SLAVE);
-		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by'); 
+		//get all meta in range (up 10k) 
+		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by', 'LIMIT 0, 10000'); 
 		if(count($dbr->numRows($mvd_res))!=0){
 			$prev_person =''; 			
 			$prev_st=$prev_et=0;
@@ -226,7 +232,7 @@ function do_annotate_speeches($stream){
 							if( $prev_et - $prev_st > 60){ 
 								$doSpeechUpdate=true;
 								print "insert annotation $prev_person: $prev_st to $prev_et \n";
-								//check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges)
+								//check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges) (up to 10,000 meta per stream) 
 								$mvd_anno_res = MV_Index::getMVDInRange($mvStream->getStreamId(), $prev_st+1, $prev_et-1, 'Anno_en',false, 'Speech_by'); 
 								while($row = $dbr->fetchObject($mvd_anno_res)){
 									if($row->Speech_by){

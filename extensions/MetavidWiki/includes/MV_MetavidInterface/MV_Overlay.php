@@ -69,6 +69,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$start_str 	=$this->mv_interface->article->mvTitle->getStartTime();
 		$end_str	=$this->mv_interface->article->mvTitle->getEndTime();
 		$this->start_time = $this->mv_interface->article->mvTitle->getStartTimeSeconds();
+		$this->end_time = $this->mv_interface->article->mvTitle->getEndTimeSeconds();
 		$end_time 	= $this->mv_interface->article->mvTitle->getEndTimeSeconds();
 		$this->duration = $end_time-$this->start_time;		
 		//layers/filters
@@ -173,21 +174,28 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		if($keyOrder===false)$keyOrder=0; 
 		$out.='left:'. ($keyOrder*$this->tl_width).'px;';
 		//check if duration is set (for php calculation of height position)
-		if($this->duration){			
-			$page_duration = $mvd_page->end_time - $mvd_page->start_time;			
-			$height_perc =round(100*($page_duration/ $this->duration), 2);
+		if($this->duration){	
+			//print "master range: $this->start_time to $this->end_time \n";				
+			//max out ranges: 			
+			$page_start= ($mvd_page->start_time < $this->start_time)?$this->start_time:$mvd_page->start_time;
+			$page_end =  ($mvd_page->end_time > $this->end_time)?$this->end_time:$mvd_page->end_time;
+			
+			$page_duration 	= $page_end-$page_start;
+			//print "page duration $page_end - $page_start: $page_duration \n";	
+			$height_perc 	= round(100*($page_duration/ $this->duration), 2);					
 		
-			if( $mvd_page->start_time==0){
+			if( $page_start==0){ //avoid dividing zero
 				$loc_perc=0;
 			}else{
 				//multiply by 100 to keep things inbounds
-				$loc_perc = round(100*( ($mvd_page->start_time-$this->start_time) / $this->duration ));
+				$loc_perc = round(100*( ($page_start-$this->start_time) / $this->duration ));
 			}
 			//make sure we don't go out of range:
 			if( ($height_perc+$loc_perc) > 100 ){
 				$height_perc = 100-$loc_perc;
 			}  
-			if($loc_perc<0)$loc_perc=0;
+			if($loc_perc<0)$loc_perc=0;			
+			
 			$out.='height:'.$height_perc.'%;'.
 				  'top:'.$loc_perc.'%"></div>'."\n";
 		}else{
