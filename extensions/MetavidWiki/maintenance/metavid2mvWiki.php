@@ -84,7 +84,7 @@ options:
 		--skiptext skips text sync
 		--skipfiles skips files
 		--skipSpeechMeta  skips annotation track with Speech By tags for continues Spoken By attr 
-		--force will force updates (normally if edited by a human its skiped)
+		--force will force updates (normally if edited by a human its skiped) in case of images overwrites
 actions:
 		\$stream_name  will proccess that stream name		
 		'all_in_sync' will insert all streams that are tagged in_sync

@@ -171,6 +171,7 @@ function do_stream_insert($mode, $stream_name = '') {
 	print "working on " . count($streams) . ' streams'."\n";
 	foreach ($streams as $stream) {
 		print "on stream $stream->name \n";
+		$force = (isset($options['force']))?true:false;
 		//init the stream
 		$MVStreams[$stream->name] = new MV_Stream($stream);
 		//check if the stream has already been added to the wiki (if not add it)	
@@ -179,8 +180,7 @@ function do_stream_insert($mode, $stream_name = '') {
 			//print 'do stream desc'."\n";
 			do_add_stream($mvTitle, $stream);
 			echo "stream " . $mvTitle->getStreamName() . " added \n";
-		} else {			
-				$force = (isset($options['force']))?true:false;
+		} else {							
 				do_update_wiki_page($stream->name, mv_semantic_stream_desc($mvTitle, $stream), MV_NS_STREAM,$force);
 			//$updated = ' updated' echo "stream " . $mvTitle->getStreamName() . " already present $updated\n";
 		}
@@ -190,7 +190,7 @@ function do_stream_insert($mode, $stream_name = '') {
 		}
 		//do insert/copy all media images 
 		if(!isset($options['noimage'])){
-			do_proccess_images($stream);
+			do_proccess_images($stream, $force);
 			print "done with images\n";
 		}
 		if(!isset($options['skipfiles'])){
@@ -330,7 +330,7 @@ function do_proccess_text($stream){
 /* 
  * for each image add it to the image directory
  */
-function do_proccess_images($stream) {
+function do_proccess_images($stream, $force=false) {
 	global $mvLocalImgLoc, $MVStreams, $wgDBname;
 	$dbr =& wfGetDB(DB_SLAVE);
 	$dbw =& wfGetDB(DB_MASTER);
@@ -343,7 +343,21 @@ function do_proccess_images($stream) {
 	print "Found " . $img_count . " images for stream " . $stream->name . "\n";
 	//grab from metavid and copy to local directory structure: 
 	$i=$j= 0;	
-	while ($row = $dbr->fetchObject($image_res)) {		
+	$mv_stream_id = $MVStreams[$stream->name]->getStreamId();
+	//if force we can clear out existing images:
+	if($force){
+		print "force update flag (remove all existing images)\n";
+		$local_img_dir = MV_StreamImage::getLocalImageDir($mv_stream_id);
+		$res = $dbr->query("SELECT * FROM `$wgDBname`.`mv_stream_images` WHERE  `stream_id`={$mv_stream_id}");
+		while ($row = $dbr->fetchObject($res)) {
+			$local_img_file = $local_img_dir . '/' . $row->time . '.jpg';
+			unlink($local_img_file);
+		}
+		//remove db entries: 	
+		$dbw->query("DELETE FROM `$wgDBname`.`mv_stream_images` WHERE  `stream_id`={$mv_stream_id}");		
+	}
+	while ($row = $dbr->fetchObject($image_res)) {	
+		//if(isset($row->	
 		$relative_time = $row->time - $stream->adj_start_time;
 		//status updates: 
 		if ($i == 10) {			
@@ -353,8 +367,8 @@ function do_proccess_images($stream) {
 		$j++;
 		$i++;
 		//get streamImage obj:
-		$mv_stream_id = $MVStreams[$stream->name]->getStreamId();
-		$local_img_dir = MV_StreamImage :: getLocalImageDir($mv_stream_id);
+	
+		$local_img_dir = MV_StreamImage::getLocalImageDir($mv_stream_id);
 		$metavid_img_url = 'http://metavid.ucsc.edu/image_media/' . $row->id . '.jpg';
 		
 		$local_img_file = $local_img_dir . '/' . $relative_time . '.jpg';
@@ -365,7 +379,7 @@ function do_proccess_images($stream) {
 		$img_check = $dbr->query($sql);
 		$doInsert = true;
 		if ($dbr->numRows($img_check) != 0) {
-			//make sure its there: 
+			//make sure its there and matches what it should be: 
 			if (is_file($local_img_file)) {
 				$row = $dbr->fetchObject($img_check);
 				//print "file $local_img_file skiped, stream_id:" . $mv_stream_id . " time: " . seconds2ntp($relative_time) . "\n";							

@@ -605,7 +605,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$val = str_replace(' ','_',$val);				
 		
 		//make sure people know they can "search" too (formated by  
-		$out='do_search|'.wfMsg('mv_search_trasncripts_for').' <b>$1</b>|no_image'."\n";
+		$out='do_search|'.wfMsg('mv_search_transcripts_for').' <b>$1</b>|no_image'."\n";
 		//get people
 		$person_out = MV_SpecialMediaSearch::auto_complete_person($val, 3);
 		if($person_out!=''){
