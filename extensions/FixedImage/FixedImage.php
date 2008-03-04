@@ -33,6 +33,15 @@ $wgFixedImageHooks = array(
 		'alt' => '...' ),
 	);
 
+$wgExtensionCredits['parserhook'][] = array(
+	'name'           => 'FixedImage',
+	'author'         => 'Brion Vibber',
+	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'description'    => 'Just include an image',
+	'descriptionmsg' => 'fixedimage-desc',
+);
+$wgExtensionMessagesFiles['FixedImage'] =  dirname(__FILE__) . '/FixedImage.i18n.php';
+
 $wgExtensionFunctions[] = 'fixedImageSetup';
 
 function fixedImageSetup() {
@@ -57,4 +66,3 @@ function fixedImageHandler( $key, $text, $params=null ) {
 	global $wgFixedImageHooks;
 	return wfElement( 'img', $wgFixedImageHooks[$key] );
 }
-
