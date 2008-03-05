@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#ver=snapshot-`date +%Y%m%d`
-#dir=snapshots
-#branch=trunk
-#prev=""
-
-#ver=1.11.2
-#dir=1.11
-#branch=tags/REL1_11_2
-#prev=tags/REL1_11_1
-
 case "$1" in
 --help|"")
 	echo "Usage:"
@@ -41,13 +31,6 @@ case "$1" in
 esac
 
 package=mediawiki-$ver
-
-#echo $ver
-#echo $dir
-#echo $branch
-#echo $prev
-#echo $package
-#exit 1
 
 svn co http://svn.wikimedia.org/svnroot/mediawiki/$branch/phase3 $package
 

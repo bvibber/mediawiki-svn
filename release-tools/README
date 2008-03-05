@@ -1,3 +1,16 @@
+== make-release.sh ==
+
+Handy-dandy tool to pull a tagged release out of SVN and generate:
+* a tarball
+* a patch to previous revision (if >= x.x.1)
+* GPG signatures for the above
+* links & checksums for the release announcement
+
+Usage:
+  ./make-release.sh --snapshot
+  ./make-release.sh 1.12.1
+
+
 == upgradeTest.py ==
 
 Checks out MediaWiki branches from 1.2 on up, to test upgrading from a fresh
