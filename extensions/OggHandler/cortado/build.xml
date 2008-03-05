@@ -74,18 +74,36 @@ Cortado ANT build file
     <mkdir dir="${out.dist}/src" />
   </target>
 
+  <target name="scripts">
+    <javac 
+      srcdir="${src}/../scripts"
+      destdir="${src}/../scripts"
+      />
+  </target>
+
 <!-- generate Configure-time options class as src/com/fluendo/player/Configure.java -->
-  <target name="configure">
+  <target name="configure" depends="scripts">
     <tstamp>
       <format property="DATE" timezone="GMT" pattern="yyyy-MM-dd HH:mm:ss" />
-   </tstamp>
-   <exec executable="sh" outputproperty="REVISION">
-     <arg line="${src}/../scripts/get-revision" />
-   </exec>
-   <exec executable="sh" outputproperty="BRANCH">
-     <arg line="${src}/../scripts/get-branch" />
-   </exec>
-   <echo file="${src}/com/fluendo/player/Configure.java" append="false"
+    </tstamp>
+    <java 
+      classname="GetSourceInfo" 
+      classpath="${src}/../scripts" 
+      outputproperty="REVISION"
+      failonerror="true"
+      >
+      <arg value="revision"/>
+    </java>
+
+    <java 
+      classname="GetSourceInfo" 
+      classpath="${src}/../scripts" 
+      outputproperty="BRANCH"
+      failonerror="true"
+      >
+      <arg value="branch"/>
+    </java>
+    <echo file="${src}/com/fluendo/player/Configure.java" append="false"
 >
 package com.fluendo.player;
 
@@ -108,10 +126,10 @@ class Configure
   </target>
 
 <!-- generate Dist-time options class as src/com/fluendo/player/Dist.java -->
-  <target name="source-info">
-   <exec executable="sh" outputproperty="OUTPUT">
-     <arg line="${src}/../scripts/update-source-info" />
-   </exec>
+  <target name="source-info" depends="scripts">
+    <java classname="GetSourceInfo" dir="{$src}/scripts" outputproperty="OUTPUT">
+      <arg value="update"/>
+    </java>
    <echo>${OUTPUT}</echo>
   </target>
 
