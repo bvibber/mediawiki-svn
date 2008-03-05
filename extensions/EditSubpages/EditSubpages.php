@@ -17,7 +17,7 @@ for anonymous editing via [[MediaWiki:Unlockedpages]]",
 'descriptionmsg' => 'editsubpages-desc',
 'author' => "Ryan Schmidt",
 'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
-'version' => "1.2",
+'version' => "1.2.1",
 );
 
 $wgHooks['UserGetRights'][] = 'EditSubpages';
@@ -27,7 +27,7 @@ $wgGroupPermissions['*']['edit'] = false; //what's the point if they can edit to
 
 function EditSubpages(&$user, &$aRights) {
 	global $wgTitle;
-
+	$pagename = $wgTitle->getText(); //name of page w/ spaces, not underscores
 	if(!in_array('edit', $aRights)) {
 		if($wgTitle->getNamespace == NS_MAIN) {
 			$ns = ''; //for easier testing
@@ -49,10 +49,8 @@ function EditSubpages(&$user, &$aRights) {
 		} else {
 			$talktext = $nstalk . ":" . $pagename;
 		}
-		$pagename = $wgTitle->getText(); //name of page w/ spaces, not underscores
 		
 		$pages = explode ("\n", wfMsg ('unlockedpages')); //grabs MediaWiki:Unlockedpages
-		
 		foreach($pages as $value) {
 			if( strpos( $value, '*' ) === false || strpos( $value, '*' ) !== 0 )
 				continue; // "*" doesn't start the line, so treat it as a comment (aka skip over it)
