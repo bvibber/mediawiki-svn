@@ -59,7 +59,7 @@ function EditSubpages(&$user, &$aRights) {
 			$value = trim( trim( trim( trim( $value ), "*[]" ) ), "*[]" );
 			if ( $value == $text || strpos( $text, $value . '/' ) === 0 ) {
 				$aRights = array_merge(  $aRights, array('edit', 'createpage', 'createtalk' ) );
-				array_unique(&$aRights);
+				$aRights = array_unique($aRights);
 				break;
 			}
 			$title = Title::newFromText($value);
