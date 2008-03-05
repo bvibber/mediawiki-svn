@@ -28,6 +28,9 @@
 	background:black;
 	color:white;
 }
+.mv_timeline_mvd_jumper{
+	cursor:pointer;
+}
 .mv_fd_im_cont{
 	 display: block;
 	 margin-left: auto;
