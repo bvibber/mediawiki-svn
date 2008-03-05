@@ -2,7 +2,7 @@ import java.io.*;
 
 public class GetSourceInfo {
   public static void main(String args[]) {
-    File topSrcDir = new File("..");
+    File topSrcDir = new File(".");
     String revision = GetSourceInfo.getRevision(topSrcDir);
     String branch = GetSourceInfo.getBranch(topSrcDir);
 

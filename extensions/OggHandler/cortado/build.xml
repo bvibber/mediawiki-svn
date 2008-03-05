@@ -127,10 +127,9 @@ class Configure
 
 <!-- generate Dist-time options class as src/com/fluendo/player/Dist.java -->
   <target name="source-info" depends="scripts">
-    <java classname="GetSourceInfo" dir="{$src}/scripts" outputproperty="OUTPUT">
+    <java classname="GetSourceInfo" classpath="{$src}/../scripts" failonerror="true">
       <arg value="update"/>
     </java>
-   <echo>${OUTPUT}</echo>
   </target>
 
 <!-- delete distinfo any time .svn directory changes -->
