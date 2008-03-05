@@ -54,7 +54,7 @@ def dropDatabase(dbname):
 	sqlStatement("DROP DATABASE %s;" % dbname)
 
 def runPhp(dir, filename, options=""):
-	runCommand("cd %s && /opt/php51/bin/php %s %s" % (
+	runCommand("cd %s && php %s %s" % (
 		shellEscape(dir),
 		shellEscape(filename),
 		options))
@@ -106,8 +106,11 @@ def testUpgrade(dbname, branch):
 	# Try the upgrade
 	runUpdater(dbname, "trunk")
 	
-	dropDatabase(dbname)
+	#dropDatabase(dbname)
 
+testUpgrade("uptest112", "branches/REL1_12")
+testUpgrade("uptest111", "branches/REL1_11")
+testUpgrade("uptest110", "branches/REL1_10")
 testUpgrade("uptest19", "branches/REL1_9")
 testUpgrade("uptest18", "branches/REL1_8")
 testUpgrade("uptest17", "branches/REL1_7")
