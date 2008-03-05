@@ -47,7 +47,7 @@ function efInputBoxRender( $input, $params, $parser ) {
 
 class Inputbox {
 	var $type, $width, $preload, $editintro, $br;
-	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
+	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel,$labeltext;
 	var $hidden, $namespaces;
 
 	function InputBox( &$parser ) {
