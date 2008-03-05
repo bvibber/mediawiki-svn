@@ -33,7 +33,7 @@ class Invitations {
 	 * @return boolean Whether or not the user has a valid invite to the feature.
 	 */
 	public static function hasInvite( $feature, $user = null, &$invite_age = false ) {
-		global $wgUser, $wgInvitationTypes;
+		global $wgUser, $wgInvitationTypes, $wgDBtype;
 		if ($user == null)
 			$user = $wgUser;
 
@@ -43,7 +43,9 @@ class Invitations {
 
 		$dbr = wfGetDb( DB_SLAVE );
 
-		$res = $dbr->select( 'invitation', 'UNIX_TIMESTAMP(inv_timestamp) AS timestamp', array( inv_invitee => $user->getId(), inv_type => $feature ), __METHOD__ );
+		$epoch = $wgDBtype == 'mysql' ? 'UNIX_TIMESTAMP(inv_timestamp)' :
+			'EXTRACT(epoch FROM inv_timestamp)';
+		$res = $dbr->select( 'invitation', "$epoch AS timestamp", array( 'inv_invitee' => $user->getId(), 'inv_type' => $feature ), __METHOD__ );
 
 		if ($dbr->numRows($res) == 0)
 			return false;
@@ -69,7 +71,7 @@ class Invitations {
 
 		$dbr = wfGetDb( DB_SLAVE );
 
-		$res = $dbr->select( 'invitation', array( 'inv_type' ), array( inv_invitee => $user->getId() ) );
+		$res = $dbr->select( 'invitation', array( 'inv_type' ), array( 'inv_invitee' => $user->getId() ) );
 
 		$features = array();
 
@@ -121,7 +123,7 @@ class Invitations {
 	/*
 	 * How many invites does the given inviter have?
 	 * @param string $feature The feature to check.
-	 * @param object $inviter The user to check, or null for $wgUser.
+	 * @param object $user The user to check, or null for $wgUser.
 	 * @return integer The number of invites left, or -1 for infinity.
 	 */
 	public static function getRemainingInvites( $feature, $user = null ) {
@@ -132,11 +134,11 @@ class Invitations {
 		$accountAge = 1;
 
 		// No such invitation type.
-		if (!is_array($wgInvitationTypes[$feature]))
+		if (!array_key_exists($feature, $wgInvitationTypes))
 			return 0;
 
 		// Has none: not invited.
-		if (!Invitations::hasInvite($feature, $inviter, $accountAge))
+		if (!Invitations::hasInvite($feature, $user, $accountAge))
 			return 0;
 
 		$accountAge = time() - $accountAge;
