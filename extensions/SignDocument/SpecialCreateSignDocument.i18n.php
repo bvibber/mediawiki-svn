@@ -298,8 +298,12 @@ $messages['lb'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'createsigndoc-pagename' => 'पान',
+	'createsigndoc-phone'    => 'दूरध्वनी क्रमांक',
+	'createsigndoc-bday'     => 'जन्मदिवस',
 	'createsigndoc-hidden'   => 'छूपा',
 	'createsigndoc-optional' => 'पर्यायी',
+	'createsigndoc-create'   => 'निर्मीतकरा',
 );
 
 /** Dutch (Nederlands)

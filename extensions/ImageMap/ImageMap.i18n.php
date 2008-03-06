@@ -733,6 +733,13 @@ $messages['tr'] = array(
 	'imagemap_description' => 'Resim hakkında',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'imagemap_description' => 'Опис зображення',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

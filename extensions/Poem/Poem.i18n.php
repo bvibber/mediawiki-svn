@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'poem-desc' => 'يضيف الوسم <tt>&lt;poem&gt;</tt> لصياغة القصيدة',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'poem-desc' => 'Добавя етикет <tt>&lt;poem&gt;</tt> за форматиране на стихове',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

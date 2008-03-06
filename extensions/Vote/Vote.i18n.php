@@ -357,25 +357,27 @@ bruker3|Tredje brukernavn',
 	'vote-invalid-choice' => 'Du må velge en av de tilgjengelige alternativene.',
 );
 
-/* Occitan (Cedric31) */
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'vote' => 'Vòte',
-	'vote-header' => 'Podètz votar pel \'\'\'mèstre de l\'Univèrs\'\'\' aicí !',
-	'vote-current' => 'Vòstre vòte actual es per \'\'\'$1\'\'\'.',
-	'vote-legend' => 'Plaçar o modificar un vòte',
-	'vote-caption' => 'Vòstra seleccion:',
-	'vote-choices' => 'joker|Lo Joquèr
+	'vote'                => 'Vòte',
+	'vote-header'         => "Podètz votar pel '''mèstre de l'Univèrs''' aicí !",
+	'vote-current'        => "Vòstre vòte actual es per '''$1'''.",
+	'vote-legend'         => 'Plaçar o modificar un vòte',
+	'vote-caption'        => 'Vòstra seleccion:',
+	'vote-choices'        => 'joker|Lo Joquèr
 pingouin|Lo Pingoin
 sphinx|Esfinx',
-	'vote-submit' => 'Votar',
-	'vote-registered' => 'Vòstre vòte es estat enregistrat.',
-	'vote-view-results' => 'Veire los resultats',
-	'vote-results' => 'Resultats del vòte',
+	'vote-submit'         => 'Votar',
+	'vote-registered'     => 'Vòstre vòte es estat enregistrat.',
+	'vote-view-results'   => 'Vejatz los resultats',
+	'vote-results'        => 'Resultats del vòte',
 	'vote-results-choice' => 'Causida',
-	'vote-results-count' => 'Compte',
-	'vote-results-none' => 'Cap de vòte es pas estat efectuat a aqueste moment.',
-	'vote-login' => 'Devètz $1 per votar.',
-	'vote-login-link' => 'vos connectar',
+	'vote-results-count'  => 'Compte',
+	'vote-results-none'   => 'Cap de vòte es pas estat efectuat a aqueste moment.',
+	'vote-login'          => 'Devètz $1 per votar.',
+	'vote-login-link'     => 'vos connectar',
 	'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
 );
 
@@ -514,6 +516,8 @@ riddler|Gåtan',
 $messages['te'] = array(
 	'vote-caption'      => 'మీ ఎంపిక:',
 	'vote-view-results' => 'ఫలితాలు చూడండి',
+	'vote-results'      => 'వోటు ఫలితాలు',
+	'vote-login-link'   => 'ప్రవేశించండి',
 );
 
 /** Turkish (Türkçe)

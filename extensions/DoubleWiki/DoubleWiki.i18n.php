@@ -222,6 +222,13 @@ $messages['te'] = array(
 	'doublewiki-desc' => 'పేజీని, మరో వికీలో దాని అనువాదాన్ని ఒకే పేజీలో రెండు నిలువు వరుసల్లో చూపించు',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

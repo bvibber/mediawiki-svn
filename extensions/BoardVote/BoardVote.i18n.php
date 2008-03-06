@@ -2748,13 +2748,15 @@ Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'boardvote_novotes'  => 'تر اوسه هېچا رايه نه ده ورکړې.',
-	'boardvote_time'     => 'وخت',
-	'boardvote_user'     => 'کارونکی',
-	'boardvote_days'     => 'ورځې',
-	'boardvote_dumplink' => 'دلته وټوکۍ',
-	'boardvote_submit'   => 'هو/ښه',
-	'boardvote_welcome'  => "'''$1''' ته ښه راغلاست!",
+	'boardvote_novotes'    => 'تر اوسه هېچا رايه نه ده ورکړې.',
+	'boardvote_time'       => 'وخت',
+	'boardvote_user'       => 'کارونکی',
+	'boardvote_days'       => 'ورځې',
+	'boardvote_ua'         => 'د کارونکي پلاوی',
+	'boardvote_dumplink'   => 'دلته وټوکۍ',
+	'boardvote_submit'     => 'هو/ښه',
+	'boardvote_notstarted' => 'تر اوسه پورې لا د رايو بهير نه دی پيل شوی.',
+	'boardvote_welcome'    => "'''$1''' ته ښه راغلاست!",
 );
 
 /** Portuguese (Português)

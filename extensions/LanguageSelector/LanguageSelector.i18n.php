@@ -232,6 +232,13 @@ $messages['lt'] = array(
 	'languageselector-setlang' => 'nustatyti',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'languageselector' => 'भाषा',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -340,7 +347,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'languageselector' => 'భాష',
+	'languageselector'      => 'భాష',
+	'languageselector-desc' => 'ప్రతీ పేజీలోనూ భాషా ఎంపిక, సందర్శకులకు కూడా',
 );
 
 /** Tetum (Tetun)

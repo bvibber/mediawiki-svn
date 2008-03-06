@@ -57,6 +57,14 @@ $messages['lb'] = array(
 	'untidy' => 'Net klasséieren',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'tidy'   => 'नेटके',
+	'untidy' => 'अव्यवस्थीत',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

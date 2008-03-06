@@ -174,6 +174,14 @@ $messages['oc'] = array(
 	'categorystepper-start' => '(Començament de categoria)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categorystepper-end'   => '(د وېشنيزې پای)',
+	'categorystepper-start' => '(د وېشنيزې پيل)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

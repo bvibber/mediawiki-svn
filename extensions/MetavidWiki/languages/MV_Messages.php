@@ -538,6 +538,7 @@ $messages['fr'] = array(
 	'mv_adjust_ok_move'              => 'Succès, ajustement...',
 	'mv_start_desc'                  => 'Durée au départ',
 	'mv_end_desc'                    => 'Durée à la fin',
+	'mv_of'                          => ' de',
 	'mediasearch'                    => 'Recherche du média',
 	'mv_search_sel_t'                => 'Choisir le mode de recherche',
 	'mv_run_search'                  => 'Lancer la recherche',
@@ -900,6 +901,13 @@ $messages['lb'] = array(
 	'mv_category'        => 'Kategorie',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'mv_edit' => 'संपादन',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -1009,6 +1017,7 @@ $messages['nl'] = array(
 	'mv_adjust_ok_move'              => 'Geslaagd. Bezig met aanpassen...',
 	'mv_start_desc'                  => 'Begintijd',
 	'mv_end_desc'                    => 'Eindtijd',
+	'mv_of'                          => '&#32;van&#32;',
 	'mediasearch'                    => 'Media zoeken',
 	'mv_search_sel_t'                => 'Selecteer zoektype',
 	'mv_run_search'                  => 'Zoekopdracht uitvoeren',
@@ -1728,6 +1737,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_stream_delete_warning'       => 'Zmazaním tohto streamu zmažete aj $1 stránok metadát',
 	'mv_tool_search'                 => 'Hľadať',
 	'mv_tool_search_title'           => 'Hľadať v rámci tohto streamu',
+	'mv_search_transcripts_for'      => 'Hľadať v prepisoch',
 	'mv_tool_navigate'               => 'Navigovať',
 	'mv_tool_navigate_title'         => 'Navigovať v celom streame',
 	'mv_tool_export'                 => 'Export',
@@ -1886,30 +1896,34 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'mv_ogg_high_quality'    => 'ఉత్తమ నాణ్యత - ఓగ్ థియోరా 900kbs',
-	'mv_duration_label'      => 'నిడివి',
-	'mv_save_changes'        => 'మార్పులను భద్రపరచు',
-	'mv_missing_cat'         => 'వర్గం పేరు తప్పింది',
-	'mv_remove_reason'       => 'తొలగింపునకు కారణం:',
-	'mv_external_file'       => 'బయటి ఫైలు',
-	'mv_tool_search'         => 'వెతుకు',
-	'mvd_default_mismatch'   => 'అమరికల ఫైలులో పొరపాటు',
-	'video_feed_cat'         => 'వర్గానికి వీడియో ఫీడు:',
-	'mv_play'                => 'ఆడించు',
-	'mv_history'             => 'చరిత్ర',
-	'mv_edit_title'          => 'పాఠ్యాన్ని మార్చండి',
-	'mv_remove'              => 'తొలగించు',
-	'mv_adjust_preview_stop' => 'మునుజూపుని ఆపు',
-	'mv_start_desc'          => 'ప్రారంభ సమయం',
-	'mv_end_desc'            => 'ముగింపు సమయం',
-	'mv_search_sel_t'        => 'అన్వేషణ రకాన్ని ఎంచుకోండి',
-	'mv_search_match'        => 'పాఠ్యంలో వెతకండి',
-	'mv_search_category'     => 'వర్గం',
-	'mv_search_and'          => 'మరియు',
-	'mv_search_or'           => 'లేదా',
-	'mv_category'            => 'వర్గం',
-	'mv_view_wiki_page'      => 'వికీ పేజీని చూడండి',
-	'mv_match_text'          => '~  $1 పోలికలు',
-	'mv_match_text_one'      => '~ 1 పోలిక',
+	'mv_ogg_high_quality'           => 'ఉత్తమ నాణ్యత - ఓగ్ థియోరా 900kbs',
+	'mv_duration_label'             => 'నిడివి',
+	'mv_save_changes'               => 'మార్పులను భద్రపరచు',
+	'mv_missing_cat'                => 'వర్గం పేరు తప్పింది',
+	'mv_redirect_and_delete_reason' => 'దారిమార్పు పేజీని తొలగించారు',
+	'mv_remove_reason'              => 'తొలగింపునకు కారణం:',
+	'mv_external_file'              => 'బయటి ఫైలు',
+	'mv_tool_search'                => 'వెతుకు',
+	'mv_results_found_for'          => 'మొత్తం <b>$3</b> ఫలితాల్లో <b>$1</b> నుండి <b>$2</b> వరకు, అన్వేషించినది:',
+	'mvd_default_mismatch'          => 'అమరికల ఫైలులో పొరపాటు',
+	'mv_data_page_title'            => '$3 నుండి $2కై $1',
+	'video_feed_cat'                => 'వర్గానికి వీడియో ఫీడు:',
+	'mv_play'                       => 'ఆడించు',
+	'mv_history'                    => 'చరిత్ర',
+	'mv_edit_title'                 => 'పాఠ్యాన్ని మార్చండి',
+	'mv_remove'                     => 'తొలగించు',
+	'mv_adjust_preview_stop'        => 'మునుజూపుని ఆపు',
+	'mv_start_desc'                 => 'ప్రారంభ సమయం',
+	'mv_end_desc'                   => 'ముగింపు సమయం',
+	'mv_search_sel_t'               => 'అన్వేషణ రకాన్ని ఎంచుకోండి',
+	'mv_search_match'               => 'పాఠ్యంలో వెతకండి',
+	'mv_search_category'            => 'వర్గం',
+	'mv_search_and'                 => 'మరియు',
+	'mv_search_or'                  => 'లేదా',
+	'mv_category'                   => 'వర్గం',
+	'mv_view_wiki_page'             => 'వికీ పేజీని చూడండి',
+	'mv_match_text'                 => '~  $1 పోలికలు',
+	'mv_match_text_one'             => '~ 1 పోలిక',
+	'mv_embed_options'              => 'ఎంబెడ్ ఎంపికలు',
 );
 

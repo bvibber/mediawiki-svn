@@ -91,6 +91,14 @@ $messages['hsb'] = array(
 	'whosonline-desc' => 'Zwobraznja [[Special:WhosOnline|lisćinu]] přizjewjenych a anonymnych wužiwarjow, kotřiž su runje online',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'whosonline'      => 'Hver er tengdur',
+	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

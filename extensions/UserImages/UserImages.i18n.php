@@ -229,6 +229,13 @@ $messages['sv'] = array(
 	'userimages-noimages' => '$1 har inte laddat upp några bilder.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'userimages-noname' => 'వాడుకరిపేరు తప్పు లేదా అసలు ఇవ్వనేలేదు.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

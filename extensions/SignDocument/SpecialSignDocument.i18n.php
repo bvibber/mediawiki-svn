@@ -644,6 +644,19 @@ $messages['lb'] = array(
 	'sign-review-comment'          => 'Bemierkung',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'sign-viewfield-country'        => 'देश',
+	'sign-viewfield-zip'            => 'झीप(पीन)',
+	'sign-viewfield-phone'          => 'दूरध्वनी',
+	'sign-viewfield-email'          => 'विपत्र',
+	'sign-viewfield-age'            => 'वय',
+	'sign-signatures'               => 'सह्या',
+	'sign-uniquequery-similaremail' => 'तसलेच विपत्र',
+);
+
 $messages['nl'] = array(
 	'signdocument' => 'Document ondertekenen',
 	'sign-nodocselected' => 'Selecteer alstublieft het document dat u wilt ondertekenen.',
@@ -1218,9 +1231,13 @@ $messages['te'] = array(
 	'sign-phone'                   => 'ఫోన్ నెంబర్:',
 	'sign-bday'                    => 'వయసు:',
 	'sign-email'                   => 'ఈ-మెయిల్ చిరునామా:',
+	'sign-list-anonymous'          => 'అనామకంగా చూపించు',
 	'sign-list-hideaddress'        => 'చిరునామాని చూపించకు',
+	'sign-list-hideextaddress'     => 'నగరం, రాష్ట్రం, జిప్, లేదా దేశంలను చూపించకు',
+	'sign-list-hidephone'          => 'ఫోన్ నంబరు చూపించకు',
 	'sign-list-hidebday'           => 'వయసుని చూపించకు',
 	'sign-list-hideemail'          => 'ఈ-మెయిలుని చూపించకు',
+	'sig-success'                  => 'ఈ పత్రంపై మీరు విజయవంతంగా సంతకం చేసారు.',
 	'sign-viewfield-timestamp'     => 'కాలముద్ర',
 	'sign-viewfield-realname'      => 'పేరు',
 	'sign-viewfield-address'       => 'చిరునామా',
@@ -1232,6 +1249,8 @@ $messages['te'] = array(
 	'sign-viewfield-email'         => 'ఈమెయిల్',
 	'sign-viewfield-age'           => 'వయసు',
 	'sign-viewfield-options'       => 'ఎంపికలు',
+	'sign-signatures'              => 'సంతకాలు',
+	'sign-viewsignatures'          => 'సంతకాలు చూడండి',
 	'sig-anonymous'                => '<i>అనామకం</i>',
 	'sig-private'                  => '<i>అంతరంగికం</i>',
 	'sign-sigdetails'              => 'సంతకం వివరాలు',

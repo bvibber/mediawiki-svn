@@ -270,8 +270,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'minipreview-files_in_category'  => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
-	'minipreview-no_more_files_here' => 'ఇటువైపు ఇంకేమీ ఫైళ్ళు లేవు.',
+	'minipreview-files_in_category'   => 'ఈ వర్గంలోని మొత్తం $1 ఫైళ్ళు.',
+	'minipreview-files_in_gallery'    => 'ఈ కొలువులో మొత్తం $1 ఫైళ్ళు.',
+	'minipreview-no_more_files_here'  => 'ఇటువైపు ఇంకేమీ ఫైళ్ళు లేవు.',
+	'minipreview-no_category_gallery' => 'వర్గాలు లేదా కొలువులు లేవు!',
 );
 
 /** Turkish (Türkçe)

@@ -200,6 +200,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'mediafunctions-invalid-title' => '"$1" అనేది సరైన శీర్షిక కాదు',
+	'mediafunctions-not-exist'     => '"$1" అనేది లేదు',
 );
 
 /** Vietnamese (Tiếng Việt)

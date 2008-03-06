@@ -12,3 +12,11 @@ $messages['en'] = array(
 $messages['fr'] = array(
 	'navigationpopups-desc' => 'Charge, dans médiawiki, les scripts des fenêtres de navigation de Lupin',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'navigationpopups-desc' => "Laadt Lupin's navigatiescriptspopups in MediaWiki",
+);
+

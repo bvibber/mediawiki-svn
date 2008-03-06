@@ -482,6 +482,14 @@ $messages['lb'] = array(
 	'changeauthor-rev'                  => 'Versioun $1',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'changeauthor-pagenameform-go' => 'चला',
+	'changeauthor-comment'         => 'प्रतिक्रीया',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -747,6 +755,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'changeauthor'                      => 'కూర్పు యొక్క రచయితని మార్చండి',
 	'changeauthor-desc'                 => 'కూర్పు యొక్క రచయితని మార్చే వీలుకల్పిస్తుంది',
+	'changeauthor-title'                => 'కూర్పు రచయితని మార్చండి',
 	'changeauthor-search-box'           => 'కూర్పులను వెతకండి',
 	'changeauthor-pagename-or-revid'    => 'పేజీ పేరు లేదా కూర్పు ఐడీ:',
 	'changeauthor-pagenameform-go'      => 'వెళ్ళు',
@@ -758,6 +767,7 @@ $messages['te'] = array(
 	'changeauthor-revview'              => '$2 యొక్క #$1వ కూర్పు',
 	'changeauthor-nosuchtitle'          => '"$1" అనే పేరుతో పేజీ లేదు.',
 	'changeauthor-success'              => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
+	'changeauthor-logpagename'          => 'రచయిత మార్పుల దినచర్య',
 );
 
 /** Turkish (Türkçe)

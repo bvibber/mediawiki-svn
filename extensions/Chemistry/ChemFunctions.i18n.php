@@ -434,6 +434,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'chemicalsources'        => 'کيميايي سرچينې',
+	'chemicalsource-desc'    => 'د کيميايي فورمولونو لپاره د <nowiki><کيمفورمول></nowiki>، لنډنوم ورګډول',
 	'chemFunctions_ListPage' => 'کيميايي سرچينې',
 	'chemFunctions_CAS'      => 'CAS ګڼ',
 	'chemFunctions_Formula'  => 'فورمول',

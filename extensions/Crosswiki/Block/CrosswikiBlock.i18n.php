@@ -849,21 +849,22 @@ Gå tillbaka till:
  * @author Veeven
  */
 $messages['te'] = array(
-	'crosswikiblock-target'     => 'IP చిరునామా లేదా వాడుకరిపేరు మరియు గమ్యస్థానపు వికీ:',
-	'crosswikiblock-reason'     => 'కారణం:',
-	'crosswikiblock-submit'     => 'ఈ వాడుకరిని నిరోధించండి',
-	'crosswikiblock-anononly'   => 'అనామక వాడుకరులను మాత్రమే నిరోధించు',
-	'crosswikiblock-nocreate'   => 'ఖాతా సృష్టింపుని నివారించు',
-	'crosswikiblock-noemail'    => 'వాడుకరి ఈ-మెయిల్ పంపించడం నియంత్రించండి',
-	'crosswikiunblock-reason'   => 'కారణం:',
-	'crosswikiblock-nousername' => 'వాడుకరిపేరు ఇవ్వలేదు',
-	'crosswikiblock-dbnotfound' => '$1 అనే డాటాబేసు లేదు',
-	'crosswikiblock-noname'     => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
-	'crosswikiblock-nouser'     => '"$3" అనే వాడుకరి కనబడలేదు.',
-	'crosswikiblock-noexpiry'   => 'తప్పుడు కాలపరిమితి: $1.',
-	'crosswikiblock-noreason'   => 'కారణం తెలుపలేదు.',
-	'crosswikiblock-noblock'    => 'ఈ వాడుకరిని నిరోధించలేదు.',
-	'crosswikiblock-success'    => "'''$3''' అనే వాడుకరిని విజయవంతంగా నిరోధించాం.
+	'crosswikiblock-target'         => 'IP చిరునామా లేదా వాడుకరిపేరు మరియు గమ్యస్థానపు వికీ:',
+	'crosswikiblock-reason'         => 'కారణం:',
+	'crosswikiblock-submit'         => 'ఈ వాడుకరిని నిరోధించండి',
+	'crosswikiblock-anononly'       => 'అనామక వాడుకరులను మాత్రమే నిరోధించు',
+	'crosswikiblock-nocreate'       => 'ఖాతా సృష్టింపుని నివారించు',
+	'crosswikiblock-noemail'        => 'వాడుకరి ఈ-మెయిల్ పంపించడం నియంత్రించండి',
+	'crosswikiunblock-reason'       => 'కారణం:',
+	'crosswikiblock-nousername'     => 'వాడుకరిపేరు ఇవ్వలేదు',
+	'crosswikiblock-dbnotfound'     => '$1 అనే డాటాబేసు లేదు',
+	'crosswikiblock-noname'         => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',
+	'crosswikiblock-nouser'         => '"$3" అనే వాడుకరి కనబడలేదు.',
+	'crosswikiblock-noexpiry'       => 'తప్పుడు కాలపరిమితి: $1.',
+	'crosswikiblock-noreason'       => 'కారణం తెలుపలేదు.',
+	'crosswikiblock-alreadyblocked' => '$3 అనే వాడుకరిని ఇదివరకే నిరోధించాం.',
+	'crosswikiblock-noblock'        => 'ఈ వాడుకరిని నిరోధించలేదు.',
+	'crosswikiblock-success'        => "'''$3''' అనే వాడుకరిని విజయవంతంగా నిరోధించాం.
 
 తిరిగి:
 * [[Special:CrosswikiBlock|నిరోధపు ఫారం]]

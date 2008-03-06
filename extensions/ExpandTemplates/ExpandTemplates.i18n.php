@@ -946,10 +946,20 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'expand_templates_input'   => 'Матни вурудӣ:',
-	'expand_templates_output'  => 'Натиҷа',
-	'expand_templates_ok'      => 'Таъйид',
-	'expand_templates_preview' => 'Пешнамоиш',
+	'expandtemplates'                  => 'Бастдодани шаблонҳо',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Шаблонҳо, дастурҳои таҷзеҳкунанда ва мутағйирҳоро густариш медиҳад]], то матни ниҳоиро намоиш диҳад ва саҳифаро ба пешнамоиш дароварад',
+	'expand_templates_intro'           => 'Ин саҳифаи вижа матнеро дарёфт карда ва тамоми шаблонҳои ба кор рафта дар онро ба таври бозгаште баст медиҳад. Ҳамчунин тобеҳои таҷзеҳ
+<nowiki>{{</nowiki>#if:...}}, ва мутағйирҳое чун
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;ро ҳам баст медиҳад – дар воқеъ тақрибан ҳар чиро ки дохили ду акулот бошад.
+Ин кор бо садо задани марҳилаи таҷзеҳи марбут дар худи МедиаВики сурат мегирад.',
+	'expand_templates_title'           => 'Унвони мавзӯъ, барои {{PAGENAME}} ва ғайра.:',
+	'expand_templates_input'           => 'Матни вурудӣ:',
+	'expand_templates_output'          => 'Натиҷа',
+	'expand_templates_xml_output'      => 'Хуруҷӣ XML',
+	'expand_templates_ok'              => 'Таъйид',
+	'expand_templates_remove_comments' => 'Ҳазфи тавзеҳот',
+	'expand_templates_generate_xml'    => 'Намоиши дарахти таҷзеҳи XML',
+	'expand_templates_preview'         => 'Пешнамоиш',
 );
 
 /** Tonga (faka-Tonga)

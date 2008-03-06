@@ -344,6 +344,13 @@ $messages['sv'] = array(
 	'spamdifftool_submit_buttom'    => 'Lägg till',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'spamdifftool_option_domain' => 'ఈ డొమైన్ నుండి అన్నీ',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

@@ -432,6 +432,14 @@ $messages['lt'] = array(
 	'linksearch-ok' => 'Ieškoti',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'linksearch-ns' => 'नामविश्व',
+	'linksearch-ok' => 'शोध',
+);
+
 $messages['nan'] = array(
 	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
 );

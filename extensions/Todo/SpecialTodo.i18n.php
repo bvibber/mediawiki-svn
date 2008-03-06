@@ -207,6 +207,16 @@ $messages['lb'] = array(
 	'todo-list-cancel' => 'Annulléieren',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'todo-new-queue'    => 'नवे',
+	'todo-list-change'  => 'बदल',
+	'todo-list-cancel'  => 'रद्द करा',
+	'todo-form-details' => 'तपशील:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

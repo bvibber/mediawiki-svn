@@ -974,8 +974,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'badimages-name'   => 'نوم:',
-	'badimages-reason' => 'سبب:',
+	'badimages-add-btn' => 'ورګډول',
+	'badimages-name'    => 'نوم:',
+	'badimages-reason'  => 'سبب:',
 );
 
 /** Portuguese (Português)
@@ -1318,6 +1319,7 @@ $messages['te'] = array(
 	'badimages-subheading'     => 'ప్రస్తుత అంశాలు',
 	'badimages-unprivileged'   => '(ఈ జాబితాని మార్చడానికి మీకు తగిన అనుమతి లేదు)',
 	'badimages-log-name'       => 'చెడు బొమ్మల జాబితా',
+	'badimages-log-header'     => 'ఇది [[{{MediaWiki:Badimages-page}}|చెడు బొమ్మల జాబితా]]కి జరిగిన మార్పుల దినచర్య.',
 	'badimages-log-add'        => '[[$1]]ని చెడు బొమ్మల జాబితాలో చేర్చారు',
 	'badimages-log-remove'     => '[[$1]]ని చెడు బొమ్మల జాబితా నుండి తీసివేసారు',
 	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',

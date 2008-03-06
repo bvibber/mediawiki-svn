@@ -559,8 +559,12 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'scanset_next' => 'Баъдӣ &gt;',
-	'scanset_prev' => '&lt; Қаблӣ',
+	'scanset_unrecognised_index_format' => 'ScanSet: Бофтаи номушаххаси индекс',
+	'scanset_opendir_error'             => 'ScanSet: Хато, шохаи $1ро наметавон боз кард',
+	'scanset_no_files'                  => 'ScanSet: Ҳеҷ парвандае дар шохаи мушаххасшуда вуҷуд надорад.',
+	'scanset_missing_index_file'        => 'ScanSet: Парвандаи индексии $1 пайдо нашуд',
+	'scanset_next'                      => 'Баъдӣ &gt;',
+	'scanset_prev'                      => '&lt; Қаблӣ',
 );
 
 /** Turkish (Türkçe)

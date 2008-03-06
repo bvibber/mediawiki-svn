@@ -468,6 +468,16 @@ $messages['pms'] = array(
 	'ajax-se-idling'  => '(da $1 second)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ajax-se-idling'           => '($1 پخوا)',
+	'ajax-se-pagedoesnotexist' => 'دا مخ لا تر اوسه پورې نشته',
+	'ajax-se-userinvalid'      => 'ERR: ناسم کارونکی',
+	'ajax-se-usernotfound'     => 'ERR: کارونکی و نه موندل شو',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

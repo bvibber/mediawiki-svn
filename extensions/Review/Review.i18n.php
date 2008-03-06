@@ -606,6 +606,7 @@ $messages['te'] = array(
 	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
 	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
 	'review_blocked'                         => 'మిమ్మల్ని నిరోధించారు, వెళ్ళిపోండి.',
+	'review_topic'                           => 'విషయం',
 	'review_no_opinion'                      => 'అభిప్రాయం లేదు',
 	'review_rating'                          => 'రేటింగు',
 	'review_comment'                         => 'వ్యాఖ్య',

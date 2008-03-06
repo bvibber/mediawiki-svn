@@ -577,10 +577,11 @@ $messages['lv'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'sitematrix'          => 'विकिमीडियाच्या विकिंची यादी',
-	'sitematrix-language' => 'भाषा',
-	'sitematrix-project'  => 'प्रकल्पाचे नाव, आंतरप्रकल्प दुवे आणि आंतरविकि दुवे',
-	'sitematrix-others'   => 'विकिमीडियाचे इतर प्रकल्प',
+	'sitematrix'           => 'विकिमीडियाच्या विकिंची यादी',
+	'sitematrix-language'  => 'भाषा',
+	'sitematrix-project'   => 'प्रकल्पाचे नाव, आंतरप्रकल्प दुवे आणि आंतरविकि दुवे',
+	'sitematrix-others'    => 'विकिमीडियाचे इतर प्रकल्प',
+	'sitematrix-sitetotal' => 'एकूण',
 );
 
 /** Erzya (эрзянь кель)
@@ -847,9 +848,12 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'sitematrix'          => 'Феҳристи викиҳои Викимедиа',
-	'sitematrix-language' => 'Забон',
-	'sitematrix-others'   => 'Дигар лоиҳаҳои Викимедиа',
+	'sitematrix'           => 'Феҳристи викиҳои Викимедиа',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|Феҳристи викиҳои Викимедиа]]ро намоиш медиҳад',
+	'sitematrix-language'  => 'Забон',
+	'sitematrix-others'    => 'Дигар лоиҳаҳои Викимедиа',
+	'sitematrix-total'     => "'''Ҷамъи кул: $1'''",
+	'sitematrix-sitetotal' => 'Кул',
 );
 
 /** Tonga (faka-Tonga)
@@ -866,6 +870,14 @@ $messages['to'] = array(
 $messages['tr'] = array(
 	'sitematrix'          => 'Tüm Wikimedia vikilerin listesi',
 	'sitematrix-language' => 'Dil',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'sitematrix'          => 'Список проектів Вікімедіа',
+	'sitematrix-language' => 'Мова',
 );
 
 $messages['ur'] = array(

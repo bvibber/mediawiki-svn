@@ -212,6 +212,8 @@ $messages['stq'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'msfunc_nan'      => 'ఫలితపు విలువ సంఖ్య కాదు',
+	'msfunc_inf'      => 'ఫలితపు విలువ అనంతము',
 	'msfunc_div_zero' => 'సున్నాతో భాగాహారం',
 );
 

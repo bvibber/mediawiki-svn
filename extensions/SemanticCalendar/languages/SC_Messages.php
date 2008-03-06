@@ -131,6 +131,16 @@ $messages['lt'] = array(
 	'sc_gotomonth'        => 'Eiti į mėnesį',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'sc_previousmonth' => 'मागचा महीना',
+	'sc_nextmonth'     => 'पुढचा महीना',
+	'sc_today'         => 'आज',
+	'sc_gotomonth'     => 'महीन्याकडे चला',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author GerardM

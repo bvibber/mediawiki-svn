@@ -232,6 +232,13 @@ $messages['lb'] = array(
 	'formbadpagename'       => 'Falsche Säitennumm',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'formsave' => 'जतन करा',
+);
+
 $messages['nl'] = array(
 	'form' => 'Formulier',
 	'formnoname' => 'Geen formuliernaam',

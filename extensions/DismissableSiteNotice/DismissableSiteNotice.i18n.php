@@ -426,6 +426,7 @@ $messages['tet'] = array(
  */
 $messages['tg'] = array(
 	'sitenotice_close' => 'бастан',
+	'sitenotice-desc'  => 'Ба корбарон иҷозат медиҳад, ки эълоноти сомонаро пинҳон кунанд',
 );
 
 /** Turkish (Türkçe)

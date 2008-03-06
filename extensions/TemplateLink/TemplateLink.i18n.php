@@ -102,6 +102,14 @@ $messages['lb'] = array(
 		'templatelink_newtitle' => '$1 (ersat)',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'templatelink'          => 'साचे दुवा',
+	'templatelink_newtitle' => '$1 (आंतरन्यास)',
+);
+
 $messages['nl'] = array(
                 'templatelink' => 'Sjabloonverwijzing',
                 'templatelink_empty' => 'Geef een parameter op.',

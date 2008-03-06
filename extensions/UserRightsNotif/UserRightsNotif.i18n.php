@@ -278,6 +278,7 @@ Tog bort: $6
 Hälsningar 
 
 $2',
+	'userrightsnotif-desc'    => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
 );
 
 /** Turkish (Türkçe)

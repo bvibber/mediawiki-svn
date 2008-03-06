@@ -751,8 +751,11 @@ $messages['te'] = array(
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|కూర్పు కాపీ అయ్యింది|కూర్పులు కాపీ అయ్యియి}}.',
 	'duplicator-success-talkcopied'    => 'చర్చాపేజీ కూడా కాపీ అయ్యింది.',
 	'duplicator-success-talknotcopied' => 'చర్చా పేజీని కాపీ చేయ్యలేకపోయాం.',
+	'duplicator-source-invalid'        => 'సరైన మూలపు శీర్షికని ఇవ్వండి.',
 	'duplicator-source-notexist'       => '[[$1]] అన్నది లేదు. ఏదైనా ఉన్న పేజీ యొక్క శీర్షిక ఇవ్వండి.',
+	'duplicator-dest-invalid'          => 'సరైన గమ్యస్థానపు శీర్షికని ఇవ్వండి.',
 	'duplicator-dest-exists'           => '[[$1]] అనేది ఇప్పటికే ఉంది. దయచేసి ఉనికిలోనేని గమ్యస్థానపు శీర్షికను ఇవ్వండి.',
+	'duplicator-toomanyrevisions'      => '[[$1]]కి చాలా ($2) కూర్పులున్నాయి కనుక దాన్ని కాపీ చేయలేము. ప్రస్తుత పరిమితి $3.',
 );
 
 /** Turkish (Türkçe)

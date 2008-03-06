@@ -60,15 +60,17 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'importusers'                 => 'Внасяне на потребители',
-	'importusers-uploadfile'      => 'Качване на файл',
-	'importusers-form-button'     => 'Внасяне',
-	'importusers-log'             => 'Дневник на внасянията',
-	'importusers-log-summary'     => 'Резюме',
-	'importusers-log-summary-all' => 'Всички',
-	'importusers-password'        => 'парола',
-	'importusers-email'           => 'е-поща',
-	'importusers-realname'        => 'истинско име',
+	'importusers'                     => 'Внасяне на потребители',
+	'importusers-uploadfile'          => 'Качване на файл',
+	'importusers-form-button'         => 'Внасяне',
+	'importusers-log'                 => 'Дневник на внасянията',
+	'importusers-log-summary'         => 'Резюме',
+	'importusers-log-summary-all'     => 'Всички',
+	'importusers-log-summary-added'   => 'Добавен',
+	'importusers-log-summary-updated' => 'Обновен',
+	'importusers-password'            => 'парола',
+	'importusers-email'               => 'е-поща',
+	'importusers-realname'            => 'истинско име',
 );
 
 /** German (Deutsch)

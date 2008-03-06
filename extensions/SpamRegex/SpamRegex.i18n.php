@@ -205,6 +205,14 @@ $messages['lb'] = array(
 	'spamregex-summary-log' => '(Resumé)',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'spamregex-log-2'       => '$1वर',
+	'spamregex-summary-log' => 'आढावा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -369,9 +377,10 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'spamregex_summary'       => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
-	'spamregex-block-success' => 'నిరోధం విజయవంతమయ్యింది',
-	'spamregex-text'          => '(పాఠ్యం)',
-	'spamregex-summary-log'   => '(సంగ్రహం)',
+	'spamregex_summary'         => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
+	'spamregex-block-success'   => 'నిరోధం విజయవంతమయ్యింది',
+	'spamregex-already-blocked' => '"$1"ని ఈసరికే నిరోధించాం',
+	'spamregex-text'            => '(పాఠ్యం)',
+	'spamregex-summary-log'     => '(సంగ్రహం)',
 );
 

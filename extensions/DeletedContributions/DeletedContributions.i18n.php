@@ -461,6 +461,14 @@ $messages['te'] = array(
 	'deletedcontributions-desc' => 'నిర్వాహకులకు [[Special:DeletedContributions|వాడుకరుల యొక్క తొలగించిన మార్పులను]] చూసే అవకాశం కలిగిస్తుంది',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'deletedcontributions'      => 'Ҳиссагузориҳои ҳазфшудаи корбар',
+	'deletedcontributions-desc' => 'Ба мудирон имкони [[Special:DeletedContributions|мушоҳидаи вироишҳои ҳазфшудаи як корбар]]ро медиҳад',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */

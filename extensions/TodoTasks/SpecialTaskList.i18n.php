@@ -211,6 +211,13 @@ $messages['lb'] = array(
 	'tasklistbyname'         => '== Lëscht vun den Aufgabe fir %s ==',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'tasklistmytasks' => 'माझ्या जबाबदार्‍या',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -391,9 +398,11 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'tasklist'              => 'పనుల జాబితా',
+	'tasklistbyproject'     => 'ప్రాజెక్టులవారీగా పనుల జాబితా',
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
 	'tasklistemail'         => 'ప్రియమైన %s',
 	'tasklistmytasks'       => 'నా పనులు',
+	'tasklistbyname'        => '== %s కొరకు చేయాల్సిన పనుల జాబితా ==',
 );
 
 /** Turkish (Türkçe)

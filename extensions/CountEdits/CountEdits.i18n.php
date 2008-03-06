@@ -347,7 +347,9 @@ $messages['km'] = array(
 	'countedits-warning'      => "'''ប្រយ័ត្ន ៖''' មិនត្រូវវិនិច្ឆ័យ សៀវភៅ ដោយសារ ក្រប របស់វា ។ មិនត្រូវវិនិច្ឆ័យ អ្នករួមចំណែក ដោយសារ របាប់ កំណែប្រែ របស់ពួកគេ។",
 	'countedits-username'     => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
 	'countedits-ok'           => 'យល់ព្រម',
+	'countedits-nosuchuser'   => 'គ្មាន អ្នកប្រើប្រាស់ ឈ្មោះ $1 ។',
 	'countedits-resultheader' => 'លទ្ធផល ចំពោះ $1',
+	'countedits-resulttext'   => '$1 បានធ្វើ $2 កំណែប្រែ',
 	'countedits-mostactive'   => 'អ្នករួមចំណែក សកម្មបំផុត',
 	'countedits-nocontribs'   => 'គ្មានការរួមចំណែក ទៅ វិគី នេះ ។',
 );
@@ -666,6 +668,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'countedits'              => 'మార్పులను లెక్కించు',
+	'countedits-warning'      => "'''హెచ్చరిక:''' పుస్తకాన్ని దాని అట్ట చూసి అంచనా వెయ్యవద్దు. ఒకరిని వారి మార్పుల సంఖ్య చూసి నిర్ణయించకూడదు.",
 	'countedits-username'     => 'వాడుకరి పేరు:',
 	'countedits-ok'           => 'సరే',
 	'countedits-nosuchuser'   => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',

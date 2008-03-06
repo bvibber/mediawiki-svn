@@ -190,6 +190,13 @@ $messages['sv'] = array(
 	'icon-badwidth' => 'Dålig bredd',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'icon-badwidth' => 'తప్పుడు వెడల్పు',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

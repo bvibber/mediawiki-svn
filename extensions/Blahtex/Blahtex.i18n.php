@@ -1375,6 +1375,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'math_CannotCreateTexFile' => 'tex ఫైలు సృష్టించలేకున్నాం',
+	'math_CannotRunDvipng'     => 'dvipngని నడపలేకున్నాం',
+	'math_CannotRunLatex'      => 'latexని నడపలేకున్నాం',
 	'math_IllegalRedefinition' => '"$1" అనే ఆదేశం ఈపాటికే నిర్వచించబడిందిచ మీరు దాన్నీ మళ్ళీ నిర్వచించలేరు',
 	'math_InvalidColour'       => '"$1" అనే రంగు సరైంది కాదు',
 	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
