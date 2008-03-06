@@ -15,8 +15,7 @@
 global $wgHooks, $IP;
 require_once "$IP/includes/QueryPage.php";
 
-class Disabledusers extends SpecialPage
-{
+class Disabledusers extends SpecialPage {
 	///StalePages Class Constructor
 	public function __construct() {
 		SpecialPage::SpecialPage( 'Disabledusers', 'passwordreset' );
@@ -36,8 +35,7 @@ class Disabledusers extends SpecialPage
 	}
 }
 
-class DisabledusersPage extends QueryPage
-{
+class DisabledusersPage extends QueryPage {
 	function getName() {
 		return "Disabledusers";
 	}
@@ -48,16 +46,18 @@ class DisabledusersPage extends QueryPage
 
 	function getPageHeader() {
 		global $wgOut;
-		return $wgOut->parse( wfMsg( 'disabledusers-summary', 270) );
+		return $wgOut->parse( wfMsg( 'disabledusers-summary', 270 ) );
 	}
 
-	function isSyndicated() { return false; }
+	function isSyndicated() {
+		return false;
+	}
 
 	function getSQL() {
 		global $wgDBtype;
 		$db = wfGetDB( DB_SLAVE );
 		$user = $db->tableName( 'user' );
-		
+
 		return
 			"SELECT 'Disabledusers' as type, 
 			user_id, 
@@ -72,7 +72,7 @@ class DisabledusersPage extends QueryPage
 
 	function formatResult( $skin, $result ) {
 		global $wgUser;
-		
+
 		$formattedRow = $skin->userLink( $result->user_id, $result->value ) . 
 						$skin->userToolLinks( $result->user_id, $result->value );
 		return $formattedRow;
