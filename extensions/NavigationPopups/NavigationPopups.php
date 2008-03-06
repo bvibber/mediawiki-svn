@@ -1,5 +1,17 @@
 <?php
 
+$wgExtensionCredits['other'][] = array( 
+	'name'           => 'Navigation popups',
+	'version'        => '0.1',
+	'author'         => 'sanbeg',
+	'description'    => 'Loads Lupin’s navigation popups in mediawiki',
+	'descriptionmsg' => 'navigationpopups-desc',
+	'url'            => 'http://en.wikipedia.org/wiki/Wikipedia:Tools/Navigation_popups',
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['NavigationPopups'] = $dir . 'NavigationPopups.18n.php';
+
 $wgHooks['OutputPageParserOutput'][] = 'efInstallPopups';
 
 function efInstallPopups( &$outputPage, $parserOutput) 
