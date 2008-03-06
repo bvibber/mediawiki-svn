@@ -1,0 +1,93 @@
+<?PHP
+/**
+  Maintains a table with hash values for category intersections within an article
+  (c) 2008 by Magnus Manske
+  Released under GPL
+
+  SQL for creating categoryintersections table:
+
+  CREATE TABLE `categoryintersections` (
+    `ci_page` int(10) NOT NULL,
+    `ci_hash` varchar(32) collate latin1_general_ci NOT NULL,
+    PRIMARY KEY  (`ci_page`,`ci_hash`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+**/
+
+# Alert the user that this is not a valid entry point to MediaWiki if they try to access the skin file directly.
+if (!defined('MEDIAWIKI')) {
+        echo <<<EOT
+To install my extension, put the following line in LocalSettings.php:
+require_once("$IP/extensions/CategoryIntersection/CategoryIntersection.php");
+EOT;
+        exit(1);
+}
+ 
+$dir = dirname(__FILE__) . '/';
+ 
+$wgHooks['LinksUpdate'][] = 'CategoryIntersectionLinksUpdate';
+
+$wgAutoloadClasses['CategoryIntersection'] = $dir . 'CategoryIntersection_body.php'; # Tell MediaWiki to load the extension body.
+$wgExtensionMessagesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.i18n.php';
+$wgSpecialPages['CategoryIntersection'] = 'CategoryIntersection'; # Let MediaWiki know about your new special page.
+$wgHooks['LanguageGetSpecialPageAliases'][] = 'categoryIntersectionLocalizedPageName'; # Add any aliases for the special page.
+ 
+function categoryIntersectionLocalizedPageName(&$specialPageArray, $code) {
+  # The localized title of the special page is among the messages of the extension:
+  wfLoadExtensionMessages('CategoryIntersection');
+  $text = wfMsg('categoryintersection');
+ 
+  # Convert from title in text form to DBKey and put it into the alias array:
+  $title = Title::newFromText($text);
+  $specialPageArray['Categoryintersection'][] = $title->getDBKey();
+ 
+  return true;
+}
+
+
+
+function CategoryIntersectionGetHashValues ($categories) {
+  sort ($categories);
+  $hash = array ();
+  $hv = array ();
+  foreach ($categories AS $k => $c1) {
+    foreach ($categories AS $c2) {
+      if ($c1 == $c2) continue;
+      if ($c1 < $c2) $key = $c1 . '|' . $c2;
+      else $key = $c2 . '|' . $c1;
+      if (isset ($hash[$key])) continue; // This combination was already done
+      $m = md5 ($key);
+      if (isset ($hv[$m])) continue; // This hash value is already in there, prevent unique index conflict
+      $hash[$key] = $m;
+      $hv[$m] = 1;
+    }
+    unset ($categories[$k]); // No more combinations with this
+  }
+  return $hash;
+}
+
+/**
+  Updates the category intersection table for a page.
+  Called by LinksUpdate hook.
+**/
+function CategoryIntersectionLinksUpdate (&$linksUpdate) {
+  
+  // Get categories
+  $categories = $linksUpdate->mCategories; // The keys of this array are the categories of this page, without cateogry prefix, ucfirst, underscores
+  $categories = array_keys ($categories);
+  $hash = CategoryIntersectionGetHashValues ($categories);
+  
+  // Prepare new hash values for table insertion
+  $arr = array ();
+  foreach ($hash AS $k => $v) {
+    $arr[] = array (
+      'ci_page' => $linksUpdate->mId ,
+      'ci_hash' => $v
+);
+  }
+
+  // Update hash table
+  $linksUpdate->dumbTableUpdate ('categoryintersections', $arr, 'ci_page');
+  
+  return true; // My work here is done
+}
