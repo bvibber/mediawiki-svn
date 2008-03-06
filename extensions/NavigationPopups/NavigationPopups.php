@@ -41,5 +41,3 @@ function efInstallPopups( &$outputPage, $parserOutput)
 			 "</script>");
   return true;
 }
-
-?>
