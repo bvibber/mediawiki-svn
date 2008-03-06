@@ -4,8 +4,11 @@
 * sends back type text/plain
 * 
 * @@todo enhance so the payload is transmitable via javascript object payload 
-* (less cross site request issues) 
+* (so that remote use of mv_embed can load remote xml ) 
 */
+
+//NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable; 
+//die('note mv_data_proxy is disabled by default');
 if(isset($_POST['url'])){
 	if(function_exists('curl_init') ){
 		$ch = curl_init();

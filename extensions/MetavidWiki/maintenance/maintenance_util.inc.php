@@ -131,16 +131,16 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		if ($wgTitle->exists()) {			
 			//if last edit!=mvBot skip (don't overwite peoples improvments') 
 			$rev = & Revision::newFromTitle($wgTitle);
-			if( $botUserName!= $rev->getRawUserText() ){
+			if( $botUserName!= $rev->getRawUserText() && !$forceUpdate ){
 				print ' skiped page ' .$wgTitle->getNsText() .':'.$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
-				if(!$forceUpdate)return ;				
+				return ;				
 			}
 			//proc article:		
 			$cur_text = $wgArticle->getContent();
 			//if its a redirect skip
-			if(substr($cur_text, 0, strlen('#REDIRECT') )=='#REDIRECT'){
+			if(substr($cur_text, 0, strlen('#REDIRECT') )=='#REDIRECT' && !$forceUpdate){
 				print ' skiped page moved by user:'.$rev->getRawUserText()."\n";
-				if(!$forceUpdate)return ;
+				return ;
 			}			
 			//check if text is identical: 		
 			if (trim($cur_text) == trim($wikiText)) {

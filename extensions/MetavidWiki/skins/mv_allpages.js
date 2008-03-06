@@ -3,7 +3,6 @@
 mv_addLoadEvent(mv_setup_allpage); 	
 function mv_setup_allpage(){	
 	//make sure we have jQuery and any base requried libs: 
-
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){			
  		_global['$j'] = jQuery.noConflict();	
  		mvJsLoader.doLoad({'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
@@ -76,8 +75,7 @@ function mv_cxt(inx){
 	});
 }
 function mv_setup_search_ac(){
-	uri = wgServer +
-	((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
+	var uri = wgScript;
 	//add the person choices div to searchInput
 	var obj = $j('#searchInput').get(0);
 	//base offset: 

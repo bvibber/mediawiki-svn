@@ -70,7 +70,6 @@ define('CC_OFFSET', -30);
 $optionsWithArgs = array ();
 
 
-
 if (count($args) == 0 || isset ($options['help'])) {
 	print<<<EOT
 Load Streams/data from the metavid database

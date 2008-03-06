@@ -689,7 +689,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]',null, $mvForceUpdate);							
 		//set up link on the category page:
 		$wgCatPageTitle =Title::newFromText($bill_key, NS_CATEGORY);		
-		do_update_wiki_page($wgCatPageTitle, 'See Bill Page For More Info: [[:'.$wgBillTitle->getText().']]');		
+		do_update_wiki_page($wgCatPageTitle, 'See Bill Page For More Info: [[:'.$wgBillTitle->getText().']]', null, $mvForceUpdate);		
 	}
 	function procMapLightInterest($interest){
 		 global $mvMaxContribPerInterest, $mvMaxForAgainstBills;

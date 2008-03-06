@@ -57,7 +57,7 @@ for($i=1;$i<20;$i++){
 }
 $bill_template.='{{ #if: {{{Opposing Interest 1|}}}|<h2>Interests who <span style="color:red">oppose</span> bill becoming law</h2>'."\n".' |}}';
 for($i=1;$i<20;$i++){
-	$bill_template.='{{ #if: {{{Opposing Interest '.$i.'|}}}|* [[Opposing Interest:={{{Supporting Interest '.$i.'}}}]]'."\n".'|}}';
+	$bill_template.='{{ #if: {{{Opposing Interest '.$i.'|}}}|* [[Opposing Interest:={{{Opposing Interest '.$i.'}}}]]'."\n".'|}}';
 }
 //@@todo could do inline rss once we get a good cache model for http://www.mediawiki.org/wiki/Extension:RSS_Reader
 // maybe just action=purge on as a cron job, with $parser->disableCache(); commented out 
