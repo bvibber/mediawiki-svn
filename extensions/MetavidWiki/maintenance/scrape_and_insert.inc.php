@@ -589,15 +589,13 @@ class MV_BillScraper extends MV_BaseScraper{
 			return false;
 		}
 	}
-	function proccessBill($govTrackBillId, $bill_key, $openCongBillId=false, $mapLightBillId=false){
+	function proccessBill($govTrackBillId, $bill_key, $openCongBillId=false, $mapLightBillId=false, $forceUpdate=false){
 		//get the bill title & its sponser / cosponsers: 
 		$rawGovTrackPage = $this->doRequest($this->govTrack_bill_url . $govTrackBillId);		
 
-
 		/*****************************
 		 * Proccess Bill GovTrack info
-		 *****************************/
-									
+		 *****************************/								
 		print "gov_track id: ". $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId. "\n";
 		
 		//get title: 
@@ -684,9 +682,11 @@ class MV_BillScraper extends MV_BaseScraper{
 		$wgBillTitle = Title::newFromText($title_short);
 		do_update_wiki_page($wgBillTitle, $bp);		
 		
-		//set up a redirect for the bill key, and a link for the category page: 
-		$wgBillKeyTitle =Title::newFromText($bill_key);
-		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]');							
+		//set up a redirect for the bill key, and a link for the category page:
+		print "\ndo redirect for: $title_short \n";
+		global $mvForceUpdate;
+		$wgBillKeyTitle =Title::newFromText($bill_key);		
+		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]',null, $mvForceUpdate);							
 		//set up link on the category page:
 		$wgCatPageTitle =Title::newFromText($bill_key, NS_CATEGORY);		
 		do_update_wiki_page($wgCatPageTitle, 'See Bill Page For More Info: [[:'.$wgBillTitle->getText().']]');		
@@ -729,12 +729,15 @@ class MV_BillScraper extends MV_BaseScraper{
 		return $ret_ary;
 	}
 	function get_bill_name_from_mapLight_id($mapBillId, $doLookup=true){
-		if(!isset($this->mapLight_bill_cache)){
-			$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Bill_ID\'';
-			$dbr = wfGetDB( DB_SLAVE );	
-			$res = $dbr->query($sql);
-			while ($row = $dbr->fetchObject($res)) {
-				$this->mapLight_bill_cache[$row->value_xsd]=$row->subject_title;
+		global $mvForceUpdate;
+		if(!$mvForceUpdate){
+			if(!isset($this->mapLight_bill_cache)){
+				$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Bill_ID\'';
+				$dbr = wfGetDB( DB_SLAVE );	
+				$res = $dbr->query($sql);
+				while ($row = $dbr->fetchObject($res)) {
+					$this->mapLight_bill_cache[$row->value_xsd]=$row->subject_title;
+				}
 			}
 		}
 		if(!isset($this->mapLight_bill_cache[$mapBillId])){
@@ -776,7 +779,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		}
 		return str_replace('_',' ',$this->govTrack_cache[$govID]);
 	}
-	function get_wiki_name_from_maplightid($mapID){
+	function get_wiki_name_from_maplightid($mapID){		
 		if(!isset($this->mapLight_cache)){
 			$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Person_ID\'';
 			$dbr = wfGetDB( DB_SLAVE );	

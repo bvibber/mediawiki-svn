@@ -515,6 +515,9 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 	
 	return $out;
 }
+function do_bill_insert($bill_key){
+		print "not yet implemented\n";
+}
 function do_people_insert($doInterestLookup=false, $forcePerson='', $force=false) {
 	global $valid_attributes, $states_ary;
 	$dbr = wfGetDB(DB_SLAVE);
@@ -704,6 +707,7 @@ function do_proc_interest($intrestKey, $intrestName){
 	global $mvMaxContribPerInterest,$mvMaxForAgainstBills;
 	include_once('scrape_and_insert.inc.php');		
 	$mvScrape = new MV_BillScraper();
+	
 	
 	$raw_results = $mvScrape->doRequest('http://www.maplight.org/map/us/interest/'.$intrestKey.'/view/all');
 	$page_body ='{{Interest Group|'."\n";

@@ -131,9 +131,9 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		if ($wgTitle->exists()) {			
 			//if last edit!=mvBot skip (don't overwite peoples improvments') 
 			$rev = & Revision::newFromTitle($wgTitle);
-			if( $botUserName!= $rev->getRawUserText() && !$forceUpdate){
+			if( $botUserName!= $rev->getRawUserText() ){
 				print ' skiped page ' .$wgTitle->getNsText() .':'.$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
-				return ;
+				if(!$forceUpdate)return ;				
 			}
 			//proc article:		
 			$cur_text = $wgArticle->getContent();
@@ -145,7 +145,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 			//check if text is identical: 		
 			if (trim($cur_text) == trim($wikiText)) {
 				print "text " .$wgTitle->getNsText() .':'.$wgTitle->getText() ." is identical (no update)\n";
-				//if force update double check the mvd for consistancy 		
+				//if force update double check the mvd for consistancy? 		
 				return ; 							
 			}
 			
