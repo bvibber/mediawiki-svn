@@ -92,7 +92,7 @@ function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
  */
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'SmoothGallery parser extension',
-	'version'     => '1.1b (alpha)',
+	'version'     => '1.1c (beta)',
 	'author'      => 'Ryan Lane',
 	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
 	'descriptionmsg' => 'smoothgallery-desc',
