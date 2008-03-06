@@ -133,10 +133,10 @@
 	 */
 	 function mvDoSpecialPage($wgOut){
 	 	global $wgTitle;	
-	 	//if special semantic browse page: 
- 		if($wgTitle->getNamespace()==NS_SPECIAL && $wgTitle->getText()=='Browse'){
- 			mvfAddHTMLHeader('smw_ext');
- 		}
+	 	//if special semantic browse page (moved to all pages)  
+ 		//if($wgTitle->getNamespace()==NS_SPECIAL && $wgTitle->getText()=='Browse'){
+ 		//	mvfAddHTMLHeader('smw_ext');
+ 		//}
 	 	return true;
 	 }
  	/*
@@ -299,8 +299,8 @@
 		}
 		
 		if($mvStream->db_load_stream()){			
-			global $mvServeImageRedirect;
-			if($mvServeImageRedirect || $redirect_req){
+			global $mvServeImageRedirect, $mvExternalImages;
+			if($mvServeImageRedirect || $redirect_req || $mvExternalImages){
 				header("Location:" . MV_StreamImage::getStreamImageURL($stream_id, $req_time, $req_size, true));
 			}else{								
 				//serve up the image directly

@@ -36,7 +36,6 @@
 				$sk =& $wgUser->getSkin();						
 				
 				//get the ajax edit		
-				include_once($mvgIP . '/includes/MV_MetavidInterface/MV_EditPageAjax.php');
 				$editPageAjax = new MV_EditPageAjax( $article);				
 				$editPageAjax->mvd_id = 'seq';		
 				
@@ -80,7 +79,6 @@
 	}
 	function add_clips_manual(){	
 		global $wgOut, $mvgIP, $mvDefaultSearchVideoPlaybackRes;
-		include_once($mvgIP . '/includes/MV_MetavidInterface/MV_Overlay.php');
 		$MV_Overlay = new MV_Overlay();
 		//add preview clips space and manual add title
 		list($iw, $ih) = 	explode('x',$mvDefaultSearchVideoPlaybackRes);	
@@ -101,7 +99,6 @@
 	}
 	function do_edit_submit(){
 		global $mvgIP, $wgOut,$wgUser,$wgParser;		
-		include_once($mvgIP . '/includes/articlepages/MV_SequencePage.php');
 		$titleKey = $_POST['title'];
 		//set up the title /article
 		$title = Title::newFromText($titleKey, MV_NS_SEQUENCE);

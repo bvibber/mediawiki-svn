@@ -291,7 +291,7 @@ function mv_add_person_ac(inx){
 		{
 			autoFill:true,
 			onItemSelect:function(v){		
-				console.log('selected:' + v.innerHTML );
+				js_log('selected:' + v.innerHTML );
 				//update the image: 
 				$j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
 			},

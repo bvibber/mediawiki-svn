@@ -80,7 +80,7 @@ Load Streams/data from the metavid database
 Usage php metavid2mvWiki.php [options] action	
 ie: senate_proceeding_04-11-07
 options:
-		--noimage will skip image downloading 
+		--skipimage will skip image downloading 
 		--skiptext skips text sync
 		--skipfiles skips files
 		--skipSpeechMeta  skips annotation track with Speech By tags for continues Spoken By attr 

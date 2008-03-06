@@ -105,7 +105,7 @@ Opposed Bill #=Bills Interest group Opposed (long name) 1-'.$mvMaxForAgainstBill
 }}</pre>
 </noinclude><includeonly>
 {{ #if: {{{Funded Name 1|}}}|==Recipients Funded==
-Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MAPLight Interest ID}}}|MAPLight source]]
+Showing contributions 2001-2008 Senate / 2005-2008 House [[Data_Source_URL:=http://maplight.org/map/us/interest/{{{MAPLight Interest ID}}}/view/all|MAPLight source]]
 |}}';
 /*
  * output top $mvMaxContribPerInterest contributers
@@ -115,7 +115,7 @@ for($i=1;$i<=$mvMaxContribPerInterest;$i++){
 		$interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount '.$i.'}}}]] |}}';
 		if($i!=10)$interest_template.="\n";
 	}else{
-		$interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount '.$i.'}}}|]] |}}'."\n";
+		$interest_template.='{{ #if: {{{Funded Name '.$i.'|}}}|*[[Funded:={{{Funded Name '.$i.'}}};{{{Funded Amount '.$i.'}}}|]] |}}';
 	}
 }
 

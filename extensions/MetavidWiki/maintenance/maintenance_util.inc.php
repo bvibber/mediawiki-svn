@@ -44,8 +44,17 @@ function mv_is_valid_person($person_key){
 			__METHOD__,
 			array('LIMIT'=>'1'));*/
 	list($fname, $lname) = explode('_', $person_key);
+	//check for wiki title before checking first /last
+	$pTitle = Title::newFromText($person_key);
+	if($pTitle->exists()){
+		print $person_key . " valid\n";
+		$mv_valid_people_cache[$person_key]=true;
+	} 
+	
 	$firstok=$lastok=false;
-	$result = $dbr->query('SELECT `subject_title` FROM `smw_attributes` WHERE `attribute_title` = \'First_Name\'AND `value_xsd`=\''.$fname.'\'');	
+	$sql = 'SELECT `subject_title` FROM `smw_attributes` WHERE `attribute_title` = \'First_Name\' AND `value_xsd` LIKE \'%'.$fname.'%\'';
+	//print $sql;
+	$result = $dbr->query($sql);	
 	if($dbr->numRows($result)!= 0){
 		$firstok=true;
 		$frow=$dbr->fetchObject($result);
@@ -87,10 +96,15 @@ function append_to_wiki_page($wgTitle, $append_text, $unique=true){
 	}
 }
 function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false) {
-	global $botUserName;
+	global $botUserName;		
 	if (!is_object($wgTitle)) {	
 		//get the title and make sure the first letter is uper case 
 		$wgTitle = Title::makeTitle($ns, ucfirst($wgTitle));
+	}
+	
+	if(trim($wgTitle->getDBKey())==''){
+		print "empty title (no insert /update) \n";
+		return ;
 	}
 	//print "INSERT BODY: ".$wikiText;
 	//make sure the text is utf8 encoded: 
@@ -111,28 +125,35 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		print "\n";
 		return ;		
 	}		
-	if ($wgTitle->exists()) {			
-		//if last edit!=mvBot skip (don't overwite peoples improvments') 
-		$rev = & Revision::newFromTitle($wgTitle);
-		if( $botUserName!= $rev->getRawUserText() && !$forceUpdate){
-			print ' skiped page ' .$wgTitle->getNsText() .':'.$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
-			return ;
-		}
-		//proc article:		
-		$cur_text = $wgArticle->getContent();
-		//if its a redirect skip
-		if(substr($cur_text, 0, strlen('#REDIRECT') )=='#REDIRECT'){
-			print ' skiped page moved by user:'.$rev->getRawUserText()."\n";
-			if(!$forceUpdate)return ;
-		}
-		//check if text is identical: 		
-		if (trim($cur_text) == trim($wikiText)) {
-			print "text " .$wgTitle->getNsText() .':'.$wgTitle->getText() ." is identical (no update)\n";					
-			return ;
+	if($wgTitle->getNamespace()==MV_NS_MVD && MV_Index::getMVDbyTitle($wgTitle->getDBkey())==null){
+		print " missing assoc mvd ...update \n";
+	}else{		
+		if ($wgTitle->exists()) {			
+			//if last edit!=mvBot skip (don't overwite peoples improvments') 
+			$rev = & Revision::newFromTitle($wgTitle);
+			if( $botUserName!= $rev->getRawUserText() && !$forceUpdate){
+				print ' skiped page ' .$wgTitle->getNsText() .':'.$wgTitle->getText(). ' edited by user:'.$rev->getRawUserText()." != $botUserName \n";
+				return ;
+			}
+			//proc article:		
+			$cur_text = $wgArticle->getContent();
+			//if its a redirect skip
+			if(substr($cur_text, 0, strlen('#REDIRECT') )=='#REDIRECT'){
+				print ' skiped page moved by user:'.$rev->getRawUserText()."\n";
+				if(!$forceUpdate)return ;
+			}			
+			//check if text is identical: 		
+			if (trim($cur_text) == trim($wikiText)) {
+				print "text " .$wgTitle->getNsText() .':'.$wgTitle->getText() ." is identical (no update)\n";
+				//if force update double check the mvd for consistancy 		
+				return ; 							
+			}
+			
 		}
 	}
 	//got here do the edit: 	
-	$sum_txt = 'metavid bot insert';	
+	$sum_txt = 'metavid bot insert';
+		
 	$wgArticle->doEdit($wikiText, $sum_txt);
 	print "did edit on ". $wgTitle->getNsText() .':'. $wgTitle->getDBkey() . "\n";
 	//die;

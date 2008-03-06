@@ -189,7 +189,7 @@ function do_stream_insert($mode, $stream_name = '') {
 			do_stream_attr_check($stream);
 		}
 		//do insert/copy all media images 
-		if(!isset($options['noimage'])){
+		if(!isset($options['skipimage'])){
 			do_proccess_images($stream, $force);
 			print "done with images\n";
 		}
@@ -208,12 +208,13 @@ function do_stream_insert($mode, $stream_name = '') {
 	}
 }
 function do_annotate_speeches($stream){
+	print "do annotations for $stream->name \n";
 	//get all mvd's 	
 	$mvStream =MV_Stream::newStreamByName($stream->name);
 	if($mvStream->doesStreamExist()){
 		$dbr =& wfGetDB(DB_SLAVE);
 		//get all meta in range (up 10k) 
-		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by', 'LIMIT 0, 10000'); 
+		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by', 'LIMIT 0, 10000');		
 		if(count($dbr->numRows($mvd_res))!=0){
 			$prev_person =''; 			
 			$prev_st=$prev_et=0;
@@ -226,12 +227,13 @@ function do_annotate_speeches($stream){
 					}else{						
 						if($prev_person==$mvd->Spoken_by){
 							//continue
+							//print "acumulating for $mvd->Spoken_by \n";
 							$prev_et = $mvd->end_time;
 						}else{
 							//diffrent person: if more than 1 min long
 							if( $prev_et - $prev_st > 60){ 
 								$doSpeechUpdate=true;
-								print "insert annotation $prev_person: $prev_st to $prev_et \n";
+								print "insert annotation $prev_person: ".seconds2ntp($prev_st)." to ".seconds2ntp($prev_et)." \n";
 								//check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges) (up to 10,000 meta per stream) 
 								$mvd_anno_res = MV_Index::getMVDInRange($mvStream->getStreamId(), $prev_st+1, $prev_et-1, 'Anno_en',false, 'Speech_by'); 
 								while($row = $dbr->fetchObject($mvd_anno_res)){
@@ -245,14 +247,15 @@ function do_annotate_speeches($stream){
 									$page_txt = 'Speech By: [[Speech by:='.str_replace('_', ' ', $prev_person).']]';
 									$annoTitle = Title::makeTitle(MV_NS_MVD, 'Anno_en:'.$mvStream->getStreamName().'/'.seconds2ntp($prev_st).'/'.seconds2ntp($prev_et)); 
 									do_update_wiki_page( $annoTitle, $page_txt);
-								}					
-								$prev_person=$mvd->Spoken_by; //init case:
-								$prev_st = $mvd->start_time; 
+								}													 
 							}
+							$prev_person=$mvd->Spoken_by; //init case:
+							$prev_st = $mvd->start_time;
 						}
 					}
 				}
 			}
+			print "\n\ndone with annotation inserts got to ".seconds2ntp($prev_et). ' of ' .seconds2ntp($mvStream->getDuration()) . "\n";
 		}
 	}
 }
@@ -350,8 +353,8 @@ function do_proccess_images($stream, $force=false) {
 		$local_img_dir = MV_StreamImage::getLocalImageDir($mv_stream_id);
 		$res = $dbr->query("SELECT * FROM `$wgDBname`.`mv_stream_images` WHERE  `stream_id`={$mv_stream_id}");
 		while ($row = $dbr->fetchObject($res)) {
-			$local_img_file = $local_img_dir . '/' . $row->time . '.jpg';
-			unlink($local_img_file);
+			$local_img_file = $local_img_dir . '/' . $row->time . '*.jpg';
+			shell_exec('rm -f '. $local_img_file);
 		}
 		//remove db entries: 	
 		$dbw->query("DELETE FROM `$wgDBname`.`mv_stream_images` WHERE  `stream_id`={$mv_stream_id}");		
@@ -361,7 +364,7 @@ function do_proccess_images($stream, $force=false) {
 		$relative_time = $row->time - $stream->adj_start_time;
 		//status updates: 
 		if ($i == 10) {			
-			print "On image $j of $img_count time: " . seconds2ntp($relative_time) . "\n";
+			print "On image $j of $img_count time: " . seconds2ntp($relative_time) . " $metavid_img_url\n";
 			$i = 0;
 		}
 		$j++;
@@ -724,6 +727,7 @@ function do_proc_interest($intrestKey, $intrestName){
 	$raw_results =  $mvScrape->doRequest('http://maplight.org/map/us/interest/'.$intrestKey.'/bills'); 
 	//get all bills supported or opposed 
 	preg_match_all('/\/map\/us\/bill\/([^"]*)".*\/map\/us\/legislator.*<td>([^<]*)</U',$raw_results, $matches);	
+	$sinx =$oinx = 1;
 	if(isset($matches[1][0])){
 		$support_count=$oppse_count=0;
 		foreach($matches[1] as $i=>$bill_id){			
@@ -733,16 +737,18 @@ function do_proc_interest($intrestKey, $intrestName){
 			$hr_inx = $i+1;		
 			$bill_name = $mvScrape->get_bill_name_from_mapLight_id($bill_id);
 			if($matches[2][$i]=='Support'){
-				$page_body.="Supported Bill $hr_inx=$bill_name|\n";
+				$page_body.="Supported Bill $sinx=".str_replace('_',' ',$bill_name)."|\n";
+				$sinx++;
 			}else if($matches[2][$i]=='Oppose'){
-				$page_body.="Opposed Bill $hr_inx=$bill_name|\n";
+				$page_body.="Opposed Bill $oinx=".str_replace('_',' ',$bill_name)."|\n";
+				$oinx++;
 			}												
 		}
 	}
 	$page_body.='}}';	
 	print "Interest Page: $intrestName\n";	
 	$wTitle =Title::makeTitle(NS_MAIN,$intrestName);
-	do_update_wiki_page( $wTitle, $page_body);		
+	do_update_wiki_page( $wTitle, $page_body);			
 }
 function do_rm_congress_persons(){
 	$dbr =& wfGetDB(DB_SLAVE);		

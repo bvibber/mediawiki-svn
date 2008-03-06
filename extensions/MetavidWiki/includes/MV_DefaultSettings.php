@@ -23,10 +23,12 @@ include_once('MV_GlobalFunctions.php');
 $mvEnableAutoComplete=true;
 
 //if you want every page have the little powered by metavid software link 
-//(note this is done with javascript rewrite client side 
+//(note this is done with javascript rewrite client side to avoid complicated skin 
 //(normally you could just add it to your site skin)  
 $mvEnableJSLinkBack=true;
 
+//if you want mvd links to be rewritten client side as inline movie clips and link to the stream page
+$mvEnableJSMVDrewrite=true;
 
 ##########################
 # semanticWiki integration options
@@ -60,9 +62,8 @@ $mvServeImageRedirect=false;
 //the time in seconds of between image frames generated from movie clips.
 //(set pretty high for the metavid context where we load the images via scripts 
 // (early on we did less frequent image grabs)
-// that have less frequent frames for the same person showing up more than once
 //normally you would want a lower value like 5 seconds or so  
-$mvImageGranularityRate = '600'; //up to 10 min apart images (not normal)
+$mvImageGranularityRate = '600'; 
 //the ffmpeg command to generate thumbnail (to disable generating images set to '')
 $mvShellOggFrameGrab = '';
  

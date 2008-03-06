@@ -524,7 +524,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$o='<div class="mv_result_bar">';
 		if($this->numResultsFound){
 			$re = ($this->limit+$this->offset > $this->numResultsFound)?$this->numResultsFound:($this->limit+$this->offset);
-			$o.=wfMsg('mv_results_found_for',$this->offset,$re , number_format($this->numResultsFound));
+			$rs = ($this->offset==0)?1:$this->offset;
+			$o.=wfMsg('mv_results_found_for',$rs,$re , number_format($this->numResultsFound));
 		}
 		$o.=$this->getFilterDesc();
 		$o.='</div>';
@@ -605,7 +606,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$val = str_replace(' ','_',$val);				
 		
 		//make sure people know they can "search" too (formated by  
-		$out='do_search|'.wfMsg('mv_search_transcripts_for').' <b>$1</b>|no_image'."\n";
+		$out='do_search|'.wfMsg('mv_search_transcripts_for').' <B>$1</B>|no_image'."\n";
 		//get people
 		$person_out = MV_SpecialMediaSearch::auto_complete_person($val, 3);
 		if($person_out!=''){

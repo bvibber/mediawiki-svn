@@ -313,6 +313,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$parserOutput->mText.=	$sk->getCategories();			
 		//empty out the categories (should work) 
 		$wgOut->mCategoryLinks = array();		
+		$parserOutput->mCategories=null;
 		return $parserOutput;
 	}
 	function get_add_disp($baseTitle, $mvdType, $time_range){
@@ -754,8 +755,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$wgTitle = Title::newFromText($titleKey, $ns);		
 		//make a title article with global title: 
 		$Article = new Article($wgTitle);
-		//make the ediPageajax obj
-		include_once($mvgIP . '/includes/MV_MetavidInterface/MV_EditPageAjax.php');
+		//make the ediPageajax obj		
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		
 		//add in adjust code: 
@@ -772,7 +772,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	
 	function get_history_disp($titleKey, $mvd_id){
 		global $mvgIP, $wgOut;
-		include_once($mvgIP . '/includes/MV_MetavidInterface/MV_PageHistoryAjax.php');
 		$title = Title::newFromText($titleKey, MV_NS_MVD);
 		$article = new Article($title);
 		$pageHistoryAjax = new PageHistory($article);

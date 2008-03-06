@@ -73,12 +73,12 @@ function enableMetavid() {
 function mvSetupExtension(){
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore, 
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions,$markerList,
-	$mvEnableAutoComplete, $mvEnableJSLinkBack;
+	$mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite;
 	
 
 	mvfInitMessages();
 	//add header for autoComplete if enabled: 
-	if($mvEnableAutoComplete || $mvEnableJSLinkBack ){
+	if($mvEnableAutoComplete || $mvEnableJSLinkBack || $mvEnableJSMVDrewrite ){
 		mvfAutoAllPageHeader();
 	}
 	
@@ -132,10 +132,13 @@ function mvSetupExtension(){
 	 * enables linkback and autocomplete for search
 	 */
 	function mvfAutoAllPageHeader(){
-		global $mvgScriptPath, $wgJsMimeType, $wgOut;	
+		global $mvgScriptPath, $wgJsMimeType, $wgOut;			
+		/* (moved to on_dom ready)  but here as well*/ 
 		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
 		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
 		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
+		
+		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
 		
 		$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
@@ -158,19 +161,21 @@ function mvSetupExtension(){
 	function mvfAddHTMLHeader($head_set='') {
 		global $mvgHeadersInPlace; // record whether headers were created already (don't call mvfAddHTMLHeader twice)
 		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
-		global $mvgScriptPath, $wgJsMimeType, $wgOut , $mvEnableAutoComplete, $mvEnableJSLinkBack;		
+		global $mvgScriptPath, $wgJsMimeType, $wgOut , $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite;		
 			
 		if (!$mvgHeadersInPlace) {			
 			//all sets use mv_common script: *not used much yet*  
 			$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>");
 					
-			if($head_set=='smw_ext'|| $head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed')
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
-			
+			if($head_set=='smw_ext'|| $head_set=='search' || $head_set=='sequence' || $head_set=='stream_interface'||$head_set=='embed'){
+				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack ||$mvEnableJSMVDrewrite) ){
+					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
+				}
+			}
 			if($head_set=='search' || $head_set=='sequence'){	
 				//get jquery and autocomplete for seq/search	
 				//already included for all pages to support autoComplete 
-				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack) ){
+				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack ||$mvEnableJSMVDrewrite) ){
 					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
 					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");								 
 					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
@@ -183,8 +188,8 @@ function mvSetupExtension(){
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>");																				
 			if($head_set=='stream_interface')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
-			if($head_set=='smw_ext')
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
+			//if($head_set=='smw_ext')
+			//	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
 			
 			if(!($mvEnableAutoComplete || $mvEnableJSLinkBack) ){
 				$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';

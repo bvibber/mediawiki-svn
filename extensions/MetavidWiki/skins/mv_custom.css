@@ -68,7 +68,7 @@ textarea.mv_ajax_textarea{
 }
 div.autocomplete {   
       position:absolute;
-      min-width:250px;
+      min-width:250px;      
       overflow:hidden;
       z-index:99;
       background-color:white;
@@ -88,7 +88,7 @@ div.autocomplete ul li {
       margin:0;      
       padding:2px;
       cursor:pointer;
-      font-size:1.3em;
+      font-size:1.2em;
 }
 
 #resizable css:    

@@ -80,9 +80,7 @@
  		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 	 		
  			 	 	
  		//set default time range if null time range request
- 		$this->article->mvTitle->setStartEndIfEmpty(
- 			seconds2ntp(0), 
- 			seconds2ntp($mvDefaultStreamViewLength));
+ 		$this->article->mvTitle->setStartEndIfEmpty();
  		
 		//set up the interface objects:
 		foreach(array('MV_VideoPlayer', 'MV_Overlay','MV_Tools') as $cp_name){
@@ -99,11 +97,12 @@
  		/*]]>*/</script>'."\n");
 		
 		//also add prev next pagging	 		
-		$this->page_header ='<span style="position:relative;top:-12px;font-weight:bold">'.
+		$this->page_header ='<span style="position:relative;top:-12px;font-weight:bold;font-size:1.1em;">'.
  			$this->article->mvTitle->getStreamNameText().
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
-			' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
-			$this->components['MV_Tools']->stream_paging_links('next') . 			
+				' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
+			$this->components['MV_Tools']->stream_paging_links('next') .
+			wfMsg('mv_of') . seconds2ntp($this->article->mvTitle->getDuration()) .  			
 		'</span>';	
 		
 		//add export cmml icon

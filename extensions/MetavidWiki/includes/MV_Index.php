@@ -145,7 +145,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if($start_time)$sql.=" AND `end_time` >= " . $start_time; 
 		//add in ordering 
 		$sql.=' ORDER BY `start_time` ASC ';
-		//add in limit of 200 for now
+		//add in limit of 200 by default for now
 		$sql.=$limit;
 		//echo $sql;
  		$result =& $dbr->query( $sql, 'MV_Index:time_index_query'); 	 	

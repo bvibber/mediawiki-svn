@@ -480,6 +480,9 @@ function rewrite_by_id(vid_id){
 // for Mozilla browsers
 if (document.addEventListener) {
     document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
+}else{
+	//backup "onload" method in case on DOMContentLoaded does not exist
+	window.onload = init_mv_embed;
 }
 //for IE (temporarally disabled causing empty document rewrites:
 /*if (document.all && !window.opera){ //Crude test for IE
@@ -513,8 +516,6 @@ if(embedTypes.safari){
 		init_mv_embed();
 	}				
 }
-//backup "onload" in case on DOM ready does not fire
-window.onload = init_mv_embed;
 /*
 * Coverts all occurrences of <video> tag into video object
 */

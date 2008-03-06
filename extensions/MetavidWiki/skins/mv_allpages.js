@@ -1,13 +1,80 @@
-//javascript for all pages (adds auto_complete for search, and our linkback logo)
-if(typeof _global =='undefined'){ 
-_global = this;
-}
-//(needs the jquery lib loaded make sure we have it in $j:
-$(document).ready(function() {
-	_global['$j'] = jQuery.noConflict();
-	mv_setup_search_ac();
-});
+//javascript for all pages (adds auto_complete for search, and our linkback logo, and re-writes mvd links)
 
+mv_addLoadEvent(mv_setup_allpage); 	
+function mv_setup_allpage(){	
+	//make sure we have jQuery and any base requried libs: 
+
+	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){			
+ 		_global['$j'] = jQuery.noConflict();	
+ 		mvJsLoader.doLoad({'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
+ 						   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'}, function(){
+ 								mv_setup_search_ac();
+								mv_do_mvd_link_rewrite();
+ 						   });
+	});	
+}
+function mv_do_mvd_link_rewrite(){
+	var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/?([0-9]+:[0-9]+:[^\/]+)?");
+	var i =0;
+	$j('a').each(function(){
+		if(this.href.indexOf('Special:')==-1 && this.href.indexOf('action=')==-1){
+			titleTest = this.title.match(patt_mvd);
+			if(titleTest){
+				res = this.href.match(patt_mvd);		
+				if(res){			
+					i++;
+					//js_log(this.href);			
+					//js_log(res);
+					//replace with: 
+					//TEMP:
+					wgScript = 'http://metavid.ucsc.edu/wiki/index.php';
+					var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+res[2]+'&t='+res[3]+'&size=icon';
+					var stream_link = wgScript+'?title=Stream:'+res[2]+'/'+res[3]+'/'+res[4];
+					var stream_desc = res[2].substr(0,1).toUpperCase() + res[2].substr(1).replace('_', ' ')+' '+ res[3] + ' to '+ res[4];
+					var expand_link = '<span id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
+					$j(this).replaceWith('<div id="mvd_link_'+i+'" ' +
+							'style="vertical-align: bottom;margin:.5em;border:solid thin black;width:300px;height:60px;">' +
+								'	<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+',\''+res[2]+'/'+res[3]+'/'+res[4]+'\')" ' +
+										'style="cursor:pointer;float:left;height:60px;width:80px;" src="'+img_url+'">' +expand_link+
+										'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a>'+
+								'<br>'+																			
+							'</div>');							
+					$j('#mv_mvd_ex_'+i).click(function(){
+						inx = this.id.substr(10);
+						mv_ext(inx);
+					});
+				}	
+			}	
+		}		
+	});
+	js_log('got to I: '+i);
+	$j('#mvd_link_'+i).after('<div style="clear:both"></div>')
+}
+function mv_ext(inx){
+	//grow the window to 300+240 540	
+	js_log('i: is '+ inx);
+	$j('#mvd_link_'+inx).animate({width:'540px','height':'240px'},1000);
+	$j('#mvd_link_im_'+inx).animate({width:'320px','height':'240px'},1000,function(){
+		//do mv_embed swap
+	});
+	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/opened.png\')');
+	$j('#mv_mvd_ex_'+inx).unbind();
+	$j('#mv_mvd_ex_'+inx).click(function(){
+		inx = this.id.substr(10);
+		mv_cxt(inx);
+	});
+	js_log('did mv ex');
+}
+function mv_cxt(inx){
+	$j('#mvd_link_'+inx).animate({width:'300px','height':'60px'},1000);
+	$j('#mvd_link_im_'+inx).animate({width:'80px','height':'60px'},1000);
+	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\')');
+	$j('#mv_mvd_ex_'+inx).unbind();
+	$j('#mv_mvd_ex_'+inx).click(function(){
+		inx = this.id.substr(10);
+		mv_ext(inx);
+	});
+}
 function mv_setup_search_ac(){
 	uri = wgServer +
 	((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
@@ -26,17 +93,19 @@ function mv_setup_search_ac(){
 	//get the search pos: 
 	$j('body').append('<div class="autocomplete" id="mv_ac_choices" ' +
 			'style="border:solid black;background:#FFF;position:absolute;left:'+curleft+'px;top:'+curtop+'px;z-index:99;width:300px;display: none;"/>');
-	
+	//turn off browser baseed autocomplete: 
+	$j('#searchInput').attr('autocomplete',"off");
+	//add hook:
 	$j('#searchInput').autocomplete(
 		uri,
 		{
 			autoFill:false,
 			onItemSelect:function(v){		
-				console.log('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
+				//js_log('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
 				//jump to page: 			
 				if($j('#searchInput').val()=='do_search'){
-					qs = v.innerHTML.indexOf('<b>')+3;
-					qe = v.innerHTML.indexOf('</b>');
+					qs = v.innerHTML.indexOf('<B>')+3;
+					qe = v.innerHTML.indexOf('</B>');
 					//update the search input (incase redirect fails)
 					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
 					window.location=uri+'/'+'Special:Search?search='+v.innerHTML.substring(qs,qe);

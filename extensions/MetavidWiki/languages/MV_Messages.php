@@ -148,6 +148,7 @@ $messages['en'] = array(
 
 	'mv_start_desc'               => 'Start Time',
 	'mv_end_desc'                 => 'End Time',
+	'mv_of'						  => ' of ',
 
 	#search
 	'mediasearch'                    => 'Media Search',

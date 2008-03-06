@@ -54,7 +54,8 @@ class MV_BillScraper extends MV_BaseScraper{
 		foreach($this->streams as & $stream){
 			if(!isset($stream->date_start_time))$stream->date_start_time=0;
 			if($stream->date_start_time==0){
-				die('error stream '. $stream->name . ' missing time info'."\n");
+				print 'error stream '. $stream->name . ' missing time info'."\n";
+				continue;
 			}
 			$hors =  (strpos($stream->name, 'house')!==false)?'h':'s';
 			$date_req = date('Y-m-d', $stream->date_start_time);
@@ -87,18 +88,18 @@ class MV_BillScraper extends MV_BaseScraper{
 				preg_match('/href="(.*)"/',$matches[5][$k], $href_match);
 				if(count($href_match)!=0)$href=$href_match[1];
 				
-				$porg = str_replace('<br />',' ',$matches[4][$k]);
+				$porg = str_replace('<br>',' ',$matches[4][$k]);
 				$porg = preg_replace('/[D|R]+\-\[.*\]/', '', $porg);
 				$pparts = explode(',',$porg);
 				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);			
 				$cspan_person_ary[]= array(
 					'start_time'=>strip_tags($matches[1][$k]),
 					'length'=>$matches[3][$k],
-					'person_title'=>str_replace('<br />',' ',$matches[4][$k]),
+					'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
 					'Spoken_by'=>$pname,
 					'href'=>$href
 				);
-			}								
+			}							
 		    //group people in page matches
 		    //$g_cspan_matches=array();
 		    //$prev_person=null;		    
@@ -566,14 +567,23 @@ class MV_BillScraper extends MV_BaseScraper{
 	}
 	function getMAPLightBillId($bill_key, $session){
 		$raw_map_light = $this->doRequest($this->mapLightBillSearch. str_replace(' ','+',$bill_key));
+		//check if we got redirected: 
+		$patern = '/<a href=\"\/map\/us\/bill\/([^\/]*)\/default" class="active">Supporter/';
+		preg_match($patern, $raw_map_light,$matches );
+		if(isset($matches[1])){
+			print "got redirected from search: " . $matches[1]. "\n";
+			return $matches[1];
+		}
+			
 		$patern = '/<a href=\"\/map\/us\/bill\/([^"]*)">'.str_replace(' ', '\s?',$bill_key).'\s\('.$session.'/i';
 		preg_match($patern, $raw_map_light,$matches );
 		//print $patern; 
 		//print_r($matches);
 		if(isset($matches[1])){
 			return $matches[1];			
-		}else{
+		}else{			
 			print "could not find bill id: $bill_key $session \n";
+			print "at : " . $this->mapLightBillSearch. str_replace(' ','+',$bill_key)."\n";
 			print $raw_map_light;
 			die;
 			return false;
@@ -581,8 +591,7 @@ class MV_BillScraper extends MV_BaseScraper{
 	}
 	function proccessBill($govTrackBillId, $bill_key, $openCongBillId=false, $mapLightBillId=false){
 		//get the bill title & its sponser / cosponsers: 
-		$rawGovTrackPage = $this->doRequest($this->govTrack_bill_url . $govTrackBillId);
-		//$rawGovTrackPage = $this->doRequest('http://www.govtrack.us/congress/bill.xpd?bill=h110-400');
+		$rawGovTrackPage = $this->doRequest($this->govTrack_bill_url . $govTrackBillId);		
 
 
 		/*****************************
@@ -592,14 +601,20 @@ class MV_BillScraper extends MV_BaseScraper{
 		print "gov_track id: ". $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId. "\n";
 		
 		//get title: 
-		
-		preg_match('/property="dc:title" datatype="xsd:string" style="margin-bottom: 1em">([^<]*)<\/div><p style="margin-top: 1.75em; margin-bottom: 1.75em">([^<]*)/',$rawGovTrackPage, $title_match);
+		$patern = '/property="dc:title" datatype="xsd:string" style="margin-bottom: 1em">([^<]*)<\/div>(<p style="margin-top: 1.75em; margin-bottom: 1.75em">([^<]*))?/';		
+		preg_match($patern,$rawGovTrackPage, $title_match);		
 		if(isset($title_match[1])){
-			$title_short  = str_replace(array('_','...'),array(' ',''),$title_match[1]);
+			if(trim($title_match[1])==''){
+				print "empty title\n";
+				return false;
+			}
+			$title_short  = str_replace(array('_','...',' [110th]',' [109th]',' [108th]',' [107th]'),array(' ','','','','',''),$title_match[1]);
 			$this->cur_bill_short_title=$title_short;
-			$title_desc = $title_match[2];
+			//set the desc if present:
+			$title_desc = (isset($title_match[3]))?$title_match[3]:'';
 			$this->bill_titles[$bill_key]=$title_short;
 		}else{
+			print $this->govTrack_bill_url . $govTrackBillId . "\n" .$patern ."\n". $rawGovTrackPage;
 			die('could not get title for bill: ' . $govTrackBillId);
 		}
 		
@@ -643,7 +658,7 @@ class MV_BillScraper extends MV_BaseScraper{
 					$bp.='Cosponsor '.($k+1).'='.$cosponsor_name."|\n";	
 				}
 			}	
-		}	
+		}
 		/*****************************
 		 * Proccess MapLight Info 
 		 *****************************/
@@ -660,15 +675,15 @@ class MV_BillScraper extends MV_BaseScraper{
 				$bp.='Opposing Interest '.$i.'='.$interest['name']."|\n";
 				$i++;
 			}
-		}
-		
-								
-		$bp.="}}\n";		
+		}										
+		$bp.="}}\n";	
+		//print 'page : '.$title_short.' ' . $bp . "\n";	
 		//incorporated into the template: 
 		//$body.="\n\n".'Source: [[Data Source Name:=GovTrack]] [[Data Source URL:='.$this->govTrack_bill_url . $govTrackBillId.']]';
-		//set up the base bill page:
+		//set up the base bill page:		
 		$wgBillTitle = Title::newFromText($title_short);
-		do_update_wiki_page($wgBillTitle, $bp);
+		do_update_wiki_page($wgBillTitle, $bp);		
+		
 		//set up a redirect for the bill key, and a link for the category page: 
 		$wgBillKeyTitle =Title::newFromText($bill_key);
 		do_update_wiki_page($wgBillKeyTitle, '#REDIRECT [['.$title_short.']]');							
@@ -698,6 +713,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		//class="organizations"\sid="for
 		//preg_match_all('/class="organizations"\sid="for.*<ul class="industries list-clear">()*/',$bill_page, $matches);
 		preg_match_all($pat_interest, $bill_page, $matches, PREG_OFFSET_CAPTURE);	
+		//print_r($matches);
 		$aginst_pos = strpos($bill_page,'class="organizations" id="against"');
 		//return empty arrays if we don't have info to give back:'
 		if($aginst_pos===false)return $ret_ary;

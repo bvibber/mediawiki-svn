@@ -115,12 +115,22 @@
 	function getMwTitle(){return Title::MakeTitle(MV_NS_MVD, $this->wiki_title);}
 	
 	
-	function setStartEndIfEmpty($start_time, $end_time){		
+	function setStartEndIfEmpty(){		
+		global $mvDefaultStreamViewLength;
 		if($this->start_time==null){
- 			$this->start_time =$start_time;
- 		}
- 		if($this->end_time==null){
- 			$this->end_time=$end_time;
+			$this->start_time_sec=0;
+ 			$this->start_time =seconds2ntp($this->start_time_sec);
+ 		}else{
+ 			$this->start_time_sec = ntp2seconds($this->start_time);
+		}
+ 		if($this->end_time==null|| ntp2seconds($this->end_time)< $this->start_time_sec){
+ 			if($this->start_time_sec==0){
+ 				$this->end_time= seconds2ntp($mvDefaultStreamViewLength);
+ 				$this->end_time_sec = $mvDefaultStreamViewLength;
+ 			}else{
+ 				$this->end_time_sec = ($this->start_time_sec+$mvDefaultStreamViewLength);
+ 				$this->end_time = seconds2ntp($this->end_time_sec);
+ 			}
  		}
 	}
 	/* 
