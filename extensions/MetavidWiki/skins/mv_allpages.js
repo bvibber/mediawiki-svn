@@ -99,11 +99,11 @@ function mv_setup_search_ac(){
 		{
 			autoFill:false,
 			onItemSelect:function(v){		
-				//js_log('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
+				//alert('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
 				//jump to page: 			
 				if($j('#searchInput').val()=='do_search'){
-					qs = v.innerHTML.indexOf('<B>')+3;
-					qe = v.innerHTML.indexOf('</B>');
+					qs = v.innerHTML.toLowerCase().indexOf('<b>')+3;
+					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
 					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
 					window.location=uri+'/'+'Special:Search?search='+v.innerHTML.substring(qs,qe);
