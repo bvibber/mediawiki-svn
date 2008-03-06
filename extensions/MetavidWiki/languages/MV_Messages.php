@@ -18,11 +18,11 @@ $messages['en'] = array(
 	'mv_ogg_low_quality'      => 'Web Streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality'     => 'High Quality - Ogg Theora 900kbs',
 	'mv_archive_org_link'     => 'Links into Archive.org mpeg2 originals',
-	'ao_file_64Kb_MPEG4'	  => 'Archive.org - mpeg4 64kbs',
-	'ao_file_256Kb_MPEG4'	  => 'Archive.org - mpeg4 256kbs',
-	'ao_file_MPEG1'	  		  => 'Archive.org - mpeg1',
-	'ao_file_MPEG2'	  		  => 'Archive.org - mpeg2 original',
-	'ao_file_flash_flv'  	  => 'Archive.org - flash video',
+	'ao_file_64Kb_MPEG4'      => 'Archive.org - mpeg4 64kbs',
+	'ao_file_256Kb_MPEG4'     => 'Archive.org - mpeg4 256kbs',
+	'ao_file_MPEG1'           => 'Archive.org - mpeg1',
+	'ao_file_MPEG2'           => 'Archive.org - mpeg2 original',
+	'ao_file_flash_flv'       => 'Archive.org - flash video',
 
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />Please report this to the site administrator.',
 
@@ -30,9 +30,9 @@ $messages['en'] = array(
 	'mv_stream_meta'                => 'Stream Page',
 	'mv_add_stream'                 => 'Metavid Add Stream',
 	'mv_edit_stream'                => 'Metavid Edit Stream',
-	'mvexportsearch'				=> 'Metavid Export',
-	'mvexportsequence'				=> 'Metavid Export Sequence',
-	'mvexportstream'				=> 'Metavid Export Stream',
+	'mvexportsearch'                => 'Metavid Export',
+	'mvexportsequence'              => 'Metavid Export Sequence',
+	'mvexportstream'                => 'Metavid Export Stream',
 	
 	'mv_add_stream_page'            => 'Mv Add Stream',
 	'mv_edit_strea_docu'            => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
@@ -52,8 +52,7 @@ $messages['en'] = array(
 	'mv_updated_stream_files'       => 'Updated Stream Files Record',
 	'mv_removed_file_stream'        => 'Removed Stream file: $1',
 	'mv_missing_stream_text'        => 'The stream you requested <b>$1</b> is not available.<br />You may want to check the <a href="$2">Stream List</a><br />Or you many want to <a href="$3">Add The Stream</a>.',
-	'mv_user_cant_edit'				=> 'You may have to $1 to edit, $2', //$1 is login link and $2 is cancel link
-
+	'mv_user_cant_edit'             => 'You may have to $1 to edit, $2', //$1 is login link and $2 is cancel link
 
 	'mv_add_stream_file'            => 'Add Stream File',
 	'mv_media_path'                 => 'media path',
@@ -62,8 +61,8 @@ $messages['en'] = array(
 	'mv_label_stream_desc'          => 'Stream Description',
 	'add_stream_permission'         => 'You lack permission to add a new stream',
 	'edit_stream_missing'           => 'Missing Stream Name',	
-	'mv_missing_req_time'			=> 'Missing Request Time', 
-	'mv_missing_cat'				=> 'Missing Category Name',
+	'mv_missing_req_time'           => 'Missing Request Time', 
+	'mv_missing_cat'                => 'Missing Category Name',
 	'mv_stream_already_exists'      => 'The stream <a href="$2">$1</a> already exists',
 	'mv_summary_add_stream'         => 'stream added by form',
 	'mv_error_stream_insert'        => 'failed to insert stream',
@@ -80,31 +79,31 @@ $messages['en'] = array(
 	'mv_stream_delete_warning' => 'Deleting this Stream will additionally remove $1 pages of metadata',
 
 	#tools
-	'mv_tool_search'         => 'Search',
-	'mv_tool_search_title'   => 'Search within this Stream',
-	'mv_search_transcripts_for'=>'Search Transcripts for',
-	'mv_tool_navigate'       => 'Navigate',
-	'mv_tool_navigate_title' => 'Navigate the full stream',
-	'mv_tool_export'         => 'Export',
-	'mv_tool_export_title'   => 'Export Stream Metadata',
-	'mv_tool_embed'          => 'Embed',
-	'mv_tool_embed_title'    => 'Embed options for the current requested segment',
-	'mv_tool_overlay'        => 'Template Overlays',
-	'mv_tool_overlay_title'  => 'Template based metadata Overlays',
-	'mv_results_found_for'   => 'Search Results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
-	'mv_tool_mang_layers'    => 'Manage Layers',
-	'mv_update_layers'       => 'Update Layers',
+	'mv_tool_search'            => 'Search',
+	'mv_tool_search_title'      => 'Search within this Stream',
+	'mv_search_transcripts_for' =>'Search Transcripts for',
+	'mv_tool_navigate'          => 'Navigate',
+	'mv_tool_navigate_title'    => 'Navigate the full stream',
+	'mv_tool_export'            => 'Export',
+	'mv_tool_export_title'      => 'Export Stream Metadata',
+	'mv_tool_embed'             => 'Embed',
+	'mv_tool_embed_title'       => 'Embed options for the current requested segment',
+	'mv_tool_overlay'           => 'Template Overlays',
+	'mv_tool_overlay_title'     => 'Template based metadata Overlays',
+	'mv_results_found_for'      => 'Search Results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
+	'mv_tool_mang_layers'       => 'Manage Layers',
+	'mv_update_layers'          => 'Update Layers',
 
 	#mvd types:
-	'ht_en'         => 'Transcript',
-	'ht_en_desc'    => 'English transcripts. This overlay type is for spoken text',
-	'anno_en'       => 'Annotations and Categories',
-	'anno_en_desc'  => 'English categorizations and annotations. This overlay can be used to Categorize sections of video or to add annotative information that is not spoken text',
-	'thomas_en'     => 'Official Transcript',
-	'thomas_en_desc'=> 'Official Thomas Transcript from the governments THOMAS record service. Source time synced by C-SPAN\'s c-spanarchives.org',
+	'ht_en'          => 'Transcript',
+	'ht_en_desc'     => 'English transcripts. This overlay type is for spoken text',
+	'anno_en'        => 'Annotations and Categories',
+	'anno_en_desc'   => 'English categorizations and annotations. This overlay can be used to Categorize sections of video or to add annotative information that is not spoken text',
+	'thomas_en'      => 'Official Transcript',
+	'thomas_en_desc' => 'Official Thomas Transcript from the governments THOMAS record service. Source time synced by C-SPAN\'s c-spanarchives.org',
 
 	#mvd errors:
-	'mvd_default_mismatch'     => 'Error in settings file',
+	'mvd_default_mismatch'      => 'Error in settings file',
 	'mvd_default_mismatch_text' => 'There is an error in your setting file, $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 
 	'mv_data_page_title' => '$1 for $2 from $3',
@@ -148,7 +147,7 @@ $messages['en'] = array(
 
 	'mv_start_desc'               => 'Start Time',
 	'mv_end_desc'                 => 'End Time',
-	'mv_of'						  => ' of ',
+	'mv_of'                       => '&#32;of&#32;',
 
 	#search
 	'mediasearch'                    => 'Media Search',
@@ -164,9 +163,9 @@ $messages['en'] = array(
 	'mv_search_or'                   => 'or',
 	'mv_search_not'                  => 'not',
 	'mv_search_stream_name'          => 'Stream Name',
-	'mv_search_date_range'			 => 'Date Range',
+	'mv_search_date_range'           => 'Date Range',
 	'mv_stream_name'                 => 'stream name',
-	'mv_date_range'					 => 'date range',
+	'mv_date_range'                  => 'date range',
 
 	'mv_match'     => 'match',
 	'mv_spoken_by' => 'spoken by',
