@@ -36,13 +36,10 @@ $wgHooks['OutputPageParserOutput'][] = 'smoothGalleryParserOutput';
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SmoothGallery'] = $dir . 'SmoothGallery.i18n.php';
 $wgAutoloadClasses['SmoothGallery'] = $dir . 'SmoothGalleryClass.php';
-$wgAutoloadClasses['SpecialSmoothGallery'] = $dir . 'SpecialSmoothGallery.php';
-$wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
 $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
-$wgSmoothGalleryUseDatabase = false;
 
 function efSmoothGallery() {
 	global $wgParser;
@@ -51,14 +48,13 @@ function efSmoothGallery() {
 	$wgParser->setHook( 'sgalleryset', 'initSmoothGallerySet' );
 }
 
-function initSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false, $calledAsSet=false ) {
+function initSmoothGallery( $input, $argv, &$parser, $calledAsSet=false ) {
 	require_once( 'SmoothGalleryParser.php' );
 
-	$sgParser = new SmoothGalleryParser( $input, $argv, $parser, $calledFromSpecial, $calledAsSet );
+	$sgParser = new SmoothGalleryParser( $input, $argv, $parser, $calledAsSet );
 	$sgGallery = new SmoothGallery();
 
 	$sgGallery->setParser( $parser );
-	$sgGallery->setSpecial( $calledFromSpecial );
 	$sgGallery->setSet( $calledAsSet );
 	$sgGallery->setArguments( $sgParser->getArguments() );
 	$sgGallery->setGalleries( $sgParser->getGalleries() ); 
@@ -71,8 +67,8 @@ function initSmoothGallery( $input, $argv, &$parser, $calledFromSpecial=false, $
 	}
 }
 
-function initSmoothGallerySet( $input, $args, &$parser, $calledFromSpecial=false ) {
-	$output = initSmoothGallery( $input, $args, $parser, $calledFromSpecial, true );
+function initSmoothGallerySet( $input, $args, &$parser ) {
+	$output = initSmoothGallery( $input, $args, $parser, true );
 
 	return $output;
 }
