@@ -89,16 +89,18 @@ class MV_BillScraper extends MV_BaseScraper{
 				if(count($href_match)!=0)$href=$href_match[1];
 				
 				$porg = str_replace('<br>',' ',$matches[4][$k]);
-				$porg = preg_replace('/[D|R]+\-\[.*\]/', '', $porg);
+				$porg = preg_replace('/[D|R|I]+\-\[.*\]/', '', $porg);
 				$pparts = explode(',',$porg);
-				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);			
-				$cspan_person_ary[]= array(
-					'start_time'=>strip_tags($matches[1][$k]),
-					'length'=>$matches[3][$k],
-					'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
-					'Spoken_by'=>$pname,
-					'href'=>$href
-				);
+				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);					
+				if(mv_is_valid_person($pname)){		
+					$cspan_person_ary[]= array(
+						'start_time'=>strip_tags($matches[1][$k]),
+						'length'=>$matches[3][$k],
+						'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
+						'Spoken_by'=>$pname,
+						'href'=>$href
+					);
+				}
 			}							
 		    //group people in page matches
 		    //$g_cspan_matches=array();
@@ -153,6 +155,8 @@ class MV_BillScraper extends MV_BaseScraper{
 					$curKey=count($db_person_ary)-1;
 					$db_person_ary[$curKey]['Spoken_by']= $row->first . '_' . $row->last;
 					$db_person_ary[$curKey]['start_time']=$row->time;
+					//not on screen a long time if only one hit:
+					$db_person_ary[$curKey]['end_time']=$row->time+10;
 					$cur_person=$cur_row_person;
 				}else{
 					//update the end time: 
@@ -244,10 +248,12 @@ class MV_BillScraper extends MV_BaseScraper{
 	   						$nextMatch=true;
 	   					//	print "(no next check)";
 	   					}else{				
-							if($db_person_ary[$j+1]['Spoken_by']==$next_person){
-							//	print "found next match:".$next_person."\n";
-								$nextMatch=true;
-							}								
+	   						if(isset($db_person_ary[$j+1])){
+								if($db_person_ary[$j+1]['Spoken_by']==$next_person){
+								//	print "found next match:".$next_person."\n";
+									$nextMatch=true;
+								}								
+	   						}
 	   					}
 	   					//if we have a match set do insert proc:
 	   					if($prevMatch && $curMatch && $nextMatch){
@@ -320,7 +326,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		   			$rawpage = $this->doRequest($this->base_url . $pData['href']);
 		   			//$rawpage = $this->doRequest('http://www.c-spanarchives.org/congress/?q=node/77531&id=8330447');
 		   			
-		   			preg_match('/<\/a><\/center><\/td><th><center>([^<]*)/', $rawpage, $title_matches);
+		   			preg_match('/<\/td><th><center>([^<]*)<\/center><\/th><td>/U', $rawpage, $title_matches);
 		   			preg_match('/<table width="400">\n<tr><td>\n(.*)<\/tr><\/td>/',$rawpage, $page_matches);
 		   			
 		   			if(isset($title_matches[1]) && isset($page_matches[1])){
@@ -329,7 +335,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		   				//print_r($page_matches);
 		   			}else{
 		   				die("error can't find title or body\n");
-		   			}		   			
+		   			}			   	
 		   			//do debate tag search:		   			
 		   			preg_match('/<td colspan="2">Debate:\s<[^>]*>([^<]*)/', $rawpage, $debate_matches);		   			
 		   			if(isset($debate_matches[1])){
@@ -385,7 +391,8 @@ class MV_BillScraper extends MV_BaseScraper{
 		   							continue;
 		   						}	
 		   						//if the first letter is lower case not likely a bill 
-		   						if(islower($bill_name[0]))continue;
+		   						if(trim($bill_name)=='')continue;
+		   						if(islower(substr($bill_name,0,1)))continue;
 		   						//conform white space and case:
 		   						$bill_name=str_replace(array('S. ','Con. ', 'Res. '),array('S.', 'CON.', 'RES. '),$bill_name);
 		   						//make sure its not a false possitave and load bill data from govTrack: 
@@ -453,10 +460,9 @@ class MV_BillScraper extends MV_BaseScraper{
 		   			}
 		   			
 		   			
-		   			//see if we can align with an existing speech page: 
-		   			
+		   			//see if we can align with an existing speech page: 		   			
 		   			$mvd_anno_res = MV_Index::getMVDInRange($stream->getStreamId(), 
-		   					$pData['wiki_start_time'],$pData['wiki_end_time'],
+		   					$pData['wiki_start_time']-120,$pData['wiki_end_time']+120,
 		   					$mvd_type='Anno_en',$getText=false,$smw_properties='Speech_by');
 		   					
 		   			$doSpeechInsert=true;									
@@ -472,7 +478,7 @@ class MV_BillScraper extends MV_BaseScraper{
 					   			$doSpeechInsert=false;
 					   			break;
 							}else{
-								print "no existing speech match:$row->Speech_by != " .$pData['Spoken_by']. "\n"; 
+								print "\nno existing speech match:$row->Speech_by != " .$pData['Spoken_by']. "\n\n"; 
 							}														
 						}
 					}
@@ -497,9 +503,8 @@ class MV_BillScraper extends MV_BaseScraper{
 		   			
 		   			
 		   			//do new page mvd:or_
-		   			//die;
 		   		}
-		   	}	   		   	
+		   	}	   		   		   
 		   	//$inx_cspan_person_ary = array_keys($g_row_matches);
 		   	//$inx_row_person_ary = array_keys($g_person_time_ary);
 		   	//for($i=0;$i<5;$i++){

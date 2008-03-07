@@ -25,7 +25,7 @@ function mv_setup_allpage(){
 }
 function mv_do_mvd_link_rewrite(){
 	js_log('mv_do_mvd_link_rewrite');
-	var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/?([0-9]+:[0-9]+:[^\/]+)?");
+	var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/([0-9]+:[0-9]+:[^\&]+)(&?.*)");
 	var i =0;
 	$j('a').each(function(){
 		if(this.href.indexOf('Special:')==-1 && this.href.indexOf('action=')==-1){
@@ -33,6 +33,9 @@ function mv_do_mvd_link_rewrite(){
 			if(titleTest){
 				res = this.href.match(patt_mvd);		
 				if(res){			
+					if(res[5]!='')return ;
+					//skip if res[4] not at end:
+					js_log(res);
 					i++;
 					if(!gMvd[i])gMvd[i]={};
 					gMvd[i]['sn']=res[2]; //stream name
@@ -70,7 +73,7 @@ function get_mvdrw_img(i){
 function mv_ext(inx){
 	//grow the window to 300+240 540	
 	js_log('i: is '+ inx);
-	$j('#mvd_link_'+inx).animate({width:'540px','height':'240px'},1000);
+	$j('#mvd_link_'+inx).animate({width:'440px','height':'305px'},1000);
 	$j('#mvd_link_im_'+inx).animate({width:'320px','height':'240px'},1000,function(){
 		//do mv_embed swap
 		$j('#mvd_link_im_'+inx).replaceWith('<video autoplay="true" id="mvd_vid_'+inx +'">');

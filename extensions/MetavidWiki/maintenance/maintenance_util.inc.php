@@ -45,6 +45,7 @@ function mv_is_valid_person($person_key){
 			array('LIMIT'=>'1'));*/
 	list($fname, $lname) = explode('_', $person_key);
 	//check for wiki title before checking first /last
+	print "check pkey: $person_key\n";
 	$pTitle = Title::newFromText($person_key);
 	if($pTitle->exists()){
 		print $person_key . " valid\n";

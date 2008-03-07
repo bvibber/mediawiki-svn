@@ -109,6 +109,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$dbr =& wfGetDB(DB_SLAVE);	 		
  		//set mvd_type if empty: 
  		if($mvd_type==null)$mvd_type='all';
+ 		if($start_time<0)$start_time=0;
  		
  		$sql_sel = "SELECT `mv_page_id` as `id`, `mvd_type`, `wiki_title`, `stream_id`, `start_time`, `end_time` ";
  		$sql_from=" FROM {$dbr->tableName($mvIndexTableName)} ";
