@@ -9,10 +9,10 @@
   SQL for creating categoryintersections table:
 
   CREATE TABLE `categoryintersections` (
-    `ci_page` int(10) NOT NULL,
-    `ci_hash` varchar(32) collate latin1_general_ci NOT NULL,
+    `ci_page` int(10) unsigned NOT NULL,
+    `ci_hash` int(10) unsigned NOT NULL,
     PRIMARY KEY  (`ci_hash`,`ci_page`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  ) ;
 
 **/
 
@@ -66,6 +66,7 @@ function CategoryIntersectionGetHashValues ($categories) {
 			else $key = $c2 . '|' . $c1;
 			if (isset ($hash[$key])) continue; // This combination was already done
 			$m = md5 ($key);
+			$m = hexdec ( substr ( $m , 0 , 8 ) ) ;
 			if (isset ($hv[$m])) continue; // This hash value is already in there, prevent unique index conflict
 			$hash[$key] = $m;
 			$hv[$m] = 1;
