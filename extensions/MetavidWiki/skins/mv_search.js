@@ -242,7 +242,7 @@ function hl_search_terms(result_selector){
 	$j(result_selector).each(function(){
 		for(i in terms){
 			term = terms[i];
-			js_log("do hl call: "+ term);
+			//js_log("do hl call: "+ term);
 			$j.highlight(this, term);
 		}
 	});

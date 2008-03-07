@@ -547,14 +547,12 @@ function mv_embed(){
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;    	
             }
-            //create the video interface:
-	    var videoInterface = new embedVideo(video_elements[i]);	
-            //swap the video element for our own embed video element           
-            js_log('made videoInterface: ' + videoInterface.id)
-            if( swapEmbedVideoElement(video_elements[i], videoInterface) ){
-             	//decrement i cuz we have swaped out the current video element
-                i--;
-            }                                                   
+            //create and swap in the video interface:
+	   		var videoInterface = new embedVideo(video_elements[i]);
+   			//swap:
+	   		if(swapEmbedVideoElement(video_elements[i], videoInterface)){
+	   			i--;
+	   		}
         }
         //set onBeforeUnload action to stop all videos
         /*document.body.onBeforeUnload= function(){
@@ -674,6 +672,7 @@ var embedVideo = function(element) {
 //base embedVideo object
 embedVideo.prototype = {
 	slider:null,
+	load_external_data:false,
 	//state attributes (per html5 spec http://www.whatwg.org/specs/web-apps/current-work/#video)
 	video_states:{
 	    "paused":true,
@@ -693,8 +692,9 @@ embedVideo.prototype = {
 	hq : function ( s ) {
 		return '"' + this.hx( s ) + '"';
 	},
-	init: function(element){		   
-	   //inherit all the default video_attributes 
+	init: function(element){	
+		this.element_pointer = element;
+		//inherit all the default video_attributes
 	    for(var attr in video_attributes){       
 	        if(element.getAttribute(attr)){
 	            this[attr]=element.getAttribute(attr);
@@ -703,11 +703,17 @@ embedVideo.prototype = {
 	            this[attr]=video_attributes[attr];
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");  
 	        }
-	    }
-	    //init the default states: 
+	    }	   	    
+		//if roe set ... load settings from xml (where not already set) 
+		if(element.getAttribute('roe')!=null){
+			this.loading_external_data=true;
+		}
+		//init the default states: 
 	    for(var state in this.video_states){
 	    	 this[state]=this.video_states[state];
-	    }
+	    }	  
+	    js_log('continue_thumb:'+ this['thumbnail']);
+   	    js_log('continue_src:'+ this['src']);
 	    //if the thumbnail is null replace with default thumb:
 	    if(!this['thumbnail']){
 			this['thumbnail'] = mv_default_thumb_url;
@@ -731,13 +737,24 @@ embedVideo.prototype = {
 	       this.inheritEmbedObj();
 	    }  
 	   //do a local call to getDuration (as the plugin may not be loaded yet) 
-	   this.getDuration();
 	   //test: 
 	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
 	   //return this object:	   
 	   return this;
-	},
+	},	  	
+		/*js_log( 'grab settings from roe: ' + element.getAttribute('roe') );
+			this.roe = element.getAttribute('roe');
+			_this = this;			
+		
+				_this.continue_init(element);
+				_this.loading_external_data=false;
+				if(_this.ed_callback)
+					_this.ed_callback();
+			});
+			//return the partially created object.
+			return this;  */
 	inheritEmbedObj:function(){
+		js_log("inheritEmbedObj");
 		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
 		//clear out any non-base embedObj stuff: 
 		if(this.instanceOf){
@@ -760,6 +777,52 @@ embedVideo.prototype = {
         if(this.inheritEmbedOverride){
         	this.inheritEmbedOverride();
         }
+	},
+	//parse roe file and store data in this object
+	getParseROE: function(callback){
+		var _this = this;
+		//@@todo split long rage data requests over a few ajax queries to not hit too big of a xml file on load
+		do_request(this.roe, function(data){
+			js_log("got data "+ data);
+			if(typeof data == 'object' ){
+				js_log('type of data is object');
+				this.roe_data = data;
+				//set the src to video tag with "default" attribute:
+				var rVids = this.roe_data.getElementsByTagName('video');
+				js_log('found '+ rVids.length + ' video tags');
+				for(i in rVids){	
+					if(rVids[i].getAttribute('default')=="true"){
+						js_log('set src to '+rVids[i].getAttribute("src"));
+						
+						_this['src'] = rVids[i].getAttribute("src")
+						break;
+					}
+				}
+				//set the thumbnail: 
+				//for some reason getElement By id does not work > ? 
+				//rThumb = this.roe_data.getElementById('stream_thumb');
+				var rImgs = this.roe_data.getElementsByTagName('img');
+				for(i in rImgs){
+					if(rImgs[i].getAttribute("id")=="stream_thumb"){
+						js_log('set thumb to '+rImgs[i].getAttribute("src"));
+						_this['thumbnail'] = rImgs[i].getAttribute("src");	
+						break;
+					}
+				}
+				//set the linkback:
+				var rLink  =this.roe_data.getElementsByTagName('link');
+				for(i in rLink){
+					if(rLink[i].getAttribute('id')=='html_linkback'){
+						js_log('set linkback to '+rImgs[i].getAttribute("src"));
+						_this['linkback'] = rLink[i].getAttribute('href');
+						break;
+					}
+				}
+
+			}
+			js_log("do callback "+ _this['src'] + _this['thumbnail']);
+			callback();
+		});
 	},
 	 /*
 	  * function getDuration in milliseconds 
@@ -798,17 +861,31 @@ embedVideo.prototype = {
 		return seconds2ntp(this.getDuration()/1000);
 	},
 	getHTML : function (){
-		//js_log('get html: ' + $j('#'+this.id).html() );
-	    //returns the innerHTML based on auto play option and global_embed_type
-	    //if auto play==true directly embed the plugin
-	    if(this.autoplay){ 	   
-			this.thumbnail_disp = false;			
-			this.innerHTML = this.getEmbedHTML();
-	    }else{
-	        //if autoplay=false or render out a thumbnail with link to embed html      
-	       this.thumbnail_disp = true;
-	       this.innerHTML = this.getThumbnailHTML();	    
-	    }
+		if(this.loading_external_data){	
+			this.innerHTML = getMsg('loading_txt');
+			/*this.getThumbnailHTML();	
+			$j('#big_play_link_'+this.id).replaceWith('<span style="background:#fff;color:#000;' +
+				'filter:alpha(opacity=65);-moz-opacity:.65;opacity:.65;">'+getMsg('loading_txt')+'</span>');*/
+			_this = this;
+			this.getParseROE( function(){	
+				_this.loading_external_data=false;
+				_this.getHTML();
+			});
+		}else{
+			//make sure we have duration info: 
+			this.getDuration();
+			//js_log('get html: ' + $j('#'+this.id).html() );
+		    //returns the innerHTML based on auto play option and global_embed_type
+		    //if auto play==true directly embed the plugin
+		    if(this.autoplay){ 	   
+				this.thumbnail_disp = false;			
+				this.innerHTML = this.getEmbedHTML();
+		    }else{
+		        //if autoplay=false or render out a thumbnail with link to embed html      
+		       this.thumbnail_disp = true;
+		       this.innerHTML = this.getThumbnailHTML();	    
+		    }	
+		}
 	},
 	/*
 	* get missing plugin html (check for user included code)
@@ -1310,7 +1387,29 @@ function loadExternalJs(url){
 	//e.setAttribute('defer', true);
 	document.getElementsByTagName("head")[0].appendChild(e);     
 }
-
+ function do_request(req_url,callback){
+ 	js_log('do request: ' + req_url);
+		if( parseUri(document.URL).host != parseUri(req_url).host){
+			//@@TODO a DOM injection call to get data
+			js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
+			$j.ajax({
+				type: "POST",
+				url:mv_embed_path + 'mv_data_proxy.php',
+				data:{url:req_url},
+				success:function(data){					
+					callback(data);
+				}
+			});
+		}else{
+			$j.ajax({
+				type: "GET",
+				url:req_url,
+				success:function(data){			
+					callback(data);
+				}
+			});
+		}	
+}
 function styleSheetPresent(url){
     style_elements = document.getElementsByTagName('link');  
     if( style_elements.length > 0) {

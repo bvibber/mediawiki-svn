@@ -1394,29 +1394,7 @@ var xspfPlaylist ={
 /* utility functions 
  * (could be combined with other stuff) 
  */
- function do_request(req_url,callback){
- 	js_log('do request: ' + req_url);
-		if( parseUri(document.URL).host != parseUri(req_url).host){
-			//@@TODO a DOM injection call to get data
-			js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
-			$j.ajax({
-				type: "POST",
-				url:mv_embed_path + 'mv_data_proxy.php',
-				data:{url:req_url},
-				success:function(data){					
-					callback(data);
-				}
-			});
-		}else{
-			$j.ajax({
-				type: "GET",
-				url:req_url,
-				success:function(data){			
-					callback(data);
-				}
-			});
-		}	
-	}
+
 function getAbsolutePos(objectId) {
 	// Get an object left position from the upper left viewport corner
 	o = document.getElementById(objectId);

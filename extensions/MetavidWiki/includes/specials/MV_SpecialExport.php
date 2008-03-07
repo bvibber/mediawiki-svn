@@ -165,7 +165,7 @@ class MV_SpecialExport {
 <!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 <ROE>
 	<head>
-		<link rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
+		<link id="html_linkback" rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
 		<img id="stream_thumb" src="<?=htmlentities($this->mvTitle->getStreamImageURL())?>"/>
 		<title><?=htmlentities($this->mvTitle->getTitleDesc())?></title>
 	</head>

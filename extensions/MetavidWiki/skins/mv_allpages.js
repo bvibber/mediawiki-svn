@@ -2,6 +2,8 @@
 
 mv_addLoadEvent(mv_setup_allpage); 	
 var mv_setup_allpage_flag=false;
+var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
+var gMvd={};
 function mv_setup_allpage(){	
 	js_log("mv embed done loading now setup all page");
 	//make sure we have jQuery and any base requried libs: 
@@ -32,20 +34,18 @@ function mv_do_mvd_link_rewrite(){
 				res = this.href.match(patt_mvd);		
 				if(res){			
 					i++;
+					if(!gMvd[i])gMvd[i]={};
+					gMvd[i]['sn']=res[2]; //stream name
+					gMvd[i]['st']=res[3]; //start time
+					gMvd[i]['et']=res[4]; //end time
+					
 					//js_log(this.href);			
 					//js_log(res);
 					//replace with: 
-					//TEMP:
-					var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+res[2]+'&t='+res[3]+'&size=icon';
-					var stream_link = wgScript+'?title=Stream:'+res[2]+'/'+res[3]+'/'+res[4];
-					var stream_desc = res[2].substr(0,1).toUpperCase() + res[2].substr(1).replace('_', ' ')+' '+ res[3] + ' to '+ res[4];
-					var expand_link = '<span id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
+					//TEMP:					
 					$j(this).replaceWith('<div id="mvd_link_'+i+'" ' +
 							'style="vertical-align: bottom;margin:.5em;border:solid thin black;width:300px;height:60px;">' +
-								'	<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+',\''+res[2]+'/'+res[3]+'/'+res[4]+'\')" ' +
-										'style="cursor:pointer;float:left;height:60px;width:80px;" src="'+img_url+'">' +expand_link+
-										'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a>'+
-								'<br>'+																			
+								get_mvdrw_img(i)  + 
 							'</div>');							
 					$j('#mv_mvd_ex_'+i).click(function(){
 						inx = this.id.substr(10);
@@ -58,12 +58,24 @@ function mv_do_mvd_link_rewrite(){
 	js_log('got to I: '+i);
 	$j('#mvd_link_'+i).after('<div style="clear:both"></div>')
 }
+function get_mvdrw_img(i){
+	var stream_link = wgScript+'?title=Stream:'+gMvd[i]['sn']+'/'+gMvd[i]['st']+'/'+gMvd[i]['et'];
+	var stream_desc = gMvd[i]['sn'].substr(0,1).toUpperCase() + gMvd[i]['sn'].substr(1).replace('_', ' ')+' '+ gMvd[i]['st'] + ' to '+ gMvd[i]['et'];
+	var expand_link = '<span id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
+	var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+gMvd[i]['sn']+'&t='+gMvd[i]['st']+'&size=icon';
+	return '<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+')" ' +
+				'style="cursor:pointer;float:left;height:60px;width:80px;" src="'+img_url+'">'+expand_link+
+					'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
+}
 function mv_ext(inx){
 	//grow the window to 300+240 540	
 	js_log('i: is '+ inx);
 	$j('#mvd_link_'+inx).animate({width:'540px','height':'240px'},1000);
 	$j('#mvd_link_im_'+inx).animate({width:'320px','height':'240px'},1000,function(){
 		//do mv_embed swap
+		$j('#mvd_link_im_'+inx).replaceWith('<video autoplay="true" id="mvd_vid_'+inx +'">');
+		$j('#mvd_vid_'+inx).attr('roe', base_roe_url + gMvd[inx]['sn']+'&t='+gMvd[inx]['st']+'/'+gMvd[inx]['et']);
+		init_mv_embed(true);		
 	});
 	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/opened.png\')');
 	$j('#mv_mvd_ex_'+inx).unbind();
@@ -74,6 +86,7 @@ function mv_ext(inx){
 	js_log('did mv ex');
 }
 function mv_cxt(inx){
+	$j('#mvd_link_'+inx).html(get_mvdrw_img(inx));	
 	$j('#mvd_link_'+inx).animate({width:'300px','height':'60px'},1000);
 	$j('#mvd_link_im_'+inx).animate({width:'80px','height':'60px'},1000);
 	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\')');

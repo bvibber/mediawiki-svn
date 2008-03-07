@@ -7,6 +7,6 @@ include_once(dirname(__FILE__)  .'/'.'MV_DefaultSettings.php');
  * your settings overrides here: 
  */
 $mvExternalImages = true;
-$mvExternalImgServerPath = 'http://mvprime.cse.ucsc.edu/wiki/index.php';
+$mvExternalImgServerPath = 'http://metavid.ucsc.edu/wiki/index.php';
 
 ?>

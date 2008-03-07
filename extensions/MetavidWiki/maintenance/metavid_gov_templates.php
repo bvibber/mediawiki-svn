@@ -198,7 +198,7 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	//include space for Top 10 Interests Funding	
 	$template_body.="\n===Interests Funding===\n";
 	$template_body.="{{ #if: {{{MAPLight Person ID|}}}|[[Data_Source_URL:=http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}}|MAPLight Source]] \n|}}";
-	$template_body.="{{ #if: {{{Total Received|}}}|Total Campaign Contributions for {{PAGENAME}}: {{{Total Received}}} <br>|}}\n";
+	$template_body.="{{ #if: {{{Total Received|}}}| Total Campaign Contributions for {{PAGENAME}}: {{{Total Received}}} <br>|}}\n";
 	$template_body.="{{ #if: {{{Contributions Date Range|}}}|Contributions Date Range: {{{Contributions Date Range}}} |}}\n";	
 	for($i=1;$i<=10;$i++){
 		$template_body.="{{ #if: {{{Funding Interest $i|}}}|*[[Funding Interest:={{{Funding Interest $i}}};{{{Funding Amount $i}}}]] \n|}}";
