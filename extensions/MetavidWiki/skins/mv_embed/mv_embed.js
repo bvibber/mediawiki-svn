@@ -790,35 +790,28 @@ embedVideo.prototype = {
 				//set the src to video tag with "default" attribute:
 				var rVids = this.roe_data.getElementsByTagName('video');
 				js_log('found '+ rVids.length + ' video tags');
-				for(i in rVids){	
-					if(rVids[i].getAttribute('default')=="true"){
-						js_log('set src to '+rVids[i].getAttribute("src"));
-						
-						_this['src'] = rVids[i].getAttribute("src")
-						break;
+				$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
+					if(n.getAttribute("default")=="true"){
+						js_log('set src to '+n.getAttribute("src"));						
+						_this['src'] = n.getAttribute("src");
 					}
-				}
+				});												
 				//set the thumbnail: 
 				//for some reason getElement By id does not work > ? 
 				//rThumb = this.roe_data.getElementById('stream_thumb');
-				var rImgs = this.roe_data.getElementsByTagName('img');
-				for(i in rImgs){
-					if(rImgs[i].getAttribute("id")=="stream_thumb"){
-						js_log('set thumb to '+rImgs[i].getAttribute("src"));
-						_this['thumbnail'] = rImgs[i].getAttribute("src");	
-						break;
+				$j.each(this.roe_data.getElementsByTagName('img'), function(inx, n){
+					if(n.getAttribute("id")=="stream_thumb"){
+						js_log('set thumb to '+n.getAttribute("src"));
+						_this['thumbnail'] = n.getAttribute("src");	
 					}
-				}
+				}); 
 				//set the linkback:
-				var rLink  =this.roe_data.getElementsByTagName('link');
-				for(i in rLink){
-					if(rLink[i].getAttribute('id')=='html_linkback'){
-						js_log('set linkback to '+rImgs[i].getAttribute("src"));
-						_this['linkback'] = rLink[i].getAttribute('href');
-						break;
+				$j.each(this.roe_data.getElementsByTagName('link'), function(inx, n){
+					if(n.getAttribute('id')=='html_linkback'){
+						js_log('set linkback to '+n.getAttribute("src"));
+						_this['linkback'] = n.getAttribute('href');
 					}
-				}
-
+				});
 			}
 			js_log("do callback "+ _this['src'] + _this['thumbnail']);
 			callback();
