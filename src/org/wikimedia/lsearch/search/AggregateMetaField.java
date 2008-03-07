@@ -9,6 +9,7 @@ import java.util.WeakHashMap;
 import javax.print.attribute.standard.Finishings;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.document.Document;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexReader.FieldOption;
@@ -54,7 +55,9 @@ public class AggregateMetaField {
 		protected int[] index = null;
 		protected byte[] length  = null;
 		protected byte[] lengthNoStopWords = null;
+		protected byte[] lengthComplete = null;
 		protected float[] boost  = null;
+		protected byte[] namespaces = null;
 		protected IndexReader reader = null;
 		protected String field;
 		protected boolean cachingFinished = false;
@@ -66,28 +69,34 @@ public class AggregateMetaField {
 				index = new int[maxdoc];
 				int count = 0;
 				length = new byte[maxdoc]; // estimate maxdoc values
-				lengthNoStopWords = new byte[maxdoc]; 
+				lengthNoStopWords = new byte[maxdoc];
+				lengthComplete = new byte[maxdoc];
 				boost = new float[maxdoc];
+				namespaces = new byte[maxdoc];
 				for(int i=0;i<maxdoc;i++){
 					byte[] stored = null;
 					try{
-						stored = reader.document(i).getBinaryValue(field);
+						Document doc = reader.document(i); 
+						stored = doc.getBinaryValue(field);
+						namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
 						index[i] = count;
 						if(stored == null)
 							continue;
-						for(int j=0;j<stored.length/6;j++){
+						for(int j=0;j<stored.length/7;j++){
 							if(count >= length.length){
 								length = extendBytes(length);
 								lengthNoStopWords = extendBytes(lengthNoStopWords);
+								lengthComplete = extendBytes(lengthComplete);
 								boost = extendFloats(boost);
 							}						
-							length[count] = stored[j*6];
+							length[count] = stored[j*7];
 							if(length[count] == 0){
-								log.warn("Broken length=0 for docid="+i+", at position "+j);
+								log.debug("Broken length=0 for docid="+i+", at position "+j);
 							}
-							lengthNoStopWords[count] = stored[j*6+1];
-							int boostInt = (((stored[j*6+2]&0xff) << 24) + ((stored[j*6+3]&0xff) << 16) + ((stored[j*6+4]&0xff) << 8) + ((stored[j*6+5]&0xff) << 0));
+							lengthNoStopWords[count] = stored[j*7+1];
+							int boostInt = (((stored[j*7+2]&0xff) << 24) + ((stored[j*7+3]&0xff) << 16) + ((stored[j*7+4]&0xff) << 8) + ((stored[j*7+5]&0xff) << 0));
 							boost[count] = Float.intBitsToFloat(boostInt);
+							lengthComplete[count] = stored[j*7+6];
 							
 							count++;
 						}										
@@ -101,6 +110,7 @@ public class AggregateMetaField {
 					length = resizeBytes(length,count);
 					lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
 					boost = resizeFloats(boost,count);
+					lengthComplete = resizeBytes(lengthComplete,count);
 				}
 				log.info("Finished caching aggregate "+field+" for "+reader.directory());
 				cachingFinished = true;
@@ -164,29 +174,36 @@ public class AggregateMetaField {
 			return reader.document(docid).getBinaryValue(field);
 		}
 		
-		/** Get length for position */ 
+		/** Get length of nonalias tokens */ 
 		public int getLength(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished) // still caching in background
-				return getStored(docid)[position*6];
+				return getStored(docid)[position*7];
 			return length[getValueIndex(docid,position)];
 		}		
-		/** Get length for position */ 
+		/** Get length without stop words */ 
 		public int getLengthNoStopWords(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished) 
-				return getStored(docid)[position*6+1];
+				return getStored(docid)[position*7+1];
 			return lengthNoStopWords[getValueIndex(docid,position)];
 		}
+		/** Get length with all the aliases */
+		public int getLengthComplete(int docid, int position) throws CorruptIndexException, IOException{
+			if(!cachingFinished)
+				return getStored(docid)[position*7+6];
+			return lengthComplete[getValueIndex(docid,position)];
+		}
+		
 		/** generic function to get boost value at some position, if checkExists=true won't die on error */
 		private float getBoost(int docid, int position, boolean checkExists) throws CorruptIndexException, IOException{
 			if(!cachingFinished){
 				byte[] stored = getStored(docid);
-				if(stored == null || (position*6+5)>=stored.length){
+				if(stored == null || (position*7+5)>=stored.length){
 					if(checkExists)
 						return 1;
 					else
-						throwException(docid,position,(stored==null)? 0 : (stored.length/6));
+						throwException(docid,position,(stored==null)? 0 : (stored.length/7));
 				}
-				int boostInt = (((stored[position*6+2]&0xff) << 24) + ((stored[position*6+3]&0xff) << 16) + ((stored[position*6+4]&0xff) << 8) + ((stored[position*6+5]&0xff) << 0));
+				int boostInt = (((stored[position*7+2]&0xff) << 24) + ((stored[position*7+3]&0xff) << 16) + ((stored[position*6+4]&0xff) << 8) + ((stored[position*7+5]&0xff) << 0));
 				return Float.intBitsToFloat(boostInt);
 			}
 			int inx = getValueIndex(docid,position,checkExists);
@@ -204,5 +221,15 @@ public class AggregateMetaField {
 		public float getRank(int docid) throws CorruptIndexException, IOException{
 			return getBoost(docid,0,true);
 		}
+		
+		/** Get namespace of the document */
+		public int getNamespace(int docid) throws CorruptIndexException, IOException{
+			if(!cachingFinished){
+				return Integer.parseInt(reader.document(docid).get("namespace"));
+			} 
+			return namespaces[docid];
+		}
+		
+		
 	}
 }

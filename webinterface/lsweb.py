@@ -12,7 +12,8 @@ canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
                     8 : 'MediaWiki', 9: 'MediaWiki_talk', 10: 'Template', 11: 'Template_talk',
                     12 : 'Help', 13: 'Help_talk', 14: 'Category', 15: 'Category_talk',
-                    100: 'Portal', 101: 'Portal_talk', 112: 'Portal',  113: 'Portal_talk'}
+                    100: 'Portal', 101: 'Portal_talk', 102: 'Extension', 103: 'Extension_talk', 
+                    104: 'Index', 105:' Index_talk', 112: 'Portal',  113: 'Portal_talk'}
 prefix_aliases = { 'm': 0, 'mt' : 1, 'u' : 2, 'ut' : 3, 'p': 4, 'pt':5, 'i':6, 'it':7,
                    'mw':8, 'mwt':9, 't':10, 'tt':11, 'h':12, 'ht':13, 'c':14, 'ct': 15}
 
@@ -84,7 +85,8 @@ def make_wiki_link(line,dbname,caption=''):
     return ['%1.2f -- <a href="%s">%s</a>' % (score,link,caption),title]
 
 def make_title_link(line,dbname,caption=''):
-    interwiki={'w':'wikipedia', 'wikt':'wiktionary', 's':'wikisource', 'b': 'wikibooks', 'n':'wikinews', 'v':'wikiversity', 'q':'wikiquote'}
+    interwiki={'w':'wikipedia', 'wikt':'wiktionary', 's':'wikisource', 'b': 'wikibooks', 'n':'wikinews', 'v':'wikiversity', 'q':'wikiquote',
+               'mw': 'mediawiki', 'meta': 'meta'};
     parts = line.split(' ')
     score = float(parts[0])
     title = ''
@@ -95,7 +97,11 @@ def make_title_link(line,dbname,caption=''):
     title = iw+':'+ns+parts[3]
     titleText = ns+parts[3]
     
-    if dbname.endswith('wiktionary'):
+    if dbname == 'mediawikiwiki':
+        link= 'http://www.mediawiki.org/wiki/%s' % (title)
+    elif dbname == 'metawiki':
+        link = 'http://meta.wikimedia.org/wiki/%s' % (title)
+    elif dbname.endswith('wiktionary'):
         link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
     else:
         link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
@@ -280,7 +286,7 @@ class MyHandler(BaseHTTPRequestHandler):
                     self.send_header('Cache-Control','no-cache')
                     self.send_header('Content-type','text/html')
                     self.end_headers()
-                    self.wfile.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>')
+                    self.wfile.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>LS2 search: %s</title></head>' % query)
                     if method == 'related':
                         self.wfile.write('<body>Articles related to article: %s <br>' % query)
                     else:
@@ -371,8 +377,8 @@ class MyHandler(BaseHTTPRequestHandler):
                                 dateprefix = ' -- '
                             self.wfile.write('<font size="-1">%s<i>%s words</i></font>' % (dateprefix,wordcount))
                         if date != None or wordcount != None:
-                            self.wfile.write('<br/>')
-                        # self.wfile.write('<font size="-1"><a href="%s">Related</a></font><br/>' % make_link(params,0,'related',title.replace('_',' ')))
+                            self.wfile.write(' -- ')
+                        self.wfile.write('<font size="-1"><a href="%s">Related</a></font><br/>' % make_link(params,0,'related',urllib.unquote(title.replace('_',' '))))
                         i += 1 
                     
                     # write the grouped titles stuff    

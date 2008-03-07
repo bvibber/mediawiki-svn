@@ -181,7 +181,16 @@ public class SpellCheckIndexer {
 						//String context = makeContext(w,ir,fields,stopWords);
 						addPhrase(w,freq,true,null,null);
 					}
-				}				
+				} /*else{
+					// add words that haven't been added in first pass but are in titles
+					int freq = ir.docFreq(new Term("contents",w));
+					if(freq < minWordFreq && hasInLinks(w,ir,fields)){
+						String context = null;
+						if(!stopWords.contains(w))
+							context = makeContext(w,ir,fields,stopWords);
+						addWord(w,freq,context);
+					}
+				} */
 			}
 			log.info("Adding titles (other namespaces)");
 			// add all titles
@@ -233,6 +242,16 @@ public class SpellCheckIndexer {
 		words.removeAll(stopWords);
 		words.remove(w);
 		return new StringList(words).toString();
+	}
+	
+	protected boolean hasInLinks(String w, IndexReader ir, FieldNameFactory fields) throws IOException{
+		TermDocs td = ir.termDocs(new Term(fields.title(),w));
+		while(td.next()){
+			String rank = ir.document(td.doc()).get("rank");
+			if(rank != null && !rank.equals("0"))
+				return true;
+		}
+		return false;
 	}
 
 	

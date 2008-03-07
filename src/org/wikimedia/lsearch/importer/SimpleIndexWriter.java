@@ -185,7 +185,7 @@ public class SimpleIndexWriter {
 		if(writer == null)
 			return;		
 		try {
-			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,highlightAnalyzer,target,suffix,exactCase,stopWords);
+			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,highlightAnalyzer,target,suffix,original.getDBname(),exactCase,stopWords);
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();

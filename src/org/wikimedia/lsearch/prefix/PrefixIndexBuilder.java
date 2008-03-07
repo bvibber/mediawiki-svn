@@ -124,7 +124,8 @@ public class PrefixIndexBuilder {
 				for(Token t : canonized){
 					d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
 				}
-				d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
+				if(redirect!=null && !redirect.equals(""))
+					d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
 				d.add(new Field("ref",Integer.toString(ref),Field.Store.YES,Field.Index.NO));			
 				writer.addDocument(d);				
 				if(redirect != null && redirectAddition)
@@ -150,12 +151,17 @@ public class PrefixIndexBuilder {
 			TermDocs td = ir.termDocs(t);
 			// key -> rank
 			HashMap<String,Double> refs = new HashMap<String,Double>();
+			// key -> redirect target
+			HashMap<String,String> redirects = new HashMap<String,String>();
 			while(td.next()){
 				Document d = ir.document(td.doc());
 				String key = d.get("key");
+				String redirect = d.get("redirect");
+				if(redirect != null && redirect.length()>0)
+					redirects.put(key,redirect);
 				double ref = Integer.parseInt(d.get("ref")) * lengthCoeff(key,prefix);
 				if(key.equalsIgnoreCase(prefix))
-					ref = Double.MAX_VALUE; // always put exact match first
+					ref *= 100; // boost for exact match
 				refs.put(key,ref);
 			}
 			ArrayList<Entry<String,Double>> sorted = new ArrayList<Entry<String,Double>>();
@@ -168,10 +174,16 @@ public class PrefixIndexBuilder {
 					else return -1;
 				}
 			});
+			HashSet<String> selectedRedirects = new HashSet<String>();
 			ArrayList<String> selected = new ArrayList<String>();
 			for(int i=0;i<perPrefix && i<sorted.size();i++){
-				String key = sorted.get(i).getKey();				
-				selected.add(key);
+				String key = sorted.get(i).getKey();
+				String redirect = redirects.get(key);
+				if(redirect == null || !selectedRedirects.contains(redirect)){
+					selected.add(key);
+					selectedRedirects.add(redirect);
+					selectedRedirects.add(key);
+				}
 			}
 			Document d = new Document();
 			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.NO_NORMS));
@@ -224,16 +236,18 @@ public class PrefixIndexBuilder {
 		return new String(buf,0,len); */
 	}
 	
+	/** Obtain all the different versions of the whole key (with accents, without, transliterated.. ) */
 	private static ArrayList<Token> canonize(String key, IndexId iid, FilterFactory filters) throws IOException{
 		FastWikiTokenizerEngine tokenizer = new FastWikiTokenizerEngine(key,iid,new TokenizerOptions.PrefixCanonization());
-		return filters.canonize(tokenizer.parse());		
+		return filters.canonicalFilter(tokenizer.parse());		
 	}
 	
 	private static double lengthCoeff(String key, String prefix) {
-		if(prefix.length() >= key.length())
+		return 1;
+		/*if(prefix.length() >= key.length())
 			return 1;
 		else
-			return Math.sqrt(((double)prefix.length())/((double)key.length()));
+			return Math.sqrt(((double)prefix.length())/((double)key.length())); */
 	}
 	
 	final private static double square(double x){

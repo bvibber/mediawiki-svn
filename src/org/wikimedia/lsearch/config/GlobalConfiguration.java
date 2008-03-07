@@ -49,7 +49,7 @@ public class GlobalConfiguration {
 	/** host -> arraylist ( db.role ) */
 	protected Hashtable<String,ArrayList<String>> search;
 	/** dbname@host -> group */
-	protected Hashtable<String,Integer> databaseGroup;
+	protected Hashtable<String,Integer> databaseHostGroup;
 	/** host -> arraylist ( db.role) */
 	protected Hashtable<String,ArrayList<String>> index;
 	/** dbrole -> host */
@@ -321,7 +321,7 @@ public class GlobalConfiguration {
 		database = new Hashtable<String, Hashtable<String, Hashtable<String, String>>>();		
 		searchGroup = new Hashtable<Integer,Hashtable<String, ArrayList<String>>>();
 		search = new Hashtable<String, ArrayList<String>>();
-		databaseGroup = new Hashtable<String,Integer>();
+		databaseHostGroup = new Hashtable<String,Integer>();
 		index = new Hashtable<String, ArrayList<String>>();
 		indexLocation = new Hashtable<String, String>();
 		indexRsyncPath = new Hashtable<String, String>();
@@ -356,6 +356,7 @@ public class GlobalConfiguration {
 		final int INDEXPATH = 3;
 		final int NAMESPACE_PREFIX = 4;
 		final int OAI = 5;
+		final int DATABASE_GROUP = 6;
 		
 		int searchGroupNum = -1;
 		
@@ -414,10 +415,12 @@ public class GlobalConfiguration {
 					section = NAMESPACE_PREFIX;
 				else if(s.equalsIgnoreCase("oai"))
 					section = OAI;
+				else if(s.equals("database-group"))
+					section = DATABASE_GROUP;
 			} else if(section==-1 && !line.trim().equals("")){
 				if(verbose)
 					System.out.println("Ignoring a line up to first section heading...");
-			} else if(section == DATABASE){
+			} else if(section == DATABASE || section == DATABASE_GROUP){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;				
 				String[] dbs = parts[0].split(",");
@@ -509,9 +512,9 @@ public class GlobalConfiguration {
 	/** Get all hosts that search this dbname within current hosts search groups */
 	protected HashSet<String> getMySearchHosts(String dbname, String dbrole){
 		HashSet<String> searchHosts = new HashSet<String>();
-		Integer group = databaseGroup.get(dbname+"@"+hostAddr);
+		Integer group = databaseHostGroup.get(dbname+"@"+hostAddr);
 		if(group == null)
-			group = databaseGroup.get(dbname+"@"+hostName);
+			group = databaseHostGroup.get(dbname+"@"+hostName);
 		if(group == null)
 			return searchHosts;
 		
@@ -535,17 +538,36 @@ public class GlobalConfiguration {
 		if(index.get(hostName)!=null)
 			localIndexes.addAll(index.get(hostName)); */
 		
-		// dbname -> ts index, e.g. enwiki -> en.tspart1
+		// dbname -> ts index, e.g. enwiki -> en-titles.tspart1
 		HashMap<String,String> dbnameTitlesPart = new HashMap<String,String>();
 		// dbname -> matched suffix, e.f. enwiki -> wiki
 		HashMap<String,String> dbnameSuffix = new HashMap<String,String>();
 		// suffix -> part, e.g. wiki -> tspart1
 		HashMap<String,String> suffixPart = new HashMap<String,String>();
 		int splitFactor = 0;
+		// suffixes that are exceptions, e.g. special groupings
+		HashSet<String> specialCases = new HashSet<String>();
 		// new db names to be created
 		HashSet<String> dbnames = new HashSet<String>();
 		// db -> language, e.g. en -> en
 		HashMap<String,String> dbLang = new HashMap<String,String>();
+		// work out special groupings
+		for(String dbname : database.keySet()){
+			if(dbname.endsWith("-titles")){
+				Hashtable<String,Hashtable<String,String>> typep = database.get(dbname);
+				int num = Integer.parseInt(typep.get("titles_by_suffix").get("number"));
+				for(int i=1;i<=num;i++){
+					String titlePart = "tspart"+i;
+					for(Entry<String,String> e : typep.get(titlePart).entrySet()){
+						String suffix = e.getKey();
+						specialCases.add(suffix);
+						dbnameTitlesPart.put(suffix,dbname+"."+titlePart);
+						dbnameSuffix.put(suffix,suffix);
+					}
+				}
+			}
+		}
+		// process the general pattern
 		if(database.containsKey("<all>")){
 			Hashtable<String,Hashtable<String,String>> allKeyword = database.get("<all>");
 			splitFactor = Integer.parseInt(allKeyword.get("titles_by_suffix").get("number"));			
@@ -562,7 +584,7 @@ public class GlobalConfiguration {
 				if(dbname.startsWith("<"))
 					continue;
 				for(String s : suffixes){
-					if(dbname.endsWith(s)){
+					if(dbname.endsWith(s) && !specialCases.contains(dbname)){
 						// e.g. en.tspart1
 						String db = dbname.substring(0,dbname.lastIndexOf(s));
 						String partName = db+"-titles."+suffixPart.get(s);
@@ -576,9 +598,9 @@ public class GlobalConfiguration {
 			}
 			// create the new databases
 			Hashtable<String,Hashtable<String,String>> params = database.get("<all>");
-			for(String db : dbnames){	
+			for(String db : dbnames){
 				Hashtable<String,Hashtable<String,String>> p = (Hashtable<String, Hashtable<String, String>>) params.clone();
-				if(dbLang.containsKey(db)){
+				if(dbLang.containsKey(db)){ // hack to include the language code
 					Hashtable<String,String> code = new Hashtable<String,String>();
 					code.put("code",dbLang.get(db));
 					p.put("language",code);
@@ -666,7 +688,8 @@ public class GlobalConfiguration {
 						                    oairepo,
 						                    isSubdivided,
 						                    dbnameTitlesPart.get(dbname),
-						                    dbnameSuffix.get(dbname));
+						                    dbnameSuffix.get(dbname),
+						                    getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
 				indexIdPool.put(dbrole,iid);
 				
 				if(type.equals("single") || type.equals("mainsplit") || type.equals("split") 
@@ -691,7 +714,8 @@ public class GlobalConfiguration {
 							            oairepo,
 							            isSubdivided,
 							            dbnameTitlesPart.get(dbname),
-							            dbnameSuffix.get(dbname));
+							            dbnameSuffix.get(dbname),
+							            getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
 					indexIdPool.put(dbrole,iid);
 				}
 				
@@ -701,6 +725,20 @@ public class GlobalConfiguration {
 				indexIdPool.get(dbname+".hl").rebuildNsMap(indexIdPool);
 			}
 		}		
+	}
+
+	private Hashtable<String, String> getSuffixToDBMap(String dbrole, HashMap<String, String> dbnameTitlesPart, HashMap<String, String> dbnameSuffix) {
+		if(!dbrole.contains(".tspart"))
+			return null;
+		// suffix -> dbname
+		Hashtable<String,String> map = new Hashtable<String,String>();
+		for(Entry<String,String> e : dbnameTitlesPart.entrySet()){
+			// e : dbname -> tspart index
+			if(e.getValue().equals(dbrole)){
+				map.put(dbnameSuffix.get(e.getKey()),e.getKey());
+			}
+		}
+		return map;
 	}
 
 	/** 
@@ -832,12 +870,12 @@ public class GlobalConfiguration {
 				continue;
 			String name = dbrole.split("\\.")[0]+"@"+host;
 			Integer group;
-			if((group = databaseGroup.get(name)) != null){
+			if((group = databaseHostGroup.get(name)) != null){
 				if(!group.equals(grp) && verbose){
 					System.out.println("Warning: Database "+name+" was previously defined in search group "+group+". Overriding with group "+grp);
 				}
 			}
-			databaseGroup.put(name,grp);
+			databaseHostGroup.put(name,grp);
 			hostroles.add(dbrole);
 			grouproles.add(dbrole);
 		}
@@ -964,7 +1002,7 @@ public class GlobalConfiguration {
 				System.out.println("Unrecognized prefix parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
-		} else if(type.equals("titles_by_suffix")){
+		} else if(type.equals("titles_by_suffix") || type.equals("titles_grouped")){
 			if(tokens.length>1) // number of segments
 				params.put("number",tokens[1]);
 			else{

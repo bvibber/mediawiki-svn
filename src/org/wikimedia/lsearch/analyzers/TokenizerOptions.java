@@ -18,6 +18,8 @@ public class TokenizerOptions {
 	boolean simplifyGlue = false;
 	/** Treat whole text as single token */
 	boolean noTokenization = false;
+	/** dont' output tokens with tipe upper and titlecase */
+	boolean noCaseDetection = false;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -27,6 +29,14 @@ public class TokenizerOptions {
 		public NoRelocation(boolean exactCase){
 			super(exactCase);
 			this.relocationParsing = false;
+		}
+	}
+	
+	public static class Title extends TokenizerOptions {	
+		public Title(boolean exactCase){
+			super(exactCase);
+			relocationParsing = false;
+			noCaseDetection = true;
 		}
 	}
 	

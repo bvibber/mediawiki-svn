@@ -19,6 +19,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
+import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.analyzers.ExtToken.Type;
@@ -89,7 +90,7 @@ public class Highlight {
 	 * @returns map: key -> what to highlight
 	 */
 	@SuppressWarnings("unchecked")
-	public static ResultSet highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, ArrayList<String> words, HashSet<String> stopWords, boolean exactCase, IndexReader reader) throws IOException{
+	public static ResultSet highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, ArrayList<String> words, HashSet<String> stopWords, boolean exactCase, IndexReader reader, boolean sortByPhrases) throws IOException{
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
@@ -139,8 +140,8 @@ public class Highlight {
 				firstHitRank = alttitles.getTitle().getRank();
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
-			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext );
-			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext);
+			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases );
+			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext,false);
 			int redirectAdditional = 0;
 			if(titleSnippets.size()>0 && 
 					((titleSnippets.get(0).found.containsAll(words) && textTokenLength(titleSnippets.get(0).tokens) == words.size())
@@ -416,13 +417,13 @@ public class Highlight {
 				else if(!stopWords.contains(t.termText()))
 					completeMatch = false;
 				
-				if(notInTitle.containsKey(t.termText())){
+				if(notInTitle.containsKey(t.termText()) && !stopWords.contains(t.termText())){
 					additional++;
 					additionalScore += notInTitle.get(t.termText());
 				}
 			}
 			if((completeMatch && additional >= minAdditional) || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
-				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext);
+				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext, false);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);
 					snippet.setAlttitle(ainf);
@@ -497,7 +498,7 @@ public class Highlight {
 	/** Highlight text */
 	protected static ArrayList<RawSnippet> getBestTextSnippets(ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
 			HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, boolean showFirstIfNone,
-			HashSet<String> phrases, HashSet<String> foundInContext) {
+			HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases) {
 		
 		// pieces of text to ge highlighted
 		ArrayList<FragmentScore> fragments = new ArrayList<FragmentScore>();
@@ -579,6 +580,78 @@ public class Highlight {
 			if(foundAllInFirst)
 				beginLen += t.getTextLength();
 
+			Integer inx = null;
+			ExtToken phraseToken = null;
+			int phraseIndex = i;
+			// fetch index within a phrase
+			if(t.getPositionIncrement() != 0){
+				if(!t.isStub() && t.getType() == Type.TEXT)
+					inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(t.termText()));
+				if(inx != null){
+					wordsInSentence.add(t.termText());
+					phraseIndex = i;					 
+				} else{
+					// try within aliases
+					for(int j=i+1;j<tokens.size();j++){
+						ExtToken alias = tokens.get(j);
+						if(alias.getPositionIncrement() != 0)
+							break;
+						if(!alias.isStub()){
+							inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(alias.termText()));
+							if(inx != null){
+								wordsInSentence.add(alias.termText());
+								phraseIndex = j;
+								break;
+							}
+						}
+					}
+				}
+				if(inx != null)
+					phraseToken = tokens.get(phraseIndex);					
+				
+				
+				// process phrases				
+				Double phraseWeight = inx != null? weightTerms.get(phraseToken.termText()) : null;
+				Integer lastInx = (lastText != null && lastText.termText()!=null)? wordIndex.get(FastWikiTokenizerEngine.clearTrailing(lastText.termText())) : null;
+				
+				if(phraseWeight != null){
+					if(inx != null && (lastInx == null || phraseStart == -1)){
+						// begin of phrase
+						phraseScore = phraseWeight;
+						phraseStart = phraseIndex;
+						phraseCount = 1;
+					} else if((inx == null && lastInx != null)){
+						// end of phrase
+						addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,phraseIndex,phraseCount);
+						phraseScore = 0;
+						phraseStart = -1;
+						phraseCount = 0;
+					} else if(inx != null && lastInx != null){
+						if(lastInx + 1 != inx){
+							// end of last phrase, begin of new
+							addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,phraseIndex,phraseCount);
+							phraseScore = phraseWeight;
+							phraseStart = phraseIndex;
+							phraseCount = 1;
+						} else{
+							// continuation of phrase
+							phraseScore += phraseWeight;
+							phraseCount++;
+							phrases.add(FastWikiTokenizerEngine.clearTrailing(lastText.termText())+"_"+FastWikiTokenizerEngine.clearTrailing(phraseToken.termText()));
+						}
+					}
+				} else if(t.getType() == Type.TEXT && phraseStart != -1 && phraseScore != 0){
+					// end of phrase, unrecognized text token 
+					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,phraseIndex,phraseCount);
+					phraseScore = 0;
+					phraseStart = -1;
+					phraseCount = 0;
+				}
+
+				lastIndex = phraseIndex;
+			} 
+						
+			// proximity and other per-token scores
 			Double weight = null;
 			if(!t.isStub() && t.getType() == Type.TEXT && availableWeight.contains(t.termText()))
 				weight = weightTerms.get(t.termText());
@@ -588,53 +661,12 @@ public class Highlight {
 				fs.found.add(t.termText());				
 				addToScore(fs,weight,i,i+1,1);
 				addProximity(fs,weight,i,lastWeight,lastIndex);
-				
-				Integer inx = wordIndex.get(t.termText());
-				Integer lastInx = (lastText != null)? wordIndex.get(lastText.termText()) : null;
-				if(inx != null){					
-					wordsInSentence.add(t.termText());
-				}
-				
-				if(t.getPositionIncrement() == 0); // FIXME: aliases won't get extra score for phrases
-				else if((inx != null && lastInx == null) || phraseStart == -1){
-					// begin of phrase
-					phraseScore = weight;
-					phraseStart = i;
-					phraseCount = 1;
-				} else if((inx == null && lastInx != null)){
-					// end of phrase
-					addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
-					phraseScore = 0;
-					phraseStart = -1;
-					phraseCount = 0;
-				} else if(inx != null && lastInx != null){
-					 if(lastInx + 1 != inx){
-						 // end of last phrase, begin of new
-						 addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
-						 phraseScore = weight;
-						 phraseStart = i;
-						 phraseCount = 1;
-					 } else{
-						 // continuation of phrase
-						 phraseScore += weight;
-						 phraseCount++;
-						 phrases.add(lastText.termText()+"_"+t.termText());
-					 }
-				}
-				
-				lastIndex = i;
 				lastWeight = weight;
-			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0 && phraseStart != -1 && phraseScore != 0){
-				// end of phrase, unrecognized text token 
-				addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,i,phraseCount);
-				phraseScore = 0;
-				phraseStart = -1;
-				phraseCount = 0;
 			}
 			
 			last = t;
 			if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0)
-				lastText = t;
+				lastText = phraseToken!=null? phraseToken : t;
 		}
 		// flush phrase score stuff
 		if(phraseScore != 0 && phraseStart != -1){
@@ -650,7 +682,7 @@ public class Highlight {
 			public int compare(FragmentScore o1, FragmentScore o2) {
 				// sort via longest phrase found
 				int c = o2.bestCount - o1.bestCount;
-				if(c != 0)
+				if(sortByPhrases && c != 0)
 					return c;
 				// or if phrases are of same length, then total score
 				double d = o2.score - o1.score;
@@ -682,7 +714,7 @@ public class Highlight {
 			if(hasNew){
 				if(f.found != null)
 					termsFound.addAll(f.found);
-				adjustBest(f,tokens,weightTerms,wordIndex,newTerms);
+				adjustBest(f,tokens,weightTerms,wordIndex,newTerms); 
 				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms,stopWords);
 				res.add(s);
 			} else if(resNoNew.size() < maxSnippets)
@@ -736,54 +768,84 @@ public class Highlight {
 		ExtToken lastText = null;
 		for(int i=f.start;i<f.end;i++){
 			ExtToken t = tokens.get(i);
+			
+			Integer inx = null;
+			ExtToken phraseToken = null;
+			int phraseIndex = i;
+			// fetch index within a phrase
+			if(t.getPositionIncrement() != 0){
+				if(!t.isStub() && t.getType() == Type.TEXT)
+					inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(t.termText()));
+				if(inx != null){
+					phraseIndex = i;					 
+				} else{
+					// try within aliases
+					for(int j=i+1;j<tokens.size();j++){
+						ExtToken alias = tokens.get(j);
+						if(alias.getPositionIncrement() != 0)
+							break;
+						if(!alias.isStub()){
+							inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(alias.termText()));
+							if(inx != null){
+								phraseIndex = j;
+								break;
+							}
+						}
+					}
+				}
+				if(inx != null)
+					phraseToken = tokens.get(phraseIndex);	
+				Double phraseWeight = inx != null? weightTerms.get(phraseToken.termText()) : null;
+				Integer lastInx = (lastText != null && lastText.termText()!=null)? wordIndex.get(FastWikiTokenizerEngine.clearTrailing(lastText.termText())) : null;
+				
+				if(phraseWeight != null){
+					if(inx != null && (lastInx == null || phraseStart == -1)){
+						// begin of phrase
+						phraseScore = phraseWeight;
+						phraseStart = phraseIndex;
+						requiredCount = 0;
+						if(requiredTerms.contains(phraseToken.termText()))
+							requiredCount++;
+					} else if((inx == null && lastInx != null)){
+						// end of phrase
+						updateBest(f,phraseScore,phraseStart,phraseIndex,requiredCount);
+						phraseScore = 0;
+						phraseStart = -1;
+						requiredCount = 0;
+					} else if(inx != null && lastInx != null){
+						if(lastInx + 1 != inx){
+							// end of last phrase, begin of new
+							if(requiredTerms.contains(phraseToken.termText()))
+								requiredCount++;
+							updateBest(f,phraseScore,phraseStart,phraseIndex,requiredCount);
+							phraseScore = phraseWeight;
+							phraseStart = phraseIndex;
+							requiredCount = 0;
+						} else{
+							// continuation of phrase
+							if(requiredTerms.contains(phraseToken.termText()))
+								 requiredCount++;
+							 phraseScore += phraseWeight;
+						}
+					}
+				} else if(t.getType() == Type.TEXT && phraseStart != -1 && phraseScore != 0){
+					// end of phrase, unrecognized text token 
+					updateBest(f,phraseScore,phraseStart,phraseIndex,requiredCount);
+					phraseScore = 0;
+					phraseStart = -1;
+					requiredCount = 0;
+				}
+			} 
+				
 			Double weight = weightTerms.get(t.termText());
 			if(weight != null){
 				// single word phrase
 				if(requiredTerms.contains(t.termText()))
 					updateBest(f,weight,i,i+1,1);
-				
-				Integer inx = wordIndex.get(t.termText());
-				Integer lastInx = (lastText != null)? wordIndex.get(lastText.termText()) : null;
-				if(t.getPositionIncrement() == 0); // FIXME: as above, ignores aliases
-				else if((inx != null && lastInx == null) || phraseStart == -1){
-					// begin of phrase
-					phraseScore = weight;
-					phraseStart = i;
-					requiredCount = 0;
-					if(requiredTerms.contains(t.termText()))
-						requiredCount++;
-				} else if((inx == null && lastInx != null)){
-					// end of phrase
-					updateBest(f,phraseScore,phraseStart,i,requiredCount);
-					phraseScore = 0;
-					phraseStart = -1;
-					requiredCount = 0;
-				} else if(inx != null && lastInx != null){
-					 if(lastInx + 1 != inx){
-						 // end of last phrase, begin of new
-						 if(requiredTerms.contains(t.termText()))
-							 requiredCount++;
-						 updateBest(f,phraseScore,phraseStart,i,requiredCount);
-						 phraseScore = weight;
-						 phraseStart = i;
-						 requiredCount = 0;
-					 } else{
-						 // continuation of phrase
-						 if(requiredTerms.contains(t.termText()))
-							 requiredCount++;
-						 phraseScore += weight;
-					 }
-				}			
-			} else if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0 && phraseStart!=-1 && phraseScore!=0){
-				// end of phrase, unrecognized text token 
-				updateBest(f,phraseScore,phraseStart,i,requiredCount);
-				phraseScore = 0;
-				phraseStart = -1;
-				requiredCount = 0;
 			}
 			
 			if(t.getType() == Type.TEXT && t.getPositionIncrement() != 0)
-				lastText = t;
+				lastText = phraseToken!=null? phraseToken : t;
 		}
 		
 	}

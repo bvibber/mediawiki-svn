@@ -19,7 +19,11 @@ enwiki : (single)
 enwiktionary : (single)
 dewiktionary : (single)
 enwikisource : (single)
+mediawikiwiki, metawiki : (single) (language,en)
+
+[Database-Group]
 <all> : (titles_by_suffix,2) (tspart1,[ wiki|w ]) (tspart2,[ test|test, wiktionary|wikt, wikisource|s ])
+mw-titles: (titles_by_suffix,1) (tspart1, [ mediawikiwiki|mw, metawiki|meta ])
 
 # Search nodes
 # host : db1.role, db2.role

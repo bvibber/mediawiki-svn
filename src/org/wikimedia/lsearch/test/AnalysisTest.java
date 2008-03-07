@@ -59,7 +59,7 @@ public class AnalysisTest {
 			if(token instanceof ExtToken)
 				System.out.print(" "+token);
 			else
-				System.out.print(token.getPositionIncrement()+" [" + token.termText() + "] ");
+				System.out.print(" "+token.getPositionIncrement()+" [" + token.termText() + "]");
 			if(j > 50){
 				System.out.println();
 				j=0;
@@ -101,15 +101,15 @@ public class AnalysisTest {
 		HashSet<String> stopWords = new HashSet<String>();
 		stopWords.add("the"); stopWords.add("of"); stopWords.add("is"); stopWords.add("in"); stopWords.add("and"); stopWords.add("he") ;
 		//Analyzer analyzer = Analyzers.getSpellCheckAnalyzer(IndexId.get("enwiki"),stopWords);
-		//Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
-		Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
+		//Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
 		Analyzer old = new EnglishAnalyzer();
 		String text = "a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
 		displayTokens(analyzer,text);
 		displayTokens(old,text);
 		text = "links abacus something aries douglas adams boxes bands working s and Frame semantics (linguistics)";
 		displayTokens(analyzer,text);
-		text = "Frame semantics (linguistics) 16th century sixteenth .fr web.fr other";
+		text = "Thomas c# c++ good-thomas Good-Thomas rats RATS Frame semantics (linguistics) 16th century sixteenth .fr web.fr other";
 		displayTokens(analyzer,text);				
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("zhwiki")),"末朝以來藩鎮割據and some plain english 和宦官亂政的現象 as well");
 		displayTokens(analyzer,"Thomas Goode school");
@@ -163,6 +163,7 @@ public class AnalysisTest {
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("jawiki")),"パ ン");
 		
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
+		analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
 		items.add(new Aggregate("douglas adams",10,IndexId.get("enwiki"),analyzer,"related",stopWords));
 		items.add(new Aggregate("{{something|alpha|beta}} the selected works...",2.1f,IndexId.get("enwiki"),analyzer,"related",stopWords));
 		items.add(new Aggregate("hurricane",3.22f,IndexId.get("enwiki"),analyzer,"related",stopWords));
@@ -202,7 +203,13 @@ public class AnalysisTest {
 		items.add(new Aggregate("and some other stuff",3.2f,IndexId.get("enwiki"),false));
 		displayTokens(new AggregateAnalyzer(items),"AGGREGATE TEST"); */
 		
-		
+		IndexId wl = IndexId.get("wikilucene");
+		Analyzer an = Analyzers.getSearcherAnalyzer(wl);
+		Aggregate a1 = new Aggregate("Redheugh Bridges",1,wl,an,"alttitle");
+		Aggregate a2 = new Aggregate("Redheugh Bridge First Crossing",1,wl,an,"alttitle");
+		ArrayList<Aggregate> al = new ArrayList<Aggregate>();
+		al.add(a1); al.add(a2);
+		displayTokens(new AggregateAnalyzer(al),"AGGREGATE TEST");
 		
 		if(true)
 			return;

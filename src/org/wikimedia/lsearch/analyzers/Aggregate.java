@@ -94,5 +94,27 @@ public class Aggregate {
 		return tokens;
 	}
 	
+	/** 
+	 * Generate the meta field stored contents 
+	 * format: [length] [length without stop words] [boost] [complete length] (1+1+4+1 bytes) 
+	 */
+	public static byte[] serializeAggregate(ArrayList<Aggregate> items){
+		byte[] buf = new byte[items.size() * 7];
+		
+		for(int i=0;i<items.size();i++){
+			Aggregate ag = items.get(i);
+			buf[i*7] = (byte)(ag.noAliasLength() & 0xff);
+			buf[i*7+1] = (byte)(ag.getNoStopWordsLength() & 0xff);
+			int boost = Float.floatToIntBits(ag.boost()); 
+	      buf[i*7+2] = (byte)((boost >>> 24) & 0xff);
+	      buf[i*7+3] = (byte)((boost >>> 16) & 0xff);
+	      buf[i*7+4] = (byte)((boost >>> 8) & 0xff);
+	      buf[i*7+5] = (byte)((boost >>> 0) & 0xff);
+	      buf[i*7+6] = (byte)(ag.length() & 0xff);
+		}
+		
+		return buf;		
+	}
+	
 	
 }

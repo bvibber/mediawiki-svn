@@ -46,11 +46,19 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		return src.getLengthNoStopWords(docid,getSlot(pos));
 	}
 	
+	public int lengthComplete(int docid, int pos) throws IOException {
+		return src.getLengthComplete(docid,getSlot(pos));
+	}
+	
 	public float rank(int docid) throws IOException {
 		if(hasRankingData)
 			return src.getRank(docid);
 		else 
 			throw new RuntimeException("Trying to fetch ranking data on field "+field+" where its not available.");
+	}
+	
+	public int namespace(int docid) throws IOException{
+		return src.getNamespace(docid);
 	}
 
 	public boolean hasRankingData() {

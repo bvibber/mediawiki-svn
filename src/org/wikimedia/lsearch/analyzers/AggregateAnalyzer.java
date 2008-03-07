@@ -56,25 +56,4 @@ public class AggregateAnalyzer extends Analyzer {
 		return new AggregateTokenStream();
 	}	
 	
-	/** 
-	 * Generate the meta field stored contents 
-	 * format: [length] [length without stop words] [boost] (1+1+4 bytes) 
-	 */
-	public static byte[] generateMetaField(ArrayList<Aggregate> items){
-		byte[] buf = new byte[items.size() * 6];
-		
-		for(int i=0;i<items.size();i++){
-			Aggregate ag = items.get(i);
-			buf[i*6] = (byte)(ag.noAliasLength() & 0xff);
-			buf[i*6+1] = (byte)(ag.getNoStopWordsLength() & 0xff);
-			int boost = Float.floatToIntBits(ag.boost()); 
-	      buf[i*6+2] = (byte)((boost >>> 24) & 0xff);
-	      buf[i*6+3] = (byte)((boost >>> 16) & 0xff);
-	      buf[i*6+4] = (byte)((boost >>> 8) & 0xff);
-	      buf[i*6+5] = (byte)((boost >>> 0) & 0xff);
-		}
-		
-		return buf;		
-	}
-	
 }

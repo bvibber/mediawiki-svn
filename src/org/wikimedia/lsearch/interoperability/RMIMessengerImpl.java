@@ -132,19 +132,19 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException{
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases) throws RemoteException{
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase,null);
+			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase,null,sortByPhrases);
 		} catch(IOException e){
 			throw new RemoteException("IOException on "+dbrole,e);
 		}
 	}
 	
-	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
+	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain, boolean sortByPhrases) throws RemoteException {
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return new SearchEngine().searchTitles(iid,searchterm,words,query,filter,offset,limit,explain); 
+			return new SearchEngine().searchTitles(iid,searchterm,words,query,filter,offset,limit,explain,sortByPhrases); 
 		} catch(Exception e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);

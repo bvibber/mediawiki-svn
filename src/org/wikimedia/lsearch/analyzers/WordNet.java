@@ -149,7 +149,7 @@ public class WordNet {
 				String[] words = line.split(" ");
 				String[][] synset = new String[words.length][]; 
 				for(int i=0;i<words.length;i++)
-					synset[i] = words[i].split("_|\\.|\\-"); 		
+					synset[i] = words[i].split("_|\\-"); 		
 				
 				for(int i=0;i<words.length;i++){
 					String[] s = synset[i];

@@ -38,7 +38,7 @@ public class PositionalQuery extends PhraseQuery {
 	
 	public String toString(String f) {
 		String s = super.toString(f);
-		return "(positional "+s+")";
+		return "(P "+s+")";
 	}
 	
 	protected Weight createWeight(Searcher searcher) throws IOException {

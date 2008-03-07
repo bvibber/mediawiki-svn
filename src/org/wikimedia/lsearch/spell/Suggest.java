@@ -204,6 +204,8 @@ public class Suggest {
 		FilterFactory filters = new FilterFactory(iid);
 		wordExistCache.clear();
 		long start = System.currentTimeMillis();
+		
+		System.out.println("tokens: "+tokens+" inContext:"+foundInContext+" phrases:"+phrases);
 
 		if(tokens.size() > 30){
 			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start);
@@ -225,7 +227,8 @@ public class Suggest {
 			HashMap<Integer,String> changes = new HashMap<Integer,String>();
 			for(int i=0;i<tokens.size();i++){
 				Token t = tokens.get(i);
-				if(t.type().equals("word") && !wordExists(t.termText(),ns)){
+				if(!t.type().equals("wildcard") && !t.type().equals("fuzzy") 
+						&& t.getPositionIncrement()>0 && !wordExists(t.termText(),ns)){
 					String w = t.termText();
 					ArrayList<SuggestResult> sug = suggestWords(w,POOL,ns);
 					if(sug != null && sug.size()>0){
@@ -327,19 +330,19 @@ public class Suggest {
 				continue;
 			}
 			// words in phrases are also always correct
-			if(i+1<tokens.size() && phrases.contains(w+"_"+tokens.get(i+1).termText())){
+			/*if(i+1<tokens.size() && phrases.contains(w+"_"+tokens.get(i+1).termText())){
 				inPhrases.add(i);
 				addCorrectWord(w,wordSug,possibleStopWords);
 				inPhrases.add(i+1);
 				addCorrectWord(tokens.get(i+1).termText(),wordSug,possibleStopWords);
 				i++;
 				continue;
-			}
+			} */
 			// words found within context should be spell-checked only if they are not valid words
-			if(foundInContext.contains(w) && wordExists(w,ns)){
+			/*if(foundInContext.contains(w) && wordExists(w,ns)){
 				addCorrectWord(w,wordSug,possibleStopWords);
 				continue;
-			}
+			} */
 				
 			// suggest word
 			ArrayList<SuggestResult> sug = (tokens.size() == 1)? singleWordSug : suggestWords(w,POOL,ns);
@@ -530,7 +533,7 @@ public class Suggest {
 			if(sug == null)
 				continue;
 			SuggestResult s = sug.get(0);
-			if(s.dist!=0){
+			if(s.dist!=0 && acceptWordChange(tokens.get(i).termText(),s)){
 				distance += s.dist;
 				proposedChanges.put(i,s.word);
 				if(using.equals("phrases"))
@@ -592,7 +595,16 @@ public class Suggest {
 		logRequest(sq.getSearchterm(),using,start);
 		return sq;
 	}
-	
+
+	/** Accept a single word change (when not part of a phrase) */
+	private boolean acceptWordChange(String w, SuggestResult s) {
+		int minlen = Math.min(w.length(),s.word.length());
+		if(minlen <= 4 && s.dist > 1) // at most 1 edit distance for short words 
+			return false;
+		
+		return true;
+	}
+
 	/** compare if first rank is higher */
 	final private boolean betterRank(int rank, int topRank){
 		//System.out.println("betterRank("+rank+","+topRank+")");
@@ -1034,14 +1046,14 @@ public class Suggest {
 		// merge
 		HashMap<String,SuggestResult> map = new HashMap<String,SuggestResult>();
 		ArrayList<SuggestResult> toAdd = new ArrayList<SuggestResult>();
-		for(SuggestResult d : add)
-			map.put(d.getWord(),d);			
-		for(SuggestResult sg : main){
-			SuggestResult d = map.get(sg.getWord());
-			if(d != null){ // merge
-				d.frequency += sg.frequency;
+		for(SuggestResult m : main)
+			map.put(m.getWord(),m);	 // hash to speedup duplicate lookup		
+		for(SuggestResult a : add){
+			SuggestResult m = map.get(a.getWord());
+			if(m != null){ // merge
+				m.frequency += a.frequency;
 			} else { // add
-				toAdd.add(sg);
+				toAdd.add(a);
 			}
 		}
 		main.addAll(toAdd);

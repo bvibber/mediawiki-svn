@@ -95,10 +95,18 @@ abstract public class PositionalScorer extends PhraseScorer {
 		int offset = start + distance;
 		float begin = 1;
 		float rank = 1;
+		float distanceProp = (float)Math.sqrt(1.0f / (distance + 1));
+		
+		float exact = 1;
+		if(distance == 0 && useExactBoost)
+			exact = options.exactBoost;
+		
+		float beginExact = 1;
+		
 		if(options.useBeginBoost){
 			if(offset < 25)
 				begin = options.beginTable[0];
-			if(offset < 50)
+			else if(offset < 50)
 				begin = options.beginTable[1];
 			else if(offset < 200)
 				begin = options.beginTable[2];
@@ -106,14 +114,15 @@ abstract public class PositionalScorer extends PhraseScorer {
 				begin = options.beginTable[3];
 			// only fetch ranking data on begin-of-article match
 			if(begin>1 && options.rankMeta != null)
-				rank = 1 + (float)Math.log10(options.rankMeta.rank(doc())) * (begin/options.beginTable[0]);
+				rank = 1 + options.rankMeta.rank(doc()) * (begin/options.beginTable[0]);
+			
+			if(start <= 6 && distance>0 && distance <= 10 ){ // as good as exact match
+				distanceProp = 1;
+				beginExact = options.beginExactBoost;				
+			}
 		}
-
-		float exact = 1;
-		if(distance == 0 && useExactBoost)
-			exact = options.exactBoost;
 		
-		float baseScore = rank * begin * exact * (float)Math.sqrt(1.0f / (distance + 1));
+		float baseScore = rank * begin * beginExact * exact * distanceProp;
 		if(DEBUG){
 			// provide very extensive explanations
 			if(explanations == null)
@@ -122,43 +131,67 @@ abstract public class PositionalScorer extends PhraseScorer {
 			if(expl == null){
 				expl = new ArrayList<Explanation>();
 				explanations.put(doc(),expl);
-			}
+			}			
 			Explanation e = new Explanation();
 			e.setValue(baseScore);
 			e.setDescription("Frequency, product of:");
 			expl.add(e);
 			Explanation eBegin = new Explanation();
 			eBegin.setValue(begin);
-			eBegin.setDescription("Begin (offset="+offset+")");
+			eBegin.setDescription("Begin (offset="+offset+", start="+start+")");
 			e.addDetail(eBegin);
 			Explanation eRank = new Explanation();
 			eRank.setValue(rank);
 			eRank.setDescription("Begin rank");
 			e.addDetail(eRank);
+			Explanation eBeginExact = new Explanation();
+			eBeginExact.setValue(beginExact);
+			eBeginExact.setDescription("Begin exact");
+			e.addDetail(eBeginExact);
 			Explanation eExact = new Explanation();
 			eExact.setValue(exact);
 			eExact.setDescription("Exact (distance="+distance+")");
 			e.addDetail(eExact);
 			Explanation eDist = new Explanation();
-			eDist.setValue((float)Math.sqrt(1.0f / (distance+1)));
+			eDist.setValue(distanceProp);
 			eDist.setDescription("Distance (distance="+distance+")");
 			e.addDetail(eDist);
 		}
 		if(options.aggregateMeta != null){
 			// aggregate field !
-			int len = options.aggregateMeta.length(doc(),start);
-			int lenNoStopWords = options.aggregateMeta.lengthNoStopWords(doc(),start);
-			float wholeBoost = (phraseLen == len)? options.wholeBoost : 1;
-			// no stop boost - only if matched words >= stop words
-			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)? options.wholeNoStopWordsBoost : 1;
+			int pos = (start+offset)/2+1; // FIXME: in some cases start can be off by 1 in sloppy queries, probably lucene issue
+			int len = options.aggregateMeta.length(doc(),pos);
+			int lenNoStopWords = options.aggregateMeta.lengthNoStopWords(doc(),pos);
+			int lenComplete = options.aggregateMeta.lengthComplete(doc(),pos);
+			float wholeBoost = 1;
+			float wholeBoostNoStopWords = 1;
+			float completeBoost = 1;
+			float wholeOnly = 1;
+			if(options.useCompleteOnly){
+				if(phraseLen == lenComplete)
+					completeBoost = options.completeBoost;
+			} else{
+				if(phraseLen == len)
+					wholeBoost = options.wholeBoost;
+				// no stop boost - only if matched words >= stop words
+				if(phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)
+					wholeBoostNoStopWords = options.wholeNoStopWordsBoost;
+				if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)
+					wholeOnly = 0; // we didn't match the whole thing
+			}
+			boolean matchedWholeOrComplete = wholeBoost>1 || wholeBoostNoStopWords>1 || completeBoost>1;
+			
 			float boost = 1;
-			if(options.useRankForWholeMatch && (wholeBoost>1 || wholeBoostNoStopWords>1))
+			if(options.useRankForWholeMatch && matchedWholeOrComplete)
 				boost = options.aggregateMeta.rank(doc());
 			else
-				boost = options.aggregateMeta.boost(doc(),start);
-			float wholeOnly = 1;
-			if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)
-				wholeOnly = 0; // we didn't match the whole thing
+				boost = options.aggregateMeta.boost(doc(),pos);
+			
+			float namespaceBoost = 1;
+			if(options.nsWholeBoost!=null && matchedWholeOrComplete)
+				namespaceBoost = options.nsWholeBoost.getBoost(options.aggregateMeta.namespace(doc()));
+			
+			
 			int propPhrase, propTotal;
 			if(options.useNoStopWordLen){
 				propPhrase = phraseLenNoStopWords;
@@ -167,16 +200,18 @@ abstract public class PositionalScorer extends PhraseScorer {
 				propPhrase = phraseLen;
 				propTotal = len;
 			}
-			float score = boost * baseScore * (propPhrase / (float)propTotal) * wholeBoost * wholeBoostNoStopWords * wholeOnly; 
+			float score = namespaceBoost * boost * baseScore * (propPhrase / (float)propTotal) * completeBoost * wholeBoost * wholeBoostNoStopWords * wholeOnly; 
 			if(DEBUG){
 				Explanation e = explanations.get(doc()).get(explanations.get(doc()).size()-1);
+				e.setDescription(e.getDescription()+" (pos="+pos+")");
 				e.setValue(score);
+				e.addDetail(new Explanation(namespaceBoost,"Namespace boost (ns="+options.aggregateMeta.namespace(doc())+")"));
 				Explanation eInfo = new Explanation();
 				eInfo.setValue(boost);
 				eInfo.setDescription("Phrase boost");
 				e.addDetail(eInfo);
 				Explanation eLen = new Explanation();
-				eLen.setValue(phraseLen / (float)len);
+				eLen.setValue(propPhrase / (float)propTotal);
 				eLen.setDescription("Phrase length proportion (matched="+propPhrase+", total="+propTotal+")");
 				e.addDetail(eLen);
 				Explanation eW = new Explanation();
@@ -191,6 +226,10 @@ abstract public class PositionalScorer extends PhraseScorer {
 				eWO.setValue(wholeOnly);
 				eWO.setDescription("Whole only (enabled="+options.onlyWholeMatch+")");
 				e.addDetail(eWO);
+				Explanation eC = new Explanation();
+				eC.setValue(completeBoost);
+				eC.setDescription("Complete boost (matched="+phraseLen+", total="+lenComplete+")");
+				e.addDetail(eC);
 			}
 			return score;
 		} else

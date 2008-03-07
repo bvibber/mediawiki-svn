@@ -19,11 +19,17 @@ public interface AggregateInfo {
 	/** length of phrase at position pos, excluding stop words */
 	public int lengthNoStopWords(int docid, int pos) throws IOException;
 	
+	/** length of phrase at position pos, with all the aliases */
+	public int lengthComplete(int docid, int pos) throws IOException;
+	
 	/** boost for phrase at position pos*/
 	public float boost(int docid, int pos) throws IOException;
 	
 	/** ranking boost for the whole document */
 	public float rank(int docid) throws IOException;
+	
+	/** namespace of the document */
+	public int namespace(int docid) throws IOException;
 	
 	/** if this meta provides ranking data */
 	public boolean hasRankingData();

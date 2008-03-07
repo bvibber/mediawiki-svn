@@ -135,7 +135,7 @@ public interface RMIMessenger extends Remote {
 	 * @param exactCase - if this is an exact case query
 	 * @return map: key -> highlighting result
 	 */
-	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase) throws RemoteException;
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases) throws RemoteException;
 	
 	/**
 	 * Search grouped titles, similar logic to that of searchPart()
@@ -148,7 +148,7 @@ public interface RMIMessenger extends Remote {
 	 * @param limit
 	 * @return
 	 */
-	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
+	public SearchResults searchTitles(String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain, boolean searchByPhrases) throws RemoteException;
 	
 	/**
 	 * "Did you mean.." engine

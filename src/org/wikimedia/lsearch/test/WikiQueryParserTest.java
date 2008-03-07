@@ -22,7 +22,6 @@ public class WikiQueryParserTest extends TestCase {
 		Configuration.open();
 		WikiQueryParser.TITLE_BOOST = 2;
 		WikiQueryParser.ALT_TITLE_BOOST = 6;
-		WikiQueryParser.KEYWORD_BOOST = 0.05f;
 		WikiQueryParser.CONTENTS_BOOST = 1;
 		IndexId enwiki = IndexId.get("enwiki");
 		FieldBuilder.BuilderSet bs = new FieldBuilder(IndexId.get("enwiki")).getBuilder();
@@ -65,13 +64,16 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("+(contents:\"something is\" contents:\"something else\") +contents:\"very important\"",q.toString());
 
 			q = parser.parseRaw("šđčćždzñ");
-			assertEquals("contents:sđcczdzn contents:sđcczdznh",q.toString());
+			assertEquals("contents:šđčćždzñ contents:sđcczdzn^0.5 contents:sđcczdznh^0.5",q.toString());
 			
 			q = parser.parseRaw(".test 3.14 and.. so");
-			assertEquals("+(contents:.test contents:test) +contents:3.14 +contents:and +contents:so",q.toString());
+			assertEquals("+(contents:.test contents:test^0.5) +contents:3.14 +contents:and +contents:so",q.toString());
 			
 			q = parser.parseRaw("i'll get");
-			assertEquals("+(contents:i'll contents:ill) +contents:get",q.toString());
+			assertEquals("+(contents:i'll contents:ill^0.5) +contents:get",q.toString());
+			
+			q = parser.parseRaw("c# good-thomas");
+			assertEquals("+(contents:c# contents:c^0.5) +(+(contents:good- contents:good^0.5) +(contents:thomas contents:thoma^0.5))",q.toString());
 			
 			/* =================== FULL QUERIES ================= */
 			
@@ -80,11 +82,11 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parse("guitars",new WikiQueryParser.ParsingOptions(true));
 			assertEquals("(contents:guitars contents:guitar^0.5) ((title:guitars^2.0 title:guitar^0.4) (stemtitle:guitars^0.8 stemtitle:guitar^0.32000002))",q.toString());
-			assertEquals("[guitars]",parser.getWords().toString());
+			assertEquals("[guitars]",parser.getWordsClean().toString());
 			
 			q = parser.parse("simple -query",new WikiQueryParser.ParsingOptions(true));
 			assertEquals("(+(contents:simple contents:simpl^0.5) -contents:query) ((+title:simple^2.0 -title:query^2.0) (+(stemtitle:simple^0.8 stemtitle:simpl^0.32000002) -stemtitle:query^0.8)) -(contents:query title:query^2.0 stemtitle:query^0.8)",q.toString());
-			assertEquals("[simple]",parser.getWords().toString());
+			assertEquals("[simple]",parser.getWordsClean().toString());
 			
 			q = parser.parse("the who",new WikiQueryParser.ParsingOptions(true));
 			assertEquals("(+contents:the +contents:who) ((+title:the^2.0 +title:who^2.0) (+stemtitle:the^0.8 +stemtitle:who^0.8))",q.toString());
@@ -92,13 +94,20 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("the_who",new WikiQueryParser.ParsingOptions(true));
 			assertEquals("(+contents:the +contents:who) ((+title:the^2.0 +title:who^2.0) (+stemtitle:the^0.8 +stemtitle:who^0.8))",q.toString());
 			
+			q = parser.parse("\"Ole von Beust\"",new WikiQueryParser.ParsingOptions(true));
+			assertEquals("contents:\"ole von beust\" (title:\"ole von beust\"^2.0 stemtitle:\"ole von beust\"^0.8)",q.toString());
+			
+			q = parser.parse("who is president of u.s.",new WikiQueryParser.ParsingOptions(true));
+			assertEquals("(+contents:who +contents:is +(contents:president contents:presid^0.5) +contents:of +(contents:u.s contents:us^0.5)) ((+title:who^2.0 +title:is^2.0 +title:president^2.0 +title:of^2.0 +(title:u.s^2.0 title:us^0.4)) (+stemtitle:who^0.8 +stemtitle:is^0.8 +(stemtitle:president^0.8 stemtitle:presid^0.32000002) +stemtitle:of^0.8 +(stemtitle:u.s^0.8 stemtitle:us^0.32000002)))",q.toString());
+			assertEquals("[who, is, president, of, u.s]",parser.getWordsClean().toString());
+			
 			
 			/* =================== MISC  ================= */
 			
 			q = parser.parse("douglas adams OR qian zhongshu OR (ibanez guitars)");
-			assertEquals("[douglas, adams, qian, zhongshu, ibanez, guitars]",parser.getWords().toString());
+			assertEquals("[douglas, adams, qian, zhongshu, ibanez, guitars]",parser.getWordsClean().toString());
 			
-			assertEquals("[(douglas,0,7), (adam,8,12,type=wildcard)]",parser.tokenizeBareText("douglas adam*").toString());
+			assertEquals("[(douglas,0,7), (adam*,8,13,type=wildcard)]",parser.tokenizeBareText("douglas adam*").toString());
 			
 			assertEquals("[(douglas,0,7)]",parser.tokenizeBareText("douglas -adams").toString());
 			

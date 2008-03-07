@@ -224,7 +224,7 @@ public class WikiIndexModifier {
 							doc = makeHighlightDocument(rec.getArticle(),highlightAnalyzer,highlightContentAnalyzer,iid);
 							writer.addDocument(doc,highlightAnalyzer);
 						} else if(iid.isTitlesBySuffix()){
-							doc = makeTitleDocument(rec.getArticle(),indexAnalyzer,highlightAnalyzer,iid,original.getTitlesSuffix(),exactCase,stopWords);
+							doc = makeTitleDocument(rec.getArticle(),indexAnalyzer,highlightAnalyzer,iid,original.getTitlesSuffix(),original.getDBname(),exactCase,stopWords);
 							writer.addDocument(doc,indexAnalyzer);
 						} else{ // normal index
 							doc = makeDocument(rec.getArticle(),builder,iid,stopWords,indexAnalyzer);
@@ -561,7 +561,10 @@ public class WikiIndexModifier {
 			}
 
 			// altititle
-			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,bs.isExactCase(),tokenizer,rankBoost,analyzer);
+			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer);
+			
+			// sections
+			makeSections(doc,fields.sections(),article,iid,stopWords,tokenizer,analyzer,transformRankLog(article.getRank()));
 
 			// category
 			if(!bs.isExactCase()){
@@ -574,7 +577,7 @@ public class WikiIndexModifier {
 			rtitle.setBoost(rankBoost);
 			doc.add(rtitle);
 			
-			// extra info
+			// extra info (for spellcheck indexes)
 			if(extraInfo){
 				addSpellCheckInfo(doc,article.getTitle(),tokenizer.getKeywords(),tokenizer.getHeadingText(),article.getRedirectKeywords(),iid,fields);
 				if(article.isRedirect())
@@ -601,7 +604,7 @@ public class WikiIndexModifier {
 	}
 	
 	/** Make the document that holds only title data */
-	public static Document makeTitleDocument(Article article, Analyzer analyzer, Analyzer highlightAnalyzer, IndexId titles, String suffix, boolean exactCase, HashSet<String> stopWords) throws IOException{
+	public static Document makeTitleDocument(Article article, Analyzer analyzer, Analyzer highlightAnalyzer, IndexId titles, String suffix, String dbname, boolean exactCase, HashSet<String> stopWords) throws IOException{
 		transformArticleForIndexing(article);
 		
 		String key = article.getTitleObject().getKey();
@@ -609,10 +612,13 @@ public class WikiIndexModifier {
 		Document doc = new Document();
 		doc.add(new Field("key",suffix+":"+key,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("suffix",suffix,Store.YES,Index.UN_TOKENIZED));
+		doc.add(new Field("dbname",dbname,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
-		doc.add(new Field("title",article.getTitle(),Store.YES, Index.NO));
+		Field title = new Field("title",article.getTitle(),Store.YES, Index.NO);
+		title.setBoost(rankBoost);
+		doc.add(title);
 		// add titles + redirects in aggregate field
-		makeAlttitle(doc,"alttitle",article,titles,stopWords,exactCase,null,rankBoost,analyzer);		
+		makeAlttitle(doc,"alttitle",article,titles,stopWords,null,analyzer);		
 		// store highlight data
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.COMPRESS));
 		
@@ -656,25 +662,32 @@ public class WikiIndexModifier {
 	
 	/** add alttitle aggregate field */
 	protected static void makeAlttitle(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
-			boolean exactCase, WikiTokenizer tokenizer, float rankBoost, Analyzer analyzer) throws IOException {
+			WikiTokenizer tokenizer, Analyzer analyzer) throws IOException {
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		// add title
 		String title = article.getTitle();		
-		addToItems(items, new Aggregate(title,transformRank(article.getRank()),iid,analyzer,prefix,stopWords),stopWords);
+		addToItems(items, new Aggregate(title,transformRankLog(article.getRank()),iid,analyzer,prefix,stopWords),stopWords);
 		// add all redirects
 		ArrayList<String> redirects = article.getRedirectKeywords();
 		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
 		for(int i=0;i<redirects.size();i++){
-			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,analyzer,prefix,stopWords),stopWords);
-		}
-		if(tokenizer != null){
-			// add section headings!
-			for(String h : tokenizer.getHeadingText()){			
-				addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,analyzer,prefix,stopWords),stopWords);
-			}
+			addToItems(items, new Aggregate(redirects.get(i),transformRankLog(ranks.get(i)),iid,analyzer,prefix,stopWords),stopWords);
 		}
 		makeAggregate(doc,prefix,items);
 	}	
+	
+	/** Section heading aggregate field */
+	protected static void makeSections(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
+			WikiTokenizer tokenizer, Analyzer analyzer, float boost) throws IOException{
+		if(tokenizer != null){
+			ArrayList<Aggregate> items = new ArrayList<Aggregate>();
+			// add section headings!
+			for(String h : tokenizer.getHeadingText()){			
+				addToItems(items, new Aggregate(h,boost,iid,analyzer,prefix,stopWords),stopWords);
+			}
+			makeAggregate(doc,prefix,items);
+		}
+	}
 	
 	
 	private static void addToItems(ArrayList<Aggregate> items, Aggregate a, HashSet<String> stopWords){
@@ -692,7 +705,7 @@ public class WikiIndexModifier {
 		if(items.size() == 0)
 			return; // don't add aggregate fields if they are empty
 		doc.add(new Field(prefix,new AggregateAnalyzer(items).tokenStream(prefix,"")));
-		doc.add(new Field(prefix+"_meta",AggregateAnalyzer.generateMetaField(items),Field.Store.YES));
+		doc.add(new Field(prefix+"_meta",Aggregate.serializeAggregate(items),Field.Store.YES));
 	}
 	
 	protected static float transformRelated(double score){
@@ -712,6 +725,10 @@ public class WikiIndexModifier {
 			return 1;
 		else 
 			return (float) (1 + rank/15.0);
+	}
+	
+	public static float transformRankLog(int rank){
+		return 1+(float)Math.log(transformRank(rank));
 	}
 
 	/**

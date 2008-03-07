@@ -37,8 +37,9 @@ public class Importer {
 	static Logger log;  
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int limit = -1;
 		String inputfile = null;
 		String dbname = null;
@@ -155,7 +156,8 @@ public class Importer {
 			try {
 				input = Tools.openInputFile(inputfile);
 			} catch (IOException e) {
-				log.fatal("I/O error opening "+inputfile);
+				e.printStackTrace();
+				log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
 				return;
 			}			
 			long end = start;
@@ -204,18 +206,24 @@ public class Importer {
 		// make snapshot if needed
 		if(makeSnapshot || snapshotDb){
 			IndexId iid = IndexId.get(dbname);
-			if(makeIndex){
+			if(makeIndex){				
 				for(IndexId p : iid.getPhysicalIndexIds()){
+					if(snapshotDb)
+						IndexThread.optimizeIndex(p,p.getImportPath(),IndexId.Transaction.IMPORT);
 					IndexThread.makeIndexSnapshot(p,p.getImportPath());
 				}
 			}
 			if(makeHighlight){
 				for(IndexId p : iid.getHighlight().getPhysicalIndexIds()){
+					if(snapshotDb)
+						IndexThread.optimizeIndex(p,p.getImportPath(),IndexId.Transaction.IMPORT);
 					IndexThread.makeIndexSnapshot(p,p.getImportPath());
 				}
 			}
 			if(makeTitles){
 				for(IndexId p : iid.getTitlesIndex().getPhysicalIndexIds()){
+					if(snapshotDb)
+						IndexThread.optimizeIndex(p,p.getImportPath(),IndexId.Transaction.IMPORT);
 					IndexThread.makeIndexSnapshot(p,p.getImportPath());
 				}
 			}

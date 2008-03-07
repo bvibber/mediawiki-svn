@@ -297,20 +297,24 @@ public class IndexThread extends Thread {
 	}
 	
 	/** Optimizes index if needed 
+	 * @throws IOException 
 	 * @throws IOException */
 	protected static void optimizeIndex(IndexId iid) throws IOException{
+		optimizeIndex(iid,iid.getIndexPath(),IndexId.Transaction.INDEX);
+	}
+	public static void optimizeIndex(IndexId iid, String path, IndexId.Transaction transType) throws IOException{
 		if(iid.isLogical()) 
 			return;
 		if(iid.getBooleanParam("optimize",true)){
 			try {
-				IndexReader reader = IndexReader.open(iid.getIndexPath());
+				IndexReader reader = IndexReader.open(path);
 				if(!reader.isOptimized()){
 					reader.close();
 					log.info("Optimizing "+iid);
 					long start = System.currentTimeMillis();
-					Transaction trans = new Transaction(iid,IndexId.Transaction.INDEX);
+					Transaction trans = new Transaction(iid,transType);
 					trans.begin();
-					IndexWriter writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
+					IndexWriter writer = new IndexWriter(path,new SimpleAnalyzer(),false);
 					writer.optimize();
 					writer.close();
 					trans.commit();
@@ -319,7 +323,7 @@ public class IndexThread extends Thread {
 				} else
 					reader.close();
 			} catch (IOException e) {
-				log.error("Could not optimize index at "+iid.getIndexPath()+" : "+e.getMessage());
+				log.error("Could not optimize index at "+path+" : "+e.getMessage());
 				throw e;
 			}
 		}

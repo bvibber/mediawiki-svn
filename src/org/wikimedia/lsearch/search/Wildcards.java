@@ -50,6 +50,14 @@ public class Wildcards {
 		this.exactCase = exactCase;
 	}
 	
+	/** Get all the words that correspond to wildcard */
+	public ArrayList<String> getWords(String wildcard){
+		HashSet<String> terms = getCached(wildcard);
+		ArrayList<String> words = new ArrayList<String>();
+		words.addAll(terms);
+		return words;
+	}
+	
 	/** 
 	 * Make a DisjunctionMaxQuery of expanded wildcard
 	 * 
@@ -57,14 +65,22 @@ public class Wildcards {
 	 * @param field
 	 * @return null if there is no match, or on error
 	 */
-	public Query makeQuery(String wildcard, String field){
+	public Query makeQuery(String wildcard, String field){		
+		HashSet<String> terms = getCached(wildcard);
+		if(terms.size() == 0)
+			return null; // no match or error
+				
+		return makeQueryFromTerms(terms,field);
+	}
+	
+	protected HashSet<String> getCached(String wildcard){
 		if(client == null)
 			client = new RMIMessengerClient();
-		
+
 		HashSet<String> terms = wildcardCache.get(wildcard);
 		if(terms == null){
 			if(wildcardCache.size() >= MAX_PATTERNS_PER_QUERY){
-				return null; // limit number of wildcard queries
+				return new HashSet<String>(); // limit number of wildcard queries
 			}
 			terms = new HashSet<String>();		
 			for(Entry<String,String> e : hosts.entrySet()){
@@ -78,11 +94,7 @@ public class Wildcards {
 			wildcardCache.put(wildcard,terms);
 			log.info("Using "+terms.size()+" terms for pattern="+wildcard);
 		}
-		
-		if(terms.size() == 0)
-			return null; // no match or error
-				
-		return makeQueryFromTerms(terms,field);
+		return terms;
 	}
 	
 	/** Construct DijunctionMaxQuery from terms */
@@ -148,11 +160,11 @@ public class Wildcards {
 	public static ArrayList<String> getLocalTerms(IndexId iid, String wildcard, boolean exactCase) throws IOException {
 		if(searcherCache == null)
 			searcherCache = SearcherCache.getInstance();
-		ArrayList<String> ret = new ArrayList<String>();
+		HashSet<String> ret = new HashSet<String>();
 		// check type of wildcard
 		WildcardType type = getType(wildcard);
 		if(type == WildcardType.INVALID)
-			return ret;
+			return new ArrayList<String>();
 		// check searcher
 		IndexSearcherMul searcher = searcherCache.getLocalSearcher(iid); 
 		if(searcher == null)
@@ -181,10 +193,12 @@ public class Wildcards {
 			addTerms(ret,wildcardTerm,reader,type);
 		}
 		
-		return ret;
+		ArrayList<String> list = new ArrayList<String>();
+		list.addAll(ret);
+		return list;
 	}
 	
-	protected static void addTerms(ArrayList<String> ret, Term wildcardTerm, IndexReader reader, WildcardType type) throws IOException{
+	protected static void addTerms(Collection<String> ret, Term wildcardTerm, IndexReader reader, WildcardType type) throws IOException{
 		Term t;
 		WildcardTermEnum te = new WildcardTermEnum(reader,wildcardTerm);
 		while((t = te.term()) != null){

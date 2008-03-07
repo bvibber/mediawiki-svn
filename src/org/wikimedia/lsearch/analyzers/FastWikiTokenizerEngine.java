@@ -196,12 +196,17 @@ public class FastWikiTokenizerEngine {
 			aliasLength = -1;
 			boolean addToAlias;
 			boolean addDecomposed = false;
+			boolean allUpperCase = true;
+			boolean titleCase = true;
 			for(int i=0;i<length;i++){
 				if(decomposer.isCombiningChar(buffer[i])){
 					addDecomposed = true;
 					continue; // skip 
 				}
-				
+				if(!Character.isUpperCase(buffer[i]))
+					allUpperCase = false;
+				if(i == 0 && !Character.isUpperCase(buffer[i]))
+					titleCase = false;
 				addToAlias = true;
 				if( ! options.exactCase )
 					cl = Character.toLowerCase(buffer[i]);
@@ -269,6 +274,10 @@ public class FastWikiTokenizerEngine {
 					addToTokenAlias("");
 					addToAlias = false;
 				}
+				if(!options.noTokenization && isTrailing(cl)){
+					addToTokenAlias("");
+					addToAlias = false;
+				}
 								
 				decomp = decompose(cl);
 				// no decomposition
@@ -289,13 +298,30 @@ public class FastWikiTokenizerEngine {
 			}
 			if(templateLevel == 0 && tableLevel == 0)
 				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
-			
-			// add decomposed token to stream
-			if(decompLength!=0){
-				Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, true);
-				t.setPositionIncrement(gap);
+
+			{ // add exact token
+				Token exact;
+				if(options.exactCase)
+					exact = makeToken(new String(buffer, 0, length), start, start + length,true);
+				else
+					exact = makeToken(new String(buffer, 0, length).toLowerCase(), start, start + length,true);
+				exact.setPositionIncrement(gap);
 				if(gap != 1)
 					gap = 1; // reset token gap
+				if(!options.noCaseDetection){
+					if(allUpperCase)
+						exact.setType("upper");
+					else if(titleCase)
+						exact.setType("titlecase");
+				}
+				addToTokens(exact);
+			} 
+			
+			// add decomposed token to stream
+			if(decompLength!=0 && addDecomposed){
+				Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, false);
+				t.setPositionIncrement(0);
+				t.setType("decomposition");
 				addToTokens(t);
 			}
 			// add alias (if any) token to stream
@@ -479,6 +505,23 @@ public class FastWikiTokenizerEngine {
 		tokens.add(t);
 	}
 
+	private static final boolean isTrailing(char ch){
+		return ch=='-' || ch=='/' || ch=='+' || ch=='&' || ch =='@' || ch=='\\' || ch=='#' || ch=='%' || ch=='^' || ch=='*' || ch=='!';	
+	}
+	
+	public static final String clearTrailing(String str){
+		if(!isTrailing(str.charAt(str.length()-1))) // quick check
+			return str; 
+		char[] clean = new char[str.length()];
+		int len = 0;
+		for(int i=0;i<str.length();i++){
+			char c = str.charAt(i);
+			if(!isTrailing(c))
+				clean[len++] = c;
+		}
+		return new String(clean,0,len);
+	}
+	
 	/**
 	 * Tries to add the current letter (variable c) to the
 	 * buffer, if it's not a letter, new token is created
@@ -507,7 +550,22 @@ public class FastWikiTokenizerEngine {
 				if(length<buffer.length)
 					buffer[length++] = c;
 			} else{
-				addToken();
+				boolean noTrailing = true;
+				if(length > 0){
+					// fetch trailing chars
+					while(isTrailing(c)){
+						noTrailing = false;
+						if(length<buffer.length)
+							buffer[length++] = c;
+						else break;					
+						if(++cur < textLength)
+							c = text[cur];
+						else break;
+					}
+					cur--; // we moved to next legal char
+				}
+				
+				addToken(noTrailing);
 			}
 		} catch(Exception e){
 			if(length >= buffer.length){
@@ -972,7 +1030,7 @@ public class FastWikiTokenizerEngine {
 						}
 						continue;
 					}
-					case '{':
+				case '{':
 					addToken();
 					if(cur + 1 < textLength )
 						c1 = text[cur+1];
@@ -1235,7 +1293,7 @@ public class FastWikiTokenizerEngine {
 					case '|':
 						templateLevel++;
 						state = ParserState.WORD;
-						cur = lookup-1;
+						cur = lookup;
 						break template_lookup;
 					case '}':
 						templateLevel++;

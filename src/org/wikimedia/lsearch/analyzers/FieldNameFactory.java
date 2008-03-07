@@ -88,6 +88,13 @@ public class FieldNameFactory {
 			return "reverse_title";
 	}
 	
+	public String sections(){
+		if(exactCase)
+			return "sections_exact";
+		else
+			return "sections";
+	}
+	
 	public boolean isExactCase() {
 		return exactCase;
 	}

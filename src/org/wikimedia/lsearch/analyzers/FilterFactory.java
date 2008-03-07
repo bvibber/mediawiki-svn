@@ -302,9 +302,9 @@ public class FilterFactory {
 	
 	/** For languages with canonical form (e.g. latin for serbian) filter tokens 
 	 * @throws IOException */
-	public ArrayList<Token> canonize(ArrayList<Token> tokens) throws IOException{
+	public ArrayList<Token> canonicalFilter(ArrayList<Token> tokens) throws IOException{
 		if(!hasCanonicalFilter)
-			return null;
+			return tokens;
 		if(lang.equals("sr")){
 			TokenStream ts = makeCustomFilter(new ArrayTokens(tokens));
 			ArrayList<Token> res = new ArrayList<Token>();
@@ -315,7 +315,8 @@ public class FilterFactory {
 		} else
 			return tokens;
 	}
-	/** For languages with canonical form, canonize a single token */
+	/** For languages with canonical form 
+	 * @return canonical token (or null if none) */
 	public Token canonizeToken(Token t){
 		if(!hasCanonicalFilter)
 			return null;
@@ -330,7 +331,8 @@ public class FilterFactory {
 		} 
 		return null;
 	}
-	/** for lang with canonical forms canonize one word */
+	/** for lang with canonical forms
+	 * @return canonical string (or null if none)  */
 	public String canonizeString(String w){
 		if(!hasCanonicalFilter)
 			return null;
@@ -346,7 +348,7 @@ public class FilterFactory {
 	/** always return the canonical form, even if its identical to the input */
 	public String canonicalStringFilter(String w){
 		if(!hasCanonicalFilter)
-			return null;
+			return w;
 		if(lang.equals("sr")){
 			if(w == null)
 				return null;

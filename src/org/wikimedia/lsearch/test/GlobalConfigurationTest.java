@@ -319,8 +319,18 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("w",ents1.getInterwikiBySuffix("wiki"));
 		assertEquals(ents1,IndexId.get("enwiki").getTitlesIndex());
 		assertEquals("en",testgc.getLanguage(ents1));
+		assertEquals("{wiki=enwiki}",ents1.getSuffixToDbname().toString());
+		IndexId ents2 = IndexId.get("en-titles.tspart2");
+		assertEquals("{wikisource=enwikisource, wiktionary=enwiktionary, test=entest}",ents2.getSuffixToDbname().toString());
 		
 		assertEquals("en-titles.tspart2",IndexId.get("enwiktionary").getTitlesIndex().toString());
+		
+		IndexId mw = IndexId.get("mediawikiwiki");
+		IndexId mwt = IndexId.get("mw-titles.tspart1");
+		assertEquals("mediawikiwiki",mw.getTitlesSuffix());
+		assertEquals("mw-titles.tspart1",mw.getTitlesIndex().toString());
+		assertEquals("mw",mwt.getInterwikiBySuffix("mediawikiwiki"));
+		assertEquals("{mediawikiwiki=mediawikiwiki, metawiki=metawiki}",mwt.getSuffixToDbname().toString());
 		
 	}
 }

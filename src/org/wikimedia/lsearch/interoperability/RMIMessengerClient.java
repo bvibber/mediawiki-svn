@@ -192,7 +192,8 @@ public class RMIMessengerClient {
 			// invalidate the searcher cache
 			if(cache == null)
 				cache = SearcherCache.getInstance();
-			cache.invalidateSearchable(iid,host);
+			if(!isLocal(host))
+				cache.invalidateSearchable(iid,host);
 			HighlightPack pack = new HighlightPack(new SearchResults());
 			pack.res.retry();			
 			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
@@ -246,23 +247,27 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public Highlight.ResultSet highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase){
+	public Highlight.ResultSet highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases){
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase);
+			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases);
 		} catch(Exception e){
 			e.printStackTrace();
 			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0);
 		}		
 	}
 	
-	public SearchResults searchTitles(String host, String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain) {
+	public SearchResults searchTitles(String host, String dbrole, String searchterm, ArrayList<String> words, Query query, SuffixNamespaceWrapper filter, int offset, int limit, boolean explain, boolean sortByPhrases) {
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.searchTitles(dbrole,searchterm,words,query,filter,offset,limit,explain);
+			return r.searchTitles(dbrole,searchterm,words,query,filter,offset,limit,explain,sortByPhrases);
 		} catch(Exception e){
+			if(host == null){
+				log.warn("Cannot find title host for "+dbrole);
+				return new SearchResults();
+			}
 			e.printStackTrace();
-			if(!isLocal(host)){
+			if(host!=null && !isLocal(host)){
 				if(cache == null)
 					cache = SearcherCache.getInstance();
 				cache.invalidateSearchable(IndexId.get(dbrole),host);
@@ -279,8 +284,12 @@ public class RMIMessengerClient {
 			RMIMessenger r = messengerFromCache(host);
 			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext,firstRank,nsf);
 		} catch(Exception e){
+			if(host == null){
+				log.warn("Cannot find spell-check host for "+dbrole);
+				return null;
+			}
 			e.printStackTrace();
-			if(!isLocal(host)){
+			if(host != null && !isLocal(host)){
 				if(cache == null)
 					cache = SearcherCache.getInstance();
 				cache.invalidateSearchable(IndexId.get(dbrole),host);

@@ -174,8 +174,27 @@ public class RankingTest {
 		});
 		
 		assertHits("why is moon in zenith smaller that on horizon", new String[]{
-			"0:Moon illusion"
+				"0:Moon illusion"
 		});
+		
+		assertHits("who is president of u.s.", new String[]{
+				"0:President of the United States"
+		});
+		
+		assertHits("los angles", new String[]{
+				"0:Los Angeles, California"
+		});
+		
+		assertHits("france", new String[]{
+				"0:France"
+		});
+		
+		assertHits("people", new String[]{
+				"0:People"
+		});
+	
+	
+	
 		
 		
 	}

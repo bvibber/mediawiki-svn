@@ -45,6 +45,14 @@ public class Fuzzy {
 		else
 			return word+":"+nsf;
 	}
+	
+	public ArrayList<String> getWords(String word, NamespaceFilter nsf){
+		HashMap<String,Float> terms = getCached(word,nsf);
+		ArrayList<String> words = new ArrayList<String>();
+		words.addAll(terms.keySet());
+		return words;
+
+	}
 
 	/** Front-end function: makes a fuzzy query for word in some namespace subset */
 	public Query makeQuery(String word, String field, NamespaceFilter nsf) {
@@ -52,6 +60,16 @@ public class Fuzzy {
 			client = new RMIMessengerClient();
 		
 		// get terms
+		HashMap<String,Float> terms = getCached(word,nsf);
+		
+		if(terms.size() == 0)
+			return null; // no match or error
+		
+		// actually make query
+		return makeQueryFromTerms(terms, field);
+	}
+	
+	protected HashMap<String,Float> getCached(String word, NamespaceFilter nsf){
 		String key = cacheKey(word,nsf);
 		HashMap<String,Float> terms = cache.get(key);
 		if(terms == null){
@@ -67,12 +85,7 @@ public class Fuzzy {
 			}
 			cache.put(key,terms);
 		}
-		
-		if(terms.size() == 0)
-			return null; // no match or error
-		
-		// actually make query
-		return makeQueryFromTerms(terms, field);
+		return terms;
 	}
 	
 	/** Calculate boost factor for suggest result - larger edit distance = smaller boost */

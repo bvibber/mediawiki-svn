@@ -1,6 +1,7 @@
 package org.apache.lucene.search;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 import org.wikimedia.lsearch.search.AggregateInfoImpl;
 import org.wikimedia.lsearch.search.AggregateInfoImpl.RankInfo;
@@ -28,6 +29,15 @@ public class PositionalOptions implements Serializable {
 	protected float beginTable[] = { 16, 4, 4, 2 };
 	/** useful for redirects - use main rank as whole-match boost */
 	protected boolean useRankForWholeMatch = false;
+	/** for sloppy phrases if we find a sloppy phrase at the very beginning */
+	protected float beginExactBoost = 8;
+	/** namespace-specific boost values */
+	protected NamespaceBoost nsWholeBoost = null;
+	/** when all tokens *and* aliases match (happens only when title and query are identical - same accents, etc..) */ 
+	protected float completeBoost = 1;
+	/** use complete number of tokens (with completeBoost) only for scoring */
+	protected boolean useCompleteOnly = false;
+
 	
 	/** Options specific for phrases in contents */
 	public static class Sloppy extends PositionalOptions {
@@ -36,6 +46,7 @@ public class PositionalOptions implements Serializable {
 			useBeginBoost = true;
 			exactBoost = 1;
 			useNoStopWordLen = true;
+			beginExactBoost = 8;
 		}
 	}
 	
@@ -44,7 +55,7 @@ public class PositionalOptions implements Serializable {
 		public Exact(){
 			rankMeta = new RankInfo();
 			useBeginBoost = true;
-			exactBoost = 8;
+			exactBoost = 4;
 			//beginTable = new float[] { 256, 64, 4, 2 }; 
 		}
 	}
@@ -54,7 +65,7 @@ public class PositionalOptions implements Serializable {
 		public Alttitle(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			wholeBoost = 10;
+			//wholeBoost = 10;
 		}
 	}
 	/** Match only whole entries on an aggregate field */
@@ -63,7 +74,17 @@ public class PositionalOptions implements Serializable {
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
 			wholeBoost = 10000;
-			wholeNoStopWordsBoost = 1000;
+			//wholeNoStopWordsBoost = 1000;
+			//onlyWholeMatch = true;
+		}
+	}
+	
+	public static class AlttitleWholeSloppy extends PositionalOptions {
+		public AlttitleWholeSloppy(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
+			wholeBoost = 1000;
+			//wholeNoStopWordsBoost = 1000;
 			//onlyWholeMatch = true;
 		}
 	}
@@ -100,27 +121,48 @@ public class PositionalOptions implements Serializable {
 		public RedirectMatch(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			// these are so large because we take their sqrt and multiply with query norm
-			wholeNoStopWordsBoost = 100000000;
-			wholeBoost = 500000000;
-			useNoStopWordLen = true;
+			wholeNoStopWordsBoost = 1000000;
+			wholeBoost = 5000000;
 			useRankForWholeMatch = true;
+			nsWholeBoost = new NamespaceBoost.DefaultBoost();
 		}
 	}
-
-	@Override
-	public int hashCode() {
-		final int PRIME = 31;
-		int result = 1;
-		result = PRIME * result + Float.floatToIntBits(exactBoost);
-		result = PRIME * result + (onlyWholeMatch ? 1231 : 1237);
-		result = PRIME * result + (takeMaxScore ? 1231 : 1237);
-		result = PRIME * result + (useBeginBoost ? 1231 : 1237);
-		result = PRIME * result + (useNoStopWordLen ? 1231 : 1237);
-		result = PRIME * result + Float.floatToIntBits(wholeBoost);
-		result = PRIME * result + Float.floatToIntBits(wholeNoStopWordsBoost);
-		return result;
+	
+	/** alttitle query to match complete titles */
+	public static class RedirectComplete extends PositionalOptions {
+		public RedirectComplete(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
+			completeBoost = 500000000;
+			useCompleteOnly = true;
+			useRankForWholeMatch = true;
+			nsWholeBoost = new NamespaceBoost.DefaultBoost();
+		}
 	}
+	
+	/** Options for sections field */
+	public static class Sections extends PositionalOptions {
+		public Sections(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
+			//wholeBoost = 8;
+		}
+	}
+	
+	public abstract static class NamespaceBoost implements Serializable {
+		public abstract float getBoost(int namespace);
+		
+		public static class DefaultBoost extends NamespaceBoost {
+			public float getBoost(int namespace){
+				if(namespace % 2 == 1) // talk pages
+					return 0.75f;  
+				if(namespace == 10) // templates
+					return 0.5f;
+				return 1f;
+			}
+		}
+	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -130,24 +172,8 @@ public class PositionalOptions implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final PositionalOptions other = (PositionalOptions) obj;
-		if (Float.floatToIntBits(exactBoost) != Float.floatToIntBits(other.exactBoost))
-			return false;
-		if (onlyWholeMatch != other.onlyWholeMatch)
-			return false;
-		if (takeMaxScore != other.takeMaxScore)
-			return false;
-		if (useBeginBoost != other.useBeginBoost)
-			return false;
-		if (useNoStopWordLen != other.useNoStopWordLen)
-			return false;
-		if (Float.floatToIntBits(wholeBoost) != Float.floatToIntBits(other.wholeBoost))
-			return false;
-		if (Float.floatToIntBits(wholeNoStopWordsBoost) != Float.floatToIntBits(other.wholeNoStopWordsBoost))
-			return false;
 		return true;
 	}
-	
 	
 	
 	

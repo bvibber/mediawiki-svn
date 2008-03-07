@@ -112,6 +112,8 @@ public class IndexId {
 	protected String titlesSuffix; 
 	/** For titles part (tspart) indexes, maps suffix -> iw */
 	protected Hashtable<String,String> suffixIwMap = null;
+	/** For titles parts (tspart) indexes, map suffix -> dbname */
+	protected Hashtable<String,String> suffixToDbname = new Hashtable<String,String>();
 	/** Dbname after suffix is deleted */
 	protected String reducedDbname = null;
 	
@@ -167,7 +169,7 @@ public class IndexId {
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
 			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
 			boolean myIndex, boolean mySearch, String OAIRepository, boolean isSubdivided,
-			String titlesIndex, String titlesSuffix) {
+			String titlesIndex, String titlesSuffix, Hashtable<String,String> suffixToDbname) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
 		if(!indexRsyncPath.endsWith("/"))
@@ -189,6 +191,7 @@ public class IndexId {
 		this.furtherSubdivided = isSubdivided;
 		this.titlesIndex = titlesIndex;
 		this.titlesSuffix = titlesSuffix;		
+		this.suffixToDbname = suffixToDbname;
 		
 		// types
 		if(type.equals("single"))
@@ -796,5 +799,12 @@ public class IndexId {
 		}		
 		return defaultNs;		
 	}
+	/** For tspart indexes, mapping: suffix -> dbname */ 
+	public Hashtable<String, String> getSuffixToDbname() {
+		if(!isTitlesBySuffix() || part==null)
+			throw new RuntimeException("Trying to get suffix->dbname map for "+dbrole);
+		return suffixToDbname;
+	}
+	
 		
 }

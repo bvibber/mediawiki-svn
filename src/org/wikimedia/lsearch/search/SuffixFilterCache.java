@@ -41,12 +41,14 @@ public class SuffixFilterCache {
 	
 	/** Get locally cached bitset for the filter */
 	public static BitSet bits(SuffixFilter filter, IndexReader reader) throws IOException {
-		CachingWrapperFilter cwf = cache.get(filter);
-		if(cwf == null){
-			cwf = new CachingWrapperFilter(new SuffixFilterBuilder(filter));
-			cache.put(filter,cwf);
+		synchronized(reader){
+			CachingWrapperFilter cwf = cache.get(filter);
+			if(cwf == null){
+				cwf = new CachingWrapperFilter(new SuffixFilterBuilder(filter));
+				cache.put(filter,cwf);
+			}
+			return cwf.bits(reader);
 		}
-		return cwf.bits(reader);
 	}
 
 }

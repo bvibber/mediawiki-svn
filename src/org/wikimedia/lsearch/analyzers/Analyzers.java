@@ -46,6 +46,10 @@ public class Analyzers {
 		return new ReusableLanguageAnalyzer(filters,exactCase);
 	}
 	
+	public static Analyzer getReusableTitleAnalyzer(FilterFactory filters, boolean exactCase){
+		return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.Title(exactCase));
+	}
+	
 	/** 
 	 * Reusable analyzer, actually parses the input text
 	 * 
@@ -80,16 +84,18 @@ public class Analyzers {
 			 
 			// all fields are pre-analyzed, except titles
 			analyzer.addAnalyzer(fields.title(),
-					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.stemtitle(),
-					getReusableAnalyzer(filters,exactCase));
+					getReusableTitleAnalyzer(filters,exactCase));
 			analyzer.addAnalyzer(fields.reverse_title(),
-					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			// and aggregates:
 			analyzer.addAnalyzer(fields.related(),
-					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.alttitle(),
-					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+			analyzer.addAnalyzer(fields.sections(),
+					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		}
 		
 		return analyzer;
@@ -123,13 +129,17 @@ public class Analyzers {
 		analyzer.addAnalyzer(fields.contents(), 
 				new ReusableLanguageAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.title(),
-				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.stemtitle(),
-				getReusableAnalyzer(filters,exactCase));
+				getReusableTitleAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.alttitle(),
-				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		analyzer.addAnalyzer(fields.related(),
+				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		analyzer.addAnalyzer(fields.sections(),
+				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.keyword(), 
-				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		
 		if(!exactCase){ // add exact-case analyzer, needed for titles indexes
 			FieldNameFactory fieldsExact = new FieldNameFactory(true);

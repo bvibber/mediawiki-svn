@@ -24,7 +24,7 @@ import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 public class FastWikiTokenizerTest {		
 		public static void displayTokensForParser(String text) {
-			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions(false));
+			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions.Highlight());
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
@@ -71,6 +71,12 @@ public class FastWikiTokenizerTest {
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
 			String text = "(ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
+			showTokens(text);
+			text = "u.s. {{template|text}} {{template|text2|text3}} [http://ls2.wiki link]";
+			showTokens(text);
+			text = "Good-Thomas C# C++ and so on.. ";
+			showTokens(text);
+			text = "[[Image:Argishti monument.JPG|thumb|King Argishti of Urartu riding a chariot with two horses in Yerevan, Armenia in front of the Erebuni Museum.]]'''Urartu''' (Assyrian ''Urarṭu'', [[Urartian language|Urartian]] ''Biainili'') was an ancient [[kingdom (politics)|kingdom]] of [[Armenia]]&lt;ref&gt;&quot;Urartu.&quot; Columbia Electronic Encyclopedia. Columbia University Press.&lt;/ref&gt; located in the mountainous plateau between [[Asia Minor]], [[Mesopotamia]], and [[Caucasus mountains]], later known as the [[Armenian Highland]], and it centered around [[Lake Van]] (present-day eastern [[Turkey]]). The kingdom existed from ca. [[860s BC|860 BC]], emerging from Late Bronze Age [[Nairi]] polities, until [[585 BC]]. The name corresponds to the [[Bible|Biblical]] '''[[Mount Ararat|Ararat]]'''.";
 			showTokens(text);
 			text = "<!--uncomment if needed ''For the current|defunct federal|provincial electoral district, see [[Burnaby—Richmond (electoral district)]]'' --->\n'''Burnaby—Richmond''' (also known as '''Burnaby—Richmond—Delta''') was a federal [[electoral district (Canada)|electoral district]] in [[British Columbia]], [[Canada]], that was  represented in the [[Canadian House of Commons]] from 1949 to 1979.\nThis [[Riding (division)|riding]] was created as \"Burnaby—Richmond\" in 1947 from parts of [[New Westminster (electoral district)|New Westminster]] and [[Vancouver North]] ridings.\nThe name of the electoral district was changed in 1970 to \"Burnaby—Richmond—Delta\".\n\nIt was abolished in 1976 when it was redistributed into [[Burnaby (electoral district)|Burnaby]] and [[Richmond—South Delta]] ridings.\n\n==Election results==\n\n{{CanElec1|1949}}\n|-\n{{Canadian elections/Liberals}}\n|GOODE, Tom ||align=right|12,848\n|-\n{{Canadian elections/CCF}}\n|STEEVES, Dorothy Gretchen ||align=right|12,553\n";
 			showTokens(text);

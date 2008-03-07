@@ -473,7 +473,7 @@ public class ExtToken extends Token {
 		
 	}
 	
-	public boolean isStub(){
+	final public boolean isStub(){
 		return termText() == null;
 	}
 	
