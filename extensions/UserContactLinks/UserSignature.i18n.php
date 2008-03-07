@@ -9,13 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'usercontactlink-baduser' => 'incorrect username',
-);
-
-/** Faeag Rotuma (Faeag Rotuma)
- * @author Mattbray
- */
-$messages['rtm'] = array(
-	'usercontactlink-baduser' => 'Seseva',
+	'usercontactlink-desc'    => 'Provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax',
 );
 
 $messages['ar'] = array(
@@ -47,9 +41,12 @@ $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );
 
-#Translation in french language by Bertrand GRONDIN
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',
+	'usercontactlink-desc'    => "Fournit la possiblité d'ajouter simplement et avec consistance d'autres noms d'utilisateurs en utilisant la syntaxe ^^^user^^^",
 );
 
 /** Galician (Galego)
@@ -143,5 +140,12 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
+);
+
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Mattbray
+ */
+$messages['rtm'] = array(
+	'usercontactlink-baduser' => 'Seseva',
 );
 

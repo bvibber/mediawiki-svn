@@ -25,6 +25,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'email'       => 'gri6507 at yahoo dot com',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:User_Contact_Links',
 	'description' => 'provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax',
+	'descriptionmsg' => 'usercontactlink-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
