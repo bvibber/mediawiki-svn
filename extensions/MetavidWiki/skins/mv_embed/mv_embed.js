@@ -467,12 +467,11 @@ function init_mv_embed(force){
 		}
 	}else{
 		js_log('no video or playlist on the page... (done)');
+		//run any queued functions:		
+		while (mvEmbed.flist.length){
+			mvEmbed.flist.shift()();
+		}
 	}	
-	//affter mv run any queued functions:		
-	//js_log('run queue functions:' + mvEmbed.flist);
-	/*while (mvEmbed.flist.length){
-		mvEmbed.flist.shift()();
-	}*/
 }
 
 /*
