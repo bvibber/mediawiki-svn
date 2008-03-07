@@ -14,7 +14,7 @@
  	private $contextTitle = false;
 
 	private $mPerRow = 4; // How many images wide should the gallery be?
-	private $mWidths = 120, $mHeights = 120; // How wide/tall each thumbnail should be
+	private $mWidths = 160, $mHeights = 120; // How wide/tall each thumbnail should be
 	
  	function toHTML() {
  		global $wgLang, $mvDefaultAspectRatio;
@@ -47,7 +47,7 @@
 			
 			if($nt->getNamespace() == MV_NS_MVD || 
 				$nt->getNamespace() == MV_NS_STREAM || 
-				$nt->getNamespace() == MV_NS_SEQUENCE ){
+				$nt->getNamespace() == MV_NS_SEQUENCE ){ //@@todo fix sequence embed
 				//$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;				
 				$mvTitle = new MV_Title($nt);							
 				
@@ -61,7 +61,7 @@
 				mvfAddHTMLHeader('embed');
 				//print "img url: " . 	$mvTitle->getStreamImageURL();
 				$thumbhtml = "\n\t\t\t".
-					'<div class="thumb" style="padding: 4px 0; width: ' .($this->mWidths+30).'px;">'
+					'<div class="thumb" style="padding: 4px 0; width: ' .($this->mWidths+5).'px;">'
 					# Auto-margin centering for block-level elements. Needed now that we have video
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement				
@@ -137,7 +137,7 @@
 				$s .= "\n\t<tr>";
 			}
 			$s .=
-				"\n\t\t" . '<td><div class="gallerybox" style="width: '.($this->mWidths+35).'px;">'
+				"\n\t\t" . '<td><div class="gallerybox" style="width: '.($this->mWidths+10).'px;">'
 					. $thumbhtml
 					. "\n\t\t\t" . '<div class="gallerytext">' . "\n"
 						. $textlink . $text . $nb

@@ -1,18 +1,28 @@
 //javascript for all pages (adds auto_complete for search, and our linkback logo, and re-writes mvd links)
 
 mv_addLoadEvent(mv_setup_allpage); 	
+var mv_setup_allpage_flag=false;
 function mv_setup_allpage(){	
+	js_log("mv embed done loading now setup all page");
 	//make sure we have jQuery and any base requried libs: 
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){			
  		_global['$j'] = jQuery.noConflict();	
- 		mvJsLoader.doLoad({'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
- 						   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'}, function(){
- 								mv_setup_search_ac();
-								mv_do_mvd_link_rewrite();
- 						   });
+ 		js_log('allpage_ did jquery check');
+ 		var reqLibs = {'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
+ 					   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'};
+ 		mvJsLoader.doLoad(
+ 			reqLibs, function(){
+	 				//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
+					if(!mv_setup_allpage_flag){//have no idea why this gets called twice					   		
+						mv_setup_search_ac();
+						mv_do_mvd_link_rewrite();						
+						mv_setup_allpage_flag=true; 
+					}
+				});
 	});	
 }
 function mv_do_mvd_link_rewrite(){
+	js_log('mv_do_mvd_link_rewrite');
 	var patt_mvd = new RegExp("MVD:([^:]*):([^\/]*)\/([0-9]+:[0-9]+:[^\/]+)\/?([0-9]+:[0-9]+:[^\/]+)?");
 	var i =0;
 	$j('a').each(function(){
@@ -26,7 +36,6 @@ function mv_do_mvd_link_rewrite(){
 					//js_log(res);
 					//replace with: 
 					//TEMP:
-					wgScript = 'http://metavid.ucsc.edu/wiki/index.php';
 					var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+res[2]+'&t='+res[3]+'&size=icon';
 					var stream_link = wgScript+'?title=Stream:'+res[2]+'/'+res[3]+'/'+res[4];
 					var stream_desc = res[2].substr(0,1).toUpperCase() + res[2].substr(1).replace('_', ' ')+' '+ res[3] + ' to '+ res[4];
@@ -89,7 +98,7 @@ function mv_setup_search_ac(){
 		}while (obj = obj.offsetParent);		
 	}
 	//get the search pos: 
-	$j('body').append('<div class="autocomplete" id="mv_ac_choices" ' +
+	$j('body').append('<div class="ac_results" id="mv_ac_choices" ' +
 			'style="border:solid black;background:#FFF;position:absolute;left:'+curleft+'px;top:'+curtop+'px;z-index:99;width:300px;display: none;"/>');
 	//turn off browser baseed autocomplete: 
 	$j('#searchInput').attr('autocomplete',"off");

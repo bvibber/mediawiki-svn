@@ -114,7 +114,9 @@ var mvEmbed = {
   	mvJsLoader.doLoad(this.lib_jquery,function(){
   		//once jQuery is loaded set up no conflict & load plugins: 
  		_global['$j'] = jQuery.noConflict();
+ 		js_log('jquery loaded');
 		mvJsLoader.doLoad(_this.lib_plugins, function(){			
+			js_log('plugins loaded');
 			mvEmbed.init();
 		});	
   	});	    		
@@ -147,6 +149,11 @@ var mvEmbed = {
   	//call the callback:
   	if(this.load_callback)this.load_callback();
 	mv_embed();	
+		//affter init run any queued functions:		
+		//js_log('run queue functions:' + mvEmbed.flist);
+		while (mvEmbed.flist.length){
+			mvEmbed.flist.shift()();
+		}
   }
 }
 
@@ -281,18 +288,20 @@ var embedTypes = {
 		 	this.clientSupports['cortado'] = true;
 		 }
 		 // ActiveX plugins
-		 // VLC
-		 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-		 	this.clientSupports['vlc-activex'] = true;
+		 if(this.msie){
+			 // VLC
+			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
+			 	this.clientSupports['vlc-activex'] = true;
+			 }
+			 // Java
+			 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
+			 	this.clientSupports['cortado'] = true;
+			 }
+			 //temporary disable QuickTime check
+			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
+			 	this.clientSupports['quicktime-activex'] = true;
+			 }	
 		 }
-		 // Java
-		 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
-		 	this.clientSupports['cortado'] = true;
-		 }
-		 // QuickTime
-		 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
-		 	this.clientSupports['quicktime-activex'] = true;
-		 }		
 		 // <video> element (should not need to be attached to the dom to test)(
 		 var v = document.createElement("video");
 		 if(v.play){
@@ -304,7 +313,7 @@ var embedTypes = {
 		 this.clientSupports['videoElement'] = true;
 		 }*/
 		 // Mozilla plugins
-				if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
+		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
 				var type = navigator.mimeTypes[i].type;
 				var semicolonPos = type.indexOf( ';' );
@@ -391,9 +400,11 @@ var mvJsLoader = {
 	 libreq:{},
 	 load_time:0,
 	 doLoad:function(libs,callback){
-		 if(libs){this.libs=libs;}else{libs=this.libs;}
+		 if(libs){this.libs=libs;}else{libs=this.libs;}		 
 		 this.callback=(callback)?callback:this.callback;
 		 var loading=0;
+		 var i=null;
+		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
 		 for(i in libs){
 			 //itor the objPath (to avoid 'has no properties' errors)
 			 var objPath = i.split('.');
@@ -412,7 +423,7 @@ var mvJsLoader = {
 				 	break;
 				 }
 		 	 }
-			 if(cur_load){
+			 if(cur_load==1){
 				 //js_log('missing lib:'+i + ' do load:'+mv_embed_path+libs[i]);
 				 if(!this.libreq[i])loadExternalJs(mv_embed_path + libs[i]);
 				 this.libreq[i]=1;
@@ -424,7 +435,7 @@ var mvJsLoader = {
 			 }else{
 				setTimeout('mvJsLoader.doLoad()',25);
 			 }
-		 }else{
+		 }else{		 	
 		 	this.callback();
 		 }
 	 }
@@ -436,8 +447,11 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('mv_init');
-	if(!force){
-		if(mv_init_done)return ;
+	if(!force){		
+		if(mv_init_done){
+			js_log("caught second call not doing anything");
+			return ;
+		}
 		mv_init_done=true;
 	}
 	//check if this page does have video or playlist
@@ -456,9 +470,9 @@ function init_mv_embed(force){
 	}	
 	//affter mv run any queued functions:		
 	//js_log('run queue functions:' + mvEmbed.flist);
-	while (mvEmbed.flist.length){
+	/*while (mvEmbed.flist.length){
 		mvEmbed.flist.shift()();
-	}
+	}*/
 }
 
 /*

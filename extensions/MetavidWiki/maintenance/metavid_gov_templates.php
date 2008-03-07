@@ -24,7 +24,7 @@ function upTemplates($force=false){
 	$bill_template='<noinclude>Bill Person Template simplifies the structure of articles about Bills.
 <pre>{{Bill|
 GovTrackID=The GovTrack Bill ID (used to key-into GovTracks Bill info)|
-ThomasID=The bill\'s Tomas id (used for Thomas linkback)|
+ThomasID=The bill\'s Thomas id (used for Thomas linkback)|
 MAPLightBillID=The Map light Bill ID (used for supporting and opposing interest)|
 OpenCongressBillID=The open congress bill id (used for bill rss feeds)|
 Title Description=The short title/description of the bill|
@@ -38,7 +38,7 @@ Opposing Interest #=Interest, Where # is 1-20 for listing top opposing interests
 }}</pre>The template name (Bill) should be given as the \'\'first\'\' thing on a page. The Cosponsored list should come at the end.
 </noinclude><includeonly>
 ==Bill [[Bill Key:={{{Bill Key}}}]] in the {{ #if: {{{Session|}}}| [[Congress Session:={{{Session}}}]] |}} of Congress==
-<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Category:{{{Bill Key}}}}}</span>
+<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video_search.png|link=Category:{{{Bill Key}}}}}</span>
 {{ #if: {{{Title Description|}}}|{{{Title Description}}} |}}
 {{ #if: {{{Bill Key|}}}| <br>Media in [[:Category:{{{Bill Key}}}]] |}}
 {{ #if: {{{Date Introduced|}}}|* Date Introduced: [[Date Bill Introduced:={{{Date Introduced}}}]] |}}
@@ -70,9 +70,10 @@ $bill_template.='
 
 $bill_template.='
 ==Data Sources==  		
-{{ #if: {{{ThomasID|}}}|* [[Metavid Sources#Thomas|Thomas]] Official Bill Information:[[Data_Source_URL:=http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:]] [[Thomas Bill ID:={{{ThomasID}}}| ]] |}}
-{{ #if: {{{GovTrackID|}}}|* [[Metavid Sources#GovTrack|GovTrack]] Bill Overview:[[Data_Source_URL:=http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}]] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] |}} 
-{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[MAPLight_Bill_ID:={{{MapLightBillID}}}| ]] |}}
+{{ #if: {{{ThomasID|}}}|* [[Metavid Sources#Thomas|Thomas]] Official Bill Information:[[Data_Source_URL:=http://thomas.loc.gov/cgi-bin/bdquery/z?{{{ThomasID}}}:]] [[Thomas Bill ID:={{{ThomasID}}}| ]] 
+|}}{{ #if: {{{GovTrackID|}}}|* [[Metavid Sources#GovTrack|GovTrack]] Bill Overview:[[Data_Source_URL:=http://www.govtrack.us/congress/bill.xpd?bill={{{GovTrackID}}}]] [[GovTrack Bill ID:={{{GovTrackID}}}| ]] 
+|}}{{ #if: {{{MapLightBillID|}}}|* [[Metavid Sources#MapLight|MapLight]] Bill Overview:[[Data_Source_URL:=http://maplight.org/map/us/bill/{{{MapLightBillID}}}]] [[MAPLight_Bill_ID:={{{MapLightBillID}}}| ]] 
+|}}
 [[Category:Bill]]
 </includeonly>';	
 	//update bill template:
@@ -162,21 +163,27 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	'The order of the fields is not relevant. The template name (Congress Person) should be given as the \'\'first\'\' thing on a page.
 			</noinclude>' .
 	'<includeonly>' . "\n";
+	//hide the table of contents:
+	$template_body .= '__NOTOC__ ';
 	//include the image if present: 
 	$template_body .= '{{ #if: {Image:{{PAGENAME}}.jpg}| [[Image:{{PAGENAME}}.jpg|left]]'."\n".'|}}';
 	foreach ($valid_attributes as $dbKey => $attr) {
 		list ($name, $desc) = $attr;	
 			$template_body .= "{{ #if: {{{" . $name . "|}}}| [[$name:={{{" . $name . "}}}| ]] |}}";		
 	}	
-	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
+	//$template_body.='<span style="width:40%;float:left;">';
+	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video_search.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
 	//ask for speeches media~	
-	$template_body.="\n".'{{#ask: [[Speech_by::{{PAGENAME}}]] |
+	$template_body.="\n".'{{#ask: [[Speech_by::{{PAGENAME}}]] 
+|?Category | ?Bill
 | intro=<h3>Speeches By {{PAGENAME}}</h3>
 | default= | limit=5}}';	
 	/*$template_body.='{{#ask: [[Spoken_By::{{PAGENAME}}]] |
 | intro=<h3>[[Special:MediaSearch/person/{{PAGENAME}}|Spoken Text]] By {{PAGENAME}}</h3> 
 | default= | limit=5}}';	 
 */
+	//$template_body.='</span>';
+	//$template_body.='<span style="width:40%;float:left;">';
 	//ask for inverse relations (bills) : 
 	$template_body.='{{#ask: [[Bill Sponsor::{{PAGENAME}}]] |
 | intro=<h3>Bills Sponsored</h3>
@@ -190,22 +197,26 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	//$template_body.="\n".'[[Special:MediaSearch/person/{{PAGENAME}}|Media Search]]<br>'; 
 	//include space for Top 10 Interests Funding	
 	$template_body.="\n===Interests Funding===\n";
+	$template_body.="{{ #if: {{{MAPLight Person ID|}}}|[[Data_Source_URL:=http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}}|MAPLight Source]] \n|}}";
 	$template_body.="{{ #if: {{{Total Received|}}}|Total Campaign Contributions for {{PAGENAME}}: {{{Total Received}}} <br>|}}\n";
 	$template_body.="{{ #if: {{{Contributions Date Range|}}}|Contributions Date Range: {{{Contributions Date Range}}} |}}\n";	
 	for($i=1;$i<=10;$i++){
 		$template_body.="{{ #if: {{{Funding Interest $i|}}}|*[[Funding Interest:={{{Funding Interest $i}}};{{{Funding Amount $i}}}]] \n|}}";
 	}
 	$template_body.="\n";
-	$template_body.="{{ #if: {{{MAPLight Person ID|}}}|[[Data_Source_URL:=http://www.maplight.org/map/us/legislator/{{{MAPLight Person ID}}}|MAPLight Source]] \n|}}";
 	
 	//comm
 	$template_body.="{{ #if: {{{Committee Member $i|}}}|\n===Committee Membership===\n|}}";
 	for($i=1;$i<=15;$i++){
 		$template_body.="{{ #if: {{{Committee Member $i|}}}|*[[Committee Member:={{{Member of Committee $i}}}]] \n|}}";
 	}
+	//$template_body.='</span>';
+	//$template_body.='<div style="clear:both"></div>';
 	//news feeds:
-	//$template_body.="\n===RSS feeds===\n".
-	//$template_body.="<rss>http://www.opencongress.org/people/atom_news/
+	$template_body.="\n===RSS feeds===\n";
+	$template_body.='[[Data_Source_URL:=http://www.opencongress.org/people/show/{{{GovTrack Person ID}}}|OpenCongress Source]]'."\n";
+	$template_body.="*[http://www.opencongress.org/people/atom_news/{{{GovTrack Person ID}}} In the News]
+*[http://www.opencongress.org/people/atom_blogs/{{{GovTrack Person ID}}} In the Blogs]";
 	
 	//include some external links:
 	$template_body .="\n===External Links===\n".
