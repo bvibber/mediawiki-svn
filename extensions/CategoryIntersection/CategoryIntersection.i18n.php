@@ -33,8 +33,39 @@ $messages['de'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'categoryintersection'               => 'Intersection de la catégorie',
+	'categoryintersection'               => 'Recoupage de catégories',
+	'categoryintersection-desc'          => "Maintient une table avec des valeurs à la volée pour les [[Special:CategoryIntersection|recoupages de catégories]] au moyen d'une page",
 	'categoryintersection-doit'          => 'Liste les pages dans toutes ces catégories',
 	'categoryintersection-maxcategories' => 'Le nombre maximum du nombre des catégories s’entrecoupant est de $1.',
 	'categoryintersection-results'       => 'La recherche a retourné $1 {{PLURAL:$1|titre|titres}}.',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'categoryintersection'               => 'Kategorisnitt',
+	'categoryintersection-desc'          => 'Hanterar en tabell med hashvärden för de [[Special:CategoryIntersection|kategorisnitt]] som en sida är medlem i.',
+	'categoryintersection-doit'          => 'Visa sidor som tillhör alla dessa kategorier',
+	'categoryintersection-maxcategories' => 'Det största antal kategorier som kan sökas i är $1.',
+	'categoryintersection-results'       => 'Sökningen gav $1 {{PLURAL:$1|titel|titlar}}.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categoryintersection'      => 'వర్గం ఖండన',
+	'categoryintersection-doit' => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'categoryintersection'               => 'Thể loại giao nhau',
+	'categoryintersection-desc'          => 'Sử dụng một bản chứa các giá trị băm dùng cho [[Special:CategoryIntersection|các thể loại giao nhau]] trong một trang',
+	'categoryintersection-doit'          => 'Liệt kê các trang trong tất cả các thể loại này',
+	'categoryintersection-maxcategories' => 'Số thể loại giao nhau tối đa cho phép là $1.',
+	'categoryintersection-results'       => 'Tìm được $1 {{PLURAL:$1|tựa bài|tựa bài}}.',
 );
