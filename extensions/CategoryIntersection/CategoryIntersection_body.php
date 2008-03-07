@@ -41,7 +41,7 @@ class CategoryIntersection extends SpecialPage {
 		$ret = '';
 		$ret .= "<form method='post'>";
 		$ret .= "<textarea name='lines' rows='10' cols='50' style='width:100%'></textarea><br/>";
-		$ret .= "<input type='submit' name='doit' value='" . wfMsg('categoryintersection-doit') . "' />";
+		$ret .= "<input type='submit' name='doit' value='" . wfMsgHtml('categoryintersection-doit') . "' />";
 		$ret .= "</form>";
 		return $ret;
 	}
@@ -121,6 +121,8 @@ class CategoryIntersection extends SpecialPage {
 		$wgOut->addWikiText ($wiki);
 
 		# Final message
-		return '<hr/>' . wfMsg('categoryintersection-results',count($titles));
+		global $wgLang;
+		$count = $wgLang->formatNum( count($titles) );
+		return '<hr/>' . wfMsgExt('categoryintersection-results', 'parse', $count);
 	}
 }
