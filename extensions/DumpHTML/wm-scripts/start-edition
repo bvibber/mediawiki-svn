@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf /mnt/static/checkpoints
+mkdir /mnt/static/checkpoints
+rm -rf /mnt/static/jobs
+mkdir /mnt/static/jobs
+rm -rf /mnt/static/logs
+mkdir /mnt/static/logs
+#mv /mnt/static/wikipedia /mnt/static/wikipedia.old
+
