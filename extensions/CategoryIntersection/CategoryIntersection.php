@@ -11,7 +11,7 @@
   CREATE TABLE `categoryintersections` (
     `ci_page` int(10) NOT NULL,
     `ci_hash` varchar(32) collate latin1_general_ci NOT NULL,
-    PRIMARY KEY  (`ci_page`,`ci_hash`)
+    PRIMARY KEY  (`ci_hash`,`ci_page`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 **/
@@ -36,6 +36,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgHooks['LinksUpdate'][] = 'CategoryIntersectionLinksUpdate';
+$wgHooks['ArticleDelete'][] = 'CategoryIntersectionArticleDelete';
 
 $wgAutoloadClasses['CategoryIntersection'] = $dir . 'CategoryIntersection_body.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.i18n.php';
@@ -98,4 +99,10 @@ function CategoryIntersectionLinksUpdate (&$linksUpdate) {
 	$linksUpdate->dumbTableUpdate ('categoryintersections', $arr, 'ci_page');
 
 	return true; // My work here is done
+}
+
+function CategoryIntersectionArticleDelete (&$article, &$user, &$reason) {
+  $dbw = wfGetDB( DB_MASTER );
+  $dbw->delete ( 'categoryintersections' , array ( "ci_page" => $article->getID() ) ) ;
+  return true ;
 }
