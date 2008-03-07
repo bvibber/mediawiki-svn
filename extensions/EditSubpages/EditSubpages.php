@@ -17,7 +17,7 @@ for anonymous editing via [[MediaWiki:Unlockedpages]]",
 'descriptionmsg' => 'editsubpages-desc',
 'author' => "Ryan Schmidt",
 'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
-'version' => "1.2.1",
+'version' => "1.2.2",
 );
 
 $wgHooks['UserGetRights'][] = 'EditSubpages';
@@ -34,34 +34,36 @@ function EditSubpages(&$user, &$aRights) {
 		} else {
 			$ns = $wgTitle->getNsText(); //namespace
 		}
-		if(!$wgTitle->isTalkPage()) {
-			$nstalk = $wgTitle->getTalkNsText();
-		} else {
+		if( $wgTitle->isTalkPage() ) {
+			$ns = $wgTitle->getTalkNsText();
 			$nstalk = '';
+		} else {
+			$nstalk = $wgTitle->getTalkNsText();
 		}
 		if($ns == '') {
 			$text = $pagename;
 		} else {
 			$text = $ns . ":" . $pagename;
 		}
-		if($nstalk == '') {
-			$talktext = $pagename;
-		} else {
+		if( $nstalk != '' ) {
 			$talktext = $nstalk . ":" . $pagename;
+		} else {
+			$talktext = $pagename;
 		}
 		
 		$pages = explode ("\n", wfMsg ('unlockedpages')); //grabs MediaWiki:Unlockedpages
+
 		foreach($pages as $value) {
 			if( strpos( $value, '*' ) === false || strpos( $value, '*' ) !== 0 )
 				continue; // "*" doesn't start the line, so treat it as a comment (aka skip over it)
 			$value = trim( trim( trim( trim( $value ), "*[]" ) ), "*[]" );
 			if ( $value == $text || strpos( $text, $value . '/' ) === 0 ) {
-				$aRights = array_merge(  $aRights, array('edit', 'createpage', 'createtalk' ) );
+				$aRights = array_merge($aRights, array('edit', 'createpage', 'createtalk' ));
 				$aRights = array_unique($aRights);
 				break;
 			}
 			$title = Title::newFromText($value);
-			if(!$title->isTalkPage()) {
+			if( !$title->isTalkPage() ) {
 				$talk = $title->getTalkPage();
 				$talkpage = $talk->getPrefixedText();
 				if($talkpage == $talktext || $talkpage == $text || strpos( $talktext, $talkpage . '/' ) === 0 || strpos( $text, $talkpage . '/' ) === 0 ) {
