@@ -21,9 +21,11 @@ $messages['en'] = array(
 
 /** German (Deutsch)
  * @author Magnus Manske
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'categoryintersection'               => 'Kategorien-Schnittmenge',
+	'categoryintersection-desc'          => 'Pflege einer Tabelle mit Hashwerten für die [[Special:CategoryIntersection|Kategorien-Schnittmengensuche]]',
 	'categoryintersection-doit'          => 'Alle Seiten in dieser Schnittmenge anzeigen',
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',
 	'categoryintersection-results'       => 'Die Suche ergab $1 Treffer.',
