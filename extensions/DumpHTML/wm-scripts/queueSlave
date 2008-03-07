@@ -101,10 +101,10 @@ queueHost = sys.argv[1]
 queuePort = int(sys.argv[2])
 baseDir = sys.argv[3]
 edition = sys.argv[4]
-siteDir = baseDir+"/wikipedia"
-logDir = baseDir+"/logs"
-jobDir = baseDir+"/jobs"
-checkpointDir = baseDir+"/checkpoints"
+siteDir = baseDir+"/new/wikipedia"
+logDir = baseDir+"/var/logs"
+jobDir = baseDir+"/var/jobs"
+checkpointDir = baseDir+"/var/checkpoints"
 
 try: os.makedirs(logDir)
 except: pass
@@ -135,7 +135,7 @@ while (os.getppid() > 1):
 		type = m.group(3)
 		slice = m.group(4)
 		lang = wiki.replace( 'wiki', '' )
-		dest = siteDir+"/"+lang+"-new"
+		dest = siteDir+"/"+lang
 		jobString = wiki+"_" + type + "_" + slice.replace( '/', '_' )
 		outputFile = logDir+"/"+jobString
 		checkpoint = checkpointDir+"/"+jobString

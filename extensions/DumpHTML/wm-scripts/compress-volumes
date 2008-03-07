@@ -4,11 +4,13 @@ if [ -z "$2" ]; then
 	echo "Usage: $0 <language> <edition>"
 fi
 
+. `dirname $0`/config.sh
+
 lang=$1
 edition=$2
-dest=/mnt/static/downloads/$edition/$lang
-sitebase=/mnt/static/wikipedia
-bindir=/mnt/static/scripts
+dest=$base/downloads/$edition/$lang
+sitebase=$base/wikipedia
+bindir=$base/scripts
 
 cd $dest
 rm html.lst.*

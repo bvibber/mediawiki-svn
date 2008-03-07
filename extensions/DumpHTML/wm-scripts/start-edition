@@ -1,10 +1,16 @@
 #!/bin/bash
 
-rm -rf /mnt/static/checkpoints
-mkdir /mnt/static/checkpoints
-rm -rf /mnt/static/jobs
-mkdir /mnt/static/jobs
-rm -rf /mnt/static/logs
-mkdir /mnt/static/logs
-#mv /mnt/static/wikipedia /mnt/static/wikipedia.old
+. `dirname $0`/config.sh
+
+if [ -z $base ]; then 
+	echo "No base directory"
+	exit; 
+fi
+
+rm -rf $base/var/checkpoints
+mkdir $base/var/checkpoints
+rm -rf $base/var/jobs
+mkdir $base/var/jobs
+rm -rf $base/var/logs
+mkdir $base/var/logs
 

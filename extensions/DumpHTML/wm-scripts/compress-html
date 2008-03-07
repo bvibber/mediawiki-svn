@@ -5,13 +5,13 @@ if [ "X$2" == X ]; then
 	exit
 fi
 
+. `dirname $0`/config.sh
 
 lang=$1
 edition=$2
 site=wikipedia
 
-base=/mnt/static
-sitebase=$base/$site
+sitebase=$base/new/$site
 dest=$base/downloads/$edition/$lang
 p7zip=$base/scripts/7za-readdir-hack
 
@@ -32,7 +32,7 @@ rm -f $dest/wikipedia-$lang-html.7z
 # Set chunk size to 8MB for faster random access
 $p7zip -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
 
-fileCount=`wc -l /mnt/static/downloads/$edition/$lang/html.lst | awk '{print $1}'` 
+fileCount=`wc -l $base/downloads/$edition/$lang/html.lst | awk '{print $1}'` 
 if [ $fileCount -gt 2000000 ]; then
 	echo "Creating split archives"
 	$base/scripts/compress-volumes "$lang" "$edition"

@@ -4,27 +4,25 @@ if [ "X$2" == "X" ];then
 	echo "Usage: finish <lang> <edition>"
 	exit
 fi
-bindir=/mnt/static/scripts
+
+. `dirname $0`/config.sh
+
+bindir=$base/scripts
 lang=$1
 edition=$2
 site=wikipedia
+langdir=$base/new/$site/$lang
 
-if [ ! -d /mnt/static/$site/$lang-new ]; then
+if [ -e $langdir/compressed ]; then
 	echo "Already compressed $lang"
 	exit
 fi
-if [ ! -e /mnt/static/$site/$lang-new/index.html ]; then
-	echo "$lang-new directory is broken, missing index.html, skipping."
+if [ ! -e $langdir/index.html ]; then
+	echo "$lang directory is broken, missing index.html, skipping."
 	exit
 fi
-	
-if [ -d /mnt/static/$site/$lang ];then
-	if [ -d /mnt/static/$site/$lang-old ];then
-		rm -rf /mnt/static/$site/$lang-old
-	fi
-	mv /mnt/static/$site/$lang /mnt/static/$site/$lang-old
-fi
-mv /mnt/static/$site/$lang-new /mnt/static/$site/$lang
+
+date > $langdir/compressed
 
 echo "$lang: Compressing HTML..."
 $bindir/compress-html $lang $edition 2>&1 >/dev/null

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import sys, os, socket, signal, time, stat
 
-base = "/mnt/static"
+base = "/a/static"
 scripts = base + "/scripts"
 
 if len(sys.argv) < 2:
@@ -21,9 +21,9 @@ threads = {
 }
 
 # Create some directories
-try: os.makedirs(base + "/logs")
+try: os.makedirs(base + "/var/logs")
 except: pass
-try: os.makedirs(base + "/checkpoints")
+try: os.makedirs(base + "/var/checkpoints")
 except: pass
 
 # Set up in_progress symlink
@@ -55,20 +55,18 @@ for host, number in threads.iteritems():
 		if pid == 0:
 			# Redirect stdout
 			os.close(1)
-			fd = os.open("%s/logs/%s-%d.out" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
+			fd = os.open("%s/var/logs/%s-%d.out" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
 			os.dup2(fd, 1)
 
 			# Redirect stderr
 			os.close(2)
-			fd = os.open("%s/logs/%s-%d.err" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
+			fd = os.open("%s/var/logs/%s-%d.err" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
 			os.dup2(fd, 2)
 			
 			if host == "localhost":
-				#os.execlp("php", "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
 				os.execlp("python", "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
 				sys.exit(1)
 			else:
-				#os.execlp("ssh", "ssh", host, "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
 				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
 				sys.exit(1)
 		slaves.append(pid)

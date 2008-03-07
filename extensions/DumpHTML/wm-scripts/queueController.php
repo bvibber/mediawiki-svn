@@ -1,6 +1,6 @@
 <?php
 
-$baseDir = '/mnt/static';
+$baseDir = '/a/static';
 
 $wgNoDBParam = true;
 require_once( '/home/wikipedia/common/php/maintenance/commandLine.inc' );
@@ -24,7 +24,7 @@ fwrite( $queueSock, "clear\n" );
 fgets( $queueSock );
 
 # Fetch wiki stats
-$wikiSizes = @file_get_contents( "$baseDir/checkpoints/wikiSizes" );
+$wikiSizes = @file_get_contents( "$baseDir/var/checkpoints/wikiSizes" );
 if ( $wikiSizes ) {
 	$wikiSizes = unserialize( $wikiSizes );
 } else {
@@ -38,7 +38,7 @@ if ( $wikiSizes ) {
 
 		$wikiSizes[$wiki] = $db->selectField( "`$wiki`.site_stats", 'ss_total_pages' );
 	}
-	file_put_contents( "$baseDir/checkpoints/wikiSizes", serialize( $wikiSizes ) );
+	file_put_contents( "$baseDir/var/checkpoints/wikiSizes", serialize( $wikiSizes ) );
 }
 
 # Temporary special case hack
@@ -98,9 +98,12 @@ foreach ( $wikiSizes as $wiki => $size ) {
 }
 
 # Write job list
-$file = fopen( "$baseDir/jobs/list", 'w' );
+if ( !is_dir( "$baseDir/var/jobs" ) ) {
+	mkdir( "$baseDir/var/jobs", true );
+}
+$file = fopen( "$baseDir/var/jobs/list", 'w' );
 if ( !$file ) {
-	print "Unable to open $baseDir/jobs/list for writing\n";
+	print "Unable to open $baseDir/var/jobs/list for writing\n";
 	exit( 1 );
 }
 foreach ( $jobs as $job ) {
@@ -191,7 +194,7 @@ function getQueueSize() {
 
 function getJobStatus( $job ) {
 	global $baseDir;
-	$jobStatusFile = "$baseDir/jobs/{$job['id']}";
+	$jobStatusFile = "$baseDir/var/jobs/{$job['id']}";
 	$lines = @file( $jobStatusFile );
 	
 	if ( !isset( $lines[1] ) ) {
@@ -203,7 +206,7 @@ function getJobStatus( $job ) {
 
 function removeJobStatus( $job ) {
 	global $baseDir;
-	$jobStatusFile = "$baseDir/jobs/{$job['id']}";
+	$jobStatusFile = "$baseDir/var/jobs/{$job['id']}";
 	@unlink( $jobStatusFile );
 }
 
@@ -229,7 +232,6 @@ function startWiki( $wiki ) {
 	global $baseDir;
 	$lang = str_replace( 'wiki', '', $wiki );
 	print "Starting language $lang\n";
-	#passthru( "$baseDir/scripts/start-lang $lang" );
 }
 
 ?>
