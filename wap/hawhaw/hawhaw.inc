@@ -2379,6 +2379,12 @@ class HAW_deck
       $this->display_banners = false;
       $this->gif_enabled = true;
       $this->css_enabled = true;
+      
+      # Hack for iPhone SDK simulator
+      # Doesn't seem to like application/vnd.wap.xhtml+xml
+      if( strstr($HTTP_USER_AGENT, "(Aspen Simulator") ) {
+	      $this->xhtmlmp_preferred_mime_type = 'text/html';
+      }
     }
     elseif ( strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
              strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
