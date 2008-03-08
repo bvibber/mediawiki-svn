@@ -2370,7 +2370,8 @@ class HAW_deck
         strstr(strtolower($HTTP_USER_AGENT), "opera mini") ||
         strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder") ||
         strstr($HTTP_USER_AGENT, "(iPhone") ||
-        strstr($HTTP_USER_AGENT, "(iPod"))
+        strstr($HTTP_USER_AGENT, "(iPod") ||
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
     {
       // XHTML device detected
       $this->xhtml = true;
