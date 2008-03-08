@@ -395,7 +395,8 @@ $messages['nl'] = array(
 	'review_sidebar_explanation'                             => "Het meest linkse vakje betekent altijd 'geen mening'.",
 	'review_save'                                            => 'Beoordeling opslaan',
 	'review_your_review'                                     => 'Uw beoordeling van deze pagina/versie:',
-	'review_sidebar_you_have_other_reviews_for_this_article' => "U heeft al een beoordeling gedaan voor andere versies van deze pagina. Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' heeft opgegeven.",
+	'review_sidebar_you_have_other_reviews_for_this_article' => "U hebt al een beoordeling gedaan voor andere versies van deze pagina.
+Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt opgegeven.",
 	'review_page_link'                                       => 'beoordelingsstatistieken',
 	'review_sidebar_final'                                   => 'Zie $1 voor beoordelingsgegevens van deze pagina',
 	'review_for_page'                                        => 'Beoordeling voor pagina "$1"',
@@ -516,9 +517,12 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'review_total_statistics'       => 'Total',
+	'review_statistics_left_corner' => 'REvisão',
+	'review_version_link'           => 'Revisão #$1',
 	'review_statistic_cell'         => 'Média: $1 de $2<br />($4 utilizadores, $5 anónimos)',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_user_details_link'      => '(detalhes)',
@@ -580,6 +584,8 @@ $messages['sv'] = array(
 	'review_sidebar_title'          => 'Granska',
 	'review_page_link'              => 'granska statistik',
 	'review_total_statistics'       => 'Total',
+	'review_statistics_left_corner' => 'Revision',
+	'review_version_link'           => 'Revision #$1',
 	'review_version_statistic_cell' => '$1 av $2',
 	'review_user_details_link'      => '(detaljer)',
 	'review_comment'                => 'Kommentar',
@@ -595,9 +601,11 @@ $messages['te'] = array(
 	'review_for_page'                        => '"$1" అనే పేజీకై సమీక్ష',
 	'review_for_user'                        => '"$1" అనే వాడుకరికై సమీక్ష',
 	'review_error'                           => 'ఏదో తప్పు జరిగింది!',
+	'review_no_reviews_for_page'             => '"$1"కి ప్రస్తుతం సమీక్షలు లేవు.',
 	'review_total_statistics'                => 'మొత్తం',
 	'review_statistics_left_corner'          => 'కూర్పు',
 	'review_version_link'                    => 'కూర్పు #$1',
+	'review_statistic_cell'                  => 'సగటు: $2 లో $1 <br />($4 వాడుకరులు, $5 అనామకులు)',
 	'review_version_reviews_link'            => '<small>(కూర్పు సమీక్షలు)</small>',
 	'review_concerns_page'                   => 'ఈ సమీక్ష "$1" అనే పేజీ గురించి.',
 	'review_user_reviews'                    => '<small>(ఈ వాడుకరి చేసిన సమీక్షలు)</small>',

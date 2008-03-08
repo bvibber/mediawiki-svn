@@ -307,8 +307,10 @@ $3',
  * @author Veeven
  */
 $messages['te'] = array(
-	'latexdoc_no_text' => 'పేజీలో పాఠ్యమేమీ లేదు, DVIని సృష్టించలేము',
-	'latexdoc_get_pdf' => 'PDFని పొందండి',
+	'latexdoc_no_text'         => 'పేజీలో పాఠ్యమేమీ లేదు, DVIని సృష్టించలేము',
+	'latexdoc_cant_create_dir' => '$1 అనే తాత్కాలిక డైరెక్టరీని సృష్టించలేకున్నాం',
+	'latexdoc_get_dvi'         => 'DVIని పొందండి',
+	'latexdoc_get_pdf'         => 'PDFని పొందండి',
 );
 
 /** Volapük (Volapük)

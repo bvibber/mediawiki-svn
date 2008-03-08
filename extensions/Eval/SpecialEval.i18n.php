@@ -195,6 +195,8 @@ $messages['sv'] = array(
 	'eval'        => 'Eval',
 	'eval-desc'   => 'Lägger till [[Special:Eval|ett gränssnitt]] till <code>eval()</code> funktionen',
 	'eval_submit' => 'Evalvera',
+	'eval_escape' => 'Undvik utdata',
+	'eval_out'    => 'Resultat',
 	'eval_code'   => 'Kod',
 );
 

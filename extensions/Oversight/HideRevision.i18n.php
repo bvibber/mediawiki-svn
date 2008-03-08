@@ -147,6 +147,7 @@ $messages['bg'] = array(
 	'hiderevision-desc'           => 'Добавя възможност за скриване на отделни версии',
 	'hiderevision-prompt'         => 'Номер на версия за премахване:',
 	'hiderevision-continue'       => 'Продължаване',
+	'hiderevision-reason'         => 'Причина (ще бъде записана в скрит дневник):',
 	'hiderevision-submit'         => 'Постоянно скриване на информацията',
 	'hiderevision-tab'            => 'Скриване на редакцията',
 	'hiderevision-norevisions'    => 'Не са посочени редакции за изтриване.',
@@ -155,6 +156,7 @@ $messages['bg'] = array(
 	'hiderevision-success'        => 'Архивирано и изтрито успешно.',
 	'hiderevision-error-missing'  => 'Не е намерена в базата от данни.',
 	'hiderevision-error-current'  => 'Последната редакция на страницата не може да бъде изтрита. Необходимо е първо да бъде върната.',
+	'hiderevision-error-delete'   => 'Не можа да бъде архивирана. Да не е била вече изтрита?',
 	'hiderevision-archive-status' => 'Изтрита версия от $1: $2',
 	'oversight-log-hiderev'       => 'премахната редакция от $1',
 	'oversight-view'              => 'детайли',
@@ -1016,6 +1018,7 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
 $messages['lt'] = array(
 	'hiderevision-continue'      => 'Tęsti',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
+	'oversight-view'             => 'detalės',
 );
 
 /** Nepali (नेपाली)

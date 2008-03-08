@@ -118,6 +118,13 @@ $messages['br'] = array(
 	'pdtest_ok' => 'Mat eo',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'pdtest_ok' => "D'acord",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

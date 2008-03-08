@@ -437,7 +437,9 @@ $messages['lt'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'asksql' => 'SQL पृच्छा',
+	'asksql'          => 'SQL पृच्छा',
+	'sqlquery'        => 'पृच्छा लिहा',
+	'querysuccessful' => 'पृच्छा यशस्वी',
 );
 
 /** Dutch (Nederlands)

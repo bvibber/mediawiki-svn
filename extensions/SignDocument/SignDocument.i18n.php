@@ -150,6 +150,13 @@ $messages['sv'] = array(
 	'signaturelogentry'    => 'signerade dokumentet $1',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'signaturelogpage' => 'సంతకాల దినచర్య',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

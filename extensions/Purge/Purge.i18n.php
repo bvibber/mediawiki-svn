@@ -97,7 +97,7 @@ $messages['lt'] = array(
  */
 $messages['nl'] = array(
 	'purge'      => 'cache legen',
-	'purge-desc' => "Voegt een tabblad purge toe op alle normale pagina's en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden",
+	'purge-desc' => 'Voegt een tabblad "purge" toe op alle normale pagina\'s en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

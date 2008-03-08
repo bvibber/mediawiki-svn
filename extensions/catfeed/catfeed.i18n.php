@@ -96,3 +96,10 @@ $messages['sk'] = array(
 	'catfeed-desc' => 'Používa kúsky z kanálov posledných zmien. Vytvorí verziu v rámci stránky. Obzvlášť užitočné pre Wikinews.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'catfeed-desc' => 'Använder information från senaste ändringarna. Man kan skapa versioner för användning till innehållssidor, något som är speciellt användbart för Wikinews.',
+);
+

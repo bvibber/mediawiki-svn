@@ -655,15 +655,22 @@ $messages['pt'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'inplace_access_disabled'          => 'O acesso a este serviço foi desabilitado para todos os clientes.',
 	'inplace_access_denied'            => 'Este serviço está restringido por IP de cliente.',
 	'inplace_scaler_no_temp'           => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
+	'inplace_scaler_invalid_image'     => 'Imagem inválida. Não foi possível determinar o tamanho.',
+	'webstore_no_file'                 => 'Nenhum arquivo foi carregado.',
 	'webstore_invalid_zone'            => 'Zona "$1" inválida.',
+	'webstore_404'                     => 'Ficheiro não encontrado.',
 	'webstore_php_warning'             => 'Aviso PHP: $1',
 	'webstore_metadata_not_found'      => 'Ficheiro não encontrado: $1',
+	'webstore_invalid_response'        => 'Resposta inválida do servidor:
+
+$1',
 	'webstore_no_response'             => 'Sem resposta do servidor',
 	'webstore_php_error'               => 'Foram encontrados erros PHP:',
 );
@@ -734,6 +741,8 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'webstore_path_invalid'       => 'ఫైలుపేరు తప్పుగా ఉంది.',
 	'webstore_dest_exists'        => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
+	'webstore_temp_open'          => '"$1" అనే తాత్కాలిక ఫైలుని తెరవడంలో పొరపాటు.',
+	'webstore_temp_close'         => '"$1" అనే తాత్కాలిక ఫైలుని మూయడంలో పొరపాటు.',
 	'webstore_404'                => 'ఫైలు కనబడలేదు.',
 	'webstore_php_warning'        => 'PHP హెచ్చరిక: $1',
 	'webstore_metadata_not_found' => 'ఫైలు కనబడలేదు: $1',

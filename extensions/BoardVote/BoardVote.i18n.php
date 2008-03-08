@@ -384,6 +384,7 @@ $messages['bg'] = array(
 	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
 	'boardvote_notqualified' => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
 	'boardvote_novotes'      => 'Все още никой не е гласувал.',
+	'boardvote_time'         => 'Време',
 	'boardvote_user'         => 'Потребител',
 	'boardvote_edits'        => 'Редакции',
 	'boardvote_days'         => 'Дни',
@@ -2407,9 +2408,9 @@ positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Bestuursverkiezing FAQ</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidaten</a></li></ul>
 ',
-	'boardvote_intro_change' => '<p>U heeft al gestemd. U kunt uw stem wijzigen via
-het onderstaande formulier. Vink alstublieft de vakjes naar iedere kandidaat die
-u steunt aan.</p>',
+	'boardvote_intro_change' => '<p>U hebt al gestemd.
+U kunt uw stem wijzigen via het onderstaande formulier.
+Vink alstublieft de vakjes aan naast iedere kandidaat die u steunt aan.</p>',
 	'boardvote_entered'      => 'Dank u. Uw stem is verwerkt.
 
 Als u wilt kunt u de volgende gegevens bewaren. Uw stem:
@@ -2426,7 +2427,8 @@ Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boa
 
 [[Special:Boardvote/entry|Terug]]',
 	'boardvote_nosession'    => 'Uw Wikimedia-gebruikersnummer kan niet bepaald worden. Meldt u zich aan in wiki waar u voldoet aan de eisen, en ga naar <nowiki>[[Special:Boardvote]]</nowiki>. Gebruik een gebruiker met tenminste $1 bijdragen voor $2, en met uw eerste bewerking voor $3.',
-	'boardvote_notloggedin'  => 'U bent niet aangemeld. U kunt stemmen als u voor $2 ten minste $1 bewerkingen heeft gemaakt en uw eerste bewerking voor $3 heeft gemaakt.',
+	'boardvote_notloggedin'  => 'U bent niet aangemeld.
+U kunt stemmen als u voor $2 ten minste $1 bewerkingen hebt gemaakt en uw eerste bewerking voor $3 hebt gemaakt.',
 	'boardvote_notqualified' => 'U kunt niet stemmen in deze verkiezing. U moet $3 bewerkingen hebben gemaakt voor $3 en uw eerste bewerking moet voor $5 zijn gemaakt.',
 	'boardvote_novotes'      => 'Er is nog niet gestemd.',
 	'boardvote_time'         => 'Tijd',

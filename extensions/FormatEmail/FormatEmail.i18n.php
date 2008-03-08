@@ -191,3 +191,14 @@ $messages['stq'] = array(
 Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'email-desc'   => 'Gör att egendefinierade meddelanden kan läggas till toppen eller botten av användares e-post.',
+	'email_footer' => '----------------------------------------------------------------------------
+Denna e-post har sänts till dig via {{SITENAME}} e-postsystem av $1.
+
+$2',
+);
+

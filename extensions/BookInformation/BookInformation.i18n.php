@@ -105,14 +105,17 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Borislav
  */
 $messages['bg'] = array(
 	'bookinfo-header'            => 'Информация за книга',
+	'bookinfo-desc'              => 'Разширява [[Special:Booksources]] с информация от уеб услуга',
 	'bookinfo-result-title'      => 'Заглавие:',
 	'bookinfo-result-author'     => 'Автор:',
 	'bookinfo-result-publisher'  => 'Издател:',
 	'bookinfo-result-year'       => 'Година:',
 	'bookinfo-error-invalidisbn' => 'Въведеният ISBN е грешен.',
+	'bookinfo-error-nosuchitem'  => 'Записът не съществува или не е бил намерен.',
 	'bookinfo-error-noresponse'  => 'Няма отговор или заявката отне твърде много време.',
 	'bookinfo-purchase'          => 'Купуване на тази книга от $1',
 	'bookinfo-provider'          => 'Източник на информация: $1',

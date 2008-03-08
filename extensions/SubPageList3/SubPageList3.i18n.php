@@ -44,6 +44,15 @@ $messages['bg'] = array(
 	'spl3_nosubpages' => '$1 не съдържа подстраници, които да бъдат показани.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'spl3-desc'       => "Crea automàticament una llista de les subpàgines d'una pàgina fent servir el codi <code><nowiki><splist /></nowiki></code>",
+	'spl3_debug'      => "Valor desconegut per a l'opció $1.",
+	'spl3_nosubpages' => '$1 no té subpàgines a mostrar.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

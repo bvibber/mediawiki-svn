@@ -92,6 +92,6 @@ $messages['sk'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'contributorsaddon-desc' => 'Läger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
+	'contributorsaddon-desc' => 'Lägger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
 );
 

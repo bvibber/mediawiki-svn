@@ -579,6 +579,7 @@ $messages['lo'] = array(
 $messages['lt'] = array(
 	'newuserlogpage'           => 'Naudotojo kūrimo registras',
 	'newuserlogpagetext'       => 'Tai yra naudotojų kūrimo registras',
+	'newuserlog-desc'          => 'Prideda [[Special:Log/newusers|naudotojų sūkūrimo sąrašą]] į [[Special:Log]]',
 	'newuserlog-byemail'       => 'slaptažodis nusiųstas elektroniniu paštu',
 	'newuserlog-create-entry'  => 'Naujas naudotojas',
 	'newuserlog-create2-entry' => 'sukurta paskyra $1',

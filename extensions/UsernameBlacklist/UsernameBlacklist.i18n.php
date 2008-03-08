@@ -659,9 +659,10 @@ $messages['ne'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'usernameblacklist-desc'          => 'Voegt een [[MediaWiki:Usernameblacklist|zwarte lijst voor gebruikersnamen]] toe om het maken van gebruikers die voldoen aan een of meer reguliere expressies te voorkomen',
 	'blacklistedusername'             => 'Gebruikersnaam op zwarte lijst',
-	'blacklistedusernametext'         => 'De gebruikersnaam die u heeft gekozen staat op de [[MediaWiki:Usernameblacklist|
-zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
+	'blacklistedusernametext'         => 'De gebruikersnaam die u hebt gekozen staat op de [[MediaWiki:Usernameblacklist|zwarte lijst van gebruikersnamen]].
+Kies alstublieft een andere naam.',
 	'usernameblacklist'               => '<pre>
 # Regels in deze lijst worden gebruikt als reguliere uitdrukking voor
 # gebruikersnamen op de zwarte lijst bij inschrijving. Iedere regel moet

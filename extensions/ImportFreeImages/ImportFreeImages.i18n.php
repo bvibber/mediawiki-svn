@@ -187,7 +187,8 @@ $messages['nl'] = array(
 	'importfreeimages'                       => 'Vrije afbeeldingen importeren',
 	'importfreeimages-desc'                  => 'Maakt het mogelijk om [[Special:ImportFreeImages|correct gelicenseerde afbeeldingen]] van [http://www.flickr.com  Flickr] te importeren',
 	'importfreeimages_description'           => "Deze pagina laat u toe om juist gelicenseerde foto's van flickr te zoeken and die te importeren naar uw wiki.",
-	'importfreeimages_noapikey'              => 'U heeft geen Flickr API Key ingesteld. U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hier] verkrijgen en instellen als wgFlickrAPIKey in ImportFreeImages.php.',
+	'importfreeimages_noapikey'              => 'U hebt geen Flickr API Key ingesteld.
+U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hier] verkrijgen en instellen als wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Er zijn geen foto's gevonden voor uw zoekcriteria '$1', probeer opniew.",
 	'importfreeimages_invalidurl'            => 'De URL "$1" is geen geldige afbeelding op Flickr.',
 	'importfreeimages_owner'                 => 'Auteur',

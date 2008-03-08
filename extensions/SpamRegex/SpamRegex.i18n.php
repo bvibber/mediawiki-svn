@@ -309,9 +309,12 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'spamregex-unblock-success' => 'Desbloqueio com sucesso',
+	'spamregex-block-success'   => 'Bloqueio bem sucedido',
+	'spamregex-error-1'         => 'Expressão regular inválida.',
 	'spamregex-already-blocked' => '"$1" já está bloqueado',
 	'spamregex-phrase-block'    => 'Frase a bloquear:',
 	'spamregex-text'            => '(Texto)',
@@ -360,6 +363,7 @@ $messages['sma'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'spamregex-log-1'       => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
 	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',
 	'spamregex-summary-log' => '(Sammanfattning)',

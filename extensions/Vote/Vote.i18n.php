@@ -432,6 +432,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'vote-header'         => "Pode votar no '''Senhor Supremo do Mundo''' aqui!",
@@ -441,6 +442,7 @@ $messages['pt'] = array(
 	'vote-submit'         => 'Votar',
 	'vote-results-choice' => 'Escolha',
 	'vote-login'          => 'Terá de $1 para votar.',
+	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
 );
 
 /** Slovak (Slovenčina)

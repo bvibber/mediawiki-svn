@@ -141,6 +141,13 @@ $messages['pms'] = array(
 		'templatelink_newtitle' => '$1 (an transclusion)',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'templatelink_empty' => 'Deverá fornecer um parâmetro',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

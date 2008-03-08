@@ -139,6 +139,7 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'expandtemplates'                  => 'Expansió de plantilles',
@@ -147,6 +148,8 @@ $messages['ca'] = array(
 	'expand_templates_title'           => 'Títol per contextualitzar ({{PAGENAME}}, etc):',
 	'expand_templates_input'           => 'El vostre text:',
 	'expand_templates_output'          => 'Resultat:',
+	'expand_templates_xml_output'      => 'Sortida XML',
+	'expand_templates_ok'              => "D'acord",
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 	'expand_templates_preview'         => 'Previsualitza',
 );

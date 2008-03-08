@@ -34,6 +34,16 @@ $messages['en'] = array(
 	'invitations-invite-success' => 'You have successfully invited $1 to use this feature!',
 );
 
+/** Arabic (العربية)
+ * @author Alnokta
+ */
+$messages['ar'] = array(
+	'invite-logpage'                => 'سجل الدعوات',
+	'invitations-feature-pagetitle' => 'إدارة الدعوات - $1',
+	'invitations-inviteform-title'  => 'ادعي مستخدم ليستخدم $1',
+	'invitations-inviteform-submit' => 'ادعي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -183,7 +193,7 @@ $messages['lb'] = array(
 	'invitations-inviteform-submit'    => 'Alueden',
 	'invitations-error-baduser'        => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
 	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
-	'invitations-invite-success'       => 'Dir hutt de(n) $1 mat Succès invitéiert fir dës Fonctioun ze benotzen!',
+	'invitations-invite-success'       => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
 );
 
 /** Dutch (Nederlands)
@@ -390,11 +400,12 @@ $messages['stq'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'invite-logpage'                => 'ఆహ్వానాల దినచర్య',
-	'invitations-invitedlist-item'  => '<b>$1</b> ($2 ఆహ్వానాలు మిగిలివున్నాయి)',
-	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',
-	'invitations-inviteform-submit' => 'ఆహ్వానించు',
-	'invitations-error-baduser'     => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
+	'invite-logpage'                  => 'ఆహ్వానాల దినచర్య',
+	'invitations-invitedlist-item'    => '<b>$1</b> ($2 ఆహ్వానాలు మిగిలివున్నాయి)',
+	'invitations-feature-pagetitle'   => 'ఆహ్వాన నిర్వహణ - $1',
+	'invitations-inviteform-username' => 'ఆహ్వానించాల్సిన వాడుకరి',
+	'invitations-inviteform-submit'   => 'ఆహ్వానించు',
+	'invitations-error-baduser'       => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
 );
 
 /** Vietnamese (Tiếng Việt)

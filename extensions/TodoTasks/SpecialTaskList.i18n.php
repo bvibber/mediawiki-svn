@@ -243,7 +243,7 @@ $messages['nl'] = array(
 
 Iemand heeft een nieuwe taak aan u toegewezen op %s.
 
-Op %s kan u uw complete takenlijst bekijken.
+Op %s kunt u uw complete takenlijst bekijken.
 
 Het waarschuwingssysteem',
 );
@@ -323,14 +323,21 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'tasklistincorrectuser' => 'Nome de utilizador incorrecto',
-	'tasklistemail'         => 'Caro %s',
-	'tasklistbyprojname'    => "Tarefas atribuídas a '''%s'''",
-	'tasklistchooseproj'    => 'Seleccione Projecto:',
-	'tasklistprojdisp'      => 'Mostrar',
+	'tasklist'               => 'Lista de Tarefas',
+	'tasklistbyproject'      => 'Lista de Tarefas por Projecto',
+	'tasklistunknownproject' => 'projecto deconhecido',
+	'tasklistunspecuser'     => 'Usuário não especificado',
+	'tasklistincorrectuser'  => 'Nome de utilizador incorrecto',
+	'tasklistemail'          => 'Caro %s',
+	'tasklistmytasks'        => 'Minhas tarefas',
+	'tasklistbyprojname'     => "Tarefas atribuídas a '''%s'''",
+	'tasklistchooseproj'     => 'Seleccione Projecto:',
+	'tasklistprojdisp'       => 'Mostrar',
+	'tasklistbyname'         => '== Lista de tarefas de %s ==',
 );
 
 /** Slovak (Slovenčina)
@@ -385,12 +392,14 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  * @author Max sonnelid
  */
 $messages['sv'] = array(
 	'tasklistunknownproject' => 'Okänt projekt',
 	'tasklistincorrectuser'  => 'Felaktigt användarnamn',
 	'tasklistchooseproj'     => 'Välj projekt:',
+	'tasklistprojdisp'       => 'Visa',
 );
 
 /** Telugu (తెలుగు)

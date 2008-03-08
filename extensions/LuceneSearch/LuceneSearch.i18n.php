@@ -170,6 +170,7 @@ $1
 	'lucenefallback'        => 'В момента има проблем с търсачката на {{SITENAME}}. Възможно е това да е само временно, затова опитайте отново след минута-две. В краен случай можете да ползвате услугите на външни търсачки:',
 	'searchexactcase'       => 'Търсене с чувствителност за малки и главни букви',
 	'searchall'             => 'всички',
+	'searchincategory'      => 'в категория',
 );
 
 /** Bengali (বাংলা)
@@ -967,6 +968,7 @@ $messages['loz'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Garas
+ * @author Matasg
  */
 $messages['lt'] = array(
 	'searchnumber'          => '<strong>Rezultatai $1-$2 iš $3</strong>',
@@ -989,6 +991,7 @@ arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:
 ',
 	'searchexactcase'       => 'Tikslaus raidžių dydžio paieška',
 	'searchall'             => 'visi',
+	'searchincategory'      => 'kategorijoje',
 );
 
 /** Latvian (Latviešu)
@@ -996,6 +999,13 @@ arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:
  */
 $messages['lv'] = array(
 	'searchnoresults' => 'Šeit, diemžēl, nav lapas ar tieši tādu nosaukumu.',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'searchall' => 'सर्व',
 );
 
 /** Erzya (эрзянь кель)

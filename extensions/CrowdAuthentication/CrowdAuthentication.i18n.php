@@ -93,6 +93,13 @@ $messages['stq'] = array(
 	'crowdauthentication-desc' => 'Authentisiereng-Ärwiederenge foar Atlassian Crowd',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'crowdauthentication-desc' => 'Verifieringsprogramtillägg för Atlassian Crowd',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

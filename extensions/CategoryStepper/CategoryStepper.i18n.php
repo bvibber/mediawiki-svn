@@ -214,7 +214,7 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'categorystepper-desc'  => 'Visar en kategoribläddrarruta som tillåter en att navigera fram och tillbaka alfabetiskt genom en eller fler kategorier en sida är i',
+	'categorystepper-desc'  => 'Visar en kategoribläddrarruta som tillåter användare att navigera fram och tillbaka alfabetiskt genom en eller flera kategorier som en sida är i',
 	'categorystepper-end'   => '(Slut på kategorin)',
 	'categorystepper-start' => '(Början på kategorin)',
 );

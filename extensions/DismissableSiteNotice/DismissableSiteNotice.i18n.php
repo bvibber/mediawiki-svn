@@ -158,8 +158,12 @@ $messages['ga'] = array(
 	'sitenotice_close' => 'díbh',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'sitenotice_close' => 'retirar',
+	'sitenotice-desc'  => 'Permite que os usuarios fechen o aviso do sitio',
 );
 
 $messages['he'] = array(

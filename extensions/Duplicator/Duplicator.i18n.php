@@ -718,7 +718,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'duplicator'                       => 'Duplicera en sida',
-	'duplicator-desc'                  => 'Skapa självständiga kopior av sidor med full redigerings historik',
+	'duplicator-desc'                  => 'Skapa självständiga kopior av sidor med hela redigeringshistoriker',
 	'duplicator-toolbox'               => 'Duplicera denna sida',
 	'duplicator-header'                => 'Med den här specialsidan är det möjligt att duplicera en sida, och på så sätt skapa två oberoende versioner av hela dess historik. Det kan vara användbart t.ex. om en sida ska delas upp på flera sidor.',
 	'duplicator-options'               => 'Alternativ',

@@ -365,7 +365,7 @@ $messages['nl'] = array(
 * Zandbakken
 * Zie overlegpagina',
 	'patrol-another'         => 'Toon andere bewerking als beschikbaar.',
-	'patrol-stopped'         => 'U heeft gekozen geen andere bewerking te controleren. $1',
+	'patrol-stopped'         => 'U hebt gekozen geen andere bewerking te controleren. $1',
 	'patrol-resume'          => 'Klik hier om verder te gaan.',
 	'group-patroller'        => 'Controleurs',
 	'group-patroller-member' => 'Controleur',
@@ -476,6 +476,7 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'patrol-endorse'         => 'Aprovar',
@@ -483,9 +484,13 @@ $messages['pt'] = array(
 	'patrol-revert-reason'   => 'Motivo:',
 	'patrol-skip'            => 'Saltar',
 	'patrol-reverting'       => 'Revertendo: $1',
+	'patrol-reverted-ok'     => 'A edição foi revertida.',
+	'patrol-reverted-failed' => 'A edição não pôde ser revertida.',
+	'patrol-skipped-ok'      => 'Ignorando edição.',
 	'patrol-reasons'         => '* Simples vandalismo
 * Teste de principiante
 * Ver página de discussão',
+	'patrol-another'         => 'Mostrar outra edição, se disponível.',
 	'group-patroller'        => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',
 	'grouppage-patroller'    => '{{ns:project}}:Patrulhador',

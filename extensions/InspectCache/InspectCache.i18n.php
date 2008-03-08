@@ -300,8 +300,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'inspectcache-ok'     => 'సరే',
-	'inspectcache-delete' => 'తొలగించు',
-	'inspectcache-list'   => 'జాబితా',
+	'inspectcache-ok'      => 'సరే',
+	'inspectcache-general' => 'సాధారణ కోశం',
+	'inspectcache-message' => 'సందేశపు కోశం',
+	'inspectcache-delete'  => 'తొలగించు',
+	'inspectcache-deleted' => 'తొలగింపు కోశం',
+	'inspectcache-list'    => 'జాబితా',
 );
 

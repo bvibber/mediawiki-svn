@@ -519,13 +519,23 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'usagestatisticsallusers' => 'Todos os Utilizadores',
-	'usagestatisticsinterval' => 'Intervalo',
-	'usagestatisticstype'     => 'Tipo',
-	'usagestatisticssubmit'   => 'Gerar Estatísticas',
+	'specialuserstats'               => 'Estatísticas de uso',
+	'usagestatistics'                => 'Estatísticas de uso',
+	'usagestatisticsallusers'        => 'Todos os Utilizadores',
+	'usagestatisticsinterval'        => 'Intervalo',
+	'usagestatisticstype'            => 'Tipo',
+	'usagestatisticsstart'           => 'Data de Início',
+	'usagestatisticsend'             => 'Data de Fim',
+	'usagestatisticssubmit'          => 'Gerar Estatísticas',
+	'usagestatisticsintervalday'     => 'Dia',
+	'usagestatisticsintervalweek'    => 'Semana',
+	'usagestatisticsintervalmonth'   => 'Mês',
+	'usagestatisticscumulative'      => 'Cumulativo',
+	'usagestatisticscumulative-text' => 'cumulativo',
 );
 
 /** Slovak (Slovenčina)
@@ -562,22 +572,27 @@ $messages['sk'] = array(
  * @author Max sonnelid
  */
 $messages['sv'] = array(
-	'specialuserstats'             => 'Användarstatistik',
-	'usagestatistics'              => 'Användarstatistik',
-	'usagestatistics-desc'         => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
-	'usagestatisticsfor'           => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
-	'usagestatisticsallusers'      => 'Alla användare',
-	'usagestatisticsinterval'      => 'Intervall',
-	'usagestatisticsstart'         => 'Startdatum',
-	'usagestatisticsend'           => 'Slutdatum',
-	'usagestatisticssubmit'        => 'Visa statistik',
-	'usagestatisticsnostart'       => '* <font color=red>Ange ett startdatum</font>',
-	'usagestatisticsnoend'         => '* <font color=red>Ange ett slutdatum</font>',
-	'usagestatisticsbadstartend'   => '<b>Felaktigt <i>start-</i> eller <i>slutdatum!</i></b>',
-	'usagestatisticsintervalday'   => 'Dag',
-	'usagestatisticsintervalweek'  => 'Vecka',
-	'usagestatisticsintervalmonth' => 'Månad',
-	'usagestatisticscalselect'     => 'Välj',
+	'specialuserstats'               => 'Användarstatistik',
+	'usagestatistics'                => 'Användarstatistik',
+	'usagestatistics-desc'           => 'Visar användningsstatistik för enskilda användare och för wikin som helhet',
+	'usagestatisticsfor'             => '<h2>Användarstatistik för [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'        => 'Alla användare',
+	'usagestatisticsinterval'        => 'Intervall',
+	'usagestatisticstype'            => 'Typ',
+	'usagestatisticsstart'           => 'Startdatum',
+	'usagestatisticsend'             => 'Slutdatum',
+	'usagestatisticssubmit'          => 'Visa statistik',
+	'usagestatisticsnostart'         => '* <font color=red>Ange ett startdatum</font>',
+	'usagestatisticsnoend'           => '* <font color=red>Ange ett slutdatum</font>',
+	'usagestatisticsbadstartend'     => '<b>Felaktigt <i>start-</i> eller <i>slutdatum!</i></b>',
+	'usagestatisticsintervalday'     => 'Dag',
+	'usagestatisticsintervalweek'    => 'Vecka',
+	'usagestatisticsintervalmonth'   => 'Månad',
+	'usagestatisticscumulative'      => 'Kumulativ',
+	'usagestatisticscumulative-text' => 'kumulativ',
+	'usagestatisticscalselect'       => 'Välj',
+	'usagestatistics-editindividual' => 'Individuell $1 statistik över antal redigeringar',
+	'usagestatistics-editpages'      => 'Individuell $1 statistik över antal redigerade sidor',
 );
 
 /** Telugu (తెలుగు)

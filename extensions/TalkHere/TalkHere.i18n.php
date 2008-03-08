@@ -356,11 +356,16 @@ J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'talkhere-talkpage' => 'discussão',
-	'talkhere-notalk'   => "''(sem comentários de momento)''",
+	'talkhere-talkpage'    => 'discussão',
+	'talkhere-notalk'      => "''(sem comentários de momento)''",
+	'talkhere-addcomment'  => 'adicionar comentário',
+	'talkhere-beforeinput' => 'Pode adicionar uma comentário abaixo',
+	'talkhere-loading'     => 'carregando editor...',
+	'talkhere-collapse'    => 'esconder editor',
 );
 
 /** Russian (Русский) */

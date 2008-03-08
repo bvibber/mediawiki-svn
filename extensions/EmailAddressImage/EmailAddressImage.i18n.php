@@ -91,6 +91,13 @@ $messages['sk'] = array(
 	'emailaddressimage-desc' => 'Pridáva značku <tt>&lt;email&gt;</tt> na zobrazenie emailu vo forme obrázka',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'emailaddressimage-desc' => 'Lägger till <tt>&lt;email&gt;</tt> för att visa en e-postadress som bild',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

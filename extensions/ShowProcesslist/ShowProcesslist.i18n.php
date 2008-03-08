@@ -132,10 +132,13 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'showprocesslist-id'   => 'Nummer',
-	'showprocesslist-user' => 'Benotzer',
-	'showprocesslist-time' => 'Zäit',
-	'showprocesslist-info' => 'Informatiounen',
+	'showprocesslist'       => "Weis d'Lëscht vun de Prozesser",
+	'showprocesslist-id'    => 'Nummer',
+	'showprocesslist-user'  => 'Benotzer',
+	'showprocesslist-db'    => 'Datebank',
+	'showprocesslist-time'  => 'Zäit',
+	'showprocesslist-state' => 'Zoustand',
+	'showprocesslist-info'  => 'Informatiounen',
 );
 
 /** Dutch (Nederlands)
@@ -194,11 +197,17 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'showprocesslist'         => 'Mostrar Lista de Processos',
+	'showprocesslist-id'      => 'Id',
+	'showprocesslist-user'    => 'Usuário',
 	'showprocesslist-command' => 'Comando',
+	'showprocesslist-time'    => 'Tempo',
+	'showprocesslist-state'   => 'Estado',
+	'showprocesslist-info'    => 'Informação',
 );
 
 /** Slovak (Slovenčina)

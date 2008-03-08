@@ -40,6 +40,15 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
+/** Bulgarian (Български)
+ * @author Borislav
+ */
+$messages['bg'] = array(
+	'assert_edit_title'   => 'Твърдението не е изпълнено',
+	'assert_edit_desc'    => 'Добавя редакционни твърдения за използване от ботове',
+	'assert_edit_message' => 'Зададеното твърдение ($1) не е изпълнено.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

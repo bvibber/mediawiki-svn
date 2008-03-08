@@ -325,6 +325,7 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'dt-desc'                     => 'Tillåter importering och exportering av strukturerad data i mallkallningar',
 	'viewxml'                     => 'Visa XML',
 	'dt_viewxml_docu'             => 'Var god välj mellan dom följande kategorierna och namnrymderna för att visa i XML format.',
 	'dt_viewxml_categories'       => 'Kategorier',
@@ -335,6 +336,7 @@ $messages['sv'] = array(
 	'dt_xml_field'                => 'Fält',
 	'dt_xml_name'                 => 'Namn',
 	'dt_xml_title'                => 'Titel',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Fritext',
 );
 

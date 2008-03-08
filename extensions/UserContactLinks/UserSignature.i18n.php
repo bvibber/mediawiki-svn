@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'usercontactlink-desc'    => 'Provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Mattbray
+ */
+$messages['rtm'] = array(
+	'usercontactlink-baduser' => 'Seseva',
+);
+
 $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
@@ -74,8 +81,13 @@ $messages['lb'] = array(
 	'usercontactlink-baduser' => 'falsche Benotzernumm',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
 	'usercontactlink-baduser' => 'onjuiste gebruikersnaam',
+	'usercontactlink-desc'    => 'Maakt het mogelijk om eenvoudig en consistent andere gebruikersnamen toe te voegen met behulp van de syntaxis ^^^user^^^',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -140,12 +152,5 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
-);
-
-/** Faeag Rotuma (Faeag Rotuma)
- * @author Mattbray
- */
-$messages['rtm'] = array(
-	'usercontactlink-baduser' => 'Seseva',
 );
 

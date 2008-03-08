@@ -184,6 +184,17 @@ $messages['ps'] = array(
 	'purgecache-button' => 'سپينول',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'purgecache'         => 'Purgar a cache',
+	'purgecache-desc'    => '[[Special:PurgeCache|Página especial]] utilizada para limpar a tabela OBJECTCACHE',
+	'purgecache-warning' => 'Isto irá purgar as tabelas de cache.',
+	'purgecache-purged'  => 'A cache foi purgada.',
+	'purgecache-button'  => 'Purgar',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

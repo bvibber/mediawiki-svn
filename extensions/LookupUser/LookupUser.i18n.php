@@ -322,6 +322,7 @@ $messages['te'] = array(
 	'lookupuser'              => 'వాడుకరి సమాచారంలో వెతకండి',
 	'lookupuser_intro'        => 'ఒక వాడుకరి యొక్క అభిరుచులు చూడడానికి ఆ వాడుకరిపేరుని ఇవ్వండి.',
 	'lookupuser_nonexistent'  => 'పొరపాటు: వాడుకరి ఉనికిలో లేరు',
+	'lookupuser_id'           => 'వాడుకరి ID: <tt>#$1</tt>',
 	'lookupuser_email'        => 'ఈ-మెయిల్: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'     => 'నిజమైన పేరు: $1',
 	'lookupuser_registration' => 'నమోదైన తేదీ: $1',

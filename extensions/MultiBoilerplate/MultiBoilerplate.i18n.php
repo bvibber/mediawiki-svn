@@ -21,9 +21,10 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Alnokta
  */
 $messages['ar'] = array(
-	'multiboilerplate-desc'   => 'يعرض صندوقا أعلى صفحة التعديل لاختيار وتحميل طبق بويلر',
+	'multiboilerplate-desc'   => 'يسمح لقالب أن يختار من صندوق منسدل موجود فوق استمارة التعديل أثناء تعديل الصفحات',
 	'multiboilerplate-legend' => 'اختر طبق البويلر',
 	'multiboilerplate-submit' => 'تحميل',
 );

@@ -342,6 +342,31 @@ $messages['sk'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Vypnúť editor formátovaného textu v mennom priestore „{{ns:Category_talk}}“',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'textrichditor'                        => 'Rik textredigering',
+	'textrichditor-desc'                   => 'Använd FCKeditor för att redigera wiki sidor',
+	'tog-riched_disable'                   => 'Slå av rik textredigering',
+	'tog-riched_disable_ns_main'           => 'Slå av rik textredigering i huvudnamnrymden',
+	'tog-riched_disable_ns_talk'           => 'Slå av rik textredigering i "{{ns:Talk}}" namnrymden',
+	'tog-riched_disable_ns_user'           => 'Slå av rik textredigering i "{{ns:User}}" namnrymden',
+	'tog-riched_disable_ns_user_talk'      => 'Slå av rik textredigering i "{{ns:User_talk}}" namnrymden',
+	'tog-riched_disable_ns_project'        => 'Slå av rik textredigering i "{{ns:Project}}" namnrymden',
+	'tog-riched_disable_ns_project_talk'   => 'Slå av rik textredigering i "{{ns:Project_talk}}" namnrymden',
+	'tog-riched_disable_ns_image'          => 'Slå av rik textredigering i "{{ns:Image}}" namnrymden',
+	'tog-riched_disable_ns_image_talk'     => 'Slå av rik textredigering i "{{ns:Image_talk}}" namnrymden',
+	'tog-riched_disable_ns_mediawiki'      => 'Slå av rik textredigering i "{{ns:MediaWiki}}" namnrymden',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Slå av rik textredigering i "{{ns:MediaWiki_talk}}" namnrymden',
+	'tog-riched_disable_ns_template'       => 'Slå av rik textredigering i "{{ns:Template}}" namnrymden',
+	'tog-riched_disable_ns_template_talk'  => 'Slå av rik textredigering i "{{ns:Template_talk}}" namnrymden',
+	'tog-riched_disable_ns_help'           => 'Slå av rik textredigering i "{{ns:Help}}" namnrymden',
+	'tog-riched_disable_ns_help_talk'      => 'Slå av rik textredigering i "{{ns:Help_talk}}" namnrymden',
+	'tog-riched_disable_ns_category'       => 'Slå av rik textredigering i "{{ns:Category}}" namnrymden',
+	'tog-riched_disable_ns_category_talk'  => 'Slå av rik textredigering i "{{ns:Category_talk}}" namnrymden',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

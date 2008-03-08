@@ -484,11 +484,14 @@ $messages['lb'] = array(
 	'crosswikiblock-reason'         => 'Grond:',
 	'crosswikiblock-submit'         => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
+	'crosswikiunblock-reason'       => 'Grond:',
 	'crosswikiblock-nousername'     => 'Dir hutt kee Benotzernumm aginn',
 	'crosswikiblock-dbnotfound'     => "D'Datebank $1 gëtt et net.",
 	'crosswikiblock-noname'         => '"$1" ass kee gültege Benotzernumm.',
 	'crosswikiblock-nouser'         => 'De Benotzer "$3" gouf net fonnt.',
+	'crosswikiblock-noreason'       => 'Kee Grond uginn.',
 	'crosswikiblock-alreadyblocked' => 'De Benotzer $3 ass scho gespaart.',
+	'crosswikiblock-noblock'        => 'Dëse Benotzer ass net gespaart.',
 );
 
 /** Dutch (Nederlands)
@@ -509,7 +512,7 @@ Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties 
 	'crosswikiblock-autoblock'      => "Automatisch het laatste IP-adres gebruikt door deze gebruiker blokkeren, en elke volgende IP's waarmee ze proberen te bewerken",
 	'crosswikiblock-noemail'        => 'Het verzenden van e-mails door deze gebruiker voorkomen',
 	'crosswikiunblock'              => 'Gebruiker op een andere wiki deblokkeren',
-	'crosswikiunblock-header'       => 'Via deze pagina kan u een gebruiker op een andere wiki deblokkeren.
+	'crosswikiunblock-header'       => 'Via deze pagina kunt u een gebruiker op een andere wiki deblokkeren.
 Controleer alstublieft of u dit op die wiki mag doen en of u in overeenstemming met het beleid handelt.',
 	'crosswikiunblock-user'         => 'Gebruiker, IP-adres of blokkadenummer en bestemmingswiki:',
 	'crosswikiunblock-reason'       => 'Reden:',
@@ -635,6 +638,7 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'crosswikiblock-desc'           => 'Permite bloquear utilizadores noutros wikis usando uma [[{{ns:special}}:Crosswikiblock|página especial]]',
@@ -650,7 +654,13 @@ $messages['pt'] = array(
 	'crosswikiunblock-user'         => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason'       => 'Motivo:',
 	'crosswikiunblock-submit'       => 'Desbloquear este utilizador',
+	'crosswikiunblock-success'      => "Usuário '''$1''' desbloqueado com sucesso.
+
+Regressar a:
+* [[Special:CrosswikiBlock|Formulário de bloqueio]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Nenhum nome de utilizador foi introduzido',
+	'crosswikiblock-local'          => 'Bloqueios locais não podem ser efectuados a partir deste interface. Use [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'A base de dados $1 não existe',
 	'crosswikiblock-noname'         => '"$1" não é um nome de utilizador válido.',
 	'crosswikiblock-nouser'         => 'O utilizador "$3" não foi encontrado.',
@@ -663,6 +673,7 @@ $messages['pt'] = array(
 Voltar para:
 * [[{{ns:special}}:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
+	'crosswikiunblock-local'        => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:Ipblocklist]]',
 );
 
 /** Russian (Русский)
@@ -835,6 +846,7 @@ Gå tillbaka till:
 	'crosswikiblock-nouser'         => 'Användaren "$3" hittades inte.',
 	'crosswikiblock-noexpiry'       => 'Ogiltig varaktighet: $1.',
 	'crosswikiblock-noreason'       => 'Ingen anledning angavs.',
+	'crosswikiblock-notoken'        => 'Ogiltigt redigerings-token.',
 	'crosswikiblock-alreadyblocked' => 'Användaren $3 är redan blockerad.',
 	'crosswikiblock-noblock'        => 'Användaren är inte blockerad.',
 	'crosswikiblock-success'        => "Blockeringen av användaren '''$3''' lyckades.
@@ -849,12 +861,16 @@ Gå tillbaka till:
  * @author Veeven
  */
 $messages['te'] = array(
+	'crosswikiblock-desc'           => '[[Special:Crosswikiblock|ప్రత్యేక పేజీ]] ద్వారా వాడుకర్లని ఇతర వికీల్లో కూడా నిరోధించే వీలుకల్పిస్తుంది',
+	'crosswikiblock'                => 'ఇతర వికీలో వాడుకరిని నిరోధించండి',
 	'crosswikiblock-target'         => 'IP చిరునామా లేదా వాడుకరిపేరు మరియు గమ్యస్థానపు వికీ:',
+	'crosswikiblock-expiry'         => 'కాలపరిమితి:',
 	'crosswikiblock-reason'         => 'కారణం:',
 	'crosswikiblock-submit'         => 'ఈ వాడుకరిని నిరోధించండి',
 	'crosswikiblock-anononly'       => 'అనామక వాడుకరులను మాత్రమే నిరోధించు',
 	'crosswikiblock-nocreate'       => 'ఖాతా సృష్టింపుని నివారించు',
 	'crosswikiblock-noemail'        => 'వాడుకరి ఈ-మెయిల్ పంపించడం నియంత్రించండి',
+	'crosswikiunblock-user'         => 'వాడుకరిపేరు, ఐపీ చిరునామా లేదా నిరోధపు ID మరియు లక్ష్యిత వికీ:',
 	'crosswikiunblock-reason'       => 'కారణం:',
 	'crosswikiblock-nousername'     => 'వాడుకరిపేరు ఇవ్వలేదు',
 	'crosswikiblock-dbnotfound'     => '$1 అనే డాటాబేసు లేదు',

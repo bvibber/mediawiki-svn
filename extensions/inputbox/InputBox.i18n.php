@@ -578,7 +578,8 @@ $messages['ne'] = array(
  */
 $messages['nl'] = array(
 	'inputbox-desc'           => 'Maakt het toevoegen van voorgedefinieerde HTML-formulieren mogelijk',
-	'inputbox-error-no-type'  => 'U heeft het type inputbox niet aangegeven. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
+	'inputbox-error-no-type'  => 'U hebt het type inputbox niet aangegeven.
+Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
 	'inputbox-error-bad-type' => 'Inputbox-type "$1" niet herkend. Gebruik "create", "comment", "search" of "search2".',
 	'tryexact'                => 'Zoeken op exacte overeenkomst',
 	'searchfulltext'          => 'Volledige tekst doorzoeken',

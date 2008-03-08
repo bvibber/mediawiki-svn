@@ -222,11 +222,13 @@ $messages['nl'] = array(
 	'multipleupload-page'              => '{{ns:project}}:Verwijderingsbeleid van bestanden',
 	'multipleupload-text'              => "Hier kunt u verschillende bestanden uploaden.
 
-Kies 'Doorzoeken' en selecteer elk bestand dat u wil uploaden. U kan van 1 tot $1 bestanden tegelijk uploaden.
+Kies 'Doorzoeken' en selecteer elk bestand dat u wilt uploaden.
+U kunt van 1 tot $1 bestanden tegelijk uploaden.
 
 U kunt een optionele '''Bestemming bestandsnaam'''  opgeven en een '''Samenvatting''' die uw bestand beschrijft opgeven.
 
-Onrelevante afbeeldingen zullen onmiddelijk verwijderd worden, zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].",
+Afbeeldingen die niet relevant zijn, worden onmiddelijk verwijderd.
+Zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].",
 	'multiupload-fileuploaded'         => 'Bestand toegevoegd.',
 	'multiupload-toolbox'              => 'Meerdere bestanden uploaden',
 );

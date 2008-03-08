@@ -229,6 +229,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'edituser-desc'     => 'Permite que utilizadores com privilégios editem as preferências de outros utilizadores',
@@ -236,6 +237,8 @@ $messages['pt'] = array(
 	'edituser-logout'   => 'Terminar sessão do utilizador',
 	'edituser-username' => 'Nome',
 	'edituser-dosearch' => 'Pesquisar',
+	'edituser-nouser'   => 'O usuário especificado não existe',
+	'edituser-exempt'   => 'O usuário especificado não pode ser editado',
 );
 
 /** Russian (Русский)
@@ -273,6 +276,8 @@ $messages['sv'] = array(
 	'edituser-logout'   => 'Logga ut användare',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Sök',
+	'edituser-nouser'   => 'Den angivna användaren finns inte',
+	'edituser-exempt'   => 'Den angivna användaren kan inte redigeras',
 );
 
 /** Telugu (తెలుగు)

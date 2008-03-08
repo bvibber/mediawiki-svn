@@ -1373,7 +1373,8 @@ $wdMessages['nl'] = array(
 	'ow_history'                            => 'Geschiedenis',
 	'ow_datasets'                           => 'Gegevenssetselectie',
 	'ow_noedit_title'                       => 'Geen toestemming om te bewerken',
-	'ow_noedit'                             => 'U heeft geen rechten om pagina\'s te bewerken in de dataset "$1". Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
+	'ow_noedit'                             => 'U hebt geen rechten om pagina\'s te bewerken in de dataset "$1".
+Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 	'ow_uipref_datasets'                    => 'Standaard overzicht',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<Geen selectie>',
@@ -2385,6 +2386,7 @@ $wdMessages['sv'] = array(
 	'ow_ClassAttributeAttribute'      => 'Attribut',
 	'ow_ClassAttributeLevel'          => 'Nivå',
 	'ow_ClassAttributeType'           => 'Typ',
+	'ow_Collection'                   => 'Samling',
 	'ow_GotoSource'                   => 'Gå till källa',
 	'ow_Language'                     => 'Språk',
 	'ow_OptionAttribute'              => 'Attribut',

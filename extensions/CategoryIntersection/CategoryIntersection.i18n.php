@@ -19,6 +19,24 @@ $messages['en'] = array(
 	'categoryintersection-results'       => 'The search returned $1 {{PLURAL:$1|result|results}}.',
 );
 
+/** Arabic (العربية)
+ * @author ترجمان05
+ */
+$messages['ar'] = array(
+	'categoryintersection' => 'تقاطع تصنيف',
+);
+
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'categoryintersection'               => 'Intersecció de categories',
+	'categoryintersection-desc'          => "Manté una taula amb els valors de la [[Special:CategoryIntersection|intersecció de categories]] dins d'una pàgina",
+	'categoryintersection-doit'          => 'Mostra pàgines en totes aquestes categories',
+	'categoryintersection-maxcategories' => 'El nombre màxim permès de categories intersecant-se és de $1.',
+	'categoryintersection-results'       => 'La cerca demanada ha donat {{PLURAL:$1|un resultat|$1 resultats}}.',
+);
+
 /** German (Deutsch)
  * @author Magnus Manske
  * @author Raimond Spekking
@@ -42,15 +60,57 @@ $messages['fr'] = array(
 	'categoryintersection-results'       => 'La recherche a retourné $1 {{PLURAL:$1|titre|titres}}.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categoryintersection'         => 'Iwwerschneide vu Kategorien',
+	'categoryintersection-doit'    => 'Lëscht vun de Säiten aus all dëse Kategorien',
+	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categoryintersection'               => 'Categoriedoorsnede',
+	'categoryintersection-desc'          => 'Houdt een tabel bij met hashwaarden voor [[Special:CategoryIntersection|categoriedoorsneden]] voor een pagina',
+	'categoryintersection-doit'          => "Pagina's in al deze categorieën tonen",
+	'categoryintersection-maxcategories' => 'Het maximale aantal categoriedoorsneden is $1.',
+	'categoryintersection-results'       => 'De zoekopdracht heeft $1 {{PLURAL:$1|resultaat|resultaten}} opgeleverd.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'categoryintersection'               => 'Kategorisnitt',
+	'categoryintersection-desc'          => 'Håndterer en tabell med hashverdien nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
+	'categoryintersection-doit'          => 'Vis sider som tilhører alle disse kategoriene',
+	'categoryintersection-maxcategories' => 'Det største antall kategorier som man kan søke i er $1.',
+	'categoryintersection-results'       => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',
+);
+
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'categoryintersection'               => 'Intersecção de categorias',
+	'categoryintersection-doit'          => 'Listar páginas em todas estas categorias',
+	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se intersectam é $1.',
+	'categoryintersection-results'       => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'categoryintersection'               => 'Kategorisnitt',
 	'categoryintersection-desc'          => 'Hanterar en tabell med hashvärden för de [[Special:CategoryIntersection|kategorisnitt]] som en sida är medlem i.',
 	'categoryintersection-doit'          => 'Visa sidor som tillhör alla dessa kategorier',
 	'categoryintersection-maxcategories' => 'Det största antal kategorier som kan sökas i är $1.',
-	'categoryintersection-results'       => 'Sökningen gav $1 {{PLURAL:$1|titel|titlar}}.',
+	'categoryintersection-results'       => 'Sökningen gav $1 {{PLURAL:$1|resultat|resultat}}.',
 );
 
 /** Telugu (తెలుగు)
@@ -63,6 +123,7 @@ $messages['te'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Siebrand
  */
 $messages['vi'] = array(
 	'categoryintersection'               => 'Thể loại giao nhau',
@@ -71,3 +132,4 @@ $messages['vi'] = array(
 	'categoryintersection-maxcategories' => 'Số thể loại giao nhau tối đa cho phép là $1.',
 	'categoryintersection-results'       => 'Tìm được $1 {{PLURAL:$1|tựa bài|tựa bài}}.',
 );
+

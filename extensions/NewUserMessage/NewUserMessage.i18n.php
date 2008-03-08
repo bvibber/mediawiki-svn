@@ -141,6 +141,13 @@ $messages['sv'] = array(
 	'newusermessage-desc' => 'Lägger till ett [[MediaWiki:NewUserMessage|meddelande]] till nyligen skapade användardiskussions sidor',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ [[MediaWiki:NewUserMessage|సందేశాన్ని]] చేర్చండి',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -281,7 +281,7 @@ $messages['kn'] = array(
  */
 $messages['lb'] = array(
 	'backforth-next' => 'Nächst ($1)',
-	'backforth-prev' => 'Virescht ($1)',
+	'backforth-prev' => '($1) virdrun',
 );
 
 /** Lithuanian (Lietuvių)
@@ -298,6 +298,14 @@ $messages['lt'] = array(
 $messages['ml'] = array(
 	'backforth-next' => 'അടുത്ത ($1)',
 	'backforth-prev' => 'മുന്നെയുള്ള ($1)',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'backforth-next' => 'पुढे ($1)',
+	'backforth-prev' => 'मागे($1)',
 );
 
 /** Dutch (Nederlands)

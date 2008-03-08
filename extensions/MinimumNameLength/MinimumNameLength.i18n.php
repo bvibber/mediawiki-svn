@@ -209,6 +209,13 @@ $messages['sv'] = array(
 	'minnamelength-error' => 'Ditt användarnamn är för kort. Den minsta längden är $1.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'minnamelength-error' => 'మీ వాడుకరిపేరు మరీ చిన్నగా ఉంది. కనిష్ఠ పొడవు $1.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'minnamelength-error' => '你嘅用戶名太短喇。最少嘅長度係$1個字元。',

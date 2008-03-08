@@ -347,8 +347,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'languageselector'      => 'భాష',
-	'languageselector-desc' => 'ప్రతీ పేజీలోనూ భాషా ఎంపిక, సందర్శకులకు కూడా',
+	'languageselector'         => 'భాష',
+	'languageselector-desc'    => 'ప్రతీ పేజీలోనూ భాషా ఎంపిక, సందర్శకులకు కూడా',
+	'languageselector-setlang' => 'అమర్చు',
 );
 
 /** Tetum (Tetun)

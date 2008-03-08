@@ -238,6 +238,7 @@ $messages['te'] = array(
 	'postcomment_addcommentdiscussionpage' => 'ఈ చర్చా పేజీకి మీ వ్యాఖ్యని చేర్చండి',
 	'postcomment_on'                       => 'నాడు',
 	'postcomment_said'                     => 'అన్నారు',
+	'postcomment_invalidrequest'           => 'తప్పుడు అభ్యర్థన.',
 	'postcomment_replyto'                  => '$1కి స్పందన',
 );
 

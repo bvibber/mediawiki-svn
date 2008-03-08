@@ -77,6 +77,13 @@ $messages['sk'] = array(
 	'editown-desc' => 'Používatelia bez oprávnenia editall môžu upravovať iba stránky, ktoré vytvorili',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'editown-desc' => "Användare utan ''editall''-rättigheter kan endast redigera sidor dom själva har skapat",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

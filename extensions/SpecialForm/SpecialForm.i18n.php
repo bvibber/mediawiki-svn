@@ -346,11 +346,19 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'formtitlepattern'  => 'Adicionar Novo $1',
-	'formarticleexists' => 'Página Existe',
+	'form'                         => 'Formulário',
+	'formtitlepattern'             => 'Adicionar Novo $1',
+	'formsave'                     => 'Salvar',
+	'formarticleexists'            => 'Página Existe',
+	'formarticleexiststext'        => 'A página [[$1]] já existe.',
+	'formrequiredfieldpluralerror' => 'Os campos $1 são obrigatórios neste formulário. Por favor, preencha-os.',
+	'formsavesummary'              => 'Nova página usando [[Special:Form/$1]]',
+	'formsaveerror'                => 'Erro ao salvar formulário',
+	'formsaveerrortext'            => "Houve um erro desconhecido ao salvar a página '$1'.",
 );
 
 /** Slovak (Slovenčina)
@@ -411,6 +419,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'form'                  => 'Formulär',
@@ -418,6 +427,8 @@ $messages['sv'] = array(
 	'formnonametext'        => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',
 	'formbadname'           => 'Felaktigt formulärnamn',
 	'formbadnametext'       => 'Det finns inget formulär med det namnet.',
+	'formpattern'           => '$1-formulär',
+	'formtitlepattern'      => 'Lägg till ny $1',
 	'formsave'              => 'Spara',
 	'formarticleexists'     => 'Sidan existerar',
 	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',

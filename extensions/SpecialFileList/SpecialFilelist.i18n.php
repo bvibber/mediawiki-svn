@@ -156,6 +156,16 @@ $messages['ps'] = array(
 	'filelist-show-gallery' => 'نندارتون ښکاره کول',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'filelist'              => 'Lista de arquivos',
+	'filelist-desc'         => 'Página Especial para listar arquivos carregados',
+	'filelist-show-list'    => 'Mostrar lista',
+	'filelist-show-gallery' => 'Mostrar galeria',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

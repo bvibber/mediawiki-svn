@@ -228,7 +228,7 @@ $messages['nl'] = array(
 	'todo-tab'              => 'taken',
 	'todo-new-queue'        => 'nieuw',
 	'todo-mail-subject'     => 'Afgerond actiepunt op actielijst $1',
-	'todo-mail-body'        => 'U heeft gevraagd om een waarschuwing bij het sluiten van een actiepunt op de actielijst van $1.
+	'todo-mail-body'        => 'U hebt gevraagd om een waarschuwing bij het sluiten van een actiepunt op de actielijst van $1.
 
 Onderwerp: $2
 Geopend: $3
@@ -326,12 +326,23 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'todo-item-list'    => 'Seus itens',
-	'todo-list-cancel'  => 'Cancelar',
-	'todo-form-details' => 'Detalhes:',
+	'todo'                  => 'Lista de tarefas',
+	'todo-tab'              => 'tarefas',
+	'todo-new-queue'        => 'novo',
+	'todo-mail-subject'     => 'Itens completos na lista de tarefas de $1',
+	'todo-invalid-item'     => 'Item em falta ou inválido',
+	'todo-unrecognize-type' => 'Tipo não reconhecido',
+	'todo-item-list'        => 'Seus itens',
+	'todo-no-item'          => 'Sem tarefas.',
+	'todo-list-for'         => 'Lista de tarefas de',
+	'todo-list-change'      => 'Alterar',
+	'todo-list-cancel'      => 'Cancelar',
+	'todo-new-item'         => 'Novo item',
+	'todo-form-details'     => 'Detalhes:',
 );
 
 /** Slovak (Slovenčina)
@@ -371,12 +382,16 @@ $4',
 
 /** Swedish (Svenska)
  * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
 	'todo-new-queue'        => 'ny',
 	'todo-unrecognize-type' => 'Okänd typ',
+	'todo-add-queue'        => 'Lägg till kö…',
+	'todo-move-queue'       => 'Flytta till kö…',
 	'todo-list-change'      => 'Ändra',
+	'todo-list-cancel'      => 'Avbryt',
 	'todo-form-details'     => 'Detaljer:',
 );
 

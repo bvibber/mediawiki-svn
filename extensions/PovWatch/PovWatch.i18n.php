@@ -272,7 +272,7 @@ $messages['nl'] = array(
 	'povwatch_not_allowed_push'        => "U bent geen beheerder van PovWatch en kan geen pagina's op volglijsten zetten.",
 	'povwatch_already_subscribed'      => 'U bent al geabonneerd op PovWatch',
 	'povwatch_subscribed'              => 'U bent nu geabonneerd op PovWatch',
-	'povwatch_not_subscribed'          => 'U bent niet geabonneerd op PovWatch, dus u kan niet uitschrijven.',
+	'povwatch_not_subscribed'          => 'U bent niet geabonneerd op PovWatch, dus u kunt niet uitschrijven.',
 	'povwatch_unsubscribed'            => 'U bent uitgeschreven van PovWatch',
 	'povwatch_invalid_title'           => 'De opgegeven paginanaam is ongeldig',
 	'povwatch_pushed'                  => '[[$1]] is succesvol toegewezen aan $2 volglijsten van gebruikers.',
@@ -284,7 +284,8 @@ Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Sp
 	'povwatch_not_allowed_subscribers' => 'U mag de lijst van abonnees op PovWatch niet bekijken.',
 	'povwatch_unknown_subpage'         => 'Onbekende subpagina.',
 	'povwatch_push'                    => 'Toewijzen',
-	'povwatch_push_intro'              => "Gebruik het onderstaande formulier om pagina's op de volglijst van abonnees te zetten. Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's kunnen toegevoegd worden en u kan de pagina niet verwijderen als die is toegewezen.",
+	'povwatch_push_intro'              => "Gebruik het onderstaande formulier om pagina's op de volglijst van abonnees te zetten.
+Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's kunnen toegevoegd worden en u kunt de pagina niet verwijderen als die is toegewezen.",
 	'povwatch_title'                   => 'Pagina:',
 	'povwatch_comment'                 => 'Logboekopmerking:',
 	'povwatch_no_log'                  => 'Het logboek is leeg.',
@@ -441,6 +442,7 @@ $messages['te'] = array(
 	'povwatch_invalid_title'         => 'మీరిచ్చిన శీర్షిక సరైనది కాదు',
 	'povwatch_subscriber_list_intro' => '<strong>చందాదార్ల జాబితా</strong>',
 	'povwatch_title'                 => 'శీర్షిక:',
+	'povwatch_no_log'                => 'దినచర్యలో అంశాలేమీ లేవు.',
 	'povwatch_no_subscribers'        => 'చందాదార్లు ఎవరూ లేరు.',
 );
 

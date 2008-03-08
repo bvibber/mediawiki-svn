@@ -563,10 +563,11 @@ $messages['loz'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
-	'sitematrix'          => 'Wikimedia projektų sąrašas',
-	'sitematrix-language' => 'Kalba',
-	'sitematrix-project'  => 'Projekto pavadinimas, interprojektinė nuoroda ir interwiki nuoroda.',
-	'sitematrix-others'   => 'Kiti Vikimedijos projektai',
+	'sitematrix'           => 'Wikimedia projektų sąrašas',
+	'sitematrix-language'  => 'Kalba',
+	'sitematrix-project'   => 'Projekto pavadinimas, interprojektinė nuoroda ir interwiki nuoroda.',
+	'sitematrix-others'    => 'Kiti Vikimedijos projektai',
+	'sitematrix-sitetotal' => 'Viso',
 );
 
 $messages['lv'] = array(

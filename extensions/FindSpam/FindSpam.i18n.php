@@ -134,6 +134,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'findspam'             => "''Spam'' sichen",
+	'findspam-desc'        => 'Setzt eng [[Special:FindSpam|Spezialsäit]] derbäi déi et erlaabt fir de Spam ze fannen dee viru kuerzem derbäi gesat gouf',
 	'findspam-ip'          => 'IP-Adress:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Keng Kontributioune fonnt',
