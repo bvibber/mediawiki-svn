@@ -9,14 +9,25 @@
 #   The work has been funded by a fellowship at ESA.
 # DATE
 #   Jan 19, 2006: creation
-#   Jun 30, 2006: security upgrade (filter out system commands) and 
+#   Jun 30, 2006: security upgrade (filter out system commands) and
 #                 filenames instead of paths v1.1
 # NOTE
 #   Code adapted from the timeline extension.
 #   Include this file in your LocalSettings.php:
-#     add 'include("extensions/Gnuplot.php")' to the end of the file.
+#     add 'include("extensions/Gnuplot/Gnuplot.php")' to the end of the file.
 #   Set $wgGnuplotCommand to your gnuplot.
 ####################
+
+$wgExtensionCredits['parserhook'][] = array(
+	'name'           => 'Gnuplot',
+	'author'         => 'Christina Pöpper',
+	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'description'    => 'Adds the tag <code><nowiki><gnuplot></nowiki></code> to use Gnuplot',
+	'descriptionmsg' => 'gnuplot-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Gnuplot',
+);
+
+$wgExtensionMessagesFiles['Gnuplot'] =  dirname(__FILE__) . '/Gnuplot.i18n.php';
 
 $wgGnuplotCommand = '/usr/bin/gnuplot';
 $wgGnuplotDefaultTerminal = 'set terminal png';
@@ -50,9 +61,9 @@ function renderGnuplot( $gnuplotsrc ) {
 	$graphname = $dest . $name;
 	$fname = $graphname . ".tmp";
 
-	// write the default settings and the input code from wiki into a 
+	// write the default settings and the input code from wiki into a
 	// temporary file to be executed by gnuplot, then execute the command
-	if ( ! (file_exists($fname) || file_exists($fname . '.err'))) { 
+	if ( ! (file_exists($fname) || file_exists($fname . '.err'))) {
 		$handle = fopen($fname, 'x');
 		if( $handle === FALSE )
 			// not sure what to do here, this shouldn't happen
@@ -67,7 +78,7 @@ function renderGnuplot( $gnuplotsrc ) {
 			fwrite($handle, $wgGnuplotDefaultSize . "\n");
 		}
 
-		// Need to find each occurance of src:<FILE NAME> and replace it 
+		// Need to find each occurance of src:<FILE NAME> and replace it
 		// with the complete file path
 		while (strpos($gnuplotsrc, 'src:') != false) {
 			$srcStartPosition = strpos ($gnuplotsrc, 'src:') + strlen("src:");
@@ -96,13 +107,13 @@ function renderGnuplot( $gnuplotsrc ) {
 		'" alt="Gnuplot Plot"></b></p>';
 }
 
-/*** 
+/***
  * Function: getOutputName
- * Purpose : Determines the name of the output file. If it is specified by the 
- *           user ("set output 'name'") this name is returned, 
+ * Purpose : Determines the name of the output file. If it is specified by the
+ *           user ("set output 'name'") this name is returned,
  *	     otherwise a new name is computed (by a hash function).
  * Input   : $gnuplotsrc - the gnuplot input code from wiki
- * Output  : the file name to be used 
+ * Output  : the file name to be used
  */
 function getOutputName ( $gnuplotsrc ) {
 	// determine the file format of the plot - default is png
@@ -119,12 +130,12 @@ function getOutputName ( $gnuplotsrc ) {
 		$output = md5($gnuplotsrc) . "." . $format;
 	} else {		// If the output file is directly specified
 		$posEnd = strpos($gnuplotsrc, "\n", $pos);
-		$output = substr($gnuplotsrc, 
-			$pos + $strlength + 1, 
+		$output = substr($gnuplotsrc,
+			$pos + $strlength + 1,
 			$posEnd - $pos - $strlength - 2);
 	}
 	// remove /, otherwise users may possibly write to random places in the FS
-	$output = str_replace( '/', '', $output ); 
+	$output = str_replace( '/', '', $output );
 	return $output;
 }
 
@@ -138,4 +149,3 @@ function getSourceDataPath ( $name ) {
 	$h = Image::newFromName($name);
 	return $h->exists() ? $h->getImagePath() : null;
 }
-
