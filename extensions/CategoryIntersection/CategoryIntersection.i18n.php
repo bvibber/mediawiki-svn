@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'categoryintersection-desc'          => 'Maintains a table with hash values for [[Special:CategoryIntersection|category intersections]] within a page',
 	'categoryintersection-doit'          => 'List pages in all these categories',
 	'categoryintersection-maxcategories' => 'The maximum allowed number of intersecting categories is $1.',
-	'categoryintersection-results'       => 'The search returned $1 {{PLURAL:$1|title|titles}}.',
+	'categoryintersection-results'       => 'The search returned $1 {{PLURAL:$1|result|results}}.',
 );
 
 /** German (Deutsch)
