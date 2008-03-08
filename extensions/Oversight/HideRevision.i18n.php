@@ -10,6 +10,9 @@ $messages = array();
 $messages['en'] = array(
 	'hiderevision' => 'Permanently hide revisions',
 	'hiderevision-desc' => 'Hide individual revisions from all users for legal reasons, etc.',
+	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'Oversight',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	// Empty form
 	'hiderevision-prompt' => 'Revision number to remove:',
 	'hiderevision-continue' => 'Continue',
@@ -338,6 +341,9 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 $messages['fa'] = array(
 	'hiderevision'                => 'پنهان کردن همیشگی نسخه‌ها',
 	'hiderevision-desc'           => 'پنهان کردن نسخه‌های خاص از تمام کاربرها به دلایل قانونی و غیره',
+	'group-oversight'             => 'ناظران',
+	'group-oversight-member'      => 'ناظر',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'شماره نسخه‌ای که حذف می‌شود:',
 	'hiderevision-continue'       => 'ادامه',
 	'hiderevision-text'           => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
