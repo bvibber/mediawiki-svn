@@ -351,6 +351,14 @@
 	function setAdjustHtml($adj_html){
 		$this->adj_html = $adj_html;
 	}
+	function internalAttemptSave( &$result, $bot = false ) {
+		global $wgHooks;
+		//clear confirmEdit for ajax edits: 
+		foreach($wgHooks['EditFilter'] as $k=>$hook){			
+			unset($wgHooks['EditFilter'][$k]);
+		}
+		parent::internalAttemptSave( &$result, $bot = false );
+	}	
 	function showEditForm( $formCallback=null ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;
 		

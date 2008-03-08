@@ -96,6 +96,10 @@ function append_to_wiki_page($wgTitle, $append_text, $unique=true){
 		do_update_wiki_page($wgTitle, $append_text);
 	}
 }
+//@@todo protect page:
+function protoect_wiki_page($wgTilte){
+	
+}
 function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false) {
 	global $botUserName;		
 	if (!is_object($wgTitle)) {	

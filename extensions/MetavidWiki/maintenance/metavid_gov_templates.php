@@ -238,7 +238,15 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 	//update special types: 
 	$wgPropTitle = Title::newFromText('Funding Interest',SMW_NS_PROPERTY);
 	do_update_wiki_page($wgPropTitle, "[[has type:=Page;Number]]",null,$force); 
+
+/************************************
+ * some more types: 
+ ************************************/
+$wgPropTitle = Title::newFromText('Speech by', SMW_NS_PROPERTY);
+do_update_wiki_page($wgPropTitle, "[[has type:=Page]]",null,$force); 
 		
+$wgPropTitle = Title::newFromText('Spoken by', SMW_NS_PROPERTY);
+do_update_wiki_page($wgPropTitle, "[[has type:=Page]]",null,$force); 
 /************************************
  *  page helpers
  ************************************/
@@ -247,6 +255,8 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 Simple Usage example:<nowiki> {{navimg|xsize=50|ysize=50|image=Wikimedia-logo.svg|link=MediaWiki}} </nowiki>
 </noinclude>
 ');
+
+
 }
 
 ?>

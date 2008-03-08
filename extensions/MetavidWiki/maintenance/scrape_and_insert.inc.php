@@ -91,15 +91,17 @@ class MV_BillScraper extends MV_BaseScraper{
 				$porg = str_replace('<br>',' ',$matches[4][$k]);
 				$porg = preg_replace('/[D|R|I]+\-\[.*\]/', '', $porg);
 				$pparts = explode(',',$porg);
-				$pname = trim($pparts[1]) . '_' . trim($pparts[0]);					
-				if(mv_is_valid_person($pname)){		
-					$cspan_person_ary[]= array(
-						'start_time'=>strip_tags($matches[1][$k]),
-						'length'=>$matches[3][$k],
-						'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
-						'Spoken_by'=>$pname,
-						'href'=>$href
-					);
+				if(isset($pparts[1]) && isset($pparts[0])){
+					$pname = trim($pparts[1]) . '_' . trim($pparts[0]);					
+					if(mv_is_valid_person($pname)){		
+						$cspan_person_ary[]= array(
+							'start_time'=>strip_tags($matches[1][$k]),
+							'length'=>$matches[3][$k],
+							'person_title'=>str_replace('<br>',' ',$matches[4][$k]),
+							'Spoken_by'=>$pname,
+							'href'=>$href
+						);
+					}
 				}
 			}							
 		    //group people in page matches
@@ -166,7 +168,7 @@ class MV_BillScraper extends MV_BaseScraper{
 		  	//list on screen times for everyone: 
 		   	foreach($db_person_ary as $row){
 		   		print $row['Spoken_by'] . ' on screen for '. ($row['end_time']-$row['start_time']) . "\n";
-		   		$db_person_ary[]=$row;
+		   		//$db_person_ary[]=$row;
 		   	}
 		   	
 			//print_r($db_person_ary);
@@ -239,10 +241,14 @@ class MV_BillScraper extends MV_BaseScraper{
 								$prevMatch=true;								
 		   					}
 	   					}
-	   					if($db_person_ary[$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
-						//	print "found cur match:". $cspan_person_ary[$i]['Spoken_by']."\n";
-							$curMatch=true;
-	   					}	   	
+	   					if(isset($db_person_ary[$j])){
+	   						if(isset($cspan_person_ary[$i])){
+			   					if($db_person_ary[$j]['Spoken_by']==$cspan_person_ary[$i]['Spoken_by']){
+								//	print "found cur match:". $cspan_person_ary[$i]['Spoken_by']."\n";
+									$curMatch=true;
+			   					}
+	   						}	   	
+	   					}
 	   					if($next_person==null){
 	   						//no need to check next in db_inx
 	   						$nextMatch=true;
@@ -250,7 +256,7 @@ class MV_BillScraper extends MV_BaseScraper{
 	   					}else{				
 	   						if(isset($db_person_ary[$j+1])){
 								if($db_person_ary[$j+1]['Spoken_by']==$next_person){
-								//	print "found next match:".$next_person."\n";
+									//print "found next match:".$next_person."\n";
 									$nextMatch=true;
 								}								
 	   						}
@@ -334,10 +340,12 @@ class MV_BillScraper extends MV_BaseScraper{
 		   				$body = $page_matches[1];
 		   				//print_r($page_matches);
 		   			}else{
-		   				die("error can't find title or body\n");
+		   				print "error can't find title or body\n";
+		   				print "skip...";
+		   				continue;
 		   			}			   	
 		   			//do debate tag search:		   			
-		   			preg_match('/<td colspan="2">Debate:\s<[^>]*>([^<]*)/', $rawpage, $debate_matches);		   			
+		   			preg_match('/<td colspan="2">Debate:\s*<[^>]*>([^<]*)/U', $rawpage, $debate_matches);		   			
 		   			if(isset($debate_matches[1])){
 		   				$bill_key = trim($debate_matches[1]);
 		   				print "found debate: tag " .$bill_key."\n";		   				
@@ -414,10 +422,13 @@ class MV_BillScraper extends MV_BaseScraper{
 		   				   					   			
 		   			$body.="\n";
 		   			//add the title to the top of the page: 
-		   			$body="===$title===\n". $body;		   			
-		   			$cspan_title_str = 'Thomas_en:'.$stream->name.'/'.
-		   				seconds2ntp($pData['wiki_start_time']).'/'.
-		   				seconds2ntp($pData['wiki_end_time']);		   				
+		   			$body="===$title===\n". $body;	
+		   			$cspan_title_str = 	$this->get_aligned_time_title($pData,'Thomas_en', $stream);
+		   			if(!$cspan_title_str){	   			
+		   				$cspan_title_str = 'Thomas_en:'.$stream->name.'/'.
+			   				seconds2ntp($pData['wiki_start_time']).'/'.
+			   				seconds2ntp($pData['wiki_end_time']);
+		   			}		   				
 		   			$cspanTitle=Title::makeTitle(MV_NS_MVD, ucfirst($cspan_title_str));
 		   			//print "do edit ".$cspanTitle->getText()."\n";
 		   			do_update_wiki_page($cspanTitle, $body);				   			
@@ -461,34 +472,14 @@ class MV_BillScraper extends MV_BaseScraper{
 		   			
 		   			
 		   			//see if we can align with an existing speech page: 		   			
-		   			$mvd_anno_res = MV_Index::getMVDInRange($stream->getStreamId(), 
-		   					$pData['wiki_start_time']-120,$pData['wiki_end_time']+120,
-		   					$mvd_type='Anno_en',$getText=false,$smw_properties='Speech_by');
-		   					
-		   			$doSpeechInsert=true;									
-					while($row = $dbr->fetchObject($mvd_anno_res)){
-						if($row->Speech_by){
-							if($row->Speech_by == $pData['Spoken_by']){
-								print "match update existing: $row->Speech_by  == ". $pData['Spoken_by']. "\n";
-								$anno_title_str =  'Anno_en:'.$stream->name.'/'.
-					   				seconds2ntp($row->start_time).'/'.
-					   				seconds2ntp($row->end_time);			   						   			
-					   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
-					   			do_update_wiki_page($annoTitle, $annotate_body);		
-					   			$doSpeechInsert=false;
-					   			break;
-							}else{
-								print "\nno existing speech match:$row->Speech_by != " .$pData['Spoken_by']. "\n\n"; 
-							}														
-						}
-					}
-					if($doSpeechInsert){			 
+		   			$anno_title_str = $this->get_aligned_time_title($pData,'Anno_en', $stream);		   			
+					if(!$anno_title_str){		
 						$anno_title_str =  'Anno_en:'.$stream->name.'/'.
 			   				seconds2ntp($pData['wiki_start_time']).'/'.
-			   				seconds2ntp($pData['wiki_end_time']);			   						   			
-			   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
-			   			do_update_wiki_page($annoTitle, $annotate_body);		  			
-					}
+			   				seconds2ntp($pData['wiki_end_time']);		
+					}	 						   						   			
+		   			$annoTitle =Title::makeTitle(MV_NS_MVD, ucfirst($anno_title_str));
+		   			do_update_wiki_page($annoTitle, $annotate_body);		  			
 		   			//[Page: S14580] replaced with:  [[Category:BillName]]
 		   			//would be good to link into the official record for "pages"
 		   			
@@ -516,6 +507,28 @@ class MV_BillScraper extends MV_BaseScraper{
             //average switch time to get offset of stream
             //use offset to insert all $person_time_array data 
 		}
+	}	
+	function get_aligned_time_title(&$pData, $preFix='Anno_en', $stream){
+		$dbr =& wfGetDB(DB_SLAVE);
+		$mvd_anno_res = MV_Index::getMVDInRange($stream->getStreamId(), 
+			$pData['wiki_start_time']-120,$pData['wiki_end_time']+120,
+		$mvd_type='Anno_en',$getText=false,$smw_properties='Speech_by');
+		   					
+		$doSpeechInsert=true;									
+		while($row = $dbr->fetchObject($mvd_anno_res)){
+			if($row->Speech_by){
+				if($row->Speech_by == $pData['Spoken_by']){
+					print "match update existing: $row->Speech_by  == ". $pData['Spoken_by']. "\n";
+					$anno_title_str =  $preFix.':'.$stream->name.'/'.
+		   				seconds2ntp($row->start_time).'/'.
+		   				seconds2ntp($row->end_time);			   						   					   					   			
+		   			return $anno_title_str;
+				}else{
+					print "\nno existing speech match:$row->Speech_by != " .$pData['Spoken_by']. "\n\n"; 
+				}														
+			}
+		}
+		return false;
 	}
 	function bill_pattern_cp($matches){	
 		if(isset($this->bill_titles[$matches[0]])){
@@ -554,6 +567,7 @@ class MV_BillScraper extends MV_BaseScraper{
 				break;
 			}
 		}
+		if(trim($bill_key)=='')return false;
 		//attempt to asertain maplight bill id:
 		$mapLightBillId= $this->getMAPLightBillId($bill_key, $session);
 		
@@ -570,7 +584,8 @@ class MV_BillScraper extends MV_BaseScraper{
 			return null;
 		}	
 	}
-	function getMAPLightBillId($bill_key, $session){
+	function getMAPLightBillId($bill_key, $session){		
+		if(trim($bill_key)=='')return false;
 		$raw_map_light = $this->doRequest($this->mapLightBillSearch. str_replace(' ','+',$bill_key));
 		//check if we got redirected: 
 		$patern = '/<a href=\"\/map\/us\/bill\/([^\/]*)\/default" class="active">Supporter/';
@@ -588,9 +603,7 @@ class MV_BillScraper extends MV_BaseScraper{
 			return $matches[1];			
 		}else{			
 			print "could not find bill id: $bill_key $session \n";
-			print "at : " . $this->mapLightBillSearch. str_replace(' ','+',$bill_key)."\n";
-			print $raw_map_light;
-			die;
+			print "at : " . $this->mapLightBillSearch. str_replace(' ','+',$bill_key)."\n";					
 			return false;
 		}
 	}
@@ -759,7 +772,7 @@ class MV_BillScraper extends MV_BaseScraper{
 				$this->get_and_proccess_billid($bill_key, '', $session_num);
 				print " found bill title: ". $this->cur_bill_short_title . "\n";
 				//should now have the bill name update the cache and return
-				$this->mapLight_bill_cache[$mapBillId]= $this->cur_bill_short_title;
+				$this->mapLight_bill_cache[$mapBillId]= $this->cur_bill_short_title;				
 			}else{
 				print "unable to find bill 	mapId: $mapBillId \n";
 				return false;
