@@ -149,7 +149,7 @@ class SmoothGallery {
 			}
 
 			$output .= '<div id="' . $galleryArray['gallery_name'] . '-fallback" class="MediaWikiSGallerySingleImage" style="width: ' . $this->argumentArray["width"] . ';height: ' . $this->argumentArray["height"] . ';" alt="' . $galleryArray["images"][0]["description"] . '">';
-			$output .= $galleryArray["images"][0]["full_thumb_url"];
+			$output .=  '<img src="' . $galleryArray["images"][0]["full_thumb_url"] . '"  class="full" alt="' . $galleryArray["images"][0]["description"] . '" />';
 			$output .= '</div>';
 		} elseif ( $this->argumentArray["fallback"] == "image-warn" ) {
 			if ( !isset( $galleryArray["images"][0] ) ) {
@@ -162,7 +162,7 @@ class SmoothGallery {
 			$output .= wfMsg("smoothgallery-javascript-disabled");
 
 			$output .= '<div class="MediaWikiSGallerySingleImage">';
-			$output .= $galleryArray["images"][0]["full_thumb_url"];
+			$output .=  '<img src="' . $galleryArray["images"][0]["full_thumb_url"] . '"  class="full" alt="' . $galleryArray["images"][0]["description"] . '" />';
 			$output .= '</div></div>';
 		} else {
 			$output .= $this->renderPlainGallery ( $galleryArray );
