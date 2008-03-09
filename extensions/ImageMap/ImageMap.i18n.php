@@ -723,7 +723,17 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'imagemap_description' => 'Дар бораи ин акс',
+	'imagemap_desc'               => 'Имкони эҷоди нақшаҳои тасвирӣ қобили клик кардан дар самти корбарро бо истифода аз барчасби  <tt><nowiki><imagemap></nowiki></tt> фароҳам меоварад',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: бояд дар сатри аввал як аксро мушаххас кунед',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: акс ғайримиҷоз аст ё вуҷуд надорад',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: ҳеҷ пайванди миҷозе то интиҳои сатри $1 пайдо нашуд',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: унвони ғайримиҷоз дар пайванди сатри $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: теъдоди ҳамоҳангӣ дар сатри $1 барои шакл кофӣ нест',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: шакли ношинохта дар сатри $1, ҳар сатр бояд бо яке аз ин дастурот оғоз шавад: default, rect, circle ё poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: дасти кам бояд як мушаххасоти фазо бояд вуҷуд дошта бошад',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: баробарии ғайримиҷоз дар сатри $1, бояд адад бошад',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: тавзеҳоти ғайримиҷоз, бояд яке аз ин маворид бошад: <tt>$1</tt>',
+	'imagemap_description'        => 'Дар бораи ин акс',
 );
 
 /** Turkish (Türkçe)

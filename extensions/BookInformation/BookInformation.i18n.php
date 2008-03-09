@@ -578,6 +578,13 @@ $messages['lb'] = array(
 	'bookinfo-provider'          => 'Informatioune vun: $1',
 );
 
+/** Lezghian (Лезги)
+ * @author M.M.S.
+ */
+$messages['lez'] = array(
+	'bookinfo-result-year' => 'Йис:',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */

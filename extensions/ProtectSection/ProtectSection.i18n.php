@@ -122,9 +122,11 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
-	'protectsection_forbidden' => 'Proibido',
+	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma secção protegida',
+	'protectsection_forbidden'  => 'Proibido',
 );
 
 /** Slovak (Slovenčina)

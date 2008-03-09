@@ -200,6 +200,13 @@ $messages['oc'] = array(
 	'findspam-notextfound' => 'Cap de contribucion trobada',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'findspam-ip' => 'Adres IP:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

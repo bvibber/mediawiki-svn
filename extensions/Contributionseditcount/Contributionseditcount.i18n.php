@@ -117,6 +117,13 @@ $messages['lo'] = array(
 	'contributionseditcount' => 'ຜູ້ໃຊ້ຮາຍນີ້ ທຳການດັດແກ້ທັງໝົດ $1 ຄັ້ງ',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'contributionseditcount' => 'या संपादकाची $1 संपादने आहेत.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

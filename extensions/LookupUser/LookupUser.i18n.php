@@ -141,16 +141,17 @@ $messages['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'lookupuser'                   => 'រកមើល ពត៌មាន នៃ អ្នកប្រើប្រាស់',
-	'lookupuser-desc'              => '[[Special:LookupUser|ដកស្រង់ ពត៌មាន]] អំពី មួយអ្នកប្រើប្រាស់ ដូចជា អាស័យដ្ឋានអ៊ីមែវល៍ និង អត្តសញ្ញាណ',
-	'lookupuser_intro'             => 'បញ្ចូល ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា របស់គាត់ ។',
+	'lookupuser'                   => 'រកមើល​ពត៌មាន​នៃ​អ្នកប្រើប្រាស់',
+	'lookupuser-desc'              => '[[Special:LookupUser|ដកស្រង់​ពត៌មាន]] អំពី​អ្នកប្រើប្រាស់ ដូចជា អាស័យដ្ឋានអ៊ីមែល និង អត្តសញ្ញាណ',
+	'lookupuser_intro'             => 'បញ្ចូល​ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា​របស់គាត់ ។',
 	'lookupuser_nonexistent'       => 'កំហុស ៖ អ្នកប្រើប្រាស់ មិនមាន',
 	'lookupuser_authenticated'     => 'ភាពពិតប្រាកដ នៃ អ៊ីមែវល៍ ៖ $1',
 	'lookupuser_not_authenticated' => 'មិនបានស្គាល់ ភិនភាគ',
 	'lookupuser_id'                => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
-	'lookupuser_email'             => 'អ៊ីមែវល៍ ៖ [[Special:Emailuser/$2|$1]]',
+	'lookupuser_email'             => 'អ៊ីមែល ៖ [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'ឈ្មោះពិត ៖ $1',
 	'lookupuser_registration'      => 'ថ្ងៃ ខែ ឆ្នាំ ចុះឈ្មោះ​ ៖ $1',
 	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
@@ -168,6 +169,22 @@ $messages['lb'] = array(
 	'lookupuser_realname'     => 'Richtege Numm: $1',
 	'lookupuser_registration' => 'Datum vun der Umeldung: $1',
 	'lookupuser_useroptions'  => 'Astellunge vum Benotzer:',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Anoopan
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'lookupuser'                   => 'ഉപയോക്താവിന്റെ വിവരം തിരയുക',
+	'lookupuser_nonexistent'       => 'തെറ്റ്: ഉപയോക്താവ് നിലവിലില്ല',
+	'lookupuser_authenticated'     => 'ഇമെയില്‍ സ്ഥിരീകരണം: $1',
+	'lookupuser_not_authenticated' => 'സ്ഥിരീകരിച്ചിട്ടില്ല',
+	'lookupuser_id'                => 'ഉപയോക്തൃ ഐഡി: <tt>#$1</tt>',
+	'lookupuser_email'             => 'ഇമെയില്‍: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'ശരിയായ പേര്: $1',
+	'lookupuser_registration'      => 'രജിസ്റ്റര്‍ ചെയ്ത തീയതി: $1',
+	'lookupuser_touched'           => 'ഉപയോക്താവിന്റെ വിവരങ്ങള്‍ അവസാനം തിരുത്തിയത്: $1',
 );
 
 /** Marathi (मराठी)

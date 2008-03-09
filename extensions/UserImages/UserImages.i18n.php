@@ -111,6 +111,15 @@ $messages['km'] = array(
 	'userimages-noimages' => '$1 មិនបាន ផ្ទុកឡើង រូបភាព ណាមួយ ។',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
+$messages['ku-latn'] = array(
+	'userimages-caption'  => 'Wêneyên barkirî yê $1',
+	'userimages-noname'   => 'Nava bikarhênerê ne başe ya nehatîye nivîsandin.',
+	'userimages-noimages' => '$1 ne wêneyekê barkirîye.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

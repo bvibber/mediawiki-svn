@@ -630,10 +630,15 @@ Tornar vèrs :
 );
 
 /** Polish (Polski)
+ * @author McMonster
  * @author Equadus
  */
 $messages['pl'] = array(
-	'crosswikiblock-dbnotfound' => 'Baza $1 nie istnieje',
+	'crosswikiblock-dbnotfound'     => 'Baza $1 nie istnieje',
+	'crosswikiblock-noname'         => '"$1" nie jest poprawną nazwą użytkownika.',
+	'crosswikiblock-nouser'         => 'Nie znaleziono użytkownika "$3".',
+	'crosswikiblock-alreadyblocked' => 'Użytkownik $3 jest już zablokowany.',
+	'crosswikiblock-noblock'        => 'Ten użytkownik nie jest zablokowany.',
 );
 
 /** Portuguese (Português)

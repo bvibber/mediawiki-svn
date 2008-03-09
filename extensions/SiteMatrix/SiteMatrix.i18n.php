@@ -852,6 +852,7 @@ $messages['tg'] = array(
 	'sitematrix'           => 'Феҳристи викиҳои Викимедиа',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|Феҳристи викиҳои Викимедиа]]ро намоиш медиҳад',
 	'sitematrix-language'  => 'Забон',
+	'sitematrix-project'   => 'Номи лоиҳа, пайванди миёнилоиҳа ва пайванди миёнивики',
 	'sitematrix-others'    => 'Дигар лоиҳаҳои Викимедиа',
 	'sitematrix-total'     => "'''Ҷамъи кул: $1'''",
 	'sitematrix-sitetotal' => 'Кул',

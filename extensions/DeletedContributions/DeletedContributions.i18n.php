@@ -266,8 +266,12 @@ $messages['km'] = array(
 	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់ អ្នកប្រើប្រាស់]]',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
+ * @author Bangin
+ */
 $messages['ku-latn'] = array(
-	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
+	'deletedcontributions'      => 'Guherandinên bikarhênerekî yê jêbirî',
+	'deletedcontributions-desc' => 'Qebûlbike ku koordinator (admîn) dikaribin di [[Special:DeletedContributions|nivîsarên jêbirî yên bikarhêneran]] da sekin.',
 );
 
 $messages['la'] = array(

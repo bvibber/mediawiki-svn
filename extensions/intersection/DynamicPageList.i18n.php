@@ -364,6 +364,16 @@ $messages['te'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: మీరు కనీసం ఒక్క వర్గాన్నైనా చేర్చాలి, లేదా ఓ నేమ్&zwnj;స్పేసునైనా ఇవ్వాలి!',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Теъдоди гурӯҳҳо зиёд аст!',
+	'intersection_toofewcats'    => 'DynamicPageList: Теъдоди гурӯҳҳо кам аст!',
+	'intersection_noresults'     => 'DynamicPageList: Натиҷае вуҷуд надорад!',
+	'intersection_noincludecats' => 'DynamicPageList: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -524,9 +524,11 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
+ * @author Masti
  */
 $messages['pl'] = array(
 	'contributors'             => 'Autorzy',
+	'contributors-desc'        => 'Podsumowanie głównych autorów strony',
 	'contributors-toolbox'     => 'Główni autorzy',
 	'contributors-legend'      => 'Lista głównych autorów artykułu',
 	'contributors-target'      => 'Tytuł:',

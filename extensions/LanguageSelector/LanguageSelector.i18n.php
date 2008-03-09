@@ -193,10 +193,11 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'languageselector'         => 'ភាសា',
-	'languageselector-desc'    => 'ឧបករជ្រើសយក ភាសា លើ​ រាល់ទំព័រ, សំរាប់ផងដែរ អ្នកទស្សនា',
+	'languageselector-desc'    => 'ឧបករណ៍​ជ្រើសយក​ភាសា​លើ​​រាល់ទំព័រ, សំរាប់​អ្នកទស្សនា​ផងដែរ',
 	'languageselector-setlang' => 'ប្តូរ',
 );
 

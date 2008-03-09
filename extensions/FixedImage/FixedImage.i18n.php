@@ -25,11 +25,32 @@ $messages['fr'] = array(
 	'fixedimage-desc' => 'Ajoute la balise <tt><nowiki><fundraising></nowiki></tt> comme une image',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'fixedimage-desc' => 'Přidawa tafličku <tt><nowiki>fundraising</nowiki></tt> jako wobraz',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'fixedimage-desc' => 'Setzt den Tag <tt><nowiki><fundraising></nowiki></tt> als Bild derbäi',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'fixedimage-desc' => 'Voegt de tag <tt><nowiki><fundraising></nowiki></tt> toe als afbeelding',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'fixedimage-desc' => 'Legger til taggen <tt><nowiki><fundraising></nowiki></tt> som et bilde',
 );
 
 /** Swedish (Svenska)

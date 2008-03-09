@@ -178,9 +178,11 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'randomincategory'            => 'Página aleatória na categoria',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Página especial]] para obter uma página aleatória na categoria',
 	'randomincategory-toolbox'    => 'Página aleatória',
 	'randomincategory-nocategory' => 'A categoria $1 não existe ou está vazia',
 	'randomincategory-label'      => 'Categoria:',

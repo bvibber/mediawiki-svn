@@ -100,6 +100,13 @@ $messages['stq'] = array(
 	'i18ntags-desc' => 'Tougriep ap do i18n-Funktione tou ju Taalenformatierenge, Pluroal- un Grammatikbieldenge in älke ferföichboare Sproake',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'i18ntags-desc' => 'Få tillgång till internationaliseringsfunktioner för sifferformatering, grammatik och plural i alla tillgängliga språk',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

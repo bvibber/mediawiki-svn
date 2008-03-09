@@ -60,6 +60,17 @@ $messages['fr'] = array(
 	'categoryintersection-results'       => 'La recherche a retourné $1 {{PLURAL:$1|titre|titres}}.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categoryintersection'               => 'Kategorijowe prěčnišćo',
+	'categoryintersection-desc'          => 'Wothladuje tabelu z hašowymi hódnotami za [[Special:CategoryIntersection|kategorijowe prěčišća]] znutřka strony',
+	'categoryintersection-doit'          => 'Strony we wšěch tutych kategorijach nalistować',
+	'categoryintersection-maxcategories' => 'Maksimalna dowolena ličba kategorijow za prěčnišća je $1.',
+	'categoryintersection-results'       => 'Pytanje je $1 {{PLURAL:$1|wuslědk|wuslědkaj|wuslědki|wuslědkow}} přinjesło.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

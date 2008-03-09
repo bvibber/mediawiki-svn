@@ -174,6 +174,14 @@ $messages['oc'] = array(
 	'categorystepper-start' => '(Començament de categoria)',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'categorystepper-end'   => '(Koniec kategorii)',
+	'categorystepper-start' => '(Początek kategorii)',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

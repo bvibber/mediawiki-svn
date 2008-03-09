@@ -2131,6 +2131,16 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',
 );
 
+/** Lezghian (Лезги)
+ * @author M.M.S.
+ */
+$messages['lez'] = array(
+	'boardvote_time'       => 'Заман',
+	'boardvote_strike'     => 'Ягъун',
+	'boardvote_edits_many' => 'гзаф',
+	'boardvote_welcome'    => "Ша буюр '''$1'''!",
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias

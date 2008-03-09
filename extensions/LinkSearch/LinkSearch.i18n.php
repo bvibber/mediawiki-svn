@@ -702,9 +702,10 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'linksearch'    => 'Ҷусутҷӣ пайвандҳои веб',
-	'linksearch-ns' => 'Фазоином:',
-	'linksearch-ok' => 'Ҷустуҷӯ',
+	'linksearch'     => 'Ҷусутҷӣ пайвандҳои веб',
+	'linksearch-pat' => 'Ҷустуҷӯи нақш:',
+	'linksearch-ns'  => 'Фазоином:',
+	'linksearch-ok'  => 'Ҷустуҷӯ',
 );
 
 /** Tonga (faka-Tonga)

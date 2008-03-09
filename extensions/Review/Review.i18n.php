@@ -520,6 +520,7 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'review_error'                  => 'Algo está errado!',
 	'review_total_statistics'       => 'Total',
 	'review_statistics_left_corner' => 'REvisão',
 	'review_version_link'           => 'Revisão #$1',

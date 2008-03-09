@@ -440,7 +440,11 @@ $messages['pt'] = array(
 	'vote-legend'         => 'Colocar ou corrigir voto',
 	'vote-caption'        => 'A sua selecção:',
 	'vote-submit'         => 'Votar',
+	'vote-registered'     => 'O seu voto foi registado.',
+	'vote-results'        => 'Resultado da votação',
 	'vote-results-choice' => 'Escolha',
+	'vote-results-count'  => 'Contagem',
+	'vote-results-none'   => 'De momento ainda não foram submetidos votos.',
 	'vote-login'          => 'Terá de $1 para votar.',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
 );

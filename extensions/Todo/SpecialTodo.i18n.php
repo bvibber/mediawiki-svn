@@ -186,8 +186,11 @@ $4',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'todo'              => 'បញ្ជីកិច្ចការ​ត្រូវ​ធ្វើ',
+	'todo-tab'          => 'ត្រូវធ្វើ',
 	'todo-new-queue'    => 'ថ្មី',
 	'todo-add-queue'    => 'បន្ថែម ជួររង់ចាំ...',
 	'todo-list-change'  => 'ផ្លាស់ប្តូរ',

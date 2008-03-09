@@ -244,6 +244,20 @@ $messages['oc'] = array(
 	'dt_xml_freetext'             => 'Tèxt Liure',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'dt_viewxml_categories'       => 'Kategorie',
+	'dt_viewxml_namespaces'       => 'Przestrzenie nazw',
+	'dt_viewxml_simplifiedformat' => 'Format uproszczony',
+	'dt_xml_namespace'            => 'Przestrzeń nazw',
+	'dt_xml_page'                 => 'Strona',
+	'dt_xml_field'                => 'Pole',
+	'dt_xml_name'                 => 'Nazwa',
+	'dt_xml_title'                => 'Tytuł',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Siebrand

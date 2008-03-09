@@ -452,11 +452,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author McMonster
  */
 $messages['pl'] = array(
-	'ajax-se-title'   => 'Ta strona jest teraz edytowana przez:',
-	'ajax-se-pending' => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
-	'ajax-se-idling'  => '($1s temu)',
+	'ajax-se-title'            => 'Ta strona jest teraz edytowana przez:',
+	'ajax-se-pending'          => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
+	'ajax-se-idling'           => '($1s temu)',
+	'ajax-se-pagedoesnotexist' => 'strona nie istnieje',
 );
 
 /** Piemontèis (Piemontèis)

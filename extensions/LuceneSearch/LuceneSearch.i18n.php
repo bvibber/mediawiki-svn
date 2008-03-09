@@ -1493,10 +1493,19 @@ $3 $9 $10 కొరకు వెతుకు',
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'searchdidyoumean'  => 'Оё манзури шумо буд: "<a href="$1">$2</a>"?',
-	'searchnoresults'   => 'Бубахшед, мавриди мутобиқ ба дархости шумо пайдо нашуд.',
-	'searchnearmatches' => '<b>Ин саҳифаҳо унвонҳои шабеҳ ба дархости шумо доранд:</b>',
-	'searchall'         => 'ҳама',
+	'lucene-searchscore'    => 'Иртибот: $1%',
+	'lucene-resultsize'     => '$1 ($2 калимаҳо)',
+	'searchdidyoumean'      => 'Оё манзури шумо буд: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Бубахшед, мавриди мутобиқ ба дархости шумо пайдо нашуд.',
+	'searchnearmatches'     => '<b>Ин саҳифаҳо унвонҳои шабеҳ ба дархости шумо доранд:</b>',
+	'lucenepowersearchtext' => 'Ҷустуҷӯ дар фазоҳои ном:
+
+$1
+
+Ҷустуҷӯ барои $3 $9 $10',
+	'searchexactcase'       => 'Ҷустуҷӯи ҳассос бо ҳуруфи бузург ва хурд',
+	'searchall'             => 'ҳама',
+	'searchincategory'      => 'Дар гурӯҳ',
 );
 
 /** Turkish (Türkçe)

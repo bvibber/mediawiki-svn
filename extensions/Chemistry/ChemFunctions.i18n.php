@@ -413,6 +413,14 @@ $messages['oc'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, dintrant erronèu!',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'chemFunctions_CAS'     => 'Numer CAS',
+	'chemFunctions_Formula' => 'Formuła',
+);
+
 /** Piemontèis (Piemontèis)
  * @author Bèrto 'd Sèra
  * @author Siebrand

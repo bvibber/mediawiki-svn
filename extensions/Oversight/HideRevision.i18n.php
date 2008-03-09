@@ -790,13 +790,16 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 $messages['ja'] = array(
 	'hiderevision'                => '永久的な版の秘匿',
 	'hiderevision-desc'           => '法律上の理由などにより特定版を全利用者から閲覧不可能にする',
+	'group-oversight'             => '秘匿版確認者',
+	'group-oversight-member'      => '秘匿版確認者',
+	'grouppage-oversight'         => '{{ns:project}}:秘匿版確認',
 	'hiderevision-prompt'         => '秘匿する特定版ID:',
 	'hiderevision-continue'       => '続ける',
 	'hiderevision-text'           => "これは、'''以下の場合に限って'''使用すべきです：
 * 不適切な個人情報
 *: ''個人の住所や電話番号、社会保障番号、その他''
 
-'''このシステムを悪用したり乱用したりする事は、秘匿版閲覧権限を失う事になります。'''
+'''このシステムを悪用したり乱用したりすると、その権限を失う事になります。'''
 
 消去されたアイテムはウェブサイト上では誰も見る事が出来ません。但し、消去はログ化されている為、貴方が間違って消去した場合に、データベース管理者により手動で復帰する事が出来ます。",
 	'hiderevision-reason'         => '理由(内密にログ化されます):',
@@ -819,7 +822,7 @@ $messages['ja'] = array(
 	'oversight-difference'        => '（残存している前の版との差分）',
 	'oversight-prev'              => '残存している前の版',
 	'oversight-hidden'            => '秘匿された版',
-	'oversight-header'            => '下記は、最近永久に秘匿され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になるかも知れません。',
+	'oversight-header'            => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -1039,12 +1042,15 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'hiderevision'                => 'Versies permanent verbergen',
 	'hiderevision-desc'           => 'Verberg bewerkingen voor alle gebruikers om juridische redenen, etc.',
+	'group-oversight'             => 'Toezichthouders',
+	'group-oversight-member'      => 'Toezichthouder',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Te verwijderen versienummer:',
 	'hiderevision-continue'       => 'Doorgaan',
 	'hiderevision-text'           => "Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
@@ -1055,10 +1061,10 @@ $messages['nl'] = array(
 
 Verwijderde versies zijn niet voor iedereen zichtbaar via de website,
 maar verwijderde objecten worden in logboeken bijgehouden en kunnen handmatig
-teruggeet worden door databasebeheerders als u een fout maakt.",
+teruggezet worden door databasebeheerders als u een fout maakt.",
 	'hiderevision-reason'         => 'Reden (wordt discreet opgeslaten):',
 	'hiderevision-submit'         => 'Deze gegevens permanent verbergen',
-	'hiderevision-tab'            => 'Verberg versie',
+	'hiderevision-tab'            => 'Versie verbergen',
 	'hiderevision-norevisions'    => 'Er zijn geen te verwijderen versies opgegeven.',
 	'hiderevision-noreason'       => 'U moet een reden opgeven voor het verwijderen.',
 	'hiderevision-status'         => 'Versie $1: $2',
@@ -1066,8 +1072,8 @@ teruggeet worden door databasebeheerders als u een fout maakt.",
 	'hiderevision-error-missing'  => 'Niet gevonden in database.',
 	'hiderevision-error-current'  => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
 	'hiderevision-error-delete'   => 'Archiveren mislukt; waren de gegevens al verwijderd?',
-	'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
-	'oversight-nodiff'            => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::
+	'hiderevision-archive-status' => 'Verwijderde versie van $1: $2',
+	'oversight-nodiff'            => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat:
 *De pagina was verwijderd
 *Deze verborgen versie de eerste versie was',
 	'oversight-log-hiderev'       => 'verwijderde een bewerking uit $1',
@@ -1118,12 +1124,16 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 	'oversight-header'            => 'Dette er ei liste over dei siste versjonane av sider som permanent er fjerna frå offentleg innsyn. Å gje denne informasjonen vidare kan gjere til at du permanent mistar retten til versjonsfjerning.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author M.M.S.
  */
 $messages['no'] = array(
 	'hiderevision'                => 'Fjern revisjoner permanent',
 	'hiderevision-desc'           => 'Skjul enkeltrevisjoner fra alle brukere av juridiske grunner, etc.',
+	'group-oversight'             => 'Oversightare',
+	'group-oversight-member'      => 'Oversight',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue'       => 'Fortsett',
 	'hiderevision-text'           => "Dette burde '''kun''' brukes i følgende saker:
@@ -1267,10 +1277,12 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'hiderevision'                => 'Ocultar revisões permanentemente',
 	'hiderevision-desc'           => 'Esconde, de todos os utilizadores, revisões individuais por razões legais, etc.',
+	'group-oversight-member'      => 'Oversight',
 	'hiderevision-prompt'         => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue'       => 'Avançar',
 	'hiderevision-text'           => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
@@ -1642,20 +1654,40 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'hiderevision'               => 'Бо ҳамешагӣ пинҳон кардани нусхаҳо',
-	'hiderevision-prompt'        => 'Шумораи нусхаҳое, ки ҳазф мешаванд:',
-	'hiderevision-continue'      => 'Идома',
-	'hiderevision-submit'        => 'Пинҳон кардан ин дода бо ҳамешагӣ',
-	'hiderevision-tab'           => 'Пинҳон кардани нусха',
-	'hiderevision-norevisions'   => 'Нусхае барои ҳазф мушаххас нашуда буд.',
-	'hiderevision-noreason'      => 'Шумо бояд далели ин ҳазфро тавзеҳ диҳед.',
-	'hiderevision-status'        => 'Нусха $1: $2',
-	'hiderevision-success'       => 'Бо муваффақият бойгонӣ ва ҳазф шуд.',
-	'hiderevision-error-missing' => 'Дар пойгоҳи дода пайдо нашуд.',
-	'oversight'                  => 'Назар',
-	'oversight-view'             => 'бештар',
-	'oversight-prev'             => 'Охирин нусхаи қаблӣ',
-	'oversight-hidden'           => 'Нусхаи пинҳоншуда',
+	'hiderevision'                => 'Бо ҳамешагӣ пинҳон кардани нусхаҳо',
+	'hiderevision-desc'           => 'Пинҳон кардани нусхаҳои хос аз тамоми корбарон ба далели қонунӣ ва ғайра.',
+	'hiderevision-prompt'         => 'Шумораи нусхаҳое, ки ҳазф мешаванд:',
+	'hiderevision-continue'       => 'Идома',
+	'hiderevision-text'           => "Ин қобилият '''фақат''' дар мавориди зер бояд истифода шавад:
+* Иттилооти шахсии номуносиб
+*: ''нишонии манзил ва шумораи телефон, ва ғайра''
+
+'''Сӯистифода аз имконот мумкин ба аз даст додани ихтиёрот оварда расонад.'''
+
+Мавориде, ки ҳазф мешаванд тавассути ҳеҷ корбар дар сомона қобили дидан нахоҳад буд,
+аммо ин маворид дар гузориши марбут ба он сабт мешаванд ва агар иштибоҳе сурат бигирад, тавассути мудирони пойгоҳи дода қобили баргашт хоҳад буд.",
+	'hiderevision-reason'         => 'Далел (ба таври хусусӣ сабт мешавад):',
+	'hiderevision-submit'         => 'Пинҳон кардан ин дода бо ҳамешагӣ',
+	'hiderevision-tab'            => 'Пинҳон кардани нусха',
+	'hiderevision-norevisions'    => 'Нусхае барои ҳазф мушаххас нашуда буд.',
+	'hiderevision-noreason'       => 'Шумо бояд далели ин ҳазфро тавзеҳ диҳед.',
+	'hiderevision-status'         => 'Нусха $1: $2',
+	'hiderevision-success'        => 'Бо муваффақият бойгонӣ ва ҳазф шуд.',
+	'hiderevision-error-missing'  => 'Дар пойгоҳи дода пайдо нашуд.',
+	'hiderevision-error-current'  => 'Охирин вироиши як саҳифаро наметавон ҳазф кард. Ибтидо охирин тағйиротро вогардонӣ кунед.',
+	'hiderevision-error-delete'   => 'Имкони бойгонӣ кардан вуҷуд надошт; оё қаблан ҳазф шудааст?',
+	'hiderevision-archive-status' => 'Нусхае аз $1ро ҳазф кард: $2',
+	'oversight-nodiff'            => 'Имкони дунбол кардани тағйирот вуҷуд надорад, чунки ин саҳифа дар ҳоли ҳозир нусхаи кӯҳнатерро надорад. 
+Эҳтимолан:
+*Саҳифа ҳазф шудааст
+*Нусхаи пинҳоншуда аввалин нусхаи саҳифа будааст',
+	'oversight-log-hiderev'       => 'нусхае аз $1ро ҳазф кард',
+	'oversight'                   => 'Назар',
+	'oversight-view'              => 'бештар',
+	'oversight-difference'        => '(Тафовут аз қаблан нусхаи боқимонда)',
+	'oversight-prev'              => 'Охирин нусхаи қаблӣ',
+	'oversight-hidden'            => 'Нусхаи пинҳоншуда',
+	'oversight-header'            => 'Дар зер феҳристе аз нусхаҳои, ки ба тозагӣ аз диди умум барои ҳамеша пинҳон шударо мебинед. Мунташир кардани ин иттилоот метавонад ба натиҷаи аз даст додани ҳамешагии ихтиёроти шумо оварда расонад.',
 );
 
 /** Turkish (Türkçe)

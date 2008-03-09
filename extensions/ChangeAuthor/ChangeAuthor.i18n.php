@@ -585,8 +585,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Equadus
+ * @author McMonster
  */
 $messages['pl'] = array(
+	'changeauthor-comment'              => 'Komentarz:',
 	'changeauthor-changeauthors-single' => 'Zmień autora',
 	'changeauthor-invalid-username'     => 'Niepoprawna nazwa użytkownika "$1".',
 	'changeauthor-nosuchuser'           => 'Brak użytkownika "$1".',

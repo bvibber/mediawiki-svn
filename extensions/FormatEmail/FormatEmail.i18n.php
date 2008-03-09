@@ -139,6 +139,16 @@ $messages['oc'] = array(
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'email_footer' => '---------------------------------------------------------------------------
+Ta wiadomość została wysłana poprzez system pocztowy {{SITENAME}} przez $1.
+
+$2',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

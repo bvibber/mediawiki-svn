@@ -18,6 +18,20 @@ $messages['fr'] = array(
 	'gnuplot-desc' => 'Ajoute la balise <code><nowiki><gnuplot></nowiki></code> afin d’utiliser Gnuplot',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'gnuplot-desc' => 'Přidawa tafličku <code><nowiki><gnuplot></nowiki></code> za wužiwanje rozšěrjenja Gnuplot',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'gnuplot-desc' => 'Setzt den tag <code><nowiki><gnuplot></nowiki></code> derbäi fir Gnuplot ze benotzen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

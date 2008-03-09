@@ -402,6 +402,13 @@ $messages['lt'] = array(
 	'countedits-nocontribs'   => 'Šioje wiki nebuvo naudotojų.',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'countedits-warning' => "'''सावधान:''' ज्याप्रमाणे पुस्तकाच्या मुखपृष्ठावरून पुस्तकाचे मुल्यमापन करू नये. त्याप्रमाणे संपादन संख्येवरून संपादकाचे मुल्यमापन करू नये.",
+);
+
 $messages['nds'] = array(
 	'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
 	'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',

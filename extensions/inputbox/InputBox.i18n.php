@@ -820,7 +820,12 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'createarticle' => 'Эҷоди мақола',
+	'inputbox-desc'           => 'Иҷозаи истифода аз формҳои HTML аз пеш таърифшударо медиҳад',
+	'inputbox-error-no-type'  => 'Навъи ҷаъбаи вурудии эҷодшавандаро мушаххас накардаед.',
+	'inputbox-error-bad-type' => 'Навъи ҷаъбаи вурудии "$1" ношинохта аст. Лутфан як аз маворидро аз инҳо "create", "comment", "search" ё "search2" мушаххас кунед.',
+	'tryexact'                => 'Мутобиқати аниқро бисанҷед',
+	'searchfulltext'          => 'Ҷустуҷӯи матни пурра',
+	'createarticle'           => 'Эҷоди мақола',
 );
 
 $messages['th'] = array(

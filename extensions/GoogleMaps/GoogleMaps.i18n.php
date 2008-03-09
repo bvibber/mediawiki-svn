@@ -909,6 +909,25 @@ $wgGoogleMapsMessages['oc'] = array(
 	'gm-mars'                      => 'Mart',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$wgGoogleMapsMessages['pl'] = array(
+	'gm-save-point'       => 'zapisz i zamknij',
+	'gm-searching'        => 'wyszukiwanie...',
+	'gm-are-you-sure'     => 'Czy jesteś pewien?',
+	'gm-height'           => 'Wysokość',
+	'gm-save-path'        => 'Zapisz',
+	'gm-line-width'       => 'Szerokość',
+	'gm-make-map'         => 'stwórz mapę',
+	'gm-hide-map'         => 'ukryj mapę',
+	'gm-back'             => 'wstecz',
+	'gm-kml-include-link' => 'dodaj do mapy',
+	'gm-kml-loading'      => 'ładowanie...',
+	'gm-earth'            => 'Ziemia',
+	'gm-moon'             => 'Księżyc',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso
@@ -935,7 +954,9 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-small'                     => 'Pequeno',
 	'gm-yes'                       => 'Sim',
 	'gm-no'                        => 'Não',
+	'gm-no-search-preface'         => 'Carregue no mapa para adicionar um ponto.',
 	'gm-search'                    => 'Busca',
+	'gm-clear-search'              => 'Limpar resultado da busca',
 	'gm-meters'                    => 'metros',
 	'gm-miles'                     => 'milhas',
 	'gm-save-path'                 => 'Gravar',
@@ -943,6 +964,8 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-show-path'                 => 'mostrar pontos',
 	'gm-color-path'                => 'mudar cor',
 	'gm-color-fill'                => 'mudar cor de preenchimento',
+	'gm-fill-color'                => 'Cor de preenchimento',
+	'gm-line-color'                => 'Cor da linha',
 	'gm-opacity'                   => 'Opacidade',
 	'gm-line-width'                => 'Largura',
 	'gm-make-map'                  => 'criar um mapa',

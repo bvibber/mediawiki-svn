@@ -562,7 +562,7 @@ $messages['li'] = array(
 	'newuserlog-desc'          => "Voegt 'n [[Special:Log/newusers|logbook van nuje gebroejkers]] toe aan de [[special:Log|logbuuek]].",
 	'newuserlog-byemail'       => 'wachwaord is verzönje per e-mail',
 	'newuserlog-create-entry'  => "is 'ne nuje gebroeker",
-	'newuserlog-create2-entry' => 'haet de gebroeker [[user:$1|$1]] aangemaak',
+	'newuserlog-create2-entry' => 'haet de gebroeker [[$1]] aangemaak',
 );
 
 $messages['lo'] = array(
@@ -878,6 +878,7 @@ $messages['tet'] = array(
 $messages['tg'] = array(
 	'newuserlogpage'           => 'Гузориши эҷоди корбар',
 	'newuserlogpagetext'       => 'Ин гузориш аз номҳои корбарии тозасохташуда аст',
+	'newuserlog-byemail'       => 'калимаи убур ба почтаи электронӣ фиристода шуд',
 	'newuserlog-create-entry'  => 'Корбари нав',
 	'newuserlog-create2-entry' => 'Барои $1 ҳисоби корбарӣ эҷод шуд',
 );

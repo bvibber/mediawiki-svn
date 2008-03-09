@@ -675,10 +675,17 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'parserdifftest'      => 'Санҷиши тафовути таҳлилгар',
+	'pdtest_no_target'    => 'Ҳадафе таъйид нашудааст.',
+	'pdtest_page_missing' => 'Саҳифаи мавриди назар дар пойгоҳи дода ёфт нашуд.',
 	'pdtest_no_changes'   => 'Ҳеҷ тағйир ҳазф нашуд.',
+	'pdtest_title'        => 'Унвони матн:',
+	'pdtest_text'         => 'Матни вурудӣ:',
+	'pdtest_ok'           => 'Таъйид',
 	'pdtest_get_text'     => 'Дарёфти матн аз саҳифа',
 	'pdtest_diff'         => 'Фарқиятҳо',
 	'pdtest_side_by_side' => 'Муқоисаи хуруҷӣ',
+	'pdt_comparing_page'  => 'Муқоисаи хуруҷи таҳлилгар аз [[$1]]',
 );
 
 /** Turkish (Türkçe)

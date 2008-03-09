@@ -285,6 +285,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'spamdifftool_spam_link_text'   => 'adicionar como spam',
 	'spamdifftool_option_domain'    => 'todos deste domínio',
 	'spamdifftool_option_subdomain' => 'todos deste subdomínio',
 	'spamdifftool_option_directory' => 'este subdomínio e directório',

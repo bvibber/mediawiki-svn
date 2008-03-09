@@ -349,12 +349,17 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'povwatch_no_session'      => 'Erro: Não foi possível submeter o formulário devida a perda de dados da sessão.',
 	'povwatch_invalid_title'   => 'O título especificado é inválido',
 	'povwatch_unknown_subpage' => 'Subpágina desconhecida.',
 	'povwatch_title'           => 'Título:',
+	'povwatch_unsubscribe'     => 'Cancelar subscrição',
+	'povwatch_subscribe'       => 'Subscrever',
+	'povwatch_added'           => 'adicionado',
 );
 
 /** Russian (Русский)

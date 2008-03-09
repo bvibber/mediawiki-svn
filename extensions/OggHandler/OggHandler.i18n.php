@@ -1441,18 +1441,26 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'ogg-play'              => 'Пахш',
-	'ogg-pause'             => 'Сукут',
-	'ogg-stop'              => 'Қатъ',
-	'ogg-play-video'        => 'Пахши навор',
-	'ogg-play-sound'        => 'Пахши овоз',
-	'ogg-player-soundthumb' => 'Пахшкунанда нест',
-	'ogg-player-selected'   => '(интихобшуда)',
-	'ogg-use-player'        => 'Истифода аз пахшкунанда:',
-	'ogg-more'              => 'Бештар...',
-	'ogg-dismiss'           => 'Бастан',
-	'ogg-download'          => 'Боргирии парванда',
-	'ogg-desc-link'         => 'Дар бораи ин парванда',
+	'ogg-short-audio'         => 'Ogg $1 парвандаи савтӣ, $2',
+	'ogg-short-video'         => 'Ogg $1 парвандаи наворӣ, $2',
+	'ogg-short-general'       => 'Ogg $1 парвандаи расона, $2',
+	'ogg-long-audio'          => '(Ogg $1 парвандаи савтӣ, тӯл $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 парвандаи наворӣ, тӯл $2, $4×$5 пикселҳо, $3)',
+	'ogg-play'                => 'Пахш',
+	'ogg-pause'               => 'Сукут',
+	'ogg-stop'                => 'Қатъ',
+	'ogg-play-video'          => 'Пахши навор',
+	'ogg-play-sound'          => 'Пахши овоз',
+	'ogg-player-videoElement' => 'унсури <наворӣ>',
+	'ogg-player-oggPlugin'    => 'Афзунаи ogg',
+	'ogg-player-thumbnail'    => 'Фақат акс ҳанӯз',
+	'ogg-player-soundthumb'   => 'Пахшкунанда нест',
+	'ogg-player-selected'     => '(интихобшуда)',
+	'ogg-use-player'          => 'Истифода аз пахшкунанда:',
+	'ogg-more'                => 'Бештар...',
+	'ogg-dismiss'             => 'Бастан',
+	'ogg-download'            => 'Боргирии парванда',
+	'ogg-desc-link'           => 'Дар бораи ин парванда',
 );
 
 /** Turkish (Türkçe)

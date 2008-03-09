@@ -1089,16 +1089,29 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author McMonster
  * @author Sp5uhe
  * @author Equadus
  */
 $messages['pl'] = array(
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
+	'math_CannotRunDvipng'                  => 'Nie można uruchomić dvipng',
+	'math_CannotWritePngDirectory'          => 'Nie można zapisać do wyjściowego katalogu PNG',
 	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',
+	'math_IllegalDelimiter'                 => 'Niedozwolony separator przed "$1"',
+	'math_IllegalNestedFontEncodings'       => 'Komendy kodowania czcionek nie mogą być zagnieżdżane',
 	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
+	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX dla "$1"',
+	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
+	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_NotEnoughArguments'               => 'Zbyt mało argumentów dla "$1"',
+	'math_PngIncompatibleCharacter'         => 'Nie można poprawnie wygenerować pliku PNG zawierającego znak $1',
+	'math_TooManyMathmlNodes'               => 'Zbyt dużo węzłów w drzewie MathML',
 	'math_TooManyTokens'                    => 'Zbyt długie dane wejściowe',
 	'math_UnavailableSymbolFontCombination' => 'Brak znaku "$1" w czcionce "$2"',
+	'math_UnmatchedBegin'                   => 'Napotkano "\\begin" bez odpowiadającego "\\end"',
+	'math_UnmatchedEnd'                     => 'Napotkano "\\end" bez odpowiadającego "\\begin"',
+	'math_UnmatchedLeft'                    => 'Napotkano "\\left" bez pasującego "\\right"',
 	'math_UnrecognisedCommand'              => 'Nierozpoznane polecenie "$1"',
 	'math_WrongFontEncodingWithHint'        => 'Znak "$1" może nie występować w czcionce "$2" (spróbuj użyć polecenia "$3{...}")',
 );
@@ -1357,9 +1370,8 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'math_noblahtex'                        => 'Kan inte köra blahtex, som borde finnas på $1',
@@ -1368,33 +1380,33 @@ $messages['sv'] = array(
 	'math_CannotChangeDirectory'            => 'Kan inte byta arbetskatalog',
 	'math_CannotCreateTexFile'              => 'Kan inte skapa tex-fil',
 	'math_CannotRunDvipng'                  => 'Kan inte köra dvipng',
-	'math_CannotRunLatex'                   => 'Kan inte sätta in latex',
-	'math_CannotWritePngDirectory'          => 'Kan inte skriva till utdata PNG register',
-	'math_CannotWriteTexFile'               => 'Kan inte skriva till tex fil',
-	'math_CasesRowTooBig'                   => 'Det kan endast bli två element i varje rad av en "cases"-block',
+	'math_CannotRunLatex'                   => 'Kan inte köra latex',
+	'math_CannotWritePngDirectory'          => 'Kan inte skriva till katalogen för PNG-filer',
+	'math_CannotWriteTexFile'               => 'Kan inte skriva till tex-fil',
+	'math_CasesRowTooBig'                   => 'Det kan bara finnas två element på varje rad i ett "cases"-block',
 	'math_DoubleSubscript'                  => 'Sammanstött till instanser av sänkt text kopplat till samma bas (endast en är tillåten)',
 	'math_DoubleSuperscript'                => 'Sammanstött till instanser av höjd text kopplat till samma bas (endast en är tillåten)',
-	'math_IllegalCharacter'                 => 'Olagligt tecken i upphovstext',
-	'math_IllegalCommandInMathMode'         => 'Kommandot "$1" är olagligt i math-metod',
-	'math_IllegalCommandInMathModeWithHint' => 'Kommandot "$1" är olagligt i math-metod (kanske du menar att använda "$2" i stället?)',
-	'math_IllegalCommandInTextMode'         => 'Kommandot "$1" är olagligt i text-metod',
-	'math_IllegalCommandInTextModeWithHint' => 'Kommandot "$1" är olagligt i text-metod (kanske du menar att använda "$2" i stället?)',
+	'math_IllegalCharacter'                 => 'Otillåtet tecken i indata',
+	'math_IllegalCommandInMathMode'         => 'Kommandot "$1" är inte tillåtet i matematik-läge',
+	'math_IllegalCommandInMathModeWithHint' => 'Kommandot "$1" är inte tillåtet i matematik-läge (du avsåg kanske att använda "$2"?)',
+	'math_IllegalCommandInTextMode'         => 'Kommandot "$1" är inte tillåtet i text-läge',
+	'math_IllegalCommandInTextModeWithHint' => 'Kommandot "$1" är inte tillåtet i text-läge (du avsåg kanske att använda "$2"?)',
 	'math_IllegalDelimiter'                 => 'Ogiltigt skiljetecken efter "$1"',
-	'math_IllegalFinalBackslash'            => 'Ogiltigt snedstreck "\\" på slutet av inskriven text',
-	'math_IllegalNestedFontEncodings'       => 'Teckenkodningskommandon kan inte nästas',
-	'math_IllegalRedefinition'              => 'Kommandot "$1" har redan blivigt definierat; da kan inte omdefiniera den',
+	'math_IllegalFinalBackslash'            => 'Ogiltigt bakstreck "\\" i slutet av inskriven text',
+	'math_IllegalNestedFontEncodings'       => 'Teckenkodningskommandon kan inte nästlas',
+	'math_IllegalRedefinition'              => 'Kommandot "$1" har redan definierats; du kan inte omdefiniera det',
 	'math_InvalidColour'                    => 'Färgen "$1" är ogiltig',
 	'math_InvalidUtf8Input'                 => 'Den inskrivna texten var inte giltig UTF-8',
-	'math_LatexFontNotSpecified'            => 'Inget LaTeX-teckensnitt har blivigt angett för "$1"',
-	'math_LatexPackageUnavailable'          => 'Kunde inte tolka PNG för att LaTeX-paketen "$1" inte är tillgängliga',
+	'math_LatexFontNotSpecified'            => 'Inget LaTeX-teckensnitt har angivits för "$1"',
+	'math_LatexPackageUnavailable'          => 'Kunde inte skapa PNG eftersom LaTeX-paketet "$1" inte är tillgängligt',
 	'math_MismatchedBeginAndEnd'            => 'Kommandona "$1" och "$2" stämmer inte överens',
-	'math_MisplacedLimits'                  => 'Kommandot "$1" kan endast framträda efter en matteoperatör (överväg att använda "\\mathop")',
-	'math_MissingCommandAfterNewcommand'    => 'Missad eller olagligt nytt kommando efter "\\newcommand" (det måste bli exakt ett kommando definierat; den mäste börja med ett snedstreck "\\" och innehålla endast bokstäver)',
-	'math_MissingDelimiter'                 => 'Missat skiljetecken efter "$1"',
-	'math_MissingOpenBraceAfter'            => 'Missad öppen klammer "{" efter "$1"',
+	'math_MisplacedLimits'                  => 'Kommandot "$1" kan endast förekomma efter en matematisk operator (överväg att använda "\\mathop")',
+	'math_MissingCommandAfterNewcommand'    => 'Saknat eller otillåtet nytt kommando efter "\\newcommand" (exakt ett kommando måste definieras; det måste börja med ett bakstreck, "\\", och endast innehålla bokstäver)',
+	'math_MissingDelimiter'                 => 'Saknat skiljetecken efter "$1"',
+	'math_MissingOpenBraceAfter'            => 'Saknar vänsterparentes "{" efter "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Missad öppen klammer "{" på slutet av den inskrivna texten',
 	'math_MissingOpenBraceBefore'           => 'Missad öppen klammer "{" före "$1"',
-	'math_MissingOrIllegalParameterCount'   => 'Missad eller olaglig parameterantal funnen i definitionen av "$1" (måste bli en enkel siffra mellan 1 och 9)',
+	'math_MissingOrIllegalParameterCount'   => 'Parameterantalet saknas eller är felaktigt i definitionen av "$1" (det måste vara en siffra från 1 till 9)',
 	'math_MissingOrIllegalParameterIndex'   => 'Missat eller olagligt parameterindex i definitionen av "$1"',
 	'math_NonAsciiInMathMode'               => 'Tecken som inte är i ASCII kan endast användas i text-metod (pröva att omringa problemtecknen med "\\text{...}")',
 	'math_NotEnoughArguments'               => 'För få argument var givna för "$1"',
@@ -1406,14 +1418,14 @@ $messages['sv'] = array(
 	'math_UnavailableSymbolFontCombination' => 'Symbolen "$1" är inte tillgänglig i teckensnittet "$2"',
 	'math_UnexpectedNextCell'               => 'Kommandot "&" kan endast framträda inne i ett "\\begin ... \\end"-block',
 	'math_UnexpectedNextRow'                => 'Kommandot "\\\\" kan endast framträda inne i ett "\\begin ... \\end"-block',
-	'math_UnmatchedBegin'                   => 'Sammanstött "\\begin" utan tillsvarande "\\end"',
+	'math_UnmatchedBegin'                   => 'Hittade "\\begin" utan motsvarande "\\end"',
 	'math_UnmatchedCloseBrace'              => 'Sammanstött stängd klammer "}" utan tillsvarande öppen klammer "{"',
-	'math_UnmatchedEnd'                     => 'Sammanstött "\\end" utan tillsvarande "\\begin"',
-	'math_UnmatchedLeft'                    => 'Sammanstött "\\left" utan tillsvarande "\\right"',
+	'math_UnmatchedEnd'                     => 'Hittade "\\end" utan motsvarande "\\begin"',
+	'math_UnmatchedLeft'                    => 'Hittade "\\left" utan tillhörande "\\right"',
 	'math_UnmatchedOpenBrace'               => 'Sammanstött öppen klammer "{" utan tillsvarande stängd klammer "}"',
-	'math_UnmatchedOpenBracket'             => 'Sammanstött öppen klammer "[" utan tillsvarande stängd klammer "]"',
-	'math_UnmatchedRight'                   => 'Sammanstött "\\right" utan tillsvarande "\\left"',
-	'math_UnrecognisedCommand'              => 'Ej igenkänt kommando "$1"',
+	'math_UnmatchedOpenBracket'             => 'Hittade vänsterparentesen "[" utan tillhörande högerparentesen "]"',
+	'math_UnmatchedRight'                   => 'Hittade "\\right" utan tillhörande "\\left"',
+	'math_UnrecognisedCommand'              => 'Okänt kommando "$1"',
 	'math_WrongFontEncoding'                => 'Symbolen "$1" kan inte framträda in teckenkodningen "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Symbolen "$1" kan inte framträda i teckenkodningen "$2" (pröva att använda "$3{...}" kommandot)',
 );
