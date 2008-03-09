@@ -68,6 +68,7 @@ class ImageMap {
 					return self::error( 'imagemap_no_image' );
 				}
 				$imageHTML = $parser->makeImage( $imageTitle, $options );
+				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
 				$domDoc = DOMDocument::loadXML( $imageHTML );
 				$xpath = new DOMXPath( $domDoc );
