@@ -29,10 +29,17 @@ extern const char *progname;	/* argv[0]		*/
 extern char *curdir;		/* cwd name		*/
 extern char *trickle;
 extern int records;
+extern uid_t force_uid;
+extern gid_t force_gid;
 
 size_t write_blocked(void *buf, size_t size, FILE *file);
+#ifdef __STDC__
+char *allocf(const char *, ...);
+void fatal(const char *, ...);
+#else
 char *allocf();
 void fatal();
+#endif
 void pfatal(const char *, const char *);
 
 /** Protocol support */

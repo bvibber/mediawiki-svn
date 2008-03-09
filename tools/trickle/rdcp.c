@@ -9,7 +9,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <alloca.h>
+
+#include "t_alloca.h"
+#ifdef T_ALLOCA
+# include <alloca.h>
+#endif
 
 #include "t_stdint.h"
 #ifdef T_STDINT

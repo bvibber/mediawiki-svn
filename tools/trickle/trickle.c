@@ -19,6 +19,8 @@
 #include <errno.h>
 #include <utime.h>
 #include <strings.h>
+#include <pwd.h>
+#include <grp.h>
 
 #include "trickle.h"
 #include "rdcp.h"
@@ -33,6 +35,8 @@ int blocksize = 8192;
 char *src, *dest;
 char *curdir;
 FILE *archfile;
+uid_t force_uid = -1;
+gid_t force_gid = -1;
 
 static void copy_directory(const char *dir, 
 	void (*cf)(const char *, const char *));
@@ -69,6 +73,8 @@ usage(void)
 "\t-z program            use an alternative rsh\n"
 "\t-T trickle            name of trickle on remote host\n"
 "\t-I                    ignore unexpected filesystem errors\n"
+"\t-U uid                all files will be stored with \"uid\" as the owner\n"
+"\t-G gid                all files will be stored with \"gid\" as the group\n"
 		,progname);
 	exit(8);
 }
@@ -84,7 +90,7 @@ struct	stat	 sb;
 
 	progname = argv[0];
 
-	while ((i = getopt(argc, argv, "T:Zz:rPpqFuts:b:f:x:I")) != -1) {
+	while ((i = getopt(argc, argv, "T:Zz:rPpqFuts:b:f:x:IG:U:")) != -1) {
 		switch(i) {
 		case 'F':
 			Fflag++;
@@ -130,6 +136,37 @@ struct	stat	 sb;
 			break;
 		case 'I':
 			Iflag++;
+			break;
+		case 'U':
+			if (isdigit(*optarg))
+				force_uid = atoi(optarg);
+			else {
+				struct passwd *pwd;
+				if ((pwd = getpwnam(optarg)) == NULL) {
+					fprintf(stderr,
+						"%s: user \"%s\" not found\n",
+						progname, optarg);
+					return 1;
+				}
+
+				force_uid = pwd->pw_uid;
+			}
+			break;
+
+		case 'G':
+			if (isdigit(*optarg))
+				force_gid = atoi(optarg);
+			else {
+				struct group *pwd;
+				if ((pwd = getgrnam(optarg)) == NULL) {
+					fprintf(stderr,
+						"%s: group \"%s\" not found\n",
+						progname, optarg);
+					return 1;
+				}
+
+				force_gid = pwd->gr_gid;
+			}
 			break;
 		case 'h':
 		default:

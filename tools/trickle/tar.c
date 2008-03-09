@@ -103,8 +103,14 @@ struct	tar	 hdr;
 	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
 
 	sprintf(hdr.tr_mode, "%07o", (int)(sb->st_mode & 0777));
-	sprintf(hdr.tr_uid, "%07o", (int)sb->st_uid);
-	sprintf(hdr.tr_gid, "%07o", (int)sb->st_gid);
+	if (force_uid == -1)
+		sprintf(hdr.tr_uid, "%07o", (int)sb->st_uid);
+	else
+		sprintf(hdr.tr_uid, "%07o", (int)force_uid);
+	if (force_gid == -1)
+		sprintf(hdr.tr_gid, "%07o", (int)sb->st_gid);
+	else
+		sprintf(hdr.tr_gid, "%07o", (int)force_gid);
 	sprintf(hdr.tr_size, "%011o", (int)sb->st_size);
 	sprintf(hdr.tr_mtime, "%011o", (int)sb->st_mtime);
 	memcpy(hdr.tr_magic, TMAGIC, TMAGLEN);

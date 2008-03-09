@@ -1,6 +1,6 @@
 # @(#) $Header$
 
-CFGHDRS=t_stdint.h t_xti.h
+CFGHDRS=t_stdint.h t_xti.h t_alloca.h
 trickle: trickle.o tar.o proto.o util.o rdcp.o ldflags
 	cc -O -g trickle.o tar.o proto.o util.o rdcp.o -o $@ `cat ldflags`
 %.o: %.c Makefile $< $(CFGHDRS)
@@ -14,6 +14,10 @@ t_stdint.h:
 t_xti.h:
 	echo "#include <xti.h>" >test.c
 	-(cc -c -o /dev/null test.c && echo "#define T_XTI 1") >t_xti.h
+	rm -f test.c
+t_alloca.h:
+	echo "#include <alloca.h>" >test.c
+	-(cc -c -o /dev/null test.c && echo "#define T_ALLOCA 1") >t_alloca.h
 	rm -f test.c
 ldflags:
 	echo "int main() { return 0; }" > test.c
