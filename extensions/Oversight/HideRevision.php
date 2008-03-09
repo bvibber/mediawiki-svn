@@ -29,9 +29,11 @@ $wgAvailableRights = array_merge( $wgAvailableRights, array( 'hiderevision', 'ov
 
 // The 'hiderevision' permission allows use of revision hiding.
 $wgGroupPermissions['*']['hiderevision'] = false;
+$wgGroupPermissions['oversight']['hiderevision'] = true;
 
 // 'oversight' permission is required to view a previously-hidden revision.
 $wgGroupPermissions['*']['oversight'] = false;
+$wgGroupPermissions['oversight']['oversight'] = true;
 
 // You could add a group like this:
 // $wgGroupPermissions['censor']['hiderevision'] = true;
