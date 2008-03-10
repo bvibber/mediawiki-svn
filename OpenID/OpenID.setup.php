@@ -98,9 +98,20 @@ $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
 $wgExtensionFunctions[] = 'setupOpenID';
 
-# Gets stored in the session, needs to be reified before our setup
+function OpenIDGetServerPath() {
+	$rel = 'Auth/OpenID/Server.php';
 
-$wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = 'Auth/OpenID/Server.php';
+	foreach (explode(PATH_SEPARATOR, get_include_path()) as $pe) {
+		$full = $pe . DIRECTORY_SEPARATOR . $rel;
+		if (file_exists($full)) {
+			return $full;
+		}
+	}
+	return $rel;
+}
+
+# Gets stored in the session, needs to be reified before our setup
+$wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
 
 function setupOpenID() {
 	global $wgHooks, $wgAutoloadClasses, $wgSpecialPages, $wgExtensionCredits;
