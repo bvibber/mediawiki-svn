@@ -6,7 +6,9 @@
 
 $messages = array();
 
-/* English (Brion Vibber) */
+/** English
+ * @author Brion Vibber
+ */
 $messages['en'] = array(
 	'hiderevision' => 'Permanently hide revisions',
 	'hiderevision-desc' => 'Hide individual revisions from all users for legal reasons, etc.',
@@ -254,11 +256,14 @@ administrátorům databáze v případě, že uděláte chybu.",
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'hiderevision' => 'Versionen dauerhaft entfernen',
-	'hiderevision-desc' => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
-	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
-	'hiderevision-continue' => 'Weiter',
-	'hiderevision-text' => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
+	'hiderevision'                => 'Versionen dauerhaft entfernen',
+	'hiderevision-desc'           => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
+	'group-oversight'             => 'Oversighter',
+	'group-oversight-member'      => 'Oversight',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
+	'hiderevision-prompt'         => 'Zu entfernende Versionsnummer:',
+	'hiderevision-continue'       => 'Weiter',
+	'hiderevision-text'           => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
 * Persönliche Informationen:
 *: ''Realname, Adresse, Telefonnummer und ähnlicher privater Details''
 
@@ -266,34 +271,34 @@ $messages['de'] = array(
 
 Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen.
 Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
-	'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
-	'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
-	'hiderevision-tab' => 'Entferne Versionen',
-	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
-	'hiderevision-noreason' => 'Du musst einen Grund für die Entfernung angeben.',
-	'hiderevision-status' => 'Version $1: $2',
-	'hiderevision-success' => 'Erfolgreich archiviert und entfernt.',
-	'hiderevision-error-missing' => 'In der Datenbank nicht gefunden.',
-	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setze die Bearbeitung erst zurück.',
-	'hiderevision-error-delete' => 'Archivierung nicht möglich. Wurde sie zuvor gelöscht?',
+	'hiderevision-reason'         => 'Grund (wird unsichtbar protokolliert):',
+	'hiderevision-submit'         => 'Entferne diese Daten dauerhaft',
+	'hiderevision-tab'            => 'Entferne Versionen',
+	'hiderevision-norevisions'    => 'Es wurde keine Version zum Entfernen angegeben.',
+	'hiderevision-noreason'       => 'Du musst einen Grund für die Entfernung angeben.',
+	'hiderevision-status'         => 'Version $1: $2',
+	'hiderevision-success'        => 'Erfolgreich archiviert und entfernt.',
+	'hiderevision-error-missing'  => 'In der Datenbank nicht gefunden.',
+	'hiderevision-error-current'  => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setze die Bearbeitung erst zurück.',
+	'hiderevision-error-delete'   => 'Archivierung nicht möglich. Wurde sie zuvor gelöscht?',
 	'hiderevision-archive-status' => 'Gelöschte Versionen von $1: $2',
-	'oversight-nodiff' => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
+	'oversight-nodiff'            => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
 *Die Seite wurde gelöscht
 *Die entfernte Version war die erste Version',
-	'oversight-log-hiderev' => 'Entfernte eine Bearbeitung von $1',
-	'oversight' => 'Oversight',
-	'oversight-view' => 'Details',
-	'oversight-difference' => '(Unterschied zur vorhergehenden verbleibenden Version)',
-	'oversight-prev' => 'Letzte vorhergehenden Version',
-	'oversight-hidden' => 'Entfernte Version',
-	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
+	'oversight-log-hiderev'      => 'Entfernte eine Bearbeitung von $1',
+	'oversight'                  => 'Oversight',
+	'oversight-view'             => 'Details',
+	'oversight-difference'       => '(Unterschied zur vorhergehenden verbleibenden Version)',
+	'oversight-prev'             => 'Letzte vorhergehenden Version',
+	'oversight-hidden'           => 'Entfernte Version',
+	'oversight-header'           => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 );
 
 /** German - formal address (Deutsche - förmliche Anrede)
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
+	'hiderevision-noreason'      => 'Sie müssen einen Grund für die Entfernung angeben.',
 	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setzen Sie die Bearbeitung erst zurück.',
 );
 
