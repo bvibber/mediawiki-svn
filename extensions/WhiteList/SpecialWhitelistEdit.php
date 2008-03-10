@@ -31,39 +31,79 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
         'name'        => 'WhiteListEdit',
-        'version'     => 'v0.7.1',
-        'author'      => 'Paul Grinberg, Mike Sullivan',
+        'version'     => 'v0.8',
+        'author'      => array('Paul Grinberg', 'Mike Sullivan'),
         'email'       => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
         'description' => 'Edit the access permissions of restricted users',
         'url'         => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
 );
 
 # these are the groups and the rights used within this extension
-$wgWhiteListRestrictedGroup = 'restricted';
-$wgWhiteListManagerGroup = 'manager';
-$wgWhiteListRestrictedRight = 'restricttowhitelist';
-$wgWhiteListManagerRight = 'editwhitelist';
+if( !isset($wgWhiteListRestrictedGroup))
+	$wgWhiteListRestrictedGroup = 'restricted';
+if( !isset($wgWhiteListManagerGroup))
+	$wgWhiteListManagerGroup = 'manager';
+if( !isset($wgWhiteListRestrictedRight))
+	$wgWhiteListRestrictedRight = 'restricttowhitelist';
+if( !isset($wgWhiteListManagerRight))
+	$wgWhiteListManagerRight = 'editwhitelist';
 
 # Define groups and rights
-$wgGroupPermissions['*']['usewhitelist'] = false;
-$wgGroupPermissions[$wgWhiteListRestrictedGroup]['edit'] = true;
-$wgGroupPermissions[$wgWhiteListRestrictedGroup][$wgWhiteListRestrictedRight] = true;
-$wgGroupPermissions['*'][$wgWhiteListManagerRight] = false;
-$wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRight] = true;
+if( !isset($wgGroupPermissions['*']['usewhitelist']))
+	$wgGroupPermissions['*']['usewhitelist'] = false;
+if( !isset($wgGroupPermissions[$wgWhiteListRestrictedGroup]['edit']))
+	$wgGroupPermissions[$wgWhiteListRestrictedGroup]['edit'] = true;
+if( !isset($wgGroupPermissions[$wgWhiteListRestrictedGroup][$wgWhiteListRestrictedRight]))
+	$wgGroupPermissions[$wgWhiteListRestrictedGroup][$wgWhiteListRestrictedRight] = true;
+if( !isset($wgGroupPermissions['*'][$wgWhiteListManagerRight]))
+	$wgGroupPermissions['*'][$wgWhiteListManagerRight] = false;
+if( !isset($wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRight]))
+	$wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRight] = true;
+
+# Define default global overrides
+if( !isset($wgWhitelistOverride['always']['read']) )
+    $wgWhitelistOverride['always']['read'] = array(
+        "Special:WhiteList",       # needed so that restricted users can see their "my pages" list
+        "Special:Preferences",     # needed so that restricted users can set their preferences
+        "Special:Userlogout",      # needed so that restricted users can logout
+        "Special:Userlogin",       # needed so that restricted users can login
+        "MediaWiki:Monobook.css",  # needed so that restricted users can view properly formatted content
+        "MediaWiki:Common.css",    # needed so that restricted users can view properly formatted content
+        "MediaWiki:Common.js",     # needed so that restricted users can view properly formatted content
+);
+if( !isset($wgWhitelistOverride['always']['edit']) )
+	$wgWhitelistOverride['always']['edit'] = array();
+if( !isset($wgWhitelistOverride['never']['read']) )
+	$wgWhitelistOverride['never']['read'] = array();
+if( !isset($wgWhitelistOverride['never']['edit']) )
+	$wgWhitelistOverride['never']['edit'] = array();
+
+# Define default case insensitivity setting
+if( !isset($wgWhitelistWildCardInsensitive) )
+	$wgWhitelistWildCardInsensitive = true;
+
+# Define default user page setting
+if( !isset($wgWhitelistAllowUserPages) )
+	$wgWhitelistAllowUserPages = true;
 
 # This extension requires the Extension:Usage_Statistics
 # NOTE: you don't actually need the gnuplot extension for the functinoality needed by this extension
-#require_once(dirname(__FILE__) . '/SpecialUserStats.php');
-require_once(dirname(__FILE__) . '/WhitelistAuth.php');
-$wgAutoloadClasses['WhitelistEdit'] = dirname(__FILE__) . '/SpecialWhitelistEdit_body.php';
-$wgSpecialPages['WhitelistEdit'] = 'WhitelistEdit';
-$wgHooks['LoadAllMessages'][] = 'WhitelistEdit::loadMessages';
-$wgSpecialPages['WhiteList'] = 'WhiteList';
-$wgHooks['LoadAllMessages'][] = 'WhiteList::loadMessages';
+#require_once('SpecialUserStats.php');
 
-require_once(dirname(__FILE__) . '/SpecialWhitelistEdit_body.php');
+$dir = dirname(__FILE__) . '/';
+
+require_once($dir. 'WhitelistAuth.php');
+
+$wgExtensionMessagesFiles['WhitelistEdit'] = $dir . 'SpecialWhitelistEdit.i18n.php';
+$wgExtensionMessagesFiles['Whitelist']     = $dir . 'SpecialWhitelistEdit.i18n.php';
+$wgAutoloadClasses['WhitelistEdit']        = $dir . 'SpecialWhitelistEdit_body.php';
+$wgAutoloadClasses['Whitelist']            = $dir . 'SpecialWhitelistEdit_body.php';
+$wgSpecialPages['WhitelistEdit']           = 'WhitelistEdit';
+$wgSpecialPages['WhiteList']               = 'WhiteList';
+
+require_once($dir . 'SpecialWhitelistEdit_body.php');
 
 $wgHooks['PersonalUrls'][] = 'wfAddRestrictedPagesTab';
-$wgHooks['userCan'][] = 'wfCheckWhitelist';
+$wgHooks['userCan'][] = 'WhitelistExec::CheckWhitelist';
 
 ?>

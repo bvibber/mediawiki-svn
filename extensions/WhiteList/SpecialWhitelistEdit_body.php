@@ -44,13 +44,22 @@ function wfMsgWhiteList($key) {
     return wfMsg($key);
 }
 
+require_once("$IP/includes/SpecialPage.php");
+
 class WhitelistEdit extends SpecialPage
 {
     function WhitelistEdit() {
         global $wgWhiteListManagerRight;
         
         SpecialPage::SpecialPage("WhitelistEdit", $wgWhiteListManagerRight);
-        self::loadMessages();
+
+        # the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
+        # so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
+        if (function_exists('wfLoadExtensionMessages'))
+            wfLoadExtensionMessages('WhitelistEdit');
+        else
+            self::loadMessages();
+            
         return true;
     }
 
@@ -85,6 +94,7 @@ class WhitelistEdit extends SpecialPage
     {
         global $wgOut, $wgUser, $wgRequest;
         global $wgServer, $wgArticlePath;
+        $debug = 1;
         $dbr = wfGetDB( DB_SLAVE );
 
         # first lets process the changes to the existing entries
@@ -99,8 +109,7 @@ class WhitelistEdit extends SpecialPage
             $wgOut->addHtml("<form name='mainform' method='post'>");
             $wgOut->addHtml("<input type='hidden' name='contractor' value='$contractorId'>");
             foreach ($modify_array as $modify)
-                $wgOut->addHtml("<input type='hidden' name='' value=''>");
-            $wgOut->addHtml("<input type='hidden' name='cb_modify[]' value='$modify'>");
+                $wgOut->addHtml("<input type='hidden' name='cb_modify[]' value='$modify'>");
             $wgOut->addHtml("<input type='hidden' name='NewExpiryDate' value='$NewExpiryDate'>");
             $wgOut->addHtml("<input type='hidden' name='action' value='$action'>");
 
@@ -206,15 +215,22 @@ class WhitelistEdit extends SpecialPage
             if (preg_match("/^$myServer$myArticlePath(.*)$/", $pagename, $matches))
                 $pagename = preg_replace('/_/', ' ', $matches[1]);
 
+            # ensure we have a wildcard of %
+            $pagename = str_replace('*', '%', $pagename);
+
             if ($doit)
                 self::insertNewPage($dbr, $contractorId, $pagename, $newAction, $expiryDate);
             else
-                $wgOut->addWikiText(wfMsg('whitelistoverviewna',
+            {
+                self::DisplayWildCardMatches($pagename,
+                                    wfMsg('whitelistoverviewna',
                                           $pagename,
                                           ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
-                                          $expiryDate
-                                         )
+                                          ($expiryDate == '') ? wfMsg('whitelistnever') : $expiryDate
+                                         ),
+                                         -1
                                    );
+            }
 
             # check to see if the page is a redirect and if so, add the redirected-to page also
             $title = Title::newFromText($pagename);
@@ -292,13 +308,13 @@ dml.elements[i].checked=val;
 }
 // -->
 </script>
-<script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>
 END
 );
         SpecialUserStats::AddCalendarJavascript();
         
         ob_start();
 print  <<<END
+<script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>
 <form name="mainform" method="post">
   <input type="hidden" name="contractor" value="$contractorId">
   <table cellpadding=0 cellspacing=10 border=0>
@@ -315,7 +331,7 @@ END;
         $wgOut->addHtml(wfMsg('whitelistfor', $ContractorUser->getRealName()));
         $wgOut->addHtml('</td></tr><tr><th><center>' .
                         wfMsg('whitelisttablemodify') .
-                        "<br /><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
+                        "<br><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
                         wfMsg('whitelisttablemodifyall') .
                         "</a> <a href=\"javascript:SetChecked(0,'cb_modify[]')\">" .
                         wfMsg('whitelisttablemodifynone') .
@@ -338,7 +354,7 @@ END;
             if ($page_title == NULL)
                 $wgOut->addHtml(wfMsg('whitelistbadtitle') . $row->wl_page_title);
             else
-                $wgOut->addHtml('<a href="' . $page_title->getFullUrl() . '">' . $row->wl_page_title . "</a>");
+                self::DisplayWildCardMatches($row->wl_page_title, $row->wl_page_title, 0);
             $wgOut->addHTML("</td><td><center>");
             if ($row->wl_allow_edit)
                 $wgOut->addHtml(wfMsg('whitelisttableedit'));
@@ -451,6 +467,126 @@ END;
                             );
         return $res;
     }
+
+    function ExpandWildCardWhiteList($wl_pattern)
+    {
+        global $wgContLanguageCode, $wgWhitelistWildCardInsensitive;
+    
+        $dbr = wfGetDB( DB_SLAVE );
+        $dbr->debug(true);
+        $expanded = array();
+        $whitelisted = array();
+        $debug = 0;
+        
+        # extract the NameSpace (the first part before the optional first colon followed by the article name
+        $pattern = '/^((:?)(.*?):)?(.*)$/';
+        $pattern .= $wgWhitelistWildCardInsensitive ? 'i' : '';
+        
+        if (preg_match($pattern, $wl_pattern, $matches))
+        {
+            $found = array();
+            $found[title] = $matches[4];
+            $found[ns] = '%';
+    
+            $ns = Language::Factory($wgContLanguageCode);
+            if ($matches[1] == ':' && $matches[2] == '' )
+                $found[ns] = NS_MAIN;
+            if ($nsindex = $ns->getNsIndex($matches[3]))
+                $found[ns] = $nsindex;
+            if (!is_int($found[ns]) && ($found[ns] == '%')) 
+                $found[title] = $wl_pattern;
+    
+            $found[title] = str_replace('*', '%',  $found[title]);
+            $found[title] = str_replace(' ', '_',  $found[title]);
+            array_push($expanded, $found);
+    
+            # process the talk categories as well as the underlying categories
+            if (is_int($found['ns']) && $found['ns'] >= NS_MAIN)
+            {
+                if ($found['ns'] % 2)
+                    $found['ns']--;
+                else
+                    $found['ns']++;
+                array_push($expanded, $found);
+            }
+        }
+    
+        if ($debug)
+            print_r($expanded);
+    
+        foreach ($expanded as $entry)
+        {
+            $sql = "SELECT page_id FROM ". $dbr->tableName('page') ." WHERE `page_namespace` LIKE '$entry[ns]' AND `page_title` LIKE '$entry[title]'";
+            if ($wgWhitelistWildCardInsensitive)
+            {
+                $sql = "SELECT page_id FROM " .
+                       $dbr->tableName('page') .
+                       " WHERE UPPER(`page_namespace`) LIKE '" . strtoupper($entry[ns]) . "'" .
+                       " AND UPPER(`page_title`) LIKE '" . strtoupper($entry[title]) . "'";
+            }
+            $res = $dbr->query($sql, __METHOD__);
+            for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res))
+                array_push($whitelisted, $row->page_id);
+            $dbr->freeResult($res);
+        }
+        
+        if ($debug)
+            print_r($whitelisted);
+
+        return $whitelisted;
+    }
+
+
+    // createlink:  negative = No link
+    //                  zero = Only if possible
+    //              Positive = Link
+    
+    function DisplayWildCardMatches($pagename, $headertext, $createlink=1)
+    {
+        global $wgOut;
+        $debug = 0;
+                
+        $wildcard_match = self::ExpandWildCardWhiteList($pagename);
+        $num_matches = count($wildcard_match);
+        $need_bullet = 0;
+        if (substr($headertext, 0, 1) == '*')
+        {
+            $need_bullet = 1;
+            $headertext = substr($headertext, 1);
+        }
+        if (($num_matches <= 1) && !preg_match('/\%/', $pagename))
+        {
+            if ($createlink >= 0)
+                $headertext = "[[:$pagename|$headertext]]";
+            if ($need_bullet)
+                $headertext = '* ' . $headertext;
+            if ($debug)
+                print "Adding '$headertext'\n";
+            $wgOut->addWikiText($headertext);
+            return;
+        }  
+        
+        if ($createlink > 0)
+            $headertext = "[[:$pagename|$headertext]]";
+        if ($debug)
+            print "Adding '$headertext'\n";
+            
+        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        # this is a hack to make the [show]/[hide] always appear after the text
+        $wgOut->addWikiText("$headertext" . wfMsg('whitelistnummatches', $num_matches) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
+        $wgOut->addHtml('<div class="NavContent" style="display:none; font-size:normal; text-align:left">');
+
+        foreach ($wildcard_match as $pageid)
+        {
+            $page = Title::newFromId($pageid);
+            $link = ":* [[:". $page->getNsText() . ":" . $page->getText() . "|" . $page->getNsText() . ":" . $page->getText() ."]]";
+            $wgOut->addWikiText($link);
+            if ($debug)
+                print "Adding '$link'\n";
+        }
+        $wgOut->addHtml('</div></div>');
+    }
 }
 
 function wfAddRestrictedPagesTab(&$personal_urls, $wgTitle)
@@ -468,15 +604,20 @@ function wfAddRestrictedPagesTab(&$personal_urls, $wgTitle)
     return true;
 }
 
-require_once("$IP/includes/SpecialPage.php");
-
 class WhiteList extends SpecialPage
 {
     function WhiteList() {
         global $wgWhiteListRestrictedRight;
        
         SpecialPage::SpecialPage("WhiteList", $wgWhiteListRestrictedRight);
-        self::loadMessages();
+
+        # the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
+        # so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
+        if (function_exists('wfLoadExtensionMessages'))
+            wfLoadExtensionMessages('WhiteList');
+        else
+            self::loadMessages();
+            
         return true;
     }
 
@@ -495,8 +636,6 @@ class WhiteList extends SpecialPage
         {
             $dummy = NULL;
             $user = User::newFromId($user);
-            # this is a hack to get properly fill in the $wgWhitelistOverride array with defaults
-            wfCheckWhitelist($dummy, $user, $dummy, $dummy);
         }
 
         $this->setHeaders();
@@ -534,7 +673,7 @@ class WhiteList extends SpecialPage
 
         $res = WhitelistEdit::contractorWhitelistTable($dbr, $user->getId());
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
-            $wgOut->addWikiText("* [[:$row->wl_page_title|$row->wl_page_title]]");
+            WhitelistEdit::DisplayWildCardMatches($row->wl_page_title, "* $row->wl_page_title", 0);
         }
         $dbr->freeResult($res);
         $pages = array();
@@ -544,14 +683,14 @@ class WhiteList extends SpecialPage
             array_push($pages, $page);
         sort($pages);
         foreach ($pages as $page)
-            $wgOut->addWikiText("* [[$page]]");
+            $wgOut->addWikiText("* [[:$page|$page]]");
 
-                
+
         $wgOut->addHtml("</td><td valign=top>");
         $wgOut->addHtml("<table cellspacing=0 cellpadding=2 border=0 width=100%><tr><td align='right'>$wgWhiteListManagerGroup:</td><td>");
         $wgOut->addHTML("<form method=\"post\">");
         $wgOut->addHTML('<select name="manager">');
-        
+
         $users = array();
         $res = $dbr->select( 'user_groups', 'ug_user', array('ug_group'=>$wgWhiteListManagerGroup), __METHOD__);
         for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
@@ -564,13 +703,13 @@ class WhiteList extends SpecialPage
             $wgOut->addHTML("<option value=\"$id\">".$name."</option>");
         $wgOut->addHTML('</select> ');
 
-        
+
         $wgOut->addHtml("</td></tr><tr><td align='right'>" . wfMsg('mywhitelistpages') . ":</td><td>");
         $wgOut->addHtml("<textarea name='newPages' cols=40 rows=5></textarea>");
         $wgOut->addHtml("</td></tr><tr><td colspan=2><center>");
         $wgOut->addHTML("<input type='submit' name='submit' value='" . wfMsg('whitelistnewtableprocess') . "' />");
         $wgOut->addHTML("</form>");
-        $wgOut->addHtml("</center></td></tr></table>");        
+        $wgOut->addHtml("</center></td></tr></table>");
         $wgOut->addHtml("</td></tr></table>");
         $wgOut->addHtml("</td></tr></table>");
     }
