@@ -155,7 +155,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 									   'server',
 									   array('path' => $wgOpenIDServerStorePath));
 
-		return new Auth_OpenID_Server($store);
+		return new Auth_OpenID_Server($store, $this->serverUrl());
 	}
 
 	# Checks a validation request. $imm means don't run any UI.
@@ -185,7 +185,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		if (!isset($name) || strlen($name) == 0) {
 			wfDebug("OpenID: '$url' not a user page.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 		assert(isset($name) && strlen($name) > 0);
@@ -195,7 +195,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		if ($wgUser->getId() == 0) {
 			wfDebug("OpenID: User not logged in.\n");
 			if ($imm) {
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			} else {
 				# Bank these for later
 				$this->SaveValues($request, $sreg);
@@ -213,7 +213,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		if (!isset($user) ||
 			$user->getId() != $wgUser->getId()) {
 			wfDebug("OpenID: User from url not logged in user.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 		assert(isset($user) && $user->getId() == $wgUser->getId() && $user->getId() != 0);
@@ -224,7 +224,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		if (isset($openid) && strlen($openid) > 0) {
 			wfDebug("OpenID: Not one of our users; logs in with OpenID.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 	    assert(is_array($sreg));
@@ -234,14 +234,14 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		if (array_key_exists('required', $sreg)) {
 			$notFound = false;
 			foreach ($sreg['required'] as $reqfield) {
-				if (is_null(OpenIdGetUserField($user, $reqfield))) {
+				if (is_null($this->GetUserField($user, $reqfield))) {
 					$notFound = true;
 					break;
 				}
 			}
 			if ($notFound) {
 				wfDebug("OpenID: Consumer demands info we don't have.\n");
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			}
 		}
 
@@ -258,7 +258,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		if (is_null($trust)) {
 			wfDebug("OpenID: No trust record.\n");
 			if ($imm) {
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			} else {
 				# Bank these for later
 				$this->SaveValues($request, $sreg);
@@ -274,7 +274,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		if ($trust === false) {
 			wfDebug("OpenID: User specified not to allow trust.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
         assert(isset($trust) && is_array($trust));
@@ -286,14 +286,14 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			$notFound = false;
 			foreach ($sreg['required'] as $reqfield) {
 				if (!in_array($reqfield, $trust) ||
-					is_null(OpenIdGetUserField($user, $reqfield))) {
+					is_null($this->GetUserField($user, $reqfield))) {
 					$notFound = true;
 					break;
 				}
 			}
 			if ($notFound) {
 				wfDebug("OpenID: Consumer demands info user doesn't want shared.\n");
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			}
 		}
 
@@ -357,7 +357,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			$trust_array[$trust_root] = $value;
 		}
 
-		OpenIDSetUserTrustArray($user, $trust_array);
+		$this->SetUserTrustArray($user, $trust_array);
 	}
 
 	function GetUserTrustArray($user) {
@@ -462,12 +462,17 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 	}
 
-	function Response($server, $response) {
+	function Response(&$server, &$response) {
 		global $wgOut;
+
+		assert(!is_null($server));
+		assert(!is_null($response));
 
 		$wgOut->disable();
 
 		$wr =& $server->encodeResponse($response);
+
+		assert(!is_null($wr));
 
 		header("Status: " . $wr->code);
 
@@ -476,6 +481,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 
 		print $wr->body;
+
 		return;
 	}
 
@@ -556,8 +562,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		assert (isset($password) && strlen($password) > 0);
 
 		$url = $request->identity;
-		wfDebug("OpenID: url = '$url'\n");
-		
+
 		assert(isset($url) && is_string($url) && strlen($url) > 0);
 
 		$name = $this->UrlToUserName($url);
@@ -635,7 +640,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			}
 			$wgOut->addHTML('</table>');
 		}
-		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' />");
+		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' /></form>");
 		return NULL;
 	}
 
@@ -658,7 +663,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		if (!$wgRequest->getCheck('wpAllowTrust')) {
 
-			OpenIDSetUserTrust($wgUser, $trust_root, false);
+			$this->SetUserTrust($wgUser, $trust_root, false);
 			# Set'em and sav'em
 			$wgUser->saveSettings();
 		} else {
@@ -674,7 +679,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 				}
 			}
 
-			OpenIDSetUserTrust($wgUser, $trust_root, $allow);
+			$this->SetUserTrust($wgUser, $trust_root, $allow);
 			# Set'em and sav'em
 			$wgUser->saveSettings();
 		}
@@ -722,6 +727,10 @@ class SpecialOpenIDServer extends SpecialOpenID {
 				return $nt->getText();
 			}
 		}
+	}
+
+	function serverUrl() {
+		return $this->fullURL('OpenIDServer');
 	}
 }
 
