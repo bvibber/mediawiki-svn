@@ -219,7 +219,7 @@
 	 * 
 	 * @@todo point to MV_OggSplit (for segmenting the ogg stream)
 	 * (for now using anx)
-	 */
+	 */	 
 	function getWebStreamURL($quality=null){
 		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
@@ -246,6 +246,10 @@
 			//@@todo throw ERROR
 			return false;
 		}
+	}	
+	function getROEURL(){		
+		$roeTitle = Title::newFromText('MvExportStream', NS_SPECIAL);
+		return $roeTitle->getFullURL();
 	}
 	function getEmbedVideoHtml($vid_id='', $size='', $tag='video', $force_server=''){
 		if($size==''){
@@ -254,7 +258,8 @@
 		}
 		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';
 		list($vWidth, $vHeight) = explode('x', $size);
-		$stream_web_url = $this->getWebStreamURL();		
+		$stream_web_url = $this->getWebStreamURL();
+		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){
 			$o='';		
 			if($this->dispVideoPlayerTime){				
@@ -264,9 +269,9 @@
 			}				
 			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
 				'src="'.$stream_web_url .'" ' .
+				'roe="'.$roe_url.'" '.
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
-				'controls="true" embed_link="true" />';
-				
+				'controls="true" embed_link="true" />';				
 			return $o;	
 		}else{
 			return wfMsg('mv_error_stream_missing');

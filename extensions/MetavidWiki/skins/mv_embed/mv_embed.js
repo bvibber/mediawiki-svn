@@ -85,7 +85,7 @@ var video_attributes = {
     "end":null,
     "controls":true,            
     
-    //roe url (for grabbing metadata)
+    //roe url (for xml based metadata)
     "roe":null,
             
     //custom attributes for mv_embed: 
@@ -710,7 +710,7 @@ embedVideo.prototype = {
 	        }
 	    }	   	    
 		//if roe set & (src is not) ... load settings from xml (where not already set) 
-		if(element.getAttribute('roe')!=null && this.src==null){
+		if(this.roe!=null && this.src==null){
 			this.loading_external_data=true;
 		}
 		//init the default states: 
@@ -992,7 +992,7 @@ embedVideo.prototype = {
 	    }
 	    //add direct download link if option:
 	    if(this.download_link){
-	    	//check for roe attribute
+	    	//check for roe attribute (extened download options)
 	    	var dlLink = (this.roe)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.src;	    	
 	    	thumb_html+='<div style="position:absolute;bottom:2px;left:2px;z-index:1">'+
 		     '<a title="'+getMsg('download_clip')+'" href="'+dlLink+'">';		     
@@ -1020,10 +1020,13 @@ embedVideo.prototype = {
 			}
 			var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
 						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
-						'&lt;video id=&quot;'+this.id+'&quot; ' + 
-						'src=&quot;'+this.src+'&quot; ' + 
-						'thumbnail=&quot;'+embed_thumb_html+'&quot;/&gt;';
-	
+						'&lt;video id=&quot;'+this.id+'&quot; ';
+			if(this.roe){
+				embed_code_html+='roe=&quot;'+this.roe+'&quot; /&gt;';				
+			}else{
+				embed_code_html+='src=&quot;'+this.src+'&quot; ' + 
+					'thumbnail=&quot;'+embed_thumb_html+'&quot;/&gt;';
+			}
 			//add the hidden embed code:
 			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+embed_code_html+'">'
@@ -1073,7 +1076,7 @@ embedVideo.prototype = {
 		*/		
 	},		
 	//@@todo we should group/abstract hide show video and set playback prefrence	
-	showVideoDownload:function(){
+	showVideoDownload:function(){		
 		 $j('#'+this.id).css('position', 'relative');
 		 //set height width (check for playlist container) 
 	 	 var width = (this.pc)?this.pc.pp.width:this.width;
@@ -1084,32 +1087,43 @@ embedVideo.prototype = {
 		 //fade in a black bg div ontop of everything
 		 var select_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
-				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">' +
-			 '<span style="position:relative;top:20px;left:20px">' +
-				 '<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
-				 
-		select_code+='<span style="color:white"><blockquote>';
+				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+	
+			 '<span id="con_vl_'+this.id+'" style="position:relative;top:20px;left:20px;color:white;">';			 	
 		var dl_list='';
-		$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
-			var dl_line = '<a style="color:white" href="' + n.getAttribute("src") +'"> '+
-						n.getAttribute("title")+'</a><br>'+"\n";
-						
-			if(n.getAttribute("content-type")=="video/ogg"){
-				select_code+=dl_line;
-			}else{
-				dl_list+=dl_line;
-			}
-		});
-		select_code+='</blockquote>'+getMsg('download_full')+"<blockquote>";
-		select_code+=dl_list;
-		select_code+='</blockquote></span>';
-		
-		select_code+='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>'+
-			 '</span>'+
+		//set to loading if we don't have the roe data yet: 
+		if(!this.roe_data && this.roe){		
+			$j('#con_vl_'+this.id).html(getMsg('loading_txt'));			
+			var _this = this;
+			this.getParseROE(function(){
+				$j('#con_vl_'+_this.id).html(_this.getDLlist());				
+			});
+		}else{
+			select_code+=this.getDLlist();
+		}		
+		select_code+='</span>'+
+			'<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>'+
 		 '</div>';
 		 //js_log('appending to: ' + sel_id +' sc: '+ select_code );
 		 $j('#'+sel_id).append(select_code);
 		 $j('#blackbg_'+sel_id).fadeIn("slow");
+	},
+	getDLlist:function(){		
+		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
+		out+='<span style="color:white"><blockquote>';
+		var dl_list='';
+		$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
+			var dl_line = '<a style="color:white" href="' + n.getAttribute("src") +'"> '+
+						n.getAttribute("title")+'</a><br>'+"\n";						
+			if(n.getAttribute("content-type")=="video/ogg"){
+				out+=dl_line;
+			}else{
+				dl_list+=dl_line;
+			}
+		});
+		out+='</blockquote>'+getMsg('download_full')+"<blockquote>";
+		out+=dl_list;
+		out+='</blockquote></span>';
+		return out;
 	},
 	closeVideoDownload:function(){
 	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
