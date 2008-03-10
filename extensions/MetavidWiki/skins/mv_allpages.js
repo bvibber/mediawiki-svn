@@ -55,19 +55,20 @@ function mv_do_mvd_link_rewrite(){
 						mv_ext(inx);
 					});
 				}	
-			}	
+			}
 		}		
 	});
 	js_log('got to I: '+i);
 	$j('#mvd_link_'+i).after('<div style="clear:both"></div>')
 }
-function get_mvdrw_img(i){
+function get_mvdrw_img(i, size){
+	var size = (!size)?{'w':80,'h':60}:size;
 	var stream_link = wgScript+'?title=Stream:'+gMvd[i]['sn']+'/'+gMvd[i]['st']+'/'+gMvd[i]['et'];
 	var stream_desc = gMvd[i]['sn'].substr(0,1).toUpperCase() + gMvd[i]['sn'].substr(1).replace('_', ' ')+' '+ gMvd[i]['st'] + ' to '+ gMvd[i]['et'];
 	var expand_link = '<span id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
 	var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+gMvd[i]['sn']+'&t='+gMvd[i]['st']+'&size=icon';
 	return '<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+')" ' +
-				'style="cursor:pointer;float:left;height:60px;width:80px;" src="'+img_url+'">'+expand_link+
+				'style="cursor:pointer;float:left;height:'+size['h']+'px;width:'+size['w']+'px;" src="'+img_url+'">'+expand_link+
 					'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
 }
 function mv_ext(inx){
@@ -89,7 +90,10 @@ function mv_ext(inx){
 	js_log('did mv ex');
 }
 function mv_cxt(inx){
-	$j('#mvd_link_'+inx).html(get_mvdrw_img(inx));	
+	//stop the video: 
+	$j('#mvd_vid_'+inx).get(0).stop();
+	//replace the html: 
+	$j('#mvd_link_'+inx).html(get_mvdrw_img(inx, {'w':320,'h':240}));	
 	$j('#mvd_link_'+inx).animate({width:'300px','height':'60px'},1000);
 	$j('#mvd_link_im_'+inx).animate({width:'80px','height':'60px'},1000);
 	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\')');

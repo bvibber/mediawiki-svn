@@ -26,8 +26,10 @@ var mv_java_iframe = true;
 var mv_media_iframe_path = '/mv_embed/';
 
 var global_ogg_list = new Array();
+var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
+
 
 if(!gMsg){var gMsg={};}
 //all default msg in [english] should be overwitten by the CMS languge msg system.
@@ -36,6 +38,10 @@ gMsg['select_playback']='Set Playback Prefrence';
 gMsg['link_back']='Link Back';
 gMsg['error_load_lib']='mv_embed: unable to load required javascript libraries\n'+
 			 	'insert script via DOM has failed, try reloading?  ';
+			 	
+gMsg['download_from']='Download Selection:';
+gMsg['download_full']='Download Full File:'
+gMsg['download_clip']='Download the Clip';
 //plugin names:
 gMsg['ogg-player-vlc-mozilla']='VLC Plugin';
 gMsg['ogg-player-videoElement']='Native Ogg Video Support';
@@ -46,7 +52,6 @@ gMsg['ogg-player-quicktime-mozilla']='Quicktime Plugin';
 gMsg['ogg-player-quicktime-activex']='Quicktime ActiveX';
 gMsg['ogg-player-cortado']='Java Cortado';
 gMsg['ogg-player-selected']=' (selected)';
-gMsg['download_clip']='Download the Clip';
 gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
 
@@ -87,7 +92,7 @@ var video_attributes = {
     "play_button":true,
     "thumbnail":null, 
     "linkback":null, 
-    "embed_link":false,
+    "embed_link":true,
     "download_link":true
 };
 
@@ -704,8 +709,8 @@ embedVideo.prototype = {
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");  
 	        }
 	    }	   	    
-		//if roe set ... load settings from xml (where not already set) 
-		if(element.getAttribute('roe')!=null){
+		//if roe set & (src is not) ... load settings from xml (where not already set) 
+		if(element.getAttribute('roe')!=null && this.src==null){
 			this.loading_external_data=true;
 		}
 		//init the default states: 
@@ -786,11 +791,11 @@ embedVideo.prototype = {
 			js_log("got data "+ data);
 			if(typeof data == 'object' ){
 				js_log('type of data is object');
-				this.roe_data = data;
+				_this.roe_data = data;
 				//set the src to video tag with "default" attribute:
-				var rVids = this.roe_data.getElementsByTagName('video');
+				var rVids = _this.roe_data.getElementsByTagName('video');
 				js_log('found '+ rVids.length + ' video tags');
-				$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
+				$j.each(_this.roe_data.getElementsByTagName('video'), function(inx,n){	
 					if(n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
 						_this['src'] = n.getAttribute("src");
@@ -799,21 +804,21 @@ embedVideo.prototype = {
 				//set the thumbnail: 
 				//for some reason getElement By id does not work > ? 
 				//rThumb = this.roe_data.getElementById('stream_thumb');
-				$j.each(this.roe_data.getElementsByTagName('img'), function(inx, n){
+				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
 					if(n.getAttribute("id")=="stream_thumb"){
 						js_log('set thumb to '+n.getAttribute("src"));
 						_this['thumbnail'] = n.getAttribute("src");	
 					}
 				}); 
 				//set the linkback:
-				$j.each(this.roe_data.getElementsByTagName('link'), function(inx, n){
+				$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
 					if(n.getAttribute('id')=='html_linkback'){
 						js_log('set linkback to '+n.getAttribute("src"));
 						_this['linkback'] = n.getAttribute('href');
 					}
 				});
 			}
-			js_log("do callback "+ _this['src'] + _this['thumbnail']);
+			js_log("do callback roe data:"+_this['roe_data']+' '+ _this['src'] +' '+ _this['thumbnail']);
 			callback();
 		});
 	},
@@ -985,10 +990,12 @@ embedVideo.prototype = {
 						src:mv_embed_path + 'images/vid_info_sm.png' });
 			thumb_html+='</div>';    	
 	    }
-	    //add direct download link if requested:
+	    //add direct download link if option:
 	    if(this.download_link){
+	    	//check for roe attribute
+	    	var dlLink = (this.roe)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.src;	    	
 	    	thumb_html+='<div style="position:absolute;bottom:2px;left:2px;z-index:1">'+
-		     '<a title="'+getMsg('download_clip')+'" href="'+this.src+'">';
+		     '<a title="'+getMsg('download_clip')+'" href="'+dlLink+'">';		     
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0", 
 						src:mv_embed_path + 'images/vid_download_sm.png' });
 			thumb_html+='</div>';   
@@ -1064,7 +1071,53 @@ embedVideo.prototype = {
 		} );
 		* 
 		*/		
-	},			
+	},		
+	//@@todo we should group/abstract hide show video and set playback prefrence	
+	showVideoDownload:function(){
+		 $j('#'+this.id).css('position', 'relative');
+		 //set height width (check for playlist container) 
+	 	 var width = (this.pc)?this.pc.pp.width:this.width;
+	 	 var height = (this.pc)?this.pc.pp.height:this.height;
+	 	 if(width<320)width=320;
+	 	 if(height<240)height=240;
+	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+		 //fade in a black bg div ontop of everything
+		 var select_code = '<div id="blackbg_'+sel_id+'" ' +
+			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
+				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">' +
+			 '<span style="position:relative;top:20px;left:20px">' +
+				 '<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
+				 
+		select_code+='<span style="color:white"><blockquote>';
+		var dl_list='';
+		$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
+			var dl_line = '<a style="color:white" href="' + n.getAttribute("src") +'"> '+
+						n.getAttribute("title")+'</a><br>'+"\n";
+						
+			if(n.getAttribute("content-type")=="video/ogg"){
+				select_code+=dl_line;
+			}else{
+				dl_list+=dl_line;
+			}
+		});
+		select_code+='</blockquote>'+getMsg('download_full')+"<blockquote>";
+		select_code+=dl_list;
+		select_code+='</blockquote></span>';
+		
+		select_code+='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>'+
+			 '</span>'+
+		 '</div>';
+		 //js_log('appending to: ' + sel_id +' sc: '+ select_code );
+		 $j('#'+sel_id).append(select_code);
+		 $j('#blackbg_'+sel_id).fadeIn("slow");
+	},
+	closeVideoDownload:function(){
+	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+		 $j('#blackbg_'+sel_id).fadeOut("slow", function(){
+			 $j('#blackbg_'+sel_id).remove();
+		 });
+ 		return false;//onclick action return false
+	},
 	/*
 	*  base embed controls 
 	*	the play button calls 
@@ -1371,6 +1424,68 @@ function ntp2seconds(ntp){
 function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
+ function do_request(req_url,callback,mv_json_response){
+ 	js_log('do request: ' + req_url);
+		if( parseUri(document.URL).host != parseUri(req_url).host){
+			//check if MV_embed path matches document.URL then we can use the local proxy: 
+			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
+				js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
+				$j.ajax({
+					type: "POST",
+					url:mv_embed_path + 'mv_data_proxy.php',
+					data:{url:req_url},
+					success:function(data){					
+						callback(data);
+					}
+				});
+			}else{
+				//need to get data via DOM proxy injection with callback
+				global_req_cb.push(callback);
+				if(!mv_json_response){									
+					//swap out & in req url:
+					req_url  =req_url.replace(/&/g,'__amp__');
+					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
+						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
+				}else{
+					//response type is mv_json_response don't hit mv_data_proxy
+					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
+				}
+			}
+		}else{
+			$j.ajax({
+				type: "GET",
+				url:req_url,
+				success:function(data){
+					callback(data);
+				}
+			});
+		}	
+}
+function mv_jsdata_cb(response){	
+	//run the callback from the global req cb object:
+	if(!global_req_cb[response['cb_inx']]){
+		js_log('missing req cb index');
+		return false;
+	}
+	if(!response['pay_load']){
+		js_log("missing pay load");
+		return false;
+	}
+	//switch on content type: 
+	switch(response['content-type']){
+		case 'text/plain':
+			//global_req_cb[response['cb_inx']](response['pay_load']);
+		break;
+		case 'text/xml':
+			if(typeof response['pay_load'] == 'string'){
+				//attempt to parse as xml 
+				var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");
+				if(xmldata)response['pay_load']=xmldata;
+			}
+		break
+	}			
+	global_req_cb[response['cb_inx']](response['pay_load']);
+}
 //load external via dom injection
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
@@ -1379,29 +1494,6 @@ function loadExternalJs(url){
 	e.setAttribute('type',"text/javascript");
 	//e.setAttribute('defer', true);
 	document.getElementsByTagName("head")[0].appendChild(e);     
-}
- function do_request(req_url,callback){
- 	js_log('do request: ' + req_url);
-		if( parseUri(document.URL).host != parseUri(req_url).host){
-			//@@TODO a DOM injection call to get data
-			js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
-			$j.ajax({
-				type: "POST",
-				url:mv_embed_path + 'mv_data_proxy.php',
-				data:{url:req_url},
-				success:function(data){					
-					callback(data);
-				}
-			});
-		}else{
-			$j.ajax({
-				type: "GET",
-				url:req_url,
-				success:function(data){			
-					callback(data);
-				}
-			});
-		}	
 }
 function styleSheetPresent(url){
     style_elements = document.getElementsByTagName('link');  

@@ -36,7 +36,7 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 //$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 //		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
-$sample_embed[1]['tag'] = '<video roe="http://localhost/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
+$sample_embed[1]['tag'] = '<video roe="http://mammoth.dnip.net/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
 
