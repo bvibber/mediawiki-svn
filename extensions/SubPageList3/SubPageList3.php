@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'efSubpageList3';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Subpage List 3',
-	'version' => '1.02',
+	'version' => '1.03',
 	'description' => 'Automatically creates a list of the subpages of a page.',
 	'descriptionmsg' => 'spl3_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
@@ -474,10 +474,11 @@ class SubpageList3 {
 			$c++;
 			if ($c>200) break; // safety
 		}
-
-		$retval = implode( "\n", $list );
-		if ($this->mode == 'bar') {
-			$retval = implode( "", $list );
+		if ( count( $list ) > 0 ) {
+			$retval = implode( "\n", $list );
+			if ($this->mode == 'bar') {
+				$retval = implode( "", $list );
+			}
 		}
 
 		return $retval;
