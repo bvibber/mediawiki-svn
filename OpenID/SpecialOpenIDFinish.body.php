@@ -73,6 +73,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			$name = $this->getUserName($openid, $sreg, $choice, $nameValue);
 
 			if (!$name || !$this->userNameOK($name)) {
+				wfDebug("OpenID: Name not OK: '$name'\n");
 				$this->chooseNameForm($openid, $sreg);
 				return;
 			}
@@ -603,13 +604,13 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
 
-	function getUserName($response, $sreg, $choice, $nameValue) {
+	function getUserName($openid, $sreg, $choice, $nameValue) {
 		switch ($choice) {
 		 case 'full':
 			return ((array_key_exists('fullname', $sreg)) ? $sreg['fullname'] : null);
 			break;
 		 case 'url':
-			return $this->toUserName($response->identity_url);
+			return $this->toUserName($openid);
 			break;
 		 case 'auto':
 			return $this->automaticName($sreg);
