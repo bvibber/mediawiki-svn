@@ -5,12 +5,12 @@ This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation, version 2
 of the License.
- 
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
- 
+
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -45,36 +45,36 @@ class WhitelistExec
 	 *   false=Later functions not consulted.
 	 */
 	static function CheckWhitelist(&$title, &$wgUser, $action, &$result) {
-	
+
 		global $wgWhiteListRestrictedRight;
-	
+
 		$override = WHITELIST_NOACTION;
-	
+
 		/* Bail if the user isn't restricted.... */
 		if( !in_array($wgWhiteListRestrictedRight, $wgUser->getRights()) ) {
 			$result = null; /* don't care */
 			return true; /* Later functions can override */
 		}
-	
+
 		/* Sanity Check */
 		if (!$title)
 			return $hideMe;
-	
+
 		/* Check global allow/deny lists */
 		$override = self::GetOverride($title->GetPrefixedText(), $action);
-	
+
 		/* Check if user page */
 		if( WHITELIST_NOACTION == $override )
 			$override = self::IsUserPage( $title->GetPrefixedText(), $wgUser );
-	
+
 		/* Handle special pages */
 		if( WHITELIST_NOACTION == $override )
 			$override = self::IsAllowedSpecialPage( $title, $wgUser );
-	
+
 		/* Check if page is on whitelist */
 		if( WHITELIST_NOACTION == $override )
 			$override = self::IsAllowed( $title, $wgUser, $action );
-	
+
 		switch( $override )
 		{
 			case WHITELIST_GRANT:
@@ -88,26 +88,26 @@ class WhitelistExec
 				return false; /* Later functions not consulted */
 		}
 	}
-	
-	
-	
+
+
+
 	/* Check for global page overrides (allow or deny)
 	 */
 	static function GetOverride($title_text, $action )
 	{
 		global $wgWhitelistOverride;
-	
+
 		$override = undef;
-		
+
 		$allowView = in_array( $title_text,
 			$wgWhitelistOverride['always']['read'] );
 		$allowEdit = in_array( $title_text,
 			$wgWhitelistOverride['always']['edit'] );
 		$denyView  = in_array( $title_text,
 			$wgWhitelistOverride['never']['read'] );
-		$denyEdit  = in_array( $title_text, 
+		$denyEdit  = in_array( $title_text,
 			$wgWhitelistOverride['never']['edit'] );
-	
+
 		if( $action == 'edit' )
 		{
 			if( $denyEdit || $denyView )
@@ -126,30 +126,30 @@ class WhitelistExec
 			else
 				$override = WHITELIST_NOACTION;
 		}
-	
+
 		return $override;
 	}
-	
-	
-	
+
+
+
 	/* Allow access to user pages (unless disabled)
 	 */
 	static function IsUserPage( $title_text, &$wgUser )
 	{
 		global $wgWhitelistAllowUserPages;
-	
+
 		$userPage = $wgUser->getUserPage()->getPrefixedText();
 		$userTalkPage = $wgUser->getTalkPage()->getPrefixedText();
-	
+
 		if( ($wgWhitelistAllowUserPages == true) &&
 			($title_text == $userPage) || ($title_text == $userTalkPage) )
 			return WHITELIST_GRANT;
 		else
 			return WHITELIST_NOACTION;
 	}
-	
-	
-	
+
+
+
 	/* Special page wildcard notes:
 	 *  - Special: namespace entries can either be the exact name of
 	 *    a page, or Special:*. Other entries will be ignored.
@@ -158,15 +158,15 @@ class WhitelistExec
 	static function IsAllowedSpecialPage( &$title, &$wgUser )
 	{
 		global $wgContLanguageCode;
-	
+
 		$dbr = wfGetDB( DB_SLAVE );
-	
+
 		if( NS_SPECIAL == $title->getNamespace() )
 			{
 			/* Get localized Special: namespace text */
 			$lang = Language::Factory($wgContLanguageCode);
 			$special_ns_text = $lang->getNsText( $title->getNamespace() );
-	
+
 			/* Check for wildcard (Special:%) */
 			$db_result = $dbr->selectRow('whitelist',
 				array( 'wl_allow_edit',
@@ -177,7 +177,7 @@ class WhitelistExec
 			);
 			if( false != $db_result )
 				return 1; /* Allow */
-		
+
 			/* Check for exact page name */
 			$db_result = $dbr->selectRow('whitelist',
 				array( 'wl_allow_edit',
@@ -189,7 +189,7 @@ class WhitelistExec
 			if( false != $db_result )
 				return WHITELIST_GRANT;
 		}
-	
+
 		/* No hits */
 		return WHITELIST_NOACTION;
 	}
@@ -201,35 +201,35 @@ class WhitelistExec
 	{
 		if( NS_MAIN <= $title->getNamespace() )
 		{
-	
+
 			/* Get all valid database rows for the user.
 			 * Throw out any results which do not give sufficient
 			 * privilege for the current action.
 			 */
 			$dbr = wfGetDB( DB_SLAVE );
-		
+
 			/* Query Parameters */
 			$db_return_cols = array( 'wl_id',
 								     'wl_page_title',
 									 'wl_expires_on' );
 			$db_conditions = array( 'wl_user_id' => $wgUser->getId() );
-	
+
 			/* If editing, only get entries with edit privileges */
 			if( $action == 'edit' )
 				array_push( $db_conditions, 'wl_allow_edit', '1' );
-	
+
 			/* Do the query */
 			$db_results = $dbr->select('whitelist', $db_return_cols,
-				$db_conditions, __METHOD__ ); 
-	
-			/* Loop through each result returned and 
+				$db_conditions, __METHOD__ );
+
+			/* Loop through each result returned and
 		     * check for matches.
 			 */
 			while( $db_result = $dbr->fetchObject($db_results) )
 			{
 				/* Check for expired privilege */
 				$expired = strtotime($db_result->wl_expires_on) > strtotime(date("Y-m-d H:i:s"));
-				
+
 				/* Check page title against regex */
 				if( ! $expired )
 				{
@@ -244,7 +244,7 @@ class WhitelistExec
 		}
 		return WHITELIST_NOACTION;
 	}
-	
+
 	/* Returns true if hit, false otherwise */
 	static function RegexCompare(&$title, $sql_regex)
 	{
@@ -262,10 +262,10 @@ class WhitelistExec
 		{
 			/* Convert regex to PHP format */
 			$php_regex = str_replace('%', '*', $sql_regex);
-			
+
 			$php_regex_full = $wgWhitelistWildCardInsensitive ?
 				'/' . $php_regex . '/i' : '/' . $php_regex . '/';
-	
+
 
                 if (self::preg_test($php_regex_full))
 		      if( preg_match( $php_regex_full, $title->getPrefixedText() ) )
@@ -284,4 +284,4 @@ class WhitelistExec
             else
                 return true;
         }
-} /* End class */	
+} /* End class */
