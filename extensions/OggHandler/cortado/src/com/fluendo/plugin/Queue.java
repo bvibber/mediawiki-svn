@@ -260,6 +260,7 @@ public class Queue extends Element
 
 	while (isFilled()) {
           try {
+	    Debug.debug(parent.getName() + " full, waiting...");
             queue.wait();
 	    if (srcResult != OK) {
 	      buf.free();

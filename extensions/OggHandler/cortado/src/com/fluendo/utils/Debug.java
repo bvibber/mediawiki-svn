@@ -64,13 +64,18 @@ public class Debug {
     t -= startTime;
     
     if (lev <= level) {
-      System.out.println( "[" + Debug.rpad( Thread.currentThread().getName(), 30 ) + " " 
+      if (level >= DEBUG) {
+        System.out.println( "[" + Debug.rpad( Thread.currentThread().getName(), 30 ) + " " 
 	  + Debug.rpad( Long.toString( t ), 6 ) + " " + prefix[lev] + "] " + line );
+      } else {
+	System.out.println( "[" + prefix[lev] + "] " + line );
+      }
     }
   }
 
-  public static void debug(String line)
-  {
-    Debug.log( Debug.DEBUG, line );
-  }
+  public static void error(String line) { Debug.log( ERROR, line ); }
+  public static void warning(String line) { Debug.log( WARNING, line ); }
+  public static void warn(String line) { Debug.log( WARNING, line ); }
+  public static void info(String line) { Debug.log( INFO, line ); }
+  public static void debug(String line) { Debug.log( DEBUG, line ); }
 }

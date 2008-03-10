@@ -49,7 +49,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 
     private boolean statusRunning;
     private Thread statusThread;
-    private Status status;
+    public Status status;
     private int statusHeight = 20;
     private boolean inStatus;
     private boolean isBuffering;
@@ -158,14 +158,14 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 	 }
       }
       if (res != -1) 
-        System.out.println("param \""+name+"\" has enum value \""+res+"\" ("+vals[res]+")");
+        Debug.info("param \""+name+"\" has enum value \""+res+"\" ("+vals[res]+")");
       else
-        System.out.println("param \""+name+"\" has invalid enum value");
+        Debug.info("param \""+name+"\" has invalid enum value");
       return res;
     }
     public String getStringParam(String name, String def) {
       String res = getParam(name, def);
-      System.out.println("param \""+name+"\" has string value \""+res+"\"");
+      Debug.info("param \""+name+"\" has string value \""+res+"\"");
       return res;
     }
     public boolean getBoolParam(String name, boolean def) {
@@ -178,19 +178,19 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
       res = paramVal.equals("true");
       res |= paramVal.equals("1");
 
-      System.out.println("param \""+name+"\" has boolean value \""+res+"\"");
+      Debug.info("param \""+name+"\" has boolean value \""+res+"\"");
       return res;
     }
     public double getDoubleParam(String name, double def) {
       double res;
       res = Double.valueOf(getParam(name, ""+def)).doubleValue();
-      System.out.println("param \""+name+"\" has double value \""+res+"\"");
+      Debug.info("param \""+name+"\" has double value \""+res+"\"");
       return res;
     }
     public int getIntParam(String name, int def) {
       int res;
       res = Integer.valueOf(getParam(name, ""+def)).intValue();
-      System.out.println("param \""+name+"\" has int value \""+res+"\"");
+      Debug.info("param \""+name+"\" has int value \""+res+"\"");
       return res;
     }
 
@@ -203,7 +203,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     public synchronized void init() {
         cortado = this;
 
-	System.out.println("init()");
+	Debug.info("init()");
 
 	if (pipeline != null)
           stop();
@@ -499,10 +499,10 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     public void handleMessage(Message msg) {
         switch (msg.getType()) {
         case Message.WARNING:
-            System.out.println(msg.toString());
+            Debug.info(msg.toString());
             break;
         case Message.ERROR:
-            System.out.println(msg.toString());
+            Debug.info(msg.toString());
 	    if (!isError) {
               status.setMessage(msg.parseErrorString());
               status.setState(Status.STATE_STOPPED);
@@ -522,7 +522,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 	    }
             break;
         case Message.STREAM_STATUS:
-            System.out.println(msg.toString());
+            Debug.info(msg.toString());
             break;
         case Message.RESOURCE:
 	    if (!isError) {
@@ -671,7 +671,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     public synchronized void start() {
         int res;
 
-	System.out.println("start()");
+	Debug.info("Application starting");
 
         addComponentListener(this);
         addMouseListener(this);
@@ -694,7 +694,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     }
 
     public synchronized void stop() {
-	System.out.println("stop()");
+      Debug.info("Application stopping...");
 
         status.removeStatusListener(this);
         removeMouseMotionListener(this);
@@ -727,7 +727,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
           }
           statusThread = null;
 	}
-	System.out.println("stoped");
+	Debug.info("Application stopped");
     }
 }
 

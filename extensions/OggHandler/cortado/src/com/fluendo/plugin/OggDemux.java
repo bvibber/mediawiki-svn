@@ -397,7 +397,7 @@ public class OggDemux extends Element
     public int pushPage (Page og, OggStream stream) {
       int flowRet = Pad.OK;
 
-      flowRet = stream.pushPage (og);
+	flowRet = stream.pushPage (og);
 
       /* now check if all streams are Synced */
       if (!synced) {
@@ -416,7 +416,7 @@ public class OggDemux extends Element
 	 * streams are synced unless we have at least one media stream which in turn
 	 * will ensure that all media streams are in sync. */
 	if (check && hasMedia) {
-          Debug.log(Debug.DEBUG, "steams synced");
+          Debug.log(Debug.DEBUG, "streams synced");
 	  activate();
 	  reStart();
 	  synced = true;
@@ -477,6 +477,7 @@ public class OggDemux extends Element
       System.arraycopy(buf.data, buf.offset, oy.data, index, buf.length);
       oy.wrote(buf.length);
   
+      // Loop over all pages in the buffer
       while (flowRet == OK) {
         res = oy.pageout(og);
         if (res == 0)
@@ -490,12 +491,19 @@ public class OggDemux extends Element
 	  }
         }
         else {
+	  // Find the stream associated with this page
 	  int serial = og.serialno();
 	  OggStream stream = null;
 	  if (chain != null) {
 	    stream = chain.findStream (serial);
 	  }
 	  if (stream == null) {
+	    // No stream for this serial
+	    // The Ogg spec says that the bos pages for all the streams in a chain
+	    // will come before the remaining stream data for any stream. The chain
+	    // is activated once the non-header pages start arriving. So if a new
+	    // serial comes in when the chain is active, that means it must be the 
+	    // start of a new chain.
 	    if (chain != null) {
 	      if (chain.isActive()) {
 	        chain.deActivate();
@@ -505,6 +513,7 @@ public class OggDemux extends Element
             if (chain == null)
 	      chain = new OggChain();
 
+	    // Create the new stream
 	    stream = new OggStream(serial);
 	    chain.addStream (stream);
 	  }

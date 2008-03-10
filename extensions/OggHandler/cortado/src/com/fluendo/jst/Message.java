@@ -70,7 +70,9 @@ public class Message {
       case BUFFERING:
         return "[Message]: "+src+" type: BUFFERING, busy:"+boolVal+", percent:"+intVal;
       case STATE_CHANGED:
-        return "[Message]: "+src+" type: STATE_CHANGED, old:"+old+", next:"+next+", pending:"+pending;
+        return "[Message]: "+src+" type: STATE_CHANGED, old: " + Element.getStateName(old) +
+	  ", next: " + Element.getStateName(next)+
+	  ", pending: " + Element.getStateName(pending);
       case STATE_DIRTY:
         return "[Message]: "+src+" type: STATE_DIRTY";
       case STREAM_STATUS:

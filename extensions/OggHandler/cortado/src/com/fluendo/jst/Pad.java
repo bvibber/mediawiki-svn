@@ -320,6 +320,7 @@ public class Pad extends com.fluendo.jst.Object implements Runnable
     synchronized (streamLock) {
       while (taskState != T_STOP) {
         while (taskState == T_PAUSE) {
+	  Debug.debug(parent.getName() + ":" + this.getName() + " paused, waiting...");
 	  try {
 	    streamLock.wait();
 	  }

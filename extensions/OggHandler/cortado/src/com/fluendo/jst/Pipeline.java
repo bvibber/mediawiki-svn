@@ -438,6 +438,8 @@ public class Pipeline extends com.fluendo.jst.Element implements BusSyncHandler
     boolean haveAsync, haveNoPreroll;
     int res = SUCCESS;
 
+    Debug.debug("Pipeline.reCalcState");
+
     synchronized (this) {
       if (force)
         stateDirty = true;

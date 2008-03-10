@@ -19,6 +19,7 @@
 package com.fluendo.jst;
 
 import java.util.*;
+import com.fluendo.utils.*;
 
 public class Bus {
   private Vector queue;
@@ -44,9 +45,11 @@ public class Bus {
   }
 
   private void notifyHandlers (Vector handlers, Message message) {
+    Debug.debug("Bus.notifyHandlers: " + message);
     for (Enumeration e = handlers.elements(); e.hasMoreElements();)
     {
       BusHandler handler = (BusHandler) e.nextElement();
+      Debug.debug("Notifying " + handler);
       handler.handleMessage (message);
     }
   }
@@ -54,6 +57,8 @@ public class Bus {
   public void post(Message message) {
     boolean post = true;
     BusSyncHandler handler;
+
+    Debug.debug("Bus.post: " + message);
 
     synchronized (this) {
       if (flushing)

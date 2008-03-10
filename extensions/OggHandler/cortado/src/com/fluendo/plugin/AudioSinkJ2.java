@@ -36,9 +36,35 @@ public class AudioSinkJ2 extends AudioSink
 
   protected boolean open (RingBuffer ring) {
     channels = ring.channels;
+    line = openLine(ring.channels, ring.rate);
+    if (line == null) {
+      postMessage (Message.newError (this, "Could not open audio device."));
+      return false;
+    }
 
-    AudioFormat format = new AudioFormat(ring.rate, 16, ring.channels, true, true);
+    Debug.log(Debug.INFO, "line info: available: "+ line.available());
+    Debug.log(Debug.INFO, "line info: buffer: "+ line.getBufferSize());
+    Debug.log(Debug.INFO, "line info: framePosition: "+ line.getFramePosition());
+
+    ring.segSize = SEGSIZE;
+    ring.segTotal = line.getBufferSize() / ring.segSize;
+    while (ring.segTotal < 4) {
+      ring.segSize >>= 1;
+      ring.segTotal = line.getBufferSize() / ring.segSize;
+    }
+
+    ring.emptySeg = new byte[ring.segSize];
+    samplesWritten = 0;
+
+    line.start();
+
+    return true;
+  }
+
+  protected SourceDataLine openLine(int channels, int rate) {
+    AudioFormat format = new AudioFormat(rate, 16, channels, true, true);
     DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+    SourceDataLine line = null;
 
     try {
       Mixer.Info[] mixers = AudioSystem.getMixerInfo();
@@ -99,32 +125,24 @@ public class AudioSinkJ2 extends AudioSink
       }
     }
     catch (javax.sound.sampled.LineUnavailableException e) {
-      e.printStackTrace();
-      postMessage (Message.newError (this, "Could not open audio device."));
-      return false;
+      Debug.error(e.toString());
+      return null;
     }
     catch (Exception e) {
-      e.printStackTrace();
-      postMessage (Message.newError (this, "Unknown problem opening audio device"));
+      Debug.error(e.toString());
+      return null;
+    }
+
+    return line;
+  }
+
+  public boolean test() {
+    SourceDataLine line;
+    line = openLine(2, 44000);
+    if (line == null) {
       return false;
     }
-
-    Debug.log(Debug.INFO, "line info: available: "+ line.available());
-    Debug.log(Debug.INFO, "line info: buffer: "+ line.getBufferSize());
-    Debug.log(Debug.INFO, "line info: framePosition: "+ line.getFramePosition());
-
-    ring.segSize = SEGSIZE;
-    ring.segTotal = line.getBufferSize() / ring.segSize;
-    while (ring.segTotal < 4) {
-      ring.segSize >>= 1;
-      ring.segTotal = line.getBufferSize() / ring.segSize;
-    }
-
-    ring.emptySeg = new byte[ring.segSize];
-    samplesWritten = 0;
-
-    line.start();
-
+    line.close();
     return true;
   }
 

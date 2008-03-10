@@ -417,6 +417,12 @@ public abstract class AudioSink extends Sink implements ClockProvider
     }
   }
 
+  // Test whether the audio sink is likely to work.
+  // Called before the ring buffer is acquired
+  public boolean test() {
+    return true;
+  }
+
   protected WaitStatus doSync (long time)
   {
     return WaitStatus.newOK();

@@ -373,22 +373,16 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
     httpsrc.getPad("src").addCapsListener (this);
 
     if (enableAudio) {
-      try {
-        Class.forName("javax.sound.sampled.AudioSystem");
-        usingJavaX = true;
-        audiosink = ElementFactory.makeByName("audiosinkj2", "audiosink");
-	Debug.log(Debug.INFO, "using high quality javax.sound backend");
-      }
-      catch (ClassNotFoundException e) {
-        audiosink = ElementFactory.makeByName("audiosinksa", "audiosink");
-	Debug.log(Debug.INFO, "using low quality sun.audio backend");
-      }
+      audiosink = newAudioSink();
       if (audiosink == null) {
-        noSuchElement ("audiosink");
-        return false;
+	enableAudio = false; // to suppress creation of audio decoder pads
+	((Cortado)component).status.setHaveAudio(false);
+	component.repaint();
+	// Don't stop unless video is disabled too
+      } else {
+	asinkpad = audiosink.getPad("sink");
+	add(audiosink);
       }
-      asinkpad = audiosink.getPad("sink");
-      add(audiosink);
     }
     if (enableVideo) {
       videosink = ElementFactory.makeByName("videosink", "videosink");
@@ -401,8 +395,35 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
       vsinkpad = videosink.getPad("sink");
       add(videosink);
     }
+    if (audiosink == null && videosink == null) {
+      postMessage(Message.newError(this, "Both audio and video are disabled, can't play anything"));
+      return false;
+    }
 
     return true;
+  }
+
+  protected Element newAudioSink() {
+    com.fluendo.plugin.AudioSink s;
+    try {
+      Class.forName("javax.sound.sampled.AudioSystem");
+      usingJavaX = true;
+      s = (com.fluendo.plugin.AudioSink)ElementFactory.makeByName("audiosinkj2", "audiosink");
+      Debug.log(Debug.INFO, "using high quality javax.sound backend");
+    }
+    catch (ClassNotFoundException e) {
+      s = (com.fluendo.plugin.AudioSink)ElementFactory.makeByName("audiosinksa", "audiosink");
+      Debug.log(Debug.INFO, "using low quality sun.audio backend");
+    }
+    if (s == null) {
+      noSuchElement ("audiosink");
+      return null;
+    }
+    if (!s.test()) {
+      return null;
+    } else {
+      return s;
+    }
   }
 
   private boolean cleanup() {

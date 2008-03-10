@@ -340,7 +340,7 @@ public class HTTPSrc extends Element
         url = new URL(documentBase, urlString);
       }
       else {
-        Debug.log(Debug.INFO, "parsing as abslute URL");
+        Debug.log(Debug.INFO, "parsing as absolute URL");
         url = new URL(urlString);
       }
 
