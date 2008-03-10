@@ -12,7 +12,7 @@ require_once( $IP.'/languages/Names.php' );
 class SiteMatrix
 {
 	public $langlist, $sites, $names, $hosts;
-	public $wikipediaSpecial, $hidden, $specials, $matrix, $count, $countPerSite;
+	public $specialRewrites, $hidden, $specials, $matrix, $count, $countPerSite;
 
 	public function __construct()
 	{
@@ -50,9 +50,17 @@ class SiteMatrix
 			'wikiversity' => 'wikiversity.org',
 		);
 
-		# Special wikis that should point to wikiPedia, not wikiMedia
-		$this->wikipediaSpecial = array(
-			'dk', 'sources', 'species', 'test',
+		# Special wikis that don't are at $lang.wikimedia.org
+		$this->specialRewrites = array(
+			'arbcom-en' => 'arbcom.en.wikipedia.org',
+			'dk' => 'dk.wikipedia.org', # FIXME
+			'foundation' => 'wikimediafoundation.org',
+			'mediawiki' => 'www.mediawiki.org',
+			'nostalgia' => 'nostalgia.wikipedia.org',
+			'sources' => 'wikisource.org',
+			'species' => 'species.wikipedia.org',
+			'test' => 'test.wikipedia.org',
+			'wg-en' => 'wg.en.wikipedia.org',
 		);
 
 		# Some internal databases for other domains.
@@ -128,9 +136,13 @@ class SiteMatrixPage extends SpecialPage {
 					continue;
 				}
 
-				$langhost = str_replace("_", "-", $lang);
-				$domain = in_array($lang, $matrix->wikipediaSpecial) ? ".wikipedia.org" : ".wikimedia.org";
-				$url = "http://{$langhost}{$domain}/";
+				$langhost = str_replace( '_', '-', $lang );
+				if( isset( $matrix->specialRewrites[$lang] ) ){
+					$domain = $matrix->specialRewrites[$lang];
+				} else {
+					$domain = $langhost . ".wikimedia.org";
+				}
+				$url = "http://{$domain}/";
 
 				echo "\t\t<special code=\"{$langhost}\" url=\"{$url}\" />\n";
 			}
@@ -193,13 +205,13 @@ class SiteMatrixPage extends SpecialPage {
 
 			$langhost = str_replace( '_', '-', $lang );
 
-			# Handle special wikipedia projects:
-			if( in_array($lang, $matrix->wikipediaSpecial) ) {
-				$domain = '.wikipedia.org';
-			} else{
-				$domain = '.wikimedia.org';
+			# Handle special wikimedia projects:
+			if( isset( $matrix->specialRewrites[$lang] ) ){
+				$domain = $matrix->specialRewrites[$lang];
+			} else {
+				$domain = $langhost . ".wikimedia.org";
 			}
-			$s .= '<li><a href="http://' . $langhost . $domain . '/">' . $lang . "</a></li>\n";
+			$s .= '<li><a href="http://' . $domain . '/">' . $lang . "</a></li>\n";
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );
@@ -257,8 +269,12 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 			if ( in_array($lang, $matrix->hidden) ) continue;
 
 			$langhost = str_replace( '_', '-', $lang );
-			$domain = in_array($lang, $matrix->wikipediaSpecial) ? ".wikipedia.org" : ".wikimedia.org";
-			$url = "http://{$langhost}{$domain}/";
+			if( isset( $matrix->specialRewrites[$lang] ) ){
+				$domain = $matrix->specialRewrites[$lang];
+			} else {
+				$domain = $langhost . ".wikimedia.org";
+			}
+			$url = "http://{$domain}/";
 
 			$wiki = array();
 			$wiki['url'] = $url;
