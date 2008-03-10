@@ -236,12 +236,7 @@ LocalSettings.php file. Please read carefully.
 * $wgOpenIDConsumerStoreType and $wgOpenIDServerStoreType -- strings
   denoting the type of storage to be used to store OpenID assocation
   data when acting as an OpenID relying party (consumer) and server,
-  respectively. Valid values are "file" and "memc".  If the value for
-  one or both is "file", $wgOpenIDConsumerStorePath or
-  $wgOpenIDServerStorePath must be set, respectively (see below).  If
-  either of these variables is set to an invalid value, an error page
-  will be displayed. The default is "memc", unless the main cache is
-  set to CACHE_NONE (default for MW), in which case it is "file".
+  respectively. Only Valid values is "file"; "memc" no long valid.
 
 * $wgOpenIDConsumerStorePath and $wgOpenIDServerStorePath -- strings
   specifying the paths where OpenID assocation data should be stored

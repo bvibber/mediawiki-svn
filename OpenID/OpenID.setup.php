@@ -49,16 +49,14 @@ $wgOpenIDShowUrlOnUserPage = 'user';
 
 $wgOpenIDServerForceAllowTrust = array();
 
-# Where to store transitory data. Can be 'memc' for the $wgMemc
-# global caching object, or 'file' if caching is turned off
-# completely and you need a fallback.
+# Where to store transitory data. Only supported type is 'file'.
 
-$wgOpenIDServerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
+$wgOpenIDServerStoreType = 'file';
 
 # If the store type is set to 'file', this is is the name of a
 # directory to store the data in.
 
-$wgOpenIDServerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidserver/" : NULL;
+$wgOpenIDServerStorePath = "/tmp/$wgDBname/openidserver/";
 
 # Defines the trust root for this server
 # If null, we make a guess
@@ -81,18 +79,14 @@ $wgOpenIDConsumerAllow = array();
 
 $wgOpenIDConsumerDeny = array();
 
-# Where to store transitory data. Can be 'memc' for the $wgMemc
-# global caching object, or 'file' if caching is turned off
-# completely and you need a fallback.
+# Where to store transitory data. Only supported type is 'file'.
 
-# Default is memc unless the global cache is disabled.
-
-$wgOpenIDConsumerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
+$wgOpenIDConsumerStoreType = 'file';
 
 # If the store type is set to 'file', this is is the name of a
 # directory to store the data in.
 
-$wgOpenIDConsumerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidconsumer/" : NULL;
+$wgOpenIDConsumerStorePath = "/tmp/$wgDBname/openidconsumer/";
 
 # Expiration time for the OpenID cookie. Lets the user re-authenticate
 # automatically if their session is expired. Only really useful if
@@ -103,6 +97,10 @@ $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 # END CONFIGURATION VARIABLES
 
 $wgExtensionFunctions[] = 'setupOpenID';
+
+# Gets stored in the session, needs to be reified before our setup
+
+$wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = 'Auth/OpenID/Server.php';
 
 function setupOpenID() {
 	global $wgHooks, $wgAutoloadClasses, $wgSpecialPages, $wgExtensionCredits;
@@ -117,10 +115,6 @@ function setupOpenID() {
 	# Autoload common parent with utility methods
 
 	$wgAutoloadClasses['SpecialOpenID'] = dirname(__FILE__) . '/SpecialOpenID.body.php';
-
-	# Autoload storage classes
-
-	$wgAutoloadClasses['OpenID_MemcStore'] = dirname(__FILE__) . '/MemcStore.php';
 
 	$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
 	$wgHooks['UserToggles'][] = 'OpenIDUserToggles';

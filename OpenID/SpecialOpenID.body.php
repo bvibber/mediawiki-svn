@@ -30,15 +30,15 @@ require_once("Auth/OpenID/SReg.php");
 require_once("Auth/OpenID/FileStore.php");
 
 class SpecialOpenID extends SpecialPage {
-
+	
 	function getOpenIDStore($storeType, $prefix, $options) {
 	    global $wgOut;
 
+		# FIXME: support other kinds of store
+		# XXX: used to support memc, now use memcached from php-openid
+		
 	    switch ($storeType) {
-		 case 'memcached':
-		 case 'memc':
-			return new OpenID_MemcStore($prefix);
-
+			
 		 case 'file':
 			# Auto-create path if it doesn't exist
 			if (!is_dir($options['path'])) {
@@ -53,7 +53,7 @@ class SpecialOpenID extends SpecialPage {
 			$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
 	    }
 	}
-
+	
 	function xriBase($xri) {
 		if (substr($xri, 0, 6) == 'xri://') {
 			return substr($xri, 6);
@@ -61,11 +61,11 @@ class SpecialOpenID extends SpecialPage {
 			return $xri;
 		}
 	}
-
+	
 	function xriToUrl($xri) {
 		return 'http://xri.net/' . OpenIDXriBase($xri);
 	}
-
+	
 	function OpenIDToUrl($openid) {
 		/* ID is either an URL already or an i-name */
         if (Services_Yadis_identifierScheme($openid) == 'XRI') {
@@ -74,13 +74,13 @@ class SpecialOpenID extends SpecialPage {
 			return $openid;
 		}
 	}
-
+	
 	function LocalizedPageName(&$specialPageArray, $code) {
 		
 		# The localized title of the special page is among the messages of the extension:
 		SpecialOpenID::loadMessages();
 		$text = wfMsg('openidlogin');
-
+		
 		# Convert from title in text form to DBKey and put it into the alias array:
 		$title = Title::newFromText($text);
 		$specialPageArray['Form'][] = $title->getDBKey();
@@ -91,16 +91,16 @@ class SpecialOpenID extends SpecialPage {
 	function loadMessages() {
 		static $messagesLoaded = false;
 		global $wgMessageCache;
-
+		
 		if ( $messagesLoaded ) return true;
-
+		
 		require( dirname( __FILE__ ) . '/OpenID.i18n.php' );
 		foreach ( $OpenIDMessages as $lang => $langMessages ) {
 			$wgMessageCache->addMessages( $langMessages, $lang );
 		}
-
+		
 		$messagesLoaded = true;
-
+		
 		return true;
 	}
 	
@@ -118,7 +118,7 @@ class SpecialOpenID extends SpecialPage {
 	
 	function getUserUrl($user) {
 		$openid_url = null;
-
+		
 		if (isset($user) && $user->getId() != 0) {
 			global $wgSharedDB, $wgDBprefix;
 			if (isset($wgSharedDB)) {
@@ -126,16 +126,16 @@ class SpecialOpenID extends SpecialPage {
 			} else {
 				$tableName = 'user_openid';
 			}
-
+			
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select(array($tableName),
 								array('uoi_openid'),
 								array('uoi_user' => $user->getId()),
 								'OpenIDGetUserUrl');
-
+			
 			# This should return 0 or 1 result, since user is unique
 			# in the table.
-
+			
 			while ($res && $row = $dbr->fetchObject($res)) {
 				$openid_url = $row->uoi_openid;
 			}
@@ -143,19 +143,19 @@ class SpecialOpenID extends SpecialPage {
 		}
 		return $openid_url;
 	}
-
+	
 	# Login, Finish
 	
 	function getConsumer() {
 		global $wgOpenIDConsumerStoreType, $wgOpenIDConsumerStorePath;
-
+		
 		$store = $this->getOpenIDStore($wgOpenIDConsumerStoreType,
 									   'consumer',
 									   array('path' => $wgOpenIDConsumerStorePath));
-
+		
 		return new Auth_OpenID_Consumer($store);
 	}
-
+	
 	function fullUrl($title) {
 		$nt = Title::makeTitleSafe(NS_SPECIAL, $title);
 		if (isset($nt)) {
@@ -164,7 +164,7 @@ class SpecialOpenID extends SpecialPage {
 			return NULL;
 		}
 	}
-
+	
 	function scriptUrl($title) {
 		global $wgServer, $wgScript;
 		$nt = Title::makeTitleSafe(NS_SPECIAL, $title);
@@ -175,15 +175,15 @@ class SpecialOpenID extends SpecialPage {
 			return $url;
 		}
 	}
-		
+	
 	function canLogin($openid_url) {
-
+		
 		global $wgOpenIDConsumerDenyByDefault, $wgOpenIDConsumerAllow, $wgOpenIDConsumerDeny;
-
+		
 		if ($this->isLocalUrl($openid_url)) {
 			return false;
 		}
-
+		
 		if ($wgOpenIDConsumerDenyByDefault) {
 			$canLogin = false;
 			foreach ($wgOpenIDConsumerAllow as $allow) {
@@ -221,27 +221,27 @@ class SpecialOpenID extends SpecialPage {
 	}
 	
 	function isLocalUrl($url) {
-
+		
 		global $wgServer, $wgArticlePath;
-
+		
 		$pattern = $wgServer . $wgArticlePath;
 		$pattern = str_replace('$1', '(.*)', $pattern);
 		$pattern = str_replace('?', '\?', $pattern);
-
+		
 		return preg_match('|^' . $pattern . '$|', $url);
 	}
 	
 	# Find the user with the given openid, if any
-
+	
 	function getUser($openid) {
 		global $wgSharedDB, $wgDBprefix;
-
+		
 		if (isset($wgSharedDB)) {
 			$tableName = "`$wgSharedDB`.${wgDBprefix}user_openid";
 		} else {
 			$tableName = 'user_openid';
 		}
-
+		
 		$dbr =& wfGetDB( DB_SLAVE );
 		$id = $dbr->selectField($tableName, 'uoi_user',
 								array('uoi_openid' => $openid));
@@ -253,22 +253,22 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 	function login($openid_url, $finish_page = 'OpenIDFinish') {
-
+		
 		global $wgUser, $wgTrustRoot, $wgOut;
-
+		
 		# If it's an interwiki link, expand it
-
+		
 		$openid_url = $this->interwikiExpand($openid_url);
-
+		
 		# Check if the URL is allowed
-
+		
 		if (!$this->canLogin($openid_url)) {
 			$wgOut->errorpage('openidpermission', 'openidpermissiontext');
 			return;
 		}
-
+		
 		$sk = $wgUser->getSkin();
-
+		
 		if (isset($wgTrustRoot)) {
 			$trust_root = $wgTrustRoot;
 		} else {
@@ -276,61 +276,61 @@ class SpecialOpenID extends SpecialPage {
 			$root_article = str_replace('$1', '', $wgArticlePath);
 			$trust_root = $wgServer . $root_article;
 		}
-
+		
 		$consumer = $this->getConsumer();
-
+		
 		if (!$consumer) {
 			$wgOut->errorpage('openiderror', 'openiderrortext');
 			return;
 		}
-
+		
 		# Make sure the user has a session!
-
+		
 		global $wgSessionStarted;
-
+		
 		if (!$wgSessionStarted) {
 			$wgUser->SetupSession();
 		}
-
+		
 		$auth_request = $consumer->begin($openid_url);
-
+		
 		// Handle failure status return values.
 		if (!$auth_request) {
 			$wgOut->errorpage('openiderror', 'openiderrortext');
 			return;
 		}
-
+		
 		# Check the processed URLs, too
-
+		
 		$endpoint = $auth_request->endpoint;
-
+		
 		if (isset($endpoint)) {
 			# Check if the URL is allowed
-
+			
 			if (isset($endpoint->identity_url) && !$this->canLogin($endpoint->identity_url)) {
 				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
 				return;
 			}
-
+			
 			if (isset($endpoint->delegate) && !$this->canLogin($endpoint->delegate)) {
 				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
 				return;
 			}
 		}
-
+		
 		$sreg_request = Auth_OpenID_SRegRequest::build(
 													   // Required
 													   array(),
 													   // Optional
 													   array('nickname','email',
 															 'fullname','language','timezone'));
-
+		
 		if ($sreg_request) {
 			$auth_request->addExtension($sreg_request);
 		}
 		
 		$process_url = $this->scriptUrl($finish_page);
-
+		
 		if ($auth_request->shouldSendRedirect()) {
 			$redirect_url = $auth_request->redirectURL($trust_root,
 													   $process_url);
