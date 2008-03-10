@@ -68,7 +68,7 @@ class SpecialOpenID extends SpecialPage {
 	
 	function OpenIDToUrl($openid) {
 		/* ID is either an URL already or an i-name */
-        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
+        if (Auth_Yadis_identifierScheme($openid) == 'XRI') {
 			return OpenIDXriToUrl($openid);
 		} else {
 			return $openid;
