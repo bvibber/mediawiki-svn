@@ -28,13 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$messages = array();
+$allMessages = array();
 
 /** English
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @author Mike Sullivan <ms-mediawiki@umich.edu>
  */
-$allMmessages['en'] = array(
+$allMessages['en'] = array(
 	'whitelist-desc'              => 'Edit the access permissions of restricted users',
 	'whitelistedit'               => 'Whitelist Access Editor',
 	'whitelist'                   => 'Whitelist Pages',
