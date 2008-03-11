@@ -38,7 +38,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		global $wgRequest, $wgUser, $wgOut;
 
 		if ($wgUser->getID() == 0) {
-			$wgOut->errorpage('openiderror', 'notloggedin');
+			$wgOut->showErrorPage('openiderror', 'notloggedin');
 			return;
 		}
 
@@ -67,7 +67,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		# Is this ID allowed to log in?
 		
 		if (!$this->CanLogin($openid_url)) {
-			$wgOut->errorpage('openidpermission', 'openidpermissiontext');
+			$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 			return;
 		}
 
@@ -77,9 +77,9 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 
 		if (isset($other)) {
 			if ($other->getId() == $wgUser->getID()) {
-				$wgOut->errorpage('openiderror', 'openidconvertyourstext');
+				$wgOut->showErrorPage('openiderror', 'openidconvertyourstext');
 			} else {
-				$wgOut->errorpage('openiderror', 'openidconvertothertext');
+				$wgOut->showErrorPage('openiderror', 'openidconvertothertext');
 			}
 			return;
 		}
@@ -118,25 +118,25 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$response = $consumer->complete($this->scriptUrl('OpenIDConvert/Finish'));
 
 		if (!isset($response)) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 
 		switch ($response->status) {
 		 case Auth_OpenID_CANCEL:
 			// This means the authentication was cancelled.
-			$wgOut->errorpage('openidcancel', 'openidcanceltext');
+			$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 			break;
 		 case Auth_OpenID_FAILURE:
 			wfDebug("OpenID: error in convert: '" . $response->message . "'\n");
-			$wgOut->errorpage('openidfailure', 'openidfailuretext', array($response->message));
+			$wgOut->showErrorPage('openidfailure', 'openidfailuretext', array($response->message));
 			break;
 		 case Auth_OpenID_SUCCESS:
 			// This means the authentication succeeded.
 			$openid_url = $response->identity_url;
 
 			if (!isset($openid_url)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
@@ -147,9 +147,9 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 
 			if (isset($other)) {
 				if ($other->getId() == $wgUser->getID()) {
-					$wgOut->errorpage('openiderror', 'openidconvertyourstext');
+					$wgOut->showErrorPage('openiderror', 'openidconvertyourstext');
 				} else {
-					$wgOut->errorpage('openiderror', 'openidconvertothertext');
+					$wgOut->showErrorPage('openiderror', 'openidconvertothertext');
 				}
 				return;
 			}

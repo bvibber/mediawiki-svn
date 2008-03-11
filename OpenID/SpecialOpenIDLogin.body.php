@@ -58,16 +58,19 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function loginForm() {
 		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl;
 		$sk = $wgUser->getSkin();
-		$instructions = wfMsg('openidlogininstructions');
+		$instructions = wfMsgExt('openidlogininstructions', array('parse'));
+		$label = wfMsg('openidloginlabel');
 		$ok = wfMsg('login');
-		$wgOut->addHTML("<p>{$instructions}</p>" .
-						'<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
-						'<input type="text" name="openid_url" size=30 ' .
+		$wgOut->addHTML('<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
+						'<label for="openid_url">' . $label . '</label> ' .
+						'<input type="text" name="openid_url" id="openid_url" size=30 ' .
 						' style="background: url(' . $wgOpenIDLoginLogoUrl . ') ' .
 						'        no-repeat; background-color: #fff; background-position: 0 50%; ' .
 						'        color: #000; padding-left: 18px;" value="" />' .
 						'<input type="submit" value="' . $ok . '" />' .
-						'</form>');
+						'</form>' .
+						$instructions
+						);
 	}
 
 	function toUserName($openid) {

@@ -56,13 +56,13 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				wfDebug("OpenID: aborting in ChooseName because identity_url is missing\n");
 				$this->clearValues();
 				# No messing around, here
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			if ($wgRequest->getCheck('wpCancel')) {
 				$this->clearValues();
-				$wgOut->errorpage('openidcancel', 'openidcanceltext');
+				$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 				return;
 			}
 
@@ -82,7 +82,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 			if (!isset($user)) {
 				$this->clearValues();
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
@@ -98,19 +98,19 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			$response = $consumer->complete($this->scriptUrl('OpenIDFinish'));
 
 			if (!isset($response)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			switch ($response->status) {
 			 case Auth_OpenID_CANCEL:
 				// This means the authentication was cancelled.
-				$wgOut->errorpage('openidcancel', 'openidcanceltext');
+				$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 				break;
 			 case Auth_OpenID_FAILURE:
 				wfDebug("OpenID: error message '" . $response->message . "'\n");
-				$wgOut->errorpage('openidfailure', 'openidfailuretext', 
-								  array($response->message));
+				$wgOut->showErrorPage('openidfailure', 'openidfailuretext', 
+								  array(($response->message) ? $response->message : ''));
 				break;
 			 case Auth_OpenID_SUCCESS:
 				// This means the authentication succeeded.
@@ -119,7 +119,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				$sreg = $sreg_resp->contents();
 				
 				if (!isset($openid)) {
-					$wgOut->errorpage('openiderror', 'openiderrortext');
+					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 					return;
 				}
 
@@ -141,7 +141,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				}
 
 				if (!isset($user)) {
-					$wgOut->errorpage('openiderror', 'openiderrortext');
+					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				} else {
 					$wgUser = $user;
 					$this->finishLogin($openid);

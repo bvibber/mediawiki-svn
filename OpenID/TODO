@@ -43,14 +43,18 @@
   www, use the first element as a proposed ID
 - configurable regexps for finding a user ID from an OpenID.
 + Make the OpenID login page more prominent. A personal toolbox link for each page?
-- Update MemcStore for version 2.0 libraries
 + Update Sreg support for new API in version 2.0 libraries
 - Provider-driven identifier selection (eh? do we care?)
-- fix problem with getting $request->identity after login on server
++ fix problem with getting $request->identity after login on server
 + fix problem with return_to parsing on login
 + fix problem with return_to parsing on convert
 - optionally allow user to specify an existing username/password after
   logging in with OpenID the first time (like ma.gnolia.com)
 - deal with difference between canonical ID and "display ID" with XRIs
-- add more explanatory text to the default login (copy Wikitravel text)
+- add more explanatory text to the default login instructions (copy Wikitravel text)
 - add a public-domain Help:OpenID.wiki
+- add more than one OpenID to a user account
+- manage site trust for users who've logged into other sites (after login)
+- link to Special:OpenIDConvert if user is already logged in
+- support RP discovery
+- UPGRADE file

@@ -31,7 +31,6 @@ $OpenIDMessages =array(
 				 'openidfinish' => 'Finish OpenID login',
 				 'openidserver' => 'OpenID server',
 				 'openidconvert' => 'OpenID converter',
-				 'openidlogininstructions' => 'Enter your OpenID identifier to log in:',
 				 'openiderror' => 'Verification error',
 				 'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 				 'openidconfigerror' => 'OpenID Configuration Error',
@@ -73,5 +72,32 @@ $OpenIDMessages =array(
 				 'openidnousername' => 'No username specified.',
 				 'openidbadusername' => 'Bad username specified.',
 				 'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled. If not, try the "Continue" button.',
+				 'openidloginlabel' => 'OpenID URL',
+				 'openidlogininstructions' =>
+				 '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single signon between Web sites. ' .
+				 'OpenID lets you log into many different Web sites without using a different password for each. (See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.) ' .
+				 "\n\n" .
+				 'If you already have an account on {{SITENAME}}, you can [[Special:Userlogin|log in]] with your username and password as usual. To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you\'ve logged in normally.' .
+				 "\n\n" .
+				 'There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID providers], and you may already have an OpenID-enabled account on another service. ' .
+				 "\n\n" .
+				 '; Other wikis : If you have an account on an OpenID-enabled wiki, ' .
+				 'like [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], ' .
+				 '[http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] or [http://kei.ki/ Keiki], ' . 
+				 'you can log in to {{SITENAME}} by entering the \'\'\'full URL\'\'\' of your user page on that other wiki in the box above. For example, \'\'<nowiki>http://kei.ki/en/User:Evan</nowiki>\'\'. ' .
+				 "\n" .
+				 '; [http://openid.yahoo.com/ Yahoo!] : If you have an account with Yahoo!, ' .
+				 'you can log in to this site by entering your Yahoo!-provided OpenID ' .
+				 'in the box above. Yahoo! OpenID URLs have the form ' .
+				 '\'\'<nowiki>https://me.yahoo.com/yourusername</nowiki>\'\'. ' .
+				 "\n" .
+				 '; [http://dev.aol.com/aol-and-63-million-openids AOL] : If you have an account with [http://www.aol.com/ AOL], ' .
+				 'like an [http://www.aim.com/ AIM] account, you can log in to {{SITENAME}} by entering your AOL-provided OpenID ' .
+				 'in the box above. AOL OpenID URLs have the form ' .
+				 '\'\'<nowiki>http://openid.aol.com/yourusername</nowiki>\'\'. Your username should be all lowercase, no spaces.' .
+				 "\n" .
+				 '; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : ' .
+				 'If you have a blog on any of these services, enter your blog URL in the box above. ' .
+				 'For example, \'\'<nowiki>http://yourusername.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.livejournal.com/</nowiki>\'\', or \'\'<nowiki>http://yourusername.vox.com/</nowiki>\'\'.' 
 				 )
 );

@@ -43,14 +43,14 @@ class SpecialOpenID extends SpecialPage {
 			# Auto-create path if it doesn't exist
 			if (!is_dir($options['path'])) {
 				if (!mkdir($options['path'], 0770, true)) {
-					$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
+					$wgOut->showErrorPage('openidconfigerror', 'openidconfigerrortext');
 					return NULL;
 				}
 			}
 			return new Auth_OpenID_FileStore($options['path']);
 
 		 default:
-			$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
+			$wgOut->showErrorPage('openidconfigerror', 'openidconfigerrortext');
 	    }
 	}
 	
@@ -263,7 +263,7 @@ class SpecialOpenID extends SpecialPage {
 		# Check if the URL is allowed
 		
 		if (!$this->canLogin($openid_url)) {
-			$wgOut->errorpage('openidpermission', 'openidpermissiontext');
+			$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 			return;
 		}
 		
@@ -280,7 +280,7 @@ class SpecialOpenID extends SpecialPage {
 		$consumer = $this->getConsumer();
 		
 		if (!$consumer) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 		
@@ -296,7 +296,7 @@ class SpecialOpenID extends SpecialPage {
 		
 		// Handle failure status return values.
 		if (!$auth_request) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 		
@@ -308,12 +308,12 @@ class SpecialOpenID extends SpecialPage {
 			# Check if the URL is allowed
 			
 			if (isset($endpoint->identity_url) && !$this->canLogin($endpoint->identity_url)) {
-				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
+				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 				return;
 			}
 			
 			if (isset($endpoint->delegate) && !$this->canLogin($endpoint->delegate)) {
-				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
+				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 				return;
 			}
 		}

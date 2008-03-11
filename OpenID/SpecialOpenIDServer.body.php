@@ -86,7 +86,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			break;
 		 default:
 			if (strlen($par)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			} else {
 				$method = $_SERVER['REQUEST_METHOD'];
@@ -105,7 +105,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 
 		if (!isset($request)) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 
