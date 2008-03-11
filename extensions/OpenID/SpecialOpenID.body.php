@@ -75,7 +75,7 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
-	function loadMessages() {
+	static function loadMessages() {
 		wfLoadExtensionMessages('OpenID');
 	}
 
