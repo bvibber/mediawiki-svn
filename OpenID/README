@@ -145,6 +145,14 @@ To upgrade, you'll need to do at least the following:
   customized it, you may need to re-customize it. Also, it's now
   shown '''below''' the login box, so if you say ''the box below'',
   you may want to change that to ''the box above''.
+* The extension has been converted to use a clumsy and perverse
+  OOP-like structure, with one class per special page. Most function
+  names have been changed to methods of these classes. If you used
+  them, look around for their replacements. 
+* The extension has been converted to use the autoloading features
+  of MediaWiki, which means that you need to require() the files
+  directly if you really want to use their code. Or you might get
+  lucky and have autoloading work for you.
 
 If you find other incompatibilities that I haven't mentioned here,
 please let me know.
