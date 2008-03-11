@@ -35,8 +35,9 @@
 + try to guess user name from URL with /
   like http://getopenid.com/evanprodromou or
   http://profile.typekey.com/EvanProdromou/
-+ Allow specifying a FileStore rather than a MemcStore
-- Allow specifying a MySQLStore rather than a MemcStore
++ Allow specifying a FileStore
+- Allow specifying a MySQLStore
+- Allow specifying a memcached store
 + Fall back to FileStore if Memc is bogus
 + Unit test for MemcStore
 + for just-a-hostname OpenIDs, if the first element is not
@@ -51,10 +52,12 @@
 - optionally allow user to specify an existing username/password after
   logging in with OpenID the first time (like ma.gnolia.com)
 - deal with difference between canonical ID and "display ID" with XRIs
-- add more explanatory text to the default login instructions (copy Wikitravel text)
++ add more explanatory text to the default login instructions (copy Wikitravel text)
 - add a public-domain Help:OpenID.wiki
 - add more than one OpenID to a user account
 - manage site trust for users who've logged into other sites (after login)
 - link to Special:OpenIDConvert if user is already logged in
 - support RP discovery
-- UPGRADE file
+- AJAX login, rather than klutzy JS form
+- link to OpenID login on Special:Userlogin
+- Dynamic HTML swap in of OpenID login form on Special:Userlogin

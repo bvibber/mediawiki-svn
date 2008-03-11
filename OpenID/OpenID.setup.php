@@ -98,6 +98,15 @@ $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
 $wgExtensionFunctions[] = 'setupOpenID';
 
+$wgExtensionCredits['other'][] = array('name' => 'OpenID',
+									   'version' => MEDIAWIKI_OPENID_VERSION,
+									   'author' => 'Evan Prodromou',
+									   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+									   'description' => 'lets users login to the wiki with an ' .
+									   ' [http://openid.net/ OpenID] ' .
+									   'and login to other OpenID-aware Web sites ' . 
+									   'with their wiki user account');
+
 function OpenIDGetServerPath() {
 	$rel = 'Auth/OpenID/Server.php';
 
@@ -136,15 +145,6 @@ function setupOpenID() {
 	$wgHooks['LanguageGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName'; 
 	# Typo in versions of MW earlier than 1.11.x (?)
 	$wgHooks['LangugeGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName'; # Add any aliases for the special page.
-
-	$wgExtensionCredits['other'][] = array('name' => 'OpenID',
-										   'version' => MEDIAWIKI_OPENID_VERSION,
-										   'author' => 'Evan Prodromou',
-										   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-										   'description' => 'lets users login to the wiki with an ' .
-										   ' [http://openid.net/ OpenID] ' .
-										   'and login to other OpenID-aware Web sites ' . 
-										   'with their wiki user account');
 }
 
 # Hook is called whenever an article is being viewed
