@@ -75,10 +75,6 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
-	static function loadMessages() {
-		wfLoadExtensionMessages('OpenID');
-	}
-
 	function interwikiExpand($openid_url) {
 		# try to make it into a title object
 		$nt = Title::newFromText($openid_url);

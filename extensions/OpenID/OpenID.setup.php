@@ -150,7 +150,7 @@ function setupOpenID() {
 function OpenIDLocalizedPageName(&$specialPageArray, $code) {
 		
 	# The localized title of the special page is among the messages of the extension:
-	SpecialOpenID::loadMessages();
+	wfLoadExtensionMessages('OpenID');
 
 	foreach (array('Login', 'Finish', 'Convert', 'Server', 'XRDS') as $sub) {
 		$text = wfMsg('openid' . strtolower($sub));
