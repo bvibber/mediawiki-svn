@@ -11,7 +11,7 @@
  * @subpackage Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -19,12 +19,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
-	'name' => 'HTMLets', 
-	'author' => 'Daniel Kinzler', 
-	'url' => 'http://mediawiki.org/wiki/Extension:HTMLets',
-	'description' => 'lets you inline HTML snippets from files',
+$wgExtensionCredits['parserhook'][] = array( 
+	'name'           => 'HTMLets', 
+	'author'         => 'Daniel Kinzler', 
+	'url'            => 'http://mediawiki.org/wiki/Extension:HTMLets',
+	'version'        => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'description'    => 'lets you inline HTML snippets from files',
+	'descriptionmsg' => 'htmlets-desc',
 );
+$wgExtensionMessagesFiles['HTMLets'] =  dirname(__FILE__) . '/HTMLets.i18n.php';
 
 /**
 * Pass file content unchanged. May get mangeled by late server pass.
