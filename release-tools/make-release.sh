@@ -18,13 +18,16 @@ case "$1" in
 *)
 	# ./make-release.sh 1.11.2
 	majorminor=`echo "$1" | perl -pe 's/^(\d+\.\d+).*$/\1/'`
-	patchlevel=`echo "$1" | perl -pe 's/^\d+\.\d+\.(.*)$/\1/'`
-	ver="$majorminor.$patchlevel"
+	patchlevel=`echo "$1" | perl -pe 's/^\d+\.\d+\.(\d+).*$/\1/'`
+	betalevel=`echo "$1" | perl -pe 's/^\d+\.\d+\.\d+(.*)$/\1/'`
+	ver="$majorminor.$patchlevel$betalevel"
 	dir="$majorminor"
-	branch="tags/REL${ver//./_}"
+	branch=`echo "REL${ver//./_}" | tr '[a-z]' '[A-Z]'`
+	branch="tags/$branch"
 	if [ "$patchlevel" -ge "1" ]; then
 		prevVer="$majorminor.$(($patchlevel-1))"
-		prev="tags/REL${prevVer//./_}"
+		prev=`echo "REL${prevVer//./_}" | tr '[a-z]' '[A-Z]'`
+		prev="tags/$prev"
 	else
 		prev=""
 	fi
