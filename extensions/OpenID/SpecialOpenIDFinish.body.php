@@ -1,8 +1,8 @@
 <?php
 /**
- * Consumer.php -- Consumer side of OpenID site
+ * SpecialOpenIDFinish.body.php -- Finish logging into an OpenID site
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * By Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,102 +18,51 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Evan Prodromou <evan@wikitravel.org>
+ * @author Evan Prodromou <evan@prodromou.name>
  * @addtogroup Extensions
  */
 
-if (defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI'))
+  exit(1);
 
-	require_once("Auth/OpenID/Consumer.php");
+require_once("Auth/OpenID/Consumer.php");
+require_once("Auth/OpenID/SReg.php");
+require_once("Auth/Yadis/XRI.php");
 
-	# Defines the trust root for this server
-	# If null, we make a guess
-
-	$wgTrustRoot = null;
-
-	# When using deny and allow arrays, defines how the security works.
-	# If true, works like "Order Allow,Deny" in Apache; deny by default,
-	# allow items that match allow that don't match deny to pass.
-	# If false, works like "Order Deny,Allow" in Apache; allow by default,
-	# deny items in deny that aren't in allow.
-
-	$wgOpenIDConsumerDenyByDefault = false;
-
-	# Which partners to allow; regexps here. See above.
-
-	$wgOpenIDConsumerAllow = array();
-
-	# Which partners to deny; regexps here. See above.
-
-	$wgOpenIDConsumerDeny = array();
-
-	# Where to store transitory data. Can be 'memc' for the $wgMemc
-	# global caching object, or 'file' if caching is turned off
-	# completely and you need a fallback.
+class SpecialOpenIDFinish extends SpecialOpenID {
 	
-	# Default is memc unless the global cache is disabled.
-
-	$wgOpenIDConsumerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
-
-	# If the store type is set to 'file', this is is the name of a
-	# directory to store the data in.
-
-	$wgOpenIDConsumerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidconsumer/" : NULL;
-
-	# Expiration time for the OpenID cookie. Lets the user re-authenticate
-	# automatically if their session is expired. Only really useful if
-	# it's much greater than $wgCookieExpiration. Default: about one year.
-
-	$wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
-
-	function wfSpecialOpenIDLogin($par) {
-		global $wgRequest, $wgUser, $wgOut;
-
-		if ($wgUser->getID() != 0) {
-			OpenIDAlreadyLoggedIn();
-			return;
-		}
-
-		if ($wgRequest->getText('returnto')) {
-			OpenIDConsumerSetReturnTo($wgRequest->getText('returnto'));
-		}
-		
-		$openid_url = $wgRequest->getText('openid_url');
-		if (isset($openid_url) && strlen($openid_url) > 0) {
-			OpenIDLogin($openid_url);
-		} else {
-			OpenIDLoginForm();
-		}
+	function SpecialOpenIDFinish() {
+		SpecialPage::SpecialPage("OpenIDFinish");
+		self::loadMessages();
 	}
 
-	function wfSpecialOpenIDFinish($par) {
+	function execute($par) {
 
 		global $wgUser, $wgOut, $wgRequest;
 
 		# Shouldn't work if you're already logged in.
 
 		if ($wgUser->getID() != 0) {
-			OpenIDAlreadyLoggedIn();
+			$this->alreadyLoggedIn();
 			return;
 		}
 
-		$consumer = OpenIDConsumer();
+		$consumer = $this->getConsumer();
 
 		switch ($par) {
 		 case 'ChooseName':
-			list($response, $sreg) = OpenIDConsumerFetchValues();
-			if (!isset($response) ||
-				$response->status != Auth_OpenID_SUCCESS ||
-				!isset($response->identity_url)) {
-				OpenIDConsumerClearValues();
+			list($openid, $sreg) = $this->fetchValues();
+			if (!isset($openid)) {
+				wfDebug("OpenID: aborting in ChooseName because identity_url is missing\n");
+				$this->clearValues();
 				# No messing around, here
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			if ($wgRequest->getCheck('wpCancel')) {
-				OpenIDConsumerClearValues();
-				$wgOut->errorpage('openidcancel', 'openidcanceltext');
+				$this->clearValues();
+				$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 				return;
 			}
 
@@ -121,82 +70,87 @@ if (defined('MEDIAWIKI')) {
 			$nameValue = $wgRequest->getText('wpNameValue');
 			wfDebug("OpenID: Got form values '$choice' and '$nameValue'\n");
 
-			$name = OpenIDGetName($response, $sreg, $choice, $nameValue);
+			$name = $this->getUserName($openid, $sreg, $choice, $nameValue);
 
-			if (!$name || !OpenIDUserNameOK($name)) {
-				OpenIDChooseNameForm($response, $sreg);
+			if (!$name || !$this->userNameOK($name)) {
+				wfDebug("OpenID: Name not OK: '$name'\n");
+				$this->chooseNameForm($openid, $sreg);
 				return;
 			}
 
-			$user = OpenIDCreateUser($response->identity_url, $sreg, $name);
+			$user = $this->createUser($openid, $sreg, $name);
 
 			if (!isset($user)) {
-				OpenIDConsumerClearValues();
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$this->clearValues();
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			$wgUser = $user;
-			OpenIDConsumerClearValues();
 
-			OpenIDFinishLogin($response->identity_url);
+			$this->clearValues();
+
+			$this->finishLogin($response->identity_url);
 			break;
 
 		 default: # No parameter, returning from a server
 
-			$response = $consumer->complete($_GET);
+			$response = $consumer->complete($this->scriptUrl('OpenIDFinish'));
 
 			if (!isset($response)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			switch ($response->status) {
 			 case Auth_OpenID_CANCEL:
 				// This means the authentication was cancelled.
-				$wgOut->errorpage('openidcancel', 'openidcanceltext');
+				$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 				break;
 			 case Auth_OpenID_FAILURE:
-				$wgOut->errorpage('openidfailure', 'openidfailuretext');
+				wfDebug("OpenID: error message '" . $response->message . "'\n");
+				$wgOut->showErrorPage('openidfailure', 'openidfailuretext', 
+								  array(($response->message) ? $response->message : ''));
 				break;
 			 case Auth_OpenID_SUCCESS:
 				// This means the authentication succeeded.
-				$openid = $response->identity_url;
-				$sreg = $response->extensionResponse('sreg');
-
+				$openid = $response->getDisplayIdentifier();
+				$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse($response);
+				$sreg = $sreg_resp->contents();
+				
 				if (!isset($openid)) {
-					$wgOut->errorpage('openiderror', 'openiderrortext');
+					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 					return;
 				}
 
-				$user = OpenIDGetUser($openid);
+				$user = $this->getUser($openid);
 
 				if (isset($user)) {
-					OpenIDUpdateUser($user, $sreg); # update from server
+					$this->updateUser($user, $sreg); # update from server
 				} else {
 					# For easy names
-					$name = OpenIDCreateName($openid, $sreg);
+					$name = $this->createName($openid, $sreg);
 					if ($name) {
-						$user = OpenIDCreateUser($openid, $sreg, $name);
+						$user = $this->createUser($openid, $sreg, $name);
 					} else {
 					# For hard names
-						OpenIDConsumerSaveValues($response, $sreg);
-						OpenIDChooseNameForm($response, $sreg);
+						$this->saveValues($openid, $sreg);
+						$this->chooseNameForm($openid, $sreg);
 						return;
 					}
 				}
 
 				if (!isset($user)) {
-					$wgOut->errorpage('openiderror', 'openiderrortext');
+					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				} else {
 					$wgUser = $user;
-					OpenIDFinishLogin($openid);
+					$this->finishLogin($openid);
 				}
 			}
 		}
 	}
 
-	function OpenIDFinishLogin($openid) {
+	function finishLogin($openid) {
 
 		global $wgUser, $wgOut;
 
@@ -209,16 +163,16 @@ if (defined('MEDIAWIKI')) {
 
 		# Set a cookie for later check-immediate use
 
-		OpenIDLoginSetCookie($openid);
+		$this->loginSetCookie($openid);
 
 		$wgOut->setPageTitle( wfMsg( 'openidsuccess' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidsuccess', $wgUser->getName(), $openid ) );
-		$wgOut->returnToMain(false, OpenIDConsumerReturnTo());
+		$wgOut->returnToMain(false, $this->returnTo());
 	}
 
-	function OpenIDLoginSetCookie($openid) {
+	function loginSetCookie($openid) {
 		global $wgCookiePath, $wgCookieDomain, $wgCookieSecure, $wgCookiePrefix;
 		global $wgOpenIDCookieExpiration;
 
@@ -227,22 +181,7 @@ if (defined('MEDIAWIKI')) {
 		setcookie($wgCookiePrefix.'OpenID', $openid, $exp, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	}
 
-	function OpenIDLoginForm() {
-		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl;
-		$sk = $wgUser->getSkin();
-		$instructions = wfMsg('openidlogininstructions');
-		$ok = wfMsg('login');
-		$wgOut->addHTML("<p>{$instructions}</p>" .
-						'<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
-						'<input type="text" name="openid_url" size=30 ' .
-						' style="background: url(' . $wgOpenIDLoginLogoUrl . ') ' .
-						'        no-repeat; background-color: #fff; background-position: 0 50%; ' .
-						'        color: #000; padding-left: 18px;" value="" />' .
-						'<input type="submit" value="' . $ok . '" />' .
-						'</form>');
-	}
-
-	function OpenIDChooseNameForm($response, $sreg) {
+	function chooseNameForm($openid, $sreg) {
 
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
@@ -259,16 +198,16 @@ if (defined('MEDIAWIKI')) {
 
 		# These options won't exist if we can't get them.
 
-		if (array_key_exists('fullname', $sreg) && OpenIDUserNameOK($sreg['fullname'])) {
+		if (array_key_exists('fullname', $sreg) && $this->userNameOK($sreg['fullname'])) {
 			$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceFull' value='full' " .
 							((!$def) ? "checked = 'checked'" : "") . " />" .
 							"<label for='wpNameChoiceFull'>" . wfMsg("openidchoosefull", $sreg['fullname']) . "</label><br />");
 			$def = true;
 		}
 
-		$idname = OpenIDToUserName($response->identity_url);
+		$idname = $this->toUserName($openid);
 
-		if ($idname && OpenIDUserNameOK($idname)) {
+		if ($idname && $this->userNameOK($idname)) {
 			$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceUrl' value='url' " .
 							((!$def) ? "checked = 'checked'" : "") . " />" .
 							"<label for='wpNameChoiceUrl'>" . wfMsg("openidchooseurl", $idname) . "</label><br />");
@@ -279,7 +218,7 @@ if (defined('MEDIAWIKI')) {
 
 		$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceAuto' value='auto' " .
 							((!$def) ? "checked = 'checked'" : "") . " />" .
-							"<label for='wpNameChoiceAuto'>" . wfMsg("openidchooseauto", OpenIDAutomaticName($sreg)) . "</label><br />");
+							"<label for='wpNameChoiceAuto'>" . wfMsg("openidchooseauto", $this->automaticName($sreg)) . "</label><br />");
 
 		$def = true;
 
@@ -295,90 +234,11 @@ if (defined('MEDIAWIKI')) {
 		$wgOut->addHTML("</form>");
 	}
 
-	function OpenIDLogin($openid_url, $finish_page = 'OpenIDFinish') {
-
-		global $wgUser, $wgTrustRoot, $wgOut;
-
-		# If it's an interwiki link, expand it
-
-		$openid_url = OpenIDInterwikiExpand($openid_url);
-
-		wfDebug("New URL is '$openid_url'\n");
-
-		# Check if the URL is allowed
-
-		if (!OpenIDCanLogin($openid_url)) {
-			$wgOut->errorpage('openidpermission', 'openidpermissiontext');
-			return;
-		}
-
-		$sk = $wgUser->getSkin();
-
-		if (isset($wgTrustRoot)) {
-			$trust_root = $wgTrustRoot;
-		} else {
-			global $wgArticlePath, $wgServer;
-			$root_article = str_replace('$1', '', $wgArticlePath);
-			$trust_root = $wgServer . $root_article;
-		}
-
-		$consumer = OpenIDConsumer();
-
-		if (!$consumer) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
-			return;
-		}
-
-		# Make sure the user has a session!
-
-		global $wgSessionStarted;
-
-		if (!$wgSessionStarted) {
-			$wgUser->SetupSession();
-		}
-
-		$auth_request = $consumer->begin($openid_url);
-
-		// Handle failure status return values.
-		if (!$auth_request) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
-			return;
-		}
-
-		# Check the processed URLs, too
-
-		$endpoint = $auth_request->endpoint;
-
-		if (isset($endpoint)) {
-			# Check if the URL is allowed
-
-			if (isset($endpoint->identity_url) && !OpenIDCanLogin($endpoint->identity_url)) {
-				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
-				return;
-			}
-
-			if (isset($endpoint->delegate) && !OpenIDCanLogin($endpoint->delegate)) {
-				$wgOut->errorpage('openidpermission', 'openidpermissiontext');
-				return;
-			}
-		}
-
-		$auth_request->addExtensionArg('sreg', 'optional', 'nickname,email,fullname,language,timezone');
-
-		$process_url = OpenIDFullUrl($finish_page);
-
-		$redirect_url = $auth_request->redirectURL($trust_root,
-												   $process_url);
-
-		# OK, now go
-		$wgOut->redirect($redirect_url);
-	}
-
-	function OpenIDCanLogin($openid_url) {
+	function canLogin($openid_url) {
 
 		global $wgOpenIDConsumerDenyByDefault, $wgOpenIDConsumerAllow, $wgOpenIDConsumerDeny;
 
-		if (OpenIDIsLocalUrl($openid_url)) {
+		if ($this->isLocalUrl($openid_url)) {
 			return false;
 		}
 
@@ -418,7 +278,7 @@ if (defined('MEDIAWIKI')) {
 		return $canLogin;
 	}
 
-	function OpenIDIsLocalUrl($url) {
+	function isLocalUrl($url) {
 
 		global $wgServer, $wgArticlePath;
 
@@ -429,28 +289,9 @@ if (defined('MEDIAWIKI')) {
 		return preg_match('|^' . $pattern . '$|', $url);
 	}
 
-	function OpenIDFullUrl($title) {
-		$nt = Title::makeTitleSafe(NS_SPECIAL, $title);
-		if (isset($nt)) {
-			return $nt->getFullURL();
-		} else {
-			return NULL;
-		}
-	}
-
-	function OpenIDConsumer() {
-		global $wgOpenIDConsumerStoreType, $wgOpenIDConsumerStorePath;
-
-		$store = getOpenIDStore($wgOpenIDConsumerStoreType,
-					'consumer',
-					array('path' => $wgOpenIDConsumerStorePath));
-
-		return new Auth_OpenID_Consumer($store);
-	}
-
 	# Find the user with the given openid, if any
 
-	function OpenIDGetUser($openid) {
+	function getUser($openid) {
 		global $wgSharedDB, $wgDBprefix;
 
 		if (isset($wgSharedDB)) {
@@ -470,7 +311,7 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDUpdateUser($user, $sreg) {
+	function updateUser($user, $sreg) {
 		global $wgAllowRealName;
 
 		# FIXME: only update if there's been a change
@@ -511,7 +352,7 @@ if (defined('MEDIAWIKI')) {
 		$user->saveSettings();
 	}
 
-	function OpenIDCreateUser($openid, $sreg, $name) {
+	function createUser($openid, $sreg, $name) {
 
 		global $wgAuth, $wgAllowRealName;
 
@@ -523,7 +364,7 @@ if (defined('MEDIAWIKI')) {
 			wfDebug("OpenID: Error adding new user.\n");
 		} else {
 
-			OpenIDInsertUserUrl($user, $openid);
+			$this->insertUserUrl($user, $openid);
 
 			if (array_key_exists('nickname', $sreg)) {
 				$user->setOption('nickname', $sreg['nickname']);
@@ -548,22 +389,20 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDCreateName($openid, $sreg) {
+	function createName($openid, $sreg) {
 
 		if (array_key_exists('nickname', $sreg) && # try nickname
-			OpenIDUserNameOK($sreg['nickname']))
+			$this->userNameOK($sreg['nickname']))
 		{
 			return $sreg['nickname'];
 		}
 	}
 
-	function OpenIDToUserName($openid) {
-        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
-			wfDebug("OpenID: Handling an XRI: $openid\n");
-			return OpenIDToUserNameXri($openid);
+	function toUserName($openid) {
+        if (Auth_Yadis_identifierScheme($openid) == 'XRI') {
+			return $this->toUserNameXri($openid);
 		} else {
-			wfDebug("OpenID: Handling an URL: $openid\n");
-			return OpenIDToUserNameUrl($openid);
+			return $this->toUserNameUrl($openid);
 		}
 	}
 
@@ -572,7 +411,7 @@ if (defined('MEDIAWIKI')) {
 	# 2. One element in path, like http://profile.typekey.com/EvanProdromou/
 	#    or http://getopenid.com/evanprodromou
 
-    function OpenIDToUserNameUrl($openid) {
+    function toUserNameUrl($openid) {
 		static $bad = array('query', 'user', 'password', 'port', 'fragment');
 
 	    $parts = parse_url($openid);
@@ -618,8 +457,8 @@ if (defined('MEDIAWIKI')) {
 		return NULL;
 	}
 
-	function OpenIDToUserNameXri($xri) {
-		$base = OpenIDXriBase($xri);
+	function toUserNameXri($xri) {
+		$base = $this->xriBase($xri);
 
 		if (!$base) {
 			return NULL;
@@ -633,7 +472,7 @@ if (defined('MEDIAWIKI')) {
 
 	# Is this name OK to use as a user name?
 
-	function OpenIDUserNameOK($name) {
+	function userNameOK($name) {
 		global $wgReservedUsernames;
 		return (0 == User::idFromName($name) &&
 				!in_array( $name, $wgReservedUsernames ));
@@ -641,16 +480,16 @@ if (defined('MEDIAWIKI')) {
 
 	# Get an auto-incremented name
 
-	function OpenIDFirstAvailable($prefix) {
+	function firstAvailable($prefix) {
 		for ($i = 2; ; $i++) { # FIXME: this is the DUMB WAY to do this
 			$name = "$prefix$i";
-			if (OpenIDUserNameOK($name)) {
+			if ($this->userNameOK($name)) {
 				return $name;
 			}
 		}
 	}
 
-	function OpenIDAlreadyLoggedIn() {
+	function alreadyLoggedIn() {
 
 		global $wgUser, $wgOut;
 
@@ -658,10 +497,10 @@ if (defined('MEDIAWIKI')) {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
-		$wgOut->returnToMain(false, OpenIDConsumerReturnTo() );
+		$wgOut->returnToMain(false, $this->returnTo() );
 	}
 
-	function OpenIDGetUserUrl($user) {
+	function getUserUrl($user) {
 		$openid_url = null;
 
 		if (isset($user) && $user->getId() != 0) {
@@ -676,7 +515,7 @@ if (defined('MEDIAWIKI')) {
 			$res = $dbr->select(array($tableName),
 								array('uoi_openid'),
 								array('uoi_user' => $user->getId()),
-								'OpenIDGetUserUrl');
+								'SpecialOpenIDFinish::getUserUrl');
 
 			# This should return 0 or 1 result, since user is unique
 			# in the table.
@@ -689,16 +528,16 @@ if (defined('MEDIAWIKI')) {
 		return $openid_url;
 	}
 
-	function OpenIDSetUserUrl($user, $url) {
-		$other = OpenIDGetUserUrl($user);
+	function setUserUrl($user, $url) {
+		$other = $this->getUserUrl($user);
 		if (isset($other)) {
-			OpenIDUpdateUserUrl($user, $url);
+			$this->updateUserUrl($user, $url);
 		} else {
-			OpenIDInsertUserUrl($user, $url);
+			$this->insertUserUrl($user, $url);
 		}
 	}
 
-	function OpenIDInsertUserUrl($user, $url) {
+	function insertUserUrl($user, $url) {
 		global $wgSharedDB, $wgDBname;
 		$dbw =& wfGetDB( DB_MASTER );
 
@@ -716,7 +555,7 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDUpdateUserUrl($user, $url) {
+	function updateUserUrl($user, $url) {
 		global $wgSharedDB, $wgDBname;
 		$dbw =& wfGetDB( DB_MASTER );
 
@@ -734,59 +573,47 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDInterwikiExpand($openid_url) {
-		# try to make it into a title object
-		$nt = Title::newFromText($openid_url);
-		# If it's got an iw, return that
-		if (!is_null($nt) && !is_null($nt->getInterwiki())
-			&& strlen($nt->getInterwiki()) > 0) {
-			return $nt->getFullUrl();
-		} else {
-			return $openid_url;
-		}
-	}
-
-	function OpenIDConsumerSaveValues($response, $sreg) {
+	function saveValues($openid, $sreg) {
 		global $wgSessionStarted, $wgUser;
 
 		if (!$wgSessionStarted) {
 			$wgUser->SetupSession();
 		}
 
-		$_SESSION['openid_consumer_response'] = $response;
+		$_SESSION['openid_consumer_identity'] = $openid;
 		$_SESSION['openid_consumer_sreg'] = $sreg;
 
 		return true;
 	}
 
-	function OpenIDConsumerClearValues() {
-		unset($_SESSION['openid_consumer_response']);
+	function clearValues() {
+		unset($_SESSION['openid_consumer_identity']);
 		unset($_SESSION['openid_consumer_sreg']);
 		return true;
 	}
 
-	function OpenIDConsumerFetchValues() {
-		return array($_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg']);
+	function fetchValues() {
+		return array($_SESSION['openid_consumer_identity'], $_SESSION['openid_consumer_sreg']);
 	}
 
-	function OpenIDConsumerReturnTo() {
+	function returnTo() {
 		return $_SESSION['openid_consumer_returnto'];
 	}
 	
-	function OpenIDConsumerSetReturnTo($returnto) {
+	function setReturnTo($returnto) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
 
-	function OpenIDGetName($response, $sreg, $choice, $nameValue) {
+	function getUserName($openid, $sreg, $choice, $nameValue) {
 		switch ($choice) {
 		 case 'full':
 			return ((array_key_exists('fullname', $sreg)) ? $sreg['fullname'] : null);
 			break;
 		 case 'url':
-			return OpenIDToUserName($response->identity_url);
+			return $this->toUserName($openid);
 			break;
 		 case 'auto':
-			return OpenIDAutomaticName($sreg);
+			return $this->automaticName($sreg);
 			break;
 		 case 'manual':
 			return $nameValue;
@@ -795,12 +622,12 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDAutomaticName($sreg) {
+	function automaticName($sreg) {
 		if (array_key_exists('nickname', $sreg) && # try auto-generated from nickname
 			strlen($sreg['nickname']) > 0) {
-			return OpenIDFirstAvailable($sreg['nickname']);
+			return $this->firstAvailable($sreg['nickname']);
 		} else { # try auto-generated
-			return OpenIDFirstAvailable(wfMsg('openidusernameprefix'));
+			return $this->firstAvailable(wfMsg('openidusernameprefix'));
 		}
 	}
 }

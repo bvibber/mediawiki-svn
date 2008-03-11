@@ -1,8 +1,8 @@
 <?php
 /**
- * Convert.php -- Convert existing account to OpenID account
+ * SpecialOpenIDConvert.body.php -- Convert existing account to OpenID account
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * By Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,71 +18,81 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Evan Prodromou <evan@wikitravel.org>
+ * @author Evan Prodromou <evan@prodromou.name>
  * @addtogroup Extensions
  */
 
-if (defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI')) {
+	exit( 1 );
+}
 
-	# We use some of the consumer code
+class SpecialOpenIDConvert extends SpecialOpenID {
+	
+	function SpecialOpenIDConvert() {
+		SpecialPage::SpecialPage("OpenIDConvert");
+		self::loadMessages();
+	}
 
-	require_once("$IP/extensions/OpenID/Consumer.php");
-
-	function wfSpecialOpenIDConvert($par) {
+	function execute($par) {
 
 		global $wgRequest, $wgUser, $wgOut;
 
 		if ($wgUser->getID() == 0) {
-			$wgOut->errorpage('openiderror', 'notloggedin');
+			$wgOut->showErrorPage('openiderror', 'notloggedin');
 			return;
 		}
 
 		switch ($par) {
 		 case 'Finish':
-			OpenIDConvertFinish();
+			$this->finish();
 			break;
 		 default:
 			$openid_url = $wgRequest->getText('openid_url');
 			if (isset($openid_url) && strlen($openid_url) > 0) {
-				OpenIDConvert($openid_url);
+				$this->convert($openid_url);
 			} else {
-				OpenIDConvertForm();
+				$this->Form();
 			}
 		}
 	}
 
-	function OpenIDConvert($openid_url) {
+	function convert($openid_url) {
+		
 		global $wgUser, $wgOut;
 
 		# Expand Interwiki
 
-		$openid_url = OpenIDInterwikiExpand($openid_url);
+		$openid_url = $this->interwikiExpand($openid_url);
 
-		if (!OpenIDCanLogin($openid_url)) {
-			$wgOut->errorpage('openidpermission', 'openidpermissiontext');
+		# Is this ID allowed to log in?
+		
+		if (!$this->CanLogin($openid_url)) {
+			$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 			return;
 		}
 
-		$other = OpenIDGetUser($openid_url);
+		# Is this ID already taken?
+		
+		$other = $this->getUser($openid_url);
 
 		if (isset($other)) {
 			if ($other->getId() == $wgUser->getID()) {
-				$wgOut->errorpage('openiderror', 'openidconvertyourstext');
+				$wgOut->showErrorPage('openiderror', 'openidconvertyourstext');
 			} else {
-				$wgOut->errorpage('openiderror', 'openidconvertothertext');
+				$wgOut->showErrorPage('openiderror', 'openidconvertothertext');
 			}
 			return;
 		}
 
 		# If we're OK to here, let the user go log in
 
-		OpenIDLogin($openid_url, 'OpenIDConvert/Finish');
+		$this->Login($openid_url, 'OpenIDConvert/Finish');
 	}
 
-	function OpenIDConvertForm() {
+	function form() {
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
-		$url = OpenIDGetUserUrl($wgUser);
+		$url = $this->GetUserUrl($wgUser);
 		if (is_null($url)) {
 			$url = '';
 		}
@@ -99,50 +109,52 @@ if (defined('MEDIAWIKI')) {
 						'</form>');
 	}
 
-	function OpenIDConvertFinish() {
+	function finish() {
 
 		global $wgUser, $wgOut;
 
-		$consumer = OpenIDConsumer();
-		$response = $consumer->complete($_GET);
+		$consumer = $this->getConsumer();
+		
+		$response = $consumer->complete($this->scriptUrl('OpenIDConvert/Finish'));
 
 		if (!isset($response)) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 
 		switch ($response->status) {
 		 case Auth_OpenID_CANCEL:
 			// This means the authentication was cancelled.
-			$wgOut->errorpage('openidcancel', 'openidcanceltext');
+			$wgOut->showErrorPage('openidcancel', 'openidcanceltext');
 			break;
 		 case Auth_OpenID_FAILURE:
-			$wgOut->errorpage('openidfailure', 'openidfailuretext');
+			wfDebug("OpenID: error in convert: '" . $response->message . "'\n");
+			$wgOut->showErrorPage('openidfailure', 'openidfailuretext', array($response->message));
 			break;
 		 case Auth_OpenID_SUCCESS:
 			// This means the authentication succeeded.
 			$openid_url = $response->identity_url;
 
 			if (!isset($openid_url)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
 
 			# We check again for dupes; this may be normalized or
 			# reformatted by the server.
 
-			$other = OpenIDGetUser($openid_url);
+			$other = $this->getUser($openid_url);
 
 			if (isset($other)) {
 				if ($other->getId() == $wgUser->getID()) {
-					$wgOut->errorpage('openiderror', 'openidconvertyourstext');
+					$wgOut->showErrorPage('openiderror', 'openidconvertyourstext');
 				} else {
-					$wgOut->errorpage('openiderror', 'openidconvertothertext');
+					$wgOut->showErrorPage('openiderror', 'openidconvertothertext');
 				}
 				return;
 			}
 
-			OpenIDSetUserUrl($wgUser, $openid_url);
+			$this->setUserUrl($wgUser, $openid_url);
 
 			$wgOut->setPageTitle( wfMsg( 'openidconvertsuccess' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );

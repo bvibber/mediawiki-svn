@@ -2,7 +2,7 @@
 /**
  * Server.php -- Server side of OpenID site
  * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
- * By Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2007,2008 Evan Prodromou <evan@prodromou.name>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,139 +18,75 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Evan Prodromou <evan@wikitravel.org>
+ * @author Evan Prodromou <evan@prodromou.name>
  * @addtogroup Extensions
  */
 
-if (defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI'))
+  exit(1);
 
-	require_once("Auth/OpenID/Server.php");
-	require_once("Auth/OpenID/Consumer.php");
+require_once("Auth/OpenID/Server.php");
+require_once("Auth/OpenID/Consumer.php");
 
-	# These are trust roots that we don't bother asking users
-	# whether the trust root is allowed to trust; typically
-	# for closely-linked partner sites.
+# Special page for the server side of OpenID
+# It has three major flavors:
+# * no parameter is for external requests to validate a user.
+# * 'Login' is we got a validation request but the
+#   user wasn't logged in. We show them a form (see OpenIDServerLoginForm)
+#   and they post the results, which go to OpenIDServerLogin
+# * 'Trust' is when the user has logged in, but they haven't
+#   specified whether it's OK to let the requesting site trust them.
+#   If they haven't, we show them a form (see OpenIDServerTrustForm)
+#   and let them post results which go to OpenIDServerTrust.
+#
+# OpenID has its own modes; we only handle two of them ('check_setup' and
+# 'check_immediate') and let the OpenID libraries handle the rest.
+#
+# Output may be just a redirect, or a form if we need info.
 
-	$wgOpenIDServerForceAllowTrust = array();
+class SpecialOpenIDServer extends SpecialOpenID {
 
-	# Where to store transitory data. Can be 'memc' for the $wgMemc
-	# global caching object, or 'file' if caching is turned off
-	# completely and you need a fallback.
-
-	$wgOpenIDServerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
-
-	# If the store type is set to 'file', this is is the name of a
-	# directory to store the data in.
-
-	$wgOpenIDServerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidserver/" : NULL;
-
-	# Outputs a Yadis (http://yadis.org/) XRDS file, saying that this server
-	# supports OpenID and lots of other jazz.
-
-	function wfSpecialOpenIDXRDS($par) {
-	        global $wgOut;
-
-		// XRDS preamble XML.
-    	        $xml_template = array('<?xml version="1.0" encoding="UTF-8"?>',
-				      '<xrds:XRDS',
-				      '  xmlns:xrds="xri://\$xrds"',
-				      '  xmlns:openid="http://openid.net/xmlns/1.0"',
-				      '  xmlns="xri://$xrd*($v*2.0)">',
-				      '<XRD>');
-
-		// Generate the user page URL.
-		$user_title = Title::makeTitle(NS_USER, $par);
-		$user_url = $user_title->getFullURL();
-
-		// Generate the OpenID server endpoint URL.
-		$server_title = Title::makeTitle(NS_SPECIAL, 'OpenIDServer');
-		$server_url = $server_title->getFullURL();
-
-		// Define array of Yadis services to be included in
-		// the XRDS output.
-		$services = array(
-				  array('uri' => $server_url,
-					'priority' => '0',
-					'types' => array('http://openid.net/signon/1.0',
-							 'http://openid.net/sreg/1.0'),
-					'delegate' => $user_url)
-				  );
-
-		// Generate <Service> elements into $service_text.
-		$service_text = "\n";
-		foreach ($services as $service) {
-		    $types = array();
-		    foreach ($service['types'] as $type_uri) {
-		        $types[] = '    <Type>'.$type_uri.'</Type>';
-		    }
-		    $service_text .= implode("\n",
-					     array('  <Service priority="'.$service['priority'].'">',
-						   '    <URI>'.$server_url.'</URI>',
-						   implode("\n", $types),
-						   '  </Service>'));
-		}
-
-		$wgOut->disable();
-
-		// Print content-type and XRDS XML.
-		header("Content-Type", "application/xrds+xml");
-		print implode("\n", $xml_template);
-		print $service_text;
-		print implode("\n", array("</XRD>", "</xrds:XRDS>"));
+	function SpecialOpenIDServer() {
+		SpecialPage::SpecialPage("OpenIDServer");
+		self::loadMessages();
 	}
 
-	# Special page for the server side of OpenID
-	# It has three major flavors:
-	# * no parameter is for external requests to validate a user.
-	# * 'Login' is we got a validation request but the
-	#   user wasn't logged in. We show them a form (see OpenIDServerLoginForm)
-	#   and they post the results, which go to OpenIDServerLogin
-	# * 'Trust' is when the user has logged in, but they haven't
-	#   specified whether it's OK to let the requesting site trust them.
-	#   If they haven't, we show them a form (see OpenIDServerTrustForm)
-	#   and let them post results which go to OpenIDServerTrust.
-	#
-	# OpenID has its own modes; we only handle two of them ('check_setup' and
-	# 'check_immediate') and let the OpenID libraries handle the rest.
-	#
-	# Output may be just a redirect, or a form if we need info.
-
-	function wfSpecialOpenIDServer($par) {
+	function execute($par) {
 
 		global $wgOut;
 
-		$server =& OpenIDServer();
+		$server =& $this->getServer();
 
 		switch ($par) {
 		 case 'Login':
-			list($request, $sreg) = OpenIDServerFetchValues();
-			$result = OpenIDServerLogin($request);
+			list($request, $sreg) = $this->FetchValues();
+			$result = $this->Login($request);
 			if ($result) {
 				if (is_string($result)) {
-					OpenIDServerLoginForm($request, $result);
+					$this->LoginForm($request, $result);
 					return;
 				} else {
-					OpenIDServerResponse($server, $result);
+					$this->Response($server, $result);
 					return;
 				}
 			}
 			break;
 		 case 'Trust':
-			list($request, $sreg) = OpenIDServerFetchValues();
-			$result = OpenIDServerTrust($request, $sreg);
+			list($request, $sreg) = $this->FetchValues();
+			$result = $this->Trust($request, $sreg);
 			if ($result) {
 				if (is_string($result)) {
-					OpenIDServerTrustForm($request, $sreg, $result);
+					$this->TrustForm($request, $sreg, $result);
 					return;
 				} else {
-					OpenIDServerResponse($server, $result);
+					$this->Response($server, $result);
 					return;
 				}
 			}
 			break;
 		 default:
 			if (strlen($par)) {
-				$wgOut->errorpage('openiderror', 'openiderrortext');
+				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			} else {
 				$method = $_SERVER['REQUEST_METHOD'];
@@ -161,16 +97,15 @@ if (defined('MEDIAWIKI')) {
 					$query = $_POST;
 				}
 
-				$query = Auth_OpenID::fixArgs($query);
-				$request = $server->decodeRequest($query);
-				$sreg = OpenIdServerSregFromQuery($query);
+				$request = $server->decodeRequest();
+				$sreg = $this->SregFromQuery($query);
 				$response = NULL;
 				break;
 			}
 		}
 
 		if (!isset($request)) {
-			$wgOut->errorpage('openiderror', 'openiderrortext');
+			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
 
@@ -178,10 +113,10 @@ if (defined('MEDIAWIKI')) {
 
 		switch ($request->mode) {
 		 case "checkid_setup":
-			$response = OpenIDServerCheck($server, $request, $sreg, false);
+			$response = $this->Check($server, $request, $sreg, false);
 			break;
 		 case "checkid_immediate":
-			$response = OpenIDServerCheck($server, $request, $sreg, true);
+			$response = $this->Check($server, $request, $sreg, true);
 			break;
 		 default:
 			# For all the other parts, just let the libs do it
@@ -193,15 +128,15 @@ if (defined('MEDIAWIKI')) {
 
 		if (isset($response)) {
 			# We're done; clear values
-			OpenIDServerClearValues();
-			OpenIDServerResponse($server, $response);
+			$this->ClearValues();
+			$this->Response($server, $response);
 		}
 	}
 
 	# Returns the full URL of the special page; we need to pass it around
 	# for some requests
 
-	function OpenIDServerUrl() {
+	function Url() {
 		$nt = Title::makeTitleSafe(NS_SPECIAL, 'OpenIDServer');
 		if (isset($nt)) {
 			return $nt->getFullURL();
@@ -212,15 +147,15 @@ if (defined('MEDIAWIKI')) {
 
 	# Returns an Auth_OpenID_Server from the libraries. Utility.
 
-	function OpenIDServer() {
-                global $wgOpenIDServerStorePath,
-		    $wgOpenIDServerStoreType;
+	function getServer() {
+		global $wgOpenIDServerStorePath,
+		  $wgOpenIDServerStoreType;
 
-		$store = getOpenIDStore($wgOpenIDServerStoreType,
-		    'server',
-		    array('path' => $wgOpenIDServerStorePath));
+		$store = $this->getOpenIDStore($wgOpenIDServerStoreType,
+									   'server',
+									   array('path' => $wgOpenIDServerStorePath));
 
-		return new Auth_OpenID_Server($store);
+		return new Auth_OpenID_Server($store, $this->serverUrl());
 	}
 
 	# Checks a validation request. $imm means don't run any UI.
@@ -230,7 +165,7 @@ if (defined('MEDIAWIKI')) {
 	# XXX: this should probably be broken up into multiple functions for
 	# clarity.
 
-	function OpenIDServerCheck($server, $request, $sreg, $imm = true) {
+	function Check($server, $request, $sreg, $imm = true) {
 
 		global $wgUser, $wgOut;
 
@@ -246,11 +181,11 @@ if (defined('MEDIAWIKI')) {
 
 		assert(isset($url) && strlen($url) > 0);
 
-		$name = OpenIDUrlToUserName($url);
+		$name = $this->UrlToUserName($url);
 
 		if (!isset($name) || strlen($name) == 0) {
 			wfDebug("OpenID: '$url' not a user page.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 		assert(isset($name) && strlen($name) > 0);
@@ -260,11 +195,11 @@ if (defined('MEDIAWIKI')) {
 		if ($wgUser->getId() == 0) {
 			wfDebug("OpenID: User not logged in.\n");
 			if ($imm) {
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			} else {
 				# Bank these for later
-				OpenIDServerSaveValues($request, $sreg);
-				OpenIDServerLoginForm($request);
+				$this->SaveValues($request, $sreg);
+				$this->LoginForm($request);
 				return NULL;
 			}
 		}
@@ -278,18 +213,18 @@ if (defined('MEDIAWIKI')) {
 		if (!isset($user) ||
 			$user->getId() != $wgUser->getId()) {
 			wfDebug("OpenID: User from url not logged in user.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 		assert(isset($user) && $user->getId() == $wgUser->getId() && $user->getId() != 0);
 
 		# Is the user an OpenID user?
 
-		$openid = OpenIDGetUserUrl($user);
+		$openid = $this->getUserUrl($user);
 
 		if (isset($openid) && strlen($openid) > 0) {
 			wfDebug("OpenID: Not one of our users; logs in with OpenID.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
 	    assert(is_array($sreg));
@@ -299,14 +234,14 @@ if (defined('MEDIAWIKI')) {
 		if (array_key_exists('required', $sreg)) {
 			$notFound = false;
 			foreach ($sreg['required'] as $reqfield) {
-				if (is_null(OpenIdGetUserField($user, $reqfield))) {
+				if (is_null($this->GetUserField($user, $reqfield))) {
 					$notFound = true;
 					break;
 				}
 			}
 			if ($notFound) {
 				wfDebug("OpenID: Consumer demands info we don't have.\n");
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			}
 		}
 
@@ -316,18 +251,18 @@ if (defined('MEDIAWIKI')) {
 
 		assert(isset($trust_root) && is_string($trust_root) && strlen($trust_root) > 0);
 
-		$trust = OpenIDGetUserTrust($user, $trust_root);
+		$trust = $this->GetUserTrust($user, $trust_root);
 
 		# Is there a trust record?
 
 		if (is_null($trust)) {
 			wfDebug("OpenID: No trust record.\n");
 			if ($imm) {
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			} else {
 				# Bank these for later
-				OpenIDServerSaveValues($request, $sreg);
-				OpenIDServerTrustForm($request, $sreg);
+				$this->SaveValues($request, $sreg);
+				$this->TrustForm($request, $sreg);
 				return NULL;
 			}
 		}
@@ -339,7 +274,7 @@ if (defined('MEDIAWIKI')) {
 
 		if ($trust === false) {
 			wfDebug("OpenID: User specified not to allow trust.\n");
-			return $request->answer(false, OpenIdServerUrl());
+			return $request->answer(false, $this->serverUrl());
 		}
 
         assert(isset($trust) && is_array($trust));
@@ -351,14 +286,14 @@ if (defined('MEDIAWIKI')) {
 			$notFound = false;
 			foreach ($sreg['required'] as $reqfield) {
 				if (!in_array($reqfield, $trust) ||
-					is_null(OpenIdGetUserField($user, $reqfield))) {
+					is_null($this->GetUserField($user, $reqfield))) {
 					$notFound = true;
 					break;
 				}
 			}
 			if ($notFound) {
 				wfDebug("OpenID: Consumer demands info user doesn't want shared.\n");
-				return $request->answer(false, OpenIdServerUrl());
+				return $request->answer(false, $this->serverUrl());
 			}
 		}
 
@@ -376,7 +311,7 @@ if (defined('MEDIAWIKI')) {
 	    assert(isset($response));
 
 		foreach ($response_fields as $field) {
-			$value = OpenIDGetUserField($user, $field);
+			$value = $this->GetUserField($user, $field);
 			if (!is_null($value)) {
 				$response->addField('sreg', $field, $value);
 			}
@@ -391,7 +326,7 @@ if (defined('MEDIAWIKI')) {
 	# * false -> stored trust preference is not to trust
 	# * array -> possibly empty array of allowed profile fields; trust is OK
 
-	function OpenIDGetUserTrust($user, $trust_root) {
+	function GetUserTrust($user, $trust_root) {
 		static $allFields = array('nickname', 'fullname', 'email', 'language');
 		global $wgOpenIDServerForceAllowTrust;
 
@@ -401,7 +336,7 @@ if (defined('MEDIAWIKI')) {
 			}
 		}
 
-		$trust_array = OpenIDGetUserTrustArray($user);
+		$trust_array = $this->GetUserTrustArray($user);
 
 		if (array_key_exists($trust_root, $trust_array)) {
 			return $trust_array[$trust_root];
@@ -410,9 +345,9 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDSetUserTrust(&$user, $trust_root, $value) {
+	function SetUserTrust(&$user, $trust_root, $value) {
 
-		$trust_array = OpenIDGetUserTrustArray($user);
+		$trust_array = $this->GetUserTrustArray($user);
 
 		if (is_null($value)) {
 			if (array_key_exists($trust_root, $trust_array)) {
@@ -422,10 +357,10 @@ if (defined('MEDIAWIKI')) {
 			$trust_array[$trust_root] = $value;
 		}
 
-		OpenIDSetUserTrustArray($user, $trust_array);
+		$this->SetUserTrustArray($user, $trust_array);
 	}
 
-	function OpenIDGetUserTrustArray($user) {
+	function GetUserTrustArray($user) {
 		$trust_array = array();
 		$trust_str = $user->getOption('openid_trust');
 		if (strlen($trust_str) > 0) {
@@ -437,7 +372,7 @@ if (defined('MEDIAWIKI')) {
 					$trust_array[$trust_root] = false;
 				} else {
 					$fields = array_map('trim', $fields);
-					$fields = array_filter($fields, 'OpenIDValidField');
+					$fields = array_filter($fields, array($this, 'ValidField'));
 					$trust_array[$trust_root] = $fields;
 				}
 			}
@@ -445,7 +380,7 @@ if (defined('MEDIAWIKI')) {
 		return $trust_array;
 	}
 
-	function OpenIDSetUserTrustArray(&$user, $arr) {
+	function SetUserTrustArray(&$user, $arr) {
 		$trust_records = array();
 		foreach ($arr as $root => $value) {
 			if ($value === false) {
@@ -455,7 +390,7 @@ if (defined('MEDIAWIKI')) {
 					$record = $root;
 				} else {
 					$value = array_map('trim', $value);
-					$value = array_filter($value, 'OpenIDValidField');
+					$value = array_filter($value, array($this, 'ValidField'));
 					$record = implode("\x1F", array_merge(array($root), $value));
 				}
 			} else {
@@ -467,13 +402,13 @@ if (defined('MEDIAWIKI')) {
 		$user->setOption('openid_trust', $trust_str);
 	}
 
-	function OpenIDValidField($name) {
+	function ValidField($name) {
 		# XXX: eventually add timezone
 		static $fields = array('nickname', 'email', 'fullname', 'language');
 		return in_array($name, $fields);
 	}
 
-	function OpenIDServerSregFromQuery($query) {
+	function SregFromQuery($query) {
 		$sreg = array('required' => array(), 'optional' => array(),
 					  'policy_url' => NULL);
 		if (array_key_exists('openid.sreg.required', $query)) {
@@ -488,7 +423,7 @@ if (defined('MEDIAWIKI')) {
 		return $sreg;
 	}
 
-	function OpenIDSetUserField(&$user, $field, $value) {
+	function SetUserField(&$user, $field, $value) {
 		switch ($field) {
 		 case 'fullname':
 			$user->setRealName($value);
@@ -508,7 +443,7 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDGetUserField($user, $field) {
+	function GetUserField($user, $field) {
 		switch ($field) {
 		 case 'nickname':
 			return $user->getName();
@@ -527,12 +462,17 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDServerResponse($server, $response) {
+	function Response(&$server, &$response) {
 		global $wgOut;
+
+		assert(!is_null($server));
+		assert(!is_null($response));
 
 		$wgOut->disable();
 
 		$wr =& $server->encodeResponse($response);
+
+		assert(!is_null($wr));
 
 		header("Status: " . $wr->code);
 
@@ -541,15 +481,16 @@ if (defined('MEDIAWIKI')) {
 		}
 
 		print $wr->body;
+
 		return;
 	}
 
-	function OpenIDServerLoginForm($request, $msg = null) {
+	function LoginForm($request, $msg = null) {
 
 		global $wgOut, $wgUser;
 
 		$url = $request->identity;
-		$name = OpenIDUrlToUserName($url);
+		$name = $this->UrlToUserName($url);
 		$trust_root = $request->trust_root;
 
 		$instructions = wfMsg('openidserverlogininstructions', $url, $name, $trust_root);
@@ -577,7 +518,7 @@ if (defined('MEDIAWIKI')) {
 						'</form>');
 	}
 
-	function OpenIDServerSaveValues($request, $sreg) {
+	function SaveValues($request, $sreg) {
 		global $wgSessionStarted, $wgUser;
 
 		if (!$wgSessionStarted) {
@@ -590,17 +531,17 @@ if (defined('MEDIAWIKI')) {
 		return true;
 	}
 
-	function OpenIDServerFetchValues() {
+	function FetchValues() {
 		return array($_SESSION['openid_server_request'], $_SESSION['openid_server_sreg']);
 	}
 
-	function OpenIDServerClearValues() {
+	function ClearValues() {
 		unset($_SESSION['openid_server_request']);
 		unset($_SESSION['openid_server_sreg']);
 		return true;
 	}
 
-	function OpenIDServerLogin($request) {
+	function Login($request) {
 
 		global $wgRequest, $wgUser;
 
@@ -624,7 +565,7 @@ if (defined('MEDIAWIKI')) {
 
 		assert(isset($url) && is_string($url) && strlen($url) > 0);
 
-		$name = OpenIDUrlToUserName($url);
+		$name = $this->UrlToUserName($url);
 
 		assert(isset($name) && is_string($name) && strlen($name) > 0);
 
@@ -644,12 +585,12 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	function OpenIDServerTrustForm($request, $sreg, $msg = NULL) {
+	function TrustForm($request, $sreg, $msg = NULL) {
 
 		global $wgOut, $wgUser;
 
 		$url = $request->identity;
-		$name = OpenIDUrlToUserName($url);
+		$name = $this->UrlToUserName($url);
 		$trust_root = $request->trust_root;
 
 		$instructions = wfMsg('openidtrustinstructions', $trust_root);
@@ -676,7 +617,7 @@ if (defined('MEDIAWIKI')) {
 						'<label for="wpAllowTrust">' . $allow . '</label><br />');
 
 		$fields = array_filter(array_unique(array_merge($sreg['optional'], $sreg['required'])),
-							   'OpenIDValidField');
+							   array($this, 'ValidField'));
 
 		if (count($fields) > 0) {
 			$wgOut->addHTML('<table>');
@@ -685,7 +626,7 @@ if (defined('MEDIAWIKI')) {
 				$wgOut->addHTML("<th><label for='wpAllow{$field}'>");
 				$wgOut->addHTML(wfMsg("openid$field"));
 				$wgOut->addHTML("</label></th>");
-				$value = OpenIDGetUserField($wgUser, $field);
+				$value = $this->GetUserField($wgUser, $field);
 				$wgOut->addHTML("</td>");
 				$wgOut->addHTML("<td> " . ((is_null($value)) ? '' : $value) . "</td>");
 				$wgOut->addHTML("<td>" . ((in_array($field, $sreg['required'])) ? wfMsg('openidrequired') : wfMsg('openidoptional')) . "</td>");
@@ -699,11 +640,11 @@ if (defined('MEDIAWIKI')) {
 			}
 			$wgOut->addHTML('</table>');
 		}
-		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' />");
+		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' /></form>");
 		return NULL;
 	}
 
-	function OpenIDServerTrust($request, $sreg) {
+	function Trust($request, $sreg) {
 		global $wgRequest, $wgUser;
 
 		assert(isset($request));
@@ -722,13 +663,13 @@ if (defined('MEDIAWIKI')) {
 
 		if (!$wgRequest->getCheck('wpAllowTrust')) {
 
-			OpenIDSetUserTrust($wgUser, $trust_root, false);
+			$this->SetUserTrust($wgUser, $trust_root, false);
 			# Set'em and sav'em
 			$wgUser->saveSettings();
 		} else {
 
 			$fields = array_filter(array_unique(array_merge($sreg['optional'], $sreg['required'])),
-								   'OpenIDValidField');
+								   array($this, 'ValidField'));
 
 			$allow = array();
 
@@ -738,7 +679,7 @@ if (defined('MEDIAWIKI')) {
 				}
 			}
 
-			OpenIDSetUserTrust($wgUser, $trust_root, $allow);
+			$this->SetUserTrust($wgUser, $trust_root, $allow);
 			# Set'em and sav'em
 			$wgUser->saveSettings();
 		}
@@ -747,7 +688,7 @@ if (defined('MEDIAWIKI')) {
 
 	# Converts an URL to a user name, if possible
 
-	function OpenIDUrlToUserName($url) {
+	function UrlToUserName($url) {
 
 		global $wgArticlePath, $wgServer;
 
@@ -786,6 +727,10 @@ if (defined('MEDIAWIKI')) {
 				return $nt->getText();
 			}
 		}
+	}
+
+	function serverUrl() {
+		return $this->fullURL('OpenIDServer');
 	}
 }
 

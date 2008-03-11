@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.7.0
-14 Sep 2007
+version 0.8.0
+11 Mar 2008
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -16,21 +16,33 @@ other OpenID-aware Web sites with their wiki user page as their OpenID.
 Typical uses:
 
 * Single-signon between multiple affiliated wikis and other sites. We
-  have 12 wikis that work together for Wikitravel, and users can login
-  to different Wikitravel wikis with their home wiki account.
-* Single-signon across the Internet. OpenID isn't that well known
-  ''yet'', but theoretically someone could login to their OpenID
-  identity server in the morning and not have to login to another site
-  for the rest of the day.
+  have almost 20 wikis that work together for Wikitravel, and users
+  can login to different Wikitravel wikis with their home wiki
+  account.
+* Single-signon across the Internet. Many, many sites now support
+  OpenID, including "big names" like Yahoo!, Google, and AOL. Allowing
+  users to login with OpenID means one less step for them to
+  contribute to your wiki.
+* Distributed reputation. Logging into a new wiki with the same
+  username as you have on another wiki doesn't prove that they're the
+  same person. Logging in with your OpenID from the old wiki does.
+  Using OpenID can help build a distributed reputation across the
+  wiki world.
 
-This is an early version of the extension and it's almost sure to have
-bugs. (Don't despair, though: this is running in production on
-Wikitravel [http://wikitravel.org/], a fairly big MW installation.)
-See the BUGS section below for info on how to report problems.
+The software supports OpenID 2.0 and '''requires''' the
+openidenabled.com 2.x libraries. Users of previous versions should see
+[[#Upgrade]] for more information.
+
+This extension has been in use for years on several large wikis
+without known security problems. However, no software is completely
+bug-free or secure, and there's no guarantee that this software will
+work as advertised. See [[#Bugs]] section below for info on how to
+report problems.
 
 == License ==
 
 Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
+Copyright 2008 Evan Prodromou (http://vinismo.com/en/User:Evan)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -48,14 +60,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 == Author ==
 
-Evan Prodromou <evan@wikitravel.org>
+Evan Prodromou <evan@vinismo.com>
 
 Patches for YADIS support and FileStore storage by Jonathan Daugherty
 <cygnus@janrain.com>.
 
 == Pre-requisites ==
 
-This software has been tested in production with MediaWiki 1.10.x. It
+This software has been tested in production with MediaWiki 1.11.x. It
 may or may not work with earlier or later versions, but I'm interested
 in making later versions work, and I'd be happy to make minor changes
 to make older, unsupported versions work too.
@@ -67,10 +79,14 @@ available here:
 
 	  http://www.openidenabled.com/php-openid/
 
-The last version tested with is 1.2.3 and 2.0.0 rc2. There are also
-some required extensions; see the OpenIDEnabled documentation for
-details. This software has been tested with the gmp and curl PHP
-extensions installed, and it's recommended that you install them, too.
+The last version tested with is 2.0.1; '''versions below 2.0 will not
+work'''. If you must use version 1.x of the openidenabled.com library,
+you can use the unsupported version 0.7.0 or below of this extension.
+
+There are also some required PHP extensions; see the OpenIDEnabled
+documentation for details. This software has been tested with the gmp
+and curl PHP extensions installed, and it's recommended that you
+install them, too.
 
 Note that some versions of MediaWiki overwrite the PHP library path in
 LocalSettings.php. You may need to add the path to your PHP library
@@ -92,43 +108,54 @@ like so:
 
         mysql -h yourdbhost -u youradminuser -p yourwikidb < openid_table.sql
 
-Version 0.3 and below used a different database structure that was
-pretty inefficient. If you installed this extension before, you should
-copy the optionToTable.php script to your MediaWiki "maintenance"
-directory and run it from the command line. This will copy the OpenID
-mappings from the user table to the new table (but it doesn't erase
-the old data... just in case).
+Version 0.3 and below of this extension used a different database
+structure that was pretty inefficient. If you installed this extension
+before, you should copy the optionToTable.php script to your MediaWiki
+"maintenance" directory and run it from the command line. This will
+copy the OpenID mappings from the user table to the new table (but it
+doesn't erase the old data... just in case).
 
 In your MediaWiki LocalSettings.php, add the following line some place
 towards the bottom of the file:
 
-	require_once("$IP/extensions/OpenID/OpenID.php");
+	require_once("$IP/extensions/OpenID/OpenID.setup.php");
 
 Theoretically it should work out of the box, but you'll almost
 definitely want to set the trust root and access controls (see
 Configuration below).
 
-=== Caching ===
+== Upgrade ==
 
-The extension stores some semi-persistent data in the $wgMemc object.
-Where that object stores its data is configured by $wgMainCacheType in
-LocalSettings.php. Often this is set at installation time by the
-MediaWiki configuration script.
+'''This is an incompatible upgrade to the previous version of the
+MediaWiki OpenID library.''' In particular, the interfaces of the
+openidenabled.com libraries have changed from 1.x to 2.x, and no
+effort has been made to retain backwards compatibility with the 1.x
+versions of the library.
 
-Typically for big wiki sites $wgMemc is a front-end for memcached
-(http://www.danga.com/memcached/), so $wgMainCacheType =
-CACHE_MEMCACHED.
+To upgrade, you'll need to do at least the following:
 
-For smaller sites, $wgMemc typically uses eAccelerator to do both data
-caching and bytecode caching. In this case, $wgMainCacheType =
-CACHE_ACCEL.
+* Install the 2.x version of the openidenabled.com PHP OpenID library.
+* Check that your consumer and server stores are correct. I got tired
+  of maintaining the MemcStore that nobody seemed to want, so if you
+  used that, you need to use the filestore now. See below for how to
+  configure it.
+* Change your require_once line in LocalSettings.php to use the
+  .setup.php file.
+* 'openidlogininstructions' is now wikitext, not HTML. If you've
+  customized it, you may need to re-customize it. Also, it's now
+  shown '''below''' the login box, so if you say ''the box below'',
+  you may want to change that to ''the box above''.
+* The extension has been converted to use a clumsy and perverse
+  OOP-like structure, with one class per special page. Most function
+  names have been changed to methods of these classes. If you used
+  them, look around for their replacements. 
+* The extension has been converted to use the autoloading features
+  of MediaWiki, which means that you need to require() the files
+  directly if you really want to use their code. Or you might get
+  lucky and have autoloading work for you.
 
-In case you don't have either installed, try $wgMainCacheType =
-CACHE_ANYTHING. There's usually some fallback mechanism to store this
-data for you.
-
-If none of that works, you can use a filesystem-based storage; see the
-Configuration options below.
+If you find other incompatibilities that I haven't mentioned here,
+please let me know.
 
 == Logging in using OpenID ==
 
@@ -236,12 +263,7 @@ LocalSettings.php file. Please read carefully.
 * $wgOpenIDConsumerStoreType and $wgOpenIDServerStoreType -- strings
   denoting the type of storage to be used to store OpenID assocation
   data when acting as an OpenID relying party (consumer) and server,
-  respectively. Valid values are "file" and "memc".  If the value for
-  one or both is "file", $wgOpenIDConsumerStorePath or
-  $wgOpenIDServerStorePath must be set, respectively (see below).  If
-  either of these variables is set to an invalid value, an error page
-  will be displayed. The default is "memc", unless the main cache is
-  set to CACHE_NONE (default for MW), in which case it is "file".
+  respectively. Only valid value is "file"; "memc" no long valid.
 
 * $wgOpenIDConsumerStorePath and $wgOpenIDServerStorePath -- strings
   specifying the paths where OpenID assocation data should be stored
@@ -282,6 +304,7 @@ doesn't.
 The user interface strings for this extension are configurable through
 the same Special:Allmessages page as MediaWiki itself. They all start
 with "openid", and they're no more or less cryptic than MediaWiki's.
+You can look at OpenID.i18n.php for some details.
 
 == OpenID services ==
 
@@ -293,21 +316,19 @@ all have free signup for identities if you want to test, too.
 * http://www.typekey.com/
 * http://www.claimid.com/
 * http://pip.verisignlabs.com/
+* http://certifi.ca/
 
-== Bugs and enhancements ==
+== Bugs ==
 
 Bugs or feature requests can be sent to the author at
-evan@wikitravel.org. The TODO file in this distribution has stuff I
+evan@vinismo.com. The TODO file in this distribution has stuff I
 think needs to be todone; + marks show things I've already done, and -
 shows things that are yet to be done.
 
 The big changes for the future:
 
-* Snazzier UI -- better HTML, sexier forms
-* Configure some stuff through Special:Preferences
+* Configure some stuff through Special:Preferences or a dedicated
+  control panel
 * Auto-login if you've logged in before with an OpenID, and are logged
   into that account now
 
-Probably a ways down the line:
-
-* Allow delegation
