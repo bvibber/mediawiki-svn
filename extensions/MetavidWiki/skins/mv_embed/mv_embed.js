@@ -1092,7 +1092,7 @@ embedVideo.prototype = {
 		var dl_list='';
 		//set to loading if we don't have the roe data yet: 
 		if(!this.roe_data && this.roe){		
-			$j('#con_vl_'+this.id).html(getMsg('loading_txt'));			
+			select_code+=getMsg('loading_txt');			
 			var _this = this;
 			this.getParseROE(function(){
 				$j('#con_vl_'+_this.id).html(_this.getDLlist());				

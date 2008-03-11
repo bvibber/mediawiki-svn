@@ -249,7 +249,9 @@
 	}	
 	function getROEURL(){		
 		$roeTitle = Title::newFromText('MvExportStream', NS_SPECIAL);
-		return $roeTitle->getFullURL();
+		//add the query: 
+		$query = 'feed_format=roe&stream_name='.$this->getStreamName().'&t='.$this->getTimeRequest();
+		return $roeTitle->getFullURL($query) ;
 	}
 	function getEmbedVideoHtml($vid_id='', $size='', $tag='video', $force_server=''){
 		if($size==''){

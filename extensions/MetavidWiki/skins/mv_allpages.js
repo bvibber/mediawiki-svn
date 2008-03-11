@@ -38,6 +38,7 @@ function mv_do_mvd_link_rewrite(){
 					js_log(res);
 					i++;
 					if(!gMvd[i])gMvd[i]={};
+					gMvd[i]['url']=res[0];
 					gMvd[i]['sn']=res[2]; //stream name
 					gMvd[i]['st']=res[3]; //start time
 					gMvd[i]['et']=res[4]; //end time
@@ -54,6 +55,11 @@ function mv_do_mvd_link_rewrite(){
 						inx = this.id.substr(10);
 						mv_ext(inx);
 					});
+					$j('#mv_pglink_'+i).click(function(){
+						inx = this.id.substr(10);
+						js_log('inx: '+ inx);
+						window.location=wgArticlePath.replace('$1',gMvd[inx]['url']);
+					})
 				}	
 			}
 		}		
@@ -65,10 +71,12 @@ function get_mvdrw_img(i, size){
 	var size = (!size)?{'w':80,'h':60}:size;
 	var stream_link = wgScript+'?title=Stream:'+gMvd[i]['sn']+'/'+gMvd[i]['st']+'/'+gMvd[i]['et'];
 	var stream_desc = gMvd[i]['sn'].substr(0,1).toUpperCase() + gMvd[i]['sn'].substr(1).replace('_', ' ')+' '+ gMvd[i]['st'] + ' to '+ gMvd[i]['et'];
-	var expand_link = '<span id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
+	//@@todo localize javascript msg
+	var wiki_link = '<span title="Original Wiki Page" id="mv_pglink_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/run_mediawiki.png\');"/>';
+	var expand_link = '<span title="Expand Clip"  id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
 	var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+gMvd[i]['sn']+'&t='+gMvd[i]['st']+'&size=icon';
 	return '<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+')" ' +
-				'style="cursor:pointer;float:left;height:'+size['h']+'px;width:'+size['w']+'px;" src="'+img_url+'">'+expand_link+
+				'style="cursor:pointer;float:left;height:'+size['h']+'px;width:'+size['w']+'px;" src="'+img_url+'">'+expand_link+wiki_link+' '+
 					'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
 }
 function mv_ext(inx){
