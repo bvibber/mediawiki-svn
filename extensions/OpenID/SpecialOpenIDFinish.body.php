@@ -30,15 +30,16 @@ require_once("Auth/OpenID/SReg.php");
 require_once("Auth/Yadis/XRI.php");
 
 class SpecialOpenIDFinish extends SpecialOpenID {
-	
+
 	function SpecialOpenIDFinish() {
 		SpecialPage::SpecialPage("OpenIDFinish", '', false);
-		self::loadMessages();
 	}
 
 	function execute($par) {
 
 		global $wgUser, $wgOut, $wgRequest;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		$this->setHeaders();
 
@@ -111,7 +112,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				break;
 			 case Auth_OpenID_FAILURE:
 				wfDebug("OpenID: error message '" . $response->message . "'\n");
-				$wgOut->showErrorPage('openidfailure', 'openidfailuretext', 
+				$wgOut->showErrorPage('openidfailure', 'openidfailuretext',
 								  array(($response->message) ? $response->message : ''));
 				break;
 			 case Auth_OpenID_SUCCESS:
@@ -119,7 +120,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				$openid = $response->getDisplayIdentifier();
 				$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse($response);
 				$sreg = $sreg_resp->contents();
-				
+
 				if (!isset($openid)) {
 					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 					return;
@@ -601,7 +602,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 	function returnTo() {
 		return $_SESSION['openid_consumer_returnto'];
 	}
-	
+
 	function setReturnTo($returnto) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
@@ -633,5 +634,3 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		}
 	}
 }
-
-?>

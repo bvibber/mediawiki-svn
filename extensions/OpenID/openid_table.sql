@@ -5,4 +5,3 @@ CREATE TABLE /*$wgDBprefix*/user_openid (
   PRIMARY KEY uoi_openid (uoi_openid),
   UNIQUE INDEX uoi_user (uoi_user)
 ) TYPE=InnoDB;
-

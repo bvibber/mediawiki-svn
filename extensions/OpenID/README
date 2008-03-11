@@ -148,7 +148,7 @@ To upgrade, you'll need to do at least the following:
 * The extension has been converted to use a clumsy and perverse
   OOP-like structure, with one class per special page. Most function
   names have been changed to methods of these classes. If you used
-  them, look around for their replacements. 
+  them, look around for their replacements.
 * The extension has been converted to use the autoloading features
   of MediaWiki, which means that you need to require() the files
   directly if you really want to use their code. Or you might get
@@ -281,14 +281,14 @@ LocalSettings.php file. Please read carefully.
   link, like in your skin. Note that it will *not* prevent login if
   the user navigates to Special:OpenIDLogin directly; it's simply
   cosmetic. This is mostly a backwards-compatibility option.
-  
+
 * $wgOpenIDLoginLogoUrl -- Url of the OpenID login logo. Defaults to
   'http://www.openid.net/login-bg.gif', but you may want to move it to
   a local URL, or an URL on a CDN, if that kind of thing floats your
   boat.
 
 * $wgOpenIDShowUrlOnUserPage -- whether to show the OpenID identity URL
-  on a user's home page. Possible values are 'always', 'never', or 'user' 
+  on a user's home page. Possible values are 'always', 'never', or 'user'
   (lets the user decide). Default is 'user'.
 
 == Skins ==
@@ -331,4 +331,3 @@ The big changes for the future:
   control panel
 * Auto-login if you've logged in before with an OpenID, and are logged
   into that account now
-

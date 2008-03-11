@@ -27,15 +27,16 @@ if (!defined('MEDIAWIKI')) {
 }
 
 class SpecialOpenIDConvert extends SpecialOpenID {
-	
+
 	function SpecialOpenIDConvert() {
 		SpecialPage::SpecialPage("OpenIDConvert");
-		self::loadMessages();
 	}
 
 	function execute($par) {
 
 		global $wgRequest, $wgUser, $wgOut;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		$this->setHeaders();
 
@@ -59,7 +60,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	}
 
 	function convert($openid_url) {
-		
+
 		global $wgUser, $wgOut;
 
 		# Expand Interwiki
@@ -67,14 +68,14 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$openid_url = $this->interwikiExpand($openid_url);
 
 		# Is this ID allowed to log in?
-		
+
 		if (!$this->CanLogin($openid_url)) {
 			$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
 			return;
 		}
 
 		# Is this ID already taken?
-		
+
 		$other = $this->getUser($openid_url);
 
 		if (isset($other)) {
@@ -116,7 +117,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		global $wgUser, $wgOut;
 
 		$consumer = $this->getConsumer();
-		
+
 		$response = $consumer->complete($this->scriptUrl('OpenIDConvert/Finish'));
 
 		if (!isset($response)) {

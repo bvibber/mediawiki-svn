@@ -48,12 +48,13 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 	function SpecialOpenIDServer() {
 		SpecialPage::SpecialPage("OpenIDServer", '', false);
-		self::loadMessages();
 	}
 
 	function execute($par) {
 
 		global $wgOut;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		$this->setHeaders();
 
@@ -735,4 +736,3 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		return $this->fullURL('OpenIDServer');
 	}
 }
-

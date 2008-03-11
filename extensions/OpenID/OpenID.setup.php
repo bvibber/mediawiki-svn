@@ -26,21 +26,21 @@ if (!defined('MEDIAWIKI')) {
 	exit( 1 );
 }
 
-define('MEDIAWIKI_OPENID_VERSION', '0.8.0');
+define('MEDIAWIKI_OPENID_VERSION', '0.8.1');
 
 # CONFIGURATION VARIABLES
 
 # Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
-	
+
 $wgHideOpenIDLoginLink = false;
 
 # Location of the OpenID login logo. You can copy this to your server if you want.
-	
+
 $wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
-	
-# Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user' 
+
+# Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user'
 # 'user' lets the user decide.
-	
+
 $wgOpenIDShowUrlOnUserPage = 'user';
 
 # These are trust roots that we don't bother asking users
@@ -98,14 +98,16 @@ $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
 $wgExtensionFunctions[] = 'setupOpenID';
 
-$wgExtensionCredits['other'][] = array('name' => 'OpenID',
-									   'version' => MEDIAWIKI_OPENID_VERSION,
-									   'author' => 'Evan Prodromou',
-									   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-									   'description' => 'lets users login to the wiki with an ' .
-									   ' [http://openid.net/ OpenID] ' .
-									   'and login to other OpenID-aware Web sites ' . 
-									   'with their wiki user account');
+$wgExtensionMessagesFiles['OpenID'] = dirname(__FILE__) . '/OpenID.i18n.php';
+
+$wgExtensionCredits['other'][] = array(
+	'name' => 'OpenID',
+	'version' => MEDIAWIKI_OPENID_VERSION,
+	'author' => 'Evan Prodromou',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+	'description' => 'Lets users login to the wiki with an [http://openid.net/ OpenID] and login to other OpenID-aware Web sites with their wiki user account',
+	'descriptiomsg' => 'openid-desc',
+);
 
 function OpenIDGetServerPath() {
 	$rel = 'Auth/OpenID/Server.php';
@@ -140,9 +142,9 @@ function setupOpenID() {
 	$wgHooks['UserToggles'][] = 'OpenIDUserToggles';
 	$wgHooks['ArticleViewHeader'][] = 'OpenIDArticleViewHeader';
 	# Load the i18n messages
-	$wgHooks['LoadAllMessages'][] = 'SpecialOpenID::loadMessages';
+	wfLoadExtensionMessages( 'OpenID' );
 	# Add any aliases for the special page.
-	$wgHooks['LanguageGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName'; 
+	$wgHooks['LanguageGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName';
 	# Typo in versions of MW earlier than 1.11.x (?)
 	$wgHooks['LangugeGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName'; # Add any aliases for the special page.
 }
@@ -151,15 +153,15 @@ function setupOpenID() {
 
 function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
 	global $wgOut;
-	
+
 	$nt = $article->getTitle();
-		
+
 	// If the page being viewed is a user page,
 	// generate the openid.server META tag and output
 	// the X-XRDS-Location.  See the OpenIDXRDS
 	// special page for the XRDS output / generation
 	// logic.
-	
+
 	if ($nt &&
 		($nt->getNamespace() == NS_USER) &&
 		strpos($nt->getText(), '/') === false)
@@ -169,12 +171,12 @@ function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
 			$openid = SpecialOpenID::getUserUrl($user);
 			if (isset($openid) && strlen($openid) != 0) {
 				global $wgOpenIDShowUrlOnUserPage;
-				
+
 				if ($wgOpenIDShowUrlOnUserPage == 'always' ||
 					($wgOpenIDShowUrlOnUserPage == 'user' && !$user->getOption('hideopenid')))
 				{
 					global $wgOpenIDLoginLogoUrl;
-					
+
 					$url = SpecialOpenID::OpenIDToUrl($openid);
 					$disp = htmlspecialchars($openid);
 					$wgOut->setSubtitle("<span class='subpages'>" .
@@ -194,36 +196,36 @@ function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
 			}
 		}
 	}
-	
+
 	return TRUE;
 }
 
 function OpenIDPersonalUrls(&$personal_urls, &$title) {
 	global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOut;
-	
+
 	if (!$wgHideOpenIDLoginLink && $wgUser->getID() == 0) {
 		$wgOut->addHeadItem('openidloginstyle', OpenIDLoginStyle());
 		$sk = $wgUser->getSkin();
 		$returnto = ($title->getPrefixedUrl() == $wgLang->specialPage( 'Userlogout' )) ?
 		  '' : ('returnto=' . $title->getPrefixedURL());
-			  
+
 		$personal_urls['openidlogin'] = array(
 											  'text' => wfMsg('openidlogin'),
 											  'href' => $sk->makeSpecialUrl( 'OpenIDLogin', $returnto ),
 											  'active' => $title->isSpecial( 'OpenIDLogin' )
 											  );
 	}
-	
+
 	return true;
 }
 
 function OpenIDUserToggles(&$extraToggles) {
 	global $wgOpenIDShowUrlOnUserPage;
-	
+
 	if ($wgOpenIDShowUrlOnUserPage == 'user') {
 		$extraToggles[] = 'hideopenid';
 	}
-	
+
 	return true;
 }
 

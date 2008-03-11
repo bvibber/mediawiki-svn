@@ -32,13 +32,14 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 
 	function SpecialOpenIDXRDS() {
 		SpecialPage::SpecialPage("OpenIDXRDS", '', false);
-		self::loadMessages();
 	}
 
 	# $par is a user name
-	
+
 	function execute($par) {
 		global $wgOut;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		// XRDS preamble XML.
 		$xml_template = array('<?xml version="1.0" encoding="UTF-8"?>',
@@ -49,19 +50,19 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 							  '<XRD>');
 
 		# Check to see if the parameter is really a user name
-		
+
 		if (!$par) {
 			wfHttpError(404, "Not Found", wfMsg('openidnousername'));
 		}
 
 		$user = User::newFromName($par);
-		
+
 		if (!$user || $user->getID() == 0) {
 			wfHttpError(404, "Not Found", wfMsg('openidbadusername'));
 		}
-		
+
 		// Generate the user page URL.
-		
+
 		$user_title = Title::makeTitle(NS_USER, $user->getName());
 		$user_url = $user_title->getFullURL();
 
@@ -79,7 +80,7 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 												 'http://specs.openid.net/auth/2.0/signon'),
 								'delegate' => $user_url),
 						  );
-		
+
 		// Generate <Service> elements into $service_text.
 		$service_text = "\n";
 		foreach ($services as $service) {
@@ -93,9 +94,9 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 										   implode("\n", $types),
 										   '  </Service>'));
 		}
-		
+
 		$wgOut->disable();
-		
+
 		// Print content-type and XRDS XML.
 		header("Content-Type", "application/xrds+xml");
 		print implode("\n", $xml_template);

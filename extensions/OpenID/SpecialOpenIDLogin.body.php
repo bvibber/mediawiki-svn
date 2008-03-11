@@ -28,17 +28,18 @@ if (!defined('MEDIAWIKI'))
 require_once("Auth/OpenID/Consumer.php");
 
 class SpecialOpenIDLogin extends SpecialOpenID {
-	
+
 	function SpecialOpenIDLogin() {
 		SpecialPage::SpecialPage("OpenIDLogin");
-		self::loadMessages();
 	}
 
 	function execute($par) {
 		global $wgRequest, $wgUser, $wgOut;
 
+		wfLoadExtensionMessages( 'OpenID' );
+
 		$this->setHeaders();
-		
+
 		if ($wgUser->getID() != 0) {
 			$this->alreadyLoggedIn();
 			return;
@@ -47,9 +48,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		if ($wgRequest->getText('returnto')) {
 			$this->setReturnTo($wgRequest->getText('returnto'));
 		}
-		
+
 		$openid_url = $wgRequest->getText('openid_url');
-		
+
 		if (isset($openid_url) && strlen($openid_url) > 0) {
 			$this->login($openid_url);
 		} else {
@@ -167,10 +168,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function returnTo() {
 		return $_SESSION['openid_consumer_returnto'];
 	}
-	
+
 	function setReturnTo($returnto) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
 }
-
-?>
