@@ -351,10 +351,7 @@ END;
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $wgOut->addHtml("<tr><td><center><input type='checkbox' name='cb_modify[]' value='$row->wl_id'></center></td><td>");
             $page_title = Title::newFromText($row->wl_page_title);
-            if ($page_title == NULL)
-                $wgOut->addHtml(wfMsg('whitelistbadtitle') . $row->wl_page_title);
-            else
-                self::DisplayWildCardMatches($row->wl_page_title, $row->wl_page_title, 0);
+            self::DisplayWildCardMatches($row->wl_page_title, $row->wl_page_title, 0);
             $wgOut->addHTML("</td><td><center>");
             if ($row->wl_allow_edit)
                 $wgOut->addHtml(wfMsg('whitelisttableedit'));
