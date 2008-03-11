@@ -37,6 +37,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function execute($par) {
 		global $wgRequest, $wgUser, $wgOut;
 
+		$this->setHeaders();
+		
 		if ($wgUser->getID() != 0) {
 			$this->alreadyLoggedIn();
 			return;

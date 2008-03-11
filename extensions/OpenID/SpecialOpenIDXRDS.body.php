@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI'))
 class SpecialOpenIDXRDS extends SpecialOpenID {
 
 	function SpecialOpenIDXRDS() {
-		SpecialPage::SpecialPage("OpenIDXRDS");
+		SpecialPage::SpecialPage("OpenIDXRDS", '', false);
 		self::loadMessages();
 	}
 

@@ -32,13 +32,15 @@ require_once("Auth/Yadis/XRI.php");
 class SpecialOpenIDFinish extends SpecialOpenID {
 	
 	function SpecialOpenIDFinish() {
-		SpecialPage::SpecialPage("OpenIDFinish");
+		SpecialPage::SpecialPage("OpenIDFinish", '', false);
 		self::loadMessages();
 	}
 
 	function execute($par) {
 
 		global $wgUser, $wgOut, $wgRequest;
+
+		$this->setHeaders();
 
 		# Shouldn't work if you're already logged in.
 

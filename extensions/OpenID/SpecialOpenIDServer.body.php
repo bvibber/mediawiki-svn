@@ -47,13 +47,15 @@ require_once("Auth/OpenID/Consumer.php");
 class SpecialOpenIDServer extends SpecialOpenID {
 
 	function SpecialOpenIDServer() {
-		SpecialPage::SpecialPage("OpenIDServer");
+		SpecialPage::SpecialPage("OpenIDServer", '', false);
 		self::loadMessages();
 	}
 
 	function execute($par) {
 
 		global $wgOut;
+
+		$this->setHeaders();
 
 		$server =& $this->getServer();
 

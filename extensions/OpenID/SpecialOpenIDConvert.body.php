@@ -37,6 +37,8 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 
 		global $wgRequest, $wgUser, $wgOut;
 
+		$this->setHeaders();
+
 		if ($wgUser->getID() == 0) {
 			$wgOut->showErrorPage('openiderror', 'notloggedin');
 			return;
