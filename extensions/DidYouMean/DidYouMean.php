@@ -95,16 +95,16 @@ function wfDymParserBeforeStrip( &$parser, &$text, &$stripState ) {
 
 	# normalize entities and urlencoding to pure utf-8
 	foreach ($sees as &$value)
-		$value = urldecode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
+		$value = rawurldecode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
 
-	wfDebug( 'HIPP: Parser: ' . utf8_decode(implode(', ', $sees)) . "\n" );
-	wfDebug( 'HIPP: DBase:  ' . utf8_decode(implode(', ', $parser->mDymSees)) . "\n" );
+	wfDebug( 'HIPP: Parser: ' . implode(', ', $sees) . "\n" );
+	wfDebug( 'HIPP: DBase:  ' . implode(', ', $parser->mDymSees) . "\n" );
 
 	# add in the stuff from the database lookup
 	$sees = array_unique(array_merge($sees, $parser->mDymSees));
 	sort($sees);
 
-	wfDebug( 'HIPP: Merged: ' . utf8_decode(implode(', ', $sees)) . "\n" );
+	wfDebug( 'HIPP: Merged: ' . implode(', ', $sees) . "\n" );
 
 	# TODO is it better to use $parser->insertStripItem() ?
 
@@ -178,7 +178,7 @@ function wfDymLookup( $pageid, $title ) {
 				# accumulate the db results
 				while( $o = $dbr->fetchObject( $res ) ) {
 					$t2 = str_replace('_', ' ', $o->page_title);
-					$dbo = utf8_decode($t2);
+					$dbo = $t2;
 					if ($title != $t2) {
 						array_push( $sees, $t2 );
 						$dbo = '++ ' . $dbo;
