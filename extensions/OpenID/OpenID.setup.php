@@ -123,30 +123,44 @@ function OpenIDGetServerPath() {
 
 # Gets stored in the session, needs to be reified before our setup
 $wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
+$wgExtensionMessagesFiles['OpenID'] = dirname(__FILE__) . '/OpenID.i18n.php';
+# Autoload for special pages
+
+foreach (array('Login', 'Finish', 'Convert', 'Server', 'XRDS') as $sub) {
+	$wgAutoloadClasses['SpecialOpenID' . $sub] = dirname(__FILE__) . '/SpecialOpenID' . $sub . '.body.php';
+	$wgSpecialPages['OpenID'.$sub] = array('SpecialOpenID'.$sub);
+}
+
+# Autoload common parent with utility methods
+
+$wgAutoloadClasses['SpecialOpenID'] = dirname(__FILE__) . '/SpecialOpenID.body.php';
+
+$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
+$wgHooks['UserToggles'][] = 'OpenIDUserToggles';
+$wgHooks['ArticleViewHeader'][] = 'OpenIDArticleViewHeader';
+# Add any aliases for the special page.
+$wgHooks['LanguageGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName'; 
+# Typo in versions of MW earlier than 1.11.x (?)
+$wgHooks['LangugeGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName'; # Add any aliases for the special page.
 
 function setupOpenID() {
-	global $wgHooks, $wgAutoloadClasses, $wgSpecialPages, $wgExtensionCredits;
+	# Doesn't do anything!
+}
 
-	# Autoload for special pages
+function OpenIDLocalizedPageName(&$specialPageArray, $code) {
+		
+	# The localized title of the special page is among the messages of the extension:
+	SpecialOpenID::loadMessages();
 
 	foreach (array('Login', 'Finish', 'Convert', 'Server', 'XRDS') as $sub) {
-		$wgAutoloadClasses['SpecialOpenID' . $sub] = dirname(__FILE__) . '/SpecialOpenID' . $sub . '.body.php';
-		$wgSpecialPages['OpenID'.$sub] = array('SpecialOpenID'.$sub);
+		$text = wfMsg('openid' . strtolower($sub));
+		# Convert from title in text form to DBKey and put it into the alias array:
+		$title = Title::newFromText($text);
+		$specialPageArray['OpenID'.$sub][] = 'OpenID' . $sub;
+		$specialPageArray['OpenID'.$sub][] = $title->getDBKey();
 	}
 
-	# Autoload common parent with utility methods
-
-	$wgAutoloadClasses['SpecialOpenID'] = dirname(__FILE__) . '/SpecialOpenID.body.php';
-
-	$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
-	$wgHooks['UserToggles'][] = 'OpenIDUserToggles';
-	$wgHooks['ArticleViewHeader'][] = 'OpenIDArticleViewHeader';
-	# Load the i18n messages
-	wfLoadExtensionMessages( 'OpenID' );
-	# Add any aliases for the special page.
-	$wgHooks['LanguageGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName';
-	# Typo in versions of MW earlier than 1.11.x (?)
-	$wgHooks['LangugeGetSpecialPageAliases'][] = 'SpecialOpenID::LocalizedPageName'; # Add any aliases for the special page.
+	return true;
 }
 
 # Hook is called whenever an article is being viewed

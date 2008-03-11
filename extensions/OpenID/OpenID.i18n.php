@@ -32,6 +32,7 @@ $messages['en'] = array(
 	'openidlogin' => 'Login with OpenID',
 	'openidfinish' => 'Finish OpenID login',
 	'openidserver' => 'OpenID server',
+	'openidxrds' => 'Yadis file',						
 	'openidconvert' => 'OpenID converter',
 	'openiderror' => 'Verification error',
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',

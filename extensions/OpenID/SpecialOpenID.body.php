@@ -75,17 +75,8 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
-	function LocalizedPageName(&$specialPageArray, $code) {
-
-		# The localized title of the special page is among the messages of the extension:
-		wfLoadExtensionMessages( 'OpenID' );
-		$text = wfMsg('openidlogin');
-
-		# Convert from title in text form to DBKey and put it into the alias array:
-		$title = Title::newFromText($text);
-		$specialPageArray['Form'][] = $title->getDBKey();
-
-		return true;
+	function loadMessages() {
+		wfLoadExtensionMessages('OpenID');
 	}
 
 	function interwikiExpand($openid_url) {
