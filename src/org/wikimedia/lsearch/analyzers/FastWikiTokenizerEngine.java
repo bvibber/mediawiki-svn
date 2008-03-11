@@ -106,8 +106,8 @@ public class FastWikiTokenizerEngine {
 	private static Hashtable<String,HashSet<String>> categoryLocalized = new Hashtable<String,HashSet<String>>();
 	private static HashSet<String> interwiki;
 	
-	private UnicodeDecomposer decomposer;	
-	private TokenizerOptions options;
+	protected static UnicodeDecomposer decomposer;	
+	protected TokenizerOptions options;
 	
 	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
 		LINK_FETCH, IGNORE, EXTERNAL_URL, EXTERNAL_WORDS,
@@ -121,7 +121,8 @@ public class FastWikiTokenizerEngine {
 		tokens = null;
 		categories = new ArrayList<String>();
 		interwikis = new HashMap<String,String>();
-		decomposer = UnicodeDecomposer.getInstance();
+		if(decomposer == null)
+			decomposer = UnicodeDecomposer.getInstance();
 		keywords = new HashSet<String>();
 		numberToken = false;
 		headingText = new ArrayList<String>();
@@ -197,7 +198,7 @@ public class FastWikiTokenizerEngine {
 			boolean addToAlias;
 			boolean addDecomposed = false;
 			boolean allUpperCase = true;
-			boolean titleCase = true;
+			boolean titleCase = true;			
 			for(int i=0;i<length;i++){
 				if(decomposer.isCombiningChar(buffer[i])){
 					addDecomposed = true;
@@ -316,20 +317,21 @@ public class FastWikiTokenizerEngine {
 				}
 				addToTokens(exact);
 			} 
-			
-			// add decomposed token to stream
-			if(decompLength!=0 && addDecomposed){
-				Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, false);
-				t.setPositionIncrement(0);
-				t.setType("decomposition");
-				addToTokens(t);
-			}
-			// add alias (if any) token to stream
-			if(aliasLength>0){
-				Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
-				t.setPositionIncrement(0);
-				t.setType("transliteration");
-				addToTokens(t);
+			if(!options.noAliases){
+				// add decomposed token to stream
+				if(decompLength!=0 && addDecomposed){
+					Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, false);
+					t.setPositionIncrement(0);
+					t.setType("decomposition");
+					addToTokens(t);
+				}
+				// add alias (if any) token to stream
+				if(aliasLength>0){
+					Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
+					t.setPositionIncrement(0);
+					t.setType("transliteration");
+					addToTokens(t);
+				}
 			}
 			length = 0;
 			numberToken = false;
@@ -412,7 +414,7 @@ public class FastWikiTokenizerEngine {
 					continue;
 
 				// work out breaks
-				if(lc == '.' && !inLink)
+				if((lc == '.' || lc=='!' || lc=='?') && !inLink)
 					type = ExtToken.Type.SENTENCE_BREAK;
 				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n' || lc==';'))
 					type = ExtToken.Type.SENTENCE_BREAK;
@@ -506,7 +508,7 @@ public class FastWikiTokenizerEngine {
 	}
 
 	private static final boolean isTrailing(char ch){
-		return ch=='-' || ch=='/' || ch=='+' || ch=='&' || ch =='@' || ch=='\\' || ch=='#' || ch=='%' || ch=='^' || ch=='*' || ch=='!';	
+		return ch=='-' || ch=='/' || ch=='+' || ch=='&' || ch =='@' || ch=='\\' || ch=='#' || ch=='%' || ch=='^' || ch=='*' || ch=='!' || ch=='?';	
 	}
 	
 	public static final String clearTrailing(String str){
@@ -551,7 +553,7 @@ public class FastWikiTokenizerEngine {
 					buffer[length++] = c;
 			} else{
 				boolean noTrailing = true;
-				if(length > 0){
+				if(length > 0 && !options.noTrailing){
 					// fetch trailing chars
 					while(isTrailing(c)){
 						noTrailing = false;
@@ -993,7 +995,10 @@ public class FastWikiTokenizerEngine {
 				case '!':
 				case ':':
 				case ';':
-					addToken();
+					if(options.extendedTrailing && isTrailing(c))
+						addLetter();
+					else
+						addToken();
 					if(options.relocationParsing && gap == 1)
 						gap = SENTENCE_GAP;
 					continue;
@@ -1406,14 +1411,81 @@ public class FastWikiTokenizerEngine {
 		return headingText;
 	}
 	
-	/** Delete everything that is not being indexes, decompose chars */
-	public static String stripTitle(String title){
-		UnicodeDecomposer decomposer = UnicodeDecomposer.getInstance();
-		char[] str = title.toCharArray();
+	/** Decompose a word, returns the original word object if same */
+	public static String decompose(String word){
+		if(decomposer == null)
+			decomposer = UnicodeDecomposer.getInstance();
 		char[] buf = new char[256];
 		int len = 0;
-		for(int i=0;i<str.length;i++){
-			char ch = str[i];
+		boolean diff = false;
+		for(int i=0;i<word.length();i++){
+			char ch = word.charAt(i);
+			char[] decomp = decomposer.decompose(ch);
+			if(decomp == null){
+				if(len >= buf.length){ 
+					char[] n = new char[buf.length*2];
+					System.arraycopy(buf,0,n,0,buf.length);
+						buf = n;
+				}
+				buf[len++] = ch;
+			} else{
+				diff = true;
+				// add decomposed chars
+				for(int j = 0; j < decomp.length; j++){
+					if(len >= buf.length){ 
+						char[] n = new char[buf.length*2];
+						System.arraycopy(buf,0,n,0,buf.length);
+						buf = n;
+					}
+					buf[len++] = decomp[j];
+				}
+			}		
+		}
+		if(diff)
+			return new String(buf,0,len);
+		return word;
+	}
+	/** Delete chars that are not indexed, but don't decompose chars */
+	public static String normalize(String title){
+		char[] buf = new char[256];
+		int len = 0;
+		for(int i=0;i<title.length();i++){
+			char ch = title.charAt(i);
+			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
+				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
+					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\' || ch=='?'){
+				if(len > 0 && buf[len-1]!=' '){
+					if(len >= buf.length){ // extend buf
+						char[] n = new char[buf.length*2];
+						System.arraycopy(buf,0,n,0,buf.length);
+						buf = n;
+					}
+					buf[len++] = ' '; // replace the special char with space
+				}
+			} else{
+				// no decomposition add char, but don't double spaces
+				if(ch!=' ' || (len>0 && buf[len-1]!=' ')){
+					if(len >= buf.length){ 
+						char[] n = new char[buf.length*2];
+						System.arraycopy(buf,0,n,0,buf.length);
+						buf = n;
+					}
+					buf[len++] = ch;
+				}
+			}
+		}
+		return new String(buf,0,len).trim();	
+		
+	}
+	
+	/** Delete everything that is not being indexes, decompose chars */
+	public static String stripTitle(String title){
+		if(decomposer == null)
+			decomposer = UnicodeDecomposer.getInstance();
+		char[] buf = new char[256];
+		int len = 0;
+		for(int i=0;i<title.length();i++){
+			char ch = title.charAt(i);
 			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
 				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
 					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\' || ch=='?'){

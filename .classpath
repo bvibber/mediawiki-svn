@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="lib/mwdumper.jar" sourcepath="/mwdumper"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-core-2.2.0.jar" sourcepath="/lucene-2.2/src"/>
-	<classpathentry kind="lib" path="lib/lucene-highlighter-2.2.0.jar" sourcepath="/lucene-2.2/contrib/highlighter/src/java"/>
 	<classpathentry kind="lib" path="lib/snowball.jar" sourcepath="/lucene-2.2/contrib/snowball/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

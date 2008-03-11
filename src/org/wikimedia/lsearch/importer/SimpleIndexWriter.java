@@ -22,7 +22,6 @@ import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
-import org.wikimedia.lsearch.highlight.CleanupParser;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;

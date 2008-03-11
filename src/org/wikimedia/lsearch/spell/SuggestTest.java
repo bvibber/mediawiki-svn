@@ -8,7 +8,6 @@ import java.util.HashSet;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.search.spell.SpellChecker;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;

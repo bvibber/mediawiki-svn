@@ -50,10 +50,10 @@ public class FilterFactory {
 		this.iid = iid;
 		this.type = type;
 		init();
-		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters,singular,hasCanonicalFilter); 
+		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,usingCJK,additionalFilters,singular,hasCanonicalFilter,stopWords,type); 
 	}
 		
-	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters, Singular singular, boolean hasCanonicalFiler) {
+	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, boolean usingCJK, ArrayList<Class> additionalFilters, Singular singular, boolean hasCanonicalFiler, Set<String> stopWords, Type type) {
 		this.iid = iid;
 		this.lang = lang;
 		this.snowballName = snowballName;
@@ -61,9 +61,12 @@ public class FilterFactory {
 		this.useLangFilter = useLangFilter;
 		this.stemmer = stemmer;
 		this.langFilter = langFilter;
+		this.usingCJK = usingCJK;
 		this.additionalFilters = additionalFilters;
 		this.singular = singular;
 		this.hasCanonicalFilter = hasCanonicalFiler;
+		this.stopWords = stopWords;
+		this.type = type;
 	}
 	
 	public FilterFactory getNoStemmerFilterFactory() {
@@ -355,5 +358,9 @@ public class FilterFactory {
 			return new SerbianFilter(null).convert(w);
 		} 
 		return w;
+	}
+	
+	public boolean isSpellCheck(){
+		return type == Type.SPELL_CHECK;
 	}
 }

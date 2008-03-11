@@ -541,7 +541,10 @@ public class WikiIndexModifier {
 			FilterFactory filters = bs.getFilters();
 			
 			// tokenize the article to fill in pre-analyzed fields
-			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,new TokenizerOptions(bs.isExactCase()));
+			TokenizerOptions options = new TokenizerOptions(bs.isExactCase());
+			if(filters.isSpellCheck())
+				options = new TokenizerOptions.SpellCheck();
+			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,options);
 			tokenizer.tokenize();
 			
 			// title

@@ -110,6 +110,8 @@ public class SpellCheckTest {
    	{"althought","although"},
    	{"vlah", "vlachs"},
    	{"kuna albinism", ""},
+   	{"ommmmmmmmiteed", "omitted"},
+   	{"ommmmmmmmitted", "omitted"},
    	
    };
 

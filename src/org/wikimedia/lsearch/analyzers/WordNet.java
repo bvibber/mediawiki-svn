@@ -129,7 +129,7 @@ public class WordNet {
 	
 	protected static void loadWordNet(){		
 		long start = System.currentTimeMillis();
-		String path = Configuration.open().getString("MWConfig","lib","./lib") + Configuration.PATH_SEP + "dict" + Configuration.PATH_SEP + "wordnet-en.txt.gz";
+		String path = Configuration.open().getLibraryPath() + Configuration.PATH_SEP + "dict" + Configuration.PATH_SEP + "wordnet-en.txt.gz";
 		try{
 			BufferedReader in;
 			if(path.endsWith(".gz"))

@@ -110,6 +110,10 @@ public class EditDistance {
 				// penalize insert/deletions at the beginning
 				int ins = (i==1 && penalizeInitial)? 2 : 1;
 				int del = (j==1 && penalizeInitial)? 2 : 1;
+				if(j>=2 && t_j==ta[j-2] && t_j == s_i)
+					del--; // deletion of same letter
+				if(i>=2 && s_i == sa[i-2] && t_j == s_i)
+					ins--; // insertion of duplicate
 				d[i][j]=min3(d[i-1][j]+ins, d[i][j-1]+del, d[i-1][j-1]+cost);
 				// transposition
 				if(i>1 && j>1 && sa[i-1] == ta[j-2] && sa[i-2] == ta[j-1]){
@@ -182,5 +186,9 @@ public class EditDistance {
 		if(a <= b)
 			return a;
 		else return b;
+	}
+	
+	public String getWord(){
+		return new String(sa);
 	}
 }

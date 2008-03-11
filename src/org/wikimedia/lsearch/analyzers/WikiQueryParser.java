@@ -1064,7 +1064,7 @@ public class WikiQueryParser {
 		hterms.removeAll(forbiddenTerms);
 		highlightTerms = hterms.toArray(new Term[] {});
 		
-		if(options.coreQueryOnly || words == null || words.size()==0)
+		if(options.coreQueryOnly || words == null)
 			return bq;
 		
 		// filter out stop words to SHOULD (this enables queries in form of question)
@@ -1318,7 +1318,8 @@ public class WikiQueryParser {
 		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(words,iid.getLangCode());
 				
 		BooleanQuery combined = new BooleanQuery(true);
-		combined.add(exact,Occur.SHOULD);
+		if(exact!=null && exact.getTerms().length > 0)
+			combined.add(exact,Occur.SHOULD);
 		// combined various queries into mainphrase 
 		if(sloppy != null){			
 			combined.add(sloppy,Occur.SHOULD);

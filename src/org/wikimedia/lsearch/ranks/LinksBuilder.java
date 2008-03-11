@@ -98,26 +98,6 @@ public class LinksBuilder {
 
 		System.out.println("Finished generating ranks in "+formatTime(end-start));
 	}
-
-	@Deprecated
-	public static void storeLinkAnalysis(Links links, IndexId iid) throws IOException{
-		log.info("Storing link analysis data");
-		LinkAnalysisStorage store = new LinkAnalysisStorage(iid);
-		Word w;
-		Dictionary keys = links.getKeys();
-		while((w = keys.next()) != null){
-			String key = w.getWord();
-			int ref = links.getNumInLinks(key);
-			String redirectTarget = links.getRedirectTarget(key);
-			ArrayList<String> anchor = null; //links.getAnchors(key);
-			ArrayList<Related> related = new ArrayList<Related>(); //FIXME: too slow getRelated(key,links,refCount,keyCache);
-			//ArrayList<Related> related = getRelated(key,links,docIdCache,keyCache,refCache,inLinkCache,outLinkCache);
-			ArrayList<String> redirect = links.getRedirectsTo(key); 
-			store.addAnalitics(new ArticleAnalytics(key,ref,redirectTarget,anchor,related,redirect));
-		}
-		store.snapshot();
-		
-	}
 	
 	public static Links processLinks(String inputfile, Links links, IndexId iid, String langCode) throws IOException {
 		log.info("Calculating article links...");

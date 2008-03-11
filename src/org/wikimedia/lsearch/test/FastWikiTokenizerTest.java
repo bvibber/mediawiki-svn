@@ -70,9 +70,9 @@ public class FastWikiTokenizerTest {
 		
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
-			String text = "(ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
+			String text = "bre! (ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
 			showTokens(text);
-			text = "u.s. {{template|text}} {{template|text2|text3}} [http://ls2.wiki link]";
+			text = "bre! u.s. {{template|text}} {{template|text2|text3}} [http://ls2.wiki link]";
 			showTokens(text);
 			text = "Good-Thomas C# C++ and so on.. ";
 			showTokens(text);

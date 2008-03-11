@@ -263,34 +263,41 @@ public class SpellCheckIndexer {
 	 */
 	public void addTitle(String title, String rank, String redirect){
 		Document doc = new Document();
-		String stripped = FastWikiTokenizerEngine.stripTitle(title.toLowerCase());
-		doc.add(new Field("title", stripped, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		// store normalized version (only letters and spaces)
+		String normalized = FastWikiTokenizerEngine.normalize(title.toLowerCase());
+		String decomposed = FastWikiTokenizerEngine.decompose(normalized);
+		doc.add(new Field("title", normalized, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		if(decomposed != normalized)
+			doc.add(new Field("title", decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("rank", rank, Field.Store.YES, Field.Index.NO));
 		if(redirect!=null){
-			String redirectStripped = FastWikiTokenizerEngine.stripTitle(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
-			if(!stripped.equals(redirectStripped)){
-				doc.add(new Field("redirect", redirectStripped, Field.Store.YES, Field.Index.NO));
+			String redirectNormalized = FastWikiTokenizerEngine.normalize(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
+			if(!normalized.equals(redirectNormalized)){
+				doc.add(new Field("redirect", redirectNormalized, Field.Store.YES, Field.Index.NO));
 			}
 		}
 		if(title.length() >= 5)
-			ngramWriter.createNgramFields(doc,"title",stripped,NgramIndexer.Type.TITLES);		
+			ngramWriter.createNgramFields(doc,"title",decomposed,NgramIndexer.Type.TITLES);		
 		ngramWriter.addDocument(doc);
 	}
 	/** Add titles in all namespaces */	
 	public void addNsTitle(String title, String ns, String rank, String redirect){
 		Document doc = new Document();
-		String stripped = FastWikiTokenizerEngine.stripTitle(title.toLowerCase());
-		doc.add(new Field("ns_title", ns+":"+stripped, Field.Store.YES, Field.Index.NO));
+		String normalized = FastWikiTokenizerEngine.normalize(title.toLowerCase());
+		String decomposed = FastWikiTokenizerEngine.decompose(normalized);
+		doc.add(new Field("ns_title", ns+":"+normalized, Field.Store.YES, Field.Index.NO));
+		if(decomposed != normalized)
+			doc.add(new Field("ns_title", ns+":"+decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("ns_namespace", ns, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("ns_rank", rank, Field.Store.YES, Field.Index.NO));
 		if(redirect!=null && redirect.substring(0,redirect.indexOf(':')).equals(ns)){
-			String redirectStripped = FastWikiTokenizerEngine.stripTitle(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
-			if(!stripped.equals(redirectStripped)){
-				doc.add(new Field("ns_redirect", redirectStripped, Field.Store.YES, Field.Index.NO));
+			String redirectNormalized = FastWikiTokenizerEngine.normalize(redirect.substring(redirect.indexOf(':')+1).toLowerCase());
+			if(!normalized.equals(redirectNormalized)){
+				doc.add(new Field("ns_redirect", redirectNormalized, Field.Store.YES, Field.Index.NO));
 			}
 		}
 		if(title.length() >= 5)
-			ngramWriter.createNgramFields(doc,"ns_title",stripped,NgramIndexer.Type.TITLES);		
+			ngramWriter.createNgramFields(doc,"ns_title",decomposed,NgramIndexer.Type.TITLES);		
 		ngramWriter.addDocument(doc);
 	}
 	
@@ -301,13 +308,14 @@ public class SpellCheckIndexer {
 		HashMap<String,SimpleInt> ret = new HashMap<String,SimpleInt>();
 		TermDocs td = reader.termDocs(new Term("ns_title",w));
 		while(td.next()){
-			String ns = reader.document(td.doc()).get("ns_namespace"); 
+			Document d = reader.document(td.doc());
+			String ns = d.get("ns_namespace"); 
 			SimpleInt i = ret.get(ns);
 			if(i == null){
 				i = new SimpleInt();
 				ret.put(ns,i);
 			}
-			i.count++;
+			i.count+=Integer.parseInt(d.get("ns_rank")); // estimate freq based on rank
 		}
 		return ret;
 		
@@ -339,13 +347,14 @@ public class SpellCheckIndexer {
 		for(SimpleInt f : freq.values())
 			freqSum += f.count;
 		Document doc = new Document();
-		ngramWriter.createNgramFields(doc,"ns_word",word,NgramIndexer.Type.WORDS);
+		String decomposed = FastWikiTokenizerEngine.decompose(word);
+		ngramWriter.createNgramFields(doc,"ns_word",decomposed,NgramIndexer.Type.WORDS);
 		doc.add(new Field("ns_word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		for(Entry<String,SimpleInt> e : freq.entrySet())
 			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("ns_freq",Integer.toString(freqSum),Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("ns_meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("ns_meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_meta1",dmeta.doubleMetaphone(decomposed), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
 		ngramWriter.addDocument(doc);
 	}	
 
@@ -407,11 +416,12 @@ public class SpellCheckIndexer {
 		if(word.length() < 2)
 			return;
 		Document doc = new Document();
-		ngramWriter.createNgramFields(doc,"word",word,NgramIndexer.Type.WORDS);
+		String decomposed = FastWikiTokenizerEngine.decompose(word);
+		ngramWriter.createNgramFields(doc,"word",decomposed,NgramIndexer.Type.WORDS);
 		doc.add(new Field("word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("freq",Integer.toString(freq), Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
-		doc.add(new Field("meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta1",dmeta.doubleMetaphone(decomposed), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
 		addContext(word,context);		
 		ngramWriter.addDocument(doc);
 	}	

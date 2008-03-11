@@ -60,7 +60,7 @@ public class SuggestBuilder {
 			try {
 				input = Tools.openInputFile(inputfile);
 			} catch (IOException e) {
-				log.fatal("I/O error opening "+inputfile);
+				log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
 				return;
 			}
 			
@@ -72,7 +72,8 @@ public class SuggestBuilder {
 				importer.closeIndex();
 			} catch (IOException e) {
 				if(!e.getMessage().equals("stopped")){
-					log.fatal("I/O error reading dump for "+dbname+" from "+inputfile);
+					e.printStackTrace();
+					log.fatal("I/O error reading dump for "+dbname+" from "+inputfile+" : "+e.getMessage());
 					return;
 				}
 			}		

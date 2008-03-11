@@ -55,6 +55,7 @@ public class Suggest {
 	protected Set<String> stopWords;
 	protected NamespaceFilter defaultNs;
 	protected HashMap<String,Boolean> wordExistCache = new HashMap<String,Boolean>();
+	protected enum Filtering { STRONG, WEAK };
 	
 	/** Distance an metaphone metrics */
 	static public class Metric {
@@ -63,24 +64,38 @@ public class Suggest {
 		protected EditDistance sd;
 		protected EditDistance sdmeta1=null, sdmeta2=null;
 		protected String word;
+		protected String decomposed=null;
 		
 		public Metric(String word){
 			this(word,true);
 		}		
 		public Metric(String word, boolean useMetaphones){
 			this.word = word;
-			sd = new EditDistance(word);
+			this.decomposed = FastWikiTokenizerEngine.decompose(word);
+			//sd = new EditDistance(word);
+			sd = new EditDistance(decomposed);
 			if(useMetaphones){
-				meta1 = dmeta.doubleMetaphone(word);
-				meta2 = dmeta.doubleMetaphone(word,true);
+				meta1 = dmeta.doubleMetaphone(decomposed);
+				meta2 = dmeta.doubleMetaphone(decomposed,true);
 				sdmeta1 = new EditDistance(meta1,false);
 				sdmeta2 = new EditDistance(meta2,false);
 			}
 		}
+		public boolean hasDecomposed(){
+			return decomposed != word; // equals() not necessary since decompose() returns same object 
+		}
 		/** Edit distance */
+		public int distanceWithDecomposition(String w){
+			return sd.getDistance(FastWikiTokenizerEngine.decompose(w));
+		}
+		/** Get distance when input words is already decomposed */
 		public int distance(String w){
 			return sd.getDistance(w);
-		}		
+		}
+		/* Edit distance to decomposed word (input word is also decomposed) */
+		/*public int decomposedDistance(String w){
+			return sdd.getDistance(FastWikiTokenizerEngine.decompose(w));
+		}*/
 		/** Edit distance of primary metaphone of w */
 		public int meta1Distance(String w){
 			if(sdmeta1 != null)
@@ -140,7 +155,7 @@ public class Suggest {
 	/** Number of results to fetch for titles */
 	public static final int POOL_TITLE = 100;
 	/** Number of results to fetch for fuzzy word matches */
-	public static final int POOL_FUZZY = 400;
+	public static final int POOL_FUZZY = 1000;
 	/** Number of words to return for fuzzy queries */
 	public static final int MAX_FUZZY = 50;
 	
@@ -272,7 +287,7 @@ public class Suggest {
 			titleRes = suggestTitles(joinTokens,1,POOL_TITLE,4,ns);
 		if(titleRes.size()>0 && titleRes.get(0).dist<2){
 			SuggestResult r = titleRes.get(0);
-			if(r.dist==0){
+			if(r.isExactMatch()){
 				logRequest(searchterm,"CORRECT (exact title match)",start);
 				return new SuggestQuery(searchterm,new ArrayList<Integer>());
 			}
@@ -294,7 +309,7 @@ public class Suggest {
 			singleWordSug = suggestWords(w,POOL,ns);
 			if(singleWordSug.size() > 0){
 				SuggestResult r = singleWordSug.get(0);
-				if(r.dist == 0){
+				if(r.isExactMatch()){
 					logRequest(searchterm,"CORRECT (by single word index)",start);
 					return new SuggestQuery(searchterm,new ArrayList<Integer>());
 				} else if(r.dist == 1 && betterRank(r.frequency,firstRank)){
@@ -371,8 +386,8 @@ public class Suggest {
 			
 			// suggest join
 			if(i-1 >= 0 
-					&& (wordSug.get(i-1)==null || wordSug.get(i-1).get(0).dist!=0)
-					&& (wordSug.get(i)==null || wordSug.get(i).get(0).dist!=0)){
+					&& (wordSug.get(i-1)==null || !wordSug.get(i-1).get(0).isExactMatch())
+					&& (wordSug.get(i)==null || !wordSug.get(i).get(0).isExactMatch())){
 				SuggestResult join = suggestJoin(tokens.get(i-1).termText(),w,minFreq);
 				if(join != null){
 					Change sc = new Change(join.dist,join.frequency,Change.Type.JOIN);
@@ -401,7 +416,7 @@ public class Suggest {
 			String w2 = null;
 			String gap = "_";
 			// if w1 is spellchecked right
-			boolean good1 = sug1.get(0).getDist() == 0;
+			boolean good1 = sug1.get(0).isExactMatch();
 			int i2 = i;
 			boolean maybeStopWord = false; // if i2 might be spellcheked to stopword
 			int distOffset = 0; // if we spellcheked to stop word, all phrases should have this initial dist
@@ -428,7 +443,7 @@ public class Suggest {
 				if(sug2 == null)
 					continue;
 				// if second word is spelled right
-				boolean good2 = sug2.get(0).getDist() == 0;
+				boolean good2 = sug2.get(0).isExactMatch();
 				int maxdist = Math.min((w1.length() + w2.length()) / 3, 5);
 				int mindist = -1;
 				boolean forTitlesOnly = false; 
@@ -533,7 +548,7 @@ public class Suggest {
 			if(sug == null)
 				continue;
 			SuggestResult s = sug.get(0);
-			if(s.dist!=0 && acceptWordChange(tokens.get(i).termText(),s)){
+			if(!s.isExactMatch() && acceptWordChange(tokens.get(i).termText(),s)){
 				distance += s.dist;
 				proposedChanges.put(i,s.word);
 				if(using.equals("phrases"))
@@ -1073,26 +1088,30 @@ public class Suggest {
 	 * @param additional - if matched in namespaces should be return in addition to default (true), or alone (false)
 	 * @return
 	 */
-	public ArrayList<SuggestResult> suggestWords(String word, int num, Namespaces namespaces){
+	public ArrayList<SuggestResult> suggestWords(String word, int num, Namespaces namespaces, Filtering filter){
 		if(namespaces == null) // default
-			return suggestWordsOnNamespaces(word,word,num,num,null);
+			return suggestWordsOnNamespaces(word,word,num,num,null,filter);
 		
 		// in other namespaces
-		ArrayList<SuggestResult> res = suggestWordsOnNamespaces(word,word,num,num,namespaces);
+		ArrayList<SuggestResult> res = suggestWordsOnNamespaces(word,word,num,num,namespaces,filter);
 		if(namespaces.additional){
-			ArrayList<SuggestResult> def = suggestWordsOnNamespaces(word,word,num,num,null); // add from default
+			ArrayList<SuggestResult> def = suggestWordsOnNamespaces(word,word,num,num,null,filter); // add from default
 			return mergeResults(def,res,num);
 		}
 		return res;
 	}
+	/** Suggest words using a strong filter, i.e. by using original acceptWord() function */
+	public ArrayList<SuggestResult> suggestWords(String word, int num, Namespaces namespaces){
+		return suggestWords(word,num,namespaces,Filtering.STRONG);
+	}
 	
-	public ArrayList<SuggestResult> suggestWordsOnNamespaces(String word, String searchword, int num, int pool_size, Namespaces namespaces){
+	public ArrayList<SuggestResult> suggestWordsOnNamespaces(String word, String searchword, int num, int pool_size, Namespaces namespaces, Filtering filter){
 		String prefix = "";
 		if(namespaces != null) // namespaces=null -> default namespace, empty -> all
 			prefix = namespaces.prefix;
 		Metric metric = new Metric(word);
 		BooleanQuery bq = new BooleanQuery();		
-		bq.add(makeWordQuery(searchword,prefix+"word"),BooleanClause.Occur.SHOULD);
+		bq.add(makeWordQuery(FastWikiTokenizerEngine.decompose(searchword),prefix+"word"),BooleanClause.Occur.SHOULD);
 		
 		try {
 			TopDocs docs = searcher.search(bq,null,pool_size);			
@@ -1108,8 +1127,10 @@ public class Suggest {
 				if(freq == 0)
 					continue; 
 				
-				SuggestResult r = new SuggestResult(w,	freq, metric, meta1, meta2, serializedContext);			
-				if(acceptWord(r,metric))				
+				SuggestResult r = new SuggestResult(w,	freq, metric, meta1, meta2, serializedContext);
+				if(filter == Filtering.STRONG && acceptWord(r,metric))
+					res.add(r);
+				else if(filter == Filtering.WEAK && acceptWordWeak(r,metric))
 					res.add(r);
 			}
 			// sort
@@ -1198,7 +1219,7 @@ public class Suggest {
 		String prefix = getPrefix(namespaces);
 		Metric metric = new Metric(title);
 		BooleanQuery bq = new BooleanQuery();		
-		bq.add(makeTitleQuery(title,prefix+"title"),BooleanClause.Occur.SHOULD);
+		bq.add(makeTitleQuery(FastWikiTokenizerEngine.decompose(title),prefix+"title"),BooleanClause.Occur.SHOULD);
 		
 		try {
 			TopDocs docs = searcher.search(bq,null,pool_size);			
@@ -1240,6 +1261,19 @@ public class Suggest {
 				&& (r.distMetaphone<=3 || r.distMetaphone2<=3)
 				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) 
 				&& Math.abs(m.word.length()-r.word.length()) <= 3
+				&& r.dist<m.word.length() && r.dist<r.word.length())
+			return true;
+		else
+			return false;
+	}
+	
+	/** Same as acceptWord() but with weaker criteria */
+	final protected boolean acceptWordWeak(SuggestResult r, Metric m){
+		// for very short words, don't check anything, rely of frequency only
+		if(m.word.length() == 2 && r.word.length() == 2)
+			return true;
+		else if((r.distMetaphone < m.meta1.length() || r.distMetaphone2 < m.meta2.length() 
+				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1)))) 
 				&& r.dist<m.word.length() && r.dist<r.word.length())
 			return true;
 		else
@@ -1341,7 +1375,7 @@ public class Suggest {
 	/** Fetch a set of string for fuzzy queries */
 	public ArrayList<SuggestResult> getFuzzy(String word, NamespaceFilter nsf){
 		Namespaces ns = makeNamespaces(nsf);
-		ArrayList<SuggestResult> sug = suggestWords(word,POOL_FUZZY,ns);
+		ArrayList<SuggestResult> sug = suggestWords(word,POOL_FUZZY,ns,Filtering.WEAK);
 		ArrayList<SuggestResult> ret = new ArrayList<SuggestResult>();
 		for(int i=0;i<MAX_FUZZY && i<sug.size();i++){
 			ret.add(sug.get(i));

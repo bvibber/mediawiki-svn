@@ -20,6 +20,12 @@ public class TokenizerOptions {
 	boolean noTokenization = false;
 	/** dont' output tokens with tipe upper and titlecase */
 	boolean noCaseDetection = false;
+	/** don't do decompostion and common transliterations (useful for spellcheck) */
+	boolean noAliases = false;
+	/** don't pick put trailing chars, e.g. ++ in c++ */
+	boolean noTrailing = false;
+	/** catch ? and ! as trailing chars (and not sentence breaks) - useful for titles */
+	boolean extendedTrailing = false;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -37,6 +43,7 @@ public class TokenizerOptions {
 			super(exactCase);
 			relocationParsing = false;
 			noCaseDetection = true;
+			extendedTrailing = true;
 		}
 	}
 	
@@ -62,6 +69,23 @@ public class TokenizerOptions {
 		public PrefixCanonization(){
 			super(false);
 			this.noTokenization = true;
+		}
+	}
+	
+	public static class SpellCheck extends TokenizerOptions {
+		public SpellCheck(){
+			super(false);
+			relocationParsing = false;
+			noAliases = true;
+			noTrailing = true;
+		}
+	}
+	
+	public static class SpellCheckTitle extends Title {
+		public SpellCheckTitle(){
+			super(false);
+			noAliases = true;
+			noTrailing = true;
 		}
 	}
 }

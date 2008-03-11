@@ -54,7 +54,7 @@ public class CleanIndexWriter {
 		this.stopWords = StopWords.getPredefinedSet(iid);
 		
 		HashSet<String> stopWords = new HashSet<String>();
-		for(String w : StopWords.getStopWords(iid,langCode))
+		for(String w : StopWords.getStopWords(iid))
 			stopWords.add(w);			
 		log.info("Using phrase stopwords: "+stopWords);
 		builder.getBuilder().getFilters().setStopWords(stopWords);

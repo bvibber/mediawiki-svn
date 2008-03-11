@@ -208,4 +208,8 @@ public class Configuration {
 	public static void setVerbose(boolean v) {
 		verbose = v;		
 	}
+	
+	public String getLibraryPath(){
+		return getString("MWConfig","lib","./lib");
+	}
 }

@@ -94,9 +94,9 @@ public class Warmup {
 
 	/** Get database of example search terms for language */
 	protected static Terms getTermsForLang(String lang) {
-		String lib = Configuration.open().getString("MWConfig","lib","./lib");
+		String lib = Configuration.open().getLibraryPath();
 		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
-			langTerms.put(lang,new WordTerms(lib+"/dict/terms-"+lang+".txt.gz"));		
+			langTerms.put(lang,new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz"));		
 		if(lang.equals("sample"))
 			return new SampleTerms();
 		

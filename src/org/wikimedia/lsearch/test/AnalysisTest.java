@@ -211,6 +211,10 @@ public class AnalysisTest {
 		al.add(a1); al.add(a2);
 		displayTokens(new AggregateAnalyzer(al),"AGGREGATE TEST");
 		
+		displayTokens(Analyzers.getSpellCheckAnalyzer(IndexId.get("enwiki"),new HashSet<String>()),
+				"Agreement boxes reply readily Gödel, Gödel; a/b");
+		
+		
 		if(true)
 			return;
 		

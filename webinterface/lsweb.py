@@ -73,7 +73,12 @@ def make_wiki_link(line,dbname,caption=''):
         if ns != '':
             ns = ns +":"
         title = iw+':'+ns+parts[3]
-    if dbname.endswith('wiktionary'):
+        
+    if dbname == 'mediawikiwiki':
+        link= 'http://www.mediawiki.org/wiki/%s' % (title)
+    elif dbname == 'metawiki':
+        link = 'http://meta.wikimedia.org/wiki/%s' % (title)
+    elif dbname.endswith('wiktionary'):
         link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
     else:
         link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)

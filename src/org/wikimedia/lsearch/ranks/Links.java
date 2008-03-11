@@ -382,18 +382,6 @@ public class Links {
 		return ret;
 	}
 	
-	@Deprecated
-	/** Get all article titles that redirect to given title */
-	public ArrayList<String> getRedirectsToOld(String key) throws IOException{
-		ensureRead();
-		ArrayList<String> ret = new ArrayList<String>();
-		TermDocs td = reader.termDocs(new Term("redirect",key));
-		while(td.next()){
-			ret.add(reader.document(td.doc(),keyOnly).get("article_key"));
-		}
-		return ret;
-	}
-	
 	/** Get all article titles that redirect to given title */
 	public ArrayList<String> getRedirectsTo(String key) throws IOException{
 		ensureRead();

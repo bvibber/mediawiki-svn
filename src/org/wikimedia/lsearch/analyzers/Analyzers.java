@@ -43,10 +43,14 @@ public class Analyzers {
 	 * @return
 	 */
 	public static Analyzer getReusableAnalyzer(FilterFactory filters, boolean exactCase){
+		if(filters.isSpellCheck())
+			return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.SpellCheck());
 		return new ReusableLanguageAnalyzer(filters,exactCase);
 	}
 	
 	public static Analyzer getReusableTitleAnalyzer(FilterFactory filters, boolean exactCase){
+		if(filters.isSpellCheck())
+			return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.SpellCheckTitle());
 		return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.Title(exactCase));
 	}
 	
@@ -127,7 +131,7 @@ public class Analyzers {
 		
 		analyzer = new PerFieldAnalyzerWrapper(getReusableAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.contents(), 
-				new ReusableLanguageAnalyzer(filters,exactCase));
+				getReusableAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.title(),
 				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.stemtitle(),
