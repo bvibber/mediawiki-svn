@@ -197,33 +197,47 @@ public class Status extends Component implements MouseListener,
         g.drawString("Buffering", pos, r.height - 2);
     }
 
+    /*
+     * Get the inclusive bounding rectangle of the seek bar
+     */
+    private Rectangle getSeekBarRect() {
+      return new Rectangle(r.height*2 + 1, 2,
+	  r.width - SEEK_TIME_GAP - TIME_WIDTH - speakerWidth - (r.height * 2), 
+	  r.height - 4);
+    }
+
+    /*
+     * Get the inclusive bounding rectangle of the seek bar thumb
+     */
+    private Rectangle getThumbRect() {
+      Rectangle seekRect = getSeekBarRect();
+      int availableWidth = seekRect.width - THUMB_WIDTH;
+      int pos = (int)(availableWidth * position);
+      return new Rectangle(pos + seekRect.x, 1, THUMB_WIDTH, r.height - 2);
+    }
+
     private void paintSeekBar(Graphics g) {
-        int pos, end, base;
-
-        end = r.width - speakerWidth - TIME_WIDTH - SEEK_TIME_GAP - THUMB_WIDTH - (r.height * 2);
-
-	base = r.height*2 + 1;
+	Rectangle sr = getSeekBarRect();
+	Rectangle tr = getThumbRect();
 
         // Bounding rectangle
         g.setColor(Color.darkGray);
-        g.drawRect(base, 2, end + THUMB_WIDTH, r.height-4);
-
-        pos = (int) (end * position);
+        g.drawRect(sr.x, sr.y, sr.width, sr.height);
 
         // Progress bar
         g.setColor(Color.gray);
-        g.fillRect(base + 2, 5, pos, r.height-9);
+        g.fillRect(sr.x + 2, sr.y + 3, tr.x - (sr.x + 2), sr.height - 6);
 
         // Thumb
         g.setColor(Color.white);
-        g.drawLine(pos + base + 1, 1,  pos + base + THUMB_WIDTH - 2, 1);
-        g.drawLine(pos + base + 1, r.height-1, pos + base + THUMB_WIDTH - 2, r.height-1);
-        g.drawLine(pos + base,     2,  pos + base    , r.height-2);
-        g.drawLine(pos + base + THUMB_WIDTH - 1, 2,  pos + base + THUMB_WIDTH - 1, r.height-2);
+        g.drawLine(tr.x + 1,        tr.y,             tr.x + tr.width - 1, tr.y);                 // Top
+        g.drawLine(tr.x + 1,        tr.y + tr.height, tr.x + tr.width - 1, tr.y + tr.height);     // Bottom
+        g.drawLine(tr.x,            tr.y + 1,         tr.x,                tr.y + tr.height - 1); // Left
+        g.drawLine(tr.x + tr.width, tr.y + 1,         tr.x + tr.width,     tr.y + tr.height - 1); // Right
 
         // Thumb interior
         g.setColor(seekColor);
-        g.fillRect(pos + base + 1, 2, THUMB_WIDTH - 2, r.height-3);
+        g.fillRect(tr.x + 1, tr.y + 1, tr.width - 1, tr.height - 1);
     }
 
     private void paintTime(Graphics g) {
@@ -391,23 +405,16 @@ public class Status extends Component implements MouseListener,
         int end;
 
         r = getBounds();
-
-        end = r.width - SEEK_TIME_GAP - TIME_WIDTH - speakerWidth - (r.height * 2);
-        int pos = (int) (end * position) + r.height*2+1;
-
-        return (e.getX() >= pos && e.getX() <= pos + 9 && e.getY() > 0 && e
-                .getY() <= r.height-2);
+	Rectangle tr = getThumbRect();
+	return tr.contains(e.getPoint());
     }
 
     private boolean intersectSeekbar(MouseEvent e) {
         int end;
 
         r = getBounds();
-
-        end = r.width - SEEK_TIME_GAP - TIME_WIDTH - speakerWidth;
-
-        return (e.getX() >= r.height*2 && e.getX() <= end && e.getY() > 0 && e
-                .getY() <= r.height-2);
+	Rectangle sr = getSeekBarRect();
+	return sr.contains(e.getPoint());
     }
 
     private int findComponent(MouseEvent e) {
@@ -496,16 +503,17 @@ public class Status extends Component implements MouseListener,
         if (seekable) {
             e.translatePoint(-1, -1);
             if (clicked == SEEKER) {
-                int end = r.width - speakerWidth - TIME_WIDTH - SEEK_TIME_GAP - THUMB_WIDTH - (r.height * 2);
-                double pos = (e.getX() - (r.height*2 + 1 + THUMB_WIDTH/2)) / (double) (end);
-		double newPosition;
+	        Rectangle sr = getSeekBarRect();
+		int availableWidth = sr.width - THUMB_WIDTH;
+		// If the midpoint of the thumb is at the cursor, where would the left of the thumb be?
+		// (relative to sr.x)
+		int thumbLeft = e.getX() - sr.x - THUMB_WIDTH / 2;
+		double newPosition = thumbLeft / (double)availableWidth;
 
-                if (pos < 0.0)
+                if (newPosition < 0.0)
                     newPosition = 0.0;
-                else if (pos > 1.0)
+                else if (newPosition > 1.0)
                     newPosition = 1.0;
-                else
-                    newPosition = pos;
 
 		if (newPosition != position) {
 	          position = newPosition;
