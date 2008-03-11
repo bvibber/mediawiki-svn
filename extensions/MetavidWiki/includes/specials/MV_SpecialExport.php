@@ -326,8 +326,14 @@ class MV_SpecialExport {
 				// additional pages to be had. Stop here...
 				$this->nextPage = $x->cl_sortkey;
 				break;
-			}				
-			$title = Title::makeTitle( $x->page_namespace, $x->page_title );			
+			}
+			//@@link mvd namespace to stream:
+			if($x->page_namespace == MV_NS_MVD){
+				$mvTitle = new MV_Title($x->page_title);
+				$title = Title::makeTitle( MV_NS_STREAM, $mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest());
+			}else{	
+				$title = Title::makeTitle( $x->page_namespace, $x->page_title );
+			}			
 			$this->feed->outPutItem($title);
 		}				
 		$this->feed->outFooter();
@@ -360,8 +366,10 @@ class MV_SpecialExport {
 				$range_match=0;						
 				foreach ($srange['rows'] as $inx=> & $mvd) {								
 					$matches++;			
-					$wTitle = Title::MakeTitle(MV_NS_MVD, $mvd->wiki_title);
-					$this->feed->outPutItem($wTitle, $MV_Overlay->getMVDhtml($mvd, $absolute_links=true));
+					//get Stream title for mvd match: 
+					$mvTitle = new MV_Title($mvd->wiki_title);
+					$stremTitle = Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest() );
+					$this->feed->outPutItem($stremTitle, $MV_Overlay->getMVDhtml($mvd, $absolute_links=true));
 				}
 			}
 		}

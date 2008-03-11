@@ -529,7 +529,7 @@ function mvDoMetavidStreamPage(&$title, &$article){
 }
 /*
  * global MV_Stream server
- * @@todo memcache this function
+ * @@todo cache this function
  */  
 function mvGetMVStream($stream_init){
 	global $MVStreams;	
@@ -545,7 +545,7 @@ function mvGetMVStream($stream_init){
 	}else if(isset($stream_init['id'])){
 		$stream_name = MV_Stream::getStreamNameFromId($stream_init['id']);
 	}else{
-		throw('error no id or name in init');
+		die('error no id or name in init');
 	}
 	
 	//@@todo cache in memcache)	
