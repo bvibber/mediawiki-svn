@@ -48,5 +48,4 @@ $wgFFmpegLocation = 'ffmpeg';
 // as the uploaded media files or Java security rules will
 // prevent the applet from loading them.
 //
-$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2-patched.jar";
-#$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.jar";
+$wgCortadoJarFile = "cortado-ovt-stripped-wm_r31776.jar";
