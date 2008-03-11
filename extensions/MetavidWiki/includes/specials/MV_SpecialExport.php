@@ -152,7 +152,7 @@ class MV_SpecialExport {
 	}
 	//start high level: 
 	function get_roe_xml($header=true){
-		global $mvDefaultVideoQualityKey;
+		global $mvDefaultVideoQualityKey, $wgServer;
 		$dbr =& wfGetDB(DB_SLAVE);		
 	
 		$this->get_row_data();
@@ -166,7 +166,7 @@ class MV_SpecialExport {
 <ROE>
 	<head>
 		<link id="html_linkback" rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
-		<img id="stream_thumb" src="<?=htmlentities($this->mvTitle->getStreamImageURL())?>"/>
+		<img id="stream_thumb" src="<?=htmlentities($this->mvTitle->getFullStreamImageURL())?>"/>
 		<title><?=htmlentities($this->mvTitle->getTitleDesc())?></title>
 	</head>
 	<body>
@@ -247,7 +247,7 @@ class MV_SpecialExport {
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
 						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
-							<'.$ns.'img src="'.htmlentities($streamTitle->getStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
+							<'.$ns.'img src="'.htmlentities($streamTitle->getFullStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
 							<'.$ns.'body><![CDATA[
 									'.	$MV_Overlay->getMVDhtml($mvd, $absolute_links=true).'
 								]]></'.$ns.'body> 

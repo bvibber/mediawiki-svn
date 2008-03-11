@@ -195,8 +195,19 @@
 			return '';
 		}
 	}
+	function getFullStreamImageURL($size=null, $req_time=null, $foce_server=''){
+		global $wgServer,$mvExternalImages;
+		//if using external images already: 
+		if($mvExternalImages){
+			return $this->getStreamImageURL($size, $req_time, $foce_server);
+		}else{
+			global $wgServer;
+			return $wgServer.$this->getStreamImageURL($size, $req_time, $foce_server);
+		}			
+	}
+	//@@todo force_server is a weird hack ... @@todo remove and update other code locations 
 	function getStreamImageURL($size=null, $req_time=null, $foce_server=''){		
-		global $mvImageArchive, $mvDefaultVideoPlaybackRes;
+		global $mvDefaultVideoPlaybackRes;
 		if($size==null)$size = $mvDefaultVideoPlaybackRes;
 		if($req_time==null){
 			$req_time = $this->getStartTime();
