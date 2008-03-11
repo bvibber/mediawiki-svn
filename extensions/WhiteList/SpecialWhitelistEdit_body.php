@@ -40,8 +40,8 @@ function WhiteListLoadMessages() {
 }
 
 function wfMsgWhiteList($key) {
-    WhiteListLoadMessages();
-    return wfMsg($key);
+	WhiteListLoadMessages();
+	return wfMsg($key);
 }
 
 require_once("$IP/includes/SpecialPage.php");

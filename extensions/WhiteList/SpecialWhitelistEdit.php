@@ -30,12 +30,13 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['specialpage'][] = array(
-        'name'        => 'WhiteListEdit',
-        'version'     => 'v0.8.2',
-        'author'      => array('Paul Grinberg', 'Mike Sullivan'),
-        'email'       => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
-        'description' => 'Edit the access permissions of restricted users',
-        'url'         => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
+	'name'           => 'WhiteListEdit',
+	'version'        => 'v0.8.3',
+	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
+	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
+	'description'    => 'Edit the access permissions of restricted users',
+	'descriptionmsg' => 'whitelist-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
 );
 
 # these are the groups and the rights used within this extension
@@ -62,14 +63,14 @@ if( !isset($wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRigh
 
 # Define default global overrides
 if( !isset($wgWhitelistOverride['always']['read']) )
-    $wgWhitelistOverride['always']['read'] = array(
-        "Special:WhiteList",       # needed so that restricted users can see their "my pages" list
-        "Special:Preferences",     # needed so that restricted users can set their preferences
-        "Special:Userlogout",      # needed so that restricted users can logout
-        "Special:Userlogin",       # needed so that restricted users can login
-        "MediaWiki:Monobook.css",  # needed so that restricted users can view properly formatted content
-        "MediaWiki:Common.css",    # needed so that restricted users can view properly formatted content
-        "MediaWiki:Common.js",     # needed so that restricted users can view properly formatted content
+	$wgWhitelistOverride['always']['read'] = array(
+		"Special:WhiteList",       # needed so that restricted users can see their "my pages" list
+		"Special:Preferences",     # needed so that restricted users can set their preferences
+		"Special:Userlogout",      # needed so that restricted users can logout
+		"Special:Userlogin",       # needed so that restricted users can login
+		"MediaWiki:Monobook.css",  # needed so that restricted users can view properly formatted content
+		"MediaWiki:Common.css",    # needed so that restricted users can view properly formatted content
+		"MediaWiki:Common.js",     # needed so that restricted users can view properly formatted content
 );
 if( !isset($wgWhitelistOverride['always']['edit']) )
 	$wgWhitelistOverride['always']['edit'] = array();

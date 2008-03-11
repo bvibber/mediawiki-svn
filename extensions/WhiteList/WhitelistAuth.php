@@ -32,7 +32,6 @@ define("WHITELIST_GRANT", 1);
 define("WHITELIST_DENY", -1);
 define("WHITELIST_NOACTION", 0);
 
-
 class WhitelistExec
 {
 
@@ -89,8 +88,6 @@ class WhitelistExec
 		}
 	}
 
-
-
 	/* Check for global page overrides (allow or deny)
 	 */
 	static function GetOverride($title_text, $action )
@@ -130,8 +127,6 @@ class WhitelistExec
 		return $override;
 	}
 
-
-
 	/* Allow access to user pages (unless disabled)
 	 */
 	static function IsUserPage( $title_text, &$wgUser )
@@ -147,8 +142,6 @@ class WhitelistExec
 		else
 			return WHITELIST_NOACTION;
 	}
-
-
 
 	/* Special page wildcard notes:
 	 *  - Special: namespace entries can either be the exact name of
@@ -170,9 +163,9 @@ class WhitelistExec
 			/* Check for wildcard (Special:%) */
 			$db_result = $dbr->selectRow('whitelist',
 				array( 'wl_allow_edit',
-			       'wl_expires_on', ),
-			   	array( 'wl_user_id' => $wgUser->getId(),
-		   	       'wl_page_title' => $special_ns_text . ":%" ),
+				'wl_expires_on', ),
+				array( 'wl_user_id' => $wgUser->getId(),
+				'wl_page_title' => $special_ns_text . ":%" ),
 				__METHOD__
 			);
 			if( false != $db_result )
@@ -181,9 +174,9 @@ class WhitelistExec
 			/* Check for exact page name */
 			$db_result = $dbr->selectRow('whitelist',
 				array( 'wl_allow_edit',
-			       'wl_expires_on', ),
-			   	array( 'wl_user_id' => $wgUser->getId(),
-		   	       'wl_page_title' => $title->getPrefixedText() ),
+				'wl_expires_on', ),
+				array( 'wl_user_id' => $wgUser->getId(),
+				'wl_page_title' => $title->getPrefixedText() ),
 				__METHOD__
 			);
 			if( false != $db_result )
@@ -223,7 +216,7 @@ class WhitelistExec
 				$db_conditions, __METHOD__ );
 
 			/* Loop through each result returned and
-		     * check for matches.
+			 * check for matches.
 			 */
 			while( $db_result = $dbr->fetchObject($db_results) )
 			{
@@ -255,7 +248,7 @@ class WhitelistExec
 			{
 				$match_title = Title::newFromId($match);
 				if( $match_title->getPrefixedText() == $title->getPrefixedText() )
-					return true;
+				return true;
 			}
 		}
 		else
@@ -264,24 +257,24 @@ class WhitelistExec
 			$php_regex = str_replace('%', '*', $sql_regex);
 
 			$php_regex_full = $wgWhitelistWildCardInsensitive ?
-				'/' . $php_regex . '/i' : '/' . $php_regex . '/';
+			'/' . $php_regex . '/i' : '/' . $php_regex . '/';
 
 
-                if (self::preg_test($php_regex_full))
-		      if( preg_match( $php_regex_full, $title->getPrefixedText() ) )
-				return true;
+			if (self::preg_test($php_regex_full))
+			if( preg_match( $php_regex_full, $title->getPrefixedText() ) )
+			return true;
 		}
 	}
 
-        # test to see if a regular expression is valid
-        function preg_test($regex)
-        {
-            if (sprintf("%s",@preg_match($regex,'')) == '')
-            {
-                $error = error_get_last();
-                return false;
-            }
-            else
-                return true;
-        }
+	# test to see if a regular expression is valid
+	function preg_test($regex)
+	{
+		if (sprintf("%s",@preg_match($regex,'')) == '')
+		{
+			$error = error_get_last();
+			return false;
+		}
+		else
+		return true;
+	}
 } /* End class */
