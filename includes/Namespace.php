@@ -175,7 +175,9 @@ class Namespace {
 	 * @return bool
 	 */
 	function isMovable() {
-		return $this->isMovable;	
+		#return $this->isMovable;	
+		# FIXME: This means that classes with custom handlers are assumed to never be movable
+		return $this->isMovable && empty($this->handlerClass);
 	}
 
 	/**
