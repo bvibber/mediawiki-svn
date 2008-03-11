@@ -203,7 +203,7 @@ function wfDymArticleInsertComplete( &$article, &$user, $text, $summary, $ismino
 	if ($article->getTitle()->getNamespace() != 0 || $article->isRedirect() == true)
 		return true;
 
-	wfDoInsert( $article->getID(), $article->getTitle()->getText() );
+	wfDymDoInsert( $article->getID(), $article->getTitle()->getText() );
 
 	return true;
 }
@@ -229,7 +229,7 @@ function wfDymArticleDelete( $article, $user, $reason ) {
 	if ($article->getTitle()->getNamespace() != 0 || $article->isRedirect() == true)
 		return true;
 
-	wfDoDelete( $article->getID() );
+	wfDymDoDelete( $article->getID() );
 
 	return true;
 }
@@ -257,11 +257,11 @@ function wfDymTitleMoveComplete( &$title, &$nt, &$wgUser, &$pageid, &$redirid ) 
 	#}
 
 	if ($oldns == 0 && $newns == 0) {
-		wfDoUpdate( $pageid, $newtitletext );
+		wfDymDoUpdate( $pageid, $newtitletext );
 	} elseif ($oldns == 0) {
-		wfDoDelete( $pageid );
+		wfDymDoDelete( $pageid );
 	} elseif ($newns == 0) {
-		wfDoInsert( $pageid, $newtitletext );
+		wfDymDoInsert( $pageid, $newtitletext );
 	}
 
 	return true;
@@ -288,10 +288,10 @@ function wfDymArticleSaveComplete( $article, $user, $text, $summary, $isminor, $
 
 	if ($article->isRedirect($text)) {
 		if (!$wgParser->mDymRedirBeforeEdit && !($flags & EDIT_NEW))
-			wfDoDelete( $article->getID() );
+			wfDymDoDelete( $article->getID() );
 	} else {
 		if ($wgParser->mDymRedirBeforeEdit || $flags & EDIT_NEW)
-			wfDoInsert( $article->getID(), $article->getTitle()->getText() );
+			wfDymDoInsert( $article->getID(), $article->getTitle()->getText() );
 	}
 
 	$wgParser->mDymRedirBeforeEdit = false;
@@ -299,7 +299,7 @@ function wfDymArticleSaveComplete( $article, $user, $text, $summary, $isminor, $
 	return true;
 }
 
-function wfDoInsert( $pageid , $title ) {
+function wfDymDoInsert( $pageid , $title ) {
 	wfDebug( 'HIPP: ' . __METHOD__ . " INSERT\n" );
 	$dbw = wfGetDB( DB_MASTER );
 
@@ -318,12 +318,12 @@ function wfDoInsert( $pageid , $title ) {
 	$dbw->insert( 'dympage', array( 'dp_pageid' => $pageid, 'dp_normid' => $normid ) );
 
 	# touch all pages which will now link here
-	wfTouchPages( "dp_normid=$normid" );
+	wfDymTouchPages( "dp_normid=$normid" );
 
 }
 
 
-function wfTouchPages( $condition ) {
+function wfDymTouchPages( $condition ) {
 	global $wgDBtype;
 
 	$dbw = wfGetDB( DB_MASTER );
@@ -341,7 +341,7 @@ function wfTouchPages( $condition ) {
 
 }
 
-function wfDoDelete( $pageid ) {
+function wfDymDoDelete( $pageid ) {
 	wfDebug( 'HIPP: ' . __METHOD__ . " DELETE\n" );
 	$dbw = wfGetDB( DB_MASTER );
 
@@ -355,10 +355,10 @@ function wfDoDelete( $pageid ) {
 		$dbw->delete( 'dymnorm', array('dn_normid' => $normid) );
 
 	# touch all pages which will now link here
-	wfTouchPages( "dp_normid=$normid" );
+	wfDymTouchPages( "dp_normid=$normid" );
 }
 
-function wfDoUpdate( $pageid, $title ) {
+function wfDymDoUpdate( $pageid, $title ) {
 	wfDebug( 'HIPP: ' . __METHOD__ . " MOVE\n" );
 	$dbw = wfGetDB( DB_MASTER );
 
@@ -385,7 +385,7 @@ function wfDoUpdate( $pageid, $title ) {
 			$dbw->delete( 'dymnorm', array('dn_normid' => $oldnormid) );
 
 		# touch all pages which linked to the old name or will link to the new one
-		wfTouchPages( "(dp_normid=$normid OR dp_normid=$oldnormid)" );
+		wfDymTouchPages( "(dp_normid=$normid OR dp_normid=$oldnormid)" );
 
 	}
 }
