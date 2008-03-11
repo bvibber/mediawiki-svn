@@ -526,6 +526,10 @@ public abstract class AudioSink extends Sink implements ClockProvider
       return;
     }
 
+    if (ringBuffer.getState() != PLAY) {
+      ringBuffer.play();
+    }
+
     if (ringBuffer.nextSample != -1) {
       long time = ringBuffer.nextSample * Clock.SECOND / ringBuffer.rate;
       Clock.ClockID id = audioClock.newSingleShotID(time);
