@@ -6,6 +6,10 @@
 
 #pragma ident "@(#) $Id$"
 
+#ifdef __INTERIX
+# define _ALL_SOURCE
+#endif
+
 #include <sys/types.h>
 #include <sys/stat.h>
 
