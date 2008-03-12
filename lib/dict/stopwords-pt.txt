@@ -8,7 +8,6 @@ da
 em
 um
 para
-| é          from SER
 com
 não
 uma
@@ -31,10 +30,8 @@ sua
 ou
 quando
 muito
-| há         from HAV
 nos
 já
-| está       from EST
 eu
 também
 só
@@ -54,7 +51,6 @@ nas
 me
 esse
 eles
-| estão      from EST
 você
 essa
 num
@@ -63,12 +59,10 @@ suas
 meu
 às
 minha
-| têm        from TER
 numa
 pelos
 elas
 qual
-| será       from SER
 nós
 lhe
 deles

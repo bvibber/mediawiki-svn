@@ -30,7 +30,6 @@ sí
 porque
 esta
 entre
-| está     from ESTAR
 cuando
 muy
 sin
@@ -41,7 +40,6 @@ hasta
 hay
 donde
 quien
-| están      from ESTAR
 desde
 todo
 nos
@@ -54,7 +52,6 @@ contra
 otros
 ese
 eso
-| había      from HABER
 ante
 ellos
 e

@@ -1,4 +1,3 @@
-|  så = so, but also seed. These are indicated clearly below.
 och
 det
 att
@@ -31,7 +30,6 @@ då
 sin
 nu
 har
-inte           | inte någon = no one
 hans
 honom
 skulle

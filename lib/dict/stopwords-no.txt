@@ -1,4 +1,3 @@
-| This stop word list is for the dominant bokmål dialect. Words unique
 og
 i
 jeg

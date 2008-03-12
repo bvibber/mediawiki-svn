@@ -20,7 +20,6 @@ lui
 ma
 mais
 me
-même           |  same; as in moi-même (myself) etc
 mes
 moi
 mon
@@ -62,7 +61,6 @@ n
 s
 t
 y
-| forms of être (not including the infinitive):
 été
 étée
 étées
