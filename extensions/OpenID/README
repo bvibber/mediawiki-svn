@@ -291,6 +291,10 @@ LocalSettings.php file. Please read carefully.
   on a user's home page. Possible values are 'always', 'never', or 'user'
   (lets the user decide). Default is 'user'.
 
+* $wgOpenIDOnly -- defaults to false. With this enabled, users can
+  ''only'' log in with OpenID. This is principally of interest to
+  OpenID advocacy sites like openid.net, but you may want it, too.
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID

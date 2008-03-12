@@ -94,6 +94,10 @@ $wgOpenIDConsumerStorePath = "/tmp/$wgDBname/openidconsumer/";
 
 $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
+# Only allow login with OpenID. Careful -- this means everybody!
+
+$wgOpenIDOnly = false;
+
 # END CONFIGURATION VARIABLES
 
 $wgExtensionFunctions[] = 'setupOpenID';
@@ -144,7 +148,15 @@ $wgHooks['LanguageGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName';
 $wgHooks['LangugeGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName'; # Add any aliases for the special page.
 
 function setupOpenID() {
-	# Doesn't do anything!
+	global $wgSpecialPages, $wgOpenIDOnly;
+	
+	if ($wgOpenIDOnly) {
+		$wgSpecialPages['Userlogin'] = array('SpecialRedirectToSpecial', 'Userlogin', 'OpenIDLogin');
+		# Used in 1.12.x and above
+		$wgSpecialPages['CreateAccount'] = array('SpecialRedirectToSpecial', 'CreateAccount', 'OpenIDLogin');
+	}
+	
+	return true;
 }
 
 function OpenIDLocalizedPageName(&$specialPageArray, $code) {
@@ -215,7 +227,7 @@ function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
 }
 
 function OpenIDPersonalUrls(&$personal_urls, &$title) {
-	global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOut;
+	global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOut, $wgOpenIDOnly;
 
 	if (!$wgHideOpenIDLoginLink && $wgUser->getID() == 0) {
 		$wgOut->addHeadItem('openidloginstyle', OpenIDLoginStyle());
@@ -228,6 +240,15 @@ function OpenIDPersonalUrls(&$personal_urls, &$title) {
 											  'href' => $sk->makeSpecialUrl( 'OpenIDLogin', $returnto ),
 											  'active' => $title->isSpecial( 'OpenIDLogin' )
 											  );
+		
+		if ($wgOpenIDOnly) {
+			# remove other login links
+			foreach (array('login', 'anonlogin') as $k) {
+				if (array_key_exists($k, $personal_urls)) {
+					unset($personal_urls[$k]);
+				}
+			}
+		}
 	}
 
 	return true;
