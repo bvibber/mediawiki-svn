@@ -70,7 +70,10 @@ public class Queue extends Element
     if (!isBuffer || srcResult != Pad.OK)
       return;
     if (isEOS) {
-      isBuffering = false;
+      if (isBuffering) {
+	isBuffering = false;
+	postMessage(Message.newBuffering(this, false, 0));
+      }
       return;
     }
 
@@ -159,6 +162,11 @@ public class Queue extends Element
 	    clearQueue();
 	    srcResult = WRONG_STATE;
 	    queue.notifyAll();
+	  }
+	  // Cancel buffering status
+	  if (isBuffer && isBuffering) {
+	    isBuffering = false;
+	    postMessage(Message.newBuffering(this, false, 0));
 	  }
 	  postMessage (Message.newStreamStatus (this, false, Pad.WRONG_STATE, "stopping"));
           res = stopTask();

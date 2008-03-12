@@ -26,7 +26,16 @@ public class Event {
   public static final int EOS = 3;
   public static final int NEWSEGMENT = 4;
   public static final int SEEK = 5;
-	
+  
+  private static String typeNames[] = {
+    "NULL",
+    "FLUSH_START",
+    "FLUSH_STOP",
+    "EOS",
+    "NEWSEGMENT",
+    "SEEK"
+  };
+
   private int type;
   private int format;
   private boolean update;
@@ -37,6 +46,19 @@ public class Event {
   private Event(int type) {
     position = -1;
     this.type = type;
+  }
+
+  public String toString() {
+    String typeName = typeNames[type];
+    switch (type) {
+      case SEEK:
+	return "[Event] type: " + typeName + ", format: " + format + ", position: " + position;
+      case NEWSEGMENT:
+	return "[Event] type: " + typeName + ( update ? ", update" : ", non-update" ) +
+	  ", format: " + format + ", start: " + start + ", stop: " + stop + ", position: " + position;
+      default:
+	return "[Event] type: " + typeName;
+    }
   }
 
   public int getType () {

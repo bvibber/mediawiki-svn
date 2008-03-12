@@ -517,9 +517,9 @@ public class Pipeline extends com.fluendo.jst.Element implements BusSyncHandler
       elem.setClock (defClock);
       elem.baseTime = baseTime;
 
-      Debug.log(Debug.DEBUG, this+" setting state "+next+" on "+elem);
+      Debug.log(Debug.DEBUG, this+" setting state " + getStateName(next) + " on "+elem);
       result = elem.setState (next);
-      Debug.log(Debug.DEBUG, this+" "+elem+" changed state "+result);
+      Debug.log(Debug.DEBUG, this+" "+elem+" changed state, result = " + getStateReturnName(result));
 
       switch (result) {
         case ASYNC:

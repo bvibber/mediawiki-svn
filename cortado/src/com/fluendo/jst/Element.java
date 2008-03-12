@@ -61,6 +61,13 @@ public abstract class Element extends com.fluendo.jst.Object
   public static final int ASYNC = 2;
   public static final int NO_PREROLL = 3;
 
+  public static String stateReturnNames[] = {
+    "FAILURE",
+    "SUCCESS",
+    "ASYNC",
+    "NO_PREROLL"
+  };
+
   /* current state, next and pending state */
   protected int currentState;
   protected int nextState;
@@ -69,6 +76,10 @@ public abstract class Element extends com.fluendo.jst.Object
 
   public static String getStateName(int state) {
     return stateNames[state];
+  }
+
+  public static String getStateReturnName(int ret) {
+    return stateReturnNames[ret];
   }
 
   public String getMime ()
