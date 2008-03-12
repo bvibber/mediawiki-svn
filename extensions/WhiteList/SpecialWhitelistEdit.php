@@ -68,9 +68,8 @@ if( !isset($wgWhitelistOverride['always']['read']) )
 		"Special:Preferences",     # needed so that restricted users can set their preferences
 		"Special:Userlogout",      # needed so that restricted users can logout
 		"Special:Userlogin",       # needed so that restricted users can login
-		"MediaWiki:Monobook.css",  # needed so that restricted users can view properly formatted content
-		"MediaWiki:Common.css",    # needed so that restricted users can view properly formatted content
-		"MediaWiki:Common.js",     # needed so that restricted users can view properly formatted content
+		"MediaWiki:%",             # needed so that restricted users can view properly formatted content
+		"Help:%",                  # needed so that restricted users can see help pages
 );
 if( !isset($wgWhitelistOverride['always']['edit']) )
 	$wgWhitelistOverride['always']['edit'] = array();

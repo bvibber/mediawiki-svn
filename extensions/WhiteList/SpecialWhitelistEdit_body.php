@@ -185,7 +185,7 @@ class WhitelistEdit extends SpecialPage
                                                   array('wl_id' => $rowid),
                                                   __METHOD__
                                                  );
-                    $wgOut->addWikiText(wfMsg('whitelistoverviewrm', $pagename));
+                    self::DisplayWildCardMatches($pagename,wfMsg('whitelistoverviewrm', $pagename),-1);
                 }
             }
         }
@@ -669,9 +669,8 @@ class WhiteList extends SpecialPage
         $wgOut->addHtml("</tr><tr><td width=30%>");
 
         $res = WhitelistEdit::contractorWhitelistTable($dbr, $user->getId());
-        for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
-            WhitelistEdit::DisplayWildCardMatches($row->wl_page_title, "* $row->wl_page_title", 0);
-        }
+        for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) 
+            WhitelistEdit::DisplayWildCardMatches($row->wl_page_title,$row->wl_page_title, 0);
         $dbr->freeResult($res);
         $pages = array();
         foreach ($wgWhitelistOverride['always']['read'] as $page)
@@ -680,7 +679,7 @@ class WhiteList extends SpecialPage
             array_push($pages, $page);
         sort($pages);
         foreach ($pages as $page)
-            $wgOut->addWikiText("* [[:$page|$page]]");
+            WhitelistEdit::DisplayWildCardMatches($page,$page,0);
 
 
         $wgOut->addHtml("</td><td valign=top>");

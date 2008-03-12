@@ -60,7 +60,7 @@ class WhitelistExec
 			return $hideMe;
 
 		/* Check global allow/deny lists */
-		$override = self::GetOverride($title->GetPrefixedText(), $action);
+		$override = self::GetOverride($title, $action);
 
 		/* Check if user page */
 		if( WHITELIST_NOACTION == $override )
@@ -90,20 +90,45 @@ class WhitelistExec
 
 	/* Check for global page overrides (allow or deny)
 	 */
-	static function GetOverride($title_text, $action )
+	static function GetOverride($title, $action )
 	{
 		global $wgWhitelistOverride;
 
+                $allowView = $allowEdit = $denyView = $denyEdit = false;
+ 
+                foreach( $wgWhitelistOverride['always']['read'] as $value )
+                {
+                        if( self::RegexCompare($title, $value) )
+                        {
+                                $allowView = true;
+                        }
+                }
+ 
+                foreach( $wgWhitelistOverride['always']['edit'] as $value )
+                {
+                        if( self::RegexCompare($title, $value) )
+                        {
+                                $allowEdit = true;
+                        }
+                }
+
 		$override = undef;
 
-		$allowView = in_array( $title_text,
-			$wgWhitelistOverride['always']['read'] );
-		$allowEdit = in_array( $title_text,
-			$wgWhitelistOverride['always']['edit'] );
-		$denyView  = in_array( $title_text,
-			$wgWhitelistOverride['never']['read'] );
-		$denyEdit  = in_array( $title_text,
-			$wgWhitelistOverride['never']['edit'] );
+		foreach( $wgWhitelistOverride['never']['read'] as $value )
+                {
+                        if( self::RegexCompare($title, $value) )
+                        {
+                                $denyView = true;
+                        }
+                }
+ 
+                foreach( $wgWhitelistOverride['never']['edit'] as $value )
+                {
+                        if( self::RegexCompare($title, $value) )
+                        {
+                                $denyEdit = true;
+                        }
+                }
 
 		if( $action == 'edit' )
 		{
