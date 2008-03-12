@@ -34,7 +34,7 @@ des
 dem
 die
 das
-daß
+daÃŸ
 derselbe
 derselben
 denselben
@@ -89,7 +89,7 @@ eurem
 euren
 eurer
 eures
-für
+fÃ¼r
 gegen
 gewesen
 hab
@@ -134,8 +134,8 @@ keinem
 keinen
 keiner
 keines
-können
-könnte
+kÃ¶nnen
+kÃ¶nnte
 machen
 man
 manche
@@ -183,7 +183,7 @@ soll
 sollte
 sondern
 sonst
-über
+Ã¼ber
 um
 und
 uns
@@ -197,7 +197,7 @@ viel
 vom
 von
 vor
-während
+wÃ¤hrend
 war
 waren
 warst
@@ -222,8 +222,8 @@ wirst
 wo
 wollen
 wollte
-würde
-würden
+wÃ¼rde
+wÃ¼rden
 zu
 zum
 zur

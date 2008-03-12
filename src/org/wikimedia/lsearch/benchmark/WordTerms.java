@@ -19,11 +19,11 @@ public class WordTerms implements Terms {
 			in = new BufferedReader(
 					new InputStreamReader(
 							new GZIPInputStream(
-									new FileInputStream(path))));
+									new FileInputStream(path)),"utf-8"));
 		else 
 			in = new BufferedReader(
 					new InputStreamReader(
-							new FileInputStream(path)));
+							new FileInputStream(path),"utf-8"));
 		
 		String line="";
 		ArrayList<String> words = new ArrayList<String>();

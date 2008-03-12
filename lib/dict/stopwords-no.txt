@@ -1,4 +1,4 @@
-| This stop word list is for the dominant bokmål dialect. Words unique
+| This stop word list is for the dominant bokmÃ¥l dialect. Words unique
 og
 i
 jeg
@@ -9,7 +9,7 @@ den
 til
 er
 som
-på
+pÃ¥
 de
 med
 han
@@ -17,7 +17,7 @@ av
 ikke
 inte
 der
-så
+sÃ¥
 var
 meg
 seg
@@ -32,7 +32,7 @@ ha
 hade
 hu
 hun
-nå
+nÃ¥
 over
 da
 ved
@@ -51,7 +51,7 @@ eller
 hva
 skal
 selv
-sjøl
+sjÃ¸l
 her
 alle
 vil
@@ -61,8 +61,8 @@ blei
 blitt
 kunne
 inn
-når
-være
+nÃ¥r
+vÃ¦re
 kom
 noen
 noe
@@ -83,7 +83,7 @@ si
 sine
 sitt
 mot
-å
+Ã¥
 meget
 hvorfor
 sia
@@ -101,18 +101,18 @@ blir
 samme
 hvilken
 hvilke
-sånn
+sÃ¥nn
 inni
 mellom
-vår
+vÃ¥r
 hver
 hvem
 vors
 dere
 deres
 hvis
-både
-båe
+bÃ¥de
+bÃ¥e
 begge
 siden
 dykk
@@ -122,7 +122,7 @@ deira
 deires
 deim
 di
-då
+dÃ¥
 eg
 ein
 ei
@@ -130,7 +130,7 @@ eit
 eitt
 elles
 honom
-hjå
+hjÃ¥
 ho
 hoe
 henne
@@ -177,6 +177,6 @@ vort
 varte
 vart
 er
-være
+vÃ¦re
 var
-å
+Ã¥
