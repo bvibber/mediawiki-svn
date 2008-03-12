@@ -16,6 +16,9 @@
 #include <stdio.h>
 #include <strings.h>
 
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 #include "t_stdint.h"
 #ifdef T_STDINT
 # include <stdint.h>

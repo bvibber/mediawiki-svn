@@ -1,28 +1,32 @@
 # @(#) $Header$
 
+CC?=cc
 CFGHDRS=t_stdint.h t_xti.h t_alloca.h
+all: config trickle
+config: $(CFGHDRS)
 trickle: trickle.o tar.o proto.o util.o rdcp.o ldflags
-	cc -O -g trickle.o tar.o proto.o util.o rdcp.o -o $@ `cat ldflags`
-%.o: %.c Makefile $< $(CFGHDRS)
-	cc -O -g -D_FILE_OFFSET_BITS=64 -c $<
+	$(CC) -O -g trickle.o tar.o proto.o util.o rdcp.o -o $@ `cat ldflags`
+.c.o:
+	$(CC) -O -g -D_FILE_OFFSET_BITS=64 -c $<
 clean:
 	rm -f trickle trickle.o tar.o util.o rdcp.o proto.o ldflags $(CFGHDRS)
 t_stdint.h:
 	echo "#include <stdint.h>" >test.c
-	-(cc -c -o /dev/null test.c && echo "#define T_STDINT 1") >t_stdint.h
+	-($(CC) -c -o /dev/null test.c && echo "#define T_STDINT 1") >t_stdint.h
 	rm -f test.c
 t_xti.h:
 	echo "#include <xti.h>" >test.c
-	-(cc -c -o /dev/null test.c && echo "#define T_XTI 1") >t_xti.h
+	-($(CC) -c -o /dev/null test.c && echo "#define T_XTI 1") >t_xti.h
 	rm -f test.c
 t_alloca.h:
 	echo "#include <alloca.h>" >test.c
-	-(cc -c -o /dev/null test.c && echo "#define T_ALLOCA 1") >t_alloca.h
+	-($(CC) -c -o /dev/null test.c && echo "#define T_ALLOCA 1") >t_alloca.h
 	rm -f test.c
 ldflags:
 	echo "int main() { return 0; }" > test.c
-	-(cc test.c -lsocket -lnsl -o /dev/null && echo -lsocket -lnsl) >ldflags
-	rm -f test.c
+	-($(CC) test.c -lsocket -lnsl -o _conftest && echo -lsocket -lnsl) >ldflags
+	-($(CC) test.c -lxti `cat ldflags` -o _conftest && echo -lxti) >>ldflags
+	rm -f test.c _conftest
 dist:
 	mkdir trickle-cvs1
 	cp trickle.[ch] tar.c proto.c util.c rdcp.[ch] Makefile trickle-cvs1/
