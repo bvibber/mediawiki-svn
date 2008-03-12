@@ -46,6 +46,14 @@ $wgLuceneDisableTitleMatches = false;
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = "wfLuceneSearch";
 
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'MWSearch',
+	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
+	'descriptionmsg' => 'mwsearch-desc',
+);
+$wgExtensionMessagesFiles['MWSearch'] = dirname(__FILE__) . '/MWSearch.i18n.php';
+
 function wfLuceneSearch() {
 
 require_once( 'SearchEngine.php' );
