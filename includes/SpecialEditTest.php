@@ -57,6 +57,7 @@ class SpecialEditTest extends SpecialPage
 
 		$retval .= Xml::openElement('table');
 		$retval .= $this->buildInputLine('Page title', 'title');
+		$retval .= $this->buildInputLine('Section number', 'section');
 		$retval .= $this->buildInputLine('Edit comment', 'summary');
 		$retval .= $this->buildInputLine('Edit token', 'token');
 		$retval .= $this->buildInputLine('Base timestamp', 'basetimestamp');
