@@ -616,7 +616,6 @@ Molimo pokušajte ponovno. Ako i dalje ne bude radilo, pokušajte se odjaviti i 
 Stoga je uređivanje odbačeno da se spriječi uništavanje stranice.
 To se događa ponekad kad rabite neispravan web-baziran anonimni proxy.</strong>',
 'editing'                   => 'Uređujete $1',
-'editinguser'               => 'Uređujete $1',
 'editingsection'            => 'Uređujete $1 (odlomak)',
 'editingcomment'            => 'Uređujete $1 (komentar)',
 'editconflict'              => 'Istovremeno uređivanje: $1',
@@ -881,6 +880,7 @@ za podešavanje suradničkih postavki.',
 'userrights-lookup-user'           => 'Upravljaj skupinama suradnika',
 'userrights-user-editname'         => 'Unesite suradničko ime:',
 'editusergroup'                    => 'Uredi suradničke skupine',
+'editinguser'                      => "Uređujete '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Uredi skupine suradnika',
 'saveusergroups'                   => 'Snimi skupine suradnika',
 'userrights-groupsmember'          => 'Član:',
@@ -984,8 +984,8 @@ Da biste na stranicu stavili sliku, koristite poveznice tipa
 'filename'                    => 'Ime datoteke',
 'filedesc'                    => 'Opis',
 'fileuploadsummary'           => 'Opis:',
-'filestatus'                  => 'Status autorskih prava',
-'filesource'                  => 'Izvor',
+'filestatus'                  => 'Status autorskih prava:',
+'filesource'                  => 'Izvor:',
 'uploadedfiles'               => 'Postavljene datoteke',
 'ignorewarning'               => 'Zanemari upozorenja i snimi datoteku.',
 'ignorewarnings'              => 'Zanemari sva upozorenja',
@@ -1023,8 +1023,8 @@ Ukoliko imate ovu sliku u punoj razlučljivosti (rezoluciji) postavite tu sliku,
 'uploadscripted'              => 'Ova datoteka sadrži HTML ili skriptu, što može dovesti do grešaka u web pregledniku.',
 'uploadcorrupt'               => 'Ova je datoteka oštećena ili ima nepravilan nastavak. Provjerite i pokušajte ponovo.',
 'uploadvirus'                 => 'Datoteka sadrži virus! Podrobnije: $1',
-'sourcefilename'              => 'Ime datoteke na vašem računalu',
-'destfilename'                => 'Ime datoteke na wikiju',
+'sourcefilename'              => 'Ime datoteke na vašem računalu:',
+'destfilename'                => 'Ime datoteke na wikiju:',
 'watchthisupload'             => 'Prati ovu stranicu',
 'filewasdeleted'              => 'Datoteka istog imena već je bila postavljena, a kasnije i obrisana. Trebali bi provjeriti $1 prije nego što ponovno postavite datoteku.',
 'upload-wasdeleted'           => "'''Upozorenje: Pokušavate postaviti datoteku koja je prethodno obrisana.'''
@@ -1046,7 +1046,7 @@ Slijedi evidencija brisanja ove datoteke s obrazloženjem prethodnog brisanja:",
 'upload-curl-error28'      => "Istek vremena snimanja (''timeout'')",
 'upload-curl-error28-text' => 'Poslužitelj ne odgovara na upit. Provjerite da li su web stranice dostupne, pričekajte i pokušajte ponovo. Možete pokušati kasnije, kad bude manja gužva.',
 
-'license'            => 'Dopuštenje',
+'license'            => 'Dopuštenje:',
 'nolicense'          => 'Molim odaberite:',
 'license-nopreview'  => '(Prikaz nije moguć)',
 'upload_source_url'  => ' (valjani, javno dostupni URL)',
@@ -1231,7 +1231,6 @@ koja obično ukazuje na "pravu" odredišnu stranicu, na koju bi trebalo pokaziva
 'newpages'                => 'Nove stranice',
 'newpages-username'       => 'Suradničko ime:',
 'ancientpages'            => 'Najstarije stranice',
-'intl'                    => 'Interwiki poveznice',
 'move'                    => 'Premjesti',
 'movethispage'            => 'Premjesti ovu stranicu',
 'unusedimagestext'        => '<p>Moguće je da su druge mrežne stranice izvan ovog
@@ -1444,7 +1443,6 @@ Pogledajte [[Special:Protectedpages|zaštićene stranice]] za popis trenutačno 
 'protectexpiry'               => 'Trajanje zaštite:',
 'protect_expiry_invalid'      => 'Upisani vremenski rok nije valjan.',
 'protect_expiry_old'          => 'Vrijeme isteka je u prošlosti.',
-'unprotectsub'                => '(Uklanjam zaštitu stranice "$1")',
 'protect-unchain'             => 'Otključaj ovlaštenja za premještanje',
 'protect-text'                => 'Ovdje možete pregledati i promijeniti razinu zaštite za stranicu <strong><nowiki>$1</nowiki></strong>.
 Molim pripazite da ovo radite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
@@ -1668,7 +1666,7 @@ mijenjanje postavki, uređivanje popisa praćenja i druge stvari koje zahtijevaj
 'databasenotlocked'   => 'Baza podataka nije zaključana.',
 
 # Move page
-'movepage'                => 'Premjesti stranicu',
+'move-page-legend'                => 'Premjesti stranicu',
 'movepagetext'            => "Korištenjem ovog obrasca ćete preimenovati stranicu i premjestiti sve stare izmjene
 na novo ime.
 Stari će se naslov pretvoriti u stranicu koja automatski preusmjerava na novi naslov.

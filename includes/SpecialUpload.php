@@ -999,8 +999,8 @@ wgAjaxLicensePreview = {$alp};
 			}
 		}
 
-		$sourcefilename = wfMsgHtml( 'sourcefilename' );
-		$destfilename = wfMsgHtml( 'destfilename' );
+		$sourcefilename = wfMsgExt( 'sourcefilename', 'escapenoentities' );
+		$destfilename = wfMsgExt( 'destfilename', 'escapenoentities' );
 		$summary = wfMsgExt( 'fileuploadsummary', 'parseinline' );
 
 		$licenses = new Licenses();
@@ -1027,7 +1027,7 @@ wgAjaxLicensePreview = {$alp};
 		if( $wgAllowCopyUploads && $wgUser->isAllowed( 'upload_by_url' ) ) {
 			$filename_form =
 				"<input type='radio' id='wpSourceTypeFile' name='wpSourceType' value='file' " .
-				   "onchange='toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\")' checked />" .
+				   "onchange='toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\")' checked='checked' />" .
 				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
 				   "onfocus='" . 
 				     "toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\");" .
@@ -1040,7 +1040,7 @@ wgAjaxLicensePreview = {$alp};
 				  "onfocus='" .
 				    "toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\");" .
 				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")'" .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFileURL\")' ") . "size='60' DISABLED />" .
+				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFileURL\")' ") . "size='60' disabled='disabled' />" .
 				wfMsgHtml( 'upload_source_url' ) ;
 		} else {
 			$filename_form =
@@ -1065,14 +1065,14 @@ wgAjaxLicensePreview = {$alp};
 	<form id='upload' method='post' enctype='multipart/form-data' action="$action">
 		<table border='0'>
 		<tr>
-	  {$this->uploadFormTextTop}
-			<td align='$align1' valign='top'><label for='wpUploadFile'>{$sourcefilename}:</label></td>
+			{$this->uploadFormTextTop}
+			<td align='$align1' valign='top'><label for='wpUploadFile'>{$sourcefilename}</label></td>
 			<td align='$align2'>
 				{$filename_form}
 			</td>
 		</tr>
 		<tr>
-			<td align='$align1'><label for='wpDestFile'>{$destfilename}:</label></td>
+			<td align='$align1'><label for='wpDestFile'>{$destfilename}</label></td>
 			<td align='$align2'>
 				<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60' 
 					value="$encDestName" $destOnkeyup />
@@ -1083,7 +1083,7 @@ wgAjaxLicensePreview = {$alp};
 			<td align='$align2'>
 				<textarea tabindex='3' name='wpUploadDescription' id='wpUploadDescription' rows='6' 
 					cols='{$cols}'{$width}>$encComment</textarea>
-	   {$this->uploadFormTextAfterSummary}
+					{$this->uploadFormTextAfterSummary}
 			</td>
 		</tr>
 		<tr>
@@ -1093,7 +1093,7 @@ EOT
 		if ( $licenseshtml != '' ) {
 			global $wgStylePath;
 			$wgOut->addHTML( "
-			<td align='$align1'><label for='wpLicense'>$license:</label></td>
+			<td align='$align1'><label for='wpLicense'>$license</label></td>
 			<td align='$align2'>
 				<select name='wpLicense' id='wpLicense' tabindex='4'
 					onchange='licenseSelectorCheck()'>
@@ -1113,18 +1113,18 @@ EOT
 		}
 
 		if ( $wgUseCopyrightUpload ) {
-			$filestatus = wfMsgHtml ( 'filestatus' );
+			$filestatus = wfMsgExt( 'filestatus', 'escapenoentities' );
 			$copystatus =  htmlspecialchars( $this->mCopyrightStatus );
-			$filesource = wfMsgHtml ( 'filesource' );
+			$filesource = wfMsgExt( 'filesource', 'escapenoentities' );
 			$uploadsource = htmlspecialchars( $this->mCopyrightSource );
 
 			$wgOut->addHTML( "
-			        <td align='$align1' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus:</label></td>
+				<td align='$align1' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus</label></td>
 					<td><input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' 
 					  value=\"$copystatus\" size='60' /></td>
-		        </tr>
+			</tr>
 			<tr>
-		        	<td align='$align1'><label for='wpUploadCopyStatus'>$filesource:</label></td>
+				<td align='$align1'><label for='wpUploadCopyStatus'>$filesource</label></td>
 					<td><input tabindex='6' type='text' name='wpUploadSource' id='wpUploadCopyStatus' 
 					  value=\"$uploadsource\" size='60' /></td>
 			</tr>
@@ -1158,6 +1158,10 @@ EOT
 	</table>
 	<input type='hidden' name='wpDestFileWarningAck' id='wpDestFileWarningAck' value=''/>
 	</form>" );
+		$uploadfooter = wfMsgNoTrans( 'uploadfooter' );
+		if( $uploadfooter != '-' && !wfEmptyMsg( 'uploadfooter', $uploadfooter ) ){
+			$wgOut->addWikiText( $uploadfooter );
+		}
 	}
 
 	/* -------------------------------------------------------------- */

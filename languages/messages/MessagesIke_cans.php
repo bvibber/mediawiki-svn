@@ -296,7 +296,6 @@ $messages = array(
 'dellogpage'          => 'ᓂᐸᖅ ᓂᐱ',
 'deletionlog'         => 'ᓂᐸᖅ ᓂᐱ',
 'confirmprotect'      => 'ᐸᑎᒻᒥᕚ ᓴᐳᒻᒥᕚ',
-'unprotectsub'        => '(ᐃᖅ ᓴᐳᒻᒥᕚ "$1")',
 'protect-level-sysop' => 'ᓯᕐᓚᒃ ᑎᑎᕋᖅᓯᒪᔪᓂᒃ ᑐᖅᑯᖅᑎᕆᔨ',
 
 # Restrictions (nouns)
@@ -331,7 +330,7 @@ $messages = array(
 'block-log-flags-noemail'  => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ',
 
 # Move page
-'movepage'        => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
+'move-page-legend'        => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
 'movearticle'     => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
 'movedto'         => 'ᐅᐊᔪᖅ',
 '1movedto2'       => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]]',

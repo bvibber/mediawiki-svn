@@ -660,7 +660,6 @@ Móžeš administratora $1 abo jednoho z druhich [[{{MediaWiki:Grouppage-sysop}}
 'token_suffix_mismatch'     => '<strong>Twoja změna je so wotpokazała, dokelž twój wobhladowak je znamješka skepsał.
 Składowanje móže wobsah strony zničić. Móže so to na přikład přez wopačnje dźěłowacy proksy stać.</strong>',
 'editing'                   => 'Wobdźěłanje strony $1',
-'editinguser'               => 'Wužiwar <b>$1</b> so wobdźěłuje',
 'editingsection'            => 'Wobdźěłanje strony $1 (wotrězk)',
 'editingcomment'            => 'Wobdźěłanje strony $1 (komentar)',
 'editconflict'              => 'Wobdźěłowanski konflikt: $1',
@@ -907,6 +906,7 @@ Móžeš [[{{ns:special}}:Allpages|alfabetiski indeks přepytować]] abo [[:$1|s
 'userrights-lookup-user'           => 'Wužiwarske skupiny zrjadować',
 'userrights-user-editname'         => 'Wužiwarske mjeno:',
 'editusergroup'                    => 'Wužiwarske skupiny wobdźěłać',
+'editinguser'                      => 'Wužiwar <b>$1</b> so wobdźěłuje',
 'userrights-editusergroup'         => 'Wužiwarske skupiny wobdźěłać',
 'saveusergroups'                   => 'Wužiwarske skupiny składować',
 'userrights-groupsmember'          => 'Čłon skupiny:',
@@ -1005,8 +1005,8 @@ Zo by dataju do strony zapřijał, wužij wotkaz we formje
 'filename'                    => 'Mjeno dataje',
 'filedesc'                    => 'Zjeće',
 'fileuploadsummary'           => 'Zjeće:',
-'filestatus'                  => 'Licenca',
-'filesource'                  => 'Žórło',
+'filestatus'                  => 'Licenca:',
+'filesource'                  => 'Žórło:',
 'uploadedfiles'               => 'Nahrate dataje',
 'ignorewarning'               => 'Warnowanje ignorować a dataju najebać toho składować.',
 'ignorewarnings'              => 'Wšě warnowanja ignorować',
@@ -1044,8 +1044,8 @@ Prošu přepruwuj, hač maš dataju w połnym rozeznaću a nahraj ju, hewak wuzw
 'uploadscripted'              => 'Dataja wobsahuje HTML- abo skriptowy kod, kotryž móhł so mylnje přez wobhladowak wuwjesć.',
 'uploadcorrupt'               => 'Dataja je wobškodźena abo ma wopačnu kóncowku. Prošu přepruwuj dataju a nahraj ju hišće raz.',
 'uploadvirus'                 => 'Dataja wirus wobsahuje! Podrobnosće: $1',
-'sourcefilename'              => 'Mjeno žórłoweje dataje',
-'destfilename'                => 'Mjeno ciloweje dataje',
+'sourcefilename'              => 'Mjeno žórłoweje dataje:',
+'destfilename'                => 'Mjeno ciloweje dataje:',
 'watchthisupload'             => 'Stronu wobkedźbować',
 'filewasdeleted'              => 'Dataja z tutym mjenom bu prjedy nahrata a pozdźišo wušmórnjena. Prošu přepruwuj $1 prjedy hač ju znowa składuješ.',
 'upload-wasdeleted'           => "'''Kedźbu: Nahrawaš dataju, kotraž bu prjedy wušmórnjena.'''
@@ -1082,7 +1082,7 @@ PICT # misc.
 'upload-curl-error28'      => 'Překročenje časa při nahrawanju',
 'upload-curl-error28-text' => 'Sydło za wotmołwu předołho trjebaše. Prošu pruwuj, hač sydło je docpějomne, čakaj wokomik a spytaj hišće raz. Spytaj hewak w druhim času hišće raz.',
 
-'license'            => 'Licenca',
+'license'            => 'Licenca:',
 'nolicense'          => 'žadyn wuběr',
 'license-nopreview'  => '(žadyn přehlad k dispoziciji)',
 'upload_source_url'  => ' (płaćiwy, zjawnje docpějomny URL)',
@@ -1156,6 +1156,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Powšitkowne přičina za wušmórnjenja
 ** Zranjenje awtorksich prawow
 ** Dwójna dataja',
+'filedelete-edit-reasonlist'  => 'Přičiny za wušmórnjenje wobdźěłać',
 
 # MIME search
 'mimesearch'         => 'Pytanje po družinje MIME',
@@ -1291,7 +1292,6 @@ Dołhosć [http://meta.wikimedia.org/wiki/Help:Job_queue rynka nadawkow] je '''$
 'newpages-username'               => 'Wužiwarske mjeno:',
 'ancientpages'                    => 'Najstarše nastawki',
 'ancientpages-summary'            => 'Tuta specialna strona naliči strony, kiž najdlěši čas změnjene njebuchu.',
-'intl'                            => 'Mjezyrěčne wotkazy',
 'move'                            => 'Přesunyć',
 'movethispage'                    => 'Stronu přesunyć',
 'unusedimagestext'                => '<p>Prošu wobkedźbuj, zo druhe websydła móža k dataji z direktnym URL wotkazować a su hišće tu naspomnjene, hačrunjež so hižo aktiwnje wužiwaja.</p>',
@@ -1469,6 +1469,7 @@ Prošu potwjerdź, zo maš wotpohlad to činić, zo rozumiš sćěwki a zo to wo
 ** Požadanje awtora
 ** Zranjenje copyrighta
 ** Wandalizm',
+'delete-edit-reasonlist'      => 'Přičiny za wušmórnjenje wobdźěłać',
 'delete-toobig'               => 'Tuta strona ma wulke wobdźěłowanske stawiznow, přez $1 wersijow. Wušmórnjenje tajkich stronow bu wobmjezowane, zo by připadne přetorhnjenje {{SITENAME}} wobešło.',
 'delete-warning-toobig'       => 'Tuta strona ma wulke wobdźěłowanske stawizny, přez $1 wersijow. Hdyž je wušmórnješ, móža so operacije datoweje banki {{SITENAME}} přetorhnyć; pokročuj z kedźbliwosću.',
 'rollback'                    => 'Změny cofnyć',
@@ -1494,7 +1495,6 @@ Poslednja změna bě wot wužiwarja [[User:$3|$3]] ([[User talk:$3|Diskusija]]).
 'protectexpiry'               => 'Čas škita:',
 'protect_expiry_invalid'      => 'Njepłaćiwy čas spadnjenja.',
 'protect_expiry_old'          => 'Čas škita leži w zańdźenosći.',
-'unprotectsub'                => '(Škit za stronu „$1” so zběhnje)',
 'protect-unchain'             => 'Škit přećiwo přesunjenju změnić',
 'protect-text'                => 'Tu móžeš status škita strony <b><nowiki>$1</nowiki></b> wobhladać a změnić.',
 'protect-locked-blocked'      => 'Njemóžeš škit strony změnič, dokelž twoje konto je zablokowane. Tu widźiš aktualne škitne nastajenja za stronu<strong>„$1“:</strong>',
@@ -1606,6 +1606,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Wužiwarja zablokować',
+'blockip-legend'              => 'Wužiwarja blokować',
 'blockiptext'                 => 'Wužij slědowacy formular deleka, zo by pisanski přistup za podatu IP-adresu abo wužiwarske mjeno blokował. To měło so jenož stać, zo by wandalizmej zadźěwało a woptpowědujo [[{{MediaWiki:Policy-url}}|zasadam]]. Zapodaj deleka přičinu (na př. citujo wosebite strony, kotrež běchu z woporom wandalizma).',
 'ipaddress'                   => 'IP-adresa',
 'ipadressorusername'          => 'IP-adresa abo wužiwarske mjeno',
@@ -1705,7 +1706,7 @@ $1',
 'databasenotlocked'   => 'Datajowa banka zamknjena njeje.',
 
 # Move page
-'movepage'                => 'Stronu přesunyć',
+'move-page-legend'                => 'Stronu přesunyć',
 'movepagetext'            => 'Wužiwanje formulara deleka budźe stronu přemjenować, suwajo jeje cyłe stawizny pod nowe mjeno. Stary titl budźe daleposrědkowanje na nowy titl. Wotkazy na stary titl so njezměnja. Pruwuj za dwójnymi abo skóncowanymi daleposrědkowanjemi. Dyrbiš zaručić, zo wotkazy na stronu pokazuja, na kotruž dyrbja dowjesć.
 
 Wobkedźbuj, zo strona so <b>nje</b> přesunje, jeli strona z nowym titlom hizo eksistuje, chibazo wona je prózdna abo dalesposrědkowanje a nima zašłe stawizny. To woznamjenja, zo móžeš stronu tam wróćo přemjenować, hdźež bu runje přemjenowana, jeli zmylk činiš a njemóžeš wobstejacu stronu přepisować.

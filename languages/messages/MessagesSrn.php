@@ -237,6 +237,7 @@ $messages = array(
 'site-atom-feed'          => '$1 Atom-nyan',
 'page-rss-feed'           => '“$1” RSS-nyan',
 'page-atom-feed'          => '“$1” Atom-nyan',
+'red-link-title'          => '$1 (e ben no na da)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Papira',
@@ -387,7 +388,6 @@ Teki a box '''back''' ini yu browser leki yu dyaso soma ben e kon.",
 'note'                   => '<strong>Opotaki:</strong>',
 'previewnote'            => '<strong>Atessi: disi ben wan fusi; yu kenki ben no oponaki!</strong>',
 'editing'                => 'Kenki fu $1',
-'editinguser'            => 'Kenki fu lesi fu <b>$1</b>',
 'editingsection'         => 'Kenki fu $1 (seksi)',
 'editingcomment'         => 'Kenki fu $1 (opotaki)',
 'yourtext'               => 'Yu litiwrok',
@@ -523,6 +523,7 @@ A kan ben trowe efu dribi.
 'userrights-lookup-user'           => 'Masyinguru kenki',
 'userrights-user-editname'         => 'Wan masyinnen gi:',
 'editusergroup'                    => 'Masyinguru kenki',
+'editinguser'                      => 'Kenki fu lesi fu <b>$1</b>',
 'userrights-editusergroup'         => 'Masyinguru kenki',
 'saveusergroups'                   => 'Masyinguru oponaki',
 'userrights-groupsmember'          => 'Masyin fu:',
@@ -901,7 +902,7 @@ Disi ben a tapunivo fu a papira <strong>[[$1]]</strong> now:",
 'blocklogentry'      => 'abi "[[$1]]" e spikru nanga wan lasi opo $2 $3',
 
 # Move page
-'movepage'         => 'Dribi papira',
+'move-page-legend'         => 'Dribi papira',
 'movepagetext'     => "Nanaga a ondroben box kan yu wan papira dribi. A stori go na a nyun papira. A owru nen sey wan stir na a nyun papira sey. Stir na a owru papira ben no kenki. Luku na a dribi efu da no tustir efu broko stir ben e kon. Yu ben risponsibu fu den stir.
 
 A papira kan '''wawan''' dribi sey leki a nyun papiranen:

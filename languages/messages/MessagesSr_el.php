@@ -938,8 +938,8 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'filename'                    => 'Ime fajla',
 'filedesc'                    => 'Opis',
 'fileuploadsummary'           => 'Opis:',
-'filestatus'                  => 'Status autorskog prava',
-'filesource'                  => 'Izvor',
+'filestatus'                  => 'Status autorskog prava:',
+'filesource'                  => 'Izvor:',
 'uploadedfiles'               => 'Poslati fajlovi',
 'ignorewarning'               => 'Ignoriši upozorenja i snimi datoteku.',
 'ignorewarnings'              => 'Ignoriši sva upozorenja',
@@ -959,8 +959,8 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'uploadscripted'              => 'Ovaj fajl sadrži HTML ili kod skripte koje internet brauzer može pogrešno da interpretira.',
 'uploadcorrupt'               => 'Fajl je neispravan ili ima netačnu ekstenziju. Molimo proverite fajl i pošaljite ga ponovo.',
 'uploadvirus'                 => 'Fajl sadrži virus! Detalji: $1',
-'sourcefilename'              => 'Ime fajla izvora',
-'destfilename'                => 'Ciljano ime fajla',
+'sourcefilename'              => 'Ime fajla izvora:',
+'destfilename'                => 'Ciljano ime fajla:',
 'watchthisupload'             => 'Nadgledaj stranicu',
 'filewasdeleted'              => 'Fajl sa ovim imenom je ranije poslat, a kasnije obrisan. Trebalo bi da proverite $1 pre nego što nastavite sa ponovnim slanjem.',
 
@@ -977,7 +977,7 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'upload-curl-error28'      => 'Tajmaut greška',
 'upload-curl-error28-text' => 'Sajtu je trebalo previše vremena da odgovori. Proverite da li sajt radi, ili sačekajte malo i pokušajte ponovo.',
 
-'license'            => 'Licenca',
+'license'            => 'Licenca:',
 'nolicense'          => 'Nema',
 'upload_source_url'  => ' (validan, javno dostupan URL)',
 'upload_source_file' => ' (fajl na vašem računaru)',
@@ -1266,7 +1266,6 @@ Molimo kliknite "back" i ponovo učitajte stranu odakle ste došli, a onda poku�
 'protectsub'                  => '(stavljanje zaštite "$1")',
 'confirmprotect'              => 'Potvrdite zaštitu',
 'protectcomment'              => 'Razlog zaštite',
-'unprotectsub'                => '(skidanje zaštite "$1")',
 'protect-unchain'             => 'Otključaj dozvole premeštanja',
 'protect-text'                => 'Ovde možete pogledati i menjati nivo zaštite za stranicu <strong><nowiki>$1</nowiki></strong>.',
 'protect-default'             => '(standard)',
@@ -1410,7 +1409,7 @@ Molimo potvrdite da je ovo zaista ono što nameravate da uradite.',
 'databasenotlocked'   => 'Baza podataka nije zaključana.',
 
 # Move page
-'movepage'                => 'Premeštanje stranice',
+'move-page-legend'                => 'Premeštanje stranice',
 'movepagetext'            => "Donji upitnik će preimenovati stranicu, premeštajući svu
 njenu istoriju na novo ime.
 Stari naslov će postati preusmerenje na novi naslov.

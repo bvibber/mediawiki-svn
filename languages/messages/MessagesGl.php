@@ -281,6 +281,7 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|unha edición borrada|$1 edicións borradas}}',
 'feedlinks'               => 'Sindicalización:',
 'feed-invalid'            => 'Tipo de fonte de noticias non válido.',
+'feed-unavailable'        => 'Non hai fontes de noticias dispoñíbeis en {{SITENAME}}',
 'site-rss-feed'           => 'Fonte de noticias RSS de $1',
 'site-atom-feed'          => 'Fonte de noticias Atom de $1',
 'page-rss-feed'           => 'Fonte de noticias RSS para "$1"',
@@ -363,9 +364,10 @@ Procura: $2',
 'protectedpagetext'    => 'Esta páxina foi protexida para evitar a edición.',
 'viewsourcetext'       => 'Pode ver e copiar o código fonte desta páxina:',
 'protectedinterface'   => 'Esta páxina fornece o texto da interface para a o software e está protexida para evitar o abuso.',
-'editinginterface'     => "'''Aviso:''' Está editando unha páxina usada para fornecer o texto da interface do software. Os cambios nesta páxina afectarán á aparencia da interface para os outros usuarios. Para traducións, considere usar [http://translatewiki.net/wiki/Main_Page?setlang=gl Betawiki], a localización do proxecto Mediawiki.",
+'editinginterface'     => "'''Aviso:''' Está editando unha páxina usada para fornecer o texto da interface do software. Os cambios nesta páxina afectarán á aparencia da interface para os outros usuarios. Para traducións, considere usar [http://translatewiki.net/wiki/Main_Page?setlang=gl Betawiki], o proxecto de localización de Mediawiki.",
 'sqlhidden'            => '(Procura SQL agochada)',
-'cascadeprotected'     => 'Esta páxina foi protexida fronte á edición debido a que está incluída {{PLURAL:$1|na seguinte páxina protexida, que ten|nas seguintes páxinas protexidas, que teñen}}, a "protección en serie" activada: $2',
+'cascadeprotected'     => 'Esta páxina foi protexida fronte á edición debido a que está incluída {{PLURAL:$1|na seguinte páxina protexida, que ten|nas seguintes páxinas protexidas, que teñen}}, a "protección en serie" activada:
+$2',
 'namespaceprotected'   => "Non dispón de permisos para modificar páxinas no espazo de nomes '''$1'''.",
 'customcssjsprotected' => 'Non dispón de permisos para modificar esta páxina, dado que contén a configuración persoal doutro usuario.',
 'ns-specialprotected'  => 'Non se poden editar as páxinas no espazo de nomes {{ns:special}}.',
@@ -412,7 +414,7 @@ Creouse a súa conta. Non esqueza [[Special:Preferences|personalizar]] as súas 
 'email'                      => 'Correo electrónico',
 'prefs-help-realname'        => '* Nome real (opcional): se escolle dalo utilizarase para atribuírlle o seu traballo.',
 'loginerror'                 => 'Erro ao entrar ao sistema',
-'prefs-help-email'           => '*O correo electrónico é opcional, pero permite que outras persoas entren en contacto con vostede desde a súa páxina de usuario ou de converso sen que vostede revele a súa identidade.',
+'prefs-help-email'           => 'O correo electrónico é opcional, pero permite que outras persoas entren en contacto con vostede desde a súa páxina de usuario ou de conversa sen que vostede revele a súa identidade.',
 'prefs-help-email-required'  => 'O enderezo de correo electrónico é requirido.',
 'nocookiesnew'               => "A conta de usuario foi creada, pero non está rexistrado. {{SITENAME}} usa ''cookies'' para o rexistro. Vostede ten deshabilitadas as ''cookies''. Por favor, habilíteas, e logo rexístrese co seu novo nome de usuario e contrasinal.",
 'nocookieslogin'             => '{{SITENAME}} usa cookies para rexistrar os usuarios. Vostede ten as cookies deshabilitadas. Por favor, habilíteas e ténteo de novo.',
@@ -501,7 +503,8 @@ Pode facer caso omiso desta mensaxe se se creou esta conta por erro.',
 'showlivepreview'           => 'Vista previa',
 'showdiff'                  => 'Mostrar cambios',
 'anoneditwarning'           => "'''Aviso''': Non está dentro do sistema. O seu enderezo IP quedará rexistrado no historial de cambios desta páxina.",
-'missingsummary'            => "'''Aviso:''' Esqueceu incluír o texto do campo resumo. Se preme en Gardar a páxina, a súa edición gardarase sen ningunha descrición da edición.",
+'missingsummary'            => "'''Aviso:''' Esqueceu incluír o texto do campo resumo.
+Se preme en Gardar a páxina, a súa edición gardarase sen ningunha descrición da edición.",
 'missingcommenttext'        => 'Por favor escriba un comentario a continuación.',
 'missingcommentheader'      => "'''Aviso:''' Non escribiu ningún texto no asunto/cabeceira deste comentario. Se preme en \"Gardar a páxina\", a súa edición gardarase sen el.",
 'summary-preview'           => 'Vista previa do resumo',
@@ -581,7 +584,6 @@ Por favor, ténteo de novo. Se segue sen funcionar, probe a saír do sistema e v
 Rexeitouse a edición para evitar que se corrompa o texto do artigo. Isto pode acontecer porque estea a
 empregar un servizo de ''proxy'' anónimo defectuoso baseado na web.</strong>",
 'editing'                   => 'Editando $1',
-'editinguser'               => "Mudando os dereitos do usuario '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Editando sección de "$1"',
 'editingcomment'            => 'Editando $1 (comentario)',
 'editconflict'              => 'Conflito de edición: $1',
@@ -850,6 +852,7 @@ Procurar $3 $9',
 'userrights-lookup-user'           => 'Administrar grupos de usuarios',
 'userrights-user-editname'         => 'Escriba un nome de usuario:',
 'editusergroup'                    => 'Editar os Grupos de Usuarios',
+'editinguser'                      => "Mudando os dereitos do usuario '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Editar grupos de usuarios',
 'saveusergroups'                   => 'Gardar Grupos de Usuarios',
 'userrights-groupsmember'          => 'Membro de:',
@@ -949,8 +952,8 @@ Para incluír un ficheiro na páxina, use unha ligazón do seguinte xeito:
 'filename'                    => 'Nome do ficheiro',
 'filedesc'                    => 'Resumo',
 'fileuploadsummary'           => 'Descrición:',
-'filestatus'                  => 'Estado dos Dereitos de Autor (Copyright)',
-'filesource'                  => 'Fonte',
+'filestatus'                  => 'Status do Copyright:',
+'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Ficheiros cargados en {{SITENAME}}',
 'ignorewarning'               => 'Ignorar a advertencia e gardar o ficheiro de calquera xeito.',
 'ignorewarnings'              => 'Ignorar os avisos',
@@ -988,8 +991,8 @@ Se dispón dunha versión desta imaxe de maior resolución, envíe esta última.
 'uploadscripted'              => 'Este ficheiro contén HTML ou código (script code) que pode producir erros ao ser interpretado polo navegador.',
 'uploadcorrupt'               => 'O ficheiro está corrompido ou ten unha extensión incorrecta. Por favor verifique o ficheiro e súbao de novo.',
 'uploadvirus'                 => 'O ficheiro contén un virus! Detalles: $1',
-'sourcefilename'              => 'Nome do ficheiro a cargar',
-'destfilename'                => 'Nome do ficheiro de destino',
+'sourcefilename'              => 'Nome do ficheiro a cargar:',
+'destfilename'                => 'Nome do ficheiro de destino:',
 'watchthisupload'             => 'Vixiar esta páxina',
 'filewasdeleted'              => 'Un ficheiro con ese nome foi cargado con anterioridade e a continuación borrado. Debe comprobar $1 antes de proceder a cargalo outra vez.',
 'upload-wasdeleted'           => "'''Aviso: Está enviando un ficheiro que foi previamente borrado.'''
@@ -1024,7 +1027,7 @@ PICT # misc.
 'upload-curl-error28'      => 'Rematou o tempo de espera',
 'upload-curl-error28-text' => 'O sitio tardou demasiado en respostar. Comprobe que está activo, agarde un anaco e ténteo de novo. Tamén pode reintentalo cando haxa menos actividade.',
 
-'license'            => 'Licenza',
+'license'            => 'Licenza:',
 'nolicense'          => 'Ningunha (os ficheiros sen licenza teñen que ser eliminados)',
 'license-nopreview'  => '(Vista previa non dispoñíbel)',
 'upload_source_url'  => ' (un URL válido, accesíbel publicamente)',
@@ -1097,6 +1100,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Razóns comúns para eliminar:
 ** Violación do Copyright
 ** Arquivo duplicado',
+'filedelete-edit-reasonlist'  => 'Editar os motivos do borrado',
 
 # MIME search
 'mimesearch'         => 'Busca MIME',
@@ -1204,7 +1208,6 @@ Cada ringleira contén ligazóns cara á primeira e segunda redirección, e tam�
 'newpages'                => 'Páxinas novas',
 'newpages-username'       => 'Nome de usuario:',
 'ancientpages'            => 'Artigos máis antigos',
-'intl'                    => 'Ligazóns interlingua',
 'move'                    => 'Mover',
 'movethispage'            => 'Mover esta páxina',
 'unusedimagestext'        => '<p>Por favor, teña en conta que outros sitios web poden ligar a un ficheiro mediante un enderezo URL e por iso poden aparecer listados aquí, mesmo estando en uso.</p>',
@@ -1220,7 +1223,7 @@ Cada ringleira contén ligazóns cara á primeira e segunda redirección, e tam�
 'booksources-go'            => 'Ir',
 'booksources-text'          => 'A continuación aparece unha listaxe de ligazóns cara a outros sitios web que venden libros novos e usados, neles tamén pode obter máis información sobre as obras que está a buscar:',
 
-'categoriespagetext' => 'No wiki existen as seguintes categorías.',
+'categoriespagetext' => 'As categorías seguintes conteñen páxinas ou contidos multimedia.',
 'data'               => 'Datos',
 'userrights'         => 'Xestión dos dereitos de usuario',
 'groups'             => 'Grupos de usuarios',
@@ -1376,6 +1379,7 @@ Por favor, confirme que é realmente a súa intención, que comprende as consecu
 ** Petición do autor
 ** Violación de copyright
 ** Vandalismo',
+'delete-edit-reasonlist'      => 'Editar os motivos do borrado',
 'delete-toobig'               => 'Esta páxina conta cun historial longo, de máis de $1 revisións. Restrinxiuse a eliminación destas páxinas para previr problemas de funcionamento accidentais en {{SITENAME}}.',
 'delete-warning-toobig'       => 'Esta páxina conta cun historial de edicións longo, máis de $1 revisións. Se se elimina pódense provocar problemas de funcionamento nas operacións de base de datos de {{SITENAME}}; proceda con coidado.',
 'rollback'                    => 'Desfacer edicións',
@@ -1401,7 +1405,6 @@ A última edición fíxoa [[User:$3|$3]] ([[User talk:$3|disc.]]).',
 'protectexpiry'               => 'Caducidade:',
 'protect_expiry_invalid'      => 'O tempo de duración da protección non e válido.',
 'protect_expiry_old'          => 'O momento de remate da protección corresponde ao pasado.',
-'unprotectsub'                => '(Desprotexendo "$1")',
 'protect-unchain'             => 'Desbloquear permisos de traslado',
 'protect-text'                => 'Aquí é onde pode ver e cambiar os niveis de protección para a páxina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Non pode modificar os niveis de protección mentres exista un bloqueo. Velaquí a configuración actual da páxina  <strong>$1</strong>:',
@@ -1516,6 +1519,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Bloqueo de usuario',
+'blockip-legend'              => 'Bloquear usuario',
 'blockiptext'                 => 'Use o seguinte formulario para bloquear o acceso de escritura desde un enderezo IP ou para bloquear a un usuario específico.
 Isto debería facerse só para previr vandalismo, e de acordo coa [[{{MediaWiki:Policy-url}}|política e normas]] vixentes.
 Explique a razón específica do bloqueo (por exemplo, citando as páxinas concretas que sufriron vandalismo).',
@@ -1622,7 +1626,7 @@ Por favor confirme que isto é o que quere facer.',
 'databasenotlocked'   => 'A base de datos non está bloqueada.',
 
 # Move page
-'movepage'                => 'Mover páxina',
+'move-page-legend'        => 'Mover páxina',
 'movepagetext'            => "Ao usar o formulario de embaixo vai cambiar o nome da páxina, 
 movendo todo o seu historial ao novo nome.
 O título vello vaise converter nunha páxina de redirección ao novo título.

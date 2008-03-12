@@ -267,7 +267,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'dellogpage'          => 'nipaq nipi',
 'deletionlog'         => 'nipaq nipi',
 'confirmprotect'      => 'patimmivaa sapummivaa',
-'unprotectsub'        => '(iq sapummivaa "$1")',
 'protect-level-sysop' => 'sirlak titiraqsimajunik tuqquqtiriji',
 
 # Restrictions (nouns)
@@ -302,7 +301,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'block-log-flags-noemail'  => 'kigutiup sitiniqpaanga uminngasisijuq',
 
 # Move page
-'movepage'        => 'uajuq mappitaq',
+'move-page-legend'        => 'uajuq mappitaq',
 'movearticle'     => 'uajuq mappitaq',
 'movedto'         => 'uajuq',
 '1movedto2'       => '[[$1]] surramajuq [[$2]]',

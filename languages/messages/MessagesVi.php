@@ -236,7 +236,7 @@ $messages = array(
 'subcategories'            => 'Tiểu thể loại',
 'category-media-header'    => 'Các tập tin trong thể loại “$1”',
 'category-empty'           => "''Thể loại này hiện không có trang hay tập tin.''",
-'hidden-categories'        => 'Thể loại ẩn',
+'hidden-categories'        => '{{PLURAL:$1|Thể loại ẩn|Các thể loại ẩn}}',
 'hidden-category-category' => 'Thể loại ẩn', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => "<big>'''MediaWiki đã được cài đặt thành công.'''</big>",
@@ -251,7 +251,7 @@ $messages = array(
 'about'          => 'Giới thiệu',
 'article'        => 'Trang nội dung',
 'newwindow'      => '(mở cửa sổ mới)',
-'cancel'         => 'Hủy',
+'cancel'         => 'Bãi bỏ',
 'qbfind'         => 'Tìm kiếm',
 'qbbrowse'       => 'Xem qua',
 'qbedit'         => 'Sửa',
@@ -658,7 +658,6 @@ Xin hãy thử lần nữa. Nếu vẫn không thành công, bạn hãy thử đ
 sửa đổi. Việc hủy bỏ này nhằm tránh nội dung trang bị hỏng.
 Điều này thường xảy ra khi bạn sử dụng một dịch vụ proxy vô danh trên web có vấn đề.</strong>',
 'editing'                   => 'Sửa đổi $1',
-'editinguser'               => "Thay đổi quyền hạn của thành viên '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Sửa đổi $1',
 'editingcomment'            => 'Sửa đổi $1',
 'editconflict'              => 'Sửa đổi mâu thuẫn : $1',
@@ -911,6 +910,7 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'userrights-lookup-user'           => 'Quản lý nhóm thành viên',
 'userrights-user-editname'         => 'Nhập tên thành viên:',
 'editusergroup'                    => 'Sửa các nhóm thành viên',
+'editinguser'                      => "Thay đổi quyền hạn của thành viên '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Sửa nhóm thành viên',
 'saveusergroups'                   => 'Lưu nhóm thành viên',
 'userrights-groupsmember'          => 'Thành viên của:',
@@ -1008,8 +1008,8 @@ Xin hãy bảo đảm tính liên tục của lịch sử trang.
 'filename'                    => 'Tên tập tin:',
 'filedesc'                    => 'Miêu tả:',
 'fileuploadsummary'           => 'Tóm lược:',
-'filestatus'                  => 'Bản quyền',
-'filesource'                  => 'Nguồn',
+'filestatus'                  => 'Bản quyền:',
+'filesource'                  => 'Nguồn:',
 'uploadedfiles'               => 'Tập tin đã tải',
 'ignorewarning'               => 'Bỏ qua cảnh báo và lưu tập tin.',
 'ignorewarnings'              => 'Bỏ qua cảnh báo',
@@ -1047,8 +1047,8 @@ Nếu bạn có bản ở độ phân giải tối đa, mời bạn tải bản 
 'uploadscripted'              => 'Tập tin này có chứa mã HTML hoặc script có thể khiến trình duyệt web thông dịch sai.',
 'uploadcorrupt'               => 'Tập tin bị hỏng hoặc có phần mở rộng không đúng. Xin kiểm tra và tải lại.',
 'uploadvirus'                 => 'Tập tin có virút! Chi tiết: $1',
-'sourcefilename'              => 'Tên tập tin nguồn',
-'destfilename'                => 'Tên tập tin mới',
+'sourcefilename'              => 'Tên tập tin nguồn:',
+'destfilename'                => 'Tên tập tin mới:',
 'watchthisupload'             => 'Theo dõi tập tin này',
 'filewasdeleted'              => 'Một tên với tên này đã được tải lên trước đã rồi sau đó bị xóa. Bạn nên kiểm tra lại $1 trước khi tải nó lên lại lần nữa.',
 'upload-wasdeleted'           => "'''Cảnh báo: Bạn đang tải lên một tập tin từng bị xóa trước đây.'''
@@ -1083,7 +1083,7 @@ PICT # khác
 'upload-curl-error28'      => 'Quá thời gian tải lên cho phép',
 'upload-curl-error28-text' => 'Trang web phản hồi quá chậm. Xin hãy kiểm tra lại xem trang web còn hoạt động hay không, đợi một thời gian ngắn rồi thử lại. Bạn nên thử lại vào lúc trang rảnh rỗi hơn.',
 
-'license'            => 'Giấy phép',
+'license'            => 'Giấy phép:',
 'nolicense'          => 'chưa chọn',
 'license-nopreview'  => '(Không xem trước được)',
 'upload_source_url'  => ' (địa chỉ URL đúng, có thể truy cập)',
@@ -1156,6 +1156,7 @@ PICT # khác
 'filedelete-reason-dropdown'  => '*Những lý do xóa thường gặp
 ** Vi phạm bản quyền
 ** Tập tin trùng lắp',
+'filedelete-edit-reasonlist'  => 'Sửa lý do xóa',
 
 # MIME search
 'mimesearch'         => 'Tìm kiếm theo định dạng',
@@ -1258,7 +1259,6 @@ Có '''$8''' tập tin đã được tải lên.
 'newpages'                => 'Các trang mới nhất',
 'newpages-username'       => 'Tên thành viên:',
 'ancientpages'            => 'Các trang cũ nhất',
-'intl'                    => 'Liên kết liên ngôn ngữ',
 'move'                    => 'Di chuyển',
 'movethispage'            => 'Di chuyển trang này',
 'unusedimagestext'        => '<p>Xin lưu ý là các trang Web bên ngoài có thể liên kết đến một tập tin ở đây qua một địa chỉ URL trực tiếp, do đó nhiều tập tin vẫn được liệt kê ở đây dù có thể nó đang được sử dụng.</p>',
@@ -1351,6 +1351,7 @@ Nếu bạn muốn cho trang này ra khỏi danh sách theo dõi, nhấn vào "N
 'unwatch'              => 'Ngừng theo dõi',
 'unwatchthispage'      => 'Ngừng theo dõi',
 'notanarticle'         => 'Không phải trang nội dung',
+'notvisiblerev'        => 'Phiên bản bị xóa',
 'watchnochange'        => 'Không có trang nào bạn theo dõi được sửa đổi.',
 'watchlist-details'    => 'Bạn đang theo dõi $1 trang không kể trang thảo luận.',
 'wlheader-enotif'      => '* Đã bật thông báo qua thư điện tử.',
@@ -1434,6 +1435,7 @@ Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy c�
 ** Tác giả yêu cầu
 ** Vi phạm bản quyền
 ** Phá hoại',
+'delete-edit-reasonlist'      => 'Sửa lý do xóa',
 'delete-toobig'               => 'Trang này có lịch sử sửa đổi lớn, đến hơn $1 lần sửa đổi. Việc xóa các trang như vậy bị hạn chế để ngăn ngừa sự phá hoại vô ý cho {{SITENAME}}.',
 'delete-warning-toobig'       => 'Trang này có lịch sử sửa đổi lớn, đến hơn $1 lần sửa đổi. Việc xóa các trang có thể làm tổn hại đến hoạt động của cơ sở dữ liệu của {{SITENAME}}; hãy cẩn trọng khi thực hiện.',
 'rollback'                    => 'Phục hồi sửa đổi',
@@ -1459,7 +1461,6 @@ Sửa đổi lần cuối bởi [[User:$3|$3]] ([[User talk:$3|Thảo luận]]).
 'protectexpiry'               => 'Thời hạn:',
 'protect_expiry_invalid'      => 'Thời hạn không hợp lệ.',
 'protect_expiry_old'          => 'Thời hạn đã qua.',
-'unprotectsub'                => '(Sắp mở khóa cho “$1”)',
 'protect-unchain'             => 'Vẫn cho đổi tên trang',
 'protect-text'                => 'Bạn có thể xem và đổi kiểu khóa trang <strong><nowiki>$1</nowiki></strong> ở đây.',
 'protect-locked-blocked'      => 'Bạn không thể đổi mức khóa khi bị cấm. Đây là trạng thái
@@ -1578,6 +1579,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Cấm thành viên',
+'blockip-legend'              => 'Cấm thành viên',
 'blockiptext'                 => 'Dùng mẫu dưới để cấm một địa chỉ IP hoặc thành viên không được viết trang. Điều này chỉ nên làm để tránh phá hoại, 
 và phải theo [[{{MediaWiki:Policy-url}}|quy định]]. Điền vào lý do cụ thể ở dưới (ví dụ, chỉ ra trang nào bị phá hoại).',
 'ipaddress'                   => 'Địa chỉ IP:',
@@ -1687,7 +1689,8 @@ Xin hãy xác nhận đây là điều bạn định làm.',
 'databasenotlocked'   => 'Cơ sở dữ liệu không bị khóa.',
 
 # Move page
-'movepage'                => 'Di chuyển trang',
+'move-page'               => 'Di chuyển $1',
+'move-page-legend'        => 'Di chuyển trang',
 'movepagetext'            => "Dùng mẫu dưới đây để đổi tên một trang, di chuyển tất cả
 lịch sử của nó sang tên mới.
 Tên cũ sẽ trở thành trang đổi hướng sang tên mới.

@@ -562,7 +562,6 @@ Hark'ay huchhaykiqa $5 nisqam. Mañakuspaykiqa chay huchhata willay.",
 'token_suffix_mismatch'     => "<strong>Llamk'apusqaykimanqa ama nisqam, mink'akuqniyki llamk'apuy willaypi sapaq sananchakunata arwiptinmi. Ama nisqa karqanqa qillqata waqlliymantam amachanapaq. 
 Kayqa maykunapi tukukun, mana allin wakichisqa proxy sirwiytam llamk'achiptiyki.</strong>",
 'editing'                   => "$1-ta llamk'apuspa",
-'editinguser'               => "$1-ta llamk'apuspa",
 'editingsection'            => "$1-ta llamk'apuspa (raki)",
 'editingcomment'            => "$1-ta llamk'apuspa (rimapay)",
 'editconflict'              => 'Ruray taripanakuy: $1',
@@ -820,6 +819,7 @@ $2 Pusapunakunata rikuchiy<br />Maskay: $3 $9",
 'userrights-lookup-user'           => 'Ruraqkunap huñunkunata allinkachiy',
 'userrights-user-editname'         => 'Ruraqpa sutinta qillqamuy:',
 'editusergroup'                    => 'Ruraqkunap huñunkunata hukchay',
+'editinguser'                      => "$1-ta llamk'apuspa",
 'userrights-editusergroup'         => 'Ruraqkunap huñunkunata hukchay',
 'saveusergroups'                   => 'Ruraq huñukunata waqaychay',
 'userrights-groupsmember'          => 'Kayman kapuq:',
@@ -916,8 +916,8 @@ Rikchata huk p'anqaman ch'aqtanaykipaqqa kay hunt'ana p'anqapi t'inkita llamk'ac
 'filename'                    => 'Willañiqip sutin',
 'filedesc'                    => 'Pisichay',
 'fileuploadsummary'           => "T'iktu:",
-'filestatus'                  => 'Ima hayñiyuq',
-'filesource'                  => 'Pukyu',
+'filestatus'                  => 'Ima hayñiyuq:',
+'filesource'                  => 'Pukyu:',
 'uploadedfiles'               => 'Churkusqa willañiqikuna',
 'ignorewarning'               => 'Paqtataq waqyayta qhawarparispa waqaychay.',
 'ignorewarnings'              => 'Ima paqtataq waqyaytapas qhawarpariy',
@@ -961,8 +961,8 @@ Kay churkunayki rikcha hunt'a chhikan kayniyuq kaptinqa, chay hunt'atam churkuy,
 'uploadscripted'              => "Kay willañiqiqa wakichi icha HTML qillqayuqmi, llika wamp'unaqa pantalla unanchanmanchá.",
 'uploadcorrupt'               => 'Kay willañiqiqa waqllisqam icha chupanqa manam allinchu. Ama hina kaspa, willañiqita llanchispa musuqmanta churkuy.',
 'uploadvirus'                 => 'Willañiqipiqa añawmi! Yuyay: $1',
-'sourcefilename'              => 'Qallariy willañiqip sutin',
-'destfilename'                => 'Tukuna willañiqip sutin',
+'sourcefilename'              => 'Qallariy willañiqip sutin:',
+'destfilename'                => 'Tukuna willañiqip sutin:',
 'watchthisupload'             => "Kay p'anqata watiqay",
 'filewasdeleted'              => 'Kay sutiyuq willañiqi huk kutiña churkusqa karqaspa chaymanta qullusqam karqan. $1-ta llanchinaykim tiyanman manaraq musuqmanta churkuspayki.',
 'upload-wasdeleted'           => "'''Paqtataq: Huk kutiña qullusqa willañiqitam churkuykachachkanki.'''
@@ -984,7 +984,7 @@ Kay qatiqpiqa willañiqimanta qulluy hallch'atam rikunki:",
 'upload-curl-error28'      => "Suyay mit'aqa yallisqañam",
 'upload-curl-error28-text' => "Llika tiyayqa mana kutichispa nisyutam suyachiwarqanchik. Ama hina kaspa, sirwiq llamk'achkanchu chaymanta llanchispa asllatapas suyaspa musuqmanta ruraykachay. Ruraykachankimanpas huk kuti aswan pisi ruraqkuna yaykuchkaptin.",
 
-'license'            => 'Saqillay',
+'license'            => 'Saqillay:',
 'nolicense'          => 'Manam imapas akllasqachu',
 'license-nopreview'  => '(Ama qhawarichunkuchu)',
 'upload_source_url'  => ' (allin, sapsi chayanalla URL tiyay)',
@@ -1057,6 +1057,7 @@ Kay qatiqpiqa willañiqimanta qulluy hallch'atam rikunki:",
 'filedelete-reason-dropdown'  => "*Sapsirayku qullusqa
 ** K'irisqa ruraqpa hayñin
 ** Iskaychasqa willañiqi",
+'filedelete-edit-reasonlist'  => "Qullusqapaq raykukunata llamk'apuy",
 
 # MIME search
 'mimesearch'         => 'MIME maskay',
@@ -1164,7 +1165,6 @@ Kay p'anqapiqa huk pusapuna p'anqaman pusapuq p'anqakunap sutinkunatam rikunki. 
 'newpages'                => "Musuq p'anqakuna",
 'newpages-username'       => 'Ruraqpa sutin:',
 'ancientpages'            => "Ñawpaqta qallarisqa p'anqakuna",
-'intl'                    => "Interwiki t'inkikuna",
 'move'                    => 'Astay',
 'movethispage'            => "Kay p'anqata astay",
 'unusedimagestext'        => "<p>Ama hina kaspa musyariy, huk llika tiyaykunachá chiqalla t'inkimun huk rikchap URL tiyayninman, hinaptintaq kaypi rikch'akunchá, k'uchilla llamk'achisqa kachkaspanpas.</p>",
@@ -1180,7 +1180,7 @@ Kay p'anqapiqa huk pusapuna p'anqaman pusapuq p'anqakunap sutinkunatam rikunki. 
 'booksources-go'            => 'Riy',
 'booksources-text'          => "Kay qatiqpiqa huk llika tiyaykunaman t'inkikunatam rikunki, musuq icha mawk'a liwrukunata qhatuq, maskasqayki liwrukunamantachá astawan willaq:",
 
-'categoriespagetext' => 'Kay wikipiqa kay qatiq katiguriyakunam kachkan.',
+'categoriespagetext' => "Kay qatiq katiguriyakunaqa p'anqayuqmi icha midyayuqmi.",
 'data'               => 'Willakuna',
 'userrights'         => 'Ruraqkunata saqillanap allinkachinan',
 'groups'             => 'Ruraq huñukuna',
@@ -1337,6 +1337,7 @@ $2 nisqa p\'anqata qhaway ñaqha qullusqakunata rikunaykipaq.',
 ** Kikin kamariqpa mañakusqan
 ** Ruraqpa hayñinta k'irisqa
 ** Wandaluchasqa",
+'delete-edit-reasonlist'      => "Qullusqapaq raykukunata llamk'apuy",
 'delete-toobig'               => "Kay p'anqaqa ancha wiñay kawsaysapa, $1-manta aswan musuqchasqayuq. Kay hina p'anqakunata qulluyqa saywachasqam, {{SITENAME}}ta mana waqllinapaq.",
 'delete-warning-toobig'       => "Kay p'anqaqa ancha wiñay kawsaysapa, $1-manta aswan musuqchasqayuq. Kay hina p'anqata qulluspaykiqa, {{SITENAME}}ta waqllinkimanchá. Kay ruraymanta anchata yuyaychakuspa hamut'ay.",
 'rollback'                    => 'Hukchasqakunata kutichiy',
@@ -1362,7 +1363,6 @@ Ama hina kaspa, llika wamp'unaykipi \"Ñawpaqman\" (\"Back\") ñit'ispa ñawpaq 
 'protectexpiry'               => 'Amachaypa puchukaynin',
 'protect_expiry_invalid'      => 'Amachaypa puchukay pachanqa manam allinchu.',
 'protect_expiry_old'          => 'Amachaypa puchukay pachanqa ñawpa pachapim.',
-'unprotectsub'                => '(Amachasqa "$1"-ta paskaspa)',
 'protect-unchain'             => "Astana saqillaykunata llamk'apuy chaylla",
 'protect-text'                => "<strong><nowiki>$1</nowiki></strong> sutiyuq p'anqap amachasqa kachkaynintaqa kaypim qhawayta hukchaytapas atinki.",
 'protect-locked-blocked'      => "Hark'asqa kaspayki manam atinkichu amachasqa kachkayninta hukchayta. Kay qatiqpiqa <strong>$1</strong> sutiyuq p'anqap kunan allinkachinankunatam rikunki:",
@@ -1475,6 +1475,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => "Ruraqta hark'ay",
+'blockip-legend'              => "Ruraqta hark'ay",
 'blockiptext'                 => "Kay qatiq hunt'ana p'anqata llamk'achiy huk sapaq IP huchhamanta icha ruraqpa rakiqunanmanta qillqay atiyta hark'anapaq.
 Kayqa rurasqa kachun wandalismullatam hark'anapaq, [[{{MediaWiki:Policy-url}}|{{SITENAME}}pa kawpayninkamallam]].
 Willariy imaraykum hark'anki (ahinataq: sapaq wandaluchasqa p'anqakunamanta willaspa).",
@@ -1572,7 +1573,7 @@ Willariy imaraykum hark'anki (ahinataq: sapaq wandaluchasqa p'anqakunamanta will
 'databasenotlocked'   => "Willañiqintinqa manam hark'asqachu.",
 
 # Move page
-'movepage'                => "P'anqata astay",
+'move-page-legend'                => "P'anqata astay",
 'movepagetext'            => "Kay hunt'ana p'anqawanqa huk p'anqam tukuy wiñay kawsasqanpas astasqa kanqa. Mawk'a sutinqa musuq sutiman pusapuq p'anqam tukunqa. Mawk'a sutiman t'inkimuq p'anqakunaqa manam hukyanqachu. Paqtataq iskaylla pusapuna p'anqakunata allinchallay. Ama panta t'inkimuqkunata saqiychu.
 
 

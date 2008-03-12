@@ -459,7 +459,13 @@ class Parser
 
 	function getFunctionLang() {
 		global $wgLang, $wgContLang;
-		return $this->mOptions->getInterfaceMessage() ? $wgLang : $wgContLang;
+
+		$target = $this->mOptions->getTargetLanguage();
+		if ( $target !== null ) {
+			return $target;
+		} else {
+			return $this->mOptions->getInterfaceMessage() ? $wgLang : $wgContLang;
+		}
 	}
 
 	/**
@@ -1005,9 +1011,9 @@ class Parser
 				' ' => '',
 				'x' => 'X',
 			));
-			$titleObj = SpecialPage::getTitleFor( 'Booksources' );
+			$titleObj = SpecialPage::getTitleFor( 'Booksources', $num );
 			$text = '<a href="' .
-				$titleObj->escapeLocalUrl( "isbn=$num" ) .
+				$titleObj->escapeLocalUrl() .
 				"\" class=\"internal\">ISBN $isbn</a>";
 		} else {
 			if ( substr( $m[0], 0, 3 ) == 'RFC' ) {

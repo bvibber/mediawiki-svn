@@ -1045,8 +1045,8 @@ Untuk menyertakan imej tersebut dalam sesebuah laman, sila masukkan teks
 'filename'                    => 'Nama fail',
 'filedesc'                    => 'Ringkasan',
 'fileuploadsummary'           => 'Ringkasan:',
-'filestatus'                  => 'Status hak cipta',
-'filesource'                  => 'Sumber',
+'filestatus'                  => 'Status hak cipta:',
+'filesource'                  => 'Sumber:',
 'uploadedfiles'               => 'Fail yang telah dimuat naik',
 'ignorewarning'               => 'Abaikan amaran dan simpan juga fail ini.',
 'ignorewarnings'              => 'Abaikan mana-mana amaran.',
@@ -1083,8 +1083,8 @@ Jika anda memiliki imej ini dalam leraian penuh, sila muat naik fail tersebut, s
 'uploadscripted'              => 'Fail ini mengandungi kod HTML atau skrip yang boleh disalahtafsirkan oleh pelayar web.',
 'uploadcorrupt'               => 'Fail tersebut rosak atau mempunyai sambungan yang salah. Sila periksa fail tersebut dan cuba lagi.',
 'uploadvirus'                 => 'Fail tersebut mengandungi virus! Butiran: $1',
-'sourcefilename'              => 'Nama fail sumber',
-'destfilename'                => 'Nama fail destinasi',
+'sourcefilename'              => 'Nama fail sumber:',
+'destfilename'                => 'Nama fail destinasi:',
 'watchthisupload'             => 'Pantau laman ini',
 'filewasdeleted'              => 'Sebuah fail dengan nama ini pernah dimuat naik, tetapi kemudiannya dihapuskan. Anda seharusnya menyemak $1 sebelum meneruskan percubaan untuk memuat naik fail ini.',
 'upload-wasdeleted'           => "'''Amaran: Anda sedang memuat naik sebuah fail yang pernah dihapuskan.'''
@@ -1106,7 +1106,7 @@ Untuk rujukan, berikut ialah log penghapusan bagi fail ini:",
 'upload-curl-error28'      => 'Waktu henti muat naik',
 'upload-curl-error28-text' => 'Tapak web tersebut terlalu lambat bertindak balas. Sila pastikan bahawa tapak web tersebut hidup, tunggu sebentar dan cuba lagi. Anda boleh mencuba lagi pada waktu yang kurang sibuk.',
 
-'license'            => 'Lesen',
+'license'            => 'Lesen:',
 'nolicense'          => 'Tidak dipilih',
 'license-nopreview'  => '(Tiada pratonton)',
 'upload_source_url'  => ' (URL yang boleh diakses oleh orang awam)',
@@ -1503,7 +1503,6 @@ Sila tekan butang "back" dan muatkan semula laman yang telah anda kunjungi sebel
 'protectexpiry'               => 'Tamat pada:',
 'protect_expiry_invalid'      => 'Waktu tamat tidak sah.',
 'protect_expiry_old'          => 'Waktu tamat telah berlalu.',
-'unprotectsub'                => '(Menyahlindung "$1")',
 'protect-unchain'             => 'Buka kunci keizinan pemindahan',
 'protect-text'                => 'Anda boleh melihat dan menukar peringkat perlindungan bagi laman <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Anda telah disekat, justeru tidak boleh menukar peringkat perlindungan.
@@ -1739,7 +1738,7 @@ sahkan bahawa anda betul-betul mahu melakukan tindakan ini.',
 'databasenotlocked'   => 'Pangkalan data tidak dikunci.',
 
 # Move page
-'movepage'                => 'Pindah laman',
+'move-page-legend'                => 'Pindah laman',
 'movepagetext'            => "Gunakan borang di bawah untuk mengubah nama laman dan 
 memindahkan semua maklumat sejarahnya kepada nama baru.
 Tajuk yang lama akan dijadikan pelencongan ke tajuk yang baru.

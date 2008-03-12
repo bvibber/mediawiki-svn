@@ -736,8 +736,8 @@ ali za neposredno povezavo z datoteko
 'filename'                    => 'Ime datoteke',
 'filedesc'                    => 'Povzetek',
 'fileuploadsummary'           => 'Povzetek (avtor, spletni naslov vira ipd.):',
-'filestatus'                  => 'Položaj avtorskih pravic',
-'filesource'                  => 'Vir',
+'filestatus'                  => 'Položaj avtorskih pravic:',
+'filesource'                  => 'Vir:',
 'uploadedfiles'               => 'Naložene datoteke',
 'ignorewarning'               => 'Naloži kljub opozorilu',
 'ignorewarnings'              => 'Prezri vsa opozorila',
@@ -758,11 +758,11 @@ ali za neposredno povezavo z datoteko
 'uploadscripted'              => 'Datoteka vsebuje HTML- ali skriptno kodo, ki bi jo lahko brskalnik razlagal napačno.',
 'uploadcorrupt'               => 'Datoteka je poškodovana ali pa ima napačno končnico. Prosimo, preverite jo in znova naložite.',
 'uploadvirus'                 => 'Datoteka morda vsebuje virus! Podrobnosti: $1',
-'sourcefilename'              => 'Ime izvorne datoteke',
-'destfilename'                => 'Ime ciljne datoteke',
+'sourcefilename'              => 'Ime izvorne datoteke:',
+'destfilename'                => 'Ime ciljne datoteke:',
 'filewasdeleted'              => 'Datoteka s tem imenom je bila nekoč že naložena in potem izbrisana. Preden jo znova naložite, preverite $1.',
 
-'license'   => 'Dovoljenje',
+'license'   => 'Dovoljenje:',
 'nolicense' => 'Nobeno (opomba: datoteka bo morda izbrisana)',
 
 # Image list
@@ -1014,7 +1014,6 @@ Zadnja sprememba od uporabnika [[User:$3|$3]] ([[User talk:$3|Pogovor]]).',
 'protectsub'                  => '(Zaščita strani »$1«)',
 'confirmprotect'              => 'Potrdite zaščito',
 'protectcomment'              => 'Razlog:',
-'unprotectsub'                => '(Odstranjujem zaščito strani »$1«)',
 'protect-unchain'             => 'Deblokiraj dovoljenja za premikanje',
 'protect-text'                => "Tu si lahko ogledate in spremenite raven zaščitenosti strani '''<nowiki>\$1</nowiki>'''.",
 'protect-default'             => 'Omogoči urejanje vsem uporabnikom',
@@ -1136,7 +1135,7 @@ Ne pozabite blokiranemu uporabniku na njegovi [[User talk:$1|pogovorni strani]] 
 'unlockdbsuccesstext' => 'Zbirka podatkov {{GRAMMAR:rodilnik|{{SITENAME}}}} je spet odklenjena.',
 
 # Move page
-'movepage'                => 'Prestavitev strani',
+'move-page-legend'                => 'Prestavitev strani',
 'movepagetext'            => "Z naslednjim obrazcem lahko stran preimenujete in hkrati prestavite tudi vso njeno zgodovino. Dosedanja stran se bo spremenila v preusmeritev na prihodnje mesto. 
 
 '''Povezave na dosedanji naslov strani se ne bodo spremenile, zato vas prosimo, da po prestavitvi strani z uporabo pripomočka »Kaj se povezuje sem« popravite vse dvojne preusmeritve, ki bodo morda nastale.''' Odgovorni ste, da bodo povezave še naprej kazale na prava mesta.

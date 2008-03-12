@@ -304,7 +304,7 @@ $messages = array(
 'site-rss-feed'           => '$1 RSS-abonilo.',
 'site-atom-feed'          => '$1 Atom-fonto',
 'page-rss-feed'           => '"$1" RSS-fonto',
-'page-atom-feed'          => '"$1" Atom-abonilo',
+'page-atom-feed'          => '"$1" Atom-fonto',
 'red-link-title'          => '$1 (ankoraŭ ne verkita)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -396,7 +396,7 @@ $2',
 'namespaceprotected'   => "Vi ne rajtas redakti paĝojn en la '''$1''' nomspaco.",
 'customcssjsprotected' => 'Vi ne rajtas redakti ĉi tiun paĝon, ĉar ĝi enhavas personajn alĝustigojn de alia uzanto.',
 'ns-specialprotected'  => 'Paĝoj en la {{ns:special}} nomspaco ne povas esti redaktataj.',
-'titleprotected'       => 'Cxi titolo estas protektita de kreado de [[User:$1|$1]]. La kialo donata estis <i>$2</i>.',
+'titleprotected'       => 'Ĉi titolo estas protektita de kreado de [[User:$1|$1]]. La kialo donata estis <i>$2</i>.',
 
 # Login and logout pages
 'logouttitle'                => 'Elsalutu!',
@@ -463,7 +463,7 @@ Ni rekomendas, ke vi nun ensalutu kaj ŝanĝu vian pasvorton.',
 'passwordsent'               => 'Oni sendis novan pasvorton al la retpoŝtadreso
 registrita por "$1".
 Bonvolu saluti denove ricevinte ĝin.',
-'blocked-mailpassword'       => 'Via IP adreso estas blokita de redaktado, kaj tial
+'blocked-mailpassword'       => 'Via IP adreso estas forbarita de redaktado, kaj tial
 ne estas permesate uzi la pasvorto-rekovran funkcion por malebligi misuzon.',
 'eauthentsent'               => 'Konfirma retmesaĝo estas sendita al la nomita retadreso. Antaŭ ol iu ajn alia mesaĝo estos sendita al la konto, vi devos sekvi la instrukciojn en la mesaĝo por konfirmi ke la konto ja estas la via.',
 'throttled-mailpassword'     => 'Pasvorta rememorigilo estis jam sendita, ene de la lasta $1 horoj. Por preventi misuzo, nur unu pasvorto-rememorigilo estos sendita por $1 horoj.',
@@ -485,7 +485,7 @@ Vi povas ignori ĉi mesaĝon, se ĉi konto estis kreita erare.',
 # Password reset dialog
 'resetpass'               => 'Refaru konto-pasvorton',
 'resetpass_announce'      => 'Vi ensalutis kun provizora retposxtita pasvorto. Por kompleti ensalutadon, vi devas fari novan pasvorton cxi tien:',
-'resetpass_text'          => '<!-- Aldonu tekston cxi tien -->',
+'resetpass_text'          => '<!-- Aldonu tekston ĉi tien -->',
 'resetpass_header'        => 'Refaru pasvorton.',
 'resetpass_submit'        => 'Faru pasvorton kaj ensalutu',
 'resetpass_success'       => 'Via pasvorto estis sukcese sxangxita! Nun ensalutanta vin...',
@@ -601,7 +601,6 @@ kiel ĝi aperos se vi elektos konservi la paĝon.',
 La redakto estis malpermesita por preventi koruptado de la teksto de la pagxo.
 Cxi tiel malofte okazas kiam vi uzas fusxan TTT-an anoniman prokurilon.</strong>',
 'editing'                   => 'Redaktante $1',
-'editinguser'               => 'Redaktante $1',
 'editingsection'            => 'Redaktante $1 (sekcion)',
 'editingcomment'            => 'Redaktante $1 (komenton)',
 'editconflict'              => 'Redakta konflikto: $1',
@@ -752,9 +751,12 @@ Certigu ke ĉi ŝanĝo tenos kontinueco de la historia paĝo.
 'mergehistory-from'                => 'Fontpaĝo:',
 'mergehistory-into'                => 'Celpaĝo:',
 'mergehistory-list'                => 'Kunigebla redakthistorio',
+'mergehistory-merge'               => 'La jenaj revizioj de [[:$1]] povas esti kunigitaj en [[:$2]]. Uzu la radio-butonan kolumnon por enkunigi nur la reviziojn kreitajn cxe kaj antaux la specifigita tempo. Notu ke uzado de navigado-ligiloj restarigos ĉi kolumnon.',
 'mergehistory-go'                  => 'Montru kunigeblajn redaktojn',
 'mergehistory-submit'              => 'Kunigu reviziojn',
 'mergehistory-empty'               => 'Neniuj reviziojn eblas kunigi',
+'mergehistory-success'             => '$3 revizioj [[:$1]] sukcese kunigita en [[:$2]].',
+'mergehistory-fail'                => 'Ne eblas fari la historian kunigon; bonvolu konstati la paĝon kaj tempajn parametrojn.',
 'mergehistory-no-source'           => 'Fontpaĝo $1 ne ekzistas.',
 'mergehistory-no-destination'      => 'Celpaĝo $1 ne ekzistas.',
 'mergehistory-invalid-source'      => 'Fontpaĝo devas esti valida titolo.',
@@ -764,6 +766,7 @@ Certigu ke ĉi ŝanĝo tenos kontinueco de la historia paĝo.
 'mergelog'           => 'Loglibro de kunigoj',
 'pagemerge-logentry' => 'kunigis [[$1]] en [[$2]] (revizioj gxis $3)',
 'revertmerge'        => 'Malkunigu',
+'mergelogpagetext'   => 'Jen listo de la plej lastatempaj kunigoj de unu paĝhistorio en alian.',
 
 # Diffs
 'history-title'           => 'Redakto-historio de "$1"',
@@ -780,6 +783,7 @@ Certigu ke ĉi ŝanĝo tenos kontinueco de la historia paĝo.
 'searchsubtitleinvalid' => 'Serĉmendo "$1"',
 'noexactmatch'          => '<b>Ne estas paĝo titolita "$1".</b> Vi povas [[:$1|krei la paĝon]].',
 'noexactmatch-nocreate' => "'''Estas neniu paĝo titolita \"\$1\".'''",
+'toomanymatches'        => 'Tro da serĉo-trafoj estis trovitaj; bonvolu provi malsaman serĉomendon.',
 'titlematches'          => 'Trovitaj laŭ titolo',
 'notitlematches'        => 'Neniu trovita laŭ titolo',
 'textmatches'           => 'Trovitaj laŭ enhavo',
@@ -826,6 +830,8 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'math_lexing_error'        => 'leksika analizo malsukcesis',
 'math_syntax_error'        => 'sintakseraro',
 'math_image_error'         => 'konverto al PNG malsukcesis',
+'math_bad_tmpdir'          => 'Ne povas skribi al aŭ krei matematikian labor-dosierujon.',
+'math_bad_output'          => 'Ne eblas enskribi aŭ krei matematikan eligan dosierujon',
 'prefs-personal'           => 'Uzantodatumoj',
 'prefs-rc'                 => 'Lastaj ŝanĝoj kaj elmontro de stumpoj',
 'prefs-watchlist'          => 'Atentaro',
@@ -844,6 +850,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'resultsperpage'           => 'Montru trovitajn po',
 'contextlines'             => 'Montru liniojn el paĝoj po:',
 'contextchars'             => 'Montru literojn el linioj ĝis po:',
+'stub-threshold'           => 'Ago-sojlo por formatigo de <a href="#" class="stub">ligil-ĝermo (anglalingve: "stub link")</a> (bitikoj):',
 'recentchangesdays'        => 'Tagoj montrendaj en lastaj ŝanĝoj:',
 'recentchangescount'       => "Montru kiom da titoloj en 'Lastaj ŝanĝoj'",
 'savedprefs'               => 'Viaj preferoj estas konservitaj.',
@@ -864,6 +871,7 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku "1" vintre aŭ "2" dum somertemp
 'userrights-lookup-user'           => 'Administru uzantogrupojn',
 'userrights-user-editname'         => 'Entajpu uzantonomon:',
 'editusergroup'                    => 'Redaktu Uzantgrupojn',
+'editinguser'                      => "Redaktante uzanto-rajtojn de uzanto '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Redaktu uzantogrupojn.',
 'saveusergroups'                   => 'Konservu uzantogrupojn',
 'userrights-groupsmember'          => 'Membro de:',
@@ -934,7 +942,7 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku "1" vintre aŭ "2" dum somertemp
 
 # Recent changes linked
 'recentchangeslinked'          => 'Rilataj paĝoj',
-'recentchangeslinked-title'    => 'Sxangxoj rilataj al $1',
+'recentchangeslinked-title'    => 'Ŝanĝoj rilataj al $1',
 'recentchangeslinked-noresult' => 'Neniuj sxangxoj en ligitaj pagxoj dum la donata periodo.',
 'recentchangeslinked-summary'  => "Ĉi tiu speciala paĝo listigas la lastajn ŝanĝojn en ligitaj paĝoj. Paĝoj en via atentaro estas '''grasaj'''.",
 
@@ -963,10 +971,10 @@ Por inkluzivi la dosieron en pagxon, skribu ligilon laŭ la formoj
 'uploadlogpagetext'           => 'Jen la plej laste alŝutitaj dosieroj.
 Ĉiuj tempoj montriĝas laŭ la horzono UTC.',
 'filename'                    => 'Dosiernomo',
-'filedesc'                    => 'Priskribo -> Resumo',
+'filedesc'                    => 'Resumo',
 'fileuploadsummary'           => 'Resumo:',
-'filestatus'                  => 'Kopirajta statuso',
-'filesource'                  => 'Fonto',
+'filestatus'                  => 'Kopirajta statuso:',
+'filesource'                  => 'Fonto:',
 'uploadedfiles'               => 'Alŝutitaj dosieroj',
 'ignorewarning'               => 'Ignoru averton kaj konservu dosieron ĉiukaze',
 'ignorewarnings'              => 'Ignoru ĉiajn avertojn',
@@ -982,7 +990,14 @@ Por inkluzivi la dosieron en pagxon, skribu ligilon laŭ la formoj
 'emptyfile'                   => 'La dosiero kiun vi alŝutis ŝajnas malplena. Tio povas esti kaŭzita sde tajperaro en la titolo. Bonvolu kontroli ĉu vi vere volas alŝuti tiun dosieron.',
 'fileexists'                  => 'Dosiero kun tia ĉi nomo jam ekzistas. Bonvolu kontroli $1 krom se vi certas ke vi konscie volas ŝanĝi ĝuste tiun.',
 'filepageexists'              => 'La priskriba paĝo por ĉi dosiero jam estis kreita ĉe <strong><tt>$1</tt></strong>, sed neniu dosiero kun ĉi nomo nune ekzistas. La resumo kiun vi entajpos ne aperos en la priskribo-paĝo. Por aperigi vian resumon, vi devos permane redakti ĝin.',
+'fileexists-extension'        => 'Dosiero kun simila nomo ekzistas:<br />
+Nomo de la alŝuta dosiero: <strong><tt>$1</tt></strong><br />
+Nomo de la ekzistanta dosiero: <strong><tt>$2</tt></strong><br />
+Bonvolu elekti malsaman nomon.',
 'fileexists-thumb'            => "<center>'''Ekzistanta bildo'''</center>",
+'fileexists-thumbnail-yes'    => 'Ĉi dosiero ŝajnas kiel bildo de malkreskigita grandeco <i>(bildeto)</i>. Bonvolu kontroli la dosiero <strong><tt>$1</tt></strong>.<br /> Se la kontrolita dosiero estas la sama bildo kiel la originala grandeco, ĝi ne nepras alŝuti plian bideton.',
+'file-thumbnail-no'           => 'La dosiernomo komencas kun <strong><tt>$1</tt></strong>. Ĝi ŝajnas kiel bildo de malgrandigita grandeco <i>(thumbnail)</i>.
+Se vi havas ĉi bildon en plena distingivo, alŝutu ĉi tiun, alikaze bonvolu ŝanĝi la dosieran nomon.',
 'fileexists-forbidden'        => 'Dosiero kun tia ĉi nomo jam ekzistas; bonvole realŝutu ĉi tiun dosieron per nova nomo. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Dosiero kun tia ĉi nomo jam ekzistas en la komuna dosiero-deponejo; bonvole realŝutu ĉi tiun dosieron per nova nomo. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Alŝuto sukcesis!',
@@ -995,24 +1010,30 @@ Por inkluzivi la dosieron en pagxon, skribu ligilon laŭ la formoj
 'uploadscripted'              => 'HTML-aĵo aŭ skriptokodaĵo troviĝas en tiu ĉi dosiero, kiun TTT-foliumilo eble interpretus erare.',
 'uploadcorrupt'               => 'La dosiero estas difektita aŭ havas malĝustan finaĵon. Bonvolu kontroli la dosieron kaj refoje alŝuti ĝin.',
 'uploadvirus'                 => 'Viruso troviĝas en la dosiero! Detaloj: $1',
-'sourcefilename'              => 'Fonta dosiernomo',
-'destfilename'                => 'Celdosiernomo',
+'sourcefilename'              => 'Fonta dosiernomo:',
+'destfilename'                => 'Celdosiernomo:',
 'watchthisupload'             => 'Atentu ĉi paĝon',
+'filewasdeleted'              => 'Dosiero de ĉi nomo estis antaŭe alŝutita kaj poste redaktita. Vi kontrolu la $1 antaux alŝutante ĝin denove.',
 'upload-wasdeleted'           => "'''Averto: Vi alŝutas dosieron kiu estis antaŭe forigita.'''
 
 Vi konsideru ĉu taŭgas alŝuti ĉi dosiero.
 jen la loglibro pri forigado por ĉi dosiero por via oportuneco:",
+'filename-bad-prefix'         => 'La nomo de la dosiero kiun vi alŝutas komencas kun <strong>"$1"</strong>, kiu estas nepriskriba nomo ofte aŭtomate donata de ciferecaj fotiloj. Bonvolu elekti pli priskriban nomon por via bildo.',
 
-'upload-proto-error' => 'Nevalida protokolo',
-'upload-file-error'  => 'Interna eraro',
-'upload-misc-error'  => 'Nekonata eraro pri alŝutado.',
+'upload-proto-error'      => 'Nevalida protokolo',
+'upload-proto-error-text' => 'Fora alŝuto devas URL-on komence de <code>http://</code> aŭ <code>ftp://</code>.',
+'upload-file-error'       => 'Interna eraro',
+'upload-file-error-text'  => 'Interna eraro okazis provante krei labordosieron ĉe la servilo. Bonvolu kontakti sistem-administranton.',
+'upload-misc-error'       => 'Nekonata eraro pri alŝutado.',
+'upload-misc-error-text'  => 'Nekonata eraro okazis dum la alŝuto. Bonvolu kontroli ke la URL-o estas valida kaj atingebla tiam reprovu. Se la problemo kontinuas, kontaku sisteman administranton.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
-'upload-curl-error6'      => 'URL-o ne estis atingebla',
-'upload-curl-error6-text' => 'La donata URL-o ne estis atingita. Bonvolu rekontroli ke la URL-o estas korekta kaj la retejo funkcias.',
-'upload-curl-error28'     => 'Tempolimo de alŝuto atingita',
+'upload-curl-error6'       => 'URL-o ne estis atingebla',
+'upload-curl-error6-text'  => 'La donata URL-o ne estis atingita. Bonvolu rekontroli ke la URL-o estas korekta kaj la retejo funkcias.',
+'upload-curl-error28'      => 'Tempolimo de alŝuto atingita',
+'upload-curl-error28-text' => 'La retejo atendas tro sen respondo. Bonvolu verigi ke la retejo ankoraŭ funkcias kaj reprovi. Vi eble volus trovi dum malpli okupa tempo.',
 
-'license'            => 'Permesilo',
+'license'            => 'Permesilo:',
 'nolicense'          => 'Neniu elektita',
 'license-nopreview'  => '(Antaŭvido ne montrebla)',
 'upload_source_url'  => ' (valida, publike atingebla URL-o)',
@@ -1065,6 +1086,7 @@ jen la loglibro pri forigado por ĉi dosiero por via oportuneco:",
 'filerevert-comment'        => 'Komento:',
 'filerevert-defaultcomment' => 'Restarigita al versio ekde $2, $1',
 'filerevert-submit'         => 'Restarigu',
+'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' estis restarigita al [$4 versio ekde $3, $2].</span>',
 'filerevert-badversion'     => 'Ne estas antaŭa loka versio de ĉi dosiero ĉe tiu tempo.',
 
 # File deletion
@@ -1077,16 +1099,20 @@ jen la loglibro pri forigado por ĉi dosiero por via oportuneco:",
 'filedelete-success'          => "'''$1''' estas forigita.",
 'filedelete-success-old'      => '<span class="plainlinks">La versio de \'\'\'[[Media:$1|$1]]\'\'\' ekde $3, $2 estas forigita.</span>',
 'filedelete-nofile'           => "'''$1''' ne ekzistas en {{SITENAME}}.",
+'filedelete-nofile-old'       => "Estas neniuarkivita versio de '''$1''' kun la specifigitaj atribuoj.",
+'filedelete-iscurrent'        => 'Vi provas forigi la plej lastan version de la dosiero. Bonvolu restarigi pli malnovan version antaŭe.',
 'filedelete-otherreason'      => 'Alia/plua kialo:',
 'filedelete-reason-otherlist' => 'Alia kialo',
 'filedelete-reason-dropdown'  => '* Oftaj kialoj de forigo
 ** Malobservo de kopirajto
 ** Duplikata dosiero',
+'filedelete-edit-reasonlist'  => 'Redaktu kialojn de forigo',
 
 # MIME search
-'mimesearch' => 'MIME-serĉilo',
-'mimetype'   => 'MIME-tipo:',
-'download'   => 'elŝutu',
+'mimesearch'         => 'MIME-serĉilo',
+'mimesearch-summary' => 'Ĉi paĝo ebligas la filtradon de dosieroj por ties MIME-tipo. Enigu: enhavo-tipo/subtipo, ekz. <tt>image/jpeg</tt>.',
+'mimetype'           => 'MIME-tipo:',
+'download'           => 'elŝutu',
 
 # Unwatched pages
 'unwatchedpages' => 'Neatentataj paĝoj',
@@ -1163,7 +1189,7 @@ La nuna longeco de la [http://meta.wikimedia.org/wiki/Help:Job_queue laborenda v
 'wantedpages'             => 'Dezirataj paĝoj',
 'mostlinked'              => 'Plej ligitaj paĝoj',
 'mostlinkedcategories'    => 'Plej ligitaj kategorioj',
-'mostlinkedtemplates'     => 'Plej ligitaj sxablonoj',
+'mostlinkedtemplates'     => 'Plej ligitaj ŝablonoj',
 'mostcategories'          => 'Artikoloj kun la plej multaj kategorioj',
 'mostimages'              => 'Plej ligitaj bildoj',
 'mostrevisions'           => 'Artikoloj kun la plej multaj revizioj',
@@ -1186,7 +1212,6 @@ La nuna longeco de la [http://meta.wikimedia.org/wiki/Help:Job_queue laborenda v
 'newpages'                => 'Novaj paĝoj',
 'newpages-username'       => 'Salutnomo:',
 'ancientpages'            => 'Plej malnovaj artikoloj',
-'intl'                    => 'Interlingvaj ligiloj',
 'move'                    => 'Movu',
 'movethispage'            => 'Movu la paĝon',
 'unusedimagestext'        => 'Notu, ke aliaj TTT-ejoj, ekzemple
@@ -1222,6 +1247,8 @@ komprenata kiel rekomendo aŭ reklamo.',
 'log-search-legend'    => 'Serĉu loglibrojn',
 'log-search-submit'    => 'Ek',
 'alllogstext'          => 'Suma kompilaĵo de ĉiuj alŝutoj, forigoj, protektoj, blokadoj kaj agoj de administrantoj. Vi povas pliprecizigi la kompilaĵon laŭ loglibra tipo, **** vikipediista **** nomo aŭ koncernita paĝo.',
+'logempty'             => 'Neniaj artikoloj en la loglibro.',
+'log-title-wildcard'   => 'Serĉu titolojn komencantajn kun ĉi teksto',
 
 # Special:Allpages
 'nextpage'          => 'Sekvanta paĝo ($1)',
@@ -1234,6 +1261,7 @@ komprenata kiel rekomendo aŭ reklamo.',
 'allpagesnext'      => 'Sekven',
 'allpagessubmit'    => 'Ek!',
 'allpagesprefix'    => 'Montru paĝojn kun prefikso:',
+'allpagesbadtitle'  => 'La donata paĝo estis nevalida aŭ havis interlingvan aŭ intervikian prefikson. Ĝi eble enhavas unu aŭ plurajn signojn kiu ne povas esti uzataj en titoloj.',
 'allpages-bad-ns'   => '{{SITENAME}} ne havas nomspacon "$1".',
 
 # Special:Listusers
@@ -1278,6 +1306,7 @@ komprenata kiel rekomendo aŭ reklamo.',
 'unwatch'              => 'Malatentu',
 'unwatchthispage'      => 'Malatentu paĝon',
 'notanarticle'         => 'Ne estas artikolo',
+'notvisiblerev'        => 'Revizio estis forigita',
 'watchnochange'        => 'Neniu artikolo en via atentaro redaktiĝis dum la prispektita tempoperiodo.',
 'watchlist-details'    => 'Vi priatentas {{PLURAL:$1|$1 paĝon|$1 paĝojn}}, krom diskutpaĝoj.',
 'wlheader-enotif'      => '* Retpoŝta sciigo estas ebligita',
@@ -1359,6 +1388,7 @@ Vidu la paĝon $2 por registro de lastatempaj forigoj.',
 ** Peto de aŭtoro
 ** Malobservo de kopirajto
 ** Vandalismo',
+'delete-edit-reasonlist'      => 'Redaktu kialojn de forigo',
 'delete-toobig'               => 'Ĉi paĝo havas grandan redakto-historion, pli ol $1 reviziojn. Forigo de ĉi tiaj paĝoj estis limigitaj por preventi akcidentan disrompigon de {{SITENAME}}.',
 'delete-warning-toobig'       => 'Ĉi paĝo havas grandan redakto-historion, pli ol $1 reviziojn. Forigo de ĝi povas disrompigi operacion de {{SITENAME}}; forigu singarde.',
 'rollback'                    => 'Restarigu antaŭan redakton',
@@ -1385,7 +1415,6 @@ Vidu [[Special:Protectedpages|liston de protektitaj paĝoj]] por pli da informoj
 'protectexpiry'               => 'Eksvalidiĝas:',
 'protect_expiry_invalid'      => 'Nevalida findaŭro.',
 'protect_expiry_old'          => 'Eksvalidigxa tempo jam pasis.',
-'unprotectsub'                => '(Malprotektanta "$1")',
 'protect-unchain'             => 'Malŝlosu movpermesojn',
 'protect-text'                => 'Vi povas ĉi tie vidi kaj ŝanĝi la protektnivelon de la paĝo [[$1]]. Bonvolu certiĝi ke vi respektas la [[Special:Protectedpages|gvidliniojn de la projekto]].',
 'protect-locked-blocked'      => 'Vi ne povas ŝanĝi prokekto-nivelojn dum forbarita. Jen la nunaj ecoj de la paĝo <strong>$1</strong>:',
@@ -1429,6 +1458,8 @@ kaj oni povas restarigi ilin. La arkivo povas esti malplenigita periode.',
 'undeletehistory'              => 'Se vi restarigos la paĝon, ĉiuj versioj estos restarigitaj
 en la historio. Se nova paĝo kun la sama nomo estis kreita post la forigo, la restarigitaj
 versioj aperos antaŭe en la historio, kaj la aktuala versio ne estos anstataŭigita.',
+'undeleterevdel'               => 'Malforigo ne estos farita se ĝi rezultos en la supera paĝrevizio estonte parte forigita. Tiuzake, vi malmarku aŭ malkaŝu la plej novajn forigitajn reviziojn.
+Revizioj de dosieroj kiun vi ne havas permeso vidi ne estos restarigitaj.',
 'undeletehistorynoadmin'       => 'Ĉi tiu artikolo estis forigita. La kaŭzo por la forigo estas montrata en la malsupra resumo, kune kun detaloj pri la uzantoj, kiuj redaktis ĉi tiun paĝon antaŭ la forigo. La aktuala teksto de ĉi tiuj forigitaj revizioj estas atingebla nur por administrantoj.',
 'undelete-revision'            => 'Forigita revizio de $1 (de $2) fare de $3:',
 'undeleterevision-missing'     => 'Nevalida aŭ malaperita revizio. Vi verŝajne havas malbonan ligilon, aŭ la
@@ -1453,6 +1484,7 @@ Konsultu la [[Special:Log/delete|deletion log]] por protokolo pri la lastatempaj
 'undelete-no-results'          => 'Neniuj kongruaj paĝoj trovitaj en la forigo-arkivo.',
 'undelete-filename-mismatch'   => 'Ne eblas restarigi dosiero-revizion kun tempo $1: malkongrua dosiernomo',
 'undelete-bad-store-key'       => 'Ne eblas restarigi dosiero-revizio de tempo $1: dosiero estis malaperita antaŭ forigo.',
+'undelete-cleanup-error'       => 'Eraro forigante la neuzatan arkivon "$1".',
 'undelete-missing-filearchive' => 'Ne eblas restarigi dosiera arkivo ID $1 ĉar ĝi ne estas en la datumbazo. Verŝajne ĝi jam estis restarigita.',
 'undelete-error-short'         => 'Eraro pro restarigo de dosiero: $1',
 'undelete-error-long'          => 'Jen eraroj dum restarigo de dosiero:
@@ -1491,6 +1523,7 @@ $1',
 'linklistsub'         => '(Listo de ligiloj)',
 'linkshere'           => "La jenaj paĝoj ligas al '''[[:$1]]''':",
 'nolinkshere'         => "Neniu paĝo ligas al '''[[:$1]]'''.",
+'nolinkshere-ns'      => "Neniuj paĝoj ligas al '''[[:$1]]''' en la elektita nomspaco.",
 'isredirect'          => 'alidirekto',
 'istemplate'          => 'inkludo',
 'whatlinkshere-prev'  => '{{PLURAL:$1|antaŭa|antaŭa $1}}',
@@ -1499,6 +1532,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Forbaru uzanton/IP-adreson',
+'blockip-legend'              => 'Forbaru uzanton',
 'blockiptext'                 => "Per jena formularo vi povas forpreni de ajna nomo aŭ IP-adreso la rajton skribi en la vikio. Oni faru tion ''nur'' por eviti vandalismon, kaj sekvante la [[{{MediaWiki:Policy-url}}|regulojn pri forbarado]]. Klarigu la precizan kialon malsupre (ekzemple, citu paĝojn, kiuj estis vandaligitaj).",
 'ipaddress'                   => 'IP-adreso/nomo',
 'ipadressorusername'          => 'IP adreso aŭ uzantonomo',
@@ -1549,6 +1583,7 @@ forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'createaccountblock'          => 'Kreado de kontoj forbarita',
 'emailblock'                  => 'retpoŝto forbarita',
 'ipblocklist-empty'           => 'La forbarlibro estas malplena.',
+'ipblocklist-no-results'      => 'Ĉi tiu IP-adreso aŭ salutnomo ne estas forbarita.',
 'blocklink'                   => 'forbaru',
 'unblocklink'                 => 'malforbaru',
 'contribslink'                => 'kontribuoj',
@@ -1561,9 +1596,11 @@ forbarita IP-adreso/nomo la povon enskribi en la vikio.',
 'block-log-flags-nocreate'    => 'kreado de kontoj malebligita',
 'block-log-flags-noautoblock' => 'aŭtoblokado malebligita',
 'block-log-flags-noemail'     => 'retpoŝto blokita',
+'range_block_disabled'        => 'La ebleco de administranto krei forbaritajn intervalojn da IP-adresoj estas malebligita.',
 'ipb_expiry_invalid'          => 'Nevalida blokdaŭro.',
 'ipb_already_blocked'         => '"$1" estas jam forbarita',
 'ipb_cant_unblock'            => 'Eraro: Forbar-identigo $1 ne estas trovita. Ĝi eble estis jam malforbarita.',
+'ipb_blocked_as_range'        => 'Eraro: La IP-adreso $1 ne estas forbarita rekte kaj ne povas esti malforbarita. Tamen ĝi estas forbarita kiel parto de la intervalo $2, kiu ne povas esti malforbarita.',
 'ip_range_invalid'            => 'Nevalida IP-adresa intervalo.',
 'blockme'                     => 'Forbaru min',
 'proxyblocker'                => 'Forbarilo por prokuriloj.',
@@ -1599,7 +1636,8 @@ Bonvolu certigu, ke vi efektive intencas tion fari.',
 'databasenotlocked'   => 'La datumbazo ne estas ŝlosita.',
 
 # Move page
-'movepage'                => 'Movu paĝon',
+'move-page'               => 'Movu $1',
+'move-page-legend'        => 'Movu paĝon',
 'movepagetext'            => "Per la jena formulo vi povas ŝanĝi la nomon de iu paĝo, kunportante
 ĝian historion de redaktoj je la nova nomo.
 La antaŭa titolo fariĝos alidirektilo al la nova titolo.
@@ -1635,6 +1673,7 @@ Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 'movepage-moved'          => '<big>\'\'\'"$1" estis movita al "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Paĝo kun tiu nomo jam ekzistas, aŭ la nomo kiun vi elektis ne validas.
 Bonvolu elekti alian nomon.',
+'cantmove-titleprotected' => 'Vi ne povas movi paĝo al ĉi loko, ĉar la nova titolo estis protektita kontraŭ kreado',
 'talkexists'              => 'Oni ja sukcesis movi la paĝon mem, sed
 ne movis la diskuto-paĝon ĉar jam ekzistas tia ĉe la nova titolo.
 Bonvolu permane kunigi ilin.',
@@ -1661,6 +1700,8 @@ La celartikolo "[[$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon p
 'export'            => 'Eksportu paĝojn',
 'exporttext'        => 'Vi povas eksporti la tekston kaj la redaktohistorion de aparta paĝo aŭ de paĝaro kolektita en ia XML ; tio povas esti importita en alian programon funkciantan per MediaWiki-softvaro, ŝanĝita, aŭ nur prenita por propra privata uzo.',
 'exportcuronly'     => 'Entenas nur la aktualan version, ne la malnovajn.',
+'exportnohistory'   => "----
+'''Notu:''' Eksportado de la plena historio de paĝoj per ĉi paĝo estis malebligita pro funkciigaj kialoj.",
 'export-submit'     => 'Eksporti',
 'export-addcattext' => 'Aldoni paĝojn el kategorio:',
 'export-addcat'     => 'Aldoni',
@@ -1682,29 +1723,44 @@ La celartikolo "[[$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon p
 'filemissing'              => 'Mankanta dosiero',
 'thumbnail_error'          => 'Okazis eraro kreante antaŭvidan bildeton: $1',
 'djvu_page_error'          => 'DjVu-a paĝo el intervalo',
+'djvu_no_xml'              => 'Ne eblas akiri XML por DjVu dosiero',
 'thumbnail_invalid_params' => 'Nevalidaj bildetaj parametroj',
+'thumbnail_dest_directory' => 'Ne eblas krei destinan dosierujon',
 
 # Special:Import
-'import'                   => 'Importitaj paĝoj',
-'importinterwiki'          => 'Transvikia importo',
-'import-interwiki-history' => 'Kopiu ĉiuj versioj el historio por ĉi pago.',
-'import-interwiki-submit'  => 'Importi',
-'importtext'               => 'Bonvole eksportu la dosieron el la fonta vikio per la ilo Speciala:Export, konservu ĝin sur via disko kaj poste alŝutu ĝin tien ĉi.',
-'importstart'              => 'Importante paĝojn...',
-'import-revision-count'    => '$1 {{PLURAL:$1|versio|versioj}}',
-'importnopages'            => 'Neniu paĝo por importi.',
-'importfailed'             => 'Malsukcesis la importo: $1',
-'importbadinterwiki'       => 'Malbona intervikia ligilo',
-'importnotext'             => 'Malplena aŭ senteksta',
-'importsuccess'            => 'La importo sukcesis!',
-'importhistoryconflict'    => 'Malkongrua historia versio ekzistas (eble la paĝo importiĝis antaŭe)',
-'importnosources'          => 'Neniu transvikia importfonto estis difinita kaj rekta historio de alŝutoj estas malaktivigita.',
-'importnofile'             => 'Neniu import-dosiero estis alŝutita.',
-'import-noarticle'         => 'Neniu paĝo por importi!',
-'xml-error-string'         => '$1 ĉe linio $2, kolumno $3 (bitiko $4): $5',
+'import'                     => 'Importitaj paĝoj',
+'importinterwiki'            => 'Transvikia importo',
+'import-interwiki-text'      => 'Elektu vikion kaj paĝan titolon por importi.
+Datoj de revizioj kaj nomoj de redaktantoj estos preservitaj.
+Ĉiuj transvikaj importoj estas raportitaj ĉe la [[Special:Log/import|loglibro de importoj]].',
+'import-interwiki-history'   => 'Kopiu ĉiuj versioj el historio por ĉi pago.',
+'import-interwiki-submit'    => 'Importi',
+'import-interwiki-namespace' => 'Transigu paĝoj en nomspaco:',
+'importtext'                 => 'Bonvole eksportu la dosieron el la fonta vikio per la ilo Speciala:Export, konservu ĝin sur via disko kaj poste alŝutu ĝin tien ĉi.',
+'importstart'                => 'Importante paĝojn...',
+'import-revision-count'      => '$1 {{PLURAL:$1|versio|versioj}}',
+'importnopages'              => 'Neniu paĝo por importi.',
+'importfailed'               => 'Malsukcesis la importo: $1',
+'importunknownsource'        => 'Nekonata fonta speco de alŝuto',
+'importcantopen'             => 'Ne eblas malfermi import-dosieron',
+'importbadinterwiki'         => 'Malbona intervikia ligilo',
+'importnotext'               => 'Malplena aŭ senteksta',
+'importsuccess'              => 'La importo sukcesis!',
+'importhistoryconflict'      => 'Malkongrua historia versio ekzistas (eble la paĝo importiĝis antaŭe)',
+'importnosources'            => 'Neniu transvikia importfonto estis difinita kaj rekta historio de alŝutoj estas malaktivigita.',
+'importnofile'               => 'Neniu import-dosiero estis alŝutita.',
+'importuploaderrorsize'      => 'Alŝuto de import-dosiero malsukcesis. La dosiero estas pli granda ol la permesita alŝut-pezo.',
+'importuploaderrorpartial'   => 'Alŝuto de la import-dosiero malsukcesis. La dosiero estis nur parte alŝutita.',
+'importuploaderrortemp'      => 'Alŝutigo de import-dosiero malsukcesis. Labor-dosierujo ne estas trovita.',
+'import-parse-failure'       => 'sintaksa fuŝo de XML-importo',
+'import-noarticle'           => 'Neniu paĝo por importi!',
+'import-nonewrevisions'      => 'Ĉiuj revizioj estis antaŭe importitaj.',
+'xml-error-string'           => '$1 ĉe linio $2, kolumno $3 (bitiko $4): $5',
 
 # Import log
 'importlogpage'                    => 'Loglibro de importaĵoj',
+'importlogpagetext'                => 'Administrantecaj importoj de paĝoj kun redakto-historio de aliaj vikioj.',
+'import-logentry-upload'           => 'importita [[$1]] de dosiera alŝuto',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revizio|revizioj}}',
 'import-logentry-interwiki'        => 'transvikiigita $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revizio|revizioj}} de $2',
@@ -1732,6 +1788,8 @@ La celartikolo "[[$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon p
 'tooltip-ca-watch'                => 'Aldonu tiun ĉi paĝon al via atentaro',
 'tooltip-ca-unwatch'              => 'Forigu tiun ĉi paĝon el via atentaro',
 'tooltip-search'                  => 'Traserĉu ĉi tiun vikion',
+'tooltip-search-go'               => 'Iru al paĝo kun ĉi preciza nomo se ĝi ekzistas',
+'tooltip-search-fulltext'         => 'Serĉu la paĝojn por ĉi teksto',
 'tooltip-p-logo'                  => 'Ĉefpaĝo',
 'tooltip-n-mainpage'              => 'Vizitu la Ĉefpaĝon',
 'tooltip-n-portal'                => 'Pri la projekto, kion vi povas fari, kie vi povas trovi ion',
@@ -1763,7 +1821,7 @@ La celartikolo "[[$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon p
 'tooltip-minoredit'               => 'Marku tiun ŝanĝon kiel malgrava',
 'tooltip-save'                    => 'Konservu viajn ŝanĝojn',
 'tooltip-preview'                 => 'Antaŭrigardu viajn ŝanĝojn. Bonvolu uzi tion antaŭ ol konservi ilin!',
-'tooltip-diff'                    => 'Montru la sxangxojn kiujn vi faris de la teksto.',
+'tooltip-diff'                    => 'Montru la ŝanĝojn kiujn vi faris de la teksto.',
 'tooltip-compareselectedversions' => 'Vidu la malsamojn inter ambaŭ selektitaj versioj de ĉi paĝo.',
 'tooltip-watch'                   => 'Aldonu ĉi paĝon al via atentaro',
 'tooltip-recreate'                => 'Rekreu la paĝon malgraŭ ĝi estis forigita',
@@ -1898,7 +1956,9 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 'exif-stripoffsets'                => 'Loko de bilda datumo',
 'exif-rowsperstrip'                => 'Nombro de vicoj por strio',
 'exif-stripbytecounts'             => 'Bitikoj por densigita strio',
+'exif-jpeginterchangeformat'       => 'Flankigu al JPEG SOI',
 'exif-jpeginterchangeformatlength' => 'Bitokoj de JPEG-datumo',
+'exif-transferfunction'            => 'Transiga funkcio',
 'exif-whitepoint'                  => 'Koloreco de blanka punkto',
 'exif-primarychromaticities'       => 'Kolorecoj de primaraĵoj',
 'exif-datetime'                    => 'Dato kaj tempo de dosiera ŝanĝo',
@@ -1911,6 +1971,7 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 'exif-exifversion'                 => 'Exif-versio',
 'exif-colorspace'                  => 'Kolor-spaco',
 'exif-componentsconfiguration'     => 'Signifo de ĉiu kompono',
+'exif-compressedbitsperpixel'      => 'Reĝimo de bilda densigado',
 'exif-pixelydimension'             => 'Valida larĝeco de bildo',
 'exif-pixelxdimension'             => 'Valind image height',
 'exif-makernote'                   => 'Notoj de fabrikejo',
@@ -1921,40 +1982,196 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 'exif-subsectime'                  => 'DatoTempo subsekundoj',
 'exif-subsectimedigitized'         => 'DatoTempoCiferecigitaj subsekundoj',
 'exif-exposuretime'                => 'Tempo de ekspono',
+'exif-exposuretime-format'         => '$1 sek ($2)',
 'exif-fnumber'                     => 'F-nombro',
+'exif-exposureprogram'             => 'Ekspona programo',
+'exif-spectralsensitivity'         => 'Spektruma sensemo',
+'exif-isospeedratings'             => 'ISO sentiveco',
+'exif-oecf'                        => 'Optikelektronika konverada faktoro',
+'exif-shutterspeedvalue'           => 'Rapido de obturatoro',
 'exif-aperturevalue'               => 'Aperturo',
 'exif-brightnessvalue'             => 'Heleco',
+'exif-exposurebiasvalue'           => 'Ekspona emo',
+'exif-maxaperturevalue'            => 'Maksimuma pejzaĝa diafragmo',
+'exif-subjectdistance'             => 'Distanco de subjekto',
+'exif-meteringmode'                => 'Mezurila reĝimo',
+'exif-lightsource'                 => 'Fonto de lumo',
+'exif-flash'                       => 'Fulmilo',
+'exif-focallength'                 => 'Fokusa longo de lenso',
+'exif-subjectarea'                 => 'Subjekta areo',
+'exif-flashenergy'                 => 'Fulmila energio',
+'exif-focalplanexresolution'       => 'X distingivo de fokusa ebeno',
+'exif-focalplaneyresolution'       => 'Y distingivo de fokusa ebeno',
+'exif-focalplaneresolutionunit'    => 'Distingivo-unuo de fokusa ebeno',
+'exif-subjectlocation'             => 'Loko de subjekto',
+'exif-exposureindex'               => 'Ekspona indekso',
+'exif-sensingmethod'               => 'Metodo de sensado',
+'exif-filesource'                  => 'Dosiera fonto',
+'exif-scenetype'                   => 'Speco de sceno',
+'exif-cfapattern'                  => 'CFA skemo',
+'exif-customrendered'              => 'Propra foto-rivelado',
+'exif-exposuremode'                => 'Ekspona reĝimo',
+'exif-whitebalance'                => 'Blanka balanciĝo',
+'exif-digitalzoomratio'            => 'Cifereca zumproporcio',
+'exif-focallengthin35mmfilm'       => 'fokusa longo en 35-mm filmo',
+'exif-scenecapturetype'            => 'Scenkapta speco',
+'exif-gaincontrol'                 => 'Scena kontrolo',
 'exif-contrast'                    => 'Kontrasto',
+'exif-saturation'                  => 'Saturado',
+'exif-sharpness'                   => 'Akreco',
+'exif-devicesettingdescription'    => 'Resumo pri aparataj reguligiloj',
+'exif-subjectdistancerange'        => 'Subjekta distanco',
+'exif-imageuniqueid'               => 'Unika identigo de bildo',
+'exif-gpsversionid'                => 'versio de GPS etikedo',
+'exif-gpslatituderef'              => 'Norda aŭ suda latitudo',
+'exif-gpslatitude'                 => 'Latitudo',
+'exif-gpslongituderef'             => 'Orienta aŭ uesta longitudo',
+'exif-gpslongitude'                => 'Longitudo',
+'exif-gpsaltituderef'              => 'Altituda referenco',
 'exif-gpsaltitude'                 => 'Alteco',
 'exif-gpstimestamp'                => 'GPS tempo (atoma horloĝo)',
 'exif-gpssatellites'               => 'Satelitoj uzataj por mezurado',
+'exif-gpsstatus'                   => 'Statuso de recevilo',
+'exif-gpsmeasuremode'              => 'Mezura reĝimo',
+'exif-gpsdop'                      => 'Precizeco de mezuro',
+'exif-gpsspeedref'                 => 'Unuo de rapido',
+'exif-gpsspeed'                    => 'Rapido de GPS recevilo',
+'exif-gpstrackref'                 => 'Referenco por direkto de movado',
+'exif-gpstrack'                    => 'Direkto de movado',
+'exif-gpsimgdirectionref'          => 'Referenco por direkto de bildo',
 'exif-gpsimgdirection'             => 'Direkto de bildo',
+'exif-gpsmapdatum'                 => 'Datenoj uzatoj de geodezia esploro',
+'exif-gpsdestlatituderef'          => 'Referenco por latitudo de destino',
+'exif-gpsdestlatitude'             => 'Latituda destino',
+'exif-gpsdestlongituderef'         => 'Referenco por longitudo de destino',
+'exif-gpsdestlongitude'            => 'Longitudo de destino',
+'exif-gpsdestbearingref'           => 'Referenco por direkto de destino',
+'exif-gpsdestbearing'              => 'Direkto aŭ destino',
+'exif-gpsdestdistanceref'          => 'Referenco por distanco al destino',
+'exif-gpsdestdistance'             => 'Distanco al destino',
+'exif-gpsprocessingmethod'         => 'Nomo de GPS procesmetodo',
+'exif-gpsareainformation'          => 'Nomo de GPS areo',
+'exif-gpsdatestamp'                => 'GPS dato',
+'exif-gpsdifferential'             => 'GPS diferenca korektado',
+
+# EXIF attributes
+'exif-compression-1' => 'Nedensigita',
 
 'exif-unknowndate' => 'Nekonata dato',
 
 'exif-orientation-1' => 'Normala', # 0th row: top; 0th column: left
+'exif-orientation-2' => 'Spegulumita horizontale', # 0th row: top; 0th column: right
 'exif-orientation-3' => 'Rotaciigita 180°', # 0th row: bottom; 0th column: right
+'exif-orientation-4' => 'Spegulumita vertikale', # 0th row: bottom; 0th column: left
+'exif-orientation-5' => 'Turnita 90° maldekstre kaj spegulita vertikale', # 0th row: left; 0th column: top
+'exif-orientation-6' => 'Turnita 90° dekstre', # 0th row: right; 0th column: top
+'exif-orientation-7' => 'Turnita 90° dekstre kaj spegulita vertikale', # 0th row: right; 0th column: bottom
+'exif-orientation-8' => 'Turnita 90° maldekstre', # 0th row: left; 0th column: bottom
+
+'exif-planarconfiguration-1' => 'bloka formato',
+'exif-planarconfiguration-2' => 'ebena formato',
 
 'exif-componentsconfiguration-0' => 'ne ekzistas',
+
+'exif-exposureprogram-0' => 'Ne difinita',
+'exif-exposureprogram-1' => 'Permana',
+'exif-exposureprogram-2' => 'Normala programo',
+'exif-exposureprogram-3' => 'Diafragma prioritato <!-- vidu http://www.fw.hu/eventoj/steb/vortaroj/fotografio/fotografio.htm -->',
+'exif-exposureprogram-4' => 'Prioritato de obturatoro',
+'exif-exposureprogram-7' => 'Portreta reĝimo (por apudaj fotoj kun la fono malfokusita)',
+'exif-exposureprogram-8' => 'Pejzaĝa reĝimo (por pejzaĝaj fotoj kun la fono en fokuso)',
 
 'exif-subjectdistance-value' => '$1 metroj',
 
 'exif-meteringmode-0'   => 'Nekonata',
+'exif-meteringmode-1'   => 'Averaĝo',
+'exif-meteringmode-2'   => 'CentraPezAveraĝo',
+'exif-meteringmode-3'   => 'Eksponometro selekt-angula',
+'exif-meteringmode-4'   => 'eksponometro mult-selekt-angula',
+'exif-meteringmode-5'   => 'Skemo',
+'exif-meteringmode-6'   => 'Parta',
 'exif-meteringmode-255' => 'Alia',
 
-'exif-lightsource-2'  => 'Fluoreska',
-'exif-lightsource-3'  => 'Volframa (inkandeska lumo)',
-'exif-lightsource-9'  => 'Bona vetero',
-'exif-lightsource-10' => 'Nuba vetero',
-'exif-lightsource-11' => 'Ombro',
+'exif-lightsource-0'   => 'Nesciata',
+'exif-lightsource-1'   => 'Taglumo',
+'exif-lightsource-2'   => 'Fluoreska',
+'exif-lightsource-3'   => 'Volframa (inkandeska lumo)',
+'exif-lightsource-4'   => 'Fulmilo',
+'exif-lightsource-9'   => 'Bona vetero',
+'exif-lightsource-10'  => 'Nuba vetero',
+'exif-lightsource-11'  => 'Ombro',
+'exif-lightsource-12'  => 'Tagluma fluoreska (D 5700 – 7100K)',
+'exif-lightsource-13'  => 'Tag-blanka fluoreska (N 4600 – 5400K)',
+'exif-lightsource-14'  => 'Malvarmblanka fluoreska (W 3900 – 4500K)',
+'exif-lightsource-15'  => 'Blanka fluoreska (WW 3200 – 3700K)',
+'exif-lightsource-17'  => 'Norma lumo A',
+'exif-lightsource-18'  => 'Norma lumo B',
+'exif-lightsource-19'  => 'Norma lumo C',
+'exif-lightsource-255' => 'Alia luma fonto',
 
 'exif-focalplaneresolutionunit-2' => 'coloj',
 
+'exif-sensingmethod-1' => 'Nedefinita',
+'exif-sensingmethod-7' => 'Trilinia sensilo',
+
+'exif-scenetype-1' => 'Rekte fotita bildo',
+
+'exif-customrendered-0' => 'Norma proceso',
+'exif-customrendered-1' => 'Propra procezo',
+
+'exif-exposuremode-0' => 'Automata ekspono',
+'exif-exposuremode-1' => 'Permana ekspono',
+'exif-exposuremode-2' => 'Aŭtomata krampo',
+
+'exif-whitebalance-0' => 'Aŭtomata blank-egaleco',
+'exif-whitebalance-1' => 'Permana blank-egaleco',
+
+'exif-scenecapturetype-0' => 'Norma',
+'exif-scenecapturetype-1' => 'Pejzaĝo',
 'exif-scenecapturetype-2' => 'Portreta',
+'exif-scenecapturetype-3' => 'Nokta sceno',
+
+'exif-gaincontrol-0' => 'Neniu',
+
+'exif-contrast-0' => 'Norma',
+'exif-contrast-1' => 'Mola',
+'exif-contrast-2' => 'Malmola',
 
 'exif-saturation-0' => 'Norma',
+'exif-saturation-1' => 'Malalta saturado',
+'exif-saturation-2' => 'Alta saturado',
 
 'exif-sharpness-0' => 'Ordinara',
+'exif-sharpness-1' => 'Mola',
+'exif-sharpness-2' => 'Malmola',
+
+'exif-subjectdistancerange-0' => 'Nekonata',
+'exif-subjectdistancerange-1' => 'Makroo',
+'exif-subjectdistancerange-2' => 'Apuda perspektivo',
+'exif-subjectdistancerange-3' => 'Fora perspektivo',
+
+# Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
+'exif-gpslatitude-n' => 'Norda latitudo',
+'exif-gpslatitude-s' => 'Suda latitudo',
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+'exif-gpslongitude-e' => 'Orienta longitudo',
+'exif-gpslongitude-w' => 'Uesta longitudo',
+
+'exif-gpsstatus-a' => 'Mezurado estanta',
+'exif-gpsstatus-v' => 'Mezurada interoperaciado',
+
+'exif-gpsmeasuremode-2' => '2-dimensia mezuro',
+'exif-gpsmeasuremode-3' => '3-dimensia mezuro',
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+'exif-gpsspeed-k' => 'Kilometroj por horo',
+'exif-gpsspeed-m' => 'Mejloj por horo',
+'exif-gpsspeed-n' => 'Knotoj',
+
+# Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
+'exif-gpsdirection-t' => 'Vera direkto',
+'exif-gpsdirection-m' => 'Magneta direkto',
 
 # External editor support
 'edit-externally'      => 'Ŝanĝu ĉi dosieron per ekstera softvaro',
@@ -1969,9 +2186,13 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 
 # E-mail address confirmation
 'confirmemail'            => 'Konfirmu retpoŝtadreson',
+'confirmemail_noemail'    => 'Vi ne havas validan retpoŝtan adreson notitan en viaj [[Special:Preferences|Preferoj]].',
 'confirmemail_text'       => 'Ĉi tiu vikio postulas ke vi validigu vian retadreson antaŭ ol uzadi la retmesaĝpreferojn. Bonvolu alklaki la suban butonon por sendi konfirmesaĝon al via adreso. La mesaĝo entenos ligilon kun kodo; bonvolu alŝuti la ligilon en vian foliumilon por konfirmi ke via retadreso validas.',
+'confirmemail_pending'    => '<div class="error">Konfirma kodo estis jam repoŝtis al vi; se vi lastatempe kreis vian konton, vi eble volus atenti kelkajn minutojn por ĝi aliĝi antaŭ vi petus novan kodon.</div>',
 'confirmemail_send'       => 'Retmesaĝi konfirmkodon',
 'confirmemail_sent'       => 'Konfirma retmesaĝo estas sendita.',
+'confirmemail_oncreate'   => 'Konfirma kodo estis sendita al via retpoŝta adreso.
+Ĉi kodo ne estas bezonata ensaluti, sed vi bezonos doni ĝin antaŭ uzante iujn ajn retpoŝt-bazitajn ecojn de la vikio.',
 'confirmemail_sendfailed' => 'Ne eblis sendi konfirmretmesaĝon. Bonvolu kontroli ĉu en la adreso ne estus nevalidaj karaktroj.
 
 Retpoŝta programo sciigis: $1',
@@ -1994,8 +2215,9 @@ Se vi ne mendis ĉi tiun mesaĝon, ne alklaku la ligon. Tiu
 ĉi konfirmokodo eksvalidiĝos je $4.',
 
 # Scary transclusion
-'scarytranscludefailed'  => '[Bedaŭrinde, akiro de ŝablono $1 malsukcesis.]',
-'scarytranscludetoolong' => '[Bedaŭrinde la URL estas tro longa]',
+'scarytranscludedisabled' => '[Intervikia transinkluzivado estas malebligita.]',
+'scarytranscludefailed'   => '[Bedaŭrinde, akiro de ŝablono $1 malsukcesis.]',
+'scarytranscludetoolong'  => '[Bedaŭrinde la URL estas tro longa]',
 
 # Trackbacks
 'trackbackbox'      => "<div id='mw_trackbacks'>
@@ -2008,6 +2230,9 @@ $1
 
 # Delete conflict
 'deletedwhileediting' => 'Averto: Oni forigis ĉi tiun paĝon post tiam, kiam vi ekredaktis ĝin!',
+'confirmrecreate'     => "Uzanto [[User:$1|$1]] ([[User talk:$1|diskuto]]) forigis ĉi paĝon post vi ekredaktis ĝin kun kialo:
+: ''$2''
+Bonvolu konfirmi ke vi ja volas rekrei la paĝon.",
 'recreate'            => 'Rekreu',
 
 # HTML dump
@@ -2052,26 +2277,60 @@ $1',
 # Live preview
 'livepreview-loading' => 'Ŝargiĝadas…',
 'livepreview-ready'   => 'Ŝargiĝadas… Preta!',
+'livepreview-failed'  => 'Aktiva antaŭvido malsukcesis! Provu normalan antaŭvidon.',
+'livepreview-error'   => 'Malsukcesis konekti: $1 "$2". Provu norman antaŭvidon.',
+
+# Friendlier slave lag warnings
+'lag-warn-normal' => 'Ŝanĝoj pli novaj ol $1 sekundoj eble ne estos montrataj en ĉi listo.',
+'lag-warn-high'   => 'Pro malrapideco de la servila datumbazo, ŝanĝoj pli novaj ol $1 sekundoj eble ne montriĝos en ĉi listo.',
 
 # Watchlist editor
-'watchlistedit-noitems'      => 'Via atentaro enhavas neniujn titolojn.',
-'watchlistedit-normal-title' => 'Redaktu atentaron',
-'watchlistedit-normal-done'  => '{{PLURAL:$1|1 titolo estis forigita|$1 titoloj estis forigitaj}} de via atentaro:',
-'watchlistedit-raw-titles'   => 'Titoloj:',
-'watchlistedit-raw-submit'   => 'Ĝisdatigu atentaron',
-'watchlistedit-raw-done'     => 'Via atentaro estas ĝisdatigita.',
+'watchlistedit-numitems'       => 'Via atentaro enhavas {{PLURAL:$1|1 titolon|$1 titolojn}}, escepte de diskuto-paĝoj.',
+'watchlistedit-noitems'        => 'Via atentaro enhavas neniujn titolojn.',
+'watchlistedit-normal-title'   => 'Redaktu atentaron',
+'watchlistedit-normal-legend'  => 'Forigu titolojn de atentaro',
+'watchlistedit-normal-explain' => 'Titoloj de via atentaro estas montrata sube.
+Forigi titolon, marku la skatoleto apude de ĝi, kaj klaku Forigu Titolojn.
+Vi ankaŭ povas [[Special:Watchlist/raw|redakti la krudan liston]].',
+'watchlistedit-normal-submit'  => 'Forigu titolojn',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 titolo estis forigita|$1 titoloj estis forigitaj}} de via atentaro:',
+'watchlistedit-raw-title'      => 'Redaktu krudan atentaron',
+'watchlistedit-raw-legend'     => 'Redaktu krudan atentaron',
+'watchlistedit-raw-explain'    => 'Titoloj en via atentaro estas montrata sube, kaj povas esti redaktita de aldono aŭ forigo de la listo: unu titolo por linio. Kiam finite, klaku Ĝisdatigu Atentaron.
+Vi povas ankaŭ [[Special:Watchlist/edit|uzu la norman redaktilon]].',
+'watchlistedit-raw-titles'     => 'Titoloj:',
+'watchlistedit-raw-submit'     => 'Ĝisdatigu atentaron',
+'watchlistedit-raw-done'       => 'Via atentaro estas ĝisdatigita.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 titolo estis aldonita|$1 titoloj estis aldonitaj}}:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 titolo estis forigita|$1 titoloj estis forigitaj}}:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Montru koncernajn ŝanĝojn',
 'watchlisttools-edit' => 'Vidi kaj redakti atentaron',
 'watchlisttools-raw'  => 'Redakti krudan atentaron',
 
+# Core parser functions
+'unknown_extension_tag' => 'Nekonata etend-etikedo "$1"',
+
 # Special:Version
-'version-specialpages'     => 'Specialaj paĝoj',
-'version-variables'        => 'Variabloj',
-'version-version'          => 'Versio',
-'version-license'          => 'Permesilo',
-'version-software-version' => 'Versio',
+'version-extensions'               => 'Instalitaj etendiloj',
+'version-specialpages'             => 'Specialaj paĝoj',
+'version-parserhooks'              => 'Sintaksaj hokoj',
+'version-variables'                => 'Variabloj',
+'version-other'                    => 'Alia',
+'version-mediahandlers'            => 'Mediaj traktiloj',
+'version-hooks'                    => 'Hokoj',
+'version-extension-functions'      => 'Etendiloj',
+'version-parser-extensiontags'     => 'Sintaksaj etend-etikedoj',
+'version-parser-function-hooks'    => 'Hokoj de sintaksaj funkcioj',
+'version-skin-extension-functions' => 'Etendaj funkcioj pri grafika etoso',
+'version-hook-name'                => 'Nomo de hoko',
+'version-hook-subscribedby'        => 'Abonita de',
+'version-version'                  => 'Versio',
+'version-license'                  => 'Permesilo',
+'version-software'                 => 'Instalita programaro',
+'version-software-product'         => 'Produkto',
+'version-software-version'         => 'Versio',
 
 # Special:Filepath
 'filepath'         => 'Dosiera pado',

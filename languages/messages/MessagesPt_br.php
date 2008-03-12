@@ -10,6 +10,7 @@
  * @author 555
  * @author Nike
  * @author SPQRobin
+ * @author Lijealso
  */
 
 $fallback = 'pt';
@@ -650,7 +651,6 @@ Se você chegou aqui por engano, apenas clique no botão '''voltar''' do seu nav
 'previewnote'               => '<strong>Isto é apenas uma previsão. As modificações ainda não foram salvas!</strong>',
 'previewconflict'           => 'Esta previsão reflete o texto que está na área de edição acima e como ele aparecerá se você escolher salvar.',
 'editing'                   => 'Editando $1',
-'editinguser'               => "Modificando privilégios do usuário '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Editando $1 (seção)',
 'editingcomment'            => 'Editando $1 (comentário)',
 'editconflict'              => 'Conflito de edição: $1',
@@ -835,6 +835,7 @@ para definir suas preferências.',
 'userrights-lookup-user'           => 'Administrar grupos de usuários',
 'userrights-user-editname'         => 'Forneça um nome de usuário:',
 'editusergroup'                    => 'Editar grupos de usuários',
+'editinguser'                      => "Modificando privilégios do usuário '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Editar grupos do usuário',
 'saveusergroups'                   => 'Salvar grupos do usuário',
 'userrights-groupsavailable'       => 'Grupos disponíveis:',
@@ -925,8 +926,8 @@ Todas as datas mostradas são do servidor (UTC).',
 'filename'               => 'Nome do arquivo',
 'filedesc'               => 'Sumário',
 'fileuploadsummary'      => 'Sumário:',
-'filestatus'             => 'Situação dos direitos autorais',
-'filesource'             => 'Fonte',
+'filestatus'             => 'Situação dos direitos autorais:',
+'filesource'             => 'Fonte:',
 'uploadedfiles'          => 'Arquivos carregados',
 'minlength1'             => 'Os nomes de arquivos devem possuir no mínimo uma letra.',
 'badfilename'            => 'O nome da imagem mudou para "$1".',
@@ -943,8 +944,8 @@ Todas as datas mostradas são do servidor (UTC).',
 'uploaddisabled'         => 'Upload desativado.',
 'uploaddisabledtext'     => 'O envio de arquivos se encontra desativado neste wiki.',
 'uploadvirus'            => 'O arquivo contém vírus! Detalhes: $1',
-'sourcefilename'         => 'Nome do arquivo de origem',
-'destfilename'           => 'Nome do arquivo de destino',
+'sourcefilename'         => 'Nome do arquivo de origem:',
+'destfilename'           => 'Nome do arquivo de destino:',
 'watchthisupload'        => 'Vigiar esta página',
 
 'upload-proto-error' => 'Protocolo incorreto',
@@ -953,7 +954,7 @@ Todas as datas mostradas são do servidor (UTC).',
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error28' => 'Foi excedido o tempo limite para o envio do arquivo',
 
-'license'            => 'Licença',
+'license'            => 'Licença:',
 'nolicense'          => 'Nenhuma selecionada',
 'license-nopreview'  => '(Previsão indisponível)',
 'upload_source_file' => ' (um arquivo de seu computador)',
@@ -1062,7 +1063,7 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'lonelypages'             => 'Páginas órfãs',
 'uncategorizedpages'      => 'Páginas não categorizadas',
 'uncategorizedcategories' => 'Categorias não categorizadas',
-'uncategorizedimages'     => 'Imagens não categorizadas',
+'uncategorizedimages'     => 'Arquivos não categorizados',
 'uncategorizedtemplates'  => 'Predefinições não categorizadas',
 'unusedcategories'        => 'Categorias não utilizadas',
 'unusedimages'            => 'Imagens não utilizadas',
@@ -1073,7 +1074,7 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'mostlinkedcategories'    => 'Categorias com mais membros',
 'mostlinkedtemplates'     => 'Predefinições com mais afluentes',
 'mostcategories'          => 'Páginas de conteúdo com mais categorias',
-'mostimages'              => 'Imagens com mais afluentes',
+'mostimages'              => 'Arquivos com mais afluentes',
 'mostrevisions'           => 'Páginas de conteúdo com mais edições',
 'allpages'                => 'Todas as páginas',
 'prefixindex'             => 'Índice de prefixo',
@@ -1087,10 +1088,9 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'newpages'                => 'Páginas novas',
 'newpages-username'       => 'Nome de usuário:',
 'ancientpages'            => 'Páginas mais antigas',
-'intl'                    => 'Links interlínguas',
 'move'                    => 'Mover',
 'movethispage'            => 'Mover esta página',
-'unusedimagestext'        => '<p>Note que outros websites podem apontar para uma imagem através de um URL diretamente e, por isso, podem estar não aparecendo aqui, mesmo estando em uso.</p>',
+'unusedimagestext'        => '<p>Note que outros websites podem apontar para um arquivo diretamente através de um URL e, por isso, podem estar não aparecendo aqui, mesmo estando em uso.</p>',
 'notargettitle'           => 'Sem alvo',
 'notargettext'            => 'Você não especificou um alvo ou usuário para performar esta função.',
 
@@ -1236,7 +1236,6 @@ A última edição foi de  [[User:$3|$3]] ([[User talk:$3|Conversar com ele]]).'
 'protectexpiry'               => 'Expira em:',
 'protect_expiry_invalid'      => 'O tempo de expiração fornecido é inválido.',
 'protect_expiry_old'          => 'O tempo de expiração fornecido se situa no passado.',
-'unprotectsub'                => '(Desprotegendo "$1")',
 'protect-unchain'             => 'Desbloquear permissões de moção',
 'protect-text'                => 'Você pode, nesta página, alterar o nível de proteção para <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-access'       => 'Sua conta não possui permissões para alterar os níveis de proteção de uma página.
@@ -1372,7 +1371,7 @@ Por favor confirme que você realmente pretende fazer isto, e que você vai desb
 'unlockdbsuccesstext' => 'O bando de dados da {{SITENAME}} foi destrancado.',
 
 # Move page
-'movepage'         => 'Mover página',
+'move-page-legend' => 'Mover página',
 'movepagetext'     => "Utilizando o seguinte formulário você poderá renomear uma página, movendo todo o histórico para o novo título. O título anterior será transformado num redirecionamento para o novo.
 
 Links para as páginas antigas não serão mudados; certifique-se de verificar por redirecionamentos quebrados ou duplos. Você é o responsável por certificar-se de que os links continuam apontando para onde eles deveriam apontar.

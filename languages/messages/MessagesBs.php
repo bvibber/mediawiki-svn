@@ -603,8 +603,8 @@ da bi ste slali fajlove.',
 'uploadlogpagetext'           => 'Ispod je spisak najskorijih slanja.',
 'filename'                    => 'Ime fajla',
 'filedesc'                    => 'Opis',
-'filestatus'                  => 'Status autorskih prava',
-'filesource'                  => 'Izvor',
+'filestatus'                  => 'Status autorskih prava:',
+'filesource'                  => 'Izvor:',
 'uploadedfiles'               => 'Poslati fajlovi',
 'badfilename'                 => 'Ime slike je promjenjeno u "$1".',
 'emptyfile'                   => 'Fajl koji ste poslali je prazan. Ovo je moguće zbog greške u imenu fajla. Molimo Vas da provjerite da li stvarno želite da pošaljete ovaj fajl.',
@@ -826,7 +826,6 @@ Pogledajte $2 za zapis o skorašnjim brisanjima.',
 'protectsub'                  => '(Zaštićuje se "$1")',
 'confirmprotect'              => 'Potvrdite zaštitu',
 'protectcomment'              => 'Razlog za zaštitu',
-'unprotectsub'                => '(Skidanje zaštite "$1")',
 'protect-unchain'             => 'Deblokirajte dozvole premještanja',
 'protect-text'                => 'Ovdje možete gledati i izmjeniti level zaštite za stranicu <strong><nowiki>$1</nowiki></strong>.',
 'protect-default'             => '(standardno)',
@@ -923,7 +922,7 @@ Molimo Vas da potvrdite da je ovo zaista ono što namijeravate da uradite.',
 'unlockdbsuccesstext' => '{{SITENAME}} baza podataka je otključana.',
 
 # Move page
-'movepage'         => 'Premjestite stranicu',
+'move-page-legend'         => 'Premjestite stranicu',
 'movepagetext'     => "Donji upitnik će preimenovati stranicu, premještajući svu
 njenu istoriju na novo ime.
 Stari naslov će postati preusmjerenje na novi naslov.

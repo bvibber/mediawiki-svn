@@ -130,7 +130,7 @@ class ModernTemplate extends QuickTemplate {
 
 		<?php $this->html('bodytext') ?>
 		<div class='mw_clear'></div>
-		<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
+		<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
 	</div><!-- mw_contentholder -->
 	</div><!-- mw_content -->
 	</div><!-- mw_contentwrapper -->

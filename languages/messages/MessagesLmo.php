@@ -293,8 +293,8 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'fileuploadsummary' => 'Sumari:',
 'ignorewarnings'    => 'Ignora tücc i avertimeent',
 'largefileserver'   => 'Chel archivi-chí al è püssee graant che ul serviduur al sía cunfigüraa da permett.',
-'sourcefilename'    => "Nomm da l'archivi surgeent",
-'destfilename'      => "Nomm da l'archivi da destinazziun",
+'sourcefilename'    => "Nomm da l'archivi surgeent:",
+'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
 # Image list
 'imagelist'  => 'Listá i imàgin',
@@ -412,7 +412,6 @@ L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]])."
 'protectsub'            => '(Prutezziún da "$1")',
 'confirmprotect'        => 'Cunferma de blocch',
 'protectcomment'        => 'Spiega parchè ti vörat blucá la pagina',
-'unprotectsub'          => '(Sblocch de "$1")',
 
 # Undelete
 'undelete'           => 'Varda i pagin scancelaa',

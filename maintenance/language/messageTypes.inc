@@ -70,7 +70,6 @@ $wgIgnoredMessages = array(
 	'addsection',
 	'anonnotice',
 	'autoblock_whitelist',
-	'catseparator',
 	'googlesearch',
 	'opensearch-desc',
 	'exif-make-value',
@@ -108,6 +107,7 @@ $wgIgnoredMessages = array(
 	'talkpagetext',
 	'trackback',
 	'trackbackexcerpt',
+	'uploadfooter',
 );
 
 /** Optional messages, which may be translated only if changed in the other language. */
@@ -225,6 +225,7 @@ $wgOptionalMessages = array(
 	'filerevert-backlink',
 	'filedelete-backlink',
 	'delete-backlink',
+	'move-page-backlink',
 	'pagetitle',
 	'filename-prefix-blacklist',
 	'edittools',
@@ -273,8 +274,11 @@ $wgOptionalMessages = array(
 	'hebrew-calendar-m10-gen',
 	'hebrew-calendar-m11-gen',
 	'hebrew-calendar-m12-gen',
+	'catseparator',
 	'semicolon-separator',
 	'comma-separator',
+	'colon-separator',
+	'autocomment-prefix',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

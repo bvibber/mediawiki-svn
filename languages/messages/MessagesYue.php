@@ -674,7 +674,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'token_suffix_mismatch'     => '<strong>因為你嘅用戶端度嘅編輯幣整壞咗一啲標點符號字元，你嘅編輯已經拒絕咗。個編輯已經拒絕，以防止嗰版嘅文字損毀。 
 當你響度用緊一啲好多臭蟲，以網絡為主嘅匿名代理服務。</strong>',
 'editing'                   => '而家喺度編輯$1',
-'editinguser'               => "改緊用戶'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 嘅用戶權限",
 'editingsection'            => '而家喺度編輯$1 （小節）',
 'editingcomment'            => '而家喺度編輯$1 （評論）',
 'editconflict'              => '編輯衝突：$1',
@@ -930,6 +929,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'userrights-lookup-user'           => '管理用戶組',
 'userrights-user-editname'         => '輸入一個用戶名：',
 'editusergroup'                    => '編輯用戶組',
+'editinguser'                      => "改緊用戶'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 嘅用戶權限",
 'userrights-editusergroup'         => '編輯用戶組',
 'saveusergroups'                   => '儲存用戶組',
 'userrights-groupsmember'          => '屬於：',
@@ -1029,8 +1029,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'filename'                    => '檔名',
 'filedesc'                    => '摘要',
 'fileuploadsummary'           => '摘要：',
-'filestatus'                  => '版權狀態',
-'filesource'                  => '來源',
+'filestatus'                  => '版權狀態:',
+'filesource'                  => '來源:',
 'uploadedfiles'               => '上載檔案中',
 'ignorewarning'               => '總要忽略警告同埋儲存檔案。',
 'ignorewarnings'              => '忽略任何警告',
@@ -1067,8 +1067,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'uploadscripted'              => '呢個檔案包含可能會誤被瀏覽器解釋執行嘅 HTML 或 script 代碼。',
 'uploadcorrupt'               => '呢個檔案已損壞或係用咗錯誤嘅副檔名。請檢查吓個檔案，然後再試下上載多次。',
 'uploadvirus'                 => '呢個檔案有病毒！詳情：$1',
-'sourcefilename'              => '來源檔名',
-'destfilename'                => '目標檔名',
+'sourcefilename'              => '來源檔名:',
+'destfilename'                => '目標檔名:',
 'watchthisupload'             => '監視呢頁',
 'filewasdeleted'              => '呢個檔案所使用嘅名曾經上載後，跟住就刪除咗。你應該響重新上載佢之前檢查吓$1。',
 'upload-wasdeleted'           => "'''警告: 你而家上載嘅一個檔案係先前曾經刪除過嘅。'''
@@ -1090,7 +1090,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'upload-curl-error28'      => '上載遇時',
 'upload-curl-error28-text' => '個網站用咗太多時間回應。請檢查個網站已經係上咗綫，等多一陣然後再試過。你可以響冇咁繁忙嘅時間再試。',
 
-'license'            => '協議',
+'license'            => '協議:',
 'nolicense'          => '未揀',
 'license-nopreview'  => '（無預覽可以用得到）',
 'upload_source_url'  => ' （啱嘅，公開嘅網址）',
@@ -1164,6 +1164,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 *常用刪除原因
 ** 侵犯版權
 ** 重覆檔案',
+'filedelete-edit-reasonlist'  => '編輯刪除原因',
 
 # MIME search
 'mimesearch'         => 'MIME 搜尋',
@@ -1269,7 +1270,6 @@ Template:搞清楚',
 'newpages'                => '新頁',
 'newpages-username'       => '用戶名：',
 'ancientpages'            => '舊頁面',
-'intl'                    => '跨語連結',
 'move'                    => '移動',
 'movethispage'            => '移動呢一頁',
 'unusedimagestext'        => '<p>請注意，第啲網站會用直接用URL連結到一個檔，所以呢度可能有啲用緊嘅檔。</p>',
@@ -1285,7 +1285,7 @@ Template:搞清楚',
 'booksources-go'            => '去',
 'booksources-text'          => '以下嘅連結清單列出其它一啲賣新書同二手書嘅網站，可能可以提供到有關你想搵嘅書嘅更多資料：',
 
-'categoriespagetext' => '喺呢個 wiki 中存在住以下嘅分類。',
+'categoriespagetext' => '喺呢個分類度有頁或媒體。',
 'data'               => '資料',
 'userrights'         => '用戶權限管理',
 'groups'             => '用戶組',
@@ -1360,6 +1360,7 @@ Template:搞清楚',
 'unwatch'              => '唔使監視',
 'unwatchthispage'      => '停止監視',
 'notanarticle'         => '唔係一個內容頁',
+'notvisiblerev'        => '修訂已經刪除咗',
 'watchnochange'        => '響顯示嘅時間之內，你所監視嘅頁面並無任何嘅更改。',
 'watchlist-details'    => '唔計討論頁，你個監視清單有 $1 版。',
 'wlheader-enotif'      => '* 電子郵件通知已經啟用。',
@@ -1442,6 +1443,7 @@ wiki: $PAGEEDITOR_WIKI
 ** 作者請求
 ** 侵犯版權
 ** 破壞',
+'delete-edit-reasonlist'      => '編輯刪除原因',
 'delete-toobig'               => '呢一版有一個好大量嘅編輯歷史，過咗$1次修訂。刪除呢類版嘅動作已經限制咗，以防止響{{SITENAME}}嘅意外擾亂。',
 'delete-warning-toobig'       => '呢一版有一個好大量嘅編輯歷史，過咗$1次修訂。刪除佢可能會擾亂{{SITENAME}}嘅資料庫操作；響繼續嗰陣請小心。',
 'rollback'                    => '反轉修改',
@@ -1467,7 +1469,6 @@ wiki: $PAGEEDITOR_WIKI
 'protectexpiry'               => '到期:',
 'protect_expiry_invalid'      => '到期時間唔正確。',
 'protect_expiry_old'          => '到期時間係響之前過去嘅。',
-'unprotectsub'                => '（解除緊"$1"嘅保護）',
 'protect-unchain'             => '解除移動權限嘅鎖定',
 'protect-text'                => '你可以喺呢度睇到同修改頁面<strong><nowiki>$1</nowiki></strong>嘅保護等級。',
 'protect-locked-blocked'      => '當你響被封鎖嗰陣唔可以改呢版嘅保護等級。
@@ -1581,6 +1582,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => '封鎖用戶',
+'blockip-legend'              => '封鎖用戶',
 'blockiptext'                 => '使用以下嘅表格嚟去阻止指定嘅IP地址或用戶名嘅寫權限。
 僅當僅當為咗避免有版畀人惡意破壞嘅時候先可以使用，而且唔可以違反[[{{MediaWiki:Policy-url}}|政策]]。
 喺下面填寫阻止嘅確切原因（比如：引用咗某啲已經破壞咗嘅頁面）。',
@@ -1682,7 +1684,7 @@ $1',
 'databasenotlocked'   => '資料庫而家冇鎖到。',
 
 # Move page
-'movepage'                => '搬頁',
+'move-page-legend'                => '搬頁',
 'movepagetext'            => "使用以下表格會將頁面改名，兼且連同搬埋佢嘅歷史過去。
 舊標題會變成指去新標題嘅跳轉頁。
 指去舊標題嘅連結唔會修改到；請務必要檢查吓有冇雙重跳轉或者死跳轉（嘅情況發生）。

@@ -526,7 +526,7 @@ Kapau naʻe kole ia ʻe he tokotaha kehe, pea ʻosi hoʻo manatuʻi ʻo e leatap
 'filename'                    => 'Ko e faile hono hingoa',
 'filedesc'                    => 'Fakanounou',
 'fileuploadsummary'           => 'Fakanounou:',
-'filesource'                  => 'Tupunga',
+'filesource'                  => 'Tupunga:',
 'uploadedfiles'               => 'Ngaahi faile ʻosi hiki hake',
 'ignorewarning'               => 'Taʻetokaʻi fakatokanga pea haʻofakiʻi ʻa e faile',
 'ignorewarnings'              => 'Taʻetokaʻi ngaahi fakatokanga',
@@ -544,12 +544,12 @@ Kapau naʻe kole ia ʻe he tokotaha kehe, pea ʻosi hoʻo manatuʻi ʻo e leatap
 'uploaddisabledtext'          => 'ʻOku fakataʻeʻaongaʻi ha ngaahi hiki hake ʻi heni.',
 'uploadcorrupt'               => 'ʻOku kovi ʻa e failé ni pe ʻoku halaʻi hono fakalōloa. Kātaki, sivi ia pea foki hiki hake ia.',
 'uploadvirus'                 => 'ʻOku ʻi ai ha vailasi ʻi he failé ni! ʻŪ kiʻi meʻa: $1',
-'sourcefilename'              => 'Hingoa ʻo e faile tupunga',
-'destfilename'                => 'Hingoa ʻo e faile ʻe ʻalu ki ai',
+'sourcefilename'              => 'Hingoa ʻo e faile tupunga:',
+'destfilename'                => 'Hingoa ʻo e faile ʻe ʻalu ki ai:',
 'watchthisupload'             => 'Leʻo he pēsí ni',
 'filewasdeleted'              => 'Kuo hiki hake ʻa e faile mo e hingoa ʻeni pea naʻe tāmateʻi ia. Kuo pau te ke vakai ki he $1 ʻi muʻa haʻo feinga ʻo toe hiki hake ia.',
 
-'license'   => 'Laiseni',
+'license'   => 'Laiseni:',
 'nolicense' => 'ʻIkai fili ha taha',
 
 # Image list
@@ -803,7 +803,6 @@ Ko e fatu fakamuimui naʻe fatu ʻe [[User:$3|$3]] ([[User talk:$3|Alea]]).',
 'protectsub'          => '(ʻOku maluʻi "$1")',
 'confirmprotect'      => 'Fakamoʻoniʻi e maluʻi',
 'protectcomment'      => 'ʻUhingha maʻa e maluʻi',
-'unprotectsub'        => '(ʻOku taʻemaluʻi "$1")',
 'protect-level-sysop' => 'Kau pule fakafounga pē',
 
 # Restrictions (nouns)
@@ -908,7 +907,7 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 'databasenotlocked'   => 'ʻOku ʻikai lokaʻi ʻa e tānekingaʻilo',
 
 # Move page
-'movepage'                => 'Peesi ʻunu',
+'move-page-legend'                => 'Peesi ʻunu',
 'movepagetext'            => "Ngāueʻaki ʻa e foomu ʻi lalo, ʻe toe fakahingoaʻi ʻa e pēsí mo hono hisitōliá.
 ʻE hoko ʻa e hingoa motuʻa ki he peesi leʻei ki he hingoa foʻou.
 ʻE ʻikai liliu ʻa e ngaahi fehokotaki ki he hingoa motuʻa, e taau te ke sivi ʻa e leʻeleʻei mo e leʻei maumau. Ko ho fatongia ʻe tuhu ai pē ngaahi fehokotaki ki ʻenau peesi totonu.

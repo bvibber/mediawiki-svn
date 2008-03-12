@@ -9,6 +9,7 @@
  * @author Võrok
  * @author Siebrand
  * @author לערי ריינהארט
+ * @author M.M.S.
  */
 
 $namespaceNames = array(
@@ -255,6 +256,8 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'lastmodifiedat'    => 'Viimane muutmine: $2, $1', # $1 date, $2 time
 'viewcount'         => 'Seda lehekülge on külastatud {{plural:$1|üks kord|$1 korda}}.',
 'protectedpage'     => 'Kaitstud lehekülg',
+'jumptonavigation'  => 'navigeerimiskast',
+'jumptosearch'      => 'otsi',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} tiitelandmed',
@@ -297,6 +300,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'viewdeleted'         => 'Vaata lehekülge $1?',
 'restorelink'         => '{{PLURAL:$1|üks kustutatud versioon|$1 kustutatud versiooni}}',
 'feedlinks'           => 'Sööde:',
+'red-link-title'      => '$1 (pole veel kirjutatud)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikkel',
@@ -504,7 +508,6 @@ Kui sattusite siia kogemata, klõpsake lihtsalt brauseri ''back''-nupule või li
 'previewnote'              => '<strong>Ärge unustage, et see versioon ei ole veel salvestatud!</strong>',
 'previewconflict'          => 'See eelvaade näitab, kuidas ülemises toimetuskastis olev tekst hakkab välja nägema, kui otsustate salvestada.',
 'editing'                  => 'Redigeerimisel on $1',
-'editinguser'              => 'Redigeerimisel on $1',
 'editingsection'           => 'Redigeerimisel on osa leheküljest $1',
 'editingcomment'           => 'Lisamisel on $1 kommentaar',
 'editconflict'             => 'Redigeerimiskonflikt: $1',
@@ -648,6 +651,7 @@ sisse logida.',
 'userrights-lookup-user'     => 'Muuda kasutajagruppi',
 'userrights-user-editname'   => 'Sisesta kasutajatunnus:',
 'editusergroup'              => 'Muuda kasutajagruppi',
+'editinguser'                => 'Redigeerimisel on $1',
 'userrights-editusergroup'   => 'Kasutajagrupi valik',
 'saveusergroups'             => 'Salvesta grupi muudatused',
 'userrights-groupsmember'    => 'Kuulub gruppi:',
@@ -754,10 +758,10 @@ võidakse sinu ligipääs sulgeda.',
 'uploaddisabledtext'   => 'Vabandage, faili laadimine pole hetkel võimalik.',
 'uploadcorrupt'        => 'Fail on vigane või vale laiendiga. Palun kontrolli faili ja proovi seda uuesti üles laadida.',
 'uploadvirus'          => 'Fail sisaldab viirust! Täpsemalt: $1',
-'sourcefilename'       => 'Lähtefail',
-'destfilename'         => 'Failinimi vikis',
+'sourcefilename'       => 'Lähtefail:',
+'destfilename'         => 'Failinimi vikis:',
 
-'license'   => 'Litsents',
+'license'   => 'Litsents:',
 'nolicense' => 'pole valitud',
 
 # Image list
@@ -772,6 +776,7 @@ võidakse sinu ligipääs sulgeda.',
 'imgdelete'        => 'kust',
 'imgdesc'          => 'kirj',
 'filehist-user'    => 'Kasutaja',
+'filehist-comment' => 'Kommentaar',
 'imagelinks'       => 'Viited pildile',
 'linkstoimage'     => 'Sellele pildile viitavad järgmised leheküljed:',
 'nolinkstoimage'   => 'Selle pildile ei viita ükski lehekülg.',
@@ -855,7 +860,6 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).',
 'restrictedpheading'      => 'Piirangutega erileheküljed',
 'newpages'                => 'Uued leheküljed',
 'ancientpages'            => 'Kõige vanemad artiklid',
-'intl'                    => 'Keeltevahelised lingid',
 'move'                    => 'Teisalda',
 'movethispage'            => 'Muuda pealkirja',
 'unusedimagestext'        => '<p>Pange palun tähele, et teised
@@ -973,7 +977,6 @@ Kõik toodud kellaajad järgivad serveriaega (UTC).',
 'protectsub'                  => '("$1" kaitsmine)',
 'confirmprotect'              => 'Kinnita kaitsmine',
 'protectcomment'              => 'Põhjus',
-'unprotectsub'                => '(Lehekülje "$1" kaitse alt võtmine)',
 'protect-text'                => 'Siin võite vaadata ja muuta lehekülje <strong><nowiki>$1</nowiki></strong> kaitsesätteid.',
 'protect-default'             => '(tavaline)',
 'protect-level-autoconfirmed' => 'Ainult registreeritud kasutajad',
@@ -1031,12 +1034,14 @@ versioonid varasema ajaloona. Kehtivat versiooni automaatselt välja ei vahetata
 'sp-newimages-showfrom' => 'Näita uusi pilte alates $1',
 
 # What links here
-'whatlinkshere' => 'Viidad siia',
-'linklistsub'   => '(Linkide loend)',
-'linkshere'     => 'Siia viitavad järgmised leheküljed:',
-'nolinkshere'   => 'Siia ei viita ükski lehekülg.',
-'isredirect'    => 'ümbersuunamislehekülg',
-'istemplate'    => 'kasutamine',
+'whatlinkshere'      => 'Viidad siia',
+'linklistsub'        => '(Linkide loend)',
+'linkshere'          => 'Siia viitavad järgmised leheküljed:',
+'nolinkshere'        => 'Siia ei viita ükski lehekülg.',
+'isredirect'         => 'ümbersuunamislehekülg',
+'istemplate'         => 'kasutamine',
+'whatlinkshere-prev' => '{{PLURAL:$1|eelmised|eelmised $1}}',
+'whatlinkshere-next' => '{{PLURAL:$1|järgmised|järgmised $1}}',
 
 # Block/unblock
 'blockip'            => 'Blokeeri IP-aadress',
@@ -1087,7 +1092,7 @@ Kindlasti tuleb täita ka väli \"põhjus\", paigutades sinna näiteks viited ko
 'unlockdbsuccesstext' => 'Andmebaasi kirjutuspääs on taastatud.',
 
 # Move page
-'movepage'         => 'Teisalda artikkel',
+'move-page-legend'         => 'Teisalda artikkel',
 'movepagetext'     => "Allolevat vormi kasutades saate lehekülje ümber nimetada. Lehekülje ajalugu tõstetakse uue pealkirja alla automaatselt. Praeguse pealkirjaga leheküljest saab ümbersuunamisleht uuele leheküljele. Teistes artiklites olevaid linke praeguse nimega leheküljele automaatselt ei muudeta. Teie kohuseks on hoolitseda, et ei tekiks topeltümbersuunamisi ning et kõik jääks toimima nagu enne ümbernimetamist.
 
 Lehekülge '''ei nimetata ümber''' juhul, kui uue nimega lehekülg on juba olemas. Erandiks on juhud, kui olemasolev lehekülg on tühi või ümbersuunamislehekülg ja sellel pole redigeerimisajalugu. See tähendab, et te ei saa kogemata üle kirjutada juba olemasolevat lehekülge, kuid saate ebaõnnestunud ümbernimetamise tagasi pöörata.

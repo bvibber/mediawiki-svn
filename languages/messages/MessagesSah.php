@@ -540,7 +540,6 @@ MySQL маннык сыыһаны төнүннэрдэ "$3: $4"',
 Ыстатыйаны буорту гынымаары уларытыыҥ ылыныллыбата. 
 Итинник сыыһалар үксүн прокси-сиэрбэрдэри туһаннахха тахсааччылар.</strong>',
 'editing'                   => 'Уларытыы $1',
-'editinguser'               => "'''[[User:$1|$1]]''' кыттааччы быраабын уларытыы ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Уларытыы $1 (раздел)',
 'editingcomment'            => 'Уларытыы $1 (ырытыы)',
 'editconflict'              => 'Уларытыы мөккүөрэ: $1',
@@ -800,6 +799,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'userrights-lookup-user'           => 'Кыттаачылар бөлөхтөрүн салайыы',
 'userrights-user-editname'         => 'Кыттааччы аата:',
 'editusergroup'                    => 'Кыттааччылар бөлөхтөрүн уларытарга',
+'editinguser'                      => "'''[[User:$1|$1]]''' кыттааччы быраабын уларытыы ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Кыттааччы бөлөхтөрүн уларытарга',
 'saveusergroups'                   => 'Кыттааччы бөлөхтөрүн бигэргэт',
 'userrights-groupsmember'          => 'Бу бөлөхтөргө киирэр:',
@@ -899,8 +899,8 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'filename'                    => 'Билэ аата',
 'filedesc'                    => 'Быһаарыы',
 'fileuploadsummary'           => 'Быһаарыы:',
-'filestatus'                  => 'Туһаныы',
-'filesource'                  => 'Источнига',
+'filestatus'                  => 'Туһаныы:',
+'filesource'                  => 'Источнига:',
 'uploadedfiles'               => 'Киллэриллибит билэлэр',
 'ignorewarning'               => 'Сэрэтиилэри истибэккэ билэни киллэр.',
 'ignorewarnings'              => 'Сэрэтиини истимэ',
@@ -935,8 +935,8 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'uploadscripted'              => 'Бу билэ HTML эбэтэр скрипт куодтаах эбит. Интэриниэт көрдөрөр бырагыраамма ону сыыһа ааҕыан сөп.',
 'uploadcorrupt'               => 'Билэ сатаан ааҕыллыбат эбэтэр атын расширениялаах. Бэрэбиэркэлээн баран өссө суруттаран көр.',
 'uploadvirus'                 => 'Бу билэ вирустаах! Көр: $1',
-'sourcefilename'              => 'Билэ бастааҥы аата',
-'destfilename'                => 'Билэ бүтэһик аата',
+'sourcefilename'              => 'Билэ бастааҥы аата:',
+'destfilename'                => 'Билэ бүтэһик аата:',
 'watchthisupload'             => 'Билэни кэтииргэ',
 'filewasdeleted'              => 'Маннык ааттаах билэ урут баар эбит, ону соппуттар. $1 суруттарыах иннинэ өссө биирдэ толкуйдаа.',
 'upload-wasdeleted'           => "'''Сэрэтии: Эн суох оҥоһуллубут биэни саҥаттан суруйан эрэҕин.'''
@@ -971,7 +971,7 @@ PICT # misc.
 'upload-curl-error28'      => 'Суруттарыы болдьоҕо ааста',
 'upload-curl-error28-text' => 'Бу сир наһаа өр хардарда. Үлэлиирин суоҕун бэрэбиэркэлээ уонна хат киирэн көр. Эбэтэр сиргэ аҕыйах киһи киирэр кэмигэр боруобалаан көр.',
 
-'license'            => 'Лицензиялааһын',
+'license'            => 'Лицензиялааһын:',
 'nolicense'          => 'Талыллыбатах',
 'license-nopreview'  => '(Уларытыыны бигэргэтиэх иннинэ көрүү сатаммат)',
 'upload_source_url'  => ' (сөптөөх URL, ким баҕарбыт киирэр сирэ)',
@@ -1145,7 +1145,6 @@ PICT # misc.
 'newpages'                => 'Саҥа ыстатыйалар',
 'newpages-username'       => 'Кыттааччы:',
 'ancientpages'            => 'Бүтэһик уларытыы киирбитинэн наардаммыт ыстатыйалар',
-'intl'                    => 'Тыллар ыккардыларынааҕы ыйынньыктар',
 'move'                    => 'Аатын уларыт',
 'movethispage'            => 'Бу сирэй аатын уларыт',
 'unusedimagestext'        => '<p>Атын саайтар бу ойууга быһа URL көмөтүнэн эмиэ сигэниэхтэрин сөп, онон ойуу бу испииһэккэ киирбитин да үрдүнэн элбэхтик туһаныллар буолуон сөп.</p>',
@@ -1350,7 +1349,6 @@ $NEWPAGE
 'protectexpiry'               => 'Бүтүөхтээх:',
 'protect_expiry_invalid'      => 'Уларытыыны хааччахтааһын болдьоҕун кэмэ сатаан турбата.',
 'protect_expiry_old'          => 'Болдьох кэмэ сыыһа ааспыт кэмҥэ турбут.',
-'unprotectsub'                => '("$1" уларытыыны хааччахтааһыны суох гыныы)',
 'protect-unchain'             => 'Ааты уларытыыны көҥүллээ',
 'protect-text'                => 'Эн <strong><nowiki>$1</nowiki></strong> сирэй уларытыытын таһымын көрүөххүн уонна уларытыаххын сөп.',
 'protect-locked-blocked'      => 'Уларытыы таһымын учуотунай суругуҥ бобуллубут кэмигэр уларытар кыаҕыҥ суох. <strong>[[:$1]]</strong> сирэй уларытыытын таһыма:',
@@ -1583,7 +1581,7 @@ $1',
 'databasenotlocked'   => 'БД уларытааһын бобуллубата.',
 
 # Move page
-'movepage'                => 'Аатын уларытыы',
+'move-page-legend'                => 'Аатын уларытыы',
 'movepagetext'            => "Манна баар форманы туһанан сирэй аатын улартыаххын сөп.
 Бу түбэлтэҕэ уларытыы сурунаала саҥа сиргэ көһөр.
 Урукку аат саҥа сирэйгэ утаарар сирэйгэ кубулуйар.

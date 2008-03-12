@@ -336,7 +336,7 @@ $messages = array(
 'retrievedfrom'           => 'Menba – "$1"',
 'youhavenewmessages'      => 'Yañı $1 bar ($2).',
 'newmessageslink'         => 'beyanatıñız',
-'newmessagesdifflink'     => 'muzakere saifeñizniñ sоñki deñişikligi',
+'newmessagesdifflink'     => 'muzakere saifeñizniñ soñki deñişikligi',
 'youhavenewmessagesmulti' => '$1 saifesinde yañı beyanatıñız bar.',
 'editsection'             => 'deñiştir',
 'editold'                 => 'deñiştir',
@@ -432,7 +432,7 @@ Funktsiya: $1<br />
 'protectedpagetext'    => 'Bu saifeni kimse deñiştirmesin dep o blok etildi.',
 'viewsourcetext'       => 'Saifeniñ kodunı közden keçirip kopirley bilesiñiz:',
 'protectedinterface'   => 'Bu saifede sistema interfeysiniñ metini bulunğanı içün mında hata çıqmasın dep deñişiklik yapmaq yasaq.',
-'editinginterface'     => "'''Tenbi''': MediaWiki sistema beyanatılı bir saifeni deñiştirmektesiñiz. Bu saifedeki deñişiklikler qullanıcı interfeys körünişini diger qullanıcılar içün de deñiştirecektir. Lütfen, tercimeler içün [http://translatewiki.net/wiki/Main_Page?setlang=crh Betawiki] saytını (MediaWiki resmiy lokalizatsiya prоyekti) qullanıñız.",
+'editinginterface'     => "'''Tenbi''': MediaWiki sistema beyanatılı bir saifeni deñiştirmektesiñiz. Bu saifedeki deñişiklikler qullanıcı interfeys körünişini diger qullanıcılar içün de deñiştirecektir. Lütfen, tercimeler içün [http://translatewiki.net/wiki/Main_Page?setlang=crh Betawiki] saytını (MediaWiki resmiy lokalizatsiya proyekti) qullanıñız.",
 'sqlhidden'            => '(SQL istintağı saqlı)',
 'cascadeprotected'     => 'Bu saifeni deñiştirip olamazsıñız, çünki kaskad qorçalav altında bulunğan {{PLURAL:$1|saifege|saifelerge}} mensüptir:
 $2',
@@ -635,7 +635,6 @@ açıñız.</strong>',
 'token_suffix_mismatch'     => '<strong>Siziñ programmañız tarir penceresinde punktuatsiya işaretlerini doğru işlemegeni içün yapqan deñişikligiñiz qabul olunmadı. Deñişiklik saifeniñ metni körünişiniñ bozulmaması içün lâğu etildi.
 Bunıñ kibi problemalar anonimizirlegen hatalı web-proksiler qullanuvdan çıqıp olalar.</strong>',
 'editing'                   => '"$1" saifesini deñiştirmektesiñiz',
-'editinguser'               => "'''[[User:$1|$1]]''' qullanıcısınıñ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) izinlerini deñiştirmektesiñiz",
 'editingsection'            => '"$1" saifesinde bölüm deñiştirmektesiñiz',
 'editingcomment'            => '$1 saifesine beyanat eklemektesiñiz.',
 'editconflict'              => 'Deñişiklik zıt ketüvi: $1',
@@ -818,6 +817,7 @@ Vikide bu saifege oşağan saifelerni [[{{ns:special}}:Search|tapıp baqıñız]
 'userrights-lookup-user'   => 'Qullanıcı gruppalarnını idare et',
 'userrights-user-editname' => 'Öz qullanıcı adıñıznen kiriñiz:',
 'editusergroup'            => 'Qullanıcı gruppaları nizamla',
+'editinguser'              => "'''[[User:$1|$1]]''' qullanıcısınıñ ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) izinlerini deñiştirmektesiñiz",
 'userrights-editusergroup' => 'Qullanıcı gruppaları nizamla',
 
 # Groups
@@ -879,7 +879,7 @@ Vikide bu saifege oşağan saifelerni [[{{ns:special}}:Search|tapıp baqıñız]
 'uploadnologintext'           => 'Fayl yüklep olmaq içün [[Special:Userlogin|oturım açmaq]] kereksiñiz.',
 'upload_directory_read_only'  => 'Web serverniñ ($1) cüzdanına fayllar saqlamağa aqları yoqtır.',
 'uploaderror'                 => 'Yükleme hatası',
-'uploadtext'                  => "Fayllar yüklemek içün aşağıdaki formanı qullanıñız. Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:Imagelist|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yоq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] tapıp оlasıñız.
+'uploadtext'                  => "Fayllar yüklemek içün aşağıdaki formanı qullanıñız. Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:Imagelist|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yoq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] tapıp olasıñız.
 
 Saifede resim qullanmaq içün böyle şekilli bağlantılar qullanıñız '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''', '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|resim tarifi]]</nowiki>''' ya da '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' faylğa vastasız bağlantı içün.",
 'uploadlog'                   => 'yükleme jurnalı',
@@ -888,8 +888,8 @@ Saifede resim qullanmaq içün böyle şekilli bağlantılar qullanıñız '''<n
 'filename'                    => 'Fayl',
 'filedesc'                    => 'Faylğa ait qısqa tarif',
 'fileuploadsummary'           => 'Qısqa tarif:',
-'filestatus'                  => 'Darqatuv şartları',
-'filesource'                  => 'Menba',
+'filestatus'                  => 'Darqatuv şartları:',
+'filesource'                  => 'Menba:',
 'uploadedfiles'               => 'Yüklengen fayllar',
 'ignorewarning'               => 'Tenbini ignor etip faylnı yükle.',
 'ignorewarnings'              => 'Tenbini ignor et',
@@ -927,8 +927,8 @@ Lütfen, keri qaytıñız, fayl ismini deñiştirip yañıdan yükleñiz. [[Imag
 'uploadscripted'              => 'Bu faylda brauzer tarafından yañlışnen işlenip olur HTML kodu ya da skript mevcüt.',
 'uploadcorrupt'               => 'Bu fayl ya zararlandı, ya da yañlış uzantılı. Lütfen, faylnı teşkerip yañıdan yüklep baqıñız.',
 'uploadvirus'                 => 'Bu fayl viruslıdır! $1 baqıñız',
-'sourcefilename'              => 'Yüklemege istegeniñiz fayl',
-'destfilename'                => 'Faylnıñ istenilgen adı',
+'sourcefilename'              => 'Yüklemege istegeniñiz fayl:',
+'destfilename'                => 'Faylnıñ istenilgen adı:',
 'watchthisupload'             => 'Bu faylnı közetüv cedveline kirset',
 'filewasdeleted'              => 'Bu isimde bir fayl mevcüt edi, amma yoq etilgen edi. Lütfen, tekrar yüklemeden evel $1 teşkeriñiz.',
 'upload-wasdeleted'           => "'''Diqqat: Evelde yoq etilgen faylnı yüklemektesiñiz.''' 
@@ -949,7 +949,7 @@ Er alda bu faylnı yüklemege devam etmege isteysiñizmi? Bu fayl içün yoq et�
 'upload-curl-error28'      => 'Yüklenüv vaqtı toldı',
 'upload-curl-error28-text' => 'Sayt çoqtan cevap qaytarmay. Lütfen, saytnıñ doğru çalışqanını teşkerip birazdan soñ tekrarlañız. Belki de istegen areketiñizni soñ, sayt boşça olğanda, etmek kerektir.',
 
-'license'            => 'Litsenzirleme',
+'license'            => 'Litsenzirleme:',
 'nolicense'          => 'Yoq',
 'license-nopreview'  => '(Ög baquv irişilmez)',
 'upload_source_url'  => ' (doğru, püblik tarzda kirmege musaadeli internet adres)',
@@ -1099,7 +1099,6 @@ Toplam saife kösterilme sayısı '''\$3''', deñişiklik başına kösterme say
 'newpages'                => 'Yañı saifeler',
 'newpages-username'       => 'Qullanıcı adı:',
 'ancientpages'            => 'Eñ eski saifeler',
-'intl'                    => 'Tiller arası bağlantılar',
 'move'                    => 'Adını deñiştir',
 'movethispage'            => 'Saifeniñ adını deñiştir',
 'pager-newer-n'           => '{{PLURAL:$1|1 daa yañıca|$1 daa yañıca}}',
@@ -1272,7 +1271,6 @@ Qorçalav altına alınğan saifeler tam cedveli [[{{ns:special}}:Protectedpages
 'unprotectedarticle'          => 'qorçalav çıqarlıdı: "[[$1]]"',
 'confirmprotect'              => 'Qorçalavnı tasdıqla',
 'protectcomment'              => 'Qorçalav altına aluv sebebi',
-'unprotectsub'                => '(qorçalav çıqarılır "$1")',
 'protect-text'                => '<strong>[[<nowiki>$1</nowiki>]]</strong> saifesiniñ qorçalav seviyesini mından körip olur ve deñiştirip olasıñız.',
 'protect-default'             => '(standart)',
 'protect-level-autoconfirmed' => 'qayd olunmağan deñiştirmesin',
@@ -1381,10 +1379,10 @@ Qorçalav altına alınğan saifeler tam cedveli [[{{ns:special}}:Protectedpages
 'lockbtn' => 'Malümat bazası kilitli',
 
 # Move page
-'movepage'                => 'Ad deñişikligi',
-'movepagetext'            => "Aşağıdaki formanı qullanıp saifeniñ adını deñiştirirsiñiz. Bunıñnen beraber deñişiklik jurnalını da yañı adğa avuştırırsıñız. Eski ad yañı adğa yоllama olur. Eski adğa doğru olğan bağlantılar olğanı kibi qalır (lütfen, [[Special:DoubleRedirects|çift]] ve [[Special:BrokenRedirects|keçersiz]] yоllamalar mevcüt olğanını teşkeriñiz). Bağlantılar endiden berli eskisi kibi çalışmasından emin olmalısıñız.
+'move-page-legend'                => 'Ad deñişikligi',
+'movepagetext'            => "Aşağıdaki formanı qullanıp saifeniñ adını deñiştirirsiñiz. Bunıñnen beraber deñişiklik jurnalını da yañı adğa avuştırırsıñız. Eski ad yañı adğa yollama olur. Eski adğa doğru olğan bağlantılar olğanı kibi qalır (lütfen, [[Special:DoubleRedirects|çift]] ve [[Special:BrokenRedirects|keçersiz]] yollamalar mevcüt olğanını teşkeriñiz). Bağlantılar endiden berli eskisi kibi çalışmasından emin olmalısıñız.
 
-Yañı adda bir isim zaten mevcüt olsa, ad deñişikligi '''yapılmaycaq''', ancaq mevcüt olğan saife yоllama ya da boş olsa ad deñişikligi mümkün olacaqtır. Bu demek ki, saife adını yañlıştan deñiştirgen olsañız deminki adını keri qaytarıp olasıñız, amma mevcüt olğan saifeni tesadüfen yoq etalmaysıñız.
+Yañı adda bir isim zaten mevcüt olsa, ad deñişikligi '''yapılmaycaq''', ancaq mevcüt olğan saife yollama ya da boş olsa ad deñişikligi mümkün olacaqtır. Bu demek ki, saife adını yañlıştan deñiştirgen olsañız deminki adını keri qaytarıp olasıñız, amma mevcüt olğan saifeni tesadüfen yoq etalmaysıñız.
 
 '''TENBİ!'''
 Ad deñiştirüv ''populâr'' saifeler içün büyük deñişmelerge sebep ola bilir. Lütfen, deñişiklikni yapmadan evel ola bileceklerni köz ögüne alıñız.",
@@ -1398,7 +1396,7 @@ Böyle allarda, kerek olsa, saifelerni qolnen taşımağa ya da birleştirmege m
 'movearticle'             => 'Eski ad',
 'movenologin'             => 'Oturım açmadıñız',
 'movenologintext'         => 'Saifeniñ adını deñiştirip olmaq içün [[Special:Userlogin|oturım açıñız]].',
-'movenotallowed'          => '{{SITENAME}} saytında saifeler adlarını deñiştirmege iziniñiz yоq.',
+'movenotallowed'          => '{{SITENAME}} saytında saifeler adlarını deñiştirmege iziniñiz yoq.',
 'newtitle'                => 'Yañı ad',
 'move-watch'              => 'Bu saifeni közet',
 'movepagebtn'             => 'Adını deñiştir',
@@ -1406,7 +1404,7 @@ Böyle allarda, kerek olsa, saifelerni qolnen taşımağa ya da birleştirmege m
 'movepage-moved'          => '<big>\'\'\'"$1" saifesiniñ yañı adı: "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Bu adda bir saife endi mevcüt ya da siz yazğan ad yasaqlı.
 Lütfen, başqa bir ad saylap yazıñız.',
-'cantmove-titleprotected' => 'Siz yazğan yañı ad yasaqlıdır, bunıñ içün saife adını deñiştirmekniñ çaresi yоq.',
+'cantmove-titleprotected' => 'Siz yazğan yañı ad yasaqlıdır, bunıñ içün saife adını deñiştirmekniñ çaresi yoq.',
 'talkexists'              => "'''Saifeniñ adı deñiştirildi, amma muzakere saifesiniñ adını deñiştirmege mümkünlik yoqtır, çünki aynı bu adda bir saife endi mevcüttir. Lütfen, bularnı qolnen birleştiriñiz.'''",
 'movedto'                 => 'adı deñiştirildi:',
 'movetalk'                => 'Muzakere saifesiniñ adını deñiştir.',
@@ -1414,7 +1412,7 @@ Lütfen, başqa bir ad saylap yazıñız.',
 'talkpagenotmoved'        => 'Bağlı muzakere seifesiniñ adı <strong>deñiştirilmedi</strong>.',
 '1movedto2'               => '"[[$1]]" saifesiniñ adı "[[$2]]" olaraq deñiştirildi',
 '1movedto2_redir'         => '[[$1]] serlevası [[$2]] saifesine yollandı',
-'movelogpage'             => 'İsim deñişikligi jurnalı',
+'movelogpage'             => 'Ad deñişikligi jurnalı',
 'movelogpagetext'         => 'Aşağıda bulunğan cedvel adı deñiştirilgen saifelerni köstere',
 'movereason'              => 'Sebep',
 'revertmove'              => 'Kerige al',

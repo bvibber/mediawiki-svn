@@ -12,6 +12,8 @@
  * @author Max sonnelid
  * @author Eirik
  * @author Kph-no
+ * @author M.M.S.
+ * @author Stigmj
  */
 
 $skinNames = array(
@@ -643,7 +645,7 @@ Din blokkerings-ID er $5. Vennligst ta med denne ID-en i din forespørsel.",
 'newarticle'                => '(ny)',
 'newarticletext'            => "Du har fulgt en lenke til en side som ikke finnes ennå. For å opprette siden, start å skrive i boksen under (se [[{{MediaWiki:Helppage}}|hjelpesiden]] for mer informasjon). Om du kom hit ved en feil, bare trykk på nettleserens '''tilbake'''-knapp.",
 'anontalkpagetext'          => "----
-''Dette er en diskusjonsside for en anonym bruker som ikke har opprettet konto eller ikke er logget inn. Vi er derfor nødt til å bruke den numeriske IP-adressen til å identifisere ham eller henne. En IP-adresse kan være delt mellom flere brukere. Hvis du er en anonym bruker og synes at du har fått irrelevante kommentarer på en slik side, [[Special:Userlogin|logg på]] så vi unngår framtidige forvekslinger med andre anonyme brukere.''",
+''Dette er en diskusjonsside for en uregistrert bruker som ikke har opprettet konto eller ikke er logget inn. Vi er derfor nødt til å bruke den numeriske IP-adressen til å identifisere ham eller henne. En IP-adresse kan være delt mellom flere brukere. Hvis du er en uregistrert bruker og synes at du har fått irrelevante kommentarer på en slik side, [[Special:Userlogin|logg på]] så vi unngår framtidige forvekslinger med andre uregistrerte brukere.''",
 'noarticletext'             => 'Det er ikke noe tekst på denne siden. Du kan [[Special:Search/{{PAGENAME}}|søke etter siden]] i andre sider, eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere siden].',
 'userpage-userdoesnotexist' => 'Brukerkontoen «$1» er ikke registrert. Sjekk om du ønsker å opprette/redigere denne siden.',
 'clearyourcache'            => "'''Merk:''' Etter lagring vil det kanskje være nødvendig at nettleseren sletter mellomlageret sitt for at endringene skal tre i kraft. '''Mozilla og Firefox:''' trykk ''Ctrl-Shift-R'', '''Internet Explorer:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-Shift-R'' i engelskspråklig versjon, ''Cmd-Alt-E'' i norskspråklig versjon, '''Konqueror og Opera:''' ''F5''.",
@@ -663,7 +665,6 @@ Din blokkerings-ID er $5. Vennligst ta med denne ID-en i din forespørsel.",
 <strong>Om dette er et legitimt redigeringsforsøk, prøv igjen. Om det da ikke fungerer, prøv å logge ut og logge inn igjen.</strong>",
 'token_suffix_mismatch'     => '<strong>Redigeringen din har blitt avvist fordi klienten din ikke hadde punktasjonstegn i redigeringsteksten. Redigeringen har blitt avvist for å hindre ødeleggelse av artikkelteksten. Dette forekommer av og til når man bruker vevbaserte anonyme proxytjenester.</strong>',
 'editing'                   => 'Redigerer $1',
-'editinguser'               => "Endrer brukerrettighetene til '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Redigerer $1 (seksjon)',
 'editingcomment'            => 'Redigerer $1 (kommentar)',
 'editconflict'              => 'Redigeringskonflikt: $1',
@@ -688,7 +689,7 @@ Du lover også at du har skrevet dette selv, eller kopiert det fra en ressurs so
 så du kan ikke lagre dine endringer akkurat nå. Det kan være en god idé å
 kopiere teksten din til en tekstfil, så du kan lagre den til senere.</strong>',
 'protectedpagewarning'      => '<strong>ADVARSEL: Denne siden er låst, slik at kun brukere med administratorrettigheter kan redigere den.</strong>',
-'semiprotectedpagewarning'  => "'''Merk:''' Denne siden har blitt låst slik at kun registrerte brukere kan endre den. Nyopprettede og anonyme brukere kan ikke redigere.",
+'semiprotectedpagewarning'  => "'''Merk:''' Denne siden har blitt låst slik at kun registrerte brukere kan endre den. Nyopprettede og uregistrerte brukere kan ikke redigere.",
 'cascadeprotectedwarning'   => "'''Advarsel:''' Denne siden har blitt låst slik at kun brukere med administratorrettigheter kan redigere den, fordi den inkluderes på følgende dypbeskyttede sider:<!--{{PLURAL:$1}}-->",
 'titleprotectedwarning'     => '<strong>ADVARSEL: Denne siden har blitt låst slik at kun visse brukere kan opprette den.</strong>',
 'templatesused'             => 'Maler i bruk på denne siden:',
@@ -848,7 +849,7 @@ Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innhold
 
 # Preferences page
 'preferences'              => 'Innstillinger',
-'mypreferences'            => 'Mine innstillinger',
+'mypreferences'            => 'Innstillinger',
 'prefs-edits'              => 'Antall redigeringer:',
 'prefsnologin'             => 'Ikke logget inn',
 'prefsnologintext'         => 'Du må være [[Special:Userlogin|logget inn]] for å endre brukerinnstillingene.',
@@ -911,6 +912,7 @@ Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innhold
 'userrights-lookup-user'           => 'Ordne brukergrupper',
 'userrights-user-editname'         => 'Skriv inn et brukernavn:',
 'editusergroup'                    => 'Endre brukergrupper',
+'editinguser'                      => "Endrer brukerrettighetene til '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Rediger brukergrupper',
 'saveusergroups'                   => 'Lagre brukergrupper',
 'userrights-groupsmember'          => 'Medlem av:',
@@ -963,7 +965,7 @@ Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innhold
 'rcshowhideminor'                   => '$1 mindre endringer',
 'rcshowhidebots'                    => '$1 roboter',
 'rcshowhideliu'                     => '$1 innloggede brukere',
-'rcshowhideanons'                   => '$1 anonyme brukere',
+'rcshowhideanons'                   => '$1 uregisrterte brukere',
 'rcshowhidepatr'                    => '$1 godkjente endringer',
 'rcshowhidemine'                    => '$1 mine endringer',
 'rclinks'                           => 'Vis siste $1 endringer i de siste $2 dagene<br />$3',
@@ -1010,8 +1012,8 @@ For å lenke direkte til filen, skriv:
 'filename'                    => 'Filnavn',
 'filedesc'                    => 'Beskrivelse',
 'fileuploadsummary'           => 'Filbeskrivelse:',
-'filestatus'                  => 'Opphavsrettsstatus',
-'filesource'                  => 'Kilde',
+'filestatus'                  => 'Opphavsrettsstatus:',
+'filesource'                  => 'Kilde:',
 'uploadedfiles'               => 'Filer som er lastet opp',
 'ignorewarning'               => 'Lagre fila likevel.',
 'ignorewarnings'              => 'Ignorer eventuelle advarsler',
@@ -1047,8 +1049,8 @@ Om filen du har sjekket er det samme bildet, men i opprinnelig størrelse, er de
 'uploadscripted'              => 'Denne fila inneholder HTML eller skripting som kan feiltolkes av en nettleser.',
 'uploadcorrupt'               => 'Denne fila er ødelagt eller er en ugyldig filtype. Sjekk fila og last den opp på nytt.',
 'uploadvirus'                 => 'Denne fila inneholder virus! Detaljer: $1',
-'sourcefilename'              => 'Velg ei fil',
-'destfilename'                => 'Ønsket filnavn',
+'sourcefilename'              => 'Velg en fil:',
+'destfilename'                => 'Ønsket filnavn:',
 'watchthisupload'             => 'Overvåk siden',
 'filewasdeleted'              => 'Ei fil ved dette navnet har blitt lastet opp tidligere, og så slettet. Sjekk $1 før du forsøker å laste det opp igjen.',
 'upload-wasdeleted'           => "'''Advarsel: Du laster opp en fil som tidligere har blitt slettet.'''
@@ -1083,7 +1085,7 @@ PICT # div.
 'upload-curl-error28'      => 'Opplastingstimeout',
 'upload-curl-error28-text' => 'Siden brukte for lang tid på å reagere. Vennligst sjekk at siden er oppe, og vent en kort stund for du prøver igjen. Vurder å prøve på en mindre hektisk tid.',
 
-'license'            => 'Lisensiering',
+'license'            => 'Lisens:',
 'nolicense'          => 'Ingen spesifisert',
 'license-nopreview'  => '(Forhåndsvisning ikke tilgjengelig)',
 'upload_source_url'  => ' (en gyldig, offentlig tilgjengelig adresse)',
@@ -1156,6 +1158,7 @@ PICT # div.
 'filedelete-reason-dropdown'  => '*Vanlige slettingsgrunner
 ** Opphavsrettsbrudd
 ** Duplikatfil',
+'filedelete-edit-reasonlist'  => 'Rediger begrunnelser for sletting',
 
 # MIME search
 'mimesearch'         => 'MIME-søk',
@@ -1258,7 +1261,6 @@ Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}},
 'newpages'                => 'Nye sider',
 'newpages-username'       => 'Brukernavn:',
 'ancientpages'            => 'Eldste sider',
-'intl'                    => 'Språklenker',
 'move'                    => 'Flytt',
 'movethispage'            => 'Flytt siden',
 'unusedimagestext'        => '<p>Merk at andre sider kanskje lenker til en fil med en direkte lenke, så filen listes her selv om den faktisk er i bruk.</p>',
@@ -1350,6 +1352,7 @@ Hvis du senere vil fjerne siden fra overvåkningslisten, klikk «Avslutt overvå
 'unwatch'              => 'Avslutt overvåkning',
 'unwatchthispage'      => 'Fjerner overvåkning',
 'notanarticle'         => 'Ikke en artikkel',
+'notvisiblerev'        => 'Revisjonen er slettet',
 'watchnochange'        => 'Ingen av sidene i overvåkningslisten er endret i den valgte perioden.',
 'watchlist-details'    => '$1 sider overvåket, utenom diskusjonssider.',
 'wlheader-enotif'      => '* E-postnotifikasjon er slått på.',
@@ -1429,6 +1432,7 @@ Tilbakemeldinger og videre assistanse:
 ** På forfatters forespørsel
 ** Opphavsrettsbrudd
 ** Hærverk',
+'delete-edit-reasonlist'      => 'Rediger begrunnelser for sletting',
 'delete-toobig'               => 'Denne siden har en stor redigeringshistorikk, med over $1&nbsp;revisjoner. Muligheten til å slette slike sider er begrenset for å unngå utilsiktet forstyrring av {{SITENAME}}.',
 'delete-warning-toobig'       => 'Denne siden har en stor redigeringshistorikk, med over $1&nbsp;revisjoner. Sletting av denne siden kan forstyrre databasen til {{SITENAME}}; vær varsom.',
 'rollback'                    => 'Fjern redigeringer',
@@ -1452,7 +1456,6 @@ Tilbakemeldinger og videre assistanse:
 'protectexpiry'               => 'Utgår',
 'protect_expiry_invalid'      => 'Utgangstiden er ugyldig.',
 'protect_expiry_old'          => 'Utgangstiden har allerede vært.',
-'unprotectsub'                => '(Åpner «$1»)',
 'protect-unchain'             => 'Spesielle flyttingstillatelser',
 'protect-text'                => 'Du kan se og forandre beskyttelsesnivået for siden <strong><nowiki>$1</nowiki></strong> her.',
 'protect-locked-blocked'      => 'Du kan ikke endre beskyttelsesnivåer mens du er blokkert. Dette er de nåværende innstillingene for siden <strong>$1</strong>:',
@@ -1529,7 +1532,7 @@ $1',
 
 # Contributions
 'contributions' => 'Bidrag',
-'mycontris'     => 'Mine bidrag',
+'mycontris'     => 'Egne bidrag',
 'contribsub2'   => 'For $1 ($2)',
 'nocontribs'    => 'Ingen endringer er funnet som passer disse kriteriene.',
 'ucnote'        => 'Her er denne brukerens siste <b>$1</b> endringer i de siste <b>$2</b> dagene.',
@@ -1563,6 +1566,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Blokker bruker',
+'blockip-legend'              => 'Blokker bruker',
 'blockiptext'                 => 'Bruk skjemaet under for å blokkere en IP-adresses tilgang til å redigere artikler. Dette må kun gjøres for å forhindre hærverk, og i overensstemmelse med [[{{MediaWiki:Policy-url}}|retningslinjene]]. Fyll ut en spesiell begrunnelse under.',
 'ipaddress'                   => 'IP-adresse',
 'ipadressorusername'          => 'IP-adresse eller brukernavn',
@@ -1601,13 +1605,13 @@ $1',
 'unblocked'                   => '[[User:$1|$1]] har blitt avblokkert',
 'unblocked-id'                => 'Blokkering $1 har blitt fjernet',
 'ipblocklist'                 => 'Liste over blokkerte IP-adresser og brukere',
-'ipblocklist-legend'          => 'Find en blokkert bruker',
+'ipblocklist-legend'          => 'Finn en blokkert bruker',
 'ipblocklist-username'        => 'Brukernavn eller IP-adresse:',
 'ipblocklist-submit'          => 'Søk',
 'blocklistline'               => '$1, $2 blokkerte $3 ($4)',
 'infiniteblock'               => 'uendelig',
 'expiringblock'               => 'utgår $1',
-'anononlyblock'               => 'kun anonyme',
+'anononlyblock'               => 'kun uregistrerte',
 'noautoblockblock'            => 'autoblokkering slått av',
 'createaccountblock'          => 'kontooppretting blokkert',
 'emailblock'                  => 'e-posttjenester blokkert',
@@ -1621,7 +1625,7 @@ $1',
 'blocklogentry'               => 'blokkerte «[[$1]]» med en varighet på $2 $3',
 'blocklogtext'                => 'Dette er en logg som viser hvilke brukere som har blitt blokkert og avblokkert. Automatisk blokkerte IP-adresser vises ikke. Se [[Special:Ipblocklist|blokkeringslisten]] for en liste over IP-adresser som er blokkert akkurat nå.',
 'unblocklogentry'             => 'opphevet blokkeringen av $1',
-'block-log-flags-anononly'    => 'kun anonyme brukere',
+'block-log-flags-anononly'    => 'kun uregistrerte brukere',
 'block-log-flags-nocreate'    => 'kontooppretting slått av',
 'block-log-flags-noautoblock' => 'autoblokkering slått av',
 'block-log-flags-noemail'     => 'e-posttjenester blokkert',
@@ -1664,7 +1668,7 @@ Bekreft at du har til hensikt å gjøre dette.',
 'databasenotlocked'   => 'Databasen er ikke låst.',
 
 # Move page
-'movepage'                => 'Flytt side',
+'move-page-legend'        => 'Flytt side',
 'movepagetext'            => "Når du bruker skjemaet under, vil du få omdøpt en 
 side og flyttet hele historikken til det nye navnet.
 Den gamle tittelen vil bli en omdirigeringsside til den nye tittelen.
@@ -1867,7 +1871,7 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 'othercontribs'    => 'Basert på arbeid av $1.',
 'others'           => 'andre',
 'siteusers'        => '{{SITENAME}}-bruker(e) $1',
-'creditspage'      => 'Sidekreditteringer',
+'creditspage'      => 'Sidekrediteringer',
 'nocredits'        => 'Ingen krediteringer er tilgjengelig for denne siden.',
 
 # Spam protection
@@ -1893,7 +1897,7 @@ For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per li
 # Math options
 'mw_math_png'    => 'Vis alltid som PNG',
 'mw_math_simple' => 'HTML hvis veldig enkel, ellers PNG',
-'mw_math_html'   => 'HTML vis mulig, ellers PNG',
+'mw_math_html'   => 'HTML hvis mulig, ellers PNG',
 'mw_math_source' => 'Behold som TeX (for tekst-nettlesere)',
 'mw_math_modern' => 'Anbefalt for moderne nettlesere',
 'mw_math_mathml' => 'MathML hvis mulig',
@@ -2245,7 +2249,7 @@ E-postsenderen ga følgende melding: $1',
 'confirmemail_needlogin'  => 'Du må $1 for å bekrefte e-postadressen din.',
 'confirmemail_success'    => 'Din e-postadresse har nå blitt bekreftet. Du kan nå logge inn og nyte wikien.',
 'confirmemail_loggedin'   => 'E-postadressen din har blitt bekreftet.',
-'confirmemail_error'      => 'Noe gitt galt i lagringa av din bekreftelse.',
+'confirmemail_error'      => 'Noe gikk galt under lagringen av din bekreftelse.',
 'confirmemail_subject'    => 'Bekreftelsesmelding fra {{SITENAME}}',
 'confirmemail_body'       => 'Noen, antageligvis deg, fra IP-adressen $1, har registrert kontoen «$2» på {{SITENAME}}, og oppgitt denne e-postadressen. For å bekrefte at kontoen virkelig tilhører deg og for å slå på e-posttjenester på {{SITENAME}}, åpne denne lenken i din nettleser: $3
 

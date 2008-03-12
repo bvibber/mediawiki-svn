@@ -907,7 +907,7 @@ Stelle sicher, dass die Versionsgeschichte eines Artikel historisch korrekt ist.
 Versuche es über die Volltextsuche.
 Alternativ kannst du auch den [[Special:Allpages|alphabetischen Index]] nach ähnlichen Begriffen durchsuchen.
 
-Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ verfassen.",
+Wenn du dich mit dem Thema auskennst, kannst du selbst die Seite „[[$1]]“ verfassen.",
 'noexactmatch-nocreate' => "'''Es existiert keine Seite mit dem Titel „$1“.'''",
 'toomanymatches'        => 'Es Anzahl der Suchergnisse ist zu groß, bitte versuche eine andere Abfrage.',
 'titlematches'          => 'Übereinstimmungen mit Seitentiteln',
@@ -1099,8 +1099,8 @@ Bitte beachte, dass, genau wie bei normalen Seiteninhalten, andere Benutzer dein
 'filename'                    => 'Dateiname',
 'filedesc'                    => 'Beschreibung',
 'fileuploadsummary'           => 'Beschreibung/Quelle:',
-'filestatus'                  => 'Copyright-Status',
-'filesource'                  => 'Quelle',
+'filestatus'                  => 'Copyright-Status:',
+'filesource'                  => 'Quelle:',
 'uploadedfiles'               => 'Hochgeladene Dateien',
 'ignorewarning'               => 'Warnung ignorieren und Datei speichern.',
 'ignorewarnings'              => 'Warnungen ignorieren',
@@ -1137,8 +1137,8 @@ Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses
 'uploadscripted'              => 'Diese Datei enthält HTML- oder Scriptcode, der irrtümlich von einem Webbrowser ausgeführt werden könnte.',
 'uploadcorrupt'               => 'Die Datei ist beschädigt oder hat eine falsche Datei-Erweiterung. Bitte überprüfe die Datei und wiederhole den Hochlade-Vorgang.',
 'uploadvirus'                 => 'Diese Datei enthält einen Virus! Details: $1',
-'sourcefilename'              => 'Quelldatei',
-'destfilename'                => 'Zielname',
+'sourcefilename'              => 'Quelldatei:',
+'destfilename'                => 'Zielname:',
 'watchthisupload'             => 'Diese Seite beobachten',
 'filewasdeleted'              => 'Eine Datei mit diesem Namen wurde schon einmal hochgeladen und zwischenzeitlich wieder gelöscht. Bitte prüfe zuerst den Eintrag im $1, bevor du die Datei wirklich speicherst.',
 'upload-wasdeleted'           => "'''Achtung: Du lädst eine Datei hoch, die bereits früher gelöscht wurde.'''
@@ -1161,7 +1161,7 @@ Bitte gib der Datei einen Namen, der den Inhalt besser beschreibt.',
 'upload-curl-error28'      => 'Zeitüberschreitung beim Hochladen',
 'upload-curl-error28-text' => 'Die Seite braucht zu lange für eine Antwort. Prüfe, ob die Seite online ist, warte einen kurzen Moment und versuche es dann erneut. Es kann sinnvoll sein, einen erneuten Versuch zu einem anderen Zeitpunkt zu probieren.',
 
-'license'            => 'Lizenz',
+'license'            => 'Lizenz:',
 'nolicense'          => 'keine Vorauswahl',
 'license-nopreview'  => '(es ist keine Vorschau verfügbar)',
 'upload_source_url'  => ' (gültige, öffentlich zugängliche URL)',
@@ -1236,6 +1236,7 @@ Bitte gib der Datei einen Namen, der den Inhalt besser beschreibt.',
 * Allgemeine Löschgründe
 ** Urheberrechtsverletzung
 ** Duplikat',
+'filedelete-edit-reasonlist'  => 'Löschgründe bearbeiten',
 
 # MIME search
 'mimesearch'         => 'Suche nach MIME-Typ',
@@ -1370,13 +1371,12 @@ auf die bereits die erste Weiterleitung zeigen sollte.',
 'specialpages'                    => 'Spezialseiten',
 'specialpages-summary'            => 'Diese Seite bietet einen Überblick aller Spezialseiten. Diese werden automatisch generiert und können nicht bearbeitet werden.',
 'spheading'                       => 'Spezialseiten für alle Benutzer',
-'restrictedpheading'              => 'Spezialseiten für Administratoren',
+'restrictedpheading'              => 'Spezialseiten für Benutzer mit erweiterten Rechten',
 'newpages'                        => 'Neue Seiten',
 'newpages-summary'                => 'Diese Spezialseite listet alle neu erstellten Seiten der letzten 30 Tage auf. Die Ausgabe kann auf einen Namensraum und/oder Benutzernamen eingeschränkt werden.',
 'newpages-username'               => 'Benutzername:',
 'ancientpages'                    => 'Seit längerem unbearbeitete Seiten',
 'ancientpages-summary'            => 'Diese Spezialseite zeigt eine Liste von Seiten, die am längsten nicht mehr geändert worden sind.',
-'intl'                            => 'Interwiki-Links',
 'move'                            => 'Verschieben',
 'movethispage'                    => 'Seite verschieben',
 'unusedimagestext'                => '<p>Bitte beachte, dass andere Webseiten diese Datei mit einer direkten URL verlinken können. Diese wird nicht als Verwendung erkannt, so dass die Datei hier aufgeführt wird.</p>',
@@ -1472,6 +1472,7 @@ Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klick
 'unwatch'              => 'nicht mehr beobachten',
 'unwatchthispage'      => 'Nicht mehr beobachten',
 'notanarticle'         => 'Keine Seite',
+'notvisiblerev'        => 'Version wurde gelöscht',
 'watchnochange'        => 'Keine der von dir beobachteten Seiten wurde während des angezeigten Zeitraums bearbeitet.',
 'watchlist-details'    => 'Du beobachtest {{PLURAL:$1|1 Seite|$1 Seiten}}.',
 'wlheader-enotif'      => '* Der E-Mail-Benachrichtigungsdienst ist aktiviert.',
@@ -1550,6 +1551,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 ** Wunsch des Autors
 ** Urheberrechtsverletzung
 ** Vandalismus',
+'delete-edit-reasonlist'      => 'Löschgründe bearbeiten',
 'delete-toobig'               => 'Diese Seite hat mit mehr als $1 Versionen eine sehr lange Versionsgeschichte. Das Löschen solcher Seiten wurde eingeschränkt, um eine versehentliche Überlastung der Server zu verhindern.',
 'delete-warning-toobig'       => 'Diese Seite hat mit mehr als $1 Versionen eine sehr lange Versionsgeschichte. Das Löschen kann zu Störungen im Datenbankbetrieb führen.',
 'rollback'                    => 'Zurücksetzen der Änderungen',
@@ -1576,7 +1578,6 @@ Bitte gehe zurück und versuche den Vorgang erneut auszuführen.',
 'protectexpiry'               => 'Sperrdauer:',
 'protect_expiry_invalid'      => 'Die eingegebene Dauer ist ungültig.',
 'protect_expiry_old'          => 'Die Sperrzeit liegt in der Vergangenheit.',
-'unprotectsub'                => '(Aufhebung der Sperrung von „$1“)',
 'protect-unchain'             => 'Verschiebeschutz ändern',
 'protect-text'                => "Hier kannst du den Schutzstatus für die Seite '''<nowiki>\$1</nowiki>''' einsehen und ändern.",
 'protect-locked-blocked'      => 'Du kannst den Seitenschutz nicht ändern, da dein Benutzerkonto gesperrt ist. Hier sind die aktuellen Seitenschutz-Einstellungen für die Seite <strong>„$1“:</strong>',
@@ -1697,6 +1698,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'IP-Adresse/Benutzer sperren',
+'blockip-legend'              => 'IP-Adresse/Benutzer sperren',
 'blockiptext'                 => 'Mit diesem Formular sperrst du eine IP-Adresse oder einen Benutzernamen, so dass von dort keine Änderungen mehr vorgenommen werden können.
 Dies sollte nur erfolgen, um Vandalismus zu verhindern und in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]].
 Bitte gib den Grund für die Sperre an.',
@@ -1799,7 +1801,8 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'databasenotlocked'   => 'Die Datenbank ist nicht gesperrt.',
 
 # Move page
-'movepage'                => 'Seite verschieben',
+'move-page'               => 'Verschiebe „$1“',
+'move-page-legend'        => 'Seite verschieben',
 'movepagetext'            => 'Mit diesem Formular kannst du eine Seite umbenennen (mitsamt allen Versionen). Der alte Titel wird zum neuen weiterleiten. Links auf den alten Titel werden nicht geändert.',
 'movepagetalktext'        => "Die dazugehörige Diskussionsseite wird, sofern vorhanden, mitverschoben, '''es sei denn:'''
 *Es existiert bereits eine Diskussionsseite mit diesem Namen, oder

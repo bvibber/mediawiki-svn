@@ -16,6 +16,7 @@
  * @author לערי ריינהארט
  * @author SPQRobin
  * @author OsamaK
+ * @author ترجمان05
  */
 
 $linkPrefixExtension = true;
@@ -390,6 +391,7 @@ $messages = array(
 'tog-nolangconversion'        => 'عطل تحويل اللهجات',
 'tog-ccmeonemails'            => 'أرسل لي نسخا من رسائل البريد الإلكتروني التي أرسلها للمستخدمين الآخرين',
 'tog-diffonly'                => 'لا تعرض محتوى الصفحة أسفل الفروقات',
+'tog-showhiddencats'          => 'أعرض التّصنيفات المخفية',
 
 'underline-always'  => 'دائما',
 'underline-never'   => 'أبدا',
@@ -450,12 +452,14 @@ $messages = array(
 'dec'           => 'ديسمبر',
 
 # Bits of text used by many pages
-'categories'            => 'تصنيفات',
-'pagecategories'        => '{{PLURAL:$1|تصنيف|تصنيفات}}',
-'category_header'       => 'الصفحات في التصنيف "$1"',
-'subcategories'         => 'التصنيفات الفرعية',
-'category-media-header' => 'ملفات الميديا في التصنيف "$1"',
-'category-empty'        => "''هذا التصنيف لا يحتوي حاليا على مقالات أو ملفات ميديا.''",
+'categories'               => 'تصنيفات',
+'pagecategories'           => '{{PLURAL:$1|تصنيف|تصنيفات}}',
+'category_header'          => 'الصفحات في التصنيف "$1"',
+'subcategories'            => 'التصنيفات الفرعية',
+'category-media-header'    => 'ملفات الميديا في التصنيف "$1"',
+'category-empty'           => "''هذا التصنيف لا يحتوي حاليا على مقالات أو ملفات ميديا.''",
+'hidden-categories'        => '{{PLURAL:$1|تصنيف مخفي|تصنيفات مخفية}}',
+'hidden-category-category' => 'تصنيفات مخفية', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => "<big>'''تم تثبيت ميدياويكي بنجاح.'''</big>",
 'mainpagedocfooter' => 'استشر [http://meta.wikimedia.org/wiki/Help:Contents دليل المستخدم] لمعلومات حول استخدام برنامج الويكي.
@@ -897,7 +901,6 @@ $1 ساعة.',
 في نص التعديل. التعديل تم رفضه لمنع فساد نص المقالة. 
 هذا يحدث أحيانا عندما تستخدم خدمة بروكسي مجهولة معيبة أساسها الويب.</strong>',
 'editing'                   => 'تحرير $1',
-'editinguser'               => "تغيير صلاحيات المستخدم للمستخدم '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'تحرير $1 (قسم)',
 'editingcomment'            => 'تحرير $1 (تعليق)',
 'editconflict'              => 'تضارب في التحرير: $1',
@@ -931,6 +934,7 @@ $1 ساعة.',
 'templatesusedsection'      => 'القوالب المستخدمة في هذا القسم:',
 'template-protected'        => '(حماية كاملة)',
 'template-semiprotected'    => '(حماية جزئية)',
+'hiddencategories'          => 'هذه الصفحة موجودة في {{PLURAL:$1|تصنيف مخفي واحد|$1 تصنيف مخفي}}:',
 'edittools'                 => '<!-- النص هنا سيظهر تحت صندوق التحرير واستمارة رفع الصور. -->',
 'nocreatetitle'             => 'تم تحديد إنشاء الصفحات',
 'nocreatetext'              => 'قام {{SITENAME}} بتحديد القدرة على إنشاء صفحات جديدة.
@@ -1155,6 +1159,7 @@ $1 ساعة.',
 'userrights-lookup-user'           => 'إدارة مجموعات المستخدم',
 'userrights-user-editname'         => 'أدخل اسم مستخدم:',
 'editusergroup'                    => 'تعديل مجموعات المستخدم',
+'editinguser'                      => "تغيير صلاحيات المستخدم للمستخدم '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'تعديل مجموعات المستخدم',
 'saveusergroups'                   => 'حفظ مجموعات المستخدم',
 'userrights-groupsmember'          => 'عضو في:',
@@ -1256,8 +1261,8 @@ $1 ساعة.',
 'filename'                    => 'اسم الملف',
 'filedesc'                    => 'ملخص',
 'fileuploadsummary'           => 'ملخص:',
-'filestatus'                  => 'حالة الترخيص',
-'filesource'                  => 'مصدر',
+'filestatus'                  => 'حالة حقوق النسخ:',
+'filesource'                  => 'مصدر:',
 'uploadedfiles'               => 'الملفات المرفوعة',
 'ignorewarning'               => 'تجاهل هذا التحذير واحفظ الملف على أية حال.',
 'ignorewarnings'              => 'أهمل أية تحذيرات',
@@ -1272,7 +1277,7 @@ $1 ساعة.',
 'largefileserver'             => 'حجم هذا الملف أكبر من المسموح به على هذا الخادم.',
 'emptyfile'                   => 'يبدو أن الملف الذي رفعته فارغ. قد يكون سبب ذلك خطأ في كتابة الاسم. من فضلك تأكد من أنك تريد فعلا رفع هذا الملف.',
 'fileexists'                  => 'هناك ملف موجود يحمل نفس هذا الاسم الرجاء التأكد من هذا الملف باتباع الوصلة التالية <strong><tt>$1</tt></strong> قبل القيام بتغييره.',
-'filepageexists'              => 'صفحة (ليست ملفا) بهذا الاسم موجودة بالفعل، من فضلك تحقق من <strong><tt>$1</tt></strong> لو كنت غير متأكد من أنك تريد تغييرها.',
+'filepageexists'              => 'صفحة الوصف لهذا الملف تم إنشاؤها بالفعل في <strong><tt>$1</tt></strong>، لكن لا يوجد ملف بهذا الاسم حاليا. الملخص الذي تدخله لن يظهر على صفحة الوصف. لجعل ملخصك يظهر هناك، ستحتاج إلى تعديله يدويا',
 'fileexists-extension'        => 'يوجد ملف باسم مشابه:<br />
 اسم الملف المراد رفعه: <strong><tt>$1</tt></strong><br />
 اسم الملف الموجود بالفعل: <strong><tt>$2</tt></strong><br />
@@ -1294,8 +1299,8 @@ $1 ساعة.',
 'uploadscripted'              => 'هذا الملف  يضم كود HTML أو كود آخر يمكن أن يؤول بطريقة خاطئة بواسطة متصفح ويب.',
 'uploadcorrupt'               => 'هذا الملف فاسد أو له امتداد خاطيء. من فضلك تأكد من الملف وأعد الرفع مرة أخرى.',
 'uploadvirus'                 => 'الملف يحتوي على فيروس! التفاصيل: $1',
-'sourcefilename'              => 'اسم الملف المصدر',
-'destfilename'                => 'تخرين الملف باسم',
+'sourcefilename'              => 'اسم الملف المصدر:',
+'destfilename'                => 'اسم الملف المستهدف:',
 'watchthisupload'             => 'راقب هذه الصفحة',
 'filewasdeleted'              => 'تم رفع ثم حذف ملف بهذا الاسم من قبل. من الأفضل مراجعة $1 قبل رفعه مرة أخرى.',
 'upload-wasdeleted'           => "'''تحذير: أنت تقوم برفع ملف تم حذفه في السابق.'''
@@ -1331,7 +1336,7 @@ PICT # misc.
 'upload-curl-error28'      => 'انتهاء مهلة الرفع',
 'upload-curl-error28-text' => 'أخذ الموقع وقتا طويلا للاستجابة. من فضلك تأكد أن الموقع يعمل، وانتظر فترة قصيرة ثم حاول مرة أخرى. ربما تريد المحاولة في وقت أقل ازدحاما.',
 
-'license'            => 'ترخيص',
+'license'            => 'ترخيص:',
 'nolicense'          => 'غير محدد',
 'license-nopreview'  => '(العرض المسبق غير متوفر)',
 'upload_source_url'  => '(عنوان ويب صحيح، يمكن الوصول إليه)',
@@ -1404,6 +1409,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*أسباب الحذف الشائعة
 ** خرق حقوق النشر
 ** ملف مكرر',
+'filedelete-edit-reasonlist'  => 'عدل أسباب الحذف',
 
 # MIME search
 'mimesearch'         => 'بحث MIME',
@@ -1514,7 +1520,6 @@ PICT # misc.
 'newpages'                => 'صفحات جديدة',
 'newpages-username'       => 'اسم المستخدم:',
 'ancientpages'            => 'أقدم الصفحات',
-'intl'                    => 'وصلات بين اللغات',
 'move'                    => 'نقل',
 'movethispage'            => 'انقل هذه الصفحة',
 'unusedimagestext'        => '<p>من فضلك لاحظ أن المواقع الأخرى ربما تصل إلى ملف بالمسار المباشر، ولذا ربما يكون معروضا هنا بالرغم من كونه مستخدما.</p>',
@@ -1532,7 +1537,7 @@ PICT # misc.
 'booksources-go'            => 'اذهب',
 'booksources-text'          => 'توجد أدناه قائمة بوصلات لمواقع أخرى تبيع الكتب الجديدة والمستعملة، أيضا يمكنك أن تحصل على معلومات إضافية عن الكتب التي تبحث عنها من هناك:',
 
-'categoriespagetext' => 'التصنيفات التالية موجودة في الويكي.',
+'categoriespagetext' => 'التصنيفات التالية تحتوي على صفحات أو ميديا.',
 'data'               => 'بيانات',
 'userrights'         => 'إدارة صلاحيات المستخدم',
 'groups'             => 'مجموعات المستخدم',
@@ -1613,6 +1618,7 @@ PICT # misc.
 'unwatch'              => 'إيقاف المراقبة',
 'unwatchthispage'      => 'توقف عن المراقبة',
 'notanarticle'         => 'ليست صفحة محتوى',
+'notvisiblerev'        => 'النسخة تم حذفها',
 'watchnochange'        => 'لم يتم تعديل أي صفحة في قائمة مراقبتك خلال الفترة المحددة.',
 'watchlist-details'    => '{{PLURAL:$1|$1 صفحة|$1 صفحة}} مراقبة بدون عد صفحات النقاش.',
 'wlheader-enotif'      => '* خاصية الإعلام بالبريد الإلكتروني مفعلة.',
@@ -1693,6 +1699,7 @@ $NEWPAGE
 ** طلب المؤلف
 ** خرق لحقوق التأليف والنشر
 ** تخريب',
+'delete-edit-reasonlist'      => 'عدل أسباب الحذف',
 'delete-toobig'               => 'هذه الصفحة لها تاريخ تعديلات كبير، أكثر من $1 نسخة. حذف مثل هذه الصفحات تم منعه لمنع حدوث اضطراب فجائي في {{SITENAME}}.',
 'delete-warning-toobig'       => 'هذه الصفحة لها تاريخ تعديلات كبير، أكثر من $1 نسخة. حذفها قد يؤدي إلى اضطراب عمليات قاعدة البيانات في {{SITENAME}}؛ تقدم مع الحذر.',
 'rollback'                    => 'استرجاع التعديلات',
@@ -1718,7 +1725,6 @@ $NEWPAGE
 'protectexpiry'               => 'تنتهي في:',
 'protect_expiry_invalid'      => 'وقت الانتهاء غير صحيح.',
 'protect_expiry_old'          => 'وقت انتهاء المنع يقع في الماضي.',
-'unprotectsub'                => '(إزالة حماية "$1")',
 'protect-unchain'             => 'فصل سماح النقل',
 'protect-text'                => 'يمكنك هنا أن تعرض و تغير مستوى الحماية للصفحة <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'لا يمكنك تغيير مستويات الحماية وأنت ممنوع.
@@ -1835,6 +1841,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'منع مستخدم',
+'blockip-legend'              => 'امنع المستخدم',
 'blockiptext'                 => 'استخدم الاستمارة أدناه لمنع عنوان أيبي
 أو مستخدم مسجل من الكتابة.
 يجب أن يتم هذا فقط لمنع التخريب ومتوافقا مع
@@ -1940,7 +1947,7 @@ $1',
 'databasenotlocked'   => 'قاعدة البيانات ليست مغلقة.',
 
 # Move page
-'movepage'                => 'نقل صفحة',
+'move-page-legend'        => 'نقل صفحة',
 'movepagetext'            => "باستعمال النموذج أدناه بإمكانك أن تغير اسم الصفحة، وأن تنقل تاريخها للاسم الجديد.
 سيتم إنشاء تحويلة من العنوان القديم للصفحة بالعنوان الجديد. لكن، لن يتم تغيير الوصلات في الصفحات التي تتصل بهذه الصفحة، لذا عليك التأكد من عدم وجود وصلات مقطوعة، أو وصلات متتالية، للتأكد من أن المقالات تتصل مع بعضها بشكل مناسب.
 
@@ -2603,7 +2610,7 @@ $1',
 'hideresults'      => 'إخفاء النتائج',
 'useajaxsearch'    => 'استخدم بحث أجاكس',
 
-# Separators for various lists
+# Separators for various lists, etc.
 'semicolon-separator' => '؛',
 'comma-separator'     => '،',
 

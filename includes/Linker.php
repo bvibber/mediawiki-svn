@@ -356,8 +356,9 @@ class Linker {
 		}
 		$titleAttr = wfMsg( 'red-link-title', $titleText );
 		$style = $this->getInternalLinkAttributesObj( $nt, $text, 'new', $titleAttr );
-
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
+
+		wfRunHooks( 'BrokenLink', array( &$this, $nt, $query, &$u, &$style, &$prefix, &$text, &$inside, &$trail ) );
 		$s = "<a href=\"{$u}\"{$style}>{$prefix}{$text}{$inside}</a>{$trail}";
 
 		wfProfileOut( __METHOD__ );
@@ -922,10 +923,13 @@ class Linker {
 	/**
 	 * Generate a user link if the current user is allowed to view it
 	 * @param $rev Revision object.
+	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revUserLink( $rev ) {
-		if( $rev->userCan( Revision::DELETED_USER ) ) {
+	function revUserLink( $rev, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $rev->userCan( Revision::DELETED_USER ) ) {
 			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
@@ -939,18 +943,20 @@ class Linker {
 	/**
 	 * Generate a user tool link cluster if the current user is allowed to view it
 	 * @param $rev Revision object.
+	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revUserTools( $rev ) {
-		if( $rev->userCan( Revision::DELETED_USER ) ) {
+	function revUserTools( $rev, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $rev->userCan( Revision::DELETED_USER ) ) {
 			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() ) .
-				' ' .
-				$this->userToolLinks( $rev->getRawUser(), $rev->getRawUserText() );
+			' ' . $this->userToolLinks( $rev->getRawUser(), $rev->getRawUserText() );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
 		if( $rev->isDeleted( Revision::DELETED_USER ) ) {
-			return '<span class="history-deleted">' . $link . '</span>';
+			return ' <span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
 	}
@@ -1027,10 +1033,12 @@ class Linker {
 			}
 			$auto = $link . $auto;
 			if( $pre ) {
-				$auto = '- ' . $auto; # written summary $presep autocomment (summary /* section */)
+				# written summary $presep autocomment (summary /* section */)
+				$auto = wfMsgExt( 'autocomment-prefix', array( 'escapenoentities', 'content' ) ) . $auto;
 			}
 			if( $post ) {
-				$auto .= ': '; # autocomment $postsep written summary (/* section */ summary)
+				# autocomment $postsep written summary (/* section */ summary)
+				$auto .= wfMsgExt( 'colon-separator', array( 'escapenoentities', 'content' ) );
 			}
 			$auto = '<span class="autocomment">' . $auto . '</span>';
 			$comment = $pre . $auto . $post;
@@ -1118,14 +1126,16 @@ class Linker {
 	 *
 	 * @param Revision $rev
 	 * @param bool $local Whether section links should refer to local page
+	 * @param $isPublic, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revComment( Revision $rev, $local = false ) {
-		if( $rev->userCan( Revision::DELETED_COMMENT ) ) {
+	function revComment( Revision $rev, $local = false, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
+			$block = " <span class=\"comment\">" . wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
+		} else if( $rev->userCan( Revision::DELETED_COMMENT ) ) {
 			$block = $this->commentBlock( $rev->getRawComment(), $rev->getTitle(), $local );
 		} else {
-			$block = " <span class=\"comment\">" .
-				wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
+			$block = " <span class=\"comment\">" . wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
 		}
 		if( $rev->isDeleted( Revision::DELETED_COMMENT ) ) {
 			return " <span class=\"history-deleted\">$block</span>";

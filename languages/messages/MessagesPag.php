@@ -176,10 +176,10 @@ $messages = array(
 # Upload
 'upload'          => 'Mangisigep na file',
 'uploadlog'       => 'Isigep so log',
-'filesource'      => 'Pinanlapuan',
+'filesource'      => 'Pinanlapuan:',
 'uploadedfiles'   => 'Insegep ran file',
 'badfilename'     => 'Binalo so ngaran na file, umpian "$1" so balon ngaran to.',
-'sourcefilename'  => 'Filename na pinanlapuan',
+'sourcefilename'  => 'Filename na pinanlapuan:',
 'watchthisupload' => 'Bantayan yan bolong',
 
 # Image list
@@ -307,7 +307,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'contribslink'       => 'saray entolong to',
 
 # Move page
-'movepage'                => 'Iyales so bolong',
+'move-page-legend'                => 'Iyales so bolong',
 'movearticle'             => 'Iyales so bolong',
 'movepagebtn'             => 'Iyales so bolong',
 'pagemovedsub'            => 'Asumpal lan inyales',

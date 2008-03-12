@@ -596,7 +596,6 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 このページの文章が破損するのを防ぐため、あなたの編集は反映されません。
 問題のある匿名プロキシサービスを利用していると、この問題が起こることがあります。</strong>',
 'editing'                   => '$1 を編集中',
-'editinguser'               => '$1 を編集中',
 'editingsection'            => '$1 を編集中（節単位編集）',
 'editingcomment'            => '$1 を編集中（新規コメント）',
 'editconflict'              => '編集競合: $1',
@@ -842,6 +841,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'userrights-lookup-user'           => '利用者の所属グループの管理',
 'userrights-user-editname'         => '利用者名:',
 'editusergroup'                    => '編集',
+'editinguser'                      => "利用者 [[User:$1|$1]]'''（[[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]）の権限を編集中",
 'userrights-editusergroup'         => '利用者の所属グループ',
 'saveusergroups'                   => '利用者の所属グループを保存',
 'userrights-groupsmember'          => '所属グループ:',
@@ -940,8 +940,8 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'filename'                    => 'ファイル名',
 'filedesc'                    => 'ファイルの概要',
 'fileuploadsummary'           => 'ファイルの概要:',
-'filestatus'                  => '著作権情報',
-'filesource'                  => 'ファイルの出典',
+'filestatus'                  => '著作権情報:',
+'filesource'                  => 'ファイルの出典:',
 'uploadedfiles'               => 'アップロードされたファイル',
 'ignorewarning'               => '警告を無視し、保存してしまう',
 'ignorewarnings'              => '警告を無視',
@@ -980,8 +980,8 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'uploadscripted'              => 'このファイルはウェブブラウザが誤って解釈してしまうおそれのあるHTMLまたはスクリプトコードを含んでいます。',
 'uploadcorrupt'               => '指定したファイルは壊れているか拡張子が正しくありません。ファイルを確認の上再度アップロードをしてください。',
 'uploadvirus'                 => 'このファイルにはウイルスが含まれています!! &nbsp;詳細: $1',
-'sourcefilename'              => 'ファイル名',
-'destfilename'                => '掲載するファイル名',
+'sourcefilename'              => 'ファイル名:',
+'destfilename'                => '掲載するファイル名:',
 'watchthisupload'             => 'このページをウォッチ',
 'filewasdeleted'              => 'この名前のファイルは一度アップロードされその後削除されています。アップロードの前に$1を確認してみてください。',
 'upload-wasdeleted'           => "'''警告:あなたは過去に削除されたファイルをアップロードしようとしています。'''
@@ -1002,7 +1002,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'upload-curl-error28'      => 'タイムアウト',
 'upload-curl-error28-text' => '相手サイトからの応答がありませんでした。指定したサイトが現在使用可能かを確認した上で、しばらく待ってもう一度お試しください。また、インターネットが混雑していない時間帯に実行することを推奨します。',
 
-'license'            => 'ライセンス',
+'license'            => 'ライセンス:',
 'nolicense'          => 'ライセンス情報を選択してください:',
 'license-nopreview'  => '（プレビューはありません）',
 'upload_source_url'  => '（インターネット上のURL）',
@@ -1075,6 +1075,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'filedelete-reason-dropdown'  => '*よくある削除理由
 ** 著作権侵害
 ** ファイルの重複',
+'filedelete-edit-reasonlist'  => '削除理由を編集する',
 
 # MIME search
 'mimesearch'         => 'MIMEタイプ検索',
@@ -1178,7 +1179,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'newpages'                => '新しいページ',
 'newpages-username'       => '利用者名:',
 'ancientpages'            => '更新されていないページ',
-'intl'                    => '言語間リンク',
 'move'                    => '移動',
 'movethispage'            => 'このページを移動',
 'unusedimagestext'        => '<p>他のウェブサイトがURLを直接用いて画像にリンクしている場合もあります。以下の画像一覧には、そのような形で利用されている画像が含まれている可能性があります。</p>',
@@ -1273,6 +1273,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'unwatch'              => 'ウォッチリストから削除',
 'unwatchthispage'      => 'ウォッチリストから削除',
 'notanarticle'         => 'これは記事ではありません。',
+'notvisiblerev'        => 'この版は削除されました',
 'watchnochange'        => 'その期間内にウォッチリストにあるページはどれも編集されていません。',
 'watchlist-details'    => '* ウォッチリストに入っているページ数（ノート除く）: $1.',
 'wlheader-enotif'      => '* メール通知が有効になっています',
@@ -1359,6 +1360,7 @@ $NEWPAGE
 ** 投稿者依頼
 ** 著作権侵害
 ** 荒らし',
+'delete-edit-reasonlist'      => '削除理由を編集する',
 'delete-toobig'               => 'このページには、$1版を超える多くの編集履歴があります。処理負荷増大によって{{SITENAME}}に偶発的なトラブルが起こることを防ぐため、このようなページの削除は制限されています。',
 'delete-warning-toobig'       => 'このページには、$1版を超える多くの編集履歴があります。削除の際、{{SITENAME}}のデータベース処理に大きな負荷がかかりますので、十分に注意してください。',
 'rollback'                    => '編集の差し戻し',
@@ -1384,7 +1386,6 @@ $NEWPAGE
 'protectexpiry'               => '期間',
 'protect_expiry_invalid'      => '期間の指定が無効です。',
 'protect_expiry_old'          => '保護期限が過去の時刻です。',
-'unprotectsub'                => '"$1" の保護解除',
 'protect-unchain'             => '移動権限を操作',
 'protect-text'                => "ページ \"'''<nowiki>\$1</nowiki>'''\" の保護レベルを表示・操作できます。",
 'protect-locked-blocked'      => 'あなたはブロックされているため、保護レベルを変更できません。
@@ -1499,6 +1500,7 @@ $NEWPAGE
 
 # Block/unblock
 'blockip'                     => '投稿ブロック',
+'blockip-legend'              => '利用者のブロック',
 'blockiptext'                 => '指定した利用者やIPアドレスからの投稿をブロックすることができます。',
 'ipaddress'                   => 'IPアドレス',
 'ipadressorusername'          => '利用者名 / IPアドレス',
@@ -1595,7 +1597,7 @@ $NEWPAGE
 'databasenotlocked'   => 'データベースはロックされていません。',
 
 # Move page
-'movepage'                => 'ページの移動',
+'move-page-legend'        => 'ページの移動',
 'movepagetext'            => '下のフォームを利用すると、ページ名を変更し、その履歴も変更先へ移動することができます。古いページは変更先へのリダイレクトページとなります。ページの中身と変更前のページに張られたリンクは変わりません。ですから、二重になったり壊れてしまったリダイレクトをチェックする必要があります。
 
 移動先がすでに存在する場合には、履歴が移動元ページへのリダイレクトただ一つである場合を除いて移動できません。つまり、間違えてページ名を変更した場合には元に戻せます。

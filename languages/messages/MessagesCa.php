@@ -696,7 +696,6 @@ Si us plau, intenteu-lo una altra vegada. Si continua havent-hi problemes, eixiu
 <strong>Si es tracta d'una contribució legítima, si us plau, intenteu-ho una altra vegada. Si continua havent-hi problemes, finalitzeu la sessió i torneu a iniciar-ne una.</strong>",
 'token_suffix_mismatch'     => "<strong>S'ha rebutjat la vostra edició perquè el vostre client ha fet malbé els caràcters de puntuació en el testimoni d'edició. S'ha rebutjat l'edició per a evitar la corrupció del text de la pàgina. Açò passa a vegades quan s'utilitza un servei web de servidor intermediari anònim amb problemes.</strong>",
 'editing'                   => "S'està editant $1",
-'editinguser'               => "S'està editant $1",
 'editingsection'            => "S'està editant $1 (secció)",
 'editingcomment'            => "S'està editant $1 (comentari)",
 'editconflict'              => "Conflicte d'edició: $1",
@@ -958,6 +957,7 @@ $2 Llista redireccions   Cerca $3 $9',
 'userrights-lookup-user'           => "Gestiona els grups d'usuari",
 'userrights-user-editname'         => "Introduïu un nom d'usuari:",
 'editusergroup'                    => "Edita els grups d'usuaris",
+'editinguser'                      => "S'està canviant els permisos de l'usuari '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => "Edita els grups d'usuaris",
 'saveusergroups'                   => "Desa els grups d'usuari",
 'userrights-groupsmember'          => 'Membre de:',
@@ -1060,8 +1060,8 @@ Totes les hores són les del servidor (UTC).",
 'filename'                    => 'Nom de fitxer',
 'filedesc'                    => 'Resum',
 'fileuploadsummary'           => 'Resum:',
-'filestatus'                  => "Situació dels drets d'autor",
-'filesource'                  => 'Font',
+'filestatus'                  => "Situació dels drets d'autor:",
+'filesource'                  => 'Font:',
 'uploadedfiles'               => 'Fitxers carregats',
 'ignorewarning'               => 'Ignora qualsevol avís i desa el fitxer igualment.',
 'ignorewarnings'              => 'Ignora qualsevol avís',
@@ -1098,8 +1098,8 @@ Si teniu la imatge en resolució completa, pugeu-la, sinó mireu de canviar-li e
 'uploadscripted'              => 'Aquest fitxer conté codi HTML o de seqüències que pot ser interpretat equivocadament per un navegador.',
 'uploadcorrupt'               => 'El fitxer està corrupte o té una extensió incorrecte. Reviseu-lo i torneu-lo a pujar.',
 'uploadvirus'                 => 'El fitxer conté un virus! Detalls: $1',
-'sourcefilename'              => 'Font del nom del fitxer',
-'destfilename'                => 'Nom del fitxer de destinació',
+'sourcefilename'              => 'Nom del fitxer font:',
+'destfilename'                => 'Nom del fitxer de destinació:',
 'watchthisupload'             => 'Vigila aquesta pàgina',
 'filewasdeleted'              => "Prèviament es va carregar un fitxer d'aquest nom i després va ser esborrat. Hauríeu de verificar $1 abans de procedir a carregar-lo una altra vegada.",
 'upload-wasdeleted'           => "'''Atenció: Esteu carregant un fitxer que s'havia eliminat abans.'''
@@ -1121,7 +1121,7 @@ A continuació teniu el registre d'eliminació per a que pugueu comprovar els mo
 'upload-curl-error28'      => "S'ha excedit el temps d'espera de la càrrega",
 'upload-curl-error28-text' => "El lloc ha trigat massa a respondre. Comproveu que està funcionant, espereu una estona i torneu-ho a provar. Podeu mirar d'intentar-ho quan hi hagi menys trànsit a la xarxa.",
 
-'license'            => 'Llicència',
+'license'            => 'Llicència:',
 'nolicense'          => "No se n'ha seleccionat cap",
 'license-nopreview'  => '(La previsualització no està disponible)',
 'upload_source_url'  => ' (un URL vàlid i accessible públicament)',
@@ -1194,6 +1194,7 @@ A continuació teniu el registre d'eliminació per a que pugueu comprovar els mo
 'filedelete-reason-dropdown'  => "*Motius d'eliminació comuns
 ** Violació dels drets d'autor / copyright
 ** Fitxer duplicat",
+'filedelete-edit-reasonlist'  => "Edita els motius d'eliminació",
 
 # MIME search
 'mimesearch'         => 'Cerca per MIME',
@@ -1308,7 +1309,6 @@ segon redireccionament, la qual cosa dóna normalment l\'article "real", al que 
 'newpages'                => 'Pàgines noves',
 'newpages-username'       => "Nom d'usuari:",
 'ancientpages'            => 'Pàgines més antigues',
-'intl'                    => 'Enllaços entre llengües',
 'move'                    => 'Reanomena',
 'movethispage'            => 'Trasllada la pàgina',
 'unusedimagestext'        => '<p>Tingueu en compte que altres llocs web poden enllaçar un fitxer amb un URL directe i estar llistat ací tot i estar en ús actiu.</p>',
@@ -1324,7 +1324,7 @@ segon redireccionament, la qual cosa dóna normalment l\'article "real", al que 
 'booksources-go'            => 'Vés-hi',
 'booksources-text'          => "A sota hi ha una llista d'enllaços d'altres llocs que venen llibres nous i de segona mà, i també podrien tenir més informació dels llibres que esteu cercant:",
 
-'categoriespagetext' => 'Les categories següents existeixen en el wiki.',
+'categoriespagetext' => 'Les categories següents contenen pàgines o fitxers multimèdia.',
 'data'               => 'Dades',
 'userrights'         => "Gestió dels permisos d'usuari",
 'groups'             => "Grups d'usuaris",
@@ -1413,6 +1413,7 @@ Si voleu deixar de vigilar la pàgina, cliqueu sobre l'enllaç de «Desatén» d
 'unwatch'              => 'Desatén',
 'unwatchthispage'      => 'Desatén',
 'notanarticle'         => 'No és una pàgina amb contingut',
+'notvisiblerev'        => 'La versió ha estat esborrada',
 'watchnochange'        => "No s'ha editat cap dels elements que vigileu en el període de temps que es mostra.",
 'watchlist-details'    => '{{PLURAL:$1|$1 pàgina|$1 pàgines}} vigilades, sense comptar les pàgines de discussió',
 'wlheader-enotif'      => "* S'ha habilitat la notificació per correu electrònic.",
@@ -1498,6 +1499,7 @@ Mostra $2 per a un registre dels esborrats més recents.',
 ** Proves
 ** Error en el nom
 ** Fer lloc a un trasllat",
+'delete-edit-reasonlist'      => "Edita els motius d'eliminació",
 'delete-toobig'               => "Aquesta pàgina té un historial d'edicions molt gran, amb més de $1 canvis. L'eliminació d'aquestes pàgines està restringida per a prevenir que hi pugui haver un desajustament seriós de la base de dades de tot el projecte {{SITENAME}} per accident.",
 'delete-warning-toobig'       => "Aquesta pàgina té un historial d'edicions molt gran, amb més de $1 canvis. Eliminar-la podria suposar un seriós desajustament de la base de dades de tot el projecte {{SITENAME}}; aneu en compte abans dur a terme l'acció.",
 'rollback'                    => 'Reverteix edicions',
@@ -1524,7 +1526,6 @@ La darrera edició s'ha fet per l'usuari [[User:$3|$3]] ([[User talk:$3|Discussi
 'protectexpiry'               => "Data d'expiració",
 'protect_expiry_invalid'      => "Data d'expiració no vàlida",
 'protect_expiry_old'          => 'El temps de termini ja ha passat.',
-'unprotectsub'                => "(S'està desprotegint «$1»)",
 'protect-unchain'             => 'Permet diferent nivell de protecció per editar i per moure',
 'protect-text'                => 'Aquí podeu visualitzar i canviar el nivell de protecció de la pàgina «<nowiki>$1</nowiki>». Assegureu-vos de seguir les polítiques existents.',
 'protect-locked-blocked'      => 'No podeu canviar els nivells de protecció mentre estigueu bloquejats. Ací hi ha els
@@ -1646,6 +1647,7 @@ $1",
 
 # Block/unblock
 'blockip'                     => "Bloca l'usuari",
+'blockip-legend'              => "Bloca l'usuari",
 'blockiptext'                 => "Empreu el següent formulari per blocar l'accés
 d'escriptura des d'una adreça IP específica o des d'un usuari determinat.
 això només s'hauria de fer per prevenir el vandalisme, i
@@ -1755,7 +1757,8 @@ Confirmeu que això és el que voleu fer.",
 'databasenotlocked'   => 'La base de dades no està bloquejada.',
 
 # Move page
-'movepage'                => 'Reanomena la pàgina',
+'move-page'               => 'Mou $1',
+'move-page-legend'        => 'Reanomena la pàgina',
 'movepagetext'            => "Emprant el següent formulari reanomenareu una pàgina,
 movent tot el seu historial al nou nom.
 El títol anterior es convertirà en un redireccionament al nou títol.

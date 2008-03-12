@@ -299,6 +299,7 @@ class Skin extends Linker {
 		global $wgBreakFrames, $wgRequest, $wgVariantArticlePath, $wgActionPaths;
 		global $wgUseAjax, $wgAjaxWatch;
 		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
+		global $wgRestrictionTypes, $wgLivePreview;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -318,8 +319,6 @@ class Skin extends Linker {
 			'wgPageName' => $wgTitle->getPrefixedDBKey(),
 			'wgTitle' => $wgTitle->getText(),
 			'wgAction' => $wgRequest->getText( 'action', 'view' ),
-			'wgRestrictionEdit' => $wgTitle->getRestrictions( 'edit' ),
-			'wgRestrictionMove' => $wgTitle->getRestrictions( 'move' ),
 			'wgArticleId' => $wgTitle->getArticleId(),
 			'wgIsArticle' => $wgOut->isArticle(),
 			'wgUserName' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
@@ -333,7 +332,9 @@ class Skin extends Linker {
 			'wgEnableWriteAPI' => $wgEnableWriteAPI,
 		);
 
-		global $wgLivePreview;
+		foreach( $wgRestrictionTypes as $type )
+			$vars['wgRestriction' . ucfirst( $type )] = $wgTitle->getRestrictions( $type );
+
 		if ( $wgLivePreview && $wgUser->getOption( 'uselivepreview' ) ) {
 			$vars['wgLivepreviewMessageLoading'] = wfMsg( 'livepreview-loading' );
 			$vars['wgLivepreviewMessageReady']   = wfMsg( 'livepreview-ready' );
@@ -539,8 +540,10 @@ END;
 			}
 			$a['onload'] .= 'setupRightClickEdit()';
 		}
-		$a['class'] = 'ns-'.$wgTitle->getNamespace().' '.($wgContLang->isRTL() ? "rtl" : "ltr").
-		' '.Sanitizer::escapeClass( 'page-'.$wgTitle->getPrefixedText() );
+		$a['class'] =
+			'mediawiki ns-'.$wgTitle->getNamespace().
+			' '.($wgContLang->isRTL() ? "rtl" : "ltr").
+			' '.Sanitizer::escapeClass( 'page-'.$wgTitle->getPrefixedText() );
 		return $a;
 	}
 
@@ -623,7 +626,7 @@ END;
 	}
 
 
-	function getCategoryLinks () {
+	function getCategoryLinks() {
 		global $wgOut, $wgTitle, $wgUseCategoryBrowser;
 		global $wgContLang, $wgUser;
 
@@ -640,13 +643,14 @@ END;
 
 		$allCats = $wgOut->getCategoryLinks();
 		$s = '';
+		$colon = wfMsgExt( 'colon-separator', 'escapenoentities' );
 		if ( !empty( $allCats['normal'] ) ) {
 			$t = $embed . implode ( "{$pop} {$sep} {$embed}" , $allCats['normal'] ) . $pop;
 	
-			$msg = wfMsgExt( 'pagecategories', array( 'parsemag', 'escape' ), count( $allCats['normal'] ) );
+			$msg = wfMsgExt( 'pagecategories', array( 'parsemag', 'escapenoentities' ), count( $allCats['normal'] ) );
 			$s .= '<div id="mw-normal-catlinks">' .
 				$this->makeLinkObj( Title::newFromText( wfMsgForContent('pagecategorieslink') ), $msg )
-				. ': ' . $t . '</div>';
+				. $colon . $t . '</div>';
 		}
 
 		# Hidden categories
@@ -659,8 +663,8 @@ END;
 				$class = 'mw-hidden-cats-hidden';
 			}
 			$s .= "<div id=\"mw-hidden-catlinks\" class=\"$class\">" . 
-				wfMsgExt( 'hidden-categories', array( 'parsemag', 'escape' ), count( $allCats['hidden'] ) ) . 
-				': ' . $embed . implode( "$pop $sep $embed", $allCats['hidden'] ) . $pop .
+				wfMsgExt( 'hidden-categories', array( 'parsemag', 'escapenoentities' ), count( $allCats['hidden'] ) ) . 
+				$colon . $embed . implode( "$pop $sep $embed", $allCats['hidden'] ) . $pop .
 				"</div>";
 		}
 
@@ -708,8 +712,15 @@ END;
 
 	function getCategories() {
 		$catlinks=$this->getCategoryLinks();
+		
+		$classes = 'catlinks';
+		
+		if(FALSE === strpos($catlinks,'<div id="mw-normal-catlinks">')) {
+			$classes .= ' catlinks-allhidden';
+		}
+		
 		if(!empty($catlinks)) {
-			return "<div class='catlinks'>{$catlinks}</div>";
+			return "<div id='catlinks' class='$classes'>{$catlinks}</div>";
 		}
 	}
 

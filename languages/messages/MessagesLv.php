@@ -10,6 +10,7 @@
  * @author Nike
  * @author Siebrand
  * @author SPQRobin
+ * @author M.M.S.
  */
 
 /*
@@ -170,6 +171,7 @@ $messages = array(
 'unprotectthispage' => 'Neaizsargāt šo lapu',
 'newpage'           => 'Jauna lapa',
 'talkpage'          => 'Diskusija par šo lapu',
+'talkpagelinktext'  => 'Diskusija',
 'specialpage'       => 'Īpašā Lapa',
 'personaltools'     => 'Lietotāja rīki',
 'postcomment'       => 'Pievienot komentāru',
@@ -413,7 +415,6 @@ Tava IP adrese ir $3. Lūdzu iekļauj to visos turpmākajos pieprasījumos.',
 'note'                     => '<strong>Piezīme: </strong>',
 'previewnote'              => "'''Atceries, ka šis ir tikai pirmskats un vēl nav saglabāts!'''",
 'editing'                  => 'Izmainīt $1',
-'editinguser'              => 'Izmainīt $1',
 'editingsection'           => 'Izmainīt $1 (sadaļa)',
 'editingcomment'           => 'Izmainīt $1 (komentārs)',
 'editconflict'             => 'Izmaiņu konflikts: $1',
@@ -546,6 +547,7 @@ $2 Parādīt pāradresācijas lapas   Meklēt $3 $9',
 
 # User rights
 'userrights-user-editname' => 'Ievadi lietotājvārdu:',
+'editinguser'              => "Izmainīt '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 
 # Recent changes
 'recentchanges'                     => 'Pēdējās izmaiņas',
@@ -608,8 +610,8 @@ Lūdzu, ņem vērā, ka tāpat kā citas wiki lapas arī tevis augšuplādētos 
 'filename'             => 'Faila nosaukums',
 'filedesc'             => 'Kopsavilkums',
 'fileuploadsummary'    => 'Informācija par failu:',
-'filestatus'           => 'Autortiesību statuss',
-'filesource'           => 'Izejas kods',
+'filestatus'           => 'Autortiesību statuss:',
+'filesource'           => 'Izejas kods:',
 'uploadedfiles'        => 'Augšupielādēja failus',
 'ignorewarning'        => 'Ignorēt brīdinājumu un saglabāt failu.',
 'ignorewarnings'       => 'Ignorēt visus brīdinājumus',
@@ -627,11 +629,11 @@ Lūdzu, ņem vērā, ka tāpat kā citas wiki lapas arī tevis augšuplādētos 
 'uploaddisabledtext'   => 'Falu augšupielāde šajā wiki ir atslēgta.',
 'uploadcorrupt'        => 'Šis fails ir bojāts, vai arī tam ir nekorekts paplašinājums. Lūdzu pārbaudi failu un augšupielādē vēlreiz.',
 'uploadvirus'          => 'Šis fails satur vīrusu! Sīkāk: $1',
-'sourcefilename'       => 'Augšuplādējamais fails',
-'destfilename'         => 'Vajadzīgais faila nosaukums',
+'sourcefilename'       => 'Augšuplādējamais fails:',
+'destfilename'         => 'Vajadzīgais faila nosaukums:',
 'watchthisupload'      => 'Uzraudzīt šo lapu',
 
-'license' => 'Licence',
+'license' => 'Licence:',
 
 # Image list
 'imagelist'                 => 'Attēlu uzskaitījums',
@@ -821,7 +823,6 @@ Lūdzu, spied \"''back''\" un atjaunini iepriekšējo lapu. Tad mēģini vēlrei
 'protectsub'         => '(Aizsargāt "$1"?)',
 'confirmprotect'     => 'Apstiprināt aizsargāšanu',
 'protectcomment'     => 'Aizsargāšanas iemesls',
-'unprotectsub'       => '(Neaizsargāt "$1"?)',
 
 # Undelete
 'undelete'           => 'Atjaunot dzēstu lapu',
@@ -894,7 +895,7 @@ Norādi konkrētu iemeslu (piemēram, linkus uz vandalizētajām lapām).',
 'proxyblocksuccess'  => 'Darīts.',
 
 # Move page
-'movepage'         => 'Pārvietot lapu',
+'move-page-legend'         => 'Pārvietot lapu',
 'movepagetext'     => "Šajā lapā tu vari pārdēvēt vai pārvietot lapu, kopā tās izmaiņu hronoloģiju pārvietojot to uz citu nosaukumu.
 Iepriekšējā lapa kļūs par lapu, kas pāradresēs uz jauno lapu.
 Saites uz iepriekšējo lapu netiks mainītas, bet noteikti pārbaudi un izlabo, izskaužot dubultu pāradresāciju vai pāradresāciju uz neesošu lapu.

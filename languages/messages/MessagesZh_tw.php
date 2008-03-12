@@ -904,8 +904,8 @@ $2',
 'filename'                    => '檔案名',
 'filedesc'                    => '檔案描述',
 'fileuploadsummary'           => '檔案描述:',
-'filestatus'                  => '版權狀態',
-'filesource'                  => '來源',
+'filestatus'                  => '版權狀態:',
+'filesource'                  => '來源:',
 'uploadedfiles'               => '已上載檔案',
 'ignorewarning'               => '忽略警告並儲存檔案。',
 'ignorewarnings'              => '忽略所有警告',
@@ -939,8 +939,8 @@ $2',
 'uploadscripted'              => '該檔案包含可能被網路瀏覽器錯誤解釋的 HTML 或腳本代碼。',
 'uploadcorrupt'               => '該檔案包含或具有一個不正確的擴展名。請檢查此檔案並重新上傳。',
 'uploadvirus'                 => '該檔案包含有病毒！詳情: $1',
-'sourcefilename'              => '來源檔案名',
-'destfilename'                => '目標檔案名',
+'sourcefilename'              => '來源檔案名:',
+'destfilename'                => '目標檔案名:',
 'watchthisupload'             => '監視此頁',
 'filewasdeleted'              => '之前已經有一個同名檔案被上傳後又被刪除了。在上傳此檔案之前您需要檢查$1。',
 'upload-wasdeleted'           => "'''警告: 您現在重新上傳一個先前曾經刪除過的檔案。'''
@@ -962,7 +962,7 @@ $2',
 'upload-curl-error28'      => '上傳超時',
 'upload-curl-error28-text' => '網站回應時間過長。請檢查此網站的訪問是否正常，過一會再進行嘗試。您可能需要在網路訪問空閒時間再次進行嘗試。',
 
-'license'            => '授權',
+'license'            => '授權:',
 'nolicense'          => '未選定',
 'license-nopreview'  => '(無預覽可用)',
 'upload_source_url'  => ' (一個有效的，可公開訪問的 URL)',
@@ -1341,7 +1341,6 @@ $NEWPAGE
 'protectexpiry'               => '到期:',
 'protect_expiry_invalid'      => '輸入的終止時間無效。',
 'protect_expiry_old'          => '終止時間已過去。',
-'unprotectsub'                => '(正在解除保護"$1")',
 'protect-unchain'             => '移動權限解鎖',
 'protect-text'                => '你可以在這裡瀏覽和修改對頁面<strong><nowiki>$1</nowiki></strong>的保護級別。',
 'protect-locked-blocked'      => '您不能在被封鎖時更改保護級別。
@@ -1553,7 +1552,7 @@ $1',
 'databasenotlocked'   => '資料庫沒有鎖定。',
 
 # Move page
-'movepage'                => '移動頁面',
+'move-page-legend'                => '移動頁面',
 'movepagetext'            => "用下面的表單來重新命名一個頁面，並將其修訂沿革同時移動到新頁面。
 老的頁面將成為新頁面的重定向頁。
 連結到老頁面的連結並不會自動更改；

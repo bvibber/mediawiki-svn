@@ -436,8 +436,8 @@ säxifägä isem belän [[Special:Userlogin|keräse]].',
 'filename'          => 'Birem iseme',
 'filedesc'          => 'Yomğaq',
 'fileuploadsummary' => 'Yomğaq:',
-'filestatus'        => 'Qälämxaq xäläte',
-'filesource'        => 'Çığanaq',
+'filestatus'        => 'Qälämxaq xäläte:',
+'filesource'        => 'Çığanaq:',
 'uploadedfiles'     => 'Yöklängän biremnär',
 'ignorewarning'     => 'Kisätmägä qaramíçı biremne härxäldä saqla.',
 'badfilename'       => 'Räsem iseme «$1» itep üzgärtelde.',
@@ -613,7 +613,7 @@ Soñğı beterülär $2 bitendä terkälenä.',
 'unlockdbsuccesstext' => 'Bu biremlek yozağı salınğan ide.',
 
 # Move page
-'movepage'         => 'Bit küçerü',
+'move-page-legend'         => 'Bit küçerü',
 'movepagetalktext' => "Bäyle bulğan bäxäs bite kiläse oçraqlarda töp bite belän beryulı '''küçerelmi qala''':
 * Töp bit [[Yärdäm:İsemara|isemara]] arqılı küçerelä;
 * Yaña başlıq astında buş bulmağan ikençe bit bulğanda;

@@ -9,6 +9,8 @@
  * @author Max sonnelid
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Morten
+ * @author Peter Andersen
  */
 
 $namespaceNames = array(
@@ -187,6 +189,7 @@ $messages = array(
 'tog-nolangconversion'        => 'Deaktiver konverteringer af sprogvarianter',
 'tog-ccmeonemails'            => 'Send mig kopier af e-mails, som jeg sender til andre brugere.',
 'tog-diffonly'                => 'Vis ved versionssammenligninger kun forskelle, ikke hele siden',
+'tog-showhiddencats'          => 'Vis skjulte kategorier',
 
 'underline-always'  => 'altid',
 'underline-never'   => 'aldrig',
@@ -247,12 +250,14 @@ $messages = array(
 'dec'           => 'dec',
 
 # Bits of text used by many pages
-'categories'            => 'Kategorier',
-'pagecategories'        => '{{PLURAL:$1|Kategori|Kategorier}}',
-'category_header'       => 'Artikler i kategorien "$1"',
-'subcategories'         => 'Underkategorier',
-'category-media-header' => 'Medier i kategorien „$1“',
-'category-empty'        => "''Denne kategori indeholder for øjeblikket hverken sider eller medie-filer.''",
+'categories'               => 'Kategorier',
+'pagecategories'           => '{{PLURAL:$1|Kategori|Kategorier}}',
+'category_header'          => 'Artikler i kategorien "$1"',
+'subcategories'            => 'Underkategorier',
+'category-media-header'    => 'Medier i kategorien „$1“',
+'category-empty'           => "''Denne kategori indeholder for øjeblikket hverken sider eller medie-filer.''",
+'hidden-categories'        => '{{PLURAL:$1|Skjult kategori|Skjulte kategorier}}',
+'hidden-category-category' => 'Skjulte kategorier', # Name of the category where hidden categories will be listed
 
 'mainpagetext'      => 'MediaWiki er nu installeret.',
 'mainpagedocfooter' => 'Se vores engelsksprogede [http://meta.wikimedia.org/wiki/MediaWiki_localisation dokumentation om tilpasning af brugergrænsefladen] og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] for oplysninger om opsætning og anvendelse.',
@@ -316,10 +321,10 @@ $messages = array(
 'userpage'          => 'Se brugersiden',
 'projectpage'       => 'Se projektsiden',
 'imagepage'         => 'Se billedsiden',
-'mediawikipage'     => 'Vise indholdsside',
-'templatepage'      => 'Vise skabelonside',
-'viewhelppage'      => 'Vise hjælpeside',
-'categorypage'      => 'Vise kategoriside',
+'mediawikipage'     => 'Vis indholdsside',
+'templatepage'      => 'Vis skabelonside',
+'viewhelppage'      => 'Vis hjælpeside',
+'categorypage'      => 'Vis kategoriside',
 'viewtalkpage'      => 'Se diskussion',
 'otherlanguages'    => 'Andre sprog',
 'redirectedfrom'    => '(Omdirigeret fra $1)',
@@ -379,14 +384,16 @@ $messages = array(
 'showtoc'                 => 'vis',
 'hidetoc'                 => 'skjul',
 'thisisdeleted'           => 'Se eller gendan $1?',
-'viewdeleted'             => 'Vise $1?',
+'viewdeleted'             => 'Vis $1?',
 'restorelink'             => '{{PLURAL:$1|en slettet ændring|$1 slettede ændringer}}',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => 'Ugyldig abonnementstype.',
+'feed-unavailable'        => 'RSS og Atom feeds er ikke tilgængelige på {{SITENAME}}',
 'site-rss-feed'           => '$1 RSS-feed',
 'site-atom-feed'          => '$1 Atom-feed',
 'page-rss-feed'           => '"$1" RSS-feed',
 'page-atom-feed'          => '"$1" Atom-feed',
+'red-link-title'          => '$1 (ikke skrevet endnu)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'artikel',
@@ -671,7 +678,6 @@ Prøv venligst igen. Hvis problemet fortsætter, log af og log på igen.</strong
 <strong>Forsøg venligst igen. Hvis problemet fortsætter, log af og log på igen.</strong>",
 'token_suffix_mismatch'     => '<strong>Din redigering er afvist, da din browser har forvansket tegnsætningen i redigeringskontrolfilen. Afvisningen sker for at forhindre utilsigtede ændringer i artiklen. Denne fejl opstår nogle gange, når du redigerer gennem en fejlprogrammeret webbaseret anonymiseringstjeneste.</strong>',
 'editing'                   => 'Redigerer $1',
-'editinguser'               => 'Redigerer $1',
 'editingsection'            => 'Redigerer $1 (afsnit)',
 'editingcomment'            => 'Redigerer $1 (kommentar)',
 'editconflict'              => 'Redigeringskonflikt: $1',
@@ -708,6 +714,7 @@ så du kan ikke gemme dine ændringer lige nu. Det kan godt være en god ide at 
 'templatesusedsection'      => 'Følgende skabeloner bruges af dette afsnit:',
 'template-protected'        => '(skrivebeskyttet)',
 'template-semiprotected'    => '(skrivebeskyttet for ikke anmeldte og nye brugere)',
+'hiddencategories'          => 'Denne side er kategoriseret i {{PLURAL:$1|1 skjult kategorie|$1 skjulte kategorier}}:',
 'edittools'                 => '<!-- Denne tekst vises under formularen „Ændre“ samt "Upload". -->',
 'nocreatetitle'             => 'Oprettelse af nye sider er begrænset.',
 'nocreatetext'              => 'Serveren har begrænset oprettelse af nye sider. Bestående sider kan ændres eller [[Special:Userlogin|logge på]].',
@@ -770,7 +777,7 @@ Nærmere oplysninger om sletningen samt en begrundelse for den findes i [{{fullu
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">Denne version er slettet og er ikke længere offentligt tilgængelig.
 Som administrator kan du stadig se den.
 Nærmere oplysninger om sletningen samt en begrundelse for den findes i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} slette-loggen].</div>',
-'rev-delundel'                => 'vise/skjule',
+'rev-delundel'                => 'vis/skjul',
 'revisiondelete'              => 'Slette/gendanne versioner',
 'revdelete-nooldid-title'     => 'Ingen version angivet',
 'revdelete-nooldid-text'      => 'Du har ikke angivet en version, som denne handling kan udføres på.',
@@ -843,6 +850,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'searchsubtitleinvalid' => 'Til din søgning „$1“.',
 'noexactmatch'          => '{{SITENAME}} har ingen artikel med dette navn. Du kan [[:$1|oprette en artikel med dette navn]].',
 'noexactmatch-nocreate' => "'''Der er ingen side med navnet \"\$1\".'''",
+'toomanymatches'        => 'Der blev returneret for mange resultater, prøv en anden søgning',
 'titlematches'          => 'Artikeltitler der opfyldte forespørgslen',
 'notitlematches'        => 'Ingen artikeltitler opfyldte forespørgslen',
 'textmatches'           => 'Artikeltekster der opfyldte forespørgslen',
@@ -923,6 +931,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'userrights-lookup-user'           => 'Administrér brugergrupper',
 'userrights-user-editname'         => 'Skriv et brugernavn:',
 'editusergroup'                    => 'Redigér brugergrupper',
+'editinguser'                      => "Ændrer rettigheder for '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Redigér brugergrupper',
 'saveusergroups'                   => 'Gem brugergrupper',
 'userrights-groupsmember'          => 'Medlem af:',
@@ -932,8 +941,8 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en gruppe ved hjælp af CTRL-tasten og et venstreklik.',
 'userrights-reason'                => 'Årsag:',
 'userrights-available-none'        => 'Du kan ikke ændre gruppetilhørsforhold.',
-'userrights-available-add'         => 'Du kan tilføje medlemmer til $1.',
-'userrights-available-remove'      => 'Du kan fjerne medlemmer fra $1.',
+'userrights-available-add'         => 'Du kan tilføje medlemmer til {{PLURAL:$2|denne gruppe|disse grupper}}: $1.',
+'userrights-available-remove'      => 'Du kan fjerne medlemmer fra {{PLURAL:$2|denne gruppe|disse grupper}}: $1.',
 'userrights-available-add-self'    => 'Du kan tilføje dig selv til {{PLURAL:$2|denne gruppe|disse grupper}}: $1',
 'userrights-available-remove-self' => 'Du kan fjerne dig selv fra {{PLURAL:$2|denne gruppe|disse grupper}}: $1',
 'userrights-no-interwiki'          => 'Du kan ikke ændre brugerrettigheder på andre wikier.',
@@ -1033,8 +1042,8 @@ Læg mærke til at præcis som med alle andre sider, så kan og må andre gerne 
 'filename'                    => 'Filnavn',
 'filedesc'                    => 'Beskrivelse',
 'fileuploadsummary'           => 'Beskrivelse/kilde:',
-'filestatus'                  => 'Status på ophavsret',
-'filesource'                  => 'Kilde',
+'filestatus'                  => 'Status på ophavsret:',
+'filesource'                  => 'Kilde:',
 'uploadedfiles'               => 'Filer som er lagt op',
 'ignorewarning'               => 'Ignorerer advarsler og gemme fil.',
 'ignorewarnings'              => 'Ignorerer advarsler',
@@ -1049,6 +1058,7 @@ Læg mærke til at præcis som med alle andre sider, så kan og må andre gerne 
 'largefileserver'             => 'Filen er større end den på serveren indstillede maksimale størrelse.',
 'emptyfile'                   => 'Filen du lagde op lader til at være tom. Det kan skyldes en slåfejl i filnavnet. Kontroller om du virkelig ønsker at lægge denne fil op.',
 'fileexists'                  => 'En fil med det navn findes allerede, tjek venligst $1 om du er sikker på du vil ændre den.',
+'filepageexists'              => 'Beskrivelsessiden for denne fil er allerede oprettet i <strong><tt>$1</tt></strong>, men ingen fil med dette navn eksisterer på nuværende tidspunkt. Den beskrivelse som du indtaster vil ikke blive vist på beskrivelsessiden. For at få beskrivelsen vist her skal du manuelt redigere det.',
 'fileexists-extension'        => 'En fil med lignende navn findes allerede:<br />
 Navnet på den valgte fil: <strong><tt>$1</tt></strong><br />
 Navnet på den eksisterende fil: <strong><tt>$2</tt></strong><br />
@@ -1070,8 +1080,8 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 'uploadscripted'              => 'Denne fil indeholder HTML eller script-kode, der i visse tilfælde can fejlfortolkes af en browser.',
 'uploadcorrupt'               => 'Denne fil er beskadiget eller forsynet med en forkert endelse. Kontroller venligst filen og prøv at lægge den op igen.',
 'uploadvirus'                 => 'Denne fil indeholder en virus! Virusnavn: $1',
-'sourcefilename'              => 'Kildefil',
-'destfilename'                => 'Målnavn',
+'sourcefilename'              => 'Kildefil:',
+'destfilename'                => 'Målnavn:',
 'watchthisupload'             => 'Overvåge denne side',
 'filewasdeleted'              => 'En fil med dette navn er tidligere uploadet og i mellemtiden slettet igen. Kontroller først indførslen i $1, før du gemmer filen.',
 'upload-wasdeleted'           => "'''Advarsel: Du er ved at uploade en fil der tidligere er blevet slettet.'''
@@ -1093,7 +1103,7 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'upload-curl-error28'      => 'Tidsoverskridelse ved upload',
 'upload-curl-error28-text' => 'Siden er for længe om at svare. Kontroller om siden er online, vent et øjeblik og prøv igen. Det kan måske hjælpe at prøve på et senere tidspunkt.',
 
-'license'            => 'Licens',
+'license'            => 'Licens:',
 'nolicense'          => 'intet forvalg',
 'license-nopreview'  => '(forhåndsvisning ikke mulig)',
 'upload_source_url'  => ' (gyldig, offentligt tillgængelig URL)',
@@ -1161,7 +1171,14 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'filedelete-nofile'           => "'''$1''' findes ikke på dette websted.",
 'filedelete-nofile-old'       => "Der findes ikke en version af '''$1''' fra $2, $3.",
 'filedelete-iscurrent'        => 'Du har forsøgt at slette den nyeste version. Gendan en tidligere udgave først.',
+'filedelete-otherreason'      => 'Anden/uddybende begrundelse:',
 'filedelete-reason-otherlist' => 'Anden grund',
+'filedelete-reason-dropdown'  => '*Hyppige sletningsårsager
+** Brud på ophavsret
+** Licens ikke oplyst
+** Duplikeret fil
+** Ubrugt fil',
+'filedelete-edit-reasonlist'  => 'Redigér sletningsbegrundelser',
 
 # MIME search
 'mimesearch'         => 'Søge efter MIME-type',
@@ -1298,7 +1315,6 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'newpages-username'               => 'Brugernavn:',
 'ancientpages'                    => 'Ældste artikler',
 'ancientpages-summary'            => 'Denne specialside viser alle de sider, som i længst tid ikke er blevet ændret.',
-'intl'                            => 'Sproghenvisninger',
 'move'                            => 'Flyt',
 'movethispage'                    => 'Flyt side',
 'unusedimagestext'                => '<p>Læg mærke til, at andre websider såsom de andre internationale {{SITENAME}}er måske henviser til et billede med en direkte URL, så det kan stadig være listet her, selvom det er i aktivt brug.',
@@ -1389,6 +1405,7 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'unwatch'              => 'Fjern overvågning',
 'unwatchthispage'      => 'Fjern overvågning',
 'notanarticle'         => 'Ikke en artikel',
+'notvisiblerev'        => 'Revisionen er blevet slettet',
 'watchnochange'        => 'Ingen af siderne i din overvågningsliste er ændret i den valgte periode.',
 'watchlist-details'    => 'Du har $1 {{PLURAL:$1|side|sider}} på din overvågningsliste (ekskl. diskussionssider).',
 'wlheader-enotif'      => '* E-mail underretning er slået til.',
@@ -1399,16 +1416,16 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'iteminvalidname'      => "Problem med '$1', ugyldigt navn...",
 'wlnote'               => "Nedenfor ses de seneste $1 {{PLURAL:$1|ændring|ændringer}} i {{PLURAL:$2|den sidste time|'''de sidste $2 timer}}'''.",
 'wlshowlast'           => 'Vis de seneste $1 timer $2 dage $3',
-'watchlist-show-bots'  => 'Vise bot-ændringer',
-'watchlist-hide-bots'  => 'Skjule bot-ændringer',
-'watchlist-show-own'   => 'vise egne ændringer',
-'watchlist-hide-own'   => 'skjule egne ændringer',
-'watchlist-show-minor' => 'vise små ændringer',
-'watchlist-hide-minor' => 'skjule små ændringer',
+'watchlist-show-bots'  => 'Vis bot-ændringer',
+'watchlist-hide-bots'  => 'Skjul bot-ændringer',
+'watchlist-show-own'   => 'vis egne ændringer',
+'watchlist-hide-own'   => 'skjul egne ændringer',
+'watchlist-show-minor' => 'vis små ændringer',
+'watchlist-hide-minor' => 'skjul små ændringer',
 
 # Displayed when you click the "watch" button and it's in the process of watching
-'watching'   => 'Overvåge …',
-'unwatching' => 'Ikke overvåge …',
+'watching'   => 'Tilføjer overvågning …',
+'unwatching' => 'Fjerner overvågning …',
 
 'enotif_mailer'                => '{{SITENAME}} informationsmail',
 'enotif_reset'                 => 'Marker alle sider som besøgt',
@@ -1469,6 +1486,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 ** Efter forfatters ønske
 ** Overtrædelse af ophavsret
 ** Hærværk',
+'delete-edit-reasonlist'      => 'Rediger sletningsbegrundelser',
 'delete-toobig'               => 'Denne side har en stor historik, over $1 versioner. Sletning af sådanne sider er begrænset blevet for at forhindre utilsigtet forstyrrelse af {{SITENAME}}.',
 'delete-warning-toobig'       => 'Denne side har en stor historik, over $1 versioner, slettes den kan det forstyrre driften af {{SITENAME}}, gå forsigtigt frem.',
 'rollback'                    => 'Fjern redigeringer',
@@ -1492,7 +1510,6 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'protectexpiry'               => 'Udløb',
 'protect_expiry_invalid'      => 'Udløbstiden er ugyldig.',
 'protect_expiry_old'          => 'Udløbstiden ligger i fortiden.',
-'unprotectsub'                => '(Fjern beskyttelse af "$1")',
 'protect-unchain'             => 'Ændre flytningsbeskyttelse',
 'protect-text'                => "Her kan beskyttelsesstatus for siden '''<nowiki>$1</nowiki>''' ses og ændres.",
 'protect-locked-blocked'      => 'Du kan ikke ændre sidens status, da din brugerkonto er spærret. Her er de aktuelle beskyttelsesindstillinger for siden <strong>„$1“:</strong>',
@@ -1526,7 +1543,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 # Undelete
 'undelete'                     => 'Gendan en slettet side',
 'undeletepage'                 => 'Se og gendan slettede sider',
-'viewdeletedpage'              => 'Vise slettede sider',
+'viewdeletedpage'              => 'Vis slettede sider',
 'undeletepagetext'             => 'De følgende sider er slettede, men de findes stadig i arkivet og kan gendannes. Arkivet blivet periodevis slettet.',
 'undeleteextrahelp'            => '* For at gendanne siden komplet med alle versioner, angives en begrundelse før der trykkes på „Gendan“.
 * Hvis der kun skal gendannes bestemte versioner, vælges disse enkeltvis, angiv en begrundelse og klik på „Gendan“.
@@ -1614,6 +1631,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Bloker bruger',
+'blockip-legend'              => 'Blokér bruger',
 'blockiptext'                 => 'Brug formularen herunder til at blokere for skriveadgangen fra en specifik IP-adresse eller et brugernavn. Dette må kun gøres for at forhindre vandalisme og skal være i overensstemmelse med [[{{MediaWiki:Policy-url}}|{{SITENAME}}s politik]]. Angiv en specifik begrundelse herunder (for eksempel med angivelse af sider der har været udsat for vandalisme). Udløbet (expiry) angives i GNUs standardformat, som er beskrevet i [http://www.gnu.org/software/tar/manual/html_chapter/tar_7.html vejledningen til tar] (på engelsk), fx "1 hour", "2 days", "next Wednesday", "1 January 2017". Alternativt kan en blokering gøres uendelig (skriv "indefinite" eller "infinite"). For oplysninger om blokering af IP-adresseblokke, se [[meta:Range blocks|IP-adresseblokke]] (på engelsk). For at ophæve en blokering, se [[Special:Ipblocklist|listen over blokerede IP-adresser og brugernavne]].',
 'ipaddress'                   => 'IP-adresse/brugernavn',
 'ipadressorusername'          => 'IP-adresse eller brugernavn',
@@ -1648,8 +1666,8 @@ $1',
 'ipb-edit-dropdown'           => 'Ændre spærreårsager',
 'ipb-unblock-addr'            => 'frigive „$1“',
 'ipb-unblock'                 => 'Frigive IP-adresse/bruger',
-'ipb-blocklist-addr'          => 'Vise aktuelle spærringer for „$1“',
-'ipb-blocklist'               => 'Vise alle aktuelle spærringer',
+'ipb-blocklist-addr'          => 'Vis aktuelle spærringer for $1',
+'ipb-blocklist'               => 'Vis alle aktuelle spærringer',
 'unblockip'                   => 'Ophæv blokering af bruger',
 'unblockiptext'               => 'Brug formularen herunder for at gendanne skriveadgangen for en tidligere blokeret IP-adresse eller bruger.',
 'ipusubmit'                   => 'Ophæv blokeringen af denne adresse',
@@ -1713,7 +1731,8 @@ $1',
 'databasenotlocked'   => 'Databasen er ikke spærret.',
 
 # Move page
-'movepage'                => 'Flyt side',
+'move-page'               => 'Flyt $1',
+'move-page-legend'        => 'Flyt side',
 'movepagetext'            => "Når du bruger formularen herunder vil du få omdøbt en side og flyttet hele sidens historie til det nye navn. Den gamle titel vil blive en omdirigeringsside til den nye titel. Henvisninger til den gamle titel vil ikke blive ændret. Sørg for at tjekke for dobbelte eller dårlige omdirigeringer. Du er ansvarlig for, at alle henvisninger stadig peger derhen, hvor det er meningen de skal pege. Bemærk at siden '''ikke''' kan flyttes hvis der allerede er en side med den nye titel, medmindre den side er tom eller er en omdirigering uden nogen historie. Det betyder at du kan flytte en side tilbage hvor den kom fra, hvis du kommer til at lave en fejl. <b>ADVARSEL!</b> Dette kan være en drastisk og uventet ændring for en populær side; vær sikker på, at du forstår konsekvenserne af dette før du fortsætter.",
 'movepagetalktext'        => "Den tilhørende diskussionsside, hvis der er en, vil automatisk blive flyttet med siden '''medmindre:''' *Du flytter siden til et andet navnerum,
 *En ikke-tom diskussionsside allerede eksisterer under det nye navn, eller
@@ -1809,6 +1828,10 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'importuploaderrorsize'      => 'Upload af importfil mislykkedes da filen er større en den tilladte maksimale uploadstørrelse.',
 'importuploaderrorpartial'   => 'Upload af importfil mislykkedes da filen kun blev delvist uploadet.',
 'importuploaderrortemp'      => 'Upload af importfil mislykkedes da en midlertidig mappe mangler.',
+'import-parse-failure'       => 'XML import parserfejl',
+'import-noarticle'           => 'Ingen side til import!',
+'import-nonewrevisions'      => 'Alle revisioner er tidligere blevet importeret.',
+'xml-error-string'           => '$1 på linje $2, kolonne $3 (byte $4): $5',
 
 # Import log
 'importlogpage'                    => 'Importlog',
@@ -1865,7 +1888,7 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'tooltip-ca-nstab-user'           => 'Se brugersiden',
 'tooltip-ca-nstab-media'          => 'Se mediasiden',
 'tooltip-ca-nstab-special'        => 'Dette er en speciel side; man kan ikke redigere sådanne sider.',
-'tooltip-ca-nstab-project'        => 'Vise portalsiden',
+'tooltip-ca-nstab-project'        => 'Vis portalsiden',
 'tooltip-ca-nstab-image'          => 'Se billedsiden',
 'tooltip-ca-nstab-mediawiki'      => 'Se systembeskeden',
 'tooltip-ca-nstab-template'       => 'Se skabelonen',
@@ -2390,16 +2413,30 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'unknown_extension_tag' => 'Ukendt extension-tag: $1',
 
 # Special:Version
-'version-specialpages'     => 'Specielle sider',
-'version-other'            => 'Andre',
-'version-version'          => 'Version',
-'version-license'          => 'Licens',
-'version-software-product' => 'Produkt',
-'version-software-version' => 'Version',
+'version-extensions'               => 'Installerede udvidelser',
+'version-specialpages'             => 'Specielle sider',
+'version-parserhooks'              => 'Parser hooks',
+'version-variables'                => 'Variabler',
+'version-other'                    => 'Andre',
+'version-hooks'                    => 'Hooks',
+'version-extension-functions'      => 'Udvidelsesfunktioner',
+'version-parser-extensiontags'     => 'Udvidelsestags til parseren',
+'version-parser-function-hooks'    => 'Parser funktionshooks',
+'version-skin-extension-functions' => 'Funktioner til skin-udvidelser',
+'version-hook-name'                => 'Hook-navn',
+'version-version'                  => 'Version',
+'version-license'                  => 'Licens',
+'version-software'                 => 'Installeret software',
+'version-software-product'         => 'Produkt',
+'version-software-version'         => 'Version',
 
 # Special:Filepath
-'filepath'        => 'Filsti',
-'filepath-page'   => 'Fil:',
-'filepath-submit' => 'Sti',
+'filepath'         => 'Filsti',
+'filepath-page'    => 'Fil:',
+'filepath-submit'  => 'Sti',
+'filepath-summary' => 'Denne specielle side returnerer en komplet sti for en fil. 
+Billeder bliver vist i fuld opløsning, andre filtyper bliver startet direkte af deres tilknyttede program.
+
+Indtast filnavnet uden "{{ns:image}}:" præfiks.',
 
 );

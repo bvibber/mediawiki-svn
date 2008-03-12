@@ -36,7 +36,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13112) Added Special:RelatedChanges alias to Special:Recentchangeslinked
 * (bug 13130) Moved edit token and autosummary fields above edit tools to
   reduce broken form submissions
-
+* Add --old-redirects-only option to maintenance/refreshLinks.php, to add old
+  redirects to the redirect table
+* Add links to page and file deletion forms to edit predefined delete reasons 
+* (bug 13269) Added MediaWiki:Uploadfooter to the bottom of Special:Upload
+* (bug 2815) Search results for media files now use thumb instead of text extract
 
 === Bug fixes in 1.13 ===
 
@@ -61,6 +65,22 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11561) Fix fatal error when calling action=revert to non-image page
 * (bug 12430) Fix call to private method LinkFilter::makeRegex fatal error in
   maintenance/cleanupSpam.php
+* All skins should have the "mediawiki" class on the body element
+* (bug 13019) Message cache for some extensions not loaded at time of editing
+* (bug 13247) Prettified ISBN links
+* maintenance/refreshLinks.php did not fix page_id 1 with the --new-only option
+* (bug 13110) Don't show "Permission error" page if the edit is already rolled
+  back when using rollback
+* (bug 13012) Use content messages for block options when generating the
+  recentchanges entry
+* (bug 13274) Change links for messages to ucfirst
+* (bug 13273) Un-hardcode some punctuation (add new messages colon-separator,
+  autocomment-prefix)
+* Parse MediaWiki message translations with a correct language setting on preview
+* (bug 13281) Treat X-Forwarded-For, Client-ip and User-Agent headers as
+  case-insensitive names.
+* Adding the fix for lists in RTL wikis to more skins, and fixing the image toc
+* (bug 8157) Remove redirects from Special:Unusedtemplates. Patch by WebBoy.
 
 === API changes in 1.13 ===
 
@@ -72,6 +92,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 12394) Added rctitles parameter to list=recentchanges, making rcid retrieval easier
 * (bug 13218) Fix inclusion of " character in hyperlinks
 * Added watch and unwatch parameters to action=delete and action=move
+* Added action=edit
+* (bug 11401) Added xmldoublequote to xml formatter
 
 === Languages updated in 1.13 ===
 

@@ -314,7 +314,7 @@ $messages = array(
 
 # Bits of text used by many pages
 'categories'               => 'Catégories',
-'pagecategories'           => '{{PLURAL:$1|Catégorie |Catégories }}',
+'pagecategories'           => '{{PLURAL:$1|Catégorie|Catégories}}',
 'category_header'          => 'Pages dans la catégorie « $1 »',
 'subcategories'            => 'Sous-catégories',
 'category-media-header'    => 'Fichiers multimédia dans la catégorie « $1 »',
@@ -740,7 +740,6 @@ Si vous êtes arrivé ici par erreur, cliquez sur le bouton '''retour''' de votr
 <strong>Si la tentative de modification était légitime, veuillez réessayer. Si cela échoue à nouveau, veuillez vous déconnecter, puis vous reconnecter.</strong>",
 'token_suffix_mismatch'     => '<strong>Votre modification n’a pas été acceptée car votre navigateur Web a mélangé les caractères de ponctuation dans l’identifiant d’édition. La modification a été rejetée afin d’empêcher la corruption du texte de l’article. Ce problème se produit lorsque vous utilisez un mandataire anonyme problématique.</strong>',
 'editing'                   => 'Modification de $1',
-'editinguser'               => 'Modification de $1',
 'editingsection'            => 'Modification de $1 (section)',
 'editingcomment'            => 'Modification de $1 (commentaire)',
 'editconflict'              => 'Conflit de modification : $1',
@@ -793,7 +792,7 @@ Demandez-vous s’il est réellement approprié de la recréer en vous référan
 La raison donnée par $3 était ''$2''.",
 
 # History pages
-'viewpagelogs'        => 'Voir l’historique de cette page',
+'viewpagelogs'        => 'Voir les opérations sur cette page',
 'nohistory'           => 'Il n’existe pas d’historique pour cette page.',
 'revnotfound'         => 'Version introuvable',
 'revnotfoundtext'     => 'La version précédente de cette page n’a pas pu être retrouvée. Veuillez vérifier l’URL que vous avez utilisée pour accéder à cette page.',
@@ -985,6 +984,8 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'userrights-lookup-user'           => 'Gestion des droits utilisateur',
 'userrights-user-editname'         => 'Entrez un nom d’utilisateur :',
 'editusergroup'                    => 'Modification des groupes utilisateurs',
+'editinguser'                      => "Modification des droits de l'utilisateur '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | 
+[[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Modifier les groupes de l’utilisateur',
 'saveusergroups'                   => 'Sauvegarder les groupes utilisateur',
 'userrights-groupsmember'          => 'Membre de :',
@@ -993,8 +994,8 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'userrights-groupshelp'            => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l’utilisateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
 'userrights-reason'                => 'Motif du changement :',
 'userrights-available-none'        => 'Vous ne pouvez pas changer l’appartenance aux différents groupes.',
-'userrights-available-add'         => 'Vous pouvez ajouter des utilisateurs à $1.',
-'userrights-available-remove'      => 'Vous pouvez enlever des utilisateurs de $1.',
+'userrights-available-add'         => 'Vous pouvez ajouter des utilisateurs à {{PLURAL:$2|ce groupe|ces groupes}}: $1.',
+'userrights-available-remove'      => 'Vous pouvez enlever des utilisateurs de {{PLURAL:$2|ce groupe|ces groupes}}: $1.',
 'userrights-available-add-self'    => 'Vous pouvez vous ajouter vous-même à {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
 'userrights-available-remove-self' => 'Vous pouvez vous enlever vous-même de {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
 'userrights-no-interwiki'          => "Vous n'êtes pas habilité pour modifier les droits des utilisateurs sur d'autres wikis.",
@@ -1060,33 +1061,35 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'recentchangeslinked-summary'  => "Cette page spéciale montre les modifications récentes sur les pages qui sont liées. Les pages de votre liste de suivi sont '''en gras'''.",
 
 # Upload
-'upload'                      => 'Envoyer un fichier',
-'uploadbtn'                   => 'Envoyer le fichier',
-'reupload'                    => 'Envoyer à nouveau',
+'upload'                      => 'Importer un fichier',
+'uploadbtn'                   => 'Importer le fichier',
+'reupload'                    => 'Importer à nouveau',
 'reuploaddesc'                => 'Retour au formulaire.',
 'uploadnologin'               => 'Non connecté(e)',
 'uploadnologintext'           => 'Vous devez être [[Special:Userlogin|connecté]] pour envoyer des fichiers sur le serveur.',
 'upload_directory_read_only'  => 'Le serveur Web ne peut écrire dans le dossier cible ($1).',
 'uploaderror'                 => 'Erreur',
-'uploadtext'                  => 'Utilisez ce formulaire pour envoyer des fichiers sur le serveur.
-Pour voir ou rechercher des images précédemment envoyées, consultez la [[Special:Imagelist|liste de images]]. Les copies et suppressions sont aussi enregistrées dans l’[[Special:Log/upload|historique des envois]].
+'uploadtext'                  => "Utilisez ce formulaire pour importer des fichiers sur le serveur.
+Pour voir ou rechercher des images précédemment envoyées, consultez la [[Special:Imagelist|liste de images]]. Les copies et suppressions sont aussi enregistrées dans l’[[Special:Log/upload|historique des imports]].
 
 Pour inclure une image dans une page, utilisez un lien de la forme
 <b><nowiki>[[</nowiki>{{ns:image}}<nowiki>:fichier.jpg]]</nowiki></b>,
-<b><nowiki>[[</nowiki>{{ns:image}}<nowiki>:fichier.png|texte alternatif]]</nowiki></b> or
-<b><nowiki>[[</nowiki>{{ns:media}}<nowiki>:fichier.ogg]]</nowiki></b> pour lier directement vers le fichier.',
+<b><nowiki>[[</nowiki>{{ns:image}}<nowiki>:fichier.png|texte descriptif]]</nowiki></b> or
+<b><nowiki>[[</nowiki>{{ns:media}}<nowiki>:fichier.ogg]]</nowiki></b> pour lier directement vers le fichier.
+
+'''N'OUBLIEZ PAS DE PRÉCISER LES DROITS D'UTILISATION (LA LICENCE) DU FICHIER.'''",
 'upload-permitted'            => 'Formats de fichiers autorisés : $1.',
 'upload-preferred'            => 'Formats de fichiers préférés : $1.',
 'upload-prohibited'           => 'Formats de fichiers interdits : $1.',
-'uploadlog'                   => 'Historique des envois',
-'uploadlogpage'               => 'Historique des envois de fichiers multimédia',
-'uploadlogpagetext'           => 'Voici la liste des derniers fichiers envoyés sur le serveur.',
+'uploadlog'                   => 'Historique des imports',
+'uploadlogpage'               => 'Historique des imports de fichiers multimédia',
+'uploadlogpagetext'           => 'Voici la liste des derniers fichiers importés sur le serveur.',
 'filename'                    => 'Nom du fichier',
 'filedesc'                    => 'Description',
 'fileuploadsummary'           => 'Description :',
-'filestatus'                  => "Statut du droit d'auteur",
-'filesource'                  => 'Source',
-'uploadedfiles'               => 'Fichiers envoyés',
+'filestatus'                  => "Statut des droits d'auteur :",
+'filesource'                  => 'Source :',
+'uploadedfiles'               => 'Fichiers importés',
 'ignorewarning'               => 'Ignorer l’avertissement et sauvegarder le fichier.',
 'ignorewarnings'              => 'Ignorer les avertissements lors de l’import',
 'minlength1'                  => 'Le noms de fichiers doivent comprendre au moins une lettre.',
@@ -1112,24 +1115,24 @@ Si le fichier vérifié est la même image (dans une meilleure résolution), il 
 Si vous disposez du fichier en haute résolution, importez-le, sinon veuillez changer le nom du fichier.',
 'fileexists-forbidden'        => 'Un fichier avec ce nom existe déjà ; merci de retourner en arrière et de copier le fichier sous un nouveau nom. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Un fichier portant le même nom existe déjà dans la base de données commune ; veuillez revenir en arrière et le renvoyer sous un autre nom. [[Image:$1|thumb|center|$1]]',
-'successfulupload'            => 'Envoi réussi',
+'successfulupload'            => 'Import réussi',
 'uploadwarning'               => 'Attention !',
 'savefile'                    => 'Sauvegarder le fichier',
 'uploadedimage'               => 'a importé « [[$1]] »',
 'overwroteimage'              => 'a importé une nouvelle version de « [[$1]] »',
-'uploaddisabled'              => "Désolé, l'envoi de fichiers est désactivé.",
+'uploaddisabled'              => "L'import de fichiers est désactivé.",
 'uploaddisabledtext'          => 'L’import de fichiers vers le serveur est désactivé sur {{SITENAME}}.',
 'uploadscripted'              => 'Ce fichier contient du code HTML ou un script qui pourrait être interprété de façon incorrecte par un navigateur Internet.',
 'uploadcorrupt'               => 'Ce fichier est corrompu, a une taille nulle ou possède une extension invalide.
 Veuillez vérifer le fichier.',
 'uploadvirus'                 => 'Ce fichier contient un virus ! Pour plus de détails, consultez : $1',
-'sourcefilename'              => 'Nom du fichier à envoyer',
-'destfilename'                => 'Nom sous lequel le fichier sera enregistré',
+'sourcefilename'              => 'Nom du fichier source :',
+'destfilename'                => 'Nom sous lequel le fichier sera enregistré&nbsp;:',
 'watchthisupload'             => 'Suivre ce fichier',
 'filewasdeleted'              => 'Un fichier avec ce nom a déjà été copié, puis supprimé. Vous devriez vérifier le $1 avant de procéder à une nouvelle copie.',
 'upload-wasdeleted'           => "'''Attention : Vous êtes en train de recréer un fichier qui a déjà été supprimé auparavant.'''
 
-Vous devriez considérer s’il est opportun de continuer l'envoi de ce fichier. L’historique des suppressions vous donnera des éléments d’information.",
+Vous devriez considérer s’il est opportun de continuer l'import de ce fichier. L’historique des suppressions vous donnera des éléments d’information.",
 'filename-bad-prefix'         => 'Le nom du fichier que vous importez commence par <strong>"$1"</strong> qui est un nom généralement donné par les appareils photo numériques. Veuillez choisir un nom de fichier descriptif.',
 'filename-prefix-blacklist'   => ' #<!-- laisser cette ligne telle quelle --> <pre>
 # La syntaxe est la suivante : 
@@ -1150,16 +1153,16 @@ PICT # misc.
 'upload-proto-error-text' => "L'import à distance requiert des URLs commençant par <code>http://</code> ou <code>ftp://</code>.",
 'upload-file-error'       => 'Erreur interne',
 'upload-file-error-text'  => 'Une erreur interne est survenue en voulant créer un fichier temporaire sur le serveur. Veuillez contacter un administrateur système.',
-'upload-misc-error'       => "Erreur inconnue lors de l'envoi",
-'upload-misc-error-text'  => "Une erreur inconnue est survenue pendant l'envoi. Veuillez vérifier que l’URL est valide et accessible, puis essayer à nouveau. Si le problème persiste, contactez un administrateur système.",
+'upload-misc-error'       => "Erreur inconnue lors de l'import",
+'upload-misc-error-text'  => "Une erreur inconnue est survenue pendant l'import. Veuillez vérifier que l’URL est valide et accessible, puis essayer à nouveau. Si le problème persiste, contactez un administrateur système.",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Ne peut pas atteindre l’URL',
 'upload-curl-error6-text'  => 'L’URL fournie ne peut pas être atteinte. Veuillez vérifier que l’URL est correcte et que le site est en ligne.',
-'upload-curl-error28'      => "Dépassement du délai lors de l'envoi",
+'upload-curl-error28'      => "Dépassement du délai lors de l'import",
 'upload-curl-error28-text' => 'Le site a mis trop longtemps à répondre. Vérifiez que le site est en ligne, attendez un peu et réessayez. Vous pouvez aussi réessayer à une heure de moindre affluence.',
 
-'license'            => 'Licence',
+'license'            => 'Licence&nbsp;:',
 'nolicense'          => 'Aucune licence sélectionnée',
 'license-nopreview'  => '(Prévisualisation impossible)',
 'upload_source_url'  => ' (une URL valide et accessible publiquement)',
@@ -1197,7 +1200,7 @@ PICT # misc.
 'shareduploadwiki-linktext' => 'page de description du fichier',
 'noimage'                   => 'Aucun fichier possèdant ce nom n’existe, vous pouvez $1.',
 'noimage-linktext'          => 'en importer un',
-'uploadnewversion-linktext' => 'Envoyer une nouvelle version de ce fichier',
+'uploadnewversion-linktext' => 'Importer une nouvelle version de ce fichier',
 'imagelist_date'            => 'Date',
 'imagelist_name'            => 'Nom',
 'imagelist_user'            => 'Utilisateur',
@@ -1232,6 +1235,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Motifs de suppression habituels
 ** Violation de droit d’auteur
 ** Fichier dupliqué',
+'filedelete-edit-reasonlist'  => 'Modifie les motifs de la suppression',
 
 # MIME search
 'mimesearch'         => 'Recherche par type MIME',
@@ -1331,14 +1335,13 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 'protectedtitles'         => 'Titres protégés',
 'protectedtitlestext'     => 'Les titres suivants sont protégés à la création',
 'protectedtitlesempty'    => "Aucun titre n'est actuellement protégé avec ces paramètres.",
-'listusers'               => 'Liste des participants',
+'listusers'               => 'Liste des inscrits',
 'specialpages'            => 'Pages spéciales',
 'spheading'               => 'Pages spéciales',
 'restrictedpheading'      => 'Pages spéciales réservées',
 'newpages'                => 'Nouvelles pages',
 'newpages-username'       => 'Utilisateur :',
 'ancientpages'            => 'Articles les moins récemment modifiés',
-'intl'                    => 'Liens interlangues',
 'move'                    => 'Renommer',
 'movethispage'            => 'Renommer la page',
 'unusedimagestext'        => '<p>N’oubliez pas que d’autres sites peuvent contenir un lien direct vers cette image, et que celle-ci peut être placée dans cette liste alors qu’elle est en réalité utilisée.</p>',
@@ -1430,6 +1433,7 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 'unwatch'              => 'Ne plus suivre',
 'unwatchthispage'      => 'Ne plus suivre',
 'notanarticle'         => 'Pas un article',
+'notvisiblerev'        => 'Version supprimée',
 'watchnochange'        => 'Aucune des pages que vous suivez n’a été modifiée pendant la période affichée',
 'watchlist-details'    => 'Vous suivez <b>$1</b> {{PLURAL:$1|page|pages}}, sans compter les pages de discussion.',
 'wlheader-enotif'      => '* La notification par courriel est activée.',
@@ -1511,6 +1515,7 @@ L’heure indiquée est celle du serveur (UTC).',
 ** Demande de l'auteur
 ** Violation des droits d'auteur
 ** Vandalisme",
+'delete-edit-reasonlist'      => 'Modifie les motifs de la suppression',
 'delete-toobig'               => "Cette page dispose d'un historique important, dépassant $1 versions. La suppression de telles pages a été limitée afin d'éviter des perturbations accidentelles de {{SITENAME}}.",
 'delete-warning-toobig'       => "Cette page dispose d'un historique important, dépassant $1 versions. La supprimer peut perturber le fonctionnement de la base de donnée de {{SITENAME}}. À effectuer avec prudence.",
 'rollback'                    => 'révoquer modifications',
@@ -1534,7 +1539,6 @@ L’heure indiquée est celle du serveur (UTC).',
 'protectexpiry'               => 'Expiration (n’expire pas par défaut)',
 'protect_expiry_invalid'      => 'Le temps d’expiration est invalide.',
 'protect_expiry_old'          => 'Le temps d’expiration est déjà passé.',
-'unprotectsub'                => '(Déprotéger « $1 »)',
 'protect-unchain'             => 'Débloquer les permissions de renommage',
 'protect-text'                => 'Vous pouvez consulter et modifier le niveau de protection de la page <strong><nowiki>$1</nowiki></strong>.
 Veuillez vous assurez que vous suivez les [[{{MediaWiki:Policy-url}}|règles internes]].',
@@ -1654,6 +1658,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Bloquer en écriture',
+'blockip-legend'              => 'Bloquer en écriture',
 'blockiptext'                 => 'Utilisez le formulaire ci-dessous pour bloquer l’accès en écriture à partir d’une adresse IP donnée ou d’un nom d’utilisateur.
 
 Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec les [[{{MediaWiki:Policy-url}}|règles internes]].
@@ -1759,7 +1764,8 @@ N’oubliez pas de la déverrouiller lorsque vous aurez terminé votre opératio
 'databasenotlocked'   => 'La base de données n’est pas verrouillée.',
 
 # Move page
-'movepage'                => 'Renommer une page',
+'move-page'               => 'Déplacer $1',
+'move-page-legend'        => 'Renommer une page',
 'movepagetext'            => 'Utilisez le formulaire ci-dessous pour renommer une page, en déplaçant tout son historique vers le nouveau nom. L’ancien titre deviendra une page de redirection vers le nouveau titre. Les liens vers le titre de l’ancienne page ne seront pas changés ; veuillez vérifier que ce déplacement n’a pas créé de double redirection. Vous devez vous assurer que les liens continuent de pointer vers leur destination supposée.
 
 Une page ne sera pas déplacée si la page du nouveau titre existe déjà, à moins que cette dernière soit vide ou en redirection, et qu’elle n’ait pas d’historique. Ce qui veut dire que vous pouvez renommer une page vers sa position d’origine si vous avez commis une erreur, mais que vous ne pouvez effacer une page déjà existante par ce procédé.
@@ -2383,6 +2389,9 @@ Veuillez confirmer que vous désirez recréer cet article.",
 'articletitles'    => 'Articles commençant par « $1 »',
 'hideresults'      => 'Cacher les résultats',
 'useajaxsearch'    => 'Utiliser la recherche AJAX',
+
+# Separators for various lists, etc.
+'colon-separator' => '&nbsp;:&#32;',
 
 # Multipage image navigation
 'imgmultipageprev' => '← page précédente',

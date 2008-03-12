@@ -673,7 +673,6 @@ Se il collegamento è stato seguito per errore, è sufficiente fare clic sul pul
 <strong>Se il problema persiste, si può provare a scollegarsi ed effettuare un nuovo accesso.</strong>",
 'token_suffix_mismatch'     => "<strong>La modifica non è stata salvata perché il client ha mostrato di gestire in modo errato i caratteri di punteggiatura nel token associato alla stessa. Per evitare una possibile corruzione del testo della pagina, è stata rifiutata l'intera modifica. Questa situazione può verificarsi, talvolta, quando vengono usati alcuni servizi di proxy anonimi via web che presentano dei bug.</strong>",
 'editing'                   => 'Modifica di $1',
-'editinguser'               => 'Modifica di $1',
 'editingsection'            => 'Modifica di $1 (sezione)',
 'editingcomment'            => 'Modifica di $1 (commento)',
 'editconflict'              => 'Conflitto di edizione su $1',
@@ -926,6 +925,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'userrights-lookup-user'           => 'Gestione dei gruppi utente',
 'userrights-user-editname'         => 'Inserire il nome utente:',
 'editusergroup'                    => 'Modifica gruppi utente',
+'editinguser'                      => "Modifica dei diritti assegnati all'utente '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Modifica gruppi utente',
 'saveusergroups'                   => 'Salva gruppi utente',
 'userrights-groupsmember'          => 'Appartiene ai gruppi:',
@@ -1026,8 +1026,8 @@ per generare un collegamento diretto al file.",
 'filename'                    => 'Nome del file',
 'filedesc'                    => 'Dettagli',
 'fileuploadsummary'           => 'Dettagli del file:',
-'filestatus'                  => 'Informazioni sul copyright',
-'filesource'                  => 'Fonte',
+'filestatus'                  => 'Informazioni sul copyright:',
+'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Elenco dei file caricati',
 'ignorewarning'               => "Ignora l'avvertimento e salva comunque il file.",
 'ignorewarnings'              => 'Ignora i messaggi di avvertimento del sistema',
@@ -1064,8 +1064,8 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'uploadscripted'              => 'Questo file contiene codice HTML o di script, che potrebbe essere interpretato erroneamente da un browser web.',
 'uploadcorrupt'               => "Il file è corrotto o ha un'estensione non corretta. Controllare il file e provare di nuovo il caricamento.",
 'uploadvirus'                 => 'Questo file contiene un virus! Dettagli: $1',
-'sourcefilename'              => 'Nome del file di origine',
-'destfilename'                => 'Nome del file di destinazione',
+'sourcefilename'              => 'Nome del file di origine:',
+'destfilename'                => 'Nome del file di destinazione:',
 'watchthisupload'             => 'Aggiungi agli osservati speciali',
 'filewasdeleted'              => 'Un file con questo nome è stato già caricato e cancellato in passato. Verificare $1 prima di caricarlo di nuovo.',
 'upload-wasdeleted'           => "'''Attenzione: stai caricando un file che in precedenza è stato cancellato.'''
@@ -1101,7 +1101,7 @@ PICT # misc.
 'upload-curl-error28'      => "Tempo scaduto per l'upload",
 'upload-curl-error28-text' => 'Il sito remoto ha impiegato troppo tempo a rispondere. Verificare che il sito sia attivo, attendere qualche minuto e provare di nuovo, eventualmente in un momento di minore traffico.',
 
-'license'            => "Licenza d'uso",
+'license'            => "Licenza d'uso:",
 'nolicense'          => 'Nessuna licenza indicata',
 'license-nopreview'  => '(Anteprima non disponibile)',
 'upload_source_url'  => ' (una URL corretta e accessibile)',
@@ -1174,6 +1174,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Motivazioni più comuni per la cancellazione
 ** Violazione di copyright
 ** File duplicato',
+'filedelete-edit-reasonlist'  => 'Modifica le motivazioni per la cancellazione',
 
 # MIME search
 'mimesearch'         => 'Ricerca in base al tipo MIME',
@@ -1279,7 +1280,6 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'newpages'                => 'Pagine più recenti',
 'newpages-username'       => 'Nome utente:',
 'ancientpages'            => 'Pagine meno recenti',
-'intl'                    => 'Collegamenti tra lingue diverse',
 'move'                    => 'Sposta',
 'movethispage'            => 'Sposta questa pagina',
 'unusedimagestext'        => "<p>Si noti che è possibile realizzare collegamenti ai file da altri siti, usando direttamente la URL; questi potrebbero quindi essere utilizzati anche se compaiono nell'elenco.</p>",
@@ -1371,6 +1371,7 @@ D'ora in poi, le modifiche apportate alla pagina e alla sua discussione verranno
 'unwatch'              => 'Non seguire',
 'unwatchthispage'      => 'Smetti di seguire',
 'notanarticle'         => 'Questa pagina non è una voce',
+'notvisiblerev'        => 'La revisione è stata cancellata',
 'watchnochange'        => 'Nessuna delle pagine osservate è stata modificata nel periodo selezionato.',
 'watchlist-details'    => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.',
 'wlheader-enotif'      => '* La notifica via e-mail è attiva.',
@@ -1450,6 +1451,7 @@ Per dare il tuo feedback e ricevere ulteriore assistenza:
 ** Richiesta dell'autore
 ** Violazione di copyright
 ** Vandalismo",
+'delete-edit-reasonlist'      => 'Modifica le motivazioni per la cancellazione',
 'delete-toobig'               => 'La cronologia di questa pagina è molto lunga (oltre $1 revisioni). La sua cancellazione è stata limitata per evitare di creare accidentalmente dei problemi di funzionamento al database di {{SITENAME}}.',
 'delete-warning-toobig'       => 'La cronologia di questa pagina è molto lunga (oltre $1 revisioni). La sua cancellazione può creare dei problemi di funzionamento al database di {{SITENAME}}; procedere con cautela.',
 'rollback'                    => 'Annulla le modifiche',
@@ -1475,7 +1477,6 @@ La modifica più recente alla pagina è stata apportata da [[User:$3|$3]] ([[Use
 'protectexpiry'               => 'Scadenza:',
 'protect_expiry_invalid'      => 'Scadenza non valida.',
 'protect_expiry_old'          => 'Scadenza già trascorsa.',
-'unprotectsub'                => '(Sblocco di "$1")',
 'protect-unchain'             => 'Scollega i permessi di spostamento',
 'protect-text'                => 'Questo modulo consente di vedere e modificare il livello di protezione per la pagina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Non è possibile modificare i livelli di protezione quando è attivo un blocco. Le impostazioni correnti per la pagina sono <strong>$1</strong>:',
@@ -1588,6 +1589,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Blocco utente',
+'blockip-legend'              => "Blocca l'utente",
 'blockiptext'                 => "Usare il modulo sottostante per bloccare l'accesso in scrittura ad uno specifico utente o indirizzo IP. Il blocco dev'essere operato per prevenire atti di vandalismo e in stretta osservanza della [[{{MediaWiki:Policy-url}}|policy di {{SITENAME}}]]. Specificare in dettaglio il motivo del blocco nel campo seguente (ad es. indicando i titoli delle pagine oggetto di vandalismo).",
 'ipaddress'                   => 'Indirizzo IP:',
 'ipadressorusername'          => 'Indirizzo IP o nome utente:',
@@ -1684,7 +1686,7 @@ $1',
 'databasenotlocked'   => 'Il database non è bloccato.',
 
 # Move page
-'movepage'                => 'Spostamento di pagina',
+'move-page-legend'        => 'Spostamento di pagina',
 'movepagetext'            => "Questo modulo consente di rinominare una pagina, spostando tutta la sua cronologia al nuovo nome. La pagina attuale diverrà automaticamente un redirect al nuovo titolo. I collegamenti esistenti non saranno aggiornati; verificare che lo spostamento non abbia creato doppi redirect o redirect errati. L'onere di garantire che i collegamenti alla pagina restino corretti spetta a chi la sposta.
 
 Si noti che la pagina '''non''' sarà spostata se ne esiste già una con il nuovo nome, a meno che non sia vuota o costituita solo da un redirect alla vecchia e sia priva di versioni precedenti. In caso di spostamento errato si può quindi tornare subito al vecchio titolo, e non è possibile sovrascrivere per errore una pagina già esistente.

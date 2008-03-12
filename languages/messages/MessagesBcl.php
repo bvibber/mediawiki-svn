@@ -568,7 +568,6 @@ Probaran tabi giraray. Kun dai man giraray magibo, probaran na magluwas dangan m
 'token_suffix_mismatch'     => "<strong>Dai pigtogotan an hirá mo ta sinabrit kan ''client'' mo an mga ''punctuation characters''. Dai pigtogotan ining hirá para maibitaran na maraot an teksto kan páhina. 
 Nanyayari nanggad ini kun naggagamit ka nin bakong marhay asin dai bistong ''web-based proxy service''.</strong>",
 'editing'                   => 'Pighihira $1',
-'editinguser'               => 'Pighihira an parágamit na <b>$1</b>',
 'editingsection'            => 'Pighihira an $1 (seksyon)',
 'editingcomment'            => 'Pighihira an $1 (komento)',
 'editconflict'              => 'Komplikto sa paghihira: $1',
@@ -792,6 +791,7 @@ Hilingon tabî an [[Special:Ipblocklist|lista nin binagat na IP]] para sa lista 
 'userrights-lookup-user'      => 'Magmaného kan mga grupo nin parágamit',
 'userrights-user-editname'    => 'Ilaog an pangaran kan parágamit:',
 'editusergroup'               => 'Hirahón an mga Grupo kan Parágamit',
+'editinguser'                 => "Pighihira an parágamit na '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'    => 'Hirahón an mga grupo kan parágamit',
 'saveusergroups'              => 'Itagama an mga Grupo nin Páragamit',
 'userrights-groupsmember'     => 'Myembro kan:',
@@ -878,8 +878,8 @@ Kun boot mong ikaag an ladawan sa páhina, gamiton tabî an takod arog kan
 'filename'                    => 'Pangaran kan dokumento',
 'filedesc'                    => 'Kagabsan',
 'fileuploadsummary'           => 'Kagabsan:',
-'filestatus'                  => 'Estatutong derechos nin paragamit',
-'filesource'                  => 'Ginikanan',
+'filestatus'                  => 'Estatutong derechos nin paragamit:',
+'filesource'                  => 'Ginikanan:',
 'uploadedfiles'               => "Mga ''file'' na ikinargá",
 'ignorewarning'               => "Dai pagintiendehon an mga patanid asin itagama pa man an ''file''.",
 'ignorewarnings'              => 'Paliman-limanon an mga tanid',
@@ -913,8 +913,8 @@ Kun igwa ka nin ladawan na may resolusyón na maximo ikarga tabî ini, kun dai, 
 'uploadscripted'              => "Ining ''file'' igwang HTML o kodang eskritura na pwede ser na salang mainterpretar kan ''browser''.",
 'uploadcorrupt'               => "Raot ining ''file'' o igwang ekstensyón na salâ. Sosogon tabî an ''file'' asin ikarga giraray.",
 'uploadvirus'                 => "May virus an ''file''! Mga detalye: $1",
-'sourcefilename'              => 'Ginikanan kan pangaran kan dokumento',
-'destfilename'                => "''Filename'' kan destinasyón",
+'sourcefilename'              => 'Ginikanan kan pangaran kan dokumento:',
+'destfilename'                => "''Filename'' kan destinasyón:",
 'watchthisupload'             => 'Bantayan ining pahina',
 'filewasdeleted'              => "May sarong ''file'' na kapangaran kaini na dating pigkarga tapos pigparâ man sana. Sosogon muna tabî an $1 bago ikarga giraray ini.",
 'upload-wasdeleted'           => "'''Patanid: Pigkakarga mo an ''file'' na dati nang pigparâ.'''
@@ -936,7 +936,7 @@ An historial nin pagparâ kan ''file'' nakakaag digdi para sa konbenyensya:",
 'upload-curl-error28'      => 'sobra na an pagkalawig kan pagkarga',
 'upload-curl-error28-text' => 'Sobrang haloy an pagsimbag kan sitio. Susugon tabi na nagaandar an sitio, maghalat nin muna asin iprobar giraray. Tibaad moot mong magprobar sa panahon na bako masiadong okupado.',
 
-'license'            => 'Paglilisensia',
+'license'            => 'Paglilisensia:',
 'nolicense'          => 'Mayong pigpilî',
 'license-nopreview'  => '(Mayong patânaw)',
 'upload_source_url'  => ' (sarong tama, na bukas sa publikong URL)',
@@ -1106,7 +1106,6 @@ Maabot sa '''\$5''' na hira kada páhina sa medio, asin '''\$6''' na paghiling k
 'newpages'                => 'Mga bâgong páhina',
 'newpages-username'       => 'Pangaran kan parágamit:',
 'ancientpages'            => 'Mga pinakalumang páhina',
-'intl'                    => 'Mga takod sa ibang tataramon',
 'move'                    => 'Ibalyó',
 'movethispage'            => 'Ibalyó ining páhina',
 'unusedimagestext'        => "<p>Giromdomon tabî na an mga ibang ''site'' pwedeng nakatakod sa ladawan na may direktong URL, pues pwede ser na nakalista pa digdi a pesar na ini piggagamit pa.</p>",
@@ -1304,7 +1303,6 @@ Pindotón tabî an \"back\" asin ikarga giraray an páhinang ginikanan mo, danga
 'protectexpiry'               => 'Minápasó:',
 'protect_expiry_invalid'      => 'Dai puede ining pahanón kan pagpasó.',
 'protect_expiry_old'          => 'Pasado na an panahón nin pagpasó.',
-'unprotectsub'                => '(Binabawi an proteksión kan "$1")',
 'protect-unchain'             => 'Bawion an kandado sa mga permiso sa pagbalyó',
 'protect-text'                => 'Pwede mong hilingón asin bâgohon an tangga nin proteksyón digdi para sa páhina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Dai mo pwedeng bâgohon an mga tangga kan proteksyon mientras na ika nababágat. Ini an mga presenteng pwesto kan páhina <strong>$1</strong>:',
@@ -1510,7 +1508,7 @@ IP dai nakalista digdi. Hilingon an [[Special:Ipblocklist|IP lista nin mga binag
 'databasenotlocked'   => 'Dai nakakandado an base nin datos.',
 
 # Move page
-'movepage'                => 'Ibalyó an páhina',
+'move-page-legend'                => 'Ibalyó an páhina',
 'movepagetext'            => "Matatâwan nin bâgong pangaran an sarong páhina na pigbabalyo an gabos na historya kaini gamit an pormularyo sa babâ.
 An dating titulo magigin redirektang páhina sa bâgong titulo.
 Dai babâgohon an mga takod sa dating titulo kan páhina; seguradohon tabî na mayong doble o raot na mga redirekta.

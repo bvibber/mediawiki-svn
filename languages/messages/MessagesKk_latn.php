@@ -1306,8 +1306,8 @@ Swretti betke kiristirwge, faýlğa twra siltew üşin mına pişindegi siltemen
 'filename'                    => 'Faýl atı',
 'filedesc'                    => 'Sïpattaması',
 'fileuploadsummary'           => 'Sïpattaması:',
-'filestatus'                  => 'Awtorlıq quqıqtarı küýi',
-'filesource'                  => 'Faýl qaýnarı',
+'filestatus'                  => 'Awtorlıq quqıqtarı küýi:',
+'filesource'                  => 'Faýl qaýnarı:',
 'uploadedfiles'               => 'Qotarılğan faýldar',
 'ignorewarning'               => 'Qulaqtandırwğa eleme de faýldı ärqaýsı jolımen saqta.',
 'ignorewarnings'              => 'Ärqaýsı qulaqtandırwlarğa eleme',
@@ -1344,8 +1344,8 @@ Eger tolıq ajıratılımdığı bar swretiñiz bolsa, sonı qotarıñız, äýt
 'uploadscripted'              => 'Osı faýlda, veb şolğıştı ağat tüsindikke keltiretiñ HTML belgilew, ne skrïpt kodı bar.',
 'uploadcorrupt'               => 'Osı faýl büldirilgen, ne burıs keñeýtimi bar. Faýldı tekserip, qotarwın qaýtalañız.',
 'uploadvirus'                 => 'Osı faýlda vïrws bolwı mümkin! Egjeý-tegjeý aqparatı: $1',
-'sourcefilename'              => 'Qaýnardağı faýl atı',
-'destfilename'                => 'Nısana faýl atı',
+'sourcefilename'              => 'Qaýnardağı faýl atı:',
+'destfilename'                => 'Nısana faýl atı:',
 'watchthisupload'             => 'Osı betti baqılaw',
 'filewasdeleted'              => 'Osı atawı bar faýl burın qotarılğan, sosın joýıldırılğan. Qaýta qotarw aldınan $1 degendi tekseriñiz.',
 'upload-wasdeleted'           => "'''Qulaqtandırw: Aldında joýılğan faýldı qotaraýın dep tursız.'''
@@ -1367,7 +1367,7 @@ Qolaýlı bolwı üşin bul faýldıñ joyw jwrnalı keltirilgen:",
 'upload-curl-error28'      => 'Qotarwğa berilgen waqıt bitti',
 'upload-curl-error28-text' => 'Toraptıñ jawap berwi tım uzaq waqıtqa sozıldı. Bul torap iste ekenin tekserip şığıñız, azğana kidire turıñız da qaýta baýqap köriñiz. Talabıñızdı qol tïgen kezinde qaýta baýqap körwiñiz mümkin.',
 
-'license'            => 'Lïcenzïyası',
+'license'            => 'Lïcenzïyası:',
 'nolicense'          => 'Eşteñe bölektenbegen',
 'license-nopreview'  => '(Qarap şığw qatınalmaýdı)',
 'upload_source_url'  => ' (jaramdı, barşağa qatınawlı URL jaý)',
@@ -1762,7 +1762,6 @@ Soñğı öñdewdi [[User:$3|$3]] ([[User_talk:$3|talqılawı]]) istegen.',
 'protectexpiry'               => 'Bitetin merzimi:',
 'protect_expiry_invalid'      => 'Bitetin waqıtı jaramsız.',
 'protect_expiry_old'          => 'Bitetin waqıtı ötip ketken.',
-'unprotectsub'                => '(«$1» qorğamawda)',
 'protect-unchain'             => 'Jıljıtw ruqsattarın berw',
 'protect-text'                => '<strong><nowiki>$1</nowiki></strong> betiniñ qorğaw deñgeýin qarap jäne özgertip şığa alasız.',
 'protect-locked-blocked'      => 'Buğattawıñız öşirilgenşe deýin qorğaw deñgeýin özgerte almaýsız.
@@ -1997,7 +1996,7 @@ Osı maqsatıñızdı quptañız.',
 'databasenotlocked'   => 'Derekqor qulıptalğan joq.',
 
 # Move page
-'movepage'                => 'Betti jıljıtw',
+'move-page-legend'                => 'Betti jıljıtw',
 'movepagetext'            => "Tömendegi pişindi qoldanıp betterdi qaýta ataýdı,
 barlıq tarïxın jaña atawğa jıljıtadı.
 Burınğı bet atawı jaña atawğa aýdatatın bet boladı.

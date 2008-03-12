@@ -238,6 +238,8 @@ $messages = array(
 'lastmodifiedat'    => '이 문서는 $2, $1에 마지막으로 바뀌었습니다.', # $1 date, $2 time
 'viewcount'         => '이 문서는 총 $1번 읽혔습니다.',
 'protectedpage'     => '보호된 문서',
+'jumpto'            => '이동:',
+'jumptonavigation'  => '둘러보기',
 'jumptosearch'      => '찾기',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -290,6 +292,9 @@ $messages = array(
 'restorelink'             => '$1개의 삭제된 편집',
 'feedlinks'               => '피드:',
 'feed-invalid'            => '잘못된 구독 피드 방식입니다.',
+'site-rss-feed'           => '$1 RSS 피드',
+'site-atom-feed'          => '$1 Atom 피드',
+'page-rss-feed'           => '‘$1’ RSS 피드',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => '문서',
@@ -401,6 +406,7 @@ $2',
 'badsig'                     => '서명이 잘못되었습니다. HTML 태그를 확인해주세요.',
 'badsiglength'               => '서명이 너무 깁니다. 서명은 $1자보다 짧아야 합니다.',
 'email'                      => '이메일',
+'prefs-help-realname'        => '실명 기입은 자유입니다. 실명을 입력할 경우 문서 기여에 자신의 이름이 들어가게 됩니다.',
 'loginerror'                 => '로그인 오류',
 'prefs-help-email'           => '이메일 주소 입력은 선택사항입니다. 이메일 주소를 입력하면, 이메일을 직접 공개하지 않고도 다른 사용자가 연락을 보낼 수 있습니다.',
 'nocookiesnew'               => '사용자 계정을 만들었지만, 아직 로그인하지 않았습니다. {{SITENAME}}에서는 로그인 정보를 저장하기 위해 쿠키를 사용합니다. 지금 사용하는 웹 브라우저는 쿠키를 사용하지 않도록 설정되어 있습니다. 로그인하기 전에 웹 브라우저에서 쿠키를 사용하도록 설정해주세요.',
@@ -465,8 +471,8 @@ $2',
 'math_tip'        => '수식 (LaTeX)',
 'nowiki_sample'   => '여기에 위키 문법을 사용하지 않을 글을 적어 주세요',
 'nowiki_tip'      => '위키 문법 무시하기',
-'image_tip'       => '그림 추가하기',
-'media_tip'       => '미디어 파일 링크',
+'image_tip'       => '그림 넣기',
+'media_tip'       => '파일 링크하기',
 'sig_tip'         => '내 서명과 현재 시각',
 'hr_tip'          => '가로줄(되도록 사용하지 말아 주세요)',
 
@@ -545,7 +551,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 
 '''다시 저장을 해 주세요. 만약 계속해서 문제가 생긴다면 로그아웃한 다음 다시 로그인을 해 보세요.'''",
 'editing'                   => '$1 편집하기',
-'editinguser'               => "'''[[User:$1|$1]]'''([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 사용자의 권한 변경",
 'editingsection'            => '$1 편집하기 (부분)',
 'editingcomment'            => '$1 편집하기 (덧붙이기)',
 'editconflict'              => '편집 충돌: $1',
@@ -724,6 +729,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'userrights-lookup-user'     => '사용자 권한 관리',
 'userrights-user-editname'   => '사용자 이름:',
 'editusergroup'              => '사용자 그룹 편집',
+'editinguser'                => "'''[[User:$1|$1]]'''([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) 사용자의 권한 변경",
 'userrights-editusergroup'   => '사용자 그룹 편집',
 'saveusergroups'             => '사용자 권한 저장',
 'userrights-groupsmember'    => '현재 권한:',
@@ -771,13 +777,16 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'show'                              => '보이기',
 'minoreditletter'                   => '잔글',
 'newpageletter'                     => '새글',
+'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1명이 주시하고 있음]',
 'rc_categories'                     => '다음 분류로 제한 (‘|’로 구분)',
 'rc_categories_any'                 => '모두',
 'newsectionsummary'                 => '새 주제: /* $1 */',
 
 # Recent changes linked
-'recentchangeslinked' => '가리키는 글의 바뀜',
+'recentchangeslinked'         => '가리키는 글의 바뀜',
+'recentchangeslinked-title'   => '$1 문서에 관련된 문서 바뀜',
+'recentchangeslinked-summary' => "해당 문서를 링크한 문서에 대한 최근 바뀜이 나와 있습니다. 주시하는 문서의 경우에는 '''굵은''' 글씨로 나타납니다.",
 
 # Upload
 'upload'                      => '파일 올리기',
@@ -800,8 +809,8 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'filename'                    => '파일이름',
 'filedesc'                    => '파일의 설명',
 'fileuploadsummary'           => '설명:',
-'filestatus'                  => '저작권 상태',
-'filesource'                  => '출처',
+'filestatus'                  => '저작권 상태:',
+'filesource'                  => '출처:',
 'uploadedfiles'               => '파일 올리기',
 'ignorewarning'               => '경고를 무시하고 저장합니다.',
 'ignorewarnings'              => '모든 경고 무시하기',
@@ -833,8 +842,8 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'uploadscripted'              => '이 파일에는 HTML이나 다른 스크립트 코드가 포함되어 있어, 웹 브라우저에서 오류를 일으킬 수 있습니다.',
 'uploadcorrupt'               => '이 파일은 잘못된 형식을 가지고 있습니다. 파일을 확인하고 다시 시도해 주세요.',
 'uploadvirus'                 => '파일이 바이러스를 포함하고 있습니다! 상세 설명: $1',
-'sourcefilename'              => '원본 파일 이름',
-'destfilename'                => '파일의 새 이름',
+'sourcefilename'              => '원본 파일 이름:',
+'destfilename'                => '파일의 새 이름:',
 'watchthisupload'             => '이 문서 주시하기',
 'filewasdeleted'              => '같은 이름을 가진 파일이 올라온 적이 있었고, 그 후에 삭제되었습니다. 올리기 전에 $1을 확인해 주시기 바랍니다.',
 
@@ -851,7 +860,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'upload-curl-error28'      => '업로드 시간 초과',
 'upload-curl-error28-text' => '사이트에서 응답하는 시간이 너무 깁니다. 사이트 접속이 가능한지 확인한 다음 다시 시도해주세요. 해당 사이트에 접속이 많을 경우, 접속이 원활한 시간대에 시도해주세요.',
 
-'license'           => '라이센스',
+'license'           => '라이센스:',
 'nolicense'         => '선택하지 않음',
 'license-nopreview' => '(미리보기 불가능)',
 
@@ -868,6 +877,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'imgdesc'                   => '설명',
 'imgfile'                   => '파일',
 'filehist'                  => '파일 역사',
+'filehist-help'             => '날짜/시간을 누르면 해당 시간에 올라온 파일을 볼 수 있습니다.',
 'filehist-deleteall'        => '모두 삭제',
 'filehist-deleteone'        => '이 버전 삭제',
 'filehist-revert'           => '되돌리기',
@@ -986,7 +996,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'lonelypagestext'         => '{{SITENAME}}에서, 다른 모든 문서에서 링크하지 않은 문서의 목록입니다.',
 'uncategorizedpages'      => '분류되지 않은 문서 목록',
 'uncategorizedcategories' => '분류되지 않은 분류 목록',
-'uncategorizedimages'     => '분류되지 않은 그림 목록',
+'uncategorizedimages'     => '분류되지 않은 파일 목록',
 'uncategorizedtemplates'  => '분류되지 않은 틀 목록',
 'unusedcategories'        => '사용하지 않는 분류 목록',
 'unusedimages'            => '사용하지 않는 그림 목록',
@@ -995,8 +1005,9 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'wantedpages'             => '필요한 문서 목록',
 'mostlinked'              => '가장 많이 연결된 문서 목록',
 'mostlinkedcategories'    => '가장 많이 연결된 분류 목록',
+'mostlinkedtemplates'     => '가장 많이 사용된 틀 목록',
 'mostcategories'          => '가장 많이 분류된 문서 목록',
-'mostimages'              => '가장 많이 연결된 그림 목록',
+'mostimages'              => '가장 많이 사용된 파일 목록',
 'mostrevisions'           => '가장 많이 편집된 문서 목록',
 'allpages'                => '모든 문서 목록',
 'prefixindex'             => '접두어 목록',
@@ -1017,7 +1028,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'newpages'                => '새 문서 목록',
 'newpages-username'       => '이름:',
 'ancientpages'            => '오래된 문서 목록',
-'intl'                    => '인터위키',
 'move'                    => '이동',
 'movethispage'            => '문서 이동하기',
 'unusedimagestext'        => '<p>다른 사이트에서 그림의 URL을 직접 사용하고 있을 가능성이 있고, 따라서 그림이 이 목록에 있어도 실제로 어딘가에서 사용하고 있을 수 있습니다.</p>',
@@ -1206,19 +1216,23 @@ $NEWPAGE
 'protectcomment'              => '보호 이유',
 'protectexpiry'               => '보호 기간:',
 'protect_expiry_invalid'      => '보호 기간이 잘못되었습니다.',
-'unprotectsub'                => '("$1" 보호 해제하기)',
+'protect_expiry_old'          => '만료되는 시간을 과거로 입력했습니다.',
 'protect-unchain'             => '이동 권한을 수동으로 조정',
 'protect-text'                => "'''<nowiki>$1</nowiki>''' 문서의 보호 수준을 보거나 변경할 수 있습니다.",
 'protect-locked-blocked'      => "차단된 동안에는 보호 설정을 바꿀 수 없습니다. '''$1''' 문서의 보호 설정은 다음과 같습니다:",
 'protect-locked-dblock'       => "데이터베이스가 잠겨 문서 보호 설정을 바꿀 수 없습니다. '''$1''' 문서의 현재 설정은 다음과 같습니다:",
+'protect-locked-access'       => '문서 보호 수준을 변경할 권한이 없습니다. <strong>$1</strong> 문서의 권한은 다음과 같습니다.',
 'protect-cascadeon'           => '다음의 틀에서 이 문서를 사용하고 있고 그 틀에 연쇄적 보호가 걸려 있어 이 문서도 자동으로 보호됩니다. 이 문서의 보호 설정을 바꾸어도 연쇄적 보호에 영향을 받지 않습니다.',
 'protect-default'             => '(기본값)',
 'protect-fallback'            => '‘$1’ 권한 필요',
 'protect-level-autoconfirmed' => '등록된 사용자만 가능',
 'protect-level-sysop'         => '관리자만 가능',
 'protect-summary-cascade'     => '연쇄적',
+'protect-expiring'            => '$1(UTC)에 만료',
 'protect-cascade'             => '연쇄적 보호 - 이 문서에서 사용되는 다른 문서를 함께 보호합니다.',
 'protect-cantedit'            => '이 문서의 보호 설정을 바꿀 권한이 없습니다.',
+'restriction-type'            => '권한:',
+'restriction-level'           => '보호 수준:',
 'pagesize'                    => '(바이트)',
 
 # Restrictions (nouns)
@@ -1385,7 +1399,7 @@ $1',
 'databasenotlocked'   => '데이터베이스가 잠겨 있지 않습니다.',
 
 # Move page
-'movepage'                => '문서 이동하기',
+'move-page-legend'        => '문서 이동하기',
 'movepagetext'            => "아래 틀을 채워 문서의 이름을 바꿀 수 있습니다. 문서의 역사도 모두 새 문서로 옮겨집니다. 기존의 문서는 새 문서로 넘겨주는 문서가 됩니다. 기존 문서에서의 링크는 바뀌지 않습니다. 이중 넘겨주기와 끊긴 넘겨주기에 주의해주세요.
 
 만약 문서의 새 이름으로 된 문서가 존재할 때, 이 문서가 비었거나 넘겨주기 문서이고 문서 역사가 없을 때에만 이동합니다. 그렇지 않을 경우에는 이동하지 '''않습니다'''. 이것은 실수로 이동한 문서를 되돌릴 수는 있지만, 이미 존재하는 문서 위에 덮어씌울 수는 없다는 것을 의미합니다.
@@ -1469,6 +1483,7 @@ $1',
 'tooltip-pt-preferences'          => '사용자 환경 설정',
 'tooltip-pt-watchlist'            => '주시문서 목록',
 'tooltip-pt-mycontris'            => '내가 편집한 글',
+'tooltip-pt-login'                => '꼭 로그인해야 하는 것은 아니지만, 로그인을 권장합니다.',
 'tooltip-pt-anonlogin'            => '꼭 필요한 것은 아니지만, 로그인을 하면 편리한 점이 많습니다.',
 'tooltip-pt-logout'               => '로그아웃',
 'tooltip-ca-talk'                 => '문서의 내용에 대한 토론 문서',
@@ -1596,12 +1611,16 @@ $1',
 'nextdiff'     => '다음 비교 →',
 
 # Media information
-'mediawarning'    => "'''경고''': 이 파일에는 시스템을 위험하게 만드는 악성 코드가 들어있을 수 있습니다.<hr />",
-'imagemaxsize'    => '그림 설명 문서에 그림 크기를 다음으로 제한:',
-'thumbsize'       => '섬네일 크기:',
-'widthheightpage' => '$1×$2, $3페이지',
-'file-info'       => '(파일 크기: $1, MIME 종류: $2)',
-'file-info-size'  => '($1 × $2 픽셀, 파일 크기: $3, MIME 종류: $4)',
+'mediawarning'         => "'''경고''': 이 파일에는 시스템을 위험하게 만드는 악성 코드가 들어있을 수 있습니다.<hr />",
+'imagemaxsize'         => '그림 설명 문서에 그림 크기를 다음으로 제한:',
+'thumbsize'            => '섬네일 크기:',
+'widthheightpage'      => '$1×$2, $3페이지',
+'file-info'            => '(파일 크기: $1, MIME 종류: $2)',
+'file-info-size'       => '($1 × $2 픽셀, 파일 크기: $3, MIME 종류: $4)',
+'file-nohires'         => '<small>최대 해상도입니다.</small>',
+'svg-long-desc'        => '(SVG 파일, 실제 크기 $1 × $2 픽셀, 파일 크기 $3)',
+'show-big-image'       => '최대 해상도',
+'show-big-image-thumb' => '<small>미리보기 크기: $1 × $2 픽셀</small>',
 
 # Special:Newimages
 'newimages'    => '새 그림 파일 목록',
@@ -1610,9 +1629,16 @@ $1',
 
 # Metadata
 'metadata'          => '메타데이터',
-'metadata-help'     => '이 파일은 카메라/스캐너 정보와 같은 부가적인 정보를 담고 있습니다. 파일을 변경한다면 몇몇 세부 사항은 변경된 그림에 적용되지 않을 수 있습니다.',
+'metadata-help'     => '이 파일은 카메라/스캐너에서 추가한 부가 정보를 담고 있습니다. 파일을 편집한다면, 변경된 그림에는 일부 부가 정보가 빠질 수 있습니다.',
 'metadata-expand'   => '자세한 정보 보이기',
 'metadata-collapse' => '자세한 정보 숨기기',
+'metadata-fields'   => 'EXIF 메타데이터 표가 접혀 있을 때, 다음의 속성값만이 기본적으로 보이게 됩니다. 나머지 값은 자동적으로 숨겨집니다.
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength', # Do not translate list items
 
 # External editor support
 'edit-externally'      => '이 파일을 외부 프로그램을 사용해서 편집하기',

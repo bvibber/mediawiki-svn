@@ -707,7 +707,6 @@ Ak ste sa sem dostali nechtiac, iba kliknite na tlačidlo '''späť''' vo svojom
 <strong>Ak je toto legitímny pokus o úpravu, skúste to prosím znova. Ak to stále nefunguje, skúste sa odhlásiť a znovu prihlásiť.</strong>",
 'token_suffix_mismatch'     => '<strong>Vaša úprava bola zamietnutá, pretože váš klient pokazil znaky s diakritikou v editačnom symbole (token). Úprava bola zamietnutá, aby sa zabránilo poškodeniu textu stránky. Toto sa občas stáva, keď používate chybnú anonymnú proxy službu cez webové rozhranie.</strong>',
 'editing'                   => 'Úprava stránky $1',
-'editinguser'               => 'Úprava stránky $1',
 'editingsection'            => 'Úprava stránky $1 (sekcia)',
 'editingcomment'            => 'Úprava stránky $1 (komentár)',
 'editconflict'              => 'Konflikt pri úprave: $1',
@@ -982,6 +981,7 @@ $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'userrights-lookup-user'           => 'Spravovať skupiny používateľov',
 'userrights-user-editname'         => 'Zadajte meno používateľa:',
 'editusergroup'                    => 'Upraviť skupinu používateľa',
+'editinguser'                      => "Zmena oprávnení používateľa '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Upraviť skupiny používateľa',
 'saveusergroups'                   => 'Uložiť skupiny používateľa',
 'userrights-groupsmember'          => 'Člen skupiny:',
@@ -1084,8 +1084,8 @@ alebo pre priamy odkaz na súbor
 'filename'                    => 'Názov súboru',
 'filedesc'                    => 'Opis súboru',
 'fileuploadsummary'           => 'Zhrnutie:',
-'filestatus'                  => 'Stav autorských práv',
-'filesource'                  => 'Zdroj',
+'filestatus'                  => 'Stav autorských práv:',
+'filesource'                  => 'Zdroj:',
 'uploadedfiles'               => 'Nahrané súbory',
 'ignorewarning'               => 'Ignorovať varovanie a súbor napriek tomu uložiť.',
 'ignorewarnings'              => 'Ignorovať všetky varovania',
@@ -1121,8 +1121,8 @@ Ak je kontrolovaný súbor rovnaký obrázok v pôvodnej veľkosti, nie je potre
 'uploadscripted'              => 'Tento súbor obsahuje kód HTML alebo skript, ktorý može byť chybne interpretovaný prehliadačom.',
 'uploadcorrupt'               => 'Tento súbor je závadný alebo má nesprávnu príponu. Skontrolujte súbor a nahrajte ho znova.',
 'uploadvirus'                 => 'Súbor obsahuje vírus! Podrobnosti: $1',
-'sourcefilename'              => 'Názov zdrojového súboru',
-'destfilename'                => 'Názov cieľového súboru',
+'sourcefilename'              => 'Názov zdrojového súboru:',
+'destfilename'                => 'Názov cieľového súboru:',
 'watchthisupload'             => 'Sleduj túto stránku',
 'filewasdeleted'              => 'Súbor s týmto názvom bol už nahraný a následne zmazaný. Mali by ste skontrolovať $1 predtým, ako budete pokračovať na opätovné nahranie.',
 'upload-wasdeleted'           => "'''Upozornenie: Nahrávate súbor, ktorý bol predtým zmazaný.'''
@@ -1158,7 +1158,7 @@ PICT # misc.
 'upload-curl-error28'      => 'Vypršal čas vyhradený pre nahrávanie',
 'upload-curl-error28-text' => 'Lokalite trvala odpoveď príliš dlho. Prosím, skontrolujte, či je lokalita dopstupná, chvíľu počkajte a skúste znova. Možno je potrebné skúsiť nahrávanie v čase, kedy je lokalita menej zaťažená.',
 
-'license'            => 'Licencovanie',
+'license'            => 'Licencovanie:',
 'nolicense'          => 'Nič nebolo vybrané',
 'license-nopreview'  => '(Náhľad nie je dostupný)',
 'upload_source_url'  => ' (platný, verejne prístupný URL)',
@@ -1231,6 +1231,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '* Bežné dôvody mazania
 ** Porušenie autorských práv
 ** Duplicitný súbor',
+'filedelete-edit-reasonlist'  => 'Upraviť dôvody zmazania',
 
 # MIME search
 'mimesearch'         => 'MIME vyhľadávanie',
@@ -1336,7 +1337,6 @@ z čoho '''$2''' (alebo '''$4 %''') {{PLURAL:$2|je správca|sú správcovia}} (p
 'newpages'                => 'Nové stránky',
 'newpages-username'       => 'Meno používateľa:',
 'ancientpages'            => 'Najdávnejšie upravované stránky',
-'intl'                    => 'Mezijazykové odkazy',
 'move'                    => 'Presunúť',
 'movethispage'            => 'Presunúť túto stránku',
 'unusedimagestext'        => '<p>Prosím, uvedomte si, že iné web stránky môžu odkazovať na tento súbor priamo URL adresou a tak tu môžu byť uvedené napriek tomu, že ich externé stránky používajú.</p>',
@@ -1435,6 +1435,7 @@ Ak budete chcieť neskôr stránku odstrániť zo sledovaných stránok, kliknit
 'unwatch'              => 'Nesledovať',
 'unwatchthispage'      => 'Prestať sledovať túto stránku',
 'notanarticle'         => 'Toto nie je stránka',
+'notvisiblerev'        => 'Revízia bola zmazaná',
 'watchnochange'        => 'V rámci zobrazeného času nebola upravená žiadna z vašich sledovaných stránok.',
 'watchlist-details'    => '{{PLURAL:$1|Jedna sledovaná stránka|$1 sledované stránky|$1 sledovaných stránok}}, nepočítajúc diskusné stránky.',
 'wlheader-enotif'      => '* Upozorňovanie e-mailom je zapnuté.',
@@ -1514,6 +1515,7 @@ Na $2 nájdete zoznam posledných zmazaní.',
 ** Na žiadosť autora
 ** Porušenie autorských práv
 ** Vandalizmus',
+'delete-edit-reasonlist'      => 'Upraviť dôvody zmazania',
 'delete-toobig'               => 'Táto stránka má veľkú históriu úprav, viac ako $1 revízií. Mazanie takýchto stránok bolo obmedzené, aby sa zabránilo náhodnému poškodeniu {{GRAMMAR:genitív|{{SITENAME}}}}.',
 'delete-warning-toobig'       => 'Táto stránka má veľkú históriu úprav, viac ako $1 revízií. Jej zmazanie by mohlo narušiť databázové operácie {{GRAMMAR:genitív|{{SITENAME}}}}; postupujte opatrne.',
 'rollback'                    => 'Rollback úprav',
@@ -1542,7 +1544,6 @@ Môžete si pozrieť aj [[Special:Protectedpages|zoznam momentálne platných za
 'protectexpiry'               => 'Zamknuté do:',
 'protect_expiry_invalid'      => 'Neplatný čas vypršania.',
 'protect_expiry_old'          => 'Čas vypršania je v minulosti.',
-'unprotectsub'                => '(Odomykám „$1“)',
 'protect-unchain'             => 'Odomknúť povolenia pre presun',
 'protect-text'                => 'Tu si môžete pozrieť a zmeniť úroveň ochrany stránky <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Nemôžete meniť úroveň ochrany, kým ste zablokovaný.
@@ -1665,6 +1666,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Zablokovať používateľa',
+'blockip-legend'              => 'Zablokovať používateľa',
 'blockiptext'                 => 'Použite tento formulár na zablokovanie možnosti zápisov uskutočnených z konkrétnej IP adresy alebo od používateľa.
 Mali by ste to urobiť len v prípade bránenia vandalizmu a v súlade so [[{{MediaWiki:Policy-url}}|zásadami a smernicami {{GRAMMAR:genitív|{{SITENAME}}}}]].
 Nižšie uveďte konkrétny dôvod (napríklad uveďte konkrétne stránky, ktoré padli za obeť vandalizmu).',
@@ -1772,7 +1774,7 @@ Potvrďte, že to naozaj chcete urobiť.',
 'databasenotlocked'   => 'Databáza nie je zamknutá.',
 
 # Move page
-'movepage'                => 'Presunúť stránku',
+'move-page-legend'        => 'Presunúť stránku',
 'movepagetext'            => "Pomocou tohto formulára premenujete stránku a premiestnite všetky jej predchádzajúce verzie pod zadané nové meno.
 Starý názov sa stane presmerovacou stránkou na nový názov.
 Odkazy na starú stránku sa však nezmenia, ubezpečte sa, že ste skontrolovali

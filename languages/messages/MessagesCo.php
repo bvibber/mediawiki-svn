@@ -261,7 +261,7 @@ $messages = array(
 'upload'     => 'Incaricà un schedariu',
 'uploadbtn'  => 'Incaricà un schedariu',
 'filename'   => 'Nome di u schedariu',
-'filestatus' => "Statu di u dirittu d'autore",
+'filestatus' => "Statu di u dirittu d'autore:",
 
 'upload-file-error' => 'Errore internu',
 
@@ -390,7 +390,7 @@ $messages = array(
 'proxyblocksuccess'  => 'Hè fattu.',
 
 # Move page
-'movepage'                => 'Move a pagina',
+'move-page-legend'                => 'Move a pagina',
 'movearticle'             => 'Move a pagina',
 'move-watch'              => 'Fighjulà issa pagina',
 'movepagebtn'             => 'Move a pagina',

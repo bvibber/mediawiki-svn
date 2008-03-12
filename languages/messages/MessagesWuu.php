@@ -453,16 +453,16 @@ $messages = array(
 'filename'          => '文件名',
 'filedesc'          => '小结',
 'fileuploadsummary' => '小结:',
-'filestatus'        => '版权状态',
-'filesource'        => '来源',
+'filestatus'        => '版权状态:',
+'filesource'        => '来源:',
 'uploadedfiles'     => '已经上载个文件',
 'ignorewarning'     => '弗管警告，随便哪亨要保存文件。',
 'successfulupload'  => '上载成功哉',
 'uploadwarning'     => '上载警告',
 'savefile'          => '保存文件',
 'uploadedimage'     => '上载 "[[$1]]"',
-'sourcefilename'    => '源文件',
-'destfilename'      => '目标文件名',
+'sourcefilename'    => '源文件:',
+'destfilename'      => '目标文件名:',
 'watchthisupload'   => '监控该只页面',
 
 # Image list
@@ -674,7 +674,7 @@ $messages = array(
 'proxyblocksuccess'  => '好哉。',
 
 # Move page
-'movepage'                => '页面捅荡',
+'move-page-legend'                => '页面捅荡',
 'movepagetext'            => "下底只表格会重新命名一只页面，拿俚所有个历史也侪捅到新名字下头。
 旧个名字会变成到新名字个重定向页面。
 到旧页面个连接弗会改变；注意检查双重定向或者坏脱个重定向。

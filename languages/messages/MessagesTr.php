@@ -500,11 +500,12 @@ Aşağıdaki işlevlerin hiçbiri için e-posta gönderilmeyecektir.',
 
 Sizi engelleyen yönetici: $1. Engelleme sebebi: \'\'$2\'\'.
 
+*Engellenmenin başlangıcı: $8
+*Engellenmenin bitişi: $6
+
 Belirtilen sebeb göre engellenmenizin uygun olmadığını düşünüyorsanız, $1 ile ya da başka bir [[{{MediaWiki:Grouppage-sysop}}|yönetici]] ile bu durumu görüşebilirsiniz.
-
 Eğer [[Special:Preferences|tercihler]] kısmında geçerli bir e-posta adresi girmediyseniz "Kullanıcıya e-posta gönder" özelliğini kullanamazsınız.
-
-Şu anda IP adresiniz $3. Lütfen sorgu yaparken bu adresi belirtiniz.',
+Şu anda IP adresiniz $3 ve engellenme numaranız #$5. Lütfen sorgu yaparken bu bilgileri belirtiniz.',
 'autoblockedtext'           => 'IP adresiniz otomatik olarak engellendi çünkü başka bir kullaınıcı tarafından kullanılmaktaydı, $1 tarafından engellendi.
 Bunun için şu sebep belirtildi:
 :\'\'$2\'\'
@@ -550,7 +551,6 @@ Engellenme ID\'niz $5. Lütfen yapacağınız herhangi sorgularda bu ID bulunsun
 'previewnote'               => 'Bu yalnızca bir önizlemedir, ve değişiklikleriniz henüz kaydedilmemiştir!',
 'session_fail_preview'      => 'Özür dileriz. Oturum açılması ile ilgili veri kaybından kaynaklı değişikliğinizi kaydedemedik. Lütfen tekrar deneyiniz. Eğer bu yöntem işe yaramazsa oturumu kapatıp tekrar sisteme geri giriş yapınız.',
 'editing'                   => '"$1" sayfasını değiştirmektesiniz',
-'editinguser'               => '"$1" sayfasını değiştirmektesiniz',
 'editingsection'            => '"$1" sayfasında bölüm değiştirmektesiniz',
 'editingcomment'            => '$1 sayfasına mesaj eklemektesiniz.',
 'editconflict'              => 'Değişiklik çakışması: $1',
@@ -693,7 +693,7 @@ Bu sayfa değişikiliği kamu arşivlerinden silinmiştir.
 'searchresulttext'      => '{{SITENAME}} içinde arama yapmak konusunda bilgi almak için [[{{MediaWiki:Helppage}}|{{int:help}}]] sayfasına bakabilirsiniz.',
 'searchsubtitle'        => 'Aranan: "[[:$1]]" [[Special:Allpages/$1|&#x5B;Indeks&#x5D;]]',
 'searchsubtitleinvalid' => 'Aranan: "$1"',
-'noexactmatch'          => "Başlığı bu olan bir madde bulunamadı. Bu maddenin yazılmasını [[:$1|'''siz başlatabilirsiniz''']], ya da bu maddenin yazılması isteğini [[Project:Madde istekleri|istenen maddeler listesine]] ekleyebilirsiniz. Yeni bir madde yaratmadan önce lütfen site içinde deatylı arama yapınız. İstediğiniz madde başka bir adla zaten var olabilir.",
+'noexactmatch'          => "''Başlığı \"\$1\" olan bir madde bulunamadı.''' Bu sayfayı siz [[:\$1|oluşturabilirsiniz]].",
 'noexactmatch-nocreate' => "'''\"\$1\" başlıklı sayfa bulunmamaktadır.'''",
 'titlematches'          => 'Madde adı eşleşiyor',
 'notitlematches'        => 'Hiçbir başlıkta bulunamadı',
@@ -765,6 +765,7 @@ $2 yönlendirmeleri listele &nbsp; Aranacak: $3 $9',
 'userrights-lookup-user'           => 'Kullanıcı gruplarını düzenle',
 'userrights-user-editname'         => 'Kullanıcı adı giriniz:',
 'editusergroup'                    => 'Kullanıcı grupları düzenle',
+'editinguser'                      => '"$1" sayfasını değiştirmektesiniz',
 'userrights-editusergroup'         => 'Kullanıcı grupları düzenle',
 'saveusergroups'                   => 'Kullanıcı grupları kaydet',
 'userrights-groupsmember'          => 'İçinde olduğu gruplar:',
@@ -849,8 +850,8 @@ veya doğrudan bağlantı için
 'filename'                    => 'Dosya',
 'filedesc'                    => 'Dosya ile ilgili açıklama',
 'fileuploadsummary'           => 'Açıklama:',
-'filestatus'                  => 'Telif hakkı durumu',
-'filesource'                  => 'Kaynak',
+'filestatus'                  => 'Telif hakkı durumu:',
+'filesource'                  => 'Kaynak:',
 'uploadedfiles'               => 'Yüklenen dosyalar',
 'ignorewarning'               => 'Uyarıyı önemsemeyip dosyayı yükle',
 'ignorewarnings'              => 'Uyarıyı önemseme',
@@ -873,7 +874,7 @@ veya doğrudan bağlantı için
 'uploadscripted'              => 'Bu dosya bir internet tarayıcısı tarafından hatalı çevrilebilecek bir HTML veya script kodu içermektedir.',
 'uploadcorrupt'               => 'Bu dosya ya bozuk ya da uzantısı yanlış. Dosyayı kontrol edip, tekrar yüklemeyi deneyin.',
 'uploadvirus'                 => 'Bu dosya virüslüdür! Detayları: $1',
-'sourcefilename'              => 'Yüklemek istediğiniz dosya',
+'sourcefilename'              => 'Yüklemek istediğiniz dosya:',
 'destfilename'                => '{{SITENAME}} sitesindeki dosya adı',
 'watchthisupload'             => 'Bu sayfayı izle',
 'filewasdeleted'              => 'Bu isimde bir dosya yakın zamanda yüklendi ve ardından yöneticiler tarafından silindi. Dosyayı yüklemeden önce, $1 sayfasına bir göz atınız.',
@@ -1040,7 +1041,6 @@ Toplam sayfa görüntülenme sayısı '''\$3''', değişiklik başına görünt�
 'newpages-username'       => 'Kullanıcı:',
 'ancientpages'            => 'En son değişiklik tarihi en eski olan maddeler',
 'ancientpages-summary'    => 'En son değişiklik yapıldığından bu yana en fazla zaman geçmiş, geliştirilmesi unutulmuş sayfaların listesi.',
-'intl'                    => 'Diller arası bağlantılar',
 'move'                    => 'Adını değiştir',
 'movethispage'            => 'Sayfayı taşı',
 'unusedcategoriestext'    => 'Aşağıda bulunan kategoriler mevcut olduğu halde, hiçbir madde ya da kategori tarafından kullanılmıyor.',
@@ -1227,12 +1227,11 @@ Daha fazla bilgi için [[Project:Koruma altına alınmış sayfa]] sayfasına ba
 'protectexpiry'               => 'Bitiş tarihi:',
 'protect_expiry_invalid'      => 'Geçersiz bitiş tarihi.',
 'protect_expiry_old'          => 'Geçmişteki son kullanma zamanı.',
-'unprotectsub'                => '(koruma kaldırılır "$1")',
 'protect-unchain'             => 'Taşıma kilidini kaldır',
 'protect-text'                => '[[$1]] sayfasının koruma durumunu buradan görebilir ve değiştirebilirsiniz. Lütfen [[Project:Koruma politikası|koruma politikasına]] uygun hareket ettiğinizden emin olunuz.',
 'protect-locked-access'       => 'Kullanıcı hesabınız sayfanın koruma düzeylerini değiştirme yetkisine sahip değil.
 <strong>$1</strong> sayfasının geçerli ayarları şunlardır:',
-'protect-cascadeon'           => 'Bu sayfa şu an koruma altındadır, çünkü aşağıda listelenen ve kademeli koruma altındaki sayfalarda kullanılmaktadır. Bu sayfanın koruma seviyesini değiştirebilirsiniz, ancak kademeli koruma etkilenmeyecektir.',
+'protect-cascadeon'           => 'Bu sayfa şu an koruma altındadır, çünkü aşağıda listelenen ve kademeli koruma altındaki $1 sayfada kullanılmaktadır. Bu sayfanın koruma seviyesini değiştirebilirsiniz, ancak kademeli koruma etkilenmeyecektir.',
 'protect-default'             => '(standart)',
 'protect-fallback'            => '"$1" izni gerektir',
 'protect-level-autoconfirmed' => 'kayıtlı olmayan değiştirmesin',
@@ -1312,8 +1311,8 @@ $1',
 'whatlinkshere-title' => '$1 maddesine bağlantısı olan sayfalar',
 'whatlinkshere-page'  => 'Sayfa:',
 'linklistsub'         => '(Bağlantı listesi)',
-'linkshere'           => 'Buraya bağlantısı olan sayfalar:',
-'nolinkshere'         => 'Buraya bağlanan sayfa yok.',
+'linkshere'           => "'''[[:1]]''' sayfasına bağlantısı olan sayfalar:",
+'nolinkshere'         => "'''[[:$1]]''' sayfasına bağlantı yapan sayfa yok.",
 'isredirect'          => 'yönlendirme sayfası',
 'istemplate'          => 'ekleme',
 'whatlinkshere-prev'  => '{{PLURAL:$1|önceki|önceki $1}}',
@@ -1361,7 +1360,7 @@ $1',
 'contribslink'                => 'Katkılar',
 'autoblocker'                 => 'Otomatik olarak engellendiniz çünkü yakın zamanda IP adresiniz "[[User:$1|$1]]" kullanıcısı tarafından  kullanılmıştır. $1 isimli kullanıcının engellenmesi için verilen sebep: "\'\'\'$2\'\'\'"',
 'blocklogpage'                => 'Erişim engelleme kayıtları',
-'blocklogentry'               => '"[[$1]]" erişimi $2 durduruldu. Sebep',
+'blocklogentry'               => '[[$1]], $2 $3 tarihleri arası süresince engellendi',
 'blocklogtext'                => 'Burada kullanıcı erişimine yönelik engelleme ya da engelleme kaldırma kayıtları listelenmektedir. Otomatik  IP adresi engellemeleri listeye dahil değildir. Şu anda erişimi durdurulmuş kullanıcıları [[Special:Ipblocklist|IP engelleme listesi]] sayfasından görebilirsiniz.',
 'unblocklogentry'             => '$1 kullanıcının engellemesi kaldırıldı',
 'block-log-flags-anononly'    => 'sadece anonim kullanıcılar',
@@ -1385,7 +1384,7 @@ $1',
 'databasenotlocked'   => 'Veritabanı kilitli değil.',
 
 # Move page
-'movepage'                => 'İsim değişikliği',
+'move-page-legend'                => 'İsim değişikliği',
 'movepagetext'            => "Aşağıdaki form kullanılarak sayfanın adı değiştirilir. Beraberinde tüm geçmiş kayıtları da yeni isme aktarılır. Eski isim yeni isme yönlendirme haline dönüşür. Eski başlığa dogru olan bağlantılar olduğu gibi kalır; çift veya geçersiz yönlendirmeleri [[Special:Maintenance|kontrol ediniz.]] Yapacağınız bu değişikllike tüm bağlantıların olması gerektiği gibi çalıştığından sizin sorumlu olduğunuzu unutmayınız.
 
 Eğer yeni isimde bir isim zaten mevcutsa, isim değişikliği '''yapılmayacaktır''', ancak varolan sayfa içerik olarak boş ise veya sadece yönlendirme ise ve hiç geçmiş hali yoksa isim değişikliği mümkün olacaktır. Bu yanı zamanda demektir ki, yaptığınız isim değişikliğini ilk ismine değiştirerek geri alabilirsiniz ve hiç bir başka sayfaya da dokunmamış olursunuz.
@@ -1754,10 +1753,12 @@ Ondan sonraki link(ler) kural dışı olarak kabul edilir, örneğin: resim sayf
 'confirmemail_text'       => "Viki'nin e-posta işlevlerini kullanmabilmek için, önce e-posta adresinizin
 doğrulanması gerekiyor. Adresinize onay e-postası göndermek için aşağıdaki
 butonu tıklayın. Gönderilecek iletide adresinizi onaylamak için tarayıcınızla 
-erişebileceğiniz, onay kodu içeren bir bağlantı olacak.",
+erişebileceğiniz, onay kodu içeren bir bağlantı olacak; linki tarayıcınıda açın ve e-posta adresinizin geçerliliğini doğrulayın.",
 'confirmemail_send'       => 'Onay kodu gönder',
 'confirmemail_sent'       => 'Onay e-postası gönderildi.',
-'confirmemail_sendfailed' => 'Onay kodu gönderilemedi. Adreste geçersiz harf ya da işaret olmadığından emin misiniz?',
+'confirmemail_sendfailed' => 'Onay maili gönderilemedi. Geçersiz karakterler olabilir adresi kontrol edin
+
+Mail yazılımı iade etti:$1',
 'confirmemail_invalid'    => 'Geçersiz onay kodu. Onay kodunun son kullanma tarihi geçmiş olabilir.',
 'confirmemail_needlogin'  => 'E-posta adresinizi onaylamak için önce $1 yapmalısınız.',
 'confirmemail_success'    => "E-posta adresiniz onaylandı. Oturum açıp Viki'nin tadını çıkarabilirsiniz.",
@@ -1800,9 +1801,11 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'confirm_purge_button' => 'Tamam',
 
 # AJAX search
-'articletitles' => "''$1'' ile başlayan maddeler",
-'hideresults'   => 'sonuçları gizle',
-'useajaxsearch' => 'AJAX arama kullan',
+'searchcontaining' => "''$1'' içeren sayfaları ara.",
+'searchnamed'      => "''$1'' isimli sayfaları ara.",
+'articletitles'    => "''$1'' ile başlayan maddeler",
+'hideresults'      => 'sonuçları gizle',
+'useajaxsearch'    => 'AJAX arama kullan',
 
 # Multipage image navigation
 'imgmultipageprev' => '← önceki sayfa',
@@ -1816,6 +1819,7 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'table_pager_prev'         => 'Önceki sayfa',
 'table_pager_first'        => 'İlk',
 'table_pager_last'         => 'Son',
+'table_pager_limit'        => 'Her sayfada $1 nesne göster',
 'table_pager_limit_submit' => 'Git',
 'table_pager_empty'        => 'Sonuç yok',
 
@@ -1830,15 +1834,22 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'livepreview-ready'   => 'Yükleniyor...  Tamam!',
 
 # Watchlist editor
-'watchlistedit-normal-title'  => 'İzleme listesini düzenle',
-'watchlistedit-normal-legend' => 'İzleme listesinden başlıkları kaldır',
-'watchlistedit-normal-submit' => 'Başlıkları kaldır',
-'watchlistedit-raw-title'     => 'Ham izleme listesini düzenle',
-'watchlistedit-raw-legend'    => 'Ham izleme listesini düzenle',
-'watchlistedit-raw-explain'   => "İzleme listenizdeki başlıklar aşağıda gösterilmektedir. Her satırda bir başlık olmak üzere, başlıkları ekleyerek ya da silerek listeyi düzenleyebilirsiniz. Bittiğinde ''İzleme listesini güncelle'''ye tıklayınız. Ayrıca [[Special:Watchlist/edit|standart düzenleme sayfasını]] da kullanabilirsiniz.",
-'watchlistedit-raw-titles'    => 'Başlıklar:',
-'watchlistedit-raw-submit'    => 'İzleme listesini güncelle',
-'watchlistedit-raw-done'      => 'İzleme listeniz güncellendi.',
+'watchlistedit-noitems'        => 'İzleme listeniz hiçbir başlık içermemektedir.',
+'watchlistedit-normal-title'   => 'İzleme listesini düzenle',
+'watchlistedit-normal-legend'  => 'İzleme listesinden başlıkları kaldır',
+'watchlistedit-normal-explain' => 'İzleme listenizdeki başlıklar aşağıda gösterilmiştir.
+Bir başlığı çıkarmak için, yanındaki kutucuğu işaretleyin, ve Başlıkları Çıkar butonuna tıklayın
+[[Special:Watchlist/raw|Satır listesini]] de düzenleyebilirsiniz',
+'watchlistedit-normal-submit'  => 'Başlıkları kaldır',
+'watchlistedit-normal-done'    => '$1 başlık izleme listenizden silindi',
+'watchlistedit-raw-title'      => 'Ham izleme listesini düzenle',
+'watchlistedit-raw-legend'     => 'Ham izleme listesini düzenle',
+'watchlistedit-raw-explain'    => "İzleme listenizdeki başlıklar aşağıda gösterilmektedir. Her satırda bir başlık olmak üzere, başlıkları ekleyerek ya da silerek listeyi düzenleyebilirsiniz. Bittiğinde ''İzleme listesini güncelle'''ye tıklayınız. Ayrıca [[Special:Watchlist/edit|standart düzenleme sayfasını]] da kullanabilirsiniz.",
+'watchlistedit-raw-titles'     => 'Başlıklar:',
+'watchlistedit-raw-submit'     => 'İzleme listesini güncelle',
+'watchlistedit-raw-done'       => 'İzleme listeniz güncellendi.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 başlık|$1 başlık}} eklendi:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 başlık|$1 başlık}} silindi:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'İlgili değişiklikleri göster',
@@ -1846,12 +1857,17 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'watchlisttools-raw'  => 'Ham izleme listesini düzenle',
 
 # Special:Version
-'version-variables'        => 'Değişkenler',
-'version-other'            => 'Diğer',
-'version-version'          => 'Versiyon',
-'version-license'          => 'Lisans',
-'version-software-product' => 'Ürün',
-'version-software-version' => 'Versiyon',
+'version-extensions'               => 'Yüklü ekler',
+'version-specialpages'             => 'Özel sayfalar',
+'version-variables'                => 'Değişkenler',
+'version-other'                    => 'Diğer',
+'version-extension-functions'      => 'Ek fonksiyonları',
+'version-skin-extension-functions' => 'Tema eki fonksiyonları',
+'version-version'                  => 'Versiyon',
+'version-license'                  => 'Lisans',
+'version-software'                 => 'Yüklü yazılım',
+'version-software-product'         => 'Ürün',
+'version-software-version'         => 'Versiyon',
 
 # Special:Filepath
 'filepath'        => 'Dosyanın konumu',

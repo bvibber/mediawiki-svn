@@ -441,12 +441,6 @@ table.multipageimage td {
 
 .templatesUsed { margin-top: 1em; }
 
-/* Convenience links on Special:Ipblocklist */
-p.mw-ipb-conveniencelinks {
-	font-size: 90%;
-	float: right;
-}
-
 /* Recreating-deleted-page/reupload file warning and log entries */
 div#mw-upload-deleted-warn ul li,
 div#mw-recreate-deleted-warn ul li {

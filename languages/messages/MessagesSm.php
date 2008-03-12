@@ -11,11 +11,11 @@ $messages = array(
 # Dates
 'sunday'        => 'Aso sa',
 'monday'        => 'Aso-gafua',
-'tuesday'       => '‘O le aso lua',
+'tuesday'       => 'â€˜O le aso lua',
 'wednesday'     => 'Aso lulu',
 'thursday'      => 'Aso totofi',
 'friday'        => 'Aso falaile',
-'saturday'      => 'Aso to‘ona‘i',
+'saturday'      => 'Aso toâ€˜onaâ€˜i',
 'sun'           => 'Aso sa',
 'mon'           => 'Aso gafua',
 'wed'           => 'Aso lulu',
@@ -196,7 +196,7 @@ $messages = array(
 'proxyblocksuccess' => "Mae'a.",
 
 # Move page
-'movepage'    => "Si'i le itulau",
+'move-page-legend'    => "Si'i le itulau",
 'movearticle' => "Si'i le itulau",
 'movenologin' => "Le'i fa'aolaina",
 'newtitle'    => "'I le ulutala fou",

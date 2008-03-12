@@ -877,8 +877,8 @@ pi culligari direttamenti l'àutri tipi di file.",
 'filename'                    => 'Nomu dû file',
 'filedesc'                    => 'Discrizzioni',
 'fileuploadsummary'           => "Discrizzioni (auturi, fonti, discrizzioni, licenza d'usu, noti) dû file:",
-'filestatus'                  => 'Nfurmazzioni supra lu copyright',
-'filesource'                  => 'Fonti',
+'filestatus'                  => 'Nfurmazzioni supra lu copyright:',
+'filesource'                  => 'Fonti:',
 'uploadedfiles'               => 'File carricati',
 'ignorewarning'               => "Gnora l'avvisu e sarva comu è gghiè lu file. La virsioni asistenti veni suvrascritta.",
 'ignorewarnings'              => "Gnora li missaggi d'avvirtimentu dû sistema",
@@ -912,8 +912,8 @@ Siddu si disponi dâ mmagini nta risoluzioni urigginali, si prega di carricàril
 'uploadscripted'              => "Stu file cunteni còdici HTML o di script, ca putissi èssiri nterpritato erroniamenti d'un browser web.",
 'uploadcorrupt'               => 'Lu file è currumputu o hà na stinzioni nun curretta. Pi favuri cuntrolla lu file e esequi di novu lu carricamentu.',
 'uploadvirus'                 => 'Lu file cunteni un virus! Ultiriuri nfurmazzioni: $1',
-'sourcefilename'              => "Nomu dû file d'orìggini",
-'destfilename'                => 'Nomu dû file di distinazzioni',
+'sourcefilename'              => "Nomu dû file d'orìggini:",
+'destfilename'                => 'Nomu dû file di distinazzioni:',
 'watchthisupload'             => 'Talìa sta pàggina',
 'filewasdeleted'              => 'Nu file cu stu nomu hà statu già carricatu e cancillatu n passatu. Virificari $1 prima di carricàrilu di novu.',
 'upload-wasdeleted'           => "'''Accura: stai carricannu nu file chi fu già cancillatu.'''
@@ -949,7 +949,7 @@ PICT # arcuni
 'upload-curl-error28'      => "Tempu scadutu pi l'upload",
 'upload-curl-error28-text' => 'Lu situ rimotu hà mpiegatu troppu tempu a arrispùnniri. Virificari ca lu situ è attivu, attènniri quarchi minutu e pruvari di novu, eventuarmenti nta un mumentu di tràfficu nicu.',
 
-'license'            => "Licenza d'usu",
+'license'            => "Licenza d'usu:",
 'nolicense'          => 'Nudda silizzioni',
 'license-nopreview'  => '(Antiprima nun disponibbili)',
 'upload_source_url'  => '(na URL curretta e accissìbbili)',
@@ -1285,7 +1285,6 @@ Pi favuri utilizza lu tastu "\'n arreri" dû tò browser, ricàrrica la pàggina
 'protectexpiry'               => 'Scadenza',
 'protect_expiry_invalid'      => 'Scadenza nun vàlida.',
 'protect_expiry_old'          => 'Scadenza già trascursa.',
-'unprotectsub'                => '(Rèvuca prutezzioni di "$1")',
 'protect-unchain'             => 'Sblocca pirmissu di spustamentu',
 'protect-text'                => 'Ccà poi vìdiri e canciari lu liveddu di prutezzioni pi la pàggina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Nun pò canciari li liveddi di prutizzioni quannu sî bloccatu. Li mpostazzioni correnti pâ pàggina sugnu <strong>$1</strong>:',
@@ -1476,7 +1475,7 @@ $1',
 'databasenotlocked'   => 'Lu database nun è bluccatu.',
 
 # Move page
-'movepage'                => 'Sposta la pàggina',
+'move-page-legend'                => 'Sposta la pàggina',
 'movepagetext'            => "Usannu lu formulariu ccà sutta vuatri canciati lu nomu dâ pàggina, e spustati tutta la sò storia versu la pàggina nova. Lu tìtulu vecchiu addiventa na pàggina di ''redirect'' versu lu tìtulu novu. Li liami â pàggina vecchia nun càncianu. Assicuràtivi di tistari li redirect duppi e li redirect rumputi. Vuatri siti rispunzàbbili dî liami chi avìssiru a puntari â paggina giusta.
 
 La pàggina '''nun'' è spustata siddu cc'è già na pàggina cu lu tìtulu novu, tranni chi la pàggina 'n chistioni è vacanti o è na pàggina di ''redirect'' e nun havi n'archiviu di canciamenti. Chistu signìfica chi vuatri putiti rinuminari la pàggina cu lu nomu vecchiu si aviti sbagghiatu, e chi nun putiti suprascrìviri nta na pàggina chi esisti già.

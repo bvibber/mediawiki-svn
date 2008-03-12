@@ -501,8 +501,8 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'filename'          => 'Arkivo-nomo',
 'filedesc'          => 'Titulo',
 'fileuploadsummary' => 'Rezumo:',
-'filestatus'        => "Stando di ''copyright''",
-'filesource'        => 'Fonto',
+'filestatus'        => "Stando di ''copyright'':",
+'filesource'        => 'Fonto:',
 'uploadedfiles'     => 'Adkargita arkivi',
 'ignorewarning'     => 'Ignorar la averto e gardar la arkivo irgakaze.',
 'badfilename'       => 'La imajo-nomo chanjesis a "$1".',
@@ -659,7 +659,6 @@ Lasta edito esis da [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'protectsub'         => '(Protektante "$1")',
 'confirmprotect'     => 'Konfirmar protekto',
 'protectcomment'     => 'Motivo por la protekto',
-'unprotectsub'       => '(Desprotektante "$1")',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Redaktar',
@@ -734,7 +733,7 @@ Memorez [[Special:Unlockdb|efacar la blokuso]] kande vua mantenado finos.',
 'unlockdbsuccesstext' => 'La datumaro desblokusesis.',
 
 # Move page
-'movepage'         => 'Rinomizar pagino',
+'move-page-legend'         => 'Rinomizar pagino',
 'movepagetext'     => "Uzante ica formularo onu povas rinomizar pagino, movante olua omna versionaro ad la nova titulo.
 La antea titulo konvertesos a ridirektilo a la nova titulo. La ligili a la antea titulo dil pagino ne chanjesos. Voluntez certigar ke ne esas duopla o ruptota ridirektili. Vu responsas ke la ligili duros direktante a la pagino korespondanta.
 

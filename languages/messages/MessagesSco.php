@@ -730,8 +730,8 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'uploadlog'                   => 'uplaid log',
 'uploadlogpage'               => 'Uplaid log',
 'uploadlogpagetext'           => 'Ablo is a leet o the maist recent file uplaids.',
-'filestatus'                  => 'Copyricht status',
-'filesource'                  => 'Soorce',
+'filestatus'                  => 'Copyricht status:',
+'filesource'                  => 'Soorce:',
 'uploadedfiles'               => 'Uplaidit files',
 'ignorewarning'               => 'Ignore warnin an hain file oniewey.',
 'ignorewarnings'              => 'Ignore ony warnins',
@@ -748,7 +748,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'uploadscripted'              => 'This file hauds HTML or script code that micht be wrang interpretit bi a wab brouser.',
 'uploadcorrupt'               => 'The file is corrupt or haes a wrang extension. Please check the file an uplaid again.',
 'uploadvirus'                 => 'The file hauds a virus! Details: $1',
-'sourcefilename'              => 'Soorce filename',
+'sourcefilename'              => 'Soorce filename:',
 
 'nolicense' => 'Nane selected',
 
@@ -917,7 +917,6 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'unprotectedarticle'  => 'unprotectit "[[$1]]"',
 'protectsub'          => '(Protectin "$1")',
 'protectcomment'      => 'Raeson for protectin',
-'unprotectsub'        => '(Unprotectin "$1")',
 'protect-text'        => 'Ye can see an chynge the protection level here for the page <strong><nowiki>$1</nowiki></strong>.',
 'protect-level-sysop' => 'Juist administrators',
 
@@ -998,7 +997,7 @@ tae an afore-blockit IP address or uisername.',
 'databasenotlocked'   => 'The database isna lockit.',
 
 # Move page
-'movepage'                => 'Flit page',
+'move-page-legend'                => 'Flit page',
 'movepagetext'            => "Uisin the form ablo will rename a page, flittin aa its history tae the new name. The auld teitle will become a reguidal page tae the new teitle. Airtins tae the auld page teitle willna be chynged; be siccar tae [[Special:Maintenance|check]] for dooble or brucken reguidals. You ar responsible for makkin siccar that airtins continues tae pynt whaur thay ar supposed tae gang. Mynd that the page '''willna''' be flittit gin the'r aareadies a page at the new teitle, unless it is tuim or a reguidal and haes nae past edit history. This means that ye can rename a page back tae whaur it wis juist renamed frae gin ye mak a mistak, an ye canna owerwrite an existin page. <b>WARNIN!</b> This can be a drastic and unexpectit chynge for a popular page; please be siccar ye unnerstaun the consequences o this afore proceedin.",
 'movepagetalktext'        => "The associate Collogue page, gin onie, will be autaematically flittit alang wi it '''unless:''' *Ye'r flittin the page across namespaces, *A collogue page that isna tuim aareadies exists unner the new name, or *Ye tak the tick oot o the box ablo. In thae cases, ye maun flit or merge the page manually later gin ye hae saicont thochts.",
 'movearticle'             => 'Flit page:',

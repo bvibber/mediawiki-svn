@@ -258,6 +258,7 @@ $messages = array(
 'thisisdeleted'       => 'Bekyk of herstel $1?',
 'viewdeleted'         => 'Bekyk $1?',
 'restorelink'         => '{{PLURAL:$1|die geskrapte wysiging|$1 geskrapte wysigings}}',
+'red-link-title'      => '$1 (nog nie geskryf nie)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikel',
@@ -459,7 +460,6 @@ Indien jy per ongeluk hier is, gebruik jou blaaier se '''terug''' knop.",
 'session_fail_preview'     => '<strong>Jammer! Weens verlies aan sessie-inligting is die wysiging nie verwerk nie.
 Probeer asseblief weer. As dit steeds nie werk nie, probeer om af en weer aan te teken.</strong>',
 'editing'                  => 'Besig om $1 te wysig',
-'editinguser'              => "Besig om gebruikersrechte van gebruiker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) te wysig",
 'editingsection'           => 'Besig om $1 (onderafdeling) te wysig',
 'editingcomment'           => 'Besig om $1 (kommentaar) te wysig',
 'editconflict'             => 'Wysigingskonflik: $1',
@@ -603,6 +603,7 @@ om voorkeure te spesifiseer.',
 # User rights
 'userrights-lookup-user'     => 'Beheer gebruikersgroepe',
 'editusergroup'              => 'Wysig gebruikersgroepe',
+'editinguser'                => "Besig om gebruikersrechte van gebruiker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) te wysig",
 'userrights-editusergroup'   => 'wysig gebruikersgroepe',
 'saveusergroups'             => 'Stoor gebruikersgroepe',
 'userrights-groupsmember'    => 'Lid van:',
@@ -691,8 +692,8 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 'filename'          => 'Lêernaam',
 'filedesc'          => 'Opsomming',
 'fileuploadsummary' => 'Opsomming:',
-'filestatus'        => 'Outeursregsituasie',
-'filesource'        => 'Bron',
+'filestatus'        => 'Outeursregsituasie:',
+'filesource'        => 'Bron:',
 'uploadedfiles'     => 'Gelaaide lêers',
 'ignorewarnings'    => 'Ignoreer enige waarskuwings',
 'minlength1'        => 'Prentname moet ten minste een letter lank wees.',
@@ -707,11 +708,11 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 'overwroteimage'    => 'het een nuwe weergawe van "[[$1]]" gelaai',
 'uploaddisabled'    => 'Laai is uitgeskakel',
 'uploadcorrupt'     => "Die lêer is foutief of is van 'n verkeerde tipe. Gaan asseblief die lêer na en laai weer op.",
-'sourcefilename'    => 'Bronlêernaam',
-'destfilename'      => 'Teikenlêernaam',
+'sourcefilename'    => 'Bronlêernaam:',
+'destfilename'      => 'Teikenlêernaam:',
 'watchthisupload'   => 'Hou hierdie bladsy dop',
 
-'license' => 'Lisensiëring',
+'license' => 'Lisensiëring:',
 
 # Image list
 'imagelist'                 => 'Prentelys',
@@ -752,6 +753,9 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 'filedelete-success'          => "'''$1''' is geskrap.",
 'filedelete-success-old'      => '<span class="plainlinks">Die weergawe van \'\'\'[[Media:$1|$1]]\'\'\' op $3, $2 is geskrap.</span>',
 'filedelete-reason-otherlist' => 'Andere rede',
+'filedelete-reason-dropdown'  => '*Algemene skrappingsredes:
+** Kopieregskending
+** Duplikaatlêer',
 
 # MIME search
 'mimesearch' => 'MIME-soek',
@@ -973,7 +977,6 @@ Kyk na $2 vir \'n rekord van onlangse skrappings.',
 'confirmprotect'              => 'Bevestig beskerming',
 'protectcomment'              => 'Rede vir beskerming:',
 'protectexpiry'               => 'Verval:',
-'unprotectsub'                => '(Verwyder beskerming van "$1")',
 'protect-default'             => '(normaal)',
 'protect-level-autoconfirmed' => 'Beskerm teen anonieme wysigings',
 'protect-level-sysop'         => 'Slegs administrateurs',
@@ -1031,7 +1034,8 @@ As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die her
 'whatlinkshere-links' => '← skakels',
 
 # Block/unblock
-'blockip'            => 'Blok IP-adres',
+'blockip'            => 'Blok gebruiker',
+'blockip-legend'     => 'Blok gebruiker of IP-adres',
 'blockiptext'        => "Gebruik die vorm hier onder om skryftoegang van 'n sekere IP-adres te blok.
 Dit moet net gedoen word om vandalisme te voorkom en in ooreenstemming met [[{{MediaWiki:Policy-url}}|{{SITENAME}} policy]].
 Vul 'n spesifieke rede hier onder in (haal byvoorbeeld spesifieke bladsye wat gevandaliseer is, aan).",
@@ -1090,7 +1094,8 @@ Bevestig asseblief dat dit is wat jy wil doen.',
 'unlockdbsuccesstext' => 'Die {{SITENAME}}-databasis is ontsluit.',
 
 # Move page
-'movepage'                => 'Skuif bladsy',
+'move-page'               => 'Skuif "$1"',
+'move-page-legend'        => 'Skuif bladsy',
 'movepagetext'            => "Die vorm hieronder hernoem 'n bladsy en skuif die hele wysigingsgeskiedenis na die nuwe naam.
 Die ou bladsy sal vervang word met 'n aanstuurblad na die nuwe titel.
 '''Skakels na die ou bladsytitel sal nie outomaties verander word nie; maak seker dat dubbele aanstuurverwysings nie voorkom nie deur die \"wat skakel hierheen\"-funksie na die skuif te gebruik.''' Dit is jou verantwoordelikheid om seker te maak dat skakels steeds wys na waarheen hulle behoort te gaan.

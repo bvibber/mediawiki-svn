@@ -965,8 +965,8 @@ Esu, un jetz loss jonn:</div>
 'filename'                    => 'Name vun dä Datei',
 'filedesc'                    => 'Beschrievungstex un Zosammefassung',
 'fileuploadsummary'           => 'Beschrievungstex un Zosammefassung:',
-'filestatus'                  => 'Urhevver Räächsstatus',
-'filesource'                  => 'Quell',
+'filestatus'                  => 'Urhevver Räächsstatus:',
+'filesource'                  => 'Quell:',
 'uploadedfiles'               => 'Huhjelade Dateie',
 'ignorewarning'               => 'Warnung üvverjonn, un Datei trotzdäm avspeichere.',
 'ignorewarnings'              => 'Alle Warnunge üvverjonn',
@@ -1006,8 +1006,8 @@ Luur ens noh dä Datei, un dann muss de et noch ens versöke.',
 En dä Datei stich e Kompjutervirus!
 <br />
 De Einzelheite: $1',
-'sourcefilename'              => 'Datei zem huhlade',
-'destfilename'                => 'Unger däm Dateiname avspeichere',
+'sourcefilename'              => 'Datei zem huhlade:',
+'destfilename'                => 'Unger däm Dateiname avspeichere:',
 'watchthisupload'             => 'Watch this page',
 'filewasdeleted'              => 'Unger däm Name wood ald ens en Datei huhjelade. Die es enzwesche ävver widder fottjeschmesse woode. Luur leever eets ens en et $1 ih dat De se dann avspeichere deis.',
 
@@ -1024,7 +1024,7 @@ De Einzelheite: $1',
 'upload-curl-error28'      => 'Upload timeout',
 'upload-curl-error28-text' => 'The site took too long to respond. Please check the site is up, wait a short while and try again. You may want to try at a less busy time.',
 
-'license'            => 'Lizenz',
+'license'            => 'Lizenz:',
 'nolicense'          => 'Nix usjesök',
 'upload_source_url'  => ' (richtije öffentlije URL)',
 'upload_source_file' => ' (en Datei op Dingem Kompjuter)',
@@ -1332,7 +1332,6 @@ De Neuste letzte Änderung es jetz vun däm Metmaacher „[[User:$3|$3]]“ (?[[
 'protectsub'                  => '(Sigge Schotz för „$1“ ändere)',
 'confirmprotect'              => 'Sigg schötze',
 'protectcomment'              => 'Dä Jrund oder Aanlass för et Schötze',
-'unprotectsub'                => '(Schotz för „$1“ ophevve)',
 'protect-unchain'             => 'Et Schötze jäje Ömnenne extra enstelle looße',
 'protect-text'                => 'Hee kanns De dä Schotz jäje Veränderunge för de Sigg „<nowiki>$1</nowiki>“ aanluure un ändere. Em <span class="plainlinks">[{{FULLURL:Special:Log/protect|page={{FULLPAGENAMEE}}}} Logboch]</span> fings De ählere Änderunge vun däm Schotz, wann et se jitt. Bes esu jod un hald Dich aan de Rejele för esu Fäll!',
 'protect-default'             => '-(Standaad)-',
@@ -1480,7 +1479,7 @@ verzäll dänne vun däm Risiko för ehr Secherheit!',
 'databasenotlocked'   => '<strong>Opjepass:</strong> De Daatebank es <strong>nit</strong> jesperrt.',
 
 # Move page
-'movepage'                => 'Sigg Ömnenne',
+'move-page-legend'                => 'Sigg Ömnenne',
 'movepagetext'            => "Hee kanns De en Sigg en de {{SITENAME}} ömnenne. Domet kritt die Sigg ene neue Name, un 
 all vörherije Versione vun dä Sigg och. Unger däm ahle Name weed automatisch en 
 Ömleitung op dä neue Name enjedrage. Links op dä 

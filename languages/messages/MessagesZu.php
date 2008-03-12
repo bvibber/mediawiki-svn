@@ -184,7 +184,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 # Upload
 'upload'           => 'Layisha ifayili',
 'uploadbtn'        => 'Layisha ifayili',
-'filesource'       => 'Umthombo',
+'filesource'       => 'Umthombo:',
 'ignorewarnings'   => 'Duba imiyalo',
 'successfulupload' => 'Ukulayisha okuchumile',
 
@@ -267,7 +267,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'databasenotlocked' => 'Idatabheyisi alikhiyiwi.',
 
 # Move page
-'movepage'                => 'Thuthisa ikhasi',
+'move-page-legend'                => 'Thuthisa ikhasi',
 'movearticle'             => 'Thuthisa ikhasi',
 'movenologin'             => 'Awungenile',
 'movepagebtn'             => 'Thuthisa ikhasi',

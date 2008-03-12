@@ -964,8 +964,8 @@ Che a ten-a present che tan-me për tuti ij contnù ëd la {{SITENAME}}, qualsë
 'filename'                    => "Nòm dl'archivi",
 'filedesc'                    => 'Oget',
 'fileuploadsummary'           => "Detaj dl'archivi:",
-'filestatus'                  => "Situassion dij drit d'autor",
-'filesource'                  => 'Sorgiss',
+'filestatus'                  => "Situassion dij drit d'autor:",
+'filesource'                  => 'Sorgiss:',
 'uploadedfiles'               => 'Archivi carià ant la {{SITENAME}}',
 'ignorewarning'               => "Piantla-lì con j'avis e salva an tute le manere",
 'ignorewarnings'              => "Lassa sté j'avis",
@@ -1005,8 +1005,8 @@ Se a l'ha na figura a amzura pijn-a a l'é mej ch'a carìa cola-lì, dësnò ch'
 'uploadscripted'              => "St'archivi-sì a l'ha andrinta chèich-còs (dël còdes HTML ò pura dlë script) che a podrìe esse travajà mal da chèich programa ëd navigassion (browser).",
 'uploadcorrupt'               => "St'archivi-sì ò che a l'é falà ò che a l'ha n'estension cioca. Për piasì, che as contròla l'archivi e peuj che a preuva torna a carielo.",
 'uploadvirus'                 => "St'archivi-sì a l'han andrinta un '''vìrus!''' Detaj: $1",
-'sourcefilename'              => "Nòm dl'archivi sorgiss",
-'destfilename'                => "Nòm dl'archivi ëd destinassion",
+'sourcefilename'              => "Nòm dl'archivi sorgiss:",
+'destfilename'                => "Nòm dl'archivi ëd destinassion:",
 'watchthisupload'             => "Gionta sossì a lòn ch'im ten-o sot euj",
 'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é gia stait caria e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
 'upload-wasdeleted'           => "'''Dosman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
@@ -1042,7 +1042,7 @@ PICT # vàire marche diferente
 'upload-curl-error28'      => "A l'é finìe ël temp chas peul dovresse për carié",
 'upload-curl-error28-text' => "Ël sit a-i buta tròp temp a arspònde. Për piasì, ch'a contròla che a funsion-a, ch'a speta na minuta e peuj che a torna a prové. A peul esse che a-j ven-a a taj serne un moment che ës sit a sia nen tant crarià ëd tràfich.",
 
-'license'            => 'Licensa',
+'license'            => 'Licensa:',
 'nolicense'          => 'Pa gnun-a selession faita',
 'license-nopreview'  => "(Gnun-a preuva ch'as peula smon-se)",
 'upload_source_url'  => "  (n'anliura bon-a e che as peula dovresse)",
@@ -1430,7 +1430,6 @@ Ch'a varda la [[Special:Protectedpages|Lista dle pàgine protegiùe]] për ës-c
 'protectexpiry'               => 'Scadensa:',
 'protect_expiry_invalid'      => 'Scadensa pa bon-a.',
 'protect_expiry_old'          => 'Scadensa già passà.',
-'unprotectsub'                => '(dësprotession ëd "$1")',
 'protect-unchain'             => 'Dësbloché ij permess ëd tramudé dla ròba',
 'protect-text'                => 'Ambelessì a peul vardé e cangé ël livel ëd protession dla pàgina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => "Un a peul pa modifiché ij livel ëd protession antramentr ch'a l'é blocà chiel. Ambelessì a-i son le regolassion corente për la pàgina <strong>$1</strong>:",
@@ -1653,7 +1652,7 @@ Për piasì, che an conferma che sòn a l'é da bon lòn che chiel (chila) a veu
 'databasenotlocked'   => "La base dat a l'é nen blocà.",
 
 # Move page
-'movepage'                => 'Tramudé na pàgina',
+'move-page-legend'                => 'Tramudé na pàgina',
 'movepagetext'            => "Con ël mòdulo ëd domanda ambelessì sota a peul cangeje nòm a na pàgina, tramudand-je dapress ëdcò tuta soa cronologìa anvers al nòm neuv.
 Ël vej tìtol a resterà trasformà ant na ridiression che a men-a al tìtol neuv.
 J'anliure a la veja pàgina a saran NEN agiornà (e donca a men-eran la gent a la ridiression); che a fasa atension dë

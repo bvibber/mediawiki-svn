@@ -686,7 +686,6 @@ så som det kommer att se ut om du väljer att spara.',
 i redigeringens "edit token". Redigeringen stoppades för att förhindra att sidtexten skadas.
 Detta händer ibland om du använder buggiga webbaserade anonyma proxytjänster.</strong>',
 'editing'                   => 'Redigerar $1',
-'editinguser'               => "Ändrar rättigheter för användaren '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Redigerar $1 (avsnitt)',
 'editingcomment'            => 'Redigerar $1 (kommentar)',
 'editconflict'              => 'Redigeringskonflikt: $1',
@@ -937,6 +936,7 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-lookup-user'           => 'Hantera användargrupper',
 'userrights-user-editname'         => 'Skriv in ett användarnamn:',
 'editusergroup'                    => 'Ändra användargrupper',
+'editinguser'                      => "Ändrar rättigheter för användaren '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Redigera användargrupper',
 'saveusergroups'                   => 'Spara användargrupper',
 'userrights-groupsmember'          => 'Medlem i:',
@@ -1037,8 +1037,8 @@ Använd en länk på något av följande format för att infoga en bild på en s
 'filename'                    => 'Filnamn',
 'filedesc'                    => 'Beskrivning',
 'fileuploadsummary'           => 'Beskrivning<br />och licens:',
-'filestatus'                  => 'Upphovsrättslig status',
-'filesource'                  => 'Källa',
+'filestatus'                  => 'Upphovsrättslig status:',
+'filesource'                  => 'Källa:',
 'uploadedfiles'               => 'Uppladdade filer',
 'ignorewarning'               => 'Ignorera varning och spara ändå.',
 'ignorewarnings'              => 'Ignorera eventuella varningar',
@@ -1075,8 +1075,8 @@ Om du har tillgång till bilden i full storlek, ladda då hellre upp den, annars
 'uploadscripted'              => 'Denna fil innehåller HTML eller script som felaktigt kan komma att tolkas av webbläsare.',
 'uploadcorrupt'               => 'Antingen har det blivit något fel på filen, eller så har den en felaktig filändelse. Kontrollera din fil, och ladda upp på nytt.',
 'uploadvirus'                 => 'Filen innehåller virus! Detaljer: $1',
-'sourcefilename'              => 'Ursprungsfilens namn',
-'destfilename'                => 'Nytt filnamn',
+'sourcefilename'              => 'Ursprungsfilens namn:',
+'destfilename'                => 'Nytt filnamn:',
 'watchthisupload'             => 'Bevaka sidan',
 'filewasdeleted'              => 'En fil med detta namn har tidigare laddats upp och därefter tagits bort. Du bör kontrollera $1 innan du fortsätter att ladda upp den.',
 'upload-wasdeleted'           => "'''Varning: Du håller på att ladda upp en fil som tidigare raderats.'''
@@ -1113,7 +1113,7 @@ PICT # allmänt bildprefix
 'upload-curl-error28'      => 'Timeout för uppladdningen',
 'upload-curl-error28-text' => 'Webbplatsen tog för lång tid på sig att svara. Kontrollera att den är uppe och försök igen om en liten stund.',
 
-'license'            => 'Licens',
+'license'            => 'Licens:',
 'nolicense'          => 'Ingen angiven',
 'license-nopreview'  => '(Förhandsvisning är inte tillgänglig)',
 'upload_source_url'  => ' (en giltig URL som är allmänt åtkomlig)',
@@ -1186,6 +1186,7 @@ PICT # allmänt bildprefix
 'filedelete-reason-dropdown'  => '*Vanliga anledningar till radering
 ** Upphovsrättsbrott
 ** Dubblettfil',
+'filedelete-edit-reasonlist'  => 'Redigera anledningar för radering',
 
 # MIME search
 'mimesearch'         => 'MIME-sökning',
@@ -1288,7 +1289,6 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'newpages'                => 'Nya sidor',
 'newpages-username'       => 'Användare:',
 'ancientpages'            => 'Äldsta sidorna',
-'intl'                    => 'Interwiki-länkar',
 'move'                    => 'Flytta',
 'movethispage'            => 'Flytta denna sida',
 'unusedimagestext'        => '<p>Lägg märke till att andra webbplatser kan länka till filer med en direkt URL. Filer kan därför  användas trots att de finns i den här listan.</p>',
@@ -1383,6 +1383,7 @@ Om du inte längre vill att sidan skall finnas på din övervakningslista, klick
 'unwatch'              => 'avbevaka',
 'unwatchthispage'      => 'Stoppa övervakningen av denna sida',
 'notanarticle'         => 'Inte en artikel',
+'notvisiblerev'        => 'Sidversionen har raderats',
 'watchnochange'        => 'Inga av dina övervakade sidor har ändrats inom den visade tidsperioden.',
 'watchlist-details'    => '$1 {{PLURAL:$1|sida övervakad|sidor övervakade}} (utöver diskussionssidor).',
 'wlheader-enotif'      => '* Bekräftelse per e-post är aktiverad.',
@@ -1464,6 +1465,7 @@ Se $2 för noteringar om de senaste raderingarna.',
 ** Författarens begäran
 ** Upphovsrättsbrott
 ** Vandalism',
+'delete-edit-reasonlist'      => 'Redigera anledningar för radering',
 'delete-toobig'               => 'Denna sida har en lång redigeringshistorik med mer än $1 sidversioner. Borttagning av sådana sidor har begränsats för att förhindra oavsiktliga driftstörningar på {{SITENAME}}.',
 'delete-warning-toobig'       => 'Denna sida har en lång redigeringshistorik med mer än $1 sidversioner. Att radera sidan kan skapa problem med hanteringen av databasen på {{SITENAME}}; var försiktig.',
 'rollback'                    => 'Rulla tillbaka ändringar',
@@ -1489,7 +1491,6 @@ Sidan ändrades senast av [[User:$3|$3]] ([[User talk:$3|diskussion]]).',
 'protectexpiry'               => 'Varaktighet:',
 'protect_expiry_invalid'      => 'Ogiltig varaktighetstid.',
 'protect_expiry_old'          => 'Den angivna varaktighetentiden har redan passerats.',
-'unprotectsub'                => '(Tog bort skydd av "$1")',
 'protect-unchain'             => 'Lås upp flyttillstånd',
 'protect-text'                => 'Här kan du se och ändra skyddsnivån av sidan <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Du kan inte ändra sidors skydd medan du är blockerad. 
@@ -1607,6 +1608,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Blockera användare eller IP-adress',
+'blockip-legend'              => 'Blockera användare',
 'blockiptext'                 => 'Formuläret nedan används för att blockera specifika användarnamns eller IP-adressers möjlighet att redigera sidor. Detta bör göras endast för att förhindra vandalism, och enligt gällande [[{{MediaWiki:Policy-url}}|policy]]. Ange orsaken nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'ipaddress'                   => 'IP-adress',
 'ipadressorusername'          => 'IP-adress eller användarnamn',
@@ -1704,7 +1706,8 @@ Bekräfta att du verkligen vill göra detta, och att du kommer att låsa upp dat
 'databasenotlocked'   => 'Databasen är inte låst.',
 
 # Move page
-'movepage'                => 'Flytta sida',
+'move-page'               => 'Flytta $1',
+'move-page-legend'        => 'Flytta sida',
 'movepagetext'            => "Med hjälp av formuläret härunder kan du byta namn på en sida, och flytta hela dess historik till ett nytt namn. Den gamla sidtiteln kommer att göras om till en omdirigering till den nya titeln; kontrollera därför om du skapar några dubbla eller trasiga omdirigeringar. Du bör också se till att länkar fortsätter att peka dit de ska.
 
 Notera att sidan '''inte''' kan flyttas om det redan finns en sida under den nya sidtiteln, såvida inte den sidan är tom eller en omdirigiring till den gamla titeln och saknar annan versionshistorik. Det innebär att du kan flytta tillbaks en sida du just flyttat om du råkar göra fel.
@@ -1713,11 +1716,11 @@ Notera att sidan '''inte''' kan flyttas om det redan finns en sida under den nya
 'movepagetalktext'        => "Diskussionssidan kommer att även den automatiskt flyttas '''om inte''':
 *Det redan finns en diskussionssida som inte är tom med det nya namnet, eller
 *Du avmarkerar rutan nedan.",
-'movearticle'             => 'Flytta sida',
+'movearticle'             => 'Flytta sidan:',
 'movenologin'             => 'Inte inloggad',
 'movenologintext'         => 'För att flytta en sida måste du vara registrerad användare och [[Special:Userlogin|inloggad]].',
 'movenotallowed'          => 'Du har inte behörighet att flytta sidor på den här wikin.',
-'newtitle'                => 'Till den nya sidtiteln',
+'newtitle'                => 'Till nya titeln:',
 'move-watch'              => 'Bevaka denna sida',
 'movepagebtn'             => 'Flytta sidan',
 'pagemovedsub'            => 'Flyttningen lyckades',
@@ -1734,7 +1737,7 @@ Välj något annat namn istället.',
 '1movedto2_redir'         => 'flyttade [[$1]] till [[$2]], som var en omdirigeringssida',
 'movelogpage'             => 'Sidflyttslogg',
 'movelogpagetext'         => 'Listan nedan visar sidor som flyttats.',
-'movereason'              => 'Anledning',
+'movereason'              => 'Anledning:',
 'revertmove'              => 'flytta tillbaka',
 'delete_and_move'         => 'Radera och flytta',
 'delete_and_move_text'    => '==Radering krävs==
@@ -1857,13 +1860,13 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'tooltip-t-contributions'         => 'Visa lista över bidrag från den här användaren',
 'tooltip-t-emailuser'             => 'Skicka e-post till den här användaren',
 'tooltip-t-upload'                => 'Ladda upp bilder eller mediafiler',
-'tooltip-t-specialpages'          => 'Lista över alla speciella sidor',
+'tooltip-t-specialpages'          => 'Lista över alla specialsidor',
 'tooltip-t-print'                 => 'Utskriftvänlig version av den här sidan',
 'tooltip-t-permalink'             => 'Permanent länk till den här versionen av sidan',
 'tooltip-ca-nstab-main'           => 'Visa sidan',
 'tooltip-ca-nstab-user'           => 'Visa användarsidan',
 'tooltip-ca-nstab-media'          => 'Visa mediesidan',
-'tooltip-ca-nstab-special'        => 'Detta är en specialsida och kan inte redigeras',
+'tooltip-ca-nstab-special'        => 'Detta är en specialsida; specialsidor kan inte redigeras',
 'tooltip-ca-nstab-project'        => 'Visa projektsidan',
 'tooltip-ca-nstab-image'          => 'Se bildsidan',
 'tooltip-ca-nstab-mediawiki'      => 'Se systemmeddelandet',
@@ -2357,7 +2360,7 @@ Pröva vanlig förhandsgranskning istället.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Ändringar nyare än $1 sekunder kanske inte visas i den här listan.',
-'lag-warn-high'   => 'På grund av stor fördröjinig i databasen, så visas kanske inte ändringar nyare än $1 sekunder i den här listan.',
+'lag-warn-high'   => 'På grund av stor fördröjning i databasen, så visas kanske inte ändringar nyare än $1 sekunder i den här listan.',
 
 # Watchlist editor
 'watchlistedit-numitems'       => 'Din övervakningslista innehåller {{PLURAL:$1|1 titel|$1 titlar}}, utöver diskussionsidor.',

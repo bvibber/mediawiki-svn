@@ -571,12 +571,12 @@ di uplodezi media.',
 'filename'          => 'Imegi',
 'filedesc'          => 'Lyangutukezi',
 'fileuploadsummary' => 'Lyangutukezi:',
-'filesource'        => "Ng'i",
+'filesource'        => "Ng'i:",
 'uploadedfiles'     => 'Imegina uplodezi',
 'savefile'          => 'Bulukezi imegi',
 'uploadedimage'     => 'sa uplodezi "[[$1]]"',
 'overwroteimage'    => 'sa uplodezi nca imegi petuho di "[[$1]]"',
-'sourcefilename'    => "Ng'i di imegi",
+'sourcefilename'    => "Ng'i di imegi:",
 'watchthisupload'   => 'Kentezi bye petulo',
 
 'upload-file-error' => 'Interni bufosi',
@@ -797,7 +797,6 @@ A sa afi kulobala di zwa mukoloko di kentezi, tampi \"ngambu kentezi\".",
 'protectexpiry'               => 'Simpekile:',
 'protect_expiry_invalid'      => 'Bufosi di simpekile.',
 'protect_expiry_old'          => 'Simpekile sa kwa bundau.',
-'unprotectsub'                => '(Ati-bukelelize "$1")',
 'protect-unchain'             => 'Petuho nyanganyisize tumelelo',
 'protect-text'                => 'A sa kamukile e hloli bukelezi di petulo <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-access'       => 'Zwa sebelu ni sa hloli bukelezi.
@@ -885,7 +884,7 @@ Petohoni di petulo <strong>$1</strong> sa:',
 'proxyblocksuccess'  => 'Afi.',
 
 # Move page
-'movepage'         => 'Nyanganyisize petulo',
+'move-page-legend'         => 'Nyanganyisize petulo',
 'movepagetext'     => "A sa nyanganyisize xete bundau di nom nca e petulo.
 Xisiti nom sa petulo abezi post nyanganyisize.
 Ling'ki di xisiti nom no kenki; luku di petulo abezi bufosi e petulo abezi sa bužemi.

@@ -8,6 +8,7 @@
  * @author Cimon Avaro
  * @author לערי ריינהארט
  * @author Siebrand
+ * @author M.M.S.
  */
 
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
@@ -690,7 +691,6 @@ Esikatselu on piilotettu varokeinona JavaScript-hyökkäyksiä vastaan – täss
 Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisään.',
 'token_suffix_mismatch'     => '<strong>Muokkauksesi on hylätty, koska asiakasohjelmasi ei osaa käsitellä välimerkkejä muokkaustarkisteessa. Syynä voi olla viallinen välityspalvelin.</strong>',
 'editing'                   => 'Muokataan sivua $1',
-'editinguser'               => 'Muokataan sivua $1',
 'editingsection'            => 'Muokataan osiota sivusta $1',
 'editingcomment'            => 'Muokataan kommenttia sivulla $1',
 'editconflict'              => 'Päällekkäinen muokkaus: $1',
@@ -930,6 +930,7 @@ $1 | $2',
 'userrights-lookup-user'           => 'Käyttöoikeuksien hallinta',
 'userrights-user-editname'         => 'Käyttäjätunnus',
 'editusergroup'                    => 'Muokkaa käyttäjän ryhmiä',
+'editinguser'                      => "Käyttäjän '''[[User:$1|$1]]''' oikeudet ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Käyttäjän ryhmät',
 'saveusergroups'                   => 'Tallenna',
 'userrights-groupsmember'          => 'Jäsenenä ryhmissä',
@@ -1028,8 +1029,8 @@ Voit käyttää tiedostoja wikisivuilla seuraavilla tavoilla:
 'filename'                    => 'Tiedoston nimi:',
 'filedesc'                    => 'Yhteenveto',
 'fileuploadsummary'           => 'Yhteenveto',
-'filestatus'                  => 'Tiedoston tekijänoikeudet:',
-'filesource'                  => 'Lähde:',
+'filestatus'                  => 'Tiedoston tekijänoikeudet',
+'filesource'                  => 'Lähde',
 'uploadedfiles'               => 'Lisätyt tiedostot',
 'ignorewarning'               => 'Tallenna tiedosto varoituksesta huolimatta.',
 'ignorewarnings'              => 'Ohita kaikki varoitukset',
@@ -1061,7 +1062,7 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 'savefile'                    => 'Tallenna',
 'uploadedimage'               => 'tallensi tiedoston [[$1]]',
 'overwroteimage'              => 'tallensi uuden version tiedostosta [[$1]]',
-'uploaddisabled'              => '{{GRAMMAR:genitive|{{SITENAME}}}} ei voi lisätä tiedostoja.',
+'uploaddisabled'              => 'Tiedostojen tallennus ei ole käytössä.',
 'uploaddisabledtext'          => 'Tiedostojen tallennus on poistettu käytöstä.',
 'uploadscripted'              => 'Tämä tiedosto sisältää HTML-koodia tai skriptejä, jotka selain saattaa virheellisesti suorittaa.',
 'uploadcorrupt'               => 'Tiedosto on vioittunut tai sillä on väärä tiedostopääte. Tarkista tiedosto ja lähetä se uudelleen.',
@@ -1161,6 +1162,7 @@ Harkitse, haluatko jatkaa tämän tiedoston tallentamista. Tiedoston poistoloki 
 'filedelete-reason-dropdown'  => '*Yleiset poistosyyt
 ** Kaksoiskappale
 ** Tekijänoikeusrikkomus',
+'filedelete-edit-reasonlist'  => 'Muokkaa poistosyitä',
 
 # MIME search
 'mimesearch'         => 'MIME-haku',
@@ -1263,7 +1265,6 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'newpages'                => 'Uudet sivut',
 'newpages-username'       => 'Käyttäjätunnus',
 'ancientpages'            => 'Kauan muokkaamattomat sivut',
-'intl'                    => 'Kieltenväliset linkit',
 'move'                    => 'Siirrä',
 'movethispage'            => 'Siirrä tämä sivu',
 'unusedimagestext'        => 'Huomaa, että muut verkkosivut saattavat viitata tiedostoon suoran URL:n avulla, jolloin tiedosto saattaa olla tässä listassa, vaikka sitä käytetäänkin.',
@@ -1315,7 +1316,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 # Special:Listusers
 'listusersfrom'      => 'Katkaisuhaku',
 'listusers-submit'   => 'Hae',
-'listusers-noresult' => 'Käyttäjiä ei löytynyt. Tarkista myös eri kirjainkoot.',
+'listusers-noresult' => 'Käyttäjiä ei löytynyt.',
 
 # E-mail user
 'mailnologin'     => 'Lähettäjän osoite puuttuu',
@@ -1354,6 +1355,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'unwatch'              => 'Lopeta tarkkailu',
 'unwatchthispage'      => 'Lopeta tarkkailu',
 'notanarticle'         => 'Ei ole sivu',
+'notvisiblerev'        => 'Versio on poistettu',
 'watchnochange'        => 'Valittuna ajanjaksona yhtäkään tarkkailemistasi sivuista ei muokattu.',
 'watchlist-details'    => 'Tarkkailulistalla on {{PLURAL:$1|$1 sivu|$1 sivua}} keskustelusivuja mukaan laskematta.',
 'wlheader-enotif'      => '* Sähköposti-ilmoitukset ovat käytössä.',
@@ -1433,6 +1435,7 @@ Palaute ja lisäapu osoitteessa:
 ** Lisääjän poistopyyntö
 ** Tekijänoikeusrikkomus
 ** Roskaa',
+'delete-edit-reasonlist'      => 'Muokkaa poistosyitä',
 'delete-toobig'               => 'Tällä sivulla on pitkä muutoshistoria – yli $1 versiota. Näin suurien muutoshistorioiden poistamista on rajoitettu suorituskykysyistä.',
 'delete-warning-toobig'       => 'Tällä sivulla on pitkä muutoshistoria – yli $1 versiota. Näin suurien muutoshistorioiden poistaminen voi haitata sivuston suorituskykyä.',
 'rollback'                    => 'palauta aiempaan versioon',
@@ -1456,7 +1459,6 @@ Palaute ja lisäapu osoitteessa:
 'protectexpiry'               => 'Vanhenee',
 'protect_expiry_invalid'      => 'Vanhenemisaika ei kelpaa.',
 'protect_expiry_old'          => 'Vanhenemisaika on menneisyydessä.',
-'unprotectsub'                => 'Suojauksen poisto sivulta $1',
 'protect-unchain'             => 'Käytä siirtosuojausta',
 'protect-text'                => 'Voit katsoa ja muuttaa sivun ”<strong><nowiki>$1</nowiki></strong>” suojauksia.',
 'protect-locked-blocked'      => 'Et voi muuttaa sivun suojauksia, koska sinut on estetty. Alla on sivun ”<strong>$1</strong>” nykyiset suojaukset:',
@@ -1567,6 +1569,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Aseta muokkausesto',
+'blockip-legend'              => 'Estä käyttäjä',
 'blockiptext'                 => 'Tällä lomakkeella voit estää käyttäjän tai IP-osoitteen muokkausoikeudet. Muokkausoikeuksien poistamiseen pitää olla syy, esimerkiksi sivujen vandalisointi. Kirjoita syy siihen varattuun kenttään.<br />Vapaamuotoisen vanhenemisajat noudattavat GNUn standardimuotoa, joka on kuvattu tar-manuaalissa ([http://www.gnu.org/software/tar/manual/html_node/Date-input-formats.html] [EN]), esimerkiksi ”1 hour”, ”2 days”, ”next Wednesday”, 2005-08-29”.',
 'ipaddress'                   => 'IP-osoite',
 'ipadressorusername'          => 'IP-osoite tai käyttäjätunnus',
@@ -1662,7 +1665,8 @@ $1',
 'databasenotlocked'   => 'Tietokanta ei ole lukittu.',
 
 # Move page
-'movepage'                => 'Siirrä sivu',
+'move-page'               => 'Siirrä $1',
+'move-page-legend'        => 'Siirrä sivu',
 'movepagetext'            => "Alla olevalla lomakkeella voit nimetä uudelleen sivuja, jolloin niiden koko historia siirtyy uuden nimen alle. Vanhasta sivusta tulee ohjaussivu, joka osoittaa uuteen sivuun. Vanhaan sivuun suunnattuja linkkejä ei muuteta, joten muista tehdä tarkistukset kaksinkertaisten tai rikkinäisten ohjausten varalta. '''Olet vastuussa siitä, että linkit osoittavat sinne, mihin niiden on tarkoituskin osoittaa.'''<br />Huomaa, että sivua '''ei''' siirretä mikäli uusi otsikko on olemassa olevan sivun käytössä, paitsi milloin kyseessä on tyhjä sivu tai ohjaus, jolla ei ole muokkaushistoriaa. Tämä tarkoittaa sitä, että voit siirtää sivun takaisin vanhalle nimelleen mikäli teit virheen, mutta et voi kirjoittaa olemassa olevan sivun päälle. Jos sivu tarvitsee siirtää olemassa olevan sivun päälle, ota yhteyttä [[Special:Listusers/sysop|ylläpitäjään]].",
 'movepagetalktext'        => "Sivuun mahdollisesti kytketty keskustelusivu siirretään automaattisesti, '''paitsi jos''':
 *Siirrät sivua nimiavaruudesta toiseen

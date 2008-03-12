@@ -825,8 +825,8 @@ Is am an freastalaí (UTC) iad na hamanna atá anseo thíos.',
 'filename'          => 'Comhadainm',
 'filedesc'          => 'Achoimriú',
 'fileuploadsummary' => 'Achoimre:',
-'filestatus'        => 'Stádas cóipchirt',
-'filesource'        => 'Foinse',
+'filestatus'        => 'Stádas cóipchirt:',
+'filesource'        => 'Foinse:',
 'uploadedfiles'     => 'Comhaid uaslódáilte',
 'illegalfilename'   => 'Tá litreacha san comhadainm  "$1" nach ceadaítear in ainm leathanaigh. Athainmnigh
 an comhad agus déan athiarracht, más é do thoil é.',
@@ -841,8 +841,8 @@ míchruinneas é seo san ainm chomhaid. Seiceáil más é an comhad seo atá le 
 'uploadcorrupt'     => 'Tá an comhad truaillithe nó tá iarmhír comhadainm neamhbhailí aige. Scrúdaigh an comhad agus
 uaslódáil é arís, le do thoil.',
 'uploadvirus'       => 'Tá víreas ann sa comhad seo! Eolas: $1',
-'sourcefilename'    => 'Comhadainm foinse',
-'destfilename'      => 'Comhadainm sprice',
+'sourcefilename'    => 'Comhadainm foinse:',
+'destfilename'      => 'Comhadainm sprice:',
 'watchthisupload'   => 'Déan faire ar an leathanach seo',
 
 'nolicense'          => 'Níl aon cheann roghnaithe',
@@ -1138,7 +1138,6 @@ Féach ar [[Special:Protectedpages|Leathanach glasáilte]] chun a thuilleadh eol
 'protectsub'                  => '(Ag glasáil "$1")',
 'confirmprotect'              => 'Cinntigh an glasáil',
 'protectcomment'              => 'Cúis don glasáil',
-'unprotectsub'                => '(Ag díghlasáil "$1")',
 'protect-unchain'             => 'Díghlasáil an cead athainmithe',
 'protect-text'                => 'Is féidir leat an leibhéal glasála a athrú anseo don leathanach <strong><nowiki>$1</nowiki></strong>.',
 'protect-default'             => '(réamhshocrú)',
@@ -1280,7 +1279,7 @@ Cinntigh go bhfuil an scéal seo d'intinn agat.",
 'databasenotlocked'   => 'Níl an bunachar sonraí faoi ghlas.',
 
 # Move page
-'movepage'                => 'Athainmnigh an leathanach',
+'move-page-legend'                => 'Athainmnigh an leathanach',
 'movepagetext'            => "Úsáid an foirm seo thíos chun leathanach a hathainmniú. Aistreofar a chuid stair go léir chuig an teideal nua.
 Déanfar leathanach athsheolaidh den sean-theideal chuig an teideal nua. Ní athreofar naisc chuig sean-teidil an leathanaigh. Bí cinnte go ndéanfá
 [[Special:Maintenance|cuardach]] ar athsheolaidh dubáilte nó briste. Tá tú freagrach i cinnteach go leanann naisc chuig an pointe a bhfuil siad ag aimsiú ar.

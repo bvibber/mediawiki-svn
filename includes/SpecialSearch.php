@@ -344,8 +344,47 @@ class SpecialSearch {
 		if (!$t->userCanRead()) {
 			return "<li>{$link}</li>\n";
 		}
+		
+		$extract = $size = '';
+		// Include a thumbnail for media files...
+		if( $t->getNamespace() == NS_IMAGE ) {
+			$img = wfFindFile( $t );
+			if( $img ) {
+				$thumb = $img->getThumbnail( 120, 120 );
+				if( $thumb ) {
+					$extract = '<table>' .
+						'<tr>' .
+						'<td width="120" align="center">' .
+						$sk->makeKnownLinkObj( $t, $thumb->toHtml() ) .
+						'</td>' .
+						'<td>' .
+						$link .
+						'<br />' .
+						$img->getLongDesc() .
+						'</td>' .
+						'</tr>' .
+						'</table>';
+					wfProfileOut( $fname );
+					return "<li><div>{$extract}</div></li>\n";
+				}
+			}
+		}
 
+		$extract = $this->extractText( $t, $terms, $contextlines, $contextchars );
+		wfProfileOut( $fname );
+		return "<li>{$link} {$extract}</li>\n";
+
+	}
+	
+	private function extractText( $t, $terms, $contextlines, $contextchars ) {
+		global $wgLang, $wgContLang;
+		$fname = __METHOD__;
+	
 		$revision = Revision::newFromTitle( $t );
+		if( !$revision ) {
+			return '<!-- missing page -->';
+		}
+		
 		$text = $revision->getText();
 		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),
 			$wgLang->formatNum( strlen( $text ) ) );
@@ -357,7 +396,7 @@ class SpecialSearch {
 
 		$lineno = 0;
 
-		$extract = '';
+		$extract = "($size)";
 		wfProfileIn( "$fname-extract" );
 		foreach ( $lines as $line ) {
 			if ( 0 == $contextlines ) {
@@ -387,8 +426,8 @@ class SpecialSearch {
 			$extract .= "<br /><small>{$lineno}: {$line}</small>\n";
 		}
 		wfProfileOut( "$fname-extract" );
-		wfProfileOut( $fname );
-		return "<li>{$link} ({$size}){$extract}</li>\n";
+		
+		return $extract;
 	}
 
 	function powerSearchBox( $term ) {

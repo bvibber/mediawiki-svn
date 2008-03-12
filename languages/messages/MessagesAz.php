@@ -340,8 +340,8 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'uploadlog'         => 'yükleme kaydı',
 'filename'          => 'Fayl adı',
 'fileuploadsummary' => 'İzahat:',
-'filestatus'        => 'Müəllif statusu',
-'filesource'        => 'Mənbə',
+'filestatus'        => 'Müəllif statusu:',
+'filesource'        => 'Mənbə:',
 'uploadwarning'     => 'Yükləyiş xəbərdarlıqı',
 'savefile'          => 'Faylı qeyd et',
 
@@ -502,7 +502,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'blocklogpage'       => 'Blok qeydı',
 
 # Move page
-'movepage'        => 'Səhifənin adını dəyiş',
+'move-page-legend'        => 'Səhifənin adını dəyiş',
 'movearticle'     => 'Səhifənin adını dəyişdir',
 'newtitle'        => 'Yeni başlıq',
 'movepagebtn'     => 'Səhifənin adını dəyiş',

@@ -11,6 +11,7 @@
  * @author Ashwath Mattur <ashwatham@gmail.com> http://en.wikipedia.org/wiki/User:Ashwatham
  * @author Siebrand
  * @author לערי ריינהארט
+ * @author SPQRobin
  */
 
 $namespaceNames = array(
@@ -355,7 +356,6 @@ $1',
 'note'                     => '<strong>ಸೂಚನೆ:</strong>',
 'previewnote'              => '<strong>ಇದು ಕೇವಲ ಮುನ್ನೋಟ; ಪುಟವನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ ಎಂಬುದನ್ನು ಮರೆಯದಿರಿ!</strong>',
 'editing'                  => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
-'editinguser'              => "'$1' ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'editingsection'           => '$1 (ವಿಭಾಗ) ಅನ್ನು ಸಂಪಾದಿಸುತ್ತಿರುವಿರಿ',
 'explainconflict'          => 'ನೀವು ಈ ಪುಟವನ್ನು ಸಂಪಾದಿಸಲು ಪ್ರಾರಂಭ ಮಾಡಿದ ಮೇಲೆ ಬೇರೊಬ್ಬರು ಯಾರೊ ಪುಟವನ್ನು ಬದಲಾಯಿಸಿದ್ದಾರೆ.
 ಮೇಲಿನ ಬರವಣಗೆ ಚೌಕದಲ್ಲಿ ಪುಟದ ಪ್ರಸಕ್ತ ಸ್ವರೂಪ ತೋರಿಸಲಾಗಿದೆ.
@@ -451,6 +451,7 @@ $1',
 'allowemail'           => 'ಬೇರೆ ಸದಸ್ಯರಿಂದ ಈ-ಮೈಲ್‍ಗಳನ್ನು ಸ್ವೀಕರಿಸು',
 
 # User rights
+'editinguser'       => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) ಲೇಖನ ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ",
 'userrights-reason' => 'ಬದಲಾವಣೆಗೆ ಕಾರಣ:',
 
 # Groups
@@ -493,8 +494,8 @@ $1',
 'uploadnologin'   => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
 'filename'        => 'ಕಡತದ ಹೆಸರು',
 'filedesc'        => 'ಸಾರಾಂಶ',
-'filestatus'      => 'ಕೃತಿಸ್ವಾಮ್ಯತೆ ಸ್ಥಿತಿ',
-'filesource'      => 'ಆಕರ',
+'filestatus'      => 'ಕೃತಿಸ್ವಾಮ್ಯತೆ ಸ್ಥಿತಿ:',
+'filesource'      => 'ಆಕರ:',
 'ignorewarning'   => 'ಎಚ್ಚರಿಕೆಯನ್ನು ಕಡೆಗಣಿಸಿ ಫೈಲನ್ನು ಉಳಿಸಿ.',
 'ignorewarnings'  => 'ಎಲ್ಲಾ ಎಚ್ಚರಗಳನ್ನೂ ಕಡೆಗಣಿಸು',
 'badfilename'     => 'ಚಿತ್ರದ ಹೆಸರನ್ನು $1 ಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ.',
@@ -599,7 +600,6 @@ $1',
 'spheading'               => 'ಎಲ್ಲಾ ಸದಸ್ಯರಿಗೂ ಇರುವ ವಿಶೇಷ ಪುಟಗಳು',
 'newpages'                => 'ಹೊಸ ಪುಟಗಳು',
 'ancientpages'            => 'ಹಳೆಯ ಪುಟಗಳು',
-'intl'                    => 'ಅಂತರಭಾಷೆ ಸಂಪರ್ಕಗಳು',
 'move'                    => 'ಸ್ಥಳಾಂತರಿಸಿ',
 'movethispage'            => 'ಈ ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 
@@ -741,7 +741,7 @@ $1',
 'blocklogentry'      => '"$1" ಅನ್ನು $2 ರ ಸಮಯದವರೆಗೆ ತಡೆಹಿಡಿಯಲಾಗಿದೆ',
 
 # Move page
-'movepage'        => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
+'move-page-legend'        => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 'movearticle'     => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 'movenologin'     => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
 'movenologintext' => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಲು ನೀವು ನೋಂದಾಯಿತ ಸದಸ್ಯರಾಗಿದ್ದು [[Special:Userlogin|ಲಾಗಿನ್]] ಆಗಿರಬೇಕು.',

@@ -506,8 +506,8 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'filename'           => 'Non dal file',
 'filedesc'           => 'Descrizion',
 'fileuploadsummary'  => 'Somari:',
-'filestatus'         => 'Stât dal copyright',
-'filesource'         => 'Surzint',
+'filestatus'         => 'Stât dal copyright:',
+'filesource'         => 'Surzint:',
 'uploadedfiles'      => 'Files cjamâts sù',
 'ignorewarning'      => 'Ignore avîs e salve instès il file.',
 'ignorewarnings'     => 'Ignore i avîs',
@@ -517,8 +517,8 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'uploadedimage'      => 'cjamât sù "$1"',
 'uploaddisabled'     => 'Nus displâs, par cumò no si pues cjamâ sù robe.',
 'uploaddisabledtext' => 'Lis cjamadis a son disativâts su cheste wiki.',
-'sourcefilename'     => 'Non dal file origjinâl',
-'destfilename'       => 'Non dal file di destinazion',
+'sourcefilename'     => 'Non dal file origjinâl:',
+'destfilename'       => 'Non dal file di destinazion:',
 
 # Image list
 'imagelist'                 => 'Liste des figuris',
@@ -762,7 +762,7 @@ Cjale $2 par une liste des ultimis eliminazions.',
 'lockbtn' => 'Bloche base di dâts',
 
 # Move page
-'movepage'         => 'Môf pagjine',
+'move-page-legend'         => 'Môf pagjine',
 'movepagetext'     => "Cun il formulari ca sot tu puedis gambiâ il non a une pagjine, movint dut il sô storic al gnûf non.
 Il vieri titul al deventarà une pagjine di reindirizament al gnûf titul. I leams ae vecje pagjine no saran gambiâts; verifiche
 par plasê che no sedin reindirizaments doplis o no funzionants.

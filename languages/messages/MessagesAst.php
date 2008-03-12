@@ -604,7 +604,6 @@ Inténtalo otra vuelta. Si nun se t'arregla, intenta salir y volver a rexistrate
 nel editor. La edición nun foi aceutada pa prevenir corrupciones na páxina de testu. Esto hai vegaes
 que pasa cuando tas usando un proxy anónimu basáu en web que seya problemáticu.</strong>",
 'editing'                   => 'Editando $1',
-'editinguser'               => "Editando l'usuariu <b>$1</b>",
 'editingsection'            => 'Editando $1 (seición)',
 'editingcomment'            => 'Editando $1 (comentariu)',
 'editconflict'              => "Conflictu d'edición: $1",
@@ -871,6 +870,7 @@ resultáu les páxines que contengan tolos términos de la busca).",
 'userrights-lookup-user'           => "Remanamientu de grupos d'usuariu",
 'userrights-user-editname'         => "Escribi un nome d'usuariu:",
 'editusergroup'                    => "Modificar grupos d'usuariu",
+'editinguser'                      => "Camudando los drechos del usuariu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => "Editar los grupos d'usuariu",
 'saveusergroups'                   => "Guardar los grupos d'usuariu",
 'userrights-groupsmember'          => 'Miembru de:',
@@ -971,8 +971,8 @@ P'amiestar un archivu nuna páxina, usa un enllaz col formatu
 'filename'                    => "Nome d'archivu",
 'filedesc'                    => 'Resume',
 'fileuploadsummary'           => 'Resume:',
-'filestatus'                  => 'Estáu de Copyright',
-'filesource'                  => 'Fonte',
+'filestatus'                  => 'Estáu de Copyright:',
+'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Archivos xubíos',
 'ignorewarning'               => "Inorar l'avisu y grabar l'archivu de toes formes.",
 'ignorewarnings'              => 'Inorar tolos avisos',
@@ -1009,8 +1009,8 @@ Si tienes esta imaxe a resolución completa xúbila; si non, por favor camuda'l 
 'uploadscripted'              => 'Esti archivu contién códigu HTML o scripts que puen ser interpretaos erróneamente por un navegador.',
 'uploadcorrupt'               => "L'archivu ta corruptu o tien una estensión incorreuta. Por favor comprueba l'archivu y vuelve a xubilu.",
 'uploadvirus'                 => "¡L'archivu tien un virus! Detalles: $1",
-'sourcefilename'              => "Nome d'orixe",
-'destfilename'                => 'Nome de destín',
+'sourcefilename'              => "Nome d'orixe:",
+'destfilename'                => 'Nome de destín:',
 'watchthisupload'             => 'Vixilar esta páxina',
 'filewasdeleted'              => 'Yá foi xubíu y depués borráu un archivu con esti nome. Habríes comprobar el $1 enantes de volver a xubilu.',
 'upload-wasdeleted'           => "'''Avisu: Tas xubiendo un archivu que yá foi borráu anteriormente.'''
@@ -1032,7 +1032,7 @@ Amuésase equí'l rexistru de borraos pa esti archivu a los efeutos oportunos:",
 'upload-curl-error28'      => "Fin del tiempu d'espera de la xubida",
 'upload-curl-error28-text' => "El sitiu tardó demasiáu tiempu en responder. Por favor comprueba que'l sitiu ta activu, espera unos momentos y vuelve a intentalo. Igual ye meyor que lo intentes nun momentu en que tea menos sobrecargáu.",
 
-'license'            => 'Llicencia',
+'license'            => 'Llicencia:',
 'nolicense'          => 'Nenguna seleicionada',
 'license-nopreview'  => '(Previsualización non disponible)',
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
@@ -1105,6 +1105,7 @@ Amuésase equí'l rexistru de borraos pa esti archivu a los efeutos oportunos:",
 'filedelete-reason-dropdown'  => '*Motivos comunes de borráu
 ** Violación de Copyright
 ** Archivu duplicáu',
+'filedelete-edit-reasonlist'  => 'Editar los motivos de borráu',
 
 # MIME search
 'mimesearch'         => 'Busca MIME',
@@ -1211,7 +1212,6 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue cola de xeres] ye de '''\$7'''
 'newpages'                => 'Páxines nueves',
 'newpages-username'       => "Nome d'usuariu:",
 'ancientpages'            => 'Páxines más vieyes',
-'intl'                    => 'Interwikis',
 'move'                    => 'Treslladar',
 'movethispage'            => 'Treslladar esta páxina',
 'unusedimagestext'        => "<p>Por favor, fíxate qu'otros sitios web puen enllazar a una imaxe con una URL direuta, polo que seique tean tovía llistaos equí, magar que tean n'usu activu.</p>",
@@ -1227,7 +1227,7 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue cola de xeres] ye de '''\$7'''
 'booksources-go'            => 'Dir',
 'booksources-text'          => "Esta ye una llista d'enllaces a otros sitios que vienden llibros nuevos y usaos, y que puen tener más información sobre llibros que pueas tar guetando:",
 
-'categoriespagetext' => 'Les categoríes que vienen darréu esisten na wiki.',
+'categoriespagetext' => 'Les categoríes que vienen darréu contienen páxines o archivos multimedia.',
 'data'               => 'Datos',
 'userrights'         => "Remanamientu de derechos d'usuariu",
 'groups'             => "Grupos d'usuariu",
@@ -1388,6 +1388,7 @@ Mira en $2 la llista de les últimes páxines borraes.',
 ** A pidimientu del autor
 ** Violación de Copyright
 ** Vandalismu',
+'delete-edit-reasonlist'      => 'Editar los motivos de borráu',
 'delete-toobig'               => "Esta páxina tien un historial d'ediciones grande, más de $1 revisiones. Restrinxóse'l borráu d'estes páxines pa evitar perturbaciones accidentales de {{SITENAME}}.",
 'delete-warning-toobig'       => "Esta páxina tien un historial d'ediciones grande, más de $1 revisiones. Borralu pue perturbar les operaciones de la base de datos de {{SITENAME}}; obra con precaución.",
 'rollback'                    => 'Revertir ediciones',
@@ -1416,7 +1417,6 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 'protectexpiry'               => 'Caduca:',
 'protect_expiry_invalid'      => 'Caducidá non válida.',
 'protect_expiry_old'          => 'La fecha de caducidá ta pasada.',
-'unprotectsub'                => '(Desprotexendo "$1")',
 'protect-unchain'             => 'Camudar los permisos pa tresllaos',
 'protect-text'                => 'Equí pues ver y camudar el nivel de proteición de la páxina <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Nun pues camudar los niveles de proteición mentes teas bloquiáu. Esta
@@ -1542,6 +1542,7 @@ $1",
 
 # Block/unblock
 'blockip'                     => 'Bloquiar usuariu',
+'blockip-legend'              => 'Bloquiar usuariu',
 'blockiptext'                 => "Usa'l siguiente formulariu pa bloquiar el permisu d'escritura a una IP o a un usuariu concretu.
 Esto debería facese sólo pa prevenir vandalismu como indiquen les [[{{MediaWiki:Policy-url}}|polítiques]]. Da un motivu específicu (como por exemplu citar páxines que fueron vandalizaes).",
 'ipaddress'                   => 'Dirección IP:',
@@ -1648,7 +1649,7 @@ na base de datos. Por favor confirma que ye lo quies facer.',
 'databasenotlocked'   => 'La base de datos nun ta protexida.',
 
 # Move page
-'movepage'                => 'Treslladar páxina',
+'move-page-legend'                => 'Treslladar páxina',
 'movepagetext'            => "Usando'l siguiente formulariu vas renomar una páxina, treslladando'l
 so historial al nuevu nome. El nome vieyu va convertise nuna
 redireición al nuevu. Los enllaces qu'hubiera al nome vieyu nun van

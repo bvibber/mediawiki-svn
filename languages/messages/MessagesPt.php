@@ -18,6 +18,8 @@
  * @author Nike
  * @author MCruz
  * @author Minh Nguyen
+ * @author Lijealso
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -710,7 +712,6 @@ Por favor tente novamente. Caso continue a não funcionar, tente sair e voltar a
 'token_suffix_mismatch'     => '<strong>A sua edição foi rejeitada uma vez que seu software de navegação mutilou os sinais de pontuação do sinal de edição. A edição foi rejeitada para evitar perdas no texto da página. 
 Isso acontece ocasionalmente quando se usa um serviço de proxy anonimizador mal configurado.</strong>',
 'editing'                   => 'Editando $1',
-'editinguser'               => "Modificando privilégios do utilizador '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Editando $1 (secção)',
 'editingcomment'            => 'Editando $1 (comentário)',
 'editconflict'              => 'Conflito de edição: $1',
@@ -975,6 +976,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'userrights-lookup-user'           => 'Gerir grupos de utilizadores',
 'userrights-user-editname'         => 'Intruduza um nome de utilizador:',
 'editusergroup'                    => 'Editar Grupos de Utilizadores',
+'editinguser'                      => "Modificando privilégios do utilizador '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'         => 'Editar grupos do utilizador',
 'saveusergroups'                   => 'Salvar Grupos do Utilizador',
 'userrights-groupsmember'          => 'Membro de:',
@@ -1074,8 +1076,8 @@ Para incluír a imagem numa página, utilize o link na forma de
 'filename'                    => 'Nome do ficheiro',
 'filedesc'                    => 'Descrição do ficheiro',
 'fileuploadsummary'           => 'Sumário:',
-'filestatus'                  => 'Estado de direitos de autor',
-'filesource'                  => 'Fonte',
+'filestatus'                  => 'Estado dos direitos de autor:',
+'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Ficheiros carregados',
 'ignorewarning'               => 'Ignorar aviso e salvar de qualquer forma.',
 'ignorewarnings'              => 'Ignorar todos os avisos',
@@ -1112,8 +1114,8 @@ Por gentileza, se você tem acesso à imagem de tamanho completo, prefira envia-
 'uploadscripted'              => 'Este ficheiro contém HTML ou código que pode ser erradamente interpretado por um navegador web.',
 'uploadcorrupt'               => 'O ficheiro encontra-se corrompido ou tem uma extensão incorreta. Por gentileza, verifique o ocorrido e tente novamente.',
 'uploadvirus'                 => 'O ficheiro contém vírus! Detalhes: $1',
-'sourcefilename'              => 'Nome do ficheiro de origem',
-'destfilename'                => 'Nome do ficheiro de destino',
+'sourcefilename'              => 'Nome do ficheiro de origem:',
+'destfilename'                => 'Nome do ficheiro de destino:',
 'watchthisupload'             => 'Vigiar esta página',
 'filewasdeleted'              => 'Um ficheiro com este nome foi carregado anteriormente e subsequentemente eliminado. Você precisa verificar o $1 antes de proceder ao carregamento novamente.',
 'upload-wasdeleted'           => "'''Atenção: Você está enviando um ficheiro eliminado anteriormente.'''
@@ -1149,7 +1151,7 @@ PICT # misc.
 'upload-curl-error28'      => 'Tempo limite para o envio do ficheiro excedido',
 'upload-curl-error28-text' => 'O sítio demorou muito tempo a responder. Por gentileza, verifique se o sítio está acessível, aguarde alguns momentos e tente novamente. Talvez você deseje fazer nova tentativa em um horário menos congestionado.',
 
-'license'            => 'Licença',
+'license'            => 'Licença:',
 'nolicense'          => 'Nenhuma seleccionada',
 'license-nopreview'  => '(Previsão não disponível)',
 'upload_source_url'  => ' (um URL válido, publicamente acessível)',
@@ -1222,6 +1224,7 @@ PICT # misc.
 'filedelete-reason-dropdown'  => '*Motivos comuns para eliminação
 ** Violação de direitos de autor
 ** Ficheiro duplicado',
+'filedelete-edit-reasonlist'  => 'Editar motivos de eliminação',
 
 # MIME search
 'mimesearch'         => 'Pesquisa MIME',
@@ -1327,7 +1330,6 @@ O tamanho da [http://meta.wikimedia.org/wiki/Help:Job_queue fila de tarefas] é 
 'newpages'                => 'Páginas novas',
 'newpages-username'       => 'Nome de utilizador:',
 'ancientpages'            => 'Páginas mais antigas',
-'intl'                    => 'Ligações interlínguas',
 'move'                    => 'Mover',
 'movethispage'            => 'Mover esta página',
 'unusedimagestext'        => '<p>Por favor, note que outros websites podem apontar para uma imagem através de um URL directamente e, por isso, podem estar a não aparecer aqui, mesmo estando em uso.</p>',
@@ -1508,6 +1510,7 @@ Consulte $2 para um registo de eliminações recentes.',
 ** Pedido do autor
 ** Violação de direitos de autor
 ** Vandalismo',
+'delete-edit-reasonlist'      => 'Editar motivos de eiliminação',
 'delete-toobig'               => 'Esta página possui um longo histórico de edições, com mais de $1 revisões. A eliminação de tais páginas foi restrita, a fim de se evitarem problemas acidentais em {{SITENAME}}.',
 'delete-warning-toobig'       => 'Esta página possui um longo histórico de edições, com mais de $1 revisões. Eliminá-la poderá causar problemas na base de dados de {{SITENAME}}; prossiga com cuidado.',
 'rollback'                    => 'Reverter edições',
@@ -1537,7 +1540,6 @@ Veja a [[Special:Protectedpages|lista de páginas protegidas]] para uma listagem
 'protectexpiry'               => 'Expiração',
 'protect_expiry_invalid'      => 'O tempo de expiração fornecido é inválido.',
 'protect_expiry_old'          => 'O tempo de expiração fornecido se situa no passado.',
-'unprotectsub'                => '(Desprotegendo "$1")',
 'protect-unchain'             => 'Desbloquear permissões de moção',
 'protect-text'                => 'Você pode, nesta página, alterar o nível de proteção para <strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-blocked'      => 'Você não poderá alterar os níveis de proteção enquanto estiver bloqueado. Esta é a configuração atual para a página <strong>$1</strong>:',
@@ -1653,6 +1655,7 @@ $1',
 
 # Block/unblock
 'blockip'                     => 'Bloquear utilizador',
+'blockip-legend'              => 'Bloquear utilizador',
 'blockiptext'                 => 'Utilize o formulário abaixo para bloquear o acesso à escrita de um endereço específico de IP ou nome de utilizador.
 Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWiki:Policy-url}}|política]]. Preencha com um motivo específico a seguir (por exemplo, citando páginas que sofreram vandalismo).',
 'ipaddress'                   => 'Endereço de IP:',
@@ -1750,7 +1753,7 @@ Por favor, confirme que você realmente pretende fazer isso e que vai destrancar
 'databasenotlocked'   => 'A base de dados não encontra-se bloqueada.',
 
 # Move page
-'movepage'                => 'Mover página',
+'move-page-legend'                => 'Mover página',
 'movepagetext'            => "Utilizando o seguinte formulário você poderá renomear uma página, movendo todo o histórico para o novo título. O título anterior será transformado num redireccionamento para o novo.
 
 Links para as páginas antigas não serão mudados; certifique-se de verificar por redireccionamentos quebrados ou duplos. Você é responsável por certificar-se que os links continuam apontando para onde eles deveriam apontar.

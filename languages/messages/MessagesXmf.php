@@ -7,13 +7,17 @@
  * @author Malafaya
  * @author Alsandro
  * @author Nike
+ * @author M.M.S.
  */
 
 $fallback = 'ka';
 
 $messages = array(
 # User preference toggles
-'tog-underline' => 'ხაზ გუსვი ბმულემც:',
+'tog-underline'   => 'ხაზ გუსვი ბმულემც:',
+'tog-justify'     => 'გაასწორი პარაგრაფეფ',
+'tog-hideminor'   => 'დოჩული ჭიჭე რედაქტირება ბოლო თირუემც',
+'tog-showtoolbar' => 'რედაქტირებაშ ინსტრუმენტეფიშ ძირაფა (ჯავასკრიპტ)',
 
 'underline-always' => 'ირო',
 'underline-never'  => 'შურო',
@@ -78,6 +82,7 @@ $messages = array(
 'category-media-header' => 'მედია კატეგორიას "$1"',
 'category-empty'        => "''თენა კატეგორიას ვა რენა გვერდეფ დო მედია''",
 
+'about'          => '-შენი',
 'article'        => 'სტატია',
 'cancel'         => 'გაუქვება',
 'qbfind'         => 'მიგორე',
@@ -88,10 +93,11 @@ $messages = array(
 'qbspecialpages' => 'სპეციალურ გვერდეფ',
 'moredotdotdot'  => 'სრულო...',
 'mypage'         => 'ჩქიმ გვერდ',
-'mytalk'         => 'დისკუსია ჩქიმც',
+'mytalk'         => 'ჩქიმ განხილვა',
 'navigation'     => 'ნავიგაცია',
 'and'            => 'დო',
 
+'errorpagetitle'   => 'შეცთომა',
 'tagline'          => '{{SITENAME}} გვერდიშე',
 'help'             => 'დახვარება',
 'search'           => 'გორუა',
@@ -101,12 +107,14 @@ $messages = array(
 'history'          => 'გვერდიშ ისტორია',
 'history_short'    => 'ისტორია',
 'info_short'       => 'ინფორმაცია',
+'printableversion' => 'ობეშტალ ვერსია',
 'print'            => 'დობეჭდი',
 'edit'             => 'რედაქტირება',
 'editthispage'     => 'გვერდიშ რედაქტირება',
 'delete'           => 'წაშალი',
 'deletethispage'   => 'წაშალ თე გვერდი',
 'newpage'          => 'ახალ გვერდ',
+'talkpagelinktext' => 'დისკუსია',
 'specialpage'      => 'სპეციალურ გვერდ',
 'talk'             => 'დისკუსია',
 'views'            => 'ძირაფა',
@@ -118,15 +126,18 @@ $messages = array(
 'jumptosearch'     => 'გორუა',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'copyrightpage' => '{{ns:project}}:ავტორიშ უფლებალეფ',
-'edithelp'      => 'დახვარება',
-'edithelppage'  => 'Help:ტექსტიშ რედაქტირება (იოლი)',
-'helppage'      => 'Help:დახვარება',
-'mainpage'      => 'თავარ გვერდ',
-'portal'        => 'საზოგადოებაშ გვერდეფ',
-'portal-url'    => 'Project:საზოგადოებაშ გვერდეფ',
-'privacy'       => 'ანონიმურობაშ პოლიტიკა',
-'privacypage'   => 'Project:ანონიმურობაშ პოლიტიკა',
+'aboutsite'      => '{{SITENAME}}-შენი',
+'copyrightpage'  => '{{ns:project}}:ავტორიშ უფლებალეფ',
+'disclaimers'    => 'პასუხისმგებლობაშ მონწყუმა',
+'disclaimerpage' => 'Project::პასუხისმგებლობაშ ვარება',
+'edithelp'       => 'დახვარება',
+'edithelppage'   => 'Help:ტექსტიშ რედაქტირება (იოლი)',
+'helppage'       => 'Help:დახვარება',
+'mainpage'       => 'თავარ გვერდ',
+'portal'         => 'საზოგადოებაშ გვერდეფ',
+'portal-url'     => 'Project:საზოგადოებაშ გვერდეფ',
+'privacy'        => 'ანონიმურობაშ პოლიტიკა',
+'privacypage'    => 'Project:ანონიმურობაშ პოლიტიკა',
 
 'ok'                 => 'ჯგირო',
 'retrievedfrom'      => 'მიგორილ რე "$1"-იშე',
@@ -135,6 +146,9 @@ $messages = array(
 'editsection'        => 'რედაქტირება',
 'editold'            => 'რედაქტირება',
 'editsectionhint'    => 'სექციაშ რედაქტირება: $1',
+'toc'                => 'ოსხუნალ',
+'showtoc'            => 'ძირაფა',
+'hidetoc'            => 'ფულუა',
 'site-rss-feed'      => '$1 RSS Feed',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -144,12 +158,14 @@ $messages = array(
 'nstab-special'  => 'სპეციალურ',
 'nstab-project'  => 'პროექტიშ გვერდ',
 'nstab-image'    => 'ფაილი',
+'nstab-template' => 'თანგი',
 'nstab-category' => 'კატეგორია',
 
 # Main script and global functions
 'nosuchspecialpage' => 'სპეციალურ გვერდეფ ვა არსეენც',
 
 # General errors
+'badtitle'      => 'ცაგანა სათაური',
 'viewsourcefor' => '$1-იშ',
 
 # Login and logout pages
@@ -160,9 +176,14 @@ $messages = array(
 'userlogin'          => 'მინულა',
 'logout'             => 'გუმულა',
 'userlogout'         => 'გუმულა',
+'nologin'            => 'დიორდე ვარეთ რეგისტრირებულ? $1.',
+'gotaccount'         => 'უკვე რეგისტრირებულ რეთ? $1',
 'gotaccountlink'     => 'მინულა',
 'yourrealname'       => 'ნამდვილ სახელ *',
 'yourlanguage'       => 'ნინა:',
+'loginsuccess'       => "'''ასე მიშულირ რეთ {{SITENAME}}-ს მუჭოთ \"\$1\".'''",
+'nouserspecified'    => 'საჭირო რე ხვარებელიშ სახელიშ მიშაჭარუა.',
+'mailmypassword'     => 'ახალ პაროლიშ მოჯღონა',
 'loginlanguagelabel' => 'ნინა: $1',
 
 # Edit page toolbar
@@ -212,13 +233,13 @@ $messages = array(
 
 # Diffs
 'history-title'           => '"$1" თირუალეფიშ ისტორია',
-'difference'              => '(ვერსიალეფიშ დარება)',
+'difference'              => '(ვერსიეფიშ დარება)',
 'lineno'                  => 'ღაზი $1:',
 'compareselectedversions' => 'გიშაგორილ ვერსიეფიშ დარება',
 'editundo'                => 'გაუქვება',
 
 # Search results
-'noexactmatch' => "'''გვერდ თე სახელით \"\$1\" ვა არსეენც.''' თქვან შეგიძლიათ [[:\$1|შექმნათ თენა გვერდ]].",
+'noexactmatch' => "'''გვერდ თე სახელით \"\$1\" ვა არსეენც.''' თქვან შეგილებუნთ [[:\$1|თე გვერდიშ კეთება]].",
 'nextn'        => 'უკულ $1',
 'viewprevnext' => 'ქოძირ  ($1) ($2) ($3).',
 'powersearch'  => 'გორუა',
@@ -247,6 +268,11 @@ $messages = array(
 'newpageletter'   => 'ა',
 'boteditletter'   => 'რ',
 
+# Upload
+'upload'        => 'ფაილიშ გეთება',
+'uploadbtn'     => 'ფაილიშ გეთება',
+'uploadedimage' => 'გეთებაა "[[$1]]"',
+
 # Image list
 'filehist'            => 'ფაილიშ ისტორია',
 'filehist-user'       => 'ხვარებელ',
@@ -254,6 +280,7 @@ $messages = array(
 'filehist-filesize'   => 'ფაილიშ ზომა',
 'filehist-comment'    => 'კომენტარ',
 'imagelinks'          => 'ბუნეფ',
+'noimage'             => 'ფაილ თე სახელით ვაარსეენც, თქვან შეგილებუნთ $1.',
 'imagelist_name'      => 'სახელ',
 
 # MIME search
@@ -273,11 +300,13 @@ $messages = array(
 'nmembers'                => '$1 მაკათურ',
 'uncategorizedpages'      => 'უკატეგორიე გვერდეფ',
 'uncategorizedcategories' => 'კატეგორიეფ კატეგორიეფიშ გარეშე',
+'uncategorizedimages'     => 'სურათეფ კატეგორიაშ უმიშო',
 'mostlinked'              => 'გვერდეფ, ნამუდგა არძას ბრალ ბმულეფ უღუნთ',
 'mostlinkedcategories'    => 'კატეგორიეფ, ნამუდგა არძას ბრალ ბმულეფ უღუნთ',
 'mostcategories'          => 'სტატიეფ, ნამუდგა არძას ბრალ კატეგორიეფ უღუნთ',
 'allpages'                => 'არძა გვერდ',
 'shortpages'              => 'ჭიჭე გვერდეფ',
+'longpages'               => 'გინძე გვერდეფ',
 'specialpages'            => 'სპეციალურ გვერდეფ',
 'newpages'                => 'ახალ გვერდეფ',
 'ancientpages'            => 'ჯვეშ გვერდეფ',
@@ -295,21 +324,29 @@ $messages = array(
 
 # Special:Allpages
 'nextpage'       => 'უკულ გვერდ ($1)',
+'prevpage'       => 'წოხლენ გვერდ ($1)',
 'allpagesfrom'   => 'გვერდეფიშ ძირაფა დოჭყაფულ:',
 'allarticles'    => 'ირ სტატია',
 'allpagessubmit' => 'ძირა',
 
 # Watchlist
-'watchlist'        => 'ჩქიმ კონტროლიშ გვერდეფ',
-'mywatchlist'      => 'ჩქიმ კონტროლიშ გვერდეფ',
-'watchlistfor'     => "('''$1'''-შენი)",
-'removedwatchtext' => 'ასე გვერდ "[[:$1]]" ვარე თქვან კონტროლიშ გვერდეფც.',
-'watch'            => 'კონტროლ',
-'watchthispage'    => 'თე გვერდიშ კონტროლ',
-'unwatch'          => 'კონტროლიშ გაუქვება',
-'wlshowlast'       => 'ძირაფა ბოლო $1 საათიშ $2 დღაშ $3',
+'watchlist'            => 'ჩქიმ კონტროლიშ გვერდეფ',
+'mywatchlist'          => 'ჩქიმ კონტროლიშ გვერდეფ',
+'watchlistfor'         => "('''$1'''-შენი)",
+'removedwatchtext'     => 'ასე გვერდ "[[:$1]]" ვარე თქვან კონტროლიშ გვერდეფც.',
+'watch'                => 'კონტროლ',
+'watchthispage'        => 'თე გვერდიშ კონტროლ',
+'unwatch'              => 'კონტროლიშ გაუქვება',
+'wlshowlast'           => 'ძირაფა ბოლო $1 საათიშ $2 დღაშ $3',
+'watchlist-hide-bots'  => 'რობოტიშ თირუეფიშ ფულუა',
+'watchlist-hide-own'   => 'ჩქიმ რედაქტირებაშ ფულუა',
+'watchlist-hide-minor' => 'ჭიჭე რედაქტირებებაშ ფულუა',
 
 # Delete/protect/revert
+'deletepage'                  => 'გვერდიშ შალუა',
+'actioncomplete'              => 'მოქმედალა რსულებულ რე',
+'deleteotherreason'           => 'შხვა/დამატებით ბაძაძი:',
+'deletereasonotherlist'       => 'შხვა ბაძაძი',
 'rollbacklink'                => 'გაუქვება',
 'protectcomment'              => 'კომენტარ:',
 'protectexpiry'               => 'ვადა',
@@ -352,15 +389,17 @@ $messages = array(
 'contribslink'       => 'ხანდა',
 
 # Move page
-'movepage'       => 'გვერდიშ გინოღალა',
-'movearticle'    => 'გვერდიშ გინოღალა',
-'newtitle'       => 'ახალ სათაურ',
-'move-watch'     => 'თე გვერდიშ კონტროლ',
-'movepagebtn'    => 'გვერდიშ გინოღალა',
-'movepage-moved' => '<big>\'\'\'"$1" გინოღალულ რე "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movedto'        => 'გინაღალულ რე',
-'movelogpage'    => 'გინოღალაშ რეგისტრაცია',
-'revertmove'     => 'გაუქვება',
+'move-page-legend' => 'გვერდიშ გინოღალა',
+'movearticle'      => 'გვერდიშ გინოღალა',
+'newtitle'         => 'ახალ სათაურ',
+'move-watch'       => 'თე გვერდიშ კონტროლ',
+'movepagebtn'      => 'გვერდიშ გინოღალა',
+'pagemovedsub'     => 'გინოღალა რსულებულ რე',
+'movepage-moved'   => '<big>\'\'\'"$1" გინოღალულ რე "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movedto'          => 'გინაღალულ რე',
+'movelogpage'      => 'გინოღალაშ რეგისტრაცია',
+'movereason'       => 'საბაბი',
+'revertmove'       => 'გაუქვება',
 
 # Export
 'export' => 'გვერდეფიშ ექსპორტ',
@@ -377,6 +416,7 @@ $messages = array(
 'tooltip-pt-preferences'          => 'ჩქიმ კონფიგურაცია',
 'tooltip-pt-mycontris'            => 'ჩქიმ არძა ხანდა',
 'tooltip-pt-logout'               => 'გუმულა',
+'tooltip-ca-delete'               => 'თე გვერდიშ შალუა',
 'tooltip-ca-move'                 => 'თე გვერდიშ გინოღალა',
 'tooltip-ca-unwatch'              => 'მონწყუმეთ თენა გვერდ თქვან კონტროლიშ გვერდეფიშე',
 'tooltip-search'                  => 'გორუა {{SITENAME}}',
@@ -384,7 +424,7 @@ $messages = array(
 'tooltip-n-recentchanges'         => 'ვიკის ბოლო თირუალეფ',
 'tooltip-n-sitesupport'           => 'ხუჯ დომკინით',
 'tooltip-t-contributions'         => 'ქოძირეთ თე ხვარებელიშ ხანდა',
-'tooltip-t-specialpages'          => 'არძა სპეციალურ გვერდ',
+'tooltip-t-specialpages'          => 'ირ სპეციალურ გვერდ',
 'tooltip-ca-nstab-user'           => 'ხვარებელიშ გვერდიშ ძირაფა',
 'tooltip-ca-nstab-project'        => 'პროექტიშ გვერდ',
 'tooltip-ca-nstab-image'          => 'სურათიშ გვერდიშ ძირაფა',
@@ -394,9 +434,10 @@ $messages = array(
 'tooltip-compareselectedversions' => 'ქოძირეთ თე გვერდიშ ჟირ გიშაგორილ ვერსიაშ განშხვავებეფ.',
 
 # Spam protection
-'subcategorycount'     => 'თე კატეგორიას $1 ქვეკატეგორია რე.',
-'categoryarticlecount' => 'თე კატეგორიას $1 სტატია რე.',
-'category-media-count' => 'თე კატეგორიას $1 ფაილ რე.',
+'subcategorycount'       => 'თე კატეგორიას $1 ქვეკატეგორია რე.',
+'categoryarticlecount'   => 'თე კატეგორიას $1 სტატია რე.',
+'category-media-count'   => 'თე კატეგორიას $1 ფაილ რე.',
+'listingcontinuesabbrev' => 'გინძარ.',
 
 # Browsing diffs
 'previousdiff' => '← ჯვეშ თირუაშა',

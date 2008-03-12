@@ -218,7 +218,7 @@ $1",
 'upload'        => 'Cuir ri fhaidhle',
 'filename'      => 'Ainm-faidhle',
 'filedesc'      => 'Geàrr-chùnntas',
-'filestatus'    => 'Cor dlighe-sgrìobhaidh',
+'filestatus'    => 'Cor dlighe-sgrìobhaidh:',
 'ignorewarning' => 'Leig an rabhadh seachad agus sàbhail am faidhle codhiù.',
 'badfilename'   => 'Ainm ìomhaigh air atharrachadh ri "$1".',
 'fileexists'    => 'Tha faidhle leis an ainm seo ann cheana; nach faigh sibh cinnt air <strong><tt>$1</tt></strong> gu bheil sibh ag iarraidh atharrachadh.',
@@ -305,7 +305,6 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'protectsub'         => '(A\'dìonadh "$1")',
 'confirmprotect'     => 'Daingnich dìonadh',
 'protectcomment'     => 'Aobhar airson dìonaidh',
-'unprotectsub'       => '(A\'neo-dhìonadh "$1")',
 
 # Undelete
 'undeleterevisions' => '$1 {{PLURAL:$1|lethbhreac|lethbhreacan}} taisge',
@@ -348,7 +347,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'lockdbsuccesssub' => 'Shoirbhich glasadh an stor-dàta',
 
 # Move page
-'movepage'        => 'Gluais duilleag',
+'move-page-legend'        => 'Gluais duilleag',
 'movearticle'     => 'Gluais duilleag',
 'movepagebtn'     => 'Gluais duilleag',
 'pagemovedsub'    => 'Gluasad soirbheachail',

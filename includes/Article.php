@@ -138,7 +138,7 @@ class Article {
 	 * @return Return the text of this revision
 	*/
 	function getContent() {
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgMessageCache;
 
 		wfProfileIn( __METHOD__ );
 
@@ -147,6 +147,7 @@ class Article {
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+				$wgMessageCache->loadAllMessages();
 				$ret = wfMsgWeirdKey ( $this->mTitle->getText() ) ;
 			} else {
 				$ret = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
@@ -377,8 +378,7 @@ class Article {
 
 		// FIXME: Horrible, horrible! This content-loading interface just plain sucks.
 		// We should instead work with the Revision object when we need it...
-		$this->mContent = $revision->userCan( Revision::DELETED_TEXT ) ? $revision->getRawText() : "";
-		//$this->mContent   = $revision->getText();
+		$this->mContent   = $revision->revText(); // Loads if user is allowed
 
 		$this->mUser      = $revision->getUser();
 		$this->mUserText  = $revision->getUserText();
@@ -1067,7 +1067,6 @@ class Article {
 		$result = $dbw->affectedRows() != 0;
 
 		if ($result) {
-			// FIXME: Should the result from updateRedirectOn() be returned instead?
 			$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect );
 		}
 
@@ -1495,6 +1494,7 @@ class Article {
 	 *
 	 * @param boolean $noRedir Add redirect=no
 	 * @param string $sectionAnchor section to redirect to, including "#"
+	 * @param string $extraq, extra query params
 	 */
 	function doRedirect( $noRedir = false, $sectionAnchor = '', $extraq = '' ) {
 		global $wgOut;
@@ -1758,7 +1758,8 @@ class Article {
 				foreach( $limit as $action => $restrictions ) {
 					# Check if the group level required to edit also can protect pages
 					# Otherwise, people who cannot normally protect can "protect" pages via transclusion
-					$cascade = ( $cascade && isset($wgGroupPermissions[$restrictions]['protect']) && $wgGroupPermissions[$restrictions]['protect'] );	
+					$cascade = ( $cascade && isset($wgGroupPermissions[$restrictions]['protect']) && 
+						$wgGroupPermissions[$restrictions]['protect'] );	
 				}
 				
 				$cascade_description = '';
@@ -1938,6 +1939,8 @@ class Article {
 		} elseif ( $reason == 'other' ) {
 			$reason = $this->DeleteReason;
 		}
+		# Flag to hide all contents of the archived revisions
+		$suppress = $wgRequest->getVal( 'wpSuppress' ) && $wgUser->isAllowed('deleterevision');
 
 		# This code desperately needs to be totally rewritten
 
@@ -1976,7 +1979,7 @@ class Article {
 		}
 
 		if( $confirm ) {
-			$this->doDelete( $reason );
+			$this->doDelete( $reason, $suppress );
 			if( $wgRequest->getCheck( 'wpWatch' ) ) {
 				$this->doWatch();
 			} elseif( $this->mTitle->userIsWatching() ) {
@@ -2088,6 +2091,14 @@ class Article {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->addWikiMsg( 'confirmdeletetext' );
 
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\"><td></td><td>";
+			$suppress .= Xml::checkLabel( wfMsg( 'revdelete-suppress' ), 'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '2' ) );
+			$suppress .= "</td></tr>";
+		} else {
+			$suppress = '';
+		}
+
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mTitle->getLocalURL( 'action=delete' . $par ), 'id' => 'deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'delete-legend' ) ) .
@@ -2116,6 +2127,7 @@ class Article {
 					Xml::checkLabel( wfMsg( 'watchthis' ), 'wpWatch', 'wpWatch', $wgUser->getBoolOption( 'watchdeletion' ) || $this->mTitle->userIsWatching(), array( 'tabindex' => '3' ) ) .
 				"</td>
 			</tr>
+			$suppress
 			<tr>
 				<td></td>
 				<td>" .
@@ -2126,6 +2138,12 @@ class Article {
 			Xml::closeElement( 'fieldset' ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			Xml::closeElement( 'form' );
+
+			if ( $wgUser->isAllowed( 'editinterface' ) ) {
+				$skin = $wgUser->getSkin();
+				$link = $skin->makeLink ( 'MediaWiki:Deletereason-dropdown', wfMsgHtml( 'delete-edit-reasonlist' ) );
+				$form .= '<p class="mw-delete-editreasons">' . $link . '</p>';
+			}
 
 		$wgOut->addHTML( $form );
 		$this->showLogExtract( $wgOut );
@@ -2149,12 +2167,12 @@ class Article {
 	/**
 	 * Perform a deletion and output success or failure messages
 	 */
-	function doDelete( $reason ) {
+	function doDelete( $reason, $suppress = false ) {
 		global $wgOut, $wgUser;
 		wfDebug( __METHOD__."\n" );
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason))) {
-			if ( $this->doDeleteArticle( $reason ) ) {
+			if ( $this->doDeleteArticle( $reason, $suppress ) ) {
 				$deleted = $this->mTitle->getPrefixedText();
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
@@ -2166,7 +2184,7 @@ class Article {
 				$wgOut->returnToMain( false );
 				wfRunHooks('ArticleDeleteComplete', array(&$this, &$wgUser, $reason));
 			} else {
-				$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
+				$wgOut->showFatalError( wfMsg( 'cannotdelete' ).'<br/>'.wfMsg('cannotdelete-merge') );
 			}
 		}
 	}
@@ -2176,7 +2194,7 @@ class Article {
 	 * Deletes the article with database consistency, writes logs, purges caches
 	 * Returns success
 	 */
-	function doDeleteArticle( $reason ) {
+	function doDeleteArticle( $reason, $suppress = false ) {
 		global $wgUseSquid, $wgDeferredUpdateList;
 		global $wgUseTrackbacks;
 
@@ -2194,6 +2212,18 @@ class Article {
 		$u = new SiteStatsUpdate( 0, 1, -(int)$this->isCountable( $this->getContent() ), -1 );
 		array_push( $wgDeferredUpdateList, $u );
 
+		// Bitfields to further suppress the content
+		if ( $suppress ) {
+			$bitfield = 0;
+			// This should be 15...
+			$bitfield |= Revision::DELETED_TEXT;
+			$bitfield |= Revision::DELETED_COMMENT;
+			$bitfield |= Revision::DELETED_USER;
+			$bitfield |= Revision::DELETED_RESTRICTED;
+		} else {
+			$bitfield = 'rev_deleted';
+		}
+		
 		// For now, shunt the revision data into the archive table.
 		// Text is *not* removed from the text table; bulk storage
 		// is left intact to avoid breaking block-compression or
@@ -2217,8 +2247,9 @@ class Article {
 				'ar_text_id'    => 'rev_text_id',
 				'ar_text'       => '\'\'', // Be explicit to appease
 				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
-				'ar_len'		=> 'rev_len',
+				'ar_len'        => 'rev_len',
 				'ar_page_id'    => 'page_id',
+				'ar_deleted'    => $bitfield
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
@@ -2259,8 +2290,9 @@ class Article {
 		# Clear caches
 		Article::onArticleDelete( $this->mTitle );
 
-		# Log the deletion
-		$log = new LogPage( 'delete' );
+		# Log the deletion, if the page was suppressed, log it at Oversight instead
+		$logtype = $suppress ? 'oversight' : 'delete';
+		$log = new LogPage( $logtype );
 		$log->addEntry( 'delete', $this->mTitle, $reason );
 
 		# Clear the cached article id so the interface doesn't act like we exist
@@ -2348,7 +2380,7 @@ class Article {
 		$user = intval( $current->getUser() );
 		$user_text = $dbw->addQuotes( $current->getUserText() );
 		$s = $dbw->selectRow( 'revision',
-			array( 'rev_id', 'rev_timestamp' ),
+			array( 'rev_id', 'rev_timestamp', 'rev_deleted' ),
 			array(	'rev_page' => $current->getPage(),
 				"rev_user <> {$user} OR rev_user_text <> {$user_text}"
 			), __METHOD__,
@@ -2358,6 +2390,9 @@ class Article {
 		if( $s === false ) {
 			# No one else ever edited this page
 			return array(array('cantrollback'));
+		} else if( $s->rev_deleted & REVISION::DELETED_TEXT || $s->rev_deleted & REVISION::DELETED_USER ) {
+			# Only admins can see this text
+			return array(array('notvisiblerev'));
 		}
 	
 		$set = array();
@@ -2433,6 +2468,19 @@ class Article {
 		}
 		if( in_array( array( 'actionthrottledtext' ), $result ) ) {
 			$wgOut->rateLimited();
+			return;
+		}
+		if( isset( $result[0][0] ) && ( $result[0][0] == 'alreadyrolled' || $result[0][0] == 'cantrollback' ) ){
+			$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
+			$errArray = $result[0];
+			$errMsg = array_shift( $errArray );
+			$wgOut->addWikiMsgArray( $errMsg, $errArray );
+			if( isset( $details['current'] ) ){
+				$current = $details['current'];
+				if( $current->getComment() != '' ) {
+					$wgOut->addWikiMsgArray( 'editcomment', array( $wgUser->getSkin()->formatComment( $current->getComment() ) ), array( 'replaceafter' ) );
+				}
+			}
 			return;
 		}
 		# Display permissions errors before read-only message -- there's no
@@ -2642,7 +2690,7 @@ class Article {
 		$sk = $wgUser->getSkin();
 		$lnk = $current
 			? wfMsg( 'currentrevisionlink' )
-			: $lnk = $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'currentrevisionlink' ) );
+			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'currentrevisionlink' ) );
 		$curdiff = $current
 			? wfMsg( 'diff' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=cur&oldid='.$oldid );
@@ -2660,8 +2708,28 @@ class Article {
 			? wfMsg( 'diff' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=next&oldid='.$oldid );
 
-		$userlinks = $sk->userLink( $revision->getUser(), $revision->getUserText() )
-						. $sk->userToolLinks( $revision->getUser(), $revision->getUserText() );
+		$cdel='';
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {		
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+			if( $revision->isCurrent() ) {
+			// We don't handle top deleted edits too well
+				$cdel = wfMsgHtml('rev-delundel');	
+			} else if( !$revision->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// If revision was hidden from sysops
+				$cdel = wfMsgHtml('rev-delundel');	
+			} else {
+				$cdel = $sk->makeKnownLinkObj( $revdel,
+					wfMsgHtml('rev-delundel'),
+					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
+					'&oldid=' . urlencode( $oldid ) );
+				// Bolden oversighted content
+				if( $revision->isDeleted( Revision::DELETED_RESTRICTED ) )
+					$cdel = "<strong>$cdel</strong>";
+			}
+			$cdel = "(<small>$cdel</small>) ";
+		}
+		
+		$userlinks = $sk->revUserTools( $revision, true );
 
 		$m = wfMsg( 'revision-info-current' );
 		$infomsg = $current && !wfEmptyMsg( 'revision-info-current', $m ) && $m != '-'
@@ -2669,7 +2737,8 @@ class Article {
 			: 'revision-info';
 			
 		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsg( $infomsg, $td, $userlinks ) . "</div>\n" .
-		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . wfMsg( 'revision-nav', $prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
+
+		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsg( 'revision-nav', $prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
 		$wgOut->setSubtitle( $r );
 	}
 

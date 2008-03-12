@@ -553,7 +553,6 @@ Si hic es propter errorem, solum '''Retrorsum''' in navigatro tuo preme.",
 'note'                      => '<strong>Nota:</strong>',
 'previewnote'               => '<strong>Memento hanc paginam solum praevisum esse, neque iam servatam!</strong>',
 'editing'                   => 'Recensio paginae "$1"',
-'editinguser'               => "Modificare iura usoris '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'editingsection'            => 'Recensens $1 (partem)',
 'editingcomment'            => 'Recensens $1 (adnotum)',
 'editconflict'              => 'Contentio recensionis: $1',
@@ -709,6 +708,7 @@ Titulus: (nov) = dissimilis ab forma novissima, (prox) = dissimilis ab forma pro
 
 # User rights
 'editusergroup'                    => 'Greges usorum recensere',
+'editinguser'                      => "Modificare iura usoris '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-available-add'         => 'Potes usores addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
 'userrights-available-remove'      => 'Potes usores removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
 'userrights-available-add-self'    => 'Potes te addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
@@ -778,8 +778,8 @@ Ad fasciculum includendum in pagina, utere nexu
 'filename'          => 'Nomen fasciculi',
 'filedesc'          => 'Descriptio',
 'fileuploadsummary' => 'Descriptio:',
-'filestatus'        => 'Locus verborum privatorum',
-'filesource'        => 'Fons',
+'filestatus'        => 'Locus verborum privatorum:',
+'filesource'        => 'Fons:',
 'uploadedfiles'     => 'Fasciculi onerati',
 'ignorewarning'     => 'Ignorare monita et servare fasciculum.',
 'ignorewarnings'    => 'Ignorare monita omnes',
@@ -849,6 +849,7 @@ Ad fasciculum includendum in pagina, utere nexu
 'filedelete-iscurrent'        => 'Emendationem recentissimam huius fasciculi delere conaris. Necesse est antea ad aliam emendationem reverti.',
 'filedelete-otherreason'      => 'Causa alia vel explicatio:',
 'filedelete-reason-otherlist' => 'Causa alia',
+'filedelete-edit-reasonlist'  => 'Causas deletionum fasciculorum recensere',
 
 # MIME search
 'mimesearch' => 'Quaerere per MIME',
@@ -942,7 +943,6 @@ Hoc aequat fere '''$5''' mutationes per paginam, et '''$6''' visae per mutatione
 'newpages'                => 'Paginae novae',
 'newpages-username'       => 'Nomen usoris:',
 'ancientpages'            => 'Paginae veterrimae',
-'intl'                    => 'Nexus inter linguas',
 'move'                    => 'Movere',
 'movethispage'            => 'Movere hanc paginam',
 'notargettitle'           => 'Nullus scopus',
@@ -1022,6 +1022,7 @@ Si paginam ex indice paginarum custoditarum removere vis, imprime \"decustodire\
 'unwatch'              => 'Decustodire',
 'unwatchthispage'      => 'Abrogare custoditum',
 'notanarticle'         => 'Res non est',
+'notvisiblerev'        => 'Emendatio deleta est',
 'watchnochange'        => 'Nullae paginarum custoditarum tuarum recensitae sunt in hoc tempore.',
 'watchlist-details'    => '{{PLURAL:$1|$1 pagina custodita|$1 paginae custoditae}} sine paginis disputationis.',
 'watchmethod-recent'   => 'recensita recenta quaerens pro pagina custodita',
@@ -1069,6 +1070,7 @@ Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, e
 'deletecomment'             => 'Causa deletionis:',
 'deleteotherreason'         => 'Causa alia vel explicatio:',
 'deletereasonotherlist'     => 'Causa alia',
+'delete-edit-reasonlist'    => 'Causas deletionum recensere',
 'rollback'                  => 'Reverti mutationes',
 'rollback_short'            => 'Reverti',
 'rollbacklink'              => 'reverti',
@@ -1087,7 +1089,6 @@ Adfirma quaesumus te paginam re vera delere velle, te consequentias intellere, e
 'protectcomment'            => 'Ratio protegendo:',
 'protectexpiry'             => 'Exitus:',
 'protect_expiry_invalid'    => 'Tempus exeundo invalidum fuit.',
-'unprotectsub'              => '(Deprotegere "$1")',
 'protect-level-sysop'       => 'Magistratus soli',
 'protect-expiring'          => 'exit $1',
 'protect-cascade'           => 'Formulas aliasque paginas hac in pagina adhibitas protegere (protectio quasi cataracta)',
@@ -1160,6 +1161,7 @@ Si pagina nova cum ipso nomine post deletionem creata est, recensita restituta i
 
 # Block/unblock
 'blockip'                  => 'Usorem obstruere',
+'blockip-legend'           => 'Usorem vel locum IP obstruere',
 'blockiptext'              => 'Forma infera utere ut quendam usorem vel locum IP obstruas ne plus scribere potest. Hoc non nisi secundum [[{{MediaWiki:Policy-url}}|consilium]] fieri potest. Rationem certam subscribe (exempli gratia titulos paginarum quas iste usor modo vandalorum recensuit).',
 'ipaddress'                => 'Locus IP:',
 'ipadressorusername'       => 'Locus IP aut nomen usoris:',
@@ -1223,7 +1225,7 @@ Adfirma te basem datorum obstruere velle, et te dein basem datorum deobstruendum
 'databasenotlocked'   => 'Basis datorum non obstructa est.',
 
 # Move page
-'movepage'                => 'Paginam movere',
+'move-page-legend'                => 'Paginam movere',
 'movepagetext'            => "Formam inferam utere ad paginam renominandum et ad historiam eius ad nomen novum movendum.
 Index vetus paginam redirectionis ad indicem novum fiet.
 Nexus ad paginam veterem non mutabuntur;

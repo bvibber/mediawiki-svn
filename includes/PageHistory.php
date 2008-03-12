@@ -37,6 +37,20 @@ class PageHistory {
 		$this->mTitle =& $article->mTitle;
 		$this->mNotificationTimestamp = NULL;
 		$this->mSkin = $wgUser->getSkin();
+		$this->preCacheMessages();
+	}
+	
+	/**
+	 * As we use the same small set of messages in various methods and that
+	 * they are called often, we call them once and save them in $this->message
+	 */
+	function preCacheMessages() {
+		// Precache various messages
+		if( !isset( $this->message ) ) {
+			foreach( explode(' ', 'cur last rev-delundel' ) as $msg ) {
+				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
+			}
+		}
 	}
 
 	/**
@@ -55,8 +69,7 @@ class PageHistory {
 			/* Client cache fresh and headers sent, nothing more to do. */
 			return;
 
-		$fname = 'PageHistory::history';
-		wfProfileIn( $fname );
+		wfProfileIn( __METHOD__ );
 
 		/*
 		 * Setup page variables.
@@ -75,7 +88,7 @@ class PageHistory {
 
 		$feedType = $wgRequest->getVal( 'feed' );
 		if( $feedType ) {
-			wfProfileOut( $fname );
+			wfProfileOut( __METHOD__ );
 			return $this->feed( $feedType );
 		}
 
@@ -84,7 +97,7 @@ class PageHistory {
 		 */
 		if( !$this->mTitle->exists() ) {
 			$wgOut->addWikiMsg( 'nohistory' );
-			wfProfileOut( $fname );
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -112,7 +125,7 @@ class PageHistory {
 			$this->endHistoryList() .
 			$pager->getNavigationBar()
 		);
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -202,40 +215,36 @@ class PageHistory {
 		$arbitrary = $this->diffButtons( $rev, $firstInList, $counter );
 		$link = $this->revLink( $rev );
 		
-		$user = $this->mSkin->userLink( $rev->getUser(), $rev->getUserText() )
-				. $this->mSkin->userToolLinks( $rev->getUser(), $rev->getUserText() );
-		
 		$s .= "($curlink) ($lastlink) $arbitrary";
 		
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( $firstInList ) {
-				// We don't currently handle well changing the top revision's settings
-				$del = wfMsgHtml( 'rev-delundel' );
+			// We don't currently handle well changing the top revision's settings
+				$del = $this->message['rev-delundel'];
 			} else if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 			// If revision was hidden from sysops
-				$del = wfMsgHtml( 'rev-delundel' );			
+				$del = $this->message['rev-delundel'];	
 			} else {
 				$del = $this->mSkin->makeKnownLinkObj( $revdel,
-					wfMsg( 'rev-delundel' ),
+					$this->message['rev-delundel'],
 					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
 					'&oldid=' . urlencode( $rev->getId() ) );
+				// Bolden oversighted content
+				if( $rev->isDeleted( Revision::DELETED_RESTRICTED ) )
+					$del = "<strong>$del</strong>";
 			}
-			$s .= " (<small>$del</small>) ";
+			$s .= " <tt>(<small>$del</small>)</tt> ";
 		}
 		
 		$s .= " $link";
-		#getUser is safe, but this avoids making the invalid untargeted contribs links
-		if( $row->rev_deleted & Revision::DELETED_USER ) {
-			$user = '<span class="history-deleted">' . wfMsg('rev-deleted-user') . '</span>';
-		}
-		$s .= " <span class='history-user'>$user</span>";
+		$s .= " <span class='history-user'>" . $this->mSkin->revUserTools( $rev, true ) . "</span>";
 
 		if( $row->rev_minor_edit ) {
-			$s .= ' ' . wfElement( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
+			$s .= ' ' . Xml::element( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
 		}
 
-		if ( !is_null( $size = $rev->getSize() ) ) {
+		if ( !is_null( $size = $rev->getSize() ) && $rev->userCan( Revision::DELETED_TEXT ) ) {
 			if ( $size == 0 )
 				$stxt = wfMsgHtml( 'historyempty' );
 			else
@@ -243,20 +252,14 @@ class PageHistory {
 			$s .= " <span class=\"history-size\">$stxt</span>";
 		}
 
-		#getComment is safe, but this is better formatted
-		if( $rev->isDeleted( Revision::DELETED_COMMENT ) ) {
-			$s .= " <span class=\"history-deleted\"><span class=\"comment\">" .
-			wfMsgHtml( 'rev-deleted-comment' ) . "</span></span>";
-		} else {
-			$s .= $this->mSkin->revComment( $rev );
-		}
+		$s .= $this->mSkin->revComment( $rev, false, true );
 		
 		if ($notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp)) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
 		}
 		#add blurb about text having been deleted
-		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
-			$s .= ' ' . wfMsgHtml( 'deletedrev' );
+		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 		}
 		
 		$tools = array();
@@ -309,7 +312,7 @@ class PageHistory {
 
 	/** @todo document */
 	function curLink( $rev, $latest ) {
-		$cur = wfMsgExt( 'cur', array( 'escape') );
+		$cur = $this->message['cur'];
 		if( $latest || !$rev->userCan( Revision::DELETED_TEXT ) ) {
 			return $cur;
 		} else {
@@ -322,7 +325,7 @@ class PageHistory {
 
 	/** @todo document */
 	function lastLink( $rev, $next, $counter ) {
-		$last = wfMsgExt( 'last', array( 'escape' ) );
+		$last = $this->message['last'];
 		if ( is_null( $next ) ) {
 			# Probably no next row
 			return $last;
@@ -399,11 +402,11 @@ class PageHistory {
 	function getLatestId() {
 		if( is_null( $this->mLatestId ) ) {
 			$id = $this->mTitle->getArticleID();
-			$db = wfGetDB(DB_SLAVE);
+			$db = wfGetDB( DB_SLAVE );
 			$this->mLatestId = $db->selectField( 'page',
 				"page_latest",
 				array( 'page_id' => $id ),
-				'PageHistory::getLatestID' );
+				__METHOD__ );
 		}
 		return $this->mLatestId;
 	}
@@ -414,8 +417,6 @@ class PageHistory {
 	 * used by the main UI but that's now handled by the pager.
 	 */
 	function fetchRevisions($limit, $offset, $direction) {
-		$fname = 'PageHistory::fetchRevisions';
-
 		$dbr = wfGetDB( DB_SLAVE );
 
 		if ($direction == PageHistory::DIR_PREV)
@@ -434,7 +435,7 @@ class PageHistory {
 			'revision',
 			Revision::selectFields(),
 			array_merge(array("rev_page=$page_id"), $offsets),
-			$fname,
+			__METHOD__,
 			array('ORDER BY' => "rev_timestamp $dirs",
 				'USE INDEX' => 'page_timestamp', 'LIMIT' => $limit)
 			);
@@ -449,7 +450,6 @@ class PageHistory {
 	/** @todo document */
 	function getNotificationTimestamp() {
 		global $wgUser, $wgShowUpdatedMarker;
-		$fname = 'PageHistory::getNotficationTimestamp';
 
 		if ($this->mNotificationTimestamp !== NULL)
 			return $this->mNotificationTimestamp;
@@ -466,7 +466,7 @@ class PageHistory {
 				'wl_title' => $this->mTitle->getDBkey(),
 				'wl_user' => $wgUser->getID()
 			),
-			$fname);
+			__METHOD__ );
 		
 		// Don't use the special value reserved for telling whether the field is filled
 		if ( is_null( $this->mNotificationTimestamp ) ) {

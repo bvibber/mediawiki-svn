@@ -1126,8 +1126,8 @@ Untuk menampilkan atau menyertakan berkas atau gambar pada suatu halaman, gunaka
 'filename'                    => 'Nama berkas',
 'filedesc'                    => 'Ringkasan',
 'fileuploadsummary'           => 'Ringkasan:',
-'filestatus'                  => 'Status hak cipta',
-'filesource'                  => 'Sumber',
+'filestatus'                  => 'Status hak cipta:',
+'filesource'                  => 'Sumber:',
 'uploadedfiles'               => 'Berkas yang telah dimuat',
 'ignorewarning'               => 'Abaikan peringatan dan langsung simpan berkas.',
 'ignorewarnings'              => 'Abaikan peringatan apapun',
@@ -1164,8 +1164,8 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 'uploadscripted'              => 'Berkas ini mengandung HTML atau kode yang dapat diinterpretasikan dengan keliru oleh penjelajah web.',
 'uploadcorrupt'               => 'Berkas tersebut rusak atau ekstensinya salah. Silakan periksa berkas tersebut dan muatkan kembali.',
 'uploadvirus'                 => 'Berkas tersebut mengandung virus! Detil: $1',
-'sourcefilename'              => 'Nama berkas sumber',
-'destfilename'                => 'Nama berkas tujuan',
+'sourcefilename'              => 'Nama berkas sumber:',
+'destfilename'                => 'Nama berkas tujuan:',
 'watchthisupload'             => 'Pantau halaman ini',
 'filewasdeleted'              => 'Suatu berkas dengan nama ini pernah dimuat dan selanjutnya dihapus. Harap cek $1 sebelum memuat lagi berkas tersebut.',
 'upload-wasdeleted'           => "'''Peringatan: Anda memuat suatu berkas yang telah pernah dihapus.'''
@@ -1187,7 +1187,7 @@ Log penghapusan berkas adalah sebagai berikut:",
 'upload-curl-error28'      => 'Pemuatan lewat waktu',
 'upload-curl-error28-text' => 'Situs yang dituju terlalu lambat merespon. Tolong cek apakah situs tersebut aktif, tunggu sebentar, dan coba lagi. Mungkin Anda perlu mencobanya di saat yang lebih longgar.',
 
-'license'            => 'Jenis lisensi',
+'license'            => 'Jenis lisensi:',
 'nolicense'          => 'Belum dipilih',
 'license-nopreview'  => '(Pratayang tak tersedia)',
 'upload_source_url'  => ' (suatu URL valid yang dapat diakses publik)',
@@ -1552,7 +1552,6 @@ Umpan balik dan bantuan lanjutan:
 'protectexpiry'               => 'Kadaluwarsa:',
 'protect_expiry_invalid'      => 'Waktu kadaluwarsa tidak sah.',
 'protect_expiry_old'          => 'Waktu kadaluwarsa adalah pada masa lampau.',
-'unprotectsub'                => '(Menghilangkan perlindungan terhadap "$1")',
 'protect-unchain'             => 'Buka perlindungan pemindahan',
 'protect-text'                => 'Anda dapat melihat atau mengganti tingkatan perlindungan untuk halaman <strong><nowiki>$1</nowiki></strong> di sini.',
 'protect-locked-blocked'      => 'Anda tak dapat mengganti tingkat perlindungan selagi diblokir. Berikut adalah konfigurasi saat ini untuk halaman <strong>$1</strong>:',
@@ -1759,7 +1758,7 @@ $1',
 'databasenotlocked'   => 'Basis data tidak terkunci.',
 
 # Move page
-'movepage'                => 'Pindahkan halaman',
+'move-page-legend'                => 'Pindahkan halaman',
 'movepagetext'            => "Formulir di bawah ini digunakan untuk mengubah nama suatu halaman dan memindahkan semua data sejarah ke nama baru. Judul yang lama akan menjadi halaman peralihan menuju judul yang baru. Pranala kepada judul lama tidak akan berubah. Pastikan untuk memeriksa terhadap peralihan halaman yang rusak atau berganda setelah pemindahan. Anda bertanggung jawab untuk memastikan bahwa pranala terus menyambung ke halaman yang seharusnya.
 
 Perhatikan bahwa halaman '''tidak''' akan dipindah apabila telah ada halaman yang menggunakan judul yang baru, kecuali bila halaman tersebut kosong atau merupakan halaman peralihan dan tidak mempunyai sejarah penyuntingan. Ini berarti Anda dapat mengubah nama halaman kembali seperti semula apabila Anda membuat kesalahan, dan Anda tidak dapat menimpa halaman yang telah ada.

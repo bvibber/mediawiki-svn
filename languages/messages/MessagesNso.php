@@ -400,7 +400,6 @@ Ga eba o le fa ka phošo, o ka boela morago ka go šumiša konopo ya '''back''' 
 'note'                   => '<strong>Ela hloko:</strong>',
 'previewnote'            => '<strong>Ye ke Taetšo ya sebopego sa letlakala fela; diphetogo ga di ya bolokwa!</strong>',
 'editing'                => 'O fetola $1',
-'editinguser'            => 'Fetola mošomiši <b>$1</b>',
 'editingsection'         => 'Phetolo ya $1 (sekgoba)',
 'editingcomment'         => 'Fetola $1 (tshwayotshwayo)',
 'editconflict'           => 'Tholano ya diphetogo: $1',
@@ -508,6 +507,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 
 # User rights
 'editusergroup'                    => 'Fetola sehlopha sa bašomiši',
+'editinguser'                      => 'Fetola mošomiši <b>$1</b>',
 'userrights-editusergroup'         => 'Fetola sehlopha sa bašomiši',
 'saveusergroups'                   => 'Boloko Dihlopha tša bašomiši',
 'userrights-groupsmember'          => 'Leloko la:',
@@ -562,7 +562,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'uploadlogpage'     => "''log'' yago lokela",
 'filedesc'          => 'Kakaretšo',
 'fileuploadsummary' => 'Kakaretšo:',
-'filesource'        => 'Mothopo',
+'filesource'        => 'Mothopo:',
 'savefile'          => 'Boloka faele',
 'uploadedimage'     => '"[[$1]]" e loketšwe',
 'watchthisupload'   => 'Tlhapetša letlakala le',
@@ -862,7 +862,7 @@ Seemo sa go lota ga letlakala <strong>$1</strong>:',
 'proxyblocksuccess'       => 'Phetilwe.',
 
 # Move page
-'movepage'                => 'Huduša letlakala',
+'move-page-legend'                => 'Huduša letlakala',
 'movepagetext'            => "Ge o šomiša fomo ye mo tlase, letlakala le kgale le history ya lona 
 di tla huduga go ya letlakaleng le lemphsa.
 Letlakala la kgale le ba ''redirect'' go ya letlakaleng le lemphsa.
