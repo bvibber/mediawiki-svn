@@ -6,7 +6,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 require_once( 'DYMNorm.php' );
 
-$wgExtensionCredits['other'][] = array( 'name' => 'DidYouMean', 'author' => 'hippietrail (Andrew Dunbar)' );
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'DidYouMean',
+	'author'         => 'hippietrail (Andrew Dunbar)',
+	'version'        => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',
+	'descriptionmsg' => 'didyoumean-desc',
+);
+$wgExtensionMessagesFiles['DidYouMean'] =  dirname(__FILE__) . '/DidYouMean.i18n.php';
 
 # do database lookup from these
 $wgHooks['ArticleNoArticleText'][] = 'wfDymArticleNoArticleText';
@@ -389,5 +396,3 @@ function wfDymDoUpdate( $pageid, $title ) {
 
 	}
 }
-
-
