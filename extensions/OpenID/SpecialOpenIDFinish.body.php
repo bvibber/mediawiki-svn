@@ -531,51 +531,6 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		return $openid_url;
 	}
 
-	function setUserUrl($user, $url) {
-		$other = $this->getUserUrl($user);
-		if (isset($other)) {
-			$this->updateUserUrl($user, $url);
-		} else {
-			$this->insertUserUrl($user, $url);
-		}
-	}
-
-	function insertUserUrl($user, $url) {
-		global $wgSharedDB, $wgDBname;
-		$dbw =& wfGetDB( DB_MASTER );
-
-		if (isset($wgSharedDB)) {
-			# It would be nicer to get the existing dbname
-			# and save it, but it's not possible
-			$dbw->selectDB($wgSharedDB);
-		}
-
-		$dbw->insert('user_openid', array('uoi_user' => $user->getId(),
-										  'uoi_openid' => $url));
-
-		if (isset($wgSharedDB)) {
-			$dbw->selectDB($wgDBname);
-		}
-	}
-
-	function updateUserUrl($user, $url) {
-		global $wgSharedDB, $wgDBname;
-		$dbw =& wfGetDB( DB_MASTER );
-
-		if (isset($wgSharedDB)) {
-			# It would be nicer to get the existing dbname
-			# and save it, but it's not possible
-			$dbw->selectDB($wgSharedDB);
-		}
-
-		$dbw->set('user_openid', 'uoi_openid', $url,
-				  'uoi_user = ' . $user->getID());
-
-		if (isset($wgSharedDB)) {
-			$dbw->selectDB($wgDBname);
-		}
-	}
-
 	function saveValues($openid, $sreg) {
 		global $wgSessionStarted, $wgUser;
 
