@@ -212,3 +212,13 @@ Denna e-post har sänts till dig via {{SITENAME}} e-postsystem av $1.
 $2',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+{{SITENAME}} ఈ-మెయిల్ వ్యవస్థ ద్వారా $1 మీకు ఈ సందేశాన్ని పంపించారు.
+
+$2',
+);
+

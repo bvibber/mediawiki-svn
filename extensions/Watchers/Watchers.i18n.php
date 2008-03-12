@@ -117,6 +117,13 @@ $messages['el'] = array(
 	'watchers_less_than_x'   => 'Λιγότεροι από $1 άνθρωποι παρακολουθούν αυτήν την σελίδα.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Sherbrooke
@@ -235,6 +242,19 @@ $messages['oc'] = array(
 	'watchers_less_than_x'   => 'Mens de $1 utilizaires seguisson aquesta pagina.',
 );
 
+/** Polish (Polski)
+ * @author Masti
+ */
+$messages['pl'] = array(
+	'watchers'               => 'Obserwujący',
+	'watchers_link_title'    => 'Kto obserwuje tę stronę?',
+	'watchers_error_article' => '<b>Błąd:</b> Strona nie istnieje',
+	'watchers_header'        => 'Obserwujący "$1"',
+	'watchers_noone_watches' => 'Nikt nie obserwuje tej strony',
+	'watchers_x_or_more'     => 'Osób obserwujących: $1 lub więcej',
+	'watchers_less_than_x'   => 'Osób obserwujących mniej niż $1',
+);
+
 $messages['pt'] = array(
 	'watchers_link_title' => "Quem está vigiando esta página?",
 	'watchers_error_article' => "<b>Erro:</b> Página inexistente.",
@@ -286,6 +306,7 @@ $messages['te'] = array(
 	'watchers'               => 'వీక్షకులు',
 	'watchers_link_title'    => 'ఈ పేజీని ఎవరెవరు గమనిస్తున్నారు?',
 	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
+	'watchers_header'        => '"$1"గురు ఈ పేజీని చూస్తున్నారు',
 	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
 );
 

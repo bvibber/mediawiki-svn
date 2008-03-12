@@ -150,6 +150,13 @@ $messages['el'] = array(
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'vote-login-link' => 'ensalutu',
+);
+
 $messages['ext'] = array(
 	'vote' => 'Votal',
 	'vote-submit' => 'Votal',
@@ -520,7 +527,9 @@ riddler|Gåtan',
  * @author Veeven
  */
 $messages['te'] = array(
+	'vote-current'      => "మీ ప్రస్తుత వోటు '''$1'''కి వేసారు.",
 	'vote-caption'      => 'మీ ఎంపిక:',
+	'vote-registered'   => 'మీ వోటు నమోదయ్యింది.',
 	'vote-view-results' => 'ఫలితాలు చూడండి',
 	'vote-results'      => 'వోటు ఫలితాలు',
 	'vote-login-link'   => 'ప్రవేశించండి',

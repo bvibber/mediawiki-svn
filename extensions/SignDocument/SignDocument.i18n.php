@@ -154,7 +154,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'signaturelogpage' => 'సంతకాల దినచర్య',
+	'signaturelogpage'     => 'సంతకాల దినచర్య',
+	'signaturelogpagetext' => 'ఇది [[Special:SignDocument]] ద్వారా పత్రాలకు చేర్చిన అన్ని సంతకాల దినచర్య.',
+	'signaturelogentry'    => '$1 అనే పత్రంపై సంతకం చేసారు',
 );
 
 /** Volapük (Volapük)

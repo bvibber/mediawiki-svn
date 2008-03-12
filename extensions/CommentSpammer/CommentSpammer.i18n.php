@@ -249,11 +249,16 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author వైజాసత్య
  * @author Veeven
  */
 $messages['te'] = array(
 	'commentspammer-save-blocked' => 'మీ IP చిరునామా ఓ అనుమానాస్పద వ్యాఖ్యా స్పామర్, కనుక పేజీని భద్రపరచలేదు. దీన్ని నివారించడానికి [[Special:Userlogin|లోనికి ప్రవేశించండి లేదా ఖాతా సృష్టించుకోండి]].',
+	'commentspammer-desc'         => 'DNS నిరోధక జాబితాలో ఉన్న అనుమానాస్పద వ్యాఖ్యా స్పామర్ల దిద్దుబాట్లను తిరస్కరిస్తుంది',
+	'commentspammer-log-msg'      => '[[:$2]] లో [[Special:Contributions/$1|$1]] చేసిన దిద్దుబాటు',
+	'commentspammer-log-msg-info' => 'చివరగా స్పాము పంపినది $1 {{PLURAL:$1|రోజు|రోజుల}} కిందట, ప్రమాద స్థాయి $2, దుశ్చర్య కోడు $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 వివరాలు చూడండి], లేదా [[Special:Blockip/$4|నిరోధించండి]].',
+	'cspammerlogpagetext'         => 'కారకులు, తెలిసిన స్పామరేనా కాదా అనేదాన్ని బట్టి గతంలో అనుమతించిన, తిరస్కరించిన దిద్దుబాట్ల నివేదిక',
 	'cspammer-log-page'           => 'వ్యాఖ్యల స్పామింగు లాగ్',
 );
 

@@ -113,11 +113,12 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'msfunc_nan'      => 'លទ្ធផល មិនជា តួលេខ',
-	'msfunc_inf'      => 'លទ្ធផល ជា តំលៃគ្មានកំណត់',
-	'msfunc_div_zero' => 'ចែក នឹង សូន្យ',
+	'msfunc_nan'      => 'លទ្ធផលមិនមែនជាលេខទេ',
+	'msfunc_inf'      => 'លទ្ធផលគឺស្មើនឹងអនន្ត',
+	'msfunc_div_zero' => 'ចែកនឹងសូន្យ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

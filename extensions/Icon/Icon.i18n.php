@@ -50,6 +50,13 @@ $messages['dsb'] = array(
 	'icon-badwidth' => 'Špatna šyrokosć',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'icon-badimage' => 'Malbona bildo',
+);
+
 $messages['fr'] = array(
 	'icon-badimage' => 'Image corrompue',
 	'icon-badwidth' => 'Largeur erronée',
@@ -194,6 +201,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'icon-badimage' => 'చెడు బొమ్మ',
 	'icon-badwidth' => 'తప్పుడు వెడల్పు',
 );
 

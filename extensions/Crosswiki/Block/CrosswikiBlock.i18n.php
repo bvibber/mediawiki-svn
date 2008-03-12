@@ -630,13 +630,24 @@ Tornar vèrs :
 );
 
 /** Polish (Polski)
+ * @author Masti
  * @author McMonster
  * @author Equadus
  */
 $messages['pl'] = array(
+	'crosswikiblock-reason'         => 'Powód:',
+	'crosswikiblock-submit'         => 'Zablokuj użytkownika',
+	'crosswikiblock-anononly'       => 'Zablokuj tylko anonimowych użytkowników',
+	'crosswikiblock-nocreate'       => 'Zablokuj tworzenie konta',
+	'crosswikiblock-autoblock'      => 'Automatycznie zablokuj ostatni adres IP tego użytkownika i wszystkie, z których będzie próbował edytować',
+	'crosswikiblock-noemail'        => 'Zablokuj możliwość wysyłania e-maili',
+	'crosswikiunblock-reason'       => 'Powód:',
+	'crosswikiunblock-submit'       => 'Odblokuj użytkownika',
+	'crosswikiblock-nousername'     => 'Nie wprowadzono nazwy użytkownika',
 	'crosswikiblock-dbnotfound'     => 'Baza $1 nie istnieje',
 	'crosswikiblock-noname'         => '"$1" nie jest poprawną nazwą użytkownika.',
 	'crosswikiblock-nouser'         => 'Nie znaleziono użytkownika "$3".',
+	'crosswikiblock-noreason'       => 'Nie podano powodu.',
 	'crosswikiblock-alreadyblocked' => 'Użytkownik $3 jest już zablokowany.',
 	'crosswikiblock-noblock'        => 'Ten użytkownik nie jest zablokowany.',
 );
@@ -877,6 +888,12 @@ $messages['te'] = array(
 	'crosswikiblock-noemail'        => 'వాడుకరి ఈ-మెయిల్ పంపించడం నియంత్రించండి',
 	'crosswikiunblock-user'         => 'వాడుకరిపేరు, ఐపీ చిరునామా లేదా నిరోధపు ID మరియు లక్ష్యిత వికీ:',
 	'crosswikiunblock-reason'       => 'కారణం:',
+	'crosswikiunblock-submit'       => 'ఈ వాడుకరిపై నిరోధం ఎత్తివేయండి',
+	'crosswikiunblock-success'      => "'''$1''' అనే వాడుకరిపై నిరోధాన్ని విజయవంతంగా ఎత్తివేసాం.
+
+తిరిగి:
+* [[Special:CrosswikiBlock|నిరోధపు ఫారం]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'వాడుకరిపేరు ఇవ్వలేదు',
 	'crosswikiblock-dbnotfound'     => '$1 అనే డాటాబేసు లేదు',
 	'crosswikiblock-noname'         => '"$1" అన్నది సరైన వాడుకరిపేరు కాదు.',

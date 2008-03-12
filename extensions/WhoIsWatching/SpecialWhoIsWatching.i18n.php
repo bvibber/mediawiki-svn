@@ -222,6 +222,18 @@ $messages['oc'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Ajustar los utilizaires seleccionats',
 );
 
+/** Polish (Polski)
+ * @author Masti
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'whoiswatching'                => 'Kto obserwuje stronę',
+	'specialwhoiswatchingthepage'  => 'Kto obserwuje %s',
+	'specialwhoiswatchingusage'    => 'Ta strona nie może być użyta samoistnie. Skorzystaj ze strony [[MediaWiki:Number_of_watching_users_pageview]], aby zdefiniować punkt startowy dla tej strony',
+	'specialwhoiswatchingaddusers' => 'Dodaj użytkowników obserwujących stronę',
+	'specialwhoiswatchingaddbtn'   => 'Dodaj wybranych użytkowników',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

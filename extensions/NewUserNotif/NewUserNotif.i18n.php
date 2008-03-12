@@ -54,9 +54,24 @@ $messages['de'] = array(
 Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'newusernotifbody' => 'Saluton $1,
+
+Nova konto por uzanto, $2, estis kreita je $3 $4.',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'newusernotifsubj' => 'Notification d’un nouvel utilisateur pour $1',
-	'newusernotifbody' => "Bonjour $1,\n\nUn nouveau compte utilisateur, $2, a été créé sur $3 le $4.",
+	'newusernotifsubj'  => 'Notification d’un nouvel utilisateur pour $1',
+	'newusernotif-desc' => 'Envoie une notification par courriel quand les comptes utilisateurs sont créés',
+	'newusernotifbody'  => 'Bonjour $1,
+
+Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
 );
 
 $messages['gl'] = array(
@@ -110,9 +125,14 @@ $messages['km'] = array(
 គណនី​របស់​អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author SPQRobin
+ */
 $messages['nl'] = array(
-	'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
-	'newusernotifbody' => 'Hallo $1.
+	'newusernotifsubj'  => 'Melding van een nieuwe gebruiker op $1',
+	'newusernotif-desc' => 'Stuurt een e-mail als nieuwe gebruikers worden aangemaakt',
+	'newusernotifbody'  => 'Hallo $1.
 
 Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 );
@@ -197,7 +217,7 @@ N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'newusernotifbody' => 'Hej $1,

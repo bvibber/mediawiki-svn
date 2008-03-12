@@ -157,6 +157,13 @@ $messages['el'] = array(
 	'imagemap_description'          => 'Σχετικά με αυτήν την εικόνα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'imagemap_description' => 'Pri ĉi bildo',
+);
+
 /** Basque (Euskara)
  * @author SPQRobin
  */
@@ -414,9 +421,10 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'imagemap_description' => 'អំពី រូបភាព នេះ',
+	'imagemap_description' => 'អំពីរូបភាពនេះ',
 );
 
 $messages['la'] = array(
@@ -681,7 +689,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(

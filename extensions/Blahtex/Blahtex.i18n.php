@@ -368,8 +368,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'math_InvalidColour' => 'La koloro "$1" estas nevalida',
-	'math_TooManyTokens' => 'La enigo estas tro longa',
+	'math_IllegalCharacter'                 => 'Nevalida signo en enigo',
+	'math_IllegalCommandInMathMode'         => 'La komando "$1" estas nevalida en matematika reĝimo',
+	'math_IllegalDelimiter'                 => 'Nevalida disigilo post "$1"',
+	'math_IllegalFinalBackslash'            => 'Nevalida deklivo "\\" ĉe fino de enigo',
+	'math_InvalidColour'                    => 'La koloro "$1" estas nevalida',
+	'math_TooManyTokens'                    => 'La enigo estas tro longa',
+	'math_UnavailableSymbolFontCombination' => 'La simbolo "$1" ne estas havebla en la tiparo "$2"',
 );
 
 /** Finnish (Suomi)
@@ -1092,6 +1097,7 @@ $messages['oc'] = array(
  * @author McMonster
  * @author Sp5uhe
  * @author Equadus
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
@@ -1101,7 +1107,7 @@ $messages['pl'] = array(
 	'math_IllegalDelimiter'                 => 'Niedozwolony separator przed "$1"',
 	'math_IllegalNestedFontEncodings'       => 'Komendy kodowania czcionek nie mogą być zagnieżdżane',
 	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
-	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX dla "$1"',
+	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX-a dla "$1"',
 	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_NotEnoughArguments'               => 'Zbyt mało argumentów dla "$1"',
@@ -1384,49 +1390,49 @@ $messages['sv'] = array(
 	'math_CannotWritePngDirectory'          => 'Kan inte skriva till katalogen för PNG-filer',
 	'math_CannotWriteTexFile'               => 'Kan inte skriva till tex-fil',
 	'math_CasesRowTooBig'                   => 'Det kan bara finnas två element på varje rad i ett "cases"-block',
-	'math_DoubleSubscript'                  => 'Sammanstött till instanser av sänkt text kopplat till samma bas (endast en är tillåten)',
-	'math_DoubleSuperscript'                => 'Sammanstött till instanser av höjd text kopplat till samma bas (endast en är tillåten)',
+	'math_DoubleSubscript'                  => 'Hittade två index som är kopplade till samma bas (endast ett är tillåtet)',
+	'math_DoubleSuperscript'                => 'Hittade två exponenter som är kopplade till samma bas (endast en är tillåten)',
 	'math_IllegalCharacter'                 => 'Otillåtet tecken i indata',
 	'math_IllegalCommandInMathMode'         => 'Kommandot "$1" är inte tillåtet i matematik-läge',
-	'math_IllegalCommandInMathModeWithHint' => 'Kommandot "$1" är inte tillåtet i matematik-läge (du avsåg kanske att använda "$2"?)',
+	'math_IllegalCommandInMathModeWithHint' => 'Kommandot "$1" är inte tillåtet i matematik-läge (du menade kanske "$2"?)',
 	'math_IllegalCommandInTextMode'         => 'Kommandot "$1" är inte tillåtet i text-läge',
-	'math_IllegalCommandInTextModeWithHint' => 'Kommandot "$1" är inte tillåtet i text-läge (du avsåg kanske att använda "$2"?)',
+	'math_IllegalCommandInTextModeWithHint' => 'Kommandot "$1" är inte tillåtet i text-läge (du menade kanske "$2"?)',
 	'math_IllegalDelimiter'                 => 'Ogiltigt skiljetecken efter "$1"',
-	'math_IllegalFinalBackslash'            => 'Ogiltigt bakstreck "\\" i slutet av inskriven text',
+	'math_IllegalFinalBackslash'            => 'Ogiltigt bakstreck "\\" i slutet av indata',
 	'math_IllegalNestedFontEncodings'       => 'Teckenkodningskommandon kan inte nästlas',
 	'math_IllegalRedefinition'              => 'Kommandot "$1" har redan definierats; du kan inte omdefiniera det',
 	'math_InvalidColour'                    => 'Färgen "$1" är ogiltig',
-	'math_InvalidUtf8Input'                 => 'Den inskrivna texten var inte giltig UTF-8',
+	'math_InvalidUtf8Input'                 => 'Indata-strängen var inte giltig UTF-8',
 	'math_LatexFontNotSpecified'            => 'Inget LaTeX-teckensnitt har angivits för "$1"',
 	'math_LatexPackageUnavailable'          => 'Kunde inte skapa PNG eftersom LaTeX-paketet "$1" inte är tillgängligt',
 	'math_MismatchedBeginAndEnd'            => 'Kommandona "$1" och "$2" stämmer inte överens',
 	'math_MisplacedLimits'                  => 'Kommandot "$1" kan endast förekomma efter en matematisk operator (överväg att använda "\\mathop")',
 	'math_MissingCommandAfterNewcommand'    => 'Saknat eller otillåtet nytt kommando efter "\\newcommand" (exakt ett kommando måste definieras; det måste börja med ett bakstreck, "\\", och endast innehålla bokstäver)',
-	'math_MissingDelimiter'                 => 'Saknat skiljetecken efter "$1"',
-	'math_MissingOpenBraceAfter'            => 'Saknar vänsterparentes "{" efter "$1"',
-	'math_MissingOpenBraceAtEnd'            => 'Missad öppen klammer "{" på slutet av den inskrivna texten',
-	'math_MissingOpenBraceBefore'           => 'Missad öppen klammer "{" före "$1"',
+	'math_MissingDelimiter'                 => 'Skiljetecken saknas efter "$1"',
+	'math_MissingOpenBraceAfter'            => 'Vänsterparentesen "{" saknas efter "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Vänsterparentesen "{" saknas vid slutet av indata',
+	'math_MissingOpenBraceBefore'           => 'Vänsterparentesen "{" saknas före "$1"',
 	'math_MissingOrIllegalParameterCount'   => 'Parameterantalet saknas eller är felaktigt i definitionen av "$1" (det måste vara en siffra från 1 till 9)',
-	'math_MissingOrIllegalParameterIndex'   => 'Missat eller olagligt parameterindex i definitionen av "$1"',
-	'math_NonAsciiInMathMode'               => 'Tecken som inte är i ASCII kan endast användas i text-metod (pröva att omringa problemtecknen med "\\text{...}")',
-	'math_NotEnoughArguments'               => 'För få argument var givna för "$1"',
+	'math_MissingOrIllegalParameterIndex'   => 'Saknat eller otillåtet parameterindex i definitionen av "$1"',
+	'math_NonAsciiInMathMode'               => 'Tecken som inte är i ASCII kan endast användas i text-läge (försök att omsluta de problematiska tecknen med "\\text{...}")',
+	'math_NotEnoughArguments'               => 'För få argument angavs för "$1"',
 	'math_PngIncompatibleCharacter'         => 'Kunde inte generera PNG med tecknet $1',
 	'math_ReservedCommand'                  => 'Kommandot "$1" är reserverat för internt bruk av blahtex',
-	'math_SubstackRowTooBig'                => 'Det kan endast vara ett element i varje rad av ett "substack"-block',
+	'math_SubstackRowTooBig'                => 'Det kan endast finnas ett element på varje rad i ett "substack"-block',
 	'math_TooManyMathmlNodes'               => 'Det är för många noder i MathML-trädet',
-	'math_TooManyTokens'                    => 'Inmatningen är för lång',
+	'math_TooManyTokens'                    => 'Indata är för långt',
 	'math_UnavailableSymbolFontCombination' => 'Symbolen "$1" är inte tillgänglig i teckensnittet "$2"',
-	'math_UnexpectedNextCell'               => 'Kommandot "&" kan endast framträda inne i ett "\\begin ... \\end"-block',
-	'math_UnexpectedNextRow'                => 'Kommandot "\\\\" kan endast framträda inne i ett "\\begin ... \\end"-block',
+	'math_UnexpectedNextCell'               => 'Kommandot "&" kan endast användas inuti ett "\\begin ... \\end"-block',
+	'math_UnexpectedNextRow'                => 'Kommandot "\\\\" kan endast användas inuti ett "\\begin ... \\end"-block',
 	'math_UnmatchedBegin'                   => 'Hittade "\\begin" utan motsvarande "\\end"',
-	'math_UnmatchedCloseBrace'              => 'Sammanstött stängd klammer "}" utan tillsvarande öppen klammer "{"',
+	'math_UnmatchedCloseBrace'              => 'Hittade högerparentesen "}" utan motsvarande vänsterparentesen "{"',
 	'math_UnmatchedEnd'                     => 'Hittade "\\end" utan motsvarande "\\begin"',
-	'math_UnmatchedLeft'                    => 'Hittade "\\left" utan tillhörande "\\right"',
-	'math_UnmatchedOpenBrace'               => 'Sammanstött öppen klammer "{" utan tillsvarande stängd klammer "}"',
-	'math_UnmatchedOpenBracket'             => 'Hittade vänsterparentesen "[" utan tillhörande högerparentesen "]"',
-	'math_UnmatchedRight'                   => 'Hittade "\\right" utan tillhörande "\\left"',
+	'math_UnmatchedLeft'                    => 'Hittade "\\left" utan motsvarande "\\right"',
+	'math_UnmatchedOpenBrace'               => 'Hittade vänsterparentesen "{" utan motsvarande högerparentesen "}"',
+	'math_UnmatchedOpenBracket'             => 'Hittade vänsterparentesen "[" utan motsvarande högerparentesen "]"',
+	'math_UnmatchedRight'                   => 'Hittade "\\right" utan motsvarande "\\left"',
 	'math_UnrecognisedCommand'              => 'Okänt kommando "$1"',
-	'math_WrongFontEncoding'                => 'Symbolen "$1" kan inte framträda in teckenkodningen "$2"',
+	'math_WrongFontEncoding'                => 'Symbolen "$1" kan inte visas i teckenkodningen "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Symbolen "$1" kan inte framträda i teckenkodningen "$2" (pröva att använda "$3{...}" kommandot)',
 );
 
@@ -1434,12 +1440,14 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'math_CannotCreateTexFile' => 'tex ఫైలు సృష్టించలేకున్నాం',
-	'math_CannotRunDvipng'     => 'dvipngని నడపలేకున్నాం',
-	'math_CannotRunLatex'      => 'latexని నడపలేకున్నాం',
-	'math_IllegalRedefinition' => '"$1" అనే ఆదేశం ఈపాటికే నిర్వచించబడిందిచ మీరు దాన్నీ మళ్ళీ నిర్వచించలేరు',
-	'math_InvalidColour'       => '"$1" అనే రంగు సరైంది కాదు',
-	'math_UnrecognisedCommand' => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
+	'math_CannotCreateTexFile'              => 'tex ఫైలు సృష్టించలేకున్నాం',
+	'math_CannotRunDvipng'                  => 'dvipngని నడపలేకున్నాం',
+	'math_CannotRunLatex'                   => 'latexని నడపలేకున్నాం',
+	'math_IllegalRedefinition'              => '"$1" అనే ఆదేశం ఈపాటికే నిర్వచించబడిందిచ మీరు దాన్నీ మళ్ళీ నిర్వచించలేరు',
+	'math_InvalidColour'                    => '"$1" అనే రంగు సరైంది కాదు',
+	'math_TooManyTokens'                    => 'ఇన్&zwnj;పుట్ మరీ పెద్దగా ఉంది',
+	'math_UnavailableSymbolFontCombination' => '"$1" అనే గుర్తు "$2" ఫాంటులో లేదు.',
+	'math_UnrecognisedCommand'              => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
 );
 
 /** Thai (ไทย)

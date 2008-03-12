@@ -736,7 +736,7 @@ $messages['sv'] = array(
 	'duplicator-source-notexist'       => '[[$1]] finns inte. Du måste ange en källsida som existerar.',
 	'duplicator-dest-invalid'          => 'Du har inte angivit någon giltig målsida.',
 	'duplicator-dest-exists'           => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
-	'duplicator-toomanyrevisions'      => '[[$1]] kan inte dupliceras eftersom den har för många ($2) versioner. Gränsen för duplicering är $3 sidversioner.',
+	'duplicator-toomanyrevisions'      => '[[$1]] har för många ($2) versioner, och kan därför inte dupliceras. Gränsen för duplicering är $3 sidversioner.',
 );
 
 /** Telugu (తెలుగు)

@@ -17,3 +17,11 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'didyoumean-desc' => 'Ergänzt Seiten um Links zu ähnlichen Titeln',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'didyoumean-desc' => 'Links toevoegen naar pagina\'s met "gelijksoortige" namen',
+);
+

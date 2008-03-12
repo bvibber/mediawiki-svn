@@ -89,6 +89,13 @@ $messages['de'] = array(
 	'tasklistnoprojects'      => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tasklistemail' => 'Kara %j',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur
@@ -240,7 +247,7 @@ $messages['nl'] = array(
 	'tasklistbyprojectbad'   => "Project '''%s''' is geen geldige projectnaam. Een lijst met projecten is te vinden op [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'     => "Toegewezen taken voor '''%s'''",
 	'tasklistchooseproj'     => 'Project selecteren:',
-	'tasklistprojdisp'       => 'Tonen',
+	'tasklistprojdisp'       => 'Bekijken',
 	'tasklistbyname'         => '== Takenlijst voor %s ==',
 	'tasklistnoprojects'     => "FOUT: het lijkt alsof u '''\$wgUseProjects''' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.",
 	'tasklistemailbody'      => ',
@@ -397,7 +404,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'tasklistunknownproject' => 'Okänt projekt',

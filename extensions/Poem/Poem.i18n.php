@@ -179,6 +179,20 @@ $messages['sv'] = array(
 	'poem-desc' => 'Lägger till taggen <tt>&lt;poem&gt;</tt> för att formatera dikter',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'poem-desc' => 'పద్యాల ఫార్మాటింగుకై <tt>&lt;poem&gt;</tt> అనే టాగుని చేరుస్తుంది',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

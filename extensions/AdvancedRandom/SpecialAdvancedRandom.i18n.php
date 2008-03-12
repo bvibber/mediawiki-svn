@@ -138,9 +138,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'advancedrandom' => 'ឥតព្រាងទុក កំរិតខ្ពស់',
+	'advancedrandom' => 'ភាពចៃដន្យ​កំរិតខ្ពស់',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -163,7 +164,8 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'advancedrandom'      => 'Willekeurige pagina (geavanceerd)',
-	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uit de hoofdnaamruimte op die verwijst naar een opgegeven pagina. Kan gebruikt worden als [[Special:AdvancedRandom/Template:Featured/Talk]] om een willekeurig etalage-artikel te tonen of als [[Special:AdvancedRandom/Template:GFDL/Image]] om een willekeurig GFDL gelicenseerd bestand te tonen',
+	'advancedrandom-desc' => 'Vraag een willekeurige overlegpagina of pagina uit de hoofdnaamruimte op die verwijst naar een opgegeven pagina.
+Kan gebruikt worden als [[Special:AdvancedRandom/Template:Featured/Talk]] om een willekeurig etalage-artikel weer te geven of als [[Special:AdvancedRandom/Template:GFDL/Image]] om een willekeurig GFDL gelicenseerd bestand weer te geven',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

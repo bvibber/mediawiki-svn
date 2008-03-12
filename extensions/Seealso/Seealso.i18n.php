@@ -199,7 +199,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'seealso' => 'ఇవి కూడా చూడండి',
+	'seealso'      => 'ఇవి కూడా చూడండి',
+	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> అనే టాగుని వాడడం ద్వారా స్థానికీకరించిన 'ఇవి కూడా చూడండి' శీర్షికలు",
 );
 
 /** Vietnamese (Tiếng Việt)

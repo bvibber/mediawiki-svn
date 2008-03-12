@@ -79,3 +79,41 @@ This page is only applicable to restricted users",
 	'whitelistnever'              => 'never',
 	'whitelistnummatches'         => " - $1 matches",
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$allMessages['nl'] = array(
+	'whitelist-desc'           => 'Toegangsrechten voor gebruikers met beperkte rechten bewerken',
+	'mywhitelistpages'         => "Mijn pagina's",
+	'whitelisttablemodify'     => 'Bewerken',
+	'whitelisttablemodifyall'  => 'Alle',
+	'whitelisttablemodifynone' => 'Geen',
+	'whitelisttablepage'       => 'Wikipagina',
+	'whitelisttabletype'       => 'Toegangstype',
+	'whitelisttableexpires'    => 'Verloopt op',
+	'whitelisttablemodby'      => 'Laatste bewerking door',
+	'whitelisttablemodon'      => 'Laatste wijziging op',
+	'whitelisttableedit'       => 'Bewerken',
+	'whitelisttableview'       => 'Bekijken',
+	'whitelisttablenewdate'    => 'Nieuwe datum:',
+	'whitelisttablechangedate' => 'Verloopdatum bewerken',
+	'whitelisttablesetedit'    => 'Op bewerken instellen',
+	'whitelisttablesetview'    => 'Op bekijken instellen',
+	'whitelisttableremove'     => 'Verwijderen',
+	'whitelistnewtabledate'    => 'Verloopdatum:',
+	'whitelistnewtableedit'    => 'Op bewerken instellen',
+	'whitelistnewtableview'    => 'Op bekijken instellen',
+	'whitelistnewtableprocess' => 'Verwerken',
+	'whitelistnever'           => 'nooit',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$allMessages['sv'] = array(
+	'mywhitelistpages'        => 'Mina sidor',
+	'whitelistfor'            => '<center>Nuvarande information för <b>$1<b></center>',
+	'whitelisttablemodifyall' => 'Alla',
+);
+

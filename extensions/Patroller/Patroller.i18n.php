@@ -126,6 +126,13 @@ $messages['el'] = array(
 	'patrol-revert-reason' => 'Λόγος:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'patrol-revert-reason' => 'Kialo:',
+);
+
 /* Spanish (Titoxd) */
 $messages['es'] = array(
 	'patrol' => 'Revisar ediciones',
@@ -364,7 +371,7 @@ $messages['nl'] = array(
 	'patrol-reasons'         => '* Eenvoudig vandalisme
 * Zandbakken
 * Zie overlegpagina',
-	'patrol-another'         => 'Toon andere bewerking als beschikbaar.',
+	'patrol-another'         => 'Volgende bewerking weergeven als beschikbaar.',
 	'patrol-stopped'         => 'U hebt gekozen geen andere bewerking te controleren. $1',
 	'patrol-resume'          => 'Klik hier om verder te gaan.',
 	'group-patroller'        => 'Controleurs',

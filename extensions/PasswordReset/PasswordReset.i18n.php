@@ -99,6 +99,17 @@ $messages['el'] = array(
 	'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'passwordreset-username'    => 'Salutnomo',
+	'passwordreset-newpass'     => 'Nova pasvorto',
+	'passwordreset-confirmpass' => 'Konfirmu Pasvorton',
+	'passwordreset-submit'      => 'Restarigu Pasvorton',
+	'passwordreset-success'     => 'Pasvorto estis restarigita por user_id: $1',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
@@ -424,7 +435,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
@@ -446,7 +457,9 @@ $messages['te'] = array(
 	'passwordreset-newpass'         => 'కొత్త సంకేతపదం',
 	'passwordreset-confirmpass'     => 'సంకేతపదాన్ని నిర్ధారించండి',
 	'passwordreset-disableuser'     => 'వాడుకరి ఖాతాని అచేతనం చేయాలా?',
+	'passwordreset-disablesuccess'  => 'వాడుకరి ఖాతాని అచేతనం చేసారు (user_id: $1)',
 	'passwordreset-accountdisabled' => 'ఖాతాని అచేతనం చేసారు',
+	'disabledusers'                 => 'అచేతన వాడుకరులు',
 );
 
 /** Volapük (Volapük)

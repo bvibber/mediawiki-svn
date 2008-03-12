@@ -83,6 +83,17 @@ $messages['ee'] = array(
 	'edituser-dosearch' => 'Dii',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'edituser'          => 'Redaktu Uzanton',
+	'edituser-logout'   => 'Elsalutu uzanton',
+	'edituser-username' => 'Nomo',
+	'edituser-dosearch' => 'Serĉu',
+	'edituser-nouser'   => 'La specifigita uzanto ne ekzistas',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
@@ -161,9 +172,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'edituser'          => 'កែប្រែ អ្នកប្រើប្រាស់',
+	'edituser'          => 'កែប្រែអ្នកប្រើប្រាស់',
 	'edituser-username' => 'ឈ្មោះ',
 	'edituser-dosearch' => 'ស្វែងរក',
 );
@@ -219,6 +231,13 @@ $messages['oc'] = array(
 	'edituser-exempt'   => "L'utilizaire especificat pòt pas èsser modificat",
 );
 
+/** Polish (Polski)
+ * @author Masti
+ */
+$messages['pl'] = array(
+	'edituser-logout' => 'Wyloguj użytkownika',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -269,9 +288,10 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'edituser-desc'     => 'Tillåt privilegierade användare till att redigera andra användares inställningar',
+	'edituser-desc'     => 'Gör det möjligt för användare med viss behörighet att ändra andra användares inställningar',
 	'edituser'          => 'Redigera användare',
 	'edituser-logout'   => 'Logga ut användare',
 	'edituser-username' => 'Namn',
@@ -284,8 +304,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'edituser'          => 'వాడుకరిని మార్చండి',
 	'edituser-username' => 'పేరు',
 	'edituser-dosearch' => 'వెతుకు',
+	'edituser-nouser'   => 'ఆ వాడుకరి లేనేలేరు.',
+	'edituser-exempt'   => 'ఆ వాడుకరిని మార్చలేరు',
 );
 
 /** Volapük (Volapük)

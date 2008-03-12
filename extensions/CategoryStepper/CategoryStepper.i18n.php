@@ -132,10 +132,11 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'categorystepper-end'   => '(ការបញ្ចាប់ នៃចំណាត់ក្រុម)',
-	'categorystepper-start' => '(ការចាប់ផ្តើម នៃចំណាត់ក្រុម)',
+	'categorystepper-end'   => '(ចុងបញ្ចាប់នៃចំណាត់ថ្នាក់ក្រុម)',
+	'categorystepper-start' => '(ការចាប់ផ្តើមនៃចំណាត់ថ្នាក់ក្រុម)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -148,9 +149,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'categorystepper-desc'  => "Toont een categoriebladervenster dat toelaat om alfabetisch terug en verder te navigeren op pagina's die zich in één of meerdere categorieën bevinden",
+	'categorystepper-desc'  => "Geeft een categoriebladervenster weer dat toelaat om alfabetisch terug en verder te navigeren op pagina's die zich in één of meerdere categorieën bevinden",
 	'categorystepper-end'   => '(Einde van categorie)',
 	'categorystepper-start' => '(Begin van categorie)',
 );

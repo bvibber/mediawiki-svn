@@ -59,8 +59,8 @@ $messages['hu'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'randomrootpage'          => 'Willekeurige hoofdpagina',
-	'randomrootpage-desc'     => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina toont',
+	'randomrootpage'      => 'Willekeurige hoofdpagina',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina weergeeft',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

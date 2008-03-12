@@ -47,6 +47,14 @@ $messages['bg'] = array(
 	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'postcomment_on'   => 'Je',
+	'postcomment_said' => 'diris',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
@@ -164,6 +172,17 @@ $messages['oc'] = array(
 	'postcomment_nopostingtoadd'           => "Cap de messatge d'ajustar",
 );
 
+/** Polish (Polski)
+ * @author Maire
+ */
+$messages['pl'] = array(
+	'postcomment_discussionprotected'      => 'Ta strona dyskusji została zabezpieczona. Nie można już dodawać wpisów.',
+	'postcomment_notloggedin'              => 'Nie jesteś zalogowany/-a.',
+	'postcomment_youareloggedinas'         => 'Jesteś zalogowany/-a jako $1',
+	'postcomment_addcommentdiscussionpage' => 'Dodaj komentarz na tej stronie dyskusji',
+	'postcomment_leavemessagefor'          => 'Zostaw wiadomość dla $1',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -233,9 +252,12 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'postcomment_discussionprotected'      => 'తదుపరి చర్చలనుండి ఈ చర్చా పేజీని సంరక్షించారు.',
 	'postcomment_notloggedin'              => 'మీరు లోనికి ప్రవేశించలేదు.',
 	'postcomment_youareloggedinas'         => 'మీరు $1గా లోనికి ప్రవేశించారు',
 	'postcomment_addcommentdiscussionpage' => 'ఈ చర్చా పేజీకి మీ వ్యాఖ్యని చేర్చండి',
+	'postcomment_leavemessagefor'          => '$1కై ఓ సందేశాన్ని వదిలివెళ్ళండి',
+	'postcomment_post'                     => 'పంపించు',
 	'postcomment_on'                       => 'నాడు',
 	'postcomment_said'                     => 'అన్నారు',
 	'postcomment_invalidrequest'           => 'తప్పుడు అభ్యర్థన.',

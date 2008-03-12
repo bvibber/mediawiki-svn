@@ -242,7 +242,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'userimages-noname' => 'వాడుకరిపేరు తప్పు లేదా అసలు ఇవ్వనేలేదు.',
+	'userimages-caption' => '$1 ఎగుమతి చేసిన బొమ్మలు',
+	'userimages-noname'  => 'వాడుకరిపేరు తప్పు లేదా అసలు ఇవ్వనేలేదు.',
 );
 
 /** Turkish (Türkçe)

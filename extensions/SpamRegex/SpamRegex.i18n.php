@@ -105,6 +105,15 @@ $messages['el'] = array(
 	'spamregex-summary-log' => '(περίληψη)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'spamregex-log-2'           => 'je $1',
+	'spamregex-unblock-success' => 'Malforbaro sukcesis',
+	'spamregex-text'            => '(Teksto)',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
@@ -221,7 +230,9 @@ $messages['nl'] = array(
 	'spamregex'                      => 'SpamRegex',
 	'spamregex-desc'                 => "Ongewilde zinnen [[Special:Spamfilter|uitfilteren]] in bewerkte pagina's, gebaseerd op reguliere expressies",
 	'spamregex_summary'              => 'De tekst is gevonden in de paginasamenvatting.',
-	'spamregex-intro'                => 'Gebruik dit formulier om doeltreffend uitdrukkingen te blokkeren van opslaan in een paginatekst. Als de tekst de gegeven uitdrukkingen bevat, dan zal de wijziging niet worden opgeslaan en zal een uitleg getoond worden aan de gebruiker die de pagina probeerde op te slaan. Het wordt aangeraden dat de uitdrukkingen niet te kort of te veelvoorkomend zouden mogen zijn.',
+	'spamregex-intro'                => 'Gebruik dit formulier om doeltreffend te voorkomen dat uitdrukkingen worden opgeslagen in een paginatekst.
+Als de tekst de gegeven uitdrukkingen bevat, dan wordt de wijziging niet opgeslagen en wordt een uitleg aan de gebruiker weergegeven die de pagina probeerde op te slaan.
+Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 	'spamregex-page-title'           => 'Blokkeren van uitdrukkingen met regex',
 	'spamregex-currently-blocked'    => "'''Huidig geblokkeerde zinnen:'''",
 	'spamregex-no-currently-blocked' => "'''Er zijn geen geblokkeerde zinnen.'''",
@@ -353,7 +364,7 @@ $messages['sk'] = array(
 );
 
 /** Southern Sami (Åarjelsaemien gïele)
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sma'] = array(
 	'spamregex-text' => '(Tjaalege)',
@@ -381,10 +392,15 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'spamregex_summary'         => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
-	'spamregex-block-success'   => 'నిరోధం విజయవంతమయ్యింది',
-	'spamregex-already-blocked' => '"$1"ని ఈసరికే నిరోధించాం',
-	'spamregex-text'            => '(పాఠ్యం)',
-	'spamregex-summary-log'     => '(సంగ్రహం)',
+	'spamregex_summary'              => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
+	'spamregex-block-success'        => 'నిరోధం విజయవంతమయ్యింది',
+	'spamregex-error-1'              => 'తప్పుడు రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్.',
+	'spamregex-already-blocked'      => '"$1"ని ఈసరికే నిరోధించాం',
+	'spamregex-phrase-block'         => 'నిరోధించాల్సిన పదబంధం:',
+	'spamregex-phrase-block-text'    => 'పదబంధాన్ని పేజీ పాఠ్యంలో ఉంటే నిరోధించు',
+	'spamregex-phrase-block-summary' => 'పదబంధాన్ని సంగ్రహంలో ఉంటే నిరోధించు',
+	'spamregex-block-submit'         => 'ఈ&nbsp;పదబంధాన్ని&nbsp;నిరోధించండి',
+	'spamregex-text'                 => '(పాఠ్యం)',
+	'spamregex-summary-log'          => '(సంగ్రహం)',
 );
 

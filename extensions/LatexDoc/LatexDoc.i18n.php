@@ -213,6 +213,14 @@ $messages['oc'] = array(
 	'latexdoc-desc'            => 'Document LaTex.',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'latexdoc_cant_create_dir' => 'Nie można utworzyć katalogu tymczasowego $1',
+	'latexdoc_cant_write'      => 'Nie można pisać do pliku $1',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -292,15 +300,19 @@ $3',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'latexdoc_error'   => 'LaTeX fel
+	'latexdoc_no_text'         => 'Sidan innehåller ingen text, kan inte generera DVI',
+	'latexdoc_cant_create_dir' => 'Kan inte skapa temporär mapp $1',
+	'latexdoc_cant_write'      => 'Kan inte skriva till filen $1',
+	'latexdoc_error'           => 'LaTeX fel
 
 Order: $1
 
 Produktion: $2
 
 $3',
-	'latexdoc_get_dvi' => 'Hämta DVI',
-	'latexdoc_get_pdf' => 'Hämta PDF',
+	'latexdoc_get_dvi'         => 'Hämta DVI',
+	'latexdoc_get_pdf'         => 'Hämta PDF',
+	'latexdoc-desc'            => 'Samarbetsvillig redigering av LaTeX-dokument',
 );
 
 /** Telugu (తెలుగు)

@@ -92,9 +92,10 @@ $messages['km'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'newsextension-desc'          => 'Aangepaste recente wijzigingen tonen op een wikipagina, of als RSS-feed of Atom-feed',
+	'newsextension-desc'          => 'Aangepaste recente wijzigingen weergeven op een wikipagina, of als RSS-feed of Atom-feed',
 	'newsextension-unknownformat' => '$1: onbekend feed-formaat: $2<br />',
 	'newsextension-feednotfound'  => '$1: feed-pagina niet gevonden: $2<br />',
 	'newsextension-feedrequest'   => '$1: bezig met afhandelen van feed-aanvraag voor $2<br />',

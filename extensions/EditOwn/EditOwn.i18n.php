@@ -79,9 +79,17 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'editown-desc' => "Användare utan ''editall''-rättigheter kan endast redigera sidor dom själva har skapat",
+	'editown-desc' => "Användare utan ''editall''-rättigheter kan endast redigera sidor som de själva har skapat",
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'editown-desc' => 'అన్ని పేజీలను మార్చే అధికారం లేని వాడుకర్లు వారు సృష్టించిన పేజీలను మాత్రమే మార్చగలరు',
 );
 
 /** Vietnamese (Tiếng Việt)

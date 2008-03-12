@@ -53,11 +53,25 @@ $messages['no'] = array(
 	'fixedimage-desc' => 'Legger til taggen <tt><nowiki><fundraising></nowiki></tt> som et bilde',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'fixedimage-desc' => 'Pridáva značku <tt><nowiki><fundraising></nowiki></tt> ako obrázok',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'fixedimage-desc' => 'Lägger till <tt><nowiki><fundraising></nowiki></tt>-taggen som en bild',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> అనే టాగుని బొమ్మగా చేరుస్తుంది',
 );
 
 /** Vietnamese (Tiếng Việt)

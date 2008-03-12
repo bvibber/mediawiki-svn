@@ -87,6 +87,13 @@ $messages['de-formal'] = array(
 	'importfreeimages_returntoform'          => 'Oder klicken Sie <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'importfreeimages_invalidurl' => 'La URL-o "$1" ne estas valida bildo de Flickr.',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin
@@ -243,6 +250,13 @@ $messages['oc'] = array(
 	'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'importfreeimages_owner' => 'Autor',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -362,9 +376,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'importfreeimages_nophotosfound'         => "'$1' అనే మీ అన్వేషణా ప్రశ్నకి ఫొటోలు ఏమీ దొరకలేదు, మళ్ళీ ప్రయత్నించండి.",
 	'importfreeimages_owner'                 => 'కృతికర్త',
 	'importfreeimages_next'                  => 'తర్వాతి $1',
 	'importfreeimages_promptuserforfilename' => 'గమ్యస్థానపు ఫైలు పేరుని ఇవ్వండి:',
+	'importfreeimages_returntoform'          => "లేదా, తిరిగి మీ అన్వేషణ ఫలితాలకు వెళ్ళడానికి <a href='$1'>ఇక్కడ</a> నొక్కండి",
 );
 
 /** Volapük (Volapük)

@@ -148,13 +148,18 @@ $messages['lb'] = array(
 	'minipreview-no_category_gallery' => 'Keng Kategorien oder Galerien!',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'minipreview-desc'                => 'MiniPreview toont thumbnails van andere media in dezelfde categorie of op dezelfde pagina naast media',
+	'minipreview-desc'                => 'MiniPreview geeft thumbnails weer van andere media in dezelfde categorie of op dezelfde pagina naast media',
 	'minipreview-files_in_category'   => 'In totaal bevinden zich $1 bestanden in deze categorie.',
 	'minipreview-files_in_gallery'    => 'In totaal bevinden zich $1 bestanden in deze galerij.',
 	'minipreview-no_more_files_here'  => 'Er zijn geen bestanden meer in deze richting.',
 	'minipreview-no_category_gallery' => 'Geen categorieꬠof galerijen!',
-	'minipreview-ignore_categories'   => 'Hieronder staat een lijst met (het begin van) categorienamen. Deze categorieꬠworden niet getoond door by MiniPreview. "* PD-" toont bijvoorbeeld niet alle categorieꬠdie beginnen met "PD-", zoals "PD-old".
+	'minipreview-ignore_categories'   => 'Hieronder staat een lijst met (het begin van) categorienamen.
+Deze categorieën worden niet weergegeven door MiniPreview.
+"* PD-" geeft bijvoorbeeld alle categorieën niet weer die beginnen met "PD-", zoals "PD-old".
 * GFDL-
 * GFDL
 * CC-

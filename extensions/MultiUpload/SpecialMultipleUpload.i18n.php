@@ -191,9 +191,10 @@ $messages['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'multipleupload'                   => 'ផ្ទុកឡើង ឯកសារ',
+	'multipleupload'                   => 'ផ្ទុកឡើងឯកសារ',
 	'multipleupload-desc'              => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង ច្រើនឯកសារ]]',
 	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
 	'multipleupload-saveallfiles'      => 'រក្សាទុក គ្រប់ឯកសារ',
@@ -386,6 +387,7 @@ $messages['te'] = array(
 	'multipleupload'                   => 'ఫైళ్ళను ఎగుమతించు',
 	'multipleupload-ignoreallwarnings' => "'''అన్ని హెచ్చరికల'''ను పట్టించుకోకుండా ఎలాగైనా ఆ ఫైళ్ళను భద్రపరచు.",
 	'multipleupload-saveallfiles'      => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
+	'multipleupload-addresswarnings'   => 'ఫైళ్ళను తిరిగి ఎగుమతి చేసేముందు హెచ్చరికలు లేకుండా సరిచూడండి.',
 	'multipleupload-page'              => '{{ns:project}}:ఫైలు తొలగింపు విధానం',
 	'multiupload-fileuploaded'         => 'ఫైలు ఎగుమతయ్యింది.',
 );

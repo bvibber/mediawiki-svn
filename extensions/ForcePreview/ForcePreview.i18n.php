@@ -80,8 +80,8 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'forcepreview'      => 'Pagina opslaan (toont de bewerking eerst ter controle)',
-	'forcepreview-desc' => 'Toont bewerkingen eerst ter controle voor gebruikers zonder rechten',
+	'forcepreview'      => 'Pagina opslaan (de bewerking eerst ter controle weergeven)',
+	'forcepreview-desc' => 'Bewerkingen voor gebruikers zonder rechten eerst ter controle weergeven',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

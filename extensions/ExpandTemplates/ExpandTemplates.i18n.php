@@ -211,7 +211,12 @@ $messages['el'] = array(
 	'expand_templates_ok'     => 'ΟΚ',
 );
 
+/** Esperanto (Esperanto)
+ * @author Tlustulimu
+ * @author Yekrats
+ */
 $messages['eo'] = array(
+	'expand_templates_ok'              => 'Ek!',
 	'expand_templates_remove_comments' => 'Forigu komentojn',
 	'expand_templates_preview'         => 'Antaŭrigardo',
 );
@@ -548,13 +553,14 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'expandtemplates'                  => 'ពង្រីក គំរូខ្នាត នានា',
+	'expandtemplates'                  => 'ពង្រីកទំព័រគំរូ',
 	'expand_templates_output'          => 'លទ្ធផល',
 	'expand_templates_ok'              => 'យល់ព្រម',
 	'expand_templates_remove_comments' => 'ដកចេញ វិចារនានា',
-	'expand_templates_preview'         => 'មើលមុន',
+	'expand_templates_preview'         => 'មើលជាមុន',
 );
 
 $messages['ko'] = array(
@@ -654,7 +660,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
-	'expandtemplates-desc'             => 'Substitueert sjablonen, parserfuncties en variabelen en toont wikitekst en een controleversie van een pagina',
+	'expandtemplates-desc'             => 'Substitueert sjablonen, parserfuncties en variabelen en geeft wikitekst en een controleversie van een pagina weer',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
 substitueert recursief alle sjablonen in de tekst.
 Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en

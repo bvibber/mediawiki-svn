@@ -77,6 +77,15 @@ $messages['el'] = array(
 	'showprocesslist-info' => 'Πληροφορίες',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'showprocesslist-user'    => 'Uzanto',
+	'showprocesslist-command' => 'Komando',
+	'showprocesslist-time'    => 'Tempo',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
@@ -146,7 +155,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'showprocesslist'         => 'Proceslijst bekijken',
-	'showprocesslist-desc'    => 'Toont de uitvoer van [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-desc'    => 'Geeft de uitvoer van [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]] weer',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Gebruiker',
 	'showprocesslist-host'    => 'Host',

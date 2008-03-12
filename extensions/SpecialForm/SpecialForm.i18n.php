@@ -139,6 +139,13 @@ $messages['de'] = array(
 	'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'formsave' => 'Konservu',
+);
+
 $messages['fr'] = array(
 	'form' => 'Formulaire',
 	'formnoname' => 'Aucun nom',
@@ -418,7 +425,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  * @author M.M.S.
  */
 $messages['sv'] = array(
@@ -439,6 +446,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'form'                  => 'ఫారం',
+	'formnoname'            => 'ఫారం పేరు లేదు',
+	'formnonametext'        => 'మీరు తప్పనిసరిగా ఫారానికి ఓ పేరు, "Special:Form/Nameofform" వంటిది ఇవ్వాలి.',
+	'formbadnametext'       => 'అటువంటి పేరుతో ఫారం లేదు.',
 	'formsave'              => 'భద్రపరచు',
 	'formarticleexists'     => 'పేజీ ఉంది',
 	'formarticleexiststext' => '[[$1]] అనే పేజీ ఇప్పటికే ఉంది.',

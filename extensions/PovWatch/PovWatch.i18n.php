@@ -446,6 +446,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'povwatch_invalid_title'         => 'మీరిచ్చిన శీర్షిక సరైనది కాదు',
 	'povwatch_subscriber_list_intro' => '<strong>చందాదార్ల జాబితా</strong>',
+	'povwatch_unknown_subpage'       => 'గుర్తుతెలియని ఉపపేజీ.',
 	'povwatch_title'                 => 'శీర్షిక:',
 	'povwatch_no_log'                => 'దినచర్యలో అంశాలేమీ లేవు.',
 	'povwatch_no_subscribers'        => 'చందాదార్లు ఎవరూ లేరు.',

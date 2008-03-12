@@ -234,6 +234,13 @@ $messages['el'] = array(
 	'webstore_metadata_not_found' => 'Το Αρχείο δεν βρέθηκε: $1',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'webstore_404' => 'Dosiero ne trovita.',
+);
+
 $messages['ext'] = array(
 	'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',
 	'webstore_no_file' => 'Nu s´á empuntau dengún archivu.',
@@ -729,7 +736,7 @@ $1',
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
@@ -739,14 +746,18 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'webstore_path_invalid'       => 'ఫైలుపేరు తప్పుగా ఉంది.',
-	'webstore_dest_exists'        => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
-	'webstore_temp_open'          => '"$1" అనే తాత్కాలిక ఫైలుని తెరవడంలో పొరపాటు.',
-	'webstore_temp_close'         => '"$1" అనే తాత్కాలిక ఫైలుని మూయడంలో పొరపాటు.',
-	'webstore_404'                => 'ఫైలు కనబడలేదు.',
-	'webstore_php_warning'        => 'PHP హెచ్చరిక: $1',
-	'webstore_metadata_not_found' => 'ఫైలు కనబడలేదు: $1',
-	'webstore_no_response'        => 'సర్వరునుండి స్పందన లేదు',
+	'inplace_scaler_invalid_image' => 'తప్పుడు బొమ్మ, పరిమాణాన్ని నిర్ణయించలేకున్నాం.',
+	'webstore_path_invalid'        => 'ఫైలుపేరు తప్పుగా ఉంది.',
+	'webstore_dest_exists'         => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
+	'webstore_temp_open'           => '"$1" అనే తాత్కాలిక ఫైలుని తెరవడంలో పొరపాటు.',
+	'webstore_temp_close'          => '"$1" అనే తాత్కాలిక ఫైలుని మూయడంలో పొరపాటు.',
+	'webstore_404'                 => 'ఫైలు కనబడలేదు.',
+	'webstore_php_warning'         => 'PHP హెచ్చరిక: $1',
+	'webstore_metadata_not_found'  => 'ఫైలు కనబడలేదు: $1',
+	'webstore_invalid_response'    => 'సర్వరు నుండి తప్పుడు స్పందన:
+
+$1',
+	'webstore_no_response'         => 'సర్వరునుండి స్పందన లేదు',
 );
 
 /** Turkish (Türkçe)

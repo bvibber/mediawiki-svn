@@ -188,6 +188,20 @@ $messages['el'] = array(
 	'contributors-nosuchpage' => 'Η σελίδα $1 δεν υπάρχει.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'contributors'             => 'Kontribuantoj',
+	'contributors-toolbox'     => 'Ĉefaj kontribuantoj',
+	'contributors-target'      => 'Titolo:',
+	'contributors-submit'      => 'Montru',
+	'contributors-subtitle'    => 'Ĉefaj kontribuantoj al $1',
+	'contributors-others-long' => 'Estas $1 aliaj konribuantoj al ĉi paĝo.',
+	'contributors-others'      => 'kaj $1 aliaj',
+	'contributors-badtitle'    => 'Nevalida titolo.',
+);
+
 $messages['ext'] = array(
 	'contributors-toolbox' => 'Prencipalis colabutaoris',
 	'contributors-target' => 'Entítulu:',
@@ -375,13 +389,15 @@ $messages['kk-tr'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'contributors'             => 'អ្នករួមចំណែក',
 	'contributors-toolbox'     => 'អ្នករួមចំណែក ចំបង',
+	'contributors-target'      => 'ចំណងជើង៖',
 	'contributors-submit'      => 'បង្ហាញ',
 	'contributors-others-long' => 'មាន $1 ការរួមចំណែក ដទៃទៀត ចំពោះ ទំព័រនេះ។',
-	'contributors-nosuchpage'  => 'គ្មានទំព័រ $1 ។',
+	'contributors-nosuchpage'  => 'មិនមានទំព័រ$1ទេ។',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -463,9 +479,9 @@ $messages['nl'] = array(
 	'contributors'             => 'Bijdragers',
 	'contributors-desc'        => 'Geeft een overzicht van de belangrijkste schrijvers aan een pagina',
 	'contributors-toolbox'     => 'Belangrijkste bijdragers',
-	'contributors-legend'      => 'Belangrijkste bijdragers van een pagina tonen',
+	'contributors-legend'      => 'Belangrijkste bijdragers van een pagina weergeven',
 	'contributors-target'      => 'Titel:',
-	'contributors-submit'      => 'Tonen',
+	'contributors-submit'      => 'Bekijken',
 	'contributors-subtitle'    => 'Belangrijkste bijdragers aan $1',
 	'contributors-others-long' => 'Er zijn $1 andere bijdragers aan deze pagina.',
 	'contributors-others'      => 'en $1 anderen',
@@ -732,11 +748,15 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'contributors-target'     => 'శీర్షిక:',
-	'contributors-submit'     => 'చూపించు',
-	'contributors-others'     => 'మరియు $1గురు ఇతరులు',
-	'contributors-badtitle'   => 'తప్పుడు శీర్షిక.',
-	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
+	'contributors-toolbox'     => 'ముఖ్య రచయితలు',
+	'contributors-legend'      => 'పేజీకి ముఖ్య రచయితలను చూపించు',
+	'contributors-target'      => 'శీర్షిక:',
+	'contributors-submit'      => 'చూపించు',
+	'contributors-subtitle'    => '$1 యొక్క ముఖ్య రచయితలు',
+	'contributors-others-long' => 'ఈ పేజీకి ఇంకా $1గురు ఇతర రచయితలు ఉన్నారు.',
+	'contributors-others'      => 'మరియు $1గురు ఇతరులు',
+	'contributors-badtitle'    => 'తప్పుడు శీర్షిక.',
+	'contributors-nosuchpage'  => '$1 అనే పేజీ లేనే లేదు.',
 );
 
 /** Thai (ไทย)

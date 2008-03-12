@@ -282,6 +282,13 @@ $messages['oc'] = array(
 	'languageselector-setlang' => 'Definir',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'languageselector' => 'Język',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -336,11 +343,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Lejonel
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'languageselector'         => 'Språk',
+	'languageselector-desc'    => 'Språkväljare på varje sida, också för besökare',
 	'languageselector-setlang' => 'välj',
 );
 

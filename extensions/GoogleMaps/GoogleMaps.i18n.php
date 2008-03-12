@@ -411,6 +411,25 @@ $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-editing-path'         => 'Klicken Sie auf die Karte, um diesen Pfad zu verlängern.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$wgGoogleMapsMessages['eo'] = array(
+	'gm-remove'       => 'forigu',
+	'gm-save-point'   => 'konservu & fermu',
+	'gm-map'          => 'Mapo',
+	'gm-are-you-sure' => 'Ĉu vi certas?',
+	'gm-large'        => 'Granda',
+	'gm-no'           => 'Ne',
+	'gm-meters'       => 'metroj',
+	'gm-miles'        => 'mejloj',
+	'gm-make-map'     => 'faru mapon',
+	'gm-kml-loading'  => 'ŝarĝante...',
+	'gm-earth'        => 'Tero',
+	'gm-moon'         => 'Luno',
+	'gm-mars'         => 'Marso',
+);
+
 /**
  * @author Acrida
  * @author <anonymous>
@@ -642,24 +661,27 @@ $wgGoogleMapsMessages['hsb'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $wgGoogleMapsMessages['km'] = array(
 	'gm-remove'           => 'ដកចេញ',
 	'gm-are-you-sure'     => 'អ្នកប្រាកដ ឬ ?',
-	'gm-zoom-control'     => 'ដំណើរត្រាច់រក',
+	'gm-zoom-control'     => 'ការរុករក',
 	'gm-no-zoom-control'  => 'ទទេ',
 	'gm-yes'              => 'បាទ / ចាស',
 	'gm-no'               => 'ទេ',
 	'gm-search'           => 'ស្វែងរក',
-	'gm-clear-search'     => 'សំអាត លទ្ធផលស្វែងរក',
-	'gm-edit-path'        => 'បន្ថែម ចំណុច',
-	'gm-show-path'        => 'បង្ហាញ ចំណុច',
+	'gm-clear-search'     => 'សំអាតលទ្ធផលស្វែងរក',
+	'gm-meters'           => 'ម៉ែត្រ',
+	'gm-save-path'        => 'រក្សាទុក',
+	'gm-edit-path'        => 'បន្ថែមចំណុច',
+	'gm-show-path'        => 'បង្ហាញចំណុច',
 	'gm-hide-map'         => 'បិទបាំងផែនទី',
-	'gm-back'             => 'ត្រលប់ ក្រោយ',
+	'gm-back'             => 'ត្រលប់ក្រោយវិញ',
 	'gm-kml-include-link' => 'បន្ថែម ទៅ ផែនទី',
 	'gm-kml-export'       => 'នាំចេញ ផែនទីនេះ ទៅ KML',
 	'gm-earth'            => 'ផែនដី',
-	'gm-moon'             => 'ព្រះចន្ទ',
+	'gm-moon'             => 'ព្រះច័ន្ទ',
 	'gm-mars'             => 'ភពអង្គារ',
 );
 
@@ -714,7 +736,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-no-results'                => 'Geen resultaten',
 	'gm-searching'                 => 'bezig met zoeken...',
 	'gm-map'                       => 'Kaart',
-	'gm-note'                      => 'Waarschuwing: zorg ervoor dat u kopieert wat u in de pagina wilt opslaan (hieronder) voordat u op "Kaart laden", "Opslaan" of "Bewerking ter controle tonen" klikt!',
+	'gm-note'                      => 'Waarschuwing: zorg ervoor dat u kopieert wat u in de pagina wilt opslaan (hieronder) voordat u op "Kaart laden", "Opslaan" of "Bewerking ter controle weergeven" klikt!',
 	'gm-instructions'              => 'De benodigde wikisyntax om de kaart in te voegen:',
 	'gm-are-you-sure'              => 'Weet u het zeker?',
 	'gm-clear-all-points'          => 'Alle punten wissen',
@@ -741,7 +763,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-editing-path'              => 'Klik op de kaart om meer punten aan dit pad toe te voegen.',
 	'gm-save-path'                 => 'Opslaan',
 	'gm-edit-path'                 => 'punt toevoegen',
-	'gm-show-path'                 => 'punten tonen',
+	'gm-show-path'                 => 'punten weergeven',
 	'gm-color-path'                => 'kleur wijzigen',
 	'gm-color-fill'                => 'opvulkleur wijzigen',
 	'gm-add-fill'                  => 'gebied opvullen',
@@ -911,13 +933,18 @@ $wgGoogleMapsMessages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Masti
  */
 $wgGoogleMapsMessages['pl'] = array(
+	'gm-balloon-title'    => 'Tytuł:',
 	'gm-save-point'       => 'zapisz i zamknij',
 	'gm-searching'        => 'wyszukiwanie...',
 	'gm-are-you-sure'     => 'Czy jesteś pewien?',
 	'gm-height'           => 'Wysokość',
+	'gm-yes'              => 'Tak',
+	'gm-no'               => 'Nie',
 	'gm-save-path'        => 'Zapisz',
+	'gm-color-path'       => 'zmień kolor',
 	'gm-line-width'       => 'Szerokość',
 	'gm-make-map'         => 'stwórz mapę',
 	'gm-hide-map'         => 'ukryj mapę',
@@ -926,6 +953,28 @@ $wgGoogleMapsMessages['pl'] = array(
 	'gm-kml-loading'      => 'ładowanie...',
 	'gm-earth'            => 'Ziemia',
 	'gm-moon'             => 'Księżyc',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$wgGoogleMapsMessages['ps'] = array(
+	'gm-balloon-title'   => 'سرليک:',
+	'gm-searching'       => 'د پلټنې په حال کې...',
+	'gm-map'             => 'نخشه',
+	'gm-are-you-sure'    => 'آيا تاسو ډاډه ياست؟',
+	'gm-large'           => 'لوی',
+	'gm-medium'          => 'منځوی',
+	'gm-small'           => 'وړوکی',
+	'gm-no-zoom-control' => 'هېڅ',
+	'gm-yes'             => 'هو',
+	'gm-no'              => 'نه',
+	'gm-save-path'       => 'خوندي کول',
+	'gm-color-path'      => 'رنګ بدلول',
+	'gm-make-map'        => 'يوه نخشه جوړول',
+	'gm-earth'           => 'زمکه',
+	'gm-moon'            => 'سپوږمۍ',
+	'gm-mars'            => 'مريخ',
 );
 
 /** Portuguese (Português)
@@ -948,6 +997,8 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-are-you-sure'              => 'Tem a certeza?',
 	'gm-clear-all-points'          => 'Limpar todos os pontos',
 	'gm-refresh-points'            => 'Refrescar pontos',
+	'gm-width'                     => 'Largura',
+	'gm-height'                    => 'Altura',
 	'gm-selector-control'          => 'Selector de mapa/satélite',
 	'gm-large'                     => 'Grande',
 	'gm-medium'                    => 'Médio',
@@ -1242,38 +1293,45 @@ $wgGoogleMapsMessages['ta'] = array(
  * @author Veeven
  */
 $wgGoogleMapsMessages['te'] = array(
-	'gm-balloon-title'        => 'శీర్షిక:',
-	'gm-balloon-link-article' => 'ఈ పేజీకి లింకు (ఐచ్చికం):',
-	'gm-remove'               => 'తొలగించు',
-	'gm-tab-title'            => 'టాబ్ శీర్షిక',
-	'gm-save-point'           => 'భద్రపరచు &amp; మూసేయి',
-	'gm-refresh-list'         => 'జాబితాని తాజాకరించు',
-	'gm-clip-result'          => 'పటానికి చేర్చు',
-	'gm-no-results'           => 'క్షమించండి, ఫలితాలేమీ లేవు',
-	'gm-searching'            => 'వెతుకుతున్నాం...',
-	'gm-map'                  => 'పటం',
-	'gm-width'                => 'వెడల్పు',
-	'gm-height'               => 'ఎత్తు',
-	'gm-zoom-control'         => 'మార్గదర్శకం',
-	'gm-large'                => 'పెద్ద',
-	'gm-medium'               => 'మధ్యస్థం',
-	'gm-small'                => 'చిన్న',
-	'gm-yes'                  => 'అవును',
-	'gm-no'                   => 'కాదు',
-	'gm-search'               => 'వెతుకు',
-	'gm-clear-search'         => 'అన్వేషణ ఫలితాలను తుడిచివేయి',
-	'gm-meters'               => 'మీటర్లు',
-	'gm-miles'                => 'మైళ్ళు',
-	'gm-save-path'            => 'భద్రపరచు',
-	'gm-color-path'           => 'రంగుని మార్చు',
-	'gm-line-color'           => 'లైను రంగు',
-	'gm-line-width'           => 'వెడల్పు',
-	'gm-back'                 => 'వెనక్కి',
-	'gm-kml-include'          => 'బయటి KML/GeoRSS:',
-	'gm-kml-loading'          => 'లోడవుతోంది...',
-	'gm-earth'                => 'భూమి',
-	'gm-moon'                 => 'చంద్రుడు',
-	'gm-mars'                 => 'అంగారకుడు',
+	'gm-incompatible-browser-link' => 'అనుకూల విహారిణుల జాబితా చూడడానికి ఇక్కడ నొక్కండి.',
+	'gm-balloon-title'             => 'శీర్షిక:',
+	'gm-balloon-link-article'      => 'ఈ పేజీకి లింకు (ఐచ్చికం):',
+	'gm-remove'                    => 'తొలగించు',
+	'gm-caption'                   => 'వ్యాఖ్య',
+	'gm-tab-title'                 => 'టాబ్ శీర్షిక',
+	'gm-tab'                       => 'ట్యాబ్',
+	'gm-save-point'                => 'భద్రపరచు &amp; మూసేయి',
+	'gm-refresh-list'              => 'జాబితాని తాజాకరించు',
+	'gm-clip-result'               => 'పటానికి చేర్చు',
+	'gm-no-results'                => 'క్షమించండి, ఫలితాలేమీ లేవు',
+	'gm-searching'                 => 'వెతుకుతున్నాం...',
+	'gm-map'                       => 'పటం',
+	'gm-width'                     => 'వెడల్పు',
+	'gm-height'                    => 'ఎత్తు',
+	'gm-scale-control'             => 'పరిమాణం',
+	'gm-zoom-control'              => 'మార్గదర్శకం',
+	'gm-large'                     => 'పెద్ద',
+	'gm-medium'                    => 'మధ్యస్థం',
+	'gm-small'                     => 'చిన్న',
+	'gm-no-zoom-control'           => 'ఏమీలేదు',
+	'gm-yes'                       => 'అవును',
+	'gm-no'                        => 'కాదు',
+	'gm-search'                    => 'వెతుకు',
+	'gm-clear-search'              => 'అన్వేషణ ఫలితాలను తుడిచివేయి',
+	'gm-meters'                    => 'మీటర్లు',
+	'gm-miles'                     => 'మైళ్ళు',
+	'gm-save-path'                 => 'భద్రపరచు',
+	'gm-edit-path'                 => 'పాయింట్లను చేర్చు',
+	'gm-show-path'                 => 'పాయింట్లను చూపించు',
+	'gm-color-path'                => 'రంగుని మార్చు',
+	'gm-line-color'                => 'లైను రంగు',
+	'gm-line-width'                => 'వెడల్పు',
+	'gm-back'                      => 'వెనక్కి',
+	'gm-kml-include'               => 'బయటి KML/GeoRSS:',
+	'gm-kml-loading'               => 'లోడవుతోంది...',
+	'gm-earth'                     => 'భూమి',
+	'gm-moon'                      => 'చంద్రుడు',
+	'gm-mars'                      => 'అంగారకుడు',
 );
 
 /** Vietnamese (Tiếng Việt)

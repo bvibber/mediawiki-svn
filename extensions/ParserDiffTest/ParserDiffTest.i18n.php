@@ -676,9 +676,11 @@ $messages['te'] = array(
  */
 $messages['tg'] = array(
 	'parserdifftest'      => 'Санҷиши тафовути таҳлилгар',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Саҳифаи вижа]] барои муқоисаи хуруҷи ду таҷзеҳкунандаи мухталиф',
 	'pdtest_no_target'    => 'Ҳадафе таъйид нашудааст.',
 	'pdtest_page_missing' => 'Саҳифаи мавриди назар дар пойгоҳи дода ёфт нашуд.',
 	'pdtest_no_changes'   => 'Ҳеҷ тағйир ҳазф нашуд.',
+	'pdtest_time_report'  => 'Барои <b>$1</b> муддат $2 сония сарф шуд, барои <b>$3</b> муддат $4 сония сарф шуд.',
 	'pdtest_title'        => 'Унвони матн:',
 	'pdtest_text'         => 'Матни вурудӣ:',
 	'pdtest_ok'           => 'Таъйид',

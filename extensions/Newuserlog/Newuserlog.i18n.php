@@ -193,7 +193,7 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten LJ
+ * @author Morten
  */
 $messages['da'] = array(
 	'newuserlogpage'           => 'Brugeroprettelseslog',
@@ -878,6 +878,7 @@ $messages['tet'] = array(
 $messages['tg'] = array(
 	'newuserlogpage'           => 'Гузориши эҷоди корбар',
 	'newuserlogpagetext'       => 'Ин гузориш аз номҳои корбарии тозасохташуда аст',
+	'newuserlog-desc'          => '[[Special:Log/newusers|Гузорише аз ҳисобҳои корбарии эҷодшуда]] ба [[Special:Log]] илова мекунад',
 	'newuserlog-byemail'       => 'калимаи убур ба почтаи электронӣ фиристода шуд',
 	'newuserlog-create-entry'  => 'Корбари нав',
 	'newuserlog-create2-entry' => 'Барои $1 ҳисоби корбарӣ эҷод шуд',

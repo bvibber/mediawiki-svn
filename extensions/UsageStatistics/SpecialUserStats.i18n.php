@@ -420,14 +420,14 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'specialuserstats'                => 'Gebruiksstatistieken',
 	'usagestatistics'                 => 'Gebruiksstatistieken',
-	'usagestatistics-desc'            => 'Individuele en totaalstatistieken van wikigebruik tonen',
+	'usagestatistics-desc'            => 'Individuele en totaalstatistieken van wikigebruik weergeven',
 	'usagestatisticsfor'              => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
 	'usagestatisticsallusers'         => 'Alle gebruikers',
 	'usagestatisticsinterval'         => 'Onderbreking',
 	'usagestatisticstype'             => 'Type',
 	'usagestatisticsstart'            => 'Begindatum',
 	'usagestatisticsend'              => 'Einddatum',
-	'usagestatisticssubmit'           => 'Statistieken tonen',
+	'usagestatisticssubmit'           => 'Statistieken weergeven',
 	'usagestatisticsnostart'          => '* <font color=red>Geef een begindatum op</font>',
 	'usagestatisticsnoend'            => '* <font color=red>Geef een einddatum op</font>',
 	'usagestatisticsbadstartend'      => '<b>Slechte <i>begindatum</i> en/of <i>einddatum</i>!</b>',
@@ -519,6 +519,15 @@ $messages['oc'] = array(
 	'usagestatistics-editpages'       => 'Estatisticas $1 de las paginas per utilizaire individual',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'usagestatisticsintervalday'   => 'Dzień',
+	'usagestatisticsintervalweek'  => 'Tydzień',
+	'usagestatisticsintervalmonth' => 'Miesiąc',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
@@ -570,7 +579,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'specialuserstats'               => 'Användarstatistik',

@@ -190,7 +190,7 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten LJ
+ * @author Morten
  */
 $messages['da'] = array(
 	'bookinfo-header'            => 'Boginformation',
@@ -243,6 +243,7 @@ $messages['eo'] = array(
 	'bookinfo-result-year'       => 'Jaro',
 	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
 	'bookinfo-purchase'          => 'Aĉetu ĉi libron de $1',
+	'bookinfo-provider'          => 'Datuma provizanto: $1',
 );
 
 /** Spanish (Español)
@@ -542,9 +543,10 @@ $messages['kk-arab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'bookinfo-header'           => 'ពត៌មានសៀវភៅ',
+	'bookinfo-header'           => 'ពត៌មានអំពីសៀវភៅ',
 	'bookinfo-desc'             => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន ពីសេវាវ៉ែប',
 	'bookinfo-result-title'     => 'ចំណងជើង៖',
 	'bookinfo-result-author'    => 'អ្នកនិពន្ធ៖',

@@ -367,6 +367,14 @@ $messages['sv'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Slå av rik textredigering i "{{ns:Category_talk}}" namnrymden',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'textrichditor'      => 'సిరి కూర్పరి',
+	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

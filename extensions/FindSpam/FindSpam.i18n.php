@@ -66,6 +66,15 @@ $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'findspam'    => 'Trovu spamon',
+	'findspam-ip' => 'IP adreson:',
+	'findspam-ok' => 'Ek!',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Jack Phoenix
@@ -121,12 +130,13 @@ $messages['hu'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
-	'findspam-ip'          => 'អាស័យដ្ឋាន IP ៖',
+	'findspam-ip'          => 'អាសយដ្ឋាន IP ៖',
 	'findspam-ok'          => 'យល់ព្រម',
-	'findspam-notextfound' => 'រកមិនឃើញ ការរួមចំណែក',
+	'findspam-notextfound' => 'ការរួមចំនែកមិនត្រូវបានរកមិនឃើញទេ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -283,10 +293,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'findspam'      => 'స్పాముని కనుక్కోండి',
-	'findspam-desc' => 'ఇటీవల వచ్చిన స్పాముని కనుగొనడానికి ఓ [[Special:FindSpam|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
-	'findspam-ip'   => 'IP చిరునామా:',
-	'findspam-ok'   => 'సరే',
+	'findspam'             => 'స్పాముని కనుక్కోండి',
+	'findspam-desc'        => 'ఇటీవల వచ్చిన స్పాముని కనుగొనడానికి ఓ [[Special:FindSpam|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
+	'findspam-ip'          => 'IP చిరునామా:',
+	'findspam-ok'          => 'సరే',
+	'findspam-notextfound' => 'రచనలు ఏమీ కనబడలేదు',
 );
 
 /** Turkish (Türkçe)

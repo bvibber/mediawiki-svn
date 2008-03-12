@@ -97,6 +97,13 @@ $messages['el'] = array(
 	'todo-form-details' => 'Λεπτομέρειες:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'todo-new-queue' => 'nova',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
@@ -321,6 +328,13 @@ $messages['oc'] = array(
 	'todo-form-submit'      => 'Sometre la requèsta',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'todo-form-submit' => 'Wyślij zapytanie',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -384,7 +398,7 @@ $4',
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author M.M.S.
  * @author Lejonel
  */
@@ -402,6 +416,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'todo'                  => 'చేయాల్సిన జాబితా',
 	'todo-new-queue'        => 'కొత్తది',
 	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
 	'todo-item-list'        => 'మీ అంశాలు',

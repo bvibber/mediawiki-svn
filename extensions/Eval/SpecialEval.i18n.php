@@ -35,6 +35,13 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'eval_code' => 'Kodo',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */
@@ -89,11 +96,12 @@ $messages['ja'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
 	'eval_submit' => 'វាយតំលៃ',
-	'eval_code'   => 'អក្សរកូដ',
+	'eval_code'   => 'កូដ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -189,7 +197,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'eval'        => 'Eval',
@@ -198,6 +206,13 @@ $messages['sv'] = array(
 	'eval_escape' => 'Undvik utdata',
 	'eval_out'    => 'Resultat',
 	'eval_code'   => 'Kod',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'eval_code' => 'కోడు',
 );
 
 /** Turkish (Türkçe)

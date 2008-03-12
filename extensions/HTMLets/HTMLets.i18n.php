@@ -17,3 +17,11 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'htmlets-desc' => 'Ergänzt das <tt><nowiki><htmlet></nowiki></tt>-Tag zum Einfügen von HTML-Schnippseln hinzu',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'htmlets-desc' => 'Voegt de tag <tt><nowiki><htmlet></nowiki></tt> toe om HTML snippets uit bestanden te kunnen gebruiken',
+);
+

@@ -170,7 +170,7 @@ $messages['mr'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
-	'pageby-desc'         => 'Toont de auteurs van een wikipagina op de pagina zelf met de tag <code><nowiki><pageby></nowiki></code>',
+	'pageby-desc'         => 'Voegt de tag <code><nowiki><pageby></nowiki></code> toe voor het weergeven van de auteurs van een wikipagina op de pagina zelf',
 	'pageby-first'        => 'Pagina gemaakt door $1, $2',
 	'pageby-last'         => 'Laatste <a href="$3">wijziging</a> door $1, $2',
 	'pageby-contributors' => 'Redacteuren:',
@@ -260,7 +260,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author M.M.S.
  */
 $messages['sv'] = array(
@@ -274,9 +274,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'pageby-first' => 'పేజీని సృష్టించినది $1, $2',
-	'pageby-last'  => 'చివరగా <a href="$3">మార్చినది</a> $1, $2',
-	'pageby-anon'  => '<i>అనామకులు</i>',
+	'pageby-first'        => 'పేజీని సృష్టించినది $1, $2',
+	'pageby-last'         => 'చివరగా <a href="$3">మార్చినది</a> $1, $2',
+	'pageby-contributors' => 'రచయితలు:',
+	'pageby-anon'         => '<i>అనామకులు</i>',
 );
 
 /** Turkish (Türkçe)

@@ -594,7 +594,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'chemicalsources'                  => 'Kemiska källor',

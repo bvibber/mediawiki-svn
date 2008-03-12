@@ -120,6 +120,14 @@ $messages['el'] = array(
 	'talkhere-beforeinput' => 'Μπορείτε να προσθέσετε ένα σχόλιο παρακάτω',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'talkhere-notalk'     => "''(ankoraŭ neniuj komentoj)''",
+	'talkhere-addcomment' => 'aldonu komenton',
+);
+
 /** Spanish (Español)
  * @author Lin linao
  */
@@ -412,7 +420,7 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(

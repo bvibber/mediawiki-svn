@@ -559,10 +559,16 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'scanset-desc'                      => 'Мушоҳидаи аксҳои пӯйишшуда аз лаҳфи фишурдаи CD/DVD Андреас Гросз',
+	'scanset_no_name'                   => 'ScanSet: Шумо бояд номи маҷмӯъро мушаххас кунед, мисол. &lt;anset  name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Маҷмӯъи ғайримиҷоз ё гумшуда.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Бофтаи номушаххаси индекс',
 	'scanset_opendir_error'             => 'ScanSet: Хато, шохаи $1ро наметавон боз кард',
 	'scanset_no_files'                  => 'ScanSet: Ҳеҷ парвандае дар шохаи мушаххасшуда вуҷуд надорад.',
+	'scanset_no_volumes'                => 'ScanSet: Феҳристи ҷилдҳо пайдо нашуд',
 	'scanset_missing_index_file'        => 'ScanSet: Парвандаи индексии $1 пайдо нашуд',
+	'scanset_index_file_error'          => 'ScanSet: Хато дар қолаби парвандаи индекс дар сатри $1',
+	'scanset_invalid_volume'            => 'ScanSet: Ҷилди ғайримиҷоз',
 	'scanset_next'                      => 'Баъдӣ &gt;',
 	'scanset_prev'                      => '&lt; Қаблӣ',
 );

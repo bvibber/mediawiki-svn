@@ -374,9 +374,12 @@ $messages['nan'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'crossnamespacelinks'         => 'Kruisverwijzingen tussen naamruimtes',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Toont verwijzingen tussen naamruimten]] die niet zouden moeten bestaan in {{SITENAME}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Geeft verwijzingen tussen naamruimten weer]] die niet zouden moeten bestaan in {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Deze pagina voorziet in een overzicht van links vanuit een pagina in de hoofdnaamruimte naar andere naamruimtes (met uitzondering van de naamruimtes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), waarvan het gebruik wordt afgeraden.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3',
 );

@@ -123,9 +123,12 @@ $messages['mr'] = array(
 	'whosonline-desc' => 'दाखवा सध्या ऑनलाईन असलेल्या दाखल झालेल्या सदस्यांची आणि अनामिक नवशागवशांची [[Special:WhosOnline|सूची]] दाखवा',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'whosonline'      => 'Wie is er online',
-	'whosonline-desc' => 'Toont [[Special:WhosOnline|een lijst]] van aangemelde en anonieme gebruikers die actief zijn',
+	'whosonline-desc' => '[[Special:WhosOnline|Een lijst]] van actieve aangemelde en anonieme gebruikers',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

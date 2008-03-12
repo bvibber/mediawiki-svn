@@ -79,6 +79,16 @@ $messages['de'] = array(
 	'dt_xml_freetext'             => 'Freier Text',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'dt_xml_name'     => 'Nomo',
+	'dt_xml_title'    => 'Titolo',
+	'dt_xml_id'       => 'identigo',
+	'dt_xml_freetext' => 'Libera Teksto',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Siebrand
@@ -339,9 +349,9 @@ $messages['stq'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'dt-desc'                     => 'Tillåter importering och exportering av strukturerad data i mallkallningar',
+	'dt-desc'                     => 'Tillåter import och export av strukturerad data som finns i mallanrop',
 	'viewxml'                     => 'Visa XML',
-	'dt_viewxml_docu'             => 'Var god välj mellan dom följande kategorierna och namnrymderna för att visa i XML format.',
+	'dt_viewxml_docu'             => 'Välj vilka av följande kategorier och namnrymder som ska visas i XML-format.',
 	'dt_viewxml_categories'       => 'Kategorier',
 	'dt_viewxml_namespaces'       => 'Namnrymder',
 	'dt_viewxml_simplifiedformat' => 'Förenklat format',
@@ -360,9 +370,12 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'viewxml'               => 'XMLని చూడండి',
 	'dt_viewxml_categories' => 'వర్గాలు',
+	'dt_viewxml_namespaces' => 'పేరుబర్లు',
+	'dt_xml_namespace'      => 'పేరుబరి',
 	'dt_xml_page'           => 'పేజీ',
 	'dt_xml_name'           => 'పేరు',
 	'dt_xml_title'          => 'శీర్షిక',
+	'dt_xml_id'             => 'ఐడీ',
 	'dt_xml_freetext'       => 'స్వేచ్ఛా పాఠ్యం',
 );
 

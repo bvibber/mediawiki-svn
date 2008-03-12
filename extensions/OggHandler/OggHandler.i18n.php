@@ -827,6 +827,7 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'ogg-desc'                => 'គាំទ្រ ចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករអាន JavaScript',
@@ -845,7 +846,7 @@ $messages['km'] = array(
 	'ogg-play-sound'          => 'លេង សំលេង',
 	'ogg-no-player'           => 'អភ័យទោស, ប្រព័ន្ធ របស់អ្នក មិនបង្ហាញ ផ្នែកទន់ឧបករអាន គាំទ្រ ណាមួយ ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">និង តំលើង មួយឧបករអាន គាំទ្រ</a> ។',
 	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
-	'ogg-player-videoElement' => 'ធាតុ <វិឌីអូ>',
+	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',
 	'ogg-player-thumbnail'    => 'នៅតែ ជា រូបភាព',
 	'ogg-player-soundthumb'   => 'គ្មាន អ្នកលេង',
 	'ogg-player-selected'     => '(បានជ្រើសយក)',
@@ -1441,16 +1442,22 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'ogg-desc'                => 'Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript',
 	'ogg-short-audio'         => 'Ogg $1 парвандаи савтӣ, $2',
 	'ogg-short-video'         => 'Ogg $1 парвандаи наворӣ, $2',
 	'ogg-short-general'       => 'Ogg $1 парвандаи расона, $2',
 	'ogg-long-audio'          => '(Ogg $1 парвандаи савтӣ, тӯл $2, $3)',
 	'ogg-long-video'          => '(Ogg $1 парвандаи наворӣ, тӯл $2, $4×$5 пикселҳо, $3)',
+	'ogg-long-multiplexed'    => '(Парвандаи Ogg савтӣ/наворӣ печида, $1, тӯл $2, $4×$5 пикселҳо, дар маҷмӯъ $3)',
+	'ogg-long-general'        => '(Парвандаи расонаи Ogg, тӯл $2, $3)',
+	'ogg-long-error'          => '(Парвандаи ғайримиҷози ogg: $1)',
 	'ogg-play'                => 'Пахш',
 	'ogg-pause'               => 'Сукут',
 	'ogg-stop'                => 'Қатъ',
 	'ogg-play-video'          => 'Пахши навор',
 	'ogg-play-sound'          => 'Пахши овоз',
+	'ogg-no-player'           => 'Бубахшед, дастгоҳи шумо нармафзори пахшкунандаи муносибе надорад. Лутфан <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">як барномаи пахшкунандаро боргирӣ кунед</a>.',
+	'ogg-no-xiphqt'           => 'Афзунаи XiphQT барои QuickTime ба назар намерасад. QuickTime наметавонад бидуни ин афзуна парвандаҳои Ogg-ро пахш кунад. Лутфан <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT-ро боргирӣ кунед</a>  ё дигар нармафзори пахшкунандаро интихоб намоед.',
 	'ogg-player-videoElement' => 'унсури <наворӣ>',
 	'ogg-player-oggPlugin'    => 'Афзунаи ogg',
 	'ogg-player-thumbnail'    => 'Фақат акс ҳанӯз',

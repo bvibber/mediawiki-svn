@@ -791,6 +791,8 @@ $messages['eo'] = array(
 	'boardvote_ip'         => 'IP-adreso',
 	'boardvote_dumplink'   => 'Klaku ĉi tien',
 	'boardvote_submit'     => 'Ek!',
+	'boardvote_strike'     => 'Trastreku',
+	'boardvote_unstrike'   => 'Maltrastreku',
 	'boardvote_edits_many' => 'multaj',
 	'boardvote_blocked'    => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
 	'boardvote_welcome'    => "Bonvenon '''$1'''!",
@@ -2004,13 +2006,15 @@ $messages['kk-arab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'boardvote'              => 'ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា',
 	'boardvote-desc'         => '[[meta:Board elections|ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា]]',
 	'boardvote_novotes'      => 'គ្មានអ្នក ​បានបោះឆ្នោត នៅឡើយ។',
+	'boardvote_time'         => 'ពេល',
 	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
-	'boardvote_edits'        => 'កំណែប្រែ នានា',
+	'boardvote_edits'        => 'ចំនួនកំនែប្រែ',
 	'boardvote_days'         => 'ថ្ងៃ',
 	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>នេះជា បញ្ជី នៃគ្រប់សន្លឹកឆ្នោត បានត្រូវកត់ទុក មកទល់ពេលនេះ ។ $1 សំរាប់ ទិន្នន័យ បំលែង ជា អក្សរកូដ ។</p>',
@@ -2316,23 +2320,48 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
-	'boardvote'            => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
-	'boardvote-desc'       => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
-	'boardvote_time'       => 'वेळ',
-	'boardvote_user'       => 'सदस्य',
-	'boardvote_edits'      => 'संपादने',
-	'boardvote_days'       => 'दिवस',
-	'boardvote_ip'         => 'अंकपत्ता',
-	'boardvote_ua'         => 'सदस्य एजंट',
-	'boardvote_dumplink'   => 'येथे टिचकी मारा',
-	'boardvote_submit'     => 'ठीक',
-	'boardvote_strike'     => 'खोडा',
-	'boardvote_unstrike'   => 'खोडणे रद्द',
-	'boardvote_edits_many' => 'खूप',
-	'boardvote_welcome'    => "सुस्वागतम्‌ '''$1'''!",
-	'go_to_board_vote'     => 'विकिमीडिया मंडळ निवडणूक २००७',
+	'boardvote'              => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
+	'boardvote-desc'         => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|मत द्या]]
+* [[Special:Boardvote/list|आजपर्यंतच्या मतांची यादी]]
+* [[Special:Boardvote/dump|एन्क्रीप्ट केलेली मतांची यादी डम्प करा]]',
+	'boardvote_intro_change' => '<p>तुम्ही पूर्वी मत दिलेले आहे. जर तुम्हांला त्यात बदल करायचा असेल तर खालील अर्ज वापरा. कृपया आपणांस योग्य वाटणार्‍या उमेदवारापुढील चौकोनात बरोबरची खूण करा.</p>',
+	'boardvote_entered'      => 'धन्यवाद, तुमचे मत नोंदले गेलेले आहे.
+
+जर तुम्हांस इच्छा असेल तर तुम्ही खालील माहितीची नोंद करु शकता. तुमचे मत:
+
+<pre>$1</pre>
+
+मत मतदान प्रबंधकांच्या खालील चावीने एन्क्रीप्ट केलेले आहे:
+
+<pre>$2</pre>
+
+एन्क्रीप्ट केल्यानंतरचे मत खाली दिलेले आहे. हे मत [[Special:Boardvote/dump]] सर्वांना पाहण्यासाठी खुले आहे.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|मागे जा]]',
+	'boardvote_nosession'    => 'तुमचा विकिमीडिया सदस्य क्रमांक सापडत नाही आहे. कृपया आपल्या सदस्यनामानी जिथे तुम्हाला मतदान करायला परवानगी आहे, त्या विकीवर प्रवेश करा, व <nowiki>[[Special:Boardvote]]</nowiki> इथे जा. तुम्ही मत देण्यासाठी कमीतकमी $1 संपादने $2 च्या पूर्वी, तसेच पहिले संपादन $3 च्या पूर्वी केलेले असणे आवश्यक आहे.',
+	'boardvote_notloggedin'  => 'तुम्ही प्रवेश केलेला नाही. मत देण्यासाठी तुम्ही कमीतकमी $1 संपादने $2 च्या पूर्वी, तसेच पहिले संपादन $3 च्या पूर्वी केलेले असणे आवश्यक आहे.',
+	'boardvote_novotes'      => 'अजून कोणीही मत दिलेले नाही.',
+	'boardvote_time'         => 'वेळ',
+	'boardvote_user'         => 'सदस्य',
+	'boardvote_edits'        => 'संपादने',
+	'boardvote_days'         => 'दिवस',
+	'boardvote_ip'           => 'अंकपत्ता',
+	'boardvote_ua'           => 'सदस्य एजंट',
+	'boardvote_dumplink'     => 'येथे टिचकी मारा',
+	'boardvote_submit'       => 'ठीक',
+	'boardvote_strike'       => 'खोडा',
+	'boardvote_unstrike'     => 'खोडणे रद्द',
+	'boardvote_notstarted'   => 'मतदान अजून सुरू झालेले नाही.',
+	'boardvote_edits_many'   => 'खूप',
+	'boardvote_blocked'      => 'माफ करा, तुम्ही सदस्य असलेल्या विकीने तुम्हांला ब्लॉक केलेले आहे. तुम्ही मत देऊ शकत नाही.',
+	'boardvote_welcome'      => "सुस्वागतम्‌ '''$1'''!",
+	'go_to_board_vote'       => 'विकिमीडिया मंडळ निवडणूक २००७',
 );
 
 /** Erzya (эрзянь кель)
@@ -2386,14 +2415,14 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author SPQRobin
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezing]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemmen]]
-* [[Special:Boardvote/list|Uitgebrachte stemmen tonen]]
+* [[Special:Boardvote/list|Uitgebrachte stemmen bekijken]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
 	'boardvote_intro'        => '
 <p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees. We
@@ -3323,7 +3352,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Sannab
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  * @author SPQRobin
  */
 $messages['sv'] = array(

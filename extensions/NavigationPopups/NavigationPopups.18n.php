@@ -41,6 +41,13 @@ $messages['nl'] = array(
 	'navigationpopups-desc' => "Laadt Lupin's navigatiescriptspopups in MediaWiki",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'navigationpopups-desc' => 'Načíta Lupinove vyskakovacie navigačné skripty v MediaWiki',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

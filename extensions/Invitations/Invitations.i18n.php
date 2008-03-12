@@ -284,6 +284,20 @@ $messages['oc'] = array(
 	'invitations-invite-success'            => 'Avètz convidat $1 amb succès per utilizar aquesta foncionalitat !',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'invitations-inviteform-submit' => 'Zaproś',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'invitations-inviteform-submit' => 'بلنه ورکول',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -400,12 +414,18 @@ $messages['stq'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'invite-logpage'                  => 'ఆహ్వానాల దినచర్య',
-	'invitations-invitedlist-item'    => '<b>$1</b> ($2 ఆహ్వానాలు మిగిలివున్నాయి)',
-	'invitations-feature-pagetitle'   => 'ఆహ్వాన నిర్వహణ - $1',
-	'invitations-inviteform-username' => 'ఆహ్వానించాల్సిన వాడుకరి',
-	'invitations-inviteform-submit'   => 'ఆహ్వానించు',
-	'invitations-error-baduser'       => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
+	'invite-logpage'                   => 'ఆహ్వానాల దినచర్య',
+	'invite-logentry'                  => '<i>$2</i> అనే విశేషాన్ని వాడడానికి $1ని ఆహ్వానించారు.',
+	'invitations-invitedlist-item'     => '<b>$1</b> ($2 ఆహ్వానాలు మిగిలివున్నాయి)',
+	'invitations-feature-pagetitle'    => 'ఆహ్వాన నిర్వహణ - $1',
+	'invitations-feature-access'       => '<i>$1</i>ని వాడడానికి ప్రస్తుతం మీకు అనుమతి ఉంది.',
+	'invitations-feature-numleft'      => 'మీ $2 ఆహ్వనాలలో మీ దగ్గర ఇంకా <b>$1</b> మిగిలివున్నాయి.',
+	'invitations-inviteform-title'     => '$1ని వాడడానికి ఓ వాడుకరిని ఆహ్వానించండి',
+	'invitations-inviteform-username'  => 'ఆహ్వానించాల్సిన వాడుకరి',
+	'invitations-inviteform-submit'    => 'ఆహ్వానించు',
+	'invitations-error-baduser'        => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
+	'invitations-error-alreadyinvited' => 'మీరు చెప్పిన ఆ వాడుకరికి ఈ విశేషాన్ని వాడుకునే అనుమతి ఈపాటికే ఉంది!',
+	'invitations-invite-success'       => 'ఈ విశేషాన్ని వాడుకోమని $1ని మీరు విజయవంతంగా ఆహ్వానించారు!',
 );
 
 /** Vietnamese (Tiếng Việt)

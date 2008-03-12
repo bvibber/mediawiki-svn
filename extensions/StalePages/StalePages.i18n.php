@@ -132,6 +132,14 @@ $messages['stq'] = array(
 	'stalepages-summary' => 'Dit is ne Lieste fon Sieden, do der in do lääste $1 Deege nit beoarbaided wuuden.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'stalepages'         => 'పాచి పేజీలు',
+	'stalepages-summary' => 'గత $1 రోజులుగా ఎటువంటి మార్పులూ లేని పేజీల జాబితా ఇది.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

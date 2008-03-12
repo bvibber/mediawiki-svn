@@ -233,6 +233,25 @@ $messages['oc'] = array(
 	'userrightsnotif-desc'    => 'Manda una notificacion, per corrièr electronic, als utilizaires concernits al moment de la modificacion de lors dreches',
 );
 
+/** Polish (Polski)
+ * @author Masti
+ */
+$messages['pl'] = array(
+	'userrightsnotifysubject' => 'Zmiana członkostwa w grupach w $1',
+	'userrightsnotifybody'    => 'Witaj $1,
+
+informuję, że Twoje członkostwo w grupach w $2 zostało zmienione $4 przez $3.
+
+Dodano: $5
+Usunięto: $6
+
+
+Pozdrowienia
+
+$2',
+	'userrightsnotif-desc'    => 'Wyślij informację do użytkowników o zmianach uprawnień',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

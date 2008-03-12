@@ -368,6 +368,7 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'intersection-desc'          => 'Феҳристи гулулае аз саҳифаҳое ба намоиш дар меояд, ки ба тозагӣ дар як ё чанд гурӯҳ ворид шудаанд',
 	'intersection_toomanycats'   => 'DynamicPageList: Теъдоди гурӯҳҳо зиёд аст!',
 	'intersection_toofewcats'    => 'DynamicPageList: Теъдоди гурӯҳҳо кам аст!',
 	'intersection_noresults'     => 'DynamicPageList: Натиҷае вуҷуд надорад!',

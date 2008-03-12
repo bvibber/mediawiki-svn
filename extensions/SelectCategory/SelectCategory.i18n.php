@@ -67,6 +67,13 @@ $messages['el'] = array(
 	'selectcategory-title' => 'Επέλεξε κατηγορίες',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'selectcategory-title' => 'Elektu kategoriojn',
+);
+
 /** French (Français)
  * @author Marius Engler <marius.engler@coop.ch>
  * @author Sherbrooke

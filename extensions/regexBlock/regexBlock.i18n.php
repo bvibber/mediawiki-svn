@@ -148,6 +148,13 @@ $messages['el'] = array(
 	'regexblock-view-reason'    => 'Λόγος: $1',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
@@ -361,17 +368,18 @@ $messages['is'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'regexblock-unblock-log'       => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ លែងរាំងខ្ទប់។",
 	'regexblock-form-username'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ ៖',
-	'regexblock-form-reason'       => 'ហេតុផល ៖',
+	'regexblock-form-reason'       => 'មូលហេតុ៖',
 	'regexblock-block-log'         => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
 	'regexblock-stats-username'    => 'សំរាប់ $1',
 	'regexblock-stats-logging'     => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
 	'regexblock-currently-blocked' => 'អាស័យដ្ឋាន ដែលបានត្រូវរាំងខ្ទប់ បច្ចុប្បន្ន ៖',
 	'regexblock-view-go'           => 'ទៅ',
-	'regexblock-view-reason'       => 'ហេតុផល ៖ $1',
+	'regexblock-view-reason'       => 'មូលហេតុ៖ $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -405,13 +413,13 @@ $messages['nl'] = array(
 	'regexblock'                      => 'RegexBlokkeren',
 	'regexblock-desc'                 => 'Uitbreiding die wordt gebruikt voor het blokkeren van gebruikers en IP-adress met een reguliere expressie. Bevat zowel een blokkademechanisme als een [[Special:Regexblock|speciale pagina]] voor het toevoegen en beheren van blokkades',
 	'regexblock-special-desc'         => 'alternatieve gebruikersblokkade (via gebruikersnaam met reguliere expressies)',
-	'regexblock-stat-desc'            => "Toont [[Special:Regexblockstats|blokkadestatistieken]] voor de uitbreiding ''regexblock''",
+	'regexblock-stat-desc'            => "Biedt [[Special:Regexblockstats|blokkadestatistieken]] voor de uitbreiding ''regexblock''",
 	'regexblock-page-title'           => 'Namen blokkeren met reguliere uitdrukkingen',
 	'regexblockstats'                 => 'Statistieken van regex-blokkeren',
 	'regexblock-reason-ip'            => 'Dit IP-adres is door u of door iemand met hetzelfde IP-adres geblokkeerd van bewerken door vandalisme of een andere reden. Als u gelooft dat dit een fout is, gelieve $1',
 	'regexblock-reason-name'          => 'Deze gebruikersnaam is geblokkeerd van bewerken door vandalisme of een andere reden. Als u gelooft dat dit een fout is, gelieve $1',
 	'regexblock-reason-regex'         => 'Deze gebruikersnaam is door een gebruiker met dezelfde naam geblokkeerd van bewerken door vandalisme of een andere reden. Gelieve een andere gebruikersnaam te kiezen of $1 over het probleem',
-	'regexblock-help'                 => "Gebruik het onderstaande formulier om schrijftoegang voor een IP-adres of gebruiker te ontzeggen. Dit hoort eigenlijk alleen te gebeuren om vandalisme te voorkomen, en dient in overeenstemming te zijn met het beleid. ''Deze pagina staat u zelf toe om gebruikers die nog niet bestaan te blokkeren. Daarnaast worden ook gebruikers met gelijkende namen geblokkeerd. \"Test\" wordt samen met \"Test 2\", enzovoort geblokkeerd. U kunt ook een IP-adres blokkeren, wat betekent dat niemand van dat IP-adres pagina's kan bewerken. Opmerking: IP-adressen worden behandeld als gebruikersnamen bij het bepalen van blokkades. Als er geen reden is opgegeven, dan wordt er een standaardreden gebruikt.''",
+	'regexblock-help'                 => "Gebruik het onderstaande formulier om schrijftoegang voor een IP-adres of gebruiker te ontzeggen. Dit hoort eigenlijk alleen te gebeuren om vandalisme te voorkomen, en dient in overeenstemming te zijn met het beleid. ''U kunt zelfs gebruikers die nog niet bestaan blokkeren. Daarnaast worden ook gebruikers met gelijkende namen geblokkeerd. \"Test\" wordt samen met \"Test 2\", enzovoort geblokkeerd. U kunt ook een IP-adres blokkeren, wat betekent dat niemand van dat IP-adres pagina's kan bewerken. Opmerking: IP-adressen worden behandeld als gebruikersnamen bij het bepalen van blokkades. Als er geen reden is opgegeven, dan wordt er een standaard reden gebruikt.''",
 	'regexblock-page-title-1'         => 'IP-adres blokkeren met behulp van reguliere uitdrukkingen',
 	'regexblock-unblock-success'      => 'Het deblokkeren is gelukt',
 	'regexblock-unblock-log'          => "Gebruikersnaam of IP-adres '''$1''' zijn gedeblokkeerd.",
@@ -433,7 +441,7 @@ $messages['nl'] = array(
 	'regexblock-stats-times'          => 'is geblokkeerd op',
 	'regexblock-stats-logging'        => 'aangemeld van IP-adres',
 	'regexblock-currently-blocked'    => 'Op dit moment geblokkeerde IP-adressen:',
-	'regexblock-view-blocked'         => 'Toon blokkades door:',
+	'regexblock-view-blocked'         => 'Blokkades weergeven door:',
 	'regexblock-view-all'             => 'Alles',
 	'regexblock-view-go'              => 'Gaan',
 	'regexblock-view-match'           => '(voldoet precies)',
@@ -573,6 +581,13 @@ $messages['oc'] = array(
 	'regexblock-view-time'            => 'lo $1',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'regexblock-form-username' => 'Adres IP lub nazwa użytkownika:',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
@@ -688,6 +703,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'regexblock-unblock-success'      => 'నిరోధపు ఎత్తివేత విజయవంతమైంది',
+	'regexblock-unblock-log'          => "'''$1''' అనే వాడుకరి పేరు లేదా ఐపీ చిరునామాపై నిరోధం ఎత్తివేసారు.",
 	'regexblock-form-username'        => 'IP చిరునామా లేదా వాడుకరి పేరు:',
 	'regexblock-form-reason'          => 'కారణం:',
 	'regexblock-form-expiry'          => 'కాలపరిమితి:&#160;',
@@ -696,6 +713,7 @@ $messages['te'] = array(
 	'regexblock-block-log'            => "'''$1''' అనే వాడుకరిపేరు లేదా ఐపీ చిరునామాని నిరోధించాం.",
 	'regexblock-block-success'        => 'నిరోధం విజయవంతమైంది',
 	'regexblock-form-submit-empty'    => 'నిరోధించాల్సిన వాడుకరి పేరు లేదా ఐపీ చిరునామా ఇవ్వండి.',
+	'regexblock-form-submit-regex'    => 'తప్పుడు రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్.',
 	'regexblock-form-submit-expiry'   => 'దయచేసి ఓ కాలపరిమితి ఇవ్వండి.',
 	'regexblock-already-blocked'      => '$1ని ఇదివరకే నిషేధించారు.',
 	'regexblock-stats-username'       => '$1 కొరకు',
@@ -708,7 +726,10 @@ $messages['te'] = array(
 	'regexblock-view-block-infinite'  => 'శాశ్వత నిరోధం',
 	'regexblock-view-block-temporary' => 'కాలంచెల్లు తేదీ',
 	'regexblock-view-block-expired'   => 'కాలంచెల్లింది',
+	'regexblock-view-block-by'        => 'నిరోధించినది',
+	'regexblock-view-block-unblock'   => 'నిరోధం ఎత్తివేయండి',
 	'regexblock-view-stats'           => '(గణాంకాలు)',
+	'regexblock-view-empty'           => 'నిరోధించిన పేర్లు మరియు చిరునామాల జాబితా ఖాళీగా ఉంది.',
 	'regexblock-view-time'            => '$1 నాడు',
 );
 

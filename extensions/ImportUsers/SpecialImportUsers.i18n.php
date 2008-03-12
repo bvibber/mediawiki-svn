@@ -99,6 +99,17 @@ $messages['de'] = array(
 	'importusers-realname'                => 'Echter Name',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'importusers-form-button' => 'Importu',
+	'importusers-log'         => 'Loglibro de importoj',
+	'importusers-password'    => 'pasvorto',
+	'importusers-email'       => 'retpoŝto',
+	'importusers-realname'    => 'reala nomo',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -195,6 +206,7 @@ $messages['hsb'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'importusers'                         => 'នាំចូល អ្នកប្រើប្រាស់',
@@ -203,14 +215,14 @@ $messages['km'] = array(
 	'importusers-user-added'              => 'បានបន្ថែមហើយ អ្នកប្រើប្រាស់ <b>%s</b> ។',
 	'importusers-user-present-update'     => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ បានបន្ទាន់សម័យ។',
 	'importusers-user-present-not-update' => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ មិនទាន់បានបន្ទាន់សម័យ។',
-	'importusers-log'                     => 'កំណត់ហេតុ នាំចូល',
+	'importusers-log'                     => 'កំណត់ហេតុនៃការនាំចូល',
 	'importusers-log-summary'             => 'សេចក្តីសង្ខេប',
 	'importusers-log-summary-all'         => 'ទាំងអស់',
 	'importusers-log-summary-added'       => 'បានបន្ថែម',
-	'importusers-log-summary-updated'     => 'បានបន្ទាន់សម័យ',
+	'importusers-log-summary-updated'     => 'បានធ្វើឱ្យទាន់សម័យ',
 	'importusers-login-name'              => 'ឈ្មោះ ពិនិត្យចូល',
 	'importusers-password'                => 'ពាក្យសំងាត់',
-	'importusers-email'                   => 'អ៊ីមែវល៍',
+	'importusers-email'                   => 'អ៊ីមែល',
 	'importusers-realname'                => 'ឈ្មោះពិត',
 );
 
@@ -310,14 +322,27 @@ $messages['oc'] = array(
 	'importusers-realname'                => 'nom vertadièr',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'importusers-uploadfile'  => 'Prześlij plik',
+	'importusers-form-button' => 'Importuj',
+	'importusers-log'         => 'Rejestr importu',
+	'importusers-log-summary' => 'Podsumowanie',
+	'importusers-password'    => 'hasło',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
 	'importusers-log-summary'     => 'لنډيز',
 	'importusers-log-summary-all' => 'ټول',
+	'importusers-login-name'      => 'غونډال ته د ننوتنې نوم',
 	'importusers-password'        => 'پټنوم',
 	'importusers-email'           => 'برېښناليک',
+	'importusers-realname'        => 'اصلي نوم',
 );
 
 /** Portuguese (Português)
@@ -451,6 +476,8 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'importusers'                         => 'వాడుకరులను దిగుమతి చేయి',
+	'importusers-uploadfile'              => 'ఫైలుని ఎగుమతి చేయండి',
+	'importusers-form-button'             => 'దిగుమతించు',
 	'importusers-user-added'              => '<b>%s</b> అనే వాడుకరిని చేర్చాం.',
 	'importusers-user-present-update'     => '<b>%s</b> అనే వాడుకరి ఈసరికే ఉన్నారు. తాజాకరించాం.',
 	'importusers-user-present-not-update' => '<b>%s</b> అనే వాడుకరి ఈసరికే ఉన్నారు. తాజాకరించలేదు.',

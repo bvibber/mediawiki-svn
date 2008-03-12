@@ -116,6 +116,13 @@ V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
 	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'call' => 'Voku',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */
@@ -280,6 +287,26 @@ L’extension <i>Apèl</i> apelarà la pagina indicada en i passant los paramèt
 	'call-save-failed'  => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
 );
 
+/** Polish (Polski)
+ * @author Holek
+ */
+$messages['pl'] = array(
+	'call'              => 'Wywołaj z parametrem',
+	'call-desc'         => 'Tworzy hiperłącze do szablonu (oraz strony w każdej przestrzeni nazw) z przesłaniem parametrów. Może to zostać wykorzystane bezpośrednio w wikitekście lub jako adres do pokazania możliwości szablonu/strony.',
+	'call-text'         => 'Rozszerzenie "Wywoływania z parametrem" wykorzystuje nazwę strony i opcjonalne parametry dla tej strony jako pierwszy argument.<br /><br />
+Przykład 1: &nbsp; <tt>[[Specjalna:Wywołaj z parametrem/Mój szablon,parametr1=wartość1]]</tt><br />
+Przykład 2: &nbsp; <tt>[[Specjalna:Wywołaj z parametrem/Dyskusja:Moja dyskusja,parametr1=wartość1]]</tt><br />
+Przykład 3: &nbsp; <tt>[[Specjalna:Wywołaj z parametrem/:Moja strona,parametr1=wartość1,parametr2=wartość2]]</tt><br /><br />
+Przykład 4 (link): &nbsp; <tt>http://mojadomena/mojawiki/index.php?Special:Call/:Moja strona,parametr1=wartość1</tt><br /><br />
+
+<i>Rozszerzenie "Wywoływania z parametrem"</i> wywoła podaną stronę i wyśle podane jej parametry.<br />Zobaczysz zawartość wywołanej strony i jej tytuł, ale dalej będzie to strona specjalna,<br />przez co nie będzie mogła być edytowana.<br />Zawartość, którą zobaczysz, będzie różniła w zależności od podanych dalej parametrów.<br /><br />
+<i>Rozszerzenie "Wywoływania z parametrem"</i> jest przydatne w budowaniu interaktywnych aplikacji na podstawie MediaWiki.<br />Przykładem takiej aplikacji jest chociażby <a href=\'http://semeb.com/dpldemo/Template:Catlist\'>DPL GUI</a>.<br />
+W razie problemów, spróbuj <b>Specjalna:Wywołaj z parametrem/DebuG</b>',
+	'call-save'         => 'Zawartość tego wywołania zostanie zapisana na stronie "$1".',
+	'call-save-success' => 'Poniższy tekst został zapisany na stronie <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Poniższy tekst NIE został zapisany na stronie <big>[[$1]]</big>, ponieważ ta strona już istnieje.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -363,7 +390,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'call'              => 'Anropa',

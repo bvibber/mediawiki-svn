@@ -328,10 +328,13 @@ $messages['el'] = array(
 	'lucenefallback'     => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'searchnumber'          => '<strong>Rezultoj $1-$2 el $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Antaŭa</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Sekvanta</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Antaŭa</span>",
+	'searchnext'            => "<span style='font-size: small'>Sekvanta</span> &#x00BB;",
 	'lucene-searchscore'    => 'Kongrueco: $1%',
 	'lucene-resultsize'     => '$1 ($2 vortoj)',
 	'searchdidyoumean'      => 'Ĉu vi celis : "<a href="$1">$2</a>"?',
@@ -345,27 +348,7 @@ Serĉo de $3 $9 $10',
 	'lucenefallback'        => 'Estis problemo kun la serĉilo de ĉi vikio.
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.',
-);
-$messages['es'] = array(
-	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Previo</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Siguiente</span> &#x00BB;',
-	'lucene-searchscore'    => 'Relevancia: $1%',
-	'lucene-resultsize'     => '$1 ($2 palabras)',
-	'searchdidyoumean'      => '¿Quisiste decir «<a href="$1">$2</a>»?',
-	'searchnoresults'       => 'Lo sentimos, no hay ningún artículo con el texto buscado.',
-	'searchnearmatches'     => '<b>Estas páginas tienen títulos similares a tu consulta:</b>',
-	'lucenepowersearchtext' => 'Buscar sólo en los espacios de nombre:
-
-$1
-
-Buscar $3 $9',
-	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
-Probablemente sea temporal. Intentelo de nuevo en unos minutos,
-o emplee algún buscador externo para explorar la wiki.',
-	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
-	'searchall'             => 'todos',
-	'searchincategory'      => 'en categoría',
+	'searchall'             => 'ĉiuj',
 );
 
 /** Spanish (Español)
@@ -874,6 +857,7 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'lucene-desc'           => 'អន្តរមុខ សំរាប់ ឧបករស្វែងរក Apache Lucene',
@@ -882,7 +866,7 @@ $messages['km'] = array(
 	'searchnext'            => "<span style='font-size: small'>បន្ទាប់</span> &#x00BB;",
 	'lucene-resultsize'     => '$1 ($2 ពាក្យ)',
 	'searchdidyoumean'      => 'អ្នក គិត ដល់ ៖ "<a href="$1">$2</a>" ឬ?',
-	'lucenepowersearchtext' => 'ស្វែងរក ក្នុង វាលឈ្មោះ ៖
+	'lucenepowersearchtext' => 'ស្វែងរកក្នុងលំហឈ្មោះ ៖
 
 $1
 
@@ -892,7 +876,7 @@ $1
 ឬ អ្នកអាចស្វែងរក វិគី តាម សេវាស្វែងរក ខាងក្រៅ ៖',
 	'searchexactcase'       => 'ស្វែងរក (គិត អក្សរធំ/អក្សតូច)',
 	'searchall'             => 'ទាំងអស់',
-	'searchincategory'      => 'ស្វែងរក ក្នុង ចំណាត់ក្រុម',
+	'searchincategory'      => 'មិនមានចំណាត់ក្រុម',
 );
 
 $messages['la'] = array(
@@ -1436,7 +1420,7 @@ Uurs koast du uk do externe Säikmuugelkhaide nutsje:',
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
@@ -1493,6 +1477,10 @@ $3 $9 $10 కొరకు వెతుకు',
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'lucene-desc'           => 'Интерфейс барои муҳаррики ҷустуҷӯии Апаче Лусин',
+	'searchnumber'          => '<strong>$1-$2 натоиҷ аз $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Қаблӣ</span>",
+	'searchnext'            => "<span style='font-size: small'>Баъдӣ</span> &#x00BB;",
 	'lucene-searchscore'    => 'Иртибот: $1%',
 	'lucene-resultsize'     => '$1 ($2 калимаҳо)',
 	'searchdidyoumean'      => 'Оё манзури шумо буд: "<a href="$1">$2</a>"?',
@@ -1503,6 +1491,7 @@ $messages['tg'] = array(
 $1
 
 Ҷустуҷӯ барои $3 $9 $10',
+	'lucenefallback'        => 'Ҷустуҷӯи вики мушкилие дорад. Эҳтимолан ин мушкили муваққатӣ аст; лутфан чанд лаҳза саъй кунед ё щумо метавонед тариқи хизмати беруна викиро ҷустуҷӯ кунед:',
 	'searchexactcase'       => 'Ҷустуҷӯи ҳассос бо ҳуруфи бузург ва хурд',
 	'searchall'             => 'ҳама',
 	'searchincategory'      => 'Дар гурӯҳ',
@@ -1521,9 +1510,12 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
+	'searchprev'      => "&#x00AB; <span style='font-size: small'>Попередні</span>",
+	'searchnext'      => "<span style='font-size: small'>Наступні</span> &#x00BB;",
 	'searchnoresults' => 'На жаль, за вашим запитом не було знайдено точних відповідників.',
 );
 

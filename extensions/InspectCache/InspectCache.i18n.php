@@ -72,6 +72,14 @@ $messages['ee'] = array(
 	'inspectcache-delete' => 'Tutui',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'inspectcache-ok'   => 'Ek!',
+	'inspectcache-list' => 'Listo',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin
@@ -137,14 +145,15 @@ $messages['hu'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
 	'inspectcache-ok'      => 'យល់ព្រម',
-	'inspectcache-general' => 'សតិភ្ជាប់',
-	'inspectcache-message' => 'សតិភ្ជាប់ របស់សារ',
+	'inspectcache-general' => 'ឃ្លាំងសំងាត់ទូទៅ',
+	'inspectcache-message' => 'សារឃ្លាំងសំងាត់',
 	'inspectcache-delete'  => 'លុបចេញ',
-	'inspectcache-deleted' => 'លុបចេញ សតិភ្ជាប់',
+	'inspectcache-deleted' => 'លុបឃ្លាំងសំងាត់ចេញ',
 	'inspectcache-list'    => 'បញ្ជី',
 );
 
@@ -170,7 +179,7 @@ $messages['nl'] = array(
 	'inspectcache-get'     => 'Ophalen',
 	'inspectcache-delete'  => 'Verwijderen',
 	'inspectcache-deleted' => 'Cache geleegd',
-	'inspectcache-list'    => 'Tonen',
+	'inspectcache-list'    => 'Bekijken',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -211,6 +220,15 @@ $messages['oc'] = array(
 	'inspectcache-delete'  => 'Suprimir',
 	'inspectcache-deleted' => 'Amagatal suprimit',
 	'inspectcache-list'    => 'Lista',
+);
+
+/** Polish (Polski)
+ * @author McMonster
+ * @author Masti
+ */
+$messages['pl'] = array(
+	'inspectcache-ok'   => 'OK',
+	'inspectcache-list' => 'Lista',
 );
 
 /** Pashto (پښتو)
@@ -286,10 +304,10 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'inspectcache'        => 'Inspektera mellanlagring',
 	'inspectcache-ok'     => 'OK',
 	'inspectcache-get'    => 'Hämta',
 	'inspectcache-delete' => 'Ta bort',

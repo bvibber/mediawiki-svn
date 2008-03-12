@@ -245,9 +245,10 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'sitenotice_close' => 'លែងអោយ ធ្វើការ',
+	'sitenotice_close' => 'លាក់',
 );
 
 /** Korean (한국어)

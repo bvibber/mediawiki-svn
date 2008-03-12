@@ -156,7 +156,7 @@ $messages['li'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'doublewiki-desc' => 'Toont een pagina en de vertaling uit een andere wiki in twee kolommen op dezelfde pagina',
+	'doublewiki-desc' => 'Presenteert een pagina en de vertaling uit een andere wiki in twee kolommen op dezelfde pagina',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

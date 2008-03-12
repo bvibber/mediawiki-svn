@@ -56,8 +56,13 @@ $messages['bcl'] = array(
 	'linksearch-line'  => '$1 an nakatakod sa $2',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ * @author Borislav
+ */
 $messages['bg'] = array(
 	'linksearch'       => 'Търсене на външни препратки',
+	'linksearch-desc'  => '[[Special:Linksearch|Търсене на страници с външни препратки]], отговарящи на определен образец',
 	'linksearch-pat'   => 'Търсене по:',
 	'linksearch-ns'    => 'Именно пространство:',
 	'linksearch-ok'    => 'Търсене',
@@ -81,6 +86,20 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'linksearch-ok' => 'Klask',
+);
+
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'linksearch'       => 'Cerca enllaços web',
+	'linksearch-desc'  => '[[Special:Linksearch|Busca pàgines amb enllaços externs]] cap a determinades adreces',
+	'linksearch-pat'   => 'Patró de cerca:',
+	'linksearch-ns'    => 'Espai de noms:',
+	'linksearch-ok'    => 'Cerca',
+	'linksearch-text'  => 'Es poden fer servir caràcters comodí com «*.wikipedia.org».<br />Protocols admesos: <tt>$1</tt>',
+	'linksearch-line'  => '$1 enllaçat a $2',
+	'linksearch-error' => "Els caràcters comodí només poden aparèixer a l'inici de l'url.",
 );
 
 $messages['cdo'] = array(
@@ -136,6 +155,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'linksearch'      => 'Serĉu retajn ligilojn',
+	'linksearch-desc' => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
+	'linksearch-pat'  => 'Serĉesprimo:',
 	'linksearch-ns'   => 'Nomspaco:',
 	'linksearch-ok'   => 'Sercxu:',
 	'linksearch-line' => '$1 ligita de $2',
@@ -196,16 +218,16 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
- * @author Urhixidur
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'linksearch'       => 'Rechercher des liens Internet',
-	'linksearch-desc'  => 'Recherche des pages dans lesquelles un lien externe apparaît.',
+	'linksearch-desc'  => '[[Special:Linksearch|Rechercher des pages contenant des liens externes]] (La recherche peut contenir des caractères « joker », par exemple *.wiktionary.org.)',
 	'linksearch-pat'   => 'Rechercher l’expression :',
 	'linksearch-ns'    => 'Espace de noms :',
 	'linksearch-ok'    => 'Rechercher',
-	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères passe-partout peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Des caractères « joker » peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.<br />Protocoles reconnus : <tt>$1</tt>.',
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
 	'linksearch-error' => 'Les caractères passe-partout ne peuvent être utilisés qu’au début du nom de domaine.',
 );
@@ -702,10 +724,14 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'linksearch'     => 'Ҷусутҷӣ пайвандҳои веб',
-	'linksearch-pat' => 'Ҷустуҷӯи нақш:',
-	'linksearch-ns'  => 'Фазоином:',
-	'linksearch-ok'  => 'Ҷустуҷӯ',
+	'linksearch'       => 'Ҷусутҷӣ пайвандҳои веб',
+	'linksearch-desc'  => '[[Special:Linksearch|Саҳифаҳоеро бо пайвандҳои беруна пайдо мекунад]], ки бо нақшаҳои мушаххасе мувофиқат доранд',
+	'linksearch-pat'   => 'Ҷустуҷӯи нақш:',
+	'linksearch-ns'    => 'Фазоином:',
+	'linksearch-ok'    => 'Ҷустуҷӯ',
+	'linksearch-text'  => 'Нишонаҳои монанди "*.wikipedia.org"-ро метавон истифода кард.<br />Протоколҳои пуштибонишуда: <tt>$1</tt>',
+	'linksearch-line'  => '$1 дорои пайванд аз $2 аст',
+	'linksearch-error' => 'Нишонаҳо фақат дар ибтидои номи мизбони интернетӣ метавонанд истифода шаванд.',
 );
 
 /** Tonga (faka-Tonga)
@@ -722,6 +748,20 @@ $messages['to'] = array(
  */
 $messages['tr'] = array(
 	'linksearch-ok' => 'Ara',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'linksearch'       => 'Пошук зовнішніх посилань',
+	'linksearch-desc'  => '[[Special:Linksearch|Пошук сторінок із зовнішніми посиланнями]], що відповідають зазначеному шаблону',
+	'linksearch-pat'   => 'Шаблон для пошуку:',
+	'linksearch-ns'    => 'Простір назв:',
+	'linksearch-ok'    => 'Знайти',
+	'linksearch-text'  => 'Можна використовувати підстановочні символи, наприклад, <code>*.wikipedia.org</code>.',
+	'linksearch-line'  => 'Посилання на $1 із $2',
+	'linksearch-error' => 'Підстановочні знаки можуть використовуватися лише на початку адрес.',
 );
 
 /** Vietnamese (Tiếng Việt)

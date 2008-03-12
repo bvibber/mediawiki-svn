@@ -138,7 +138,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'randomincategory'            => 'Willekeurige pagina in een categorie',
-	'randomincategory-desc'       => '[[Special:Randomincategory|Speciale pagina]] om een willekeurige pagina in een categorie te tonen',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Speciale pagina]] om een willekeurige pagina in een categorie weer te geven',
 	'randomincategory-toolbox'    => 'Willekeurige pagina',
 	'randomincategory-nocategory' => 'Categorie $1 bestaat niet of is leeg',
 	'randomincategory-label'      => 'Categorie:',
@@ -214,7 +214,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author M.M.S.
  */
 $messages['sv'] = array(

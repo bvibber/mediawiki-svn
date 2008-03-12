@@ -117,6 +117,13 @@ $messages['oc'] = array(
 	'nstab-comments'    => 'Comentari',
 );
 
+/** Polish (Polski)
+ * @author Masti
+ */
+$messages['pl'] = array(
+	'nstab-comments' => 'Komentarz',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

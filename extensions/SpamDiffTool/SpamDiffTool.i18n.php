@@ -361,8 +361,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'spamdifftool_option_domain' => 'ఈ డొమైన్ నుండి అన్నీ',
-	'spamdifftool_block'         => 'నిరోధం:',
+	'spamdifftool_option_domain'    => 'ఈ డొమైన్ నుండి అన్నీ',
+	'spamdifftool_option_subdomain' => 'ఈ ఉపడొమైను నుండి అన్నీ',
+	'spamdifftool_option_none'      => 'ఏమీలేదు',
+	'spamdifftool_block'            => 'నిరోధం:',
+	'spamdifftool_submit_buttom'    => 'దాఖలుచెయ్యి',
 );
 
 /** Volapük (Volapük)

@@ -47,6 +47,13 @@ $messages['el'] = array(
 	'contributionseditcount' => 'Αυτός ο χρήστης έχει κάνει $1 επεξεργασίες.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'contributionseditcount' => 'Ĉi uzanto havas $1 redaktojn.',
+);
+
 $messages['ext'] = array(
 	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
 );
@@ -170,6 +177,13 @@ $messages['pms'] = array(
 	'contributionseditcount' => 'St\'utent-sì a l\'ha fait $1 modìfiche.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contributionseditcount' => 'همدغه کارونکي $1 سمادونه ترسره کړي.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -211,7 +225,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
-	'contributionseditcount-desc' => 'Visar antalet redigeringar på [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Visar en redigeringsräknare i [[Special:Contributions|listan över användares bidrag]]',
 );
 
 /** Tamil (தமிழ்)
@@ -226,7 +240,8 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+	'contributionseditcount'      => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+	'contributionseditcount-desc' => '[[Special:Contributions]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
 );
 
 /** Thai (ไทย)

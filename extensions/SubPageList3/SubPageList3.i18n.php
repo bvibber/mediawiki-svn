@@ -134,6 +134,13 @@ $messages['sk'] = array(
 	'spl3_nosubpages' => '$1 nemá zobraziteľné podstránky.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'spl3_nosubpages' => '$1లో చూపించాల్సిన ఉపపేజీలు ఏమీలేవు.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

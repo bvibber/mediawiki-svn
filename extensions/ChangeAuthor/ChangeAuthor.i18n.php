@@ -235,10 +235,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'changeauthor-comment'     => 'Komento:',
-	'changeauthor-nosuchuser'  => 'Neniu uzanto "$1".',
-	'changeauthor-revview'     => 'Revizio #$1 de $2',
-	'changeauthor-nosuchtitle' => 'Estas neniu pagxo titolata "$1".',
+	'changeauthor-pagenameform-go'      => 'Ek!',
+	'changeauthor-comment'              => 'Komento:',
+	'changeauthor-changeauthors-multi'  => 'Ŝanĝu aŭtoro(j)n',
+	'changeauthor-changeauthors-single' => 'Ŝanĝu aŭtoron',
+	'changeauthor-invalid-username'     => 'Nevalida salutnomo "$1".',
+	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',
+	'changeauthor-revview'              => 'Revizio #$1 de $2',
+	'changeauthor-nosuchtitle'          => 'Estas neniu pagxo titolata "$1".',
 );
 
 /** Finnish (Suomi)
@@ -454,13 +458,14 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'changeauthor-pagenameform-go'      => 'ទៅ',
-	'changeauthor-comment'              => 'វិចារ ៖',
+	'changeauthor-comment'              => 'យោបល់៖',
 	'changeauthor-changeauthors-multi'  => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
-	'changeauthor-nosuchuser'           => 'គ្មាន អ្នកប្រើប្រាស់ ឈ្មោះ "$1"  ។',
+	'changeauthor-nosuchuser'           => 'មិនមានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -510,8 +515,9 @@ $messages['nl'] = array(
 	'changeauthor-nosuchuser'           => 'Gebruiker "$1" bestaat niet.',
 	'changeauthor-revview'              => 'Bewerking no. $1 van $2',
 	'changeauthor-nosuchtitle'          => 'Er is geen pagina "$1".',
-	'changeauthor-weirderror'           => 'Er is een erg vreemde fout opgetreden. Probeer het a.u.b. nogmaals. Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
-	'changeauthor-invalidform'          => 'Gebruik a.u.b. het formulier van Special:ChangeAuthor, in plaats van een aangepast formulier.',
+	'changeauthor-weirderror'           => 'Er is een erg vreemde fout opgetreden. Probeer het alstublieft nogmaals.
+Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
+	'changeauthor-invalidform'          => 'Gebruik alstublieft het formulier van Special:ChangeAuthor, in plaats van een aangepast formulier.',
 	'changeauthor-success'              => 'Uw verzoek is succesvol verwerkt.',
 	'changeauthor-logentry'             => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename'          => 'Auteurswijzigingenlogboek',
@@ -725,7 +731,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'changeauthor'                      => 'Ändra upphovsman för sidversion',

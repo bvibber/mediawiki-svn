@@ -648,6 +648,16 @@ $wdMessages['el'] = array(
 	'languages'     => 'Wikidata: Διαχειριστής γλώσσας',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$wdMessages['eo'] = array(
+	'ow_save'     => 'Konservu',
+	'ow_history'  => 'Historio',
+	'ow_dm_OK'    => 'Ek!',
+	'ow_Language' => 'Lingvo',
+);
+
 /** Spanish (Español)
  * @author Ascánder
  */
@@ -1389,8 +1399,8 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  een mapping toevoegen</li>
 <li>&action=get&concept=<concept_id>  een mapping teruglezen</li>
 <li>&action=list_sets  geeft een lijst met mogelijke gegevenscontextvoorvoegsels terug en waar ze naar verwijzen.</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> voor een bepaalde betekenis in een concept, toont all overige</li>
-<li>&action=help  Zinvolle hulptekst tonen.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> voor een bepaalde betekenis in een concept, geeft alle overige weer</li>
+<li>&action=help  Zinvolle hulptekst weergeven.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext'              => '<p>ConceptMapping maakt het mogelijk om bepaalde betekenissen in meerdere gegevenssets als identiek te markeren.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Sorry, maar ik weet niet hoe ik kan "$1".',
@@ -1787,77 +1797,95 @@ als senses definits dins las autras donadas.</p>",
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe
+ * @author Derbeth
+ * @author Masti
  */
 $wdMessages['pl'] = array(
-	'datasearch'                       => 'Wikidata: Wyszukiwanie danych',
-	'langman_title'                    => 'Menadżer języków',
-	'languages'                        => 'Wikidata: Menadżer języków',
-	'ow_save'                          => 'Zapisz',
-	'ow_history'                       => 'Historia',
-	'ow_datasets'                      => 'Wybór zbioru danych',
-	'ow_noedit_title'                  => 'Brak uprawnień do wykonania edycji',
-	'ow_noedit'                        => 'Nie masz uprawnień do wykonania edycji w zbiorze danych "$1". Zobacz [[{{MediaWiki:Ow editing policy url}}|zasady nadawania uprawnień do edycji]].',
-	'ow_uipref_datasets'               => 'Widok domyślny',
-	'ow_AlternativeDefinition'         => 'Inna defnicja',
-	'ow_AlternativeDefinitions'        => 'Alternatywne definicje',
-	'ow_Annotation'                    => 'Adnotacja',
-	'ow_ApproximateMeanings'           => 'Zbliżone znaczenia',
-	'ow_ClassAttributeAttribute'       => 'Atrybut',
-	'ow_ClassAttributes'               => 'Atrybuty klas',
-	'ow_ClassAttributeLevel'           => 'Poziom',
-	'ow_ClassAttributeType'            => 'Typ',
-	'ow_ClassMembership'               => 'Członkostwo w klasie',
-	'ow_Collection'                    => 'Kolekcja',
-	'ow_CollectionMembership'          => 'Członkostwo w kolekcji',
-	'ow_Definition'                    => 'Definicja',
-	'ow_DefinedMeaningAttributes'      => 'Adnotacja',
-	'ow_DefinedMeaning'                => 'Zdefiniowane znaczenie',
-	'ow_DefinedMeaningReference'       => 'Zdefiniowane znaczenie',
-	'ow_ExactMeanings'                 => 'Dokładne znaczenia',
-	'ow_Expression'                    => 'Wyrażenie',
-	'ow_ExpressionMeanings'            => 'Znaczenia wyrażenia',
-	'ow_Expressions'                   => 'Wyrażenia',
-	'ow_IdenticalMeaning'              => 'Takie samo znaczenie?',
-	'ow_IncomingRelations'             => 'Zależności wchodzące',
-	'ow_GotoSource'                    => 'Idź do źródła',
-	'ow_Language'                      => 'Język',
-	'ow_LevelAnnotation'               => 'Adnotacja',
-	'ow_OptionAttribute'               => 'Właściwość',
-	'ow_OptionAttributeOption'         => 'Opcja',
-	'ow_OptionAttributeOptions'        => 'Opcje',
-	'ow_OptionAttributeValues'         => 'Wartość opcji',
-	'ow_OtherDefinedMeaning'           => 'Inaczej zdefiniowane pojęcie',
-	'ow_PopupAnnotation'               => 'Adnotacja',
-	'ow_Relations'                     => 'Zależności',
-	'ow_RelationType'                  => 'Typ zależności',
-	'ow_Spelling'                      => 'Ortografia',
-	'ow_Synonyms'                      => 'Snonimy',
-	'ow_SynonymsAndTranslations'       => 'Synonimy i tłumaczenia',
-	'ow_Source'                        => 'Źródło',
-	'ow_SourceIdentifier'              => 'Identyfikator źródła',
-	'ow_TextAttribute'                 => 'Właściwość',
-	'ow_Text'                          => 'Tekst',
-	'ow_TextAttributeValues'           => 'Tekst bez formatowania',
-	'ow_TranslatedTextAttribute'       => 'Właściwość',
-	'ow_TranslatedText'                => 'Przetłumaczony tekst',
-	'ow_TranslatedTextAttributeValue'  => 'Tekst',
-	'ow_TranslatedTextAttributeValues' => 'Teksty możliwe do przetłumaczenia',
-	'ow_LinkAttribute'                 => 'Właściwość',
-	'ow_LinkAttributeValues'           => 'Linki',
-	'ow_Property'                      => 'Właściwość',
-	'ow_Value'                         => 'Wartość',
-	'ow_meaningsoftitle'               => 'Znaczenia "$1"',
-	'ow_meaningsofsubtitle'            => '<em>Link wiki:</em> [[$1]]',
-	'ow_Permission_denied'             => '<h2>DOSTĘP ZABRONIONY</h2>',
-	'ow_copy_no_action_specified'      => 'Określ akcję',
-	'ow_copy_help'                     => 'Kiedyś może Ci pomożemy.',
-	'ow_please_proved_dmid'            => 'We wprowadzonych danych nie odnaleziono wpisu "?dmid=<ID>" (dmid=Defined Meaning ID)<br />Skontaktuj się z administratorem serwera.',
-	'ow_please_proved_dc1'             => 'We wprowadzonych danych nie odnaleziono wpisu "?dc1=<jakieś_dane>" (dc1=dataset context 1, zestaw danych Z KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
-	'ow_please_proved_dc2'             => 'We wprowadzonych danych nie odnaleziono wpisu "?dc2=<jakieś_dane>" (dc2=dataset context 2, zestaw danych DO KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
-	'ow_copy_successful'               => '<h2>Kopiowanie powiodło się</h2>Dane najprawdopodobniej udało się bezpiecznie skopiować. Zalecane jest jednak sprawdzenie poprawności wykonania kopii.',
-	'ow_copy_unsuccessful'             => '<h3>Kopiowanie nie powiodło się</h3>Nie przeprowadzono operacji kopiowania.',
-	'ow_no_action_specified'           => '<h3>Nie Podano działania</h3>Może przeszedłeś do tej strony bezpośrednio? Zazwyczaj użytkownicy nie muszą tu zaglądać.',
-	'ow_db_consistency_not_found'      => '<h2>Błąd</h2>Wystąpił błąd spójności bazy danych. Dane wiki nie są w stanie odnaleźć odpowiednich danych skojarzonych z określonym identyfikatorem. Dane mogły zostać utracone. Skontaktuj sie z operatorem serwera, lub jego administratorem.',
+	'datasearch'                            => 'Wikidata: Wyszukiwanie danych',
+	'langman_title'                         => 'Menadżer języków',
+	'languages'                             => 'Wikidata: Menadżer języków',
+	'ow_save'                               => 'Zapisz',
+	'ow_history'                            => 'Historia',
+	'ow_datasets'                           => 'Wybór zbioru danych',
+	'ow_noedit_title'                       => 'Brak uprawnień do wykonania edycji',
+	'ow_noedit'                             => 'Nie masz uprawnień do wykonania edycji w zbiorze danych "$1". Zobacz [[{{MediaWiki:Ow editing policy url}}|zasady nadawania uprawnień do edycji]].',
+	'ow_uipref_datasets'                    => 'Widok domyślny',
+	'ow_uiprefs'                            => 'Dane wiki',
+	'ow_none_selected'                      => '<Nic nie zaznaczono>',
+	'ow_conceptmapping_uitext'              => '<p>Odwzorowywanie pojęć pozwala na identyfikację tego, które ze zdefiniowanych w jednym zestawie danych znaczeń są identyczne do znaczeń zdefiniowanych w drugim zestawie danych.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Przykro mi, nie wiem, jak zrobić "$1".',
+	'ow_dm_OK'                              => 'OK',
+	'ow_dm_not_present'                     => 'nie wprowadzono',
+	'ow_dm_not_found'                       => 'obiektu nie odnaleziono w bazie lub jest nieprawidłowo uformowany',
+	'ow_mapping_successful'                 => 'Odwzorowano wszystkie pola oznaczone jako [OK]<br />',
+	'ow_mapping_unsuccessful'               => 'Zanim nastąpi połączenie dwóch zdefiniowanych znaczeń, muszą zostać one podane.',
+	'ow_will_insert'                        => 'Wstawia nastepujące dane:',
+	'ow_contents_of_mapping'                => 'Zawartość odwzorowania',
+	'ow_available_contexts'                 => 'Dostępne konteksty',
+	'ow_add_concept_link'                   => 'Dodaj linki do innych pojęć',
+	'ow_concept_panel'                      => 'Panel pojęć',
+	'ow_dm_badtitle'                        => 'Ta strona nie prowadzi do żadnego obiektu typu DefinedMeaning. Sprawdź poprawność adresu.',
+	'ow_dm_missing'                         => 'Ta strona prowadzi do nieistniejącego obiektu DefinedMeaning. Sprawdź poprawność adresu.',
+	'ow_AlternativeDefinition'              => 'Inna defnicja',
+	'ow_AlternativeDefinitions'             => 'Alternatywne definicje',
+	'ow_Annotation'                         => 'Adnotacja',
+	'ow_ApproximateMeanings'                => 'Zbliżone znaczenia',
+	'ow_ClassAttributeAttribute'            => 'Atrybut',
+	'ow_ClassAttributes'                    => 'Atrybuty klas',
+	'ow_ClassAttributeLevel'                => 'Poziom',
+	'ow_ClassAttributeType'                 => 'Typ',
+	'ow_ClassMembership'                    => 'Członkostwo w klasie',
+	'ow_Collection'                         => 'Kolekcja',
+	'ow_CollectionMembership'               => 'Członkostwo w kolekcji',
+	'ow_Definition'                         => 'Definicja',
+	'ow_DefinedMeaningAttributes'           => 'Adnotacja',
+	'ow_DefinedMeaning'                     => 'Zdefiniowane znaczenie',
+	'ow_DefinedMeaningReference'            => 'Zdefiniowane znaczenie',
+	'ow_ExactMeanings'                      => 'Dokładne znaczenia',
+	'ow_Expression'                         => 'Wyrażenie',
+	'ow_ExpressionMeanings'                 => 'Znaczenia wyrażenia',
+	'ow_Expressions'                        => 'Wyrażenia',
+	'ow_IdenticalMeaning'                   => 'Takie samo znaczenie?',
+	'ow_IncomingRelations'                  => 'Zależności wchodzące',
+	'ow_GotoSource'                         => 'Idź do źródła',
+	'ow_Language'                           => 'Język',
+	'ow_LevelAnnotation'                    => 'Adnotacja',
+	'ow_OptionAttribute'                    => 'Właściwość',
+	'ow_OptionAttributeOption'              => 'Opcja',
+	'ow_OptionAttributeOptions'             => 'Opcje',
+	'ow_OptionAttributeValues'              => 'Wartość opcji',
+	'ow_OtherDefinedMeaning'                => 'Inaczej zdefiniowane pojęcie',
+	'ow_PopupAnnotation'                    => 'Adnotacja',
+	'ow_Relations'                          => 'Zależności',
+	'ow_RelationType'                       => 'Typ zależności',
+	'ow_Spelling'                           => 'Ortografia',
+	'ow_Synonyms'                           => 'Snonimy',
+	'ow_SynonymsAndTranslations'            => 'Synonimy i tłumaczenia',
+	'ow_Source'                             => 'Źródło',
+	'ow_SourceIdentifier'                   => 'Identyfikator źródła',
+	'ow_TextAttribute'                      => 'Właściwość',
+	'ow_Text'                               => 'Tekst',
+	'ow_TextAttributeValues'                => 'Tekst bez formatowania',
+	'ow_TranslatedTextAttribute'            => 'Właściwość',
+	'ow_TranslatedText'                     => 'Przetłumaczony tekst',
+	'ow_TranslatedTextAttributeValue'       => 'Tekst',
+	'ow_TranslatedTextAttributeValues'      => 'Teksty możliwe do przetłumaczenia',
+	'ow_LinkAttribute'                      => 'Właściwość',
+	'ow_LinkAttributeValues'                => 'Linki',
+	'ow_Property'                           => 'Właściwość',
+	'ow_Value'                              => 'Wartość',
+	'ow_meaningsoftitle'                    => 'Znaczenia "$1"',
+	'ow_meaningsofsubtitle'                 => '<em>Link wiki:</em> [[$1]]',
+	'ow_Permission_denied'                  => '<h2>DOSTĘP ZABRONIONY</h2>',
+	'ow_copy_no_action_specified'           => 'Określ akcję',
+	'ow_copy_help'                          => 'Kiedyś może Ci pomożemy.',
+	'ow_please_proved_dmid'                 => 'We wprowadzonych danych nie odnaleziono wpisu "?dmid=<ID>" (dmid=Defined Meaning ID)<br />Skontaktuj się z administratorem serwera.',
+	'ow_please_proved_dc1'                  => 'We wprowadzonych danych nie odnaleziono wpisu "?dc1=<jakieś_dane>" (dc1=dataset context 1, zestaw danych Z KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
+	'ow_please_proved_dc2'                  => 'We wprowadzonych danych nie odnaleziono wpisu "?dc2=<jakieś_dane>" (dc2=dataset context 2, zestaw danych DO KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
+	'ow_copy_successful'                    => '<h2>Kopiowanie powiodło się</h2>Dane najprawdopodobniej udało się bezpiecznie skopiować. Zalecane jest jednak sprawdzenie poprawności wykonania kopii.',
+	'ow_copy_unsuccessful'                  => '<h3>Kopiowanie nie powiodło się</h3>Nie przeprowadzono operacji kopiowania.',
+	'ow_no_action_specified'                => '<h3>Nie podano działania</h3>Może przeszedłeś do tej strony bezpośrednio? Zazwyczaj użytkownicy nie muszą tu zaglądać.',
+	'ow_db_consistency_not_found'           => '<h2>Błąd</h2>Wystąpił błąd spójności bazy danych. Dane wiki nie są w stanie odnaleźć odpowiednich danych skojarzonych z określonym identyfikatorem. Dane mogły zostać utracone. Skontaktuj sie z operatorem serwera, lub jego administratorem.',
 );
 
 /** Piemontèis (Piemontèis)
@@ -2410,7 +2438,7 @@ $wdMessages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Sannab
  * @author M.M.S.
  */
@@ -2518,6 +2546,7 @@ $wdMessages['te'] = array(
 	'ow_Permission_denied'                  => '<h2>అనుమతి నిరాకరించాం</h2>',
 	'ow_copy_no_action_specified'           => 'దయచేసి ఒక చర్యని స్పష్టంచెయ్యండి',
 	'ow_copy_help'                          => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
+	'ow_copy_successful'                    => '<h2>కాపీ విజయవంతం</h2>మీ భోగట్టా విజయవంతంగా కాపీ అయింది. కానీ మరోసారి సరిచూచుకోవడం మర్చిపోకండి!',
 );
 
 /** Thai (ไทย)

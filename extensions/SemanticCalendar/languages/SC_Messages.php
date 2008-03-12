@@ -54,6 +54,13 @@ $messages['de'] = array(
 	'sc_gotomonth'        => 'Gehe zu Monat',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'sc_today' => 'Hodiaŭ',
+);
+
 /** Persian (فارسی)
  * @author Tofighi
  */
@@ -109,6 +116,15 @@ $messages['ja'] = array(
 	'sc_nextmonth'        => '次の月',
 	'sc_today'            => '今日',
 	'sc_gotomonth'        => 'この月を表示',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'sc_previousmonth' => 'ខែមុន',
+	'sc_nextmonth'     => 'ខែបន្ទាប់',
+	'sc_today'         => 'ថ្ងៃនេះ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -180,6 +196,16 @@ $messages['oc'] = array(
 	'sc_nextmonth'        => 'Mes seguent',
 	'sc_today'            => 'Uèi',
 	'sc_gotomonth'        => 'Anar vèrs lo mes',
+);
+
+/** Polish (Polski)
+ * @author Maire
+ */
+$messages['pl'] = array(
+	'sc_previousmonth' => 'Poprzedni miesiąc',
+	'sc_nextmonth'     => 'Następny miesiąc',
+	'sc_today'         => 'Dzisiaj',
+	'sc_gotomonth'     => 'Idź do miesiąca',
 );
 
 /** Pashto (پښتو)

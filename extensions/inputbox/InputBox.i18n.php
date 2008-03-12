@@ -467,9 +467,10 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'searchfulltext' => 'ស្វែងរក ពាក្យពេញ',
+	'searchfulltext' => 'ស្វែងរកពាក្យពេញ',
 	'createarticle'  => 'បង្កើតទំព័រ',
 );
 

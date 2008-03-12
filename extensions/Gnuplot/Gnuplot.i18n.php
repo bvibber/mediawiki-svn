@@ -39,11 +39,25 @@ $messages['nl'] = array(
 	'gnuplot-desc' => 'Voegt de tag <code><nowiki><gnuplot></nowiki></code> toe voor het gebruik van Gnuplot',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'gnuplot-desc' => 'Lägger till taggen <code><nowiki><gnuplot></nowiki></code> för att använda Gnuplot',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'gnuplot-desc' => 'గ్నూప్లాట్&zwnj;ని ఉపయోగించడానికై<code><nowiki><gnuplot></nowiki></code> అనే టాగుని చేరుస్తుంది',
 );
 
 /** Vietnamese (Tiếng Việt)

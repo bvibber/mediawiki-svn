@@ -75,6 +75,13 @@ $messages['el'] = array(
 	'lookupuser_useroptions' => 'Επιλογές χρήστη:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'lookupuser_realname' => 'Reala nomo: $1',
+);
+
 $messages['fr'] = array(
 	'lookupuser'                   => 'Parcourir les informations de l\'usager',
 	'lookupuser-desc'              => 'Extrait les informations concernant un utilisateur telles qu’une adresse électronique et le numéro ID',
@@ -142,6 +149,7 @@ $messages['hu'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'lookupuser'                   => 'រកមើល​ពត៌មាន​នៃ​អ្នកប្រើប្រាស់',
@@ -153,7 +161,7 @@ $messages['km'] = array(
 	'lookupuser_id'                => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
 	'lookupuser_email'             => 'អ៊ីមែល ៖ [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'ឈ្មោះពិត ៖ $1',
-	'lookupuser_registration'      => 'ថ្ងៃ ខែ ឆ្នាំ ចុះឈ្មោះ​ ៖ $1',
+	'lookupuser_registration'      => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
 	'lookupuser_useroptions'       => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
 );
@@ -247,6 +255,13 @@ $messages['oc'] = array(
 	'lookupuser_registration'      => "Data d'enregistrament : $1",
 	'lookupuser_touched'           => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
+);
+
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'lookupuser_id' => 'ID użytkownika: <tt>#$1</tt>',
 );
 
 /** Portuguese (Português)

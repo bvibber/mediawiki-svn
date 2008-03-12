@@ -69,6 +69,9 @@ $messages['qqq'] = array(
 $messages['ar'] = array(
 	'hiderevision'                => 'أخف النسخ بشكل دائم',
 	'hiderevision-desc'           => 'إخفاء نسخ منفردة من كل المستخدمين لأسباب قانونية، إلى آخره.',
+	'group-oversight'             => 'مستخدمون أوفرسايت',
+	'group-oversight-member'      => 'أوفرسايت',
+	'grouppage-oversight'         => '{{ns:project}}:أوفرسايت',
 	'hiderevision-prompt'         => 'رقم النسخة للإزالة:',
 	'hiderevision-continue'       => 'استمر',
 	'hiderevision-text'           => "هذا يجب أن يستخدم '''فقط''' في الحالات التالية:
@@ -422,12 +425,16 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Meithal
  * @author Urhixidur
  * @author Grondin
  */
 $messages['fr'] = array(
 	'hiderevision'                => 'Cacher définitivement les révisions',
 	'hiderevision-desc'           => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
+	'group-oversight'             => 'Superviseurs',
+	'group-oversight-member'      => 'Superviseur',
+	'grouppage-oversight'         => '{{ns:project}}:Superviseur',
 	'hiderevision-prompt'         => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue'       => 'Continuer',
 	'hiderevision-text'           => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
@@ -1328,12 +1335,15 @@ $messages['rmy'] = array(
 );
 
 /** Russian (Русский)
- * @author HalanTul
  * @author .:Ajvol:.
+ * @author HalanTul
  */
 $messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
 	'hiderevision-desc'           => 'Скрывает отдельные версии страниц от всех пользователей, используется по судебно-юридическим причинам и т. п.',
+	'group-oversight'             => 'Ревизоры',
+	'group-oversight-member'      => 'Ревизор',
+	'grouppage-oversight'         => '{{ns:project}}:Ревизоры',
 	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
 	'hiderevision-continue'       => 'Продолжить',
 	'hiderevision-text'           => "Данная страница должна использоваться '''только''' в случае разглашения личной информации —''реальные имя и фамилия, домашние адреса и номера телефонов, паспортов, и тому подобное''.
@@ -1587,6 +1597,9 @@ Muugelke Gruunde:
 $messages['sv'] = array(
 	'hiderevision'                => 'Dölj sidversioner permanent',
 	'hiderevision-desc'           => 'Döljer enskilda sidversioner från alla användare, t.ex. av juridiska skäl',
+	'group-oversight'             => 'Översynare',
+	'group-oversight-member'      => 'Översynare',
+	'grouppage-oversight'         => '{{ns:project}}:Översyn',
 	'hiderevision-prompt'         => 'Nummer för sidversionen som ska tas bort:',
 	'hiderevision-continue'       => 'Fortsätt',
 	'hiderevision-text'           => "Översyn ska användas '''endast''' i följande fall:
@@ -1661,6 +1674,9 @@ $messages['tet'] = array(
 $messages['tg'] = array(
 	'hiderevision'                => 'Бо ҳамешагӣ пинҳон кардани нусхаҳо',
 	'hiderevision-desc'           => 'Пинҳон кардани нусхаҳои хос аз тамоми корбарон ба далели қонунӣ ва ғайра.',
+	'group-oversight'             => 'Нозирон',
+	'group-oversight-member'      => 'Нозир',
+	'grouppage-oversight'         => '{{ns:project}}:Назорат',
 	'hiderevision-prompt'         => 'Шумораи нусхаҳое, ки ҳазф мешаванд:',
 	'hiderevision-continue'       => 'Идома',
 	'hiderevision-text'           => "Ин қобилият '''фақат''' дар мавориди зер бояд истифода шавад:

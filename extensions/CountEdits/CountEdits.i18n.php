@@ -340,18 +340,19 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
-	'countedits'              => 'រាប់ កំណែប្រែ',
-	'countedits-warning'      => "'''ប្រយ័ត្ន ៖''' មិនត្រូវវិនិច្ឆ័យ សៀវភៅ ដោយសារ ក្រប របស់វា ។ មិនត្រូវវិនិច្ឆ័យ អ្នករួមចំណែក ដោយសារ របាប់ កំណែប្រែ របស់ពួកគេ។",
-	'countedits-username'     => 'ឈ្មោះអ្នកប្រើប្រាស់ ៖',
+	'countedits'              => 'រាប់ចំនួនកំនែប្រែ',
+	'countedits-warning'      => "'''សូមប្រយ័ត្ន៖''' មិនត្រូវវិនិច្ឆ័យគុណភាពសៀវភៅដោយសារគំរបរបស់វាទេ។ ហើយក៏មិនត្រូវវាយតំលៃអ្នកចូលរួមរួមចំនែក ដោយគ្រាន់តែមើលទៅលើ ចំនួនកំនែប្រែរបស់ពួកគេដែរ។",
+	'countedits-username'     => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
 	'countedits-ok'           => 'យល់ព្រម',
-	'countedits-nosuchuser'   => 'គ្មាន អ្នកប្រើប្រាស់ ឈ្មោះ $1 ។',
-	'countedits-resultheader' => 'លទ្ធផល ចំពោះ $1',
-	'countedits-resulttext'   => '$1 បានធ្វើ $2 កំណែប្រែ',
-	'countedits-mostactive'   => 'អ្នករួមចំណែក សកម្មបំផុត',
-	'countedits-nocontribs'   => 'គ្មានការរួមចំណែក ទៅ វិគី នេះ ។',
+	'countedits-nosuchuser'   => "មិនមានអ្នកប្រើប្រាស់ណាឈ្មោះ'''$1'''ទេ។",
+	'countedits-resultheader' => 'លទ្ធផលចំពោះ $1',
+	'countedits-resulttext'   => "គិត្រឹមពេលនេះ'''$1'''បានចូលរួមចំនែកកែប្រែ'''$2'''កំនែប្រែ",
+	'countedits-mostactive'   => 'អ្នករួមចំនែកដែលសកម្មបំផុត',
+	'countedits-nocontribs'   => 'មិនមានការរួមចំនែកនៅក្នុងវិគីនេះទេ។',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -427,7 +428,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'countedits'              => 'Bewerkingen tellen',
-	'countedits-desc'         => '[[Special:CountEdits|Speciale pagina]] die bijdragen van gebruikers totaliseert en een top-10 van gebruikers toont',
+	'countedits-desc'         => '[[Special:CountEdits|Speciale pagina]] die bijdragen van gebruikers totaliseert en een top-10 van gebruikers weergeeft',
 	'countedits-warning'      => "'''Waarschuwing:''' Beoordeel het boek niet op de buitenkant. Beoordeel een redacteur niet alleen op het aantal bijdragen.",
 	'countedits-username'     => 'Gebruiker:',
 	'countedits-ok'           => 'OK',
@@ -512,7 +513,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'countedits-username' => 'کارن-نوم:',
+	'countedits-username'     => 'کارن-نوم:',
+	'countedits-resultheader' => 'د $1 پايلې',
+	'countedits-nocontribs'   => 'په همدې ويکي کې هېڅ ونډې نه دي ترسره شوي.',
 );
 
 /** Portuguese (Português)
@@ -676,12 +679,15 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'countedits'              => 'మార్పులను లెక్కించు',
+	'countedits-desc'         => 'వాడుకరి మార్పులను మరియు పై-పది రచయితల జాబితాను చూపించే [[Special:CountEdits|ప్రత్యేక పేజీ]]',
 	'countedits-warning'      => "'''హెచ్చరిక:''' పుస్తకాన్ని దాని అట్ట చూసి అంచనా వెయ్యవద్దు. ఒకరిని వారి మార్పుల సంఖ్య చూసి నిర్ణయించకూడదు.",
 	'countedits-username'     => 'వాడుకరి పేరు:',
 	'countedits-ok'           => 'సరే',
 	'countedits-nosuchuser'   => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',
 	'countedits-resultheader' => '$1కి ఫలితాలు',
 	'countedits-resulttext'   => '$1 $2 మార్పులు చేసారు',
+	'countedits-mostactive'   => 'అత్యంత క్రియాశీల రచయితలు',
+	'countedits-nocontribs'   => 'ఈ వికీలో ఇప్పటివరకు రచనలు ఏమీ లేవు.',
 );
 
 $messages['tet'] = array(

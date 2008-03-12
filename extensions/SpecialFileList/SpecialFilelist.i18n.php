@@ -146,6 +146,16 @@ $messages['oc'] = array(
 	'filelist-show-gallery' => 'Veire la galariá',
 );
 
+/** Polish (Polski)
+ * @author Maire
+ */
+$messages['pl'] = array(
+	'filelist'              => 'Lista plików',
+	'filelist-desc'         => 'Strona specjalna z listą przesłanych plików',
+	'filelist-show-list'    => 'Pokaż listę',
+	'filelist-show-gallery' => 'Pokaż galerię',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -211,6 +221,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'filelist'           => 'ఫైళ్ళ జాబితా',
+	'filelist-desc'      => 'ఎగుమతైన ఫైళ్ళ జాబితాని చూపించడానికి ప్రత్యేక పేజీ',
 	'filelist-show-list' => 'జాబితాని చూపించు',
 );
 

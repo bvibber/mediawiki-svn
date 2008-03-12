@@ -106,6 +106,13 @@ $messages['el'] = array(
 	'player-goto-file'        => 'Αρχείο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'player-goto-file' => 'dosiero',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
@@ -373,7 +380,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'player'               => 'Spelare',

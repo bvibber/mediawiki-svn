@@ -49,6 +49,13 @@ $messages['de'] = array(
 	'categoryintersection-results'       => 'Die Suche ergab $1 Treffer.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'categoryintersection' => 'Kategoria Intersekcio',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -86,7 +93,7 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'categoryintersection'               => 'Categoriedoorsnede',
 	'categoryintersection-desc'          => 'Houdt een tabel bij met hashwaarden voor [[Special:CategoryIntersection|categoriedoorsneden]] voor een pagina',
-	'categoryintersection-doit'          => "Pagina's in al deze categorieën tonen",
+	'categoryintersection-doit'          => "Pagina's in al deze categorieën bekijken",
 	'categoryintersection-maxcategories' => 'Het maximale aantal categoriedoorsneden is $1.',
 	'categoryintersection-results'       => 'De zoekopdracht heeft $1 {{PLURAL:$1|resultaat|resultaten}} opgeleverd.',
 );
@@ -112,6 +119,17 @@ $messages['pt'] = array(
 	'categoryintersection-results'       => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categoryintersection'               => 'Prienik kategórií',
+	'categoryintersection-desc'          => 'Udržiava tabuľku s haš hodnotami [[Special:CategoryIntersection|prienikov kategórií]] na špeciálnej stránke',
+	'categoryintersection-doit'          => 'Zoznam stránok vo všetkých týchto kategóriách',
+	'categoryintersection-maxcategories' => 'Maximálny povolený počet kategórií, ktoré majú prienik je $1.',
+	'categoryintersection-results'       => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -128,8 +146,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'categoryintersection'      => 'వర్గం ఖండన',
-	'categoryintersection-doit' => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
+	'categoryintersection'         => 'వర్గం ఖండన',
+	'categoryintersection-doit'    => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
+	'categoryintersection-results' => 'ఈ అన్వేషణ $1 {{PLURAL:$1|ఫలితాన్ని|ఫలితాలను}} ఇచ్చింది.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -319,13 +319,15 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'ajax-se-desc'             => 'បង្ហាញ អ្នកប្រើប្រាស់ ដែលកំពុង​កែប្រែ ទំព័រដូចគ្នា',
-	'ajax-se-title'            => 'កំពុង កែប្រែ ៖',
+	'ajax-se-desc'             => 'បង្ហាញ​អ្នកប្រើប្រាស់​ដែលកំពុង​កែប្រែ​ទំព័រដូចគ្នា',
+	'ajax-se-title'            => 'បច្ចុប្បន្នកំពុង​កែប្រែ៖',
 	'ajax-se-idling'           => '($1 វិនាទី កន្លងមក)',
 	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
-	'ajax-se-usernotfound'     => 'កំហុស៖ រកមិនឃើញ អ្នកប្រើប្រាស់',
+	'ajax-se-usernotfound'     => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -396,7 +398,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'ajax-se-desc'             => 'Toont gebruikers die een pagina bewerken wie dezelfde pagina aan het bewerken is',
+	'ajax-se-desc'             => 'Geeft gebruikers weer die een pagina bewerken aan, wie dezelfde pagina aan het bewerken is',
 	'ajax-se-title'            => 'Bezig met het bewerken van:',
 	'ajax-se-pending'          => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling'           => '($1s geleden)',
@@ -637,6 +639,8 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'ajax-se-desc'             => 'Показує користувачів, що редагують одну й ту саму сторінку',
 	'ajax-se-title'            => 'Зараз редагують:',
+	'ajax-se-pending'          => 'очікування оновлення... (натисніть тут або почніть редагування)',
+	'ajax-se-idling'           => '($1 с тому)',
 	'ajax-se-pagedoesnotexist' => 'сторінка не існує',
 );
 

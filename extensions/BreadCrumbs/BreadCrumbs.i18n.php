@@ -113,7 +113,7 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'breadcrumbs-desc' => 'Toont het pad dat gebruikers in de wiki doorlopen',
+	'breadcrumbs-desc' => 'Geeft het pad weer dat gebruikers in de wiki doorlopen',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

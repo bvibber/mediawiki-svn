@@ -288,6 +288,28 @@ $messages['el'] = array(
 	'sign-uniquequery-similarphone'   => 'Παρόμοιο τηλέφωνο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'sign-realname'           => 'Nomo:',
+	'sign-address'            => 'Adreso:',
+	'sign-city'               => 'Urbo:',
+	'sign-state'              => 'Ŝtato:',
+	'sign-zip'                => 'Poŝta kodo:',
+	'sign-country'            => 'Lando:',
+	'sign-bday'               => 'Aĝo:',
+	'sign-email'              => 'Retpoŝta adreso:',
+	'sign-viewfield-realname' => 'Nomo',
+	'sign-viewfield-address'  => 'Adreso',
+	'sign-viewfield-city'     => 'Urbo',
+	'sign-viewfield-state'    => 'Ŝtato',
+	'sign-viewfield-country'  => 'Lando',
+	'sign-viewfield-zip'      => 'Poŝta kodo',
+	'sign-viewfield-ip'       => 'IP-adreso',
+	'sign-viewfield-age'      => 'Aĝo',
+);
+
 $messages['ext'] = array(
 	'sign-selectdoc' => 'Decumentu:',
 	'sign-error-nosuchdoc' => 'El decumentu que piisti ($1) nu desisti.',
@@ -586,29 +608,30 @@ $messages['is'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'sign-realname'                   => 'ឈ្មោះ ៖',
+	'sign-realname'                   => 'ឈ្មោះ៖',
 	'sign-address'                    => 'អាស័យដ្ឋាន ផ្លូវ ៖',
-	'sign-phone'                      => 'លេខ ទូរស័ព្ទ ៖',
-	'sign-bday'                       => 'អាយុ ៖',
+	'sign-phone'                      => 'លេខទូរស័ព្ទ៖',
+	'sign-bday'                       => 'អាយុ៖',
 	'sign-email'                      => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
 	'sign-list-hideaddress'           => 'មិនរាយ អាស័យដ្ឋាន',
-	'sign-list-hideemail'             => 'មិនរាយបញ្ជី អ៊ីមែវល៍',
+	'sign-list-hideemail'             => 'សូមកុំដាក់ក្នុងបញ្ជីអ៊ីមែល',
 	'sign-viewfield-realname'         => 'ឈ្មោះ',
-	'sign-viewfield-address'          => 'អាស័យដ្ឋាន',
+	'sign-viewfield-address'          => 'អាសយដ្ឋាន',
 	'sign-viewfield-city'             => 'ក្រុង',
 	'sign-viewfield-state'            => 'រដ្ឋ',
 	'sign-viewfield-country'          => 'ប្រទេស',
-	'sign-viewfield-ip'               => 'អាស័យដ្ឋាន IP',
+	'sign-viewfield-ip'               => 'អាសយដ្ឋាន IP',
 	'sign-viewfield-phone'            => 'ទូរស័ព្ទ',
-	'sign-viewfield-email'            => 'អ៊ីមែវល៍',
+	'sign-viewfield-email'            => 'អ៊ីមែល',
 	'sign-viewfield-age'              => 'អាយុ',
 	'sign-viewfield-options'          => 'ជំរើស',
 	'sign-signatures'                 => 'ហត្ថលេខា',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
-	'sign-uniquequery-similarname'    => 'ឈ្មោះ ស្រដៀង',
-	'sign-uniquequery-similaraddress' => 'អាស័យដ្ឋាន ស្រដៀង',
+	'sign-uniquequery-similarname'    => 'ឈ្មោះស្រដៀងគ្នា',
+	'sign-uniquequery-similaraddress' => 'អាសយដ្ឋានស្រដៀងគ្នា',
 	'sign-uniquequery-similarphone'   => 'ទូរស័ព្ទ ស្រដៀង',
 	'sign-uniquequery-similaremail'   => 'អ៊ីមែវល៍ ស្រដៀងគ្នា',
 );
@@ -664,7 +687,8 @@ $messages['nl'] = array(
 	'signdocument'                    => 'Document ondertekenen',
 	'sign-nodocselected'              => 'Selecteer alstublieft het document dat u wilt ondertekenen.',
 	'sign-selectdoc'                  => 'Document:',
-	'sign-docheader'                  => '<div class="noarticletext">Gebruik alstublieft dit formulier om het document "[[$1]]," dat heronder wordt getoond, te ondertekenen. Lees alstublieft het hele document en als u het wilt steunen vul dan alstublieft de verplichte velden in om het te ondertekenen.</div>',
+	'sign-docheader'                  => '<div class="noarticletext">Gebruik dit formulier alstublieft om het document "[[$1]]" te ondertekenen, dat hieronder wordt weergeven.
+Lees alstublieft het hele document en als u het wilt steunen vul dan alstublieft de verplichte velden in om het te ondertekenen.</div>',
 	'sign-error-nosuchdoc'            => 'Het opgegeven document ($1) bestaat niet.',
 	'sign-realname'                   => 'Naam:',
 	'sign-address'                    => 'Straat:',
@@ -686,7 +710,7 @@ $messages['nl'] = array(
 	'sign-submit'                     => 'Document ondertekenen',
 	'sign-information'                => '<div class="noarticletext">Dank u wel voor het nemen van de tijd om dit document door te lezen. Als u ermee instemt, geef uw steun dan alstublieft aan door hieronder de benodigde velden in te vullen en daar te klikken op "Document ondertekenen." Zorg er alstublieft voor dat uw persoonlijke informatie correct is en dat we op een of andre manier contact met u kunnen opnemen. om uw indentiteit te bevestigen. Uw [[wikipedia:IP address|IP-adres]] en andere identificerende informatie die via dit formulier woren opgeslagen, worden gebruikt voor beheerders om dubbele ondertekeningen te verwijderen en om de juistheid van uw persoonlijke informatie te toetsen. Omdat het gebruik van open en anonimiserende proxy\'s voorkomt dat deze taak uitgevoerd kan worden, worden ondertekeningen via deze wegen waarschijnlij niet meegeteld. Als u op dit moment verbonden bent via een proxyserver, maak dan voor het ondertekenen een directe verbinding. <br /><br /> $1',
 	'sig-success'                     => 'U hebt het document succesvol ondertekend.',
-	'sign-view-selectfields'          => '<b>Te tonen velden:</b>',
+	'sign-view-selectfields'          => '<b>Weer te geven velden:</b>',
 	'sign-viewfield-entryid'          => 'ID-nummer',
 	'sign-viewfield-timestamp'        => 'Tijdstip',
 	'sign-viewfield-realname'         => 'Naam',
@@ -701,7 +725,7 @@ $messages['nl'] = array(
 	'sign-viewfield-email'            => 'E-mailadres',
 	'sign-viewfield-age'              => 'Leeftijd',
 	'sign-viewfield-options'          => 'Opties',
-	'sign-viewsigs-intro'             => 'Hieronder worden de ondertekeningen getoond voor <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-viewsigs-intro'             => 'Hieronder worden de ondertekeningen weergegeven voor <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen'     => 'Ondertekenen is ingeschakeld voor dit document.',
 	'sign-sigadmin-close'             => 'Onderteken uitschakelen',
 	'sign-sigadmin-currentlyclosed'   => 'Onderteken is uitgeschakeld voor dit document.',
@@ -927,17 +951,36 @@ $messages['oc'] = array(
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a autentificat [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'sign-viewfield-address' => 'Adres',
-	'sign-viewfield-city' => 'Miasto',
-	'sign-viewfield-country' => 'Państwo',
-	'sign-viewfield-ip' => 'Adres IP',
-	'sign-viewfield-agent' => 'User agent',#identical but defined
-	'sign-viewfield-phone' => 'Telefon',
-	'sign-viewfield-email' => 'E-mail',
-	'sign-viewfield-age' => 'Wiek',
-	'sign-viewfield-options' => 'Opcje',
-	'sign-review-comment' => 'Komentarz',
+	'sign-realname'            => 'Nazwisko:',
+	'sign-address'             => 'Ulica:',
+	'sign-city'                => 'Miasto:',
+	'sign-state'               => 'Stan:',
+	'sign-zip'                 => 'Kod ZIP:',
+	'sign-country'             => 'Kraj:',
+	'sign-phone'               => 'Numer telefonu:',
+	'sign-bday'                => 'Wiek:',
+	'sign-email'               => 'Adres e-mail:',
+	'sign-indicates-req'       => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
+	'sign-submit'              => 'Podpisz dokument',
+	'sign-view-selectfields'   => '<b>Pola do wyświetlenia:</b>',
+	'sign-viewfield-timestamp' => 'Znacznik czasu',
+	'sign-viewfield-address'   => 'Adres',
+	'sign-viewfield-city'      => 'Miasto',
+	'sign-viewfield-country'   => 'Państwo',
+	'sign-viewfield-ip'        => 'Adres IP',
+	'sign-viewfield-agent'     => 'User agent',
+	'sign-viewfield-phone'     => 'Telefon',
+	'sign-viewfield-email'     => 'E-mail',
+	'sign-viewfield-age'       => 'Wiek',
+	'sign-viewfield-options'   => 'Opcje',
+	'sign-sigadmin-close'      => 'Wyłącz podpisywanie',
+	'sign-signatures'          => 'Podpisy',
+	'sign-review-comment'      => 'Komentarz',
 );
 
 $messages['pms'] = array(
@@ -1160,7 +1203,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author Max sonnelid
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
@@ -1231,42 +1274,59 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'sign-error-nosuchdoc'         => 'మీరు అభ్యర్థించిన పత్రం ($1) ఇక్కడ లేదు.',
-	'sign-realname'                => 'పేరు:',
-	'sign-address'                 => 'వీధి చిరునామా:',
-	'sign-city'                    => 'నగరం:',
-	'sign-state'                   => 'రాష్ట్రం:',
-	'sign-country'                 => 'దేశం:',
-	'sign-phone'                   => 'ఫోన్ నెంబర్:',
-	'sign-bday'                    => 'వయసు:',
-	'sign-email'                   => 'ఈ-మెయిల్ చిరునామా:',
-	'sign-list-anonymous'          => 'అనామకంగా చూపించు',
-	'sign-list-hideaddress'        => 'చిరునామాని చూపించకు',
-	'sign-list-hideextaddress'     => 'నగరం, రాష్ట్రం, జిప్, లేదా దేశంలను చూపించకు',
-	'sign-list-hidephone'          => 'ఫోన్ నంబరు చూపించకు',
-	'sign-list-hidebday'           => 'వయసుని చూపించకు',
-	'sign-list-hideemail'          => 'ఈ-మెయిలుని చూపించకు',
-	'sig-success'                  => 'ఈ పత్రంపై మీరు విజయవంతంగా సంతకం చేసారు.',
-	'sign-viewfield-timestamp'     => 'కాలముద్ర',
-	'sign-viewfield-realname'      => 'పేరు',
-	'sign-viewfield-address'       => 'చిరునామా',
-	'sign-viewfield-city'          => 'నగరం',
-	'sign-viewfield-state'         => 'రాష్ట్రం',
-	'sign-viewfield-country'       => 'దేశం',
-	'sign-viewfield-ip'            => 'IP చిరునామా',
-	'sign-viewfield-phone'         => 'ఫోన్',
-	'sign-viewfield-email'         => 'ఈమెయిల్',
-	'sign-viewfield-age'           => 'వయసు',
-	'sign-viewfield-options'       => 'ఎంపికలు',
-	'sign-signatures'              => 'సంతకాలు',
-	'sign-viewsignatures'          => 'సంతకాలు చూడండి',
-	'sig-anonymous'                => '<i>అనామకం</i>',
-	'sig-private'                  => '<i>అంతరంగికం</i>',
-	'sign-sigdetails'              => 'సంతకం వివరాలు',
-	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
-	'sign-viewfield-reviewedby'    => 'సమీక్షకులు',
-	'sign-viewfield-reviewcomment' => 'వ్యాఖ్య',
-	'sign-review-comment'          => 'వ్యాఖ్య',
+	'signdocument'                  => 'పత్రంపై సంతకం చేయండి',
+	'sign-nodocselected'            => 'మీ సంతకం చేయాలనుకుంటున్న పత్రాన్ని ఎంచుకోండి.',
+	'sign-selectdoc'                => 'పత్రం:',
+	'sign-error-nosuchdoc'          => 'మీరు అభ్యర్థించిన పత్రం ($1) ఇక్కడ లేదు.',
+	'sign-realname'                 => 'పేరు:',
+	'sign-address'                  => 'వీధి చిరునామా:',
+	'sign-city'                     => 'నగరం:',
+	'sign-state'                    => 'రాష్ట్రం:',
+	'sign-zip'                      => 'జిప్ కోడ్:',
+	'sign-country'                  => 'దేశం:',
+	'sign-phone'                    => 'ఫోన్ నెంబర్:',
+	'sign-bday'                     => 'వయసు:',
+	'sign-email'                    => 'ఈ-మెయిల్ చిరునామా:',
+	'sign-indicates-req'            => '<small><i><font color="red">*</font> తప్పనిసరి వాటిని సూచిస్తుంది.</i></small>',
+	'sign-hide-note'                => '<small><i><font color="red">**</font> గమనిక: చూపించని సమాచారాన్ని నిర్వాహకులు మాత్రం చూడగలరు.</i></small>',
+	'sign-list-anonymous'           => 'అనామకంగా చూపించు',
+	'sign-list-hideaddress'         => 'చిరునామాని చూపించకు',
+	'sign-list-hideextaddress'      => 'నగరం, రాష్ట్రం, జిప్, లేదా దేశంలను చూపించకు',
+	'sign-list-hidephone'           => 'ఫోన్ నంబరు చూపించకు',
+	'sign-list-hidebday'            => 'వయసుని చూపించకు',
+	'sign-list-hideemail'           => 'ఈ-మెయిలుని చూపించకు',
+	'sign-submit'                   => 'సంతకం చేయండి',
+	'sig-success'                   => 'ఈ పత్రంపై మీరు విజయవంతంగా సంతకం చేసారు.',
+	'sign-viewfield-timestamp'      => 'కాలముద్ర',
+	'sign-viewfield-realname'       => 'పేరు',
+	'sign-viewfield-address'        => 'చిరునామా',
+	'sign-viewfield-city'           => 'నగరం',
+	'sign-viewfield-state'          => 'రాష్ట్రం',
+	'sign-viewfield-country'        => 'దేశం',
+	'sign-viewfield-zip'            => 'జిప్',
+	'sign-viewfield-ip'             => 'IP చిరునామా',
+	'sign-viewfield-phone'          => 'ఫోన్',
+	'sign-viewfield-email'          => 'ఈమెయిల్',
+	'sign-viewfield-age'            => 'వయసు',
+	'sign-viewfield-options'        => 'ఎంపికలు',
+	'sign-sigadmin-currentlyopen'   => 'ఈ పత్రంపై సంతకం చేయడం ప్రస్తుతం సచేతనమైవుంది.',
+	'sign-sigadmin-close'           => 'సంతకం చేయడాన్ని అచేతనం చెయ్యండి',
+	'sign-sigadmin-currentlyclosed' => 'ఈ పత్రంపై సంతకం చేయడం ప్రస్తుతం అచేతనమైవుంది.',
+	'sign-sigadmin-open'            => 'సంతకం చేయడాన్ని చేతనం చెయ్యండి',
+	'sign-signatures'               => 'సంతకాలు',
+	'sign-sigadmin-closesuccess'    => 'సంతకం చేయడాన్ని విజయవంతంగా అచేతనం చేసాం.',
+	'sign-sigadmin-opensuccess'     => 'సంతకం చేయడాన్ని విజయవంతంగా చేతనం చేసాం.',
+	'sign-viewsignatures'           => 'సంతకాలు చూడండి',
+	'sign-error-closed'             => 'ఈ పత్రంపై సంతకం చేయడాన్ని ప్రస్తుతం అచేతనం చేసారు.',
+	'sig-anonymous'                 => '<i>అనామకం</i>',
+	'sig-private'                   => '<i>అంతరంగికం</i>',
+	'sign-sigdetails'               => 'సంతకం వివరాలు',
+	'sign-emailto'                  => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-reviewedby'     => 'సమీక్షకులు',
+	'sign-viewfield-reviewcomment'  => 'వ్యాఖ్య',
+	'sign-reviewsig'                => 'సంతకాన్ని సమీక్షించండి',
+	'sign-review-comment'           => 'వ్యాఖ్య',
+	'sign-submitreview'             => 'సమీక్షని దాఖలు చేయండి',
 );
 
 /** Volapük (Volapük)

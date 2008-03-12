@@ -189,9 +189,10 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten LJ
+ * @author Morten
  */
 $messages['da'] = array(
+	'usernameblacklist-desc'          => 'Tilføjer en [[MediaWiki:Usernameblacklist|sort liste over uønskede brugernavne]] for at forhindre oprettelse af konti der mathcer en eller flere regular expressions.',
 	'blacklistedusername'             => 'Sortlistet brugernavn',
 	'blacklistedusernametext'         => 'Du har valgt et brugernavn som findes på [[MediaWiki:Usernameblacklist|{{SITENAME}}s sorte liste]], vælg venligst et andet.',
 	'usernameblacklist'               => "<pre>
@@ -905,6 +906,7 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'usernameblacklist-desc'          => 'Як [[MediaWiki:Usernameblacklist|феҳристи  сиёҳи номи корбарӣ]] изофа мекунад, ки барои пешгири аз сохтани ҳисобҳои корбарӣ бо ибораҳои мушаххас ба кор меравад',
 	'blacklistedusername'             => 'Номи корбарии ғайри миҷоз',
 	'blacklistedusernametext'         => 'Номи корбарии интихобкардаи шумо бо [[MediaWiki:Usernameblacklist|феҳристи сиёҳи номҳои корбарӣ]] мутобиқат дорад. Лутфан як номи корбарии дигареро интихоб кунед.',
 	'usernameblacklist'               => '<pre>
@@ -932,6 +934,14 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'blacklistedusername'     => 'Kara listedeki kullanıcılar',
 	'blacklistedusernametext' => 'Seçtiğiniz isim [[MediaWiki:Usernameblacklist|Kara listedeki kullanıcılar]] listesinde sıralanan bir kullanıcı adıyla aynı isme sahiptir. Lütfen başka bir kullanıcı adı seçiniz.',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'blacklistedusername'     => "Заборонене ім'я користувача",
+	'blacklistedusernametext' => "Ім'я користувача, вибране вами, містить елементи, вказані у [[MediaWiki:Usernameblacklist|списку заборонених імен]]. Будь ласка, виберіть інше ім'я.",
 );
 
 /** Vietnamese (Tiếng Việt)

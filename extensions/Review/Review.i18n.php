@@ -163,6 +163,14 @@ $messages['el'] = array(
 	'review_comment'    => 'Σχόλιο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_comment'                => 'Komento',
+);
+
 # فارسی (Huji - 34)
 $messages['fa'] = array(
 	'review_sidebar_title'                                   => 'بازبینی',
@@ -597,8 +605,10 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'review_sidebar_title'                   => 'సమీక్ష',
+	'review_topic_page'                      => 'విషయాలని సమీక్షించండి',
 	'review_save'                            => 'సమీక్షని భద్రపరచు',
 	'review_your_review'                     => 'ఈ పేజీ/కూర్పు పై మీ సమీక్ష:',
+	'review_page_link'                       => 'సమీక్షా గణాంకాలు',
 	'review_for_page'                        => '"$1" అనే పేజీకై సమీక్ష',
 	'review_for_user'                        => '"$1" అనే వాడుకరికై సమీక్ష',
 	'review_error'                           => 'ఏదో తప్పు జరిగింది!',
@@ -612,6 +622,7 @@ $messages['te'] = array(
 	'review_user_reviews'                    => '<small>(ఈ వాడుకరి చేసిన సమీక్షలు)</small>',
 	'review_user_page_list'                  => 'ఆ వాడుకరి ఈ క్రింద పేర్కొన్న పేజీలను సమీక్షించారు:',
 	'review_user_details_link'               => '(వివరాలు)',
+	'review_has_been_stored'                 => "<span id='review_has_been_stored'>మీ సమీక్ష భద్రమయ్యింది!</span>",
 	'revision_review_this_page_version_link' => 'పేజీ యొక్క ఈ కూర్పుని సమీక్షించండి.',
 	'review_page_review'                     => '"$1" పేజీ యొక్క సమీక్ష',
 	'review_blocked'                         => 'మిమ్మల్ని నిరోధించారు, వెళ్ళిపోండి.',

@@ -163,6 +163,13 @@ $messages['el'] = array(
 	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'createsigndoc-email' => 'Retpoŝta adreso',
+);
+
 $messages['ext'] = array(
 	'createsigndoc-pagename' => 'Páhina:',
 	'createsigndoc-allowedgroup' => 'Alabán premitiu:',
@@ -265,13 +272,16 @@ $messages['is'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
-	'createsigndoc-email'   => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
-	'createsigndoc-address' => 'អាស័យដ្ឋាន ផ្ទះ ៖',
-	'createsigndoc-phone'   => 'លេខ ទូរស័ព្ទ ៖',
-	'createsigndoc-hidden'  => 'ត្រូវបាន បិទបាំង',
+	'createsigndoc-email'     => 'អាសយដ្ឋានអ៊ីមែល៖',
+	'createsigndoc-address'   => 'អាស័យដ្ឋាន ផ្ទះ ៖',
+	'createsigndoc-phone'     => 'លេខទូរស័ព្ទ៖',
+	'createsigndoc-introtext' => 'សេចក្តីណែនាំ៖',
+	'createsigndoc-hidden'    => 'ត្រូវបាន បិទបាំង',
+	'createsigndoc-create'    => 'បង្កើត',
 );
 
 $messages['la'] = array(
@@ -519,6 +529,7 @@ $messages['te'] = array(
 	'createsigndoc-minage'            => 'కనిష్ట వయసు:',
 	'createsigndoc-introtext'         => 'పరిచయం:',
 	'createsigndoc-optional'          => 'ఐచ్చికం',
+	'createsigndoc-create'            => 'సృష్టించు',
 	'createsigndoc-error-generic'     => 'పొరపాటు: $1',
 	'createsigndoc-error-pagenoexist' => 'పొరపాటు: [[$1]] అనే పేజీ లేనే లేదు.',
 );

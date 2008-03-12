@@ -188,7 +188,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Max sonnelid
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'donationform-submit' => 'Donera via PayPal',

@@ -156,7 +156,7 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten LJ
+ * @author Morten
  */
 $messages['da'] = array(
 	'sitematrix'          => 'Alle Wikimedias wikier',
@@ -612,7 +612,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'sitematrix'           => "Lijst met Wikimedia-wiki's",
-	'sitematrix-desc'      => 'Toont een [[Special:SiteMatrix|lijst van Wikimedia-wikis]]',
+	'sitematrix-desc'      => 'Een [[Special:SiteMatrix|lijst van Wikimedia-wikis]]',
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => 'Naam van het project, interprojectlink en interwikilink',
 	'sitematrix-others'    => 'Andere projecten van Wikimedia',
