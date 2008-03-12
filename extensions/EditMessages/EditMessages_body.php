@@ -48,7 +48,7 @@ class EditMessagesPage extends SpecialPage {
 		$encAction = $this->getTitle()->escapeFullUrl();
 		$languages = Language::getLanguageNames( true );
 		$sk = $wgUser->getSkin();
-		$wgOut->addHTML( "<h3>Showing values for message name \"" . htmlspecialchars( $messageName ) . "\"</h3>\n" );
+		$wgOut->addHTML( Xml::element( 'h3', null, wfMsg( 'editmsg-show-list', $messageName ) . "\n" ) );
 		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsg( 'editmsg-new-search' ) ) . '</p>' );
 		$wgOut->addHTML( "<form method=\"POST\" action=\"$encAction\"><table>" );
 		foreach ( $languages as $lang => $langName ) {
