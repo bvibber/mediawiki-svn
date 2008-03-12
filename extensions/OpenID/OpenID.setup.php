@@ -98,6 +98,11 @@ $wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
 $wgOpenIDOnly = false;
 
+# If true, user accounts on this wiki *cannot* be used as
+# OpenIDs on other sites.
+
+$wgOpenIDClientOnly = false;
+
 # END CONFIGURATION VARIABLES
 
 $wgExtensionFunctions[] = 'setupOpenID';
@@ -148,12 +153,23 @@ $wgHooks['LanguageGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName';
 $wgHooks['LangugeGetSpecialPageAliases'][] = 'OpenIDLocalizedPageName'; # Add any aliases for the special page.
 
 function setupOpenID() {
-	global $wgSpecialPages, $wgOpenIDOnly;
+	global $wgSpecialPages, $wgOpenIDOnly, $wgOpenIDClientOnly;
 	
 	if ($wgOpenIDOnly) {
 		$wgSpecialPages['Userlogin'] = array('SpecialRedirectToSpecial', 'Userlogin', 'OpenIDLogin');
 		# Used in 1.12.x and above
 		$wgSpecialPages['CreateAccount'] = array('SpecialRedirectToSpecial', 'CreateAccount', 'OpenIDLogin');
+	}
+
+	# Special pages are added at global scope; remove server-related ones
+	# if client-only flag is set
+	
+	if ($wgOpenIDClientOnly) {
+		foreach (array('Server', 'XRDS') as $k) {
+			if (array_key_exists($k, $wgSpecialPages)) {
+				unset($wgSpecialPages[$k]);
+			}
+		}
 	}
 	
 	return true;
@@ -178,7 +194,7 @@ function OpenIDLocalizedPageName(&$specialPageArray, $code) {
 # Hook is called whenever an article is being viewed
 
 function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
-	global $wgOut;
+	global $wgOut, $wgOpenIDClientOnly;
 
 	$nt = $article->getTitle();
 
@@ -211,14 +227,17 @@ function OpenIDArticleViewHeader(&$article, &$outputDone, &$pcache ) {
 										"</span>");
 				}
 			} else {
-				$st = Title::makeTitleSafe(NS_SPECIAL, 'OpenIDServer');
-				$wgOut->addLink(array('rel' => 'openid.server',
-									  'href' => $st->getFullURL()));
-				$wgOut->addLink(array('rel' => 'openid2.provider',
-									  'href' => $st->getFullURL()));
-				$rt = Title::makeTitle(NS_SPECIAL, 'OpenIDXRDS/'.$user->getName());
-				$wgOut->addMeta('http:X-XRDS-Location', $rt->getFullURL());
-				header('X-XRDS-Location', $rt->getFullURL());
+				# Add OpenID data iif its allowed
+				if (!$wgOpenIDClientOnly) {
+					$st = Title::makeTitleSafe(NS_SPECIAL, 'OpenIDServer');
+					$wgOut->addLink(array('rel' => 'openid.server',
+										  'href' => $st->getFullURL()));
+					$wgOut->addLink(array('rel' => 'openid2.provider',
+										  'href' => $st->getFullURL()));
+					$rt = Title::makeTitle(NS_SPECIAL, 'OpenIDXRDS/'.$user->getName());
+					$wgOut->addMeta('http:X-XRDS-Location', $rt->getFullURL());
+					header('X-XRDS-Location', $rt->getFullURL());
+				}
 			}
 		}
 	}

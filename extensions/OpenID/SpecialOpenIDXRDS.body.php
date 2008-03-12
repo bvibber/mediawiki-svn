@@ -37,9 +37,18 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 	# $par is a user name
 
 	function execute($par) {
-		global $wgOut;
+		global $wgOut, $wgOpenIDClientOnly;
 
 		wfLoadExtensionMessages( 'OpenID' );
+		
+		# No server functionality if this site is only a client
+		# Note: special page is un-registered if this flag is set,
+		# so it'd be unusual to get here.
+		
+		if ($wgOpenIDClientOnly) {
+			wfHttpError(404, "Not Found", wfMsg('openidclientonlytext'));
+			return;
+		}
 
 		// XRDS preamble XML.
 		$xml_template = array('<?xml version="1.0" encoding="UTF-8"?>',

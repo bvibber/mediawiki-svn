@@ -52,12 +52,21 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 	function execute($par) {
 
-		global $wgOut;
+		global $wgOut, $wgOpenIDClientOnly;
 
 		wfLoadExtensionMessages( 'OpenID' );
 
 		$this->setHeaders();
 
+		# No server functionality if this site is only a client
+		# Note: special page is un-registered if this flag is set,
+		# so it'd be unusual to get here.
+		
+		if ($wgOpenIDClientOnly) {
+			$wgOut->showErrorPage('openiderror', 'openidclientonlytext');
+			return;
+		}
+		
 		$server =& $this->getServer();
 
 		switch ($par) {

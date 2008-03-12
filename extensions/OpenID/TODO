@@ -55,7 +55,6 @@
 + add more explanatory text to the default login instructions (copy Wikitravel text)
 - add a public-domain Help:OpenID.wiki
 - add more than one OpenID to a user account
-- manage site trust for users who've logged into other sites (after login)
 - link to Special:OpenIDConvert if user is already logged in
 - support RP discovery
 - AJAX login, rather than klutzy JS form

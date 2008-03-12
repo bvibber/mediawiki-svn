@@ -295,6 +295,12 @@ LocalSettings.php file. Please read carefully.
   ''only'' log in with OpenID. This is principally of interest to
   OpenID advocacy sites like openid.net, but you may want it, too.
 
+* $wgOpenIDClientOnly -- defaults to false. With this enabled, users
+  cannot use their accounts on the local wiki as OpenIDs on another
+  site. Sucks for users, but some admins have emailed me about not
+  wanting the responsibility of being an OpenID server, so this flag
+  is for them.
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID
