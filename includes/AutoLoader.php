@@ -382,8 +382,6 @@ function __autoload($className) {
 		# Added by VF - Api Edit branch
 		'ApiRegUser' => 'includes/api/ApiRegUser.php',
 		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
-		'ApiTalk' 		=>	'includes/api/ApiTalk.php',
-		'ApiQueryRandomPage' => 'includes/api/ApiQueryRandomPage.php',
 		'SpecialEditTest' => 'includes/SpecialEditTest.php',
 	);
 	
