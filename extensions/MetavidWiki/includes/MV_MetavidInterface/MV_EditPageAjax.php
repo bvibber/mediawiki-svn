@@ -354,8 +354,10 @@
 	function internalAttemptSave( &$result, $bot = false ) {
 		global $wgHooks;
 		//clear confirmEdit for ajax edits: 
-		foreach($wgHooks['EditFilter'] as $k=>$hook){			
-			unset($wgHooks['EditFilter'][$k]);
+		if(isset($wgHooks['EditFilter'])){
+			foreach($wgHooks['EditFilter'] as $k=>$hook){			
+				unset($wgHooks['EditFilter'][$k]);
+			}
 		}
 		parent::internalAttemptSave( &$result, $bot = false );
 	}	
