@@ -71,17 +71,27 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 			$choice = $wgRequest->getText('wpNameChoice');
 			$nameValue = $wgRequest->getText('wpNameValue');
-			wfDebug("OpenID: Got form values '$choice' and '$nameValue'\n");
 
-			$name = $this->getUserName($openid, $sreg, $choice, $nameValue);
+			if ($choice == 'existing') {
+				$user = $this->attachUser($openid, $sreg,
+										  $wgRequest->getText('wpExistingName'),
+										  $wgRequest->getText('wpExistingPassword'));
+				
+				if (!$user) {
+					$this->chooseNameForm($openid, $sreg, 'wrongpassword');
+					return;
+				}
+			} else {
+				$name = $this->getUserName($openid, $sreg, $choice, $nameValue);
 
-			if (!$name || !$this->userNameOK($name)) {
-				wfDebug("OpenID: Name not OK: '$name'\n");
-				$this->chooseNameForm($openid, $sreg);
-				return;
+				if (!$name || !$this->userNameOK($name)) {
+					wfDebug("OpenID: Name not OK: '$name'\n");
+					$this->chooseNameForm($openid, $sreg);
+					return;
+				}
+				
+				$user = $this->createUser($openid, $sreg, $name);
 			}
-
-			$user = $this->createUser($openid, $sreg, $name);
 
 			if (!isset($user)) {
 				$this->clearValues();
@@ -184,11 +194,14 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		setcookie($wgCookiePrefix.'OpenID', $openid, $exp, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	}
 
-	function chooseNameForm($openid, $sreg) {
+	function chooseNameForm($openid, $sreg, $messagekey = NULL) {
 
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgOpenIDOnly;
+		
 		$sk = $wgUser->getSkin();
-		if (array_key_exists('nickname', $sreg)) {
+		if ($messagekey) {
+			$message = wfMsg($messagekey);
+		} else if (array_key_exists('nickname', $sreg)) {
 			$message = wfMsg('openidnotavailable', $sreg['nickname']);
 		} else {
 			$message = wfMsg('openidnotprovided');
@@ -199,6 +212,24 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 						'<form action="' . $sk->makeSpecialUrl('OpenIDFinish/ChooseName') . '" method="POST">');
 		$def = false;
 
+		if (!$wgOpenIDOnly) {
+			# Let them attach it to an existing user
+			
+			# Grab the UserName in the cookie if it exists
+			
+			global $wgCookiePrefix;
+			$name = '';
+			if ( isset( $_COOKIE["{$wgCookiePrefix}UserName"] ) ) {
+				$name = trim( $_COOKIE["{$wgCookiePrefix}UserName"] );
+			}
+			
+			$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceExisting' value='existing' /> " .
+							"<label for='wpNameChoiceExisting'>" . wfMsg("openidchooseexisting") . "</label> " .
+							"<input type='text' name='wpExistingName' id='wpExistingName' size='16' value='{$name}'> " .
+							"<label for='wpExistingPassword'>" . wfMsg("openidchoosepassword") . "</label> " .
+							"<input type='password' name='wpExistingPassword' size='8' /><br />");
+		}
+		
 		# These options won't exist if we can't get them.
 
 		if (array_key_exists('fullname', $sreg) && $this->userNameOK($sreg['fullname'])) {
@@ -228,7 +259,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceManual' value='manual' " .
 						" checked='off' />" .
 						"<label for='wpNameChoiceManual'>" . wfMsg("openidchoosemanual") . "</label> " .
-						"<input type='text' name='wpNameValue' id='wpNameChoice' size='30' /><br />");
+						"<input type='text' name='wpNameValue' id='wpNameValue' size='16' /><br />");
 
 		$ok = wfMsg('login');
 		$cancel = wfMsg('cancel');
@@ -361,6 +392,11 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 		$user = User::newFromName($name);
 
+		if (!$user) {
+			wfDebug("OpenID: Error adding new user.\n");
+			return NULL;
+		}
+		
 		$user->addToDatabase();
 
 		if (!$user->getId()) {
@@ -587,5 +623,23 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		} else { # try auto-generated
 			return $this->firstAvailable(wfMsg('openidusernameprefix'));
 		}
+	}
+	
+	function attachUser($openid, $sreg, $name, $password) {
+
+		$user = User::newFromName($name);
+
+		if (!$user) {
+			return NULL;
+		}
+		
+		if (!$user->checkPassword($password)) {
+			return NULL;
+		}
+		
+		$this->setUserUrl($user, $openid);
+		$this->updateUser($user, $sreg);
+		
+		return $user;
 	}
 }

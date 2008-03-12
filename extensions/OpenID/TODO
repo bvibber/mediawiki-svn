@@ -49,7 +49,7 @@
 + fix problem with getting $request->identity after login on server
 + fix problem with return_to parsing on login
 + fix problem with return_to parsing on convert
-- optionally allow user to specify an existing username/password after
++ optionally allow user to specify an existing username/password after
   logging in with OpenID the first time (like ma.gnolia.com)
 - deal with difference between canonical ID and "display ID" with XRIs
 + add more explanatory text to the default login instructions (copy Wikitravel text)
@@ -60,3 +60,6 @@
 - AJAX login, rather than klutzy JS form
 - link to OpenID login on Special:Userlogin
 - Dynamic HTML swap in of OpenID login form on Special:Userlogin
+- warn if a user account has been used as a login before attaching an
+  OpenID
+  
