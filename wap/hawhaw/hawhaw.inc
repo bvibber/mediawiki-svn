@@ -2371,7 +2371,8 @@ class HAW_deck
         strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder") ||
         strstr($HTTP_USER_AGENT, "(iPhone") ||
         strstr($HTTP_USER_AGENT, "(iPod") ||
-        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator") ||
+        strstr($HTTP_USER_AGENT, "(Linux; U; Android"))
     {
       // XHTML device detected
       $this->xhtml = true;
