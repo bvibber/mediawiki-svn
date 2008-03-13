@@ -689,12 +689,14 @@ getKmlNode: function() {
               '&nbsp;&nbsp;&nbsp;'+
               '&nbsp;&nbsp;&nbsp;';
           var html = '';
+          /*
           html += '<select id="select_world" onchange="emap.configureMap({\'world\':this.value})">';
           html += '<option value="earth">'+_['gm-earth']+'</option>';
           html += '<option value="moon">'+_['gm-moon']+'</option>';
           html += '<option value="mars">'+_['gm-mars']+'</option>';
           html += '</select>'+
               '&nbsp;&nbsp;&nbsp;';
+              */
           html += _['gm-zoom-control']+': '+
               this.getRadioOption('controls', 'large', _['gm-large'])+
               this.getRadioOption('controls', 'medium', _['gm-medium'])+
@@ -1068,7 +1070,8 @@ getKmlNode: function() {
              },
 
     setWorld: function(world, type) {
-                  document.getElementById('select_world').value = world;
+                  if (document.getElementById('select_world'))
+                      document.getElementById('select_world').value = world;
                   var i;
                   var old_world = this.world;
                   this.world = world;

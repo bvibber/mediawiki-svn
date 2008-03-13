@@ -3,11 +3,11 @@
 # http://www.mediawiki.org/wiki/Extension:Google_Maps
 
 # Copyright Evan Miller (emmiller@gmail.com)
-# Modifications copyright Hartmut Holzgraefe, Joshua Hodge
+# Modifications copyright Joshua Hodge
 
-# Version 0.9.1, 26 Feb 2008
+# Version 0.9.2, 12 Mar 2008
 
-define('GOOGLE_MAPS_EXTENSION_VERSION', '0.9.2a');
+define('GOOGLE_MAPS_EXTENSION_VERSION', '0.9.2');
 
 // if we're not in the mediawiki framework just die
 if( !defined( 'MEDIAWIKI' ) ) {
