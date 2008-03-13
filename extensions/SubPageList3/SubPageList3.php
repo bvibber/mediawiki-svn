@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'efSubpageList3';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Subpage List 3',
-	'version' => '1.03',
+	'version' => '1.04',
 	'description' => 'Automatically creates a list of the subpages of a page.',
 	'descriptionmsg' => 'spl3_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
@@ -443,7 +443,6 @@ class SubpageList3 {
 	 */
 	function makeList( $titles ) {
 		$c = 0;
-
 		# add parent item
 		if ($this->showparent) {
 			$pn = '[[' . $this->ptitle->getPrefixedText() .'|'. $this->ptitle->getText() .']]';
@@ -453,8 +452,9 @@ class SubpageList3 {
 			$c++; // flag for bar token to be added on next item
 		}
 		# add descendents
+		$parlv = substr_count($this->ptitle->getPrefixedText(), '/');
 		foreach( $titles as $title ) {
-			$lv = substr_count($title, '/');
+			$lv = substr_count($title, '/') - $parlv;	
 			if ($this->kidsonly!=1 || $lv<2) {
 				if ($this->showparent) $lv++;
 				$ss = "";
@@ -474,7 +474,7 @@ class SubpageList3 {
 			$c++;
 			if ($c>200) break; // safety
 		}
-		if ( count( $list ) > 0 ) {
+		if( count( $list ) > 0 ) {
 			$retval = implode( "\n", $list );
 			if ($this->mode == 'bar') {
 				$retval = implode( "", $list );
