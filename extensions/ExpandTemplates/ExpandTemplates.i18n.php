@@ -557,6 +557,7 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
  */
 $messages['km'] = array(
 	'expandtemplates'                  => 'ពង្រីកទំព័រគំរូ',
+	'expand_templates_input'           => 'សរសេរឃ្លា',
 	'expand_templates_output'          => 'លទ្ធផល',
 	'expand_templates_ok'              => 'យល់ព្រម',
 	'expand_templates_remove_comments' => 'ដកចេញ វិចារនានា',

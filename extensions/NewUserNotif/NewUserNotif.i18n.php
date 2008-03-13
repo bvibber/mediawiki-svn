@@ -137,14 +137,22 @@ $messages['nl'] = array(
 Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'newusernotifsubj' => 'Beskjed om ny bruker for $1',
-	'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+	'newusernotifsubj'  => 'Beskjed om ny bruker for $1',
+	'newusernotif-desc' => 'Sender beskjed på e-post når kontoer opprettes',
+	'newusernotifbody'  => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'newusernotifsubj' => 'Notificacion d’un utilizaire novèl per $1',
-	'newusernotifbody' => 'Adissiatz $1, Un compte novèl d\'utilizaire, $2, es estat creat sus $3 lo $4.',
+	'newusernotifsubj'  => 'Notificacion d’un utilizaire novèl per $1',
+	'newusernotif-desc' => "Manda una notificacion per corrièr electronic quand los comptes d'utilizaires son creats",
+	'newusernotifbody'  => "Adissiatz $1, Un compte novèl d'utilizaire, $2, es estat creat sus $3 lo $4.",
 );
 
 $messages['pl'] = array(

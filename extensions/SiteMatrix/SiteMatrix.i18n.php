@@ -488,11 +488,16 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author Chhorran
  */
 $messages['km'] = array(
+	'sitematrix'           => 'បញ្ជីវិគីនៃវិគីមេឌា',
+	'sitematrix-desc'      => 'បង្ហាញ[[Special:SiteMatrix|បញ្ជីវិគីនៃវិគីមេឌា]]',
 	'sitematrix-language'  => 'ភាសា',
 	'sitematrix-project'   => 'ឈ្មោះ នៃគំរោង, តំណភ្ជាប់ អន្តរគំរោង និង តំណភ្ជាប់ អន្តរវិគី',
+	'sitematrix-others'    => 'គំរោងវិគីមេឌាផ្សេងៗទៀត',
+	'sitematrix-total'     => "'''សរុប: $1'''",
 	'sitematrix-sitetotal' => 'សរុប',
 );
 
@@ -604,6 +609,7 @@ $messages['nan'] = array(
 $messages['nds'] = array(
 	'sitematrix'          => 'List vun de Wikimedia-Wikis',
 	'sitematrix-language' => 'Spraak',
+	'sitematrix-others'   => 'Annere Projekten vun Wikimedia',
 );
 
 /** Dutch (Nederlands)

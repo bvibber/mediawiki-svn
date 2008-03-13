@@ -155,12 +155,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'linksearch'      => 'Serĉu retajn ligilojn',
-	'linksearch-desc' => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
-	'linksearch-pat'  => 'Serĉesprimo:',
-	'linksearch-ns'   => 'Nomspaco:',
-	'linksearch-ok'   => 'Sercxu:',
-	'linksearch-line' => '$1 ligita de $2',
+	'linksearch'       => 'Serĉu retajn ligilojn',
+	'linksearch-desc'  => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
+	'linksearch-pat'   => 'Serĉesprimo:',
+	'linksearch-ns'    => 'Nomspaco:',
+	'linksearch-ok'    => 'Sercxu:',
+	'linksearch-text'  => 'Regulesprimoj kiel "*.wikipedia.org" povas esti uzataj.<br />Subtenataj protokoloj: <tt>$1</tt>',
+	'linksearch-line'  => '$1 ligita de $2',
+	'linksearch-error' => 'Regulesprimoj povas aperi nur ĉe la komenco de la retnoda nomo.',
 );
 
 $messages['es'] = array(
@@ -246,13 +248,19 @@ $messages['frp'] = array(
 	'linksearch-error' => 'Los caractèros « j·oquèr » pôvont étre utilisâs ren qu’u comencement du nom de domêno.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Toliño
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'linksearch'       => 'Buscar ligazóns web',
+	'linksearch-desc'  => '[[Special:Linksearch|Atopar páxinas con ligazóns externas]] que coincidan cos patróns específicos',
 	'linksearch-pat'   => 'Patrón de procura:',
 	'linksearch-ns'    => 'Espazo de nomes:',
 	'linksearch-ok'    => 'Buscar',
-	'linksearch-text'  => 'Extensións como "*.wikipedia.org" poden ser usadas. <br />Protocolos soportados: <tt>$1</tt>',
-	'linksearch-line'  => '$1 vinculado a $2',
+	'linksearch-text'  => 'Extensións como "*.wikipedia.org" poden ser usadas.<br />Protocolos soportados: <tt>$1</tt>',
+	'linksearch-line'  => '$1 ligado dende $2',
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 );
 
@@ -399,12 +407,13 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'linksearch'      => 'ស្វែងរក តំណភ្ជាប់ អិនរើណែត',
 	'linksearch-desc' => '[[Special:Linksearch|រកមើលទំព័រ មានតំណភ្ជាប់ ខាងក្រៅ]] ឆបនឹង គំរូបានសំដៅ',
-	'linksearch-pat'  => 'ស្វែងរក គំរូ ៖',
-	'linksearch-ns'   => 'វាលឈ្មោះ ៖',
+	'linksearch-pat'  => 'ស្វែងរកគំរូ៖',
+	'linksearch-ns'   => 'លំហឈ្មោះ៖',
 	'linksearch-ok'   => 'ស្វែងរក',
 	'linksearch-line' => '$1 បានតភ្ជាប់ ពី $2',
 );
@@ -474,8 +483,9 @@ $messages['nap'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'linksearch-ns' => 'Naamruum:',
-	'linksearch-ok' => 'Söken',
+	'linksearch-pat' => 'Söökmunster:',
+	'linksearch-ns'  => 'Naamruum:',
+	'linksearch-ok'  => 'Söken',
 );
 
 /** Nepali (नेपाली)
@@ -689,6 +699,20 @@ $messages['stq'] = array(
 	'linksearch-text'  => 'Disse Spezialsiede moaket ju Säike muugelke ätter Sieden, in do bestimde Webferbiendengen äntheelden sunt. Deerbie konne Wildcards as biespilswiese <tt>*.example.com</tt> benutsed wäide.<br />Unnerstutsede Protokolle: <tt>$1</tt>',
 	'linksearch-line'  => '$1 is ferlinked fon $2',
 	'linksearch-error' => 'Wildcards konnen bloot an dän Ounfang fon ju URL ferwoand wäide.',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'linksearch'       => 'Sungsi tumbu ramat',
+	'linksearch-desc'  => '[[Husus:Sungsitumbu|Sungsi kaca nu ngandung tumbu kaluar]] luyu jeung pola husus',
+	'linksearch-pat'   => 'Pola sungsi:',
+	'linksearch-ns'    => 'Spasi ngaran:',
+	'linksearch-ok'    => 'Sungsi',
+	'linksearch-text'  => "''Wildcard'' sarupaning \"*.wikipedia.org\" bisa dipaké.<br />Protokol nu dirojong: <tt>\$1</tt>",
+	'linksearch-line'  => '$1 ditumbu ti $2',
+	'linksearch-error' => "''Wildcard'' ngan bisa némbongan dina awal ngaran indung (''host'').",
 );
 
 /** Swedish (Svenska)

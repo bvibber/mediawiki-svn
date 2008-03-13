@@ -265,11 +265,12 @@ $messages['nl'] = array(
 	'disabledusers-summary'            => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'passwordreset'                    => 'Passordresetting',
+	'passwordreset-desc'               => "Resett brukeres passord &ndash; krever 'passwordreset'-rettigheter",
 	'passwordreset-invalidusername'    => 'Ugyldig brukernavn',
 	'passwordreset-emptyusername'      => 'Tomt brukernavn',
 	'passwordreset-nopassmatch'        => 'Passordene er ikke de samme',

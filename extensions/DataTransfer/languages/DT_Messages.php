@@ -379,6 +379,16 @@ $messages['te'] = array(
 	'dt_xml_freetext'       => 'స్వేచ్ఛా పాఠ్యం',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'dt_viewxml_namespaces' => 'Фазоҳои ном',
+	'dt_xml_page'           => 'Саҳифа',
+	'dt_xml_name'           => 'Ном',
+	'dt_xml_title'          => 'Унвон',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Siebrand

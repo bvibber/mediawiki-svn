@@ -1325,6 +1325,14 @@ $messages['te'] = array(
 	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'badimages-name'   => 'Ном:',
+	'badimages-reason' => 'Далел:',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

@@ -2005,33 +2005,53 @@ $messages['kk-arab'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author Chhorran
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'boardvote'              => 'ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា',
-	'boardvote-desc'         => '[[meta:Board elections|ការបោះឆ្នោត ក្រុមប្រឹក្សាអភិបាល មូលនិធី វិគីមីឌា]]',
-	'boardvote_novotes'      => 'គ្មានអ្នក ​បានបោះឆ្នោត នៅឡើយ។',
+	'boardvote'              => 'ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា',
+	'boardvote-desc'         => '[[meta:Board elections|ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា]]',
+	'boardvote_intro_change' => '<p>អ្នក​បានបោះឆ្នោត​ម្តងហើយ។ តែអ្នកអាច​ផ្លាស់ប្ដូរ​ការបោះឆ្នោត​របស់អ្នក​ដោយប្រើប្រាស់​សំនុំបែបបទ​ខាងក្រោម។ សូមគូស​នៅក្នុង​ប្រអបពីមុខ​ឈ្មោះបេក្ខជន​ដែលអ្នក​សំរេច​បោះឆ្នោត​អោយ។​</p>',
+	'boardvote_entered'      => 'សូមអរគុណ! ការបោះឆ្នោតរបស់អ្នកត្រូវបានរក្សាទុកហើយ។
+
+
+If you wish, you may record the following details. Your voting record is:
+
+<pre>$1</pre>
+
+It has been encrypted with the public key of the Election Administrators:
+
+<pre>$2</pre>
+
+The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Back]]',
+	'boardvote_notloggedin'  => 'អ្នក​មិន​ទាន់​ឡុកអ៊ីន​ទេ។ ដើម្បី​មានសិទ្ឋិ​បោះឆ្នោតបាន អ្នកត្រូវមាន​គណនី​ដែលមាន​ការរូមចំនែក​យ៉ាងហោចណាស់ $1 ដង មុន $2 និង មានកំនែប្រែ​លើកដំបូងនៅមុន ​$3។',
+	'boardvote_notqualified' => 'អ្នក​មិនមាន​សិទ្ឋិ​ក្នុងការបោះឆ្នោតទេ។ អ្នកត្រូវមានការកែប្រែ​អត្ថបទលើសពី $3 នៅមុន $2 ហើយការកែប្រែដំបូងរបស់អ្នក​ត្រូវតែនៅមុន $5។',
+	'boardvote_novotes'      => 'មិនទាន់មានអ្នកបានបោះឆ្នោតទេ។',
 	'boardvote_time'         => 'ពេល',
 	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
 	'boardvote_edits'        => 'ចំនួនកំនែប្រែ',
 	'boardvote_days'         => 'ថ្ងៃ',
 	'boardvote_ip'           => 'IP',
-	'boardvote_listintro'    => '<p>នេះជា បញ្ជី នៃគ្រប់សន្លឹកឆ្នោត បានត្រូវកត់ទុក មកទល់ពេលនេះ ។ $1 សំរាប់ ទិន្នន័យ បំលែង ជា អក្សរកូដ ។</p>',
+	'boardvote_listintro'    => '<p>នេះជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ ។ $1 សំរាប់​ទិន្នន័យ​បំលែង​ជា​អក្សរកូដ ។</p>',
 	'boardvote_dumplink'     => 'ចុចទីនេះ',
 	'boardvote_submit'       => 'យល់ព្រម',
 	'boardvote_strike'       => 'គូសចេញ',
 	'boardvote_unstrike'     => 'លែងគូសចេញ',
-	'boardvote_needadmin'    => 'មានតែ អ្នកអភិបាល ជាប់ឆ្នោត ទើបអាចធ្វើ ការងារនេះ ។',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">បោះឆ្នោត ក្រុមប្រឹក្សា វិគីមីឌា </a> ៖  បោះឆ្នោតចំហ រហូតដល់ថ្ងៃ ១២ ខែកក្កដា ។',
+	'boardvote_needadmin'    => 'មានតែអ្នកអភិបាលដែលជាប់ឆ្នោតប៉ុណ្ណោះ ទើបអាចធ្វើការងារនេះបាន។',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">បោះឆ្នោត​ក្រុមប្រឹក្សា​វិគីមេឌា </a> ៖  បោះឆ្នោតចំហ​រហូតដល់ថ្ងៃ​១២ ខែកក្កដា ។',
 	'boardvote_notstarted'   => 'ការបោះឆ្នោត មិនទាន់បាន ចាប់ផ្តើម',
 	'boardvote_closed'       => 'ការបោះឆ្នោត បានត្រូវបញ្ចប់, មើល [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En លទ្ធផលបោះឆ្នោត] ក្នុងពេល ឆាប់ៗ ខាងមុខ ។',
 	'boardvote_edits_many'   => 'ច្រើន',
-	'group-boardvote'        => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
-	'group-boardvote-member' => 'ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
-	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា បោះឆ្នោត អភិបាល',
-	'boardvote_welcome'      => "ស្វាគម '''$1'''!",
-	'go_to_board_vote'       => 'បោះឆ្នោត ​ក្រុមប្រឹក្សា វិគីមីឌា ឆ្នាំ ២០០៧',
+	'group-boardvote'        => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
+	'group-boardvote-member' => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
+	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
+	'boardvote_welcome'      => "សូមស្វាគមន៍'''$1'''!",
+	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៧',
 );
 
 $messages['ksh'] = array(
@@ -2388,12 +2408,17 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'boardvote_entry'      => '* [[{{ns:special}}:Boardvote/vote|Afstimmen]]
+* [[{{ns:special}}:Boardvote/list|Bet nu al afgevene Stimmen]]
+* [[{{ns:special}}:Boardvote/dump|Verslötelte Wahlindrääg]]',
 	'boardvote_novotes'    => 'Noch hett nüms afstimmt.',
 	'boardvote_time'       => 'Tiet',
 	'boardvote_user'       => 'Bruker',
 	'boardvote_edits'      => 'Ännern',
 	'boardvote_days'       => 'Daag',
+	'boardvote_ip'         => 'IP',
 	'boardvote_dumplink'   => 'Hier klicken',
+	'boardvote_submit'     => 'Afstimmen',
 	'boardvote_strike'     => 'Strieken',
 	'boardvote_unstrike'   => 'Strieken trüchnehmen',
 	'boardvote_edits_many' => 'veel',
@@ -2589,7 +2614,7 @@ $messages['oc'] = array(
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
-	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
+	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
 	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
@@ -3330,23 +3355,28 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ * @author Kandar
+ */
 $messages['su'] = array(
-	'boardvote'               => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
-	'boardvote_novotes'       => 'Acan aya pamilih.',
-	'boardvote_time'          => 'Wanci',
-	'boardvote_user'          => 'Pamaké',
-	'boardvote_edits'         => 'Édit',
-	'boardvote_days'          => 'Poé',
-	'boardvote_dumplink'      => 'Klik di dieu',
-	'boardvote_submit'        => 'Kintun',
-	'boardvote_unstrike'      => 'Hapus nu dicoret',
-	'boardvote_needadmin'     => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
-	'boardvote_notstarted'    => 'Saémbara can dimimitian',
-	'boardvote_closed'        => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kaca saémbara keur hasilna] teu lila.',
-	'boardvote_edits_many'    => 'loba',
-	'group-boardvote'         => 'Kuncén saémbara anggota dewan',
-	'group-boardvote-member'  => 'Kuncén saémbara anggota dewan',
-	'grouppage-boardvote'     => '{{ns:project}}:Kuncén saémbara anggota dewan',
+	'boardvote'              => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
+	'boardvote_notloggedin'  => 'Anjeun can asup log. Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi ti méméh $3 nepi ka $2.',
+	'boardvote_novotes'      => 'Acan aya pamilih.',
+	'boardvote_time'         => 'Wanci',
+	'boardvote_user'         => 'Pamaké',
+	'boardvote_edits'        => 'Édit',
+	'boardvote_days'         => 'Poé',
+	'boardvote_dumplink'     => 'Klik di dieu',
+	'boardvote_submit'       => 'Kintun',
+	'boardvote_unstrike'     => 'Hapus nu dicoret',
+	'boardvote_needadmin'    => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
+	'boardvote_notstarted'   => 'Saémbara can dimimitian',
+	'boardvote_closed'       => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kaca saémbara keur hasilna] teu lila.',
+	'boardvote_edits_many'   => 'loba',
+	'group-boardvote'        => 'Kuncén saémbara anggota dewan',
+	'group-boardvote-member' => 'Kuncén saémbara anggota dewan',
+	'grouppage-boardvote'    => '{{ns:project}}:Kuncén saémbara anggota dewan',
 );
 
 /** Swedish (Svenska)

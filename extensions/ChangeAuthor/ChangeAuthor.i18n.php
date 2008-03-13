@@ -778,6 +778,14 @@ $messages['te'] = array(
 	'changeauthor-logpagename'          => 'రచయిత మార్పుల దినచర్య',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'changeauthor-pagenameform-go' => 'Бирав',
+	'changeauthor-comment'         => 'Тавзеҳ:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

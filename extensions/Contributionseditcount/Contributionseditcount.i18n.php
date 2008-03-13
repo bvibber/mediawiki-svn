@@ -105,9 +105,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ មាន $1 កំណែប្រែ។',
+	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំនែប្រែ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -217,6 +218,14 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'contributionseditcount' => 'Dissen Benutser häd $1 Beoarbaidengen.',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'contributionseditcount'      => 'Ieu pamaké geus ngédit $1 kali.',
+	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Husus:Kontribusi]]',
 );
 
 /** Swedish (Svenska)

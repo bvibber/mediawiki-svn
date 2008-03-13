@@ -17,3 +17,11 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'mwsearch-desc' => 'Hintergrundprozess für die Lucene-Suchmaschine',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'mwsearch-desc' => 'MWSearch plugin',
+);
+

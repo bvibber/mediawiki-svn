@@ -198,10 +198,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'eval'        => 'Eval',
-	'eval-desc'   => 'Lägger till [[Special:Eval|ett gränssnitt]] till <code>eval()</code> funktionen',
+	'eval-desc'   => 'Lägger till [[Special:Eval|ett gränssnitt]] till funktionen <code>eval()</code>',
 	'eval_submit' => 'Evalvera',
 	'eval_escape' => 'Undvik utdata',
 	'eval_out'    => 'Resultat',

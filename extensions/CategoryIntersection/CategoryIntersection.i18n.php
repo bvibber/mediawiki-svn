@@ -109,6 +109,17 @@ $messages['no'] = array(
 	'categoryintersection-results'       => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'categoryintersection'               => 'Recopatge de categorias',
+	'categoryintersection-desc'          => "Manten una taula amb de valors a la volada pels [[Special:CategoryIntersection|recopatges de categorias]] al mejan d'una pagina",
+	'categoryintersection-doit'          => 'Lista las paginas dins totas aquestas categorias',
+	'categoryintersection-maxcategories' => 'Lo nombre maximom de las categorias s’entrecopant es de $1.',
+	'categoryintersection-results'       => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

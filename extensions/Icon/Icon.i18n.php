@@ -55,6 +55,7 @@ $messages['dsb'] = array(
  */
 $messages['eo'] = array(
 	'icon-badimage' => 'Malbona bildo',
+	'icon-badwidth' => 'Fuŝa Larĝo',
 );
 
 $messages['fr'] = array(

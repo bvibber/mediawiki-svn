@@ -388,15 +388,20 @@ $messages['kk-tr'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
-	'contributors'             => 'អ្នករួមចំណែក',
-	'contributors-toolbox'     => 'អ្នករួមចំណែក ចំបង',
+	'contributors'             => 'អ្នករួមចំនែក',
+	'contributors-desc'        => 'ដកស្រង់​តែ​ឈ្មោះអ្នករួមចំនែក​ចំបង​ៗទៅកាន់ទំព័រ​មួយ',
+	'contributors-toolbox'     => 'អ្នករួមចំនែក​ចំបងៗ',
+	'contributors-legend'      => 'បង្កើត​បញ្ជី​ឈ្មោះ​អ្នករួមចំនែក​ចំបងៗទៅកាន់ទំព័រមួយ',
 	'contributors-target'      => 'ចំណងជើង៖',
 	'contributors-submit'      => 'បង្ហាញ',
-	'contributors-others-long' => 'មាន $1 ការរួមចំណែក ដទៃទៀត ចំពោះ ទំព័រនេះ។',
+	'contributors-others-long' => 'មានអ្នករួមចំនែក​ដទៃ $1 នាក់ទៀត​ចំពោះ​ទំព័រនេះ។',
+	'contributors-others'      => 'និង $1 នាក់ផ្សេងទៀត',
+	'contributors-badtitle'    => 'ចំនងជើង​គ្មានសុពលភាព',
 	'contributors-nosuchpage'  => 'មិនមានទំព័រ$1ទេ។',
 );
 
@@ -757,6 +762,13 @@ $messages['te'] = array(
 	'contributors-others'      => 'మరియు $1గురు ఇతరులు',
 	'contributors-badtitle'    => 'తప్పుడు శీర్షిక.',
 	'contributors-nosuchpage'  => '$1 అనే పేజీ లేనే లేదు.',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'contributors-target' => 'Унвон:',
 );
 
 /** Thai (ไทย)

@@ -733,6 +733,19 @@ $messages['te'] = array(
 	'regexblock-view-time'            => '$1 నాడు',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'regexblock-form-username'  => 'Нишонаи IP ё номи корбарӣ:',
+	'regexblock-form-reason'    => 'Далел:',
+	'regexblock-block-log'      => "Номи корбарӣ ё нишонаи '''$1''' баста шуд.",
+	'regexblock-stats-username' => 'Барои $1',
+	'regexblock-view-go'        => 'Бирав',
+	'regexblock-view-reason'    => 'далел: $1',
+	'regexblock-view-time'      => 'дар $1',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

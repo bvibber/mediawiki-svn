@@ -85,10 +85,13 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'ajax-se-desc'    => 'Lakaat a ra war wel an implijerien zo o kemmañ an hevelep pajenn',
-	'ajax-se-title'   => "Oc'h adaozañ :",
-	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
-	'ajax-se-idling'  => '($1 zo)',
+	'ajax-se-desc'             => 'Lakaat a ra war wel an implijerien zo o kemmañ an hevelep pajenn',
+	'ajax-se-title'            => "Oc'h adaozañ :",
+	'ajax-se-pending'          => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
+	'ajax-se-idling'           => '($1 zo)',
+	'ajax-se-pagedoesnotexist' => "N'eus ket eus ar bajenn-mañ",
+	'ajax-se-userinvalid'      => 'FAZI : implijer direizh',
+	'ajax-se-usernotfound'     => "FAZI : n'eo ket bet kavet an implijer",
 );
 
 /** Czech (Česky)
@@ -608,6 +611,14 @@ $messages['te'] = array(
 	'ajax-se-pagedoesnotexist' => 'పేజీ ఉనికిలో లేదు',
 	'ajax-se-userinvalid'      => 'పొరపాటు: తప్పుడు వాడుకరి',
 	'ajax-se-usernotfound'     => 'పొరపాటు: వాడుకరి కనబడలేదు',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'ajax-se-title'            => 'Дар ҳоли вироиш:',
+	'ajax-se-pagedoesnotexist' => 'саҳифа вуҷуд надорад',
 );
 
 /** Thai (ไทย)

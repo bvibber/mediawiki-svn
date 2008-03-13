@@ -953,6 +953,7 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'hiderevision'               => 'បិទបាំង កំណែ ជា អចិន្ត្រៃ',
@@ -961,7 +962,7 @@ $messages['km'] = array(
 	'hiderevision-continue'      => 'បន្ត',
 	'hiderevision-reason'        => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
 	'hiderevision-submit'        => 'បិទបាំង ទិន្នន័យ នេះ ជា អចិន្ត្រៃ',
-	'hiderevision-tab'           => 'បិទបាំង បំលាស់ប្តូរ',
+	'hiderevision-tab'           => 'លាក់ការពិនិត្យឡើងវិញ',
 	'hiderevision-norevisions'   => 'គ្មានបំលាស់ប្តូរ សំដៅ លុបចេញ ។',
 	'hiderevision-noreason'      => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
 	'hiderevision-status'        => 'បំលាស់ប្តូរ $1​ ៖ $2',
@@ -970,7 +971,7 @@ $messages['km'] = array(
 	'hiderevision-error-current' => 'មិនអាច លុបចេញ កំណែប្រែ ចុងក្រោយបំផុត របស់ ទំព័រនេះ។ ត្រលប់ទៅដើម បំលាស់ប្តូរនេះ ។',
 	'oversight-log-hiderev'      => 'បានដកចេញ កំណែប្រែ ពី $1',
 	'oversight'                  => 'ការត្រួតមើល ពីលើ',
-	'oversight-view'             => 'លំអិត',
+	'oversight-view'             => 'សេចក្តីលំអិត',
 );
 
 $messages['ksh'] = array(
@@ -1040,6 +1041,13 @@ $messages['lt'] = array(
 	'hiderevision-continue'      => 'Tęsti',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 	'oversight-view'             => 'detalės',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'oversight-view' => 'Details',
 );
 
 /** Nepali (नेपाली)
@@ -1184,6 +1192,9 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 $messages['oc'] = array(
 	'hiderevision'                => 'Amagar definitivament las revisions',
 	'hiderevision-desc'           => 'Amaga las modificacions individualas de totes los utilizaires per de motius legals, etc.',
+	'group-oversight'             => 'Supervisaires',
+	'group-oversight-member'      => 'Supervisaire',
+	'grouppage-oversight'         => '{{ns:project}}:Supervisaire',
 	'hiderevision-prompt'         => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue'       => 'Contunhar',
 	'hiderevision-text'           => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Informacion personala inapropriada, *: ''Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz fach una error.",

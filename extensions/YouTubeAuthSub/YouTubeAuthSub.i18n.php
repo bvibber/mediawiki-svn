@@ -44,3 +44,42 @@ Please be patient.',
 	'youtubeauthsub_jserror_notitle'     => 'Please enter a title for the video.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'youtubeauthsub'                     => 'YouTube-video uploaden',
+	'youtubeauthsub-desc'                => "Laat gebruikers direct [[Special:YouTubeAuthSub|video's uploaden]] naar YouTube",
+	'youtubeauthsub_info'                => 'Geef de volgende informatie op om een video naar YouTube te uploaden om die later aan een pagina te kunnen toevoegen:',
+	'youtubeauthsub_title'               => 'Naam',
+	'youtubeauthsub_description'         => 'Beschrijving',
+	'youtubeauthsub_password'            => 'Wachtwoord YouTube',
+	'youtubeauthsub_username'            => 'Gebruiker YouTube',
+	'youtubeauthsub_keywords'            => 'Trefwoorden',
+	'youtubeauthsub_category'            => 'Categorie',
+	'youtubeauthsub_submit'              => 'Uploaden',
+	'youtubeauthsub_clickhere'           => 'Klik hier om aan te melden bij YouTube',
+	'youtubeauthsub_tokenerror'          => 'Fout bij het maken van het autorisatietoken. Vernieuw de pagina.',
+	'youtubeauthsub_success'             => "Gefeliciteerd!
+Uw video is geüpload.
+Klik <a href='http://www.youtube.com/watch?v=$1'>hier</a> om uw video te bekijken.
+Het komt voor dat YouTube enige tijd nodig heeft om uw video te verwerken, dus wellicht is die nog niet beschikbaar.
+
+Voeg de volgende code toe om uw video in een pagina op te nemen:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => "Meld u eerst aan bij YouTube voordat u video's gaat uploaden.",
+	'youtubeauthsub_uploadhere'          => 'Uw video van hier uploaden:',
+	'youtubeauthsub_uploadbutton'        => 'Uploaden',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+U kunt deze video [http://www.youtube.com/watch?v=$1 hier] bekijken',
+	'youtubeauthsub_summary'             => 'Bezig met uploaden van de YouTube video',
+	'youtubeauthsub_uploading'           => 'Uw video wordt geüpload.
+Even geduld alstublieft.',
+	'youtubeauthsub_viewpage'            => 'U kunt uw video ook [[$1|hier]] bekijken.',
+	'youtubeauthsub_jserror_nokeywords'  => 'Geef alstublieft een of meer trefwoorden op.',
+	'youtubeauthsub_jserror_notitle'     => 'Geef alstublieft een naam voor de video op.',
+	'youtubeauthsub_jserror_nodesc'      => 'Geef alstublieft een beschrijving voor de video op.',
+);
+

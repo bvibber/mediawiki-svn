@@ -53,6 +53,13 @@ $messages['no'] = array(
 	'fixedimage-desc' => 'Legger til taggen <tt><nowiki><fundraising></nowiki></tt> som et bilde',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'fixedimage-desc' => 'Ajusta la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

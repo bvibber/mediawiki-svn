@@ -452,6 +452,14 @@ $messages['te'] = array(
 	'backforth-prev' => 'గత ($1)',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'backforth-next' => 'Баъдӣ ($1)',
+	'backforth-prev' => 'Қаблӣ ($1)',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

@@ -496,14 +496,15 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'newuserlogpage'           => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
 	'newuserlogpagetext'       => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
 	'newuserlog-desc'          => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃ ការបង្កើត គណនី]] ទៅ [[Special:Log]]',
 	'newuserlog-byemail'       => 'ពាក្យសំងាត់ ត្រូវបានផ្ញើ ដោយអ៊ីមែវល៍',
-	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ ថ្មី',
-	'newuserlog-create2-entry' => 'បានបង្កើត គណនី សំរាប់ $1',
+	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ថ្មី',
+	'newuserlog-create2-entry' => "បានបង្កើតគណនីសំរាប់'''$1'''",
 );
 
 /** Korean (한국어)
@@ -628,6 +629,13 @@ $messages['mr'] = array(
  */
 $messages['myv'] = array(
 	'newuserlog-create-entry' => 'Од совиця',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'newuserlog-create-entry' => 'Nee Bruker',
 );
 
 /** Nepali (नेपाली)
@@ -832,9 +840,14 @@ $messages['stq'] = array(
 	'newuserlog-create2-entry' => 'moakede Benutserkonto foar $1',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
 $messages['su'] = array(
 	'newuserlogpage'           => 'Log pamaké anyar',
 	'newuserlogpagetext'       => 'Di handap ieu béréndélan log pamaké anyar',
+	'newuserlog-desc'          => 'Nambahkeun [[Husus:Log/newusers|log nyieun rekening]] ka [[Husus:Log]]',
+	'newuserlog-byemail'       => 'Sandi geus dikirim maké surélék.',
 	'newuserlog-create-entry'  => 'Pamaké anyar',
 	'newuserlog-create2-entry' => 'rekening pikeun $1 geus dijieun',
 );

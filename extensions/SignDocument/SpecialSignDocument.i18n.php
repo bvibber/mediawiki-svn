@@ -873,7 +873,7 @@ $messages['oc'] = array(
 	'signdocument'                    => 'Autentificar lo document',
 	'sign-nodocselected'              => 'Mercés de causir lo document que volètz autentificar',
 	'sign-selectdoc'                  => 'Document :',
-	'sign-docheader'                  => '<div class="noarticletext">Mercés d\'utilizar aqueste formulari per autentificar lo document « [[$1]] » afichat çai jos. Legir lo document al complet, e se desiratz significar vòstre sosten, emplenatz los camps per l\'autentificar.</div>',
+	'sign-docheader'                  => '<div class="noarticletext">Mercés d\'utilizar aqueste formulari per autentificar lo document « [[$1]] » afichat çaijós. Legissètz lo document al complet, e se desiratz significar vòstre sosten, emplenatz los camps per l\'autentificar.</div>',
 	'sign-error-nosuchdoc'            => 'Lo document demandat ($1) existís pas.',
 	'sign-realname'                   => 'Nom :',
 	'sign-address'                    => 'Adreça civica :',
@@ -893,7 +893,7 @@ $messages['oc'] = array(
 	'sign-list-hidebday'              => "Listar pas l'edat",
 	'sign-list-hideemail'             => "Listar pas l'adreça de corrièr electronic",
 	'sign-submit'                     => 'Autentificar lo document',
-	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çai jos e en clicant « Autentificar document ». Mercés de verificar que vòstras informacions personalas son exactas e que avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras informacions que pòdon vos identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las informacions picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div> \$1",
+	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çaijós e en clicant « Autentificar document ». Mercés de verificar que vòstras informacions personalas son exactas e qu'avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras informacions que vos pòdon identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las informacions picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div> \$1",
 	'sig-success'                     => 'Avètz autentificat lo document.',
 	'sign-view-selectfields'          => "'''Camps d'afichar :'''",
 	'sign-viewfield-entryid'          => 'ID de la dintrada',
@@ -1327,6 +1327,27 @@ $messages['te'] = array(
 	'sign-reviewsig'                => 'సంతకాన్ని సమీక్షించండి',
 	'sign-review-comment'           => 'వ్యాఖ్య',
 	'sign-submitreview'             => 'సమీక్షని దాఖలు చేయండి',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'sign-realname'           => 'Ном:',
+	'sign-city'               => 'Шаҳр:',
+	'sign-state'              => 'Вилоят:',
+	'sign-country'            => 'Кишвар:',
+	'sign-phone'              => 'Шумораи телефон:',
+	'sign-bday'               => 'Синну сол:',
+	'sign-email'              => 'Нишонаи E-mail:',
+	'sign-viewfield-realname' => 'Ном',
+	'sign-viewfield-address'  => 'Нишона',
+	'sign-viewfield-city'     => 'Шаҳр',
+	'sign-viewfield-state'    => 'Вилоят',
+	'sign-viewfield-country'  => 'Кишвар',
+	'sign-viewfield-zip'      => 'Индекс',
+	'sign-viewfield-ip'       => 'Нишонаи IP',
+	'sign-review-comment'     => 'Тавзеҳ',
 );
 
 /** Volapük (Volapük)

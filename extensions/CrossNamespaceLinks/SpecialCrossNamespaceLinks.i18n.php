@@ -374,6 +374,13 @@ $messages['nan'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'crossnamespacelinks' => 'Sieden mit Lenken na annere Naamrüüm',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

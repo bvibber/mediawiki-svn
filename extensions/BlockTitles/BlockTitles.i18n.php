@@ -267,9 +267,11 @@ Mändemeler üşin «#» nışanın qoldanıñız.',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'block_title_error_page_title' => 'ចំណងជើង ត្រូវបាន រាំងខ្ទប់',
+	'block_title_error_page_title' => 'ចំណងជើង​ត្រូវបាន​រាំងខ្ទប់',
+	'block_title_error'            => 'សូមអភ័យទោស! ចំនងជើង​ទំព័រនេះ​មិនត្រូវ​បាន​អនុញ្ញាតអោយរក្សាទុកទេ។',
 );
 
 /** Latin (Latina)

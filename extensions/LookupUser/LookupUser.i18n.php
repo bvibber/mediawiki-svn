@@ -361,6 +361,13 @@ $messages['te'] = array(
 	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'lookupuser_realname' => 'Номи аслӣ: $1',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

@@ -341,6 +341,7 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  * @author Chhorran
  */
 $messages['km'] = array(
@@ -350,7 +351,7 @@ $messages['km'] = array(
 	'countedits-ok'           => 'យល់ព្រម',
 	'countedits-nosuchuser'   => "មិនមានអ្នកប្រើប្រាស់ណាឈ្មោះ'''$1'''ទេ។",
 	'countedits-resultheader' => 'លទ្ធផលចំពោះ $1',
-	'countedits-resulttext'   => "គិត្រឹមពេលនេះ'''$1'''បានចូលរួមចំនែកកែប្រែ'''$2'''កំនែប្រែ",
+	'countedits-resulttext'   => "គិតត្រឹមពេលនេះ'''$1'''បានចូលរួមចំនែកកែប្រែ'''$2'''កំនែប្រែ",
 	'countedits-mostactive'   => 'អ្នករួមចំនែកដែលសកម្មបំផុត',
 	'countedits-nocontribs'   => 'មិនមានការរួមចំនែកនៅក្នុងវិគីនេះទេ។',
 );
@@ -697,6 +698,15 @@ $messages['tet'] = array(
 	'countedits-nosuchuser' => 'Uza-na\'in ho naran $1 lá\'os iha ne\'e.',
 	'countedits-resulttext' => '$1 edita tiha ona ba dala $2',
 	'countedits-nocontribs' => 'Ema lá\'os kintribui iha wiki ne\'e.',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'countedits-username'     => 'Номи корбарӣ:',
+	'countedits-nosuchuser'   => 'Корбаре бо номи $1 вуҷуд надорад.',
+	'countedits-resultheader' => 'Натоиҷ барои $1',
 );
 
 /** Turkish (Türkçe)

@@ -258,6 +258,13 @@ $messages['te'] = array(
 	'sc_gotomonth'     => 'నెలకి వెళ్ళండి',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'sc_today' => 'Имрӯз',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -543,18 +543,20 @@ $messages['kk-arab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'bookinfo-header'           => 'ពត៌មានអំពីសៀវភៅ',
-	'bookinfo-desc'             => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន ពីសេវាវ៉ែប',
-	'bookinfo-result-title'     => 'ចំណងជើង៖',
-	'bookinfo-result-author'    => 'អ្នកនិពន្ធ៖',
-	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
-	'bookinfo-result-year'      => 'ឆ្នាំ៖',
-	'bookinfo-error-nosuchitem' => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
-	'bookinfo-purchase'         => 'ជាវសៀវភៅនេះ ពី $1',
-	'bookinfo-provider'         => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
+	'bookinfo-header'            => 'ពត៌មានអំពីសៀវភៅ',
+	'bookinfo-desc'              => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន​ពីសេវាវិប',
+	'bookinfo-result-title'      => 'ចំណងជើង៖',
+	'bookinfo-result-author'     => 'អ្នកនិពន្ធ៖',
+	'bookinfo-result-publisher'  => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
+	'bookinfo-result-year'       => 'ឆ្នាំ៖',
+	'bookinfo-error-invalidisbn' => 'លេខ ISBN មិនត្រឹមត្រូវ​ត្រូវបានបញ្ចូល។',
+	'bookinfo-error-nosuchitem'  => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
+	'bookinfo-purchase'          => 'ជាវសៀវភៅនេះ​ពី $1',
+	'bookinfo-provider'          => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
 $messages['la'] = array(
@@ -656,10 +658,13 @@ $messages['myv'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'bookinfo-result-title'     => 'Titel:',
-	'bookinfo-result-author'    => 'Schriever:',
-	'bookinfo-result-publisher' => 'Verlag:',
-	'bookinfo-result-year'      => 'Johr:',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Schriever:',
+	'bookinfo-result-publisher'  => 'Verlag:',
+	'bookinfo-result-year'       => 'Johr:',
+	'bookinfo-error-invalidisbn' => 'ISBN gellt nich.',
+	'bookinfo-purchase'          => 'Koop dit Book bi $1',
+	'bookinfo-provider'          => 'Daten vun: $1',
 );
 
 /** Dutch (Nederlands)

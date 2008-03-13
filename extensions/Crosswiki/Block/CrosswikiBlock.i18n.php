@@ -452,18 +452,19 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'crosswikiblock-desc'           => 'អនុញ្ញាតិ អោយរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ​ វិគីផ្សេង ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
-	'crosswikiblock'                => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគីផ្សេង',
+	'crosswikiblock-desc'           => 'អនុញ្ញាត​អោយរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​​វិគីផ្សេង​ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
+	'crosswikiblock'                => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគីផ្សេង',
 	'crosswikiblock-target'         => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
 	'crosswikiblock-expiry'         => 'ផុតកំណត់ ៖',
 	'crosswikiblock-reason'         => 'ហេតុផល ៖',
-	'crosswikiblock-submit'         => 'រាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
-	'crosswikiblock-anononly'       => 'រាំងខ្ទប់ តែ អ្នកប្រើប្រាស់ អនាមិក',
-	'crosswikiblock-nocreate'       => 'បង្ការ ការបង្កើត គណនី',
-	'crosswikiblock-noemail'        => 'បង្ការ អ្នកប្រើប្រាស់ ពី ការផ្ញើ អ៊ីមែវល៍',
-	'crosswikiunblock'              => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ លើ វិគី ផ្សេង',
+	'crosswikiblock-submit'         => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​នេះ',
+	'crosswikiblock-anononly'       => 'រាំងខ្ទប់​តែ​អ្នកប្រើប្រាស់​អនាមិក',
+	'crosswikiblock-nocreate'       => 'បង្ការ​ការបង្កើត​គណនី',
+	'crosswikiblock-noemail'        => 'បង្ការ​អ្នកប្រើប្រាស់​ពី​ការផ្ញើ​អ៊ីមែល',
+	'crosswikiunblock'              => 'លែងរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគី​ផ្សេង',
 	'crosswikiunblock-user'         => 'ឈ្មោះអ្នកប្រើប្រាស់, អាស័យដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
 	'crosswikiunblock-reason'       => 'ហេតុផល ៖',
 	'crosswikiunblock-submit'       => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
@@ -907,5 +908,12 @@ $messages['te'] = array(
 తిరిగి:
 * [[Special:CrosswikiBlock|నిరోధపు ఫారం]]
 * [[$4]]",
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'crosswikiblock-reason' => 'Далел:',
 );
 

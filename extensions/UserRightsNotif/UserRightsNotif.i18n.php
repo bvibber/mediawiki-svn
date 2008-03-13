@@ -305,6 +305,24 @@ Mäd früntelke Gröitnis,
 $2',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'userrightsnotifysubject' => 'Kaanggotaan Grup robah dina $1',
+	'userrightsnotifybody'    => ':Bagéa, $1
+
+:Kaanggotaan grup anjeun di $2 geus dirobah ku $3 $4.
+
+:Diasupkeun: $5
+:Dikaluarkeun: $6
+
+:Baktos,
+
+:$2',
+	'userrightsnotif-desc'    => 'Kirim surélék ka pamaké ngeunaan parobahan hak ieu.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

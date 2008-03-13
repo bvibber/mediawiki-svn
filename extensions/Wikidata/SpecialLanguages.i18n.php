@@ -2549,6 +2549,16 @@ $wdMessages['te'] = array(
 	'ow_copy_successful'                    => '<h2>కాపీ విజయవంతం</h2>మీ భోగట్టా విజయవంతంగా కాపీ అయింది. కానీ మరోసారి సరిచూచుకోవడం మర్చిపోకండి!',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$wdMessages['tg'] = array(
+	'ow_ClassAttributeType'  => 'Навъ',
+	'ow_Language'            => 'Забон',
+	'ow_Text'                => 'Матн',
+	'ow_LinkAttributeValues' => 'Пайвандҳо',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

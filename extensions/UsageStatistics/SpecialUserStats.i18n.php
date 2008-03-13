@@ -627,6 +627,15 @@ $messages['te'] = array(
 	'usagestatisticsintervalmonth' => 'నెల',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'usagestatisticsintervalday'   => 'Рӯз',
+	'usagestatisticsintervalweek'  => 'Ҳафта',
+	'usagestatisticsintervalmonth' => 'Моҳ',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -41,6 +41,20 @@ $messages['nl'] = array(
 	'navigationpopups-desc' => "Laadt Lupin's navigatiescriptspopups in MediaWiki",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'navigationpopups-desc' => 'Laster Lupins ballongnavigasjonsskript i MediaWiki',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

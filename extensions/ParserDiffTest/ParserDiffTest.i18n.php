@@ -437,6 +437,13 @@ $messages['lt'] = array(
 	'pdtest_ok' => 'Gerai',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'pdtest_diff' => 'Ünnerscheed',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

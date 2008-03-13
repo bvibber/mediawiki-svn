@@ -423,6 +423,26 @@ $messages['stq'] = array(
 	'formsaveerrortext'            => 'Dät roate n uunbekoanden Failer bie dät Spiekerjen fon ju Siede „$1“.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'form'                         => 'Formulir',
+	'formnoname'                   => 'Formulir can dingaranan',
+	'formnonametext'               => 'Formulir anjeun kudu boga ngaran, misalna waé "Husus:Formulir/Ngaranformulir".',
+	'formbadname'                  => 'Ngaran formulirna teu payus.',
+	'formbadnametext'              => 'Euweuh formulir nu ngaranna kitu.',
+	'formpattern'                  => 'Formulir-$1',
+	'formtitlepattern'             => 'Tambahan $1 Anyar',
+	'formsave'                     => 'Simpen',
+	'formindexmismatch'            => 'Ieu formulir mibanda pola jeung citakan ngaran nu pasalia ti indéks $1 ka handap.',
+	'formarticleexists'            => 'Kaca Aya',
+	'formarticleexiststext'        => 'Kaca [[$1]] geus aya.',
+	'formbadpagenametext'          => 'Data formulir nu diasupkeun ngahasilkeun ngaran kaca nu teu payus, "$1".',
+	'formrequiredfieldpluralerror' => 'Eusieun $1 kudu dieusian. Mangga eusian heula.',
+	'formsaveerrortext'            => "Aya éror nu teu kanyahoan nalika nyimpen kaca '$1'.",
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
