@@ -281,8 +281,9 @@ class WhitelistExec
 			/* Convert regex to PHP format */
 			$php_regex = str_replace('%', '*', $sql_regex);
 
+			/* Generate regex; use | as delimiter as it is an illegal title character. */
 			$php_regex_full = $wgWhitelistWildCardInsensitive ?
-			'/' . $php_regex . '/i' : '/' . $php_regex . '/';
+				'|' . $php_regex . '|i' : '|' . $php_regex . '|';
 
 
 			if (self::preg_test($php_regex_full))
