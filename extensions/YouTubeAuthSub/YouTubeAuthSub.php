@@ -82,7 +82,7 @@ function wfSpecialYouTubePost ($url, $content, $headers = null) {
 }
 
 function wfSpecialYouTubeGetCategories() {
-	global $wgMemc;
+	global $wgMemc, $wgYTAS_User;
 	$key = wfMemcKey('youtube', 'authsub', $wgYTAS_User);
 	$cats =  $wgMemc->get( $key );
 	if (!$cats) {

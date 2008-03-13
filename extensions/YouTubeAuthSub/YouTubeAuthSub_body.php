@@ -201,7 +201,7 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 	                <script type='text/javascript' src='/extensions/YouTubeAuthSub/youtubeauthsub.js'>
 	                </script>
 					<form action='{$wgTitle->getFullURL()}' method='POST' name='ytas_form' onsubmit='return checkYTASForm();'>
-					<table cellpadding='100'>
+					<table cellpadding='10'>
 				");
 			if (!$wgYTAS_UseClientLogin) {
 				$wgOut->addHTML("<input type='hidden' name='token' value='{$wgRequest->getVal('token')}'/>");
