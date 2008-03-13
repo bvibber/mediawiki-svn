@@ -73,25 +73,27 @@ function wfSpecialEval() {
 			global $wgOut, $wgTitle;
 
 			$wgOut->addHTML(
-				wfElement( 'form',
+				Xml::openElement( 'form',
 					array(
 						'id' => 'specialeval',
 						'method' => 'get',
 						'action' => $wgTitle->escapeLocalUrl()
-					),
-					null
+					)
 				) .
-					wfElement( 'textarea',
+					# Gotta use open and close here to
+					# avoid <textarea /> which breaks
+					Xml::openElement( 'textarea',
 						array(
 							'cols' => 40,
 							'rows' => 10,
 							'name' => 'code',
-						),
-						$this->mCode
+						)
 					) .
+					$this->mCode . 
+					Xml::closeElement( 'textarea' ) .
 					' ' .
-					wfElement( 'br', null, '' ) .
-					wfElement( 'input',
+					Xml::element( 'br', null, '' ) .
+					Xml::element( 'input',
 						array(
 							'type' => 'checkbox',
 							'name' => 'escape',
@@ -99,21 +101,21 @@ function wfSpecialEval() {
 						) + ( $this->mEscape ? array( 'checked' => 'checked' ) : array() ),
 						''
 					) .
-					wfElement( 'label',
+					Xml::element( 'label',
 						array(
 							'for' => 'escape'
 						),
 						wfMsg( 'eval_escape' )
 					) .
-					wfElement( 'br', null, '' ) .
-					wfElement( 'input',
+					Xml::element( 'br', null, '' ) .
+					Xml::element( 'input',
 						array(
 							'type' => 'submit',
 							'value' => wfMsg( 'eval_submit' )
 						),
 						''
 					) .
-					wfElement('input',
+					Xml::element('input',
 						array(
 							'type' => 'hidden',
 							'name' => 'title',
@@ -121,7 +123,7 @@ function wfSpecialEval() {
 						),
 						''
 					) .
-				wfCloseElement( 'form' )
+				Xml::closeElement( 'form' )
 			);
 		}
 
@@ -152,7 +154,7 @@ function wfSpecialEval() {
 
 			if ( $this->mErr !== '' ) {
 				$this->mErr =  preg_replace( '/^<br \/>/', '', $this->mErr );
-				$wgOut->addHTML( wfElement( 'h2', null, wfMsg( 'eval_out' ) ) );
+				$wgOut->addHTML( Xml::element( 'h2', null, wfMsg( 'eval_out' ) ) );
 				if ( $this->mEscape )
 					$this->mErr =
 						wfOpenElement( 'pre' ) .
@@ -173,7 +175,7 @@ function wfSpecialEval() {
 			$geshi->set_header_type( GESHI_HEADER_DIV );
 
 			$wgOut->addHTML(
-				wfElement( 'h2', null, wfMsg( 'eval_code' ) ) .
+				Xml::element( 'h2', null, wfMsg( 'eval_code' ) ) .
 				$geshi->parse_code()
 			);
 		}
