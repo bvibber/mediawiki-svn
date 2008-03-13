@@ -81,7 +81,7 @@ struct	tar	 hdr;
 
 		for (sum = 0, buf = (void *)&hdr, i = sizeof(hdr); i--;)
 		       sum += *buf++;
-		snprintf(hdr.tr_chksum, 8, "%06o", sum);
+		sprintf(hdr.tr_chksum, "%06o", sum);
 
 		if (write_blocked(&hdr, sizeof(hdr), file) < 1) {
 			pfatal("tw2", dest);
@@ -98,9 +98,16 @@ struct	tar	 hdr;
 	/*
 	 * Trim the first two characters of curdir, which is always "./", and the last, 
 	 * which is always a "/".  Saves 3 bytes for pathname...
+	 *
+	 * If the name and directory fits entirely into the name header, don't 
+	 * bother writing the prefix.
 	 */
-	strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
-	strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
+	if (strlen(curdir) + strlen(name) + 2 < sizeof(hdr.tr_name))
+		sprintf(hdr.tr_name, "%s%s", curdir + 2, name);
+	else {
+		strncpy(hdr.tr_prefix, curdir + 2, min(sizeof(hdr.tr_prefix), max(0, strlen(curdir + 2) - 1)));
+		strncpy(hdr.tr_name, name, sizeof(hdr.tr_name));
+	}
 
 	sprintf(hdr.tr_mode, "%07o", (int)(sb->st_mode & 0777));
 	if (force_uid == -1)
@@ -122,7 +129,7 @@ struct	tar	 hdr;
 	
 	for (sum = 0, buf = (void *)&hdr, i = sizeof(hdr); i--;)
 	       sum += *buf++;
-	snprintf(hdr.tr_chksum, 8, "%06o", sum);
+	sprintf(hdr.tr_chksum, "%06o", sum);
 
 	if (write_blocked(&hdr, sizeof(hdr), file) < 1) {
 		pfatal("tw4", dest);

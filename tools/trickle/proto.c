@@ -10,6 +10,11 @@
 #include <sys/socket.h>
 #include <sys/stat.h>
 
+#include "t_sysparam.h"
+#ifdef T_SYS_PARAM_H
+# include <sys/param.h>
+#endif
+
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -22,6 +27,14 @@
 #include "t_stdint.h"
 #ifdef T_STDINT
 # include <stdint.h>
+#endif
+
+#ifndef PATH_MAX
+# define PATH_MAX MAXPATHLEN
+#endif
+
+#if defined(__sun) && !defined(__svr4)
+typedef unsigned int uint32_t;
 #endif
 
 #include "trickle.h"

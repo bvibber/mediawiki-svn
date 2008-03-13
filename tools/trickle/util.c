@@ -77,3 +77,16 @@ pfatal(c, e)
 {
 	fprintf(stderr, "%s: %s (%s)\n", e, strerror(errno), c);
 }
+
+#if defined(__sun) && !defined(__svr4)
+extern int sys_nerr;
+extern char *sys_errlist[];
+
+const char *strerror(n)
+	int n;
+{
+	if (n >= sys_nerr)
+		return "Unknown error";
+	return sys_errlist[n];
+}
+#endif

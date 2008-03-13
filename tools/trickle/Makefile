@@ -1,7 +1,7 @@
 # @(#) $Header$
 
 CC?=cc
-CFGHDRS=t_stdint.h t_xti.h t_alloca.h
+CFGHDRS=t_stdint.h t_xti.h t_alloca.h t_sysparam.h
 all: config trickle
 config: $(CFGHDRS)
 trickle: trickle.o tar.o proto.o util.o rdcp.o ldflags
@@ -10,6 +10,10 @@ trickle: trickle.o tar.o proto.o util.o rdcp.o ldflags
 	$(CC) -O -g -D_FILE_OFFSET_BITS=64 -c $<
 clean:
 	rm -f trickle trickle.o tar.o util.o rdcp.o proto.o ldflags $(CFGHDRS)
+t_sysparam.h:
+	echo "#include <sys/param.h>" >test.c
+	-($(CC) -c -o /dev/null test.c && echo "#define T_SYS_PARAM_H 1") >t_sysparam.h
+	rm -f test.c
 t_stdint.h:
 	echo "#include <stdint.h>" >test.c
 	-($(CC) -c -o /dev/null test.c && echo "#define T_STDINT 1") >t_stdint.h

@@ -25,6 +25,10 @@
 #endif
 #include "rdcp.h"
 
+#if defined(__sun) && !defined(__svr4)
+typedef unsigned short uint16_t;
+#endif
+
 #define F_CLOSED 1
 
 #define HANDLE_OK(h) ((h) && (h)->desc != -1 && (h)->recvf && (h)->sendf && !((h)->flags & F_CLOSED))
@@ -161,6 +165,7 @@ rdcp_bind(desc, handle, opts)
 {
 	int		i;
 	unsigned char	c;
+	uint16_t	recsz;
 
 	if ((opts->rp_rtype < 1 || opts->rp_rtype > 2)
 	    /* Zero-size records not allowed. */
@@ -183,8 +188,8 @@ rdcp_bind(desc, handle, opts)
 	/*
 	 * Record size for fixed-size streams.
 	 */
-	uint16_t rs = opts->rp_rsize;
-	if (rs && (i = rdcp_internal_send(handle, &rs, sizeof(rs))))
+	recsz = opts->rp_rsize;
+	if (recsz && (i = rdcp_internal_send(handle, &recsz, sizeof(recsz))))
 		return i;
 	
 	/*
@@ -195,10 +200,10 @@ rdcp_bind(desc, handle, opts)
 	if (c != opts->rp_rtype)
 		return R_ERR_DISAGREE;
 
-	if (rs) {
-		if (i = rdcp_internal_receive(handle, &rs, sizeof(rs)))
+	if (recsz) {
+		if (i = rdcp_internal_receive(handle, &recsz, sizeof(recsz)))
 			return i;
-		if (rs != opts->rp_rsize)
+		if (recsz != opts->rp_rsize)
 			return R_ERR_DISAGREE;
 	}
 
@@ -251,9 +256,10 @@ rdcp_write(handle, frame)
 	struct rdcp_handle *handle;
 	struct rdcp_frame *frame;
 {
-	void	*data;
-	size_t	 dlen;
-	int	 i;
+	void		*data;
+	size_t		 dlen;
+	int	 	 i;
+	uint16_t	 j;
 
 	if (!HANDLE_OK(handle))
 		return R_ERR_INVARG;
@@ -266,10 +272,10 @@ rdcp_write(handle, frame)
 		data = alloca(frame->rf_len + sizeof(uint16_t));
 		if (data == NULL)
 			return R_ERR_NOMEM;
-		uint16_t i = frame->rf_len;
-		memcpy(data, &i, sizeof(i));
-		memcpy((char *)data + sizeof(i), frame->rf_buf, i);
-		dlen = i + sizeof(i);
+		j = frame->rf_len;
+		memcpy(data, &j, sizeof(j));
+		memcpy((char *)data + sizeof(j), frame->rf_buf, j);
+		dlen = j + sizeof(j);
 	} else {
 		return R_ERR_INVARG;
 	}

@@ -9,6 +9,14 @@
 
 #pragma ident "@(#) $Id$"
 
+#ifndef __STDC__
+# define const
+# define PROTO(x)
+#else
+# define const const
+# define PROTO(x) x
+#endif
+
 #include <sys/types.h>
 
 #include <stdio.h>
@@ -32,15 +40,10 @@ extern int records;
 extern uid_t force_uid;
 extern gid_t force_gid;
 
-size_t write_blocked(void *buf, size_t size, FILE *file);
-#ifdef __STDC__
-char *allocf(const char *, ...);
-void fatal(const char *, ...);
-#else
-char *allocf();
-void fatal();
-#endif
-void pfatal(const char *, const char *);
+size_t write_blocked PROTO((void *buf, size_t size, FILE *file));
+char *allocf PROTO((const char *, ...));
+void fatal PROTO((const char *, ...));
+void pfatal PROTO((const char *, const char *));
 
 /** Protocol support */
 #define PROTO_VERS	1
@@ -60,19 +63,19 @@ struct pfile {
 struct rdcp_frame;
 struct stat;
 
-int		 proto_neg		(int);
-int		 proto_rsh		(const char *, const char *);
-struct pfile 	*proto_getfile		(void);
-void		 proto_decline		(void);
-void		 proto_accept		(void);
-int		 proto_read		(struct rdcp_frame *);
-void		 proto_write		(struct rdcp_frame *);
-int		 proto_offer		(const char *file, struct stat *);
-void		 proto_eof		(void);
-void		 proto_writeblock	(void *, size_t);
-char		*proto_readdir		(void);
-void		 proto_ack		(void);
-void		 proto_nack		(const char *error);
+int		 proto_neg		PROTO((int));
+int		 proto_rsh		PROTO((const char *, const char *));
+struct pfile 	*proto_getfile		PROTO((void));
+void		 proto_decline		PROTO((void));
+void		 proto_accept		PROTO((void));
+int		 proto_read		PROTO((struct rdcp_frame *));
+void		 proto_write		PROTO((struct rdcp_frame *));
+int		 proto_offer		PROTO((const char *file, struct stat *));
+void		 proto_eof		PROTO((void));
+void		 proto_writeblock	PROTO((void *, size_t));
+char		*proto_readdir		PROTO((void));
+void		 proto_ack		PROTO((void));
+void		 proto_nack		PROTO((const char *error));
 
 /** Tar support */
 
@@ -111,7 +114,7 @@ struct tar {
 };
 
 struct stat;
-void tar_writeheader(FILE *file, const char *name, struct stat *);
-void tar_writeeof(FILE *file);
+void tar_writeheader PROTO((FILE *file, const char *name, struct stat *));
+void tar_writeeof PROTO((FILE *file));
 
 #endif

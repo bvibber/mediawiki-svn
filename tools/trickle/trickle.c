@@ -13,6 +13,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include "t_sysparam.h"
+#ifdef T_SYS_PARAM_H
+# include <sys/param.h>
+#endif
+
+#if defined(__sun) && !defined(__svr4)
+extern char *optarg;
+extern int optind, opterr;
+#endif
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,6 +35,10 @@
 #include <strings.h>
 #include <pwd.h>
 #include <grp.h>
+
+#ifndef PATH_MAX
+# define PATH_MAX MAXPATHLEN
+#endif
 
 #include "trickle.h"
 #include "rdcp.h"
