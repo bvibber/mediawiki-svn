@@ -216,7 +216,13 @@ var vlcEmbed = {
 		if(this.controls){
 		    this.setSliderValue(0);
 		    this.setStatus("-:--:--/-:--:--");
-		}		
+		}
+		//stop updates: 
+		if( this.monitorTimerId != 0 )
+	    {
+	        clearInterval(this.monitorTimerId);
+	        this.monitorTimerId = 0;
+	    }
 	    //document.getElementById("PlayOrPause").value = " Play ";
 	    //document.getElementById("PlayOrPause").disabled = false;
     },
