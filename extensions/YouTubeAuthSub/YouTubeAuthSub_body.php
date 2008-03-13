@@ -73,7 +73,7 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 
 		if ($wgYTAS_UseClientLogin) {
 
-			$key = wfMemcKey('youtube', 'authsub', $wgYTAS_User);
+			$key = wfMemcKey('youtube', 'authsub', 'token', $wgYTAS_User);
 			$token = $wgMemc->get( $key );
 			// regenerate the token
 			if (!$token) {
@@ -96,7 +96,7 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 					$wgOut->addHTML(wfMsg('youtubeauthsub_tokenerror'));
 					return;
 				}
-				$wgMemc->set($key, $token, time() + 3600);
+				$wgMemc->set($key, $token, 3600);
 			}
 		}
 		else {

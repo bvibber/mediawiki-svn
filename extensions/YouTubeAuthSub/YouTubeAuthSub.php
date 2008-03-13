@@ -82,8 +82,8 @@ function wfSpecialYouTubePost ($url, $content, $headers = null) {
 }
 
 function wfSpecialYouTubeGetCategories() {
-	global $wgMemc, $wgYTAS_User;
-	$key = wfMemcKey('youtube', 'authsub', $wgYTAS_User);
+	global $wgMemc;
+	$key = wfMemcKey('youtube', 'authsub', 'cats');
 	$cats =  $wgMemc->get( $key );
 	if (!$cats) {
 		$ch = curl_init();
@@ -102,7 +102,7 @@ function wfSpecialYouTubeGetCategories() {
 		for ($i = 0; $i < sizeof ($matches[1]) && $i < sizeof($matches[2]); $i++) {
 			$cats .= "<OPTION VALUE='{$matches[1][$i]}'>{$matches[2][$i]}</OPTION>";
 		}
-		$wgMemc->set($key, $cats, time() + 3600 * 24);
+		$wgMemc->set($key, $cats, 3600 * 24);
 	}
 	return $cats;
 }
