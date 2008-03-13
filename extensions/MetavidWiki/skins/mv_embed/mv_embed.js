@@ -32,9 +32,9 @@ var mv_init_done=false;
 
 
 if(!gMsg){var gMsg={};}
-//all default msg in [english] should be overwitten by the CMS languge msg system.
+//all default msg in [english] should be overwritten by the CMS language msg system.
 gMsg['loading_txt'] ='loading<blink>...</blink>';
-gMsg['select_playback']='Set Playback Prefrence';
+gMsg['select_playback']='Set Playback Preference';
 gMsg['link_back']='Link Back';
 gMsg['error_load_lib']='mv_embed: unable to load required javascript libraries\n'+
 			 	'insert script via DOM has failed, try reloading?  ';
@@ -136,7 +136,6 @@ var mvEmbed = {
   			$j(this).remove();
   	});  	
   	//@@todo temporarily disable playback or set all to loading...
-
 	//request the new player library: 
 	var plugins={};
 	plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
@@ -504,7 +503,7 @@ if (document.addEventListener) {
 	//backup "onload" method in case on DOMContentLoaded does not exist
 	window.onload = init_mv_embed;
 }
-//for IE (temporarally disabled causing empty document rewrites:
+//for IE (temporarily disabled causing empty document rewrites:
 /*if (document.all && !window.opera){ //Crude test for IE
 	js_log('doing IE on ready');
 //Define a "blank" external JavaScript tag
@@ -561,15 +560,6 @@ function mv_embed(){
 	   			i--;
 	   		}
         }
-        //set onBeforeUnload action to stop all videos
-        /*document.body.onBeforeUnload= function(){
-        	js_log('called before unload');
-        	for(i in global_ogg_list){
-        		$j('#'+i).stop();
-        	}
-        	alert('wtf');
-        	return false;
-        }*/
     }else{
     	js_log('no <video> elements found');
     }
@@ -743,23 +733,10 @@ embedVideo.prototype = {
 	    if(embedTypes.getPlayerType()){    
 	       this.inheritEmbedObj();
 	    }  
-	   //do a local call to getDuration (as the plugin may not be loaded yet) 
-	   //test: 
 	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
 	   //return this object:	   
 	   return this;
 	},	  	
-		/*js_log( 'grab settings from roe: ' + element.getAttribute('roe') );
-			this.roe = element.getAttribute('roe');
-			_this = this;			
-		
-				_this.continue_init(element);
-				_this.loading_external_data=false;
-				if(_this.ed_callback)
-					_this.ed_callback();
-			});
-			//return the partially created object.
-			return this;  */
 	inheritEmbedObj:function(){
 		js_log("inheritEmbedObj");
 		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
@@ -788,7 +765,7 @@ embedVideo.prototype = {
 	//parse roe file and store data in this object
 	getParseROE: function(callback){
 		var _this = this;
-		//@@todo split long rage data requests over a few ajax queries to not hit too big of a xml file on load
+		//@@todo split long rage data requests over a few ajax queries as video playing advances 
 		do_request(this.roe, function(data){			
 			js_log("on: "+_this.id + " got data "+ data);
 			if(typeof data == 'object' ){
@@ -804,7 +781,7 @@ embedVideo.prototype = {
 					}
 				});												
 				//set the thumbnail: 
-				//for some reason getElement By id does not work > ? 
+				//for some reason getElementById does not work > ? 
 				//rThumb = this.roe_data.getElementById('stream_thumb');
 				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
 					if(n.getAttribute("id")=="stream_thumb"){
@@ -1068,7 +1045,6 @@ embedVideo.prototype = {
 		return out;
 	},
 	//display the code to remotely embed this video:
-	//if scriptaculus is available animate its appearance. 
 	hideShowEmbedCode : function(){
 		if($j('#embed_code_'+this.id).css('display')=='none'){
 			$j('#embed_code_'+this.id).fadeIn("slow");
@@ -1086,7 +1062,7 @@ embedVideo.prototype = {
 		* 
 		*/		
 	},		
-	//@@todo we should group/abstract hide show video and set playback prefrence	
+	//@@todo we should group/abstract hide show video and set playback preference	
 	showVideoDownload:function(){		
 		 $j('#'+this.id).css('position', 'relative');
 		 //set height width (check for playlist container) 

@@ -131,7 +131,7 @@
 				$html.='<td>'.wfMsg('mv_media_path').'</td>';
 			$html.='</tr>';
  		}
- 		//make it an array and assin default values: (maybe not so optimal)
+ 		//make it an array and assign default values: (maybe not so optimal)
  		if(is_object($sf))$sf=get_object_vars($sf);
  		if(!isset($sf['id']))$sf['id']='new';
  		if(!isset($sf['stream_id']))$sf['stream_id']=$this->mArticle->mvTitle->mvStream->getStreamId();

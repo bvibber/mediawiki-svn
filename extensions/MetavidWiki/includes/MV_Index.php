@@ -102,7 +102,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	}
  	/*
  	 * getMVDInRange returns the mvd titles that are in the given range
- 	 * param list got kind of crazy long... @@todo refactor int a request object or something cleaner
+ 	 * param list got kind of crazy long... @@todo re-factor int a request object or something cleaner
  	 */
  	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties='', $limit='LIMIT 0, 200'){
  		global $mvIndexTableName, $mvDefaultClipLength; 		

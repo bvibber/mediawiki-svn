@@ -40,7 +40,7 @@ class MV_SpecialSearch extends SpecialPage{
  * ?f[0]['t']=m&f[0]['v']=wars
  */
 class MV_SpecialMediaSearch extends SpecialPage {
-	//initial values for selctors ( keys into language as 'mv_search_$val')
+	//initial values for selectors ( keys into language as 'mv_search_$val')
 	var $sel_filter_types = array (
 		'match', 		//full text search
 		'spoken_by',	
@@ -465,7 +465,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 							$this->text_entry($i, 'vs', $filter['vs'], 'date-pick_'.$i, 'id="vs_'.$i.'"'),
 							$this->text_entry($i, 've', $filter['ve'], 'date-pick_'.$i, 'id="ve_'.$i.'"')
 						);
-					//also output dateObj (if not already outputed):
+					//also output dateObj (if not already output):
 					if(!$dateObjOut){
 						global $wgOut;
 						//add all date scripts:

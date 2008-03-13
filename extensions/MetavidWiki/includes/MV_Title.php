@@ -123,13 +123,19 @@
  		}else{
  			$this->start_time_sec = ntp2seconds($this->start_time);
 		}
- 		if($this->end_time==null|| ntp2seconds($this->end_time)< $this->start_time_sec){
+ 		if($this->end_time==null|| ntp2seconds($this->end_time)< $this->start_time_sec){ 			
  			if($this->start_time_sec==0){
  				$this->end_time= seconds2ntp($mvDefaultStreamViewLength);
  				$this->end_time_sec = $mvDefaultStreamViewLength;
  			}else{
  				$this->end_time_sec = ($this->start_time_sec+$mvDefaultStreamViewLength);
  				$this->end_time = seconds2ntp($this->end_time_sec);
+ 			} 			
+ 			if($this->mvStream->getDuration()!=0){
+	 			if($this->end_time_sec > $this->mvStream->getDuration()){
+	 				$this->end_time_sec=$this->mvStream->getDuration();
+	 				$this->end_time = seconds2ntp($this->end_time_sec);
+	 			}
  			}
  		}
 	}
@@ -170,7 +176,7 @@
 				
 		if($range=='')$range = $mvDefaultClipRange;
 		if($length=='')$length=$mvDefaultClipLength;
-		//subtact $range seconds from the start time:
+		//subtract $range seconds from the start time:
 		$start_t = $this->getStartTimeSeconds()  - $range;
 		if($start_t<0)$start_t=0;
 		
@@ -214,7 +220,7 @@
 			if(!$req_time)$req_time='0:00:00';
 		}
 		if($foce_server==''){
-			//get the image path: (and generate the image if nessesary)				
+			//get the image path: (and generate the image if necessary)				
 			return MV_StreamImage::getStreamImageURL($this->getStreamId(), $req_time, $size);
 		}else{
 			return $foce_server . $this->getStreamName() . '?t='.$req_time;
@@ -330,7 +336,7 @@
  				$this->stream_name = null;
  			}else{
  				//print_r($sub_parts);
- 				//@@todo do lookup of single part request 
+ 				//@@todo do look up of single part request 
  				$this->stream_name = $sub_parts[0];
  				//$this->stream_name = null;
  			} 			
@@ -364,7 +370,7 @@
  			
  			//make sure the end time is > than the start time: 		
  			if(ntp2seconds($this->start_time) > ntp2seconds($this->end_time)){ 			
- 				//@@TODO better error hanndling 
+ 				//@@TODO better error handling 
  				$this->start_time=null;
  				$this->end_time=null;
  			}

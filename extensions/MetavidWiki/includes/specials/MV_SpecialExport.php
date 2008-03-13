@@ -184,7 +184,7 @@ class MV_SpecialExport {
 			<switch distinction="layer">
 <?				while($row = $dbr->fetchObject($this->mvd_type_res)){
 					//output cmml header: 
-					//@@todo lookup language for layer key paterns 
+					//@@todo lookup language for layer key patterns 
 					$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');
 					$query = 'stream_name='.$this->stream_name.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
 					$clink = $sTitle->getFullURL($query);					
@@ -205,7 +205,7 @@ class MV_SpecialExport {
 		</track>
 	</body>
 </ROE><?
-		//get all avaliable stream text layers ( inline request CMML (if apropo ))		
+		//get all available stream text layers ( inline request CMML (if apropo ))		
 	}
 	
 	/*get stream CMML */

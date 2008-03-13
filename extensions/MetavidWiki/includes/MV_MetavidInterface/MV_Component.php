@@ -23,8 +23,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$this->$k=$v;
  		}
  	} 	
- 	//proccess the request set (load from settings if not set in url 
-	//@@todo would be good to allow user-set prefrence in the future)
+ 	//process the request set (load from settings if not set in url 
+	//@@todo would be good to allow user-set preference in the future)
 	function procMVDReqSet(){
 		global $wgRequest;
 		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
@@ -84,7 +84,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$this->q=$q;
  		}
  	}
- 	/* to be overwitten by class */
+ 	/* to be overwritten by class */
 	function getHTML(){
 		global $wgOut;
 		$wgOut->addHTML( get_class($this) . ' component html');

@@ -67,7 +67,7 @@
 			//make sure the person page exists: 									
 			$streamTitle =  new MV_Title('Stream:'.$row->name.'/0:00:00/0:00:30');
 			//print "stream name:" . $streamTitle->getStreamName();
-			//@@TODO fix this up.. this is getting uggly new line in embed video for example breaks things	
+			//@@TODO fix this up.. this is getting ugly new line in embed video for example breaks things	
 			$out.=  $row->name.'|'.$streamTitle->getStreamNameText().				
 				'|'.$streamTitle->getStreamImageURL('icon') .
 				'|'.$row->duration . 

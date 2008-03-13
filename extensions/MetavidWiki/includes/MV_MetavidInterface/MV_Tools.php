@@ -174,37 +174,7 @@
 			wfMsg('mv_tool_'.$tool_id) . '</li>'."\n";
 		}		
 		$out.='</ul>';
-		/*$lines = explode( "\n", wfMsgForContent( 'MvStreamTools' ) );	
-	
-		foreach($lines as $line){
-			if (strpos($line, '*') !== 0)
-				continue;
-			if (strpos($line, '**') !== 0) {
-				$line = trim($line, '* ');
-				$heading = $line;
-			} else {			
-				if (strpos($line, '|') !== false) { // sanity check
-					$line = explode( '|' , trim($line, '* '), 2 );
-					//check if the tool is valid
-					if(in_array($line[0], $mv_valid_tools)){
-						$out.='<a href="javascript:mv_tool_disp(\''.$line[0].'\')">';
-						$out.=wfMsg($line[1]) . '</a>';
-					}else{
-						$out.=wfMsg('mv_tool_missing', $line[0]);
-					}
-				}else{
-					$out.=wfMsg('mv_bad_tool_request');	
-				}
-				$out.='<br />';			
-			}
-		}*/
-		return '<h3>'.$heading.'</h3>' . $out;
-		/*$out='<h3>Tool listing</h3>
-			<a href="javascript:tool_disp(\'search\')>Search Current Stream</a><br />
-			<a href="javascript:tool_disp(\'navigate\')>Navigate Current Stream</a><br />
-			<a href="javascript:tool_disp(\'embed\')>External Embed Options</a><br />
-			<a href="javascript:tool_disp(\'overlay\')>Overlay Set</a><br />
-		';*/			
+		return '<h3>'.$heading.'</h3>' . $out;			
 	}
 	//returns layers overview text 
 	function get_mang_layers_page($stream_title){

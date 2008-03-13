@@ -9,7 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
- //@@todo populate this stub (use to store autocomplete stuff for a bit) 
+ //@@todo populate this stub (use to store auto-complete stuff for a bit) 
  class MV_AutoCompleteCache{
  }
 ?>

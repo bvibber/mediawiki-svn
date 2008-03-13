@@ -206,7 +206,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	
 	function getMVDhtml(&$mvd_page, $absolute_links=false){
 		global $wgOut;
-		//incase we call mid output (but really should use outputMVD in thouse cases)
+		//incase we call mid output (but really should use outputMVD in those cases)
 		$pre_out = $wgOut->getHTML();
 		$wgOut->clearHTML();	
 		$this->outputMVD($mvd_page, $absolute_links);
@@ -277,7 +277,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		if(is_object($mvdTile))$template_key = $mvdTile->getMvdTypeKey();
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		
-		//pull up relevent template for given mvd type: 
+		//pull up relevant template for given mvd type: 
 		//@@todo convert into automated template_key lookup
 		switch(strtolower($template_key)){
 			case 'ht_en':			
@@ -424,7 +424,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	function get_adjust_disp($titleKey='new', $mvd_id='new', $disp_buttons=true){
 		global $mvgScriptPath;		//
 		$out='';
-		//some good old fasioned variable overloading: 
+		//some good old fashioned variable overloading: 
 		if($mvd_id=='new'||$mvd_id=='seq'){
 			global $mvDefaultClipLength;	
 			//$out.='start context: ' .$this->start_context . '<br />';
@@ -554,7 +554,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		$editPageAjax->mvd_id = $mvd_id;			
 		
-		//if preview just retun the parsed preview 
+		//if preview just return the parsed preview 
 		//@@todo refactor to use as much EditPage code as possible
 		// use the "livePreview" functionality of Edit page. 
 		if(isset($_POST['wpPreview'])){
@@ -647,7 +647,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$wgOut->addHTML( '<p class="error">' . wfMsg('mv_adjust_old_title_missing', $ot->getText() ) . "</p>\n" );
 			return php2jsObj(array('status'=>'error','error_txt'=>$wgOut->getHTML()));
 		}
-		//if the page we want to move to exists and starts with #REDIRECT overwite it
+		//if the page we want to move to exists and starts with #REDIRECT override it
 		if($nt->exists()){
 			$ntArticle = new Article( $nt );	
 			$cur_text = $ntArticle->getContent();
@@ -733,7 +733,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//$tsTitle = Title::newFromText( $newTitle, MV_NS_MVD);
 		//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 		/*if($tsTitle->exists()){	
-			print "js_log('{$tsTitle->getDBkey()}  presnet:');\n";
+			print "js_log('{$tsTitle->getDBkey()}  present:');\n";
 		}else{
 			print "js_log('{$tsTitle->getDBkey()}  not present');\n";
 		}*/				

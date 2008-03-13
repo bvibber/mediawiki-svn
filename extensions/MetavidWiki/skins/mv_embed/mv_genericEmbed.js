@@ -6,4 +6,4 @@ var genericEmbed={
 			      'width="'+this.width+'" height="'+this.height+'" ' +
 		    	  'data="' + this.src + '"></object>';
     }
-}
+} 

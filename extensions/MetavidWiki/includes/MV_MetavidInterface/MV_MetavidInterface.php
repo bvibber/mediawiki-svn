@@ -88,7 +88,7 @@
 				array('mv_interface'=>&$this)
 			);				
 		}
-		//proccess track request:
+		//process track request:
 		$this->components['MV_Overlay']->procMVDReqSet();				
 		//add in title & tracks var:
  		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'." 		
@@ -96,7 +96,7 @@
  		var mvTracks = '".$this->components['MV_Overlay']->getMVDReqString(). '\';
  		/*]]>*/</script>'."\n");
 		
-		//also add prev next pagging	 		
+		//also add prev next paging	 		
 		$this->page_header ='<span style="position:relative;top:-12px;font-weight:bold;font-size:1.1em;">'.
  			$this->article->mvTitle->getStreamNameText().
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
@@ -131,23 +131,8 @@
  		if($this->page_header=='')$this->page_header = '<span style="position:relative;top:-12px;font-weight:bold">' . 
  			$this->page_title . '</span>';
  		$wgOut->addHTML($this->page_header); 		 		
- 		//output the time range
- 		//output basic steam info in the 
- 		//$out.='<div id="mv_base_container" style="position:absolute;border:solid;border-color:red;width:100%;height:100%">';
-
- 		//start swiching interfaces over to table layout 
- 		//seems easier to get IE & firefox to layout stuff the same way
- 		//if someone wants to prove me wrong and write cross-browser div/css layout ... by all means :)
- 		/*if($this->context=='stream'){
- 			$wgOut->addHTML('<table width="100%" height="600">');
- 				$wgOut->addHTML('<tr>' .
- 									'<td width="330" >'
- 								'</tr>' .
- 								'<tr>' .
- 								'</tr>'); 								 								
- 			$wgOut->addHTML('</table>');
- 		}else{*/ 	
- 		//@@todo dynamic resize page_spacer:
+ 		
+ 		//@@todo dynamic re-size page_spacer:
  		$wgOut->addHTML('<div id="mv_page_spacer">');	 
  		foreach($this->components as $cpKey => &$component){ 			
  			$component->render_full(); 			

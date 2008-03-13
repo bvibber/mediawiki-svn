@@ -12,7 +12,7 @@
  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  
  /*
-  * MvStreamFile hanndles the mapping of path types to urls & 
+  * MvStreamFile handles the mapping of path types to urls & 
   * active record style management of the mv_stream_files table
   */
  
@@ -38,7 +38,7 @@
  	);
  	function __construct(&$parent_stream, $initRow=''){
  		$this->_parent_stream =& $parent_stream;
- 		//no init val.. popluate from db 		 	
+ 		//no init val.. populate from db 		 	
  		if($this->_parent_stream && $initRow==''){
  			$this->getStreamFileDB();
  		}else{		 
@@ -62,7 +62,7 @@
  	}
  	function updateValues($initRow){
 		foreach ($initRow as $key => $val) {			
-			//make sure the key exisit and is not private
+			//make sure the key exist and is not private
 			if (isset ($this-> $key) && $key[0] != '_') {
 				$this->$key = $val;
 			}
@@ -86,7 +86,7 @@
 				'path'=>$this->path
 			), __METHOD__);
  		}else{
- 			//udpate: 
+ 			//update: 
  			$dbw->update($mvStreamFilesTable, array(				
 				'base_offset'=>$this->base_offset,
 				'duration'=>$this->duration,
@@ -135,15 +135,6 @@
  	}
  	function getFullURL(){
  		//@@todo check on path if local 
- 		/*if(isset($mvVideoArchivePaths[ $this->path_type ] )){
- 			//we can return the link
- 			return $mvVideoArchivePaths[ $this->path_type ] . $this->getPath();
- 		}else{
- 			if($this->path_type=='ext_url'){
- 				return $this->getPath();
- 			}
- 		}
- 		return null;	*/
  		return $this->getPath();
  	}
  	function get_desc(){

@@ -26,7 +26,7 @@ require_once($mvgIP . '/includes/MV_Stream.php');
  * MvStream:stream_name -> pulls up first 20 min of stream_name
  * MvStream:stream_name/ss:ss:ss -> pulls up 5 min starting at ss:ss:ss
  * MvStream:stream_name/ss:ss:ss/ee:ee:ee pulls up requested segment
- * 	@@todo we should limit how much metadata for a given queery
+ * 	@@todo we should limit how much metadata for a given query
  *  
  * future:
  * 

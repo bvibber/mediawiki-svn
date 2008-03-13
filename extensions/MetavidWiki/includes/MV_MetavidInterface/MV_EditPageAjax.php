@@ -110,7 +110,7 @@
 		$wgOut->addHTML('</td>' .	
 			'<td>');
 	}
-	/* copy of edit() from edit page (to overide empty page)*/
+	/* copy of edit() from edit page (to override empty page)*/
 	function edit() {
 		global $wgOut, $wgUser, $wgRequest, $wgTitle;
 
@@ -263,7 +263,7 @@
 		wfProfileOut( "$fname-business-end" );
 		wfProfileOut( $fname );
 	}
-	/********would not have to overide if they where not "private" functions 
+	/********would not have to override if they where not "private" functions 
 		/**
 	 * Should we show a preview when the edit form is first shown?
 	 *
@@ -913,81 +913,6 @@ END
 		//	$this->mArticle->closeShowCategory();
 		//}
 		//$wgOut->addHTML( '</div>' );
-	}
-	
-	/*function getPreviewText() {
-		global $wgOut, $wgUser, $wgTitle, $wgParser;
-
-		$fname = 'EditPageAjax::getPreviewText';
-		wfProfileIn( $fname );
-
-		if ( $this->mTriedSave && !$this->mTokenOk ) {
-			$msg = 'session_fail_preview';
-		} else {
-			$msg = 'previewnote';
-		}
-		$previewhead = '<h2>' . htmlspecialchars( wfMsg( 'preview' ) ) . "</h2>\n" .
-			"<div class='previewnote'>" . $wgOut->parse( wfMsg( $msg ) ) . "</div>\n";
-		if ( $this->isConflict ) {
-			$previewhead.='<h2>' . htmlspecialchars( wfMsg( 'previewconflict' ) ) . "</h2>\n";
-		}
-
-		$parserOptions = ParserOptions::newFromUser( $wgUser );
-		$parserOptions->setEditSection( false );
-		
-		global $wgRawHtml;
-		if( $wgRawHtml && !$this->mTokenOk ) {
-			// Could be an offsite preview attempt. This is very unsafe if
-			// HTML is enabled, as it could be an attack.
-			return $wgOut->parse( "<div class='previewnote'>" .
-				wfMsg( 'session_fail_preview_html' ) . "</div>" );
-		}
-		return 'test preview';
-		*/
-		/*
-		$this->isCssJsSubpage =true;
-		# don't parse user css/js, show message about preview
-		# XXX: stupid php bug won't let us use $wgTitle->isCssJsSubpage() here
-
-		if ( $this->isCssJsSubpage ) {
-			if(preg_match("/\\.css$/", $wgTitle->getText() ) ) {
-				$previewtext = wfMsg('usercsspreview');
-			} else if(preg_match("/\\.js$/", $wgTitle->getText() ) ) {
-				$previewtext = wfMsg('userjspreview');
-			}
-			$parserOptions->setTidy(true);
-			$parserOutput = $wgParser->parse( $previewtext , $wgTitle, $parserOptions );
-			$wgOut->addHTML( $parserOutput->mText );
-			wfProfileOut( $fname );
-			return $previewhead;
-		} else {
-			$toparse = $this->textbox1;
-
-			# If we're adding a comment, we need to show the
-			# summary as the headline
-			if($this->section=="new" && $this->summary!="") {
-				$toparse="== {$this->summary} ==\n\n".$toparse;
-			}
-
-			if ( $this->mMetaData != "" ) $toparse .= "\n" . $this->mMetaData ;
-			$parserOptions->setTidy(true);
-			$parserOutput = $wgParser->parse( $this->mArticle->preSaveTransform( $toparse ) ."\n\n",
-					$wgTitle, $parserOptions );
-
-			$previewHTML = $parserOutput->getText();
-			$wgOut->addParserOutputNoText( $parserOutput );
-			
-			# ParserOutput might have altered the page title, so reset it
-			//$wgOut->setPageTitle( wfMsg( 'editing', $this->mTitle->getPrefixedText() ) );			
-
-			foreach ( $parserOutput->getTemplates() as $ns => $template)
-				foreach ( array_keys( $template ) as $dbk)
-					$this->mPreviewTemplates[] = Title::makeTitle($ns, $dbk);
-
-			wfProfileOut( $fname );
-			return $previewHTML;
-		}
-		*/
-	//}
+	}		
  }   
 ?>

@@ -85,7 +85,7 @@ function mvSetupExtension(){
 	/**********************************************/
 	/***** register special pages hooks       *****/
 	/**********************************************/		
-	//@@todo shift over to extAddSpecial page (to avoid loading everytime)
+	//@@todo shift over to extAddSpecial page (to avoid loading every time)
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
