@@ -55,6 +55,8 @@ gMsg['ogg-player-selected']=' (selected)';
 gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
 
+gMsg['missing_video_stream']='The video file for this stream is missing';
+
 //grabs from the globalMsg obj 
 //@@todo integrate msg serving into CMS
 function getMsg( key ) {
@@ -548,7 +550,7 @@ function mv_embed(){
         for(i = 0; i < video_elements.length; i++) {           	         	        
             //grab id:
             vid_id = video_elements[i].getAttribute("id");       
-            //if vid_id is empty
+            //set id if empty:
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;    	
             }
@@ -787,8 +789,8 @@ embedVideo.prototype = {
 	getParseROE: function(callback){
 		var _this = this;
 		//@@todo split long rage data requests over a few ajax queries to not hit too big of a xml file on load
-		do_request(this.roe, function(data){
-			js_log("got data "+ data);
+		do_request(this.roe, function(data){			
+			js_log("on: "+_this.id + " got data "+ data);
 			if(typeof data == 'object' ){
 				js_log('type of data is object');
 				_this.roe_data = data;
@@ -813,13 +815,18 @@ embedVideo.prototype = {
 				//set the linkback:
 				$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
 					if(n.getAttribute('id')=='html_linkback'){
-						js_log('set linkback to '+n.getAttribute("src"));
+						js_log('set linkback to '+n.getAttribute("href"));
 						_this['linkback'] = n.getAttribute('href');
 					}
 				});
 			}
-			js_log("do callback roe data:"+_this['roe_data']+' '+ _this['src'] +' '+ _this['thumbnail']);
-			callback();
+			//could not find default video tag in roe: report video missing
+			if(!_this['src']){
+				$j(_this).html(getMsg('missing_video_stream'));				
+			}else{
+				//js_log("do callback roe data:"+_this['roe_data']+' '+ _this['src'] +' '+ _this['thumbnail'] + 'cb: '+ callback);
+				callback(_this.id);
+			}
 		});
 	},
 	 /*
@@ -864,8 +871,12 @@ embedVideo.prototype = {
 			/*this.getThumbnailHTML();	
 			$j('#big_play_link_'+this.id).replaceWith('<span style="background:#fff;color:#000;' +
 				'filter:alpha(opacity=65);-moz-opacity:.65;opacity:.65;">'+getMsg('loading_txt')+'</span>');*/
-			_this = this;
-			this.getParseROE( function(){	
+			var _this= this;
+			//js_log('before req id: '+ _this.id)
+			this.getParseROE( function(_this_id){	
+				//set cur obj by callback id if present:
+				if(_this_id)
+					_this = $j('#'+_this_id).get(0);
 				_this.loading_external_data=false;
 				_this.getHTML();
 			});
@@ -1020,7 +1031,7 @@ embedVideo.prototype = {
 			}
 			var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
 						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
-						'&lt;video id=&quot;'+this.id+'&quot; ';
+						'&lt;video ';
 			if(this.roe){
 				embed_code_html+='roe=&quot;'+this.roe+'&quot; /&gt;';				
 			}else{
@@ -1443,7 +1454,7 @@ function mv_addLoadEvent(func) {
 		if( parseUri(document.URL).host != parseUri(req_url).host){
 			//check if MV_embed path matches document.URL then we can use the local proxy: 
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
-				js_log('callback: ' + callback + ' page at: ' + parseUri(document.URL).host + ' req:'+ parseUri(req_url).host);
+				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);
 				$j.ajax({
 					type: "POST",
 					url:mv_embed_path + 'mv_data_proxy.php',
@@ -1466,6 +1477,7 @@ function mv_addLoadEvent(func) {
 				}
 			}
 		}else{
+			//no proxy at all do a direct request: 
 			$j.ajax({
 				type: "GET",
 				url:req_url,

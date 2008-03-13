@@ -40,12 +40,13 @@ $sample_embed[1]['tag'] = '<video roe="http://mammoth.dnip.net/wiki/index.php?ti
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
 
-$sample_embed[2]['tag'] = '<video id="v2" controls="true"
-thumbnail="http://metavid.ucsc.edu/image_media/senate_proceeding_06-20-07_09?t=3:50:27&size=320x240" 
-linkback="http://metavid.org" embed_link="true" 
-style="width:400px;height:300px;"
-src="http://128.114.20.64/media/senate_11-14-05.ogg.anx?t=0:42:14/0:42:56"/>';		
-$sample_embed[2]['desc'] = 'video with controls and thumbnail';		
+$sample_embed[2]['tag'] = '<video roe="http://mammoth.dnip.net/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
+$sample_embed[2]['desc'] = 'Demo2  of json ROE attribute';
+
+
+//$sample_embed[2]['tag'] = '<video id="v2" controls="true" style="width:400px;height:400px"
+//roe="http://mammoth.dnip.net/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"/>';		
+//$sample_embed[2]['desc'] = 'video with controls and thumbnail';		
  
 
 //playlist tags:  

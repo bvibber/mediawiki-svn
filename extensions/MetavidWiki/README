@@ -4,8 +4,8 @@ that enable community engagement with audio video metdata.
 For more details visit metavid.ucsc.edu
 
 == Disclaimer ==
-MetaVidWiki is still under development. (we have not done a official release yet) 
-For more info come by #metavid or email dale@ucsc.edu 
+MetaVidWiki is still under development. For more info come by #metavid or visit 
+http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software
 
 ==Short technical Description==
 Metavid builds off of semantic mediaWiki but is should not be too difficult
@@ -38,7 +38,6 @@ More info at  http://metavid.ucsc.edu/wiki/index.php/Mv_Embed
 * MediaWiki: MetaVid is an extension to MediaWiki (we run off the svn but should work with anything > 1.10 or so.)
 * SemanticMediaWiki: you can get semantic wiki from http://semantic-mediawiki.org/ we use 1.0.1 release
 * mod_annodex: you will need a server side ogg segment server we use mod_annodex you can get that at annodex.net
-
 
 
 ==Install:==
