@@ -20,9 +20,9 @@ $wgExtensionFunctions[] = 'wfYouTubeAuthSub';
 $wgYTAS_UseClientLogin = true;
 
 # Fill out if you are using $wgUseClientLogin
-$wgYTAS_User = "x";
-$wgYTAS_Password = "y";
-$wgYTAS_DeveloperId = "z";
+$wgYTAS_User = "";
+$wgYTAS_Password = "";
+$wgYTAS_DeveloperId = "";
 $wgYTAS_DefaultCategory = false;
 
 $wgYTAS_EnableLogging = true;
