@@ -63,21 +63,6 @@
 		//set up additonal pieces
 		$this->page_title=wfMsg('mv_edit_sequence', $wgTitle->getText() );		
  	}
- 	/*function setupSpecialView(){
- 		global $mvgIP;
- 		foreach(array('MV_VideoPlayer', 'MV_Overlay','MV_Tools') as $cp_name){
-			require_once($mvgIP . '/includes/MV_MetavidInterface/'.$cp_name.'.php');
-			$this->components[$cp_name] = new $cp_name( 
-				array('mv_interface'=>&$this)
-			);				
-		}
-		$this->page_title ='<span style="position:relative;top:-12px;font-weight:bold">'.
- 			$this->article->mvTitle->getStreamNameText(). ' <span id="mv_stream_time">'.
- 			$this->article->mvTitle->getTimeDesc() . '</span>'.
-		'</span>';
-		//set conditions
-		$this->components['MV_Overlay']->setReq('Recentchanges');
- 	}*/
  	function setupStreamView(){
  		global $mvgIP, $mvDefaultStreamViewLength, $wgOut,$mvgScriptPath,$wgUser; 	 		
  			 	 	
@@ -101,7 +86,7 @@
  		/*]]>*/</script>'."\n");
 		
 		//also add prev next paging	 		
-		$this->page_header ='<span style="position:relative;top:-12px;font-weight:bold;font-size:1.1em;">'.
+		$this->page_header ='<span class="mv_stream_title">'.
  			$this->article->mvTitle->getStreamNameText().
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
 				' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.

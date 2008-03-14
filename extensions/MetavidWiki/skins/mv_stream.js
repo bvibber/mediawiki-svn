@@ -444,85 +444,6 @@ function add_autocomplete(mvd_id){
 }
 //submit the adjust 
 
-//creates tails for each mvd element (as to give user visual clues to mvd time layout)
-//maybe php could handle this...
-//currently broken: 
-/*function mv_add_mvd_tails(node_id){
-	js_log('add tails for: ' + node_id);
-	if(!node_id)node_id='all';
-	//if node_id is not recheck do all
-	var cur_depth='4px';
-	
-	if(node_id=='all'){
-		var fd_mvd_set = Element.getElementsByClassName('mv_fd_mvd_cont', 'mv_fd_mvd');
-		if(fd_mvd_set.length>0){	
-	   		for (var i = 0; i < fd_mvd_set.length; i++){  
-	   			var iElm= fd_mvd_set[i];
-	   			var iTitle = get_titleObject(iElm.getAttribute('name'));	   				   		
-	   			var j=i+1;	
-	   			var jElm = fd_mvd_set[j];   			
-				if(jElm){   			
-		   			var jTitle = get_titleObject(jElm.getAttribute('name'));
-		   			//js_log(iID + ':'+ iTitle.end_time + '>' + jID + ':' + jTitle.start_time);
-   					
-		   			while(iTitle.end_time > jTitle.start_time){		   				
-		   				js_log('cur depth:' + jElm.id + ' ' + cur_depth);
-		   				if(iTitle.end_time < jTitle.end_time){	
-		   					js_log(iElm.id+':'+iTitle.title+':'+iTitle.end_time +' < '+ jElm.id+':'+jTitle.title+' '+jTitle.end_time);	   						   							  
-		   					iOffset = Position.positionedOffset(iElm);
-		   					iHeight = Element.getHeight(iElm);
-		   					jOffset = Position.positionedOffset(jElm);
-		   					jHeight = Element.getHeight(jElm);
-		   					js_log(iElm.id + ' iOffset:' + iOffset+' ' + jElm.id + ' jO:' + jOffset + ' tailHeight: ' +(jOffset[1]-iOffset[1]) );
-							//depth 0
-							//var tail_top_html='<div id="tail_top'+i+'" ' +
-							//				   'style="float:left;height:'+(jOffset[1]-iOffset[1])+'px;'+
-							//				   'width:90%">';
-							var tail_color_div = '<div id="tail_clear'+i+'" style="clear:both"></div>' +
-												'<div id="tail_color_'+i+'" ' + 
-												'class="tail_color" '+
-												'style="' +
-												'top:'+(iOffset[1]+iHeight-5)+'px;'+
-												'left:'+(parseInt(iElm.getStyle('margin-left').replace('px',''))+2)+'px;'+ 
-												'height:'+(jOffset[1]-iOffset[1])+'px;'+
-												'background:'+iElm.getStyle('background')+'"></div>';
-							
-							//var tail_close_html='</div>';							
-							new Insertion.After(iElm, tail_color_div);	
-							//Position.absolutize('tail_color_'+i);
-							//shift to lower left of ielm
-							//new Insertion.After(jElm, tail_close_html);
-							break;		   				
-		   				}else{
-		   					j++;
-		   					cur_depth = parseInt(iElm.getStyle('margin-left').replace('px',''))+12;
-		   					if(j==i)break; //(should not happen)
-		   					if(fd_mvd_set[j]){
-		   						//tag each element with the current margin depth:
-		   						var pre_style =  jElm.getStyle('margin-left');
-		   						jElm.setStyle({marginLeft:cur_depth+'px'});
-		   						js_log("pre:" + pre_style + ' post:' + jElm.getStyle('margin-left'));
-		   						//increase the left hand side margin by depth*12 pixles
-			   					jTitle = get_titleObject(fd_mvd_set[j].getAttribute('name'));
-		   						var jElm = fd_mvd_set[j];   		
-		   					}else{
-		   						js_log('real long tail (end of all nodes)');
-		   						break;
-		   					}
-		   				}	
-		   			}
-				}
-	   			//go to node where start < end
-	   			//take current realOffset
-	   				//take tail node realOffset
-	   				//subtract different to get height of curNode offset
-	   		}
-		}else{
-			//empty no tails to add
-		}
-	}	
-}*/
-
 /*also needs some work: */
 //use start time of elements in the to position pieces.
 function mv_add_new_fd_mvd(titleKey, node_html){
@@ -543,7 +464,7 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 			}
 		}
 	});
-	//add at the end (if not before some other node)
+	//add at the end (if not before some other mvd page)
 	if(!inserted){
 		js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
 		$j('#mv_fd_mvd_cont').append(node_html);
@@ -844,9 +765,9 @@ function highlight_tl_ts(mvd_id){
 	}
 }
 function de_highlight_tl_ts(mvd_id){
-	if(mv_tl_mvd_org_color[mvd_id]){
-		//js_log(mvd_id + ' restore ' + mv_tl_mvd_org_color[mvd_id]);
+	if(mv_tl_mvd_org_color[mvd_id]){		
 		if($j('#mv_tl_mvd_'+mvd_id).get(0)){
+			//alert(mvd_id + ' restore ' + mv_tl_mvd_org_color[mvd_id] + ' ' + rgb2hex(mv_tl_mvd_org_color[mvd_id]));			
 			$j('#mv_tl_mvd_'+mvd_id).css({background:mv_tl_mvd_org_color[mvd_id],opacity:1}).css("z-index",0);
 		}
 	}
@@ -1077,7 +998,7 @@ function mv_sajax_do_call(func_name, args, target, post_vars) {
 
 	return true;
 }
- 
+
  
  
 /* custom effects */ 

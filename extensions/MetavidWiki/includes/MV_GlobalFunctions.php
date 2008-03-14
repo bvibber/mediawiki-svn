@@ -207,7 +207,13 @@ function mvSetupExtension(){
 							  '<!--[if IE 6]>'.
 							  	'<style type="text/css">@import "'.$mvgScriptPath . '/skins/mv_customIE6.css";</style>'.
 							  '<![endif]-->'
-					);
+				);
+			//add extra safari sheet
+			$wgOut->addScript("<script type=\"{$wgJsMimeType}\">
+if(navigator.userAgent.toLowerCase().indexOf('safari')!=-1){
+	document.write('<style type=\"text/css\">@import \"{$mvgScriptPath}/skins/mv_customSafari.css\";</style>');	
+}
+</script>");
 			//add in the semantic wiki css if in stream interface
 			if($head_set=='stream_interface')
 				$wgOut->addScript('<link rel="stylesheet" type="text/css" media="screen, projection" href="/mvWiki/extensions/SemanticMediaWiki/skins/SMW_custom.css" />');
