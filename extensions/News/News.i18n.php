@@ -90,6 +90,13 @@ $messages['km'] = array(
 	'newsextension-desc' => 'បង្ហាញ បំលាស់ប្តូរបានសំដៅ ថ្មីៗ លើ ទំព័រ វិគី ឬ បំរែបំរួល RSS ឬ Atom ។',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'newsextension-desc' => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

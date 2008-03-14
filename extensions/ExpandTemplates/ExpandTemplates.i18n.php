@@ -633,12 +633,31 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'expand_templates_output'  => 'निकाल',
-	'expand_templates_ok'      => 'ठिक',
-	'expand_templates_preview' => 'झलक',
+	'expandtemplates'                  => 'साचे वाढवा',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|साचे, पार्सर फंक्शन्स व व्हेरियेबल्स]] वाढवा जेणेकरून विकिसंज्ञा व्यवस्थित दिसतील.',
+	'expand_templates_intro'           => 'हे पान काही मजकूर घेऊन त्यातिल सर्व साचे वाढविते. तसेच हे पान पार्सर फंक्शन्स जसे की
+<nowiki>{{</nowiki>#if:...}}, व बदलणार्‍या किमती (variables) जसे की
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;म्हणजेच दोन ब्रेसेसमधील सर्व मजकूर वाढविते.
+मीडियाविकिमधून पार्सर स्टेज मागवून हे केले जाते.',
+	'expand_templates_title'           => '{{PAGENAME}} वगैरे करीता, कन्टेक्स्ट शीर्षक:',
+	'expand_templates_input'           => 'इनपुट मजकूर:',
+	'expand_templates_output'          => 'निकाल',
+	'expand_templates_xml_output'      => 'XML चे आऊटपुट',
+	'expand_templates_ok'              => 'ठिक',
+	'expand_templates_remove_comments' => 'संदेश हटवा',
+	'expand_templates_generate_xml'    => 'XML चा पार्स (parse) वृक्ष दाखवा',
+	'expand_templates_preview'         => 'झलक',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'expandtemplates' => 'Kembangkan templat',
 );
 
 $messages['nan'] = array(
@@ -652,7 +671,9 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'expand_templates_preview' => 'Vörschau',
+	'expand_templates_ok'              => 'Los',
+	'expand_templates_remove_comments' => 'Kommentaren rutnehmen',
+	'expand_templates_preview'         => 'Vörschau',
 );
 
 /** Dutch (Nederlands)

@@ -261,10 +261,11 @@ $messages['kaa'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'backforth-next' => 'បន្ទាប់ ($1)',
-	'backforth-desc' => 'បន្ថែម "បន្ទាប់" និង "មុន" លើទំព័រ តាមលំដាប់អក្សរ នៅ ផ្នែកកំពូល នៃ ទំព័រ',
+	'backforth-desc' => 'បន្ថែម "បន្ទាប់" និង "មុន" លើទំព័រ​តាមលំដាប់អក្សរ នៅ​ផ្នែកខាងលើ​នៃ​ទំព័រ',
 	'backforth-prev' => 'មុន ($1)',
 );
 

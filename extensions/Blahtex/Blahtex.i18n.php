@@ -1099,9 +1099,11 @@ $messages['oc'] = array(
  * @author Sp5uhe
  * @author Equadus
  * @author Derbeth
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
+	'math_CannotCreateTexFile'              => 'Nie udało się stworzyć pliku tex',
 	'math_CannotRunDvipng'                  => 'Nie można uruchomić dvipng',
 	'math_CannotWritePngDirectory'          => 'Nie można zapisać do wyjściowego katalogu PNG',
 	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',

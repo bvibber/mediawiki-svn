@@ -1211,6 +1211,7 @@ $wdMessages['kk-tr'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $wdMessages['km'] = array(
 	'datasearch'                            => 'Wikidata: ស្វែងរក​ទិន្នន័យ',
@@ -1218,7 +1219,7 @@ $wdMessages['km'] = array(
 	'languages'                             => 'Wikidata: អ្នកគ្រប់គ្រង​ភាសា',
 	'ow_save'                               => 'រក្សាទុក',
 	'ow_history'                            => 'ប្រវត្តិ',
-	'ow_noedit_title'                       => 'មិនអនុញ្ញាតិ​អោយ​កែប្រែ',
+	'ow_noedit_title'                       => 'មិនអនុញ្ញាត​អោយ​កែប្រែទេ',
 	'ow_uipref_datasets'                    => 'បង្ហាញ​តាមលំនាំដើម',
 	'ow_uiprefs'                            => 'ទិន្នន័យ​វិគី',
 	'ow_none_selected'                      => '<គ្មានអ្វី ត្រូវបានជ្រើសយក>',
@@ -1227,26 +1228,33 @@ $wdMessages['km'] = array(
 	'ow_dm_not_present'                     => 'មិនបានបញ្ចូល',
 	'ow_AlternativeDefinition'              => 'និយមន័យ​ឆ្លាស់',
 	'ow_AlternativeDefinitions'             => 'និយមន័យ​ឆ្លាស់',
+	'ow_Annotation'                         => 'ចំណារពន្យល់',
 	'ow_ApproximateMeanings'                => 'អត្ថន័យ​ប្រហាក់ប្រហែល',
 	'ow_ClassAttributeAttribute'            => 'សេចក្តីកំណត់',
 	'ow_ClassAttributeLevel'                => 'កំរិត',
 	'ow_ClassAttributeType'                 => 'ប្រភេទ',
 	'ow_Definition'                         => 'និយមន័យ',
+	'ow_DefinedMeaningAttributes'           => 'ចំណារពន្យល់',
 	'ow_IdenticalMeaning'                   => 'អត្ថន័យដូចគ្នា ?',
 	'ow_Language'                           => 'ភាសា',
+	'ow_LevelAnnotation'                    => 'ចំណារពន្យល់',
 	'ow_OptionAttributeOption'              => 'ជំរើស',
 	'ow_OptionAttributeOptions'             => 'ជំរើស​នានា',
 	'ow_OptionAttributeValues'              => 'តំលៃ នានា នៃ ជំរើស',
+	'ow_PopupAnnotation'                    => 'ចំណារពន្យល់',
 	'ow_Relations'                          => 'ទំនាក់ទំនង',
 	'ow_RelationType'                       => 'ប្រភេទ​ទំនាក់ទំនង',
 	'ow_Spelling'                           => 'ការប្រកប',
 	'ow_Synonyms'                           => 'វេវចនៈស័ព្ទ',
 	'ow_Text'                               => 'អត្ថបទ',
+	'ow_TextAttributeValues'                => 'អត្ថបទធម្មតា',
 	'ow_TranslatedText'                     => 'អត្ថបទ ត្រូវបានប្រែសំរួល',
 	'ow_TranslatedTextAttributeValue'       => 'អត្ថបទ',
+	'ow_TranslatedTextAttributeValues'      => 'អត្ថបទដែលអាចបកប្រែបាន',
 	'ow_LinkAttributeValues'                => 'តំណភ្ជាប់ នានា',
 	'ow_Value'                              => 'តំលៃ',
 	'ow_meaningsoftitle'                    => 'និយមន័យ របស់ "$1"',
+	'ow_meaningsofsubtitle'                 => '<em>តំណភ្ជាប់វិគី៖</em> [[$1]]',
 	'ow_copy_no_action_specified'           => 'សូម សំដៅ មួយសកម្មភាព',
 	'ow_copy_help'                          => 'យើង​អាចជួយអ្នក​នៅ​ថ្ងៃណាមួយ',
 );
@@ -1812,6 +1820,13 @@ $wdMessages['pl'] = array(
 	'ow_uipref_datasets'                    => 'Widok domyślny',
 	'ow_uiprefs'                            => 'Dane wiki',
 	'ow_none_selected'                      => '<Nic nie zaznaczono>',
+	'ow_conceptmapping_help'                => '<p>możliwe działania: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  wstawia mapowanie</li>
+<li>&action=get&concept=<concept_id>  odczytuje mapowanie</li>
+<li>&action=list_sets  zwraca listę możliwych prefiksów kontekstu danych i ich odnośników</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> w odniesieniu do  jednego zdefiniowanego znaczenia w pojęciu zwraca pozostałe definicje</li>
+<li>&action=help  pokazuje pomoc</li>
+</ul></p>',
 	'ow_conceptmapping_uitext'              => '<p>Odwzorowywanie pojęć pozwala na identyfikację tego, które ze zdefiniowanych w jednym zestawie danych znaczeń są identyczne do znaczeń zdefiniowanych w drugim zestawie danych.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Przykro mi, nie wiem, jak zrobić "$1".',
 	'ow_dm_OK'                              => 'OK',

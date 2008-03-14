@@ -120,11 +120,13 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'sc_previousmonth' => 'ខែមុន',
 	'sc_nextmonth'     => 'ខែបន្ទាប់',
 	'sc_today'         => 'ថ្ងៃនេះ',
+	'sc_gotomonth'     => 'ទៅកាន់ខែ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

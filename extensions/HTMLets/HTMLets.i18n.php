@@ -32,3 +32,10 @@ $messages['nl'] = array(
 	'htmlets-desc' => 'Voegt de tag <tt><nowiki><htmlet></nowiki></tt> toe om HTML snippets uit bestanden te kunnen gebruiken',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'htmlets-desc' => 'Låter dig linjera in HTML-remsor från filer som använder <tt><nowiki><htmlet></nowiki></tt>-taggen',
+);
+

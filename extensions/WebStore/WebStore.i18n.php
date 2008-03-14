@@ -549,7 +549,7 @@ $1',
  */
 $messages['oc'] = array(
 	'inplace_access_disabled'          => "L'accès a aqueste servici es desactivat per totes los clients.",
-	'inplace_access_denied'            => 'Aqueste servici es restrenhut sus la basa del IP del client.',
+	'inplace_access_denied'            => 'Aqueste servici es restrench sus la basa del IP del client.',
 	'inplace_scaler_no_temp'           => "Pas cap de dorsièr temporari valid, \$wgLocalTmpDirectory deu conténer lo nom d'un dorsièr amb dreches d'escritura.",
 	'inplace_scaler_not_enough_params' => 'Pas pro de paramètres',
 	'inplace_scaler_invalid_image'     => 'Imatge incorrècte, pòt pas determinar sa talha',
@@ -557,7 +557,7 @@ $messages['oc'] = array(
 	'inplace_scaler_no_handler'        => 'Cap de foncion (« handler ») per transformar aqueste format MIME.',
 	'inplace_scaler_no_output'         => 'Cap de fichièr de transformacion generit',
 	'inplace_scaler_zero_size'         => 'La transformacion a creat un fichièr de talha zèro.',
-	'webstore_access'                  => 'Aqueste servici es restrenhut per adreça IP.',
+	'webstore_access'                  => 'Aqueste servici es restrench per adreça IP.',
 	'webstore_path_invalid'            => 'Lo nom de fichièr es pas corrècte.',
 	'webstore_dest_open'               => 'Impossible de dobrir lo fichièr de destinacion "$1".',
 	'webstore_dest_lock'               => 'Fracàs per obténer lo varrolhatge sul fichièr de destinacion « $1 ».',
@@ -596,16 +596,58 @@ $1',
 	'webstore_no_handler'              => 'Aqueste tipe MIME pòt pas èsser transformat.',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'inplace_access_disabled' => 'Dostęp do tej usługi został wyłączony dla wszystkich klientów.',
-	'inplace_access_denied' => 'Ta usługa jest ograniczona przez IP klienta.',
-	'inplace_scaler_no_temp' => 'Nie istnieje poprawny katalog tymczasowy, ustaw $wgLocalTmpDirectory na zapisywalny katalog.',
+	'inplace_access_disabled'          => 'Dostęp do tej usługi został wyłączony dla wszystkich klientów.',
+	'inplace_access_denied'            => 'Ta usługa jest ograniczona przez IP klienta.',
+	'inplace_scaler_no_temp'           => 'Nie istnieje poprawny katalog tymczasowy, ustaw $wgLocalTmpDirectory na zapisywalny katalog.',
 	'inplace_scaler_not_enough_params' => 'Niewystarczająca liczba parametrów.',
-	'inplace_scaler_invalid_image' => 'Niepoprawna grafika, nie można określić rozmiaru.',
-	'inplace_scaler_failed' => 'Wystąpił błąd przy skalowaniu grafiki: $1',
-	'inplace_scaler_no_handler' => 'Brak handlera dla transformacji tego typu MIME',
-	'inplace_scaler_no_output' => 'Nie stworzono pliku wyjściowego transformacji.',
-	'inplace_scaler_zero_size' => 'Transformacja stworzyła plik o zerowej wielkości.',
+	'inplace_scaler_invalid_image'     => 'Niepoprawna grafika, nie można określić rozmiaru.',
+	'inplace_scaler_failed'            => 'Wystąpił błąd przy skalowaniu grafiki: $1',
+	'inplace_scaler_no_handler'        => 'Brak handlera dla transformacji tego typu MIME',
+	'inplace_scaler_no_output'         => 'Nie stworzono pliku wyjściowego transformacji.',
+	'inplace_scaler_zero_size'         => 'Transformacja stworzyła plik o zerowej wielkości.',
+	'webstore_access'                  => 'Ta usługa ograniczona jest dla określonych adresów IP klienta.',
+	'webstore_path_invalid'            => 'Nieprawidłowa nazwa pliku.',
+	'webstore_dest_open'               => 'Nie udało się otworzyć pliku docelowego "$1".',
+	'webstore_dest_lock'               => 'Nie udało się zablokować pliku docelowego "$1".',
+	'webstore_dest_mkdir'              => 'Nie udało się stworzyć katalogu docelowego "$1".',
+	'webstore_archive_lock'            => 'Nie udało się zablokować pliku archiwum "$1".',
+	'webstore_archive_mkdir'           => 'Nie można utworzyć katalogu archiwum "$1".',
+	'webstore_src_open'                => 'Nie udało się otworzyć pliku źródłowego "$1".',
+	'webstore_src_close'               => 'Błąd podczas zamykania pliku źródłowego "$1".',
+	'webstore_src_delete'              => 'Błąd podczas usuwania pliku źródłowego "$1".',
+	'webstore_rename'                  => 'Błąd zamiany nazwy pliku "$1" na "$2".',
+	'webstore_lock_open'               => 'Błąd otwarcia pliku blokady "$1".',
+	'webstore_lock_close'              => 'błąd zamknięcia pliku blokady "$1".',
+	'webstore_dest_exists'             => 'Błąd: Plik docelowy "$1" już istnieje.',
+	'webstore_temp_open'               => 'Błąd otwarcia pliku tymczasowego "$1".',
+	'webstore_temp_copy'               => 'Błąd kopiowania pliku tymczasowego "$1" do lokalizacji "$2".',
+	'webstore_temp_close'              => 'Błąd zamknięcia pliku tymczasowego "$1".',
+	'webstore_temp_lock'               => 'Błąd zablokowania pliku tymczasowego "$1".',
+	'webstore_no_archive'              => 'Plik docelowy już istnieje, nie podano też lokalizacji archiwum.',
+	'webstore_no_file'                 => 'Nie przesłano pliku.',
+	'webstore_move_uploaded'           => 'Podczas przenoszenia przesłanego pliku "$1" do lokalizacji tymczasowej "$2" wystąpił błąd.',
+	'webstore_invalid_zone'            => 'Nieprawidłowa strefa "$1".',
+	'webstore_no_deleted'              => 'Nie zdefiniowano katalogu archiwum dla usuwanych plików.',
+	'webstore_curl'                    => 'Błąd cURL: $1',
+	'webstore_404'                     => 'Nie odnaleziono pliku.',
+	'webstore_php_warning'             => 'Ostrzeżenie PHP $1',
+	'webstore_metadata_not_found'      => 'Nie odnaleziono pliku $1',
+	'webstore_postfile_not_found'      => 'Nie odnaleziono pliku do opublikowania.',
+	'webstore_scaler_empty_response'   => 'Moduł skalowania grafik zwrócił pustą odpowiedź z kodem błędu 200. Może to być wynikiem krytycznego błędu PHP w module skalowania.',
+	'webstore_invalid_response'        => 'Serwer odpowiedział nieprawidłowo:
+
+$1',
+	'webstore_no_response'             => 'Serwer nie odpowiada',
+	'webstore_backend_error'           => 'Serwer przechowujący dane zwrócił błąd:
+
+$1',
+	'webstore_php_error'               => 'Napotkano następujące błędy PHP:',
+	'webstore_no_handler'              => 'Nie odnaleziono handlera do obsługi danych tego typu MIME',
 );
 
 $messages['pms'] = array(

@@ -495,14 +495,14 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
 	'newuserlogpage'           => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
 	'newuserlogpagetext'       => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
 	'newuserlog-desc'          => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃ ការបង្កើត គណនី]] ទៅ [[Special:Log]]',
-	'newuserlog-byemail'       => 'ពាក្យសំងាត់ ត្រូវបានផ្ញើ ដោយអ៊ីមែវល៍',
+	'newuserlog-byemail'       => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
 	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ថ្មី',
 	'newuserlog-create2-entry' => "បានបង្កើតគណនីសំរាប់'''$1'''",
 );
@@ -620,8 +620,19 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'newuserlogpage'           => 'नवीन सदस्यांची नोंद',
 	'newuserlogpagetext'       => 'ही नवीन सदस्यांची नोंद यादी आहे.',
+	'newuserlog-desc'          => '[[Special:Log]] मध्ये [[Special:Log/newusers|नवीन सदस्य नोंदणी सूची]] वाढविते.',
+	'newuserlog-byemail'       => 'परवलीचा शब्द इमेलमार्फत पाठविलेला आहे',
 	'newuserlog-create-entry'  => 'नवीन सदस्य',
 	'newuserlog-create2-entry' => '$1 साठी सदस्यत्व घेतले.',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'newuserlogpage'           => 'Log akaun baru',
+	'newuserlog-create-entry'  => 'Pengguna baru',
+	'newuserlog-create2-entry' => 'mencipta akaun untuk $1',
 );
 
 /** Erzya (эрзянь кель)
@@ -935,7 +946,7 @@ $messages['uk'] = array(
 	'newuserlog-desc'          => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
 	'newuserlog-byemail'       => 'пароль надісланий електронною поштою',
 	'newuserlog-create-entry'  => 'Новий користувач',
-	'newuserlog-create2-entry' => 'створив обліковий запис для',
+	'newuserlog-create2-entry' => 'створив обліковий запис $1',
 );
 
 $messages['ur'] = array(

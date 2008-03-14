@@ -388,21 +388,27 @@ sphinx|Esfinx',
 	'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
 $messages['pl'] = array(
-	'vote' => 'Głosuj',
-	'vote-header' => 'Tutaj możesz zagłosować na \'\'\'Naczelnego Przywódcę Świata\'\'\'!',
-	'vote-current' => 'Aktualnie Twój głos oddany jest za \'\'\'$1\'\'\'.',
-	'vote-legend' => 'Zagłosuj lub zmień głos',
-	'vote-caption' => 'Twój wybór:',
-	'vote-submit' => 'Głosuj',
-	'vote-registered' => 'Twój głos został zarejestrowany.',
-	'vote-view-results' => 'Zobacz wyniki',
-	'vote-results' => 'Wyniki głosowania',
+	'vote'                => 'Głosuj',
+	'vote-header'         => "Tutaj możesz zagłosować na '''Naczelnego Przywódcę Świata'''!",
+	'vote-current'        => "Aktualnie Twój głos oddany jest za '''$1'''.",
+	'vote-legend'         => 'Zagłosuj lub zmień głos',
+	'vote-caption'        => 'Twój wybór:',
+	'vote-choices'        => 'joker|Joker
+penguin|Pingwin
+riddler|Człowiek-Zagadka',
+	'vote-submit'         => 'Głosuj',
+	'vote-registered'     => 'Twój głos został zarejestrowany.',
+	'vote-view-results'   => 'Zobacz wyniki',
+	'vote-results'        => 'Wyniki głosowania',
 	'vote-results-choice' => 'Wybór',
-	'vote-results-count' => 'Policz',
-	'vote-results-none' => 'Nikt jeszcze dotąd nie głosował.',
-	'vote-login' => 'By głosować, musisz $1.',
-	'vote-login-link' => 'zaloguj',
+	'vote-results-count'  => 'Policz',
+	'vote-results-none'   => 'Nikt jeszcze dotąd nie głosował.',
+	'vote-login'          => 'By głosować, musisz $1.',
+	'vote-login-link'     => 'zaloguj',
 	'vote-invalid-choice' => 'Musisz wybrać jedną z dostępnych opcji.',
 );
 
@@ -544,6 +550,13 @@ $messages['tr'] = array(
 	'vote-submit'         => 'Oy',
 	'vote-results-choice' => 'Seçim',
 	'vote-results-count'  => 'Sayma',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'vote-caption' => 'Ваш вибір:',
 );
 
 /** Vietnamese (Tiếng Việt)

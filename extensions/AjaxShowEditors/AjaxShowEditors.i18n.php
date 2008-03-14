@@ -457,6 +457,7 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
@@ -464,6 +465,8 @@ $messages['pl'] = array(
 	'ajax-se-pending'          => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
 	'ajax-se-idling'           => '($1s temu)',
 	'ajax-se-pagedoesnotexist' => 'strona nie istnieje',
+	'ajax-se-userinvalid'      => 'BŁAD: nieprawidłowy użytkownik',
+	'ajax-se-usernotfound'     => 'BŁĄD: nie znaleziono użytkownika',
 );
 
 /** Piemontèis (Piemontèis)
@@ -573,6 +576,7 @@ $messages['stq'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
+	'ajax-se-desc'    => 'Témbongkeun pamaké nu keur ngédit kaca nu sarua',
 	'ajax-se-title'   => 'Keur ngédit:',
 	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
 	'ajax-se-idling'  => '($1 nu kaliwat)',
@@ -653,6 +657,8 @@ $messages['uk'] = array(
 	'ajax-se-pending'          => 'очікування оновлення... (натисніть тут або почніть редагування)',
 	'ajax-se-idling'           => '($1 с тому)',
 	'ajax-se-pagedoesnotexist' => 'сторінка не існує',
+	'ajax-se-userinvalid'      => 'ПОМИЛКА: помилковий користувач',
+	'ajax-se-usernotfound'     => 'ПОМИЛКА: користувач не знайдений',
 );
 
 /** Vietnamese (Tiếng Việt)

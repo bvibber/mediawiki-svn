@@ -204,13 +204,15 @@ $messages['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
  */
 $messages['km'] = array(
 	'multipleupload'                   => 'ផ្ទុកឡើងឯកសារ',
-	'multipleupload-desc'              => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង ច្រើនឯកសារ]]',
+	'multipleupload-desc'              => 'អនុញ្ញាត​អោយអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
 	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
 	'multipleupload-saveallfiles'      => 'រក្សាទុក គ្រប់ឯកសារ',
+	'multipleupload-page'              => '{{ns:project}}៖ គោលការណ៍នៃការលុបឯកសារ',
 	'multiupload-fileuploaded'         => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
 	'multiupload-toolbox'              => 'ផ្ទុកឡើង ច្រើនឯកសារ',
 );

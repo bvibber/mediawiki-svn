@@ -316,6 +316,14 @@ $messages['mk'] = array(
 	'deletedcontributions' => 'Избришани кориснички придонеси',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'deletedcontributions'      => 'वगळलेली सदस्य संपादने',
+	'deletedcontributions-desc' => 'एखाद्या [[Special:DeletedContributions|सदस्याची वगळलेली संपादने]] पाहण्याची प्रबंधकांना परवानगी देते.',
+);
+
 $messages['ms'] = array(
 	'deletedcontributions' => 'Sumbangan pengguna yang telah dipadam',
 );

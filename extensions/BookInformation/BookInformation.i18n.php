@@ -633,14 +633,19 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'bookinfo-header'            => 'ग्रंथ माहिती',
+	'bookinfo-desc'              => 'जालावरील माहिती घेवून [[Special:Booksources]] वाढवा',
 	'bookinfo-result-title'      => 'शिर्षक:',
 	'bookinfo-result-author'     => 'लेखक:',
 	'bookinfo-result-publisher'  => 'प्रकाशक:',
 	'bookinfo-result-year'       => 'वर्ष',
 	'bookinfo-error-invalidisbn' => 'चूकीचा ISBN भरला',
+	'bookinfo-error-nosuchitem'  => 'संचिका सापडली नाही किंवा अस्तित्वात नाही.',
+	'bookinfo-error-nodriver'    => 'योग्य असा बुक माहिती ड्रायव्हर सुरु करु शकत नाही.',
+	'bookinfo-error-noresponse'  => 'कुठलीही प्रतिक्रिया नाही किंवा वेळ संपलेली आहे.',
 	'bookinfo-purchase'          => 'हे पुस्तक $1कडून खरेदी करा',
 	'bookinfo-provider'          => 'विदा दाता: $1',
 );

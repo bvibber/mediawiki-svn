@@ -324,11 +324,20 @@ $messages['ja'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author Chhorran
  */
 $messages['km'] = array(
-	'chemFunctions_Formula' => 'រូបមន្ត',
-	'chemFunctions_Name'    => 'ឈ្មោះ IUPAC',
+	'chemicalsources'        => 'ប្រភពគីមី',
+	'chemFunctions_ListPage' => 'ប្រភពគីមី',
+	'chemFunctions_DataList' => 'ខាងក្រោមនេះ​ជាបញ្ជី​នៃតំនភ្ជាប់​ទៅសៃថ៍នានា​ដែលអាច​ផ្ដល់​ពត៌មាន​អំពី​សារធាតុ​គីមី​ដែលអ្នកកំពុង​ស្វែងរក។<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
+	'chemFunctions_CAS'      => 'លេខ CAS',
+	'chemFunctions_ATCCode'  => 'លេខកូដ ATC',
+	'chemFunctions_ECNumber' => 'លេខ EC',
+	'chemFunctions_Formula'  => 'រូបមន្ត',
+	'chemFunctions_Name'     => 'ឈ្មោះ IUPAC',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

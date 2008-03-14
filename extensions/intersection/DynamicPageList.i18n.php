@@ -243,6 +243,17 @@ $messages['lt'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Jums reikia įtraukti bent vieną kategoriją, arba nurodyti vardų sritį!',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'intersection-desc'          => 'एखाद्या वर्गातील अथवा वर्गसमूहातील नवीनतम लेख दर्शवितो.',
+	'intersection_toomanycats'   => 'DynamicPageList: खूप जास्त वर्ग!',
+	'intersection_toofewcats'    => 'DynamicPageList: खूप कमी वर्ग!',
+	'intersection_noresults'     => 'DynamicPageList: निकाल नाहीत!',
+	'intersection_noincludecats' => 'DynamicPageList: कमीतकमी एक वर्ग अथवा नामविश्व देणे गरजेचे आहे!',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

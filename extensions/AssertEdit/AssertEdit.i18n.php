@@ -242,6 +242,15 @@ $messages['ml'] = array(
 	'assert_edit_message' => 'പ്രതിപാദ്യ ഉറപ്പുവരുത്തല്‍ ശ്രമം ($1) പരാജയപ്പെട്ടു.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'assert_edit_title'   => 'ऍसर्ट जमले नाही',
+	'assert_edit_desc'    => 'सांगकाम्यांच्या वापरासाठी संपादन ऍसर्शन वाढवा',
+	'assert_edit_message' => 'सांगितलेले ऍसर्शन ($1) झालेले नाही.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

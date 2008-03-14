@@ -393,8 +393,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
+	'pdtest_text' => 'បញ្ចូលឃ្លា៖',
 	'pdtest_ok'   => 'យល់ព្រម',
 	'pdtest_diff' => 'ភាពខុសគ្នា',
 );

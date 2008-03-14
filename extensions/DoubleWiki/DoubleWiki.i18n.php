@@ -152,6 +152,13 @@ $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'doublewiki-desc' => 'एक पान व त्याचे इतर विकिवरील भाषांतर त्याच पानावर दोन भागांमध्ये दाखविते.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -192,6 +199,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'doublewiki-desc' => 'Показывает страницу и её перевод из другой вики в виде двух колонок',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'doublewiki-desc' => 'Сирэй атын тылынан торумун (тылбааһын) манна иккис колонкаҕа сэргэстэһиннэрэ көрдөрөр',
 );
 
 /** Slovak (Slovenčina)

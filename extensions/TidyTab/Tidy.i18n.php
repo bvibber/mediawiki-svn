@@ -105,3 +105,10 @@ $messages['stq'] = array(
 	'untidy' => 'Nit oardenje',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'tidy' => 'Städa',
+);
+

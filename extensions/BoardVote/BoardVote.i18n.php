@@ -165,6 +165,7 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'boardvote'              => 'انتخابات مجلس أمناء ويكيميديا',
@@ -507,6 +508,7 @@ Setu ar stumm sifrennet anezhañ. Dispaket e vo ent foran war [[Special:Boardvot
 	'boardvote_user'         => 'Implijer',
 	'boardvote_edits'        => 'Degasadennoù',
 	'boardvote_days'         => 'Deiz',
+	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Dileuriad an implijer',
 	'boardvote_listintro'    => '<p>setu aze ur roll eus an holl votoù bet enrollet evit ar mare. $1 evit ar roadennoù sifrennet.</p>',
 	'boardvote_dumplink'     => 'Klikañ amañ',
@@ -2050,6 +2052,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'group-boardvote'        => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'group-boardvote-member' => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
+	'boardvote_blocked'      => 'សូមអភ័យទោស! អ្នកត្រូវបានហាមឃាត់នៅលើវិគីដែលអ្នកបានចុះឈ្មោះ។ អ្នកប្រើប្រាស់ដែលត្រូវបានហាមឃាត់ មិនត្រូវបានអនុញ្ញាតឱ្យបោះឆ្នោតទេ។',
 	'boardvote_welcome'      => "សូមស្វាគមន៍'''$1'''!",
 	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៧',
 );
@@ -2339,8 +2342,8 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'boardvote'              => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
@@ -2348,6 +2351,23 @@ $messages['mr'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|मत द्या]]
 * [[Special:Boardvote/list|आजपर्यंतच्या मतांची यादी]]
 * [[Special:Boardvote/dump|एन्क्रीप्ट केलेली मतांची यादी डम्प करा]]',
+	'boardvote_intro'        => '<p>विकिमीडिया बोर्ड ऑफ ट्रस्टीजच्या मतदानात आपले स्वागत आहे. विविध
+विकिमीडिया प्रकल्पांमध्ये सहभागी असलेल्या सदस्यांचे प्रतिनिधित्व करण्यासाठी दोन लोकांची निवड करण्यासाठी हे मतदान होत आहे.
+ते विकिमीडिया प्रकल्पांच्या भविष्यातील वाटचालीबद्दल एकट्याने अथवा एकत्रितपणे निर्णय घेतील,
+तसेच <em>तुमच्या</em> आवडी तसेच शंका बोर्ड ऑफ ट्रस्टीज पुढे मांडतील. ते उत्पन्नाची साधने
+शोधणे तसेच खर्चाची विभागणी करणे ही कामे करतील.</p>
+
+<p>कृपया मत देण्यापूर्वी उमेदवाराची माहिती तसेच त्याने दिलेल्या प्रश्नांची उत्तरे काळजीपूर्वक वाचावीत.
+यातील प्रत्येक उमेदवार हा आदरणीय सदस्य आहे ज्याने संपूर्ण मानवजातीला फुकट ज्ञान मिळण्यासाठी 
+आपला बराचसा वेळ तसेच श्रम खर्ची घातलेले आहेत.</p>
+
+<p>तुम्ही कितीही उमेदवारांना मत देऊ शकता. प्रत्येक स्थानावरच्या ज्या
+उमेदवाराला सर्वात जास्त मते मिळतील तो त्या स्थानावरील विजेता म्हणून घोषित करण्यात येईल.
+जर एका जागेसाठी एकापेक्षा जास्त उमेदवारांमध्ये बरोबरी झाली तर उप-मतदान घेण्यात येईल.</p>
+
+<p>कृपया अधिक माहितीसाठी पहा:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">मतदानाबाबत नेहमी विचारले जाणारे प्रश्न</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">उमेदवार</a></li></ul>',
 	'boardvote_intro_change' => '<p>तुम्ही पूर्वी मत दिलेले आहे. जर तुम्हांला त्यात बदल करायचा असेल तर खालील अर्ज वापरा. कृपया आपणांस योग्य वाटणार्‍या उमेदवारापुढील चौकोनात बरोबरची खूण करा.</p>',
 	'boardvote_entered'      => 'धन्यवाद, तुमचे मत नोंदले गेलेले आहे.
 
@@ -2366,6 +2386,7 @@ $messages['mr'] = array(
 [[Special:Boardvote/entry|मागे जा]]',
 	'boardvote_nosession'    => 'तुमचा विकिमीडिया सदस्य क्रमांक सापडत नाही आहे. कृपया आपल्या सदस्यनामानी जिथे तुम्हाला मतदान करायला परवानगी आहे, त्या विकीवर प्रवेश करा, व <nowiki>[[Special:Boardvote]]</nowiki> इथे जा. तुम्ही मत देण्यासाठी कमीतकमी $1 संपादने $2 च्या पूर्वी, तसेच पहिले संपादन $3 च्या पूर्वी केलेले असणे आवश्यक आहे.',
 	'boardvote_notloggedin'  => 'तुम्ही प्रवेश केलेला नाही. मत देण्यासाठी तुम्ही कमीतकमी $1 संपादने $2 च्या पूर्वी, तसेच पहिले संपादन $3 च्या पूर्वी केलेले असणे आवश्यक आहे.',
+	'boardvote_notqualified' => 'तुम्ही इथे मत देण्यासाठी पात्र नाही आहात. तुम्ही $2 च्या पूर्वी $3 संपादने केलेली असणे तसेच पहिले संपादन $5 च्या पूर्वी केलेले असणे आवश्यक आहे.',
 	'boardvote_novotes'      => 'अजून कोणीही मत दिलेले नाही.',
 	'boardvote_time'         => 'वेळ',
 	'boardvote_user'         => 'सदस्य',
@@ -2373,15 +2394,27 @@ $messages['mr'] = array(
 	'boardvote_days'         => 'दिवस',
 	'boardvote_ip'           => 'अंकपत्ता',
 	'boardvote_ua'           => 'सदस्य एजंट',
+	'boardvote_listintro'    => '<p>ही आजपर्यंत नोंदल्या गेलेल्या मतांची यादी आहे. एन्क्रीप्टेड माहिती साठी $1 पहा.</p>',
 	'boardvote_dumplink'     => 'येथे टिचकी मारा',
 	'boardvote_submit'       => 'ठीक',
 	'boardvote_strike'       => 'खोडा',
 	'boardvote_unstrike'     => 'खोडणे रद्द',
+	'boardvote_needadmin'    => 'फक्त मतदान प्रशासक ही कृती करू शकतात.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">विकिमीडिया बोर्ड मतदान</a>:  जुलै १२ पर्यंत मतदान चालू',
 	'boardvote_notstarted'   => 'मतदान अजून सुरू झालेले नाही.',
+	'boardvote_closed'       => 'मतदान बंद झालेले आहे. कृपया निकालांसाठी [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En मतदान पान] पहा.',
 	'boardvote_edits_many'   => 'खूप',
+	'group-boardvote'        => 'बोर्ड मत प्रशासक',
+	'group-boardvote-member' => 'बोर्ड मत प्रशासक',
+	'grouppage-boardvote'    => '{{ns:project}}:बोर्ड मत प्रशासक',
 	'boardvote_blocked'      => 'माफ करा, तुम्ही सदस्य असलेल्या विकीने तुम्हांला ब्लॉक केलेले आहे. तुम्ही मत देऊ शकत नाही.',
 	'boardvote_welcome'      => "सुस्वागतम्‌ '''$1'''!",
 	'go_to_board_vote'       => 'विकिमीडिया मंडळ निवडणूक २००७',
+	'boardvote_redirecting'  => 'अधिक सुरक्षितता व पारदर्शक मतदानासाठी, हे मतदान एका बाह्य, दुसर्‍यांनी चालविलेल्या सर्व्हरवर घेण्यात येत आहे.
+
+तुम्हाला त्या बाह्य सर्व्हरवर २० सेंकंदात नेण्यात येईल. आत्ता तिथे जाण्यासाठी [$1 इथे टिचकी द्या].
+
+सही नसलेल्या सर्टिफिकेटसाठी सुरक्षापट्टी दिसू शकते.',
 );
 
 /** Erzya (эрзянь кель)
@@ -2900,6 +2933,7 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
  */
 $messages['qu'] = array(
 	'boardvote'             => 'Wikimedia sunqullisqa runakunata akllanakuy',
+	'boardvote-desc'        => '[[meta:Board elections|Wikimedia sunqullisqa runakunata akllanakuy]]',
 	'boardvote_entry'       => '* [[Special:Boardvote/vote|Runata akllay]]
 * [[Special:Boardvote/list|Ña akllanapaq nisqa kunkakuna]]
 * [[Special:Boardvote/dump|Pakaykusqa akllana qillqamusqakuna]]',

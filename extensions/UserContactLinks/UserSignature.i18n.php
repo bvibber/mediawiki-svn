@@ -103,6 +103,15 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'usercontactlink-baduser' => 'nom d’utilizaire incorrècte',
+	'usercontactlink-desc'    => "Provesís la possibilitat d'ajustar simplament e amb consisténcia d'autres noms d'utilizaires en utilizant la sintaxi ^^^user^^^",
+);
+
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'usercontactlink-baduser' => 'Nieprawidłowa nazwa użytkownika',
+	'usercontactlink-desc'    => 'Umożliwia w prosty i logiczny sposób dodawanie nowych nazw użytkownika za pomocą polecenia ^^^user^^^.',
 );
 
 /** Portuguese (Português)

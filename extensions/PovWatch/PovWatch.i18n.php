@@ -215,8 +215,10 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
+	'povwatch_title' => 'ចំណងជើង៖',
 	'povwatch_added' => 'បានបន្ថែម',
 );
 

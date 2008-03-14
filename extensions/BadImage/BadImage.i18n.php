@@ -735,6 +735,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'badimages'                => 'Lëscht vun onerwënschte Biller',
+	'badimages-desc'           => "Erweidert d'Méiglechkeete vun der Lëscht vun den onerwënschte Biller op MediaWiki",
 	'badimages-add-btn'        => 'Derbäisetzen',
 	'badimages-added'          => "$1 gouf op d'Lëscht derbäigesat.",
 	'badimages-count'          => "Et gëtt '''$1''' Biller op der Lëscht vun den onerwënschte Biller.",

@@ -112,6 +112,15 @@ $messages['ja'] = array(
 	'purgecache-button'  => 'キャッシュ削除',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'purgecache'        => 'សំអាតឃ្លាំងសំងាត់',
+	'purgecache-purged' => 'ឃ្លាំងសំងាត់ត្រូវបានសំអាតរួចរាល់ហើយ។',
+	'purgecache-button' => 'លុបបំបាត់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

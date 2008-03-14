@@ -147,8 +147,12 @@ $messages['oc'] = array(
 	'whosonline-desc' => "Aficha [[Special:WhosOnline|una tièra]] de personas inscrichas e d'utilizaires anonims actualament en linha",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'whosonline' => 'Kto online',
+	'whosonline'      => 'Kto online',
+	'whosonline-desc' => 'Wyświetla [[Special:WhosOnline|listę]] zalogowanych i anonimowych użytkowników będących online',
 );
 
 /** Pashto (پښتو)

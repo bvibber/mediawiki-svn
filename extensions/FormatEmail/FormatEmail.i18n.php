@@ -202,12 +202,13 @@ Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.',
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'email-desc'   => 'Gör att egendefinierade meddelanden kan läggas till toppen eller botten av användares e-post.',
 	'email_footer' => '----------------------------------------------------------------------------
-Denna e-post har sänts till dig via {{SITENAME}} e-postsystem av $1.
+Detta e-brev har sänts till dig från $1 via e-postsystemet på {{SITENAME}}. 
 
 $2',
 );

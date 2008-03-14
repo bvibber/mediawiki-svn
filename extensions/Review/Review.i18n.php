@@ -367,13 +367,14 @@ $messages['hsb'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'review_total_statistics'  => 'សរុប',
 	'review_user_details_link' => '(លំអិត)',
 	'review_topic'             => 'ប្រធានបទ',
 	'review_no_opinion'        => 'គ្មានមតិ',
-	'review_comment'           => 'វិចារ',
+	'review_comment'           => 'យោបល់',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -381,6 +382,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'review_statistics_left_corner' => 'Versioun',
+	'review_version_link'           => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
 	'review_user_details_link'      => '(Detailer)',
 	'review_no_opinion'             => 'Keng Meenung',

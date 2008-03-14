@@ -26,6 +26,17 @@ $messages['ar'] = array(
 	'categoryintersection' => 'تقاطع تصنيف',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categoryintersection'               => 'Kengej rummadoù',
+	'categoryintersection-desc'          => "Derc'hel a ra un daolenn gant talvoudennoù diouzh an drask evit ar [[Special:CategoryIntersection|c'hengej rummadoù]] e diabarzh ur bajenn",
+	'categoryintersection-doit'          => 'Rollañ a ra ar pajennoù en holl rummadoù-se',
+	'categoryintersection-maxcategories' => "$1 eo an niver brasañ a rummadoù a c'hall kengejañ.",
+	'categoryintersection-results'       => 'Kavez ez eus bet $1 {{PLURAL:$1|titl|titl}} gant an taol klask.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

@@ -402,11 +402,11 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
- * @author M.M.S.
- * @author M.M.S.
  */
 $messages['sv'] = array(
+	'tasklist'               => 'Uppgiftslista',
 	'tasklistunknownproject' => 'Okänt projekt',
 	'tasklistincorrectuser'  => 'Felaktigt användarnamn',
 	'tasklistchooseproj'     => 'Välj projekt:',

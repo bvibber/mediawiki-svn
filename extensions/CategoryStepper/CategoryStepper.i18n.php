@@ -48,7 +48,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'categorystepper-desc'  => 'Diskouez a ra ur voest rummata war pajennoù zo en un strobad rummadoù.',
+	'categorystepper-desc'  => "Diskouez a ra ur voest rummata ma c'hall an den merdeiñ pelloc'h pe gilañ en urzh al lizherenneg a-dreuz ar rummad(où) m'emañ ar bajenn",
 	'categorystepper-end'   => '(Dibenn ar rummad)',
 	'categorystepper-start' => '(penn-kentañ ar rummad)',
 );

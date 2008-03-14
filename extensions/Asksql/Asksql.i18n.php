@@ -666,6 +666,17 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querysuccessful' => 'Frågan lyckades',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'asksql'          => 'SQL-запит',
+	'asksql-desc'     => 'Виконання SQL-запитів за допомогою [[Special:Asksql|спеціальної сторінки]]',
+	'sqlquery'        => 'Введення запиту',
+	'querybtn'        => 'Відправити запит',
+	'querysuccessful' => 'Запит виконано',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

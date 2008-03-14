@@ -545,6 +545,18 @@ $messages['mk'] = array(
 	'createarticle'  => 'Создади статија',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'inputbox-desc'           => 'पूर्वी लिहिलेले HTML अर्ज वापरण्याची परवानगी द्या',
+	'inputbox-error-no-type'  => 'तुम्ही कुठल्या प्रकारची पृष्ठपेटी तयार करायची ते स्पष्ट केलेले नाही.',
+	'inputbox-error-bad-type' => 'तुम्ही दिलेला पृष्ठपेटीचा "$1" हा प्रकार योग्य नाही. कृपया "create", "comment", "search" किंवा "search2" यातील एक निवडा.',
+	'tryexact'                => 'दिलेलेच शब्द शोधा',
+	'searchfulltext'          => 'पूर्ण मजकूर शोधा',
+	'createarticle'           => 'लेख बनवा',
+);
+
 $messages['nan'] = array(
 	'searchfulltext'          => 'Chhiau choan-bûn',
 );

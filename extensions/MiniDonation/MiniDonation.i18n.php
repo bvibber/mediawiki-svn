@@ -106,9 +106,10 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'donationform-submit' => 'ផ្តល់អំណោយ តាម PayPal',
+	'donationform-submit' => 'វិភាគទានតាមរយៈ PayPal',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

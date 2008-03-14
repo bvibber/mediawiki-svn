@@ -953,15 +953,16 @@ Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım 
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'hiderevision'               => 'បិទបាំង កំណែ ជា អចិន្ត្រៃ',
+	'hiderevision'               => 'បិទបាំង​កំនែ​ជា​អចិន្ត្រៃយ៍',
 	'hiderevision-desc'          => 'បិទបាំង បំលាស់ប្តូរ ជាបុគ្គល ពី​ គ្រប់អ្នកប្រើប្រាស់ ដោយហេតុផល ស្របច្បាប់, ល ។',
-	'hiderevision-prompt'        => 'លេខ កំណែប្រែ ត្រូវ ដកចេញ ៖',
+	'hiderevision-prompt'        => 'លេខ​កំនែប្រែ​ត្រូវ​ដកចេញ ៖',
 	'hiderevision-continue'      => 'បន្ត',
 	'hiderevision-reason'        => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
-	'hiderevision-submit'        => 'បិទបាំង ទិន្នន័យ នេះ ជា អចិន្ត្រៃ',
+	'hiderevision-submit'        => 'បិទបាំង​ទិន្នន័យ​នេះ​ជា​អចិន្ត្រៃយ៍',
 	'hiderevision-tab'           => 'លាក់ការពិនិត្យឡើងវិញ',
 	'hiderevision-norevisions'   => 'គ្មានបំលាស់ប្តូរ សំដៅ លុបចេញ ។',
 	'hiderevision-noreason'      => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
@@ -1727,6 +1728,16 @@ $messages['tg'] = array(
  */
 $messages['tr'] = array(
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'group-oversight'        => 'Ревізори',
+	'group-oversight-member' => 'Ревізор',
+	'grouppage-oversight'    => '{{ns:project}}:Ревізори',
+	'oversight'              => 'Журнал приховування версій',
 );
 
 /** Vietnamese (Tiếng Việt)

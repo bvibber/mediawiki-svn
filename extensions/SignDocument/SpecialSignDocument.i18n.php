@@ -607,15 +607,21 @@ $messages['is'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'sign-nodocselected'              => 'សូម​ជ្រើសរើស​ឯកសារ​ដែលអ្នក​ចង់​ចុះហត្ថលេខា។',
+	'sign-selectdoc'                  => 'ឯកសារ៖',
 	'sign-realname'                   => 'ឈ្មោះ៖',
 	'sign-address'                    => 'អាស័យដ្ឋាន ផ្លូវ ៖',
+	'sign-city'                       => 'ក្រុង៖',
+	'sign-state'                      => 'រដ្ឋ៖',
+	'sign-country'                    => 'ប្រទេស៖',
 	'sign-phone'                      => 'លេខទូរស័ព្ទ៖',
 	'sign-bday'                       => 'អាយុ៖',
-	'sign-email'                      => 'អាស័យដ្ឋាន អ៊ីមែវល៍ ៖',
+	'sign-email'                      => 'អាសយដ្ឋានអ៊ីមែល៖',
 	'sign-list-hideaddress'           => 'មិនរាយ អាស័យដ្ឋាន',
 	'sign-list-hideemail'             => 'សូមកុំដាក់ក្នុងបញ្ជីអ៊ីមែល',
 	'sign-viewfield-realname'         => 'ឈ្មោះ',
@@ -629,11 +635,13 @@ $messages['km'] = array(
 	'sign-viewfield-age'              => 'អាយុ',
 	'sign-viewfield-options'          => 'ជំរើស',
 	'sign-signatures'                 => 'ហត្ថលេខា',
+	'sign-closed'                     => 'ត្រូវបានបិទ',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-reviewcomment'    => 'យោបល់',
 	'sign-uniquequery-similarname'    => 'ឈ្មោះស្រដៀងគ្នា',
 	'sign-uniquequery-similaraddress' => 'អាសយដ្ឋានស្រដៀងគ្នា',
 	'sign-uniquequery-similarphone'   => 'ទូរស័ព្ទ ស្រដៀង',
-	'sign-uniquequery-similaremail'   => 'អ៊ីមែវល៍ ស្រដៀងគ្នា',
+	'sign-uniquequery-similaremail'   => 'អ៊ីមែលស្រដៀងគ្នា',
 );
 
 $messages['la'] = array(

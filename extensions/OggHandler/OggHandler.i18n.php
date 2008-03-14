@@ -828,9 +828,10 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'ogg-desc'                => 'គាំទ្រ ចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករអាន JavaScript',
+	'ogg-desc'                => 'គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript',
 	'ogg-short-audio'         => 'ឯកសារ សំលេង Ogg $1, $2',
 	'ogg-short-video'         => 'ឯកសារ វិឌីអូ Ogg $1, $2',
 	'ogg-short-general'       => 'ឯកសារ មីឌា Ogg $1, $2',
@@ -946,6 +947,29 @@ $messages['lt'] = array(
 	'ogg-dismiss'             => 'Uždaryti',
 	'ogg-download'            => 'Atsisiųsti bylą',
 	'ogg-desc-link'           => 'Apie šią bylą',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'ogg-desc'                => 'ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट',
+	'ogg-short-audio'         => 'ऑग $1 ध्वनी संचिका, $2',
+	'ogg-short-video'         => 'ऑग $1 चलतचित्र संचिका, $2',
+	'ogg-short-general'       => 'ऑग $1 मीडिया संचिका, $2',
+	'ogg-long-audio'          => '(ऑग $1 ध्वनी संचिका, लांबी $2, $3)',
+	'ogg-long-video'          => '(ऑग $1 चलतचित्र संचिका, लांबी $2, $3)',
+	'ogg-long-multiplexed'    => '(ऑग ध्वनी/चित्र संचिका, $1, लांबी $2, $4×$5 पिक्सेल्स, $3 एकूण)',
+	'ogg-long-general'        => '(ऑग मीडिया संचिका, लांबी $2, $3)',
+	'ogg-long-error'          => '(चुकीची ऑग संचिका: $1)',
+	'ogg-play'                => 'चालू करा',
+	'ogg-pause'               => 'विराम',
+	'ogg-stop'                => 'थांबवा',
+	'ogg-play-video'          => 'चलतचित्र चालू करा',
+	'ogg-play-sound'          => 'ध्वनी चालू करा',
+	'ogg-no-player'           => 'माफ करा, पण तुमच्या संगणकामध्ये कुठलाही प्लेयर आढळला नाही. कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">प्लेयर डाउनलोड करा</a>.',
+	'ogg-no-xiphqt'           => 'तुमच्या संगणकामध्ये क्वीकटाईम ला लागणारा XiphQT हा तुकडा आढळला नाही. याशिवाय क्वीकटाईम ऑग संचिका चालवू शकणार नाही. कॄपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करा</a> किंवा दुसरा प्लेयर वापरा.',
+	'ogg-player-videoElement' => '<video> तुकडा',
 );
 
 /** Low German (Plattdüütsch)

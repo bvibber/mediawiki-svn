@@ -136,11 +136,12 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'pageby-first'        => 'ទំព័រ ត្រូវបាន បង្កើតឡើង ដោយ $1, $2',
 	'pageby-last'         => '<a href="$3">ផ្លាស់ប្តូរ</a> ចុងក្រោយ ដោយ $1, $2',
-	'pageby-contributors' => 'អ្នក រួមចំណែក ៖',
+	'pageby-contributors' => 'អ្នករួមចំណែក៖',
 	'pageby-anon'         => '<i>អនាមិក</i>',
 );
 

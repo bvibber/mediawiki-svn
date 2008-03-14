@@ -221,6 +221,26 @@ $messages['hsb'] = array(
 	'openidlogininstructions'       => 'Zapodaj swój identifikator OpenID, zo by so přizjewił:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'openiderror'          => 'កំហុស​ក្នុងការផ្ទៀងផ្ទាត់',
+	'openidcancel'         => 'ការផ្ទៀងផ្ទាត់​ត្រូវបានលុបចោល',
+	'openidfailure'        => 'ការផ្ទៀងផ្ទាត់បរាជ័យ',
+	'openidsuccess'        => 'ផ្ទៀងផ្ទាត់ដោយជោគជ័យ',
+	'openidoptional'       => 'ជាជំរើស',
+	'openidrequired'       => 'ត្រូវការជាចាំបាច់',
+	'openidnickname'       => 'ឈ្មោះហៅក្រៅ',
+	'openidfullname'       => 'ឈ្មោះពេញ',
+	'openidemail'          => 'អាសយដ្ឋានអ៊ីមែល',
+	'openidlanguage'       => 'ភាសា',
+	'openidnotavailable'   => 'ឈ្មោះហៅក្រៅ​ដែលអ្នកពេញចិត្ត ($1) ត្រូវបានប្រើដោយ​អ្នកប្រើប្រាស់​ម្នាក់​ផ្សេងទៀតហើយ។',
+	'openidchoosefull'     => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
+	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -280,6 +300,18 @@ Als u in de toekomst uw OpenID wilt gebruiken om aan te melden, [[Special:OpenID
 Als dat niet werkt, klik dan op de knop "Doorgaan".',
 	'openidclientonlytext'          => 'U kunt gebruikers van deze wiki niet als OpenID gebruiken op een andere site.',
 	'openidloginlabel'              => 'OpenID URL',
+	'openidlogininstructions'       => "{{SITENAME}} ondersteunt de standaard [http://openid.net/ OpenID] voor maar een keer hoeven aanmelden voor meerdere websites.
+Met OpenID kunt u aanmelden bij veel verschillende websites zonder voor iedere site opnieuw een wachtwoord te moeten opgeven.
+Zie het [http://nl.wikipedia.org/wiki/OpenID Wikipedia-artikel over OpenID] voor meer informatie.
+
+Als u al een gebruiker hebt op {{SITENAME}}, dan kunt u aanmelden met uw gebruikersnaam en wachtwoord zoals u normaal doet. Om in de toekomst OpenID te gebruiken, kunt u uw [[Special:OpenIDConvert|gebruiker naar OpenID omzetten]] nadat u hebt aangemeld.
+
+Er zijn veel [http://wiki.openid.net/Public_OpenID_providers publieke OpenID-providers], en wellicht hebt u al een gebruiker voor OpenID bij een andere dienst.
+
+; Andere wiki's : Als u een gebruiker hebt op een andere wiki die OpenID understeunt, zoals [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] of [http://kei.ki/ Keiki], dan kunt u bij {{SITENAME}} aanmelden door de '''volledige URL''' van uw gebruikerspagina in die andere wiki in het veld hierboven in te geven. Voorbeeld: ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Als u een gebruiker hebt bij Yahoo!, dan kunt u bij deze site aanmelden door uw OpenID van Yahoo! in het veld hierboven in te voeren. Een URL van een OpenID van Yahoo! heeft de volgende opmaak: ''<nowiki>https://me.yahoo.com/gebruikersnaam</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Als u een gebruiker hebt bij [http://www.aol.com/ AOL], zoals een [http://www.aim.com/ AIM]-gebruiker, dan kunt u bij {{SITENAME}} aanmelden door uw OpenID van AOL in het veld hierboven in te voeren. Een URL van een OpenID van AOL heeft de volgende opmaak: ''<nowiki>http://openid.aol.com/gebruikersnaam</nowiki>''. Uw gebruikersnaam moet in kleine letters ingevoerd worden, zonder spaties.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Als u een blog hebt bij een van de voorgaande diensten, dan kunt u bij deze site aanmelden door als uw OpenID de URL van uw blog in te geven in het veld hierboven. Bijvoorbeeld: ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' of ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -323,12 +355,16 @@ $messages['no'] = array(
 	'openidchooseurl'               => 'Et navn tatt fra din OpenID ($1)',
 	'openidchooseauto'              => 'Et automatisk opprettet navn ($1)',
 	'openidchoosemanual'            => 'Et valgfritt navn:',
+	'openidchooseexisting'          => 'En eksisterende konto på denne wikien:',
+	'openidchoosepassword'          => 'passord:',
 	'openidconvertinstructions'     => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse.',
 	'openidconvertsuccess'          => 'Konverterte til OpenID',
 	'openidconvertsuccesstext'      => 'Du har konvertert din OpenID til $1.',
 	'openidconvertyourstext'        => 'Det er allerede din OpenID.',
 	'openidconvertothertext'        => 'Den OpenID-en tilhører noen andre.',
-	'openidalreadyloggedin'         => '<strong>$1, du er allerede logget inn!</strong>',
+	'openidalreadyloggedin'         => "'''$1, du er allerede logget inn.'''
+
+Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til å bruke OpenID]].",
 	'tog-hideopenid'                => 'Skjul <a href="http://openid.net/">OpenID</a> på brukersiden din om du logger inn med en.',
 	'openidnousername'              => 'Intet brukernavn oppgitt.',
 	'openidbadusername'             => 'Ugyldig brukernavn oppgitt.',

@@ -276,11 +276,13 @@ $messages['is'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
+	'createsigndoc-pagename'  => 'ទំព័រ៖',
 	'createsigndoc-email'     => 'អាសយដ្ឋានអ៊ីមែល៖',
 	'createsigndoc-address'   => 'អាស័យដ្ឋាន ផ្ទះ ៖',
 	'createsigndoc-phone'     => 'លេខទូរស័ព្ទ៖',
+	'createsigndoc-bday'      => 'ថ្ងៃខែឆ្នាំកំនើត៖',
 	'createsigndoc-introtext' => 'សេចក្តីណែនាំ៖',
-	'createsigndoc-hidden'    => 'ត្រូវបាន បិទបាំង',
+	'createsigndoc-hidden'    => 'ត្រូវបានបិទបាំង',
 	'createsigndoc-create'    => 'បង្កើត',
 );
 

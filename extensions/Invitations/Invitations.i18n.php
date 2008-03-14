@@ -172,11 +172,14 @@ $messages['fr'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author Chhorran
  */
 $messages['km'] = array(
-	'invite-logpage'                => 'កំណត់ហេតុ នៃ ការអញ្ជើញ',
-	'invitations-inviteform-submit' => 'អញ្ជើញ',
+	'invite-logpage'                  => 'កំណត់ហេតុ នៃ ការអញ្ជើញ',
+	'invitations-inviteform-title'    => 'អញ្ជើញអ្នកប្រើប្រាស់ម្នាក់អោយប្រើ $1',
+	'invitations-inviteform-username' => 'អ្នកប្រើប្រាស់​ដែលត្រូវអញ្ជើញ',
+	'invitations-inviteform-submit'   => 'អញ្ជើញ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

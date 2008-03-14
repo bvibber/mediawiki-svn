@@ -47,10 +47,12 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
-	'forcepreview' => 'Gardar páxina (usar vista previa)',
+	'forcepreview'      => 'Gardar páxina (usar vista previa)',
+	'forcepreview-desc' => 'Forzar a vista previa aos usuarios sen privilexios',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

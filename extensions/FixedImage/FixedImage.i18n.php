@@ -69,9 +69,10 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'fixedimage-desc' => 'Lägger till <tt><nowiki><fundraising></nowiki></tt>-taggen som en bild',
+	'fixedimage-desc' => 'Lägger till taggen <tt><nowiki><fundraising></nowiki></tt> för att visa en bild',
 );
 
 /** Telugu (తెలుగు)

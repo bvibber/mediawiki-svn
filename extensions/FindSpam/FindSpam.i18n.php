@@ -283,7 +283,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'findspam'             => 'Hitta spam',
-	'findspam-desc'        => 'Lägger till en [[Special:FindSpam|special sida]] som hittar nyligen tillaggt spam',
+	'findspam-desc'        => 'Lägger till en [[Special:FindSpam|specialsida]] för att hitta spam som lagts till nyligen',
 	'findspam-ip'          => 'IP-adress:',
 	'findspam-ok'          => 'Sök',
 	'findspam-notextfound' => 'Inga bidrag hittades',

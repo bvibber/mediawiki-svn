@@ -174,16 +174,17 @@ $messages['it'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author Chhorran
  */
 $messages['km'] = array(
 	'watchers'               => 'អ្នកតាមដាន',
-	'watchers_link_title'    => 'អ្នកណាកំពុងតាមដាន ទំព័រនេះ?',
+	'watchers_link_title'    => 'អ្នកណាកំពុងតាមដាន​ទំព័រនេះ?',
 	'watchers_error_article' => '<b>កំហុស៖</b> ទំព័រមិនមាន ។',
-	'watchers_header'        => 'មានមនុស្ស កំពុងតាមដាន "$1"',
-	'watchers_noone_watches' => 'គ្មានមនុស្ស កំពុងតាមដាន ទំព័រនេះ',
-	'watchers_x_or_more'     => '$1 ឬ ច្រើនគ្នា កំពុងតាមដាន ទំព័រនេះ ។',
-	'watchers_less_than_x'   => 'តិចជាង $1 នាក់ កំពុងតាមដានទំព័រនេះ ។',
+	'watchers_header'        => 'អ្នកដែលកំពុងតាមដាន "$1"',
+	'watchers_noone_watches' => 'គ្មាននរណាម្នាក់​កំពុងតាមដាន​ទំព័រនេះទេ។',
+	'watchers_x_or_more'     => 'មនុស្ស $1 នាក់ឬ​ច្រើនពីនេះ​កំពុងតាមដាន​ទំព័រនេះ​។',
+	'watchers_less_than_x'   => 'មនុស្ស​តិចជាង $1 នាក់​កំពុងតាមដានទំព័រនេះ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

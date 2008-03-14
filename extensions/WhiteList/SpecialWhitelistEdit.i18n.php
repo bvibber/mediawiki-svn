@@ -146,6 +146,25 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 	'whitelistnummatches'       => ' - $1 {{PLURAL:$1|occurence|occurences}}',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$allMessages['km'] = array(
+	'mywhitelistpages'         => 'ទំព័ររបស់ខ្ញុំ',
+	'whitelisttablemodify'     => 'កែសំរួល',
+	'whitelisttablemodifyall'  => 'ទាំងអស់',
+	'whitelisttablemodifynone' => 'ទទេ',
+	'whitelisttablepage'       => 'ទំព័រវិគី',
+	'whitelisttablemodby'      => 'កែសំរួលចុងក្រោយដោយ',
+	'whitelisttablemodon'      => 'កែសំរួលចុងក្រោយនៅ',
+	'whitelisttableedit'       => 'កែប្រែ',
+	'whitelisttableview'       => 'មើល',
+	'whitelisttablenewdate'    => 'កាលបរិច្ឆេទថ្មី៖',
+	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
+	'whitelisttableremove'     => 'ដកចេញ',
+	'whitelistnewtabledate'    => 'កាលបរិច្ឆេទផុតកំណត់៖',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -209,13 +228,109 @@ $allMessages['no'] = array(
 	'whitelisttabletype'       => 'Tilgangstype',
 	'whitelisttableexpires'    => 'Utgår',
 	'whitelistnever'           => 'aldri',
+	'whitelistnummatches'      => '  - $1 treff',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $allMessages['oc'] = array(
-	'mywhitelistpages' => 'Mas paginas',
+	'whitelist-desc'            => 'Modifica las permissions d’accès dels utilizaires de poders restrenches',
+	'whitelistedit'             => 'Editor de la lista blanca dels accèsses',
+	'whitelist'                 => 'Paginas de listas blancas',
+	'mywhitelistpages'          => 'Mas paginas',
+	'whitelistfor'              => '<center>Entresenhas actualas per <b>$1</b></center>',
+	'whitelisttablemodify'      => 'Modificar',
+	'whitelisttablemodifyall'   => 'Tot',
+	'whitelisttablemodifynone'  => 'Nonrés',
+	'whitelisttablepage'        => 'Pagina wiki',
+	'whitelisttabletype'        => 'Mòde d’accès',
+	'whitelisttableexpires'     => 'Expira lo',
+	'whitelisttablemodby'       => 'Modificat en darrièr per',
+	'whitelisttablemodon'       => 'Modificat en darrièr lo',
+	'whitelisttableedit'        => 'Modificar',
+	'whitelisttableview'        => 'Afichar',
+	'whitelisttablenewdate'     => 'Data novèla :',
+	'whitelisttablechangedate'  => 'Cambiar la data d’expiracion',
+	'whitelisttablesetedit'     => 'Paramètres per l’edicion',
+	'whitelisttablesetview'     => 'Paramètres per visionar',
+	'whitelisttableremove'      => 'Levar',
+	'whitelistnewpagesfor'      => 'Ajusta de paginas novèlas a la lista blanca de <b>$1</b><br />
+Utilizatz siá lo caractèr * siá %<br />',
+	'whitelistnewtabledate'     => 'Data d’expiracion :',
+	'whitelistnewtableedit'     => "Paramètres d'edicion",
+	'whitelistnewtableview'     => 'Paramètres per visionar',
+	'whitelistnewtableprocess'  => 'Tractar',
+	'whitelistnewtablereview'   => 'Revisar',
+	'whitelistselectrestricted' => "== Seleccionatz un nom d’utilizaire d'accès restrench ==",
+	'whitelistpagelist'         => 'Paginas de {{SITENAME}} per $1',
+	'whitelistnocalendar'       => "<font color='red' size=3>Sembla que lo modul [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], una extension prerequesa, siá pas estada installada coma caliá !</font>",
+	'whitelistbadtitle'         => 'Títol incorrècte ‑',
+	'whitelistoverview'         => '== Vista generala dels cambiaments per $1 ==',
+	'whitelistoverviewcd'       => "Modificacion de la data de '''$1''' per [[:$2|$2]]",
+	'whitelistoverviewsa'       => "* configurar l'accès de '''$1''' per [[:$2|$2]]",
+	'whitelistoverviewrm'       => '* Retirament de l’accès a [[:$1|$1]]',
+	'whitelistoverviewna'       => "* Ajusta [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
+	'whitelistrequest'          => 'Demanda d’accès a mai de paginas',
+	'whitelistrequestmsg'       => '$1 a demandat l’accès a las paginas seguentas :
+
+$2',
+	'whitelistrequestconf'      => 'Una demanda d’accès per de paginas novèlas es estada mandada a $1',
+	'whitelistnonrestricted'    => "L'utilizaire  '''$1''' es pas amb de dreches restrenches.
+Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenches.",
+	'whitelistnever'            => 'jamai',
+	'whitelistnummatches'       => ' - $1 {{PLURAL:$1|ocuréncia|ocuréncias}}',
+);
+
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$allMessages['pl'] = array(
+	'whitelist-desc'            => 'Edytuj możliwość dostępu dla użytkowników z ograniczeniami',
+	'whitelistedit'             => 'Edytor dostępu do "białej listy"',
+	'whitelist'                 => 'Strony z "białej listy"',
+	'mywhitelistpages'          => 'Strony użytkownika',
+	'whitelistfor'              => '<center>Aktualne informacje na temat <b>$1<b></center>',
+	'whitelisttablemodify'      => 'Zmodyfikuj',
+	'whitelisttablemodifyall'   => 'Wszystkie',
+	'whitelisttablemodifynone'  => 'Żadna',
+	'whitelisttablepage'        => 'Strona wiki:',
+	'whitelisttabletype'        => 'Typ dostępu:',
+	'whitelisttableexpires'     => 'Wygasa:',
+	'whitelisttablemodby'       => 'Ostatnio zmodyfikowany przez:',
+	'whitelisttablemodon'       => 'Data ostatniej modyfikacji:',
+	'whitelisttableedit'        => 'Edytuj',
+	'whitelisttableview'        => 'Podgląd',
+	'whitelisttablenewdate'     => 'Nowa data:',
+	'whitelisttablechangedate'  => 'Zmień datę wygaśnięcia:',
+	'whitelisttablesetedit'     => 'Przełącz na edycję',
+	'whitelisttablesetview'     => 'Przełącz na podgląd',
+	'whitelisttableremove'      => 'Usuń',
+	'whitelistnewpagesfor'      => 'Dodaje nowe strony do "białej listy" wiki <b>$1</b><br />
+Możliwe jest stosowanie symboli wieloznacznych * i %<br />',
+	'whitelistnewtabledate'     => 'Wygasa:',
+	'whitelistnewtableedit'     => 'Przełącz na edycję',
+	'whitelistnewtableview'     => 'Przełącz na podgląd',
+	'whitelistnewtableprocess'  => 'Przetwórz',
+	'whitelistnewtablereview'   => 'Przejrzyj',
+	'whitelistselectrestricted' => '== Wybierz nazwę użytkownika z ograniczeniami ==',
+	'whitelistpagelist'         => 'Strony $1 w serwisie {{SITENAME}}',
+	'whitelistnocalendar'       => '<font color=\'red\' size=3>Prawdopodobnie wymagane do pracy tego modułu rozszerzenie "[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics]" nie zostało poprawnie zainstalowane.</font>',
+	'whitelistbadtitle'         => 'Nieprawidłowa nazwa -',
+	'whitelistoverview'         => '== Przegląd zmian dla elementu $1 ==',
+	'whitelistoverviewcd'       => "* Zmiana daty ograniczenia na '''$1''' w odniesieniu do elementu [[:$2:$2]]",
+	'whitelistoverviewsa'       => "* Ustalanie dostępu dla elementu '''$1''' do elementu [[:$2|$2]]",
+	'whitelistoverviewrm'       => '* Usuwanie dostępu do [[:$1|$1]]',
+	'whitelistoverviewna'       => "* Dodawanie elementu [[:\$1|\$1]] do \"białej listy\" - dostęp dla '''\$2''', data wygaśnięcia '''\$3'''",
+	'whitelistrequest'          => 'Zażądaj dostępu do większej ilości stron',
+	'whitelistrequestmsg'       => 'Użytkownik $1 zażądał dostępu do następujących stron:
+
+$2',
+	'whitelistrequestconf'      => 'Żądanie utworzenia nowych stron zostało przesłane do $1',
+	'whitelistnonrestricted'    => "Na użytkownika '''$1''' nie nałożono ograniczeń.
+Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone ograniczenia.",
+	'whitelistnever'            => 'nigdy',
+	'whitelistnummatches'       => 'wyników: $1',
 );
 
 /** Swedish (Svenska)
@@ -225,6 +340,8 @@ $allMessages['sv'] = array(
 	'mywhitelistpages'        => 'Mina sidor',
 	'whitelistfor'            => '<center>Nuvarande information för <b>$1<b></center>',
 	'whitelisttablemodifyall' => 'Alla',
+	'whitelisttableedit'      => 'Redigera',
+	'whitelisttableview'      => 'Visa',
 );
 
 /** Telugu (తెలుగు)

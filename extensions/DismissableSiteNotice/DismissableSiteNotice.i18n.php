@@ -281,10 +281,12 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
 	'sitenotice_close' => 'पुसा',
+	'sitenotice-desc'  => 'सदस्यांना साईटनोटिस बंद करण्याची परवानगी देते.',
 );
 
 $messages['nan'] = array(

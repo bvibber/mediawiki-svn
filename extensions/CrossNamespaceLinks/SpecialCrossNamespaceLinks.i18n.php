@@ -369,6 +369,16 @@ $messages['lv'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|saite|saites}} uz $3',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'crossnamespacelinks'         => 'नामविश्वांतर्गत दुवे',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} वर नको असलेल्या [[Special:CrossNamespaceLinks|नामविश्वांतर्गत दुव्यांची यादी]]',
+	'crossnamespacelinks-summary' => 'हे पान मुख्य नामविश्वातील पानावरील अशा दुव्यांची यादी देते जे दुवे इतर नामविश्वातील पानांना जोडलेले आहेत ({{ns:special}}, {{ns:talk}}, {{ns:project}} आणि {{ns:template}} नामविश्वे सोडून), जी वापरण्यास योग्य नाहीत.',
+	'crossnamespacelinkstext'     => '$1: $3 ला {{PLURAL:$2|असणारा|असणारे}}  $2 {{PLURAL:$2|दुवा|दुवे}}',
+);
+
 $messages['nan'] = array(
 	'crossnamespacelinks'         => 'Ha̍ⁿh kòe miâ-khong-kan ê liân-kiat',
 	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',

@@ -520,12 +520,33 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
-	'usagestatisticsintervalday'   => 'Dzień',
-	'usagestatisticsintervalweek'  => 'Tydzień',
-	'usagestatisticsintervalmonth' => 'Miesiąc',
+	'specialuserstats'                => 'Statystyki',
+	'usagestatistics'                 => 'Statystyki',
+	'usagestatistics-desc'            => 'Pokazuje statystyki indywidualne użytkownika oraz statystyki wiki',
+	'usagestatisticsfor'              => '<h2>Statystyki użytkownika [[:user:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'Wszyscy użytkownicy',
+	'usagestatisticsinterval'         => 'odstęp',
+	'usagestatisticstype'             => 'Typ',
+	'usagestatisticsstart'            => 'Data początkowa',
+	'usagestatisticsend'              => 'Data końcowa',
+	'usagestatisticssubmit'           => 'Generuj statystyki',
+	'usagestatisticsnostart'          => '* <font color=red>Podaj datę początkową</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Podaj datę końcową</font>',
+	'usagestatisticsbadstartend'      => '<b>Nieprawidłowa data <i>początkowa</i> i/lub <i>końcowa</i>!</b>',
+	'usagestatisticsintervalday'      => 'Dzień',
+	'usagestatisticsintervalweek'     => 'Tydzień',
+	'usagestatisticsintervalmonth'    => 'Miesiąc',
+	'usagestatisticsincremental'      => 'Przyrostowe',
+	'usagestatisticsincremental-text' => 'przyrostowe',
+	'usagestatisticscumulative'       => 'Skumulowane',
+	'usagestatisticscumulative-text'  => 'skumulowane',
+	'usagestatisticscalselect'        => 'Wybierz',
+	'usagestatistics-editindividual'  => '$1 statystyki edycji pojedynczego użytkownika',
+	'usagestatistics-editpages'       => '$1 statystyki stron pojedynczego użytkownika',
 );
 
 /** Portuguese (Português)

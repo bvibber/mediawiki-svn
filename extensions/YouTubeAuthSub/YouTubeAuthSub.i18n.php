@@ -83,6 +83,27 @@ Soyez patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Veuiller entrer une description pour la vidéo.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'youtubeauthsub'              => 'ផ្ទុកឡើងវីដេអូយូធ្យូប(YouTube)',
+	'youtubeauthsub-desc'         => 'អនុញ្ញាត​អោយ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
+	'youtubeauthsub_info'         => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ពត៌មាន​ទាំងឡាយដូចតទៅ៖',
+	'youtubeauthsub_title'        => 'ចំនងជើង',
+	'youtubeauthsub_description'  => 'ពិពណ៌នា',
+	'youtubeauthsub_password'     => 'លេខ​សំងាត់យូធ្យូប(YouTube)',
+	'youtubeauthsub_username'     => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប(YouTube)',
+	'youtubeauthsub_keywords'     => 'ពាក្យគន្លឹះ​នានា',
+	'youtubeauthsub_category'     => 'ចំនាត់ថ្នាក់ក្រុម',
+	'youtubeauthsub_submit'       => 'ស្នើឡើង',
+	'youtubeauthsub_clickhere'    => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
+	'youtubeauthsub_uploadbutton' => 'ផ្ទុកឡើង',
+	'youtubeauthsub_summary'      => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
+	'youtubeauthsub_uploading'    => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
+សូម​មានការអត់ធ្មត់។',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -119,6 +140,20 @@ Even geduld alstublieft.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Geef alstublieft een of meer trefwoorden op.',
 	'youtubeauthsub_jserror_notitle'     => 'Geef alstublieft een naam voor de video op.',
 	'youtubeauthsub_jserror_nodesc'      => 'Geef alstublieft een beschrijving voor de video op.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'youtubeauthsub'             => 'Last opp YouTube-video',
+	'youtubeauthsub-desc'        => 'Lar brukere [[Special:YouTubeAuthSub|laste opp videoer]] på YouTube',
+	'youtubeauthsub_info'        => 'For å laste opp en video på YouTube for bruk på en side, fyll inn følgende informasjon:',
+	'youtubeauthsub_title'       => 'Tittel',
+	'youtubeauthsub_description' => 'Beskrivelse',
+	'youtubeauthsub_password'    => 'YouTube-passord',
+	'youtubeauthsub_username'    => 'YouTube-brukernavn',
+	'youtubeauthsub_category'    => 'Kategori',
 );
 
 /** Occitan (Occitan)
@@ -163,6 +198,13 @@ Siatz pacient.',
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'youtubeauthsub'                     => 'Prześlij plik wideo YouTube',
+	'youtubeauthsub-desc'                => 'Pozwala użytkownikom na [[Special:YouTubeAuthSub|przesyłanie plików wideo]] bezpośrednio do serwisu YouTube',
+	'youtubeauthsub_info'                => 'By przesłać do serwisu YouTube plik wideo, który ma być potem wykorzystywany na stronach wiki, podaj poniższe informacje:',
+	'youtubeauthsub_title'               => 'Tytuł',
+	'youtubeauthsub_description'         => 'Opis',
+	'youtubeauthsub_password'            => 'Hasło do serwisu YouTube',
+	'youtubeauthsub_username'            => 'Nazwa użytkownika w serwisie YouTube',
 	'youtubeauthsub_keywords'            => 'Słowa kluczowe',
 	'youtubeauthsub_category'            => 'Kategoria',
 	'youtubeauthsub_submit'              => 'Prześlij',
@@ -188,3 +230,73 @@ Czekaj.',
 	'youtubeauthsub_jserror_notitle'     => 'Wprowadź tytuł materiału wideo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Wprowadź opis materiału wideo.',
 );
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'youtubeauthsub'                     => 'Ladda upp en YouTube video',
+	'youtubeauthsub-desc'                => 'Tillåter användare att [[Special:YouTubeAuthSub|ladda upp videor]] på YouTube',
+	'youtubeauthsub_info'                => 'För att ladda upp en video på YouTube för användning på en sida, fyll i följande information:',
+	'youtubeauthsub_title'               => 'Titel',
+	'youtubeauthsub_description'         => 'Beskrivning',
+	'youtubeauthsub_password'            => 'YouTube lösenord',
+	'youtubeauthsub_username'            => 'YouTube användarnamn',
+	'youtubeauthsub_keywords'            => 'Nyckelord',
+	'youtubeauthsub_category'            => 'Kategori',
+	'youtubeauthsub_submit'              => 'Spara',
+	'youtubeauthsub_clickhere'           => 'Klicka här för att logga in på YouTube',
+	'youtubeauthsub_success'             => "Gratulerar!
+Din video är uppladdad.
+För att se din video klicka <a href='http://www.youtube.com/watch?v=$1'>här</a>.
+YouTube kan behöva viss tid att processera din viseo, så den kan inte bli redo ännu.
+
+För att inkludera din video i en sida på wikin, sätt in följande kod i en sida:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'För att ladda upp en video, måste du först logga in på YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Ladda upp din video här ifrån:',
+	'youtubeauthsub_uploadbutton'        => 'Ladda upp',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Denna video kan ses [http://www.youtube.com/watch?v=$1 här]',
+	'youtubeauthsub_summary'             => 'Laddar upp YouTube video',
+	'youtubeauthsub_uploading'           => 'Din video har börjat uppladdas.
+Var tålmodig.',
+	'youtubeauthsub_viewpage'            => 'Alternativt, kan du se din video [[$1|här]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Var god välj 1 eller fler nyckelord.',
+	'youtubeauthsub_jserror_notitle'     => 'Var god välj en titel för videon.',
+	'youtubeauthsub_jserror_nodesc'      => 'Var god välj en beskrivning för videon.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'youtubeauthsub'                     => 'Tải lên video YouTube',
+	'youtubeauthsub-desc'                => 'Để người dùng [[Special:YouTubeAuthSub|tải lên video]] thẳng từ YouTube',
+	'youtubeauthsub_info'                => 'Để tải lên video từ YouTube và chèn nó vào trang, hãy ghi vào những thông tin sau:',
+	'youtubeauthsub_title'               => 'Tên',
+	'youtubeauthsub_description'         => 'Miêu tả',
+	'youtubeauthsub_password'            => 'Mật khẩu YouTube',
+	'youtubeauthsub_username'            => 'Tên hiệu YouTube',
+	'youtubeauthsub_keywords'            => 'Từ khóa',
+	'youtubeauthsub_category'            => 'Thể loại',
+	'youtubeauthsub_clickhere'           => 'Hãy nhấn chuột vào đây để đăng nhập vào YouTube',
+	'youtubeauthsub_success'             => 'Chúc mừng bạn đã tải lên video thành công! Để coi video này, hãy nhấn chuột <a href="http://www.youtube.com/watch?v=$1">vào đây</a>. YouTube có thể cần một tí thì giờ để xử lý video của bạn, nên có thể nó chưa sẵn.
+
+Để chèn video này vào một trang wiki, hãy dùng mã sau:
+<code>{{&#35;ev:youtube|$1}}</code>',
+	'youtubeauthsub_authsubinstructions' => 'Để tải lên video, bạn cần phải đăng nhập vào YouTube trước tiên.',
+	'youtubeauthsub_uploadhere'          => 'Hãy tải lên video ở đây:',
+	'youtubeauthsub_uploadbutton'        => 'Tải lên',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Có thể coi video này [http://www.youtube.com/watch?v=$1 tại đây].',
+	'youtubeauthsub_summary'             => 'Đang tải lên video YouTube',
+	'youtubeauthsub_uploading'           => 'Đang tải lên video. Xin chờ đợi tí.',
+	'youtubeauthsub_viewpage'            => 'Bạn cũng có thể coi video này [[$1|tại đây]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Xin hãy chọn ít nhất một từ khóa.',
+	'youtubeauthsub_jserror_notitle'     => 'Xin hãy chọn tên cho video.',
+	'youtubeauthsub_jserror_nodesc'      => 'Xin hãy miêu tả video.',
+);
+

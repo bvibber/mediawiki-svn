@@ -87,6 +87,15 @@ $messages['hu'] = array(
 	'protectsection_forbidden'  => 'Megtagadva',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'protectsection_add_remove' => 'អ្នកបានព្យាយាមបន្ថែមឬលុបចោលផ្នែកដែលត្រូវបានគេការពារ',
+	'protectsection_modify'     => 'អ្នកបាន​ព្យាយាម​កែប្រែ​អត្ថបទដែលត្រូវបានគេការពារ',
+	'protectsection_forbidden'  => 'ត្រូវបានហាមឃាត់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

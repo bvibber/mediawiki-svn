@@ -421,6 +421,13 @@ $messages['te'] = array(
 	'call-save-failed'  => '<big>[[$1]]</big> అనే పేజీ ఈసరికే ఉన్నందువల్ల ఈ క్రింది పాఠ్యాన్ని అందులో భద్రపరచలేకపోయాం.',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'call' => 'Виклик',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

@@ -209,6 +209,15 @@ $messages['stq'] = array(
 	'msfunc_div_zero' => 'Division truch Nul',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'msfunc_nan'      => 'Resultatsvärdena är inte ett tal',
+	'msfunc_inf'      => 'Resultatsvärdena är oändliga',
+	'msfunc_div_zero' => 'Delat på noll',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

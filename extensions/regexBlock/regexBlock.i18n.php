@@ -369,17 +369,22 @@ $messages['is'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'regexblock-unblock-log'       => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ លែងរាំងខ្ទប់។",
-	'regexblock-form-username'     => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ ៖',
-	'regexblock-form-reason'       => 'មូលហេតុ៖',
-	'regexblock-block-log'         => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
-	'regexblock-stats-username'    => 'សំរាប់ $1',
-	'regexblock-stats-logging'     => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
-	'regexblock-currently-blocked' => 'អាស័យដ្ឋាន ដែលបានត្រូវរាំងខ្ទប់ បច្ចុប្បន្ន ៖',
-	'regexblock-view-go'           => 'ទៅ',
-	'regexblock-view-reason'       => 'មូលហេតុ៖ $1',
+	'regexblock-unblock-log'        => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ លែងរាំងខ្ទប់។",
+	'regexblock-form-username'      => 'អាសយដ្ឋានIP ឬឈ្មោះអ្នកប្រើប្រាស់៖',
+	'regexblock-form-reason'        => 'មូលហេតុ៖',
+	'regexblock-block-log'          => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
+	'regexblock-block-success'      => 'រាំងខ្ទប់ដោយជោគជ័យ',
+	'regexblock-already-blocked'    => '$1ត្រូវបានហាមឃាត់រួចហើយ។',
+	'regexblock-stats-username'     => 'សំរាប់ $1',
+	'regexblock-stats-logging'      => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
+	'regexblock-currently-blocked'  => 'អាស័យដ្ឋាន ដែលបានត្រូវរាំងខ្ទប់ បច្ចុប្បន្ន ៖',
+	'regexblock-view-all'           => 'ទាំងអស់',
+	'regexblock-view-go'            => 'ទៅ',
+	'regexblock-view-reason'        => 'មូលហេតុ៖ $1',
+	'regexblock-view-block-unblock' => 'ឈប់ហាមឃាត់',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -99,6 +99,13 @@ $messages['lb'] = array(
 	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'newusermessage-desc' => 'Föögt en [[MediaWiki:NewUserMessage|Naricht]] op de Diskuschoonssiet vun nee opstellte Brukers to',
+);
+
 /* Dutch (Nederlands)
  * @author Siebrand
  */

@@ -130,9 +130,10 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'selectcategory-title' => 'ជ្រើសយក ចំណាត់ក្រុម',
+	'selectcategory-title' => 'ជ្រើសយកចំណាត់ថ្នាក់ក្រុម',
 	'selectcategory-desc'  => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
 );
 

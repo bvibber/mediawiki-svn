@@ -61,10 +61,12 @@ $messages['hsb'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author Chhorran
  */
 $messages['km'] = array(
-	'signaturelogpage' => 'កំណត់ហេតុ នៃ ហត្ថលេខា',
+	'signaturelogpage'  => 'កំណត់ហេតុ នៃ ហត្ថលេខា',
+	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

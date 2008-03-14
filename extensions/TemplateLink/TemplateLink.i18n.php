@@ -88,9 +88,10 @@ $messages['hsb'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'templatelink' => 'តំណភ្ជាប់គំរូខ្នាត',
+	'templatelink' => 'តំណភ្ជាប់ទំព័រគំរូ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

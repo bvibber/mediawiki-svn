@@ -159,10 +159,13 @@ $messages['cs'] = array(
  * @author Morten
  */
 $messages['da'] = array(
-	'sitematrix'          => 'Alle Wikimedias wikier',
-	'sitematrix-language' => 'Sprog',
-	'sitematrix-project'  => 'Projektnavn, interprojektlink og interwikilink',
-	'sitematrix-others'   => 'Andre projekter under Wikimedia',
+	'sitematrix'           => 'Alle Wikimedias wikier',
+	'sitematrix-desc'      => 'Viser en [[Special:SiteMatrix|liste med alle Wikimedias wikier]]',
+	'sitematrix-language'  => 'Sprog',
+	'sitematrix-project'   => 'Projektnavn, interprojektlink og interwikilink',
+	'sitematrix-others'    => 'Andre projekter under Wikimedia',
+	'sitematrix-total'     => "'''I alt $1 wikier'''",
+	'sitematrix-sitetotal' => 'I alt',
 );
 
 /** German (Deutsch)
@@ -607,9 +610,13 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'sitematrix'          => 'List vun de Wikimedia-Wikis',
-	'sitematrix-language' => 'Spraak',
-	'sitematrix-others'   => 'Annere Projekten vun Wikimedia',
+	'sitematrix'           => 'List vun de Wikimedia-Wikis',
+	'sitematrix-desc'      => 'Wiest en [[{{ns:Special}}:SiteMatrix|List vun all Wikimedia-Wikis]]',
+	'sitematrix-language'  => 'Spraak',
+	'sitematrix-project'   => 'Naam vun dat Projekt, Interprojekt-Lenk un Interwiki-Lenk',
+	'sitematrix-others'    => 'Annere Projekten vun Wikimedia',
+	'sitematrix-total'     => "'''Alltohoop: $1'''",
+	'sitematrix-sitetotal' => 'Alltohoop',
 );
 
 /** Dutch (Nederlands)

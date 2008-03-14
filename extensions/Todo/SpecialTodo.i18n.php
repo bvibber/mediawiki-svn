@@ -329,10 +329,18 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
-	'todo-form-submit' => 'Wyślij zapytanie',
+	'todo-add-queue'    => 'Dodaj kolejkę…',
+	'todo-move-queue'   => 'Przesuń do kolejki…',
+	'todo-list-for'     => 'Lista "do zrobienia" dla',
+	'todo-list-change'  => 'Zmień',
+	'todo-list-cancel'  => 'Anuluj',
+	'todo-new-item'     => 'Nowa pozycja',
+	'todo-form-details' => 'Szczegóły:',
+	'todo-form-submit'  => 'Wyślij zapytanie',
 );
 
 /** Pashto (پښتو)

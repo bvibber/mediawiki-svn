@@ -126,6 +126,20 @@ $messages['cs'] = array(
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
 
+/** Danish (Dansk)
+ * @author Morten
+ */
+$messages['da'] = array(
+	'linksearch'       => 'Søg i weblinks',
+	'linksearch-desc'  => '[[Special:Linksearch|Find sider med eksterne links]] der følger bestemte mønstre',
+	'linksearch-pat'   => 'Søg efter links til:',
+	'linksearch-ns'    => 'Navnerum:',
+	'linksearch-ok'    => 'Søg',
+	'linksearch-text'  => 'Wildcards som "*.wikipedia.org" kan benyttes.<br />Understøttede protokoller: <tt>$1</tt>',
+	'linksearch-line'  => '$2 linker til $1',
+	'linksearch-error' => 'Wildcards må kun benyttes i starten af hostnavnet.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -266,6 +280,20 @@ $messages['gl'] = array(
 
 $messages['grc'] = array(
 	'linksearch-ok'    => 'Ζητεῖν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author 80686
+ */
+$messages['gsw'] = array(
+	'linksearch'       => 'Suech Webgleicher',
+	'linksearch-desc'  => '[[Special:Linksearch|Findet Sytene mit externe Gleicher]] wo me vorgäne Suechmuschter entschpräche',
+	'linksearch-pat'   => 'Suechmuschter:',
+	'linksearch-ns'    => 'Namensruum:',
+	'linksearch-ok'    => 'Sueche',
+	'linksearch-text'  => 'S\' chönne Platzhalter wie "*.wikipedia.org" benutzt werre.<br/>Unterschtützti Protokoll: <tt>$1</tt>',
+	'linksearch-line'  => '$1 isch vo $2 verknüpft',
+	'linksearch-error' => 'Platzhalter chönne numme am Aafang verwändet werre.',
 );
 
 /** Gujarati (ગુજરાતી) */
@@ -410,7 +438,7 @@ $messages['kk-latn'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'linksearch'      => 'ស្វែងរក តំណភ្ជាប់ អិនរើណែត',
+	'linksearch'      => 'ស្វែងរកតំណភ្ជាប់វិប',
 	'linksearch-desc' => '[[Special:Linksearch|រកមើលទំព័រ មានតំណភ្ជាប់ ខាងក្រៅ]] ឆបនឹង គំរូបានសំដៅ',
 	'linksearch-pat'  => 'ស្វែងរកគំរូ៖',
 	'linksearch-ns'   => 'លំហឈ្មោះ៖',
@@ -464,11 +492,18 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'linksearch-ns' => 'नामविश्व',
-	'linksearch-ok' => 'शोध',
+	'linksearch'       => 'आंतरजाल दुवे शोधा',
+	'linksearch-desc'  => 'दिलेल्या मजकूराशी जुळणारी [[Special:Linksearch|बाह्यदुवे असणारी पाने शोधा]]',
+	'linksearch-pat'   => 'शोधण्याचा मजकूर:',
+	'linksearch-ns'    => 'नामविश्व',
+	'linksearch-ok'    => 'शोध',
+	'linksearch-text'  => '"*.wikipedia.org" सारखी वाईल्डकार्ड्स वापरायला परवानगी आहे.<br />पुढील प्रोटोकॉल्समध्ये चालेल: <tt>$1</tt>',
+	'linksearch-line'  => '$2 मधून $1 जोडलेले आहे',
+	'linksearch-error' => 'वाईल्डकार्ड्स होस्ट नावाच्या फक्त सुरवातीलाच येऊ शकतात.',
 );
 
 $messages['nan'] = array(

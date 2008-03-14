@@ -857,13 +857,15 @@ nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'lucene-desc'           => 'អន្តរមុខ សំរាប់ ឧបករស្វែងរក Apache Lucene',
+	'lucene-desc'           => 'អន្តរមុខ​សំរាប់​ឧបករណ៍ស្វែងរក Apache Lucene',
 	'searchnumber'          => '<strong>លទ្ធផល ពី $1 ដល់ $2 នៃ $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>មុន</span>",
 	'searchnext'            => "<span style='font-size: small'>បន្ទាប់</span> &#x00BB;",
+	'lucene-searchscore'    => 'កំរិតទាក់ទិន៖ $1%',
 	'lucene-resultsize'     => '$1 ($2 ពាក្យ)',
 	'searchdidyoumean'      => 'អ្នក គិត ដល់ ៖ "<a href="$1">$2</a>" ឬ?',
 	'lucenepowersearchtext' => 'ស្វែងរកក្នុងលំហឈ្មោះ ៖
@@ -871,12 +873,12 @@ $messages['km'] = array(
 $1
 
 ស្វែងរក $3 $9 $10',
-	'lucenefallback'        => 'មានបញ្ហា ជាមួយ ការស្វែងរក វិគី។ វា​អាចជា បណ្តោះអាសន្ន, ព្យាយាមឡើងវិញ ក្នុង មួយសន្ទុះ ទៀត, 
+	'lucenefallback'        => 'មានបញ្ហាជាមួយការស្វែងរកវិគី។ វា​អាចជាបញ្ហាបណ្តោះអាសន្ន។ ព្យាយាមឡើងវិញក្នុងមួយសន្ទុះទៀត 
 
-ឬ អ្នកអាចស្វែងរក វិគី តាម សេវាស្វែងរក ខាងក្រៅ ៖',
+ឬ អ្នកអាចស្វែងរកវិគីតាមសេវាស្វែងរកខាងក្រៅ ៖',
 	'searchexactcase'       => 'ស្វែងរក (គិត អក្សរធំ/អក្សតូច)',
 	'searchall'             => 'ទាំងអស់',
-	'searchincategory'      => 'មិនមានចំណាត់ក្រុម',
+	'searchincategory'      => 'មិនមានចំណាត់ថ្នាក់ក្រុម',
 );
 
 $messages['la'] = array(
@@ -986,10 +988,30 @@ $messages['lv'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'searchall' => 'सर्व',
+	'lucene-desc'           => 'अपाचे ल्यूसिन शोधयंत्रासाठीचा इंटरफेस',
+	'searchnumber'          => '<strong>$3 पैकी $1-$2 निकाल</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>पूर्वीचे</span>",
+	'searchnext'            => "<span style='font-size: small'>नंतरचे</span> &#x00BB;",
+	'lucene-searchscore'    => 'जुळणी: $1%',
+	'lucene-resultsize'     => '$1 ($2 शब्द)',
+	'searchdidyoumean'      => '"<a href="$1">$2</a>" असे तुमचे म्हणणे आहे का?',
+	'searchnoresults'       => 'माफ करा, पण तुम्ही दिलेल्या शोधशब्दांना १००% जुळणारे निकाल नाहीत.',
+	'searchnearmatches'     => '<b>खालील पानांची शीर्षके ही तुम्ही दिलेल्या शोधशब्दांशी मिळतीजुळती आहेत:</b>',
+	'lucenepowersearchtext' => 'नामविश्वांमध्ये शोधा:
+
+$1
+
+$3 $9 $10 साठी शोधा',
+	'lucenefallback'        => 'या विकीच्या शोधामध्ये त्रुटी आढळलेली आहे.
+ही त्रुटी थोड्यावेळाकरता आलेली असण्याची शक्यता आहे; कृपया थोडे थांबून पुन्हा प्रयत्न करा,
+किंवा तुम्ही बाह्य शोधयंत्र वापरु शकता:',
+	'searchexactcase'       => 'अगदी सारखी लिपी (case) शोध',
+	'searchall'             => 'सर्व',
+	'searchincategory'      => 'या वर्गात',
 );
 
 /** Erzya (эрзянь кель)
@@ -1539,7 +1561,7 @@ $messages['vi'] = array(
 	'searchprev'            => '« <span style="font-size: small;">Trước</span>',
 	'searchnext'            => "<span style='font-size: small'>Tiếp</span> &#x00BB;",
 	'lucene-searchscore'    => 'Độ phù hợp: $1%',
-	'lucene-resultsize'     => '$1 ($2 chữ)',
+	'lucene-resultsize'     => '$1 ($2 từ)',
 	'searchdidyoumean'      => 'Bạn có muốn “<a href="$1">$2</a>” không?',
 	'searchnoresults'       => 'Không tìm thấy trang nào trùng với truy vấn của bạn.',
 	'searchnearmatches'     => '<b>Các trang ở dưới có tên giống truy vấn của bạn:</b>',

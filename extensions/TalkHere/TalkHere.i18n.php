@@ -255,6 +255,7 @@ Bul mändemeler mağlumatına torap meñgerwşilerdiñ jawapkerşiligi bolmawı 
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'talkhere-foottext'    => 'សារខាងលើ អាចបានត្រូវដាក់ ដោយ អ្នកចូលទស្សនា។
@@ -262,10 +263,10 @@ $messages['km'] = array(
 អ្នកថែទាំសៃថ៍ អាចមិនទទួលខុសត្រូវ ចំពោះខ្លឹមសារ នៃ វិចារបែបនោះ។',
 	'talkhere-talkpage'    => 'ទំព័រពិភាក្សា',
 	'talkhere-notalk'      => "''(មិនទាន់មាន វិចារ)''",
-	'talkhere-addcomment'  => 'បន្ថែម វិចារ',
+	'talkhere-addcomment'  => 'ផ្តល់យោបល់បន្ថែម',
 	'talkhere-beforeinput' => 'អ្នកអាចបន្ថែម វិចារ ខាងក្រោម',
 	'talkhere-loading'     => 'កំពុងផ្ទុក ឧបករកែប្រែ...',
-	'talkhere-collapse'    => 'បិទបាំង ឧបករកែប្រែ',
+	'talkhere-collapse'    => 'លាក់ឧបករណ៍កែប្រែ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

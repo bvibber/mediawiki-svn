@@ -457,15 +457,21 @@ $messages['ja'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
 	'changeauthor-pagenameform-go'      => 'ទៅ',
 	'changeauthor-comment'              => 'យោបល់៖',
-	'changeauthor-changeauthors-multi'  => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
+	'changeauthor-changeauthors-multi'  => 'ផ្លាស់ប្តូរអ្នកនិពន្ធ',
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
+	'changeauthor-invalid-username'     => 'ឈ្មោះ​អ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព។',
 	'changeauthor-nosuchuser'           => 'មិនមានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',
+	'changeauthor-nosuchtitle'          => 'គ្មានទំព័រ​ដែលមាន​ឈ្មោះ "$1" ទេ។',
+	'changeauthor-weirderror'           => 'បញ្ហា​ដ៏ចំលែកមួយ​បានកើតឡើង។ សូម​ព្យាយាម​ស្នើសុំ​ម្ដងទៀត។ បើសិនជា​នៅតែមាន​បញ្ហា នោះមូលដ្ឋានទិន្នន័យ​ប្រហែលជាខូចហើយ។',
+	'changeauthor-success'              => 'ការ​ស្នើសុំរបស់​អ្នក​បានឆ្លងកាត់​ដោយជោគជ័យ។',
+	'changeauthor-logpagename'          => 'កំណត់ហេតុនៃការផ្លាស់ប្តូរអ្នកនិពន្ធ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -590,11 +596,17 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Wpedzich
  * @author Equadus
  * @author McMonster
  */
 $messages['pl'] = array(
+	'changeauthor'                      => 'Zmień autora wersji',
+	'changeauthor-desc'                 => 'Pozwala na zmianę autora wersji',
+	'changeauthor-title'                => 'Zmień autora wersji',
+	'changeauthor-pagenameform-go'      => 'Idź',
 	'changeauthor-comment'              => 'Komentarz:',
+	'changeauthor-changeauthors-multi'  => 'Zmień autora / autorów',
 	'changeauthor-changeauthors-single' => 'Zmień autora',
 	'changeauthor-invalid-username'     => 'Niepoprawna nazwa użytkownika "$1".',
 	'changeauthor-nosuchuser'           => 'Brak użytkownika "$1".',

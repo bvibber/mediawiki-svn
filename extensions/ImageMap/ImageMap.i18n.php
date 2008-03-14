@@ -472,6 +472,23 @@ $messages['lt'] = array(
 	'imagemap_description'        => 'Apie šį paveikslėlį',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'imagemap_desc'               => 'क्लायंटकडील चित्रनकाशे <tt><nowiki><imagemap></nowiki></tt> टॅग देऊन वापरता येऊ शकतात.',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: पहिल्या ओळीत चित्र देणे गरजेचे आहे',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: चुकीचे अथवा अस्तित्वात नसलेले चित्र',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 ओळीच्या शेवटी योग्य दुवा सापडलेला नाही',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 ओळीतील दुव्याचे चुकीचे शीर्षक',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1 ओळीवरील आकारासाठी पुरेसे कोऑर्डिनेट्स नाहीत',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1 ओळीमध्ये चुकीचा आकार, प्रत्येक ओळ ही: default, rect, circle अथवा poly पासून सुरु व्हायला पाहिजे.',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: कमीतकमी एक आकार दिला पाहिजे',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;:  $1 ओळीवर चुकीचे कोऑर्डिनेट्स, संख्या हवी',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: चुकीची माहिती, यापैकी एक असायला हवी: <tt>$1</tt>',
+	'imagemap_description'        => 'या चित्राबद्दल माहिती',
+);
+
 $messages['nds'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: in de eerste Reeg mutt en Bild angeven wesen',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: Bild geiht nich oder dat gifft dat gornich',

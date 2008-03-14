@@ -307,11 +307,16 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'inspectcache'        => 'Inspektera mellanlagring',
-	'inspectcache-ok'     => 'OK',
-	'inspectcache-get'    => 'Hämta',
-	'inspectcache-delete' => 'Ta bort',
-	'inspectcache-list'   => 'Lista',
+	'inspectcache'         => 'Inspektera mellanlagring',
+	'inspectcache-desc'    => 'Ett enkelt felsökningsverktyg för att inspektera innehållet i den delade cachen',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Generell cache',
+	'inspectcache-parser'  => 'Parsercache',
+	'inspectcache-message' => 'Cache av meddelanden',
+	'inspectcache-get'     => 'Hämta',
+	'inspectcache-delete'  => 'Ta bort',
+	'inspectcache-deleted' => 'Raderad cache',
+	'inspectcache-list'    => 'Lista',
 );
 
 /** Telugu (తెలుగు)

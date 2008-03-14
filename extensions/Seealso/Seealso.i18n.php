@@ -100,6 +100,13 @@ $messages['hu'] = array(
 	'seealso' => 'Lásd még',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'seealso' => 'Tengt efni',
+);
+
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author AlefZet
  */
@@ -109,9 +116,10 @@ $messages['kk-cyrl'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'seealso' => 'មើល ផងដែរ',
+	'seealso' => 'សូមមើលផងដែរ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -77,6 +77,13 @@ $messages['ja'] = array(
 	'purge' => 'キャッシュ削除',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'purge' => 'លុបបំបាត់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

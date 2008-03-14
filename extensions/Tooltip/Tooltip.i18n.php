@@ -58,6 +58,13 @@ $messages['oc'] = array(
 	'tooltip-desc' => 'Ajusta una balisa <nowiki><tooltip></nowiki> e un parsaire <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Polish (Polski)
+ * @author Matma Rex
+ */
+$messages['pl'] = array(
+	'tooltip-desc' => 'Dodaje tagi <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
