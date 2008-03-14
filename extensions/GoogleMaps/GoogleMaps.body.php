@@ -374,49 +374,42 @@ JAVASCRIPT;
 	 * @return string - the html for rendering the map
 	 **/
 	function render ( $pContent, $pArgv, &$pParser, &$pLocalParser ) {
+            $pLocalParser->mTitle = $this->mTitle;
+            $pLocalParser->mOptions = $pParser->mOptions;
+            $pLocalParser->clearState();
 
-		// Keep a count of how many <googlemap> tags were used for unique ids
-		if( !isset( $this->mGoogleMapsOnThisPage ) ) {
-			$this->mGoogleMapsOnThisPage = 1;
-		} else {
-			$this->mGoogleMapsOnThisPage++;
-		}
+            // Keep a count of how many <googlemap> tags were used for unique ids
+            if( !isset( $this->mGoogleMapsOnThisPage ) ) {
+                $this->mGoogleMapsOnThisPage = 1;
+            } else {
+                $this->mGoogleMapsOnThisPage++;
+            }
 
-		if( $this->mProcessTemplateVariables ) { // experimental, see MW bug #2257
-			foreach( array_keys( $pArgv ) as $key ) {
-				$pArgv[$key] = $pParser->replaceTemplateVariables( $pArgv[$key] );
-			}
-			$pContent = $pParser->replaceTemplateVariables( $pContent );
-		}
+            if( $this->mProcessTemplateVariables ) { // experimental, see MW bug #2257
+                foreach( array_keys( $pArgv ) as $key ) {
+                    $pArgv[$key] = $pParser->replaceTemplateVariables( $pArgv[$key] );
+                }
+                $pContent = $pParser->replaceTemplateVariables( $pContent );
+            }
 
-		// a dictionary for validating and interpreting some options.
-		$o = self::getMapSettings( $this->mTitle, $this->mMapDefaults );
+            // a dictionary for validating and interpreting some options.
+            $o = self::getMapSettings( $this->mTitle, $this->mMapDefaults );
+            $o = $this->getThisMapSettings( $o, $pArgv );
 
-		// Override the defaults with what the user specified.
-		foreach( array_keys( $o ) as $key ) {
-			if( is_numeric( $o[$key] ) && isset( $pArgv[$key] ) && is_numeric( $pArgv[$key] ) ) {
-				$o[$key] = $pArgv[$key];
-			} elseif( isset($pArgv[$key] ) && self::isOptionLegal( $key, $pArgv[$key] ) ) {
-				$o[$key] = $this->translateOption( $key, $pArgv[$key] );
-			} else { // and translate
-				$o[$key] = $this->translateOption( $key, $o[$key] );
-			}
-		}
+            $o = array_merge($o, array('number_of_maps' => $this->mGoogleMapsOnThisPage,
+                'incompatible_message' => $this->translateMessage( 'gm-incompatible-browser' ),
+                'incompatible_message_link' => $this->translateMessage( 'gm-incompatible-browser-link' )));
+            $img_exporter = new GoogleMapsImgExporter($this->mApiKey);
+            $img_exporter->addHeader($o);
+            self::renderContent($pContent, $pParser, $pLocalParser, $img_exporter, $o);
+            $img_exporter->addTrailer();
 
-		$o = array_merge($o, array('number_of_maps' => $this->mGoogleMapsOnThisPage,
-                    'incompatible_message' => $this->translateMessage( 'gm-incompatible-browser' ),
-                    'incompatible_message_link' => $this->translateMessage( 'gm-incompatible-browser-link' )));
-		$img_exporter = new GoogleMapsImgExporter($this->mApiKey);
-		$img_exporter->addHeader($o);
-		self::renderContent($pContent, $pParser, $pLocalParser, $img_exporter, $o);
-		$img_exporter->addTrailer();
-
-		$js_exporter = new GoogleMapsJsExporter($this->mLanguage, $this->mProxyKey, $this->mEnablePaths);
-		$js_exporter->addHeader($o, $img_exporter->render());
-		self::renderContent($pContent, $pParser, $pLocalParser, $js_exporter, $o);
-		$js_exporter->addTrailer($o);
-		return $js_exporter->render();
-	}
+            $js_exporter = new GoogleMapsJsExporter($this->mLanguage, $this->mProxyKey, $this->mEnablePaths);
+            $js_exporter->addHeader($o, $img_exporter->render());
+            self::renderContent($pContent, $pParser, $pLocalParser, $js_exporter, $o);
+            $js_exporter->addTrailer($o);
+            return $js_exporter->render();
+        }
 
 	function renderKmlLink($pContent, $pArgv) {
 		global $wgTitle;
@@ -580,9 +573,9 @@ JAVASCRIPT;
             }
         }
 
-        static function parseWikiText(&$pParser, &$pLocalParser, $pText, $pTitle, $pOptions) {
-            if (method_exists($pParser, 'recursiveTagParse')) {
-                $html = $pParser->recursiveTagParse($pText);
+        static function parseWikiText(&$pParser, &$pLocalParser, $pText, $pTitle, &$pOptions) {
+            if (method_exists($pLocalParser, 'recursiveTagParse')) {
+                $html = $pLocalParser->recursiveTagParse($pText);
             } else {
                 $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
                 $html = $parsed->getText();
@@ -757,6 +750,21 @@ JAVASCRIPT;
 		}
 		return $o;
 	}
+
+        function getThisMapSettings($o, $pArgv) {
+            // Override the defaults with what the user specified.
+            foreach( array_keys( $o ) as $key ) {
+                if( is_numeric( $o[$key] ) && isset( $pArgv[$key] ) && is_numeric( $pArgv[$key] ) ) {
+                    $o[$key] = $pArgv[$key];
+                } elseif( isset($pArgv[$key] ) && self::isOptionLegal( $key, $pArgv[$key] ) ) {
+                    $o[$key] = $this->translateOption( $key, $pArgv[$key] );
+                } else { // and translate
+                    $o[$key] = $this->translateOption( $key, $o[$key] );
+                }
+            }
+            return $o;
+        }
+
 
 	/**
 	 * Check to see if the value of the specified setting is a valid value.

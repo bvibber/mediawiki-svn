@@ -175,8 +175,7 @@ function wfGoogleMaps_Install() {
 	}
 
 	// Set up the special page
-	//$wgSpecialPages['GoogleMapsKML'] = array('GoogleMapsKML', 'GoogleMapsKML');
-	$wgSpecialPages['GoogleMapsKML'] = new SpecialPage('GoogleMapsKML');
+	$wgSpecialPages['GoogleMapsKML'] = array('GoogleMapsKML', 'GoogleMapsKML');
 }
 
 // add the install extension function

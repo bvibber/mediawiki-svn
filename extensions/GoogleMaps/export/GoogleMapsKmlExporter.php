@@ -40,6 +40,7 @@ class GoogleMapsKmlExporter extends GoogleMapsExporter {
 		$this->mOutput .= "<Polygon><tessellate>1</tessellate>".
 		"<altitudeMode>clampToGround</altitudeMode>\n";
 		$this->mOutput .= "<outerBoundaryIs><LinearRing>";
+		$pPolyline[] = $pPolyline[0];
 		$this->addCoordinates($pPolyline);
 		$this->mOutput .= "</LinearRing></outerBoundaryIs></Polygon>\n";
 		$this->mOutput .= "</Placemark>\n";
@@ -64,14 +65,13 @@ class GoogleMapsKmlExporter extends GoogleMapsExporter {
 
 	function addCoordinates($pPolyline) {
 		$this->mOutput .= "<coordinates>\n";
-		$pPolyline[] = $pPolyline[0];
 		foreach ($pPolyline as $p) {
 			$this->mOutput .= "{$p['lon']}, {$p['lat']}\n";
 		}
 		$this->mOutput .= "</coordinates>\n";
 	}
 
-	function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pIsLine ) {
+	function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pMaxContent, $pIsLine ) {
 		$this->mMarkerCount++;
 		$this->mOutput .= "<Placemark>\n<name>";
 		$this->mOutput .= $pTitle ? $pTitle : "point {$this->mMarkerCount}";
