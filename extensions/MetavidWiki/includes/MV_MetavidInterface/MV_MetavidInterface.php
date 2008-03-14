@@ -19,6 +19,8 @@
  	var $context=null;
  	var $page_title='';
  	var $page_header=''; 	
+ 	//list the properties we are intersted and there default values: 
+ 	var $smwProperties = array('playback_resolution'=>null);
  	function __construct($contextType, & $contextArticle=null ){
  		global $mv_default_view;
  		$this->context = $contextType;
@@ -81,6 +83,8 @@
  			 	 	
  		//set default time range if null time range request
  		$this->article->mvTitle->setStartEndIfEmpty();
+ 		//grab relevent article semantic properties (so far playback_resolution) for user overiting playback res
+ 		$this->grabSemanticProp();
  		
 		//set up the interface objects:
 		foreach(array('MV_VideoPlayer', 'MV_Overlay','MV_Tools') as $cp_name){
@@ -113,11 +117,26 @@
 				'<img style="width:28px;height:28px;" src="'.$mvgScriptPath . '/skins/images/Feed-icon_cmml_28x28.png">',
 				'feed_format=roe&stream_name='.$this->article->mvTitle->getStreamName().'&t='.$this->article->mvTitle->getTimeRequest(),
 				'','','title="'.wfMsg('mv_export_cmml').'"');
-		$this->page_header.='</span>';
-
-		
+		$this->page_header.='</span>';		
 		$this->page_title = $this->article->mvTitle->getStreamNameText().' '.$this->article->mvTitle->getTimeDesc();
- 	} 	
+ 	}
+ 	//grab semantic properties if availiable:  	
+ 	//@@todo we need to think this through a bit
+ 	function grabSemanticProp(){ 		
+ 		if(SMW_VERSION){
+ 			//global $smwgIP;
+ 			$smwStore =& smwfGetStore(); 			
+ 			foreach($this->smwProperties as $propKey=>$val){
+ 				$propTitle = Title::newFromText($propKey, SMW_NS_PROPERTY);
+ 				$smwProps = $smwStore->getPropertyValues($this->article->mTitle,$propTitle );
+ 				//just a temp hack .. we need to think about this abstraction a bit... 	
+ 				if(count($smwProps)!=0){			
+ 					$v = current($smwProps); 					
+	 				$this->smwProperties[$propKey]=$v->getXSDValue(); 				
+ 				}
+ 			} 		 			
+ 		}
+ 	}
  	/*
  	 * renders the full page  to the wgOut object
  	 */

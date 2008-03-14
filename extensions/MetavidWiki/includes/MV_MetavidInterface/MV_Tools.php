@@ -226,6 +226,20 @@
 		$out.=' for '. $mvTitle->getTitleDesc();
 		return $out;
 	}
-	
+	function getStyleOverride(){
+		if($this->mv_interface->smwProperties['playback_resolution']!=null){			
+			@list($width,$height) = explode('x', $this->mv_interface->smwProperties['playback_resolution']);
+			if(isset($width) && isset($height)){
+				if(is_numeric($width) && is_numeric($height)){
+					//offset in refrence to mv_custom.css 
+					$width+=2;
+					$height+=30;
+					$top = $height+30+12;
+					return "style=\"top:{$top}px;width:{$width}px;\"";
+				}	
+			}
+		}
+		return '';
+	}
  }
 ?>

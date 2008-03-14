@@ -803,6 +803,21 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			return  php2jsObj(array('status'=>'ok'));
 		}
 	}
+	function getStyleOverride(){
+		if($this->mv_interface->smwProperties['playback_resolution']!=null){			
+			@list($width,$height) = explode('x', $this->mv_interface->smwProperties['playback_resolution']);
+			if(isset($width) && isset($height)){
+				if(is_numeric($width) && is_numeric($height)){
+					//offset in refrence to mv_custom.css 
+					$width+=2;
+					$height+=30;
+					$left = $width+10+30;
+					return "style=\"left:{$left}px;\"";
+				}	
+			}
+		}
+		return '';
+	}
  }
 //base class mvd_page
 //@@todo re-factor some functions that run on (mvd_page) to methods a MV_MVD obj

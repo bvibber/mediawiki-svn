@@ -1,6 +1,6 @@
 /*forced 1024x786 fixed layout for IE6 */
 #MV_Overlay{
-	position:absolute;left:365px;top:30px;width:420px;height:550px;margin:4px;
+	position:absolute;left:365px;top:30px;width:470px;height:550px;margin:4px;
 }
 #mv_fd_mvd_cont{	
 	position:absolute;top:30px;left:30px;height:94%;width:416px;overflow-x:hidden;overflow-y:auto; 

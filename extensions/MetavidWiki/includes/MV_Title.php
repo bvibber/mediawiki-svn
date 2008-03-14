@@ -276,7 +276,7 @@
 			$size=$mvDefaultVideoPlaybackRes;
 		}
 		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';
-		list($vWidth, $vHeight) = explode('x', $size);
+		list($vWidth, $vHeight) = explode('x', $size);		
 		$stream_web_url = $this->getWebStreamURL();
 		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){

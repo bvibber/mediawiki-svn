@@ -92,10 +92,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	function render_menu(){
 		return get_class($this) . ' component menu';
 	}
+	function getStyleOverride(){
+		return '';
+	} 
  	function render_full(){
  		global $wgOut;
- 		//"<div >" .
- 		$wgOut->addHTML("<fieldset id=\"".get_class($this)."\" >\n" .
+ 		//"<div >" . 		 		
+ 		$wgOut->addHTML("<fieldset ".$this->getStyleOverride()." id=\"".get_class($this)."\" >\n" .
  					"<legend id=\"mv_leg_".get_class($this)."\">".$this->render_menu()."</legend>\n"); 				
  		//do the implemented html 
  		$this->getHTML(); 

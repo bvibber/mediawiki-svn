@@ -18,6 +18,7 @@
 	float:left;
 	margin:4px;
 	width:90%;
+	min-width: 350px;
 }
 .mv_video_time_hr{
  	position:absolute;
@@ -160,7 +161,7 @@ div.autocomplete ul li {
 	position:absolute;width:322px;top:30px;height:270px;left:10px;margin:4px;
 }
 #MV_Overlay{
-	position:absolute;left:365px;top:30px;right:15px;bottom:10px;margin:4px;
+	position:absolute;left:365px;top:30px;right:15px;bottom:10px;margin:4px;min-width:470px;
 }
 #mv_fd_mvd_cont{
 	position:absolute;top:0px;bottom:30px;right:12px;overflow-x:hidden;overflow-y:auto; 
