@@ -214,7 +214,14 @@
 	//@@todo force_server is a weird hack ... @@todo remove and update other code locations 
 	function getStreamImageURL($size=null, $req_time=null, $foce_server=''){		
 		global $mvDefaultVideoPlaybackRes;
-		if($size==null)$size = $mvDefaultVideoPlaybackRes;
+		if($size==null){
+			$size = $mvDefaultVideoPlaybackRes;
+		}else{
+			//if a non-stadard size just use null for size
+			list($sx, $sy) = explode('x',$size);
+			list($dx, $dy) = MV_StreamImage::getSizeType($size);
+			if($sx!=$dx && $sy!=$dy)$size=null;	
+		}	
 		if($req_time==null){
 			$req_time = $this->getStartTime();
 			if(!$req_time)$req_time='0:00:00';

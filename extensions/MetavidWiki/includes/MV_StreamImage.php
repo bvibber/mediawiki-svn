@@ -47,16 +47,17 @@ class MV_StreamImage{
 	function getStreamImageURL($stream_id, $req_time=null, $req_size=null, $directLink=false){
 		global $wgScript,  $mvWebImgLoc, $mvLocalImgLoc,$mvExternalImages;
 		//check global external image prefrence: 
+		$req_size_out = ($req_size!=null)?'&size='.$req_size :'';
 		if($mvExternalImages){
 			global $mvExternalImgServerPath;
 			//try to get the stream_name for external requests: 
-			$sn = MV_Stream::getStreamNameFromId($stream_id);
-			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_name='.$sn.'&t='.$req_time.'&size='.$req_size;
+			$sn = MV_Stream::getStreamNameFromId($stream_id);			
+			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_name='.$sn.'&t='.$req_time.$req_size_out;
 		}
 		
 		//by default return a non-direct link so that javascript can modify the url to get new images
 		if(!$directLink){
-			return $wgScript.'?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.'&size='.$req_size;
+			return $wgScript.'?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.$req_size_out;
 		}
 		$req_time = MV_StreamImage::procRequestTime($stream_id, $req_time);
 		if($req_time==false){			
@@ -70,8 +71,7 @@ class MV_StreamImage{
 			}else{				
 				list($im_width, $im_height, $ext) = MV_StreamImage::getSizeType($req_size);
 				$s='_'.$im_width.'x'.$im_height;				
-			}
-			
+			}			
 			return $mvWebImgLoc .'/'. MV_StreamImage::getRelativeImagePath($stream_id) .
 				'/'.$req_time.$s.'.'.$ext;
 		}else{	
@@ -79,8 +79,9 @@ class MV_StreamImage{
 			return MV_StreamImage::getMissingImageURL($req_size);
 		}	
 	}
-	function getMissingImageURL($req_size){
-		global $mvWebImgLoc;
+	function getMissingImageURL($req_size=null){
+		global $mvWebImgLoc,$mvDefaultVideoPlaybackRes;
+		if($req_size==null)$req_size=$mvDefaultVideoPlaybackRes;
 		list($im_width, $im_height, $ext) = MV_StreamImage::getSizeType($req_size);
 		$s='';
 		if($req_size)$s='_'.$im_width.'x'.$im_height;	

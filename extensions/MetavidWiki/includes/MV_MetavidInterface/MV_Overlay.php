@@ -122,7 +122,13 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		global $wgOut;
 		//print_r($mvd_page);
 		//"<div id=\"mv_ctail_{$mvd_page->id}\" style=\"position:relative\">"
-		$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
+		if(isset($this->mv_interface->smwProperties['playback_resolution'])){
+			//for now just put in a hack that forces no size adjustment	
+			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, null, true); 
+		}else{
+			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
+		}
+		
 		$wgOut->addHTML("<fieldset class=\"mv_fd_mvd\" style=\"background:#".$this->getMvdBgColor($mvd_page)."\" " .
 					"id=\"mv_fd_mvd_{$mvd_page->id}\" name=\"{$mvd_page->wiki_title}\" " .
 					"image_url=\"{$img_url}\" >" );
