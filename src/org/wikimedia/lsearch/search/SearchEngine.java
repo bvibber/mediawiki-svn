@@ -3,7 +3,8 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.BitSet;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -26,7 +27,6 @@ import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
-import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
@@ -59,6 +59,7 @@ public class SearchEngine {
 	static org.apache.log4j.Logger log = Logger.getLogger(SearchEngine.class);
 
 	protected final int MAXLINES = 1000;
+	protected final int MAXPREFIX = 100;
 	protected final int MAXOFFSET = 10000;
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
@@ -127,9 +128,9 @@ public class SearchEngine {
 		} else if (what.equals("titlematch")) {
 				// TODO: return searchTitles(searchterm);
 		} else if (what.equals("prefix")){
-			int limit = MAXLINES;
+			int limit = MAXPREFIX;
 			if (query.containsKey("limit"))
-				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXPREFIX);
 			SearchResults res = prefixSearch(iid, searchterm, limit);
 			if(query.containsKey("format")){
 				String format = (String)query.get("format");
@@ -260,6 +261,7 @@ public class SearchEngine {
 					res.addResult(rs);
 					limitCount++;
 				}
+				res.setNumHits(limitCount);
 				logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
 				return res;
 			}
@@ -273,7 +275,7 @@ public class SearchEngine {
 						ResultSet rs = new ResultSet(reader.document(td1.doc()).get("key"));
 						rs.setNamespaceTextual(capitalizeFirst(namespace));
 						res.addResult(rs);
-						//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+						logRequest(pre,"prefix",searchterm,null,1,start,searcher);
 						return res;
 					}
 				}

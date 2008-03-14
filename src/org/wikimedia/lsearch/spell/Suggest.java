@@ -1273,7 +1273,10 @@ public class Suggest {
 		if(m.word.length() == 2 && r.word.length() == 2)
 			return true;
 		else if((r.distMetaphone < m.meta1.length() || r.distMetaphone2 < m.meta2.length() 
-				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1)))) 
+				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1))))
+				&& (r.distMetaphone<=3 || r.distMetaphone2<=3)
+				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) 
+				&& Math.abs(m.word.length()-r.word.length()) <= 3
 				&& r.dist<m.word.length() && r.dist<r.word.length())
 			return true;
 		else

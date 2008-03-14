@@ -48,13 +48,14 @@ public class SuggestBuilder {
 		long start = System.currentTimeMillis();
 		IndexId iid = IndexId.get(dbname);
 		IndexId spell = iid.getSpell();
+		IndexId pre = spell.getPrecursor();
 		if(spell == null){
 			log.fatal("Index "+iid+" doesn't have a spell-check index assigned. Enable them in global configuration.");
 			return;
 		}
 		
 		if(inputfile != null){
-			log.info("Rebuilding the temporary index for words");
+			log.info("Rebuilding precursor index...");
 			// open			
 			InputStream input = null;
 			try {
@@ -66,7 +67,7 @@ public class SuggestBuilder {
 			
 			// make fresh clean index		
 			try {
-				CleanIndexImporter importer = new CleanIndexImporter(spell,langCode);
+				CleanIndexImporter importer = new CleanIndexImporter(pre,langCode);
 				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(importer, 1000));
 				reader.readDump();
 				importer.closeIndex();
@@ -83,7 +84,7 @@ public class SuggestBuilder {
 		// make phrase index
 
 		SpellCheckIndexer tInx = new SpellCheckIndexer(spell);
-		tInx.createFromTempIndex();		
+		tInx.createFromPrecursor();		
 		
 		long end = System.currentTimeMillis();
 

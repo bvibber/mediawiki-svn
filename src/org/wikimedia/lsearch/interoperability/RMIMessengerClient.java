@@ -72,7 +72,7 @@ public class RMIMessengerClient {
 	public void notifyIndexUpdated(IndexId iid, Collection<String> hosts){
 		if(cache == null)
 			cache = SearcherCache.getInstance();
-		if(iid.isSingle())
+		if(iid.isSingle() || iid.isLinks())
 			return; // no need to notify if this is not split index
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		Set<SearchHost> deadHosts = cache.getDeadHosts();

@@ -48,7 +48,7 @@ mw-titles: (titles_by_suffix,1) (tspart1, [ mediawikiwiki|mw, metawiki|meta ])
 [Index]
 192.168.0.5 : entest, entest.mainpart, entest.restpart
 192.168.0.5 : detest, rutest, frtest
-192.168.0.2 : entest.ngram
+192.168.0.2 : entest.ngram entest.spell
 192.168.0.2 : frtest.part1, frtest.part2, frtest.part3
 192.168.0.10 : srwiki njawiki
 192.168.0.2 : hmwiki enwiktionary dewiktionary enwikisource

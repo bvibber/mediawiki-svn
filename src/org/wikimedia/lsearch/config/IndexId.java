@@ -61,8 +61,9 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES, SUBDIVIDED, TITLES_BY_SUFFIX };
-	
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, 
+		PREFIX, PREFIX_TITLES, SUBDIVIDED, TITLES_BY_SUFFIX, PRECURSOR };
+		
 	/** the index of this subdivided part */
 	protected int subpartNum;
 	/** total number of subdivided parts */
@@ -216,6 +217,8 @@ public class IndexId {
 			this.type = IndexType.SUBDIVIDED;
 		else if(type.equals("titles_by_suffix"))
 			this.type = IndexType.TITLES_BY_SUFFIX;
+		else if(type.equals("precursor"))
+			this.type = IndexType.PRECURSOR;
 		
 		// highlight index
 		String suffix = "";
@@ -223,6 +226,10 @@ public class IndexId {
 			highlight = true;
 			dbrole = dbrole.substring(0,dbrole.lastIndexOf('.'));
 			suffix = ".hl";
+		}
+		if(dbrole.endsWith(".pre")){
+			dbrole = dbrole.substring(0,dbrole.lastIndexOf('.'));
+			suffix += ".pre";
 		}
 		
 		// parts
@@ -303,17 +310,17 @@ public class IndexId {
 		}
 		
 		// for split/mainsplit the main iid is logical, it doesn't have local path
-		if(myIndex 
+		/* if(myIndex 
 				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT || this.type==IndexType.TITLES_BY_SUFFIX))
-				&& !furtherSubdivided){
+				&& !furtherSubdivided){ */
 			indexPath = localIndexPath + "index" + sep + this.dbrole;
 			importPath = localIndexPath + "import" + sep + this.dbrole;
 			snapshotPath = localIndexPath + "snapshot" + sep + this.dbrole;
-		} else{
+		/* } else{
 			indexPath = null;
 			importPath = null;
 			snapshotPath = null;
-		}
+		} */
 		
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + this.dbrole;
 		statusPath = localIndexPath + "status" + sep + this.dbrole;
@@ -324,13 +331,13 @@ public class IndexId {
 		transactionPath.put(Transaction.TEMP,transRoot+"temp");
 		tempPath = localIndexPath + "temp" + sep + this.dbrole;
 
-		if(mySearch){
+		//if(mySearch){
 			searchPath = localIndexPath + "search" + sep + this.dbrole;
 			updatePath = localIndexPath + "update" + sep + this.dbrole;
-		} else{
+		/*} else{
 			searchPath = null;
 			updatePath = null;
-		}
+		} */
 		
 	}
 	
@@ -381,6 +388,10 @@ public class IndexId {
 	/** If this is grouping titles by suffix */
 	public boolean isTitlesBySuffix(){
 		return type == IndexType.TITLES_BY_SUFFIX;
+	}
+	/** If this is a precursor index to the root index (e.g. enwiki.spell.pre for enwiki.spell) */
+	public boolean isPrecursor(){
+		return type == IndexType.PRECURSOR;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -491,22 +502,32 @@ public class IndexId {
 
 	/** Where the indexer writes the current version of index */
 	public String getIndexPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve index path for "+dbrole+", but index not indexed by this host");
 		return indexPath;
 	}
 	/** Where the searcher stores the latest snapshot of index */
 	public String getSearchPath() {
+		if(!mySearch)
+			throw new RuntimeException("Trying to retrieve search path for "+dbrole+", but index not searched by this host");
 		return searchPath;
 	}
 	/** Where the indexer places the snapshots */
 	public String getSnapshotPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve snapshot path for "+dbrole+", but index not indexed by this host");
 		return snapshotPath;
 	}
 	/** Where the searcher fetches the snapshot via rsync */
 	public String getUpdatePath() {
+		if(!mySearch)
+			throw new RuntimeException("Trying to retrieve update path for "+dbrole+", but index not searched by this host");
 		return updatePath;
 	}
 	/** Where indexes are made when built from XML importing */
 	public String getImportPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve import path for "+dbrole+", but index not indexed by this host");
 		return importPath;
 	}
 	/** Where transaction data is stored */
@@ -604,6 +625,10 @@ public class IndexId {
 	/** If this host is searching this index */
 	public boolean isMySearch() {
 		return mySearch;
+	}
+	/** For this iid to be searched at current host */
+	public void forceMySearch(){
+		mySearch = true;
 	}
 	/** Get base URL of OAI repository */
 	public String getOAIRepository() {
@@ -729,6 +754,17 @@ public class IndexId {
 	/** Get the prefix titles index iid */
 	public IndexId getPrefixTitles() {
 		return get(dbname+".prefix_titles");
+	}
+	
+	/** If this is a precursor index get the index it's precursor to, e.g. enwiki.spell for enwiki.spell.pre */
+	public IndexId getPrecursorTarget(){
+		if(!isPrecursor())
+			throw new RuntimeException("Trying to fetch precursor target for non-precursor index "+dbrole);
+		return get(dbrole.substring(0,dbrole.lastIndexOf('.')));
+	}
+	
+	public IndexId getPrecursor(){
+		return get(dbrole+".pre");
 	}
 	
 	/** Get the higlight index for this iid */

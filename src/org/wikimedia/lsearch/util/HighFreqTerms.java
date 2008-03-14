@@ -38,18 +38,24 @@ import org.wikimedia.lsearch.search.SearcherCache;
  */
 public class HighFreqTerms {
 
+	public static IndexId getIndexPart(IndexId iid){
+		IndexId targ = iid;
+		if(iid.isMainsplit())
+			targ = iid.getMainPart();
+		else if(iid.isNssplit())
+			targ = iid.getPartByNamespace(0);
+		if(targ.isSubdivided()){
+			targ = targ.getSubpart(0);
+		}				
+		return targ;
+	}
+	
 	/** 
 	 * Get terms with highest frequency from latest snapshot of iid 
 	 */
 	public static Collection<String> getHighFreqTerms(IndexId iid, String field, int numTerms) throws IOException {
 		IndexRegistry registry = IndexRegistry.getInstance(); 
-		IndexReader reader = null;
-		if(iid.isMainsplit())
-			reader = IndexReader.open(registry.getLatestSnapshot(iid.getMainPart()).getPath());
-		else if(iid.isNssplit())
-			reader = IndexReader.open(registry.getLatestSnapshot(iid.getPartByNamespace(0)).getPath());
-		else
-			reader = IndexReader.open(registry.getLatestSnapshot(iid).getPath());
+		IndexReader reader =  IndexReader.open(registry.getLatestSnapshot(getIndexPart(iid)).getPath());		
 		TermInfoQueue tiq = new TermInfoQueue(numTerms);
 		TermEnum terms = reader.terms();
 		LinkedList<String> ret = new LinkedList<String>();

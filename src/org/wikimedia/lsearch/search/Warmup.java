@@ -34,6 +34,8 @@ public class Warmup {
 	
 	/** Runs some typical queries on a local index searcher to preload caches, pages into memory, etc .. */
 	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay){
+		if(iid.isLinks() || iid.isPrecursor())
+			return; // no warmaup for these
 		log.info("Warming up index "+iid+" ...");
 		long start = System.currentTimeMillis();
 		

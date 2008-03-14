@@ -51,7 +51,7 @@ public class CleanIndexImporter implements DumpWriter {
 
 	public CleanIndexImporter(IndexId iid, String langCode) throws IOException{
 		Configuration.open(); // make sure configuration is loaded
-		this.writer = new CleanIndexWriter(iid);
+		this.writer = CleanIndexWriter.newForWrite(iid);
 		this.langCode = langCode;
 		this.links = Links.openForRead(iid,iid.getLinks().getImportPath());
 		nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);

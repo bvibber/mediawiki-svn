@@ -45,7 +45,21 @@ public class CleanIndexWriter {
 	protected Analyzer analyzer;
 	protected HashSet<String> stopWords;
 	
-	public CleanIndexWriter(IndexId iid) throws IOException{
+	/** Make a new index, and init writer on it (on importPath())*/
+	public static CleanIndexWriter newForWrite(IndexId iid) throws IOException{
+		CleanIndexWriter w = new CleanIndexWriter(iid);
+		w.openWriter(iid.getImportPath(),true);
+		w.addMetadata("stopWords",w.stopWords);
+		return w;
+	}
+	/** Opet index for modifiation (on indexPath())*/
+	public static CleanIndexWriter newForModification(IndexId iid) throws IOException{
+		CleanIndexWriter w = new CleanIndexWriter(iid);
+		w.openWriter(iid.getIndexPath(),false);
+		return w;
+	}
+	
+	private CleanIndexWriter(IndexId iid) throws IOException{
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
 		this.builder = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
@@ -58,41 +72,19 @@ public class CleanIndexWriter {
 			stopWords.add(w);			
 		log.info("Using phrase stopwords: "+stopWords);
 		builder.getBuilder().getFilters().setStopWords(stopWords);
-		String path = iid.getSpell().getTempPath();
-		writer = open(path);
-		addMetadata(writer,"stopWords",stopWords);		
+		
 	}
 	
-	protected IndexWriter open(String path) throws IOException {
-		IndexWriter writer;
-		try {
-			writer = new IndexWriter(path,null,true); // always make new index
-		} catch (IOException e) {				
-			try {
-				// try to make brand new index
-				WikiIndexModifier.makeDBPath(path); // ensure all directories are made
-				log.info("Making new index at path "+path);
-				writer = new IndexWriter(path,null,true);
-			} catch (IOException e1) {
-				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
-				throw e1;
-			}				
-		}
+	protected void openWriter(String path, boolean forWrite) throws IOException {
+		writer = WikiIndexModifier.openForWrite(path,forWrite);
 		writer.setMergeFactor(20);
 		writer.setMaxBufferedDocs(500);		
 		writer.setUseCompoundFile(true);
 		writer.setMaxFieldLength(WikiIndexModifier.MAX_FIELD_LENGTH);
-		
-		return writer;
 	}
-
-	/** Add to index used for spell-check */
-	public void addArticle(Article a){
-		addArticle(a,writer);
-	}
-
+	
 	/** Add single article */
-	protected void addArticle(Article a, IndexWriter writer){
+	protected void addArticle(Article a){
 		//if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 		//return; // don't add if preconditions are not met
 		
@@ -132,7 +124,7 @@ public class CleanIndexWriter {
 			writer.optimize();
 			writer.close();
 		} catch(IOException e){
-			log.error("I/O error optimizing/closing index at "+iid.getTempPath()+" : "+e.getMessage());
+			log.error("I/O error optimizing/closing index at "+iid.getImportPath()+" : "+e.getMessage());
 			throw e;
 		}
 	}
@@ -141,7 +133,7 @@ public class CleanIndexWriter {
 	 * Add into metadata_key and metadata_value. 
 	 * Collection is assumed to contain words (without spaces) 
 	 */
-	public void addMetadata(IndexWriter writer, String key, Collection<String> values){
+	public void addMetadata(String key, Collection<String> values){
 		StringBuilder sb = new StringBuilder();
 		// serialize by joining with spaces
 		for(String val : values){

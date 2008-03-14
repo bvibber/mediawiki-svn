@@ -47,6 +47,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.search.UpdateThread;
 import org.wikimedia.lsearch.spell.api.Dictionary;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
@@ -71,6 +72,7 @@ public class Links {
 	protected ObjectCache cache;
 	//protected ObjectCache refCache;
 	protected FieldSelector keyOnly,redirectOnly,contextOnly,linksOnly;
+	protected boolean optimized = false;
 	
 	private Links(IndexId iid, String path, IndexWriter writer) throws CorruptIndexException, IOException{
 		this.writer = writer;
@@ -121,6 +123,15 @@ public class Links {
 		log.info("Using index at "+path);
 		IndexWriter writer = WikiIndexModifier.openForWrite(path,false);
 		return new Links(iid,path,writer);		
+	}
+	
+	public static Links openStandalone(IndexId iid) throws IOException {
+		UpdateThread updater = UpdateThread.getStandalone();
+		iid = iid.getLinks();
+		if(!iid.isMySearch())
+			iid.forceMySearch();
+		updater.update(iid);
+		return openForRead(iid,iid.getSearchPath());
 	}
 	
 	/** Open index at path for reading */
@@ -197,6 +208,7 @@ public class Links {
 		searcher = new IndexSearcher(reader);
 		writer = null;
 		state = State.READ;
+		optimized = reader.isOptimized();
 	}
 	
 	/** Open the writer, and close the reader (if any) */
@@ -216,12 +228,12 @@ public class Links {
 		}
 	}
 	
-	protected void ensureRead() throws IOException {
+	protected final void ensureRead() throws IOException {
 		if(state != State.READ)
 			flushForRead();
 	}
 	
-	protected void ensureWrite() throws IOException {
+	protected final void ensureWrite() throws IOException {
 		if(writer == null)
 			openForWrite();
 	}
@@ -364,7 +376,16 @@ public class Links {
 	/** Get number of backlinks to this title */
 	public int getNumInLinks(String key) throws IOException{
 		ensureRead();
-		return reader.docFreq(new Term("links",key));
+		if(optimized)
+			return reader.docFreq(new Term("links",key));
+		else{
+			// TODO: check if this is too slow in incremental updates..  
+			TermDocs td = reader.termDocs(new Term("links",key));
+			int count = 0;
+			while(td.next()) // this will skip deleted docs, while docFreq won't
+				count++;
+			return count;
+		}
 	}
 	
 	/** Make cache: doc_id -> number of inlinks */

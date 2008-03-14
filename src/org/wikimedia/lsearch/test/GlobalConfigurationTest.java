@@ -148,7 +148,7 @@ public class GlobalConfigurationTest extends TestCase {
 			assertTrue(ir.contains("entest.mainpart.sub1"));
 			assertTrue(ir.contains("entest.mainpart.sub2"));
 			assertTrue(ir.contains("entest.mainpart.sub3"));
-			assertEquals(22,sir.length);
+			assertEquals(21,sir.length);
 			
 			// indexLocation
 			Hashtable indexLocation = testgc.getIndexLocation();
@@ -331,6 +331,13 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("mw-titles.tspart1",mw.getTitlesIndex().toString());
 		assertEquals("mw",mwt.getInterwikiBySuffix("mediawikiwiki"));
 		assertEquals("{mediawikiwiki=mediawikiwiki, metawiki=metawiki}",mwt.getSuffixToDbname().toString());
+		
+		IndexId ep = IndexId.get("entest.spell.pre");
+		assertTrue(ep.isPrecursor());
+		assertFalse(ep.isSpell());
+		assertEquals("entest.spell",ep.getPrecursorTarget().toString());
+		assertEquals("192.168.0.2",ep.getIndexHost());
+		assertEquals("/usr/local/var/mwsearch/snapshot/entest.spell.pre",ep.getSnapshotPath());
 		
 	}
 }

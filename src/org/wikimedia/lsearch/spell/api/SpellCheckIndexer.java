@@ -46,6 +46,7 @@ import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;
 import org.wikimedia.lsearch.spell.dist.EditDistance;
 import org.wikimedia.lsearch.util.HighFreqTerms;
+import org.wikimedia.lsearch.util.ProgressReport;
 
 /** 
  * Index words and phrases from articles. 
@@ -99,16 +100,15 @@ public class SpellCheckIndexer {
 		}
 	}
 	
-	public void createFromTempIndex(){
+	public void createFromPrecursor(){
 		String path = spell.getImportPath(); // dest where to put index
 		FieldNameFactory fields = new FieldNameFactory();
 		FilterFactory filters = new FilterFactory(iid);
 		final String title = fields.title();
 		final String contents = fields.contents();
-		final String alttitle = fields.alttitle();
 		try {
 			ngramWriter.createIndex(path,new SimpleAnalyzer());
-			IndexReader ir = IndexReader.open(iid.getSpell().getTempPath());
+			IndexReader ir = IndexReader.open(iid.getSpell().getPrecursor().getImportPath());
 			HashSet<String> stopWords = new HashSet<String>();
 			TermDocs td = ir.termDocs(new Term("metadata_key","stopWords"));
 			if(td.next()){
@@ -118,8 +118,10 @@ public class SpellCheckIndexer {
 			addMetadata("stopWords",stopWords);
 
 			log.info("Adding titles");
+			ProgressReport progress = new ProgressReport("titles",10000);
 			// add all titles
 			for(int i=0;i<ir.maxDoc();i++){
+				progress.inc();
 				if(ir.isDeleted(i))
 					continue;
 				Document d = ir.document(i);
@@ -138,7 +140,7 @@ public class SpellCheckIndexer {
 			
 			log.info("Adding words and phrases");
 			LuceneDictionary dict = new LuceneDictionary(ir,contents);
-			//dict.setNoProgressReport();
+			dict.setProgressReport(new ProgressReport("terms",10000));
 			Word word;
 			while((word = dict.next()) != null){
 				String w = word.getWord();
@@ -171,6 +173,7 @@ public class SpellCheckIndexer {
 			}
 			log.info("Adding phrases with stop words from titles");
 			dict = new LuceneDictionary(ir,title);
+			dict.setProgressReport(new ProgressReport("terms",10000));
 			while((word = dict.next()) != null){
 				String w = word.getWord();
 				if(w.contains("_")){ // phrase
@@ -181,7 +184,7 @@ public class SpellCheckIndexer {
 						//String context = makeContext(w,ir,fields,stopWords);
 						addPhrase(w,freq,true,null,null);
 					}
-				} /*else{
+				} else{
 					// add words that haven't been added in first pass but are in titles
 					int freq = ir.docFreq(new Term("contents",w));
 					if(freq < minWordFreq && hasInLinks(w,ir,fields)){
@@ -190,11 +193,13 @@ public class SpellCheckIndexer {
 							context = makeContext(w,ir,fields,stopWords);
 						addWord(w,freq,context);
 					}
-				} */
+				} 
 			}
 			log.info("Adding titles (other namespaces)");
+			progress = new ProgressReport("titles",10000);
 			// add all titles
 			for(int i=0;i<ir.maxDoc();i++){
+				progress.inc();
 				if(ir.isDeleted(i))
 					continue;
 				Document d = ir.document(i);
@@ -213,6 +218,7 @@ public class SpellCheckIndexer {
 			// add words/phrases
 			log.info("Adding words and phrases (other namespaces)");
 			dict = new LuceneDictionary(ir,"ns_title");
+			dict.setProgressReport(new ProgressReport("terms",10000));
 			while((word = dict.next()) != null){
 				String w = word.getWord();
 				if(w.contains("_")){ // phrase					
@@ -221,6 +227,7 @@ public class SpellCheckIndexer {
 					addNsWord(w,ir);
 				}
 			}
+			log.info("Optimizing...");
 			ngramWriter.closeAndOptimize();
 			ir.close();			
 		} catch (IOException e) {

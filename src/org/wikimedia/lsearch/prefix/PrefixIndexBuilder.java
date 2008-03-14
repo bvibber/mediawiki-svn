@@ -29,8 +29,10 @@ import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
+import org.wikimedia.lsearch.search.UpdateThread;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
+import org.wikimedia.lsearch.util.ProgressReport;
 
 /**
  * Build an index of all title prefixes
@@ -41,6 +43,33 @@ import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 public class PrefixIndexBuilder {
 	static Logger log = Logger.getLogger(PrefixIndexBuilder.class);
 	
+	protected IndexId iid, prefixIid, pre;
+	protected FilterFactory filters;
+	protected Links links=null;
+	protected IndexWriter writer=null;
+	/** Builder for a new index based on standalone links snapshot */
+	static public PrefixIndexBuilder newFromStandalone(IndexId iid) throws IOException{
+		return new PrefixIndexBuilder(iid,Links.openStandalone(iid),null);
+	}
+	/** Builder for incremental updates to precursor index */
+	static public PrefixIndexBuilder forPrecursorModification(IndexId iid, Links links) throws IOException{
+		IndexWriter writer = WikiIndexModifier.openForWrite(iid.getPrecursor().getIndexPath(),false,new PrefixAnalyzer());
+		writer.setMergeFactor(20);
+		writer.setMaxBufferedDocs(500);
+		return new PrefixIndexBuilder(iid,links,writer);
+	}
+	
+	private PrefixIndexBuilder(IndexId iid, Links links, IndexWriter writer) throws IOException {
+		this.iid = iid;
+		prefixIid = iid.getPrefix();
+		pre = prefixIid.getPrecursor();
+		filters = new FilterFactory(iid);
+		this.links = links;
+		this.writer = writer;
+	}
+	
+	
+	
 	public static void main(String[] args) throws IOException{
 		int perPrefix = 15;
 		boolean usetemp = false;
@@ -50,14 +79,14 @@ public class PrefixIndexBuilder {
 		if(args.length == 0){
 			System.out.println("Syntax: java PrefixIndexBuilder [-t] [-p <num>] <dbname>");
 			System.out.println("Options:");
-			System.out.println("   -t       - reuse temporary index");
-			System.out.println("   -p <num> - titles per prefix (default: "+perPrefix+")");
+			System.out.println("   -p       - reuse temporary precursor index");
+			System.out.println("   -t <num> - titles per prefix (default: "+perPrefix+")");
 			return;
 		}
 		for(int i=0;i<args.length;i++){
-			if(args[i].equals("-t"))
+			if(args[i].equals("-p"))
 				usetemp = true;
-			else if(args[i].equals("-p"))
+			else if(args[i].equals("-t"))
 				perPrefix = Integer.parseInt(args[++i]);
 			else if(args[i].startsWith("-")){
 				System.out.println("Unrecognized option "+args[i]);
@@ -67,86 +96,60 @@ public class PrefixIndexBuilder {
 		}		
 		
 		IndexId iid = IndexId.get(dbname);
-		IndexId pre = iid.getPrefix();
-		FilterFactory filters = new FilterFactory(iid);
-		
+		PrefixIndexBuilder builder = newFromStandalone(iid);
+		builder.createNewFromLinks(perPrefix,usetemp);
+	}
+
+	/**
+	 * Create a completely new prefix index in the import path, 
+	 * optionally rebuilds the precursor as well
+	 * 
+	 * @param perPrefix
+	 * @param useExistingPrecursor
+	 * @throws IOException
+	 */
+	public void createNewFromLinks(int perPrefix, boolean useExistingPrecursor) throws IOException{
 		long start = System.currentTimeMillis();
-		// FIXME: shouldn't be using import path
-		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 		
-		if(!usetemp){
-			IndexWriter writer = new IndexWriter(pre.getTempPath(),new PrefixAnalyzer(),true);
+		if(!useExistingPrecursor){
+			writer = new IndexWriter(pre.getImportPath(),new PrefixAnalyzer(),true);
 			writer.setMergeFactor(20);
 			writer.setMaxBufferedDocs(500);
-			log.info("Writing temp index");
-			int count = 0;
+			log.info("Writing precursor index");
 			LuceneDictionary dict = links.getKeys();
-			dict.setNoProgressReport();
+			dict.setProgressReport(new ProgressReport("titles",1000));
 			Word w;
-			// lowercase redirect keys 
-			HashMap<String,String> addedRedirects = new HashMap<String,String>();
 			// iterate over all documents in the index
-			key_loop: while((w = dict.next()) != null){
+			while((w = dict.next()) != null){
 				String key = w.getWord();
-				if(++count % 1000 == 0)
-					System.out.println("Processed "+count);
-				int ref = links.getNumInLinks(key);
-				String redirect = links.getRedirectTarget(key);
-				boolean redirectAddition = false;
-				String stripped = strip(key);
-				if(redirect == null)
-					redirect = "";
-				else if(strip(redirect).equalsIgnoreCase(stripped))
-					continue; // ignore camelcase redirects (case Aa -> AA)
-				else if(redirect.equals(addedRedirects.get(strip(key))))
-					continue;
-				else{
-					// check case Aa -> B, AA -> B
-					ArrayList<String> allRedirects = links.getRedirectsTo(redirect);					
-					for(String r : allRedirects){
-						if(!r.equals(key)){
-							String rs = strip(r);
-							if(rs.equals(stripped)){
-								// discard if there is a camel-case redirect with more inlinks
-								int nref = links.getNumInLinks(r); 
-								if(nref > ref)
-									continue key_loop;
-								else if(nref == ref)
-									redirectAddition = true;
-							}
-						}
-					}
-				}
-				// add to index
-				Document d = new Document();
-				d.add(new Field("key",key,Field.Store.YES,Field.Index.NO));
-				ArrayList<Token> canonized = canonize(key,iid,filters); 
-				for(Token t : canonized){
-					d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
-				}
-				if(redirect!=null && !redirect.equals(""))
-					d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
-				d.add(new Field("ref",Integer.toString(ref),Field.Store.YES,Field.Index.NO));			
-				writer.addDocument(d);				
-				if(redirect != null && redirectAddition)
-					addedRedirects.put(strip(key),redirect);				
+				addToPrecursor(key);							
 			}
-			log.info("Optimizing temp index");
+			log.info("Optimizing precursor index");
 			writer.optimize();
 			writer.close();
 		}
+		
+		rebuildPrefixIndex(pre.getImportPath(),perPrefix);
+		
+		long delta = System.currentTimeMillis() - start;
+		System.out.println("Finished in "+ProgressReport.formatTime(delta));
+	}
+	
+	/** Rebuild the prefix index using a precursor at path */
+	public void rebuildPrefixIndex(String path, int perPrefix) throws IOException {
 		log.info("Writing prefix index");
-		IndexWriter writer = new IndexWriter(pre.getImportPath(), new LowercaseAnalyzer(),true);
+		IndexWriter writer = new IndexWriter(prefixIid.getImportPath(), new LowercaseAnalyzer(),true);
 		writer.setMergeFactor(20);
 		writer.setMaxBufferedDocs(1000);
-		IndexReader ir = IndexReader.open(pre.getTempPath());
+		IndexReader ir = IndexReader.open(path);
 		LuceneDictionary dict = new LuceneDictionary(ir,"key");
+		dict.setProgressReport(new ProgressReport("prefixes",10000));
 		Word w;
 		while((w = dict.next()) != null){
 			String prefix = w.getWord();
 			Term t = new Term("key",prefix);
 			// filter out unique keys
-			if(ir.docFreq(t) < 2)
+			if(ir.docFreq(t) <= 1)
 				continue;
 			TermDocs td = ir.termDocs(t);
 			// key -> rank
@@ -191,10 +194,9 @@ public class PrefixIndexBuilder {
 			writer.addDocument(d);
 		}
 		log.info("Adding title keys ...");
-		int count = 0;
+		ProgressReport progress = new ProgressReport("title keys",1000);
 		for(int i=0;i<ir.maxDoc();i++){
-			if(++count % 1000 == 0)
-				System.out.println("Added "+count);
+			progress.inc();
 			if(ir.isDeleted(i))
 				continue;
 			Document d = new Document();
@@ -211,29 +213,12 @@ public class PrefixIndexBuilder {
 		writer.optimize();
 		writer.close();		
 		
-		IndexThread.makeIndexSnapshot(pre,pre.getImportPath());
-		long delta = System.currentTimeMillis() - start;
-		System.out.println("Finished in "+formatTime(delta));
+		IndexThread.makeIndexSnapshot(prefixIid,path);
 	}
 	
 	public static String strip(String s){
 		s = s.toLowerCase();
 		return FastWikiTokenizerEngine.stripTitle(s);
-		/* char[] buf = new char[s.length()];
-		int len = 0;
-		for(int i=0;i<s.length();i++){
-			char ch = s.charAt(i);
-			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
-				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
-					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\' || ch=='?' || ch==' '){
-				if(len==0 || buf[len-1]!=' ')
-					buf[len++] = ' ';
-			} else
-				buf[len++] = ch;
-		}
-		while(len>0 && buf[len-1]==' ')
-			len--;
-		return new String(buf,0,len); */
 	}
 	
 	/** Obtain all the different versions of the whole key (with accents, without, transliterated.. ) */
@@ -244,21 +229,34 @@ public class PrefixIndexBuilder {
 	
 	private static double lengthCoeff(String key, String prefix) {
 		return 1;
-		/*if(prefix.length() >= key.length())
-			return 1;
-		else
-			return Math.sqrt(((double)prefix.length())/((double)key.length())); */
 	}
-	
-	final private static double square(double x){
-		return x*x;
+	/** Modify a precursor index entry */
+	protected void modifyPrecursor(String key) throws IOException{
+		writer.deleteDocuments(new Term("key",key));
+		addToPrecursor(key);
 	}
-
-	private static String formatTime(long l) {
-		l /= 1000;
-		if(l >= 3600) return l/3600+"h "+(l%3600)/60+"m "+(l%60)+"s";
-		else if(l >= 60) return (l%3600)/60+"m "+(l%60)+"s";
-		else return l+"s";
+	/** Add a new precursor index entry */
+	protected void addToPrecursor(String key) throws IOException{
+		int ref = links.getNumInLinks(key);
+		String redirect = links.getRedirectTarget(key);
+		String strippedKey = strip(key);
+		String strippedTarget = redirect==null? null : strip(redirect);
+		if(redirect == null);
+		else if(strippedTarget.equalsIgnoreCase(strippedKey))
+			return; // ignore camelcase redirects (case Aa -> AA)
+		else if(strippedTarget.startsWith(strippedKey))
+			return; // ignore redirects like byzantine -> byzantine empire
+		// add to index
+		Document d = new Document();
+		d.add(new Field("key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
+		ArrayList<Token> canonized = canonize(key,iid,filters); 
+		for(Token t : canonized){
+			d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
+		}
+		if(redirect!=null && !redirect.equals(""))
+			d.add(new Field("redirect",redirect,Field.Store.YES,Field.Index.NO));
+		d.add(new Field("ref",Integer.toString(ref),Field.Store.YES,Field.Index.NO));			
+		writer.addDocument(d);	
 	}
 
 }

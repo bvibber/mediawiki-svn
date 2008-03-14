@@ -60,7 +60,7 @@ public class UpdateThread extends Thread {
 			for(LocalIndex li : forUpdate){
 				try{
 					log.debug("Syncing "+li.iid);
-					rebuild(li); // rsync, update registry, cache
+					rebuild(li,true); // rsync, update registry, cache
 					pending.remove(li.iid.toString());
 				} catch(Exception e){
 					e.printStackTrace();
@@ -101,8 +101,25 @@ public class UpdateThread extends Thread {
 		}
 	}
 	
-	protected void checkForUpdate(){
-		HashSet<IndexId> iids = global.getMySearch();
+	/** Update one index - call ONLY in standalone mode (i.e. in index importers, etc) */
+	public void update(IndexId iid) throws IOException {
+		HashSet<IndexId> iids = new HashSet<IndexId>();
+		iids.add(iid);
+		ArrayList<LocalIndex> forUpdate = checkForUpdate(iids,false);
+		for(LocalIndex li : forUpdate){
+			log.info("Syncing "+li.iid);
+			if(!iid.isMySearch())
+				iid.forceMySearch();
+			rebuild(li,false); // rsync, update registry, cache
+			pending.remove(li.iid.toString());
+		}
+	}
+	/** Thread mode, check for updates on all index searched by this host, and schedule updates */
+	protected ArrayList<LocalIndex> checkForUpdate(){
+		return checkForUpdate(global.getMySearch(),true);
+	}
+	
+	protected ArrayList<LocalIndex> checkForUpdate(HashSet<IndexId> iids, boolean scheduleUpdate){
 		HashMap<String,ArrayList<IndexId>> hostMap = new HashMap<String,ArrayList<IndexId>>();
 		ArrayList<LocalIndex> forUpdate = new ArrayList<LocalIndex>();
 		boolean urgent = false; // if indexes are broke and should be rsynced right away
@@ -142,12 +159,13 @@ public class UpdateThread extends Thread {
 				}
 			}
 		}
-		if(forUpdate.size()>0)
+		if(scheduleUpdate && forUpdate.size()>0)
 			new DeferredUpdate(forUpdate,urgent? 0 : delayInterval).start();
+		return forUpdate;
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
-	protected void rebuild(LocalIndex li){
+	protected void rebuild(LocalIndex li, boolean rebind){
 		// check if index has previously failed
 		if(badIndexes.containsKey(li.iid.toString()) && badIndexes.get(li.iid.toString()).equals(li.timestamp))
 			return;
@@ -214,7 +232,8 @@ public class UpdateThread extends Thread {
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
 			updateCache(pool,li);
-			RMIServer.rebind(iid);
+			if(rebind)
+				RMIServer.rebind(iid);
 			registry.refreshCurrent(li);
 			
 			// notify all remote searchers of change
@@ -230,8 +249,9 @@ public class UpdateThread extends Thread {
 	/** Update search cache after successful rsync of update version of index */
 	protected void updateCache(SearcherCache.SearcherPool pool, LocalIndex li){
 		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		for(IndexSearcherMul is : pool.searchers)
-			Warmup.warmupIndexSearcher(is,li.iid,true);			
+		for(IndexSearcherMul is : pool.searchers){
+			Warmup.warmupIndexSearcher(is,li.iid,true);
+		}
 		// add to cache
 		cache.invalidateLocalSearcher(li.iid,pool);		
 	}
@@ -245,6 +265,10 @@ public class UpdateThread extends Thread {
 		queryInterval = (long)(config.getDouble("Search","updateinterval",15) * 60 * 1000);
 		delayInterval = (long)(config.getDouble("Search","updatedelay",0)*1000);
 		cache = SearcherCache.getInstance();
+	}
+	
+	public static UpdateThread getStandalone(){
+		return new UpdateThread();
 	}
 	
 	public static synchronized UpdateThread getInstance(){

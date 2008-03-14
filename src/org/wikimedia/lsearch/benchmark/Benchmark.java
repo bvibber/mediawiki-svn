@@ -112,9 +112,9 @@ public class Benchmark extends Thread {
 	protected int search(){
 		String query = "";
 		if(verb.equals("prefix")){
-			int num = (int)(Math.random()*8);
+			int num = (int)(Math.random()*8)+1;
 			String t = terms.next();
-			query = namespaceFilter+":"+t.substring(0,Math.min(num,t.length()));
+			query = t.substring(0,Math.min(num,t.length()));
 		} else{
 			for(int i=0;i<words;i++){
 				if(!query.equals(""))

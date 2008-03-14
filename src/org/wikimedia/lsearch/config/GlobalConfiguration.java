@@ -692,9 +692,29 @@ public class GlobalConfiguration {
 						                    getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
 				indexIdPool.put(dbrole,iid);
 				
+				// add precursor indexes 
+				if(type.equals("spell") || type.equals("prefix")){
+					iid = new IndexId(dbrole+".pre",
+	                    "precursor",
+	                    indexHost,
+	                    rsyncIndexPath,
+	                    database.get(dbname).get(type),
+	                    typeidParams,
+	                    searchHosts,
+	                    mySearchHosts,
+	                    indexPath,
+	                    myIndex,
+	                    mySearch,
+	                    oairepo,
+	                    isSubdivided,
+	                    dbnameTitlesPart.get(dbname),
+	                    dbnameSuffix.get(dbname),
+	                    getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
+					indexIdPool.put(dbrole+".pre",iid);
+				}
+				// add highlight indexes
 				if(type.equals("single") || type.equals("mainsplit") || type.equals("split") 
 						||	type.equals("nssplit") || type.equals("subdivided")){
-					// add highlight index
 					dbrole+=".hl";
 					searchHosts = getSearchHosts(dbrole);
 					mySearchHosts = getMySearchHosts(dbname,dbrole);
@@ -1244,13 +1264,17 @@ public class GlobalConfiguration {
 		return checkSuffix(exactCaseSuffix,dbname);		
 	}
 
-	/** Find suffix that matches dbname */
+	/** Find (longest) suffix that matches dbname */
 	public String findSuffix(Collection<String> suffixes, String dbname){
+		String ret = "";
 		for(String suffix : suffixes){
 			if(dbname.endsWith(suffix)){
-				return suffix;
+				if(suffix.length() > ret.length())
+					ret = suffix;
 			}
 		}
+		if(ret.length()>0)
+			return ret;
 		return null;
 	}
 	

@@ -263,8 +263,11 @@ public class WikiIndexModifier {
 	}
 	
 	public static IndexWriter openForWrite(String path, boolean rewrite) throws IOException{
+		return openForWrite(path,rewrite,null);
+	}
+	public static IndexWriter openForWrite(String path, boolean rewrite, Analyzer analyzer) throws IOException{
 		try {
-			return new IndexWriter(path,null,rewrite);
+			return new IndexWriter(path,analyzer,rewrite);
 		} catch (IOException e) {				
 			try {
 				// unlock, retry
@@ -272,15 +275,15 @@ public class WikiIndexModifier {
 					// try to make brand new index
 					makeDBPath(path); // ensure all directories are made
 					log.info("Making new index at path "+path);
-					return new IndexWriter(path,null,true);
+					return new IndexWriter(path,analyzer,true);
 				} else if(IndexReader.isLocked(path)){
 					unlockIndex(path);
-					return new IndexWriter(path,null,rewrite); 					
+					return new IndexWriter(path,analyzer,rewrite); 					
 				} else
 					throw e;
 			} catch (IOException e1) {
 				e1.printStackTrace();
-				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
+				log.error("I/O error openning index at "+path+" : "+e.getMessage());
 				throw e1;
 			}				
 		}

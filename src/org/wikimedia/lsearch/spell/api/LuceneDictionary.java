@@ -21,8 +21,10 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 
 import org.apache.lucene.index.TermEnum;
+import org.wikimedia.lsearch.util.ProgressReport;
 
 import java.io.*;
+import java.text.MessageFormat;
 
 /**
  * Lucene Dictionary: terms taken from the given field
@@ -35,13 +37,11 @@ import java.io.*;
  * @author Christian Mallwitz
  */
 public class LuceneDictionary implements Dictionary {
-  private int REPORT = 1000;
   private TermEnum termEnum;
-  private int count = 0;
   private String field;
   private boolean first = true;
   private String prefix = null;
-  private boolean silent = false; // no report output
+  private ProgressReport progress;
 
   public LuceneDictionary(IndexReader reader, String field) {
 	  this(reader,field,"");
@@ -50,7 +50,8 @@ public class LuceneDictionary implements Dictionary {
   public LuceneDictionary(IndexReader reader, String field, String prefix) {
 	  if(!prefix.equals(""))
 		  this.prefix = prefix;
-	  
+
+	  progress = new ProgressReport();
 	  try {
 		  this.field = field;
 		  termEnum = reader.terms(new Term(field, prefix));
@@ -61,13 +62,16 @@ public class LuceneDictionary implements Dictionary {
   
   /** Don't print progress */
   public void setNoProgressReport(){
-	  silent = true;
+	  progress = null;
+  }
+  
+  public void setProgressReport(ProgressReport progress){
+	  this.progress = progress;
   }
   
   public Word next() {
-	  if(!silent && ++count % REPORT == 0){
-		  System.out.println("Processed "+count+" terms");
-	  }
+	  if(progress!=null)
+		  progress.inc();
 	  try {
 		  while(true){
 			  if(first && termEnum.term() != null){
