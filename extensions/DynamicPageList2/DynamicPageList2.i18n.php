@@ -13,7 +13,7 @@ $wgDPL2Messages = array();
  */
 
 $wgDPL2Messages['en'] = array(
-	'dpl2-desc' => 'hack of the original [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] extension featuring many Improvements',
+	'dpl2-desc' => 'Hack of the original [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] extension featuring many Improvements',
 	/*
 		Debug
 	*/
@@ -97,6 +97,11 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_articlecount' => 'There {{PLURAL:$1|is one article|are $1 articles}} in this heading.'
 );
+
+$wgDPL2Messages['de'] = array(
+	'dpl2-desc' => 'Erweiterung der [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] mit vielen Verbesserungen',
+);
+
 $wgDPL2Messages['fr'] = array(
 	'dpl2-desc' => 'Reprise de l’extension originale [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] avec des fonctionnalités supplémentaires.',
 	/*
@@ -1006,7 +1011,3 @@ $wgDPL2Messages['zh-hk'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-sg'] = $wgDPL2Messages['zh-hans'];
 $wgDPL2Messages['zh-tw'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-yue'] = $wgDPL2Messages['yue'];
-
-
-
-
