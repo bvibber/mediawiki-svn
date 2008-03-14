@@ -87,18 +87,19 @@ class LinkSearchPage extends QueryPage {
 	}
 
 	/**
-	 * Return an appropriately formatted LIKE query
+	 * Return an appropriately formatted LIKE query and the clause
 	 */
-	static function mungeQuery( $query , $prot, $clause="" ) {
+	static function mungeQuery( $query , $prot ) {
+		$clause = 'el_index';
 		$rv = LinkFilter::makeLike( $query , $prot );
 		if ($rv === false) {
 			//makeLike doesn't handle wildcard in IP, so we'll have to munge here.
 			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$|^(:?[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*\*\s*$/', $query)) {
 				$rv = $prot . rtrim($query, " \t*") . '%';
-		    		$clause = 'el_to';
-		  	}
+				$clause = 'el_to';
+			}
 		}
-		return $rv;
+		return array( $rv, $clause );
 	}
 
 	function linkParameters() {
@@ -110,10 +111,9 @@ class LinkSearchPage extends QueryPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
 		$externallinks = $dbr->tableName( 'externallinks' );
-		$clause = 'el_index';
 
 		/* strip everything past first wildcard, so that index-based-only lookup would be done */
-		$munged = self::mungeQuery( $this->mQuery, $this->mProt, &$clause );
+		list( $munged, $clause ) = self::mungeQuery( $this->mQuery, $this->mProt );
 		$stripped = substr($munged,0,strpos($munged,'%')+1);
 		$encSearch = $dbr->addQuotes( $stripped );
 
@@ -150,7 +150,7 @@ class LinkSearchPage extends QueryPage {
 	 */
 	function doQuery( $offset, $limit, $shownavigation=true ) {
 		global $wgOut;
-		$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
+		list( $this->mMungedQuery, $clause ) = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
 		if( $this->mMungedQuery === false ) {
 			$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
 		} else {
