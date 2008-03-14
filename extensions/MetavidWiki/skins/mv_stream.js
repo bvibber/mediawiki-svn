@@ -537,35 +537,17 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 			var curTitle = get_titleObject($j(this).attr('name'));	
 			if(insertTitle.start_time < curTitle.start_time){
 				$j(this).before(node_html).show("slow");
-				//js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
+				js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
 	   			inserted=true;
-	   			//add mouse over hooks
 	   			return ;
 			}
 		}
 	});
-	/*if ($j('#mv_fd_mvd_cont').get(0).hasChildNes()){	 
-	   for (var i = 0; i < $j('#mv_fd_mvd_cont').get(0).childNodes.length; i++){   			
-	   		var curName =$j('#mv_fd_mvd_cont').get(0).childNodes[i].getAttribute('name');
-	   		if(curName){
-		   		var curTitle = get_titleObject(curName);
-		   		//compare start time if > cur_start add before			
-		   		if(insertTitle.start_time < curTitle.start_time){  		   	
-		   			//insert before:	
-		   			$j('#mv_fd_mvd_cont').insertBefore(node_html);
-		   			inserted=true;
-		   			break;
-		   		}
-	   		}else{
-	   			js_log('name not found for:' + $j('mv_fd_mvd_cont').get(0).childNodes[i].id);
-	   		}
-	   }
-	   //@@todo give the user the option to jump to the range where the clip is present:
-	   if(!inserted)alert("insert out of range of current view");
-	}else{
-		//no child nodes just do plain insert
-		$j('#mv_fd_mvd_cont').html(node_html);
-	}*/
+	//add at the end (if not before some other node)
+	if(!inserted){
+		js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
+		$j('#mv_fd_mvd_cont').append(node_html);
+	}
 }
 
 function get_titleObject(titleKey){
@@ -703,6 +685,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 			$j(setHtmlId).html( result) ;			
 			return ;
         }
+        js_log('req status:'+ request.status);
 		if(mvd_id=='new' && edit_action=='save'){
 			js_log("new and save");			
 			eval(result);
@@ -711,12 +694,11 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
   				//empty the add div:
 		  		$j('#mv_add_new_mvd').empty();
 		  		
-		  		//@@TODO update / add mv_time_line element
-		  		
-		  		$j('#mv_time_line').append(mv_result['tl_mvd']).show("slow");		  				  		
+				//add mv_time_line element		  		
+		  		$j('#mv_time_line').append(mv_result['tl_mvd']);		  				  		
 		  		mv_add_new_fd_mvd(mv_result['titleKey'], mv_result['fd_mvd']);	
 		  		
-		  		mv_init_interface.addHoverHooks('#mv_fd_mvd_'+mvd_id);
+		  		mv_init_interface.addHoverHooks('#mv_fd_mvd_'+mv_result['mvd_id']+',#mv_tl_mvd_'+mv_result['mvd_id']);
 		  		//scroll to the new mvd:
 		  		scroll_to_pos(mv_result['mvd_id']);			  		
   			}

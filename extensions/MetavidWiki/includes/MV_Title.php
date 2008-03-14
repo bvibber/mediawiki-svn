@@ -131,9 +131,9 @@
  				$this->end_time_sec = ($this->start_time_sec+$mvDefaultStreamViewLength);
  				$this->end_time = seconds2ntp($this->end_time_sec);
  			} 			
- 			if($this->mvStream->getDuration()!=0){
-	 			if($this->end_time_sec > $this->mvStream->getDuration()){
-	 				$this->end_time_sec=$this->mvStream->getDuration();
+ 			if($this->getDuration()!=0){
+	 			if($this->end_time_sec > $this->getDuration()){
+	 				$this->end_time_sec=$this->getDuration();
 	 				$this->end_time = seconds2ntp($this->end_time_sec);
 	 			}
  			}
@@ -162,7 +162,7 @@
 	 * legacy/convenience function (should probably just update all getDuration calls 
 	 * to call global MVstream directly
 	 */
-	function getDuration(){
+	function getDuration(){	
 		$stream = & mvGetMVStream($this->stream_name);
 		return $stream->getDuration();
 	}

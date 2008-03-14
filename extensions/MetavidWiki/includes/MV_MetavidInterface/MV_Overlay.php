@@ -613,17 +613,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	function get_overlay_context_from_title($contextTitle=null){
 		global $mvDefaultStreamViewLength, $wgTitle;
 		if(!$contextTitle)$contextTitle=$wgTitle;
-		$parts =  explode('/',$contextTitle);
-		if(count($parts)==3){
-			$this->start_time=$parts[1]; 
-			$this->end_time=$parts[2];
-		}else{
-			global $mvDefaultStreamViewLength;
-			$this->start_time=seconds2ntp(0);
- 			$this->end_time = seconds2ntp($mvDefaultStreamViewLength);
-		}
-		$this->duration = ntp2seconds($this->start_time) - ntp2seconds($this->end_time);
-		
+		$mvContextTitle = new MV_Title($contextTitle);
+		$mvContextTitle->setStartEndIfEmpty();
+		$this->start_time = $mvContextTitle->getStartTimeSeconds();
+		$this->end_time   = $mvContextTitle->getEndTimeSeconds();
+		$this->duration   = $mvContextTitle->getDuration();		
 	}
 	/* do the move @@todo this could be abstracted to extend special move page
 	 * although special move_page is not very complex. 
