@@ -193,7 +193,9 @@ public class RankingTest {
 				"0:People"
 		});
 	
-	
+		assertHits("list of countries in Africa by population", new String[]{
+			"0:List of African countries by population"	
+		});
 	
 		
 		

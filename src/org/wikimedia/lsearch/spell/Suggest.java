@@ -252,7 +252,7 @@ public class Suggest {
 				}
 			}
 			if(changes.size() > 0){
-				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>());
+				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>(),ns);
 				logRequest(sq.getSearchterm(),"words only (wildcard or fuzzy query)",start);
 				return sq;
 			} else{
@@ -275,7 +275,7 @@ public class Suggest {
 			if(ed.getDistance(redirectTarget) <= 2 && betterRank(titleRank(redirectTarget,ns),firstRank)){
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,redirectTarget,tokens);
 				if(changes != null){
-					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>());
+					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>(),ns);
 					logRequest(sq.getSearchterm(),"titles (via redirect)",start);
 					return sq;
 				}
@@ -294,7 +294,7 @@ public class Suggest {
 			if(betterRank(r.frequency,firstRank)){
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,r.word,tokens);
 				if(changes != null){
-					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet());
+					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet(),ns);
 					logRequest(sq.getSearchterm(),"titles (misspell)",start);
 					return sq;
 				}
@@ -315,7 +315,7 @@ public class Suggest {
 				} else if(r.dist == 1 && betterRank(r.frequency,firstRank)){
 					HashMap<Integer,String> proposedChanges = new HashMap<Integer,String>();
 					proposedChanges.put(0,r.word);
-					SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>());
+					SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>(),ns);
 					logRequest(sq.getSearchterm(),"single word common misspell",start);
 					return sq;
 				}
@@ -517,7 +517,7 @@ public class Suggest {
 			}
 			// check
 			if( titleExists(proposedTitle.toString(),ns) ){
-				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet());
+				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet(),ns);
 				logRequest(sq.getSearchterm(),"phrases (title match)",start);
 				return sq;
 			}
@@ -606,7 +606,7 @@ public class Suggest {
 			}			
 		}
 		
-		SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,alwaysReplace);
+		SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,alwaysReplace,ns);
 		logRequest(sq.getSearchterm(),using,start);
 		return sq;
 	}
@@ -742,7 +742,8 @@ public class Suggest {
 	}
 
 	/** Make the resulting SuggestQuery object using proposed changes */
-	protected SuggestQuery makeSuggestedQuery(ArrayList<Token> tokens, HashMap<Integer,String> changes, String searchterm, FilterFactory filters, Set<Integer> alwaysReplace) throws IOException{
+	protected SuggestQuery makeSuggestedQuery(ArrayList<Token> tokens, HashMap<Integer,String> changes, 
+			String searchterm, FilterFactory filters, Set<Integer> alwaysReplace, Namespaces ns) throws IOException{
 		ArrayList<Integer> ranges = new ArrayList<Integer>();
 		StringBuilder sb = new StringBuilder();
 		int start = 0;
@@ -761,8 +762,8 @@ public class Suggest {
 			if(w.equals(nt))
 				continue; // trying to subtitute same			
 			// incorrect words, or doesn't stem to same
-			boolean sameStem = (alwaysReplace.contains(e.getKey()))? false : filters.stemsToSame(w,nt); 
-			if(!sameStem || (sameStem && reader.docFreq(new Term("word",w)) == 0)){
+			boolean sameStem = (alwaysReplace.contains(e.getKey()))? false : filters.stemsToSame(FastWikiTokenizerEngine.decompose(w),FastWikiTokenizerEngine.decompose(nt)); 
+			if(!sameStem || (sameStem && !wordExists(w,ns))){
 				int so = t.startOffset();
 				int eo = t.endOffset();
 				if(so != start)
@@ -1260,7 +1261,7 @@ public class Suggest {
 				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1)))) 
 				&& (r.distMetaphone<=3 || r.distMetaphone2<=3)
 				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) 
-				&& Math.abs(m.word.length()-r.word.length()) <= 3
+				&& (Math.abs(m.word.length()-r.word.length()) <= 3 || r.dist <= 3)
 				&& r.dist<m.word.length() && r.dist<r.word.length())
 			return true;
 		else
@@ -1276,7 +1277,7 @@ public class Suggest {
 				   || (r.meta1!=null && m.meta1!=null && (r.meta1.contains(m.meta1) || m.meta1.contains(r.meta1))))
 				&& (r.distMetaphone<=3 || r.distMetaphone2<=3)
 				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) 
-				&& Math.abs(m.word.length()-r.word.length()) <= 3
+				&& (Math.abs(m.word.length()-r.word.length()) <= 3 || r.dist <= 3)
 				&& r.dist<m.word.length() && r.dist<r.word.length())
 			return true;
 		else

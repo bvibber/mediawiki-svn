@@ -53,6 +53,14 @@ public class Fuzzy {
 		return words;
 
 	}
+	
+	public ArrayList<Float> getBoosts(String word, NamespaceFilter nsf, ArrayList<String> words){
+		ArrayList<Float> boost = new ArrayList<Float>();
+		HashMap<String,Float> terms = getCached(word,nsf);
+		for(String w : words)
+			boost.add(terms.get(w));
+		return boost;
+	}
 
 	/** Front-end function: makes a fuzzy query for word in some namespace subset */
 	public Query makeQuery(String word, String field, NamespaceFilter nsf) {

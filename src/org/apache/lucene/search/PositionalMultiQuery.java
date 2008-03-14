@@ -1,6 +1,7 @@
 package org.apache.lucene.search;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -18,6 +19,7 @@ import org.apache.lucene.index.TermPositions;
 public class PositionalMultiQuery extends MultiPhraseQuery {
 	protected PositionalOptions options; 
 	protected int stopWordCount = 0;
+	protected ArrayList<ArrayList<Float>> boosts = new ArrayList<ArrayList<Float>>();
 
 	public PositionalMultiQuery(PositionalOptions options){
 		this.options = options;
@@ -34,6 +36,44 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 		if(isStopWord)
 			stopWordCount++;
 		add(new Term[]{term},position);
+	}
+	/** Add to pos with custom boost */
+	public void add(Term[] terms, int pos, ArrayList<Float> boost) {
+		if(terms.length != boost.size())
+			throw new RuntimeException("Mismached boost values for positional multi query");
+		super.add(terms,pos);
+		boosts.add(boost);
+	}
+	/** Add with custom boost */
+	public void add(Term[] terms, ArrayList<Float> boost){
+		if(terms.length != boost.size())
+			throw new RuntimeException("Mismached boost values for positional multi query");
+		super.add(terms);
+		boosts.add(boost);
+	}
+
+	private ArrayList<Float> blankBoost(int size){
+		ArrayList<Float> f = new ArrayList<Float>();
+		for(int i=0;i<size;i++) f.add(1f);
+		return f;
+	}
+	
+	@Override
+	public void add(Term term) {
+		super.add(term);
+		boosts.add(blankBoost(1));
+	}
+
+	@Override
+	public void add(Term[] terms, int position) {
+		super.add(terms, position);
+		boosts.add(blankBoost(terms.length));
+	}
+
+	@Override
+	public void add(Term[] terms) {
+		super.add(terms);
+		boosts.add(blankBoost(terms.length));
 	}
 
 	public String toString(String f) {
@@ -74,10 +114,14 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 			TermPositions[] tps = new TermPositions[termArrays.size()];
 			for (int i=0; i<tps.length; i++) {
 				Term[] terms = (Term[])termArrays.get(i);
+				float[] boost = new float[terms.length];
+				int j=0;
+				for(Float f : boosts.get(i))
+					boost[j++] = f;
 
 				TermPositions p;
 				if (terms.length > 1)
-					p = new MultipleTermPositions(reader, terms);
+					p = new MultiBoostTermPositions(reader, terms, boost);
 				else
 					p = reader.termPositions(terms[0]);
 
@@ -167,16 +211,18 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 	public Query rewrite(IndexReader reader) {
 	    if (termArrays.size() == 1) {                 // optimize one-term case
 	      Term[] terms = (Term[])termArrays.get(0);
+	      ArrayList<Float> boost = boosts.get(0);
 	      if(terms.length == 1){
 	      	PositionalQuery pq = new PositionalQuery(options);
 	      	pq.add(terms[0]);
-	      	pq.setBoost(getBoost());
+	      	pq.setBoost(getBoost()*boost.get(0));
 	      	return pq;
 	      } else{
 	      	BooleanQuery boq = new BooleanQuery(true);
 	      	for (int i=0; i<terms.length; i++) {
 	      		PositionalQuery pq = new PositionalQuery(options);
-	      		pq.add(terms[i]);	      	
+	      		pq.add(terms[i]);	
+	      		pq.setBoost(boost.get(i));
 	      		boq.add(pq, BooleanClause.Occur.SHOULD);
 	      	}
 	      	boq.setBoost(getBoost());

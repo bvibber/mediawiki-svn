@@ -112,6 +112,7 @@ public class SpellCheckTest {
    	{"kuna albinism", ""},
    	{"ommmmmmmmiteed", "omitted"},
    	{"ommmmmmmmitted", "omitted"},
+   	{"a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",""},
    	
    };
 

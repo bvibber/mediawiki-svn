@@ -357,6 +357,8 @@ public class SpellCheckIndexer {
 		String decomposed = FastWikiTokenizerEngine.decompose(word);
 		ngramWriter.createNgramFields(doc,"ns_word",decomposed,NgramIndexer.Type.WORDS);
 		doc.add(new Field("ns_word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		if(decomposed != word)
+			doc.add(new Field("ns_word",decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		for(Entry<String,SimpleInt> e : freq.entrySet())
 			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("ns_freq",Integer.toString(freqSum),Field.Store.YES, Field.Index.NO));
@@ -426,6 +428,8 @@ public class SpellCheckIndexer {
 		String decomposed = FastWikiTokenizerEngine.decompose(word);
 		ngramWriter.createNgramFields(doc,"word",decomposed,NgramIndexer.Type.WORDS);
 		doc.add(new Field("word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		if(decomposed != word)
+			doc.add(new Field("word",decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("freq",Integer.toString(freq), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta1",dmeta.doubleMetaphone(decomposed), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
