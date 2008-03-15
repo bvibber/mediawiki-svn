@@ -353,8 +353,10 @@ aŭ vi povas esplori la vikion per eksteraj serĉservoj.',
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Ascánder
  */
 $messages['es'] = array(
+	'lucene-desc'           => 'Interfaz para el motor de búsqueda Apache Lucene',
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Previo</span>",
 	'searchnext'            => "<span style='font-size: small'>Siguiente</span> &#x00BB;",
@@ -559,10 +561,16 @@ $messages['ga'] = array(
 	'searchdidyoumean' => 'An raibh tú ag lorg ar an bhfrása seo? "<a href="$1">$2</a>"',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
+	'lucene-desc'           => 'Interface para o motor de procura Apache Lucene',
 	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Seguinte</span> &#x00BB;',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
+	'searchnext'            => "<span style='font-size: small'>Seguinte</span> &#x00BB;",
 	'lucene-searchscore'    => 'Relevancia: $1%',
 	'lucene-resultsize'     => '$1 ($2 palabras)',
 	'searchdidyoumean'      => 'Quixo dicir: "<a href="$1">$2</a>"?',
@@ -573,9 +581,9 @@ $messages['gl'] = array(
 $1
 
 Procura para $3 $9 $10',
-	'lucenefallback'        => 'Houbo un problema coa procura wiki.
-É probabelmente temporal; ténteo de novo nunhos minutos,
-ou vostede pode buscar o wiki a través dun servizo de procura externa:',
+	'lucenefallback'        => 'Houbo un problema coa procura no wiki.
+Probabelmente é temporal; ténteo de novo nuns minutos,
+ou pode buscar no wiki a través dun servizo de procura externa:',
 	'searchexactcase'       => 'Caso-exacto de procura',
 	'searchall'             => 'todo',
 	'searchincategory'      => 'na categoría',

@@ -49,6 +49,14 @@ $messages['hsb'] = array(
 	'untidy' => 'Njeporjadny',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'tidy'   => 'មានសណ្ដាប់ធ្នាប់',
+	'untidy' => 'គ្មានសណ្ដាប់ធ្នាប់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

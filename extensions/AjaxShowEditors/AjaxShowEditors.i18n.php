@@ -386,13 +386,14 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'ajax-se-desc'             => 'हेच पान संपादीत करित असलेले  सदस्य दाखवा',
 	'ajax-se-title'            => 'सध्या संपादत आहे:',
 	'ajax-se-pending'          => 'ताजेतवाने करण्याचे बाकी ... (या पेटीवर टिचकी द्या अथवा संपादन सुरू करा)',
 	'ajax-se-idling'           => '$1च्या पूर्वी',
-	'ajax-se-pagedoesnotexist' => 'पान अस्तीत्वात नाही',
+	'ajax-se-pagedoesnotexist' => 'पान अस्तित्वात नाही',
 	'ajax-se-userinvalid'      => 'त्रूटी: अयोग्य सदस्य',
 	'ajax-se-usernotfound'     => 'त्रूटी:सदस्य मिळाला नाही',
 );

@@ -46,6 +46,20 @@ $messages['no'] = array(
 	'mwsearch-desc' => 'MWSearch-programtillegg',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'mwsearch-desc' => 'Plug-in Recèrcas MW',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

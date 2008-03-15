@@ -55,6 +55,7 @@ $messages['bg'] = array(
 	'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",
 	'importfreeimages_owner'                 => 'Автор',
 	'importfreeimages_next'                  => 'Следващи $1',
+	'importfreeimages_filefromflickr'        => '$1 от потребител <b>[$2]</b> от flickr. Оригинален адрес',
 	'importfreeimages_promptuserforfilename' => 'Моля, въведете целево име на файла:',
 	'importfreeimages_returntoform'          => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );

@@ -81,6 +81,8 @@ $messages['bg'] = array(
 	'povwatch_unknown_subpage' => 'Непозната подстраница.',
 	'povwatch_title'           => 'Заглавие:',
 	'povwatch_no_log'          => 'Дневникът не съдържа записи.',
+	'povwatch_unsubscribe'     => 'Отписване',
+	'povwatch_subscribe'       => 'Записване',
 );
 
 /** German (Deutsch)
@@ -227,6 +229,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'povwatch'       => 'Iwwerwaachung vun Ännerungskonflikter',
+	'povwatch_title' => 'Titel:',
 	'povwatch_added' => 'derbäigesat',
 );
 
@@ -348,6 +351,13 @@ $messages['oc'] = array(
 	'povwatch_subscribe_intro'         => 'Sètz pas inscrich(-a) sus la lista de susvelhança de las guèrras d’edicion. Clicatz sul boton çaijós per vos inscriure.',
 	'povwatch_subscribe'               => 'Soscriure',
 	'povwatch_added'                   => 'ajustat',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'povwatch_title' => 'سرليک:',
 );
 
 /** Portuguese (Português)

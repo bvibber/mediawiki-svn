@@ -268,6 +268,18 @@ $messages['pl'] = array(
 	'dt_xml_title'                => 'Tytuł',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'dt_viewxml_categories' => 'وېشنيزې',
+	'dt_viewxml_namespaces' => 'نوم-تشيالونه',
+	'dt_xml_namespace'      => 'نوم-تشيال',
+	'dt_xml_page'           => 'مخ',
+	'dt_xml_name'           => 'نوم',
+	'dt_xml_title'          => 'سرليک',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Siebrand

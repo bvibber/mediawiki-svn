@@ -203,11 +203,18 @@ $messages['el'] = array(
 	'sitematrix-language' => 'Γλώσσα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Tlustulimu
+ * @author Yekrats
+ * @author לערי ריינהארט
+ */
 $messages['eo'] = array(
-	'sitematrix' => 'Listo de vikioj de Wikimedia',
-	'sitematrix-language' => 'Lingvo',
-	'sitematrix-project' => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
-	'sitematrix-others' => 'Aliaj projektoj de Wikimedia',
+	'sitematrix'           => 'Listo de vikioj de Wikimedia',
+	'sitematrix-language'  => 'Lingvo',
+	'sitematrix-project'   => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
+	'sitematrix-others'    => 'Aliaj projektoj de Wikimedia',
+	'sitematrix-total'     => "'''Tuta nombrado: $1'''",
+	'sitematrix-sitetotal' => 'Tuto',
 );
 
 $messages['es'] = array(
@@ -493,12 +500,13 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'sitematrix'           => 'បញ្ជីវិគីនៃវិគីមេឌា',
 	'sitematrix-desc'      => 'បង្ហាញ[[Special:SiteMatrix|បញ្ជីវិគីនៃវិគីមេឌា]]',
 	'sitematrix-language'  => 'ភាសា',
-	'sitematrix-project'   => 'ឈ្មោះ នៃគំរោង, តំណភ្ជាប់ អន្តរគំរោង និង តំណភ្ជាប់ អន្តរវិគី',
+	'sitematrix-project'   => 'ឈ្មោះ​គំរោង, តំនភ្ជាប់​អន្តរគំរោង និង តំនភ្ជាប់អន្តរវិគី',
 	'sitematrix-others'    => 'គំរោងវិគីមេឌាផ្សេងៗទៀត',
 	'sitematrix-total'     => "'''សរុប: $1'''",
 	'sitematrix-sitetotal' => 'សរុប',
@@ -584,12 +592,15 @@ $messages['lv'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'sitematrix'           => 'विकिमीडियाच्या विकिंची यादी',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|विकिमीडिया विकिंची यादी]] दर्शविते',
 	'sitematrix-language'  => 'भाषा',
 	'sitematrix-project'   => 'प्रकल्पाचे नाव, आंतरप्रकल्प दुवे आणि आंतरविकि दुवे',
 	'sitematrix-others'    => 'विकिमीडियाचे इतर प्रकल्प',
+	'sitematrix-total'     => "'''एकूण संख्या: $1'''",
 	'sitematrix-sitetotal' => 'एकूण',
 );
 

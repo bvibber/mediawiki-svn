@@ -39,6 +39,13 @@ $messages['fr'] = array(
 	'didyoumean-desc' => 'Ajoute des liens aux pages avec des titres « semblables »',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'didyoumean-desc' => 'Engade ligazóns cara a páxinas con títulos "similares"',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -58,6 +65,27 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'didyoumean-desc' => 'Legger til lenker til sider med lignende titler',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'didyoumean-desc' => 'Ajusta de ligams a las paginas amb de títols « semblables »',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'didyoumean-desc' => 'Добавляет ссылки на страницы с «похожими» названиями',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'didyoumean-desc' => 'Pridať odkazy na stránky s „podobnými“ názvami',
 );
 
 /** Swedish (Svenska)

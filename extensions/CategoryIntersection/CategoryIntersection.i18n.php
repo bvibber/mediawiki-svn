@@ -141,6 +141,17 @@ $messages['pt'] = array(
 	'categoryintersection-results'       => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'categoryintersection'               => 'Пересечение категорий',
+	'categoryintersection-desc'          => 'Поддерживает таблицу с хэш-значениями для [[Special:CategoryIntersection|пересечения категорий]] на странице',
+	'categoryintersection-doit'          => 'Вывести страницы во всех этих категориях',
+	'categoryintersection-maxcategories' => 'Максимально допустимое число пересекающихся категорий — $1.',
+	'categoryintersection-results'       => 'Поиск дал {{PLURAL:$1|$1 результат|$1 результата|$1 результатов}}.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

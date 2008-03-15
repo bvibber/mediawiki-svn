@@ -608,6 +608,13 @@ $messages['pms'] = array(
 	'duplicator-toomanyrevisions'      => "[[$1]] a l'ha tròpe ($2) revision e as peul pa copiesse. Al dì d'ancheuj ël màssim a l'é $3.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'duplicator-source' => 'سرچينه:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555

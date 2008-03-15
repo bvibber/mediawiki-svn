@@ -436,15 +436,17 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author M.M.S.
  */
 $messages['sv'] = array(
+	'passwordreset'                 => 'Lösenordsåterställning',
 	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
 	'passwordreset-emptyusername'   => 'Tomt användarnamn',
 	'passwordreset-nopassmatch'     => 'Lösenordet matchar inte',
 	'passwordreset-username'        => 'Användarnamn',
 	'passwordreset-newpass'         => 'Nytt lösenord',
 	'passwordreset-confirmpass'     => 'Konfirmera lösenord',
+	'disabledusers'                 => 'Invalidisera konton',
+	'disabledusers-summary'         => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
 );
 
 /** Telugu (తెలుగు)

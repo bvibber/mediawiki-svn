@@ -123,6 +123,13 @@ $messages['lt'] = array(
 	'poem-desc' => 'Prideda <tt>&lt;poema&gt;</tt> tagus poemų formatavimui',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'poem-desc' => 'कवितेच्या सादरीकरणासाठी आवश्यक असणारा <tt>&lt;poem&gt;</tt> टॅग देतो.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

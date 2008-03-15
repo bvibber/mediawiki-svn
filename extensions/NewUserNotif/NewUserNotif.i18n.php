@@ -199,8 +199,9 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'newusernotifsubj' => 'Upozornenie na nových používateľov pre $1',
-	'newusernotifbody' => 'Ahoj $1,
+	'newusernotifsubj'  => 'Upozornenie na nových používateľov pre $1',
+	'newusernotif-desc' => 'Posiela upozornenia emailom pri vytvorení používateľských účtov',
+	'newusernotifbody'  => 'Ahoj $1,
 
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );

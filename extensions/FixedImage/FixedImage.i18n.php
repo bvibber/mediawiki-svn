@@ -60,6 +60,13 @@ $messages['oc'] = array(
 	'fixedimage-desc' => 'Ajusta la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'fixedimage-desc' => 'Добавляет тег <tt><nowiki><fundraising></nowiki></tt> как изображение',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

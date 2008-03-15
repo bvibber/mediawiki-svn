@@ -902,6 +902,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
+	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
 );
 
 /** Low German (Plattdüütsch)
@@ -1095,33 +1096,58 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Dodek
  * @author McMonster
  * @author Sp5uhe
- * @author Equadus
  * @author Derbeth
+ * @author Equadus
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'math_AmbiguousInfix'                   => 'Niejednoznaczne ustawienie "$1" (spróbuj użyć dodatkowych nawiasów "{ ... }" by ujednoznacznić)',
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
 	'math_CannotCreateTexFile'              => 'Nie udało się stworzyć pliku tex',
 	'math_CannotRunDvipng'                  => 'Nie można uruchomić dvipng',
+	'math_CannotRunLatex'                   => 'Nie można uruchomić LaTeX-a',
 	'math_CannotWritePngDirectory'          => 'Nie można zapisać do wyjściowego katalogu PNG',
+	'math_CannotWriteTexFile'               => 'Nie można pisać do pliku tex',
+	'math_CasesRowTooBig'                   => 'W każdym wierszu bloku "cases" mogą być jedynie dwa wpisy',
 	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',
+	'math_IllegalCommandInMathMode'         => 'Polecenie "$1" jest niedozwolne w trybie matematycznym',
+	'math_IllegalCommandInMathModeWithHint' => 'Polecenie "$1" jest niedozwolone w trybie matematycznym (może miałeś na myśli "$2"?)',
+	'math_IllegalCommandInTextMode'         => 'Polecenie "$1" jest niedozwolone w trybie tekstowym',
+	'math_IllegalCommandInTextModeWithHint' => 'Polecenie "$1" jest niedozwolone w trybie tekstowym (może miałeś na myśli "$2"?)',
 	'math_IllegalDelimiter'                 => 'Niedozwolony separator przed "$1"',
+	'math_IllegalFinalBackslash'            => 'Niedozwolony backslash "\\" na końcu wejścia',
 	'math_IllegalNestedFontEncodings'       => 'Komendy kodowania czcionek nie mogą być zagnieżdżane',
+	'math_IllegalRedefinition'              => 'Polecenie "$1" jest już zdefiniowane; nie możesz go redefiniować',
 	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
+	'math_InvalidUtf8Input'                 => 'Ciąg danych wejściowych nie był zgodny z UTF-8',
 	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX-a dla "$1"',
+	'math_MismatchedBeginAndEnd'            => 'Polecenia "$1" i "$2" nie pasują',
 	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Brakujący nawias otwierający "{" na końcu wejścia',
+	'math_MissingOpenBraceBefore'           => 'Brakujący nawias otwierający "{" przed "$1"',
+	'math_NonAsciiInMathMode'               => 'Znaki spoza ASCII mogą być użyte jedynie w trybie tekstowym (spróbuj zamknąć znaki w "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Zbyt mało argumentów dla "$1"',
 	'math_PngIncompatibleCharacter'         => 'Nie można poprawnie wygenerować pliku PNG zawierającego znak $1',
+	'math_ReservedCommand'                  => 'Polecenie "$1" jest zarezerwowane do wewnętrznego użycia przez blahtex',
+	'math_SubstackRowTooBig'                => 'W każdym wierszu bloku "substack" może być tylko jeden wpis',
 	'math_TooManyMathmlNodes'               => 'Zbyt dużo węzłów w drzewie MathML',
 	'math_TooManyTokens'                    => 'Zbyt długie dane wejściowe',
 	'math_UnavailableSymbolFontCombination' => 'Brak znaku "$1" w czcionce "$2"',
+	'math_UnexpectedNextCell'               => 'Polecenie "&" może występować jedynie wewnątrz bloku "\\begin ... \\end"',
+	'math_UnexpectedNextRow'                => 'Polecenie "\\\\" może występować jedynie wewnątrz bloku "\\begin ... \\end"',
 	'math_UnmatchedBegin'                   => 'Napotkano "\\begin" bez odpowiadającego "\\end"',
+	'math_UnmatchedCloseBrace'              => 'Napotkano na nawias zamykający "}" bez bez odpowiadającego mu nawiasu otwierającego "{"',
 	'math_UnmatchedEnd'                     => 'Napotkano "\\end" bez odpowiadającego "\\begin"',
 	'math_UnmatchedLeft'                    => 'Napotkano "\\left" bez pasującego "\\right"',
+	'math_UnmatchedOpenBrace'               => 'Napotkano na nawias otwierający "{" bez bez odpowiadającego mu nawiasu zamykającego "}"',
+	'math_UnmatchedOpenBracket'             => 'Napotkano na nawias otwierający "[" bez bez odpowiadającego mu nawiasu zamykającego "]"',
+	'math_UnmatchedRight'                   => 'Napotkano na "\\right" bez odpowiadającego mu "\\left"',
 	'math_UnrecognisedCommand'              => 'Nierozpoznane polecenie "$1"',
+	'math_WrongFontEncoding'                => 'Symbol "$1" może się nie pojawić w kodowaniu "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Znak "$1" może nie występować w czcionce "$2" (spróbuj użyć polecenia "$3{...}")',
 );
 

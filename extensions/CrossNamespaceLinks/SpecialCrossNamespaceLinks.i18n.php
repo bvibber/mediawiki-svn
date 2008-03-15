@@ -113,6 +113,14 @@ $messages['dsb'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wótkaz|wótkazej|wótkaze|wótkazow}} do $3',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'crossnamespacelinks'     => 'Trans-nomspacaj ligiloj',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligilo|ligiloj}} al $3',
+);
+
 $messages['es'] = array(
 	'crossnamespacelinks'         => 'Enlaces entre diferentes espacios de nombres',
 	'crossnamespacelinks-summary' => 'Ésta página proporciona una lista de enlaces desde una página en el espacio de nombres principal hacia una página en otros espacios de nombres (excepto para los espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), los cuales no son aconsejables.',
@@ -277,6 +285,14 @@ $messages['ja'] = array(
 	'crossnamespacelinks-desc'    => '{{SITENAME}} などを除いた、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'crossnamespacelinks'         => 'Kros-navnplatsk henvesnenger',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|henvesnenge|henvesnenger}} til $3',
 );
 
 $messages['kaa'] = array(

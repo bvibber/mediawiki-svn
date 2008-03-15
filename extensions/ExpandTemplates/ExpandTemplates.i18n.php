@@ -212,10 +212,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
- * @author Tlustulimu
  * @author Yekrats
+ * @author Tlustulimu
  */
 $messages['eo'] = array(
+	'expandtemplates'                  => 'Ampleksigu ŝablonojn',
+	'expand_templates_input'           => 'Enigu tekston:',
+	'expand_templates_output'          => 'Rezulto',
 	'expand_templates_ok'              => 'Ek!',
 	'expand_templates_remove_comments' => 'Forigu komentojn',
 	'expand_templates_preview'         => 'Antaŭrigardo',
@@ -490,6 +493,7 @@ $messages['ja'] = array(
  * @author Huslåke
  */
 $messages['jut'] = array(
+	'expandtemplates'                  => 'Engråt templater',
 	'expand_templates_title'           => 'Context titel, før {{SITENAME}}:',
 	'expand_templates_input'           => 'Input skrevselenger:',
 	'expand_templates_output'          => 'Resultåt',

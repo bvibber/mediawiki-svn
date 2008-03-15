@@ -313,6 +313,17 @@ $messages['el'] = array(
 	'oversight-view'        => 'λεπτομέρειες',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'hiderevision-tab'            => 'Kaŝu revizion',
+	'hiderevision-status'         => 'Revizio $1: $2',
+	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
+	'oversight-log-hiderev'       => 'forigis redakton de $1',
+	'oversight-view'              => 'detaloj',
+);
+
 /** Basque (Euskara)
  * @author SPQRobin
  */
@@ -1044,6 +1055,50 @@ $messages['lt'] = array(
 	'oversight-view'             => 'detalės',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'hiderevision'                => 'आवृत्त्या कायमस्वरूपी लपवा',
+	'hiderevision-desc'           => 'कायदेशीर बाबींसाठी सदस्यांपासून प्रत्येक आवृत्ती कायमस्वरूपी लपवा.',
+	'group-oversight'             => 'झापडबंद अधिकारी',
+	'group-oversight-member'      => 'झापडबंद',
+	'grouppage-oversight'         => '{{ns:project}}:झापडबंद',
+	'hiderevision-prompt'         => 'वगळण्यासाठीच्या आवृत्तीचा क्रमांक:',
+	'hiderevision-continue'       => 'पुढे चालू',
+	'hiderevision-text'           => "हे '''फक्त''' खालील वेळीच वापरले पाहिजे:
+* अयोग्य वैयक्तिक माहिती
+*: ''घरचा पत्ता व दूरध्वनी क्रमांक, इ''
+
+'''या उपकरणाचा अयोग्य वापर केल्यास अधिकार काढून घेतले जातील.'''
+
+वगळलेली पाने या संकेतस्थळावर कुणीही पाहू शकणार नाहीत, पण
+वगळल्याची नोंद केली जाईल व जर तुमच्याकडून चूक झाली तर डाटाबेस प्रबंधकांना ती पुन्हा 
+आणता येतील.",
+	'hiderevision-reason'         => 'कारण (हे गोपनीयरित्या नोंदले जाईल):',
+	'hiderevision-submit'         => 'हा डाटा कायमस्वरूपी लपवा',
+	'hiderevision-tab'            => 'आवृत्ती लपवा',
+	'hiderevision-norevisions'    => 'वगळण्यासाठी आवृत्त्या निवडलेल्या नाहीत.',
+	'hiderevision-noreason'       => 'तुम्ही वगळण्यासाठीचे कारण देणे आवश्यक आहे.',
+	'hiderevision-status'         => 'आवृत्ती $1: $2',
+	'hiderevision-success'        => 'वगळले गेले आहे.',
+	'hiderevision-error-missing'  => 'डाटाबेस मध्ये सापडले नाही.',
+	'hiderevision-error-current'  => 'या पानाचे नवीनतम संपादन वगळू शकत नाही. पहिल्यांदा हे बदल उलटवा.',
+	'hiderevision-error-delete'   => 'आर्चिव्ह करू शकत नाही; हे पान आधी वगळले होते का?',
+	'hiderevision-archive-status' => '$1 पासूनच्या आवृत्त्या वगळल्या: $2',
+	'oversight-nodiff'            => 'या पानाच्या जुन्या आवृत्त्या नाहीत, त्यामुळे बदल तपासू शकत नाही. कारण:
+*हे पान अगोदरच वगळले आहे किंवा
+*लपविलेली आवृत्ती ही या पानाची पहिलीच आवृत्ती आहे',
+	'oversight-log-hiderev'       => '$1 कडचे एक संपादन वगळले',
+	'oversight'                   => 'झापडबंद',
+	'oversight-view'              => 'अधिक माहिती',
+	'oversight-difference'        => '(उरलेल्या जुन्या आवृत्त्यांमधील फरक)',
+	'oversight-prev'              => 'शेवटची आधीची आवृत्ती',
+	'oversight-hidden'            => 'लपविलेली आवृत्ती',
+	'oversight-header'            => 'खाली अलिकडील काळात कायमस्वरूपी लपविलेल्या आवृत्त्यांची यादी आहे.
+ही माहिती उघड केल्यास झापडबंद अधिकार कायमस्वरूपी काढून घेतले जातील.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1433,6 +1488,9 @@ $messages['sah'] = array(
 $messages['sk'] = array(
 	'hiderevision'                => 'Natrvalo skryť revízie',
 	'hiderevision-desc'           => 'Skrýva jednotlivé určené revízie všetkým používateľom (z právnych dôvodov atď.)',
+	'group-oversight'             => 'Dozorcovia',
+	'group-oversight-member'      => 'Dozorca',
+	'grouppage-oversight'         => '{{ns:project}}:Dozorcovia',
 	'hiderevision-prompt'         => 'Číslo revízie, ktorá sa má odstrániť:',
 	'hiderevision-continue'       => 'Pokračovať',
 	'hiderevision-text'           => "Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:

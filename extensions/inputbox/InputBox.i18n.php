@@ -200,11 +200,16 @@ $messages['el'] = array(
 	'createarticle'  => 'Δημιουργία άρθρου',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
+	'inputbox-desc'  => 'Permesu enhavon de antaŭdifinitaj HTML-kamparoj',
 	'tryexact'       => 'Provu ekzaktan trafon',
 	'searchfulltext' => 'Serĉu plentekste',
 	'createarticle'  => 'Kreu artikolon',
 );
+
 $messages['es'] = array(
 	'tryexact'                => 'Buscar título exacto',
 	'searchfulltext'          => 'Buscar por texto completo',

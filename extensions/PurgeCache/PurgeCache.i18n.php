@@ -76,8 +76,10 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
+	'purgecache'        => 'Purgar a caché',
 	'purgecache-button' => 'Depurar',
 );
 

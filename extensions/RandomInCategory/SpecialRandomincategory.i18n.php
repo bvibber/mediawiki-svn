@@ -177,6 +177,14 @@ $messages['oc'] = array(
 	'randomincategory-submit'     => 'Amodar',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'randomincategory-label'  => 'وېشنيزه:',
+	'randomincategory-submit' => 'ورځه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso

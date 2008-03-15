@@ -28,6 +28,13 @@ $messages['fr'] = array(
 	'editown-desc' => 'Les utilisateurs privés du droit de modifier les pages ne peuvent éditer que celles qu’ils ont créées',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editown-desc' => 'Os usuarios sen o dereito de editar só poden editar as páxinas que crearon',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

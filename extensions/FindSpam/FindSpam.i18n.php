@@ -221,7 +221,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'findspam-ip' => 'IP پته:',
+	'findspam-ip'          => 'IP پته:',
+	'findspam-notextfound' => 'هېڅ کومې ونډې ونه موندل شوې',
 );
 
 /** Portuguese (Português)

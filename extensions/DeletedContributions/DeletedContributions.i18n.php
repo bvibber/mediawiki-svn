@@ -248,6 +248,13 @@ $messages['ja'] = array(
 	'deletedcontributions-desc' => '{{int:group-sysop}}に[[{{ns:special}}:DeletedContributions|利用者の削除された投稿履歴]]の閲覧機能を提供する',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'deletedcontributions'      => 'Slettede brugerbidråg',
+);
+
 $messages['kk-cyrl'] = array(
 	'deletedcontributions' => 'Қатысушының жойылған үлесі',
 );

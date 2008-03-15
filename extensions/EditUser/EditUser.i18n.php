@@ -232,10 +232,12 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Szczepan1990
  * @author Masti
  */
 $messages['pl'] = array(
-	'edituser-logout' => 'Wyloguj użytkownika',
+	'edituser-logout'   => 'Wyloguj użytkownika',
+	'edituser-dosearch' => 'Szukaj',
 );
 
 /** Pashto (پښتو)

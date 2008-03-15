@@ -486,6 +486,7 @@ $messages['lb'] = array(
 	'crosswikiblock-submit'         => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
 	'crosswikiunblock-reason'       => 'Grond:',
+	'crosswikiunblock-submit'       => 'Spär fir dëse Benotzer ophiewen',
 	'crosswikiblock-nousername'     => 'Dir hutt kee Benotzernumm aginn',
 	'crosswikiblock-dbnotfound'     => "D'Datebank $1 gëtt et net.",
 	'crosswikiblock-noname'         => '"$1" ass kee gültege Benotzernumm.',
@@ -651,6 +652,13 @@ $messages['pl'] = array(
 	'crosswikiblock-noreason'       => 'Nie podano powodu.',
 	'crosswikiblock-alreadyblocked' => 'Użytkownik $3 jest już zablokowany.',
 	'crosswikiblock-noblock'        => 'Ten użytkownik nie jest zablokowany.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'crosswikiunblock-reason' => 'سبب:',
 );
 
 /** Portuguese (Português)

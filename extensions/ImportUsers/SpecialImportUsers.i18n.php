@@ -162,20 +162,22 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'importusers'                   => 'Importar Usuarios',
-	'importusers-uploadfile'        => 'Cargar ficheiro',
-	'importusers-form-button'       => 'Importar',
-	'importusers-user-added'        => 'Usuario <b>%s</b> foi engadido.',
-	'importusers-log'               => 'Importar rexistro',
-	'importusers-log-summary'       => 'Resumo',
-	'importusers-log-summary-all'   => 'Todo',
-	'importusers-log-summary-added' => 'Engadido',
-	'importusers-login-name'        => 'Rexistrar nome',
-	'importusers-password'          => 'contrasinal',
-	'importusers-email'             => 'correo electrónico',
-	'importusers-realname'          => 'nome real',
+	'importusers'                      => 'Importar Usuarios',
+	'importusers-uploadfile'           => 'Cargar ficheiro',
+	'importusers-form-replace-present' => 'Reemprazar os usuarios existentes',
+	'importusers-form-button'          => 'Importar',
+	'importusers-user-added'           => 'Usuario <b>%s</b> foi engadido.',
+	'importusers-log'                  => 'Importar rexistro',
+	'importusers-log-summary'          => 'Resumo',
+	'importusers-log-summary-all'      => 'Todo',
+	'importusers-log-summary-added'    => 'Engadido',
+	'importusers-login-name'           => 'Rexistrar nome',
+	'importusers-password'             => 'contrasinal',
+	'importusers-email'                => 'correo electrónico',
+	'importusers-realname'             => 'nome real',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -324,19 +326,24 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Dodek
  */
 $messages['pl'] = array(
-	'importusers-uploadfile'  => 'Prześlij plik',
-	'importusers-form-button' => 'Importuj',
-	'importusers-log'         => 'Rejestr importu',
-	'importusers-log-summary' => 'Podsumowanie',
-	'importusers-password'    => 'hasło',
+	'importusers-uploadfile'              => 'Prześlij plik',
+	'importusers-form-button'             => 'Importuj',
+	'importusers-user-added'              => 'Użytkownik <b>%s</b> został dodany.',
+	'importusers-user-present-update'     => 'Użytkownik <b>%s</b> już istnieje. Zaktualizowano.',
+	'importusers-user-present-not-update' => 'Użytkownik <b>%s</b> już istnieje. Nie zaktualizowano.',
+	'importusers-log'                     => 'Rejestr importu',
+	'importusers-log-summary'             => 'Podsumowanie',
+	'importusers-password'                => 'hasło',
 );
 
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'importusers-uploadfile'      => 'دوتنه پورته کول',
 	'importusers-log-summary'     => 'لنډيز',
 	'importusers-log-summary-all' => 'ټول',
 	'importusers-login-name'      => 'غونډال ته د ننوتنې نوم',

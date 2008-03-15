@@ -207,6 +207,15 @@ $messages['oc'] = array(
 	'showprocesslist-info'    => 'Informacions',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'showprocesslist-user' => 'کارونکی',
+	'showprocesslist-time' => 'وخت',
+	'showprocesslist-info' => 'مالومات',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

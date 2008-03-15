@@ -319,10 +319,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Dodek
  * @author Derbeth
  */
 $messages['pl'] = array(
 	'block_title_error_page_title' => 'Zablokowany tytuł',
+	'block_title_error-desc'       => 'Zapewnia podstawowy sposób zapobiegania przed tworzeniem lub zapisywaniem stron o określonych tytułach',
 	'block_title_error'            => 'Przepraszamy, zapisanie artykułu o tym tytule jest niedozwolone.',
 );
 

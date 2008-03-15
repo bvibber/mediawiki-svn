@@ -188,6 +188,13 @@ $messages['pms'] = array(
 	'profiling-no-data' => 'A l\'é pa trovasse gnun dat parej.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'profiling-data-time' => 'وخت (ټول)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -351,12 +351,13 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'chemicalsources'        => 'Chemesch Quellen',
-	'chemFunctions_CAS'      => 'CAS Nummer',
-	'chemFunctions_ATCCode'  => 'ATCCode',
-	'chemFunctions_ECNumber' => 'ECNummer',
-	'chemFunctions_Formula'  => 'Formel',
-	'chemFunctions_Name'     => 'IUPAC Numm',
+	'chemicalsources'                  => 'Chemesch Quellen',
+	'chemFunctions_CAS'                => 'CAS Nummer',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNummer',
+	'chemFunctions_Formula'            => 'Formel',
+	'chemFunctions_Name'               => 'IUPAC Numm',
+	'chemFunctions_ChemFormInputError' => 'Chemform, Feeler bei der Saisie!',
 );
 
 /** Low German (Plattdüütsch)

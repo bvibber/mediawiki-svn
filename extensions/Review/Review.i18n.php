@@ -154,6 +154,14 @@ $messages['bg'] = array(
 	'review_comment'                => 'Коментар',
 );
 
+/** Danish (Dansk)
+ * @author Morten
+ */
+$messages['da'] = array(
+	'review_sidebar_title' => 'Gennemse',
+	'review-desc'          => 'Den genopstandne [[Special:Review|valideringsfeature]].',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -381,6 +389,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_total_statistics'       => 'Total',
 	'review_statistics_left_corner' => 'Versioun',
 	'review_version_link'           => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
@@ -632,5 +641,15 @@ $messages['te'] = array(
 	'review_no_opinion'                      => 'అభిప్రాయం లేదు',
 	'review_rating'                          => 'రేటింగు',
 	'review_comment'                         => 'వ్యాఖ్య',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'review_topic_page'             => 'Бозбинии унвонҳо',
+	'review_save'                   => 'Захираи натиҷаи бозбини',
+	'review_page_link'              => 'омори бозбиниҳо',
+	'review_version_statistic_cell' => '$1 аз $2',
 );
 

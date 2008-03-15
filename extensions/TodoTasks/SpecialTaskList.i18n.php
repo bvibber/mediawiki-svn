@@ -317,20 +317,34 @@ Per veire vòstra lista completa dels prètzfaches d'efectuar, anatz sus %s.
 Vòstre plan amable sistèma de notificacion de %s",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Wpedzich
+ */
 $messages['pl'] = array(
-	'tasklist'                => 'Lista zadań',
-	'tasklistbyproject'       => 'Listy zadań według projektu',
-	'tasklistunknownproject'  => 'Nieznany projekt',
-	'tasklistunspecuser'      => 'Nie określono użytkownika',
-	'tasklistincorrectuser'   => 'Niepoprawna nazwa użytkownika',
-	'tasklistemail'           => '%s',
-	'tasklistemailsubject'    => '[%s] Zmiana listy zadań',
-	'tasklistmytasks'         => 'Moje zadania',
-	'tasklistbyprojectbad'    => 'Projekt \'\'\'%s\'\'\' nie jest poprawnym projektem. By zobaczyć listę poprawnych projektów, odwiedź stronę [[MediaWiki:TodoTasksValidProjects]].',
-	'tasklistbyprojname'      => 'Przypisano zadania do \'\'\'%s\'\'\'',
-	'tasklistchooseproj'      => 'Wybierz projekt:',
-	'tasklistprojdisp'        => 'Pokaż',
-	'tasklistbyname'          => '== Lista do zrobienia dla %s ==',
+	'tasklist'               => 'Lista zadań',
+	'tasklist-parser-desc'   => 'dodaje funkcje parsera <nowiki>{{#todo:}}</nowiki>, pozwalającą na przydzielanie zadań',
+	'tasklist-special-desc'  => 'Dodaje stronę specjalną do przeglądania [[Special:TaskList|przydzielonych zadań]]',
+	'tasklistbyproject'      => 'Listy zadań według projektu',
+	'tasklistunknownproject' => 'Nieznany projekt',
+	'tasklistunspecuser'     => 'Nie określono użytkownika',
+	'tasklistincorrectuser'  => 'Niepoprawna nazwa użytkownika',
+	'tasklistemail'          => '%s',
+	'tasklistemailsubject'   => '[%s] Zmiana listy zadań',
+	'tasklistmytasks'        => 'Moje zadania',
+	'tasklistbyprojectbad'   => "Projekt '''%s''' nie jest poprawnym projektem. By zobaczyć listę poprawnych projektów, odwiedź stronę [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "Przypisano zadania do '''%s'''",
+	'tasklistchooseproj'     => 'Wybierz projekt:',
+	'tasklistprojdisp'       => 'Pokaż',
+	'tasklistbyname'         => '== Lista do zrobienia dla %s ==',
+	'tasklistnoprojects'     => "BŁĄD: Najprawdopodobniej aktywowano zmienną '''\$wgUseProjects''', lecz nie utworzono pliku [[MediaWiki:TodoTasksValidProjects]]. Szczegóły w pliku [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions].",
+	'tasklistemailbody'      => ',
+
+Ktoś przydzielił Ci nowe zadanie w #s.
+
+By zobaczyć kompletną listę zadań, orzejdź do strony $s.
+
+Uprzejmy przypominacz',
 );
 
 /** Portuguese (Português)

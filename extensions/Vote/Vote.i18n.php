@@ -274,6 +274,14 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'vote-view-results' => 'បង្ហាញ​លទ្ឋផល',
+	'vote-login-link'   => 'ឡុកអ៊ីន',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

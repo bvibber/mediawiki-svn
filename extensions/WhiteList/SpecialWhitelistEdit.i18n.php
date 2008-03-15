@@ -333,6 +333,19 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'whitelistnummatches'       => 'wyników: $1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$allMessages['ps'] = array(
+	'mywhitelistpages'         => 'زما پاڼې',
+	'whitelisttablemodifyall'  => 'ټول',
+	'whitelisttablemodifynone' => 'هېڅ',
+	'whitelisttablepage'       => 'ويکي مخ',
+	'whitelisttabletype'       => 'د لاسرسۍ ډول',
+	'whitelisttablenewdate'    => 'نوې نېټه:',
+	'whitelistnewtabledate'    => 'د پای نېټه:',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -221,8 +221,9 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'multipleupload'           => 'Fichieren eroplueden',
-	'multiupload-fileuploaded' => 'Fichier eropgelueden',
+	'multipleupload'              => 'Fichieren eroplueden',
+	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
+	'multiupload-fileuploaded'    => 'Fichier eropgelueden',
 );
 
 /** Dutch (Nederlands)
@@ -303,6 +304,15 @@ $messages['pl'] = array(
 			<br />
 			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br /><br />
 				",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'multipleupload'              => 'دوتنې پورته کول',
+	'multipleupload-saveallfiles' => 'ټولې دوتنې خوندي کول',
+	'multiupload-toolbox'         => 'ګڼ شمېر دوتنې پورته کول',
 );
 
 /** Portuguese (Português)

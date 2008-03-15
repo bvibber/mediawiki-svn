@@ -666,10 +666,13 @@ $messages['lb'] = array(
 	'sign-email'                   => 'E-Mail-Adress:',
 	'sign-viewfield-realname'      => 'Numm',
 	'sign-viewfield-address'       => 'Adress',
+	'sign-viewfield-zip'           => 'Postcode',
 	'sign-viewfield-ip'            => 'IP-Adress',
 	'sign-viewfield-email'         => 'E-Mail',
 	'sign-viewfield-age'           => 'Alter',
 	'sign-viewfield-options'       => 'Optiounen',
+	'sign-signatures'              => 'Ënnerschreften',
+	'sign-closed'                  => 'zou',
 	'sig-anonymous'                => '<i>Anonym</i>',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
 	'sign-review-comment'          => 'Bemierkung',
@@ -1067,6 +1070,29 @@ Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa
 	'sign-uniquequery-similarphone' => 'Teléfono ch\'a-j ësmija',
 	'sign-uniquequery-similaremail' => 'Pòsta eletrònica ch\'a-j ësmija',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] firmà [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'sign-selectdoc'          => 'لاسوند:',
+	'sign-realname'           => 'نوم:',
+	'sign-address'            => 'د کوڅې پته:',
+	'sign-city'               => 'ښار:',
+	'sign-country'            => 'هېواد:',
+	'sign-phone'              => 'د ټيليفون شمېره:',
+	'sign-bday'               => 'عمر:',
+	'sign-email'              => 'برېښليک پته:',
+	'sign-viewfield-realname' => 'نوم',
+	'sign-viewfield-address'  => 'پته',
+	'sign-viewfield-city'     => 'ښار',
+	'sign-viewfield-country'  => 'هېواد',
+	'sign-viewfield-ip'       => 'IP پته',
+	'sign-viewfield-phone'    => 'ټيليفون',
+	'sign-viewfield-email'    => 'برېښليک',
+	'sign-viewfield-age'      => 'عمر',
+	'sign-signatures'         => 'لاسليکونه',
 );
 
 /** Portuguese (Português)

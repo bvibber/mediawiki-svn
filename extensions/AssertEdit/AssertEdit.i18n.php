@@ -97,7 +97,9 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'assert_edit_title' => 'Aserto malsukcesis',
+	'assert_edit_title'   => 'Aserto malsukcesis',
+	'assert_edit_desc'    => 'Aldonas redaktajn asertojn por uzo de robotoj',
+	'assert_edit_message' => 'La specifigita aserto ($1) malsukcesis.',
 );
 
 /** فارسی (فارسی)
@@ -204,6 +206,15 @@ $messages['ja'] = array(
 	'assert_edit_title'   => 'アサーションの失敗',
 	'assert_edit_desc'    => 'ボットが利用する編集アサーション',
 	'assert_edit_message' => 'アサーション ($1) に失敗しました。',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'assert_edit_title'   => 'Assert failed',
+	'assert_edit_desc'    => 'Adds edit assertions for use by bots',
+	'assert_edit_message' => 'Æ spesifisæren assersje ($1) førgeng.',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -365,6 +376,13 @@ $messages['tg'] = array(
 	'assert_edit_title'   => 'Таъйид номуваффақ шуд',
 	'assert_edit_desc'    => 'Имкони таъйиди вироишҳоро барои истифодаи роботҳо илова мекунад',
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'assert_edit_desc' => 'Додає підтвердження для використання ботами',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -220,6 +220,14 @@ $messages['pms'] = array(
 	'pageby-anon'         => '<i>anònim</i>',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pageby-contributors' => 'ونډه وال:',
+	'pageby-anon'         => '<i>ورکنومی</i>',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -262,9 +270,9 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author M.M.S.
  */
 $messages['sv'] = array(
+	'pageby-desc'         => 'Visar bidragsgivare på innehållssidor med <code><nowiki><pageby></nowiki></code>-taggen',
 	'pageby-first'        => 'Sida skapad av $1, $2',
 	'pageby-last'         => 'Sist <a href="$3">modifierad</a> av $1, $2',
 	'pageby-contributors' => 'Bidragsgivare:',

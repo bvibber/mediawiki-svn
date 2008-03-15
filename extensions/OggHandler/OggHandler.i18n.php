@@ -301,6 +301,16 @@ $messages['el'] = array(
 	'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'ogg-player-selected' => '(elektita)',
+	'ogg-more'            => 'Pli...',
+	'ogg-dismiss'         => 'Fermu',
+	'ogg-download'        => 'Alŝutu dosieron',
+);
+
 $messages['es'] = array(
 	'ogg-more' => 'Opciones...',
 	'ogg-dismiss' => 'Cerrar',
@@ -970,6 +980,15 @@ $messages['mr'] = array(
 	'ogg-no-player'           => 'माफ करा, पण तुमच्या संगणकामध्ये कुठलाही प्लेयर आढळला नाही. कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">प्लेयर डाउनलोड करा</a>.',
 	'ogg-no-xiphqt'           => 'तुमच्या संगणकामध्ये क्वीकटाईम ला लागणारा XiphQT हा तुकडा आढळला नाही. याशिवाय क्वीकटाईम ऑग संचिका चालवू शकणार नाही. कॄपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करा</a> किंवा दुसरा प्लेयर वापरा.',
 	'ogg-player-videoElement' => '<video> तुकडा',
+	'ogg-player-oggPlugin'    => 'ऑग प्लगीन',
+	'ogg-player-thumbnail'    => 'फक्त स्थिर चित्र',
+	'ogg-player-soundthumb'   => 'प्लेयर उपलब्ध नाही',
+	'ogg-player-selected'     => '(निवडलेले)',
+	'ogg-use-player'          => 'हा प्लेयर वापरा:',
+	'ogg-more'                => 'आणखी...',
+	'ogg-dismiss'             => 'बंद करा',
+	'ogg-download'            => 'संचिका उतरवा',
+	'ogg-desc-link'           => 'या संचिकेबद्दलची माहिती',
 );
 
 /** Low German (Plattdüütsch)

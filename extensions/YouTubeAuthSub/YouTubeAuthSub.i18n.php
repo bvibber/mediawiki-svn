@@ -45,6 +45,31 @@ Please be patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'youtubeauthsub'                     => 'Качване на видео в YouTube',
+	'youtubeauthsub-desc'                => 'Позволява на потребителите да [[Special:YouTubeAuthSub|качват видеоматериали]] диретно в YouTube',
+	'youtubeauthsub_info'                => 'За качване на видео в YouTube, което да бъде включено в страница, е необходимо попълване на следната информация:',
+	'youtubeauthsub_title'               => 'Заглавие',
+	'youtubeauthsub_description'         => 'Описание',
+	'youtubeauthsub_password'            => 'Парола в YouTube',
+	'youtubeauthsub_username'            => 'Потребителско име в YouTube',
+	'youtubeauthsub_keywords'            => 'Ключови думи',
+	'youtubeauthsub_category'            => 'Категория',
+	'youtubeauthsub_submit'              => 'Изпращане',
+	'youtubeauthsub_authsubinstructions' => 'За качване на видео е необходимо влизане в YouTube.',
+	'youtubeauthsub_uploadbutton'        => 'Качване',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Каченото видео е достъпно [http://www.youtube.com/watch?v=$1 тук]',
+	'youtubeauthsub_summary'             => 'Качване на видео в YouTube',
+	'youtubeauthsub_jserror_nokeywords'  => 'Необходимо е да се въведе една или повече ключови думи.',
+	'youtubeauthsub_jserror_notitle'     => 'Необходимо е да се въведе заглавие на видеото.',
+	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -81,6 +106,39 @@ Soyez patient.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Vous être prié d’entrer un ou plusieurs mots clefs.',
 	'youtubeauthsub_jserror_notitle'     => 'Vous être prié d’entrer un titre pour la vidéo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Veuiller entrer une description pour la vidéo.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'youtubeauthsub'                     => 'Cargar un vídeo ao YouTube',
+	'youtubeauthsub-desc'                => 'Permite aos usuarios [[Special:YouTubeAuthSub|cargar vídeos]] directamente ao YouTube',
+	'youtubeauthsub_info'                => 'Para cargar un vídeo ao YouTube e incluílo nunha páxina, enche a seguinte información:',
+	'youtubeauthsub_title'               => 'Título',
+	'youtubeauthsub_description'         => 'Descrición',
+	'youtubeauthsub_password'            => 'Contrasinal YouTube',
+	'youtubeauthsub_username'            => 'Alcume YouTube',
+	'youtubeauthsub_category'            => 'Categoría',
+	'youtubeauthsub_clickhere'           => 'Fai clic aquí para acceder ao sistema YouTube',
+	'youtubeauthsub_tokenerror'          => 'Erro ao xerar a autorización de mostra, proba a refrescar a páxina.',
+	'youtubeauthsub_success'             => "Parabéns!
+O teu vídeo foi cargado.
+Para ver o teu vídeo fai clic <a href='http://www.youtube.com/watch?v=$1'>aquí</a>.
+YouTube requirirá uns minutos para procesar o teu vídeo, polo que non estará aínda dispoñible.
+
+Para incluír o teu vídeo nunha páxina do wiki, insira o seguinte código:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Para cargar un vídeo, primeiro necesitará acceder ao sistema YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Cargar o teu vídeo desde:',
+	'youtubeauthsub_uploadbutton'        => 'Cargar',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Este vídeo pode ser visto [http://www.youtube.com/watch?v=$1 aquí]',
+	'youtubeauthsub_summary'             => 'Cargando vídeo ao YouTube',
+	'youtubeauthsub_uploading'           => 'O teu vídeo está sendo cargado.
+Por favor, sexa paciente.',
+	'youtubeauthsub_viewpage'            => 'De maneira alternativa, podes ver o teu vídeo [[$1|aquí]].',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -229,6 +287,44 @@ Czekaj.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Wprowadź jedno lub więcej słów kluczowych.',
 	'youtubeauthsub_jserror_notitle'     => 'Wprowadź tytuł materiału wideo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Wprowadź opis materiału wideo.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'youtubeauthsub'                     => 'Nahrať video YouTube',
+	'youtubeauthsub-desc'                => 'Umožňuje používateľom [[Special:YouTubeAuthSub|nahrávať vidá]] priamo na YouTube',
+	'youtubeauthsub_info'                => 'Aby ste mohli nahrať video na YouTube, ktoré použijete na stránke, vyplňte nasledovné informácie:',
+	'youtubeauthsub_title'               => 'Názov',
+	'youtubeauthsub_description'         => 'Popis',
+	'youtubeauthsub_password'            => 'YouTube heslo',
+	'youtubeauthsub_username'            => 'Používateľské meno na YouTube',
+	'youtubeauthsub_keywords'            => 'Kľúčové slová',
+	'youtubeauthsub_category'            => 'Kategória',
+	'youtubeauthsub_submit'              => 'Poslať',
+	'youtubeauthsub_clickhere'           => 'Kliknutím sem sa prihlásite na YouTube',
+	'youtubeauthsub_tokenerror'          => 'Chyba pri vytváraní autentifikačného tokenu. Skúste obnoviť stránku.',
+	'youtubeauthsub_success'             => "Gratulujeme!
+Vaše video je nahrané.
+Svoje video si môžete pozrieť po <a href='http://www.youtube.com/watch?v=$1'>kliknutí sem</a>.
+YouTube môže nejaký čas trvať, kým vaše video spracuje, takže možno ešte nie je pripravené.
+
+Video na wiki stránku môžete vložiť pomocou nasledovného kódu:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Aby ste mohli nahrať video, budete sa musieť najprv prihlásiť na YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Nahrajte svoje video odtiaľto:',
+	'youtubeauthsub_uploadbutton'        => 'Nahrať',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Toto video si môžete [http://www.youtube.com/watch?v=$1 pozrieť tu]',
+	'youtubeauthsub_summary'             => 'Nahráva sa video na YouTube',
+	'youtubeauthsub_uploading'           => 'Vaše video sa nahráva.
+Buďte prosím trpezliví.',
+	'youtubeauthsub_viewpage'            => 'Inak si video môžete [[$1|pozrieť tu]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Prosím, zadajte jedno alebo viac kľúčových slov.',
+	'youtubeauthsub_jserror_notitle'     => 'Prosím, zadajte názov videa.',
+	'youtubeauthsub_jserror_nodesc'      => 'Prosím, zadajte popis videa.',
 );
 
 /** Swedish (Svenska)

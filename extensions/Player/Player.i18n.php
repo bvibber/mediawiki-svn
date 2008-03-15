@@ -310,6 +310,22 @@ $messages['pms'] = array(
 	'player-goto-file' => 'archivi',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'player'               => 'غږونکی',
+	'player-playertitle'   => 'غږونکی: $1',
+	'player-file'          => 'د دوتنې نوم',
+	'player-play'          => 'غږول',
+	'player-not-found'     => 'دوتنه و نه موندل شوه',
+	'player-invalid-title' => 'ناسم سرليک',
+	'player-clicktoplay'   => '$1 غږول',
+	'player-goto-player'   => 'غږونکی',
+	'player-goto-page'     => 'مخ',
+	'player-goto-file'     => 'دوتنه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

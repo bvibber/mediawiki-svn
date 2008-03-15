@@ -231,6 +231,14 @@ $messages['ja'] = array(
 	'sitenotice-desc'  => 'サイトからのお知らせを利用者が非表示にすることを可能とする',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'sitenotice_close' => 'slet',
+	'sitenotice-desc'  => "Enmåge bruger til slette'n sitenotice",
+);
+
 $messages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاتۋ',
 );

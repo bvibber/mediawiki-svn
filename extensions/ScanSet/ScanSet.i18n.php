@@ -364,6 +364,24 @@ $messages['lt'] = array(
 	'scanset_prev' => '&lt; Ankstesnis',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'scanset-desc'                      => 'ऍंड्रियास ग्रॉसच्या सीडी/डीव्हीडी मधील चित्रे पहा',
+	'scanset_no_name'                   => 'स्कॅनसेट: तुम्ही स्कॅनसेटला नाव देणे आवश्यक आहे, उदा. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'स्कॅनसेट: चुकीचा अथवा अनुपलब्ध स्कॅन सेट',
+	'scanset_unrecognised_index_format' => 'स्कॅनसेट: अनोळखी अनुक्रम',
+	'scanset_opendir_error'             => 'स्कॅनसेट: त्रुटी, $1 डिरेक्टरी उघडता येत नाही',
+	'scanset_no_files'                  => 'स्कॅनसेट: दिलेल्या डिरेक्टरीमध्ये संचिका नाहीत.',
+	'scanset_no_volumes'                => 'स्कॅनसेट: मोठ्या डिरेक्टरी सापडल्या नाहीत',
+	'scanset_missing_index_file'        => 'स्कॅनसेट: अनुक्रम संचिका $1 सापडली नाही',
+	'scanset_index_file_error'          => 'स्कॅनसेट: अनुक्रम संचिकेत $1 ओळीवर त्रुटी आहे',
+	'scanset_invalid_volume'            => 'स्कॅनसेट: चुकीचे घनमान',
+	'scanset_next'                      => 'पुढील &gt;',
+	'scanset_prev'                      => '&lt; मागील',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

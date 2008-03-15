@@ -664,9 +664,15 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
 /** Danish (Dansk)
+ * @author Morten
  * @author M.M.S.
  */
 $messages['da'] = array(
+	'boardvote'         => 'Valg af medlemmer til Wikimedias bestyrelse',
+	'boardvote-desc'    => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
+	'boardvote_entry'   => '* [[Special:Boardvote/vote|Stem]]
+* [[Special:Boardvote/list|Vis alle stemmer til dato]]
+* [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
 	'boardvote_user'    => 'Bruger',
 	'boardvote_welcome' => "Velkommen '''$1'''!",
 );
@@ -786,18 +792,33 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'boardvote_time'       => 'Tempo',
-	'boardvote_user'       => 'Uzanto',
-	'boardvote_edits'      => 'Redaktoj',
-	'boardvote_days'       => 'Tagoj',
-	'boardvote_ip'         => 'IP-adreso',
-	'boardvote_dumplink'   => 'Klaku ĉi tien',
-	'boardvote_submit'     => 'Ek!',
-	'boardvote_strike'     => 'Trastreku',
-	'boardvote_unstrike'   => 'Maltrastreku',
-	'boardvote_edits_many' => 'multaj',
-	'boardvote_blocked'    => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
-	'boardvote_welcome'    => "Bonvenon '''$1'''!",
+	'boardvote'              => 'Baloto por la "Administra Konsilantaro de Wikimedia Fondaĵo"',
+	'boardvote-desc'         => '[[meta:Board elections|Baloto de "Administra Konsilantaro de Wikimedia Fondaĵo"]]',
+	'boardvote_intro'        => '<p>Bonvenon al la tria baloto por la Administra Konsilantaro de \'\'Wikimedia\'\'. Ni vocxdonas por anstatauxi unu demisiintan delegiton kiu reprezentu la uzantarojn de la diversaj projektoj de \'\'Wikimedia\'\' <!--- : la <strong>Reprezentanto de la Kontribuantaj Aktivaj Uzantoj</strong> kaj la <strong>Reprezentanto de la Volontulaj Uzantoj</strong> --->. Tiu helpos difini la estontan direkton, kiun la projektoj de Wikimedia sekvos, individue kaj grupe, kaj reprezentas <em>viajn</em> interesojn kaj zorgojn en la Administrantaro. la Konsilantaro decidas pri rimedoj por estigi enspezojn kaj la uzon de la kolektita mono. </p>
+
+<p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la <a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Eo" class="external">kandidatoj</a> antaux ol vocxodoni. Cxiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dedicxita al disvolvigxo kaj libera disdono de homaj scioj.  </p>
+
+<p>Vi povas vocxdoni por tiom da kandidatoj <!-- en cxiu kategorio--> kiom vi volas. La kandidato ricevinta la plej multajn vocxojn por la posteno estos deklarita la gajninto de la posteno. Okaze de egala nombro da vocxoj, dua baloto estos organizita.</p>
+
+<p>Por pli da informoj bonvolu legi:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Eo" class="external">Plej oftaj demandoj pri la baloto</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Eo" class="external">Kandidatoj</a></li></ul>',
+	'boardvote_intro_change' => '<p>Vi estas jam balotita. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kanditatoj kiujn vi elektas.</p>',
+	'boardvote_novotes'      => 'Neniu ne jam voĉdonis.',
+	'boardvote_time'         => 'Tempo',
+	'boardvote_user'         => 'Uzanto',
+	'boardvote_edits'        => 'Redaktoj',
+	'boardvote_days'         => 'Tagoj',
+	'boardvote_ip'           => 'IP-adreso',
+	'boardvote_ua'           => 'Retlegilo de la uzanto.',
+	'boardvote_dumplink'     => 'Klaku ĉi tien',
+	'boardvote_submit'       => 'Ek!',
+	'boardvote_strike'       => 'Trastreku',
+	'boardvote_unstrike'     => 'Maltrastreku',
+	'boardvote_edits_many'   => 'multaj',
+	'boardvote_blocked'      => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
+	'boardvote_welcome'      => "Bonvenon '''$1'''!",
+	'go_to_board_vote'       => 'Baloto de Wikimedia Administrantaro',
 );
 
 /** Spanish (Español)
@@ -1818,12 +1839,30 @@ $messages['ja'] = array(
  * @author Huslåke
  */
 $messages['jut'] = array(
-	'boardvote_time'  => 'Tid',
-	'boardvote_user'  => 'Bruger',
-	'boardvote_edits' => 'Redigærer',
-	'boardvote_days'  => 'Tåg',
-	'boardvote_ip'    => 'IP',
-	'boardvote_ua'    => 'User agent',
+	'boardvote'              => 'Valg åf velemmer til Wikimedias bestyrelse',
+	'boardvote-desc'         => '[[meta:Board elections|Valg åf velemmer til Wikimedias bestyrelse]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemme]]
+* [[Special:Boardvote/list|Ves ål stemmer til dato]]
+* [[Special:Boardvote/dump|Dump krypteret stemmeførtegnelse]]',
+	'boardvote_notqualified' => 'Du erst ikke kwalifærn til stemme en dette eleksje. Du nødst til har $3 redigærenge førdette $2, ønd diin erste redigærenge mu derfør $5 være.',
+	'boardvote_novotes'      => 'Ekke man her stemmen nu.',
+	'boardvote_time'         => 'Tid',
+	'boardvote_user'         => 'Bruger',
+	'boardvote_edits'        => 'Redigærer',
+	'boardvote_days'         => 'Tåg',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'User agent',
+	'boardvote_listintro'    => "<p>Dett'er en liste åler votes which have been recorded
+to date. $1 før æ enkriptet data.</p>",
+	'boardvote_dumplink'     => 'Klik her',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Stryk',
+	'boardvote_unstrike'     => 'Unstryk',
+	'boardvote_needadmin'    => 'Ålen eleksje administratårer kan performær dette operåsje.',
+	'boardvote_notstarted'   => "Stemmenge har ig'n stårtet",
+	'boardvote_edits_many'   => 'føl',
+	'boardvote_welcome'      => "Vælkomme '''$1'''!",
+	'go_to_board_vote'       => 'Wikimedia Board Eleksje 2007',
 );
 
 /** Georgian (ქართული)
@@ -2346,7 +2385,7 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'boardvote'              => 'विकिमीडिया विश्वस्त मडळ निवडणूक',
+	'boardvote'              => 'विकिमीडिया विश्वस्त मंडळ निवडणूक',
 	'boardvote-desc'         => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|मत द्या]]
 * [[Special:Boardvote/list|आजपर्यंतच्या मतांची यादी]]

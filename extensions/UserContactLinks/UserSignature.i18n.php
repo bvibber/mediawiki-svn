@@ -126,6 +126,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'usercontactlink-baduser' => 'nesprávne meno používateľa',
+	'usercontactlink-desc'    => 'Poskytuje možnosť jednoducho a konzistentne pridávať mená ostatných používateľov pomocou syntaxe ^^^používateľ^^^',
 );
 
 /** Seeltersk (Seeltersk)

@@ -237,6 +237,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'bookinfo-header'            => 'Libra informo',
 	'bookinfo-result-title'      => 'Titolo:',
 	'bookinfo-result-author'     => 'Aŭtoro:',
 	'bookinfo-result-publisher'  => 'Eldonejo:',
@@ -486,6 +487,24 @@ $messages['ja'] = array(
 	'bookinfo-error-noresponse'  => 'リクエストを送信しましたが、応答がないかタイムアウトしました。',
 	'bookinfo-purchase'          => 'この本を $1 から購入する',
 	'bookinfo-provider'          => 'データ提供元: $1',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'bookinfo-header'            => 'Båĝinformåsje',
+	'bookinfo-desc'              => 'Expands [[Special:Booksources]] with information from a web service',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Førfatter:',
+	'bookinfo-result-publisher'  => 'Udgæver:',
+	'bookinfo-result-year'       => 'År:',
+	'bookinfo-error-invalidisbn' => 'Det endtastede ISBN-nåmer er ugyldegt.',
+	'bookinfo-error-nosuchitem'  => 'Æ våre bistä ekke æller blev ekke fundet.',
+	'bookinfo-error-nodriver'    => 'Ken ekke endlæse en passende båĝinformåsjedrejver.',
+	'bookinfo-error-noresponse'  => 'Entet svar æller førespørgslen fek tiidud.',
+	'bookinfo-purchase'          => 'Køb denne båĝ hos $1',
+	'bookinfo-provider'          => 'Data leveret åf: $1',
 );
 
 /** Georgian (ქართული)

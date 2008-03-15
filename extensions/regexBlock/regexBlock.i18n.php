@@ -393,6 +393,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'regexblock'                    => 'Begrëffer fir e Benotzer oder eng IP-Adress ze spären',
 	'regexblock-reason-name'        => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
+	'regexblock-unblock-success'    => 'Spär opgehuewen',
 	'regexblock-unblock-log'        => "D'Spär vum Benotzer oder vun der IP-Adress '''$1'''' gouf opgehuewen.",
 	'regexblock-form-username'      => 'IP-Adress oder Benotzer:',
 	'regexblock-form-reason'        => 'Grond:',
@@ -591,6 +592,16 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'regexblock-form-username' => 'Adres IP lub nazwa użytkownika:',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'regexblock-form-reason' => 'سبب:',
+	'regexblock-view-all'    => 'ټول',
+	'regexblock-view-go'     => 'ورځه',
+	'regexblock-view-reason' => 'سبب: $1',
 );
 
 /** Portuguese (Português)

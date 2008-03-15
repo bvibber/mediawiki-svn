@@ -333,14 +333,35 @@ $messages['oc'] = array(
  * @author McMonster
  */
 $messages['pl'] = array(
-	'todo-add-queue'    => 'Dodaj kolejkę…',
-	'todo-move-queue'   => 'Przesuń do kolejki…',
-	'todo-list-for'     => 'Lista "do zrobienia" dla',
-	'todo-list-change'  => 'Zmień',
-	'todo-list-cancel'  => 'Anuluj',
-	'todo-new-item'     => 'Nowa pozycja',
-	'todo-form-details' => 'Szczegóły:',
-	'todo-form-submit'  => 'Wyślij zapytanie',
+	'todo'                  => 'Lista "ToDo"',
+	'todo-desc'             => 'Eksperymentalne rozszerzenie udostępniające osobistą [[Special:Todo|listę "ToDo"]]',
+	'todo-tab'              => 'ToDo',
+	'todo-new-queue'        => 'nowy',
+	'todo-mail-subject'     => 'Zamknięto pozycję na liście "ToDo" użytkownika $1.',
+	'todo-mail-body'        => 'Zaznaczyłeś opcję poinformowania Cię o zakończeniu czynności, którą dodałeś do listy "ToDo" użytkownika $1 w trybie online.
+
+Pozycja: $2
+Przesłano: $3
+
+Pozycję oznaczono jako wykonaną z następującym komentarzem:
+$4',
+	'todo-invalid-item'     => 'Nieprawidłowa lub nieistniejąca pozycja',
+	'todo-update-else-item' => 'Próba uaktualnienia listy pozycji innego użytkownika',
+	'todo-unrecognize-type' => 'Nie rozpoznano typu',
+	'todo-user-invalide'    => 'Podano nieprawidłową lub nieistniejącą nazwę użytkownika, albo użytkownik nie jest w stanie wykorzystywać funkcji "ToDo".',
+	'todo-item-list'        => 'Twoje pozycje',
+	'todo-no-item'          => 'Brak pozycji na liście "ToDo".',
+	'todo-invalid-owner'    => 'Właściciel tej pozycji jest nieprawidłowy',
+	'todo-add-queue'        => 'Dodaj kolejkę…',
+	'todo-move-queue'       => 'Przesuń do kolejki…',
+	'todo-list-for'         => 'Lista "do zrobienia" dla',
+	'todo-list-change'      => 'Zmień',
+	'todo-list-cancel'      => 'Anuluj',
+	'todo-new-item'         => 'Nowa pozycja',
+	'todo-issue-summary'    => 'Podsumowanie kwestii:',
+	'todo-form-details'     => 'Szczegóły:',
+	'todo-form-email'       => 'Jeśli chcesz otrzymywać powiadomienia pocztą elektroniczna po zamknięciu tej pozycji, wpisz w polu poniżej swój adres e-mail:',
+	'todo-form-submit'      => 'Wyślij zapytanie',
 );
 
 /** Pashto (پښتو)

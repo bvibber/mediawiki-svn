@@ -219,12 +219,18 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Crt
+ */
 $messages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
 	'linksearch-pat'   => 'Osoite',
 	'linksearch-ns'    => 'Nimiavaruus',
 	'linksearch-ok'    => 'Etsi',
-	'linksearch-text'  => 'Asteriskia (*) voi käyttää jokerimerkkinä, esimerkiksi ”*.wikipedia.org”.',
+	'linksearch-text'  => 'Asteriskia (*) voi käyttää jokerimerkkinä, esimerkiksi ”*.wikipedia.org”.
+
+Tuetut protokollat: <tt>$1</tt>.',
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
 );
@@ -626,9 +632,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'linksearch-pat' => 'د پلټنې مخبېلګه:',
-	'linksearch-ns'  => 'نوم-تشيال:',
-	'linksearch-ok'  => 'لټون',
+	'linksearch'      => 'د جال تړنې پلټل',
+	'linksearch-pat'  => 'د پلټنې مخبېلګه:',
+	'linksearch-ns'   => 'نوم-تشيال:',
+	'linksearch-ok'   => 'لټون',
+	'linksearch-line' => '$1 د $2 سره تړل شوی',
 );
 
 /** Portuguese (Português)

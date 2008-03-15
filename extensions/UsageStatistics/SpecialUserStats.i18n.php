@@ -397,6 +397,7 @@ $messages['lb'] = array(
 	'usagestatisticsintervalday'   => 'Dag',
 	'usagestatisticsintervalweek'  => 'Woch',
 	'usagestatisticsintervalmonth' => 'Mount',
+	'usagestatisticscalselect'     => 'Auswielen',
 );
 
 /** Marathi (मराठी)

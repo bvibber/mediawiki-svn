@@ -170,13 +170,14 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'lookupuser_intro'        => "Gitt e Benotzernumm an fir d'Astellungen vun dem Benotzer ze kucken.",
-	'lookupuser_nonexistent'  => 'Feeler: De Benotzer gëtt et net',
-	'lookupuser_id'           => 'Benotzer-Nummer: <tt>#$1</tt>',
-	'lookupuser_email'        => 'E-mail: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname'     => 'Richtege Numm: $1',
-	'lookupuser_registration' => 'Datum vun der Umeldung: $1',
-	'lookupuser_useroptions'  => 'Astellunge vum Benotzer:',
+	'lookupuser_intro'             => "Gitt e Benotzernumm an fir d'Astellungen vun dem Benotzer ze kucken.",
+	'lookupuser_nonexistent'       => 'Feeler: De Benotzer gëtt et net',
+	'lookupuser_not_authenticated' => 'net identifizéiert',
+	'lookupuser_id'                => 'Benotzer-Nummer: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Richtege Numm: $1',
+	'lookupuser_registration'      => 'Datum vun der Umeldung: $1',
+	'lookupuser_useroptions'       => 'Astellunge vum Benotzer:',
 );
 
 /** Malayalam (മലയാളം)
@@ -262,6 +263,14 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'lookupuser_id' => 'ID użytkownika: <tt>#$1</tt>',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'lookupuser_realname'     => 'اصلي نوم: $1',
+	'lookupuser_registration' => 'د نومليکنې نېټه: $1',
 );
 
 /** Portuguese (Português)

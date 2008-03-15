@@ -161,8 +161,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'inspectcache-get'     => 'Kréien',
 	'inspectcache-delete'  => 'Läschen',
 	'inspectcache-deleted' => 'Cache läschen',
+	'inspectcache-list'    => 'Lëscht',
 );
 
 /** Dutch (Nederlands)

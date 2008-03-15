@@ -662,6 +662,7 @@ $wdMessages['eo'] = array(
  * @author Ascánder
  */
 $wdMessages['es'] = array(
+	'datasearch'                            => 'Wikidata: Búsqueda de datos',
 	'langman_title'                         => 'Gestor de lenguas',
 	'languages'                             => 'Wikidata: Gestor de lenguas',
 	'ow_save'                               => 'Guardar',
@@ -670,7 +671,15 @@ $wdMessages['es'] = array(
 	'ow_noedit_title'                       => 'No se permite modificar',
 	'ow_noedit'                             => 'No tienes permiso de modificar las páginas de la base "$1". Mira [[{{MediaWiki:Ow editing policy url}}|nuestras reglas de modificación]].',
 	'ow_uipref_datasets'                    => 'Vista por defecto',
+	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<No hay nada seleccionado>',
+	'ow_conceptmapping_help'                => '<p>acciones posibles: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  insertar una correspondencia</li>
+<li>&action=get&concept=<concept_id>  leer una correspondencia almacenada</li>
+<li>&action=list_sets  devuelve una lista de posibles prefijos de contexto de datos y a qué se pueden referir</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para un sentido definido en un concepto, devuelve todos los otros</li>
+<li>&action=help  Muestra un mensaje de ayuda.</li>
+</ul></p>',
 	'ow_conceptmapping_uitext'              => '<p>Ligar los conceptos permite identificar los sentidos definidos en un juego de datos que son idénticos a sentidos definidos en otros juegos de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Sentimos no saber hacer "$1".',
 	'ow_dm_not_present'                     => 'Ausente',
@@ -743,6 +752,7 @@ Favor contactar al administrador.',
 Favor contactar al administrador.',
 	'ow_copy_successful'                    => '<h2>Copia exitosa</h2>Sus datos han sido copiados exitosamente (Favor verificar de todas formas).',
 	'ow_copy_unsuccessful'                  => '<h3>Copia fallida</h3> La copia no se realizó.',
+	'ow_no_action_specified'                => '<h3>No se especificó ninguna acción</h3> ¿Puede que hayas llegado a esta página directamente? Normalmente, no necesitas venir hasta aquí.',
 );
 
 /** Finnish (Suomi)
@@ -802,7 +812,7 @@ $wdMessages['fr'] = array(
 	'ow_dm_OK'                              => 'Valider',
 	'ow_dm_not_present'                     => 'non inscrit',
 	'ow_dm_not_found'                       => 'non trouvé dans la base de données ou mal rédigé',
-	'ow_mapping_successful'                 => 'Tous les champs marqués avec [{{MediaWiki:Ow_dm_OK}}] ont été insérés<br />',
+	'ow_mapping_successful'                 => 'Tous les champs marqués avec [OK] ont été insérés<br/>',
 	'ow_mapping_unsuccessful'               => 'Il faut qu’au moins deux sens soient définis avant qu’ils ne puissent être reliés.',
 	'ow_will_insert'                        => 'Insèrera les suivants :',
 	'ow_contents_of_mapping'                => 'Correspondances',
@@ -898,6 +908,7 @@ $wdMessages['ga'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $wdMessages['gl'] = array(
 	'datasearch'                       => 'Wikidata: Procura de datos',
@@ -965,6 +976,7 @@ $wdMessages['gl'] = array(
 	'ow_copy_no_action_specified'      => 'Precisar unha acción',
 	'ow_copy_help'                     => 'Algún día, nós poderemos axudalo.',
 	'ow_copy_unsuccessful'             => '<h3>Copia sen éxito</h3> Ningunha operación de copiado tivo lugar.',
+	'ow_no_action_specified'           => '<h3>Non foi especificada ningunha acción</h3> Quizais veu a esta páxina directamente? Normalmente non precisa estar aquí.',
 );
 
 $wdMessages['he'] = array(

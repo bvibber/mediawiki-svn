@@ -702,6 +702,14 @@ $messages['pt'] = array(
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'webstore_no_file'     => 'هېڅ کومه دوتنه پورته نه شوه.',
+	'webstore_no_response' => 'د پالنګر نه هېڅ کوم ځواب نشته',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso

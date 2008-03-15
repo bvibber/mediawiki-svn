@@ -481,6 +481,13 @@ $messages['pms'] = array(
 	'grouppage-patroller' => '{{ns:project}}:patoja',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'patrol-revert-reason' => 'سبب:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso

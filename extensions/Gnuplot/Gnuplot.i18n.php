@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'gnuplot-desc' => 'Adds the tag <code><nowiki><gnuplot></nowiki></code> to use Gnuplot',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'gnuplot-desc' => 'Добавя етикет <code><nowiki><gnuplot></nowiki></code> за използване на Gnuplot',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -51,6 +58,20 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'gnuplot-desc' => 'Ajusta la balisa <code><nowiki><gnuplot></nowiki></code> per poder utilizar Gnuplot',
+);
+
+/** Polish (Polski)
+ * @author Dodek
+ */
+$messages['pl'] = array(
+	'gnuplot-desc' => 'Dodaj tag <code><nowiki><gnuplot></nowiki></code> by użyć Gnuplota',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'gnuplot-desc' => 'Добавляет тег <code><nowiki><gnuplot></nowiki></code> для использования Gnuplot',
 );
 
 /** Slovak (Slovenčina)

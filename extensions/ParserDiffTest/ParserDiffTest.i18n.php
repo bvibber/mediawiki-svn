@@ -240,11 +240,13 @@ $messages['frp'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'pdtest_no_target'    => 'Non se especificou o destino.',
 	'pdtest_page_missing' => 'A páxina especificada non foi atopada na base de datos.',
 	'pdtest_no_changes'   => 'Non foron detectados cambios.',
+	'pdtest_time_report'  => 'b>$1</b> leva $2 segundos, <b>$3</b> leva $4 segundos.',
 	'pdtest_ok'           => 'De acordo',
 	'pdtest_get_text'     => 'Obter texto da páxina',
 	'pdtest_diff'         => 'Diferenzas',
@@ -437,6 +439,25 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'pdtest_ok' => 'Gerai',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'parserdifftest'      => 'पार्सर मधील फरक परीक्षा',
+	'pdtest-desc'         => 'दोन वेगवेगळ्या पार्सर्स मधील फरक पाहण्यासाठी [[Special:ParserDiffTest|विशेष पान]]',
+	'pdtest_no_target'    => 'लक्ष्य दिलेले नाही',
+	'pdtest_page_missing' => 'दिलेले पान डाटाबेस मध्ये सापडलेले नाही.',
+	'pdtest_no_changes'   => 'फरक सापडले नाहीत.',
+	'pdtest_time_report'  => '<b>$1</b> ला $2 सेकंद लागले, <b>$3</b> ला $4 सेकंद लागले.',
+	'pdtest_title'        => 'कंटेक्स्टचे शीर्षक:',
+	'pdtest_text'         => 'दिलेला मजकूर:',
+	'pdtest_ok'           => 'सर्व ठीक',
+	'pdtest_get_text'     => 'पानावरील मजकूर ओढा',
+	'pdtest_diff'         => 'फरक',
+	'pdtest_side_by_side' => 'आउटपुटमधील फरक पहा',
+	'pdt_comparing_page'  => '[[$1]] च्या पार्सर आउटपुटमधील फरक पहात आहे',
 );
 
 /** Low German (Plattdüütsch)

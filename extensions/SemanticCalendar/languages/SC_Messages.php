@@ -133,10 +133,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'sc_previousmonth'    => 'Vireschte Mount',
-	'sc_nextmonth'        => 'Nächste Mount',
-	'sc_today'            => 'Haut',
-	'sc_gotomonth'        => 'Géi op de Mount',
+	'sc_previousmonth' => 'Mount virdrun',
+	'sc_nextmonth'     => 'Nächste Mount',
+	'sc_today'         => 'Haut',
+	'sc_gotomonth'     => 'Géi op de Mount',
 );
 
 /** Lithuanian (Lietuvių)

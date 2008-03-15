@@ -484,6 +484,13 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-hide-map' => 'ocultar mapa',
 );
 
+/** Basque (Euskara)
+ * @author Bengoa
+ */
+$wgGoogleMapsMessages['eu'] = array(
+	'gm-no-results' => 'Barkatu, ez dago emaitzarik',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
@@ -595,9 +602,20 @@ $wgGoogleMapsMessages['gl'] = array(
 	'gm-small'                     => 'Pequeno',
 	'gm-yes'                       => 'Si',
 	'gm-no'                        => 'Non',
+	'gm-no-search-preface'         => 'Faga clic no mapa para engadir un punto.',
 	'gm-search'                    => 'Procurar',
+	'gm-clear-search'              => 'limpar os resultados da busca',
 	'gm-meters'                    => 'metros',
+	'gm-miles'                     => 'millas',
 	'gm-save-path'                 => 'Gardar',
+	'gm-edit-path'                 => 'engadir puntos',
+	'gm-show-path'                 => 'amosar puntos',
+	'gm-color-path'                => 'trocar a cor',
+	'gm-line-width'                => 'Ancho',
+	'gm-make-map'                  => 'facer un mapa',
+	'gm-hide-map'                  => 'agochar mapa',
+	'gm-back'                      => 'voltar',
+	'gm-kml-include-link'          => 'engadir ao mapa',
 	'gm-kml-loading'               => 'cargando...',
 	'gm-earth'                     => 'Terra',
 	'gm-moon'                      => 'Lúa',
@@ -746,7 +764,11 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-miles'            => 'Meilen',
 	'gm-save-path'        => 'Späicheren',
 	'gm-color-path'       => 'Farf änneren',
+	'gm-line-width'       => 'Breed',
 	'gm-back'             => 'zréck',
+	'gm-kml-loading'      => 'lueden ...',
+	'gm-earth'            => 'Äerd',
+	'gm-moon'             => 'Mount',
 );
 
 /** Dutch (Nederlands)
@@ -971,6 +993,7 @@ $wgGoogleMapsMessages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Dodek
  * @author Masti
  */
 $wgGoogleMapsMessages['pl'] = array(
@@ -979,8 +1002,13 @@ $wgGoogleMapsMessages['pl'] = array(
 	'gm-searching'        => 'wyszukiwanie...',
 	'gm-are-you-sure'     => 'Czy jesteś pewien?',
 	'gm-height'           => 'Wysokość',
+	'gm-large'            => 'Duży',
+	'gm-medium'           => 'Średni',
+	'gm-small'            => 'Mały',
 	'gm-yes'              => 'Tak',
 	'gm-no'               => 'Nie',
+	'gm-search'           => 'Szukaj',
+	'gm-clear-search'     => 'wyczyść wyniki wyszukiwania',
 	'gm-save-path'        => 'Zapisz',
 	'gm-color-path'       => 'zmień kolor',
 	'gm-line-width'       => 'Szerokość',
@@ -1007,6 +1035,7 @@ $wgGoogleMapsMessages['ps'] = array(
 	'gm-no-zoom-control' => 'هېڅ',
 	'gm-yes'             => 'هو',
 	'gm-no'              => 'نه',
+	'gm-search'          => 'لټون',
 	'gm-save-path'       => 'خوندي کول',
 	'gm-color-path'      => 'رنګ بدلول',
 	'gm-make-map'        => 'يوه نخشه جوړول',

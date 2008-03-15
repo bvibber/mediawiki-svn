@@ -634,6 +634,23 @@ $messages['ml'] = array(
 	'blacklistedusername' => 'കരിമ്പട്ടികയില്‍പ്പെട്ട ഉപയോക്തൃനാമം',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'usernameblacklist-desc'          => 'एकापेक्षा अधिक सदस्यनामांना ब्लॉक करण्यासाठी [[MediaWiki:Usernameblacklist|सदस्यनाम ब्लॉकयादी]] तयार करते',
+	'blacklistedusername'             => 'ब्लॉक केलेले सदस्यनाम',
+	'blacklistedusernametext'         => 'तुम्ही निवडलेले सदस्यनाम [[MediaWiki:Usernameblacklist|ब्लॉक यादी]] मध्ये आहे. कृपया दुसरे नाव निवडा.',
+	'usernameblacklist'               => '<pre>
+# या यादीतील प्रत्येक नोंद त्या नावाने सदस्य नोंदणी करण्यापासून रोखेल.
+# प्रत्येक नोंद ही यादीत असली पाहिजे. उदा.
+#
+# * फू
+# * [बा]बल
+</pre>',
+	'usernameblacklist-invalid-lines' => 'सदस्यनम ब्लॉक यादीतील खालील {{PLURAL:$1|ओळ चुकीची आहे|ओळी चुकीच्या आहेत}}; कृपया जतन करण्यापूर्वी {{PLURAL:$1|ती|त्या}} दुरुस्त करा:',
+);
+
 $messages['nds'] = array(
 	'blacklistedusername' => 'Brukernaam op de swarte List',
 	'blacklistedusernametext' => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',

@@ -1603,6 +1603,7 @@ $messages['ru'] = array(
 	'add_stream_permission'          => 'У вас недостаточно прав, чтобы добавить новый поток',
 	'edit_stream_missing'            => 'Ошибочное имя потока',
 	'mv_missing_req_time'            => 'Ошибочное время запроса',
+	'mv_missing_cat'                 => 'Ошибочное имя категории',
 	'mv_stream_already_exists'       => 'Поток <a href="$2">$1</a> уже существует',
 	'mv_summary_add_stream'          => 'поток добавлен через форму',
 	'mv_error_stream_insert'         => 'ошибка при вставке потока',

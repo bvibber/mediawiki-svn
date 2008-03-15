@@ -32,6 +32,27 @@ $messages['nl'] = array(
 	'htmlets-desc' => 'Voegt de tag <tt><nowiki><htmlet></nowiki></tt> toe om HTML snippets uit bestanden te kunnen gebruiken',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'htmlets-desc' => 'Vos daissa lo ligam HTML abrejat en linha dempuèi los fichièrs utilizant la balisa <tt><nowiki><htmlet></nowiki></tt>',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'htmlets-desc' => 'Позволяет вам включать из файлов фрагменты HTML с помощью тега <tt><nowiki><htmlet></nowiki></tt>',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'htmlets-desc' => 'Umožňuje vkladať kúsky HTML kódu zo súborov pomocou značky <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -38,6 +38,13 @@ $messages['fr'] = array(
 	'multiboilerplate-submit' => 'Charger',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'multiboilerplate-submit' => 'Cargar',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
