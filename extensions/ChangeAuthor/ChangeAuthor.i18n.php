@@ -490,6 +490,7 @@ $messages['lb'] = array(
 	'changeauthor-revview'              => 'Versioun #$1 vun $2',
 	'changeauthor-nosuchtitle'          => 'Et gëtt keng Säit mam Numm "$1".',
 	'changeauthor-success'              => 'Är Ufro gouf duerchgefouert.',
+	'changeauthor-logpagename'          => 'Lëscht vun den Ännerunge vun dësem Auteur',
 	'changeauthor-rev'                  => 'Versioun $1',
 );
 

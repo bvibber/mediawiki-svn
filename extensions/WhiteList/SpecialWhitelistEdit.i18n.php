@@ -165,6 +165,26 @@ $allMessages['km'] = array(
 	'whitelistnewtabledate'    => 'កាលបរិច្ឆេទផុតកំណត់៖',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$allMessages['lb'] = array(
+	'mywhitelistpages'         => 'Meng Säiten',
+	'whitelisttablemodify'     => 'Änneren',
+	'whitelisttablemodifyall'  => 'All',
+	'whitelisttablemodifynone' => 'Näischt',
+	'whitelisttablemodby'      => "Fir d'läscht geännert vum",
+	'whitelisttablemodon'      => "Fir d'läscht geännert de(n)",
+	'whitelisttableedit'       => 'Änneren',
+	'whitelisttableview'       => 'Weisen',
+	'whitelisttablenewdate'    => 'Neien Datum:',
+	'whitelisttableremove'     => 'Zréckzéien',
+	'whitelistpagelist'        => 'Säite vu(n) {{SITENAME}} fir $1',
+	'whitelistoverview'        => '== Iwwersiicht vun den Ännerunge vun $1 ==',
+	'whitelistnever'           => 'nie',
+	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -204,7 +224,7 @@ Gebruik * of % als wildcard<br />",
 	'whitelistoverviewcd'       => "* verloopdatum gewijzigd naar '''$1''' voor [[:$2|$2]]",
 	'whitelistoverviewsa'       => "* toegangstype '''$1''' ingesteld voor [[:$2|$2]]",
 	'whitelistoverviewrm'       => '* toegang voor [[:$1|$1]] wordt verwijderd',
-	'whitelistoverviewna'       => "* [[:$1|$1]] wordt toegevoegd aan de witte lijst met toegangstype '''$1''' en verloopdatum '''$3'''",
+	'whitelistoverviewna'       => "* [[:$1|$1]] wordt toegevoegd aan de witte lijst met toegangstype '''$2''' en verloopdatum '''$3'''",
 	'whitelistrequest'          => "Toegang tot meer pagina's vragen",
 	'whitelistrequestmsg'       => "$1 heeft toegang gevraagd tot de volgende pagina's:
 
@@ -350,11 +370,51 @@ $allMessages['ps'] = array(
  * @author M.M.S.
  */
 $allMessages['sv'] = array(
-	'mywhitelistpages'        => 'Mina sidor',
-	'whitelistfor'            => '<center>Nuvarande information för <b>$1<b></center>',
-	'whitelisttablemodifyall' => 'Alla',
-	'whitelisttableedit'      => 'Redigera',
-	'whitelisttableview'      => 'Visa',
+	'whitelist-desc'            => 'Redigera åtkomsttillåtelsen av begränsade användare',
+	'whitelistedit'             => 'Vitlista åtkomstredigerare',
+	'whitelist'                 => 'Vitlista sidor',
+	'mywhitelistpages'          => 'Mina sidor',
+	'whitelistfor'              => '<center>Nuvarande information för <b>$1<b></center>',
+	'whitelisttablemodify'      => 'Ändra',
+	'whitelisttablemodifyall'   => 'Alla',
+	'whitelisttablemodifynone'  => 'Ingen',
+	'whitelisttablepage'        => 'Wikisida',
+	'whitelisttabletype'        => 'Åtkomsttyp',
+	'whitelisttableexpires'     => 'Utgår',
+	'whitelisttablemodby'       => 'Senast ändrad av',
+	'whitelisttablemodon'       => 'Senast ändrad på',
+	'whitelisttableedit'        => 'Redigera',
+	'whitelisttableview'        => 'Visa',
+	'whitelisttablenewdate'     => 'Nytt datum:',
+	'whitelisttablechangedate'  => 'Ändra utgångsdatum',
+	'whitelisttablesetedit'     => 'Ange att redigera',
+	'whitelisttablesetview'     => 'Ange att visa',
+	'whitelisttableremove'      => 'Radera',
+	'whitelistnewpagesfor'      => 'Lägg till nya sidor till <b>$1s</b> vitlista<br />
+Använd hellre * eller % som jokertecken<br />',
+	'whitelistnewtabledate'     => 'Utgångsdatum:',
+	'whitelistnewtableedit'     => 'Ange att redigera',
+	'whitelistnewtableview'     => 'Ange att visa',
+	'whitelistnewtableprocess'  => 'Processera',
+	'whitelistnewtablereview'   => 'Granska',
+	'whitelistselectrestricted' => '== Ange begränsad användares namn ==',
+	'whitelistpagelist'         => '{{SITENAME}} sidor för $1',
+	'whitelistnocalendar'       => "<font color='red' size=3>Det ser ut som [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en förutsättning för detta programtillägg, var inte ordentligt installerat!</font>",
+	'whitelistbadtitle'         => 'Dålig titel -',
+	'whitelistoverview'         => '== Översikt av ändringar för $1 ==',
+	'whitelistoverviewcd'       => "* Ändrar datum till '''$1''' för [[:$2|$2]]",
+	'whitelistoverviewsa'       => "* Anger åtkomst till '''$1''' för [[:$2|$2]]",
+	'whitelistoverviewrm'       => '* Raderar åtkomst till [[:$1|$1]]',
+	'whitelistoverviewna'       => "* Lägger till [[:$1|$1]] till vitlista med åtkomst '''$2''' och '''$3''' utgångsdatum",
+	'whitelistrequest'          => 'Efterfråga åtkomst till mer sidor',
+	'whitelistrequestmsg'       => '$1 har efterfrågat åtkomst till följande sidor:
+
+$2',
+	'whitelistrequestconf'      => 'Efterfrågan för nya sidor har sänts till $1',
+	'whitelistnonrestricted'    => "Användare '''$1''' är inte en begränsad användare.
+Denna sida är endast användbar till begränsade användare",
+	'whitelistnever'            => 'aldrig',
+	'whitelistnummatches'       => ' - $1 träffar',
 );
 
 /** Telugu (తెలుగు)
@@ -368,5 +428,16 @@ $allMessages['te'] = array(
 	'whitelisttableremove'    => 'తొలగించు',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistnummatches'     => '  - $1 పోలికలు',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$allMessages['tg'] = array(
+	'whitelisttablepage'       => 'Саҳифаи Вики',
+	'whitelisttableedit'       => 'Вироиш',
+	'whitelisttableremove'     => 'Ҳазф',
+	'whitelistnewtableprocess' => 'Раванд',
+	'whitelistnever'           => 'ҳеҷгоҳ',
 );
 

@@ -454,6 +454,13 @@ $messages['te'] = array(
 	'todo-form-details'     => 'వివరాలు:',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'todo-list-cancel' => 'Лағв',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

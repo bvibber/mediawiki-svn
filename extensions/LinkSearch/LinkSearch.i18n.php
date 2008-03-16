@@ -290,6 +290,7 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author 80686
+ * @author Siebrand
  */
 $messages['gsw'] = array(
 	'linksearch'       => 'Suech Webgleicher',
@@ -297,7 +298,7 @@ $messages['gsw'] = array(
 	'linksearch-pat'   => 'Suechmuschter:',
 	'linksearch-ns'    => 'Namensruum:',
 	'linksearch-ok'    => 'Sueche',
-	'linksearch-text'  => 'S\' chönne Platzhalter wie "*.wikipedia.org" benutzt werre.<br/>Unterschtützti Protokoll: <tt>$1</tt>',
+	'linksearch-text'  => 'S\' chönne Platzhalter wie "*.wikipedia.org" benutzt werre.<br />Unterschtützti Protokoll: <tt>$1</tt>',
 	'linksearch-line'  => '$1 isch vo $2 verknüpft',
 	'linksearch-error' => 'Platzhalter chönne numme am Aafang verwändet werre.',
 );
@@ -317,8 +318,13 @@ $messages['he'] = array(
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ * @author Dalibor Bosits
+ */
 $messages['hr'] = array(
 	'linksearch'       => 'Pretraživanje poveznica (s članaka na wikiju)',
+	'linksearch-desc'  => '[[Special:Linksearch|Pronađi stranice s vanjskim poveznicama]] koje odgovaraju određenom uzorku',
 	'linksearch-pat'   => 'Uzorak traženja:',
 	'linksearch-ns'    => 'Imenski prostor:',
 	'linksearch-ok'    => 'Traži',
@@ -343,16 +349,17 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Bdanee
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'linksearch'       => 'Keresés külső hivatkozások szerint',
+	'linksearch-desc'  => '[[Special:Linksearch|Lapok keresése]], amik egy megadott mintára illeszkedő külső linket tartalmaznak.',
 	'linksearch-pat'   => 'Keresett minta:',
 	'linksearch-ns'    => 'Névtér:',
 	'linksearch-ok'    => 'keresés',
 	'linksearch-text'  => 'A helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".',
 	'linksearch-line'  => '$1 hivatkozva innen: $2',
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
-
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -407,6 +414,20 @@ $messages['ja'] = array(
 	'linksearch-text'  => '"*.wikipedia.org" のようにワイルドカードを使うことができます。<br />対応プロトコル: <tt>$1</tt>',
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'linksearch'       => 'Søĝ i weblinks',
+	'linksearch-desc'  => '[[Special:Linksearch|Find sider ve eksterne links]] der følger bestemte mønstre',
+	'linksearch-pat'   => 'Søĝ æfter links til:',
+	'linksearch-ns'    => 'Navnerum:',
+	'linksearch-ok'    => 'Søĝ',
+	'linksearch-text'  => 'Wildkårter søm "*.wikipedia.org" ken benyttes.<br />Understøttede pråtåkoller: <tt>$1</tt>',
+	'linksearch-line'  => '$2 linker til $1',
+	'linksearch-error' => "Wildkårter må ken benyttes i'n stårt åf håstnavnet.",
 );
 
 $messages['kk-arab'] = array(
@@ -706,7 +727,8 @@ $messages['sk'] = array(
 	'linksearch-pat'   => 'Vyhľadávací vzor:',
 	'linksearch-ns'    => 'Menný priestor:',
 	'linksearch-ok'    => 'Hľadať',
-	'linksearch-text'  => 'Je možné použiť zástupné znaky ako „*.wikipedia.org“.',
+	'linksearch-text'  => 'Je možné použiť zástupné znaky ako „*.wikipedia.org“.<br />
+Podporované protokoly: <tt>$1</tt>',
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
@@ -826,7 +848,7 @@ $messages['uk'] = array(
 	'linksearch-pat'   => 'Шаблон для пошуку:',
 	'linksearch-ns'    => 'Простір назв:',
 	'linksearch-ok'    => 'Знайти',
-	'linksearch-text'  => 'Можна використовувати підстановочні символи, наприклад, <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Можна використовувати підстановочні символи, наприклад, <code>*.wikipedia.org</code>.<br />Підтримувані протоколи: <tt>$1</tt>',
 	'linksearch-line'  => 'Посилання на $1 із $2',
 	'linksearch-error' => 'Підстановочні знаки можуть використовуватися лише на початку адрес.',
 );

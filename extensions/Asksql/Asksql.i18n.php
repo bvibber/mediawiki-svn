@@ -666,6 +666,15 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querysuccessful' => 'Frågan lyckades',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'sqlquery'        => 'Ворид кардани дархост',
+	'querybtn'        => 'Фиристодани дархост',
+	'querysuccessful' => 'Дархост бо муваффақият',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -546,6 +546,7 @@ $messages['tg'] = array(
 	'createsigndoc-extaddress'        => 'Шаҳр, Вилоят, Кишвар:',
 	'createsigndoc-phone'             => 'Шумораи телефон:',
 	'createsigndoc-bday'              => 'Зодрӯз:',
+	'createsigndoc-create'            => 'Эҷод',
 	'createsigndoc-error-generic'     => 'Хато: $1',
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
 );

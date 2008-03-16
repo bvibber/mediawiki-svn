@@ -290,7 +290,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'deletedcontributions'      => 'Geläschte Kontributiounen',
-	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Möiglechkeet, [Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
+	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Möiglechkeet, [[Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
 );
 
 /** Limburgish (Limburgs)

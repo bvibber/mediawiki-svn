@@ -465,6 +465,19 @@ $messages['ja'] = array(
 	'sitematrix-sitetotal' => '合計',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'sitematrix'           => 'Ål Wikimedia han wikier',
+	'sitematrix-desc'      => 'Veser en [[Special:SiteMatrix|liste ve ål Wikimedia han wikier]]',
+	'sitematrix-language'  => 'Språĝ',
+	'sitematrix-project'   => 'Pråjektnavn, interpråjektlink og interwikilink',
+	'sitematrix-others'    => 'Andre pråjekter under Wikimedia',
+	'sitematrix-total'     => "'''I alt $1 wikier'''",
+	'sitematrix-sitetotal' => 'I alt',
+);
+
 $messages['ka'] = array(
 	'sitematrix-language' => 'ენა',
 );

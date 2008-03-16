@@ -53,6 +53,13 @@ $messages['km'] = array(
 	'didyoumean-desc' => 'បន្ថែម​តំនភ្ជាប់នានា​ទៅកាន់​ទំព័រទាំងឡាយណា​ដែលមានចំនងជើង"ស្រដៀងគ្នា"',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

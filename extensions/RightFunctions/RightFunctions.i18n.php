@@ -48,7 +48,7 @@ $messages['hsb'] = array(
  */
 $messages['nl'] = array(
 	'rightfunctions'          => 'Rechtengebaseerde parserfuncties',
-	'rightfunctions-restboth' => '$1 (van plaatselijke pagina), $1 (van bovengelegen bronnen)',
+	'rightfunctions-restboth' => '$1 (van plaatselijke pagina), $2 (van bovengelegen bronnen)',
 	'rightfunctions-restcasc' => '$1 (van bovengelegen bronnen)',
 );
 

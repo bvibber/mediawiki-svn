@@ -167,24 +167,28 @@ $messages['fr'] = array(
 	'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de \'\'$1\'\'.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'form' => 'Formulario',
-	'formnoname' => 'Formulario sen Nome',
-	'formnonametext' => 'Tenlle que dar un nome ao formulario, como "Special:Form/Nomedoformulario".',
-	'formbadname' => 'Formulario con Nome incorrecto',
-	'formbadnametext' => 'Non hai ningún formulario con ese nome.',
-	'formpattern' => 'formulario-$1',
-	'formtitlepattern' => 'Engadir Novo $1',
-	'formsave' => 'Gardar',
-	'formarticleexists' => 'A páxina Existe',
-	'formarticleexiststext' => 'A páxina [[$1]] xa existe.',
-	'formbadpagename' => 'Nome de Páxina incorrecto',
-	'formbadpagenametext' => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
+	'form'                         => 'Formulario',
+	'formnoname'                   => 'Formulario sen Nome',
+	'formnonametext'               => 'Tenlle que dar un nome ao formulario, como "Special:Form/Nomedoformulario".',
+	'formbadname'                  => 'Formulario con Nome incorrecto',
+	'formbadnametext'              => 'Non hai ningún formulario con ese nome.',
+	'formpattern'                  => 'formulario-$1',
+	'formtitlepattern'             => 'Engadir Novo $1',
+	'formsave'                     => 'Gardar',
+	'formarticleexists'            => 'A páxina Existe',
+	'formarticleexiststext'        => 'A páxina [[$1]] xa existe.',
+	'formbadpagename'              => 'Nome de Páxina incorrecto',
+	'formbadpagenametext'          => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
 	'formrequiredfieldpluralerror' => 'Os campos $ 1 son requeridos para este formulario. Énchaos.',
-	'formrequiredfielderror' => 'O campo $1 é requerido para este formulario. Énchao.',
-	'formsavesummary' => 'Nova páxina usando [[Special:Form/$1]]',
-	'formsaveerror' => 'Erro ao gardar o formulario',
-	'formsaveerrortext' => 'Houbo un erro descoñecido ao gardar a páxina \'$1\'.',
+	'formrequiredfielderror'       => 'O campo $1 é requerido para este formulario. Énchao.',
+	'formsavesummary'              => 'Nova páxina usando [[Special:Form/$1]]',
+	'formsaveerror'                => 'Erro ao gardar o formulario',
+	'formsaveerrortext'            => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
 );
 
 $messages['hsb'] = array(
@@ -477,5 +481,13 @@ $messages['te'] = array(
 	'formarticleexists'     => 'పేజీ ఉంది',
 	'formarticleexiststext' => '[[$1]] అనే పేజీ ఇప్పటికే ఉంది.',
 	'formbadpagename'       => 'తప్పుడు పేజీ పేరు',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'formsave'          => 'Захира кардан',
+	'formarticleexists' => 'Саҳифа вуҷуд дорад',
 );
 

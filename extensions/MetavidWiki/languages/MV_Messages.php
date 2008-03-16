@@ -615,10 +615,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'mv_duration_label'             => 'duración',
 	'mv_save_changes'               => 'Gardar Cambios',
+	'mv_user_cant_edit'             => 'Precisará $1 para editar, $2',
 	'mv_redirect_and_delete_reason' => 'eliminar páxina de redirección',
 	'mv_remove_reason'              => 'Razón Para a eliminación:',
 	'mv_metavid_file'               => 'Arquivo Existente no Servidor',
@@ -631,6 +633,7 @@ $messages['gl'] = array(
 	'anno_en'                       => 'Anotacións e Categorías',
 	'mv_data_page_title'            => '$1 para $2 de $3',
 	'mv_time_separator'             => '$1 a $2',
+	'mv_play'                       => 'Reproducir',
 	'mv_edit'                       => 'Editar',
 	'mv_history'                    => 'Historial',
 	'mv_edit_title'                 => 'Editar Texto',
@@ -652,6 +655,8 @@ $messages['gl'] = array(
 	'mv_category'                   => 'categoría',
 	'mv_remove_filter'              => 'eliminar filtro',
 	'mv_view_wiki_page'             => 'Ver páxina wiki',
+	'mv_match_text'                 => '~  $1 coincidencias',
+	'mv_match_text_one'             => '~ 1 coincidencia',
 	'mv_sequence_add'               => 'Engadir clips',
 	'mv_sequence_add_manual'        => 'Engadir polo Nome',
 	'mv_add_clip_by_name'           => 'Engadir Clip polo Nome',
@@ -830,9 +835,10 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Bdanee
  * @author Dorgan
+ * @author Tgr
  */
 $messages['hu'] = array(
-	'mv_missing_stream'       => 'Hiányzó adatfolyam',
+	'mv_missing_stream'       => 'Hiányzó adatfolyam: $1',
 	'mv_add_stream'           => 'Metavid adatfolyam hozzáadása',
 	'mv_edit_stream'          => 'Metavid adatfolyam szerkesztése',
 	'mv_add_stream_page'      => 'Mv adatfolyam hozzáadása',
@@ -1944,9 +1950,19 @@ $messages['sv'] = array(
 	'mv_metavid_live'               => 'Sätt upp direktöverföring',
 	'mv_upload_file'                => 'Ladda upp fil',
 	'mv_external_file'              => 'Extern fil',
+	'mv_stream_delete_warning'      => 'Radering av detta dataflöde kommer också medföra till radering av $1 sidor med metadata',
 	'mv_tool_search'                => 'Sök',
+	'mv_tool_search_title'          => 'Sök inom detta dataflöde',
+	'mv_search_transcripts_for'     => 'Sök nedtecknande för',
 	'mv_tool_navigate'              => 'Navigera',
+	'mv_tool_navigate_title'        => 'Navigera hela dataflödet',
 	'mv_tool_export'                => 'Exportera',
+	'mv_tool_export_title'          => 'Exportera dataflödesmetadata',
+	'mv_tool_embed'                 => 'Inkludera',
+	'mv_tool_embed_title'           => 'Inkludera valmöjligheter för det efterfrågade segmentet',
+	'mv_tool_overlay'               => 'Mallöverdrag',
+	'mv_tool_overlay_title'         => 'Mall baserad på metadataöverdrag',
+	'mv_results_found_for'          => 'Sökresultat <b>$1</b> till <b>$2</b> av <b>$3</b> för:',
 	'mv_data_page_title'            => '$1 för $2 från $3',
 	'mv_time_separator'             => '$1 till $2',
 	'video_feed_cat'                => 'Video matning för kategori:',

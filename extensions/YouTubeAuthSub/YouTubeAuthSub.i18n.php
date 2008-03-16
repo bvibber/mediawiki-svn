@@ -70,6 +70,28 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'youtubeauthsub'                    => 'Alŝutu YouTube Video',
+	'youtubeauthsub_title'              => 'Titolo',
+	'youtubeauthsub_description'        => 'Priskribo',
+	'youtubeauthsub_keywords'           => 'Ŝlosilvortoj',
+	'youtubeauthsub_category'           => 'Kategorio',
+	'youtubeauthsub_submit'             => 'Enigu',
+	'youtubeauthsub_uploadbutton'       => 'Alŝutu',
+	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
+
+La video povas estis spektita [http://www.youtube.com/watch?v=$1 ĉi tie]',
+	'youtubeauthsub_uploading'          => 'Via video estas alŝutanta.
+Bonvolu pacienciĝi.',
+	'youtubeauthsub_viewpage'           => 'Alternative, vi povas spekti vian videon [[$1|ĉi tie]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Bonvolu enigi 1 aŭ pluraj ŝlosilvortoj',
+	'youtubeauthsub_jserror_notitle'    => 'Bonvolu eniri titolon por la video.',
+	'youtubeauthsub_jserror_nodesc'     => 'Bonvolu eniri priskribon por la video.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -119,6 +141,7 @@ $messages['gl'] = array(
 	'youtubeauthsub_description'         => 'Descrición',
 	'youtubeauthsub_password'            => 'Contrasinal YouTube',
 	'youtubeauthsub_username'            => 'Alcume YouTube',
+	'youtubeauthsub_keywords'            => 'Palabras clave',
 	'youtubeauthsub_category'            => 'Categoría',
 	'youtubeauthsub_clickhere'           => 'Fai clic aquí para acceder ao sistema YouTube',
 	'youtubeauthsub_tokenerror'          => 'Erro ao xerar a autorización de mostra, proba a refrescar a páxina.',
@@ -138,7 +161,10 @@ Este vídeo pode ser visto [http://www.youtube.com/watch?v=$1 aquí]',
 	'youtubeauthsub_summary'             => 'Cargando vídeo ao YouTube',
 	'youtubeauthsub_uploading'           => 'O teu vídeo está sendo cargado.
 Por favor, sexa paciente.',
-	'youtubeauthsub_viewpage'            => 'De maneira alternativa, podes ver o teu vídeo [[$1|aquí]].',
+	'youtubeauthsub_viewpage'            => 'De maneira alternativa podes ver o teu vídeo [[$1|aquí]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Por favor, insira 1 ou máis palabras clave.',
+	'youtubeauthsub_jserror_notitle'     => 'Por favor, insira un título para o vídeo.',
+	'youtubeauthsub_jserror_nodesc'      => 'Por favor, insira unha descrición para o vídeo.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -160,6 +186,27 @@ $messages['km'] = array(
 	'youtubeauthsub_summary'      => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
 	'youtubeauthsub_uploading'    => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
 សូម​មានការអត់ធ្មត់។',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'youtubeauthsub'                    => 'YouTube Video eroplueden',
+	'youtubeauthsub_title'              => 'Titel',
+	'youtubeauthsub_description'        => 'Beschreiwung',
+	'youtubeauthsub_password'           => 'YouTube Passwuert',
+	'youtubeauthsub_username'           => 'YouTube Benotzernumm',
+	'youtubeauthsub_keywords'           => 'Stechwierder',
+	'youtubeauthsub_category'           => 'Kategorie',
+	'youtubeauthsub_uploadbutton'       => 'Eroplueden',
+	'youtubeauthsub_summary'            => 'YouTube Video gëtt eropgelueden',
+	'youtubeauthsub_uploading'          => 'Äre Video gëtt eropgelueden.
+
+Hutt w.e.g. e bësse Gedold!',
+	'youtubeauthsub_jserror_nokeywords' => 'Gitt w.e.g. een oder méi Stechwierder un.',
+	'youtubeauthsub_jserror_notitle'    => 'Gitt w.e.g. een Titel fir de Video un.',
+	'youtubeauthsub_jserror_nodesc'     => 'Gitt w.e.g eng Beschreiwung vum Video.',
 );
 
 /** Dutch (Nederlands)
@@ -362,6 +409,27 @@ Var tålmodig.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Var god välj 1 eller fler nyckelord.',
 	'youtubeauthsub_jserror_notitle'     => 'Var god välj en titel för videon.',
 	'youtubeauthsub_jserror_nodesc'      => 'Var god välj en beskrivning för videon.',
+);
+
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'youtubeauthsub_title'              => 'Унвон',
+	'youtubeauthsub_description'        => 'Тавсиф',
+	'youtubeauthsub_password'           => 'YouTube Гузарвожа',
+	'youtubeauthsub_username'           => 'YouTube Номи корбарӣ',
+	'youtubeauthsub_keywords'           => 'Калидвожаҳо',
+	'youtubeauthsub_submit'             => 'Гурӯҳ',
+	'youtubeauthsub_clickhere'          => 'Барои вуруд шудан ба YouTube инҷо клик кунед',
+	'youtubeauthsub_uploadhere'         => 'Наворҳоятонро аз инҷо боргузорӣ кунед:',
+	'youtubeauthsub_uploadbutton'       => 'Боргузорӣ',
+	'youtubeauthsub_summary'            => 'Дар ҳоли богузории навор ба YouTube',
+	'youtubeauthsub_uploading'          => 'Навори шумо дар ҳоли боргузорӣ аст.
+Лутфан сабр кунед.',
+	'youtubeauthsub_jserror_nokeywords' => 'Лутфан 1 ё якчанд калидвожаҳоро ворид кунед.',
+	'youtubeauthsub_jserror_notitle'    => 'Лутфан як унвонеро барои навор ворид кунед.',
+	'youtubeauthsub_jserror_nodesc'     => 'Лутфан як тавсиф барои навор ворид кунед.',
 );
 
 /** Vietnamese (Tiếng Việt)

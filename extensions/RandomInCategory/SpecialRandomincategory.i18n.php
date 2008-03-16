@@ -146,12 +146,12 @@ $messages['nl'] = array(
 	'randomincategory-submit'     => 'OK',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'randomincategory'            => 'Tilfeldig side fra en kategori',
-	'randomincategory-desc'       => '[[Special:Randomincategory|Spesialside] for å få en tilfeldig side fra en kategori',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Spesialside]] for å få en tilfeldig side fra en kategori',
 	'randomincategory-toolbox'    => 'Tilfeldig side',
 	'randomincategory-nocategory' => 'Kategorien $1 finner ikke, eller er tom',
 	'randomincategory-label'      => 'Kategori:',

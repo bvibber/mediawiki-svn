@@ -329,6 +329,14 @@ $messages['ja'] = array(
 	'scanset_prev'                      => '&lt; 前へ',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'scanset_next' => 'Følgende &gt;',
+	'scanset_prev' => '&lt; Førge',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

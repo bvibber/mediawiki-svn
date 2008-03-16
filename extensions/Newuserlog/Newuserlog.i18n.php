@@ -383,10 +383,12 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik
+ * @author Dalibor Bosits
  */
 $messages['hr'] = array(
 	'newuserlogpage'           => 'Evidencija novih suradnika',
 	'newuserlogpagetext'       => 'Ispod je popis nedavno otvorenih suradničkih imena',
+	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|evidencije suradničkih računa]] u [[Special:Log|evidencije]]',
 	'newuserlog-byemail'       => 'lozinka poslana e-poštom',
 	'newuserlog-create-entry'  => 'Novi suradnik',
 	'newuserlog-create2-entry' => 'kreiran je novi suradnik $1',
@@ -471,6 +473,18 @@ $messages['ja'] = array(
 	'newuserlog-byemail'       => 'パスワードを電子メールで送信しました',
 	'newuserlog-create-entry'  => '新規利用者',
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'newuserlogpage'           => 'Brugeråprettelseslog',
+	'newuserlogpagetext'       => "Dett'er en log åver de senest åprettede brugere",
+	'newuserlog-desc'          => 'Tilføjer en [[Special:Logs/newusers|brugeråprettelseslog]] til [[Special:Logs|logherseler]]',
+	'newuserlog-byemail'       => 'kodeort tilsend via e-mail',
+	'newuserlog-create-entry'  => 'Ny bruger',
+	'newuserlog-create2-entry' => 'åprettede brugerkonto før $1',
 );
 
 $messages['kk-arab'] = array(

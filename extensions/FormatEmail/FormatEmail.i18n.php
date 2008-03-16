@@ -28,9 +28,14 @@ $messages['ar'] = array(
 $2',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
 	'email_footer' => '-------------------------------
-Този имейл ви е бил изпратен от $1 чрез системата за електронна поща на {{SITENAME}}.',
+Това писмо ви е изпратено от $1 чрез системата за електронна поща на {{SITENAME}}.
+
+$2',
 );
 
 $messages['de'] = array(
@@ -68,11 +73,13 @@ $2',
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'email_footer' => '----------------------------------------------------------------------------
-Esta mensaxe foille enviada a través do ((SITENAME)) sistema de email por $1.',
+	'email_footer' => '---------------------------------------------------------------------------------------------
+Esta mensaxe foille enviada a través do sistema de correo electrónico de {{SITENAME}} por $1.
 
+$2',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

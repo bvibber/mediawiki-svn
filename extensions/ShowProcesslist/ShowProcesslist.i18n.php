@@ -286,6 +286,14 @@ $messages['te'] = array(
 	'showprocesslist-state'   => 'స్థితి',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'showprocesslist-user' => 'Корбар',
+	'showprocesslist-time' => 'Вақт',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

@@ -131,12 +131,13 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Bdanee
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'lookupuser'                   => 'Felhasználói információ keresése',
 	'lookupuser_intro'             => 'Add meg a felhasználó nevét, akinek meg szeretnéd nézni a beállításait.',
 	'lookupuser_nonexistent'       => 'Hiba: a felhasználó nem létezik',
-	'lookupuser_authenticated'     => 'Email megerősítés:',
+	'lookupuser_authenticated'     => 'Email megerősítés: $1',
 	'lookupuser_not_authenticated' => 'nincs megerősítve',
 	'lookupuser_id'                => 'Azonosító: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
@@ -348,12 +349,18 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'lookupuser'              => 'Kolla upp användar info',
-	'lookupuser_nonexistent'  => 'Error: Användare existerar inte',
-	'lookupuser_id'           => 'Användar ID: <tt>#$1</tt>',
-	'lookupuser_email'        => 'E-post: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname'     => 'Riktigt namn: $1',
-	'lookupuser_registration' => 'Registrerings datum: $1',
+	'lookupuser'                   => 'Kolla upp användar info',
+	'lookupuser-desc'              => '[[Special:LookupUser|Hämta information]] om en användare, som t.ex. e-postadress och ID',
+	'lookupuser_intro'             => 'Skriv in ett användarnamn för att visa användarens inställningar.',
+	'lookupuser_nonexistent'       => 'Error: Användare existerar inte',
+	'lookupuser_authenticated'     => 'E-postbekräftning: $1',
+	'lookupuser_not_authenticated' => 'inte bekräftad',
+	'lookupuser_id'                => 'Användar ID: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Riktigt namn: $1',
+	'lookupuser_registration'      => 'Registrerings datum: $1',
+	'lookupuser_touched'           => 'Inställningar sist ändrat: $1',
+	'lookupuser_useroptions'       => 'Användarval:',
 );
 
 /** Telugu (తెలుగు)

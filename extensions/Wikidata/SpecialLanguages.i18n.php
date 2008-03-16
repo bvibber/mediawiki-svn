@@ -652,10 +652,11 @@ $wdMessages['el'] = array(
  * @author Yekrats
  */
 $wdMessages['eo'] = array(
-	'ow_save'     => 'Konservu',
-	'ow_history'  => 'Historio',
-	'ow_dm_OK'    => 'Ek!',
-	'ow_Language' => 'Lingvo',
+	'ow_save'          => 'Konservu',
+	'ow_history'       => 'Historio',
+	'ow_none_selected' => '<Nenio elektita>',
+	'ow_dm_OK'         => 'Ek!',
+	'ow_Language'      => 'Lingvo',
 );
 
 /** Spanish (Español)
@@ -1716,6 +1717,7 @@ $wdMessages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $wdMessages['oc'] = array(
 	'datasearch'                            => 'Wikidata: Recèrca de donadas',
@@ -1806,8 +1808,8 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_no_action_specified'           => "Mercé d'especificar una accion",
 	'ow_copy_help'                          => 'Ajuda de venir...',
 	'ow_please_proved_dmid'                 => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del serveire.',
-	'ow_please_proved_dc1'                  => 'Sembla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br />Contactatz l’administrator.',
-	'ow_please_proved_dc2'                  => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br />Contactatz l’administrator.',
+	'ow_please_proved_dc1'                  => 'Sembla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br>Contactatz l’administrator.',
+	'ow_please_proved_dc2'                  => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br>Contactatz l’administrator.',
 	'ow_copy_successful'                    => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful'                  => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
 	'ow_no_action_specified'                => "<h3>Cap d'accion es pas estada especificada</h3> Benlèu, seriatz vengut sus aquesta pagina dirèctament ? Avètz pas besonh, en principi, d'èsser aicí.",
@@ -2396,7 +2398,7 @@ $wdMessages['stq'] = array(
 	'ow_dm_OK'                              => 'OK',
 	'ow_dm_not_present'                     => 'nit ienroat',
 	'ow_dm_not_found'                       => 'nit in ju Doatenboank fuunen of failerhaft',
-	'ow_mapping_successful'                 => 'Aal do mäd [OK] markierde Fäildere wuuden tou-oardend<br />',
+	'ow_mapping_successful'                 => 'Aal do mäd [OK] markierde Fäildere wuuden tou-oardend<br>',
 	'ow_mapping_unsuccessful'               => 'Deer sunt mindestens two DefinedMeanings toun Ferknätten nöödich.',
 	'ow_will_insert'                        => 'Dät Foulgjende wäd iensät:',
 	'ow_contents_of_mapping'                => 'Inhoolde fon ju Ferknättenge',
@@ -2458,9 +2460,9 @@ $wdMessages['stq'] = array(
 	'ow_Permission_denied'                  => '<h2>FERLOF FERWÄIGERD</h2>',
 	'ow_copy_no_action_specified'           => 'Lääs ne Aktion fääst.',
 	'ow_copy_help'                          => 'Ap n Dai konnen wie die hälpe.',
-	'ow_please_proved_dmid'                 => 'Oje, an dien Iengoawe failt ?dmid=<something> (dmid=Defined Meaning ID)<br />Ups, kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc1'                  => 'Oje, an dien Iengoawe  failt ?dc1=<something> (dc1=dataset context 1, dataset to copy FROM)<br />Ups, kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc2'                  => 'Oje, an dien Iengoawe failt ?dc2=<something> (dc2=dataset context 2, dataset to copy TO) <br />Ups,  kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dmid'                 => 'Oje, an dien Iengoawe failt ?dmid=<something> (dmid=Defined Meaning ID)<br>Ups, kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dc1'                  => 'Oje, an dien Iengoawe  failt ?dc1=<something> (dc1=dataset context 1, dataset to copy FROM)<br>Ups, kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dc2'                  => 'Oje, an dien Iengoawe failt ?dc2=<something> (dc2=dataset context 2, dataset to copy TO) <br>Ups,  kontaktier dän Serveradminstrator.',
 	'ow_copy_successful'                    => '<h2>Kopierjen mäd Ärfoulch</h2>Dien Doaten schiene mäd Ärfoulch kopierd wuuden tou weesen. Ferjät nit noch moal tou wröigjen uum sichertougungen!',
 );
 
@@ -2580,10 +2582,30 @@ $wdMessages['te'] = array(
  * @author Ibrahim
  */
 $wdMessages['tg'] = array(
-	'ow_ClassAttributeType'  => 'Навъ',
-	'ow_Language'            => 'Забон',
-	'ow_Text'                => 'Матн',
-	'ow_LinkAttributeValues' => 'Пайвандҳо',
+	'ow_save'                          => 'Захира кардан',
+	'ow_history'                       => 'Таърих',
+	'ow_uiprefs'                       => 'Викидода',
+	'ow_Annotation'                    => 'Тафсир',
+	'ow_ClassAttributeLevel'           => 'Сатҳ',
+	'ow_ClassAttributeType'            => 'Навъ',
+	'ow_Collection'                    => 'Гирдовард',
+	'ow_Definition'                    => 'Таъриф',
+	'ow_DefinedMeaningAttributes'      => 'Тафсир',
+	'ow_Language'                      => 'Забон',
+	'ow_LevelAnnotation'               => 'Тафсир',
+	'ow_Relations'                     => 'Равобит',
+	'ow_Source'                        => 'Манбаъ',
+	'ow_TextAttribute'                 => 'Хосият',
+	'ow_Text'                          => 'Матн',
+	'ow_TranslatedTextAttribute'       => 'Хосият',
+	'ow_TranslatedText'                => 'Матни тарҷумашуда',
+	'ow_TranslatedTextAttributeValue'  => 'Матн',
+	'ow_TranslatedTextAttributeValues' => 'Матнҳои қобили тарҷума',
+	'ow_LinkAttribute'                 => 'Хосият',
+	'ow_LinkAttributeValues'           => 'Пайвандҳо',
+	'ow_Property'                      => 'Хосият',
+	'ow_meaningsoftitle'               => 'Маъниҳои "$1"',
+	'ow_copy_no_action_specified'      => 'Лутфан амалеро мушаххас кунед',
 );
 
 /** Thai (ไทย)

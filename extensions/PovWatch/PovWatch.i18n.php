@@ -420,7 +420,7 @@ $messages['sk'] = array(
 	'povwatch_not_subscribed'          => 'Nie ste prihlásený na odber PovWatch, takže ho nemôžete odhlásiť.',
 	'povwatch_unsubscribed'            => 'Teraz ste sa odhlásili z odberu PovWatch',
 	'povwatch_invalid_title'           => 'Zadaný názov bol neplatný',
-	'povwatch_pushed'                  => '[[$1]] bolo úspešne pridané na {{PLURAL:$1|zoznam sledovaných stránok jedného používateľa|zoznamy sledovaných stránok $1 používateľov}}',
+	'povwatch_pushed'                  => '[[$1]] bolo úspešne pridané na {{PLURAL:$2|zoznam sledovaných stránok jedného používateľa|zoznamy sledovaných stránok $2 používateľov}}',
 	'povwatch_intro'                   => 'PovWatch je služba, ktorá umožňuje diskrétne pridávať obsažné stránky na zoznamy sledovaných stránok správcov, ktorí si to objednali.
 
 Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:PovWatch/log]].',

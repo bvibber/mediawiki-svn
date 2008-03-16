@@ -225,3 +225,11 @@ $messages['te'] = array(
 	'filelist-show-list' => 'జాబితాని చూపించు',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'filelist-show-list'    => 'Намоиши феҳрист',
+	'filelist-show-gallery' => 'Намоиши нигористон',
+);
+

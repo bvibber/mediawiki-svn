@@ -28,6 +28,27 @@ $messages['fr'] = array(
 	'preloader-desc' => 'Fournis, pour les nouvelles pages, des fenêtres de texte personnalisables par nom d’espace',
 );
 
+/** Hungarian (Magyar)
+ * @author Tgr
+ */
+$messages['hu'] = array(
+	'preloader-desc' => 'Névterenként más-más rendszerüzenet az új oldalakhoz',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'preloader-desc' => "Geeft de mogelijkheid aan te passen per naamruimte tekstblokken te maken voor nieuwe pagina's",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'preloader-desc' => 'Gir egendefinerbar forhåndslastet tekst for nye sider i de enkelte navnerommene',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

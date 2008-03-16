@@ -88,3 +88,10 @@ $messages['stq'] = array(
 	'tog-microid' => 'Fereepentelkje ne <a href="http://microid.org/">MicroID</a>, uum dät Benutserkonto truch n externen Service tou bestäätigjen.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'tog-microid' => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
+);
+

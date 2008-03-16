@@ -149,6 +149,7 @@ dica agora. $1 ta beyer os datos zifratos.</p>",
 	'boardvote_edits_many'   => 'muitos',
 	'group-boardvote'        => "Almenistradors d'a botazión",
 	'group-boardvote-member' => "Almenistrador d'a botazión",
+	'grouppage-boardvote'    => "{{ns:project}}:Almenistrador d'a botazión",
 	'boardvote_blocked'      => 'Lo sentimos, pero ye estato bloqueyato en a wiki en que ye rechistrato. Os usuarios bloqueyatos no pueden botar.',
 	'boardvote_welcome'      => "Biemplegau '''$1'''!",
 	'go_to_board_vote'       => 'Elezions ta o Consello de Wikimedia 2007',
@@ -794,6 +795,9 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'boardvote'              => 'Baloto por la "Administra Konsilantaro de Wikimedia Fondaĵo"',
 	'boardvote-desc'         => '[[meta:Board elections|Baloto de "Administra Konsilantaro de Wikimedia Fondaĵo"]]',
+	'boardvote_entry'        => '* [[Speciala:Boardvote/vote|Baloto]]
+* [[Speciala:Boardvote/list|Ĝisdata balotlisto]]
+* [[Speciala:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
 	'boardvote_intro'        => '<p>Bonvenon al la tria baloto por la Administra Konsilantaro de \'\'Wikimedia\'\'. Ni vocxdonas por anstatauxi unu demisiintan delegiton kiu reprezentu la uzantarojn de la diversaj projektoj de \'\'Wikimedia\'\' <!--- : la <strong>Reprezentanto de la Kontribuantaj Aktivaj Uzantoj</strong> kaj la <strong>Reprezentanto de la Volontulaj Uzantoj</strong> --->. Tiu helpos difini la estontan direkton, kiun la projektoj de Wikimedia sekvos, individue kaj grupe, kaj reprezentas <em>viajn</em> interesojn kaj zorgojn en la Administrantaro. la Konsilantaro decidas pri rimedoj por estigi enspezojn kaj la uzon de la kolektita mono. </p>
 
 <p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la <a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Eo" class="external">kandidatoj</a> antaux ol vocxodoni. Cxiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dedicxita al disvolvigxo kaj libera disdono de homaj scioj.  </p>
@@ -804,6 +808,23 @@ $messages['eo'] = array(
 <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Eo" class="external">Plej oftaj demandoj pri la baloto</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Eo" class="external">Kandidatoj</a></li></ul>',
 	'boardvote_intro_change' => '<p>Vi estas jam balotita. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kanditatoj kiujn vi elektas.</p>',
+	'boardvote_entered'      => 'Dankon! Via baloto estas registrita.
+
+Se vi deziras, vi povas registri la sekvantajn detalojn. La registrajxo de via baloto estas: 
+
+<pre>$1</pre>
+
+Gxi estis encxifrita per la publika sxlosilo de la Balotadministrantoj:
+
+<pre>$2</pre>
+
+La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Speciala:Boardvote/entry|Reen]]',
+	'boardvote_nosession'    => 'Via uzanto-identigo de WikiMedia ne estas determinebla. Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>. Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj kun unua redakto antaŭ $3.',
+	'boardvote_notloggedin'  => 'Vi ne estas ensalutinta. Voĉdoni vi povas nepre el uzula konto kun minimume $1 kontribuoj antaŭ $2, kies unua estu antaŭ $3.',
 	'boardvote_novotes'      => 'Neniu ne jam voĉdonis.',
 	'boardvote_time'         => 'Tempo',
 	'boardvote_user'         => 'Uzanto',
@@ -815,6 +836,7 @@ $messages['eo'] = array(
 	'boardvote_submit'       => 'Ek!',
 	'boardvote_strike'       => 'Trastreku',
 	'boardvote_unstrike'     => 'Maltrastreku',
+	'boardvote_notstarted'   => 'Balotado ne jam komenciĝis',
 	'boardvote_edits_many'   => 'multaj',
 	'boardvote_blocked'      => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
 	'boardvote_welcome'      => "Bonvenon '''$1'''!",
@@ -999,6 +1021,22 @@ $messages['fi'] = array(
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
 	'boardvote_intro_change' => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
+	'boardvote_entered'      => 'Kiitos. Äänesi on tallennettu.
+
+Mikäli haluat, voit kirjata itsellesi seuraavat tiedot. Äänestystietueesi on:
+
+<pre>$1</pre>
+
+Se on salattu vaalivirkailijoiden julkisella avaimella:
+
+<pre>$2</pre>
+
+Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Takaisin]]',
+	'boardvote_nosession'    => 'Järjestelmä ei pysty määrittämään käyttäjätunnustasi. Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 muokkausta ennen $2, ja näistä ensimmäinen muokkaus ennen $3.',
 	'boardvote_notloggedin'  => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkauksen pitää olla ennen $3.',
 	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $3 muokkausta ennen $2, ja ensimmäinen muokkauksesi pitää olla tehty ennen $5.',
 	'boardvote_novotes'      => 'Kukaan ei ole vielä äänestänyt.',
@@ -1107,6 +1145,7 @@ Un avertissement concernant un certificat non signé sera peut-être affiché.',
  */
 $messages['frp'] = array(
 	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Èlèccions u Consèly d’administracion de la Wikimedia Foundation]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Voto/votacion]]
 * [[Special:Boardvote/list|Lista des votos/de les votacions enregistrâs]]
 * [[Special:Boardvote/dump|Enregistraments criptâs]]',
@@ -1332,6 +1371,7 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
+	'boardvote-desc'         => '[[meta:Board elections|Izbori za Vijeće povjerenika Wikimedije]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Glas]]
 * [[Special:Boardvote/list|Pregled glasova do sada]]
 * [[Special:Boardvote/dump|Kreiraj šifrirani zapis o glasanju]]',
@@ -1465,6 +1505,7 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
  */
 $messages['ht'] = array(
 	'boardvote'              => 'Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a',
+	'boardvote-desc'         => '[[meta:Board elections|Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòt]]
 * [[Special:Boardvote/list|Lis vòt anrejistre]]
 * [[Special:Boardvote/dump|Anrejistreman kripte]]',
@@ -1844,6 +1885,17 @@ $messages['jut'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemme]]
 * [[Special:Boardvote/list|Ves ål stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmeførtegnelse]]',
+	'boardvote_intro'        => '<p>Velkommen hen til den other stemmeafgivning nemlig den Wikimedia Råd i Håbet. Vi er stemmeafgivning nemlig to folk hen til gengive den samfundet i brugernes oven på den alskens Wikimedia anlægsarbejder. De vil hjælp hen til afgøre den senere ledelse at den Wikimedia anlægsarbejder vil holde , hver for sig og nemlig en sammenstille , og gengive <em>diin</em> interesserer og angår hen til den Råd i Håbet. De vil pådømme oven på veje hen til frembringe indkomst og den tildeling i penge ophøjet.</p>
+
+<p>Behage læse den ansøgere opgørelser og svar hen til forespørgsler grundigt i nærværelse af stemmeafgivning. Hver i den ansøgere er en agtet bruger , hvem har bidrog anseelig gang og indsats hen til gør disse anlægsarbejder en velkommen omgivelser forpligtet hen til den jagt og omkostningsfrit distribution i human kundskab.</p>
+
+<p>Det må du gerne stemme for nemlig mange ansøgere nemlig jer savn. ansøger hos den højst stemmer i hver holdning vil være erklæret den vinder i at holdning I tilfælde af en baste , en opstille - ned af stemmeafgivning vil være besad.</p>
+
+<p>Før mær informåsje, sæg:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Eleksje FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidåter</a></li></ul>',
+	'boardvote_intro_change' => '<p>Du har stemme i nærværelse af. Hvordan end det må du gerne lave om på jeres stemme benytter den skema nedenstående. Behage indskrive den bokse næst efter hver ansøger hvem jer godkende i.</p>',
+	'boardvote_notloggedin'  => 'Du er ikke journaliseret i. Hen til stemme , jer skal hjælp en beretning hos det vil sige $1 bidrag i nærværelse af $2, og hos en først redigere i nærværelse af $3.',
 	'boardvote_notqualified' => 'Du erst ikke kwalifærn til stemme en dette eleksje. Du nødst til har $3 redigærenge førdette $2, ønd diin erste redigærenge mu derfør $5 være.',
 	'boardvote_novotes'      => 'Ekke man her stemmen nu.',
 	'boardvote_time'         => 'Tid',
@@ -1859,8 +1911,14 @@ to date. $1 før æ enkriptet data.</p>",
 	'boardvote_strike'       => 'Stryk',
 	'boardvote_unstrike'     => 'Unstryk',
 	'boardvote_needadmin'    => 'Ålen eleksje administratårer kan performær dette operåsje.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Board Eleksje</a>:  Eleksje åp til July 12',
 	'boardvote_notstarted'   => "Stemmenge har ig'n stårtet",
+	'boardvote_closed'       => "Eleksje er nu slotn, sæg'n [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En eleksje ertikel før resultåter] sån.",
 	'boardvote_edits_many'   => 'føl',
+	'group-boardvote'        => 'Board vote admin',
+	'group-boardvote-member' => 'Board vote admin',
+	'grouppage-boardvote'    => '{{ns:project}}:Board vote admin',
+	'boardvote_blocked'      => 'Bedrøvelig , du har blevet spærret oven på jeres anbefalet wiki. Spærret brugernes er ikke tilladt hen til stemme.',
 	'boardvote_welcome'      => "Vælkomme '''$1'''!",
 	'go_to_board_vote'       => 'Wikimedia Board Eleksje 2007',
 );
@@ -2565,7 +2623,7 @@ Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boa
 	'boardvote_nosession'    => 'Uw Wikimedia-gebruikersnummer kan niet bepaald worden. Meldt u zich aan in wiki waar u voldoet aan de eisen, en ga naar <nowiki>[[Special:Boardvote]]</nowiki>. Gebruik een gebruiker met tenminste $1 bijdragen voor $2, en met uw eerste bewerking voor $3.',
 	'boardvote_notloggedin'  => 'U bent niet aangemeld.
 U kunt stemmen als u voor $2 ten minste $1 bewerkingen hebt gemaakt en uw eerste bewerking voor $3 hebt gemaakt.',
-	'boardvote_notqualified' => 'U kunt niet stemmen in deze verkiezing. U moet $3 bewerkingen hebben gemaakt voor $3 en uw eerste bewerking moet voor $5 zijn gemaakt.',
+	'boardvote_notqualified' => 'U kunt niet stemmen in deze verkiezing. U moet $3 bewerkingen hebben gemaakt voor $2 en uw eerste bewerking moet voor $5 zijn gemaakt.',
 	'boardvote_novotes'      => 'Er is nog niet gestemd.',
 	'boardvote_time'         => 'Tijd',
 	'boardvote_user'         => 'Gebruiker',
@@ -3394,7 +3452,7 @@ Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmeng
 Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
 <pre>$2</pre>',
-	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese.
+	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
@@ -3574,7 +3632,7 @@ $messages['te'] = array(
 
 <pre>$2</pre>
 
-కోడీకరించబడిన సంపుటి ఇది. దీన్ని [[Special:Boardvote/dump]] లో అందరూ చూడవచ్చు.
+కోడీకరించబడిన సంపుటి ఇది. దీన్ని [[Special:Boardvote/dump]] లో అందరూ చూడవచ్చు. 
 
 <pre>$3</pre>
 

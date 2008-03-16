@@ -782,7 +782,7 @@ $messages['it'] = array(
 	'math_InvalidUtf8Input'                 => 'La stringa di input non è in formato UTF-8 valido',
 	'math_LatexFontNotSpecified'            => 'Nessun font LaTeX indicato per "$1"',
 	'math_LatexPackageUnavailable'          => 'Impossibile eseguire il rendering del file PNG in quanto non è presente il pacchetto LaTeX "$1"',
-	'math_MismatchedBeginAndEnd'            => 'I comandi "%1" e "$2" non corrispondono',
+	'math_MismatchedBeginAndEnd'            => 'I comandi "$1" e "$2" non corrispondono',
 	'math_MisplacedLimits'                  => 'Il comando "$1" deve seguire un operatore matematico (se necessario, usare "\\mathop")',
 	'math_MissingCommandAfterNewcommand'    => 'Nuovo nome di comando mancante o non valido dopo "\\newcommand" (la definizione dev\'essere una ed una sola, deve iniziare con una barra inversa "\\" e contenere solo caratteri alfabetici)',
 	'math_MissingDelimiter'                 => 'Delimitatore mancante dopo "$1"',
@@ -944,7 +944,7 @@ $messages['nl'] = array(
 	'math_InvalidUtf8Input'                 => 'De invoertekst was geen geldig UTF-8',
 	'math_LatexFontNotSpecified'            => 'Er werd geen LaTeX lettertype opgegeven voor "$1"',
 	'math_LatexPackageUnavailable'          => 'Het is niet mogelijk om naar PNG te renderen, omdat het LaTeX pakket "$1" niet beschikbaar is',
-	'math_MismatchedBeginAndEnd'            => 'De commando\'s "$1" en "$1" komen niet overeen',
+	'math_MismatchedBeginAndEnd'            => 'De commando\'s "$1" en "$2" komen niet overeen',
 	'math_MisplacedLimits'                  => 'Het commando "$1" kan alleen verschijnen na een math operator (overweeg om "\\mathop" te gebruiken)',
 	'math_MissingCommandAfterNewcommand'    => 'Niet aanwezig of niet toegestaan nieuw commando gebruikt na "\\newcommand" (er mag maar één commando gedefinieerd worden; het moet voorafgegaan worden door een backslash "\\" en mag enkel alfabetische karakters bevatten)',
 	'math_MissingDelimiter'                 => 'Ontbrekend scheidingsteken na "$1"',
@@ -1098,12 +1098,14 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Dodek
  * @author McMonster
- * @author Sp5uhe
- * @author Derbeth
- * @author Equadus
  * @author Wpedzich
+ * @author Sp5uhe
+ * @author Equadus
+ * @author Derbeth
  */
 $messages['pl'] = array(
+	'math_noblahtex'                        => 'Nie udało sie uruchomić rozszerzenia blahtex, które powinno znajdować się w',
+	'math-desc'                             => 'Dane wyjściowe znaczników &lt;math&gt; w MathML',
 	'math_AmbiguousInfix'                   => 'Niejednoznaczne ustawienie "$1" (spróbuj użyć dodatkowych nawiasów "{ ... }" by ujednoznacznić)',
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
 	'math_CannotCreateTexFile'              => 'Nie udało się stworzyć pliku tex',
@@ -1112,6 +1114,8 @@ $messages['pl'] = array(
 	'math_CannotWritePngDirectory'          => 'Nie można zapisać do wyjściowego katalogu PNG',
 	'math_CannotWriteTexFile'               => 'Nie można pisać do pliku tex',
 	'math_CasesRowTooBig'                   => 'W każdym wierszu bloku "cases" mogą być jedynie dwa wpisy',
+	'math_DoubleSubscript'                  => 'Znaleziono dwa indeksy dolne dołączone do tej samej bazy (możliwe jest korzystanie z tylko jednego)',
+	'math_DoubleSuperscript'                => 'Znaleziono dwa indeksy górne dołączone do tej samej bazy (możliwe jest korzystanie z tylko jednego)',
 	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',
 	'math_IllegalCommandInMathMode'         => 'Polecenie "$1" jest niedozwolne w trybie matematycznym',
 	'math_IllegalCommandInMathModeWithHint' => 'Polecenie "$1" jest niedozwolone w trybie matematycznym (może miałeś na myśli "$2"?)',
@@ -1124,7 +1128,9 @@ $messages['pl'] = array(
 	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
 	'math_InvalidUtf8Input'                 => 'Ciąg danych wejściowych nie był zgodny z UTF-8',
 	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX-a dla "$1"',
+	'math_LatexPackageUnavailable'          => 'Nie udało się sporządzić pliku PNG, gdyż pakiet "$1" LaTeX nie jest dostępny',
 	'math_MismatchedBeginAndEnd'            => 'Polecenia "$1" i "$2" nie pasują',
+	'math_MisplacedLimits'                  => 'Polecenie "$1" może wystąpić tylko po operatorze matematycznym - zaleca sie skorzystanie z "\\mathop"',
 	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Brakujący nawias otwierający "{" na końcu wejścia',
@@ -1516,7 +1522,7 @@ $messages['vi'] = array(
 	'math_InvalidUtf8Input'                 => 'Chuỗi nhập không phải là UTF-8 hợp lệ',
 	'math_LatexFontNotSpecified'            => 'Không tìm thấy phông LaTeX cho "$1"',
 	'math_LatexPackageUnavailable'          => 'Không thể tạo PNG vì không có gói LaTeX "$1"',
-	'math_MismatchedBeginAndEnd'            => 'Lệnh "$1" và "2" không khớp',
+	'math_MismatchedBeginAndEnd'            => 'Lệnh “$1” và “$2” không khớp',
 	'math_MisplacedLimits'                  => 'Lệnh "$1" chỉ có thể xuất hiện sau toán tử (xem xét việc sử dụng "\\mathop")',
 	'math_MissingCommandAfterNewcommand'    => 'Tên lệnh mới sau "\\newcommand" thiếu hoặc không hợp lệ (phải có chính xác một lệnh được định nghĩa; nó phải bắt đầu bằng dấu "\\" và chỉ chứa ký tự)',
 	'math_MissingDelimiter'                 => 'Thiếu dấu giới hạn sau "$1"',

@@ -787,6 +787,32 @@ $1
 	'searchincategory'      => 'incategory',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'lucene-desc'           => 'Enterfæs før æ Apache Lucene søĝ måtår',
+	'searchnumber'          => '<strong>Ræsultåter $1-$2 der $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Førge</span>",
+	'searchnext'            => "<span style='font-size: small'>Følgende</span> &#x00BB;",
+	'lucene-searchscore'    => 'Rælevans: $1%',
+	'lucene-resultsize'     => '$1 ($2 ørt)',
+	'searchdidyoumean'      => 'Mænest du: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Unskyld, her åorte ekke åverenkåmelse til deres query.',
+	'searchnearmatches'     => '<b>Dette pæges har similær titler til deres query:</b>',
+	'lucenepowersearchtext' => 'Søĝ i navnerum:
+
+$1
+
+Søĝ før $3 $9 $10',
+	'lucenefallback'        => "Her hvás en pråblæm ve'n wiki soĝ.
+Dett'er mågleg tiidleg; pråbær nurmal i en pår måmenter,
+æller du kenst søĝ i'n wiki via en ekstern søĝ service:",
+	'searchexactcase'       => 'Eksakt-lettersåk søĝ',
+	'searchall'             => 'ål',
+	'searchincategory'      => 'enklynge',
+);
+
 $messages['kaa'] = array(
 	'lucenepowersearchtext' => 'Mına isimler ko\'pliginde izlew:
 

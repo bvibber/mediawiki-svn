@@ -439,6 +439,13 @@ $messages['te'] = array(
 	'tasklistbyname'        => '== %s కొరకు చేయాల్సిన పనుల జాబితా ==',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'tasklistemail' => 'Мӯҳтарам %s',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

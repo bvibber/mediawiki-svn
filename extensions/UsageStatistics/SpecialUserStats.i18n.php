@@ -653,6 +653,7 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
+	'usagestatisticstype'          => 'Навъ',
 	'usagestatisticsintervalday'   => 'Рӯз',
 	'usagestatisticsintervalweek'  => 'Ҳафта',
 	'usagestatisticsintervalmonth' => 'Моҳ',

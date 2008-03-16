@@ -248,6 +248,74 @@ $messages['hsb'] = array(
 	'openidlogininstructions'       => 'Zapodaj swój identifikator OpenID, zo by so přizjewił:',
 );
 
+/** Hungarian (Magyar)
+ * @author Tgr
+ */
+$messages['hu'] = array(
+	'openid-desc'                   => 'Bejelentkezés [http://openid.net/ OpenID] azonosítóval, és más OpenID-kompatibilis weboldalak használata a wikis azonosítóval',
+	'openidlogin'                   => 'Bejelentkezés OpenID-vel',
+	'openidfinish'                  => 'OpenID bejelentkezés befejezése',
+	'openidserver'                  => 'OpenID szerver',
+	'openidxrds'                    => 'Yadis fájl',
+	'openidconvert'                 => 'OpenID konverter',
+	'openiderror'                   => 'Hiba az ellenőrzés során',
+	'openiderrortext'               => 'Az OpenID URL elenőrzése nem sikerült.',
+	'openidconfigerror'             => 'OpenID konfigurációs hiba',
+	'openidconfigerrortext'         => 'A wiki OpenID-tárhely-beállítása hibás. Beszélj a wiki üzemeltetőjével.',
+	'openidpermission'              => 'OpenID jogosultság hiba',
+	'openidpermissiontext'          => 'Ezzel az OpenID-vel nem vagy jogosult belépni erre a wikire.',
+	'openidcancel'                  => 'Ellenőrzés visszavonva',
+	'openidcanceltext'              => 'Az OpenID URL ellenőrzése vissza lett vonva.',
+	'openidfailure'                 => 'Ellenőrzés sikertelen',
+	'openidfailuretext'             => 'Az OpenID URL ellenőrzése nem sikerült. A kapott hibaüzenet: „$1”',
+	'openidsuccess'                 => 'Sikeres ellenőrzés',
+	'openidsuccesstext'             => 'Az OpenID URL ellenőrzése sikerült.',
+	'openidserverlogininstructions' => 'Add meg a jelszót a(z) $3 oldalra való bejelentkezéshez $2 néven (userlap: $1).',
+	'openidtrustinstructions'       => 'Adatok megosztása a(z) $1 oldallal.',
+	'openidallowtrust'              => '$1 megbízhat ebben a felhasználóban.',
+	'openidnopolicy'                => 'Az oldalnak nincsen adatvédelmi szabályzata.',
+	'openidpolicy'                  => 'További információkért lásd az <a target="_new" href="$1">adatvédelmi szabályzatot</a>.',
+	'openidoptional'                => 'Opcionális',
+	'openidrequired'                => 'Kötelező',
+	'openidnickname'                => 'Felhasználónév',
+	'openidfullname'                => 'Teljes név',
+	'openidemail'                   => 'Email-cím',
+	'openidlanguage'                => 'Nyelv',
+	'openidnotavailable'            => 'Az alapértelmezett felhasználónevedet ($1) már használja valaki.',
+	'openidnotprovided'             => 'Az OpenID szervered nem adta meg a felhasználónevedet (vagy azért, mert nem tudja, vagy mert nem engedted neki).',
+	'openidchooseinstructions'      => 'Mindenkinek választania kell egy felhasználónevet; választhatsz egyet az alábbi opciókból.',
+	'openidchoosefull'              => 'A teljes neved ($1)',
+	'openidchooseurl'               => 'Az OpenID-dből vett név ($1)',
+	'openidchooseauto'              => 'Egy automatikusan generált név ($1)',
+	'openidchoosemanual'            => 'Egy általad megadott név:',
+	'openidchooseexisting'          => 'Egy létező felhasználónév erről a wikiről:',
+	'openidchoosepassword'          => 'jelszó:',
+	'openidconvertinstructions'     => 'Ezzel az űrlappal átállíthatod a felhasználói fiókodat, hogy egy OpenId URL-t használjon.',
+	'openidconvertsuccess'          => 'Sikeres átállás OpenID-re',
+	'openidconvertsuccesstext'      => 'Sikeresen átállítottad az OpenID-det erre: $1.',
+	'openidconvertyourstext'        => 'Ez az OpenID már a tiéd.',
+	'openidconvertothertext'        => 'Ez az OpenID másvalakié.',
+	'openidalreadyloggedin'         => "'''Már be vagy jelentkezve, $1!'''
+
+Ha ezentúl az OpenID-del akarsz bejelentkezni, [[Special:OpenIDConvert|konvertálhatod a felhasználói fiókodat OpenID-re]].",
+	'tog-hideopenid'                => 'Az <a href="http://openid.net/">OpenID</a>-d elrejtése a felhasználói lapodon, amikor OpenID-vel jelentkezel be.',
+	'openidnousername'              => 'Nem adtál meg felhasználónevet.',
+	'openidbadusername'             => 'Rossz felhasználónevet adtál meg.',
+	'openidautosubmit'              => 'Az ezen az oldalon lévő űrlap automatikusan elküldi az adatokat, ha a JavaScript engedélyezve van. Ha nem, használd a \\"Tovább\\" gombot.',
+	'openidclientonlytext'          => 'Az itteni felhasználónevedet nem használhatod OpenID-ként más weboldalon.',
+	'openidlogininstructions'       => "A(z) {{SITENAME}} támogatja az [http://openid.net/ OpenID]-alapú bejelentkezést.
+A OpenID lehetővé teszi, hogy számos különböző weboldalra jelentkezz be úgy, hogy csak egyszer kell megadnod a jelszavadat. (Lásd [http://hu.wikipedia.org/wiki/OpenID a Wikipédia OpenID cikkét] további információkért.)
+
+Ha már regisztráltál korábban, [[Special:Userlogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t akarsz használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]], miután bejelentkeztél.
+
+Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.
+
+; Más wikik: ha regisztráltál egy OpenID-kompatibilis wikin, mint a [http://wikitravel.org/ Wikitravel], a [http://www.wikihow.com/ wikiHow], a [http://vinismo.com/ Vinismo], az [http://aboutus.org/ AboutUs] vagy a [http://kei.ki/ Keiki], bejelentkezhetsz ide az ottani felhasználói lapod '''teljes címének''' megadásával. (Például ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.)
+; [http://openid.yahoo.com/ Yahoo!] :  ha van Yahoo! azonosítód, bejelentkezhetsz a Yahoo! OpenID-d megadásával. A Yahoo! OpenID-k ''<nowiki>https://me.yahoo.com/felhasználónév</nowiki>'' alakúak.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Ha van valamilyen [http://www.aol.com/ AOL] azonosítód, például egy [http://www.aim.com/ AIM] felhasználónév, bejelentkezhetsz az AOL OpenID-del. Az AOL OpenID-k ''<nowiki>http://openid.aol.com/felhasználónév</nowiki>'' alakúak (a felhasználónév csupa kisbetűvel, szóköz nélkül).
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : ezek a blogszolgáltatók mind biztosítanak OpenID-t, a következő formákban: ''<nowiki>http://felhasználónév.blogspot.com/</nowiki>'', ''<nowiki>http://felhasználónév.wordpress.com/</nowiki>'', ''<nowiki>http://felhasználónév.livejournal.com/</nowiki>'', or ''<nowiki>http://felhasználónév.vox.com/</nowiki>''.",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Lovekhmer

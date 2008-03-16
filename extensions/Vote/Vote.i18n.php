@@ -549,6 +549,27 @@ $messages['te'] = array(
 	'vote-login-link'   => 'ప్రవేశించండి',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'vote'                => 'Раъйгирӣ',
+	'vote-header'         => "Шумо дар инҷо метавонед барои '''Арбоби Олии Ҷаҳон''' раъй бидиҳед!",
+	'vote-current'        => "Раъйи феълии шумо барои '''$1''' аст.",
+	'vote-legend'         => 'Раъйи худро ворид ё ислоҳ намоед',
+	'vote-caption'        => 'Интихоби шумо:',
+	'vote-submit'         => 'Сабти раъй',
+	'vote-registered'     => 'Раъйи шумо сабт шуд.',
+	'vote-view-results'   => 'Мушоҳидаи натоиҷ',
+	'vote-results'        => 'Натоиҷи раъйгирӣ',
+	'vote-results-choice' => 'Интихоб',
+	'vote-results-count'  => 'Шумориш',
+	'vote-results-none'   => 'Дар ҳоли ҳозир ҳеҷ раъйе сабт нашудааст.',
+	'vote-login'          => 'Барои раъй додан бояд $1.',
+	'vote-login-link'     => 'ба систем вуруд шавед',
+	'vote-invalid-choice' => 'Шумо бояд яке аз ихтиёрҳои мавҷудро интихоб кунед.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -231,8 +231,8 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
- * @author Dereckson
  * @author Urhixidur
+ * @author Dereckson
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -268,7 +268,7 @@ $messages['fr'] = array(
 	'review_total_statistics'                                => 'Total',
 	'review_statistics_left_corner'                          => 'Révision',
 	'review_version_link'                                    => 'Révision #$1',
-	'review_statistic_cell'                                  => 'Moyenne : $1 de $2<br />(contributeurs : $4 inscrits, $5 anonymes)',
+	'review_statistic_cell'                                  => 'Moyenne : $1 de $2<br/>(contributeurs : $4 inscrits, $5 anonymes)',
 	'review_version_statistic_cell'                          => '$1 de $2',
 	'review_version_reviews_link'                            => '<small>(révisions de version)</small>',
 	'review_concerns_page'                                   => 'Cete révision est à propos de la page « $1 ».',
@@ -499,7 +499,7 @@ $messages['oc'] = array(
 	'review_total_statistics'                                => 'Soma',
 	'review_statistics_left_corner'                          => 'Revision',
 	'review_version_link'                                    => 'Revision #$1',
-	'review_statistic_cell'                                  => 'Mejana : $1 de $2<br />(contributors : $4 inscriches, $5 anonims)',
+	'review_statistic_cell'                                  => 'Mejana : $1 de $2<br/>(contributors : $4 inscriches, $5 anonims)',
 	'review_version_statistic_cell'                          => '$1 de $2',
 	'review_version_reviews_link'                            => '<small>(revisions de version)</small>',
 	'review_concerns_page'                                   => 'Aquesta revision es a prepaus de la pagina « $1 ».',

@@ -109,6 +109,13 @@ $messages['ja'] = array(
 	'poem-desc' => '詩的な文章フォーマットで記述できる<tt>&lt;poem&gt;</tt>タグを追加する',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'poem-desc' => 'Tilføje <tt>&lt;poem&gt;</tt> tag før digt formåter',
+);
+
 /** Limburgish (Limburgs)
  * @author Matthias
  */

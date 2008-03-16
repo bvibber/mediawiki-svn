@@ -442,6 +442,14 @@ $messages['te'] = array(
 	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'talkhere-addcomment'  => 'илова кардани тавзеҳот',
+	'talkhere-beforeinput' => 'Шумо метавонед дар зер як тавзеҳ илова кунед',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

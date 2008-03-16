@@ -493,6 +493,24 @@ $messages['ja'] = array(
 	'usernameblacklist-invalid-lines' => '以下の{{PLURAL:$1|行|行}}に記載された利用者ブラックリスト{{PLURAL:$1|は|は}}正しく記述できていません。保存する前に{{PLURAL:$1|これ|これら}}を修正してください:',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'usernameblacklist-desc'          => 'Tilføjer en [[MediaWiki:Usernameblacklist|sort liste over uønskede brugernavne]] for at forhindre oprettelse af konti der mathcer en eller flere regular expressions.',
+	'blacklistedusername'             => 'Sårtlistet brugernavn',
+	'blacklistedusernametext'         => 'Du har valgt et brugernavn som findes på [[MediaWiki:Usernameblacklist|{{SITENAME}}s sorte liste]], vælg venligst et andet.',
+	'usernameblacklist'               => "<pre>
+# Elementerne i denne liste bliver brugt som del af en ''regular expression''
+# når brugernavne sortlistes fra oprettelse. Hvert element bør være en del en
+# punktopstilling, fx
+#
+# * Foo
+# * [Bb]ar
+</pre>",
+	'usernameblacklist-invalid-lines' => 'Nedenstående {{PLURAL:$1|linje|linjer}} i den sorte liste over brugernavne er ugyldige, ret {{PLURAL:$1|den|dem}} venligst før du gemmer:',
+);
+
 /* Kazakh Arabic (kk:AlefZet) */
 $messages['kk-arab'] = array(
 	'blacklistedusername' => 'قارا تىزىمدەگى قاتىسۋشى اتى',

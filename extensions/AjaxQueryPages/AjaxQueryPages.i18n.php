@@ -102,6 +102,13 @@ $messages['oc'] = array(
 	'ajax-qp-desc' => "Ajusta d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages]]",
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'ajax-qp-desc' => 'Dodaje technologię AJAX do stron zapytań, takich jak [[Special:Shortpages]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

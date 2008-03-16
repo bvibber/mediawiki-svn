@@ -322,6 +322,7 @@ $messages['eo'] = array(
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
 	'oversight-view'              => 'detaloj',
+	'oversight-hidden'            => 'Kaŝita revizio',
 );
 
 /** Basque (Euskara)
@@ -846,6 +847,19 @@ $messages['ja'] = array(
 	'oversight-prev'              => '残存している前の版',
 	'oversight-hidden'            => '秘匿された版',
 	'oversight-header'            => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'group-oversight'        => 'Åversigter',
+	'group-oversight-member' => 'Åversigt',
+	'grouppage-oversight'    => '{{ns:project}}:Åversigt',
+	'hiderevision-prompt'    => 'Reviisje nåmer til slette:',
+	'hiderevision-continue'  => 'Kontinuær',
+	'oversight'              => 'Åversigt',
+	'oversight-view'         => 'dætajer',
 );
 
 /* Kazakh Arabic (AlefZet) */

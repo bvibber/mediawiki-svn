@@ -90,9 +90,10 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 
 /** Hungarian (Magyar)
  * @author Bdanee
+ * @author Tgr
  */
 $messages['hu'] = array(
-	'newusernotifsubj' => 'Értesítés új felhasználóról $2 részére',
+	'newusernotifsubj' => 'Értesítés új $1 felhasználóról',
 	'newusernotifbody' => 'Szia $1,
 
 egy új felhasználói fiókot készítettek $2 névvel a(z) $3 wikin, $4-kor.',

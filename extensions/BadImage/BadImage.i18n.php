@@ -923,10 +923,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Wpedzich
  * @author SPQRobin
  */
 $messages['pl'] = array(
 	'badimages'                => 'Zła lista grafik',
+	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w Mediawiki',
 	'badimages-add-btn'        => 'Dodaj',
 	'badimages-added'          => 'dodano $1 do listy.',
 	'badimages-count'          => "Jest '''$1''' grafik na liście złych grafik.",
@@ -944,6 +946,7 @@ $messages['pl'] = array(
 	'badimages-log-header'     => 'Lista zmian w [[{{MediaWiki:Badimages-page}}|liście złych grafik]].',
 	'badimages-log-add'        => 'dodano [[$1]] do listy złych grafik',
 	'badimages-log-remove'     => 'usunięto [[$1]] z listy złych grafik',
+	'badimages-page'           => '{{ns:help}}:Lista nieprawidłowych grafik',
 );
 
 /** Piemontèis (Piemontèis)
@@ -1330,8 +1333,9 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg'] = array(
-	'badimages-name'   => 'Ном:',
-	'badimages-reason' => 'Далел:',
+	'badimages-name'       => 'Ном:',
+	'badimages-reason'     => 'Далел:',
+	'badimages-remove-btn' => 'Ҳазф',
 );
 
 /** Thai (ไทย)

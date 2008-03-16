@@ -205,6 +205,17 @@ $messages['ja'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: 1つ以上のカテゴリ、または名前空間を指定する必要があります！',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'intersection-desc'          => 'Outputs en bulleted liste der senestste itemer ræsidende i en klynge, æller æ unje der severæl klynger',
+	'intersection_toomanycats'   => 'DynamicPageList: Åverføl klynger!',
+	'intersection_toofewcats'    => 'DynamicPageList: Åverwæneg klynger!',
+	'intersection_noresults'     => 'DynamicPageList: Ekke ræsultåter!',
+	'intersection_noincludecats' => 'DynamicPageList: Du nødst til inkludær til mendst en klynge, æller spæsifiær en navnerum!',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

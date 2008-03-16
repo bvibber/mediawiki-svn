@@ -198,6 +198,13 @@ $messages['fa'] = array(
 	'pdt_comparing_page'  => 'مقایسهٔ خروجی تحلیلگر از [[$1]]',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'pdtest_page_missing' => 'Tietokannasta ei löytynyt kyseistä sivua.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
@@ -391,6 +398,15 @@ $messages['ja'] = array(
 	'pdtest_diff'         => '差異',
 	'pdtest_side_by_side' => '出力の比較',
 	'pdt_comparing_page'  => '[[$1]]のパーサー出力を比較',
+);
+
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'parserdifftest'   => 'Test der Parser Ændrenger',
+	'pdtest_no_target' => 'Ekke target spæsifiærn.',
+	'pdtest_ok'        => 'OK',
 );
 
 /** Khmer (ភាសាខ្មែរ)

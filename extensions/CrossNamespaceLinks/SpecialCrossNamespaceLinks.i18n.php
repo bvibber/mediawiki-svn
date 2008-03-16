@@ -239,6 +239,9 @@ $messages['hu'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
 	'crossnamespacelinks'         => 'Միջանվանատարածքային հղումներ պարունակող էջեր',
 	'crossnamespacelinks-summary' => 'Այս էջում բերված է գլխավոր անվանատարածքների էջերից այլ անվանատարածքների էջերին հղումների ցանկը (բացառությամբ հետևյալ անվանատարածքների. {{ns:special}}, {{ns:talk}}, {{ns:project}} և {{ns:template}}))։ Այս տիպի հղումները չեն խրախուսվում։',
@@ -596,7 +599,7 @@ $messages['te'] = array(
 $messages['tg'] = array(
 	'crossnamespacelinks'         => 'Пайвандҳое аз як фазои ном ба фазои номи дигар',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Пайвандҳои байнивикиро феҳрист мекунад]], ки набояд дар {{SITENAME}} вуҷуд дошта бошанд',
-	'crossnamespacelinks-summary' => 'Ин саҳифа феҳристе аз пайвандҳое, ки аз як саҳифа дар фазои номи аслӣ ба як саҳифа дар дигар фазои ном ба ғайр аз {{ns:special}}, {{ns:talk}}, {{ns:project}} ва {{ns:template}} namespaces), вуҷуд дорад ироаъ мекунад, ки истифода аз онҳо тавзеҳ намешавад.',
+	'crossnamespacelinks-summary' => 'Ин саҳифа феҳристе аз пайвандҳое, ки аз як саҳифа дар фазои номи аслӣ ба як саҳифа дар дигар фазои ном (ба ғайр аз {{ns:special}}, {{ns:talk}}, {{ns:project}} ва {{ns:template}} namespaces), вуҷуд дорад ироаъ мекунад, ки истифода аз онҳо тавзеҳ намешавад.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|пайванд|пайвандҳо}} ба $3',
 );
 

@@ -142,6 +142,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'ajax-se-desc'             => 'Montras redaktantaj uzantoj kiu redaktas la saman paĝon',
 	'ajax-se-title'            => 'Nune redaktas:',
 	'ajax-se-pending'          => 'atendas por refreŝigo ... (klaku ĉi tiun skatolon aŭ ekredaktu)',
 	'ajax-se-idling'           => '(antaŭ $1s)',
@@ -220,11 +221,13 @@ $messages['gl'] = array(
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
+ * @author Dalibor Bosits
  */
 $messages['hr'] = array(
-	'ajax-se-title'   => 'Trenutno uređujete:',
-	'ajax-se-pending' => 'osvježavanje slijedi ... (kliknite na ovaj okvir ili počnite s uređivanjem)',
-	'ajax-se-idling'  => '(prije $1s)',
+	'ajax-se-title'            => 'Trenutno uređujete:',
+	'ajax-se-pending'          => 'osvježavanje slijedi ... (kliknite na ovaj okvir ili počnite s uređivanjem)',
+	'ajax-se-idling'           => '(prije $1s)',
+	'ajax-se-pagedoesnotexist' => 'stranica ne postoji',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -457,11 +460,12 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Wpedzich
+ * @author Derbeth
  * @author McMonster
  */
 $messages['pl'] = array(
+	'ajax-se-desc'             => 'Pokazuje, którzy użytkownicy edytują tę samą stronę',
 	'ajax-se-title'            => 'Ta strona jest teraz edytowana przez:',
 	'ajax-se-pending'          => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
 	'ajax-se-idling'           => '($1s temu)',

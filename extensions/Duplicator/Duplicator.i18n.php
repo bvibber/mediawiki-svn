@@ -495,7 +495,7 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-toomanyrevisions'      => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -518,7 +518,7 @@ $messages['no'] = array(
 	'duplicator-source-notexist'       => '[[$1]] finnes ikike. Angi tittelen til en eksisterende side.',
 	'duplicator-dest-invalid'          => 'Angi en gyldig måltittel.',
 	'duplicator-dest-exists'           => '[[$1]] finnes allerede. Angi en måltittel som ikke eksisterer.',
-	'duplicator-toomanyrevisions'      => '[[$1]] har for mange revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
+	'duplicator-toomanyrevisions'      => '[[$1]] har for mange ($2) revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

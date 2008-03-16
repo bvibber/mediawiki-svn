@@ -346,9 +346,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'backforth-next' => 'Następny ($1)',
+	'backforth-desc' => 'Dodaje linki wyszukiwania alfabetycznego "Poprzedni" i "Następny" na początku strony',
 	'backforth-prev' => 'Poprzedni ($1)',
 );
 

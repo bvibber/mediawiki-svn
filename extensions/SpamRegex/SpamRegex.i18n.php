@@ -404,3 +404,10 @@ $messages['te'] = array(
 	'spamregex-summary-log'          => '(సంగ్రహం)',
 );
 
+/** Tajik (Тоҷикӣ)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'spamregex-text' => '(Матн)',
+);
+

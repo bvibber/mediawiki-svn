@@ -74,6 +74,13 @@ $messages['fa'] = array(
 	'doublewiki-desc' => 'یک صفحه و ترجمهٔ آن از یک ویکی دیگر را در دو ستون در همان صفحه نمایش می‌دهد',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'doublewiki-desc' => 'Näyttää sivun sekä sen käännöksen toisesta wikistä vierekkäisillä palstoilla.',
+);
+
 
 /** French (Français)
  * @author Meithal

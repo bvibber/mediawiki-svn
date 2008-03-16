@@ -421,6 +421,18 @@ $messages['ja'] = array(
 	'createarticle'           => '項目を作成',
 );
 
+/** Jutish (Jysk)
+ * @author Huslåke
+ */
+$messages['jut'] = array(
+	'inputbox-desc'           => 'Tilstån der inklusje der prædæfiiniærn HTML fårmer',
+	'inputbox-error-no-type'  => 'Du harst ekke spæsifiærn æ type der input boks til skep.',
+	'inputbox-error-bad-type' => 'Input boks type "$1" ekke herkonnen. Spæsifiær "skep", "bimærkenge", "søĝ" æller "søĝ2".',
+	'tryexact'                => 'Førsøĝ eksakt søĝnenge:',
+	'searchfulltext'          => "Gennemsøĝe'n hæle tekster",
+	'createarticle'           => 'Åprette side',
+);
+
 $messages['jv'] = array(
 	'searchfulltext' => 'Golèk ing tèks jangkep',
 	'createarticle'  => 'Damel artikel',

@@ -83,10 +83,19 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'dt_xml_name'     => 'Nomo',
-	'dt_xml_title'    => 'Titolo',
-	'dt_xml_id'       => 'identigo',
-	'dt_xml_freetext' => 'Libera Teksto',
+	'dt-desc'                     => 'Permesas importadon kaj eksportadon de strukturemaj datenoj enhave en ŝablonaj vokoj.',
+	'viewxml'                     => 'Rigardu XML-on',
+	'dt_viewxml_docu'             => 'Bonvolu elekti inter la subaj kategorioj kaj nomspacoj por rigardi en XML-formato.',
+	'dt_viewxml_categories'       => 'Kategorioj',
+	'dt_viewxml_namespaces'       => 'Nomspacoj',
+	'dt_viewxml_simplifiedformat' => 'Simpligita formato',
+	'dt_xml_namespace'            => 'Nomspaco',
+	'dt_xml_page'                 => 'Paĝo',
+	'dt_xml_field'                => 'Kampo',
+	'dt_xml_name'                 => 'Nomo',
+	'dt_xml_title'                => 'Titolo',
+	'dt_xml_id'                   => 'identigo',
+	'dt_xml_freetext'             => 'Libera Teksto',
 );
 
 /** French (Français)

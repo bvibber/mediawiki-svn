@@ -207,6 +207,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'minnamelength-error' => 'Ditt användarnamn är för kort. Den minsta längden är $1.',
+	'minnamelength-desc'  => 'Inför en minimumlängd på användarnamn',
 );
 
 /** Telugu (తెలుగు)
