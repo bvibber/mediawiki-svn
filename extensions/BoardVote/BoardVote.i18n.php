@@ -1435,12 +1435,16 @@ Bit ćete preusmjereni na taj vanjski server za 20 sekundi. [$1 Kliknite ovdje] 
 Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'boardvote'               => 'Wólby za kuratorij Wikimedia',
-	'boardvote_entry'         => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
+	'boardvote'              => 'Wólby za kuratorij Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Wólby kuratorija Wikimedije]]',
+	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
 * [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
 * [[{{ns:special}}:Boardvote/dump|Zaklučowane wólbne zapiski]]',
-	'boardvote_intro'         => '<blockquote>
+	'boardvote_intro'        => '<blockquote>
 <p>
 Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo bychu zhromadźenstwo wužiwarjow we wšelakich projektach reprezentowali. Tući třo wužiwarjo wola so za dobu dweju lět. Budu pomhać, přichodny směr projektow Wikimedije postajić, jednotliwje a jako skupina a reprezentuja <em>twoje</em> zajimy a naležnosće. Budu nimo wjele druhich wěcow wo dochodach a wudawkach rozsudźeć.
 </p>
@@ -1455,8 +1459,8 @@ Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ/de" class="external">FAQ k wólbam</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/hsb" class="external">Kandidaća</a></li></ul>
 </blockquote>',
-	'boardvote_intro_change'  => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
-	'boardvote_entered'       => 'Dźakujemy so ći, twój hłós bu zregistrowany.
+	'boardvote_intro_change' => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
+	'boardvote_entered'      => 'Dźakujemy so ći, twój hłós bu zregistrowany.
 
 Jeli chceš, móžeš slědowace podrobnosce zapisować. Twoje zregistrowane wothłosowanje je:
 
@@ -1471,33 +1475,33 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Wróćo]]',
-	'boardvote_nosession'     => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
-	'boardvote_notloggedin'   => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
-	'boardvote_notqualified'  => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
-	'boardvote_novotes'       => 'Dotal nichtó njeje hłosował.',
-	'boardvote_time'          => 'Čas',
-	'boardvote_user'          => 'Wužiwar',
-	'boardvote_edits'         => 'Změny',
-	'boardvote_days'          => 'Dny',
-	'boardvote_ip'            => 'IP-adresa',
-	'boardvote_ua'            => 'Klient',
-	'boardvote_listintro'     => '<p>To je lisćina wšěch hłosow, kotrež buchu dotal wotedate. $1 za zaklučowane daty.</p>',
-	'boardvote_dumplink'      => 'Tu kliknyć',
-	'boardvote_submit'        => 'Hłosować',
-	'boardvote_strike'        => 'Hłos wušmórnyć',
-	'boardvote_unstrike'      => 'Wušmórnjenje hłosu cofnyć',
-	'boardvote_needadmin'     => 'Jenož wólbni administratorojo móža tutu akciju přewjesć.',
-	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Wólby za kuratorij Wikimedija</a>:',
-	'boardvote_notstarted'    => 'Wólba hišće njeje so započała.',
-	'boardvote_closed'        => 'Wólba je zakónčena. Wuslědki móžeš na [http://meta.wikimedia.org/wiki/Election_results_2006/hsb na Wikimediji] widźeć.',
-	'boardvote_edits_many'    => 'mnohe',
-	'group-boardvote'         => 'Wólbni administratorojo',
-	'group-boardvote-member'  => 'Wólbny administrator',
-	'grouppage-boardvote'     => '{{ns:project}}:Wólbny administrator',
-	'boardvote_blocked'       => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
-	'boardvote_welcome'       => 'Witaj \'\'\'$1\'\'\'!',
-	'go_to_board_vote'        => 'Wólby k Wikimedija-kuratorijej 2007',
-	'boardvote_redirecting'   => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
+	'boardvote_nosession'    => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
+	'boardvote_notloggedin'  => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
+	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
+	'boardvote_novotes'      => 'Dotal nichtó njeje hłosował.',
+	'boardvote_time'         => 'Čas',
+	'boardvote_user'         => 'Wužiwar',
+	'boardvote_edits'        => 'Změny',
+	'boardvote_days'         => 'Dny',
+	'boardvote_ip'           => 'IP-adresa',
+	'boardvote_ua'           => 'Klient',
+	'boardvote_listintro'    => '<p>To je lisćina wšěch hłosow, kotrež buchu dotal wotedate. $1 za zaklučowane daty.</p>',
+	'boardvote_dumplink'     => 'Tu kliknyć',
+	'boardvote_submit'       => 'Hłosować',
+	'boardvote_strike'       => 'Hłos wušmórnyć',
+	'boardvote_unstrike'     => 'Wušmórnjenje hłosu cofnyć',
+	'boardvote_needadmin'    => 'Jenož wólbni administratorojo móža tutu akciju přewjesć.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wólby za kuratorij Wikimedija</a>:',
+	'boardvote_notstarted'   => 'Wólba hišće njeje so započała.',
+	'boardvote_closed'       => 'Wólba je zakónčena. Wuslědki móžeš na [http://meta.wikimedia.org/wiki/Election_results_2006/hsb na Wikimediji] widźeć.',
+	'boardvote_edits_many'   => 'mnohe',
+	'group-boardvote'        => 'Wólbni administratorojo',
+	'group-boardvote-member' => 'Wólbny administrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Wólbny administrator',
+	'boardvote_blocked'      => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
+	'boardvote_welcome'      => "Witaj '''$1'''!",
+	'go_to_board_vote'       => 'Wólby k Wikimedija-kuratorijej 2007',
+	'boardvote_redirecting'  => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
 );
 
 /** Haitian (Kreyòl ayisyen)

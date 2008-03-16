@@ -1082,6 +1082,37 @@ $wdMessages['hsb'] = array(
 	'ow_db_consistency_not_found'           => '<h2>Zmylk</h2>Je problem z konsistencu datoweje banki, wikidata njemóže płaćiwe daty namakać, kotrež su z tutym ID definedMeaning zwjazane. Snano su so zhubili. Prošu skontaktuj serweroweho operatora abo administratora.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdanee
+ */
+$wdMessages['hu'] = array(
+	'ow_save'                          => 'Mentés',
+	'ow_uipref_datasets'               => 'Alapértelmezett nézet',
+	'ow_dm_OK'                         => 'OK',
+	'ow_ClassAttributeLevel'           => 'Szint',
+	'ow_ClassAttributeType'            => 'Típus',
+	'ow_ExactMeanings'                 => 'Pontos jelentések',
+	'ow_Expression'                    => 'Kifejezés',
+	'ow_Expressions'                   => 'Kifejezések',
+	'ow_Language'                      => 'Nyelv',
+	'ow_Relations'                     => 'Relációk',
+	'ow_RelationType'                  => 'Reláció típusa',
+	'ow_Spelling'                      => 'Kiejtés',
+	'ow_Synonyms'                      => 'Szinonímák',
+	'ow_Source'                        => 'Forrás',
+	'ow_SourceIdentifier'              => 'Forrásazonosító',
+	'ow_TextAttribute'                 => 'Tulajdonság',
+	'ow_Text'                          => 'Szöveg',
+	'ow_TranslatedTextAttribute'       => 'Tulajdonság',
+	'ow_TranslatedText'                => 'Lefordított szöveg',
+	'ow_TranslatedTextAttributeValue'  => 'Szöveg',
+	'ow_TranslatedTextAttributeValues' => 'Fordítandó szöveg',
+	'ow_LinkAttribute'                 => 'Tulajdonság',
+	'ow_Property'                      => 'Tulajdonság',
+	'ow_Value'                         => 'Érték',
+	'ow_meaningsoftitle'               => '„$1” jelentései',
+);
+
 $wdMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 	'langman_title' => 'Pengelola bahasa',

@@ -118,7 +118,8 @@ $messages['hu'] = array(
 	'minipreview-files_in_category'   => '$1 fájl található a kategóriában.',
 	'minipreview-files_in_gallery'    => '$1 fájl található a galériában.',
 	'minipreview-no_more_files_here'  => 'Nem található több fájl ebben az irányban.',
-	'minipreview-ignore_categories'   => 'Ez egy kategórialista, kategóriák nevének kezdetével. Ezeket a kategóriákat nem
+	'minipreview-no_category_gallery' => 'Nincsenek kategóriák vagy galériák!',
+	'minipreview-ignore_categories'   => 'Ez egy kategórialista, kategóriák nevének kezdetével. Ezeket a kategóriákat nem 
 jeleníti meg a MiniPreview, például a „* Közkincs-” használatával az összes „Közkincs-”
 karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 * GFDL-
@@ -126,7 +127,6 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 * CC-
 * Közkincs-
 * Saját',
-	'minipreview-no_category_gallery' => 'Nincsenek kategóriák vagy galériák!',
 );
 
 /** Khmer (ភាសាខ្មែរ)

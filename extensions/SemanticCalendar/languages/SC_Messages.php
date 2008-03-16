@@ -96,8 +96,10 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'sc_previousmonth'    => 'Předchadny měsac',
-	'sc_nextmonth'        => 'Přichodny měsac',
+	'sc_previousmonth' => 'Předchadny měsac',
+	'sc_nextmonth'     => 'Přichodny měsac',
+	'sc_today'         => 'Dźensa',
+	'sc_gotomonth'     => 'Dźi k měsacej',
 );
 
 /** Hungarian (Magyar)
