@@ -47,40 +47,37 @@ class PasswordReset extends SpecialPage {
 
 				if ( !is_object( $objUser ) || $userID == 0 ) {
 					$validUser = false;
-					$wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg( 'passwordreset-invalidusername' ) . "</span><br />\n" );
+					$wgOut->addHTML( Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'passwordreset-invalidusername' ) ) . "\n" );
 				} else {
 					$validUser = true;
 				}
 			} else {
 				$validUser = false;
-				$wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg( 'passwordreset-emptyusername' ) . "</span><br />\n" );
+				$wgOut->addHTML( Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'passwordreset-emptyusername' ) ) . "\n" );
 			}
 
 			$newpass = $wgRequest->getText( 'newpass' );
 			$confirmpass = $wgRequest->getText( 'confirmpass' );
 
-			if( ( $newpass == $confirmpass && strlen( $newpass ) > 0) || $disableuser) {
+			if( ( $newpass == $confirmpass && strlen( $newpass ) > 0 ) || $disableuser ) {
 				//Passwords match
 				$passMatch = true;
 			} else {
 				//Passwords DO NOT match
 				$passMatch = false;
-				$wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg( 'passwordreset-nopassmatch' ) . "</span><br />\n" );
+				$wgOut->addHTML( Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'passwordreset-nopassmatch' ) ) . "\n" );
 			}
 
 			if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
 				$validUser = false;
 				$passMatch = false;
-				$wgOut->addHTML( "<span style=\"color: red;\">" . wfMsg( 'passwordreset-badtoken' ) . "</span><br />\n" );
+				$wgOut->addHTML( Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'passwordreset-badtoken' ) ) . "\n" );
 			}
 		} else {
 			$validUser = false;
 			$confirmpass = '';
 			$newpass = '';
 		}
-
-		$action = $wgTitle->escapeLocalUrl();
-		$token = $wgUser->editToken();
 
 		$wgOut->addHTML( "
 <script language=\"Javascript\">
@@ -94,37 +91,54 @@ class PasswordReset extends SpecialPage {
 		}
 		return true;
 	}
-</script>
-<form id='passwordresetform' method='post' action=\"$action\">
-<table>
-			<tr>
-				<td align='right'>" . wfMsg('passwordreset-username') . "</td>
-				<td align='left'><input tabindex='1' type='text' size='20' name='username' id='username' value=\"$username_text\" onFocus=\"document.getElementById('username').select;\" /></td>
+</script>" .
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl(), 'id' => 'passwordresetform' ) ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-passwordreset-table' ) ) .
+			"<tr>
+				<td class='mw-label'>" . 
+					Xml::label( wfMsg( 'passwordreset-username' ), 'username' ) . 
+				"</td>
+				<td class='mw-input'>
+					<input tabindex='1' type='text' size='20' name='username' id='username' value=\"$username_text\" onFocus=\"document.getElementById('username').select;\" />
+				</td>
 			</tr>
 			<tr>
-				<td align='right'>" . wfMsg('passwordreset-newpass') . "</td>
-				<td align='left'><input tabindex='2' type='password' size='20' name='newpass' id='newpass' value=\"$newpass\" onFocus=\"document.getElementById('newpass').select;\"{$passwordfielddisabled} /></td>
+				<td class='mw-label'>" . 
+					Xml::label( wfMsg( 'passwordreset-newpass' ), 'newpass' ) . 
+				"</td>
+				<td class='mw-input'>
+					<input tabindex='2' type='password' size='20' name='newpass' id='newpass' value=\"$newpass\" onFocus=\"document.getElementById('newpass').select;\"{$passwordfielddisabled} />
+				</td>
 			</tr>
 			<tr>
-				<td align='right'>" . wfMsg('passwordreset-confirmpass') . "</td>
-				<td align='left'><input tabindex='3' type='password' size='20' name='confirmpass' id='confirmpass' value=\"$confirmpass\" onFocus=\"document.getElementById('confirmpass').select;\"{$passwordfielddisabled} /></td>
+				<td class='mw-label'>" . 
+					Xml::label( wfMsg( 'passwordreset-confirmpass' ), 'confirmpass' ) . 
+				"</td>
+				<td class='mw-input'>
+					<input tabindex='3' type='password' size='20' name='confirmpass' id='confirmpass' value=\"$confirmpass\" onFocus=\"document.getElementById('confirmpass').select;\"{$passwordfielddisabled} />
+				</td>
 			</tr>
 			<tr>
-				<td align='right'>" . wfMsg('passwordreset-disableuser') . "</td>
-				<td align='left'><input tabindex='4' type='checkbox' name='disableuser' id='disableuser' onmouseup='return disableUserClicked();'{$disableuserchecked} /> " . wfMsg('passwordreset-disableuserexplain') . "</td>
+				<td class='mw-label'>" . 
+					Xml::label( wfMsg( 'passwordreset-disableuser' ), 'disableuser' ) . 
+				"</td>
+				<td class='mw-input'>
+					<input tabindex='4' type='checkbox' name='disableuser' id='disableuser' onmouseup='return disableUserClicked();'{$disableuserchecked} /> " . wfMsg('passwordreset-disableuserexplain') .
+				"</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td align='right'><input type='submit' name='submit' value=\"" . wfMsg('passwordreset-submit') . "\" /></td>
-			</tr>
-</table>
-<input type='hidden' name='token' value='$token' />
-</form>"
+				<td></td>
+				<td class='mw-submit'>" .
+					Xml::submitButton( wfMsg( 'passwordreset-submit' ), array( 'name' => 'submit' ) ) .
+				"</td>
+			</tr>" .
+			Xml::closeElement( 'table' ) .
+			Xml::hidden( 'token', $wgUser->editToken() ) .
+			Xml::closeElement( 'form' )
 		);
 
 		if ( $validUser && $passMatch ) {
-			$wgOut->addWikiText ( "<hr />\n" );
-			$wgOut->addWikiText ( $this->resetPassword( $userID, $newpass, $disableuser ) );
+			$wgOut->addWikiText ( Xml::tags( 'div', array( 'class' => 'successbox' ), $this->resetPassword( $userID, $newpass, $disableuser ) ) );
 		} else {
 			//Invalid user or passwords don't match - do nothing
 		}
