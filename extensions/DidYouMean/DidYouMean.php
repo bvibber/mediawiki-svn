@@ -35,6 +35,9 @@ $wgHooks['ArticleSaveComplete'][] = 'wfDymArticleSaveComplete';
 # handle undelete
 $wgHooks['ArticleUndelete'][] = 'wfDymArticleUndelete';
 
+# handle parser test setup
+$wgHooks['ParserTestTables'][] = 'wfDymParserTestTables';
+
 # set this in LocalSettings.php
 $wgDymUseSeeTemplate = false;
 
@@ -395,4 +398,10 @@ function wfDymDoUpdate( $pageid, $title ) {
 		wfDymTouchPages( "(dp_normid=$normid OR dp_normid=$oldnormid)" );
 
 	}
+}
+
+function wfDymParserTestTables( &$tables ) {
+	$tables[] = 'dympage';
+	$tables[] = 'dymnorm';
+	return true;
 }
