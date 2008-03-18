@@ -39,6 +39,13 @@ $messages['hsb'] = array(
 	'randomimage-desc' => 'Přidawa tafličku <tt>&lt;randomimage /&gt;</tt> za zwobraznjenje připadneho wobraza',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'randomimage-desc' => 'Weist eng zoufälleg Medien-Datei a benotzt <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

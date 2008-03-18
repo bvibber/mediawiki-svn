@@ -1477,6 +1477,13 @@ $wdMessages['mr'] = array(
 	'ow_db_consistency_not_found'           => '<h2>त्रूटी</h2>विदेच्या सुरळीतपणाचा प्रश्न आहे ,विकिविदा या व्यक्त ID शी संबधीत सुयोग्य विदा शोधूशकत नाही.ती हरवली असण्याची शक्यता आहे.कृपया प्रचालक अथवा प्रबंधकांशी संपर्क करा.',
 );
 
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$wdMessages['mwl'] = array(
+	'ow_Language' => 'Lhéngua',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

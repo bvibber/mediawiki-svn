@@ -124,7 +124,12 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'profiling-data-count' => 'Zielen',
+	'profiling-ok'           => 'ok',
+	'profiling-data-process' => 'Sichen',
+	'profiling-data-count'   => 'Zielen',
+	'profiling-data-time'    => 'Dauer (total)',
+	'profiling-data-average' => 'Dauer (Duerchschnëtt)',
+	'profiling-no-data'      => 'Näischt fonnt vun dem wat Dir gesicht hutt.',
 );
 
 /* nld / Dutch (Siebrand Mazeland) */
