@@ -623,7 +623,7 @@ $messages['li'] = array(
 	'bookinfo-error-nodriver'    => 'Kós de zjuuste Boke Informatie Driver neet initialisere.',
 	'bookinfo-error-noresponse'  => "Gein antjwaord of 'ne tied-oet.",
 	'bookinfo-purchase'          => 'Koup dit book bie $1.',
-	'bookinfo-provider'          => 'Gegaeves geleverdj door: #1',
+	'bookinfo-provider'          => 'Gegaeves geleverdj door: $1',
 );
 
 /** Lithuanian (Lietuvių)
@@ -929,6 +929,18 @@ $messages['stq'] = array(
 	'bookinfo-error-noresponse'  => 'Neen Oantwoud of ju Tied is foarbie.',
 	'bookinfo-purchase'          => 'Dit Bouk kon fon $1 beleeken wäide.',
 	'bookinfo-provider'          => 'Doaten-Lääwerant: $1',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'bookinfo-header'           => 'Émbaran buku',
+	'bookinfo-result-title'     => 'Judul:',
+	'bookinfo-result-author'    => 'Pangarang:',
+	'bookinfo-result-publisher' => 'Pamedal:',
+	'bookinfo-result-year'      => 'Taun:',
+	'bookinfo-purchase'         => 'Beuli ti $1',
 );
 
 /** Swedish (Svenska)

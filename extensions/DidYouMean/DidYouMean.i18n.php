@@ -81,6 +81,13 @@ $messages['oc'] = array(
 	'didyoumean-desc' => 'Ajusta de ligams a las paginas amb de títols « semblables »',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'didyoumean-desc' => 'Dodaje linki do stron o "podobnych" tytułach',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

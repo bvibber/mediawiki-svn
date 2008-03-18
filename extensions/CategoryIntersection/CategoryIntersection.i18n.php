@@ -64,7 +64,9 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'categoryintersection' => 'Kategoria Intersekcio',
+	'categoryintersection'         => 'Kategoria Intersekcio',
+	'categoryintersection-doit'    => 'Listigu paĝojn en ĉiuj ĉi tiuj kategorioj',
+	'categoryintersection-results' => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
 );
 
 /** French (Français)

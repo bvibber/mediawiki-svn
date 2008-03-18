@@ -347,6 +347,13 @@ By zobaczyć kompletną listę zadań, orzejdź do strony $s.
 Uprzejmy przypominacz',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'tasklistchooseproj' => 'پروژه ټاکل:',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya

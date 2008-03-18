@@ -499,7 +499,7 @@ $messages['li'] = array(
 	'linksearch-pat'   => 'Zeukpatroon:',
 	'linksearch-ns'    => 'Naamruumdje:',
 	'linksearch-ok'    => 'Zeuk',
-	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" of "*.org" zeen toegestaon.',
+	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" of "*.org" zeen toegestaon.<br />Supported protocols: <tt>$1</tt>',
 	'linksearch-line'  => '$1 gelink vanaaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );

@@ -472,6 +472,7 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'ogg-short-audio'         => 'Ficheiro de son Ogg $1, $2',
@@ -480,7 +481,7 @@ $messages['gl'] = array(
 	'ogg-long-audio'          => '(Ficheiro de son Ogg $1, duración $2, $3)',
 	'ogg-long-video'          => '(Ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
 	'ogg-long-multiplexed'    => '(Ficheiro de audio/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
-	'ogg-long-general'        => 'Ficheiro multimedia Ogg, duración $2, $3)',
+	'ogg-long-general'        => '(Ficheiro multimedia Ogg, duración $2, $3)',
 	'ogg-long-error'          => '(Ficheiro ogg non válido: $1)',
 	'ogg-play'                => 'Reproducir',
 	'ogg-pause'               => 'Deter',

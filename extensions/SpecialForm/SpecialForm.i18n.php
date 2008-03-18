@@ -169,6 +169,7 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
@@ -184,7 +185,7 @@ $messages['gl'] = array(
 	'formarticleexiststext'        => 'A páxina [[$1]] xa existe.',
 	'formbadpagename'              => 'Nome de Páxina incorrecto',
 	'formbadpagenametext'          => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
-	'formrequiredfieldpluralerror' => 'Os campos $ 1 son requeridos para este formulario. Énchaos.',
+	'formrequiredfieldpluralerror' => 'Os campos $1 son requiridos para este formulario. Por favor, énchaos.',
 	'formrequiredfielderror'       => 'O campo $1 é requerido para este formulario. Énchao.',
 	'formsavesummary'              => 'Nova páxina usando [[Special:Form/$1]]',
 	'formsaveerror'                => 'Erro ao gardar o formulario',

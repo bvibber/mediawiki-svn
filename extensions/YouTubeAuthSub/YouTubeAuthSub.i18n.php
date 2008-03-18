@@ -70,6 +70,17 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'youtubeauthsub_title'           => 'Τίτλος',
+	'youtubeauthsub_description'     => 'Περιγραφή',
+	'youtubeauthsub_keywords'        => 'Λέξεις κλειδιά',
+	'youtubeauthsub_category'        => 'Κατηγορία',
+	'youtubeauthsub_jserror_notitle' => 'Παρακαλώ εισάγετε έναν τίτλο για το βίντεο.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -334,6 +345,14 @@ Czekaj.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Wprowadź jedno lub więcej słów kluczowych.',
 	'youtubeauthsub_jserror_notitle'     => 'Wprowadź tytuł materiału wideo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Wprowadź opis materiału wideo.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'youtubeauthsub_title'    => 'سرليک',
+	'youtubeauthsub_category' => 'وېشنيزه',
 );
 
 /** Slovak (Slovenčina)

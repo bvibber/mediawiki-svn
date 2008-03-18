@@ -401,12 +401,22 @@ $messages['ja'] = array(
 );
 
 /** Jutish (Jysk)
+ * @author Ælsån
  * @author Huslåke
  */
 $messages['jut'] = array(
-	'parserdifftest'   => 'Test der Parser Ændrenger',
-	'pdtest_no_target' => 'Ekke target spæsifiærn.',
-	'pdtest_ok'        => 'OK',
+	'parserdifftest'      => 'Test der Parser Ændrenger',
+	'pdtest_no_target'    => 'Ekke target spæsifiærn.',
+	'pdtest_page_missing' => "Æ spæsifiærn pæge hvás ekke fånden i'n database.",
+	'pdtest_no_changes'   => 'Ekke ændrenge dætektærn.',
+	'pdtest_time_report'  => '<b>$1</b> tåk $2 sekånd, <b>$3</b> tåk $4 sekånd.',
+	'pdtest_title'        => 'Kontekst titel:',
+	'pdtest_text'         => 'Input tekst:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Kriig tekst der pæge',
+	'pdtest_diff'         => 'Ændrenger',
+	'pdtest_side_by_side' => 'Output ændrenger',
+	'pdt_comparing_page'  => 'Ændrenger parser output der [[$1]]',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -580,9 +590,10 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'pdtest_text' => 'ځايونکی متن:',
-	'pdtest_ok'   => 'ښه/هو',
-	'pdtest_diff' => 'توپيرونه',
+	'pdtest_no_changes' => 'هېڅ بدلون و نه ليدلای شو.',
+	'pdtest_text'       => 'ځايونکی متن:',
+	'pdtest_ok'         => 'ښه/هو',
+	'pdtest_diff'       => 'توپيرونه',
 );
 
 /** Portuguese (Português)

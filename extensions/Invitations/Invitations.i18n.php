@@ -118,6 +118,35 @@ $messages['el'] = array(
 	'invitations-invite-success'            => 'Έχετε προκαλέσει επιτυχώς τον/την $1 να χρησιμοποιήσει αυτή τη λειτουργία!',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'invite-logpage'                        => 'Loglibro de invitado',
+	'invite-logpagetext'                    => 'Ĉi tiu loglibro de uzantoj invitantaj inter ili mem por uzi variajn programerojn.',
+	'invite-logentry'                       => 'Vi invitis $1 por uzi la <i>$2</i> programeron.',
+	'invitations'                           => 'Administru invitojn por programeroj',
+	'invitations-desc'                      => 'Permesas [[Special:Invitations|administradon de novaj programeroj]] tiel limigante atingon al ili per invito-sistemo',
+	'invitations-invitedlist-description'   => 'Vi povas atingi la jenajn programerojn nur atingeblaj per invito. Administri invitojn por unuopa programero, klaku ties nomon.',
+	'invitations-invitedlist-none'          => 'Vi ne estis invitita por uzi programerojn atingeblajn nur per invito.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 invitoj haveblaj)',
+	'invitations-pagetitle'                 => 'Programeroj atingeblaj nur per invito',
+	'invitations-uninvitedlist-description' => 'Vi ne eblas atingi aliajn programerojn haveblajn nur per invito.',
+	'invitations-uninvitedlist-none'        => 'Ĉi tiame, neniuj ajn programeroj estas atingeblaj nur per invito.',
+	'invitations-feature-pagetitle'         => 'Administrado de invitoj - $1',
+	'invitations-feature-access'            => 'Vi nune estas permesita uzi programeron <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Vi ankoraŭ havas <b>$1</b> el via $2 invitojn cetere.',
+	'invitations-feature-noneleft'          => 'Vi jam uzis ĉiujn de viaj disdonitaj invitoj por ĉi tiu programero',
+	'invitations-feature-noneyet'           => 'Vi ne jam ricevis vian disdonon de invitoj por ĉi tiu programero.',
+	'invitations-feature-notallowed'        => 'Vi ne havas atingon por uzi <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Invitu uzanton por uzi programeron $1',
+	'invitations-inviteform-username'       => 'Uzanto por inviti',
+	'invitations-inviteform-submit'         => 'Invitu',
+	'invitations-error-baduser'             => 'La uzanto kiun vi enigis verŝajne ne ekzistas.',
+	'invitations-error-alreadyinvited'      => 'La uzanto kiun vi enigis jam povas atingi ĉi tiun programeron!',
+	'invitations-invite-success'            => 'Vi sukcesis inviti $1 por uzi ĉi tiun programeron!',
+);
+
 /** Spanish (Español)
  * @author Dmcdevit
  */
@@ -299,7 +328,9 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'invitations-inviteform-submit' => 'بلنه ورکول',
+	'invitations-feature-notallowed'  => 'تاسو د <i>$1</i> د کارونې لاسرسی نه لری.',
+	'invitations-inviteform-username' => 'بلل شوی کارونکی',
+	'invitations-inviteform-submit'   => 'بلنه ورکول',
 );
 
 /** Portuguese (Português)

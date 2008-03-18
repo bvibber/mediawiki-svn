@@ -346,6 +346,7 @@ $messages['gl'] = array(
 Voltar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$2]]",
+	'crosswikiblock-nousername'     => 'Non foi inserido ningún alcume',
 	'crosswikiblock-dbnotfound'     => 'A base de datos $1 non existe',
 	'crosswikiblock-noname'         => '"$1" non é un nome de usuario válido.',
 	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
@@ -481,10 +482,15 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'crosswikiblock-desc'           => "Erlaabt d'Späre vu Benotzer op anere Wikien iwwer eng [[Special:Crosswikiblock|Spezialsäit]]",
 	'crosswikiblock'                => 'E Benotzer op enger anerer Wiki spären',
+	'crosswikiblock-header'         => 'Dës Spezialsäit erlaabt et e Benotzer op enger anere Wiki ze spären.
+
+Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir hutt an ob är Aktioun de Regegelen vun däer wiki entsprecht.',
 	'crosswikiblock-reason'         => 'Grond:',
 	'crosswikiblock-submit'         => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
+	'crosswikiunblock'              => "D'Spär vum Benotzer op enger anerer Wiki ophiewen",
 	'crosswikiunblock-reason'       => 'Grond:',
 	'crosswikiunblock-submit'       => 'Spär fir dëse Benotzer ophiewen',
 	'crosswikiblock-nousername'     => 'Dir hutt kee Benotzernumm aginn',

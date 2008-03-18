@@ -446,9 +446,13 @@ Gioanin|Gioanin',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'vote'            => 'رايه ورکول',
-	'vote-submit'     => 'رايه ورکول',
-	'vote-login-link' => 'ننوتنه',
+	'vote'              => 'رايه ورکول',
+	'vote-caption'      => 'ستاسو ټاکنه:',
+	'vote-submit'       => 'رايه ورکول',
+	'vote-registered'   => 'ستاسو رايه ثبته شوه.',
+	'vote-view-results' => 'پايلې کتل',
+	'vote-results'      => 'د رايو پايلې',
+	'vote-login-link'   => 'ننوتنه',
 );
 
 /** Portuguese (Português)

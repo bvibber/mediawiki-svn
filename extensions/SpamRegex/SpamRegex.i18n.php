@@ -318,6 +318,14 @@ $messages['oc'] = array(
 	'spamregex-summary-log'          => '(Comentari)',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'spamregex-text'        => '{Tekst)',
+	'spamregex-summary-log' => '{Podsumowanie)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso

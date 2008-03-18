@@ -126,6 +126,7 @@ $messages['ar'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author Borislav
  * @author DCLXVI
  */
 $messages['bg'] = array(
@@ -153,9 +154,9 @@ $messages['bg'] = array(
 	'math_MisplacedLimits'                  => 'Командата "$1" може да стои единствено след математически оператор (опитайте с "\\mathop")',
 	'math_MissingCommandAfterNewcommand'    => 'Липсващо или непозволено име на нова команда след "\\newcommand" (трябва да е дефинирана точно една команда, тя да започва с обратна наклонена черта "\\" и да съдържа в името си само букви от азбуката)',
 	'math_MissingDelimiter'                 => 'Липсващ разделител след "$1"',
-	'math_MissingOpenBraceAfter'            => 'Липсваща отваряща скоба "{" след "$1"',
-	'math_MissingOpenBraceAtEnd'            => 'Липсваща отваряща скоба "{" в края на входа',
-	'math_MissingOpenBraceBefore'           => 'Липсваща отваряща скоба "{" пред "$1"',
+	'math_MissingOpenBraceAfter'            => 'Липсваща отваряща скоба „{“ след „$1“',
+	'math_MissingOpenBraceAtEnd'            => 'Липсваща отваряща скоба „{“ в края на въведения текст',
+	'math_MissingOpenBraceBefore'           => 'Липсваща отваряща скоба „{“ пред „$1“',
 	'math_NonAsciiInMathMode'               => 'Символи извън ASCII могат да се използват единствено в текстов режим (например оградени с "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Недостатъчен брой аргументи за "$1"',
 	'math_PngIncompatibleCharacter'         => 'Не може коректно да се генерира PNG изображение, съдържащо символа $1',
@@ -368,13 +369,23 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'math-desc'                             => 'MathML-eligo por &lt;math&gt; etikedoj',
+	'math_CannotCreateTexFile'              => 'Ne povas krei tex-dosieron',
 	'math_IllegalCharacter'                 => 'Nevalida signo en enigo',
 	'math_IllegalCommandInMathMode'         => 'La komando "$1" estas nevalida en matematika reĝimo',
 	'math_IllegalDelimiter'                 => 'Nevalida disigilo post "$1"',
 	'math_IllegalFinalBackslash'            => 'Nevalida deklivo "\\" ĉe fino de enigo',
 	'math_InvalidColour'                    => 'La koloro "$1" estas nevalida',
+	'math_MissingDelimiter'                 => 'Mankas disigilo post "$1"',
+	'math_MissingOpenBraceAfter'            => 'Mankas malferma krampo "{" post "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Mankas malferma krampo "{" ĉe fino de enigo',
+	'math_MissingOpenBraceBefore'           => 'Mankas malferma krampo "{" antaŭ "$1"',
+	'math_TooManyMathmlNodes'               => 'Estas tro da nodoj en la MathML-arbo',
 	'math_TooManyTokens'                    => 'La enigo estas tro longa',
 	'math_UnavailableSymbolFontCombination' => 'La simbolo "$1" ne estas havebla en la tiparo "$2"',
+	'math_UnmatchedBegin'                   => 'Estas trovita "\\begin" sen para "\\end"',
+	'math_UnmatchedCloseBrace'              => 'Trovis ferman krampon "}" sen para malferma krampo "{"',
+	'math_UnrecognisedCommand'              => 'Nekonata komando "$1"',
 );
 
 /** Finnish (Suomi)

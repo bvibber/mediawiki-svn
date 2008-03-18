@@ -35,6 +35,14 @@ $messages['de-formal'] = array(
 	'acct_creation_global_hard_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'acct_creation_global_hard_throttle_hit'      => "Konto-kreado estas aŭtomate haltigita momente por malkreski atakojn de registrado-inundo. Bonvolu atenti momenton kaj klaki 'reŝarĝu' en via retumilo por resendi.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Limigu kreadon de uzantoj',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin

@@ -184,16 +184,22 @@ $messages['fr'] = array(
 	'countedits-nocontribs'   => 'Aucune contribution sur ce wiki.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'countedits' => 'Contar edicións',
-	'countedits-warning' => '\'\'\'Advertencia:\'\'\' As aparencias enganan. Non xulgue a un colaborador polo seu número de edicións.',
-	'countedits-username' => 'Nome de usuario:',
-	'countedits-ok' => 'De acordo',
-	'countedits-nosuchuser' => 'Non existe ningún usuario chamado $1.',
+	'countedits'              => 'Contar edicións',
+	'countedits-desc'         => '[[Special:CountEdits|Páxina especial]] que conta as edicións dos usuarios e proporciona unha listaxe dos dez que máis contribuíron',
+	'countedits-warning'      => "'''Advertencia:''' As aparencias enganan. Non xulgue a un colaborador polo seu número de edicións.",
+	'countedits-username'     => 'Nome de usuario:',
+	'countedits-ok'           => 'De acordo',
+	'countedits-nosuchuser'   => 'Non existe ningún usuario chamado $1.',
 	'countedits-resultheader' => 'Resultados de $1',
-	'countedits-resulttext' => '$1 ten feitas $2 edicións',
-	'countedits-mostactive' => 'Colaboradores máis activos',
-	'countedits-nocontribs' => 'Non houbo ningunha colaboración neste wiki.',
+	'countedits-resulttext'   => '$1 ten feitas $2 edicións',
+	'countedits-mostactive'   => 'Colaboradores máis activos',
+	'countedits-nocontribs'   => 'Non houbo ningunha colaboración neste wiki.',
 );
 
 $messages['hr'] = array(

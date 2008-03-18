@@ -137,3 +137,10 @@ $messages['sv'] = array(
 	'ajax-qp-desc' => 'Lägger till AJAX-funktioner på vissa specialsidor, som t.ex. [[Special:Shortpages]]',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'ajax-qp-desc' => 'Додає трохи AJAX до QueryPages, наприклад, [[Special:Shortpages]]',
+);
+

@@ -227,6 +227,13 @@ $messages['lb'] = array(
 	'call-save-failed'  => 'Dësen Text konnt NET op der Säit <big>[[$1]]</big> ofgespäichert ginn, well et dës Säit scho gëtt.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'call' => 'Kalle',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

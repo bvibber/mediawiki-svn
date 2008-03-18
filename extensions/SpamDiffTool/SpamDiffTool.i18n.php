@@ -122,6 +122,7 @@ $messages['el'] = array(
 /** French (Français)
  * @author Urhixidur
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'spamdifftool'                  => 'Gestion de la Liste noire des pourriels',
@@ -130,7 +131,7 @@ $messages['fr'] = array(
 	'spamdifftool_notext'           => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
 	'spamdifftool_confirm'          => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
 	'spamdifftool_summary'          => 'Ajouté à la Liste noire des pourriels',
-	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications. Lesquelles voulez-vous ajouter à la liste noire des pourriels ? Ces options vont des plus restrictives aux moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.<br/><br/>Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
+	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications. Lesquelles voulez-vous ajouter à la liste noire des pourriels ? Ces options vont des plus restrictives aux moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci. <br/><br/>Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Aucune URL n’a été détectée. Cliquez <a href='$1'>ici</a> pour revenir en arrière.",
 	'spamdifftool_spam_link_text'   => 'ajouter aux pourriels',
 	'spamdifftool_option_domain'    => 'tout depuis ce domaine',

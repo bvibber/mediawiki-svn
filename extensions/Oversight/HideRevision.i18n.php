@@ -319,6 +319,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-status'         => 'Revizio $1: $2',
+	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
 	'oversight-view'              => 'detaloj',
@@ -850,16 +851,29 @@ $messages['ja'] = array(
 );
 
 /** Jutish (Jysk)
+ * @author Ælsån
  * @author Huslåke
  */
 $messages['jut'] = array(
-	'group-oversight'        => 'Åversigter',
-	'group-oversight-member' => 'Åversigt',
-	'grouppage-oversight'    => '{{ns:project}}:Åversigt',
-	'hiderevision-prompt'    => 'Reviisje nåmer til slette:',
-	'hiderevision-continue'  => 'Kontinuær',
-	'oversight'              => 'Åversigt',
-	'oversight-view'         => 'dætajer',
+	'group-oversight'             => 'Åversigter',
+	'group-oversight-member'      => 'Åversigt',
+	'grouppage-oversight'         => '{{ns:project}}:Åversigt',
+	'hiderevision-prompt'         => 'Reviisje nåmer til slette:',
+	'hiderevision-continue'       => 'Kontinuær',
+	'hiderevision-status'         => 'Reviisje $1: $2',
+	'hiderevision-error-missing'  => 'Ekke fonden i database.',
+	'hiderevision-archive-status' => 'Slettet reviisje der $1: $2',
+	'oversight-nodiff'            => 'Kan æ ændrenger ekke träkke sins er har ekke ælder reviisje før dette pæge. Du:
+*Æ pæge er slettet
+*Dette verlårn reviisje hvás æ erste reviisje',
+	'oversight-log-hiderev'       => 'hålde en redigærenge der $1',
+	'oversight'                   => 'Åversigt',
+	'oversight-view'              => 'dætajer',
+	'oversight-difference'        => '(Ændrenge der førge stillende reviisje)',
+	'oversight-prev'              => 'Læste ældste reviisje',
+	'oversight-hidden'            => 'Verlårn reviisje',
+	'oversight-header'            => 'Under er æ liste der reviisje resentleg permantleg verlårn an publikum.
+Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt priiviilesje.',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -1026,6 +1040,9 @@ $messages['lb'] = array(
 $messages['li'] = array(
 	'hiderevision'                => 'Versies permanent verberge',
 	'hiderevision-desc'           => 'Verberg bewerkinge veur alle gebroekers om juridische redene, etc.',
+	'group-oversight'             => 'Toezichhaojers',
+	'group-oversight-member'      => 'Toezichhaojer',
+	'grouppage-oversight'         => '{{ns:project}}:Euverzich',
 	'hiderevision-prompt'         => 'Te verwijdere versienummer:',
 	'hiderevision-continue'       => 'Doorguuen',
 	'hiderevision-text'           => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
@@ -1368,14 +1385,24 @@ $messages['pms'] = array(
 	'oversight-header'            => "Ambelessì sota a-i é na lista dle revision stërmà ch'a l'é nen vàire. Publiché st'anformassion-sì a peul ëmné a perde ël drit ëd dovré ël sistema ëd coression dle gafade.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'oversight-view' => 'تفصيل',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  * @author Lijealso
  */
 $messages['pt'] = array(
 	'hiderevision'                => 'Ocultar revisões permanentemente',
 	'hiderevision-desc'           => 'Esconde, de todos os utilizadores, revisões individuais por razões legais, etc.',
+	'group-oversight'             => 'Oversighters',
 	'group-oversight-member'      => 'Oversight',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue'       => 'Avançar',
 	'hiderevision-text'           => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:

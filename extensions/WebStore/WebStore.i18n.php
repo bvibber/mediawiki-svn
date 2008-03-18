@@ -259,7 +259,7 @@ $messages['fr'] = array(
 	'inplace_scaler_no_temp'           => "Aucun dossier temporaire valide, \$wgLocalTmpDirectory doit contenir le nom d'un dossier avec droits d'écriture.",
 	'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres',
 	'inplace_scaler_invalid_image'     => 'Image incorrecte, ne peut déterminer sa taille',
-	'inplace_scaler_failed'            => "Une erreur est survenue pendant la dilatation/contraction (« scaling ») de l'image.",
+	'inplace_scaler_failed'            => "Une erreur est survenue pendant la décompression/compression (« scaling ») de l'image : $1",
 	'inplace_scaler_no_handler'        => 'Aucune fonction (« handler ») pour transformer ce format MIME.',
 	'inplace_scaler_no_output'         => 'Aucun fichier de transformation généré',
 	'inplace_scaler_zero_size'         => 'La transformation a créé un fichier de taille zéro.',
@@ -706,8 +706,9 @@ $messages['pt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'webstore_no_file'     => 'هېڅ کومه دوتنه پورته نه شوه.',
-	'webstore_no_response' => 'د پالنګر نه هېڅ کوم ځواب نشته',
+	'webstore_no_file'            => 'هېڅ کومه دوتنه پورته نه شوه.',
+	'webstore_metadata_not_found' => 'دوتنه و نه موندل شوه: $1',
+	'webstore_no_response'        => 'د پالنګر نه هېڅ کوم ځواب نشته',
 );
 
 /** Portuguese (Português)

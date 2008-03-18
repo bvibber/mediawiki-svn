@@ -136,9 +136,11 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Tlustulimu
+ * @author Yekrats
  */
 $messages['eo'] = array(
 	'backforth-next' => 'Sekva ($1)',
+	'backforth-desc' => 'Aldonas "Sekva" kaj "Antaŭa" laŭalfabetajn ligilojn supren de paĝojn.',
 	'backforth-prev' => 'Antaŭa ($1)',
 );
 

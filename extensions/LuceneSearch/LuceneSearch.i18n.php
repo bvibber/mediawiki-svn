@@ -1194,7 +1194,7 @@ $messages['pl'] = array(
 	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
 	'lucene-searchscore'    => 'Trafność: $1%',
 	'lucene-resultsize'     => '$1 ($2 słów)',
-	'searchdidyoumean'      => 'Czy chodziło Ci o "<a href="1">$2</a>"?',
+	'searchdidyoumean'      => 'Czy chodziło Ci o: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.',
 	'searchnearmatches'     => '<b>Strony o podobnych nazwach:</b>',
 	'lucenepowersearchtext' => 'Szukaj w przestrzeniach nazw:

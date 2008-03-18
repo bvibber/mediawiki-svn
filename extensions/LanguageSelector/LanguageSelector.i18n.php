@@ -283,10 +283,13 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
-	'languageselector' => 'Język',
+	'languageselector'         => 'Język',
+	'languageselector-desc'    => 'Wybór języka dla każdej strony, również dla osób odwiedzających',
+	'languageselector-setlang' => 'ustaw',
 );
 
 /** Pashto (پښتو)

@@ -53,6 +53,13 @@ $messages['oc'] = array(
 	'mwsearch-desc' => 'Plug-in Recèrcas MW',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'mwsearch-desc' => 'Wtyczka MWSearch',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -152,6 +152,15 @@ $messages['lb'] = array(
 	'advancedrandom-desc' => 'Eng zoufälleg Säit weisen, z. B. mat [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], fir eng zoufälleg Diskussiounssäit vun enger exzellenter Säit oder mat [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], fir een zoufällege Fichier ze weisen, den als GFDL lizenzéiert ass.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'advancedrandom'      => 'Willekeurige pazjena (geavanceerdj)',
+	'advancedrandom-desc' => "Vraog 'n willekeurige euverlekpagina of pagina oet de hoofnaamruumte op die verwies nao 'n opgegaeve pagina.
+Kan gebroek waere es [[Special:AdvancedRandom/Template:Featured/Talk]] om 'n willekeurig etalage-artikel weer te gaeve of es [[Special:AdvancedRandom/Template:GFDL/Image]] om 'n willekeurig GFDL gelicenseerd bestandj weer te gaeve",
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -217,11 +226,12 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ahonc
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'advancedrandom'      => 'Продвинутая случайная',
-	'advancedrandom-desc' => 'Выдаёт случайную страницу с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/Image]], чтобы получить случайный GFDL-файл.',
+	'advancedrandom-desc' => 'Выдаёт случайную страницу, с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/Image]], чтобы получить случайный GFDL-файл.',
 );
 
 /** Slovak (Slovenčina)
@@ -253,6 +263,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'advancedrandom' => 'మొరుగైన యాదృచ్ఛికం',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'advancedrandom'      => 'Просунута випадкова',
+	'advancedrandom-desc' => 'Видає випадкову сторінку, з підсторінки або сторінки повідомлення якої є посилання на зазначену сторінку. Може використовуватися за зразком [[Special:AdvancedRandom/Template:Featured/Talk]], щоб отримати випадкову вибрану статтю, або [[Special:AdvancedRandom/Template:GFDL/Image]], щоб отримати випадковий GFDL-файл.',
 );
 
 /** Vietnamese (Tiếng Việt)

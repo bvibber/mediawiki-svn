@@ -213,7 +213,7 @@ Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'email-desc'   => 'Gör att egendefinierade meddelanden kan läggas till toppen eller botten av användares e-post.',
+	'email-desc'   => 'Gör det möjligt att lägga till egendefinierade meddelanden i toppen eller botten av e-post som användare skickar.',
 	'email_footer' => '----------------------------------------------------------------------------
 Detta e-brev har sänts till dig från $1 via e-postsystemet på {{SITENAME}}. 
 

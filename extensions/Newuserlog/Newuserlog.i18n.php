@@ -642,11 +642,12 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Aviator
  */
 $messages['ms'] = array(
 	'newuserlogpage'           => 'Log akaun baru',
 	'newuserlog-create-entry'  => 'Pengguna baru',
-	'newuserlog-create2-entry' => 'mencipta akaun untuk $1',
+	'newuserlog-create2-entry' => 'membuka akaun $1',
 );
 
 /** Erzya (эрзянь кель)

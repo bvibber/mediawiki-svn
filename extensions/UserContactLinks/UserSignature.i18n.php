@@ -114,6 +114,13 @@ $messages['pl'] = array(
 	'usercontactlink-desc'    => 'Umożliwia w prosty i logiczny sposób dodawanie nowych nazw użytkownika za pomocą polecenia ^^^user^^^.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'usercontactlink-baduser' => 'ناسم کارن-نوم',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

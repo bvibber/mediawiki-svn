@@ -256,6 +256,13 @@ $messages['pl'] = array(
 	'watchers_less_than_x'   => 'Osób obserwujących mniej niż $1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'watchers' => 'کتونکي',
+);
+
 $messages['pt'] = array(
 	'watchers_link_title' => "Quem está vigiando esta página?",
 	'watchers_error_article' => "<b>Erro:</b> Página inexistente.",

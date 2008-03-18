@@ -278,20 +278,24 @@ $messages['oc'] = array(
 	'player-goto-file'     => 'fichièr',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Wpedzich
+ */
 $messages['pl'] = array(
-	'player' => 'Odtwarzacz',
-	'player-title' => 'Odtwarzacz',
-	'player-playertitle' => 'Odtwarzacz: $1',
-	'player-file' => 'Nazwa pliku',
-	'player-play' => 'Odtwórz',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-allowed' => 'niedozwolony format',
-	'player-not-found' => 'nie znaleziono pliku',
+	'player'               => 'Odtwarzacz',
+	'player-desc'          => 'Osadzone odtwarzanie plików multimedialnych z wykorzystaniem standardowych wtyczek do przeglądarek internetowych oraz [[Special:Player|strony specjalnej]]',
+	'player-title'         => 'Odtwarzacz',
+	'player-playertitle'   => 'Odtwarzacz: $1',
+	'player-file'          => 'Nazwa pliku',
+	'player-play'          => 'Odtwórz',
+	'player-not-allowed'   => 'niedozwolony format',
+	'player-not-found'     => 'nie znaleziono pliku',
 	'player-invalid-title' => 'niepoprawny tytuł',
-	'player-clicktoplay' => 'Odtwórz $1',
-	'player-goto-player' => 'odtwarzacz',
-	'player-goto-page' => 'Strona',
-	'player-goto-file' => 'plik',
+	'player-clicktoplay'   => 'Odtwórz $1',
+	'player-goto-player'   => 'odtwarzacz',
+	'player-goto-page'     => 'Strona',
+	'player-goto-file'     => 'plik',
 );
 
 $messages['pms'] = array(
@@ -315,6 +319,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'player'               => 'غږونکی',
+	'player-title'         => 'غږونکی',
 	'player-playertitle'   => 'غږونکی: $1',
 	'player-file'          => 'د دوتنې نوم',
 	'player-play'          => 'غږول',

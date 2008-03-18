@@ -175,12 +175,13 @@ $messages['nl'] = array(
 	'tog-riched_disable_ns_category_talk' => 'Uitgebreide editor uitschakelen binnen de naamruimte "{{ns:Category_talk}}"',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Lejonel
  */
 $messages['no'] = array(
 	'textrichditor'                        => 'Rik tekstredigering',
-	'textrichditor-desc'                   => 'Bruk FXKeditor for å redigere wikisider',
+	'textrichditor-desc'                   => 'Bruk FCKeditor for å redigere wikisider',
 	'tog-riched_disable'                   => 'Slå av rik tekstredigering',
 	'tog-riched_disable_ns_main'           => 'Slå av rik tekstredigering i hovednavnerommet',
 	'tog-riched_disable_ns_talk'           => 'Slå av rik tekstredigering i «{{ns:Talk}}»-navnerommet',

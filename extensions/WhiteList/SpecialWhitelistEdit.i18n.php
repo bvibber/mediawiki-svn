@@ -180,7 +180,9 @@ $allMessages['lb'] = array(
 	'whitelisttablenewdate'    => 'Neien Datum:',
 	'whitelisttableremove'     => 'Zréckzéien',
 	'whitelistpagelist'        => 'Säite vu(n) {{SITENAME}} fir $1',
+	'whitelistbadtitle'        => 'Schlechten Titel -',
 	'whitelistoverview'        => '== Iwwersiicht vun den Ännerunge vun $1 ==',
+	'whitelistoverviewcd'      => "* Datum vun '''$1''' ännere  fir [[:$2|$2]]",
 	'whitelistnever'           => 'nie',
 	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
 );
@@ -364,6 +366,9 @@ $allMessages['ps'] = array(
 	'whitelisttabletype'       => 'د لاسرسۍ ډول',
 	'whitelisttablenewdate'    => 'نوې نېټه:',
 	'whitelistnewtabledate'    => 'د پای نېټه:',
+	'whitelistbadtitle'        => 'ناسم سرليک -',
+	'whitelistrequestconf'     => '$1 ته د نوي مخونو غوښتنه ولېږل شوه',
+	'whitelistnever'           => 'هېڅکله',
 );
 
 /** Swedish (Svenska)

@@ -558,13 +558,17 @@ $messages['sk'] = array(
 	'ajax-se-usernotfound'     => 'CHYBA: používateľ nebol nájdený',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'ajax-se-title'   => 'Тренутно уређују:',
-	'ajax-se-pending' => 'чека се освежавање ... (кликните овде или почните са уређивањем)',
-	'ajax-se-idling'  => '(пре $1 сек)',
+	'ajax-se-desc'             => 'Показује кориснике који тренутно уређују исту страницу',
+	'ajax-se-title'            => 'Тренутно уређују:',
+	'ajax-se-pending'          => 'чека се освежавање ... (кликните овде или почните са уређивањем)',
+	'ajax-se-idling'           => '(пре $1 сек)',
+	'ajax-se-pagedoesnotexist' => 'страница не постоји',
+	'ajax-se-userinvalid'      => 'ГРЕШКА: корисник не постоји',
+	'ajax-se-usernotfound'     => 'ГРЕШКА: корисник није пронађен',
 );
 
 /** Seeltersk (Seeltersk)

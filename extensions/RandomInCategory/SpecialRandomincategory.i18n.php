@@ -181,8 +181,10 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'randomincategory-label'  => 'وېشنيزه:',
-	'randomincategory-submit' => 'ورځه',
+	'randomincategory'         => 'په وېشنيزه کې ناټاکلی مخ',
+	'randomincategory-toolbox' => 'ناټاکلی مخ',
+	'randomincategory-label'   => 'وېشنيزه:',
+	'randomincategory-submit'  => 'ورځه',
 );
 
 /** Portuguese (Português)

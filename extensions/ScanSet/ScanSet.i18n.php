@@ -449,8 +449,18 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'scanset_next' => 'Nast. &gt;',
-	'scanset_prev' => '&lt; Poprz.',
+	'scanset-desc'                      => 'Prezentuje zeskanowane obrazy z kolekcji w formacie Andreas Grosz CD/DVD',
+	'scanset_no_name'                   => 'ScanSet: Musisz określić nazwę kolekcji obrazów, np. &lt;scanset name="Biblia Gdańska" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Brak kolekcji lub kolekcja nieprawidłowa.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Nieznany format indeksu',
+	'scanset_opendir_error'             => 'ScanSet: Błąd otwarcia katalogu $1',
+	'scanset_no_files'                  => 'ScanSet: Brak plików we wskazanym katalogu',
+	'scanset_no_volumes'                => 'ScanSet: Nie znaleziono słownika woluminu',
+	'scanset_missing_index_file'        => 'ScanSet: Brak pliku indeksowego $1',
+	'scanset_index_file_error'          => 'ScanSet: Błąd w formacie pliku indeksowego w linii $1',
+	'scanset_invalid_volume'            => 'ScanSet: Nieprawidłowy wolumin',
+	'scanset_next'                      => 'Nast. &gt;',
+	'scanset_prev'                      => '&lt; Poprz.',
 );
 
 /** Portuguese (Português)

@@ -72,3 +72,10 @@ $messages['sk'] = array(
 	'tooltip-desc' => 'Pridáva značky <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'tooltip-desc' => 'Lägger till <tt><nowiki><tooltip></nowiki></tt> och <tt><nowiki>{{#tooltip:}}</nowiki></tt>-taggarna',
+);
+
