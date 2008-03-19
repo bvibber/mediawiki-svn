@@ -434,11 +434,15 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
 	'asksql'          => 'SQL पृच्छा',
+	'sqlislogged'     => 'सर्व पृच्छा नोंदल्या जातात याची कृपया नोंद घ्या.',
 	'sqlquery'        => 'पृच्छा लिहा',
+	'querybtn'        => 'पृच्छा पाठवा',
+	'selectonly'      => '’फक्त वाचण्यासाठी’ असलेल्या पृच्छाच पाठविता येतील.',
 	'querysuccessful' => 'पृच्छा यशस्वी',
 );
 

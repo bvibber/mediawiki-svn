@@ -633,13 +633,13 @@ $messages['sv'] = array(
 	'usagestatisticsintervalday'      => 'Dag',
 	'usagestatisticsintervalweek'     => 'Vecka',
 	'usagestatisticsintervalmonth'    => 'Månad',
-	'usagestatisticsincremental'      => 'Ökande',
-	'usagestatisticsincremental-text' => 'ökande',
+	'usagestatisticsincremental'      => 'Intervallvis',
+	'usagestatisticsincremental-text' => 'Intervallvis',
 	'usagestatisticscumulative'       => 'Kumulativ',
-	'usagestatisticscumulative-text'  => 'kumulativ',
+	'usagestatisticscumulative-text'  => 'Kumulativ',
 	'usagestatisticscalselect'        => 'Välj',
-	'usagestatistics-editindividual'  => 'Individuell $1 statistik över antal redigeringar',
-	'usagestatistics-editpages'       => 'Individuell $1 statistik över antal redigerade sidor',
+	'usagestatistics-editindividual'  => '$1 statistik över antal redigeringar för enskilda användare',
+	'usagestatistics-editpages'       => '$1 statistik över antal redigerade sidor för enskilda användare',
 );
 
 /** Telugu (తెలుగు)

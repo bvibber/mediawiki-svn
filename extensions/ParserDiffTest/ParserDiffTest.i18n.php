@@ -283,7 +283,7 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'parserdifftest'      => 'Test razlika parsera',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Posebna stranica]] za usporedbu rezultata dva različita parsera',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Posebna stranica]] za usporedbu rezultata dva različita parsera',
 	'pdtest_no_target'    => 'Odredište nije zadano.',
 	'pdtest_page_missing' => 'Zadana stranica nije nađena u bazi podataka.',
 	'pdtest_no_changes'   => 'Promjene nisu nađene.',
@@ -386,7 +386,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'parserdifftest'      => 'パーサー比較テスト',
-	'pdtest-desc'         => '2つの異なるパーサー間での出力結果を比較する[[{{ns:special}}:ParserDiffTest|{{int:specialpage}}]]。',
+	'pdtest-desc'         => '2つの異なるパーサー間での出力結果を比較する[[Special:ParserDiffTest|{{int:specialpage}}]]。',
 	'pdtest_no_target'    => '対象が指定されていません。',
 	'pdtest_page_missing' => '指定されたページはデータベースに存在していません。',
 	'pdtest_no_changes'   => '違いが検出できませんでした。',
@@ -620,7 +620,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'parserdifftest'      => 'Проверка изменений синтаксического анализатора',
-	'pdtest-desc'         => '[[Special:ParserDiffTestSpecial|Служебная страница]] для сравнения вывода двух разных парсеров',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Служебная страница]] для сравнения вывода двух разных парсеров',
 	'pdtest_no_target'    => 'Не указана цель.',
 	'pdtest_page_missing' => 'Указанная страница не найдена в базе данных.',
 	'pdtest_no_changes'   => 'Изменений не обнаружено.',
@@ -639,7 +639,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'parserdifftest'      => 'Синтаксис анализаторын (парсер) уларыйыытын көрүү',
-	'pdtest-desc'         => 'Икки тус туспа парсердар таһаарыыларын уратытын көрдөрөр [[Special:ParserDiffTestSpecial|аналлаах сирэй]]',
+	'pdtest-desc'         => 'Икки тус туспа парсердар таһаарыыларын уратытын көрдөрөр [[Special:ParserDiffTest|аналлаах сирэй]]',
 	'pdtest_no_target'    => 'Соруга ыйыллыбатах.',
 	'pdtest_page_missing' => 'Ыйыллыбыт сирэй билэ тиһигэр көстүбэтэ.',
 	'pdtest_no_changes'   => 'Уларыйыы көстүбэтэ.',

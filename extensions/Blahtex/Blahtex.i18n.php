@@ -916,6 +916,30 @@ $messages['lb'] = array(
 	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'math_noblahtex'                        => '$1 ठिकाणी जे असायला हवे ते ब्लाहटेक्स (blahtex) चालू करू शकत नाही',
+	'math-desc'                             => '&lt;math&gt; खूणांचे MathML आउटपुट',
+	'math_AmbiguousInfix'                   => '"$1" ची संदिग्ध जागा (अधिक "{ ... }" कंस वापरून नि:संदिग्धीकरण करण्याचा प्रयत्न करा)',
+	'math_CannotChangeDirectory'            => 'काम चालू असलेली डिरेक्टरी बदलू शकत नाही',
+	'math_CannotCreateTexFile'              => 'tex संचिका तयार करू शकत नाही',
+	'math_CannotRunDvipng'                  => 'dvipng चालू करू शकत नाही',
+	'math_CannotRunLatex'                   => 'लॅटेक्स (latex) चालू करू शकत नाही',
+	'math_CannotWritePngDirectory'          => 'आउटपुट पीएन्‌जी डिरेक्टरी मध्ये लिहू शकत नाही',
+	'math_CannotWriteTexFile'               => 'tex संचिकेत लिहू शकत नाही',
+	'math_CasesRowTooBig'                   => '"केसेस" ब्लॉकमध्ये प्रत्येक ओळीत फक्त दोनच नोंदी असू शकतात',
+	'math_DoubleSubscript'                  => 'एकाच बेसशी संलग्न असणार्‍या दोन सबस्क्रीप्ट सापडल्या आहेत (फक्त एकच वापरण्याची परवानगी आहे)',
+	'math_DoubleSuperscript'                => 'एकाच बेसशी संलग्न असणार्‍या दोन सुपरस्क्रीप्ट सापडल्या आहेत (फक्त एकच वापरण्याची परवानगी आहे)',
+	'math_IllegalCharacter'                 => 'इनपुटमध्ये चुकीचे चिन्ह आहे',
+	'math_IllegalCommandInMathMode'         => 'मॅथ मोड मध्ये "$1" ही क्रिया चुकीची आहे',
+	'math_IllegalCommandInMathModeWithHint' => 'मॅथ मोड मध्ये "$1" ही क्रिया चुकीची आहे (तुम्ही "$2" ही क्रिया वापरू इच्छिता का?)',
+	'math_IllegalCommandInTextMode'         => '"$1" ही क्रिया टेक्स्ट मोड मध्ये करता येत नाही',
+	'math_IllegalCommandInTextModeWithHint' => '"$1" ही क्रिया टेक्स्ट मोड मध्ये करता येत नाही (तुम्ही "$2" ही क्रिया वापरू इच्छिता का?)',
+	'math_IllegalDelimiter'                 => '"$1" च्या पुढे चुकीचा डिलिमीटर (Delimiter) दिलेला आहे',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

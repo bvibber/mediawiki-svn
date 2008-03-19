@@ -810,11 +810,30 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'badimages-name'   => 'नाव:',
-	'badimages-reason' => 'कारण:',
+	'badimages'                => 'चुकीच्या चित्रांची यादी',
+	'badimages-desc'           => 'मीडियावकीची चुकीच्या चित्रांची यादी दाखविण्याची क्षमता वाढवा',
+	'badimages-add-btn'        => 'वाढवा',
+	'badimages-added'          => '$1 चा यादीत समावेश केलेला आहे.',
+	'badimages-count'          => "चुकीच्या चित्रांच्या यादीत '''$1''' इतकी चित्रे आहेत.",
+	'badimages-name'           => 'नाव:',
+	'badimages-not-added'      => 'या चित्राचा समावेश करता आला नाही.',
+	'badimages-not-removed'    => 'हे चित्र वगळता आले नाही.',
+	'badimages-reason'         => 'कारण:',
+	'badimages-remove'         => '(वगळा)',
+	'badimages-remove-btn'     => 'वगळा',
+	'badimages-remove-confirm' => 'कृपया $1 ला यादीतून वगळण्याची आपली इच्छा आहे याला सहमती द्या:',
+	'badimages-removed'        => '$1 ला यादीतून वगळले.',
+	'badimages-subheading'     => 'सध्याची चित्रे',
+	'badimages-unprivileged'   => '(यादी बदलण्यासाठी लागणारी पुरेशी परवानगी आपल्याला नाही)',
+	'badimages-log-name'       => 'चुकीच्या चित्रांची यादी',
+	'badimages-log-header'     => '[[{{MediaWiki:Badimages-page}}|चुकीच्या चित्रांच्या यादीत]] झालेल्या बदलांची ही नोंद आहे.',
+	'badimages-log-add'        => '[[$1]] चा चुकीच्या चित्रांच्या यादीत समावेश केलेला आहे',
+	'badimages-log-remove'     => '[[$1]] ला चुकीच्या चित्रांच्या यादीतून वगळले आहे',
+	'badimages-page'           => '{{ns:help}}:चुकीच्या चित्रांची यादी',
 );
 
 /** Dutch (Nederlands)

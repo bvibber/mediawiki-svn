@@ -305,9 +305,11 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'backforth-next' => 'पुढे ($1)',
+	'backforth-desc' => 'पानाच्या वरील भागामध्ये "पुढील" व "मागील" दुवे वाढवितो',
 	'backforth-prev' => 'मागे($1)',
 );
 
