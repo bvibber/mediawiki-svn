@@ -213,7 +213,8 @@ class MV_Stream {
 	//removes the stream and assoc meta data. 
 	function removeStream($removeMVDs=true){
  		global $mvIndexTableName;
- 		$dbw =& wfGetDB(DB_WRITE);
+ 		$dbw =& wfGetDB(DB_WRITE); 		
+ 		$dbr =& wfGetDB(DB_SLAVE);
  		if($removeMVDs){ 
  			//delete metadata pages: 
  			//@@todo figure out a way to do this quickly/group sql queries.  

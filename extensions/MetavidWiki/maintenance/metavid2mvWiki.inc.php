@@ -199,16 +199,34 @@ function do_stream_insert($mode, $stream_name = '') {
 		}
 		if(!isset($options['skiptext'])){
 			//proccess all stream text: 
-			do_proccess_text($stream);
+			do_proccess_text($stream, $force);
 		}
 		if(!isset($options['skipSpeechMeta'])){									
 			//do annoative track for continus speches 
-			do_annotate_speeches($stream); 
+			do_annotate_speeches($stream, $force); 
 		}
 	}
 }
-function do_annotate_speeches($stream){
+function do_annotate_speeches($stream, $force){
 	print "do annotations for $stream->name \n";
+	if($force){
+		global $botUserName;
+		//get wiki stream id:
+		$wikiStream = new MV_Stream(array('name'=>$stream->name)); 
+		//first remove all bot edited pages: 
+		$mvd_res = MV_Index::getMVDInRange($wikiStream->getStreamId(),null,null,'Anno_en');
+		while($row = $dbr->fetchObject($mvd_res)){
+			$title = Title::newFromText($row->wiki_title, MV_NS_MVD);
+			$current = Revision::newFromTitle( $title );
+			if($current->getUserText()==$botUserName){
+				$article = new Article($title);
+				$article->doDelete('mvbot removal');
+				print "removed $row->wiki_title \n";
+			}else{
+				print "skiped $roe->wiki_title (last edit by: ". $current->getUserText().")\n";
+			}
+		}
+	}	
 	//get all mvd's 	
 	$mvStream =MV_Stream::newStreamByName($stream->name);
 	if($mvStream->doesStreamExist()){
@@ -259,8 +277,20 @@ function do_annotate_speeches($stream){
 		}
 	}
 }
-function do_proccess_text($stream){
+function do_proccess_text($stream, $force){
 		$dbr = wfGetDB(DB_SLAVE);
+		if($force){
+			//get wiki stream id:
+			$wikiStream = new MV_Stream(array('name'=>$stream->name)); 
+			//first remove all bot edited pages: 
+			$mvd_res = MV_Index::getMVDInRange($wikiStream->getStreamId(),null,null,'Ht_en');
+			while($row = $dbr->fetchObject($mvd_res)){
+				$title = Title::newFromText($row->wiki_title, MV_NS_MVD);
+				$article = new Article($title);
+				$article->doDelete('mvbot removal');
+				print "removed $row->wiki_title \n";
+			}
+		}				
 		/* for now use the stream search table (in the future should put in our orphaned person data)
 		 * should be able to do quick checks against the index. */
 		$sql = "SELECT (`time`+" . CC_OFFSET . ") as time, `value` " .
@@ -453,14 +483,13 @@ function mv_semantic_stream_desc(& $mvTitle, & $stream) {
 		require_once('scrape_and_insert.inc.php');
 		$aos = new MV_ArchiveOrgScrape();
 		$file_list = $aos->getFileList($stream->name);
-		if($file_list){
-			$out .= '==More Media Sources=='."\n";	
+		$out .= '==More Media Sources=='."\n";	
+		//all streams have congretional cronical: 
+		$out .= '*[[CSPAN]]\'s Congressional Chronicle ' .
+		'[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type . ']'."\n";	
+		if($file_list){			
 			$out .= '*[[Archive.org]] hosted original copy ' .
-			'[http://www.archive.org/details/mv_' . $stream->name . ']' . "\n";
-			
-			//all streams have congretional cronical: 
-			$out .= '*[[CSPAN]]\'s Congressional Chronicle ' .
-			'[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type . ']';		
+			'[http://www.archive.org/details/mv_' . $stream->name . ']' . "\n";						
 			//also output 'direct' semantic links to alternate file qualities:
 			$out.="\n===Full File Links===\n";	
 			$dbw = wfGetDB(DB_WRITE);		

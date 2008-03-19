@@ -82,6 +82,7 @@
 	*/
 	function mvDeleteHook(&$article, &$user, &$reason) {
 		global $mvgIP;
+		//print 'mvDeleteHook'."\n";
 		//only need to update the mvd index when in the mvd namespace: 
 		if($article->mTitle->getNamespace()==MV_NS_MVD){
 			//remove article with that title: 

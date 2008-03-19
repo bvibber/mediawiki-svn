@@ -130,13 +130,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$sql.=' AND (';
 				$or='';
 				foreach($mvd_type as $mtype){
-					//confirm its a valid mvd_type: 
+					//@@todo confirm its a valid mvd_type: 
 					$sql.=$or."`mvd_type`='{$mtype}' ";
 					$or='OR ';
 				}
 				$sql.=')';
 			}else{
-				//confirm its a valid mvd_type: 
+				//@@todo confirm its a valid mvd_type: 
 				$sql.="AND `mvd_type`='{$mvd_type}' ";
 			}
 		}
@@ -175,8 +175,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	 */
  	function remove_by_wiki_title($wiki_title){
  		global $mvIndexTableName;
- 		$dbw =& wfGetDB(DB_WRITE); 
+ 		$dbw =& wfGetDB(DB_WRITE);  		
  		$dbw->delete($mvIndexTableName, array('wiki_title'=>$wiki_title));
+ 		//print "ran sql:" . $dbw->lastQuery() . "\n";
  		return true;
  	}
  	function doFiltersQuery(&$filters){
