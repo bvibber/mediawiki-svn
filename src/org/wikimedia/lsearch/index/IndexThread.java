@@ -437,11 +437,11 @@ public class IndexThread extends Thread {
 				dbUpdates = new Hashtable<String,IndexUpdateRecord>();
 				queuedUpdates.put(iid.toString(), dbUpdates);
 			}
-			IndexUpdateRecord oldr = dbUpdates.get(record.getKey());
+			IndexUpdateRecord oldr = dbUpdates.get(record.getIndexKey());
 			// combine a previous delete with current add to form update
 			if(oldr != null && oldr.doDelete() && record.doAdd())
 				record.setAction(IndexUpdateRecord.Action.UPDATE);
-			dbUpdates.put(record.getKey(),record);
+			dbUpdates.put(record.getIndexKey(),record);
 		}
 		
 		log.debug("Locally queued item: "+record);

@@ -73,15 +73,15 @@ public class SuggestTest {
 							System.out.println(r);
 						}
 
-						System.out.println("SPLIT: "+sc.suggestSplit(text,0));
+						System.out.println("SPLIT: "+sc.suggestSplit(text,null));
 					}
 					if(last != null){
-						System.out.println("JOIN: "+sc.suggestJoin(last,text,0));
+						System.out.println("JOIN: "+sc.suggestJoin(last,text,null));
 					}
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new HashSet<String>(),new HashSet<String>(),0,new NamespaceFilter("0")));
+			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new Suggest.ExtraInfo(new HashSet<String>(),new HashSet<String>(),new HashSet<String>(),0),new NamespaceFilter("0")));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

@@ -32,6 +32,8 @@ public class SearchResults implements Serializable {
 	protected boolean foundAllInTitle = false;
 	/** threshold for filtering suggestions */
 	protected int firstHitRank = 0;
+	/** Words found in titles */
+	protected HashSet<String> foundInTitles = new HashSet<String>();
 	
 	public SearchResults(){
 		success = false;
@@ -129,6 +131,12 @@ public class SearchResults implements Serializable {
 	}
 	public void addToFirstHitRank(int rank){
 		firstHitRank += rank;
+	}
+	public HashSet<String> getFoundInTitles() {
+		return foundInTitles;
+	}
+	public void setFoundInTitles(HashSet<String> foundInTitles) {
+		this.foundInTitles = foundInTitles;
 	}
 
 	@Override

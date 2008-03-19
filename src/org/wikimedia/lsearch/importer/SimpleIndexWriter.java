@@ -62,7 +62,7 @@ public class SimpleIndexWriter {
 		if(original != null)
 			this.suffix = original.getTitlesSuffix();
 		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
-		langCode = global.getLanguage(iid.getDBname());
+		langCode = iid.getLangCode();
 		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();		

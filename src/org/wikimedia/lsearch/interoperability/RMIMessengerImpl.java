@@ -132,10 +132,10 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases) throws RemoteException{
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int[] df, int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst) throws RemoteException{
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase,null,sortByPhrases);
+			return Highlight.highlight(hits,iid,terms,df,maxDoc,words,StopWords.getPredefinedSet(iid),exactCase,null,sortByPhrases,alwaysIncludeFirst);
 		} catch(IOException e){
 			throw new RemoteException("IOException on "+dbrole,e);
 		}
@@ -151,10 +151,10 @@ public class RMIMessengerImpl implements RMIMessenger {
 		}
 	}
 	
-	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws RemoteException {
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, Suggest.ExtraInfo info, NamespaceFilter nsf) throws RemoteException {
 		IndexId iid = IndexId.get(dbrole);
 		try{
-			return new Suggest(iid).suggest(searchterm,tokens,phrases,foundInContext,firstRank,nsf);
+			return new Suggest(iid).suggest(searchterm,tokens,info,nsf);
 		} catch(Exception e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);
@@ -166,6 +166,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 		try {
 			return new Suggest(iid).getFuzzy(word,nsf);
 		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RemoteException("Exception on "+dbrole,e);
+		}
+	}
+
+	public SearchResults searchRelated(String dbrole, String searchterm, int offset, int limit) throws RemoteException {
+		IndexId iid = IndexId.get(dbrole);
+		try{
+			return new SearchEngine().searchRelatedLocal(iid,searchterm,offset,limit);
+		} catch(IOException e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);
 		}

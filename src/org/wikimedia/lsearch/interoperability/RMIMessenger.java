@@ -22,6 +22,7 @@ import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
+import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
 
@@ -133,9 +134,9 @@ public interface RMIMessenger extends Remote {
 	 * @param maxDoc - max number of documents in the index (needed for idf calculation)
 	 * @param words - main phrase words, gives extra score
 	 * @param exactCase - if this is an exact case query
-	 * @return map: key -> highlighting result
+	 * @return resultset
 	 */
-	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases) throws RemoteException;
+	public Highlight.ResultSet highlight(ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst) throws RemoteException;
 	
 	/**
 	 * Search grouped titles, similar logic to that of searchPart()
@@ -161,7 +162,7 @@ public interface RMIMessenger extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf) throws RemoteException;
+	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, Suggest.ExtraInfo info, NamespaceFilter nsf) throws RemoteException;
 
 	/**
 	 * Fetch words for fuzzy queries (e.g. query~)
@@ -172,5 +173,17 @@ public interface RMIMessenger extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ArrayList<SuggestResult> getFuzzy(String dbrole, String word, NamespaceFilter nsf) throws RemoteException; 
+	public ArrayList<SuggestResult> getFuzzy(String dbrole, String word, NamespaceFilter nsf) throws RemoteException;
+	
+	/**
+	 * Search a remote related index 
+	 *   
+	 * @param dbrole
+	 * @param searchterm
+	 * @param limit
+	 * @param offset
+	 * @return
+	 * @throws RemoteException
+	 */
+	public SearchResults searchRelated(String dbrole, String searchterm, int offset, int limit) throws RemoteException;
 }

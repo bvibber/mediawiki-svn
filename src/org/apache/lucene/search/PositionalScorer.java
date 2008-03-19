@@ -195,6 +195,8 @@ abstract public class PositionalScorer extends Scorer {
 	 * @throws IOException 
 	 */ 
 	public float freqScore(int start, int distance) throws IOException{
+		if(options.phraseQueryFallback)
+			return getSimilarity().sloppyFreq(distance);
 		//System.out.println("freqScore at start="+start+", dist="+distance);
 		int offset = start + distance;
 		float begin = 1;

@@ -32,6 +32,7 @@ import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
 
@@ -247,13 +248,13 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public Highlight.ResultSet highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases){
+	public Highlight.ResultSet highlight(String host, ArrayList<String> hits, String dbrole, Term[] terms, int df[], int maxDoc, ArrayList<String> words, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst){
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases);
+			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
 		} catch(Exception e){
 			e.printStackTrace();
-			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0);
+			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0,new HashSet<String>());
 		}		
 	}
 	
@@ -279,10 +280,10 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public SuggestQuery suggest(String host, String dbrole, String searchterm, ArrayList<Token> tokens, HashSet<String> phrases, HashSet<String> foundInContext, int firstRank, NamespaceFilter nsf){
+	public SuggestQuery suggest(String host, String dbrole, String searchterm, ArrayList<Token> tokens, Suggest.ExtraInfo info, NamespaceFilter nsf){
 		try{
 			RMIMessenger r = messengerFromCache(host);
-			return r.suggest(dbrole,searchterm,tokens,phrases,foundInContext,firstRank,nsf);
+			return r.suggest(dbrole,searchterm,tokens,info,nsf);
 		} catch(Exception e){
 			if(host == null){
 				log.warn("Cannot find spell-check host for "+dbrole);
@@ -304,9 +305,29 @@ public class RMIMessengerClient {
 			return r.getFuzzy(dbrole,word,nsf);
 		} catch(Exception e){
 			e.printStackTrace();
-			log.warn("Error invoking getFuzzyt() on "+host+" : "+e.getMessage());
+			log.warn("Error invoking getFuzzy() on "+host+" : "+e.getMessage());
 			return new ArrayList<SuggestResult>();
 		}
+	}
+
+	/** dbrole pointing to original dbrole, not .related, e.g. wikilucene, not wikilucene.related */
+	public SearchResults searchRelated(String host, String dbrole, String searchterm, int offset, int limit){
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.searchRelated(dbrole,searchterm,offset,limit);
+		} catch(Exception e){
+			e.printStackTrace();
+			log.warn("Error invoking searchRelated() on "+host+" : "+e.getMessage());
+			if(host!=null && !isLocal(host)){
+				if(cache == null)
+					cache = SearcherCache.getInstance();
+				cache.invalidateSearchable(IndexId.get(dbrole),host);
+			}
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("Error searching related index: "+e.getMessage());
+			return res;
+		}
+		
 	}
 	
 }

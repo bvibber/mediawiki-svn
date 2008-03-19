@@ -149,16 +149,16 @@ public class IndexUpdateRecord implements Serializable {
 	}
 	
 	/**
-	 * @return Returns the page key -- page_id (via article)
+	 * @return page index key -- page_id (via article)
 	 */
-	public String getKey(){
-		return article.getKey();
+	public String getIndexKey(){
+		return article.getIndexKey();
 	}
 	
 	/**
-	 * @return Highlight key -- ns:title
+	 * @return ns:title key, used in links, highlight, prefix, etc.. indexes
 	 */
-	public String getHighlightKey(){
+	public String getNsTitleKey(){
 		return article.getTitleObject().getKey();
 	}
 	

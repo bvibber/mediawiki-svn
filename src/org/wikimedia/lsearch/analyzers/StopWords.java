@@ -88,17 +88,20 @@ public class StopWords {
 		return ret;
 	}
 	
-	/** Get a brand new hash set of predifined stop words (i.e. not those generated from lucene indexes) */ 
-	public static HashSet<String> getPredefinedSet(IndexId iid){
+	/** Get a brand new hash set of predifined stop words (i.e. not those generated from lucene indexes) */
+	public static HashSet<String> getPredefinedSet(String langCode){
 		loadPredefined();
 		HashSet<String> ret = new HashSet<String>();
-		HashSet<String> cached = cachePredefined.get(iid.getLangCode());
+		HashSet<String> cached = cachePredefined.get(langCode);
 		if(cached != null){
 			synchronized(cached){
 				ret.addAll(cached);
 			}
 		}
 		return ret;
+	}
+	public static HashSet<String> getPredefinedSet(IndexId iid){
+		return getPredefinedSet(iid.getLangCode());
 	}
 	
 	protected static void loadPredefined(){

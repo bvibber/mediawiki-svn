@@ -113,6 +113,7 @@ public class SpellCheckTest {
    	{"ommmmmmmmiteed", "omitted"},
    	{"ommmmmmmmitted", "omitted"},
    	{"a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",""},
+   	{"Douglas Adams's Guide to The Hitch-Hiker's Guide to the Galaxy",""},
    	
    };
 

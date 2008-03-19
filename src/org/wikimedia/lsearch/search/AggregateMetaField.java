@@ -3,6 +3,9 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.WeakHashMap;
 
@@ -21,9 +24,15 @@ import org.apache.lucene.index.IndexReader.FieldOption;
  *
  */
 public class AggregateMetaField {
-	static Logger log = Logger.getLogger(RankField.class);
+	static Logger log = Logger.getLogger(AggregateMetaField.class);
 	protected static WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>> cache = new WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>>();
 	protected static Object lock = new Object();
+	protected static Hashtable<IndexReader,AggregateMetaFieldSource> cachingInProgress = new Hashtable<IndexReader,AggregateMetaFieldSource>();
+	
+	/** Check if there is a current background caching on a reader */
+	public static boolean isBeingCached(IndexReader reader){
+		return cachingInProgress.containsKey(reader);
+	}
 	
 	/** Get a cached field source 
 	 * @throws IOException */
@@ -64,56 +73,63 @@ public class AggregateMetaField {
 		
 		protected class CachingThread extends Thread {
 			public void run(){
-				log.info("Caching aggregate field "+field+" for "+reader.directory());
-				int maxdoc = reader.maxDoc();
-				index = new int[maxdoc];
-				int count = 0;
-				length = new byte[maxdoc]; // estimate maxdoc values
-				lengthNoStopWords = new byte[maxdoc];
-				lengthComplete = new byte[maxdoc];
-				boost = new float[maxdoc];
-				namespaces = new byte[maxdoc];
-				for(int i=0;i<maxdoc;i++){
-					byte[] stored = null;
-					try{
-						Document doc = reader.document(i); 
-						stored = doc.getBinaryValue(field);
-						namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
-						index[i] = count;
-						if(stored == null)
-							continue;
-						for(int j=0;j<stored.length/7;j++){
-							if(count >= length.length){
-								length = extendBytes(length);
-								lengthNoStopWords = extendBytes(lengthNoStopWords);
-								lengthComplete = extendBytes(lengthComplete);
-								boost = extendFloats(boost);
-							}						
-							length[count] = stored[j*7];
-							if(length[count] == 0){
-								log.debug("Broken length=0 for docid="+i+", at position "+j);
-							}
-							lengthNoStopWords[count] = stored[j*7+1];
-							int boostInt = (((stored[j*7+2]&0xff) << 24) + ((stored[j*7+3]&0xff) << 16) + ((stored[j*7+4]&0xff) << 8) + ((stored[j*7+5]&0xff) << 0));
-							boost[count] = Float.intBitsToFloat(boostInt);
-							lengthComplete[count] = stored[j*7+6];
-							
-							count++;
-						}										
-					} catch(Exception e){
-						log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
-						e.printStackTrace();
+				cachingInProgress.put(reader,AggregateMetaFieldSource.this);
+				try{
+					log.info("Caching aggregate field "+field+" for "+reader.directory());
+					int maxdoc = reader.maxDoc();
+					index = new int[maxdoc];
+					int count = 0;
+					length = new byte[maxdoc]; // estimate maxdoc values
+					lengthNoStopWords = new byte[maxdoc];
+					lengthComplete = new byte[maxdoc];
+					boost = new float[maxdoc];
+					namespaces = new byte[maxdoc];
+					for(int i=0;i<maxdoc;i++){
+						byte[] stored = null;
+						try{
+							Document doc = reader.document(i); 
+							stored = doc.getBinaryValue(field);
+							namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
+							index[i] = count;
+							if(stored == null)
+								continue;
+							for(int j=0;j<stored.length/7;j++){
+								if(count >= length.length){
+									length = extendBytes(length);
+									lengthNoStopWords = extendBytes(lengthNoStopWords);
+									lengthComplete = extendBytes(lengthComplete);
+									boost = extendFloats(boost);
+								}						
+								length[count] = stored[j*7];
+								if(length[count] == 0){
+									log.debug("Broken length=0 for docid="+i+", at position "+j);
+								}
+								lengthNoStopWords[count] = stored[j*7+1];
+								int boostInt = (((stored[j*7+2]&0xff) << 24) + ((stored[j*7+3]&0xff) << 16) + ((stored[j*7+4]&0xff) << 8) + ((stored[j*7+5]&0xff) << 0));
+								boost[count] = Float.intBitsToFloat(boostInt);
+								lengthComplete[count] = stored[j*7+6];
+
+								count++;
+							}										
+						} catch(Exception e){
+							log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
+							e.printStackTrace();
+						}
 					}
+					// compact arrays
+					if(count < length.length - 1){
+						length = resizeBytes(length,count);
+						lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
+						boost = resizeFloats(boost,count);
+						lengthComplete = resizeBytes(lengthComplete,count);
+					}
+					log.info("Finished caching aggregate "+field+" for "+reader.directory());
+					cachingFinished = true;
+				} catch(Exception e){
+					e.printStackTrace();
+					log.error("Whole caching failed on field="+field+", reader="+reader);
 				}
-				// compact arrays
-				if(count < length.length - 1){
-					length = resizeBytes(length,count);
-					lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
-					boost = resizeFloats(boost,count);
-					lengthComplete = resizeBytes(lengthComplete,count);
-				}
-				log.info("Finished caching aggregate "+field+" for "+reader.directory());
-				cachingFinished = true;
+				cachingInProgress.remove(reader);
 			}
 			protected byte[] extendBytes(byte[] array){
 				return resizeBytes(array,array.length*2);

@@ -156,7 +156,7 @@ public class Article implements Serializable  {
 	 * 
 	 * @return Returns unique id.
 	 */
-	public String getKey() {
+	public String getIndexKey() {
 		return Long.toString(pageId);
 	}
 	
@@ -270,7 +270,13 @@ public class Article implements Serializable  {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public void setRedirectTo(String redirectTo) {
+		this.redirectTo = redirectTo;
 	}	
+	
+	
 	
 	
 	

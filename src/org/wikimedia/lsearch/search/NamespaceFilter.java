@@ -39,22 +39,24 @@ public class NamespaceFilter implements Serializable {
 		included = new BitSet(64);
 	}
 	
+	/** "all" filter */
 	public NamespaceFilter() {
 		init();
 	}
 	
+	/** filter namespaces */
 	public NamespaceFilter(Collection<Integer> namespaces){
 		init();
 		for(Integer namespace : namespaces){
 			included.set(namespace.intValue());
 		}
 	}
-	
+	/** filter on one namespace */
 	public NamespaceFilter(int namespace){
 		init();
 		included.set(namespace);
 	}
-	
+	/** filter number of namespaces separated by comma, e.g. 0,2,10 */
 	public NamespaceFilter(String namespaces) {
 		init();
 		if (namespaces != null && !namespaces.equals("")) {

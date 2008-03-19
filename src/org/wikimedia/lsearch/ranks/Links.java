@@ -70,16 +70,16 @@ public class Links {
 	protected Directory directory = null;
 	protected NamespaceFilter nsf; // default search
 	protected ObjectCache cache;
-	//protected ObjectCache refCache;
 	protected FieldSelector keyOnly,redirectOnly,contextOnly,linksOnly;
 	protected boolean optimized = false;
+	protected boolean autoOptimize = false;
 	
-	private Links(IndexId iid, String path, IndexWriter writer) throws CorruptIndexException, IOException{
+	private Links(IndexId iid, String path, IndexWriter writer, boolean autoOptimize) throws CorruptIndexException, IOException{
 		this.writer = writer;
 		this.path = path;
 		this.iid = iid;
-		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
-		this.langCode = global.getLanguage(iid);
+		this.autoOptimize = autoOptimize;
+		this.langCode = iid.getLangCode();
 		String dbname = iid.getDBname();
 		nsmap = Localization.getLocalizedNamespaces(langCode,dbname);
 		interwiki = Localization.getInterwiki();
@@ -87,13 +87,7 @@ public class Links {
 		imageLocalized = Localization.getLocalizedImage(langCode,dbname);
 		state = State.FLUSHED;
 		initWriter(writer);
-		//reader = IndexReader.open(path);
-		nsf = global.getDefaultNamespace(iid);
-		cache = new ObjectCache(10000);
-		// init cache manager
-		/*CacheManager manager = CacheManager.create();
-		cache = new Cache("links", 5000, false, false, 5, 2);
-		manager.addCache(cache); */		
+		nsf = iid.getDefaultNamespace();
 		keyOnly = makeSelector("article_key");
 		redirectOnly = makeSelector("redirect");
 		contextOnly = makeSelector("context");
@@ -122,7 +116,7 @@ public class Links {
 		String path = iid.getIndexPath();
 		log.info("Using index at "+path);
 		IndexWriter writer = WikiIndexModifier.openForWrite(path,false);
-		return new Links(iid,path,writer);		
+		return new Links(iid,path,writer,false);		
 	}
 	
 	public static Links openStandalone(IndexId iid) throws IOException {
@@ -138,7 +132,7 @@ public class Links {
 	public static Links openForRead(IndexId iid, String path) throws IOException {
 		iid = iid.getLinks();
 		log.info("Opening for read "+path);
-		return new Links(iid,path,null);
+		return new Links(iid,path,null,true);
 	}
 		
 	/** Create new in the import path */
@@ -147,7 +141,7 @@ public class Links {
 		String path = iid.getImportPath();
 		log.info("Making index at "+path);
 		IndexWriter writer = WikiIndexModifier.openForWrite(path,true);
-		Links links = new Links(iid,path,writer);		
+		Links links = new Links(iid,path,writer,true);		
 		return links;
 	}
 	
@@ -156,7 +150,7 @@ public class Links {
 		iid = iid.getLinks();
 		log.info("Making index in memory");
 		IndexWriter writer = new IndexWriter(new RAMDirectory(),new SimpleAnalyzer(),true);
-		Links links = new Links(iid,null,writer);		
+		Links links = new Links(iid,null,writer,true);		
 		return links;
 	}
 	
@@ -172,7 +166,7 @@ public class Links {
 		nsmap.put(namespace.toLowerCase(),index);
 	}
 	
-	/** Write all changes, optimize/close everything
+	/** Write all changes, optimize if in autoOptimize mode
 	 * @throws IOException */
 	public void flush() throws IOException{
 		// close & optimize
@@ -181,7 +175,8 @@ public class Links {
 		if(reader != null)
 			reader.close();
 		if(writer != null){
-			writer.optimize();
+			if(autoOptimize)
+				writer.optimize();
 			writer.close();	
 		}
 		state = State.FLUSHED;
@@ -193,15 +188,7 @@ public class Links {
 	 * @throws IOException 
 	 */
 	protected void flushForRead() throws IOException{		
-		// close & optimize
-		if(searcher != null)
-			searcher.close();
-		if(reader != null)
-			reader.close();
-		if(writer != null){
-			writer.optimize();
-			writer.close();	
-		}
+		flush();
 		log.debug("Opening index reader");
 		// reopen
 		reader = IndexReader.open(path);
@@ -238,27 +225,28 @@ public class Links {
 			openForWrite();
 	}
 	
-	/** Modify existing article links info */
-	public void modifyArticleInfo(String text, Title t, boolean exactCase) throws IOException{
+	/** Delete article info connected to title t */
+	public void deleteArticleInfo(Title t) throws IOException {
 		ensureWrite();
 		writer.deleteDocuments(new Term("article_key",t.getKey()));
-		addArticleInfo(text,t,exactCase);
+	}
+	/** Delete by page_id, not ns:title key */
+	public void deleteArticleInfoByIndexKey(String key) throws IOException {
+		ensureWrite();
+		writer.deleteDocuments(new Term("article_pageid",key));
 	}
 	
 	/** Add links and other info from article 
 	 * @throws IOException */
-	public void addArticleInfo(String text, Title t, boolean exactCase) throws IOException{
+	public void addArticleInfo(String text, Title t, boolean exactCase, String pageId) throws IOException{
 		ensureWrite();
 		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
 		int namespace = t.getNamespace();
 		Matcher matcher = linkPat.matcher(text);
 		int ns; String title;
 		boolean escaped;
-		//PrefixAnalyzer prefixAnalyzer = new PrefixAnalyzer();
 
 		ArrayList<String> pagelinks = new ArrayList<String>();
-		// article link -> contexts
-		//HashMap<String,ArrayList<String>> contextMap = new HashMap<String,ArrayList<String>>();
 		
 		// use context only for namespace in default search
 		boolean useContext = nsf.contains(t.getNamespace());
@@ -339,6 +327,7 @@ public class Links {
 		StringList lk = new StringList(pagelinks);
 		Analyzer an = new SplitAnalyzer(1,true);
 		Document doc = new Document();
+		doc.add(new Field("article_pageid",pageId,Field.Store.YES,Field.Index.UN_TOKENIZED));
 		// ns:title
 		doc.add(new Field("article_key",t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		if(redirectsTo != null)
@@ -348,8 +337,6 @@ public class Links {
 			// a list of all links
 			doc.add(new Field("links",lk.toString(),Field.Store.NO,Field.Index.TOKENIZED));
 		}
-		// key split up into prefixes (for prefix index)
-		// doc.add(new Field("prefix",prefixAnalyzer.tokenStream("prefix",t.getKey())));		
 		
 		writer.addDocument(doc,an);
 		state = State.MODIFIED;
@@ -430,18 +417,17 @@ public class Links {
 		}
 		return false;
 	}
-
-	@Deprecated
-	/** If article is redirect, get target, else null */
-	public String getRedirectTargetOld(String key) throws IOException{
+	
+	/** Get page_id for ns:title */
+	public String getPageId(String key) throws IOException {
 		ensureRead();
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
-			 return reader.document(td.doc(),redirectOnly).get("redirect");
+			return reader.document(td.doc()).get("article_pageid");
 		}
 		return null;
 	}
-	
+
 	/** If article is redirect, get target key, else null */
 	public String getRedirectTarget(String key) throws IOException{
 		ensureRead();
@@ -637,19 +623,16 @@ public class Links {
 			writer.close();
 		if(reader != null)
 			reader.close();
-		if(directory != null)
-			directory.close();		
+		//if(directory != null)
+		//	directory.close();		
 	}
 
 	public ObjectCache getCache() {
 		return cache;
 	}
 
-	/*public ObjectCache getRefCache() {
-		return refCache;
-	} */
-	
-	
-	
-	
+	public boolean isAutoOptimize() {
+		return autoOptimize;
+	}
+
 }

@@ -37,7 +37,7 @@ public class OAIHarvester {
 	/** Invoke ListRecords from a certain timestamp */
 	public ArrayList<IndexUpdateRecord> getRecords(String from){
 		try{
-			read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=lsearch&from="+from));
+			read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=mediawiki&from="+from));
 			return collector.getRecords();
 		} catch(IOException e){
 			log.warn("I/O exception listing records: "+e.getMessage());
@@ -58,7 +58,7 @@ public class OAIHarvester {
 	/** Invoke ListRecords using the last resumption token */
 	public ArrayList<IndexUpdateRecord> getMoreRecords(){
 		try{
-			read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=lsearch&resumptionToken="+resumptionToken));
+			read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=mediawiki&resumptionToken="+resumptionToken));
 			return collector.getRecords();
 		} catch(IOException e){
 			log.warn("I/O exception listing records: "+e.getMessage());

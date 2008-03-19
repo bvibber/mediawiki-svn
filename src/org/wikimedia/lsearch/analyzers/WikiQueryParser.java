@@ -20,6 +20,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.LogTransformScore;
+import org.apache.lucene.search.MultiPhraseQuery;
 import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.PositionalMultiQuery;
 import org.apache.lucene.search.PositionalOptions;
@@ -340,24 +341,10 @@ public class WikiQueryParser {
 			c = text[cur];
 			if(c == '"'){
 				inPhrase = !inPhrase;
-				if(inPhrase)
-					length = 0;
-				else{ // end of phrase
-					int start = cur - length;
-					analyzeBuffer();					
-					for(Token t : tokens){
-						if(t.getPositionIncrement() > 0)
-							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"phrase"));
-					}
-				}
 			}
 			
-			if(inPhrase){
-				buffer[length++] = c;
-				continue;
-			}
-			
-			if(c == ')'){
+			if(inPhrase);
+			else if(c == ')'){
 				level--;
 				if(level < fieldLevel)
 					fieldLevel = -1;
@@ -368,9 +355,9 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(Character.isLetterOrDigit(c) || c=='?' || c=='*' || c=='~'){
+			if(isTermChar(c)){
 				int start = cur;
-				tokenType = fetchToken();
+				tokenType = fetchToken(inPhrase);
 				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-')){
 					String type = "word";
 					if(bufferIsWildCard())
@@ -384,7 +371,7 @@ public class WikiQueryParser {
 						}
 					}					
 				}
-			} else if(c == '['){
+			} else if(c == '[' && !inPhrase){
 				fetchGenericPrefix();
 			}
 		}
@@ -420,12 +407,19 @@ public class WikiQueryParser {
 			return defaultNamespaceFilter;
 	}
 	
+	private final boolean isTermChar(char ch){
+		return !Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != ',' && ch != ';' && ch != '"'; 
+	}
+	
 	/**
 	 * Fetch token into <code>buffer</code> starting from current position (<code>cur</code>)
 	 * 
 	 * @return type of the token in buffer
 	 */
 	private TokenType fetchToken(){
+		return fetchToken(false);
+	}
+	private TokenType fetchToken(boolean termOnly){
 		char ch;
 		prev_cur = cur;
 		for(length = 0; cur < queryLength; cur++){
@@ -434,7 +428,7 @@ public class WikiQueryParser {
 				continue; // ignore whitespaces
 			
 			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
-			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != ',' && ch != ';' && ch != '"'){
+			if(isTermChar(ch)){
 				if(length<buffer.length)
 					buffer[length++] = ch;
 			} else{
@@ -444,6 +438,9 @@ public class WikiQueryParser {
 		}
 		if(length == 0)
 			return TokenType.EOF;
+		
+		if(termOnly)
+			return TokenType.WORD;		
 		
 		// check for keywords
 		if(length == 3 && buffer[0]=='A' && buffer[1]=='N' && buffer[2]=='D')
@@ -553,34 +550,80 @@ public class WikiQueryParser {
 	 *   
 	 * @return a query, or null if the query is empty
 	 */
-	private PhraseQuery parsePhrase(){
-		PhraseQuery query = null;
-		
-		length = 0;
+	private Query parsePhrase(){				
+		// special case for incategory 
+		if(currentField!=null && currentField.equals("incategory")){
+			for(; cur < queryLength ; cur++ ){
+				if(text[cur] == '"')
+					break;
+				else if(length < buffer.length)
+					buffer[length++] = text[cur];
+			}
+			if(length > 0){
+				// no tokenization, we want whole category name
+				return new TermQuery(makeTerm());
+			}
+			return null;
+		} 
+		//PositionalMultiQuery query = new PositionalMultiQuery(new PositionalOptions.PhraseQueryFallback());
+		MultiPhraseQuery query = new MultiPhraseQuery();
 		for(; cur < queryLength ; cur++ ){
+			length = 0;
+			// fetch next word
+			while(cur<queryLength && isTermChar(text[cur]) && length<buffer.length){
+				buffer[length++] = text[cur++];
+			}
+			
+			// add to phrase
+			if(length > 0){
+				boolean added = false;
+				if(bufferIsWildCard()){
+					Term term = makeTerm();
+					Term[] terms = wildcards.makeTerms(term.text(),term.field());
+					if(terms != null){
+						query.add(terms);
+						ArrayList<String> words = wildcards.getWords(term.text());
+						expandedWordsFromParser.add(words);
+						expandedTypesFromParser.add(ExpandedType.WILDCARD);
+						ArrayList<Float> boosts = new ArrayList<Float>();
+						for(int i=0;i<words.size();i++) boosts.add(1f);
+						expandedBoostFromParser.add(boosts);
+						added = true;
+					}
+				}
+				if(bufferIsFuzzy()){
+					Term term = makeTerm();
+					NamespaceFilter nsf = getNamespaceFilter(currentField);
+					Term[] terms = fuzzy.makeTerms(term.text(),term.field(),nsf);
+					if(terms != null){
+						//query.add(terms,fuzzy.getBoosts(term.text(),nsf,terms));
+						query.add(terms);
+						ArrayList<String> words = fuzzy.getWords(term.text(),nsf);
+						expandedWordsFromParser.add(words);
+						expandedTypesFromParser.add(ExpandedType.FUZZY);
+						expandedBoostFromParser.add(fuzzy.getBoosts(term.text(),nsf,words));
+						added = true;
+					}
+				}
+				if(!added){
+					// fallback to ordinary words
+					analyzeBuffer();
+					for(Token token : tokens){
+						if(token.getPositionIncrement()>0){ // ignore aliases and stemmed words
+							Term t = makeTerm(token);
+							addToWords(t.text(),1,ExpandedType.PHRASE);
+							query.add(t);
+						}
+					}				
+				}
+			}			
 			// end of phrase query
 			if(text[cur] == '"')
 				break;
-			else if(length < buffer.length)
-				buffer[length++] = text[cur];
 		}
-		if(length != 0){
-			query = new PhraseQuery();
-			// if it's a category don't tokenize it, we want whole category name
-			if(currentField!=null && currentField.equals("incategory"))
-				query.add(makeTerm()); 
-			else{
-				analyzeBuffer();
-				for(Token token : tokens){
-					if(token.getPositionIncrement()>0){ // ignore aliases and stemmed words
-						Term t = makeTerm(token);
-						addToWords(t.text(),1,ExpandedType.PHRASE);
-						query.add(t);
-					}
-				}
-				query.setBoost(defaultBoost);
-			}			
-			return query;	
+		if(query.getPositions().length > 0){
+			query.setBoost(defaultBoost);
+			return query;
 		} else
 			return null;
 	}
@@ -1115,19 +1158,21 @@ public class WikiQueryParser {
 		full.add(additional,Occur.SHOULD);
 		
 		// redirect match (when redirect is not contained in contents or title)
-		Query redirects = makeAlttitleForRedirects(words,20,1);
-		if(redirects != null)
-			full.add(redirects,Occur.SHOULD);
-		if(singularWords != null){
-			Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
-			if(redirectsSing != null)
-				full.add(redirectsSing,Occur.SHOULD);
-		}		
 		if(hasWildcards() || hasFuzzy()){
 			Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
 			if(redirectsMulti != null)
 				full.add(redirectsMulti,Occur.SHOULD);
+		} else{
+			Query redirects = makeAlttitleForRedirects(words,20,1);
+			if(redirects != null)
+				full.add(redirects,Occur.SHOULD);
+			if(singularWords != null){
+				Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
+				if(redirectsSing != null)
+					full.add(redirectsSing,Occur.SHOULD);
+			}		
 		}
+		
 		
 		BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(full,Occur.SHOULD);
@@ -1324,7 +1369,7 @@ public class WikiQueryParser {
 		Query main = null;
 						
 		// all words as entered into the query
-		PositionalQuery exact = makePositional(words,fields.contents(),new PositionalOptions.Exact(),0,1);
+		Query exact = makePositionalMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,fields.contents(),new PositionalOptions.Exact(),0,1);
 		// words + stemmed + singulars + transliterations + wildcards + fuzzy - with slop factor
 		Query sloppy = makePositionalMulti(expandedWordsContents,expandedBoostContents,expandedTypes,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1,false);
 		
@@ -1335,7 +1380,7 @@ public class WikiQueryParser {
 		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(words,iid.getLangCode());
 				
 		BooleanQuery combined = new BooleanQuery(true);
-		if(exact!=null && exact.getTerms().length > 0)
+		if(exact!=null)
 			combined.add(exact,Occur.SHOULD);
 		// combined various queries into mainphrase 
 		if(sloppy != null){			
@@ -1343,7 +1388,8 @@ public class WikiQueryParser {
 			// wordnet			
 			if(wordnet != null){
 				for(ArrayList<String> wnwords : wordnet){
-					combined.add(makePositional(wnwords,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
+					if(!allStopWords(wnwords))
+						combined.add(makePositional(wnwords,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
 				}
 			}
 		}
@@ -1367,7 +1413,8 @@ public class WikiQueryParser {
 		ArrayList<Query> altAdd = new ArrayList<Query>();
 		if(wordnet!=null)
 			for(ArrayList<String> wnwords : wordnet)
-				altAdd.add(makeAlttitleRelevance(wnwords,RELEVANCE_ALTTITLE_BOOST));
+				if(!allStopWords(wnwords))
+					altAdd.add(makeAlttitleRelevance(wnwords,RELEVANCE_ALTTITLE_BOOST));
 		alttitle = simplify(combine(alttitle,altAdd));
 		
 		// relevance: related
@@ -1375,7 +1422,8 @@ public class WikiQueryParser {
 		ArrayList<Query> relAdd = new ArrayList<Query>();
 		if(wordnet!=null)
 			for(ArrayList<String> wnwords : wordnet)
-				relAdd.add(makeRelatedRelevance(wnwords,RELEVANCE_RELATED_BOOST));
+				if(!allStopWords(wnwords))
+					relAdd.add(makeRelatedRelevance(wnwords,RELEVANCE_RELATED_BOOST));
 		related = simplify(combine(related,relAdd));
 		
 		BooleanQuery relevances = new BooleanQuery(true);
@@ -1546,8 +1594,11 @@ public class WikiQueryParser {
 		// add the whole-only query
 		if(whole != null)
 			bq.add(makePositional(words,field,whole,slop,1),Occur.SHOULD);
-		if(wholeSloppy != null)
-			bq.add(makePositional(words,field,wholeSloppy,slop,1,false),Occur.SHOULD);
+		if(wholeSloppy != null){
+			Query ws = makePositional(words,field,wholeSloppy,slop,1,false);
+			if(ws != null)
+				bq.add(ws,Occur.SHOULD);
+		}
 		bq.setBoost(boost);
 		
 		return bq;
@@ -1600,8 +1651,11 @@ public class WikiQueryParser {
 		// add the whole-only query
 		if(whole != null)
 			bq.add(makePositionalMulti(words,boosts,types,field,whole,slop,1),Occur.SHOULD);
-		if(wholeSloppy != null)
-			bq.add(makePositionalMulti(words,boosts,types,field,wholeSloppy,slop,0.5f,false),Occur.SHOULD);
+		if(wholeSloppy != null){
+			Query ws = makePositionalMulti(words,boosts,types,field,wholeSloppy,slop,0.5f,false);
+			if(ws != null)
+				bq.add(ws,Occur.SHOULD);
+		}
 		bq.setBoost(boost);
 		
 		return bq;

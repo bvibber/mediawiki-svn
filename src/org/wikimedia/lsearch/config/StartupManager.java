@@ -41,9 +41,9 @@ public class StartupManager {
 		// preload localizations
 		HashSet<String> langCodes = new HashSet<String>();
 		for(IndexId iid : global.getMyIndex())
-			langCodes.add(global.getLanguage(iid.getDBname()));
+			langCodes.add(iid.getLangCode());
 		for(IndexId iid : global.getMySearch())
-			langCodes.add(global.getLanguage(iid.getDBname()));
+			langCodes.add(iid.getLangCode());
 		Localization.readLocalizations(langCodes);
 		Localization.loadInterwiki();
 		// preload the unicode decomposer

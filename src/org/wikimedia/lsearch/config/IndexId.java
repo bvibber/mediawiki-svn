@@ -731,6 +731,10 @@ public class IndexId {
 		return GlobalConfiguration.getIndexId(dbname+".spell") != null;
 	}
 	
+	public boolean hasPrefix(){
+		return GlobalConfiguration.getIndexId(dbname+".prefix") != null;
+	}
+	
 	/** Get the coresponding spell words iid */
 	public IndexId getSpell() {
 		return get(dbname+".spell");
@@ -787,7 +791,7 @@ public class IndexId {
 	}
 	
 	/** Get if this is index that doesn't capitalize first letters of articles */
-	public boolean getExactCase(){
+	public boolean isExactCase(){
 		if(exactCase == null)
 			exactCase = GlobalConfiguration.getInstance().exactCaseIndex(dbname);
 		return exactCase;

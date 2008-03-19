@@ -54,6 +54,14 @@ public class Fuzzy {
 
 	}
 	
+	public ArrayList<Float> getBoosts(String word, NamespaceFilter nsf, Term[] tt){
+		ArrayList<Float> boost = new ArrayList<Float>();
+		HashMap<String,Float> terms = getCached(word,nsf);
+		for(Term t : tt)
+			boost.add(terms.get(t.text()));
+		return boost;
+	}
+	
 	public ArrayList<Float> getBoosts(String word, NamespaceFilter nsf, ArrayList<String> words){
 		ArrayList<Float> boost = new ArrayList<Float>();
 		HashMap<String,Float> terms = getCached(word,nsf);
@@ -75,6 +83,20 @@ public class Fuzzy {
 		
 		// actually make query
 		return makeQueryFromTerms(terms, field);
+	}
+	/** Make a term array without boost */
+	public Term[] makeTerms(String word, String field, NamespaceFilter nsf){
+		if(client == null)
+			client = new RMIMessengerClient();
+		HashMap<String,Float> terms = getCached(word,nsf);
+		if(terms.size() == 0)
+			return null;
+		
+		Term[] ret = new Term[terms.size()];
+		int i=0;
+		for(String w : terms.keySet())
+			ret[i++] = new Term(field,w);
+		return ret;
 	}
 	
 	protected HashMap<String,Float> getCached(String word, NamespaceFilter nsf){
@@ -99,7 +121,10 @@ public class Fuzzy {
 	/** Calculate boost factor for suggest result - larger edit distance = smaller boost */
 	protected float getBoost(SuggestResult r){
 		int dist = r.getDist()+r.getDistMetaphone();
-		return (float)(1.0/Math.pow(2,dist));	
+		double d = r.getDist();
+		double l = r.getWord().length();
+		// 2^(-dist) * len_prop * 2^E(dist)
+		return (float)((1.0/Math.pow(2,dist))*((l-d)/l)*4);	
 	}
 
 	private Query makeQueryFromTerms(HashMap<String,Float> terms, String field) {

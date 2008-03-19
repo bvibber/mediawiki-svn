@@ -143,7 +143,7 @@ public class Importer {
 			if(makeIndex){
 				if(!useOldRelated){
 					try {
-						RelatedBuilder.rebuildFromLinksNew(iid);
+						RelatedBuilder.rebuildFromLinks(iid);
 					} catch (IOException e) {
 						log.fatal("Cannot make related mapping: "+e.getMessage());
 						return;

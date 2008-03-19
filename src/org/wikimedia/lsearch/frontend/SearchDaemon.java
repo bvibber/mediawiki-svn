@@ -36,6 +36,8 @@ public class SearchDaemon extends HttpHandler {
 	String what;
 	/** Client-supplied database we should operate on */
 	String dbname;
+	
+	public static final double CURRENT_VERSION = 2.1;
 
 	public SearchDaemon(Socket sock) {
 		super(sock);
@@ -68,7 +70,8 @@ public class SearchDaemon extends HttpHandler {
 		try{
 			SearchEngine engine = new SearchEngine();
 			HashMap query = new QueryStringMap(uri);
-			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query);
+			double version = getVersion(query);
+			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query,version);
 			contentType = "text/plain";
 			// format:
 			// <num of hits>
@@ -85,44 +88,48 @@ public class SearchDaemon extends HttpHandler {
 						}
 					} else{
 						sendOutputLine(Integer.toString(res.getNumHits()));
-						SuggestQuery sq = res.getSuggest();
-						if(sq != null && sq.hasSuggestion()){
-							sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
-						} else 
-							sendOutputLine("#no suggestion");
-						if(res.getTitles() != null){
-							sendOutputLine("#interwiki "+res.getTitles().size());
-							for(ResultSet rs : res.getTitles()){
-								sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+						if(version>=2.1){
+							SuggestQuery sq = res.getSuggest();
+							if(sq != null && sq.hasSuggestion()){
+								sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
+							} else 
+								sendOutputLine("#no suggestion");
+							if(res.getTitles() != null){
+								sendOutputLine("#interwiki "+res.getTitles().size());
+								for(ResultSet rs : res.getTitles()){
+									sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
+									if(rs.getExplanation() != null)
+										sendOutputLine(rs.getExplanation().toString());
+									if(rs.getHighlight() != null){
+										HighlightResult hr = rs.getHighlight();
+										sendHighlight("title",hr.getTitle());								
+										sendHighlightWithTitle("redirect",hr.getRedirect());
+									}
+								}
+							} else
+								sendOutputLine("#interwiki 0");
+							sendOutputLine("#results");
+						}
+						for(ResultSet rs : res.getResults()){
+							sendResultLine(rs.score, rs.namespace, rs.title);
+							if(version>=2.1){
+								if(rs.getContext() != null){
+									for(String c : rs.getContext())
+										sendOutputLine("#context "+c);
+								}
 								if(rs.getExplanation() != null)
 									sendOutputLine(rs.getExplanation().toString());
 								if(rs.getHighlight() != null){
 									HighlightResult hr = rs.getHighlight();
-									sendHighlight("title",hr.getTitle());								
+									sendHighlight("title",hr.getTitle());
+									for(Snippet sn : hr.getText())
+										sendHighlight("text",sn);
 									sendHighlightWithTitle("redirect",hr.getRedirect());
+									sendHighlightWithFragment("section",hr.getSection());
+									if(hr.getDate() != null)
+										sendHighlight("date",hr.getDate());
+									sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
 								}
-							}
-						} else
-							sendOutputLine("#interwiki 0");
-						sendOutputLine("#results");
-						for(ResultSet rs : res.getResults()){
-							sendResultLine(rs.score, rs.namespace, rs.title);
-							if(rs.getContext() != null){
-								for(String c : rs.getContext())
-									sendOutputLine("#context "+c);
-							}
-							if(rs.getExplanation() != null)
-								sendOutputLine(rs.getExplanation().toString());
-							if(rs.getHighlight() != null){
-								HighlightResult hr = rs.getHighlight();
-								sendHighlight("title",hr.getTitle());
-								for(Snippet sn : hr.getText())
-									sendHighlight("text",sn);
-								sendHighlightWithTitle("redirect",hr.getRedirect());
-								sendHighlightWithFragment("section",hr.getSection());
-								if(hr.getDate() != null)
-									sendHighlight("date",hr.getDate());
-								sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
 							}
 						}
 					}
@@ -170,7 +177,17 @@ public class SearchDaemon extends HttpHandler {
 		}
 	}
 	
-	
+	 
+	private double getVersion(HashMap query) {
+		String v = (String)query.get("version");
+		if(v == null)
+			v = (String)query.get("ver");
+		if(v != null)
+			return Double.parseDouble(v);
+		return CURRENT_VERSION;
+	}
+
+
 	private String makeHighlight(String type, Snippet snippet){
 		if(snippet == null)
 			return null;

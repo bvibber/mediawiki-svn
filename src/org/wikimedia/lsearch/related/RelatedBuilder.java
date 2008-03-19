@@ -60,7 +60,7 @@ public class RelatedBuilder {
 		}
 		long start = System.currentTimeMillis();
 		try {
-			rebuildFromLinksNew(iid);
+			rebuildFromLinks(iid);
 		} catch (IOException e) {
 			log.fatal("Rebuild I/O error: "+e.getMessage());
 			e.printStackTrace();
@@ -71,84 +71,9 @@ public class RelatedBuilder {
 
 		System.out.println("Finished generating related in "+formatTime(end-start));
 	}
-
-	@Deprecated
-	public static void rebuildFromDump(String inputfile, IndexId iid) throws IOException{
-		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		String langCode = global.getLanguage(iid);
-		log.info("First pass, getting a list of valid articles...");
-		// first pass - titles
-		InputStream input = null;
-		input = Tools.openInputFile(inputfile);
-		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);
-		TitleReader tr = new TitleReader(iid,langCode,nsf);
-		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
-		reader.readDump();
-		input.close();
-		CompactLinks links = tr.getTitles();
-		tr = null; // GC
-		
-		log.info("Second pass, geting in/out links...");
-		// second pass - in/out links
-		input = Tools.openInputFile(inputfile);
-		LinkReader rr = new LinkReader(links,iid);
-		reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
-		reader.readDump();
-		links.compactAll();
-		store(links,iid);		
-	}
-	
-	/**
-	 * Rebuild related articles index for iid
-	 * @throws IOException 
-	 */
-	@Deprecated
-	public static void rebuildFromLinks(IndexId iid) throws IOException {
-		CompactLinks links = new CompactLinks();
-		Links temp = Links.openForRead(iid,iid.getLinks().getImportPath());
-		
-		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid); 
-		log.info("Reading titles in default search");
-		Dictionary dict = temp.getKeys();
-		Word w;
-		HashMap<Integer,CompactArticleLinks> keyCache = new HashMap<Integer,CompactArticleLinks>();
-		while((w = dict.next()) != null){
-			String key = w.getWord();
-			int ns = Integer.parseInt(key.substring(0,key.indexOf(':')));
-			if(nsf.contains(ns)){
-				links.add(key,temp.getNumInLinks(key));
-				keyCache.put(temp.getDocId(key),links.get(key));
-			}
-		}
-
-		log.info("Reading in/out links");
-		dict = temp.getKeys();
-		while((w = dict.next()) != null){
-			String key = w.getWord();
-			int ns = Integer.parseInt(key.substring(0,key.indexOf(':')));
-			if(nsf.contains(ns)){
-				CompactArticleLinks l = links.get(key);
-				// inlinks
-				l.setInLinks(temp.getInLinks(l,keyCache));
-				// outlinks
-				ArrayList<CompactArticleLinks> out = new ArrayList<CompactArticleLinks>();
-				for(String k : temp.getOutLinks(key).toCollection()){
-					CompactArticleLinks cs = links.get(k);
-					if(cs != null)
-						out.add(cs);
-				}
-				l.setOutLinks(out);
-			}
-		}
-		temp.close(); 
-		temp = null; // GC
-		keyCache = null; // GC
-		
-		store(links,iid);		
-	}
 	
 	/** Calculate from links index */
-	public static void rebuildFromLinksNew(IndexId iid) throws IOException {
+	public static void rebuildFromLinks(IndexId iid) throws IOException {
 		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 		RelatedStorage store = new RelatedStorage(iid);
 		

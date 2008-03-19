@@ -564,7 +564,8 @@ public class FastWikiTokenizerEngine {
 							c = text[cur];
 						else break;
 					}
-					cur--; // we moved to next legal char
+					if(!noTrailing)
+						cur--; // we moved to next legal char
 				}
 				
 				addToken(noTrailing);

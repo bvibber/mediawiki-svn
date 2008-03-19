@@ -46,7 +46,7 @@ public class LinkReader implements DumpWriter {
 			langCode = "en";
 		this.langCode = langCode;
 		this.iid = iid;
-		this.exactCase = iid.getExactCase();
+		this.exactCase = iid.isExactCase();
 		interwiki = Localization.getInterwiki();
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -58,7 +58,7 @@ public class LinkReader implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		Title t = new Title(page.Title.Namespace,page.Title.Text);
 		try{
-			links.addArticleInfo(revision.Text,t,exactCase);
+			links.addArticleInfo(revision.Text,t,exactCase,Integer.toString(page.Id));
 		} catch(Exception e){
 			log.error("Error adding article "+t+" : "+e.getMessage());
 			e.printStackTrace();

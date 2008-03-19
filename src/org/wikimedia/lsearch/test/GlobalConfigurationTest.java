@@ -318,7 +318,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertTrue(ents1.isTitlesBySuffix());
 		assertEquals("w",ents1.getInterwikiBySuffix("wiki"));
 		assertEquals(ents1,IndexId.get("enwiki").getTitlesIndex());
-		assertEquals("en",testgc.getLanguage(ents1));
+		assertEquals("en",ents1.getLangCode());
 		assertEquals("{wiki=enwiki}",ents1.getSuffixToDbname().toString());
 		IndexId ents2 = IndexId.get("en-titles.tspart2");
 		assertEquals("{wikisource=enwikisource, wiktionary=enwiktionary, test=entest}",ents2.getSuffixToDbname().toString());

@@ -49,7 +49,7 @@ public class HighlightTest {
 		Term[] terms = termSet.toArray(new Term[] {});
 		IndexSearcher searcher = SearcherCache.getInstance().getLocalSearcher(iid);
 		int[] df = searcher.docFreqs(terms);
-		Highlight.highlight(hits,iid,terms,df,searcher.maxDoc(),parser.getWordsClean(),StopWords.getPredefinedSet(iid),false,null,false);
+		Highlight.highlight(hits,iid,terms,df,searcher.maxDoc(),parser.getWordsClean(),StopWords.getPredefinedSet(iid),false,null,false,false);
 	}
 	
 	public static void timeTest(String dbname, String dbnameSrc) throws Exception {
@@ -86,7 +86,7 @@ public class HighlightTest {
 				Document doc = reader.document(docid);
 				hits.add(doc.get("namespace")+":"+doc.get("title"));
 			}
-			Highlight.ResultSet rs = Highlight.highlight(hits,iid,terms,df,maxDoc,words,stopWords,false,null,false);
+			Highlight.ResultSet rs = Highlight.highlight(hits,iid,terms,df,maxDoc,words,stopWords,false,null,false,false);
 			HashMap<String,HighlightResult> res =  rs.highlighted;
 			count += res.size();
 			if(i!=0 && i % 200 == 0){

@@ -70,12 +70,15 @@ public class Highlight {
 		public boolean foundAllInTitle;
 		/** Rank of the first hit, used as title-suggestion threshold */
 		public int firstHitRank = 0;
-		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle, int firstHitRank) {
+		/** Words found in titles */
+		public HashSet<String> foundInTitles;
+		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle, int firstHitRank, HashSet<String> foundInTitles) {
 			this.highlighted = highlighted;
 			this.phrases = phrases;
 			this.foundInContext = foundInContext;
 			this.foundAllInTitle = foundAllInTitle;
 			this.firstHitRank = firstHitRank;
+			this.foundInTitles = foundInTitles;
 		}
 	}
 	/**
@@ -87,10 +90,12 @@ public class Highlight {
 	 * @param words - in order words (from main phrase)
 	 * @param exactCase - if these are results from exactCase search
 	 * @throws IOException 
-	 * @returns map: key -> what to highlight
+	 * @returns resultset
 	 */
 	@SuppressWarnings("unchecked")
-	public static ResultSet highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, ArrayList<String> words, HashSet<String> stopWords, boolean exactCase, IndexReader reader, boolean sortByPhrases) throws IOException{
+	public static ResultSet highlight(ArrayList<String> hits, IndexId iid, Term[] terms, int df[], int maxDoc, 
+			ArrayList<String> words, HashSet<String> stopWords, boolean exactCase, IndexReader reader, 
+			boolean sortByPhrases, boolean alwaysIncludeFirstLine) throws IOException{
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
@@ -101,6 +106,7 @@ public class Highlight {
 		HashSet<String> inContext = new HashSet<String>();
 		boolean foundAllInTitle = false;
 		int firstHitRank = 0;
+		HashSet<String> inTitle = new HashSet<String>();
 		
 		// terms weighted with idf
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
@@ -140,8 +146,8 @@ public class Highlight {
 				firstHitRank = alttitles.getTitle().getRank();
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
-			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases );
-			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext,false);
+			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases, alwaysIncludeFirstLine );
+			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext,false,false);
 			int redirectAdditional = 0;
 			if(titleSnippets.size()>0 && 
 					((titleSnippets.get(0).found.containsAll(words) && textTokenLength(titleSnippets.get(0).tokens) == words.size())
@@ -219,12 +225,14 @@ public class Highlight {
 				hr.setTitle(titleSnippets.get(0).makeSnippet(256,true));		
 				if(titleSnippets.get(0).found.containsAll(words))
 					foundAllInTitle = true;
+				inTitle.addAll(titleSnippets.get(0).found);
 			}
 			
 			if(redirectSnippets != null){
 				hr.setRedirect(redirectSnippets.makeSnippet(MAX_CONTEXT,true));
 				if(!foundAllInTitle && redirectSnippets.found.containsAll(words))
 					foundAllInTitle = true;
+				inTitle.addAll(redirectSnippets.found);
 			}
 			
 			if(sectionSnippets != null){
@@ -240,7 +248,7 @@ public class Highlight {
 			res.put(key,hr);
 			
 		}
-		return new ResultSet(res,phrases,inContext,foundAllInTitle,firstHitRank);
+		return new ResultSet(res,phrases,inContext,foundAllInTitle,firstHitRank,inTitle);
 	}	
 	
 	/** Number of tokens excluding aliases and glue stuff */
@@ -423,7 +431,7 @@ public class Highlight {
 				}
 			}
 			if((completeMatch && additional >= minAdditional) || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
-				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext, false);
+				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext, false, false);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);
 					snippet.setAlttitle(ainf);
@@ -498,7 +506,7 @@ public class Highlight {
 	/** Highlight text */
 	protected static ArrayList<RawSnippet> getBestTextSnippets(ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
 			HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, boolean showFirstIfNone,
-			HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases) {
+			HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases, final boolean alwaysIncludeFirstLine) {
 		
 		// pieces of text to ge highlighted
 		ArrayList<FragmentScore> fragments = new ArrayList<FragmentScore>();
@@ -680,6 +688,12 @@ public class Highlight {
 		// find fragments with best score
 		Collections.sort(fragments,  new Comparator<FragmentScore>() {
 			public int compare(FragmentScore o1, FragmentScore o2) {
+				if(alwaysIncludeFirstLine){
+					if(o1.isFirstSentence)
+						return -1;
+					if(o2.isFirstSentence)
+						return 1;
+				}
 				// sort via longest phrase found
 				int c = o2.bestCount - o1.bestCount;
 				if(sortByPhrases && c != 0)
@@ -698,7 +712,7 @@ public class Highlight {
 		HashSet<String> termsFound = new HashSet<String>();
 		ArrayList<FragmentScore> resNoNew = new ArrayList<FragmentScore>();
 		for(FragmentScore f : fragments){
-			if(f.score == 0)
+			if(f.score == 0 && !(alwaysIncludeFirstLine && f.isFirstSentence))
 				break;
 			// check if the fragment has new terms
 			boolean hasNew = false;
@@ -711,7 +725,7 @@ public class Highlight {
 					}
 				}
 			}
-			if(hasNew){
+			if(hasNew || (alwaysIncludeFirstLine && f.isFirstSentence)){
 				if(f.found != null)
 					termsFound.addAll(f.found);
 				adjustBest(f,tokens,weightTerms,wordIndex,newTerms); 

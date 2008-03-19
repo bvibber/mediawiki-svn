@@ -104,10 +104,10 @@ public class AnalysisTest {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
 		//Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
 		Analyzer old = new EnglishAnalyzer();
-		String text = "a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
+		String text = "Pokémons a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
 		displayTokens(analyzer,text);
 		displayTokens(old,text);
-		text = "links abacus something aries douglas adams boxes bands working s and Frame semantics (linguistics)";
+		text = "Pokémons links abacus something aries douglas adams boxes bands working s and Frame semantics (linguistics)";
 		displayTokens(analyzer,text);
 		text = "Thomas c# c++ good-thomas Good-Thomas rats RATS Frame semantics (linguistics) 16th century sixteenth .fr web.fr other";
 		displayTokens(analyzer,text);				

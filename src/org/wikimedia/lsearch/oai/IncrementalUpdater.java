@@ -93,7 +93,6 @@ public class IncrementalUpdater {
 		HashSet<String> excludeList = new HashSet<String>();
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
 		String defaultTimestamp = "2001-01-01";
-		boolean fetchReferences = true;
 		// args
 		for(int i=0; i<args.length; i++){
 			if(args[i].equals("-d"))
@@ -110,8 +109,6 @@ public class IncrementalUpdater {
 				excludeList.add(args[++i]);
 			else if(args[i].equals("-n"))
 				notification = true;
-			else if(args[i].equals("--no-ranks"))
-				fetchReferences = false;
 			else if(args[i].equals("--help"))
 				break;
 			else if(args[i].startsWith("-")){
@@ -145,7 +142,6 @@ public class IncrementalUpdater {
 			System.out.println("  -f   - dblist file, one dbname per line");
 			System.out.println("  -n   - wait for notification of flush after done updating one db (default: "+notification+")");
 			System.out.println("  -e   - exclude dbname from incremental updates (overrides -f)");
-			System.out.println("  --no-ranks - don't try to fetch any article rank data");
 			return;
 		}
 		// config
@@ -190,22 +186,8 @@ public class IncrementalUpdater {
 					ArrayList<IndexUpdateRecord> records = harvester.getRecords(from);
 					if(records.size() == 0)
 						continue;
-					LinkAnalysisStorage las = new LinkAnalysisStorage(iid);
-					RelatedStorage related = new RelatedStorage(iid);
 					boolean hasMore = false;
 					do{
-						if(fetchReferences){
-							try{								
-								// fetch references for records
-								fetchReferencesAndRelated(records,las,related);
-							} catch(IOException e){
-								// FIXME: quick hack, if the table cannot be found (e.g. for new wikis) don't abort 
-								if(e.getMessage().contains("Base table or view not found")){
-									log.warn("Continuing, but could not fetch references for "+iid+": "+e.getMessage());
-								} else
-									throw e;
-							}
-						}
 						for(IndexUpdateRecord rec : records){
 							Article ar = rec.getArticle();
 							log.info("Sending "+ar+" with rank "+ar.getReferences()+" and "+ar.getRedirects().size()+" redirects: "+ar.getRedirects());
@@ -287,62 +269,5 @@ public class IncrementalUpdater {
 			}
 		} while(daemon);
 	}
-
-	protected static void fetchReferencesAndRelated(ArrayList<IndexUpdateRecord> records, LinkAnalysisStorage las, RelatedStorage related) throws IOException {
-		ArrayList<Title> titles = new ArrayList<Title>();
-		for(IndexUpdateRecord rec : records){
-			if(rec.isDelete())
-				continue;
-			Article ar = rec.getArticle();
-			titles.add(ar.makeTitle());
-			if(ar.getRedirects() != null){
-				for(Redirect r : ar.getRedirects()){
-					titles.add(r.makeTitle());
-				}
-			}			
-		}
-		// fetch
-		//OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
-		//HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
-		// update
-		// FIXME: wow, this is BCE ... 
-		for(IndexUpdateRecord rec : records){
-			if(rec.isDelete())
-				continue;
-			Article ar = rec.getArticle();
-			Title t = ar.makeTitle();
-			ArticleAnalytics aa = las.getAnaliticsForArticle(t.getKey());
-			ArrayList<String> anchors = new ArrayList<String>();
-			anchors.addAll(aa.getAnchorText());
-			// set references
-			ar.setReferences(aa.getReferences());
-			//ar.setRedirect(aa.isRedirect());
-			if(aa.isRedirect())
-				ar.setRedirectTargetNamespace(aa.getRedirectTargetNamespace());
-			if(ar.getRedirects() != null){
-				for(Redirect r : ar.getRedirects()){
-					ArticleAnalytics raa = las.getAnaliticsForReferences(r.makeTitle().getKey());
-					r.setReferences(raa.getReferences());
-					anchors.addAll(raa.getAnchorText());
-				}
-			}
-			// set anchors
-			ar.setAnchorText(anchors);
-			// set related
-			if(related.canRead())
-				ar.setRelated(related.getRelated(t.getKey()));
-			/*ArrayList<RelatedTitle> rt = rel.get(t.getKey());
-			if(rt != null){
-				Collections.sort(rt,new Comparator<RelatedTitle>() {
-					public int compare(RelatedTitle o1, RelatedTitle o2){
-						double d = o2.getScore()-o1.getScore();
-						if(d == 0) return 0;
-						else if(d > 0) return 1;
-						else return -1;
-					}
-				});
-				ar.setRelated(rt);
-			}*/
-		}		
-	}
+	
 }

@@ -73,6 +73,21 @@ public class Wildcards {
 		return makeQueryFromTerms(terms,field);
 	}
 	
+	/** Make terms array for phrases */
+	public Term[] makeTerms(String wildcard, String field){
+		HashSet<String> terms = getCached(wildcard);
+		if(terms.size() == 0)
+			return null; // no match or error
+		
+		trimTerms(terms);
+		Term[] ret = new Term[terms.size()];
+		int i = 0;
+		for(String w : terms)
+			ret[i++] = new Term(field,w);
+		return ret;
+		
+	}
+	
 	protected HashSet<String> getCached(String wildcard){
 		if(client == null)
 			client = new RMIMessengerClient();
@@ -99,6 +114,16 @@ public class Wildcards {
 	
 	/** Construct DijunctionMaxQuery from terms */
 	protected Query makeQueryFromTerms(HashSet<String> terms, String field){
+		trimTerms(terms);
+
+		DisjunctionMaxQuery q = new DisjunctionMaxQuery(0);
+		for(String t : terms){
+			q.add(new TermQuery(new Term(field,t)));
+		}
+		return q;		
+	}
+	
+	private void trimTerms(HashSet<String> terms) {
 		if(terms.size() > MAX_TERMS){
 			HashSet<String> temp = new HashSet<String>();
 			int count = 0;
@@ -110,13 +135,8 @@ public class Wildcards {
 			}
 			terms = temp;
 		}
-		DisjunctionMaxQuery q = new DisjunctionMaxQuery(0);
-		for(String t : terms){
-			q.add(new TermQuery(new Term(field,t)));
-		}
-		return q;		
 	}
-	
+
 	public boolean hasWildcards(){
 		return wildcardCache.size() > 0;
 	}

@@ -250,7 +250,12 @@ public class UpdateThread extends Thread {
 	protected void updateCache(SearcherCache.SearcherPool pool, LocalIndex li){
 		// do some typical queries to preload some lucene caches, pages into memory, etc..
 		for(IndexSearcherMul is : pool.searchers){
-			Warmup.warmupIndexSearcher(is,li.iid,true);
+			try{
+				Warmup.warmupIndexSearcher(is,li.iid,true);
+			} catch(IOException e){
+				e.printStackTrace();
+				log.warn("Error warmup up "+li+" : "+e.getMessage());
+			}
 		}
 		// add to cache
 		cache.invalidateLocalSearcher(li.iid,pool);		

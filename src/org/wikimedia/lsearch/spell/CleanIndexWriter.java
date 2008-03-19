@@ -14,6 +14,7 @@ import org.apache.lucene.document.Field.Index;
 import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.Term;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
@@ -44,6 +45,7 @@ public class CleanIndexWriter {
 	protected String langCode;
 	protected Analyzer analyzer;
 	protected HashSet<String> stopWords;
+	protected NamespaceFilter nsf;
 	
 	/** Make a new index, and init writer on it (on importPath())*/
 	public static CleanIndexWriter newForWrite(IndexId iid) throws IOException{
@@ -63,9 +65,10 @@ public class CleanIndexWriter {
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
 		this.builder = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
-		this.langCode = global.getLanguage(iid.getDBname());
+		this.langCode = iid.getLangCode();
 		analyzer = Analyzers.getIndexerAnalyzer(builder);
 		this.stopWords = StopWords.getPredefinedSet(iid);
+		nsf = global.getDefaultNamespace(iid);
 		
 		HashSet<String> stopWords = new HashSet<String>();
 		for(String w : StopWords.getStopWords(iid))
@@ -81,6 +84,19 @@ public class CleanIndexWriter {
 		writer.setMaxBufferedDocs(500);		
 		writer.setUseCompoundFile(true);
 		writer.setMaxFieldLength(WikiIndexModifier.MAX_FIELD_LENGTH);
+	}
+	
+	public void deleteArticleInfo(String pageId) throws IOException {
+		writer.deleteDocuments(new Term("key",pageId));
+	}
+	
+	/** Call this to add information about the article into index */
+	public void addArticleInfo(Article a){
+		// only for articles in default namespace(s)
+		if(nsf.contains(Integer.parseInt(a.getNamespace())))
+			addArticle(a);
+		else
+			addTitleOnly(a);
 	}
 	
 	/** Add single article */
@@ -102,8 +118,9 @@ public class CleanIndexWriter {
 	}
 	
 	/** Add title/redirect with ranks information only */
-	public void addTitleOnly(Article article) {
+	protected void addTitleOnly(Article article) {
 		Document doc = new Document();
+		doc.add(new Field("key",article.getIndexKey(),Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("ns_title",article.getTitle(),Store.YES,Index.TOKENIZED));
 		doc.add(new Field("ns_namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
 		doc.add(new Field("ns_rank",Integer.toString(article.getReferences()),Store.YES,Index.NO));

@@ -35,7 +35,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public IndexUpdatesCollector(IndexId iid){
 		this.iid = iid;
-		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		this.langCode = iid.getLangCode();
 	}
 	
 	public void addRedirect(String redirectTitle, int references) {

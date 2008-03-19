@@ -221,7 +221,7 @@ abstract public class HttpHandler extends Thread {
 				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"+
 				"<head>\n<title>Error: " + code + " " + message + "</title>\n"+
 				"</head>\n<body>\n<h1>" + code + " " + message + "</h1>\n"+
-				"<p>" + detail + "</p>\n<hr />\n<p><i>MWSearch on localhost" + 
+				"<div>" + detail + "</div>\n<hr />\n<p><i>LSearch daemon on localhost" + 
 		"</i></p>\n</body>\n</html>");
 	}
 

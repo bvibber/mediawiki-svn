@@ -52,11 +52,12 @@ public class PrefixIndexBuilder {
 		return new PrefixIndexBuilder(iid,Links.openStandalone(iid),null);
 	}
 	/** Builder for incremental updates to precursor index */
-	static public PrefixIndexBuilder forPrecursorModification(IndexId iid, Links links) throws IOException{
+	static public PrefixIndexBuilder forPrecursorModification(IndexId iid) throws IOException{
+		iid = iid.getPrefix();
 		IndexWriter writer = WikiIndexModifier.openForWrite(iid.getPrecursor().getIndexPath(),false,new PrefixAnalyzer());
 		writer.setMergeFactor(20);
 		writer.setMaxBufferedDocs(500);
-		return new PrefixIndexBuilder(iid,links,writer);
+		return new PrefixIndexBuilder(iid,null,writer);
 	}
 	
 	private PrefixIndexBuilder(IndexId iid, Links links, IndexWriter writer) throws IOException {
@@ -177,15 +178,17 @@ public class PrefixIndexBuilder {
 					else return -1;
 				}
 			});
-			HashSet<String> selectedRedirects = new HashSet<String>();
+			// hash set of selected articles and places they redirect to
+			HashSet<String> selectedWithRedirects = new HashSet<String>();
 			ArrayList<String> selected = new ArrayList<String>();
 			for(int i=0;i<perPrefix && i<sorted.size();i++){
 				String key = sorted.get(i).getKey();
 				String redirect = redirects.get(key);
-				if(redirect == null || !selectedRedirects.contains(redirect)){
+				if((redirect == null || !selectedWithRedirects.contains(redirect)) 
+						&& !selectedWithRedirects.contains(key)){
 					selected.add(key);
-					selectedRedirects.add(redirect);
-					selectedRedirects.add(key);
+					selectedWithRedirects.add(key);
+					selectedWithRedirects.add(redirect);					
 				}
 			}
 			Document d = new Document();
@@ -213,7 +216,7 @@ public class PrefixIndexBuilder {
 		writer.optimize();
 		writer.close();		
 		
-		IndexThread.makeIndexSnapshot(prefixIid,path);
+		IndexThread.makeIndexSnapshot(prefixIid,prefixIid.getImportPath());
 	}
 	
 	public static String strip(String s){
@@ -230,15 +233,23 @@ public class PrefixIndexBuilder {
 	private static double lengthCoeff(String key, String prefix) {
 		return 1;
 	}
-	/** Modify a precursor index entry */
-	protected void modifyPrecursor(String key) throws IOException{
-		writer.deleteDocuments(new Term("key",key));
-		addToPrecursor(key);
-	}
+	
+	
 	/** Add a new precursor index entry */
 	protected void addToPrecursor(String key) throws IOException{
 		int ref = links.getNumInLinks(key);
 		String redirect = links.getRedirectTarget(key);
+		String pageid = links.getPageId(key);
+		addToPrecursor(key,ref,redirect,pageid);
+	}
+	
+	/** Modify a precursor index entry */
+	public void deleteFromPrecursor(String pageId) throws IOException{
+		writer.deleteDocuments(new Term("pageid",pageId));
+	}
+	
+	/** Add a new precursor index entry */
+	public void addToPrecursor(String key, int ref, String redirect, String pageId) throws IOException{	
 		String strippedKey = strip(key);
 		String strippedTarget = redirect==null? null : strip(redirect);
 		if(redirect == null);
@@ -248,6 +259,7 @@ public class PrefixIndexBuilder {
 			return; // ignore redirects like byzantine -> byzantine empire
 		// add to index
 		Document d = new Document();
+		d.add(new Field("pageid",pageId,Field.Store.NO,Field.Index.UN_TOKENIZED));
 		d.add(new Field("key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
 		ArrayList<Token> canonized = canonize(key,iid,filters); 
 		for(Token t : canonized){

@@ -47,15 +47,14 @@ public class CleanIndexImporter implements DumpWriter {
 	CleanIndexWriter writer;
 	String langCode;
 	Links links;
-	NamespaceFilter nsf;
 
 	public CleanIndexImporter(IndexId iid, String langCode) throws IOException{
 		Configuration.open(); // make sure configuration is loaded
 		this.writer = CleanIndexWriter.newForWrite(iid);
 		this.langCode = langCode;
-		this.links = Links.openForRead(iid,iid.getLinks().getImportPath());
-		nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);
-		log.info("Rebuilding for namespaces: "+nsf);
+		this.links = Links.openStandalone(iid);
+		
+		//log.info("Rebuilding for namespaces: "+nsf);
 	}
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -72,8 +71,8 @@ public class CleanIndexImporter implements DumpWriter {
 			ArrayList<String> redirectsHere = links.getRedirectsTo(key);
 			references -= redirectsHere.size(); // we want raw rank, without redirects
 
-			if(redirectTargetNamespace<0 || !nsf.contains(redirectTargetNamespace))
-				redirectTo = null; // redirect to other namespace
+			if(redirectTargetNamespace<0 || redirectTargetNamespace != page.Title.Namespace)
+				redirectTo = null; // redirect to different namespace
 		}			
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
 
@@ -88,11 +87,7 @@ public class CleanIndexImporter implements DumpWriter {
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
 				references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors,date);
 
-		// only for articles in default namespace(s)
-		if(nsf.contains(page.Title.Namespace))
-			writer.addArticle(article);
-		else
-			writer.addTitleOnly(article);
+		writer.addArticleInfo(article);
 	}	
 	
 	public void close() throws IOException {

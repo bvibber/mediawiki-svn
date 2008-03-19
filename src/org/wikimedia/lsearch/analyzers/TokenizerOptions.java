@@ -56,12 +56,11 @@ public class TokenizerOptions {
 		}
 	}
 	
-	public static class HighlightOriginal extends TokenizerOptions {
+	/** Used for titles, doesn't simply glue and has no case detection */
+	public static class HighlightOriginal extends Highlight {
 		public HighlightOriginal(){
-			super(false); 
-			this.highlightParsing = true;
-			this.relocationParsing = false;
 			this.simplifyGlue = false;
+			this.noCaseDetection = true;
 		}
 	}
 	/** Used to filter prefixes (up to FastWikiTokenizer.MAX_WORD_LEN chars) */

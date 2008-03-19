@@ -48,7 +48,7 @@ public class SuggestTest {
 						&& res.get(1).getWord().equals(m[1]))
 					good++;
 				else if(r.getDist() > 1){
-					SuggestResult split = sc.suggestSplit(m[0],0);
+					SuggestResult split = sc.suggestSplit(m[0],null);
 					if(split!=null && m[1].equals(split.getWord()))
 						good++;
 					else{

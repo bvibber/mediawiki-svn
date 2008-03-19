@@ -37,6 +37,8 @@ public class PositionalOptions implements Serializable {
 	protected float completeBoost = 1;
 	/** use complete number of tokens (with completeBoost) only for scoring */
 	protected boolean useCompleteOnly = false;
+	/** act exactly as a phrase query without any positional or such optimizations */
+	protected boolean phraseQueryFallback = false;
 
 	
 	/** Options specific for phrases in contents */
@@ -148,6 +150,12 @@ public class PositionalOptions implements Serializable {
 			//wholeBoost = 8;
 		}
 	}
+	/** Fallback to phasequery-type behaviour, no positional info */
+	public static class PhraseQueryFallback extends PositionalOptions {
+		public PhraseQueryFallback(){
+			phraseQueryFallback = true;
+		}
+	}
 	
 	public abstract static class NamespaceBoost implements Serializable {
 		public abstract float getBoost(int namespace);
@@ -162,6 +170,7 @@ public class PositionalOptions implements Serializable {
 			}
 		}
 	}
+
 	
 
 	@Override

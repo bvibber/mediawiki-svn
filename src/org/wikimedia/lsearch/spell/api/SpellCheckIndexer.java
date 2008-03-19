@@ -83,7 +83,7 @@ public class SpellCheckIndexer {
 		if(minPhraseFreq < 1)
 			minPhraseFreq = 1;
 		this.createNew = createNew;
-		this.langCode=GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		this.langCode=iid.getLangCode();
 		this.ngramWriter = new NgramIndexer();
 		this.registry = IndexRegistry.getInstance();
 	}
@@ -222,7 +222,7 @@ public class SpellCheckIndexer {
 			while((word = dict.next()) != null){
 				String w = word.getWord();
 				if(w.contains("_")){ // phrase					
-					addNsPhrase(w,ir);
+					addNsPhrase(w,ir,true);
 				} else{ // word
 					addNsWord(w,ir);
 				}
@@ -329,7 +329,7 @@ public class SpellCheckIndexer {
 	}
  
 	/** Add phrase in namespace other than default */
-	public void addNsPhrase(String phrase, IndexReader ir) throws IOException {
+	public void addNsPhrase(String phrase, IndexReader ir, boolean inTitle) throws IOException {
 		if(phrase.length() <= 2){
 			log.warn("Invalid phrase: "+phrase);
 			return;
@@ -341,6 +341,9 @@ public class SpellCheckIndexer {
 		doc.add(new Field("ns_namespace", new StringTokenStream(freq.keySet())));
 		for(Entry<String,SimpleInt> e : freq.entrySet()){
 			doc.add(new Field("ns_freq_"+e.getKey(), Integer.toString(e.getValue().count), Field.Store.YES, Field.Index.NO));
+		}
+		if(inTitle){
+			doc.add(new Field("ns_intitle","1", Field.Store.YES, Field.Index.UN_TOKENIZED));
 		}
 		ngramWriter.addDocument(doc);
 	}

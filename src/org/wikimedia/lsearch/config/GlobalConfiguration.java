@@ -1158,10 +1158,6 @@ public class GlobalConfiguration {
 	public boolean isMyHost(String host) {
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
-
-	public String getLanguage(IndexId iid){
-		return getLanguage(iid.getDBname());
-	}
 	
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {

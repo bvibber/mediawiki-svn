@@ -59,11 +59,16 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.prefix.PrefixIndexBuilder;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
+import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.spell.CleanIndexImporter;
+import org.wikimedia.lsearch.spell.CleanIndexWriter;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
+import org.wikimedia.lsearch.storage.RelatedStorage;
 import org.wikimedia.lsearch.util.Buffer;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.MathFunc;
@@ -155,9 +160,9 @@ public class WikiIndexModifier {
 					if(rec.doDelete()){
 						int count = 0;
 						if(iid.isHighlight())
-							count = reader.deleteDocuments(new Term("key", rec.getHighlightKey()));
+							count = reader.deleteDocuments(new Term("key", rec.getNsTitleKey()));
 						else // normal or titles index
-							count = reader.deleteDocuments(new Term("key", rec.getKey()));
+							count = reader.deleteDocuments(new Term("key", rec.getIndexKey()));
 						if(count == 0)
 							nonDeleteDocuments.add(rec);
 						IndexReportCard card = getReportCard(rec);
@@ -167,7 +172,7 @@ public class WikiIndexModifier {
 							else 
 								card.setSuccessfulDelete();
 						}
-						log.debug(iid+": Deleting document "+rec.getKey()+" "+rec.getArticle());
+						log.debug(iid+": Deleting document "+rec.getIndexKey()+" "+rec.getArticle());
 					}
 				}
 				reader.close();
@@ -231,7 +236,7 @@ public class WikiIndexModifier {
 							writer.addDocument(doc,indexAnalyzer);
 						}
 												
-						log.debug(iid+": Adding document "+rec.getKey()+" "+rec.getArticle());
+						log.debug(iid+": Adding document "+rec.getIndexKey()+" "+rec.getArticle());
 						if(card != null)
 							card.setSuccessfulAdd();
 					} catch (IOException e) {
@@ -241,7 +246,7 @@ public class WikiIndexModifier {
 						succ = false; // report unsucc, but still continue, to process all cards 
 					} catch(Exception e){
 						e.printStackTrace();
-						log.error("Error adding document "+rec.getKey()+" with message: "+e.getMessage());
+						log.error("Error adding document "+rec.getIndexKey()+" with message: "+e.getMessage());
 						if(card != null)
 							card.setFailedAdd();
 						succ = false; // report unsucc, but still continue, to process all cards
@@ -410,14 +415,122 @@ public class WikiIndexModifier {
 	 *  
 	 * @param iid
 	 * @param updateRecords
+	 * @return success
 	 */
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
-		boolean index = updateDocumentsOn(iid,updateRecords,iid);
-		boolean highlight = updateDocumentsOn(iid.getHighlight(),updateRecords,iid);
-		boolean titles = true;
+		return updateLinks(iid,updateRecords) 
+		    && fetchLinksInfo(iid,updateRecords)
+		    && updatePrefix(iid,updateRecords)
+		    && updateSpell(iid,updateRecords)
+		    && updateDocumentsOn(iid,updateRecords,iid)
+		    && updateDocumentsOn(iid.getHighlight(),updateRecords,iid)
+		    && updateTitles(iid,updateRecords);
+	}
+	
+	public boolean updateTitles(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(iid.hasTitlesIndex())
-			titles = updateDocumentsOn(iid.getTitlesIndex(),updateRecords,iid);
-		return index && highlight && titles;
+			return updateDocumentsOn(iid.getTitlesIndex(),updateRecords,iid);
+		return true;
+	}
+	
+	/** Update articles with latest linking & related information */ 
+	public boolean fetchLinksInfo(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		try{
+			Links links = Links.openForRead(iid,iid.getIndexPath());
+			RelatedStorage related = new RelatedStorage(iid);
+			for(IndexUpdateRecord rec : updateRecords){
+				if(rec.doAdd()){
+					String key = rec.getNsTitleKey();
+					Article article = rec.getArticle();
+					// references, redirect status
+					article.setReferences(links.getNumInLinks(key));
+					article.setRedirectTo(links.getRedirectTarget(key));
+					if(article.isRedirect())
+						article.setRedirectTargetNamespace(links.getRedirectTargetNamespace(key));
+					else
+						article.setRedirectTargetNamespace(-1);
+
+					// redirects				
+					ArrayList<Redirect> redirects = new ArrayList<Redirect>();
+					for(String rk : links.getRedirectsTo(key)){
+						String[] parts = rk.toString().split(":",2);
+						int redirectRef = links.getNumInLinks(rk);
+						redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
+					}
+					article.setRedirects(redirects);
+					// related
+					if(related != null)
+						article.setRelated(related.getRelated(key));
+				}
+			}
+			return true;
+		} catch(IOException e){
+			e.printStackTrace();
+			log.error("Cannot fetch links info: "+e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean updateLinks(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		try{
+			Links links = Links.openForModification(iid);
+			for(IndexUpdateRecord rec : updateRecords){
+				// TODO: this might do some unnecessary additions/deletions on split index architecture
+				if(rec.doDelete()){
+					links.deleteArticleInfoByIndexKey(rec.getIndexKey());
+				} else if(rec.doAdd()){
+					Article a = rec.getArticle();
+					links.addArticleInfo(a.getContents(),a.getTitleObject(),iid.isExactCase(),a.getIndexKey());
+				}
+			}
+			links.close();
+			return true;
+		} catch(IOException e){
+			e.printStackTrace();
+			log.error("Cannot update links index: "+e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean updatePrefix(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		if(!iid.hasPrefix())
+			return true;
+		try{
+			PrefixIndexBuilder prefix = PrefixIndexBuilder.forPrecursorModification(iid);
+			for(IndexUpdateRecord rec : updateRecords){
+				if(rec.doDelete()){
+					prefix.deleteFromPrecursor(rec.getIndexKey());
+				} else if(rec.doAdd()){
+					Article a = rec.getArticle();
+					prefix.addToPrecursor(rec.getNsTitleKey(),a.getReferences(),a.getRedirectTarget(),rec.getIndexKey());
+				}
+			}
+			return true;
+		} catch(IOException e){
+			e.printStackTrace();
+			log.error("Cannot update prefix index: "+e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean updateSpell(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		if(!iid.hasSpell())
+			return true;
+		try{
+			CleanIndexWriter writer = CleanIndexWriter.newForModification(iid);
+			for(IndexUpdateRecord rec : updateRecords){
+				if(rec.doDelete()){
+					writer.deleteArticleInfo(rec.getIndexKey());
+				} else if(rec.doAdd()){
+					writer.addArticleInfo(rec.getArticle());
+				}
+			}
+			return true;
+		} catch(IOException e){
+			e.printStackTrace();
+			log.error("Cannot update spellcheck index: "+e.getMessage());
+			return false;
+		}
 	}
 	
 	/**
@@ -518,7 +631,7 @@ public class WikiIndexModifier {
 		transformArticleForIndexing(article);
 				
 		// page_id from database, used to look up and replace entries on index updates
-		doc.add(new Field("key", article.getKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("key", article.getIndexKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
 
 		// namespace, returned with results
 		doc.add(new Field("namespace", article.getNamespace(), Field.Store.YES, Field.Index.UN_TOKENIZED));

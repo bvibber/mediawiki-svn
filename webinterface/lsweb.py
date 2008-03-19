@@ -401,10 +401,10 @@ class MyHandler(BaseHTTPRequestHandler):
                     self.wfile.write('</body></html>')
                 except HTTPError:
                     self.send_error(400,'Bad request')
-                    self.wfile.write("Error in query")
+                    self.wfile.write("<div>Error in query</div>")
                 except URLError:
                     self.send_error(500,'Internal Server Error')
-                    self.wfile.write("Cannot connect to lucene search 2 daemon")
+                    self.wfile.write("<div>Cannot connect to lucene search 2 daemon</div>")
                 delta_time = time.time() - start_time
                 print '[%s] Processed query %s in %d ms' %(time.strftime("%Y-%m-%d %H:%M:%S"),self.path,int(delta_time*1000))
             elif s[2] == '/':
