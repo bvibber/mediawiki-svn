@@ -31,7 +31,7 @@ $messages['en'] = array(
 	'chemFunctions_Formula'  => 'Formula',
 	'chemFunctions_Name'     => 'IUPAC Name',
 
-	'chemFunctions_ChemFormInputError' => 'Chemform: Input error!'
+	'chemFunctions_ChemFormInputError' => 'Chemform: Input error!',
 	'chemFunctions_SearchExplanation'  => '',
 );
 
