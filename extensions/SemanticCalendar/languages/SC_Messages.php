@@ -54,6 +54,13 @@ $messages['de'] = array(
 	'sc_gotomonth'        => 'Gehe zu Monat',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'sc_today' => 'Σήμερα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -191,6 +191,19 @@ $messages['lb'] = array(
 	'edituser-dosearch' => 'Sichen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'edituser-desc'     => 'काही विशिष्ट सदस्यांना इतर सदस्यांच्या पसंती बदलण्याची अनुमती देते',
+	'edituser'          => 'सदस्य संपादित करा',
+	'edituser-logout'   => 'सदस्याला अदाखल करा',
+	'edituser-username' => 'नाव',
+	'edituser-dosearch' => 'शोधा',
+	'edituser-nouser'   => 'दिलेला सदस्य अस्तित्वात नाही',
+	'edituser-exempt'   => 'दिलेला सदस्य संपादित करू शकत नाही',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

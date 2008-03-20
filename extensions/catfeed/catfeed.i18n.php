@@ -54,11 +54,20 @@ $messages['ja'] = array(
 	'catfeed-desc' => '最近の更新をフィードします。ページ内バージョンで作成されているため、特にウィキニュースでは便利です。',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'catfeed-desc' => 'अलीकडील बदलांमधील फीड्स वापरते. पानातच आवृत्ती तयार होते, विकिन्युज साठी विशेष उपयुक्त.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen. Maakt een versie binnen een pagina. In het bijzonder handig voor Wikinews',
+	'catfeed-desc' => 'Gebruikt informatie uit de recente wijzigingen.
+Maakt een versie binnen een pagina.
+In het bijzonder handig voor Wikinews',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

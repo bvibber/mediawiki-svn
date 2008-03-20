@@ -290,6 +290,15 @@ $messages['lb'] = array(
 	'block_title_error'            => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'block_title_error_page_title' => 'अडविलेले शीर्षक',
+	'block_title_error-desc'       => 'विशिष्ट शीर्षकांची पाने तयार करण्यापासून रोखण्यासाठी सोपा मार्ग देते',
+	'block_title_error'            => 'माफ करा, या पानाचे शीर्षक जतन करायला परवानगी नाही.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

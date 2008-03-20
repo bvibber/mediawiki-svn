@@ -371,6 +371,51 @@ $allMessages['ps'] = array(
 	'whitelistnever'           => 'هېڅکله',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$allMessages['sk'] = array(
+	'whitelist-desc'            => 'Upraviť oprávnenia prístupu používateľov',
+	'whitelistedit'             => 'Editor bielej listiny prístupu',
+	'whitelist'                 => 'Dať stránky na bielu listinu',
+	'mywhitelistpages'          => 'Moje stránky',
+	'whitelistfor'              => '<center>Aktuálne informácie pre <b>$1<b></center>',
+	'whitelisttablemodify'      => 'Zmeniť',
+	'whitelisttablemodifyall'   => 'Všetky',
+	'whitelisttablemodifynone'  => 'Žiadne',
+	'whitelisttablepage'        => 'Wiki stránka',
+	'whitelisttabletype'        => 'Typ prístupu',
+	'whitelisttableexpires'     => 'Vyprší',
+	'whitelisttablemodby'       => 'Naspoledy zmenil',
+	'whitelisttablemodon'       => 'Naposledy zmenené',
+	'whitelisttableedit'        => 'Upraviť',
+	'whitelisttableview'        => 'Zobraziť',
+	'whitelisttablenewdate'     => 'Nový dátum:',
+	'whitelisttablechangedate'  => 'Zmeniť dátum vypršania',
+	'whitelisttablesetedit'     => 'Nastaviť na Upraviť',
+	'whitelistnewtableview'     => 'Nastaviť na Zobraziť',
+	'whitelistnewtableprocess'  => 'Spracovať',
+	'whitelistnewtablereview'   => 'Skontrolovať',
+	'whitelistselectrestricted' => '== Vyberte meno používateľa ==',
+	'whitelistpagelist'         => 'stránky {{GRAMMAR:genitív|{{SITENAME}}}} pre $1',
+	'whitelistnocalendar'       => "<font color='red' size=3>Zdá sa, že nie je správne nainštalované rozšírenie [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], ktoré toto rozšírenie vyžaduje.</font>",
+	'whitelistbadtitle'         => 'Chybný názov -',
+	'whitelistoverview'         => '== Prehľad zmien $1 ==',
+	'whitelistoverviewcd'       => "* Zmena dátumu [[:$2|$2]] na '''$1'''",
+	'whitelistoverviewsa'       => "* Nastavenie prístupu [[:$2|$2]] na '''$1'''",
+	'whitelistoverviewrm'       => "* Odstránenie prístupu [[:$2|$2]] na '''$1'''",
+	'whitelistoverviewna'       => "* Pridanie prístupu [[:$1|$1]] na bielu listinu s prístupom '''$2''' a vypršaním '''$3'''",
+	'whitelistrequest'          => 'Požiadať o prístup k viacerým stránkam',
+	'whitelistrequestmsg'       => '$1 požiadal o prístup k nasledovným stránkam:
+
+$2',
+	'whitelistrequestconf'      => 'Žiadosť o nové stránky bola odoslaná $1',
+	'whitelistnonrestricted'    => "Používateľ '''$1''' nie je obmedzený používateľ.
+Táto stránka sa týka iba obmedzneých používateľov.",
+	'whitelistnever'            => 'nikdy',
+	'whitelistnummatches'       => '  - $1 výsledkov',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

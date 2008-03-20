@@ -206,9 +206,11 @@ $messages['de'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'expandtemplates'         => 'Επέκτεινε τα πρότυπα',
-	'expand_templates_output' => 'Αποτέλεσμα',
-	'expand_templates_ok'     => 'ΟΚ',
+	'expandtemplates'                  => 'Επέκτεινε τα πρότυπα',
+	'expand_templates_output'          => 'Αποτέλεσμα',
+	'expand_templates_ok'              => 'ΟΚ',
+	'expand_templates_remove_comments' => 'Αφαίρεσε τα σχόλια',
+	'expand_templates_preview'         => 'Προεπισκόπηση',
 );
 
 /** Esperanto (Esperanto)
@@ -219,6 +221,7 @@ $messages['eo'] = array(
 	'expandtemplates'                  => 'Ampleksigu ŝablonojn',
 	'expand_templates_input'           => 'Enigu tekston:',
 	'expand_templates_output'          => 'Rezulto',
+	'expand_templates_xml_output'      => 'XML-eligo',
 	'expand_templates_ok'              => 'Ek!',
 	'expand_templates_remove_comments' => 'Forigu komentojn',
 	'expand_templates_preview'         => 'Antaŭrigardo',
@@ -686,7 +689,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
-	'expandtemplates-desc'             => 'Substitueert sjablonen, parserfuncties en variabelen en geeft wikitekst en een controleversie van een pagina weer',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Substitueert sjablonen, parserfuncties en variabelen]] en geeft wikitekst en een controleversie van een pagina weer',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
 substitueert recursief alle sjablonen in de tekst.
 Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
@@ -697,7 +700,7 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_output'          => 'Resultaat',
 	'expand_templates_xml_output'      => 'XML-uitvoer',
 	'expand_templates_ok'              => 'OK',
-	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
+	'expand_templates_remove_comments' => 'Opmerkingen verwijderen',
 	'expand_templates_generate_xml'    => 'XML-parserboom bekijken',
 	'expand_templates_preview'         => 'Voorvertoning',
 );

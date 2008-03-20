@@ -94,6 +94,13 @@ $messages['lb'] = array(
 	'charinsert-desc' => 'Erlaabt et eng JavaScript-gesteiert Këscht ze maache fir [[MediaWiki:Edittools|Sonnerzeechen anzesetzen]]',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'charinsert-desc' => '[[MediaWiki:Edittools|ठराविक नसलेली चिन्हे]] वापरण्यासाठी एक जावास्क्रीप्ट कळफलक बनवितो',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -114,6 +114,18 @@ $messages['lb'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'eval'        => 'पारख',
+	'eval-desc'   => '<code>eval()</code> कार्यासाठी एक [[Special:Eval|इंटरफेस]] पुरविते',
+	'eval_submit' => 'पारख करा',
+	'eval_escape' => 'आउटपुट वगळा',
+	'eval_out'    => 'आउटपुट',
+	'eval_code'   => 'कोड',
+);
+
 /** Dutch (Nederlands)
  * @author Annabel
  * @author SPQRobin

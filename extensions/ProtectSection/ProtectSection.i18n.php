@@ -105,10 +105,14 @@ $messages['lb'] = array(
 	'protectsection_forbidden'  => 'Verbueden',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'protectsection_add_remove' => 'U probeerde een beveiligde sectie toe te voegen of te verwijderen',
 	'protectsection_modify'     => 'U probeerde beveiligde tekst te bewerken',
-	'protectsection_forbidden'  => 'Verboden',
+	'protectsection_forbidden'  => 'Niet toegestaan',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

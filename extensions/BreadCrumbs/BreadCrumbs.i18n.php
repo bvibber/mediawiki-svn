@@ -109,6 +109,13 @@ $messages['lb'] = array(
 	'breadcrumbs-desc' => "Weist de Benotzer hire Wee duerch d'Wiki.",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'breadcrumbs-desc' => 'विकिमधील सदस्याचा मार्ग (पाथ) दर्शविते.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

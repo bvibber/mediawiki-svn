@@ -243,9 +243,14 @@ $messages['eml'] = array(
 	'newuserlog-create-entry' => 'Un utèint nōv',
 );
 
+/** Esperanto (Esperanto)
+ * @author Tlustulimu
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'newuserlogpage'           => 'Uzantokreada loglibro',
 	'newuserlogpagetext'       => 'Ĉi tio estas loglibro de uzantokreadoj',
+	'newuserlog-byemail'       => 'pasvorto sendita retpoŝte',
 	'newuserlog-create-entry'  => 'Nova uzanto',
 	'newuserlog-create2-entry' => 'kreis konton por $1',
 );

@@ -132,6 +132,14 @@ $messages['stq'] = array(
 	'stalepages-summary' => 'Dit is ne Lieste fon Sieden, do der in do lääste $1 Deege nit beoarbaided wuuden.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'stalepages'         => 'Föråldrade sidor',
+	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under dom sista $1 dagarna.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

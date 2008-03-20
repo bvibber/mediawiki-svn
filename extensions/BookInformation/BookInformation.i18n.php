@@ -224,13 +224,23 @@ $messages['de'] = array(
 	'bookinfo-provider'          => 'Daten-Lieferant: $1',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ * @author Consta
+ */
 $messages['el'] = array(
-	'bookinfo-header' => 'Βιβλίο πληροφοριών',
-	'bookinfo-result-title' => 'Τίτλος:',
-	'bookinfo-result-author' => 'Συντάκτης:',
-	'bookinfo-result-publisher' => 'Εκδότης:',
-	'bookinfo-result-year' => 'Χρόνος:',
-	'bookinfo-purchase' => 'Αγοράστε αυτό το βιβλίο από $1',
+	'bookinfo-header'            => 'Βιβλίο πληροφοριών',
+	'bookinfo-desc'              => 'Επεκτείνει το ειδικό [[Special:Booksources]] με πληροφορίες από μια υπηρεσία δικτύου',
+	'bookinfo-result-title'      => 'Τίτλος:',
+	'bookinfo-result-author'     => 'Συντάκτης:',
+	'bookinfo-result-publisher'  => 'Εκδότης:',
+	'bookinfo-result-year'       => 'Χρόνος:',
+	'bookinfo-error-invalidisbn' => 'Έχει πληκτρολογηθεί λάθος ISBN.',
+	'bookinfo-error-nosuchitem'  => 'Το αντικείμενο δεν υπάρχει ή δεν μπορούσε να βρεθεί.',
+	'bookinfo-error-nodriver'    => 'Δεν μπορούσε φτιάξει έναν κατάλληλο Οδηγό Πληροφοριών Βιβλίου.',
+	'bookinfo-error-noresponse'  => 'Καμία απάντηση ή η αίτηση έχει λήξει.',
+	'bookinfo-purchase'          => 'Αγοράστε αυτό το βιβλίο από $1',
+	'bookinfo-provider'          => 'Παροχέας πληροφοριών: $1',
 );
 
 /** Esperanto (Esperanto)
@@ -238,11 +248,13 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'bookinfo-header'            => 'Libra informo',
+	'bookinfo-desc'              => 'Pligrandigas paĝon [[Special:Booksources]] kun informo de Interreta-servo.',
 	'bookinfo-result-title'      => 'Titolo:',
 	'bookinfo-result-author'     => 'Aŭtoro:',
 	'bookinfo-result-publisher'  => 'Eldonejo:',
 	'bookinfo-result-year'       => 'Jaro',
 	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
+	'bookinfo-error-nosuchitem'  => 'Tio ne ekzistas aŭ ne estas trovebla.',
 	'bookinfo-purchase'          => 'Aĉetu ĉi libron de $1',
 	'bookinfo-provider'          => 'Datuma provizanto: $1',
 );

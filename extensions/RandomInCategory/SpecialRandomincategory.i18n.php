@@ -50,6 +50,13 @@ $messages['de'] = array(
 	'randomincategory-submit'         => 'OK',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'randomincategory-label' => 'Κατηγορία:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Cedric31

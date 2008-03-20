@@ -41,6 +41,7 @@ $messages['ar'] = array(
 	'dt_xml_field'                => 'حقل',
 	'dt_xml_name'                 => 'اسم',
 	'dt_xml_title'                => 'عنوان',
+	'dt_xml_id'                   => 'رقم',
 	'dt_xml_freetext'             => 'نص حر',
 );
 
@@ -77,6 +78,17 @@ $messages['de'] = array(
 	'dt_xml_name'                 => 'Name',
 	'dt_xml_title'                => 'Titel',
 	'dt_xml_freetext'             => 'Freier Text',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'dt_viewxml_categories' => 'Κατηγορίες',
+	'dt_xml_page'           => 'Σελίδα',
+	'dt_xml_field'          => 'Πεδίο',
+	'dt_xml_name'           => 'Όνομα',
+	'dt_xml_title'          => 'Τίτλος',
 );
 
 /** Esperanto (Esperanto)
@@ -204,6 +216,25 @@ $messages['lb'] = array(
 	'dt_xml_name'                 => 'Numm',
 	'dt_xml_title'                => 'Titel',
 	'dt_xml_freetext'             => 'Fräien Text',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'dt-desc'                     => 'साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो',
+	'viewxml'                     => 'XML पहा',
+	'dt_viewxml_docu'             => 'कॄपया XML मध्ये पाहण्यासाठी खालीलपैकी वर्ग व नामविश्वे निवडा.',
+	'dt_viewxml_categories'       => 'वर्ग',
+	'dt_viewxml_namespaces'       => 'नामविश्वे',
+	'dt_viewxml_simplifiedformat' => 'सोप्या प्रकारे',
+	'dt_xml_namespace'            => 'नामविश्व',
+	'dt_xml_page'                 => 'पान',
+	'dt_xml_field'                => 'रकाना',
+	'dt_xml_name'                 => 'नाव',
+	'dt_xml_title'                => 'शीर्षक',
+	'dt_xml_id'                   => 'क्रमांक (आयडी)',
+	'dt_xml_freetext'             => 'मुक्त मजकूर',
 );
 
 /** Dutch (Nederlands)

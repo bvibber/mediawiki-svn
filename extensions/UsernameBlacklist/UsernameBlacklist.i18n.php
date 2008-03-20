@@ -232,6 +232,14 @@ $messages['de-formal'] = array(
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigieren Sie diese vor dem Speichern:',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'blacklistedusername'     => 'Ονόματα χρηστών εγγεγραμμένα στα μαύρη λίστα',
+	'blacklistedusernametext' => 'Το όνομα χρήστη που επέλεξες ταιριάζει με την [[MediaWiki:Usernameblacklist|μαύρη λίστα των ονομάτων χρηστών]]. Παρακαλώ επέλεξε ένα άλλο όνομα.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

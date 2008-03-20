@@ -449,15 +449,30 @@ $messages['lb'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'duplicator'                       => 'पानाची प्रत बनवा',
+	'duplicator-desc'                  => 'सर्व संपादन इतिहास असणार्‍या दोन स्वतंत्र प्रती बनवा',
+	'duplicator-toolbox'               => 'या पानाची प्रत बनवा',
+	'duplicator-header'                => 'हे पान एखाद्या पानाची प्रत काढायला मदत करते, यामध्ये प्रत्येक इतिहासाची स्वतंत्र प्रत तयार होते. हे पानाचे फोर्किंग वगैरे करण्यासाठी उपयुक्त आहे.',
 	'duplicator-options'               => 'पर्याय',
 	'duplicator-source'                => 'स्रोत:',
 	'duplicator-dest'                  => 'लक्ष्य',
+	'duplicator-dotalk'                => 'चर्चा पानाची प्रत करा (जर गरज असेल तर)',
 	'duplicator-submit'                => 'हुबहू',
 	'duplicator-summary'               => '[[$1]]कडून नक्कल केली',
+	'duplicator-success'               => "big>'''[[$1]] ची [[$2]] ही प्रत तयार केलेली आहे.'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|आवृत्तीची|आवृत्त्यांची}} प्रत केली.',
+	'duplicator-success-talkcopied'    => 'चर्चा पान सुद्धा प्रत केले.',
 	'duplicator-success-talknotcopied' => 'चर्चापान नकलवले जाऊ शकले नाही.',
+	'duplicator-failed'                => 'या पानाची प्रत काढता आलेली नाही. अनोळखी त्रुटी आलेली आहे.',
+	'duplicator-source-invalid'        => 'कृपया स्रोताचे योग्य शीर्षक द्या.',
+	'duplicator-source-notexist'       => '[[$1]] अस्तित्वात नाही. कृपया अस्तित्वात असणार्‍या पानाचे शीर्षक द्या.',
+	'duplicator-dest-invalid'          => 'कृपया योग्य नवीन शीर्षक द्या.',
+	'duplicator-dest-exists'           => '[[$1]] अगोदरच अस्तित्वात आहे. कृपया नवीन शीर्षक अस्तित्वात नसलेले द्या.',
+	'duplicator-toomanyrevisions'      => '[[$1]] ला खूप जास्त ($2) आवृत्त्या आहेत व त्याची प्रत करता येत नाही. सध्याची मर्यादा $3 इतकी आहे.',
 );
 
 /** Low German (Plattdüütsch)
@@ -484,7 +499,7 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-submit'                => 'Kopiëren',
 	'duplicator-summary'               => 'Gekopieerd van [[$1]]',
 	'duplicator-success'               => "<big>'''[[$1]] is gekopieerd naar [[$2]].'''</big>",
-	'duplicator-success-revisions'     => '$1 versies gekopieerd.',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|versie|versies}} gekopieerd.',
 	'duplicator-success-talkcopied'    => 'De overlegpagina is ook gekopieerd.',
 	'duplicator-success-talknotcopied' => 'De overlegpagina kon niet gekopieerd worden.',
 	'duplicator-failed'                => 'De pagina kon niet gekopieerd worden. Er is een onbekende fout opgetreden.',

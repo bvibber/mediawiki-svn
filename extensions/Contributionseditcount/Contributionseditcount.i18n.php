@@ -126,10 +126,12 @@ $messages['lo'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'contributionseditcount' => 'या संपादकाची $1 संपादने आहेत.',
+	'contributionseditcount'      => 'या संपादकाची $1 संपादने आहेत.',
+	'contributionseditcount-desc' => '[[Special:Contributions]] वर संपादन संख्या दर्शविते',
 );
 
 /** Dutch (Nederlands)

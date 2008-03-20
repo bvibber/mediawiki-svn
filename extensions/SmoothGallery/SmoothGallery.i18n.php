@@ -131,8 +131,11 @@ $messages['nl'] = array(
 	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
 	'smoothgallery-error'               => '<b>SmoothGallery fout:</b> ',
 	'smoothgallery-gallery-not-found'   => 'De gevraagde galerij bestaat niet.',
-	'smoothgallery-not-found'           => 'Er zijn geen afbeeldingen opgenomen in een galerij. Voeg alstublieft tenminste één afbeelding toe.',
-	'smoothgallery-no-images'           => 'Er zijn geen afbeeldingen aangetroffen in deze galerij. Zorg ervoor dat alle afbeeldingen bestaan. De volgende afbeeldingen zijn niet aangetroffen: $1',
+	'smoothgallery-not-found'           => 'Er zijn geen afbeeldingen opgenomen in een galerij.
+Voeg alstublieft tenminste één afbeelding toe.',
+	'smoothgallery-no-images'           => 'Er zijn geen afbeeldingen aangetroffen in deze galerij.
+Zorg ervoor dat alle afbeeldingen bestaan.
+De volgende afbeeldingen zijn niet aangetroffen: $1',
 	'smoothgallery-invalid-images'      => 'De volgende aangevraagde afbeeldingen hadden een ongeldig type: $1',
 	'smoothgallery-unexpected-error'    => 'Er is een onverwachte fout opgetreden. Dien alstublieft een foutrapport in.',
 	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',

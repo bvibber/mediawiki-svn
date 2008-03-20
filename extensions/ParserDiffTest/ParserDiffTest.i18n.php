@@ -164,6 +164,14 @@ $messages['de'] = array(
 	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'pdtest_ok'   => 'Εντάξει',
+	'pdtest_diff' => 'Διαφορές',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

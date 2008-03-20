@@ -769,10 +769,14 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  * @author MF-Warburg
  */
 $messages['el'] = array(
+	'boardvote'             => 'Εκλογές της Wikimedia Επιτροπής των Εμπίστων',
+	'boardvote-desc'        => '[[meta:Board elections|Εκλογή της Wikimedia επιτροπής των εμπίστων]]',
 	'boardvote_novotes'     => 'Κανείς δεν έχει ψηφίσει ακόμη.',
+	'boardvote_time'        => 'Ώρα',
 	'boardvote_user'        => 'Χρήστης',
 	'boardvote_edits'       => 'Επεξεργασίες',
 	'boardvote_days'        => 'Ημέρες',
@@ -781,7 +785,9 @@ $messages['el'] = array(
 	'boardvote_dumplink'    => 'Πάτησε εδώ',
 	'boardvote_submit'      => 'Εντάξει',
 	'boardvote_notstarted'  => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
+	'boardvote_edits_many'  => 'πολλές',
 	'boardvote_welcome'     => "Καλώς ήλθατε '''$1'''!",
+	'go_to_board_vote'      => 'Εκλογές Επιτροπής Wikimedia 2007',
 	'boardvote_redirecting' => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
 
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
@@ -840,11 +846,21 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 	'boardvote_strike'       => 'Trastreku',
 	'boardvote_unstrike'     => 'Maltrastreku',
 	'boardvote_needadmin'    => 'Nur balotadministrantoj povas fari tiun agon.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Baloto por la Administra Konsilantaro de Wikimedia</a>: Baloto malfermita ĝis la 12-a de julio.',
 	'boardvote_notstarted'   => 'Balotado ne jam komenciĝis',
+	'boardvote_closed'       => 'La Balotado estas ŝlosita. Vidu la [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/eo rezultojn].',
 	'boardvote_edits_many'   => 'multaj',
+	'group-boardvote'        => 'Balotadministrantoj',
+	'group-boardvote-member' => 'Balotadministranto',
+	'grouppage-boardvote'    => '{{ns:project}}:Balotadministranto',
 	'boardvote_blocked'      => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
 	'boardvote_welcome'      => "Bonvenon '''$1'''!",
 	'go_to_board_vote'       => 'Baloto de Wikimedia Administrantaro',
+	'boardvote_redirecting'  => 'Por pli bona sekureco kaj travidebleco, ni konduktas la voĉdonadon ĉe ekstera sendepende kontrolita servilo. 
+
+Vi estos alidirektita al ĉi servilo en 20 sekundoj. [$1 Klaku ĉi tien] iri tie nun. 
+
+Sekureca averto pri nevalida atesto eble estos montrata.',
 );
 
 /** Spanish (Español)
@@ -2587,29 +2603,21 @@ $messages['nl'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Uitgebrachte stemmen bekijken]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
-	'boardvote_intro'        => '
-<p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees. We
-kiezen twee personen die de gebruikersgemeenschap vertegenwoordigen in de
-verschillden Wikimedia-projecten. Ze bepalen mede de toekomstige richting
-van Wikimedia-projecten, individueel en als groep, en behartigen <em>uw</em>
-belangen en zorgen bij de Board of Trustees. Ze beslissen ook over hoe
-inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt
-besteed.</p>
+	'boardvote_intro'        => '<p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees.
+We kiezen twee personen die de gebruikersgemeenschap vertegenwoordigen in de verschillende Wikimedia-projecten.
+Ze bepalen mede de toekomstige richting van Wikimedia-projecten, individueel en als groep, en behartigen <em>uw</em> belangen en zorgen bij de Board of Trustees.
+Ze beslissen ook over hoe inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt besteed.</p>
 
-<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig
-voordat u stemt. Iedere kandidaat is een gewaardeerde gebruiker die
-aanzielijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van
-uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden
-van menselijke kennis.</p>
+<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig voordat u stemt.
+Iedere kandidaat is een gewaardeerde gebruiker die aanzielijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden van menselijke kennis.</p>
 
-<p>U mag voor zoveel kandidaten stemmen als u wilt. De kandidaat met de meeste
-stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende
-positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
+<p>U mag op zoveel kandidaten stemmen als u wilt.
+De kandidaat met de meeste stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende positie.
+In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
 
 <p>Meer informatie:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Bestuursverkiezing FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidaten</a></li></ul>
-',
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidaten</a></li></ul>',
 	'boardvote_intro_change' => '<p>U hebt al gestemd.
 U kunt uw stem wijzigen via het onderstaande formulier.
 Vink alstublieft de vakjes aan naast iedere kandidaat die u steunt aan.</p>',
@@ -3789,6 +3797,19 @@ $messages['tr'] = array(
  */
 $messages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'boardvote'              => 'Вибори до Ради повірених фонду «Вікімедіа»',
+	'boardvote-desc'         => '[[meta:Board elections|Вибори до Ради повірених Вікімедіа]]',
+	'boardvote_time'         => 'Час',
+	'boardvote_user'         => 'Користувач',
+	'boardvote_edits'        => 'Кількість редагувань',
+	'group-boardvote'        => 'Члени виборчкому',
+	'group-boardvote-member' => 'Член виборчкому',
 );
 
 /** Vietnamese (Tiếng Việt)

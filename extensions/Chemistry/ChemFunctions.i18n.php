@@ -360,6 +360,24 @@ $messages['lb'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, Feeler bei der Saisie!',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'chemicalsources'                  => 'रासायनिक स्रोत',
+	'chemicalsource-desc'              => 'रासायनिक सूत्रांसाठीची <nowiki><chemform></nowiki> ही खूण वाढवितो',
+	'chemFunctions_ListPage'           => 'रासायनिक स्रोत',
+	'chemFunctions_DataList'           => 'खाली तुम्ही शोधत असलेल्या रासायनिक पदार्थाची माहिती देणार्‍या संकेतस्थळांचे दुवे आहेत.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">एन‍आयएसटी वरील संयुग $MIXCASनाव सूत्र</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">ऑक्सफर्ड युनिव्हर्सिटीवरील एमएसडीएस (शोध घेता येत नाही)</a><br />',
+	'chemFunctions_CAS'                => 'कॅस (CAS) क्रमांक',
+	'chemFunctions_ATCCode'            => 'एटीसीकोड',
+	'chemFunctions_ECNumber'           => 'इसीक्रमांक',
+	'chemFunctions_Formula'            => 'सूत्र',
+	'chemFunctions_Name'               => 'आययूपीएसी नाव',
+	'chemFunctions_ChemFormInputError' => 'Chemform: इनपुट त्रुटी!',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -36,12 +36,14 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Meno25
  */
 $messages['ar'] = array(
-	'invite-logpage'                => 'سجل الدعوات',
-	'invitations-feature-pagetitle' => 'إدارة الدعوات - $1',
-	'invitations-inviteform-title'  => 'ادعي مستخدم ليستخدم $1',
-	'invitations-inviteform-submit' => 'ادعي',
+	'invite-logpage'                  => 'سجل الدعوات',
+	'invitations-feature-pagetitle'   => 'إدارة الدعوات - $1',
+	'invitations-inviteform-title'    => 'ادعي مستخدم ليستخدم $1',
+	'invitations-inviteform-username' => 'المستخدم لتتم دعوته',
+	'invitations-inviteform-submit'   => 'ادعي',
 );
 
 /** Bulgarian (Български)
@@ -443,6 +445,15 @@ $messages['stq'] = array(
 	'invitations-error-baduser'             => 'Dät lät, as wan die anroate Benutser nit bestoant.',
 	'invitations-error-alreadyinvited'      => 'Die anroate Benutser häd al Tougoang tou disse Softwarefunktion!',
 	'invitations-invite-success'            => 'Du hääst mäd Ärfoulch $1 tou disse Softwarefunktion ienleeden!',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'invite-logpage'     => 'Invitationslogg',
+	'invite-logpagetext' => 'Detta är en logg över vilka användare som har inviterat varandra till att använda diverse mjukvarefunktioner.',
+	'invite-logentry'    => 'inviterade $1 till att använda funktionen <i>$2</i>',
 );
 
 /** Telugu (తెలుగు)

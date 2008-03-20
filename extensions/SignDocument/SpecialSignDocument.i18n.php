@@ -122,6 +122,7 @@ $messages['ang'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'signdocument'                    => 'توقيع الوثيقة',
@@ -147,7 +148,9 @@ $messages['ar'] = array(
 	'sign-list-hidebday'              => 'لا تعرض العمر',
 	'sign-list-hideemail'             => 'لا تعرض البريد الإلكتروني',
 	'sign-submit'                     => 'توقيع الوثيقة',
-	'sign-information'                => '<div class="noarticletext">شكرا لك لقضائك وقتا في قراءة هذه الوثيقة. لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة." من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك. لاحظ أن [[wikipedia:IP address|عنوان الأيبي]] الخاص بك و other معلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية. بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها. لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع. <br /><br /> $1',
+	'sign-information'                => '<div class="noarticletext">شكرا لك لقضائك وقتا في قراءة هذه الوثيقة. لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة." من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك. لاحظ أن عنوان الأيبي الخاص بك و other معلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية. بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها. لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع.</div>
+
+$1',
 	'sig-success'                     => 'لقد وقعت الوثيقة بنجاح.',
 	'sign-view-selectfields'          => '<b>الحقول للعرض:</b>',
 	'sign-viewfield-entryid'          => 'رقم المدخلة',
@@ -418,6 +421,7 @@ $1',
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Siebrand
  */
 $messages['gl'] = array(
 	'signdocument'                    => 'Asine o Documento',
@@ -443,7 +447,9 @@ $messages['gl'] = array(
 	'sign-list-hidebday'              => 'Non listar a idade',
 	'sign-list-hideemail'             => 'Non listar o enderezo de correo electrónico',
 	'sign-submit'                     => 'Asinar o documento',
-	'sign-information'                => '<div class="noarticletext">Grazas por botar un tempo a ler este documento. Se está de acordo con el, indique o seu apoio enchendo os campos requiridos de embaixo e prema en "Asinar Documento". Asegúrese de que a súa información persoal é correcta e de que ten maneira de ser contactado para verificar a súa identidade. Observe que o seu [[wikipedia:IP address|enderezo IP]] e outra información identificativa serán gardados con este formulario e usados polos moderadores para eliminar sinaturas duplicadas e confirmar que a súa información persoal é correcta. Dado que o uso de proxies abertos e que permitan o anonimato dificulta a nosa capacidade de realizar esta tarefa, as sinaturas desde eses proxies probabelmente non se teñan en conta. Se está conectado neste momento a través dun servidor proxy, desconéctese del e use unha conexión normal ao asinar. <br /><br /> $1',
+	'sign-information'                => '<div class="noarticletext">Grazas por botar un tempo a ler este documento. Se está de acordo con el, indique o seu apoio enchendo os campos requiridos de embaixo e prema en "Asinar Documento". Asegúrese de que a súa información persoal é correcta e de que ten maneira de ser contactado para verificar a súa identidade. Observe que o seu enderezo IP e outra información identificativa serán gardados con este formulario e usados polos moderadores para eliminar sinaturas duplicadas e confirmar que a súa información persoal é correcta. Dado que o uso de proxies abertos e que permitan o anonimato dificulta a nosa capacidade de realizar esta tarefa, as sinaturas desde eses proxies probabelmente non se teñan en conta. Se está conectado neste momento a través dun servidor proxy, desconéctese del e use unha conexión normal ao asinar.</div>
+
+$1',
 	'sig-success'                     => 'Asinou o documento sen problemas.',
 	'sign-view-selectfields'          => '<b>Campos a mostrar:</b>',
 	'sign-viewfield-entryid'          => 'ID da entrada',
@@ -503,6 +509,7 @@ $messages['gl'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
 	'signdocument'                    => 'Dokument podpisać',
@@ -528,7 +535,9 @@ $messages['hsb'] = array(
 	'sign-list-hidebday'              => 'Njenalistuj starobu',
 	'sign-list-hideemail'             => 'Njenalistuj e-mejlowu adresu',
 	'sign-submit'                     => 'Dokument podpisać',
-	'sign-information'                => '<div class="noarticletext">Dźakujemy so, zo sej bjerješ čas, zo by tutón dokument přečitał. Jeli sy z nim přezjedny, wupjelń trěbne pola a klikń na "Dokument podpisać", zo by swoje podpěru pokazał. Prošu zawěsć sej, zo twoje wosobinske informacije su korektne a podaj móžnosć, z kotrejž móžemy će skontaktować, zo bychmy twoju identitu přepruwowali. Wobkedźbuj, zo twoja [[Wikipedija:IP-adresa|IP-adresa]] a druhe identifikowace informacije budu so z tutym formularom registrować a wot moderatorow wužiwać, zo bychu dwójne podpisy wotstronili a korektnosć twojich wosobinskich informacijow potwjerdźili. Dokelž wotewrjene a anonymizowace proksy wobmjezuja našu kmanosć tutón nadawk wuwjesć, njebudu so podpisy z tajkich proksy najskerje ličić. Jeli sy tuchwilu přez proksy-serwer zwjazany, rozdźěl tutón zwjazk a wutwar standardny zwjazk za podpisowanje. <br /><br /> $1',
+	'sign-information'                => '<div class="noarticletext">Dźakujemy so, zo sej bjerješ čas, zo by tutón dokument přečitał. Jeli sy z nim přezjedny, wupjelń trěbne pola a klikń na "Dokument podpisać", zo by swoje podpěru pokazał. Prošu zawěsć sej, zo twoje wosobinske informacije su korektne a podaj móžnosć, z kotrejž móžemy će skontaktować, zo bychmy twoju identitu přepruwowali. Wobkedźbuj, zo twoja IP-adresa a druhe identifikowace informacije budu so z tutym formularom registrować a wot moderatorow wužiwać, zo bychu dwójne podpisy wotstronili a korektnosć twojich wosobinskich informacijow potwjerdźili. Dokelž wotewrjene a anonymizowace proksy wobmjezuja našu kmanosć tutón nadawk wuwjesć, njebudu so podpisy z tajkich proksy najskerje ličić. Jeli sy tuchwilu přez proksy-serwer zwjazany, rozdźěl tutón zwjazk a wutwar standardny zwjazk za podpisowanje.</div>
+
+$1',
 	'sig-success'                     => 'Sy dokument wuspěšnje podpisał.',
 	'sign-view-selectfields'          => '<b>Pola, kotrež maja so zwobraznić:</b>',
 	'sign-viewfield-entryid'          => 'ID zapiska',
@@ -719,7 +728,15 @@ Lees alstublieft het hele document en als u het wilt steunen vul dan alstublieft
 	'sign-list-hidebday'              => 'Verberg leeftijd',
 	'sign-list-hideemail'             => 'Verberg e-mailadres',
 	'sign-submit'                     => 'Document ondertekenen',
-	'sign-information'                => '<div class="noarticletext">Dank u wel voor het nemen van de tijd om dit document door te lezen. Als u ermee instemt, geef uw steun dan alstublieft aan door hieronder de benodigde velden in te vullen en daar te klikken op "Document ondertekenen." Zorg er alstublieft voor dat uw persoonlijke informatie correct is en dat we op een of andre manier contact met u kunnen opnemen. om uw indentiteit te bevestigen. Uw [[wikipedia:IP address|IP-adres]] en andere identificerende informatie die via dit formulier woren opgeslagen, worden gebruikt voor beheerders om dubbele ondertekeningen te verwijderen en om de juistheid van uw persoonlijke informatie te toetsen. Omdat het gebruik van open en anonimiserende proxy\'s voorkomt dat deze taak uitgevoerd kan worden, worden ondertekeningen via deze wegen waarschijnlij niet meegeteld. Als u op dit moment verbonden bent via een proxyserver, maak dan voor het ondertekenen een directe verbinding. <br /><br /> $1',
+	'sign-information'                => '<div class="noarticletext">Dank u wel voor het nemen van de tijd om dit document door te lezen.
+Als u ermee instemt, geef uw steun dan alstublieft aan door hieronder de benodigde velden in te vullen en daar te klikken op "Document ondertekenen."
+Zorg er alstublieft voor dat uw persoonlijke informatie correct is en dat we op een of andere manier contact met u kunnen opnemen.
+om uw identiteit te bevestigen.
+Uw IP-adres en andere identificerende informatie die via dit formulier woren opgeslagen, worden gebruikt voor beheerders om dubbele ondertekeningen te verwijderen en om de juistheid van uw persoonlijke informatie te toetsen.
+Omdat het gebruik van open en anonimiserende proxy\'s voorkomt dat deze taak uitgevoerd kan worden, worden ondertekeningen via deze wegen waarschijnlijk niet meegeteld.
+Als u op dit moment verbonden bent via een proxyserver, maak dan voor het ondertekenen een directe verbinding.</div>
+
+$1',
 	'sig-success'                     => 'U hebt het document succesvol ondertekend.',
 	'sign-view-selectfields'          => '<b>Weer te geven velden:</b>',
 	'sign-viewfield-entryid'          => 'ID-nummer',
@@ -777,7 +794,7 @@ Lees alstublieft het hele document en als u het wilt steunen vul dan alstublieft
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Siebrand
  */
@@ -805,7 +822,9 @@ $messages['no'] = array(
 	'sign-list-hidebday'              => 'Ikke list opp alder',
 	'sign-list-hideemail'             => 'Ikke list opp e-post',
 	'sign-submit'                     => 'Signer dokumentet',
-	'sign-information'                => '<div class="noarticletext">Takk for at du har tatt deg tiden til å lese gjennom dokumentet. Om du er enig med det, vis din støtte ved å fylle inn de nødvendige feltene nedenfor og klikke «Signer dokumentet». Forsikre deg om at personlig informasjon er korrekt, og at vi har en måte å kontakte deg på for å bekrefte din identitet. Merk at din [[Project:IP address|IP-adresse]] og annen identifiserbar informasjon vil bli brukt av moderatorer for å eliminere duplikatsignaturer og bekrefte korrektheten av din personlige informasjon. Siden bruken av åpne og anonymiserende proxyer hindrer vår evne til å gjøre dette, vil signaturer fra slike proxyer trolig ikke telles. Om du er tilkoblet via en proxytjener, koble fra denne og bruk en vanlig tilkobling når du signerer.<br /><br />$1',
+	'sign-information'                => '<div class="noarticletext">Takk for at du har tatt deg tiden til å lese gjennom dokumentet. Om du er enig med det, vis din støtte ved å fylle inn de nødvendige feltene nedenfor og klikke «Signer dokumentet». Forsikre deg om at personlig informasjon er korrekt, og at vi har en måte å kontakte deg på for å bekrefte din identitet. Merk at din IP-adresse og annen identifiserbar informasjon vil bli brukt av moderatorer for å eliminere duplikatsignaturer og bekrefte korrektheten av din personlige informasjon. Siden bruken av åpne og anonymiserende proxyer hindrer vår evne til å gjøre dette, vil signaturer fra slike proxyer trolig ikke telles. Om du er tilkoblet via en proxytjener, koble fra denne og bruk en vanlig tilkobling når du signerer.</div>
+
+$1',
 	'sig-success'                     => 'Du har signert dokumentet.',
 	'sign-view-selectfields'          => '<b>Felter som vises:</b>',
 	'sign-viewfield-entryid'          => 'Innskrifts-ID',
@@ -879,6 +898,7 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'signdocument'                    => 'Autentificar lo document',
@@ -904,7 +924,9 @@ $messages['oc'] = array(
 	'sign-list-hidebday'              => "Listar pas l'edat",
 	'sign-list-hideemail'             => "Listar pas l'adreça de corrièr electronic",
 	'sign-submit'                     => 'Autentificar lo document',
-	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çaijós e en clicant « Autentificar document ». Mercés de verificar que vòstras informacions personalas son exactas e qu'avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras informacions que vos pòdon identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las informacions picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div> \$1",
+	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çaijós e en clicant « Autentificar document ». Mercés de verificar que vòstras informacions personalas son exactas e qu'avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras informacions que vos pòdon identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las informacions picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div>
+
+\$1",
 	'sig-success'                     => 'Avètz autentificat lo document.',
 	'sign-view-selectfields'          => "'''Camps d'afichar :'''",
 	'sign-viewfield-entryid'          => 'ID de la dintrada',
@@ -1024,10 +1046,11 @@ $messages['pms'] = array(
 	'sign-submit'                     => "Ch'a-i daga 'n colp ambelessì për firmé",
 	'sign-information'                => "<div class=\"noarticletext\">Motobin mersì për avej dovrà sò temp a lese ës document-sì. S'a l'é d'acòrdi con lòn ch'a-i é scrit për piasì ch'a lo disa ën butand sò dat personaj e dand-ie un colp ansima al boton dla firma.
 
-Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa identità. Ch'a ten-a present che soa [[wikipedia:IP address|adrëssa IP]] e dj'àotre anformassion ansima soa identità a resteran registrà quand a firma e saran dovrà da j'aministrator për eliminé le firme dobie e confermé che ij dat personaj a sio giust.
+Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa identità. Ch'a ten-a present che soa adrëssa IP e dj'àotre anformassion ansima soa identità a resteran registrà quand a firma e saran dovrà da j'aministrator për eliminé le firme dobie e confermé che ij dat personaj a sio giust.
 
-'''Nòta''': për via che ën passand për ij '''proxy duvèrt''' (ch'a fan ëvnì anònima la gent), un an permëtt nen da fé sossì, le firme ch'a rivo ën passand për dij canaj parej as peulo nen contesse. Se ant ës moment-sì chiel/chila a l'é tacà a 'n proxy, për piasì, '''për firmé''' ch'as dëstaca e '''ch'a dòvra na conession normal'''. <br />\$1
-</div>",
+'''Nòta''': për via che ën passand për ij '''proxy duvèrt''' (ch'a fan ëvnì anònima la gent), un an permëtt nen da fé sossì, le firme ch'a rivo ën passand për dij canaj parej as peulo nen contesse. Se ant ës moment-sì chiel/chila a l'é tacà a 'n proxy, për piasì, '''për firmé''' ch'as dëstaca e '''ch'a dòvra na conession normal'''.</div>
+
+\$1",
 	'sig-success'                     => "La firma dël document a l'é andaita a bonfin.",
 	'sign-view-selectfields'          => '<b>Camp da smon-e:</b>',
 	'sign-viewfield-entryid'          => "Id dl'element",
@@ -1160,6 +1183,7 @@ $messages['rm'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'signdocument'                    => 'Podpísať dokument',
@@ -1185,7 +1209,9 @@ $messages['sk'] = array(
 	'sign-list-hidebday'              => 'Neuvádzať vek',
 	'sign-list-hideemail'             => 'Neuvádzať email',
 	'sign-submit'                     => 'Podpísať dokument',
-	'sign-information'                => '<div class="noarticletext">Ďakujeme, že ste si našli čas prečítať tento dokument. Ak s jeho obsahom súhlasíte, prosím vyjadrite svoju podporu tým, že nižšie vyplníte požadované polia a kliknete na „Podpísať dokument“. Prosím, uistite sa, že vaše osobné údaje sú správne uvedené a že ste nám poskytli spôsob, ako vás kontaktovať pre overenie vašej identity. Majte na pamäti, že vaša [[wikipedia:sk:IP adresa|IP adresa]] a iné identifikačné informáce budú zaznamenané s týmto formulárom a moderátori ich použijú na elimináciu dvojitých podpisov a potvrdenie správnosti vašich osobných údajov. Keďže používanie otvorených a anonymných proxy serverov bráni našej schopnosti vykonávať túto úlohu, podpisy z takýcto proxy pravdepodobne nebudú započítané. Ak ste momentálne pripojený prostredníctvom proxy, odpojte sa prosím a použite pri podpisovaní priame pripojenie.. <br /><br /> $1',
+	'sign-information'                => '<div class="noarticletext">Ďakujeme, že ste si našli čas prečítať tento dokument. Ak s jeho obsahom súhlasíte, prosím vyjadrite svoju podporu tým, že nižšie vyplníte požadované polia a kliknete na „Podpísať dokument“. Prosím, uistite sa, že vaše osobné údaje sú správne uvedené a že ste nám poskytli spôsob, ako vás kontaktovať pre overenie vašej identity. Majte na pamäti, že vaša IP adresa a iné identifikačné informáce budú zaznamenané s týmto formulárom a moderátori ich použijú na elimináciu dvojitých podpisov a potvrdenie správnosti vašich osobných údajov. Keďže používanie otvorených a anonymných proxy serverov bráni našej schopnosti vykonávať túto úlohu, podpisy z takýcto proxy pravdepodobne nebudú započítané. Ak ste momentálne pripojený prostredníctvom proxy, odpojte sa prosím a použite pri podpisovaní priame pripojenie.</div>
+
+$1',
 	'sig-success'                     => 'Úspešne ste podpísali dokument',
 	'sign-view-selectfields'          => '<b>Zobrazované polia:</b>',
 	'sign-viewfield-entryid'          => 'ID záznamu',

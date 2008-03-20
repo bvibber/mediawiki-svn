@@ -100,6 +100,17 @@ $messages['lb'] = array(
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'categoryintersection'               => 'वर्ग चौक (intersection)',
+	'categoryintersection-desc'          => 'एखाद्या पानांतर्गत असणार्‍या [[Special:CategoryIntersection|वर्ग आंतरदुव्यांच्या]] हॅश किंमतींची सारणी सांभाळतो.',
+	'categoryintersection-doit'          => 'या सर्व वर्गांत असणार्‍या पानांची यादी दाखवा',
+	'categoryintersection-maxcategories' => 'जास्तीत जास्त क्रॉस होणार्‍या वर्गांची संख्या $1 इतकी मर्यादित आहे.',
+	'categoryintersection-results'       => 'शोधामध्ये $1 निकाल {{PLURAL:$1|सापडला|सापडले}}.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

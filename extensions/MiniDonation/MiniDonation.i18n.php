@@ -123,8 +123,11 @@ $messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'donationform-submit' => 'Doneer via PayPal',
+	'donationform-submit' => 'Via PayPal doneren',
 );
 
 $messages['no'] = array(

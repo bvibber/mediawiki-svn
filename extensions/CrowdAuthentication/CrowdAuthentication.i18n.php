@@ -51,6 +51,13 @@ $messages['ja'] = array(
 	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड साठीचे प्रमाणिकरण प्लग-इन',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

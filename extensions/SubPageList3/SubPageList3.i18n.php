@@ -143,6 +143,15 @@ $messages['sk'] = array(
 	'spl3_nosubpages' => '$1 nemá zobraziteľné podstránky.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'spl3-desc'       => 'Skapar automatiskt en lista över undersidorna till en sida av användning av <code><nowiki><splist /></nowiki></code>-taggen',
+	'spl3_debug'      => 'Okänt värde för alternativ $1.',
+	'spl3_nosubpages' => '$1 har inga undersidor att visa.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

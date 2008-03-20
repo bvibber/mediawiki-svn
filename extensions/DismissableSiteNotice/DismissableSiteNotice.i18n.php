@@ -94,8 +94,13 @@ $messages['de'] = array(
 	'sitenotice-desc'  => 'Erlaubt Benutzern das Schließen der Sitenotice',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ * @author Consta
+ */
 $messages['el'] = array(
 	'sitenotice_close' => 'απομάκρυνση',
+	'sitenotice-desc'  => 'Επιτρέπει στους χρήστες να απομεκρύνουν τις σημειώσεις της ιστοσελίδας',
 );
 
 /** Esperanto (Esperanto)

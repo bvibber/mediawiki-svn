@@ -162,10 +162,12 @@ Kan gebroek waere es [[Special:AdvancedRandom/Template:Featured/Talk]] om 'n wil
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'advancedrandom' => 'प्रगत अविशीष्ट',
+	'advancedrandom'      => 'प्रगत अविशीष्ट',
+	'advancedrandom-desc' => 'असे एक अविशिष्ट पान मिळवा की ज्याचे चर्चा अथवा विषयपान दिलेल्या पानाशी जोडलेले आहे, जसे की अविशिष्ट विशेष लेख मिळविण्यासाठी [[Special:AdvancedRandom/Template:Featured/Talk]] हे वापरता येईल अथवा अविशिष्ट जीएफडीएल (GFDL) संचिका मिळविण्यासाठी [[Special:AdvancedRandom/Template:GFDL/Image]] हे वापरता येईल',
 );
 
 /** Dutch (Nederlands)

@@ -56,6 +56,13 @@ $messages['lb'] = array(
 	'editown-desc' => 'Benotzer ouni "editall"-Rechter kënnen nëmme Säiten ànneren déi si ugeluecht hunn',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'editown-desc' => 'ज्या सदस्यांना सर्वसंपादन अधिकार नाहीत ते फक्त त्यांनी तयार केलेली पानेच संपादित करू शकतात',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -132,18 +132,19 @@ $messages['lb'] = array(
 	'profiling-no-data'      => 'Näischt fonnt vun dem wat Dir gesicht hutt.',
 );
 
-/* nld / Dutch (Siebrand Mazeland) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'profiling' => 'Profilinggegevens',
-	'profiling-process' => 'Verwerk string:',
-	'profiling-wildcard' => 'Gebruik wildcard',
-	'profiling-ok' => 'OK',
-	'profiling-data' => 'Profilinggegevens voor `$1`',
-	'profiling-data-process' => 'Verwerk',
-	'profiling-data-count' => 'Aantal',
-	'profiling-data-time' => 'Tijd (tot)',
+	'profiling'              => 'Profilinggegevens',
+	'profiling-process'      => 'Verwerk string:',
+	'profiling-wildcard'     => 'Gebruik wildcard',
+	'profiling-data'         => 'Profilinggegevens voor `$1`',
+	'profiling-data-process' => 'Verwerken',
+	'profiling-data-count'   => 'Aantal',
+	'profiling-data-time'    => 'Tijd (tot)',
 	'profiling-data-average' => 'Tijd (gem)',
-	'profiling-no-data' => 'Geen gegevens gevonden.',
+	'profiling-no-data'      => 'Geen gegevens gevonden.',
 );
 
 $messages['no'] = array(

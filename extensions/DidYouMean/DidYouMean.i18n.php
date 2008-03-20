@@ -60,6 +60,13 @@ $messages['lb'] = array(
 	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'didyoumean-desc' => 'शीर्षकात "सारखेपणा" असणार्‍या पानांचे दुवे देतो',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

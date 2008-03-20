@@ -294,21 +294,39 @@ $messages['de-formal'] = array(
 		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ * @author Consta
+ */
 $messages['el'] = array(
-	'ogg-pause' => 'Παύση',
-	'ogg-more' => 'Περισσότερα...',
-	'ogg-download' => 'Κατεβάστε το αρχείο',
-	'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
+	'ogg-play'              => 'Αναπαραγωγή',
+	'ogg-pause'             => 'Παύση',
+	'ogg-stop'              => 'Διακοπή',
+	'ogg-play-video'        => 'Αναπαραγωγή βίντεο',
+	'ogg-play-sound'        => 'Αναπαραγωγή ήχου',
+	'ogg-player-thumbnail'  => 'Ακόμα μόνο εικόνα',
+	'ogg-player-soundthumb' => 'Κανένας αναπαραγωγέας',
+	'ogg-player-selected'   => '(επιλέχθηκε)',
+	'ogg-use-player'        => 'Χρησιμοποίησε αναπαραγωγέα:',
+	'ogg-more'              => 'Περισσότερα...',
+	'ogg-dismiss'           => 'Κλείσιμο',
+	'ogg-download'          => 'Κατεβάστε το αρχείο',
+	'ogg-desc-link'         => 'Σχετικά με αυτό τα αρχείο',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'ogg-short-audio'     => 'Ogg $1 sondosiero, $2',
+	'ogg-short-video'     => 'Ogg $1 videodosiero, $2',
+	'ogg-long-error'      => '(Nevalida ogg-dosiero: $1)',
+	'ogg-stop'            => 'Haltu',
 	'ogg-player-selected' => '(elektita)',
 	'ogg-more'            => 'Pli...',
 	'ogg-dismiss'         => 'Fermu',
 	'ogg-download'        => 'Alŝutu dosieron',
+	'ogg-desc-link'       => 'Pri ĉi tiu dosiero',
 );
 
 $messages['es'] = array(

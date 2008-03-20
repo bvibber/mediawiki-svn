@@ -337,6 +337,7 @@ $messages['ar'] = array(
 	'mv_adjust_ok_move'              => 'نجاح، يتم الضبط...',
 	'mv_start_desc'                  => 'وقت البداية',
 	'mv_end_desc'                    => 'وقت النهاية',
+	'mv_of'                          => 'ل',
 	'mediasearch'                    => 'بحث الميديا',
 	'mv_search_sel_t'                => 'اختر نوع البحث',
 	'mv_run_search'                  => 'تنفيذ البحث',
@@ -424,6 +425,14 @@ $messages['bg'] = array(
 	'mv_category'          => 'категория',
 	'mv_remove_filter'     => 'премахване на филтър',
 	'mv_match_text'        => '~  $1 съвпадения',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'mv_search_category' => 'Κατηγορία',
+	'mv_category'        => 'Κατηγορία',
 );
 
 /** Esperanto (Esperanto)

@@ -439,6 +439,11 @@ $messages['lt'] = array(
  */
 $messages['mr'] = array(
 	'asksql'          => 'SQL पृच्छा',
+	'asksql-desc'     => 'या [[Special:Asksql|विशेष पानावर]]च एसक्यूएल (SQL) पृच्छा विचारा',
+	'asksqltext'      => "डाटाबेसला थेट पृच्छा करण्यासाठी खालील अर्ज वापरा.
+स्ट्रींग लिटरल्सना delimit करण्यासाठी एकेरी अवतरणचिन्हे वापरा ('अशा प्रकारे').
+ही क्रिया करताना सर्व्हर्सवर प्रचंड ताण येऊ शकतो, त्यामुळे कृपया याचा वापर अतिशय
+कमी वेळा करा.",
 	'sqlislogged'     => 'सर्व पृच्छा नोंदल्या जातात याची कृपया नोंद घ्या.',
 	'sqlquery'        => 'पृच्छा लिहा',
 	'querybtn'        => 'पृच्छा पाठवा',
@@ -452,7 +457,7 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'asksql'          => 'SQL-zoekopdracht',
 	'asksql-desc'     => 'Voer SQL-zoekopdrachten uit via een [[Special:Asksql|speciale pagina]]',
-	'asksqltext'      => "Gebruik het onderstaande formulier om direct een query op de database te maken.
+	'asksqltext'      => "Gebruik het onderstaande formulier om direct een zoekopdracht op de database te maken.
 Gebruik apostrofs ('zo dus') als delimiter voor strings.
 Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaarzaam.",
 	'sqlislogged'     => 'Alle zoekopdrachten worden in een logboek opgeslagen.',
@@ -552,13 +557,14 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 );
 
 /** Russian (Русский)
+ * @author Ahonc
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
 	'asksql'          => 'SQL-запрос',
 	'asksql-desc'     => 'Выполнение SQL-запросов с помощью [[Special:Asksql|служебной страницы]]',
 	'asksqltext'      => "Данную форму можно использовать для прямых запросов к базе данных.
-Используйте одинарные кавычки для обозначения символьных последоветельностей ('вот так').
+Используйте одинарные кавычки для обозначения символьных последовательностей ('вот так').
 Запросы могут стать причиной значительной нагрузки на сервер, используйте данную функцию осторожно.",
 	'sqlislogged'     => 'Все запросы записываются в журнал.',
 	'sqlquery'        => 'Ввод запроса',
@@ -685,8 +691,13 @@ $messages['tg'] = array(
 $messages['uk'] = array(
 	'asksql'          => 'SQL-запит',
 	'asksql-desc'     => 'Виконання SQL-запитів за допомогою [[Special:Asksql|спеціальної сторінки]]',
+	'asksqltext'      => "Дану форму можна використовувати для прямих запитів до бази даних.
+Використовуйте одинарні лапки для позначення символьних послідовностей ('ось так').
+Запити можуть стати причиною значного навантаження на сервер, використовуйте цю форму обережно.",
+	'sqlislogged'     => 'Усі запити записуються до журналу.',
 	'sqlquery'        => 'Введення запиту',
 	'querybtn'        => 'Відправити запит',
+	'selectonly'      => 'Дозволені тільки записи на читання.',
 	'querysuccessful' => 'Запит виконано',
 );
 

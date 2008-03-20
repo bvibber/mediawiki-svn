@@ -199,8 +199,16 @@ $messages['ee'] = array(
 	'sitematrix-language' => 'Gbe',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ * @author Consta
+ */
 $messages['el'] = array(
-	'sitematrix-language' => 'Γλώσσα',
+	'sitematrix'           => 'Λίστα των Wikimedia βίκι',
+	'sitematrix-language'  => 'Γλώσσα',
+	'sitematrix-project'   => 'Όνομα εγχειρήματος, διαεγχειρηματικός (interproject) σύνδεσμος και διαγλωσσικός (interwiki) σύνδεσμος',
+	'sitematrix-others'    => 'Άλλα εγχειρήματα της Wikimedia',
+	'sitematrix-sitetotal' => 'Συνολικά',
 );
 
 /** Esperanto (Esperanto)

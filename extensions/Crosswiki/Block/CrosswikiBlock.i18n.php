@@ -206,6 +206,14 @@ Zurück zu:
 'crosswikiunblock-local'                => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'crosswikiblock-reason'   => 'Λόγος:',
+	'crosswikiunblock-reason' => 'Λόγος',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -500,6 +508,51 @@ Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir
 	'crosswikiblock-noreason'       => 'Kee Grond uginn.',
 	'crosswikiblock-alreadyblocked' => 'De Benotzer $3 ass scho gespaart.',
 	'crosswikiblock-noblock'        => 'Dëse Benotzer ass net gespaart.',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'crosswikiblock-desc'           => 'इतर विकिंवर [[Special:Crosswikiblock|विशेष पान]] वापरून सदस्य ब्लॉक करायची परवानगी देते',
+	'crosswikiblock'                => 'इतर विकिवर सदस्याला ब्लॉक करा',
+	'crosswikiblock-header'         => 'हे पान इतर विकिवर सदस्याला ब्लॉक करायची परवानगी देते.
+कृपया ही क्रिया करण्याची तुम्हाला परवानगी आहे तसेच तुम्ही करीत असलेली क्रिया नीतीला धरुन आहे याची खात्री करा.',
+	'crosswikiblock-target'         => 'आयपी अंकपत्ता किंवा सदस्यनाव तसेच कुठल्या विकिवर करायचे तो विकि:',
+	'crosswikiblock-expiry'         => 'रद्दीकरण:',
+	'crosswikiblock-reason'         => 'कारण:',
+	'crosswikiblock-submit'         => 'या सदस्याला ब्लॉक करा',
+	'crosswikiblock-anononly'       => 'फक्त अनामिक सदस्यांना ब्लॉक करा',
+	'crosswikiblock-nocreate'       => 'खाते उघडणी बंद करा',
+	'crosswikiblock-autoblock'      => 'या सदस्याचा आपोआप शेवटचा आयपी अंकपत्ता ब्लॉक करा, तसेच यानंतरच्या कुठल्याही आयपी वरुन संपादने करण्याचा प्रयत्न केल्यास ते अंकपत्ते सुद्धा ब्लॉक करा',
+	'crosswikiblock-noemail'        => 'सदस्याला इमेल पाठविण्यापासून रोखा',
+	'crosswikiunblock'              => 'इतर विकिंवर सदस्याचा ब्लॉक काढा',
+	'crosswikiunblock-header'       => 'हे पान इतर विकिंवर सदस्याचा ब्लॉक काढण्यासाठी वापरण्यात येते.
+कृपया या विकिवर ही क्रिया करण्याचे अधिकार तुम्हाला आहेत तसेच तुम्ही करीत असलेली क्रिया नीतीला धरुन आहे याची खात्री करा.',
+	'crosswikiunblock-user'         => 'सदस्यनाव, आयपी अंकपत्ता किंवा ब्लॉक क्रमांक तसेच कुठल्या विकिवर ब्लॉक काढायचा आहे:',
+	'crosswikiunblock-reason'       => 'कारण:',
+	'crosswikiunblock-submit'       => 'या सदस्याचा ब्लॉक काढा',
+	'crosswikiunblock-success'      => "'''$1''' चा ब्लॉक यशस्वीरित्या काढलेला आहे.
+
+परत जा:
+* [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'सदस्यनाव दिलेले नाही',
+	'crosswikiblock-local'          => 'स्थानिक ब्लॉक या ठिकाणी बदलता येत नाहीत. [[Special:Blockip]] चा वापर करा',
+	'crosswikiblock-dbnotfound'     => 'डाटाबेस $1 उपलब्ध नाही',
+	'crosswikiblock-noname'         => '"$1" हे योग्य सदस्यनाव नाही.',
+	'crosswikiblock-nouser'         => '"$3" नावाचा सदस्य सापडला नाही.',
+	'crosswikiblock-noexpiry'       => 'चुकीचे रद्दीकरण: $1.',
+	'crosswikiblock-noreason'       => 'कारण दिलेले नाही',
+	'crosswikiblock-notoken'        => 'चुकीची संपादन चावी.',
+	'crosswikiblock-alreadyblocked' => 'सदस्य $3 ला अगोदरच ब्लॉक केलेले आहे.',
+	'crosswikiblock-noblock'        => 'ह्या सदस्याला ब्लॉक केलेले नाही.',
+	'crosswikiblock-success'        => "सदस्य '''$3''' ला ब्लॉक केलेले आहे.
+
+परत जा:
+* [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'स्थानिक ब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist]] चा उपयोग करा',
 );
 
 /** Dutch (Nederlands)

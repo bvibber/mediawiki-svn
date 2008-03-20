@@ -46,6 +46,13 @@ $messages['ja'] = array(
 	'contributorsaddon-desc' => 'JavaScriptのonMouseOverを用いて、"主な投稿者"へのリンクをポップアップする',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'contributorsaddon-desc' => '"मुख्य योगदानकर्ता" दुव्यांवर माउस नेल्यानंतर येणार्‍या खिडकीसाठीची जावास्क्रीप्ट वाढविते',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

@@ -1105,7 +1105,9 @@ $messages['nl'] = array(
 $1
 
 Zoek naar $3 $9 $10',
-	'lucenefallback'        => 'Er is een storing in de wikizoekmachine. Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw of doorzoek de wiki via een externe zoekmachine:',
+	'lucenefallback'        => 'Er is een storing in de wikizoekmachine.
+Deze is waarschijnlijk tijdelijk van aard;
+probeer het over enige tijd opnieuw of doorzoek de wiki via een externe zoekmachine:',
 	'searchexactcase'       => 'Hoofdlettergevoelig zoeken',
 	'searchall'             => 'alle',
 	'searchincategory'      => 'binnen categorie',

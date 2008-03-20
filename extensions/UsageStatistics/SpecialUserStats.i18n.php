@@ -198,7 +198,10 @@ $messages['de'] =array(
  * @author Consta
  */
 $messages['el'] = array(
-	'usagestatisticstype' => 'Τύπος',
+	'usagestatisticstype'          => 'Τύπος',
+	'usagestatisticsintervalday'   => 'Ημέρα',
+	'usagestatisticsintervalweek'  => 'Εβδομάδα',
+	'usagestatisticsintervalmonth' => 'Μήνας',
 );
 
 /** Esperanto (Esperanto)

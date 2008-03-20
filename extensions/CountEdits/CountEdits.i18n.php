@@ -411,10 +411,20 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'countedits-warning' => "'''सावधान:''' ज्याप्रमाणे पुस्तकाच्या मुखपृष्ठावरून पुस्तकाचे मुल्यमापन करू नये. त्याप्रमाणे संपादन संख्येवरून संपादकाचे मुल्यमापन करू नये.",
+	'countedits'              => 'संपादने मोजा',
+	'countedits-desc'         => '[[Special:CountEdits|विशेष पान]] जे सदस्यांची संपादने मोजते व पहिल्या दहा सदस्यांची यादी दर्शविते',
+	'countedits-warning'      => "'''सावधान:''' ज्याप्रमाणे पुस्तकाच्या मुखपृष्ठावरून पुस्तकाचे मुल्यमापन करू नये. त्याप्रमाणे संपादन संख्येवरून संपादकाचे मुल्यमापन करू नये.",
+	'countedits-username'     => 'सदस्यनाव:',
+	'countedits-ok'           => 'सर्व ठीक',
+	'countedits-nosuchuser'   => '$1 नावाचा सदस्य अस्तित्वात नाही.',
+	'countedits-resultheader' => '$1 साठीचे निकाल',
+	'countedits-resulttext'   => '$1 ने $2 संपादने केलेली आहेत',
+	'countedits-mostactive'   => 'सर्वात जास्त कार्यशील सदस्य',
+	'countedits-nocontribs'   => 'या विकिवर योगदान केलेले नाही.',
 );
 
 $messages['nds'] = array(

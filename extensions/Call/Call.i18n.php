@@ -234,20 +234,47 @@ $messages['li'] = array(
 	'call' => 'Kalle',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'call'              => 'बोलवा (मागवा)',
+	'call-desc'         => 'एखाद्या साचा (अथवा पानाशी) जोडणारा व काही पॅरॅमीटर जुळल्यानंतरच वापरता येणारा दुवा तयार करते. हा दुवा ब्राउझरच्या कमांड लाईन अथवा विकि संज्ञांच्या माध्यमातून वापरता येतो.',
+	'call-text'         => "कॉल ही क्रिया करण्यासाठी एक विकि पान व त्याचे इतर पॅरॅमीटर अर्ग्युमेंटमध्ये दिलेले असणे
+आवश्यक आहे.<br /><br />
+उदाहरण १: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+उदाहरण २: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+उदाहरण ३: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+उदाहरण ४ (ब्राउझर URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
+
+<i>कॉल क्रिया</i> ते विशिष्ट पान मागवून दिलेले पॅरॅमीटर्स तपासून पाहील.<br />तुम्ही त्या पानाचे शीर्षक तसेच मजकूर पाहू शकता पण त्याचा 'प्रकार' विशेष पान असा राहील,,<br />म्हणजेच ते पान संपादित करता येणार नाही.<br />तुम्हाला दिसत असलेला मजकूर किती पॅरॅमीटर्स जुळले त्याप्रमाणे बदलू शकतो.<br /><br />
+<i>कॉल क्रिया</i> ही मीडियाविकीशी संलग्न असणारी ऍप्लीकेशन लिहिण्यासाठी उपयुक्त आहे..<br />उदाहरणासाठी पहा <a href='http://semeb.com/dpldemo/Template:Catlist'>डीपीएल जीयूआय</a> ..<br />
+काही अडचणी आल्यास आल्यास तुम्ही <b>Special:Call/DebuG</b> वापरून पाहू शकता",
+	'call-save'         => "या कॉल क्रियेचा निकाल ''$1'' या नावाच्या पानावर नोंदला जाईल.",
+	'call-save-success' => 'खालील मजकूर <big>[[$1]]</big> या पानावर जतन केलेला आहे.',
+	'call-save-failed'  => 'खालील मजकूर <big>[[$1]]</big> या पानावर जतन केलेला नाही, कारण ते पान अगोदरच अस्तित्वात आहे.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'call'              => 'Aanroepen',
-	'call-desc'         => 'Maak een hyperlink naar een sjabloon (of naar een normale wikipagina) met gebruik van parameters. Kan gebruikt worden in de adresregel van de browser of in wikitekst.',
-	'call-text'         => "De uitbreiding Aanroepen (Call) verwacht een wikipagina en optioneel parameters voor die pagina.<br /><br />
+	'call-desc'         => 'Maak een hyperlink naar een sjabloon (of naar een normale wikipagina) met gebruik van parameters.
+Kan gebruikt worden in de adresregel van de browser of in wikitekst.',
+	'call-text'         => "De uitbreiding Aanroepen (Call) verwacht een wikipagina en optioneel parameters voor die pagina.
+
 Voorbeeld 1: &nbsp; <tt>[[Special:Call/Mijn sjabloon,parm1=value1]]</tt><br />
 Voorbeeld 2: &nbsp; <tt>[[Special:Call/Overleg:Een overleg,parm1=value1]]</tt><br />
 Voorbeeld 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
-Voorbeeld 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
+Voorbeeld 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
 
-De <i>uitbreiding Aanroepen</i> roept de opgegeven pagina aan en geeft de parameters door.<br />U krijgt de inhoud van de aangeroepen pagina te zien en de naam, maar deze is van het 'type' speciale pagina, dat wil zeggen dat de pagina niet bewerkt kan worden.<br />De inhoud die u te zien krijgt kan verschillen, afhankelijk van de parameters die u hebt meegegeven.<br /><br />
-De <i>uitbreiding Aanroepen</i> kan behulpzaam zijn bij het bouwen van interactieve applicaties met MediaWiki. De <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> is daar een voorbeeld van.<br />
+De <i>uitbreiding Aanroepen</i> roept de opgegeven pagina aan en geeft de parameters door.<br />
+U krijgt de inhoud van de aangeroepen pagina te zien en de naam, maar deze is van het 'type' speciale pagina, dat wil zeggen dat de pagina niet bewerkt kan worden.<br />
+De inhoud die u te zien krijgt kan verschillen, afhankelijk van de parameters die u hebt meegegeven.
+
+De <i>uitbreiding Aanroepen</i> kan behulpzaam zijn bij het bouwen van interactieve applicaties met MediaWiki.
+De <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> is daar een voorbeeld van.<br />
 Bij problemen kunt u gebruik maken van <b>Special:Call/DebuG</b>",
 	'call-save'         => "De uitvoer van deze aanroep zou opgeslagen zijn in de pagina ''$1''.",
 	'call-save-success' => 'De volgende tekst is opgeslagen in pagina <big>[[$1]]</big>.',

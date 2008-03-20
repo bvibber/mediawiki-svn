@@ -56,6 +56,13 @@ $messages['lb'] = array(
 	'emailaddressimage-desc' => 'Setzt <tt>&lt;E-Mail&gt;</tt> derbäi fir eng E-Mailadress als Bild unzeweisen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'emailaddressimage-desc' => 'एखादा इमेल पत्ता चित्र म्हणून दर्शविण्यासाठी लागणारी <tt>&lt;email&gt;</tt> खूण वाढविते',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -200,6 +200,7 @@ $messages['eo'] = array(
 	'contributors-others-long' => 'Estas $1 aliaj konribuantoj al ĉi paĝo.',
 	'contributors-others'      => 'kaj $1 aliaj',
 	'contributors-badtitle'    => 'Nevalida titolo.',
+	'contributors-nosuchpage'  => 'La paĝo $1 ne ekzistas.',
 );
 
 $messages['ext'] = array(

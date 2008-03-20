@@ -140,6 +140,19 @@ $messages['lb'] = array(
 	'cspammer-log-page'      => 'Bemierkung Spammer Logbuch',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'commentspammer-save-blocked' => 'तुमचा आंतरजाल अंकपत्ता (IP) स्पॅमर असल्याचा संशय आहे, त्यामुळे पान जतन करण्यात आलेले नाही.
+हे टाळण्यासाठी [[Special:Userlogin|प्रवेश करा किंवा नवीन सदस्य नोंदणी करा]].',
+	'commentspammer-desc'         => 'डीएनएस ब्लॅकलिस्टवर असणार्‍या संशयित स्पॅमर्सची संपादने रद्द करते',
+	'commentspammer-log-msg'      => '[[:$2]] वर केलेली [[Special:Contributions/$1|$1]] ची संपादने',
+	'commentspammer-log-msg-info' => 'शेवटी $1 {{PLURAL:$1|दिवसापूर्वी|दिवसांपूर्वी}} स्पॅम केले, पातळी $2, व ऑफेन्स कोड $3 आहे. [http://www.projecthoneypot.org/search_ip.php?ip=$4 अधिक माहिती], किंवा [[Special:Blockip/$4|ब्लॉक करा]].',
+	'cspammerlogpagetext'         => 'ही सूची अश्या संपादनांची यादी आहे जी स्रोताच्या स्पॅमर स्थितीनुसार अडवली किंवा स्वीकारली गेलेली आहेत.',
+	'cspammer-log-page'           => 'स्पॅमर सूची शेरा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -307,9 +307,12 @@ $messages['de-formal'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'hiderevision-prompt'   => 'Αριθμός επανάληψης για αφαίρεση:',
 	'hiderevision-continue' => 'Συνέχεια',
+	'hiderevision-status'   => 'Επανάληψη $1: $2',
 	'oversight-view'        => 'λεπτομέρειες',
 );
 
@@ -317,6 +320,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-status'         => 'Revizio $1: $2',
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',

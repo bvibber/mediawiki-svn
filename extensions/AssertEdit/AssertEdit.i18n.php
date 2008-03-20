@@ -93,6 +93,15 @@ $messages['dsb'] = array(
 	'assert_edit_message' => 'Pódane twarźenje ($1) jo se njeraźiło.',
 );
 
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'assert_edit_title'   => 'Η διεκδίκηση απέτυχε',
+	'assert_edit_desc'    => 'Προσθέτει διεκδικήσεις επεξεργασιών για χρήση από τα μποτ',
+	'assert_edit_message' => 'Η συγκεκριμένη διεκδίκηση ($1) απέτυχε.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -379,10 +388,13 @@ $messages['tg'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Ahonc
  * @author AS
  */
 $messages['uk'] = array(
-	'assert_edit_desc' => 'Додає підтвердження для використання ботами',
+	'assert_edit_title'   => 'Твердження не виконується',
+	'assert_edit_desc'    => 'Додає підтвердження для використання ботами',
+	'assert_edit_message' => 'Зазначене твердження ($1) не виконується.',
 );
 
 /** Vietnamese (Tiếng Việt)

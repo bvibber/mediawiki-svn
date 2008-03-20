@@ -147,6 +147,15 @@ $messages['lb'] = array(
 	'categorystepper-end'   => '(Enn vun der Kategorie)',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'categorystepper-desc'  => 'एखादे पान ज्या वर्गांमध्ये आहे त्यांच्यातील सुचालन सुलभ होण्यासाठी अनुक्रमे मागील व पुढील वर्ग दाखविणारी "वर्ग सुचालन खिडकी" दर्शवितो',
+	'categorystepper-end'   => '(शेवटचा वर्ग)',
+	'categorystepper-start' => '(सुरवातीचा वर्ग)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

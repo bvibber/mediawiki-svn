@@ -306,9 +306,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'badimages'          => 'Κατάλογος κακών εικόνων',
+	'badimages-add-btn'  => 'Πρόσθεσε',
 	'badimages-added'    => '$1 έχει προστεθεί στη λίστα.',
 	'badimages-count'    => "Υπάρχουν '''$1''' εικόνες στον κατάλογο των κακών εικόνων.",
 	'badimages-name'     => 'Όνομα:',

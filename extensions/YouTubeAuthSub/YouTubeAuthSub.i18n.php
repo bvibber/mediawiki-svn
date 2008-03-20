@@ -408,6 +408,7 @@ $messages['sv'] = array(
 	'youtubeauthsub_category'            => 'Kategori',
 	'youtubeauthsub_submit'              => 'Spara',
 	'youtubeauthsub_clickhere'           => 'Klicka här för att logga in på YouTube',
+	'youtubeauthsub_tokenerror'          => 'Fel generering av auktoriseringstecken, pröva att uppdatera.',
 	'youtubeauthsub_success'             => "Gratulerar!
 Din video är uppladdad.
 För att se din video klicka <a href='http://www.youtube.com/watch?v=$1'>här</a>.

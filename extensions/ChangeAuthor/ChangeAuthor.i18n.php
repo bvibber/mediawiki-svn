@@ -235,6 +235,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'changeauthor-search-box'           => 'Serĉu reviziojn',
 	'changeauthor-pagenameform-go'      => 'Ek!',
 	'changeauthor-comment'              => 'Komento:',
 	'changeauthor-changeauthors-multi'  => 'Ŝanĝu aŭtoro(j)n',
@@ -243,6 +244,7 @@ $messages['eo'] = array(
 	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',
 	'changeauthor-revview'              => 'Revizio #$1 de $2',
 	'changeauthor-nosuchtitle'          => 'Estas neniu pagxo titolata "$1".',
+	'changeauthor-logpagename'          => 'Loglibro pri ŝanĝoj de aŭtoroj',
 );
 
 /** Finnish (Suomi)
@@ -495,11 +497,30 @@ $messages['lb'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'changeauthor-pagenameform-go' => 'चला',
-	'changeauthor-comment'         => 'प्रतिक्रीया',
+	'changeauthor'                      => 'आवृत्तीचा लेखक बदला',
+	'changeauthor-desc'                 => 'एखाद्या बदल आवृत्तीचा लेखक बदलण्याची परवानगी देतो',
+	'changeauthor-title'                => 'एखाद्या आवृत्तीचा लेखक बदला',
+	'changeauthor-search-box'           => 'आवृत्त्या शोधा',
+	'changeauthor-pagename-or-revid'    => 'पानाचे नाव किंवा आवृत्ती क्रमांक:',
+	'changeauthor-pagenameform-go'      => 'चला',
+	'changeauthor-comment'              => 'प्रतिक्रीया',
+	'changeauthor-changeauthors-multi'  => 'लेखक बदला',
+	'changeauthor-explanation-multi'    => "खालील अर्ज वापरुन तुम्ही आवृत्त्यांचे लेखक बदलू शकता. खालील यादीतील एक किंवा अनेक सदस्यनावे बदला, शेरा लिहा (वैकल्पिक) व 'लेखक बदला' या कळीवर टिचकी द्या.",
+	'changeauthor-changeauthors-single' => 'लेखक बदला',
+	'changeauthor-explanation-single'   => "हा अर्ज वापरून तुम्ही एका आवृत्तीचा लेखक बदलू शकता. फक्त खाली सदस्यनाव बदला, शेरा लिहा (वैकल्पिक) व 'लेखक बदला' कळीवर टिचकी द्या.",
+	'changeauthor-invalid-username'     => 'चुकीचे सदस्यनाव "$1".',
+	'changeauthor-nosuchuser'           => '"$1" नावाचा सदस्य अस्तित्वात नाही.',
+	'changeauthor-revview'              => '$2 ची #$1 आवृत्ती',
+	'changeauthor-nosuchtitle'          => '"$1" यानावाचा लेख अस्तित्वात नाही.',
+	'changeauthor-weirderror'           => 'एक अतिशय अनोळखी त्रुटी आढळलेली आहे. कृपया क्रिया पुन्हा करा. जर ही त्रुटी दिसत राहिली, तर डाटाबेसमध्ये मोठा बिघाड झालेला असण्याची शक्यता आहे.',
+	'changeauthor-invalidform'          => 'स्वत: तयार केलेला अर्ज वापरण्याऐवजी Special:ChangeAuthor वरील अर्ज वापरा.',
+	'changeauthor-success'              => 'तुमची मागणी व्यवस्थितरीत्या पूर्ण झालेली आहे.',
+	'changeauthor-logentry'             => '$1 च्या $2 आवृत्तीचा लेखक $3 पासून $4 ला बदललेला आहे',
+	'changeauthor-logpagename'          => 'लेखक बदल सूची',
 );
 
 /** Dutch (Nederlands)
@@ -520,9 +541,10 @@ $messages['nl'] = array(
 	'changeauthor-explanation-single'   => "Met dit formulier kunt u de auteur van een bewerkingsversie wijzigen. Wijzig simpelweg de gebruikersnaam in het tekstvak hieronder, voeg een toelichting toe (niet verplicht) en klik op de knop 'Auteur wijzigen'.",
 	'changeauthor-invalid-username'     => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser'           => 'Gebruiker "$1" bestaat niet.',
-	'changeauthor-revview'              => 'Bewerking no. $1 van $2',
+	'changeauthor-revview'              => 'Bewerkingsnummer $1 van $2',
 	'changeauthor-nosuchtitle'          => 'Er is geen pagina "$1".',
-	'changeauthor-weirderror'           => 'Er is een erg vreemde fout opgetreden. Probeer het alstublieft nogmaals.
+	'changeauthor-weirderror'           => 'Er is een erg vreemde fout opgetreden.
+Probeer het alstublieft nogmaals.
 Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
 	'changeauthor-invalidform'          => 'Gebruik alstublieft het formulier van Special:ChangeAuthor, in plaats van een aangepast formulier.',
 	'changeauthor-success'              => 'Uw verzoek is succesvol verwerkt.',

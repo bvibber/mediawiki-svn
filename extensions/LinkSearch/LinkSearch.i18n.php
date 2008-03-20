@@ -564,11 +564,12 @@ $messages['ne'] = array(
  */
 $messages['nl'] = array(
 	'linksearch'       => 'Externe links zoeken',
-	'linksearch-desc'  => "Pagina's zoeken met externe links die aan een bepaald patroon voldoen",
+	'linksearch-desc'  => "[[Special:Linksearch|Pagina's zoeken met externe links]] die aan een bepaald patroon voldoen",
 	'linksearch-pat'   => 'Zoekpatroon:',
 	'linksearch-ns'    => 'Naamruimte:',
 	'linksearch-ok'    => 'Zoeken',
-	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',
+	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.<br />
+Ondersteunde protocollen: <tt>$1</tt>',
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
 );

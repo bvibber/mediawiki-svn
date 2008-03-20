@@ -166,9 +166,10 @@ $messages['da'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'review_no_opinion' => 'Καμία γνώμη',
-	'review_rating'     => 'Αξιολόγηση',
-	'review_comment'    => 'Σχόλιο',
+	'review_user_details_link' => '(λεπτομέρειες)',
+	'review_no_opinion'        => 'Καμία γνώμη',
+	'review_rating'            => 'Αξιολόγηση',
+	'review_comment'           => 'Σχόλιο',
 );
 
 /** Esperanto (Esperanto)

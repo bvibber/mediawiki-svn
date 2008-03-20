@@ -95,6 +95,31 @@ There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID pro
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : If you have a blog on any of these services, enter your blog URL in the box above. For example, \'\'<nowiki>http://yourusername.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.livejournal.com/</nowiki>\'\', or \'\'<nowiki>http://yourusername.vox.com/</nowiki>\'\'.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'openidlogin'          => 'تسجيل الدخول بالهوية المفتوحة',
+	'openidserver'         => 'خادم الهوية المفتوحة',
+	'openiderror'          => 'خطأ تأكيد',
+	'openidcancel'         => 'التأكيد تم إلغاؤه',
+	'openidfailure'        => 'التأكيد فشل',
+	'openidsuccess'        => 'التأكيد نجح',
+	'openidusernameprefix' => 'مستخدم الهوية المفتوحة',
+	'openidoptional'       => 'اختياري',
+	'openidrequired'       => 'مطلوب',
+	'openidnickname'       => 'اللقب',
+	'openidfullname'       => 'الاسم الكامل',
+	'openidemail'          => 'عنوان البريد الإلكتروني',
+	'openidlanguage'       => 'اللغة',
+	'openidchoosefull'     => 'اسمك الكامل ($1)',
+	'openidchoosemanual'   => 'اسم من اختيارك:',
+	'openidchoosepassword' => 'كلمة السر:',
+	'openidnousername'     => 'لا اسم مستخدم تم تحديده.',
+	'openidbadusername'    => 'اسم المستخدم المحدد سيء.',
+	'openidloginlabel'     => 'مسار الهوية المفتوحة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

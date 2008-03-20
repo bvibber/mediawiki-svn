@@ -641,11 +641,22 @@ $wdMessages['de'] = array(
 	'ow_db_consistency_not_found'           => "<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.",
 );
 
-/** Ελληνικά (Ελληνικά) */
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $wdMessages['el'] = array(
-	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
-	'langman_title' => 'Διαχειριστής γλώσσας',
-	'languages'     => 'Wikidata: Διαχειριστής γλώσσας',
+	'datasearch'                      => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
+	'langman_title'                   => 'Διαχειριστής γλώσσας',
+	'languages'                       => 'Wikidata: Διαχειριστής γλώσσας',
+	'ow_ClassAttributeLevel'          => 'Επίπεδο',
+	'ow_ClassAttributeType'           => 'Τύπος',
+	'ow_Collection'                   => 'Συλλογή',
+	'ow_Language'                     => 'Γλώσσα',
+	'ow_Source'                       => 'Πηγή',
+	'ow_Text'                         => 'Κείμενο',
+	'ow_TranslatedText'               => 'Μεταφρασμένο κείμενο',
+	'ow_TranslatedTextAttributeValue' => 'Κείμενο',
+	'ow_LinkAttributeValues'          => 'Σύνδεσμοι',
 );
 
 /** Esperanto (Esperanto)
@@ -2597,6 +2608,7 @@ $wdMessages['sv'] = array(
 	'ow_Property'                     => 'Attribut',
 	'ow_Value'                        => 'Värde',
 	'ow_meaningsofsubtitle'           => '<em>Wiki länk:</em> [[$1]]',
+	'ow_copy_help'                    => 'En dag vill vi kunna hjälpa dig.',
 );
 
 /** Tamil (தமிழ்)
