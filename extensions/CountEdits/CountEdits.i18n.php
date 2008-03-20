@@ -12,16 +12,17 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'countedits' => 'Count edits',
-	'countedits-desc' => '[[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
-	'countedits-warning' => "'''Warning:''' Do not judge a book by its cover. Do not judge a contributor by their edit count.",
-	'countedits-username' => 'Username:',
-	'countedits-ok' => 'OK',
-	'countedits-nosuchuser' => 'There is no user with the name $1.',
+	'countedits'              => 'Count edits',
+	'countedits-desc'         => '[[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
+	'countedits-warning'      => "'''Warning:''' Do not judge a book by its cover.
+Do not judge contributors by their edit count.",
+	'countedits-username'     => 'Username:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'There is no user with the name $1.',
 	'countedits-resultheader' => 'Results for $1',
-	'countedits-resulttext' => '$1 has made $2 edits',
-	'countedits-mostactive' => 'Most active contributors',
-	'countedits-nocontribs' => 'There have been no contributions to this wiki.',
+	'countedits-resulttext'   => '$1 has made $2 edits',
+	'countedits-mostactive'   => 'Most active contributors',
+	'countedits-nocontribs'   => 'There have been no contributions to this wiki.',
 );
 
 /** Afrikaans (Afrikaans)

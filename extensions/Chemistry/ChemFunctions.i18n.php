@@ -11,28 +11,28 @@
 $messages = array();
 
 $messages['en'] = array(
-	'chemicalsources' => 'Chemical sources',
-	'chemicalsource-desc' => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
+	'chemicalsources'        => 'Chemical sources',
+	'chemicalsource-desc'    => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
 	'chemFunctions_ListPage' => 'Chemical sources',
-	'chemFunctions_SearchExplanation' => '',
 	'chemFunctions_DataList' => 'Below is a list of links to sites that may provide information about the chemical substance you are looking for.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
-	'chemFunctions_CAS' => 'CAS number',
-	'chemFunctions_EINECS' => 'EINECS',
-	'chemFunctions_CHEBI' => 'CHEBI',
-	'chemFunctions_PubChem' => 'PubChem',
-	'chemFunctions_SMILES' => 'SMILES',
-	'chemFunctions_InChI' => 'InChI',
-	'chemFunctions_RTECS' => 'RTECS',
-	'chemFunctions_KEGG' => 'KEGG',
-	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_CAS'      => 'CAS number',
+	'chemFunctions_EINECS'   => 'EINECS',
+	'chemFunctions_CHEBI'    => 'CHEBI',
+	'chemFunctions_PubChem'  => 'PubChem',
+	'chemFunctions_SMILES'   => 'SMILES',
+	'chemFunctions_InChI'    => 'InChI',
+	'chemFunctions_RTECS'    => 'RTECS',
+	'chemFunctions_KEGG'     => 'KEGG',
+	'chemFunctions_ATCCode'  => 'ATCCode',
 	'chemFunctions_DrugBank' => 'DrugBank',
 	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'Formula',
-	'chemFunctions_Name' => 'IUPAC Name',
+	'chemFunctions_Formula'  => 'Formula',
+	'chemFunctions_Name'     => 'IUPAC Name',
 
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input error!'
+	'chemFunctions_SearchExplanation'  => '',
 );
 
 /** Arabic (العربية)

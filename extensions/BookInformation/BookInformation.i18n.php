@@ -10,18 +10,18 @@ $messages = array();
 
 /* English (Rob Church) */
 $messages['en'] = array(
-	'bookinfo-header' => 'Book information',
-	'bookinfo-desc' => 'Expands [[Special:Booksources]] with information from a web service',
-	'bookinfo-result-title' => 'Title:',
-	'bookinfo-result-author' => 'Author:',
-	'bookinfo-result-publisher' => 'Publisher:',
-	'bookinfo-result-year' => 'Year:',
+	'bookinfo-header'            => 'Book information',
+	'bookinfo-desc'              => 'Expands [[Special:Booksources]] with information from a web service',
+	'bookinfo-result-title'      => 'Title:',
+	'bookinfo-result-author'     => 'Author:',
+	'bookinfo-result-publisher'  => 'Publisher:',
+	'bookinfo-result-year'       => 'Year:',
 	'bookinfo-error-invalidisbn' => 'Invalid ISBN entered.',
-	'bookinfo-error-nosuchitem' => 'Item does not exist or could not be found.',
-	'bookinfo-error-nodriver' => 'Unable to initialise an appropriate Book Information Driver.',
-	'bookinfo-error-noresponse' => 'No response or request timed out.',
-	'bookinfo-purchase' => 'Purchase this book from $1',
-	'bookinfo-provider' => 'Data provider: $1',
+	'bookinfo-error-nosuchitem'  => 'Item does not exist or could not be found.',
+	'bookinfo-error-nodriver'    => 'Unable to initialise an appropriate Book Information Driver.',
+	'bookinfo-error-noresponse'  => 'No response or request timed out.',
+	'bookinfo-purchase'          => 'Purchase this book from $1',
+	'bookinfo-provider'          => 'Data provider: $1',
 );
 
 /** Afrikaans (Afrikaans)

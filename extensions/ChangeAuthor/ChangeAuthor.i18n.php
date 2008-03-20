@@ -26,29 +26,33 @@ EOT;
 $messages = array();
 
 $messages['en'] = array(
-	'changeauthor' => 'Change revision author',
-	'changeauthor-desc' => 'Allows changing a revision\'s author',
-	'changeauthor-short' => 'ChangeAuthor', # don't translate or duplicate this message to other languages
-	'changeauthor-title' => 'Change the author of a revision',
-	'changeauthor-search-box' => 'Search revisions',
-	'changeauthor-pagename-or-revid' => 'Page name or revision ID:',
-	'changeauthor-pagenameform-go' => 'Go',
-	'changeauthor-comment' => 'Comment:',
-	'changeauthor-changeauthors-multi' => 'Change author(s)',
-	'changeauthor-explanation-multi' => 'With this form you can change revision authors. Simply change one or more usernames in the list below, add a comment (optional) and click the \'Change author(s)\' button.',
+	'changeauthor'                      => 'Change revision author',
+	'changeauthor-desc'                 => 'Allows changing a revision\'s author',
+	'changeauthor-short'                => 'ChangeAuthor', # don't translate or duplicate this message to other languages
+	'changeauthor-title'                => 'Change the author of a revision',
+	'changeauthor-search-box'           => 'Search revisions',
+	'changeauthor-pagename-or-revid'    => 'Page name or revision ID:',
+	'changeauthor-pagenameform-go'      => 'Go',
+	'changeauthor-comment'              => 'Comment:',
+	'changeauthor-changeauthors-multi'  => 'Change author(s)',
+	'changeauthor-explanation-multi'    => 'With this form you can change revision authors.
+Simply change one or more usernames in the list below, add a comment (optional) and click the \'Change author(s)\' button.',
 	'changeauthor-changeauthors-single' => 'Change author',
-	'changeauthor-explanation-single' => 'With this form you can change a revision author. Simply change the username below, add a comment (optional) and click the \'Change author\' button.',
-	'changeauthor-invalid-username' => 'Invalid username "$1".',
-	'changeauthor-nosuchuser' => 'No such user "$1".',
-	'changeauthor-revview' => 'Revision #$1 of $2',
-	'changeauthor-nosuchtitle' => 'There is no page called "$1".',
-	'changeauthor-weirderror' => 'A very strange error occurred. Please retry your request. If this error keeps showing up, the database is probably broken.',
-	'changeauthor-invalidform' => 'Please use the form provided by Special:ChangeAuthor rather than a custom form.',
-	'changeauthor-success' => 'Your request has been processed successfully.',
-	'changeauthor-logentry' => 'Changed author of $2 of $1 from $3 to $4',
-	'changeauthor-logpagename' => 'Author change log',
-	'changeauthor-logpagetext' => '',
-	'changeauthor-rev' => 'r$1',
+	'changeauthor-explanation-single'   => 'With this form you can change a revision author.
+Simply change the username below, add a comment (optional) and click the \'Change author\' button.',
+	'changeauthor-invalid-username'     => 'Invalid username "$1".',
+	'changeauthor-nosuchuser'           => 'No such user "$1".',
+	'changeauthor-revview'              => 'Revision #$1 of $2',
+	'changeauthor-nosuchtitle'          => 'There is no page called "$1".',
+	'changeauthor-weirderror'           => 'A very strange error occurred.
+Please retry your request.
+If this error keeps showing up, the database is probably broken.',
+	'changeauthor-invalidform'          => 'Please use the form provided by Special:ChangeAuthor rather than a custom form.',
+	'changeauthor-success'              => 'Your request has been processed successfully.',
+	'changeauthor-logentry'             => 'Changed author of $2 of $1 from $3 to $4',
+	'changeauthor-logpagename'          => 'Author change log',
+	'changeauthor-logpagetext'          => '',
+	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Aragonese (Aragonés)

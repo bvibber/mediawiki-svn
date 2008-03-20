@@ -10,17 +10,17 @@ $messages = array();
 
 /* English (Rob Church) */
 $messages['en'] = array(
-	'contributors' => 'Contributors',
-	'contributors-desc' => 'Summarises the main contributors to a page',
-	'contributors-toolbox' => 'Main contributors',
-	'contributors-legend' => 'List main contributors to a page',
-	'contributors-target' => 'Title:',
-	'contributors-submit' => 'Show',
-	'contributors-subtitle' => 'Main contributors to $1',
+	'contributors'             => 'Contributors',
+	'contributors-desc'        => 'Summarises the main contributors to a page',
+	'contributors-toolbox'     => 'Main contributors',
+	'contributors-legend'      => 'List main contributors to a page',
+	'contributors-target'      => 'Title:',
+	'contributors-submit'      => 'Show',
+	'contributors-subtitle'    => 'Main contributors to $1',
 	'contributors-others-long' => 'There are $1 other contributors to this page.',
-	'contributors-others' => 'and $1 others',
-	'contributors-badtitle' => 'Invalid title.',
-	'contributors-nosuchpage' => 'The page $1 doesn\'t exist.',
+	'contributors-others'      => 'and $1 others',
+	'contributors-badtitle'    => 'Invalid title.',
+	'contributors-nosuchpage'  => 'The page $1 does not exist.',
 );
 
 /** Arabic (العربية)

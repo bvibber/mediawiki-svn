@@ -10,9 +10,8 @@ $messages = array();
  @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'editsubpages-desc' => "Allows sysops to unlock a page and all subpages of that page
-for anonymous editing via [[MediaWiki:Unlockedpages]]",
-	'unlockedpages' => ' #<!-- leave this line alone --><pre>
+	'editsubpages-desc' => "Allows sysops to unlock a page and all subpages of that page for anonymous editing via [[MediaWiki:Unlockedpages]]",
+	'unlockedpages'     => ' #<!-- leave this line alone --><pre>
 # Put pages you want to unlock below using
 # * pagename
 # Unlocked pages must begin with a bullet to be counted,

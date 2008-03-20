@@ -10,7 +10,8 @@ $messages = array();
 $messages['en'] = array(
 	'math_noblahtex'                        => 'Can\'t execute blahtex, which should be at $1',
 	'math-desc'				=> 'MathML output for &lt;math&gt; tags',
-	'math_AmbiguousInfix'                   => 'Ambiguous placement of "$1" (try using additional braces "{ ... }" to disambiguate)',
+	'math_AmbiguousInfix'                   => 'Ambiguous placement of "$1".
+Try using additional braces "{ ... }" to disambiguate.',
 	'math_CannotChangeDirectory'            => 'Cannot change working directory',
 	'math_CannotCreateTexFile'              => 'Cannot create tex file',
 	'math_CannotRunDvipng'                  => 'Cannot run dvipng',
@@ -18,13 +19,17 @@ $messages['en'] = array(
 	'math_CannotWritePngDirectory'          => 'Cannot write to output PNG directory',
 	'math_CannotWriteTexFile'               => 'Cannot write to tex file',
 	'math_CasesRowTooBig'                   => 'There can only be two entries in each row of a "cases" block',
-	'math_DoubleSubscript'                  => 'Encountered two subscripts attached to the same base (only one is allowed)',
-	'math_DoubleSuperscript'                => 'Encountered two superscripts attached to the same base (only one is allowed)',
+	'math_DoubleSubscript'                  => 'Encountered two subscripts attached to the same base.
+Only one is allowed.',
+	'math_DoubleSuperscript'                => 'Encountered two superscripts attached to the same base.
+Only one is allowed.',
 	'math_IllegalCharacter'                 => 'Illegal character in input',
 	'math_IllegalCommandInMathMode'         => 'The command "$1" is illegal in math mode',
-	'math_IllegalCommandInMathModeWithHint' => 'The command "$1" is illegal in math mode (perhaps you intended to use "$2" instead?)',
+	'math_IllegalCommandInMathModeWithHint' => 'The command "$1" is illegal in math mode
+Perhaps you intended to use "$2" instead?',
 	'math_IllegalCommandInTextMode'         => 'The command "$1" is illegal in text mode',
-	'math_IllegalCommandInTextModeWithHint' => 'The command "$1" is illegal in text mode (perhaps you intended to use "$2" instead?)',
+	'math_IllegalCommandInTextModeWithHint' => 'The command "$1" is illegal in text mode
+Perhaps you intended to use "$2" instead?',
 	'math_IllegalDelimiter'                 => 'Illegal delimiter following "$1"',
 	'math_IllegalFinalBackslash'            => 'Illegal backslash "\\" at end of input',
 	'math_IllegalNestedFontEncodings'       => 'Font encoding commands may not be nested',
@@ -34,15 +39,20 @@ $messages['en'] = array(
 	'math_LatexFontNotSpecified'            => 'No LaTeX font has been specified for "$1"',
 	'math_LatexPackageUnavailable'          => 'Unable to render PNG because the LaTeX package "$1" is unavailable',
 	'math_MismatchedBeginAndEnd'            => 'Commands "$1" and "$2" do not match',
-	'math_MisplacedLimits'                  => 'The command "$1" can only appear after a math operator (consider using "\\mathop")',
-	'math_MissingCommandAfterNewcommand'    => 'Missing or illegal new command name after "\\newcommand" (there must be precisely one command defined; it must begin with a backslash "\\" and contain only alphabetic characters)',
+	'math_MisplacedLimits'                  => 'The command "$1" can only appear after a math operator.
+Consider using "\\mathop".',
+	'math_MissingCommandAfterNewcommand'    => 'Missing or illegal new command name after "\\newcommand".
+There must be precisely one command defined;
+it must begin with a backslash "\\" and contain only alphabetic characters.',
 	'math_MissingDelimiter'                 => 'Missing delimiter after "$1"',
 	'math_MissingOpenBraceAfter'            => 'Missing open brace "{" after "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Missing open brace "{" at end of input',
 	'math_MissingOpenBraceBefore'           => 'Missing open brace "{" before "$1"',
-	'math_MissingOrIllegalParameterCount'   => 'Missing or illegal parameter count in definition of "$1" (must be a single digit between 1 and 9 inclusive)',
+	'math_MissingOrIllegalParameterCount'   => 'Missing or illegal parameter count in definition of "$1".
+Must be a single digit between 1 and 9 inclusive.',
 	'math_MissingOrIllegalParameterIndex'   => 'Missing or illegal parameter index in definition of "$1"',
-	'math_NonAsciiInMathMode'               => 'Non-ASCII characters may only be used in text mode (try enclosing the problem characters in "\\text{...}")',
+	'math_NonAsciiInMathMode'               => 'Non-ASCII characters may only be used in text mode
+Try enclosing the problem characters in "\\text{...}".',
 	'math_NotEnoughArguments'               => 'Not enough arguments were supplied for "$1"',
 	'math_PngIncompatibleCharacter'         => 'Unable to correctly generate PNG containing the character $1',
 	'math_ReservedCommand'                  => 'The command "$1" is reserved for internal use by blahtex',
@@ -61,7 +71,8 @@ $messages['en'] = array(
 	'math_UnmatchedRight'                   => 'Encountered "\\right" without matching "\\left"',
 	'math_UnrecognisedCommand'              => 'Unrecognised command "$1"',
 	'math_WrongFontEncoding'                => 'The symbol "$1" may not appear in font encoding "$2"',
-	'math_WrongFontEncodingWithHint'        => 'The symbol "$1" may not appear in font encoding "$2" (try using the "$3{...}" command)',
+	'math_WrongFontEncodingWithHint'        => 'The symbol "$1" may not appear in font encoding "$2".
+Try using the "$3{...}" command.',
 );
 
 /** Arabic (العربية)

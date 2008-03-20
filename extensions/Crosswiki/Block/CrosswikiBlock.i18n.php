@@ -19,7 +19,7 @@ Please check if you are allowed to act on this wiki and your actions match all p
 	'crosswikiblock-submit'     => 'Block this user',
 	'crosswikiblock-anononly'   => 'Block anonymous users only',
 	'crosswikiblock-nocreate'   => 'Prevent account creation',
-	'crosswikiblock-autoblock'  => 'Automatically block the last IP address used by this user, and any subsequent IPs they try to edit from',
+	'crosswikiblock-autoblock'  => 'Automatically block the last IP address used by this user, and any subsequent IP addresses they try to edit from',
 	'crosswikiblock-noemail'    => 'Prevent user from sending e-mail',
 
 	# Special:Unblock

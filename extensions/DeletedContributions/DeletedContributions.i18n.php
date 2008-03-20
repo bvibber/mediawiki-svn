@@ -8,8 +8,8 @@
 $messages = array();
 
 $messages['en'] = array(
-	'deletedcontributions' => 'Deleted user contributions',
-	'deletedcontributions-desc' => 'Gives sysops the ability to [[Special:DeletedContributions|browse a user\'s deleted edits]]',
+	'deletedcontributions'      => 'Deleted user contributions',
+	'deletedcontributions-desc' => 'Gives sysops the ability to [[Special:DeletedContributions|browse deleted edits]] of a user',
 );
 
 $messages['af'] = array(

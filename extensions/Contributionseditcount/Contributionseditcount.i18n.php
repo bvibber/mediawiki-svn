@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'contributionseditcount'  =>  'This user has $1 edits.',
+	'contributionseditcount'      => 'This user has $1 edits.',
 	'contributionseditcount-desc' => 'Displays an edit count on [[Special:Contributions]]',
 );
 

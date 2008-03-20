@@ -11,11 +11,10 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionCredits['other'][] = array(
-		'name' => 'Automatic Groups',
-		'author' => 'Rob Church',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Automatic_Groups',
-		'description' => 'Convenient configuration of user rights and group
-			membership based on user account age and edit count',
+		'name'           => 'Automatic Groups',
+		'author'         => 'Rob Church',
+		'url'            => 'http://www.mediawiki.org/wiki/Extension:Automatic_Groups',
+		'description'    => 'Convenient configuration of user rights and group membership based on user account age and edit count',
 		'descriptionmsg' => 'automaticgroups-desc'
 	);
 

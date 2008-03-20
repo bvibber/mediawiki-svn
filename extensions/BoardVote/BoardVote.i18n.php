@@ -13,8 +13,7 @@ $messages['en'] = array(
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
-	'boardvote_intro'         => "
-<p>Welcome to the second elections for the Wikimedia Board of Trustees. We are
+	'boardvote_intro'         => "<p>Welcome to the second elections for the Wikimedia Board of Trustees. We are
 voting for two people to represent the community of users on the various
 Wikimedia projects. They will help to determine the future direction
 that the Wikimedia projects will take, individually and as a group, and
@@ -32,8 +31,7 @@ position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>
-",
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
 you approve of.</p>",
@@ -53,9 +51,13 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]",
-	'boardvote_nosession'     => "I can't determine your Wikimedia user ID. Please log in to the wiki where you are qualified, and go to <nowiki>[[Special:Boardvote]]</nowiki>. You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
-	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
-	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, and your first edit must be before $5.",
+	'boardvote_nosession'     => "Your Wikimedia user ID could not be determined.
+Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:Boardvote]]</nowiki>.
+You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+	'boardvote_notloggedin'   => "You are not logged in.
+To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+	'boardvote_notqualified'  => "You are not qualified to vote in this election.
+You need to have made $3 edits before $2, and your first edit must be before $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
@@ -63,14 +65,15 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_days'          => "Days",
 	'boardvote_ip'            => "IP",
 	'boardvote_ua'            => "User agent",
-	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded
-to date. $1 for the encrypted data.</p>",
+	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded to date.
+$1 for the encrypted data.</p>",
 	'boardvote_dumplink'      => "Click here",
 	'boardvote_submit'        => 'OK',
 	'boardvote_strike'        => "Strike",
 	'boardvote_unstrike'      => "Unstrike",
 	'boardvote_needadmin'     => "Only election administrators can perform this operation.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:
+Vote open until July 12",
 	'boardvote_notstarted'    => 'Voting has not yet started',
 	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
@@ -80,8 +83,7 @@ to date. $1 for the encrypted data.</p>",
 	'boardvote_blocked'       => 'Sorry, you have been blocked on your registered wiki. Blocked users are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
 	'go_to_board_vote'        => 'Wikimedia Board Elections 2007',
-	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an
-external, independently controlled server.
+	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an external, independently controlled server.
 
 You will be redirected to this external server in 20 seconds. [$1 Click here] to go there now.
 

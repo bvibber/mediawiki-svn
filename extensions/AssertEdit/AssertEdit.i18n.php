@@ -8,8 +8,8 @@
 $messages = array();
 
 $messages['en'] = array(
-	'assert_edit_title' => 'Assert failed',
-	'assert_edit_desc'  => 'Adds edit assertions for use by bots',
+	'assert_edit_title'   => 'Assert failed',
+	'assert_edit_desc'    => 'Adds edit assertions for use by bots',
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
 );
 

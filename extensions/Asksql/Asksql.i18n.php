@@ -12,17 +12,15 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'asksql' => 'SQL query',
-	'asksql-desc' => 'Do SQL queries through a [[Special:Asksql|special page]]',
-	'asksqltext' => "Use the form below to make a direct query of the
-database.
+	'asksql'          => 'SQL query',
+	'asksql-desc'     => 'Do SQL queries through a [[Special:Asksql|special page]]',
+	'asksqltext'      => "Use the form below to make a direct query of the database.
 Use single quotes ('like this') to delimit string literals.
-This can often add considerable load to the server, so please use
-this function sparingly.",
-	'sqlislogged' => 'Please note that all queries are logged.',
-	'sqlquery' => 'Enter query',
-	'querybtn' => 'Submit query',
-	'selectonly' => 'Only read-only queries are allowed.',
+This can often add considerable load to the server, so please use this function sparingly.",
+	'sqlislogged'     => 'Please note that all queries are logged.',
+	'sqlquery'        => 'Enter query',
+	'querybtn'        => 'Submit query',
+	'selectonly'      => 'Only read-only queries are allowed.',
 	'querysuccessful' => 'Query successful',
 );
 
