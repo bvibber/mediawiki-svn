@@ -1501,7 +1501,7 @@ $messages['tr'] = array(
 	'grouppage-steward'  => '{{ns:project}}:Stewardlar',
 );
 
-$messages['tt'] = array(
+$messages['tt-latn'] = array(
 	'makesysoptitle'	=> 'Äğzäne idäräçe itep quyu',
 	'makesysopname'		=> 'Bu äğzäne:',
 	'makesysopsubmit'	=> 'Bu äğzäne idäräçe itep quy',
