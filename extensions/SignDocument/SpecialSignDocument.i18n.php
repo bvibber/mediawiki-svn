@@ -10,10 +10,8 @@ $messages['en'] = array(
 	'signdocument'         => 'Sign Document',
 	'sign-nodocselected'   => 'Please select the document you wish to sign.',
 	'sign-selectdoc'       => 'Document:',
-	'sign-docheader'       =>
-'<div class="noarticletext">Please use this form to sign the document "[[$1]]," ' .
-'shown below. Please read through the entire document, and if you wish to indicate your '.
-'support for it, please fill in the required fields to sign it.</div>',
+	'sign-docheader'       => '<div class="noarticletext">Please use this form to sign the document "[[$1]]," shown below.
+Please read through the entire document, and if you wish to indicate your support for it, please fill in the required fields to sign it.</div>',
 	'sign-error-nosuchdoc' => 'The document you requested ($1) does not exist.',
 	'sign-realname'        => 'Name:',
 	'sign-address'         => 'Street address:',
@@ -25,8 +23,7 @@ $messages['en'] = array(
 	'sign-bday'            => 'Age:',
 	'sign-email'           => 'E-mail address:',
 	'sign-indicates-req'   => '<small><i><font color="red">*</font> indicates required field.</i></small>',
-	'sign-hide-note'       =>
-'<small><i><font color="red">**</font> Note: Unlisted information will still be visible to moderators.</i></small>',
+	'sign-hide-note'       => '<small><i><font color="red">**</font> Note: Unlisted information will still be visible to moderators.</i></small>',
 	'sign-list-anonymous'  => 'List anonymously',
 	'sign-list-hideaddress'=> 'Do not list address',
 	'sign-list-hideextaddress'=>'Do not list city, state, zip, or country',
@@ -34,18 +31,14 @@ $messages['en'] = array(
 	'sign-list-hidebday'   => 'Do not list age',
 	'sign-list-hideemail'  => 'Do not list e-mail',
 	'sign-submit'          => 'Sign document',
-	'sign-information'     =>
-'<div class="noarticletext">Thank you for taking the time to read through this document. '.
-'If you agree with it, please indicate your support by filling in the required fields ' .
-'below and clicking "Sign Document." Please ' .
-'ensure that your personal information is correct and that we have some way to contact you ' .
-'to verify your identity. Note that your [[wikipedia:IP address|IP address]] ' .
-'and other identifying information will be recorded by this form and used by moderators ' .
-'to eliminate duplicate signatures and confirm the correctness of your personal information. ' .
-'As the use of open and anonymizing proxies inhibits our ability to perform this task, ' .
-'signatures from such proxies will likely not be counted. If you are currently connected ' .
-'through a proxy server, please disconnect from it and use a standard connection while signing. '.
-'<br /><br /> $1',
+	'sign-information'     => '<div class="noarticletext">Thank you for taking the time to read through this document.
+If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign Document."
+Please ensure that your personal information is correct and that we have some way to contact you to verify your identity.
+Note that your IP address and other identifying information will be recorded by this form and used by moderators to eliminate duplicate signatures and confirm the correctness of your personal information.
+As the use of open and anonymizing proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
+If you are currently connected through a proxy server, please disconnect from it and use a standard connection while signing.</div>
+
+$1',
 	'sig-success'               => 'You have successfully signed the document.',
 	'sign-view-selectfields'    => '<b>Fields to display:</b>',
 	'sign-viewfield-entryid'    => 'Entry id',
@@ -62,8 +55,7 @@ $messages['en'] = array(
 	'sign-viewfield-email'      => 'Email',
 	'sign-viewfield-age'        => 'Age',
 	'sign-viewfield-options'    => 'Options',
-	'sign-viewsigs-intro'       => 'Shown below are the signatures recorded for ' .
-	'<span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-viewsigs-intro'       => 'Shown below are the signatures recorded for <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen'=>'Signing is currently enabled for this document.',
 	'sign-sigadmin-close'       => 'Disable signing',
 	'sign-sigadmin-currentlyclosed'=>'Signing is currently disabled for this document.',
@@ -79,15 +71,15 @@ $messages['en'] = array(
 	'sign-sigdetails'           => 'Signature details',
 	'sign-emailto'              => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'              => '<span class="plainlinksneverexpand"><!--
-	-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
-	-->[[Special:Contributions/$1|contribs]] • <!--
-	-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-	-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-	-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-	-->[[Special:Blockip/$1|block user]] • <!--
-	-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
-	-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
-	--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+-->[[Special:Contributions/$1|contribs]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|block user]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
 	'sign-viewfield-stricken'      => 'Stricken',
 	'sign-viewfield-reviewedby'    => 'Reviewer',
 	'sign-viewfield-reviewcomment' => 'Comment',
@@ -101,8 +93,7 @@ $messages['en'] = array(
 	'sign-uniquequery-similaraddress'=> 'Similar address',
 	'sign-uniquequery-similarphone'=> 'Similar phone',
 	'sign-uniquequery-similaremail'=> 'Similar email',
-	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} '.
-	'$1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Afrikaans (Afrikaans)
@@ -251,15 +242,15 @@ $messages['bg'] = array(
 	'sign-viewfield-options'       => 'Настройки',
 	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                 => '<span class="plainlinksneverexpand"><!--
-		-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
-		-->[[Special:Contributions/$1|приноси]] • <!--
-		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|блокиране]] • <!--
-		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
-		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
-		--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
+-->[[Special:Contributions/$1|приноси]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|блокиране]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
+--></span>',
 	'sign-viewfield-reviewcomment' => 'Коментар',
 	'sign-review-comment'          => 'Коментар',
 );
@@ -393,15 +384,15 @@ $1',
 	'sign-sigdetails'                 => 'Détails de la signature',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
-		-->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
-		-->[[Special:Contributions/$1|Contributions]] • <!--
-		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|Bloquer l\'utisateur]] • <!--
-		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
-		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
-		--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
+-->[[Special:Contributions/$1|Contributions]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|Bloquer l\'utisateur]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
+--></span>',
 	'sign-viewfield-stricken'         => 'Biffé',
 	'sign-viewfield-reviewedby'       => 'Réviseur',
 	'sign-viewfield-reviewcomment'    => 'Commentaire',
@@ -482,15 +473,15 @@ $1',
 	'sign-sigdetails'                 => 'Detalles da sinatura',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
-		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
-		-->[[Special:Contributions/$1|contribucións]] • <!--
-		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|bloquear usuario]] • <!--
-		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} bloquear rexistro] • <!--
-		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar IP])<!--
-		--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+-->[[Special:Contributions/$1|contribucións]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|bloquear usuario]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} bloquear rexistro] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar IP])<!--
+--></span>',
 	'sign-viewfield-stricken'         => 'Tachado',
 	'sign-viewfield-reviewedby'       => 'Revisor',
 	'sign-viewfield-reviewcomment'    => 'Comentario',
@@ -570,15 +561,15 @@ $1',
 	'sign-sigdetails'                 => 'Podrobnosće podpisanja',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
-		-->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
-		-->[[Special:Contributions/$1|Přinoški]] • <!--
-		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|Wužiwarja blokować]] • <!--
-		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Protokol blokowanja] • <!--
-		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
-		--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
+-->[[Special:Contributions/$1|Přinoški]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|Wužiwarja blokować]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Protokol blokowanja] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
 	'sign-viewfield-stricken'         => 'Wušmórnjeny',
 	'sign-viewfield-reviewedby'       => 'Pruwowar',
 	'sign-viewfield-reviewcomment'    => 'Komentar',
@@ -769,15 +760,15 @@ $1',
 	'sign-sigdetails'                 => 'Ondertekeningsdetails',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
-	-->[[User:$1|$1]] ([[User talk:$1|ovelreg]] • <!--
-	-->[[Special:Contributions/$1|bijdragen]] • <!--
-	-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-	-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-	-->[http://www.robtex.com/rbls/$1.html RBL\'s] • <!--
-	-->[[Special:Blockip/$1|blokkeer gebruiker]] • <!--
-	-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkerlogboek] • <!--
-	-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP controleren])<!--
-	--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|ovelreg]] • <!--
+-->[[Special:Contributions/$1|bijdragen]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL\'s] • <!--
+-->[[Special:Blockip/$1|blokkeer gebruiker]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkerlogboek] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP controleren])<!--
+--></span>',
 	'sign-viewfield-stricken'         => 'Doorgehaald',
 	'sign-viewfield-reviewedby'       => 'Controleur',
 	'sign-viewfield-reviewcomment'    => 'Opmerking',
@@ -959,15 +950,15 @@ $messages['oc'] = array(
 	'sign-sigdetails'                 => 'Detalhs de la signatura',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
-		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
-		-->[[Special:Contributions/$1|contribs]] • <!--
-		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
-		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
-		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|block user]] • <!--
-		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
-		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
-		--></span>',
+-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+-->[[Special:Contributions/$1|contribs]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|block user]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
 	'sign-viewfield-stricken'         => 'Fautiu',
 	'sign-viewfield-reviewedby'       => 'Revisor',
 	'sign-viewfield-reviewcomment'    => 'Comentari',
@@ -1442,4 +1433,3 @@ $messages['vo'] = array(
 	'sign-viewfield-country'       => 'Län',
 	'sign-viewfield-reviewcomment' => 'Küpet',
 );
-
