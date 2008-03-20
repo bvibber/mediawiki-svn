@@ -82,7 +82,10 @@
 		return true;
  	}
  	function proccessReq(& $streamFiles){
- 		global $wgRequest;
+ 		global $wgRequest, $wgUser;
+ 		//make sure the user can edit streams:
+ 		if(!$wgUser->isAllowed('mv_edit_stream'))return ;
+ 		 
  		$this->mv_action = $wgRequest->getVal('mv_action'); 	
  		if($this->mv_action=='new_stream_file'){
  			//@@todo a bit more input scrubbing: 

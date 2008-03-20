@@ -150,7 +150,7 @@ $mvStreamTypePermission['external_file']=array();
 
 $wgGroupPermissions['user']['mv_delete_mvd'] = true;
 $wgGroupPermissions['sysop']['mv_edit_stream']=true;
-
+$wgGroupPermissions['bot']['mv_edit_stream']=true;
 ###
 # If you already have custom namespaces on your site, insert
 # $mvNamespaceIndex = ???; in your config before including the settings

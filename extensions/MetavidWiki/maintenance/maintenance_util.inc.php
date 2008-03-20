@@ -131,7 +131,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 		return ;		
 	}		
 	if($wgTitle->getNamespace()==MV_NS_MVD && MV_Index::getMVDbyTitle($wgTitle->getDBkey())==null){
-		print "missing assoc mvd ...update \n";
+		//print "missing assoc mvd ...update \n";
 	}else{		
 		if ($wgTitle->exists()) {			
 			//if last edit!=mvBot skip (don't overwite peoples improvments') 

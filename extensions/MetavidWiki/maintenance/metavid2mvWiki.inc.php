@@ -209,6 +209,7 @@ function do_stream_insert($mode, $stream_name = '') {
 }
 function do_annotate_speeches($stream, $force){
 	print "do annotations for $stream->name \n";
+	$dbr =& wfGetDB(DB_SLAVE);
 	if($force){
 		global $botUserName;
 		//get wiki stream id:
@@ -280,15 +281,21 @@ function do_annotate_speeches($stream, $force){
 function do_proccess_text($stream, $force){
 		$dbr = wfGetDB(DB_SLAVE);
 		if($force){
+			global $botUserName;
 			//get wiki stream id:
 			$wikiStream = new MV_Stream(array('name'=>$stream->name)); 
 			//first remove all bot edited pages: 
 			$mvd_res = MV_Index::getMVDInRange($wikiStream->getStreamId(),null,null,'Ht_en');
 			while($row = $dbr->fetchObject($mvd_res)){
 				$title = Title::newFromText($row->wiki_title, MV_NS_MVD);
-				$article = new Article($title);
-				$article->doDelete('mvbot removal');
-				print "removed $row->wiki_title \n";
+				$current = Revision::newFromTitle( $title );
+				if($current->getUserText()==$botUserName){
+					$article = new Article($title);
+					$article->doDelete('mvbot removal');
+					print "removed $row->wiki_title \n";
+				}else{
+					print "skiped $roe->wiki_title (last edit by: ". $current->getUserText().")\n";
+				}			
 			}
 		}				
 		/* for now use the stream search table (in the future should put in our orphaned person data)
