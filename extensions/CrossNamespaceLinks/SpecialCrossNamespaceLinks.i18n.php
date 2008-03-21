@@ -325,8 +325,14 @@ $messages['kn'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ಸಂಪರ್ಕ|ಸಂಪರ್ಕಗಳು}} $3 ಗೆ',
 );
 
+/** Kölsch
+ * @author Purodha
+ */
 $messages['ksh'] = array(
-	'crossnamespacelinks-summary' => 'Die Sigg hee enthält en Liss met Links vun en Sigg em Appachtemeng vun de Atikkele, die en ander Appachtemengs jonn (usser de Toiminnot, Keskustelu, Betawiki and Malline Appachtemengs) - su jet sollte mer nit han.',
+	'crossnamespacelinks'         => 'Atikele met Links en ander Appachtemangs',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Leß med Lengkß zwesche de Appachtemangs]], di_mer en de {{SITENAME}} nit hann sulte',
+	'crossnamespacelinks-summary' => 'Die Sigg hee hädd en Liss met Sigge em Appachtemeng vun de Atikkele, wo Links dren sin, die en ander Appachtemangs jonn (usser {{ns:special}}, {{ns:talk}}, {{ns:project}}, un {{ns:template}}) - su jet sollte mer eijentlesh nit han.',
+	'crossnamespacelinkstext'     => '$1 hät {{PLURAL:$2|eine Lengk|$2&nbsp;Lengks|keine Lengk}} en et Apachtemang „$3“'
 );
 
 $messages['ku'] = array(
