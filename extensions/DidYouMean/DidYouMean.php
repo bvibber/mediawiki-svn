@@ -90,16 +90,18 @@ function wfDymParserBeforeStrip( &$parser, &$text, &$stripState ) {
 
 	if (preg_match( "/{{[sS]ee\|([^}]*)}}/", $text, $see )) {
 		wfDebug( "HIPP: see Hit\n" );
+		$hasTemplate = true;
 		$sees = explode("|", $see[1]);
 	} elseif (preg_match( "/{{[xX]see(\|[^}]*)}}/", $text, $see )) {
 		wfDebug( "HIPP: xsee Hit\n" );
+		$hasTemplate = true;
 		preg_match_all( "/\|\[\[([^]|]*)(?:\|([^|]*))?\]\](?: \(([^)]*)\))?/", $see[1], $ma );
 		$sees = $ma[1];
 	} else {
 		wfDebug( "HIPP: (x)see Miss\n" );
 		# there's no {{see}} in this chunk of wikitext
 		# if this is the 1st chunk of the article itself we can put an empty {{see}} there.
-		$text = "{{see|}}\n" . $text;
+		$hasTemplate = false;
 		$sees = array();
 	}
 
@@ -118,10 +120,15 @@ function wfDymParserBeforeStrip( &$parser, &$text, &$stripState ) {
 
 	# TODO is it better to use $parser->insertStripItem() ?
 
-	if (count($sees))
+	if (count($sees)) {
+		if( !$hasTemplate ) {
+			// We need to squish in a fresh copy of the template...
+			$text = "{{see|}}\n" . $text;
+		}
 		$built_sees = build_sees($sees);
-	else
+	} else {
 		$built_sees = '';
+	}
 
 	$text = preg_replace(
 		'/{{[xX]?[sS]ee\|[^}]*}}/',
@@ -297,10 +304,10 @@ function wfDymArticleSaveComplete( $article, $user, $text, $summary, $isminor, $
 		return true;
 
 	if ($article->isRedirect($text)) {
-		if (!$wgParser->mDymRedirBeforeEdit && !($flags & EDIT_NEW))
+		if (empty( $wgParser->mDymRedirBeforeEdit ) && !($flags & EDIT_NEW))
 			wfDymDoDelete( $article->getID() );
 	} else {
-		if ($wgParser->mDymRedirBeforeEdit || $flags & EDIT_NEW)
+		if (!empty( $wgParser->mDymRedirBeforeEdit ) || $flags & EDIT_NEW)
 			wfDymDoInsert( $article->getID(), $article->getTitle()->getText() );
 	}
 
