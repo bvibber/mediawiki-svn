@@ -103,11 +103,16 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'importusers-form-button' => 'Importu',
-	'importusers-log'         => 'Loglibro de importoj',
-	'importusers-password'    => 'pasvorto',
-	'importusers-email'       => 'retpoŝto',
-	'importusers-realname'    => 'reala nomo',
+	'importusers'                     => 'Importu Uzantojn',
+	'importusers-form-button'         => 'Importu',
+	'importusers-log'                 => 'Loglibro de importoj',
+	'importusers-log-summary-all'     => 'Ĉiuj',
+	'importusers-log-summary-added'   => 'Aldonita',
+	'importusers-log-summary-updated' => 'Ĝisdatigita',
+	'importusers-login-name'          => 'Salutnomo',
+	'importusers-password'            => 'pasvorto',
+	'importusers-email'               => 'retpoŝto',
+	'importusers-realname'            => 'reala nomo',
 );
 
 /** Finnish (Suomi)

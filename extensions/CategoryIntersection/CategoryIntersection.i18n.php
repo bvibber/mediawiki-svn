@@ -100,6 +100,13 @@ $messages['lb'] = array(
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
 );
 
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'categoryintersection-doit' => 'ສະແດງລາຍຊື່ໜ້າທີ່ຢູ່ໃນໝວດເຫຼົ່ານີ້',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -195,6 +202,13 @@ $messages['te'] = array(
 	'categoryintersection'         => 'వర్గం ఖండన',
 	'categoryintersection-doit'    => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
 	'categoryintersection-results' => 'ఈ అన్వేషణ $1 {{PLURAL:$1|ఫలితాన్ని|ఫలితాలను}} ఇచ్చింది.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'categoryintersection-doit' => 'แสดงรายชื่อหน้าต่าง ๆ ในหมวดหมู่เหล่านี้',
 );
 
 /** Vietnamese (Tiếng Việt)

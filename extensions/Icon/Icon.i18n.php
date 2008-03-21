@@ -118,6 +118,14 @@ $messages['lt'] = array(
 	'icon-badwidth' => 'Blogas plotis',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'icon-badimage' => 'चुकीचे चित्र',
+	'icon-badwidth' => 'चुकीची रूंदी',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

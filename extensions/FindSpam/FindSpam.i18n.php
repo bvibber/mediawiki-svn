@@ -161,6 +161,17 @@ $messages['ml'] = array(
 	'findspam-notextfound' => 'സംഭാവനകളൊന്നും കണ്ടെത്താനായില്ല',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'findspam'             => 'स्पॅम शोधा',
+	'findspam-desc'        => 'एक [[Special:FindSpam|विशेष पान]] वाढविते जे अलीकडील काळात वाढलेले स्पॅम दर्शविते',
+	'findspam-ip'          => 'आयपी अंकपत्ता:',
+	'findspam-ok'          => 'सर्व ठीक',
+	'findspam-notextfound' => 'योगदान सापडले नाही',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

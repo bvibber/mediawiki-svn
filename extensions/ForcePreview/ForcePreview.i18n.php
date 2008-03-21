@@ -78,6 +78,14 @@ $messages['lb'] = array(
 	'forcepreview-desc' => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'forcepreview'      => 'पान जतन करा (आधी झलक पहा)',
+	'forcepreview-desc' => 'कमी अधिकार असणार्‍या सदस्यांसाठी जाणूनबुजून झलक दाखवा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

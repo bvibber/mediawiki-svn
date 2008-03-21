@@ -395,15 +395,16 @@ Buďte prosím trpezliví.',
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Sannab
  */
 $messages['sv'] = array(
-	'youtubeauthsub'                     => 'Ladda upp en YouTube video',
+	'youtubeauthsub'                     => 'Ladda upp en YouTube-video',
 	'youtubeauthsub-desc'                => 'Tillåter användare att [[Special:YouTubeAuthSub|ladda upp videor]] på YouTube',
 	'youtubeauthsub_info'                => 'För att ladda upp en video på YouTube för användning på en sida, fyll i följande information:',
 	'youtubeauthsub_title'               => 'Titel',
 	'youtubeauthsub_description'         => 'Beskrivning',
-	'youtubeauthsub_password'            => 'YouTube lösenord',
-	'youtubeauthsub_username'            => 'YouTube användarnamn',
+	'youtubeauthsub_password'            => 'YouTube-lösenord',
+	'youtubeauthsub_username'            => 'YouTube-användarnamn',
 	'youtubeauthsub_keywords'            => 'Nyckelord',
 	'youtubeauthsub_category'            => 'Kategori',
 	'youtubeauthsub_submit'              => 'Spara',
@@ -412,7 +413,7 @@ $messages['sv'] = array(
 	'youtubeauthsub_success'             => "Gratulerar!
 Din video är uppladdad.
 För att se din video klicka <a href='http://www.youtube.com/watch?v=$1'>här</a>.
-YouTube kan behöva viss tid att processera din viseo, så den kan inte bli redo ännu.
+YouTube kan behöva viss tid att behandla din video, så den är kanske inte klar ännu.
 
 För att inkludera din video i en sida på wikin, sätt in följande kod i en sida:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -422,7 +423,7 @@ För att inkludera din video i en sida på wikin, sätt in följande kod i en si
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
 
 Denna video kan ses [http://www.youtube.com/watch?v=$1 här]',
-	'youtubeauthsub_summary'             => 'Laddar upp YouTube video',
+	'youtubeauthsub_summary'             => 'Laddar upp YouTube-video',
 	'youtubeauthsub_uploading'           => 'Din video har börjat uppladdas.
 Var tålmodig.',
 	'youtubeauthsub_viewpage'            => 'Alternativt, kan du se din video [[$1|här]].',

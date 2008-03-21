@@ -199,6 +199,24 @@ $messages['lb'] = array(
 	'importfreeimages_next'       => 'Nächst $1',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'importfreeimages'                       => 'मुक्त चित्रे मागवा',
+	'importfreeimages-desc'                  => '[http://www.flickr.com फ्लिकर] वरील [[Special:ImportFreeImages|मुक्त चित्रे मागविण्याचा]] मार्ग',
+	'importfreeimages_description'           => 'हे पान आपल्याला फ्लिकर वरील मुक्त चित्रे मागविण्याची तसेच त्यांना तुमच्या विकिमध्ये चढविण्याची सुविधा देते.',
+	'importfreeimages_noapikey'              => 'तुम्ही तुमची फ्लिकर API चावी बनविलेली नाही. तसे करण्यासाठी, [http://www.flickr.com/services/api/misc.api_keys.html इथून] एक API चावी मागवा व ImportFreeImages.php मध्ये wgFlickrAPIKey टाका.',
+	'importfreeimages_nophotosfound'         => "'$1' ला जुळणारी छायाचित्रे सापडली नाहीत, कृपया पुन्हा प्रयत्न करा.",
+	'importfreeimages_invalidurl'            => 'URL "$1" ही योग्य फ्लिकर चित्र नाही.',
+	'importfreeimages_owner'                 => 'लेखक',
+	'importfreeimages_importthis'            => 'हे घ्या',
+	'importfreeimages_next'                  => 'पुढील $1',
+	'importfreeimages_filefromflickr'        => 'फ्लिकर कडून $1 <b>[$2]</b> सदस्याने दिलेले. मूळ URL',
+	'importfreeimages_promptuserforfilename' => 'कॄपया लक्ष्य संचिकानाव द्या:',
+	'importfreeimages_returntoform'          => "किंवा, तुमच्या शोध निकालांकडे परत जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -368,12 +386,13 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Sannab
  * @author Lejonel
  */
 $messages['sv'] = array(
 	'importfreeimages'                       => 'Importera fria bilder',
 	'importfreeimages-desc'                  => 'Ger möjligheten till att [[Special:ImportFreeImages|importera fria bilder]] från [http://www.flickr.com flickr]',
-	'importfreeimages_description'           => 'Denna sida låter dig söka i bilder med riktig licens på Flickr och importera dom till din wiki.',
+	'importfreeimages_description'           => 'Denna sida låter dig söka i bilder med riktig licens på Flickr och importera dem till din wiki.',
 	'importfreeimages_noapikey'              => 'Du har inte konfigurerat din API-nyckel för Flickr. För att göra det måste du skaffa en API-nyckel [http://www.flickr.com/services/api/misc.api_keys.html härifrån] och sätta wgFlickrAPIKey i ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Inga bilder hittades för dina sök kriterier '$1', var god pröva igen.",
 	'importfreeimages_invalidurl'            => 'URL-en "$1" är inte en gilitg Flickr bild.',

@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'multiboilerplate-submit' => 'تحميل',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'multiboilerplate-submit' => 'Ŝarĝu',
+);
+
 /** French (Français)
  * @author Grondin
  */

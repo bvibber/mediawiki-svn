@@ -249,6 +249,7 @@ $allMessages['no'] = array(
 	'whitelisttablepage'       => 'Wikiside',
 	'whitelisttabletype'       => 'Tilgangstype',
 	'whitelisttableexpires'    => 'Utgår',
+	'whitelisttableedit'       => 'Rediger',
 	'whitelistnever'           => 'aldri',
 	'whitelistnummatches'      => '  - $1 treff',
 );
@@ -393,6 +394,12 @@ $allMessages['sk'] = array(
 	'whitelisttablenewdate'     => 'Nový dátum:',
 	'whitelisttablechangedate'  => 'Zmeniť dátum vypršania',
 	'whitelisttablesetedit'     => 'Nastaviť na Upraviť',
+	'whitelisttablesetview'     => 'Nastaviť na Zobrazenie',
+	'whitelisttableremove'      => 'Odstrániť',
+	'whitelistnewpagesfor'      => 'Pridať nové stránky na bielu listinu <b>$1</b><br />
+Ako zástupný znak použite buď * alebo %<br />',
+	'whitelistnewtabledate'     => 'Dátum vypršania:',
+	'whitelistnewtableedit'     => 'Nastaviť na Upraviť',
 	'whitelistnewtableview'     => 'Nastaviť na Zobraziť',
 	'whitelistnewtableprocess'  => 'Spracovať',
 	'whitelistnewtablereview'   => 'Skontrolovať',
@@ -418,11 +425,12 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Sannab
  */
 $allMessages['sv'] = array(
-	'whitelist-desc'            => 'Redigera åtkomsttillåtelsen av begränsade användare',
-	'whitelistedit'             => 'Vitlista åtkomstredigerare',
-	'whitelist'                 => 'Vitlista sidor',
+	'whitelist-desc'            => 'Redigera åtkomsträttigheter för begränsade användare',
+	'whitelistedit'             => 'Rättighetsredigerare för vitlista',
+	'whitelist'                 => 'Vitlistade sidor',
 	'mywhitelistpages'          => 'Mina sidor',
 	'whitelistfor'              => '<center>Nuvarande information för <b>$1<b></center>',
 	'whitelisttablemodify'      => 'Ändra',
@@ -445,11 +453,11 @@ Använd hellre * eller % som jokertecken<br />',
 	'whitelistnewtabledate'     => 'Utgångsdatum:',
 	'whitelistnewtableedit'     => 'Ange att redigera',
 	'whitelistnewtableview'     => 'Ange att visa',
-	'whitelistnewtableprocess'  => 'Processera',
+	'whitelistnewtableprocess'  => 'Behandla',
 	'whitelistnewtablereview'   => 'Granska',
 	'whitelistselectrestricted' => '== Ange begränsad användares namn ==',
 	'whitelistpagelist'         => '{{SITENAME}} sidor för $1',
-	'whitelistnocalendar'       => "<font color='red' size=3>Det ser ut som [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en förutsättning för detta programtillägg, var inte ordentligt installerat!</font>",
+	'whitelistnocalendar'       => "<font color='red' size=3>Det verkar som [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en förutsättning för detta programtillägg, inte har installerats ordentligt!</font>",
 	'whitelistbadtitle'         => 'Dålig titel -',
 	'whitelistoverview'         => '== Översikt av ändringar för $1 ==',
 	'whitelistoverviewcd'       => "* Ändrar datum till '''$1''' för [[:$2|$2]]",
@@ -462,7 +470,7 @@ Använd hellre * eller % som jokertecken<br />',
 $2',
 	'whitelistrequestconf'      => 'Efterfrågan för nya sidor har sänts till $1',
 	'whitelistnonrestricted'    => "Användare '''$1''' är inte en begränsad användare.
-Denna sida är endast användbar till begränsade användare",
+Denna sida är endast tillämpbar på begränsade användare",
 	'whitelistnever'            => 'aldrig',
 	'whitelistnummatches'       => ' - $1 träffar',
 );

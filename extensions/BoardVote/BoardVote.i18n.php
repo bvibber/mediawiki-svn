@@ -2788,7 +2788,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_days'         => 'Jorns',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Representant de l’utilizaire',
-	'boardvote_listintro'    => 'Lista de las personas qua ja an votat :<br /><br />',
+	'boardvote_listintro'    => 'Vaquí la lista de las personas qua ja an votat :<br /><br />',
 	'boardvote_dumplink'     => 'Clicatz aicí',
 	'boardvote_submit'       => "D'acòrdi",
 	'boardvote_strike'       => 'Raiar',

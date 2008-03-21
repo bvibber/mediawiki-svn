@@ -79,6 +79,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'lookupuser_id'       => 'Salutnomo: <tt>#$1</tt>',
+	'lookupuser_email'    => 'Retpoŝto: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname' => 'Reala nomo: $1',
 );
 

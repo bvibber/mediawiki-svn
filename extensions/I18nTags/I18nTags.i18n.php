@@ -51,6 +51,13 @@ $messages['ja'] = array(
 	'i18ntags-desc' => '対応言語における数値書式、文法、複数形に関するi18n関数へのアクセスを提供する',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'i18ntags-desc' => 'सर्व उपलब्ध भाषांमधील संख्यालेखन, व्याकरण व बहुवचने देण्यासाठीची i18n कार्ये वापरा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

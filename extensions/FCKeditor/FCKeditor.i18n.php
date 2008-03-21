@@ -153,6 +153,31 @@ $messages['hsb'] = array(
 	'tog-riched_disable_ns_category_talk'  => 'Rich editor znutřka mjenoweho ruma the "{{ns:Category_talk}}" deaktiwizować',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'textrichditor'                        => 'वाढीव संपादक',
+	'textrichditor-desc'                   => 'विकि पाने संपादित करण्यासाठी FCKeditor वापरा',
+	'tog-riched_disable'                   => 'वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_main'           => 'मुख्य नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_talk'           => '"{{ns:Talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_user'           => '"{{ns:User}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_user_talk'      => '"{{ns:User_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_project'        => '"{{ns:Project}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_project_talk'   => '"{{ns:Project_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_image'          => '"{{ns:Image}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_image_talk'     => '"{{ns:Image_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_mediawiki'      => '"{{ns:MediaWiki}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_mediawiki_talk' => '"{{ns:MediaWiki_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_template'       => '"{{ns:Template}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_template_talk'  => '"{{ns:Template_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_help'           => '"{{ns:Help}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_help_talk'      => '"{{ns:Help_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_category'       => '"{{ns:Category}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_category_talk'  => '"{{ns:Category_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+);
+
 $messages['nl'] = array(
 	'textrichditor' => 'Uitgebreide editor',
 	'textrichditor-desc' => 'Gebruik de FCKeditor voor het bewerken van wiki pagina\'s',

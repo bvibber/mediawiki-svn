@@ -208,9 +208,18 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'pdtest_page_missing' => 'Tietokannasta ei löytynyt kyseistä sivua.',
+	'parserdifftest'      => 'Esikäsittelijöiden eroavaisuudet',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Toimintosivu]] kahden eri esikäsittelijän eroavaisuuksien vertailua varten.',
+	'pdtest_no_target'    => 'Kohdetta ei määritetty.',
+	'pdtest_page_missing' => 'Kyseistä sivua ei löytynyt tietokannasta.',
+	'pdtest_no_changes'   => 'Ei havaittuja muutoksia.',
+	'pdtest_get_text'     => 'Hae teksti sivulta',
+	'pdtest_diff'         => 'Eroavaisuudet',
+	'pdtest_side_by_side' => 'Tulosteen vertailu',
+	'pdt_comparing_page'  => 'Esikäsittelijöiden vertailu sivulle [[$1]]',
 );
 
 /** French (Français)

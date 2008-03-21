@@ -76,8 +76,10 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'inspectcache-ok'   => 'Ek!',
-	'inspectcache-list' => 'Listo',
+	'inspectcache-ok'      => 'Ek!',
+	'inspectcache-delete'  => 'Forigu',
+	'inspectcache-deleted' => 'Forigita Kaŝmemoro',
+	'inspectcache-list'    => 'Listo',
 );
 
 /** French (Français)

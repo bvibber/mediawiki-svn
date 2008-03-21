@@ -152,7 +152,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
+	'regexblock-form-username'   => 'IP Adreso aŭ salutnomo:',
+	'regexblock-form-reason'     => 'Kialo:',
+	'regexblock-already-blocked' => '$1 jam estas forbarita.',
+	'regexblock-stats-username'  => 'Por $1',
+	'regexblock-stats-times'     => 'estis forbarita je',
+	'regexblock-view-all'        => 'Ĉiuj',
+	'regexblock-view-go'         => 'Ek!',
 );
 
 /** French (Français)

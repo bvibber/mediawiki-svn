@@ -65,7 +65,8 @@ $3',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'latexdoc_no_text' => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
+	'latexdoc_no_text'    => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
+	'latexdoc_cant_write' => 'Ne povas skribi dosieron $1',
 );
 
 /** French (Français)

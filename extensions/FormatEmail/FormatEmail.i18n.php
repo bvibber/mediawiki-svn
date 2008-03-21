@@ -113,6 +113,17 @@ Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt
 $2',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'email-desc'   => 'सदस्य इमेलमध्ये स्वरचित वरील/खालील मजकूर (header/footer) वापरण्याची परवानगी देतो.',
+	'email_footer' => '----------------------------------------------------------------------------
+ही इमेल तुम्हाला {{SITENAME}} च्या इमेल सिस्टीम वरुन $1 ने पाठविलेली आहे.
+
+$2',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

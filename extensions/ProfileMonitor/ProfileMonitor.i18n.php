@@ -139,6 +139,7 @@ $messages['nl'] = array(
 	'profiling'              => 'Profilinggegevens',
 	'profiling-process'      => 'Verwerk string:',
 	'profiling-wildcard'     => 'Gebruik wildcard',
+	'profiling-ok'           => 'OK',
 	'profiling-data'         => 'Profilinggegevens voor `$1`',
 	'profiling-data-process' => 'Verwerken',
 	'profiling-data-count'   => 'Aantal',

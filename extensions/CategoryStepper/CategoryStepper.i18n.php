@@ -147,6 +147,14 @@ $messages['lb'] = array(
 	'categorystepper-end'   => '(Enn vun der Kategorie)',
 );
 
+/** Lao (ລາວ)
+ * @author Passawuth
+ */
+$messages['lo'] = array(
+	'categorystepper-end'   => '(ຈົບໝວດ)',
+	'categorystepper-start' => '(ເລິ່ມໝວດ)',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -253,6 +261,14 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'categorystepper-end'   => '(వర్గపు చివర)',
 	'categorystepper-start' => '(వర్గపు మొదలు)',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'categorystepper-end'   => '(จบหมวดหมู่)',
+	'categorystepper-start' => '(เริ่มหมวดหมู่)',
 );
 
 /** Volapük (Volapük)

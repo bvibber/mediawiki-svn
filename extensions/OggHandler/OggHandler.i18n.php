@@ -1141,7 +1141,7 @@ $messages['nn'] = array(
 	'ogg-desc-link'           => 'Om denne fila',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -1167,7 +1167,7 @@ $messages['no'] = array(
 	'ogg-player-soundthumb'   => 'Ingen medieavspiller',
 	'ogg-player-selected'     => '(valgt)',
 	'ogg-use-player'          => 'Bruk avspiller:',
-	'ogg-more'                => 'Mer...',
+	'ogg-more'                => 'Mer&nbsp;...',
 	'ogg-dismiss'             => 'Lukk',
 	'ogg-download'            => 'Last ned fil',
 	'ogg-desc-link'           => 'Om denne filen',
@@ -1270,17 +1270,18 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'ogg-short-audio'   => 'Ogg $1 غږيزه دوتنه، $2',
-	'ogg-short-video'   => 'Ogg $1 ويډيويي دوتنه، $2',
-	'ogg-short-general' => 'Ogg $1 رسنيزه دوتنه، $2',
-	'ogg-play'          => 'غږول',
-	'ogg-stop'          => 'درول',
-	'ogg-play-video'    => 'ويډيو غږول',
-	'ogg-play-sound'    => 'غږ غږول',
-	'ogg-more'          => 'نور...',
-	'ogg-dismiss'       => 'تړل',
-	'ogg-download'      => 'دوتنه ښکته کول',
-	'ogg-desc-link'     => 'د همدې دوتنې په اړه',
+	'ogg-short-audio'     => 'Ogg $1 غږيزه دوتنه، $2',
+	'ogg-short-video'     => 'Ogg $1 ويډيويي دوتنه، $2',
+	'ogg-short-general'   => 'Ogg $1 رسنيزه دوتنه، $2',
+	'ogg-play'            => 'غږول',
+	'ogg-stop'            => 'درول',
+	'ogg-play-video'      => 'ويډيو غږول',
+	'ogg-play-sound'      => 'غږ غږول',
+	'ogg-player-selected' => '(ټاکل شوی)',
+	'ogg-more'            => 'نور...',
+	'ogg-dismiss'         => 'تړل',
+	'ogg-download'        => 'دوتنه ښکته کول',
+	'ogg-desc-link'       => 'د همدې دوتنې په اړه',
 );
 
 /** Portuguese (Português)

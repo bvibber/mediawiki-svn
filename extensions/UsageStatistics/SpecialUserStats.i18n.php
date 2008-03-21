@@ -287,7 +287,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'specialuserstats'               => 'Estatísticas do Uso',
 	'usagestatistics'                => 'Estatísticas do Uso',
-	'usagestatisticsfor'             => '<h2>Estatísticas de uso para [[:usuario:$1|$1]]</h2>',
+	'usagestatisticsfor'             => '<h2>Estatísticas de uso para [[User:$1|$1]]</h2>',
 	'usagestatisticsallusers'        => 'Todos os Usuarios',
 	'usagestatisticsinterval'        => 'Intervalo',
 	'usagestatisticstype'            => 'Clase',
@@ -465,7 +465,7 @@ $messages['nn'] = array(
 	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -639,7 +639,7 @@ $messages['sv'] = array(
 	'usagestatisticsincremental'      => 'Intervallvis',
 	'usagestatisticsincremental-text' => 'Intervallvis',
 	'usagestatisticscumulative'       => 'Kumulativ',
-	'usagestatisticscumulative-text'  => 'Kumulativ',
+	'usagestatisticscumulative-text'  => 'kumulativ',
 	'usagestatisticscalselect'        => 'Välj',
 	'usagestatistics-editindividual'  => '$1 statistik över antal redigeringar för enskilda användare',
 	'usagestatistics-editpages'       => '$1 statistik över antal redigerade sidor för enskilda användare',

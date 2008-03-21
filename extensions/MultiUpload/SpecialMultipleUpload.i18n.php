@@ -103,6 +103,13 @@ $messages['el'] = array(
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Crt

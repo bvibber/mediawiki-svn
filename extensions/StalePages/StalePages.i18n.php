@@ -133,11 +133,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Sannab
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'stalepages'         => 'Föråldrade sidor',
-	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under dom sista $1 dagarna.',
+	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under de sista $1 dagarna.',
 );
 
 /** Telugu (తెలుగు)

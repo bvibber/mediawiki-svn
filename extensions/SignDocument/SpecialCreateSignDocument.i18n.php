@@ -167,7 +167,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'createsigndoc-email' => 'Retpoŝta adreso',
+	'createsigndoc-pagename' => 'Paĝo:',
+	'createsigndoc-email'    => 'Retpoŝta adreso',
 );
 
 $messages['ext'] = array(

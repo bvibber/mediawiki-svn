@@ -46,6 +46,13 @@ $messages['lb'] = array(
 	'gnuplot-desc' => 'Setzt den tag <code><nowiki><gnuplot></nowiki></code> derbäi fir Gnuplot ze benotzen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'gnuplot-desc' => 'Gnuplot मध्ये <code><nowiki><gnuplot></nowiki></code> खूण वाढविते',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

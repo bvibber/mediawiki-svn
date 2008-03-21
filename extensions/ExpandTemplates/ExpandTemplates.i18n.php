@@ -167,14 +167,15 @@ $messages['co'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Mormegil
  * @author Matěj Grabovský
  * @author Danny B.
  */
 $messages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
 	'expandtemplates-desc'             => 'Rozbaluje šablony, funkce syntaktického analyzátoru a proměnné; zobrazuje rozbalený wikitext a náhled stránky, jak se zobrazí',
-	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
-	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code>{{PAGENAME}}</code> apod.:',
+	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}}</code> – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
+	'expand_templates_title'           => 'Název stránky kvůli kontextu pro {{PAGENAME}} apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
 	'expand_templates_output'          => 'Výstup',
 	'expand_templates_xml_output'      => 'Výstup XML',

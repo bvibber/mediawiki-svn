@@ -39,6 +39,13 @@ $messages['lb'] = array(
 	'fixedimage-desc' => 'Setzt den Tag <tt><nowiki><fundraising></nowiki></tt> als Bild derbäi',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> खूण एक चित्र म्हणून वाढविते',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -143,6 +143,17 @@ $messages['el'] = array(
 	'openidlanguage' => 'Γλώσσα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'openidfullname'       => 'Plena nomo',
+	'openidemail'          => 'Retadreso',
+	'openidlanguage'       => 'Lingvo',
+	'openidchoosefull'     => 'Via plena nomo ($1)',
+	'openidchoosepassword' => 'pasvorto:',
+);
+
 /** French (Français)
  * @author Grondin
  */

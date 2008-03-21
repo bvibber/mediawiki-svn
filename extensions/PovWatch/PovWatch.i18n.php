@@ -127,6 +127,13 @@ $messages['el'] = array(
 	'povwatch_title' => 'Τίτλος:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'povwatch_title' => 'Titolo:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur

@@ -57,6 +57,13 @@ $messages['el'] = array(
 	'randomincategory-label' => 'Κατηγορία:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'randomincategory-submit' => 'Ek!',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Cedric31

@@ -2571,7 +2571,6 @@ $wdMessages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab
- * @author M.M.S.
  */
 $wdMessages['sv'] = array(
 	'datasearch'                      => 'Wikidata: Datasökning',
@@ -2579,10 +2578,10 @@ $wdMessages['sv'] = array(
 	'languages'                       => 'Wikidata: Språkhanterare',
 	'ow_save'                         => 'Spara',
 	'ow_history'                      => 'Historia',
-	'ow_datasets'                     => 'Data-set val',
+	'ow_datasets'                     => 'Val av data-set',
 	'ow_noedit_title'                 => 'Ingen tillåtelse till redigering',
 	'ow_noedit'                       => 'Du är inte tillåten till att redigera sidor i datasetet "$1". Var god se [[{{MediaWiki:Ow editing policy url}}|våra redigerings riktlinjer]].',
-	'ow_uipref_datasets'              => 'Standard visning',
+	'ow_uipref_datasets'              => 'Standardvisning',
 	'ow_uiprefs'                      => 'Wikidata',
 	'ow_none_selected'                => '<Ingen vald>',
 	'ow_dm_OK'                        => 'OK',
@@ -2608,7 +2607,7 @@ $wdMessages['sv'] = array(
 	'ow_Property'                     => 'Attribut',
 	'ow_Value'                        => 'Värde',
 	'ow_meaningsofsubtitle'           => '<em>Wiki länk:</em> [[$1]]',
-	'ow_copy_help'                    => 'En dag vill vi kunna hjälpa dig.',
+	'ow_copy_help'                    => 'Vi kanske kommer att hjälpa dig någon dag.',
 );
 
 /** Tamil (தமிழ்)

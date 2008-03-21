@@ -58,6 +58,13 @@ $messages['de'] = array(
         'msfunc_div_zero' => 'Division durch Null',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'msfunc_div_zero' => 'Divido per nulo',
+);
+
 $messages['fr'] = array(
 	'msfunc_nan' => 'Le résultat n’est pas un nombre.',
 	'msfunc_inf' => 'Le résultat est l’infini.',

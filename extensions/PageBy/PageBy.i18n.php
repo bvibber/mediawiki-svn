@@ -71,6 +71,13 @@ $messages['el'] = array(
 	'pageby-anon' => '<i>ανώνυμος</i>',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pageby-first' => 'Paĝo kreiita de $1, $2',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */

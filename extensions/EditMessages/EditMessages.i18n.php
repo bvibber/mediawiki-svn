@@ -47,3 +47,163 @@ $messages['de'] = array(
 	'editmsg-patch-failed'     => 'Patch ist fehlgeschlagen mit dem exit-Status $1.',
 	'editmsg-patch-success'    => 'Erfolgreich gepatcht.',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Édition basée sur Internet]] d’un grand nombre de fichiers Messages*.php',
+	'editmessages'             => 'Modifier les messages',
+	'editmsg-target'           => 'Message cible :',
+	'editmsg-search'           => 'Rechercher',
+	'editmsg-show-list'        => 'Affichage des valeurs pour le nom du message « $1 »',
+	'editmsg-get-patch'        => 'Créer un patch',
+	'editmsg-new-search'       => 'Nouvelle recherche',
+	'editmsg-warning-parse1'   => '* Expression courante du nom de message non détectée : $1',
+	'editmsg-warning-parse2'   => '* Caractère de citation attendu après la flèche : $1',
+	'editmsg-warning-parse3'   => '* Fin de la chaîne de caractères non trouvée : $1',
+	'editmsg-warning-file'     => '* Des erreurs de lecture du fichier ont été relevées pour les langues suivantes : $1',
+	'editmsg-warning-mismatch' => '* Le texte original n’a pas pris la valeur attendue pour les langues suivantes : $1',
+	'editmsg-apply-patch'      => 'Appliquer le patch',
+	'editmsg-no-patch'         => 'Impossible pour exécuter la commande du « patch »',
+	'editmsg-patch-failed'     => 'Échec du patch avec l’erreur de sortie $1',
+	'editmsg-patch-success'    => 'Patch appliqué avec succès.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'editmessages-desc'  => "[[Special:EditMessages|Änneren am Web]] vun enger grousser Zuel vu ''Messages*.php-Dateien''",
+	'editmessages'       => 'Systemmessage änneren',
+	'editmsg-target'     => 'Systemmessage dee geännert soll ginn:',
+	'editmsg-search'     => 'Sich',
+	'editmsg-show-list'  => 'Inhalt vum Systemmessage "$1"',
+	'editmsg-new-search' => 'Nei Sich',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'editmessages-desc'        => 'Messages*.php संचिकेतील संदेश संपादण्यासाठी [[Special:EditMessages|आंतरजालावर आधारीत संपादन सुविधा]]',
+	'editmessages'             => 'संदेश संपादा',
+	'editmsg-target'           => 'लक्ष्य संदेश:',
+	'editmsg-search'           => 'शोधा',
+	'editmsg-show-list'        => '"$1" या नावाने असणारे संदेश दाखवित आहे',
+	'editmsg-get-patch'        => 'पॅच तयार करा',
+	'editmsg-new-search'       => 'नवीन शोध',
+	'editmsg-warning-parse1'   => '* संदेशाचे नाव जुळले नाही: $1',
+	'editmsg-warning-parse2'   => '* बाणानंतर अवतरण चिन्ह पाहिजे: $1',
+	'editmsg-warning-parse3'   => '* किमतीच्या शेवटचे चिन्ह (end of string character) सापडले नाही: $1',
+	'editmsg-warning-file'     => '* खालील भाषांकरीता संचिका वाचण्यात त्रुटी आलेल्या आहेत: $1',
+	'editmsg-warning-mismatch' => '* खालील भाषांमध्ये मूळ मजकूरात अपेक्षित किमती सापडल्या नाहीत: $1',
+	'editmsg-apply-patch'      => 'पॅच लावा',
+	'editmsg-no-patch'         => '"patch" क्रिया करता आलेली नाही',
+	'editmsg-patch-failed'     => '$1 अशी स्थिती दाखवून पॅच रद्द झालेला आहे',
+	'editmsg-patch-success'    => 'पॅच यशस्वी.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'editmessages'          => 'Berichten bewerken',
+	'editmsg-target'        => 'Doelbericht:',
+	'editmsg-search'        => 'Zoeken',
+	'editmsg-show-list'     => 'De waarden voor bericht "$1" worden weergegeven',
+	'editmsg-get-patch'     => 'Patch maken',
+	'editmsg-new-search'    => 'Opnieuw zoeken',
+	'editmsg-apply-patch'   => 'Aanpassingen uitvoeren',
+	'editmsg-no-patch'      => 'Het commando "patch" kan niet uitgevoerd worden',
+	'editmsg-patch-failed'  => 'Aanpassen is mislukt met als foutcode $1',
+	'editmsg-patch-success' => 'Aanpassen geslaagd.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Nettbasert redigering]] av et stort antall Messages*.php-filer',
+	'editmessages'             => 'Rediger beskjeder',
+	'editmsg-target'           => 'Målbeskjed:',
+	'editmsg-search'           => 'Søk',
+	'editmsg-show-list'        => 'Vis verdier for beskjednavnet «$1»',
+	'editmsg-get-patch'        => 'Lag oppdatering',
+	'editmsg-new-search'       => 'Nytt søk',
+	'editmsg-warning-parse1'   => '* Regulært uttrykk for beskjednavn passer ikke: $1',
+	'editmsg-warning-parse2'   => '* Sitattegn forventet etter pil: $1',
+	'editmsg-warning-parse3'   => '* Slutten på verditekst ikke funnet: $1',
+	'editmsg-warning-file'     => '* Fillesingsfeil ble funnet for følgende språk: $1',
+	'editmsg-warning-mismatch' => '* Originalteksten hadde ikke den forventede verdien for følgende språk: $1',
+	'editmsg-apply-patch'      => 'Bruk oppdatering',
+	'editmsg-no-patch'         => 'Kunne ikke utføre «patch»-kommando',
+	'editmsg-patch-failed'     => 'Oppdatering mislyktes med avslutningsstatus $1',
+	'editmsg-patch-success'    => 'Oppdatert.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Редактирование через веб-интерфейс]] большого количества файлов Messages*.php',
+	'editmessages'             => 'Редактирование сообщений',
+	'editmsg-target'           => 'Целевое сообщение:',
+	'editmsg-search'           => 'Поиск',
+	'editmsg-show-list'        => 'Отображение значений для сообщения с именем «$1»',
+	'editmsg-get-patch'        => 'Создать патч',
+	'editmsg-new-search'       => 'Новый поиск',
+	'editmsg-warning-parse1'   => '* Не подходит регулярное выражение имени сообщения: $1',
+	'editmsg-warning-parse2'   => '* Ожидается символ кавычки после стрелки: $1',
+	'editmsg-warning-parse3'   => '* Не найдено окончание строки: $1',
+	'editmsg-warning-file'     => '* Ошибки чтения файлов для следующих языков: $1',
+	'editmsg-warning-mismatch' => '* Оригинальный текст не имеет ожидаемого значения для следующих языков: $1',
+	'editmsg-apply-patch'      => 'Применить патч',
+	'editmsg-no-patch'         => 'Невозможно выполнить команду «patch»',
+	'editmsg-patch-failed'     => 'Применение патча завершено с ошибой, код возврата $1',
+	'editmsg-patch-success'    => 'Патч успешно применён.',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'editmessages-desc'  => '[[Special:EditMessages|Nätbaserad redigering]] av ett stort antal Messages*.php-filer',
+	'editmessages'       => 'Redigera meddelanden',
+	'editmsg-target'     => 'Målmeddelande:',
+	'editmsg-search'     => 'Sök',
+	'editmsg-show-list'  => 'Visar värden för meddelandenamnet "$1"',
+	'editmsg-get-patch'  => 'Skapa uppdatering',
+	'editmsg-new-search' => 'Ny sökning',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'editmsg-search'       => 'ค้นหา',
+	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดในภาษาดังกล่าว : $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Sửa đổi]] nhiều tập tin Messages*.php cùng lúc bằng web',
+	'editmessages'             => 'Sửa thông điệp',
+	'editmsg-target'           => 'Thông điệp đích:',
+	'editmsg-search'           => 'Tìm kiếm',
+	'editmsg-show-list'        => 'Hiển thị các giá trị cho thông điệp có tên “$1”',
+	'editmsg-get-patch'        => 'Tạo bản vá',
+	'editmsg-new-search'       => 'Tìm kiếm mới',
+	'editmsg-warning-parse1'   => '* Biểu thức chính quy của tên thông điệp không có kết quả: $1',
+	'editmsg-warning-parse2'   => '* Thiếu dấu nháy sao mũi tên: $1',
+	'editmsg-warning-parse3'   => '* Không tìm thấy chuỗi giá trị cuối: $1',
+	'editmsg-warning-file'     => '* Lỗi đọc tập tin đối với các ngôn ngữ sau: $1',
+	'editmsg-warning-mismatch' => '* Văn bản gốc không có giá trị mong đợi cho các ngôn ngữ sau: $1',
+	'editmsg-apply-patch'      => 'Áp dụng bản vá',
+	'editmsg-no-patch'         => 'Không thể thực hiện lệnh "vá"',
+	'editmsg-patch-failed'     => 'Vá thất bại, lỗi trả về $1',
+	'editmsg-patch-success'    => 'Vá thành công.',
+);
+
