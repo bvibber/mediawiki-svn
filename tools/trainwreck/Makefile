@@ -1,9 +1,13 @@
-CC		= gcc
-#CFLAGS		= -g -mt -m64 -xc99=none
-CFLAGS		= -g -D_REENTRANT -m64
+#CC		= gcc
+CC		= cc
+CFLAGS		= -g -mt -xc99=none -D_FILE_OFFSET_BITS=64
+#CFLAGS		= -g -D_REENTRANT -m64 -DBIG_TABLES -DHAVE_RWLOCK_T
+#CFLAGS		= -g -D_REENTRANT -D_FILE_OFFSET_BITS=64
 LDFLAGS		=
 MYSQL_CFLAGS:sh	= mysql_config --include
-MYSQL_LIBS:sh	= mysql_config --libs_r
+#MYSQL_LIBS:sh	= mysql_config --libs_r
+#MYSQL_LIBS	= -L/usr/local/mysql/lib/mysql -R/usr/local/mysql/lib/mysql -lmysqlclient
+MYSQL_LIBS	= -L/opt/mysql/lib/mysql -R/opt/mysql/lib/mysql -lmysqlclient
 INCLUDES	=
 LIBS		= -lrt -ldoor
 PROG		= trainwreck

@@ -459,9 +459,8 @@ read_master_logs(p)
 {
 	set_thread_name("reader");
 
-	logmsg("waiting for writers to become ready...");
-
 	(void) pthread_mutex_lock(&wi_mtx);
+	logmsg("waiting for %d writers to become ready...", writers_initialising);
 	while (writers_initialising > 0)
 		(void) pthread_cond_wait(&wi_cond, &wi_mtx);
 	(void) pthread_mutex_unlock(&wi_mtx);
@@ -881,7 +880,6 @@ int	i;
 
 	writers_initialising = nwriters;
 	(void) pthread_mutex_unlock(&wst_mtx);
-	
 
 	for (i = 0; i < nwriters; ++i) {
 		(void) pthread_create(&writers[i].wr_thread, NULL, slave_write_thread, &writers[i]);
@@ -926,8 +924,8 @@ char		 namebuf[16];
 	}
 
 	if (retrieve_binlog_position(self) != 0) {
-		logmsg("could not retrieve binlog position");
-		return 0;
+		logmsg("could not retrieve binlog position; trying to continue anyway");
+		/*return 0;*/
 	}
 
 	(void) pthread_mutex_lock(&wi_mtx);
@@ -1032,7 +1030,7 @@ static void
 do_ignore_errno(n)
 	unsigned n;
 {
-	ignorable_errno = realloc(ignorable_errno, nignorable + 1);
+	ignorable_errno = realloc(ignorable_errno, sizeof(int) * (nignorable + 1));
 	ignorable_errno[nignorable] = n;
 	nignorable++;
 }
@@ -1115,6 +1113,7 @@ retrieve_binlog_position(writer)
 	writer_t *writer;
 {
 int		 rstat;
+ssize_t		 n;
 struct stat	 st;
 char		*buf;
 char		 sname[128];
@@ -1143,7 +1142,7 @@ char		 sname[128];
 	}
 
 	buf = calloc(1, st.st_size + 1);
-	if (read(rstat, buf, st.st_size) != st.st_size) {
+	if ((n = read(rstat, buf, st.st_size)) != st.st_size) {
 		logmsg("short read on state file \"%s\": %s",
 				sname, strerror(errno));
 		exit(1);
