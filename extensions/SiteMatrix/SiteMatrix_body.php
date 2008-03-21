@@ -108,6 +108,7 @@ class SiteMatrixPage extends SpecialPage {
 		wfLoadExtensionMessages( 'SiteMatrix' );
 		
 		$this->setHeaders();
+		$this->outputHeader();
 
 		$matrix = new SiteMatrix();
 
