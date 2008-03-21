@@ -316,7 +316,7 @@ To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zr
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'asksql'          => 'SQL lekérdezés',

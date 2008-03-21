@@ -184,7 +184,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'block_title_error_page_title' => 'Blokkolt cím',

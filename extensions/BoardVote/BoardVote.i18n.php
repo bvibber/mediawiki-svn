@@ -1585,7 +1585,7 @@ Vèsyon kripte an ap vini. Li ap afiche piblikman anlè [[Special:Boardvote/dump
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  * @author KossuthRad
  * @author Tgr
  * @author Dorgan

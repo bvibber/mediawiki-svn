@@ -208,7 +208,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'deletedcontributions'      => 'Törölt szerkesztések',

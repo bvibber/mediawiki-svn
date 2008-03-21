@@ -82,7 +82,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'poem-desc' => '<tt>&lt;poem&gt;</tt> tag a versek formázásához',

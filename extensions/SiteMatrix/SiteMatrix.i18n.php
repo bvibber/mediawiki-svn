@@ -400,7 +400,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'sitematrix'           => 'Az összes Wikimedia wiki listája',

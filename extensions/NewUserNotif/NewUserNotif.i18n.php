@@ -89,7 +89,7 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  * @author Tgr
  */
 $messages['hu'] = array(

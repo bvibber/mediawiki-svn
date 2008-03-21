@@ -101,7 +101,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'randomincategory'            => 'Véletlen lap egy kategóriából',

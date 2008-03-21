@@ -79,7 +79,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'protectsection_add_remove' => 'Egy védett fejezetet próbáltál meg hozzáadni vagy eltávolítani.',

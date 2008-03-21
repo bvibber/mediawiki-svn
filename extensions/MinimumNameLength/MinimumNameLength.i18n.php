@@ -83,7 +83,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'minnamelength-error' => 'A felhasználói neved túl rövid, minimum $1 karakter hosszúnak kell lennie.',

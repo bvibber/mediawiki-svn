@@ -334,7 +334,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'parserdifftest'      => 'Értelmezők közötti eltérés tesztelése',

@@ -92,7 +92,7 @@ Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'email_footer' => '----------------------------------------------------------------------------

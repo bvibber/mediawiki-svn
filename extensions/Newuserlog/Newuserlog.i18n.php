@@ -413,7 +413,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dorgan
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'newuserlogpage'           => 'Új felhasználók naplója',

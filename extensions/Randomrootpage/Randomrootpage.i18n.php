@@ -48,7 +48,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'randomrootpage'      => 'Véletlen lap a gyökérből',

@@ -98,7 +98,7 @@ $messages['id'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'msfunc_nan'      => 'A kapott érték nem szám',

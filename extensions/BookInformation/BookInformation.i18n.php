@@ -415,7 +415,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author KossuthRad
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'bookinfo-header'            => 'Könyv információ',

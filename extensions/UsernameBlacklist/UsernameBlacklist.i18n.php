@@ -410,7 +410,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'usernameblacklist-desc'          => 'Egy [[MediaWiki:Usernameblacklist|feketelista]] segítségével megakadályozhatjuk a listán szereplő reguláris kifejezésekre illeszkedő felhasználói nevek létrehozását.',

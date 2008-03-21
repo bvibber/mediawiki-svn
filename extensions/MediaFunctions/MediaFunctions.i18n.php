@@ -80,7 +80,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'mediafunctions-invalid-title' => '„$1” nem érvényes cím',

@@ -673,7 +673,7 @@ Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće r
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'lucene-desc'           => 'Felület az Apache Lucene keresőmotor számára',

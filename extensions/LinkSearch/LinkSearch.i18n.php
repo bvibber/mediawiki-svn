@@ -348,7 +348,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  * @author Tgr
  */
 $messages['hu'] = array(

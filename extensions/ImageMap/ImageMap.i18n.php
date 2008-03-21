@@ -297,7 +297,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author KossuthRad
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'imagemap_desc'               => 'Lehetővé teszi kliensoldali imagemap-ek létrehozását a <tt><nowiki><imagemap></nowiki></tt> tag segítségével',

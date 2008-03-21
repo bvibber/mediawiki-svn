@@ -183,7 +183,7 @@ $messages['ht'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'assert_edit_title'   => 'Az előfeltételezés hamis',

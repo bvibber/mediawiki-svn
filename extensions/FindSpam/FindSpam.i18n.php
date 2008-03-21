@@ -122,7 +122,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dorgan
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'findspam'    => 'Spam keresése',

@@ -112,7 +112,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'pageby-first'        => 'Az oldalt $1 készítette, $2-kor',

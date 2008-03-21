@@ -240,7 +240,7 @@ Zapisaj datajowe mjeno bjez prefiksa "{{ns:image}}:".',
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'filepath'         => 'Fájlelérés',

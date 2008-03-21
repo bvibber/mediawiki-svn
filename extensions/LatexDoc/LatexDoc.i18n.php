@@ -127,7 +127,7 @@ $3',
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'latexdoc_no_text'         => 'Az oldal nem tartalmaz szöveget, nem lehet elkészíteni a DVI-t',

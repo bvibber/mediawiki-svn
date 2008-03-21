@@ -112,7 +112,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $messages['hu'] = array(
 	'minipreview-files_in_category'   => '$1 fájl található a kategóriában.',

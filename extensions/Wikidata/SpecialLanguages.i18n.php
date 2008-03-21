@@ -1142,7 +1142,7 @@ $wdMessages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  */
 $wdMessages['hu'] = array(
 	'ow_save'                          => 'Mentés',

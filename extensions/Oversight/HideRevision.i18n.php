@@ -676,7 +676,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 );
 
 /** Hungarian (Magyar)
- * @author Bdanee
+ * @author Dani
  * @author KossuthRad
  */
 $messages['hu'] = array(
