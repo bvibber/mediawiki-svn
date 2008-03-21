@@ -17,7 +17,8 @@ $wgExtensionMessagesFiles['DidYouMean'] =  dirname(__FILE__) . '/DidYouMean.i18n
 
 # do database lookup from these
 $wgHooks['ArticleNoArticleText'][] = 'wfDymArticleNoArticleText';
-$wgHooks['SpecialSearchNogomatch'][] = 'wfDymSpecialSearchNogomatch';
+$wgHooks['SpecialSearchResults'][] = 'wfDymSpecialSearchNoResults';
+$wgHooks['SpecialSearchNoResults'][] = 'wfDymSpecialSearchNoResults';
 
 # db lookup + parse existing {{see}} and add enhanced one with db results
 $wgHooks['ParserBeforeStrip'][] = 'wfDymParserBeforeStrip';
@@ -59,12 +60,12 @@ function wfDymArticleNoArticleText( &$article, &$text ) {
 # this is called when using the Go/Search box but it is not called when entering
 # a URL for a non-existing article
 
-function wfDymSpecialSearchNogomatch( &$title ) {
+function wfDymSpecialSearchNoResults( $term ) {
 	global $wgOut;
 
 	wfDebug( 'HIPP: ' . __METHOD__ . "\n" );
 
-	$sees = wfDymLookup( 0, $title->getText() );
+	$sees = wfDymLookup( 0, $term );
 
 	sort($sees);
 
