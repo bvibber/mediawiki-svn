@@ -14,7 +14,8 @@ $messages['en'] = array(
 	'importfreeimages'                => 'Import Free Images',
 	'importfreeimages-desc'           => 'Provides a way of [[Special:ImportFreeImages|importing properly licensed photos]] from [http://www.flickr.com flickr]',
 	'importfreeimages_description'    => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',
-	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key. To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
+	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key.
+To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'No photos were found for your search criteria \'$1\', please try again.',
 	'importfreeimages_invalidurl'     => 'The URL "$1" is not a valid Flickr image.',
 	'importfreeimages_owner'          => 'Author',
@@ -95,7 +96,7 @@ $messages['eo'] = array(
 	'importfreeimages'                       => 'Importu Senpagajn Bildojn',
 	'importfreeimages-desc'                  => 'Ebligas fojon [[Special:ImportFreeImages|importi ĝuste permesmarkitajn fotojn]] de [http://www.flickr.com Flickr]',
 	'importfreeimages_description'           => 'Ĉi paĝo ebligas al vi serĉi ĝuste permesmarkitajn fotojn de Flickr kaj importi ilin al vian vikion.',
-	'importfreeimages_noapikey'              => 'Vi ne konfiguris vian Flickr API-ŝlosilo. Fari tiel, bonvolu akiri API-ŝlosilon de 
+	'importfreeimages_noapikey'              => 'Vi ne konfiguris vian Flickr API-ŝlosilo. Fari tiel, bonvolu akiri API-ŝlosilon de
 [http://www.flickr.com/services/api/misc.api_keys.html ĉi tie] kaj baskuli wgFlickrAPIKey en ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Neniaj fotoj estis trovitaj por via serĉesprimo '$1'; bonvolu reprovi.",
 	'importfreeimages_invalidurl'            => 'La URL-o "$1" ne estas valida bildo de Flickr.',

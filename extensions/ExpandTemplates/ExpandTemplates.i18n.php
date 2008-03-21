@@ -10,8 +10,8 @@ $messages = array();
 $messages['en'] = array(
 	'expandtemplates'                  => 'Expand templates',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expands templates, parser functions and variables]] to show expanded wikitext and preview rendered page',
-	'expand_templates_intro'           => 'This special page takes some text and expands
-all templates in it recursively. It also expands parser functions like
+	'expand_templates_intro'           => 'This special page takes some text and expands all templates in it recursively.
+It also expands parser functions like
 <nowiki>{{</nowiki>#if:...}}, and variables like
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;in fact pretty much everything in double-braces.
 It does this by calling the relevant parser stage from MediaWiki itself.',
@@ -1088,4 +1088,3 @@ $messages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
 );
-
