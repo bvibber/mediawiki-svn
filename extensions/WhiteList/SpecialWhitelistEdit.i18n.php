@@ -72,7 +72,9 @@ Use either * or % as wildcard character<br />",
 	'whitelistoverviewrm'         => "* Removing access to [[:$1|$1]]",
 	'whitelistoverviewna'         => "* Adding [[:$1|$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
 	'whitelistrequest'            => "Request access to more pages",
-	'whitelistrequestmsg'         => "$1 has requested access to the following pages:\n\n$2",
+	'whitelistrequestmsg'         => "$1 has requested access to the following pages:
+
+$2",
 	'whitelistrequestconf'        => "Request for new pages was sent to $1",
 	'whitelistnonrestricted'      => "User '''$1''' is not a restricted user.
 This page is only applicable to restricted users",

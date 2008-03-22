@@ -27,7 +27,9 @@ $messages['en'] = array(
 	'patrol-reverted-ok' => 'The edit was reverted.',
 	'patrol-reverted-failed' => 'The edit could not be reverted.',
 	'patrol-skipped-ok' => 'Ignoring edit.',
-	'patrol-reasons' => "* Simple vandalism\n* Newbie test\n* See talk page",
+	'patrol-reasons' => "* Simple vandalism
+* Newbie test
+* See talk page",
 	'patrol-another' => 'Show another edit, if available.',
 	'patrol-stopped' => 'You have opted not to patrol another edit. $1',
 	'patrol-resume' => 'Click here to resume.',
@@ -110,7 +112,9 @@ $messages['de'] = array(
 	'patrol-reverted-ok'     => 'Die Bearbeitung wurde zurückgesetzt.',
 	'patrol-reverted-failed' => 'Die Bearbeitung kann nicht zurückgesetzt werden.',
 	'patrol-skipped-ok'      => 'Bearbeitung wird ignoriert.',
-	'patrol-reasons'         => "* Einfacher Vandalismus\n* Test eines Neulings\n* Siehe Diskussionsseite",
+	'patrol-reasons'         => "* Einfacher Vandalismus
+* Test eines Neulings
+* Siehe Diskussionsseite",
 	'patrol-another'         => 'Zeige eine weitere Bearbeitung, sofern verfügbar.',
 	'patrol-stopped'         => 'Sie haben entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
 	'patrol-resume'          => 'Klicken Sie hier zum fortsetzen.',
@@ -147,7 +151,9 @@ $messages['es'] = array(
 	'patrol-reverted-ok' => 'The edición fue revertida.',
 	'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
 	'patrol-skipped-ok' => 'Ignorando la edición.',
-	'patrol-reasons' => "*Vandalismo simple\n* Prueba de usuario novato\n* Ver la página de discusión",
+	'patrol-reasons' => "*Vandalismo simple
+* Prueba de usuario novato
+* Ver la página de discusión",
 	'patrol-another' => 'Mostrar otra edición (si disponible).',
 	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
@@ -168,7 +174,9 @@ $messages['fr'] = array(
 	'patrol-reverted-ok' => 'L’édition a été annulée.',
 	'patrol-reverted-failed' => 'L’édition n’a pu être annulée.',
 	'patrol-skipped-ok' => 'Ignorer l’édition.',
-	'patrol-reasons' => "* Simple vandalisme\n* Test de débutant\n* Voir page de discussion",
+	'patrol-reasons' => "* Simple vandalisme
+* Test de débutant
+* Voir page de discussion",
 	'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
 	'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
 	'patrol-resume' => 'Cliquer ici pour reprendre.',
@@ -275,7 +283,9 @@ $messages['id'] = array(
 	'patrol-reverted-ok'     => 'Suntingan dikembalikan.',
 	'patrol-reverted-failed' => 'Suntingan tidak dapat dikembalikan.',
 	'patrol-skipped-ok'      => 'Suntingan diabaikan.',
-	'patrol-reasons'         => "* Vandalisme sederhana\n* Pengujian pemula\n* Lihat halaman pembicaraan",
+	'patrol-reasons'         => "* Vandalisme sederhana
+* Pengujian pemula
+* Lihat halaman pembicaraan",
 	'patrol-another'         => 'Tampilkan suntingan lain jika tersedia.',
 	'patrol-stopped'         => 'Anda telah memilih untuk tidak mengontrol suntingan lain. $1',
 	'patrol-resume'          => 'Klik di sini untuk melanjutkan.',
@@ -313,7 +323,9 @@ $messages['it'] = array(
 	'patrol-reverted-ok' => 'La modifica è stata annullata.',
 	'patrol-reverted-failed' => 'Impossibile annullare la modifica.',
 	'patrol-skipped-ok' => 'Modifica ignorata.',
-	'patrol-reasons' => "* Vandalismo semplice\n* Prova di nuovo utente\n* Vedi pagina di discussione",
+	'patrol-reasons' => "* Vandalismo semplice
+* Prova di nuovo utente
+* Vedi pagina di discussione",
 	'patrol-another' => 'Mostra un\'altra modifica, se disponibile.',
 	'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
 	'patrol-resume' => 'Fare clic qui per riprendere.',
@@ -655,7 +667,9 @@ $messages['yue'] = array(
 	'patrol-reverted-ok' => '打咗版嘢回頭。',
 	'patrol-reverted-failed' => '打唔到哩版嘢回頭。',
 	'patrol-skipped-ok' => '唔理哩次編輯。',
-	'patrol-reasons' => "* 塗鴉\n* 生手試玩\n* 見討論頁",
+	'patrol-reasons' => "* 塗鴉
+* 生手試玩
+* 見討論頁",
 	'patrol-another' => '試揾另一版睇吓。',
 	'patrol-stopped' => '你决定唔再巡。 $1',
 	'patrol-resume' => '撳呢度繼續。',
@@ -678,7 +692,9 @@ $messages['zh-hans'] = array(
 	'patrol-reverted-ok' => '编辑被回退。',
 	'patrol-reverted-failed' => '编辑不能回退。',
 	'patrol-skipped-ok' => '忽略编辑。',
-	'patrol-reasons' => "* 纯粹破坏\n* 新手测试\n* 参见讨论页",
+	'patrol-reasons' => "* 纯粹破坏
+* 新手测试
+* 参见讨论页",
 	'patrol-another' => '显示其他存在的编辑。',
 	'patrol-stopped' => '您选择不巡逻其他编辑。$1',
 	'patrol-resume' => '点击这里继续。',
@@ -701,7 +717,9 @@ $messages['zh-hant'] = array(
 	'patrol-reverted-ok' => '編輯被回退。',
 	'patrol-reverted-failed' => '編輯無法回退。',
 	'patrol-skipped-ok' => '忽略編輯。',
-	'patrol-reasons' => "* 純粹破壞\n* 新人測試\n* 參看討論頁",
+	'patrol-reasons' => "* 純粹破壞
+* 新人測試
+* 參看討論頁",
 	'patrol-another' => '列出其他存在的編輯。',
 	'patrol-stopped' => '你選擇不覆查其他編輯。$1',
 	'patrol-resume' => '點擊這裡繼續。',

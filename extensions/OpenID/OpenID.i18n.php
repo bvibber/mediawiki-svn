@@ -73,7 +73,9 @@ Please consult this site\'s administrator.',
 	'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
 	'openidconvertyourstext' => 'That is already your OpenID.',
 	'openidconvertothertext' => 'That is someone else\'s OpenID.',
-	'openidalreadyloggedin' => "'''You are already logged in, $1!'''\n\nIf you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
+	'openidalreadyloggedin' => "'''You are already logged in, $1!'''
+
+If you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
 	'tog-hideopenid' => 'Hide your <a href="http://openid.net/">OpenID</a> on your user page, if you log in with OpenID.',
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',

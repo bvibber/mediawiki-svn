@@ -9,7 +9,16 @@ $messages = array();
 
 $messages['en'] = array(
 	'userrightsnotifysubject' => 'Group membership change on $1',
-	'userrightsnotifybody'    => "Hello $1\n\nThis is to inform you that your group memberships on $2 were changed by $3 at $4.\n\nAdded: $5\nRemoved: $6\n\nWith regards,\n\n$2",
+	'userrightsnotifybody'    => "Hello $1.
+
+This is to inform you that your group memberships on $2 were changed by $3 at $4.
+
+Added: $5
+Removed: $6
+
+With regards,
+
+$2",
 	'userrightsnotif-desc'    => 'Sends email notification to users upon rights changes',
 );
 

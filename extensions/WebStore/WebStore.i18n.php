@@ -53,9 +53,13 @@ $messages['en'] = array(
 	'webstore_scaler_empty_response' => 'The image scaler gave an empty response with a 200 ' .
 	'response code. This could be due to a PHP fatal error in the scaler.',
 
-	'webstore_invalid_response' => "Invalid response from server:\n\n$1\n",
+	'webstore_invalid_response' => "Invalid response from server:
+
+$1\n",
 	'webstore_no_response' => 'No response from server',
-	'webstore_backend_error' => "Error from storage server:\n\n$1\n",
+	'webstore_backend_error' => "Error from storage server:
+
+$1\n",
 	'webstore_php_error' => 'PHP errors were encountered:',
 	'webstore_no_handler' => 'No handler for transforming this MIME type',
 );

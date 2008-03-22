@@ -13,7 +13,9 @@ $messages = array();
 $messages['en'] = array(
 	'newusernotifsubj'  => 'New User Notification for $1',
 	'newusernotif-desc' => 'Sends email notification when user accounts are created',
-	'newusernotifbody'  => "Hello $1,\n\nA new user account, $2, has been created on $3 at $4.",
+	'newusernotifbody'  => "Hello $1,
+
+A new user account, $2, has been created on $3 at $4.",
 );
 
 $messages['ar'] = array(
@@ -246,7 +248,9 @@ $3లో $2 అనే కొత్త వాడుకరి ఖాతాని $
 
 $messages['tet'] = array(
 	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
+	'newusernotifbody' => 'Olá $1,
+
+uza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 );
 
 /** Turkish (Türkçe)
@@ -260,16 +264,22 @@ Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",
 
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
-	'newusernotifbody' => "你好 $1，\n\n一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",
+	'newusernotifbody' => "你好 $1，
+
+一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",
 );
 
 $messages['zh-hans'] = array(
 	'newusernotifsubj' => '$1的新用户通知',
-	'newusernotifbody' => "你好 $1，\n\n一个新的用户账号$2，已经在$4于$3创建。",
+	'newusernotifbody' => "你好 $1，
+
+一个新的用户账号$2，已经在$4于$3创建。",
 );
 
 $messages['zh-hant'] = array(
 	'newusernotifsubj' => '$1的新用戶通知',
-	'newusernotifbody' => "你好 $1，\n\n一個新的用戶帳號$2，已經在$4於$3創建。",
+	'newusernotifbody' => "你好 $1，
+
+一個新的用戶帳號$2，已經在$4於$3創建。",
 );
 
