@@ -26,6 +26,17 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'editmessages-desc'  => '[[Special:EditMessages|Уеб-базиран интерфейс]] за редактиране на голям брой файлове Messages*.php',
+	'editmessages'       => 'Редактиране на съобщенията',
+	'editmsg-target'     => 'Целево съобщение:',
+	'editmsg-search'     => 'Търсене',
+	'editmsg-new-search' => 'Ново търсене',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -46,6 +57,13 @@ $messages['de'] = array(
 	'editmsg-no-patch'         => 'Patch-Kommando kann nicht angewendet werden.',
 	'editmsg-patch-failed'     => 'Patch ist fehlgeschlagen mit dem exit-Status $1.',
 	'editmsg-patch-success'    => 'Erfolgreich gepatcht.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'editmsg-new-search' => 'Νέα αναζήτηση',
 );
 
 /** French (Français)
@@ -70,16 +88,36 @@ $messages['fr'] = array(
 	'editmsg-patch-success'    => 'Patch appliqué avec succès.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'editmessages-desc'     => '[[Special:EditMessages|Web-alapú szerkesztő]] nagy mennyiségű Messages*.php fájl szerkesztéséhez',
+	'editmessages'          => 'Üzenetek szerkesztése',
+	'editmsg-search'        => 'Keresés',
+	'editmsg-show-list'     => '„$1” értékeinek megjelenítése',
+	'editmsg-get-patch'     => 'Javítás készítése',
+	'editmsg-new-search'    => 'Új keresés',
+	'editmsg-warning-file'  => 'A következő nyelvekhez tartozó fájlok olvasásakor hiba lépett fel: $1',
+	'editmsg-apply-patch'   => 'Javítás alkalmazása',
+	'editmsg-no-patch'      => 'A „patch” parancs nem hajtható végre',
+	'editmsg-patch-failed'  => 'A javítás sikertelen, visszatérési értéke: $1',
+	'editmsg-patch-success' => 'A javítás sikeresen befejeződött.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'editmessages-desc'  => "[[Special:EditMessages|Änneren am Web]] vun enger grousser Zuel vu ''Messages*.php-Dateien''",
-	'editmessages'       => 'Systemmessage änneren',
-	'editmsg-target'     => 'Systemmessage dee geännert soll ginn:',
-	'editmsg-search'     => 'Sich',
-	'editmsg-show-list'  => 'Inhalt vum Systemmessage "$1"',
-	'editmsg-new-search' => 'Nei Sich',
+	'editmessages-desc'     => "[[Special:EditMessages|Änneren am Web]] vun enger grousser Zuel vu ''Messages*.php-Dateien''",
+	'editmessages'          => 'Systemmessage änneren',
+	'editmsg-target'        => 'Systemmessage dee geännert soll ginn:',
+	'editmsg-search'        => 'Sich',
+	'editmsg-show-list'     => 'Inhalt vum Systemmessage "$1"',
+	'editmsg-get-patch'     => 'Patch maachen',
+	'editmsg-new-search'    => 'Nei Sich',
+	'editmsg-apply-patch'   => 'Patch uwenden',
+	'editmsg-patch-success' => 'gepatched!',
 );
 
 /** Marathi (मराठी)
@@ -108,16 +146,22 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'editmessages'          => 'Berichten bewerken',
-	'editmsg-target'        => 'Doelbericht:',
-	'editmsg-search'        => 'Zoeken',
-	'editmsg-show-list'     => 'De waarden voor bericht "$1" worden weergegeven',
-	'editmsg-get-patch'     => 'Patch maken',
-	'editmsg-new-search'    => 'Opnieuw zoeken',
-	'editmsg-apply-patch'   => 'Aanpassingen uitvoeren',
-	'editmsg-no-patch'      => 'Het commando "patch" kan niet uitgevoerd worden',
-	'editmsg-patch-failed'  => 'Aanpassen is mislukt met als foutcode $1',
-	'editmsg-patch-success' => 'Aanpassen geslaagd.',
+	'editmessages-desc'        => '[[Special:EditMessages|Webgebaseerd bewerken]] van grote aantallen Messages*.php-bestanden',
+	'editmessages'             => 'Berichten bewerken',
+	'editmsg-target'           => 'Doelbericht:',
+	'editmsg-search'           => 'Zoeken',
+	'editmsg-show-list'        => 'De waarden voor bericht "$1" worden weergegeven',
+	'editmsg-get-patch'        => 'Patch maken',
+	'editmsg-new-search'       => 'Opnieuw zoeken',
+	'editmsg-warning-parse1'   => '* Berichtnaamregex niet van toepassing: $1',
+	'editmsg-warning-parse2'   => '* Apostrof verwacht na pijl: $1',
+	'editmsg-warning-parse3'   => '* Eind van waarde string niet gevonden: $1',
+	'editmsg-warning-file'     => '* Er zijn fouten gevonden bij het lezen van de volgende talen: $1',
+	'editmsg-warning-mismatch' => '* De oorspronkelijke tekst had niet de verwachte waarde voor de volgende talen: $1',
+	'editmsg-apply-patch'      => 'Aanpassingen uitvoeren',
+	'editmsg-no-patch'         => 'Het commando "patch" kan niet uitgevoerd worden',
+	'editmsg-patch-failed'     => 'Aanpassen is mislukt met als foutcode $1',
+	'editmsg-patch-success'    => 'Aanpassen geslaagd.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -166,15 +210,19 @@ $messages['ru'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Micke
  */
 $messages['sv'] = array(
-	'editmessages-desc'  => '[[Special:EditMessages|Nätbaserad redigering]] av ett stort antal Messages*.php-filer',
-	'editmessages'       => 'Redigera meddelanden',
-	'editmsg-target'     => 'Målmeddelande:',
-	'editmsg-search'     => 'Sök',
-	'editmsg-show-list'  => 'Visar värden för meddelandenamnet "$1"',
-	'editmsg-get-patch'  => 'Skapa uppdatering',
-	'editmsg-new-search' => 'Ny sökning',
+	'editmessages-desc'        => '[[Special:EditMessages|Nätbaserad redigering]] av ett stort antal Messages*.php-filer',
+	'editmessages'             => 'Redigera meddelanden',
+	'editmsg-target'           => 'Målmeddelande:',
+	'editmsg-search'           => 'Sök',
+	'editmsg-show-list'        => 'Visar värden för meddelandenamnet "$1"',
+	'editmsg-get-patch'        => 'Skapa uppdatering',
+	'editmsg-new-search'       => 'Ny sökning',
+	'editmsg-warning-mismatch' => '* Orginaltexten hade inte det förväntade värdet vad gäller följande språk: $1',
+	'editmsg-patch-failed'     => 'Uppdatering misslyckades med avslutningsstatus $1',
+	'editmsg-patch-success'    => 'Uppdateringen lyckades.',
 );
 
 /** Thai (ไทย)

@@ -26,6 +26,14 @@ $messages['ar'] = array(
 	'categoryintersection' => 'تقاطع تصنيف',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'categoryintersection-doit'    => 'Показване на страниците в избраните категории',
+	'categoryintersection-results' => 'Търсенето върна $1 {{PLURAL:$1|резултат|резултата}}.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

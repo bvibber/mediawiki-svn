@@ -55,6 +55,7 @@ $messages['bg'] = array(
 	'invite-logpagetext'              => 'Тази страница съдържа дневник на поканите между потребителите за достъп до различни услуги.',
 	'invite-logentry'                 => 'покани $1 да използва <i>$2</i>.',
 	'invitations'                     => 'Управление на поканите за различните услуги',
+	'invitations-invitedlist-item'    => '<b>$1</b> ($2 налични покани)',
 	'invitations-pagetitle'           => 'Възможности на софтуера, достъпни с покана',
 	'invitations-feature-pagetitle'   => 'Управление на поканите - $1',
 	'invitations-feature-notallowed'  => 'Нямате достъп да използвате <i>$1</i>.',
@@ -230,6 +231,36 @@ $messages['lb'] = array(
 	'invitations-error-baduser'        => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
 	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
 	'invitations-invite-success'       => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'invite-logpage'                        => 'आमंत्रणांची सूची',
+	'invite-logpagetext'                    => 'ही वेगवेगळ्या प्रणालींचे फीचर्स वापरून पाहण्यासाठी सदस्यांनी एकमेकांना दिलेल्या आमंत्रणांची सूची आहे.',
+	'invite-logentry'                       => '<i>$2</i> फीचर वापरण्यासाठी $1 ला आमंत्रित केले.',
+	'invitations'                           => 'प्रणाली फीचर्स ला दिलेली आमंत्रणे नियंत्रित करा',
+	'invitations-desc'                      => 'आमंत्रण आधारित करुन [[Special:Invitations|नवीन फीचर्सना नियंत्रित]] करण्याची परवानगी देते',
+	'invitations-invitedlist-description'   => 'तुम्हाला खालीलपैकी फक्त आमंत्रण आधारित प्रणाली फीचर्स पाहता येतील.
+एखाद्या विशिष्ट फीचर्सची आमंत्रणे पाहण्यासाठी, त्याच्या नावावर टिचकी द्या.',
+	'invitations-invitedlist-none'          => 'तुम्हाला आमंत्रण आधारित प्रणाली फीचर्स पाहण्यासाठी एकही आमंत्रण आलेले नाही.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 आमंत्रणे उपलब्ध)',
+	'invitations-pagetitle'                 => 'आमंत्रण आधारित प्रणाली फीचर्स',
+	'invitations-uninvitedlist-description' => 'तुम्हाला ही इतर आमंत्रण आधारित प्रणाली वैशिष्ठ्ये पाहण्याची अनुमती नाही.',
+	'invitations-uninvitedlist-none'        => 'या वेळी, इतर कुठलेही प्रणाली वैशिष्ठ्य आमंत्रण आधारित केलेले नाही.',
+	'invitations-feature-pagetitle'         => 'आमंत्रण व्यवस्थापन - $1',
+	'invitations-feature-access'            => 'तुम्हाला सध्या <i>$1</i> वापरण्याची अनुमती आहे.',
+	'invitations-feature-numleft'           => 'तुमच्याकडे अजून $2 पैकी <b>$1</b> आमंत्रणे उरलेली आहेत.',
+	'invitations-feature-noneleft'          => 'या फीचरसाठी देण्यात आलेली सर्व आमंत्रणे तुम्ही वापरलेली आहेत',
+	'invitations-feature-noneyet'           => 'या फीचरसाठी अजून तुम्हाला आमंत्रणे देण्यात आलेली नाहीत.',
+	'invitations-feature-notallowed'        => 'तुम्हाला <i>$1</i> वापरण्याची परवानगी नाही.',
+	'invitations-inviteform-title'          => '$1 वापरण्यासाठी एखाद्या सदस्याला आमंत्रण द्या',
+	'invitations-inviteform-username'       => 'आमंत्रित करावयाचा सदस्य',
+	'invitations-inviteform-submit'         => 'आमंत्रित करा',
+	'invitations-error-baduser'             => 'तुम्ही दिलेला सदस्य अस्तित्वात नाही.',
+	'invitations-error-alreadyinvited'      => 'तुम्ही दिलेल्या सदस्याला अगोदरच हे फीचर वापरण्याची परवानगी आहे!',
+	'invitations-invite-success'            => 'तुम्ही यशस्वीरित्या $1 ला हे फीचर वापरण्यासाठी आमंत्रित केलेले आहे!',
 );
 
 /** Dutch (Nederlands)

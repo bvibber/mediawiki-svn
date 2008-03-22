@@ -91,10 +91,41 @@ $allMessages['bg'] = array(
 	'whitelisttablemodifyall' => 'Всички',
 	'whitelisttableedit'      => 'Редактиране',
 	'whitelisttableview'      => 'Преглед',
+	'whitelisttablenewdate'   => 'Нова дата:',
 	'whitelisttableremove'    => 'Премахване',
+	'whitelistpagelist'       => 'Страници за $1 в {{SITENAME}}',
 	'whitelistbadtitle'       => 'Грешно заглавие -',
+	'whitelistoverviewcd'     => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
+	'whitelistoverviewrm'     => '* Премахване на достъпа до [[:$1|$1]]',
+	'whitelistrequestconf'    => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever'          => 'никога',
 	'whitelistnummatches'     => ' - $1 съвпадения',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$allMessages['cy'] = array(
+	'whitelisttableedit' => 'Golygu',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$allMessages['el'] = array(
+	'mywhitelistpages' => 'Οι Σελίδες μου',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$allMessages['eo'] = array(
+	'mywhitelistpages'         => 'Miaj Paĝoj',
+	'whitelisttablemodifynone' => 'Neniu',
+	'whitelisttableedit'       => 'Redaktu',
+	'whitelistbadtitle'        => 'Fuŝa titolo -',
+	'whitelistnever'           => 'neniam',
+	'whitelistnummatches'      => '- $1 pafoj',
 );
 
 /** French (Français)

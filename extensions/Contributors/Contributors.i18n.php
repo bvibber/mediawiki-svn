@@ -184,6 +184,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'contributors'            => 'Συνεισφέροντες',
 	'contributors-target'     => 'Τίτλος:',
+	'contributors-others'     => 'και $1 άλλοι',
 	'contributors-badtitle'   => 'Άκυρος τίτλος.',
 	'contributors-nosuchpage' => 'Η σελίδα $1 δεν υπάρχει.',
 );

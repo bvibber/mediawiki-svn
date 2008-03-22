@@ -202,6 +202,7 @@ $messages['el'] = array(
 	'usagestatisticsintervalday'   => 'Ημέρα',
 	'usagestatisticsintervalweek'  => 'Εβδομάδα',
 	'usagestatisticsintervalmonth' => 'Μήνας',
+	'usagestatisticscalselect'     => 'Επιλέξτε',
 );
 
 /** Esperanto (Esperanto)

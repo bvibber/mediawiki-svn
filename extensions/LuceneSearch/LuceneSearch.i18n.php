@@ -1337,7 +1337,7 @@ $messages['sah'] = array(
 	'searchnext'            => "<span style='font-size: small'>Аныг.</span> &#x00BB;",
 	'lucene-searchscore'    => 'Релевантноһа: $1%',
 	'lucene-resultsize'     => '$1 ($2 тыл)',
-	'searchdidyoumean'      => 'Баҕар маннык буолаарай «<a href="1">$2</a>»?',
+	'searchdidyoumean'      => 'Баҕар маннык буолаарай «<a href="$1">$2</a>»?',
 	'searchnoresults'       => 'Хомойуох иһин, туох да көстүбэтэ.',
 	'searchnearmatches'     => '<b>Бу сирэйдэр эн көрдүүр сирэйгэр майгынныыр ааттаахтар:</b>',
 	'lucenepowersearchtext' => 'Бу namespace`тар истэригэр көрдөөһүн:

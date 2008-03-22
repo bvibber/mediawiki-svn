@@ -71,6 +71,14 @@ $messages['dsb'] = array(
 	'categorystepper-end'   => '(Kóńc kategorije)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'categorystepper-end'   => '(Τέλος της κατηγορίας)',
+	'categorystepper-start' => '(Αρχή της κατηγορίας)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

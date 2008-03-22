@@ -393,10 +393,15 @@ $messages['bg'] = array(
 	'boardvote_edits'        => 'Редакции',
 	'boardvote_days'         => 'Дни',
 	'boardvote_ip'           => 'IP',
+	'boardvote_listintro'    => '<p>Тази страница съдържа списък на всички гласувания, отчетени към настоящия момент.
+$1 за криптирани данни.</p>',
 	'boardvote_dumplink'     => 'Тук',
 	'boardvote_submit'       => 'Гласуване',
 	'boardvote_strike'       => 'Задраскване',
 	'boardvote_unstrike'     => 'Махане на задраскването',
+	'boardvote_needadmin'    => 'Това действие може да бъде извършено само от администратори по гласуването',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за борда на Уикимедия</a>:
+Гласуването е отворено до 12 юли',
 	'boardvote_notstarted'   => 'Гласуването все още не е започнало',
 	'boardvote_closed'       => 'Гласуването е приключено, вижте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницата с резултатите].',
 	'boardvote_edits_many'   => 'много',

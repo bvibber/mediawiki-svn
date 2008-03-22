@@ -138,6 +138,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'badimages'                => 'Списък с неприемливи файлове',
+	'badimages-desc'           => 'Разширява възможностите на МедияУики за управление на списъка с непозволени файлове',
 	'badimages-add-btn'        => 'Добавяне',
 	'badimages-added'          => 'Файлът $1 беше добавен към списъка.',
 	'badimages-count'          => "Списъкът съдържа '''$1''' неприемливи файла.",
@@ -1382,6 +1383,23 @@ $messages['tr'] = array(
 	'badimages-reason'     => 'Sebep:',
 	'badimages-remove-btn' => 'Sil',
 	'badimages-removed'    => 'Listeden $1 silindi.',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'badimages'             => 'Список небажаних зображень',
+	'badimages-desc'        => 'Розширює можливості списку заборонених зображень MediaWiki',
+	'badimages-add-btn'     => 'Додати',
+	'badimages-added'       => '$1 додано до списку.',
+	'badimages-count'       => "Усього в списку '''$1''' небажаних зображень.",
+	'badimages-name'        => 'Назва:',
+	'badimages-not-added'   => 'Зображення не може бути доданим.',
+	'badimages-not-removed' => 'Зображення не може бути вилученим.',
+	'badimages-reason'      => 'Причина:',
+	'badimages-remove'      => '(вилучити)',
+	'badimages-remove-btn'  => 'Вилучити',
 );
 
 /** Vietnamese (Tiếng Việt)

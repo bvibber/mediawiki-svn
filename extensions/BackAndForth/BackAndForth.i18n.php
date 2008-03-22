@@ -482,6 +482,14 @@ $messages['tr'] = array(
 	'backforth-prev' => 'Önceki ($1)',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'backforth-next' => 'Наст. ($1)',
+	'backforth-prev' => 'Попер. ($1)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

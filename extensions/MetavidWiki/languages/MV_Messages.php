@@ -427,11 +427,20 @@ $messages['bg'] = array(
 	'mv_match_text'        => '~  $1 съвпадения',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'mv_edit' => 'Golygu',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
 $messages['el'] = array(
 	'mv_search_category' => 'Κατηγορία',
+	'mv_search_and'      => 'και',
+	'mv_search_or'       => 'ή',
 	'mv_category'        => 'Κατηγορία',
 );
 

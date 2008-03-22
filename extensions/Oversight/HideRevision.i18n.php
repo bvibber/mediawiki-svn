@@ -310,10 +310,11 @@ $messages['de-formal'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'hiderevision-prompt'   => 'Αριθμός επανάληψης για αφαίρεση:',
-	'hiderevision-continue' => 'Συνέχεια',
-	'hiderevision-status'   => 'Επανάληψη $1: $2',
-	'oversight-view'        => 'λεπτομέρειες',
+	'hiderevision-prompt'        => 'Αριθμός επανάληψης για αφαίρεση:',
+	'hiderevision-continue'      => 'Συνέχεια',
+	'hiderevision-status'        => 'Επανάληψη $1: $2',
+	'hiderevision-error-missing' => 'Δεν βρέθηκε στην βάση δεδομένων.',
+	'oversight-view'             => 'λεπτομέρειες',
 );
 
 /** Esperanto (Esperanto)

@@ -416,10 +416,25 @@ $wgGoogleMapsMessages['de-formal'] = array(
  * @author Consta
  */
 $wgGoogleMapsMessages['el'] = array(
-	'gm-are-you-sure' => 'Είστε σίγουρος;',
-	'gm-earth'        => 'Γη',
-	'gm-moon'         => 'Σελήνη',
-	'gm-mars'         => 'Άρης',
+	'gm-balloon-title' => 'Τίτλος:',
+	'gm-searching'     => 'έρευνα...',
+	'gm-map'           => 'Χάρτης',
+	'gm-are-you-sure'  => 'Είστε σίγουρος;',
+	'gm-width'         => 'Πλάτος',
+	'gm-height'        => 'Ύψος',
+	'gm-scale-control' => 'Κλίμακα',
+	'gm-zoom-control'  => 'Πλοήγηση',
+	'gm-yes'           => 'Ναι',
+	'gm-no'            => 'Όχι',
+	'gm-meters'        => 'μέτρα',
+	'gm-miles'         => 'μίλια',
+	'gm-color-path'    => 'αλλάξτε χρώμα',
+	'gm-line-width'    => 'Πλάτος',
+	'gm-back'          => 'πίσω',
+	'gm-kml-loading'   => 'φόρτωση...',
+	'gm-earth'         => 'Γη',
+	'gm-moon'          => 'Σελήνη',
+	'gm-mars'          => 'Άρης',
 );
 
 /** Esperanto (Esperanto)
@@ -453,6 +468,7 @@ $wgGoogleMapsMessages['eo'] = array(
 	'gm-save-path'                 => 'Konservu',
 	'gm-edit-path'                 => 'aldonu punktojn',
 	'gm-show-path'                 => 'montru punktojn',
+	'gm-color-path'                => 'ŝanĝu koloron',
 	'gm-line-width'                => 'Larĝo',
 	'gm-make-map'                  => 'faru mapon',
 	'gm-back'                      => 'reen',

@@ -130,10 +130,13 @@ $messages['bg'] = array(
 	'openidserver'         => 'OpenID сървър',
 	'openidoptional'       => 'Незадължително',
 	'openidrequired'       => 'Изисква се',
+	'openidnickname'       => 'Псевдоним',
+	'openidfullname'       => 'Име',
 	'openidemail'          => 'Електронна поща',
 	'openidlanguage'       => 'Език',
 	'openidnotavailable'   => 'Избраното потребителско име ($1) вече се използва от друг потребител.',
 	'openidchooseauto'     => 'Автоматично генерирано име ($1)',
+	'openidchoosemanual'   => 'Име по избор:',
 	'openidchoosepassword' => 'парола:',
 	'openidnousername'     => 'Не е посочено потребителско име.',
 );
@@ -142,7 +145,8 @@ $messages['bg'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'openidlanguage' => 'Γλώσσα',
+	'openidlanguage'     => 'Γλώσσα',
+	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 );
 
 /** Esperanto (Esperanto)

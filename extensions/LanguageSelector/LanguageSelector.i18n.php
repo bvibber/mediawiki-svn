@@ -234,10 +234,13 @@ $messages['lt'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'languageselector' => 'भाषा',
+	'languageselector'         => 'भाषा',
+	'languageselector-desc'    => 'प्रत्येक पानावर भाषा-निवडक (selector), भेट देणार्‍यांसाठी सुद्धा',
+	'languageselector-setlang' => 'सेट (set)',
 );
 
 /** Low German (Plattdüütsch)

@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'multiboilerplate-submit' => 'تحميل',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'multiboilerplate-submit' => 'Зареждане',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

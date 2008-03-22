@@ -846,7 +846,7 @@ $messages['sah'] = array(
 	'expandtemplates'                  => 'Халыыптары тэнитии',
 	'expandtemplates-desc'             => 'Халыыптар тэнитиллиилэрэ',
 	'expand_templates_intro'           => 'Бу аналлаах сирэй тиэкиһи уларытарытарыгар туох баар халыыптары тэнитэн көрдөрөр.
-Парсер функциялара эмиэ тэнитиллэллэр (холобур, <nowiki>{{</nowiki>#if:...}} уонна переменнайдар (<nowiki>{{</nowiki>CURRENTDAY}} уо.&nbsp;д.&nbsp;а.) — уопсайынан, хос фигурнай скобка иһигэр баар барыта.
+Парсер функциялара эмиэ тэнитиллэллэр. Холобур, <nowiki>{{</nowiki>#if:...}} уонна переменнайдар (<nowiki>{{</nowiki>CURRENTDAY}} уо.&nbsp;д.&nbsp;а. — уопсайынан, хос фигурнай скобка иһигэр баар барыта.
 Бу дьайыы сыыһата суох, MediaWiki көмөтүнэн оҥоһуллар.',
 	'expand_templates_title'           => '{{PAGENAME}} сирэй аата уонна да атын сибидиэнньэлэр:',
 	'expand_templates_input'           => 'Киирэр сурук:',
@@ -1088,3 +1088,4 @@ $messages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
 );
+

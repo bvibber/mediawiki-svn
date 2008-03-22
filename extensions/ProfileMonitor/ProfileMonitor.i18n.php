@@ -37,6 +37,20 @@ $messages['ar'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'profiling-no-data' => 'Не са открити данни.',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'profiling-ok' => 'Ek!',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur

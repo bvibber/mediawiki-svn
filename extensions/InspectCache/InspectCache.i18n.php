@@ -169,6 +169,22 @@ $messages['lb'] = array(
 	'inspectcache-list'    => 'Lëscht',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'inspectcache'         => 'सय तपासा',
+	'inspectcache-desc'    => 'सय तपासणीचे एक सोपे उपकरण',
+	'inspectcache-ok'      => 'सर्व ठीक',
+	'inspectcache-general' => 'साधारण सय',
+	'inspectcache-parser'  => 'पार्सर सय',
+	'inspectcache-message' => 'संदेश सय',
+	'inspectcache-get'     => 'ओढा',
+	'inspectcache-delete'  => 'वगळा',
+	'inspectcache-deleted' => 'वगळलेली सय',
+	'inspectcache-list'    => 'यादी',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

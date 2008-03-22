@@ -132,6 +132,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'povwatch_title' => 'Titolo:',
+	'povwatch_added' => 'aldonita',
 );
 
 /** French (Français)

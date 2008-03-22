@@ -242,7 +242,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'webstore_404' => 'Dosiero ne trovita.',
+	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
+	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
+	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
+	'webstore_404'                     => 'Dosiero ne trovita.',
+	'webstore_invalid_response'        => 'Nevalida respondo de servilo:
+
+$1',
 );
 
 $messages['ext'] = array(

@@ -67,6 +67,13 @@ $3',
 $messages['eo'] = array(
 	'latexdoc_no_text'    => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
 	'latexdoc_cant_write' => 'Ne povas skribi dosieron $1',
+	'latexdoc_error'      => 'LaTeX-eraro
+
+Komando: $1
+
+Eligo: $2
+
+$3',
 );
 
 /** French (Français)
@@ -161,6 +168,25 @@ $3',
 	'latexdoc_get_dvi'         => 'យក DVI',
 	'latexdoc_get_pdf'         => 'យក PDF',
 	'latexdoc-desc'            => 'សំណុំឯកសារ LaTeX',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'latexdoc_no_text'         => 'पानावर काहीही मजकूर नाही, DVI तयार करू शकत नाही',
+	'latexdoc_cant_create_dir' => 'प्रासंगिक डिरेक्टरी $1 तयार करू शकलो नाही',
+	'latexdoc_cant_write'      => '$1 संचिकेत लिहू शकलो नाही',
+	'latexdoc_error'           => 'LaTeX त्रुटी
+
+क्रिया: $1
+
+आउटपुट: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'DVI तयार करा',
+	'latexdoc_get_pdf'         => 'पीडिएफ तयार करा',
+	'latexdoc-desc'            => 'LaTeX पानांचे एकत्रित संपादन',
 );
 
 /** Dutch (Nederlands)

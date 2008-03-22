@@ -171,6 +171,7 @@ $messages['bg'] = array(
 	'math_NonAsciiInMathMode'               => 'Символи извън ASCII могат да се използват единствено в текстов режим (например оградени с "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Недостатъчен брой аргументи за "$1"',
 	'math_PngIncompatibleCharacter'         => 'Не може коректно да се генерира PNG изображение, съдържащо символа $1',
+	'math_ReservedCommand'                  => 'Командата „$1“ е запазена само за вътрешно използване от blahtex',
 	'math_SubstackRowTooBig'                => 'В блока "substack" може да има само по един запис на ред',
 	'math_TooManyMathmlNodes'               => 'Има твърде много възли в MathML-дървото',
 	'math_UnavailableSymbolFontCombination' => 'В шрифта "$2" няма на разположение символ "$1"',

@@ -106,6 +106,7 @@ $messages['eo'] = array(
 	'importusers'                     => 'Importu Uzantojn',
 	'importusers-form-button'         => 'Importu',
 	'importusers-log'                 => 'Loglibro de importoj',
+	'importusers-log-summary'         => 'Resumo',
 	'importusers-log-summary-all'     => 'Ĉiuj',
 	'importusers-log-summary-added'   => 'Aldonita',
 	'importusers-log-summary-updated' => 'Ĝisdatigita',
@@ -249,6 +250,32 @@ $messages['lb'] = array(
 	'importusers-password'             => 'Passwuert',
 	'importusers-email'                => 'E-Mailadress',
 	'importusers-realname'             => 'richtege Numm',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'importusers'                         => 'सदस्य मागवा',
+	'importusers-desc'                    => 'CSV-संचिकेमधून अनेक सदस्य इंपोर्ट करा; एन्कोडिंग: UTF-8',
+	'importusers-uploadfile'              => 'संचिका चढवा',
+	'importusers-form-caption'            => 'CSV-संचिका (UTF-8)',
+	'importusers-form-file'               => 'सदस्य संचिका स्वरूप (csv):',
+	'importusers-form-replace-present'    => 'सध्याच्या सदस्यांवर पुनर्लेखन करा',
+	'importusers-form-button'             => 'इंपोर्ट',
+	'importusers-user-added'              => '<b>%s</b> सदस्य वाढविला.',
+	'importusers-user-present-update'     => '<b>%s</b> सदस्य अस्तित्वात आहे. अपडेट केला.',
+	'importusers-user-present-not-update' => '<b>%s</b> सदस्य अस्तित्वात आहे. अपडेट केला नाही.',
+	'importusers-user-invalid-format'     => '#%s या ओळीवरील सदस्य माहिती चुकीची अथवा रिकामी आहे. वगळली.',
+	'importusers-log'                     => 'इंपोर्ट नोंदी',
+	'importusers-log-summary'             => 'संक्षिप्त माहिती',
+	'importusers-log-summary-all'         => 'सर्व',
+	'importusers-log-summary-added'       => 'वाढविले',
+	'importusers-log-summary-updated'     => 'अपडेट केले',
+	'importusers-login-name'              => 'सदस्य नाव',
+	'importusers-password'                => 'परवलीचा शब्द',
+	'importusers-email'                   => 'इमेल',
+	'importusers-realname'                => 'खरे नाव',
 );
 
 /** Dutch (Nederlands)

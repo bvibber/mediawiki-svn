@@ -154,6 +154,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'vote-submit'     => 'Balotu',
 	'vote-login-link' => 'ensalutu',
 );
 

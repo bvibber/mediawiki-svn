@@ -119,6 +119,13 @@ $messages['el'] = array(
 	'spamdifftool_option_none' => 'τίποτα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'spamdifftool_option_none' => 'nenio',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Sherbrooke

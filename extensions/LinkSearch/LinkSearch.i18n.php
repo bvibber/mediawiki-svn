@@ -715,7 +715,9 @@ $messages['sah'] = array(
 	'linksearch-desc'  => 'Этиллибит халыыпка сөп түбэһэр [[Special:Linksearch|тас сигэлээх (ыйынньыктаах) сирэйдэри көрдөрөр]]',
 	'linksearch-pat'   => 'Көрдөөһүн халыыба:',
 	'linksearch-ok'    => 'Бул',
-	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, "*.wikipedia.org".
+
+Өйүүр боротокуол: <tt>$1</tt>',
 	'linksearch-line'  => 'Мантан $2 манна $1 ыйынньык',
 	'linksearch-error' => 'Туруоран биэрэр бэлиэлэри аадырыс/hostname саҕаланыытыгар эрэ туттуохха сөп.',
 );

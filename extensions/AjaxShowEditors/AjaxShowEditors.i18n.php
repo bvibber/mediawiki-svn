@@ -407,8 +407,8 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'ajax-se-desc'             => 'Geeft gebruikers weer die een pagina bewerken aan, wie dezelfde pagina aan het bewerken is',
-	'ajax-se-title'            => 'Bezig met het bewerken van:',
+	'ajax-se-desc'             => 'Geeft gebruikers die een pagina bewerken aan, wie dezelfde pagina aan het bewerken is',
+	'ajax-se-title'            => 'Gebruikers die deze pagina aan het bewerken zijn:',
 	'ajax-se-pending'          => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling'           => '($1s geleden)',
 	'ajax-se-pagedoesnotexist' => 'pagina bestaat niet',

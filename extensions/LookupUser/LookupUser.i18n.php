@@ -201,8 +201,10 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
+	'lookupuser'       => 'सदस्य माहिती शोधा',
 	'lookupuser_email' => 'विपत्र: [[Special:Emailuser/$2|$1]]',
 );
 

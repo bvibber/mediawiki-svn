@@ -386,23 +386,23 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Sannab
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'importfreeimages'                       => 'Importera fria bilder',
-	'importfreeimages-desc'                  => 'Ger möjligheten till att [[Special:ImportFreeImages|importera fria bilder]] från [http://www.flickr.com flickr]',
-	'importfreeimages_description'           => 'Denna sida låter dig söka i bilder med riktig licens på Flickr och importera dem till din wiki.',
-	'importfreeimages_noapikey'              => 'Du har inte konfigurerat din API-nyckel för Flickr. För att göra det måste du skaffa en API-nyckel [http://www.flickr.com/services/api/misc.api_keys.html härifrån] och sätta wgFlickrAPIKey i ImportFreeImages.php.',
-	'importfreeimages_nophotosfound'         => "Inga bilder hittades för dina sök kriterier '$1', var god pröva igen.",
-	'importfreeimages_invalidurl'            => 'URL-en "$1" är inte en gilitg Flickr bild.',
+	'importfreeimages-desc'                  => 'Ger möjlighet att [[Special:ImportFreeImages|importera bilder med lämplig licens]] från [http://www.flickr.com flickr]',
+	'importfreeimages_description'           => 'Denna sida låter dig söka efter bilder med riktig licens på Flickr och importera dem till din wiki.',
+	'importfreeimages_noapikey'              => 'Du har inte konfigurerat din nyckel för Flickrs API. För att göra det måste du skaffa en API-nyckel [http://www.flickr.com/services/api/misc.api_keys.html härifrån] och sätta wgFlickrAPIKey i ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "Inga bilder hittades för dina sökkriterier '$1', försök igen.",
+	'importfreeimages_invalidurl'            => 'URL:en "$1" är inte en giltig Flickr-bild.',
 	'importfreeimages_owner'                 => 'Upphovsman',
-	'importfreeimages_importthis'            => 'import denna',
+	'importfreeimages_importthis'            => 'importera',
 	'importfreeimages_next'                  => 'Nästa $1',
 	'importfreeimages_filefromflickr'        => '$1 av användaren <b>[$2]</b> från Flickr. Orginal URL',
 	'importfreeimages_promptuserforfilename' => 'Var god skriv in ett destinationsnamn för filen:',
-	'importfreeimages_returntoform'          => "Eller, klicka <a href='$1'>här</a> för att gå tillbaka till dina sök resultat",
+	'importfreeimages_returntoform'          => "Eller klicka <a href='$1'>här</a> för att gå tillbaka till dina sökresultat",
 );
 
 /** Telugu (తెలుగు)

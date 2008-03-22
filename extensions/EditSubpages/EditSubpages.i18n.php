@@ -22,6 +22,13 @@ $messages['en'] = array(
  #</pre><!-- leave this line alone -->',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'editsubpages-desc' => 'Позволява на администраторите чрез [[MediaWiki:Unlockedpages]] да свалят защитата на страница и всички нейни подстраници за анонимно редактиране',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -66,6 +73,16 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'editsubpages-desc' => "Geeft beheerders de mogelijkheid een pagina en alle subpagina's van die pagina te deblokkeren voor anoniem bewekren via [[MediaWiki:Unlockedpages]]",
+	'unlockedpages'     => "  #<!-- deze regel niet wijzigen --><pre>
+# Zet pagina's die u wilt vrijgeven hieronder als volgt:
+# * pagename
+# Vrijgegeven pagina's moeten als ongenummerde lijst worden toegevoegd,
+# anders worden ze genegeerd. Alle overige tekst wordt behandeld als
+# Opmerkingen. Paginanamen kunnen [[links]] zijn, en zijn hoofdlettergevoelig.
+# Overlegpagina's worden automatisch vrijgegeven voor hun bijbehorende
+# pagina's. Zie http://www.mediawiki.org/wiki/Extension:EditSubpages voor
+# meer informatie.
+  #</pre><!-- deze regel niet wijzigen -->",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -99,6 +116,20 @@ $messages['ru'] = array(
 # Соответствующие страницы обсуждений будут также открыты.
 # Подробнее см. http://www.mediawiki.org/wiki/Extension:EditSubpages
   #</pre><!-- не трогайте эту строчку -->',
+);
+
+/** Swedish (Svenska)
+ * @author Micke
+ */
+$messages['sv'] = array(
+	'editsubpages-desc' => 'Låter administratörer låsa upp en sida, och alla undersidor till den sidan, för redigering av oinloggade användare med hjälp av [[MediaWiki:Unlockedpages]]',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'editsubpages-desc' => 'Дозволяє адміністраторам за допомогою [[MediaWiki:Unlockedpages]] відкрити для анонімного редагування сторінку та її підсторінки',
 );
 
 /** Vietnamese (Tiếng Việt)

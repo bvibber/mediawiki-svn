@@ -101,7 +101,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'todo-new-queue' => 'nova',
+	'todo'              => 'Tasklisto',
+	'todo-tab'          => 'tasko',
+	'todo-new-queue'    => 'nova',
+	'todo-form-details' => 'Detaloj:',
 );
 
 /** French (Français)

@@ -93,7 +93,9 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'tasklistemail' => 'Kara %j',
+	'tasklist'        => 'Tasklisto',
+	'tasklistemail'   => 'Kara %j',
+	'tasklistmytasks' => 'Miaj taskoj',
 );
 
 /** French (Français)

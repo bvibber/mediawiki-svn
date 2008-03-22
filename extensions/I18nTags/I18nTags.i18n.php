@@ -109,9 +109,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'i18ntags-desc' => 'Få tillgång till internationaliseringsfunktioner för sifferformatering, grammatik och plural i alla tillgängliga språk',
+	'i18ntags-desc' => 'Ger tillgång till internationaliseringsfunktioner för talformatering, grammatik och plural i alla tillgängliga språk',
 );
 
 /** Vietnamese (Tiếng Việt)
