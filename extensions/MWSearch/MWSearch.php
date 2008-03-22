@@ -1,30 +1,30 @@
 <?php
 /*
  * Copyright 2004, 2005 Kate Turner, Brion Vibber.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights 
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
- * copies of the Software, and to permit persons to whom the Software is 
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in 
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * $Id$
  */
 
 # To use this, add something like the following to LocalSettings:
-# 
+#
 #  $wgSearchType = 'LuceneSearch';
 #  $wgLuceneHost = '192.168.0.1';
 #  $wgLucenePort = 8123;
@@ -51,6 +51,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
 	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
 	'descriptionmsg' => 'mwsearch-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:MWSearch',
 );
 $wgExtensionMessagesFiles['MWSearch'] = dirname(__FILE__) . '/MWSearch.i18n.php';
 
@@ -80,7 +81,7 @@ class LuceneSearch extends SearchEngine {
 	 */
 	function searchTitle( $term ) {
 		return null;
-		
+
 		// this stuff's a little broken atm
 		global $wgLuceneDisableTitleMatches;
 		if( $wgLuceneDisableTitleMatches ) {
@@ -103,19 +104,19 @@ class LuceneResult {
 	 */
 	function LuceneResult( $line ) {
 		list( $score, $namespace, $title ) = split( ' ', $line );
-		
+
 		$score     = FloatVal( $score );
 		$namespace = IntVal( $namespace );
 		$title     = urldecode( $title );
-		
+
 		$this->mTitle = Title::makeTitle( $namespace, $title );
 		$this->mScore = $score;
 	}
-	
+
 	function getTitle() {
 		return $this->mTitle;
 	}
-	
+
 	function getScore() {
 		return $this->mScore;
 	}
@@ -136,16 +137,16 @@ class LuceneSearchSet extends SearchResultSet {
 	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0 ) {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
-		
+
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
-		
+
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
 			$host = $wgLuceneHost[$pick];
 		} else {
 			$host = $wgLuceneHost;
 		}
-		
+
 		$enctext = rawurlencode( trim( $query ) );
 		$searchUrl = "http://$host:$wgLucenePort/$method/$wgDBname/$enctext?" .
 			wfArrayToCGI( array(
@@ -153,8 +154,8 @@ class LuceneSearchSet extends SearchResultSet {
 				'offset'     => $offset,
 				'limit'      => $limit,
 			) );
-		
-		
+
+
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
 		$key = "$wgDBname:lucene:" . md5( $searchUrl );
@@ -178,7 +179,7 @@ class LuceneSearchSet extends SearchResultSet {
 
 		$suggestion = null;
 		$totalHits = null;
-		
+
 		if( $method == 'search' ) {
 			# This method outputs a summary line first.
 			$totalHits = array_shift( $resultLines );
@@ -195,16 +196,16 @@ class LuceneSearchSet extends SearchResultSet {
 				}
 			}
 		}
-		
+
 		$resultSet = new LuceneSearchSet( $query, $resultLines, $totalHits, $suggestion );
-		
+
 		wfDebug( "$fname: caching lucene results for key $key\n" );
 		$wgMemc->add( $key, $resultSet, $expiry );
-		
+
 		wfProfileOut( $fname );
 		return $resultSet;
 	}
-	
+
 	/**
 	 * Private constructor. Use LuceneSearchSet::newFromQuery().
 	 *
@@ -220,18 +221,18 @@ class LuceneSearchSet extends SearchResultSet {
 		$this->mSuggestion = $suggestion;
 		$this->mResults    = $lines;
 	}
-	
+
 	function numRows() {
 		return count( $this->mResults );
 	}
-	
+
 	function termMatches() {
 		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+]+/", " ", $this->mQuery ) );
 		$terms = array_map( array( &$this, 'regexQuote' ),
 			explode( ' ', $resq ) );
 		return $terms;
 	}
-	
+
 	/**
 	 * Stupid hack around PHP's limited lambda support
 	 * @access private
@@ -239,11 +240,11 @@ class LuceneSearchSet extends SearchResultSet {
 	function regexQuote( $term ) {
 		return preg_quote( $term, '/' );
 	}
-	
+
 	function hasResults() {
 		return count( $this->mResults ) > 0;
 	}
-	
+
 	/**
 	 * Some search modes return a total hit count for the query
 	 * in the entire article database. This may include pages
@@ -256,7 +257,7 @@ class LuceneSearchSet extends SearchResultSet {
 	function getTotalHits() {
 		return $this->mTotalHits;
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Returns true if there is one on this set.
@@ -267,7 +268,7 @@ class LuceneSearchSet extends SearchResultSet {
 	function hasSuggestion() {
 		return is_string( $this->mSuggestion ) && $this->mSuggestion != '';
 	}
-	
+
 	/**
 	 * Some search modes return a suggested alternate term if there are
 	 * no exact hits. Check hasSuggestion() first.
@@ -278,7 +279,7 @@ class LuceneSearchSet extends SearchResultSet {
 	function getSuggestion() {
 		return $this->mSuggestion;
 	}
-	
+
 	/**
 	 * Fetches next search result, or false.
 	 * @return LuceneResult
@@ -297,4 +298,3 @@ class LuceneSearchSet extends SearchResultSet {
 
 } # End of extension function
 } # End of invocation guard
-
