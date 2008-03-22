@@ -509,6 +509,8 @@ char		*curfile;
 logpos_t	 curpos;
 unsigned long	 len;
 
+	logmsg("starting binlog dump...");
+
 	(void) pthread_mutex_lock(&rst_mtx);
 	curfile = strdup(binlog_file);
 	curpos = binlog_pos;
@@ -530,7 +532,6 @@ unsigned long	 len;
 		logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
-		(void) pthread_mutex_unlock(&rst_mtx);
 		return -1;
 	}
 
@@ -544,6 +545,7 @@ unsigned long	 len;
 
 		(void) pthread_mutex_lock(&rst_mtx);
 		reader_st = ST_QUEUEING;
+		(void) pthread_mutex_unlock(&rst_mtx);
 
 		if (master_thread_stop) {
 			logmsg("shutting down");
