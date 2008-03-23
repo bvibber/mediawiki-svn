@@ -572,8 +572,10 @@ class LuceneSearchSet extends SearchResultSet {
 		return $this->mResultCount;
 	}
 	
-	function termMatches() {
-		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+]+/", " ", $this->mQuery ) );
+	function termMatches() {		
+		$resq = preg_replace( "/\\[.*?\\]:/", " ", $this->mQuery ); # generic prefixes
+		$resq = preg_replace( "/all:/", " ", $resq ); 
+		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+]+/", " ", $resq ) );
 		$terms = array_map( array( &$this, 'regexQuote' ),
 			explode( ' ', $resq ) );
 		return $terms;
