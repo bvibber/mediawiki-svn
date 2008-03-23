@@ -82,16 +82,114 @@ class LuceneSearch extends SearchEngine {
 	 * @access public
 	 */
 	function searchTitle( $term ) {
-		return null;
+		return null;		
+	}
+	
+	/**
+	 * Prepare query for the lucene-search daemon:
+	 * 
+	 * 1) rewrite namespaces into standardized form 
+	 * e.g. image:clouds -> [6]:clouds
+	 * e.g. help,wp:npov -> [12,4]:npov
+	 * 
+	 * 2) rewrite localizations of "search everything" keyword
+	 * e.g. alle:heidegger -> all:heidegger
+	 *
+	 * @param string query 
+	 * @return string rewritten query
+	 * @access private
+	 */
+	function replacePrefixes( $query ) {
+		global $wgContLang;
+		$fname = 'LuceneSearch::replacePrefixes';
+		wfProfileIn($fname);
+		$qlen = strlen($query);
+		$start = 0; $len = 0; // token start pos and length
+		$rewritten = ''; // rewritten query
+		$rindex = 0; // point to last rewritten character
+		$inquotes = false;
 		
-		// this stuff's a little broken atm
-		global $wgLuceneDisableTitleMatches;
-		if( $wgLuceneDisableTitleMatches ) {
-			return null;
-		} else {
-			return LuceneSearchSet::newFromQuery( 'titlematch',
-				$term, $this->namespaces, $this->limit, $this->offset );
+		// quick check, most of the time we don't need any rewriting
+		if(strpos($query,':')===false){ 
+			wfProfileOut($fname);
+			return $query;
 		}
+
+		// "search everything"
+		// NOTE: might not be at the beginning for complex queries
+		$allkeyword = wfMsg('searchall');
+		
+		for($i = 0 ; $i < $qlen ; $i++){
+			$c = $query[$i];
+
+			// ignore chars in quotes
+			if($inquotes && $c!='"'); 
+			// check if $c is valid prefix character
+			else if(($c >= 'a' && $c <= 'z') ||
+				 ($c >= 'A' && $c <= 'Z') ||
+				 $c == '_' || $c == '-' || $c ==','){
+				if($len == 0){
+					$start = $i; // begin of token
+					$len = 1;
+				} else
+					$len++;	
+			// check for utf-8 chars
+			} else if(($c >= "\xc0" && $c <= "\xff")){ 
+				$utf8len = 1;
+				for($j = $i+1; $j < $qlen; $j++){ // fetch extra utf-8 bytes
+					if($query[$j] >= "\x80" && $query[$j] <= "\xbf")
+						$utf8len++;
+					else
+						break;
+				}
+				if($len == 0){
+					$start = $i;
+					$len = $utf8len;
+				} else
+					$len += $utf8len;
+				$i = $j - 1;  // we consumed the chars
+			// check for end of prefix (i.e. semicolon)
+			} else if($c == ':' && $len !=0){
+				$rewrite = array(); // here we collect namespaces 
+				$prefixes = explode(',',substr($query,$start,$len));
+				// iterate thru comma-separated list of prefixes
+				foreach($prefixes as $prefix){
+					$index = $wgContLang->getNsIndex($prefix);
+					
+					// check for special prefixes all/incategory
+					if($prefix == $allkeyword){
+						$rewrite = 'all';
+						break;
+					// check for localized names of namespaces
+					} else if($index !== false)
+						$rewrite[] = $index;					
+				}
+				$translated = null;
+				if($rewrite === 'all')
+					$translated = $rewrite;
+				else if(count($rewrite) != 0)
+					$translated = '['.implode(',',array_unique($rewrite)).']';
+
+				if(isset($translated)){
+					// append text before the prefix, and then the prefix
+					$rewritten .= substr($query,$rindex,$start-$rindex);
+					$rewritten .= $translated . ':';
+					$rindex = $i+1;
+				}
+				
+				$len = 0;
+			} else{ // end of token
+				if($c == '"') // get in/out of quotes
+					$inquotes = !$inquotes;
+				
+				$len = 0;
+			}
+				
+		}
+		// add rest of the original query that doesn't need rewritting
+		$rewritten .= substr($query,$rindex,$qlen-$rindex);
+		wfProfileOut($fname);
+		return $rewritten;
 	}
 }
 
