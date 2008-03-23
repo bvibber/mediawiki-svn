@@ -97,10 +97,11 @@ $messages['de'] = array(
 /** Greek (Ελληνικά)
  * @author ZaDiak
  * @author Consta
+ * @author Απεργός
  */
 $messages['el'] = array(
-	'sitenotice_close' => 'απομάκρυνση',
-	'sitenotice-desc'  => 'Επιτρέπει στους χρήστες να απομεκρύνουν τις σημειώσεις της ιστοσελίδας',
+	'sitenotice_close' => 'κλείσιμο',
+	'sitenotice-desc'  => 'Επιτρέπει στους χρήστες να κλείσουν την ειδοποίηση του ιστότοπου',
 );
 
 /** Esperanto (Esperanto)

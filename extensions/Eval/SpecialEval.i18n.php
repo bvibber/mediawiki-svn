@@ -39,7 +39,10 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'eval_code' => 'Kodo',
+	'eval'        => 'Taks',
+	'eval_submit' => 'Taksu',
+	'eval_out'    => 'Eligo',
+	'eval_code'   => 'Kodo',
 );
 
 /** French (Français)

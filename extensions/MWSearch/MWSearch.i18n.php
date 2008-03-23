@@ -60,11 +60,25 @@ $messages['pl'] = array(
 	'mwsearch-desc' => 'Wtyczka MWSearch',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'mwsearch-desc' => 'Плагин MWSearch',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'mwsearch-desc' => 'MWSearch-programtillägg',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -3812,6 +3812,9 @@ $messages['ty'] = array(
 $messages['uk'] = array(
 	'boardvote'              => 'Вибори до Ради повірених фонду «Вікімедіа»',
 	'boardvote-desc'         => '[[meta:Board elections|Вибори до Ради повірених Вікімедіа]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Проголосувати]]
+* [[Special:Boardvote/list|Переглянути список тих, хто вже проголосував]]
+* [[Special:Boardvote/dump|Переглянути зашифрований запис голосів]]',
 	'boardvote_time'         => 'Час',
 	'boardvote_user'         => 'Користувач',
 	'boardvote_edits'        => 'Кількість редагувань',
@@ -4091,6 +4094,52 @@ $1去睇加密嘅資料。</p>",
 20秒之內你會彈去呢個外置伺服器。如果你想即刻去，就[$1 撳呢度]。
 
 你有可能會收到一個安全警告，話個憑證冇簽到。',
+);
+
+/** Zeeuws (Zeêuws)
+ * @author NJ
+ */
+$messages['zea'] = array(
+	'boardvote'              => 'Wikimedia Board of Trustees-verkiezieng',
+	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezieng]]',
+	'boardvote_intro'        => '<p>Welkom bie de twidde verkieziengen voe de Wikimedia Board of Trustees.
+We kiezen twi persoônen die an de gebrukersgemeênschap vertehenwoordihen in de verschill\'nde Wikimedia-projecten.
+Ze bepaelen mede de toekomstihe richtieng van Wikimedia-projecten, individueêl en as hroep, en behartihen <em>uw</em> belangen en zurhen bie de Board of Trustees.
+Ze beslissen ok over oe an inkomsen emikt kunnen worn en wi a \'t opehaeln held an wor besteed.</p>
+
+<p>Lees asjeblieft de kandidaotstellieng en de antwoorn op vraegen nauwkeurig voeda je stem.
+Iedere kandidaot is een hewaerdeerde gebruker die a anzienlijke hoeveelheden tied en moeite ei besteed an \'t bouwen van uutnoôdihende omheviengen die an toehewied zien an \'t naestreven en vrie verspreien van menselijke kennis.</p>
+
+<p>Je mag op zòvee kandidaoten stemm\'n as a je wil.
+De kandidaot mie de miste stemm\'n voe iedere positie wor tot winnaer uuteropen voe de betreffende positie.
+In \'t heval dan de stemm\'n staken wor der een twidde ronde ehouwen.</p>
+
+<p>Meêr informaotie:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Bestuursverkiezieng FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidaoten</a></li></ul>',
+	'boardvote_intro_change' => "<p>Je ei a estemd.
+Je kan je stemme wiezigen via 't onderstaende formulier.
+Vienk asjeblieft de vakjes an neffen iedere kandidaot die a je steun.</p>",
+	'boardvote_entered'      => 'Dank je. Je stemme is verwerkt.
+
+A je wil kan je de volhende hehevens bewaeren. Je stemme:
+
+<pre>$1</pre>
+
+Dezen is versleuteld mie de publieke sleutel van de Verkieziengscommissie:
+
+<pre>$2</pre>
+
+Noe volg de versleutelde versie. Dezen is openbaer en nae te ziene op [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Trug]]',
+	'boardvote_time'         => 'Tied',
+	'boardvote_user'         => 'Gebruker',
+	'boardvote_edits'        => 'Bewerkiengen',
+	'boardvote_days'         => 'Daegen',
+	'boardvote_ip'           => 'IP-adres',
 );
 
 $messages['zh-classical'] = array(

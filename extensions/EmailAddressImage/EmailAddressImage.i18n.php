@@ -21,6 +21,13 @@ $messages['bg'] = array(
 	'emailaddressimage-desc' => 'Добавя <tt>&lt;email&gt;</tt> за показване на адреси за е-поща като картинки',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'emailaddressimage-desc' => 'Aldonas <tt>&lt;retpoŝton&gr;</tt> montri retpoŝtan adreson kiel bildon',
+);
+
 /** French (Français)
  * @author Grondin
  */

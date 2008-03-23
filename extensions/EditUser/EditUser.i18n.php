@@ -43,6 +43,13 @@ $messages['bg'] = array(
 	'edituser-exempt'   => 'Посочената потребителска сметка не може да бъде редактирана',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'edituser-dosearch' => 'অনুসন্ধান',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -119,10 +119,21 @@ $messages['ru'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Micke
  */
 $messages['sv'] = array(
 	'editsubpages-desc' => 'Låter administratörer låsa upp en sida, och alla undersidor till den sidan, för redigering av oinloggade användare med hjälp av [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '   #<!-- låt denna linje vara ifred --><pre>
+# Skriv in sidor du vill låsa upp nedanför på formen
+# * sidnamn
+# Namnen ska börja med en stjärna,
+# allt annat räknas som kommentar
+# Sidnamn kan vara [[länkar]], och
+# man ska skilja mellan stora och smmå bokstäver.
+# Diskussionssidor blir automatiskt upplåsta tillsammans med huvudsidan
+# Se http://www.mediawiki.org/wiki/Extension:EditSubpages for mer information
+   #</pre><!-- låt denna linje vara ifred -->',
 );
 
 /** Ukrainian (Українська)

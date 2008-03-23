@@ -245,6 +245,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author Jon Harald Søby
  */
 $messages['eo'] = array(
 	'bookinfo-header'            => 'Libra informo',
@@ -252,7 +253,7 @@ $messages['eo'] = array(
 	'bookinfo-result-title'      => 'Titolo:',
 	'bookinfo-result-author'     => 'Aŭtoro:',
 	'bookinfo-result-publisher'  => 'Eldonejo:',
-	'bookinfo-result-year'       => 'Jaro',
+	'bookinfo-result-year'       => 'Jaro:',
 	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
 	'bookinfo-error-nosuchitem'  => 'Tio ne ekzistas aŭ ne estas trovebla.',
 	'bookinfo-purchase'          => 'Aĉetu ĉi libron de $1',

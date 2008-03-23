@@ -427,6 +427,13 @@ $messages['bg'] = array(
 	'mv_match_text'        => '~  $1 съвпадения',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'mv_tool_search' => 'অনুসন্ধান',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -451,15 +458,20 @@ $messages['eo'] = array(
 	'mv_upload_file'       => 'Alŝutu dosieron',
 	'mv_external_file'     => 'Ekstera Dosieron',
 	'mv_tool_search'       => 'Serĉu',
+	'mv_tool_navigate'     => 'Navigado',
 	'mv_results_found_for' => 'Serĉrezultoj <b>$1</b> al <b>$2</b> de <b>$3</b> por:',
 	'mv_data_page_title'   => '$1 por $2 de $3',
 	'mv_time_separator'    => '$1 al $2',
 	'mv_edit'              => 'Redaktu',
 	'mv_remove'            => 'forigu',
 	'mv_of'                => '&#32;de&#32;',
+	'mv_add_filter'        => 'Aldonu Filtrilon',
 	'mv_search_and'        => 'kaj',
 	'mv_search_or'         => 'aŭ',
 	'mv_search_not'        => 'ne',
+	'mv_category'          => 'kategorio',
+	'mv_view_wiki_page'    => 'Rigardu vikian paĝon',
+	'mv_match_text'        => '~ $1 pafoj',
 );
 
 /** French (Français)

@@ -137,6 +137,13 @@ $messages['lb'] = array(
 	'msfunc_div_zero' => 'Divisioun duerch null',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'msfunc_nan' => 'निकाल संख्येत येत नाही',
+);
+
 $messages['nl'] = array(
         'msfunc_nan' => "Resulterende waarde is geen getal" ,
         'msfunc_inf' => "Resulterende waarde is oneindig" ,

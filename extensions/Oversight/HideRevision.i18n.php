@@ -321,6 +321,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'hiderevision-continue'       => 'Kontinuu',
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-status'         => 'Revizio $1: $2',

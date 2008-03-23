@@ -43,6 +43,13 @@ $messages['bg'] = array(
 	'inspectcache-delete' => 'Изтриване',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'inspectcache-delete' => 'মুছে ফেলা হোক',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -77,6 +84,7 @@ $messages['ee'] = array(
  */
 $messages['eo'] = array(
 	'inspectcache-ok'      => 'Ek!',
+	'inspectcache-get'     => 'Akiru',
 	'inspectcache-delete'  => 'Forigu',
 	'inspectcache-deleted' => 'Forigita Kaŝmemoro',
 	'inspectcache-list'    => 'Listo',

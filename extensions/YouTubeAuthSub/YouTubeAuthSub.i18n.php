@@ -184,42 +184,52 @@ Por favor, sexa paciente.',
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'youtubeauthsub'              => 'ផ្ទុកឡើងវីដេអូយូធ្យូប(YouTube)',
-	'youtubeauthsub-desc'         => 'អនុញ្ញាត​អោយ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
-	'youtubeauthsub_info'         => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ពត៌មាន​ទាំងឡាយដូចតទៅ៖',
-	'youtubeauthsub_title'        => 'ចំនងជើង',
-	'youtubeauthsub_description'  => 'ពិពណ៌នា',
-	'youtubeauthsub_password'     => 'លេខ​សំងាត់យូធ្យូប(YouTube)',
-	'youtubeauthsub_username'     => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប(YouTube)',
-	'youtubeauthsub_keywords'     => 'ពាក្យគន្លឹះ​នានា',
-	'youtubeauthsub_category'     => 'ចំនាត់ថ្នាក់ក្រុម',
-	'youtubeauthsub_submit'       => 'ស្នើឡើង',
-	'youtubeauthsub_clickhere'    => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
-	'youtubeauthsub_uploadbutton' => 'ផ្ទុកឡើង',
-	'youtubeauthsub_summary'      => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
-	'youtubeauthsub_uploading'    => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
+	'youtubeauthsub'                     => 'ផ្ទុកឡើងវីដេអូយូធ្យូប(YouTube)',
+	'youtubeauthsub-desc'                => 'អនុញ្ញាត​អោយ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
+	'youtubeauthsub_info'                => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ពត៌មាន​ទាំងឡាយដូចតទៅ៖',
+	'youtubeauthsub_title'               => 'ចំនងជើង',
+	'youtubeauthsub_description'         => 'ពិពណ៌នា',
+	'youtubeauthsub_password'            => 'លេខ​សំងាត់យូធ្យូប(YouTube)',
+	'youtubeauthsub_username'            => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប(YouTube)',
+	'youtubeauthsub_keywords'            => 'ពាក្យគន្លឹះ​នានា',
+	'youtubeauthsub_category'            => 'ចំនាត់ថ្នាក់ក្រុម',
+	'youtubeauthsub_submit'              => 'ស្នើឡើង',
+	'youtubeauthsub_clickhere'           => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
+	'youtubeauthsub_authsubinstructions' => 'ដើម្បីផ្ទុកវីដេអូឡើង អ្នកនឹងត្រូវឡុកអ៊ីនទៅក្នុងយូធ្យូប(YouTube)ជាមុនសិន។',
+	'youtubeauthsub_uploadbutton'        => 'ផ្ទុកឡើង',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}។
+
+វីដេអូនេះអាចមើលបាននៅ [http://www.youtube.com/watch?v=$1 ទីនេះ]',
+	'youtubeauthsub_summary'             => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
+	'youtubeauthsub_uploading'           => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
 សូម​មានការអត់ធ្មត់។',
+	'youtubeauthsub_jserror_notitle'     => 'សូមដាក់ចំនងជើងអោយវីដេអូ។',
+	'youtubeauthsub_jserror_nodesc'      => 'សូមសរសេរការពិពណ៌នាអោយវីដេអូ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'youtubeauthsub'                    => 'YouTube Video eroplueden',
-	'youtubeauthsub_title'              => 'Titel',
-	'youtubeauthsub_description'        => 'Beschreiwung',
-	'youtubeauthsub_password'           => 'YouTube Passwuert',
-	'youtubeauthsub_username'           => 'YouTube Benotzernumm',
-	'youtubeauthsub_keywords'           => 'Stechwierder',
-	'youtubeauthsub_category'           => 'Kategorie',
-	'youtubeauthsub_uploadbutton'       => 'Eroplueden',
-	'youtubeauthsub_summary'            => 'YouTube Video gëtt eropgelueden',
-	'youtubeauthsub_uploading'          => 'Äre Video gëtt eropgelueden.
+	'youtubeauthsub'                     => 'YouTube Video eroplueden',
+	'youtubeauthsub_title'               => 'Titel',
+	'youtubeauthsub_description'         => 'Beschreiwung',
+	'youtubeauthsub_password'            => 'YouTube Passwuert',
+	'youtubeauthsub_username'            => 'YouTube Benotzernumm',
+	'youtubeauthsub_keywords'            => 'Stechwierder',
+	'youtubeauthsub_category'            => 'Kategorie',
+	'youtubeauthsub_submit'              => 'Späicheren',
+	'youtubeauthsub_authsubinstructions' => "Fir ee Video eropzelueden musst Dir iech fir d'éischt op YouTube eraloggen.",
+	'youtubeauthsub_uploadhere'          => 'Äre Video vun hei eroplueden:',
+	'youtubeauthsub_uploadbutton'        => 'Eroplueden',
+	'youtubeauthsub_summary'             => 'YouTube Video gëtt eropgelueden',
+	'youtubeauthsub_uploading'           => 'Äre Video gëtt eropgelueden.
 
 Hutt w.e.g. e bësse Gedold!',
-	'youtubeauthsub_jserror_nokeywords' => 'Gitt w.e.g. een oder méi Stechwierder un.',
-	'youtubeauthsub_jserror_notitle'    => 'Gitt w.e.g. een Titel fir de Video un.',
-	'youtubeauthsub_jserror_nodesc'     => 'Gitt w.e.g eng Beschreiwung vum Video.',
+	'youtubeauthsub_viewpage'            => 'alternativ kënnt dir äre Video [[$1|hei kucken]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Gitt w.e.g. een oder méi Stechwierder un.',
+	'youtubeauthsub_jserror_notitle'     => 'Gitt w.e.g. een Titel fir de Video un.',
+	'youtubeauthsub_jserror_nodesc'      => 'Gitt w.e.g eng Beschreiwung vum Video.',
 );
 
 /** Dutch (Nederlands)

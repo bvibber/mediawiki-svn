@@ -135,6 +135,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'patrol-revert-reason' => 'Kialo:',
+	'patrol-reasons'       => '* Simpla vandalismo
+* Novula testo
+* Vidu diskuto-paĝon',
 );
 
 /* Spanish (Titoxd) */

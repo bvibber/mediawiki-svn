@@ -176,6 +176,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'review_statistics_left_corner' => 'Revizio',
+	'review_version_link'           => 'Revizio #$1',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_comment'                => 'Komento',
 );

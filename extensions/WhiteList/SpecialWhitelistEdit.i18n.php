@@ -181,6 +181,7 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $allMessages['km'] = array(
 	'mywhitelistpages'         => 'ទំព័ររបស់ខ្ញុំ',
@@ -188,6 +189,7 @@ $allMessages['km'] = array(
 	'whitelisttablemodifyall'  => 'ទាំងអស់',
 	'whitelisttablemodifynone' => 'ទទេ',
 	'whitelisttablepage'       => 'ទំព័រវិគី',
+	'whitelisttableexpires'    => 'ផុតកំនត់នៅថ្ងៃទី',
 	'whitelisttablemodby'      => 'កែសំរួលចុងក្រោយដោយ',
 	'whitelisttablemodon'      => 'កែសំរួលចុងក្រោយនៅ',
 	'whitelisttableedit'       => 'កែប្រែ',

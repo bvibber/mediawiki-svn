@@ -37,6 +37,13 @@ $messages['bg'] = array(
 	'editmsg-new-search' => 'Ново търсене',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$messages['bn'] = array(
+	'editmsg-search' => 'অনুসন্ধান',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -64,6 +71,19 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'editmsg-new-search' => 'Νέα αναζήτηση',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editmsg-target'        => 'Cela mesaĝo:',
+	'editmsg-get-patch'     => 'Generu flikaĵon',
+	'editmsg-new-search'    => 'Nova serĉo',
+	'editmsg-apply-patch'   => 'Apliku flikaĵon',
+	'editmsg-no-patch'      => 'Ne eblas starti "flikan" komandon',
+	'editmsg-patch-failed'  => 'Flikaĵo malsukcesis kun statuso $1',
+	'editmsg-patch-success' => 'Sukcese flikita.',
 );
 
 /** French (Français)
@@ -221,6 +241,7 @@ $messages['sv'] = array(
 	'editmsg-get-patch'        => 'Skapa uppdatering',
 	'editmsg-new-search'       => 'Ny sökning',
 	'editmsg-warning-mismatch' => '* Orginaltexten hade inte det förväntade värdet vad gäller följande språk: $1',
+	'editmsg-apply-patch'      => 'Använd uppdatering',
 	'editmsg-patch-failed'     => 'Uppdatering misslyckades med avslutningsstatus $1',
 	'editmsg-patch-success'    => 'Uppdateringen lyckades.',
 );

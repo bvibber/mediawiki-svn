@@ -103,11 +103,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'passwordreset-username'    => 'Salutnomo',
-	'passwordreset-newpass'     => 'Nova pasvorto',
-	'passwordreset-confirmpass' => 'Konfirmu Pasvorton',
-	'passwordreset-submit'      => 'Restarigu Pasvorton',
-	'passwordreset-success'     => 'Pasvorto estis restarigita por user_id: $1',
+	'passwordreset'                 => 'Restarigo de pasvorto',
+	'passwordreset-invalidusername' => 'Nevalida Salutnomo',
+	'passwordreset-emptyusername'   => 'Malplena Salutnomo',
+	'passwordreset-username'        => 'Salutnomo',
+	'passwordreset-newpass'         => 'Nova pasvorto',
+	'passwordreset-confirmpass'     => 'Konfirmu Pasvorton',
+	'passwordreset-submit'          => 'Restarigu Pasvorton',
+	'passwordreset-success'         => 'Pasvorto estis restarigita por user_id: $1',
 );
 
 /** French (Français)

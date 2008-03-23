@@ -62,6 +62,13 @@ $messages['el'] = array(
 	'minipreview-files_in_category' => '$1 συνολικά αρχεία υπάρχουν σε αυτήν την κατηγορία.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'minipreview-no_category_gallery' => 'Neniuj kategorioj aŭ galerioj!',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Grondin

@@ -228,6 +228,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'call'              => 'Opruff',
+	'call-save'         => "D'Resultat vun dësem Opruff géif op der Säit '''$1''' gespäichert ginn.",
 	'call-save-success' => 'Dësen Text gouf op der Säit <big>[[$1]]</big> gespäichert.',
 	'call-save-failed'  => 'Dësen Text konnt NET op der Säit <big>[[$1]]</big> ofgespäichert ginn, well et dës Säit scho gëtt.',
 );

@@ -227,6 +227,13 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-mars'                      => 'Марс',
 );
 
+/** Bengali (বাংলা)
+ * @author Zaheen
+ */
+$wgGoogleMapsMessages['bn'] = array(
+	'gm-search' => 'অনুসন্ধান',
+);
+
 /**
  * @author <anonymous>
  */
@@ -670,6 +677,73 @@ $wgGoogleMapsMessages['gl'] = array(
 	'gm-earth'                     => 'Terra',
 	'gm-moon'                      => 'Lúa',
 	'gm-mars'                      => 'Marte',
+);
+
+/** Hebrew (עברית)
+ * @author שומבלע
+ */
+$wgGoogleMapsMessages['he'] = array(
+	'gm-incompatible-browser'      => 'לצורך צפייה במפה שתצרו כאן, הנכם צריכים להשתמש בדפדפן אינטרנט מתאים.',
+	'gm-incompatible-browser-link' => 'לחצו כאן לצפייה ברשימת דפדפנים תואמים.',
+	'gm-no-editor'                 => 'מצטערים, הדפדפן שלכם אינו תומך ביצירת מפה אינטראקטיבית. נסו את הגרסאות האחרונות של <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) או <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, ו- Linux).',
+	'gm-balloon-title'             => 'כותרת:',
+	'gm-balloon-link-article'      => 'קישור לדף זה (אופצינלי):',
+	'gm-make-marker'               => 'הסבר (תחביר ויקי אפשרי):',
+	'gm-remove'                    => 'הסרה',
+	'gm-caption'                   => 'הסבר',
+	'gm-start-path'                => 'התחלת מסלול',
+	'gm-trace-area'                => 'סימון איזור',
+	'gm-save-point'                => 'שמירה וסגירה',
+	'gm-load-map-from-article'     => 'העלאת מפה מתוך ערך:',
+	'gm-no-maps'                   => 'אין מפה בערך זה.',
+	'gm-refresh-list'              => 'ריענון רשימה',
+	'gm-load-map'                  => 'העלאת מפה',
+	'gm-clip-result'               => 'הוספה למפה',
+	'gm-no-results'                => 'מצטערים, אין תוצאות',
+	'gm-searching'                 => 'מחפש...',
+	'gm-map'                       => 'מפה',
+	'gm-note'                      => 'הערה: זכרו להעתיק את תחביר המפה לתוך הערך (למטה) לפני הלחיצה על "העלאת מפה", "שמירה" או "תצוגה מקדימה"!',
+	'gm-instructions'              => 'בתיבה מתחת יש תחביר ויקי ליצירת המפה.',
+	'gm-are-you-sure'              => 'האם אתם בטוחים?',
+	'gm-clear-all-points'          => 'ניקוי כל הנקודות',
+	'gm-refresh-points'            => 'ריענון נקודות',
+	'gm-width'                     => 'רוחב',
+	'gm-height'                    => 'גובה',
+	'gm-scale-control'             => 'קנה מידה',
+	'gm-selector-control'          => 'בוחר מפה/לויין',
+	'gm-zoom-control'              => 'סרגל ניווט',
+	'gm-large'                     => 'גדול',
+	'gm-medium'                    => 'בינוני',
+	'gm-small'                     => 'קטן',
+	'gm-no-zoom-control'           => 'ללא',
+	'gm-yes'                       => 'כן',
+	'gm-no'                        => 'לא',
+	'gm-search-preface'            => 'לחצו על המפה להוספת עוד נקודה או לדלג לעיר, ארץ, כתובת או עסק:',
+	'gm-geocode-preface'           => 'לחצו על המפה להוספת נקודה או לדלג לעיר, ארץ,  או כתובת:',
+	'gm-no-search-preface'         => 'לחצו על המפה להוספת נקודה.',
+	'gm-search'                    => 'חיפוש',
+	'gm-clear-search'              => 'ניקוי תוצאות חיפוש',
+	'gm-miles'                     => 'מילים',
+	'gm-editing-path'              => 'לחצו על המפה להוספת עוד נקודות למסלול.',
+	'gm-save-path'                 => 'שמירה',
+	'gm-edit-path'                 => 'הוספת נקודות',
+	'gm-color-fill'                => 'שינוי צבע המילוי',
+	'gm-add-fill'                  => 'מילוי איזור',
+	'gm-remove-fill'               => 'הסרת מילוי',
+	'gm-fill-color'                => 'צבע מילוי',
+	'gm-line-color'                => 'צבע קו',
+	'gm-opacity'                   => 'עירפול',
+	'gm-line-width'                => 'רוחב',
+	'gm-make-map'                  => 'יצירת מפה',
+	'gm-hide-map'                  => 'הסתרת מפה',
+	'gm-back'                      => 'חזור',
+	'gm-kml-include'               => 'KML/GeoRSS חיצוני:',
+	'gm-kml-include-link'          => 'הוספה למפה',
+	'gm-kml-loading'               => 'טוען...',
+	'gm-kml-export'                => 'יצוא מפה לקובץ KML',
+	'gm-earth'                     => 'כדור-הארץ',
+	'gm-moon'                      => 'ירח',
+	'gm-mars'                      => 'מאדים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

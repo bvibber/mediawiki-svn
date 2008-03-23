@@ -200,12 +200,22 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
-	'lookupuser'       => 'सदस्य माहिती शोधा',
-	'lookupuser_email' => 'विपत्र: [[Special:Emailuser/$2|$1]]',
+	'lookupuser'                   => 'सदस्य माहिती शोधा',
+	'lookupuser-desc'              => 'एखाद्या सदस्याची [[Special:LookupUser|अधिक माहिती मिळवा]] उदा. इमेल पत्ता व सदस्य क्रमांक',
+	'lookupuser_intro'             => 'एखाद्या सदस्याच्या पसंती पाहण्यासाठी त्याचे सदस्यनाव लिहा.',
+	'lookupuser_nonexistent'       => 'त्रुटी: सदस्य अस्तित्वात नाही',
+	'lookupuser_authenticated'     => 'इमेल तपासणी: $1',
+	'lookupuser_not_authenticated' => 'तपासणी पूर्ण झालेली नाही',
+	'lookupuser_id'                => 'सदस्य क्रमांक: <tt>#$1</tt>',
+	'lookupuser_email'             => 'विपत्र: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'खरे नाव: $1',
+	'lookupuser_registration'      => 'नोंदणी दिनांक: $1',
+	'lookupuser_touched'           => 'बघितलेली शेवटची सदस्य नोंद: $1',
+	'lookupuser_useroptions'       => 'सदस्य विकल्प:',
 );
 
 /** Dutch (Nederlands)

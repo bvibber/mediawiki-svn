@@ -75,7 +75,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'pageby-first' => 'Paĝo kreiita de $1, $2',
+	'pageby-first'        => 'Paĝo kreiita de $1, $2',
+	'pageby-contributors' => 'Kontribuantoj:',
+	'pageby-anon'         => '<i>anonima</i>',
 );
 
 /** French (Français)

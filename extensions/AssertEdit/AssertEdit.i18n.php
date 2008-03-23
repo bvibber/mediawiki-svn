@@ -421,6 +421,15 @@ $messages['yue'] = array(
 	'assert_edit_message' => '所指定嘅斷言 ($1) 失敗。',
 );
 
+/** Zeeuws (Zeêuws)
+ * @author NJ
+ */
+$messages['zea'] = array(
+	'assert_edit_title'   => 'Bevestigieng mislukt',
+	'assert_edit_desc'    => 'Mik rolbevestigiengen meuhlijk voe gebruuk deur bots',
+	'assert_edit_message' => 'De gevraegde bevestigieng ($1) is mislukt.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */

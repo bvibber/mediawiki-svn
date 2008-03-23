@@ -217,6 +217,7 @@ $messages['lb'] = array(
 	'spamdifftool_option_subdomain' => 'all vun dësem Subdomain',
 	'spamdifftool_option_none'      => 'näischt',
 	'spamdifftool_block'            => 'Spär:',
+	'spamdifftool_submit_buttom'    => 'Späicheren',
 );
 
 /** Marathi (मराठी)
