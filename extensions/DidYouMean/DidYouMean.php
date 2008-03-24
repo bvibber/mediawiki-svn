@@ -226,7 +226,7 @@ function wfDymArticleInsertComplete( &$article, &$user, $text, $summary, $ismino
 	return true;
 }
 
-function dymArticleUndelete( &$title, &$create ) {
+function wfDymArticleUndelete( &$title, &$create ) {
 
 	if ($create == false || $title->getNamespace() != 0)
 		return true;
