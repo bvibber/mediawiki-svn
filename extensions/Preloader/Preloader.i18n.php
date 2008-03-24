@@ -35,6 +35,13 @@ $messages['hu'] = array(
 	'preloader-desc' => 'Névterenként más-más rendszerüzenet az új oldalakhoz',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'preloader-desc' => 'Erméiglecht et personabiliséierten Text fir nei Säiten pro Nummraum derbäizesetzen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

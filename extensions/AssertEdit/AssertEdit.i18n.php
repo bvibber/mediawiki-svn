@@ -187,6 +187,7 @@ $messages['ht'] = array(
  */
 $messages['hu'] = array(
 	'assert_edit_title'   => 'Az előfeltételezés hamis',
+	'assert_edit_desc'    => 'Szerkesztési előfeltételezések botok számára',
 	'assert_edit_message' => 'Az előfeltételezés ($1) hamis értéket adott vissza.',
 );
 

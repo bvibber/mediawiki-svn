@@ -148,7 +148,9 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'msfunc_nan' => 'निकाल संख्येत येत नाही',
+	'msfunc_nan'      => 'निकाल संख्येत येत नाही',
+	'msfunc_inf'      => 'निकाल अनंतात (infinity) आहे',
+	'msfunc_div_zero' => 'शून्याने भागाकार',
 );
 
 $messages['nl'] = array(

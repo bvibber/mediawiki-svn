@@ -485,6 +485,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'linksearch'      => 'Weblink-Sich',
+	'linksearch-pat'  => 'Sich-Critère:',
 	'linksearch-ns'   => 'Nummraum:',
 	'linksearch-ok'   => 'Sichen',
 	'linksearch-line' => '$1 verlinkt vun $2',

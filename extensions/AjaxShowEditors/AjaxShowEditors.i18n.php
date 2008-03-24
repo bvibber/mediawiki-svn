@@ -249,9 +249,13 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'ajax-se-title'   => 'Jelenlegi szerkesztők:',
-	'ajax-se-pending' => 'várakozás a frissítésre ... (kattints ide vagy kezdj el szerkeszteni)',
-	'ajax-se-idling'  => '($1 másodperce)',
+	'ajax-se-desc'             => 'Mutasd azokat a szerkesztőket, akik ugyanazon lapokat szerkesztik',
+	'ajax-se-title'            => 'Jelenlegi szerkesztők:',
+	'ajax-se-pending'          => 'várakozás a frissítésre ... (kattints ide vagy kezdj el szerkeszteni)',
+	'ajax-se-idling'           => '($1 másodperce)',
+	'ajax-se-pagedoesnotexist' => 'a lap nem létezik',
+	'ajax-se-userinvalid'      => 'HIBA: érvénytelen felhasználó',
+	'ajax-se-usernotfound'     => 'HIBA: a felhasználó nem található',
 );
 
 /** Armenian (Հայերեն)

@@ -104,9 +104,11 @@ $messages['lb'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
-	'mediafunctions-not-exist' => '"$1" अस्तीत्वात नाही',
+	'mediafunctions-invalid-title' => '"$1" हे योग्य शीर्षक नाही',
+	'mediafunctions-not-exist'     => '"$1" अस्तीत्वात नाही',
 );
 
 $messages['nds'] = array(

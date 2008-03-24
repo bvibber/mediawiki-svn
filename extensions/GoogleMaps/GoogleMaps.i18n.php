@@ -671,6 +671,7 @@ $wgGoogleMapsMessages['gl'] = array(
 	'gm-large'                     => 'Grande',
 	'gm-medium'                    => 'Mediano',
 	'gm-small'                     => 'Pequeno',
+	'gm-no-zoom-control'           => 'Ningún',
 	'gm-yes'                       => 'Si',
 	'gm-no'                        => 'Non',
 	'gm-no-search-preface'         => 'Faga clic no mapa para engadir un punto.',
@@ -1289,8 +1290,10 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-save-point'                => 'gravar &amp; fechar',
 	'gm-load-map-from-article'     => 'Carregar um mapa da página:',
 	'gm-no-maps'                   => 'Não há mapas nesta página para carregar.',
+	'gm-refresh-list'              => 'Refrescar lista',
 	'gm-load-map'                  => 'Carregar mapa',
 	'gm-clip-result'               => 'Adicionar ao mapa',
+	'gm-no-results'                => 'Desculpe, não há resultados',
 	'gm-searching'                 => 'em busca...',
 	'gm-map'                       => 'Mapa',
 	'gm-are-you-sure'              => 'Tem a certeza?',
@@ -1298,10 +1301,13 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-refresh-points'            => 'Refrescar pontos',
 	'gm-width'                     => 'Largura',
 	'gm-height'                    => 'Altura',
+	'gm-scale-control'             => 'Escala',
 	'gm-selector-control'          => 'Selector de mapa/satélite',
+	'gm-zoom-control'              => 'Navegação',
 	'gm-large'                     => 'Grande',
 	'gm-medium'                    => 'Médio',
 	'gm-small'                     => 'Pequeno',
+	'gm-no-zoom-control'           => 'Nenhum',
 	'gm-yes'                       => 'Sim',
 	'gm-no'                        => 'Não',
 	'gm-no-search-preface'         => 'Carregue no mapa para adicionar um ponto.',
@@ -1320,6 +1326,7 @@ $wgGoogleMapsMessages['pt'] = array(
 	'gm-line-width'                => 'Largura',
 	'gm-make-map'                  => 'criar um mapa',
 	'gm-hide-map'                  => 'esconder mapa',
+	'gm-kml-include'               => 'KML/GeoRSS externo:',
 	'gm-kml-include-link'          => 'adicionar ao mapa',
 	'gm-kml-loading'               => 'a carregar...',
 	'gm-kml-export'                => 'Exportar este mapa para KML',
@@ -1648,6 +1655,14 @@ $wgGoogleMapsMessages['te'] = array(
 	'gm-earth'                     => 'భూమి',
 	'gm-moon'                      => 'చంద్రుడు',
 	'gm-mars'                      => 'అంగారకుడు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$wgGoogleMapsMessages['tet'] = array(
+	'gm-yes' => 'Sin',
+	'gm-no'  => 'Lae',
 );
 
 /** Vietnamese (Tiếng Việt)

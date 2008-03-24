@@ -205,6 +205,17 @@ $messages['fr'] = array(
 	'invitations-invite-success'            => 'Vous invité $1 avec succès pour utiliser cette fonctionnalité !',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'invite-logpage'                => 'Rexistro de invitacións',
+	'invitations-feature-access'    => 'Actualmente ten acceso para usar <i>$1</i>.',
+	'invitations-feature-numleft'   => 'Aínda ten <b>$1</b> á parte das $2 invitaciones restantes.',
+	'invitations-inviteform-title'  => 'Invitar a un usuario a usar $1',
+	'invitations-inviteform-submit' => 'Invitar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran
@@ -220,6 +231,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'invite-logpage'                   => 'Lëscht vun den Invitatiounen',
+	'invitations-invitedlist-item'     => '<b>$1</b> ($2 Invitatiounen disponibel)',
 	'invitations-feature-pagetitle'    => 'Gestioun vun der Invitatioun - $1',
 	'invitations-feature-numleft'      => 'Dir hutt nach <b>$1</b> vun ären $2 Invitatiounen iwwreg.',
 	'invitations-feature-noneleft'     => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',

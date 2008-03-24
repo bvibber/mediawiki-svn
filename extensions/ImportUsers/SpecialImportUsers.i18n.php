@@ -196,6 +196,7 @@ $messages['gl'] = array(
 	'importusers-log-summary'          => 'Resumo',
 	'importusers-log-summary-all'      => 'Todo',
 	'importusers-log-summary-added'    => 'Engadido',
+	'importusers-log-summary-updated'  => 'Actualizado',
 	'importusers-login-name'           => 'Rexistrar nome',
 	'importusers-password'             => 'contrasinal',
 	'importusers-email'                => 'correo electrónico',
@@ -572,6 +573,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'importusers-log-summary-all' => 'Hotu',
+	'importusers-email'           => 'korreiu eletróniku',
 );
 
 /** Volapük (Volapük)

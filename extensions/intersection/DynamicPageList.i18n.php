@@ -164,8 +164,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author KossuthRad
+ * @author Dani
  */
 $messages['hu'] = array(
+	'intersection-desc'          => 'Megjeleníti egy adott kategóriában, vagy kategóriák uniójában lévő legújabb szócikkek listáját',
 	'intersection_toomanycats'   => 'DynamicPageList: Túl sok kategória!',
 	'intersection_toofewcats'    => 'DynamicPageList: Túl kevés kategória!',
 	'intersection_noresults'     => 'DynamicPageList: Nincs eredmény!',

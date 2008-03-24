@@ -199,6 +199,7 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
@@ -209,6 +210,7 @@ $messages['gl'] = array(
 href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
 	'chemFunctions_CAS'      => 'número CAS',
 	'chemFunctions_Formula'  => 'Fórmula',
+	'chemFunctions_Name'     => 'Nome da IUPAC',
 );
 
 /** Croatian (Hrvatski)

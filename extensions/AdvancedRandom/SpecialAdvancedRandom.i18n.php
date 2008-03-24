@@ -252,6 +252,14 @@ $messages['stq'] = array(
 	'advancedrandom-desc' => 'Hoal ne toufällige Siede, t.B. mäd [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], uum ne toufällige Diskussionssiede tou n excellenten Artikkel of mäd [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], uum ne toufällige Doatäi antouwiesen, ju der as GFDL lizenzierd is.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'advancedrandom'      => 'Acak ronjat',
+	'advancedrandom-desc' => 'Buka kaca acak nu sawala atawa jejerna numbu ka kaca nu ditangtukeun; bisa dipaké kawas [[Special:AdvancedRandom/Template:Featured/Talk]] pikeun muka artikel petingan acak atawa kawas [[Special:AdvancedRandom/Template:GFDL/Image]] pikeun muka acak koropak GFDL.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

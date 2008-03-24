@@ -99,6 +99,16 @@ $messages['hsb'] = array(
 	'categoryintersection-results'       => 'Pytanje je $1 {{PLURAL:$1|wuslědk|wuslědkaj|wuslědki|wuslědkow}} přinjesło.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'categoryintersection'               => 'Kategóriák metszete',
+	'categoryintersection-doit'          => 'Lapok megjelenítése, melyek a következő összes kategóriában benne vannak',
+	'categoryintersection-maxcategories' => 'Egyszerre maximum $1 kategóriának lehet lekérni a metszetét.',
+	'categoryintersection-results'       => 'A keresésnek $1 eredménye van.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

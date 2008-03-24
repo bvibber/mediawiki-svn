@@ -555,6 +555,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'badimages'                => 'Hibás képek listája',
+	'badimages-desc'           => 'Kibővíti a MediaWiki hibás kép listájának képességeit',
 	'badimages-add-btn'        => 'Hozzáadás',
 	'badimages-added'          => '$1 hozzá lett adva a listához',
 	'badimages-count'          => "'''$1''' kép található a hibás képek listáján.",

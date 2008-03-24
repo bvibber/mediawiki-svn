@@ -88,6 +88,13 @@ $messages['hsb'] = array(
 	'breadcrumbs-desc' => 'Pokazuje wužiwarjam puć přez wiki',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'breadcrumbs-desc' => 'Megjeleníti a felhasználó által a wikiben bejárt utat.',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

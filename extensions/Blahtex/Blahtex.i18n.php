@@ -749,6 +749,8 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'math_noblahtex'                        => 'A blahtex nem futtatható, itt kellene lennie: $1',
+	'math-desc'                             => 'MathML kimenet a &lt;math&gt; tagekhez',
 	'math_AmbiguousInfix'                   => '„$1” kétértelműen van elhelyezve (próbálj meg egyértelműsíteni újabb „{ ... }” zárójelek használatával)',
 	'math_CannotChangeDirectory'            => 'Nem sikerült megváltoztatni a munkakönyvtárat',
 	'math_CannotCreateTexFile'              => 'Nem sikerült elkészíteni a tex fájlt',

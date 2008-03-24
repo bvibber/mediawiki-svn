@@ -1438,8 +1438,10 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'sign-realname'           => 'Naran:',
 	'sign-city'               => 'Sidade:',
+	'sign-email'              => 'Diresaun korreiu eletróniku:',
 	'sign-viewfield-realname' => 'Naran',
 	'sign-viewfield-city'     => 'Sidade',
+	'sign-viewfield-email'    => 'Korreiu eletróniku',
 );
 
 /** Tajik (Тоҷикӣ)

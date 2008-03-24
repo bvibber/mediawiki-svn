@@ -216,6 +216,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'backforth-next' => 'Következő ($1)',
+	'backforth-desc' => '„Előző” és „Következő” alfabetikus lapozóhivatkozások a lapok tetejére',
 	'backforth-prev' => 'Előző ($1)',
 );
 
@@ -494,6 +495,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'backforth-next' => 'Наст. ($1)',
+	'backforth-desc' => 'Додає зверху сторінки посилання на наступну і попередню за алфавітом сторінки',
 	'backforth-prev' => 'Попер. ($1)',
 );
 

@@ -188,6 +188,8 @@ Přikład 4 (URL wobhladowaka): &nbsp; <tt>http://mydomain/mywiki/index.php?Spec
  */
 $messages['hu'] = array(
 	'call'              => 'Hívás',
+	'call-desc'         => 'Lehetővé teszi sablon (vagy egy normális wiki lap) meghívását paraméterátadással.
+Használható a böngésző címsorából, vagy a wikiszövegben is.',
 	'call-text'         => "A kiegészítőnek meg kell adni egy wiki oldalt és kiegészítő paramétereket ahhoz az oldalhoz.<br /><br />
 1. példa: &nbsp; <tt>[[Special:Call/Sablon neve,parm1=érték1]]</tt><br />
 2. példa: &nbsp; <tt>[[Special:Call/Vita:Vitalapom,parm1=érték1]]</tt><br />

@@ -256,6 +256,7 @@ $messages['eo'] = array(
 	'bookinfo-result-year'       => 'Jaro:',
 	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
 	'bookinfo-error-nosuchitem'  => 'Tio ne ekzistas aŭ ne estas trovebla.',
+	'bookinfo-error-noresponse'  => 'Neniu respondo aŭ peto estis finigita.',
 	'bookinfo-purchase'          => 'Aĉetu ĉi libron de $1',
 	'bookinfo-provider'          => 'Datuma provizanto: $1',
 );
@@ -420,6 +421,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'bookinfo-header'            => 'Könyv információ',
+	'bookinfo-desc'              => 'A [[Special:Booksources|Könyvforrások]] kiegészítése információkkal egy webszolgáltatásról',
 	'bookinfo-result-title'      => 'Cím:',
 	'bookinfo-result-author'     => 'Szerző:',
 	'bookinfo-result-publisher'  => 'Kiadó:',
@@ -956,12 +958,16 @@ $messages['stq'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
-	'bookinfo-header'           => 'Émbaran buku',
-	'bookinfo-result-title'     => 'Judul:',
-	'bookinfo-result-author'    => 'Pangarang:',
-	'bookinfo-result-publisher' => 'Pamedal:',
-	'bookinfo-result-year'      => 'Taun:',
-	'bookinfo-purchase'         => 'Beuli ti $1',
+	'bookinfo-header'            => 'Émbaran buku',
+	'bookinfo-desc'              => 'Legaan [[Special:Booksources]] ngawengku émbaran ti layanan loka',
+	'bookinfo-result-title'      => 'Judul:',
+	'bookinfo-result-author'     => 'Pangarang:',
+	'bookinfo-result-publisher'  => 'Pamedal:',
+	'bookinfo-result-year'       => 'Taun:',
+	'bookinfo-error-invalidisbn' => 'ISBN nu diasupkeun salah.',
+	'bookinfo-error-nosuchitem'  => 'Euweuh atawa teu kapanggih.',
+	'bookinfo-purchase'          => 'Beuli ti $1',
+	'bookinfo-provider'          => 'Panyadia data: $1',
 );
 
 /** Swedish (Svenska)

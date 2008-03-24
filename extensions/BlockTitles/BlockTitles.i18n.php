@@ -188,6 +188,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'block_title_error_page_title' => 'Blokkolt cím',
+	'block_title_error-desc'       => 'Lehetővé teszi, hogy adott címmel rendelkező lapokat ne lehessen elmenteni vagy létrehozni',
 	'block_title_error'            => 'Sajnáljuk, a megadott címmel nem lehet elmenteni az oldalt.',
 );
 

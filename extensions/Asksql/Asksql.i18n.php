@@ -320,6 +320,7 @@ To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zr
  */
 $messages['hu'] = array(
 	'asksql'          => 'SQL lekérdezés',
+	'asksql-desc'     => 'SQL lekérések egy [[Special:Asksql|speciális lapon]] keresztül',
 	'asksqltext'      => "Az alábbi űrlap segítségével közvetlen lekérdezéseket végezhetsz az
 adatbázisból.
 Az aposztrófok ('mint ez') sztring literálokat határolnak.

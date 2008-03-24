@@ -284,6 +284,13 @@ $messages['te'] = array(
 	'profiling-no-data'      => 'సరిపోలిన డాటా కనబడలేదు.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

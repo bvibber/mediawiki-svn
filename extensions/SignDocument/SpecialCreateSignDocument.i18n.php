@@ -571,6 +571,8 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'createsigndoc-pagename' => 'Pájina:',
+	'createsigndoc-email'    => 'Diresaun korreiu eletróniku:',
+	'createsigndoc-create'   => 'Kria',
 );
 
 /** Tajik (Тоҷикӣ)

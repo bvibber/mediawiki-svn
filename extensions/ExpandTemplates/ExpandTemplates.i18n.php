@@ -998,6 +998,13 @@ $messages['te'] = array(
 	'expand_templates_preview'         => 'మునుజూపు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'expand_templates_ok' => 'OK',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

@@ -328,6 +328,13 @@ $messages['te'] = array(
 	'findspam-notextfound' => 'రచనలు ఏమీ కనబడలేదు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

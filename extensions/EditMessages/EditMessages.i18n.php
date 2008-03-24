@@ -120,7 +120,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'editmsg-search' => 'Procurar',
+	'editmessages'       => 'Editar mensaxes',
+	'editmsg-search'     => 'Procurar',
+	'editmsg-new-search' => 'Nova busca',
 );
 
 /** Hungarian (Magyar)
@@ -144,15 +146,19 @@ $messages['hu'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'editmessages-desc'     => "[[Special:EditMessages|Änneren am Web]] vun enger grousser Zuel vu ''Messages*.php-Dateien''",
-	'editmessages'          => 'Systemmessage änneren',
-	'editmsg-target'        => 'Systemmessage dee geännert soll ginn:',
-	'editmsg-search'        => 'Sich',
-	'editmsg-show-list'     => 'Inhalt vum Systemmessage "$1"',
-	'editmsg-get-patch'     => 'Patch maachen',
-	'editmsg-new-search'    => 'Nei Sich',
-	'editmsg-apply-patch'   => 'Patch uwenden',
-	'editmsg-patch-success' => 'gepatched!',
+	'editmessages-desc'        => "[[Special:EditMessages|Änneren am Web]] vun enger grousser Zuel vu ''Messages*.php-Dateien''",
+	'editmessages'             => 'Systemmessage änneren',
+	'editmsg-target'           => 'Systemmessage dee geännert soll ginn:',
+	'editmsg-search'           => 'Sich',
+	'editmsg-show-list'        => 'Inhalt vum Systemmessage "$1"',
+	'editmsg-get-patch'        => 'Patch maachen',
+	'editmsg-new-search'       => 'Nei Sich',
+	'editmsg-warning-parse1'   => '* Geleefege Numm vum Systemmessage gouf net fonnt: $1',
+	'editmsg-warning-parse3'   => '* Ënn vun der Zeechekette gouf net fonnt: $1',
+	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wert fir dës Sproochen: $1',
+	'editmsg-apply-patch'      => 'Patch uwenden',
+	'editmsg-patch-failed'     => 'Patch huet net fonctionnéiert mat dem Feelermessage $1',
+	'editmsg-patch-success'    => 'gepatched!',
 );
 
 /** Marathi (मराठी)

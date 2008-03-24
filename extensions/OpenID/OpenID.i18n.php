@@ -400,8 +400,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'openidxrds'               => 'Yadis Fichier',
 	'openiderror'              => 'Feeler bäi der Iwwerpréifung',
 	'openidsuccess'            => 'Iwwerpréifung huet geklappt',
+	'openidusernameprefix'     => 'OpenIDBenotzer',
 	'openidtrustinstructions'  => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust'         => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidoptional'           => 'Facultatif',
@@ -416,6 +418,18 @@ $messages['lb'] = array(
 	'openidchooseauto'         => 'Een Numm deen automatesch generéiert gouf ($1)',
 	'openidchoosemanual'       => 'E Numm vun ärer Wiel:',
 	'openidchoosepassword'     => 'Passwuert:',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'openidoptional' => 'वैकल्पिक',
+	'openidrequired' => 'आवश्यक',
+	'openidnickname' => 'टोपणनाव',
+	'openidfullname' => 'पूर्णनाव',
+	'openidemail'    => 'इमेल पत्ता',
+	'openidlanguage' => 'भाषा',
 );
 
 /** Dutch (Nederlands)
@@ -643,6 +657,19 @@ $messages['ps'] = array(
 	'openidchoosepassword' => 'پټنوم:',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'openidxrds'                    => 'Ficheiro Yadis',
+	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
+	'openidoptional'                => 'Opcional',
+	'openidrequired'                => 'Requerido',
+	'openidfullname'                => 'Nome completo',
+	'openidlanguage'                => 'Língua',
+	'openidchoosepassword'          => 'palavra-chave:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -740,6 +767,13 @@ $messages['te'] = array(
 	'openidfullname' => 'పూర్తిపేరు',
 	'openidemail'    => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage' => 'భాష',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'openidemail' => 'Diresaun korreiu eletróniku',
 );
 
 /** Vietnamese (Tiếng Việt)

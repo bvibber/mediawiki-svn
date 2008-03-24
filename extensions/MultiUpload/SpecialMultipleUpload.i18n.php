@@ -226,6 +226,13 @@ $messages['km'] = array(
 	'multiupload-toolbox'              => 'ផ្ទុកឡើង ច្រើនឯកសារ',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'multipleupload' => "Wêneyan ya data'yan barbike",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -236,6 +243,17 @@ $messages['lb'] = array(
 	'multipleupload-saveallfiles'      => "All d'Fichiere späicheren",
 	'multipleupload-addresswarnings'   => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
 	'multiupload-fileuploaded'         => 'Fichier eropgelueden',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'multipleupload'                   => 'संचिका चढवा',
+	'multipleupload-ignoreallwarnings' => "'''सर्व सूचना''' दुर्लक्षित करा व सर्व संचिका जतन करा.",
+	'multipleupload-saveallfiles'      => 'सर्व संचिका जतन करा',
+	'multiupload-fileuploaded'         => 'संचिका चढविलेली आहे.',
+	'multiupload-toolbox'              => 'अनेक संचिका चढवा',
 );
 
 /** Dutch (Nederlands)

@@ -2699,6 +2699,13 @@ $wdMessages['te'] = array(
 	'ow_copy_successful'                    => '<h2>కాపీ విజయవంతం</h2>మీ భోగట్టా విజయవంతంగా కాపీ అయింది. కానీ మరోసారి సరిచూచుకోవడం మర్చిపోకండి!',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$wdMessages['tet'] = array(
+	'ow_dm_OK' => 'OK',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

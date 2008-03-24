@@ -194,6 +194,14 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
 	'whitelistnummatches'       => ' - $1 {{PLURAL:$1|occurence|occurences}}',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$allMessages['gl'] = array(
+	'whitelisttablemodifyall'  => 'Todo',
+	'whitelisttablemodifynone' => 'Ningún',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -574,7 +582,9 @@ $allMessages['te'] = array(
  * @author MF-Warburg
  */
 $allMessages['tet'] = array(
+	'mywhitelistpages'        => "Ha'u-nia pájina sira",
 	'whitelisttablemodifyall' => 'Hotu',
+	'whitelisttableedit'      => 'Edita',
 );
 
 /** Tajik (Тоҷикӣ)

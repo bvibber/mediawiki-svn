@@ -376,3 +376,11 @@ $messages['te'] = array(
 	'inspectcache-list'    => 'జాబితా',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Halakon',
+);
+

@@ -39,6 +39,13 @@ $messages['lb'] = array(
 	'mwsearch-desc' => 'Plug-in Sichen Media-Wiki',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'mwsearch-desc' => 'एमडब्ल्यूशोध प्लगीन',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -65,6 +72,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'mwsearch-desc' => 'Wtyczka MWSearch',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
 /** Russian (Русский)

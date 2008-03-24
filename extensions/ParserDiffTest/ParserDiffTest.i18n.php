@@ -753,6 +753,13 @@ $messages['te'] = array(
 	'pdt_comparing_page'  => '[[$1]] నుండి పార్సర్ అవుట్&zwnj;పుట్&zwnj;ని పోలుస్తున్నాం',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'pdtest_ok' => 'OK',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

@@ -3704,6 +3704,13 @@ $messages['te'] = array(
 సంతకంలేని దృవపత్రం గురించి ఓ భద్రతా హెచ్చరిక చూపించబడవచ్చు.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'boardvote_submit' => 'OK',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

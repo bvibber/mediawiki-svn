@@ -161,6 +161,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'languageselector'         => 'Nyelv',
+	'languageselector-desc'    => 'Nyelvválasztó minden lapon, látogatók számára is',
 	'languageselector-setlang' => 'beállítás',
 );
 
