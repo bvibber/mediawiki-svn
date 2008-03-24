@@ -147,6 +147,13 @@ $messages['bg'] = array(
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'createsigndoc-create' => 'Opret',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -167,8 +174,11 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'createsigndoc-pagename' => 'Paĝo:',
-	'createsigndoc-email'    => 'Retpoŝta adreso',
+	'createsigndoc-pagename'      => 'Paĝo:',
+	'createsigndoc-email'         => 'Retpoŝta adreso',
+	'createsigndoc-hidden'        => 'Kaŝita',
+	'createsigndoc-create'        => 'Kreu',
+	'createsigndoc-error-generic' => 'Eraro: $1',
 );
 
 $messages['ext'] = array(
@@ -350,6 +360,14 @@ Zorg er alstublieft voor dat het document een stabiele versie heeft voordat u on
 	'createsigndoc-error-alreadycreated' => 'De documentondertekening "$1" bestaat al.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'createsigndoc-pagename' => 'Side:',
+	'createsigndoc-optional' => 'Valfri',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -447,6 +465,16 @@ Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mande
 	'createsigndoc-success'           => "La procedura për buté an firma [[$1]] a l'é andaita a bonfin. Për provela, për piasì ch'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'createsigndoc-pagename'   => 'مخ:',
+	'createsigndoc-email'      => 'برېښليک پته:',
+	'createsigndoc-address'    => 'د کور پته:',
+	'createsigndoc-extaddress' => 'ښار، ايالت، هېواد:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -501,6 +529,7 @@ $messages['ss'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'createsigndocument'              => 'Möjliggör dokument signering',
@@ -513,7 +542,7 @@ $messages['sv'] = array(
 	'createsigndoc-minage'            => 'Minimiålder:',
 	'createsigndoc-introtext'         => 'Introduktion:',
 	'createsigndoc-hidden'            => 'dolt',
-	'createsigndoc-optional'          => 'frivilligt',
+	'createsigndoc-optional'          => 'Frivilligt',
 	'createsigndoc-create'            => 'Skapa',
 	'createsigndoc-error-generic'     => 'Fel: $1',
 	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
@@ -535,6 +564,13 @@ $messages['te'] = array(
 	'createsigndoc-create'            => 'సృష్టించు',
 	'createsigndoc-error-generic'     => 'పొరపాటు: $1',
 	'createsigndoc-error-pagenoexist' => 'పొరపాటు: [[$1]] అనే పేజీ లేనే లేదు.',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'createsigndoc-pagename' => 'Pájina:',
 );
 
 /** Tajik (Тоҷикӣ)

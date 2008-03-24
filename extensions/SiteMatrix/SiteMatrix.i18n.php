@@ -675,7 +675,7 @@ $messages['nn'] = array(
 	'sitematrix-others'   => 'Andre prosjekt frå Wikimedia',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author לערי ריינהארט
  */
@@ -686,7 +686,7 @@ $messages['no'] = array(
 	'sitematrix-project'   => 'Prosjektets navn, interprosjektlenke og interwikilenke',
 	'sitematrix-others'    => 'Andre Wikimedia-prosjekter',
 	'sitematrix-total'     => "'''Totalt antall: $1'''",
-	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-sitetotal' => 'Totalt',
 );
 
 /** Occitan (Occitan)

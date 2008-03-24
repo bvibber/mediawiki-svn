@@ -60,6 +60,14 @@ Diverkañ',
 	'inspectcache-list'   => 'Roll',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Slet',
+);
+
 $messages['de'] = array(
 	'inspectcache'         => 'Cache ansehen',
 	'inspectcache-ok'      => 'OK',
@@ -210,6 +218,14 @@ $messages['nl'] = array(
 	'inspectcache-list'    => 'Bekijken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Slett',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -333,6 +349,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'inspectcache'         => 'Inspektera mellanlagring',
@@ -342,7 +359,7 @@ $messages['sv'] = array(
 	'inspectcache-parser'  => 'Parsercache',
 	'inspectcache-message' => 'Cache av meddelanden',
 	'inspectcache-get'     => 'Hämta',
-	'inspectcache-delete'  => 'Ta bort',
+	'inspectcache-delete'  => 'Radera',
 	'inspectcache-deleted' => 'Raderad cache',
 	'inspectcache-list'    => 'Lista',
 );

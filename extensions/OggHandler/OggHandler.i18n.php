@@ -194,29 +194,34 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Toniher
  */
 $messages['ca'] = array(
-	'ogg-short-audio'       => "Arxiu OGG d'àudio $1, $2",
-	'ogg-short-video'       => 'Arxiu OGG de vídeo $1, $2',
-	'ogg-short-general'     => 'Arxiu multimèdia OGG $1, $2',
-	'ogg-long-audio'        => '(Ogg $1 arxiu de so, llargada $2, $3)',
-	'ogg-long-video'        => '(Arxiu OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
-	'ogg-long-multiplexed'  => '(Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana)',
-	'ogg-long-general'      => '(Arxiu multimèdia OGG, llargada $2, $3)',
-	'ogg-long-error'        => '(Arxiu OGG invàlid: $1)',
-	'ogg-pause'             => 'Pausa',
-	'ogg-play-video'        => 'Reprodueix vídeo',
-	'ogg-play-sound'        => 'Reprodueix so',
-	'ogg-no-player'         => 'No teniu instal·lat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
-	'ogg-no-xiphqt'         => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
-	'ogg-player-thumbnail'  => 'Només un fotograma',
-	'ogg-player-soundthumb' => 'Cap reproductor',
-	'ogg-player-selected'   => '(seleccionat)',
-	'ogg-use-player'        => 'Usa el reproductor:',
-	'ogg-more'              => 'Més...',
-	'ogg-dismiss'           => 'Tanca',
-	'ogg-download'          => "Descarrega l'arxiu",
-	'ogg-desc-link'         => "Informació de l'arxiu",
+	'ogg-short-audio'         => "Arxiu OGG d'àudio $1, $2",
+	'ogg-short-video'         => 'Arxiu OGG de vídeo $1, $2',
+	'ogg-short-general'       => 'Arxiu multimèdia OGG $1, $2',
+	'ogg-long-audio'          => '(Ogg $1 arxiu de so, llargada $2, $3)',
+	'ogg-long-video'          => '(Arxiu OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
+	'ogg-long-multiplexed'    => '(Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana)',
+	'ogg-long-general'        => '(Arxiu multimèdia OGG, llargada $2, $3)',
+	'ogg-long-error'          => '(Arxiu OGG invàlid: $1)',
+	'ogg-play'                => 'Reprodueix',
+	'ogg-pause'               => 'Pausa',
+	'ogg-stop'                => 'Atura',
+	'ogg-play-video'          => 'Reprodueix vídeo',
+	'ogg-play-sound'          => 'Reprodueix so',
+	'ogg-no-player'           => 'No teniu instal·lat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
+	'ogg-no-xiphqt'           => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
+	'ogg-player-videoElement' => 'element <video>',
+	'ogg-player-oggPlugin'    => 'Connector Ogg',
+	'ogg-player-thumbnail'    => 'Només un fotograma',
+	'ogg-player-soundthumb'   => 'Cap reproductor',
+	'ogg-player-selected'     => '(seleccionat)',
+	'ogg-use-player'          => 'Usa el reproductor:',
+	'ogg-more'                => 'Més...',
+	'ogg-dismiss'             => 'Tanca',
+	'ogg-download'            => "Descarrega l'arxiu",
+	'ogg-desc-link'           => "Informació de l'arxiu",
 );
 
 /** Czech (Česky)
@@ -250,6 +255,13 @@ $messages['cs'] = array(
 	'ogg-dismiss'             => 'Zavřít',
 	'ogg-download'            => 'Stáhnout soubor',
 	'ogg-desc-link'           => 'O tomto souboru',
+);
+
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'ogg-more' => 'Mere...',
 );
 
 /** German (Deutsch)
@@ -1479,6 +1491,7 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 );
 
 /** Swedish (Svenska)
+ * @author Jon Harald Søby
  * @author Lejonel
  */
 $messages['sv'] = array(
@@ -1504,7 +1517,7 @@ $messages['sv'] = array(
 	'ogg-player-soundthumb'   => 'Ingen spelare',
 	'ogg-player-selected'     => '(vald)',
 	'ogg-use-player'          => 'Välj mediaspelare: ',
-	'ogg-more'                => 'Alternativ...',
+	'ogg-more'                => 'Mer...',
 	'ogg-dismiss'             => 'Stäng',
 	'ogg-download'            => 'Ladda ner filen',
 	'ogg-desc-link'           => 'Om filen',

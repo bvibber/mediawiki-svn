@@ -550,6 +550,18 @@ Možná jste se snažili na tuto stránku přistupovat přímo. Běžně se sem 
 Nastal problém s konzistencí databáze. Wikidata nemůže najít platné údaje spojené s tímto ID definovaného významu. Je možné, že jsou ztracené. Prosím kontaktujte správce serveru.',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$wdMessages['da'] = array(
+	'ow_history'                      => 'Historik',
+	'ow_dm_OK'                        => 'OK',
+	'ow_Language'                     => 'Sprog',
+	'ow_Source'                       => 'Kilde',
+	'ow_Text'                         => 'Tekst',
+	'ow_TranslatedTextAttributeValue' => 'Tekst',
+);
+
 /** Deutsch (Deutsch)
  */
 $wdMessages['de'] = array(
@@ -1699,7 +1711,7 @@ $wdMessages['nn'] = array(
 	'ow_db_consistency_not_found'           => '<h2>Feil</h2>Det er noko gale med oppbygginga av databasen, wikidata finn ikkje gyldige data som er knytte til dette nummeret på ei definert tyding. Ho kan vere tapt. Ver venleg og ta kontakt med ein administrator på tenaren.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author SPQRobin
  */
@@ -1724,7 +1736,7 @@ $wdMessages['no'] = array(
 </ul></p>',
 	'ow_conceptmapping_uitext'              => '<p>Kart over konsept lar deg finne ut hvilken definert betydning i en datavisning som er lik definerte betydninger i andre datavisninger.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Beklager, jeg vet ikke hvordan man «$1».',
-	'ow_dm_OK'                              => '{{int:Ok}}',
+	'ow_dm_OK'                              => 'OK',
 	'ow_dm_not_present'                     => 'ikke skrevet inn',
 	'ow_dm_not_found'                       => 'ikke funnet i databasen, eller misformet',
 	'ow_mapping_successful'                 => 'La alle feltene være merket med [OK] til kart<br />',
@@ -1738,7 +1750,7 @@ $wdMessages['no'] = array(
 	'ow_dm_missing'                         => 'Denne siden viser til en ikke-eksisterende definert mening (konsept). Vennligst sjekk internettadressen.',
 	'ow_AlternativeDefinition'              => 'Alternativ definisjon',
 	'ow_AlternativeDefinitions'             => 'Alternative definisjoner',
-	'ow_Annotation'                         => 'Annotering',
+	'ow_Annotation'                         => 'Merknad',
 	'ow_ApproximateMeanings'                => 'Tilnærmede betydninger',
 	'ow_ClassAttributeAttribute'            => 'Attributt',
 	'ow_ClassAttributes'                    => 'Klasseattributter',
@@ -1748,7 +1760,7 @@ $wdMessages['no'] = array(
 	'ow_Collection'                         => 'Samling',
 	'ow_CollectionMembership'               => 'Samlingsmedlemskap',
 	'ow_Definition'                         => 'Definisjon',
-	'ow_DefinedMeaningAttributes'           => 'Annotering',
+	'ow_DefinedMeaningAttributes'           => 'Merknad',
 	'ow_DefinedMeaning'                     => 'Definert betydning',
 	'ow_DefinedMeaningReference'            => 'Definert betydning',
 	'ow_ExactMeanings'                      => 'Eksakt betydning',
@@ -1759,13 +1771,13 @@ $wdMessages['no'] = array(
 	'ow_IncomingRelations'                  => 'Innkommende relasjoner',
 	'ow_GotoSource'                         => 'Gå til kilde',
 	'ow_Language'                           => 'Språk',
-	'ow_LevelAnnotation'                    => 'Annotering',
-	'ow_OptionAttribute'                    => 'Verdi',
+	'ow_LevelAnnotation'                    => 'Merknad',
+	'ow_OptionAttribute'                    => 'Egenskap',
 	'ow_OptionAttributeOption'              => 'Valg',
-	'ow_OptionAttributeOptions'             => 'Valg',
+	'ow_OptionAttributeOptions'             => 'Alternativer',
 	'ow_OptionAttributeValues'              => 'Valgverdier',
 	'ow_OtherDefinedMeaning'                => 'Annen definert betydning',
-	'ow_PopupAnnotation'                    => 'Annotering',
+	'ow_PopupAnnotation'                    => 'Merknad',
 	'ow_Relations'                          => 'Relasjoner',
 	'ow_RelationType'                       => 'Relasjonstype',
 	'ow_Spelling'                           => 'Staving',
@@ -1773,16 +1785,16 @@ $wdMessages['no'] = array(
 	'ow_SynonymsAndTranslations'            => 'Synonymer og oversettelser',
 	'ow_Source'                             => 'Kilde',
 	'ow_SourceIdentifier'                   => 'Kildeidentifikator',
-	'ow_TextAttribute'                      => 'Verdi',
+	'ow_TextAttribute'                      => 'Egenskap',
 	'ow_Text'                               => 'Tekst',
 	'ow_TextAttributeValues'                => 'Rene tekster',
-	'ow_TranslatedTextAttribute'            => 'Verdi',
+	'ow_TranslatedTextAttribute'            => 'Egenskap',
 	'ow_TranslatedText'                     => 'Oversatt tekst',
 	'ow_TranslatedTextAttributeValue'       => 'Tekst',
 	'ow_TranslatedTextAttributeValues'      => 'Oversettelige tekster',
-	'ow_LinkAttribute'                      => 'Verdi',
+	'ow_LinkAttribute'                      => 'Egenskap',
 	'ow_LinkAttributeValues'                => 'Lenker',
-	'ow_Property'                           => 'Verdi',
+	'ow_Property'                           => 'Egenskap',
 	'ow_Value'                              => 'Verdi',
 	'ow_meaningsoftitle'                    => 'Betydninger av «$1»',
 	'ow_meaningsofsubtitle'                 => '<em>Wikilenke:</em> [[$1]]',
@@ -2576,6 +2588,7 @@ $wdMessages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab
+ * @author Lokal Profil
  */
 $wdMessages['sv'] = array(
 	'datasearch'                      => 'Wikidata: Datasökning',
@@ -2598,6 +2611,7 @@ $wdMessages['sv'] = array(
 	'ow_GotoSource'                   => 'Gå till källa',
 	'ow_Language'                     => 'Språk',
 	'ow_OptionAttribute'              => 'Attribut',
+	'ow_Spelling'                     => 'Stavning',
 	'ow_Synonyms'                     => 'Synonymer',
 	'ow_SynonymsAndTranslations'      => 'Synonymer och översättningar',
 	'ow_Source'                       => 'Källa',

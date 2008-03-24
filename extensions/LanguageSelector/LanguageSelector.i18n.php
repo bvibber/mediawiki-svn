@@ -65,6 +65,13 @@ $messages['cs'] = array(
 	'languageselector-setlang' => 'nastavit',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'languageselector' => 'Sprog',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */
@@ -258,6 +265,13 @@ $messages['nl'] = array(
 	'languageselector'         => 'Taal',
 	'languageselector-desc'    => 'Taalselectie op iedere pagina, ook voor gebruikers die niet aangemeld zijn',
 	'languageselector-setlang' => 'instellen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'languageselector' => 'Språk',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

@@ -62,6 +62,18 @@ $messages['bg'] = array(
 	'dt_xml_freetext'             => 'Свободен текст',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'dt_viewxml_categories' => 'Kategorier',
+	'dt_xml_namespace'      => 'Navnerum',
+	'dt_xml_page'           => 'Side',
+	'dt_xml_name'           => 'Navn',
+	'dt_xml_title'          => 'Titel',
+	'dt_xml_id'             => 'ID',
+);
+
 /** German (Deutsch)
  * @author Krabina
  */
@@ -256,6 +268,18 @@ $messages['nl'] = array(
 	'dt_xml_freetext'             => 'Vrije tekst',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'dt_viewxml_categories' => 'Kategoriar',
+	'dt_xml_namespace'      => 'Namnerom',
+	'dt_xml_page'           => 'Side',
+	'dt_xml_name'           => 'Namn',
+	'dt_xml_title'          => 'Tittel',
+	'dt_xml_id'             => 'ID',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -429,6 +453,14 @@ $messages['te'] = array(
 	'dt_xml_title'          => 'శీర్షిక',
 	'dt_xml_id'             => 'ఐడీ',
 	'dt_xml_freetext'       => 'స్వేచ్ఛా పాఠ్యం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'dt_xml_page' => 'Pájina',
+	'dt_xml_name' => 'Naran',
 );
 
 /** Tajik (Тоҷикӣ)

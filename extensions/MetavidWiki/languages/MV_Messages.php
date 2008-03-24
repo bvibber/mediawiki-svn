@@ -441,6 +441,18 @@ $messages['cy'] = array(
 	'mv_edit' => 'Golygu',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'mv_upload_file'     => 'Læg en fil op',
+	'mv_tool_search'     => 'Søg',
+	'mv_edit'            => 'Redigér',
+	'mv_history'         => 'Historik',
+	'mv_search_category' => 'Kategori',
+	'mv_category'        => 'kategori',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -455,10 +467,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'mv_duration_label'    => 'daŭro',
+	'mv_save_changes'      => 'Konservu Ŝanĝojn',
+	'mv_remove_reason'     => 'Kialo por forigo:',
 	'mv_upload_file'       => 'Alŝutu dosieron',
 	'mv_external_file'     => 'Ekstera Dosieron',
 	'mv_tool_search'       => 'Serĉu',
 	'mv_tool_navigate'     => 'Navigado',
+	'mv_tool_export'       => 'Eksportu',
 	'mv_results_found_for' => 'Serĉrezultoj <b>$1</b> al <b>$2</b> de <b>$3</b> por:',
 	'mv_data_page_title'   => '$1 por $2 de $3',
 	'mv_time_separator'    => '$1 al $2',
@@ -466,6 +482,7 @@ $messages['eo'] = array(
 	'mv_remove'            => 'forigu',
 	'mv_of'                => '&#32;de&#32;',
 	'mv_add_filter'        => 'Aldonu Filtrilon',
+	'mv_search_category'   => 'Kategorio',
 	'mv_search_and'        => 'kaj',
 	'mv_search_or'         => 'aŭ',
 	'mv_search_not'        => 'ne',
@@ -660,7 +677,7 @@ $messages['gl'] = array(
 	'mv_metavid_file'               => 'Arquivo Existente no Servidor',
 	'mv_upload_file'                => 'Cargar arquivo',
 	'mv_external_file'              => 'Arquivo Externo',
-	'mv_tool_search'                => 'Procura',
+	'mv_tool_search'                => 'Procurar',
 	'mv_tool_navigate'              => 'Navegar',
 	'mv_tool_export'                => 'Exportar',
 	'mv_results_found_for'          => 'Procurar resultados <b>$1</b> a <b>$2</b> de <b>$3</b> para:',
@@ -1139,6 +1156,21 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_protect_source_material'     => 'Origineel bronmateriaal dat niet bewerkt kan worden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'mv_remove_reason'   => 'Slettingsårsak:',
+	'mv_upload_file'     => 'Last opp fil',
+	'mv_tool_search'     => 'Søk',
+	'mv_tool_export'     => 'Eksporter',
+	'mv_edit'            => 'Endre',
+	'mv_history'         => 'Historikk',
+	'mv_remove'          => 'fjern',
+	'mv_search_category' => 'Kategori',
+	'mv_category'        => 'kategori',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -1187,15 +1219,15 @@ $messages['no'] = array(
 	'mv_summary_add_stream'          => 'dataflyt lagt til med skjema',
 	'mv_error_stream_insert'         => 'innsetting av dataflyt mislyktes',
 	'mv_redirect_and_delete_reason'  => 'fjernet omdirigeringsside',
-	'mv_remove_reason'               => 'Slettingsgrunn:',
+	'mv_remove_reason'               => 'Slettingsårsak:',
 	'mv_stream_delete_warrning'      => '<b>Fjerning av denne dataflyten vil også føre til fjerning av $1 deler av assosiert metadata</b><br />',
 	'mv_label_stream_type'           => 'Dataflyttype',
 	'mv_metavid_file'                => 'Eksisterende fil på tjener',
 	'mv_metavid_live'                => 'Sett opp direkteoverføring',
-	'mv_upload_file'                 => '{{int:Upload}}',
+	'mv_upload_file'                 => 'Last opp fil',
 	'mv_external_file'               => 'Ekstern fil',
 	'mv_stream_delete_warning'       => 'Sletting av denne dataflyten vil også føre til fjerning av $1 sider med metadata',
-	'mv_tool_search'                 => '{{int:search}}',
+	'mv_tool_search'                 => 'Søk',
 	'mv_tool_search_title'           => 'Søk innen denne dataflyten',
 	'mv_tool_navigate'               => 'Naviger',
 	'mv_tool_navigate_title'         => 'Naviger hele dataflyten',
@@ -1261,7 +1293,7 @@ $messages['no'] = array(
 	'mv_date_range'                  => 'datoområde',
 	'mv_match'                       => 'treff',
 	'mv_spoken_by'                   => 'opplest av',
-	'mv_category'                    => '{{int:category}}',
+	'mv_category'                    => 'kategori',
 	'mv_search_no_results'           => 'Ingen medietreff',
 	'mv_media_matches'               => 'Medietreff',
 	'mv_remove_filter'               => 'fjern filter',
@@ -2083,5 +2115,12 @@ $messages['te'] = array(
 	'mv_match_text_one'             => '~ 1 పోలిక',
 	'mv_sequence_add_manual'        => 'పేరు ద్వారా చేర్చండి',
 	'mv_embed_options'              => 'ఎంబెడ్ ఎంపికలు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'mv_search_and' => 'ho',
 );
 

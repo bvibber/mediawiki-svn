@@ -176,6 +176,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'review_sidebar_title'          => 'Kontrolu',
 	'review_statistics_left_corner' => 'Revizio',
 	'review_version_link'           => 'Revizio #$1',
 	'review_version_statistic_cell' => '$1 de $2',
@@ -448,10 +449,19 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
 	'review_comment'                                         => 'Opmerking',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'review_user_details_link' => '(detaljar)',
+	'review_comment'           => 'Kommentar',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'review_sidebar_title'          => 'Gå gjennom',
 	'review_sidebar_explanation'    => 'Den venstre avmerkingsboksen betyr alltid «ingen mening».',
 	'review_error'                  => 'Noe er feil!',
 	'review_total_statistics'       => 'Totalt',
@@ -463,6 +473,7 @@ $messages['no'] = array(
 	'review_blocked'                => 'Du er blokkert, gå vekk.',
 	'review_topic'                  => 'Emne',
 	'review_no_opinion'             => 'Ingen mening',
+	'review_rating'                 => 'Vurdering',
 	'review_comment'                => 'Kommentar',
 );
 

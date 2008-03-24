@@ -109,6 +109,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'multipleupload'              => 'Alŝutu dosierojn',
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
+	'multiupload-fileuploaded'    => 'Dosiero alŝutita.',
 );
 
 /** Finnish (Suomi)
@@ -229,9 +230,12 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'multipleupload'              => 'Fichieren eroplueden',
-	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
-	'multiupload-fileuploaded'    => 'Fichier eropgelueden',
+	'multipleupload'                   => 'Fichieren eroplueden',
+	'multipleupload-desc'              => 'Erlaabt et [[Special:MultipleUpload|méi Fichieren mateneen eropzelueden]]',
+	'multipleupload-ignoreallwarnings' => "'''All Warnungen''' ignoréieren an d'Ficheren trotzdem späicheren.",
+	'multipleupload-saveallfiles'      => "All d'Fichiere späicheren",
+	'multipleupload-addresswarnings'   => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
+	'multiupload-fileuploaded'         => 'Fichier eropgelueden',
 );
 
 /** Dutch (Nederlands)
@@ -256,6 +260,13 @@ Afbeeldingen die niet relevant zijn, worden onmiddelijk verwijderd.
 Zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].",
 	'multiupload-fileuploaded'         => 'Bestand toegevoegd.',
 	'multiupload-toolbox'              => 'Meerdere bestanden uploaden',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'multipleupload' => 'Last opp filer',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -398,12 +409,14 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lokal Profil
  */
 $messages['sv'] = array(
 	'multipleupload'              => 'Ladda upp filer',
 	'multipleupload-saveallfiles' => 'Spara alla filer',
 	'multipleupload-page'         => '{{ns:project}}:Filborttagnings policy',
 	'multiupload-fileuploaded'    => 'Fil uppladdad.',
+	'multiupload-toolbox'         => 'Ladda upp flera filer',
 );
 
 /** Tamil (தமிழ்)

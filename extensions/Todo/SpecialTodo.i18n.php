@@ -87,6 +87,14 @@ $messages['bg'] = array(
 	'todo-form-submit'  => 'Изпращане на заявка',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'todo-new-queue'   => 'ny',
+	'todo-list-cancel' => 'Afbryd',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -265,6 +273,15 @@ $4',
 	'todo-form-details'     => 'Details:',
 	'todo-form-email'       => 'Voer hier uw e-mailadres in om een melding te krijgen als dit onderwerp wordt gesloten:',
 	'todo-form-submit'      => 'Zoekopdracht uitvoeren',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'todo-new-queue'    => 'ny',
+	'todo-list-cancel'  => 'Avbryt',
+	'todo-form-details' => 'Detaljar:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

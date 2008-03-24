@@ -674,6 +674,7 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 /** Danish (Dansk)
  * @author Morten
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['da'] = array(
 	'boardvote'         => 'Valg af medlemmer til Wikimedias bestyrelse',
@@ -682,6 +683,7 @@ $messages['da'] = array(
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
 	'boardvote_user'    => 'Bruger',
+	'boardvote_submit'  => 'OK',
 	'boardvote_welcome' => "Velkommen '''$1'''!",
 );
 
@@ -2679,13 +2681,16 @@ Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certi
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
  * @author Eirik
  */
 $messages['nn'] = array(
+	'boardvote_user'    => 'Brukar',
+	'boardvote_submit'  => 'OK',
 	'boardvote_welcome' => "Velkomen, '''$1'''!",
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -2720,7 +2725,7 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_edits'        => 'Redigeringer',
 	'boardvote_days'         => 'Dager',
 	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Nettleser',
+	'boardvote_ua'           => 'Brukeragent',
 	'boardvote_listintro'    => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
 	'boardvote_dumplink'     => 'Klikk her',
 	'boardvote_submit'       => 'OK',
@@ -2973,7 +2978,7 @@ $messages['ps'] = array(
 	'boardvote_days'       => 'ورځې',
 	'boardvote_ua'         => 'د کارونکي پلاوی',
 	'boardvote_dumplink'   => 'دلته وټوکۍ',
-	'boardvote_submit'     => 'هو/ښه',
+	'boardvote_submit'     => 'هو',
 	'boardvote_notstarted' => 'تر اوسه پورې لا د رايو بهير نه دی پيل شوی.',
 	'boardvote_welcome'    => "'''$1''' ته ښه راغلاست!",
 );

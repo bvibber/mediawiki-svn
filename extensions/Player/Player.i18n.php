@@ -77,6 +77,15 @@ $messages['cs'] = array(
 	'player-not-allowed' => 'Nepovolený formát',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'player-file'      => 'Filnavn',
+	'player-goto-page' => 'Side',
+	'player-goto-file' => 'fil',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'player-file'          => 'Dateiname',
@@ -110,7 +119,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'player-goto-file' => 'dosiero',
+	'player'             => 'Ludanto',
+	'player-title'       => 'Ludanto',
+	'player-playertitle' => 'Ludanto: $1',
+	'player-file'        => 'Dosiernomo',
+	'player-goto-player' => 'ludanto',
+	'player-goto-page'   => 'Paĝo',
+	'player-goto-file'   => 'dosiero',
 );
 
 /** French (Français)
@@ -238,6 +253,15 @@ $messages['nl'] = array(
 	'player-goto-player'   => 'mediaspeler',
 	'player-goto-page'     => 'Pagina',
 	'player-goto-file'     => 'bestand',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'player-file'      => 'Filnamn',
+	'player-goto-page' => 'Side',
+	'player-goto-file' => 'fil',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -402,12 +426,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'player'               => 'Spelare',
 	'player-title'         => 'Spelare',
 	'player-playertitle'   => 'Spelare: $1',
-	'player-file'          => 'Fil namn',
+	'player-file'          => 'Filnamn',
 	'player-play'          => 'Spela',
 	'player-invalid-title' => 'ogiltig titel',
 	'player-clicktoplay'   => 'Spela $1',
@@ -426,6 +451,13 @@ $messages['te'] = array(
 	'player-invalid-title' => 'తప్పుడు శీర్షిక',
 	'player-goto-page'     => 'పేజీ',
 	'player-goto-file'     => 'ఫైలు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'player-goto-page' => 'Pájina',
 );
 
 /** Volapük (Volapük)

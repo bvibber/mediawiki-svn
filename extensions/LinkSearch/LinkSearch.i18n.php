@@ -174,7 +174,7 @@ $messages['eo'] = array(
 	'linksearch-desc'  => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
 	'linksearch-pat'   => 'Serĉesprimo:',
 	'linksearch-ns'    => 'Nomspaco:',
-	'linksearch-ok'    => 'Sercxu:',
+	'linksearch-ok'    => 'Serĉu:',
 	'linksearch-text'  => 'Regulesprimoj kiel "*.wikipedia.org" povas esti uzataj.<br />Subtenataj protokoloj: <tt>$1</tt>',
 	'linksearch-line'  => '$1 ligita de $2',
 	'linksearch-error' => 'Regulesprimoj povas aperi nur ĉe la komenco de la retnoda nomo.',
@@ -270,8 +270,8 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
  * @author Toliño
+ * @author Alma
  * @author Xosé
  */
 $messages['gl'] = array(
@@ -279,7 +279,7 @@ $messages['gl'] = array(
 	'linksearch-desc'  => '[[Special:Linksearch|Atopar páxinas con ligazóns externas]] que coincidan cos patróns específicos',
 	'linksearch-pat'   => 'Patrón de procura:',
 	'linksearch-ns'    => 'Espazo de nomes:',
-	'linksearch-ok'    => 'Buscar',
+	'linksearch-ok'    => 'Procurar',
 	'linksearch-text'  => 'Extensións como "*.wikipedia.org" poden ser usadas.<br />Protocolos soportados: <tt>$1</tt>',
 	'linksearch-line'  => '$1 ligado dende $2',
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
@@ -573,6 +573,14 @@ $messages['nl'] = array(
 Ondersteunde protocollen: <tt>$1</tt>',
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'linksearch-ns' => 'Namnerom:',
+	'linksearch-ok' => 'Søk',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

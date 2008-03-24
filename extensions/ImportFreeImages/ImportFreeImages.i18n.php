@@ -61,6 +61,13 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform'          => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'importfreeimages_next' => 'Næste $1',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -238,7 +245,14 @@ U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hi
 	'importfreeimages_returntoform'          => "Of, klik <a href='$1'>hier</a> om terug te keren naar uw zoekresultaten",
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'importfreeimages_next' => 'Neste $1',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -248,7 +262,7 @@ $messages['no'] = array(
 	'importfreeimages_noapikey'              => 'Du har ikke konfigurert API-nøkkelen din for Flickr. For å gjøre det må du skaffe en API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html herfra] og sette wgFlickrAPIKey i ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
 	'importfreeimages_invalidurl'            => 'URL-en «$1» er ikke et gyldig Flickr-bilde',
-	'importfreeimages_owner'                 => 'Opphavsperson',
+	'importfreeimages_owner'                 => 'Skaper',
 	'importfreeimages_importthis'            => 'importer',
 	'importfreeimages_next'                  => 'Neste $1',
 	'importfreeimages_filefromflickr'        => '$1 av brukeren <b>[$2]</b> fra Flickr. Original URL',
@@ -414,6 +428,13 @@ $messages['te'] = array(
 	'importfreeimages_next'                  => 'తర్వాతి $1',
 	'importfreeimages_promptuserforfilename' => 'గమ్యస్థానపు ఫైలు పేరుని ఇవ్వండి:',
 	'importfreeimages_returntoform'          => "లేదా, తిరిగి మీ అన్వేషణ ఫలితాలకు వెళ్ళడానికి <a href='$1'>ఇక్కడ</a> నొక్కండి",
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'importfreeimages_owner' => 'Autór',
 );
 
 /** Volapük (Volapük)

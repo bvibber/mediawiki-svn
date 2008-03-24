@@ -58,6 +58,14 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'edituser-username' => 'Navn',
+	'edituser-dosearch' => 'Søg',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Raimond Spekking
@@ -225,6 +233,14 @@ $messages['nl'] = array(
 	'edituser-exempt'   => 'De opgegeven gebruiker kan niet bewerkt worden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'edituser-username' => 'Namn',
+	'edituser-dosearch' => 'Søk',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -233,7 +249,7 @@ $messages['no'] = array(
 	'edituser'          => 'Rediger bruker',
 	'edituser-logout'   => 'Logg ut brukeren',
 	'edituser-username' => 'Navn',
-	'edituser-dosearch' => '{{int:Search}}',
+	'edituser-dosearch' => 'Søk',
 	'edituser-nouser'   => 'Den angitte brukeren finnes ikke',
 	'edituser-exempt'   => 'Det angitte brukeren kan ikke redigeres',
 );
@@ -331,6 +347,13 @@ $messages['te'] = array(
 	'edituser-dosearch' => 'వెతుకు',
 	'edituser-nouser'   => 'ఆ వాడుకరి లేనేలేరు.',
 	'edituser-exempt'   => 'ఆ వాడుకరిని మార్చలేరు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'edituser-username' => 'Naran',
 );
 
 /** Volapük (Volapük)

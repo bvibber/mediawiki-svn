@@ -93,6 +93,7 @@ $messages['bg'] = array(
 	'formrequiredfieldpluralerror' => 'Този формуляр изисква полетата $1 да бъдат попълнени.',
 	'formrequiredfielderror'       => 'Този формуляр изисква полето $1 да бъде попълнено.',
 	'formsaveerror'                => 'Грешка при съхранение на формуляра',
+	'formsaveerrortext'            => "Възникна непозната грешка при опит да се съхрани страницата '$1'.",
 );
 
 /** Czech (Česky)
@@ -273,6 +274,13 @@ $messages['nl'] = array(
 	'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
 	'formsaveerror' => 'Fout bij opslaan formulier',
 	'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'formsave' => 'Lagre',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

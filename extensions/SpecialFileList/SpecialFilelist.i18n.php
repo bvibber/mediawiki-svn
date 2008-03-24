@@ -47,6 +47,13 @@ $messages['bg'] = array(
 	'filelist-show-gallery' => 'Показване на галерията',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'filelist' => 'Filliste',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

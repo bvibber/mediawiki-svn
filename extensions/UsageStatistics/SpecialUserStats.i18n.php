@@ -176,6 +176,13 @@ $messages['br'] = array(
 	'usagestatistics-editpages'       => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'usagestatisticsintervalmonth' => 'Måned',
+);
+
 /** Deutsch (German)
 * @author Katharina Wolkwitz
 */
@@ -450,20 +457,23 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['nn'] = array(
-	'specialuserstats'           => 'Statistikk over bruk',
-	'usagestatistics'            => 'Statistikk over bruk',
-	'usagestatisticsfor'         => '<h2>Statistikk over bruk for [[User:$1|$1]]</h2>',
-	'usagestatisticsallusers'    => 'Alle brukarane',
-	'usagestatisticsinterval'    => 'Intervall',
-	'usagestatisticstype'        => 'Type',
-	'usagestatisticsstart'       => 'Startdato',
-	'usagestatisticsend'         => 'Sluttdato',
-	'usagestatisticssubmit'      => 'Lag statistikk',
-	'usagestatisticsnostart'     => '* <font color=red>Ver venleg og oppgje startdato</font>',
-	'usagestatisticsnoend'       => '* <font color=red>Ver venleg og oppgje sluttdato</font>',
-	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
+	'specialuserstats'             => 'Statistikk over bruk',
+	'usagestatistics'              => 'Statistikk over bruk',
+	'usagestatisticsfor'           => '<h2>Statistikk over bruk for [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'      => 'Alle brukarane',
+	'usagestatisticsinterval'      => 'Intervall',
+	'usagestatisticstype'          => 'Type',
+	'usagestatisticsstart'         => 'Startdato',
+	'usagestatisticsend'           => 'Sluttdato',
+	'usagestatisticssubmit'        => 'Lag statistikk',
+	'usagestatisticsnostart'       => '* <font color=red>Ver venleg og oppgje startdato</font>',
+	'usagestatisticsnoend'         => '* <font color=red>Ver venleg og oppgje sluttdato</font>',
+	'usagestatisticsbadstartend'   => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
+	'usagestatisticsintervalmonth' => 'Månad',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

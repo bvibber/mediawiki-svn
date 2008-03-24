@@ -88,6 +88,7 @@ This page is only applicable to restricted users",
 $allMessages['bg'] = array(
 	'mywhitelistpages'        => 'Моите страници',
 	'whitelistfor'            => '<center>Текуща информация за <b>$1</b></center>',
+	'whitelisttablemodify'    => 'Промяна',
 	'whitelisttablemodifyall' => 'Всички',
 	'whitelisttableedit'      => 'Редактиране',
 	'whitelisttableview'      => 'Преглед',
@@ -97,6 +98,10 @@ $allMessages['bg'] = array(
 	'whitelistbadtitle'       => 'Грешно заглавие -',
 	'whitelistoverviewcd'     => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
 	'whitelistoverviewrm'     => '* Премахване на достъпа до [[:$1|$1]]',
+	'whitelistrequest'        => 'Поискване на достъп до още страници',
+	'whitelistrequestmsg'     => '$1 пожела достъп до следните страници:
+
+$2',
 	'whitelistrequestconf'    => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever'          => 'никога',
 	'whitelistnummatches'     => ' - $1 съвпадения',
@@ -107,6 +112,15 @@ $allMessages['bg'] = array(
  */
 $allMessages['cy'] = array(
 	'whitelisttableedit' => 'Golygu',
+);
+
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$allMessages['da'] = array(
+	'whitelisttablemodifynone' => 'Ingen',
+	'whitelisttableedit'       => 'Redigér',
+	'whitelistnever'           => 'aldrig',
 );
 
 /** Greek (Ελληνικά)
@@ -123,6 +137,7 @@ $allMessages['eo'] = array(
 	'mywhitelistpages'         => 'Miaj Paĝoj',
 	'whitelisttablemodifynone' => 'Neniu',
 	'whitelisttableedit'       => 'Redaktu',
+	'whitelistnewtablereview'  => 'Kontrolu',
 	'whitelistbadtitle'        => 'Fuŝa titolo -',
 	'whitelistnever'           => 'neniam',
 	'whitelistnummatches'      => '- $1 pafoj',
@@ -204,10 +219,12 @@ $allMessages['km'] = array(
  * @author Robby
  */
 $allMessages['lb'] = array(
+	'whitelist'                => "''Whiteliste''-Säiten",
 	'mywhitelistpages'         => 'Meng Säiten',
 	'whitelisttablemodify'     => 'Änneren',
 	'whitelisttablemodifyall'  => 'All',
 	'whitelisttablemodifynone' => 'Näischt',
+	'whitelisttablepage'       => 'Wiki Säit',
 	'whitelisttablemodby'      => "Fir d'läscht geännert vum",
 	'whitelisttablemodon'      => "Fir d'läscht geännert de(n)",
 	'whitelisttableedit'       => 'Änneren',
@@ -273,18 +290,48 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'whitelistnummatches'       => '- $1 resultaten',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$allMessages['nn'] = array(
+	'whitelisttablemodifynone' => 'Ingen',
+	'whitelisttableedit'       => 'Endre',
+	'whitelisttableremove'     => 'Fjern',
+	'whitelistnever'           => 'aldri',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $allMessages['no'] = array(
+	'whitelistedit'            => 'Rettighetsredigerer for hvitliste',
+	'whitelist'                => 'Hvitelistede sider',
 	'mywhitelistpages'         => 'Mine sider',
+	'whitelistfor'             => '<center>Nåværende informasjon for <b>$1</b></center>',
 	'whitelisttablemodify'     => 'Endre',
 	'whitelisttablemodifyall'  => 'Alle',
 	'whitelisttablemodifynone' => 'Ingen',
 	'whitelisttablepage'       => 'Wikiside',
 	'whitelisttabletype'       => 'Tilgangstype',
 	'whitelisttableexpires'    => 'Utgår',
+	'whitelisttablemodby'      => 'Sist endret av',
+	'whitelisttablemodon'      => 'Sist endret',
 	'whitelisttableedit'       => 'Rediger',
+	'whitelisttableview'       => 'Vis',
+	'whitelisttablenewdate'    => 'Ny dato:',
+	'whitelisttablechangedate' => 'Endre utgangsdato',
+	'whitelisttablesetedit'    => 'Sett til redigering',
+	'whitelisttablesetview'    => 'Sett til visning',
+	'whitelisttableremove'     => 'Fjern',
+	'whitelistnewpagesfor'     => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn<br />',
+	'whitelistnewtabledate'    => 'Utgangsdato:',
+	'whitelistnewtableedit'    => 'Sett til redigering',
+	'whitelistnewtableview'    => 'Sett til visning',
+	'whitelistnewtableprocess' => 'Prosess',
+	'whitelistnewtablereview'  => 'Gå gjennom',
+	'whitelistpagelist'        => '{{SITENAME}}-sider for $1',
+	'whitelistbadtitle'        => 'Ugyldig tittel -',
+	'whitelistoverview'        => '== Oversikt over endringer for $1 ==',
 	'whitelistnever'           => 'aldri',
 	'whitelistnummatches'      => '  - $1 treff',
 );
@@ -523,6 +570,13 @@ $allMessages['te'] = array(
 	'whitelistnummatches'     => '  - $1 పోలికలు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$allMessages['tet'] = array(
+	'whitelisttablemodifyall' => 'Hotu',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
@@ -532,5 +586,12 @@ $allMessages['tg'] = array(
 	'whitelisttableremove'     => 'Ҳазф',
 	'whitelistnewtableprocess' => 'Раванд',
 	'whitelistnever'           => 'ҳеҷгоҳ',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$allMessages['vi'] = array(
+	'whitelisttablemodifynone' => 'Không có',
 );
 

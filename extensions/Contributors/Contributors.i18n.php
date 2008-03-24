@@ -147,6 +147,14 @@ $messages['cs'] = array(
 	'contributors-badtitle' => 'Neplatný název.',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'contributors-target' => 'Titel:',
+	'contributors-submit' => 'Vis',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'contributors' => 'Hauptautoren',
@@ -496,6 +504,14 @@ $messages['nl'] = array(
 	'contributors-nosuchpage'  => 'De pagina $1 bestaat niet.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'contributors-target' => 'Tittel:',
+	'contributors-submit' => 'Vis',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -585,6 +601,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'contributors'        => 'ونډه لرونکي',
 	'contributors-target' => 'سرليک:',
+	'contributors-submit' => 'ښکاره کول',
 );
 
 /** Portuguese (Português)
@@ -734,15 +751,16 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Lejonel
  * @author M.M.S.
+ * @author Lejonel
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'contributors'             => 'Bidragsgivare',
 	'contributors-desc'        => 'Ger en sammanställning över de huvudsakliga bidragarna till en sida',
 	'contributors-toolbox'     => 'Huvudsakliga bidragsgivare',
 	'contributors-legend'      => 'Visa de huvudsakliga bidragsgivarna till en sida',
-	'contributors-target'      => 'Sidtitel:',
+	'contributors-target'      => 'Titel:',
 	'contributors-submit'      => 'Visa',
 	'contributors-subtitle'    => 'Huvudsakliga bidragsgivare till $1',
 	'contributors-others-long' => '$1 andra användare har bidragit till denna sida.',

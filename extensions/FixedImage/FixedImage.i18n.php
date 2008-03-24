@@ -32,6 +32,13 @@ $messages['hsb'] = array(
 	'fixedimage-desc' => 'Přidawa tafličku <tt><nowiki>fundraising</nowiki></tt> jako wobraz',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'fixedimage-desc' => 'A <tt><nowiki><fundraising></nowiki></tt> taget képként jeleníti meg',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

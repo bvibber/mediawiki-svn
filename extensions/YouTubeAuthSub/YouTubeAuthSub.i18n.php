@@ -59,6 +59,7 @@ $messages['bg'] = array(
 	'youtubeauthsub_keywords'            => 'Ключови думи',
 	'youtubeauthsub_category'            => 'Категория',
 	'youtubeauthsub_submit'              => 'Изпращане',
+	'youtubeauthsub_clickhere'           => 'Щракнете тук за влизане в YouTube',
 	'youtubeauthsub_authsubinstructions' => 'За качване на видео е необходимо влизане в YouTube.',
 	'youtubeauthsub_uploadbutton'        => 'Качване',
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
@@ -68,6 +69,15 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nokeywords'  => 'Необходимо е да се въведе една или повече ключови думи.',
 	'youtubeauthsub_jserror_notitle'     => 'Необходимо е да се въведе заглавие на видеото.',
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
+);
+
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'youtubeauthsub_title'       => 'Titel',
+	'youtubeauthsub_description' => 'Beskrivelse',
+	'youtubeauthsub_category'    => 'Kategori',
 );
 
 /** Greek (Ελληνικά)
@@ -212,6 +222,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'youtubeauthsub'                     => 'YouTube Video eroplueden',
+	'youtubeauthsub_info'                => 'Fir ee Video op YouTube eropzelueden, deen fir op eng Säit anzebannen, gitt w.e.g. dës Informatiounen un:',
 	'youtubeauthsub_title'               => 'Titel',
 	'youtubeauthsub_description'         => 'Beschreiwung',
 	'youtubeauthsub_password'            => 'YouTube Passwuert',
@@ -219,9 +230,13 @@ $messages['lb'] = array(
 	'youtubeauthsub_keywords'            => 'Stechwierder',
 	'youtubeauthsub_category'            => 'Kategorie',
 	'youtubeauthsub_submit'              => 'Späicheren',
+	'youtubeauthsub_clickhere'           => 'Klickt hei fir Iech op YouTube eranzeloggen',
 	'youtubeauthsub_authsubinstructions' => "Fir ee Video eropzelueden musst Dir iech fir d'éischt op YouTube eraloggen.",
 	'youtubeauthsub_uploadhere'          => 'Äre Video vun hei eroplueden:',
 	'youtubeauthsub_uploadbutton'        => 'Eroplueden',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Dëse Video kann [http://www.youtube.com/watch?v=$1 hei gekuckt ginn].',
 	'youtubeauthsub_summary'             => 'YouTube Video gëtt eropgelueden',
 	'youtubeauthsub_uploading'           => 'Äre Video gëtt eropgelueden.
 
@@ -270,18 +285,42 @@ Even geduld alstublieft.',
 	'youtubeauthsub_jserror_nodesc'      => 'Geef alstublieft een beschrijving voor de video op.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'youtubeauthsub_title'       => 'Tittel',
+	'youtubeauthsub_description' => 'Beskriving',
+	'youtubeauthsub_category'    => 'Kategori',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'youtubeauthsub'             => 'Last opp YouTube-video',
-	'youtubeauthsub-desc'        => 'Lar brukere [[Special:YouTubeAuthSub|laste opp videoer]] på YouTube',
-	'youtubeauthsub_info'        => 'For å laste opp en video på YouTube for bruk på en side, fyll inn følgende informasjon:',
-	'youtubeauthsub_title'       => 'Tittel',
-	'youtubeauthsub_description' => 'Beskrivelse',
-	'youtubeauthsub_password'    => 'YouTube-passord',
-	'youtubeauthsub_username'    => 'YouTube-brukernavn',
-	'youtubeauthsub_category'    => 'Kategori',
+	'youtubeauthsub'                     => 'Last opp YouTube-video',
+	'youtubeauthsub-desc'                => 'Lar brukere [[Special:YouTubeAuthSub|laste opp videoer]] på YouTube',
+	'youtubeauthsub_info'                => 'For å laste opp en video på YouTube for bruk på en side, fyll inn følgende informasjon:',
+	'youtubeauthsub_title'               => 'Tittel',
+	'youtubeauthsub_description'         => 'Beskrivelse',
+	'youtubeauthsub_password'            => 'YouTube-passord',
+	'youtubeauthsub_username'            => 'YouTube-brukernavn',
+	'youtubeauthsub_keywords'            => 'Nøkkelord',
+	'youtubeauthsub_category'            => 'Kategori',
+	'youtubeauthsub_submit'              => 'Lagre',
+	'youtubeauthsub_clickhere'           => 'Klikk her for å logge inn på YouTube',
+	'youtubeauthsub_authsubinstructions' => 'For å laste opp en video må du første logge inn på YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Last opp din video herfra:',
+	'youtubeauthsub_uploadbutton'        => 'Last opp',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}
+
+Denne videoen kan sees [http://youtube.com/watch?v=$1 her]',
+	'youtubeauthsub_summary'             => 'Laster opp YouTube-video',
+	'youtubeauthsub_uploading'           => 'Videoen din blir lastet opp. Vær tålmodig.',
+	'youtubeauthsub_viewpage'            => 'Alternativt kan du se videoen din [[$1|her]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Skriv inn ett eller flere nøkkelord.',
+	'youtubeauthsub_jserror_notitle'     => 'Velg enn tittel for videoen.',
+	'youtubeauthsub_jserror_nodesc'      => 'Skriv inn en beskrivelse av videoen.',
 );
 
 /** Occitan (Occitan)

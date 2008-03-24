@@ -51,8 +51,10 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'postcomment_on'   => 'Je',
-	'postcomment_said' => 'diris',
+	'postcomment_notloggedin'      => 'Vi ne estas ensalutita.',
+	'postcomment_youareloggedinas' => 'Vi estas ensalutita kiel $1',
+	'postcomment_on'               => 'Je',
+	'postcomment_said'             => 'diris',
 );
 
 /** French (Français)
@@ -187,8 +189,10 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'postcomment_leavemessagefor' => 'د $1 لپاره يو پيغام پرېږدی',
-	'postcomment_invalidrequest'  => 'ناسمه غوښتنه.',
+	'postcomment_notloggedin'      => 'تاسو نه ياست ننوتلي.',
+	'postcomment_youareloggedinas' => 'تاسو د $1 په نوم غونډال ته ننوتلی',
+	'postcomment_leavemessagefor'  => 'د $1 لپاره يو پيغام پرېږدی',
+	'postcomment_invalidrequest'   => 'ناسمه غوښتنه.',
 );
 
 /** Portuguese (Português)

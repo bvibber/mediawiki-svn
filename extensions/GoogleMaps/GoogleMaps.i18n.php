@@ -343,6 +343,20 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-hide-map' => 'ocultar el mapa',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$wgGoogleMapsMessages['da'] = array(
+	'gm-balloon-title'   => 'Titel:',
+	'gm-width'           => 'Bredde',
+	'gm-zoom-control'    => 'Nagiation',
+	'gm-no-zoom-control' => 'Ingen',
+	'gm-yes'             => 'Ja',
+	'gm-no'              => 'Nej',
+	'gm-search'          => 'Søg',
+	'gm-line-width'      => 'Bredde',
+);
+
 /** German (Deutsch)
  * @author [[mw:User:Helge.at]]
  * @author Raimond Spekking
@@ -1041,6 +1055,23 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$wgGoogleMapsMessages['nn'] = array(
+	'gm-balloon-title'   => 'Tittel:',
+	'gm-remove'          => 'fjern',
+	'gm-width'           => 'Breidd',
+	'gm-height'          => 'Høgd',
+	'gm-zoom-control'    => 'Navigering',
+	'gm-no-zoom-control' => 'Ingen',
+	'gm-yes'             => 'Ja',
+	'gm-no'              => 'Nei',
+	'gm-search'          => 'Søk',
+	'gm-save-path'       => 'Lagre',
+	'gm-line-width'      => 'Breidd',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author M.M.S.
@@ -1108,7 +1139,7 @@ $wgGoogleMapsMessages['no'] = array(
 	'gm-back'                      => 'tilbake',
 	'gm-kml-include'               => 'Ekstern KML/GeoRSS:',
 	'gm-kml-include-link'          => 'legg til på kart',
-	'gm-kml-loading'               => 'laster...',
+	'gm-kml-loading'               => 'laster&nbsp;…',
 	'gm-kml-export'                => 'Eksporter dette kartet til KML',
 	'gm-earth'                     => 'Jorden',
 	'gm-moon'                      => 'Månen',
@@ -1500,6 +1531,7 @@ $wgGoogleMapsMessages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Jon Harald Søby
  */
 $wgGoogleMapsMessages['sv'] = array(
 	'gm-incompatible-browser'      => 'För att kunna se kartan som skulle ha visats här så måste du använda en kompatibel webbläsare.',
@@ -1559,7 +1591,7 @@ $wgGoogleMapsMessages['sv'] = array(
 	'gm-back'                      => 'tillbaka',
 	'gm-kml-include'               => 'Extern KML/GeoRSS:',
 	'gm-kml-include-link'          => 'lägg till på kartan',
-	'gm-kml-loading'               => 'laddar...',
+	'gm-kml-loading'               => 'laddar…',
 	'gm-kml-export'                => 'Exportera denna karta till KML',
 	'gm-earth'                     => 'Jorden',
 	'gm-moon'                      => 'Månen',
@@ -1623,7 +1655,7 @@ $wgGoogleMapsMessages['te'] = array(
  * @author Minh Nguyen
  */
 $wgGoogleMapsMessages['vi'] = array(
-	'gm-incompatible-browser'  => 'Để xem bản đồ ở đây, bạn sẽ cần phải có một trình duyệt tương thích.',
+	'gm-incompatible-browser'  => 'Để xem bản đồ ở đây, bạn sẽ cần phải có một <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">trình duyệt tương thích</a>.',
 	'gm-no-editor'             => 'Thật không may, trình duyệt của bạn không hỗ trợ tính năng tạo ra bản đồ tương tác. Xin vui lòng thử phiên bản mới nhất của <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) hoặc <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, và Linux).',
 	'gm-balloon-title'         => 'Tựa đề:',
 	'gm-make-marker'           => 'Chú thích (có thể dùng mã wiki):',
@@ -1656,7 +1688,7 @@ $wgGoogleMapsMessages['vi'] = array(
 	'gm-large'                 => 'Lớn',
 	'gm-medium'                => 'Trung bình',
 	'gm-small'                 => 'Nhỏ',
-	'gm-no-zoom-control'       => 'Không',
+	'gm-no-zoom-control'       => 'Không có',
 	'gm-yes'                   => 'Có',
 	'gm-no'                    => 'Không',
 	'gm-search-preface'        => 'Nhấn vào bản đồ để thêm một điểm, hoặc đi tới một thành phố, quốc gia, địa chỉ hoặc công sở:',
@@ -1685,6 +1717,79 @@ $wgGoogleMapsMessages['vi'] = array(
 	'gm-kml-include-link'      => 'thêm vào bản đồ',
 	'gm-kml-loading'           => 'đang nạp…',
 	'gm-kml-export'            => 'Xuất bản đồ này ra tập tin KML',
+);
+
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$wgGoogleMapsMessages['zh-tw'] = array(
+	'gm-incompatible-browser'      => '您必須使用相容的網頁瀏覽器以利設查看所設定於此處的地圖',
+	'gm-incompatible-browser-link' => '按此處以查看相容瀏覽器的清單。',
+	'gm-no-editor'                 => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或<a href="http://www.mozilla.org/products/firefox">火狐狸(Firefox)</a>',
+	'gm-balloon-title'             => '標題：',
+	'gm-balloon-link-article'      => '連結至此頁(可選擇性使用的)：',
+	'gm-make-marker'               => '標題(維基標記 OK)：',
+	'gm-remove'                    => '移除',
+	'gm-caption'                   => '標題',
+	'gm-tab-title'                 => '頁籤標題',
+	'gm-tab'                       => '頁籤',
+	'gm-start-path'                => '起啟路徑(start a path)',
+	'gm-trace-area'                => '沿著某區域(trace an area)',
+	'gm-save-point'                => '儲存 &amp; 關閉',
+	'gm-load-map-from-article'     => '從此頁載入地圖',
+	'gm-no-maps'                   => '在此頁內無可供載入的地圖。',
+	'gm-refresh-list'              => '更新清單(Refresh list)',
+	'gm-load-map'                  => '載入地圖',
+	'gm-clip-result'               => '新增至地圖',
+	'gm-no-results'                => '抱歉！查無結果',
+	'gm-searching'                 => '搜尋......',
+	'gm-map'                       => '地圖',
+	'gm-note'                      => '注意：請確認，在您按下「載入地圖」、「儲存」或「預覽」之前，複製您所想要的到頁面頁面內(見下方)！',
+	'gm-instructions'              => '以下是可供建立上面地圖的維基語法標記。',
+	'gm-are-you-sure'              => '您已確定了嗎？',
+	'gm-clear-all-points'          => '清除所有的標示點',
+	'gm-refresh-points'            => '更新標示點',
+	'gm-width'                     => '寛度',
+	'gm-height'                    => '高度',
+	'gm-scale-control'             => '比例尺',
+	'gm-overview-control'          => '瀏覽(Overview)',
+	'gm-selector-control'          => '地圖/衛星選取器',
+	'gm-zoom-control'              => '導航',
+	'gm-large'                     => '大型',
+	'gm-medium'                    => '中型',
+	'gm-small'                     => '小型',
+	'gm-no-zoom-control'           => '無',
+	'gm-yes'                       => '是',
+	'gm-no'                        => '否',
+	'gm-search-preface'            => '點選地圖以新增標示點，或移至某城市、國家、地址或公司：',
+	'gm-geocode-preface'           => '點選地圖以新增標示點，或移至某城市、國家、地址或公司：',
+	'gm-no-search-preface'         => '點選地區以新增標示點',
+	'gm-search'                    => '搜尋',
+	'gm-clear-search'              => '清除搜尋結果',
+	'gm-meters'                    => '公尺',
+	'gm-miles'                     => '英哩',
+	'gm-editing-path'              => '點按此地圖新增更多標示點至此路徑。',
+	'gm-save-path'                 => '儲存',
+	'gm-edit-path'                 => '新增標定點',
+	'gm-show-path'                 => '顯示點',
+	'gm-color-path'                => '改變顏色',
+	'gm-color-fill'                => '改變填滿顏色',
+	'gm-add-fill'                  => '填滿顏色',
+	'gm-remove-fill'               => '移除填滿',
+	'gm-fill-color'                => '填滿顏色',
+	'gm-line-color'                => '線條顏色',
+	'gm-opacity'                   => '不透明',
+	'gm-line-width'                => '寬度',
+	'gm-make-map'                  => '建立地圖',
+	'gm-hide-map'                  => '隱藏地圖',
+	'gm-back'                      => '返回',
+	'gm-kml-include'               => '外部的 KML/GeoRSS：',
+	'gm-kml-include-link'          => '新增至地圖',
+	'gm-kml-loading'               => '載入中.....',
+	'gm-kml-export'                => '匯出此地圖至KML',
+	'gm-earth'                     => '地球',
+	'gm-moon'                      => '月亮',
+	'gm-mars'                      => '火星',
 );
 
 /**

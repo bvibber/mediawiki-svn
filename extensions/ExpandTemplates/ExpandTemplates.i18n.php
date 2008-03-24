@@ -185,6 +185,14 @@ $messages['cs'] = array(
 	'expand_templates_preview'         => 'Náhled',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'expand_templates_ok'      => 'OK',
+	'expand_templates_preview' => 'Forhåndsvisning',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -406,11 +414,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author KossuthRad
  * @author Dani
+ * @author KossuthRad
  */
 $messages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Kiértékeli a sablonokat, az értelmező-funkciókat és a változókat]], így megtekinthető a kész wikiszöveg, valamint az oldal',
 	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
 Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a változókat (pl. <nowiki>{{</nowiki>CURRENTDAY}}) is – mindent, ami a kettős kapcsos zárójelek között van.',
 	'expand_templates_title'           => 'Szöveg címe, például &#123;&#123;PAGENAME}} sablonhoz:',
@@ -704,6 +713,14 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_remove_comments' => 'Opmerkingen verwijderen',
 	'expand_templates_generate_xml'    => 'XML-parserboom bekijken',
 	'expand_templates_preview'         => 'Voorvertoning',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'expand_templates_ok'      => 'OK',
+	'expand_templates_preview' => 'Førehandsvising',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

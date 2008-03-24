@@ -722,6 +722,14 @@ $messages['nl'] = array(
 	'bookinfo-provider'          => 'Gegevens geleverd door: $1',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'bookinfo-result-title' => 'Tittel:',
+	'bookinfo-result-year'  => 'År:',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

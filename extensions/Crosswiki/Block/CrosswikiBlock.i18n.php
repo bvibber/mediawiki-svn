@@ -157,6 +157,18 @@ $messages['cs'] = array(
 	'crosswikiunblock-submit' => 'Odblokovat tohoto uživatele',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'crosswikiblock-reason'    => 'Begrundelse:',
+	'crosswikiblock-submit'    => 'Bloker denne bruger',
+	'crosswikiblock-nocreate'  => 'Forhindre oprettelse af brugerkonti',
+	'crosswikiblock-autoblock' => 'Spærre den IP-adresse, der bruges af denne bruger samt automatisk alle følgende, hvorfra han foretager ændringer eller forsøger at anlægge brugerkonti',
+	'crosswikiblock-noemail'   => 'Spærre brugerens adgang til at sende mail',
+	'crosswikiunblock-reason'  => 'Begrundelse:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -601,7 +613,19 @@ Teruggaan naar:
 	'crosswikiunblock-local'        => 'Plaatselijke deblokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Ipblocklist]].',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'crosswikiblock-reason'    => 'Årsak:',
+	'crosswikiblock-submit'    => 'Blokker denne brukaren',
+	'crosswikiblock-nocreate'  => 'Hindre kontooppretting',
+	'crosswikiblock-autoblock' => 'Blokker den førre IP-adressa som vart brukt av denne brukaren automatisk, og alle andre IP-adresser brukaren prøvar å endre sider med i framtida',
+	'crosswikiblock-noemail'   => 'Hindre sending av e-post til andre brukarar',
+	'crosswikiunblock-reason'  => 'Årsak:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -609,17 +633,17 @@ $messages['no'] = array(
 	'crosswikiblock'                => 'Blokker brukere på andre wikier',
 	'crosswikiblock-header'         => 'Denne siden gjør at man kan blokkere brukere på andre wikier. Sjekk om du har tillatelse til å gjøre det på denne wikien, og at du følger alle retningslinjene.',
 	'crosswikiblock-target'         => 'IP-adresse eller brukernavn og målwiki:',
-	'crosswikiblock-expiry'         => 'Utløper:',
-	'crosswikiblock-reason'         => 'Begrunnelse:',
+	'crosswikiblock-expiry'         => 'Varighet:',
+	'crosswikiblock-reason'         => 'Årsak:',
 	'crosswikiblock-submit'         => 'Blokker denne brukeren',
-	'crosswikiblock-anononly'       => '{{int:Ipbanononly}}',
-	'crosswikiblock-nocreate'       => '{{int:Ipbcreateaccount}}',
-	'crosswikiblock-autoblock'      => '{{int:ipbenableautoblock}}',
-	'crosswikiblock-noemail'        => '{{int:ipbemailban}}',
+	'crosswikiblock-anononly'       => 'Blokker kun anonyme brukere',
+	'crosswikiblock-nocreate'       => 'Hindre kontoopprettelse',
+	'crosswikiblock-autoblock'      => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
+	'crosswikiblock-noemail'        => 'Forhindre brukeren fra å sende e-post',
 	'crosswikiunblock'              => 'Avblokker brukeren på andre wikier',
 	'crosswikiunblock-header'       => 'Denne siden lar deg avblokkere brukere på andre wikier. Sjekk om du har lov til å gjøre dette på den lokale wikien i henhold til deres retningslinjer.',
 	'crosswikiunblock-user'         => 'Brukernavn, IP-adresse eller blokkerings-ID og målwiki:',
-	'crosswikiunblock-reason'       => 'Begrunnelse:',
+	'crosswikiunblock-reason'       => 'Årsak:',
 	'crosswikiunblock-submit'       => 'Avblokker brukeren',
 	'crosswikiunblock-success'      => "Brukeren '''$1''' ble avblokkert.
 
@@ -634,7 +658,7 @@ Tilbake til:
 	'crosswikiblock-noexpiry'       => 'Ugyldig utløpstid: $1.',
 	'crosswikiblock-noreason'       => 'Ingen begrunnelse gitt.',
 	'crosswikiblock-notoken'        => 'Ugyldig redigeringstegn.',
-	'crosswikiblock-alreadyblocked' => '$3 er allerede blokkert.',
+	'crosswikiblock-alreadyblocked' => '«$3» er allerede blokkert.',
 	'crosswikiblock-noblock'        => 'Denne brukeren er ikke blokkert.',
 	'crosswikiblock-success'        => "'''$3''' er blokkert.
 

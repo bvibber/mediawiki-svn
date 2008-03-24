@@ -44,6 +44,13 @@ $messages['bg'] = array(
 	'profiling-no-data' => 'Не са открити данни.',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -162,17 +169,27 @@ $messages['nl'] = array(
 	'profiling-no-data'      => 'Geen gegevens gevonden.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'profiling-ok' => 'OK',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'profiling' => 'Profileringsdata',
-	'profiling-process' => 'Prosesseringsstreng:',
-	'profiling-wildcard' => 'Bruk vilkårlig tegn',
-	'profiling-ok' => 'OK',#identical but defined
-	'profiling-data' => 'Profileringsdata for «$1»',
-	'profiling-data-process' => 'Prosesser',
-	'profiling-data-count' => 'Antall',
-	'profiling-data-time' => 'Tid (alle)',
+	'profiling'              => 'Profileringsdata',
+	'profiling-process'      => 'Prosesseringsstreng:',
+	'profiling-wildcard'     => 'Bruk vilkårlig tegn',
+	'profiling-ok'           => 'OK',
+	'profiling-data'         => 'Profileringsdata for «$1»',
+	'profiling-data-process' => 'Prosess',
+	'profiling-data-count'   => 'Antall',
+	'profiling-data-time'    => 'Tid (alle)',
 	'profiling-data-average' => 'Tid (gj.snitt)',
-	'profiling-no-data' => 'Ingen passende resultater.',
+	'profiling-no-data'      => 'Ingen passende resultater.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -248,10 +265,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'profiling-ok'         => 'OK',
-	'profiling-data-count' => 'Räkna',
+	'profiling-data-count' => 'Antal',
 	'profiling-data-time'  => 'Tid (alla)',
 );
 

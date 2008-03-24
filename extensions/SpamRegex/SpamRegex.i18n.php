@@ -97,6 +97,13 @@ $messages['bg'] = array(
 	'spamregex-summary-log'          => '(Резюме)',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'spamregex-text' => '(Tekst)',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -256,6 +263,13 @@ Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 	'spamregex-summary-log'          => '(Samenvatting)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'spamregex-text' => '(Tekst)',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -278,7 +292,7 @@ $messages['no'] = array(
 	'spamregex-warning-1'            => 'Oppgi en frase å blokkere.',
 	'spamregex-error-1'              => 'Ugyldig regulært uttrykk.',
 	'spamregex-warning-2'            => 'Du må velge minst en blokkeringsmodus.',
-	'spamregex-already-blocked'      => "''$1'' er allerede blokkert",
+	'spamregex-already-blocked'      => '«$1» er allerede blokkert',
 	'spamregex-phrase-block'         => 'Frase å blokkere:',
 	'spamregex-phrase-block-text'    => 'blokker frase i sidetekst',
 	'spamregex-phrase-block-summary' => 'blokker frase i sammendrag',

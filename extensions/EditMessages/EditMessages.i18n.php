@@ -44,6 +44,13 @@ $messages['bn'] = array(
 	'editmsg-search' => 'অনুসন্ধান',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'editmsg-search' => 'Søg',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -78,6 +85,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'editmsg-target'        => 'Cela mesaĝo:',
+	'editmsg-search'        => 'Serĉu',
 	'editmsg-get-patch'     => 'Generu flikaĵon',
 	'editmsg-new-search'    => 'Nova serĉo',
 	'editmsg-apply-patch'   => 'Apliku flikaĵon',
@@ -106,6 +114,13 @@ $messages['fr'] = array(
 	'editmsg-no-patch'         => 'Impossible pour exécuter la commande du « patch »',
 	'editmsg-patch-failed'     => 'Échec du patch avec l’erreur de sortie $1',
 	'editmsg-patch-success'    => 'Patch appliqué avec succès.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editmsg-search' => 'Procurar',
 );
 
 /** Hungarian (Magyar)
@@ -182,6 +197,13 @@ $messages['nl'] = array(
 	'editmsg-no-patch'         => 'Het commando "patch" kan niet uitgevoerd worden',
 	'editmsg-patch-failed'     => 'Aanpassen is mislukt met als foutcode $1',
 	'editmsg-patch-success'    => 'Aanpassen geslaagd.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'editmsg-search' => 'Søk',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

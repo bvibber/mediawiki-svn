@@ -134,6 +134,13 @@ sfinks|Sfinks',
 	'vote-invalid-choice' => "Ret eo deoc'h dibab unan eus an dibarzhioù hegerz.",
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'vote-login-link' => 'log på',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -353,25 +360,34 @@ riddler|Riddler',#identical but defined
 	'vote-invalid-choice' => 'U moet een van de beschikbare opties kiezen.',
 );
 
-/* Norwegian (Jon Harald Søby) */
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'vote-login-link' => 'logg inn',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'vote' => 'Avstemning',
-	'vote-header' => 'Du kan stemme på \'\'\'(eksempelbruker)\'\'\' her!',
-	'vote-current' => 'Din nåværende stemme er på \'\'\'$1\'\'\'.',
-	'vote-legend' => 'Velg hvordan du vil stemme',
-	'vote-caption' => 'Ditt valg:',
-	'vote-choices' => 'bruker1|Første brukernavn
+	'vote'                => 'Avstemning',
+	'vote-header'         => "Du kan stemme på '''(eksempelbruker)''' her!",
+	'vote-current'        => "Din nåværende stemme er på '''$1'''.",
+	'vote-legend'         => 'Velg hvordan du vil stemme',
+	'vote-caption'        => 'Ditt valg:',
+	'vote-choices'        => 'bruker1|Første brukernavn
 bruker2|Andre brukernavn
 bruker3|Tredje brukernavn',
-	'vote-submit' => 'Stem',
-	'vote-registered' => 'Din stemme har blitt registrert.',
-	'vote-view-results' => 'Vis resultater',
-	'vote-results' => 'Avstemningsresultater',
+	'vote-submit'         => 'Stem',
+	'vote-registered'     => 'Din stemme har blitt registrert.',
+	'vote-view-results'   => 'Vis resultater',
+	'vote-results'        => 'Avstemningsresultater',
 	'vote-results-choice' => 'Valg',
-	'vote-results-count' => 'Antall',
-	'vote-results-none' => 'Ingen stemmer har blitt avgitt enda.',
-	'vote-login' => 'Du må $1 for å stemme.',
-	'vote-login-link' => 'logge inn',
+	'vote-results-count'  => 'Antall',
+	'vote-results-none'   => 'Ingen stemmer har blitt avgitt enda.',
+	'vote-login'          => 'Du må $1 for å stemme.',
+	'vote-login-link'     => 'logg inn',
 	'vote-invalid-choice' => 'Du må velge en av de tilgjengelige alternativene.',
 );
 
@@ -455,7 +471,7 @@ $messages['ps'] = array(
 	'vote-registered'   => 'ستاسو رايه ثبته شوه.',
 	'vote-view-results' => 'پايلې کتل',
 	'vote-results'      => 'د رايو پايلې',
-	'vote-login-link'   => 'ننوتنه',
+	'vote-login-link'   => 'ننوتل',
 );
 
 /** Portuguese (Português)

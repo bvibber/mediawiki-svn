@@ -52,6 +52,13 @@ $messages['cs'] = array(
 	'msfunc_div_zero' => 'Dělení nulou',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'msfunc_div_zero' => 'Division med nul',
+);
+
 $messages['de'] = array(
         'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
         'msfunc_inf'      => 'Ergebniswert ist unendlich',
@@ -150,6 +157,13 @@ $messages['nl'] = array(
         'msfunc_div_zero' => "Deling door nul",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'msfunc_div_zero' => 'Divisjon med null',
+);
+
 $messages['no'] = array(
 	'msfunc_nan' => 'Resultatverdien er ikke et tall',
 	'msfunc_inf' => 'Resultatverdien er uendelig',
@@ -225,11 +239,12 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'msfunc_nan'      => 'Resultatsvärdena är inte ett tal',
 	'msfunc_inf'      => 'Resultatsvärdena är oändliga',
-	'msfunc_div_zero' => 'Delat på noll',
+	'msfunc_div_zero' => 'Division med noll',
 );
 
 /** Telugu (తెలుగు)

@@ -38,6 +38,14 @@ $messages['bg'] = array(
 	'randomincategory-label'      => 'Категория:',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'randomincategory-toolbox' => 'Tilfældig side',
+	'randomincategory-label'   => 'Kategori:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -61,7 +69,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'randomincategory-submit' => 'Ek!',
+	'randomincategory'         => 'Hazarda paĝo en kategorio',
+	'randomincategory-toolbox' => 'Hazarda paĝo',
+	'randomincategory-label'   => 'Kategorio:',
+	'randomincategory-submit'  => 'Ek!',
 );
 
 /** French (Français)
@@ -160,6 +171,14 @@ $messages['nl'] = array(
 	'randomincategory-submit'     => 'OK',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'randomincategory-toolbox' => 'Tilfeldig side',
+	'randomincategory-label'   => 'Kategori:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -241,10 +260,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'randomincategory'         => 'Slump sida i kategori',
-	'randomincategory-toolbox' => 'Slump sida',
+	'randomincategory-toolbox' => 'Slumpsida',
 	'randomincategory-label'   => 'Kategori:',
 	'randomincategory-submit'  => 'Gå',
 );

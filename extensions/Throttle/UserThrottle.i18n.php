@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'إنشاء الحسابات تم تعليقه لعدة ثواني لتقليل هجوم التسجيل. من فضلك انتظر لحظة واضغط \'reload\' في متصفحك لإعادة التنفيذ.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Създаването на сметки беше автоматично спряно за малко заради необичайно големия брой опити за влизане. Изчакайте няколко минути и опитайте отново.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

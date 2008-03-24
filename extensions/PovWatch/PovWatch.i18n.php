@@ -85,6 +85,13 @@ $messages['bg'] = array(
 	'povwatch_subscribe'       => 'Записване',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'povwatch_title' => 'Titel:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -131,8 +138,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'povwatch_title' => 'Titolo:',
-	'povwatch_added' => 'aldonita',
+	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
+	'povwatch_title'           => 'Titolo:',
+	'povwatch_added'           => 'aldonita',
 );
 
 /** French (Français)
@@ -310,14 +318,22 @@ Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's k
 	'povwatch_added'                   => 'toegevoegd',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'povwatch_title'   => 'Tittel:',
+	'povwatch_comment' => 'Kommentar:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'povwatch_invalid_title'   => 'Den gitte tittelen var ugyldig',
 	'povwatch_unknown_subpage' => 'Ukjent underside.',
 	'povwatch_title'           => 'Tittel:',
-	'povwatch_comment'         => 'Loggkommentar:',
+	'povwatch_comment'         => 'Kommentar:',
 	'povwatch_no_log'          => 'Det er ingen elementer i loggen.',
 	'povwatch_added'           => 'lagt til',
 );
@@ -451,12 +467,13 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'povwatch_unknown_subpage' => 'Okänd undersida.',
 	'povwatch_push'            => 'Tryck',
 	'povwatch_title'           => 'Titel:',
-	'povwatch_comment'         => 'Logg kommentar:',
+	'povwatch_comment'         => 'Kommentar:',
 	'povwatch_added'           => 'tillaggd',
 );
 

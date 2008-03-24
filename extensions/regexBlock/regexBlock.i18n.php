@@ -139,6 +139,14 @@ $messages['bg'] = array(
 	'regexblock-view-stats'           => '(статистика)',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'regexblock-form-reason'    => 'Begrundelse:',
+	'regexblock-stats-username' => 'For $1',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -476,7 +484,15 @@ $messages['nl'] = array(
 	'regexblock-view-time'            => 'op $1',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'regexblock-form-reason'    => 'Årsak:',
+	'regexblock-stats-username' => 'For $1',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -495,9 +511,9 @@ $messages['no'] = array(
 	'regexblock-unblock-log'          => "Brukernavnet eller IP-adressen '''$1''' er blitt avblokkert",
 	'regexblock-unblock-error'        => 'Feil under avblokkering av $1. Det er trolig ingen brukere med det navnet.',
 	'regexblock-form-username'        => 'IP-adresse eller brukernavn:',
-	'regexblock-form-reason'          => 'Begrunnelse:',
-	'regexblock-form-expiry'          => 'Utgår:&#160;',
-	'regexblock-form-match'           => 'Eksakt treff',
+	'regexblock-form-reason'          => 'Årsak:',
+	'regexblock-form-expiry'          => 'Varighet:&#160;',
+	'regexblock-form-match'           => 'Nøyaktig treff',
 	'regexblock-form-account-block'   => '{{int:ipbcreateaccount}}',
 	'regexblock-form-submit'          => 'Blokker&nbsp;denne&nbsp;brukeren',
 	'regexblock-block-log'            => "Brukeren '''$1''' har blitt blokkert.",
@@ -505,7 +521,7 @@ $messages['no'] = array(
 	'regexblock-form-submit-empty'    => 'Angi et brukernavn eller en IP-adresse å blokkere.',
 	'regexblock-form-submit-regex'    => 'Ugyldig regulært uttrykk',
 	'regexblock-form-submit-expiry'   => 'Angi en utløpstid.',
-	'regexblock-already-blocked'      => '$1 er blokkert fra før.',
+	'regexblock-already-blocked'      => '«$1» er allerede blokkert',
 	'regexblock-stats-title'          => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-stats-username'       => 'For $1',
 	'regexblock-stats-times'          => 'ble blokkert',
@@ -514,7 +530,7 @@ $messages['no'] = array(
 	'regexblock-view-blocked'         => 'Vis de blokkerte etter:',
 	'regexblock-view-all'             => 'Alle',
 	'regexblock-view-go'              => '{{int:Go}}',
-	'regexblock-view-match'           => '(eksakt treff)',
+	'regexblock-view-match'           => '(nøyaktig treff)',
 	'regexblock-view-regex'           => '(regex-treff)',
 	'regexblock-view-account'         => '(kontooppretting slått av)',
 	'regexblock-view-reason'          => 'begrunnelse: $1',
@@ -758,6 +774,13 @@ $messages['te'] = array(
 	'regexblock-view-stats'           => '(గణాంకాలు)',
 	'regexblock-view-empty'           => 'నిరోధించిన పేర్లు మరియు చిరునామాల జాబితా ఖాళీగా ఉంది.',
 	'regexblock-view-time'            => '$1 నాడు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'regexblock-view-all' => 'Hotu',
 );
 
 /** Tajik (Тоҷикӣ)

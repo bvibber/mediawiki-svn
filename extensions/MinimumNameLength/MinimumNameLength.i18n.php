@@ -50,6 +50,13 @@ $messages['el'] = array(
 	'minnamelength-error' => 'Το όνομα χρήστη σας είναι πολύ μικρό. Το ελάχιστο όριο είναι $1.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'minnamelength-error' => 'Via uzantonomo estas tro mallonga. La minimuma longo estas $1.',
+);
+
 $messages['fi'] = array(
 	'minnamelength-error' => 'Käyttäjänimesi on liian lyhyt. Minimipituus on $1.',
 );

@@ -255,6 +255,21 @@ $messages['bg'] = array(
 	'sign-review-comment'          => 'Коментар',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'sign-realname'           => 'Navn:',
+	'sign-city'               => 'By:',
+	'sign-country'            => 'Land:',
+	'sign-viewfield-realname' => 'Navn',
+	'sign-viewfield-city'     => 'By',
+	'sign-viewfield-country'  => 'Land',
+	'sign-viewfield-ip'       => 'IP-adresse',
+	'sign-viewfield-email'    => 'E-mail',
+	'sig-private'             => '<i>Privat</i>',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -286,22 +301,26 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'sign-realname'           => 'Nomo:',
-	'sign-address'            => 'Adreso:',
-	'sign-city'               => 'Urbo:',
-	'sign-state'              => 'Ŝtato:',
-	'sign-zip'                => 'Poŝta kodo:',
-	'sign-country'            => 'Lando:',
-	'sign-bday'               => 'Aĝo:',
-	'sign-email'              => 'Retpoŝta adreso:',
-	'sign-viewfield-realname' => 'Nomo',
-	'sign-viewfield-address'  => 'Adreso',
-	'sign-viewfield-city'     => 'Urbo',
-	'sign-viewfield-state'    => 'Ŝtato',
-	'sign-viewfield-country'  => 'Lando',
-	'sign-viewfield-zip'      => 'Poŝta kodo',
-	'sign-viewfield-ip'       => 'IP-adreso',
-	'sign-viewfield-age'      => 'Aĝo',
+	'sign-realname'                => 'Nomo:',
+	'sign-address'                 => 'Adreso:',
+	'sign-city'                    => 'Urbo:',
+	'sign-state'                   => 'Ŝtato:',
+	'sign-zip'                     => 'Poŝta kodo:',
+	'sign-country'                 => 'Lando:',
+	'sign-bday'                    => 'Aĝo:',
+	'sign-email'                   => 'Retpoŝta adreso:',
+	'sign-viewfield-realname'      => 'Nomo',
+	'sign-viewfield-address'       => 'Adreso',
+	'sign-viewfield-city'          => 'Urbo',
+	'sign-viewfield-state'         => 'Ŝtato',
+	'sign-viewfield-country'       => 'Lando',
+	'sign-viewfield-zip'           => 'Poŝta kodo',
+	'sign-viewfield-ip'            => 'IP-adreso',
+	'sign-viewfield-email'         => 'Retadreso',
+	'sign-viewfield-age'           => 'Aĝo',
+	'sign-viewfield-reviewedby'    => 'Kontrolanto',
+	'sign-viewfield-reviewcomment' => 'Komento',
+	'sign-review-comment'          => 'Komento',
 );
 
 $messages['ext'] = array(
@@ -785,6 +804,23 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'sign-realname'                => 'Namn:',
+	'sign-city'                    => 'By:',
+	'sign-country'                 => 'Land:',
+	'sign-viewfield-realname'      => 'Namn',
+	'sign-viewfield-city'          => 'By',
+	'sign-viewfield-country'       => 'Land',
+	'sign-viewfield-ip'            => 'IP-adresse',
+	'sign-viewfield-email'         => 'E-post',
+	'sig-private'                  => '<i>Privat</i>',
+	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-review-comment'          => 'Kommentar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Siebrand
@@ -798,9 +834,9 @@ $messages['no'] = array(
 	'sign-realname'                   => 'Navn:',
 	'sign-address'                    => 'Hjemmeadresse:',
 	'sign-city'                       => 'By:',
-	'sign-state'                      => 'Stat, fylke, etc.:',
+	'sign-state'                      => 'Delstat, fylke, etc.:',
 	'sign-zip'                        => 'Postnummer:',
-	'sign-country'                    => 'Land.',
+	'sign-country'                    => 'Land:',
 	'sign-phone'                      => 'Telefonnummer:',
 	'sign-bday'                       => 'Alder:',
 	'sign-email'                      => 'E-postadresse:',
@@ -831,7 +867,7 @@ $1',
 	'sign-viewfield-phone'            => 'Telefonnummer',
 	'sign-viewfield-email'            => 'E-post',
 	'sign-viewfield-age'              => 'Alder',
-	'sign-viewfield-options'          => 'Valgmuligheter',
+	'sign-viewfield-options'          => 'Alternativer',
 	'sign-viewsigs-intro'             => 'Under vises de oppsamlede signaturene for <span class="plainlinks">[{{fullurl:Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen'     => 'Signering er slått på for dette dokumentet.',
 	'sign-sigadmin-close'             => 'Slå av signering',
@@ -1269,8 +1305,8 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author M.M.S.
  * @author Lejonel
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'signdocument'                 => 'Signera dokument',
@@ -1295,17 +1331,18 @@ $messages['sv'] = array(
 	'sign-list-hidephone'          => 'Lista inte telefon',
 	'sign-list-hidebday'           => 'Lista inte ålder',
 	'sign-list-hideemail'          => 'Lista inte e-post',
-	'sign-submit'                  => 'Signera dokument',
+	'sign-submit'                  => 'Signera dokumentet',
 	'sig-success'                  => 'Du har signerat dokumentet lyckat.',
 	'sign-view-selectfields'       => '<b>Fält som visas:</b>',
 	'sign-viewfield-timestamp'     => 'Tidssttämpel',
 	'sign-viewfield-realname'      => 'Namn',
 	'sign-viewfield-address'       => 'Adress',
-	'sign-viewfield-city'          => 'Stad',
+	'sign-viewfield-city'          => 'Ort',
 	'sign-viewfield-state'         => 'Stat',
 	'sign-viewfield-country'       => 'Land',
 	'sign-viewfield-zip'           => 'Postnummer',
 	'sign-viewfield-ip'            => 'IP-adress',
+	'sign-viewfield-agent'         => 'Användaragent',
 	'sign-viewfield-phone'         => 'Telefon',
 	'sign-viewfield-email'         => 'E-post',
 	'sign-viewfield-age'           => 'Ålder',
@@ -1395,6 +1432,16 @@ $messages['te'] = array(
 	'sign-submitreview'             => 'సమీక్షని దాఖలు చేయండి',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'sign-realname'           => 'Naran:',
+	'sign-city'               => 'Sidade:',
+	'sign-viewfield-realname' => 'Naran',
+	'sign-viewfield-city'     => 'Sidade',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
@@ -1433,3 +1480,4 @@ $messages['vo'] = array(
 	'sign-viewfield-country'       => 'Län',
 	'sign-viewfield-reviewcomment' => 'Küpet',
 );
+

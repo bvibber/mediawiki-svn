@@ -64,6 +64,15 @@ $messages['bg'] = array(
 	'passwordreset-confirmpass'     => 'Парола (повторно)',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'passwordreset-username' => 'Brugernavn',
+	'passwordreset-newpass'  => 'Ny adgangskode',
+	'passwordreset-submit'   => 'Nullstille passord',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -268,6 +277,15 @@ $messages['nl'] = array(
 	'disabledusers-summary'            => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'passwordreset-username' => 'Brukarnamn',
+	'passwordreset-newpass'  => 'Nytt passord',
+	'passwordreset-submit'   => 'Nullstill passord',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -281,7 +299,7 @@ $messages['no'] = array(
 	'passwordreset-username'           => 'Brukernavn',
 	'passwordreset-newpass'            => 'Nytt passord',
 	'passwordreset-confirmpass'        => 'Bekreft passord',
-	'passwordreset-submit'             => 'Resett passord',
+	'passwordreset-submit'             => 'Nullstill passord',
 	'passwordreset-success'            => 'Passordet for brukeren «$1» har blitt resatt.',
 	'passwordreset-disableuser'        => 'Deaktiver kontoen?',
 	'passwordreset-disableuserexplain' => '(setter et ugyldig passord – brukeren kan ikke logge inn)',

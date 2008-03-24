@@ -95,6 +95,13 @@ $messages['bg'] = array(
 	'group-patroller-member' => 'Патрулиращ',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'patrol-revert-reason' => 'Begrundelse:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -135,6 +142,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'patrol-revert-reason' => 'Kialo:',
+	'patrol-skipped-ok'    => 'Ignorante redakton.',
 	'patrol-reasons'       => '* Simpla vandalismo
 * Novula testo
 * Vidu diskuto-paĝon',
@@ -394,7 +402,14 @@ $messages['nl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Controleur',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'patrol-revert-reason' => 'Årsak:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -402,7 +417,7 @@ $messages['no'] = array(
 	'patrol-desc'            => 'Forbedret patruljeringsgrensesnitt med arbeidsfordeling',
 	'patrol-endorse'         => 'Godkjenn',
 	'patrol-revert'          => 'Tilbakestill',
-	'patrol-revert-reason'   => 'Grunn:',
+	'patrol-revert-reason'   => 'Årsak:',
 	'patrol-skip'            => 'Hopp over',
 	'patrol-reverting'       => 'Tilbakestiller: $1',
 	'patrol-nonefound'       => 'Ingen redigeringer passende for patruljering kunne finnes.',
@@ -501,6 +516,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'patrol-revert-reason' => 'سبب:',
+	'patrol-skip'          => 'تېرېدل',
 );
 
 /** Portuguese (Português)
@@ -639,9 +655,13 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lokal Profil
  */
 $messages['sv'] = array(
+	'patrol'                 => 'Patrullera redigeringar',
 	'patrol-revert-reason'   => 'Anledning:',
+	'patrol-endorsed-ok'     => 'Redigeringen blev markerad som patrullerad.',
+	'patrol-endorsed-failed' => 'Redigeringen kunde inte markeras som patrullerad.',
 	'patrol-another'         => 'Visa andra redigeringar, om det är tillgängligt.',
 	'group-patroller'        => 'Patrullerare',
 	'group-patroller-member' => 'Patrullerare',

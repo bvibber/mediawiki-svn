@@ -61,6 +61,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'tasklist'               => 'Списък със задачи',
+	'tasklist-parser-desc'   => 'добавя функция на парсера <nowiki>{{#todo:}}</nowiki> за управление на задачи',
 	'tasklist-special-desc'  => 'Добавя специална страница със [[Special:TaskList|списък със задачи]].',
 	'tasklistbyproject'      => 'Списък със задачи по проект',
 	'tasklistunknownproject' => 'Неизвестен проект',
@@ -492,6 +493,8 @@ $messages['zh-cn'] = array(         //Simple Chinese
  */
 $messages['zh-tw'] = array(
 	'tasklist'               => '任務清單',
+	'tasklist-parser-desc'   => '新增 <nowiki>{{#todo:}}</nowiki> 擴充語法功能以指定任務',
+	'tasklist-special-desc'  => '新增特殊頁面以利查看[[Special:TaskList|tasks assignments]]',
 	'tasklistbyproject'      => '依專案列出任務',
 	'tasklistunknownproject' => '未知的專案',
 	'tasklistunspecuser'     => '未指定用戶',

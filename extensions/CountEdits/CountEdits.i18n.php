@@ -114,6 +114,14 @@ $messages['cs'] = array(
 	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'countedits-username' => 'Brugernavn:',
+	'countedits-ok'       => 'OK',
+);
+
 /* German (Raymond) */
 $messages['de'] = array(
 	'countedits' => 'Beitragszähler',
@@ -455,6 +463,14 @@ $messages['nl'] = array(
 	'countedits-resulttext'   => '$1 heeft $2 bewerkingen gemaakt',
 	'countedits-mostactive'   => 'Meest actieve redacteuren',
 	'countedits-nocontribs'   => 'Er zijn geen bewerkingen op deze wiki.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'countedits-username' => 'Brukarnamn:',
+	'countedits-ok'       => 'OK',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

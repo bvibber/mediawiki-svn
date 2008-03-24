@@ -41,6 +41,7 @@ $messages['en'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'spl3-desc'       => 'Автоматично създава списък на подстраниците с помощта на етикета <code><nowiki><splist /></nowiki></code>',
 	'spl3_nosubpages' => '$1 не съдържа подстраници, които да бъдат показани.',
 );
 

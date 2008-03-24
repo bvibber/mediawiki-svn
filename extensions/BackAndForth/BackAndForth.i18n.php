@@ -322,6 +322,13 @@ $messages['nl'] = array(
 	'backforth-prev' => 'Vorige ($1)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'backforth-next' => 'Nest ($1)',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

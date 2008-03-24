@@ -248,6 +248,7 @@ $messages['eo'] = array(
 	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',
 	'changeauthor-revview'              => 'Revizio #$1 de $2',
 	'changeauthor-nosuchtitle'          => 'Estas neniu pagxo titolata "$1".',
+	'changeauthor-logentry'             => 'Ŝanĝis aŭtoron de $2 de $1 de $3 al $4',
 	'changeauthor-logpagename'          => 'Loglibro pri ŝanĝoj de aŭtoroj',
 );
 
@@ -554,6 +555,13 @@ Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de
 	'changeauthor-success'              => 'Uw verzoek is succesvol verwerkt.',
 	'changeauthor-logentry'             => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename'          => 'Auteurswijzigingenlogboek',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'changeauthor-comment' => 'Kommentar:',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

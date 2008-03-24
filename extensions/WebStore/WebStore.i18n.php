@@ -153,6 +153,7 @@ $messages['bg'] = array(
 	'webstore_404'                     => 'Файлът не беше намерен.',
 	'webstore_php_warning'             => 'PHP Предупреждение: $1',
 	'webstore_metadata_not_found'      => 'Файлът не беше намерен: $1',
+	'webstore_postfile_not_found'      => 'Файлът за публикуване не беше открит.',
 	'webstore_invalid_response'        => 'Невалиден отговор от сървъра:
 
 $1',

@@ -120,6 +120,13 @@ $messages['cs'] = array(
 	'scanset_prev'                      => '← Předchozí',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'scanset_next' => 'Næste &gt;',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -262,6 +269,7 @@ $messages['hsb'] = array(
  * @author KossuthRad
  */
 $messages['hu'] = array(
+	'scanset-desc'                      => 'Szkennelt oldalak képeinek megjelenítése Andreas Grosz CD/DVD sorozatairól',
 	'scanset_no_name'                   => 'ScanSet: meg kell adnod a sorozat nevét, pl. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: érvénytelen vagy hiányzó sorozat.',
 	'scanset_unrecognised_index_format' => 'ScanSet: ismeretlen indexformátum',
@@ -409,6 +417,13 @@ $messages['nl'] = array(
 	'scanset_prev'                      => '&lt; Vorige',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'scanset_next' => 'Neste &gt;',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -461,6 +476,13 @@ $messages['pl'] = array(
 	'scanset_invalid_volume'            => 'ScanSet: Nieprawidłowy wolumin',
 	'scanset_next'                      => 'Nast. &gt;',
 	'scanset_prev'                      => '&lt; Poprz.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'scanset_prev' => '&lt; پخوانی',
 );
 
 /** Portuguese (Português)

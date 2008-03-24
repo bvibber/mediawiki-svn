@@ -145,6 +145,14 @@ $messages['cs'] = array(
 	'pdt_comparing_page'  => 'Porovnání výstupu parserů pro stránku [[$1]]',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'pdtest_ok'   => 'OK',
+	'pdtest_diff' => 'Forskelle',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

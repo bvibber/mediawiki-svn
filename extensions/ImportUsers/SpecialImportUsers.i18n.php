@@ -73,6 +73,19 @@ $messages['bg'] = array(
 	'importusers-realname'            => 'истинско име',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'importusers-uploadfile'          => 'Læg en fil op',
+	'importusers-form-button'         => 'Importer',
+	'importusers-log'                 => 'Brugerimportlog',
+	'importusers-log-summary-updated' => 'Opdateret',
+	'importusers-password'            => 'adgangskode',
+	'importusers-email'               => 'e-mail',
+	'importusers-realname'            => 'virkeligt navn',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  */
@@ -104,7 +117,10 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'importusers'                     => 'Importu Uzantojn',
+	'importusers-uploadfile'          => 'Alŝutu dosieron',
 	'importusers-form-button'         => 'Importu',
+	'importusers-user-added'          => 'Uzanto <b>%s</b> estis aldonita.',
+	'importusers-user-present-update' => 'Uzanto <b>%s</b> jam ekzistas. Ĝisdatigita.',
 	'importusers-log'                 => 'Loglibro de importoj',
 	'importusers-log-summary'         => 'Resumo',
 	'importusers-log-summary-all'     => 'Ĉiuj',
@@ -112,7 +128,7 @@ $messages['eo'] = array(
 	'importusers-log-summary-updated' => 'Ĝisdatigita',
 	'importusers-login-name'          => 'Salutnomo',
 	'importusers-password'            => 'pasvorto',
-	'importusers-email'               => 'retpoŝto',
+	'importusers-email'               => 'retadreso',
 	'importusers-realname'            => 'reala nomo',
 );
 
@@ -304,6 +320,19 @@ $messages['nl'] = array(
 	'importusers-realname'                => 'echte naam',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'importusers-uploadfile'          => 'Last opp fil',
+	'importusers-form-button'         => 'Importer',
+	'importusers-log'                 => 'Brukarimporteringslogg',
+	'importusers-log-summary-updated' => 'Oppdatert',
+	'importusers-password'            => 'passord',
+	'importusers-email'               => 'e-post',
+	'importusers-realname'            => 'verkeleg namn',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -375,13 +404,14 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'importusers-uploadfile'      => 'دوتنه پورته کول',
-	'importusers-log-summary'     => 'لنډيز',
-	'importusers-log-summary-all' => 'ټول',
-	'importusers-login-name'      => 'غونډال ته د ننوتنې نوم',
-	'importusers-password'        => 'پټنوم',
-	'importusers-email'           => 'برېښناليک',
-	'importusers-realname'        => 'اصلي نوم',
+	'importusers-uploadfile'          => 'دوتنه پورته کول',
+	'importusers-log-summary'         => 'لنډيز',
+	'importusers-log-summary-all'     => 'ټول',
+	'importusers-log-summary-updated' => 'تازه',
+	'importusers-login-name'          => 'غونډال ته د ننوتنې نوم',
+	'importusers-password'            => 'پټنوم',
+	'importusers-email'               => 'برېښناليک',
+	'importusers-realname'            => 'اصلي نوم',
 );
 
 /** Portuguese (Português)
@@ -491,6 +521,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'importusers'                         => 'Importera användare',
@@ -504,7 +535,7 @@ $messages['sv'] = array(
 	'importusers-user-present-update'     => 'Användare <b>%s</b> existerar redan. Uppdaterad.',
 	'importusers-user-present-not-update' => 'Användaren <b>%s</b> finns redan. Inte uppdaterat.',
 	'importusers-user-invalid-format'     => 'Användardatan på linje #%s har ogiltigt format eller är blank. Överhoppad.',
-	'importusers-log'                     => 'Import logg',
+	'importusers-log'                     => 'Importlogg',
 	'importusers-log-summary'             => 'Sammanfattning',
 	'importusers-log-summary-all'         => 'Alla',
 	'importusers-log-summary-added'       => 'Tillagd',
@@ -534,6 +565,13 @@ $messages['te'] = array(
 	'importusers-password'                => 'సంకేతపదం',
 	'importusers-email'                   => 'ఈ-మెయిల్',
 	'importusers-realname'                => 'నిజమైన పేరు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'importusers-log-summary-all' => 'Hotu',
 );
 
 /** Volapük (Volapük)

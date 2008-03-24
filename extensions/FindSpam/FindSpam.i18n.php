@@ -55,6 +55,14 @@ $messages['br'] = array(
 	'findspam-ok' => 'Mat eo',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'findspam-ip' => 'IP-adresse:',
+	'findspam-ok' => 'OK',
+);
+
 $messages['de'] = array(
 	'findspam'             => 'Spam finden',
 	'findspam-ip'          => 'IP-Adresse:',
@@ -190,6 +198,14 @@ $messages['nl'] = array(
 	'findspam-ip'          => 'IP-adres:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Geen bijdragen gevonden',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'findspam-ip' => 'IP-adresse:',
+	'findspam-ok' => 'OK',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

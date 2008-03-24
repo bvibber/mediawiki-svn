@@ -207,6 +207,20 @@ $messages['bn'] = array(
 	'oversight-hidden'            => 'লুকায়িত সংশোধন',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'hiderevision-reason'         => 'Motiu (es registrarà de forma privada):',
+	'hiderevision-submit'         => 'Amaga aquestes dades permanentment',
+	'hiderevision-tab'            => 'Amaga la revisió',
+	'hiderevision-status'         => 'Revisió $1: $2',
+	'hiderevision-error-missing'  => "No s'ha trobat a la base de dades.",
+	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
+	'oversight-view'              => 'detalls',
+	'oversight-prev'              => 'Darrera revisió anterior',
+);
+
 /* Corse (Corsu)*/
 $messages['co'] = array(
 	'hiderevision' => 'Piattà e revisione di manera permanente',
@@ -684,6 +698,9 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 $messages['hu'] = array(
 	'hiderevision'                => 'Állandó rejtett átdolgozások',
 	'hiderevision-desc'           => 'Adott változatok eltüntetése az összes felhasználó elől, például jogi okokból.',
+	'group-oversight'             => 'adatvédelmi biztosok',
+	'group-oversight-member'      => 'adatvédelmi biztos',
+	'grouppage-oversight'         => '{{ns:project}}:Adatvédelmi biztosok',
 	'hiderevision-prompt'         => 'Eltávolítandó változat:',
 	'hiderevision-continue'       => 'Folytatódik',
 	'hiderevision-text'           => "Ez az eszköz '''csak''' az alábbi esetekben használható:
@@ -1245,7 +1262,7 @@ $messages['no'] = array(
 	'hiderevision'                => 'Fjern revisjoner permanent',
 	'hiderevision-desc'           => 'Skjul enkeltrevisjoner fra alle brukere av juridiske grunner, etc.',
 	'group-oversight'             => 'Oversightare',
-	'group-oversight-member'      => 'Oversight',
+	'group-oversight-member'      => 'Revjsonssletter',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue'       => 'Fortsett',
@@ -1451,12 +1468,13 @@ $messages['rmy'] = array(
 /** Russian (Русский)
  * @author .:Ajvol:.
  * @author HalanTul
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
 	'hiderevision-desc'           => 'Скрывает отдельные версии страниц от всех пользователей, используется по судебно-юридическим причинам и т. п.',
 	'group-oversight'             => 'Ревизоры',
-	'group-oversight-member'      => 'Ревизор',
+	'group-oversight-member'      => 'ревизор',
 	'grouppage-oversight'         => '{{ns:project}}:Ревизоры',
 	'hiderevision-prompt'         => 'Номер версии, которую требуется скрыть:',
 	'hiderevision-continue'       => 'Продолжить',
@@ -1710,6 +1728,7 @@ Muugelke Gruunde:
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'hiderevision'                => 'Dölj sidversioner permanent',
@@ -1742,7 +1761,7 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 * Den dolda versionen var den första sidversionen',
 	'oversight-log-hiderev'       => 'tog bort en version av $1',
 	'oversight'                   => 'Översyn',
-	'oversight-view'              => 'mer info',
+	'oversight-view'              => 'detaljer',
 	'oversight-difference'        => '(Skillnad mot föregående synliga version)',
 	'oversight-prev'              => 'Senaste tidigare version',
 	'oversight-hidden'            => 'Dold version',
@@ -1840,7 +1859,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'group-oversight'        => 'Ревізори',
-	'group-oversight-member' => 'Ревізор',
+	'group-oversight-member' => 'ревізор',
 	'grouppage-oversight'    => '{{ns:project}}:Ревізори',
 	'oversight'              => 'Журнал приховування версій',
 );

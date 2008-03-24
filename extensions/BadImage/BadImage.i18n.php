@@ -240,10 +240,12 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Jon Harald Søby
  * @author M.M.S.
  */
 $messages['da'] = array(
-	'badimages-name' => 'Navn:',
+	'badimages-name'   => 'Navn:',
+	'badimages-reason' => 'Begrundelse:',
 );
 
 /** German (Deutsch)
@@ -866,7 +868,17 @@ $messages['nl'] = array(
 	'badimages-page'           => '{{ns:help}}:Verwijderlijst afbeeldingen',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'badimages-name'       => 'Namn:',
+	'badimages-reason'     => 'Årsak:',
+	'badimages-remove'     => '(fjern)',
+	'badimages-remove-btn' => 'Fjern',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author SPQRobin
  */
@@ -879,7 +891,7 @@ $messages['no'] = array(
 	'badimages-name'           => 'Navn:',
 	'badimages-not-added'      => 'Bildet kunne ikke legges til.',
 	'badimages-not-removed'    => 'Bildet kunne ikke fjernes.',
-	'badimages-reason'         => 'Grunn:',
+	'badimages-reason'         => 'Årsak:',
 	'badimages-remove'         => '(fjern)',
 	'badimages-remove-btn'     => 'Fjern',
 	'badimages-remove-confirm' => 'Bekreft at du ønsker å fjerne $1 fra listen:',
@@ -1349,6 +1361,13 @@ $messages['te'] = array(
 	'badimages-log-add'        => '[[$1]]ని చెడు బొమ్మల జాబితాలో చేర్చారు',
 	'badimages-log-remove'     => '[[$1]]ని చెడు బొమ్మల జాబితా నుండి తీసివేసారు',
 	'badimages-page'           => '{{ns:help}}:చెడు బొమ్మల జాబితా',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'badimages-name' => 'Naran:',
 );
 
 /** Tajik (Тоҷикӣ)

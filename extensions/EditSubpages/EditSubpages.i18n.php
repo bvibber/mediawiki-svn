@@ -45,6 +45,22 @@ $messages['fr'] = array(
   #</pre><!-- Laisser cette ligne telle quelle -->',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editsubpages-desc' => 'Permite aos administradores desprotexer unha páxina e todas as subpáxinas que esta contén para que os usuarios anónimos editen via [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '  #<!-- deixe esta liña como está --><pre>
+# Poña as páxinas que desexe desprotexer embaixo usando
+# * nomedapáxina
+# As páxinas desprotexidas deben comezar cun # para que sexan contabilizadas,
+# o resto consideranrase comentarios
+# Nomesdapáxina serán [[ligazóns]] e son sensibles á causa
+# Tamén, as páxinas de conversa serán desprotexidas automaticamente coa páxina
+# Véxase http://www.mediawiki.org/wiki/Extension:EditSubpages para máis información
+  #</pre><!-- deixe esta liña como está -->',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -120,19 +136,20 @@ $messages['ru'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Sannab
  * @author Micke
  */
 $messages['sv'] = array(
 	'editsubpages-desc' => 'Låter administratörer låsa upp en sida, och alla undersidor till den sidan, för redigering av oinloggade användare med hjälp av [[MediaWiki:Unlockedpages]]',
 	'unlockedpages'     => '   #<!-- låt denna linje vara ifred --><pre>
-# Skriv in sidor du vill låsa upp nedanför på formen
+# Skriv in sidor du vill låsa upp nedanför i formatet:
 # * sidnamn
 # Namnen ska börja med en stjärna,
 # allt annat räknas som kommentar
 # Sidnamn kan vara [[länkar]], och
-# man ska skilja mellan stora och smmå bokstäver.
+# man ska skilja mellan stora och små bokstäver.
 # Diskussionssidor blir automatiskt upplåsta tillsammans med huvudsidan
-# Se http://www.mediawiki.org/wiki/Extension:EditSubpages for mer information
+# Se http://www.mediawiki.org/wiki/Extension:EditSubpages för mer information
    #</pre><!-- låt denna linje vara ifred -->',
 );
 
@@ -141,6 +158,15 @@ $messages['sv'] = array(
  */
 $messages['uk'] = array(
 	'editsubpages-desc' => 'Дозволяє адміністраторам за допомогою [[MediaWiki:Unlockedpages]] відкрити для анонімного редагування сторінку та її підсторінки',
+	'unlockedpages'     => '#<!-- не чіпайте цей рядок --><pre>
+# Розмістіть тут назви сторінок, які ви хочете відкрити для редагування
+# * назва сторінки
+# Назви сторінок повинні бути у маркованому списку,
+# усе інше буде розглядатися як коментар.
+# Назви сторінок можуть бути оформлені як [[посилання]], імена чутливі до регістру.
+# Відповідні сторінки обговорень також будуть відкриті.
+# Докладніше див. http://www.mediawiki.org/wiki/Extension:EditSubpages
+   #</pre><!-- не чіпайте цей рядок -->',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -141,6 +141,13 @@ $messages['ca'] = array(
 	'duplicator-toomanyrevisions'      => "La pàgina [[$1]] té $2 revisions i no pot ser copiada. EL límit màxim d'edicions que es poden copiar és de $3.",
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'duplicator-source' => 'Kilde:',
+);
+
 /* German (Leon Weber) */
 $messages['de'] = array(
 	'duplicator'         => 'Seite duplizieren',
@@ -513,6 +520,13 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-toomanyrevisions'      => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'duplicator-source' => 'Kjelde:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -860,3 +874,4 @@ $messages['zh-hant'] = array(
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
 	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
 );
+

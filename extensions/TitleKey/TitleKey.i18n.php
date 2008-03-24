@@ -49,6 +49,13 @@ $messages['hsb'] = array(
 	'titlekey-desc' => 'Pozadkowy proces za namjety tituloweho pytanja',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'titlekey-desc' => 'Címek keresésekor címeket ajánl az előtagjuk alapján',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

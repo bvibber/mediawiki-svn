@@ -465,7 +465,7 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 	'querysuccessful' => 'Zoekopdracht uitgevoerd',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -474,7 +474,7 @@ $messages['no'] = array(
 	'asksqltext'      => "Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn ('som dette') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.",
 	'sqlislogged'     => 'Merk at alle spørringer logges.',
 	'sqlquery'        => 'Skriv inn spørring',
-	'querybtn'        => 'Kjør spørring',
+	'querybtn'        => 'Utfør',
 	'selectonly'      => 'Kun lesespørringer godtas',
 	'querysuccessful' => 'Spørring vellykket',
 );

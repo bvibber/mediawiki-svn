@@ -54,6 +54,14 @@ $messages['bg'] = array(
 	'showprocesslist-info'    => 'Информация',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'showprocesslist-id'   => 'ID',
+	'showprocesslist-user' => 'Bruger',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -168,6 +176,14 @@ $messages['nl'] = array(
 	'showprocesslist-info'    => 'Informatie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'showprocesslist-id'   => 'ID',
+	'showprocesslist-user' => 'Brukar',
+);
+
 /** Norwegian (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -211,9 +227,10 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'showprocesslist-user' => 'کارونکی',
-	'showprocesslist-time' => 'وخت',
-	'showprocesslist-info' => 'مالومات',
+	'showprocesslist-user'  => 'کارونکی',
+	'showprocesslist-time'  => 'وخت',
+	'showprocesslist-state' => 'ايالت',
+	'showprocesslist-info'  => 'مالومات',
 );
 
 /** Portuguese (Português)

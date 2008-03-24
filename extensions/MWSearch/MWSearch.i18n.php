@@ -25,6 +25,13 @@ $messages['fr'] = array(
 	'mwsearch-desc' => 'Plug-in Recherches MW',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'mwsearch-desc' => 'MWSearch beépülő modul',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

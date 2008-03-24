@@ -141,6 +141,15 @@ $messages['bg'] = array(
 	'openidnousername'     => 'Не е посочено потребителско име.',
 );
 
+/** Danish (Dansk)
+ * @author Jon Harald Søby
+ */
+$messages['da'] = array(
+	'openidnickname'       => 'Kaldenavn',
+	'openidlanguage'       => 'Sprog',
+	'openidchoosepassword' => 'adgangskode:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -153,6 +162,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'openidrequired'       => 'Deviga',
+	'openidnickname'       => 'Kaŝnomo',
 	'openidfullname'       => 'Plena nomo',
 	'openidemail'          => 'Retadreso',
 	'openidlanguage'       => 'Lingvo',
@@ -389,12 +400,22 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'openidsuccess'           => 'Iwwerpréifung huet geklappt',
-	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
-	'openidallowtrust'        => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
-	'openidlanguage'          => 'Sprooch',
-	'openidchoosefull'        => 'Äre ganze Numm ($1)',
-	'openidchoosepassword'    => 'Passwuert:',
+	'openiderror'              => 'Feeler bäi der Iwwerpréifung',
+	'openidsuccess'            => 'Iwwerpréifung huet geklappt',
+	'openidtrustinstructions'  => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
+	'openidallowtrust'         => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
+	'openidoptional'           => 'Facultatif',
+	'openidrequired'           => 'Obligatoresch',
+	'openidnickname'           => 'Spëtznumm',
+	'openidfullname'           => 'Ganze Numm',
+	'openidemail'              => 'E-Mailadress',
+	'openidlanguage'           => 'Sprooch',
+	'openidnotavailable'       => 'De Spëtznumm deen Dir wollt hun ($1) gëtt scho vun engem anere Benotzer benotzt.',
+	'openidchooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt iech ee vun de Méiglechkeeten ënnendrënner auswielen.',
+	'openidchoosefull'         => 'Äre ganze Numm ($1)',
+	'openidchooseauto'         => 'Een Numm deen automatesch generéiert gouf ($1)',
+	'openidchoosemanual'       => 'E Numm vun ärer Wiel:',
+	'openidchoosepassword'     => 'Passwuert:',
 );
 
 /** Dutch (Nederlands)
@@ -468,6 +489,16 @@ Er zijn veel [http://wiki.openid.net/Public_OpenID_providers publieke OpenID-pro
 ; [http://openid.yahoo.com/ Yahoo!] : Als u een gebruiker hebt bij Yahoo!, dan kunt u bij deze site aanmelden door uw OpenID van Yahoo! in het veld hierboven in te voeren. Een URL van een OpenID van Yahoo! heeft de volgende opmaak: ''<nowiki>https://me.yahoo.com/gebruikersnaam</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Als u een gebruiker hebt bij [http://www.aol.com/ AOL], zoals een [http://www.aim.com/ AIM]-gebruiker, dan kunt u bij {{SITENAME}} aanmelden door uw OpenID van AOL in het veld hierboven in te voeren. Een URL van een OpenID van AOL heeft de volgende opmaak: ''<nowiki>http://openid.aol.com/gebruikersnaam</nowiki>''. Uw gebruikersnaam moet in kleine letters ingevoerd worden, zonder spaties.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Als u een blog hebt bij een van de voorgaande diensten, dan kunt u bij deze site aanmelden door als uw OpenID de URL van uw blog in te geven in het veld hierboven. Bijvoorbeeld: ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' of ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nn'] = array(
+	'openidoptional'       => 'Valfri',
+	'openidnickname'       => 'Kallenamn',
+	'openidlanguage'       => 'Språk',
+	'openidchoosepassword' => 'passord:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -682,6 +713,22 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 ; [http://openid.yahoo.com/ Yahoo!]: Ak máte účet Yahoo!, môžete sa na túto stránku prihlásiť zadaním vášho OpenID, ktoré poskytuje Yahoo!, do poľa vyššie. Yahoo! OpenID URL bývajú v tvare  ''<nowiki>https://me.yahoo.com/pouzivatelskemeno</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL]: Ak máte účet [http://www.aol.com/ AOL] ako napríklad účet [http://www.aim.com/ AIM], môžete sa prihlásiť na {{GRAMMAR:akuzatív|{{SITENAME}}}} zadaním vášho OpenID, ktoré poskytuje AOL, do poľa vyššie. AOL OpenID URL bývajú v tvare ''<nowiki>http://openid.aol.com/pouzivatelskemeno</nowiki>''. Vaše používateľské meno by malo mať len malé písmená a žiadne medzery.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Ak máte blog na niektorej z týchto služieb, zadajte do poľa vyššie URL svojho blogu. Napríklad ''<nowiki>http://pouzivatelskemeno.blogspot.com/</nowiki>'', ''<nowiki>http://pouzivatelskemeno.wordpress.com/</nowiki>'', ''<nowiki>http://pouzivatelskemeno.livejournal.com/</nowiki>'' alebo ''<nowiki>http://pouzivatelskemeno.vox.com/</nowiki>''.",
+);
+
+/** Swedish (Svenska)
+ * @author Lokal Profil
+ * @author Jon Harald Søby
+ */
+$messages['sv'] = array(
+	'openidlogin'          => 'Logga in med OpenID',
+	'openidxrds'           => 'Yadis-fil',
+	'openidoptional'       => 'Valfri',
+	'openidnickname'       => 'Smeknamn',
+	'openidemail'          => 'E-postadress',
+	'openidlanguage'       => 'Språk',
+	'openidchoosepassword' => 'lösenord:',
+	'openidnousername'     => 'Inget användarnamn angivet.',
+	'openidbadusername'    => 'Ogiltigt användarnamn angivet.',
 );
 
 /** Telugu (తెలుగు)

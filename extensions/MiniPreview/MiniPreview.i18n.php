@@ -66,6 +66,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'minipreview-files_in_gallery'    => '$1 dosieroj entute en ĉi tiu galerio.',
 	'minipreview-no_category_gallery' => 'Neniuj kategorioj aŭ galerioj!',
 );
 
