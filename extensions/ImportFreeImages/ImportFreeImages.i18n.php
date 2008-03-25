@@ -11,13 +11,13 @@ $messages = array();
  * @author Travis Derouin
  */
 $messages['en'] = array(
-	'importfreeimages'                => 'Import Free Images',
+	'importfreeimages'                => 'Import free images',
 	'importfreeimages-desc'           => 'Provides a way of [[Special:ImportFreeImages|importing properly licensed photos]] from [http://www.flickr.com flickr]',
 	'importfreeimages_description'    => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',
 	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key.
 To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'No photos were found for your search criteria \'$1\', please try again.',
-	'importfreeimages_invalidurl'     => 'The URL "$1" is not a valid Flickr image.',
+	'importfreeimages_invalidurl'     => 'The URL “$1” is not a valid Flickr image.',
 	'importfreeimages_owner'          => 'Author',
 	'importfreeimages_importthis'     => 'import this',
 	'importfreeimages_next'           => 'Next $1',

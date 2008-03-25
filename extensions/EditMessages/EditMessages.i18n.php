@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'editmessages'             => 'Edit messages',
 	'editmsg-target'           => 'Target message: ',
 	'editmsg-search'           => 'Search',
-	'editmsg-show-list'        => 'Showing values for message name "$1"',
+	'editmsg-show-list'        => 'Showing values for message name “$1”',
 	'editmsg-get-patch'        => 'Generate patch',
 	'editmsg-new-search'       => 'New search',
 	'editmsg-warning-parse1'   => '* Message name regex not matched: $1',
@@ -21,7 +21,7 @@ $messages['en'] = array(
 	'editmsg-warning-file'     => '* File read errors were encountered for the following languages: $1',
 	'editmsg-warning-mismatch' => '* The original text did not have the expected value for the following languages: $1',
 	'editmsg-apply-patch'      => 'Apply patch',
-	'editmsg-no-patch'         => 'Unable to execute "patch" command',
+	'editmsg-no-patch'         => 'Unable to execute “patch” command',
 	'editmsg-patch-failed'     => 'Patch failed with exit status $1',
 	'editmsg-patch-success'    => 'Successfully patched.',
 );

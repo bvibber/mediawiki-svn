@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'edituser-desc' => 'Allows privileged users to edit other users\' preferences',
-	'edituser' => 'Edit User',
+	'edituser' => 'Edit user',
 	'edituser-logout' => 'Log user out',
 	'edituser-username' => 'Name',
 	'edituser-dosearch' => 'Search',

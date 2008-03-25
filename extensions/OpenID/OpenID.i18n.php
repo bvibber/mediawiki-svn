@@ -44,7 +44,7 @@ Please consult this site\'s administrator.',
 	'openidcancel' => 'Verification cancelled',
 	'openidcanceltext' => 'Verification of the OpenID URL was cancelled.',
 	'openidfailure' => 'Verification failed',
-	'openidfailuretext' => 'Verification of the OpenID URL failed. Error message: "$1"',
+	'openidfailuretext' => 'Verification of the OpenID URL failed. Error message: “$1”',
 	'openidsuccess' => 'Verification succeeded',
 	'openidsuccesstext' => 'Verification of the OpenID URL succeeded.',
 	'openidusernameprefix' => 'OpenIDUser',
@@ -72,7 +72,7 @@ Please consult this site\'s administrator.',
 	'openidconvertsuccess' => 'Successfully converted to OpenID',
 	'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
 	'openidconvertyourstext' => 'That is already your OpenID.',
-	'openidconvertothertext' => 'That is someone else\'s OpenID.',
+	'openidconvertothertext' => 'That is someone else’s OpenID.',
 	'openidalreadyloggedin' => "'''You are already logged in, $1!'''
 
 If you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
@@ -80,12 +80,12 @@ If you want to use OpenID to log in in the future, you can [[Special:OpenIDConve
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
-If not, try the \"Continue\" button.',
+If not, try the “Continue” button.',
 	'openidclientonlytext' => 'You cannot use accounts from this wiki as OpenIDs on another site.',
 	'openidloginlabel' => 'OpenID URL',
 	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single signon between Web sites.
 OpenID lets you log into many different Web sites without using a different password for each.
-(See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
+(See [http://en.wikipedia.org/wiki/OpenID Wikipedia’s OpenID article] for more information.)
 
 If you already have an account on {{SITENAME}}, you can [[Special:Userlogin|log in]] with your username and password as usual. To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you\'ve logged in normally.
 
