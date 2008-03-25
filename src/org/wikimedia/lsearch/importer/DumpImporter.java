@@ -93,6 +93,7 @@ public class DumpImporter implements DumpWriter {
 		String redirectTo = links.getRedirectTarget(key);
 		isRedirect = redirectTo != null;
 		redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
+		//int redirectRank = isRedirect? links.getRank(redirectTo) : 0;
 		
 		// make list of redirects
 		redirects = new ArrayList<Redirect>();
@@ -106,7 +107,7 @@ public class DumpImporter implements DumpWriter {
 			rel = related.getRelated(key);
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
-				references,redirectTargetNamespace,redirects,rel,anchors,date);
+				references,redirectTargetNamespace,0,redirects,rel,anchors,date);
 		// index
 		if(indexWriter != null)
 			indexWriter.addArticle(article);

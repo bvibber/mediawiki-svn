@@ -81,7 +81,7 @@ public class SearcherCache {
 			if(!iid.isMySearch())
 				throw new IOException(iid+" is not searched by this host.");
 			if(iid.isLogical())
-				throw new IOException(iid+" will not open logical index.");
+				throw new IOException(iid+": will not open logical index.");
 			try {
 				searcher = new IndexSearcherMul(path);
 				searcher.setSimilarity(new WikiSimilarity());
@@ -166,9 +166,9 @@ public class SearcherCache {
 		}
 	}
 	
-	/** get a random host that searches iid, always returns "localhost" for local searchers */
+	/** get a random host that searches iid, always returns "localhost" for local searchers (if not being deployed) */
 	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch())
+		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid))
 			return "localhost";
 		if(!initialized.contains(iid.toString()))
 			initialize(iid);
@@ -212,6 +212,17 @@ public class SearcherCache {
 	}
 	
 	/**
+	 * If there is a cached local searcher of iid
+	 * 
+	 * @param iid
+	 * @return
+	 */
+	public boolean hasLocalSearcher(IndexId iid){
+		return fromLocalCache(iid.toString()) != null;
+		
+	}
+	
+	/**
 	 * Get {@link IndexSearcher} for IndexId from cache, if it not is cached
 	 * new object will be created.
 	 * @param iid
@@ -220,6 +231,8 @@ public class SearcherCache {
 	public IndexSearcherMul getLocalSearcher(IndexId iid) throws IOException{
 		if(iid == null)
 			throw new IOException("Index unavailable");
+		if(UpdateThread.isBeingDeployed(iid))
+			throw new IOException(iid+" is being deployed");
 		IndexSearcherMul s = fromLocalCache(iid.toString());
 
 		if(s == null)
@@ -235,8 +248,11 @@ public class SearcherCache {
 			try {
 				if(iid.isLogical())
 					continue;
-				for(IndexSearcherMul is : getSearcherPool(iid))				
+				IndexSearcherMul[] pool = getSearcherPool(iid);
+				for(IndexSearcherMul is : pool)				
 					Warmup.warmupIndexSearcher(is,iid,false);
+				
+				Warmup.waitForAggregate(pool);
 			} catch (IOException e) {
 				log.warn("I/O error warming index for "+iid);				
 			}
@@ -431,19 +447,27 @@ public class SearcherCache {
 		synchronized(lock){
 			SearcherPool oldpool = localCache.get(iid.toString());			
 			// put in the new value
-			localCache.put(iid.toString(),newpool);
-			for(IndexSearcherMul s : newpool.searchers)
-				searchableHost.put(s,"");
-			if(oldpool == null)
-				return newpool.searchers; // no old searcher
-			for(IndexSearcherMul s : oldpool.searchers){
-				searchableHost.remove(s);
-				// deferred close
-				log.debug("Deferred closure of searcher "+s);
-				new DeferredClose(s,15000).start();
+			if(newpool == null)
+				localCache.remove(iid.toString());
+			else{
+				localCache.put(iid.toString(),newpool);
+				for(IndexSearcherMul s : newpool.searchers)
+					searchableHost.put(s,"");
+			}
+			// close old
+			if(oldpool != null){
+				for(IndexSearcherMul s : oldpool.searchers){
+					searchableHost.remove(s);
+					// deferred close
+					log.debug("Deferred closure of searcher "+s);
+					new DeferredClose(s,15000).start();
+				}
 			}
 		}
-		return newpool.searchers;
+		if(newpool != null)
+			return newpool.searchers;
+		else
+			return null;
 	}	
 	
 	/** Get a copy of array of dead hosts */

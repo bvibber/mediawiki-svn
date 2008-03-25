@@ -3,6 +3,8 @@ package org.wikimedia.lsearch.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import org.wikimedia.lsearch.spell.SuggestQuery;
@@ -24,6 +26,7 @@ public class SearchResults implements Serializable {
 	protected ArrayList<ResultSet> titles;
 	public enum Format { STANDARD, JSON, OPENSEARCH };
 	protected Format format = Format.STANDARD;
+	
 	/** phrases (two_words) from highlight to aid spellchecking */
 	protected HashSet<String> phrases = new HashSet<String>();
 	/** words found together in sentence, aid spellchecking */
@@ -33,7 +36,9 @@ public class SearchResults implements Serializable {
 	/** threshold for filtering suggestions */
 	protected int firstHitRank = 0;
 	/** Words found in titles */
-	protected HashSet<String> foundInTitles = new HashSet<String>();
+	protected HashSet<String> foundInTitles = new HashSet<String>();	
+	/** information about how different parts of the result set where retrieved */
+	protected String info = "";
 	
 	public SearchResults(){
 		success = false;
@@ -137,6 +142,40 @@ public class SearchResults implements Serializable {
 	}
 	public void setFoundInTitles(HashSet<String> foundInTitles) {
 		this.foundInTitles = foundInTitles;
+	}
+	public void addInfo(String action, String host){
+		if(info.length() > 0)
+			info += ", ";
+		info += action+"=["+host+"]";
+	}
+	
+	public String getInfo(){
+		return info;
+	}
+	
+	/** Resort interwiki hits so that they are grouped by interwiki prefix */
+	public void sortTitlesByInterwiki(){
+		HashSet<String> orderSet = new HashSet<String>();
+		ArrayList<String> ordered = new ArrayList<String>();
+		HashMap<String,ArrayList<ResultSet>> groups = new HashMap<String,ArrayList<ResultSet>>();
+		for(ResultSet rs : titles){
+			String iw = rs.getInterwiki();
+			if(!orderSet.contains(iw)){
+				orderSet.add(iw);
+				ordered.add(iw);
+			}
+			ArrayList<ResultSet> group = groups.get(iw);
+			if(group == null){
+				group = new ArrayList<ResultSet>();
+				groups.put(iw,group);
+			}
+			group.add(rs);			
+		}
+		ArrayList<ResultSet> sorted = new ArrayList<ResultSet>();
+		for(String iw : ordered){
+			sorted.addAll(groups.get(iw));
+		}
+		titles = sorted;
 	}
 
 	@Override

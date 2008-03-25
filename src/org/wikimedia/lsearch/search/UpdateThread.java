@@ -2,10 +2,13 @@ package org.wikimedia.lsearch.search;
 
 import java.io.File;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -36,6 +39,16 @@ import org.wikimedia.lsearch.util.FSUtils;
  *
  */
 public class UpdateThread extends Thread {
+	
+	enum RebuildType { STANDALONE, FULL };
+	
+	/** iids currently being deployed and out of rotation */
+	protected static Set<String> beingDeployed = Collections.synchronizedSet(new HashSet<String>());
+	
+	public static boolean isBeingDeployed(IndexId iid){
+		return beingDeployed.contains(iid.toString());
+	}
+	
 	/** After waiting for some time process updates 
 	 *  Warning: the delay should not be too long, else 
 	 *  the fetch will end in error... 
@@ -43,10 +56,12 @@ public class UpdateThread extends Thread {
 	class DeferredUpdate extends Thread {
 		ArrayList<LocalIndex> forUpdate;
 		long delay;
+		RebuildType type;
 		
-		DeferredUpdate(ArrayList<LocalIndex> forUpdate, long delay){
+		DeferredUpdate(ArrayList<LocalIndex> forUpdate, long delay, RebuildType type){
 			this.forUpdate = forUpdate;
 			this.delay = delay;
+			this.type = type;
 		}
 
 		@Override
@@ -60,7 +75,7 @@ public class UpdateThread extends Thread {
 			for(LocalIndex li : forUpdate){
 				try{
 					log.debug("Syncing "+li.iid);
-					rebuild(li,true); // rsync, update registry, cache
+					rebuild(li,type); // rsync, update registry, cache
 					pending.remove(li.iid.toString());
 				} catch(Exception e){
 					e.printStackTrace();
@@ -82,6 +97,9 @@ public class UpdateThread extends Thread {
 	/** Bad indexes at indexer, prevent infinite rsync attempts */
 	protected Hashtable<String,Long> badIndexes =  new Hashtable<String,Long>();
 	protected static UpdateThread instance = null;
+	protected String rsyncPath = null;
+	protected String rsyncParams = null;
+	protected long numChecks = 0;
 	
 	@Override
 	public void run() {
@@ -89,7 +107,8 @@ public class UpdateThread extends Thread {
 		while(true){
 			lastCheck = System.currentTimeMillis();
 			checkForUpdate();
-			now = System.currentTimeMillis(); 
+			now = System.currentTimeMillis();
+			numChecks++;
 			if((now-lastCheck) < queryInterval){
 				try {
 					// try to check for updates in regular intervals
@@ -110,7 +129,7 @@ public class UpdateThread extends Thread {
 			log.info("Syncing "+li.iid);
 			if(!iid.isMySearch())
 				iid.forceMySearch();
-			rebuild(li,false); // rsync, update registry, cache
+			rebuild(li,RebuildType.STANDALONE); // rsync, update registry, cache
 			pending.remove(li.iid.toString());
 		}
 	}
@@ -160,12 +179,15 @@ public class UpdateThread extends Thread {
 			}
 		}
 		if(scheduleUpdate && forUpdate.size()>0)
-			new DeferredUpdate(forUpdate,urgent? 0 : delayInterval).start();
+			new DeferredUpdate(
+					forUpdate,
+					(urgent || numChecks==0)? 0 : delayInterval, 
+					RebuildType.FULL).start();
 		return forUpdate;
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
-	protected void rebuild(LocalIndex li, boolean rebind){
+	protected void rebuild(LocalIndex li, RebuildType type){
 		// check if index has previously failed
 		if(badIndexes.containsKey(li.iid.toString()) && badIndexes.get(li.iid.toString()).equals(li.timestamp))
 			return;
@@ -212,7 +234,7 @@ public class UpdateThread extends Thread {
 				// rsync
 				log.info("Starting rsync of "+iid);
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
-				Command.exec("/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
+				Command.exec(rsyncPath+" "+rsyncParams+" -W --delete -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
 				log.info("Finished rsync of "+iid+" in "+(System.currentTimeMillis()-startTime)+" ms");
 
 			}
@@ -231,8 +253,8 @@ public class UpdateThread extends Thread {
 			
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
-			updateCache(pool,li);
-			if(rebind)
+			warmupAndDeploy(pool,li,type);
+			if(type != RebuildType.STANDALONE)
 				RMIServer.rebind(iid);
 			registry.refreshCurrent(li);
 			
@@ -246,19 +268,79 @@ public class UpdateThread extends Thread {
 		}
 	}
 	
-	/** Update search cache after successful rsync of update version of index */
-	protected void updateCache(SearcherCache.SearcherPool pool, LocalIndex li){
-		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		for(IndexSearcherMul is : pool.searchers){
-			try{
-				Warmup.warmupIndexSearcher(is,li.iid,true);
-			} catch(IOException e){
-				e.printStackTrace();
-				log.warn("Error warmup up "+li+" : "+e.getMessage());
+	/** Update searcher cache after warming up searchers */
+	protected void warmupAndDeploy(SearcherCache.SearcherPool pool, LocalIndex li, RebuildType type){
+		try{
+			// see if we can go ahead and deploy the searcher or should we wait
+			IndexId iid = li.iid;
+			HashSet<String> group = iid.getMySearchHosts();
+			int succ = 0, fail = 0;
+			boolean reroute = false;
+			if(type == RebuildType.FULL){			
+				// never deploy more than one searcher of iid in a search group
+				// wait for other peers to finish deploying before proceeding
+				boolean wait = false;			
+				do{
+					if(group.size() >= 2){
+						log.info("Attempting deployment of "+iid);
+						for(String host : group){
+							if(!RMIMessengerClient.isLocal(host)){
+								try{
+									if(messenger.attemptIndexDeployment(host,iid.toString()))
+										succ ++;
+									else
+										fail ++;
+								} catch(RemoteException e){
+									e.printStackTrace();
+									log.warn("Error response from "+host+" : "+e.getMessage());
+									fail++;
+								}
+							}
+						}
+						if(fail == 0 && succ >= 1){
+							wait = false; // proceed to deployment
+							reroute = true;
+						} else
+							wait = true;
+					}
+					if(wait){ // wait random time (5 -> 15 seconds)
+						try {
+							Thread.sleep((long)(10000 * (Math.random()+0.5)));
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				} while(wait);
+
+				// reoute queries to other servers
+				if( reroute ){
+					log.info("Deploying "+iid);
+					beingDeployed.add(iid.toString());
+					cache.invalidateLocalSearcher(iid,null);
+				}
+
 			}
+
+			// do some typical queries to preload some lucene caches, pages into memory, etc..
+			for(IndexSearcherMul is : pool.searchers){
+				try{
+					Warmup.warmupIndexSearcher(is,li.iid,true);
+				} catch(IOException e){
+					e.printStackTrace();
+					log.warn("Error warmup up "+li+" : "+e.getMessage());
+				}
+			}
+			Warmup.waitForAggregate(pool.searchers);
+			// add to cache
+			cache.invalidateLocalSearcher(li.iid,pool);
+			if( reroute ){
+				log.info("Deployed "+iid);
+				beingDeployed.remove(iid.toString());
+			}
+		} finally{
+			// be sure stuff is not stuck as being deployed
+			beingDeployed.remove(li.iid.toString());
 		}
-		// add to cache
-		cache.invalidateLocalSearcher(li.iid,pool);		
 	}
 	
 	protected UpdateThread(){
@@ -270,6 +352,8 @@ public class UpdateThread extends Thread {
 		queryInterval = (long)(config.getDouble("Search","updateinterval",15) * 60 * 1000);
 		delayInterval = (long)(config.getDouble("Search","updatedelay",0)*1000);
 		cache = SearcherCache.getInstance();
+		rsyncPath = config.getString("Rsync","path","/usr/bin/rsync");
+		rsyncParams = config.getString("Rsync","params","");
 	}
 	
 	public static UpdateThread getStandalone(){

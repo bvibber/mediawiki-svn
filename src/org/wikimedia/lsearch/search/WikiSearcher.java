@@ -59,7 +59,7 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		ArrayList<Searchable> ss = new ArrayList<Searchable>();
 		for(IndexId iid : iids){
 			Searchable s = null;
-			if(iid.isMySearch()){
+			if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid)){
 				// always try to use a local copy if available
 				try {
 					s = cache.getLocalSearcher(iid);

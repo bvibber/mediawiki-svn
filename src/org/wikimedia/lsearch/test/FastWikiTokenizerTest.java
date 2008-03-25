@@ -72,7 +72,7 @@ public class FastWikiTokenizerTest {
 			Configuration.open();
 			String text = "bre! (ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
 			showTokens(text);
-			text = "This, is a '''list of [[African]] countries and dependencies by [[population]]'''.\n\n{| border=\"1\" cellpadding=\"2\" cellspacing=\"0\" style=\"border-collapse:collapse; text-align:right;\"\n|- style=\"text-align:center; background:#efefef\"\n!Pos !! Country !! Population\n|-\n| align=\"left\" |-\n| align=\"left\" |'''Africa''' || 934,283,426\n|-\n";
+			text = "[[meta:jao]] L.A. W. B.M.W and This. is a '''list of [[African]] countries and dependencies by [[population]]'''.\n\n{| border=\"1\" cellpadding=\"2\" cellspacing=\"0\" style=\"border-collapse:collapse; text-align:right;\"\n|- style=\"text-align:center; background:#efefef\"\n!Pos !! Country !! Population\n|-\n| align=\"left\" |-\n| align=\"left\" |'''Africa''' || 934,283,426\n|-\n";
 			showTokens(text);
 			text = "u.s. {{template|text}} {{template|text2|text3}} [http://ls2.wiki link]";
 			showTokens(text);

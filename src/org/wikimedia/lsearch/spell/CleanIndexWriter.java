@@ -136,7 +136,7 @@ public class CleanIndexWriter {
 	
 	/** Close and optimize index 
 	 * @throws IOException */
-	public void close() throws IOException{
+	public void closeAndOptimize() throws IOException{
 		try{
 			writer.optimize();
 			writer.close();
@@ -144,6 +144,10 @@ public class CleanIndexWriter {
 			log.error("I/O error optimizing/closing index at "+iid.getImportPath()+" : "+e.getMessage());
 			throw e;
 		}
+	}
+	
+	public void close() throws IOException {
+		writer.close();
 	}
 	
 	/** 

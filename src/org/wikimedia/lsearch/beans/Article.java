@@ -62,6 +62,8 @@ public class Article implements Serializable  {
 	private int redirectTargetNamespace = 0;
 	/** Target if this is redirect, null otherwise */
 	private String redirectTo = null;
+	/** Rank of the redirect target */
+	private int redirectRank = 0;
 	
 	public Article(){
 		namespace="";
@@ -74,37 +76,19 @@ public class Article implements Serializable  {
 		anchorText = new ArrayList<String>();
 	}
 	
-	public Article(long pageId, Title title, String text, String redirectTo, int references, int redirectTargetNamespace) {
-		namespace = Integer.toString(title.getNamespace());
-		this.title = title.getTitle();
-		contents = text;
-		this.pageId = pageId;
-		this.redirectTo = redirectTo;
-		this.references = references;
-		this.redirects = new ArrayList<Redirect>();
-		this.related = new ArrayList<RelatedTitle>();
-		this.anchorText = new ArrayList<String>();
-		this.redirectTargetNamespace = redirectTargetNamespace;
+	public Article(long pageId, Title title, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank) {
+		this(pageId,title.getNamespace(),title.getTitle(),text,redirectTo,references,redirectTargetNamespace,redirectRank);		
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace) {
-		this.namespace = Integer.toString(namespace);
-		this.title = titleText;
-		contents = text;
-		this.redirectTo = redirectTo;
-		this.pageId = pageId;
-		this.references = references;
-		this.redirects = new ArrayList<Redirect>();
-		this.related = new ArrayList<RelatedTitle>();
-		this.anchorText = new ArrayList<String>();
-		this.redirectTargetNamespace = redirectTargetNamespace;
+	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank) {
+		this(pageId,namespace,titleText,text,redirectTo,references,redirectTargetNamespace,redirectRank,new ArrayList<Redirect>(),new ArrayList<RelatedTitle>(),new ArrayList<String>(),null);		
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, 
+	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank,
 			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText, Date date) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
-		contents = text;
+		this.contents = text;
 		this.redirectTo = redirectTo;
 		this.pageId = pageId;
 		this.references = references;
@@ -113,6 +97,7 @@ public class Article implements Serializable  {
 		this.anchorText = anchorText;
 		this.redirectTargetNamespace = redirectTargetNamespace;
 		this.date = date;
+		this.redirectRank = redirectRank;
 	}
 	
 	public boolean isRedirect() {
@@ -160,8 +145,12 @@ public class Article implements Serializable  {
 		return Long.toString(pageId);
 	}
 	
+	public String toStringFull(){
+		return "(" + pageId + ", " + namespace + ":" + title + ", rank="+rank+", ref="+references+", redirectRank="+redirectRank+", redirects="+redirectsSorted+", date="+date+")";
+	}
+	
 	public String toString() {
-		return "(pageId=" + pageId + ", namespace=" + namespace + ", title=\"" + title + "\")";
+		return "(" + pageId + ", " + namespace + ":" + title + ")";
 	}
 	
 	/** Page Rank: how many articles link to this article */
@@ -276,9 +265,22 @@ public class Article implements Serializable  {
 		this.redirectTo = redirectTo;
 	}	
 	
+	public void setNsTitleKey(String key){
+		int col = key.indexOf(':');
+		if(col == -1)
+			throw new RuntimeException("Wrong key format");
+		this.namespace = key.substring(0,col);
+		this.title = key.substring(col+1);
+	}
+
+	public int getRedirectRank() {
+		return redirectRank;
+	}
+
+	public void setRedirectRank(int redirectRank) {
+		this.redirectRank = redirectRank;
+	}
 	
-	
-	
-	
+
 	
 }

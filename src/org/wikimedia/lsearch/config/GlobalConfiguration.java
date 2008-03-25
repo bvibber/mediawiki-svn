@@ -91,6 +91,10 @@ public class GlobalConfiguration {
 	
 	protected static GlobalConfiguration instance = null;
 	
+	/** All the lang codes we encountered, used for "smart interwiki" */
+	protected HashSet<String> smartInterwikiCodes = new HashSet<String>();
+	protected boolean useSmartInterwiki = false; 
+	
 	/** Wether to report warnings and info */
 	protected static boolean verbose = true;
 
@@ -391,6 +395,7 @@ public class GlobalConfiguration {
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
 					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
 					this.exactCaseSuffix = getArrayProperty("ExactCase.suffix");
+					this.useSmartInterwiki = globalProperties.getProperty("Database.smartInterwiki","false").equalsIgnoreCase("true");
 					// try reading intialisesettings
 					String initset = globalProperties.getProperty("WMF.InitialiseSettings");
 					if(initset != null)
@@ -477,6 +482,18 @@ public class GlobalConfiguration {
 		}
 		
 		makeIndexIdPool();
+		if(useSmartInterwiki){
+			for(IndexId iid : indexIdPool.values()){
+				String dbname = iid.getDBname();
+				// check table of suffixes, and extract language codes accordingly
+				if(databaseSuffixes != null){
+					for(String suffix : databaseSuffixes) {
+						if(dbname.endsWith(suffix))
+							smartInterwikiCodes.add(dbname.substring(0, dbname.length() - suffix.length()).toLowerCase());
+					}	
+				}
+			}
+		}
 		in.close();
 	}
 	
@@ -700,11 +717,11 @@ public class GlobalConfiguration {
 	                    rsyncIndexPath,
 	                    database.get(dbname).get(type),
 	                    typeidParams,
-	                    searchHosts,
-	                    mySearchHosts,
+	                    new HashSet<String>(), // precursors cannot be searched
+	                    new HashSet<String>(),
 	                    indexPath,
 	                    myIndex,
-	                    mySearch,
+	                    false,
 	                    oairepo,
 	                    isSubdivided,
 	                    dbnameTitlesPart.get(dbname),
@@ -962,7 +979,7 @@ public class GlobalConfiguration {
 			
 			dbroles.put(type,params);
 			
-		} else if(type.equals("warmup")){
+		} else if(type.startsWith("warmup")){
 			// number of warmup queries
 			if(tokens.length>1)
 				params.put("count",tokens[1]);
@@ -1333,7 +1350,10 @@ public class GlobalConfiguration {
 		}
 		return new NamespaceFilter(0);
 	}
-	
+
+	public HashSet<String> getSmartInterwikiCodes() {
+		return smartInterwikiCodes;
+	}
 	
 
 }

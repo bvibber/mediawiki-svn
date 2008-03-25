@@ -140,6 +140,7 @@ public class Highlight {
 			ArrayList<ExtToken> tokens = (ArrayList<ExtToken>) ret[0];
 			Alttitles alttitles = (Alttitles) ret[1];
 			String date = (String) ret[2];
+			Long size = (Long) ret[3];
 			preprocessTemplates(tokens);
 			
 			if(hi == 0)  
@@ -244,6 +245,9 @@ public class Highlight {
 			
 			// word count
 			hr.setWordCount(textTokenLength(tokens));
+			
+			// byte count
+			hr.setSize(size);
 			
 			res.put(key,hr);
 			
@@ -888,7 +892,7 @@ public class Highlight {
 		}		
 	}
 	
-	/** @return ArrayList<ExtToken> tokens, Altitles alttitles, String date */
+	/** @return ArrayList<ExtToken> tokens, Altitles alttitles, String date, long size */
 	protected static Object[] getTokens(IndexReader reader, String key, Set<String> termSet) throws IOException{
 		TermDocs td = reader.termDocs(new Term("key",key));
 		if(td.next()){
@@ -901,7 +905,9 @@ public class Highlight {
 			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue("text"),terms,posMap);
 			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue("alttitle"),terms,posMap);
 			String date = doc.get("date");
-			return new Object[] {tokens, alttitles, date};
+			String sizeStr = doc.get("size");
+			Long size = sizeStr != null? Long.parseLong(sizeStr) : 0;
+			return new Object[] {tokens, alttitles, date, size};
 		} else
 			return null;
 	}

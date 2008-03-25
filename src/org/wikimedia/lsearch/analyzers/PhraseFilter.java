@@ -92,7 +92,7 @@ public class PhraseFilter extends TokenFilter {
 		if(t == null)
 			return null; // EOS
 		// don't put transliterations and aliases into phrases
-		if(t.type().equals("transliteration") || t.type().equals("alias"))
+		if(t.getPositionIncrement()==0)
 			return t;
 
 		// keep pairs of successive words

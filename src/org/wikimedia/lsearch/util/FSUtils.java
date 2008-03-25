@@ -38,37 +38,44 @@ public class FSUtils {
 			return OSType.OS_TYPE_UNIX;
 	}
 	
+	public static void createHardLink(String from, String to) throws IOException {
+		createHardLink(new File(from),new File(to));
+	}
+	
 	/**
 	 * Create a hardlink in the filesystem. 
 	 * 
-	 * @param target
-	 * @param linkName
+	 * @param from
+	 * @param to
 	 * @throws IOException
 	 */
-	public static void createHardLink(File target, File linkName) throws IOException {
+	public static synchronized void createHardLink(File from, File to) throws IOException {
 		int len = hardLinkCommand.length;
-		hardLinkCommand[len-2] = target.getCanonicalPath();
-		hardLinkCommand[len-1] = linkName.getCanonicalPath();
+		hardLinkCommand[len-2] = from.getCanonicalPath();
+		hardLinkCommand[len-1] = to.getCanonicalPath();
 		Command.exec(hardLinkCommand);
 	}
 
 	/**
 	 * Create hard links recursively if the target is a directory
 	 * 
-	 * @param target
-	 * @param linkname
+	 * @param from
+	 * @param to
 	 * @throws IOException
 	 */
-	public static void createHardLinkRecursive(String target, String linkname) throws IOException {
-		File file = new File(target);
+	public static void createHardLinkRecursive(String from, String to) throws IOException {
+		//System.out.println("Hard-linking "+from+" -> "+to);		
+		File file = new File(from);
 		if(!file.exists())
-			throw new IOException("Trying to hardlink nonexisting file "+target);
+			throw new IOException("Trying to hardlink nonexisting file "+from);
+		// snsure we can make the target
+		new File(to).getParentFile().mkdirs();
 		if(file.isDirectory()){
 			File[] files = file.listFiles();
 			for(File f: files)
-				createHardLinkRecursive(format(new String[]{target,f.getName()}),format(new String[] {linkname,f.getName()}));
+				createHardLinkRecursive(format(new String[]{from,f.getName()}),format(new String[] {to,f.getName()}));
 		} else
-			createHardLink(new File(target),new File(linkname));
+			createHardLink(new File(from),new File(to));
 	}
 
 	
@@ -111,6 +118,9 @@ public class FSUtils {
 		return new File(format(parts));
 	}
 	
+	public static void deleteRecursive(String path){
+		deleteRecursive(new File(path));
+	}
 	/**
 	 * Delete a file recursively
 	 * 

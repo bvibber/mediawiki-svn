@@ -22,6 +22,7 @@ public class Benchmark extends Thread {
 	protected static boolean sample;
 	protected int limit;
 	protected boolean searchOnly;
+	protected boolean fuzzy;
 	
 	protected int thread; // current thread
 		
@@ -39,12 +40,12 @@ public class Benchmark extends Thread {
 	protected static Object sharedLock = new Object();
 	
 	/** Use this to construct the main thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, boolean searchOnly) {
-		this(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,0,0,searchOnly);
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, boolean searchOnly, boolean fuzzy) {
+		this(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,0,0,searchOnly,fuzzy);
 	}
 	
 	/** Use this to construct a benchmark thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, int runs, int thread, boolean searchOnly) {
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, String namespaceFilter, int limit, int runs, int thread, boolean searchOnly, boolean fuzzy) {
 		this.host = host;
 		this.port = port;
 		this.database = database;
@@ -57,6 +58,7 @@ public class Benchmark extends Thread {
 		this.namespaceFilter = namespaceFilter;
 		this.limit = limit;
 		this.searchOnly = searchOnly;
+		this.fuzzy = fuzzy;
 	}
 
 	/** Start benchmarking on main thread */
@@ -71,7 +73,7 @@ public class Benchmark extends Thread {
 		collector = new Collector(100,threads*runs,threads);
 		
 		for(int i=0;i<threads;i++)
-			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,runs,i,searchOnly).start();
+			new Benchmark(host,port,database,verb,terms,words,namespace,namespaceFilter,limit,runs,i,searchOnly,fuzzy).start();
 		
 		// wait until all thread finish
 		while(activeThreads != 0){
@@ -121,6 +123,9 @@ public class Benchmark extends Thread {
 					query += " OR ";
 				query += terms.next();
 			}
+		}
+		if(fuzzy){
+			query = query.replaceAll("([a-zA-Z]+)","$1~");
 		}
 		String urlString;
 		if(namespace.equals("")){
@@ -198,6 +203,7 @@ public class Benchmark extends Thread {
 		Terms terms;
 		int defaultLimit = 20;
 		boolean searchOnly = false;
+		boolean fuzzy = false;
 		
 		for(int i = 0; i < args.length; i++) {
 			if (args[i].equals("-h")) {
@@ -227,24 +233,27 @@ public class Benchmark extends Thread {
 				lang = args[++i];
 			} else if (args[i].equals("-s") || args[i].equals("-sample")) {
 				sample = true;
+			} else if (args[i].equals("-sug")) {
+				fuzzy = true;
 			} else if (args[i].equals("-so")) {
 				searchOnly = true;
 			} else if (args[i].equals("--help")) {
 				System.out.println("Usage: java Benchmark <options>\n"+
-				                   "  -h  host (default: "+host+")\n"+
-				                   "  -p  port (default: "+port+")\n"+
-				                   "  -d  database (default: "+database+")\n"+
-				                   "  -t  threads (defaut: "+threads+")\n"+
-				                   "  -c  count (default: "+runs+")\n"+
-				                   "  -w  number of words in query (default: "+words+")\n"+
-				                   "  -v  verb (default: "+verb+")\n"+
-				                   "  -n  namespace (default: "+namespace+")\n"+
-				                   "  -f  namespace filter (default: "+namespaceFilter+")\n"+
-				                   "  -l  language (default: "+lang+")\n"+
-				                   "  -s  show sample url (default: "+sample+")\n"+
-				                   "  -lm  limit number of results (default: "+defaultLimit+")\n"+
-				                   "  -wf <file> use file with search terms (default: none)\n"+
-				                   "  -so benchmark search only (default:"+searchOnly+")\n");
+				                   "  -h   host (default: "+host+")\n"+
+				                   "  -p   port (default: "+port+")\n"+
+				                   "  -d   database (default: "+database+")\n"+
+				                   "  -t   threads (defaut: "+threads+")\n"+
+				                   "  -c   count (default: "+runs+")\n"+
+				                   "  -w   number of words in query (default: "+words+")\n"+
+				                   "  -v   verb (default: "+verb+")\n"+
+				                   "  -n   namespace (default: "+namespace+")\n"+
+				                   "  -f   namespace filter (default: "+namespaceFilter+")\n"+
+				                   "  -l   language (default: "+lang+")\n"+
+				                   "  -s   show sample url (default: "+sample+")\n"+
+				                   "  -lm   limit number of results (default: "+defaultLimit+")\n"+
+				                   "  -wf  <file> use file with search terms (default: none)\n"+
+				                   "  -so  benchmark search only (default:"+searchOnly+")\n"+
+				                   "  -fuz all words fuzzy (default:"+fuzzy+")\n");
 				return;
 			} else{
 				System.out.println("Unrecognized switch: "+args[i]);
@@ -261,7 +270,7 @@ public class Benchmark extends Thread {
 			terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
 		
 		System.out.println("Running benchmark on "+database+" "+host+":"+port+" with "+threads+" theads each "+runs+" runs, "+words+" words, filter: "+((namespace == "")? namespaceFilter : namespace)+", lang "+lang);
-		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter, defaultLimit, searchOnly);
+		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter, defaultLimit, searchOnly, fuzzy);
 		bench.startBenchmark(threads,runs);
 		bench.printReport();
 	}

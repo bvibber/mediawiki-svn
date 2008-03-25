@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
@@ -20,6 +21,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.highlight.Snippet;
 import org.wikimedia.lsearch.search.SearchEngine;
+import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
@@ -68,11 +70,13 @@ public class SearchDaemon extends HttpHandler {
 		log.info(MessageFormat.format("query:{0} what:{1} dbname:{2} term:{3}",
 			new Object[] {rawUri, what, dbname, searchterm}));	
 		try{
-			SearchEngine engine = new SearchEngine();
+			long start = System.currentTimeMillis();
+			SearchEngine search = new SearchEngine();
 			HashMap query = new QueryStringMap(uri);
 			double version = getVersion(query);
-			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query,version);
+			SearchResults res = search.search(dbname,what,searchterm,query,version);
 			contentType = "text/plain";
+			long delta = System.currentTimeMillis() - start;
 			// format:
 			// <num of hits>
 			// #suggest <query> or #no suggestion
@@ -89,12 +93,15 @@ public class SearchDaemon extends HttpHandler {
 					} else{
 						sendOutputLine(Integer.toString(res.getNumHits()));
 						if(version>=2.1){
+							// output info if any
+							sendOutputLine("#info "+res.getInfo()+" in "+delta+" ms");
 							SuggestQuery sq = res.getSuggest();
 							if(sq != null && sq.hasSuggestion()){
 								sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
 							} else 
 								sendOutputLine("#no suggestion");
 							if(res.getTitles() != null){
+								res.sortTitlesByInterwiki();
 								sendOutputLine("#interwiki "+res.getTitles().size());
 								for(ResultSet rs : res.getTitles()){
 									sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
@@ -108,7 +115,7 @@ public class SearchDaemon extends HttpHandler {
 								}
 							} else
 								sendOutputLine("#interwiki 0");
-							sendOutputLine("#results");
+							sendOutputLine("#results "+res.getResults().size());
 						}
 						for(ResultSet rs : res.getResults()){
 							sendResultLine(rs.score, rs.namespace, rs.title);
@@ -129,6 +136,7 @@ public class SearchDaemon extends HttpHandler {
 									if(hr.getDate() != null)
 										sendHighlight("date",hr.getDate());
 									sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
+									sendHighlight("size",Long.toString(hr.getSize()));
 								}
 							}
 						}
@@ -176,8 +184,8 @@ public class SearchDaemon extends HttpHandler {
 			sendError(500,"Server error","Error opening index.");
 		}
 	}
-	
-	 
+
+
 	private double getVersion(HashMap query) {
 		String v = (String)query.get("version");
 		if(v == null)

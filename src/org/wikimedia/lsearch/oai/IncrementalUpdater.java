@@ -190,7 +190,7 @@ public class IncrementalUpdater {
 					do{
 						for(IndexUpdateRecord rec : records){
 							Article ar = rec.getArticle();
-							log.info("Sending "+ar+" with rank "+ar.getReferences()+" and "+ar.getRedirects().size()+" redirects: "+ar.getRedirects());
+							log.info("Sending "+ar);
 						}
 						// send to indexer
 						RMIMessengerClient messenger = new RMIMessengerClient(true);

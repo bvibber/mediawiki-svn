@@ -58,7 +58,18 @@ public class IndexDaemon {
 	}
 
 	public void makeSnapshots(){
-		indexer.makeSnapshotsNow();
+		makeSnapshots("");
+	}
+	
+	public void makeSnapshots(String pattern){
+		indexer.makeSnapshotsNow(pattern,false);
+	}
+	
+	public void snapshotPrecursors(){
+		snapshotPrecursors("");
+	}
+	public void snapshotPrecursors(String pattern){
+		indexer.makeSnapshotsNow(pattern,true);
 	}
 
 }

@@ -201,7 +201,7 @@ class MyHandler(BaseHTTPRequestHandler):
                 params = cgi.parse_qs(s[4])
 
                 # defaults
-                limit = 10
+                limit = 20
                 offset = 0
                 namespaces = []
                 case = "ignore"
@@ -239,6 +239,8 @@ class MyHandler(BaseHTTPRequestHandler):
                     results = urllib2.urlopen(search_url+"?"+search_params)
                     numhits = int(results.readline())
                     lasthit = min(offset+limit,numhits) 
+                    # info
+                    infoLine = results.readline()
                     # suggestions
                     suggest = results.readline()
                     suggestHl = ""
@@ -361,7 +363,7 @@ class MyHandler(BaseHTTPRequestHandler):
                                 date = extra.split(' ')[1]
                             elif extra.startswith('#h.wordcount'):
                                 wordcount = extra.split(' ')[1]
-                            else:
+                            elif not extra.startswith('#h'):
                                 break
                             i+=1
                                                     

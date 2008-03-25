@@ -65,7 +65,7 @@ public class RMIMessengerClient {
 		this.alwaysRemote = alwaysRemote;		
 	}
 	
-	protected boolean isLocal(String host){
+	public static boolean isLocal(String host){
 		return global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("");
 	}
 	
@@ -329,5 +329,29 @@ public class RMIMessengerClient {
 		}
 		
 	}
+
+	public boolean attemptIndexDeployment(String host, String dbrole) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			return r.attemptIndexDeployment(dbrole);
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+			return true;
+		}
+		
+	}
 	
+	public SearchResults searchPrefix(String host, String dbrole, String searchterm, int limit) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			return r.searchPrefix(dbrole,searchterm,limit);
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("Error search prefix index: "+e.getMessage());
+			return res;
+		}
+	}
 }

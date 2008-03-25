@@ -109,7 +109,7 @@ public class AnalysisTest {
 		displayTokens(old,text);
 		text = "Pokémons links abacus something aries douglas adams boxes bands working s and Frame semantics (linguistics)";
 		displayTokens(analyzer,text);
-		text = "Thomas c# c++ good-thomas Good-Thomas rats RATS Frame semantics (linguistics) 16th century sixteenth .fr web.fr other";
+		text = "a8n sli compatible compatibly Thomas c# c++ good-thomas Good-Thomas rats RATS Frame semantics (linguistics) 16th century sixteenth .fr web.fr other";
 		displayTokens(analyzer,text);				
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("zhwiki")),"末朝以來藩鎮割據and some plain english 和宦官亂政的現象 as well");
 		displayTokens(analyzer,"Thomas Goode school");

@@ -49,10 +49,10 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("+contents:egg +category:breakfast",q.toString());
 			
 			q = parser.parseRaw("+egg incategory:\"two_words\"");
-			assertEquals("+contents:egg +category:\"two words\"",q.toString());
+			assertEquals("+contents:egg +category:two words",q.toString());
 			
 			q = parser.parseRaw("+egg incategory:\"two words\"");
-			assertEquals("+contents:egg +category:\"two words\"",q.toString());
+			assertEquals("+contents:egg +category:two words",q.toString());
 
 			q = parser.parseRaw("incategory:(help AND pleh)");
 			assertEquals("+category:help +category:pleh",q.toString());
@@ -74,6 +74,9 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parseRaw("c# good-thomas");
 			assertEquals("+(contents:c# contents:c^0.5) +(+(contents:good- contents:good^0.5) +(contents:thomas contents:thoma^0.5))",q.toString());
+			
+			q = parser.parseRaw("a8n sli");
+			assertEquals("+contents:a8n +contents:sli",q.toString());
 			
 			/* =================== FULL QUERIES ================= */
 			
@@ -110,6 +113,7 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("[(douglas,0,7), (adam*,8,13,type=wildcard)]",parser.tokenizeBareText("douglas adam*").toString());
 			
 			assertEquals("[(douglas,0,7)]",parser.tokenizeBareText("douglas -adams").toString());
+			assertEquals("[(douglas,4,11)]",parser.tokenizeBareText("[2]:douglas -adams").toString());
 			
 			assertEquals("[(box,0,3), (ven,4,7,type=fuzzy), (i'll,9,13)]",parser.tokenizeBareText("box ven~ i'll").toString());
 			

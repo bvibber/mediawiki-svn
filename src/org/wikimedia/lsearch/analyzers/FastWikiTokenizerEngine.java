@@ -10,6 +10,7 @@ import java.util.Hashtable;
 import org.apache.commons.lang.WordUtils;
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.CharacterEntityReference;
 import org.wikimedia.lsearch.util.Localization;
@@ -204,7 +205,7 @@ public class FastWikiTokenizerEngine {
 					addDecomposed = true;
 					continue; // skip 
 				}
-				if(!Character.isUpperCase(buffer[i]))
+				if(!Character.isUpperCase(buffer[i]) && buffer[i]!='.' && buffer[i]!='\'')
 					allUpperCase = false;
 				if(i == 0 && !Character.isUpperCase(buffer[i]))
 					titleCase = false;
@@ -300,36 +301,36 @@ public class FastWikiTokenizerEngine {
 			if(templateLevel == 0 && tableLevel == 0)
 				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
 
-			{ // add exact token
-				Token exact;
-				if(options.exactCase)
-					exact = makeToken(new String(buffer, 0, length), start, start + length,true);
-				else
-					exact = makeToken(new String(buffer, 0, length).toLowerCase(), start, start + length,true);
-				exact.setPositionIncrement(gap);
-				if(gap != 1)
-					gap = 1; // reset token gap
-				if(!options.noCaseDetection){
-					if(allUpperCase)
-						exact.setType("upper");
-					else if(titleCase)
-						exact.setType("titlecase");
-				}
-				addToTokens(exact);
-			} 
+			// add exact token
+			Token exact;
+			if(options.exactCase)
+				exact = makeToken(new String(buffer, 0, length), start, start + length,true);
+			else
+				exact = makeToken(new String(buffer, 0, length).toLowerCase(), start, start + length,true);
+			exact.setPositionIncrement(gap);
+			if(gap != 1)
+				gap = 1; // reset token gap
+			if(!options.noCaseDetection){
+				if(allUpperCase)
+					exact.setType("upper");
+				else if(titleCase)
+					exact.setType("titlecase");
+			}
+			addToTokens(exact);
+			 
 			if(!options.noAliases){
 				// add decomposed token to stream
 				if(decompLength!=0 && addDecomposed){
 					Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, false);
 					t.setPositionIncrement(0);
-					t.setType("decomposition");
+					t.setType(exact.type());
 					addToTokens(t);
 				}
 				// add alias (if any) token to stream
 				if(aliasLength>0){
 					Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
 					t.setPositionIncrement(0);
-					t.setType("transliteration");
+					t.setType(exact.type());
 					addToTokens(t);
 				}
 			}
@@ -401,7 +402,23 @@ public class FastWikiTokenizerEngine {
 	private final ExtToken makeGlueToken(){
 		tempLength = 0;
 		char last = '\0', top ='\0';
-		ExtToken.Type type = ExtToken.Type.GLUE;		
+		ExtToken.Type type = ExtToken.Type.GLUE;
+		boolean initials = false;
+		// work out initials		
+		if(tokens.size() > 0){
+			Token lastToken = null; // last non-alias token
+			for(int i=tokens.size()-1;i>=0;i--){
+				if(tokens.get(i).getPositionIncrement() != 0){
+					lastToken = tokens.get(i);
+					break;
+				}
+			}
+			// detect cases like L.A. and W. - these shouldn't be sentence breaks
+			if(lastToken != null && lastToken.type().equals("upper") 
+					&& (lastToken.termText().length()==1 || lastToken.termText().contains(".")))
+					initials = true;			
+		}
+		
 		for(int i=0;i<glueLength;i++,last=lc){
 			lc = glueBuffer[i];
 			
@@ -414,7 +431,7 @@ public class FastWikiTokenizerEngine {
 					continue;
 
 				// work out breaks
-				if((lc == '.' || lc=='!' || lc=='?') && !inLink)
+				if((lc == '.' || lc=='!' || lc=='?') && !inLink && !initials)
 					type = ExtToken.Type.SENTENCE_BREAK;
 				if(last == '\n' && (lc == ':' || lc == '*' || lc=='#' || lc=='\n' || lc==';'))
 					type = ExtToken.Type.SENTENCE_BREAK;
@@ -531,7 +548,7 @@ public class FastWikiTokenizerEngine {
 	private final void addLetter(){
 		try{			
 			// add new character to buffer
-			if(Character.isLetter(c) 
+			if(Character.isLetter(c) || (!numberToken && length>0 && Character.isLetterOrDigit(c))
 					|| (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
 					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]))
 					|| decomposer.isCombiningChar(c)){				
@@ -1387,8 +1404,10 @@ public class FastWikiTokenizerEngine {
 	}
 	
 	private final boolean isInterwiki(String prefix){
-		if(interwiki == null)
+		if(interwiki == null){
 			interwiki = Localization.getInterwiki();
+			interwiki.addAll(GlobalConfiguration.getInstance().getSmartInterwikiCodes());			
+		}
 		return interwiki.contains(prefix.toLowerCase());
 	}
 

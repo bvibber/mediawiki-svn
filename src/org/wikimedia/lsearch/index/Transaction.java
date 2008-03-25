@@ -62,7 +62,7 @@ public class Transaction {
 		backup.getParentFile().mkdirs();
 		try{
 			// make a copy
-			FSUtils.createHardLinkRecursive(iid.getTransactionPath(type),backup.getAbsolutePath());
+			FSUtils.createHardLinkRecursive(iid.getPath(type),backup.getAbsolutePath());
 			Properties prop = new Properties();
 			// write out the status file
 			prop.setProperty("status","started at "+System.currentTimeMillis());			
@@ -121,7 +121,7 @@ public class Transaction {
 	protected void recover(){
 		File backup = new File(getBackupDir());
 		File index = new File(iid.getTransactionPath(type));
-		String path = iid.getTransactionPath(type);
+		String path = iid.getPath(type);
 		try{
 			if(index.exists()) // clear locks before recovering
 				WikiIndexModifier.unlockIndex(path);
@@ -149,9 +149,11 @@ public class Transaction {
 	 * Rollback changes to index. Returns to previous consistent state.
 	 */
 	public void rollback(){
-		recover();
-		inTransaction = false;
-		log.info("Succesbully rollbacked changes on "+iid);
+		if(inTransaction){
+			recover();
+			inTransaction = false;
+			log.info("Succesfully rollbacked changes on "+iid);
+		}
 	}
 
 	public boolean isInTransaction() {

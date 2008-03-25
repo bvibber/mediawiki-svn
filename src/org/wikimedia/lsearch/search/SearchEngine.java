@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -67,7 +68,7 @@ public class SearchEngine {
 	protected static Configuration config = null;
 	protected static SearcherCache cache = null;
 	protected static Hashtable<String,Hashtable<String,Integer>> dbNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
-	protected long timelimit;
+	// protected long timelimit;
 	
 	public SearchEngine(){
 		if(config == null)
@@ -77,12 +78,12 @@ public class SearchEngine {
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
-		timelimit = config.getInt("Search","timelimit",5000);
+		// timelimit = config.getInt("Search","timelimit",5000);
 	}
 	
 	/** Main search method, call this from the search frontend */
-	public SearchResults search(IndexId iid, String what, String searchterm, HashMap query, double version) {
-		
+	public SearchResults search(String dbname, String what, String searchterm, HashMap query, double version) {
+		IndexId iid = IndexId.get(dbname);
 		if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
 			int iwlimit = 10; int iwoffset = 0;
@@ -133,8 +134,6 @@ public class SearchEngine {
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			return search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true, true);
-		} else if (what.equals("titlematch")) {
-				// TODO: return searchTitles(searchterm);
 		} else if (what.equals("prefix")){
 			int limit = MAXPREFIX;
 			if (query.containsKey("limit"))
@@ -162,7 +161,6 @@ public class SearchEngine {
 			log.warn("Unknown request type [" + what + "].");
 			return res;
 		}
-		return null;
 	}
 	
 	/** Convert namespace names into numbers, e.g. User:Rainman into 2:Rainman  */
@@ -249,15 +247,35 @@ public class SearchEngine {
 	}
 	
 	protected SearchResults searchPrefix(IndexId iid, String searchterm, int limit) {
-		readLocalization(iid);
 		IndexId pre = iid.getPrefix();
-		SearcherCache cache = SearcherCache.getInstance();
+		try{
+			RMIMessengerClient messenger = new RMIMessengerClient();
+			// find host 
+			String host = cache.getRandomHost(pre);
+			return messenger.searchPrefix(host,pre.toString(),searchterm,limit);
+			
+			/* SearcherCache cache = SearcherCache.getInstance();		
+			IndexSearcherMul searcher = cache.getLocalSearcher(pre);
+			return searchPrefix(iid,searchterm,limit,searcher); */
+		} catch(IOException e){
+			e.printStackTrace();
+			log.error("Error opening searcher in prefixSearch on "+pre+" : "+e.getMessage());
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("I/O error on index "+pre);
+			return res;
+		}
+	}
+
+	
+	public SearchResults searchPrefixLocal(IndexId iid, String searchterm, int limit, IndexSearcherMul searcher) {
+		readLocalization(iid);
+		IndexId pre = iid.getPrefix();		
 		SearchResults res = new SearchResults();
 		try {			
 			long start = System.currentTimeMillis();
 			String key = getKey(searchterm.toLowerCase(),iid);
 			String namespace = getNamespace(searchterm,iid);
-			IndexSearcherMul searcher = cache.getLocalSearcher(pre);
+			
 			IndexReader reader = searcher.getIndexReader();
 			TermDocs td = reader.termDocs(new Term("prefix",key));
 			if(td.next()){
@@ -274,7 +292,7 @@ public class SearchEngine {
 					limitCount++;
 				}
 				res.setNumHits(limitCount);
-				logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+				//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
 				return res;
 			}
 			// check if it's an unique prefix
@@ -287,7 +305,7 @@ public class SearchEngine {
 						ResultSet rs = new ResultSet(reader.document(td1.doc()).get("key"));
 						rs.setNamespaceTextual(capitalizeFirst(namespace));
 						res.addResult(rs);
-						logRequest(pre,"prefix",searchterm,null,1,start,searcher);
+						//logRequest(pre,"prefix",searchterm,null,1,start,searcher);
 						return res;
 					}
 				}
@@ -441,6 +459,7 @@ public class SearchEngine {
 						RMIMessengerClient messenger = new RMIMessengerClient();						
 						HighlightPack pack = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 						res = pack.res;
+						res.addInfo("search",formatHost(host));
 						if(!searchOnly){
 							highlight(iid,q,parser.getWordsClean(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null,parser.hasPhrases(),false);
 							fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
@@ -471,6 +490,7 @@ public class SearchEngine {
 								
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+				res.addInfo("search",formatHosts(searcher.getAllHosts().values()));
 				if(!searchOnly){
 					highlight(iid,q,parser.getWordsClean(),searcher,parser.getHighlightTerms(),res,exactCase,parser.hasPhrases(),false);
 					fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
@@ -478,12 +498,12 @@ public class SearchEngine {
 				}
 				return res;
 			} catch(Exception e){				
-				if(e.getMessage()!=null && e.getMessage().equals("time limit")){
+				/* if(e.getMessage()!=null && e.getMessage().equals("time limit")){
 					res = new SearchResults();
 					res.setErrorMsg("Time limit of "+timelimit+"ms exceeded");
 					log.warn("Execution time limit of "+timelimit+"ms exceeded.");
 					return res;
-				}
+				} */
 				e.printStackTrace();
 				res = new SearchResults();
 				res.retry();
@@ -503,6 +523,23 @@ public class SearchEngine {
 			return res;
 		}
 	}
+	
+	public String formatHost(String host){
+		if(RMIMessengerClient.isLocal(host))
+			return global.getLocalhost();
+		else
+			return host;
+	}
+	
+	public String formatHosts(Collection<String> hosts){
+		StringBuilder sb = new StringBuilder();
+		for(String h : hosts){
+			if(sb.length() > 0)
+				sb.append(",");
+			sb.append(formatHost(h));
+		}
+		return sb.toString();
+	}
 
 	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
 	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
@@ -521,7 +558,8 @@ public class SearchEngine {
 			String host = cache.getRandomHost(iid.getSpell());
 			Suggest.ExtraInfo info = new Suggest.ExtraInfo(res.getPhrases(),res.getFoundInContext(),res.getFoundInTitles(),res.getFirstHitRank());
 			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,info,nsfw.getFilter());
-			res.setSuggest(sq);			
+			res.setSuggest(sq);	
+			res.addInfo("suggest",formatHost(host));
 		}
 	}
 
@@ -595,6 +633,7 @@ public class SearchEngine {
 						res.setTitles(r.getResults());
 					else
 						log.error("Error getting grouped titles results from "+host+":"+r.getErrorMsg());
+					res.addInfo("titles",formatHost(host));
 					return;
 				}			
 			}
@@ -618,6 +657,7 @@ public class SearchEngine {
 				//res.addToFirstHitRank(r.getNumHits());
 			} else
 				log.error("Error getting grouped titles search results: "+r.getErrorMsg());
+			res.addInfo("titles",formatHosts(searcher.getAllHosts().values()));
 		} catch(IOException e){
 			e.printStackTrace();
 			log.error("Error fetching grouped titles: "+e.getMessage());
@@ -762,6 +802,7 @@ public class SearchEngine {
 		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 		HashMap<String,HighlightResult> results = new HashMap<String,HighlightResult>();
 		RMIMessengerClient messenger = new RMIMessengerClient();
+		HashSet<String> hosts = new HashSet<String>();
 		
 		for(Entry<IndexId,ArrayList<String>> e : map.entrySet()){
 			IndexId piid = e.getKey();
@@ -769,11 +810,14 @@ public class SearchEngine {
 				Highlight.ResultSet rs = null;
 				if(reader != null){ 
 					// we got a local reader, use it
-					rs = Highlight.highlight(e.getValue(),hiid,terms,df,maxDoc,words,stopWords,exactCase,reader,sortByPhrases,alwaysIncludeFirst); 					
+					// FIXME: this works only if is exactly one physical index
+					rs = Highlight.highlight(e.getValue(),hiid,terms,df,maxDoc,words,stopWords,exactCase,reader,sortByPhrases,alwaysIncludeFirst);
+					hosts.add(global.getLocalhost());
 				} else{ 
 					// remote call
 					String host = cache.getRandomHost(hiid);
 					rs = messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
+					hosts.add(host);
 				}
 				results.putAll(rs.highlighted);
 				res.getPhrases().addAll(rs.phrases);
@@ -788,6 +832,7 @@ public class SearchEngine {
 		for(Entry<String,HighlightResult> e : results.entrySet()){
 			keys.get(e.getKey()).setHighlight(e.getValue());
 		}
+		res.addInfo("highlight",formatHosts(hosts));
 	}
 	
 	protected int min(int i1, int i2, int i3){

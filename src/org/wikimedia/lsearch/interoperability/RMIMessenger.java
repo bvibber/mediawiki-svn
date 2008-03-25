@@ -186,4 +186,29 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public SearchResults searchRelated(String dbrole, String searchterm, int offset, int limit) throws RemoteException;
+	
+	/**
+	 * Searcher host asks other hosts if it should deloy the new index. 
+	 * If not, waits a random time, then asks again.
+	 * 
+	 * This is needed to ensure that in a search group new indexes are
+	 * deployed and warmud up one at the time (while the host goes out
+	 * of rotation - so others can take up the load)
+	 * 
+	 * @param dbrole
+	 * @return
+	 * @throws RemoteException
+	 */
+	public boolean attemptIndexDeployment(String dbrole) throws RemoteException;
+	
+	/**
+	 * Prefix-search wrapper
+	 * 
+	 * @param dbrole
+	 * @param searchterm
+	 * @param limit
+	 * @return
+	 * @throws RemoteException
+	 */
+	public SearchResults searchPrefix(String dbrole, String searchterm, int limit) throws RemoteException;
 }

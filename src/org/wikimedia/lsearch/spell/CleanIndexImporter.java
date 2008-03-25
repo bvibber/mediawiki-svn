@@ -85,7 +85,7 @@ public class CleanIndexImporter implements DumpWriter {
 		}
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,
-				references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors,date);
+				references,redirectTargetNamespace,0,redirects,new ArrayList<RelatedTitle>(),anchors,date);
 
 		writer.addArticleInfo(article);
 	}	
@@ -104,7 +104,7 @@ public class CleanIndexImporter implements DumpWriter {
 	}
 	
 	public void closeIndex() throws IOException {
-		writer.close();
+		writer.closeAndOptimize();
 	}
 	
 

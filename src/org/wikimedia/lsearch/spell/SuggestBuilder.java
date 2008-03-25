@@ -10,6 +10,7 @@ import org.mediawiki.importer.XmlDumpReader;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
 import org.wikimedia.lsearch.util.Localization;
@@ -26,17 +27,27 @@ public class SuggestBuilder {
 	public static void main(String args[]){
 		String inputfile = null;
 		String dbname = null;
+		boolean useSnapshot = false;
 		
-		System.out.println("MediaWiki Lucene search indexer - build spelling suggestion index.\n");
+		System.out.println("MediaWiki lucene-search indexer - build spelling suggestion index.\n");
 		
 		Configuration.open();
 		
-		if(args.length !=1 && args.length != 2){
-			System.out.println("Syntax: java SuggestBuilder <dbname> [<dumpfile>]");
+		for(int i=0;i<args.length;i++){
+			if(args[i].equals("-s"))
+				useSnapshot = true;
+			else if(dbname == null)
+				dbname = args[i];
+			else if(inputfile == null)
+				inputfile = args[i]; 
+		}
+		
+		if(dbname == null || (inputfile == null && !useSnapshot)){
+			System.out.println("Syntax: java SuggestBuilder [-s] <dbname> [<dumpfile>]");
+			System.out.println("Options:");
+			System.out.println("   -s    use latest precursor snapshot");
 			return;
 		}
-		inputfile = args.length>1? args[1] : null;
-		dbname = args[0];
 	
 		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
 		String langCode = global.getLanguage(dbname);
@@ -84,7 +95,10 @@ public class SuggestBuilder {
 		// make phrase index
 
 		SpellCheckIndexer tInx = new SpellCheckIndexer(spell);
-		tInx.createFromPrecursor();		
+		String path = pre.getImportPath();
+		if(useSnapshot)
+			path = IndexRegistry.getInstance().getLatestSnapshot(pre).getPath();
+		tInx.createFromPrecursor(path);		
 		
 		long end = System.currentTimeMillis();
 

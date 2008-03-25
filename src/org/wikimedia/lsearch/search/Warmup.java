@@ -37,6 +37,53 @@ public class Warmup {
 	protected static GlobalConfiguration global = null;
 	protected static Hashtable<String,Terms> langTerms = new Hashtable<String,Terms>();
 	
+	protected static int getWarmupCount(IndexId iid){
+		String primary = "warmup";
+		String secondary = "warmup";
+		if(iid.isPrefix())
+			secondary += "_prefix";
+		else if(iid.isHighlight())
+			secondary += "_hl";
+		else if(iid.isSpell())
+			secondary += "_spell";
+		else if(iid.isTitlesBySuffix())
+			secondary += "_titles_by_suffix";
+		else if(iid.isRelated())
+			secondary += "_related";
+		
+		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),secondary);
+		int count = warmup!=null? Integer.parseInt(warmup.get("count")) : 0;
+		
+		if(count == 0){
+			warmup = global.getDBParams(iid.getDBname(),primary);
+			count = warmup!=null? Integer.parseInt(warmup.get("count")) : 0;
+		}
+		return count;
+	}
+	
+	/** If set in local config file waits for aggregate fields to finish caching */
+	public static void waitForAggregate(IndexSearcherMul[] pool){
+		try{
+			boolean waitForAggregate = Configuration.open().getString("Search","warmupaggregate","false").equalsIgnoreCase("true");
+			if(waitForAggregate){ // wait for aggregate fields to be cached
+				boolean wait;
+				do{
+					wait = false;
+					for(IndexSearcherMul is : pool){
+						if(AggregateMetaField.isBeingCached(is.getIndexReader())){
+							wait = true;
+							break;
+						}
+					}
+					if(wait)
+						Thread.sleep(500);
+				} while(wait);
+			}
+		} catch(InterruptedException e){
+			e.printStackTrace();
+		}
+	}
+	
 	/** Runs some typical queries on a local index searcher to preload caches, pages into memory, etc .. */
 	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay) throws IOException {
 		if(iid.isLinks() || iid.isPrecursor())
@@ -48,8 +95,8 @@ public class Warmup {
 		if(global == null)
 			global = GlobalConfiguration.getInstance();		
 		
-		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),"warmup");
-		int count = warmup!=null? Integer.parseInt(warmup.get("count")) : 0;
+		int count = getWarmupCount(iid);
+		
 		if(iid.isSpell() && count > 0){
 			Terms terms = getTermsForLang(iid.getLangCode());
 			Suggest sug = new Suggest(iid,is,false);
@@ -58,7 +105,15 @@ public class Warmup {
 				String searchterm = terms.next();
 				sug.suggest(searchterm,parser.tokenizeBareText(searchterm),new Suggest.ExtraInfo(),new NamespaceFilter());
 			}
-		} else if((iid.isPrefix() || iid.isHighlight() || iid.isRelated()) && count > 0 && !iid.isTitlesBySuffix()){
+		} else if(iid.isPrefix() && count > 0){
+			Terms terms = getTermsForLang(iid.getLangCode());
+			SearchEngine search = new SearchEngine();
+			for(int i=0;i<count;i++){
+				String searchterm = terms.next();
+				searchterm = searchterm.substring(0,(int)Math.min(8*Math.random()+1,searchterm.length()));
+				search.searchPrefixLocal(iid,searchterm,20,is);
+			}
+		} else if((iid.isHighlight() || iid.isRelated()) && count > 0 && !iid.isTitlesBySuffix()){
 			// NOTE: this might not warmup all caches, but should read stuff into memory buffers
 			for(int i=0;i<count;i++){
 				int docid = (int)(Math.random()*is.maxDoc());
@@ -72,14 +127,6 @@ public class Warmup {
 			} else{				
 				makeNamespaceFilters(is,iid);
 				warmupWithSearchTerms(is,iid,count,useDelay);
-			}
-			// wait for aggregate fields to be cached
-			while(AggregateMetaField.isBeingCached(reader)){
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 			}
 		}	
 		long delta = System.currentTimeMillis() - start;

@@ -17,6 +17,7 @@ public class HighlightResult implements Serializable {
 	protected ArrayList<Snippet> text = new ArrayList<Snippet>();
 	protected String date = null;
 	protected int wordCount = 0;
+	protected long size = 0;
 	
 	public static final String SEPARATOR=" <b>...</b> ";
 	
@@ -119,5 +120,15 @@ public class HighlightResult implements Serializable {
 	public void setWordCount(int wordCount) {
 		this.wordCount = wordCount;
 	}
+
+	public long getSize() {
+		return size;
+	}
+
+	public void setSize(long size) {
+		this.size = size;
+	}
+	
+	
 	
 }

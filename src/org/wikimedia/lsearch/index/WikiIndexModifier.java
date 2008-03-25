@@ -172,7 +172,7 @@ public class WikiIndexModifier {
 							else 
 								card.setSuccessfulDelete();
 						}
-						log.debug(iid+": Deleting document "+rec.getIndexKey()+" "+rec.getArticle());
+						log.debug(iid+": Deleting document "+rec.getArticle());
 					}
 				}
 				reader.close();
@@ -194,7 +194,7 @@ public class WikiIndexModifier {
 			boolean succ = true;
 			String path = iid.getIndexPath();
 			try{
-				openForWrite(path,rewrite);
+				writer = openForWrite(path,rewrite);
 			} catch(IOException e){
 				return false;
 			}
@@ -236,7 +236,7 @@ public class WikiIndexModifier {
 							writer.addDocument(doc,indexAnalyzer);
 						}
 												
-						log.debug(iid+": Adding document "+rec.getIndexKey()+" "+rec.getArticle());
+						log.debug(iid+": Adding document "+rec.getArticle().toStringFull());
 						if(card != null)
 							card.setSuccessfulAdd();
 					} catch (IOException e) {
@@ -340,7 +340,7 @@ public class WikiIndexModifier {
 			// to avoid a lot of unusable redirects from/to
 			// user namespace, but always index redirect FROM main
 			for(Redirect r : redirects){
-				if(ns == r.getNamespace() || (r.getNamespace() == 0 && ns != 0)){
+				if(ns == r.getNamespace() || (r.getNamespace() == 0 && ns != 0) || (r.getNamespace() != 0 && ns != 0)){
 					filtered.add(r.getTitle());
 					ranks.add(r.getReferences());
 					sorted.add(r);
@@ -418,6 +418,7 @@ public class WikiIndexModifier {
 	 * @return success
 	 */
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		try{
 		return updateLinks(iid,updateRecords) 
 		    && fetchLinksInfo(iid,updateRecords)
 		    && updatePrefix(iid,updateRecords)
@@ -425,6 +426,11 @@ public class WikiIndexModifier {
 		    && updateDocumentsOn(iid,updateRecords,iid)
 		    && updateDocumentsOn(iid.getHighlight(),updateRecords,iid)
 		    && updateTitles(iid,updateRecords);
+		} catch(Exception e){
+			e.printStackTrace();
+			log.error("Error updating "+iid+" : "+e.getMessage());
+			return false;
+		}
 	}
 	
 	public boolean updateTitles(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
@@ -436,6 +442,7 @@ public class WikiIndexModifier {
 	/** Update articles with latest linking & related information */ 
 	public boolean fetchLinksInfo(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		try{
+			iid = iid.getLinks();
 			Links links = Links.openForRead(iid,iid.getIndexPath());
 			RelatedStorage related = new RelatedStorage(iid);
 			for(IndexUpdateRecord rec : updateRecords){
@@ -445,9 +452,10 @@ public class WikiIndexModifier {
 					// references, redirect status
 					article.setReferences(links.getNumInLinks(key));
 					article.setRedirectTo(links.getRedirectTarget(key));
-					if(article.isRedirect())
+					if(article.isRedirect()){
 						article.setRedirectTargetNamespace(links.getRedirectTargetNamespace(key));
-					else
+						article.setRedirectRank(links.getRank(article.getRedirectTarget()));
+					} else
 						article.setRedirectTargetNamespace(-1);
 
 					// redirects				
@@ -463,6 +471,7 @@ public class WikiIndexModifier {
 						article.setRelated(related.getRelated(key));
 				}
 			}
+			links.close();
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
@@ -472,20 +481,35 @@ public class WikiIndexModifier {
 	}
 	
 	public boolean updateLinks(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		IndexId iidLinks = iid.getLinks();
+		Transaction trans = new Transaction(iidLinks,IndexId.Transaction.INDEX);
 		try{
+			trans.begin();
 			Links links = Links.openForModification(iid);
 			for(IndexUpdateRecord rec : updateRecords){
 				// TODO: this might do some unnecessary additions/deletions on split index architecture
 				if(rec.doDelete()){
-					links.deleteArticleInfoByIndexKey(rec.getIndexKey());
-				} else if(rec.doAdd()){
 					Article a = rec.getArticle();
+					log.debug(iidLinks+": Deleting "+a);
+					if(a.getNamespace()==null || a.getNamespace().equals("")){
+						// try to fetch ns:title so we can have nicer debug info					
+						String key = links.getKeyFromPageId(rec.getIndexKey());
+						if(key != null)
+							a.setNsTitleKey(key);
+					}
+					links.deleteArticleInfoByIndexKey(rec.getIndexKey());					
+				} 
+				if(rec.doAdd()){
+					Article a = rec.getArticle();
+					log.debug(iidLinks+": Adding "+a);
 					links.addArticleInfo(a.getContents(),a.getTitleObject(),iid.isExactCase(),a.getIndexKey());
 				}
 			}
 			links.close();
+			trans.commit();
 			return true;
 		} catch(IOException e){
+			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update links index: "+e.getMessage());
 			return false;
@@ -495,18 +519,28 @@ public class WikiIndexModifier {
 	public boolean updatePrefix(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(!iid.hasPrefix())
 			return true;
+		IndexId iidPrefix = iid.getPrefix().getPrecursor();
+		Transaction trans = new Transaction(iidPrefix,IndexId.Transaction.INDEX);
 		try{
+			trans.begin();
 			PrefixIndexBuilder prefix = PrefixIndexBuilder.forPrecursorModification(iid);
 			for(IndexUpdateRecord rec : updateRecords){
 				if(rec.doDelete()){
+					log.debug(iidPrefix+": Deleting "+rec.getArticle());
 					prefix.deleteFromPrecursor(rec.getIndexKey());
-				} else if(rec.doAdd()){
+				} 
+				if(rec.doAdd()){
 					Article a = rec.getArticle();
-					prefix.addToPrecursor(rec.getNsTitleKey(),a.getReferences(),a.getRedirectTarget(),rec.getIndexKey());
+					transformArticleForIndexing(a);
+					log.debug(iidPrefix+": Adding "+a.toStringFull());
+					prefix.addToPrecursor(rec.getNsTitleKey(),a.getRank(),a.getRedirectTarget(),a.getRedirectRank(),rec.getIndexKey());
 				}
 			}
+			prefix.close();
+			trans.commit();
 			return true;
 		} catch(IOException e){
+			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update prefix index: "+e.getMessage());
 			return false;
@@ -516,17 +550,26 @@ public class WikiIndexModifier {
 	public boolean updateSpell(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(!iid.hasSpell())
 			return true;
+		IndexId iidSpell = iid.getSpell().getPrecursor();
+		Transaction trans = new Transaction(iidSpell,IndexId.Transaction.INDEX);
 		try{
-			CleanIndexWriter writer = CleanIndexWriter.newForModification(iid);
+			trans.begin();
+			CleanIndexWriter writer = CleanIndexWriter.newForModification(iid.getSpell().getPrecursor());
 			for(IndexUpdateRecord rec : updateRecords){
 				if(rec.doDelete()){
+					log.debug(iidSpell+": Deleting "+rec.getArticle());
 					writer.deleteArticleInfo(rec.getIndexKey());
-				} else if(rec.doAdd()){
+				} 
+				if(rec.doAdd()){
+					log.debug(iidSpell+": Adding "+rec.getArticle());
 					writer.addArticleInfo(rec.getArticle());
 				}
 			}
+			writer.close();
+			trans.commit();
 			return true;
 		} catch(IOException e){
+			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update spellcheck index: "+e.getMessage());
 			return false;
@@ -572,7 +615,7 @@ public class WikiIndexModifier {
 			}
 			// add
 			for(int i=0;i<subs.size();i++){
-				SimpleIndexModifier modifier = mod.get(subs.get(i));
+				SimpleIndexModifier modifier = mod.get(subs.get(i).toString());
 				modifier.addDocuments(split.get(i));
 			}
 			// commit
@@ -608,8 +651,8 @@ public class WikiIndexModifier {
 		return succ;
 	}
 
-	/** Close all IndexModifier instances */
-	public synchronized static HashSet<IndexId> closeAllModifiers(){
+	/** Get modified indexes */
+	public synchronized static HashSet<IndexId> getModifiedIndexes(){
 		HashSet<IndexId> retVal = modifiedDBs;
 		modifiedDBs = new HashSet<IndexId>();
 		return retVal;
@@ -719,6 +762,7 @@ public class WikiIndexModifier {
 		ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,iid,sections,analyzer,"alttitle"),Store.COMPRESS));
 		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
+		doc.add(new Field("size",Long.toString(article.getContents().getBytes().length),Store.YES,Index.NO));
 		return doc;
 	}
 	

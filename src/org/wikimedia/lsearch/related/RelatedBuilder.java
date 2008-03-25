@@ -27,10 +27,12 @@ import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.api.Dictionary;
+import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.storage.RelatedStorage;
+import org.wikimedia.lsearch.util.ProgressReport;
 
 /**
  * Build an index that stores the mapping of related articles.
@@ -45,9 +47,10 @@ public class RelatedBuilder {
 	
 	public static void main(String[] args) {
 		String dbname = null;
-		System.out.println("MediaWiki Lucene search indexer - build a map of related articles.\n");
+		System.out.println("MediaWiki lucene-search indexer - build a map of related articles.\n");
 		
 		Configuration.open();
+		GlobalConfiguration.getInstance();
 		if(args.length != 1){
 			System.out.println("Syntax: java RelatedBuilder <dbname>");
 			return;
@@ -74,11 +77,12 @@ public class RelatedBuilder {
 	
 	/** Calculate from links index */
 	public static void rebuildFromLinks(IndexId iid) throws IOException {
-		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
+		Links links = Links.openStandalone(iid);
 		RelatedStorage store = new RelatedStorage(iid);
 		
 		log.info("Rebuilding related mapping from links");
-		Dictionary dict = links.getKeys();
+		LuceneDictionary dict = links.getKeys();
+		dict.setProgressReport(new ProgressReport("titles",1000));
 		Word w;
 		while((w = dict.next()) != null){
 			String key = w.getWord();
@@ -113,29 +117,7 @@ public class RelatedBuilder {
 		}
 		store.snapshot();
 	}
-	
-	/** Calculate and store related info 
-	 * @throws IOException */
-	public static void store(CompactLinks links, IndexId iid) throws IOException{
-		RelatedStorage store = new RelatedStorage(iid);
-		int num = 0;
-		int total = links.getAll().size();
-		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);
-		for(CompactArticleLinks cs : links.getAll()){			
-			num++;
-			if(num % 1000 == 0)
-				log.info("Storing ["+num+"/"+total+"]");
-			Title t = new Title(cs.getKey());
-			// do analysis only for default search namespace (usually main namespace)
-			if(nsf.contains(t.getNamespace())){				
-				ArrayList<CompactRelated> rel = getRelated(cs,links);
-				if(rel.size() == 0)
-					continue;
-				store.addCompactRelated(cs.toString(),rel);				
-			}
-		}
-		store.snapshot();
-	}
+
 	
 	/** 
 	 * Get related articles, sorted descending by score

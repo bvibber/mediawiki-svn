@@ -51,7 +51,7 @@ public class Importer {
 		boolean makeIndex = true; boolean makeHighlight = false;
 		boolean makeTitles = false; boolean newTitles = false;
 		
-		System.out.println("MediaWiki Lucene search indexer - index builder from xml database dumps.\n");
+		System.out.println("MediaWiki lucene-search indexer - index builder from xml database dumps.\n");
 		
 		Configuration.open();
 		log = Logger.getLogger(Importer.class);
@@ -179,9 +179,7 @@ public class Importer {
 				add.append(")");
 				
 				log.info("Indexing articles "+add+"...");
-				IndexId ll = iid.getLinks();
-				Links links = null;
-				links = Links.openForRead(ll,ll.getImportPath());
+				Links links = Links.openStandalone(iid);
 				// read
 				DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode,makeIndex,makeHighlight,makeTitles,newTitles);
 				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));

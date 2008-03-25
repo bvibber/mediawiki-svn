@@ -44,6 +44,7 @@ import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.search.NamespaceFilter;
@@ -375,6 +376,23 @@ public class Links {
 		}
 	}
 	
+	/** 
+	 * Get references to article + references to redirects (except ns!=0 -> ns=0).
+	 * Might be slow. Use only if neccessary (otherwise construct from redirect info) 
+	 */
+	public int getRank(String key) throws IOException {
+		ensureRead();
+		int rank = getNumInLinks(key);
+		boolean ignoreNonMain = key.startsWith("0:"); 
+		ArrayList<String> redirects = getRedirectsTo(key);		
+		for(String r : redirects){
+			if(ignoreNonMain && !key.startsWith("0:"))
+				continue;
+			rank += getNumInLinks(r);
+		}
+		return rank;
+	}
+	
 	/** Make cache: doc_id -> number of inlinks */
 	public int[] makeInLinkCache() throws IOException{
 		ensureRead();
@@ -424,6 +442,16 @@ public class Links {
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
 			return reader.document(td.doc()).get("article_pageid");
+		}
+		return null;
+	}
+	
+	/** Get ns:title for page_id */
+	public String getKeyFromPageId(String pageid) throws IOException {
+		ensureRead();
+		TermDocs td = reader.termDocs(new Term("article_pageid",pageid));
+		if(td.next()){
+			return reader.document(td.doc()).get("article_key");
 		}
 		return null;
 	}

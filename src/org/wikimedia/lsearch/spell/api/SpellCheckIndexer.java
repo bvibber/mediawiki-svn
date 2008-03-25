@@ -100,7 +100,7 @@ public class SpellCheckIndexer {
 		}
 	}
 	
-	public void createFromPrecursor(){
+	public void createFromPrecursor(String precursorPath){
 		String path = spell.getImportPath(); // dest where to put index
 		FieldNameFactory fields = new FieldNameFactory();
 		FilterFactory filters = new FilterFactory(iid);
@@ -108,7 +108,7 @@ public class SpellCheckIndexer {
 		final String contents = fields.contents();
 		try {
 			ngramWriter.createIndex(path,new SimpleAnalyzer());
-			IndexReader ir = IndexReader.open(iid.getSpell().getPrecursor().getImportPath());
+			IndexReader ir = IndexReader.open(precursorPath);
 			HashSet<String> stopWords = new HashSet<String>();
 			TermDocs td = ir.termDocs(new Term("metadata_key","stopWords"));
 			if(td.next()){

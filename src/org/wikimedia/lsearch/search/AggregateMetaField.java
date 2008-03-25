@@ -16,6 +16,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexReader.FieldOption;
+import org.apache.lucene.store.Directory;
 
 /**
  * Local cache of aggregate field meta informations
@@ -25,23 +26,27 @@ import org.apache.lucene.index.IndexReader.FieldOption;
  */
 public class AggregateMetaField {
 	static Logger log = Logger.getLogger(AggregateMetaField.class);
-	protected static WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>> cache = new WeakHashMap<IndexReader,HashMap<String,AggregateMetaFieldSource>>();
+	/** reader -> field -> meta (tie cache to directory, since lucene ensures there is one directory instance per path) */
+	protected static WeakHashMap<Directory,HashMap<String,AggregateMetaFieldSource>> cache = new WeakHashMap<Directory,HashMap<String,AggregateMetaFieldSource>>();
 	protected static Object lock = new Object();
-	protected static Hashtable<IndexReader,AggregateMetaFieldSource> cachingInProgress = new Hashtable<IndexReader,AggregateMetaFieldSource>();
+	/** directory -> fields */
+	protected static WeakHashMap<Directory,Set<String>> cachingInProgress = new WeakHashMap<Directory,Set<String>>();
 	
 	/** Check if there is a current background caching on a reader */
 	public static boolean isBeingCached(IndexReader reader){
-		return cachingInProgress.containsKey(reader);
+		synchronized(cachingInProgress){
+			return cachingInProgress.containsKey(reader.directory());
+		}
 	}
 	
 	/** Get a cached field source 
 	 * @throws IOException */
 	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) throws IOException{
 		synchronized(lock){
-			HashMap<String,AggregateMetaFieldSource> fields = cache.get(reader);
+			HashMap<String,AggregateMetaFieldSource> fields = cache.get(reader.directory());
 			if(fields == null){
 				fields = new HashMap<String,AggregateMetaFieldSource>();
-				cache.put(reader,fields);
+				cache.put(reader.directory(),fields);
 			}
 			AggregateMetaFieldSource s = fields.get(field);
 			if(s != null)
@@ -73,7 +78,14 @@ public class AggregateMetaField {
 		
 		protected class CachingThread extends Thread {
 			public void run(){
-				cachingInProgress.put(reader,AggregateMetaFieldSource.this);
+				synchronized(cachingInProgress){
+					Set<String> set = cachingInProgress.get(reader.directory());
+					if(set == null){
+						set = new HashSet<String>();
+						cachingInProgress.put(reader.directory(),set);
+					}
+					set.add(field);
+				}
 				try{
 					log.info("Caching aggregate field "+field+" for "+reader.directory());
 					int maxdoc = reader.maxDoc();
@@ -127,9 +139,14 @@ public class AggregateMetaField {
 					cachingFinished = true;
 				} catch(Exception e){
 					e.printStackTrace();
-					log.error("Whole caching failed on field="+field+", reader="+reader);
+					log.error("Whole caching failed on field="+field+", reader="+reader.directory());
 				}
-				cachingInProgress.remove(reader);
+				synchronized(cachingInProgress){
+					Set<String> set = cachingInProgress.get(reader.directory());
+					set.remove(field);
+					if(set.size() == 0)
+						cachingInProgress.remove(reader.directory());
+				}
 			}
 			protected byte[] extendBytes(byte[] array){
 				return resizeBytes(array,array.length*2);

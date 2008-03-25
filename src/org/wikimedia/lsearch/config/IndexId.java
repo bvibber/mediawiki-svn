@@ -499,6 +499,15 @@ public class IndexId {
 	public String getRsyncSnapshotPath() {
 		return rsyncSnapshotPath;
 	}
+	
+	public String getPath(Transaction type){
+		switch(type){
+		case INDEX: return getIndexPath();
+		case IMPORT: return getImportPath();
+		case TEMP: return getTempPath();
+		}
+		throw new RuntimeException("Unknown transaction type "+type);
+	}
 
 	/** Where the indexer writes the current version of index */
 	public String getIndexPath() {
@@ -602,7 +611,7 @@ public class IndexId {
 		}
 	}
 	
-	/** searcher hosts within this machines group */
+	/** searcher hosts within this search group */
 	public HashSet<String> getMySearchHosts() {
 		return mySearchHosts;
 	}

@@ -355,7 +355,7 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(isTermChar(c)){
+			if(isTermChar(c) && text[cur]!='-'){
 				int start = cur;
 				tokenType = fetchToken(inPhrase);
 				if(tokenType == TokenType.WORD && (start==0 || text[start-1]!='-')){
@@ -553,6 +553,7 @@ public class WikiQueryParser {
 	private Query parsePhrase(){				
 		// special case for incategory 
 		if(currentField!=null && currentField.equals("incategory")){
+			length = 0;
 			for(; cur < queryLength ; cur++ ){
 				if(text[cur] == '"')
 					break;
@@ -618,7 +619,7 @@ public class WikiQueryParser {
 				}
 			}			
 			// end of phrase query
-			if(text[cur] == '"')
+			if(cur < queryLength && text[cur] == '"')
 				break;
 		}
 		if(query.getPositions().length > 0){
@@ -1177,6 +1178,8 @@ public class WikiQueryParser {
 		BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(full,Occur.SHOULD);
 		wrap.add(makeComplete(expandedWordsTitle),Occur.SHOULD);
+		if(forbidden != null)
+			wrap.add(forbidden,Occur.MUST_NOT);
 		
 		return wrap;
 	}
@@ -1748,6 +1751,8 @@ public class WikiQueryParser {
 		expandedBoostTitle = expandedBoostFromParser;
 		expandedTypes = expandedTypesFromParser;
 
+		BooleanQuery forbidden = extractForbidden(q);
+		
 		BooleanQuery full = new BooleanQuery(true);
 		full.add(q,Occur.MUST);
 		
@@ -1770,12 +1775,14 @@ public class WikiQueryParser {
 			Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
 			if(redirectsMulti != null)
 				full.add(redirectsMulti,Occur.SHOULD);
-		}
+		}		
 
 		// add another for complete matches
 		BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(full,Occur.SHOULD);
 		wrap.add(makeComplete(expandedWordsTitle),Occur.SHOULD);
+		if(forbidden != null)
+			wrap.add(forbidden,Occur.MUST_NOT);
 		
 		return wrap;
 		

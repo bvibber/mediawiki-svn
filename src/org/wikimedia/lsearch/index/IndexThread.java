@@ -68,7 +68,7 @@ public class IndexThread extends Thread {
 	/** this lock is used when threads access static members */
 	protected static Object staticLock = new Object();
 	/** This is where pages are queued for processing 
-	 * 	Structure: dbname -> hashtable(ns:title -> indexUpdateRecord) 
+	 * 	Structure: dbrole -> hashtable(ns:title -> indexUpdateRecord) 
 	 */
 	protected static Hashtable<String,Hashtable<String,IndexUpdateRecord>> queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
 	
@@ -88,6 +88,23 @@ public class IndexThread extends Thread {
 	
 	/** Thread that enqueues updates to distributed indexers in a batch */
 	protected static MessengerThread messenger = null;
+	
+	protected ArrayList<Pattern> snapshotPatterns = new ArrayList<Pattern>();
+	
+	static class Pattern {
+		String pattern; // pattern to be mached
+		boolean forPrecursors; // match precursors only
+		boolean not = false; // *not* matching this pattern
+		
+		public Pattern(String pattern, boolean forPrecursors){
+			this(pattern,forPrecursors,false);
+		}
+		public Pattern(String pattern, boolean forPrecursors, boolean not){
+			this.pattern = pattern;
+			this.forPrecursors = forPrecursors;
+			this.not = not;
+		}
+	}
 	
 	/**
 	 * Default constructor
@@ -136,7 +153,7 @@ public class IndexThread extends Thread {
 		}
 		if(queuedUpdatesExist())
 			applyUpdates();
-		WikiIndexModifier.closeAllModifiers();
+		WikiIndexModifier.getModifiedIndexes();
 	}
 	
 	/**
@@ -241,10 +258,18 @@ public class IndexThread extends Thread {
 	 *
 	 */
 	protected void makeSnapshot() {
-		HashSet<IndexId> indexes = WikiIndexModifier.closeAllModifiers();
+		HashSet<IndexId> indexes = WikiIndexModifier.getModifiedIndexes();
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
-		log.debug("Making snapshots...");
+		ArrayList<Pattern> pat = new ArrayList<Pattern>();
+		synchronized (snapshotPatterns) {
+			for(Pattern p : snapshotPatterns){ // convert wildcards into regexp				 
+				pat.add(new Pattern(p.pattern.replace(".","\\.").replace("*",".*?"),p.forPrecursors,p.pattern.startsWith("^")));
+			}
+			snapshotPatterns.clear();
+		}
+		log.info("Making snapshots...");
+		
 		// check if other indexes exist, if so, make snapshots
 		for( IndexId iid : global.getMyIndex()){
 			if(iid.isLogical() || indexes.contains(iid))
@@ -253,19 +278,45 @@ public class IndexThread extends Thread {
 			if(indexdir.exists())
 				indexes.add(iid);
 		}
+		HashSet<IndexId> badOptimization = new HashSet<IndexId>();
+		// optimize all
 		for( IndexId iid : indexes ){
 			try{
 				if(iid.isLogical())
 					continue;
-				optimizeIndex(iid);
-				makeIndexSnapshot(iid,iid.getIndexPath());
-				registry.refreshSnapshots(iid);
+				if(matchesPattern(pat,iid))
+					optimizeIndex(iid);
+				
 			} catch(IOException e){
-				log.error("Could not make snapshot for index "+iid);
+				e.printStackTrace();
+				log.error("Error optimizing index "+iid);
+				badOptimization.add(iid);
 			}
 		}
+		// snapshot all
+		for( IndexId iid : indexes ){
+			if(iid.isLogical() || badOptimization.contains(iid))
+				continue;
+			if(matchesPattern(pat,iid)){
+				makeIndexSnapshot(iid,iid.getIndexPath());
+				registry.refreshSnapshots(iid);				
+			}
+		}
+		
 	}
 	
+	private boolean matchesPattern(ArrayList<Pattern> pat, IndexId iid) {
+		String string = iid.toString();
+		for(Pattern p : pat){
+			if((iid.isPrecursor() && !p.forPrecursors) ||(!iid.isPrecursor() && p.forPrecursors))
+				continue;
+			boolean match = p.pattern.equals("")? true : string.matches(p.pattern); 
+			if((match && !p.not) || (!match && p.not))
+				return true;
+		}
+		return false;
+	}
+
 	public static void makeIndexSnapshot(IndexId iid, String indexPath){
 		final String sep = Configuration.PATH_SEP;
 		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -290,9 +341,11 @@ public class IndexThread extends Thread {
 		try {
 			FSUtils.createHardLinkRecursive(indexPath,snapshot);
 		} catch (IOException e) {
+			e.printStackTrace();
 			log.error("Error making snapshot "+snapshot+": "+e.getMessage());
 			return;
 		}
+		IndexRegistry.getInstance().refreshSnapshots(iid);
 		log.info("Made snapshot "+snapshot);		
 	}
 	
@@ -335,6 +388,13 @@ public class IndexThread extends Thread {
 	public static boolean queuedUpdatesExist(){
 		synchronized(staticLock){
 			return queuedUpdates.size() > 0;
+		}
+	}
+	
+	public static void enqueue(IndexUpdateRecord[] records) {
+		synchronized(staticLock){
+			for(IndexUpdateRecord r : records)
+				enqueue(r);
 		}
 	}
 	
@@ -473,14 +533,14 @@ public class IndexThread extends Thread {
 			// filter out only certain dbs 
 			if(filter != null){
 				updates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
-				for(String dbname : filter){
-					IndexId iid = IndexId.get(dbname);
-					// get all subindexes
-					for(String pi : iid.getPhysicalIndexes()){
-						if(queuedUpdates.containsKey(pi))
-							updates.put(pi,queuedUpdates.remove(pi));
+				HashSet<String> dbroles = new HashSet<String>();
+				dbroles.addAll(queuedUpdates.keySet());
+				for(String dbrole : dbroles){
+					IndexId iid = IndexId.get(dbrole);
+					if(filter.contains(iid.getDBname()) || filter.contains(iid.toString())){
+						updates.put(dbrole,queuedUpdates.remove(dbrole));
 					}
-				}				
+				}	
 				return updates;
 			} else{
 				updates = queuedUpdates;
@@ -609,8 +669,11 @@ public class IndexThread extends Thread {
 		suspended = false;		
 	}
 	
-	public void makeSnapshotsNow(){
-		makeSnapshotNow = true;
+	public void makeSnapshotsNow(String pattern, boolean forPrecursors){
+		synchronized(snapshotPatterns){
+			snapshotPatterns.add(new Pattern(pattern,forPrecursors));
+			makeSnapshotNow = true;
+		}
 	}
 
 	public void flush() {

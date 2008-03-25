@@ -39,9 +39,10 @@ import org.wikimedia.lsearch.spell.SuggestResult;
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
 	protected static org.apache.log4j.Logger log = Logger.getLogger(RMIMessengerImpl.class);
-	protected NetworkStatusThread networkStatus;
-	protected IndexRegistry indexRegistry;
-	protected IndexDaemon indexer;
+	protected NetworkStatusThread networkStatus = null;
+	protected IndexRegistry indexRegistry = null;
+	protected IndexDaemon indexer = null;
+	protected SearcherCache cache = null;
 	
 	static protected RMIMessengerImpl instance = null;
 	
@@ -86,8 +87,7 @@ public class RMIMessengerImpl implements RMIMessenger {
 		log.debug("Received request enqueueUpdateRecords("+records.length+" records)");
 		if(indexer == null)
 			indexer = new IndexDaemon(); // start the indexer
-		for(IndexUpdateRecord record : records)
-			IndexThread.enqueue(record);		
+		IndexThread.enqueue(records);		
 	}
 
 	// inherit javadoc
@@ -178,6 +178,25 @@ public class RMIMessengerImpl implements RMIMessenger {
 		} catch(IOException e){
 			e.printStackTrace();
 			throw new RemoteException("Exception on "+dbrole,e);
+		}
+	}
+	
+	public boolean attemptIndexDeployment(String dbrole) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		
+		return cache.hasLocalSearcher(IndexId.get(dbrole));
+	}
+	
+	public SearchResults searchPrefix(String dbrole, String searchterm, int limit) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		
+		IndexId iid = IndexId.get(dbrole);
+		try {
+			return new SearchEngine().searchPrefixLocal(iid,searchterm,limit,cache.getLocalSearcher(iid));
+		} catch (IOException e) {
+			throw new RemoteException("IO Error in searchPrefix()",e);
 		}
 	}
 
