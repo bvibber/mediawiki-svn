@@ -276,5 +276,5 @@ END;
 
 	$text .= "</table>\n";
 
-	return array($text, 'noparse' => 'true');
+	return array($text, 'noparse' => 'true', 'isHTML' => 'true');
 }
