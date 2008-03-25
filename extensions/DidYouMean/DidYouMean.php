@@ -237,7 +237,7 @@ function wfDymArticleUndelete( &$title, &$create ) {
 	#	return true;
 	#}
 
-	doInsert( $title->getArticleId(), $title->getText() );
+	wfDymDoInsert( $title->getArticleId(), $title->getText() );
 
 	return true;
 }
@@ -352,7 +352,9 @@ function wfDymTouchPages( $condition ) {
 	if ($wgDBtype == 'postgres') {
 		$sql = "UPDATE $page SET page_touched=now() FROM $dpage $whereclause";
 	} else {
-		$sql = "UPDATE $page, $dpage SET page_touched = " . $dbw->addQuotes( $dbw->timestamp() ) . $whereclause;
+		$sql = "UPDATE $page, $dpage SET page_touched = " .
+			$dbw->addQuotes( $dbw->timestamp() ) .
+			" $whereclause";
 	}
 
 	$dbw->query( $sql, __METHOD__ );
@@ -373,7 +375,9 @@ function wfDymDoDelete( $pageid ) {
 		$dbw->delete( 'dymnorm', array('dn_normid' => $normid) );
 
 	# touch all pages which will now link here
-	wfDymTouchPages( "dp_normid=$normid" );
+	if( $normid ) {
+		wfDymTouchPages( "dp_normid=$normid" );
+	}
 }
 
 function wfDymDoUpdate( $pageid, $title ) {
