@@ -12,7 +12,7 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array(
-	'categoryintersection'               => 'Category Intersection',
+	'categoryintersection'               => 'Category intersection',
 	'categoryintersection-desc'          => 'Maintains a table with hash values for [[Special:CategoryIntersection|category intersections]] within a page',
 	'categoryintersection-doit'          => 'List pages in all these categories',
 	'categoryintersection-maxcategories' => 'The maximum allowed number of intersecting categories is $1.',
