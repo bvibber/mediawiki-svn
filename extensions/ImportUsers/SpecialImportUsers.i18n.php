@@ -269,6 +269,13 @@ $messages['lb'] = array(
 	'importusers-realname'             => 'richtege Numm',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'importusers-log-summary-all' => 'എല്ലാം',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

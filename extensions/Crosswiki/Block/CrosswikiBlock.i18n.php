@@ -147,6 +147,7 @@ $messages['bg'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'crosswikiblock-desc'     => 'Umožňuje blokování uživatelů na jiných wiki pomocí [[Special:Crosswikiblock|speciální stránky]]',
 	'crosswikiblock-expiry'   => 'Vypršení:',
 	'crosswikiblock-reason'   => 'Důvod:',
 	'crosswikiblock-submit'   => 'Zablokovat tohoto uživatele',

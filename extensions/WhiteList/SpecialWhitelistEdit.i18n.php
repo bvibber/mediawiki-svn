@@ -247,6 +247,13 @@ $allMessages['lb'] = array(
 	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$allMessages['ml'] = array(
+	'whitelisttablemodifyall' => 'എല്ലാം',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

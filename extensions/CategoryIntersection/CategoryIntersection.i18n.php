@@ -56,6 +56,17 @@ $messages['ca'] = array(
 	'categoryintersection-results'       => 'La cerca demanada ha donat {{PLURAL:$1|un resultat|$1 resultats}}.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'categoryintersection'               => 'Průnik kategorií',
+	'categoryintersection-desc'          => 'Udržuje tabulku s hash hodnotami [[Special:CategoryIntersection|průniků kategorií]] na speciální stránce.',
+	'categoryintersection-doit'          => 'Seznam stránek ve všech těchto kategoriích',
+	'categoryintersection-maxcategories' => 'Maximální povolený počet kategorií, které mají průnik je $1.',
+	'categoryintersection-results'       => 'Hledání vrátilo $1 {{plural:$1|výsledek|výsledky|výsledků}}.',
+);
+
 /** German (Deutsch)
  * @author Magnus Manske
  * @author Raimond Spekking

@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'crowdauthentication-desc' => 'Zásuvný modul pro ověření služby Atlassian Crowd',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

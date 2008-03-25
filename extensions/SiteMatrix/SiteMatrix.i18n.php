@@ -847,11 +847,17 @@ $messages['stq'] = array(
 	'sitematrix-others'   => 'Wiedere Wikimedia-Projekte',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ * @author Kandar
+ * @author לערי ריינהארט
+ */
 $messages['su'] = array(
-	'sitematrix' => 'Béréndélan wiki Wikimédia',
+	'sitematrix'          => 'Béréndélan wiki Wikimédia',
+	'sitematrix-desc'     => 'Témbongkeun [[Special:SiteMatrix|béréndélan wiki Wikimédia]]',
 	'sitematrix-language' => 'Basa',
-	'sitematrix-project' => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
-	'sitematrix-others' => 'Proyék laina ti Wikimedia',
+	'sitematrix-project'  => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
+	'sitematrix-others'   => 'Proyék laina ti Wikimedia',
 );
 
 /** Swedish (Svenska)

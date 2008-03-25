@@ -584,6 +584,14 @@ $messages['stq'] = array(
 	'scanset_prev'                      => '← Foarige',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'scanset_next' => 'Salajengna &gt;',
+	'scanset_prev' => '&lt; Saméméhna',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

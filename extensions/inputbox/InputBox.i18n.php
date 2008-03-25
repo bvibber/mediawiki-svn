@@ -539,8 +539,13 @@ $messages['li'] = array(
 	'createarticle'           => "Maak 'ne pazjena aan",
 );
 
+/** Lao (ລາວ)
+ * @author Tuinui
+ */
 $messages['lo'] = array(
-	'createarticle' => 'ສ້າງບົດຄວາມ',
+	'tryexact'       => 'ໄປ',
+	'searchfulltext' => 'ສະແດງລາຍການ',
+	'createarticle'  => 'ສ້າງບົດຄວາມ',
 );
 
 $messages['lt'] = array(

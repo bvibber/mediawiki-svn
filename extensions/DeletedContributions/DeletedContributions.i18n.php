@@ -464,6 +464,13 @@ $messages['stq'] = array(
 	'deletedcontributions-desc' => 'Rakt Administratore ju Muugelkaid, [[Special:DeletedContributions|läskede Benutserbiedraage]] ientoukiekjen',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'deletedcontributions-desc' => 'Leler kuncén kawenangan [[Special:DeletedContributions|nyungsi éditan nu geus dihapus]] ti hiji pamaké',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

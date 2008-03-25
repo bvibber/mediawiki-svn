@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'mwsearch-desc' => 'MWSearch plugin',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

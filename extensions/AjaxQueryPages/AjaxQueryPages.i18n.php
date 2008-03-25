@@ -67,6 +67,13 @@ $messages['ja'] = array(
 	'ajax-qp-desc' => 'AJAXを用いて[[Special:Shortpages]]のようなページ要求を行う',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'ajax-qp-desc' => 'AJAX op Säite mat Offroen derbäisetzen esou wéi dat de Fall ass op [[Special:Shortpages]]',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

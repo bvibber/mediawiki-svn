@@ -139,6 +139,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'contributors'          => 'Přispěvatelé',
+	'contributors-desc'     => 'Shrnuje hlavní přispěvatele na stránku',
 	'contributors-toolbox'  => 'Hlavní přispěvatelé',
 	'contributors-target'   => 'Název:',
 	'contributors-submit'   => 'Zobrazit',
@@ -797,6 +798,19 @@ $messages['tg'] = array(
 $messages['th'] = array(
 	'contributors'         => 'ผู้เขียน',
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'contributors'          => 'Автори',
+	'contributors-desc'     => 'Визначає основних учасників роботи над сторінкою',
+	'contributors-toolbox'  => 'Основні автори',
+	'contributors-legend'   => 'Формує список основних авторів сторінки',
+	'contributors-target'   => 'Назва:',
+	'contributors-submit'   => 'Показати',
+	'contributors-subtitle' => 'Основні автори $1',
 );
 
 /** Vietnamese (Tiếng Việt)

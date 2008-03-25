@@ -62,6 +62,13 @@ $messages['bg'] = array(
 	'dt_xml_freetext'             => 'Свободен текст',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'dt-desc' => 'Umožňuje import a export strukturovaných údajů v buňkách šablon.',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

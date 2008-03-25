@@ -1490,6 +1490,33 @@ Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"
 	'ogg-desc-link'           => 'Uur disse Doatäi',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'ogg-short-audio'      => 'Koropak sora $1 ogg, $2',
+	'ogg-short-video'      => 'Koropak vidéo $1 ogg, $2',
+	'ogg-short-general'    => 'Koropak média $1 ogg, $2',
+	'ogg-long-audio'       => '(Koropak sora $1 ogg, lilana $2, $3)',
+	'ogg-long-video'       => '(Koropak vidéo $1 ogg, lilana $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Koropak sora/vidéo ogg multipléks, $1, lilana $2, $4×$5 piksel, $3 gembleng)',
+	'ogg-long-general'     => '(Koropak média ogg, lilana $2, $3)',
+	'ogg-long-error'       => '(Koropak ogg teu valid: $1)',
+	'ogg-play'             => 'Setél',
+	'ogg-pause'            => 'Eureun',
+	'ogg-stop'             => 'Anggeusan',
+	'ogg-play-video'       => 'Setél vidéo',
+	'ogg-play-sound'       => 'Setél sora',
+	'ogg-player-oggPlugin' => 'Plugin Ogg',
+	'ogg-player-thumbnail' => 'Ukur gambar statis',
+	'ogg-player-selected'  => '(pinilih)',
+	'ogg-use-player'       => 'Paké panyetél:',
+	'ogg-more'             => 'Lianna...',
+	'ogg-dismiss'          => 'Tutup',
+	'ogg-download'         => 'Bedol',
+	'ogg-desc-link'        => 'Ngeunaan ieu koropak',
+);
+
 /** Swedish (Svenska)
  * @author Jon Harald Søby
  * @author Lejonel

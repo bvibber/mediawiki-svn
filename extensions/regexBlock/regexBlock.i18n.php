@@ -429,6 +429,13 @@ $messages['lb'] = array(
 	'regexblock-view-time'          => 'den $1',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'regexblock-view-all' => 'എല്ലാം',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

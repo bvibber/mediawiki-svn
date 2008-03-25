@@ -956,10 +956,16 @@ $messages['stq'] = array(
 	'expand_templates_preview'         => 'Foarschau',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
 $messages['su'] = array(
-	'expandtemplates'                  => 'Mekarkeun citakan',
-	'expand_templates_output'          => 'Hasil:',
-	'expand_templates_ok'              => 'Heug',
+	'expandtemplates'             => 'Mekarkeun citakan',
+	'expand_templates_input'      => 'Téks input:',
+	'expand_templates_output'     => 'Hasil:',
+	'expand_templates_xml_output' => 'Output XML',
+	'expand_templates_ok'         => 'Heug',
+	'expand_templates_preview'    => 'Pramidang',
 );
 
 /** Swedish (Svenska)

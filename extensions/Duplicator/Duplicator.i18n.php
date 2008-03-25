@@ -449,13 +449,20 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'duplicator'                       => 'En Doublon vun enger Säit maachen',
+	'duplicator-toolbox'               => 'Een Doublon vun dëser Säit maachen',
 	'duplicator-options'               => 'Méiglechkeeten',
 	'duplicator-source'                => 'Quell:',
+	'duplicator-dest'                  => 'Zil:',
+	'duplicator-dotalk'                => 'Een Doublon vun der Diskussiounssäit maachen (wann se existéiert)',
 	'duplicator-submit'                => 'Säit duplizéieren',
 	'duplicator-summary'               => 'Vun [[$1]] kopéiert',
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|Versioun gouf|Versioune goufe}} kopéiert.',
 	'duplicator-success-talkcopied'    => "D'Diskussiounssäit gouf och kopéiert.",
 	'duplicator-success-talknotcopied' => "D'Diskussiounssäit konnt net kopéiert ginn.",
+	'duplicator-failed'                => 'Wéint engem onbekannte Feeler konnt keen Doublon vun der Säit gemaach ginn.',
+	'duplicator-source-notexist'       => '[[$1]] gëtt et net. Gitt w.e.g. den Titel vun enger Säit un déi et gëtt.',
+	'duplicator-toomanyrevisions'      => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
 );
 
 /** Marathi (मराठी)

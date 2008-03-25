@@ -36,7 +36,8 @@ $messages['bn'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'contributionseditcount' => 'Tento uživatel má {{plural:$1|editaci|editace|editací}}.',
+	'contributionseditcount'      => 'Tento uživatel má {{plural:$1|editaci|editace|editací}}.',
+	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 
 $messages['de'] = array(
