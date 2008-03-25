@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'scanset-desc' => 'View scanned page images from Andreas Grosz’s CD/DVD sets',
+	'scanset-desc' => 'View scanned page images from Andreas Grosz\'s CD/DVD sets',
 	'scanset_no_name' => 'ScanSet: You must specify a scan set name, e.g. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'ScanSet: Invalid or missing scan set.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Unknown index format',

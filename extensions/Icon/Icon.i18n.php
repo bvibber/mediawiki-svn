@@ -9,8 +9,8 @@
 $messages = array();
 
 $messages['en'] = array(
-	'icon-badimage' => 'Bad image',
-	'icon-badwidth' => 'Bad width',
+	'icon-badimage' => 'Bad Image',
+	'icon-badwidth' => 'Bad Width',
 );
 
 $messages['ar'] = array(

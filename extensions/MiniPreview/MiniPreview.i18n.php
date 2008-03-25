@@ -13,7 +13,7 @@ $messages['en'] = array(
 	'minipreview-files_in_gallery'    => '$1 total files in this gallery.',
 	'minipreview-no_more_files_here'  => 'No more files in this direction.',
 	'minipreview-no_category_gallery' => 'No categories or galleries!',
-	'minipreview-ignore_categories'   => 'The following is a list of category names or name beginnings. These categories will not be displayed by MiniPreview. For example, “* PD-” will make categories that start with “PD-”, such as “PD-old” not display.
+	'minipreview-ignore_categories'   => 'The following is a list of category names or name beginnings. These categories will not be displayed by MiniPreview. For example, "* PD-" will not display all categories that start with "PD-", such as "PD-old".
 * GFDL-
 * GFDL
 * CC-

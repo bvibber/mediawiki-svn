@@ -14,7 +14,7 @@ $messages['en'] = array(
 	'linksearch-pat'   => 'Search pattern:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Search',
-	'linksearch-text'  => 'Wildcards such as “*.wikipedia.org” may be used.<br />
+	'linksearch-text'  => 'Wildcards such as "*.wikipedia.org" may be used.<br />
 Supported protocols: <tt>$1</tt>',
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',

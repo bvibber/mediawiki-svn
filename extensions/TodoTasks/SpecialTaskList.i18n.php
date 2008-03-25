@@ -4,27 +4,27 @@
 
 $messages = array();
 $messages['en'] = array(
-	'tasklist'                => 'Task list',
+	'tasklist'                => 'Task List',
 	'tasklist-parser-desc'    => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
 	'tasklist-special-desc'   => 'Adds a special page for reviewing [[Special:TaskList|tasks assignments]]',
-	'tasklistbyproject'       => 'Task list by project',
+	'tasklistbyproject'       => 'Task List By Project',
 	'tasklistunknownproject'  => 'Unknown project',
 	'tasklistunspecuser'      => 'Unspecified user',
 	'tasklistincorrectuser'   => 'Incorrect username',
 	'tasklistemail'           => 'Dear %s',
-	'tasklistemailsubject'    => '[%s] Task list change',
+	'tasklistemailsubject'    => '[%s] Task List Change',
 	'tasklistmytasks'         => 'My tasks',
-	'tasklistbyprojectbad'    => "'''%s''' is not a valid project. For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistbyprojname'      => "Assigned tasks for '''%s'''",
-	'tasklistchooseproj'      => 'Select project: ',
+	'tasklistbyprojectbad'    => "Project '''%s''' is not a valid project. For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'      => "Assigned Tasks for '''%s'''",
+	'tasklistchooseproj'      => 'Select Project: ',
 	'tasklistprojdisp'        => 'Display',
-	'tasklistbyname'          => '== Todo list for %s ==',
-	'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation instructions] for more details.",
+	'tasklistbyname'          => '== Todo List for %s ==',
+	'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	'tasklistemailbody'       => ",
 
-Someone has assigned a new task for you on %s.
+Someone has assigned a new Task for you on %s.
 
-To see your complete task list go to %s.
+To see your complete Task List go to %s.
 
 Your friendly %s notification system",
 );

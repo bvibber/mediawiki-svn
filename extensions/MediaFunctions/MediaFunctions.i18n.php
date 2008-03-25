@@ -13,8 +13,8 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'mediafunctions-invalid-title' => '“$1” is not a valid title',
-	'mediafunctions-not-exist'     => '“$1” does not exist',
+	'mediafunctions-invalid-title' => '"$1" is not a valid title',
+	'mediafunctions-not-exist'     => '"$1" does not exist',
 );
 
 $messages['ar'] = array(

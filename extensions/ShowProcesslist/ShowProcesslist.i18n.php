@@ -8,9 +8,9 @@
 $messages = array();
 
 $messages['en'] = array(
-	'showprocesslist' => 'Show process list',
+	'showprocesslist' => 'Show Process List',
 	'showprocesslist-desc' => 'Display the output of [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
-	'showprocesslist-id' => 'ID',
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'User',
 	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'db',

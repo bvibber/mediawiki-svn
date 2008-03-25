@@ -6,9 +6,9 @@
 $messages = array();
 
 $messages['en'] = array(
-	'createsigndocument'         => 'Enable document signing',
+	'createsigndocument'         => 'Enable Document Signing',
 	'createsigndoc-head'         =>
-"Use this form to create a ‘Sign document’ page for the provided page, such that
+"Use this form to create a 'Sign Document' page for the provided page, such that
 users will be able to sign it via [[Special:SignDocument]]. Please specify the name
 of the page on which you wish to enable digital signing, members of which
 usergroup should be allowed to sign it, which fields you wish to be visible to users
@@ -25,8 +25,8 @@ all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-pagename'     => 'Page:',
 	'createsigndoc-allowedgroup' => 'Allowed group:',
 	'createsigndoc-email'        => 'E-mail address:',
-	'createsigndoc-address'      => 'House address:',
-	'createsigndoc-extaddress'   => 'City, state, country:',
+	'createsigndoc-address'      => 'House Address:',
+	'createsigndoc-extaddress'   => 'City, State, Country:',
 	'createsigndoc-phone'        => 'Phone number:',
 	'createsigndoc-bday'         => 'Birthdate:',
 	'createsigndoc-minage'       => 'Minimum age:',
@@ -38,7 +38,7 @@ all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 	'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
-	'createsigndoc-error-alreadycreated' => 'Document signing “$1” already exist.'
+	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
 $messages['af'] = array(

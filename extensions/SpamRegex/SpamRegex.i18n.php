@@ -10,9 +10,9 @@ $messages = array();
 $messages['en'] = array(
 	'spamregex' => 'SpamRegex',
 	'spamregex-desc' => '[[Special:Spamregex|Filter]] out unwanted phrases in edited pages, based on regular expressions',
-	'spamregex_summary' => 'The text was found in the page’s summary.',
-	'spamregex-intro' => 'Use this form to effectively block expressions from saving into a page’s text. If the text contains the given expression, change would not be saved and an explanation will be displayed to user that tried to save the page. Caution advised, expressions should not be too short or too common.',
-	'spamregex-page-title' => 'SpamRegex unwanted expressions block',
+	'spamregex_summary' => 'The text was found in the page\'s summary.',
+	'spamregex-intro' => 'Use this form to effectively block expressions from saving into a page\'s text. If the text contains the given expression, change would not be saved and an explanation will be displayed to user that tried to save the page. Caution advised, expressions should not be too short or too common.',
+	'spamregex-page-title' => 'Spam Regex Unwanted Expressions Block',
 	'spamregex-currently-blocked' => "'''Currently blocked phrases:'''",
 	'spamregex-no-currently-blocked' => "'''There are no blocked phrases.'''",
 	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 remove]) added by ',

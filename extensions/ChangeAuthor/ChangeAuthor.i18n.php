@@ -40,10 +40,10 @@ Simply change one or more usernames in the list below, add a comment (optional) 
 	'changeauthor-changeauthors-single' => 'Change author',
 	'changeauthor-explanation-single'   => 'With this form you can change a revision author.
 Simply change the username below, add a comment (optional) and click the \'Change author\' button.',
-	'changeauthor-invalid-username'     => 'Invalid username “$1”.',
-	'changeauthor-nosuchuser'           => 'No such user “$1”.',
+	'changeauthor-invalid-username'     => 'Invalid username "$1".',
+	'changeauthor-nosuchuser'           => 'No such user "$1".',
 	'changeauthor-revview'              => 'Revision #$1 of $2',
-	'changeauthor-nosuchtitle'          => 'There is no page called “$1”.',
+	'changeauthor-nosuchtitle'          => 'There is no page called "$1".',
 	'changeauthor-weirderror'           => 'A very strange error occurred.
 Please retry your request.
 If this error keeps showing up, the database is probably broken.',
