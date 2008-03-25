@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'sitematrix'           => 'List of Wikimedia wikis',
+	'sitematrix-summary'   => 'This special page lists all Wikimedia wikis.',
 	'sitematrix-desc'      => 'Displays a [[Special:SiteMatrix|list of Wikimedia wikis]]',
 	'sitematrix-language'  => 'Language',
 	'sitematrix-project'   => 'Name of project, interproject link and interwiki link',
@@ -172,7 +173,8 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	"sitematrix"           => "Liste der Wikimedia-Wikis",
+	'sitematrix'           => 'Liste der Wikimedia-Wikis',
+	'sitematrix-summary'   => 'Diese Spezialseite zeigt alle Wikis der Wikimedia Foundation.',
 	'sitematrix-desc'      => 'Zeigt eine [[Special:SiteMatrix|Liste der Wikimedia-Wikis]]',
 	'sitematrix-language'  => 'Sprache',
 	'sitematrix-project'   => 'Projektname, Interprojekt-Link und Interwiki-Link',

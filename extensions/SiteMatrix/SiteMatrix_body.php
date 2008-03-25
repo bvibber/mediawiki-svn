@@ -155,15 +155,16 @@ class SiteMatrixPage extends SpecialPage {
 		# Construct the HTML
 
 		# Header row
-		$s = '<table>
+		$s = Xml::openElement( 'table', array( 'id' => 'mw-sitematrix-table' ) ) .
+			"<tr>" .
+				Xml::element( 'th', null, wfMsg( 'sitematrix-language' ) ) .
+				Xml::element( 'th', array( 'colspan' => count( $matrix->sites ) ), wfMsg( 'sitematrix-project' ) ) .
+			"</tr>
 			<tr>
-				<th>' . wfMsg( 'sitematrix-language' ) . '</th>
-				<th colspan="' . count( $matrix->sites ) . '">' . wfMsg( 'sitematrix-project' ) . '</th>
-			</tr><tr>
-				<th>&nbsp;</th>';
+				<th>&nbsp;</th>";
 				foreach ( $matrix->names as $name ) {
-					$s .= '<th>' . $name . '</th>';
-				}
+					$s .= Xml::tags( 'th', null,  $name );
+ 				}
 		$s .= "</tr>\n";
 
 		# Bulk of table
@@ -192,7 +193,7 @@ class SiteMatrixPage extends SpecialPage {
 			$s .= "<td><a href=\"{$url}\">{$matrix->countPerSite[$site]}</a></td>";
 		}
 		$s .= '</tr>';
-		$s .= "</table>\n";
+		$s .= Xml::closeElement( 'table' ) . "\n";
 
 		# Specials
 		$s .= '<h2 id="mw-sitematrix-others">' . wfMsg( 'sitematrix-others' ) . '</h2>';
