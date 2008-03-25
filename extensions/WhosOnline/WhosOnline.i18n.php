@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'whosonline'      => 'Who\'s online',
+	'whosonline'      => 'Who’s online',
 	'whosonline-desc' => 'Displays [[Special:WhosOnline|a list]] of logged-in and anonymous users currently online',
 );
 

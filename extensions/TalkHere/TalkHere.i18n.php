@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'talkhere-headtext'    => '',
 	'talkhere-foottext'    => "The above comments may have been left by visitors.
 
-This site's operators can not take responsibility for the content of such comments.",
+This site’s operators can not take responsibility for the content of such comments.",
 	'talkhere-talkpage'    => 'talk page',
 	'talkhere-notalk'      => "''(no comments yet)''",
 	'talkhere-addcomment'  => 'add comment',

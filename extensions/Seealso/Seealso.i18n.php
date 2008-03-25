@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'seealso'      => 'See also',
-	'seealso-desc' => 'Localised \'See also\' headings using the tag <code><nowiki><seealso></nowiki></code>',
+	'seealso-desc' => 'Localised “See also” headings using the tag <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Afrikaans (Afrikaans)

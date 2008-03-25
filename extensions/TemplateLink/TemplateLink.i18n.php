@@ -14,7 +14,7 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array(
-                'templatelink' => 'Template Link',
+                'templatelink' => 'Template link',
                 'templatelink_empty' => 'You have to supply a parameter.',
                 'templatelink_newtitle' => '$1 (transcluded)',
 );

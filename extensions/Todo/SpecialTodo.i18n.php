@@ -13,7 +13,7 @@ $messages['en'] = array(
 	'todo-desc' => 'Experimental personal [[Special:Todo|todo list]] extension',
 	'todo-tab' => 'todo',
 	'todo-new-queue' => 'new',
-	'todo-mail-subject' => "Completed item on $1's todo list",
+	'todo-mail-subject' => "Completed item on $1’s todo list",
 	'todo-mail-body' => "You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
 
 Item: $2
@@ -37,7 +37,7 @@ $4",
 	'todo-issue-summary' => 'Issue summary:',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'To receive notification by email when the item is closed, type your address here:',
-	'todo-form-submit' => 'Submit Query',
+	'todo-form-submit' => 'Submit query',
 );
 
 /** Arabic (العربية)

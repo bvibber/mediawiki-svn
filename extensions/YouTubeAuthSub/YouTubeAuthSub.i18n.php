@@ -11,13 +11,13 @@ $messages = array();
  * @author Travis Derouin
  */
 $messages['en'] = array(
-	'youtubeauthsub'                     => 'Upload YouTube Video',
+	'youtubeauthsub'                     => 'Upload YouTube video',
 	'youtubeauthsub-desc'                => 'Allows users to [[Special:YouTubeAuthSub|upload videos]] directly to YouTube',
 	'youtubeauthsub_info'                => "To upload a video to YouTube to include on a page, fill out the following information:",
 	'youtubeauthsub_title'               => 'Title',
 	'youtubeauthsub_description'         => 'Description',
-	'youtubeauthsub_password'            => "YouTube Passsword",
-	'youtubeauthsub_username'            => "YouTube Username",
+	'youtubeauthsub_password'            => "YouTube passsword",
+	'youtubeauthsub_username'            => "YouTube username",
 	'youtubeauthsub_keywords'            => 'Keywords',
 	'youtubeauthsub_category'            => 'Category',
 	'youtubeauthsub_submit'              => 'Submit',
