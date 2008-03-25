@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.2.1');
+define('SC_VERSION','0.2.2');
 
 // constants for special properties
 
