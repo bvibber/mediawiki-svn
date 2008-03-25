@@ -13,6 +13,12 @@ class HideRevisionForm extends SpecialPage {
 		global $wgUser, $wgRequest;
 
 		$this->setHeaders();
+
+		if( !$this->userCanExecute( $wgUser ) ){
+			$this->displayRestrictionError();
+			return;
+		}
+
 		$this->outputHeader();
 
 		// For live revisions
@@ -353,8 +359,16 @@ class SpecialOversight extends SpecialPage {
 	 */
 	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgRCMaxAge;
+
 		$this->setHeaders();
+
+		if( !$this->userCanExecute( $wgUser ) ){
+			$this->displayRestrictionError();
+			return;
+		}
+
 		$this->outputHeader();
+
 		$revision = $wgRequest->getIntOrNull( 'revision' );
 		if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 			$this->showDiff( $revision);
