@@ -19,7 +19,7 @@ Removed: $6
 With regards,
 
 $2",
-	'userrightsnotif-desc'    => 'Sends email notification to users upon rights changes',
+	'userrightsnotif-desc'    => 'Sends e-mail notification to users upon rights changes',
 );
 
 /** Arabic (العربية)

@@ -11,7 +11,7 @@ $messages = array();
  * @author Maarten van Dantzich
  */
 $messages['en'] = array(
-	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an email address as image',
+	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an e-mail address as image',
 );
 
 /** Bulgarian (Български)

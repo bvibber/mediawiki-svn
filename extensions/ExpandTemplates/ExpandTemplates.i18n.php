@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expands templates, parser functions and variables]] to show expanded wikitext and preview rendered page',
 	'expand_templates_intro'           => 'This special page takes some text and expands all templates in it recursively.
 It also expands parser functions like
-<nowiki>{{</nowiki>#if:...}}, and variables like
+<nowiki>{{</nowiki>#if:…}}, and variables like
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;in fact pretty much everything in double-braces.
 It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_title'           => 'Context title, for {{PAGENAME}} etc.:',

@@ -36,7 +36,7 @@ $4",
 	'todo-new-item' => 'New item',
 	'todo-issue-summary' => 'Issue summary:',
 	'todo-form-details' => 'Details:',
-	'todo-form-email' => 'To receive notification by email when the item is closed, type your address here:',
+	'todo-form-email' => 'To receive notification by e-mail when the item is closed, type your address here:',
 	'todo-form-submit' => 'Submit Query',
 );
 

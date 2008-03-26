@@ -11,8 +11,8 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'newusernotifsubj'  => 'New User Notification for $1',
-	'newusernotif-desc' => 'Sends email notification when user accounts are created',
+	'newusernotifsubj'  => 'New user notification for $1',
+	'newusernotif-desc' => 'Sends e-mail notification when user accounts are created',
 	'newusernotifbody'  => "Hello $1,
 
 A new user account, $2, has been created on $3 at $4.",

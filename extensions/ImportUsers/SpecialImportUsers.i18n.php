@@ -26,7 +26,7 @@ $messages['en'] = array(
 	'importusers-log-summary-updated'     => 'Updated',
 	'importusers-login-name'              => 'Login name',
 	'importusers-password'                => 'password',
-	'importusers-email'                   => 'email',
+	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'real name',
 );
 

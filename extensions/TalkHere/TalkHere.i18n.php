@@ -26,7 +26,7 @@ This site's operators can not take responsibility for the content of such commen
 	'talkhere-beforeinput' => 'You can add a comment below',
 	'talkhere-afterinput'  => '',
 	'talkhere-afterform'   => '',
-	'talkhere-loading'     => 'loading editor...',
+	'talkhere-loading'     => 'loading editor…',
 	'talkhere-collapse'    => 'hide editor',
 
 );
