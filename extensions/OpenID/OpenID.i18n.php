@@ -28,7 +28,7 @@ $messages = array();
  * @author Evan Prodromou <evan@prodromou.name>
  */
 $messages['en'] = array(
-	'openid-desc' => 'Login to the wiki with an [http://openid.net/ OpenID] and login to other OpenID-aware web sites with a wiki user account',
+	'openid-desc' => 'Login to the wiki with an [http://openid.net/ OpenID], and login to other OpenID-aware web sites with a wiki user account',
 	'openidlogin' => 'Login with OpenID',
 	'openidfinish' => 'Finish OpenID login',
 	'openidserver' => 'OpenID server',
@@ -61,7 +61,8 @@ Please consult this site\'s administrator.',
 	'openidlanguage' => 'Language',
 	'openidnotavailable' => 'Your preferred nickname ($1) is already in use by another user.',
 	'openidnotprovided' => 'Your OpenID server did not provide a nickname (either because it cannot, or because you told it not to).',
-	'openidchooseinstructions' => 'All users need a nickname; you can choose one from the options below.',
+	'openidchooseinstructions' => 'All users need a nickname;
+you can choose one from the options below.',
 	'openidchoosefull' => 'Your full name ($1)',
 	'openidchooseurl' => 'A name picked from your OpenID ($1)',
 	'openidchooseauto' => 'An auto-generated name ($1)',
@@ -87,7 +88,8 @@ If not, try the \"Continue\" button.',
 OpenID lets you log into many different Web sites without using a different password for each.
 (See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
 
-If you already have an account on {{SITENAME}}, you can [[Special:Userlogin|log in]] with your username and password as usual. To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you\'ve logged in normally.
+If you already have an account on {{SITENAME}}, you can [[Special:Userlogin|log in]] with your username and password as usual.
+To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
 
 There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID providers], and you may already have an OpenID-enabled account on another service.
 

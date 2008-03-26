@@ -8,22 +8,22 @@ $messages = array();
 
 $messages['en'] = array(
 	'passwordreset' => 'Password Reset',
-	'passwordreset-desc' => "Resets Wiki user's passwords - requires 'passwordreset' privileges",
-	'passwordreset-invalidusername' => 'Invalid Username',
-	'passwordreset-emptyusername' => 'Empty Username',
-	'passwordreset-nopassmatch' => 'Passwords do not match',
-	'passwordreset-badtoken' => 'Invalid Edit Token',
-	'passwordreset-username' => 'Username',
-	'passwordreset-newpass' => 'New Password',
-	'passwordreset-confirmpass' => 'Confirm Password',
-	'passwordreset-submit' => 'Reset Password',
-	'passwordreset-success' => 'Password has been reset for user_id: $1',
-	'passwordreset-disableuser' => 'Disable User Account?',
-	'passwordreset-disableuserexplain' => '(sets an invalid password hash - user can\'t login)',
-	'passwordreset-disablesuccess' => 'User account has been disabled (user_id: $1)',
-	'passwordreset-accountdisabled' => 'Account has been disabled',
-	'disabledusers' => 'Disabled users',
-	'disabledusers-summary' => 'This is a list of users that have been disabled via PasswordReset.',	
+	'passwordreset-desc'               => "Resets wiki user's passwords - requires 'passwordreset' privileges",
+	'passwordreset-invalidusername'    => 'Invalid username',
+	'passwordreset-emptyusername'      => 'Empty username',
+	'passwordreset-nopassmatch'        => 'Passwords do not match',
+	'passwordreset-badtoken'           => 'Invalid edit token',
+	'passwordreset-username'           => 'Username',
+	'passwordreset-newpass'            => 'New password',
+	'passwordreset-confirmpass'        => 'Confirm password',
+	'passwordreset-submit'             => 'Reset password',
+	'passwordreset-success'            => 'Password has been reset for user_id: $1',
+	'passwordreset-disableuser'        => 'Disable user account?',
+	'passwordreset-disableuserexplain' => '(sets an invalid password hash - user cannot login)',
+	'passwordreset-disablesuccess'     => 'User account has been disabled (user ID: $1)',
+	'passwordreset-accountdisabled'    => 'Account has been disabled',
+	'disabledusers'                    => 'Disabled users',
+	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
 );
 
 $messages['af'] = array(
@@ -93,7 +93,7 @@ $messages['de'] = array(
 	'passwordreset-disablesuccess'     => 'Benutzerkonto für Benutzer-ID $1 wurde deaktiviert.',
 	'passwordreset-accountdisabled'    => 'Benutzerkonto ist deaktiviert',
 	'disabledusers'                    => 'Deaktivierte Benutzerkonten',
-	'disabledusers-summary'            => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',	
+	'disabledusers-summary'            => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',
 );
 
 $messages['el'] = array(

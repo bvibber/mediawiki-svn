@@ -8,19 +8,19 @@
 $messages = array();
 
 $messages['en'] = array(
-	'parserdifftest' => 'Parser diff test',
-	'pdtest-desc' => '[[Special:ParserDiffTest|Special page]] for comparing the output of two different parsers',
-	'pdtest_no_target' => 'No target specified.',
+	'parserdifftest'      => 'Parser diff test',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Special page]] for comparing the output of two different parsers',
+	'pdtest_no_target'    => 'No target specified.',
 	'pdtest_page_missing' => 'The specified page was not found in the database.',
-	'pdtest_no_changes' => 'No changes detected.',
-	'pdtest_time_report' => '<b>$1</b> took $2 seconds, <b>$3</b> took $4 seconds.',
-	'pdtest_title' => 'Context title:',
-	'pdtest_text' => 'Input text:',
-	'pdtest_ok' => 'OK',
-	'pdtest_get_text' => 'Get text from page',
-	'pdtest_diff' => 'Differences',
+	'pdtest_no_changes'   => 'No changes detected.',
+	'pdtest_time_report'  => '<b>$1</b> took $2 seconds, <b>$3</b> took $4 seconds.',
+	'pdtest_title'        => 'Context title:',
+	'pdtest_text'         => 'Input text:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Get text from page',
+	'pdtest_diff'         => 'Differences',
 	'pdtest_side_by_side' => 'Output comparison',
-	'pdt_comparing_page' => 'Comparing parser output from [[$1]]',
+	'pdt_comparing_page'  => 'Comparing parser output from [[$1]]',
 );
 
 /** Aragonese (Aragonés)
@@ -817,4 +817,3 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
-

@@ -16,7 +16,8 @@ $messages['en'] = array(
 	'multipleupload-page'              => "{{ns:project}}:File deletion policy",
 	'multipleupload-text'              => "Upload multiple files here.
 
-Choose 'Browse' and select each file you wish to upload. You can upload from 1 to $1 files at a time.
+Choose 'Browse' and select each file you wish to upload.
+You can upload from 1 to $1 files at a time.
 
 You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
 

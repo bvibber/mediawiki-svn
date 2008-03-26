@@ -13,7 +13,7 @@ $messages = array();
 /** English */
 $messages['en'] = array(
 	'player'                  => 'Player',
-	'player-desc'             => 'Embedded multimedia playback using common browser plugins and a [[Special:Player|special page]]',
+	'player-desc'             => 'Embedded multimedia playback using common browser plugins, and a [[Special:Player|special page]]',
 	'player-title'            => 'Player',
 	'player-playertitle'      => 'Player: $1',
 	'player-pagetext'         => '',

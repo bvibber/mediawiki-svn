@@ -166,4 +166,3 @@ $messages['stq'] = array(
 $messages['te'] = array(
 	'protectsection_modify' => 'సంరక్షిత పాఠ్యాన్ని మార్చడానికి మీరు ప్రయత్నించారు',
 );
-

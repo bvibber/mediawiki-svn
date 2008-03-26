@@ -14,28 +14,28 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'patrol' => 'Patrol edits',
-	'patrol-desc' => 'Enhanced patrolling interface with workload sharing',
-	'patrol-endorse' => 'Endorse',
-	'patrol-revert' => 'Revert',
-	'patrol-revert-reason' => 'Reason:',
-	'patrol-skip' => 'Skip',
-	'patrol-reverting' => 'Reverting: $1',
-	'patrol-nonefound' => 'No suitable edits could be found for patrolling.',
-	'patrol-endorsed-ok' => 'The edit was marked patrolled.',
+	'patrol'                 => 'Patrol edits',
+	'patrol-desc'            => 'Enhanced patrolling interface with workload sharing',
+	'patrol-endorse'         => 'Endorse',
+	'patrol-revert'          => 'Revert',
+	'patrol-revert-reason'   => 'Reason:',
+	'patrol-skip'            => 'Skip',
+	'patrol-reverting'       => 'Reverting: $1',
+	'patrol-nonefound'       => 'No suitable edits could be found for patrolling.',
+	'patrol-endorsed-ok'     => 'The edit was marked patrolled.',
 	'patrol-endorsed-failed' => 'The edit could not be marked patrolled.',
-	'patrol-reverted-ok' => 'The edit was reverted.',
+	'patrol-reverted-ok'     => 'The edit was reverted.',
 	'patrol-reverted-failed' => 'The edit could not be reverted.',
-	'patrol-skipped-ok' => 'Ignoring edit.',
-	'patrol-reasons' => "* Simple vandalism
+	'patrol-skipped-ok'      => 'Ignoring edit.',
+	'patrol-reasons'         => "* Simple vandalism
 * Newbie test
 * See talk page",
-	'patrol-another' => 'Show another edit, if available.',
-	'patrol-stopped' => 'You have opted not to patrol another edit. $1',
-	'patrol-resume' => 'Click here to resume.',
-	'group-patroller' => 'Patrollers',
+	'patrol-another'         => 'Show another edit, if available.',
+	'patrol-stopped'         => 'You have opted not to patrol another edit. $1',
+	'patrol-resume'          => 'Click here to resume.',
+	'group-patroller'        => 'Patrollers',
 	'group-patroller-member' => 'Patroller',
-	'grouppage-patroller' => '{{ns:project}}:Patroller',
+	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
 /** Arabic (العربية)

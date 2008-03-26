@@ -11,7 +11,7 @@ $messages = array();
  * @author Roan Kattouw
  */
 $messages['en'] = array(
-	'editown-desc' => 'Users without the editall right can only edit pages they\'ve created',
+	'editown-desc' => 'Users without the editall right can only edit pages they have created',
 );
 
 /** Arabic (العربية)

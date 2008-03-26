@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'sitenotice_id'    => '0', # Don't translate this
+	'sitenotice_id'    => '0', # Do not translate this
 	'sitenotice_close' => 'dismiss',
 	'sitenotice-desc'  => 'Allows users to close the sitenotice',
 );

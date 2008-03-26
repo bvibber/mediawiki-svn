@@ -11,7 +11,7 @@ $messages = array();
  * @author [http://www.organicdesign.co.nz/User:Nad Nad]
  */
 $messages['en'] = array(
-	'newusermessage-desc' => "Add a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
+	'newusermessage-desc' => "Adds a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
 );
 
 /** Arabic (العربية)

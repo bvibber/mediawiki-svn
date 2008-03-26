@@ -10,49 +10,54 @@ $messages = array();
  * @author Brion Vibber
  */
 $messages['en'] = array(
-	'hiderevision' => 'Permanently hide revisions',
-	'hiderevision-desc' => 'Hide individual revisions from all users for legal reasons, etc.',
-	'group-oversight' => 'Oversighters',
+	'hiderevision'           => 'Permanently hide revisions',
+	'hiderevision-desc'      => 'Hide individual revisions from all users for legal reasons, etc.',
+	'group-oversight'        => 'Oversighters',
 	'group-oversight-member' => 'Oversight',
-	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'grouppage-oversight'    => '{{ns:project}}:Oversight',
+
 	// Empty form
-	'hiderevision-prompt' => 'Revision number to remove:',
+	'hiderevision-prompt'   => 'Revision number to remove:',
 	'hiderevision-continue' => 'Continue',
+
 	// Confirmation form
-	'hiderevision-text' => "This should '''only''' be used for the following cases:
+	'hiderevision-text'   => "This should '''only''' be used for the following cases:
 * Inappropriate personal information
 *: ''home addresses and telephone numbers, social security numbers, etc''
 
 '''Abuse of this system will result in loss of privileges.'''
 
-Removed items will not be visible to anyone through the web site,
-but the deletions are logged and can be restored manually by a
-database administrator if you make a mistake.",
+Removed items will not be visible to anyone through the web site, but the deletions are logged and can be restored manually by a database administrator if you make a mistake.",
 	'hiderevision-reason' => 'Reason (will be logged privately):',
 	'hiderevision-submit' => 'Hide this data permanently',
+
 	// Tab displayed to allowed users on old revision display
 	'hiderevision-tab' => 'Hide revision',
+
 	// Status & errors on action
-	'hiderevision-norevisions' => 'No revisions specified to delete.',
-	'hiderevision-noreason' => 'You must decribe the reason for this removal.',
-	'hiderevision-status' => 'Revision $1: $2',
-	'hiderevision-success' => 'Archived and deleted successfully.',
-	'hiderevision-error-missing' => 'Not found in database.',
-	'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
-	'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
+	'hiderevision-norevisions'    => 'No revisions specified to delete.',
+	'hiderevision-noreason'       => 'You must decribe the reason for this removal.',
+	'hiderevision-status'         => 'Revision $1: $2',
+	'hiderevision-success'        => 'Archived and deleted successfully.',
+	'hiderevision-error-missing'  => 'Not found in database.',
+	'hiderevision-error-current'  => 'Cannot delete the latest edit to a page.
+Revert this change first.',
+	'hiderevision-error-delete'   => 'Could not archive; was it previously deleted?',
 	'hiderevision-archive-status' => 'Deleted revision from $1: $2',
 	'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:
 *The page was deleted
 *This hidden revision was the first revision',
+
 	// Logging
 	'oversight-log-hiderev' => 'removed an edit from $1',
+
 	// Oversight review page
-	'oversight' => 'Oversight',
-	'oversight-view' => 'details',
+	'oversight'            => 'Oversight',
+	'oversight-view'       => 'details',
 	'oversight-difference' => '(Difference from previous remaining revision)',
-	'oversight-prev' => 'Last previous revision',
-	'oversight-hidden' => 'Hidden revision',
-	'oversight-header' => 'Below is a list of revisions recently permanently hidden from public view.
+	'oversight-prev'       => 'Last previous revision',
+	'oversight-hidden'     => 'Hidden revision',
+	'oversight-header'     => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
 );
 
@@ -1130,7 +1135,7 @@ $messages['mr'] = array(
 '''या उपकरणाचा अयोग्य वापर केल्यास अधिकार काढून घेतले जातील.'''
 
 वगळलेली पाने या संकेतस्थळावर कुणीही पाहू शकणार नाहीत, पण
-वगळल्याची नोंद केली जाईल व जर तुमच्याकडून चूक झाली तर डाटाबेस प्रबंधकांना ती पुन्हा 
+वगळल्याची नोंद केली जाईल व जर तुमच्याकडून चूक झाली तर डाटाबेस प्रबंधकांना ती पुन्हा
 आणता येतील.",
 	'hiderevision-reason'         => 'कारण (हे गोपनीयरित्या नोंदले जाईल):',
 	'hiderevision-submit'         => 'हा डाटा कायमस्वरूपी लपवा',
@@ -1837,7 +1842,7 @@ $messages['tg'] = array(
 	'hiderevision-error-current'  => 'Охирин вироиши як саҳифаро наметавон ҳазф кард. Ибтидо охирин тағйиротро вогардонӣ кунед.',
 	'hiderevision-error-delete'   => 'Имкони бойгонӣ кардан вуҷуд надошт; оё қаблан ҳазф шудааст?',
 	'hiderevision-archive-status' => 'Нусхае аз $1ро ҳазф кард: $2',
-	'oversight-nodiff'            => 'Имкони дунбол кардани тағйирот вуҷуд надорад, чунки ин саҳифа дар ҳоли ҳозир нусхаи кӯҳнатерро надорад. 
+	'oversight-nodiff'            => 'Имкони дунбол кардани тағйирот вуҷуд надорад, чунки ин саҳифа дар ҳоли ҳозир нусхаи кӯҳнатерро надорад.
 Эҳтимолан:
 *Саҳифа ҳазф шудааст
 *Нусхаи пинҳоншуда аввалин нусхаи саҳифа будааст',

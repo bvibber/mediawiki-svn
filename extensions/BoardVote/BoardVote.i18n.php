@@ -35,7 +35,7 @@ position. In the event of a tie, a run-off election will be held.</p>
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
 you approve of.</p>",
-	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_footer'        => "&nbsp;", # Do not translate this
 	'boardvote_entered'       => "Thank you, your vote has been recorded.
 
 If you wish, you may record the following details. Your voting record is:
@@ -1698,7 +1698,7 @@ $messages['id'] = array(
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ\" class=\"external\">Tanya jawab Pemilihan</a></li>
 <li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en\" class=\"external\">Kandidat</a></li></ul>",
 	'boardvote_intro_change'  => "<p>Anda telah memilih sebelumnya. Meskipun demikian, Anda masih dapat mengganti pilihan Anda pada isian berikut. Harap pilih kotak disamping masing-masing kandidat yang Anda pilih.</p>",
-	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_footer'        => "&nbsp;", # Do not translate this
 	'boardvote_entered'       => "Terima kasih, pilihan Anda telah dicatat.
 
 Jika mau, Anda dapat mencatat detil berikut. Catatan suara Anda adalah:
@@ -3403,7 +3403,7 @@ ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog zna
 ",
 	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
 Molimo odaberite kandidate za koje glasate.</p>",
-	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_footer'        => "&nbsp;", # Do not translate this
 	'boardvote_entered'       => "Hvala vam, vaš glas je snimljen.
 
 Ukoliko želite, možete sačuvati sledeće detalje. Vaše glasački snimak je:
