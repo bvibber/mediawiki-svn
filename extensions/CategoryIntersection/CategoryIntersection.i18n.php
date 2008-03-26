@@ -212,6 +212,15 @@ $messages['sk'] = array(
 	'categoryintersection-results'       => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'categoryintersection'         => 'Pasampangan kategori',
+	'categoryintersection-doit'    => 'Béréndélkeun kaca nu kawengku kategori-kategori ieu',
+	'categoryintersection-results' => 'Sungsian nyanggut $1 hasil.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

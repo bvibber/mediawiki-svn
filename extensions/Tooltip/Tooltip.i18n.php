@@ -79,3 +79,10 @@ $messages['sv'] = array(
 	'tooltip-desc' => 'Lägger till <tt><nowiki><tooltip></nowiki></tt> och <tt><nowiki>{{#tooltip:}}</nowiki></tt>-taggarna',
 );
 
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'tooltip-desc' => '新增 <tt><nowiki><tooltip></nowiki></tt> 及 <tt><nowiki>{{#tooltip:}}</nowiki></tt> 標記',
+);
+

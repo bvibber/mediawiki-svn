@@ -49,6 +49,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'sitematrix'           => 'قائمة مشاريع ويكيميديا',
+	'sitematrix-summary'   => 'هذه الصفحة الخاصة تعرض كل ويكيات ويكيميديا.',
 	'sitematrix-desc'      => 'يعرض [[Special:SiteMatrix|قائمة بويكيات ويكيميديا]]',
 	'sitematrix-language'  => 'اللغة',
 	'sitematrix-project'   => 'اسم المشروع، وصلة المشروع الداخلية ووصلة الإنترويكي',
@@ -283,12 +284,13 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
- * @author Sherbrooke
  * @author Grondin
+ * @author Sherbrooke
  * @author Seb35
  */
 $messages['fr'] = array(
 	'sitematrix'           => 'Liste des wikis de Wikimedia Foundation',
+	'sitematrix-summary'   => 'Ce page spéciale affiche tous les wikis de la Fondation Wikimedia.',
 	'sitematrix-desc'      => 'Affiche une [[Special:SiteMatrix|liste de wikis de la Fondation Wikimedia]]',
 	'sitematrix-language'  => 'Langue',
 	'sitematrix-project'   => 'Nom du projet, lien interprojet et lien interwiki',
@@ -619,6 +621,7 @@ $messages['lv'] = array(
  */
 $messages['mr'] = array(
 	'sitematrix'           => 'विकिमीडियाच्या विकिंची यादी',
+	'sitematrix-summary'   => 'हे विशेष पृष्ठ सर्व विकिमीडिया विकिंची यादी देते.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|विकिमीडिया विकिंची यादी]] दर्शविते',
 	'sitematrix-language'  => 'भाषा',
 	'sitematrix-project'   => 'प्रकल्पाचे नाव, आंतरप्रकल्प दुवे आणि आंतरविकि दुवे',
@@ -659,6 +662,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'sitematrix'           => "Lijst met Wikimedia-wiki's",
+	'sitematrix-summary'   => "Deze speciale pagina geeft een overzicht van alle wiki's van Wikimedia.",
 	'sitematrix-desc'      => 'Een [[Special:SiteMatrix|lijst van Wikimedia-wikis]]',
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => 'Naam van het project, interprojectlink en interwikilink',
@@ -784,6 +788,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'sitematrix'           => 'Список проектов Викимедиа',
+	'sitematrix-summary'   => 'Эта служебная страница перечисляет все вики-проекты Викимедиа.',
 	'sitematrix-desc'      => 'Показывает [[Special:SiteMatrix|список проектов Викимедиа]]',
 	'sitematrix-language'  => 'Язык',
 	'sitematrix-project'   => 'Имя проекта, межпроектная ссылка и интервики',
@@ -810,6 +815,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'sitematrix'           => 'Zoznam wiki projektov Nadácie Wikimedia',
+	'sitematrix-summary'   => 'Táto špeciálna stránka obsahuje zoznam všetkých lokalít Wikimedia.',
 	'sitematrix-desc'      => 'Zobrazenie [[Special:SiteMatrix|zoznamu wiki projektov Wikimedia]]',
 	'sitematrix-language'  => 'Jazyk',
 	'sitematrix-project'   => 'Názov projektu, medziprojektový odkaz a interwiki odkaz',
@@ -855,19 +861,23 @@ $messages['stq'] = array(
  * @author לערי ריינהארט
  */
 $messages['su'] = array(
-	'sitematrix'          => 'Béréndélan wiki Wikimédia',
-	'sitematrix-desc'     => 'Témbongkeun [[Special:SiteMatrix|béréndélan wiki Wikimédia]]',
-	'sitematrix-language' => 'Basa',
-	'sitematrix-project'  => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
-	'sitematrix-others'   => 'Proyék laina ti Wikimedia',
+	'sitematrix'           => 'Béréndélan wiki Wikimédia',
+	'sitematrix-desc'      => 'Témbongkeun [[Special:SiteMatrix|béréndélan wiki Wikimédia]]',
+	'sitematrix-language'  => 'Basa',
+	'sitematrix-project'   => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
+	'sitematrix-others'    => 'Proyék laina ti Wikimedia',
+	'sitematrix-total'     => "'''Jumlah: $1'''",
+	'sitematrix-sitetotal' => 'Jumlah',
 );
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  * @author לערי ריינהארט
  */
 $messages['sv'] = array(
 	'sitematrix'           => 'Lista över Wikimedias wikier',
+	'sitematrix-summary'   => 'Denna specialsida listar alla Wikimedias wikier.',
 	'sitematrix-desc'      => 'Visar en [[Special:SiteMatrix|lista över Wikimedias wikier]]',
 	'sitematrix-language'  => 'Språk',
 	'sitematrix-project'   => 'Projektnamn, interprojektlänk och interwiki-länk',

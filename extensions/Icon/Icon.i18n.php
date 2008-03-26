@@ -59,9 +59,14 @@ $messages['eo'] = array(
 	'icon-badwidth' => 'Fuŝa Larĝo',
 );
 
+/** French (Français)
+ * @author Dereckson
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'icon-badimage' => 'Image corrompue',
 	'icon-badwidth' => 'Largeur erronée',
+	'icon-desc'     => 'Vous autorise l’utilisation des images comme icônes ou de liens sous forme d’icônes',
 );
 
 $messages['gl'] = array(
@@ -125,6 +130,7 @@ $messages['lt'] = array(
 $messages['mr'] = array(
 	'icon-badimage' => 'चुकीचे चित्र',
 	'icon-badwidth' => 'चुकीची रूंदी',
+	'icon-desc'     => 'आयकॉन व आयकॉन दुवा म्हणून चित्र वापरण्याची परवानगी देते',
 );
 
 /** Dutch (Nederlands)
@@ -133,6 +139,7 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'icon-badimage' => 'Onjuist bestand',
 	'icon-badwidth' => 'Onjuiste breedte',
+	'icon-desc'     => 'Maakt het mogelijk om afbeeldingen als iconen en icoonlinks te gebruiken',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -235,3 +242,4 @@ $messages['zh-hant'] = array(
 	'icon-badwidth' => '寬度錯誤',
 	'icon-desc'     => '增加icon參數以產生於圖像上的連結',
 );
+

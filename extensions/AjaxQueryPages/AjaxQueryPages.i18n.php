@@ -137,6 +137,13 @@ $messages['sk'] = array(
 	'ajax-qp-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{MediaWiki:shortpages}}]]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'ajax-qp-desc' => 'Tambah sababaraha AJAX ka QueryPages kawas [[Special:Shortpages]]',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

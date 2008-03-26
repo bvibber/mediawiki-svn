@@ -2443,6 +2443,7 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'boardvote'              => 'വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തിരഞ്ഞെടുപ്പ്',
@@ -2450,6 +2451,12 @@ $messages['ml'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|വോട്ട് ചെയ്യുക]]
 * [[Special:Boardvote/list|ഇന്നുവരെയുള്ള വോട്ടുകള്‍ നിരത്തുക]]
 * [[Special:Boardvote/dump|എന്‍‌ക്രിപ്റ്റ് ചെയ്ത തെരഞ്ഞെടുപ്പ് റിക്കാര്‍ഡുകള്‍ ശേഖരിക്കുക]]',
+	'boardvote_notloggedin'  => 'താങ്കള്‍ ലോഗിന്‍ ചെയ്തിട്ടില്ല.
+
+വോട്ടു ചെയ്യണമെങ്കില്‍ $2നു മുന്‍പ് $1 തിരുത്തലുകള്‍ നടത്തിയിരിക്കുകയും, ആദ്യത്തെ തിരുത്തല്‍ $3നു മുന്‍പായിരിക്കുകയും വേണം.',
+	'boardvote_notqualified' => 'ഈ തിരഞ്ഞെടുപ്പിനു വോട്ടു ചെയ്യാന്‍ താങ്കള്‍ യോഗ്യത നേടിയിട്ടില്ല.
+
+യോഗ്യത നേടണങ്കില്‍ $2 നു മുന്‍പ് $3 തിരുത്തലുകള്‍ നടത്തിയിരിക്കുകയും, ആദ്യത്തെ തിരുത്തല്‍ $5നു മുന്‍പായിരിക്കുകയും വേണം.',
 	'boardvote_novotes'      => 'ആരും ഇതുവരെ വോട്ടുചെയ്തിട്ടില്ല.',
 	'boardvote_time'         => 'സമയം',
 	'boardvote_user'         => 'ഉപയോക്താവ്',
@@ -2460,6 +2467,7 @@ $messages['ml'] = array(
 	'boardvote_dumplink'     => 'ഇവിടെ അമര്‍ത്തുക',
 	'boardvote_submit'       => 'ശരി',
 	'boardvote_strike'       => 'വെട്ടുക',
+	'boardvote_needadmin'    => 'ഈ പ്രവര്‍ത്തി ചെയ്യാന്‍ തിരഞ്ഞെടുപ്പു കാര്യനിര്‍‌വാഹകര്‍ക്കു മാത്രമേ അനുമതിയുള്ളൂ.',
 	'boardvote_notstarted'   => 'വോട്ടെടുപ്പ് ആരംഭിച്ചിട്ടില്ല',
 	'boardvote_closed'       => 'വോട്ടെടുപ്പ് അവസാനിച്ചു, താമസിയാതെതന്നെ [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En തെരഞ്ഞെടുപ്പു താള്‍] ശ്രദ്ധിച്ചാല്‍ ഫലങ്ങള്‍ അറിയാവുന്നതാണ്.',
 	'boardvote_edits_many'   => 'ധാരാളം',
@@ -3827,11 +3835,16 @@ $messages['uk'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Проголосувати]]
 * [[Special:Boardvote/list|Переглянути список тих, хто вже проголосував]]
 * [[Special:Boardvote/dump|Переглянути зашифрований запис голосів]]',
+	'boardvote_novotes'      => 'Ще ніхто не проголосував.',
 	'boardvote_time'         => 'Час',
 	'boardvote_user'         => 'Користувач',
 	'boardvote_edits'        => 'Кількість редагувань',
+	'boardvote_days'         => 'Дні',
+	'boardvote_notstarted'   => 'Голосування ще не розпочалося',
+	'boardvote_edits_many'   => 'багато',
 	'group-boardvote'        => 'Члени виборчкому',
 	'group-boardvote-member' => 'Член виборчкому',
+	'grouppage-boardvote'    => '{{ns:project}}:Члени виборчкому',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -4300,3 +4313,4 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'boardvote_time' => 'Isikhathi',
 );
+

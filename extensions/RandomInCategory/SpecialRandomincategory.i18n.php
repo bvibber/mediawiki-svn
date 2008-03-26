@@ -38,6 +38,14 @@ $messages['bg'] = array(
 	'randomincategory-label'      => 'Категория:',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'randomincategory-label'  => 'Categoria:',
+	'randomincategory-submit' => 'Vés-hi',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -278,6 +286,14 @@ $messages['te'] = array(
 	'randomincategory-nocategory' => '$1 అనే వర్గం లేదు లేదా ఖాళీగా ఉంది',
 	'randomincategory-label'      => 'వర్గం:',
 	'randomincategory-submit'     => 'వెళ్ళు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'randomincategory-label'  => 'Kategoria:',
+	'randomincategory-submit' => 'Bá',
 );
 
 /** Volapük (Volapük)

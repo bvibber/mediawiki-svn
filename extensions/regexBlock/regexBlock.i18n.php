@@ -148,6 +148,13 @@ $messages['bg'] = array(
 	'regexblock-view-stats'           => '(статистика)',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'regexblock-view-go' => 'Vés-hi',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -796,7 +803,9 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'regexblock-view-all' => 'Hotu',
+	'regexblock-stats-username' => 'Ba $1',
+	'regexblock-view-all'       => 'Hotu',
+	'regexblock-view-go'        => 'Bá',
 );
 
 /** Tajik (Тоҷикӣ)

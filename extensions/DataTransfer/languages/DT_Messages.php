@@ -62,6 +62,13 @@ $messages['bg'] = array(
 	'dt_xml_freetext'             => 'Свободен текст',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'dt_xml_page' => 'Pàgina',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -169,10 +169,13 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'templatelink' => 'Mallänk',
+	'templatelink'          => 'Mallänk',
+	'templatelink_empty'    => 'Du måste ange en parameter.',
+	'templatelink_newtitle' => '$1 (inkluderas)',
 );
 
 /** Tamil (தமிழ்)

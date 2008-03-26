@@ -1071,6 +1071,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ahonc
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
@@ -1093,7 +1094,7 @@ $messages['ru'] = array(
 	'badimages-log-header'     => 'Это журнал изменений [[{{MediaWiki:Badimages-page}}|списка нежелательных изображений]].',
 	'badimages-log-add'        => ' [[$1]] добавлено в список нежелательных изображений',
 	'badimages-log-remove'     => '[[$1]] удалено из списка нежелательных изображений',
-	'badimages-page'           => '{{ns:help}}:Список нежелательных изображени',
+	'badimages-page'           => '{{ns:help}}:Список нежелательных изображений',
 );
 
 /** Yakut (Саха тыла)
@@ -1267,12 +1268,13 @@ $messages['stq'] = array(
 );
 
 /** Sundanese (Basa Sunda)
- * @author Kandar
  * @author Irwangatot
  * @author SPQRobin
+ * @author Kandar
  */
 $messages['su'] = array(
 	'badimages'                => 'Daptar gambar rusak',
+	'badimages-desc'           => 'Legaan kabisa MediaWiki pikeun ngadaptar gambar butut',
 	'badimages-add-btn'        => 'Tambahkeun',
 	'badimages-added'          => '$1 ditambahkeun ka daptar.',
 	'badimages-count'          => "Aya '''$1''' Gambar dina daptar gambar rusak.",
@@ -1409,17 +1411,26 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'badimages'             => 'Список небажаних зображень',
-	'badimages-desc'        => 'Розширює можливості списку заборонених зображень MediaWiki',
-	'badimages-add-btn'     => 'Додати',
-	'badimages-added'       => '$1 додано до списку.',
-	'badimages-count'       => "Усього в списку '''$1''' небажаних зображень.",
-	'badimages-name'        => 'Назва:',
-	'badimages-not-added'   => 'Зображення не може бути доданим.',
-	'badimages-not-removed' => 'Зображення не може бути вилученим.',
-	'badimages-reason'      => 'Причина:',
-	'badimages-remove'      => '(вилучити)',
-	'badimages-remove-btn'  => 'Вилучити',
+	'badimages'                => 'Список небажаних зображень',
+	'badimages-desc'           => 'Розширює можливості списку заборонених зображень MediaWiki',
+	'badimages-add-btn'        => 'Додати',
+	'badimages-added'          => '$1 додано до списку.',
+	'badimages-count'          => "Усього в списку '''$1''' небажаних зображень.",
+	'badimages-name'           => 'Назва:',
+	'badimages-not-added'      => 'Зображення не може бути доданим.',
+	'badimages-not-removed'    => 'Зображення не може бути вилученим.',
+	'badimages-reason'         => 'Причина:',
+	'badimages-remove'         => '(вилучити)',
+	'badimages-remove-btn'     => 'Вилучити',
+	'badimages-remove-confirm' => 'Будь ласка, підтвердіть вилучення $1 зі списку:',
+	'badimages-removed'        => '$1 було вилучене зі списку.',
+	'badimages-subheading'     => 'Поточний вміст',
+	'badimages-unprivileged'   => '(У вас недостатньо прав для зміни цього списку)',
+	'badimages-log-name'       => 'Список небажаних зображень',
+	'badimages-log-header'     => 'Це журнал змін [[{{MediaWiki:Badimages-page}}|списку небажаних зображень]].',
+	'badimages-log-add'        => '[[$1]] додане до списку небажаних зображень',
+	'badimages-log-remove'     => '[[$1]] вилучене зі списку небажаних зображень',
+	'badimages-page'           => '{{ns:help}}:Список небажаних зображень',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -1538,3 +1549,4 @@ $messages['zh-hant'] = array(
 	'badimages-log-remove'     => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page'           => '{{ns:help}}:壞圖像列表',
 );
+

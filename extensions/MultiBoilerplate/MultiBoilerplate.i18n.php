@@ -83,6 +83,13 @@ $messages['lb'] = array(
 	'multiboilerplate-submit' => 'Lueden',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'multiboilerplate-legend' => 'बॉईलरप्लेट निवडा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

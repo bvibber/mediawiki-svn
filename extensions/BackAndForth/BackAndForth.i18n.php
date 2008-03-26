@@ -442,6 +442,15 @@ $messages['stq'] = array(
 	'backforth-prev' => 'Foarige ($1)',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'backforth-next' => 'Salajengna ($1)',
+	'backforth-desc' => 'Nambahkeun tumbu kaca “Salajengna” jeung “Saméméhna” nurutkeun alfabét ka punclut kaca',
+	'backforth-prev' => 'Saméméhna ($1)',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */
@@ -534,3 +543,4 @@ $messages['zh-hant'] = array(
 	'backforth-desc' => '在頁面的最上面增加「上一條」和「下一條」的連結',
 	'backforth-prev' => '上一條 ($1)',
 );
+

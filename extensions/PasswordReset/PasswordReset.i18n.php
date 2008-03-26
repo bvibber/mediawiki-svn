@@ -253,6 +253,21 @@ $messages['lb'] = array(
 	'passwordreset-submit'        => 'Passwuert zrécksetzen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'passwordreset'                 => 'परवलीचा शब्द पूर्ववत करा',
+	'passwordreset-invalidusername' => 'चुकीचे सदस्यनाव',
+	'passwordreset-emptyusername'   => 'रिकामे सदस्यनाव',
+	'passwordreset-nopassmatch'     => 'परवलीचे शब्द जुळले नाहीत',
+	'passwordreset-username'        => 'सदस्यनाव',
+	'passwordreset-newpass'         => 'नवीन परवलीचा शब्द',
+	'passwordreset-confirmpass'     => 'परवलीचा शब्द पुन्हा लिहा',
+	'passwordreset-submit'          => 'परवलीचा शब्द पूर्ववत करा',
+	'passwordreset-disableuser'     => 'सदस्य खाते प्रलंबित करायचे का?',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -253,6 +253,7 @@ $messages['mr'] = array(
 	'multipleupload'                   => 'संचिका चढवा',
 	'multipleupload-ignoreallwarnings' => "'''सर्व सूचना''' दुर्लक्षित करा व सर्व संचिका जतन करा.",
 	'multipleupload-saveallfiles'      => 'सर्व संचिका जतन करा',
+	'multipleupload-page'              => '{{ns:project}}:संचिका वगळण्याची नीती',
 	'multiupload-fileuploaded'         => 'संचिका चढविलेली आहे.',
 	'multiupload-toolbox'              => 'अनेक संचिका चढवा',
 );

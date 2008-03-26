@@ -178,6 +178,14 @@ $messages['sk'] = array(
 	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|zoznam]] prihlásených a anonymných používateľov, ktorí sú momentálne online',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'whosonline'      => 'Nu keur manco',
+	'whosonline-desc' => 'Témbongkeun [[Special:WhosOnline|béréndélan]] pamaké asup log atawa anonim nu keur manco',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

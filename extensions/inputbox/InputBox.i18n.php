@@ -308,7 +308,9 @@ $messages['grc'] = array(
 	'createarticle' => 'Δέλτον ποιῆσαι',
 );
 
-/** Gujarati (ગુજરાતી) */
+/** Gujarati (ગુજરાતી)
+ * @author Dsvyas
+ */
 $messages['gu'] = array(
 	'createarticle' => 'નવો લેખ શરૂ કરો',
 );
@@ -544,7 +546,7 @@ $messages['li'] = array(
  */
 $messages['lo'] = array(
 	'tryexact'       => 'ໄປ',
-	'searchfulltext' => 'ສະແດງລາຍການ',
+	'searchfulltext' => 'ຊອກຫາ',
 	'createarticle'  => 'ສ້າງບົດຄວາມ',
 );
 

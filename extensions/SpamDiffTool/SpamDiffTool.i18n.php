@@ -141,6 +141,7 @@ $messages['eo'] = array(
  * @author Urhixidur
  * @author Sherbrooke
  * @author Grondin
+ * @author Siebrand
  */
 $messages['fr'] = array(
 	'spamdifftool'                  => 'Gestion de la Liste noire des pourriels',
@@ -149,7 +150,10 @@ $messages['fr'] = array(
 	'spamdifftool_notext'           => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
 	'spamdifftool_confirm'          => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
 	'spamdifftool_summary'          => 'Ajouté à la Liste noire des pourriels',
-	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications. Lesquelles voulez-vous ajouter à la liste noire des pourriels ? Ces options vont des plus restrictives aux moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.
+	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications.
+Lesquelles voulez-vous ajouter à la liste noire des pourriels ?
+Ces options vont des plus restrictives aux moins restrictives.
+Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.
 
 Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Aucune URL n’a été détectée. Cliquez <a href='$1'>ici</a> pour revenir en arrière.",
@@ -182,6 +186,7 @@ $messages['gl'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
 	'spamdifftool'                  => 'Spamowu čornu lisćinu zrjadować',
@@ -190,7 +195,8 @@ $messages['hsb'] = array(
 	'spamdifftool_notext'           => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
 	'spamdifftool_confirm'          => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
 	'spamdifftool_summary'          => 'Spamowej čornej lisćinje přidać',
-	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.
+	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać?
+Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.
 
 Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
 	'spamdifftool_no_urls_detected' => "Njebuchu žane url wotkryte. Klikń <a href='$1'>sem</a>, zo by so wróćił.",
@@ -253,7 +259,10 @@ $messages['nl'] = array(
 	'spamdifftool_notext'           => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
 	'spamdifftool_confirm'          => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",
 	'spamdifftool_summary'          => 'Toevoegen aan de Zwarte Lijst tegen spam',
-	'spamdifftool_urls_detected'    => "In de bewerking(en) zijn de volgende URL's aangetroffen. Welke wilt u toevoegen aan de Zwarte Lijst voor Spam? Deze opties gaan van meer beperkend naar minder beperkend. Het blokkeren van een volledig domein betekent dat geen enkele verwijzing naar dat domein wordt toegelaten.
+	'spamdifftool_urls_detected'    => "In de bewerking(en) zijn de volgende URL's aangetroffen.
+Welke wilt u toevoegen aan de zwarte lijst voor spam?
+Deze opties gaan van meer beperkend naar minder beperkend.
+Het blokkeren van een volledig domein betekent dat geen enkele verwijzing naar dat domein wordt toegelaten.
 
 Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoals blogpost.com, geocities.com, enzovoort.",
 	'spamdifftool_no_urls_detected' => "Er werden geen URL's gevonden. Klik <a href='$1'>hier</a> om terug te keren.",
@@ -266,8 +275,9 @@ Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoa
 	'spamdifftool_submit_buttom'    => 'OK',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['no'] = array(
 	'spamdifftool'                  => 'Håndter spamsvartelisten',
@@ -276,7 +286,9 @@ $messages['no'] = array(
 	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
 	'spamdifftool_confirm'          => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
 	'spamdifftool_summary'          => 'Legger til i spamsvartelisten',
-	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen; hvilken av dem vil du legge til i spamsvartelisten? Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.
+	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen;
+hvilken av dem vil du legge til i spamsvartelisten?
+Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.
 
 Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost.com, geocities.com osv.',
 	'spamdifftool_no_urls_detected' => "Ingen URL-er funnet. <a href='$1'>Gå tilbake</a>.",
@@ -291,6 +303,7 @@ Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'spamdifftool'                  => 'Gestion de la Lista Negra dels Spams',
@@ -299,7 +312,10 @@ $messages['oc'] = array(
 	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm'          => "Confirmatz que volètz ajustar aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary'          => 'Ajustat a la Lista Negra dels Spams',
-	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions. Qualas son las que volètz ajustar a la Lista Negra dels Spams ? Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas. Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
+	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions.
+Qualas son las que volètz ajustar a la Lista Negra dels Spams ?
+Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas.
+Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
 
 Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
 	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
@@ -335,6 +351,7 @@ $messages['pt'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'spamdifftool'                  => 'Spravovať Čiernu listinu spamu',
@@ -343,7 +360,9 @@ $messages['sk'] = array(
 	'spamdifftool_notext'           => "Nie je čo pridať na Čiernu listinu spamu. Pokračujte <a href='$1'>kliknutím sem</a>",
 	'spamdifftool_confirm'          => "Potvrďte, že chcete pridať tieto položky na Čiernu listinu spamu. (Môžete tiež <a href='$1' target='new'>nahlásiť problém</a>.)",
 	'spamdifftool_summary'          => 'Pridanie na Čiernu listinu spamu',
-	'spamdifftool_urls_detected'    => 'V úprave boli zistené nasledovné URL. Ktoré z nich chcete pridať na čiernu listinu spamu? Tieto voľby sú v poradí od najreštriktívnejších po menej reštriktívne. Zablokovanie celej domény zablokuje všetky odkazy na danú doménu.
+	'spamdifftool_urls_detected'    => 'V úprave boli zistené nasledovné URL.
+Ktoré z nich chcete pridať na čiernu listinu spamu?
+Tieto voľby sú v poradí od najreštriktívnejších po menej reštriktívne. Zablokovanie celej domény zablokuje všetky odkazy na danú doménu.
 
 Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľských účtov ako blogpost.com, geocities.com atď.',
 	'spamdifftool_no_urls_detected' => "Neboli zistené žiadne URL. Vráťte sa späť <a href='$1'>kliknutím sem</a>.",
@@ -358,6 +377,8 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
+ * @author Siebrand
+ * @author SieBot
  */
 $messages['stq'] = array(
 	'spamdifftool'                  => 'Spam-Blacklist beoarbaidje',
@@ -365,8 +386,10 @@ $messages['stq'] = array(
 	'spamdifftool_notext'           => "Dät rakt naan Text, die der an ju Spam-Blacklist bietouföiged wäide kuude. Klik <a href='$1'>hier</a> toun Fääregungen.",
 	'spamdifftool_confirm'          => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new' target='new'>hier</a>, uum n Problem tou mäldjen.)",
 	'spamdifftool_summary'          => 'Tou ju Spam-Blacklist bietouföigje',
-	'spamdifftool_urls_detected'    => 'Do foulgjende URLs wuuden in ju Beoarbaidenge fuunen; wäkke deerfon moatest du ju Spam-Blacklist bietouföigje?
-Ju Riegenfoulge gungt fon gjucht ienäängjend bit minner ienäängjend; dät Iendreegen fon n gans Domain blokkiert aal Ferbiendengen, do der fon dissen Domain kuume.
+	'spamdifftool_urls_detected'    => 'Do foulgjende URLs wuuden in ju Beoarbaidenge fuunen;
+wäkke deerfon moatest du ju Spam-Blacklist bietouföigje?
+Ju Riegenfoulge gungt fon gjucht ienäängjend bit minner ienäängjend;
+dät Iendreegen fon n gans Domain blokkiert aal Ferbiendengen, do der fon dissen Domain kuume.
 
 Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutserinhoolde kloorstaale, as t.B. blogpost.com, geocities.com usw.',
 	'spamdifftool_no_urls_detected' => "Der wuuden neen URLs fuunen. Klik <a href='$1'>hier</a>, uum touräächtougungen.",
@@ -381,6 +404,7 @@ Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutser
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'spamdifftool'                  => 'Hantera svarta listan för spam',
@@ -388,7 +412,10 @@ $messages['sv'] = array(
 	'spamdifftool_notext'           => "Ingen text lades till i svarta listan för spam. Klicka <a href='$1'>här</a> för att fortsätta.",
 	'spamdifftool_confirm'          => "Bekräfta att du vill lägga till följande poster i svarta listan för spam. (Rapportera problem <a href='$1' target='new'>här</a>.)",
 	'spamdifftool_summary'          => 'Utökar svarta listan för spam',
-	'spamdifftool_urls_detected'    => 'Härunder listas de URL:er som hittades i redigeringen. Välj de du vill lägga till i svarta lista för spam. Blockeringsalternativen är ordnade från mer omfattande till mindre omfattande blockering. Om en hel domän blockeras så stoppas alla länkar till den domänen.
+	'spamdifftool_urls_detected'    => 'Härunder listas de URL:er som hittades i redigeringen.
+Välj de du vill lägga till i svarta lista för spam.
+Blockeringsalternativen är ordnade från mer omfattande till mindre omfattande blockering.
+Om en hel domän blockeras så stoppas alla länkar till den domänen.
 
 Undvik att helt blockera domäner som är värd för många olika användare, såsom blogspot.com, geocities.com, m.fl.',
 	'spamdifftool_no_urls_detected' => "Ingen URL hittades. <a href='$1'>Gå tillbaka</a>.",

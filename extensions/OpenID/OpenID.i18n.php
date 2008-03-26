@@ -426,12 +426,24 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'openidoptional' => 'वैकल्पिक',
-	'openidrequired' => 'आवश्यक',
-	'openidnickname' => 'टोपणनाव',
-	'openidfullname' => 'पूर्णनाव',
-	'openidemail'    => 'इमेल पत्ता',
-	'openidlanguage' => 'भाषा',
+	'openidlogin'          => 'ओपनID वापरून प्रवेश करा',
+	'openidfinish'         => 'ओपनID प्रवेश प्रक्रिया पूर्ण करा',
+	'openidserver'         => 'ओपनID सर्व्हर',
+	'openidxrds'           => 'Yadis संचिका',
+	'openidconvert'        => 'ओपनID कन्व्हर्टर',
+	'openiderror'          => 'तपासणी त्रुटी',
+	'openidcancel'         => 'तपासणी रद्द',
+	'openidfailure'        => 'तपासणी पूर्ण झाली नाही',
+	'openidsuccess'        => 'तपासणी पूर्ण',
+	'openidusernameprefix' => 'ओपनIDसदस्य',
+	'openidoptional'       => 'वैकल्पिक',
+	'openidrequired'       => 'आवश्यक',
+	'openidnickname'       => 'टोपणनाव',
+	'openidfullname'       => 'पूर्णनाव',
+	'openidemail'          => 'इमेल पत्ता',
+	'openidlanguage'       => 'भाषा',
+	'openidchoosepassword' => 'परवलीचा शब्द:',
+	'openidloginlabel'     => 'ओपनID URL',
 );
 
 /** Dutch (Nederlands)
@@ -574,6 +586,16 @@ Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konver
 	'openidautosubmit'              => 'Denne siden inneholder et skjema som vil leveres automatisk om du har JavaScript slått på. Om ikke, trykk på «Fortsett».',
 	'openidclientonlytext'          => 'Du kan ikke bruke kontoer fra denne wikien som OpenID på en annen side.',
 	'openidloginlabel'              => 'OpenID-adresse',
+	'openidlogininstructions'       => "{{SITENAME}} støtter [http://openid.net/ OpenID]-standarden for enhetlig innlogging på forskjellige nettsteder. OpenID lar deg logge inn på mange forskjellige nettsider uten å bruke forskjellige passord overalt. (Se [http://no.wikipedia.org/wiki/OpenID Wikipedia-artikkelen om OpenID] for mer informasjon.)
+
+Om du allerede har en konto på {{SITENAME}}, kan du logge på som vanlig med ditt brukernavn og passord. For å bruke OpenID i framtiden kan du [[Special:OpenIDConvert|konvertere kontoen din til OpenID]] etter at du har logget inn på vanlig vis.
+
+Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av OpenID], og du kan allerede ha en OpenID-aktivert konto et annet sted.
+
+;Andre wikier :Om du har en konto på en OpenID-aktivert wiki, som [http://wikitravel.org/ Wikitravel], [http://wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] eller [http://kei.ki/ Keiki], kan du logge inn på {{SITENAME}} ved å skrive inn den '''fullstendige adressen''' til din brukerside på den wikien i boksen ovenfor. For eksempel ''<nowiki>http://kei.kei/en/User:Eksempel</nowiki>''.
+;[http://openid.yahoo.com/ Yahoo!] :Om du har en konto hos Yahoo! kan du logge inn på denne siden ved å skrive inn OpenID-en din fra Yahoo i boksen ovenfor. Yahoo!s OpenID-adresser har formen ''<nowiki>https://me.yahoo.com/dittbrukernavn</nowiki>''.
+;[http://dev.aol.com/aol-and-63-million-openids AOL] :Om du har en konto hos [http://aol.com/ AOL], for eksempel en [http://aim.com/ AIM]-konto, kan du logge inn på {{{SITENAME}} ved å skrive inn OpenID-en din fra AOL i boksen ovenfor. AOLs OpenID-adresser har formen ''<nowiki>http://openid.aol.com/dittbrukernavn</nowiki>''. Brukernavnet må være i små bokstaver og uten mellomrom.
+;[http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] :Om du har en konto på en av disse tjenestene, skriv inn adressen til bloggen din i boksen ovenfor. For eksempel ''<nowiki>http://dittbrukernavn.blogspot.com/</nowiki>'', ''<nowiki>http://dittbrukernavn.wordpress.com/</nowiki>'', ''<nowiki>http://dittbrukernavn.livejournal.com/</nowiki>'', or ''<nowiki>http://dittbrukernavn.vox.com/</nowiki>''.",
 );
 
 /** Occitan (Occitan)

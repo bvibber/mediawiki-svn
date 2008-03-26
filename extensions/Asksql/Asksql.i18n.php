@@ -649,6 +649,7 @@ Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.",
  */
 $messages['su'] = array(
 	'asksql'          => 'Pamundut SQL',
+	'asksql-desc'     => 'Jalankeun kueri SQL  migunakeun [[Special:Asksql|kaca husus]]',
 	'asksqltext'      => "Paké pormulir di handap ieu pikeun mundut langsung ti pangkalan data. Paké curek tunggal ('kawas kieu') pikeun ngawatesan string nu dimaksud. Hal ieu bisa ngabeungbeuratan ka server, ku kituna mangga anggo saperluna.",
 	'sqlislogged'     => 'Perhatoskeun yén sadaya pamundut aya logna.',
 	'sqlquery'        => 'Asupkeun pamundut',
@@ -763,3 +764,4 @@ $messages['zh-hant'] = array(
 	'selectonly'      => '只允許唯讀模式的查詢。',
 	'querysuccessful' => '查詢完成',
 );
+

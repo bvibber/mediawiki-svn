@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'mwsearch-desc' => 'MWSearch plugin',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'mwsearch-desc' => 'إضافة MWSearch',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

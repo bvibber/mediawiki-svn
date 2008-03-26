@@ -1521,6 +1521,68 @@ $messages['stq'] = array(
 	'math_noblahtex' => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'math_noblahtex'                        => 'Teu bisa maréntah blahtex nu kuduna di $1',
+	'math-desc'                             => 'Output MathML pikeun tag &lt;math&gt;',
+	'math_AmbiguousInfix'                   => 'Tempat “$1” teu merenah.
+Coba paké tambahan “{ ... }” pikeun disambiguasi.',
+	'math_CannotChangeDirectory'            => 'Teu bisa ngarobah diréktori nu dipaké',
+	'math_CannotCreateTexFile'              => 'Teu bisa nyieun koropak tex',
+	'math_CannotRunDvipng'                  => 'Teu bisa ngajalankeun dvipng',
+	'math_CannotRunLatex'                   => 'Teu bisa ngajalankeun latex',
+	'math_CannotWritePngDirectory'          => 'Teu bisa nulis ka diréktori PNG output',
+	'math_CannotWriteTexFile'               => 'Teu bisa nulis ka koropak tex',
+	'math_DoubleSubscript'                  => 'Ngalaman dua subskrip napel kana dasar nu sarua. Nu diwidian ukur hiji.',
+	'math_DoubleSuperscript'                => 'Ngalaman dua superskrip napel kana dasar nu sarua. Nu diwidian ukur hiji.',
+	'math_IllegalCharacter'                 => 'Karakter ilégal dina input',
+	'math_IllegalCommandInMathMode'         => 'Paréntah “$1” ilégal dina modeu math',
+	'math_IllegalCommandInMathModeWithHint' => 'Paréntah “$1” ilégal dina modeu math.
+Maksudna mah “$2” meureun?',
+	'math_IllegalCommandInTextMode'         => 'Paréntah “$1” ilégal dina modeu téks',
+	'math_IllegalCommandInTextModeWithHint' => 'Paréntah “$1” ilégal dina modeu téks. Maksudna mah “$2” meureun?',
+	'math_IllegalFinalBackslash'            => "''Backslash'' “\\” ilégal dina tungtung input",
+	'math_IllegalRedefinition'              => 'Paréntah “$1” geus ditangtukeun, teu bisa diulang',
+	'math_InvalidColour'                    => 'Kelir “$1” teu sah',
+	'math_InvalidUtf8Input'                 => 'String input lain UTF-8 nu sah',
+	'math_LatexFontNotSpecified'            => 'Euweuh aksara LaTeX nu dipilih pikeun “$1”',
+	'math_LatexPackageUnavailable'          => 'Teu bisa milih PNG sabab pakét LaTeX “$1” euweuh',
+	'math_MismatchedBeginAndEnd'            => 'Paréntah “$1” jeung “$2” teu cocog',
+	'math_MisplacedLimits'                  => 'Paréntah “$1” ngan bisa némbongan sanggeus hiji operator math.
+Coba maké "\\mathop".',
+	'math_MissingCommandAfterNewcommand'    => 'Paréntah leungit atawa ilegal sanggeus "\\newcommand".
+Sahanteuna kudu aya hiji paréntah nu bener;
+dimimitian ku backslash "\\" sarta ngandung karakter alfabét wungkul.',
+	'math_MissingOpenBraceAfter'            => 'Kaleungitan kurawal buka “{” sanggeus “$1”',
+	'math_MissingOpenBraceAtEnd'            => 'Kaleungitan kurawal buka “{” dina tungtung input',
+	'math_MissingOpenBraceBefore'           => 'Kaleungitan kurawal buka “{” saméméh “$1”',
+	'math_MissingOrIllegalParameterCount'   => 'Angka paraméterna leungit atawa ilegal dina watesan "$1".
+Eusi ku angka tunggal antara 1 jeung 9 wungkul.',
+	'math_MissingOrIllegalParameterIndex'   => 'Kaleungitan atawa paraméter ilégal dina watesan “$1”',
+	'math_NonAsciiInMathMode'               => 'Karakter non-ASCII ngan bisa dipaké dina modeu téks. Coba tuliskeun karakterna dina "\\text{...}".',
+	'math_NotEnoughArguments'               => 'Argumén pikeun "$1" kurang',
+	'math_PngIncompatibleCharacter'         => 'Teu bisa ngahasilkeun PNG nu bener nu ngandung karakter $1',
+	'math_ReservedCommand'                  => 'Paréntah “$1” diajangkeun keur blahtex wungkul',
+	'math_TooManyMathmlNodes'               => 'Cabangna loba teuing dina tangkal MathML',
+	'math_TooManyTokens'                    => 'Inputna panjang teuing',
+	'math_UnavailableSymbolFontCombination' => 'Lambang “$1” mah euweuh dina aksara “$2”',
+	'math_UnexpectedNextCell'               => 'Paréntah “&” ngan bisa némbongan di jero blok “\\begin ... \\end”',
+	'math_UnexpectedNextRow'                => 'Paréntah “\\\\” ngan bisa némbongan di jero blok “\\begin ... \\end”',
+	'math_UnmatchedBegin'                   => 'Ngalaman “\\begin” tanpa “\\end”',
+	'math_UnmatchedCloseBrace'              => 'Ngalaman kurawal tutup “}” tanpa kurawal buka “{”',
+	'math_UnmatchedEnd'                     => 'Ngalaman “\\end” tanpa “\\begin”',
+	'math_UnmatchedLeft'                    => 'Ngalaman “\\left” tanpa nyocogkeun “\\right”',
+	'math_UnmatchedOpenBrace'               => 'Ngalaman kurawal buka “{” tanpa kurawal tutup “}”',
+	'math_UnmatchedOpenBracket'             => 'Ngalaman kurung siku buka “[” tanpa kurung siki tutup “]”',
+	'math_UnmatchedRight'                   => 'Ngalaman “\\right” tanpa nyocogkeun “\\left”',
+	'math_UnrecognisedCommand'              => 'Paréntah “$1” teu dipikawanoh',
+	'math_WrongFontEncoding'                => 'Lambang “$1” teu bisa némbongan dina aksara “$2”',
+	'math_WrongFontEncodingWithHint'        => 'Lambang “$1” teu bisa némbongan dina aksara “$2”.
+Coba maké paréntah “$3{...}”.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -1601,6 +1663,44 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'math_TooManyTokens' => 'สิ่งที่ใส่ลงไปยาวเกินกว่าที่ระบบจะรับได้',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'math_noblahtex'                        => 'Неможливо запустити blahtex, його очікуване розташування: $1',
+	'math-desc'                             => 'MathML-виведення для тегу &lt;math&gt;',
+	'math_AmbiguousInfix'                   => "Неоднозначне розташування «$1» (спробуйте використати додаткові дужки «{ ... }» для розв'язання неоднозначності)",
+	'math_CannotChangeDirectory'            => 'Неможливо змінити робочу директорію',
+	'math_CannotCreateTexFile'              => 'Неможливо створити tex-файл',
+	'math_CannotRunDvipng'                  => 'Неможливо запустити dvipng',
+	'math_CannotRunLatex'                   => 'Неможливо запустити latex',
+	'math_CannotWritePngDirectory'          => 'Неможливо записати результат до вихідної директорії PNG',
+	'math_CannotWriteTexFile'               => 'Неможливо записати до tex-файлу',
+	'math_CasesRowTooBig'                   => 'Можуть бути тільки два записи у кожному рядку блоку «cases».',
+	'math_DoubleSubscript'                  => 'Виявлено два підрядкових елементи, приєднаних до однієї основи.
+Може бути лише один.',
+	'math_DoubleSuperscript'                => 'Виявлено два надрядкових елементи, приєднаних до однієї основи.
+Може бути лише один.',
+	'math_IllegalCharacter'                 => 'Заборонений символ у вихідних даних',
+	'math_IllegalCommandInMathMode'         => 'Команда «$1» заборонена в math-режимі',
+	'math_IllegalCommandInMathModeWithHint' => 'Команда «$1» заборонена в math-режимі
+(можливо, слід використати «$2» замість неї)',
+	'math_IllegalCommandInTextMode'         => 'Команда «$1» заборонена в текстовому режимі',
+	'math_IllegalCommandInTextModeWithHint' => 'Команда «$1» заборонена в текстовому режимі
+(можливо, слід використати «$2» замість неї)',
+	'math_IllegalDelimiter'                 => 'Помилковий роздільник після «$1»',
+	'math_IllegalFinalBackslash'            => 'Заборонений зворотний слеш «\\» в конці вхідних даних',
+	'math_IllegalNestedFontEncodings'       => 'Команди установок шрифту не можуть бути вкладеними',
+	'math_IllegalRedefinition'              => 'Команда «$1» вже була визначена, ви не можете перевизначити її',
+	'math_InvalidColour'                    => 'Колір «$1» недопустимий',
+	'math_InvalidUtf8Input'                 => 'Вхідний рядок недопустимий у UTF-8',
+	'math_LatexFontNotSpecified'            => 'Не зазначений шрифт LaTeX для «$1»',
+	'math_LatexPackageUnavailable'          => 'Неможливо створити зображення PNG, оскільки недоступний LaTeX-пакет «$1»',
+	'math_MismatchedBeginAndEnd'            => 'Команди «$1» і «$2» не відповідні',
+	'math_MisplacedLimits'                  => 'Команда «$1» може використовуватися тільки після оператора math.
+Імовірно, слід використовувати «\\mathop».',
 );
 
 /** Vietnamese (Tiếng Việt)

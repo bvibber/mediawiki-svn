@@ -141,6 +141,14 @@ $messages['lb'] = array(
 	'minnamelength-error' => "Äre Benotzernumm ass ze kuerz. D'Mindestlängt ass $1.",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'minnamelength-error' => 'तुमचे सदस्यनाव अगदीच छोटे आहे. कमीतकमी आवश्यक लांबी $1 इतकी आहे.',
+	'minnamelength-desc'  => 'कमीतकमी आवश्यक सदस्यनाव लांबी ठरवा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

@@ -150,6 +150,13 @@ $messages['stq'] = array(
 	'charinsert-desc' => 'Ferlööwet dät Moakjen fon ne JavaScript stjuurde Lieste toun [[MediaWiki:Edittools|Ienföigjen fon Sunnerteekene]]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'charinsert-desc' => 'Dipaké nyieun kotak JavaScript pikeun [[MediaWiki:Edittools|ngasupkeun karakter teu baku]]',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

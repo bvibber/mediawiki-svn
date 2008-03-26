@@ -139,6 +139,14 @@ $messages['bg'] = array(
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'createsigndoc-pagename' => 'Pàgina:',
+	'createsigndoc-hidden'   => 'Amagat',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -580,6 +588,13 @@ $messages['tg'] = array(
 	'createsigndoc-create'            => 'Эҷод',
 	'createsigndoc-error-generic'     => 'Хато: $1',
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'createsigndoc-hidden' => 'Bị ẩn',
 );
 
 /** Volapük (Volapük)

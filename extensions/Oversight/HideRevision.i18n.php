@@ -1168,6 +1168,14 @@ $messages['nds'] = array(
 	'oversight-view' => 'Details',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'hiderevision-reason'   => 'Rejen:',
+	'hiderevision-noreason' => 'Beschrief eers de rejen waorumme disse pagina vort mut.',
+);
+
 /** Nepali (नेपाली)
  * @author SPQRobin
  */
@@ -1732,6 +1740,21 @@ Muugelke Gruunde:
 	'oversight-prev'              => 'Lääste foarige Version',
 	'oversight-hidden'            => 'Wächhoalde Version',
 	'oversight-header'            => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'hiderevision-continue'       => 'Teruskeun',
+	'hiderevision-reason'         => 'Alesan (bakal asup log pribadi):',
+	'hiderevision-noreason'       => 'Anjeun kudu méré alesan ngahapus.',
+	'hiderevision-status'         => 'Révisi $1: $2',
+	'hiderevision-success'        => 'Anggeus diarsipkeun & disumputkeun.',
+	'hiderevision-error-missing'  => 'Teu kapanggih di pangkalan data.',
+	'hiderevision-archive-status' => 'Révisi dihapus ti $1: $2',
+	'oversight-log-hiderev'       => 'ngahapus hiji éditan ti $1',
+	'oversight-hidden'            => 'Révisi nyumput',
 );
 
 /** Swedish (Svenska)

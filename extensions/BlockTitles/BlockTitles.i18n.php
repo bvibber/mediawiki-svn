@@ -414,6 +414,15 @@ $messages['stq'] = array(
 	'block_title_error'            => 'Äntscheeldigenge, man ne Siede mäd dissen Tittel duur nit spiekerd wäide.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'block_title_error_page_title' => 'Judul nu dipeungpeuk',
+	'block_title_error-desc'       => 'Nyadiakeun cara dasar pikeun nyegah dijieunna kaca dina judul-judul anu dicaram',
+	'block_title_error'            => 'Punten, judul ieu kaca teu bisa dipaké.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Sannab
@@ -473,3 +482,4 @@ $messages['zh-hant'] = array(
 	'block_title_error-desc'       => '針對重要的標題提供無法隨意建立或諸存的方法',
 	'block_title_error'            => '抱歉，這篇文章的標題不允許保存。',
 );
+

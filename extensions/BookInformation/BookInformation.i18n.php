@@ -656,13 +656,17 @@ $messages['lt'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
-	'bookinfo-header'           => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
-	'bookinfo-result-title'     => 'തലക്കെട്ട്:',
-	'bookinfo-result-author'    => 'ഗ്രന്ഥകര്‍ത്താവ്:',
-	'bookinfo-result-publisher' => 'പ്രസാധകന്‍:',
-	'bookinfo-result-year'      => 'വര്‍ഷം:',
+	'bookinfo-header'            => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
+	'bookinfo-result-title'      => 'തലക്കെട്ട്:',
+	'bookinfo-result-author'     => 'ഗ്രന്ഥകര്‍ത്താവ്:',
+	'bookinfo-result-publisher'  => 'പ്രസാധകന്‍:',
+	'bookinfo-result-year'       => 'വര്‍ഷം:',
+	'bookinfo-error-invalidisbn' => 'താങ്കള്‍ രേഖപ്പെടുത്തിയ ISBN സംഖ്യ അസാധുവാണ്‌.',
+	'bookinfo-error-nosuchitem'  => 'ഈ ഇനം കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല അല്ലെങ്കില്‍ നിലവിലില്ല.',
+	'bookinfo-purchase'          => 'ഈ പുസ്തകം $1ല്‍ നിന്നു വാങ്ങുക',
 );
 
 /** Marathi (मराठी)
@@ -1142,3 +1146,4 @@ $messages['zh-hant'] = array(
 	'bookinfo-purchase'          => '在$1買這本書',
 	'bookinfo-provider'          => '資料提供者: $1',
 );
+

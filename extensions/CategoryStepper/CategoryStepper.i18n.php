@@ -244,6 +244,14 @@ $messages['sk'] = array(
 	'categorystepper-start' => '(začiatok kategórie)',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'categorystepper-end'   => '(tungtung kategori)',
+	'categorystepper-start' => '(awal kategori)',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

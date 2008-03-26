@@ -123,6 +123,13 @@ $messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'donationform-submit' => 'पेपाल (paypal) द्वारा दान करा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

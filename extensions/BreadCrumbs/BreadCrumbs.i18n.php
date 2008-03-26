@@ -172,6 +172,13 @@ $messages['stq'] = array(
 	'breadcrumbs-desc' => 'Wiest dän Wai fon dän Benutser truch dät Wiki.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'breadcrumbs-desc' => 'Témbongkeun tapak pamaké sapanjang wiki.',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */
@@ -193,6 +200,13 @@ $messages['vi'] = array(
 	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 
+/** Simplified Chinese (简化中文)
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hans'] = array(
+	'breadcrumbs-desc' => '显示用户在这尔网站的轨迹',
+);
+
 /** Traditional Chinese (正體中文)
  * @author Alex S.H. Lin
  */
@@ -200,9 +214,3 @@ $messages['zh-hant'] = array(
 	'breadcrumbs-desc' => '顯示使用者在這個網站的軌跡',
 );
 
-/** Simplified Chinese (简化中文)
- * @author Alex S.H. Lin
- */
-$messages['zh-hans'] = array(
-	'breadcrumbs-desc' => '显示用户在这尔网站的轨迹',
-);

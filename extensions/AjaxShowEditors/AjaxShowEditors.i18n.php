@@ -591,10 +591,13 @@ $messages['stq'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'ajax-se-desc'    => 'Témbongkeun pamaké nu keur ngédit kaca nu sarua',
-	'ajax-se-title'   => 'Keur ngédit:',
-	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
-	'ajax-se-idling'  => '($1 nu kaliwat)',
+	'ajax-se-desc'             => 'Témbongkeun pamaké nu keur ngédit kaca nu sarua',
+	'ajax-se-title'            => 'Keur ngédit:',
+	'ajax-se-pending'          => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
+	'ajax-se-idling'           => '($1 nu kaliwat)',
+	'ajax-se-pagedoesnotexist' => 'kacana euweuh',
+	'ajax-se-userinvalid'      => 'ERR: pamaké teu sah',
+	'ajax-se-usernotfound'     => 'ERR: pamaké teu kapanggih',
 );
 
 /** Swedish (Svenska)
@@ -722,3 +725,4 @@ $messages['zh-hant'] = array(
 	'ajax-se-userinvalid'      => '錯誤:該使用者不正確',
 	'ajax-se-usernotfound'     => '錯誤:該使用者不存在',
 );
+

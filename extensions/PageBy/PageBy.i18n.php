@@ -158,6 +158,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'pageby-desc'         => "Weist d'Auteuren op enger Wikisäit mat Hellëf vum Tag <code><nowiki><pageby></nowiki></code>",
 	'pageby-first'        => 'Säit ugefaang vum $1, $2',
 	'pageby-last'         => 'Lescht <a href="$3">Ännerung</a> vum $1, $2',
 	'pageby-contributors' => 'Kontributioune vum:',
@@ -166,10 +167,11 @@ $messages['lb'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'pageby-desc'         => '<code><nowiki><pageby></nowiki></code>खूण वापरून योगदानकर्ते एका पानावर क्रमवार दाखवा',
-	'pageby-first'        => 'ने पान निर्माण केले',
+	'pageby-first'        => '$1 ने पान निर्माण केले, $2',
 	'pageby-last'         => 'शेवटचा <a href="$3">बदल</a> $1, $2 ने',
 	'pageby-contributors' => 'योगदानकर्ते :',
 	'pageby-anon'         => '<i>अनामिक</i>',

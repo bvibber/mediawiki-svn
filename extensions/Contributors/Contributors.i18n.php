@@ -643,6 +643,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ahonc
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
@@ -656,7 +657,7 @@ $messages['ru'] = array(
 	'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 авторов.',
 	'contributors-others'      => 'и ещё $1 других',
 	'contributors-badtitle'    => 'Ошибочное название.',
-	'contributors-nosuchpage'  => 'Статья «$1» не существует.',
+	'contributors-nosuchpage'  => 'Страница «$1» не существует.',
 );
 
 /** Slovak (Slovenčina)
@@ -804,13 +805,17 @@ $messages['th'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'contributors'          => 'Автори',
-	'contributors-desc'     => 'Визначає основних учасників роботи над сторінкою',
-	'contributors-toolbox'  => 'Основні автори',
-	'contributors-legend'   => 'Формує список основних авторів сторінки',
-	'contributors-target'   => 'Назва:',
-	'contributors-submit'   => 'Показати',
-	'contributors-subtitle' => 'Основні автори $1',
+	'contributors'             => 'Автори',
+	'contributors-desc'        => 'Визначає основних учасників роботи над сторінкою',
+	'contributors-toolbox'     => 'Основні автори',
+	'contributors-legend'      => 'Формує список основних авторів сторінки',
+	'contributors-target'      => 'Назва:',
+	'contributors-submit'      => 'Показати',
+	'contributors-subtitle'    => 'Основні автори $1',
+	'contributors-others-long' => 'Окрім зазначених, у цієї сторінки є ще $1 авторів.',
+	'contributors-others'      => 'і ще $1 інших',
+	'contributors-badtitle'    => 'Помилкова назва.',
+	'contributors-nosuchpage'  => 'Сторінка «$1» не існує.',
 );
 
 /** Vietnamese (Tiếng Việt)

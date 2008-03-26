@@ -156,6 +156,16 @@ $messages['lb'] = array(
 	'minipreview-no_category_gallery' => 'Keng Kategorien oder Galerien!',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'minipreview-files_in_category'   => 'या वर्गात एकूण $1 संचिका आहेत.',
+	'minipreview-files_in_gallery'    => 'या प्रदर्शनात एकूण $1 संचिका आहेत.',
+	'minipreview-no_more_files_here'  => 'यापुढे कोणत्याही संचिका नाहीत.',
+	'minipreview-no_category_gallery' => 'वर्ग किंवा प्रदर्शने नाहीत!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

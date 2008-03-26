@@ -427,6 +427,7 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
  */
 $messages['sv'] = array(
 	'talkhere-talkpage'    => 'diskussionssida',
+	'talkhere-notalk'      => "''(inga kommentarer ännu)''",
 	'talkhere-addcomment'  => 'lägg till kommentar',
 	'talkhere-beforeinput' => 'Du kan lägga till en kommentar nedan',
 	'talkhere-loading'     => 'laddar redigerare...',

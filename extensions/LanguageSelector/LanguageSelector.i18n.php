@@ -221,6 +221,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'languageselector'         => 'Sprooch',
+	'languageselector-desc'    => 'Wiel vun der Sprooch op all Säit, och fir Visiteuren.',
 	'languageselector-setlang' => 'Wielt',
 );
 

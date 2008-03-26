@@ -165,6 +165,13 @@ $messages['br'] = array(
 	'changeauthor-comment'         => 'Notenn :',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'changeauthor-pagenameform-go' => 'Vés-hi',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -775,6 +782,36 @@ $messages['stq'] = array(
 	'changeauthor-rev'                  => 'Version $1',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'changeauthor'                      => 'Robah panyusun révisi',
+	'changeauthor-desc'                 => 'Pikeun ngarobah panyusun révisi',
+	'changeauthor-title'                => 'Robah panyusun révisi',
+	'changeauthor-search-box'           => 'Sungsi révisi',
+	'changeauthor-pagename-or-revid'    => 'Ngaran kaca atawa ID révisi:',
+	'changeauthor-pagenameform-go'      => 'Jung',
+	'changeauthor-comment'              => 'Pamanggih:',
+	'changeauthor-changeauthors-multi'  => 'Robah panyusun',
+	'changeauthor-explanation-multi'    => "Ieu formulir dipaké pikeun ngarobah panyusun révisi.
+Robah baé hiji atawa sababaraha landihan di handap ieu, tuliskeun pamanggih atawa alesan anjeun (teu wajib), lajeng klik tombol 'Robah panyusun'.",
+	'changeauthor-changeauthors-single' => 'Robah panyusun',
+	'changeauthor-explanation-single'   => "Ieu formulir dipaké pikeun ngarobah panyusun révisi.
+Robah baé landihan di handap, béré pamanggih atawa alesan anjeun (teu wajib), lajeng klik tombol 'Robah panyusun'.",
+	'changeauthor-invalid-username'     => 'Landihan "$1" teu sah.',
+	'changeauthor-nosuchuser'           => 'Euweuh pamaké "$1".',
+	'changeauthor-revview'              => 'Révisi #$1 ti $2',
+	'changeauthor-nosuchtitle'          => 'Euweuh kaca nu ngaranna "$1".',
+	'changeauthor-weirderror'           => 'Aya éror anu ahéng.
+Coba ulang pamundut anjeun.
+Mun tetep éror, meureun pangkalan datana ruksak.',
+	'changeauthor-invalidform'          => 'Pék paké formulir anu disadiakeun ku Special:ChangeAuthor batan maké formulir biasa.',
+	'changeauthor-success'              => 'Pamundut anjeun geus anggeus diolah.',
+	'changeauthor-logentry'             => 'Panyusun $2 geus robah dina $1, ti $3 jadi $4',
+	'changeauthor-logpagename'          => 'Log robahan panyusun',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
@@ -823,6 +860,13 @@ $messages['te'] = array(
 	'changeauthor-nosuchtitle'          => '"$1" అనే పేరుతో పేజీ లేదు.',
 	'changeauthor-success'              => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
 	'changeauthor-logpagename'          => 'రచయిత మార్పుల దినచర్య',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'changeauthor-pagenameform-go' => 'Bá',
 );
 
 /** Tajik (Тоҷикӣ)

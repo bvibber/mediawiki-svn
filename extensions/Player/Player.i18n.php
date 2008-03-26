@@ -63,6 +63,14 @@ $messages['bg'] = array(
 	'player-goto-file'     => 'файл',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'player-goto-page' => 'Pàgina',
+	'player-goto-file' => 'fitxer',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Li-sung

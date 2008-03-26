@@ -715,6 +715,17 @@ $messages['stq'] = array(
 	'pdt_comparing_page'  => 'Fergliek Parser-Uutgoawe foar [[$1]]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'pdtest_text'         => 'Téks input:',
+	'pdtest_ok'           => 'Heug',
+	'pdtest_get_text'     => 'Téang téks dina kaca',
+	'pdtest_diff'         => 'Béda',
+	'pdtest_side_by_side' => 'Babandingan output',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -817,3 +828,4 @@ $messages['vo'] = array(
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
+

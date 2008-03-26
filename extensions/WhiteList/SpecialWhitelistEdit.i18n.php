@@ -107,6 +107,13 @@ $2',
 	'whitelistnummatches'     => ' - $1 съвпадения',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$allMessages['ca'] = array(
+	'whitelisttableedit' => 'Edita',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

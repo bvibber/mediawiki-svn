@@ -45,6 +45,13 @@ $messages['km'] = array(
 	'tog-microid' => 'ផ្សព្វផ្សាយ <a href="http://microid.org/">MicroID</a> ដើម្បី បញ្ជាក់ទទួលស្គាល់ គណនី និង សេវា ខាងក្រៅ',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'tog-microid' => 'बाह्य सेवांचे खाते प्रमाणित करण्यासाठी एक <a href="http://microid.org/">MicroID</a> प्रकाशित करा',
+);
+
 $messages['nl'] = array(
 	'tog-microid' => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
 );

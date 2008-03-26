@@ -60,6 +60,13 @@ $messages['nl'] = array(
 	'gnuplot-desc' => 'Voegt de tag <code><nowiki><gnuplot></nowiki></code> toe voor het gebruik van Gnuplot',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'gnuplot-desc' => 'Legger til taggen <code><nowiki><gnuplot></nowiki></code> for å bruke Gnuplot',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

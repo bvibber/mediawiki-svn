@@ -181,10 +181,22 @@ $2",
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
 	'userrightsnotifysubject' => 'Os membros do grupo cambiaron a $1',
+	'userrightsnotifybody'    => 'Ola $1.
+
+Isto é para informalo de o grupo ao que pertencía en $2 foi cambiado por $3 ao de $4.
+
+
+Engadido: $5
+Eliminado: $6
+
+Un cordial saúdo,
+
+$2',
 );
 
 $messages['hsb'] = array(
