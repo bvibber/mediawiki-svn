@@ -39,7 +39,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 	/* using newlines in the text will cause the parser to add <p> tags,
  	 * which may not be desired in some cases
 	 */
-	$nl = $param['compact']? '' : "\n";
+	$nl = isset( $param['compact'] ) ? '' : "\n";
   
 	if( method_exists( $parser, 'recursiveTagParse' ) ) {
 		//new methods in 1.8 allow nesting <nowiki> in <poem>.
