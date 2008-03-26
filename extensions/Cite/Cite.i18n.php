@@ -205,19 +205,28 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'cite_desc'                                => 'Ergänzt für Quellennachweise die <nowiki><ref[ name=id]></nowiki> und <nowiki><references/></nowiki> Tags',
+	'cite_desc'                                => 'Ergänzt für Quellennachweise die <tt><nowiki><ref[ name=id]></nowiki></tt> und <tt><nowiki><references /></nowiki></tt>-Tags',
 	'cite_croak'                               => 'Fehler im Referenz-System. $1: $2',
 	'cite_error_key_str_invalid'               => 'Interner Fehler: ungültiger $str und/oder $key. Dies sollte eigentlich gar nicht passieren können.',
 	'cite_error_stack_invalid_input'           => 'Interner Fehler: ungültiger „name“-stack. Dies sollte eigentlich gar nicht passieren können.',
 	'cite_error'                               => 'Referenz-Fehler $1',
-	'cite_error_ref_numeric_key'               => 'Ungültige <code>&lt;ref&gt;</code>-Verwendung: „name“ darf kein reiner Zahlenwert sein, benutze einen beschreibenden Namen.',
-	'cite_error_ref_no_key'                    => 'Ungültige <code>&lt;ref&gt;</code>-Verwendung: „ref“ ohne Inhalt muss einen Namen haben.',
-	'cite_error_ref_too_many_keys'             => 'Ungültige <code>&lt;ref&gt;</code>-Verwendung: „name“ ist ungültig oder zu lang.',
-	'cite_error_ref_no_input'                  => 'Ungültige <code>&lt;ref&gt;</code>-Verwendung: „ref“ ohne Namen muss einen Inhalt haben.',
-	'cite_error_references_invalid_input'      => 'Ungültige <code>&lt;references&gt;</code>-Verwendung: Es ist kein zusätzlicher Text erlaubt, verwende ausschließlich <code><nowiki><references /></nowiki></code>.',
-	'cite_error_references_invalid_parameters' => 'Ungültige <code>&lt;reference&gt;</code>-Verwendung: Es sind keine zusätzlichen Parameter erlaubt, verwende ausschließlich <code><nowiki><reference /></nowiki></code>.',
-	'cite_error_references_no_backlink_label'  => 'Eine Referenz der Form <code>&lt;ref name="…"/&gt;</code> wird öfter benutzt als Buchstaben vorhanden sind. Ein Administrator muss <nowiki>[[MediaWiki:cite references link many format backlink labels]]</nowiki> um weitere Buchstaben/Zeichen ergänzen.',
-	'cite_error_references_no_text'            => 'Ungültiger <code>&lt;ref&gt;</code>-Tag; es wurde kein Text für das Ref mit dem Namen <code>$1</code> angegeben.',
+	'cite_error_ref_numeric_key'               => 'Ungültige <tt>&lt;ref&gt;</tt>-Verwendung: „name“ darf kein reiner Zahlenwert sein, benutze einen beschreibenden Namen.',
+	'cite_error_ref_no_key'                    => 'Ungültige <tt>&lt;ref&gt;</tt>-Verwendung: „ref“ ohne Inhalt muss einen Namen haben.',
+	'cite_error_ref_too_many_keys'             => 'Ungültige <tt>&lt;ref&gt;</tt>-Verwendung: „name“ ist ungültig oder zu lang.',
+	'cite_error_ref_no_input'                  => 'Ungültige <tt>&lt;ref&gt;</tt>-Verwendung: „ref“ ohne Namen muss einen Inhalt haben.',
+	'cite_error_references_invalid_input'      => 'Ungültige <tt>&lt;references&gt;</tt>-Verwendung: Es ist kein zusätzlicher Text erlaubt, verwende ausschließlich <tt><nowiki><references /></nowiki></tt>.',
+	'cite_error_references_invalid_parameters' => 'Ungültige <tt>&lt;references&gt;</tt>-Verwendung: Es sind keine zusätzlichen Parameter erlaubt, verwende ausschließlich <tt><nowiki><references /></nowiki></tt>.',
+	'cite_error_references_no_backlink_label'  => 'Eine Referenz der Form <tt>&lt;ref name="…"/&gt;</tt> wird öfter benutzt als Buchstaben vorhanden sind. Ein Administrator muss <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> um weitere Buchstaben/Zeichen ergänzen.',
+	'cite_error_references_no_text'            => 'Ungültiger <tt>&lt;ref&gt;</tt>-Tag; es wurde kein Text für das Ref mit dem Namen <tt>$1</tt> angegeben.',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'cite_error_ref_numeric_key'               => 'Ungültige <tt>&lt;ref&gt;</tt>-Verwendung: „name“ darf kein reiner Zahlenwert sein, benutzen Sie einen beschreibenden Namen.',
+	'cite_error_references_invalid_input'      => 'Ungültige <tt>&lt;references&gt;</tt>-Verwendung: Es ist kein zusätzlicher Text erlaubt, verwenden Sie ausschließlich <tt><nowiki><references /></nowiki></tt>.',
+	'cite_error_references_invalid_parameters' => 'Ungültige <tt>&lt;references&gt;</tt>-Verwendung: Es sind keine zusätzlichen Parameter erlaubt, verwenden Sie ausschließlich <tt><nowiki><references /></nowiki></tt>.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
