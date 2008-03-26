@@ -8,13 +8,13 @@
 $messages = array();
 
 $messages['en'] = array(
-	'watchers' => 'Watchers',
-	'watchers_link_title' => "Who watches this page?",
-	'watchers_error_article' => "<b>Error:</b> Page does not exist.",
-	'watchers_header' => "People who are watching \"$1\"",
-	'watchers_noone_watches' => "Noone watches this page.",
-	'watchers_x_or_more' => "$1 or more people are watching this page.",
-	'watchers_less_than_x' => "Less than $1 people watch this page.",
+	'watchers'               => 'Watchers',
+	'watchers_link_title'    => 'Who watches this page?',
+	'watchers_error_article' => '<b>Error:</b> Page does not exist.',
+	'watchers_header'        => 'People who are watching "$1"',
+	'watchers_noone_watches' => 'Noone watches this page.',
+	'watchers_x_or_more'     => '$1 or more people are watching this page.',
+	'watchers_less_than_x'   => 'Less than $1 people watch this page.',
 );
 
 /** Arabic (العربية)

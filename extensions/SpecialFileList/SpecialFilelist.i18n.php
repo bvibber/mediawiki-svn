@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'filelist'              => 'File List',
-	'filelist-desc'         => 'Special Page for listing uploaded files',
+	'filelist-desc'         => 'Special page for listing uploaded files',
 	'filelist-show-list'    => 'Show list',
 	'filelist-show-gallery' => 'Show gallery',
 );

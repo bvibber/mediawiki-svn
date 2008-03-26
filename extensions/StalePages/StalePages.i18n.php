@@ -8,22 +8,22 @@
 $messages = array();
 
 $messages['en'] = array(
-	'stalepages' => 'Stale pages',
+	'stalepages'         => 'Stale pages',
 	'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.',
 );
 
 $messages['ar'] = array(
-	'stalepages' => 'صفحات مستقرة',
+	'stalepages'         => 'صفحات مستقرة',
 	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 يوم.',
 );
 
 $messages['bg'] = array(
-	'stalepages' => 'Стари страници',
+	'stalepages'         => 'Стари страници',
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
 );
 
 $messages['de'] = array(
-	'stalepages' => 'Alte Seiten',
+	'stalepages'         => 'Alte Seiten',
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
 );
 
@@ -68,7 +68,7 @@ $messages['hr'] = array(
 );
 
 $messages['hsb'] = array(
-	'stalepages' => 'spadnjene strony',
+	'stalepages'         => 'spadnjene strony',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
@@ -155,4 +155,3 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
 );
-

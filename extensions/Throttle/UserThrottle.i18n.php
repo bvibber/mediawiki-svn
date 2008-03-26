@@ -8,8 +8,10 @@
 $messages = array();
 
 $messages['en'] = array(
-	'acct_creation_global_soft_throttle_hit' => 'Account creation has been automatically suspended for a few moments due to an unusually large number of recent login attempts. Please wait a few minutes and try again.',
-	'acct_creation_global_hard_throttle_hit' => "Account creation has been automatically suspended for a few seconds to reduce registration flood attacks. Please wait a moment and hit 'reload' in your browser to resubmit.",
+	'acct_creation_global_soft_throttle_hit'      => 'Account creation has been automatically suspended for a few moments due to an unusually large number of recent login attempts.
+Please wait a few minutes and try again.',
+	'acct_creation_global_hard_throttle_hit'      => "Account creation has been automatically suspended for a few seconds to reduce registration flood attacks.
+Please wait a moment and hit 'reload' in your browser to resubmit.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Throttle user creation',
 );
 

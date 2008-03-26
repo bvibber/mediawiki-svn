@@ -12,8 +12,8 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'userimages-caption' => 'Images uploaded by $1',
-	'userimages-noname' => 'Invalid username or none provided.',
+	'userimages-caption'  => 'Images uploaded by $1',
+	'userimages-noname'   => 'Invalid username or none provided.',
 	'userimages-noimages' => '$1 has no image uploads.',
 );
 

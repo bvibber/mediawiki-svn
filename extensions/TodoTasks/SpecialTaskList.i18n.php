@@ -14,7 +14,8 @@ $messages['en'] = array(
 	'tasklistemail'           => 'Dear %s',
 	'tasklistemailsubject'    => '[%s] Task List Change',
 	'tasklistmytasks'         => 'My tasks',
-	'tasklistbyprojectbad'    => "Project '''%s''' is not a valid project. For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad'    => "Project '''%s''' is not a valid project.
+For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'      => "Assigned Tasks for '''%s'''",
 	'tasklistchooseproj'      => 'Select Project: ',
 	'tasklistprojdisp'        => 'Display',

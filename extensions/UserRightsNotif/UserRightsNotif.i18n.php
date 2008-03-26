@@ -362,7 +362,7 @@ Det här är ett meddelande om att ditt medlemskap i användargrupper på $2 har
 Lade till: $5
 Tog bort: $6
 
-Hälsningar 
+Hälsningar
 
 $2',
 	'userrightsnotif-desc'    => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
@@ -372,7 +372,7 @@ $2',
  * @author Karduelis
  */
 $messages['tr'] = array(
-	'userrightsnotifybody' => 'Hoşgeldiniz $1 
+	'userrightsnotifybody' => 'Hoşgeldiniz $1
 
 This is to inform you that your group memberships on $2 were changed by $3 at $4.
 

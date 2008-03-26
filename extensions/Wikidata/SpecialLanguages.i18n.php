@@ -17,7 +17,8 @@ $wdMessages['en'] = array(
 	'ow_history'                            => 'History',
 	'ow_datasets'                           => 'Data-set selection',
 	'ow_noedit_title'                       => 'No permission to edit',
-	'ow_noedit'                             => 'You are not permitted to edit pages in the dataset "$1". Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
+	'ow_noedit'                             => 'You are not permitted to edit pages in the dataset "$1".
+Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_editing_policy_url'                 => 'Project:Permission policy',
 	'ow_uipref_datasets'                    => 'Default view',
 	'ow_uiprefs'                            => 'Wikidata',
@@ -41,8 +42,10 @@ $wdMessages['en'] = array(
 	'ow_available_contexts'                 => 'Available contexts',
 	'ow_add_concept_link'                   => 'Add link to other concepts',
 	'ow_concept_panel'                      => 'Concept Panel',
-	'ow_dm_badtitle'                        => 'This page does not point to any DefinedMeaning (concept). Please check the web address.',
-	'ow_dm_missing'                         => 'This page seems to point to a non-existent DefinedMeaning (concept). Please check the web address.',
+	'ow_dm_badtitle'                        => 'This page does not point to any DefinedMeaning (concept).
+Please check the web address.',
+	'ow_dm_missing'                         => 'This page seems to point to a non-existent DefinedMeaning (concept).
+Please check the web address.',
 	'ow_AlternativeDefinition'              => 'Alternative definition',
 	'ow_AlternativeDefinitions'             => 'Alternative definitions',
 	'ow_Annotation'                         => 'Annotation',
@@ -96,13 +99,23 @@ $wdMessages['en'] = array(
 	'ow_Permission_denied'                  => '<h2>PERMISSION DENIED</h2>',
 	'ow_copy_no_action_specified'           => 'Please specify an action',
 	'ow_copy_help'                          => 'Someday, we might help you.',
-	'ow_please_proved_dmid'                 => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />Please contact a server administrator.',
-	'ow_please_proved_dc1'                  => 'It seems your input is missing a "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />Please contact a server administrator.',
-	'ow_please_proved_dc2'                  => 'It seems your input is missing a "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />Please contact a server administrator.',
-	'ow_copy_successful'                    => "<h2>Copy Successful</h2>Your data appears to have been copied successfully. Do not forget to doublecheck to make sure!",
-	'ow_copy_unsuccessful'                  => '<h3>Copy unsuccessful</h3> No copy operation has taken place.',
-	'ow_no_action_specified'                => "<h3>No action was specified</h3> Perhaps you came to this page directly? Normally you do not need to be here.",
-	'ow_db_consistency_not_found'          => "<h2>Error</h2>There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID. It might be lost. Please contact the server operator or administrator.",
+	'ow_please_proved_dmid'                 => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Please contact a server administrator.',
+	'ow_please_proved_dc1'                  => 'It seems your input is missing a "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+Please contact a server administrator.',
+	'ow_please_proved_dc2'                  => 'It seems your input is missing a "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />
+Please contact a server administrator.',
+	'ow_copy_successful'                    => "<h2>Copy Successful</h2>
+Your data appears to have been copied successfully.
+Do not forget to doublecheck to make sure!",
+	'ow_copy_unsuccessful'                  => '<h3>Copy unsuccessful</h3>
+No copy operation has taken place.',
+	'ow_no_action_specified'                => "<h3>No action was specified</h3>
+Perhaps you came to this page directly? Normally you do not need to be here.",
+	'ow_db_consistency_not_found'          => "<h2>Error</h2>
+There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
+It might be lost.
+Please contact the server operator or administrator.",
 );
 
 /** Afrikaans (Afrikaans)
@@ -2112,13 +2125,13 @@ $wdMessages['pt'] = array(
 	'ow_uipref_datasets'                    => 'Vista padrão',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<Nenhum seleccionado>',
-	'ow_conceptmapping_help'                => '<p>acções possíveis: 
+	'ow_conceptmapping_help'                => '<p>acções possíveis:
 <ul>
- <li>&action=insert&<data_context_prefix>=<defined_id>&... inserir um mapeamento</li> 
+ <li>&action=insert&<data_context_prefix>=<defined_id>&... inserir um mapeamento</li>
  <li>&action=get&concept=<concept_id> ler um mapeamento de volta</li>
  <li>&action=list_sets retornar uma lista de prefixos de contexto de dados possíveis e a que se referem.</li>
  <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para um significado definido num conceito, retornar todos os outros</li>
- <li>&action=help Mostrar ajuda preciosa.</li> 
+ <li>&action=help Mostrar ajuda preciosa.</li>
 </ul>
 </p>',
 	'ow_conceptmapping_uitext'              => '<p>O Mapeamento de Conceitos permite-lhe identificar que significado definido num conjunto de dados é idêntico a outros significados definidos noutro conjunto de dados.</p>',

@@ -56,7 +56,7 @@ $allMessages['en'] = array(
 	'whitelisttablesetview'       => 'Set to View',
 	'whitelisttableremove'        => 'Remove',
 	'whitelistnewpagesfor'        => "Add new pages to <b>$1's</b> white list<br />
-Use either * or % as wildcard character<br />",
+Use either * or % as wildcard character",
 	'whitelistnewtabledate'       => 'Expiry Date:',
 	'whitelistnewtableedit'       => 'Set to Edit',
 	'whitelistnewtableview'       => 'Set to View',
@@ -168,7 +168,7 @@ $allMessages['fr'] = array(
 	'whitelisttablesetview'     => 'Paramètres pour visionner',
 	'whitelisttableremove'      => 'Retirer',
 	'whitelistnewpagesfor'      => 'Ajoute de nouvelles pages à la liste blanche de <b>$1</b><br />
-Utiliser soit le caractère * soit %<br />',
+Utiliser soit le caractère * soit %',
 	'whitelistnewtabledate'     => 'Date d’expiration :',
 	'whitelistnewtableedit'     => 'Paramètres d‘édition',
 	'whitelistnewtableview'     => 'Paramètres pour visionner',
@@ -279,7 +279,7 @@ $allMessages['nl'] = array(
 	'whitelisttablesetview'     => 'Op bekijken instellen',
 	'whitelisttableremove'      => 'Verwijderen',
 	'whitelistnewpagesfor'      => "Nieuwe pagina's aan de witte lijst voor <b>$1</b> toevoegen<br />
-Gebruik * of % als wildcard<br />",
+Gebruik * of % als wildcard",
 	'whitelistnewtabledate'     => 'Verloopdatum:',
 	'whitelistnewtableedit'     => 'Op bewerken instellen',
 	'whitelistnewtableview'     => 'Op bekijken instellen',
@@ -338,7 +338,7 @@ $allMessages['no'] = array(
 	'whitelisttablesetedit'    => 'Sett til redigering',
 	'whitelisttablesetview'    => 'Sett til visning',
 	'whitelisttableremove'     => 'Fjern',
-	'whitelistnewpagesfor'     => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn<br />',
+	'whitelistnewpagesfor'     => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn',
 	'whitelistnewtabledate'    => 'Utgangsdato:',
 	'whitelistnewtableedit'    => 'Sett til redigering',
 	'whitelistnewtableview'    => 'Sett til visning',
@@ -376,7 +376,7 @@ $allMessages['oc'] = array(
 	'whitelisttablesetview'     => 'Paramètres per visionar',
 	'whitelisttableremove'      => 'Levar',
 	'whitelistnewpagesfor'      => 'Ajusta de paginas novèlas a la lista blanca de <b>$1</b><br />
-Utilizatz siá lo caractèr * siá %<br />',
+Utilizatz siá lo caractèr * siá %',
 	'whitelistnewtabledate'     => 'Data d’expiracion :',
 	'whitelistnewtableedit'     => "Paramètres d'edicion",
 	'whitelistnewtableview'     => 'Paramètres per visionar',
@@ -427,7 +427,7 @@ $allMessages['pl'] = array(
 	'whitelisttablesetview'     => 'Przełącz na podgląd',
 	'whitelisttableremove'      => 'Usuń',
 	'whitelistnewpagesfor'      => 'Dodaje nowe strony do "białej listy" wiki <b>$1</b><br />
-Możliwe jest stosowanie symboli wieloznacznych * i %<br />',
+Możliwe jest stosowanie symboli wieloznacznych * i %',
 	'whitelistnewtabledate'     => 'Wygasa:',
 	'whitelistnewtableedit'     => 'Przełącz na edycję',
 	'whitelistnewtableview'     => 'Przełącz na podgląd',
@@ -494,7 +494,7 @@ $allMessages['sk'] = array(
 	'whitelisttablesetview'     => 'Nastaviť na Zobrazenie',
 	'whitelisttableremove'      => 'Odstrániť',
 	'whitelistnewpagesfor'      => 'Pridať nové stránky na bielu listinu <b>$1</b><br />
-Ako zástupný znak použite buď * alebo %<br />',
+Ako zástupný znak použite buď * alebo %',
 	'whitelistnewtabledate'     => 'Dátum vypršania:',
 	'whitelistnewtableedit'     => 'Nastaviť na Upraviť',
 	'whitelistnewtableview'     => 'Nastaviť na Zobraziť',
@@ -546,7 +546,7 @@ $allMessages['sv'] = array(
 	'whitelisttablesetview'     => 'Ange att visa',
 	'whitelisttableremove'      => 'Radera',
 	'whitelistnewpagesfor'      => 'Lägg till nya sidor till <b>$1s</b> vitlista<br />
-Använd hellre * eller % som jokertecken<br />',
+Använd hellre * eller % som jokertecken',
 	'whitelistnewtabledate'     => 'Utgångsdatum:',
 	'whitelistnewtableedit'     => 'Ange att redigera',
 	'whitelistnewtableview'     => 'Ange att visa',

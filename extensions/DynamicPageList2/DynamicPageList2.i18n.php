@@ -46,8 +46,8 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ERROR: You can use '$0' with 'ordermethod=[...,]$1' only!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERROR: Cannot perform logical operations on the Uncategorized pages (e.g. with the 'category' parameter) because the $0 view does not exist on the database! Help: have the DB admin execute this query: <code>$1</code>.",
 
@@ -136,8 +136,8 @@ $wgDPL2Messages['fr'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ERREUR : Vous ne pouvez utiliser '$0' qu’avec 'ordermethod=[...,]$1' !",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERREUR : Ne peut pas effectuer d’opérations logiques sur les pages sans catégories (avec la paramètre 'category') car la vue $0 n’existe pas dans la base de données ! Aide : demander à un administrateur de la base de données d'effectuer : <code>$1</code>.",
 
@@ -220,8 +220,8 @@ $wgDPL2Messages['he'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "שגיאה: באפשרותכם להשתמש ב־'$0' עם 'ordermethod=[...,]$1' בלבד!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "שגיאה: לא ניתן לבצע פעולות לוגיות על דפים ללא קטגוריות (למשל, עם הפרמטר 'קטגוריה') כיוון שתצוגת $0 אינה קיימת במסד הנתונים! עזרה: מנהל מסד הנתונים צריך להריץ את השאילתה: <code>$1</code>.",
 
@@ -325,8 +325,8 @@ $wgDPL2Messages['it'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ERRORE: L'uso del parametro '$0' è consentito unicamente con 'ordermethod=[...,]$1'.",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERRORE: Impossibile effettuare operazioni logiche sulle pagine prive di categoria (ad es. con il parametro 'category') in quanto il database non contiene la vista $0. Suggerimento: chiedere all'amministratore del database di eseguire la seguente query: <code>$1</code>.",
 
@@ -405,8 +405,8 @@ $wgDPL2Messages['nl'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "FOUT: U kunt '$0' alleen met 'ordermethod=[...,]$1' gebruiken!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 
@@ -484,8 +484,8 @@ $wgDPL2Messages['ru'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ОШИБКА: вы можете использовать «$0» только с «ordermethod=[...,]$1»!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 
@@ -564,8 +564,8 @@ $wgDPL2Messages['sk'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "CHYBA: '$0' môžete použiť iba s 'ordermethod=[...,]$1'!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "CHYBA: Nie je momožné vykonávať logické operácie na nekategorizovaných kategóriách (napr. s parametrom 'Kategória') lebo neexistuje na databázu pohľad $0! Pomocník: nech admin databázy vykoná tento dotaz: <code>$1</code>.",
 
@@ -808,8 +808,8 @@ $wgDPL2Messages['yue'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 響 '$0' 上!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 
@@ -883,8 +883,8 @@ $wgDPL2Messages['zh-hans'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "错误: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 
@@ -958,8 +958,8 @@ $wgDPL2Messages['zh-hant'] = array(
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
 	/**
-	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
-	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your MediaWiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your MediaWiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 

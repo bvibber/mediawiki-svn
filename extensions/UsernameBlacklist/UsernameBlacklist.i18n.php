@@ -13,10 +13,11 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
-	'usernameblacklist-desc'  => 'Adds a [[MediaWiki:Usernameblacklist|username blacklist]] to restrict the creation of user accounts matching one or more regular expressions',
-	'blacklistedusername'     => 'Blacklisted username',
-	'blacklistedusernametext' => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another name.',
-	'usernameblacklist'       => '<pre>
+	'usernameblacklist-desc'          => 'Adds a [[MediaWiki:Usernameblacklist|username blacklist]] to restrict the creation of user accounts matching one or more regular expressions',
+	'blacklistedusername'             => 'Blacklisted username',
+	'blacklistedusernametext'         => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]].
+Please choose another name.',
+	'usernameblacklist'               => '<pre>
 # Entries in this list will be used as part of a regular expression when
 # blacklisting usernames from registration. Each item should be part of
 # a bulleted list, e.g.

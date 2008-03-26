@@ -963,7 +963,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'badimages'                => 'Zła lista grafik',
-	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w Mediawiki',
+	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w MediaWiki',
 	'badimages-add-btn'        => 'Dodaj',
 	'badimages-added'          => 'dodano $1 do listy.',
 	'badimages-count'          => "Jest '''$1''' grafik na liście złych grafik.",

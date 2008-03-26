@@ -24,25 +24,27 @@
 $messages = array();
 
 $messages['en'] = array(
-	'form' => 'Form',
-	'formnoname' => 'No Form Name',
-	'formnonametext' => 'You must provide a form name, like "Special:Form/Nameofform".',
-	'formbadname' => 'Bad Form Name',
-	'formbadnametext' => 'There is no form by that name.',
-	'formpattern' => '$1-form',
-	'formtemplatepattern' => '$1', # Do not translate this message
-	'formtitlepattern' => 'Add New $1',
-	'formsave' => 'Save',
-	'formindexmismatch' => 'This form has mismatched name patterns and templates starting at index $1.',
-	'formarticleexists' => 'Page Exists',
-	'formarticleexiststext' => 'The page [[$1]] already exists.',
-	'formbadpagename' => 'Bad Page Name',
-	'formbadpagenametext' => 'The form data you entered makes a bad page name, "$1".',
-	'formrequiredfieldpluralerror' => 'The fields $1 are required for this form. Please fill them in.',		  
-	'formrequiredfielderror' => 'The field $1 is required for this form. Please fill it in.',
-	'formsavesummary' => 'New page using [[Special:Form/$1]]',
-	'formsaveerror' => 'Error Saving Form',
-	'formsaveerrortext' => 'There was an unknown error saving page \'$1\'.',
+	'form'                         => 'Form',
+	'formnoname'                   => 'No form name',
+	'formnonametext'               => 'You must provide a form name, like "Special:Form/Nameofform".',
+	'formbadname'                  => 'Bad form name',
+	'formbadnametext'              => 'There is no form by that name.',
+	'formpattern'                  => '$1-form',
+	'formtemplatepattern'          => '$1', # Do not translate this message
+	'formtitlepattern'             => 'Add new $1',
+	'formsave'                     => 'Save',
+	'formindexmismatch'            => 'This form has mismatched name patterns and templates starting at index $1.',
+	'formarticleexists'            => 'Page exists',
+	'formarticleexiststext'        => 'The page [[$1]] already exists.',
+	'formbadpagename'              => 'Bad page name',
+	'formbadpagenametext'          => 'The form data you entered makes a bad page name, "$1".',
+	'formrequiredfieldpluralerror' => 'The fields $1 are required for this form.
+Please fill them in.',
+	'formrequiredfielderror'       => 'The field $1 is required for this form.
+Please fill it in.',
+	'formsavesummary'              => 'New page using [[Special:Form/$1]]',
+	'formsaveerror'                => 'Error saving form',
+	'formsaveerrortext'            => 'There was an unknown error saving page \'$1\'.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -133,7 +135,7 @@ $messages['de'] = array(
 	'formarticleexiststext'        => 'Die Seite „[[$1]]“ ist bereits vorhanden.',
 	'formbadpagename'              => 'Unzulässiger Seitenname',
 	'formbadpagenametext'          => 'Die eingegebenen Formulardaten erzeugen einen unzulässigen Seitennamen: „$1“.',
-	'formrequiredfieldpluralerror' => 'Die Felder $1 sind Pflichtfelder. Bitte fülle sie aus.',		  
+	'formrequiredfieldpluralerror' => 'Die Felder $1 sind Pflichtfelder. Bitte fülle sie aus.',
 	'formrequiredfielderror'       => 'Das Feld $1 ist ein Pfichtfeld. Bitte fülle es aus.',
 	'formsavesummary'              => 'Neue Seite, die auf [[{{ns:Special}}:Form/$1]] basiert',
 	'formsaveerror'                => 'Fehler beim Speichern des Formulares',

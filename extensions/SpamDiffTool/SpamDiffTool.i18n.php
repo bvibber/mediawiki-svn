@@ -8,21 +8,27 @@
 $messages = array();
 
 $messages['en'] = array(
-	'spamdifftool' => 'Manage Spam Blacklist',
-	'spamdifftool-desc' => 'Provides a basic way of adding new entries to the Spam Blacklist from diff pages',
-	'spamdifftool_cantedit' => 'Sorry - you don\'t have permission to edit the Spam Blacklist.',
-	'spamdifftool_notext' => 'There is no text to add to the Spam Blacklist. Click <a href=\'$1\'>here</a> to continue.',
-	'spamdifftool_confirm' => 'Confirm that you want to add these entries to the Spam Blacklist. (Click <a href=\'$1\' target=\'new\'>here</a> to report a problem.)',
-	'spamdifftool_summary' => 'Adding to Spam Blacklist',
-	'spamdifftool_urls_detected' => 'The following URLs were detected in the edit(s), which ones would you like to add to the Spam Blacklist? These options order from more restrictive to less restrictive, blocking the entire domain will block all links to anything coming from that domain. <br /><br />Be sure not to block entire domains that host user accounts, like blogpost.com, geocities.com, etc.',
-	'spamdifftool_no_urls_detected' => 'No urls were detected. Click <a href=\'$1\'>here</a> to return.',
-	'spamdifftool_spam_link_text' => 'add to spam',
-	'spamdifftool_option_domain' => 'all from this domain',
+	'spamdifftool'                  => 'Manage spam blacklist',
+	'spamdifftool-desc'             => 'Provides a basic way of adding new entries to the spam blacklist from diff pages',
+	'spamdifftool_cantedit'         => 'Sorry - you do not have permission to edit the spam blacklist.',
+	'spamdifftool_notext'           => 'There is no text to add to the spam blacklist.
+Click <a href=\'$1\'>here</a> to continue.',
+	'spamdifftool_confirm'          => 'Confirm that you want to add these entries to the spam blacklist.
+(Click <a href=\'$1\' target=\'new\'>here</a> to report a problem.)',
+	'spamdifftool_summary'          => 'Adding to spam blacklist',
+	'spamdifftool_urls_detected'    => 'The following URLs were detected in the edit(s), which ones would you like to add to the spam blacklist?
+These options order from more restrictive to less restrictive, blocking the entire domain will block all links to anything coming from that domain.
+
+Be sure not to block entire domains that host user accounts, like blogpost.com, geocities.com, etc.',
+	'spamdifftool_no_urls_detected' => 'No urls were detected.
+Click <a href=\'$1\'>here</a> to return.',
+	'spamdifftool_spam_link_text'   => 'add to spam',
+	'spamdifftool_option_domain'    => 'all from this domain',
 	'spamdifftool_option_subdomain' => 'all from this subdomain',
 	'spamdifftool_option_directory' => 'this subdomain and directory',
-	'spamdifftool_option_none' => 'nothing',
-	'spamdifftool_block' => 'Block:',
-	'spamdifftool_submit_buttom' => 'Submit',
+	'spamdifftool_option_none'      => 'nothing',
+	'spamdifftool_block'            => 'Block:',
+	'spamdifftool_submit_buttom'    => 'Submit',
 	);
 
 $messages['ar'] = array(
@@ -31,7 +37,9 @@ $messages['ar'] = array(
 	'spamdifftool_notext' => 'لا يوجد نص لإضافته إلى قائمة السبام السوداء. اضغط <a href=\'$1\'>هنا</a> للمتابعة.',
 	'spamdifftool_confirm' => 'أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء. (اضغط <a href=\'$1\' target=\'new\'>هنا</a> للإبلاغ عن مشكلة.)',
 	'spamdifftool_summary' => 'جاري الإضافة إلى قائمة السبام السوداء',
-	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق. <br /><br />تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
+	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق.
+
+تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
 	'spamdifftool_no_urls_detected' => 'لم يتم التعرف على أية مسارات. اضغط <a href=\'$1\'>هنا</a> للعودة.',
 	'spamdifftool_spam_link_text' => 'الكل إلى السبام',
 	'spamdifftool_option_domain' => 'الكل من هذا النطاق',
@@ -53,7 +61,9 @@ $messages['ar'] = array(
 	'spamdifftool_notext'           => "لا يوجد نص لإضافته إلى قائمة السبام السوداء. اضغط <a href='$1'>هنا</a> للمتابعة.",
 	'spamdifftool_confirm'          => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء. (اضغط <a href='$1' target='new'>هنا</a> للإبلاغ عن مشكلة.)",
 	'spamdifftool_summary'          => 'جاري الإضافة إلى قائمة السبام السوداء',
-	'spamdifftool_urls_detected'    => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق. <br /><br />تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
+	'spamdifftool_urls_detected'    => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق.
+
+تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
 	'spamdifftool_no_urls_detected' => "لم يتم التعرف على أية مسارات. اضغط <a href='$1'>هنا</a> للعودة.",
 	'spamdifftool_spam_link_text'   => 'الكل إلى السبام',
 	'spamdifftool_option_domain'    => 'الكل من هذا النطاق',
@@ -99,9 +109,10 @@ $messages['de'] = array(
 	'spamdifftool_notext'           => 'Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href=\'$1\'>hier</a> zum Forfahren.',
 	'spamdifftool_confirm'          => 'Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest. (Klicke <a href=\'http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new\' target=\'new\'>hier</a>, um ein Problem zu melden.)',
 	'spamdifftool_summary'          => 'Zur Spam-Blacklist hinzufügen',
-	'spamdifftool_urls_detected'    => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchtest du der Spam-Blacklist hinzufügen? 
-	Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.<br /><br />
-	Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
+	'spamdifftool_urls_detected'    => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchtest du der Spam-Blacklist hinzufügen?
+	Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.
+
+Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
 	'spamdifftool_no_urls_detected' => 'Es wurden keine URLs gefunden. Klicke <a href=\'$1\'>hier</a>, um zurückzugehen.',
 	'spamdifftool_spam_link_text'   => 'zu Spam hinzufügen',
 	'spamdifftool_option_domain'    => 'alle von dieser Domain',
@@ -138,7 +149,9 @@ $messages['fr'] = array(
 	'spamdifftool_notext'           => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
 	'spamdifftool_confirm'          => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
 	'spamdifftool_summary'          => 'Ajouté à la Liste noire des pourriels',
-	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications. Lesquelles voulez-vous ajouter à la liste noire des pourriels ? Ces options vont des plus restrictives aux moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci. <br/><br/>Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
+	'spamdifftool_urls_detected'    => 'Les URLs suivantes ont été détectées dans ces modifications. Lesquelles voulez-vous ajouter à la liste noire des pourriels ? Ces options vont des plus restrictives aux moins restrictives. Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.
+
+Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comptes utilisateurs tels que blogpost.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Aucune URL n’a été détectée. Cliquez <a href='$1'>ici</a> pour revenir en arrière.",
 	'spamdifftool_spam_link_text'   => 'ajouter aux pourriels',
 	'spamdifftool_option_domain'    => 'tout depuis ce domaine',
@@ -177,7 +190,9 @@ $messages['hsb'] = array(
 	'spamdifftool_notext'           => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
 	'spamdifftool_confirm'          => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
 	'spamdifftool_summary'          => 'Spamowej čornej lisćinje přidać',
-	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.<br /><br />Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
+	'spamdifftool_urls_detected'    => 'Slědowace URL buchu w změnach wotkryte, kotre z nich chceš rady spamowej čornej lisćinje přidać? Tute opcije rjaduja wot bóle restriktiwne do mjenje restriktiwne, blokowanje cyłeje domejny budźe wšě wotkazy k něčemu, štož z tuteje domejny přińdźe, blokować.
+
+Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduja, kaž blogpost.com, geocities.com atd.',
 	'spamdifftool_no_urls_detected' => "Njebuchu žane url wotkryte. Klikń <a href='$1'>sem</a>, zo by so wróćił.",
 	'spamdifftool_spam_link_text'   => 'k spamej přidać',
 	'spamdifftool_option_domain'    => 'wšo z tuteje domejny',
@@ -238,7 +253,9 @@ $messages['nl'] = array(
 	'spamdifftool_notext'           => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
 	'spamdifftool_confirm'          => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",
 	'spamdifftool_summary'          => 'Toevoegen aan de Zwarte Lijst tegen spam',
-	'spamdifftool_urls_detected'    => "In de bewerking(en) zijn de volgende URL's aangetroffen. Welke wilt u toevoegen aan de Zwarte Lijst voor Spam? Deze opties gaan van meer beperkend naar minder beperkend. Het blokkeren van een volledig domein betekent dat geen enkele verwijzing naar dat domein wordt toegelaten. <br /><br /> Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoals blogpost.com, geocities.com, enzovoort.",
+	'spamdifftool_urls_detected'    => "In de bewerking(en) zijn de volgende URL's aangetroffen. Welke wilt u toevoegen aan de Zwarte Lijst voor Spam? Deze opties gaan van meer beperkend naar minder beperkend. Het blokkeren van een volledig domein betekent dat geen enkele verwijzing naar dat domein wordt toegelaten.
+
+Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoals blogpost.com, geocities.com, enzovoort.",
 	'spamdifftool_no_urls_detected' => "Er werden geen URL's gevonden. Klik <a href='$1'>hier</a> om terug te keren.",
 	'spamdifftool_spam_link_text'   => 'toevoegen aan spam',
 	'spamdifftool_option_domain'    => 'alles van dit domein',
@@ -259,7 +276,9 @@ $messages['no'] = array(
 	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
 	'spamdifftool_confirm'          => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
 	'spamdifftool_summary'          => 'Legger til i spamsvartelisten',
-	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen; hvilken av dem vil du legge til i spamsvartelisten? Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.<br /><br />Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost.com, geocities.com osv.',
+	'spamdifftool_urls_detected'    => 'Nedenfr listes de URL-ene som ble funnet i redigeringen; hvilken av dem vil du legge til i spamsvartelisten? Disse valgmulighetene står i rekkefølgen strengest til mildest, blokkering av hele domenet vil blokkere alle lenker til alt som kommer fra det domenet.
+
+Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost.com, geocities.com osv.',
 	'spamdifftool_no_urls_detected' => "Ingen URL-er funnet. <a href='$1'>Gå tilbake</a>.",
 	'spamdifftool_spam_link_text'   => 'legg til i spamlisten',
 	'spamdifftool_option_domain'    => 'hele domenet',
@@ -280,7 +299,9 @@ $messages['oc'] = array(
 	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm'          => "Confirmatz que volètz ajustar aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary'          => 'Ajustat a la Lista Negra dels Spams',
-	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions. Qualas son las que volètz ajustar a la Lista Negra dels Spams ? Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas. Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.<br/><br/>Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
+	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions. Qualas son las que volètz ajustar a la Lista Negra dels Spams ? Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas. Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
+
+Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
 	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
 	'spamdifftool_spam_link_text'   => 'ajustar als spams',
 	'spamdifftool_option_domain'    => 'tot dempuèi aqueste domeni',
@@ -322,7 +343,9 @@ $messages['sk'] = array(
 	'spamdifftool_notext'           => "Nie je čo pridať na Čiernu listinu spamu. Pokračujte <a href='$1'>kliknutím sem</a>",
 	'spamdifftool_confirm'          => "Potvrďte, že chcete pridať tieto položky na Čiernu listinu spamu. (Môžete tiež <a href='$1' target='new'>nahlásiť problém</a>.)",
 	'spamdifftool_summary'          => 'Pridanie na Čiernu listinu spamu',
-	'spamdifftool_urls_detected'    => 'V úprave boli zistené nasledovné URL. Ktoré z nich chcete pridať na čiernu listinu spamu? Tieto voľby sú v poradí od najreštriktívnejších po menej reštriktívne. Zablokovanie celej domény zablokuje všetky odkazy na danú doménu.<br /><br />Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľských účtov ako blogpost.com, geocities.com atď.',
+	'spamdifftool_urls_detected'    => 'V úprave boli zistené nasledovné URL. Ktoré z nich chcete pridať na čiernu listinu spamu? Tieto voľby sú v poradí od najreštriktívnejších po menej reštriktívne. Zablokovanie celej domény zablokuje všetky odkazy na danú doménu.
+
+Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľských účtov ako blogpost.com, geocities.com atď.',
 	'spamdifftool_no_urls_detected' => "Neboli zistené žiadne URL. Vráťte sa späť <a href='$1'>kliknutím sem</a>.",
 	'spamdifftool_spam_link_text'   => 'pridať medzi spam',
 	'spamdifftool_option_domain'    => 'všetky z tejto domény',
@@ -343,7 +366,8 @@ $messages['stq'] = array(
 	'spamdifftool_confirm'          => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new' target='new'>hier</a>, uum n Problem tou mäldjen.)",
 	'spamdifftool_summary'          => 'Tou ju Spam-Blacklist bietouföigje',
 	'spamdifftool_urls_detected'    => 'Do foulgjende URLs wuuden in ju Beoarbaidenge fuunen; wäkke deerfon moatest du ju Spam-Blacklist bietouföigje?
-Ju Riegenfoulge gungt fon gjucht ienäängjend bit minner ienäängjend; dät Iendreegen fon n gans Domain blokkiert aal Ferbiendengen, do der fon dissen Domain kuume.<br /><br />
+Ju Riegenfoulge gungt fon gjucht ienäängjend bit minner ienäängjend; dät Iendreegen fon n gans Domain blokkiert aal Ferbiendengen, do der fon dissen Domain kuume.
+
 Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutserinhoolde kloorstaale, as t.B. blogpost.com, geocities.com usw.',
 	'spamdifftool_no_urls_detected' => "Der wuuden neen URLs fuunen. Klik <a href='$1'>hier</a>, uum touräächtougungen.",
 	'spamdifftool_spam_link_text'   => 'tou Spam bietouföigje',
@@ -364,7 +388,9 @@ $messages['sv'] = array(
 	'spamdifftool_notext'           => "Ingen text lades till i svarta listan för spam. Klicka <a href='$1'>här</a> för att fortsätta.",
 	'spamdifftool_confirm'          => "Bekräfta att du vill lägga till följande poster i svarta listan för spam. (Rapportera problem <a href='$1' target='new'>här</a>.)",
 	'spamdifftool_summary'          => 'Utökar svarta listan för spam',
-	'spamdifftool_urls_detected'    => 'Härunder listas de URL:er som hittades i redigeringen. Välj de du vill lägga till i svarta lista för spam. Blockeringsalternativen är ordnade från mer omfattande till mindre omfattande blockering. Om en hel domän blockeras så stoppas alla länkar till den domänen. <br /><br />Undvik att helt blockera domäner som är värd för många olika användare, såsom blogspot.com, geocities.com, m.fl.',
+	'spamdifftool_urls_detected'    => 'Härunder listas de URL:er som hittades i redigeringen. Välj de du vill lägga till i svarta lista för spam. Blockeringsalternativen är ordnade från mer omfattande till mindre omfattande blockering. Om en hel domän blockeras så stoppas alla länkar till den domänen.
+
+Undvik att helt blockera domäner som är värd för många olika användare, såsom blogspot.com, geocities.com, m.fl.',
 	'spamdifftool_no_urls_detected' => "Ingen URL hittades. <a href='$1'>Gå tillbaka</a>.",
 	'spamdifftool_spam_link_text'   => 'lägg till i spamlistan',
 	'spamdifftool_option_domain'    => 'hela domänen',

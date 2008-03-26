@@ -9,9 +9,9 @@
 $messages = array();
 
 $messages['en'] = array(
-	'unicodeconverter' => 'Unicode Converter',
-	'unicodeconverter-desc' => 'A simple example of a special page module. [[Special:UnicodeConverter|Given a string in UTF-8]], it converts it to HTML entities suitable for an ISO 8859-1 web page',
-	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter'         => 'Unicode converter',
+	'unicodeconverter-desc'    => 'A simple example of a special page module. [[Special:UnicodeConverter|Given a string in UTF-8]], it converts it to HTML entities suitable for an ISO 8859-1 web page',
+	'unicodeconverter-ok'      => 'OK',
 	'unicodeconverter-oldtext' => 'Original text:',
 	'unicodeconverter-newtext' => 'Converted text:',
 );

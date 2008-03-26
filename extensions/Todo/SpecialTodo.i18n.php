@@ -9,35 +9,35 @@
 $messages = array();
 
 $messages['en'] = array(
-	'todo' => 'Todo list',
-	'todo-desc' => 'Experimental personal [[Special:Todo|todo list]] extension',
-	'todo-tab' => 'todo',
-	'todo-new-queue' => 'new',
-	'todo-mail-subject' => "Completed item on $1's todo list",
-	'todo-mail-body' => "You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
+	'todo'                  => 'Todo list',
+	'todo-desc'             => 'Experimental personal [[Special:Todo|todo list]] extension',
+	'todo-tab'              => 'todo',
+	'todo-new-queue'        => 'new',
+	'todo-mail-subject'     => "Completed item on $1's todo list",
+	'todo-mail-body'        => "You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
 
 Item: $2
 Submitted: $3
 
 This item has been marked as completed, with this comment:
 $4",
-	'todo-invalid-item' => "Missing or invalid item",
+	'todo-invalid-item'     => "Missing or invalid item",
 	'todo-update-else-item' => "Trying to update someone else's items",
 	'todo-unrecognize-type' => "Unrecognized type",
-	'todo-user-invalide' => "Todo given invalid, missing, or un-todoable user.",
-	'todo-item-list' => 'Your items',
-	'todo-no-item' => 'No todo items.',
-	'todo-invalid-owner' => 'Invalid owner on this item',
-	'todo-add-queue' => 'Add queue…',
-	'todo-move-queue' => 'Move to queue…',
-	'todo-list-for' => 'Todo list for',
-	'todo-list-change' => 'Change',
-	'todo-list-cancel' => 'Cancel',
-	'todo-new-item' => 'New item',
-	'todo-issue-summary' => 'Issue summary:',
-	'todo-form-details' => 'Details:',
-	'todo-form-email' => 'To receive notification by e-mail when the item is closed, type your address here:',
-	'todo-form-submit' => 'Submit Query',
+	'todo-user-invalide'    => "Todo given invalid, missing, or un-todoable user.",
+	'todo-item-list'        => 'Your items',
+	'todo-no-item'          => 'No todo items.',
+	'todo-invalid-owner'    => 'Invalid owner on this item',
+	'todo-add-queue'        => 'Add queue…',
+	'todo-move-queue'       => 'Move to queue…',
+	'todo-list-for'         => 'Todo list for',
+	'todo-list-change'      => 'Change',
+	'todo-list-cancel'      => 'Cancel',
+	'todo-new-item'         => 'New item',
+	'todo-issue-summary'    => 'Issue summary:',
+	'todo-form-details'     => 'Details:',
+	'todo-form-email'       => 'To receive notification by e-mail when the item is closed, type your address here:',
+	'todo-form-submit'      => 'Submit query',
 );
 
 /** Arabic (العربية)

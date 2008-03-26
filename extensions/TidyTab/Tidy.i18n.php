@@ -1,7 +1,7 @@
 <?php
 /**
  * Internationalisation file for extension TidyTab.
- * Created by Bertrand GRON
+ * Created by Bertrand GRONDIN
  *
  * @addtogroup Extensions
  */
@@ -9,7 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'tidy' => 'Tidy',
+	'tidy'   => 'Tidy',
 	'untidy' => 'Untidy',
 );
 
