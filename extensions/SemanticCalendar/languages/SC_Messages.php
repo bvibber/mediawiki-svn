@@ -13,9 +13,9 @@ $messages = array();
 $messages['en'] = array(
 	// user messages
         'sc_previousmonth' => 'Previous month',
-        'sc_nextmonth' => 'Next month',
-	'sc_today' => 'Today',
-	'sc_gotomonth' => 'Go to month',
+        'sc_nextmonth'     => 'Next month',
+	'sc_today'         => 'Today',
+	'sc_gotomonth'     => 'Go to month',
 );
 
 /** Afrikaans (Afrikaans)

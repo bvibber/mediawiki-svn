@@ -9,11 +9,11 @@
 $messages = array();
 
 $messages['en'] = array(
-	'purgecache' => 'Purge cache',
-	'purgecache-desc' => '[[Special:PurgeCache|Special page]] used to wipe the OBJECTCACHE table',
+	'purgecache'         => 'Purge cache',
+	'purgecache-desc'    => '[[Special:PurgeCache|Special page]] used to wipe the OBJECTCACHE table',
 	'purgecache-warning' => 'This will purge the cache tables.',
-	'purgecache-purged' => 'The cache has been purged.',
-	'purgecache-button' => 'Purge',
+	'purgecache-purged'  => 'The cache has been purged.',
+	'purgecache-button'  => 'Purge',
 );
 
 /** Arabic (العربية)

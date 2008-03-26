@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'purge' => 'purge',
-	'purge-desc' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',
+	'purge-desc' => 'Adds a purge tab on all normal pages, and bypasses the purge check for anonymous users allowing for quick purging of the cache',
 );
 
 /** Arabic (العربية)

@@ -7,21 +7,13 @@ $messages = array();
 
 $messages['en'] = array(
 	'createsigndocument'         => 'Enable Document Signing',
-	'createsigndoc-head'         =>
-"Use this form to create a 'Sign Document' page for the provided page, such that
-users will be able to sign it via [[Special:SignDocument]]. Please specify the name
-of the page on which you wish to enable digital signing, members of which
-usergroup should be allowed to sign it, which fields you wish to be visible to users
-and which should be optional, a minimum age to require users to be to sign the
-document (no minimum if omitted); and a brief introductory text describing the
-document and providing instructions to users.
+	'createsigndoc-head'         => "Use this form to create a 'Sign Document' page for the provided page, such that users will be able to sign it via [[Special:SignDocument]].
+Please specify the name of the page on which you wish to enable digital signing, members of which usergroup should be allowed to sign it, which fields you wish to be visible to users and which should be optional, a minimum age to require users to be to sign the document (no minimum if omitted);
+and a brief introductory text describing the document and providing instructions to users.
 
-<b>There is presently no way to delete or modify signature documents after they are
-created</b> without direct database access. Additionally, the text of the page
-displayed on the signature page will be the ''current'' text of the page, regardless
-of changes made to it after today. Please be absolutely positive that the document
-is to a point of stability for signing, and please also be sure that you specify
-all fields exactly as they should be, ''before submitting this form''.",
+<b>There is presently no way to delete or modify signature documents after they are created</b> without direct database access.
+Additionally, the text of the page displayed on the signature page will be the ''current'' text of the page, regardless of changes made to it after today.
+Please be absolutely positive that the document is to a point of stability for signing, and please also be sure that you specify all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-pagename'     => 'Page:',
 	'createsigndoc-allowedgroup' => 'Allowed group:',
 	'createsigndoc-email'        => 'E-mail address:',
@@ -36,8 +28,8 @@ all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-create'       => 'Create',
 	'createsigndoc-error-generic'=> 'Error: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
-	'createsigndoc-success'      => 'Document signing has been successfully enabled
-on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
+	'createsigndoc-success'      => 'Document signing has been successfully enabled on [[$1]].
+To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
 	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
@@ -91,14 +83,14 @@ $messages['ar'] = array(
 	'createsigndocument'                 => 'فعل توقيع الوثيقة',
 	'createsigndoc-head'                 => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث
 يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]]. من فضلك حدد اسم
-الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي 
-مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين 
-وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع 
-الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف 
+الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي
+مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين
+وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع
+الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف
 الوثيقة ويوفر التعليمات للمستخدمين.
 
 <b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
-إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة 
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة
 المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
 التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
 وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
@@ -399,7 +391,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'createsigndocument'                 => "Activar l'autentificacion dels documents",
-	'createsigndoc-head'                 => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument]]. Mercés d'indicar lo nom de l'article pelqual desiratz activar la foncion, los membres del grop d'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
+	'createsigndoc-head'                 => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument]]. Mercés d'indicar lo nom de l'article pelqual desiratz activar la foncion, los membres del grop d'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires.
 
 <b>Presentadament, i a pas cap de mejan d'escafar los documents un còp creats</b>, al despart en editant la banca de donadas del wiki. E mai, lo tèxt de l'article afichat sus la pagina autentificada serà lo tèxt ''corrent'', pauc impòrta las modificacions fachas de per aprèp. Per aquesta rason, siatz segur que lo document es sufisentament estable per èsser autentificat e, ''abans de sometre lo formulari'', verificatz qu'avètz plan causit los camps tals coma desiratz que sián.",
 	'createsigndoc-pagename'             => 'Pagina :',

@@ -38,14 +38,14 @@ Return to:
 	# Errors and success message
 	'crosswikiblock-nousername'     => 'No username was inputed',
 	'crosswikiblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:Blockip]]',
-	'crosswikiblock-dbnotfound'     => 'Database $1 doesn\'t exist',
-	'crosswikiblock-noname'         => '"$1" isn\'t a valid username.',
+	'crosswikiblock-dbnotfound'     => 'Database $1 does not exist',
+	'crosswikiblock-noname'         => '"$1" is not a valid username.',
 	'crosswikiblock-nouser'         => 'User "$3" is not found.',
 	'crosswikiblock-noexpiry'       => 'Invalid expiry: $1.',
 	'crosswikiblock-noreason'       => 'No reason specified.',
 	'crosswikiblock-notoken'        => 'Invalid edit token.',
 	'crosswikiblock-alreadyblocked' => 'User $3 is already blocked.',
-	'crosswikiblock-noblock'        => 'This user isn\'t blocked.',
+	'crosswikiblock-noblock'        => 'This user is not blocked.',
 	'crosswikiblock-success'        => "User '''$3''' blocked successfully.
 
 Return to:

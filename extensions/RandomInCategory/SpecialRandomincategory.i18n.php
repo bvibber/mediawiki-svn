@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'randomincategory'                => 'Random page in category',
 	'randomincategory-desc'           => '[[Special:Randomincategory|Special page]] to get a random page in category',
 	'randomincategory-toolbox'        => 'Random page',
-	'randomincategory-nocategory'     => 'Category $1 doesn\'t exist or is empty',
+	'randomincategory-nocategory'     => 'Category $1 does not exist or is empty',
 	'randomincategory-label'          => 'Category:',
 	'randomincategory-submit'         => 'Go',
 );

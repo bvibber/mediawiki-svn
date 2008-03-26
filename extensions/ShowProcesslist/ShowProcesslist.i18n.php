@@ -8,16 +8,16 @@
 $messages = array();
 
 $messages['en'] = array(
-	'showprocesslist' => 'Show Process List',
-	'showprocesslist-desc' => 'Display the output of [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
-	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'User',
-	'showprocesslist-host' => 'Host',
-	'showprocesslist-db' => 'db',
+	'showprocesslist'         => 'Show Process List',
+	'showprocesslist-desc'    => 'Display the output of [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id'      => 'Id',
+	'showprocesslist-user'    => 'User',
+	'showprocesslist-host'    => 'Host',
+	'showprocesslist-db'      => 'db',
 	'showprocesslist-command' => 'Command',
-	'showprocesslist-time' => 'Time',
-	'showprocesslist-state' => 'State',
-	'showprocesslist-info' => 'Info',
+	'showprocesslist-time'    => 'Time',
+	'showprocesslist-state'   => 'State',
+	'showprocesslist-info'    => 'Info',
 );
 
 /** Afrikaans (Afrikaans)
