@@ -851,3 +851,62 @@ $messages['vo'] = array(
 	'changeauthor-changeauthors-single' => 'Votükön lautani',
 );
 
+/** Traditional Chinese (正體中文)
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hant'] = array(
+	'changeauthor'                      => '更改修訂版本作者',
+	'changeauthor-desc'                 => '更改指定修訂版本的作者',
+	'changeauthor-title'                => '更換特定修訂版本作者',
+	'changeauthor-search-box'           => '尋找修定版本',
+	'changeauthor-pagename-or-revid'    => '頁面名稱或修定版本號碼：',
+	'changeauthor-pagenameform-go'      => '尋找',
+	'changeauthor-comment'              => '理由：',
+	'changeauthor-changeauthors-multi'  => '{{int:changeauthor-changeauthors-single}}',
+	'changeauthor-explanation-multi'    => '您可以在這個表單中更改任一修訂版本的作者。
+更改完成後請輸入更改理由並按下「{{int:changeauthor-changeauthors-single}}」以完成更改。',
+	'changeauthor-changeauthors-single' => '更改作者',
+	'changeauthor-explanation-single'   => '您可以在這個表單中更改修訂版本的作者。
+更改完成後請輸入更改理由並按下「{{int:changeauthor-changeauthors-single}}」以完成更改。',
+	'changeauthor-invalid-username'     => '錯誤的使用者名稱："$1"。',
+	'changeauthor-nosuchuser'           => '使用者名稱「$1」不存在。',
+	'changeauthor-revview'              => '頁面「$2」的修訂版本#$1',
+	'changeauthor-nosuchtitle'          => '頁面「$1」不存在。',
+	'changeauthor-weirderror'           => '發生錯誤，請重試。如果錯誤仍持讀發生，資料庫可能遭到損壞。',
+	'changeauthor-invalidform'          => '請使用[[Special:ChangeAuthor]]的表單處理，謝謝。',
+	'changeauthor-success'              => '處理完成',
+	'changeauthor-logentry'             => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
+	'changeauthor-logpagename'          => '作者更改日誌',
+	'changeauthor-logpagetext'          => '',
+	'changeauthor-rev'                  => 'r$1',
+);
+/** Simplified Chinese (简化中文)
+ * @author Alex S.H. Lin
+ */
+ $messages['zh-hans'] = array(
+	'changeauthor'                      => '更改修订版本作者',
+	'changeauthor-desc'                 => '更改指定修订版本的作者',
+	'changeauthor-title'                => '更换特定修订版本作者',
+	'changeauthor-search-box'           => '寻找修定版本',
+	'changeauthor-pagename-or-revid'    => '页面名称或修定版本号码：',
+	'changeauthor-pagenameform-go'      => '寻找',
+	'changeauthor-comment'              => '理由：',
+	'changeauthor-changeauthors-multi'  => '{{int:changeauthor-changeauthors-single}}',
+	'changeauthor-explanation-multi'    => '您可以在这个表单中更改任一修订版本的作者。
+更改完成后请输入更改理由并按下“{{int:changeauthor-changeauthors-single}}”以完成更改。',
+	'changeauthor-changeauthors-single' => '更改作者',
+	'changeauthor-explanation-single'   => '您可以在这个表单中更改修订版本的作者。
+更改完成后请输入更改理由并按下“{{int:changeauthor-changeauthors-single}}”以完成更改。',
+	'changeauthor-invalid-username'     => '错误的用户名："$1"。',
+	'changeauthor-nosuchuser'           => '用户“$1”不存在。',
+	'changeauthor-revview'              => '页面“$2”的修订版本#$1',
+	'changeauthor-nosuchtitle'          => '页面“$1”不存在。',
+	'changeauthor-weirderror'           => '发生错误，请重试。如果错误仍持读发生，数据库可能遭到损坏。',
+	'changeauthor-invalidform'          => '请使用[[Special:ChangeAuthor]]的表单处理，谢谢。',
+	'changeauthor-success'              => '处理完成',
+	'changeauthor-logentry'             => '更改[[$1]]修订版本$2的作者从 $3 到 $4',
+	'changeauthor-logpagename'          => '作者更改日志',
+	'changeauthor-logpagetext'          => '',
+	'changeauthor-rev'                  => 'r$1',
+);
+

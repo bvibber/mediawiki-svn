@@ -4162,6 +4162,7 @@ $messages['zh-classical'] = array(
 
 $messages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
+	'boardvote-desc'          => '[[meta:Board elections|维基媒体基金会理事会选举]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
 * [[Special:Boardvote/dump|加密的选举数据]]",
@@ -4228,6 +4229,7 @@ $messages['zh-hans'] = array(
 
 $messages['zh-hant'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
+	'boardvote-desc'          => '[[meta:Board elections|維基媒體基金會理事會選舉]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
 * [[Special:Boardvote/dump|加密的選舉資料]]",
@@ -4298,4 +4300,3 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'boardvote_time' => 'Isikhathi',
 );
-

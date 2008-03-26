@@ -715,7 +715,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 	'querysuccessful' => 'Truy vấn thành công',
 );
 
-/* Cantonese
+/** Cantonese
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -730,12 +730,13 @@ $messages['yue'] = array(
 	'querysuccessful' => '查詢完成',
 );
 
-/* Chinese (Simplified)
+/** Chinese (Simplified)
  * @author Formulax
  * @author Shizhao
  */
 $messages['zh-hans'] = array(
 	'asksql'          => 'SQL查询',
+	'asksql-desc'     => '透过[[Special:Asksql|{{int:specialpage}}]]运行SQL指令',
 	'asksqltext'      => "使用下面的表单可以直接查询数据库。
 使用单引号（'像这样'）来界定字串符。
 这样做有可能增加服务器的负担，所以请慎用本功能。",
@@ -746,19 +747,19 @@ $messages['zh-hans'] = array(
 	'querysuccessful' => '查询完成',
 );
 
-/* Chinese (Traditional)
+/** Chinese (Traditional)
  * @author Shinjiman
  * @author Vipuser
  */
 $messages['zh-hant'] = array(
 	'asksql'          => 'SQL查詢',
-	'asksqltext'      => "使用下面的表單可以直接查詢數據庫。
-使用單引號（'像這樣'）來界定字串符。
-這樣做有可能增加伺服器的負擔，所以請慎用本功能。",
-	'sqlislogged'     => '請注意全部的查詢會被記錄。',
+	'asksql-desc'     => '透過[[Special:Asksql|{{int:specialpage}}]]執行SQL指令',
+	'asksqltext'      => "使用下面的表單可以直接查詢資料庫。
+使用單引號（'像這樣'）來界定字串符號。
+這樣做有可能增加伺服器的負擔，所以請謹慎使用本功能。",
+	'sqlislogged'     => '請注意全部的查詢都會被記錄。',
 	'sqlquery'        => '輸入查詢',
 	'querybtn'        => '遞交查詢',
 	'selectonly'      => '只允許唯讀模式的查詢。',
 	'querysuccessful' => '查詢完成',
 );
-

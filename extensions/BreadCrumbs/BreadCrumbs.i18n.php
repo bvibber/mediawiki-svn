@@ -193,3 +193,16 @@ $messages['vi'] = array(
 	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 
+/** Traditional Chinese (正體中文)
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hant'] = array(
+	'breadcrumbs-desc' => '顯示使用者在這個網站的軌跡',
+);
+
+/** Simplified Chinese (简化中文)
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hans'] = array(
+	'breadcrumbs-desc' => '显示用户在这尔网站的轨迹',
+);

@@ -461,6 +461,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'block_title_error_page_title' => '已封锁的标题',
+	'block_title_error-desc'       => '对重要的标题提供无法随意建立或保存的方法',
 	'block_title_error'            => '抱歉，这篇文章的标题不允许保存。',
 );
 
@@ -469,6 +470,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'block_title_error_page_title' => '已封鎖的標題',
+	'block_title_error-desc'       => '針對重要的標題提供無法隨意建立或諸存的方法',
 	'block_title_error'            => '抱歉，這篇文章的標題不允許保存。',
 );
-

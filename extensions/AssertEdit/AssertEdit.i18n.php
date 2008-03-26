@@ -436,6 +436,7 @@ $messages['zea'] = array(
  */
 $messages['zh-hans'] = array(
 	'assert_edit_title'   => '维护失败',
+	'assert_edit_desc'    => '为机器人的编辑添加声明',
 	'assert_edit_message' => '所指定的断言 ($1) 失败。',
 );
 
@@ -444,6 +445,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
-	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
+	'assert_edit_desc'    => '為機器人的編輯增加聲明',
+	'assert_edit_message' => '所指定的聲明 ($1) 失敗。',
 );
-

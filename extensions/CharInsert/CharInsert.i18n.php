@@ -157,3 +157,7 @@ $messages['sv'] = array(
 	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 
+$messages['zh-hant'] = array(
+	'charinsert-desc' => '允許增加[[MediaWiki:Edittools|插入非標準文字]]的JavaScript控制項',
+);
+

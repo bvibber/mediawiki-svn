@@ -524,12 +524,13 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'backforth-next' => '下一条 ($1)',
+	'backforth-desc' => '在页面的最上面增加「上一条」和「下一条」的连结',
 	'backforth-prev' => '上一条 ($1)',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'backforth-next' => '下一條 ($1)',
+	'backforth-desc' => '在頁面的最上面增加「上一條」和「下一條」的連結',
 	'backforth-prev' => '上一條 ($1)',
 );
-
