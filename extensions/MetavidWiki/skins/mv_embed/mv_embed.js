@@ -182,7 +182,7 @@ var embedTypes = {
 	 // List of players in order of preference
 	 playerType:false,
 	 // List of players in order of preference (vlc is pretty good on linux (but should not be installed in OSX) 
-	 players: ['videoElement','vlc-mozilla', 'vlc-activex', 'oggPlay', 'oggPlugin', 'quicktime-mozilla', 'quicktime-activex', 'cortado'],
+	 players: ['videoElement','vlc-mozilla', 'vlc-activex', 'oggPlay', 'cortado', 'oggPlugin', 'quicktime-mozilla', 'quicktime-activex'],
 	 init: function(){
 		//detect supported types
 		this.detect();
