@@ -9,8 +9,9 @@
 $messages = array();
 
 $messages['en'] = array(
-	'icon-badimage' => 'Bad Image',
-	'icon-badwidth' => 'Bad Width',
+	'icon-badimage' => 'Bad image',
+	'icon-badwidth' => 'Bad width',
+	'icon-desc'     => 'Allows you to use images as icons and icon links',
 );
 
 $messages['ar'] = array(
@@ -229,3 +230,8 @@ $messages['vi'] = array(
 	'icon-badwidth' => 'Độ ngang không hợp lệ',
 );
 
+$messages['zh-hant'] = array(
+	'icon-badimage' => '圖像錯誤',
+	'icon-badwidth' => '寬度錯誤',
+	'icon-desc'     => '增加icon參數以產生於圖像上的連結',
+);
