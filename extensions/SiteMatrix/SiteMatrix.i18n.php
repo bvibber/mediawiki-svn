@@ -368,6 +368,7 @@ $messages['gu'] = array(
 
 $messages['he'] = array(
 	'sitematrix'           => 'רשימת אתרי ויקי של ויקימדיה',
+	'sitematrix-summary'   => 'דף זה כולל רשימה של כל אתרי קרן ויקימדיה.',
 	'sitematrix-language'  => 'שפה',
 	'sitematrix-project'   => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
 	'sitematrix-others'    => 'מיזמים אחרים של ויקימדיה',
