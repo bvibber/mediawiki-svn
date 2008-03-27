@@ -368,10 +368,32 @@ $messages['lb'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'patrol-revert-reason' => 'कारणे:',
+	'patrol'                 => 'संपादनांवर पहारा ठेवा',
+	'patrol-desc'            => 'कामाचा भार शेअर करून करता येण्याजोगा वाढीव संपादनांवरील पहारा',
+	'patrol-endorse'         => 'समर्थन द्या',
+	'patrol-revert'          => 'पूर्वपदास न्या',
+	'patrol-revert-reason'   => 'कारणे:',
+	'patrol-skip'            => 'दुर्लक्ष करा',
+	'patrol-reverting'       => 'पूर्वपदास नेत आहे: $1',
+	'patrol-nonefound'       => 'पहारा देण्यास योग्य अशी संपादने सापडली नाहीत.',
+	'patrol-endorsed-ok'     => 'हे संपादन तपासले म्हणून खूण केली.',
+	'patrol-endorsed-failed' => 'ह्या संपादनावर तपासले अशी खूण करता आली नाही.',
+	'patrol-reverted-ok'     => 'हे संपादन उलटविले.',
+	'patrol-reverted-failed' => 'संपादन उलटविता आले नाही.',
+	'patrol-skipped-ok'      => 'संपादनाकडे दुर्लक्ष करीत आहे.',
+	'patrol-reasons'         => '* सर्वसाधारण उत्पात
+* नवीन सदस्याचे तात्पुरते संपादन
+* चर्चा पान पहा',
+	'patrol-another'         => 'जर उपलब्ध असतील तर इतर संपादने दाखवा.',
+	'patrol-stopped'         => 'तुम्ही इतर संपादनांवर पहारा देण्याचे नाकारले आहे. $1',
+	'patrol-resume'          => 'पुन्हा चालू करण्यासाठी इथे टिचकी द्या.',
+	'group-patroller'        => 'निरीक्षक',
+	'group-patroller-member' => 'निरीक्षक',
+	'grouppage-patroller'    => '{{ns:project}}:निरीक्षक',
 );
 
 /** Dutch (Nederlands)

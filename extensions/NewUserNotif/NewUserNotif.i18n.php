@@ -128,6 +128,17 @@ $messages['km'] = array(
 គណនី​របស់​អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'newusernotifsubj'  => '$1 साठीचे नवीन सदस्य निर्देशन',
+	'newusernotif-desc' => 'नवीन सदस्य नोंदणी झाल्यानंतर इ-मेल पाठविते',
+	'newusernotifbody'  => 'नमस्कार $1,
+
+$3 वर एक नवीन सदस्य नोंदणी, $2, $4 ला झालेली आहे.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

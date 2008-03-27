@@ -1002,6 +1002,15 @@ $messages['lb'] = array(
 	'mv_category'        => 'Kategorie',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'mv_tool_search'     => 'തിരയുക',
+	'mv_search_category' => 'വിഭാഗം',
+	'mv_category'        => 'വിഭാഗം',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
@@ -1369,6 +1378,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['no'] = array(
 	'metavid'                        => 'Metavid-side',
@@ -1419,7 +1429,7 @@ $messages['no'] = array(
 	'mv_stream_delete_warrning'      => '<b>Fjerning av denne dataflyten vil også føre til fjerning av $1 deler av assosiert metadata</b><br />',
 	'mv_label_stream_type'           => 'Dataflyttype',
 	'mv_metavid_file'                => 'Eksisterende fil på tjener',
-	'mv_metavid_live'                => 'Sett opp direkteoverføring',
+	'mv_metavid_live'                => 'Oppsett av direkteoverføring',
 	'mv_upload_file'                 => 'Last opp fil',
 	'mv_external_file'               => 'Ekstern fil',
 	'mv_stream_delete_warning'       => 'Sletting av denne dataflyten vil også føre til fjerning av $1 sider med metadata',
@@ -2323,5 +2333,17 @@ $messages['tet'] = array(
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and'      => 'ho',
 	'mv_category'        => 'kategoria',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mv_upload_file'     => 'Tải tập tin lên',
+	'mv_tool_search'     => 'Tìm kiếm',
+	'mv_edit'            => 'Sửa đổi',
+	'mv_search_category' => 'Thể loại',
+	'mv_search_and'      => 'và',
+	'mv_category'        => 'thể loại',
 );
 

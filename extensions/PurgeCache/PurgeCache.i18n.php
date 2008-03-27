@@ -134,6 +134,17 @@ $messages['lb'] = array(
 	'purgecache-button'  => 'Eidel maachen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'purgecache'         => 'सय स्वच्छ करा (purge)',
+	'purgecache-desc'    => 'OBJECTCACHE सारणी स्वच्छ करण्यासाठी [[Special:PurgeCache|विशेष पान]]',
+	'purgecache-warning' => 'ह्यामुळे सय सारण्या स्वच्छ होतील. (purge)',
+	'purgecache-purged'  => 'सय स्वच्छ करण्यात आलेली आहे.',
+	'purgecache-button'  => 'स्वच्छ करा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -1065,6 +1065,13 @@ $messages['tr'] = array(
 	'bookinfo-provider'         => 'Veri sağlayıcısı: $1',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'bookinfo-header' => 'Інформація про книгу',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

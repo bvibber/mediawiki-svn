@@ -285,6 +285,43 @@ $messages['li'] = array(
 	'povwatch_added'                   => 'toegevoeg',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'povwatch'                         => 'पीओव्हीवॉच',
+	'povwatch_desc'                    => 'इतर सदस्यांच्या [[Special:PovWatch|पहार्‍याच्या सूचीत पाने घुसविण्यासाठी]]चे एक्स्टेंशन',
+	'povwatch_no_session'              => 'त्रुटी: सेशन डाटा हरविल्यामुळे अर्ज पाठवू शकत नाही.',
+	'povwatch_not_allowed_push'        => 'तुम्ही पीओव्हीवॉच प्रबंधक नाही, तुम्ही इतरांच्या पहार्‍याच्या सूचीत पाने घुसवू शकत नाही.',
+	'povwatch_already_subscribed'      => 'तुम्ही अगोदरच पीओव्हीवॉचचे सदस्य आहात',
+	'povwatch_subscribed'              => 'तुम्ही आता पीओव्हीवॉचचे सदस्य आहात',
+	'povwatch_not_subscribed'          => 'तुम्ही पीओव्हीवॉचचे सदस्य नाहीत, त्यामुळे तुम्ही सदस्यत्व रद्द करू शकत नाही.',
+	'povwatch_unsubscribed'            => 'तुम्ही आता पीओव्हीवॉचचे सदस्य नाहीत',
+	'povwatch_invalid_title'           => 'दिलेले शीर्षक चुकीचे आहे',
+	'povwatch_pushed'                  => '$2 सदस्याच्या पहार्‍याच्या सूचीत [[$1]] घुसविण्यात आलेले आहे',
+	'povwatch_intro'                   => 'पीओव्हीवॉच ही अशी सेवा आहे जिच्यामुळे सदस्य प्रबंधकांच्या पहार्‍याच्या सूचीत वाद निर्माण करणारी पाने गुप्तरित्या घुसवता येतात.
+
+अलीकडील काळात घुसवलेल्या पानांची सूची [[Special:PovWatch/log]] इथे उपलब्ध आहे.',
+	'povwatch_subscriber_list'         => 'एक [[Special:PovWatch/subscribers|सदस्यांची यादी]] उपलब्ध आहे.',
+	'povwatch_subscriber_list_intro'   => '<strong>सदस्यांची यादी</strong>',
+	'povwatch_not_allowed_subscribers' => 'तुम्ही पीओव्हीवॉच सदस्यांची यादी बघू शकत नाही.',
+	'povwatch_unknown_subpage'         => 'अनोळखी उपपान.',
+	'povwatch_push'                    => 'घुसवा',
+	'povwatch_push_intro'              => 'इतर सदस्यांच्या पहार्‍याच्या सूचीत पाने घुसविण्यासाठी खालील अर्ज वापरा.
+कृपया शीर्षक काळजीपूर्वक लिहा: अस्तित्वात नसलेली पाने सुद्धा घुसवली जातील, व एकदा घुसवलेले पान काढून टाकण्याचा कुठलाही मार्ग नाही.',
+	'povwatch_title'                   => 'शीर्षक:',
+	'povwatch_comment'                 => 'शेरा नोंदवा:',
+	'povwatch_no_log'                  => 'नोंद सापडली नाही.',
+	'povwatch_no_subscribers'          => 'सदस्य नाहीत.',
+	'povwatch_unsubscribe_intro'       => 'तुम्ही पीओव्हीवॉच चे सदस्य आहात.
+सदस्यत्व रद्द करण्यासाठी खालील कळीवर टिचकी द्या.',
+	'povwatch_unsubscribe'             => 'सदस्यत्व रद्द करा',
+	'povwatch_subscribe_intro'         => 'तुम्ही पीओव्हीवॉचचे सदस्य नाहीत.
+सदस्यत्व घेण्यासाठी खालील कळीवर टिचकी मारा.',
+	'povwatch_subscribe'               => 'सदस्यत्व घ्या',
+	'povwatch_added'                   => 'वाढविले',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -499,6 +536,7 @@ $messages['vi'] = array(
 	'povwatch_title'       => 'Tên trang:',
 	'povwatch_unsubscribe' => 'Ngừng theo dõi',
 	'povwatch_subscribe'   => 'Theo dõi',
+	'povwatch_added'       => 'được thêm vào',
 );
 
 /** Volapük (Volapük)

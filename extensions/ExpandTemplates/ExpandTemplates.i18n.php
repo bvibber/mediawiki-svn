@@ -1051,6 +1051,13 @@ $messages['tr'] = array(
 	'expand_templates_preview'         => 'Ön izleme',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'expand_templates_generate_xml' => 'Показати дерево аналізу XML',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen

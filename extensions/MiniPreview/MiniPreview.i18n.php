@@ -160,10 +160,17 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
+	'minipreview-desc'                => 'एखाद्या चित्राच्या पुढे, त्या वर्गातील अथवा त्या पानातील इतर चित्रे अथवा संचिका, छोट्या आकारात पाहण्यासाठी, मिनीप्रिव्ह्यूचा वापर करा',
 	'minipreview-files_in_category'   => 'या वर्गात एकूण $1 संचिका आहेत.',
 	'minipreview-files_in_gallery'    => 'या प्रदर्शनात एकूण $1 संचिका आहेत.',
 	'minipreview-no_more_files_here'  => 'यापुढे कोणत्याही संचिका नाहीत.',
 	'minipreview-no_category_gallery' => 'वर्ग किंवा प्रदर्शने नाहीत!',
+	'minipreview-ignore_categories'   => 'खाली वर्ग नामे तसेच नामांची सुरुवात होणार्‍या शब्दांची यादी आहे. मिनीप्रिव्ह्यू या यादीतील वर्गात समाविष्ट असणार्‍या संचिका दाखविणार नाही. उदा. "* PD-" "PD-" ने सुरु होणारे वर्ग दाखविणार नाही, जसे की "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Dutch (Nederlands)

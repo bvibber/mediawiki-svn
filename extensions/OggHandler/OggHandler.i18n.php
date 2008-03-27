@@ -903,6 +903,7 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author T-Rithy
  * @author Lovekhmer
  * @author គីមស៊្រុន
  */
@@ -919,15 +920,15 @@ $messages['km'] = array(
 	'ogg-play'                => 'លេង',
 	'ogg-pause'               => 'ផ្អាក',
 	'ogg-stop'                => 'ឈប់',
-	'ogg-play-video'          => 'លេង វិឌីអូ',
-	'ogg-play-sound'          => 'លេង សំលេង',
-	'ogg-no-player'           => 'អភ័យទោស, ប្រព័ន្ធ របស់អ្នក មិនបង្ហាញ ផ្នែកទន់ឧបករអាន គាំទ្រ ណាមួយ ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">និង តំលើង មួយឧបករអាន គាំទ្រ</a> ។',
+	'ogg-play-video'          => 'លេងវីដេអូ',
+	'ogg-play-sound'          => 'លេងសំលេង',
+	'ogg-no-player'           => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នកហាក់បីដូចជាមិនមានកម្មវិធីណាមួយសំរាប់លេងទេ។ សូម<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធីសំរាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',
-	'ogg-player-thumbnail'    => 'នៅតែ ជា រូបភាព',
-	'ogg-player-soundthumb'   => 'គ្មាន អ្នកលេង',
+	'ogg-player-thumbnail'    => 'នៅតែជារូបភាព',
+	'ogg-player-soundthumb'   => 'មិនមានឧបករណ៍សំរាប់លេងទេ',
 	'ogg-player-selected'     => '(បានជ្រើសយក)',
-	'ogg-use-player'          => 'ប្រើប្រាស់ ឧបករអាន ៖',
+	'ogg-use-player'          => 'ប្រើប្រាស់ឧបករណ៍លេង៖',
 	'ogg-more'                => 'បន្ថែម...',
 	'ogg-dismiss'             => 'បិទ',
 	'ogg-download'            => 'ទាញយក ឯកសារ',

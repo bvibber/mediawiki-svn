@@ -450,6 +450,43 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'regexblock-view-all' => 'എല്ലാം',
+	'regexblock-view-go'  => 'പോകൂ',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'regexblock'                    => 'रेजएक्सब्लॉक',
+	'regexblock-desc'               => 'नेहमीची एक्स्प्रेशन्स वापरून सदस्य नावे व आयपी अंकपत्ते ब्लॉक करण्यासाठीचे एक्स्टेंशन. यामध्ये ब्लॉक करणे तसेच ब्लॉकचे व्यवस्थापन करण्यासाठीचे [[Special:Randomrootpage|विशेष पान]], दोघांचा समावेश आहे',
+	'regexblock-special-desc'       => 'दुसरा सदस्य ब्लॉक (दिलेल्या नावाने, नेहमीची एक्स्प्रेशन्स वापरून)',
+	'regexblock-stat-desc'          => 'regexblock एक्स्टेंशनसाठीची [[Special:Regexblockstats|ब्लॉक सांख्यिकी]] दर्शविते',
+	'regexblock-page-title'         => 'नेहमीचे एक्स्प्रेशन नाव ब्लॉक',
+	'regexblockstats'               => 'रेजएक्स ब्लॉक सांख्यिकी',
+	'regexblock-reason-ip'          => 'ह्या आयपी अंकपत्त्याला संपादनांपासून रोखण्यात आलेले आहे कारण तुम्ही अथवा इतर कोणीतरी या आयपी अंकपत्त्यावरून केलेला उत्पात.
+जर तुमच्या मते हे चुकून झाले आहे, तर $1 करा',
+	'regexblock-reason-name'        => 'ह्या सदस्यनावाला उत्पात अथवा इतर कारणांमुळे संपादनांपासून रोखण्यात आलेले आहे.
+तुमच्या मते हे चुकून झाले आहे, तर $1 करा',
+	'regexblock-reason-regex'       => 'ह्या सदस्यनावाशी साम्य असणार्‍या सदस्यनावावरून झालेला उत्पात अथवा इतर कारणांमुळे या सदस्यनावाला संपादनांपासून रोखण्यात आलेले आहे.
+कृपया दुसरे सदस्यनाव तयार करा किंवा या संदेशाबद्दल $1 करा',
+	'regexblock-page-title-1'       => 'नेहमीच्या एक्स्प्रेशन्सचा वापर करुन अंकपत्ता ब्लॉक करा',
+	'regexblock-unblock-success'    => 'अनब्लॉक यशस्वी',
+	'regexblock-unblock-log'        => "सदस्य नाव किंवा आयपी अंकपत्ता '''$1''' अनब्लॉक केलेला आहे.",
+	'regexblock-unblock-error'      => '$1 ला अनब्लॉक करण्यात त्रुटी.
+कदाचित असा सदस्य अस्तित्वात नाही.',
+	'regexblock-form-username'      => 'आयपी अंकपत्ता किंवा सदस्यनाव:',
+	'regexblock-form-reason'        => 'कारण:',
+	'regexblock-form-expiry'        => 'समाप्ती:&#160;',
+	'regexblock-form-match'         => 'तंतोतंत जुळणी',
+	'regexblock-form-account-block' => 'नवीन खाते तयार करणे अवरुद्ध करा',
+	'regexblock-form-submit'        => 'या&nbsp;सदस्याला&nbsp;ब्लॉक&nbsp;करा',
+	'regexblock-block-log'          => "'''$1''' या सदस्य नाव अथव आयपी अंकपत्त्याला ब्लॉक केलेले आहे.",
+	'regexblock-block-success'      => 'ब्लॉक यशस्वी',
+	'regexblock-stats-username'     => '$1 करिता',
+	'regexblock-view-all'           => 'सर्व',
+	'regexblock-view-go'            => 'चला',
+	'regexblock-view-block-unblock' => 'अनब्लॉक',
+	'regexblock-view-time'          => '$1 वर',
 );
 
 /** Dutch (Nederlands)
@@ -819,6 +856,15 @@ $messages['tg'] = array(
 	'regexblock-view-go'        => 'Бирав',
 	'regexblock-view-reason'    => 'далел: $1',
 	'regexblock-view-time'      => 'дар $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'regexblock-already-blocked' => '“$1” đã bị cấm rồi.',
+	'regexblock-view-all'        => 'Tất cả',
+	'regexblock-view-go'         => 'Xem',
 );
 
 /** Volapük (Volapük)

@@ -237,11 +237,23 @@ $messages['lb'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'player-goto-page' => 'पान',
-	'player-goto-file' => 'संचिका',
+	'player'               => 'प्लेयर',
+	'player-desc'          => 'सर्वसाधारण ब्राउझर प्लगीन वापरून संलग्न विविधमाध्यमे (मल्टीमीडिया), तसेच एक [[Special:Player|विशेष पान]]',
+	'player-title'         => 'प्लेयर',
+	'player-playertitle'   => 'प्लेयर: $1',
+	'player-file'          => 'संचिका नाव',
+	'player-play'          => 'चालू करा',
+	'player-not-allowed'   => 'चुकीची रुपरेषा',
+	'player-not-found'     => 'संचिका सापडली नाही',
+	'player-invalid-title' => 'चुकीचे शीर्षक',
+	'player-clicktoplay'   => '$1 चालू करा',
+	'player-goto-player'   => 'प्लेयर',
+	'player-goto-page'     => 'पान',
+	'player-goto-file'     => 'संचिका',
 );
 
 /** Dutch (Nederlands)
@@ -466,6 +478,14 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'player-goto-page' => 'Pájina',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'player-goto-page' => 'Trang',
+	'player-goto-file' => 'tập tin',
 );
 
 /** Volapük (Volapük)

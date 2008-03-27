@@ -287,7 +287,7 @@ $messages['no'] = array(
 
 Noen har gitt deg en ny oppgave på %s.
 
-For å se den fullstendige oppgavelisten din, gå til %s.
+Gå til %s for å se den fullstendige oppgavelisten din.
 
 Fra %ss varslingssystem',
 );

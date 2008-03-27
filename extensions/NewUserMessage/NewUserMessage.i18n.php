@@ -99,6 +99,13 @@ $messages['lb'] = array(
 	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक [[MediaWiki:NewUserMessage|संदेश]] वाढविते',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

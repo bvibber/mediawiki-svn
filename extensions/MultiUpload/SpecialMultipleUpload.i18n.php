@@ -251,9 +251,19 @@ $messages['lb'] = array(
  */
 $messages['mr'] = array(
 	'multipleupload'                   => 'संचिका चढवा',
+	'multipleupload-desc'              => 'सदस्यांना [[Special:MultipleUpload|एकाचवेळी अनेक संचिका चढविण्याची]] परवानगी देते',
 	'multipleupload-ignoreallwarnings' => "'''सर्व सूचना''' दुर्लक्षित करा व सर्व संचिका जतन करा.",
 	'multipleupload-saveallfiles'      => 'सर्व संचिका जतन करा',
+	'multipleupload-addresswarnings'   => 'संचिका पुन्हा चढविण्यापूर्वी कृपया दिलेल्या इशार्‍यांचे समाधान करा.',
 	'multipleupload-page'              => '{{ns:project}}:संचिका वगळण्याची नीती',
+	'multipleupload-text'              => "इथे एकाच वेळी अनेक संचिका चढवा.
+
+’निवडा’ वर टिचकी देऊन आपण चढवू इच्छित असलेल्या संचिका निवडा.
+तुम्ही १ ते $1 संचिका एकाच वेळी चढवू शकता.
+
+तुम्ही वैकल्पिक असणारे '''लक्ष्य संचिकानाव''' व '''संक्षिप्त माहिती''' हे रकाने तुमच्या संचिकेबद्दल अधिक माहिती देण्यासाठी वापरू शकता.
+
+अयोग्य संचिका ताबडतोब वगळल्या जातील, कॄपया [[{{MediaWiki:Multipleupload-page}}|संचिका वगळण्याची नीती]] पहा.",
 	'multiupload-fileuploaded'         => 'संचिका चढविलेली आहे.',
 	'multiupload-toolbox'              => 'अनेक संचिका चढवा',
 );
@@ -289,12 +299,12 @@ $messages['nn'] = array(
 	'multipleupload' => 'Last opp filer',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'multipleupload'                   => 'Last opp filer',
-	'multipleupload-desc'              => 'Lar brukere [[Special:MultipleUpload|laste opp flere filer på én gang]]',
+	'multipleupload-desc'              => 'Gjør det mulig å [[Special:MultipleUpload|laste opp flere filer på én gang]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",
 	'multipleupload-saveallfiles'      => 'Lagre alle filer',
 	'multipleupload-addresswarnings'   => 'Vennligst addresser alle advarsler før du laster opp filene igjen.',

@@ -161,6 +161,13 @@ $messages['lb'] = array(
 	'editmsg-patch-success'    => 'gepatched!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'editmsg-search' => 'തിരയുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

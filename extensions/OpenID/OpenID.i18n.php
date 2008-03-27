@@ -426,24 +426,74 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'openidlogin'          => 'ओपनID वापरून प्रवेश करा',
-	'openidfinish'         => 'ओपनID प्रवेश प्रक्रिया पूर्ण करा',
-	'openidserver'         => 'ओपनID सर्व्हर',
-	'openidxrds'           => 'Yadis संचिका',
-	'openidconvert'        => 'ओपनID कन्व्हर्टर',
-	'openiderror'          => 'तपासणी त्रुटी',
-	'openidcancel'         => 'तपासणी रद्द',
-	'openidfailure'        => 'तपासणी पूर्ण झाली नाही',
-	'openidsuccess'        => 'तपासणी पूर्ण',
-	'openidusernameprefix' => 'ओपनIDसदस्य',
-	'openidoptional'       => 'वैकल्पिक',
-	'openidrequired'       => 'आवश्यक',
-	'openidnickname'       => 'टोपणनाव',
-	'openidfullname'       => 'पूर्णनाव',
-	'openidemail'          => 'इमेल पत्ता',
-	'openidlanguage'       => 'भाषा',
-	'openidchoosepassword' => 'परवलीचा शब्द:',
-	'openidloginlabel'     => 'ओपनID URL',
+	'openid-desc'                   => 'विकिवर [http://openid.net/ ओपनID] वापरून प्रवेश करा, तसेच कुठल्याही इतर ओपनID संकेतस्थळावर विकि सदस्य नाम वापरून प्रवेश करा',
+	'openidlogin'                   => 'ओपनID वापरून प्रवेश करा',
+	'openidfinish'                  => 'ओपनID प्रवेश प्रक्रिया पूर्ण करा',
+	'openidserver'                  => 'ओपनID सर्व्हर',
+	'openidxrds'                    => 'Yadis संचिका',
+	'openidconvert'                 => 'ओपनID कन्व्हर्टर',
+	'openiderror'                   => 'तपासणी त्रुटी',
+	'openiderrortext'               => 'ओपनID URL च्या तपासणीमध्ये त्रुटी आढळलेली आहे.',
+	'openidconfigerror'             => 'ओपनID व्यवस्थापन त्रुटी',
+	'openidconfigerrortext'         => 'या विकिसाठीचे ओपनID जतन व्यवस्थापन चुकीचे आहे.
+कृपया प्रबंधकांशी संपर्क करा.',
+	'openidpermission'              => 'ओपनID परवानगी त्रुटी',
+	'openidpermissiontext'          => 'आपण दिलेल्या ओपनID या सर्व्हरवर प्रवेश करता येणार नाही.',
+	'openidcancel'                  => 'तपासणी रद्द',
+	'openidcanceltext'              => 'ओपनID URL ची तपासणी रद्द केलेली आहे.',
+	'openidfailure'                 => 'तपासणी पूर्ण झाली नाही',
+	'openidfailuretext'             => 'ओपनID URL ची तपासणी पूर्ण झालेली नाही. त्रुटी संदेश: "$1"',
+	'openidsuccess'                 => 'तपासणी पूर्ण',
+	'openidsuccesstext'             => 'ओपनID URL ची तपासणी पूर्ण झालेली आहे.',
+	'openidusernameprefix'          => 'ओपनIDसदस्य',
+	'openidserverlogininstructions' => '$3 वर $2 या नावाने (सदस्य पान $1) प्रवेश करण्यासाठी आपला परवलीचा शब्द खाली लिहा.',
+	'openidtrustinstructions'       => 'तुम्ही $1 बरोबर डाटा शेअर करू इच्छिता का याची तपासणी करा.',
+	'openidallowtrust'              => '$1 ला ह्या सदस्य खात्यावर विश्वास ठेवण्याची अनुमती द्या.',
+	'openidnopolicy'                => 'संकेतस्थळावर गोपनियता नीती दिलेली नाही.',
+	'openidpolicy'                  => 'अधिक माहितीसाठी <a target="_new" href="$1">गुप्तता नीती</a> तपासा.',
+	'openidoptional'                => 'वैकल्पिक',
+	'openidrequired'                => 'आवश्यक',
+	'openidnickname'                => 'टोपणनाव',
+	'openidfullname'                => 'पूर्णनाव',
+	'openidemail'                   => 'इमेल पत्ता',
+	'openidlanguage'                => 'भाषा',
+	'openidnotavailable'            => 'तुम्ही दिलेले टोपणनाव ($1) अगोदरच दुसर्‍या सदस्याने वापरलेले आहे.',
+	'openidnotprovided'             => 'तुमच्या ओपनID सर्व्हरने टोपणनाव दिले नाही (कदाचित तो देऊ शकत नसेल किंवा तुम्ही देण्यास मनाई केली असेल).',
+	'openidchooseinstructions'      => 'सर्व सदस्यांना टोपणनाव असणे आवश्यक आहे;
+तुम्ही खाली दिलेल्या नावांमधून एक निवडू शकता.',
+	'openidchoosefull'              => 'तुमचे पूर्ण नाव ($1)',
+	'openidchooseurl'               => 'तुमच्या ओपनID मधून घेतलेले नाव ($1)',
+	'openidchooseauto'              => 'एक आपोआप तयार झालेले नाव ($1)',
+	'openidchoosemanual'            => 'तुमच्या आवडीचे नाव:',
+	'openidchooseexisting'          => 'या विकिवरील अस्तित्वात असलेले सदस्य खाते:',
+	'openidchoosepassword'          => 'परवलीचा शब्द:',
+	'openidconvertinstructions'     => 'हा अर्ज तुम्हाला ओपनID URL वापरण्यासाठी तुमचे सदस्यनाव बदलण्याची परवानगी देतो.',
+	'openidconvertsuccess'          => 'ओपनID मध्ये बदल पूर्ण झालेले आहेत',
+	'openidconvertsuccesstext'      => 'तुम्ही तुमचा ओपनID $1 मध्ये यशस्वीरित्या बदललेला आहे.',
+	'openidconvertyourstext'        => 'हा तुमचाच ओपनID आहे.',
+	'openidconvertothertext'        => 'हा दुसर्‍याचा ओपनID आहे.',
+	'openidalreadyloggedin'         => "'''$1, तुम्ही अगोदरच प्रवेश केलेला आहे!'''
+
+जर तुम्ही भविष्यात ओपनID वापरून प्रवेश करू इच्छित असाल, तर तुम्ही [[Special:OpenIDConvert|तुमचे खाते ओपनID साठी बदलू शकता]].",
+	'tog-hideopenid'                => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा <a href="http://openid.net/">ओपनID</a> लपवा.',
+	'openidnousername'              => 'सदस्यनाव दिले नाही.',
+	'openidbadusername'             => 'चुकीचे सदस्यनाव दिले आहे.',
+	'openidautosubmit'              => 'या पानावरील अर्ज जर तुम्ही जावास्क्रीप्ट वापरत असाल तर आपोआप पाठविला जाईल. जर तसे झाले नाही, तर \\"पुढे\\" कळीवर टिचकी मारा.',
+	'openidclientonlytext'          => 'या विकिवरील खाती तुम्ही इतर संकेतस्थळांवर ओपनID म्हणून वापरू शकत नाही.',
+	'openidloginlabel'              => 'ओपनID URL',
+	'openidlogininstructions'       => "{{SITENAME}} [http://openid.net/ ओपनID] वापरून विविध संकेतस्थळांवर प्रवेश करण्याची अनुमती देते.
+ओपनID वापरुन तुम्ही एकाच परवलीच्या शब्दाने विविध संकेतस्थळांवर प्रवेश करू शकता.
+(अधिक माहिती साठी [http://en.wikipedia.org/wiki/OpenID विकिपीडिया वरील ओपनID लेख] पहा.)
+
+जर {{SITENAME}} वर अगोदरच तुमचे खाते असेल, तुम्ही नेहमीप्रमाणे तुमचे सदस्यनाव व परवलीचा शब्द वापरून [[Special:Userlogin|प्रवेश करा]].
+भविष्यात ओपनID वापरण्यासाठी, तुम्ही प्रवेश केल्यानंतर [[Special:OpenIDConvert|तुमचे खाते ओपनID मध्ये बदला]].
+
+अनेक [http://wiki.openid.net/Public_OpenID_providers Public ओपनID वितरक] आहेत, व तुम्ही अगोदरच ओपनID चे खाते उघडले असण्याची शक्यता आहे.
+
+; इतर विकि : जर तुमच्याकडे ओपनID वापरणार्‍या विकिवर खाते असेल, जसे की [http://wikitravel.org/ विकिट्रॅव्हल], [http://www.wikihow.com/ विकिहाऊ], [http://vinismo.com/ विनिस्मो], [http://aboutus.org/ अबाउट‍अस] किंवा [http://kei.ki/ कैकी], तुम्ही {{SITENAME}} वर तुमच्या त्या विकिवरील सदस्य पानाची '''पूर्ण URL''' वरील पृष्ठपेटीमध्ये देऊन प्रवेश करू शकता. उदाहरणार्थ, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ याहू!] : जर तुमच्याकडे याहू! चे खाते असेल, तर तुम्ही वरील पृष्ठपेटीमध्ये याहू! ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. याहू! ओपनID URL ची रुपरेषा ''<nowiki>https://me.yahoo.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे.
+; [http://dev.aol.com/aol-and-63-million-openids एओएल] : जर तुमच्याकडे [http://www.aol.com/ एओएल]चे खाते असेल, जसे की [http://www.aim.com/ एम] खाते, तुम्ही {{SITENAME}} वर वरील पृष्ठपेटीमध्ये एओएल ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. एओएल ओपनID URL ची रुपरेषा ''<nowiki>http://openid.aol.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे. तुमच्या सदस्यनावात अंतर (space) चालणार नाही.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html ब्लॉगर], [http://faq.wordpress.com/2007/03/06/what-is-openid/ वर्डप्रेस.कॉम], [http://www.livejournal.com/openid/about.bml लाईव्ह जर्नल], [http://bradfitz.vox.com/library/post/openid-for-vox.html वॉक्स] : जर यापैकी कुठेही तुमचा ब्लॉग असेल, तर वरील पृष्ठपेटीमध्ये तुमच्या ब्लॉगची URL भरा. उदाहरणार्थ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', किंवा ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Dutch (Nederlands)

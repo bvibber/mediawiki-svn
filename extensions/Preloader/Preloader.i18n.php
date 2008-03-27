@@ -42,6 +42,13 @@ $messages['lb'] = array(
 	'preloader-desc' => 'Erméiglecht et personabiliséierten Text fir nei Säiten pro Nummraum derbäizesetzen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'preloader-desc' => 'नवीन पानांसाठी बदलता येण्याजोगी नामविश्व बॉइलरप्लेट देते',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

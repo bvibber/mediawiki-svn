@@ -324,38 +324,53 @@ $allMessages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $allMessages['no'] = array(
-	'whitelistedit'            => 'Rettighetsredigerer for hvitliste',
-	'whitelist'                => 'Hvitelistede sider',
-	'mywhitelistpages'         => 'Mine sider',
-	'whitelistfor'             => '<center>Nåværende informasjon for <b>$1</b></center>',
-	'whitelisttablemodify'     => 'Endre',
-	'whitelisttablemodifyall'  => 'Alle',
-	'whitelisttablemodifynone' => 'Ingen',
-	'whitelisttablepage'       => 'Wikiside',
-	'whitelisttabletype'       => 'Tilgangstype',
-	'whitelisttableexpires'    => 'Utgår',
-	'whitelisttablemodby'      => 'Sist endret av',
-	'whitelisttablemodon'      => 'Sist endret',
-	'whitelisttableedit'       => 'Rediger',
-	'whitelisttableview'       => 'Vis',
-	'whitelisttablenewdate'    => 'Ny dato:',
-	'whitelisttablechangedate' => 'Endre utgangsdato',
-	'whitelisttablesetedit'    => 'Sett til redigering',
-	'whitelisttablesetview'    => 'Sett til visning',
-	'whitelisttableremove'     => 'Fjern',
-	'whitelistnewpagesfor'     => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn',
-	'whitelistnewtabledate'    => 'Utgangsdato:',
-	'whitelistnewtableedit'    => 'Sett til redigering',
-	'whitelistnewtableview'    => 'Sett til visning',
-	'whitelistnewtableprocess' => 'Prosess',
-	'whitelistnewtablereview'  => 'Gå gjennom',
-	'whitelistpagelist'        => '{{SITENAME}}-sider for $1',
-	'whitelistbadtitle'        => 'Ugyldig tittel -',
-	'whitelistoverview'        => '== Oversikt over endringer for $1 ==',
-	'whitelistnever'           => 'aldri',
-	'whitelistnummatches'      => '  - $1 treff',
+	'whitelist-desc'            => 'Redigering av tilgangsrettigheter for begrensede brukere',
+	'whitelistedit'             => 'Rettighetsredigering for hvitliste',
+	'whitelist'                 => 'Hvitelistede sider',
+	'mywhitelistpages'          => 'Mine sider',
+	'whitelistfor'              => '<center>Nåværende informasjon for <b>$1</b></center>',
+	'whitelisttablemodify'      => 'Endre',
+	'whitelisttablemodifyall'   => 'Alle',
+	'whitelisttablemodifynone'  => 'Ingen',
+	'whitelisttablepage'        => 'Wikiside',
+	'whitelisttabletype'        => 'Tilgangstype',
+	'whitelisttableexpires'     => 'Utgår',
+	'whitelisttablemodby'       => 'Sist endret av',
+	'whitelisttablemodon'       => 'Sist endret',
+	'whitelisttableedit'        => 'Rediger',
+	'whitelisttableview'        => 'Vis',
+	'whitelisttablenewdate'     => 'Ny dato:',
+	'whitelisttablechangedate'  => 'Endre utgangsdato',
+	'whitelisttablesetedit'     => 'Sett til redigering',
+	'whitelisttablesetview'     => 'Sett til visning',
+	'whitelisttableremove'      => 'Fjern',
+	'whitelistnewpagesfor'      => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn',
+	'whitelistnewtabledate'     => 'Utgangsdato:',
+	'whitelistnewtableedit'     => 'Sett til redigering',
+	'whitelistnewtableview'     => 'Sett til visning',
+	'whitelistnewtableprocess'  => 'Prosess',
+	'whitelistnewtablereview'   => 'Gå gjennom',
+	'whitelistselectrestricted' => '== ANgi navn på begrenset bruker ==',
+	'whitelistpagelist'         => '{{SITENAME}}-sider for $1',
+	'whitelistnocalendar'       => '<font color="red" size="3">Det virker som om [http://mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en forutsetning for denne utvidelsen, ikke har blitt installert ordentlig.</font>',
+	'whitelistbadtitle'         => 'Ugyldig tittel -',
+	'whitelistoverview'         => '== Oversikt over endringer for $1 ==',
+	'whitelistoverviewcd'       => "* Endrer dato for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewsa'       => "* Setter tilgang for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewrm'       => '* Fjerner tilgang til [[:$1|$1]]',
+	'whitelistoverviewna'       => "* Legger til [[:$1|$1]] til hviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
+	'whitelistrequest'          => 'Etterspør tilgang til flere sider',
+	'whitelistrequestmsg'       => '$1 har etterspurt tilgang til følgende sider:
+
+$2',
+	'whitelistrequestconf'      => 'Etterspørsel om nye sider har blitt sendt til $1',
+	'whitelistnonrestricted'    => "'''$1''' er ikke en begrenset bruker.
+Denne siden kan kun brukes på begrensede brukere.",
+	'whitelistnever'            => 'aldri',
+	'whitelistnummatches'       => '  - $1 treff',
 );
 
 /** Occitan (Occitan)
@@ -613,9 +628,13 @@ $allMessages['tg'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $allMessages['vi'] = array(
+	'whitelisttablemodifyall'  => 'Tất cả',
 	'whitelisttablemodifynone' => 'Không có',
+	'whitelisttableedit'       => 'Sửa',
+	'whitelistbadtitle'        => 'Tựa trang sai –',
 );
 

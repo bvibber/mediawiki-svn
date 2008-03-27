@@ -1009,3 +1009,13 @@ $messages['tg'] = array(
 	'crosswikiblock-reason' => 'Далел:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'crosswikiblock-submit'         => 'Cấm',
+	'crosswikiblock-anononly'       => 'Chỉ cấm thành viên vô danh',
+	'crosswikiblock-autoblock'      => 'Tự động cấm các địa chỉ IP mà thành viên này sử dụng',
+	'crosswikiblock-alreadyblocked' => '“$3” đã bị cấm rồi.',
+);
+

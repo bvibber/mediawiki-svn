@@ -437,6 +437,13 @@ $messages['tet'] = array(
 	'importfreeimages_owner' => 'Autór',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'importfreeimages_owner' => 'Tác giả',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

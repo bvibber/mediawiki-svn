@@ -520,6 +520,13 @@ $messages['lt'] = array(
 	'linksearch-ok' => 'Ieškoti',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'linksearch-ok' => 'തിരയുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

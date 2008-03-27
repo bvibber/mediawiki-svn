@@ -280,7 +280,7 @@ Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoa
  * @author Siebrand
  */
 $messages['no'] = array(
-	'spamdifftool'                  => 'Håndter spamsvartelisten',
+	'spamdifftool'                  => 'Håndtering av spamsvartelisten',
 	'spamdifftool-desc'             => 'Gir en enkel måte å legge til nye elementer i spamsvartelisten fra diffsider',
 	'spamdifftool_cantedit'         => 'Du har dessverre ikke rettighet til å redigere spamsvartelisten.',
 	'spamdifftool_notext'           => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',

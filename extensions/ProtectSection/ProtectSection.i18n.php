@@ -105,6 +105,15 @@ $messages['lb'] = array(
 	'protectsection_forbidden'  => 'Verbueden',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'protectsection_add_remove' => 'तुम्ही एक सुरक्षित विभाग वाढविण्याचा अथवा वगळण्याचा प्रयत्न केलात',
+	'protectsection_modify'     => 'तुम्ही सुरक्षित मजकूर संपादण्याचा प्रयत्न केला',
+	'protectsection_forbidden'  => 'फॉरबिडन',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -166,3 +175,4 @@ $messages['stq'] = array(
 $messages['te'] = array(
 	'protectsection_modify' => 'సంరక్షిత పాఠ్యాన్ని మార్చడానికి మీరు ప్రయత్నించారు',
 );
+

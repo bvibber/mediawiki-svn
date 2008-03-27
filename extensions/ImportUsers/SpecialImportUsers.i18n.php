@@ -341,12 +341,12 @@ $messages['nn'] = array(
 	'importusers-realname'            => 'verkeleg namn',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'importusers'                         => 'Importer brukere',
-	'importusers-desc'                    => 'Importer brukere fra CSV-fil; tegnkoding: UTF-8',
+	'importusers-desc'                    => 'Importing av brukere fra CSV-fil; tegnkoding: UTF-8',
 	'importusers-uploadfile'              => 'Last opp fil',
 	'importusers-form-caption'            => 'Sett inn CSV-fil (UTF-8)',
 	'importusers-form-file'               => 'Brukerfilformat (csv):',
@@ -581,6 +581,15 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'importusers-log-summary-all' => 'Hotu',
 	'importusers-email'           => 'korreiu eletróniku',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'importusers-uploadfile'        => 'Tải tập tin lên',
+	'importusers-log-summary-all'   => 'Tất cả',
+	'importusers-log-summary-added' => 'Được thêm vào',
 );
 
 /** Volapük (Volapük)

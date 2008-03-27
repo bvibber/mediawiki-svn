@@ -298,7 +298,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'dt-desc'                     => 'Tillater import og eksport av strukturert data i maloppkallinger',
+	'dt-desc'                     => 'Gjør det mulig å importere og eksportere strukturert data i maloppkallinger',
 	'viewxml'                     => 'Se XML',
 	'dt_viewxml_docu'             => 'Velg blant følgende kategorier og navnerom for å se dem i XML-format',
 	'dt_viewxml_categories'       => 'Kategorier',

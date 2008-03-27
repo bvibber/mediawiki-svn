@@ -87,7 +87,9 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
+	'multiboilerplate-desc'   => 'पाने संपादित करत असताना, संपादन पेटीच्या वर बॉइलरप्लेटस निवडण्यासाठी लागणारी ओढ-यादी (drop-down) दाखविण्याची परवानगी देते',
 	'multiboilerplate-legend' => 'बॉईलरप्लेट निवडा',
+	'multiboilerplate-submit' => 'लोड',
 );
 
 /** Dutch (Nederlands)

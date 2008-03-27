@@ -98,6 +98,14 @@ $messages['lt'] = array(
 	'purge' => 'atnaujinti',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'purge'      => 'स्वच्छ करा (purge)',
+	'purge-desc' => 'सर्व साधारण पानांवर एक स्वच्छतेचा टॅब वाढवितो, व अनामिक सदस्यांसाठी पर्ज तपासणी वगळून लवकर सय स्वच्छ करण्याची सुविधा देतो',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

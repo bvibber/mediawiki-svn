@@ -508,6 +508,14 @@ $messages['lb'] = array(
 	'changeauthor-rev'                  => 'Versioun $1',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'changeauthor-pagenameform-go' => 'പോകൂ',
+	'changeauthor-comment'         => 'അഭിപ്രായം:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
@@ -571,12 +579,12 @@ $messages['nn'] = array(
 	'changeauthor-comment' => 'Kommentar:',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'changeauthor'                      => 'Endre revisjonens opphavsperson',
-	'changeauthor-desc'                 => 'Tillater endring av revisjonsforfatter',
+	'changeauthor-desc'                 => 'Gjør det mulig å endre opphavsperson for sideversjoner',
 	'changeauthor-title'                => 'Endre en revisjons opphavsmann',
 	'changeauthor-search-box'           => 'Søk i revisjoner',
 	'changeauthor-pagename-or-revid'    => 'Sidenavn eller revisjons-ID:',
@@ -884,6 +892,14 @@ $messages['tr'] = array(
 	'changeauthor-pagenameform-go'  => 'Git',
 	'changeauthor-comment'          => 'Yorum:',
 	'changeauthor-invalid-username' => '"$1" geçersiz kullanıcı.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'changeauthor-pagenameform-go' => 'Tìm kiếm',
+	'changeauthor-comment'         => 'Lý do:',
 );
 
 /** Volapük (Volapük)

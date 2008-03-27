@@ -309,12 +309,12 @@ $messages['nl'] = array(
 	'block_title_error'            => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'block_title_error_page_title' => 'Blokkert tittel',
-	'block_title_error-desc'       => 'Tilbyr en enkel måte å forhindre sider med visse titler å lagres eller opprettes',
+	'block_title_error-desc'       => 'Gir en enkel måte å forhindre lagring eller oppretting av sider med visse titler',
 	'block_title_error'            => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
 );
 

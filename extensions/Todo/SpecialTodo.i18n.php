@@ -315,7 +315,7 @@ $4',
 	'todo-new-item'         => 'Ny oppgave',
 	'todo-issue-summary'    => 'Sammendrag:',
 	'todo-form-details'     => 'Detaljer:',
-	'todo-form-email'       => 'For å motta beskjed på e-post når oppgaven er fullført, skriv inn e-postadressen din her:',
+	'todo-form-email'       => 'Skriv inn e-postadressen din her for å mottå beskjed på e-post når oppgaven er fullført:',
 	'todo-form-submit'      => 'Utfør',
 );
 
@@ -494,6 +494,13 @@ $messages['th'] = array(
  */
 $messages['tr'] = array(
 	'todo-new-queue' => 'yeni',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'todo-list-cancel' => 'Bãi bỏ',
 );
 
 /** Volapük (Volapük)

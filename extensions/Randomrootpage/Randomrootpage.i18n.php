@@ -55,6 +55,14 @@ $messages['hu'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciális lap]], amely egy véletlen lapot jelenít meg a gyökérből',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'randomrootpage'      => 'अविशिष्ट मूळ पान',
+	'randomrootpage-desc' => 'अविशिष्ट मूळ पान मिळविण्यासाठीचे [[Special:Randomrootpage|विशेष पान]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

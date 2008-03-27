@@ -913,6 +913,14 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-moon'             => 'Mount',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$wgGoogleMapsMessages['ml'] = array(
+	'gm-yes'    => 'ശരി',
+	'gm-search' => 'തിരയുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -1081,7 +1089,7 @@ $wgGoogleMapsMessages['nn'] = array(
  * @author M.M.S.
  */
 $wgGoogleMapsMessages['no'] = array(
-	'gm-incompatible-browser'      => 'For å kunne se kartet som skulle ha vært her, må du bruke en <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettleser</a>.',
+	'gm-incompatible-browser'      => 'Du må bruke en <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettleser</a> for å se kartet som skulle ha vært her.',
 	'gm-incompatible-browser-link' => 'Gå hit for å se en liste over nettlesere dette fungerer i.',
 	'gm-no-editor'                 => 'Dessverre støtter ikke nettleseren din de interaktive kartlagingstjenestene. Prøv den nyeste versjonen av <a href="http://www.microsoft.com/norge/windows/ie/default.mspx">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla-europe.org/no/products/firefox/">Firefox</a> (Windows, Mac og Linux).',
 	'gm-balloon-title'             => 'Tittel:',

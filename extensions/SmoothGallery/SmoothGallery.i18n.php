@@ -146,12 +146,12 @@ De volgende afbeeldingen zijn niet aangetroffen: $1',
 	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'smoothgallery'                     => 'Mykt galleri',
-	'smoothgallery-desc'                => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Tillater de fleste av SmoothGallerys valgmuligheter.',
+	'smoothgallery-desc'                => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Inneholder de fleste av SmoothGallerys valgmuligheter.',
 	'smoothgallery-title'               => 'Mykt galleri',
 	'smoothgallery-smoothgallerytitle'  => 'Mykt galleri: $1',
 	'smoothgallery-error'               => '<b>Feil med mykt galleri:</b>',

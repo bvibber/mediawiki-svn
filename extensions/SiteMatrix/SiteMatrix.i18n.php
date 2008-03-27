@@ -687,6 +687,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'sitematrix'           => 'Liste over Wikimedia-prosjekter',
+	'sitematrix-summary'   => 'Denne spesialsiden lister opp alle Wikimedias wikier.',
 	'sitematrix-desc'      => 'Viser en [[Special:SiteMatrix|liste over Wikimedia-wikier]]',
 	'sitematrix-language'  => 'Språk',
 	'sitematrix-project'   => 'Prosjektets navn, interprosjektlenke og interwikilenke',
@@ -753,6 +754,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'sitematrix'           => 'Lista de sítios Wikimedia',
+	'sitematrix-summary'   => 'Esta página especial lista todos os wikis Wikimedia.',
 	'sitematrix-desc'      => 'Apresenta uma [[{{ns:Special}}:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language'  => 'Idioma',
 	'sitematrix-project'   => 'Nome do projecto, link interprojecto e link interwiki',

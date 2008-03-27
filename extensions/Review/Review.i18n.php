@@ -402,6 +402,22 @@ $messages['lb'] = array(
 	'review_comment'                => 'Bemierkung',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'review_comment' => 'അഭിപ്രായം:',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'review_total_statistics'       => 'एकूण',
+	'review_statistics_left_corner' => 'आवृत्ती',
+	'review_topic'                  => 'विषय',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -665,5 +681,12 @@ $messages['tg'] = array(
 	'review_save'                   => 'Захираи натиҷаи бозбини',
 	'review_page_link'              => 'омори бозбиниҳо',
 	'review_version_statistic_cell' => '$1 аз $2',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'review_total_statistics' => 'Tổng cộng',
 );
 

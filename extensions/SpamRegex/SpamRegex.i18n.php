@@ -435,3 +435,10 @@ $messages['tg'] = array(
 	'spamregex-text' => '(Матн)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'spamregex-already-blocked' => '“$1” đã bị cấm rồi',
+);
+

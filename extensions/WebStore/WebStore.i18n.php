@@ -444,10 +444,12 @@ $messages['lb'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
 	'webstore_no_file' => 'कोणतीही संचिका चढवली नाही',
+	'webstore_404'     => 'संचिका सापडली नाही.',
 );
 
 /** Dutch (Nederlands)

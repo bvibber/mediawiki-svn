@@ -1389,6 +1389,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'math_noblahtex'                        => 'Невозможно запустить blahtex, его ожидаемое расположение: $1',
@@ -1418,12 +1419,15 @@ $messages['ru'] = array(
 	'math_LatexPackageUnavailable'          => 'Невозможно создать изображение PNG, так как недоступен LaTeX-пакет «$1»',
 	'math_MismatchedBeginAndEnd'            => 'Команды «$1» и «$2» не соответствуют',
 	'math_MisplacedLimits'                  => 'Команда «$1» может использоваться только после оператора math (вероятно, следует использовать «\\mathop»)',
-	'math_MissingCommandAfterNewcommand'    => 'Команда «$1» может использоваться только после оператора math (вероятно, следует использовать «\\mathop»)',
+	'math_MissingCommandAfterNewcommand'    => 'Отсутствует или неправильное название новой команды после "\\newcommand".
+Должна быть определена только одна команда;
+она должна начинаться с обратного слеша и содержать только буквы.',
 	'math_MissingDelimiter'                 => 'Отсутствует разделитель после «$1»',
 	'math_MissingOpenBraceAfter'            => 'Отсутствует открывающая скобка «{» после «$1»',
 	'math_MissingOpenBraceAtEnd'            => 'Отсутствует открывающая скобка «{» в конце входных данных',
 	'math_MissingOpenBraceBefore'           => 'Отсутствует открывающая скобка «{» перед «$1»',
-	'math_MissingOrIllegalParameterCount'   => 'Не указано или указано ошибочно число параметров в определении «$1» (должна быть отдна цифра от 1 до 9)',
+	'math_MissingOrIllegalParameterCount'   => 'Не указано или указано ошибочно число параметров в определении «$1»
+(должна быть одна цифра от 1 до 9)',
 	'math_MissingOrIllegalParameterIndex'   => 'Не указан или указан ошибочно индекс параметра в определении «$1»',
 	'math_NonAsciiInMathMode'               => 'Не-ASCII символы могут использоваться только в text-режиме (попробуйте заключить такие символы в «\\text{...}»)',
 	'math_NotEnoughArguments'               => 'Не все аргументы были указаны для «$1»',
@@ -1701,6 +1705,23 @@ $messages['uk'] = array(
 	'math_MismatchedBeginAndEnd'            => 'Команди «$1» і «$2» не відповідні',
 	'math_MisplacedLimits'                  => 'Команда «$1» може використовуватися тільки після оператора math.
 Імовірно, слід використовувати «\\mathop».',
+	'math_MissingCommandAfterNewcommand'    => 'Відсутня або неправильна назва нової команди після "\\newcommand".
+Повинна бути визначена тільки одна команда;
+вона повинна починатися зі зворотного слеша і містити тільки літери.',
+	'math_MissingDelimiter'                 => 'Відсутній роздільник після «$1»',
+	'math_MissingOpenBraceAfter'            => 'Відсутня відкриваюча дужка «{» після «$1»',
+	'math_MissingOpenBraceAtEnd'            => 'Відсутня відкриваюча дужка «{» в кінці вхідних даних',
+	'math_MissingOpenBraceBefore'           => 'Відсутня відкриваюча дужка «{» перед «$1»',
+	'math_MissingOrIllegalParameterCount'   => 'Не зазначена або зазначена помилкова кількість параметрів у визначенні «$1».
+Має бути одна цифра від 1 до 9.',
+	'math_MissingOrIllegalParameterIndex'   => 'Відсутній або неправильний індекс параметра у визначенні «$1»',
+	'math_NonAsciiInMathMode'               => 'Не-ASCII символи можуть використовуватися тільки в текстовому режимі
+(спробуйте взяти такі символи в «\\text{...}»).',
+	'math_NotEnoughArguments'               => 'Не всі аргументи були зазначені для «$1»',
+	'math_PngIncompatibleCharacter'         => 'Неможливо правильно згенерувати PNG, що містить символ «$1»',
+	'math_ReservedCommand'                  => 'Команда «$1» зарезервована blahtex для внутрішнього використання',
+	'math_SubstackRowTooBig'                => 'У кожному рядку блоку «substack» може бути тільки один запис',
+	'math_TooManyMathmlNodes'               => 'Дуже багато вузлів у дереві MathML',
 );
 
 /** Vietnamese (Tiếng Việt)

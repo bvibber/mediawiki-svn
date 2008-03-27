@@ -222,6 +222,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'youtubeauthsub'                     => 'YouTube Video eroplueden',
+	'youtubeauthsub-desc'                => 'Erlaabt de Benotzer fir [[Special:YouTubeAuthSub|Videoen direkt op YouTube eropzelueden]]',
 	'youtubeauthsub_info'                => 'Fir ee Video op YouTube eropzelueden, deen fir op eng Säit anzebannen, gitt w.e.g. dës Informatiounen un:',
 	'youtubeauthsub_title'               => 'Titel',
 	'youtubeauthsub_description'         => 'Beschreiwung',
@@ -245,6 +246,13 @@ Hutt w.e.g. e bësse Gedold!',
 	'youtubeauthsub_jserror_nokeywords'  => 'Gitt w.e.g. een oder méi Stechwierder un.',
 	'youtubeauthsub_jserror_notitle'     => 'Gitt w.e.g. een Titel fir de Video un.',
 	'youtubeauthsub_jserror_nodesc'      => 'Gitt w.e.g eng Beschreiwung vum Video.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'youtubeauthsub_category' => 'വിഭാഗം',
 );
 
 /** Dutch (Nederlands)
@@ -300,7 +308,7 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'youtubeauthsub'                     => 'Last opp YouTube-video',
 	'youtubeauthsub-desc'                => 'Lar brukere [[Special:YouTubeAuthSub|laste opp videoer]] på YouTube',
-	'youtubeauthsub_info'                => 'For å laste opp en video på YouTube for bruk på en side, fyll inn følgende informasjon:',
+	'youtubeauthsub_info'                => 'Fyll inn følgende informasjon for å laste opp en video på YouTube for å bruke den på en side:',
 	'youtubeauthsub_title'               => 'Tittel',
 	'youtubeauthsub_description'         => 'Beskrivelse',
 	'youtubeauthsub_password'            => 'YouTube-passord',
@@ -309,6 +317,14 @@ $messages['no'] = array(
 	'youtubeauthsub_category'            => 'Kategori',
 	'youtubeauthsub_submit'              => 'Lagre',
 	'youtubeauthsub_clickhere'           => 'Klikk her for å logge inn på YouTube',
+	'youtubeauthsub_tokenerror'          => 'Feil i oppretting av godkjenningstegn; prøv å oppdatere.',
+	'youtubeauthsub_success'             => 'Gratulerer!
+Videoen din er lastet opp.
+Gå <a href="http://youtube.com/watch?v=$1">hit</a> for å se videoen.
+Det kan ta litt tid før YouTube har behandlet videoen din, så det kan hende den ikke er klar ennå.
+
+Sett inn følgende kode på en side for å inkludere videoen på en side på wikien:
+<code>{{&#35;ev:youtube|$1}}</code>',
 	'youtubeauthsub_authsubinstructions' => 'For å laste opp en video må du første logge inn på YouTube.',
 	'youtubeauthsub_uploadhere'          => 'Last opp din video herfra:',
 	'youtubeauthsub_uploadbutton'        => 'Last opp',

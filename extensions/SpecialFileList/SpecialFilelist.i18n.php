@@ -118,6 +118,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'filelist'              => 'Lëscht vun de Fichieren',
+	'filelist-desc'         => 'Spezialsäit vun de Fichieren déi eropgeluede goufen.',
 	'filelist-show-list'    => 'Lëscht weisen',
 	'filelist-show-gallery' => 'Gallerie weisen',
 );

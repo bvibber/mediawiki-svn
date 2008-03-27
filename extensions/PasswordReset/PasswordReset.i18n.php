@@ -257,15 +257,23 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'passwordreset'                 => 'परवलीचा शब्द पूर्ववत करा',
-	'passwordreset-invalidusername' => 'चुकीचे सदस्यनाव',
-	'passwordreset-emptyusername'   => 'रिकामे सदस्यनाव',
-	'passwordreset-nopassmatch'     => 'परवलीचे शब्द जुळले नाहीत',
-	'passwordreset-username'        => 'सदस्यनाव',
-	'passwordreset-newpass'         => 'नवीन परवलीचा शब्द',
-	'passwordreset-confirmpass'     => 'परवलीचा शब्द पुन्हा लिहा',
-	'passwordreset-submit'          => 'परवलीचा शब्द पूर्ववत करा',
-	'passwordreset-disableuser'     => 'सदस्य खाते प्रलंबित करायचे का?',
+	'passwordreset'                    => 'परवलीचा शब्द पूर्ववत करा',
+	'passwordreset-desc'               => "विकि सदस्याचा परवलीचा शब्द पूर्ववत करा - यासाठी 'passwordreset' अधिकार असणे आवश्यक आहे",
+	'passwordreset-invalidusername'    => 'चुकीचे सदस्यनाव',
+	'passwordreset-emptyusername'      => 'रिकामे सदस्यनाव',
+	'passwordreset-nopassmatch'        => 'परवलीचे शब्द जुळले नाहीत',
+	'passwordreset-badtoken'           => 'चुकीचे संपादन टोकन',
+	'passwordreset-username'           => 'सदस्यनाव',
+	'passwordreset-newpass'            => 'नवीन परवलीचा शब्द',
+	'passwordreset-confirmpass'        => 'परवलीचा शब्द पुन्हा लिहा',
+	'passwordreset-submit'             => 'परवलीचा शब्द पूर्ववत करा',
+	'passwordreset-success'            => 'पुढील सदस्यक्रमांकाकरीता परवलीचा शब्द पूर्ववत केलेला आहे: $1',
+	'passwordreset-disableuser'        => 'सदस्य खाते प्रलंबित करायचे का?',
+	'passwordreset-disableuserexplain' => '(परवलीच्या शब्दात एक चुकीचा हॅश वाढवितो - सदस्य प्रवेश करू शकत नाही)',
+	'passwordreset-disablesuccess'     => 'सदस्य खाते बंद करण्यात आलेले आहे (सदस्य क्रमांक: $1)',
+	'passwordreset-accountdisabled'    => 'खाते बंद केलेले आहे',
+	'disabledusers'                    => 'बंद केलेले सदस्य',
+	'disabledusers-summary'            => 'ही अशा सदस्यांची यादी आहे ज्यांची खाती PasswordReset वापरून बंद करण्यात आलेली आहेत.',
 );
 
 /** Dutch (Nederlands)

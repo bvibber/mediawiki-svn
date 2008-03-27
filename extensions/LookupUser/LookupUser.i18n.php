@@ -237,12 +237,12 @@ $messages['nl'] = array(
 	'lookupuser_useroptions'       => 'Gebruikersopties:',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'lookupuser'                   => 'Finn brukerinformasjon',
-	'lookupuser-desc'              => '[[Special:LookupUser|Innhent informasjon]] en bruker, som f.eks. e-postadresse og ID',
+	'lookupuser-desc'              => '[[Special:LookupUser|Innhent informasjon]] om en bruker, som f.eks. e-postadresse og ID',
 	'lookupuser_intro'             => 'Skriv inn et brukernavn for å vise brukerens innstillinger.',
 	'lookupuser_nonexistent'       => 'Feil: Brukeren eksisterer ikke',
 	'lookupuser_authenticated'     => 'E-postbekrefting: $1',

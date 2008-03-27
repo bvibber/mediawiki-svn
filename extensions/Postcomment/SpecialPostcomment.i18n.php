@@ -125,6 +125,23 @@ $messages['lb'] = array(
 	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'postcomment_discussionprotected'      => 'हे चर्चा पान अधिक संपादनांपासून सुरक्षित करण्यात आलेले आहे.',
+	'postcomment_notloggedin'              => 'तुम्ही प्रवेश केलेला नाही.',
+	'postcomment_youareloggedinas'         => 'तुम्ही $1 नावाने प्रवेश केलेला आहे',
+	'postcomment_addcommentdiscussionpage' => 'तुमचा शेरा या चर्चा पानावर लिहा',
+	'postcomment_leavemessagefor'          => '$1 साठी एक संदेश लिहा',
+	'postcomment_post'                     => 'पाठवा',
+	'postcomment_on'                       => 'चालू',
+	'postcomment_said'                     => 'सांगितलेले',
+	'postcomment_invalidrequest'           => 'चुकीची मागणी.',
+	'postcomment_replyto'                  => '$1 ला उत्तर द्या',
+	'postcomment_nopostingtoadd'           => 'वाढविण्यासाठी संदेश नाही.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

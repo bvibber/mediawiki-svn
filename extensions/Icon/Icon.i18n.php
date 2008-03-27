@@ -142,12 +142,13 @@ $messages['nl'] = array(
 	'icon-desc'     => 'Maakt het mogelijk om afbeeldingen als iconen en icoonlinks te gebruiken',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'icon-badimage' => 'Dårlig bilde',
 	'icon-badwidth' => 'Dårlig bredde',
+	'icon-desc'     => 'Lar deg bruke bilder som ikoner og ikonlenker',
 );
 
 /** Occitan (Occitan)

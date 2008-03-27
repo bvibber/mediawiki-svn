@@ -97,6 +97,13 @@ $messages['lb'] = array(
 	'newsextension-desc' => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'newsextension-desc' => 'एखाद्या विकिवरील पानांमध्ये झालेले अलीकडील बदल आरएसएस फीड किंवा ऍटम फीड च्या स्वरुपात दर्शविते',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

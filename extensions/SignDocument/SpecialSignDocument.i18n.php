@@ -697,6 +697,14 @@ $messages['lb'] = array(
 	'sign-review-comment'          => 'Bemierkung',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'sign-viewfield-reviewcomment' => 'അഭിപ്രായം',
+	'sign-review-comment'          => 'അഭിപ്രായം',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -1466,6 +1474,14 @@ $messages['tg'] = array(
 	'sign-viewfield-email'         => 'Почтаи электронӣ',
 	'sign-viewfield-reviewcomment' => 'Тавзеҳот',
 	'sign-review-comment'          => 'Тавзеҳ',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'sign-city'           => 'Thành phố:',
+	'sign-viewfield-city' => 'Thành phố',
 );
 
 /** Volapük (Volapük)

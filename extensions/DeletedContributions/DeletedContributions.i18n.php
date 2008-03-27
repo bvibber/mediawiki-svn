@@ -290,7 +290,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'deletedcontributions'      => 'Geläschte Kontributiounen',
-	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Möiglechkeet, [[Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
+	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Méiglechkeet, [[Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
 );
 
 /** Limburgish (Limburgs)
@@ -321,6 +321,13 @@ $messages['lt'] = array(
 
 $messages['mk'] = array(
 	'deletedcontributions' => 'Избришани кориснички придонеси',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'deletedcontributions' => 'മായ്ക്കപ്പെട്ട ഉപയോക്തൃസംഭാവനകള്‍',
 );
 
 /** Marathi (मराठी)

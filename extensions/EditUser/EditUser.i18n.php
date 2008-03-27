@@ -206,6 +206,13 @@ $messages['lb'] = array(
 	'edituser-dosearch' => 'Sichen',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'edituser-dosearch' => 'തിരയുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -354,6 +361,13 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'edituser-username' => 'Naran',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'edituser-dosearch' => 'Tìm kiếm',
 );
 
 /** Volapük (Volapük)

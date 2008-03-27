@@ -163,7 +163,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'categoryintersection'               => 'Kategorisnitt',
-	'categoryintersection-desc'          => 'Håndterer en tabell med hashverdien nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
+	'categoryintersection-desc'          => 'Håndtering av en tabell med nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
 	'categoryintersection-doit'          => 'Vis sider som tilhører alle disse kategoriene',
 	'categoryintersection-maxcategories' => 'Det største antall kategorier som man kan søke i er $1.',
 	'categoryintersection-results'       => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',

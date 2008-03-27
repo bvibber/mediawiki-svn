@@ -592,9 +592,11 @@ $messages['tg'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'createsigndoc-hidden' => 'Bị ẩn',
+	'createsigndoc-pagename' => 'Trang:',
+	'createsigndoc-hidden'   => 'Bị ẩn',
 );
 
 /** Volapük (Volapük)

@@ -153,6 +153,22 @@ $messages['lb'] = array(
 	'profiling-no-data'      => 'Näischt fonnt vun dem wat Dir gesicht hutt.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'profiling'              => 'प्रोफिलींग डाटा',
+	'profiling-process'      => 'क्रिया स्ट्रींग:',
+	'profiling-wildcard'     => 'वाईल्डकार्ड वापरा',
+	'profiling-ok'           => 'सर्व ठीक',
+	'profiling-data'         => '`$1` साठीचा प्रोफिलींग डाटा',
+	'profiling-data-process' => 'क्रिया',
+	'profiling-data-count'   => 'संख्या',
+	'profiling-data-time'    => 'वेळ (सर्व)',
+	'profiling-data-average' => 'वेळ (सरासरी)',
+	'profiling-no-data'      => 'जुळणारा डाटा सापडला नाही.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

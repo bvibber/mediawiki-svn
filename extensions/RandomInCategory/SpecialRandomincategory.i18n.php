@@ -166,6 +166,26 @@ $messages['lb'] = array(
 	'randomincategory-submit'     => 'Lass',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'randomincategory-label'  => 'വിഭാഗം:',
+	'randomincategory-submit' => 'പോകൂ',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'randomincategory'            => 'वर्गातील अविशिष्ट पान',
+	'randomincategory-desc'       => 'वर्गातील अविशिष्ट पान मिळविण्यासाठीचे [[Special:Randomincategory|विशेष पान]]',
+	'randomincategory-toolbox'    => 'अविशिष्ट पान',
+	'randomincategory-nocategory' => '$1 वर्ग अस्तित्वात नाही किंवा रिकामा आहे',
+	'randomincategory-label'      => 'वर्ग:',
+	'randomincategory-submit'     => 'चला',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -294,6 +314,14 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'randomincategory-label'  => 'Kategoria:',
 	'randomincategory-submit' => 'Bá',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'randomincategory-label'  => 'Thể loại:',
+	'randomincategory-submit' => 'Xem',
 );
 
 /** Volapük (Volapük)

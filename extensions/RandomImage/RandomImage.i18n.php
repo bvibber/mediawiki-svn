@@ -46,6 +46,13 @@ $messages['lb'] = array(
 	'randomimage-desc' => 'Weist eng zoufälleg Medien-Datei a benotzt <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'randomimage-desc' => '<tt>&lt;randomimage /&gt;</tt> वापरून एक अविशिष्ट संचिका देतो',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
