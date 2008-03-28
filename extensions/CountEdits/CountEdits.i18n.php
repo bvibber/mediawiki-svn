@@ -419,6 +419,13 @@ $messages['lt'] = array(
 	'countedits-nocontribs'   => 'Šioje wiki nebuvo naudotojų.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'countedits-ok' => 'ശരി',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

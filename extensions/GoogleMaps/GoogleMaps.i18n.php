@@ -960,7 +960,7 @@ $wgGoogleMapsMessages['mr'] = array(
 	'gm-large'                     => 'मोठा',
 	'gm-medium'                    => 'मध्यम',
 	'gm-small'                     => 'छोटा',
-	'gm-no-zoom-control'           => 'काहीच नाही',
+	'gm-no-zoom-control'           => 'काहीही नाही',
 	'gm-yes'                       => 'हो',
 	'gm-no'                        => 'नाही',
 	'gm-search-preface'            => 'बिंदू देण्यासाठी नकाशावर टिचकी मारा, किंवा शहर, देश, पत्ता किंवा व्यवसाय शोधा:',
@@ -1266,6 +1266,7 @@ $wgGoogleMapsMessages['pl'] = array(
  */
 $wgGoogleMapsMessages['ps'] = array(
 	'gm-balloon-title'    => 'سرليک:',
+	'gm-no-results'       => 'اوبښۍ، هېڅ کومه پايله نشته',
 	'gm-searching'        => 'د پلټنې په حال کې...',
 	'gm-map'              => 'نخشه',
 	'gm-are-you-sure'     => 'آيا تاسو ډاډه ياست؟',

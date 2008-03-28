@@ -952,6 +952,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
+	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
 );

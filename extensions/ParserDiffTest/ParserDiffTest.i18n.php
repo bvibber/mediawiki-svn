@@ -447,11 +447,13 @@ $messages['jut'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author T-Rithy
  */
 $messages['km'] = array(
-	'pdtest_text' => 'បញ្ចូលឃ្លា៖',
-	'pdtest_ok'   => 'យល់ព្រម',
-	'pdtest_diff' => 'ភាពខុសគ្នា',
+	'pdtest_no_changes' => 'មិនមានការផ្លាស់ប្តូរណាមួយបានឃើញទេ។',
+	'pdtest_text'       => 'បញ្ចូលឃ្លា៖',
+	'pdtest_ok'         => 'យល់ព្រម',
+	'pdtest_diff'       => 'ភាពខុសគ្នា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -490,6 +492,13 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'pdtest_ok' => 'Gerai',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'pdtest_ok' => 'ശരി',
 );
 
 /** Marathi (मराठी)

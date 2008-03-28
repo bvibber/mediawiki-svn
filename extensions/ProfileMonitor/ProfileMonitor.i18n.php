@@ -153,6 +153,13 @@ $messages['lb'] = array(
 	'profiling-no-data'      => 'Näischt fonnt vun dem wat Dir gesicht hutt.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'profiling-ok' => 'ശരി',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

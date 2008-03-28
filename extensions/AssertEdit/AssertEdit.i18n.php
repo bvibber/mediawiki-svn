@@ -64,7 +64,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'assert_edit_title'   => "C'hwitet eo an enframmañ",
 	'assert_edit_desc'    => 'Ouzhpennañ a ra degasadennoù enframmañ da vezañ implijet gant botoù',
-	'assert_edit_message' => "C'hwitet eo an enframmadenn goulennet.",
+	'assert_edit_message' => "C'hwitet eo an enframmadenn ($1) goulennet.",
 );
 
 /** Czech (Česky)
@@ -448,3 +448,4 @@ $messages['zh-hant'] = array(
 	'assert_edit_desc'    => '為機器人的編輯增加聲明',
 	'assert_edit_message' => '所指定的聲明 ($1) 失敗。',
 );
+

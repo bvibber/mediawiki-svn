@@ -649,6 +649,13 @@ $messages['lt'] = array(
 	'expand_templates_preview'         => 'Peržiūra',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'expand_templates_ok' => 'ശരി',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

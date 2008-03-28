@@ -261,6 +261,13 @@ $allMessages['ml'] = array(
 	'whitelisttablemodifyall' => 'എല്ലാം',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$allMessages['mr'] = array(
+	'whitelisttablemodifynone' => 'काहीही नाही',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

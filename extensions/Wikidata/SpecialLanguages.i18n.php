@@ -1451,6 +1451,13 @@ $wdMessages['mai'] = array(
 	'langman_title' => 'भाषा प्रबंधक',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$wdMessages['ml'] = array(
+	'ow_dm_OK' => 'ശരി',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -2089,6 +2096,8 @@ $wdMessages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wdMessages['ps'] = array(
+	'langman_title'                         => 'د ژبې سمبالګر',
+	'languages'                             => 'Wikidata: د ژبې سمبالګر',
 	'ow_save'                               => 'خوندي کول',
 	'ow_history'                            => 'پېښليک',
 	'ow_none_selected'                      => '<هېڅ هم نه دی ټاکل شوی>',
@@ -2098,14 +2107,20 @@ $wdMessages['ps'] = array(
 	'ow_ClassAttributeType'                 => 'ډول',
 	'ow_Definition'                         => 'پېژند',
 	'ow_Language'                           => 'ژبه',
+	'ow_OptionAttribute'                    => 'ځانتيا',
 	'ow_Synonyms'                           => 'هممانيزونه',
 	'ow_SynonymsAndTranslations'            => 'هممانيزونه او ژباړې',
 	'ow_Source'                             => 'سرچينه',
+	'ow_TextAttribute'                      => 'ځانتيا',
 	'ow_Text'                               => 'متن',
+	'ow_TranslatedTextAttribute'            => 'ځانتيا',
 	'ow_TranslatedText'                     => 'ژباړل شوی متن',
 	'ow_TranslatedTextAttributeValue'       => 'متن',
 	'ow_TranslatedTextAttributeValues'      => 'د ژباړلو وړ متن',
+	'ow_LinkAttribute'                      => 'ځانتيا',
 	'ow_LinkAttributeValues'                => 'تړنې',
+	'ow_Property'                           => 'ځانتيا',
+	'ow_Value'                              => 'ارزښت',
 	'ow_copy_no_action_specified'           => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help'                          => 'يوه ورځ به موږ ستاسو سره مرسته وکړو.',
 );

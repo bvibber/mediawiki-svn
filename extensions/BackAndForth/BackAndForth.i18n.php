@@ -285,6 +285,7 @@ $messages['kn'] = array(
  */
 $messages['lb'] = array(
 	'backforth-next' => 'Nächst ($1)',
+	'backforth-desc' => 'Setzt "Nächst"- a "Vireg"-Navigatiounslinke uewen op de Säiten derbäi',
 	'backforth-prev' => '($1) virdrun',
 );
 

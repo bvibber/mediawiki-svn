@@ -721,6 +721,8 @@ $messages['pt'] = array(
  */
 $messages['ps'] = array(
 	'webstore_no_file'            => 'هېڅ کومه دوتنه پورته نه شوه.',
+	'webstore_404'                => 'دوتنه و نه موندل شوه.',
+	'webstore_php_warning'        => 'د PHP ګواښنه: $1',
 	'webstore_metadata_not_found' => 'دوتنه و نه موندل شوه: $1',
 	'webstore_no_response'        => 'د پالنګر نه هېڅ کوم ځواب نشته',
 );

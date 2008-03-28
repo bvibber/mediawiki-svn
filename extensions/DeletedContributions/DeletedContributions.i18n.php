@@ -544,7 +544,11 @@ $messages['zh-hans'] = array(
 	'deletedcontributions' => '已删除的用户贡献',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
 $messages['zh-hant'] = array(
-	'deletedcontributions' => '已刪除的用戶貢獻',
+	'deletedcontributions'      => '已刪除的用戶貢獻',
+	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]。',
 );
 

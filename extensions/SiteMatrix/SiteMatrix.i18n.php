@@ -409,6 +409,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'sitematrix'           => 'Az összes Wikimedia wiki listája',
+	'sitematrix-summary'   => 'Wikimedia-wikiket listázó speciális lap',
 	'sitematrix-desc'      => 'A [[Special:SiteMatrix|Wikimedia wikijeinek listája]]',
 	'sitematrix-language'  => 'Nyelv',
 	'sitematrix-project'   => 'A projekt neve, projekt- és nyelvközi link',
@@ -743,10 +744,12 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'sitematrix'          => 'د ويکي-رسنۍ د ويکي-ګانو لړليک',
-	'sitematrix-language' => 'ژبه',
-	'sitematrix-project'  => 'د پروژې نوم، د پروژوترمېنځ تړنه او د ويکي-ګانوترمېنځ تړنه',
-	'sitematrix-others'   => 'د ويکي-رسنۍ نورې پروژې',
+	'sitematrix'           => 'د ويکي-رسنۍ د ويکي-ګانو لړليک',
+	'sitematrix-language'  => 'ژبه',
+	'sitematrix-project'   => 'د پروژې نوم، د پروژوترمېنځ تړنه او د ويکي-ګانوترمېنځ تړنه',
+	'sitematrix-others'    => 'د ويکي-رسنۍ نورې پروژې',
+	'sitematrix-total'     => "'''ټولټال شمېر: $1'''",
+	'sitematrix-sitetotal' => 'ټولټال',
 );
 
 /** Portuguese (Português)
@@ -1007,11 +1010,18 @@ $messages['zh-hans'] = array(
 	'sitematrix-others'   => '维基媒体的其它计划',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
 $messages['zh-hant'] = array(
-	"sitematrix" => "維基媒體網站清單",
-	'sitematrix-language' => '語言',
-	'sitematrix-project'  => '計劃名稱、跨計劃連結以及跨維基連結',
-	'sitematrix-others'   => '維基媒體的其它計劃',
+	'sitematrix'           => '維基媒體網站清單',
+	'sitematrix-summary'   => '本特殊頁面列示所有維基媒體基金會的所有MediaWiki網站。',
+	'sitematrix-desc'      => '顯示[[Special:SiteMatrix|維基媒體所有網站的清單]]',
+	'sitematrix-language'  => '語言',
+	'sitematrix-project'   => '計劃名稱、跨計劃連結以及跨維基連結',
+	'sitematrix-others'    => '維基媒體的其它計劃',
+	'sitematrix-total'     => "'''合計：$1'''",
+	'sitematrix-sitetotal' => '總數',
 );
 
 $messages['zh-tw'] = array(

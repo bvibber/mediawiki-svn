@@ -931,7 +931,7 @@ $messages['km'] = array(
 	'ogg-use-player'          => 'ប្រើប្រាស់ឧបករណ៍លេង៖',
 	'ogg-more'                => 'បន្ថែម...',
 	'ogg-dismiss'             => 'បិទ',
-	'ogg-download'            => 'ទាញយក ឯកសារ',
+	'ogg-download'            => 'ទាញយកឯកសារ',
 	'ogg-desc-link'           => 'អំពីឯកសារនេះ',
 );
 

@@ -707,8 +707,11 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
+	'sign-realname'                 => 'नाव:',
+	'sign-viewfield-realname'       => 'नाव',
 	'sign-viewfield-country'        => 'देश',
 	'sign-viewfield-zip'            => 'झीप(पीन)',
 	'sign-viewfield-phone'          => 'दूरध्वनी',
@@ -1161,6 +1164,7 @@ $messages['ps'] = array(
 	'sign-viewfield-state'     => 'ايالت',
 	'sign-viewfield-country'   => 'هېواد',
 	'sign-viewfield-ip'        => 'IP پته',
+	'sign-viewfield-agent'     => 'د کارونکي پلاوی',
 	'sign-viewfield-phone'     => 'ټيليفون',
 	'sign-viewfield-email'     => 'برېښليک',
 	'sign-viewfield-age'       => 'عمر',

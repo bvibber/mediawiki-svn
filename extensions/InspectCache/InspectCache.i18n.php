@@ -185,6 +185,13 @@ $messages['lb'] = array(
 	'inspectcache-list'    => 'Lëscht',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'inspectcache-ok' => 'ശരി',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

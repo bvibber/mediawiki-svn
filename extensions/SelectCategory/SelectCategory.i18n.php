@@ -145,6 +145,15 @@ $messages['lb'] = array(
 	'selectcategory-subtitle' => 'Shift + Maus fir méi Rubriken hannereneen unzewielen, Ctrl + Maus fir eenzel Rubriken unzewielen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'selectcategory-title'    => 'वर्ग निवडा',
+	'selectcategory-desc'     => 'एखादे पान संपादित करीत असताना सदस्याला वर्ग निवडण्याची सुविधा देते',
+	'selectcategory-subtitle' => 'शिफ्ट+माउस एकापुढे एक असलेल्या नोंदी निवडण्यासाठी, कंट्रोल+माउस एका पुढे एक नसलेल्या नोंदी निवडण्यासाठी.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -413,9 +413,45 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'review_total_statistics'       => 'एकूण',
-	'review_statistics_left_corner' => 'आवृत्ती',
-	'review_topic'                  => 'विषय',
+	'review_sidebar_title'                                   => 'अवलोकन',
+	'review-desc'                                            => 'पुनर्जिवीत [[Special:Review|पुष्टीकरण]] वैशिष्ठ्य',
+	'review_topics'                                          => "# अवलोकन विस्तारकक्षासाठी आवश्यक अशा विषय तसेच रेंजची ही यादी आहे.
+# प्रत्येक विषय हा पाच वेगवेगळ्या किंमतींनी दर्शविलेला आहे, ज्यामध्ये ':' दिलेला आहे (बाकी सर्व ओळी दुर्लक्षित केलेल्या आहेत).
+# त्यांची मांडणी अशी: सांख्यिक किंमत (>0), नाव, जास्तीत जास्त रेंज (>1; 2=हो/नाही), कमीत कमी किंमतीचा अर्थ (उदा, 'वाईट'), जास्तीतजास्त किंमतीचा अर्थ (e.g., 'उत्तम').
+1:गुणवत्ता:5:वाईट:उत्तम
+2:१.० साठी तयार:2:नाही:हो",
+	'review_topic_page'                                      => 'विषय अवलोकन',
+	'review_sidebar_explanation'                             => "सर्वात डावीकडील चेक बॉक्स चा अर्थ कायम 'मत नाही' असा आहे.",
+	'review_save'                                            => 'अवलोकन जतन करा',
+	'review_your_review'                                     => 'ह्या पानाचे/आवृत्तीचे तुम्ही केलेले अवलोकन',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "तुम्ही अगोदरच या पानाच्या इतर आवृत्तींचे अवलोकन केलेले आहे. जिथे तुम्ही 'मत नाही' अशी खूण देत आहात तिथे तुम्ही आधी दिलेले मत विचारात घेतले जाईल.",
+	'review_page_link'                                       => 'अवलोकन सांख्यिकी',
+	'review_sidebar_final'                                   => 'ह्या पानाच्या भेटींचे अवलोकन करण्यासाठी, त्याचे $1 पहा',
+	'review_for_page'                                        => '"$1" पानाचे अवलोकन',
+	'review_for_user'                                        => '"$1" सदस्याचे अवलोकन',
+	'review_error'                                           => 'काहीतरी चुकत आहे!',
+	'review_no_reviews_for_page'                             => 'सद्यस्थितीत "$1" चे अवलोकन केलेले नाही.',
+	'review_total_statistics'                                => 'एकूण',
+	'review_statistics_left_corner'                          => 'आवृत्ती',
+	'review_version_link'                                    => 'आवृत्ती #$1',
+	'review_statistic_cell'                                  => 'सरासरी: $2 चे $1<br />($4 सदस्य, $5 अनामिक)',
+	'review_version_statistic_cell'                          => '$2 चे $1',
+	'review_version_reviews_link'                            => '<small>(आवृत्ती अवलोकन)</small>',
+	'review_concerns_page'                                   => 'हे अवलोकन "$1" या पानाचे आहे.',
+	'review_concerns_user'                                   => 'हे "$1" या सदस्याने केलेले अवलोकन आहे.',
+	'review_user_reviews'                                    => '<small>(या सदस्याने केलेले अवलोकन)</small>',
+	'review_user_page_list'                                  => 'या सदस्याने खालील पानांचे अवलोकन केलेले आहे:',
+	'review_user_details_link'                               => '(विस्तृत माहिती)',
+	'review_do_merge'                                        => 'या पानाच्या इतर आवृत्त्यांचे मी केलेले अवलोकन इथे एकत्र करा',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>तुमचे अवलोकन जतन केलेले आहे!</span>",
+	'revision_review_this_page_version_link'                 => 'या पानाच्या या आवृत्तीचे अवलोकन करा.',
+	'review_page_review'                                     => '"$1" पानाचे अवलोकन',
+	'review_blocked'                                         => 'तुम्हाला ब्लॉक केलेले आहे, इथून निघून जा.',
+	'review_wrong_namespace'                                 => 'या नामविश्वातील पानांचे अवलोकन करू शकत नाही!',
+	'review_topic'                                           => 'विषय',
+	'review_no_opinion'                                      => 'मत नाही',
+	'review_rating'                                          => 'गुणांकन',
+	'review_comment'                                         => 'टिप्पणी',
 );
 
 /** Dutch (Nederlands)
@@ -688,5 +724,12 @@ $messages['tg'] = array(
  */
 $messages['vi'] = array(
 	'review_total_statistics' => 'Tổng cộng',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
+$messages['zh-hant'] = array(
+	'review_total_statistics' => '總數',
 );
 

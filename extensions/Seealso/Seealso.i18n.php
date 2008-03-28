@@ -143,6 +143,14 @@ $messages['ml'] = array(
 	'seealso' => 'ഇതും/ഇവയും കാണുക',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'seealso'      => 'हे सुद्धा पहा',
+	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> खूण वापरून स्थानिक 'हे सुद्धा पहा' शीर्षके",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -376,6 +376,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'invitations-feature-notallowed'  => 'تاسو د <i>$1</i> د کارونې لاسرسی نه لری.',
+	'invitations-inviteform-title'    => 'يوه کارونکي ته د $1 د کارولو بلنه ورکول',
 	'invitations-inviteform-username' => 'بلل شوی کارونکی',
 	'invitations-inviteform-submit'   => 'بلنه ورکول',
 );

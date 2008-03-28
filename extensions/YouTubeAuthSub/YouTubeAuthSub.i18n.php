@@ -419,6 +419,8 @@ Czekaj.',
  */
 $messages['ps'] = array(
 	'youtubeauthsub_title'    => 'سرليک',
+	'youtubeauthsub_password' => 'د YouTube پټنوم',
+	'youtubeauthsub_username' => 'د YouTube کارن-نوم',
 	'youtubeauthsub_category' => 'وېشنيزه',
 );
 

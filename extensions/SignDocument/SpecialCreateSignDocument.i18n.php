@@ -473,6 +473,8 @@ $messages['ps'] = array(
 	'createsigndoc-email'      => 'برېښليک پته:',
 	'createsigndoc-address'    => 'د کور پته:',
 	'createsigndoc-extaddress' => 'ښار، ايالت، هېواد:',
+	'createsigndoc-phone'      => 'د ټيليفون شمېره:',
+	'createsigndoc-bday'       => 'د زېږون نېټه:',
 );
 
 /** Portuguese (Português)

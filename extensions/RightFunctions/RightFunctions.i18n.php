@@ -42,6 +42,15 @@ $messages['hsb'] = array(
 	'rightfunctions-restcasc' => '$1 (z překrywacych žórłow)',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'rightfunctions'          => 'परवानगी आधारित पार्सर कार्ये',
+	'rightfunctions-restboth' => '$1 (स्थानिक स्रोतांकडून), $2 (इतर स्रोतांकडून)',
+	'rightfunctions-restcasc' => '$1 (इतर स्रोतांकडून)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
