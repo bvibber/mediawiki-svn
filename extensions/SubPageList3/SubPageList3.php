@@ -40,7 +40,7 @@ function efSubpageList3() {
 /**
  * Function called by the Hook, returns the wiki text
  */
-function efRenderSubpageList3( $input, $args, &$parser ) {
+function efRenderSubpageList3( $input, $args, $parser ) {
 	$list = new SubpageList3( $parser );
 	wfLoadExtensionMessages('SubPageList3');
 	$list->options( $args );
@@ -202,7 +202,7 @@ class SubpageList3 {
 	 * @see SubpageList
 	 * @private
 	 */
-	function SubpageList3( &$parser ) {
+	function SubpageList3( $parser ) {
 		global $wgContLang;
 
 		/**
@@ -211,9 +211,9 @@ class SubpageList3 {
 		 * @see $title
 		 * @see $language
 		 */
-		$this->parser =& $parser;
-		$this->title =& $parser->mTitle;
-		$this->language =& $wgContLang;
+		$this->parser = $parser;
+		$this->title = $parser->mTitle;
+		$this->language = $wgContLang;
 	}
 
 	/**
@@ -358,7 +358,7 @@ class SubpageList3 {
 	function getTitles() {
 		wfProfileIn( __METHOD__ );
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$conditions = array();
 		$options = array();
@@ -370,7 +370,7 @@ class SubpageList3 {
 		} else if( $this->ordermethod == 'lastedit' ) {
 			$options['ORDER BY'] = '`page_touched` ' . $order;
 		}
-		if( $this->parent != -1) {
+		if( $this->parent !== -1) {
 			$this->ptitle = Title::newFromText( $this->parent );
 			# note that non-existent pages may nevertheless have valid subpages
 			# on the other hand, not checking that the page exists can let input through which causes database errors
@@ -491,7 +491,7 @@ class SubpageList3 {
 	 */
 	function parse( $text ) {
 		wfProfileIn( __METHOD__ );
-		$options =& $this->parser->mOptions;
+		$options = $this->parser->mOptions;
 		$output = $this->parser->parse( $text, $this->title, $options, true, false );
 		wfProfileOut( __METHOD__ );
 		return $output->getText();
