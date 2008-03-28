@@ -19,24 +19,28 @@ require_once ('metavid2mvWiki.inc.php');
 require_once('maintenance_util.inc.php');
 
 if (count($args) == 0 || isset ($options['help'])) { 
-	print<<<EOT
+	print'
 USAGE
-
- php ogg_thumb_insert.php stream_id filename interval duration
+ php ogg_thumb_insert.php stream_name filename interval duration
 
 EXAMPLE
- ogg_thumb_insert.php 17 /var/www/localhost/htdocs/media/stream.ogg 20
+ ogg_thumb_insert.php stream_name /var/www/localhost/htdocs/media/stream.ogg 20
  
 Notes:
   if possible you want to use the source footage rather than the ogg to generate the thumbnails (ie the mpeg2 or dv)
-EOT; 
-	exit ();
+  
+';
+exit();
 }
-$streamid=$args[0];
+$stream_name=$args[0];
 $filename=$args[1];
 $interval=$args[2];
 $duration=$args[3];
-$filedir='../stream_images/'.substr($stream_id, -1).'/'.$streamid;
+
+$MV_Stream = MV_Stream::newStreamByName($stream_name);
+$stream_id =$MV_Stream->getStreamId();
+
+$filedir='../stream_images/'.substr($stream_id, -1).'/'.$stream_id;
 $dbw =$dbr = wfGetDB(DB_MASTER); 
 for($i=0;$i<$duration;$i+=$interval){
   $dbw->query("INSERT INTO `mv_stream_images` (`stream_id`, `time`) VALUES ($stream_id, $i)");
