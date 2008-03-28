@@ -28,8 +28,8 @@ EXAMPLE
  ogg_thumb_insert.php 17 /var/www/localhost/htdocs/media/stream.ogg 20
  
 Notes:
-  if possible you want to use the source footage rather than the ogg to generat thumbnails (ie the mpeg2 or dv)
-EOT;
+  if possible you want to use the source footage rather than the ogg to generate the thumbnails (ie the mpeg2 or dv)
+EOT; 
 	exit ();
 }
 $streamid=$args[0];

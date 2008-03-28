@@ -53,17 +53,16 @@ class MV_SpecialExport {
 				$this->stream_name = $wgRequest->getVal('stream_name');				
 				if($this->stream_name=='')$error_page.=wfMsg('edit_stream_missing').", ";
 				$this->req_time = $wgRequest->getVal('t');		
-				if($this->req_time=='')$error_page.=wfMsg('mv_missing_req_time');
-				if(!$this->req_time)$this->req_time = $wgRequest->getVal('time_range');
 				
 				switch($this->feed_format ){
 					case 'cmml':
 						$this->get_stream_cmml();
 					break;
-					case 'jroe':
+					/* disabled for now
+					 * case 'jroe':
 						//returns roe stream info in json object for easy DOM injection
 						$this->get_roe_json();
-					break;
+					break;*/
 					case 'roe':
 						$this->get_roe_xml();
 					break;
@@ -124,9 +123,9 @@ class MV_SpecialExport {
 			die('stream does not exist');
 		}
 		$this->streamPageTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
-		//get the default mvd set: 
+		//get the requested mvd set: 
 		$this->mvcp = new MV_Component();
-		$this->mvcp->procMVDReqSet();
+		$this->mvcp->procMVDReqSet($only_requested=true);
 		
 		//get all track types avaliable in current range: 
 		$this->mvd_type_res = MV_Index::getMVDTypeInRange($this->mvTitle->getStreamId(),
@@ -136,7 +135,7 @@ class MV_SpecialExport {
 		//get all avaliable files
 		$this->file_list =$this->mvTitle->mvStream->getFileList(); 		
 	}
-	function get_roe_json(){
+	/*function get_roe_json(){
 		$fname = 'Mv_SpecialExport::get_roe_json';
 		wfProfileIn( $fname );
 		$this->get_row_data();		
@@ -149,7 +148,7 @@ class MV_SpecialExport {
 		$jsonContents = xml2json::transformXmlStringToJson($xml_page);
 		print $jsonContents;
 		wfProfileOut($fname);
-	}
+	}*/
 	//start high level: 
 	function get_roe_xml($header=true){
 		global $mvDefaultVideoQualityKey, $wgServer;
@@ -176,7 +175,7 @@ class MV_SpecialExport {
 				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
 				$dSrc=($file->getPathType()=='url_anx')?$this->mvTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
 			?>
-				<video id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
+				<mediaSource id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
 		<?}?>
 	</switch>
 		</track>
@@ -186,18 +185,18 @@ class MV_SpecialExport {
 					//output cmml header: 
 					//@@todo lookup language for layer key patterns 
 					$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');
-					$query = 'stream_name='.$this->stream_name.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
-					$clink = $sTitle->getFullURL($query);					
+					$query = 'stream_name='.$this->stream_name.'&t='.$this->req_time.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
+					$clink = $sTitle->getFullURL($query);			
+					$inline = (in_array(strtolower($row->mvd_type), $this->mvcp->mvd_tracks))?'true':'false';							
 ?>
-				<text id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" node_count="<?=$row->count?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+				<mediaSource id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" inline="<?=$inline?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
 <?
-					//output inline cmml: 
-					if(in_array(strtolower($row->mvd_type), $this->mvcp->mvd_tracks)){
+					//output inline cmml (if requested): 
+					if($inline=='true'){
 						$this->get_stream_cmml(true, $row->mvd_type);
 					}	
-					//close text track
 ?>
-				</text>
+				</mediaSource>
 <?			
 				}	
 			?>		
@@ -263,8 +262,7 @@ class MV_SpecialExport {
 							<<?=$ns?>title><?=wfMsg($role)?></<?=$ns?>title>	
 							<<?=$ns?>description><?=htmlentities(wfMsg($role.'_desc'))?></<?=$ns?>description>				
 						</<?=$ns?>head>
-						<?=$body_string?>
-												
+						<?=$body_string?>												
 					</cmml>
 <?
 		}

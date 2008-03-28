@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  	} 	
  	//process the request set (load from settings if not set in url 
 	//@@todo would be good to allow user-set preference in the future)
-	function procMVDReqSet(){
+	function procMVDReqSet($only_requested=false){
 		global $wgRequest;
 		global $mvMVDTypeDefaultDisp, $mvMVDTypeAllAvailable;
 		//if already computed return: 
@@ -39,16 +39,18 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$this->mvd_tracks[]= $tk;	
 				}	
 			}
-		}else{			
-			//do reality check on settings: 
-			foreach($mvMVDTypeDefaultDisp as $tk){
-				if(!in_array($tk, $mvMVDTypeAllAvailable)){
-					global $wgOut;
-					$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatch_text');
-				}	
+		}else{		
+			if(!$only_requested){	
+				//set the default tracks (if not restricted to requested tracks)  
+				foreach($mvMVDTypeDefaultDisp as $tk){
+					if(!in_array($tk, $mvMVDTypeAllAvailable)){
+						global $wgOut;
+						$wgOut->errorPage('mvd_default_mismatch','mvd_default_mismatch_text');
+					}	
+				}
+				//just set to global default: 
+				$this->mvd_tracks = $mvMVDTypeDefaultDisp;		
 			}
-			//just set to global default: 
-			$this->mvd_tracks = $mvMVDTypeDefaultDisp;		
 		}
 	}
 	function getStateReq(){

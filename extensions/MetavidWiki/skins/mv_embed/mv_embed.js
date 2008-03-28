@@ -89,6 +89,8 @@ var video_attributes = {
     
     //roe url (for xml based metadata)
     "roe":null,
+    //if roe includes metadata tracks we can expose a link to metadata
+    "show_meta_link":false,
             
     //custom attributes for mv_embed: 
     "play_button":true,
@@ -771,18 +773,29 @@ embedVideo.prototype = {
 			if(typeof data == 'object' ){
 				js_log('type of data is object');
 				_this.roe_data = data;
+				
+				$j.each(_this.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
+					if(n.getAttribute('content-type')=='video/ogg' && n.getAttribute("default")=="true"){
+						js_log('set src to '+n.getAttribute("src"));						
+						_this['src'] = n.getAttribute("src");
+					}
+					if(n.getAttribute('content-type')=='text/cmml'){
+						js_log('cmml available');
+						_this['show_meta_link']=true;
+					}
+				});								
+				/*
 				//set the src to video tag with "default" attribute:
-				var rVids = _this.roe_data.getElementsByTagName('video');
+				//var rVids = _this.roe_data.getElementsByTagName('video');
 				js_log('found '+ rVids.length + ' video tags');
 				$j.each(_this.roe_data.getElementsByTagName('video'), function(inx,n){	
 					if(n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
 						_this['src'] = n.getAttribute("src");
 					}
-				});												
+				});
+				*/												
 				//set the thumbnail: 
-				//for some reason getElementById does not work > ? 
-				//rThumb = this.roe_data.getElementById('stream_thumb');
 				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
 					if(n.getAttribute("id")=="stream_thumb"){
 						js_log('set thumb to '+n.getAttribute("src"));
@@ -1427,7 +1440,16 @@ function mv_addLoadEvent(func) {
 }
  function do_request(req_url,callback,mv_json_response){
  	js_log('do request: ' + req_url);
-		if( parseUri(document.URL).host != parseUri(req_url).host){
+		if( parseUri(document.URL).host == parseUri(req_url).host){
+			//no proxy at all do a direct request: 
+			$j.ajax({
+				type: "GET",
+				url:req_url,
+				success:function(data){
+					callback(data);
+				}
+			});
+		}else{
 			//check if MV_embed path matches document.URL then we can use the local proxy: 
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
 				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);
@@ -1443,7 +1465,6 @@ function mv_addLoadEvent(func) {
 				//need to get data via DOM proxy injection with callback
 				global_req_cb.push(callback);
 				if(!mv_json_response){									
-					//swap out & in req url:
 					req_url  =req_url.replace(/&/g,'__amp__');
 					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
 						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
@@ -1452,16 +1473,7 @@ function mv_addLoadEvent(func) {
 					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
 				}
 			}
-		}else{
-			//no proxy at all do a direct request: 
-			$j.ajax({
-				type: "GET",
-				url:req_url,
-				success:function(data){
-					callback(data);
-				}
-			});
-		}	
+		}
 }
 function mv_jsdata_cb(response){	
 	//run the callback from the global req cb object:
