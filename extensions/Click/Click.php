@@ -23,7 +23,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'description' => 'Adds a parser function to display an image with a link that leads to a page other than the image description page.',
 	'author'      => 'MinuteElectron',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Click',
-	'version'     => '1.1',
+	'version'     => '1.2',
 );
 
 // Setup function.
@@ -67,12 +67,12 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 	// Escape quotation marks of alt attribute so that any character can be
 	// used (and it looks alright), but we are safe from including arbitrary
 	// HTML.
-	$alt = str_replace( $alt, '"', '&quot;' );
+	$alt = str_replace( '"', '&quot;', $alt );
 
 	// Open hyperlink, default to a on-wiki page, but if it doesn't exist and
 	// is a valid external URL then use it.
 	$targettitle = Title::newFromText( $target );
-	if( $targettitle->exists() ) {
+	if( is_object( $targettitle ) && $targettitle->exists() ) {
 		// Internal link, open hyperlink and register internal link.
 		$r = Xml::openElement( 'a', array( 'href' => $targettitle->getLocalUrl(), 'title' => $alt ) );
 		$parser->mOutput->addLink( $targettitle );
@@ -90,17 +90,17 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 			// External link, open hyperlink with escaped href and register external link.
 			$r = Xml::openElement( 'a', array( 'href' => htmlspecialchars( $target ), 'title' => $alt ) );
 			$parser->mOutput->addExternalLink( $target );
-		} else {
-			// Internal link after all (but to non-existant page), open hyperlink and register internal link.
-			$r = Xml::openElement( 'a', array( 'class' => 'new', 'href' => $targettitle->getLocalUrl( 'action=edit&redlink=1' ), 'title' => $alt ) );
-			$parser->mOutput->addLink( $targettitle );
+		} elseif( is_object( $targettitle ) ) {
+				// Valid internal link after all (but to non-existant page), open hyperlink and register internal link.
+				$r = Xml::openElement( 'a', array( 'class' => 'new', 'href' => $targettitle->getLocalUrl( 'action=edit&redlink=1' ), 'title' => $alt ) );
+				$parser->mOutput->addLink( $targettitle );
 		}
 	}
 
 	// Add image element, or use alt text on it's own if image doesn't exist.
 	$imagetitle = Title::newFromText( $image );
-	$imageimage = Image::newFromTitle( $imagetitle );
-	if( $imageimage->exists() ) {
+	if( is_object( $imagetitle ) ) $imageimage = Image::newFromTitle( $imagetitle );
+	if( isset( $imageimage ) && is_object( $imagetitle ) && is_object( $imageimage ) && $imageimage->exists() ) {
 		// Display image.
 		if( !$width ) $width = $imageimage->getWidth();
 		$thumbnail = $imageimage->transform( array( 'width' => $width ) );
@@ -109,11 +109,13 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 		// Display alt text.
 		$r .= $alt;
 	}
-	// Register image usage, even if it isn't displayed (so it appears as a "wanted image").
-	$parser->mOutput->addImage( $imagetitle->getDBkey() );
+	// Register image usage if it is a valid name, even if it doesn't exist (so it appears as a "wanted image").
+	if( isset( $imageimage ) && is_object( $imagetitle ) && is_object( $imageimage ) ) {
+			$parser->mOutput->addImage( $imagetitle->getDBkey() );
+	}
 
 	// Close hyperlink.
-	$r .= Xml::closeElement( 'a' );
+	if( is_object( $targettitle ) ) $r .= Xml::closeElement( 'a' );
 
 	// Yes, this is HTML.
 	// TODO: Find some way to make this inline (not start a new paragraph).
