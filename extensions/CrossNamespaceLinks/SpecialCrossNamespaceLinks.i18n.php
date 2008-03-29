@@ -652,20 +652,23 @@ $messages['vo'] = array(
 );
 
 $messages['yue'] = array(
-	'crossnamespacelinks'     => '跨空間名連結',
+	'crossnamespacelinks'         => '跨空間名連結',
+	'crossnamespacelinks-desc'    => '列示唔存在響{{SITENAME}}嘅[[Special:CrossNamespaceLinks|跨空間名連結]]',
 	'crossnamespacelinks-summary' => '呢一頁提供一個由主空間名到其它空間名嘅連結一覽（除咗 {{ns:special}}, {{ns:talk}}, {{ns:project}} 同埋 {{ns:template}} 空間名之外），呢種做法係唔推薦去用嘅。',
-	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
+	'crossnamespacelinkstext'     => '$1: $2 個連結到 $3'
 );
 
 $messages['zh-hans'] = array(
-	'crossnamespacelinks'     => '跨名字空间的链接',
+	'crossnamespacelinks'         => '跨名字空间的链接',
+	'crossnamespacelinks-desc'    => '列示不存在于{{SITENAME}}中的[[Special:CrossNamespaceLinks|跨名字空间链接]]',
 	'crossnamespacelinks-summary' => '本页面提供一个从主名字空间到其他名字空间页面的链接列表（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空间的除外），我们不推荐这种从主名字空间链接到到其他名字的做法。',
-	'crossnamespacelinkstext' => '$1: $2 个链接到 $3'
+	'crossnamespacelinkstext'     => '$1: $2 个链接到 $3'
 );
 
 $messages['zh-hant'] = array(
-	'crossnamespacelinks'     => '跨名字空間的連結',
+	'crossnamespacelinks'         => '跨名字空間的連結',
+	'crossnamespacelinks-desc'    => '列示不存在於{{SITENAME}}中的[[Special:CrossNamespaceLinks|跨名字空間連結]]',
 	'crossnamespacelinks-summary' => '本頁面提供一個從主名字空間到其他名字空間頁面的連結清單（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空間的除外），我們不推薦這種從主名字空間鏈接到到其他名字的做法。',
-	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
+	'crossnamespacelinkstext'     => '$1: $2 個連結到 $3'
 );
 

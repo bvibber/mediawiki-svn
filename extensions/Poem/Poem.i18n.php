@@ -214,3 +214,23 @@ $messages['vi'] = array(
 	'poem-desc' => 'Thêm thẻ <tt>&lt;poem&gt;</tt> để định dạng các bài thơ',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'poem-desc' => '加 <tt>&lt;poem&gt;</tt> 標籤畀詩格式用',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 标签给予诗歌格式使用',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 標籤給予詩歌格式使用',
+);

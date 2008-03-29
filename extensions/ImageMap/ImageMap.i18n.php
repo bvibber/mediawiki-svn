@@ -804,8 +804,11 @@ $messages['vo'] = array(
 	'imagemap_description'   => 'Tefü magod at',
 );
 
-/* Cantonese (Shinjiman) */
+/* Cantonese
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
+	'imagemap_desc'                 => '容許客戶端可以用<tt><nowiki><imagemap></nowiki></tt>標籤整可撳圖像地圖',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
@@ -820,8 +823,11 @@ $messages['yue'] = array(
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 );
 
-/* Chinese (Simplified) (Shinjiman) */
+/* Chinese (Simplified)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
+	'imagemap_desc'                 => '容许客户端可以使用<tt><nowiki><imagemap></nowiki></tt>标签整可点击图像地图',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 图像不正确或者不存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
@@ -836,8 +842,11 @@ $messages['zh-hans'] = array(
 	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 无',
 );
 
-/* Chinese (Traditional) (Shinjiman) */
+/* Chinese (Traditional)
+ * @author Shinjiman
+ */
 $messages['zh-hant'] = array(
+	'imagemap_desc'                 => '容許客戶端可以使用<tt><nowiki><imagemap></nowiki></tt>標籤整可點擊圖像地圖',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像不正確或者不存在',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',

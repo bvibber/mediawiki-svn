@@ -1207,6 +1207,7 @@ $messages['wuu'] = array(
 /* Cantonese (Hillgentleman, Shinjiman) */
 $messages['yue'] = array(
 	'makebot'                 => '畀或收番機械人身份',
+	'makebot-desc'            => '特別頁容許本地事務員去畀同收番機械人權限',
 	'makebot-header'          => '\'\'\'本地事務員可以用哩頁畀或收番另一用户嘅 [[{{MediaWiki:Grouppage-bot}}|機械人身份]]。\'\'\'<br />機械人可以喺[[Special:Recentchanges|最近更改]]之類嘅表道匿埋。機械人身份可用來嘜住啲自動化嘅編者。記住要參攷相關嘅政策。',
 	'makebot-username'        => '用户名：',
 	'makebot-search'          => '去',
@@ -1228,6 +1229,7 @@ $messages['yue'] = array(
 /* Chinese (Simplified) (下一次登录) */
 $messages['zh-hans'] = array(
 	'makebot'                 => '授予或中止机器人身份',
+	'makebot-desc'            => '特殊页面容许本地行政员去授予及终止机器人权限',
 	'makebot-header'          => '\'\'\'本地行政员可以使用此页授予或中止另一个帐号的[[{{MediaWiki:Grouppage-bot}}|机器人身份]]。\'\'\'<br />机器人状态会导致该用户的编辑不被显示在[[Special:Recentchanges|最近更改]]和其他类似列表中，因此用于标识进行自动编辑的用户，但需要依据相应的可行方针。',
 	'makebot-username'        => '用户名：',
 	'makebot-search'          => '搜索',
@@ -1249,6 +1251,7 @@ $messages['zh-hans'] = array(
 /* Chinese (Traditional) (KilluaZaoldyeck, Shinjiman) */
 $messages['zh-hant'] = array(
 	'makebot'                 => '授予或終止機器人身分',
+	'makebot-desc'            => '特殊頁面容許本地行政員去授予及終止機器人權限',
 	'makebot-header'          => '\'\'\'所屬行政員允許使用此頁面授予或終止另一個帳號的[[{{MediaWiki:Grouppage-bot}}|機器人身分]]。\'\'\'<br />機器人身分的帳號所進行的修改將不被顯示在[[Special:Recentchanges|最近更改]]和其他類關列表中，因此，此身分用於標記自動編輯的帳號。此項的相關操作必須符合現行方針。',
 	'makebot-username'        => '帳號名稱：',
 	'makebot-search'          => '搜索',
@@ -1270,16 +1273,11 @@ $messages['zh-hant'] = array(
 /* Chinese (Hong Kong) (KilluaZaoldyeck, Shinjiman) */
 $messages['zh-hk'] = array(
 	'makebot'                 => '授予或終止機械人身份',
+	'makebot-desc'            => '特殊頁面容許本地行政員去授予及終止番機械人權限',
 	'makebot-header'          => '\'\'\'所屬行政員允許使用此頁面授予或終止另一個帳號的[[{{MediaWiki:Grouppage-bot}}|機械人身份]]。\'\'\'<br />機械人身份的帳號所進行的修改將不被顯示在[[Special:Recentchanges|最近更改]]和其他類關列表中，因此，此身份用於標記自動編輯的帳號。此項的相關操作必須符合現行方針。',
-	'makebot-username'        => '用戶名：',
-	'makebot-search'          => '搜索',
 	'makebot-isbot'           => '[[User:$1|$1]]擁有機械人身份。',
 	'makebot-notbot'          => '[[User:$1|$1]]沒有機械人身份。',
 	'makebot-privileged'      => '[[User:$1|$1]]是[[Special:Listadmins|管理員]]，不能使用機械人身份。',
-	'makebot-change'          => '改變身份：',
-	'makebot-grant'           => '授予',
-	'makebot-revoke'          => '終止',
-	'makebot-comment'         => '備註：',
 	'makebot-granted'         => '[[User:$1|$1]]擁有機械人身份。',
 	'makebot-revoked'         => '[[User:$1|$1]]失去機械人身份。',
 	'makebot-logpage'         => '機械人身份記錄',

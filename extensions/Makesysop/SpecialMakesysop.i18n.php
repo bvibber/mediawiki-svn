@@ -1553,6 +1553,7 @@ $messages['wuu'] = array(
 
 $messages['yue'] = array(
 	'makesysoptitle'       => '整一位用戶做操作員',
+	'makesysop-desc'       => '畀事務員／執行員能力去改用戶等級',
 	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。
 喺個框入面打用戶嘅名，然後撳個掣嚟設佢為管理員',
 	'makesysopname'        => '用戶嘅名：',
@@ -1585,6 +1586,7 @@ $messages['zh-classical'] = array(
 
 $messages['zh-hans'] = array(
 	'makesysoptitle'       => '将用户设置为操作员',
+	'makesysop-desc'       => '给行政员／监管员能力去更改用户等级',
 	'makesysoptext'        => '这个由行政管理员使用的表单可以将普通用户变为管理员。在输入框中输入用户名并点击按钮就可以将用户设置为管理员。',
 	'makesysopname'        => '用户名：',
 	'makesysopsubmit'      => '将这位用户设置为操作员',
@@ -1605,6 +1607,7 @@ $messages['zh-hans'] = array(
 
 $messages['zh-hant'] = array(
 	'makesysoptitle'       => '將用戶設置為操作員',
+	'makesysop-desc'       => '給行政員／監管員能力去更改用戶等級',
 	'makesysoptext'        => '這個由行政管理員使用的表單可以將普通用戶變為管理員。在輸入框中輸入用戶名並點擊按鈕就可以將用戶設置為管理員。',
 	'makesysopname'        => '用戶名：',
 	'makesysopsubmit'      => '將這位用戶設置為操作員',

@@ -105,3 +105,23 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'titlekey-desc' => '標題前綴搵嘢建議背幹',
+);
+
+/** Chinese Simnplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'titlekey-desc' => '标题前缀搜寻建议背干',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'titlekey-desc' => '標題前綴搜尋建議背幹',
+);

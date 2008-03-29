@@ -123,3 +123,23 @@ $messages['vi'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'mwsearch-desc' => 'MWSearch 插件',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'mwsearch-desc' => 'MWSearch 加载项',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'mwsearch-desc' => 'MWSearch 增益集',
+);

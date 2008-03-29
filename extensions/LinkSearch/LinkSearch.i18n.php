@@ -900,6 +900,7 @@ $messages['vo'] = array(
 
 $messages['yue'] = array(
 	'linksearch'       => '搵網頁連結',
+	'linksearch-desc'  => '配合指定嘅字去[[Special:Linksearch|搵外連頁]]',
 	'linksearch-pat'   => '搵嘅形態:',
 	'linksearch-ns'    => '空間名',
 	'linksearch-ok'    => '搵',
@@ -910,6 +911,7 @@ $messages['yue'] = array(
 
 $messages['zh-hans'] = array(
 	'linksearch'       => '搜索网页链接',
+	'linksearch-desc'  => '配合指定的字[[Special:Linksearch|搜寻含外部连结之页面]]',
 	'linksearch-pat'   => '搜索网址:',
 	'linksearch-ns'    => '名字空间:',
 	'linksearch-ok'    => '搜索',
@@ -920,6 +922,7 @@ $messages['zh-hans'] = array(
 
 $messages['zh-hant'] = array(
 	'linksearch'       => '搜尋網頁連結',
+	'linksearch-desc'  => '配合指定的字[[Special:Linksearch|搜尋含外部連結之頁面]]',
 	'linksearch-pat'   => '搜尋網址:',
 	'linksearch-ns'    => '名稱空間:',
 	'linksearch-ok'    => '搜尋',

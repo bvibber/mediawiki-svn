@@ -1683,6 +1683,7 @@ $messages['vo'] = array(
 );
 
 $messages['yue'] = array(
+	'ogg-desc'             => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',
 	'ogg-short-audio'      => 'Ogg $1 聲檔，$2',
 	'ogg-short-video'      => 'Ogg $1 畫檔，$2',
 	'ogg-short-general'    => 'Ogg $1 媒檔，$2',
@@ -1715,6 +1716,7 @@ $messages['yue'] = array(
 );
 
 $messages['zh-hans'] = array(
+	'ogg-desc'             => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
 	'ogg-short-audio'      => 'Ogg $1 声音文件，$2',
 	'ogg-short-video'      => 'Ogg $1 视频文件，$2',
 	'ogg-short-general'    => 'Ogg $1 媒体文件，$2',
@@ -1747,6 +1749,7 @@ $messages['zh-hans'] = array(
 );
 
 $messages['zh-hant'] = array(
+	'ogg-desc'             => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
 	'ogg-short-audio'      => 'Ogg $1 聲音檔案，$2',
 	'ogg-short-video'      => 'Ogg $1 影片檔案，$2',
 	'ogg-short-general'    => 'Ogg $1 媒體檔案，$2',

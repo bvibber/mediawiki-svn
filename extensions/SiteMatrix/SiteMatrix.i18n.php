@@ -996,18 +996,32 @@ $messages['wuu'] = array(
 	'sitematrix-language' => '闲话',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
-	"sitematrix" => "Wikimedia嘅wiki一覽",
-	'sitematrix-language' => '語言',
-	'sitematrix-project'  => '計劃名、跨計劃連結同埋跨維基連結',
-	'sitematrix-others'   => 'Wikimedia嘅其它計劃',
+	'sitematrix'           => 'Wikimedia嘅wiki一覽',
+	'sitematrix-summary'   => '呢版特別面列示全部 WIkimedia 嘅 wiki。',
+	'sitematrix-desc'      => '顯示一個[[Special:SiteMatrix|Wikimedia嘅wikis一覽]]',
+	'sitematrix-language'  => '語言',
+	'sitematrix-project'   => '計劃名、跨計劃連結同埋跨維基連結',
+	'sitematrix-others'    => 'Wikimedia嘅其它計劃',
+	'sitematrix-total'     => "'''總計: $1'''",
+	'sitematrix-sitetotal' => '總數',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Alexsh
+ */
 $messages['zh-hans'] = array(
-	"sitematrix" => "维基媒体站点列表",
-	'sitematrix-language' => '语言',
-	'sitematrix-project'  => '计划名称、跨计划链接以及跨维基链接',
-	'sitematrix-others'   => '维基媒体的其它计划',
+	'sitematrix'           => '维基媒体站点列表',
+	'sitematrix-summary'   => '本特殊页面列示所有维基媒体基金会的所有MediaWiki网站。',
+	'sitematrix-desc'      => '显示[[Special:SiteMatrix|维基媒体所有网站的列表]]',
+	'sitematrix-language'  => '语言',
+	'sitematrix-project'   => '计划名称、跨计划链接以及跨维基链接',
+	'sitematrix-others'    => '维基媒体的其它计划',
+	'sitematrix-total'     => "'''合计：$1'''",
+	'sitematrix-sitetotal' => '总数',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

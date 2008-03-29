@@ -537,11 +537,13 @@ $messages['vo'] = array(
 );
 
 $messages['yue'] = array(
-	'deletedcontributions' => '已經刪除咗嘅用戶貢獻',
+	'deletedcontributions'      => '已經刪除咗嘅用戶貢獻',
+	'deletedcontributions-desc' => '畀操作員能力去瀏覽一位用戶[[Special:DeletedContributions|刪除咗嘅用戶編輯]]',
 );
 
 $messages['zh-hans'] = array(
-	'deletedcontributions' => '已删除的用户贡献',
+	'deletedcontributions'      => '已删除的用户贡献',
+	'deletedcontributions-desc' => '让{{int:group-sysop}}可以浏览用户[[Special:DeletedContributions|被删除的编辑]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -549,6 +551,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'deletedcontributions'      => '已刪除的用戶貢獻',
-	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]。',
+	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]',
 );
 

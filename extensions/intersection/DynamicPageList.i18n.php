@@ -420,3 +420,35 @@ $messages['vo'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Nedol välön kladi pu bali, u nemaspadi!',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'intersection-desc'          => '輸出一個點列最近響分類嘅項目，或者係幾個分類嘅一個聯繫',
+	'intersection_toomanycats'   => 'DynamicPageList: 太多分類!',
+	'intersection_toofewcats'    => 'DynamicPageList: 太少分類!',
+	'intersection_noresults'     => 'DynamicPageList: 無結果!',
+	'intersection_noincludecats' => 'DynamicPageList: 你需要去包含最少一個分類，或者指定一個空間名!',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'intersection-desc'          => '输出一个点列最近在分类中的项目，或者系数个分类的一个联系',
+	'intersection_toomanycats'   => 'DynamicPageList: 太多分类!',
+	'intersection_toofewcats'    => 'DynamicPageList: 太少分类!',
+	'intersection_noresults'     => 'DynamicPageList: 没有结果!',
+	'intersection_noincludecats' => 'DynamicPageList: 您需要去包含最少一个分类，或者指定一个空间名!',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'intersection-desc'          => '輸出一個點列最近在分類中的項目，或者係數個分類的一個聯繫',
+	'intersection_toomanycats'   => 'DynamicPageList: 太多分類!',
+	'intersection_toofewcats'    => 'DynamicPageList: 太少分類!',
+	'intersection_noresults'     => 'DynamicPageList: 沒有結果!',
+	'intersection_noincludecats' => 'DynamicPageList: 您需要去包含最少一個分類，或者指定一個空間名!',
+);

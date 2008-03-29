@@ -110,3 +110,23 @@ $messages['vi'] = array(
 	'fixedimage-desc' => 'Thêm thẻ <tt><nowiki><fundraising></nowiki></tt> để thành một hình',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'fixedimage-desc' => '加 <tt><nowiki><fundraising></nowiki></tt> 標籤做一幅圖像',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 标签作为一幅图像',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 標籤作為一幅圖像',
+);

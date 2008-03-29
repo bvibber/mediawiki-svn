@@ -1019,6 +1019,8 @@ $messages['wa'] = array(
 $messages['yue'] = array(
 	'newuserlogpage'           => '使用者開戶記錄',
 	'newuserlogpagetext'       => '呢個係一個使用者開戶嘅日誌',
+	'newuserlog-desc'          => '加一個[[Special:Log/newusers|開戶口記錄]]到[[Special:Log]]',
+	'newuserlog-byemail'       => '密碼已由電郵寄出',
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已經開咗$1嘅戶口',
 );
@@ -1037,6 +1039,8 @@ $messages['zh-classical'] = array(
 $messages['zh-hans'] = array(
 	'newuserlogpage'           => '新进用户名册',
 	'newuserlogpagetext'       => '本日志是显示新注册用户的日志',
+	'newuserlog-desc'          => '加入一个[[Special:Log/newusers|新进用户名册]]到[[Special:Log]]',
+	'newuserlog-byemail'       => '密码已由电子邮件发出',	
 	'newuserlog-create-entry'  => '新用户',
 	'newuserlog-create2-entry' => '已创建$1的账户',
 );
@@ -1044,6 +1048,8 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'newuserlogpage'           => '新進用戶名冊',
 	'newuserlogpagetext'       => '這是一個最近被創建用戶的日誌',
+	'newuserlog-desc'          => '加入一個[[Special:Log/newusers|新進用戶名冊]]到[[Special:Log]]',
+	'newuserlog-byemail'       => '密碼已由電子郵件寄出',
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );

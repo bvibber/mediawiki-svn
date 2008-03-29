@@ -838,3 +838,60 @@ $messages['vo'] = array(
 	'pdtest_side_by_side' => 'Jonolöd leigodi',
 );
 
+/** Cantonese
+ * @authorShinjiman
+ */
+$messages['yue'] = array(
+	'parserdifftest'      => '處理器差異測試',
+	'pdtest-desc'         => '比較兩種唔同處理器嘅[[Special:ParserDiffTest|特別頁]]',
+	'pdtest_no_target'    => '無指定目標。',
+	'pdtest_page_missing' => '所指定嘅頁響資料庫度搵唔到。',
+	'pdtest_no_changes'   => '偵測唔到更改。',
+	'pdtest_time_report'  => '<b>$1</b> 要 $2 秒，<b>$3</b> 要 $4 秒。',
+	'pdtest_title'        => '內容標題:',
+	'pdtest_text'         => '輸入文字:',
+	'pdtest_ok'           => '好',
+	'pdtest_get_text'     => '響版拎字',
+	'pdtest_diff'         => '差別',
+	'pdtest_side_by_side' => '輸出比較',
+	'pdt_comparing_page'  => '而家響[[$1]]比較緊處理器輸出',
+);
+
+/** Chinese Simplified
+ * @authorShinjiman
+ */
+$messages['zh-hans'] = array(
+	'parserdifftest'      => '处理器差异测试',
+	'pdtest-desc'         => '比较两种不同处理器的[[Special:ParserDiffTest|特殊页面]]',
+	'pdtest_no_target'    => '无指定目标。',
+	'pdtest_page_missing' => '所指定的页面在资料库中度找不到。',
+	'pdtest_no_changes'   => '侦测到无更改。',
+	'pdtest_time_report'  => '<b>$1</b> 要 $2 秒，<b>$3</b> 要 $4 秒。',
+	'pdtest_title'        => '内容标题:',
+	'pdtest_text'         => '输入文字:',
+	'pdtest_ok'           => '确定',
+	'pdtest_get_text'     => '从页面中取戴文字',
+	'pdtest_diff'         => '差异',
+	'pdtest_side_by_side' => '输出比较',
+	'pdt_comparing_page'  => '正在从[[$1]]比较处理器输出',
+);
+
+
+/** Chinese Traditional
+ * @authorShinjiman
+ */
+$messages['zh-hant'] = array(
+	'parserdifftest'      => '處理器差異測試',
+	'pdtest-desc'         => '比較兩種不同處理器的[[Special:ParserDiffTest|特殊頁面]]',
+	'pdtest_no_target'    => '無指定目標。',
+	'pdtest_page_missing' => '所指定的頁面在資料庫中度找不到。',
+	'pdtest_no_changes'   => '偵測到無更改。',
+	'pdtest_time_report'  => '<b>$1</b> 要 $2 秒，<b>$3</b> 要 $4 秒。',
+	'pdtest_title'        => '內容標題:',
+	'pdtest_text'         => '輸入文字:',
+	'pdtest_ok'           => '確定',
+	'pdtest_get_text'     => '從頁面中取得文字',
+	'pdtest_diff'         => '差異',
+	'pdtest_side_by_side' => '輸出比較',
+	'pdt_comparing_page'  => '正在從[[$1]]比較處理器輸出',
+);

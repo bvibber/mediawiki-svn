@@ -1962,6 +1962,7 @@ $messages['vo'] = array(
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'hiderevision'                => '永久收埋修訂',
+	'hiderevision-desc'           => '收埋所有用戶因法律原因等嘅個別修訂',
 	'hiderevision-prompt'         => '要拎走嘅修訂號:',
 	'hiderevision-continue'       => '繼續',
 	'hiderevision-text'           => "呢樣嘢'''只係'''應該可幾響下面嘅情況之下去用:
@@ -2000,6 +2001,7 @@ $messages['yue'] = array(
 /* Chinese (Simplified) (Alex S.H. Lin) */
 $messages['zh-hans'] = array(
 	'hiderevision'                => '永久隐藏修订版本',
+	'hiderevision-desc'           => '隐藏所有用户因法律原因等之个别修订',
 	'hiderevision-prompt'         => '要隐藏的修订版本号码:',
 	'hiderevision-continue'       => '继续',
 	'hiderevision-text'           => "'''注意！'''本工具'''只能'''在以下情况才能使用：
@@ -2035,6 +2037,7 @@ $messages['zh-hans'] = array(
 /* Chinese (Traditional) (Alex S.H. Lin) */
 $messages['zh-hant'] = array(
 	'hiderevision'                => '永久隱藏修訂版本',
+	'hiderevision-desc'           => '隱藏所有用戶因法律原因等之個別修訂',
 	'hiderevision-prompt'         => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue'       => '繼續',
 	'hiderevision-text'           => "'''注意！'''本工具'''只能'''在以下情況才能使用：

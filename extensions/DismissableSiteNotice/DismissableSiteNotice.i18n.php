@@ -479,6 +479,7 @@ $messages['vo'] = array(
 
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
+	'sitenotice-desc'  => '容許用戶去閂個網站公告',
 );
 
 $messages['zh-classical'] = array(
@@ -487,9 +488,11 @@ $messages['zh-classical'] = array(
 
 $messages['zh-hans'] = array(
 	'sitenotice_close' => '关闭',
+	'sitenotice-desc'  => '容许用户关闭网站公告',
 );
 
 $messages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
+	'sitenotice-desc'  => '容許用戶關閉網站公告',
 );
 

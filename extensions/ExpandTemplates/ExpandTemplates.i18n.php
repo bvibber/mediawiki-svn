@@ -1102,10 +1102,12 @@ Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
 
 $messages['yue'] = array(
 	'expandtemplates'                  => '展開模',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展開模、parser functions同埋變數]]去顯示展開嘅wiki文字同埋預覽處理後嘅版',
 	'expand_templates_intro'           => '呢個特別頁係用於將一啲文字中嘅模展開，包括響個模度引用嘅模。同時亦都展開解譯器函數好似<nowiki>{{</nowiki>#if:...}}，以及一啲變數好似<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有響雙括弧中嘅內容都會被展開。呢個特別頁係通過使用MediaWiki嘅相關解釋階段嘅功能完成嘅。',
 	'expand_templates_title'           => '內容標題，用於 {{PAGENAME}} 等頁面：',
 	'expand_templates_input'           => '輸入文字：',
 	'expand_templates_output'          => '結果：',
+	'expand_templates_xml_output'      => 'XML輸出',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => '拎走注釋',
 	'expand_templates_preview'         => '預覽',
@@ -1113,10 +1115,12 @@ $messages['yue'] = array(
 
 $messages['zh-hans'] = array(
 	'expandtemplates'                  => '展开模板',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展开模板、模版扩展语法以及变数]]去显示展开之wiki文字和预览处理后之页面',
 	'expand_templates_intro'           => '本特殊页面用于将一些文字中的模板展开，包括模板中引用的模板。同时也展开解释器函数如<nowiki>{{</nowiki>#if:...}}，以及变量如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;实际上，几乎所有在双括号中的内容都被展开。本特殊页面是通过调用MediaWiki的相关解释阶段的功能完成的。',
 	'expand_templates_title'           => '上下文标题，用于 {{PAGENAME}} 等页面：',
 	'expand_templates_input'           => '输入文字：',
 	'expand_templates_output'          => '结果：',
+	'expand_templates_xml_output'      => 'XML输出',
 	'expand_templates_ok'              => '确定',
 	'expand_templates_remove_comments' => '移除注释',
 	'expand_templates_preview'         => '预览',
@@ -1124,10 +1128,12 @@ $messages['zh-hans'] = array(
 
 $messages['zh-hant'] = array(
 	'expandtemplates'                  => '展開模板',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展開模板、模版擴展語法以及變數]]去顯示展開之wiki文字和預覽處理後之頁面',
 	'expand_templates_intro'           => '本特殊頁面用於將一些文字中的模版展開，包括模版中引用的模版。同時也展開解譯器函數如<nowiki>{{</nowiki>#if:...}}，以及變數如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有在雙括弧中的內容都被展開。本特殊頁面是通過使用MediaWiki的相關解釋階段的功能完成的。',
 	'expand_templates_title'           => '上下文標題，用於 {{PAGENAME}} 等頁面：',
 	'expand_templates_input'           => '輸入文字：',
 	'expand_templates_output'          => '結果：',
+	'expand_templates_xml_output'      => 'XML輸出',
 	'expand_templates_ok'              => '確定',
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
