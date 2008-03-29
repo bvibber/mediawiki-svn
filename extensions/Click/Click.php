@@ -10,7 +10,7 @@
  * @link http://www.mediawiki.org/wiki/Extension:Click
  *
  * @author MinuteElectron <minuteelectron@googlemail.com>
- * @copyright Copyright Â© 2008 MinuteElectron.
+ * @copyright Copyright © 2008 MinuteElectron.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -23,7 +23,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'description' => 'Adds a parser function to display an image with a link that leads to a page other than the image description page.',
 	'author'      => 'MinuteElectron',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Click',
-	'version'     => '1.2',
+	'version'     => '1.3',
 );
 
 // Setup function.
@@ -50,6 +50,7 @@ function efClickParserFunction_Magic( &$magicWords, $langCode ) {
 function efClickParserFunction_Render( &$parser, $target = '', $image = '', $widthalt = '', $altwidth = '' ) {
 
 	// Width and alt-text are interchangable.
+	// No need to escape here, automatically done by Xml class functions.
 	if( preg_match( '#^[0|1|2|3|4|5|6|7|8|9]*px$#', $widthalt ) ) {
 		// First value width, second alt.
 		$width = $widthalt;
@@ -63,11 +64,6 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 		$alt = $widthalt;
 		$width = false;
 	}
-
-	// Escape quotation marks of alt attribute so that any character can be
-	// used (and it looks alright), but we are safe from including arbitrary
-	// HTML.
-	$alt = str_replace( '"', '&quot;', $alt );
 
 	// Open hyperlink, default to a on-wiki page, but if it doesn't exist and
 	// is a valid external URL then use it.
@@ -104,7 +100,7 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 		// Display image.
 		if( !$width ) $width = $imageimage->getWidth();
 		$thumbnail = $imageimage->transform( array( 'width' => $width ) );
-		$r .= $thumbnail->toHtml( array( 'alt' => $alt, 'file-link' => false ) );
+		$r .= $thumbnail->toHtml( array( 'alt' => $alt, 'file-link' => false, 'valign' => 'bottom' ) );
 	} else {
 		// Display alt text.
 		$r .= $alt;
@@ -117,8 +113,7 @@ function efClickParserFunction_Render( &$parser, $target = '', $image = '', $wid
 	// Close hyperlink.
 	if( is_object( $targettitle ) ) $r .= Xml::closeElement( 'a' );
 
-	// Yes, this is HTML.
-	// TODO: Find some way to make this inline (not start a new paragraph).
-	return array( $r, 'noparse' => true, 'isHTML' => true );
+	// Can't just output as HTML, need to do this to make a new paragraph.
+	return $parser->insertStripItem( $r, $parser->mStripState );
 
 }
