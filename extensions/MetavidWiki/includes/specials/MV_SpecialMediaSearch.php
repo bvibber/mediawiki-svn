@@ -24,8 +24,7 @@ class MV_SpecialSearch extends SpecialPage{
 	function MV_SpecialSearch( ) {
 		global $wgOut, $wgRequest;		
 		mvfAddHTMLHeader('search');
-		$MvSpecialSearch = new MV_SpecialMediaSearch();		
-		
+		$MvSpecialSearch = new MV_SpecialMediaSearch();				
 		$MvSpecialSearch->doSearch( $wgRequest->getVal('search') );
 		$wgOut->addHTML($MvSpecialSearch->getResultsHTML());
 		SpecialPage::SpecialPage('Search');			
@@ -60,6 +59,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	var $results=array();
 	var $mName = 'MediaSearch';	
 	var $outputInlineHeader =true;
+	var $outputContainer = true;
+	var $outputSeqLinks = false;
 	
 	var $limit = 20;
 	var $offset = 0;
@@ -71,13 +72,22 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$this->doSearch();
 		//page control: 
 		$this->outputInlineHeader=false;
-		//add nessesary js to wgOut: 
-		mvfAddHTMLHeader('search');	
-		//add the search placeholder 
-		$wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
-		$wgOut->addHTML($this->dynamicSearchControl());		
-		//$wgOut->addHTML($this->getResultsBar());
-		$wgOut->addHTML($this->getResultsHTML());
+		if($wgRequest->getVal('seq_inline')=='true'){
+			$this->outputContainer = false;
+			$this->outputSeqLinks=true;
+			//@@todo add a absolute link to search results
+			print $this->getResultsHTML(true);
+			//@@todo cleaner exit
+			exit();
+		}else{
+			//add nessesary js to wgOut: 
+			mvfAddHTMLHeader('search');	
+			//add the search placeholder 
+			$wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
+			$wgOut->addHTML($this->dynamicSearchControl());		
+			//$wgOut->addHTML($this->getResultsBar());			
+			$wgOut->addHTML($this->getResultsHTML());			
+		}
 	}
 	function dynamicSearchControl() {
 		$title = SpecialPage :: getTitleFor('MediaSearch');
@@ -168,17 +178,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getResultsHTML() {
 		global $mvgIP, $wgOut, $mvgScriptPath, $mvgContLang, $wgUser, $wgParser;
 		$sk = & $wgUser->getSkin();
-		$o = '';								
-		//media paging:
-		$prevnext = wfViewPrevNext( $this->offset, $this->limit,
-				SpecialPage::getTitleFor( 'MediaSearch' ),
-					$this->get_httpd_filters_query(),
-					($this->num < $this->limit) );
-		$o.="<br />{$prevnext}\n";		
-		
+		$o = '';							
+		if($this->outputContainer)$o.='<div id="mv_search_results_container">';	
+			
 		//for each stream range:		
 		if (count($this->results) == 0) {
-			return '<h2><span class="mw-headline">' . wfMsg('mv_search_no_results') . '</span></h2>';
+			$o.= '<h2><span class="mw-headline">' . wfMsg('mv_search_no_results') . '</span></h2>';
+			return $o;
 		}else{
 			if($this->outputInlineHeader){
 				$o.='<h2>
@@ -188,7 +194,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				$o.= $sk->makeKnownLinkObj($title, wfMsg('mv_advaced_search'), 
 						$this->get_httpd_filters_query() );
 			}
-		}		
+		}	
+		//media pagging:
+		$prevnext = wfViewPrevNext( $this->offset, $this->limit,
+				SpecialPage::getTitleFor( 'MediaSearch' ),
+					$this->get_httpd_filters_query(),
+					($this->num < $this->limit) );
+		$o.="<br /><span id=\"mv_search_pagging\">{$prevnext}</span>\n";		
 		//add the rss link: 
 		$sTitle=Title::MakeTitle(NS_SPECIAL, 'MvExportSearch');
 		$o.='<span style="float:right;">';
@@ -215,11 +227,19 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					
 					$bgcolor=MV_Overlay::getMvdBgColor($mvd);
 					//output indent if not the first and count more than one 
-					if(count($srange['rows'])!=1 && $inx!=0)
+					if(count($srange['rows'])!=1 && $inx!=0)				
 						$mvd_out.='&nbsp; &nbsp; &nbsp; &nbsp;';
-					//'<img src="'. $mvgScriptPath . '/skins/images/film.png">'
-					$mvd_out .= '<span title="' . wfMsg('mv_expand_play') . '" onclick="mv_ex(\'' . $mvd->id . '\')" style="cursor:pointer;background:#'.$bgcolor.'">&nbsp; &nbsp; &nbsp; &nbsp;' 
-								. $mvTitle->getTimeDesc() . '&nbsp;</span>';
+					//'<img src="'. $mvgScriptPath . '/skins/images/film.png">'					
+					$mvd_out .= '<span class="mv_rtdesc" title="' . wfMsg('mv_expand_play') . '" onclick="mv_ex(\'' . $mvd->id . '\')" style="cursor:pointer;background:#'.$bgcolor.'">&nbsp; &nbsp; &nbsp; &nbsp;';				
+					$mvd_out.= $mvTitle->getTimeDesc() . '&nbsp;</span>';
+					if($this->outputSeqLinks==true){
+						$mvd_out .='&nbsp;<img style="cursor:pointer;" onClick="mv_add_to_seq({mvclip:\''.
+										$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest().'\','.
+										'src:\''.$mvTitle->getWebStreamURL().'\','.
+										'img_url:\''.$mvTitle->getStreamImageURL().'\'})" '.
+										'title="'.wfMsg('mv_seq_add_end').'" '.
+										'src="'.$mvgScriptPath .'/skins/mv_embed/images/application_side_expand.png">';
+					} 
 					$mvd_out .= '<a title="' . wfMsg('mv_expand_play') . '" href="javascript:mv_ex(\'' . $mvd->id . '\')"><img id="mv_img_ex_'.$mvd->id.'" border="0" src="' . $mvgScriptPath . '/skins/images/closed.png"></a>' .
 					'&nbsp;';
 					//output control links:
@@ -300,6 +320,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			$o.= '<h3>' . $mvTitle->getStreamNameText() . wfMsg('mv_match_text', $matches).'</h3>';
 			$o.= '<div id="mv_stream_' . $stream_id . '">' . $stream_out . '</div>';
 		}
+		if($this->outputContainer)$o.='</div>';
 		return $o;
 	}
 	function getTerms(){
@@ -570,11 +591,11 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		//print "title is: " .$imgTitle->getDBkey() ."IMAGE IS: " . $img->getURL();
 
 		return '<span class="mv_person_ac" id="mv_person' . $inx . '" style="display:' . $disp . ';width:90px;">' .
-		'<img id="mv_person_img' . $inx . '" style="padding:2px;" src="' . $img->getURL() . '" width="44">' .
-		'<input id="mv_person_input' . $inx . '" class="mv_search_text" style="font-size: 12px;" size="9" ' .
-		'type="text" name="' . $tname . '" value="' . $person_name . '" autocomplete="off">' .
-		'<div id="mv_person_choices'.$inx.'" class="autocomplete"></div>' .
-		'</span>';
+			'<img id="mv_person_img' . $inx . '" style="padding:2px;" src="' . $img->getURL() . '" width="44">' .
+			'<input id="mv_person_input' . $inx . '" class="mv_search_text" style="font-size: 12px;" size="9" ' .
+			'type="text" name="' . $tname . '" value="' . $person_name . '" autocomplete="off">' .
+			'<div id="mv_person_choices'.$inx.'" class="autocomplete"></div>' .
+			'</span>';
 	}
 	function selector($i, $key, $selected='', $display=true) {
 		$disp = ($display)?'':'display:none;';
@@ -700,12 +721,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		return $out;
 	}
 	//return a json date obj 
-	//@@todo fix for big sites...(will start to be no fun if number of streams > 1000 ... over many years)
+	//@@todo fix for big sites...(will start to be no fun if number of streams > 2000 ... over many years)
 	function getJsonDateObj($obj_name='mv_result'){
 		$dbr =& wfGetDB(DB_SLAVE);		
 		$sql = 'SELECT `date_start_time` FROM `mv_streams` ' .
 				'WHERE `date_start_time` IS NOT NULL ' .
-				'ORDER BY `date_start_time` ASC  LIMIT 0, 1000';
+				'ORDER BY `date_start_time` ASC  LIMIT 0, 2000';
 		$res = $dbr->query($sql, 'MV_SpecialMediaSearch:getJsonDateObj');
 		$start_day=time();
 		$end_day=0;

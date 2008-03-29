@@ -41,7 +41,7 @@
 		return '<form id="mvd_form_'.$this->mvd_id.'" name="mvd_form_'.$this->mvd_id.'" method="GET" action="" 
 			onSubmit="mv_do_ajax_form_submit(\''.$this->mvd_id.'\', \'save\'); return false;" '.
 			'enctype="multipart/form-data" >' .  
-			'<input type="hidden" name="fname" value="mv_submit_edit">' . 
+			'<input type="hidden" name="fname" value="mv_edit_submit">' . 
 				//do the normal edit hidden fields:		
 		"\n".'<input type="hidden" value="'. htmlspecialchars( $wgUser->editToken() ) .
 		'" name="wpEditToken" />'."\n" . 
@@ -111,7 +111,7 @@
 			'<td>');
 	}
 	/* copy of edit() from edit page (to override empty page)*/
-	function edit() {
+	function edit( $textbox1_override=null) {
 		global $wgOut, $wgUser, $wgRequest, $wgTitle;
 
 		$fname = 'MV_EditPage::edit';
@@ -122,6 +122,7 @@
 		$wgOut->setArticleFlag(false);
 
 		$this->importFormData( $wgRequest );
+		if($textbox1_override)$this->textbox1=$textbox1_override;
 		$this->firsttime = false;
 
 		if( $this->live ) {

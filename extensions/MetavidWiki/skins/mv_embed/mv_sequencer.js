@@ -25,6 +25,7 @@ var sequencerDefaultValues = {
 	timeline_id:'mv_timeline',
 	plObj_id:'plobj',
 
+
 	timeline_scale:.25, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
 	playline_time:0,
@@ -50,6 +51,7 @@ var sequencerDefaultValues = {
 	//tack/clips can be pushed via json or inline playlist format
 	inline_playlist:'null', //text value so its a valid property 
 	inline_playlist_id:'null',
+	mv_pl_url_id:'null',
 	//the edit stack:
 	edit_stack:new Array(),
 	
@@ -132,18 +134,24 @@ mvSequencer.prototype = {
 				'<div id="'+this.timeline_id+'_playline" class="mv_playline"></div>'+
 			'</div>'
 		);		
-		//add html content for playlist with sequencer mode enabled: 
-		if(this.inline_playlist_id=='null'){
-			var pl_txt = (this.inline_playlist=='null')?'':this.inline_playlist;
-		}else{
+		//add inline pl:
+		if(this.inline_playlist_id!='null'){			
 			var pl_txt = $j('#'+this.inline_playlist_id).html();
 			//free the inline placeholder
 			$j('#'+this.inline_playlist_id).remove();
+			//js_log('add to '+ this.video_container_id);
+			$j('#'+this.video_container_id).html('<playlist sequencer="true" id="'+this.plObj_id+'">'+pl_txt+'</playlist>');
 		}
-		//js_log('add to '+ this.video_container_id);
-		$j('#'+this.video_container_id).html(''+
-			'<playlist sequencer="true" id="'+this.plObj_id+'">'+pl_txt+'</playlist>'
-		);
+		//add src based pl: 
+		if(this.mv_pl_url_id!='null'){
+			js_log(' id: '+ this.mv_pl_url_id);
+			var pl_url = $j('#'+this.mv_pl_url_id).html();
+			js_log("PL URL : " + pl_url)
+			$j('#'+this.video_container_id).html('<playlist sequencer="true" id="'+this.plObj_id+'" src="'+pl_url+'"/>');
+		}else{
+			js_log(' id: '+ this.mv_pl_url_id);
+		}	
+	
 		//js_log('added: '+ pl_txt);
 		//js_log('video now has: '+ $j('#'+this.video_container_id).html() );
 		//run rewrite playlist tag: 
@@ -247,14 +255,15 @@ mvSequencer.prototype = {
 							case 'srcClip':
 								s+="\n"+'|srcClip='+clip.src+"\n";
 								s+='|image='+clip.img+"\n";
+								//output other properties if src clip
+								if(clip.title)s+='|title='+clip.title+"\n";
+								if(clip.desc)s+='|desc='+clip.desc+"\n";
 							break;
 							case 'mvClip':
 								s+="\n"+'|mvClip='+clip.mvclip+"\n";
 							break;
 						}
-						//output all other properties: 
-						if(clip.title)s+='|title='+clip.title+"\n";
-						if(clip.desc)s+='|desc='+clip.desc+"\n";
+						
 					}
 				}
 				return s;

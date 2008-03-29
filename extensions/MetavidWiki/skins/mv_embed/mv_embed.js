@@ -54,7 +54,7 @@ gMsg['ogg-player-cortado']='Java Cortado';
 gMsg['ogg-player-selected']=' (selected)';
 gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
-
+gMsg['add_to_end_of_sequence']='Add to End of Sequence';
 gMsg['missing_video_stream']='The video file for this stream is missing';
 
 //grabs from the globalMsg obj 
@@ -574,6 +574,7 @@ function mv_embed(){
 
 var sq_load_time=0;
 function mv_do_sequence(initObj){
+	js_log('mv_do_sequence');
 	//issue a request to get the css file (if not already included): 
 	if(!styleSheetPresent(mv_embed_path+'mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'mv_sequence.css');

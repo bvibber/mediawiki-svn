@@ -17,12 +17,25 @@
 		return wfMsg('mv_sequence_player_title');
 	}
 	function getHTML(){
- 		global $wgOut;
- 		$article = & $this->mv_interface->article;
+ 		global $wgOut, $wgTitle, $wgRequest;
+ 		$article = & $this->mv_interface->article; 		
+ 		$title = Title::MakeTitle(NS_SPECIAL, 'MvExportSequence/'.$article->mTitle->getDBKey() );
+ 		$title_url = $title->getFullURL();
+ 		
+ 		
+ 		$oldid = $wgRequest->getVal( 'oldid' );
+		if ( isset( $oldid ) ) {	
+ 			//@@ugly hack .. but really this whole sequencer needs a serious rewrite)
+			$ss = (strpos($title_url, '?')===false)?'?':'&';
+			$title_url.=$ss.'oldid='.$oldid;
+ 		}
+ 		//'<playlist id="mv_pl">'.  
  		//@@todo look at mv_interface context to get what to display in tool box:
  		$wgOut->addHTML(''. 
- 		'<div style="position:absolute;width:320px;height:270px;" id="mv_video_container"></div>' ."\n".
- 				'<div style="display:none;" id="mv_inline_pl_txt">'.$article->getSequenceText().'</div>' );
+	 		'<div style="position:absolute;width:320px;height:270px;" id="mv_video_container">'.
+	 			//'<div style="display:none;" id="mv_inline_pl_txt">'.$article->getSequenceText().'</div>'.
+	 			'<div style="display:none;" id="mv_pl_url">'.$title_url.'</div>'.
+			'</div>' ."\n");
 	}
  }
 ?>

@@ -185,7 +185,7 @@ function mvSetupExtension(){
 			if($head_set=='search')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>");	
 			if($head_set=='sequence')
-				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>");																				
+				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>");
 			if($head_set=='stream_interface')
 				$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>");	
 			//if($head_set=='smw_ext')

@@ -46,10 +46,20 @@
 				$this->add_clips_manual();	 						
 			break;
 			case 'add_clips_search':
-				return "search goes here";
+				$this->add_embed_search();
 			break;
 		}
 		return $wgOut->getHTML();
+	}
+	function add_embed_search(){
+		global $wgOut;
+		//grab a de-encapsulated search
+		$mvSearch = new MV_SpecialMediaSearch();		
+		$mvSearch->setUpFilters();
+		//do the search
+		$mvSearch->doSearch();
+		$wgOut->addHTML($mvSearch->dynamicSearchControl());		
+		$wgOut->addHTML($mvSearch->getResultsHTML());
 	}
 	function auto_complete_stream_name($val){
 		global $mvStreamTable, $mvDefaultSearchVideoPlaybackRes;
@@ -103,13 +113,11 @@
 		//set up the title /article
 		$title = Title::newFromText($titleKey, MV_NS_SEQUENCE);
 		$article = new MV_SequencePage($title);
-		
-		$_REQUEST['wpTextbox1'] ='<'.SEQUENCE_TAG.'>'.
-					 $_POST['inline_seq'] . '</'.SEQUENCE_TAG.'>' . "\n".$_REQUEST['wpTextbox1']; 
-					 		
+				
+		//print "inline_seq:" .  $_POST['inline_seq'] . " wpbox: " . $_REQUEST['wpTextbox1'] . "\n";
 		$editPageAjax = new MV_EditPageAjax( $article);
 		$editPageAjax->mvd_id ='seq';
-		
+		$textbox1='<'.SEQUENCE_TAG.'>'.$_POST['inline_seq'] . '</'.SEQUENCE_TAG.'>' . "\n".$_REQUEST['wpTextbox1'];
 		//if($wgTitle->exists()){
 		//print "article existing content: " . $Article->getContent();
 		//}
@@ -132,10 +140,8 @@
 			$wgOut->addHTML('<hr></hr>');
 			//$wgOut->addWikiTextWithTitle( $curRevision->getText(), $wgTitle) ;
 			return $wgOut->getHTML();
-		}				
-		//@@TODO use $editPageAjax->edit!
-		//$Article->doEdit($_REQUEST['wpTextbox1'], $_REQUEST['wpSummary']);		
-		if($editPageAjax->edit()==false){
+		}						
+		if($editPageAjax->edit($textbox1)==false){
 			return php2jsObj(array('status'=>'ok'));	
 		}else{
 			//error: retrun error msg and form: 

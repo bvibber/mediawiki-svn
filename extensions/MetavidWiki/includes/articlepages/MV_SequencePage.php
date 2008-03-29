@@ -36,6 +36,7 @@ define('SEQUENCE_TAG', 'sequence');
  		
  		//build a associative array of "clips" 
  		$seq_text = $this->getSequenceText();		
+ 	
  		$seq_lines = explode("\n",$seq_text);
  		$parseBucket=$cur_attr='';
  		$clip_inx=-1; 		
@@ -99,8 +100,10 @@ define('SEQUENCE_TAG', 'sequence');
 					if(count($dbr->numRows($mvd_res))!=0){ 
 						$MV_Overlay = new MV_Overlay();	
 						$wgOut->clearHTML();	
-						while($mvd = $dbr->fetchObject($mvd_res)){								
-							$MV_Overlay->outputMVD($mvd);	
+						while($mvd = $dbr->fetchObject($mvd_res)){
+							//output a link /line break 														
+							$MV_Overlay->outputMVD($mvd);
+							$wgOut->addHTML('<br>');							
 						}
 						$clip['desc']=$wgOut->getHTML();
 						$wgOut->clearHTML();	
@@ -112,13 +115,19 @@ define('SEQUENCE_TAG', 'sequence');
  		//print_r($this->clips);
  	}
  	function doSeqReplace(&$input, &$argv, &$parser){	
- 		global $wgTitle,$wgUser, $markerList;
- 		
+ 		global $wgTitle,$wgUser,$wgRequest, $markerList; 		
  		$sk = $wgUser->getSkin();
  		$title = Title::MakeTitle(NS_SPECIAL, 'MvExportSequence/'.$wgTitle->getDBKey() );
+ 		$title_url = $title->getFullURL();
+ 		$oldid = $wgRequest->getVal( 'oldid' );
+		if ( isset( $oldid ) ) {	
+ 			//@@ugly hack .. but really this whole sequencer needs a serious rewrite)
+			$ss = (strpos($title_url, '?')===false)?'?':'&';
+			$title_url.=$ss.'oldid='.$oldid;
+ 		}
  		
  		$vidtag = '<div id="file" class="fullImageLink"><playlist';						
-		$vidtag.=' width="400" height="300" src="'.$title->getFullURL().'">';
+		$vidtag.=' width="400" height="300" src="'.$title_url.'">';
 		$vidtag.='</playlist></div><hr>';
 		
 		$marker = "xx-marker".count($markerList)."-xx";
@@ -141,14 +150,13 @@ define('SEQUENCE_TAG', 'sequence');
 	 		$seqClose = strpos($base_text, '</'.SEQUENCE_TAG.'>');
 	 		if($seqClose!==false){
 	 			//strip the sequence tag: 
-	 			return "\n".trim(substr($base_text, strlen('<'.SEQUENCE_TAG.'>'), $seqClose-strlen('</'.SEQUENCE_TAG.'>') ))."\n";
-	 		}else{
-	 			return $base_text;
+	 			$seqText = "\n".trim(substr($base_text, strlen('<'.SEQUENCE_TAG.'>'), $seqClose-strlen('</'.SEQUENCE_TAG.'>') ))."\n";
+	 			return $seqText;	 			
 	 		}
- 		}else{
- 			//return a "new empty sequence ..only set the title:"
- 			return '|title=' . $this->mTitle->getText()."\n";
  		}
+		//return a "new empty sequence ..only set the title:"
+		return '|title=' . $this->mTitle->getText()."\n";
+ 		
  	} 
  }
 ?>

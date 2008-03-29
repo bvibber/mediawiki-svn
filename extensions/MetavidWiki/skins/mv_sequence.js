@@ -4,7 +4,7 @@ mv_addLoadEvent(setup_sequencer);
 mvSeq=null;
 function setup_sequencer(){	
 	mv_do_sequence({
-		inline_playlist_id:'mv_inline_pl_txt',
+		mv_pl_url_id:'mv_pl_url',
 		video_container_id:'mv_video_container',
 		sequence_tools_id:'MV_SequenceTools',
 		timeline_id:'MV_SequenceTimeline'
@@ -54,12 +54,12 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 			case 'save':
 				eval(data);
 				if(mv_result['status']=='ok'){					
-					//wait 2 more seconds and then redirect to updated page: 
-					setTimeout(function(){
+					//wait 2 seconds to give time for defered updates
+					/*setTimeout(function(){
 						window.location.href = wgServer+
 						((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
-						'/' + wgPageName + '?action=purge';
-					}, 2000);
+						'/' + wgPageName;
+					}, 2000);*/
 				}else if(mv_result['status']=='error'){
   					$j('#mv_seq_edit_preview').html( mv_result['error_txt'] );   				
 	  			}
@@ -77,8 +77,7 @@ function mv_seqtool_disp(tool_key){
 	$j('.mv_seq_tool').each(function(i){
 		if(this.id!='mvseq_'+tool_key)$j(this).fadeOut("fast");
 	});
-
-	if($j('#mvseq_'+tool_key).length==0){
+	if($j('#mvseq_'+tool_key).length==0){		
 		$j('#mv_seqtool_cont').append('<div class="mv_seq_tool" id="mvseq_'+tool_key+'">' +
 				global_loading_txt + '</div>');
 		//do the request load the added tool
@@ -92,12 +91,27 @@ function mv_seqtool_disp(tool_key){
 				case 'add_clips_manual': 
 					mv_manual_hooks(); 
 				break;
+				case 'add_clips_search':
+					mvJsLoader.doLoad({'mv_setup_search':'../mv_search.js'},function(){
+						mv_setup_search('ajax');
+					});
+				break;
 			}
 		});
 	}else{
 		$j('#mvseq_'+tool_key).fadeIn("fast");
 	}
 	
+}
+function mv_ajax_search_callback(){
+	js_log('mv_ajax_search_callback');
+	//rewrite pagging with ajax
+	$j('#mv_search_pagging a').each(function(){
+			$j(this).attr('href', 'javascript:mv_do_ajax_search_request(\''+$j(this).attr('href')+'&seq_inline=true\')');
+	});
+	//$j('.mv_rtdesc').each(function(){
+	//	$j(this).prepend('<img onClick=" title="'+getMsg('add_to_end_of_sequence')+'" src="'+mv_embed_path + 'images/application_side_expand.png">');			
+	//});
 }
 //applies mv_seq manual javascript bindings
 function mv_manual_hooks(){
@@ -163,26 +177,36 @@ function mv_manual_hooks(){
 	
 	//add clip adjustment hooks			
 }
-function mv_add_to_seq(){
+function mv_add_to_seq(target){
 	js_log('mv_add_to_seq');
 	//add to the seq: 
 	if(mvSeq){
-		//do a preloaded mvSeq clip (get the src) 
-		var spos = $j('#vid_seq').get(0).thumbnail.indexOf('size=');
-		var sepos = $j('#vid_seq').get(0).thumbnail.indexOf('&', spos);
-		var end_img_url = (sepos!=-1)? $j('#vid_seq').get(0).thumbnail.substring(sepos):'';
-		
-		var img_url = (spos!=-1)?
-			 $j('#vid_seq').get(0).thumbnail.substring(0, spos) + 'size=320x240'+end_img_url:
-		 	 $j('#vid_seq').get(0).thumbnail;
-		mvSeq.addClip({
-			track_id:0,
-			type:'mvClip',
-			mvclip:$j('#mv_add_stream_name').val() +'?t='+ $j('#mv_start_hr_seq').val() + '/'+
-				 $j('#mv_end_hr_seq').val(),
-			src: $j('#vid_seq').get(0).src,
-			img:img_url
-		});
+		if(target){
+			mvSeq.addClip({
+				track_id:0,
+				type:'mvClip',
+				mvclip:target.mvclip,
+				src: target.src,
+				img:target.img_url
+			});
+		}else{
+			//do a preloaded mvSeq clip (get the src) 
+			var spos = $j('#vid_seq').get(0).thumbnail.indexOf('size=');
+			var sepos = $j('#vid_seq').get(0).thumbnail.indexOf('&', spos);
+			var end_img_url = (sepos!=-1)? $j('#vid_seq').get(0).thumbnail.substring(sepos):'';
+			
+			var img_url = (spos!=-1)?
+				 $j('#vid_seq').get(0).thumbnail.substring(0, spos) + 'size=320x240'+end_img_url:
+			 	 $j('#vid_seq').get(0).thumbnail;
+			mvSeq.addClip({
+				track_id:0,
+				type:'mvClip',
+				mvclip:$j('#mv_add_stream_name').val() +'?t='+ $j('#mv_start_hr_seq').val() + '/'+
+					 $j('#mv_end_hr_seq').val(),
+				src: $j('#vid_seq').get(0).src,
+				img:img_url
+			});
+		}
 	}else{
 		js_error("error: sequence is not present");
 	}
