@@ -87,6 +87,14 @@ $messages['oc'] = array(
 	'randomrootpage-desc' => "[[Special:Randomrootpage|Pagina especiala]] que va quérre una pagina raiç a l'azard",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'randomrootpage'      => 'Случайная корневая страница',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Служебная страница]], выбирающая случайную корневую страницу',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

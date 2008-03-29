@@ -241,6 +241,13 @@ $messages['lb'] = array(
 	'spamdifftool_submit_buttom'    => 'Späicheren',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'spamdifftool_submit_buttom' => 'സമര്‍പ്പിക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

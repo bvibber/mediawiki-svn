@@ -131,6 +131,7 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'multiboilerplate-desc'   => 'Позволяет пользователям выбирать типовые тексты из выпадающего списка над полем редактирования',
 	'multiboilerplate-legend' => 'Выбор образца',
 	'multiboilerplate-submit' => 'Загрузить',
 );

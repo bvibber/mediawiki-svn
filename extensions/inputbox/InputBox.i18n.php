@@ -520,6 +520,8 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'inputbox-desc'  => "Erlaabt d'Afüge vu viirdefinéierten HTML-Formulairen",
+	'tryexact'       => 'Versicht et matt der preziser Sich:',
 	'searchfulltext' => 'Am ganzen Text sichen',
 	'createarticle'  => 'Säit uleeën',
 );
@@ -568,6 +570,13 @@ $messages['mk'] = array(
 	'tryexact'       => 'Обиди се точно',
 	'searchfulltext' => 'Барај низ целиот текст',
 	'createarticle'  => 'Создади статија',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'createarticle' => 'താള്‍ സൃഷ്ടിക്കുക',
 );
 
 /** Marathi (मराठी)

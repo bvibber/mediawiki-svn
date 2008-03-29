@@ -398,6 +398,7 @@ $messages['sma'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'spamregex'             => 'SpamRegex',
 	'spamregex-log-1'       => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
 	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',

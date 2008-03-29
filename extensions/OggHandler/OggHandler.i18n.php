@@ -943,6 +943,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'ogg-desc'                => 'Steierungsprogramm fir Ogg Theora a Vorbis Fichieren, att engem JavaScript-Player-Software',
 	'ogg-short-audio'         => 'Ogg-$1-Tounfichier, $2',
 	'ogg-short-video'         => 'Ogg-$1-Videofichier, $2',
 	'ogg-short-general'       => 'Ogg-$1-Mediefichier, $2',
@@ -1024,6 +1025,24 @@ $messages['lt'] = array(
 	'ogg-dismiss'             => 'Uždaryti',
 	'ogg-download'            => 'Atsisiųsti bylą',
 	'ogg-desc-link'           => 'Apie šią bylą',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'ogg-short-audio'     => 'ഓഗ് $1 ശബ്ദപ്രമാണം, $2',
+	'ogg-short-video'     => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, $2',
+	'ogg-short-general'   => 'ഓഗ് $1 മീഡിയ പ്രമാണം, $2',
+	'ogg-long-audio'      => '(ഓഗ് $1 ശബ്ദ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
+	'ogg-long-video'      => '(ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈര്‍ഘ്യം $2, $4×$5 pixels, $3)',
+	'ogg-long-general'    => '(ഓഗ് മീഡിയ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
+	'ogg-long-error'      => '(അസാധുവായ ഓഗ് പ്രമാണം: $1)',
+	'ogg-player-selected' => '(തിരഞ്ഞെടുത്തവ)',
+	'ogg-more'            => 'കൂടുതല്‍...',
+	'ogg-dismiss'         => 'അടയ്ക്കുക',
+	'ogg-download'        => 'പ്രമാണം ഡൗണ്‍ലോഡ് ചെയ്യുക',
+	'ogg-desc-link'       => 'ഈ പ്രമാണത്തെക്കുറിച്ച്',
 );
 
 /** Marathi (मराठी)

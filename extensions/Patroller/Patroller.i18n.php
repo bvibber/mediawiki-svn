@@ -573,6 +573,7 @@ $messages['rm'] = array(
  */
 $messages['ru'] = array(
 	'patrol'                 => 'Патрулирование',
+	'patrol-desc'            => 'Усовершенствованный интерфейс патрулирования с распределением рабочей нагрузки',
 	'patrol-endorse'         => 'Подтвердить',
 	'patrol-revert'          => 'Откатить',
 	'patrol-revert-reason'   => 'Причина:',
@@ -688,6 +689,13 @@ $messages['sv'] = array(
 	'group-patroller'        => 'Patrullerare',
 	'group-patroller-member' => 'Patrullerare',
 	'grouppage-patroller'    => '{{ns:project}}:Patrullerare',
+);
+
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'patrol-revert-reason' => 'Čymu:',
 );
 
 /** Telugu (తెలుగు)

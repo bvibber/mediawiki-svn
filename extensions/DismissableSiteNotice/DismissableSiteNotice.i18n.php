@@ -294,6 +294,13 @@ $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'sitenotice-desc' => 'സൈറ്റ്നോട്ടീസ് മറയ്ക്കുവാന്‍ ഉപയോക്താക്കളെ അനുവദിക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

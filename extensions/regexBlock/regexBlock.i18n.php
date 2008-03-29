@@ -758,6 +758,68 @@ $messages['pt'] = array(
 	'regexblock-view-time'            => 'em $1',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'regexblock'                      => 'RegexBlock',
+	'regexblock-desc'                 => 'Расширение, использующееся для блокировки имён участников и IP-адресов с помощью регулярных выражений. Содержит механизм блокирования и [[Special:Regexblock|служебную страницу]] для добавления и управления блокировками',
+	'regexblock-special-desc'         => 'альтернативная блокировка участника (по имени, с помощью регулярных выражений)',
+	'regexblock-stat-desc'            => 'Показывает [[Special:Regexblockstats|статистику блокировок]] для расширения RegexBlock',
+	'regexblock-page-title'           => 'Блокирование имени по регулярному выражению',
+	'regexblockstats'                 => 'Статистика блокировок по регулярным выражениям',
+	'regexblock-reason-ip'            => 'Этот IP-адрес отстранён от редактирования из-за вандализма или других нарушений, которые могли совершить вы или кто-то другой, использующий такой же IP-адрес.
+Если вы считаете, что это ошибка, пожалуйста, $1',
+	'regexblock-reason-name'          => 'Это имя участника отстранёно от редактирования из-за вандализма или других нарушений.
+Если вы считаете, что это ошибка, пожалуйста, $1',
+	'regexblock-reason-regex'         => 'Это имя участника отстранёно от редактирования из-за вандализма или других нарушений, которые совершил участник с похожим именем.
+Пожалуйста, создайте другое имя участника или $1 о проблеме',
+	'regexblock-help'                 => "Используйте приведённую ниже форму для запрета возможности записи для определённого IP-адреса или имени участника.
+Это следует делать только для предотвращения вандализма, руководствуясь правилами.
+''Эта страница позволит вам заблокировать даже несуществующих участников, а также заблокирует участников с похожими именами, т. е. вместе с «Test» будет заблокирован и «Test 2» и т. д.
+Вы также можете заблокировать полный IP-адрес, что означает, что его больше нельзя быдет использовать для редактирования страниц.
+Замечание: частично IP-адреса будут очищены именами участников при определённых блокировках.
+Если не указана причина, то будет использовано общее описание по умолчанию.''",
+	'regexblock-page-title-1'         => 'Блокировка адресов с помощью регулярных выражений',
+	'regexblock-unblock-success'      => 'Разблокировка выполнена успешно',
+	'regexblock-unblock-log'          => "Имя участника или IP-адрес '''$1''' заблокирован.",
+	'regexblock-unblock-error'        => 'Ошибка разблокировки $1.
+Возможно, такого участника не существует.',
+	'regexblock-form-username'        => 'IP-адрес или имя участника:',
+	'regexblock-form-reason'          => 'Причина:',
+	'regexblock-form-expiry'          => 'Истекает:&#160;',
+	'regexblock-form-match'           => 'Точное соответствие',
+	'regexblock-form-account-block'   => 'Запретить создание новых учётных записей',
+	'regexblock-form-submit'          => 'Заблокировать&nbsp;этого&nbsp;участника',
+	'regexblock-block-log'            => "Имя участника или IP-адрес '''$1''' заблокирован.",
+	'regexblock-block-success'        => 'Блокировка выполнена успешно',
+	'regexblock-form-submit-empty'    => 'Укажите имя участника или IP-адрес для блокировки.',
+	'regexblock-form-submit-regex'    => 'Ошибочное регулярное выражение.',
+	'regexblock-form-submit-expiry'   => 'Пожалуйста, укажите время действия.',
+	'regexblock-already-blocked'      => '$1 уже заблокирован.',
+	'regexblock-stats-title'          => 'Статистика RegexBlock',
+	'regexblock-stats-username'       => 'Для $1',
+	'regexblock-stats-times'          => 'был заблокирован',
+	'regexblock-stats-logging'        => 'вошёл с адреса',
+	'regexblock-currently-blocked'    => 'Заблокированные сейчас адреса:',
+	'regexblock-view-blocked'         => 'Просмотреть заблокированных:',
+	'regexblock-view-all'             => 'Все',
+	'regexblock-view-go'              => 'Выполнить',
+	'regexblock-view-match'           => '(точное соответствие)',
+	'regexblock-view-regex'           => '(соответствие рег. выр.)',
+	'regexblock-view-account'         => '(запрет создания учётных записей)',
+	'regexblock-view-reason'          => 'причина: $1',
+	'regexblock-view-reason-default'  => 'общая причина',
+	'regexblock-view-block-infinite'  => 'бессрочная блокировка',
+	'regexblock-view-block-temporary' => 'истекает',
+	'regexblock-view-block-expired'   => 'ИСТЕКЛА',
+	'regexblock-view-block-by'        => 'заблокирован',
+	'regexblock-view-block-unblock'   => 'разблокировать',
+	'regexblock-view-stats'           => '(статистика)',
+	'regexblock-view-empty'           => 'Список заблокированных имён и адресов пуст.',
+	'regexblock-view-time'            => '$1',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -826,6 +888,13 @@ $messages['sv'] = array(
 	'regexblock-view-block-expired'   => 'GICK UT på',
 	'regexblock-view-block-by'        => 'blockerad av',
 	'regexblock-view-time'            => 'på $1',
+);
+
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'regexblock-form-reason' => 'Čymu:',
 );
 
 /** Telugu (తెలుగు)

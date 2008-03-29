@@ -492,6 +492,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'changeauthor'                      => 'Auteur vun enger Versioun änneren',
+	'changeauthor-desc'                 => "Erlaabt et den Auteur vun enger oder méi Versiounen z'änneren",
 	'changeauthor-title'                => 'Auteur vun enger Versioun änneren',
 	'changeauthor-search-box'           => 'Versioune sichen',
 	'changeauthor-pagename-or-revid'    => 'Säitenumm oder Versiounsnummer:',

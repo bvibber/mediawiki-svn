@@ -149,6 +149,7 @@ $messages['cdo'] = array(
  */
 $messages['cs'] = array(
 	'sitematrix'           => 'Seznam všech wiki nadace Wikimedia',
+	'sitematrix-summary'   => 'Tato speciální stránka obsahuje seznam všech Wikimedia wiki.',
 	'sitematrix-desc'      => 'Zobrazuje [[Special:SiteMatrix|seznam projektů nadace Wikimedia]]',
 	'sitematrix-language'  => 'Jazyk',
 	'sitematrix-project'   => 'Jméno projektu, meziprojektový odkaz a mezijazykový odkaz',
@@ -615,6 +616,18 @@ $messages['lt'] = array(
 
 $messages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'sitematrix'           => 'വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക',
+	'sitematrix-summary'   => 'ഈ താള്‍ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുന്നു.',
+	'sitematrix-language'  => 'ഭാഷ',
+	'sitematrix-others'    => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങള്‍',
+	'sitematrix-total'     => "'''മൊത്തം എണ്ണം: $1'''",
+	'sitematrix-sitetotal' => 'മൊത്തം',
 );
 
 /** Marathi (मराठी)

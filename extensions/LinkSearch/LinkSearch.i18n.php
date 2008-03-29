@@ -485,6 +485,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'linksearch'      => 'Weblink-Sich',
+	'linksearch-desc' => '[[Special:Linksearch|Fënnt Säite mat externe Linken]], déi engem engem bestëmmte Muster entspriechen',
 	'linksearch-pat'  => 'Sich-Critère:',
 	'linksearch-ns'   => 'Nummraum:',
 	'linksearch-ok'   => 'Sichen',
@@ -524,6 +525,7 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'linksearch-ns' => 'നെയിംസ്പേസ്:',
 	'linksearch-ok' => 'തിരയുക',
 );
 

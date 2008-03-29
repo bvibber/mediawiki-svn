@@ -409,6 +409,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'asksql'          => 'SQL Offro',
+	'asksql-desc'     => 'SQL-Offroen iwwer eng [[Special:Asksql|Spezialsäit]] maachen.',
 	'asksqltext'      => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze rrichten.
 Benotzt dëst Zeechen' ('esou wéi hei') fir Werter an der Ufro ofzegrenzen.
 Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir froe mir iech dës Funktioun mat Moderatioun ze benotzen.",

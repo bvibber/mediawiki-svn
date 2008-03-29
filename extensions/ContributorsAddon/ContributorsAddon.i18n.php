@@ -46,6 +46,13 @@ $messages['ja'] = array(
 	'contributorsaddon-desc' => 'JavaScriptのonMouseOverを用いて、"主な投稿者"へのリンクをポップアップする',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'contributorsaddon-desc' => 'Setzt de Popup JavaScript onMouseOver op d\'Linke vun den "Haaptkontributeuren"',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

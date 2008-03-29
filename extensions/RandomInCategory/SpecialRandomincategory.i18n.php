@@ -261,6 +261,18 @@ $messages['pt'] = array(
 	'randomincategory-submit'     => 'Ir',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'randomincategory'            => 'Случайная страница категории',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Служебная страница]] для получения случайной страницы категории',
+	'randomincategory-toolbox'    => 'Случайная страница',
+	'randomincategory-nocategory' => 'Категория $1 не существует или пуста',
+	'randomincategory-label'      => 'Категория:',
+	'randomincategory-submit'     => 'Перейти',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Michawiki

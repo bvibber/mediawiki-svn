@@ -259,9 +259,11 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'minipreview-desc'                => 'МиниПредпросмотр показывает около изображения миниатюры других медиа-файлов из той же категории или расположенных на той же страницы',
 	'minipreview-files_in_category'   => 'Всего $1 файлов в этой категории.',
 	'minipreview-files_in_gallery'    => 'Всего $1 файлов в этой галерее.',
 	'minipreview-no_more_files_here'  => 'в этом направлении больше нет файлов.',
+	'minipreview-no_category_gallery' => 'Нет категорий или галерей!',
 	'minipreview-ignore_categories'   => 'Ниже представлен список названий категорий или первых частей их названий. Эти категории
 не будут отображаться с помощью MiniPreview. Например, «* PD-» означает, что не будут
 отображаться все категории, начинающиеся на «PD-», например «PD-old».
@@ -270,7 +272,6 @@ $messages['ru'] = array(
 * CC-
 * PD-
 * Self',
-	'minipreview-no_category_gallery' => 'Нет категорий или галерей!',
 );
 
 /** Slovak (Slovenčina)

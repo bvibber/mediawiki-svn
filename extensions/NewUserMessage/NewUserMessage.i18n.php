@@ -141,6 +141,13 @@ $messages['pt'] = array(
 	'newusermessage-desc' => 'Adiciona uma [[MediaWiki:NewUserMessage|mensagem]] às páginas de discussão de novos utilizadores',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'newusermessage-desc' => 'Добавляет [[MediaWiki:NewUserMessage|сообщение]] на страницу обсуждения недавно зарегистрированного участника',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

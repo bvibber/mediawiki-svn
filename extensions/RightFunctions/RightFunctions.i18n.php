@@ -61,11 +61,13 @@ $messages['nl'] = array(
 	'rightfunctions-restcasc' => '$1 (van bovengelegen bronnen)',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'rightfunctions' => 'Rettighetsbaserte parserfunksjoner',
+	'rightfunctions'          => 'Rettighetsbaserte parserfunksjoner',
+	'rightfunctions-restboth' => '$1 (fra lokal side), $2 (fra arvende kilder)',
+	'rightfunctions-restcasc' => '$1 (fra arvende kilder)',
 );
 
 /** Occitan (Occitan)

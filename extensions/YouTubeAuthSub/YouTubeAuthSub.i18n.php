@@ -190,6 +190,13 @@ Por favor, sexa paciente.',
 	'youtubeauthsub_jserror_nodesc'      => 'Por favor, insira unha descrición para o vídeo.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'youtubeauthsub_title' => 'Cím',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -253,6 +260,7 @@ Hutt w.e.g. e bësse Gedold!',
  */
 $messages['ml'] = array(
 	'youtubeauthsub_category' => 'വിഭാഗം',
+	'youtubeauthsub_submit'   => 'സമര്‍പ്പിക്കുക',
 );
 
 /** Dutch (Nederlands)

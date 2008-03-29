@@ -125,6 +125,7 @@ $messages['hu'] = array(
  */
 $messages['lb'] = array(
 	'categoryintersection'         => 'Iwwerschneide vu Kategorien',
+	'categoryintersection-desc'    => "Säit mat enger Tabell mat den ''Hashwerter'' vun de [[Special:CategoryIntersection|Kategorieniwwerschneidungen]]",
 	'categoryintersection-doit'    => 'Lëscht vun de Säiten aus all dëse Kategorien',
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
 );
@@ -247,6 +248,17 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'categoryintersection-doit' => 'แสดงรายชื่อหน้าต่าง ๆ ในหมวดหมู่เหล่านี้',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'categoryintersection'               => 'Перетин категорій',
+	'categoryintersection-desc'          => 'Підтримує таблицю з хеш-значеннями для [[Special:CategoryIntersection|перетину категорій]] на сторінці',
+	'categoryintersection-doit'          => 'Вивести сторінки в усіх цих категоріях',
+	'categoryintersection-maxcategories' => 'Максимально допустима кількість категорій, що перетинаються, — $1.',
+	'categoryintersection-results'       => 'Пошук дав {{PLURAL:$1|$1 результат|$1 результати|$1 результатів}}.',
 );
 
 /** Vietnamese (Tiếng Việt)

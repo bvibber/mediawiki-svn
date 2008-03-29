@@ -86,19 +86,25 @@ $messages['eo'] = array(
 	'lookupuser_realname' => 'Reala nomo: $1',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'lookupuser'                   => 'Parcourir les informations de l\'usager',
+	'lookupuser'                   => "Parcourir les informations de l'usager",
 	'lookupuser-desc'              => 'Extrait les informations concernant un utilisateur telles qu’une adresse électronique et le numéro ID',
-	'lookupuser_intro'             => 'Saisir un nom d\'utilisateur pour voir ses préférences',
-	'lookupuser_nonexistent'       => 'Erreur : l\'utilisateur n\'existe pas',
-	'lookupuser_authenticated'     => 'Courriel d\'identification : $1',
+	'lookupuser_intro'             => "Saisir un nom d'utilisateur pour voir ses préférences",
+	'lookupuser_nonexistent'       => "Erreur : l'utilisateur n'existe pas",
+	'lookupuser_authenticated'     => "Courriel d'identification : $1",
 	'lookupuser_not_authenticated' => 'pas identifié',
-	'lookupuser_id'                => 'ID de l\'utilisateur : <tt>#$1</tt>',
+	'lookupuser_id'                => "ID de l'utilisateur : <tt>#$1</tt>",
 	'lookupuser_email'             => 'Courriel : [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'non fourni',
 	'lookupuser_realname'          => 'Nom réel : $1',
-	'lookupuser_registration'      => 'Date d\'enregistrement : $1',
-	'lookupuser_touched'           => 'Enregistrement de l\'utilisateur touché pour la dernière fois : $1',
-	'lookupuser_useroptions'       => 'Options de l\'utilisateur :',
+	'lookupuser_registration'      => "Date d'enregistrement : $1",
+	'lookupuser_no_registration'   => 'non enregistré',
+	'lookupuser_touched'           => "Enregistrement de l'utilisateur touché pour la dernière fois : $1",
+	'lookupuser_useroptions'       => "Options de l'utilisateur :",
 );
 
 $messages['gl'] = array(
@@ -214,8 +220,10 @@ $messages['mr'] = array(
 	'lookupuser_not_authenticated' => 'तपासणी पूर्ण झालेली नाही',
 	'lookupuser_id'                => 'सदस्य क्रमांक: <tt>#$1</tt>',
 	'lookupuser_email'             => 'विपत्र: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'दिलेले नाही',
 	'lookupuser_realname'          => 'खरे नाव: $1',
 	'lookupuser_registration'      => 'नोंदणी दिनांक: $1',
+	'lookupuser_no_registration'   => 'नोंदलेले नाही',
 	'lookupuser_touched'           => 'बघितलेली शेवटची सदस्य नोंद: $1',
 	'lookupuser_useroptions'       => 'सदस्य विकल्प:',
 );
@@ -320,8 +328,10 @@ $messages['ru'] = array(
 	'lookupuser_not_authenticated' => 'не аутентифицирован',
 	'lookupuser_id'                => 'ID участника: <tt>#$1</tt>',
 	'lookupuser_email'             => 'Эл. почта: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'не указан',
 	'lookupuser_realname'          => 'Настоящее имя: $1',
 	'lookupuser_registration'      => 'Дата регистрации: $1',
+	'lookupuser_no_registration'   => 'не записана',
 	'lookupuser_touched'           => 'Последнее обновление записи участника: $1',
 	'lookupuser_useroptions'       => 'Настройки участника:',
 );

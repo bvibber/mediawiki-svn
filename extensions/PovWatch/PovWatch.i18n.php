@@ -234,6 +234,13 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_added'                   => 'přidaty',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'povwatch_title' => 'Cím:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -370,12 +377,35 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'povwatch_invalid_title'   => 'Den gitte tittelen var ugyldig',
-	'povwatch_unknown_subpage' => 'Ukjent underside.',
-	'povwatch_title'           => 'Tittel:',
-	'povwatch_comment'         => 'Kommentar:',
-	'povwatch_no_log'          => 'Det er ingen elementer i loggen.',
-	'povwatch_added'           => 'lagt til',
+	'povwatch'                         => 'PovWatch',
+	'povwatch_desc'                    => 'Utvidelse for å [[Special:PovWatch|plassere sider på andre brukeres overvåkningsliste]]',
+	'povwatch_no_session'              => 'Feil: Kunne ikke levere skjema på grunn av øktdatatap.',
+	'povwatch_not_allowed_push'        => 'Du er ikke en PovWatch-administrator, du kan ikke plassere sider på overvåkningslister.',
+	'povwatch_already_subscribed'      => 'Du abonnerer allerede på PovWatch',
+	'povwatch_subscribed'              => 'Du abonnerer nå på PovWatch',
+	'povwatch_not_subscribed'          => 'Du abonnerer ikke på PovWatch, så du kan ikke avslutte noe abonnement.',
+	'povwatch_unsubscribed'            => 'Du har nå avsluttet abonnementet på PovWatch',
+	'povwatch_invalid_title'           => 'Den gitte tittelen var ugyldig',
+	'povwatch_pushed'                  => '[[$1]] har blitt plassert på $2 {{PLURAL:$2|overvåkningsliste|overvåkningslister}}.',
+	'povwatch_intro'                   => 'PovWatch er en tjeneste som lar kontroversielle sider bli plassert på abonnerende administratorers overvåkningslister.
+
+En log over nylige plasseringer er tilgjengelig på [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list'         => 'En [[Special:PovWatch/subscribers|liste over abonnenter]] er tilgjengelig.',
+	'povwatch_subscriber_list_intro'   => '<strong>Abonnentliste</strong>',
+	'povwatch_not_allowed_subscribers' => 'Du kan ikke se listen over PovWatch-abonnenter.',
+	'povwatch_unknown_subpage'         => 'Ukjent underside.',
+	'povwatch_push'                    => 'Plasser',
+	'povwatch_push_intro'              => 'Bruk skjemaet nedenfor for å plassere sider på abonnenters overvåkningslister.
+Vær forsiktig når du skriver inn tittelen; også ikke-eksisterende sider kan legges til, og det er ingen måte å fjerne en tittel på med en gang den er plassert.',
+	'povwatch_title'                   => 'Tittel:',
+	'povwatch_comment'                 => 'Kommentar:',
+	'povwatch_no_log'                  => 'Det er ingen elementer i loggen.',
+	'povwatch_no_subscribers'          => 'Det er ingen abonnenter.',
+	'povwatch_unsubscribe_intro'       => 'Du abonnerer på PovWatch. Klikk på knappen nedenfor for å avslutte abonnementet.',
+	'povwatch_unsubscribe'             => 'Avslutt abonnement',
+	'povwatch_subscribe_intro'         => 'Du abonnerer ikke på PovWatch. Klikk på knappen nedenfor for å abonnere.',
+	'povwatch_subscribe'               => 'Abonner',
+	'povwatch_added'                   => 'lagt til',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -443,8 +473,9 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'povwatch'                         => 'НтзНадзор',
+	'povwatch_desc'                    => 'Расширение, позволяющее [[Special:PovWatch|помещать страницы в списки наблюдения]] других участников',
 	'povwatch_no_session'              => 'Ошибка. Невозможно отправить форму из-за потери данных сессии.',
-	'povwatch_not_allowed_push'        => 'Вы не являетесь администратором НтзНадзора, вы не можете моиещать страницы в списки наблюдения.',
+	'povwatch_not_allowed_push'        => 'Вы не являетесь администратором НтзНадзора, вы не можете помещать страницы в списки наблюдения.',
 	'povwatch_already_subscribed'      => 'Вы уже подписаны на НтзНадзор',
 	'povwatch_subscribed'              => 'Теперь вы подписаны на НтзНадзор',
 	'povwatch_not_subscribed'          => 'Вы не подписаны на НтзНадзор, поэтому вы не можете отписаться.',

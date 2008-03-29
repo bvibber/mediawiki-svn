@@ -348,7 +348,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'crossnamespacelinks'         => 'Säite ma Linken an aner Nimmräim',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lëscht vun de Linken op Säiten vun andere Nimmraim]], déi et op {{SITENAME}} net sollt ginn',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lëscht vun de Linken op Säite vun anere Nimmraim]], déi et op {{SITENAME}} net sollt ginn',
 	'crossnamespacelinks-summary' => "Dës Säit weist eng Lëscht vun de Linke vun enger Säit aus dem Haaptnummraum op Säiten an anere Nimmräim (ausser fir d'Nimmräim {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}), déi net solle benotzt ginn.",
 	'crossnamespacelinkstext'     => '$1 : huet $2 {{PLURAL:$2|Link|Linken}} an den Nummraum « $3 »',
 );

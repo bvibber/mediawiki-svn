@@ -70,6 +70,13 @@ $messages['oc'] = array(
 	'preloader-desc' => 'Provesís, per las paginas novèlas, de fenèstras de tèxt personalizablas per nom d’espaci',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'preloader-desc' => 'Предоставляет настраиваемые по пространствам имён типовые тексты для новых страниц',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

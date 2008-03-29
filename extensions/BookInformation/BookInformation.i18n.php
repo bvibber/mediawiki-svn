@@ -1069,7 +1069,18 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'bookinfo-header' => 'Інформація про книгу',
+	'bookinfo-header'            => 'Інформація про книгу',
+	'bookinfo-desc'              => 'Розширює [[Special:Booksources]] відомостями з веб-служб',
+	'bookinfo-result-title'      => 'Назва:',
+	'bookinfo-result-author'     => 'Автор:',
+	'bookinfo-result-publisher'  => 'Видавництво:',
+	'bookinfo-result-year'       => 'Рік:',
+	'bookinfo-error-invalidisbn' => 'Уведено помилковий ISBN.',
+	'bookinfo-error-nosuchitem'  => 'Дані відсутні або їх неможливо знайти.',
+	'bookinfo-error-nodriver'    => 'Помилка ініціалізації відповідного драйвера інформації про книги.',
+	'bookinfo-error-noresponse'  => 'Нема відповіді або перевищений час очікування відповіді.',
+	'bookinfo-purchase'          => 'Купити цю книгу на $1',
+	'bookinfo-provider'          => 'Постачальник інформації: $1',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -493,6 +493,13 @@ $messages['pt'] = array(
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'vote-results-count' => 'Количество',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

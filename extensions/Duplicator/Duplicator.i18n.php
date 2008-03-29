@@ -450,6 +450,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'duplicator'                       => 'En Doublon vun enger Säit maachen',
+	'duplicator-desc'                  => 'Onofhängeg Kopie vu Säite maachen, mat dem kompletten Historique vun den Ännerungen',
 	'duplicator-toolbox'               => 'Een Doublon vun dëser Säit maachen',
 	'duplicator-options'               => 'Méiglechkeeten',
 	'duplicator-source'                => 'Quell:',

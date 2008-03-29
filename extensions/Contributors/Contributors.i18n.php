@@ -443,6 +443,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'contributors'             => 'Auteuren',
+	'contributors-desc'        => "Faast d'Haaptkontributeure vun enger Säit zesummen",
 	'contributors-toolbox'     => 'Haaptauteuren',
 	'contributors-legend'      => "Weist d'Haaptauteure vun enger Säit",
 	'contributors-target'      => 'Titel:',

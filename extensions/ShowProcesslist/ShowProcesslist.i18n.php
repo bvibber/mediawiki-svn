@@ -280,9 +280,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'showprocesslist'         => 'Visa lista över processer',
+	'showprocesslist-desc'    => 'Visa resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Användare',
 	'showprocesslist-host'    => 'Värd',

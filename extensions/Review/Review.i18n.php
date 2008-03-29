@@ -618,6 +618,51 @@ $messages['pt'] = array(
 	'review_comment'                => 'Comentário',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'review_sidebar_title'                                   => 'Оценка',
+	'review-desc'                                            => 'Возрождённая функция [[Special:Review|оценки]]',
+	'review_topics'                                          => '# Ниже представлен список тем и диапазонов для расширения оценки.
+# Каждая тема определяется в строке из пяти значений, разделённых «:» (все другие строки игнорируются).
+# Порядок следующий: числовой ключ (>0), имя, максимальное значение (>1; 2=yes/no), описание низшего значения (например, «плохая»), описание высшего значения (например, «хорошая»).
+1:Quality:5:bad:good
+2:Ready for 1.0:2:no:yes',
+	'review_topic_page'                                      => 'Оценка по критериям',
+	'review_sidebar_explanation'                             => 'Левое значение всегда означает «нет мнения».',
+	'review_save'                                            => 'Сохранить оценку',
+	'review_your_review'                                     => 'Ваша оценка этой страницы или версии:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Вы уже оценивали другие версии этой страницы. Ваши другие оценки будут объединены с текущими там, где вы указали «нет мнения».',
+	'review_page_link'                                       => 'статистике оценок',
+	'review_sidebar_final'                                   => 'Результаты см. в $1',
+	'review_for_page'                                        => 'Оценка страницы «$1»',
+	'review_for_user'                                        => 'Оценки участника «$1»',
+	'review_error'                                           => 'Что-то неправильно!',
+	'review_no_reviews_for_page'                             => 'Сейчас нет оценок для «$1».',
+	'review_total_statistics'                                => 'Всего',
+	'review_statistics_left_corner'                          => 'Версия',
+	'review_version_link'                                    => 'Версия #$1',
+	'review_statistic_cell'                                  => 'Среднее: $1 из $2<br />($4 участ., $5 анонимов)',
+	'review_version_statistic_cell'                          => '$1 из $2',
+	'review_version_reviews_link'                            => '<small>(оценки версий)</small>',
+	'review_concerns_page'                                   => 'Это оценка страницы «$1».',
+	'review_concerns_user'                                   => 'Это об оценках участника «$1».',
+	'review_user_reviews'                                    => '<small>(оценки этого участника)</small>',
+	'review_user_page_list'                                  => 'Участник оценил следующие страницы:',
+	'review_user_details_link'                               => '(подробности)',
+	'review_do_merge'                                        => 'Перенести мои оценки других версий этой страницы на эту версию',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Ваша оценка сохранена!</span>",
+	'revision_review_this_page_version_link'                 => 'Оценить эту версию страницы.',
+	'review_page_review'                                     => 'Оценка страницы «$1»',
+	'review_blocked'                                         => 'Вы заблокированы, уходите.',
+	'review_wrong_namespace'                                 => 'Страницы в этом пространстве имён не могут быть оценены!',
+	'review_topic'                                           => 'Категория',
+	'review_no_opinion'                                      => 'Нет мнения',
+	'review_rating'                                          => 'Оценка',
+	'review_comment'                                         => 'Примечание',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

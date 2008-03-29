@@ -2659,6 +2659,13 @@ $wdMessages['sv'] = array(
 	'ow_copy_help'                    => 'Vi kanske kommer att hjälpa dig någon dag.',
 );
 
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ */
+$wdMessages['szl'] = array(
+	'ow_history' => 'Historjo',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */

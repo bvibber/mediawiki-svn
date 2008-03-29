@@ -471,6 +471,13 @@ $messages['lt'] = array(
 	'imagemap_description'        => 'Apie šį paveikslėlį',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'imagemap_description' => 'ഈ ചിത്രത്തെ കുറിച്ച്',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

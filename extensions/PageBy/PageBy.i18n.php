@@ -252,6 +252,7 @@ $messages['pt'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
+	'pageby-desc'         => 'Показывает авторов на вики-странице, если на ней указан тег <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Страница создана участником $1, $2',
 	'pageby-last'         => 'Последнее <a href="$3">изменение</a> сделанно участником $1, $2',
 	'pageby-contributors' => 'Внесли вклад:',

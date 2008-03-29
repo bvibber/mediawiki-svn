@@ -230,6 +230,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'call'              => 'Opruff',
+	'call-desc'         => 'Mecht een Hyperlink op eng Schabloun (oder eng normal wiki-Säit) mat der Benotzung vu Parameteren. Kann an der Kommandozeil vum Browser oder am Wiki-Text benotzt ginn.',
 	'call-save'         => "D'Resultat vun dësem Opruff géif op der Säit '''$1''' gespäichert ginn.",
 	'call-save-success' => 'Dësen Text gouf op der Säit <big>[[$1]]</big> gespäichert.',
 	'call-save-failed'  => 'Dësen Text konnt NET op der Säit <big>[[$1]]</big> ofgespäichert ginn, well et dës Säit scho gëtt.',
@@ -378,6 +379,7 @@ Em caso de problemas, poderá experimentar <b>Special:Call/DebuG</b>",
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'call'              => 'Вызов',
@@ -385,10 +387,10 @@ $messages['ru'] = array(
 	'call-text'         => "Расширение «Вызов» (Call) принимает в качестве входных данных название страницы и значения параметров.<br /><br />
 Пример 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
 Пример 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
-Пример 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
-Пример 4 (URL для браузера): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
+Пример 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Пример 4 (URL для браузера): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
 
-Данное расширение вызовет указанную страницу и передаёт ей параметры.<br />Вы увидите сожержимое страницы, её заголовок, но её тип будет типом служебной страницы,<br />т. е .содержимое нельзя будет редактировать.<br />Отображаемое содержимое страницы может изменяться, в зависимости от переданных параметров.<br /><br />Расширение «Вызов» полезно для построения интерактивных приложений с помощью MediaWiki.<br />См. например <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>.<br />
+Данное расширение вызовет указанную страницу и передаст ей параметры.<br />Вы увидите сожержимое страницы, её заголовок, но её тип будет типом служебной страницы,<br />т. е. содержимое нельзя будет редактировать.<br />Отображаемое содержимое страницы может изменяться, в зависимости от переданных параметров.<br /><br />Расширение «Вызов» полезно для построения интерактивных приложений с помощью MediaWiki.<br />См. например <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>.<br />
 В случае возникновения проблем, вы можете использовать <b>Special:Call/DebuG</b>",
 	'call-save'         => "Вывод этого вызова будет сохранён на страницу ''$1''.",
 	'call-save-success' => 'Следующий текст был сохранён на страницу <big>[[$1]]</big>.',
@@ -467,7 +469,22 @@ $messages['te'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'call' => 'Виклик',
+	'call'              => 'Виклик',
+	'call-desc'         => 'Створює посилання на шаблон (або звичайну вікі-сторінку) з передачею параметрів. Може використовуватися в адресному рядку браузера або у вікі-тексті.',
+	'call-text'         => "Розширення Call приймає в якості вхідних даних назву сторінки і значення параметрів.<br />
+
+Приклад 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Приклад 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Приклад 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Приклад 4 (URL для браузера): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+Це розширення викличе зазначену сторінку і передасть їй параметри. Ви побачите вміст сторінки, її заголовок, але її тип буде типом спеціальної сторінки, тобто вміст не можна буде редагувати.<br />Вімст сторінки, який відображається, може змінюватися, в залежності від переданих параметрів.<br />
+
+Розширення Call корисне для побудови інтерактивних застосувань за допомогою MediaWiki.<br />Див. наприклад <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>.<br />
+У випадку виникнення проблем ви можете використовувати <b>Special:Call/DebuG</b>",
+	'call-save'         => "Вивід цього виклику буде збережений на сторінку ''$1''.",
+	'call-save-success' => 'Наступний текст був збережений на сторінку <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Наступний текст НЕ був збережений на сторінку <big>[[$1]]</big>, оскільки ця сторінка вже існує.',
 );
 
 /** Volapük (Volapük)

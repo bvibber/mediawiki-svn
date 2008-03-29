@@ -116,7 +116,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+	'contributionseditcount'      => 'Dëse Benotzer huet $1 Kontributiounen.',
+	'contributionseditcount-desc' => 'Weist e Compteur vun den Ännerungen op [[Special:Contributions]]',
 );
 
 /** Lao (ລາວ)

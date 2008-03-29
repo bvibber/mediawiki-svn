@@ -744,6 +744,81 @@ $messages['pt'] = array(
 	'openidchoosepassword'          => 'palavra-chave:',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'openid-desc'                   => 'Вход в вики с помощью [http://openid.net/ OpenID], а также вход на другие сайты поддерживающие OpenID с помощью учётной записи в вики',
+	'openidlogin'                   => 'Вход с помощью OpenID',
+	'openidfinish'                  => 'Завершить вход OpenID',
+	'openidserver'                  => 'Сервер OpenID',
+	'openidxrds'                    => 'Файл Yadis',
+	'openidconvert'                 => 'Преобразователь OpenID',
+	'openiderror'                   => 'Ошибка проверки полномочий',
+	'openiderrortext'               => 'Во время проверки адреса OpenID произошла ошибка.',
+	'openidconfigerror'             => 'Ошибка настройки OpenID',
+	'openidconfigerrortext'         => 'Настройка хранения OpenID для этой вики ошибочна.
+Пожалуйста, обратитесь к администратору сайта.',
+	'openidpermission'              => 'Ошибка прав доступа OpenID',
+	'openidpermissiontext'          => 'Указанный OpenID не позволяет войти на этот сервер.',
+	'openidcancel'                  => 'Проверка отменена',
+	'openidcanceltext'              => 'Проверка адреса OpenID была отменена.',
+	'openidfailure'                 => 'Проверка неудачна',
+	'openidfailuretext'             => 'Проверка адреса OpenID завершилась неудачей. Сообщение об ошибке: «$1»',
+	'openidsuccess'                 => 'Проверка прошла успешно',
+	'openidsuccesstext'             => 'Проверка адреса OpenID прошла успешно.',
+	'openidusernameprefix'          => 'УчастникOpenID',
+	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как пользователь $2 (личная страница $1).',
+	'openidtrustinstructions'       => 'Отметьте, если вы хотите предоставить доступ к данным для $1.',
+	'openidallowtrust'              => 'Разрешить $1 доверять этой учётной записи.',
+	'openidnopolicy'                => 'Сайт не указал политику конфиденциальности.',
+	'openidpolicy'                  => 'Дополнительную информацию см. в <a target="_new" href="$1">политике конфиденциальности</a>.',
+	'openidoptional'                => 'необязательное',
+	'openidrequired'                => 'обязательное',
+	'openidnickname'                => 'Псевдоним',
+	'openidfullname'                => 'Полное имя',
+	'openidemail'                   => 'Адрес эл. почты',
+	'openidlanguage'                => 'Язык',
+	'openidnotavailable'            => 'Указанный вами псевдоним ($1) уже используется другим участником.',
+	'openidnotprovided'             => 'Ваш сервер OpenID не предоставил псевдоним (либо потому, что он не может, либо потому, что вы указали не делать этого)',
+	'openidchooseinstructions'      => 'Каждый участник должен иметь псевдоним;
+вы можете выбрать один представленных ниже.',
+	'openidchoosefull'              => 'Ваше полное имя ($1)',
+	'openidchooseurl'               => 'Имя, полученное из вашего OpenID ($1)',
+	'openidchooseauto'              => 'Автоматически созданное имя ($1)',
+	'openidchoosemanual'            => 'Имя на ваш выбор:',
+	'openidchooseexisting'          => 'Существующая учётная запись на этой вики:',
+	'openidchoosepassword'          => 'пароль:',
+	'openidconvertinstructions'     => 'Эта форма позволяет вам сменить использование учётной записи на использование адреса OpenID.',
+	'openidconvertsuccess'          => 'Успешное преобразование в OpenID',
+	'openidconvertsuccesstext'      => 'Вы успешно преобразовали ваш OpenID в $1.',
+	'openidconvertyourstext'        => 'Это уже ваш OpenID.',
+	'openidconvertothertext'        => 'Это чужой OpenID.',
+	'openidalreadyloggedin'         => "'''Вы уже вошли, $1!'''
+
+Если вы желаете использовать в будущем вход через OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись для использования в OpenID]].",
+	'tog-hideopenid'                => 'Скрывать ваш <a href="http://openid.net/">OpenID</a> на вашей странице участника, если вы вошли с помощью OpenID.',
+	'openidnousername'              => 'Не указано имя участника.',
+	'openidbadusername'             => 'Указано неверное имя участника.',
+	'openidautosubmit'              => 'Эта страница содержит форму, которая должна быть автоматически отправлена, если у вас включён JavaScript.
+Если этого не произошло, попробуйте нажать на кнопку «Продолжить».',
+	'openidclientonlytext'          => 'Вы не можете использовать учётные записи с этой вики, как OpenID на другом сайте.',
+	'openidloginlabel'              => 'Адрес OpenID',
+	'openidlogininstructions'       => "{{SITENAME}} поддерживает стандарт [http://openid.net/ OpenID], позволяющий использовать одну учётную запись для входа на различные веб-сайты.
+OpenID позволяет вам заходить на различные веб-сайты без указания разных паролей для них
+(подробнее см. [http://ru.wikipedia.org/wiki/OpenID статью об OpenID в Википедии]).
+
+Если вы уже имеете учётную запись на {{SITENAME}}, вы можете [[Special:Userlogin|войти]] как обычно, используя  ваши имя пользователя и пароль.
+Чтобы использовать в дальнейшем OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись в  OpenID]], после того, как вы вошли обычным образом.
+
+Существует множество [http://wiki.openid.net/Public_OpenID_providers общедоступных провайдеров OpenID], возможно, вы уже имеете учётную запись OpenID на другом сайте.
+
+; Другие вики : Если вы имеете учётную запись с OpenID на другой вики, например, [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] или [http://kei.ki/ Keiki], вы можете войти на {{SITENAME}}, введя ниже '''полный адрес''' вашей страницы участника на другой вики. Например, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Если вы зарегистрированы на Yahoo!, вы можете войти, введя ниже ваш OpenID с Yahoo!. Адреса OpenID Yahoo! имеют вид ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Если вы зарегистрированы на [http://www.aol.com/ AOL], например, имеете учётную запись в [http://www.aim.com/ AIM], вы можете зайти на {{SITENAME}}, введя ниже ваш OpenID с AOL. Адреса AOL OpenID имеют вид ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Ваше имя должно быть в нижнем регистре, без пробелов.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Если вы ведёте блог с помощью одной из этих служб, введите ниже адрес вашего блога. Например, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', или ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

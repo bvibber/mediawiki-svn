@@ -245,6 +245,15 @@ $messages['kk-latn'] = array(
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'assert_edit_title'   => 'Feeler beim derbäisetzen',
+	'assert_edit_desc'    => "Setzt Ännerungen derbäi fir d'Benotzung vu Botten",
+	'assert_edit_message' => 'Déi uginn Derbäisetzung ($1) huet net fonctionnéiert.',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */

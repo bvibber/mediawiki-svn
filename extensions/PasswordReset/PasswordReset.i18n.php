@@ -421,6 +421,7 @@ $messages['rm'] = array(
  */
 $messages['ru'] = array(
 	'passwordreset'                    => 'Сброс пароля',
+	'passwordreset-desc'               => "Сбрасывает пароли участников вики, если есть права 'passwordreset'",
 	'passwordreset-invalidusername'    => 'Недопустимое имя участника',
 	'passwordreset-emptyusername'      => 'Пустое имя участника',
 	'passwordreset-nopassmatch'        => 'Пароли не совпадают',
@@ -434,6 +435,8 @@ $messages['ru'] = array(
 	'passwordreset-disableuserexplain' => '(установлен неверный хеш пароля — участник не может зайти)',
 	'passwordreset-disablesuccess'     => 'Учётная запись отключена (user_id: $1)',
 	'passwordreset-accountdisabled'    => 'Учётная запись отключена',
+	'disabledusers'                    => 'Выключенные участники',
+	'disabledusers-summary'            => 'Это список участников, которые были «выключены» с помощью PasswordReset.',
 );
 
 /** Slovak (Slovenčina)

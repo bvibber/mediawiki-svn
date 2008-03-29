@@ -1842,6 +1842,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Siebrand
  */
 $messages['ru'] = array(
 	'metavid'                        => 'Страница Metavid',
@@ -1898,6 +1899,7 @@ $messages['ru'] = array(
 	'mv_stream_delete_warning'       => 'Удаление этого потока приведёт к удалению $1 страниц метаданных',
 	'mv_tool_search'                 => 'Поиск',
 	'mv_tool_search_title'           => 'Поиск в этом потоке',
+	'mv_search_transcripts_for'      => 'Поиск стенограммы для',
 	'mv_tool_navigate'               => 'Навигация',
 	'mv_tool_navigate_title'         => 'Навигация по полному потоку',
 	'mv_tool_export'                 => 'Экспорт',
@@ -1907,10 +1909,18 @@ $messages['ru'] = array(
 	'mv_tool_overlay'                => 'Шаблонные наложения',
 	'mv_tool_overlay_title'          => 'Наложения метаданных на основе шаблонов',
 	'mv_results_found_for'           => 'Результаты поиска с <b>$1</b> по <b>$2</b> из <b>$3</b> для:',
+	'mv_tool_mang_layers'            => 'Управление слоями',
+	'mv_update_layers'               => 'обновить вид слоёв',
 	'ht_en'                          => 'Стенограмма',
 	'ht_en_desc'                     => 'Английская расшифровка стенограммы. Этот тип наложения предназначен для текста, который говорится в видео-потоке. Могут быть добавлены ссылки, но весь текст должен соответствовать тому, что говорят в видео-потоке.',
 	'anno_en'                        => 'Аннотации и категории',
 	'anno_en_desc'                   => 'Английские категоризации и аннотации. Это наложение может использоваться чтобы категоризовать части видео, или добавлять аннотации, не являющиеся проговоренным текстом.',
+	'thomas_en'                      => 'Официальная стенограмма',
+	'thomas_en_desc'                 => 'Официальная стенограмма Thomas из государственной службы записей THOMAS.
+Время синхронизировано с помощью C-SPAN c-spanarchives.org',
+	'mvd_default_mismatch'           => 'Ошибка в файле настроек',
+	'mvd_default_mismatch_text'      => 'В вашем файле настроек обнаружена ошибка.
+$mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTypeAllAvailable',
 	'mv_data_page_title'             => '$1 для $2 из $3',
 	'mv_time_separator'              => '$1 по $2',
 	'mv_list_streams'                => 'Metavid список потоков',
@@ -1941,6 +1951,7 @@ $messages['ru'] = array(
 	'mv_adjust_ok_move'              => 'Успешно, настройка...',
 	'mv_start_desc'                  => 'Время начала',
 	'mv_end_desc'                    => 'Время окончания',
+	'mv_of'                          => '&#32;из&#32;',
 	'mediasearch'                    => 'Поиск медиа',
 	'mv_search_sel_t'                => 'Выбор типа поиска',
 	'mv_run_search'                  => 'Запустить поиск',
@@ -1954,7 +1965,9 @@ $messages['ru'] = array(
 	'mv_search_or'                   => 'или',
 	'mv_search_not'                  => 'не',
 	'mv_search_stream_name'          => 'Имя потока',
+	'mv_search_date_range'           => 'Диапазон дат',
 	'mv_stream_name'                 => 'имя потока',
+	'mv_date_range'                  => 'диапазон дат',
 	'mv_match'                       => 'соответствие',
 	'mv_spoken_by'                   => 'говорит',
 	'mv_category'                    => 'категория',
@@ -1967,6 +1980,7 @@ $messages['ru'] = array(
 	'mv_view_wiki_page'              => 'Просмотреть вики-страницу',
 	'mv_error_mvd_not_found'         => 'Ошибка. Mvd не найден',
 	'mv_match_text'                  => '~  $1 соответствий',
+	'mv_match_text_one'              => '~ 1 соответствие',
 	'mv_edit_sequence'               => 'Правка последовательности:$1',
 	'mv_sequence_player_title'       => 'проигрыватель последовательности',
 	'mv_save_sequence'               => 'Сохранить последовательность',
@@ -1993,6 +2007,9 @@ $messages['ru'] = array(
 	'mv_search_stream_title'         => 'Искать текущий поток',
 	'mv_new_ht_en'                   => 'Новая стенограмма',
 	'mv_new_anno_en'                 => 'Новая метка или аннотация',
+	'mv_mang_layers'                 => 'Управление слоями',
+	'mv_mang_layers_title'           => 'Управление набором отображаемых слоёв для текущего потока',
+	'mv_protect_source_material'     => 'Оригинальный исходный материал закрыт от правок',
 );
 
 /** Slovak (Slovenčina)
@@ -2262,6 +2279,13 @@ $messages['sv'] = array(
 	'mv_match_text'                 => '~ $1 matchningar',
 	'mv_match_text_one'             => '~ 1 matchning',
 	'mv_sequence_add_manual'        => 'Lägg till efter namn',
+);
+
+/** ślůnski (ślůnski)
+ * @author Pimke
+ */
+$messages['szl'] = array(
+	'mv_edit' => 'Sprowjéj',
 );
 
 /** Tamil (தமிழ்)

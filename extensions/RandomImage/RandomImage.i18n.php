@@ -74,6 +74,13 @@ $messages['oc'] = array(
 	'randomimage-desc' => "Provesís un mèdia a l'azard en utilizant <tt>&lt;randomimage /&gt;</tt>",
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'randomimage-desc' => 'Позволяет случайно выбирать медиа с помощью <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

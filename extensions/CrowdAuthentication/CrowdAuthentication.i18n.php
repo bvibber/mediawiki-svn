@@ -58,6 +58,13 @@ $messages['ja'] = array(
 	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'crowdauthentication-desc' => "Authentiséierungs-Erweiderung fir ''Atlassian Crowd''",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

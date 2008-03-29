@@ -191,6 +191,13 @@ $messages['hsb'] = array(
 	'dt_xml_freetext'             => 'Swobodny tekst',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'dt_xml_title' => 'Cím',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

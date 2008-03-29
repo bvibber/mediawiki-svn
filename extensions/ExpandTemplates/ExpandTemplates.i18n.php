@@ -608,11 +608,13 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'expandtemplates'                  => 'Schablounen expandéieren',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplates|Erweidert Schablounen, Parser-Funktiounen a Variabelen]] zu engem komplette Wikitext a weist d'Säiten esou wéi wann se ofgespäichert wieren.",
 	'expand_templates_title'           => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
 	'expand_templates_input'           => 'Gitt ären Text hei an:',
 	'expand_templates_output'          => 'Resultat',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Bemierkunge läschen',
+	'expand_templates_generate_xml'    => "Weis d'Struktur vum XML",
 	'expand_templates_preview'         => 'Kucken ouni ofzespäicheren',
 );
 
@@ -653,7 +655,8 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'expand_templates_ok' => 'ശരി',
+	'expand_templates_output' => 'ഫലം',
+	'expand_templates_ok'     => 'ശരി',
 );
 
 /** Marathi (मराठी)

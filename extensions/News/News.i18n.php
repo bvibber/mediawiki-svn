@@ -130,6 +130,13 @@ $messages['oc'] = array(
 	'newsextension-desc' => 'Visiona las modificacions recentas especificas sus una pagina wiki o coma un flus RSS o Atom.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'newsextension-desc' => 'Показывает настроенный список свежих правок на вики-страницах или ленте RSS или Atom',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

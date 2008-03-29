@@ -164,6 +164,13 @@ $messages['hsb'] = array(
 	'edituser-exempt'   => 'Podaty wužiwar njehodźi so wobdźěłać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'edituser-dosearch' => 'Keresés',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */

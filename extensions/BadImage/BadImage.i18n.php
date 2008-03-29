@@ -1323,6 +1323,13 @@ $messages['sv'] = array(
 	'badimages-page'           => '{{ns:help}}:Lista över dåliga bilder',
 );
 
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'badimages-reason' => 'Čymu:',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */

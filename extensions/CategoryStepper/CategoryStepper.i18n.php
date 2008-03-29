@@ -151,8 +151,9 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'categorystepper-start' => '(Ufank vun der Kategorie)',
+	'categorystepper-desc'  => "Weist eng Kategorie-Këscht déi et erlaabt fir alphabetesch no vir an no hannen duerch déi Kategorien ze bliederen, wou d'Säit dran ass.",
 	'categorystepper-end'   => '(Enn vun der Kategorie)',
+	'categorystepper-start' => '(Ufank vun der Kategorie)',
 );
 
 /** Lao (ລາວ)
@@ -285,6 +286,15 @@ $messages['te'] = array(
 $messages['th'] = array(
 	'categorystepper-end'   => '(จบหมวดหมู่)',
 	'categorystepper-start' => '(เริ่มหมวดหมู่)',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'categorystepper-desc'  => 'Показує навігаційну панель, яка дозволяє переходити вперед і назад за алфавітним списом вмісту категорії, до якої належить сторінка',
+	'categorystepper-end'   => '(кінець категорії)',
+	'categorystepper-start' => '(початок категорії)',
 );
 
 /** Volapük (Volapük)

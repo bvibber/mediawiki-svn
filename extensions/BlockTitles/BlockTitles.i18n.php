@@ -288,6 +288,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'block_title_error_page_title' => 'Gespaarte Säitenumm',
+	'block_title_error-desc'       => 'Eng einfach Method fir ze verhenneren, datt Säite matt verschidenen Titele gemaach kënne ginn',
 	'block_title_error'            => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 
@@ -447,6 +448,15 @@ $messages['te'] = array(
 $messages['tg'] = array(
 	'block_title_error_page_title' => 'Сарлавҳаҳои басташуда',
 	'block_title_error'            => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'block_title_error_page_title' => 'Заборонена назва',
+	'block_title_error-desc'       => 'Надає бузову можливість заборони зберігання або створення сторінок із зазначеними заголовками',
+	'block_title_error'            => 'Вибачте, сторінка з подібною назвою не може бути збережена.',
 );
 
 /** Vietnamese (Tiếng Việt)

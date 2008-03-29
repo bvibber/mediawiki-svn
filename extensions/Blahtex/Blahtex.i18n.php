@@ -951,6 +951,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'math-desc'                             => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
 	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
@@ -1422,7 +1423,7 @@ $messages['ru'] = array(
 	'math_MisplacedLimits'                  => 'Команда «$1» может использоваться только после оператора math (вероятно, следует использовать «\\mathop»)',
 	'math_MissingCommandAfterNewcommand'    => 'Отсутствует или неправильное название новой команды после "\\newcommand".
 Должна быть определена только одна команда;
-она должна начинаться с обратного слеша и содержать только буквы.',
+она должна начинаться со знака обратной косой черты и содержать только буквы.',
 	'math_MissingDelimiter'                 => 'Отсутствует разделитель после «$1»',
 	'math_MissingOpenBraceAfter'            => 'Отсутствует открывающая скобка «{» после «$1»',
 	'math_MissingOpenBraceAtEnd'            => 'Отсутствует открывающая скобка «{» в конце входных данных',
@@ -1723,6 +1724,21 @@ $messages['uk'] = array(
 	'math_ReservedCommand'                  => 'Команда «$1» зарезервована blahtex для внутрішнього використання',
 	'math_SubstackRowTooBig'                => 'У кожному рядку блоку «substack» може бути тільки один запис',
 	'math_TooManyMathmlNodes'               => 'Дуже багато вузлів у дереві MathML',
+	'math_TooManyTokens'                    => 'Дуже великі вхідні дані',
+	'math_UnavailableSymbolFontCombination' => 'У шрифті «$2» відсутній символ «$1»',
+	'math_UnexpectedNextCell'               => 'Команда «&» може використовуватися тільки всередині блоку «\\begin ... \\end»',
+	'math_UnexpectedNextRow'                => 'Команда «\\\\» може використовуватися тільки всередині блоку «\\begin ... \\end»',
+	'math_UnmatchedBegin'                   => 'Використання «\\begin» без відповідного «\\end»',
+	'math_UnmatchedCloseBrace'              => 'Використання закритої фігурної дужки «}» без відповідної відкритої «{»',
+	'math_UnmatchedEnd'                     => 'Використання «\\end» без відповідного «\\begin»',
+	'math_UnmatchedLeft'                    => 'Використання «\\left» без відповідного «\\right»',
+	'math_UnmatchedOpenBrace'               => 'Використання відкритої фігурної дужки «{» без відповідної закритої «}»',
+	'math_UnmatchedOpenBracket'             => 'Використання відкритої квадратної дужки «[» без без відповідної закритої «]»',
+	'math_UnmatchedRight'                   => 'Використання «\\right» без відповідного «\\left»',
+	'math_UnrecognisedCommand'              => 'Команда «$1» не розпізнана',
+	'math_WrongFontEncoding'                => 'Символ «$1» не може використовуватися в кодуванні шрифту «$2»',
+	'math_WrongFontEncodingWithHint'        => 'Символ «$1» не може використовуватися в кодуванні шрифту «$2».
+Спробуйте використати команду «$3{...}».',
 );
 
 /** Vietnamese (Tiếng Việt)

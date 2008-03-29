@@ -196,6 +196,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'minnamelength-error' => 'Ваше имя участника слишком коротко. Минимальная длина — $1.',
+	'minnamelength-desc'  => 'Устанавливает минимальную длину имени участника',
 );
 
 /** Slovak (Slovenčina)

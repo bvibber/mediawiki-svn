@@ -265,6 +265,22 @@ $messages['pt'] = array(
 	'profiling-data-average' => 'Tempo (média)',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'profiling'              => 'Данные профилирования',
+	'profiling-process'      => 'Строка процесса:',
+	'profiling-wildcard'     => 'Использование групповых символов',
+	'profiling-ok'           => 'OK',
+	'profiling-data'         => 'Данные профилирования для «$1»',
+	'profiling-data-process' => 'Процесс',
+	'profiling-data-count'   => 'Количество',
+	'profiling-data-time'    => 'Время (всё)',
+	'profiling-data-average' => 'Время (среднее)',
+	'profiling-no-data'      => 'Не найдено соответствующих данных.',
+);
+
 /* Slovak (helix84) */
 $messages['sk'] = array(
 	'profiling' => 'Profilovacie údaje',

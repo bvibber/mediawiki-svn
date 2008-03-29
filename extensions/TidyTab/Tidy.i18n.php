@@ -81,6 +81,14 @@ $messages['nl'] = array(
 	'untidy' => 'Opschonen ongedaan maken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'tidy'   => 'Systematiser kode',
+	'untidy' => 'Avsystematiser kode',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

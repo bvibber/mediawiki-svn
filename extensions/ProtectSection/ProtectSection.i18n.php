@@ -151,6 +151,15 @@ $messages['pt'] = array(
 	'protectsection_forbidden'  => 'Proibido',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'protectsection_add_remove' => 'Вы пытаетесь добавить или удалить защищённый раздел',
+	'protectsection_modify'     => 'Вы пытаетесь изменить защищённый текст',
+	'protectsection_forbidden'  => 'Запрещённый',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

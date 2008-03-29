@@ -380,6 +380,14 @@ $messages['lt'] = array(
 	'scanset_prev' => '&lt; Ankstesnis',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'scanset_next' => 'അടുത്തത് &gt;',
+	'scanset_prev' => '&lt; മുന്‍പുള്ളത്',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

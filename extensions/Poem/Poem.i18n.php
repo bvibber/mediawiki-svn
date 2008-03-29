@@ -116,6 +116,13 @@ $messages['jut'] = array(
 	'poem-desc' => 'Tilføje <tt>&lt;poem&gt;</tt> tag før digt formåter',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'poem-desc' => "Setzt de <tt>&lt;poem&gt;</tt>-Tag fir d'Formatéierung vu Gedichter derbäi",
+);
+
 /** Limburgish (Limburgs)
  * @author Matthias
  */
@@ -234,3 +241,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 標籤給予詩歌格式使用',
 );
+

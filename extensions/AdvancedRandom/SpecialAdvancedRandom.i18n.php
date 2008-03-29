@@ -280,7 +280,7 @@ $messages['te'] = array(
  */
 $messages['uk'] = array(
 	'advancedrandom'      => 'Просунута випадкова',
-	'advancedrandom-desc' => 'Видає випадкову сторінку, з підсторінки або сторінки повідомлення якої є посилання на зазначену сторінку. Може використовуватися за зразком [[Special:AdvancedRandom/Template:Featured/Talk]], щоб отримати випадкову вибрану статтю, або [[Special:AdvancedRandom/Template:GFDL/Image]], щоб отримати випадковий GFDL-файл.',
+	'advancedrandom-desc' => 'Видає випадкову сторінку, з підсторінки або сторінки обговорення якої є посилання на зазначену сторінку. Може використовуватися за зразком [[Special:AdvancedRandom/Template:Featured/Talk]], щоб отримати випадкову вибрану статтю, або [[Special:AdvancedRandom/Template:GFDL/Image]], щоб отримати випадковий GFDL-файл.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -460,11 +460,19 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'parserdifftest'      => 'Parser-Differenz-Test',
+	'pdtest-desc'         => "[[Special:ParserDiffTest|Spezialsäit]] fir d'Resultat vun zwee verschiddene Parseren ze vergläichen",
+	'pdtest_no_target'    => 'Keen Zil uginn.',
 	'pdtest_page_missing' => 'Déi gefrote Säit gouf net an der Datebank fonnt.',
 	'pdtest_no_changes'   => 'Keng Ännerung fonnt.',
 	'pdtest_time_report'  => '<b>$1</b> huet $2 Sekonne gedauert, <b>$3</b> huet $4 Sekonne gedauert.',
+	'pdtest_title'        => 'Titel vum Kontext:',
+	'pdtest_text'         => 'Gitt den Text an:',
 	'pdtest_ok'           => 'ok',
+	'pdtest_get_text'     => 'Den Text vun der Säit huelen',
 	'pdtest_diff'         => 'Ënnerscheed',
+	'pdtest_side_by_side' => 'Vergläiche vum Reslutat',
+	'pdt_comparing_page'  => 'Vergäich vun de Reslutater vum Parser fir [[$1]]',
 );
 
 /** Limburgish (Limburgs)
@@ -498,7 +506,8 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'pdtest_ok' => 'ശരി',
+	'pdtest_ok'   => 'ശരി',
+	'pdtest_diff' => 'വ്യത്യാസങ്ങള്‍',
 );
 
 /** Marathi (मराठी)
@@ -895,3 +904,4 @@ $messages['zh-hant'] = array(
 	'pdtest_side_by_side' => '輸出比較',
 	'pdt_comparing_page'  => '正在從[[$1]]比較處理器輸出',
 );
+

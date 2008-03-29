@@ -99,7 +99,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'mediafunctions-not-exist' => '"$1" gëtt et net',
+	'mediafunctions-invalid-title' => '"$1" ass kee gültege Numm',
+	'mediafunctions-not-exist'     => '"$1" gëtt et net',
 );
 
 /** Marathi (मराठी)

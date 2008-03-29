@@ -209,6 +209,13 @@ $allMessages['gl'] = array(
 	'whitelisttablemodifynone' => 'Ningún',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$allMessages['hu'] = array(
+	'whitelisttablemodifynone' => 'Nincs',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -498,6 +505,13 @@ $allMessages['ps'] = array(
 	'whitelistnever'           => 'هېڅکله',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$allMessages['ru'] = array(
+	'whitelistnewtableprocess' => 'Процесс',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -599,6 +613,15 @@ $2',
 Denna sida är endast tillämpbar på begränsade användare",
 	'whitelistnever'            => 'aldrig',
 	'whitelistnummatches'       => ' - $1 träffar',
+);
+
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ * @author Pimke
+ */
+$allMessages['szl'] = array(
+	'whitelisttableedit' => 'Sprowjéj',
+	'whitelistbadtitle'  => 'Zuy titel',
 );
 
 /** Telugu (తెలుగు)

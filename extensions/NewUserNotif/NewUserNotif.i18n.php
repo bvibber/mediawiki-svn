@@ -203,8 +203,9 @@ Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'newusernotifsubj' => 'Уведомление о новом участнике $1',
-	'newusernotifbody' => 'Привет, $1.
+	'newusernotifsubj'  => 'Уведомление о новом участнике $1',
+	'newusernotif-desc' => 'Отправляет уведомление по электронной почте, когда регистрируется новый участник',
+	'newusernotifbody'  => 'Привет, $1.
 
 В проекте $3 в $4 была создана новая учётная запись — $2.',
 );

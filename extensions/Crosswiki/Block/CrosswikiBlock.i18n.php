@@ -966,6 +966,14 @@ Gå tillbaka till:
 	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:Ipblocklist]] istället.',
 );
 
+/** ślůnski (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'crosswikiblock-reason'   => 'Čymu:',
+	'crosswikiunblock-reason' => 'Čymu:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

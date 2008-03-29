@@ -1057,14 +1057,23 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'hiderevision'                => 'Versioune definitiv verstoppen',
+	'hiderevision-desc'           => 'Eenzel Versioune fir all Benotzer aus legalen an aneren Uursaachen definitiv verstoppen',
+	'hiderevision-prompt'         => 'Versiounsnummer déi geläscht gi soll:',
 	'hiderevision-continue'       => 'Weider',
 	'hiderevision-tab'            => 'Verstopp Versiounen',
+	'hiderevision-norevisions'    => 'Keng Versioun uginn déi soll geläscht ginn.',
 	'hiderevision-noreason'       => 'Dir musst de Grond fir dës Läschung uginn.',
 	'hiderevision-status'         => 'Versioun $1: $2',
 	'hiderevision-error-missing'  => 'Net an der Datebank fonnt.',
+	'hiderevision-error-current'  => "Déi läscht Ännerung vun enger Säit kann net geläscht ginn.
+Annulléiert dës Ännerung d'éischt.",
+	'hiderevision-error-delete'   => "Kann net archivéiert ginn. Gouf d'Säit virdru geläscht?",
 	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
 	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
+	'oversight'                   => 'Iwwersiicht',
 	'oversight-view'              => 'Detailer',
+	'oversight-prev'              => 'Lescht vireg Versioun',
 	'oversight-hidden'            => 'Verstoppte Versioun',
 );
 
@@ -1119,6 +1128,14 @@ $messages['lt'] = array(
 	'hiderevision-continue'      => 'Tęsti',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 	'oversight-view'             => 'detalės',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'hiderevision-status' => 'പതിപ്പ് $1: $2',
+	'oversight-view'      => 'വിശദാംശങ്ങള്‍',
 );
 
 /** Marathi (मराठी)

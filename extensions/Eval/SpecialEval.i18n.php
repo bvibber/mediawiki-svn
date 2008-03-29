@@ -112,6 +112,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'eval'        => 'Bewerten',
+	'eval-desc'   => "Setzt [[Special:Eval|een Interface]] bäi d'Fonctioun <code>eval()</code> derbäi.",
 	'eval_submit' => 'Bewerten',
 	'eval_out'    => 'Resultat',
 	'eval_code'   => 'Code',

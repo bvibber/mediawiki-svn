@@ -181,6 +181,7 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'icon-badimage' => 'Ошибочное изображение',
 	'icon-badwidth' => 'Ошибочная ширина',
+	'icon-desc'     => 'Позволяет использовать изображения как значки и ссылки',
 );
 
 /** Slovak (Slovenčina)

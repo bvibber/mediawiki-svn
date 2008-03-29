@@ -193,6 +193,13 @@ $messages['te'] = array(
 	'breadcrumbs-desc' => 'వాడుకరులకు వికీలో తోవ చూపిస్తుంది',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'breadcrumbs-desc' => 'Показує шлях користувачів по вікі.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

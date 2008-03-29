@@ -381,6 +381,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'multipleupload'                   => 'Загрузка файлов',
+	'multipleupload-desc'              => 'Позволяет участникам [[Special:MultipleUpload|загружать несколько файлов за раз]]',
 	'multipleupload-ignoreallwarnings' => "Игнорировать '''все предупреждения''' и сохранять файлы в любом случае.",
 	'multipleupload-saveallfiles'      => 'Сохранить все файлы',
 	'multipleupload-addresswarnings'   => 'Пожалуйста, рассмотрите все предупреждения перед повторной загрузкой файлов.',

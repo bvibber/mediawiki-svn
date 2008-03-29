@@ -223,6 +223,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'purgecache'         => 'Очистить кэш',
+	'purgecache-desc'    => '[[Special:PurgeCache|Служебная страница]] для очистки таблицы OBJECTCACHE',
 	'purgecache-warning' => 'Будет произведена очистка кэш-таблиц.',
 	'purgecache-purged'  => 'Кэш был очищен.',
 	'purgecache-button'  => 'Очистить',

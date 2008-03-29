@@ -90,12 +90,12 @@ $messages['nl'] = array(
 	'usercontactlink-desc'    => 'Maakt het mogelijk om eenvoudig en consistent andere gebruikersnamen toe te voegen met behulp van de syntaxis ^^^user^^^',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'usercontactlink-baduser' => 'ukorrekt brukernavn',
-
+	'usercontactlink-desc'    => 'Gir muligheten til å lenke til andre brukernavn med syntaksen ^^^bruker^^^.',
 );
 
 /** Occitan (Occitan)

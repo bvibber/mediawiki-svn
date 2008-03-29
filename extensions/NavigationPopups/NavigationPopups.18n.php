@@ -62,6 +62,13 @@ $messages['oc'] = array(
 	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'navigationpopups-desc' => 'Загружает скрипты всплывающей навигации Люпина (Lupin) в MediaWiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
