@@ -695,13 +695,17 @@ $messages['vo'] = array(
 	'ajax-se-idling' => '(bü $1s)',
 );
 
-/** Yue (粵語)
+/** Cantonese (廣東話)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'ajax-se-title'   => '而家編輯緊:',
-	'ajax-se-pending' => '而家重新整理緊 ... (撳一下呢個盒或者開始編輯)',
-	'ajax-se-idling'  => '($1秒前)',
+	'ajax-se-desc'             => '顯示而家響度編輯緊嘅用戶',
+	'ajax-se-title'            => '而家編輯緊:',
+	'ajax-se-pending'          => '而家重新整理緊 ... (撳一下呢個盒或者開始編輯)',
+	'ajax-se-idling'           => '($1秒前)',
+	'ajax-se-pagedoesnotexist' => '頁唔存在',
+	'ajax-se-userinvalid'      => '錯誤: 用戶唔正確',
+	'ajax-se-usernotfound'     => '錯誤: 搵唔到用戶',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

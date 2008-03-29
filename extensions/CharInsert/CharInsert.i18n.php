@@ -164,6 +164,23 @@ $messages['sv'] = array(
 	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'charinsert-desc' => '容許加入響[[MediaWiki:Edittools|插入非標準字元]]嘅JavaScript盒',
+);
+
+/** Chinese (Simplified)
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hans'] = array(
+	'charinsert-desc' => '允许增加[[MediaWiki:Edittools|插入非标准文字]]的JavaScript控制项',
+);
+
+/** Chinese (Traditional)
+ * @author Alex S.H. Lin
+ */
 $messages['zh-hant'] = array(
 	'charinsert-desc' => '允許增加[[MediaWiki:Edittools|插入非標準文字]]的JavaScript控制項',
 );

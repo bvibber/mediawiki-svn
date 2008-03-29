@@ -419,6 +419,7 @@ $messages['vo'] = array(
  */
 $messages['yue'] = array(
 	'assert_edit_title'   => '維護失敗',
+	'assert_edit_desc'    => '為機械人嘅編輯加入斷言',
 	'assert_edit_message' => '所指定嘅斷言 ($1) 失敗。',
 );
 

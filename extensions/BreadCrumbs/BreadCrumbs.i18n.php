@@ -200,6 +200,13 @@ $messages['vi'] = array(
 	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'breadcrumbs-desc' => '顯示用戶響呢個wiki嘅路徑。',
+);
+
 /** Simplified Chinese (简化中文)
  * @author Alex S.H. Lin
  */

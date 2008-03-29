@@ -122,7 +122,23 @@ $messages['vi'] = array(
 	'i18ntags-desc' => 'Truy cập các hàm quốc tế hóa về định dạng số, ngữ pháp, và biến cách trong các ngôn ngữ có sẵn',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'i18ntags-desc' => '提供存取任何語言嘅數字格式、文法同複數型等i18n有關資料',
+);
 
+/** Chinese Simplified
+ * @author Alex S.H. Lin
+ */
+$messages['zh-hans'] = array(
+	'i18ntags-desc' => '提供存取任何语言的数字格式、文法和复数型等i18n相关信息',
+);
+
+/** Chinese Traditional
+ * @author Alex S.H. Lin
+ */
 $messages['zh-hant'] = array(
 	'i18ntags-desc' => '提供存取任何語言的數字格式、文法和複數型等i18n相關資訊',
 );

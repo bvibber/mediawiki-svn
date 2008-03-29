@@ -295,6 +295,7 @@ $messages['vi'] = array(
  */
 $messages['yue'] = array(
 	'advancedrandom' => '進階隨便',
+	'advancedrandom-desc' => '好似一啲[[Special:AdvancedRandom/Template:Featured/Talk]]嘅傾緊嘅或者主題頁連結可以隨便拎來睇做正文又或者好似用[[Special:AdvancedRandom/Template:GFDL/Image]]去拎一個隨便嘅GFDL檔案',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

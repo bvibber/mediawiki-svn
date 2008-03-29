@@ -457,11 +457,12 @@ $messages['vi'] = array(
 	'block_title_error'            => 'Xin lỗi, không được phép lưu tên trang này.',
 );
 
-/** Yue (粵語)
+/** Cantonese (廣東話)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'block_title_error_page_title' => '已經封鎖嘅標題',
+	'block_title_error-desc'       => '提供一個基本嘅方式去防止一啲標題儲存或建立',
 	'block_title_error'            => '對唔住，呢篇文章嘅標題唔容許保存。',
 );
 

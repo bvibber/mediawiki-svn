@@ -1472,12 +1472,13 @@ $messages['vo'] = array(
 	'badimages-page'     => '{{ns:help}}:Lised magodas badik',
 );
 
-/** Yue (粵語)
+/** Shinjiman (廣東話)
  * @author Hillgentleman
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'badimages'                => '壞圖清單',
+	'badimages-desc'           => '延伸MediaWiki嘅壞圖清單可用性',
 	'badimages-add-btn'        => '加',
 	'badimages-added'          => '加咗$1入壞圖列表度。',
 	'badimages-count'          => "壞圖清單有 '''$1'''幅圖。",

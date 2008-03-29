@@ -721,6 +721,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
  */
 $messages['yue'] = array(
 	'asksql'          => 'SQL查詢',
+	'asksql-desc'     => '透過[[Special:Asksql|{{int:specialpage}}]]做SQL查詢',
 	'asksqltext'      => "使用下面嘅表可以直接查詢數據庫。
 用單引號（'好似咁'）來界定字串符。
 噉做有可能會增加伺服器嘅負擔，所以請慎用呢個功能。",

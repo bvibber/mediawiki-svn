@@ -1110,6 +1110,7 @@ $messages['vo'] = array(
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'bookinfo-header'            => '書籍資料',
+	'bookinfo-desc'              => '擴充[[Special:Booksources]]嘅功能由一個網站服務囉到信息',
 	'bookinfo-result-title'      => '標題:',
 	'bookinfo-result-author'     => '作者:',
 	'bookinfo-result-publisher'  => '出版者:',

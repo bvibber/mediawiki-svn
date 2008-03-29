@@ -911,6 +911,36 @@ $messages['vo'] = array(
 	'changeauthor-changeauthors-single' => 'Votükön lautani',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'changeauthor'                      => '改修訂嘅作者',
+	'changeauthor-desc'                 => '容許去改修訂嘅作者',
+	'changeauthor-title'                => '改一個修訂嘅作者',
+	'changeauthor-search-box'           => '搵修訂',
+	'changeauthor-pagename-or-revid'    => '頁名或修訂 ID:',
+	'changeauthor-pagenameform-go'      => '去',
+	'changeauthor-comment'              => '註解:',
+	'changeauthor-changeauthors-multi'  => '改作者',
+	'changeauthor-explanation-multi'    => '用嘅個表你可以去改修訂嘅作者。
+只需要響下面個表度改一位或多位嘅用戶名，加入註解（選擇性）再撳個「改作者」掣。',
+	'changeauthor-changeauthors-single' => '改作者',
+	'changeauthor-explanation-single'   => '用呢個表格你可以去改一次修訂嘅作者。
+只需要響下面改一位用戶名，加入註解（選擇性）再撳個「改作者」掣。',
+	'changeauthor-invalid-username'     => '唔正確嘅用戶名 "$1".',
+	'changeauthor-nosuchuser'           => '無呢位用戶 "$1".',
+	'changeauthor-revview'              => '$2 嘅修訂 #$1',
+	'changeauthor-nosuchtitle'          => '呢度係無一版係叫 "$1".',
+	'changeauthor-weirderror'           => '一個好奇怪嘅錯誤發生咗。
+請重試你嘅請求。
+如果個錯誤係不斷出現嘅，個資料庫可能係壞咗。',
+	'changeauthor-invalidform'          => '請用 Special:ChangeAuthor 畀嘅表格，唔好用自定表格。',
+	'changeauthor-success'              => '你嘅請求已經成功噉處理好。',
+	'changeauthor-logentry'             => '改咗 $1 嘅 $2 由 $3 到 $4',
+	'changeauthor-logpagename'          => '作者更動日誌',
+);
+
 /** Traditional Chinese (正體中文)
  * @author Alex S.H. Lin
  */
@@ -937,8 +967,6 @@ $messages['zh-hant'] = array(
 	'changeauthor-success'              => '處理完成',
 	'changeauthor-logentry'             => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
 	'changeauthor-logpagename'          => '作者更改日誌',
-	'changeauthor-logpagetext'          => '',
-	'changeauthor-rev'                  => 'r$1',
 );
 /** Simplified Chinese (简化中文)
  * @author Alex S.H. Lin
@@ -966,7 +994,5 @@ $messages['zh-hant'] = array(
 	'changeauthor-success'              => '处理完成',
 	'changeauthor-logentry'             => '更改[[$1]]修订版本$2的作者从 $3 到 $4',
 	'changeauthor-logpagename'          => '作者更改日志',
-	'changeauthor-logpagetext'          => '',
-	'changeauthor-rev'                  => 'r$1',
 );
 

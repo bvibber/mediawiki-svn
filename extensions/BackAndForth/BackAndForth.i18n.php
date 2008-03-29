@@ -525,9 +525,10 @@ $messages['vo'] = array(
 	'backforth-prev' => 'Büik ($1)',
 );
 
-/** Yue (粵語) */
+/** Cantonese (廣東話) */
 $messages['yue'] = array(
 	'backforth-next' => '下一篇 ($1)',
+	'backforth-desc' => '響頁嘅最頂度加入「上一篇」同埋「下一篇」嘅連結',
 	'backforth-prev' => '上一篇 ($1)',
 );
 

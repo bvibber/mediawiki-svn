@@ -158,6 +158,13 @@ $messages['uk'] = array(
 	'ajax-qp-desc' => 'Додає трохи AJAX до QueryPages, наприклад, [[Special:Shortpages]]',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'ajax-qp-desc' => '響一啲查詢頁 (QueryPages) 度加入一啲AJAX好似[[Special:Shortpages]]',
+);
+
 /** Traditional Chinese (正體中文)
  * @author Alex S.H. Lin
  */

@@ -4097,6 +4097,7 @@ $1 po les dnêyes sourdant des bultins.</p>',
 
 $messages['yue'] = array(
 	'boardvote'               => "Wikimedia理事委員會選舉",
+	'boardvote-desc'          => '[[meta:Board elections|Wikimedia理事委員會選舉]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
 * [[Special:Boardvote/dump|選舉記錄傾印]]",
