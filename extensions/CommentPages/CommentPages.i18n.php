@@ -45,6 +45,13 @@ $messages['dsb'] = array(
 	'nstab-comments'    => 'Komentary',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'nstab-comments' => 'Komentaro',
+);
+
 /** French (Français)
  * @author Grondin
  */

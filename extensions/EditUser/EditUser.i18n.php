@@ -352,6 +352,13 @@ $messages['sv'] = array(
 	'edituser-exempt'   => 'Den angivna användaren kan inte redigeras',
 );
 
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'edituser-dosearch' => 'Šnupej',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

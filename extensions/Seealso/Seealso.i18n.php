@@ -189,6 +189,14 @@ $messages['pt'] = array(
 	'seealso' => 'Ver também',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'seealso'      => 'См. также',
+	'seealso-desc' => 'Локализованный заголовок «См. также» с помощью тега <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

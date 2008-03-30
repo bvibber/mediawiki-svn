@@ -174,6 +174,8 @@ $messages['gl'] = array(
 	'spamdifftool'                  => 'Administrar a Listaxe Negra de Spam',
 	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
 	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
+	'spamdifftool_confirm'          => "Confirme que quere engadir estas entradas á listaxe negra de <i>spam</i>.
+(Faga clic <a href='$1' target='new'>aquí</a> para informar de calquera problema.)",
 	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
 	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
 	'spamdifftool_spam_link_text'   => 'engadir a spam',

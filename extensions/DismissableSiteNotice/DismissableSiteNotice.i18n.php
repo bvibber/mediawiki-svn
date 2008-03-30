@@ -62,8 +62,13 @@ $messages['bn'] = array(
 	'sitenotice-desc'  => 'ব্যবহারকারীদেরকে সাইট নোটিশ বন্ধ করার সুযোগ দেয়',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author SPQRobin
+ */
 $messages['br'] = array(
 	'sitenotice_close' => 'kuzhat',
+	'sitenotice-desc'  => 'Aotren a ra an implijerien da serriñ ar sitenotice',
 );
 
 /** Catalan (Català)

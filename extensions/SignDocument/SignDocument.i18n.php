@@ -122,6 +122,16 @@ $messages['pt'] = array(
 	'signaturelogentry' => 'assinou o documento $1',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'signaturelogpage'     => 'Журнал подписей',
+	'signature-desc'       => 'Позволяет [[Special:SignDocument|подписывать]] документы',
+	'signaturelogpagetext' => 'Это журнал всех подписей, добавленных к документам с помощью [[Special:SignDocument]].',
+	'signaturelogentry'    => 'подписал документ $1',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

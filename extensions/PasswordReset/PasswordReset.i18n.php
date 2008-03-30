@@ -245,12 +245,15 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
-	'passwordreset-nopassmatch'   => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
-	'passwordreset-username'      => 'Benotzernumm',
-	'passwordreset-newpass'       => 'Neit Passwuert',
-	'passwordreset-confirmpass'   => 'Passwuert confirméieren',
-	'passwordreset-submit'        => 'Passwuert zrécksetzen',
+	'passwordreset-emptyusername'   => 'Eidele Benotzernumm',
+	'passwordreset-nopassmatch'     => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
+	'passwordreset-username'        => 'Benotzernumm',
+	'passwordreset-newpass'         => 'Neit Passwuert',
+	'passwordreset-confirmpass'     => 'Passwuert confirméieren',
+	'passwordreset-submit'          => 'Passwuert zrécksetzen',
+	'passwordreset-disablesuccess'  => 'De benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
+	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
+	'disabledusers'                 => 'Desaktivéiert Benotzer',
 );
 
 /** Marathi (मराठी)

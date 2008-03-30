@@ -60,9 +60,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Matma Rex
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'tooltip-desc' => 'Dodaje tagi <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
+	'tooltip-desc' => 'Dodaje znaczniki <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
 );
 
 /** Slovak (Slovenčina)

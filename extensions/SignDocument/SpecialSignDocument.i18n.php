@@ -676,25 +676,32 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'sign-selectdoc'               => 'Dokument:',
-	'sign-realname'                => 'Numm:',
-	'sign-zip'                     => 'Postleitzuel:',
-	'sign-country'                 => 'Land:',
-	'sign-phone'                   => 'Telefonsnummer:',
-	'sign-bday'                    => 'Alter:',
-	'sign-email'                   => 'E-Mail-Adress:',
-	'sign-viewfield-realname'      => 'Numm',
-	'sign-viewfield-address'       => 'Adress',
-	'sign-viewfield-zip'           => 'Postcode',
-	'sign-viewfield-ip'            => 'IP-Adress',
-	'sign-viewfield-email'         => 'E-Mail',
-	'sign-viewfield-age'           => 'Alter',
-	'sign-viewfield-options'       => 'Optiounen',
-	'sign-signatures'              => 'Ënnerschreften',
-	'sign-closed'                  => 'zou',
-	'sig-anonymous'                => '<i>Anonym</i>',
-	'sign-viewfield-reviewcomment' => 'Bemierkung',
-	'sign-review-comment'          => 'Bemierkung',
+	'sign-selectdoc'                => 'Dokument:',
+	'sign-realname'                 => 'Numm:',
+	'sign-city'                     => 'Stad/Gemeng:',
+	'sign-state'                    => 'Staat:',
+	'sign-zip'                      => 'Postleitzuel:',
+	'sign-country'                  => 'Land:',
+	'sign-phone'                    => 'Telefonsnummer:',
+	'sign-bday'                     => 'Alter:',
+	'sign-email'                    => 'E-Mail-Adress:',
+	'sign-viewfield-realname'       => 'Numm',
+	'sign-viewfield-address'        => 'Adress',
+	'sign-viewfield-city'           => 'Stad/Gemeng',
+	'sign-viewfield-country'        => 'Land',
+	'sign-viewfield-zip'            => 'Postcode',
+	'sign-viewfield-ip'             => 'IP-Adress',
+	'sign-viewfield-email'          => 'E-Mail',
+	'sign-viewfield-age'            => 'Alter',
+	'sign-viewfield-options'        => 'Optiounen',
+	'sign-signatures'               => 'Ënnerschreften',
+	'sign-closed'                   => 'zou',
+	'sig-anonymous'                 => '<i>Anonym</i>',
+	'sign-viewfield-reviewcomment'  => 'Bemierkung',
+	'sign-review-comment'           => 'Bemierkung',
+	'sign-uniquequery-similarname'  => 'Ähnleche Numm',
+	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
+	'sign-uniquequery-similaremail' => 'Ähnlech E-Mailadress',
 );
 
 /** Malayalam (മലയാളം)
@@ -1218,6 +1225,28 @@ $messages['pt'] = array(
 
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'signdocument'         => 'Подписать документ',
+	'sign-nodocselected'   => 'Пожалуйста, выберите документ, который вы хотите подписать.',
+	'sign-selectdoc'       => 'Документ:',
+	'sign-docheader'       => '<div class="noarticletext">Пожалуйста, используйте эту форму для подписи документа «[[$1]]», представленного ниже.
+Пожалуйста, прочтите документ целиком, и если вы хотите выразить ему поддержку, заполните требуемые поля, чтобы подписать его.</div>',
+	'sign-error-nosuchdoc' => 'Запрошенный вами документ ($1) не существует.',
+	'sign-realname'        => 'Имя:',
+	'sign-address'         => 'Адрес (улица, дом и пр.):',
+	'sign-city'            => 'Город:',
+	'sign-state'           => 'Положение:',
+	'sign-zip'             => 'Почтовый индекс:',
+	'sign-country'         => 'Страна:',
+	'sign-phone'           => 'Номер телефона:',
+	'sign-bday'            => 'Возраст:',
+	'sign-email'           => 'Адрес эл. почты:',
+	'sign-indicates-req'   => '<small><i><font color="red">*</font> отмечает обязательные поля.</i></small>',
 );
 
 /** Slovak (Slovenčina)

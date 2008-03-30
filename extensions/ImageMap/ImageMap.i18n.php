@@ -475,7 +475,11 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'imagemap_description' => 'ഈ ചിത്രത്തെ കുറിച്ച്',
+	'imagemap_no_image'      => '&lt;imagemap&gt;: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
+	'imagemap_no_link'       => '&lt;imagemap&gt;: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
+	'imagemap_invalid_title' => '&lt;imagemap&gt;: $1-മത്തെ വരിയില്‍ അസാധുവായ തലക്കെട്ട്',
+	'imagemap_description'   => 'ഈ ചിത്രത്തെ കുറിച്ച്',
 );
 
 /** Marathi (मराठी)

@@ -142,6 +142,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'selectcategory-title'    => 'Kategorie wielen',
+	'selectcategory-desc'     => "Erlaabt dem Benotzer et fir Kategorien aus enger Lëscht auszewielen wann d'Säit geännert gëtt",
 	'selectcategory-subtitle' => 'Shift + Maus fir méi Rubriken hannereneen unzewielen, Ctrl + Maus fir eenzel Rubriken unzewielen',
 );
 
@@ -212,6 +213,15 @@ $messages['pt'] = array(
 	'selectcategory-title'    => 'Seleccionar categorias',
 	'selectcategory-desc'     => 'Permitir ao utilizador seleccionar a partir das categorias existentes quando editar uma página',
 	'selectcategory-subtitle' => 'Shift-clique para seleccionar múltiplas entradas contíguas, Ctrl-clique para seleccionar entradas não-contíguas.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'selectcategory-title'    => 'Выбор категорий',
+	'selectcategory-desc'     => 'Позволяет участнику выбирать существующие категории при редактировании страницы',
+	'selectcategory-subtitle' => 'Щелчёк с клавишей Shift — выбор последовательности элементов, щелчёк с клавишей Ctrl — выбор непоследовательных элементов.',
 );
 
 /** Slovak (Slovenčina)

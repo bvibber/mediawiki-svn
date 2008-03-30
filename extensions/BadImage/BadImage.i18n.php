@@ -1386,6 +1386,7 @@ $messages['tet'] = array(
 $messages['tg'] = array(
 	'badimages-name'       => 'Ном:',
 	'badimages-reason'     => 'Далел:',
+	'badimages-remove'     => '(ҳазф)',
 	'badimages-remove-btn' => 'Ҳазф',
 );
 

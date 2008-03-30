@@ -118,7 +118,8 @@ $allMessages['ca'] = array(
  * @author Lloffiwr
  */
 $allMessages['cy'] = array(
-	'whitelisttableedit' => 'Golygu',
+	'whitelisttablemodifyall' => 'Oll',
+	'whitelisttableedit'      => 'Golygu',
 );
 
 /** Danish (Dansk)
@@ -205,8 +206,27 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
  * @author Toliño
  */
 $allMessages['gl'] = array(
+	'whitelist'                => 'Páxinas da listaxe branca',
+	'mywhitelistpages'         => 'As miñas páxinas',
+	'whitelistfor'             => '<center>Información actual para <b>$1</b></center>',
+	'whitelisttablemodify'     => 'Modificar',
 	'whitelisttablemodifyall'  => 'Todo',
 	'whitelisttablemodifynone' => 'Ningún',
+	'whitelisttablepage'       => 'Páxina do wiki',
+	'whitelisttableexpires'    => 'Expira o',
+	'whitelisttableedit'       => 'Editar',
+	'whitelisttableview'       => 'Ver',
+	'whitelisttablenewdate'    => 'Nova data:',
+	'whitelisttableremove'     => 'Eliminar',
+	'whitelistnewpagesfor'     => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
+Pode usar * ou %, como tamén o carácter "comodín"',
+	'whitelistnewtabledate'    => 'Data de expiración:',
+	'whitelistnewtableprocess' => 'Proceso',
+	'whitelistbadtitle'        => 'Título incorrecto -',
+	'whitelistrequestmsg'      => '$1 solicitou ter acceso ás seguintes páxinas:
+
+$2',
+	'whitelistnever'           => 'nunca',
 );
 
 /** Hungarian (Magyar)

@@ -131,9 +131,13 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'expandtemplates'                  => 'Emled ar patromoù',
+	'expand_templates_input'           => 'Merkañ ho testenn amañ :',
 	'expand_templates_output'          => "Disoc'h :",
+	'expand_templates_xml_output'      => 'Ezvont XML',
 	'expand_templates_ok'              => 'Mat eo',
 	'expand_templates_remove_comments' => 'Lemel an notennoù kuit',
+	'expand_templates_generate_xml'    => 'Gwelet ar gwezennadur XML',
 	'expand_templates_preview'         => 'Rakwelet',
 );
 
@@ -993,6 +997,13 @@ $messages['sv'] = array(
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
 	'expand_templates_generate_xml'    => 'Visa parseträd som XML',
 	'expand_templates_preview'         => 'Förhandsvisning',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'expand_templates_ok' => 'OK',
 );
 
 /** Telugu (తెలుగు)

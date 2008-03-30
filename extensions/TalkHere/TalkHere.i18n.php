@@ -274,7 +274,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'talkhere-talkpage' => 'Diskussiounssäit',
+	'talkhere-talkpage'    => 'Diskussiounssäit',
+	'talkhere-notalk'      => "''(Nach keng Bemierkung)''",
+	'talkhere-addcomment'  => 'Bemierkung derbäisetzen',
+	'talkhere-beforeinput' => 'Dir kënnt eng Bemierkung hei ënnendrënner derbäisetzen.',
 );
 
 /** Marathi (मराठी)

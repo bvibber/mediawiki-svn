@@ -241,8 +241,10 @@ $messages['nl'] = array(
 	'lookupuser_not_authenticated' => 'niet aangemeld',
 	'lookupuser_id'                => 'Gebruikersnummer: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mailadres: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'niet opgegeven',
 	'lookupuser_realname'          => 'Echte naam: $1',
 	'lookupuser_registration'      => 'Registratiedatum: $1',
+	'lookupuser_no_registration'   => 'niet opgeslagen',
 	'lookupuser_touched'           => 'Gebruikersvoorkeuren laatst gewijzigd: $1',
 	'lookupuser_useroptions'       => 'Gebruikersopties:',
 );

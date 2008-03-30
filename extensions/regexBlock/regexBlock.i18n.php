@@ -155,6 +155,13 @@ $messages['ca'] = array(
 	'regexblock-view-go' => 'Vés-hi',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'regexblock-view-all' => 'Oll',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -436,6 +443,7 @@ $messages['lb'] = array(
 	'regexblock-block-success'      => "D'Spär ass elo ageschalt",
 	'regexblock-already-blocked'    => '$1 ass scho gespaart.',
 	'regexblock-stats-username'     => 'Fir $1',
+	'regexblock-stats-times'        => 'gespaart den',
 	'regexblock-view-all'           => 'Alleguer',
 	'regexblock-view-reason'        => 'Grond: $1',
 	'regexblock-view-block-by'      => 'gespaart vum',

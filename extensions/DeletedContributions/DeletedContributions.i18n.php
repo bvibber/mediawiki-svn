@@ -71,6 +71,14 @@ $messages['bn'] = array(
 	'deletedcontributions-desc' => 'প্রশাসকদের [[Special:DeletedContributions|কোন ব্যবহারকারীর মুছে ফেলা সম্পাদনাগুলি ব্রাউজ করার]] ক্ষমতা দেয়',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'deletedcontributions'      => 'Degasadennoù diverket un implijer',
+	'deletedcontributions-desc' => "Reiñ a ra an tu d'ar verourien da [[Special:DeletedContributions|welet degasadennoù diverket]] un implijer bennak",
+);
+
 /** Catalan (Català)
  * @author SMP
  * @author SPQRobin

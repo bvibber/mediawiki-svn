@@ -597,6 +597,13 @@ $messages['pt'] = array(
 	'usagestatisticscumulative-text' => 'cumulativo',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'usagestatisticsintervalmonth' => 'Месяц',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

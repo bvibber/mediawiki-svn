@@ -128,6 +128,17 @@ $messages['km'] = array(
 គណនី​របស់​អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'newusernotifsubj'  => 'Informatioun iwwer e neie Benotzer op $1',
+	'newusernotif-desc' => 'Schöckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
+	'newusernotifbody'  => 'Bonjour $1,
+
+E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

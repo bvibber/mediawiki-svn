@@ -393,6 +393,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'countedits'              => 'Zuel vun den Ännerungen',
+	'countedits-desc'         => "[[Special:CountEdits|Spezialsäit]] déi d'Benotzerännerungen zielt an eng Top-Ten Lëscht vun de Benotzer mat de meeschte Ännerunge liwwert",
 	'countedits-warning'      => "'''Opgepasst''': Genausou wéi Dir e Buch net no sengem Aband beurteelt, sollt Dir e Mataarbechter net no der Zuel vu senge Kontributioune beurteelen.",
 	'countedits-username'     => 'Benotzernumm:',
 	'countedits-ok'           => 'ok',
@@ -713,6 +714,13 @@ $messages['sv'] = array(
 	'countedits-resulttext'   => '$1 har gjort $2 redigeringar',
 	'countedits-mostactive'   => 'Mest aktiva bidragsgivare',
 	'countedits-nocontribs'   => 'Det har inte gjorts några redigeringar på denna wiki.',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'countedits-ok' => 'OK',
 );
 
 /** Telugu (తెలుగు)

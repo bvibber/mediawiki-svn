@@ -188,8 +188,17 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'ogg-more'    => "Muioc'h...",
-	'ogg-dismiss' => 'Serriñ',
+	'ogg-play'              => 'Lenn',
+	'ogg-pause'             => 'Ehan',
+	'ogg-stop'              => 'Paouez',
+	'ogg-play-video'        => 'Lenn ar video',
+	'ogg-play-sound'        => 'Lenn ar son',
+	'ogg-player-soundthumb' => 'Lenner ebet',
+	'ogg-use-player'        => 'Ober gant al lenner :',
+	'ogg-more'              => "Muioc'h...",
+	'ogg-dismiss'           => 'Serriñ',
+	'ogg-download'          => 'Pellgargañ ar restr',
+	'ogg-desc-link'         => 'Diwar-benn ar restr-mañ',
 );
 
 /** Catalan (Català)

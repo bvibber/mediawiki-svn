@@ -212,6 +212,13 @@ $messages['bn'] = array(
 	'oversight-hidden'            => 'লুকায়িত সংশোধন',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'hiderevision-continue' => "Kenderc'hel",
+);
+
 /** Catalan (Català)
  * @author Toniher
  */
@@ -1061,6 +1068,8 @@ $messages['lb'] = array(
 	'hiderevision-desc'           => 'Eenzel Versioune fir all Benotzer aus legalen an aneren Uursaachen definitiv verstoppen',
 	'hiderevision-prompt'         => 'Versiounsnummer déi geläscht gi soll:',
 	'hiderevision-continue'       => 'Weider',
+	'hiderevision-reason'         => 'Grond (gëtt verstoppt ofgespäichert)',
+	'hiderevision-submit'         => 'Dës Daten definitv verstoppen',
 	'hiderevision-tab'            => 'Verstopp Versiounen',
 	'hiderevision-norevisions'    => 'Keng Versioun uginn déi soll geläscht ginn.',
 	'hiderevision-noreason'       => 'Dir musst de Grond fir dës Läschung uginn.',

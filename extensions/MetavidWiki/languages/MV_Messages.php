@@ -690,6 +690,7 @@ $messages['gl'] = array(
 	'mv_duration_label'             => 'duración',
 	'mv_save_changes'               => 'Gardar Cambios',
 	'mv_user_cant_edit'             => 'Precisará $1 para editar, $2',
+	'mv_missing_cat'                => 'Falta o nome da categoría',
 	'mv_redirect_and_delete_reason' => 'eliminar páxina de redirección',
 	'mv_remove_reason'              => 'Razón Para a eliminación:',
 	'mv_metavid_file'               => 'Arquivo Existente no Servidor',
@@ -706,7 +707,7 @@ $messages['gl'] = array(
 	'mv_edit'                       => 'Editar',
 	'mv_history'                    => 'Historial',
 	'mv_edit_title'                 => 'Editar Texto',
-	'mv_remove'                     => 'quitar',
+	'mv_remove'                     => 'eliminar',
 	'mv_adjust'                     => 'axustar',
 	'mv_adjust_submit'              => 'Gardar Axuste',
 	'mv_adjust_title'               => 'Axustar Comezo e Fin do tempo',
@@ -735,6 +736,7 @@ $messages['gl'] = array(
 	'mv_match_text_one'             => '~ 1 coincidencia',
 	'mv_sequence_add'               => 'Engadir clips',
 	'mv_sequence_add_manual'        => 'Engadir polo Nome',
+	'mv_edit_sequence_desc_help'    => 'Descrición da secuencia',
 	'mv_add_clip_by_name'           => 'Engadir Clip polo Nome',
 	'mv_new_anno_en'                => 'Nova Etiqueta ou Anotación',
 );
@@ -985,21 +987,24 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'metavid'            => 'Metavid-Säit',
-	'mv_save_changes'    => 'Ännerunge späicheren',
-	'mv_remove_reason'   => 'Grond vum Läschen:',
-	'mv_upload_file'     => 'Fichier eroplueden',
-	'mv_tool_search'     => 'Sichen',
-	'mv_tool_export'     => 'Exportéieren',
-	'mv_time_separator'  => '$1 op $2',
-	'mv_edit'            => 'Änneren',
-	'mv_edit_title'      => 'Text änneren',
-	'mv_start_desc'      => 'Ufankszäit',
-	'mv_search_category' => 'Kategorie',
-	'mv_search_and'      => 'an',
-	'mv_search_or'       => 'oder',
-	'mv_search_not'      => 'net',
-	'mv_category'        => 'Kategorie',
+	'metavid'             => 'Metavid-Säit',
+	'mv_save_changes'     => 'Ännerunge späicheren',
+	'mv_remove_reason'    => 'Grond vum Läschen:',
+	'mv_upload_file'      => 'Fichier eroplueden',
+	'mv_tool_search'      => 'Sichen',
+	'mv_tool_export'      => 'Exportéieren',
+	'mv_time_separator'   => '$1 op $2',
+	'mv_edit'             => 'Änneren',
+	'mv_edit_title'       => 'Text änneren',
+	'mv_start_desc'       => 'Ufankszäit',
+	'mv_search_spoken_by' => 'Geschwat vum',
+	'mv_search_category'  => 'Kategorie',
+	'mv_search_and'       => 'an',
+	'mv_search_or'        => 'oder',
+	'mv_search_not'       => 'net',
+	'mv_spoken_by'        => 'Geschwat vum',
+	'mv_category'         => 'Kategorie',
+	'mv_view_wiki_page'   => 'Wiki-Säit gesinn',
 );
 
 /** Malayalam (മലയാളം)
@@ -2281,11 +2286,13 @@ $messages['sv'] = array(
 	'mv_sequence_add_manual'        => 'Lägg till efter namn',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (ślůnski)
  * @author Pimke
+ * @author Herr Kriss
  */
 $messages['szl'] = array(
-	'mv_edit' => 'Sprowjéj',
+	'mv_tool_search' => 'Šnupej',
+	'mv_edit'        => 'Sprowjéj',
 );
 
 /** Tamil (தமிழ்)

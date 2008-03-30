@@ -157,11 +157,13 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'spamregex_summary'              => 'O texto foi atopado no resumo da páxina.',
 	'spamregex-currently-blocked'    => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 eliminar]) engadido por",
 	'spamregex-log-2'                => 'en $1',
 	'spamregex-page-title-1'         => 'Bloquear frase usando expresións regulares',
 	'spamregex-unblock-success'      => 'Desbloqueo con éxito',
@@ -220,7 +222,11 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'spamregex-summary-log' => '(Resumé)',
+	'spamregex-currently-blocked' => "'''Sätz déi elo gespaart sinn:'''",
+	'spamregex-unblock-success'   => 'Spär ass opgehuewen',
+	'spamregex-block-success'     => 'Gespaart',
+	'spamregex-text'              => '(Text)',
+	'spamregex-summary-log'       => '(Resumé)',
 );
 
 /** Marathi (मराठी)

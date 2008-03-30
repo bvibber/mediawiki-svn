@@ -79,9 +79,10 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'purgecache'        => 'Purgar a caché',
-	'purgecache-purged' => 'A memoria <i>caché</i> foi purgada.',
-	'purgecache-button' => 'Depurar',
+	'purgecache'         => 'Purgar a caché',
+	'purgecache-warning' => 'Isto purgará a memoria <i>caché</i> das táboas.',
+	'purgecache-purged'  => 'A memoria <i>caché</i> foi purgada.',
+	'purgecache-button'  => 'Depurar',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -192,10 +193,11 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'purgecache'         => 'Czyść pamięć podręczną',
-	'purgecache-warning' => 'To polecenie spowoduje wyczyszczenie tablic pamięci podręcznej.',
+	'purgecache'         => 'Wyczyść pamięć podręczną',
+	'purgecache-desc'    => '[[Special:PurgeCache|Strona specjalna]] wykorzystywana do czyszczenia pamięci podręcznej tablic obiektów',
+	'purgecache-warning' => 'To polecenie spowoduje wyczyszczenie pamięci podręcznej.',
 	'purgecache-purged'  => 'Pamięć podręczna została wyczyszczona.',
-	'purgecache-button'  => 'Czyść',
+	'purgecache-button'  => 'Wyczyść',
 );
 
 /** Pashto (پښتو)

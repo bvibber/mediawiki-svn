@@ -202,6 +202,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'importfreeimages'            => 'Fräi Biller importéieren',
 	'importfreeimages_owner'      => 'Auteur:',
 	'importfreeimages_importthis' => 'importéieren',
 	'importfreeimages_next'       => 'Nächst $1',

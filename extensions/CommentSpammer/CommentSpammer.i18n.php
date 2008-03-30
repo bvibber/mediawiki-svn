@@ -63,6 +63,13 @@ $messages['de'] = array(
 	'cspammer-log-page'           => 'Kommentar-Spammer Logbuch',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'commentspammer-log-msg' => 'redakto de [[Special:Contributions/$1|$1]] al [[:$2]].',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Grondin

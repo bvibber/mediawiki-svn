@@ -131,6 +131,14 @@ $messages['oc'] = array(
 	'purge-desc' => "Ajusta un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'purge'      => 'wyczyść',
+	'purge-desc' => "Dodaje zakładkę '''wyczyść''' dla wszystkich zwykłych stron oraz omija testowanie stanu czyszczenia dla anonimowych użytkowników aby szybko wyczyścić pamięć podręczną",
+);
+
 /** Portuguese (Português)
  * @author 555
  */

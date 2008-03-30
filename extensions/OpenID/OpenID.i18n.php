@@ -258,6 +258,7 @@ $messages['gl'] = array(
 	'openidfullname'                => 'Nome completo',
 	'openidemail'                   => 'Enderezo de correo electrónico',
 	'openidlanguage'                => 'Lingua',
+	'openidnotavailable'            => 'O seu alcume preferido ($1) xa está sendo usado por outro usuario.',
 	'openidchooseinstructions'      => 'Todos os usuarios precisan un alcume; pode escoller un de entre as opcións de embaixo.',
 	'openidchoosefull'              => 'O seu nome completo ($1)',
 	'openidchooseauto'              => 'Un nome autoxerado ($1)',
@@ -267,6 +268,8 @@ $messages['gl'] = array(
 	'openidalreadyloggedin'         => "'''Está dentro do sistema, $1!'''
 
 Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDConvert|converter a súa conta para usar OpenID]].",
+	'openidnousername'              => 'Non foi especificado ningún nome de usuario.',
+	'openidbadusername'             => 'O nome de usuario especificado é incorrecto.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -420,6 +423,7 @@ $messages['lb'] = array(
 	'openidchooseauto'         => 'Een Numm deen automatesch generéiert gouf ($1)',
 	'openidchoosemanual'       => 'E Numm vun ärer Wiel:',
 	'openidchoosepassword'     => 'Passwuert:',
+	'openidnousername'         => 'Kee Benotzernumm uginn.',
 );
 
 /** Marathi (मराठी)

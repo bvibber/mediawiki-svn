@@ -84,6 +84,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'editmessages'          => 'Redeaktu mesaĝojn',
 	'editmsg-target'        => 'Cela mesaĝo:',
 	'editmsg-search'        => 'Serĉu',
 	'editmsg-get-patch'     => 'Generu flikaĵon',
@@ -284,6 +285,13 @@ $messages['sv'] = array(
 	'editmsg-no-patch'         => 'Kunde inte utföra "patch"-kommando',
 	'editmsg-patch-failed'     => 'Uppdatering misslyckades med avslutningsstatus $1',
 	'editmsg-patch-success'    => 'Uppdateringen lyckades.',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'editmsg-search' => 'Šnupej',
 );
 
 /** Thai (ไทย)

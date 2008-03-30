@@ -78,6 +78,7 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'profiling'              => 'Perfís de datos',
@@ -85,12 +86,11 @@ $messages['gl'] = array(
 	'profiling-wildcard'     => 'Empregar comodín',
 	'profiling-ok'           => 'De acordo',
 	'profiling-data'         => 'Perfís de datos para `$1`',
-	'profiling-data-process' => 'Procedemento',
+	'profiling-data-process' => 'Proceso',
 	'profiling-data-count'   => 'Contar',
 	'profiling-data-time'    => 'Tempo (todo)',
 	'profiling-data-average' => 'Tempo (media)',
 	'profiling-no-data'      => 'Non coinciden os datos atopados.',
-
 );
 
 $messages['hsb'] = array(

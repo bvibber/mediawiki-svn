@@ -90,6 +90,16 @@ $messages['de'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Es muss mindestens eine Kategorie eingebunden werden oder gebe einen Namensraum an!',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Tro da kategorioj!',
+	'intersection_toofewcats'    => 'DynamicPageList: Tro malmultaj da kategorioj!',
+	'intersection_noresults'     => 'DynamicPageList: Neniom da rezultoj!',
+	'intersection_noincludecats' => 'DynamicPageList: Vi devas inkluzivi almenaŭ unu kategorion, aŭ specifigu nomspacon!',
+);
+
 /** فارسی (فارسی)
  * @author Huji
  */
@@ -452,3 +462,4 @@ $messages['zh-hant'] = array(
 	'intersection_noresults'     => 'DynamicPageList: 沒有結果!',
 	'intersection_noincludecats' => 'DynamicPageList: 您需要去包含最少一個分類，或者指定一個空間名!',
 );
+

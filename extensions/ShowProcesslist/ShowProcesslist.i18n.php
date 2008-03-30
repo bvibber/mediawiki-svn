@@ -247,6 +247,21 @@ $messages['pt'] = array(
 	'showprocesslist-info'    => 'Informação',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'showprocesslist'         => 'Показать список процессов',
+	'showprocesslist-desc'    => 'Показывает вывод команды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
+	'showprocesslist-id'      => 'Id',
+	'showprocesslist-user'    => 'Пользователь',
+	'showprocesslist-host'    => 'Хост',
+	'showprocesslist-command' => 'Команда',
+	'showprocesslist-time'    => 'Время',
+	'showprocesslist-state'   => 'Состояние',
+	'showprocesslist-info'    => 'Информация',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

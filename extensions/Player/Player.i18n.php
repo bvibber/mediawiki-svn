@@ -461,6 +461,14 @@ $messages['sv'] = array(
 	'player-goto-file'     => 'fil',
 );
 
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'player-file'      => 'Mjano pliku',
+	'player-goto-file' => 'plik',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -115,7 +115,9 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'pdtest_ok' => 'Mat eo',
+	'pdtest_no_changes' => 'Kemm ebet merzet.',
+	'pdtest_ok'         => 'Mat eo',
+	'pdtest_diff'       => "Diforc'hioù",
 );
 
 /** Catalan (Català)
@@ -762,6 +764,13 @@ $messages['sv'] = array(
 	'pdtest_diff'         => 'Skillnader',
 	'pdtest_side_by_side' => 'Jämförelse av resultat',
 	'pdt_comparing_page'  => 'Jämför parsningsresultat av [[$1]]',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'pdtest_ok' => 'OK',
 );
 
 /** Telugu (తెలుగు)

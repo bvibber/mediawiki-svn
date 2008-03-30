@@ -114,6 +114,7 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'icon-badimage' => 'Futtist Bild',
 	'icon-badwidth' => 'Falsch Breet',
+	'icon-desc'     => 'Erlaabt iech et fir Biller als Ikonen an als Ikonelinken ze benotzen',
 );
 
 /** Lithuanian (Lietuvių)

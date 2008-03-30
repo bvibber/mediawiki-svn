@@ -82,6 +82,13 @@ $messages['fr'] = array(
 	'spl3_nosubpages' => "$1 n'a pas de sous-pages à énumérer.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'spl3_nosubpages' => '$1 non ten subpáxinas para poñer nunha listaxe.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

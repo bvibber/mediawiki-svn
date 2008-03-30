@@ -92,6 +92,9 @@ $messages['ee'] = array(
  */
 $messages['eo'] = array(
 	'inspectcache-ok'      => 'Ek!',
+	'inspectcache-general' => 'Ĝenerala kaŝmemoro',
+	'inspectcache-parser'  => 'Sintaksa kaŝmemoro',
+	'inspectcache-message' => 'Mesaĝa kaŝmemoro',
 	'inspectcache-get'     => 'Akiru',
 	'inspectcache-delete'  => 'Forigu',
 	'inspectcache-deleted' => 'Forigita Kaŝmemoro',
@@ -369,6 +372,13 @@ $messages['sv'] = array(
 	'inspectcache-delete'  => 'Radera',
 	'inspectcache-deleted' => 'Raderad cache',
 	'inspectcache-list'    => 'Lista',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'inspectcache-ok' => 'OK',
 );
 
 /** Telugu (తెలుగు)

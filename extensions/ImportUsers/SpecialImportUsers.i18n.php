@@ -73,6 +73,13 @@ $messages['bg'] = array(
 	'importusers-realname'            => 'истинско име',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'importusers-log-summary-all' => 'Oll',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

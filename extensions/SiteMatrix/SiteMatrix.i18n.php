@@ -122,9 +122,12 @@ $messages['bn'] = array(
  * @author SPQRobin
  */
 $messages['br'] = array(
-	'sitematrix'          => 'Roll holl raktresoù Wikimedia',
-	'sitematrix-language' => 'Yezh',
-	'sitematrix-others'   => 'Raktresoù all eus Wikimedia',
+	'sitematrix'           => 'Roll holl raktresoù Wikimedia',
+	'sitematrix-summary'   => 'Diskouez a ra ar bajenn zibar-mañ holl wikioù Diazezadur Wikimedia.',
+	'sitematrix-language'  => 'Yezh',
+	'sitematrix-others'    => 'Raktresoù all eus Wikimedia',
+	'sitematrix-total'     => "'''Hollad ar gont : $1'''",
+	'sitematrix-sitetotal' => 'Hollad',
 );
 
 /** Catalan (Català)
@@ -339,9 +342,11 @@ $messages['ga'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'sitematrix'           => 'Listaxe dos wikis de Wikimedia',
+	'sitematrix-summary'   => 'Esta páxina especial ten na súa listaxe todos os wikis Wikimedia.',
 	'sitematrix-desc'      => 'Mostra unha [[Special:SiteMatrix|listaxe dos wikis de Wikimedia]]',
 	'sitematrix-language'  => 'Linguaxe',
 	'sitematrix-project'   => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
@@ -932,6 +937,7 @@ $messages['tet'] = array(
  */
 $messages['tg'] = array(
 	'sitematrix'           => 'Феҳристи викиҳои Викимедиа',
+	'sitematrix-summary'   => 'Ин саҳифаи вижа тамоми викиҳои Викимедиаро феҳрист мекунад.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|Феҳристи викиҳои Викимедиа]]ро намоиш медиҳад',
 	'sitematrix-language'  => 'Забон',
 	'sitematrix-project'   => 'Номи лоиҳа, пайванди миёнилоиҳа ва пайванди миёнивики',

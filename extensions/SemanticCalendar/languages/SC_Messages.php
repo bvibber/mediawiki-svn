@@ -239,6 +239,16 @@ $messages['pt'] = array(
 	'sc_gotomonth'     => 'Ir para mês',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'sc_previousmonth' => 'Предыдущий месяц',
+	'sc_nextmonth'     => 'Следующий месяц',
+	'sc_today'         => 'Сегодня',
+	'sc_gotomonth'     => 'Перейти к месяцу',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

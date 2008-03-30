@@ -2659,11 +2659,12 @@ $wdMessages['sv'] = array(
 	'ow_copy_help'                    => 'Vi kanske kommer att hjälpa dig någon dag.',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (ślůnski)
  * @author Herr Kriss
  */
 $wdMessages['szl'] = array(
 	'ow_history' => 'Historjo',
+	'ow_dm_OK'   => 'OK',
 );
 
 /** Tamil (தமிழ்)

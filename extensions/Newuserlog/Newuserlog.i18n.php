@@ -567,6 +567,7 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
 	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
+	'newuserlog-desc'          => 'Setzt eng [[Special:Log/newusers|Lëscht vun de neie Benotzerkonten]] op [[Special:Log]] derbäi',
 	'newuserlog-byemail'       => "d'Passwuert gouf per E-Mail geschéckt",
 	'newuserlog-create-entry'  => 'Neie Benotzer',
 	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",

@@ -70,8 +70,14 @@ $messages['bn'] = array(
 	'crossnamespacelinkstext' => '$1: $3 এ $2 {{PLURAL:$2|সংযোগ|সংযোগসমূহ}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
 $messages['br'] = array(
 	'crossnamespacelinks'         => 'Liammoù esaouennoù anv kroaziet',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Rollañ a ra al liammoù a-dreuz an esaouennoù anv]] na zlefe ket bezañ war {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Pourchas a ra ar bajenn-mañ roll pajennoù an esaouenn anv pennañ enno liammoù war-du un esaouenn anv all (nemet evit an esaouennoù anv {{ns:special}}, {{ns:talk}}, {{ns:project}}, ha{{ns:template}}), na erbeder ket ober ganto.',
+	'crossnamespacelinkstext'     => '$2 {{PLURAL:$2|liamm|liamm}} zo e $1 war-du an esaouenn $3',
 );
 
 /** Catalan (Català)

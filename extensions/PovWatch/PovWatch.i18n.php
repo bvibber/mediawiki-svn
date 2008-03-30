@@ -183,22 +183,28 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'povwatch_already_subscribed'    => 'Vostede está aínda subscrito a PovWatch',
-	'povwatch_subscribed'            => 'Vostede está agora subscrito a PovWatch',
-	'povwatch_invalid_title'         => 'O título especificado foi non válido',
-	'povwatch_subscriber_list'       => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
-	'povwatch_subscriber_list_intro' => '<strong>Listaxe dos subscritores</strong>',
-	'povwatch_unknown_subpage'       => 'Subpáxina descoñecida.',
-	'povwatch_push'                  => 'Empurrar',
-	'povwatch_title'                 => 'Título:',
-	'povwatch_comment'               => 'Rexistro de comentarios:',
-	'povwatch_no_log'                => 'Non hai entradas no rexistro.',
-	'povwatch_no_subscribers'        => 'Non hai subscritores.',
-	'povwatch_unsubscribe'           => 'Darse de baixa',
-	'povwatch_subscribe'             => 'Subscribir',
-	'povwatch_added'                 => 'engadido',
+	'povwatch_already_subscribed'      => 'Vostede está aínda subscrito a PovWatch',
+	'povwatch_subscribed'              => 'Vostede está agora subscrito a PovWatch',
+	'povwatch_invalid_title'           => 'O título especificado foi non válido',
+	'povwatch_subscriber_list'         => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
+	'povwatch_subscriber_list_intro'   => '<strong>Listaxe dos subscritores</strong>',
+	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a listaxe de subscrición de PovWatch.',
+	'povwatch_unknown_subpage'         => 'Subpáxina descoñecida.',
+	'povwatch_push'                    => 'Empurrar',
+	'povwatch_title'                   => 'Título:',
+	'povwatch_comment'                 => 'Rexistro de comentarios:',
+	'povwatch_no_log'                  => 'Non hai entradas no rexistro.',
+	'povwatch_no_subscribers'          => 'Non hai subscritores.',
+	'povwatch_unsubscribe_intro'       => 'Está subscrito a PovWatch.
+Faga clic no botón de embaixo para cancelar a subscrición.',
+	'povwatch_unsubscribe'             => 'Darse de baixa',
+	'povwatch_subscribe_intro'         => 'Non está subscrito a PovWatch.
+Faga clic no botón de embaixo para subscribirse.',
+	'povwatch_subscribe'               => 'Subscribir',
+	'povwatch_added'                   => 'engadido',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -254,9 +260,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'povwatch'       => 'Iwwerwaachung vun Ännerungskonflikter',
-	'povwatch_title' => 'Titel:',
-	'povwatch_added' => 'derbäigesat',
+	'povwatch'                 => 'Iwwerwaachung vun Ännerungskonflikter',
+	'povwatch_unknown_subpage' => 'Onbekannten Ënnersäit.',
+	'povwatch_title'           => 'Titel:',
+	'povwatch_added'           => 'derbäigesat',
 );
 
 /** Limburgish (Limburgs)

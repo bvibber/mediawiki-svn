@@ -101,6 +101,14 @@ $messages['bn'] = array(
 	'scanset_prev'                      => '&lt; পূর্ববর্তী',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'scanset_next' => "War-lerc'h &lt;",
+	'scanset_prev' => '&lt; Kent',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Danny B.

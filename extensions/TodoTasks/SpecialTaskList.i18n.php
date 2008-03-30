@@ -323,11 +323,12 @@ Vòstre plan amable sistèma de notificacion de %s",
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'tasklist'               => 'Lista zadań',
-	'tasklist-parser-desc'   => 'dodaje funkcje parsera <nowiki>{{#todo:}}</nowiki>, pozwalającą na przydzielanie zadań',
+	'tasklist-parser-desc'   => 'dodaje funkcję parsera <nowiki>{{#todo:}}</nowiki>, pozwalającą na przydzielanie zadań',
 	'tasklist-special-desc'  => 'Dodaje stronę specjalną do przeglądania [[Special:TaskList|przydzielonych zadań]]',
 	'tasklistbyproject'      => 'Listy zadań według projektu',
 	'tasklistunknownproject' => 'Nieznany projekt',
@@ -340,15 +341,15 @@ $messages['pl'] = array(
 	'tasklistbyprojname'     => "Przypisano zadania do '''%s'''",
 	'tasklistchooseproj'     => 'Wybierz projekt:',
 	'tasklistprojdisp'       => 'Pokaż',
-	'tasklistbyname'         => '== Lista do zrobienia dla %s ==',
-	'tasklistnoprojects'     => "BŁĄD: Najprawdopodobniej aktywowano zmienną '''\$wgUseProjects''', lecz nie utworzono pliku [[MediaWiki:TodoTasksValidProjects]]. Szczegóły w pliku [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions].",
+	'tasklistbyname'         => '== Lista zadań do wykonania dla %s ==',
+	'tasklistnoprojects'     => "BŁĄD: Najprawdopodobniej włączono zmienną '''\$wgUseProjects''', lecz nie utworzono pliku [[MediaWiki:TodoTasksValidProjects]]. Szczegóły w pliku [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instrukcja instalacji].",
 	'tasklistemailbody'      => ',
 
-Ktoś przydzielił Ci nowe zadanie w #s.
+Ktoś przydzielił Ci nowe zadanie w %s.
 
-By zobaczyć kompletną listę zadań, orzejdź do strony $s.
+By zobaczyć kompletną listę zadań, przejdź do strony %s.
 
-Uprzejmy przypominacz',
+Przyjazny system informowania - %s',
 );
 
 /** Pashto (پښتو)

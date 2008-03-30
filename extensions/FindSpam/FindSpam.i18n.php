@@ -78,9 +78,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'findspam'    => 'Trovu spamon',
-	'findspam-ip' => 'IP adreson:',
-	'findspam-ok' => 'Ek!',
+	'findspam'             => 'Trovu spamon',
+	'findspam-ip'          => 'IP adreson:',
+	'findspam-ok'          => 'Ek!',
+	'findspam-notextfound' => 'Neniuj kontribuoj trovitaj',
 );
 
 /** Finnish (Suomi)
@@ -315,6 +316,13 @@ $messages['sv'] = array(
 	'findspam-ip'          => 'IP-adress:',
 	'findspam-ok'          => 'Sök',
 	'findspam-notextfound' => 'Inga bidrag hittades',
+);
+
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'findspam-ok' => 'OK',
 );
 
 /** Telugu (తెలుగు)

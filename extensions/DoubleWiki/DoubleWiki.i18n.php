@@ -39,6 +39,13 @@ $messages['bg'] = array(
 	'doublewiki-desc' => 'Показва страница и нейният превод от друго уики в две колони на една и съща страница',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'doublewiki-desc' => 'Diskouez a ra, war daou vann ha war an hevelep pajenn, ur bajenn hag he zroidigezh adal ur wiki all',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
