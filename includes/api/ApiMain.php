@@ -66,7 +66,6 @@ class ApiMain extends ApiBase {
 		'reguser' => 'ApiRegUser',
 		'upload' => 'ApiUploadFile',
 		'edit' => 'ApiEditPage',
-		'talk'	=> 'ApiTalk'
 	);
 	
 	private static $WriteModules = array (
