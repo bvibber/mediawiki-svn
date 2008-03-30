@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Add a <splist /> tag which produces a linked list of all subpages of the current page
  *
@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'efSubpageList3';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Subpage List 3',
-	'version' => '1.04',
+	'version' => '1.05',
 	'description' => 'Automatically creates a list of the subpages of a page.',
 	'descriptionmsg' => 'spl3_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
@@ -44,7 +44,7 @@ function efRenderSubpageList3( $input, $args, $parser ) {
 	$list = new SubpageList3( $parser );
 	wfLoadExtensionMessages('SubPageList3');
 	$list->options( $args );
-	$parser->disableCache();
+	# $parser->disableCache();
 	return $list->render();
 }
 
@@ -366,7 +366,7 @@ class SubpageList3 {
 		$parent = '';
 
 		if( $this->ordermethod == 'title' ) {
-			$options['ORDER BY'] = 'UPPER(`page_title`) ' . $order;
+			$options['ORDER BY'] = '`page_title`' . $order;
 		} else if( $this->ordermethod == 'lastedit' ) {
 			$options['ORDER BY'] = '`page_touched` ' . $order;
 		}
