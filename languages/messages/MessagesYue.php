@@ -160,10 +160,10 @@ $messages = array(
 'tog-previewontop'            => '喺修改欄上方顯示預覽',
 'tog-previewonfirst'          => '第一次修改時顯示預覽',
 'tog-nocache'                 => '停用頁面快取',
-'tog-enotifwatchlistpages'    => '當我監視嘅頁面有修改時電郵通知我',
+'tog-enotifwatchlistpages'    => '當響我張監視清單度嘅頁面有修改時電郵通知我',
 'tog-enotifusertalkpages'     => '個人留言版有修改時電郵通知我',
 'tog-enotifminoredits'        => '小修改都要電郵通知我',
-'tog-enotifrevealaddr'        => '喺通知信上面話畀人聽我嘅電郵地址',
+'tog-enotifrevealaddr'        => '喺電郵通知信上面話畀人聽我嘅電郵地址',
 'tog-shownumberswatching'     => '顯示有幾多人監視',
 'tog-fancysig'                => '程式碼簽名（冇自動連結）',
 'tog-externaleditor'          => '預設用外掛編輯器',
@@ -237,18 +237,28 @@ $messages = array(
 'nov'           => '11月',
 'dec'           => '12月',
 
-# Bits of text used by many pages
-'categories'               => '類',
-'pagecategories'           => '屬於$1類',
-'category_header'          => '"$1" 類中嘅版',
-'subcategories'            => '分類',
-'category-media-header'    => ' "$1" 類嘅媒體',
-'category-empty'           => "''呢類無任何版或媒體檔。''",
-'hidden-categories'        => '屬於$1隱類',
-'hidden-category-category' => '隱藏類', # Name of the category where hidden categories will be listed
+# Categories related messages
+'categories'                     => '類',
+'categoriespagetext'             => '下面嘅類有版或媒體。',
+'pagecategories'                 => '屬於$1類',
+'special-categories-sort-count'  => '跟數量排',
+'special-categories-sort-abc'    => '跟字母排',
+'category_header'                => '"$1" 類中嘅版',
+'subcategories'                  => '分類',
+'category-media-header'          => ' "$1" 類嘅媒體',
+'category-empty'                 => "''呢類無任何版或媒體檔。''",
+'hidden-categories'              => '屬於$1隱類',
+'hidden-category-category'       => '隱藏類', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|呢類淨係有下面嘅細類。|呢類有下面嘅$1個細類，總共有$2類。}}',
+'category-subcat-count-limited'  => '呢個類別入邊有$1個細類別。',
+'category-article-count'         => '{{PLURAL:$2|呢類淨係有下面嘅版。|呢類有下面嘅$1版，總共有$2版。}}',
+'category-article-count-limited' => '呢個類別入邊有$1版。',
+'category-file-count'            => '{{PLURAL:$2|呢類淨係有下面嘅檔案。|呢類有下面嘅$1個檔案，總共有$2個檔案。}}',
+'category-file-count-limited'    => '呢個類別入邊有$1個檔案。',
+'listingcontinuesabbrev'         => '續',
 
-'mainpagetext'      => "<big>'''MediaWiki已經裝好。'''</big>",
-'mainpagedocfooter' => '參閱[http://meta.wikimedia.org/wiki/Help:Contents 用戶指引]（英），裏面有資料講點用wiki軟件。
+'mainpagetext'                   => "<big>'''MediaWiki已經裝好。'''</big>",
+'mainpagedocfooter'              => '參閱[http://meta.wikimedia.org/wiki/Help:Contents 用戶指引]（英），裏面有資料講點用wiki軟件。
 
 ==開始使用==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings 配置設定清單]（英）
@@ -292,7 +302,9 @@ $messages = array(
 'permalink'         => '永久連結',
 'print'             => '印',
 'edit'              => '編輯',
+'create'            => '建立',
 'editthispage'      => '編輯呢頁',
+'create-this-page'  => '建立呢頁',
 'delete'            => '刪除',
 'deletethispage'    => '刪除呢頁',
 'undelete_short'    => '反刪除$1次修改',
@@ -671,7 +683,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 ''由於{{SITENAME}}已經開放咗原 HTML 碼，預覽已經隱藏落嚟以預防 JavaScript 嘅攻擊。''
 
 <strong>如果呢個係正當嘅編輯嘗試，請再試過。如果重係唔得嘅話，請先登出然後再登入。</strong>",
-'token_suffix_mismatch'     => '<strong>因為你嘅用戶端度嘅編輯幣整壞咗一啲標點符號字元，你嘅編輯已經拒絕咗。個編輯已經拒絕，以防止嗰版嘅文字損毀。 
+'token_suffix_mismatch'     => '<strong>因為你嘅用戶端度嘅編輯幣整壞咗一啲標點符號字元，你嘅編輯已經拒絕咗。個編輯已經拒絕，以防止嗰版嘅文字損毀。
 當你響度用緊一啲好多臭蟲，以網絡為主嘅匿名代理服務。</strong>',
 'editing'                   => '而家喺度編輯$1',
 'editingsection'            => '而家喺度編輯$1 （小節）',
@@ -736,7 +748,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'revnotfound'         => '搵唔到歷史',
 'revnotfoundtext'     => '呢版無你要搵嗰個版本喎。
 唔該睇下條網址啱唔啱。',
-'loadhist'            => '攞緊版嘅歷史',
 'currentrev'          => '家下嘅版本',
 'revisionasof'        => '喺$1嘅修訂',
 'revision-info'       => '喺$1嘅修訂；修訂自$2',
@@ -746,7 +757,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'cur'                 => '現時',
 'next'                => '之後',
 'last'                => '之前',
-'orig'                => '原本',
 'page_first'          => '最頭',
 'page_last'           => '最尾',
 'histlegend'          => '選擇唔同版本：響兩個唔同版本嘅圓框分別撳一下，再撳最底的「比較被選版本」掣以作比較。<br />
@@ -802,6 +812,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'logdelete-logaction'         => '對於[[$3]]嘅$1件事設定咗去模式$2',
 'revdelete-success'           => '修訂可見性已經成功噉設定。',
 'logdelete-success'           => '事件可見性已經成功噉設定。',
+'pagehist'                    => '頁面歷史',
+'deletedhist'                 => '刪除咗嘅歷史',
 
 # Oversight log
 'oversightlog'    => '監督記錄',
@@ -809,10 +821,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 
 # History merging
 'mergehistory'                     => '合併頁歷史',
-'mergehistory-header'              => "呢一版可以畀你去合併一個來源頁嘅修訂記錄到另一個新頁。
-請確認呢次更改會繼續保留嗰版之前嘅歷史版。
-
-'''最少個來源頁嘅現時修訂一定會保持。'''",
+'mergehistory-header'              => '呢一版可以畀你去合併一個來源頁嘅修訂記錄到另一個新頁。
+請確認呢次更改會繼續保留嗰版之前嘅歷史版。',
 'mergehistory-box'                 => '合併兩版嘅修訂:',
 'mergehistory-from'                => '來源頁:',
 'mergehistory-into'                => '目的頁:',
@@ -827,6 +837,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'mergehistory-no-destination'      => '目的頁$1唔存在。',
 'mergehistory-invalid-source'      => '來源頁一定要係一個有效嘅標題。',
 'mergehistory-invalid-destination' => '目的頁一定要係一個有效嘅標題。',
+'mergehistory-autocomment'         => '已經合併咗[[:$1]]去到[[:$2]]',
+'mergehistory-comment'             => '已經合併咗[[:$1]]去到[[:$2]]: $3',
 
 # Merge log
 'mergelog'           => '合併日誌',
@@ -857,10 +869,18 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'prevn'                 => '前$1',
 'nextn'                 => '後$1',
 'viewprevnext'          => '去睇 ($1) ($2) ($3)',
+'search-result-size'    => '$1 ($2個字)',
+'search-result-score'   => '相關度: $1%',
+'search-redirect'       => '(跳轉 $1)',
+'search-section'        => '(小節 $1)',
+'search-suggest'        => '你係唔係搵: $1',
+'searchall'             => '全部',
 'showingresults'        => '自#<b>$2</b>起顯示最多<b>$1</b>個結果。',
 'showingresultsnum'     => '自#<b>$2</b>起顯示<b>$3</b>個結果。',
+'showingresultstotal'   => "下面顯示緊由'''$1 - $2'''，總共'''$3'''項嘅結果",
 'nonefound'             => "'''注意'''：搵嘢結果為空通常係因為你搵嘅係\"have\"、\"from\"等太常用而唔會被索引入數據庫嘅詞，又或者係你指定咗太多嘅關鍵字（只有包含所有你指定嘅關鍵字嘅頁面先至會被搵到出嚟）。",
-'powersearch'           => '搵嘢',
+'powersearch'           => '進階搵嘢',
+'powersearch-legend'    => '進階搵嘢',
 'powersearchtext'       => '喺以下嘅空間名度搵 :<br />$1<br />$2 彈去清單 &nbsp; $3 嘅搜尋 $9',
 'searchdisabled'        => '{{SITENAME}}嘅搜尋功能已經關閉。你可以利用Google嚟搵。不過佢哋對{{SITENAME}}嘅索引可能唔係最新嘅。',
 
@@ -926,6 +946,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'files'                    => '檔案',
 
 # User rights
+'userrights'                       => '用戶權限管理', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => '管理用戶組',
 'userrights-user-editname'         => '輸入一個用戶名：',
 'editusergroup'                    => '編輯用戶組',
@@ -1008,7 +1029,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'upload'                      => '上載檔案',
 'uploadbtn'                   => '上載檔案',
 'reupload'                    => '再上載',
-'reuploaddesc'                => '返到去上載表格。',
+'reuploaddesc'                => '取消上載再返到去上載表格',
 'uploadnologin'               => '重未登入',
 'uploadnologintext'           => '你必須先[[Special:Userlogin|登入]]去上載檔案。',
 'upload_directory_read_only'  => '嗰個上載嘅目錄 ($1) 而家唔能夠被網頁伺服器寫入。',
@@ -1032,7 +1053,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'filestatus'                  => '版權狀態:',
 'filesource'                  => '來源:',
 'uploadedfiles'               => '上載檔案中',
-'ignorewarning'               => '總要忽略警告同埋儲存檔案。',
+'ignorewarning'               => '總要忽略警告同埋儲存檔案',
 'ignorewarnings'              => '忽略任何警告',
 'minlength1'                  => '檔名必須最少要有一個字。',
 'illegalfilename'             => '檔名「$1」含有頁面標題所唔允許嘅字。請試下改檔名再上載。',
@@ -1069,6 +1090,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'uploadvirus'                 => '呢個檔案有病毒！詳情：$1',
 'sourcefilename'              => '來源檔名:',
 'destfilename'                => '目標檔名:',
+'upload-maxfilesize'          => '檔案最大限制大細: $1',
 'watchthisupload'             => '監視呢頁',
 'filewasdeleted'              => '呢個檔案所使用嘅名曾經上載後，跟住就刪除咗。你應該響重新上載佢之前檢查吓$1。',
 'upload-wasdeleted'           => "'''警告: 你而家上載嘅一個檔案係先前曾經刪除過嘅。'''
@@ -1096,18 +1118,21 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'upload_source_url'  => ' （啱嘅，公開嘅網址）',
 'upload_source_file' => ' （你部電腦裏面嘅一個檔案）',
 
-# Image list
-'imagelist'                 => '檔案清單',
-'imagelisttext'             => "以下係'''$1'''個檔案'''$2'''排序嘅清單。",
-'getimagelist'              => '獲取檔案清單中',
-'ilsubmit'                  => '搵嘢',
-'showlast'                  => '顯示$2排序嘅最後$1個檔案。',
-'byname'                    => '以檔名',
-'bydate'                    => '以時間',
-'bysize'                    => '以大細',
-'imgdelete'                 => '刪除',
-'imgdesc'                   => '描述',
-'imgfile'                   => '檔案',
+# Special:Imagelist
+'imagelist-summary'     => '呢個特別版顯示全部上載過嘅檔案。
+響預設最後上載嘅檔案會顯示響呢個表嘅最頂。
+撳一欄嘅標題去改個排列。',
+'imagelist_search_for'  => '搵媒體名:',
+'imgdesc'               => '描述',
+'imgfile'               => '檔案',
+'imagelist'             => '檔案清單',
+'imagelist_date'        => '日期',
+'imagelist_name'        => '名',
+'imagelist_user'        => '用戶',
+'imagelist_size'        => '大細',
+'imagelist_description' => '描述',
+
+# Image description page
 'filehist'                  => '檔案歷史',
 'filehist-help'             => '撳個日期／時間去睇響嗰個時間出現過嘅檔案。',
 'filehist-deleteall'        => '刪除全部',
@@ -1129,12 +1154,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'noimage'                   => '冇同名嘅檔案存在，你可以$1。',
 'noimage-linktext'          => '上載佢',
 'uploadnewversion-linktext' => '上載呢個檔案嘅一個新版本',
-'imagelist_date'            => '日期',
-'imagelist_name'            => '名',
-'imagelist_user'            => '用戶',
-'imagelist_size'            => '大細',
-'imagelist_description'     => '描述',
-'imagelist_search_for'      => '搵媒體名：',
+'imagepage-searchdupe'      => '搵重覆檔案',
 
 # File reversion
 'filerevert'                => '回復$1',
@@ -1251,7 +1271,6 @@ Template:搞清楚',
 'mostcategories'          => '有最多分類嘅頁面',
 'mostimages'              => '有最多連結嘅檔案',
 'mostrevisions'           => '有最多修改嘅頁面',
-'allpages'                => '所有頁面',
 'prefixindex'             => '前綴索引',
 'shortpages'              => '短頁',
 'longpages'               => '長頁',
@@ -1285,13 +1304,6 @@ Template:搞清楚',
 'booksources-go'            => '去',
 'booksources-text'          => '以下嘅連結清單列出其它一啲賣新書同二手書嘅網站，可能可以提供到有關你想搵嘅書嘅更多資料：',
 
-'categoriespagetext' => '喺呢個分類度有頁或媒體。',
-'data'               => '資料',
-'userrights'         => '用戶權限管理',
-'groups'             => '用戶組',
-'alphaindexline'     => '$1到$2',
-'version'            => '版本',
-
 # Special:Log
 'specialloguserlabel'  => '用戶:',
 'speciallogtitlelabel' => '標題:',
@@ -1304,6 +1316,8 @@ Template:搞清楚',
 'log-title-wildcard'   => '搵以呢個文字開始嘅標題',
 
 # Special:Allpages
+'allpages'          => '所有頁面',
+'alphaindexline'    => '$1到$2',
 'nextpage'          => '下一頁 ($1)',
 'prevpage'          => '上一頁 ($1)',
 'allpagesfrom'      => '顯示以下位置開始嘅頁面：',
@@ -1463,8 +1477,8 @@ wiki: $PAGEEDITOR_WIKI
 'protectedarticle'            => '已經保護 "[[$1]]"',
 'modifiedarticleprotection'   => '已經改咗 "[[$1]]" 嘅保護等級',
 'unprotectedarticle'          => '已經唔再保護 "[[$1]]"',
-'protectsub'                  => '（設定緊「$1」嘅保護等級）',
-'confirmprotect'              => '確認保護',
+'protect-title'               => '改緊「$1」嘅保護等級',
+'protect-legend'              => '確認保護',
 'protectcomment'              => '註解:',
 'protectexpiry'               => '到期:',
 'protect_expiry_invalid'      => '到期時間唔正確。',
@@ -1505,12 +1519,13 @@ wiki: $PAGEEDITOR_WIKI
 # Undelete
 'undelete'                     => '去睇刪除咗嘅頁面',
 'undeletepage'                 => '去睇同恢復刪除咗嘅頁面',
+'undeletepagetitle'            => "'''下面包括咗[[:$1]]嘅已刪除修訂'''。",
 'viewdeletedpage'              => '去睇被刪除咗嘅頁面',
 'undeletepagetext'             => '以下頁面已經刪除，但係重喺檔庫度可以恢復。檔案庫可能會定時清理。',
 'undeleteextrahelp'            => "要恢復成個頁面，唔好剔任何嘅核選盒，再撳'''''恢復'''''。要恢復已經選擇咗嘅修訂，將要恢復代表有關修訂嘅核選盒剔上，再撳'''''恢復'''''。撳'''''重設'''''會清除註解文字同埋全部嘅核選盒。",
 'undeleterevisions'            => '$1個修訂都已經存檔',
 'undeletehistory'              => '如果你恢復呢個頁面，佢嘅所有修改歷史都會恢復返到嗰篇頁面嘅歷史度。如果喺佢刪除之後又新開咗同名嘅頁面，你恢復嘅修改歷史會顯示喺先前歷史度。同時請留意響個檔案修訂嘅限制會響恢復嗰陣遺失。',
-'undeleterevdel'               => '如果響最新修訂度部份刪除，噉反刪除就唔能夠進行。如果遇到呢種情況，你一定要反選或者反隱藏最新刪除咗嘅修訂。對於你冇權限去睇嘅修訂係唔能夠恢復嘅。',
+'undeleterevdel'               => '如果響最新修訂度部份刪除，噉反刪除就唔能夠進行。如果遇到呢種情況，你一定要反選或者反隱藏最新刪除咗嘅修訂。',
 'undeletehistorynoadmin'       => '呢一版已經刪咗。刪除嘅原因喺下面嘅摘要度，連同重有刪除之前編輯過呢個頁面嘅用戶嘅詳細資料。所刪除嘅版本嘅實際內容得管理員可以睇到。',
 'undelete-revision'            => '已經刪除咗$1嗰陣（響$2）由$3所寫嘅修訂:',
 'undeleterevision-missing'     => '唔正確或者遺失咗修訂。你可能有一個壞連結，或者嗰個修訂已經響存檔度恢復咗或者刪除咗。',
@@ -1563,8 +1578,6 @@ $1',
 'sp-contributions-search'      => '搵貢獻',
 'sp-contributions-username'    => 'IP地址或用戶名：',
 'sp-contributions-submit'      => '搵',
-
-'sp-newimages-showfrom' => '顯示由$1嘅新檔',
 
 # What links here
 'whatlinkshere'       => '有乜嘢連結來呢度',
@@ -1684,7 +1697,8 @@ $1',
 'databasenotlocked'   => '資料庫而家冇鎖到。',
 
 # Move page
-'move-page-legend'                => '搬頁',
+'move-page'               => '搬$1',
+'move-page-legend'        => '搬頁',
 'movepagetext'            => "使用以下表格會將頁面改名，兼且連同搬埋佢嘅歷史過去。
 舊標題會變成指去新標題嘅跳轉頁。
 指去舊標題嘅連結唔會修改到；請務必要檢查吓有冇雙重跳轉或者死跳轉（嘅情況發生）。
@@ -1889,16 +1903,12 @@ $1',
 'nocredits'        => '呢一頁並無任何嘅信譽資料可以提供。',
 
 # Spam protection
-'spamprotectiontitle'    => '隔垃圾器',
-'spamprotectiontext'     => '隔垃圾器已經擋住咗你要儲存嘅頁面。噉可能係由指去外部網站嘅連結引起。',
-'spamprotectionmatch'    => '以下係觸發我哋嘅反垃圾過濾器嘅文字：$1',
-'subcategorycount'       => '呢個類別入邊有$1個細類別。',
-'categoryarticlecount'   => '呢個類別入邊有$1版。',
-'category-media-count'   => '呢個類別入邊有$1份檔案。',
-'listingcontinuesabbrev' => '續',
-'spambot_username'       => 'MediaWiki垃圾清除',
-'spam_reverting'         => '恢復返去最後一個唔包含指去$1嘅連結嘅嗰個版本。',
-'spam_blanking'          => '全部版本都含有指去$1嘅連結，留空',
+'spamprotectiontitle' => '隔垃圾器',
+'spamprotectiontext'  => '隔垃圾器已經擋住咗你要儲存嘅頁面。噉可能係由指去外部網站嘅連結引起。',
+'spamprotectionmatch' => '以下係觸發我哋嘅反垃圾過濾器嘅文字：$1',
+'spambot_username'    => 'MediaWiki垃圾清除',
+'spam_reverting'      => '恢復返去最後一個唔包含指去$1嘅連結嘅嗰個版本。',
+'spam_blanking'       => '全部版本都含有指去$1嘅連結，留空',
 
 # Info page
 'infosubtitle'   => '頁面嘅資訊',
@@ -1960,9 +1970,14 @@ $1',
 'show-big-image-thumb' => '<small>呢個預覽嘅大細： $1 × $2 像素</small>',
 
 # Special:Newimages
-'newimages'    => '新檔案畫廊',
-'showhidebots' => '($1 機械人)',
-'noimages'     => '冇嘢去睇。',
+'newimages'             => '新檔案畫廊',
+'imagelisttext'         => "以下係'''$1'''個檔案$2排序嘅清單。",
+'newimages-summary'     => '呢個特別頁顯示最後上載咗嘅檔案',
+'showhidebots'          => '($1 機械人)',
+'noimages'              => '冇嘢去睇。',
+'ilsubmit'              => '搵嘢',
+'bydate'                => '以時間',
+'sp-newimages-showfrom' => '顯示由$1 $2嘅新檔',
 
 # Bad image list
 'bad_image_list' => '請根據下面嘅格式去寫:
@@ -2278,31 +2293,37 @@ Variants for Chinese language
 'monthsall'        => '全部',
 
 # E-mail address confirmation
-'confirmemail'            => '確認電郵地址',
-'confirmemail_noemail'    => '你唔需要響你嘅[[Special:Preferences|用戶喜好設定]]度設定一個有效嘅電郵地址。',
-'confirmemail_text'       => '{{SITENAME}}需要你喺使用電郵功能之前驗證吓你嘅電郵地址。啟用下邊個掣嚟發封確認信去你個地址度。封信入面會附帶一條包含代碼嘅連結；喺你個瀏覽器度打開條連結嚟確認你嘅電郵地址係有效嘅。',
-'confirmemail_pending'    => '<div class="error">一個確認碼已經電郵咗畀你；如果你係啱啱開咗個新戶口嘅，你可以響請求一個新嘅確認碼之前等多幾分鐘等佢寄畀你。</div>',
-'confirmemail_send'       => '寄出確認碼。',
-'confirmemail_sent'       => '確認電郵已經寄出。',
-'confirmemail_oncreate'   => '一個確認碼已經寄送咗到嘅嘅電郵地址。
+'confirmemail'             => '確認電郵地址',
+'confirmemail_noemail'     => '你唔需要響你嘅[[Special:Preferences|用戶喜好設定]]度設定一個有效嘅電郵地址。',
+'confirmemail_text'        => '{{SITENAME}}需要你喺使用電郵功能之前驗證吓你嘅電郵地址。啟用下邊個掣嚟發封確認信去你個地址度。封信入面會附帶一條包含代碼嘅連結；喺你個瀏覽器度打開條連結嚟確認你嘅電郵地址係有效嘅。',
+'confirmemail_pending'     => '<div class="error">一個確認碼已經電郵咗畀你；如果你係啱啱開咗個新戶口嘅，你可以響請求一個新嘅確認碼之前等多幾分鐘等佢寄畀你。</div>',
+'confirmemail_send'        => '寄出確認碼。',
+'confirmemail_sent'        => '確認電郵已經寄出。',
+'confirmemail_oncreate'    => '一個確認碼已經寄送咗到嘅嘅電郵地址。
 呢個代碼唔係登入嗰陣去用，但係你需要佢去開響呢個wiki度，任何同電郵有關嘅功能。',
-'confirmemail_sendfailed' => '發唔到確認信。請檢查吓個地址有冇無效嘅字。
+'confirmemail_sendfailed'  => '發唔到確認信。請檢查吓個地址有冇無效嘅字。
 
 郵件遞送員回應咗：$1',
-'confirmemail_invalid'    => '無效嘅確認碼。個代碼可能已經過咗期。',
-'confirmemail_needlogin'  => '你需要先$1去確認你嘅電郵地址。',
-'confirmemail_success'    => '你嘅電郵地址已經得到確認。你而家可以登入同盡情享受wiki啦。',
-'confirmemail_loggedin'   => '你嘅電郵地址現已得到確認。',
-'confirmemail_error'      => '儲存你嘅確認資料嘅時候有小小嘢發生咗意外。',
-'confirmemail_subject'    => '{{SITENAME}}電郵地址確認',
-'confirmemail_body'       => '有人（好有可能係嚟自你嘅IP地址 $1）已經用呢個電郵地址喺{{SITENAME}}度註冊咗帳戶"$2"
+'confirmemail_invalid'     => '無效嘅確認碼。個代碼可能已經過咗期。',
+'confirmemail_needlogin'   => '你需要先$1去確認你嘅電郵地址。',
+'confirmemail_success'     => '你嘅電郵地址已經得到確認。你而家可以登入同盡情享受wiki啦。',
+'confirmemail_loggedin'    => '你嘅電郵地址現已得到確認。',
+'confirmemail_error'       => '儲存你嘅確認資料嘅時候有小小嘢發生咗意外。',
+'confirmemail_subject'     => '{{SITENAME}}電郵地址確認',
+'confirmemail_body'        => '有人（好有可能係嚟自你嘅IP地址 $1）已經用呢個電郵地址喺{{SITENAME}}度註冊咗帳戶"$2"
 
 要確認呢個帳戶的而且確屬於你同埋啟用{{SITENAME}}嘅電郵功能，請喺你嘅瀏覽器度打開呢條連結：
 
 $3
 
-如果呢個*唔係*你，請唔好打開條連結。
+如果你係*未*註冊個戶口嘅，
+請跟住呢個連結去取消電郵地址確認：
+
+$5
+
 呢個確認代碼會喺$4到期。',
+'confirmemail_invalidated' => '電郵地址確認取消咗',
+'invalidateemail'          => '取消電郵確認',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[跨 wiki 滲漏正停用]',
@@ -2398,6 +2419,7 @@ $1',
 'unknown_extension_tag' => '未知嘅擴展標籤 "$1"',
 
 # Special:Version
+'version'                          => '版本', # Not used as normal message but as header for the special page itself
 'version-extensions'               => '裝咗嘅擴展',
 'version-specialpages'             => '特別頁',
 'version-parserhooks'              => '語法鈎',
@@ -2424,5 +2446,17 @@ $1',
 'filepath-summary' => '呢個特別頁拎一個檔案嘅完整路徑。圖像會以完整嘅解像度顯示，其它嘅檔案類型會以同佢哋關聯咗嘅程式啟動。
 
 請輸入檔名，唔好連埋個"{{ns:image}}:"開頭。',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => '㨂重覆檔案',
+'fileduplicatesearch-summary'  => '用重覆檔案嘅切細值去搵個檔案係唔係重覆。
+
+輸入檔名嗰陣唔使輸入 "{{ns:image}}:" 開頭。',
+'fileduplicatesearch-legend'   => '搵重覆',
+'fileduplicatesearch-filename' => '檔名:',
+'fileduplicatesearch-submit'   => '搵',
+'fileduplicatesearch-info'     => '$1 × $2 像素<br />檔案大細: $3<br />MIME類型: $4',
+'fileduplicatesearch-result-1' => '個檔案 "$1" 無完全相同嘅重覆。',
+'fileduplicatesearch-result-n' => '個檔案 "$1" 有$2項完全相同嘅重覆。',
 
 );

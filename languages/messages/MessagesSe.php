@@ -4,14 +4,11 @@
  * @addtogroup Language
  *
  * @author Skuolfi
- * @author G - ג
  * @author Siebrand
  * @author Teak
  * @author לערי ריינהארט
  * @author SPQRobin
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -106,13 +103,15 @@ $messages = array(
 'nov'           => 'skábmamánnu',
 'dec'           => 'juovlamánnu',
 
-# Bits of text used by many pages
-'categories'            => 'Luohkát',
-'pagecategories'        => '{{PLURAL:$1|Luohkká|Luohkát}}',
-'category_header'       => 'Siiddut, mat gullet luohkkái $1',
-'subcategories'         => 'Vuolleluohkát',
-'category-media-header' => 'Fiillat luohkás ”$1”',
-'category-empty'        => "''Dán luohkás eai leat siiddut eaige fiillat.''",
+# Categories related messages
+'categories'             => 'Luohkát',
+'categoriespagetext'     => '{{GRAMMAR:inessive|{{SITENAME}}}} lea čuovvovaš luohkát:',
+'pagecategories'         => '{{PLURAL:$1|Luohkká|Luohkát}}',
+'category_header'        => 'Siiddut, mat gullet luohkkái $1',
+'subcategories'          => 'Vuolleluohkát',
+'category-media-header'  => 'Fiillat luohkás ”$1”',
+'category-empty'         => "''Dán luohkás eai leat siiddut eaige fiillat.''",
+'listingcontinuesabbrev' => 'joatk.',
 
 'about'          => 'Dieđut',
 'article'        => 'Siidu',
@@ -427,7 +426,6 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'nohistory'           => 'Dán siiddus ii leat rievdadanhistorjá.',
 'revnotfound'         => 'Veršuvdna ii dihtto',
 'revnotfoundtext'     => 'Veršuvdna, man ohcet, ii dihtto. Dárkkis URL-čujuhusa, mainna ohcet dán siiddu.',
-'loadhist'            => 'Siidohistorjá ládejuvvo',
 'currentrev'          => 'Dálá veršuvdna',
 'revisionasof'        => 'Veršuvdna $1',
 'revision-info'       => 'Dálá veršuvdna $1 – ráhkadan $2',
@@ -437,7 +435,6 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'cur'                 => 'dálá',
 'next'                => 'čuovvovaš',
 'last'                => 'ovddit',
-'orig'                => 'originála',
 'page_first'          => 'vuosttas siidu',
 'page_last'           => 'maŋimus siidu',
 'deletedrev'          => '[sihkojuvvon]',
@@ -547,6 +544,7 @@ $1 | $2',
 'files'                    => 'Fiillat',
 
 # User rights
+'userrights'                  => 'Geavaheaddjirivttiid stivren', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'      => 'Geavaheaddjirivttiid stivren',
 'userrights-user-editname'    => 'Geavaheaddjidovddaldat',
 'editusergroup'               => 'Rievdat geavaheaddjijoavkkuid',
@@ -587,7 +585,7 @@ $1 | $2',
 'recentchangestext'                 => 'Dán siiddus sáhtat čuovvut varas rievdadusaid {{GRAMMAR:illative|{{SITENAME}}}}.',
 'recentchanges-feed-description'    => 'Dán siiddus sáhtat čuovvut varas {{GRAMMAR:illative|{{SITENAME}}}} rievdadusaid.',
 'rcnote'                            => 'Vuollin {{PLURAL:$1|lea okta rievdadus|leat $1 varas rievdadusa}} {{PLURAL:$2|ovtta beaivvi|$2 maŋimus jándora}} áigge gitta $3 rádjái.',
-'rcnotefrom'                        => 'Vuolábealde leat rievdadusat <b>$2</b> rájes. Eanemusta <b>$1</b> mearkkastaga čájehuvvo.',
+'rcnotefrom'                        => "Vuolábealde leat rievdadusat '''$2''' rájes. Eanemusta '''$1''' mearkkastaga čájehuvvo.",
 'rclistfrom'                        => 'Čájet ođđa rievdadusat $1 rájes',
 'rcshowhideminor'                   => '$1 unna rievdádusat',
 'rcshowhidebots'                    => '$1 bohtat',
@@ -625,7 +623,7 @@ $1 | $2',
 'fileuploadsummary'  => 'Čoahkkáigeassu',
 'filesource'         => 'Gáldu:',
 'uploadedfiles'      => 'Lasihuvvon fiillat',
-'ignorewarning'      => 'Vurke fuolatkeahttá varuhusas.',
+'ignorewarning'      => 'Vurke fuolatkeahttá varuhusas',
 'minlength1'         => 'Fiilla namas ferte leat unnimustá okta mearka.',
 'badfilename'        => 'Fiilla nama rievdaduvvui: $1.',
 'filetype-missing'   => 'Fiillas vailui fiilageažus – ovdamearkkan <tt>.jpg</tt>.',
@@ -641,8 +639,8 @@ $1 | $2',
 'uploadscripted'     => 'Dát fiila sisdisdoalla HTML-koda dahje skriptaid, maid neahttabláđejeaddji sáhttá vahagis dahkat.',
 'uploadcorrupt'      => 'Fiila lea billahuvvan dahje das lea boasto fiilageažus. Dárkis fiilla ja sádde dan ođđasit.',
 'uploadvirus'        => 'Fiila sisdoalla virusa. Dárkilut dieđut: $1',
-'sourcefilename'     => 'Gáldonamma:',
-'destfilename'       => 'Mearrenamma:',
+'sourcefilename'     => 'Gáldonamma',
+'destfilename'       => 'Mearrenamma',
 'watchthisupload'    => 'Čuovo dán siiddu',
 'filewasdeleted'     => 'Dán nammasaš fiila lea lasihuvvon ja sihkojuvvon jo ovda. Dárkis $1 ovdalgo joatkat.',
 
@@ -653,24 +651,24 @@ $1 | $2',
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6' => 'Čujuhus ii doaimma',
 
-'license'            => 'Liseansa:',
+'license'            => 'Liseansa',
 'nolicense'          => 'Ii liseansa',
 'license-nopreview'  => '(ovdalgihtii geahččan ii leat vejolaš)',
 'upload_source_url'  => ' (almmolaš URL-čujuhus)',
 'upload_source_file' => ' (fiila dihtoris)',
 
-# Image list
-'imagelist'                 => 'Fiilalogahallan',
-'imagelisttext'             => 'Vuolábealde lea <strong>$1</strong> fiilla ordnejuvvon <strong>$2</strong>.',
-'getimagelist'              => 'fiilalogahallan viččojuvvo',
-'ilsubmit'                  => 'Oza',
-'showlast'                  => 'Čájet maŋimus $1 fiilla $2.',
-'byname'                    => 'nama mielde',
-'bydate'                    => 'beaivemeari mielde',
-'bysize'                    => 'sturrodaga mielde',
-'imgdelete'                 => 'sihko',
-'imgdesc'                   => 'govvádus',
-'imgfile'                   => 'fiila',
+# Special:Imagelist
+'imagelist_search_for'  => 'Nammaohcan',
+'imgdesc'               => 'govvádus',
+'imgfile'               => 'fiila',
+'imagelist'             => 'Fiilalogahallan',
+'imagelist_date'        => 'Beaivemearri',
+'imagelist_name'        => 'Namma',
+'imagelist_user'        => 'Vurkejeaddji',
+'imagelist_size'        => 'Sturrodat',
+'imagelist_description' => 'Govvádus',
+
+# Image description page
 'filehist'                  => 'Fiilla historjá',
 'filehist-help'             => 'Go deaddilat beaivemeari, oainnat makká fiila lei dalle.',
 'filehist-deleteall'        => 'sihko buot',
@@ -691,12 +689,6 @@ $1 | $2',
 'noimage'                   => 'Dán nammasaš fiila ii dihtto. Sáhtat $1 {{GRAMMAR:illative|{{SITENAME}}}}.',
 'noimage-linktext'          => 'lasihit fiilla',
 'uploadnewversion-linktext' => 'Vurke ođđa veršuvnna dán fiillas',
-'imagelist_date'            => 'Beaivemearri',
-'imagelist_name'            => 'Namma',
-'imagelist_user'            => 'Vurkejeaddji',
-'imagelist_size'            => 'Sturrodat',
-'imagelist_description'     => 'Govvádus',
-'imagelist_search_for'      => 'Nammaohcan',
 
 # File reversion
 'filerevert'                => 'Fiilla $1 máhcaheapmi',
@@ -788,7 +780,6 @@ $1 | $2',
 'mostcategories'          => 'Siiddut, mat gullet eanemus luohkáide',
 'mostimages'              => 'Govat, maidda lea čujuhuvvon dávjemus',
 'mostrevisions'           => 'Siiddut, mat leat rievdáduvvon eanemustá',
-'allpages'                => 'Buot siiddut',
 'shortpages'              => 'Oanehis siiddut',
 'longpages'               => 'Guhkes siiddut',
 'deadendpages'            => 'Siiddut, main eai leat liŋkkat',
@@ -815,12 +806,6 @@ $1 | $2',
 'booksources-go'            => 'Oza',
 'booksources-text'          => 'Vuolábealde leat liŋkkat olggobeal siidduide, main vuvdojuvvot ođđa ja boares girjjid. Siiddui sáhttá maid leat lassedieđut girjjiin.',
 
-'categoriespagetext' => '{{GRAMMAR:inessive|{{SITENAME}}}} lea čuovvovaš luohkát:',
-'userrights'         => 'Geavaheaddjirivttiid stivren',
-'groups'             => 'Joavkkut',
-'alphaindexline'     => '$1…$2',
-'version'            => 'Veršuvdna',
-
 # Special:Log
 'specialloguserlabel'  => 'Geavaheaddji',
 'speciallogtitlelabel' => 'Mearri',
@@ -832,6 +817,8 @@ $1 | $2',
 'log-title-wildcard'   => 'Mearri álgá mearkkaiguin',
 
 # Special:Allpages
+'allpages'          => 'Buot siiddut',
+'alphaindexline'    => '$1…$2',
 'nextpage'          => 'Čuovvovaš siidu ($1)',
 'prevpage'          => 'Ovddit siidu ($1)',
 'allarticles'       => 'Buot siiddut',
@@ -901,7 +888,7 @@ $1 | $2',
 'watchlist-show-minor' => 'Čájet unna rievdádusaid',
 'watchlist-hide-minor' => 'Čiega unna rievdádusaid',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Lasihuvvo čuovvunlistui...',
 'unwatching' => 'Sihkojuvvo čuovvunlisttus...',
 
@@ -945,8 +932,8 @@ $1 | $2',
 'protectedarticle'            => 'suodjálii siiddu $1',
 'modifiedarticleprotection'   => 'rievddai siiddu [[$1]] suodjálandási',
 'unprotectedarticle'          => 'heittii siiddu $1 suodjaleami',
-'protectsub'                  => 'Siiddu $1 suodjáleapmi',
-'confirmprotect'              => 'Nanne suodjáleami',
+'protect-title'               => 'Siiddu $1 suodjáleapmi',
+'protect-legend'              => 'Nanne suodjáleami',
 'protectcomment'              => 'Suodjáleami sivva:',
 'protectexpiry'               => 'Boarásnuvvá',
 'protect_expiry_invalid'      => 'Buorášnuvvánáigi ii dohket.',
@@ -997,8 +984,6 @@ $1 | $2',
 # Contributions
 'contributions' => 'Geavaheaddji rievdadusat',
 'mycontris'     => 'Rievdadusat',
-'ucnote'        => "Vuolábealde leat '''$1''' maŋimus rievdadusa, maid dát geavaheaddji lea rahkadan maŋimus '''$2''' beaivve siste.",
-'uclinks'       => 'Geahča $1 maŋimus rievdadusa; geahča $2 maŋimus beaivvi.',
 'month'         => 'Mánotbadji',
 'year'          => 'Jahki',
 
@@ -1008,8 +993,6 @@ $1 | $2',
 'sp-contributions-search'      => 'Oza rievdadusaid',
 'sp-contributions-username'    => 'IP-čujuhus dahje geavaheaddjidovddaldat',
 'sp-contributions-submit'      => 'Oza',
-
-'sp-newimages-showfrom' => 'Čájet ođđa govaid $1 rájes',
 
 # What links here
 'whatlinkshere'       => 'Siiddut mat čujuhit deikke',
@@ -1072,7 +1055,7 @@ $1 | $2',
 'unlockdbsuccesssub' => 'Diehtovuođu rahpan lihkosmuvai',
 
 # Move page
-'move-page-legend'                => 'Sirdde siiddu',
+'move-page-legend'        => 'Sirdde siiddu',
 'movearticle'             => 'Sirdde siiddu',
 'movenologin'             => 'It leat čálligoahtán sisa',
 'newtitle'                => 'Ođđa namma siidui',
@@ -1173,12 +1156,6 @@ $1 | $2',
 'siteusers'   => '{{GRAMMAR:genitive|{{SITENAME}}}} geavaheaddji(t) $1',
 'creditspage' => 'Siiddu dahkkit',
 
-# Spam protection
-'subcategorycount'       => 'Dán luohkás {{PLURAL:$1|lea okta vuolleluohkká|leat $1 vuolleluohká}}.',
-'categoryarticlecount'   => 'Dán luohkás {{PLURAL:$1|lea okta siidu|leat $1 siiddu}}.',
-'category-media-count'   => 'Dán luohkás {{PLURAL:$1|lea okta fiila|leat $1 fiilla}}.',
-'listingcontinuesabbrev' => 'joatk.',
-
 # Info page
 'infosubtitle' => 'Dieđut siiddus',
 'numedits'     => 'Siiddu rievdadusaid mearri: $1',
@@ -1205,7 +1182,11 @@ $1 | $2',
 'widthheightpage' => '$1×$2, $3 siiddut',
 
 # Special:Newimages
-'newimages' => 'Ođđa govat',
+'newimages'             => 'Ođđa govat',
+'imagelisttext'         => 'Vuolábealde lea <strong>$1</strong> fiilla ordnejuvvon <strong>$2</strong>.',
+'ilsubmit'              => 'Oza',
+'bydate'                => 'beaivemeari mielde',
+'sp-newimages-showfrom' => 'Čájet ođđa govaid $1 rájes',
 
 # Metadata
 'metadata-expand'   => 'Čájet buot sisdoallogovvádusaid',
@@ -1334,5 +1315,8 @@ $1 | $2',
 # Watchlist editing tools
 'watchlisttools-view' => 'Čájet rievdadusaid',
 'watchlisttools-edit' => 'Ođasmahte listtu',
+
+# Special:Version
+'version' => 'Veršuvdna', # Not used as normal message but as header for the special page itself
 
 );

@@ -53,25 +53,51 @@ $namespaceNames = array(
 );
 
 $magicWords = array(
-	'currentmonth'        => array( 'اوسنۍمياشت' ),
-	'currentmonthname'    => array( 'داوسنۍمياشت-نوم' ),
-	'currentday'          => array( 'ننۍورځ' ),
-	'currentday2'         => array( 'ننۍورځ۲' ),
-	'currentdayname'      => array( 'دننۍورځې-نوم' ),
-	'currentyear'         => array( 'سږکال' ),
-	'currenttime'         => array( 'دم-مهال' ),
-	'currenthour'         => array( 'دم-ګړۍ' ),
-	'localmonth'          => array( 'سيمه-يزه-مياشت' ),
-	'localmonthname'      => array( 'دسيمه-يزې-مياشتې-نوم' ),
-	'pagename'            => array( 'دپاڼې-نوم' ),
-	'pagenamee'           => array( 'دپاڼې-نومم' ),
-	'namespace'           => array( 'نوم-تشيال' ),
-	'namespacee'          => array( 'نوم-تشيالل' ),
-	'img_right'           => array( 'ښي' ),
-	'img_left'            => array( 'کيڼ' ),
-	'server'              => array( 'پالنګر' ),
-	'servername'          => array( 'دپالنګرنوم' ),
-	'language'            => array( '#ژبه:' ),
+	'notoc'               => array( '0', '__بی‌نيولک__', '__NOTOC__' ),
+	'nogallery'           => array( '0', '__بی‌نندارتونه__', '__NOGALLERY__' ),
+	'forcetoc'            => array( '0', '__نيوليکداره__', '__FORCETOC__' ),
+	'toc'                 => array( '0', '__نيوليک__', '__TOC__' ),
+	'noeditsection'       => array( '0', '__بی‌برخې__', '__NOEDITSECTION__' ),
+	'currentmonth'        => array( '1', 'روانه_مياشت', 'CURRENTMONTH' ),
+	'currentmonthname'    => array( '1', 'دروانې_مياشت_نوم', 'CURRENTMONTHNAME' ),
+	'currentmonthabbrev'  => array( '1', 'دروانې_مياشت_لنډون', 'CURRENTMONTHABBREV' ),
+	'currentday'          => array( '1', 'نن', 'CURRENTDAY' ),
+	'currentday2'         => array( '1', 'نن۲', 'CURRENTDAY2' ),
+	'currentdayname'      => array( '1', 'دننۍورځې_نوم', 'CURRENTDAYNAME' ),
+	'currentyear'         => array( '1', 'سږکال', 'CURRENTYEAR' ),
+	'currenttime'         => array( '1', 'داوخت', 'CURRENTTIME' ),
+	'currenthour'         => array( '1', 'دم_ګړۍ', 'CURRENTHOUR' ),
+	'localmonth'          => array( '1', 'سيمه_يزه_مياشت', 'LOCALMONTH' ),
+	'localmonthname'      => array( '1', 'دسيمه_يزې_مياشت_نوم', 'LOCALMONTHNAME' ),
+	'localmonthabbrev'    => array( '1', 'دسيمه_يزې_مياشت_لنډون', 'LOCALMONTHABBREV' ),
+	'localday'            => array( '1', 'سيمه_يزه_ورځ', 'LOCALDAY' ),
+	'localday2'           => array( '1', 'سيمه_يزه_ورځ۲', 'LOCALDAY2' ),
+	'localdayname'        => array( '1', 'دسيمه_يزې_ورځ_نوم', 'LOCALDAYNAME' ),
+	'localyear'           => array( '1', 'سيمه_يزکال', 'LOCALYEAR' ),
+	'localtime'           => array( '1', 'سيمه_يزوخت', 'LOCALTIME' ),
+	'localhour'           => array( '1', 'سيمه_يزه_ګړۍ', 'LOCALHOUR' ),
+	'numberofpages'       => array( '1', 'دمخونوشمېر', 'NUMBEROFPAGES' ),
+	'numberofarticles'    => array( '1', 'دليکنوشمېر', 'NUMBEROFARTICLES' ),
+	'numberoffiles'       => array( '1', 'ددوتنوشمېر', 'NUMBEROFFILES' ),
+	'numberofusers'       => array( '1', 'دکارونکوشمېر', 'NUMBEROFUSERS' ),
+	'pagename'            => array( '1', 'دمخ_نوم', 'PAGENAME' ),
+	'pagenamee'           => array( '1', 'دمخ_نښه', 'PAGENAMEE' ),
+	'namespace'           => array( '1', 'نوم_تشيال', 'NAMESPACE' ),
+	'namespacee'          => array( '1', 'د_نوم_تشيال_نښه', 'NAMESPACEE' ),
+	'talkspace'           => array( '1', 'دخبرواترو_تشيال', 'TALKSPACE' ),
+	'img_right'           => array( '1', 'ښي', 'right' ),
+	'img_left'            => array( '1', 'کيڼ', 'left' ),
+	'img_none'            => array( '1', 'هېڅ', 'none' ),
+	'img_width'           => array( '1', '$1px' ),
+	'sitename'            => array( '1', 'دوېبځي_نوم', 'SITENAME' ),
+	'server'              => array( '0', 'پالنګر', 'SERVER' ),
+	'servername'          => array( '0', 'دپالنګر_نوم', 'SERVERNAME' ),
+	'grammar'             => array( '0', 'GRAMMAR:' ),
+	'currentweek'         => array( '1', 'روانه_اوونۍ', 'CURRENTWEEK' ),
+	'currentdow'          => array( '1', 'داوونۍورځ', 'CURRENTDOW' ),
+	'localweek'           => array( '1', 'سيمه_يزه_اوونۍ', 'LOCALWEEK' ),
+	'language'            => array( '0', '#ژبه:', '#LANGUAGE:' ),
+	'hiddencat'           => array( '1', '__پټه_وېشنيزه__', '__HIDDENCAT__' ),
 );
 
 $rtl = true;
@@ -153,8 +179,9 @@ $messages = array(
 'nov'           => 'نومبر',
 'dec'           => 'ډيسمبر',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'               => 'وېشنيزې',
+'categoriespagetext'       => 'په دغه ويکي (wiki) کې همدا لاندينۍ وېشنيزې دي.',
 'pagecategories'           => '{{PLURAL:$1|وېشنيزه|وېشنيزې}}',
 'category_header'          => 'د "$1" په وېشنيزه کې شته مخونه',
 'subcategories'            => 'وړې-وېشنيزې',
@@ -162,6 +189,7 @@ $messages = array(
 'category-empty'           => "''تر اوسه پورې همدا وېشنيزه هېڅ کوم مخ يا کومه رسنيزه دوتنه نلري.''",
 'hidden-categories'        => '{{PLURAL:$1|پټه وېشنيزه|پټې وېشنيزې}}',
 'hidden-category-category' => 'پټې وېشنيزې', # Name of the category where hidden categories will be listed
+'listingcontinuesabbrev'   => 'پرله پسې',
 
 'mainpagetext' => "<big>'''MediaWiki په برياليتوب سره نصب شو.'''</big>",
 
@@ -232,21 +260,21 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'د {{SITENAME}} په اړه',
-'aboutpage'         => 'پروژه:په اړه',
+'aboutpage'         => 'Project:په اړه',
 'copyright'         => 'دا مېنځپانګه د $1 له مخې ستاسو لاس رسي لپاره دلته ده.',
-'copyrightpage'     => 'Project:د رښتو حق',
+'copyrightpage'     => '{{ns:project}}:د رښتو حق',
 'currentevents'     => 'اوسنۍ پېښې',
-'currentevents-url' => 'اوسنۍ پېښې',
+'currentevents-url' => 'Project:اوسنۍ پېښې',
 'disclaimers'       => 'ردادعاليکونه',
-'disclaimerpage'    => 'پروژه:ټولګړی ردادعاليک',
+'disclaimerpage'    => 'Project:ټولګړی ردادعاليک',
 'edithelp'          => 'د لارښود سماد',
-'helppage'          => 'لارښود:لړليک',
+'helppage'          => 'Help:لړليک',
 'mainpage'          => 'لومړی مخ',
-'policy-url'        => 'پروژه:تګلاره',
+'policy-url'        => 'Project:تګلاره',
 'portal'            => 'ټولګړی ورټک',
 'portal-url'        => 'Project:ټولګړی ورټک',
 'privacy'           => 'د محرميت تګلاره',
-'privacypage'       => 'پروژه:د محرميت_تګلاره',
+'privacypage'       => 'Project:د محرميت_تګلاره',
 'sitesupport'       => 'بسپنې',
 
 'badaccess'        => 'د لاسرسۍ تېروتنه',
@@ -255,7 +283,7 @@ $messages = array(
 'badaccess-group2' => 'د کومې کړنې غوښتنه چې تاسو کړې د هغو کارونکو پورې محدوده ده کوم چې يو د $1 د ډلې څخه دي.',
 'badaccess-groups' => 'د کومې کړنې غوښتنه چې تاسو کړې د هغو کارونکو پورې محدوده ده کوم چې يو د $1 د ډلې څخه دي.',
 
-'ok'                      => 'ښه/هو',
+'ok'                      => 'هو',
 'youhavenewmessages'      => 'تاسو $1 لری  ($2).',
 'newmessageslink'         => 'نوي پيغامونه',
 'newmessagesdifflink'     => 'وروستی بدلون',
@@ -266,6 +294,9 @@ $messages = array(
 'toc'                     => 'نيوليک',
 'showtoc'                 => 'ښکاره کول',
 'hidetoc'                 => 'پټول',
+'site-rss-feed'           => '$1 د آر اس اس کتنه',
+'site-atom-feed'          => '$1 د اټوم کتنه',
+'page-rss-feed'           => '"$1" د آر اس اس کتنه',
 'feed-rss'                => 'آر اس اس',
 'red-link-title'          => '$1 (تر اوسه پورې نه دی ليکل شوی)',
 
@@ -321,7 +352,7 @@ $messages = array(
 'yourpasswordagain'          => 'پټنوم بيا وليکه',
 'remembermypassword'         => 'زما پټنوم پدې کمپيوټر په ياد ولره!',
 'loginproblem'               => '<b>همدې غونډال ته ستاسو په ننوتنه کې يوه ستونزه راپېښه شوه!</b><br />بيا يې وآزمويۍ!',
-'login'                      => 'ننوتنه',
+'login'                      => 'ننوتل',
 'loginprompt'                => 'په {{SITENAME}} کې د ننوتنې لپاره، تاسو بايد خپل د کمپيوټر کوکيز (cookies) <br>چارن کړۍ.',
 'userlogin'                  => 'ننوتنه / کارن-نوم جوړول',
 'logout'                     => 'وتنه',
@@ -331,7 +362,7 @@ $messages = array(
 'nologinlink'                => 'يو کارن-حساب جوړول',
 'createaccount'              => 'کارن-حساب جوړول',
 'gotaccount'                 => 'آيا وار دمخې يو کارن-حساب لری؟ $1.',
-'gotaccountlink'             => 'ننوتنه',
+'gotaccountlink'             => 'ننوتل',
 'createaccountmail'          => 'د برېښليک له مخې',
 'badretype'                  => 'دا پټنوم چې تاسو ليکلی د پخواني پټنوم سره ورته نه دی.',
 'userexists'                 => 'کوم کارن نوم چې تاسو ورکړی هغه بل چا کارولی. لطفاً يو بل ډول نوم وټاکۍ.',
@@ -394,7 +425,7 @@ $messages = array(
 'math_sample'     => 'فورمول دلته ځای کړی',
 'math_tip'        => 'شمېرپوهنيز فورمول (LaTeX)',
 'image_tip'       => 'خښه شوې دوتنه',
-'media_tip'       => 'د رسنيزې دوتنې تړنه',
+'media_tip'       => 'د دوتنې تړنه',
 'sig_tip'         => 'ستاسو لاسليک د وخت د ټاپې سره',
 
 # Edit pages
@@ -420,7 +451,7 @@ $messages = array(
 'whitelistreadtext'        => 'که د پاڼو د لوستلو تکل لری نو بايد غونډال کې [[Special:Userlogin|ننوتنه]] ترسره کړۍ.',
 'whitelistacctitle'        => 'تاسو د کارن نوم جوړولو اجازه نه لرۍ',
 'loginreqtitle'            => 'غونډال کې ننوتنه پکار ده',
-'loginreqlink'             => 'ننوتنه',
+'loginreqlink'             => 'ننوتل',
 'loginreqpagetext'         => 'د نورو مخونو د کتلو لپاره تاسو بايد $1 وکړۍ.',
 'accmailtitle'             => 'پټنوم ولېږل شو.',
 'accmailtext'              => 'د "$1" لپاره پټنوم $2 ته ولېږل شو.',
@@ -488,7 +519,9 @@ $messages = array(
 'prevn'                 => 'تېر $1',
 'nextn'                 => 'راتلونکي $1',
 'viewprevnext'          => '($1) ($2) ($3) ښکاره کول',
-'powersearch'           => 'لټون',
+'search-suggest'        => 'آيا همدا ستاسو موخه ده: $1',
+'searchall'             => 'ټول',
+'powersearch'           => 'پرمختللی لټون',
 'powersearchtext'       => 'په نوم-تشيالونو کې لټون:<br />$1<br />$2 لړليک بياګرځول شوی<br />د $3 $9 لټون',
 
 # Preferences page
@@ -551,7 +584,7 @@ $messages = array(
 'recentchangestext'              => 'په همدې مخ باندې د ويکي ترټولو تازه وروستي بدلونونه وڅارۍ.',
 'recentchanges-feed-description' => 'همدلته د ويکي ترټولو تازه وروستي بدلونونه وڅارۍ او وګورۍ چې څه پېښ شوي.',
 'rcnote'                         => "دلته لاندې {{PLURAL:$1|وروستی '''1''' بدلون دی|وروستي '''$1''' بدلونونه دي}} چې په {{PLURAL:$2|يوې ورځ|'''$2''' ورځو}}، کې تر $3 پېښ شوي.",
-'rcnotefrom'                     => 'په همدې ځای کې لاندې هغه بدلونونه دي چې د <b>$2</b> نه راپدېخوا پېښ شوي(تر <b>$1</b> پورې ښکاره شوي).',
+'rcnotefrom'                     => "په همدې ځای کې لاندې هغه بدلونونه دي چې د '''2$''' نه راپدېخوا پېښ شوي(تر '''1$''' پورې ښکاره شوي).",
 'rclistfrom'                     => 'هغه بدلونونه ښکاره کړی چې له $1 نه پيلېږي',
 'rcshowhideminor'                => 'وړې سمادېدنې $1',
 'rcshowhidebots'                 => 'bots $1',
@@ -606,6 +639,7 @@ $messages = array(
 'uploaddisabled'       => 'پورته کول ناچارن شوي',
 'uploadvirus'          => 'دا دوتنه ويروس لري! تفصيل: $1',
 'sourcefilename'       => 'د سرچينيزې دوتنې نوم:',
+'upload-maxfilesize'   => 'د دوتنې تر ټولو لويه کچه: $1',
 'watchthisupload'      => 'همدا مخ کتل',
 
 'upload-file-error' => 'کورنۍ ستونزه',
@@ -613,21 +647,25 @@ $messages = array(
 'nolicense'          => 'هېڅ نه دي ټاکل شوي',
 'upload_source_file' => '(ستاسو په کمپيوټر کې يوه دوتنه)',
 
-# Image list
-'imagelist'                 => 'د دوتنو لړليک',
-'ilsubmit'                  => 'لټون',
-'showlast'                  => 'وروستي $1 دوتنې چې د $2 له مخې اوډل شوي راښکاره کول.',
-'byname'                    => 'د نوم له مخې',
-'bydate'                    => 'د نېټې له مخې',
-'bysize'                    => 'د مېچ له مخې',
-'imgdelete'                 => 'ړنګول',
-'imgfile'                   => 'دوتنه',
+# Special:Imagelist
+'imagelist_search_for'  => 'د انځور د نوم لټون:',
+'imgfile'               => 'دوتنه',
+'imagelist'             => 'د دوتنو لړليک',
+'imagelist_date'        => 'نېټه',
+'imagelist_name'        => 'نوم',
+'imagelist_user'        => 'کارونکی',
+'imagelist_size'        => 'کچه (bytes)',
+'imagelist_description' => 'څرګندونه',
+
+# Image description page
 'filehist'                  => 'د دوتنې پېښليک',
+'filehist-help'             => 'په يوې نېټې/يوه وخت وټوکۍ چې د هماغه وخت او نېټې دوتنه چې په هماغه وخت کې څنګه ښکارېده هماغسې درښکاره شي.',
 'filehist-deleteall'        => 'ټول ړنګول',
 'filehist-deleteone'        => 'همدا ړنګول',
 'filehist-current'          => 'اوسنی',
 'filehist-datetime'         => 'نېټه/وخت',
 'filehist-user'             => 'کارونکی',
+'filehist-dimensions'       => 'ډډې',
 'filehist-filesize'         => 'د دوتنې کچه',
 'filehist-comment'          => 'تبصره',
 'imagelinks'                => 'تړنونه',
@@ -638,12 +676,6 @@ $messages = array(
 'noimage'                   => 'په دې نوم هېڅ کومه دوتنه نه شته، تاسو کولای شی چې $1.',
 'noimage-linktext'          => 'همدا غونډال ته پورته کول',
 'uploadnewversion-linktext' => 'د همدغې دوتنې نوې بڼه پورته کول',
-'imagelist_date'            => 'نېټه',
-'imagelist_name'            => 'نوم',
-'imagelist_user'            => 'کارونکی',
-'imagelist_size'            => 'کچه (bytes)',
-'imagelist_description'     => 'څرګندونه',
-'imagelist_search_for'      => 'د انځور د نوم لټون:',
 
 # File reversion
 'filerevert-comment' => 'تبصره:',
@@ -705,7 +737,6 @@ $messages = array(
 'mostcategories'          => 'د ګڼ شمېر وېشنيزو لرونکي مخونه',
 'mostimages'              => 'د ډېرو تړنو انځورونه',
 'mostrevisions'           => 'ډېر کتل شوي مخونه',
-'allpages'                => 'ټول مخونه',
 'prefixindex'             => 'د مختاړيو ليکلړ',
 'shortpages'              => 'لنډ مخونه',
 'longpages'               => 'اوږده مخونه',
@@ -728,11 +759,6 @@ $messages = array(
 'booksources-go'            => 'ورځه',
 'booksources-text'          => 'دا لاندې د هغه وېبځايونو د تړنو لړليک دی چېرته چې نوي او زاړه کتابونه پلورل کېږي، او يا هم کېدای شي چې د هغه کتاب په هکله مالومات ولري کوم چې تاسو ورپسې لټېږۍ:',
 
-'categoriespagetext' => 'په دغه ويکي (wiki) کې همدا لاندينۍ وېشنيزې دي.',
-'groups'             => 'د کارونکو ډلې',
-'alphaindexline'     => '$1 نه تر $2 پورې',
-'version'            => 'بڼه',
-
 # Special:Log
 'specialloguserlabel'  => 'کارونکی:',
 'speciallogtitlelabel' => 'سرليک:',
@@ -742,6 +768,8 @@ $messages = array(
 'log-search-submit'    => 'ورځه',
 
 # Special:Allpages
+'allpages'          => 'ټول مخونه',
+'alphaindexline'    => '$1 نه تر $2 پورې',
 'nextpage'          => 'بل مخ ($1)',
 'prevpage'          => 'تېر مخ ($1)',
 'allpagesfrom'      => 'ښکاره دې شي هغه مخونه چې پېلېږي په:',
@@ -799,7 +827,7 @@ $messages = array(
 'watchlist-hide-own'   => 'زما سمادونه پټول',
 'watchlist-hide-minor' => 'وړې سمادېدنې پټول',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'د کتلو په حال کې...',
 'unwatching' => 'د نه کتلو په حال کې...',
 
@@ -831,9 +859,12 @@ $messages = array(
 'deletereasonotherlist'       => 'بل سبب',
 'protectlogpage'              => 'د ژغورنې يادښت',
 'protectedarticle'            => '"[[$1]]" وژغورلی شو',
-'confirmprotect'              => 'د ژغورلو پخلی کول',
+'protect-legend'              => 'د ژغورلو پخلی کول',
 'protectcomment'              => 'تبصره:',
 'protectexpiry'               => 'د پای نېټه:',
+'protect-text'                => 'تاسو کولای شی چې د <strong><nowiki>$1</nowiki></strong> مخ لپاره د ژغورلو کچه همدلته وګورۍ او بدلون پکې راولی.',
+'protect-locked-access'       => 'ستاسو کارن-حساب دا اجازه نه لري چې د پاڼو د ژغورنې په کچه کې بدلون راولي.
+دلته د <strong>$1</strong> مخ لپاره اوسني شته امستنې دي:',
 'protect-default'             => '(اصلي بڼه)',
 'protect-fallback'            => 'د "$1" اجازه پکار ده',
 'protect-level-autoconfirmed' => 'د ناثبته کارونکو مخنيوی کول',
@@ -877,8 +908,6 @@ $messages = array(
 'sp-contributions-search'      => 'د ونډو لټون',
 'sp-contributions-username'    => 'IP پته يا کارن-نوم:',
 'sp-contributions-submit'      => 'لټون',
-
-'sp-newimages-showfrom' => 'هغه نوي انځورونه چې په $1 پيلېږي ښکاره کول',
 
 # What links here
 'whatlinkshere'       => 'د همدې پاڼې تړنونه',
@@ -931,6 +960,7 @@ $messages = array(
 'movepage-moved'          => '<big>\'\'\'د "1$" په نامه دوتنه، "1$" ته ولېږدېده\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'په همدې نوم يوه بله پاڼه د پخوا نه شته او يا خو دا نوم چې تاسو ټاکلی سم نه دی. لطفاً يو بل نوم وټاکۍ.',
 'movedto'                 => 'ته ولېږل شو',
+'movetalk'                => 'د خبرو اترو اړونده مخ ورسره لېږدول',
 '1movedto2'               => '[[$1]]، [[$2]] ته ولېږدېده',
 'movelogpage'             => 'د لېږدولو يادښت',
 'movelogpagetext'         => 'دا لاندې د لېږدول شوو مخونو لړليک دی.',
@@ -954,66 +984,62 @@ $messages = array(
 'allmessagesmodified'       => 'يواځې بدلون خوړلي توکي ښکاره کول',
 
 # Thumbnails
-'thumbnail-more' => 'لويول',
-'filemissing'    => 'دوتنه ورکه ده',
+'thumbnail-more'  => 'لويول',
+'filemissing'     => 'دوتنه ورکه ده',
+'thumbnail_error' => 'د  بټنوک د جوړېدنې ستونزه: $1',
 
 # Import log
 'importlogpage' => 'د واردولو يادښت',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'        => 'زما کارن مخ',
-'tooltip-pt-mytalk'          => 'زما د خبرواترو مخ',
-'tooltip-pt-preferences'     => 'زما غوره توبونه',
-'tooltip-pt-watchlist'       => 'د هغه مخونو لړليک چې تاسو يې د بدلون لپاره څاری',
-'tooltip-pt-mycontris'       => 'زما د ونډو لړليک',
-'tooltip-pt-login'           => 'تاسو ته په غونډال کې د ننوتنې سپارښتنه کوو، که څه هم چې دا يو اړين کار نه دی.',
-'tooltip-pt-anonlogin'       => 'تاسو ته په غونډال کې د ننوتنې سپارښتنه کوو، که څه هم چې دا يو اړين کار نه دی.',
-'tooltip-pt-logout'          => 'وتنه',
-'tooltip-ca-talk'            => 'د مخ د مېنځپانګې په اړه خبرې اترې',
-'tooltip-ca-edit'            => 'تاسو همدا مخ سمادولای شی. مهرباني وکړی د ليکنې د خوندي کولو دمخه مو د همدې ليکنې مخکتنه وګورۍ.',
-'tooltip-ca-addsection'      => 'د خبرواترو همدغه مخ کې يوه تبصره ورګډول.',
-'tooltip-ca-viewsource'      => 'همدا مخ ژغورل شوی. تاسو کولای شی چې د همدې مخ سرجينه وګورۍ.',
-'tooltip-ca-protect'         => 'همدا مخ ژغورل',
-'tooltip-ca-delete'          => 'همدا مخ ړنګول',
-'tooltip-ca-move'            => 'همدا مخ لېږدول',
-'tooltip-ca-watch'           => 'همدا مخ پخپل کتلي لړليک کې ګډول',
-'tooltip-ca-unwatch'         => 'همدا مخ خپل د کتلي لړليک نه لرې کول',
-'tooltip-search'             => 'د {{SITENAME}} لټون',
-'tooltip-p-logo'             => 'لومړی مخ',
-'tooltip-n-mainpage'         => 'لومړي مخ ته ورتلل',
-'tooltip-n-portal'           => 'د پروژې په اړه، تاسو څه کولای شی، چېرته کولای شی چې شيان ومومۍ',
-'tooltip-n-recentchanges'    => 'په ويکي کې د وروستي بدلونو لړليک.',
-'tooltip-n-randompage'       => 'يو ناټاکلی مخ ښکاره کوي',
-'tooltip-n-help'             => 'هغه ځای چېرته چې راڅرګندولای شو.',
-'tooltip-n-sitesupport'      => 'زموږ ملاتړ وکړی',
-'tooltip-t-whatlinkshere'    => 'د ويکي د ټولو هغو مخونو لړليک چې دلته تړنې لري',
-'tooltip-t-contributions'    => 'د همدې کارونکي د ونډو لړليک کتل',
-'tooltip-t-emailuser'        => 'همدې کارونکي ته يو برېښليک لېږل',
-'tooltip-t-upload'           => 'دوتنې پورته کول',
-'tooltip-t-specialpages'     => 'د ټولو ځانګړو پاڼو لړليک',
-'tooltip-t-print'            => 'د همدې مخ چاپي بڼه',
-'tooltip-ca-nstab-user'      => 'د کارونکي مخ کتل',
-'tooltip-ca-nstab-special'   => 'همدا يو ځانګړی مخ دی، تاسو نه شی کولای چې دا مخ سماد کړی.',
-'tooltip-ca-nstab-project'   => 'د پروژې مخ کتل',
-'tooltip-ca-nstab-image'     => 'د دوتنې مخ کتل',
-'tooltip-ca-nstab-mediawiki' => 'د غونډال پيغامونه ښکاره کول',
-'tooltip-ca-nstab-template'  => 'کينډۍ ښکاره کول',
-'tooltip-ca-nstab-help'      => 'د لارښود مخ کتل',
-'tooltip-ca-nstab-category'  => 'د وېشنيزې مخ ښکاره کول',
-'tooltip-minoredit'          => 'دا لکه يوه وړه سمادېدنه په نښه کوي[alt-i]',
-'tooltip-save'               => 'ستاسو بدلونونه خوندي کوي',
-'tooltip-preview'            => 'ستاسو بدلونونه ښکاره کوي, لطفاً دا کړنه د خوندي کولو دمخه وکاروۍ! [alt-p]',
-'tooltip-diff'               => 'دا هغه بدلونونه چې تاسو په متن کې ترسره کړي، ښکاره کوي. [alt-v]',
-'tooltip-watch'              => 'همدا مخ ستاسو کتلي لړليک کې ورګډوي [alt-w]',
+'tooltip-pt-userpage'             => 'زما کارن مخ',
+'tooltip-pt-mytalk'               => 'زما د خبرواترو مخ',
+'tooltip-pt-preferences'          => 'زما غوره توبونه',
+'tooltip-pt-watchlist'            => 'د هغه مخونو لړليک چې تاسو يې د بدلون لپاره څاری',
+'tooltip-pt-mycontris'            => 'زما د ونډو لړليک',
+'tooltip-pt-login'                => 'تاسو ته په غونډال کې د ننوتنې سپارښتنه کوو، که څه هم چې دا يو اړين کار نه دی.',
+'tooltip-pt-anonlogin'            => 'تاسو ته په غونډال کې د ننوتنې سپارښتنه کوو، که څه هم چې دا يو اړين کار نه دی.',
+'tooltip-pt-logout'               => 'وتنه',
+'tooltip-ca-talk'                 => 'د مخ د مېنځپانګې په اړه خبرې اترې',
+'tooltip-ca-edit'                 => 'تاسو همدا مخ سمادولای شی. مهرباني وکړی د ليکنې د خوندي کولو دمخه مو د همدې ليکنې مخکتنه وګورۍ.',
+'tooltip-ca-addsection'           => 'د خبرواترو همدغه مخ کې يوه تبصره ورګډول.',
+'tooltip-ca-viewsource'           => 'همدا مخ ژغورل شوی. تاسو کولای شی چې د همدې مخ سرجينه وګورۍ.',
+'tooltip-ca-protect'              => 'همدا مخ ژغورل',
+'tooltip-ca-delete'               => 'همدا مخ ړنګول',
+'tooltip-ca-move'                 => 'همدا مخ لېږدول',
+'tooltip-ca-watch'                => 'همدا مخ پخپل کتلي لړليک کې ګډول',
+'tooltip-ca-unwatch'              => 'همدا مخ خپل د کتلي لړليک نه لرې کول',
+'tooltip-search'                  => 'د {{SITENAME}} لټون',
+'tooltip-p-logo'                  => 'لومړی مخ',
+'tooltip-n-mainpage'              => 'لومړي مخ ته ورتلل',
+'tooltip-n-portal'                => 'د پروژې په اړه، تاسو څه کولای شی، چېرته کولای شی چې شيان ومومۍ',
+'tooltip-n-recentchanges'         => 'په ويکي کې د وروستي بدلونو لړليک.',
+'tooltip-n-randompage'            => 'يو ناټاکلی مخ ښکاره کوي',
+'tooltip-n-help'                  => 'هغه ځای چېرته چې راڅرګندولای شو.',
+'tooltip-n-sitesupport'           => 'زموږ ملاتړ وکړی',
+'tooltip-t-whatlinkshere'         => 'د ويکي د ټولو هغو مخونو لړليک چې دلته تړنې لري',
+'tooltip-t-contributions'         => 'د همدې کارونکي د ونډو لړليک کتل',
+'tooltip-t-emailuser'             => 'همدې کارونکي ته يو برېښليک لېږل',
+'tooltip-t-upload'                => 'دوتنې پورته کول',
+'tooltip-t-specialpages'          => 'د ټولو ځانګړو پاڼو لړليک',
+'tooltip-t-print'                 => 'د همدې مخ چاپي بڼه',
+'tooltip-ca-nstab-user'           => 'د کارونکي مخ کتل',
+'tooltip-ca-nstab-special'        => 'همدا يو ځانګړی مخ دی، تاسو نه شی کولای چې دا مخ سماد کړی.',
+'tooltip-ca-nstab-project'        => 'د پروژې مخ کتل',
+'tooltip-ca-nstab-image'          => 'د دوتنې مخ کتل',
+'tooltip-ca-nstab-mediawiki'      => 'د غونډال پيغامونه ښکاره کول',
+'tooltip-ca-nstab-template'       => 'کينډۍ ښکاره کول',
+'tooltip-ca-nstab-help'           => 'د لارښود مخ کتل',
+'tooltip-ca-nstab-category'       => 'د وېشنيزې مخ ښکاره کول',
+'tooltip-minoredit'               => 'دا لکه يوه وړه سمادېدنه په نښه کوي[alt-i]',
+'tooltip-save'                    => 'ستاسو بدلونونه خوندي کوي',
+'tooltip-preview'                 => 'ستاسو بدلونونه ښکاره کوي, لطفاً دا کړنه د خوندي کولو دمخه وکاروۍ! [alt-p]',
+'tooltip-diff'                    => 'دا هغه بدلونونه چې تاسو په متن کې ترسره کړي، ښکاره کوي. [alt-v]',
+'tooltip-compareselectedversions' => 'د همدې مخ د دوو ټاکل شويو بڼو تر مېنځ توپيرونه وګورۍ.',
+'tooltip-watch'                   => 'همدا مخ ستاسو کتلي لړليک کې ورګډوي [alt-w]',
 
 # Attribution
 'lastmodifiedatby' => 'دا مخ وروستی ځل د $3 لخوا په $2، $1 بدلون موندلی.', # $1 date, $2 time, $3 user
-
-# Spam protection
-'subcategorycount'       => 'په همدې وېشنيزه کې {{PLURAL:$1|يوازې يوه بله وړه-وېشنيزه ده|$1 نورې وړې-وېشنيزې دي}}.',
-'categoryarticlecount'   => 'په همدې وېشنيزه کې  {{PLURAL:$1|يو مخ دی|$1 مخونه دي}}.',
-'category-media-count'   => 'په دې وېشنيزه کې {{PLURAL:$1|يوه دوتنه ده|$1 دوتنې دي}}.',
-'listingcontinuesabbrev' => 'پرله پسې',
 
 # Info page
 'infosubtitle' => 'د مخ مالومات',
@@ -1034,8 +1060,11 @@ $messages = array(
 'show-big-image-thumb' => '<small>د همدې مخکتنې کچه: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages' => 'د نوو دوتنو نندارتون',
-'noimages'  => 'د کتلو لپاره څه نشته.',
+'newimages'             => 'د نوو دوتنو نندارتون',
+'noimages'              => 'د کتلو لپاره څه نشته.',
+'ilsubmit'              => 'لټون',
+'bydate'                => 'د نېټې له مخې',
+'sp-newimages-showfrom' => 'هغه نوي انځورونه چې په $1 پيلېږي ښکاره کول',
 
 # Video information, used by Language::formatTimePeriod() to format lengths in the above messages
 'hours-abbrev' => 'ساعتونه',
@@ -1075,7 +1104,8 @@ $messages = array(
 'exif-subjectdistancerange-0' => 'ناجوت',
 
 # External editor support
-'edit-externally' => 'د باندنيو پروګرامونو په کارولو سره دا دوتنه سمادول',
+'edit-externally'      => 'د باندنيو پروګرامونو په کارولو سره دا دوتنه سمادول',
+'edit-externally-help' => 'د نورو مالوماتو لپاره د [http://meta.wikimedia.org/wiki/Help:External_editors امستنو لارښوونې] وګورۍ.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'ټول',
@@ -1152,6 +1182,9 @@ $1',
 'iranian-calendar-m10' => 'مرغومی',
 'iranian-calendar-m11' => 'سلواغه',
 'iranian-calendar-m12' => 'کب',
+
+# Special:Version
+'version' => 'بڼه', # Not used as normal message but as header for the special page itself
 
 # Special:Filepath
 'filepath-page' => 'دوتنه:',

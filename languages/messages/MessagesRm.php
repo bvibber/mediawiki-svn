@@ -4,8 +4,8 @@
  * @addtogroup Language
  *
  * @author SPQRobin
- * @author G - ג
  * @author Siebrand
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -49,7 +49,7 @@ $messages = array(
 'nov'       => 'nov',
 'dec'       => 'dec',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Categorias',
 'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
 'category_header'       => 'Artitgels en la categoria "$1"',
@@ -105,7 +105,6 @@ $messages = array(
 'disclaimers'       => 'Impressum',
 'edithelp'          => 'agid dad editar',
 'edithelppage'      => 'Help:Prims pass',
-'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:Cuntegn',
 'mainpage'          => 'Pagina principala',
 'portal'            => 'Portal da {{SITENAME}}',
@@ -356,13 +355,8 @@ Per integrar il maletg/purtret en tes artitgel sas ti per exempel duvrar in dals
 'sourcefilename'    => 'file sin tes computer:',
 'destfilename'      => 'num dal file sin il server:',
 
-# Image list
+# Special:Imagelist
 'imagelist' => 'Glista dals maletgs',
-'ilsubmit'  => 'Tschertgar',
-'showlast'  => 'Mussar ils davos $1 files sortads $2.',
-'byname'    => 'tenor num',
-'bydate'    => 'tenor data',
-'bysize'    => 'tenor grondezza',
 
 # MIME search
 'mimesearch' => 'tschertgar tenor tip da MIME',
@@ -409,7 +403,6 @@ La lunghezza da la [http://meta.wikimedia.org/wiki/Help:Job_queue job queue]: ''
 'wantedpages'        => 'Artitgels giavischads',
 'mostcategories'     => "Artitgels ch'èn en las pli biaras chategorias",
 'mostrevisions'      => 'Artitgels cun las pli biaras revisiuns',
-'allpages'           => 'tut ils *** artitgels',
 'longpages'          => 'Artitgels lungs',
 'deadendpages'       => 'artitgels senza links interns che mainan anavant',
 'specialpages'       => 'Paginas spezialas',
@@ -421,16 +414,14 @@ La lunghezza da la [http://meta.wikimedia.org/wiki/Help:Job_queue job queue]: ''
 # Book sources
 'booksources' => 'Tschertga da ISBN',
 
-'data'           => 'data',
-'alphaindexline' => '$1 enfin $2',
-'version'        => 'Versiun',
-
 # Special:Log
 'specialloguserlabel'  => 'Utilisader:',
 'speciallogtitlelabel' => 'Titel:',
 'log'                  => 'logs / cudesch da navigaziun',
 
 # Special:Allpages
+'allpages'          => 'tut ils *** artitgels',
+'alphaindexline'    => '$1 enfin $2',
 'nextpage'          => 'proxima pagina ($1)',
 'allpagesfrom'      => 'Mussar paginas naven da:',
 'allarticles'       => 'Tut ils artitgels',
@@ -491,7 +482,7 @@ Sin $2 chattas ti ina glista dals davos artitgels stidads.',
 'deletedarticle'              => '"[[$1]]" è stidà',
 'deletecomment'               => 'Motiv per il stidar',
 'alreadyrolled'               => "I n'è betg pussaivel da reconstruir l'artigel [[$1]] da [[User:$2|$2]] ([[User_talk:$2|discussiun]]), perquai che insatgi auter ha midà u reconstruì la pagina. Quest calöri è  [[User:$3|$3]] ([[User_talk:$3|discussiun]]).",
-'confirmprotect'              => 'Midar il status da protecziun da la pagina.',
+'protect-legend'              => 'Midar il status da protecziun da la pagina.',
 'protect-default'             => '(standard)',
 'protect-level-autoconfirmed' => 'Bloccar utilisaders na-registrads',
 'protect-level-sysop'         => 'be administraturs',
@@ -557,19 +548,11 @@ L\'artitgel da destinaziun "[[$1]]" exista gia. Vul ti stidar el per far plaz pe
 'common.css'   => '/** CSS placed here will be applied to all skins */',
 'monobook.css' => "/* editescha quest file per adattar il skin momobook per l'entira pagina */",
 
-# Scripts
-'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
-
 # Attribution
 'anonymous'     => 'Utilisader(s) anonim(s) da {{SITENAME}}',
 'othercontribs' => 'Basescha sin la lavur da $1.',
 'others'        => 'auters',
 'creditspage'   => 'Statistica da la pagina',
-
-# Spam protection
-'subcategorycount'     => 'Questa categoria ha {{PLURAL:$1|ina sutcategoria|$1 sutcategorias}}.',
-'categoryarticlecount' => 'Questa categoria cuntegn {{PLURAL:$1|in artitgel|$1 artitgels}}.',
-'category-media-count' => 'Questa categoria cuntegn {{PLURAL:$1|ina datoteca|$1 datotecas}}.',
 
 # Info page
 'numedits'       => 'Dumber da las versiuns da quest artitgel: $1',
@@ -599,6 +582,8 @@ L\'artitgel da destinaziun "[[$1]]" exista gia. Vul ti stidar el per far plaz pe
 
 # Special:Newimages
 'newimages' => 'Novs maletgs',
+'ilsubmit'  => 'Tschertgar',
+'bydate'    => 'tenor data',
 
 # External editor support
 'edit-externally' => 'Editar questa datoteca cun in program extern',
@@ -643,5 +628,8 @@ $1',
 # AJAX search
 'articletitles' => "Artitgels che entschaivan cun ''$1''",
 'hideresults'   => 'zuppar ils resultats',
+
+# Special:Version
+'version' => 'Versiun', # Not used as normal message but as header for the special page itself
 
 );

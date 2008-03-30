@@ -9,8 +9,6 @@
  * @author M.M.S.
  */
 
-
-
 $messages = array(
 # User preference toggles
 'tog-rememberpassword' => 'ᐃᖅᑑ ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ ᖃᑯᒍᖅ ᐊᑐᐃᓐᓇᓯᕗᖅ ᐅᕙᓗᒪᔪᖅ ᖃᕆᑕᐅᔭᖅ',
@@ -22,7 +20,11 @@ $messages = array(
 'friday'        => 'ᐸᒐᐃᑖᒃ',
 'sun'           => 'ᓴᓇ',
 'mon'           => 'ᓇᒡ',
+'tue'           => 'ᐱᖃ',
 'wed'           => 'ᐱᖓ',
+'thu'           => 'ᕿᑎ',
+'fri'           => 'ᐅᓪᓗ',
+'sat'           => 'ᓯᕙᑕ',
 'january'       => 'ᔭᓐᓄᐊᓕ',
 'february'      => 'ᕕᐳᐊᕆ',
 'march'         => 'ᒫᕐᓯ',
@@ -60,7 +62,7 @@ $messages = array(
 'nov'           => 'ᓄᕕ',
 'dec'           => 'ᑎᓯᒻ',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories' => 'ᓄᐊᑉᐳᑦ',
 
 'about'          => 'ᒥᒃᓵᓂ',
@@ -122,6 +124,10 @@ $messages = array(
 'editsectionhint'     => 'ᓱᖁᓯᖅᐹ ᐃᓚᖏᐅᑎᑎᑦᓯᒍᑎ: $1',
 'showtoc'             => 'ᐊᓚᒃᑲᑎᖅᐹ',
 'hidetoc'             => 'ᐃᔨᖅᐳᖅ',
+'site-rss-feed'       => '$1 ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'site-atom-feed'      => '$1 ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
+'page-rss-feed'       => '"$1" ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'page-atom-feed'      => '"$1" ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ᒪᑉᐱᑕᖅ',
@@ -176,7 +182,6 @@ $messages = array(
 'loginreqlink'    => 'ᐊᑯᓐᓇᐳᖅ',
 'newarticle'      => '(ᐱᒋᕗᖅ)',
 'editing'         => 'ᐊᓯᐊᙳᑐᖅ $1',
-'editinguser'     => 'ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ <b>$1</b>',
 'editingsection'  => 'ᓱᖁᓯᖅᐹ ᐃᓚ $1 (ᖏᐅᑎᑎᑦᓯᒍᑎ)',
 'editingcomment'  => 'ᓱᖁᓯᖅᐹ $1 (ᐅᔾᔨᕆᔭᖅ)',
 'editconflict'    => 'ᓱᖁᓯᖅᐹ ᐊᑲᐅᙱᓕᐅᕈᑎᓂᖅ: $1',
@@ -202,7 +207,7 @@ $messages = array(
 
 # Search results
 'nextn'       => 'ᑕᒡᒐ $1',
-'powersearch' => 'ᐃᕚᖅᐳᖅ',
+'powersearch' => 'ᕿᓐᓇᕆᒃᓴᕐᓂᖅ',
 
 # Preferences page
 'mypreferences'         => 'ᐊᒥ ᐱᒃᑯᒪᓂᖅᐹᖅ',
@@ -211,12 +216,16 @@ $messages = array(
 'prefs-rc'              => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
 'searchresultshead'     => 'ᐃᕚᖅᐳᖅ',
 
+# User rights
+'editinguser' => 'ᓱᖁᓯᖅᐹ ᖃᑕᙳᑎ <b>$1</b>',
+
 # Recent changes
 'recentchanges'   => 'ᐱᒋᕗᖅ ᐊᓯᐊᙳᑐᖅ',
 'hide'            => 'ᐃᔨᖅᐳᖅ',
 'show'            => 'ᐊᓚᒃᑲᑎᖅᐹ',
 'minoreditletter' => 'ᐅ',
 'newpageletter'   => 'ᐱ',
+'boteditletter'   => 'ᑉ',
 
 # Recent changes linked
 'recentchangeslinked'          => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
@@ -228,12 +237,6 @@ $messages = array(
 'filedesc'          => 'ᐱᓕᕆᐊᒃᓴᑦ ᐱᕕᒡᔪᐊᖑᓂᖏᑦ',
 'fileuploadsummary' => 'ᓱᕕᑦ:',
 'watchthisupload'   => 'ᐅᕝᕙ',
-
-# Image list
-'ilsubmit' => 'ᐃᕚᖅᐳᖅ',
-'byname'   => 'ᓴᓂᕐᕙᖃᑎᒌᑉᐳᑦ ᐊᑐᐃᓐᓇᓯᕗᖅ ᖃᑦᓯᐹ',
-'bydate'   => 'ᐱᑖᕈᑦᑐᖅ ᐃᓅᓕᕐᕕᒃ',
-'bysize'   => 'ᓴᓂᕐᕙᖃᑎᒌᑉᐳᑦ ᐊᑐᐃᓐᓇᓯᕗᖅ ᑐᕐᕿᐹ',
 
 # List redirects
 'listredirects' => 'ᓂᐱ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',
@@ -255,7 +258,6 @@ $messages = array(
 'brokenredirects-delete' => '(ᓂᐸᖅᑎᐹ)',
 
 # Miscellaneous special pages
-'allpages'          => 'ᓱᓇᒥᑦᑐᖅ ᒪᑉᐱᑕᖅ',
 'listusers'         => 'ᖃᑕᙳᑎ ᓂᐱ',
 'specialpages'      => 'ᐱᔨ ᒪᑉᐱᑕᖅ',
 'newpages-username' => 'ᐅᐃᑭᐱᑎᐊ ᐊᑎᖅ:',
@@ -265,12 +267,11 @@ $messages = array(
 # Book sources
 'booksources-go' => 'ᐊᐃᕗᖅ',
 
-'data' => 'ᓇᓗᓇᐃᔭᐅᑎᑦ',
-
 # Special:Log
 'log-search-submit' => 'ᐊᐃᕗᖅ',
 
 # Special:Allpages
+'allpages'       => 'ᓱᓇᒥᑦᑐᖅ ᒪᑉᐱᑕᖅ',
 'nextpage'       => 'ᑕᒡᒐ ᒪᑉᐱᑕᖅ ($1)',
 'allpagesprev'   => 'ᑐᓄᓪᓕᐹᖅ',
 'allpagesnext'   => 'ᑕᒡᒐ',
@@ -295,7 +296,7 @@ $messages = array(
 # Delete/protect/revert
 'dellogpage'          => 'ᓂᐸᖅ ᓂᐱ',
 'deletionlog'         => 'ᓂᐸᖅ ᓂᐱ',
-'confirmprotect'      => 'ᐸᑎᒻᒥᕚ ᓴᐳᒻᒥᕚ',
+'protect-legend'      => 'ᐸᑎᒻᒥᕚ ᓴᐳᒻᒥᕚ',
 'protect-level-sysop' => 'ᓯᕐᓚᒃ ᑎᑎᕋᖅᓯᒪᔪᓂᒃ ᑐᖅᑯᖅᑎᕆᔨ',
 
 # Restrictions (nouns)
@@ -330,14 +331,14 @@ $messages = array(
 'block-log-flags-noemail'  => 'ᑭᒍᑎᐅᑉ ᓯᑎᓂᖅᐹᖓ',
 
 # Move page
-'move-page-legend'        => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
-'movearticle'     => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
-'movedto'         => 'ᐅᐊᔪᖅ',
-'1movedto2'       => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]]',
-'1movedto2_redir' => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]] ᒥᓯᑉᐹ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',
-'movelogpage'     => 'ᐅᐊᔪᖅ ᓂᐱ',
-'movereason'      => 'ᐃᓱᒪᒃᓴᖅᓯᐅᕈᓐᓇᑦᑎᐊᕐᓂᖅ:',
-'delete_and_move' => 'ᓂᐸᖅᑎᐹ  ᐊᒻᒪ ᐅᐊᔪᖅ',
+'move-page-legend' => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
+'movearticle'      => 'ᐅᐊᔪᖅ ᒪᑉᐱᑕᖅ',
+'movedto'          => 'ᐅᐊᔪᖅ',
+'1movedto2'        => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]]',
+'1movedto2_redir'  => '[[$1]] ᓱᕐᕋᒪᔪᖅ [[$2]] ᒥᓯᑉᐹ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',
+'movelogpage'      => 'ᐅᐊᔪᖅ ᓂᐱ',
+'movereason'       => 'ᐃᓱᒪᒃᓴᖅᓯᐅᕈᓐᓇᑦᑎᐊᕐᓂᖅ:',
+'delete_and_move'  => 'ᓂᐸᖅᑎᐹ  ᐊᒻᒪ ᐅᐊᔪᖅ',
 
 # Namespace 8 related
 'allmessagesname'     => 'ᐊᑎᖅ',
@@ -366,6 +367,10 @@ $messages = array(
 # Browsing diffs
 'previousdiff' => '← ᑐᓄᓪᓕᐹᖅ ᐊᓯᐊᙳᑐᖅ',
 'nextdiff'     => 'ᑕᒡᒐ ᐊᓯᐊᙳᑐᖅ ᒪᑉᐱᑕᖅ →',
+
+# Special:Newimages
+'ilsubmit' => 'ᐃᕚᖅᐳᖅ',
+'bydate'   => 'ᐱᑖᕈᑦᑐᖅ ᐃᓅᓕᕐᕕᒃ',
 
 # EXIF tags
 'exif-imagelength'         => 'ᖁᑦᓯᖕᓂᖅ',

@@ -56,7 +56,7 @@ function js_unescape($source, $iconv_to = 'UTF-8') {
 
 /**
  * Function coverts number of utf char into that character.
- * Function taken from: http://sk2.php.net/manual/en/function.utf8-encode.php#49336
+ * Function taken from: http://www.php.net/manual/en/function.utf8-encode.php#49336
  *
  * @param $num Integer
  * @return utf8char
@@ -128,9 +128,10 @@ function wfSajaxSearch( $term ) {
 
 	$valid = (bool) $term_title;
 	$term_url = urlencode( $term );
-	$term_diplay = htmlspecialchars( $valid ? $term_title->getFullText() : $term );
+	$term_normalized = $valid ? $term_title->getFullText() : $term;
+	$term_display = htmlspecialchars( $term );
 	$subtitlemsg = ( $valid ? 'searchsubtitle' : 'searchsubtitleinvalid' );
-	$subtitle = wfMsgWikiHtml( $subtitlemsg, $term_diplay );
+	$subtitle = wfMsgExt( $subtitlemsg, array( 'parse' ), wfEscapeWikiText( $term_normalized ) );
 	$html = '<div id="searchTargetHide"><a onclick="Searching_Hide_Results();">'
 		. wfMsgHtml( 'hideresults' ) . '</a></div>'
 		. '<h1 class="firstHeading">'.wfMsgHtml('search')
@@ -138,15 +139,15 @@ function wfSajaxSearch( $term ) {
 	if( $canSearch ) {
 		$html .= '<ul><li>'
 			. $sk->makeKnownLink( $wgContLang->specialPage( 'Search' ),
-						wfMsgHtml( 'searchcontaining', $term_diplay ),
+						wfMsgHtml( 'searchcontaining', $term_display ),
 						"search={$term_url}&fulltext=Search" )
 			. '</li><li>' . $sk->makeKnownLink( $wgContLang->specialPage( 'Search' ),
-						wfMsgHtml( 'searchnamed', $term_diplay ) ,
+						wfMsgHtml( 'searchnamed', $term_display ) ,
 						"search={$term_url}&go=Go" )
 			. "</li></ul>";
 	}
 	if( $r ) {
-		$html .= "<h2>" . wfMsgHtml( 'articletitles', $term_diplay ) . "</h2>"
+		$html .= "<h2>" . wfMsgHtml( 'articletitles', $term_display ) . "</h2>"
 			. '<ul>' .$r .'</ul>' . $more;
 	}
 

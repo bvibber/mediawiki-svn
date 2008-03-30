@@ -96,7 +96,7 @@ var wgUploadWarningObj = {
 
 		// Set a value in the form indicating that the warning is acknowledged and 
 		// doesn't need to be redisplayed post-upload
-		if ( warning == '' || warning == '&nbsp' ) {
+		if ( warning == '' || warning == '&nbsp;' ) {
 			ackElt.value = '';
 		} else {
 			ackElt.value = '1';
@@ -112,6 +112,9 @@ var wgUploadWarningObj = {
 }
 
 function fillDestFilename(id) {
+	if (!wgUploadAutoFill) {
+		return;
+	}
 	if (!document.getElementById) {
 		return;
 	}
@@ -136,6 +139,17 @@ function fillDestFilename(id) {
 	if (destFile) {
 		destFile.value = fname;
 		wgUploadWarningObj.checkNow(fname) ;
+	}
+}
+
+function toggleFilenameFiller() {
+	if(!document.getElementById) return;
+	var upfield = document.getElementById('wpUploadFile');
+	var destName = document.getElementById('wpDestFile').value;
+	if (destName=='' || destName==' ') {
+		wgUploadAutoFill = true;
+	} else {
+		wgUploadAutoFill = false;
 	}
 }
 

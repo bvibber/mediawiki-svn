@@ -41,6 +41,20 @@ class NewPagesPage extends QueryPage {
 			/* int  */ 'offset' => 0,
 			/* int  */ 'limit' => 50,
 		);
+		
+		if( $shownavigation ) {
+			// Some hopefully reasonable limits...
+			$max = array(
+				/* int */ 'offset' => 20000,
+				/* int */ 'limit' => 500,
+			);
+		} else {
+			// Embedded? Be a lot more strict...
+			$max = array(
+				/* int */ 'offset' => 0,
+				/* int */ 'limit' => 200,
+			);
+		}
 
 		$options = $defaults;
 
@@ -87,9 +101,15 @@ class NewPagesPage extends QueryPage {
 		if ( $options['limit'] <= 0 ) {
 			$options['limit'] = $defaults['limit'];
 		}
+		if ( $options['limit'] > $max['limit'] ) {
+			$options['limit'] = $max['limit'];
+		}
 
 		if ( $options['offset'] < 0 ) {
 			$options['offset'] = $defaults['offset'];
+		}
+		if ( $options['offset'] > $max['offset'] ) {
+			$options['offset'] = $max['offset'];
 		}
 
 		$nondefaults = array();
@@ -224,7 +244,7 @@ class NewPagesPage extends QueryPage {
 	function patrollable( $result ) {
 		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
 		return ( $wgUseRCPatrol || $wgUseNPPatrol )
-			&& $wgUser->isAllowed( 'patrol' )
+			&& ( $wgUser->isAllowed( 'patrol' ) || $wgUser->isAllowed( 'patrolmarks' ) )
 			&& !$result->patrolled;
 	}
 
@@ -286,7 +306,9 @@ class NewPagesPage extends QueryPage {
 
 		$form = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
 			Xml::hidden( 'title', $self->getPrefixedDBkey() ) .
-			Xml::openElement( 'table' ) .
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'newpages' ) ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-newpages-table' ) ) .
 			"<tr>
 				<td align=\"$align\">" .
 					Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
@@ -308,8 +330,14 @@ class NewPagesPage extends QueryPage {
 					Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 				"</td>
 			</tr>" .
-			"<tr><td></td><td>" . $hl . "</td></tr>" .
+			"<tr>
+				<td></td>
+				<td>" .
+					$hl .
+				"</td>
+			</tr>" .
 			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' ) .
 			$hidden .
 			Xml::closeElement( 'form' );
 		return $form;

@@ -4,6 +4,7 @@
  * @addtogroup Language
  *
  * @author SPQRobin
+ * @author M.M.S.
  */
 
 $messages = array(
@@ -45,7 +46,7 @@ $messages = array(
 'aug'          => 'augu',
 'nov'          => 'nuvi',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories' => 'nuapput',
 
 'about'          => 'miksaani',
@@ -102,6 +103,10 @@ $messages = array(
 'editsection'         => 'suqusiqpaa',
 'editold'             => 'suqusiqpaa',
 'editsectionhint'     => 'suqusiqpaa ilangiutititsiguti: $1',
+'site-rss-feed'       => '$1 ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'site-atom-feed'      => '$1 ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
+'page-rss-feed'       => '"$1" ᕐᔅᔅ ᒥᐊᓂᕆᕚ',
+'page-atom-feed'      => '"$1" ᐊᑐᒻ ᒥᐊᓂᕆᕚ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'mappitaq',
@@ -153,7 +158,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'blockedtitle'    => 'aaqqiksuiji uminngasisijuq',
 'loginreqlink'    => 'akunnapuq',
 'newarticle'      => '(pigivuk)',
-'editinguser'     => 'suqusiqpaa qatannguti <b>$1</b>',
 'editingsection'  => 'suqusiqpaa $1 (ilangiutititsiguti)',
 'editingcomment'  => 'suqusiqpaa $1 (ujjirijaq)',
 'editconflict'    => 'suqusiqpaa akaunngiliurutiniq: $1',
@@ -187,6 +191,9 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'prefs-rc'              => 'pigivuq asianngutuq',
 'searchresultshead'     => 'ivaaqpuq',
 
+# User rights
+'editinguser' => 'suqusiqpaa qatannguti <b>$1</b>',
+
 # Recent changes
 'recentchanges' => 'pigivuq asianngutuq',
 
@@ -200,12 +207,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'filedesc'          => 'piliriaksat pivigjuanguningit',
 'fileuploadsummary' => 'suvit:',
 'watchthisupload'   => 'uvva',
-
-# Image list
-'ilsubmit' => 'ivaaqpuq',
-'byname'   => 'sanirvaqatigiipput atuinnasivuq qatsipaa',
-'bydate'   => 'pitaaruttuq inuulirvik',
-'bysize'   => 'sanirvaqatigiipput atuinnasivuq turqipaa',
 
 # List redirects
 'listredirects' => 'nipi qaningani kamagijaq aasit nakit',
@@ -227,7 +228,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'brokenredirects-delete' => '(nipaqtipaa)',
 
 # Miscellaneous special pages
-'allpages'          => 'sunamittuq mappitaq',
 'listusers'         => 'qatannguti nipi',
 'specialpages'      => 'piji mappitaq',
 'newpages-username' => 'uikipitia atiq:',
@@ -237,12 +237,11 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Book sources
 'booksources-go' => 'aivuq',
 
-'data' => 'nalunaijautit',
-
 # Special:Log
 'log-search-submit' => 'aivuk',
 
 # Special:Allpages
+'allpages'       => 'sunamittuq mappitaq',
 'nextpage'       => 'tagga mappitaq ($1)',
 'allpagesprev'   => 'tunullipaaq',
 'allpagesnext'   => 'tagga',
@@ -266,7 +265,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Delete/protect/revert
 'dellogpage'          => 'nipaq nipi',
 'deletionlog'         => 'nipaq nipi',
-'confirmprotect'      => 'patimmivaa sapummivaa',
+'protect-legend'      => 'patimmivaa sapummivaa',
 'protect-level-sysop' => 'sirlak titiraqsimajunik tuqquqtiriji',
 
 # Restrictions (nouns)
@@ -301,13 +300,13 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'block-log-flags-noemail'  => 'kigutiup sitiniqpaanga uminngasisijuq',
 
 # Move page
-'move-page-legend'        => 'uajuq mappitaq',
-'movearticle'     => 'uajuq mappitaq',
-'movedto'         => 'uajuq',
-'1movedto2'       => '[[$1]] surramajuq [[$2]]',
-'1movedto2_redir' => '[[$1]] surramajuq [[$2]] misippaa qaningani kamagijaq aasit nakit',
-'movelogpage'     => 'uajuq nipi',
-'delete_and_move' => 'nipaqtipaa amma uajuq',
+'move-page-legend' => 'uajuq mappitaq',
+'movearticle'      => 'uajuq mappitaq',
+'movedto'          => 'uajuq',
+'1movedto2'        => '[[$1]] surramajuq [[$2]]',
+'1movedto2_redir'  => '[[$1]] surramajuq [[$2]] misippaa qaningani kamagijaq aasit nakit',
+'movelogpage'      => 'uajuq nipi',
+'delete_and_move'  => 'nipaqtipaa amma uajuq',
 
 # Namespace 8 related
 'allmessagesname'     => 'atiq',
@@ -333,6 +332,10 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Browsing diffs
 'previousdiff' => '← tunullipaaq asiaNngutuq',
 'nextdiff'     => 'tagga asiaNngutuq mappitaq →',
+
+# Special:Newimages
+'ilsubmit' => 'ivaaqpuq',
+'bydate'   => 'pitaaruttuq inuulirvik',
 
 # EXIF tags
 'exif-imagelength'         => 'qutsingniq',

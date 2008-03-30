@@ -158,18 +158,26 @@ $messages = array(
 'nov'           => '11月',
 'dec'           => '12月',
 
-# Bits of text used by many pages
-'categories'               => 'カテゴリ',
-'pagecategories'           => 'カテゴリ',
-'category_header'          => 'カテゴリ “$1” にあるページ',
-'subcategories'            => 'サブカテゴリ',
-'category-media-header'    => 'カテゴリ “$1” にあるメディア',
-'category-empty'           => 'このカテゴリにはページまたはメディアがひとつもありません。',
-'hidden-categories'        => '{{PLURAL:$1|非公開カテゴリ|非公開カテゴリ}}',
-'hidden-category-category' => '非公開カテゴリ', # Name of the category where hidden categories will be listed
+# Categories related messages
+'categories'                     => 'カテゴリ',
+'categoriespagetext'             => '{{SITENAME}}には以下のカテゴリが存在します。',
+'pagecategories'                 => 'カテゴリ',
+'category_header'                => 'カテゴリ “$1” にあるページ',
+'subcategories'                  => 'サブカテゴリ',
+'category-media-header'          => 'カテゴリ “$1” にあるメディア',
+'category-empty'                 => 'このカテゴリにはページまたはメディアがひとつもありません。',
+'hidden-categories'              => '{{PLURAL:$1|非公開カテゴリ|非公開カテゴリ}}',
+'hidden-category-category'       => '非公開カテゴリ', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|以下にこのカテゴリへ所属するサブカテゴリ 1 件を表示しています。|以下にこのカテゴリへ所属するサブカテゴリ $2 件中 $1 件を表示しています。}}',
+'category-subcat-count-limited'  => '以下にこのカテゴリへ所属するサブカテゴリ $1 件を表示しています。',
+'category-article-count'         => '以下にこのカテゴリへ所属している記事 $2 件中 $1 件を表示しています。',
+'category-article-count-limited' => '以下にこのカテゴリへ所属している記事 $1 件を表示しています。',
+'category-file-count'            => '以下にこのカテゴリへ所属しているファイル $2 個中 $1 個を表示しています。',
+'category-file-count-limited'    => '以下にこのカテゴリへ所属するファイル $1 個を表示しています。',
+'listingcontinuesabbrev'         => 'の続き',
 
 'mainpagetext'      => 'MediaWikiが正常にインストールされました。',
-'mainpagedocfooter' => '使い方・設定に関しては[http://meta.wikimedia.org/wiki/ヘルプ:目次 ユーザーズガイド]を参照してください。
+'mainpagedocfooter' => '使い方・設定に関しては[http://meta.wikimedia.org/wiki/%E3%83%98%E3%83%AB%E3%83%97:%E7%9B%AE%E6%AC%A1 ユーザーズガイド]を参照してください。
 
 == はじめましょう ==
 
@@ -214,7 +222,9 @@ $messages = array(
 'permalink'         => 'この版への固定リンク',
 'print'             => '印刷',
 'edit'              => '編集',
+'create'            => '作成',
 'editthispage'      => 'このページを編集',
+'create-this-page'  => 'このページを作成する',
 'delete'            => '削除',
 'deletethispage'    => 'このページを削除',
 'undelete_short'    => '削除済$1版',
@@ -391,7 +401,8 @@ $2',
 'namespaceprotected'   => "'''$1''' 名前空間に属するページを編集する権限がありません。",
 'customcssjsprotected' => 'このページはユーザーの環境設定を記録するページです。ユーザー本人以外は編集できません。',
 'ns-specialprotected'  => '{{ns:special}}名前空間内にあるページは編集できません。',
-'titleprotected'       => 'このページは [[User:$1|$1]] により白紙状態で保護されています。保護の理由は次の通りです。: <i>$2</i>',
+'titleprotected'       => "このページは [[User:$1|$1]] によりページの作成が保護されています。
+保護の理由は次の通りです。: ''$2''",
 
 # Login and logout pages
 'logouttitle'                => 'ログアウト',
@@ -530,23 +541,25 @@ $2',
 'summary-preview'           => '要約のプレビュー',
 'subject-preview'           => '題名・見出しのプレビュー',
 'blockedtitle'              => '投稿ブロック',
-'blockedtext'               => 'ご使用の利用者名またはIPアドレスは $1 によって投稿をブロックされています。その理由は次の通りです。
-:$2
+'blockedtext'               => 'ご使用の利用者名またはIPアドレスは $1 によって投稿をブロックされています。ブロックの理由は $2 です。
 
-ブロック解除予定: $6
+*ブロック開始時期: $8
+*ブロック解除予定: $6
+*ブロック対象: $7
 
-$1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件についてメールで問い合わせることができます。ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、「{{int:emailuser}}」機能が使えないことに注意してください。
+$1 または他の[[{{MediaWiki:grouppage-sysop}}|{{int:group-sysop}}]]にこの件についてメールで問い合わせることができます。ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、「{{int:emailuser}}」機能が使えないことに注意してください。
 
 あなたのIPアドレスは「$3」、ブロックIDは &#x23;$5 です。問い合わせを行う際には、この情報を必ず書いてください。',
-'autoblockedtext'           => 'ご利用のIPアドレスは $1 によって投稿をブロックされています。その理由は次の通りです。
+'autoblockedtext'           => 'ご利用のIPアドレスは $1 によって投稿をブロックされています。理由は次の通りです。
+
 :$2
 
 ブロック解除予定: $6<br />
-ブロック対象: $7
+ブロック対象: $8
 
-$1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件について問い合わせることができます。
+$1 または他の[[{{MediaWiki:grouppage-sysop}}|管理者]]にこの件について問い合わせることができます。
 
-ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、「{{int:emailuser}}」機能が使えないことに注意してください。
+ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、メール送信機能が使えないことに注意してください。
 
 あなたのブロックIDは &#x23;$5 です。問い合わせを行う際には、この情報を必ず書いてください。',
 'blockednoreason'           => '理由が設定されていません',
@@ -651,7 +664,6 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'nohistory'           => 'このページには変更履歴がありません。',
 'revnotfound'         => '要求された版が見つかりません。',
 'revnotfoundtext'     => '要求されたこのページの旧版は見つかりませんでした。このページにアクセスしたURLをもう一度確認してください。',
-'loadhist'            => '変更履歴の読み込み中',
 'currentrev'          => '最新版',
 'revisionasof'        => '$1の版',
 'revision-info'       => '$1; $2 による版',
@@ -661,7 +673,6 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'cur'                 => '最新版',
 'next'                => '次の版',
 'last'                => '前の版',
-'orig'                => '最古版',
 'page_first'          => '先頭',
 'page_last'           => '末尾',
 'histlegend'          => '凡例:（最新版）= 最新版との比較、（前の版）= 直前の版との比較、<strong>{{int:minoreditletter}}</strong> = 細部の編集',
@@ -690,8 +701,8 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'revisiondelete'              => '版の削除と復帰',
 'revdelete-nooldid-title'     => '対象版がありません',
 'revdelete-nooldid-text'      => '操作の完了に必要な版が指定されていません。',
-'revdelete-selected'          => '[[:$1]]の、以下の選択された版に対する操作:',
-'logdelete-selected'          => '[[:$1]]の、以下の選択されたログに対する操作:',
+'revdelete-selected'          => "'''$1'''の、以下の選択された版に対する操作:",
+'logdelete-selected'          => "'''$1'''の選択されたログに対する操作:",
 'revdelete-text'              => '版の削除ではページの履歴にその版は表示されます。しかしその版に含まれるテキストにはアクセスできなくなります。
 
 サーバー管理者にこれ以上の制限をかけられない限り、他の{{int:group-sysop}}は隠れた版を読んだり、元に戻したりできます。',
@@ -719,10 +730,8 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 
 # History merging
 'mergehistory'                     => 'ページの統合履歴',
-'mergehistory-header'              => "ページの履歴を他のページの履歴と統合しようとしています。
-この変更によりページの履歴は連続したひとつの履歴とものになることを確認してください。
-
-'''統合を行った場合でも統合元ページの履歴は完全に消えません。少なくとも最新版の履歴は残ります。'''",
+'mergehistory-header'              => 'ページの履歴を他のページの履歴と統合しようとしています。
+この変更によりページの履歴は連続したひとつの履歴とものになることを確認してください。',
 'mergehistory-box'                 => '統合する2ページの過去の版:',
 'mergehistory-from'                => '統合元となるページ:',
 'mergehistory-into'                => '統合先のページ:',
@@ -730,8 +739,8 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'mergehistory-merge'               => '[[:$2]] へ統合可能な [[:$1]] の履歴を以下に表示しています。ラジオボタンで版を選択してから統合操作を行うと指定した時間までの版が自動的に統合されます。また、ナビゲーションリンクを使うことでフォームをリセットできます。',
 'mergehistory-go'                  => '統合可能な版の表示',
 'mergehistory-submit'              => '統合する版',
-'mergehistory-empty'               => '統合できる過去の版がありません',
-'mergehistory-success'             => '[[:$1]] の過去版 $3 を [[:$2]] へ統合しました。',
+'mergehistory-empty'               => '統合できる過去の版がありません.',
+'mergehistory-success'             => '[[:$1]] の過去版 $3 を [[:$2]] へ統合する作業に成功しました。',
 'mergehistory-fail'                => '履歴の統合を行うことが出来ません。統合を行うページと過去の版を再確認してください。',
 'mergehistory-no-source'           => '統合元となるページ $1 が存在しません。',
 'mergehistory-no-destination'      => '統合先のページ $1 が存在しません。',
@@ -767,6 +776,7 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'prevn'                 => '前 $1',
 'nextn'                 => '次 $1',
 'viewprevnext'          => '（$1）（$2）（$3）を見る',
+'searchall'             => 'all',
 'showingresults'        => '<b>$2</b> 件目から <b>$1</b> 件を表示しています。',
 'showingresultsnum'     => '<b>$2</b> 件目から <b>$3</b> 件を表示しています。',
 'nonefound'             => "'''※'''検索がうまくいかないのは、「ある」や「から」のような一般的な語で索引付けがされていないか、複数の検索語を指定している（全ての検索語を含むページだけが結果に示されます）などのためかもしれません。",
@@ -838,6 +848,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'files'                    => '画像等',
 
 # User rights
+'userrights'                       => '利用者権限の管理', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => '利用者の所属グループの管理',
 'userrights-user-editname'         => '利用者名:',
 'editusergroup'                    => '編集',
@@ -1008,18 +1019,18 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'upload_source_url'  => '（インターネット上のURL）',
 'upload_source_file' => '（あなたのコンピューター上のファイル）',
 
-# Image list
-'imagelist'                 => 'ファイルリスト',
-'imagelisttext'             => "'''$1''' {{PLURAL:$1|個|個}}のファイルを $2 に表示しています",
-'getimagelist'              => 'ファイルリストを取得',
-'ilsubmit'                  => '検索',
-'showlast'                  => '$2に $1 個のファイルを表示',
-'byname'                    => '名前順',
-'bydate'                    => '日付順',
-'bysize'                    => 'サイズ順',
-'imgdelete'                 => '削除',
-'imgdesc'                   => '詳細',
-'imgfile'                   => 'ファイル',
+# Special:Imagelist
+'imagelist_search_for'  => 'メディア名で検索:',
+'imgdesc'               => '詳細',
+'imgfile'               => 'ファイル',
+'imagelist'             => 'ファイルリスト',
+'imagelist_date'        => '日時',
+'imagelist_name'        => '名前',
+'imagelist_user'        => '利用者',
+'imagelist_size'        => 'サイズ（バイト）',
+'imagelist_description' => '概要',
+
+# Image description page
 'filehist'                  => 'ファイルの履歴',
 'filehist-help'             => '過去の版のファイルを参照するには、日付/時刻の列にあるリンクをクリックしてください。',
 'filehist-deleteall'        => '全て削除',
@@ -1041,12 +1052,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'noimage'                   => '同名のファイルは存在しません。「$1」リンクをクリックしてください。',
 'noimage-linktext'          => 'このファイル名でアップロードする',
 'uploadnewversion-linktext' => 'このファイルの新しいバージョンをアップロードする',
-'imagelist_date'            => '日時',
-'imagelist_name'            => '名前',
-'imagelist_user'            => '利用者',
-'imagelist_size'            => 'サイズ（バイト）',
-'imagelist_description'     => '概要',
-'imagelist_search_for'      => 'メディア名で検索:',
 
 # File reversion
 'filerevert'                => '$1 を差し戻す',
@@ -1056,7 +1061,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'filerevert-defaultcomment' => '$1 $2 の版へ差し戻し',
 'filerevert-submit'         => '差し戻す',
 'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'は[$4 $3, $2]の版に差し戻されました。</span>',
-'filerevert-badversion'     => '与えられたタイムスタンプより前の版のファイルはありません。',
+'filerevert-badversion'     => '指定されたタイムスタンプより前の版のファイルはありません。',
 
 # File deletion
 'filedelete'                  => '$1の削除',
@@ -1160,7 +1165,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'mostcategories'          => 'カテゴリの多い項目',
 'mostimages'              => 'リンクの多い画像',
 'mostrevisions'           => '版の多い項目',
-'allpages'                => '全ページ',
 'prefixindex'             => '全ページ (ページ指定)',
 'shortpages'              => '短いページ',
 'longpages'               => '長いページ',
@@ -1169,9 +1173,9 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'protectedpages'          => '保護されているページ',
 'protectedpagestext'      => '以下のページは移動や編集が禁止されています。',
 'protectedpagesempty'     => '現在保護中のページがありません。',
-'protectedtitles'         => '白紙化保護されているページ',
+'protectedtitles'         => '作成保護されているページ名',
 'protectedtitlestext'     => '以下のページは新規作成が禁止されています',
-'protectedtitlesempty'    => '現在白紙化保護されているページはありません。',
+'protectedtitlesempty'    => '現在作成保護されているページはありません。',
 'listusers'               => '登録利用者の一覧',
 'specialpages'            => '特別ページ',
 'spheading'               => '特別ページ',
@@ -1194,13 +1198,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'booksources-go'            => '検索',
 'booksources-text'          => '以下のリストは、新本、古本などを販売している外部サイトへのリンクです。あなたがお探しの本について、更に詳しい情報が提供されている場合もあります。',
 
-'categoriespagetext' => '{{SITENAME}}には以下のカテゴリが存在します。',
-'data'               => 'データ',
-'userrights'         => '利用者権限の管理',
-'groups'             => 'ユーザーグループ',
-'alphaindexline'     => '$1―$2',
-'version'            => 'バージョン情報',
-
 # Special:Log
 'specialloguserlabel'  => '利用者名:',
 'speciallogtitlelabel' => 'タイトル:',
@@ -1213,6 +1210,8 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'log-title-wildcard'   => 'この文字列で始まるタイトルを検索する',
 
 # Special:Allpages
+'allpages'          => '全ページ',
+'alphaindexline'    => '$1―$2',
 'nextpage'          => '次のページ（$1）',
 'prevpage'          => '前のページ（$1）',
 'allpagesfrom'      => '表示開始ページ:',
@@ -1291,7 +1290,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'watchlist-show-minor' => '細部の編集を表示',
 'watchlist-hide-minor' => '細部の編集を隠す',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'ウォッチリストに追加しています...',
 'unwatching' => 'ウォッチリストから削除しています...',
 
@@ -1380,8 +1379,8 @@ $NEWPAGE
 'protectedarticle'            => '"[[$1]]" を保護しました。',
 'modifiedarticleprotection'   => '"[[$1]]" の保護レベルを変更しました。',
 'unprotectedarticle'          => '"[[$1]]" の保護を解除しました。',
-'protectsub'                  => '"$1" の保護',
-'confirmprotect'              => '保護の確認',
+'protect-title'               => '"$1" の保護',
+'protect-legend'              => '保護の確認',
 'protectcomment'              => '保護・保護解除の理由',
 'protectexpiry'               => '期間',
 'protect_expiry_invalid'      => '期間の指定が無効です。',
@@ -1422,6 +1421,7 @@ $NEWPAGE
 # Undelete
 'undelete'                     => '削除されたページを参照する',
 'undeletepage'                 => '削除された編集の参照と復帰',
+'undeletepagetitle'            => "'''以下に表示されているのは [[:$1]] の削除された版です'''。",
 'viewdeletedpage'              => '削除されたページの削除記録と履歴',
 'undeletepagetext'             => '以下のページは削除されていますが、アーカイブに残っているため、復帰できます。アーカイブは定期的に消去されます。',
 'undeleteextrahelp'            => '全ての版を復帰する場合は、全ての版のチェックボックスを選択していない状態で「{{int:undeletebtn}}」ボタンをクリックしてください。
@@ -1429,10 +1429,9 @@ $NEWPAGE
 「{{int:undeletereset}}」ボタンををクリックするとコメント欄と全てのチェックボックスがクリアされます。',
 'undeleterevisions'            => '$1版保管',
 'undeletehistory'              => 'ページの復帰を行うと、全ての特定版が履歴に復帰します。ページが削除された後に、同じ名前で新しいページが作成されていた場合、復帰した特定版は、その前の履歴として出現します。ファイル履歴の制限は、この操作によって失われることにも注意してください。特定版の復帰を行う場合は、{{int:undeletebtn}}ボタンを押す前に復帰対象版のチェックボックスを選択してください。',
-'undeleterevdel'               => 'トップページの版が一時的に削除されているものに対しては、復帰処理を実行できません。このような場合、まずは最新の削除履歴に対するチェックまたは隠蔽を解除する必要があります。
-ファイル履歴を表示する権限がない場合も、復帰させることはできません。',
+'undeleterevdel'               => 'トップページの版が一時的に削除されているものに対しては、復帰処理を実行できません。このような場合、まずは最新の削除履歴に対するチェックまたは隠蔽を解除する必要があります。ファイル履歴を表示する権限がない場合も、復帰させることはできません。',
 'undeletehistorynoadmin'       => '過去にこのページの全てもしくは一部が削除されています。以下に示すのは削除記録と削除された版の履歴です。削除された各版の内容は{{int:group-sysop}}のみが閲覧できます。',
-'undelete-revision'            => '$1 の削除された版 $2 :',
+'undelete-revision'            => '$1 の削除された $2 の版 投稿者 $3 :',
 'undeleterevision-missing'     => '無効、あるいは誤った版です。当該版は既に復帰されたか、アーカイブから削除された可能性があります。',
 'undelete-nodiff'              => 'これより前の版はありません。',
 'undeletebtn'                  => '復帰',
@@ -1469,8 +1468,6 @@ $NEWPAGE
 'mycontris'     => '自分の投稿記録',
 'contribsub2'   => '利用者名: $1 ($2)',
 'nocontribs'    => '利用者の投稿記録は見つかりませんでした。',
-'ucnote'        => '利用者 <b>$1</b> によるここ <b>$2</b> 日間の編集です。',
-'uclinks'       => '過去 $2 日間の $1 編集',
 'uctop'         => '（最新）',
 'month'         => '月:',
 'year'          => '年:',
@@ -1481,8 +1478,6 @@ $NEWPAGE
 'sp-contributions-search'      => '投稿履歴の検索',
 'sp-contributions-username'    => '利用者名または IPアドレス:',
 'sp-contributions-submit'      => '検索',
-
-'sp-newimages-showfrom' => '$1 以後現在までの新着ファイルを表示',
 
 # What links here
 'whatlinkshere'       => 'リンク元',
@@ -1591,19 +1586,26 @@ $NEWPAGE
 'locknoconfirm'       => 'チェックボックスにチェックされていません。',
 'lockdbsuccesssub'    => 'データベースはロックされました。',
 'unlockdbsuccesssub'  => 'データベースのロックは解除されました',
-'lockdbsuccesstext'   => 'データベースをロックしました。メンテナンスが終了したら忘れずにロックを解除してください。',
+'lockdbsuccesstext'   => 'データベースをロックしました。<br />
+メンテナンスが終了したら忘れずに[[Special:Unblockdb|ロックを解除]]してください。',
 'unlockdbsuccesstext' => 'データベースのロックは解除されました。',
 'lockfilenotwritable' => 'データベースのロックファイルに書き込めません。データベースのロック・解除をするには、サーバー上のロックファイルに書き込める必要があります。',
 'databasenotlocked'   => 'データベースはロックされていません。',
 
 # Move page
+'move-page'               => '$1 の移動',
 'move-page-legend'        => 'ページの移動',
-'movepagetext'            => '下のフォームを利用すると、ページ名を変更し、その履歴も変更先へ移動することができます。古いページは変更先へのリダイレクトページとなります。ページの中身と変更前のページに張られたリンクは変わりません。ですから、二重になったり壊れてしまったリダイレクトをチェックする必要があります。
+'movepagetext'            => "下のフォームを利用すると、ページ名を変更し、その履歴も変更先へ移動することができます。
+古いページは変更先へのリダイレクトページとなります。
+ページの中身と変更前のページに張られたリンクは変わりません。
+ですから、二重になったり壊れてしまったリダイレクトをチェックする必要があります。
 
-移動先がすでに存在する場合には、履歴が移動元ページへのリダイレクトただ一つである場合を除いて移動できません。つまり、間違えてページ名を変更した場合には元に戻せます。
+移動先がすでに存在する場合には、履歴が移動元ページへのリダイレクトただ一つである場合を除いて移動できません。
+つまり、間違えてページ名を変更した場合には元に戻せます。
 
-<strong>注意！</strong>
-よく閲覧されるページや、他の多くのページからリンクされているページを移動すると予期せぬ結果が起こるかもしれません。ページの移動に伴う影響をよく考えてから踏み切るようにしてください。',
+'''注意！'''
+よく閲覧されるページや、他の多くのページからリンクされているページを移動すると予期せぬ結果が起こるかもしれません。
+ページの移動に伴う影響をよく考えてから踏み切るようにしてください。",
 'movepagetalktext'        => '付随するノートのページがある場合には、基本的には、一緒に移動されることになります。
 
 但し、以下の場合については別です。
@@ -1798,16 +1800,12 @@ $NEWPAGE
 'nocredits'        => 'このページには有効なクレジット情報がありません。',
 
 # Spam protection
-'spamprotectiontitle'    => 'スパム防御フィルター',
-'spamprotectiontext'     => 'あなたが保存しようとしたページはスパム・フィルターによって保存をブロックされました。これは主に外部サイトへのリンクが原因です。',
-'spamprotectionmatch'    => '以下はスパム・フィルターによって検出されたテキストです: $1',
-'subcategorycount'       => 'このカテゴリには $1 のサブカテゴリがあります。',
-'categoryarticlecount'   => 'このカテゴリには $1 のページがあります。',
-'category-media-count'   => 'このカテゴリには $1 のファイルがあります。',
-'listingcontinuesabbrev' => 'の続き',
-'spambot_username'       => 'MediaWiki スパム除去',
-'spam_reverting'         => '$1 へのリンクを含まない以前の版に差し戻し',
-'spam_blanking'          => 'すべての版から $1 へのリンクを削除',
+'spamprotectiontitle' => 'スパム防御フィルター',
+'spamprotectiontext'  => 'あなたが保存しようとしたページはスパム・フィルターによって保存をブロックされました。これは主に外部サイトへのリンクが原因です。',
+'spamprotectionmatch' => '以下はスパム・フィルターによって検出されたテキストです: $1',
+'spambot_username'    => 'MediaWiki スパム除去',
+'spam_reverting'      => '$1 へのリンクを含まない以前の版に差し戻し',
+'spam_blanking'       => 'すべての版から $1 へのリンクを削除',
 
 # Info page
 'infosubtitle'   => 'ページ情報',
@@ -1869,9 +1867,13 @@ $NEWPAGE
 'show-big-image-thumb' => '<small>このプレビューのサイズ: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages'    => '新規画像展示室',
-'showhidebots' => '（ボットを$1）',
-'noimages'     => '画像がありません。',
+'newimages'             => '新規画像展示室',
+'imagelisttext'         => "'''$1''' {{PLURAL:$1|個|個}}のファイルを $2 に表示しています",
+'showhidebots'          => '（ボットを$1）',
+'noimages'              => '画像がありません。',
+'ilsubmit'              => '検索',
+'bydate'                => '日付順',
+'sp-newimages-showfrom' => '$1 $2 以後現在までの新着ファイルを表示',
 
 # Bad image list
 'bad_image_list' => '書式は以下の通りです：
@@ -2192,16 +2194,7 @@ Variants for Chinese language
 'confirmemail_loggedin'   => 'あなたのメールアドレスは確認されました。',
 'confirmemail_error'      => 'あなたの確認を保存する際に内部エラーが発生しました。',
 'confirmemail_subject'    => '{{SITENAME}} メールアドレスの確認',
-'confirmemail_body'       => 'This is a E-mail confirmation of *{{SITENAME}}*.
-If you can not read this message below,
-you can not read wikimail either.
-Then, please change a mailer
-or address which can read UTF-8 mail, and retry.
-Thank you.
-
---
-
-どなたか（IPアドレス $1 の使用者）がこのメールアドレスを
+'confirmemail_body'       => 'どなたか（IPアドレス $1 の使用者）がこのメールアドレスを
 {{SITENAME}} のアカウント "$2" に登録しました。
 
 このアカウントがあなたのものであるか確認してください。
@@ -2210,9 +2203,12 @@ Thank you.
 
 $3
 
-もし {{SITENAME}} について身に覚えがない場合は、リンクを開かないでください。
-確認用コードは $4 に期限切れになります。
+もし {{SITENAME}} について身に覚えがない場合は、リンクを開かず
+次のURLにアクセスしてメール登録を解除ください:
 
+$5
+
+確認用コードは $4 に期限切れになります。
 -- 
 {{SITENAME}}
 {{SERVER}}/',
@@ -2333,20 +2329,21 @@ $1',
 'iranian-calendar-m12' => 'イラン歴第12月',
 
 # Core parser functions
-'unknown_extension_tag' => 'エクステンションタグ "$1" は登録されていません',
+'unknown_extension_tag' => '拡張機能タグ "$1" は登録されていません',
 
 # Special:Version
-'version-extensions'               => 'インストール済みエクステンション',
+'version'                          => 'バージョン情報', # Not used as normal message but as header for the special page itself
+'version-extensions'               => 'インストール済み拡張機能',
 'version-specialpages'             => '特別ページ',
 'version-parserhooks'              => 'パーサーフック',
 'version-variables'                => '変数',
 'version-other'                    => 'その他',
 'version-mediahandlers'            => 'メディアハンドラ',
 'version-hooks'                    => 'フック',
-'version-extension-functions'      => 'エクステンション関数',
-'version-parser-extensiontags'     => 'パーサーエクステンションタグ',
+'version-extension-functions'      => '拡張機能関数',
+'version-parser-extensiontags'     => 'パーサー拡張機能タグ',
 'version-parser-function-hooks'    => 'パーサー関数フック',
-'version-skin-extension-functions' => 'スキンエクステンション関数',
+'version-skin-extension-functions' => 'スキン拡張機能関数',
 'version-hook-name'                => 'フック名',
 'version-hook-subscribedby'        => 'フックが記述されている場所',
 'version-version'                  => 'バージョン',

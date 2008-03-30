@@ -607,7 +607,7 @@ class LoginForm {
 				$this->resetLoginForm( wfMsg( 'resetpass_announce' ) );
 				break;
 			default:
-				wfDebugDieBacktrace( "Unhandled case value" );
+				throw new MWException( "Unhandled case value" );
 		}
 	}
 

@@ -56,6 +56,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				case 'namespacealiases' :
 					$this->appendNamespaceAliases($p);
 					break;
+				case 'specialpagealiases' :
+					$this->appendSpecialPageAliases($p);
+					break;
 				case 'interwikimap' :
 					$filteriw = isset($params['filteriw']) ? $params['filteriw'] : false; 
 					$this->appendInterwikiMap($p, $filteriw);
@@ -71,7 +74,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendGeneralInfo($property) {
-		global $wgSitename, $wgVersion, $wgCapitalLinks, $wgRightsCode, $wgRightsText, $wgLanguageCode, $IP, $wgEnableWriteAPI;
+		global $wgSitename, $wgVersion, $wgCapitalLinks, $wgRightsCode, $wgRightsText, $wgLanguageCode, $IP, $wgEnableWriteAPI, $wgLang;
 		
 		$data = array ();
 		$mainPage = Title :: newFromText(wfMsgForContent('mainpage'));
@@ -84,10 +87,12 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		if ( $svn ) $data['rev'] = $svn;
 
 		$data['case'] = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // 'case-insensitive' option is reserved for future
+		
 		if (isset($wgRightsCode))
 			$data['rightscode'] = $wgRightsCode;
 		$data['rights'] = $wgRightsText;
 		$data['lang'] = $wgLanguageCode;
+		$data['fallback8bitEncoding'] = $wgLang->fallback8bitEncoding();
 
 		if ( $wgEnableWriteAPI )
 			$data['writeapi'] = '';
@@ -128,6 +133,20 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->getResult()->addValue('query', $property, $data);
 	}
 	
+	protected function appendSpecialPageAliases($property)
+	{
+		global $wgLang;
+		$data = array();
+		foreach($wgLang->getSpecialPageAliases() as $specialpage => $aliases)
+		{
+			$arr = array('realname' => $specialpage, 'aliases' => $aliases);
+			$this->getResult()->setIndexedTagName($arr['aliases'], 'alias');
+			$data[] = $arr;
+		}
+		$this->getResult()->setIndexedTagName($data, 'specialpage');
+		$this->getResult()->addValue('query', $property, $data);
+	}
+
 	protected function appendInterwikiMap($property, $filter) {
 
 		$this->resetQueryParams();
@@ -150,22 +169,23 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data = array();
 		while($row = $db->fetchObject($res))
 		{
+			$val = array();
 			$val['prefix'] = $row->iw_prefix;
 			if ($row->iw_local == '1')
 				$val['local'] = '';
 //			$val['trans'] = intval($row->iw_trans);	// should this be exposed?
 			$val['url'] = $row->iw_url;
-				
+
 			$data[] = $val;
 		}
 		$db->freeResult($res);
-		
+
 		$this->getResult()->setIndexedTagName($data, 'iw');
 		$this->getResult()->addValue('query', $property, $data);
 	}
 	
 	protected function appendDbReplLagInfo($property, $includeAll) {
-		global $wgLoadBalancer, $wgShowHostnames;
+		global $wgShowHostnames;
 
 		$data = array();
 		
@@ -174,14 +194,14 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				$this->dieUsage('Cannot view all servers info unless $wgShowHostnames is true', 'includeAllDenied');
 			
 			global $wgDBservers;
-			$lags = $wgLoadBalancer->getLagTimes();
+			$lags = wfGetLB()->getLagTimes();
 			foreach( $lags as $i => $lag ) {
 				$data[] = array (
 					'host' => $wgDBservers[$i]['host'],
 					'lag' => $lag);
 			}
 		} else {
-			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+			list( $host, $lag ) = wfGetLB()->getMaxLag();
 			$data[] = array (
 				'host' => $wgShowHostnames ? $host : '',
 				'lag' => $lag);
@@ -215,6 +235,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'general',
 					'namespaces',
 					'namespacealiases',
+					'specialpagealiases',
 					'interwikimap',
 					'dbrepllag',
 					'statistics',
@@ -237,6 +258,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				' "general"      - Overall system information',
 				' "namespaces"   - List of registered namespaces (localized)',
 				' "namespacealiases" - List of registered namespace aliases',
+				' "specialpagealiases" - List of special page aliases',
 				' "statistics"   - Returns site statistics',
 				' "interwikimap" - Returns interwiki map (optionally filtered)',
 				' "dbrepllag"    - Returns database server with the highest replication lag',

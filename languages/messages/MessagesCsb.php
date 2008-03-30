@@ -131,7 +131,7 @@ $messages = array(
 'nov'           => 'lës',
 'dec'           => 'gòd',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Kategòrëje',
 'pagecategories'        => '{{PLURAL:$1|Kategòrëjô|Kategòrëje}}',
 'category_header'       => 'Artikle w kategòrëji "$1"',
@@ -342,7 +342,6 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'clearyourcache'        => "'''Bôczë:''' Pò zapisanim, mòże bãdzesz mùszôł òminąc pamiãc przezérnika bë òbaczëc zmianë. '''Mozilla / Firefox / Safari:''' przëtrzëmôj ''Shift'' òbczas klëkaniô na ''Reload'', abò wcësni ''Ctrl-Shift-R'' (''Cmd-Shift-R'' na kòmpùtrach Mac); '''IE:''' przëtrzëmôj ''Ctrl'' òbczas klëkaniô na ''Refresh'', abò wcësni ''Ctrl-F5''; '''Konqueror''': prosto klëkni na knąpã ''Reload'', abò wcësni ''F5''; brëkòwnicë '''Operë''' bãdą mést mùszële wëczëszczëc pamiãc w ''Tools→Preferences''.",
 'previewnote'           => 'To je blós pòdzérk - artikel jesz nie je zapisóny!',
 'editing'               => 'Edicëjô $1',
-'editinguser'           => 'Edicëjô brëkòwnika <b>$1</b>',
 'explainconflict'       => 'Chtos sfórtowôł wprowadzëc swòją wersëjã artikla òbczôs Twòji edicëji. Górné pòle edicëji zamëkô w se tekst starnë aktualno zapisóny w pòdôwkòwi baze. Twòje zmianë są w dólnym pòlu edicëji. Bë wprowadzëc swòje zmianë mùszisz zmòdifikòwac tekst z górnégò pòla. <b>Blós</b> tekst z górnégò pòla mdze zapisóny w baze czej wcësniesz "Zapiszë".',
 'yourtext'              => 'Twój tekst',
 'yourdiff'              => 'Zjinaczi',
@@ -353,10 +352,8 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'templatesused'         => 'Szablónë ùżëti w tim artiklu:',
 
 # History pages
-'loadhist'   => 'Zladënk historëji ny starnë',
 'cur'        => 'aktualnô',
 'last'       => 'pòslédnô',
-'orig'       => 'òriginał',
 'histlegend' => 'Legenda: (aktualnô) = różnice w przërównanim do aktualny wersëje,
 (wczasniészô) = różnice w przërównanim do wczasniészi wersëje, D = drobné edicëje',
 
@@ -415,13 +412,16 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'defaultns'             => 'Domëslno przeszëkùjë nôslédné rëmnotë mionów:',
 'files'                 => 'Lopczi',
 
+# User rights
+'editinguser' => 'Edicëjô brëkòwnika <b>$1</b>',
+
 'grouppage-sysop' => '{{ns:project}}:Administratorzë',
 
 # Recent changes
 'recentchanges'                  => 'Slédné edicëje',
 'recentchangestext'              => 'Na starna prezentérëje historëjã slédnëch edicëjów w {{SITENAME}}.',
 'recentchanges-feed-description' => 'Pòdstrzegô slédny zmianë w tim pòwrózkù.',
-'rcnotefrom'                     => 'Niżi są zmianë òd <b>$2</b> (pòkazóné do <b>$1</b>).',
+'rcnotefrom'                     => "Niżi są zmianë òd '''$2''' (pòkazóné do '''$1''').",
 'rclistfrom'                     => 'Pòkażë nowé zmianë òd $1',
 'rcshowhideminor'                => '$1 môłé zmianë',
 'rcshowhidebots'                 => '$1 botë',
@@ -457,21 +457,16 @@ Jeżlë jes të tuwò bez zmiłkã, le klëkni w swòjim przezérnikù knąpã '
 'uploadedimage'     => 'wladënk: "$1"',
 'uploaddisabled'    => 'Przeprôszómë! Mòżlëwòta wladënkù lopków na nen serwer òsta wëłączonô.',
 
-# Image list
-'imagelist'      => 'Lësta òbrôzków',
-'getimagelist'   => 'zladënk lëstë lopków',
-'ilsubmit'       => 'Szëkôj',
-'showlast'       => 'Pòkôżë slédnë $1 lopczi (lopków) zortowóné $2.',
-'byname'         => 'wedle miona',
-'bydate'         => 'wedle datumù',
-'bysize'         => 'wedle wiôlgòscë',
-'imgdelete'      => 'rëmôj',
+# Special:Imagelist
 'imgdesc'        => 'òpisënk',
+'imagelist'      => 'Lësta òbrôzków',
+'imagelist_user' => 'Brëkòwnik',
+
+# Image description page
 'filehist-user'  => 'Brëkòwnik',
 'imagelinks'     => 'Lënczi do lopka',
 'linkstoimage'   => 'Hewò są starnë, jaczé òdwòłëją sã do negò lopka:',
 'nolinkstoimage' => 'Niżódnô starna nie òdwòłëje sã do negò lopka.',
-'imagelist_user' => 'Brëkòwnik',
 
 # Random page
 'randompage' => 'Kawlowô starna',
@@ -501,7 +496,6 @@ Długòta [http://meta.wikimedia.org/wiki/Help:Job_queue rédżi robòtë] je ''
 'unusedimages'      => 'Nie wëzwëskóné òbrôzczi',
 'popularpages'      => 'Nôwidzalszé starnë',
 'wantedpages'       => 'Nônótniészé starnë',
-'allpages'          => 'Wszëtczé starnë',
 'shortpages'        => 'Nôkrótszé starnë',
 'longpages'         => 'Nôdłëgszé starnë',
 'listusers'         => 'Lësta brëkòwników',
@@ -517,16 +511,14 @@ Długòta [http://meta.wikimedia.org/wiki/Help:Job_queue rédżi robòtë] je ''
 # Book sources
 'booksources' => 'Ksążczi',
 
-'data'           => 'Datum',
-'alphaindexline' => '$1 --> $2',
-'version'        => 'Wersëjô',
-
 # Special:Log
 'specialloguserlabel' => 'Brëkòwnik:',
 'log'                 => 'Lodżi',
 'alllogstext'         => 'Sparłãczone registrë wësłónëch lopków, rëmónëch starn, zazychrowaniô, blokòwaniô ë nadôwaniô ùdowierzeniów. Mòżesz zawãżëc wëszłosc òb wëbranié ôrtu registru, miona brëkòwnika abò miona zajimnej dlô ce starnë.',
 
 # Special:Allpages
+'allpages'          => 'Wszëtczé starnë',
+'alphaindexline'    => '$1 --> $2',
 'allpagesfrom'      => 'Starnë naczënające sã na:',
 'allarticles'       => 'Wszëtczé artikle',
 'allinnamespace'    => 'Wszëtczé starnë (w rumie $1)',
@@ -596,7 +588,7 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 Ùsôdzcą slédnej zmianë je terô [[User:$3|$3]] ([[User_talk:$3|Diskùsëjô]]).',
 'protectedarticle'   => 'zazychrowónô [[$1]]',
 'unprotectedarticle' => 'òdzychrowóny [[$1]]',
-'confirmprotect'     => 'Pòcwierdzë zazychrowanié',
+'protect-legend'     => 'Pòcwierdzë zazychrowanié',
 'protectcomment'     => 'Przëczëna zazychrowóniô',
 
 # Undelete
@@ -611,7 +603,6 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 'contributions' => 'Wkłôd brëkòwników',
 'mycontris'     => 'Mòje edicëje',
 'contribsub2'   => 'Dlô brëkòwnika $1 ($2)',
-'ucnote'        => 'Hewò je lësta slédnëch <b>$1</b> edicëjów dokònónëch przez\\nbrëkòwnika òbczôs òstatnëch <b>$2</b> dni.',
 'uctop'         => '(slédnô)',
 'month'         => 'Òd miesąca (ë wczasni):',
 'year'          => 'Òd rokù (ë wczasni):',
@@ -643,7 +634,7 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 'lockbtn' => 'Zascëgôj bazã pòdôwków',
 
 # Move page
-'move-page-legend'                => 'Przeniesë starnã',
+'move-page-legend'        => 'Przeniesë starnã',
 'movearticle'             => 'Przeniesë artikel',
 'movenologin'             => 'Felënk logòwaniô',
 'movepagebtn'             => 'Przeniesë starnã',
@@ -689,8 +680,7 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 'others'           => 'jiné',
 
 # Spam protection
-'spamprotectiontitle'  => 'Anti-spamòwi filter',
-'categoryarticlecount' => 'W ny kategòrëje je $1 artiklów.',
+'spamprotectiontitle' => 'Anti-spamòwi filter',
 
 # Math options
 'mw_math_png'    => 'Wiedno wëskrzëniwôj jakno PNG',
@@ -707,6 +697,10 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 # Media information
 'imagemaxsize' => 'Limitëjë òbrôzczi na starnie òpisënkù òbrôzków do:',
 'thumbsize'    => 'Miara miniaturków:',
+
+# Special:Newimages
+'ilsubmit' => 'Szëkôj',
+'bydate'   => 'wedle datumù',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'wszëtczé',
@@ -731,5 +725,8 @@ Czej chcesz remôc starnã z lëste ùzéronëch artiklów, klikni ''Òprzestôj
 'watchlisttools-view' => 'Òbaczë wôżnészé zmianë',
 'watchlisttools-edit' => 'Òbaczë a editëjë lëstã ùzérónëch artiklów',
 'watchlisttools-raw'  => 'Editëjë sërą lëstã',
+
+# Special:Version
+'version' => 'Wersëjô', # Not used as normal message but as header for the special page itself
 
 );

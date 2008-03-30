@@ -68,7 +68,7 @@ class CoreParserFunctions {
 			$found = true;
 		} else {
 			$param = str_replace( ' ', '_', strtolower( $part1 ) );
-			$index = Namespace::getCanonicalIndex( strtolower( $param ) );
+			$index = MWNamespace::getCanonicalIndex( strtolower( $param ) );
 			if ( !is_null( $index ) ) {
 				$text = $wgContLang->getNsText( $index );
 				$found = true;
@@ -138,8 +138,12 @@ class CoreParserFunctions {
 		}
 	}
 
-	static function formatNum( $parser, $num = '' ) {
-		return $parser->getFunctionLang()->formatNum( $num );
+	static function formatNum( $parser, $num = '', $raw = null) {
+		if ( self::israw( $raw ) ) {
+			return $parser->getFunctionLang()->parseFormattedNumber( $num );
+		} else {
+			return $parser->getFunctionLang()->formatNum( $num );
+		}
 	}
 
 	static function grammar( $parser, $case = '', $word = '' ) {
@@ -180,31 +184,35 @@ class CoreParserFunctions {
 			return $mwRaw->match( $param );
 		}
 	}
-
-	static function statisticsFunction( $func, $raw = null ) {
-		if ( self::isRaw( $raw ) ) {
-			return call_user_func( array( 'SiteStats', $func ) );
+	
+	static function formatRaw( $num, $raw ) {
+		if( self::isRaw( $raw ) ) {
+			return $num;
 		} else {
 			global $wgContLang;
-			return $wgContLang->formatNum( call_user_func( array( 'SiteStats', $func ) ) );
+			return $wgContLang->formatNum( $num );
 		}
 	}
-
-	static function numberofpages( $parser, $raw = null ) { return self::statisticsFunction( 'pages', $raw ); }
-	static function numberofusers( $parser, $raw = null ) { return self::statisticsFunction( 'users', $raw ); }
-	static function numberofarticles( $parser, $raw = null ) { return self::statisticsFunction( 'articles', $raw ); }
-	static function numberoffiles( $parser, $raw = null ) { return self::statisticsFunction( 'images', $raw ); }
-	static function numberofadmins( $parser, $raw = null ) { return self::statisticsFunction( 'admins', $raw ); }
-	static function numberofedits( $parser, $raw = null ) { return self::statisticsFunction( 'edits', $raw ); }
-
+	static function numberofpages( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::pages(), $raw );
+	}
+	static function numberofusers( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::users(), $raw );
+	}
+	static function numberofarticles( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::articles(), $raw );
+	}
+	static function numberoffiles( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::images(), $raw );
+	}
+	static function numberofadmins( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::admins(), $raw );
+	}
+	static function numberofedits( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::edits(), $raw );
+	}
 	static function pagesinnamespace( $parser, $namespace = 0, $raw = null ) {
-		$count = SiteStats::pagesInNs( intval( $namespace ) );
-		if ( self::isRaw( $raw ) ) {
-			global $wgContLang;
-			return $wgContLang->formatNum( $count );
-		} else {
-			return $count;
-		}
+		return self::formatRaw( SiteStats::pagesInNs( intval( $namespace ) ), $raw );
 	}
 
 	static function language( $parser, $arg = '' ) {

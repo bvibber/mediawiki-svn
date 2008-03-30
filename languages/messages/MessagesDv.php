@@ -45,11 +45,12 @@ $messages = array(
 'nov'       => 'ނޮވެމްބަރ',
 'dec'       => 'ޑިސެމްބަރ',
 
-# Bits of text used by many pages
-'categories'      => 'ގިސްމުތައް',
-'category_header' => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
-'subcategories'   => 'ކުދިގިސްމުތައް',
-'category-empty'  => "''މި ގިސްމުގައި އެއްވެއސް ސަފްހާ އެއް އަދި އެއްވެސް ފައިލެއް ނުހިމެނެއެވެ.''",
+# Categories related messages
+'categories'         => 'ގިސްމުތައް',
+'categoriespagetext' => 'ތިރީގައި މިވާ ގިސްމުތައް ވިކީ ގައި މައުޖޫދުވެގެން ވެއެވެ.',
+'category_header'    => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
+'subcategories'      => 'ކުދިގިސްމުތައް',
+'category-empty'     => "''މި ގިސްމުގައި އެއްވެއސް ސަފްހާ އެއް އަދި އެއްވެސް ފައިލެއް ނުހިމެނެއެވެ.''",
 
 'about'         => 'ތާރަފު',
 'article'       => 'ފިހުރިސްތު ޞަފްޙާ',
@@ -100,14 +101,14 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => 'ވިކިޕީޑިއާ ގެ ތާރަފު',
-'aboutpage'         => 'މަޝްރޫ:ތާރަފު',
+'aboutpage'         => 'Project:ތާރަފު',
 'copyright'         => 'ހުރިހާ މާއްދާއެއް $1 ގެ ދަށުން ލިބެން އެބަހުއްޓެވެ.',
 'copyrightpagename' => 'ވިކިޕީޑިއާ:ނަކަލުކުރުމުގެ ހައްގު',
-'copyrightpage'     => 'މަޝްރޫ:ނަކަލުކުރުމުގެހައްގު',
+'copyrightpage'     => '{{ns:project}}:ނަކަލުކުރުމުގެހައްގު',
 'currentevents'     => 'ހިނގަމުންދާ ހާދިސާތައް',
 'disclaimers'       => 'އިއުލާނުތައް',
 'edithelp'          => 'ބަދަލުތައް ގެނައުމަށް އެހީ އެއް',
-'helppage'          => 'އެހީ:ފިހުރިސްތު',
+'helppage'          => 'Help:ފިހުރިސްތު',
 'mainpage'          => 'މައި ޞަފްޙާ',
 'portal'            => 'އާންމު ހޮޅުއަށި',
 'privacy'           => 'އަމިއްލަވަންތަ ސިޔާސަތު',
@@ -224,6 +225,7 @@ $messages = array(
 'files'          => 'ފައިލުތައް',
 
 # User rights
+'userrights'               => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް', # Not used as normal message but as header for the special page itself
 'userrights-user-editname' => 'މެންބަރުނަން ލިޔުއްވާ:',
 
 # Recent changes
@@ -246,9 +248,10 @@ $messages = array(
 'uploadedfiles'     => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'uploadwarning'     => 'ފައިލުފޮނުއްވުމުގެ ކުރިން ދެވޭ އިންޒާރު',
 
-# Image list
-'imagelist'  => 'ފައިލުތަކުގެ ފިހުރިސްތު',
-'ilsubmit'   => 'ހޯއްދަވާ',
+# Special:Imagelist
+'imagelist' => 'ފައިލުތަކުގެ ފިހުރިސްތު',
+
+# Image description page
 'imagelinks' => 'ފާލަންތައް',
 
 # Random page
@@ -266,7 +269,6 @@ $messages = array(
 'unusedimages'     => 'ބޭނުންނުކުރެވޭ ފައިލުތައް',
 'wantedcategories' => 'ބޭނުންފުޅުވާ ގިސްމުތައް',
 'wantedpages'      => 'ބޭނުންފުޅުވާ ޞަފްޙާތައް',
-'allpages'         => 'ހުރިހާ ޞަފްޙާތައް',
 'shortpages'       => 'ކުރު ޞަފްޙާތައް',
 'specialpages'     => 'ހާއްސަ ޞަފްޙާތައް',
 'spheading'        => 'ހުރިހާ މެންބަރުންނަށް ހާއްސަ ޞަފްޙާތައް',
@@ -277,11 +279,8 @@ $messages = array(
 # Book sources
 'booksources' => 'ފޮތްތަކުގެ މަސްދަރުތައް',
 
-'categoriespagetext' => 'ތިރީގައި މިވާ ގިސްމުތައް ވިކީ ގައި މައުޖޫދުވެގެން ވެއެވެ.',
-'userrights'         => 'މެންބަރުގެ ހައްގުތަކުގެ އިންތިޒާމް',
-'version'            => 'ނުސްހާ ނަމްބަރު',
-
 # Special:Allpages
+'allpages'       => 'ހުރިހާ ޞަފްޙާތައް',
 'allarticles'    => 'ހުރިހާ މަޒުމޫނުތައް',
 'allinnamespace' => 'ހުރިހާ ޞަފްޙާތައް (ނުތުގު $1 ގައިވާ)',
 'allpagesprev'   => 'ކުރީގެ',
@@ -344,7 +343,7 @@ $messages = array(
 'lockbtn' => 'ކޮށާރު ބަންދުކުރައްވާ',
 
 # Move page
-'move-page-legend'                => 'ޞަފްޙާގެ ނަން ބަދަލުކުރައްވާ',
+'move-page-legend'        => 'ޞަފްޙާގެ ނަން ބަދަލުކުރައްވާ',
 'movearticle'             => 'ޞަފްޙާގެ ނަން/ތަން ބަދަލުކުރައްވާ',
 'newtitle'                => 'އައު ނަމަކަށް',
 'move-watch'              => 'މި ޞަފްހާ އަށް ނަޒަރުބަހައްޓަވާ!',
@@ -365,12 +364,9 @@ $messages = array(
 'allmessagesdefault' => 'ކުރީގެ މަތަން',
 'allmessagescurrent' => 'މިހާރުގެ މަތަން',
 
-# Spam protection
-'subcategorycount'     => 'މި ގިސްމު ގައި $1 ކުދިގިސްމު ވެއެވެ.',
-'categoryarticlecount' => 'މި ގިސްމު ގައި $1 މަޒުމޫނު ވެއެވެ.',
-
 # Special:Newimages
 'showhidebots' => '($1 ސެއްޓި)',
+'ilsubmit'     => 'ހޯއްދަވާ',
 
 # EXIF tags
 'exif-imagedescription' => 'ތަސްވީރުގެ ސުރުހީ',
@@ -393,5 +389,8 @@ $messages = array(
 
 # action=purge
 'confirm_purge_button' => 'ރަނގަޅު',
+
+# Special:Version
+'version' => 'ނުސްހާ ނަމްބަރު', # Not used as normal message but as header for the special page itself
 
 );

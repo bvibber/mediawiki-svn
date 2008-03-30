@@ -132,6 +132,9 @@ $wgMysqlUpdates = array(
 	// 1.13
 	array( 'add_field', 'ipblocks',      'ipb_by_text',      'patch-ipb_by_text.sql' ),
 	array( 'add_table', 'page_props',                        'patch-page_props.sql' ),
+	array( 'add_table', 'updatelog',                         'patch-updatelog.sql' ),
+	array( 'add_table', 'category',                          'patch-category.sql' ),
+	array( 'do_category_population' ),
 );
 
 
@@ -141,6 +144,20 @@ $wgExtNewTables = array(); // table, dir
 $wgExtNewFields = array(); // table, column, dir
 $wgExtPGNewFields = array(); // table, column attributes; for PostgreSQL
 $wgExtNewIndexes = array(); // table, index, dir
+
+# Helper function: check if the given key is present in the updatelog table.
+# Obviously, only use this for updates that occur after the updatelog table was
+# created!
+function update_row_exists( $key ) {
+	$dbr = wfGetDB( DB_SLAVE );
+	$row = $dbr->selectRow(
+		'updatelog',
+		'1',
+		array( 'ul_key' => $key ),
+		__FUNCTION__
+	);
+	return (bool)$row;
+}
 
 function rename_table( $from, $to, $patch ) {
 	global $wgDatabase;
@@ -1118,7 +1135,20 @@ function do_restrictions_update() {
 		}
 		print "ok\n";
 	}
-	
+}
+
+function do_category_population() {
+	if( update_row_exists( 'populate category' ) ) {
+		echo "...category table already populated.\n";
+		return;
+	}
+	require_once( 'populateCategory.inc' );
+	echo "Populating category table, printing progress markers.  ".
+"For large databases, you\n".
+"may want to hit Ctrl-C and do this manually with maintenance/\n".
+"populateCategory.php.\n";
+	populateCategory( '', 10, 0, true );
+	echo "Done populating category table.\n";
 }
 
 function
@@ -1271,21 +1301,23 @@ function do_postgres_updates() {
 		list( $x,$y ) = explode( '=', $c );
 		$conf[$x] = $y;
 	}
-	$newpath = array();
-	if( $wgDBmwschema === 'mediawiki' ) {
-		if (!array_key_exists( 'search_path', $conf ) or strpos( $conf['search_path'],$wgDBmwschema ) === false ) {
-			echo "Adding in schema \"$wgDBmwschema\" to search_path for user \"$wgDBuser\"\n";
-			$newpath[$wgDBmwschema] = 1;
-		}
+	if( !array_key_exists( 'search_path', $conf ) ) {
+		$search_path = '';
 	}
-	if( !array_key_exists( 'search_path', $conf ) or strpos( $conf['search_path'],$wgDBts2schema ) === false ) {
+	else {
+		$search_path = $conf['search_path'];
+	}
+	if( strpos( $search_path, $wgDBmwschema ) === false ) {
+		echo "Adding in schema \"$wgDBmwschema\" to search_path for user \"$wgDBuser\"\n";
+		$search_path = "$wgDBmwschema, $search_path";
+	}
+	if( strpos( $search_path, $wgDBts2schema ) === false ) {
 		echo "Adding in schema \"$wgDBts2schema\" to search_path for user \"$wgDBuser\"\n";
-		$newpath[$wgDBts2schema] = 1;
+		$search_path = "$search_path, $wgDBts2schema";
 	}
-	$searchpath = implode( ',', array_keys( $newpath ) );
-	if( strlen( $searchpath ) ) {
-		$wgDatabase->doQuery( "ALTER USER $wgDBuser SET search_path = $searchpath" );
-		$wgDatabase->doQuery( "SET search_path = $searchpath" );
+	if( array_key_exists( 'search_path', $conf ) === false || $search_path != $conf['search_path'] ) {
+		$wgDatabase->doQuery( "ALTER USER $wgDBuser SET search_path = $search_path" );
+		$wgDatabase->doQuery( "SET search_path = $search_path" );
 	}
 	else {
 		$path = $conf['search_path'];
@@ -1314,6 +1346,7 @@ function do_postgres_updates() {
 	);
 
 	$newtables = array(
+		array("category",          "patch-category.sql"),
 		array("mediawiki_version", "patch-mediawiki_version.sql"),
 		array("mwuser",            "patch-mwuser.sql"),
 		array("pagecontent",       "patch-pagecontent.sql"),
@@ -1323,6 +1356,7 @@ function do_postgres_updates() {
 		array("profiling",         "patch-profiling.sql"),
 		array("protected_titles",  "patch-protected_titles.sql"),
 		array("redirect",          "patch-redirect.sql"),
+		array("updatelog",         "patch-updatelog.sql"),
 	);
 
 	$newcols = array(
@@ -1379,12 +1413,12 @@ function do_postgres_updates() {
 		array("interwiki",    "iw_local",        "smallint", "iw_local::smallint DEFAULT 0"),
 		array("interwiki",    "iw_trans",        "smallint", "iw_trans::smallint DEFAULT 0"),
 		array("ipblocks",     "ipb_auto",        "smallint", "ipb_auto::smallint DEFAULT 0"),
-		array("ipblocks",     "ipb_anon_only",        "smallint", "ipb_anon_only::smallint DEFAULT 0"),
-		array("ipblocks",     "ipb_create_account",        "smallint", "ipb_create_account::smallint DEFAULT 1"),
-		array("ipblocks",     "ipb_enable_autoblock",        "smallint", "ipb_enable_autoblock::smallint DEFAULT 1"),
-		array("ipblocks",     "ipb_block_email",        "smallint", "ipb_block_email::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_anon_only",   "smallint", "ipb_anon_only::smallint DEFAULT 0"),
+		array("ipblocks",     "ipb_create_account", "smallint", "ipb_create_account::smallint DEFAULT 1"),
+		array("ipblocks",     "ipb_enable_autoblock", "smallint", "ipb_enable_autoblock::smallint DEFAULT 1"),
+		array("ipblocks",     "ipb_block_email", "smallint", "ipb_block_email::smallint DEFAULT 0"),
 		array("ipblocks",     "ipb_address",     "text",     "ipb_address::text"),
-		array("ipblocks",     "ipb_deleted",     "smallint", ""),
+		array("ipblocks",     "ipb_deleted",     "smallint", "ipb_deleted::smallint"),
 		array("math",         "math_inputhash",  "bytea",    "decode(math_inputhash,'escape')"),
 		array("math",         "math_outputhash", "bytea",    "decode(math_outputhash,'escape')"),
 		array("mwuser",       "user_token",      "text",     ""),

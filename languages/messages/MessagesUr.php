@@ -79,11 +79,13 @@ $messages = array(
 'december-gen'  => 'دسمبر',
 'may'           => 'مئی',
 
-# Bits of text used by many pages
-'categories'      => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
-'pagecategories'  => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
-'category_header' => 'زمرہ "$1" میں مضامین',
-'subcategories'   => 'ذیلی ذمرہ جات',
+# Categories related messages
+'categories'             => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
+'categoriespagetext'     => 'مندرجہ ذیل زمرہ جات اس وکی میں موجود ہیں۔',
+'pagecategories'         => '{{PLURAL:$1|زمرہ|زمرہ جات}}',
+'category_header'        => 'زمرہ "$1" میں مضامین',
+'subcategories'          => 'ذیلی ذمرہ جات',
+'listingcontinuesabbrev' => '۔جاری',
 
 'mainpagetext' => "<big>'''میڈیاوکی کو کامیابی سے چالو کردیا گیا ہے۔.'''</big>",
 
@@ -330,6 +332,7 @@ $messages = array(
 'files'             => 'فائلیں',
 
 # User rights
+'userrights'               => 'صارف کے حقوق کا انتظام', # Not used as normal message but as header for the special page itself
 'userrights-user-editname' => 'اسمِ رکنیت داخل کریں:',
 
 'group-bot-member' => 'خودکار صارف',
@@ -422,12 +425,10 @@ $messages = array(
 'destfilename'      => 'تعین شدہ اسم ملف:',
 'watchthisupload'   => 'یہ صفحہ زیر نظر کیجیۓ',
 
-# Image list
-'imagelist'      => 'فہرست فائل',
-'ilsubmit'       => 'تلاش',
-'byname'         => 'بالحاظ اسم',
-'bydate'         => 'بالحاظ تاریخ',
-'bysize'         => 'بالحاظ جسامت',
+# Special:Imagelist
+'imagelist' => 'فہرست فائل',
+
+# Image description page
 'imagelinks'     => 'روابط',
 'linkstoimage'   => 'اس ملف (فائل) سے درج ذیل صفحات رابطہ رکھتے ہیں:',
 'nolinkstoimage' => 'ایسے کوئی صفحات نہیں جو اس ملف (فائل) سے رابطہ رکھتے ہوں۔',
@@ -476,7 +477,6 @@ $messages = array(
 'mostcategories'          => 'سب سے زیادہ زمرہ جات والے مضامین',
 'mostimages'              => 'سب سے زیادہ استعمال کردہ تصاویر',
 'mostrevisions'           => 'زیادہ تجدید نظر کیے جانے والے صفحات',
-'allpages'                => 'تمام صفحات',
 'shortpages'              => 'چھوٹے صفحات',
 'longpages'               => 'طویل ترین صفحات',
 'deadendpages'            => 'مردہ صفحات',
@@ -491,16 +491,13 @@ $messages = array(
 # Book sources
 'booksources' => 'کتابی وسائل',
 
-'categoriespagetext' => 'مندرجہ ذیل زمرہ جات اس وکی میں موجود ہیں۔',
-'userrights'         => 'صارف کے حقوق کا انتظام',
-'version'            => 'ورژن',
-
 # Special:Log
 'specialloguserlabel'  => 'صارف:',
 'speciallogtitlelabel' => 'عنوان:',
 'log'                  => 'نوشتہ جات',
 
 # Special:Allpages
+'allpages'       => 'تمام صفحات',
 'nextpage'       => 'اگلا صفحہ ($1)',
 'prevpage'       => 'پچھلا صفحہ ($1)',
 'allpagesfrom'   => 'مطلوبہ حرف شروع ہونے والے صفحات کی نمائش:',
@@ -604,7 +601,7 @@ $messages = array(
 'proxyblocksuccess' => 'کردیا.',
 
 # Move page
-'move-page-legend'                => 'منتقلئ صفحہ',
+'move-page-legend'        => 'منتقلئ صفحہ',
 'movepagetext'            => 'نیچے دیا گیا تشکیلہ (فـارم) استعمال کرکے اس صفحہ کا عنوان دوبارہ منتخب کیا جاسکتا ہے، ساتھ ہی اس سے منسلک تاریخچہ بھی نۓ نام پر منتقل ہوجاۓ گا۔ اسکے بعد سے اس صفحے کا پرانا نام ، نۓ نام کی جانب -- لوٹایا گیا صفحہ -- کی حیثیت اختیار کرلے گا۔ لیکن یادآوری کرلیجیۓ دیگر صفحات پر ، پرانے صفحہ کی جانب دیۓ گۓ روابط (لنکس) تبدیل نہیں ہونگے؛ اس بات کو یقینی بنانا ضروری ہے کہ کوئی دوہرا یا شکستہ -- پلٹایا گیا ربط -- نہ رہ جاۓ۔ 
 
 لہذا یہ یقینی بنانا آپکی ذمہ داری ہے کہ تمام روابط درست صفحات کی جانب رہنمائی کرتے رہیں۔
@@ -646,11 +643,6 @@ $messages = array(
 'anonymous' => '{{SITENAME}} گمنام صارف',
 'others'    => 'دیگر',
 
-# Spam protection
-'subcategorycount'       => 'اس زمرے  {{PLURAL:$1|کا ایک ذیلی زمرہ ہے|کے $1 ذیلی زمرہ جات ہیں}}۔',
-'categoryarticlecount'   => 'اس زمرے میں {{PLURAL:$1|ایک مضمون ہے|$1 مضامین ہیں}}۔',
-'listingcontinuesabbrev' => '۔جاری',
-
 # Image deletion
 'deletedrevision' => 'حذف شدہ پرانی ترمیم $1۔',
 
@@ -661,6 +653,8 @@ $messages = array(
 # Special:Newimages
 'newimages'    => 'نئی فائلوں کی گیلری',
 'showhidebots' => '($1 بوٹ)',
+'ilsubmit'     => 'تلاش',
+'bydate'       => 'بالحاظ تاریخ',
 
 # Metadata
 'metadata' => 'میٹا ڈیٹا',
@@ -690,5 +684,8 @@ $messages = array(
 'autosumm-blank'   => 'تمام مندرجات حذف',
 'autoredircomment' => '[[$1]] سے رجوع مکرر',
 'autosumm-new'     => 'نیا صفحہ: $1',
+
+# Special:Version
+'version' => 'ورژن', # Not used as normal message but as header for the special page itself
 
 );

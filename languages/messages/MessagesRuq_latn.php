@@ -59,9 +59,10 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dec',
 
-# Bits of text used by many pages
-'category_header' => 'Pažus en kategoria "$1"',
-'subcategories'   => 'Subkategorii',
+# Categories related messages
+'category_header'        => 'Pažus en kategoria "$1"',
+'subcategories'          => 'Subkategorii',
+'listingcontinuesabbrev' => 'kontinu',
 
 'about'  => 'Dajpul',
 'cancel' => 'renuntǎe',
@@ -204,7 +205,7 @@ $messages = array(
 # Upload
 'upload' => 'trimiţe fişirul',
 
-# Image list
+# Image description page
 'filehist'            => 'Historia fişirulu',
 'filehist-current'    => 'kurentu',
 'filehist-datetime'   => 'Data/Temp',
@@ -220,13 +221,12 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes'       => '$1 {{PLURAL:$1|bătul|bătuls}}',
 'nmembers'     => '$1 {{PLURAL:$1|membru|membri}}',
-'allpages'     => 'Toats paži',
 'specialpages' => 'Paži specalus',
 'newpages'     => 'Paži novi',
 
-'alphaindexline' => '$1 vo $2',
-
 # Special:Allpages
+'allpages'       => 'Toats paži',
+'alphaindexline' => '$1 vo $2',
 'allarticles'    => 'Toats paži',
 'allpagessubmit' => 'Treme',
 
@@ -299,9 +299,6 @@ $messages = array(
 'tooltip-ca-nstab-category' => "Vu l'pažu de kategoria",
 'tooltip-minoredit'         => "ce-est n'modifikacion minoru",
 'tooltip-save'              => 'Salvaere tes modifikacions',
-
-# Spam protection
-'listingcontinuesabbrev' => 'kontinu',
 
 # Media information
 'file-nohires'   => "<small>Ce-n-est n'resolucion mai mari.</small>",

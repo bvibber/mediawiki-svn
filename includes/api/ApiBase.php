@@ -186,6 +186,9 @@ abstract class ApiBase {
 				);
 			$msg = $lnPrfx . implode($lnPrfx, $msg) . "\n";
 
+			if ($this->mustBePosted())
+				$msg .= "\nThis module only accepts POST requests.\n";
+
 			// Parameters
 			$paramsMsg = $this->makeHelpMsgParameters();
 			if ($paramsMsg !== false) {
@@ -239,7 +242,7 @@ abstract class ApiBase {
 				if (is_array($desc))
 					$desc = implode($paramPrefix, $desc);
 
-				$type = $paramSettings[self :: PARAM_TYPE];
+				$type = isset($paramSettings[self :: PARAM_TYPE])? $paramSettings[self :: PARAM_TYPE] : null;
 				if (isset ($type)) {
 					if (isset ($paramSettings[self :: PARAM_ISMULTI]))
 						$prompt = 'Values (separate with \'|\'): ';
@@ -503,6 +506,8 @@ abstract class ApiBase {
 	* @return (allowMultiple ? an_array_of_values : a_single_value) 
 	*/
 	protected function parseMultiValue($valueName, $value, $allowMultiple, $allowedValues) {
+		if( trim($value) === "" )
+			return array();
 		$valuesList = explode('|', $value);
 		if (!$allowMultiple && count($valuesList) != 1) {
 			$possibleValues = is_array($allowedValues) ? "of '" . implode("', '", $allowedValues) . "'" : '';
@@ -616,12 +621,13 @@ abstract class ApiBase {
 		'canthide' => array('code' => 'canthide', 'info' => "You don't have permission to hide user names from the block log"),
 		'cantblock-email' => array('code' => 'cantblock-email', 'info' => "You don't have permission to block users from sending e-mail through the wiki"),
 		'unblock-notarget' => array('code' => 'notarget', 'info' => "Either the id or the user parameter must be set"),
-		'unblock-idanduser' => array('code' => 'idanduser', 'info' => "The id and user parameters can\'t be used together"),
+		'unblock-idanduser' => array('code' => 'idanduser', 'info' => "The id and user parameters can't be used together"),
 		'cantunblock' => array('code' => 'permissiondenied', 'info' => "You don't have permission to unblock users"),
 		'cannotundelete' => array('code' => 'cantundelete', 'info' => "Couldn't undelete: the requested revisions may not exist, or may have been undeleted already"),
 		'permdenied-undelete' => array('code' => 'permissiondenied', 'info' => "You don't have permission to restore deleted revisions"),
-		
-		// ApiEdit messages
+		'createonly-exists' => array('code' => 'articleexists', 'info' => "The article you tried to create has been created already"),
+
+		// ApiEditPage messages
 		'noimageredirect-anon' => array('code' => 'noimageredirect-anon', 'info' => "Anonymous users can't create image redirects"),
 		'noimageredirect-logged' => array('code' => 'noimageredirect', 'info' => "You don't have permission to create image redirects"),
 		'spamdetected' => array('code' => 'spamdetected', 'info' => "Your edit was refused because it contained a spam fragment: ``\$1''"),

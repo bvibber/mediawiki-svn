@@ -88,7 +88,6 @@ class MovePageForm {
 			# Show the current title as a default
 			# when the form is first opened.
 			$newTitle = $oldTitle;
-			$encNewTitle = htmlspecialchars( $oldTitle );
 		} else {
 			if( $err == '' ) {
 				$nt = Title::newFromURL( $this->newTitle );
@@ -103,7 +102,6 @@ class MovePageForm {
 				}
 			}
 			$newTitle = $this->newTitle;
-			$encNewTitle = htmlspecialchars( $newTitle );
 		}
 
 		if ( $err == 'articleexists' && $wgUser->isAllowed( 'delete' ) ) {
@@ -140,6 +138,8 @@ class MovePageForm {
 			$errMsg = "";
 			if( $err == 'hookaborted' ) {
 				$errMsg = "<p><strong class=\"error\">$hookErr</strong></p>\n";
+			} else if (is_array($err)) {
+				$errMsg = '<p><strong class="error">' . call_user_func_array( 'wfMsgWikiHtml', $err ) . "</strong></p>\n";
 			} else {
 				$errMsg = '<p><strong class="error">' . wfMsgWikiHtml( $err ) . "</strong></p>\n";
 			}
@@ -152,7 +152,7 @@ class MovePageForm {
 			 Xml::openElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalURL( 'action=submit' ), 'id' => 'movepage' ) ) .
 			 Xml::openElement( 'fieldset' ) .
 			 Xml::element( 'legend', null, wfMsg( 'move-page-legend' ) ) .
-			 Xml::openElement( 'table', array( 'border' => '0' ) ) .
+			 Xml::openElement( 'table', array( 'border' => '0', 'id' => 'mw-movepage-table' ) ) .
 			 "<tr>
 			 	<td align='$end'>" .
 					wfMsgHtml( 'movearticle' ) .
@@ -166,7 +166,7 @@ class MovePageForm {
 					Xml::label( wfMsg( 'newtitle' ), 'wpNewTitle' ) .
 				"</td>
 				<td align='$start'>" .
-					Xml::input( 'wpNewTitle', 40, $this->newTitle, array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
+					Xml::input( 'wpNewTitle', 40, $newTitle, array( 'type' => 'text', 'id' => 'wpNewTitle' ) ) .
 					Xml::hidden( 'wpOldTitle', $oldTitle ) .
 				"</td>
 			</tr>
@@ -235,6 +235,15 @@ class MovePageForm {
 		# Delete to make way if requested
 		if ( $wgUser->isAllowed( 'delete' ) && $this->deleteAndMove ) {
 			$article = new Article( $nt );
+			
+			# Disallow deletions of big articles
+			$bigHistory = $article->isBigDeletion();
+			if( $bigHistory && !$nt->userCan( 'bigdelete' ) ) {
+				global $wgLang, $wgDeleteRevisionsLimit;
+				$this->showForm( array('delete-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
+				return;
+			}
+			
 			// This may output an error message and exit
 			$article->doDelete( wfMsgForContent( 'delete_and_move_reason' ) );
 		}

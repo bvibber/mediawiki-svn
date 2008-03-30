@@ -84,11 +84,13 @@ $messages = array(
 'december'  => 'Dezämber',
 'may'       => 'Mei',
 
-# Bits of text used by many pages
-'categories'      => 'Kategorie',
-'pagecategories'  => '{{PLURAL:$1|Kategori|Kategorie}}',
-'category_header' => 'Artikel in de Kategori "$1"',
-'subcategories'   => 'Unterkategorie',
+# Categories related messages
+'categories'             => 'Kategorie',
+'categoriespagetext'     => 'Selli Kategorie gits in dem Wiki:',
+'pagecategories'         => '{{PLURAL:$1|Kategori|Kategorie}}',
+'category_header'        => 'Artikel in de Kategori "$1"',
+'subcategories'          => 'Unterkategorie',
+'listingcontinuesabbrev' => '(Forts.)',
 
 'mainpagetext'      => 'MediaWiki isch erfolgrich inschtalliert worre.',
 'mainpagedocfooter' => 'Luege uf d [http://meta.wikimedia.org/wiki/MediaWiki_localisation Dokumentation fier d Onpassung vun de Bnutzeroberflächi] un s [http://meta.wikimedia.org/wiki/Help:Contents Bnutzerhondbuech] fier d Hilf yber d Bnutzung un s Ystelle.',
@@ -130,6 +132,7 @@ $messages = array(
 'unprotect'         => 'nümm schütze',
 'unprotectthispage' => 'Schutz ufhebe',
 'newpage'           => 'Nöji Syte',
+'talkpagelinktext'  => 'Diskussion',
 'specialpage'       => 'Spezialsyte',
 'personaltools'     => 'Persönlichi Wärkzüg',
 'postcomment'       => 'Kommentar abgeh',
@@ -374,7 +377,6 @@ Für d Bestätigung muesch du em Link folge, wo dir isch gmailet worde. Du chasc
 'note'                     => '<strong>Achtung: </strong>',
 'previewnote'              => 'Das isch numen e Vorschau und nonig gspycheret!',
 'editing'                  => 'Bearbeite vo «$1»',
-'editinguser'              => 'Bearbeite vo «$1»',
 'editingsection'           => 'Bearbeite vo «$1» (Absatz)',
 'editconflict'             => 'Bearbeitigs-Konflikt: «$1»',
 'explainconflict'          => "Öpper anders het dä Artikel gänderet, wo du ne sälber am Ändere bisch gsy.
@@ -394,6 +396,7 @@ Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Qu
 'protectedpagewarning'     => '<strong>WARNIG: Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere.</strong>',
 'semiprotectedpagewarning' => "'''''Halbsperrung''': Diese Seite kann von angemeldeten Benutzern bearbeitet werden. Für nicht angemeldete oder gerade eben erst angemeldete Benutzer ist der Schreibzugang gesperrt.''",
 'templatesused'            => 'Selli Vorlage wärde in sellem Artikel bruucht:',
+'template-semiprotected'   => '(schrybgschützt für unaagmoldeni un neui Benutzer)',
 'edittools'                => '<!-- Selle Text wird untr em "ändere"-Formular un bim "Uffelade"-Formular aagzeigt. -->',
 
 # History pages
@@ -467,8 +470,10 @@ $2 Zeige auch REDIRECTs   Suche nach $3 $9',
 'files'              => 'Bilder',
 
 # User rights
+'userrights'               => 'Benutzerrechtsverwaltung', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'   => 'Verwalte Gruppenzugehörigkeit',
 'editusergroup'            => 'Ändere vo Benutzerrächt',
+'editinguser'              => 'Bearbeite vo «$1»',
 'userrights-editusergroup' => 'Bearbeite Gruppenzugehörigkeit des Benutzers',
 'saveusergroups'           => 'Speichere Gruppenzugehörigkeit',
 'userrights-groupshelp'    => 'Wähle die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
@@ -510,12 +515,10 @@ or
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>'''
 go direkt e Gleich uff d Datei z'mache.",
 
-# Image list
-'imagelist'        => 'Lischte vo Bilder',
-'imagelisttext'    => 'Hier ist eine Liste von $1 Bildern, sortiert $2.',
-'getimagelist'     => 'Lade Bilderliste',
-'ilsubmit'         => 'Suech',
-'showlast'         => 'Zeige die letzten $1 Bilder, sortiert nach $2.',
+# Special:Imagelist
+'imagelist' => 'Lischte vo Bilder',
+
+# Image description page
 'imagelinks'       => 'Bildverweise',
 'linkstoimage'     => 'Di folgende Sytene händ en Link zu dem Bildli:',
 'nolinkstoimage'   => 'Kein Artikel benutzt dieses Bild.',
@@ -568,7 +571,6 @@ Zuer Ziit stöhn '''$7''' Arbete zuem mache aa.",
 'popularpages'            => 'Beliebti Artikel',
 'wantedpages'             => 'Artikel wo fähle',
 'mostlinked'              => 'Meistverlinke Seiten',
-'allpages'                => 'alli Sytene',
 'prefixindex'             => 'Alli Artikle (mit Präfix)',
 'shortpages'              => 'Churzi Artikel',
 'longpages'               => 'Langi Artikel',
@@ -584,16 +586,14 @@ Zuer Ziit stöhn '''$7''' Arbete zuem mache aa.",
 # Book sources
 'booksources' => 'ISBN-Suech',
 
-'categoriespagetext' => 'Selli Kategorie gits in dem Wiki:',
-'userrights'         => 'Benutzerrechtsverwaltung',
-'alphaindexline'     => 'vo $1 bis $2',
-
 # Special:Log
 'alllogstext' => 'Kombinierti Aasicht vo de Protokoll vom Ufelade, Lösche, Schütze, Spärre un de Adminischtratore.
 Si chönnet d Aazeig iischränke wenn Si e Protokoll, e Benutzername odr e Sytename iigän.',
 'logempty'    => 'Kei passendi Yträg gfunde.',
 
 # Special:Allpages
+'allpages'          => 'alli Sytene',
+'alphaindexline'    => 'vo $1 bis $2',
 'nextpage'          => 'Nächscht Syte ($1)',
 'allpagesfrom'      => 'Syte aazeige vo:',
 'allarticles'       => 'alli Artikel',
@@ -715,7 +715,7 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'unblocklogentry' => 'Blockade von [[User:$1]] aufgehoben',
 
 # Move page
-'move-page-legend'         => 'Artikel verschiebe',
+'move-page-legend' => 'Artikel verschiebe',
 'movepagetext'     => 'Mit däm Forumlar chasch du en Artikel verschiebe, u zwar mit syre komplette Versionsgschicht. Der alt Titel leitet zum nöie wyter, aber Links ufen alt Titel blyben unveränderet.',
 'movepagetalktext' => "D Diskussionssyte wird mitverschobe, '''ussert:'''
 *Du verschiebsch d Syten i nen andere Namensruum, oder
@@ -806,10 +806,7 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde."
 'othercontribs'    => 'Basiert auf der Arbeit von $1.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Spamschutz-Filter',
-'subcategorycount'       => 'In sellere Kategori {{PLURAL:$1|isch no ei Unterkategori|sin no $1 Unterkategorie}}.',
-'categoryarticlecount'   => 'In sellere Kategorie {{PLURAL:$1|isch ei Artikel|sin $1 Artikel}}.',
-'listingcontinuesabbrev' => '(Forts.)',
+'spamprotectiontitle' => 'Spamschutz-Filter',
 
 # Math options
 'mw_math_png'    => 'Immer als PNG aazeige',
@@ -842,7 +839,9 @@ sollte umgehend ein Administrator informiert werden!',
 'thumbsize'    => 'Bildvorschou-Gröössi:',
 
 # Special:Newimages
-'newimages' => 'Gallery vo noie Bilder',
+'newimages'     => 'Gallery vo noie Bilder',
+'imagelisttext' => 'Hier ist eine Liste von $1 Bildern, sortiert $2.',
+'ilsubmit'      => 'Suech',
 
 # EXIF tags
 'exif-orientation'       => 'Orientierung',

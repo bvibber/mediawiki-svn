@@ -186,11 +186,11 @@ CONTROL;
 			}
 			// Build the link
 			if( $rcid ) {
-				$patrol = ' [' . $sk->makeKnownLinkObj(
+				$patrol = ' <span class="patrollink">[' . $sk->makeKnownLinkObj(
 					$this->mTitle,
 					wfMsgHtml( 'markaspatrolleddiff' ),
 					"action=markpatrolled&rcid={$rcid}"
-				) . ']';
+				) . ']</span>';
 			} else {
 				$patrol = '';
 			}
@@ -424,7 +424,12 @@ CONTROL;
 		global $wgMemc;
 		$fname = 'DifferenceEngine::getDiffBody';
 		wfProfileIn( $fname );
-		
+		// Check if the diff should be hidden from this user
+		if ( $this->mOldRev && !$this->mOldRev->userCan(Revision::DELETED_TEXT) ) {
+		  	return false;
+		} else if ( $this->mNewRev && !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
+		  	return false;
+		}
 		// Cacheable?
 		$key = false;
 		if ( $this->mOldid && $this->mNewid ) {
@@ -446,21 +451,12 @@ CONTROL;
 		if ( !$this->loadText() ) {
 			wfProfileOut( $fname );
 			return false;
-		} else if ( $this->mOldRev && !$this->mOldRev->userCan(Revision::DELETED_TEXT) ) {
-		  	return '';
-		} else if ( $this->mNewRev && !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
-		  	return '';
 		}
 
 		$difftext = $this->generateDiffBody( $this->mOldtext, $this->mNewtext );
 		
 		// Save to cache for 7 days
-		// Only do this for public revs, otherwise an admin can view the diff and a non-admin can nab it!
-		if ( $this->mOldRev && $this->mOldRev->isDeleted(Revision::DELETED_TEXT) ) {
-			wfIncrStats( 'diff_uncacheable' );
-		} else if ( $this->mNewRev && $this->mNewRev->isDeleted(Revision::DELETED_TEXT) ) {
-			wfIncrStats( 'diff_uncacheable' );
-		} else if ( $key !== false && $difftext !== false ) {
+		if ( $key !== false && $difftext !== false ) {
 			wfIncrStats( 'diff_cache_miss' );
 			$wgMemc->set( $key, $difftext, 7*86400 );
 		} else {
@@ -1777,10 +1773,10 @@ class _HWLDF_WordAccumulator {
 	function _flushGroup ($new_tag) {
 		if ($this->_group !== '') {
 			if ($this->_tag == 'ins')
-				$this->_line .= '<ins class="diffchange">' .
+				$this->_line .= '<ins class="diffchange diffchange-inline">' .
 					htmlspecialchars ( $this->_group ) . '</ins>';
 			elseif ($this->_tag == 'del')
-				$this->_line .= '<del class="diffchange">' .
+				$this->_line .= '<del class="diffchange diffchange-inline">' .
 					htmlspecialchars ( $this->_group ) . '</del>';
 			else
 				$this->_line .= htmlspecialchars ( $this->_group );
@@ -1922,6 +1918,13 @@ class TableDiffFormatter extends DiffFormatter
 		$this->trailing_context_lines = 2;
 	}
 
+	public static function escapeWhiteSpace( $msg ) {
+		$msg = preg_replace( '/^ /m', '&nbsp; ', $msg );
+		$msg = preg_replace( '/ $/m', ' &nbsp;', $msg );
+		$msg = preg_replace( '/  /', '&nbsp; ', $msg );
+		return $msg;
+	}
+
 	function _block_header( $xbeg, $xlen, $ybeg, $ylen ) {
 		$r = '<tr><td colspan="2" class="diff-lineno"><!--LINE '.$xbeg."--></td>\n" .
 		  '<td colspan="2" class="diff-lineno"><!--LINE '.$ybeg."--></td></tr>\n";
@@ -1956,7 +1959,7 @@ class TableDiffFormatter extends DiffFormatter
 	private function wrapLine( $marker, $class, $line ) {
 		if( $line !== '' ) {
 			// The <div> wrapper is needed for 'overflow: auto' style to scroll properly
-			$line = "<div>$line</div>";
+			$line = Xml::tags( 'div', null, $this->escapeWhiteSpace( $line ) );
 		}
 		return "<td class='diff-marker'>$marker</td><td class='$class'>$line</td>";
 	}

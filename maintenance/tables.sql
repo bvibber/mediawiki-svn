@@ -486,6 +486,39 @@ CREATE TABLE /*$wgDBprefix*/categorylinks (
 
 ) /*$wgDBTableOptions*/;
 
+-- 
+-- Track all existing categories.  Something is a category if 1) it has an en-
+-- try somewhere in categorylinks, or 2) it once did.  Categories might not
+-- have corresponding pages, so they need to be tracked separately.
+--
+CREATE TABLE /*$wgDBprefix*/category (
+  -- Primary key
+  cat_id int unsigned NOT NULL auto_increment,
+
+  -- Name of the category, in the same form as page_title (with underscores).
+  -- If there is a category page corresponding to this category, by definition,
+  -- it has this name (in the Category namespace).
+  cat_title varchar(255) binary NOT NULL,
+
+  -- The numbers of member pages (including categories and media), subcatego-
+  -- ries, and Image: namespace members, respectively.  These are signed to
+  -- make underflow more obvious.  We make the first number include the second
+  -- two for better sorting: subtracting for display is easy, adding for order-
+  -- ing is not.
+  cat_pages int signed NOT NULL default 0,
+  cat_subcats int signed NOT NULL default 0,
+  cat_files int signed NOT NULL default 0,
+
+  -- Reserved for future use
+  cat_hidden tinyint unsigned NOT NULL default 0,
+  
+  PRIMARY KEY (cat_id),
+  UNIQUE KEY (cat_title),
+
+  -- For Special:Mostlinkedcategories
+  KEY (cat_pages)
+) /*$wgDBTableOptions*/;
+
 --
 -- Track links to external URLs
 --
@@ -1191,6 +1224,12 @@ CREATE TABLE /*$wgDBprefix*/page_props (
   pp_value blob NOT NULL,
 
   PRIMARY KEY (pp_page,pp_propname)
+) /*$wgDBTableOptions*/;
+
+-- A table to log updates, one text key row per update.
+CREATE TABLE /*$wgDBprefix*/updatelog (
+  ul_key varchar(255) NOT NULL,
+  PRIMARY KEY (ul_key)
 ) /*$wgDBTableOptions*/;
 
 -- vim: sw=2 sts=2 et

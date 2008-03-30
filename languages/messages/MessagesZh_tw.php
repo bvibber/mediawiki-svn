@@ -4,6 +4,7 @@
  * @addtogroup Language
  *
  * @author BobChao
+ * @author Siebrand
  */
 
 $fallback = 'zh-hant';
@@ -142,13 +143,15 @@ $messages = array(
 'nov'           => '11月',
 'dec'           => '12月',
 
-# Bits of text used by many pages
-'categories'            => '頁面分類',
-'pagecategories'        => '$1個分類',
-'category_header'       => '類別「$1」中的頁面',
-'subcategories'         => '子分類',
-'category-media-header' => '"$1"分類中的媒體',
-'category-empty'        => "''這個分類中尚未包含任何頁面或媒體。''",
+# Categories related messages
+'categories'             => '頁面分類',
+'categoriespagetext'     => '以下列出所有的頁面分類。',
+'pagecategories'         => '$1個分類',
+'category_header'        => '類別「$1」中的頁面',
+'subcategories'          => '子分類',
+'category-media-header'  => '"$1"分類中的媒體',
+'category-empty'         => "''這個分類中尚未包含任何頁面或媒體。''",
+'listingcontinuesabbrev' => '續',
 
 'mainpagetext'      => "<big>'''已成功安裝 MediaWiki!'''</big>",
 'mainpagedocfooter' => '請參閱 [http://meta.wikimedia.org/wiki/Help:Contents 使用者手冊] 以獲得使用此 wiki 軟體的訊息！
@@ -240,9 +243,9 @@ $messages = array(
 'bugreportspage'    => 'Project:錯誤報告',
 'copyright'         => '本站的文字內容除另有聲明外，全部以 $1 條款授權使用。',
 'copyrightpagename' => '{{SITENAME}}版權',
-'copyrightpage'     => 'Project:版權訊息',
+'copyrightpage'     => '{{ns:project}}:版權訊息',
 'currentevents'     => '現時事件',
-'currentevents-url' => '現時事件',
+'currentevents-url' => 'Project:現時事件',
 'disclaimers'       => '免責聲明',
 'disclaimerpage'    => 'Project:一般免責聲明',
 'edithelp'          => '編輯說明',
@@ -268,7 +271,6 @@ $messages = array(
 'versionrequired'     => '需要MediaWiki $1 版',
 'versionrequiredtext' => '需要版本$1的 MediaWiki 才能使用此頁。參見[[Special:Version|版本頁]]。',
 
-'ok'                      => 'OK',
 'retrievedfrom'           => '取自"$1"',
 'youhavenewmessages'      => '您有$1（$2）。',
 'newmessageslink'         => '新訊息',
@@ -563,7 +565,6 @@ $2',
 'token_suffix_mismatch'     => '<strong>由於您使用者端中的編輯信符毀損了一些標點符號字元，為防止編輯的文字損壞，您的編輯已經被拒絕。
 這種情況通常出現於使用含有很多臭蟲、以網絡為主的匿名代理服務的時候。</strong>',
 'editing'                   => '正在編輯$1',
-'editinguser'               => '正在編輯使用者<b>$1</b>',
 'editingsection'            => '正在編輯$1 (段落)',
 'editingcomment'            => '正在編輯$1 (評論)',
 'editconflict'              => '編輯衝突：$1',
@@ -626,7 +627,6 @@ $2',
 'revnotfound'         => '沒有找到修訂記錄',
 'revnotfoundtext'     => '您請求的更早版本的修訂記錄沒有找到。
 請檢查您請求本頁面用的URL是否正確。',
-'loadhist'            => '載入頁面修訂沿革',
 'currentrev'          => '當前修訂版本',
 'revisionasof'        => '在$1所做的修訂版本',
 'revision-info'       => '在$1由$2所做的修訂版本',
@@ -636,7 +636,6 @@ $2',
 'cur'                 => '當前',
 'next'                => '後繼',
 'last'                => '先前',
-'orig'                => '初始',
 'page_first'          => '最前',
 'page_last'           => '最後',
 'histlegend'          => '差異選擇: 標記要比較版本的單選按鈕並點擊底部的按鈕進行比較。<br />
@@ -809,9 +808,11 @@ $2',
 'files'                    => '檔案',
 
 # User rights
+'userrights'                  => '使用者權限管理', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'      => '管理使用者群組',
 'userrights-user-editname'    => '輸入使用者帳號:',
 'editusergroup'               => '編輯使用者群組',
+'editinguser'                 => '正在編輯使用者<b>$1</b>',
 'userrights-editusergroup'    => '編輯使用者群組',
 'saveusergroups'              => '保存使用者群組',
 'userrights-groupsmember'     => '屬於:',
@@ -968,18 +969,18 @@ $2',
 'upload_source_url'  => ' (一個有效的，可公開訪問的 URL)',
 'upload_source_file' => ' (在您電腦上的一個檔案)',
 
-# Image list
-'imagelist'                 => '檔案列表',
-'imagelisttext'             => '以下是按$2排列的$1個檔案列表。',
-'getimagelist'              => '正在獲取檔案列表',
-'ilsubmit'                  => '搜尋',
-'showlast'                  => '顯示按$2排列的最後$1個檔案。',
-'byname'                    => '按名字',
-'bydate'                    => '按日期',
-'bysize'                    => '按大小',
-'imgdelete'                 => '刪除',
-'imgdesc'                   => '描述',
-'imgfile'                   => '檔案',
+# Special:Imagelist
+'imagelist_search_for'  => '按圖片名稱搜尋:',
+'imgdesc'               => '描述',
+'imgfile'               => '檔案',
+'imagelist'             => '檔案列表',
+'imagelist_date'        => '日期',
+'imagelist_name'        => '名稱',
+'imagelist_user'        => '使用者',
+'imagelist_size'        => '大小',
+'imagelist_description' => '描述',
+
+# Image description page
 'filehist'                  => '檔案歷史',
 'filehist-help'             => '點擊日期／時間以檢視當時出現過的檔案。',
 'filehist-deleteall'        => '刪除全部',
@@ -1000,12 +1001,6 @@ $2',
 'noimage'                   => '不存在此名稱的檔案，您可以$1。',
 'noimage-linktext'          => '上傳它',
 'uploadnewversion-linktext' => '上傳該檔案的新版本',
-'imagelist_date'            => '日期',
-'imagelist_name'            => '名稱',
-'imagelist_user'            => '使用者',
-'imagelist_size'            => '大小',
-'imagelist_description'     => '描述',
-'imagelist_search_for'      => '按圖片名稱搜尋:',
 
 # File reversion
 'filerevert'                => '復原$1',
@@ -1121,7 +1116,6 @@ Template:消除歧義',
 'mostcategories'          => '最多分類頁面',
 'mostimages'              => '最多連結圖片',
 'mostrevisions'           => '最多修訂頁面',
-'allpages'                => '所有頁面',
 'prefixindex'             => '前綴索引',
 'shortpages'              => '短頁面',
 'longpages'               => '長頁面',
@@ -1137,7 +1131,6 @@ Template:消除歧義',
 'newpages'                => '最新頁面',
 'newpages-username'       => '使用者帳號:',
 'ancientpages'            => '最舊頁面',
-'intl'                    => '跨語言連結',
 'move'                    => '移動',
 'movethispage'            => '移動本頁',
 'unusedimagestext'        => '<p>請注意其它網站可能直接透過 URL 鏈接此圖片，所以這裡列出的圖片有可能依然被使用。</p>',
@@ -1151,13 +1144,6 @@ Template:消除歧義',
 'booksources-go'            => '送出',
 'booksources-text'          => '以下是一份銷售新書或二手書的列表，並可能有你正尋找的書的進一步訊息：',
 
-'categoriespagetext' => '以下列出所有的頁面分類。',
-'data'               => '資料',
-'userrights'         => '使用者權限管理',
-'groups'             => '使用者群組',
-'alphaindexline'     => '$1 到 $2',
-'version'            => '版本',
-
 # Special:Log
 'specialloguserlabel'  => '使用者:',
 'speciallogtitlelabel' => '標題:',
@@ -1170,6 +1156,8 @@ Template:消除歧義',
 'log-title-wildcard'   => '搜尋以這個文字開始的標題',
 
 # Special:Allpages
+'allpages'          => '所有頁面',
+'alphaindexline'    => '$1 到 $2',
 'nextpage'          => '下一頁($1)',
 'prevpage'          => '上一頁($1)',
 'allpagesfrom'      => '顯示從此處開始的頁面:',
@@ -1251,7 +1239,7 @@ Template:消除歧義',
 'watchlist-show-minor' => '顯示細微修改',
 'watchlist-hide-minor' => '隱藏細微修改',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '正在監視...',
 'unwatching' => '正在停止監視...',
 
@@ -1335,8 +1323,7 @@ $NEWPAGE
 'protectedarticle'            => '已保護"[[$1]]"',
 'modifiedarticleprotection'   => '已經更改 "[[$1]]" 的保護等級',
 'unprotectedarticle'          => '已解除保護"[[$1]]"',
-'protectsub'                  => '(正在保護"$1")',
-'confirmprotect'              => '確認保護',
+'protect-title'               => '正在保護"$1"',
 'protectcomment'              => '註解:',
 'protectexpiry'               => '到期:',
 'protect_expiry_invalid'      => '輸入的終止時間無效。',
@@ -1420,8 +1407,6 @@ $1',
 'mycontris'     => '我的編修記錄',
 'contribsub2'   => '$1的編修記錄 ($2)',
 'nocontribs'    => '沒有找到符合特徵的更改。',
-'ucnote'        => '以下是該使用者最近<b>$2</b>天內的最後<b>$1</b>次修改。',
-'uclinks'       => '參看最後$1次修改；參看最後$2天。',
 'uctop'         => ' (最新修改)',
 'month'         => '從該月份 (或更早):',
 'year'          => '從該年份 (或更早):',
@@ -1432,8 +1417,6 @@ $1',
 'sp-contributions-search'      => '搜尋貢獻記錄',
 'sp-contributions-username'    => 'IP位址或使用者名稱：',
 'sp-contributions-submit'      => '搜尋',
-
-'sp-newimages-showfrom' => '從$1開始顯示新圖片',
 
 # What links here
 'whatlinkshere'       => '鏈入頁面',
@@ -1552,7 +1535,7 @@ $1',
 'databasenotlocked'   => '資料庫沒有鎖定。',
 
 # Move page
-'move-page-legend'                => '移動頁面',
+'move-page-legend'        => '移動頁面',
 'movepagetext'            => "用下面的表單來重新命名一個頁面，並將其修訂沿革同時移動到新頁面。
 老的頁面將成為新頁面的重定向頁。
 連結到老頁面的連結並不會自動更改；
@@ -1758,16 +1741,12 @@ $1',
 'nocredits'        => '該頁沒有致謝名單訊息。',
 
 # Spam protection
-'spamprotectiontitle'    => '垃圾過濾器',
-'spamprotectiontext'     => '垃圾過濾器禁止保存您剛才提交的頁面，這可能是由於您所加入的外部網站鏈接所產生的問題。',
-'spamprotectionmatch'    => '觸發了我們的垃圾過濾器的文本如下：$1',
-'subcategorycount'       => '這個分類下有$1個子分類。',
-'categoryarticlecount'   => '這個分類中共有$1個頁面',
-'category-media-count'   => '在這個分類中有$1個檔案。',
-'listingcontinuesabbrev' => '續',
-'spambot_username'       => 'MediaWiki 廣告清除',
-'spam_reverting'         => '復原到不包含連結至$1的最近版本',
-'spam_blanking'          => '所有包含連結至$1的修訂，清空',
+'spamprotectiontitle' => '垃圾過濾器',
+'spamprotectiontext'  => '垃圾過濾器禁止保存您剛才提交的頁面，這可能是由於您所加入的外部網站鏈接所產生的問題。',
+'spamprotectionmatch' => '觸發了我們的垃圾過濾器的文本如下：$1',
+'spambot_username'    => 'MediaWiki 廣告清除',
+'spam_reverting'      => '復原到不包含連結至$1的最近版本',
+'spam_blanking'       => '所有包含連結至$1的修訂，清空',
 
 # Info page
 'infosubtitle'   => '頁面訊息',
@@ -1829,9 +1808,13 @@ $1',
 'show-big-image-thumb' => '<small>這幅縮圖的解像度: $1 × $2 像素</small>',
 
 # Special:Newimages
-'newimages'    => '新建圖片畫廊',
-'showhidebots' => '($1機器人)',
-'noimages'     => '無可檢視圖片。',
+'newimages'             => '新建圖片畫廊',
+'imagelisttext'         => '以下是按$2排列的$1個檔案列表。',
+'showhidebots'          => '($1機器人)',
+'noimages'              => '無可檢視圖片。',
+'ilsubmit'              => '搜尋',
+'bydate'                => '按日期',
+'sp-newimages-showfrom' => '從$1開始顯示新圖片',
 
 # Bad image list
 'bad_image_list' => '請根據以下的格式去編寫:
@@ -2251,5 +2234,7 @@ $1
 'watchlisttools-edit' => '檢視並編輯監視列表',
 'watchlisttools-raw'  => '編輯原始監視列表',
 
+# Special:Version
+'version' => '版本', # Not used as normal message but as header for the special page itself
 
 );

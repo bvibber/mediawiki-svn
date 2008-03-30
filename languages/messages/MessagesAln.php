@@ -111,7 +111,7 @@ $messages = array(
 'nov'           => 'Nën',
 'dec'           => 'Dhj',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'               => 'Kategori',
 'pagecategories'           => '{{PLURAL:$1|Kategoria|Kategoritë}}',
 'category_header'          => 'Artikuj në kategorinë "$1"',
@@ -120,6 +120,7 @@ $messages = array(
 'category-empty'           => "''Kjo kategori tashpërtash nuk përmban asnji faqe apo media.''",
 'hidden-categories'        => '{{PLURAL:$1|Kategoritë e mshehta|Kategoritë e mshehta}}',
 'hidden-category-category' => 'Kategori të mshehta', # Name of the category where hidden categories will be listed
+'listingcontinuesabbrev'   => 'vazh.',
 
 'mainpagetext'      => 'Wiki software u instalue me sukses.',
 'mainpagedocfooter' => 'Për ma shumë informata rreth përdorimit të softwerit wiki , ju lutem shikoni [http://meta.wikimedia.org/wiki/Help:Contents dokumentacionin përkatës].
@@ -459,7 +460,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 # Upload
 'upload' => 'Ngarkoni skeda',
 
-# Image list
+# Image description page
 'filehist'            => 'Historiku i dosjes',
 'filehist-datetime'   => 'Data/Ora',
 'filehist-user'       => 'Përdoruesi',
@@ -491,9 +492,8 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'specialpages' => 'Faqet speciale',
 'move'         => 'Zhvendose',
 
-'alphaindexline' => '$1 deri në $2',
-
 # Special:Allpages
+'alphaindexline' => '$1 deri në $2',
 'allpagessubmit' => 'Shko',
 
 # Watchlist
@@ -506,13 +506,13 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'watchlist-hide-own'   => 'Mshehi redaktimet e mija',
 'watchlist-hide-minor' => 'Mshehi redaktimet e vogla',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Tuj mbikqyrë...',
 'unwatching' => 'Tuj çmbikqyrë...',
 
 # Delete/protect/revert
 'deletedarticle'              => 'grisi "$1"',
-'confirmprotect'              => 'Konfirmoni',
+'protect-legend'              => 'Konfirmoni',
 'protectcomment'              => 'Arsyja:',
 'protectexpiry'               => 'Afáti',
 'protect_expiry_invalid'      => 'Data e skadimit asht e pasaktë.',
@@ -594,11 +594,6 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'tooltip-preview'                 => 'Shiko parapamjen e ndryshimeve, përdore këtë para se me kry ndryshimet!',
 'tooltip-diff'                    => 'Trego ndryshimet që Ju i keni bá tekstit.',
 'tooltip-compareselectedversions' => 'Shikoni krahasimin midis dy versioneve të zgjedhme të kësaj faqe.',
-
-# Spam protection
-'categoryarticlecount'   => 'Ndodhen $1 artikuj në këtë kategori.',
-'category-media-count'   => 'Ndodhen {{PLURAL:$1|një skedë|$1 skeda}} në këtë kategori.',
-'listingcontinuesabbrev' => 'vazh.',
 
 # Media information
 'file-nohires'   => '<small>Rezolucioni i plotë.</small>',

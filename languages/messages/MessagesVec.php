@@ -14,7 +14,7 @@
 
 $fallback = 'it';
 
-$namespaceNames = array(		
+$namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Speciale',
 	NS_MAIN             => '',
@@ -87,10 +87,11 @@ $messages = array(
 'nov'       => 'Nov',
 'dec'       => 'Diç',
 
-# Bits of text used by many pages
-'categories'      => '{{PLURAL:$1|Categoria|Categorie}}',
-'pagecategories'  => '{{PLURAL:$1|Categoria|Categorie}}',
-'category_header' => 'Voçi n\'te ła categoria "$1"',
+# Categories related messages
+'categories'         => '{{PLURAL:$1|Categoria|Categorie}}',
+'categoriespagetext' => 'In {{SITENAME}} ghèmo ste categorie',
+'pagecategories'     => '{{PLURAL:$1|Categoria|Categorie}}',
+'category_header'    => 'Voçi n\'te ła categoria "$1"',
 
 'mainpagetext' => "'''MediaWiki xè stà instałà con sucesso.'''",
 
@@ -266,7 +267,7 @@ Controlla per favore il nome digitato, oppure usa il modulo qui sotto per creare
 'passwordtooshort'           => "La to password l'è massa breve. La deve contegnere almanco $1 caratteri.",
 'mailmypassword'             => 'Spediscimi una nuova password in posta elettronica',
 'passwordremindertext'       => 'Qualcuno (probabilmente ti, con indirizso IP $1) gà richiesto l\'invio de na nova password de acezso a {{SITENAME}} ($4).
-La password par l\'utente "$2" xè stà impostà a "$3". 
+La password par l\'utente "$2" xè stà impostà a "$3".
 Xè opportuno eseguire n\'acezso quanto prima e cambiare ła password immediatamente.',
 'noemail'                    => 'Nessuna casella e-mail risulta registrata per l\'Utente "$1".',
 'passwordsent'               => 'Una nuova password è stata inviata alla casella e-mail registrata per l\'Utente "$1".
@@ -338,7 +339,11 @@ Se te rizsevi sto messajo de erór pì olte, proa a scołegarte (struca su "và 
 'editingsection'           => 'Modifica $1 (sezsion)',
 'editingcomment'           => 'Modifica $1 (commento)',
 'editconflict'             => 'Conflitto de edizsion: $1',
-'explainconflict'          => 'Qualcun altro ga salvà na so verszion de ła voçe nel tempo in cui te stavi preparando ła to verszion.<br /> La caselła de modifica de sora contegne el testo de la voçe ne ła so forma attuałe (el testo attualmente online). Le to modifiche łe xè inveçe contegnue ne ła caseła de modifica inferiore. Te dovarè inserire, se te vołi, le to modifiche nel testo esistente, e perciò scrivarle ne ła caseła de sora. <b>Soltanto</b> el testo ne ła caseła de sora sarà salvà se te struchi el botón "Salva".<br />',
+'explainconflict'          => "Qualcun altro ga salvà na so verszion de ła voçe nel tempo in cui te stavi preparando ła to verszion.
+La caselła de modifica de sora contegne el testo de la voçe ne ła so forma attuałe (el testo attualmente online).
+Le to modifiche łe xè inveçe contegnue ne ła caseła de modifica inferiore.
+Te dovarè inserire, se te vołi, le to modifiche nel testo esistente, e perciò scrivarle ne ła caseła de sora.
+'''Soltanto''' el testo ne ła caseła de sora sarà salvà se te struchi el botón \"Salva\".",
 'yourtext'                 => 'El to testo',
 'storedversion'            => 'Versione in archivio',
 'editingold'               => '<strong>Attenzsion: Te stè modificando na verzsion de ła voçe non aggiornà. Se te la salvi così, tuti i cambiamenti apportai dopo sta verzsion i verrà persi.</strong>',
@@ -358,7 +363,6 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'revnotfound'         => 'Verzsion non trovà',
 'revnotfoundtext'     => 'La verzsion richiesta de ła paxèna non xè stà trovà.
 Verifica ła URL usà par açedere a sta paxèna.',
-'loadhist'            => 'Caricamento cronologia de sta paxèna',
 'currentrev'          => 'Verzsion atuałe',
 'revisionasof'        => 'Revixion $1',
 'previousrevision'    => '← Verzsion manco reçente',
@@ -460,7 +464,7 @@ par poder personalixare le to preferenzse.',
 'recentchanges'     => 'Ultime modifeghe',
 'recentchangestext' => 'Sta paxèna presenta łe ultime modifeghe aportae ai contenuti de el sito.',
 'rcnote'            => 'De seguito xè ełencae łe <strong>$1</strong> modifiche pì reçenti aportae ne i ultimi <strong>$2</strong> jorni, agiornae a $3.',
-'rcnotefrom'        => ' Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).',
+'rcnotefrom'        => " Qui di seguito sono elencate le modifiche da '''$2''' (fino a '''$1''').",
 'rclistfrom'        => 'Mostra łe modifeghe aportae a partire da $1',
 'rcshowhideminor'   => '$1 le modifeghe minori',
 'rcshowhideliu'     => '$1 gli utenti registrai',
@@ -493,7 +497,7 @@ Tutti i tempi indicati sono calcolati sul fuso orario del server (UTC).',
 'filedesc'                    => 'Oggetto',
 'fileuploadsummary'           => 'Sommario:',
 'filestatus'                  => 'Stato del copyright:',
-'filesource'                  => 'Sorgente:',
+'filesource'                  => 'Sorgente',
 'uploadedfiles'               => 'Files Caricati in {{SITENAME}}',
 'ignorewarnings'              => 'Ignora i messaggi de avvertimento del sistema',
 'illegalfilename'             => 'Il nomefile "$1" contiene caratteri che xè permessi nei titoli delle pagine. Per favore rinomina el file e prova a ricaricarlo.',
@@ -511,13 +515,10 @@ Tutti i tempi indicati sono calcolati sul fuso orario del server (UTC).',
 
 'nolicense' => 'Nessuna liçenzsa indicà',
 
-# Image list
-'imagelist'                 => 'Imagini',
-'imagelisttext'             => 'Qui de seguito na łista de $1 imagini, ordinae par $2.',
-'getimagelist'              => 'rizserca ne la lista de le immagini',
-'ilsubmit'                  => 'Zserca',
-'showlast'                  => 'Lista di $1, fra le ultime immagini, ordinate per $2.',
-'bysize'                    => 'peso',
+# Special:Imagelist
+'imagelist' => 'Imagini',
+
+# Image description page
 'imagelinks'                => 'Collegamenti a le immagini',
 'linkstoimage'              => 'Le paxène seguenti riciama sta imagine:',
 'nolinkstoimage'            => 'Nessuna paxèna linka sta imagine.',
@@ -570,7 +571,6 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue coda] contegne '''{{FORMATNUM|
 'mostlinkedcategories'    => 'Categorie piazsé riciamae',
 'mostcategories'          => 'Arthicołi con piazsé categorie',
 'mostrevisions'           => 'Voçi con piazsé revixión',
-'allpages'                => 'Tute łe paxène',
 'shortpages'              => 'Paxène corte',
 'longpages'               => 'Paxène longhe',
 'deadendpages'            => 'Paxène senzsa uscita',
@@ -584,14 +584,12 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue coda] contegne '''{{FORMATNUM|
 'unusedcategoriestext'    => 'Le paxène de łe categorie indicae de seguito łe xè stà creae ma non contegne nessuna paxèna né sotocategoria.',
 'notargettext'            => "Non hai specificato una pagina o un Utente in relazione al quale eseguire l'operazione richiesta.",
 
-'categoriespagetext' => 'In {{SITENAME}} ghèmo ste categorie',
-'version'            => 'Verzsion',
-
 # Special:Log
 'speciallogtitlelabel' => 'Titolo',
 'alllogstext'          => 'Vixualixazsion unificà de i log de upload, scancełazsión, protezsión, blocking e de aministrazsión. Te podi restringere i criteri de rizserca selezsionando el tipo de log, username, o la paxèna interessà.',
 
 # Special:Allpages
+'allpages'          => 'Tute łe paxène',
 'nextpage'          => 'Paxèna dopo ($1)',
 'allpagesfrom'      => 'Mostra łe paxène cominzsiando da:',
 'allarticles'       => 'Tuti le voçi',
@@ -693,8 +691,8 @@ Par cortesia, conferma che l'è to intenzsion proçedere a tałe scancełazsion,
 'revertpage'                  => 'Anułate łe modifeghe de [[Special:Contributions/$2|$2]] ([[User talk:$2|discussion]]), riportà a ła verzsion preçedente de [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'Log de protezsión',
 'protectedarticle'            => 'proteto "[[$1]]"',
-'protectsub'                  => '(Protezsion de "$1")',
-'confirmprotect'              => 'Conferma la protezsion',
+'protect-title'               => 'Protezsion de "$1"',
+'protect-legend'              => 'Conferma la protezsion',
 'protectcomment'              => 'Motivo de ła protezsion',
 'protect-unchain'             => 'Scołega i permessi de spostamento',
 'protect-level-autoconfirmed' => 'Solo utenti registrai',
@@ -728,11 +726,7 @@ Consultare el [[Special:Log/delete|log delle scancełazsioni]] par vardare łe s
 # Contributions
 'mycontris'  => 'i me contributi',
 'nocontribs' => 'Nessuna modifica trovata conformemente a questi criteri.',
-'ucnote'     => 'Qui sotto troverai le ultime <b>$1</b> modifiche effettuate da questo Utente negli ultimi <b>$2</b> giorni.',
-'uclinks'    => 'Vedi le ultime $1 modifiche; vedi gli ultimi $2 giorni.',
 'uctop'      => '(ultima par ła paxèna)',
-
-'sp-newimages-showfrom' => 'Mostra łe imagini pì reçenti a partire da $1',
 
 # What links here
 'whatlinkshere' => 'Paxène che le punta qua',
@@ -786,8 +780,19 @@ Per cortesia, conferma che questo è effettivamente quanto tu intendi ora effett
 'unlockdbsuccesstext' => ' Il database di {{SITENAME}} è stato sbloccato.',
 
 # Move page
-'move-page-legend'                => 'Spostamento de paxèna',
-'movepagetext'            => "Con el modulo sottostante te podi rinominar na paxèna, spostando anca tuta la so cronołogia al novo nome. El vecio titoło diverrà automaticamente un redirect che punta al novo titoło. I link a la vecia paxèna non sarà agiornai (e i punterà quindi al redirect); azsertai de [[Special:Manutenzsion|controłare con cura]] che non se crea doppi redirects o redirects interroti. Resta ne la to responsabilità de accertarte che i link i continua a puntare verso dove i deve dirigerse. Nota ben: la paxèna '''non''' sarà spostà se ve fusse xà una voçe con el novo nome, a meno che non sia na paxèna voda o un redirect, e sempre che non abbia cronologia. Questo significa che, se te commetti un error, te podi novamente rinominar na paxèna col vecio titoło, ma non te podi sovrascriver na paxèna xà esistente. <b>ATTENZSION!</b> Sto cambiamento drastico podaria crear inattesi contrattempi, specialmente se se tratta de na paxèna molto visità. Accertai de aver ben valutà le conseguenzse de lo spostamento, prima de procedere. Nel dubbio, contatta un Aministrador.",
+'move-page-legend'        => 'Spostamento de paxèna',
+'movepagetext'            => "Con el modulo sottostante te podi rinominar na paxèna, spostando anca tuta la so cronołogia al novo nome.
+El vecio titoło diverrà automaticamente un redirect che punta al novo titoło.
+I link a la vecia paxèna non sarà agiornai (e i punterà quindi al redirect);
+azsertai de [[Special:Manutenzsion|controłare con cura]] che non se crea doppi redirects o redirects interroti.
+Resta ne la to responsabilità de accertarte che i link i continua a puntare verso dove i deve dirigerse.
+
+Nota ben: la paxèna '''non''' sarà spostà se ve fusse xà una voçe con el novo nome, a meno che non sia na paxèna voda o un redirect, e sempre che non abbia cronologia.
+Questo significa che, se te commetti un error, te podi novamente rinominar na paxèna col vecio titoło, ma non te podi sovrascriver na paxèna xà esistente.
+
+'''ATTENZSION!'''
+Sto cambiamento drastico podaria crear inattesi contrattempi, specialmente se se tratta de na paxèna molto visità.
+Accertai de aver ben valutà le conseguenzse de lo spostamento, prima de procedere.",
 'movepagetalktext'        => "La corrispondente paxèna de discussion sarà spostà automaticamente insieme a ła paxèna prinçipałe, '''tranne che nei seguenti casi:'''
 * Lo spostamento de ła paxèna xè tra namespace diversi
 * In corrispondenzsa del novo titoło esiste xà na paxèna de discussion (non voda)
@@ -923,9 +928,7 @@ Tute łe operazsion de importazsion trans-wiki łe xè registrae nel [[Special:L
 'creditspage'      => 'Crediti de ła paxèna',
 
 # Spam protection
-'subcategorycount'     => 'Sta categoria contegne {{PLURAL:$1|na sotocategoria|$1 sotocategorie}}.',
-'categoryarticlecount' => 'Ghè $1 voçi in sta categoria.',
-'spam_blanking'        => 'Paxèna svodà, tute łe verzsion contegneva cołegamenti a $1',
+'spam_blanking' => 'Paxèna svodà, tute łe verzsion contegneva cołegamenti a $1',
 
 # Info page
 'infosubtitle'   => 'Informazsion par la paxèna',
@@ -950,8 +953,11 @@ Tute łe operazsion de importazsion trans-wiki łe xè registrae nel [[Special:L
 'imagemaxsize' => 'Limita łe imagini o łe paxène de descrizsion de łe imagini a:',
 
 # Special:Newimages
-'newimages' => 'Imagini nove',
-'noimages'  => 'Non ghè gnente da vardare.',
+'newimages'             => 'Imagini nove',
+'imagelisttext'         => 'Qui de seguito na łista de $1 imagini, ordinae par $2.',
+'noimages'              => 'Non ghè gnente da vardare.',
+'ilsubmit'              => 'Zserca',
+'sp-newimages-showfrom' => 'Mostra łe imagini pì reçenti a partire da $1',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Larghezsa',
@@ -1186,7 +1192,8 @@ Se l\'account *non* xè el tuo, non visitare el cołegamento. El codexe de confe
 
 # Delete conflict
 'deletedwhileediting' => 'Attenzsion: Sta paxèna xè stà scancełà dopo che te ghè scominzsià a modificarla!',
-'confirmrecreate'     => "L'utente [[User:$1|$1]] ([[User talk:$1|discussion]]) ga scancełà sta voçe dopo che te ghè inizsià a modificarla, con ła seguente motivazsion: ''$2'' 
+'confirmrecreate'     => "L'utente [[User:$1|$1]] ([[User talk:$1|discussion]]) ga scancełà sta voçe dopo che te ghè inizsià a modificarla, con ła seguente motivazsion:
+: ''$2''
 Per favore conferma che te vołi veramente ricrear sta voçe.",
 
 # action=purge
@@ -1200,5 +1207,8 @@ $1',
 
 # Auto-summaries
 'autoredircomment' => 'Redirect a ła paxèna [[$1]]',
+
+# Special:Version
+'version' => 'Verzsion', # Not used as normal message but as header for the special page itself
 
 );

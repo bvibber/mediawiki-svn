@@ -60,19 +60,33 @@ abstract class IndexPager implements Pager {
 	public $mDb;
 	public $mPastTheEndRow;
 
-	protected $mIndexField;
-
 	/**
-	 * Default query direction. false for ascending, true for descending
+	 * The index to actually be used for ordering.  This is a single string e-
+	 * ven if multiple orderings are supported.
 	 */
-	public $mDefaultDirection = false;
+	protected $mIndexField;
+	/** For pages that support multiple types of ordering, which one to use. */
+	protected $mOrderType;
+	/**
+	 * $mDefaultDirection gives the direction to use when sorting results: 
+	 * false for ascending, true for descending.  If $mIsBackwards is set, we
+	 * start from the opposite end, but we still sort the page itself according
+	 * to $mDefaultDirection.  E.g., if $mDefaultDirection is false but we're
+	 * going backwards, we'll display the last page of results, but the last
+	 * result will be at the bottom, not the top.
+	 *
+	 * Like $mIndexField, $mDefaultDirection will be a single value even if the
+	 * class supports multiple default directions for different order types.
+	 */
+	public $mDefaultDirection;
+	public $mIsBackwards;
 
 	/**
 	 * Result object for the query. Warning: seek before use.
 	 */
 	public $mResult;
 
-	function __construct() {
+	public function __construct() {
 		global $wgRequest, $wgUser;
 		$this->mRequest = $wgRequest;
 		
@@ -80,14 +94,35 @@ abstract class IndexPager implements Pager {
 		# arbitrary string to support the widest variety of index types. Be
 		# careful outputting it into HTML!
 		$this->mOffset = $this->mRequest->getText( 'offset' );
-		
+
 		# Use consistent behavior for the limit options
 		$this->mDefaultLimit = intval( $wgUser->getOption( 'rclimit' ) );
 		list( $this->mLimit, /* $offset */ ) = $this->mRequest->getLimitOffset();
-		
+
 		$this->mIsBackwards = ( $this->mRequest->getVal( 'dir' ) == 'prev' );
-		$this->mIndexField = $this->getIndexField();
 		$this->mDb = wfGetDB( DB_SLAVE );
+
+		$index = $this->getIndexField();
+		$order = $this->mRequest->getVal( 'order' );
+		if( is_array( $index ) && isset( $index[$order] ) ) {
+			$this->mOrderType = $order;
+			$this->mIndexField = $index[$order];
+		} elseif( is_array( $index ) ) {
+			# First element is the default
+			reset( $index );
+			list( $this->mOrderType, $this->mIndexField ) = each( $index );
+		} else {
+			# $index is not an array
+			$this->mOrderType = null;
+			$this->mIndexField = $index;
+		}
+
+		if( !isset( $this->mDefaultDirection ) ) {
+			$dir = $this->getDefaultDirections();
+			$this->mDefaultDirection = is_array( $dir )
+				? $dir[$this->mOrderType]
+				: $dir;
+		}
 	}
 
 	/**
@@ -238,13 +273,12 @@ abstract class IndexPager implements Pager {
 	/**
 	 * Make a self-link
 	 */
-	function makeLink($text, $query = NULL) {
+	function makeLink($text, $query = null) {
 		if ( $query === null ) {
 			return $text;
-		} else {
-			return $this->getSkin()->makeKnownLinkObj( $this->getTitle(), $text,
-				wfArrayToCGI( $query, $this->getDefaultQuery() ) );
 		}
+		return $this->getSkin()->makeKnownLinkObj( $this->getTitle(), $text,
+				wfArrayToCGI( $query, $this->getDefaultQuery() ) );
 	}
 
 	/**
@@ -301,6 +335,7 @@ abstract class IndexPager implements Pager {
 			unset( $this->mDefaultQuery['dir'] );
 			unset( $this->mDefaultQuery['offset'] );
 			unset( $this->mDefaultQuery['limit'] );
+			unset( $this->mDefaultQuery['order'] );
 		}
 		return $this->mDefaultQuery;
 	}
@@ -316,7 +351,7 @@ abstract class IndexPager implements Pager {
 	}
 
 	/**
-	 * Get a query array for the prev, next, first and last links.
+	 * Get a URL query array for the prev, next, first and last links.
 	 */
 	function getPagingQueries() {
 		if ( !$this->mQueryDone ) {
@@ -398,10 +433,35 @@ abstract class IndexPager implements Pager {
 	abstract function getQueryInfo();
 
 	/**
-	 * This function should be overridden to return the name of the 
-	 * index field.
+	 * This function should be overridden to return the name of the index fi-
+	 * eld.  If the pager supports multiple orders, it may return an array of
+	 * 'querykey' => 'indexfield' pairs, so that a request with &count=querykey
+	 * will use indexfield to sort.  In this case, the first returned key is
+	 * the default.
+	 *
+	 * Needless to say, it's really not a good idea to use a non-unique index
+	 * for this!  That won't page right.
 	 */
 	abstract function getIndexField();
+
+	/**
+	 * Return the default sorting direction: false for ascending, true for de-
+	 * scending.  You can also have an associative array of ordertype => dir,
+	 * if multiple order types are supported.  In this case getIndexField()
+	 * must return an array, and the keys of that must exactly match the keys
+	 * of this.
+	 *
+	 * For backward compatibility, this method's return value will be ignored
+	 * if $this->mDefaultDirection is already set when the constructor is
+	 * called, for instance if it's statically initialized.  In that case the
+	 * value of that variable (which must be a boolean) will be used.
+	 *
+	 * Note that despite its name, this does not return the value of the
+	 * $this->mDefaultDirection member variable.  That's the default for this
+	 * particular instantiation, which is a single value.  This is the set of
+	 * all defaults for the class.
+	 */
+	protected function getDefaultDirections() { return false; }
 }
 
 
@@ -410,33 +470,78 @@ abstract class IndexPager implements Pager {
  * @addtogroup Pager
  */
 abstract class AlphabeticPager extends IndexPager {
-	public $mDefaultDirection = false;
-	
 	function __construct() {
 		parent::__construct();
 	}
 	
 	/** 
-	 * Shamelessly stolen bits from ReverseChronologicalPager, d
+	 * Shamelessly stolen bits from ReverseChronologicalPager,
 	 * didn't want to do class magic as may be still revamped 
 	 */
 	function getNavigationBar() {
 		global $wgLang;
 
+		if( isset( $this->mNavigationBar ) ) {
+			return $this->mNavigationBar;
+		}
+
 		$linkTexts = array(
 			'prev' => wfMsgHtml( 'prevn', $wgLang->formatNum( $this->mLimit ) ),
 			'next' => wfMsgHtml( 'nextn', $wgLang->formatNum($this->mLimit ) ),
-			'first' => wfMsgHtml( 'page_first' ), /* Introduced the message */
-			'last' => wfMsgHtml( 'page_last' )  /* Introduced the message */
+			'first' => wfMsgHtml( 'page_first' ),
+			'last' => wfMsgHtml( 'page_last' )
 		);
 
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
 		$limitLinks = $this->getLimitLinks();
 		$limits = implode( ' | ', $limitLinks );
 
-		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
-		return $this->mNavigationBar;
+		$this->mNavigationBar =
+			"({$pagingLinks['first']} | {$pagingLinks['last']}) " .
+			wfMsgHtml( 'viewprevnext', $pagingLinks['prev'],
+			$pagingLinks['next'], $limits );
 
+		if( !is_array( $this->getIndexField() ) ) {
+			# Early return to avoid undue nesting
+			return $this->mNavigationBar;
+		}
+
+		$extra = '';
+		$first = true;
+		$msgs = $this->getOrderTypeMessages();
+		foreach( array_keys( $msgs ) as $order ) {
+			if( $first ) {
+				$first = false;
+			} else {
+				$extra .= ' | ';
+			}
+			
+			if( $order == $this->mOrderType ) {
+				$extra .= wfMsgHTML( $msgs[$order] );
+			} else {
+				$extra .= $this->makeLink(
+					wfMsgHTML( $msgs[$order] ),
+					array( 'order' => $order )
+				);
+			}
+		}
+
+		if( $extra !== '' ) {
+			$this->mNavigationBar .= " ($extra)";
+		}
+
+		return $this->mNavigationBar;
+	}
+
+	/**
+	 * If this supports multiple order type messages, give the message key for
+	 * enabling each one in getNavigationBar.  The return type is an associa-
+	 * tive array whose keys must exactly match the keys of the array returned
+	 * by getIndexField(), and whose values are message keys.
+	 * @return array
+	 */
+	protected function getOrderTypeMessages() {
+		return null;
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Chinese (Simplified) (中文 (简化字))
+ * Chinese (Simplified) ((‪中文 (简化字)‬)
  *
  * @addtogroup Language
  *
@@ -105,10 +105,10 @@ $messages = array(
 'tog-previewontop'            => '在编辑框上方显示预览',
 'tog-previewonfirst'          => '在首次编辑时显示预览',
 'tog-nocache'                 => '禁用页面缓存',
-'tog-enotifwatchlistpages'    => '在页面更改时发邮件通知我',
+'tog-enotifwatchlistpages'    => '在我的监视列表中的页面改变时发电子邮件通知我',
 'tog-enotifusertalkpages'     => '在我的讨论页更改时发邮件通知我',
 'tog-enotifminoredits'        => '在页面有微小编辑时也发邮件通知我',
-'tog-enotifrevealaddr'        => '在通邮件知列表中显示我的邮件地址',
+'tog-enotifrevealaddr'        => '在通知电子邮件列表中显示我的电子邮件地址',
 'tog-shownumberswatching'     => '显示监视此页的用户数',
 'tog-fancysig'                => '原始签名 (没有自动链接)',
 'tog-externaleditor'          => '默认使用外部编辑器',
@@ -182,15 +182,25 @@ $messages = array(
 'nov'           => '11月',
 'dec'           => '12月',
 
-# Bits of text used by many pages
-'categories'               => '页面分类',
-'pagecategories'           => '$1个分类',
-'category_header'          => '"$1"分类中的页面',
-'subcategories'            => '亚类',
-'category-media-header'    => '"$1"分类中的媒体',
-'category-empty'           => "''这个分类中尚未包含任何页面或媒体。''",
-'hidden-categories'        => '$1个隐藏分类',
-'hidden-category-category' => '隐藏分类', # Name of the category where hidden categories will be listed
+# Categories related messages
+'categories'                     => '页面分类',
+'categoriespagetext'             => '以下的分类中包含了页面或媒体。',
+'pagecategories'                 => '$1个分类',
+'special-categories-sort-count'  => '按数量排列',
+'special-categories-sort-abc'    => '按字母排列',
+'category_header'                => '"$1"分类中的页面',
+'subcategories'                  => '亚类',
+'category-media-header'          => '"$1"分类中的媒体',
+'category-empty'                 => "''这个分类中尚未包含任何页面或媒体。''",
+'hidden-categories'              => '$1个隐藏分类',
+'hidden-category-category'       => '隐藏分类', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|这个分类中只有以下的亚类。|这个分类中有以下的$1个亚类，共有$2个附分类。}}',
+'category-subcat-count-limited'  => '这个分类中有$1个亚类。',
+'category-article-count'         => '{{PLURAL:$2|这个分类中只有以下的页面。|这个分类中有以下的$1个页面，共有$2个页面。}}',
+'category-article-count-limited' => '这个分类中有$1个页面。',
+'category-file-count'            => '{{PLURAL:$2|这个分类中只有以下的文件。|这个分类中有以下的$1个文件，共有$2个文件。}}',
+'category-file-count-limited'    => '这个分类中有$1个文件。',
+'listingcontinuesabbrev'         => '续',
 
 'mainpagetext'      => "<big>'''已成功安装 MediaWiki!'''</big>",
 'mainpagedocfooter' => '请访问 [http://meta.wikimedia.org/wiki/Help:Contents 用户手册] 以获得使用此 wiki 软件的信息！
@@ -238,7 +248,9 @@ $messages = array(
 'permalink'         => '永久链接',
 'print'             => '打印',
 'edit'              => '编辑',
+'create'            => '创建',
 'editthispage'      => '编辑此页',
+'create-this-page'  => '创建此页',
 'delete'            => '删除',
 'deletethispage'    => '删除此页',
 'undelete_short'    => '反删除$1项修订',
@@ -427,7 +439,7 @@ $2',
 'logouttext'                 => '<strong>您现在已经退出。</strong><br />
 您可以继续以匿名方式使用{{SITENAME}}，或再次以相同或不同用户身份登录。
 请注意一些页面可能仍然显示您为登录状态，直到您清空您的浏览器缓存为止。',
-'welcomecreation'            => '== 欢迎, $1! == 
+'welcomecreation'            => '== 欢迎, $1! ==
 
  您的账户已经建立，不要忘记设置{{SITENAME}}的个人参数。',
 'loginpagetitle'             => '用户登录',
@@ -450,7 +462,7 @@ $2',
 'gotaccount'                 => '已经拥有账户？$1。',
 'gotaccountlink'             => '登录',
 'createaccountmail'          => '通过电子邮件',
-'badretype'                  => '你所输入的密码并不相同。',
+'badretype'                  => '您所输入的密码并不相同。',
 'userexists'                 => '您所输入的用户名已有人使用。请另选一个。',
 'youremail'                  => '电子邮件:',
 'username'                   => '用户名:',
@@ -682,7 +694,6 @@ $2',
 'revnotfound'         => '没有找到修订记录',
 'revnotfoundtext'     => '您请求的更早版本的修订记录没有找到。
 请检查您请求本页面用的 URL 是否正确。',
-'loadhist'            => '载入页面修订历史',
 'currentrev'          => '当前修订版本',
 'revisionasof'        => '在$1所做的修订版本',
 'revision-info'       => '在$1由$2所做的修订版本',
@@ -692,7 +703,6 @@ $2',
 'cur'                 => '当前',
 'next'                => '后继',
 'last'                => '先前',
-'orig'                => '初始',
 'page_first'          => '最前',
 'page_last'           => '最后',
 'histlegend'          => '差异选择: 标记要比较版本的单选按钮并点击底部的按钮进行比较。<br />
@@ -746,6 +756,8 @@ $2',
 'logdelete-logaction'         => '对于[[$3]]的$1个事件己经设置至方式$2',
 'revdelete-success'           => '修订的可见性已经成功设置。',
 'logdelete-success'           => '事件的可见性已经成功设置。',
+'pagehist'                    => '页面历史',
+'deletedhist'                 => '已删除之历史',
 
 # Oversight log
 'oversightlog'    => '监督记录',
@@ -753,10 +765,8 @@ $2',
 
 # History merging
 'mergehistory'                     => '合并页面历史',
-'mergehistory-header'              => "这一页可以讲您合并一个来源页面的历史到另一个新页面中。
-请确认这次更改会继续保留该页面先前的历史版本。
-
-'''最少该来源页面的现时修订必定会保持。'''",
+'mergehistory-header'              => '这一页可以讲您合并一个来源页面的历史到另一个新页面中。
+请确认这次更改会继续保留该页面先前的历史版本。',
 'mergehistory-box'                 => '合并两个页面的修订:',
 'mergehistory-from'                => '来源页面:',
 'mergehistory-into'                => '目的页面:',
@@ -771,6 +781,8 @@ $2',
 'mergehistory-no-destination'      => '目的页面$1不存在。',
 'mergehistory-invalid-source'      => '来源页面必须是一个有效的标题。',
 'mergehistory-invalid-destination' => '目的页面必须是一个有效的标题。',
+'mergehistory-autocomment'         => '已经合并[[:$1]]去到[[:$2]]',
+'mergehistory-comment'             => '已经合并[[:$1]]去到[[:$2]]: $3',
 
 # Merge log
 'mergelog'           => '合并日志',
@@ -801,10 +813,18 @@ $2',
 'prevn'                 => '前$1个',
 'nextn'                 => '后$1个',
 'viewprevnext'          => '查看 ($1) ($2) ($3)',
+'search-result-size'    => '$1 ($2个字)',
+'search-result-score'   => '相关度: $1%',
+'search-redirect'       => '(重定向 $1)',
+'search-section'        => '(段落 $1)',
+'search-suggest'        => '你是否解: $1',
+'searchall'             => '所有',
 'showingresults'        => '下面显示从第<b>$2</b>条开始的<b>$1</b>条结果:',
 'showingresultsnum'     => '下面显示从第<b>$2</b>条开始的<b>$3</b>条结果:',
+'showingresultstotal'   => "下面显示从'''$1 - $2'''，总共'''$3'''项之结果",
 'nonefound'             => '<strong>注意：</strong>失败的搜索往往是由于试图搜索诸如“的”或“和”之类的常见字所引起。',
-'powersearch'           => '搜索',
+'powersearch'           => '高级搜索',
+'powersearch-legend'    => '高级搜索',
 'powersearchtext'       => '
 搜索名字空间：<br />$1<br />$2列出重定向页面；搜索$3 $9',
 'searchdisabled'        => '{{SITENAME}}由于性能方面的原因，全文搜索已被暂时禁用。您可以暂时通过Google搜索。请留意他们的索引可能会过时。',
@@ -871,6 +891,7 @@ $2',
 'files'                    => '文件',
 
 # User rights
+'userrights'                       => '用户权限管理', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => '管理用户群组',
 'userrights-user-editname'         => '输入用户名:',
 'editusergroup'                    => '编辑用户群组',
@@ -953,12 +974,12 @@ $2',
 'upload'                      => '上传文件',
 'uploadbtn'                   => '上传文件',
 'reupload'                    => '重新上传',
-'reuploaddesc'                => '返回上传表单。',
+'reuploaddesc'                => '取消上传并返回上传表单',
 'uploadnologin'               => '未登录',
 'uploadnologintext'           => '您必须先[[Special:Userlogin|登录]]才能上传文件。',
 'upload_directory_read_only'  => '上传目录($1)不存在或无写权限。',
 'uploaderror'                 => '上载错误',
-'uploadtext'                  => "使用下面的表单来上传用在页面内新的文件。 
+'uploadtext'                  => "使用下面的表单来上传用在页面内新的文件。
 要查看或搜索以前上传的文件
 可以进入[[Special:Imagelist|文件上传列表]]，
 上传和删除将在[[Special:Log/upload|上传日志]]中记录。
@@ -979,11 +1000,11 @@ $2',
 'filestatus'                  => '版权状态:',
 'filesource'                  => '来源:',
 'uploadedfiles'               => '已上传文件',
-'ignorewarning'               => '忽略警告并保存文件。',
+'ignorewarning'               => '忽略警告并保存文件',
 'ignorewarnings'              => '忽略所有警告',
 'minlength1'                  => '文件名字必须至少有一个字母。',
-'illegalfilename'             => '文件名"$1"包含有页面标题所禁止的字符。请改名后重新上传。',
-'badfilename'                 => '文件名已被改为"$1"。',
+'illegalfilename'             => '文件名「$1」包含有页面标题所禁止的字符。请改名后重新上传。',
+'badfilename'                 => '文件名已被改为「$1」。',
 'filetype-badmime'            => 'MIME类别"$1"不是容许的文件格式。',
 'filetype-unwanted-type'      => "'''\".\$1\"'''是一种不需要的文件类型。建议的文件类型有\$2。",
 'filetype-banned-type'        => "'''\".\$1\"'''是一种不准许的文件类型。容许的文件类型有\$2。",
@@ -1016,6 +1037,7 @@ $2',
 'uploadvirus'                 => '该文件包含有病毒！详情: $1',
 'sourcefilename'              => '源文件名:',
 'destfilename'                => '目标文件名:',
+'upload-maxfilesize'          => '文件最大限制大小: $1',
 'watchthisupload'             => '监视此页',
 'filewasdeleted'              => '之前已经有一个同名文件被上传后又被删除了。在上传此文件之前您需要检查$1。',
 'upload-wasdeleted'           => "'''警告: 您现在重新上传一个先前曾经删除过的文件。'''
@@ -1043,18 +1065,21 @@ $2',
 'upload_source_url'  => ' (一个有效的，可公开访问的 URL)',
 'upload_source_file' => ' (在您计算机上的一个文件)',
 
-# Image list
-'imagelist'                 => '文件列表',
-'imagelisttext'             => '以下是按$2排列的$1个文件列表。',
-'getimagelist'              => '正在获取文件列表',
-'ilsubmit'                  => '搜索',
-'showlast'                  => '显示按$2排列的最后$1个文件。',
-'byname'                    => '按名字',
-'bydate'                    => '按日期',
-'bysize'                    => '按大小',
-'imgdelete'                 => '删除',
-'imgdesc'                   => '描述',
-'imgfile'                   => '文件',
+# Special:Imagelist
+'imagelist-summary'     => '这个特殊页面显示所有上传过的文件。
+预设中最后上传的文件会显示在这个列表中的最顶处。
+点击一栏的标题去改变这个排列。',
+'imagelist_search_for'  => '按媒体名称搜索:',
+'imgdesc'               => '描述',
+'imgfile'               => '文件',
+'imagelist'             => '文件列表',
+'imagelist_date'        => '日期',
+'imagelist_name'        => '名称',
+'imagelist_user'        => '用户',
+'imagelist_size'        => '大小',
+'imagelist_description' => '描述',
+
+# Image description page
 'filehist'                  => '文件历史',
 'filehist-help'             => '点击日期／时间以查看当时出现过的文件。',
 'filehist-deleteall'        => '删除全部',
@@ -1076,12 +1101,7 @@ $2',
 'noimage'                   => '不存在此名称的文件，您可以$1。',
 'noimage-linktext'          => '上传它',
 'uploadnewversion-linktext' => '上传该文件的新版本',
-'imagelist_date'            => '日期',
-'imagelist_name'            => '名称',
-'imagelist_user'            => '用户',
-'imagelist_size'            => '大小',
-'imagelist_description'     => '描述',
-'imagelist_search_for'      => '按媒体名称搜索:',
+'imagepage-searchdupe'      => '搜索重覆的文件',
 
 # File reversion
 'filerevert'                => '恢复$1',
@@ -1205,7 +1225,6 @@ Template:消除歧義',
 'mostcategories'          => '最多分类页面',
 'mostimages'              => '最多链接文件',
 'mostrevisions'           => '最多修订页面',
-'allpages'                => '所有页面',
 'prefixindex'             => '前缀索引',
 'shortpages'              => '短页面',
 'longpages'               => '长页面',
@@ -1239,13 +1258,6 @@ Template:消除歧義',
 'booksources-go'            => '转到',
 'booksources-text'          => '以下是一些网络书店的链接列表，其中可能有您要找的书籍的更多信息:',
 
-'categoriespagetext' => '以下的分类包含页面或媒体。',
-'data'               => '数据',
-'userrights'         => '用户权限管理',
-'groups'             => '用户群组',
-'alphaindexline'     => '$1到$2',
-'version'            => '版本',
-
 # Special:Log
 'specialloguserlabel'  => '用户:',
 'speciallogtitlelabel' => '标题:',
@@ -1259,6 +1271,8 @@ Template:消除歧義',
 'log-title-wildcard'   => '搜寻以这个文字开始的标题',
 
 # Special:Allpages
+'allpages'          => '所有页面',
+'alphaindexline'    => '$1到$2',
 'nextpage'          => '下一页($1)',
 'prevpage'          => '上一页($1)',
 'allpagesfrom'      => '显示从此处开始的页面:',
@@ -1425,8 +1439,8 @@ $NEWPAGE
 'protectedarticle'            => '已保护"[[$1]]"',
 'modifiedarticleprotection'   => '已经更改 "[[$1]]" 的保护等级',
 'unprotectedarticle'          => '已取消保护"[[$1]]"',
-'protectsub'                  => '(正在保护"$1")',
-'confirmprotect'              => '确认保护',
+'protect-title'               => '正在更改"$1"的保护等级',
+'protect-legend'              => '确认保护',
 'protectcomment'              => '注解:',
 'protectexpiry'               => '到期:',
 'protect_expiry_invalid'      => '输入的终止时间无效。',
@@ -1467,6 +1481,7 @@ $NEWPAGE
 # Undelete
 'undelete'                     => '恢复被删页面',
 'undeletepage'                 => '浏览及恢复被删页面',
+'undeletepagetitle'            => "'''以下包含[[:$1]]的已删除之修订版本'''。",
 'viewdeletedpage'              => '查看被删页面',
 'undeletepagetext'             => '以下页面已经被删除，但依然在档案中并可以被恢复。
 档案库可能被定时清理。',
@@ -1474,7 +1489,7 @@ $NEWPAGE
 'undeleterevisions'            => '$1版本存档',
 'undeletehistory'              => '如果您恢复了该页面，所有版本都会被恢复到修订历史中。
 如果本页删除后有一个同名的新页面建立，被恢复的版本将会称为较新的历史。同时请留意在文件修订中的限制会在恢复时遗失。',
-'undeleterevdel'               => '如果把最新修订部份删除，反删除便无法进行。如果遇到这种情况，您必须反选或反隐藏最新已删除的修订。对于您没有权限去查看的修订是无法恢复的。',
+'undeleterevdel'               => '如果把最新修订部份删除，反删除便无法进行。如果遇到这种情况，您必须反选或反隐藏最新已删除的修订。',
 'undeletehistorynoadmin'       => '这个页面已被删除。删除原因显示在下方编辑摘要中，被删除前的所有修订文本连同删除前贡献用户的细节信息只对管理员可见。',
 'undelete-revision'            => '删除$1时由$3（在$2）所编写的修订版本:',
 'undeleterevision-missing'     => '无效或丢失的修订版本。您可能使用了错误的链接，或者此修订版本已经被从存档中恢复或移除。',
@@ -1527,8 +1542,6 @@ $1',
 'sp-contributions-search'      => '搜寻贡献记录',
 'sp-contributions-username'    => 'IP地址或用户名称：',
 'sp-contributions-submit'      => '搜索',
-
-'sp-newimages-showfrom' => '从$1开始显示新文件',
 
 # What links here
 'whatlinkshere'       => '链入页面',
@@ -1583,8 +1596,8 @@ $1',
 'ipb-unblock'                 => '解除禁封用户名或IP地址',
 'ipb-blocklist-addr'          => '查看$1的现有封禁',
 'ipb-blocklist'               => '查看现有的封禁',
-'unblockip'                   => '解除禁封IP地址',
-'unblockiptext'               => '用下面的表单来恢复先前被禁封的IP地址的书写权。',
+'unblockip'                   => '解封用户',
+'unblockiptext'               => '用下面的表单来恢复先前被查封的IP地址或用户的写权限。',
 'ipusubmit'                   => '解封此地址',
 'unblocked'                   => '[[User:$1|$1]]已经被解封',
 'unblocked-id'                => '封禁 $1 已经被删除',
@@ -1601,7 +1614,7 @@ $1',
 'emailblock'                  => '禁止电子邮件',
 'ipblocklist-empty'           => '查封列表为空。',
 'ipblocklist-no-results'      => '所要求的IP地址/用户名没有被查封。',
-'blocklink'                   => '禁封',
+'blocklink'                   => '查封',
 'unblocklink'                 => '解除禁封',
 'contribslink'                => '贡献',
 'autoblocker'                 => '因为您与"[[$1]]"共享一个IP地址而被自动查封。$1被封的理由是"$2"。',
@@ -1649,7 +1662,8 @@ $1',
 'databasenotlocked'   => '数据库没有锁定。',
 
 # Move page
-'move-page-legend'                => '移动页面',
+'move-page'               => '移动$1',
+'move-page-legend'        => '移动页面',
 'movepagetext'            => "用下面的表单来重命名一个页面，并将其修订历史同时移动到新页面。
 老的页面将成为新页面的重定向页。
 链接到老页面的链接并不会自动更改；
@@ -1664,7 +1678,7 @@ $1',
 <b>警告！</b>
 对一个经常被访问的页面而言这可能是一个重大与唐突的更改；
 请在行动前先了结其所可能带来的后果。",
-'movepagetalktext'        => "有关的讨论页将被自动与该页面一起移动，'''除非''': 
+'movepagetalktext'        => "有关的讨论页将被自动与该页面一起移动，'''除非''':
 *新页面已经有一个包含内容的讨论页，或者
 *您不勾选下面的复选框。
 
@@ -1695,7 +1709,7 @@ $1',
 'revertmove'              => '恢复该移动',
 'delete_and_move'         => '删除并移动',
 'delete_and_move_text'    => '==需要删除==
-	
+
 目标页面"[[$1]]"已经存在。你确认需要删除原页面并以进行移动吗？',
 'delete_and_move_confirm' => '是的，删除此页面',
 'delete_and_move_reason'  => '删除以便移动',
@@ -1815,7 +1829,7 @@ $1',
 'tooltip-feed-rss'                => '此页的 RSS 订阅',
 'tooltip-feed-atom'               => '此页的 Atom 订阅',
 'tooltip-t-contributions'         => '查看该用户的贡献列表',
-'tooltip-t-emailuser'             => '向该用户发送一封邮件',
+'tooltip-t-emailuser'             => '向该用户发送一封电子邮件',
 'tooltip-t-upload'                => '上传文件',
 'tooltip-t-specialpages'          => '所有特殊页面列表',
 'tooltip-t-print'                 => '这个页面的可打印版本',
@@ -1863,16 +1877,12 @@ $1',
 'nocredits'        => '该页没有致谢名单信息。',
 
 # Spam protection
-'spamprotectiontitle'    => '广告保护过滤器',
-'spamprotectiontext'     => '您要保存的页面被广告过滤器阻止。这可能是由于一个到外部站点的链接引起的。',
-'spamprotectionmatch'    => '以下是触发广告过滤器的文本: $1',
-'subcategorycount'       => '在这个分类中有$1个亚类。',
-'categoryarticlecount'   => '在这个分类中有$1个页面。',
-'category-media-count'   => '在这个分类中有$1个文件。',
-'listingcontinuesabbrev' => '续',
-'spambot_username'       => 'MediaWiki 广告清除',
-'spam_reverting'         => '恢复到不包含链接至$1的最近版本',
-'spam_blanking'          => '所有包含链接至$1的修订，消隐',
+'spamprotectiontitle' => '广告保护过滤器',
+'spamprotectiontext'  => '您要保存的页面被广告过滤器阻止。这可能是由于一个到外部站点的链接引起的。',
+'spamprotectionmatch' => '以下是触发广告过滤器的文本: $1',
+'spambot_username'    => 'MediaWiki 广告清除',
+'spam_reverting'      => '恢复到不包含链接至$1的最近版本',
+'spam_blanking'       => '所有包含链接至$1的修订，消隐',
 
 # Info page
 'infosubtitle'   => '页面信息',
@@ -1902,8 +1912,8 @@ $1',
 'markedaspatrollederror-noautopatrol' => '您无法将你自己所作的更改标记为已检查。',
 
 # Patrol log
-'patrol-log-page' => '巡查记录',
-'patrol-log-line' => '已经标示$1/$2版做已巡查的$3',
+'patrol-log-page' => '巡查日志',
+'patrol-log-line' => '$2的版本$1已被标记为已检查的$3',
 'patrol-log-auto' => '(自动)',
 
 # Image deletion
@@ -1934,9 +1944,14 @@ $1',
 'show-big-image-thumb' => '<small>这幅略缩图的分辨率: $1 × $2 像素</small>',
 
 # Special:Newimages
-'newimages'    => '新建图像画廊',
-'showhidebots' => '($1机器人)',
-'noimages'     => '无可查看图像。',
+'newimages'             => '新建图像画廊',
+'imagelisttext'         => "以下是按$2排列的'''$1'''个文件列表。",
+'newimages-summary'     => '这个特殊页面中显示最后已上传的文件',
+'showhidebots'          => '($1机器人)',
+'noimages'              => '无可查看图像。',
+'ilsubmit'              => '搜索',
+'bydate'                => '按日期',
+'sp-newimages-showfrom' => '从$1 $2开始显示新文件',
 
 # Bad image list
 'bad_image_list' => '请根据以下的格式去编写:
@@ -1965,7 +1980,7 @@ Variants for Chinese language
 如果此文件的源文件已经被修改，一些信息在修改后的文件中将不能完全反映出来。',
 'metadata-expand'   => '显示详细资料',
 'metadata-collapse' => '隐藏详细资料',
-'metadata-fields'   => '在本信息中所列出的 EXIF 元数据域将包含在图片显示页面, 
+'metadata-fields'   => '在本信息中所列出的 EXIF 元数据域将包含在图片显示页面,
 当元数据表损坏时只显示以下信息，其他的元数据默认为隐藏。
 * make
 * model
@@ -2237,35 +2252,42 @@ Variants for Chinese language
 'monthsall'        => '全部',
 
 # E-mail address confirmation
-'confirmemail'            => '确认邮箱地址',
-'confirmemail_noemail'    => '您没有在您的[[Special:Preferences|用户设置]]里面输入一个有效的 email 地址。',
-'confirmemail_text'       => '{{SITENAME}}要求您在使用邮件功能之前验证您的邮箱地址。
+'confirmemail'             => '确认邮箱地址',
+'confirmemail_noemail'     => '您没有在您的[[Special:Preferences|用户设置]]里面输入一个有效的 email 地址。',
+'confirmemail_text'        => '{{SITENAME}}要求您在使用邮件功能之前验证您的邮箱地址。
 点击以下按钮可向您的邮箱发送一封确认邮件。该邮件包含有一行代码链接；
 请在您的浏览器中加载此链接以确认您的邮箱地址是有效的。',
-'confirmemail_pending'    => '<div class="error">
+'confirmemail_pending'     => '<div class="error">
 一个确认代码已经被发送到您的邮箱，您可能需要等几分钟才能收到。如果无法收到，请在申请一个新的确认码！
 </div>',
-'confirmemail_send'       => '邮发确认代码',
-'confirmemail_sent'       => '确认邮件已发送。',
-'confirmemail_oncreate'   => '一个确认代码已经被发送到您的邮箱。该代码并不要求您进行登录，
+'confirmemail_send'        => '邮发确认代码',
+'confirmemail_sent'        => '确认邮件已发送。',
+'confirmemail_oncreate'    => '一个确认代码已经被发送到您的邮箱。该代码并不要求您进行登录，
 但若您要启用在此 wiki 上的任何基于电子邮件的功能，您必须先提交此代码。',
-'confirmemail_sendfailed' => '不能发送确认邮件，请检查邮箱地址是否包含非法字符。
+'confirmemail_sendfailed'  => '不能发送确认邮件，请检查邮箱地址是否包含非法字符。
 
 邮件传送员回应: $1',
-'confirmemail_invalid'    => '无效的确认码，该代码可能已经过期。',
-'confirmemail_needlogin'  => '您需要$1以确认您的邮箱地址。',
-'confirmemail_success'    => '您的邮箱已经被确认。您现在可以登录并使用此网站了。',
-'confirmemail_loggedin'   => '您的邮箱地址现在已被确认。',
-'confirmemail_error'      => '你的确认过程发生错误。',
-'confirmemail_subject'    => '{{SITENAME}}邮箱地址确认',
-'confirmemail_body'       => '拥有IP地址$1的用户(可能是您)在{{SITENAME}}创建了账户"$2"，并提交了您的电子邮箱地址。
-		
+'confirmemail_invalid'     => '无效的确认码，该代码可能已经过期。',
+'confirmemail_needlogin'   => '您需要$1以确认您的邮箱地址。',
+'confirmemail_success'     => '您的邮箱已经被确认。您现在可以登录并使用此网站了。',
+'confirmemail_loggedin'    => '您的邮箱地址现在已被确认。',
+'confirmemail_error'       => '你的确认过程发生错误。',
+'confirmemail_subject'     => '{{SITENAME}}邮箱地址确认',
+'confirmemail_body'        => '拥有IP地址$1的用户(可能是您)在{{SITENAME}}创建了账户"$2"，并提交了您的电子邮箱地址。
+
 请确认这个账户是属于您的，并同时激活在{{SITENAME}}上的
 电子邮件功能。请在浏览器中打开下面的链接:
 
 $3
 
-如果您*没有*提出这个请求，请不要点击此链接。确认码会在$4过期。',
+如果您*未*注册账户，
+请打开下面的连结去取消电子邮件确认:
+
+$5
+
+确认码会在$4过期。',
+'confirmemail_invalidated' => '电邮地址确认已取消',
+'invalidateemail'          => '取消电邮确认',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[跨网站的编码转换不可用]',
@@ -2360,6 +2382,7 @@ $3
 'unknown_extension_tag' => '不明的扩展标签 "$1"',
 
 # Special:Version
+'version'                          => '版本', # Not used as normal message but as header for the special page itself
 'version-extensions'               => '已经安装的扩展',
 'version-specialpages'             => '特殊页面',
 'version-parserhooks'              => '语法钩',
@@ -2386,5 +2409,17 @@ $3
 'filepath-summary' => '这个特殊页面撷取一个文件的完整路径。图像会以完整的解像度显示，其它的文件类型会以同它们已关联程序启动。
 
 请输入档名，不要包含"{{ns:image}}:"开头。',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => '选择重覆文件',
+'fileduplicatesearch-summary'  => '用重覆文件的切细值去找出文件是否重覆。
+
+输入档名时不需要输入 "{{ns:image}}:" 开头。',
+'fileduplicatesearch-legend'   => '找重覆',
+'fileduplicatesearch-filename' => '文件名称:',
+'fileduplicatesearch-submit'   => '找',
+'fileduplicatesearch-info'     => '$1 × $2 像素<br />文件大小: $3<br />MIME类型: $4',
+'fileduplicatesearch-result-1' => '文件 "$1" 无完全相同的重覆。',
+'fileduplicatesearch-result-n' => '文件 "$1" 有$2项完全相同的重覆。',
 
 );

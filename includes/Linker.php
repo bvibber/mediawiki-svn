@@ -92,7 +92,7 @@ class Linker {
 		if ( !empty( $s->page_is_redirect ) ) {
 			# Page is a redirect
 			$colour = 'mw-redirect';
-		} elseif ( $threshold > 0 && $s->page_len < $threshold && Namespace::isContent( $s->page_namespace ) ) {
+		} elseif ( $threshold > 0 && $s->page_len < $threshold && MWNamespace::isContent( $s->page_namespace ) ) {
 			# Page is a stub
 			$colour = 'stub';
 		}
@@ -232,7 +232,7 @@ class Linker {
 			wfProfileOut( __METHOD__ );
 			return $t;
 		} elseif ( $nt->isAlwaysKnown() ) {
-			# Image links, special page links and self-links with fragements are always known.
+			# Image links, special page links and self-links with fragments are always known.
 			$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
 		} else {
 			wfProfileIn( __METHOD__.'-immediate' );
@@ -1065,7 +1065,7 @@ class Linker {
 	protected function formatLinksInCommentCallback( $match ) {
 		global $wgContLang;
 
-		$medians = '(?:' . preg_quote( Namespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
+		$medians = '(?:' . preg_quote( MWNamespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
 		$medians .= preg_quote( $wgContLang->getNsText( NS_MEDIA ), '/' ) . '):';
 		
 		$comment = $match[0];

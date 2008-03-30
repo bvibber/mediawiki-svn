@@ -18,7 +18,7 @@ $messages = array(
 'apr'        => 'اپريل',
 'aug'        => 'آگسٽ',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories' => 'زمرا',
 
 'about'   => 'بابت',
@@ -67,18 +67,12 @@ $messages = array(
 'datetime'       => 'تاريخ ۽ وقت',
 'allowemail'     => 'ٻين يُوزرس کان ايندڙ برق ٽپال بحال ڪريو',
 
-# Image list
-'byname' => 'ناليوار',
-'bydate' => 'تاريخوار',
-
 # Miscellaneous special pages
-'allpages'     => 'سڀ صفحا',
 'ancientpages' => 'قديم ترين صفحا',
 'move'         => 'چوريو',
 
-'data' => 'اعداد',
-
 # Special:Allpages
+'allpages'       => 'سڀ صفحا',
 'allpagesfrom'   => 'ھتان شروع ٿيندڙ صفحا نمايو',
 'allarticles'    => 'سمورا مضمون',
 'allpagesprev'   => 'اڳوڻو',
@@ -94,7 +88,7 @@ $messages = array(
 
 # Delete/protect/revert
 'confirm'        => 'پڪ ڪريو',
-'confirmprotect' => 'تحفظڻ جي پڪ ڪريو',
+'protect-legend' => 'تحفظڻ جي پڪ ڪريو',
 
 # Contributions
 'contributions' => 'يوزر جون ڀاڱيداريون',
@@ -113,6 +107,9 @@ $messages = array(
 
 # Attribution
 'anonymous' => '{{SITENAME}} جا گمنام يوزرس',
+
+# Special:Newimages
+'bydate' => 'تاريخوار',
 
 # E-mail address confirmation
 'confirmemail_success' => 'توھان جي برق ٽپال جي پڪ ڪئي وئي آھي. ھاڻِ توھان لاگ ان ٿي وڪيءَ جو مزو وٺي سگھو ٿا',

@@ -250,7 +250,6 @@ Si tu es hic per error, simplemente clicca le button '''Retornar''' de tu naviga
 'previewconflict'  => 'Iste previsualisation reflecte le apparentia final del texto in le area de redaction superior
 si tu opta pro salvar lo.',
 'editing'          => 'Modification de $1',
-'editinguser'      => 'Modification de $1',
 'editconflict'     => 'Conflicto de edition: $1',
 'explainconflict'  => 'Alcuno ha modificate iste pagina post que tu
 ha comenciate a modificar lo.
@@ -275,13 +274,11 @@ Considera fragmentar le pagina in sectiones minor.',
 'revnotfound'     => 'Revision non trovate',
 'revnotfoundtext' => 'Impossibile trovar le version anterior del pagina que tu ha demandate.
 Verifica le URL que tu ha usate pro accessar iste pagina.',
-'loadhist'        => 'Carga del chronologia del pagina',
 'currentrev'      => 'Revision currente',
 'revisionasof'    => 'Revision de $1',
 'cur'             => 'actu',
 'next'            => 'sequ',
 'last'            => 'prec',
-'orig'            => 'orig',
 'histlegend'      => 'Legenda: (actu) = differentia del version actual,
 (prec) = differentia con le version precedente, M = modification minor',
 
@@ -352,6 +349,9 @@ pro definir tu preferentias.',
 e illo del servitor (UTC).',
 'localtime'                => 'Hora local',
 'timezoneoffset'           => 'Differentia de fuso horari',
+
+# User rights
+'editinguser' => 'Modification de $1',
 
 # Recent changes
 'recentchanges'     => 'Modificationes recente',
@@ -427,17 +427,11 @@ Tote le tempores monstrate es in le fuso horari del servitor (UCT).',
 'savefile'          => 'Salvar file',
 'uploadedimage'     => '"[[$1]]" cargate',
 
-# Image list
-'imagelist'      => 'Lista de imagines',
-'imagelisttext'  => 'Infra es un lista de $1 imagines ordinate $2.',
-'getimagelist'   => 'recuperation del lista de imagines',
-'ilsubmit'       => 'Recercar',
-'showlast'       => 'Monstrar le ultime $1 imagines ordinate $2.',
-'byname'         => 'per nomine',
-'bydate'         => 'per data',
-'bysize'         => 'per dimension',
-'imgdelete'      => 'elim',
-'imgdesc'        => 'desc',
+# Special:Imagelist
+'imgdesc'   => 'desc',
+'imagelist' => 'Lista de imagines',
+
+# Image description page
 'imagelinks'     => 'Ligamines al imagine',
 'linkstoimage'   => 'Le paginas sequente se liga a iste imagine:',
 'nolinkstoimage' => 'Necun pagina se liga a iste imagine.',
@@ -481,7 +475,6 @@ al qual le prime redirection deberea referer se.',
 'unusedimages'     => 'Imagines non usate',
 'popularpages'     => 'Paginas popular',
 'wantedpages'      => 'Paginas plus demandate',
-'allpages'         => 'Tote le paginas',
 'shortpages'       => 'Paginas curte',
 'longpages'        => 'Paginas longe',
 'listusers'        => 'Lista de usatores',
@@ -499,6 +492,9 @@ executar iste function.',
 
 # Book sources
 'booksources' => 'Fornitores de libros',
+
+# Special:Allpages
+'allpages' => 'Tote le paginas',
 
 # E-mail user
 'mailnologin'     => 'Necun adresse de invio',
@@ -643,7 +639,7 @@ Per favor confirma que iste es tu intention.',
 'unlockdbsuccesstext' => 'Le base de datos de {{SITENAME}} ha essite disblocate.',
 
 # Move page
-'move-page-legend'         => 'Mover pagina',
+'move-page-legend' => 'Mover pagina',
 'movepagetext'     => "Per medio del formulario infra tu pote renominar un pagina,
 movente tote su chronologia al nove nomine.
 Le titulo anterior devenira un pagina de redirection al nove titulo.
@@ -692,5 +688,10 @@ nove titulo. Per favor fusiona los manualmente.',
 'mw_math_source' => 'Lassa lo como TeX (pro navigatores in modo texto)',
 'mw_math_modern' => 'Recommendate pro navigatores moderne',
 'mw_math_mathml' => 'MathML',
+
+# Special:Newimages
+'imagelisttext' => 'Infra es un lista de $1 imagines ordinate $2.',
+'ilsubmit'      => 'Recercar',
+'bydate'        => 'per data',
 
 );

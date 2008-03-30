@@ -112,7 +112,7 @@ $messages = array(
 'nov'           => '11.ай',
 'dec'           => '12.ай',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Бөлүктер',
 'pagecategories'        => '{{PLURAL:$1|Бөлүк|Бөлүктер}}',
 'category_header'       => '"$1" деп бөлүкте чүүлдер',
@@ -310,7 +310,6 @@ $1',
 'accmailtext'        => '"{{grammar:genitive|$1}}" чажыт сөстү {{grammar:directive1|$2}} чоргузуптувус.',
 'newarticle'         => '(Чаа)',
 'editing'            => '$1 деп арынны өскертип турар',
-'editinguser'        => '<b>$1</b> деп ажыглакчыны өскертип турар',
 'editingsection'     => '$1 деп арынның бөлгүмүн өскертип турар',
 'editingcomment'     => '$1 (комментарий) өскертип турар',
 'yourtext'           => 'Силерниң сөзүглелиңер',
@@ -377,6 +376,9 @@ $1',
 'default'            => 'ниити',
 'files'              => 'файлдар',
 
+# User rights
+'editinguser' => '<b>$1</b> деп ажыглакчыны өскертип турар',
+
 # Groups
 'group'     => 'Бөлүк:',
 'group-bot' => 'Боттар',
@@ -417,24 +419,25 @@ $1',
 'upload-file-error' => 'Иштики алдаг',
 'upload-misc-error' => 'Билбес кииреринге алдаг',
 
-# Image list
-'imagelist'             => 'Файл даңзызы',
-'ilsubmit'              => 'Дилээр',
+# Special:Imagelist
 'imgfile'               => 'файл',
-'filehist'              => 'Файлдың төөгүзү',
-'filehist-deleteall'    => 'шуптуну ап каар',
-'filehist-deleteone'    => 'мону ап каар',
-'filehist-current'      => 'амгы үе',
-'filehist-datetime'     => 'Үе/Шак',
-'filehist-user'         => 'Ажыглакчы',
-'filehist-filesize'     => 'Файл хемчээли',
-'filehist-comment'      => 'Комментарий',
-'imagelinks'            => 'Холбаалар',
-'noimage-linktext'      => 'Ону киирер',
+'imagelist'             => 'Файл даңзызы',
 'imagelist_name'        => 'Ат',
 'imagelist_user'        => 'Ажыглакчы',
 'imagelist_size'        => 'Хемчээл',
 'imagelist_description' => 'Тодарадып бижээни',
+
+# Image description page
+'filehist'           => 'Файлдың төөгүзү',
+'filehist-deleteall' => 'шуптуну ап каар',
+'filehist-deleteone' => 'мону ап каар',
+'filehist-current'   => 'амгы үе',
+'filehist-datetime'  => 'Үе/Шак',
+'filehist-user'      => 'Ажыглакчы',
+'filehist-filesize'  => 'Файл хемчээли',
+'filehist-comment'   => 'Комментарий',
+'imagelinks'         => 'Холбаалар',
+'noimage-linktext'   => 'Ону киирер',
 
 # File reversion
 'filerevert-comment' => 'Комментарий:',
@@ -488,7 +491,6 @@ $1',
 'mostlinkedtemplates'     => 'Эң холбаалар хээлер',
 'mostcategories'          => 'Эңне бөлүктер арыннар',
 'mostimages'              => 'Эң холбаалар файлдар',
-'allpages'                => 'Шупту арыннар',
 'shortpages'              => 'Чолдак арыннар',
 'longpages'               => 'Узун арыннар',
 'protectedpages'          => 'Камгалаган арыннар',
@@ -504,15 +506,13 @@ $1',
 # Book sources
 'booksources-go' => 'Чоруур',
 
-'data'    => 'Медээ',
-'version' => 'Үндүрери',
-
 # Special:Log
 'specialloguserlabel'  => 'Ажыглакчы:',
 'speciallogtitlelabel' => 'Ат:',
 'log-search-submit'    => 'Чоруур',
 
 # Special:Allpages
+'allpages'       => 'Шупту арыннар',
 'nextpage'       => 'Соонда арын ($1)',
 'prevpage'       => 'Бүрүнгү арын ($1)',
 'allarticles'    => 'Шупту чүүлдер',
@@ -614,12 +614,12 @@ $1',
 'unlockbtn' => 'Медээ шыгжамырын ажыттынар',
 
 # Move page
-'move-page-legend'        => 'Арынны шимчээр',
-'movearticle'     => 'Арынны шимчээр:',
-'move-watch'      => 'Бо арынны хайгаараар',
-'movepagebtn'     => 'Арынны шимчээр',
-'movereason'      => 'Чылдагаан:',
-'delete_and_move' => 'Ап каар болгаш шимчээр',
+'move-page-legend' => 'Арынны шимчээр',
+'movearticle'      => 'Арынны шимчээр:',
+'move-watch'       => 'Бо арынны хайгаараар',
+'movepagebtn'      => 'Арынны шимчээр',
+'movereason'       => 'Чылдагаан:',
+'delete_and_move'  => 'Ап каар болгаш шимчээр',
 
 # Namespace 8 related
 'allmessages'        => 'Системниң дыңнадыглары',
@@ -661,11 +661,6 @@ $1',
 # Attribution
 'anonymous' => '{{grammar:genitive|{{SITENAME}}}} ат эвес ажыглакчызы(лары)',
 
-# Spam protection
-'subcategorycount'     => 'Бо бөлүкте $1 бичии бөлүк бар.',
-'categoryarticlecount' => 'Бо бөлүкте $1 арын бар.',
-'category-media-count' => 'Бо бөлүкте $1 файл бар.',
-
 # Image deletion
 'filedelete-missing' => '"$1" деп файл чок, ынчангаш ол ап калдынмас.',
 
@@ -676,6 +671,7 @@ $1',
 # Special:Newimages
 'showhidebots' => '(боцду $1)',
 'noimages'     => 'Чуруклар чок.',
+'ilsubmit'     => 'Дилээр',
 
 # EXIF tags
 'exif-imagewidth'       => 'Калбаа',
@@ -724,5 +720,8 @@ $1',
 # Watchlist editing tools
 'watchlisttools-edit' => 'Хайгаарылга даңзын көөр болгаш өскертир',
 'watchlisttools-raw'  => 'Чиг хайгаарылга даңзын өскертир',
+
+# Special:Version
+'version' => 'Үндүрери', # Not used as normal message but as header for the special page itself
 
 );

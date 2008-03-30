@@ -6,6 +6,7 @@
  * @author Ggajendra
  * @author SPQRobin
  * @author GerardM
+ * @author Siebrand
  */
 
 $fallback = 'hi';
@@ -95,7 +96,7 @@ $messages = array(
 'edithelppage'   => 'सहायता:संपादन',
 'mainpage'       => 'सम्मुख पन्ना',
 'privacy'        => 'गोपनीयताक नियम',
-'privacypage'    => 'प्रोजेक्ट:गोपनीयता नियम',
+'privacypage'    => 'Project:गोपनीयता नियम',
 
 'retrievedfrom'   => 'प्राप्ति स्थल "$1"',
 'editsection'     => 'संपादन करू',
@@ -179,7 +180,7 @@ $messages = array(
 'uploadbtn'     => 'फाइल अपलोड',
 'uploadedimage' => 'अपलोड भेल "[[$1]]"',
 
-# Image list
+# Image description page
 'filehist'   => 'फाइल इतिहास',
 'imagelinks' => 'लिंक्स',
 
@@ -191,10 +192,11 @@ $messages = array(
 'prefixindex'  => 'लगाऊ सूची',
 'specialpages' => 'विशेष पन्ना',
 
-'alphaindexline' => '$1 to $2',
-
 # Special:Log
 'all-logs-page' => 'सभटा लॉग',
+
+# Special:Allpages
+'alphaindexline' => '$1 to $2',
 
 # Watchlist
 'mywatchlist'         => 'हमर साकांक्ष-सूची',
@@ -202,7 +204,7 @@ $messages = array(
 'unwatch'             => 'छोड़ू',
 'watchlist-hide-bots' => 'नुकाऊ संपादित बॉट-नमगर',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'ताकिमे...',
 'unwatching' => 'छोड़ल ...',
 

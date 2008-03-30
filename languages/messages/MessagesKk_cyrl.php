@@ -477,13 +477,15 @@ $messages = array(
 'nov'           => 'қар',
 'dec'           => 'жел',
 
-# Bits of text used by many pages
-'categories'            => 'Санаттар',
-'pagecategories'        => '{{PLURAL:$1|Санат|Санаттар}}',
-'category_header'       => '«$1» санатындағы беттер',
-'subcategories'         => 'Санатшалар',
-'category-media-header' => '«$1» санатындағы таспалар',
-'category-empty'        => "''Бұл санатта ағымда еш бет не таспа жоқ.''",
+# Categories related messages
+'categories'             => 'Санаттар',
+'categoriespagetext'     => 'Осында уикидегі барлық санаттарының тізімі беріліп тұр.',
+'pagecategories'         => '{{PLURAL:$1|Санат|Санаттар}}',
+'category_header'        => '«$1» санатындағы беттер',
+'subcategories'          => 'Санатшалар',
+'category-media-header'  => '«$1» санатындағы таспалар',
+'category-empty'         => "''Бұл санатта ағымда еш бет не таспа жоқ.''",
+'listingcontinuesabbrev' => '(жалғ.)',
 
 'mainpagetext'      => "<big>'''МедиаУики бағдарламасы сәтті орнатылды.'''</big>",
 'mainpagedocfooter' => 'Уики бағдарламасын пайдалану ақпараты үшін [http://meta.wikimedia.org/wiki/Help:Contents Пайдаланушы нұсқауларымен] танысыңыз.
@@ -937,7 +939,6 @@ $2',
 емле таңбаларын кескілеп тастады. Бет мәтіні бүлінбеу үшін түзетуіңіз тайдырылады.
 Бұл ғаламторға негізделінген қате толған тіркелуі жоқ прокси-серверді пайдаланған болуы мүмкін.</strong>',
 'editing'                   => 'Өңделуде: $1',
-'editinguser'               => 'Өңделуде: <b>$1</b> деген қатысушы',
 'editingsection'            => 'Өңделуде: $1 (бөлімі)',
 'editingcomment'            => 'Өңделуде: $1 (мәндемесі)',
 'editconflict'              => 'Өңдеу қақтығысы: $1',
@@ -1005,7 +1006,6 @@ $3 келтірілген себебі: ''$2''",
 'nohistory'           => 'Осы беттінің нұсқалар тарихы жоқ.',
 'revnotfound'         => 'Нұсқа табылмады',
 'revnotfoundtext'     => 'Осы сұранысқан беттің ескі нұсқасы табылған жоқ. Осы бетті ашуға пайдаланған URL жайын қайта тексеріп шығыңыз.',
-'loadhist'            => 'Бет тарихы жүктелуде',
 'currentrev'          => 'Ағымдық нұсқасы',
 'revisionasof'        => '$1 кезіндегі нұсқасы',
 'revision-info'       => '$1 кезіндегі $2 жасаған нұсқасы',
@@ -1015,7 +1015,6 @@ $3 келтірілген себебі: ''$2''",
 'cur'                 => 'ағым.',
 'next'                => 'кел.',
 'last'                => 'соң.',
-'orig'                => 'түпн.',
 'page_first'          => 'алғашқысына',
 'page_last'           => 'соңғысына',
 'histlegend'          => 'Айырмасын бөлектеу: салыстырамын деген нұсқаларды айырып-қосқышпен белгілеп және де <Enter> пернесін басыңыз, немесе астындағы батырманы нұқыңыз.<br />
@@ -1203,9 +1202,11 @@ $3 келтірілген себебі: ''$2''",
 'files'                    => 'Файлдар',
 
 # User rights
+'userrights'                       => 'Қатысушылар құқықтарын реттеу', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => 'Қатысушы топтарын реттеу',
 'userrights-user-editname'         => 'Қатысушы атын енгізіңіз:',
 'editusergroup'                    => 'Қатысушы топтарын өңдеу',
+'editinguser'                      => 'Өңделуде: <b>$1</b> деген қатысушы',
 'userrights-editusergroup'         => 'Қатысушы топтарын өңдеу',
 'saveusergroups'                   => 'Қатысушы топтарын сақтау',
 'userrights-groupsmember'          => 'Мүшелігі:',
@@ -1371,18 +1372,18 @@ $3 келтірілген себебі: ''$2''",
 'upload_source_url'  => ' (жарамды, баршаға қатынаулы URL жай)',
 'upload_source_file' => ' (компьютеріңіздегі файл)',
 
-# Image list
-'imagelist'                 => 'Файл тізімі',
-'imagelisttext'             => "Төменде $2 сұрыпталған {{PLURAL:$1|'''1'''|'''$1'''}} файл тізімі.",
-'getimagelist'              => 'файл тізімін келтіруде',
-'ilsubmit'                  => 'Ізде',
-'showlast'                  => 'Соңғы $1 файлды $2 сұрыптап көрсет.',
-'byname'                    => 'атауымен',
-'bydate'                    => 'күн-айымен',
-'bysize'                    => 'мөлшерімен',
-'imgdelete'                 => 'жою',
-'imgdesc'                   => 'сипп.',
-'imgfile'                   => 'файл',
+# Special:Imagelist
+'imagelist_search_for'  => 'Суретті атауымен іздеу:',
+'imgdesc'               => 'сипп.',
+'imgfile'               => 'файл',
+'imagelist'             => 'Файл тізімі',
+'imagelist_date'        => 'Күн-айы',
+'imagelist_name'        => 'Атауы',
+'imagelist_user'        => 'Қатысушы',
+'imagelist_size'        => 'Мөлшері',
+'imagelist_description' => 'Сипаттамасы',
+
+# Image description page
 'filehist'                  => 'Файл тарихы',
 'filehist-help'             => 'Файлдың қай уақытта қалай көрінетін үшін Күн-ай/Уақыт дегенді нұқыңыз.',
 'filehist-deleteall'        => 'барлығын жой',
@@ -1403,12 +1404,6 @@ $3 келтірілген себебі: ''$2''",
 'noimage'                   => 'Мынадай атаулы файл жоқ, $1 мүмкіндігіңіз бар.',
 'noimage-linktext'          => 'бұны қотару',
 'uploadnewversion-linktext' => 'Бұл файлдың жаңа нұсқасын қотару',
-'imagelist_date'            => 'Күн-айы',
-'imagelist_name'            => 'Атауы',
-'imagelist_user'            => 'Қатысушы',
-'imagelist_size'            => 'Мөлшері',
-'imagelist_description'     => 'Сипаттамасы',
-'imagelist_search_for'      => 'Суретті атауымен іздеу:',
 
 # File reversion
 'filerevert'                => '$1 дегенді қайтару',
@@ -1528,7 +1523,6 @@ $3 келтірілген себебі: ''$2''",
 'mostcategories'          => 'Ең көп санаты бар беттер',
 'mostimages'              => 'Ең көп пайдаланылған суреттер',
 'mostrevisions'           => 'Ең көп түзетілген беттер',
-'allpages'                => 'Барлық беттер',
 'prefixindex'             => 'Атау бастауы тізімі',
 'shortpages'              => 'Ең қысқа беттер',
 'longpages'               => 'Ең ұзын беттер',
@@ -1547,7 +1541,6 @@ $3 келтірілген себебі: ''$2''",
 'newpages'                => 'Ең жаңа беттер',
 'newpages-username'       => 'Қатысушы аты:',
 'ancientpages'            => 'Ең ескі беттер',
-'intl'                    => 'Тіларалық сілтемелер',
 'move'                    => 'Жылжыту',
 'movethispage'            => 'Бетті жылжыту',
 'unusedimagestext'        => '<p>Аңғартпа: Ғаламтордағы басқа тораптар файлдың
@@ -1566,13 +1559,6 @@ URL жайына тікелей сілтеуі мүмкін. Сондықтан,
 'booksources-text'          => 'Төменде жаңа және қолданған кітаптар сататынтораптарының сілтемелері тізімделген.
 Бұл тораптарда ізделген кітаптар туралы былайғы ақпарат болуға мүмкін.',
 
-'categoriespagetext' => 'Осында уикидегі барлық санаттарының тізімі беріліп тұр.',
-'data'               => 'Деректер',
-'userrights'         => 'Қатысушылар құқықтарын реттеу',
-'groups'             => 'Қатысушы топтары',
-'alphaindexline'     => '$1 — $2',
-'version'            => 'Жүйе нұсқасы',
-
 # Special:Log
 'specialloguserlabel'  => 'Қатысушы:',
 'speciallogtitlelabel' => 'Атау:',
@@ -1586,6 +1572,8 @@ URL жайына тікелей сілтеуі мүмкін. Сондықтан,
 'log-title-wildcard'   => 'Мынадай мәтіннең басталытын атаулардан іздеу',
 
 # Special:Allpages
+'allpages'          => 'Барлық беттер',
+'alphaindexline'    => '$1 — $2',
 'nextpage'          => 'Келесі бетке ($1)',
 'prevpage'          => 'Алдыңғы бетке ($1)',
 'allpagesfrom'      => 'Мына беттен бастап көрсету:',
@@ -1754,8 +1742,8 @@ $NEWPAGE
 'protectedarticle'            => '«[[$1]]» қорғалды',
 'modifiedarticleprotection'   => '«[[$1]]» дегеннің қорғалу деңгейі өзгерді',
 'unprotectedarticle'          => '«[[$1]]» қорғалмады',
-'protectsub'                  => '(«$1» қорғау деңгейін қою)',
-'confirmprotect'              => 'Қорғауды құптау',
+'protect-title'               => '«$1» қорғау деңгейін қою',
+'protect-legend'              => 'Қорғауды құптау',
 'protectcomment'              => 'Мәндемесі:',
 'protectexpiry'               => 'Бітетін мерзімі:',
 'protect_expiry_invalid'      => 'Бітетін уақыты жарамсыз.',
@@ -1864,8 +1852,6 @@ $1',
 'sp-contributions-search'      => 'Үлес үшін іздеу',
 'sp-contributions-username'    => 'IP жай не қатысушы аты:',
 'sp-contributions-submit'      => 'Ізде',
-
-'sp-newimages-showfrom' => '$1 кезінен бері — жаңа суреттерді көрсет',
 
 # What links here
 'whatlinkshere'       => 'Сілтелген беттер',
@@ -1994,7 +1980,7 @@ $1',
 'databasenotlocked'   => 'Дерекқор құлыпталған жоқ.',
 
 # Move page
-'move-page-legend'                => 'Бетті жылжыту',
+'move-page-legend'        => 'Бетті жылжыту',
 'movepagetext'            => "Төмендегі пішінді қолданып беттерді қайта атайды,
 барлық тарихын жаңа атауға жылжытады.
 Бұрынғы бет атауы жаңа атауға айдататын бет болады.
@@ -2206,16 +2192,12 @@ $1',
 'nocredits'        => 'Бұл бетті жазғандар туралы ақпарат жоқ.',
 
 # Spam protection
-'spamprotectiontitle'    => '«Спам»-нан қорғайтын сүзгі',
-'spamprotectiontext'     => 'Бұл беттің сақтауын «спам» сүзгісі бұғаттады. Бұның себебі сыртқы торап сілтемесінен болуы мүмкін.',
-'spamprotectionmatch'    => 'Келесі «спам» мәтіні сүзгіленген: $1',
-'subcategorycount'       => 'Бұл санатта {{PLURAL:$1|бір|$1}} санатша бар.',
-'categoryarticlecount'   => 'Бұл санатта {{PLURAL:$1|бір|$1}} бет бар.',
-'category-media-count'   => 'Бұл санатта {{PLURAL:$1|бір|$1}} файл бар.',
-'listingcontinuesabbrev' => '(жалғ.)',
-'spambot_username'       => 'MediaWiki spam cleanup',
-'spam_reverting'         => '$1 дегенге сілтемесі жоқ соңғы нұсқасына қайтарылды',
-'spam_blanking'          => '$1 дегенге сілтемесі бар барлық нұсқалар тазартылды',
+'spamprotectiontitle' => '«Спам»-нан қорғайтын сүзгі',
+'spamprotectiontext'  => 'Бұл беттің сақтауын «спам» сүзгісі бұғаттады. Бұның себебі сыртқы торап сілтемесінен болуы мүмкін.',
+'spamprotectionmatch' => 'Келесі «спам» мәтіні сүзгіленген: $1',
+'spambot_username'    => 'MediaWiki spam cleanup',
+'spam_reverting'      => '$1 дегенге сілтемесі жоқ соңғы нұсқасына қайтарылды',
+'spam_blanking'       => '$1 дегенге сілтемесі бар барлық нұсқалар тазартылды',
 
 # Info page
 'infosubtitle'   => 'Бет туралы мәлімет',
@@ -2279,9 +2261,13 @@ $1',
 'show-big-image-thumb' => '<small>Қарап шығу мөлшері: $1 × $2 пиксел</small>',
 
 # Special:Newimages
-'newimages'    => 'Ең жаңа файлдар қоймасы',
-'showhidebots' => '(боттарды $1)',
-'noimages'     => 'Көретін ештеңе жоқ.',
+'newimages'             => 'Ең жаңа файлдар қоймасы',
+'imagelisttext'         => "Төменде $2 сұрыпталған {{PLURAL:$1|'''1'''|'''$1'''}} файл тізімі.",
+'showhidebots'          => '(боттарды $1)',
+'noimages'              => 'Көретін ештеңе жоқ.',
+'ilsubmit'              => 'Ізде',
+'bydate'                => 'күн-айымен',
+'sp-newimages-showfrom' => '$1 кезінен бері — жаңа суреттерді көрсет',
 
 # Video information, used by Language::formatTimePeriod() to format lengths in the above messages
 'video-dims'     => '$1, $2 × $3',
@@ -2648,7 +2634,7 @@ $1',
 'hideresults'      => 'Нәтижелерді жасыр',
 'useajaxsearch'    => 'AJAX қолданып іздеу',
 
-# Separators for various lists
+# Separators for various lists, etc.
 'semicolon-separator' => ';',
 'comma-separator'     => ',&#32;',
 
@@ -2760,10 +2746,13 @@ $1',
 # Core parser functions
 'unknown_extension_tag' => 'Танылмаған кеңейтпе белгісі «$1»',
 
+# Special:Version
+'version' => 'Жүйе нұсқасы', # Not used as normal message but as header for the special page itself
+
 # Special:Filepath
-'filepath'         => 'Файл орналасуы ',
+'filepath'         => 'Файл орналасуы',
 'filepath-page'    => 'Файл аты:',
-'filepath-submit'  => 'Орналасуын табу ',
+'filepath-submit'  => 'Орналасуын табу',
 'filepath-summary' => 'Бұл арнайы бет файл орналасуы толық жолын қайтарады. Суреттер толық ажыратылымдығымен көрсетіледі, басқа файл түрлеріне қатысты бағдарламасы тура жегіледі.
 
 Файл атауын «{{ns:image}}:» деген бастауышсыз еңгізіңіз.',

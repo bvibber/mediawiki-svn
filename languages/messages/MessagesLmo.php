@@ -64,7 +64,7 @@ süi titul dai sezziún (JavaScript)',
 'oct'       => 'utu',
 'nov'       => 'nuv',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'      => 'Categurii',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
@@ -296,9 +296,10 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'sourcefilename'    => "Nomm da l'archivi surgeent:",
 'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
-# Image list
-'imagelist'  => 'Listá i imàgin',
-'ilsubmit'   => 'Truvá',
+# Special:Imagelist
+'imagelist' => 'Listá i imàgin',
+
+# Image description page
 'imagelinks' => 'Ligámm',
 
 # MIME search
@@ -338,7 +339,6 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'mostcategories'          => 'Articui cun püssè categurii',
 'mostimages'              => 'Püssè ligaa a imagin',
 'mostrevisions'           => 'Articui cun püssè revisiún',
-'allpages'                => 'Tücc i pagin',
 'prefixindex'             => 'Pagin cul nóm che cumencja par...',
 'shortpages'              => 'Pagin püssee curt',
 'longpages'               => 'Pagin püssè luunch',
@@ -353,14 +353,13 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 # Book sources
 'booksources' => 'Surgeent librari',
 
-'version' => 'Versiun',
-
 # Special:Log
 'specialloguserlabel'  => 'Üteent:',
 'speciallogtitlelabel' => 'Titul:',
 'logempty'             => "El log l'è vöj.",
 
 # Special:Allpages
+'allpages'       => 'Tücc i pagin',
 'allpagesfrom'   => 'Famm vedè i pagin a partì de:',
 'allarticles'    => 'Tütt i vus',
 'allpagesprev'   => 'Precedent',
@@ -409,8 +408,8 @@ al butún \"tegn piü d'öcc\".",
 'alreadyrolled'         => "L è mia pussibil turná indré al'ültima versiún da [[:$1]] dal [[User:$2|$2]] ([[User talk:$2|Discüssiún]]); un quaivün l á gjamò redataa o giraa indré la pagina.
 L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]]).",
 'unprotectedarticle'    => 'l\'ha sblucaa "[[$1]]"',
-'protectsub'            => '(Prutezziún da "$1")',
-'confirmprotect'        => 'Cunferma de blocch',
+'protect-title'         => 'Prutezziún da "$1"',
+'protect-legend'        => 'Cunferma de blocch',
 'protectcomment'        => 'Spiega parchè ti vörat blucá la pagina',
 
 # Undelete
@@ -493,6 +492,7 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 
 # Special:Newimages
 'newimages' => 'Espusizziun di imàgin nööf',
+'ilsubmit'  => 'Truvá',
 
 # External editor support
 'edit-externally'      => 'Redatá chest archivi cunt un prugramari da fö',
@@ -516,6 +516,9 @@ Te riçevaree un mesacc cun deent un ligamm specjal; ti duvaree clicaa sül liga
 
 # Auto-summaries
 'autosumm-blank' => 'Pagina svujada',
+
+# Special:Version
+'version' => 'Versiun', # Not used as normal message but as header for the special page itself
 
 # Special:Filepath
 'filepath' => 'Percuurz daj archivi',

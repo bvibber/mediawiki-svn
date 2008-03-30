@@ -70,12 +70,13 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Des',
 
-# Bits of text used by many pages
-'categories'            => 'Jamii',
-'category_header'       => 'Makala katika jamii "$1"',
-'subcategories'         => 'Vijamii',
-'category-media-header' => 'Picha, video, na sauti katika jamii  "$1"',
-'category-empty'        => "''Jamii hii haina ukurasa, picha, video, wala sauti yoyote.''",
+# Categories related messages
+'categories'             => 'Jamii',
+'category_header'        => 'Makala katika jamii "$1"',
+'subcategories'          => 'Vijamii',
+'category-media-header'  => 'Picha, video, na sauti katika jamii  "$1"',
+'category-empty'         => "''Jamii hii haina ukurasa, picha, video, wala sauti yoyote.''",
+'listingcontinuesabbrev' => 'endelea',
 
 'about'          => 'Kuhusu',
 'article'        => 'Makala',
@@ -136,7 +137,7 @@ $messages = array(
 'edithelp'          => 'Usaidizi kwa uhariri',
 'edithelppage'      => 'Help:Usaidizi kwa uhariri',
 'faq'               => 'Maswali ya kawaida',
-'helppage'          => 'Msaada:Yaliyomo',
+'helppage'          => 'Help:Yaliyomo',
 'mainpage'          => 'Mwanzo',
 'portal'            => 'Jumuia',
 'portal-url'        => 'Project:Jumuia',
@@ -351,7 +352,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'recentchanges'                  => 'Mabadiliko ya karibuni',
 'recentchanges-feed-description' => 'Tumia tawanyiko hili kufuatilia mabadiliko yote ya hivi karibuni katika Wiki.',
 'rcnote'                         => "Yanayofuata {{PLURAL:$1|ni badiliko '''1'''|ni mabadiliko '''$1''' ya mwisho}} kutoka katika {{PLURAL:$2|siku iliyopita|siku '''$2''' zilizopita}}, hadi $3.",
-'rcnotefrom'                     => 'Hapo chini yaonekana mabadiliko tangu <b>$2</b> (tunaonyesha hadi <b>$1</b>).',
+'rcnotefrom'                     => "Hapo chini yaonekana mabadiliko tangu '''$2''' (tunaonyesha hadi '''$1''').",
 'rclistfrom'                     => 'Onyesha mabadiliko mapya kuanzia $1',
 'rcshowhideminor'                => '$1 mabadiliko madogo',
 'rcshowhidebots'                 => '$1 roboti',
@@ -382,8 +383,10 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'ignorewarning' => 'Hifadhi bila kujali maonyo yoyote.',
 'uploadedimage' => ' "[[$1]]" imepakiwa',
 
-# Image list
-'imagelist'                 => 'Orodha ya mafaili',
+# Special:Imagelist
+'imagelist' => 'Orodha ya mafaili',
+
+# Image description page
 'filehist'                  => 'Historia ya faili',
 'filehist-help'             => 'Bonyeza tarehe/saa kuona faili kama ilivyoonekana wakati huo.',
 'filehist-current'          => 'sasa hivi',
@@ -449,7 +452,6 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'mostcategories'          => 'Jamii ambazo hazitumiwi',
 'mostimages'              => 'Picha zinazoungwa kuliko zote',
 'mostrevisions'           => 'Kurasa zenye masahihisho mengi kuliko zote',
-'allpages'                => 'Kurasa zote',
 'prefixindex'             => 'Kielezo cha viambishi awali',
 'shortpages'              => 'Kurasa fupi',
 'longpages'               => 'Kurasa ndefu',
@@ -466,9 +468,6 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 # Book sources
 'booksources' => 'Vyanzo vya vitabu',
 
-'alphaindexline' => '$1 hadi $2',
-'version'        => 'Toleo',
-
 # Special:Log
 'specialloguserlabel'  => 'Mtumiaji:',
 'speciallogtitlelabel' => 'Kichwa:',
@@ -476,6 +475,8 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'all-logs-page'        => 'Kumbukumbu zote',
 
 # Special:Allpages
+'allpages'       => 'Kurasa zote',
+'alphaindexline' => '$1 hadi $2',
 'nextpage'       => 'Ukurasa ujao ($1)',
 'prevpage'       => 'Ukurasa uliotangulia ($1)',
 'allpagesfrom'   => 'Onyesha kurasa zinazoanza kutoka:',
@@ -508,7 +509,7 @@ Ukitaka kufuta ukurasa huo kutoka maangalizi yako baadaye, bonyeza \"Acha kufuat
 'watchlist-hide-own'   => 'Ficha hariri zangu',
 'watchlist-hide-minor' => 'Ficha mabadiliko madogo',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Unafuatilia...',
 'unwatching' => 'Umeacha kufuatilia...',
 
@@ -526,7 +527,7 @@ Tafadhali hakikisha kwamba unalenga kufanya hivyo, na kwamba unaelewa matokeo ya
 'deletereasonotherlist'       => 'Sababu nyingine',
 'rollbacklink'                => 'rejesha',
 'protectlogpage'              => 'Kumbukumbu ya ulindaji',
-'confirmprotect'              => 'Hakikisha ukingo',
+'protect-legend'              => 'Hakikisha ukingo',
 'protectcomment'              => 'Maoni:',
 'protectexpiry'               => 'Itakwisha:',
 'protect_expiry_invalid'      => 'Muda wa kwisha ni batilifu.',
@@ -589,25 +590,19 @@ Hivi ni vipimo kwa ukurasa <strong>$1</strong>:',
 'blocklogentry' => '[[$1]] imezuiwa mpaka $2 $3',
 
 # Move page
-'move-page-legend'         => 'Sogeza ukurasa',
-'movepagetext'     => "Fomu hapo chini itabadilisha jina la ukurasa,
-na itasogeza historia yake yote katika jina jipya lile lile.
+'move-page-legend' => 'Sogeza ukurasa',
+'movepagetext'     => "Fomu hapo chini itabadilisha jina la ukurasa, na itasogeza historia yake yote katika jina jipya lile lile.
 Jina la awali litakuwa elekezo hadi jina jipya.
 Viungo vilivyounganishwa na ukurasa wa awali havitabadilishwa;
 tafadhali tafutia maelekezo yenye hitilafu na maelekezo mawilimawili.
-Wewe una madaraka kuhakikisha kwamba viungo viendelee
-kuelekea vinapolengwa.
+Wewe una madaraka kuhakikisha kwamba viungo viendelee kuelekea vinapolengwa.
 
-Uwe mwangalifu kwamba ukurasa '''hautasogezwa''' kama tayari
-kuna ukurasa wenye jina jipya, ila ni tupu au ni maelekezo na
-hauna historia ya kuhaririwa.  Yaani unaweza kurudisha ukurasa
-kwenye jina la awali ukikosa, na haiwezekani kufuta
-ukurasa mwingine kwa nasibu.
+Uwe mwangalifu kwamba ukurasa '''hautasogezwa''' kama tayari kuna ukurasa wenye jina jipya, ila ni tupu au ni maelekezo na hauna historia ya kuhaririwa.
+Yaani unaweza kurudisha ukurasa kwenye jina la awali ukikosa, na haiwezekani kufuta ukurasa mwingine kwa nasibu.
 
-<b>ILANI!</b>
-Kusogeza ukurasa wenye wasomaji wengi kunaweza kuathirika
-watumiaji wetu. Tafadhali hakikisha kwamba unaelewa
-matokeo ya kitendo hiki kabla ya kuendelea.",
+'''ILANI!'''
+Kusogeza ukurasa wenye wasomaji wengi kunaweza kuathirika watumiaji wetu.
+Tafadhali hakikisha kwamba unaelewa matokeo ya kitendo hiki kabla ya kuendelea.",
 'movepagetalktext' => "Ukurasa wa majadiliano wa ukurasa huu utasogezwa pamoja yake
 '''ila:'''
 *tayari kuna ukurasa wa majadiliano (usiyo tupu) kwenye jina jipya, au
@@ -696,12 +691,6 @@ Chagua jina lengine.',
 # Attribution
 'siteuser' => '{{SITENAME}} mtumiaji $1',
 
-# Spam protection
-'subcategorycount'       => 'Kuna {{PLURAL:$1|kijamii kimoja|vijamii $1}} chini ya jamii hii.',
-'categoryarticlecount'   => 'Kuna {{PLURAL:$1|ukurasa mmoja|kurasa $1}} katika jamii hii.',
-'category-media-count'   => 'Kuna {{PLURAL:$1|faili moja|faili $1}} katika jamii hii.',
-'listingcontinuesabbrev' => 'endelea',
-
 # Browsing diffs
 'previousdiff' => '←Tofauti kabla',
 'nextdiff'     => 'Tofauti ijayo→',
@@ -750,5 +739,8 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 'watchlisttools-view' => 'Tazama mabadiliko yanayohusiana',
 'watchlisttools-edit' => 'Tazama na hariri maangalizi',
 'watchlisttools-raw'  => 'Hariri maangalizi ghafi',
+
+# Special:Version
+'version' => 'Toleo', # Not used as normal message but as header for the special page itself
 
 );

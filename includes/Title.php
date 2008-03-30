@@ -285,10 +285,10 @@ class Title {
 	 */
 	public static function newFromRedirect( $text ) {
 		$redir = MagicWord::get( 'redirect' );
-		if( $redir->matchStart( $text ) ) {
+		if( $redir->matchStart( trim($text) ) ) {
 			// Extract the first link and see if it's usable
 			$m = array();
-			if( preg_match( '!\[{2}(.*?)(?:\||\]{2})!', $text, $m ) ) {
+			if( preg_match( '!\[{2}(.*?)(?:\|.*?)?\]{2}!', $text, $m ) ) {
 				// Strip preceding colon used to "escape" categories, etc.
 				// and URL-decode links
 				if( strpos( $m[1], '%' ) !== false ) {
@@ -577,7 +577,7 @@ class Title {
 	 */
 	public function getSubjectNsText() {
 		global $wgContLang;
-		return $wgContLang->getNsText( Namespace::getSubject( $this->mNamespace ) );
+		return $wgContLang->getNsText( MWNamespace::getSubject( $this->mNamespace ) );
 	}
 
 	/**
@@ -586,7 +586,7 @@ class Title {
 	 */
 	public function getTalkNsText() {
 		global $wgContLang;
-		return( $wgContLang->getNsText( Namespace::getTalk( $this->mNamespace ) ) );
+		return( $wgContLang->getNsText( MWNamespace::getTalk( $this->mNamespace ) ) );
 	}
 
 	/**
@@ -594,7 +594,7 @@ class Title {
 	 * @return bool
 	 */
 	public function canTalk() {
-		return( Namespace::canTalk( $this->mNamespace ) );
+		return( MWNamespace::canTalk( $this->mNamespace ) );
 	}
 
 	/**
@@ -1193,7 +1193,18 @@ class Title {
 				$right = 'protect';
 			}
 			if( '' != $right && !$user->isAllowed( $right ) ) {
-				$errors[] = array( 'protectedpagetext', $right );
+				//Users with 'editprotected' permission can edit protected pages
+				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
+					//Users with 'editprotected' permission cannot edit protected pages
+					//with cascading option turned on.
+					if($this->mCascadeRestriction) {
+						$errors[] = array( 'protectedpagetext', $right );
+					} else {
+						//Nothing, user can edit!
+					}
+				} else {
+					$errors[] = array( 'protectedpagetext', $right );
+				}
 			}
 		}
 
@@ -1366,7 +1377,7 @@ class Title {
 	 * @return boolean
 	 */
 	public function isMovable() {
-		return Namespace::isMovable( $this->getNamespace() )
+		return MWNamespace::isMovable( $this->getNamespace() )
 			&& $this->getInterwiki() == '';
 	}
 
@@ -1378,15 +1389,15 @@ class Title {
 	public function userCanRead() {
 		global $wgUser, $wgGroupPermissions;
 
-		# Shortcut for public wikis, allows skipping quite a bit of code path
-		if ($wgGroupPermissions['*']['read'])
-			return true;
-
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, 'read', &$result ) );
 		if ( $result !== null ) {
 			return $result;
 		}
+
+		# Shortcut for public wikis, allows skipping quite a bit of code
+		if ($wgGroupPermissions['*']['read'])
+			return true;
 
 		if( $wgUser->isAllowed( 'read' ) ) {
 			return true;
@@ -1450,7 +1461,7 @@ class Title {
 	 * @return bool
 	 */
 	public function isTalkPage() {
-		return Namespace::isTalk( $this->getNamespace() );
+		return MWNamespace::isTalk( $this->getNamespace() );
 	}
 
 	/**
@@ -2129,7 +2140,7 @@ class Title {
 	 * @return Title the object for the talk page
 	 */
 	public function getTalkPage() {
-		return Title::makeTitle( Namespace::getTalk( $this->getNamespace() ), $this->getDBkey() );
+		return Title::makeTitle( MWNamespace::getTalk( $this->getNamespace() ), $this->getDBkey() );
 	}
 
 	/**
@@ -2139,7 +2150,7 @@ class Title {
 	 * @return Title the object for the subject page
 	 */
 	public function getSubjectPage() {
-		return Title::makeTitle( Namespace::getSubject( $this->getNamespace() ), $this->getDBkey() );
+		return Title::makeTitle( MWNamespace::getSubject( $this->getNamespace() ), $this->getDBkey() );
 	}
 
 	/**
@@ -2680,7 +2691,7 @@ class Title {
 	 */
 	public function isWatchable() {
 		return !$this->isExternal()
-			&& Namespace::isWatchable( $this->getNamespace() );
+			&& MWNamespace::isWatchable( $this->getNamespace() );
 	}
 
 	/**
@@ -2884,7 +2895,12 @@ class Title {
 		$title = htmlspecialchars($this->getText());
 		$tburl = $this->trackbackURL();
 
-		return "
+		// Autodiscovery RDF is placed in comments so HTML validator
+		// won't barf. This is a rather icky workaround, but seems
+		// frequently used by this kind of RDF thingy.
+		//
+		// Spec: http://www.sixapart.com/pronet/docs/trackback_spec
+		return "<!--
 <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
          xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
          xmlns:trackback=\"http://madskills.com/public/xml/rss/module/trackback/\">
@@ -2893,7 +2909,8 @@ class Title {
    dc:identifier=\"$url\"
    dc:title=\"$title\"
    trackback:ping=\"$tburl\" />
-</rdf:RDF>";
+</rdf:RDF>
+-->";
 	}
 
 	/**
@@ -2975,7 +2992,7 @@ class Title {
 	 * @return bool
 	 */
 	public function isContentPage() {
-		return Namespace::isContent( $this->getNamespace() );
+		return MWNamespace::isContent( $this->getNamespace() );
 	}
 	
 }

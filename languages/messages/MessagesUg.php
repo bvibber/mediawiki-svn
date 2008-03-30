@@ -1,10 +1,10 @@
 <?php
-/** Uyghur (Oyghurque)
-  *
-  * @addtogroup Language
-  *
-  * @author SPQRobin
-  */
+/** Uighur (Uyghurche‎ / ئۇيغۇرچە)
+ *
+ * @addtogroup Language
+ *
+ * @author SPQRobin
+ */
 
 $rtl = true;
 
@@ -56,9 +56,6 @@ $messages = array(
 'uploadbtn'       => 'Yengi Hujjat Kirguzush',
 'watchthisupload' => 'Bu Batka Kharang',
 
-# Image list
-'ilsubmit' => 'Izdash',
-
 # File deletion
 'filedelete-submit' => 'Yukhutush',
 
@@ -105,6 +102,9 @@ $messages = array(
 'tooltip-ca-move' => 'Bu batni yotkang',
 'tooltip-search'  => 'Izdash {{SITENAME}}',
 'tooltip-p-logo'  => 'Bash Bet',
+
+# Special:Newimages
+'ilsubmit' => 'Izdash',
 
 # Trackbacks
 'trackbackremove' => ' ([$1 Yukhutush])',

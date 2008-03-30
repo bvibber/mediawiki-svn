@@ -76,7 +76,7 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Dex',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Categorîe',
 'category_header'       => 'Paggine inta categorîa "$1"',
 'subcategories'         => 'Sottocategorîe',
@@ -352,7 +352,6 @@ A razon dæta a l'è ''$2''",
 
 # History pages
 'viewpagelogs'        => "Veddi i log relativi a 'sta paggina.",
-'loadhist'            => 'Camallando a stöia da pagina',
 'currentrev'          => 'Verscion attuâle',
 'revisionasof'        => 'Verscion do $1',
 'revision-info'       => 'Verscion do $1, outô: $2',
@@ -416,7 +415,7 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'recentchanges'                  => 'Ûrtimi cangiamenti',
 'recentchanges-feed-description' => "Questo feed o g'ha e modiffiche ciû reçenti a-i contegnûi do scîto.",
 'rcnote'                         => "Chì sotta {{PLURAL:$1|gh'è a modiffica ciû reçente fæta|ghe son e '''$1''' modiffiche ciû reçenti fæte}} inte 'sto scîto {{PLURAL:$2|inte ûrtime 24 ôe|inti ûrtimi '''$2''' giorni}}; i dæti son aggiornæ a $3.",
-'rcnotefrom'                     => "Chì sotta gh'è i cangiamenti fæti comensando da <b>$2</b> (scinn-a <b>$1</b>).",
+'rcnotefrom'                     => "Chì sotta gh'è i cangiamenti fæti comensando da '''$2''' (scinn-a '''$1''').",
 'rclistfrom'                     => 'Fâ vedde e modiffiche apportæ partendo da $1',
 'rcshowhideminor'                => '$1 cangiamenti minoi',
 'rcshowhideliu'                  => '$1 ûtenti registræ',
@@ -453,15 +452,13 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 
 'license' => 'Permisso:',
 
-# Image list
-'imagelist'                 => 'Lista de li archivvi',
-'ilsubmit'                  => 'Çerca',
-'showlast'                  => 'Fanni vedde urtimi $1 papê recattæ $2.',
-'byname'                    => 'pe nomme',
-'bydate'                    => 'pe dâta',
-'bysize'                    => 'pe grandessa',
-'imgdelete'                 => 'scassa',
-'imgfile'                   => 'papê',
+# Special:Imagelist
+'imagelist_search_for' => "Çerca pe nomme de l'imàgine:",
+'imgfile'              => 'papê',
+'imagelist'            => 'Lista de li archivvi',
+'imagelist_date'       => 'Dæta',
+
+# Image description page
 'filehist'                  => "Cronologîa de l'archivvio",
 'filehist-help'             => "Sciacca inscie 'n grûppo data/ôa pe vedde l'archivvio comme o se presentâva into momento indicòu.",
 'filehist-datetime'         => 'Data/Ôa',
@@ -476,8 +473,6 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'noimage'                   => "No gh'è nisciûn archivvio con quello nomme, o se pêu $1.",
 'noimage-linktext'          => 'Caregâlo òua',
 'uploadnewversion-linktext' => "Carega 'na nêuva verscion de 'st'archivvio chì",
-'imagelist_date'            => 'Dæta',
-'imagelist_search_for'      => "Çerca pe nomme de l'imàgine:",
 
 # MIME search
 'mimesearch' => 'Çerca MIME',
@@ -523,7 +518,6 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'mostcategories'          => 'Voxi con ciû categorîe',
 'mostimages'              => 'Immaggini con ciû collegamenti',
 'mostrevisions'           => 'Voxi con ciû revixoîn',
-'allpages'                => 'Tûtte e paggine',
 'prefixindex'             => 'Indiçe de-e voxi pe léttie inissiâli',
 'shortpages'              => 'Paggine ciû cûrte',
 'longpages'               => 'Paggine ciû longhe',
@@ -545,10 +539,6 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'booksources-go'            => 'Vanni',
 'booksources-text'          => 'De sotta unn-a lista de ingançi a ätri sciti che vendan neuvi e vegi libbri, e che peuvre avei informaçioin in sci libbri che ti te çerchi',
 
-'data'           => 'Dæti',
-'alphaindexline' => 'Da $1 a $2',
-'version'        => 'Verscion',
-
 # Special:Log
 'specialloguserlabel'  => 'Ûtente:',
 'speciallogtitlelabel' => 'Tittolo:',
@@ -558,6 +548,8 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 Ti te peu strinza a vista se ti te çerni un tipo de registro, un nomme de un utente o de pagina.',
 
 # Special:Allpages
+'allpages'          => 'Tûtte e paggine',
+'alphaindexline'    => 'Da $1 a $2',
 'nextpage'          => 'Proscima paggina ($1)',
 'prevpage'          => 'Paggina preçedente ($1)',
 'allpagesfrom'      => 'Fanni vedde e paggine comensando da:',
@@ -611,7 +603,7 @@ Ti te peu strinza a vista se ti te çerni un tipo de registro, un nomme de un ut
 'watchlist-show-minor' => 'Fanni vedde i cangiamenti minô',
 'watchlist-hide-minor' => 'Ascondi i cangiamenti minoî',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Inti osservæ speçiâli...',
 'unwatching' => 'Scassâa da li osservæ speçiâli',
 
@@ -635,13 +627,13 @@ de [[User:$2|$2]] ([[User talk:$2|Ciæti]]); quarchedun ätro a l'ha cangiâ o l
 O urtimo cangiamento o l'è de [[User:$3|$3]] ([[User talk:$3|Ciæti]]).",
 'revertpage'                  => 'E modificaçioin de [[Special:Contributions/$2|$2]] ([[User talk:$2|Ciæti]]) son stæte eliminæ; riportæ a verscion de primma de [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'Protessioîn',
-'confirmprotect'              => 'Confermâ protession',
+'protect-legend'              => 'Confermâ protession',
 'protectcomment'              => 'Motivo da protession:',
 'protectexpiry'               => 'Scadensa:',
 'protect_expiry_invalid'      => 'Scadensa invalida.',
 'protect_expiry_old'          => 'Data de scadensa into passòu.',
 'protect-unchain'             => 'Scollegâ i permissi de stramûo',
-'protect-text'                => "Chì o l'è poscibbile vedde e modificâ o livello de protession pe-a paggina <strong><nowiki>\$1</nowiki></strong>.",
+'protect-text'                => "Chì o l'è poscibbile vedde e modificâ o livello de protession pe-a paggina <strong><nowiki>$1</nowiki></strong>.",
 'protect-locked-access'       => "No ti g'hæ permisso pe modificâ i livelli de protession da paggina.
 Queste son e impostassioîn correnti pe 'sta paggina (<strong>$1</strong>):",
 'protect-cascadeon'           => "Pe-o momento 'sta paggina chì a l'è bloccâa perché a l'è inclûsa {{PLURAL:$1|inta paggina indicâa apprêuvo, pe-a quæ|inte paggine indicæ apprêuvo, pe-e quæ}} a l'è attiva a protession recorsciva. O se pêu modificâ o livello de protession individuâle da paggina, ma l'impostassioîn derivanti da-a protession recorsciva no sajàn modificæ.",
@@ -727,13 +719,18 @@ Veddi a [[Special:Ipblocklist|Lista de i indirissi IP affermæ]] pe e informaçi
 'databasenotlocked' => "A base de i dæti a non l'è serrâ.",
 
 # Move page
-'move-page-legend'                => 'Mescia a paggina',
-'movepagetext'            => "Chì o se pêu dâ 'n nêuvo nomme a 'na paggina, stramûando tûtta a sêu cronologîa a-o nêuvo nomme. A paggina attuâle a fa outomaticamente 'n rindirissamento a-o nêuvo tittolo. I collegamenti escistenti no sajàn aggiornæ; veriffica che 'sto stramûo o no l'agge creòu doggi rindirissamenti ò rindirissamenti sballiæ. A responsabilitæ pe tegnî i collegamenti sempre donde deivan andâ a l'è têu.
+'move-page-legend'        => 'Mescia a paggina',
+'movepagetext'            => "Chì o se pêu dâ 'n nêuvo nomme a 'na paggina, stramûando tûtta a sêu cronologîa a-o nêuvo nomme.
+A paggina attuâle a fa outomaticamente 'n rindirissamento a-o nêuvo tittolo.
+I collegamenti escistenti no sajàn aggiornæ; veriffica che 'sto stramûo o no l'agge creòu doggi rindirissamenti ò rindirissamenti sballiæ.
+A responsabilitæ pe tegnî i collegamenti sempre donde deivan andâ a l'è têu.
 
-A paggina a '''no''' sajà stramûâa se ghe foisse zà ûnn-a co-o nêuvo nomme, a meno c'a no segge vêua ò fæta solo da 'n rindirissamento a-a vegia e a no l'agge verscioîn preçedenti. In caso de stramûo sballiòu o se pêu tornâ sûbbito a-o vegio tittolo, e o no l'è poscibbile sorvescrive pe errô 'na paggina zà escistente.
+A paggina a '''no''' sajà stramûâa se ghe foisse zà ûnn-a co-o nêuvo nomme, a meno c'a no segge vêua ò fæta solo da 'n rindirissamento a-a vegia e a no l'agge verscioîn preçedenti.
+In caso de stramûo sballiòu o se pêu tornâ sûbbito a-o vegio tittolo, e o no l'è poscibbile sorvescrive pe errô 'na paggina zà escistente.
 
-<b>ATTENSION:</b>
-'N cangiamento coscì grande o porieiva creâ di controtempi e problemmi, sorvetûtto pe-e paggine ciû viscitæ. Pensa ben e conseguense de 'sto stramûo primma d'andâ avanti!",
+'''ATTENSION:'''
+'N cangiamento coscì grande o porieiva creâ di controtempi e problemmi, sorvetûtto pe-e paggine ciû viscitæ.
+Pensa ben e conseguense de 'sto stramûo primma d'andâ avanti!",
 'movepagetalktext'        => "A corispondente paggina de discûxon a sajà stramûâa outomaticamente insemme a-a paggina prinçipâ, '''eççetto inti seguenti câxi''':
 
 * Che o stramûo da paggina o segge tra namespace diversci
@@ -834,11 +831,6 @@ Inte 'sti câxi, se o se vêu fâ coscì, o se deive stramûâ ò azzonze manual
 'anonymous'        => 'Utente anonimmo de {{SITENAME}}',
 'lastmodifiedatby' => "Sta pagina a l'è stæta cangiâ l'urtima votta a e $2 do $1 da $3.", # $1 date, $2 time, $3 user
 
-# Spam protection
-'subcategorycount'     => "'Sta categorîa a g'ha {{PLURAL:$1|ûnn-a sottocategorîa|$1 sottocategorîe}}.",
-'categoryarticlecount' => "'Sta categorîa a contegne {{PLURAL:$1|ûnn-a paggina|$1 paggine}}.",
-'category-media-count' => "'Sta categorîa a contegne {{PLURAL:$1|ûn archivvio|$1 archivvi}}.",
-
 # Browsing diffs
 'previousdiff' => '← Differensa preçedente',
 'nextdiff'     => 'Proscima diff →',
@@ -852,6 +844,8 @@ Inte 'sti câxi, se o se vêu fâ coscì, o se deive stramûâ ò azzonze manual
 
 # Special:Newimages
 'newimages' => 'Gallerîa de nêuvi archivvi',
+'ilsubmit'  => 'Çerca',
+'bydate'    => 'pe dâta',
 
 # Bad image list
 'bad_image_list' => "O formato o l'è coscì:
@@ -919,5 +913,8 @@ Vegnan conscideræ solo i elenchi puntæ (righe che comensan co-o carattere *). 
 'watchlisttools-view' => 'Veddi e modiffiche pertinenti',
 'watchlisttools-edit' => 'Veddi e modiffica a lista',
 'watchlisttools-raw'  => 'Modiffica a lista in formato testo',
+
+# Special:Version
+'version' => 'Verscion', # Not used as normal message but as header for the special page itself
 
 );

@@ -134,9 +134,6 @@ $messages = array(
 'fileuploadsummary' => 'အ​ကျဉ်း​ချုပ်:',
 'watchthisupload'   => 'ဤ​စာ​မျက်​နှာ​အား​စောင့်​ကြည့်​ပါ​',
 
-# Image list
-'ilsubmit' => 'ရှာ​ဖွေ​ရန်​',
-
 # Random page
 'randompage' => 'ကျ​ပန်း​စာ​မျက်​နှာ​',
 
@@ -184,13 +181,13 @@ $messages = array(
 'ipblocklist-submit' => 'ရှာ​ဖွေ​ရန်​',
 
 # Move page
-'move-page-legend'    => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
-'movearticle' => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
-'movenologin' => 'မှတ်​ပုံ​တင်​ဖြင့်​မ​ဝင်​ရ​သေး​ပါ​',
-'movepagebtn' => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
-'movedto'     => 'ရွေ့​ပြောင်း​ရန်​နေ​ရာ​',
-'1movedto2'   => '[[$1]]  မှ​ [[$2]] သို့​',
-'movereason'  => 'အ​ကြောင်း​ပြ​ချက်​',
+'move-page-legend' => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
+'movearticle'      => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
+'movenologin'      => 'မှတ်​ပုံ​တင်​ဖြင့်​မ​ဝင်​ရ​သေး​ပါ​',
+'movepagebtn'      => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
+'movedto'          => 'ရွေ့​ပြောင်း​ရန်​နေ​ရာ​',
+'1movedto2'        => '[[$1]]  မှ​ [[$2]] သို့​',
+'movereason'       => 'အ​ကြောင်း​ပြ​ချက်​',
 
 # Namespace 8 related
 'allmessages' => 'စ​နစ်​၏​သ​တင်း​များ​',
@@ -198,6 +195,9 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-logout' => 'ထွက်​ပါ​',
 'tooltip-ca-move'   => 'ဤ​စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',
+
+# Special:Newimages
+'ilsubmit' => 'ရှာ​ဖွေ​ရန်​',
 
 # Multipage image navigation
 'imgmultigo' => 'သွား​ပါ!',

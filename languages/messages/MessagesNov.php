@@ -38,10 +38,11 @@ $messages = array(
 'december-gen' => 'desembre',
 'may'          => 'maye',
 
-# Bits of text used by many pages
-'categories'      => 'Kategories',
-'pagecategories'  => '{{PLURAL:$1|Kategorie|Kategories}}',
-'category_header' => 'Artikles in kategorie "$1"',
+# Categories related messages
+'categories'         => 'Kategories',
+'categoriespagetext' => 'Li sekuenti kategories exista in li wiki.',
+'pagecategories'     => '{{PLURAL:$1|Kategorie|Kategories}}',
+'category_header'    => 'Artikles in kategorie "$1"',
 
 'about'          => 'Pri',
 'article'        => 'Pagine de kontenaje',
@@ -214,16 +215,15 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'fileuploadsummary' => 'Resume:',
 'watchthisupload'   => 'Observa disi pagine',
 
-# Image list
-'ilsubmit'              => 'Sercha',
-'byname'                => 'segun nome',
-'bydate'                => 'segun date',
-'imagelinks'            => 'Linkes',
+# Special:Imagelist
+'imagelist_search_for'  => 'Sercha imaje nome:',
 'imagelist_name'        => 'Nome',
 'imagelist_user'        => 'Usere',
 'imagelist_size'        => 'Grandeso (bites)',
 'imagelist_description' => 'Deskriptione',
-'imagelist_search_for'  => 'Sercha imaje nome:',
+
+# Image description page
+'imagelinks' => 'Linkes',
 
 # Random page
 'randompage' => 'Arbitriari pagine',
@@ -243,7 +243,6 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'popularpages'            => 'Popular pagines',
 'mostcategories'          => 'Artikles kun maxim multi kategories',
 'mostrevisions'           => 'Artikles kun maxim multi revisiones',
-'allpages'                => 'Omni pagines',
 'shortpages'              => 'Kurti pagines',
 'longpages'               => 'Longi pagines',
 'deadendpages'            => 'Pagines sin kuplures',
@@ -259,15 +258,12 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'booksources-search-legend' => 'Sercha libral fontes',
 'booksources-go'            => 'Vada',
 
-'categoriespagetext' => 'Li sekuenti kategories exista in li wiki.',
-'groups'             => 'Usere grupes',
-'alphaindexline'     => '$1 a $2',
-'version'            => 'Versione',
-
 # Special:Log
 'specialloguserlabel' => 'Usere:',
 
 # Special:Allpages
+'allpages'          => 'Omni pagines',
+'alphaindexline'    => '$1 a $2',
 'allarticles'       => 'Omni artikles',
 'allinnamespace'    => 'Omni pagines ($1 nome-spatie)',
 'allnotinnamespace' => 'Omni pagines (non in $1 nome-spatie)',
@@ -305,7 +301,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'deletionlog'         => 'registre de ekartos',
 'deletecomment'       => 'Resone de ekarto',
 'revertpage'          => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
-'confirmprotect'      => 'Konfirma protektione',
+'protect-legend'      => 'Konfirma protektione',
 'protect-level-sysop' => 'Sisopes nur',
 
 # Namespace form on various pages
@@ -350,6 +346,10 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 # Info page
 'infosubtitle' => 'Informatione pri pagine',
 
+# Special:Newimages
+'ilsubmit' => 'Sercha',
+'bydate'   => 'segun date',
+
 # EXIF tags
 'exif-imagewidth'       => 'Larjeso',
 'exif-imagelength'      => 'Alteso',
@@ -368,5 +368,8 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'autosumm-replace' => "Remplasant pagine kun '$1'",
 'autoredircomment' => 'Ri-adresant a [[$1]]',
 'autosumm-new'     => 'Novi pagine: $1',
+
+# Special:Version
+'version' => 'Versione', # Not used as normal message but as header for the special page itself
 
 );

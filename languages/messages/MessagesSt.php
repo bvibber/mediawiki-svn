@@ -42,9 +42,10 @@ $messages = array(
 'nov'       => 'Pudu',
 'dec'       => 'Tshitwe',
 
-# Bits of text used by many pages
-'categories'      => 'Mekga',
-'category_header' => 'Dingolwa tse mokgeng wa "$1"',
+# Categories related messages
+'categories'         => 'Mekga',
+'categoriespagetext' => 'Wiki e na le mekga ena',
+'category_header'    => 'Dingolwa tse mokgeng wa "$1"',
 
 'mypage'     => 'Leqephe la ka',
 'mytalk'     => 'Leqephe la ka la moqoqo',
@@ -119,12 +120,12 @@ $messages = array(
 
 # Miscellaneous special pages
 'mostcategories' => 'Dingolwa tse mekga e mengata',
-'allpages'       => 'Maqephe ohle',
 'shortpages'     => 'Maqephe a makgutshwane',
 'longpages'      => 'Maqephe a matelele',
 'newpages'       => 'Maqephe a matjha',
 
-'categoriespagetext' => 'Wiki e na le mekga ena',
+# Special:Allpages
+'allpages' => 'Maqephe ohle',
 
 # E-mail user
 'emailuser'     => 'Romela motho enwa email',

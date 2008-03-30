@@ -21,10 +21,6 @@
  */
 
 /**
- * @access private
- */
-
-/**
  * Parent special page class, also static functions for handling the special
  * page list.
  * @addtogroup SpecialPage
@@ -138,6 +134,7 @@ class SpecialPage
 		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
 		'Userrights'                => 'UserrightsPage',
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
+		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
 		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
 		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
 		'Revisiondelete'            => array( 'UnlistedSpecialPage', 'Revisiondelete', 'deleterevision' ),
@@ -188,6 +185,7 @@ class SpecialPage
 
 		if( $wgEmailAuthentication ) {
 			self::$mList['Confirmemail'] = 'EmailConfirmation';
+			self::$mList['Invalidateemail'] = 'EmailInvalidation';
 		}
 
 		# Add extension special pages

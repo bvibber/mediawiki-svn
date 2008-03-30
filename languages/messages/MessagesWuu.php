@@ -91,7 +91,7 @@ $messages = array(
 'nov'           => '11月',
 'dec'           => '12月',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => '页面分类',
 'pagecategories'        => '$1个分类',
 'category_header'       => '“$1”分类中个页面',
@@ -333,7 +333,6 @@ $messages = array(
 'nextrevision' => '新点个版本→',
 'cur'          => '当前',
 'last'         => '上个',
-'orig'         => '原版',
 'histlegend'   => '选择比较版本：标记要比较个两只版本，回车或者揿页面底里个揿钮。<br /> 图例：(当前) = 搭当前版本有啥两样， (上个) = 搭上个版本有啥两样，小 = 小改动。',
 'deletedrev'   => '[已删]',
 'histfirst'    => '顶早',
@@ -465,13 +464,18 @@ $messages = array(
 'destfilename'      => '目标文件名:',
 'watchthisupload'   => '监控该只页面',
 
-# Image list
-'imagelist'                 => '文件列表',
-'getimagelist'              => '获取文件列表',
-'ilsubmit'                  => '搜寻',
-'imgdelete'                 => '删',
-'imgdesc'                   => '描述页',
-'imgfile'                   => '源文件',
+# Special:Imagelist
+'imagelist_search_for'  => '寻图片名字:',
+'imgdesc'               => '描述页',
+'imgfile'               => '源文件',
+'imagelist'             => '文件列表',
+'imagelist_date'        => '日脚',
+'imagelist_name'        => '名字',
+'imagelist_user'        => '用户',
+'imagelist_size'        => '尺寸 (bytes)',
+'imagelist_description' => '描述',
+
+# Image description page
 'filehist'                  => '文物历史',
 'filehist-deleteall'        => '全删',
 'filehist-deleteone'        => '删',
@@ -483,12 +487,6 @@ $messages = array(
 'noimage'                   => '呒拨叫该个名字个文件，倷可以$1。',
 'noimage-linktext'          => '上载俚',
 'uploadnewversion-linktext' => '上载该文件个新版',
-'imagelist_date'            => '日脚',
-'imagelist_name'            => '名字',
-'imagelist_user'            => '用户',
-'imagelist_size'            => '尺寸 (bytes)',
-'imagelist_description'     => '描述',
-'imagelist_search_for'      => '寻图片名字:',
 
 # File reversion
 'filerevert'        => '恢复$1',
@@ -529,7 +527,6 @@ $messages = array(
 'mostcategories'       => '分类顶多个页面',
 'mostimages'           => '链进去顶多个图片',
 'mostrevisions'        => '修订过顶顶多趟数个页面',
-'allpages'             => '全部页面',
 'shortpages'           => '短页面',
 'longpages'            => '长页面',
 'protectedpages'       => '已保护页面',
@@ -545,16 +542,14 @@ $messages = array(
 # Book sources
 'booksources-go' => '转到',
 
-'groups'         => '用户组',
-'alphaindexline' => '$1到$2',
-'version'        => '版本',
-
 # Special:Log
 'specialloguserlabel'  => '用户:',
 'speciallogtitlelabel' => '标题:',
 'log'                  => '记录',
 
 # Special:Allpages
+'allpages'          => '全部页面',
+'alphaindexline'    => '$1到$2',
 'nextpage'          => '下页 ($1)',
 'prevpage'          => '上一页（$1）',
 'allpagesfrom'      => '显示个页面开始于:',
@@ -626,7 +621,6 @@ $messages = array(
 'rollbackfailed'  => '恢复失败',
 'revertpage'      => '恢复[[Special:Contributions/$2|$2]] ([[User_talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'  => '保护日志',
-'confirmprotect'  => '确认保护',
 'protectcomment'  => '保护理由:',
 'protect-default' => '(默认)',
 
@@ -674,7 +668,7 @@ $messages = array(
 'proxyblocksuccess'  => '好哉。',
 
 # Move page
-'move-page-legend'                => '页面捅荡',
+'move-page-legend'        => '页面捅荡',
 'movepagetext'            => "下底只表格会重新命名一只页面，拿俚所有个历史也侪捅到新名字下头。
 旧个名字会变成到新名字个重定向页面。
 到旧页面个连接弗会改变；注意检查双重定向或者坏脱个重定向。
@@ -772,6 +766,7 @@ $messages = array(
 # Special:Newimages
 'newimages'    => '新文件陈列室',
 'showhidebots' => '（$1机器人）',
+'ilsubmit'     => '搜寻',
 
 /*
 Short names for language variants used for language conversion links.
@@ -846,6 +841,9 @@ Variants for Chinese language
 
 # Watchlist editor
 'watchlistedit-normal-title' => '编辑监控列表',
+
+# Special:Version
+'version' => '版本', # Not used as normal message but as header for the special page itself
 
 # Special:Filepath
 'filepath'        => '文件路径',

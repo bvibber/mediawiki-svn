@@ -397,7 +397,7 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'about', $this->aboutLink() );
 
 		$tpl->setRef( 'debug', $out->mDebugtext );
-		$tpl->set( 'reporttime', $out->reportTime() );
+		$tpl->set( 'reporttime', wfReportTime() );
 		$tpl->set( 'sitenotice', wfGetSiteNotice() );
 		$tpl->set( 'bottomscripts', $this->bottomScripts() );
 
@@ -596,7 +596,7 @@ class SkinTemplate extends Skin {
 		$text = wfMsg( $message );
 		if ( wfEmptyMsg( $message, $text ) ) {
 			global $wgContLang;
-			$text = $wgContLang->getFormattedNsText( Namespace::getSubject( $title->getNamespace() ) );
+			$text = $wgContLang->getFormattedNsText( MWNamespace::getSubject( $title->getNamespace() ) );
 		}
 		
 		$result = array();
@@ -677,7 +677,9 @@ class SkinTemplate extends Skin {
 				$istalkclass = $istalk?' istalk':'';
 				$content_actions['edit'] = array(
 					'class' => ((($action == 'edit' or $action == 'submit') and $section != 'new') ? 'selected' : '').$istalkclass,
-					'text' => wfMsg('edit'),
+					'text' => $this->mTitle->exists()
+						? wfMsg( 'edit' )
+						: wfMsg( 'create' ),
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
 				);
 
@@ -836,13 +838,11 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function buildNavUrls () {
-		global $wgUseTrackbacks, $wgTitle, $wgArticle;
+		global $wgUseTrackbacks, $wgTitle, $wgUser, $wgRequest;
+		global $wgEnableUploads, $wgUploadNavigationUrl;
 
 		$fname = 'SkinTemplate::buildNavUrls';
 		wfProfileIn( $fname );
-
-		global $wgUser, $wgRequest;
-		global $wgEnableUploads, $wgUploadNavigationUrl;
 
 		$action = $wgRequest->getText( 'action' );
 

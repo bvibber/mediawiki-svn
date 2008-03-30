@@ -1,10 +1,13 @@
 <?php
-/** Dzongkha (རྫོང་ཁ)
-  *
-  * @addtogroup Language
-  *
-  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
-  */
+/** Dzongkha (ཇོང་ཁ)
+ *
+ * @addtogroup Language
+ *
+ * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+ * @author Tenzin
+ * @author Jon Harald Søby
+ */
+
 $digitTransformTable = array(
 	'0' => '༠', # &#x0f20;
 	'1' => '༡', # &#x0f21;
@@ -18,4 +21,21 @@ $digitTransformTable = array(
 	'9' => '༩', # &#x0f29;
 );
 
+$messages = array(
+# Dates
+'january'  => 'སྤྱི་ཟླ་དང་པ།',
+'february' => 'སྤྱི་ཟླ་གཉིས་པ།',
+'march'    => 'སྤྱི་ཟླ་གསུམ་པ།',
 
+'search'           => 'འཚོལ་ཞིབ།',
+'edit'             => 'ཞུན་དག།',
+'talkpagelinktext' => 'བློ།',
+
+# All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'aboutsite' => '{{SITENAME}} གི་སྐོར་ལས།',
+'mainpage'  => 'མ་ཤོག།',
+'privacy'   => 'སྒེར་གསང་སྲིད་བྱུས།',
+
+'editsection' => 'ཞུན་དག།',
+
+);

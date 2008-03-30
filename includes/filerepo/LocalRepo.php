@@ -48,6 +48,13 @@ class LocalRepo extends FSRepo {
 			$inuse = $dbw->selectField( 'filearchive', '1', 
 				array( 'fa_storage_group' => 'deleted', 'fa_storage_key' => $key ),
 				__METHOD__, array( 'FOR UPDATE' ) );
+			if( !$inuse ) {
+				$sha1 = substr( $key, 0, strcspn( $key, '.' ) );
+				$inuse = $dbw->selectField( 'oldimage', '1',
+				array( 'oi_sha1' => $sha1,
+					'oi_deleted & '.File::DELETED_FILE => File::DELETED_FILE ),
+				__METHOD__, array( 'FOR UPDATE' ) );
+			}
 			if ( !$inuse ) {
 				wfDebug( __METHOD__ . ": deleting $key\n" );
 				if ( !@unlink( $path ) ) {
@@ -85,11 +92,6 @@ class LocalRepo extends FSRepo {
 	}
 
 	function checkRedirect( $title ) {
-		global $wgFileRedirects;
-		if( !$wgFileRedirects ) {
-			return false;
-		}
-
 		if( $title instanceof Title && $title->getNamespace() == NS_MEDIA ) {
 			$title = Title::makeTitle( NS_IMAGE, $title->getText() );
 		}

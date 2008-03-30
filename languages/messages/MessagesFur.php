@@ -6,6 +6,7 @@
  * @author Klenje
  * @author לערי ריינהארט
  * @author Helix84
+ * @author Siebrand
  */
 
 $fallback = 'it';
@@ -133,11 +134,13 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Dic',
 
-# Bits of text used by many pages
-'categories'      => 'Categoriis',
-'pagecategories'  => '{{PLURAL:$1|Categorie|Categoriis}}',
-'category_header' => 'Vôs inte categorie "$1"',
-'subcategories'   => 'Sot categoriis',
+# Categories related messages
+'categories'             => 'Categoriis',
+'categoriespagetext'     => 'Te wiki a esistin lis categoriis ca sot.',
+'pagecategories'         => '{{PLURAL:$1|Categorie|Categoriis}}',
+'category_header'        => 'Vôs inte categorie "$1"',
+'subcategories'          => 'Sot categoriis',
+'listingcontinuesabbrev' => 'cont.',
 
 'mainpagetext' => "'''MediaWiki e je stade instalade cun sucès.'''",
 
@@ -368,7 +371,6 @@ Par plasê torne a fâ la jentrade pene che tu la âs ricevude.',
 'updated'                => '(Inzornât)',
 'previewnote'            => 'Visiti che cheste e je dome une anteprime, e no je stade ancjemò salvade!',
 'editing'                => 'Cambiament di $1',
-'editinguser'            => 'Cambiament di $1',
 'editingsection'         => 'Cambiament di $1 (sezion)',
 'editconflict'           => 'Conflit inte modifiche: $1',
 'explainconflict'        => 'Cualchidun altri al à cambiât cheste pagjine di cuant che tu âs començât a modificâle.
@@ -464,13 +466,16 @@ $2 Liste redirezions &nbsp; Cîr $3 $9',
 'guesstimezone'           => 'Cjape impostazions dal sgarfadôr',
 'default'                 => 'predeterminât',
 
+# User rights
+'editinguser' => 'Cambiament di $1',
+
 # Recent changes
 'nchanges'                       => '$1 {{PLURAL:$1|cambiament|cambiaments}}',
 'recentchanges'                  => 'Ultins cambiaments',
 'recentchangestext'              => 'Cheste pagjine e mostre i plui recents cambiaments inte {{SITENAME}}.',
 'recentchanges-feed-description' => 'Chest canâl al ripuarte i cambiaments plui recents ai contignûts di cheste wiki.',
 'rcnote'                         => 'Ca sot tu cjatis i ultins <strong>$1</strong> cambiaments tes ultimis <strong>$2</strong> zornadis.',
-'rcnotefrom'                     => 'Ca sot i cambiaments dal <b>$2</b> (fintremai al <b>$1</b>).',
+'rcnotefrom'                     => "Ca sot i cambiaments dal '''$2''' (fintremai al '''$1''').",
 'rclistfrom'                     => 'Mostre i ultins cambiaments dal $1',
 'rcshowhideminor'                => '$1 i piçui cambiaments',
 'rcshowhideliu'                  => '$1 utents jentrâts',
@@ -520,15 +525,10 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'sourcefilename'     => 'Non dal file origjinâl:',
 'destfilename'       => 'Non dal file di destinazion:',
 
-# Image list
-'imagelist'                 => 'Liste des figuris',
-'imagelisttext'             => 'Ca sot e je une liste di $1 files ordenâts $2.',
-'ilsubmit'                  => 'Cîr',
-'showlast'                  => 'Mostre i ultins $1 files ordenâts $2.',
-'byname'                    => 'par non',
-'bydate'                    => 'par date',
-'bysize'                    => 'par dimension',
-'imgdelete'                 => 'eli',
+# Special:Imagelist
+'imagelist' => 'Liste des figuris',
+
+# Image description page
 'filehist'                  => 'Storic dal file',
 'filehist-current'          => 'corint',
 'filehist-datetime'         => 'Date/Ore',
@@ -607,7 +607,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'mostcategories'          => 'Vôs cul maiôr numar di categoriis',
 'mostimages'              => 'Figuris a cui pontin il maiôr numar di leams',
 'mostrevisions'           => 'Vôs cul maiôr numar di revisions',
-'allpages'                => 'Dutis lis pagjinis',
 'shortpages'              => 'Pagjinis curtis',
 'longpages'               => 'Pagjinis lungjis',
 'deadendpages'            => 'Pagjinis cence usite',
@@ -618,14 +617,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'restrictedpheading'      => 'Pagjinis speciâls cun restrizions',
 'newpages'                => 'Gnovis pagjinis',
 'ancientpages'            => 'Pagjinis plui vecjis',
-'intl'                    => 'Leams interlengâi',
 'move'                    => 'Môf',
 'movethispage'            => 'Môf cheste pagjine',
-
-'categoriespagetext' => 'Te wiki a esistin lis categoriis ca sot.',
-'data'               => 'Dâts',
-'alphaindexline'     => 'di $1 a $2',
-'version'            => 'Version',
 
 # Special:Log
 'specialloguserlabel'  => 'Utent:',
@@ -637,6 +630,8 @@ Tu puedis strenzi la viodude sielzint un gjenar di regjistri, un non utent o la 
 'logempty'             => 'Nissun element corispondint tal regjistri.',
 
 # Special:Allpages
+'allpages'          => 'Dutis lis pagjinis',
+'alphaindexline'    => 'di $1 a $2',
 'nextpage'          => 'Prossime pagjine ($1)',
 'prevpage'          => 'Pagjinis precedentis ($1)',
 'allpagesfrom'      => 'Mostre pagjinis scomençant di:',
@@ -706,8 +701,8 @@ Cjale $2 par une liste des ultimis eliminazions.',
 'deleteotherreason'           => 'Altri motîf o motîf in plui:',
 'deletereasonotherlist'       => 'Altri motîf',
 'protectedarticle'            => '$1 protezût',
-'protectsub'                  => '(Protezint "$1")',
-'confirmprotect'              => 'Conferme protezion',
+'protect-title'               => 'Protezint "$1"',
+'protect-legend'              => 'Conferme protezion',
 'protectcomment'              => 'Reson pe protezion',
 'protect-default'             => '(predeterminât)',
 'protect-level-autoconfirmed' => 'Dome utents regjistrâts',
@@ -729,8 +724,6 @@ Cjale $2 par une liste des ultimis eliminazions.',
 'mycontris'     => 'Miei contribûts',
 'contribsub2'   => 'Par $1 ($2)',
 'nocontribs'    => 'Nissun cambiament che al rispiete chescj criteris cjatât.',
-'ucnote'        => 'Ca sot a son i ultins <b>$1</b> cambiaments dal utent tes ultimis <b>$2</b> zornadis.',
-'uclinks'       => 'Viôt i ultins $1 cambiaments; viôt lis ultimis $2 zornadis.',
 'uctop'         => ' (su)',
 'month'         => 'Scomençant dal mês (e prime):',
 'year'          => 'Scomençant dal an (e prime):',
@@ -762,7 +755,7 @@ Cjale $2 par une liste des ultimis eliminazions.',
 'lockbtn' => 'Bloche base di dâts',
 
 # Move page
-'move-page-legend'         => 'Môf pagjine',
+'move-page-legend' => 'Môf pagjine',
 'movepagetext'     => "Cun il formulari ca sot tu puedis gambiâ il non a une pagjine, movint dut il sô storic al gnûf non.
 Il vieri titul al deventarà une pagjine di reindirizament al gnûf titul. I leams ae vecje pagjine no saran gambiâts; verifiche
 par plasê che no sedin reindirizaments doplis o no funzionants.
@@ -873,12 +866,6 @@ Sielç par plasê un altri non.',
 'creditspage'      => 'Pagjine dai ricognossiments',
 'nocredits'        => 'Nissune informazion sui ricognossiments disponibil par cheste pagjine.',
 
-# Spam protection
-'subcategorycount'       => 'Cheste categorie e conten {{PLURAL:$1|une sot categorie|$1 sot categoriis}}.',
-'categoryarticlecount'   => 'In cheste categorie tu puedis cjatâ $1 vôs.',
-'category-media-count'   => 'Cheste categorie e conten {{PLURAL:$1|un file|$1 files}}.',
-'listingcontinuesabbrev' => 'cont.',
-
 # Info page
 'infosubtitle'   => 'Informazions pe pagjine',
 'numedits'       => 'Numar di cambiaments (vôs): $1',
@@ -907,8 +894,11 @@ Sielç par plasê un altri non.',
 'show-big-image-thumb' => '<small>Dimensions di cheste anteprime: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages' => 'Galarie dai gnûfs files',
-'noimages'  => 'Nuie di viodi.',
+'newimages'     => 'Galarie dai gnûfs files',
+'imagelisttext' => 'Ca sot e je une liste di $1 files ordenâts $2.',
+'noimages'      => 'Nuie di viodi.',
+'ilsubmit'      => 'Cîr',
+'bydate'        => 'par date',
 
 # Metadata
 'metadata-expand'   => 'Mostre plui detais',
@@ -949,5 +939,8 @@ Sielç par plasê un altri non.',
 
 # AJAX search
 'hideresults' => 'Plate risultâts',
+
+# Special:Version
+'version' => 'Version', # Not used as normal message but as header for the special page itself
 
 );

@@ -300,11 +300,13 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dec',
 
-# Bits of text used by many pages
-'categories'      => 'Kategorije stranica',
-'pagecategories'  => '{{PLURAL:$1|Kategorija|Kategorije|Kategorije}} stranica',
-'category_header' => 'Članaka u kategoriji "$1"',
-'subcategories'   => 'Potkategorije',
+# Categories related messages
+'categories'             => 'Kategorije stranica',
+'categoriespagetext'     => 'Sledeće kategorije već postoje na vikiju',
+'pagecategories'         => '{{PLURAL:$1|Kategorija|Kategorije|Kategorije}} stranica',
+'category_header'        => 'Članaka u kategoriji "$1"',
+'subcategories'          => 'Potkategorije',
+'listingcontinuesabbrev' => 'nast.',
 
 'mainpagetext'      => "<big>'''MedijaViki je uspešno instaliran.'''</big>",
 'mainpagedocfooter' => 'Molimo vidite [http://meta.wikimedia.org/wiki/Help:Contents korisnički vodič] za informacije o upotrebi viki softvera.
@@ -674,7 +676,6 @@ tekstualnom polju izgledati ako se odlučite da ga snimite.',
 
 <strong>Ako ste pokušali da napravite pravu izmenu, molimo pokušajte ponovo. Ako i dalje ne radi, pokušajte da se odjavite i ponovo prijavite.</strong>",
 'editing'                   => 'Uređujete $1',
-'editinguser'               => 'Uređujete $1',
 'editingsection'            => 'Uređujete $1 (deo)',
 'editingcomment'            => 'Uređujete $1 (komentar)',
 'editconflict'              => 'Sukobljene izmene: $1',
@@ -718,7 +719,6 @@ da pratite [[{{ns:project}}:Pravila o zaštiti stranica|pravila o zaštiti stran
 'revnotfound'         => 'Revizija nije pronađena',
 'revnotfoundtext'     => 'Starija revizija ove stranice koju ste zatražili nije nađena.
 Molimo vas da proverite URL koji ste upotrebili da biste pristupili ovoj stranici.',
-'loadhist'            => 'Učitavam istoriju stranice',
 'currentrev'          => 'Trenutna revizija',
 'revisionasof'        => 'Revizija od $1',
 'revision-info'       => 'Revizija od $1; $2',
@@ -861,9 +861,11 @@ da biste podešavali korisnička podešavanja.',
 'files'                    => 'Fajlovi',
 
 # User rights
+'userrights'                 => 'Upravljanje korisničkim pravima', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'     => 'Upravljaj korisničkim grupama',
 'userrights-user-editname'   => 'Unesite korisničko ime:',
 'editusergroup'              => 'Menjaj grupe korisnika',
+'editinguser'                => 'Uređujete $1',
 'userrights-editusergroup'   => 'Promeni korisničke grupe',
 'saveusergroups'             => 'Sačuvaj korisničke grupe',
 'userrights-groupsmember'    => 'Član:',
@@ -982,18 +984,18 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'upload_source_url'  => ' (validan, javno dostupan URL)',
 'upload_source_file' => ' (fajl na vašem računaru)',
 
-# Image list
-'imagelist'                 => 'Spisak slika',
-'imagelisttext'             => "Ispod je spisak od '''$1''' {{plural:$1|fajla|fajla|fajlova}} poređanih $2.",
-'getimagelist'              => 'pribavljam spisak slika',
-'ilsubmit'                  => 'Traži',
-'showlast'                  => 'Prikaži poslednjih $1 slika poređanih $2.',
-'byname'                    => 'po imenu',
-'bydate'                    => 'po datumu',
-'bysize'                    => 'po veličini',
-'imgdelete'                 => 'obr',
-'imgdesc'                   => 'opis',
-'imgfile'                   => 'fajl',
+# Special:Imagelist
+'imagelist_search_for'  => 'Traži ime slike:',
+'imgdesc'               => 'opis',
+'imgfile'               => 'fajl',
+'imagelist'             => 'Spisak slika',
+'imagelist_date'        => 'Datum',
+'imagelist_name'        => 'Ime',
+'imagelist_user'        => 'Korisnik',
+'imagelist_size'        => 'Veličina (bajtovi)',
+'imagelist_description' => 'Opis slike',
+
+# Image description page
 'imagelinks'                => 'Upotreba slike',
 'linkstoimage'              => 'Sledeće stranice koriste ovaj fajl:',
 'nolinkstoimage'            => 'Nema stranica koje koriste ovaj fajl.',
@@ -1003,12 +1005,6 @@ Da biste ubacili sliku na stranu, koristite vezu u obliku
 'noimage'                   => 'Ne postoji fajl sa ovim imenom, možete ga $1',
 'noimage-linktext'          => 'poslati',
 'uploadnewversion-linktext' => 'Pošaljite noviju verziju ovog fajla',
-'imagelist_date'            => 'Datum',
-'imagelist_name'            => 'Ime',
-'imagelist_user'            => 'Korisnik',
-'imagelist_size'            => 'Veličina (bajtovi)',
-'imagelist_description'     => 'Opis slike',
-'imagelist_search_for'      => 'Traži ime slike:',
 
 # MIME search
 'mimesearch' => 'MIME pretraga',
@@ -1077,7 +1073,6 @@ Dužina reda za poslove iznosi '''$7'''",
 'mostcategories'          => 'Članci sa najviše kategorija',
 'mostimages'              => 'Najviše povezane slike',
 'mostrevisions'           => 'Članci sa najviše revizija',
-'allpages'                => 'Sve stranice',
 'prefixindex'             => 'Spisak prefiksa',
 'shortpages'              => 'Kratke stranice',
 'longpages'               => 'Dugačke stranice',
@@ -1090,7 +1085,6 @@ Dužina reda za poslove iznosi '''$7'''",
 'newpages'                => 'Nove stranice',
 'newpages-username'       => 'Korisničko ime:',
 'ancientpages'            => 'Najstariji članci',
-'intl'                    => 'Međujezičke veze',
 'move'                    => 'premesti',
 'movethispage'            => 'premesti ovu stranicu',
 'unusedimagestext'        => '<p>Obratite pažnju da se drugi veb sajtovi
@@ -1104,13 +1098,6 @@ na kome bi se izvela ova funkcija.',
 # Book sources
 'booksources' => 'Štampani izvori',
 
-'categoriespagetext' => 'Sledeće kategorije već postoje na vikiju',
-'data'               => 'Podaci',
-'userrights'         => 'Upravljanje korisničkim pravima',
-'groups'             => 'Korisničke grupe',
-'alphaindexline'     => '$1 u $2',
-'version'            => 'Verzija',
-
 # Special:Log
 'specialloguserlabel'  => 'Korisnik:',
 'speciallogtitlelabel' => 'Naslov:',
@@ -1120,6 +1107,8 @@ Možete suziti pregled odabirom tipa istorije, korisničkog imena ili tražene s
 'logempty'             => 'Protokol je prazan.',
 
 # Special:Allpages
+'allpages'          => 'Sve stranice',
+'alphaindexline'    => '$1 u $2',
 'nextpage'          => 'Sledeća stranica ($1)',
 'allpagesfrom'      => 'Prikaži stranice početno sa:',
 'allarticles'       => 'Svi članci',
@@ -1263,8 +1252,8 @@ Molimo kliknite "back" i ponovo učitajte stranu odakle ste došli, a onda poku�
 'protectlogtext'              => 'Ispod je spisak zaključavanja i otključavanja stranica.',
 'protectedarticle'            => 'zaštitio $1',
 'unprotectedarticle'          => 'skinuo zaštitu sa $1',
-'protectsub'                  => '(stavljanje zaštite "$1")',
-'confirmprotect'              => 'Potvrdite zaštitu',
+'protect-title'               => 'stavljanje zaštite "$1"',
+'protect-legend'              => 'Potvrdite zaštitu',
 'protectcomment'              => 'Razlog zaštite',
 'protect-unchain'             => 'Otključaj dozvole premeštanja',
 'protect-text'                => 'Ovde možete pogledati i menjati nivo zaštite za stranicu <strong><nowiki>$1</nowiki></strong>.',
@@ -1317,8 +1306,6 @@ Pogledajte [[{{ns:special}}:Log/delete|istoriju brisanja]] za spisak skorašnjih
 'uctop'         => ' (vrh)',
 
 'sp-contributions-newbies-sub' => 'Za novajlije',
-
-'sp-newimages-showfrom' => 'Prikaži nove slike počevši od $1',
 
 # What links here
 'whatlinkshere' => 'Šta je povezano ovde',
@@ -1409,7 +1396,7 @@ Molimo potvrdite da je ovo zaista ono što nameravate da uradite.',
 'databasenotlocked'   => 'Baza podataka nije zaključana.',
 
 # Move page
-'move-page-legend'                => 'Premeštanje stranice',
+'move-page-legend'        => 'Premeštanje stranice',
 'movepagetext'            => "Donji upitnik će preimenovati stranicu, premeštajući svu
 njenu istoriju na novo ime.
 Stari naslov će postati preusmerenje na novi naslov.
@@ -1599,15 +1586,12 @@ Svi transviki uvozi su zabeleženi u [[Posebno:Log/import|istoriji uvoza]].',
 'nocredits'        => 'Nisu dostupne informacije o zaslugama za ovu stranicu.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Filter za zaštitu od neželjenih poruka',
-'spamprotectiontext'     => 'Strana koju želite da sačuvate je blokirana od strane filtera za neželjene poruke. Ovo je verovatno izazvano vezom ka spoljašnjem sajtu.',
-'spamprotectionmatch'    => 'Sledeći tekst je izazvao naš filter za neželjene poruke: $1',
-'subcategorycount'       => 'U ovoj kategoriji se nalazi {{plural:$1|jedna potkategorija|$1 potkategorije|$1 potkategorija}}.',
-'categoryarticlecount'   => 'U ovoj kategoriji se nalazi {{plural:$1|Jedan članak|$1 članka|$1 članaka}}.',
-'listingcontinuesabbrev' => 'nast.',
-'spambot_username'       => 'Čišćenje neželjenih poruka u MedijaVikiju',
-'spam_reverting'         => 'Vraćanje na staru reviziju koja ne sadrži veze ka $1',
-'spam_blanking'          => 'Sve revizije su sadržale veze ka $1, pražnjenje',
+'spamprotectiontitle' => 'Filter za zaštitu od neželjenih poruka',
+'spamprotectiontext'  => 'Strana koju želite da sačuvate je blokirana od strane filtera za neželjene poruke. Ovo je verovatno izazvano vezom ka spoljašnjem sajtu.',
+'spamprotectionmatch' => 'Sledeći tekst je izazvao naš filter za neželjene poruke: $1',
+'spambot_username'    => 'Čišćenje neželjenih poruka u MedijaVikiju',
+'spam_reverting'      => 'Vraćanje na staru reviziju koja ne sadrži veze ka $1',
+'spam_blanking'       => 'Sve revizije su sadržale veze ka $1, pražnjenje',
 
 # Info page
 'infosubtitle'   => 'Informacije za stranicu',
@@ -1648,9 +1632,13 @@ Svi transviki uvozi su zabeleženi u [[Posebno:Log/import|istoriji uvoza]].',
 'thumbsize'    => 'Veličina umanjenog prikaza :',
 
 # Special:Newimages
-'newimages'    => 'Galerija novih slika',
-'showhidebots' => '($1 botove)',
-'noimages'     => 'Nema ništa da se vidi',
+'newimages'             => 'Galerija novih slika',
+'imagelisttext'         => "Ispod je spisak od '''$1''' {{plural:$1|fajla|fajla|fajlova}} poređanih $2.",
+'showhidebots'          => '($1 botove)',
+'noimages'              => 'Nema ništa da se vidi',
+'ilsubmit'              => 'Traži',
+'bydate'                => 'po datumu',
+'sp-newimages-showfrom' => 'Prikaži nove slike počevši od $1',
 
 # Variants for Serbian language
 'variantname-sr-ec' => 'ћирилица',
@@ -2009,6 +1997,9 @@ $1',
 
 # Auto-summaries
 'autoredircomment' => 'Preusmerenje na [[$1]]',
+
+# Special:Version
+'version' => 'Verzija', # Not used as normal message but as header for the special page itself
 
 # Special:Filepath
 'filepath'        => 'Putanja fajla',

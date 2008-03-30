@@ -897,6 +897,7 @@ class Article {
 						. $o->tb_id . "&token=" . urlencode( $wgUser->editToken() ) );
 				$rmvtxt = wfMsg( 'trackbackremove', htmlspecialchars( $delurl ) );
 			}
+			$tbtext .= "\n";
 			$tbtext .= wfMsg(strlen($o->tb_ex) ? 'trackbackexcerpt' : 'trackback',
 					$o->tb_title,
 					$o->tb_url,
@@ -1518,7 +1519,7 @@ class Article {
 		# Check patrol config options
 
 		if ( !($wgUseNPPatrol || $wgUseRCPatrol)) {
-			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
+			$wgOut->showErrorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
 			return;		
 		}
 
@@ -1527,7 +1528,7 @@ class Article {
 		$rc = $rcid ? RecentChange::newFromId($rcid) : null;
 		if ( is_null ( $rc ) )
 		{
-			$wgOut->errorPage( 'markedaspatrollederror', 'markedaspatrollederrortext' );
+			$wgOut->showErrorPage( 'markedaspatrollederror', 'markedaspatrollederrortext' );
 			return;
 		}
 
@@ -1535,7 +1536,7 @@ class Article {
 			// Only new pages can be patrolled if the general patrolling is off....???
 			// @fixme -- is this necessary? Shouldn't we only bother controlling the
 			// front end here?
-			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
+			$wgOut->showErrorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
 			return;
 		}
 		
@@ -2100,8 +2101,8 @@ class Article {
 		}
 
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mTitle->getLocalURL( 'action=delete' . $par ), 'id' => 'deleteconfirm' ) ) .
-			Xml::openElement( 'fieldset' ) .
-			Xml::element( 'legend', array(), wfMsg( 'delete-legend' ) ) .
+			Xml::openElement( 'fieldset', array( 'id' => 'mw-delete-table' ) ) .
+			Xml::element( 'legend', null, wfMsg( 'delete-legend' ) ) .
 			Xml::openElement( 'table' ) .
 			"<tr id=\"wpDeleteReasonListRow\">
 				<td align='$align'>" .
@@ -2154,7 +2155,7 @@ class Article {
 	 * Show relevant lines from the deletion log
 	 */
 	function showLogExtract( $out ) {
-		$out->addHtml( '<h2>' . htmlspecialchars( LogPage::logName( 'delete' ) ) . '</h2>' );
+		$out->addHtml( Xml::element( 'h2', null, LogPage::logName( 'delete' ) ) );
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(
@@ -2259,12 +2260,20 @@ class Article {
 		# Delete restrictions for it
 		$dbw->delete( 'page_restrictions', array ( 'pr_page' => $id ), __METHOD__ );
 
+		# Fix category table counts
+		$cats = array();
+		$res = $dbw->select( 'categorylinks', 'cl_to',
+			array( 'cl_from' => $id ), __METHOD__ );
+		foreach( $res as $row ) {
+			$cats []= $row->cl_to;
+		}
+		$this->updateCategoryCounts( array(), $cats );
+
 		# Now that it's safely backed up, delete it
 		$dbw->delete( 'page', array( 'page_id' => $id ), __METHOD__);
 
 		# If using cascading deletes, we can skip some explicit deletes
 		if ( !$dbw->cascadingDeletes() ) {
-
 			$dbw->delete( 'revision', array( 'rev_page' => $id ), __METHOD__ );
 
 			if ($wgUseTrackbacks)
@@ -2728,8 +2737,9 @@ class Article {
 			}
 			$cdel = "(<small>$cdel</small>) ";
 		}
-		
-		$userlinks = $sk->revUserTools( $revision, true );
+		# Show user links if allowed to see them. Normally they
+		# are hidden regardless, but since we can already see the text here...
+		$userlinks = $sk->revUserTools( $revision, false );
 
 		$m = wfMsg( 'revision-info-current' );
 		$infomsg = $current && !wfEmptyMsg( 'revision-info-current', $m ) && $m != '-'
@@ -2976,6 +2986,15 @@ class Article {
 	static function onArticleDelete( $title ) {
 		global $wgUseFileCache, $wgMessageCache;
 
+		// Update existence markers on article/talk tabs...
+		if( $title->isTalkPage() ) {
+			$other = $title->getSubjectPage();
+		} else {
+			$other = $title->getTalkPage();
+		}
+		$other->invalidateCache();
+		$other->purgeSquid();
+		
 		$title->touchLinks();
 		$title->purgeSquid();
 
@@ -3339,4 +3358,60 @@ class Article {
 		$wgOut->addParserOutput( $parserOutput );
 	}
 
+	/**
+	 * Update all the appropriate counts in the category table, given that
+	 * we've added the categories $added and deleted the categories $deleted.
+	 *
+	 * @param $added array   The names of categories that were added
+	 * @param $deleted array The names of categories that were deleted
+	 * @return null
+	 */
+	public function updateCategoryCounts( $added, $deleted ) {
+		$ns = $this->mTitle->getNamespace();
+		$dbw = wfGetDB( DB_MASTER );
+
+		# First make sure the rows exist.  If one of the "deleted" ones didn't
+		# exist, we might legitimately not create it, but it's simpler to just
+		# create it and then give it a negative value, since the value is bogus
+		# anyway.
+		#
+		# Sometimes I wish we had INSERT ... ON DUPLICATE KEY UPDATE.
+		$insertCats = array_merge( $added, $deleted );
+		if( !$insertCats ) {
+			# Okay, nothing to do
+			return;
+		}
+		$insertRows = array();
+		foreach( $insertCats as $cat ) {
+			$insertRows[] = array( 'cat_title' => $cat );
+		}
+		$dbw->insert( 'category', $insertRows, __METHOD__, 'IGNORE' );
+
+		$addFields    = array( 'cat_pages = cat_pages + 1' );
+		$removeFields = array( 'cat_pages = cat_pages - 1' );
+		if( $ns == NS_CATEGORY ) {
+			$addFields[]    = 'cat_subcats = cat_subcats + 1';
+			$removeFields[] = 'cat_subcats = cat_subcats - 1';
+		} elseif( $ns == NS_IMAGE ) {
+			$addFields[]    = 'cat_files = cat_files + 1';
+			$removeFields[] = 'cat_files = cat_files - 1';
+		}
+
+		if ( $added ) {
+			$dbw->update(
+				'category',
+				$addFields,
+				array( 'cat_title' => $added ),
+				__METHOD__
+			);
+		}
+		if ( $deleted ) {
+			$dbw->update(
+				'category',
+				$removeFields,
+				array( 'cat_title' => $deleted ),
+				__METHOD__
+			);
+		}
+	}
 }

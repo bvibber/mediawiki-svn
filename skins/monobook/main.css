@@ -67,6 +67,10 @@ table {
 	   floated tables */
 	background-color: white;
 }
+fieldset table {
+	/* but keep table layouts in forms clean... */
+	background: none;
+}
 a {
 	text-decoration: none;
 	color: #002bb8;
@@ -254,6 +258,10 @@ span.subpages {
 }
 .firstHeading {
 	margin-bottom: .1em;
+	/* These two rules hack around bug 2013 (fix for more limited bug 11325).
+	   When bug 2013 is fixed properly, they should be removed. */
+	line-height: 1.2em;
+	padding-bottom: 0;
 }
 
 /* user notification thing */
@@ -274,6 +282,10 @@ span.subpages {
 #siteNotice p {
 	margin: 0;
 	padding: 0;
+}
+.success {
+	color: green;
+	font-size: larger;
 }
 .error {
 	color: red;
@@ -1180,8 +1192,23 @@ span.unpatrolled {
 }
 
 span.searchmatch {
-	color: red;
+	font-size: 95%;	
 }
+div.searchresult {
+	font-size: 95%;
+	width:38em;
+}
+
+span.searchalttitle {
+	font-size: 95%;
+}
+
+div.searchdidyoumean {
+	font-size: 127%;
+	padding-bottom:1ex;
+	padding-top:1ex; 
+}
+
 .sharedUploadNotice {
 	font-style: italic;
 }

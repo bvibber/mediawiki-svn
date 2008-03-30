@@ -613,7 +613,6 @@ function wfMsgExt( $key, $options ) {
  * @deprecated Please return control to the caller or throw an exception
  */
 function wfAbruptExit( $error = false ){
-	global $wgLoadBalancer;
 	static $called = false;
 	if ( $called ){
 		exit( -1 );
@@ -634,7 +633,7 @@ function wfAbruptExit( $error = false ){
 	wfLogProfilingData();
 
 	if ( !$error ) {
-		$wgLoadBalancer->closeAll();
+		wfGetLB()->closeAll();
 	}
 	exit( -1 );
 }
@@ -2234,7 +2233,9 @@ function wfSetupSession() {
 	}
 	session_set_cookie_params( 0, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	session_cache_limiter( 'private, must-revalidate' );
-	@session_start();
+	wfSuppressWarnings();
+	session_start();
+	wfRestoreWarnings();
 }
 
 /**
@@ -2317,6 +2318,17 @@ function wfWikiID() {
 	}
 }
 
+/**
+ * Split a wiki ID into DB name and table prefix 
+ */
+function wfSplitWikiID( $wiki ) {
+	$bits = explode( '-', $wiki, 2 );
+	if ( count( $bits ) < 2 ) {
+		$bits[] = '';
+	}
+	return $bits;
+}
+
 /*
  * Get a Database object
  * @param integer $db Index of the connection to get. May be DB_MASTER for the 
@@ -2326,11 +2338,29 @@ function wfWikiID() {
  * @param mixed $groups Query groups. An array of group names that this query 
  *              belongs to. May contain a single string if the query is only 
  *              in one group.
+ *
+ * @param string $wiki The wiki ID, or false for the current wiki
  */
-function &wfGetDB( $db = DB_LAST, $groups = array() ) {
-	global $wgLoadBalancer;
-	$ret = $wgLoadBalancer->getConnection( $db, true, $groups );
-	return $ret;
+function &wfGetDB( $db = DB_LAST, $groups = array(), $wiki = false ) {
+	return wfGetLB( $wiki )->getConnection( $db, $groups, $wiki );
+}
+
+/**
+ * Get a load balancer object.
+ *
+ * @param array $groups List of query groups
+ * @param string $wiki Wiki ID, or false for the current wiki
+ * @return LoadBalancer
+ */
+function wfGetLB( $wiki = false ) {
+	return wfGetLBFactory()->getMainLB( $wiki );
+}
+
+/**
+ * Get the load balancer factory object
+ */
+function &wfGetLBFactory() {
+	return LBFactory::singleton();
 }
 
 /**
@@ -2431,5 +2461,43 @@ function wfMaxlagError( $host, $lag, $maxLag ) {
 		echo "Waiting for $host: $lag seconds lagged\n";
 	} else {
 		echo "Waiting for a database server: $lag seconds lagged\n";
+	}
+}
+
+/**
+ * Throws an E_USER_NOTICE saying that $function is deprecated
+ * @param string $function
+ * @return null
+ */
+function wfDeprecated( $function ) {
+	trigger_error( "Use of $function is deprecated", E_USER_NOTICE );
+}
+
+/**
+ * Sleep until the worst slave's replication lag is less than or equal to
+ * $maxLag, in seconds.  Use this when updating very large numbers of rows, as
+ * in maintenance scripts, to avoid causing too much lag.  Of course, this is
+ * a no-op if there are no slaves.
+ *
+ * Every time the function has to wait for a slave, it will print a message to
+ * that effect (and then sleep for a little while), so it's probably not best
+ * to use this outside maintenance scripts in its present form.
+ *
+ * @param int $maxLag
+ * @return null
+ */
+function wfWaitForSlaves( $maxLag ) {
+	if( $maxLag ) {
+		$lb = wfGetLB();
+		list( $host, $lag ) = $lb->getMaxLag();
+		while( $lag > $maxLag ) {
+			$name = @gethostbyaddr( $host );
+			if( $name !== false ) {
+				$host = $name;
+			}
+			print "Waiting for $host (lagged $lag seconds)...\n";
+			sleep($maxLag);
+			list( $host, $lag ) = $lb->getMaxLag();
+		}
 	}
 }

@@ -9,6 +9,7 @@
  * @author Malafaya
  * @author Lakaoso
  * @author לערי ריינהארט
+ * @author Siebrand
  */
 
 $namespaceNames = array(
@@ -103,7 +104,7 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dec',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'      => 'Kategorii',
 'pagecategories'  => '{{PLURAL:$1|Kategorio|Kategorii}}',
 'category_header' => 'Artikli en kategorio "$1"',
@@ -383,7 +384,6 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'nohistory'       => 'Ne esas redakto-historio por ica pagino.',
 'revnotfound'     => 'Versiono ne trovita',
 'revnotfoundtext' => "L' anciena versiono di la pagino, quan vu demandis, ne povis trovesar. <br>Voluntez kontrolar la URL quan vu uzis por acesar a ca pagino.",
-'loadhist'        => 'Kargante la versionaro dil pagino',
 'currentrev'      => 'Nuna versiono',
 'revisionasof'    => 'Versiono ye $1',
 'cur'             => 'nuna',
@@ -513,17 +513,11 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'uploadedimage'     => 'adkargita "[[$1]]"',
 'uploaddisabled'    => 'Pardonez, la adkargo esas desaktiva.',
 
-# Image list
-'imagelist'                 => 'Listo di imaji',
-'imagelisttext'             => "Infre esas listo di '''$1''' {{PLURAL:$1|imajo|imaji}} rangizita $2.",
-'getimagelist'              => 'obtenante la listo di imaji',
-'ilsubmit'                  => 'Serchar',
-'showlast'                  => 'Montrar la lasta $1 imaji klasifikata $2.',
-'byname'                    => 'per nomo',
-'bydate'                    => 'per dato',
-'bysize'                    => 'per grandeso',
-'imgdelete'                 => 'efac',
-'imgdesc'                   => 'desk',
+# Special:Imagelist
+'imgdesc'   => 'desk',
+'imagelist' => 'Listo di imaji',
+
+# Image description page
 'filehist'                  => 'Historio dil arkivo',
 'filehist-help'             => 'Klikez sur la dato/horo por vidar arkivo quale ol aparis ye ta tempo.',
 'filehist-datetime'         => 'Dato/Horo',
@@ -556,7 +550,6 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'unusedimages'     => 'Neuzata imaji',
 'popularpages'     => 'Populara pagini',
 'wantedpages'      => 'Dezirata pagini',
-'allpages'         => 'Omna pagini',
 'shortpages'       => 'Kurta pagini',
 'longpages'        => 'Longa pagini',
 'deadendpages'     => 'Pagini sen ekiraji',
@@ -565,24 +558,22 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'spheading'        => 'Speciala pagini por omni',
 'newpages'         => 'Nova pagini',
 'ancientpages'     => 'Maxim anciena artikli',
-'intl'             => 'Interlinguala ligili',
 'move'             => 'Movez',
 'movethispage'     => 'Rinomizar ica pagino',
-'unusedimagestext' => '<p>Voluntez egardez ke altra ret-situi quale altra enciklopedii povus ligar a imajo per direta URL, e do ol povus esar enlistizita hike malgre olu havas aktiva uzo.</p>',
+'unusedimagestext' => 'Voluntez egardez ke altra ret-situi quale altra enciklopedii povus ligar a imajo per direta URL, e do ol povus esar enlistizita hike malgre olu havas aktiva uzo.',
 'notargettitle'    => 'Ne esas vakua pagino',
 'notargettext'     => 'Vu ne definis en qua pagino agar ica funciono.',
 
 # Book sources
 'booksources' => 'Fonti di libri',
 
-'alphaindexline' => '$1 til $2',
-'version'        => 'Versiono',
-
 # Special:Log
 'specialloguserlabel'  => 'Uzero:',
 'speciallogtitlelabel' => 'Titulo:',
 
 # Special:Allpages
+'allpages'          => 'Omna pagini',
+'alphaindexline'    => '$1 til $2',
 'nextpage'          => 'Sequanta pagino ($1)',
 'allarticles'       => 'Omna pagini',
 'allinnamespace'    => 'Omna pagini (nomaro $1)',
@@ -656,8 +647,8 @@ Lasta edito esis da [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'        => 'La rezumo di la edito esis: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'         => 'Rekuperita redakti da [[Special:Contributions/$2|$2]] ([[User talk:$2|Debato]]); rekuperita la lasta redakto di [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'unprotectedarticle' => 'desprotektita [[$1]]',
-'protectsub'         => '(Protektante "$1")',
-'confirmprotect'     => 'Konfirmar protekto',
+'protect-title'      => 'Protektante "$1"',
+'protect-legend'     => 'Konfirmar protekto',
 'protectcomment'     => 'Motivo por la protekto',
 
 # Restrictions (nouns)
@@ -681,8 +672,6 @@ Lasta edito esis da [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'mycontris'     => 'Mea adportado',
 'contribsub2'   => 'Pro $1 ($2)',
 'nocontribs'    => 'Ne trovesis chanji qui fitez ita kriterii.',
-'ucnote'        => 'Sube esas la lasta <b>$1</b> chanji da ca uzanto dum la lasta <b>$2</b> dii.',
-'uclinks'       => 'Vidar la lasta $1 chanji; vidar la lasta $2 dii.',
 'uctop'         => ' (lasta modifiko)',
 
 # What links here
@@ -733,14 +722,19 @@ Memorez [[Special:Unlockdb|efacar la blokuso]] kande vua mantenado finos.',
 'unlockdbsuccesstext' => 'La datumaro desblokusesis.',
 
 # Move page
-'move-page-legend'         => 'Rinomizar pagino',
+'move-page-legend' => 'Rinomizar pagino',
 'movepagetext'     => "Uzante ica formularo onu povas rinomizar pagino, movante olua omna versionaro ad la nova titulo.
-La antea titulo konvertesos a ridirektilo a la nova titulo. La ligili a la antea titulo dil pagino ne chanjesos. Voluntez certigar ke ne esas duopla o ruptota ridirektili. Vu responsas ke la ligili duros direktante a la pagino korespondanta.
+La antea titulo konvertesos a ridirektilo a la nova titulo.
+La ligili a la antea titulo dil pagino ne chanjesos.
+Voluntez certigar ke ne esas duopla o ruptota ridirektili.
+Vu responsas ke la ligili duros direktante a la pagino korespondanta.
 
-Memorez ke la pagino '''ne''' rinomizesos se ja existus pagino kun la nova titulo, eceptuante ke la pagino esas vakua o ridirektilo sen versionaro. Ico signifikas ke vu povos rinomizar pagino a olua originala titulo se eroras skribante la nova titulo, ma ne povos riskribar existanta pagino.
+Memorez ke la pagino '''ne''' rinomizesos se ja existus pagino kun la nova titulo, eceptuante ke la pagino esas vakua o ridirektilo sen versionaro.
+Ico signifikas ke vu povos rinomizar pagino a olua originala titulo se eroras skribante la nova titulo, ma ne povos riskribar existanta pagino.
 
-<b>EGARDEZ!</b>
-Ica povas esar drastika chanjo e ne-esperinda por populara pagino. Voluntez certigar ke vu komprenas la konsequi qui eventos ante durar adavane.",
+'''EGARDEZ!'''
+Ica povas esar drastika chanjo e ne-esperinda por populara pagino.
+Voluntez certigar ke vu komprenas la konsequi qui eventos ante durar adavane.",
 'movearticle'      => 'Movar pagino',
 'movenologin'      => 'Sesiono ne iniciata',
 'movenologintext'  => 'Vu mustas esar registragita uzanto ed [[Special:Userlogin|enirir]] por rinomizar pagino.',
@@ -820,9 +814,12 @@ Voluntez selektar altra nomo.',
 'siteusers'     => 'Uzanti che {{SITENAME}} $1',
 
 # Spam protection
-'spamprotectiontitle'  => 'Filtrilo kontre spamo',
-'subcategorycount'     => 'Esas {{PLURAL:$1|1 subkategorio|$1 subkategorii}} en ica kategorio.',
-'categoryarticlecount' => 'Esas {{PLURAL:$1|una pagino|$1 pagini}} en ica kategorio.',
+'spamprotectiontitle' => 'Filtrilo kontre spamo',
+
+# Special:Newimages
+'imagelisttext' => "Infre esas listo di '''$1''' {{PLURAL:$1|imajo|imaji}} rangizita $2.",
+'ilsubmit'      => 'Serchar',
+'bydate'        => 'per dato',
 
 # EXIF tags
 'exif-exposuretime-format' => '$1 sek ($2)',
@@ -860,5 +857,8 @@ Voluntez selektar altra nomo.',
 
 # Watchlist editor
 'watchlistedit-raw-titles' => 'Tituli:',
+
+# Special:Version
+'version' => 'Versiono', # Not used as normal message but as header for the special page itself
 
 );

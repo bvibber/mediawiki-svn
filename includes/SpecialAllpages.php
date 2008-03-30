@@ -60,32 +60,34 @@ class SpecialAllpages {
  * @param string $from Article name we are starting listing at.
  */
 function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
-	global $wgScript, $wgContLang;
+	global $wgScript;
 	$t = SpecialPage::getTitleFor( $this->name );
-	$align = $wgContLang->isRtl() ? 'left' : 'right';
 
 	$out  = Xml::openElement( 'div', array( 'class' => 'namespaceoptions' ) );
 	$out .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 	$out .= Xml::hidden( 'title', $t->getPrefixedText() );
+	$out .= Xml::openElement( 'fieldset' );
+	$out .= Xml::element( 'legend', null, wfMsg( 'allpages' ) );
 	$out .= Xml::openElement( 'table', array( 'id' => 'nsselect', 'class' => 'allpages' ) );
 	$out .= "<tr>
-			<td align='$align'>" .
+			<td class='mw-label'>" .
 				Xml::label( wfMsg( $this->nsfromMsg ), 'nsfrom' ) .
 			"</td>
-			<td>" .
-				Xml::input( 'from', 20, htmlspecialchars ( $from ), array( 'id' => 'nsfrom' ) ) .
+			<td class='mw-input'>" .
+				Xml::input( 'from', 20, $from, array( 'id' => 'nsfrom' ) ) .
 			"</td>
 		</tr>
 		<tr>
-			<td align='$align'>" .
+			<td class='mw-label'>" .
 				Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
 			"</td>
-			<td>" .
-				Xml::namespaceSelector( $namespace, null ) .
+			<td class='mw-input'>" .
+				Xml::namespaceSelector( $namespace, null ) . ' ' .
 				Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 			"</td>
 			</tr>";
 	$out .= Xml::closeElement( 'table' );
+	$out .= Xml::closeElement( 'fieldset' );
 	$out .= Xml::closeElement( 'form' );
 	$out .= Xml::closeElement( 'div' );
 	return $out;
@@ -130,7 +132,7 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 			$res = $dbr->select(
 				'page', /* FROM */
 				'page_title', /* WHAT */
-				$where + array( $chunk),
+				$where + array($chunk),
 				__METHOD__,
 				array ('LIMIT' => 2, 'OFFSET' => $this->maxPerPage - 1, 'ORDER BY' => 'page_title') );
 
@@ -174,7 +176,7 @@ function showToplevel ( $namespace = NS_MAIN, $including = false ) {
 		$out .= $this->showline ( $inpoint, $outpoint, $namespace, false );
 	}
 	$out .= '</table>';
-	$nsForm = $this->namespaceForm ( $namespace, '', false );
+	$nsForm = $this->namespaceForm( $namespace, '', false );
 
 	# Is there more?
 	if ( $including ) {
@@ -319,7 +321,7 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 			}
 		}
 
-		$nsForm = $this->namespaceForm ( $namespace, $from );
+		$nsForm = $this->namespaceForm( $namespace, $from );
 		$out2 = '<table style="background: inherit;" width="100%" cellpadding="0" cellspacing="0" border="0">';
 		$out2 .= '<tr valign="top"><td>' . $nsForm;
 		$out2 .= '</td><td align="' . $align . '" style="font-size: smaller; margin-bottom: 1em;">' .

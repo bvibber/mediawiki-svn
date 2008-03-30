@@ -64,7 +64,6 @@ $messages = array(
 'watchthisupload' => 'De Seitn beobachtn',
 
 # Miscellaneous special pages
-'allpages'     => 'Alle Seitn',
 'newpages'     => 'Neie Seitn',
 'ancientpages' => 'Scho länger nimma bearbate Artikel',
 'move'         => 'vaschiam',
@@ -73,6 +72,7 @@ $messages = array(
 'all-logs-page' => 'Alle Logbiacha',
 
 # Special:Allpages
+'allpages'          => 'Alle Seitn',
 'allarticles'       => 'Alle Seitn',
 'allinnamespace'    => 'Alle Seitn (Namensraum: $1)',
 'allnotinnamespace' => 'Alle Seitn (net im $1 Namensraum)',
@@ -94,10 +94,10 @@ $messages = array(
 'whatlinkshere' => 'Links auf de Seitn',
 
 # Move page
-'move-page-legend'        => 'Seitn vaschiam',
-'move-watch'      => 'De Seitn beobachten',
-'1movedto2'       => 'håt [[$1]] nåch [[$2]] verschom',
-'1movedto2_redir' => 'håt [[$1]] nåch [[$2]] verschom und dabei a Weiterleitung überschriem',
+'move-page-legend' => 'Seitn vaschiam',
+'move-watch'       => 'De Seitn beobachten',
+'1movedto2'        => 'håt [[$1]] nåch [[$2]] verschom',
+'1movedto2_redir'  => 'håt [[$1]] nåch [[$2]] verschom und dabei a Weiterleitung überschriem',
 
 # Namespace 8 related
 'allmessagesname'     => 'Nam',

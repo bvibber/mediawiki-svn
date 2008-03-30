@@ -5,11 +5,102 @@
  *
  * @author Asiri wiki
  * @author Nike
+ * @author Chandana
+ * @author Siebrand
  */
 
+$namespaceNames = array(
+	NS_MEDIA          => 'මාධ්‍යය',
+	NS_SPECIAL        => 'විශේෂ',
+	NS_TALK           => 'සාකච්ඡාව',
+	NS_USER           => 'පරිශීලක',
+	NS_USER_TALK      => 'පරිශීලක_සාකච්ඡාව',
+	# NS_PROJECT set by \$wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_සාකච්ඡාව',
+	NS_IMAGE          => 'රූපය',
+	NS_IMAGE_TALK     => 'රූපය_සාකච්ඡාව',
+	NS_MEDIAWIKI      => 'විකිමාධ්‍ය',
+	NS_MEDIAWIKI_TALK => 'විකිමාධ්‍ය_සාකච්ඡාව',
+	NS_TEMPLATE       => 'සැකිල්ල',
+	NS_TEMPLATE_TALK  => 'සැකිල_සාකච්ඡාව',
+	NS_HELP           => 'උදවු',
+	NS_HELP_TALK      => 'උදව_සාකච්ඡාව',
+	NS_CATEGORY       => 'ප්‍රවර්ගය',
+	NS_CATEGORY_TALK  => 'ප්‍රවර්ග_සාකච්ඡාව',
+);
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'ආපසු_හරවා_යවනවා' ),
+	'BrokenRedirects'           => array( 'වැරදුනු_යොමුකිරිමක්' ),
+	'Userlogin'                 => array( 'ඇතුලුවිම' ),
+	'Userlogout'                => array( 'ඉවත්විම' ),
+	'CreateAccount'             => array( 'සාමාජිකත්වය_ලැබිමට' ),
+	'Preferences'               => array( 'මනාපය' ),
+	'Watchlist'                 => array( 'මුරකරනවා' ),
+	'Recentchanges'             => array( 'නව_වෙනස්විමි' ),
+	'Upload'                    => array( 'ගොනුවක්_ඇතූලත්_කිරිම' ),
+	'Imagelist'                 => array( 'පින්තූර_ලැයිස්තුව' ),
+	'Newimages'                 => array( 'අලුත්_පින්තූර' ),
+	'Listusers'                 => array( 'සාමාජික_ලැයිස්තුව' ),
+	'Statistics'                => array( 'සංඛ්‍යා_ලේඛනය' ),
+	'Randompage'                => array( 'අහඹු_ලෙස', 'අහඹු_පිටුව' ),
+	'Lonelypages'               => array( 'හුදකලා_පිටුව' ),
+	'Uncategorizedpages'        => array( 'වර්ගනොකල_පිටුව' ),
+	'Uncategorizedcategories'   => array( 'වර්ගනොකල_කොටස්' ),
+	'Uncategorizedimages'       => array( 'වර්ගනොකල_පින්තූර' ),
+	'Uncategorizedtemplates'    => array( 'වර්ගනොකල_අචිචු' ),
+	'Unusedcategories'          => array( 'හාවිතා_නොවන_කොටස්' ),
+	'Unusedimages'              => array( 'හාවිතා_නොවන_පින්තූර' ),
+	'Wantedpages'               => array( 'අවශය_පිටු' ),
+	'Wantedcategories'          => array( 'අවශය_කොටස' ),
+	'Mostlinked'                => array( 'ජනපිය_සම්බන්ධකය' ),
+	'Mostlinkedcategories'      => array( 'වැඬ්පුර_භව්තාවු_කොටස' ),
+	'Mostlinkedtemplates'       => array( 'වැඬ්පුර_භව්තාවු_අච්චු' ),
+	'Mostcategories'            => array( 'ජනපිය_කොටස' ),
+	'Mostimages'                => array( 'අතිශය_පින්තූර' ),
+	'Mostrevisions'             => array( 'අතිශය_පරිශෝධනය' ),
+	'Shortpages'                => array( 'කෙට_පිටුව' ),
+	'Longpages'                 => array( 'දිග_පිටුව' ),
+	'Newpages'                  => array( 'නව_පිටුව' ),
+	'Ancientpages'              => array( 'අතීත_පිටුව' ),
+	'Deadendpages'              => array( 'අඩු_කරන_පිටුව' ),
+	'Protectedpages'            => array( 'ආරක්ෂිත_පිටුව' ),
+	'Protectedtitles'           => array( 'ආරක්ෂිත__හිමිකම' ),
+	'Allpages'                  => array( 'සියල_පිටුව' ),
+	'Prefixindex'               => array( 'උපසර්ගය' ),
+	'Specialpages'              => array( 'විශෝෂ_පිටුව' ),
+	'Contributions'             => array( 'දායකත්වය' ),
+	'Emailuser'                 => array( 'පරිශීලකට_ඉ-ලිපිය_යැවිම' ),
+	'Confirmemail'              => array( 'ඉ-ලිපිය_තහවුරු_කරනවා' ),
+	'Recentchangeslinked'       => array( 'නුතන_වෙනස්_වීම' ),
+	'Movepage'                  => array( 'පිටුව_ගෙන_යනවා' ),
+	'Blockme'                   => array( 'මමම_අවහිර_කරනවා' ),
+	'Booksources'               => array( 'පුස්තක' ),
+	'Categories'                => array( 'වර්ගකරිම' ),
+	'Export'                    => array( 'අපනයනය' ),
+	'Version'                   => array( 'අනුවාදය' ),
+	'Allmessages'               => array( 'සියලු_පණිිවිඩ' ),
+	'Log'                       => array( 'කඳ' ),
+	'Import'                    => array( 'ආයාත' ),
+	'Randomredirect'            => array( 'අහඹු_ලෙස_යොමුකිරිම' ),
+	'Mypage'                    => array( 'මගේ__පිටුව' ),
+	'Mytalk'                    => array( 'මගේ__කතාබහ' ),
+	'Mycontributions'           => array( 'මගේ_දායකත්වය' ),
+	'Popularpages'              => array( 'ජනප්‍රිය_පිටුව' ),
+	'Search'                    => array( 'සෙවුම' ),
+	'Resetpass'                 => array( 'මුර_පදය_යළි_පිහිටුවනවා' ),
+	'Withoutinterwiki'          => array( 'පටන_අන්තර්_විකි' ),
+	'MergeHistory'              => array( 'ඉතිහාසය_සංයුක්ත_කිරිම' ),
+	'Filepath'                  => array( 'ගොනු_පථය' ),
+);
 
 $messages = array(
+# User preference toggles
+'tog-underline'       => 'පුරුක යටින් ඉරි අඳිනවා',
+'tog-highlightbroken' => ' කැඩුණු සන්ධිය ආකෘතිය <a href="" වර්ගය="අලුත">මේ සමාන ලෙස </a> (විකල්ප: මේ සමාන ලෙස<a href="" වර්ගය="අභ්‍යනතර">?</a>).',
+'tog-justify'         => 'ඡේදය පේළි ගසන්න',
+'tog-hideminor'       => 'අලුත් වෙනසහි සුළු සංස්කරණය හැංගිම',
+
 'skinpreview' => '(පෙරදසුන)',
 
 # Dates
@@ -107,8 +198,8 @@ $messages = array(
 <!--{{SITENAME}}About-->',
 'currentevents' => 'කාලීන සිදුවීම්',
 'edithelp'      => 'සංස්කරණ උදව්',
-'edithelppage'  => 'උදව්:සංස්කරණ',
-'helppage'      => 'උදව්:පටුන',
+'edithelppage'  => 'Help:සංස්කරණ',
+'helppage'      => 'Help:පටුන',
 'mainpage'      => 'මුල් පිටුව',
 'portal'        => 'ප්‍රජා ද්වාරය',
 'portal-url'    => 'Project:ප්‍රජා ද්වාරය',
@@ -207,8 +298,7 @@ $messages = array(
 # Upload
 'upload' => 'ගොනුවක් උඩුගත කිරීම',
 
-# Image list
-'ilsubmit'          => 'සොයන්න',
+# Image description page
 'filehist-datetime' => 'දිනය/කාලය',
 
 # Random page
@@ -255,6 +345,9 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-ca-delete'  => 'මේ පිටුව මකන්න',
 'tooltip-n-mainpage' => 'මුල් පිටුව‍ට යන්න',
+
+# Special:Newimages
+'ilsubmit' => 'සොයන්න',
 
 # EXIF tags
 'exif-imagewidth'   => 'පළල',

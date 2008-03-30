@@ -166,7 +166,7 @@ class UploadForm {
 		$url =  trim( $url );
 		if( stripos($url, 'http://') !== 0 && stripos($url, 'ftp://') !== 0 ) {
 			# Only HTTP or FTP URLs
-			$wgOut->errorPage( 'upload-proto-error', 'upload-proto-error-text' );
+			$wgOut->showErrorPage( 'upload-proto-error', 'upload-proto-error-text' );
 			return true;
 		}
 
@@ -174,7 +174,7 @@ class UploadForm {
 		$this->mCurlDestHandle = @fopen( $this->mTempPath, "wb" );
 		if( $this->mCurlDestHandle === false ) {
 			# Could not open temporary file to write in
-			$wgOut->errorPage( 'upload-file-error', 'upload-file-error-text');
+			$wgOut->showErrorPage( 'upload-file-error', 'upload-file-error-text');
 			return true;
 		}
 
@@ -195,9 +195,9 @@ class UploadForm {
 		if( $error ) {
 			unlink( $dest );
 			if( wfEmptyMsg( "upload-curl-error$errornum", wfMsg("upload-curl-error$errornum") ) )
-				$wgOut->errorPage( 'upload-misc-error', 'upload-misc-error-text' );
+				$wgOut->showErrorPage( 'upload-misc-error', 'upload-misc-error-text' );
 			else
-				$wgOut->errorPage( "upload-curl-error$errornum", "upload-curl-error$errornum-text" );
+				$wgOut->showErrorPage( "upload-curl-error$errornum", "upload-curl-error$errornum-text" );
 		}
 
 		return $error;
@@ -280,7 +280,7 @@ class UploadForm {
 	 	$details = null;
 	 	$value = null;
 	 	$value = $this->internalProcessUpload( $details );
-		
+
 	 	switch($value) {
 			case self::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
@@ -376,16 +376,16 @@ class UploadForm {
 			return self::BEFORE_PROCESSING;
 		}
 
-		/* Check for PHP error if any, requires php 4.2 or newer */
-		if( $this->mCurlError == 1/*UPLOAD_ERR_INI_SIZE*/ ) {
-			return self::LARGE_FILE_SERVER;
-		}
-
 		/**
 		 * If there was no filename or a zero size given, give up quick.
 		 */
 		if( trim( $this->mSrcName ) == '' || empty( $this->mFileSize ) ) {
 			return self::EMPTY_FILE;
+		}
+
+		/* Check for curl error */
+		if( $this->mCurlError ) {
+			return self::BEFORE_PROCESSING;
 		}
 
 		# Chop off any directories in the given filename
@@ -832,8 +832,8 @@ class UploadForm {
 	 */
 	function uploadError( $error ) {
 		global $wgOut;
-		$wgOut->addHTML( "<h2>" . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" );
-		$wgOut->addHTML( "<span class='error'>{$error}</span>\n" );
+		$wgOut->addHTML( Xml::element( 'h2', null, wfMsg( 'uploadwarning' ) . "\n" ) );
+		$wgOut->addHTML( Xml::tags( 'span', array( 'class' => 'error' ), $error ) );
 	}
 
 	/**
@@ -845,7 +845,7 @@ class UploadForm {
 	 * @access private
 	 */
 	function uploadWarning( $warning ) {
-		global $wgOut, $wgContLang;
+		global $wgOut;
 		global $wgUseCopyrightUpload;
 
 		$this->mSessionKey = $this->stashSession();
@@ -854,53 +854,32 @@ class UploadForm {
 			return;
 		}
 
-		$wgOut->addHTML( "<h2>" . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" );
-		$wgOut->addHTML( "<ul class='warning'>{$warning}</ul><br />\n" );
+		$wgOut->addHTML( Xml::element( 'h2', null, wfMsg( 'uploadwarning' ) ) . "\n" );
+		$wgOut->addHTML( Xml::tags( 'ul', array( 'class' => 'warning' ), $warning ) . "\n" );
 
-		$save = wfMsgHtml( 'savefile' );
-		$reupload = wfMsgHtml( 'reupload' );
-		$iw = wfMsgWikiHtml( 'ignorewarning' );
-		$reup = wfMsgWikiHtml( 'reuploaddesc' );
 		$titleObj = SpecialPage::getTitleFor( 'Upload' );
-		$action = $titleObj->escapeLocalURL( 'action=submit' );
-		$align1 = $wgContLang->isRTL() ? 'left' : 'right';
-		$align2 = $wgContLang->isRTL() ? 'right' : 'left';
 
-		if ( $wgUseCopyrightUpload )
-		{
-			$copyright =  "
-	<input type='hidden' name='wpUploadCopyStatus' value=\"" . htmlspecialchars( $this->mCopyrightStatus ) . "\" />
-	<input type='hidden' name='wpUploadSource' value=\"" . htmlspecialchars( $this->mCopyrightSource ) . "\" />
-	";
+		if ( $wgUseCopyrightUpload ) {
+			$copyright = Xml::hidden( 'wpUploadCopyStatus', $this->mCopyrightStatus ) . "\n" .
+					Xml::hidden( 'wpUploadSource', $this->mCopyrightSource ) . "\n";
 		} else {
-			$copyright = "";
+			$copyright = '';
 		}
 
-		$wgOut->addHTML( "
-	<form id='uploadwarning' method='post' enctype='multipart/form-data' action='$action'>
-		<input type='hidden' name='wpIgnoreWarning' value='1' />
-		<input type='hidden' name='wpSessionKey' value=\"" . htmlspecialchars( $this->mSessionKey ) . "\" />
-		<input type='hidden' name='wpUploadDescription' value=\"" . htmlspecialchars( $this->mComment ) . "\" />
-		<input type='hidden' name='wpLicense' value=\"" . htmlspecialchars( $this->mLicense ) . "\" />
-		<input type='hidden' name='wpDestFile' value=\"" . htmlspecialchars( $this->mDesiredDestName ) . "\" />
-		<input type='hidden' name='wpWatchthis' value=\"" . htmlspecialchars( intval( $this->mWatchthis ) ) . "\" />
-	{$copyright}
-	<table border='0'>
-		<tr>
-			<tr>
-				<td align='$align1'>
-					<input tabindex='2' type='submit' name='wpUpload' value=\"$save\" />
-				</td>
-				<td align='$align2'>$iw</td>
-			</tr>
-			<tr>
-				<td align='$align1'>
-					<input tabindex='2' type='submit' name='wpReUpload' value=\"{$reupload}\" />
-				</td>
-				<td align='$align2'>$reup</td>
-			</tr>
-		</tr>
-	</table></form>\n" );
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalURL( 'action=submit' ), 
+				 'enctype' => 'multipart/form-data', 'id' => 'uploadwarning' ) ) . "\n" .
+			Xml::hidden( 'wpIgnoreWarning', '1' ) . "\n" .
+			Xml::hidden( 'wpSessionKey', $this->mSessionKey ) . "\n" .
+			Xml::hidden( 'wpUploadDescription', $this->mComment ) . "\n" .
+			Xml::hidden( 'wpLicense', $this->mLicense ) . "\n" .
+			Xml::hidden( 'wpDestFile', $this->mDesiredDestName ) . "\n" .
+			Xml::hidden( 'wpWatchthis', $this->mWatchthis ) . "\n" .
+			"{$copyright}<br />" .
+			Xml::submitButton( wfMsg( 'ignorewarning' ), array ( 'name' => 'wpUpload', 'id' => 'wpUpload', 'checked' => 'checked' ) ) . ' ' .
+			Xml::submitButton( wfMsg( 'reuploaddesc' ), array ( 'name' => 'wpReUpload', 'id' => 'wpReUpload' ) ) .
+			Xml::closeElement( 'form' ) . "\n"
+		);
 	}
 
 	/**
@@ -911,7 +890,7 @@ class UploadForm {
 	 * @access private
 	 */
 	function mainUploadForm( $msg='' ) {
-		global $wgOut, $wgUser, $wgContLang;
+		global $wgOut, $wgUser, $wgLang, $wgMaxUploadSize;
 		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
 		global $wgRequest, $wgAllowCopyUploads;
 		global $wgStylePath, $wgStyleVersion;
@@ -921,10 +900,12 @@ class UploadForm {
 
 		$adc = wfBoolToStr( $useAjaxDestCheck );
 		$alp = wfBoolToStr( $useAjaxLicensePreview );
+		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );
 
 		$wgOut->addScript( "<script type=\"text/javascript\">
 wgAjaxUploadDestCheck = {$adc};
 wgAjaxLicensePreview = {$alp};
+wgUploadAutoFill = {$autofill};
 </script>
 <script type=\"text/javascript\" src=\"{$wgStylePath}/common/upload.js?{$wgStyleVersion}\"></script>
 		" );
@@ -977,27 +958,47 @@ wgAjaxLicensePreview = {$alp};
 		# MIME type here, it's incomprehensible to most people and too long.
 		global $wgCheckFileExtensions, $wgStrictFileExtensions,
 		$wgFileExtensions, $wgFileBlacklist;
+
+		$allowedExtensions = '';
 		if( $wgCheckFileExtensions ) {
 			$delim = wfMsgExt( 'comma-separator', array( 'escapenoentities' ) );
 			if( $wgStrictFileExtensions ) {
 				# Everything not permitted is banned
-				$wgOut->addHTML(
+				$extensionsList =
 					'<div id="mw-upload-permitted">' .
 					wfMsgWikiHtml( 'upload-permitted', implode( $wgFileExtensions, $delim ) ) .
-					"</div>\n"
-				);
+					"</div>\n";
 			} else {
 				# We have to list both preferred and prohibited
-				$wgOut->addHTML(
+				$extensionsList =
 					'<div id="mw-upload-preferred">' .
 					wfMsgWikiHtml( 'upload-preferred', implode( $wgFileExtensions, $delim ) ) .
 					"</div>\n" .
 					'<div id="mw-upload-prohibited">' .
 					wfMsgWikiHtml( 'upload-prohibited', implode( $wgFileBlacklist, $delim ) ) .
-					"</div>\n"
-				);
+					"</div>\n";
 			}
 		}
+
+		# Get the maximum file size from php.ini as $wgMaxUploadSize works for uploads from URL via CURL only
+		# See http://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize for possible values of upload_max_filesize
+		$val = trim( ini_get( 'upload_max_filesize' ) );
+		$last = strtoupper( ( substr( $val, -1 ) ) );
+		switch( $last ) {
+			case 'G':
+				$val2 = substr( $val, 0, -1 ) * 1024 * 1024 * 1024;
+				break;
+			case 'M':
+				$val2 = substr( $val, 0, -1 ) * 1024 * 1024;
+				break;
+			case 'K':
+				$val2 = substr( $val, 0, -1 ) * 1024;
+				break;
+			default:
+				$val2 = $val;
+		}
+		$val2 = $wgAllowCopyUploads ? min( $wgMaxUploadSize, $val2 ) : $val2;
+		$maxUploadSize = wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), $wgLang->formatSize( $val2 ) );
 
 		$sourcefilename = wfMsgExt( 'sourcefilename', 'escapenoentities' );
 		$destfilename = wfMsgExt( 'destfilename', 'escapenoentities' );
@@ -1012,7 +1013,6 @@ wgAjaxLicensePreview = {$alp};
 
 
 		$titleObj = SpecialPage::getTitleFor( 'Upload' );
-		$action = $titleObj->escapeLocalURL();
 
 		$encDestName = htmlspecialchars( $this->mDesiredDestName );
 
@@ -1031,16 +1031,16 @@ wgAjaxLicensePreview = {$alp};
 				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
 				   "onfocus='" . 
 				     "toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\");" .
-				     "toggle_element_check(\"wpSourceTypeFile\",\"wpSourceTypeURL\")'" .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFile\")' ") . "size='60' />" .
+				     "toggle_element_check(\"wpSourceTypeFile\",\"wpSourceTypeURL\")' " .
+				     "onchange='fillDestFilename(\"wpUploadFile\")' size='60' />" .
 				wfMsgHTML( 'upload_source_file' ) . "<br/>" .
 				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='web' " .
 				  "onchange='toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\")' />" .
 				"<input tabindex='1' type='text' name='wpUploadFileURL' id='wpUploadFileURL' " .
 				  "onfocus='" .
 				    "toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\");" .
-				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")'" .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFileURL\")' ") . "size='60' disabled='disabled' />" .
+				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")' " .
+				    "onchange='fillDestFilename(\"wpUploadFileURL\")' size='60' disabled='disabled' />" .
 				wfMsgHtml( 'upload_source_url' ) ;
 		} else {
 			$filename_form =
@@ -1058,57 +1058,74 @@ wgAjaxLicensePreview = {$alp};
 		}
 
 		$encComment = htmlspecialchars( $this->mComment );
-		$align1 = $wgContLang->isRTL() ? 'left' : 'right';
-		$align2 = $wgContLang->isRTL() ? 'right' : 'left';
 
-		$wgOut->addHTML( <<<EOT
-	<form id='upload' method='post' enctype='multipart/form-data' action="$action">
-		<table border='0'>
-		<tr>
-			{$this->uploadFormTextTop}
-			<td align='$align1' valign='top'><label for='wpUploadFile'>{$sourcefilename}</label></td>
-			<td align='$align2'>
-				{$filename_form}
-			</td>
-		</tr>
-		<tr>
-			<td align='$align1'><label for='wpDestFile'>{$destfilename}</label></td>
-			<td align='$align2'>
-				<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60' 
-					value="$encDestName" $destOnkeyup />
-			</td>
-		</tr>
-		<tr>
-			<td align='$align1'><label for='wpUploadDescription'>{$summary}</label></td>
-			<td align='$align2'>
-				<textarea tabindex='3' name='wpUploadDescription' id='wpUploadDescription' rows='6' 
-					cols='{$cols}'{$width}>$encComment</textarea>
+		$wgOut->addHTML(
+			 Xml::openElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalURL(), 
+				 'enctype' => 'multipart/form-data', 'id' => 'mw-upload-form' ) ) .
+			 Xml::openElement( 'fieldset' ) .
+			 Xml::element( 'legend', null, wfMsg( 'upload' ) ) .
+			 Xml::openElement( 'table', array( 'border' => '0', 'id' => 'mw-upload-table' ) ) .
+			 "<tr>
+			 	{$this->uploadFormTextTop}
+				<td class='mw-label'>
+					<label for='wpUploadFile'>{$sourcefilename}</label>
+				</td>
+				<td class='mw-input'>
+					{$filename_form}
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					{$maxUploadSize}
+					{$extensionsList}
+				</td>
+			</tr>
+			<tr>
+				<td class='mw-label'>
+					<label for='wpDestFile'>{$destfilename}</label>
+				</td>
+				<td class='mw-input'>
+					<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60' 
+						value=\"{$encDestName}\" onchange='toggleFilenameFiller()' $destOnkeyup />
+				</td>
+			</tr>
+			<tr>
+				<td class='mw-label'>
+					<label for='wpUploadDescription'>{$summary}</label>
+				</td>
+				<td class='mw-input'>
+					<textarea tabindex='3' name='wpUploadDescription' id='wpUploadDescription' rows='6' 
+						cols='{$cols}'{$width}>$encComment</textarea>
 					{$this->uploadFormTextAfterSummary}
-			</td>
-		</tr>
-		<tr>
-EOT
+				</td>
+			</tr>
+			<tr>"
 		);
 
 		if ( $licenseshtml != '' ) {
 			global $wgStylePath;
 			$wgOut->addHTML( "
-			<td align='$align1'><label for='wpLicense'>$license</label></td>
-			<td align='$align2'>
-				<select name='wpLicense' id='wpLicense' tabindex='4'
-					onchange='licenseSelectorCheck()'>
-					<option value=''>$nolicense</option>
-					$licenseshtml
-				</select>
-			</td>
-			</tr>
-			<tr>" );
+					<td class='mw-label'>
+						<label for='wpLicense'>$license</label>
+					</td>
+					<td class='mw-input'>
+						<select name='wpLicense' id='wpLicense' tabindex='4'
+							onchange='licenseSelectorCheck()'>
+							<option value=''>$nolicense</option>
+							$licenseshtml
+						</select>
+					</td>
+				</tr>
+				<tr>"
+			);
 			if( $useAjaxLicensePreview ) {
 				$wgOut->addHtml( "
-					<td></td>
-					<td id=\"mw-license-preview\"></td>
-				</tr>
-				<tr>" );
+						<td></td>
+						<td id=\"mw-license-preview\"></td>
+					</tr>
+					<tr>"
+				);
 			}
 		}
 
@@ -1119,48 +1136,59 @@ EOT
 			$uploadsource = htmlspecialchars( $this->mCopyrightSource );
 
 			$wgOut->addHTML( "
-				<td align='$align1' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus</label></td>
-					<td><input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' 
-					  value=\"$copystatus\" size='60' /></td>
-			</tr>
-			<tr>
-				<td align='$align1'><label for='wpUploadCopyStatus'>$filesource</label></td>
-					<td><input tabindex='6' type='text' name='wpUploadSource' id='wpUploadCopyStatus' 
-					  value=\"$uploadsource\" size='60' /></td>
-			</tr>
-			<tr>
-		");
+					<td class='mw-label' style='white-space: nowrap;'>
+						<label for='wpUploadCopyStatus'>$filestatus</label></td>
+					<td class='mw-input'>
+						<input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' 
+							value=\"$copystatus\" size='60' />
+					</td>
+				</tr>
+				<tr>
+					<td class='mw-label'>
+						<label for='wpUploadCopyStatus'>$filesource</label>
+					</td>
+					<td class='mw-input'>
+						<input tabindex='6' type='text' name='wpUploadSource' id='wpUploadCopyStatus' 
+							value=\"$uploadsource\" size='60' />
+					</td>
+				</tr>
+				<tr>"
+			);
 		}
 
 		$wgOut->addHtml( "
-		<td></td>
-		<td>
-			<input tabindex='7' type='checkbox' name='wpWatchthis' id='wpWatchthis' $watchChecked value='true' />
-			<label for='wpWatchthis'>" . wfMsgHtml( 'watchthisupload' ) . "</label>
-			<input tabindex='8' type='checkbox' name='wpIgnoreWarning' id='wpIgnoreWarning' value='true' $warningChecked/>
-			<label for='wpIgnoreWarning'>" . wfMsgHtml( 'ignorewarnings' ) . "</label>
-		</td>
-	</tr>
-	$warningRow
-	<tr>
-		<td></td>
-		<td align='$align2'><input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\"" . $wgUser->getSkin()->tooltipAndAccesskey( 'upload' ) . " /></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td align='$align2'>
-		" );
+				<td></td>
+				<td>
+					<input tabindex='7' type='checkbox' name='wpWatchthis' id='wpWatchthis' $watchChecked value='true' />
+					<label for='wpWatchthis'>" . wfMsgHtml( 'watchthisupload' ) . "</label>
+					<input tabindex='8' type='checkbox' name='wpIgnoreWarning' id='wpIgnoreWarning' value='true' $warningChecked/>
+					<label for='wpIgnoreWarning'>" . wfMsgHtml( 'ignorewarnings' ) . "</label>
+				</td>
+			</tr>
+			$warningRow
+			<tr>
+				<td></td>
+					<td class='mw-input'>
+						<input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\"" . $wgUser->getSkin()->tooltipAndAccesskey( 'upload' ) . " />
+					</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class='mw-input'>"
+		);
 		$wgOut->addWikiText( wfMsgForContent( 'edittools' ) );
 		$wgOut->addHTML( "
-		</td>
-	</tr>
-
-	</table>
-	<input type='hidden' name='wpDestFileWarningAck' id='wpDestFileWarningAck' value=''/>
-	</form>" );
+				</td>
+			</tr>" .
+			Xml::closeElement( 'table' ) .
+			Xml::hidden( 'wpDestFileWarningAck', '', array( 'id' => 'wpDestFileWarningAck' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' )
+		);
 		$uploadfooter = wfMsgNoTrans( 'uploadfooter' );
 		if( $uploadfooter != '-' && !wfEmptyMsg( 'uploadfooter', $uploadfooter ) ){
-			$wgOut->addWikiText( $uploadfooter );
+			$wgOut->addWikiText( Xml::tags( 'div',
+				array( 'id' => 'mw-upload-footer-message' ), $uploadfooter ) );
 		}
 	}
 

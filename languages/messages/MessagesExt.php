@@ -7,9 +7,9 @@
  * @author Nike
  * @author Siebrand
  * @author SPQRobin
+ * @author M.M.S.
+ * @author SieBot
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -111,13 +111,15 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Dic',
 
-# Bits of text used by many pages
-'categories'            => 'Categorias',
-'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
-'category_header'       => 'Artículus ena categoria "$1"',
-'subcategories'         => 'Sucategorias',
-'category-media-header' => 'Meya ena categoria "$1"',
-'category-empty'        => "''Atualmenti nu desistin ni artículus ni archivus murtimeya nesta categoria.''",
+# Categories related messages
+'categories'             => 'Categorias',
+'categoriespagetext'     => 'Las siguientis categorias contienin artículus u archivus murtimeya.',
+'pagecategories'         => '{{PLURAL:$1|Categoria|Categorias}}',
+'category_header'        => 'Artículus ena categoria "$1"',
+'subcategories'          => 'Sucategorias',
+'category-media-header'  => 'Meya ena categoria "$1"',
+'category-empty'         => "''Atualmenti nu desistin ni artículus ni archivus murtimeya nesta categoria.''",
+'listingcontinuesabbrev' => 'acont.',
 
 'mainpagetext'      => "<big>'''MeyaGüiqui s'á istalau satihatoriamenti.'''</big>",
 'mainpagedocfooter' => "Consurta la [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] pa sabel mas al tentu el huncionamientu el software güiqui.
@@ -216,7 +218,7 @@ $messages = array(
 'disclaimerpage'    => 'Project:Arrayu heneral de responsabiliá',
 'edithelp'          => "Ayua d'eición",
 'edithelppage'      => 'Help:Eitandu',
-'faqpage'           => 'Proyeutu:FAQ',
+'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:Continius',
 'mainpage'          => 'Páhina prencipal',
 'policy-url'        => 'Project:Pulítica',
@@ -225,19 +227,19 @@ $messages = array(
 'privacy'           => 'Pulítica',
 'privacypage'       => 'Project:Pulítica e privaciá',
 'sitesupport'       => 'Donacionis',
-'sitesupport-url'   => 'Proyeutu:Apoyu al proyeutu',
+'sitesupport-url'   => 'Project:Apoyu al proyeutu',
 
 'badaccess'        => 'Marru colos tus premisus',
 'badaccess-group0' => 'Nu se te premiti hazel esa ación.',
-'badaccess-group1' => 'Solu los usuárius el alabán $1 puein hazel esa ación.',
-'badaccess-group2' => 'Solu los usuárius los alabanis $1 puein hazel esa ación.',
-'badaccess-groups' => 'Solu los usuárius los alabanis $1 puein hazel esa ación.',
+'badaccess-group1' => 'Solu los usuárius del grupu $1 puein hazel esa ación.',
+'badaccess-group2' => 'Solu los usuárius los grupus $1 puein hazel esa ación.',
+'badaccess-groups' => 'Solu los usuárius los grupus $1 puein hazel esa ación.',
 
 'versionrequired'     => 'Es mestel tenel la velsión $1 de MeyaGüiqui',
 'versionrequiredtext' => 'Es mestel tenel la velsión $1 de MeyaGüiqui pa usal esta páhina. Vai a la  [[Special:Version|páhina e velsión]].',
 
 'ok'                      => 'Dalcuerdu',
-'retrievedfrom'           => 'Recuperau e "$1"',
+'retrievedfrom'           => 'Arrecuperau endi "$1"',
 'youhavenewmessages'      => 'Tiinis $1 ($2).',
 'newmessageslink'         => 'nuevus mensahis',
 'newmessagesdifflink'     => 'úrtimu chambu',
@@ -344,7 +346,8 @@ $2',
 'namespaceprotected'   => "Nu tiinis premisu pa eital páhinas nel \"espaciu e nombris\" '''\$1'''.",
 'customcssjsprotected' => "Nu tiinis premisu pa eital esta páhina ebiu a que contieni la configuración presonal d'otru usuáriu.",
 'ns-specialprotected'  => 'Nu se puein eital las páhinas el {{ns:special}} "espaciu e nombris".',
-'titleprotected'       => 'Esti entítulu á siu atarugau pol [[User:$1|$1]]. La razón es la siguienti: <i>$2</i>.',
+'titleprotected'       => "Esti entítulu á siu atarugau pol [[User:$1|$1]].
+La razón es la siguienti: ''$2''.",
 
 # Login and logout pages
 'logouttitle'                => 'Salil',
@@ -402,9 +405,10 @@ Ya está creá la tu cuenta. Recuerda chambal la tus preferéncias al tentu la {
 'passwordtooshort'           => "La tu consínia nu es valia, u es mu chiquenina. Ebi tenel al menus $1 carateris i sel deferenti el tu nombri d'usuáriu.",
 'mailmypassword'             => 'Envialmi pol correu la consínia',
 'passwordremindertitle'      => 'Alcuerda-consínias de {{SITENAME}}',
-'passwordremindertext'       => 'Alguien (siguramenti tú), dendi la direción IP $1)
-mos á solicitau que t\'enviemus una nueva consínia pa {{SITENAME}} ($4).
+'passwordremindertext'       => 'Alguien (siguramenti tú, dendi la direción IP $1)
+mos á solicitau que l\'enviemus una nueva consínia pa {{SITENAME}} ($4).
 La nueva consínia el usuáriu "$2" es "$3".
+Eberias entral ena tu cuenta i chambal la consínia lo antis posibri.
 
 Si nu ás solicitau tú el chambu, u ya t\'as alcuerdau la tu consínia i nu quieis chambala, pueis acontinal gastandu la tú consínia antigua.',
 'noemail'                    => 'Nu ai emburacau dengún e-mail el usuáriu "$1".',
@@ -506,8 +510,7 @@ Pueis ponelti en contatu con $1 u otru
 
 La ID el tu tarugu es $5. Pol favol, escrebi esta ID enas tus solicituis.",
 'blockednoreason'           => "nu s'an dau razonis",
-'blockedoriginalsource'     => "El cóigu huenti e '''$1''' se 
-muestra embahu:",
+'blockedoriginalsource'     => "El cóigu huenti e '''$1''' se muestra embahu:",
 'blockededitsource'         => "Embahu se muestra el testu '''las tus eicionis''' en '''$1''':",
 'whitelistedittitle'        => 'Es mestel rustrilsi pa eital',
 'whitelistedittext'         => 'Tiinis que $1 pa eital páhinas.',
@@ -554,11 +557,11 @@ Esti pobrema se dá angunas vezis si estás gastandu un proxy anónimu basau en 
 'editingsection'            => 'Eitandu $1 (seción)',
 'editingcomment'            => 'Eitandu $1 (comentáriu)',
 'editconflict'              => "Conflitu d'eición: $1",
-'explainconflict'           => 'Alguien á hechu chambus nesta páhina dendi que prencipiasti a eitala.
+'explainconflict'           => "Alguien á hechu chambus nesta páhina dendi que prencipiasti a eitala.
 El cuairu e testu superiol endica el testu que desisti atualmenti ena páhina.
 Los tus chambus se muestran nel cuairu e testu inferiol.
 Pa emburacal los tus chambus, ebis tresladalus al cuairu superiol.
-<b>Solu</b> s\'emburacará el testu el cuairu superiol cuandu pursis "Emburacal páhina".<br />',
+'''Solu''' s'emburacará el testu el cuairu superiol cuandu pursis \"Emburacal páhina\".",
 'yourtext'                  => 'El tu testu',
 'storedversion'             => 'Velsión emburacá',
 'nonunicodebrowser'         => "<strong>Atención: El tu escrucaol nu cumpri la norma Unicode. S'á ativau un sistema d'eición alternativu que te premitirá eital artículus con seguráncia, inque los carateris que nu seyan ASCII apaicirán nel cuairu d'eición cumu cóigus esadecimalis.</strong>",
@@ -570,11 +573,8 @@ Si la emburacas, tolos chambus hechus dendi esa revisión se perderán.</strong>
 Pol otra parti, al pursal el botón "emburacal" mos estás asigurandu que lo escrebiu á siu hechu pol tí, u lo as copiau dun domiñu púbricu u recursu semilal.
 <strong>Nu emburaquis labutus con Copyright sin premisu!</strong>',
 'copyrightwarning2'         => 'Tolas contribucionis a {{SITENAME}} puein sel eitás, chambás, u esborrás pol otrus colabutaoris. Si nu estás dalcuerdu, altonci nu emburaquis ná.<br />
-Pol otra parti, al pursal el botón "emburacal" mos estás asigurandu que lo escrebiu á siu hechu pol tí, u copiau dun domiñu púbricu u recursu semilal (lei $1 pa mas detallis).<br />
-{|style="width:100%;background:none;margin:-.8em 0 -.7em 0"
-|style="font-size:95%;text-align:center;white-space:nowrap;color:#000"|
-<strong>Cudia: Nu emburaquis labutus con Copyright sin premisu!</strong>
-|}',
+Pol otra parti, al pursal el botón "emburacal" mos estás asigurandu que lo escrebiu á siu hechu pol tí, u copiau dun domiñu púbricu u recursu semilal (lei $1 pa mas detallis).
+<strong>Cudia: Nu emburaquis labutus con Copyright sin premisu!</strong>',
 'longpagewarning'           => '<strong>Avisu: Esta páhina tieni un grandol de $1 kilobytes; angunus escrucaoris puein tenel pobremas al eital páhinas con mas de 32KB. Pol favol, consieri la posibiliá e devidil esta páhina en secionis mas chiqueninas.</strong>',
 'longpageerror'             => "<strong>Marru: El testu qu'as empuntau ocupa $1 kbs (siendu polo tantu mayol de $2 kbs). Nu es posibri emburacal.</strong>",
 'readonlywarning'           => '<strong>Avisu: La basi e datus s´alcuentra afechá pol mantenimientu nesti momentu,
@@ -607,7 +607,7 @@ Velaquí el rustrihu d'esborrau:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nu es posibri crial la cuenta',
-'cantcreateaccount-text' => "La criación de cuentas pol parti e la IP (<b>$1</b>) á siu pará pol el usuáriu [[User:$3|$3]].
+'cantcreateaccount-text' => "La criación de cuentas pol parti e la IP ('''$1''') á siu pará pol el usuáriu [[User:$3|$3]].
 
 La razón dá pol $3 es ''$2''",
 
@@ -616,7 +616,6 @@ La razón dá pol $3 es ''$2''",
 'nohistory'           => 'Nu ai dengún estorial d´eicionis pa esta páhina.',
 'revnotfound'         => 'Revisión nu alcuentrá',
 'revnotfoundtext'     => 'La revisión antigua qu´estás landeandu nu se puei alcuentral. Pol favol, compreba la URL que gastasti pa dil a esta páhina.',
-'loadhist'            => 'Cargandu estorial la páhina',
 'currentrev'          => 'Revisión atual',
 'revisionasof'        => 'Revisión de $1',
 'revision-info'       => 'Revisión de $1 hecha pol $2',
@@ -626,7 +625,6 @@ La razón dá pol $3 es ''$2''",
 'cur'                 => 'atu',
 'next'                => 'siguienti',
 'last'                => 'úrtimu',
-'orig'                => 'orih',
 'page_first'          => 'primel',
 'page_last'           => 'úrtimu',
 'histlegend'          => 'Leyenda: (ati) = deferéncias cola velsión atual, (anter) = deferéncias cola velsión anteriol, C = eición chiquenina',
@@ -691,9 +689,7 @@ El restu e çahorilis desti güiqui sí tendrán premisu pa visoreal el continiu
 # History merging
 'mergehistory'                     => 'Uñifical el estorial las páhinas',
 'mergehistory-header'              => "Esta páhina te premiti mestural las revisionis el estorial duna páhina huenti nuna nueva páhina.
-Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
-
-'''Al menus la revisión atual de la páhina huenti ebi queal igual.'''",
+Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'mergehistory-box'                 => 'Uñifical las revisionis las dos páhinas:',
 'mergehistory-from'                => 'Páhina e cóigu huenti:',
 'mergehistory-into'                => 'Páhina e destinu:',
@@ -701,7 +697,7 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 'mergehistory-merge'               => "Las siguientis revisionis de [[:$1]] puein mesturalsi en [[:$2]]. GAsta la coluna e botonis d'ocionis pa mestural las revisionis creás en i hata la ora especificá. Dati cuenta e que gastandu los atihus de navegación s'esborran las fechas aseñalás nesta coluna.",
 'mergehistory-go'                  => 'Muestral eicionis uñificabris',
 'mergehistory-submit'              => 'Uñifical revisionis',
-'mergehistory-empty'               => 'Nu es posibri uñifical denguna revisión',
+'mergehistory-empty'               => 'Nu es posibri uñifical denguna revisión.',
 'mergehistory-success'             => "S'án uñificau $3 revisionis de [[:$1]] en [[:$2]].",
 'mergehistory-fail'                => 'Nu es posibri uñifical los estorialis. Pol favol, compreba la páhina i los parámetrus de tiempu.',
 'mergehistory-no-source'           => 'La páhina huenti $1 nu desisti.',
@@ -737,6 +733,7 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 'prevn'                 => '$1 anterioris',
 'nextn'                 => '$1 siguientis',
 'viewprevnext'          => 'Vel ($1) ($2) ($3).',
+'searchall'             => 'tó',
 'showingresults'        => "Embahu se {{PLURAL:$1|muestra '''1''' resurtau qu´enceta|muestran hata '''$1''' resurtaus qu´encetan}} pol #'''$2'''.",
 'showingresultsnum'     => "Embahu se {{PLURAL:$3|muestra '''1''' resurtau qu'enceta|muestran'''$3''' resurtaus qu'encetan}} pol #'''$2'''.",
 'nonefound'             => "'''Nota''': Los landeus sin resurtaus suelis proucilsi al landeal parabras cumu \"la\" u \"de\", que nu están nel éndici, u pol escrebil mas duna parabra pa landeal (solu apaicirán nel resurtau las páhinas que contengan tolas parabras landeás).",
@@ -806,29 +803,30 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 'files'                    => 'Archivus',
 
 # User rights
-'userrights-lookup-user'           => 'Alministral alabanis d´usuárius',
+'userrights'                       => "Alministral premisus d'usuárius", # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'           => "Alministral grupus d'usuárius",
 'userrights-user-editname'         => 'Escrebi un nombri d´usuáriu:',
-'editusergroup'                    => 'Eital alabanis d´usuárius',
+'editusergroup'                    => "Eital grupus d'usuárius",
 'editinguser'                      => "Chambandu los derechus del usuáriu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Eital alabanis d´usuárius',
-'saveusergroups'                   => 'Emburacal alabanis d´usuárius',
+'userrights-editusergroup'         => "Eital grupus d'usuárius",
+'saveusergroups'                   => "Emburacal grupus d'usuárius",
 'userrights-groupsmember'          => 'Miembru e:',
-'userrights-groupsremovable'       => 'Alabanis esborrabris:',
-'userrights-groupsavailable'       => 'Alabanis disponibris:',
-'userrights-groupshelp'            => "Aseñala los alabanis a los que quieis añiil al usuáriu (u de los que quieis esborralu). Los alabanis nu aseñalaus nu chambarán. Pueis ehal d'aseñalal un alabán pursandu la tecra CTRL.",
+'userrights-groupsremovable'       => 'Grupus esborrabris:',
+'userrights-groupsavailable'       => 'Grupus disponibris:',
+'userrights-groupshelp'            => "Aseñala los grupus a los que quieis añiil al usuáriu (u de los que quieis esborralu). Los grupus nu aseñalaus nu chambarán. Pueis ehal d'aseñalal un grupu pursandu la tecra CTRL.",
 'userrights-reason'                => 'Razón el chambu:',
-'userrights-available-none'        => 'Nu pueis chambal los miembrus el alabán.',
-'userrights-available-add'         => 'Pueis añiil usuárius a {{PLURAL:$2|esti alabán|estus alabanis}}: $1.',
-'userrights-available-remove'      => 'Pueis esborral usuárius {{PLURAL:$2|del siguienti alabán|de los siguientis alabanis}}: $1.',
-'userrights-available-add-self'    => 'Pueis uñilti tu mesmu {{PLURAL:$2|al siguienti alabán|a los siguientis alabanis}}: $1.',
-'userrights-available-remove-self' => 'Pueis esborralti {{PLURAL:$2|del siguienti alabán|de los siguientis alabanis}}: $1.',
+'userrights-available-none'        => 'Nu pueis chambal los miembrus del grupu.',
+'userrights-available-add'         => 'Pueis añiil usuárius a {{PLURAL:$2|esti grupu|estus grupus}}: $1.',
+'userrights-available-remove'      => 'Pueis esborral usuárius {{PLURAL:$2|del siguienti grupu|de los siguientis grupus}}: $1.',
+'userrights-available-add-self'    => 'Pueis uñilti tu mesmu {{PLURAL:$2|al siguienti grupu|a los siguientis grupus}}: $1.',
+'userrights-available-remove-self' => 'Pueis esborralti {{PLURAL:$2|del siguienti grupu|de los siguientis grupus}}: $1.',
 'userrights-no-interwiki'          => 'Nu tienis premisu pa eital los derechus los usuárius en otras güiquis.',
 'userrights-nodatabase'            => 'La basi e datus $1 nu desisti, u nu es local.',
 'userrights-nologin'               => "Ebis [[Special:Userlogin|rustrilti]] con una cuenta d'alministraol pa puel asinal derechus a los usuárius.",
 'userrights-notallowed'            => "Nu tienis los permisus nesezárius p'asinal derechus a los usuárius.",
 
 # Groups
-'group'               => 'Alabán:',
+'group'               => 'Grupu:',
 'group-autoconfirmed' => 'Usuárius autuconfirmaus',
 'group-sysop'         => 'Çahorilis',
 'group-bureaucrat'    => 'Alministraoris',
@@ -846,7 +844,7 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 # User rights log
 'rightslog'      => 'Rustrihu e derechus de los usuárius',
 'rightslogtext'  => 'Esti es un rustrihu e chambus enus derechus los usuárius.',
-'rightslogentry' => 'chambó el alabán al que preteneci $1: de $2 a $3',
+'rightslogentry' => 'chambó el grupu al que preteneci $1: de $2 a $3',
 'rightsnone'     => '(dengunu)',
 
 # Recent changes
@@ -855,9 +853,10 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 'recentchangestext'                 => 'Sigui los úrtimus chambus d´esti güiqui nesta páhina.',
 'recentchanges-feed-description'    => 'Sigui los úrtimus chambus nel güiqui nesti feed.',
 'rcnote'                            => "Embahu se {{PLURAL:$1|muestra '''1''' chambu|muestran los úrtimus '''$1''' chambus}} {{PLURAL:$2|dendi ayel|enus úrtimus '''$2''' dias}}, atualizaus a las $3.",
-'rcnotefrom'                        => 'Embahu se muestran los chambus hechus dendi el <b>$2</b> (hata el <b>$1</b>).',
+'rcnotefrom'                        => "Embahu se muestran los chambus hechus dendi el '''$2''' (hata el '''$1''').",
 'rclistfrom'                        => 'Muestral los chambus hechus dendi el $1',
 'rcshowhideminor'                   => '$1 eicionis chiqueninas',
+'rcshowhidebots'                    => '$1 bots',
 'rcshowhideliu'                     => '$1 usuárius rustrius',
 'rcshowhideanons'                   => '$1 usuárius anónimus',
 'rcshowhidepatr'                    => '$1 eicionis patrullás',
@@ -868,6 +867,8 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.
 'hide'                              => 'Açonchal',
 'show'                              => 'Muestral',
 'minoreditletter'                   => 'c',
+'newpageletter'                     => 'N',
+'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|usuáriu está|usuárius están}} vehilandu]',
 'rc_categories'                     => 'Arrayal a categorias (separás pol "|")',
 'rc_categories_any'                 => 'Cualisquiá',
@@ -907,7 +908,7 @@ P'añiil la imahin nuna páhina, gasta el atihu el hormuláriu
 'filestatus'                  => 'Estau el Copyright:',
 'filesource'                  => 'Coigu huenti:',
 'uploadedfiles'               => 'Archivus empuntaus',
-'ignorewarning'               => 'Inoral el avisihu i emburacal el achivu.',
+'ignorewarning'               => 'Inoral el avisihu i emburacal el achivu',
 'ignorewarnings'              => 'Inoral tolos avisihus',
 'minlength1'                  => 'Los nombris d´archivus ebin tenel al menus una letra.',
 'illegalfilename'             => 'El nombri "$1" tiini carateris que nu están premitius enus entítulus de páhinas. Pol favol, ponli otru nombri al archivu i preba a empuntalu e nuevu.',
@@ -965,23 +966,23 @@ Velaquí el antigu rustrihu d´esborrau pa esti archivu:",
 'upload-curl-error28'      => "Tiempu d'empuntu esceiu",
 'upload-curl-error28-text' => "La páhina está tardandu abondu en contestal. Pol favol, compreba qu'el sirviol hunciona, aspera un pocu i güervi a ententalu. Quiciás prefieras ententalu n'otru momentu con menus carga.",
 
-'license'            => 'Licéncia',
+'license'            => 'Licéncia:',
 'nolicense'          => 'Dengunu selecionau',
 'license-nopreview'  => '(Nu se puei previsoreal)',
 'upload_source_url'  => ' (una URL vália i acesibri)',
 'upload_source_file' => ' (un archivu nel tu ordinaol)',
 
-# Image list
-'imagelist'                 => 'Lista d´archivus',
-'imagelisttext'             => "Embahu ai una lista con '''$1''' {{PLURAL:$1|archivu|archivus}} ordenaus $2.",
-'getimagelist'              => 'precurandu la lista d´imahis',
-'ilsubmit'                  => 'Landeal',
-'showlast'                  => 'Muestral úrtimus $1 archivus crasificaus $2.',
-'byname'                    => 'pol nombri',
-'bydate'                    => 'pol fecha',
-'bysize'                    => 'pol grandol',
-'imgdelete'                 => 'esb',
-'imgfile'                   => 'archivu',
+# Special:Imagelist
+'imagelist_search_for'  => 'Landeal pol nombri la imahin:',
+'imgfile'               => 'archivu',
+'imagelist'             => 'Lista d´archivus',
+'imagelist_date'        => 'Fecha',
+'imagelist_name'        => 'Nombri',
+'imagelist_user'        => 'Usuáriu',
+'imagelist_size'        => 'Grandol',
+'imagelist_description' => 'Descrición',
+
+# Image description page
 'filehist'                  => 'Estorial el archivu',
 'filehist-help'             => 'Pursa nuna fecha/ora pa vel cumu era el archivu nesi momentu.',
 'filehist-deleteall'        => 'esborral tós',
@@ -1002,12 +1003,6 @@ Velaquí el antigu rustrihu d´esborrau pa esti archivu:",
 'noimage'                   => 'Nu desisti dengún archivu llamau asina, pueis $1.',
 'noimage-linktext'          => 'empuntalu',
 'uploadnewversion-linktext' => 'Empuntal una nueva velsión d´esti archivu',
-'imagelist_date'            => 'Fecha',
-'imagelist_name'            => 'Nombri',
-'imagelist_user'            => 'Usuáriu',
-'imagelist_size'            => 'Grandol',
-'imagelist_description'     => 'Descrición',
-'imagelist_search_for'      => 'Landeal pol nombri la imahin:',
 
 # File reversion
 'filerevert'                => 'Revertil $1',
@@ -1099,6 +1094,7 @@ El longol de la [http://meta.wikimedia.org/wiki/Help:Job_queue cola e tareas] es
 'fewestrevisions' => 'Páhinas con menus revisionis',
 
 # Miscellaneous special pages
+'nbytes'                  => '$1 {{PLURAL:$1|byte|bytes}}',
 'ncategories'             => '$1 {{PLURAL:$1|categoria|categorias}}',
 'nlinks'                  => '$1 {{PLURAL:$1|atihu|atihus}}',
 'nmembers'                => '$1 {{PLURAL:$1|miembru|miembrus}}',
@@ -1122,7 +1118,6 @@ El longol de la [http://meta.wikimedia.org/wiki/Help:Job_queue cola e tareas] es
 'mostcategories'          => 'Páhinas con mas categorias',
 'mostimages'              => 'Imahin mas atihás',
 'mostrevisions'           => 'Artículus con mas revisionis',
-'allpages'                => 'Tolas páhinas',
 'prefixindex'             => 'Páhinas pol prefihu',
 'shortpages'              => 'Páhinas cortas',
 'longpages'               => 'Páhinas largas',
@@ -1143,8 +1138,7 @@ El longol de la [http://meta.wikimedia.org/wiki/Help:Job_queue cola e tareas] es
 'ancientpages'            => 'Páhinas mas antiguas',
 'move'                    => 'Movel',
 'movethispage'            => 'Movel esta páhina',
-'unusedimagestext'        => "<p>Pol favol, fíhati en qu'otras páhinas web puein atihal a una
-imahin con una URL direta, polo qu'están listás aquí, inque tengan un usu ativu.</p>",
+'unusedimagestext'        => "Pol favol, fíhati en qu'otras páhinas web puein atihal a una imahin con una URL direta, polo qu'están listás aquí, inque tengan un usu ativu.",
 'unusedcategoriestext'    => "Las siguientis categorias desistin, inque nu s'alcuentra denguna páhina/categoria en ellas.",
 'notargettitle'           => 'Dengún ohetivu',
 'notargettext'            => 'Nu as especificau una páhina ohetivu u un usuáriu sobri los que hazel esta hunción.',
@@ -1157,14 +1151,6 @@ imahin con una URL direta, polo qu'están listás aquí, inque tengan un usu ati
 'booksources-go'            => 'Dil',
 'booksources-text'          => "Embahu se muestra una lista d'atihus a páhinas que vendin librus usaus i nuevus, i ondi pueis alcuentral enhormación al tentu los librus qu'estás landeandu:",
 
-'categoriespagetext' => 'Las siguientis categorias contienin artículus u archivus murtimeya.',
-'data'               => 'Datus',
-'userrights'         => "Alministral premisus d'usuárius",
-'groups'             => 'Alabanis d´usuárius',
-'isbn'               => 'ISBN:',
-'alphaindexline'     => '$1 a $2',
-'version'            => 'Velsión',
-
 # Special:Log
 'specialloguserlabel'  => 'Usuáriu:',
 'speciallogtitlelabel' => 'Entítulu:',
@@ -1176,6 +1162,8 @@ imahin con una URL direta, polo qu'están listás aquí, inque tengan un usu ati
 'log-title-wildcard'   => 'Landeal entítulus qu´esmiencin con esti testu',
 
 # Special:Allpages
+'allpages'          => 'Tolas páhinas',
+'alphaindexline'    => '$1 a $2',
 'nextpage'          => 'Siguienti páhina ($1)',
 'prevpage'          => 'Páhina anteriol ($1)',
 'allpagesfrom'      => 'Muestral páhinas qu´encetin pol:',
@@ -1254,7 +1242,7 @@ Si quieis ehal de vehilal la páhina, pursa sobri \"Ehal de vehilal\".",
 'watchlist-show-minor' => 'Muestral eicionis chiqueninas',
 'watchlist-hide-minor' => 'Açonchal eicionis chiqueninas',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Vehilandu...',
 'unwatching' => 'Abaldonandu la vehiláncia en...',
 
@@ -1269,7 +1257,7 @@ Si quieis ehal de vehilal la páhina, pursa sobri \"Ehal de vehilal\".",
 'enotif_lastdiff'              => 'Vai pa $1 pa visoreal esti chambu.',
 'enotif_anon_editor'           => 'usuáriu anónimu $1',
 'enotif_body'                  => 'Estimau $WATCHINGUSERNAME,
-	
+
 
 S\'á $CHANGEDORCREATED el artículu $PAGETITLE (de {{SITENAME}}) el $PAGEEDITDATE, siendu el su autol  $PAGEEDITOR. Consurta la $PAGETITLE_URL pa leyel la nueva velsión.
 
@@ -1340,8 +1328,8 @@ tu escrucaol pa cargal otra vezi la páhina i güervi a ententalu.",
 'protectedarticle'            => '"[[$1]]" protehiu',
 'modifiedarticleprotection'   => 'chambau el nivel de proteción a "[[$1]]"',
 'unprotectedarticle'          => '"[[$1]]" esprotehiu',
-'protectsub'                  => '(Estableciendu nivel de proteción pa "$1")',
-'confirmprotect'              => 'Confirmal proteción',
+'protect-title'               => 'Estableciendu nivel de proteción pa "$1"',
+'protect-legend'              => 'Confirmal proteción',
 'protectcomment'              => 'Comentáriu:',
 'protectexpiry'               => 'Acabiha:',
 'protect_expiry_invalid'      => 'La fecha e cauciá nu es correta.',
@@ -1425,8 +1413,6 @@ $1',
 'mycontris'     => 'Los mis endirguis',
 'contribsub2'   => 'Pa $1 ($2)',
 'nocontribs'    => "Nu s'alcuentrun chambus con esus criterius.",
-'ucnote'        => 'Embahu están los úrtimus <b>$1</b> chambus d´esti usuáriu enus úrtimus <b>$2</b> dias.',
-'uclinks'       => 'Vel los úrtimus $1 chambus; vel los úrtimus $2 dias.',
 'uctop'         => '(úrtimu chambu)',
 'month'         => 'Mes:',
 'year'          => 'Añu:',
@@ -1437,8 +1423,6 @@ $1',
 'sp-contributions-search'      => 'Landeal pol endirguis',
 'sp-contributions-username'    => 'IP u nombri d´usuáriu:',
 'sp-contributions-submit'      => 'Landeal',
-
-'sp-newimages-showfrom' => 'Muestral nuevas imahin qu´esmiencin pol $1',
 
 # What links here
 'whatlinkshere'       => "Lo qu'atiha aquí",
@@ -1567,7 +1551,7 @@ Eris responsabri e que los atihus acontinin llevandu andi se suponi que tienin q
 
 Pol otra parti, la páhina '''nu''' se moverá si ya desisti una páhina con el nombri nuevu, a nu sel que seya una páhina vacia u una redireción. Estu senifica que pueis gorvel a poneli el nombri antigu en chascu e marru, peru nu t'es posibri sobriescrebil una páhina ya desistenti.
 
-<b>Avisu!</b>
+'''Avisu!'''
 En páhinas popularis, esta ación puei arrepresental un chambu emportanti;
 pol favol, asigurati e qu'entiendis las consecuéncias enantis d'acontinal.",
 'movepagetalktext'        => "La caraba asociá se moverá con el artículu, '''a nus sel que:'''
@@ -1584,8 +1568,7 @@ En dambus los dos chascus, si lo deseas, tendrás que movel u mestural la páhin
 'movepagebtn'             => 'Movel páhina',
 'pagemovedsub'            => 'S´á moviu la páhina',
 'movepage-moved'          => '<big>\'\'\'"$1" agora s´alcuentra en "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'           => 'Ya desisti una páhina con esi nombri u 
-nu se premiti el nombri qu´as lihiu.
+'articleexists'           => 'Ya desisti una páhina con esi nombri u nu se premiti el nombri qu´as lihiu.
 Pol favol, escrebi otru entítulu.',
 'cantmove-titleprotected' => "Nu t'es posibri movel la páhina ebiu a qu'el nuevu entítulu s'alcuentra atarugau",
 'talkexists'              => "'''S'á moviu la páhina, peru la su caraba nu puei sel movia polque ya desisti otra caraba con el nuevu entítulu. Pol favol, mesturalas manualmenti.'''",
@@ -1750,16 +1733,12 @@ Tolas acionis d'emporteau transwiki se rustrin nel [[Special:Log/import|rustrihu
 'nocredits'        => 'Nu ai créitus disponibris pa esta páhina.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Filtru e proteción anti-Spam',
-'spamprotectiontext'     => "La páhina qu'ententas emburacal á siu atarugá pol el filtru anti-spam. Estu puei sel ebiu a angún atihu a una páhina esterna.",
-'spamprotectionmatch'    => 'El testu siguiente á ativau el muestru filtru antispam: $1',
-'subcategorycount'       => 'Ai {{PLURAL:$1|una sucategoria|$1 sucategorias}} nesta categoria.',
-'categoryarticlecount'   => 'Ai {{PLURAL:$1|un artículu|$1 artículus}} nesta categoria.',
-'category-media-count'   => 'Ai {{PLURAL:$1|un archivu|$1 archivus}} nesta categoria.',
-'listingcontinuesabbrev' => 'acont.',
-'spambot_username'       => 'MediaWiki limpia-spam',
-'spam_reverting'         => 'Revirtiendu a la úrtima velsión que nu contenga atihus a $1',
-'spam_blanking'          => 'Tolas revisionis tienin atihus a $1, branqueandu',
+'spamprotectiontitle' => 'Filtru e proteción anti-Spam',
+'spamprotectiontext'  => "La páhina qu'ententas emburacal á siu atarugá pol el filtru anti-spam. Estu puei sel ebiu a angún atihu a una páhina esterna.",
+'spamprotectionmatch' => 'El testu siguiente á ativau el muestru filtru antispam: $1',
+'spambot_username'    => 'MediaWiki limpia-spam',
+'spam_reverting'      => 'Revirtiendu a la úrtima velsión que nu contenga atihus a $1',
+'spam_blanking'       => 'Tolas revisionis tienin atihus a $1, branqueandu',
 
 # Info page
 'infosubtitle'   => 'Enhormación pala páhina',
@@ -1819,8 +1798,12 @@ $1',
 'show-big-image-thumb' => '<small>Grandol al previsoreal: $1 × $2 pixelis</small>',
 
 # Special:Newimages
-'newimages' => 'Correol d´archivus nuevus',
-'noimages'  => 'Nu ai ná pa vel.',
+'newimages'             => 'Correol d´archivus nuevus',
+'imagelisttext'         => "Embahu ai una lista con '''$1''' {{PLURAL:$1|archivu|archivus}} ordenaus $2.",
+'noimages'              => 'Nu ai ná pa vel.',
+'ilsubmit'              => 'Landeal',
+'bydate'                => 'pol fecha',
+'sp-newimages-showfrom' => 'Muestral nuevas imahin empuntás a partil de $2, $1',
 
 # Video information, used by Language::formatTimePeriod() to format lengths in the above messages
 'hours-abbrev' => 'o',
@@ -2202,6 +2185,7 @@ $1',
 'unknown_extension_tag' => 'estensión andarria: "$1"',
 
 # Special:Version
+'version'                     => 'Velsión', # Not used as normal message but as header for the special page itself
 'version-extensions'          => 'Estensionis istalás',
 'version-specialpages'        => 'Páhinas especialis',
 'version-variables'           => 'Variabris',
@@ -2222,5 +2206,14 @@ $1',
 'filepath-summary' => "Esta páhina especial degüervi la ruta compreta dun archivu. Las imahin se muestran a resolución compreta; las demas crasis d'archivu s'ehecutan diretamenti con el su pograma asociau.
 
 Escribi el nombri d'archivu sin el prefihu \"{{ns:image}}:\".",
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'Landeal archivus dupricaus',
+'fileduplicatesearch-legend'   => 'Landeal dupricaus',
+'fileduplicatesearch-filename' => 'Nombri el archivu:',
+'fileduplicatesearch-submit'   => 'Landeal',
+'fileduplicatesearch-info'     => '$1 × $2 pixel<br />Grandol del archivu: $3<br />Crasi MIME: $4',
+'fileduplicatesearch-result-1' => 'El archivu "$1" nu tiini dupricaus.',
+'fileduplicatesearch-result-n' => 'El archivu "$1" tiini {{PLURAL:$2|1 dupricau igual|$2 dupricaus igualis}}.',
 
 );

@@ -142,8 +142,9 @@ $messages = array(
 'nov'           => 'নভে',
 'dec'           => 'ডিসে',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'বিষয়রথাকহানি',
+'categoriespagetext'    => 'ইমারঠারর উইকিপিডিয়াত এবাকার বিষয়রথাক:',
 'pagecategories'        => '{{PLURAL:$1|থাক|থাকহানি}}',
 'category_header'       => '"$1" বিষয়রথাকে আসে নিবন্ধহানি',
 'subcategories'         => 'উপথাক',
@@ -374,12 +375,10 @@ $messages = array(
 'savefile'        => 'ফাইল ইতু',
 'watchthisupload' => 'পাতাএহান খিয়ালে থ',
 
-# Image list
-'imagelist'  => 'ছবির তালিকা',
-'ilsubmit'   => 'বিসারা',
-'byname'     => 'নাঙর সিজিলন',
-'bydate'     => 'তারিখর সিজিলন',
-'bysize'     => 'আকারহানর সিজিলন',
+# Special:Imagelist
+'imagelist' => 'ছবির তালিকা',
+
+# Image description page
 'imagelinks' => 'জুরিসিতা',
 
 # Random page
@@ -390,7 +389,6 @@ $messages = array(
 # Miscellaneous special pages
 'nbytes'       => '$1 বাইট',
 'ncategories'  => '$1 {{PLURAL:$1|থাক|থাকহানি}}',
-'allpages'     => 'হাবি পাতাহানি',
 'specialpages' => 'বিশেষ পাতাহানি',
 'ancientpages' => 'পুরানা পাতাহানি',
 'move'         => 'থেইকরানি',
@@ -398,13 +396,12 @@ $messages = array(
 # Book sources
 'booksources' => 'লেরিকর উৎসহান',
 
-'categoriespagetext' => 'ইমারঠারর উইকিপিডিয়াত এবাকার বিষয়রথাক:',
-'alphaindexline'     => '$1 ত $2',
-
 # Special:Log
 'specialloguserlabel' => 'আতাকুরাগ:',
 
 # Special:Allpages
+'allpages'       => 'হাবি পাতাহানি',
+'alphaindexline' => '$1 ত $2',
 'allpagesfrom'   => 'যেহাত্ত অকরিসি অহাত্ত পাতাহানি দেহাদেঃ',
 'allarticles'    => 'নিবন্ধহাবি',
 'allinnamespace' => 'পাতাহানি হাবি ($1 নাঙরজাগা)',
@@ -475,8 +472,9 @@ $messages = array(
 # Attribution
 'anonymous' => '{{SITENAME}}র বেনাঙর আতাকুরা(গি)',
 
-# Spam protection
-'categoryarticlecount' => 'এরে বিষয়রথাকে $1হান নিবন্ধ আসে।',
+# Special:Newimages
+'ilsubmit' => 'বিসারা',
+'bydate'   => 'তারিখর সিজিলন',
 
 # E-mail address confirmation
 'confirmemail'            => 'ই-মেইল ঠিকানাহান লেপকর',

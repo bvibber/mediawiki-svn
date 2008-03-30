@@ -78,8 +78,6 @@ class ApiMain extends ApiBase {
 		'unblock' => 'ApiUnblock',
 		'move' => 'ApiMove',
 		'edit' => 'ApiEditPage',
-		#'changerights' => 'ApiChangeRights'
-		# Disabled for now
 	);
 
 	/**
@@ -328,9 +326,9 @@ class ApiMain extends ApiBase {
 		
 		if( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
 			// Check for maxlag
-			global $wgLoadBalancer, $wgShowHostnames;
+			global $wgShowHostnames;
 			$maxLag = $params['maxlag'];
-			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+			list( $host, $lag ) = wfGetLB()->getMaxLag();
 			if ( $lag > $maxLag ) {
 				if( $wgShowHostnames ) {
 					ApiBase :: dieUsage( "Waiting for $host: $lag seconds lagged", 'maxlag' );
@@ -457,7 +455,11 @@ class ApiMain extends ApiBase {
 	 */
 	protected function getCredits() {
 		return array(
-			'This API is being implemented by Roan Kattouw <Firstname>.<Lastname>@home.nl',
+			'API developers:',
+			'    Roan Kattouw <Firstname>.<Lastname>@home.nl (lead developer Sep 2007-present)',
+			'    Victor Vasiliev - vasilvv at gee mail dot com',
+			'    Yuri Astrakhan <Firstname><Lastname>@gmail.com (creator, lead developer Sep 2006-Sep 2007)',
+			'',
 			'Please send your comments, suggestions and questions to mediawiki-api@lists.wikimedia.org',
 			'or file a bug report at http://bugzilla.wikimedia.org/'
 		);

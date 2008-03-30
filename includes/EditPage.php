@@ -542,6 +542,9 @@ class EditPage {
 			$this->mMetaData = rtrim( $request->getText( 'metadata'   ) );
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
 			$this->summary   = $wgLang->truncate( $request->getText( 'wpSummary'  ), 250 );
+			
+			# Remove extra headings and whitespace from summaries and new sections.
+			$this->summary = trim(preg_replace('/^=+(.*?)=+$/', '$1', trim($this->summary)));
 
 			$this->edittime = $request->getVal( 'wpEdittime' );
 			$this->starttime = $request->getVal( 'wpStarttime' );
@@ -687,7 +690,7 @@ class EditPage {
 			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
 				global $wgOut;
 				$revision = Revision::newFromTitle( $title );
-				$wgOut->addSecondaryWikiText( $revision->getText() );
+				$wgOut->addWikiTextTitleTidy( $revision->getText(), $this->mTitle );
 				return true;
 			} else {
 				return false;

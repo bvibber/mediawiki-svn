@@ -2102,7 +2102,7 @@ Magic links: ISBN (bug 1937)
 !! input
 ISBN 0-306-40615-2
 !! result
-<p><a href="/wiki/Special:Booksources/0306406152" class="internal">ISBN 0-306-40615-2</a>
+<p><a href="/wiki/Special:BookSources/0306406152" class="internal">ISBN 0-306-40615-2</a>
 </p>
 !! end
 
@@ -3022,7 +3022,7 @@ msg
 !! input
 {{#special:Recentchanges}}
 !! result
-Special:Recentchanges
+Special:RecentChanges
 !! end
 
 !! test
@@ -3108,7 +3108,7 @@ BUG 1887: A ISBN with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|ISBN 1235467890]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="ISBN 1235467890"><img alt="ISBN 1235467890" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:Booksources/1235467890" class="internal">ISBN 1235467890</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="ISBN 1235467890"><img alt="ISBN 1235467890" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:BookSources/1235467890" class="internal">ISBN 1235467890</a></div></div></div>
 
 !! end
 
@@ -3551,6 +3551,17 @@ Resolving duplicate section names
 
 !! end
 
+!! test
+Resolving duplicate section names with differing case (bug 10721)
+!! input
+== Foo bar ==
+== Foo Bar ==
+!! result
+<a name="Foo_bar"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Foo bar">edit</a>]</span> <span class="mw-headline"> Foo bar </span></h2>
+<a name="Foo_Bar_2"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Foo Bar">edit</a>]</span> <span class="mw-headline"> Foo Bar </span></h2>
+
+!! end
+
 !! article
 Template:sections
 !! text
@@ -3594,6 +3605,29 @@ Link inside a section heading
 
 !! end
 
+!! test
+TOC regression (bug 12077)
+!! input
+__TOC__
+== title 1 ==
+=== title 1.1 ===
+== title 2 ==
+!! result
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#title_1"><span class="tocnumber">1</span> <span class="toctext">title 1</span></a>
+<ul>
+<li class="toclevel-2"><a href="#title_1.1"><span class="tocnumber">1.1</span> <span class="toctext">title 1.1</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#title_2"><span class="tocnumber">2</span> <span class="toctext">title 2</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<a name="title_1"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: title 1">edit</a>]</span> <span class="mw-headline"> title 1 </span></h2>
+<a name="title_1.1"></a><h3><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: title 1.1">edit</a>]</span> <span class="mw-headline"> title 1.1 </span></h3>
+<a name="title_2"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=3" title="Edit section: title 2">edit</a>]</span> <span class="mw-headline"> title 2 </span></h2>
+
+!! end
 
 !! test
 BUG 1219 URL next to image (good)
@@ -4517,6 +4551,34 @@ Self closed html pairs (bug 5487)
 #
 #
 #
+
+!! test
+Punctuation: nbsp before exclamation
+!! input
+C'est grave !
+!! result
+<p>C'est grave&nbsp;!
+</p>
+!! end
+
+!! test
+Punctuation: CSS !important (bug 11874)
+!! input
+<div style="width:50% !important">important</div>
+!! result
+<div style="width:50% !important">important</div>
+
+!!end
+
+!! test
+Punctuation: CSS ! important (bug 11874; with space after)
+!! input
+<div style="width:50% ! important">important</div>
+!! result
+<div style="width:50% ! important">important</div>
+
+!!end
+
 
 !! test
 HTML bullet list, closed tags (bug 5497)
@@ -6014,7 +6076,7 @@ ISBN code coverage
 !! input
 ISBN  978-0-1234-56&#x20;789
 !! result
-<p><a href="/wiki/Special:Booksources/9780123456" class="internal">ISBN 978-0-1234-56</a>&#x20;789
+<p><a href="/wiki/Special:BookSources/9780123456" class="internal">ISBN 978-0-1234-56</a>&#x20;789
 </p>
 !! end
 
@@ -6032,7 +6094,7 @@ Double ISBN
 !! input
 ISBN ISBN 1234567890
 !! result
-<p>ISBN <a href="/wiki/Special:Booksources/1234567890" class="internal">ISBN 1234567890</a>
+<p>ISBN <a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1234567890</a>
 </p>
 !! end
 
@@ -6341,7 +6403,7 @@ ISBN with space-delimited number
 !! input
 ISBN 92 9017 032 8
 !! result
-<p><a href="/wiki/Special:Booksources/9290170328" class="internal">ISBN 92 9017 032 8</a>
+<p><a href="/wiki/Special:BookSources/9290170328" class="internal">ISBN 92 9017 032 8</a>
 </p>
 !! end
 
@@ -6366,7 +6428,7 @@ ISBN 1234567890
 ISBN 12345678901
 !! result
 <p>ISBN 123456789
-</p><p><a href="/wiki/Special:Booksources/1234567890" class="internal">ISBN 1234567890</a>
+</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1234567890</a>
 </p><p>ISBN 12345678901
 </p>
 !! end
@@ -6379,8 +6441,8 @@ ISBN 1-234-56789-0 - 2006
 
 ISBN 1 234 56789 0 - 2006
 !! result
-<p><a href="/wiki/Special:Booksources/1234567890" class="internal">ISBN 1-234-56789-0</a> - 2006
-</p><p><a href="/wiki/Special:Booksources/1234567890" class="internal">ISBN 1 234 56789 0</a> - 2006
+<p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1-234-56789-0</a> - 2006
+</p><p><a href="/wiki/Special:BookSources/1234567890" class="internal">ISBN 1 234 56789 0</a> - 2006
 </p>
 !! end
 

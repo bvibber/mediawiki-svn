@@ -42,7 +42,7 @@ $messages = array(
 'nov'       => 'nov',
 'dec'       => 'dec',
 
-# Bits of text used by many pages
+# Categories related messages
 'pagecategories'  => '{{PLURAL:$1|Categorie|Categories}}',
 'category_header' => 'Articules in categorie "$1"',
 
@@ -187,7 +187,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'filedesc'  => 'Descrition',
 'savefile'  => 'Conservar file',
 
-# Image list
+# Special:Imagelist
 'imagelist' => 'Liste de images',
 
 # Random page
@@ -203,7 +203,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'uncategorizedcategories' => 'Categories sin categories',
 'unusedimages'            => 'Orfani images',
 'wantedpages'             => 'Li max demandat págines',
-'allpages'                => 'Omni págines',
 'shortpages'              => 'Curt págines',
 'longpages'               => 'Long págines',
 'deadendpages'            => 'Págines sin exeada',
@@ -216,6 +215,9 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 
 # Book sources
 'booksources' => 'Librari fontes',
+
+# Special:Allpages
+'allpages' => 'Omni págines',
 
 # Watchlist
 'watchlist'      => 'Liste de sequet págines',

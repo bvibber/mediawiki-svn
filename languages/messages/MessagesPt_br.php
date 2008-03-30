@@ -252,13 +252,16 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Dez',
 
-# Bits of text used by many pages
-'categories'            => 'Categorias',
-'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
-'category_header'       => 'Páginas na categoria "$1"',
-'subcategories'         => 'Subcategorias',
-'category-media-header' => 'Multimídia na categoria "$1"',
-'category-empty'        => "''Esta categoria no momento não possui nenhuma página de conteúdo ou arquivo multimídia.''",
+# Categories related messages
+'categories'                  => 'Categorias',
+'pagecategories'              => '{{PLURAL:$1|Categoria|Categorias}}',
+'category_header'             => 'Páginas na categoria "$1"',
+'subcategories'               => 'Subcategorias',
+'category-media-header'       => 'Multimídia na categoria "$1"',
+'category-empty'              => "''Esta categoria no momento não possui nenhuma página de conteúdo ou arquivo multimídia.''",
+'category-file-count'         => '{{PLURAL:$2|Esta categoria possui apenas o arquivo a seguir.|Há, nesta categoria, {{PLURAL:$1|o arquivo a seguir|os $1 seguintes arquivos}} (dentre um total de $2.)}}',
+'category-file-count-limited' => 'Nesta categoria {{PLURAL:$1|há um arquivo|há $1 arquivos}}.',
+'listingcontinuesabbrev'      => 'cont.',
 
 'mainpagetext'      => "<big>'''O MediaWiki foi instalado com sucesso.'''</big>",
 'mainpagedocfooter' => 'Consulte o [http://meta.wikimedia.org/wiki/Help:Contents Manual de Usuário] para informações de como usar o software wiki.
@@ -479,7 +482,8 @@ $2',
 'namespaceprotected'   => "Você não possui permissão para editar páginas no espaço nominal '''$1'''.",
 'customcssjsprotected' => 'Você não possui permissão para editar esta página, já que ela contém configurações pessoais de outro usuário.',
 'ns-specialprotected'  => 'Não é possível editar páginas no espaço nominal {{ns:special}}.',
-'titleprotected'       => 'Este título foi protegido, para que não seja criado. Quem o protegeu foi [[User:$1|$1]], com a justificativa: <i>$2</i>.',
+'titleprotected'       => "Este título foi protegido, para que não seja criado.
+Quem o protegeu foi [[User:$1|$1]], com a justificativa: ''$2''.",
 
 # Login and logout pages
 'logouttitle'           => 'Desautenticar do sistema',
@@ -575,8 +579,8 @@ Você pode ignorar esta mensagem caso a conta tenha sido criada por engano.',
 'math_tip'        => 'Fórmula matemática (LaTeX)',
 'nowiki_sample'   => 'Inserir texto não-formatado aqui',
 'nowiki_tip'      => 'Ignorar formatação wiki',
-'image_tip'       => 'Imagem embutida',
-'media_tip'       => 'Link a arquivo interno de multimídia',
+'image_tip'       => 'Arquivo embutido',
+'media_tip'       => 'Link de arquivo',
 'sig_tip'         => 'Sua assinatura, com data e hora',
 'hr_tip'          => 'Linha horizontal (use de forma moderada)',
 
@@ -698,7 +702,7 @@ O registro de eliminação desta página é exibido a seguir, para sua comodidad
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Não é possível criar uma conta',
-'cantcreateaccount-text' => "Este IP (<b>$1</b>) foi bloqueado de criar novas contas por [[User:$3|$3]].
+'cantcreateaccount-text' => "Este IP ('''$1''') foi bloqueado de criar novas contas por [[User:$3|$3]].
 
 A justificativa apresentada por $3 foi ''$2''",
 
@@ -708,7 +712,6 @@ A justificativa apresentada por $3 foi ''$2''",
 'revnotfound'         => 'Revisão não encontrada',
 'revnotfoundtext'     => 'A antiga revisão da página que você está procurando não pode ser encontrada.
 Por favor verifique a URL que você usou para acessar esta página.',
-'loadhist'            => 'Carregando histórico',
 'currentrev'          => 'Revisão atual',
 'revisionasof'        => 'Edição de $1',
 'revision-info'       => 'Edição feita às $1 por $2',
@@ -718,7 +721,6 @@ Por favor verifique a URL que você usou para acessar esta página.',
 'cur'                 => 'atu',
 'next'                => 'prox',
 'last'                => 'ult',
-'orig'                => 'orig',
 'page_first'          => 'primeira',
 'page_last'           => 'última',
 'histlegend'          => 'Seleção para diferença: marque as caixas em uma das versões que deseja comparar e clique no botão.<br />
@@ -786,7 +788,7 @@ Legenda: (atu) = diferenças da versão atual,
 'showingresultsnum'     => "A seguir {{PLURAL:$3|é mostrado '''um''' resultado|são mostrados '''$3''' resultados}}, iniciando com o '''$2'''º.",
 'nonefound'             => '<strong>Nota</strong>: pesquisas mal sucedidas são geralmente causadas devido o uso de palavras muito comuns como "tem" e "de",
 que não são indexadas, ou pela especificação de mais de um termo (somente as páginas contendo todos os termos aparecerão nos resultados).',
-'powersearch'           => 'Pesquisar',
+'powersearch'           => 'Pesquisa avançada',
 'powersearchtext'       => '
 Procurar nos namespaces :<br />
 $1<br />
@@ -832,6 +834,7 @@ para definir suas preferências.',
 'files'                 => 'Arquivos',
 
 # User rights
+'userrights'                       => 'Gestão de privilégios de usuários', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => 'Administrar grupos de usuários',
 'userrights-user-editname'         => 'Forneça um nome de usuário:',
 'editusergroup'                    => 'Editar grupos de usuários',
@@ -882,7 +885,7 @@ Grupos não selecionados não serão alterados. Você pode selecionar ou des-sel
 'recentchangestext'                 => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.',
 'recentchanges-feed-description'    => 'Acompanhe as Mudanças recentes deste wiki por este feed.',
 'rcnote'                            => "A seguir {{PLURAL:$1|está listada '''uma''' alteração ocorrida|estão listadas '''$1''' alterações ocorridas}} {{PLURAL:$2|no último dia|nos últimos '''$2''' dias}}, a partir de $3.",
-'rcnotefrom'                        => 'Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).',
+'rcnotefrom'                        => "Abaixo estão as mudanças desde '''$2''' (mostradas até '''$1''').",
 'rclistfrom'                        => 'Mostrar as novas alterações a partir de $1',
 'rcshowhideminor'                   => '$1 edições menores',
 'rcshowhidebots'                    => '$1 bots',
@@ -935,7 +938,7 @@ Todas as datas mostradas são do servidor (UTC).',
 'filetype-banned-type'   => "'''\".\$1\"''' é um tipo de arquivo proibido. Os permitidos são \$2.",
 'filetype-missing'       => 'O arquivo não possui uma extensão (como, por exemplo, ".jpg").',
 'large-file'             => 'É recomendável que os arquivos não sejam maiores que $1; este possui $2.',
-'fileexists-thumb'       => "<center>'''Imagem existente'''</center>",
+'fileexists-thumb'       => "<center>'''Arquivo existente'''</center>",
 'successfulupload'       => 'Carregamento efetuado com sucesso',
 'uploadwarning'          => 'Aviso de Upload',
 'savefile'               => 'Salvar arquivo',
@@ -959,18 +962,17 @@ Todas as datas mostradas são do servidor (UTC).',
 'license-nopreview'  => '(Previsão indisponível)',
 'upload_source_file' => ' (um arquivo de seu computador)',
 
-# Image list
-'imagelist'                 => 'Lista de Imagens',
-'imagelisttext'             => "É exibida a seguir uma listagem {{PLURAL:$1|de '''um''' arquivo organizado|de '''$1''' arquivos organizados}} por $2.",
-'getimagelist'              => 'buscando lista de imagens',
-'ilsubmit'                  => 'Procura',
-'showlast'                  => 'Mostrar as  $1 imagens organizadas $2.',
-'byname'                    => 'por nome',
-'bydate'                    => 'por data',
-'bysize'                    => 'por tamanho',
-'imgdelete'                 => 'eli',
-'imgdesc'                   => 'desc',
-'imgfile'                   => 'arquivo',
+# Special:Imagelist
+'imgdesc'               => 'desc',
+'imgfile'               => 'arquivo',
+'imagelist'             => 'Lista de Imagens',
+'imagelist_date'        => 'Data',
+'imagelist_name'        => 'Nome',
+'imagelist_user'        => 'Usuário',
+'imagelist_size'        => 'Tamanho',
+'imagelist_description' => 'Descrição',
+
+# Image description page
 'filehist'                  => 'Histórico do arquivo',
 'filehist-help'             => 'Clique em uma data/horário para ver o arquivo tal como ele se encontrava em tal momento.',
 'filehist-deleteall'        => 'eliminar todas',
@@ -990,11 +992,7 @@ Todas as datas mostradas são do servidor (UTC).',
 'noimage'                   => 'Não existe nenhum arquivo com este nome. Se desejar, pode $1',
 'noimage-linktext'          => 'carregá-lo',
 'uploadnewversion-linktext' => 'Enviar uma nova versão deste arquivo',
-'imagelist_date'            => 'Data',
-'imagelist_name'            => 'Nome',
-'imagelist_user'            => 'Usuário',
-'imagelist_size'            => 'Tamanho',
-'imagelist_description'     => 'Descrição',
+'imagepage-searchdupe'      => 'Procurar por arquivos duplicados',
 
 # File reversion
 'filerevert-legend'     => 'Reverter arquivo',
@@ -1076,7 +1074,6 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'mostcategories'          => 'Páginas de conteúdo com mais categorias',
 'mostimages'              => 'Arquivos com mais afluentes',
 'mostrevisions'           => 'Páginas de conteúdo com mais edições',
-'allpages'                => 'Todas as páginas',
 'prefixindex'             => 'Índice de prefixo',
 'shortpages'              => 'Páginas curtas',
 'longpages'               => 'Paginas longas',
@@ -1090,17 +1087,12 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'ancientpages'            => 'Páginas mais antigas',
 'move'                    => 'Mover',
 'movethispage'            => 'Mover esta página',
-'unusedimagestext'        => '<p>Note que outros websites podem apontar para um arquivo diretamente através de um URL e, por isso, podem estar não aparecendo aqui, mesmo estando em uso.</p>',
+'unusedimagestext'        => 'Note que outros websites podem apontar para um arquivo diretamente através de um URL e, por isso, podem estar não aparecendo aqui, mesmo estando em uso.',
 'notargettitle'           => 'Sem alvo',
 'notargettext'            => 'Você não especificou um alvo ou usuário para performar esta função.',
 
 # Book sources
 'booksources' => 'Fontes de livros',
-
-'userrights'     => 'Gestão de privilégios de usuários',
-'groups'         => 'Grupos de usuários',
-'alphaindexline' => '$1 até $2',
-'version'        => 'Versão',
 
 # Special:Log
 'specialloguserlabel'  => 'Usuário:',
@@ -1111,6 +1103,8 @@ Cada linha contem links para o primeiro e segundo redirecionamento, bem como a p
 'logempty'             => 'Nenhum item idêntico no registro.',
 
 # Special:Allpages
+'allpages'       => 'Todas as páginas',
+'alphaindexline' => '$1 até $2',
 'nextpage'       => 'Próxima página ($1)',
 'prevpage'       => 'Página anterior ($1)',
 'allpagesfrom'   => 'Mostrar páginas a partir de:',
@@ -1180,7 +1174,7 @@ Se desejar remover a página da sua lista de vigiados, clique em \"Deixar de vig
 'watchlist-show-minor' => 'Mostrar edições menores',
 'watchlist-hide-minor' => 'Ocultar edições menores',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Vigiando...',
 'unwatching' => 'Deixando de vigiar...',
 
@@ -1230,8 +1224,8 @@ A última edição foi de  [[User:$3|$3]] ([[User talk:$3|Conversar com ele]]).'
 'protectedarticle'            => 'protegeu "[[$1]]"',
 'modifiedarticleprotection'   => 'foi alterado o nível de proteção para "[[$1]]"',
 'unprotectedarticle'          => 'desprotegeu "[[$1]]"',
-'protectsub'                  => '(Protegendo "$1")',
-'confirmprotect'              => 'Confirmar proteção',
+'protect-title'               => 'Protegendo "$1"',
+'protect-legend'              => 'Confirmar proteção',
 'protectcomment'              => 'Motivo de proteção',
 'protectexpiry'               => 'Expira em:',
 'protect_expiry_invalid'      => 'O tempo de expiração fornecido é inválido.',
@@ -1287,8 +1281,6 @@ Se uma nova página foi criada com o mesmo nome desde a deleção, as revisões 
 'mycontris'     => 'Minhas contribuições',
 'contribsub2'   => 'Para $1 ($2)',
 'nocontribs'    => 'Não foram encontradas mudanças com este critério.',
-'ucnote'        => 'Segue as últimas  <b>$1</b> mudanças nos últimos <b>$2</b> dias do usuário.',
-'uclinks'       => 'Ver as últimas $1 mudanças; ver os últimos $2 dias.',
 'uctop'         => '(edição atual)',
 'month'         => 'Mês (inclusive anteriores):',
 'year'          => 'Ano (inclusive anteriores):',
@@ -1372,13 +1364,16 @@ Por favor confirme que você realmente pretende fazer isto, e que você vai desb
 
 # Move page
 'move-page-legend' => 'Mover página',
-'movepagetext'     => "Utilizando o seguinte formulário você poderá renomear uma página, movendo todo o histórico para o novo título. O título anterior será transformado num redirecionamento para o novo.
+'movepagetext'     => "Utilizando o seguinte formulário você poderá renomear uma página, movendo todo o histórico para o novo título.
+O título anterior será transformado num redirecionamento para o novo.
+Links para as páginas antigas não serão mudados;
+certifique-se de verificar por redirecionamentos quebrados ou duplos.
+Você é o responsável por certificar-se de que os links continuam apontando para onde eles deveriam apontar.
 
-Links para as páginas antigas não serão mudados; certifique-se de verificar por redirecionamentos quebrados ou duplos. Você é o responsável por certificar-se de que os links continuam apontando para onde eles deveriam apontar.
+Note que a página '''não''' será movida se já existir uma página com o novo título, a não ser que ele esteja vazio ou seja um redirecionamento e que não tenha um histórico de edições.
+Isto significa que você pode renomear uma página de volta para o nome que possuía anteriormente se cometer algum engano e que não é possível sobrescrever uma página.
 
-Note que a página '''não''' será movida se já existir uma página com o novo título, a não ser que ele esteja vazio ou seja um redirecionamento e que não tenha um histórico de edições. Isto significa que você pode renomear uma página de volta para o nome que possuía anteriormente se cometer algum engano e que não é possível sobrescrever uma página.
-
-<b>CUIDADO!</b>
+'''CUIDADO!'''
 Isto pode ser uma mudança drástica e inesperada para uma página popular; por favor, tenha certeza de que compreende as conseqüências da mudança antes de prosseguir.",
 'movepagetalktext' => "A página associada, se existir, será automaticamente movida, '''a não ser que:'''
 *Uma página de discussão não-vazia já exista sob o novo nome, ou
@@ -1447,11 +1442,11 @@ Por favor, escolha outro título.',
 'tooltip-t-whatlinkshere'         => 'Lista de todas as páginas que se ligam à esta',
 'tooltip-t-contributions'         => 'Ver as contribuições deste usuário',
 'tooltip-t-emailuser'             => 'Enviar um e-mail a este usuário',
-'tooltip-t-upload'                => 'Carregar imagens ou arquivos multimídia',
+'tooltip-t-upload'                => 'Enviar arquivos',
 'tooltip-t-specialpages'          => 'Lista de páginas especiais',
 'tooltip-ca-nstab-user'           => 'Ver a página deste usuário',
 'tooltip-ca-nstab-project'        => 'Ver a página de projeto',
-'tooltip-ca-nstab-image'          => 'Ver a página de imagem',
+'tooltip-ca-nstab-image'          => 'Ver a página de arquivo',
 'tooltip-ca-nstab-template'       => 'Ver a predefinição',
 'tooltip-ca-nstab-help'           => 'Ver a página de ajuda',
 'tooltip-ca-nstab-category'       => 'Ver a página de categoria',
@@ -1461,12 +1456,6 @@ Por favor, escolha outro título.',
 'tooltip-diff'                    => 'Mostrar as alterações feitas por você a este texto.',
 'tooltip-compareselectedversions' => 'Ver as diferenças entre as versões selecionadas desta página.',
 'tooltip-watch'                   => 'Adicionar esta página à sua lista de páginas vigiadas',
-
-# Spam protection
-'subcategorycount'       => '{{PLURAL:$1|Existe uma subcategoria|Existem $1 subcategorias}} nesta categoria.',
-'categoryarticlecount'   => '{{PLURAL:$1|Existe uma página|Existem $1 páginas}} nesta categoria.',
-'category-media-count'   => '{{PLURAL:$1|Há um arquivo|Há $1 arquivos}} nesta categoria.',
-'listingcontinuesabbrev' => 'cont.',
 
 # Math options
 'mw_math_png'    => 'Sempre renderizar PNG',
@@ -1488,7 +1477,11 @@ Por favor, escolha outro título.',
 'show-big-image-thumb' => '<small>Tamanho desta previsão: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages' => 'Galeria de novos arquivos',
+'newimages'         => 'Galeria de novos arquivos',
+'imagelisttext'     => "É exibida a seguir uma listagem {{PLURAL:$1|de '''um''' arquivo organizado|de '''$1''' arquivos organizados}} por $2.",
+'newimages-summary' => 'Esta página especial mostra os arquivos recentemente enviados',
+'ilsubmit'          => 'Procura',
+'bydate'            => 'por data',
 
 # Metadata
 'metadata'          => 'Metadados',
@@ -1557,6 +1550,7 @@ Você também pode [[{{ns:special}}:Watchlist/edit|editar a lista da forma conve
 'watchlisttools-raw'  => 'Edição crua das vigiadas',
 
 # Special:Version
+'version'                       => 'Versão', # Not used as normal message but as header for the special page itself
 'version-extensions'            => 'Extensões instaladas',
 'version-specialpages'          => 'Páginas especiais',
 'version-variables'             => 'Variáveis',
@@ -1576,5 +1570,14 @@ Você também pode [[{{ns:special}}:Watchlist/edit|editar a lista da forma conve
 'filepath-summary' => 'Através dsta página especial é possível descobrir o endereço completo de um determinado arquivo. As imagens serão exibidas em sua resolução máxima, outros tipos de arquivos serão iniciados automaticamente em seus programas correspondentes.
 
 Entre com o nome do arquivo sem utilizar o prefixo "{{ns:image}}:".',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'Procurar por arquivos duplicados',
+'fileduplicatesearch-summary'  => 'Procure por arquivos em duplicata, tendo por base seu valor "hash".
+
+Entre com o nome do arquivo sem fornecer o prefixo "{{ns:image}}:".',
+'fileduplicatesearch-filename' => 'Nome do arquivo:',
+'fileduplicatesearch-result-1' => 'O arquivo "$1" não possui cópias idênticas.',
+'fileduplicatesearch-result-n' => 'O arquivo "$1" possui {{PLURAL:$2|uma cópia idêntica|$2 cópias idênticas}}.',
 
 );

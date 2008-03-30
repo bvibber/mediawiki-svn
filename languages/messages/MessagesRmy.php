@@ -72,7 +72,7 @@ $messages = array(
 'nov'       => 'dekh',
 'dec'       => 'ddui',
 
-# Bits of text used by many pages
+# Categories related messages
 'subcategories' => 'Telekategoriye',
 
 'about'          => 'Andar',
@@ -243,14 +243,12 @@ Kana avilyan kathe doshatar, ja palpale.',
 'noarticletext'      => "Andi '''{{SITENAME}}''' nai ji akana ek lekh kadale anavesa.
 * Te shirdes (astares) te keres o lekh, ker klik  '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} kathe]'''.",
 'editing'            => 'Editisaripen $1',
-'editinguser'        => 'Editisaripen $1',
 'yourtext'           => 'Tiro teksto',
 'storedversion'      => 'Akanutni versiya',
 'yourdiff'           => 'Ververimata',
 
 # History pages
 'revnotfoundtext'  => 'I puraneder versiya la patrinyaki so tu manglyan na arakhel pes. Mangas tuke te palemdikhes o phandipen so labyardyan kana avilyan kathe.',
-'loadhist'         => 'Ladavav o puranipen le versiyango',
 'previousrevision' => '← Purano paruvipen',
 'nextrevision'     => 'Nevi paruvipen →',
 'cur'              => 'akanutni',
@@ -304,6 +302,9 @@ Kana avilyan kathe doshatar, ja palpale.',
 'default'               => 'acharuno',
 'files'                 => 'Failurya',
 
+# User rights
+'editinguser' => 'Editisaripen $1',
+
 # Groups
 'group'            => 'Grupo:',
 'group-bot'        => 'Boturya',
@@ -322,7 +323,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'recentchanges'                     => 'Neve paruvimata',
 'recentchangestext'                 => 'Andi kadaya patrin shai te dikhes le neve paruvimata andi romani {{SITENAME}}.',
 'rcnote'                            => 'Tele si le palutne <strong>$1</strong> paruvimata andar le palutne <strong>$2</strong> divesa.',
-'rcnotefrom'                        => 'Tele si le averutnimata katar <b>$2</b> (inklen <b>$1</b> averutnimata, shai te paruves o gin alosarindoi aver tele).',
+'rcnotefrom'                        => "Tele si le averutnimata katar '''$2''' (inklen '''$1''' averutnimata, shai te paruves o gin alosarindoi aver tele).",
 'rclistfrom'                        => 'Dikh le paruvimata ji kai $1',
 'rcshowhideminor'                   => '$1 tikne editisaripena',
 'rcshowhidebots'                    => '$1 (ro)boturya',
@@ -351,10 +352,10 @@ Kana avilyan kathe doshatar, ja palpale.',
 'badfilename' => 'O chitrosko anav sas paruvdo; o nevo anav si "$1".',
 'savefile'    => 'Uxtav file',
 
-# Image list
-'imagelist'  => 'Patrinipen le chitrengo',
-'ilsubmit'   => 'Rod',
-'imgdelete'  => 'khos',
+# Special:Imagelist
+'imagelist' => 'Patrinipen le chitrengo',
+
+# Image description page
 'imagelinks' => 'Chitroske phandimata',
 
 # Unused templates
@@ -372,7 +373,6 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 
 # Miscellaneous special pages
 'wantedpages'  => 'Kamle pajine',
-'allpages'     => 'Savore patrya',
 'shortpages'   => 'Xarne patrya',
 'deadendpages' => 'Biphandimatenge patrya',
 'listusers'    => 'Jenengo patrinipen',
@@ -380,13 +380,10 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 'spheading'    => 'Uzalutne patrya',
 'newpages'     => 'Neve patrya',
 'ancientpages' => 'E puraneder lekha',
-'intl'         => 'Phandimata mashkar ćhiba',
 'move'         => 'Ingerdipen',
 
-'groups'  => 'Jenenge tipurya',
-'version' => 'Versiya',
-
 # Special:Allpages
+'allpages'       => 'Savore patrya',
 'nextpage'       => 'Anglutni patrin ($1)',
 'allarticles'    => 'Sa le artikolurya',
 'allpagessubmit' => 'Ja',
@@ -544,6 +541,7 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 
 # Special:Newimages
 'showhidebots' => '($1 boturya)',
+'ilsubmit'     => 'Rod',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'sa',
@@ -559,5 +557,8 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 
 # action=purge
 'confirm_purge_button' => 'Va',
+
+# Special:Version
+'version' => 'Versiya', # Not used as normal message but as header for the special page itself
 
 );

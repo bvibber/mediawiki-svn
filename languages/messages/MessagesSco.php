@@ -113,8 +113,9 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Diz',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Categories',
+'categoriespagetext'    => 'The follaein categories exist in the wiki.',
 'pagecategories'        => '{{PLURAL:$1|Category|Categories}}',
 'category_header'       => 'Pages in category "$1"',
 'subcategories'         => 'Subcategories',
@@ -333,7 +334,8 @@ $2',
 'namespaceprotected'   => "Ye dinna hae permeession tae edit pages in the '''$1''' namespace.",
 'customcssjsprotected' => "Ye dinna hae permeession tae edit this page, sin it hauds anither uiser's personal settins.",
 'ns-specialprotected'  => 'Pages in the {{ns:special}} namespace cannae be editit.',
-'titleprotected'       => 'This teetle haes been protectit frae bein makkit by [[User:$1|$1]]. The grunds for this are: <i>$2</i>.',
+'titleprotected'       => "This teetle haes been protectit frae bein makkit by [[User:$1|$1]].
+The grunds for this are: ''$2''.",
 
 # Login and logout pages
 'logouttitle'                => 'Uiser logoot',
@@ -545,7 +547,6 @@ Please try again. Gin it disnae wairk still, try loggin oot an loggin in again.<
 in the edit token. The edit haes been rejectit tae hinder corruption o the page text.
 This whiles happens when ye are uisin a bruken web-based anonymous proxy service.</strong>',
 'editing'                   => 'Editin $1',
-'editinguser'               => 'Editin uiser <b>$1</b>',
 'editingsection'            => 'Editin $1 (section)',
 'editingcomment'            => 'Editin $1 (comment)',
 'editconflict'              => 'Edit conflict: $1',
@@ -591,7 +592,7 @@ The deletion log for this page is providit here:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Canna mak accoont',
-'cantcreateaccount-text' => "Accoont makkin frae this IP address (<b>$1</b>) haes been blockit by [[User:$3|$3]].
+'cantcreateaccount-text' => "Accoont makkin frae this IP address ('''$1''') haes been blockit by [[User:$3|$3]].
 
 The grund for this, given by $3 is ''$2''",
 
@@ -600,7 +601,6 @@ The grund for this, given by $3 is ''$2''",
 'nohistory'           => "The'r nae edit history for this page.",
 'revnotfound'         => 'Reveision nae funnd',
 'revnotfoundtext'     => 'The auld reveision o the page ye socht cuidna be funnd. Please check the URL ye uised til access this page.',
-'loadhist'            => 'Laidin page history',
 'currentrev'          => 'Current reveision',
 'revisionasof'        => 'Reveision as o $1',
 'revision-info'       => 'Revision as o $1 by $2',
@@ -610,7 +610,6 @@ The grund for this, given by $3 is ''$2''",
 'cur'                 => 'nou',
 'next'                => 'neist',
 'last'                => 'hind',
-'orig'                => 'oreeg',
 'page_first'          => 'first',
 'page_last'           => 'hindermaist',
 'histlegend'          => 'Diff selection: mairk the radio boxes o the versions tae compare an press enter or the button at the bottom.<br /> Legend: (cur) = difference frae current version, (last) = difference frae foregaun version, s = smaa edit.',
@@ -660,6 +659,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'notextmatches'         => 'Nae page text matches',
 'prevn'                 => 'foregaun $1',
 'nextn'                 => 'neist $1',
+'searchall'             => 'aw',
 'showingresults'        => "Shawin ablo up tae {{PLURAL:$1|'''1''' result|'''$1''' results}} stertin wi #'''$2'''.",
 'showingresultsnum'     => "Shawin ablo {{PLURAL:$3|'''1''' result|'''$3''' results}} stertin wi #'''$2'''.",
 'nonefound'             => "'''Mynd''': unsuccessfu rakes is afttimes caused bi rakin for common words like \"hae\" an \"frae\", that isna indexed, or bi specifeein mair nor ae rake term (juist pages haudin aa the rake terms will kythe in the result).",
@@ -697,6 +697,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'default'            => 'defaut',
 
 # User rights
+'editinguser'             => 'Editin uiser <b>$1</b>',
 'userrights-groupsmember' => 'Member o:',
 
 # User rights log
@@ -752,15 +753,10 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 
 'nolicense' => 'Nane selected',
 
-# Image list
-'imagelist'      => 'Eimage leet',
-'imagelisttext'  => 'Ablo is a leet o $1 {{PLURAL:$1|eimage|eimages}} sortit $2.',
-'getimagelist'   => 'fetchin eimage leet',
-'ilsubmit'       => 'Rake',
-'showlast'       => 'Shaw last $1 eimages sortit $2.',
-'byname'         => 'bi name',
-'bydate'         => 'bi date',
-'bysize'         => 'bi size',
+# Special:Imagelist
+'imagelist' => 'Eimage leet',
+
+# Image description page
 'imagelinks'     => 'Eimage airtins',
 'linkstoimage'   => 'The follaein pages airts tae this image:',
 'nolinkstoimage' => "The'r nae pages airts tae this eimage.",
@@ -816,7 +812,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'mostcategories'          => 'Airticles wi the maist categories',
 'mostimages'              => 'Maist uised eimages',
 'mostrevisions'           => 'Maist revised airticles',
-'allpages'                => 'Aa pages',
 'longpages'               => 'Lang pages',
 'deadendpages'            => 'Deid-end pages',
 'listusers'               => 'Uiser leet',
@@ -824,7 +819,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'spheading'               => 'Byordinar pages for aa uisers',
 'restrictedpheading'      => 'Restrictit byordinar pages',
 'ancientpages'            => 'Auldest pages',
-'intl'                    => 'Interleid airtins',
 'move'                    => 'Flit',
 'movethispage'            => 'Flit this page',
 'unusedimagestext'        => '<p>Please mynd that ither wabsteids micht airt til an eimage wi a direct URL, an sae micht still be leetit here but be in aictive uiss.</p>',
@@ -835,10 +829,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 # Book sources
 'booksources' => 'Beuk sources',
 
-'categoriespagetext' => 'The follaein categories exist in the wiki.',
-'groups'             => 'Uiser groups',
-'alphaindexline'     => '$1 tae $2',
-
 # Special:Log
 'specialloguserlabel'  => 'Uiser:',
 'speciallogtitlelabel' => 'Teitle:',
@@ -847,6 +837,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'logempty'             => 'Nae matchin items in log.',
 
 # Special:Allpages
+'allpages'          => 'Aa pages',
+'alphaindexline'    => '$1 tae $2',
 'nextpage'          => 'Neist page ($1)',
 'allpagesfrom'      => 'Shaw pages stairtin at:',
 'allarticles'       => 'Aa airticles',
@@ -915,7 +907,7 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'protectlogtext'      => 'Ablo is a leet o page locks/unlocks. See the [[Special:Protectedpages|protected pages list]] for the list of currently operational page protections.',
 'protectedarticle'    => 'protectit "[[$1]]"',
 'unprotectedarticle'  => 'unprotectit "[[$1]]"',
-'protectsub'          => '(Protectin "$1")',
+'protect-title'       => 'Protectin "$1"',
 'protectcomment'      => 'Raeson for protectin',
 'protect-text'        => 'Ye can see an chynge the protection level here for the page <strong><nowiki>$1</nowiki></strong>.',
 'protect-level-sysop' => 'Juist administrators',
@@ -939,8 +931,6 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 'contributions' => 'Uiser contreibutions',
 'mycontris'     => 'Ma contreibutions',
 'nocontribs'    => 'Nae chynges wis funnd matchin thae criteria.',
-'ucnote'        => "Ablo is this uiser's last <b>$1</b> chynges in the last <b>$2</b> days.",
-'uclinks'       => 'See the last $1 chynges; see the last $2 days.',
 'uctop'         => ' (tap)',
 'month'         => 'Frae month (an afore):',
 'year'          => 'Frae year (an afore):',
@@ -997,7 +987,7 @@ tae an afore-blockit IP address or uisername.',
 'databasenotlocked'   => 'The database isna lockit.',
 
 # Move page
-'move-page-legend'                => 'Flit page',
+'move-page-legend'        => 'Flit page',
 'movepagetext'            => "Uisin the form ablo will rename a page, flittin aa its history tae the new name. The auld teitle will become a reguidal page tae the new teitle. Airtins tae the auld page teitle willna be chynged; be siccar tae [[Special:Maintenance|check]] for dooble or brucken reguidals. You ar responsible for makkin siccar that airtins continues tae pynt whaur thay ar supposed tae gang. Mynd that the page '''willna''' be flittit gin the'r aareadies a page at the new teitle, unless it is tuim or a reguidal and haes nae past edit history. This means that ye can rename a page back tae whaur it wis juist renamed frae gin ye mak a mistak, an ye canna owerwrite an existin page. <b>WARNIN!</b> This can be a drastic and unexpectit chynge for a popular page; please be siccar ye unnerstaun the consequences o this afore proceedin.",
 'movepagetalktext'        => "The associate Collogue page, gin onie, will be autaematically flittit alang wi it '''unless:''' *Ye'r flittin the page across namespaces, *A collogue page that isna tuim aareadies exists unner the new name, or *Ye tak the tick oot o the box ablo. In thae cases, ye maun flit or merge the page manually later gin ye hae saicont thochts.",
 'movearticle'             => 'Flit page:',
@@ -1076,11 +1066,8 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'nocredits'     => "The'r nae credit info available for this page.",
 
 # Spam protection
-'spamprotectiontext'   => 'The page ye wanted tae save wis blockit bi the spam filter. This is maist likely caused bi an airtin til an outby site.',
-'spamprotectionmatch'  => 'The follaein text is whit triggered wir spam filter: $1',
-'subcategorycount'     => 'There {{PLURAL:$1|one subcategory|$1 subcategories}} in this category.',
-'categoryarticlecount' => "There's {{PLURAL:$1|the ae airticle|$1 airticles}} in this category.",
-'category-media-count' => "There's {{PLURAL:$1|the ae file|$1 files}} in this category.",
+'spamprotectiontext'  => 'The page ye wanted tae save wis blockit bi the spam filter. This is maist likely caused bi an airtin til an outby site.',
+'spamprotectionmatch' => 'The follaein text is whit triggered wir spam filter: $1',
 
 # Info page
 'infosubtitle'   => 'Wittins for page',
@@ -1118,8 +1105,11 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'imagemaxsize' => 'Limit eimages on eimage description pages tae:',
 
 # Special:Newimages
-'newimages' => 'Gallery o new files',
-'noimages'  => 'Naething tae see.',
+'newimages'     => 'Gallery o new files',
+'imagelisttext' => 'Ablo is a leet o $1 {{PLURAL:$1|eimage|eimages}} sortit $2.',
+'noimages'      => 'Naething tae see.',
+'ilsubmit'      => 'Rake',
+'bydate'        => 'bi date',
 
 # Bad image list
 'bad_image_list' => 'The format is as follows:

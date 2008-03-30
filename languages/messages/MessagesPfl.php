@@ -105,17 +105,12 @@ $messages = array(
 'reupload'  => 'Widder hochlade',
 'savefile'  => 'Datei schbeichere',
 
-# Image list
-'ilsubmit' => 'Such',
-
 # Random page
 'randompage' => 'Irnd en Adiggel',
 
 # Miscellaneous special pages
 'specialpages' => 'Schbezialseide',
 'move'         => 'Verschiewe',
-
-'groups' => 'Benutzergrubbe',
 
 # Special:Allpages
 'allpagessubmit' => 'Zeiche',
@@ -169,6 +164,9 @@ $messages = array(
 
 # Special:Import
 'import-interwiki-submit' => 'Impordiere',
+
+# Special:Newimages
+'ilsubmit' => 'Such',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alle',

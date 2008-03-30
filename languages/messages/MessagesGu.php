@@ -7,6 +7,7 @@
  * @author Aksi great
  * @author SPQRobin
  * @author Dsvyas
+ * @author Siebrand
  */
 
 $digitTransformTable = array(
@@ -24,10 +25,23 @@ $digitTransformTable = array(
 
 $messages = array(
 # User preference toggles
+'tog-underline'          => 'કડીઓની નીચે લીટી (અંડરલાઇન) ઉમેરો:',
+'tog-highlightbroken'    => 'અપૂર્ણ કડીઓ<a href="" class="new">ને આ રીતે</a> (alternative: like this<a href="" class="internal">?</a>) લખો.',
+'tog-hideminor'          => 'હાલમાં થયેલા ફેરફારમાં નાના ફેરફારો છુપાવો',
+'tog-extendwatchlist'    => 'ધ્યાનસૂચિને વિસ્તૃત કરો જેથી બધા આનુષાંગિક ફેરફારો જોઇ શકાય',
+'tog-numberheadings'     => 'મથાળાઓને આપો-આપ ક્રમ (ઑટો નંબર) આપો',
+'tog-showtoolbar'        => 'ફેરફારો માટેનો ટૂલબાર બતાવો (જાવા સ્ક્રિપ્ટ)',
+'tog-showtoc'            => 'અનુક્રમણિકા દર્શાવો (૩થી વધુ પેટા-મથાળા વાળા લેખો માટે)',
+'tog-rememberpassword'   => 'આ કમ્પ્યૂટર પર મારી લોગ-ઇન વિગતો યાદ રાખો',
+'tog-watchcreations'     => 'મેં લખેલા નવા લેખો મારી ધ્યાનસૂચિમાં ઉમેરો',
+'tog-watchdefault'       => 'હું ફેરફાર કરૂં તે પાના મારી ધ્યાનસૂચિમાં ઉમેરો',
+'tog-watchmoves'         => 'હું જેનું નામ બદલું તે પાના મારી ધ્યાનસૂચિમાં ઉમેરો',
+'tog-watchdeletion'      => 'હું હટાવું તે પાના મારી ધ્યાનસૂચિમાં ઉમેરો',
 'tog-forceeditsummary'   => "કોરો 'ફેરફાર સારાંશ' ઉમેરતા પહેલા મને ચેતવો",
 'tog-watchlisthideown'   => "'મારી ધ્યાનસુચી'માં મે કરેલા ફેરફારો છુપાવો",
 'tog-watchlisthideminor' => "'મારી ધ્યાનસુચી'માં નાનાં ફેરફારો છુપાવો",
 'tog-ccmeonemails'       => 'મે અન્યોને મોકલેલા ઇ-મેઇલની નકલ મને મોકલો',
+'tog-showhiddencats'     => 'છુપી શ્રેણીઓ દર્શાવો',
 
 'underline-always' => 'હંમેશાં',
 'underline-never'  => 'કદી નહિ',
@@ -86,12 +100,26 @@ $messages = array(
 'nov'           => 'નવે',
 'dec'           => 'ડિસે',
 
+# Categories related messages
+'categories'                  => 'શ્રેણીઓ',
+'categoriespagetext'          => 'નીચેની શ્રેણીઓમાં પાના કે અન્ય સભ્યો છે.',
+'pagecategories'              => '{{PLURAL:$1|શ્રેણી|શ્રેણીઓ}}',
+'category_header'             => 'શ્રેણી "$1"માં પાના',
+'subcategories'               => 'ઉપશ્રેણીઓ',
+'category-media-header'       => 'શ્રેણી "$1"માં દ્રશ્ય કે શ્રાવ્ય સભ્યો',
+'category-empty'              => "''આ શ્રેણીમાં હાલમાં કોઇ લેખ કે અન્ય સભ્ય નથી.''",
+'hidden-categories'           => '{{PLURAL:$1|છુપી શ્રેણી|છુપી શ્રેણીઓ}}',
+'hidden-category-category'    => 'છુપી શ્રેણીઓ', # Name of the category where hidden categories will be listed
+'category-file-count'         => '{{PLURAL:$2|આ શ્રેણીમાં ફક્ત નીચે દર્શાવેલ દસ્તાવેજ છે.|આ શ્રેણીમાં કુલ $2 પૈકી નીચે દર્શાવેલ {{PLURAL:$1|દસ્તાવેજ|દસ્તાવેજો}} છે.}}',
+'category-file-count-limited' => 'નીચે દર્શાવેલ {{PLURAL:$1|દસ્તાવેજ|દસ્તાવેજો}} પ્રસ્તુત શ્રેણીમાં છે.',
+'listingcontinuesabbrev'      => 'ચાલુ..',
+
 'about'         => 'વિષે',
-'cancel'        => 'રદ કરવું',
+'cancel'        => 'રદ કરો',
 'moredotdotdot' => 'વધારે...',
 'mypage'        => 'મારું પાનું',
 'mytalk'        => 'મારી ચર્ચા',
-'navigation'    => 'પ્રદક્ષિણા',
+'navigation'    => 'ભ્રમણ',
 'and'           => 'અને',
 
 'tagline'          => '{{SITENAME}} થી',
@@ -109,22 +137,22 @@ $messages = array(
 'deletethispage'   => 'આ પાનું હટાવો',
 'protect'          => 'સુરક્ષિત કરો',
 'newpage'          => 'નવું પાનું',
-'talkpage'         => 'આ પાના વિષે ચર્ચા કરવી',
-'talkpagelinktext' => 'ચર્ચા કરવી',
+'talkpage'         => 'આ પાના વિષે ચર્ચા કરો',
+'talkpagelinktext' => 'ચર્ચા',
 'specialpage'      => 'ખાસ પાનુ',
 'talk'             => 'ચર્ચા',
 'toolbox'          => 'ઓજારની પેટી',
-'viewtalkpage'     => 'ચર્ચા જોવી',
+'viewtalkpage'     => 'ચર્ચા જુઓ',
 'otherlanguages'   => 'બીજી ભાષાઓમાં',
-'lastmodifiedat'   => 'આ પાનાં છેલ્લો ફેરફાર $2 વાગ્યા $1એ થયો.', # $1 date, $2 time
-'jumptonavigation' => 'પ્રદક્ષિણા',
+'lastmodifiedat'   => 'આ પાનાંમાં છેલ્લો ફેરફાર $1ના રોજ $2 વાગ્યે થયો.', # $1 date, $2 time
+'jumptonavigation' => 'ભ્રમણ',
 'jumptosearch'     => 'શોધો',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'         => '{{SITENAME}} વિષે',
-'aboutpage'         => 'વિકિપીડિયા:વિષે',
+'aboutpage'         => 'Project:વિષે',
 'currentevents'     => 'વર્તમાન ઘટનાઓ',
-'currentevents-url' => 'વર્તમાન ઘટનાઓ',
+'currentevents-url' => 'Project:વર્તમાન ઘટનાઓ',
 'edithelp'          => 'ફેરફારો માટે મદદ',
 'mainpage'          => 'મુખપૃષ્ઠ',
 'portal'            => 'સમાજ મુખપૃષ્ઠ',
@@ -132,13 +160,13 @@ $messages = array(
 
 'ok'                  => 'મંજૂર',
 'retrievedfrom'       => '"$1" થી લીધેલું',
-'newmessageslink'     => 'નવા સંદેશો',
+'newmessageslink'     => 'નૂતન સંદેશ',
 'newmessagesdifflink' => 'છેલ્લો ફેરફાર',
 'editsection'         => 'ફેરફાર કરો',
 'editold'             => 'ફેરફાર કરો',
-'showtoc'             => 'દેખાડો',
+'showtoc'             => 'બતાવો',
 'hidetoc'             => 'છુપાવો',
-'viewdeleted'         => '$1 તપાસવી છે?',
+'viewdeleted'         => '$1 જોવું છે?',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'લેખ',
@@ -155,28 +183,28 @@ $messages = array(
 
 # Login and logout pages
 'userlogin'       => 'Log in / નવું ખાતું ખોલો',
-'nologin'         => 'શું તમારી પાસે ખાતું નથી? $1.',
+'nologin'         => 'શું તમારૂં ખાતું નથી? $1.',
 'nologinlink'     => 'ખાતું ખોલો',
-'createaccount'   => 'ખાતું સર્જન કરવું',
+'createaccount'   => 'નવું ખાતું ખોલો',
 'yourrealname'    => 'સાચું નામ:',
 'yourlanguage'    => 'ભાષા',
-'nosuchusershort' => '"<nowiki>$1</nowiki>" નામનું કોઈ નથી. તમારી જોડણી તપાસ કરો.',
-'accountcreated'  => 'સર્જન કરેલું ખાતું',
+'nosuchusershort' => '"<nowiki>$1</nowiki>" નામનો કોઇ સભ્ય નથી, તમારી જોડણી તપાસો.',
+'accountcreated'  => 'ખાતું ખોલવામાં આવ્યું છે',
 
 # Edit pages
 'summary'           => 'સારાંશ',
 'minoredit'         => 'આ એક નાનો સુધારો છે.',
-'watchthis'         => 'આ પાના ને ધ્યાન માં રાખો',
-'savearticle'       => 'લેખ સુરક્ષિત કરવું',
+'watchthis'         => 'આ પાનાને ધ્યાનમાં રાખો',
+'savearticle'       => 'કાર્ય સુરક્ષિત કરો',
 'showpreview'       => 'ઝલક બતાવો',
 'showdiff'          => 'ફેરફારો બતાવો',
 'blockededitsource' => "'''$1''' માટે '''તમારા ફેરફારો''' નીચે દેખાય છે:",
-'newarticle'        => '(નવો)',
+'newarticle'        => '(નવિન)',
 'editing'           => '$1નો ફેરફાર કરી રહ્યા છે',
-'yourdiff'          => 'સરખામણી',
+'yourdiff'          => 'ભેદ',
 
 # History pages
-'nohistory'    => 'આ પાનાના ફેરફારનો ઇતિહાસ નથી.',
+'nohistory'    => 'આ પાનાનાં ફેરફારનો ઇતિહાસ નથી.',
 'cur'          => 'વર્તમાન',
 'next'         => 'આગળ',
 'last'         => 'છેલ્લું',
@@ -188,14 +216,14 @@ $messages = array(
 
 # Diffs
 'lineno'   => 'લીટી $1:',
-'editundo' => 'રદ કરવું',
+'editundo' => 'રદ કરો',
 
 # Search results
 'searchresults' => 'પરિણામોમાં શોધો',
 'prevn'         => 'પાછળનાં $1',
 'nextn'         => 'આગળનાં $1',
 'viewprevnext'  => 'જુઓ: ($1) ($2) ($3)',
-'powersearch'   => 'શોધો',
+'powersearch'   => 'શોધો (વધુ પર્યાય સાથે)',
 
 # Preferences page
 'mypreferences'     => 'મારી પસંદ',
@@ -212,12 +240,12 @@ $messages = array(
 
 # Recent changes
 'recentchanges'   => 'હાલ માં થયેલા ફેરફાર',
-'rclistfrom'      => '$1થી નવા ફેરફારો બતાવવા',
+'rclistfrom'      => '$1 બાદ થયેલા નવા ફેરફારો બતાવો',
 'rcshowhideminor' => 'નાના ફેરફારો $1',
 'rcshowhidebots'  => 'બૉટો $1',
 'rcshowhidemine'  => 'મારા ફેરફારો $1',
-'rclinks'         => '$1 છેલ્લાં ફેરફારો $2 દિવસથી બતાવવાં<br />$3',
-'diff'            => 'સરખામણી',
+'rclinks'         => 'છેલ્લાં $2 દિવસમાં થયેલા છેલ્લાં $1 ફેરફારો દર્શાવો<br />$3',
+'diff'            => 'ભેદ',
 'hist'            => 'ઇતિહાસ',
 'hide'            => 'છુપાવો',
 'show'            => 'બતાવો',
@@ -226,28 +254,21 @@ $messages = array(
 'boteditletter'   => 'બૉટ',
 
 # Recent changes linked
-'recentchangeslinked' => 'આ પાનાથી જોડાયેલા ફેરફાર',
+'recentchangeslinked' => 'આની સાથે જોડાયેલા ફેરફાર',
 
 # Upload
 'upload' => 'ફાઇલ ચડાવો',
-
-# Image list
-'ilsubmit' => 'શોધો',
-'byname'   => 'નામ પ્રમાણે',
-'bydate'   => 'તારીખ પ્રમાણે',
-'bysize'   => 'કદ પ્રમાણે',
 
 # Random page
 'randompage' => 'કોઈ પણ એક લેખ',
 
 'brokenredirects-edit'   => '(ફેરફાર કરો)',
-'brokenredirects-delete' => '(હટાવવું)',
+'brokenredirects-delete' => '(હટાવો)',
 
 # Miscellaneous special pages
 'nmembers'          => '$1 {{PLURAL:$1|સદસ્ય|સદસ્યો}}',
 'specialpage-empty' => 'આ પાનું ખાલી છે.',
 'lonelypages'       => 'અનાથ પાના',
-'allpages'          => 'બદ્ધા પાના',
 'shortpages'        => 'નાનાં પાનાં',
 'specialpages'      => 'ખાસ પાનાં',
 'newpages'          => 'નવા પાના',
@@ -258,17 +279,17 @@ $messages = array(
 'booksources-isbn' => 'આઇએસબીએન:',
 'booksources-go'   => 'જાઓ',
 
-'alphaindexline' => '$1 થી $2',
-
 # Special:Log
 'log-search-submit' => 'શોધો',
 
 # Special:Allpages
+'allpages'       => 'બધા પાના',
+'alphaindexline' => '$1 થી $2',
 'nextpage'       => 'આગળનું પાનું ($1)',
 'prevpage'       => 'પાછળનું પાનું ($1)',
 'allarticles'    => 'બધા લેખ',
-'allpagesprev'   => 'પાછળ',
-'allpagesnext'   => 'આગળ',
+'allpagesprev'   => 'પહેલાનું',
+'allpagesnext'   => 'પછીનું',
 'allpagessubmit' => 'જાઓ',
 
 # Special:Listusers
@@ -279,11 +300,11 @@ $messages = array(
 'emailto'      => 'લેનાર',
 'emailsubject' => 'વિષય',
 'emailmessage' => 'સંદેશ',
-'emailsend'    => 'મોકલવું',
+'emailsend'    => 'મોકલો',
 
 # Watchlist
 'watchlist'            => 'મારી ધ્યાનસૂચી',
-'mywatchlist'          => 'મારી ધ્યાનસૂચી',
+'mywatchlist'          => 'મારી ધ્યાનસૂચિ',
 'watchlistfor'         => "('''$1'''ને માટે)",
 'watch'                => 'ધ્યાન માં રાખો',
 'watchlist-details'    => 'ચર્ચા વાળા પાના ન ગણતા {{PLURAL:$1|$1 પાનું|$1 પાનાં}} ધ્યાનસૂચી મા છે.',
@@ -311,7 +332,7 @@ $messages = array(
 'blanknamespace' => '(મુખ્ય)',
 
 # Contributions
-'mycontris' => 'મારું યોગદાન',
+'mycontris' => 'મારૂં યોગદાન',
 
 'sp-contributions-submit' => 'શોધો',
 
@@ -331,7 +352,7 @@ $messages = array(
 # Move page
 '1movedto2'               => '[[$1]] નું નામ બદલી ને [[$2]] કરવામાં આવ્યું છે.',
 'movereason'              => 'કારણ',
-'delete_and_move'         => 'હટાવવું અને નામ બદલવું',
+'delete_and_move'         => 'હટાવો અને નામ બદલો',
 'delete_and_move_confirm' => 'હા, આ પાનું હટાવો',
 
 # Export
@@ -351,7 +372,7 @@ $messages = array(
 'tooltip-search'          => '{{SITENAME}} શોધો',
 'tooltip-p-logo'          => 'મુખપૃષ્ઠ',
 'tooltip-n-mainpage'      => 'મુખપૃષ્ઠ પર જાઓ',
-'tooltip-n-recentchanges' => 'વિકિ માં હાલમા થયેલા ફેરફારો ની સૂચિ.',
+'tooltip-n-recentchanges' => 'વિકિમાં હાલમા થયેલા ફેરફારો ની સૂચિ.',
 'tooltip-n-sitesupport'   => 'અમારું સમર્થન કરો',
 'tooltip-t-specialpages'  => 'ખાસ પાનાંઓની સૂચિ',
 
@@ -362,13 +383,15 @@ $messages = array(
 
 # Special:Newimages
 'noimages' => 'જોવા માટે કશું નથી.',
+'ilsubmit' => 'શોધો',
+'bydate'   => 'તારીખ પ્રમાણે',
 
 # EXIF tags
 'exif-imagewidth'  => 'પહોળાઈ',
 'exif-imagelength' => 'ઊંચાઈ',
 'exif-artist'      => 'કલાકાર',
 
-'exif-unknowndate' => 'તારીખની જાણ નથી',
+'exif-unknowndate' => 'અજ્ઞાત તારીખ',
 
 'exif-orientation-1' => 'સામાન્ય', # 0th row: top; 0th column: left
 

@@ -66,7 +66,7 @@ $messages = array(
 'nov'           => 'Gw11',
 'dec'           => 'Gw12',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Amatuluba',
 'pagecategories'        => '{{PLURAL:$1|Tuluba|Matuluba}}',
 'category_header'       => 'Empapula eziri mu ttuluba lya "$1"',
@@ -124,15 +124,15 @@ $messages = array(
 'aboutpage'         => 'Project:Okutangaaza ku',
 'copyright'         => 'Ebiri kuno bifugibwa $1.',
 'copyrightpagename' => "bino biriko ekikuguzo eky'obwananyi ekya {{SITENAME}}",
-'copyrightpage'     => "Ebikugizo eby'obwa nannyini ku {{ns:project}}",
+'copyrightpage'     => "{{ns:project}}:Ebikugizo eby'obwa nannyini",
 'currentevents'     => 'Ebibindabinda',
 'currentevents-url' => 'Project:Ebibindabinda',
 'disclaimers'       => "Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka",
-'disclaimerpage'    => "Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka Project:",
+'disclaimerpage'    => "Project:Okutangaaza ku kkomo ery'obuvunaaniro bwaffe obw'omu mateeka",
 'edithelp'          => 'Funa obuyambi',
-'edithelppage'      => "Obuyambi ku by'okukyusakyusa",
+'edithelppage'      => "Help:Obuyambi ku by'okukyusakyusa",
 'faq'               => 'Ebitera okubuuzibwa',
-'faqpage'           => 'Ebitera okubuuzibwa ku:Project',
+'faqpage'           => 'Project:Ebitera okubuuzibwa ku',
 'helppage'          => 'Help:Endagiriro',
 'mainpage'          => 'Olupapula Olusooka',
 'portal'            => 'Embuga',
@@ -258,7 +258,6 @@ erya '''ddayo'''.",
 'noarticletext'          => "Wano tewali kyawandiikidwawo, ky'obadde onoonya osobola [[Special:Search/{{PAGENAME}}| okukinoonyeza]] ku mpapula endala oba oyinza [{{fullurl:{{FULLPAGENAME}}|action=edit}} gwe okukiwandiikako] wano.",
 'previewnote'            => "<strong>Kuno kugezaamubugeza; by'okoze tebinnakazibwa!</strong>",
 'editing'                => 'Kati okyuusa $1',
-'editinguser'            => 'Kukyuusa ebya memba <b>$1</b>',
 'editingsection'         => 'Okyuusa $1 (kitundu)',
 'editingcomment'         => 'Kukyuusa $1 (obubaka)',
 'yourtext'               => 'Ebigambo ebibyo',
@@ -313,6 +312,9 @@ oba ku gano agali ku lupapula luno.<br />
 'newpassword'       => 'Ekigambo ekikuumi ekipya:',
 'searchresultshead' => 'Noonya',
 
+# User rights
+'editinguser' => 'Kukyuusa ebya memba <b>$1</b>',
+
 # Recent changes
 'recentchanges'     => 'Ebyakakyuusibwa',
 'recentchangestext' => "Goberera enkyuukakyuuka empya ez'oku muko guno",
@@ -340,7 +342,10 @@ oba ku gano agali ku lupapula luno.<br />
 'upload'        => 'Teekayo fayiro',
 'uploadlogpage' => 'Likooda eya fayiro eziteekedwa ku wiki',
 
-# Image list
+# Special:Imagelist
+'imagelist_user' => 'Memba',
+
+# Image description page
 'filehist'            => 'Ebyafaayo ebya fayiro eno',
 'filehist-help'       => "Bw'onyiga ku nnaku n'essaawa, ojjakulaba fayiro nga bwe yali efaanana ku kiseera ekyo.",
 'filehist-datetime'   => "Ennaku n'obudde",
@@ -351,7 +356,6 @@ oba ku gano agali ku lupapula luno.<br />
 'linkstoimage'        => 'Empapula eziriko enyunzi ezigguka ku fayiro eno ze zino:',
 'nolinkstoimage'      => 'Tewali mpapula ziriko nyunzi ezigguka ku fayiro eno.',
 'sharedupload'        => "Fayiro eno y'emu esobola okuba nga empapula nyingi zigikozesa",
-'imagelist_user'      => 'Memba',
 
 # Random page
 'randompage' => 'Nondera olupapula muwawa',
@@ -359,7 +363,6 @@ oba ku gano agali ku lupapula luno.<br />
 # Miscellaneous special pages
 'nbytes'            => '{{PLURAL:$1|bayiti|bayiti}} $1',
 'nmembers'          => '{{PLURAL:$1|memba|bamemba}} $1',
-'allpages'          => 'Empapula zonna',
 'specialpages'      => "Empapula ez'enjawulo",
 'newpages'          => 'Empapula empya',
 'newpages-username' => "Ery'obwa memba:",
@@ -368,13 +371,13 @@ oba ku gano agali ku lupapula luno.<br />
 # Book sources
 'booksources-go' => 'Nona',
 
-'alphaindexline' => 'okuva ku $1 kutuuka ku $2',
-
 # Special:Log
 'specialloguserlabel' => 'Memba:',
 'log'                 => "Empapula ez'ebyafaayo eby'emirimu egitaligimu",
 
 # Special:Allpages
+'allpages'          => 'Empapula zonna',
+'alphaindexline'    => 'okuva ku $1 kutuuka ku $2',
 'allpagesfrom'      => 'Laga empapula okuva ku:',
 'allarticles'       => 'Empapula zonna',
 'allinnamespace'    => 'Empapula zonna (mu kkunngaanizo erya $1)',
@@ -397,7 +400,7 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'watch'          => 'Goberera olupapula luno',
 'unwatch'        => 'Lekerawo okugoberera olupapula luno',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Kikolebwako...',
 'unwatching' => 'Kikolebwako...',
 
@@ -446,12 +449,12 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'blocklogentry'     => '[[$1]] agaanidwa. Obuyinza bumuddizibwa ku $2 $3',
 
 # Move page
-'move-page-legend'    => 'Simbuliza olupapula luno',
-'movearticle' => 'Simbuliza olupapula luno',
-'move-watch'  => 'Goberera olupapula luno',
-'movepagebtn' => 'Lusimbulize',
-'movelogpage' => 'Ebikyusidwa manya',
-'revertmove'  => 'zaawo erinya ekkadde',
+'move-page-legend' => 'Simbuliza olupapula luno',
+'movearticle'      => 'Simbuliza olupapula luno',
+'move-watch'       => 'Goberera olupapula luno',
+'movepagebtn'      => 'Lusimbulize',
+'movelogpage'      => 'Ebikyusidwa manya',
+'revertmove'       => 'zaawo erinya ekkadde',
 
 # Export
 'export' => 'Okusomosa empapula',
@@ -513,10 +516,6 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 # Attribution
 'siteuser'  => '{{SITENAME}} memba $1',
 'siteusers' => '{{SITENAME}} (ba)memba $1',
-
-# Spam protection
-'subcategorycount'     => 'Ettuluba lino lirina {{PLURAL:$1|ettabi limu|amatabi $1}}.',
-'categoryarticlecount' => 'Ettuluba lino lirimu {{PLURAL:$1|olupapula lumu|empapula $1}}.',
 
 # Browsing diffs
 'previousdiff' => '← Laba enjawulo ezaakulembera zino',

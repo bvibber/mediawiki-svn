@@ -263,6 +263,10 @@ $magicWords = array(
 	'hiddencat'              => array( 1,    '__رده‌پنهان__', '__HIDDENCAT__' ),
 );
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'تغییرمسیردوتایی' ),
+);
+
 # Harakat are intentionally not included in the linkTrail. Their addition should
 # take place after enough tests.
 $linkTrail = "/^([ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیآأئؤة‌]+)(.*)$/sDu";
@@ -368,15 +372,25 @@ $messages = array(
 'nov'           => 'نوامبر',
 'dec'           => 'دسامبر',
 
-# Bits of text used by many pages
-'categories'               => 'رده‌های صفحه',
-'pagecategories'           => '{{PLURAL:$1|رده‌های صفحه|رده‌های صفحه}}',
-'category_header'          => 'مقاله‌های ردهٔ «$1»',
-'subcategories'            => 'زیررده‌ها',
-'category-media-header'    => 'پرونده‌های ردهٔ «$1»',
-'category-empty'           => 'این رده شامل هیچ صفحه یا پرونده‌ای نمی‌شود.',
-'hidden-categories'        => '{{PLURAL:$1|ردهٔ پنهان|رده‌های پنهان}}',
-'hidden-category-category' => 'رده‌های پنهان', # Name of the category where hidden categories will be listed
+# Categories related messages
+'categories'                     => 'رده‌های صفحه',
+'categoriespagetext'             => 'رده‌های زیر حاوی صفحه یا پرونده هستند.',
+'special-categories-sort-count'  => 'مرتب کردن بر اساس تعداد',
+'special-categories-sort-abc'    => 'مرتب کردن الفبایی',
+'pagecategories'                 => '{{PLURAL:$1|رده‌های صفحه|رده‌های صفحه}}',
+'category_header'                => 'مقاله‌های ردهٔ «$1»',
+'subcategories'                  => 'زیررده‌ها',
+'category-media-header'          => 'پرونده‌های ردهٔ «$1»',
+'category-empty'                 => 'این رده شامل هیچ صفحه یا پرونده‌ای نمی‌شود.',
+'hidden-categories'              => '{{PLURAL:$1|ردهٔ پنهان|رده‌های پنهان}}',
+'hidden-category-category'       => 'رده‌های پنهان', # Name of the category where hidden categories will be listed
+'category-subcat-count'          => '{{PLURAL:$2|این رده تنها حاوی زیرردهٔ زیر است.|{{PLURAL:$1|این زیررده|این $1 زیررده}} در این رده قرار {{PLURAL:$1|دارد|دارند}}؛ این رده در کل حاوی $2 زیررده است.}}',
+'category-subcat-count-limited'  => 'این رده شامل {{PLURAL:$1|یک زیررده|$1 زیررده}} زیر می‌باشد.',
+'category-article-count'         => '{{PLURAL:$2|این رده تنها حاوی صفحهٔ زیر است.|{{PLURAL:$1|این صفحه|این $1 صفحه}} در این رده قرار {{PLURAL:$1|دارد|دارند}}؛ این رده در کل حاوی $2 صفحه است.}}',
+'category-article-count-limited' => '{{PLURAL:$1|صفحهٔ|$1 صفحهٔ}} زیر در ردهٔ فعلی قرار دارند.',
+'category-file-count'            => '{{PLURAL:$2|این رده تنها حاوی پروندهٔ زیر است.|{{PLURAL:$1|این پرونده|این $1 پرونده}} در این رده قرار {{PLURAL:$1|دارد|دارند}}؛ این رده در کل حاوی $2 پرونده است.}}',
+'category-file-count-limited'    => '{{PLURAL:$1|پروندهٔ|$1 پروندهٔ}} زیر در ردهٔ فعلی قرار دارند.',
+'listingcontinuesabbrev'         => '(ادامه)',
 
 'mainpagetext'      => 'نرم‌افزار ویکی با موفقیت نصب شد.',
 'mainpagedocfooter' => 'از [http://meta.wikimedia.org/wiki/Help:Contents راهنمای کاربران]
@@ -425,7 +439,9 @@ $messages = array(
 'permalink'         => 'پیوند دائمی',
 'print'             => 'چاپ',
 'edit'              => 'ويرايش',
+'create'            => 'ایجاد',
 'editthispage'      => 'اين صفحه را ويرايش كنيد',
+'create-this-page'  => 'این صفحه را ایجاد کنید',
 'delete'            => 'حذف',
 'deletethispage'    => 'حذف این صفحه',
 'undelete_short'    => 'احیای {{PLURAL:$1|یک ویرایش|$1 ویرایش}}',
@@ -908,7 +924,6 @@ $3
 'revnotfound'         => 'نسخه یافت نشد',
 'revnotfoundtext'     => 'نسخهٔ قدیمی‌ای از صفحه که درخواسته بودید یافت نشد.
 لطفاً URLی را که برای دسترسی به این صفحه استفاده کرده‌اید، بررسی کنید.',
-'loadhist'            => 'در حال خواندن تاریخچهٔ صفحه',
 'currentrev'          => 'نسخهٔ فعلی',
 'revisionasof'        => 'نسخهٔ $1',
 'revision-info'       => '<div id="viewingold-warning" style="background: #FFBDBD; border: 1px solid #BB7979; color: #000000; margin: 2em 0 .5em; padding: .5em 1em; vertical-align: middle; clear: both; font-size:small;">شما یک نسخه از تاریخچهٔ این صفحه را می‌بینید، که حاصل ویرایش $2 در تاریخ $1 است. این نسخه ممکن است تفاوت‌های اساسی با <a href="/wiki/{{FULLPAGENAME}}" title="{{FULLPAGENAME}}">نسخهٔ فعلی</a> داشته باشد.</div>
@@ -919,7 +934,6 @@ $3
 'cur'                 => 'فعلی',
 'next'                => 'بعدی',
 'last'                => 'قبلی',
-'orig'                => 'اصلی',
 'page_first'          => 'نخست',
 'page_last'           => 'واپسین',
 'histlegend'          => 'شرح: (فعلی) = تفاوت با نسخهٔ فعلی،
@@ -1024,11 +1038,14 @@ $3
 'prevn'                 => '$1تای قبلی',
 'nextn'                 => '$1تای بعدی',
 'viewprevnext'          => 'نمایش ($1) ($2) ($3).',
+'search-result-size'    => '$1 ({{PLURAL:$2|یک کلمه|$2 کلمه}})',
+'search-result-score'   => 'ارتباط: $1%',
 'showingresults'        => "نمایش {{PLURAL:$1|'''1''' نتیجه|'''$1''' نتیجه}} در پایین، آغاز از #'''$2'''.",
 'showingresultsnum'     => "نمایش '''$3''' {{PLURAL:$3|نتیجه|نتیجه}} در پایین، آغاز از #'''$2'''.",
 'nonefound'             => "<strong>نکته</strong>
 جستجوهای ناموفق معمولاً به علت جستن واژگان متداولی چون ''از'' و ''را'' که فهرست نشده‌اند، رخ می‌دهد یا اینکه چندین گزارهٔ جستجو وارد می‌شود (فقط صفحه‌هایی که حاوی همهٔ این گزاره‌ها باشند در نتیجه نمایش داده می‌شوند.).",
-'powersearch'           => 'جستجو',
+'powersearch'           => 'جستجوی پیشرفته',
+'powersearch-legend'    => 'جستجوی پیشرفته',
 'powersearchtext'       => '
 جستجو در فضاهای نام :<br />
 $1<br />
@@ -1097,6 +1114,7 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'files'                    => 'پرونده‌ها',
 
 # User rights
+'userrights'                       => 'مدیریت اختیارات کاربر', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'           => 'مدیریت گروه‌های کاربری',
 'userrights-user-editname'         => 'یک نام کاربری وارد کنید:',
 'editusergroup'                    => 'ویرایش گروه‌های کاربری',
@@ -1272,18 +1290,21 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'upload_source_url'  => '(یک نشانی اینترنتی معتبر و قابل دسترسی برای عموم)',
 'upload_source_file' => '(پرونده‌ای در رایانهٔ شما)',
 
-# Image list
-'imagelist'                 => 'فهرست تصاویر',
-'imagelisttext'             => 'در زیر فهرست $1 {{PLURAL:$1|تصویری|تصویری}} که $2 مرتب شده است آمده است.',
-'getimagelist'              => 'در حال اخذ فهرست تصاویر',
-'ilsubmit'                  => 'جستجو',
-'showlast'                  => 'نمایش آخرین $1 تصویر مرتب‌شده $2.',
-'byname'                    => 'از روی نام',
-'bydate'                    => 'از روی تاریخ',
-'bysize'                    => 'از روی اندازه',
-'imgdelete'                 => 'حذف',
-'imgdesc'                   => 'توصیف',
-'imgfile'                   => 'پرونده',
+# Special:Imagelist
+'imagelist-summary'     => 'این صفحهٔ ویژه تمام پرونده‌های بارگذاری شده را نشان می‌دهد.
+به طور پیش‌فرض آخرین پرونده‌های بازگذاری شده بالاتر نمایش داده می‌شوند
+کلیک کردن روی عنوان ستون‌ها باعث تغییر ترتیب نمایش پرونده‌ها می‌شود.',
+'imagelist_search_for'  => 'جستجوی نام تصویر:',
+'imgdesc'               => 'توصیف',
+'imgfile'               => 'پرونده',
+'imagelist'             => 'فهرست تصاویر',
+'imagelist_date'        => 'تاریخ',
+'imagelist_name'        => 'نام',
+'imagelist_user'        => 'کاربر',
+'imagelist_size'        => 'اندازه (بایت)',
+'imagelist_description' => 'توصیف',
+
+# Image description page
 'filehist'                  => 'تاریخچه پرونده',
 'filehist-help'             => 'روی تاریخ‌ها کلیک کنید تا نسخهٔ مربوط را ببینید.',
 'filehist-deleteall'        => 'حذف همه',
@@ -1305,12 +1326,7 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'noimage'                   => 'هیچ پرونده‌ای با این نام موجود نیست می‌توانید $1',
 'noimage-linktext'          => 'آن را بار کنید.',
 'uploadnewversion-linktext' => 'بارکردن نسخهٔ جدیدی از پرونده',
-'imagelist_date'            => 'تاریخ',
-'imagelist_name'            => 'نام',
-'imagelist_user'            => 'کاربر',
-'imagelist_size'            => 'اندازه (بایت)',
-'imagelist_description'     => 'توصیف',
-'imagelist_search_for'      => 'جستجوی نام تصویر:',
+'imagepage-searchdupe'      => 'جستجو برای پرونده‌های تکراری',
 
 # File reversion
 'filerevert'                => 'واگردانی $1',
@@ -1431,7 +1447,6 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'mostcategories'          => 'مقاله‌هایی که بیشترین تعداد رده را دارند',
 'mostimages'              => 'تصاویری که بیشتر از همه به آنها پیوند شده است',
 'mostrevisions'           => 'مقاله‌هایی که بیشتر از بقیه ویرایش شده‌اند',
-'allpages'                => 'همهٔ صفحه‌ها',
 'prefixindex'             => 'نمایهٔ پیشوندی',
 'shortpages'              => 'صفحه‌های کوتاه',
 'longpages'               => 'صفحه‌های بلند',
@@ -1467,14 +1482,6 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'booksources-go'            => 'برو',
 'booksources-text'          => 'در زیر فهرستی از پیوندها به وبگاههای دیگر که کتاب‌های نو و دست‌دوم می‌فروشند آمده‌است. همچنین ممکن است اطلاعات بیشتری راجع به کتاب مورد نظر شما بدارند.',
 
-'categoriespagetext' => 'رده‌های زیر حاوی صفحه یا پرونده هستند.',
-'data'               => 'داده',
-'userrights'         => 'مدیریت اختیارات کاربر',
-'groups'             => 'گروههای کاربری',
-'isbn'               => 'شابک',
-'alphaindexline'     => '$1 تا $2',
-'version'            => 'نسخه',
-
 # Special:Log
 'specialloguserlabel'  => 'کاربر:',
 'speciallogtitlelabel' => 'عنوان:',
@@ -1487,6 +1494,8 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'log-title-wildcard'   => 'صفحه‌هایی را جستجو کن که عنوانشان با این عبارت آغاز می‌شود',
 
 # Special:Allpages
+'allpages'          => 'همهٔ صفحه‌ها',
+'alphaindexline'    => '$1 تا $2',
 'nextpage'          => 'صفحهٔ بعد ($1)',
 'prevpage'          => 'صفحهٔ قبلی ($1)',
 'allpagesfrom'      => 'نمایش صفحه‌ها با شروع از:',
@@ -1659,8 +1668,8 @@ $NEWPAGE
 'protectedarticle'            => '[[$1]] محافظت شد',
 'modifiedarticleprotection'   => 'وضعیت محافظت صفحهٔ [[$1]] تغییر داده شد',
 'unprotectedarticle'          => '[[$1]] از محافظت به در آمد',
-'protectsub'                  => '(محافظت از «$1»)',
-'confirmprotect'              => 'تأیید حفاظت',
+'protect-title'               => '(محافظت از «$1»',
+'protect-legend'              => 'تأیید حفاظت',
 'protectcomment'              => 'دلیل محافظت',
 'protectexpiry'               => 'زمان سرآمدن:',
 'protect_expiry_invalid'      => 'زمان سرآمدن نامعتبر است.',
@@ -1700,6 +1709,7 @@ $NEWPAGE
 # Undelete
 'undelete'                     => 'احیای صفحهٔ حذف‌شده',
 'undeletepage'                 => 'نمایش و احیای صفحه‌های حذف‌شده',
+'undeletepagetitle'            => "'''آن چه در ادامه می‌آید شامل نسخه‌های حذف شدهٔ [[:$1]] است'''.",
 'viewdeletedpage'              => 'نمایش صفحه‌های حذف‌شده',
 'undeletepagetext'             => 'صفحه‌های زیر حذف شده‌اند ولی هنوز در بایگانی هستند و می‌توانند احیا شوند.
 این بایگانی ممکن است هر چند وقت تمیز شود.',
@@ -1762,8 +1772,6 @@ $1',
 'sp-contributions-search'      => 'جستجوی مشارکت‌ها',
 'sp-contributions-username'    => 'نشانی آی‌پی یا نام کاربری:',
 'sp-contributions-submit'      => 'جستجو',
-
-'sp-newimages-showfrom' => 'نشان‌دادن تصویرهای جدید از $1 به بعد',
 
 # What links here
 'whatlinkshere'        => 'پیوندهای به این صفحه',
@@ -2092,17 +2100,13 @@ $1',
 'nocredits'        => 'اطلاعات سازندگان این صفحه موجود نیست.',
 
 # Spam protection
-'spamprotectiontitle'    => 'فیلتر هرزنگاری‌ها',
-'spamprotectiontext'     => 'از ذخیره کردن صفحه توسط سامانه پالایش هرزنگاری‌ها جلوگیری شد. 
+'spamprotectiontitle' => 'فیلتر هرزنگاری‌ها',
+'spamprotectiontext'  => 'از ذخیره کردن صفحه توسط سامانه پالایش هرزنگاری‌ها جلوگیری شد. 
 معمولاً این اتفاق زمانی می‌افتد که متن جدید صفحه، حاوی پیوندی به یک نشانی وب خارجی باشد.',
-'spamprotectionmatch'    => 'متن زیر چیزی‌است که فیلتر هرزه‌نگاری ما را به کارانداخت: $1',
-'subcategorycount'       => '$1 زیررده در این رده وجود {{PLURAL:$1|دارد|دارند}}.',
-'categoryarticlecount'   => '$1 مقاله در این رده وجود {{PLURAL:$1|دارد|دارند}}.',
-'category-media-count'   => '{{PLURAL:$1|یک|$1}} پرونده در این رده وجود دارد.',
-'listingcontinuesabbrev' => '(ادامه)',
-'spambot_username'       => 'هرزه‌تمیزکارِ مدیاویکی',
-'spam_reverting'         => 'واگردانی به آخرین نسخه‌ای که پیوندی به $1 ندارد.',
-'spam_blanking'          => 'تمام نسخه‌ها حاوی پیوند به $1 بود، در حال خالی کردن',
+'spamprotectionmatch' => 'متن زیر چیزی‌است که فیلتر هرزه‌نگاری ما را به کارانداخت: $1',
+'spambot_username'    => 'هرزه‌تمیزکارِ مدیاویکی',
+'spam_reverting'      => 'واگردانی به آخرین نسخه‌ای که پیوندی به $1 ندارد.',
+'spam_blanking'       => 'تمام نسخه‌ها حاوی پیوند به $1 بود، در حال خالی کردن',
 
 # Info page
 'infosubtitle'   => 'اطلاعات در مورد صفحه',
@@ -2121,19 +2125,19 @@ $1',
 'mw_math_mathml' => 'استفاده از MathML در صورت امکان (آزمایشی)',
 
 # Patrolling
-'markaspatrolleddiff'                 => 'به عنوان بررسی‌شده علامت بزن',
-'markaspatrolledtext'                 => 'این مقاله را به عنوان بررسی‌شده علامت بزن',
-'markedaspatrolled'                   => 'به عنوان بررسی‌شده علامت زده شد.',
-'markedaspatrolledtext'               => 'نسخه‌های انتخاب شده به عنوان بررسی‌شده علامت زده‌شد.',
-'rcpatroldisabled'                    => 'بررسی تغییرات اخیر غیر فعال است.',
-'rcpatroldisabledtext'                => 'امکان بررسی تغییرات اخیر در حال حاضر غیر فعال است.',
-'markedaspatrollederror'              => 'علامت بررسی زده نشد.',
-'markedaspatrollederrortext'          => 'باید یک نسخه را مشخص کنید تا برچسب به عنوان بررسی‌شده علامت بخورد.',
-'markedaspatrollederror-noautopatrol' => 'شما نمی‌توانید به تغییرات انجام شده توسط خودتان علامت بررسی‌شده بزنید.',
+'markaspatrolleddiff'                 => 'برجسب گشت بزن',
+'markaspatrolledtext'                 => 'به این مقاله برجسب گشت بزن',
+'markedaspatrolled'                   => 'برچسب گشت زده شد',
+'markedaspatrolledtext'               => 'به نسخهٔ مورد نظر برچسب گشت زده شد.',
+'rcpatroldisabled'                    => 'گشت تغییرات اخیر غیر فعال است',
+'rcpatroldisabledtext'                => 'امکان گشت تغییرات اخیر در حال حاضر غیر فعال است.',
+'markedaspatrollederror'              => 'برجسب گشت زده نشد',
+'markedaspatrollederrortext'          => 'باید یک نسخه را مشخص کنید تا برچسب گشت بخورد.',
+'markedaspatrollederror-noautopatrol' => 'شما نمی‌توانید به تغییرات انجام شده توسط خودتان برچسب گشت بزنید.',
 
 # Patrol log
-'patrol-log-page' => 'سیاههٔ نگهبانی',
-'patrol-log-line' => '$1 از $2 را به صورت پاسبانی‌شده علامت زد $3',
+'patrol-log-page' => 'سیاههٔ گشت',
+'patrol-log-line' => '$1 را $2 برچسب گشت زد $3',
 'patrol-log-auto' => '(خودکار)',
 'patrol-log-diff' => 'نسخه $1',
 
@@ -2166,9 +2170,14 @@ $1',
 'show-big-image-thumb' => '<small>اندازهٔ این پیش‌نمایش: &#8206;$1 × $2 پیکسل</small>',
 
 # Special:Newimages
-'newimages'    => 'گالری پرونده‌های جدید',
-'showhidebots' => '(ویرایش رُبات‌ها $1)',
-'noimages'     => 'چیزی برای دیدن نیست.',
+'newimages'             => 'گالری پرونده‌های جدید',
+'imagelisttext'         => 'در زیر فهرست $1 {{PLURAL:$1|تصویری|تصویری}} که $2 مرتب شده است آمده است.',
+'newimages-summary'     => 'این صفحهٔ ویژه آخرین پرونده‌های بارگذاری شده را نمایش می‌دهد',
+'showhidebots'          => '(ویرایش رُبات‌ها $1)',
+'noimages'              => 'چیزی برای دیدن نیست.',
+'ilsubmit'              => 'جستجو',
+'bydate'                => 'از روی تاریخ',
+'sp-newimages-showfrom' => 'نشان‌دادن تصویرهای جدید از $2، $1 به بعد',
 
 # Bad image list
 'bad_image_list' => 'اطلاعات را باید به این شکل وارد کنید:
@@ -2650,6 +2659,7 @@ $1',
 'unknown_extension_tag' => 'برچسب ناشناختهٔ افزونه «$1»',
 
 # Special:Version
+'version'                          => 'نسخه', # Not used as normal message but as header for the special page itself
 'version-extensions'               => 'افزونه‌های نصب شده',
 'version-specialpages'             => 'صفحه‌های ویژه',
 'version-parserhooks'              => 'قلاب‌های تجزیه‌گر',
@@ -2676,5 +2686,17 @@ $1',
 'filepath-summary' => 'این صفحهٔ ویژه نشانی کامل برای یک پرونده را نشان می‌دهد. تصاویر با کیفیت وضوح کامل نشان داده می‌شوند، سایر انواع پرونده با برنامه مخصوص به خودشان باز می‌شوند.
 
 نشانی پرونده را بدون پیشوند «{{ns:image}}:» وارد کنید.',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'جستجو برای پرونده‌های تکراری',
+'fileduplicatesearch-summary'  => 'جستجو برای پرونده‌های تکراری بر اساس مقدار درهم‌شدهٔ آن‌ها صورت می‌گیرد.
+
+نام پرونده را بدون پیشوند «{{ns:image}}:» وارد کنید.',
+'fileduplicatesearch-legend'   => 'جستجوی موارد تکراری',
+'fileduplicatesearch-filename' => 'نام پرونده:',
+'fileduplicatesearch-submit'   => 'جستجو',
+'fileduplicatesearch-info'     => '$1 Ã— $2 پیکسل<br />اندازه پرونده: $3<br />نوع MIME: $4',
+'fileduplicatesearch-result-1' => 'پروندهٔ «$1» مورد تکراری ندارد.',
+'fileduplicatesearch-result-n' => 'پروندهٔ «$1» دارای {{PLURAL:$2|یک مورد تکراری|$2 مورد تکراری}} است.',
 
 );

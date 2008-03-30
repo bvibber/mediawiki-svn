@@ -7,6 +7,7 @@
  * @author JeanVoisin
  * @author Siebrand
  * @author Nike
+ * @author SPQRobin
  */
 
 
@@ -111,7 +112,7 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'déc',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Classes',
 'pagecategories'        => '{{PLURAL:$1|Classe|Classes}}',
 'category_header'       => 'Articles dans classe "$1"',
@@ -515,11 +516,14 @@ Exemple:  {{ns:user}}:Foo/monobook.css (bon)  {{ns:user}}:Foo/Monobook.css (mauv
 <strong>Si ça ici est un changement juste, assayez donc encore.  Si ça travaille pas toujours, assayez de déconnecter et reconnecter.</strong>",
 'token_suffix_mismatch'     => "<strong>Votre changement pouvait pas être accepté parce que votre navigateur a mélangé les caractères de ponctuation dans l'indication des changements.  Le changement a été rejeté pour empêcher la corruption du texte de l'article.  Ça arrive des fois quand vous êtes après user un proxy sans nom.</strong>",
 'editing'                   => 'Changement de $1',
-'editinguser'               => 'Changement de <b>$1</b>',
 'editingsection'            => 'Changement de $1 (section)',
 'editingcomment'            => 'Changement de $1 (remarque)',
 'editconflict'              => 'Dispute de changement: $1',
-'explainconflict'           => "Quèqu'une d'autre a changé cette page depuis vous avez commencé à la changer.  La boëtte de changements en haut contient le texte de la page comme c'est asteur.  Vos changements sont montrés dans la boëtte de changements en bas.  Il foudra que vous mettez vos changements dans le texte qu'est là asteur.  <b>Juste</b> le texte dans la boëtte de changements en haut va être sauvé quand vous pèsez \"Sauvez\".<br />",
+'explainconflict'           => "Quèqu'une d'autre a changé cette page depuis vous avez commencé à la changer.
+La boëtte de changements en haut contient le texte de la page comme c'est asteur.
+Vos changements sont montrés dans la boëtte de changements en bas.
+Il foudra que vous mettez vos changements dans le texte qu'est là asteur.
+'''Juste''' le texte dans la boëtte de changements en haut va être sauvé quand vous pèsez \"Sauvez\".",
 'yourtext'                  => 'Votre texte',
 'storedversion'             => 'Version sauvée',
 'nonunicodebrowser'         => '<strong>ATTENTION: Votre navigateur supporte pas les caractères unicode.  Une solution de peu de durée a été trouvée pour que vous peuvez changer des articles sans problèmes.  Les caractères qui sont pas ASCII va apparaître dans la boëte de changements comme des codes hexadécimaux.</strong>',
@@ -562,7 +566,6 @@ Les notes d'ôtage pour cette page sont données ici pour vous aider:",
 'nohistory'           => 'Y a pas de changements pour cette page.',
 'revnotfound'         => 'Changement pas trouvé',
 'revnotfoundtext'     => "Le vieux changement de la page que vous avez demandé pouvait pas être trouvé.  Regardez donc l'adresse URL que vous avez usée.",
-'loadhist'            => 'Import de changements',
 'currentrev'          => 'Version courante',
 'revisionasof'        => 'Version depuis le $1',
 'revision-info'       => 'Version depuis le $1 par $2',
@@ -572,7 +575,6 @@ Les notes d'ôtage pour cette page sont données ici pour vous aider:",
 'cur'                 => 'cour.',
 'next'                => 'prochain',
 'last'                => 'dernier',
-'orig'                => 'orig.',
 'page_first'          => 'premier',
 'page_last'           => 'dernier',
 'histlegend'          => 'Choisir une version: Marquez les ronds pour les versions que vous voulez comparer et cliquez "enter" ou le bouton en bas.<br />
@@ -641,6 +643,9 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 # Preferences page
 'preferences'   => 'Réglage',
 'mypreferences' => 'Mon réglage',
+
+# User rights
+'editinguser' => 'Changement de <b>$1</b>',
 
 # Miscellaneous special pages
 'move'         => 'Renommer',

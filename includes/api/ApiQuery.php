@@ -58,6 +58,7 @@ class ApiQuery extends ApiBase {
 	);
 
 	private $mQueryListModules = array (
+		'allimages' => 'ApiQueryAllimages',
 		'allpages' => 'ApiQueryAllpages',
 		'alllinks' => 'ApiQueryAllLinks',
 		'allcategories' => 'ApiQueryAllCategories',
@@ -235,7 +236,7 @@ class ApiQuery extends ApiBase {
 
 	/**
 	 * Appends an element for each page in the current pageSet with the most general
-	 * information (id, title), plus any title normalizations and missing title/pageids/revids.
+	 * information (id, title), plus any title normalizations and missing or invalid title/pageids/revids.
 	 */
 	private function outputGeneralPageInfo() {
 
@@ -311,7 +312,9 @@ class ApiQuery extends ApiBase {
 			$vals['missing'] = '';
 			$pages[$fakeId] = $vals;
 		}
-
+		// Report any invalid titles
+		foreach ($pageSet->getInvalidTitles() as $fakeId => $title)
+			$pages[$fakeId] = array('title' => $title, 'invalid' => '');	
 		// Report any missing page ids
 		foreach ($pageSet->getMissingPageIDs() as $pageid) {
 			$pages[$pageid] = array (
@@ -423,12 +426,14 @@ class ApiQuery extends ApiBase {
 		$this->mAllowedGenerators = array();	// Will be repopulated
 
 		$astriks = str_repeat('--- ', 8);
+		$astriks2 = str_repeat('*** ', 10);
 		$msg .= "\n$astriks Query: Prop  $astriks\n\n";
 		$msg .= $this->makeHelpMsgHelper($this->mQueryPropModules, 'prop');
 		$msg .= "\n$astriks Query: List  $astriks\n\n";
 		$msg .= $this->makeHelpMsgHelper($this->mQueryListModules, 'list');
 		$msg .= "\n$astriks Query: Meta  $astriks\n\n";
 		$msg .= $this->makeHelpMsgHelper($this->mQueryMetaModules, 'meta');
+		$msg .= "\n\n$astriks2 Modules: continuation  $astriks2\n\n";
 
 		// Perform the base call last because the $this->mAllowedGenerators
 		// will be updated inside makeHelpMsgHelper()

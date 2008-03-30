@@ -51,11 +51,12 @@ $messages = array(
 'thursday'  => 'Цыппарæм',
 'saturday'  => 'Сабат',
 
-# Bits of text used by many pages
-'categories'      => 'Категоритæ',
-'pagecategories'  => 'Категоритæ',
-'category_header' => 'Категори "$1"',
-'subcategories'   => 'Дæлкатегоритæ',
+# Categories related messages
+'categories'         => 'Категоритæ',
+'categoriespagetext' => 'Мæнæ ахæм категоритæ ирон Википедийы ис.',
+'pagecategories'     => 'Категоритæ',
+'category_header'    => 'Категори "$1"',
+'subcategories'      => 'Дæлкатегоритæ',
 
 'qbfind'         => 'Агур',
 'qbspecialpages' => 'Сæрмагонд фæрстæ',
@@ -179,12 +180,10 @@ $3',
 'filename' => 'Файлы ном',
 'savefile' => 'Бавæр æй',
 
-# Image list
-'imagelist'    => 'Нывты номхыгъд',
-'ilsubmit'     => 'Агур',
-'byname'       => 'номмæ гæсгæ',
-'bydate'       => 'рæстæгмæ гæсгæ',
-'bysize'       => 'асмæ гæсгæ',
+# Special:Imagelist
+'imagelist' => 'Нывты номхыгъд',
+
+# Image description page
 'linkstoimage' => 'Ацы нывæй чи пайда кæны, ахæм статьятæ:',
 
 # Random page
@@ -198,7 +197,6 @@ $3',
 'nlinks'       => '$1 æрвитæн(ы)',
 'lonelypages'  => 'Сидзæр фæрстæ',
 'wantedpages'  => 'Хъæугæ фæрстæ',
-'allpages'     => 'Æппæт фæрстæ',
 'shortpages'   => 'Цыбыр фæрстæ',
 'longpages'    => 'Даргъ фæрстæ',
 'listusers'    => 'Архайджыты номхыгъд',
@@ -206,16 +204,14 @@ $3',
 'spheading'    => 'Сæрмагонд фæрстæ',
 'newpages'     => 'Ног фæрстæ',
 'ancientpages' => 'Зæронддæр фæрстæ',
-'intl'         => 'Æндæр æвзæгтæм æрвитæнтæ',
 'move'         => 'Ном баив',
 
-'categoriespagetext' => 'Мæнæ ахæм категоритæ ирон Википедийы ис.',
-'alphaindexline'     => '$1 (уыдоны ’хсæн цы статьятæ ис, фен) $2',
-
 # Special:Allpages
-'allarticles'  => 'Æппæт статьятæ',
-'allpagesprev' => 'фæстæмæ',
-'allpagesnext' => 'дарддæр',
+'allpages'       => 'Æппæт фæрстæ',
+'alphaindexline' => '$1 (уыдоны ’хсæн цы статьятæ ис, фен) $2',
+'allarticles'    => 'Æппæт статьятæ',
+'allpagesprev'   => 'фæстæмæ',
+'allpagesnext'   => 'дарддæр',
 
 # E-mail user
 'mailnologintext' => 'Фыстæгтæ æрвитынмæ хъуамæ [[Special:Userlogin|системæйæн дæхи бавдисай]] æмæ дæ бæлвырд электронон посты адрис [[Special:Preferences|ныффыссай]].',
@@ -267,11 +263,9 @@ $3',
 # Attribution
 'others' => 'æндæртæ',
 
-# Spam protection
-'subcategorycount'     => 'Ацы категорийы мидæг $1 дæлкатегорийы ис.',
-'categoryarticlecount' => 'Ацы категорийы мидæг $1 статьяйы ис.',
-
 # Special:Newimages
 'newimages' => 'Ног нывты галерей',
+'ilsubmit'  => 'Агур',
+'bydate'    => 'рæстæгмæ гæсгæ',
 
 );

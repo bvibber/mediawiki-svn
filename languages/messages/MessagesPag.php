@@ -14,7 +14,7 @@ $messages = array(
 'underline-always' => 'Naynay',
 'underline-never'  => 'Andin-balot',
 
-# Bits of text used by many pages
+# Categories related messages
 'category_header' => 'Saray artikulo ed category ya "$1"',
 
 'about'          => 'Nipakar ed',
@@ -136,7 +136,6 @@ $messages = array(
 'cantcreateaccounttitle' => 'Aga makagawa na account',
 
 # History pages
-'loadhist'  => 'Ilulugan so awaran na bolong',
 'last'      => 'sampot',
 'histfirst' => 'Sankaunaan',
 'histlast'  => 'Sankautetan',
@@ -182,12 +181,12 @@ $messages = array(
 'sourcefilename'  => 'Filename na pinanlapuan:',
 'watchthisupload' => 'Bantayan yan bolong',
 
-# Image list
-'getimagelist'     => 'aaleen so listaan na file',
-'ilsubmit'         => 'Anapen',
+# Special:Imagelist
+'imagelist_name' => 'Ngaran',
+
+# Image description page
 'imagelinks'       => 'Saray Gawing',
 'noimage-linktext' => 'I-segep ya',
-'imagelist_name'   => 'Ngaran',
 
 # MIME search
 'download' => 'mangileksab (download)',
@@ -203,7 +202,6 @@ $messages = array(
 'withoutinterwiki-header' => 'Anggapoy gawin paulad version na arum ran salita so ontombok ran bolobolong:',
 
 # Miscellaneous special pages
-'allpages'       => 'Amin ya bolobolong',
 'shortpages'     => 'Antikey ran bolong',
 'longpages'      => 'Andokoy ran bolong',
 'protectedpages' => 'Iyayagel ran bolobolong',
@@ -218,13 +216,13 @@ $messages = array(
 'booksources-search-legend' => 'Mananap na saray libron pinanlapuan',
 'booksources-go'            => 'Ula',
 
-'alphaindexline' => '$1 anggad $2',
-
 # Special:Log
 'all-logs-page'     => 'Amin ran log',
 'log-search-submit' => 'Ula',
 
 # Special:Allpages
+'allpages'          => 'Amin ya bolobolong',
+'alphaindexline'    => '$1 anggad $2',
 'nextpage'          => 'Ontombok ya page ($1)',
 'allpagesfrom'      => 'Ipanengneng ray bolobolong ya manlapod:',
 'allarticles'       => 'Amin ran bolobolong',
@@ -270,7 +268,7 @@ No labay mon ekalen may bolong diad listaan na babantayan, tapik mo labat so \"e
 Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'deletedarticle'      => 'binural so "[[$1]]"',
 'deletecomment'       => 'Aken buralen',
-'confirmprotect'      => 'Palitaen so pangiyagel',
+'protect-legend'      => 'Palitaen so pangiyagel',
 'protect-level-sysop' => 'Sysops labat',
 
 # Undelete
@@ -307,7 +305,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'contribslink'       => 'saray entolong to',
 
 # Move page
-'move-page-legend'                => 'Iyales so bolong',
+'move-page-legend'        => 'Iyales so bolong',
 'movearticle'             => 'Iyales so bolong',
 'movepagebtn'             => 'Iyales so bolong',
 'pagemovedsub'            => 'Asumpal lan inyales',
@@ -347,6 +345,9 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 
 # Attribution
 'lastmodifiedatby' => 'Sampot ya binalo yan bolong nen agew ya $2, $1 nen $3.', # $1 date, $2 time, $3 user
+
+# Special:Newimages
+'ilsubmit' => 'Anapen',
 
 # EXIF tags
 'exif-filesource' => 'File na pinanlapuan',

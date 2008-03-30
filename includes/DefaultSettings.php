@@ -461,11 +461,6 @@ $wgHashedSharedUploadDirectory = true;
  */
 $wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
 
-/**
- * Experimental feature still under debugging.
- */
-$wgFileRedirects = false;
-
 
 #
 # Email settings
@@ -585,47 +580,60 @@ $wgCheckDBSchema = true;
  */
 $wgSharedDB = null;
 
-# Database load balancer
-# This is a two-dimensional array, an array of server info structures
-# Fields are:
-#   host:        Host name
-#   dbname:      Default database name
-#   user:        DB user
-#   password:    DB password
-#   type:        "mysql" or "postgres"
-#   load:        ratio of DB_SLAVE load, must be >=0, the sum of all loads must be >0
-#   groupLoads:  array of load ratios, the key is the query group name. A query may belong
-#                to several groups, the most specific group defined here is used.
-#
-#   flags:       bit field
-#                   DBO_DEFAULT -- turns on DBO_TRX only if !$wgCommandLineMode (recommended)
-#                   DBO_DEBUG -- equivalent of $wgDebugDumpSql
-#                   DBO_TRX -- wrap entire request in a transaction
-#                   DBO_IGNORE -- ignore errors (not useful in LocalSettings.php)
-#                   DBO_NOBUFFER -- turn off buffering (not useful in LocalSettings.php)
-#
-#   max lag:     (optional) Maximum replication lag before a slave will taken out of rotation
-#   max threads: (optional) Maximum number of running threads
-#
-#   These and any other user-defined properties will be assigned to the mLBInfo member
-#   variable of the Database object.
-#
-# Leave at false to use the single-server variables above. If you set this 
-# variable, the single-server variables will generally be ignored (except 
-# perhaps in some command-line scripts). 
-#
-# The first server listed in this array (with key 0) will be the master. The 
-# rest of the servers will be slaves. To prevent writes to your slaves due to 
-# accidental misconfiguration or MediaWiki bugs, set read_only=1 on all your 
-# slaves in my.cnf. You can set read_only mode at runtime using:
-#
-#     SET @@read_only=1;
-#
-# Since the effect of writing to a slave is so damaging and difficult to clean
-# up, we at Wikimedia set read_only=1 in my.cnf on all our DB servers, even 
-# our masters, and then set read_only=0 on masters at runtime. 
-#
+/**
+ * Database load balancer
+ * This is a two-dimensional array, an array of server info structures
+ * Fields are:
+ *   host:        Host name
+ *   dbname:      Default database name
+ *   user:        DB user
+ *   password:    DB password
+ *   type:        "mysql" or "postgres"
+ *   load:        ratio of DB_SLAVE load, must be >=0, the sum of all loads must be >0
+ *   groupLoads:  array of load ratios, the key is the query group name. A query may belong
+ *                to several groups, the most specific group defined here is used.
+ *
+ *   flags:       bit field
+ *                   DBO_DEFAULT -- turns on DBO_TRX only if !$wgCommandLineMode (recommended)
+ *                   DBO_DEBUG -- equivalent of $wgDebugDumpSql
+ *                   DBO_TRX -- wrap entire request in a transaction
+ *                   DBO_IGNORE -- ignore errors (not useful in LocalSettings.php)
+ *                   DBO_NOBUFFER -- turn off buffering (not useful in LocalSettings.php)
+ *
+ *   max lag:     (optional) Maximum replication lag before a slave will taken out of rotation
+ *   max threads: (optional) Maximum number of running threads
+ *
+ *   These and any other user-defined properties will be assigned to the mLBInfo member
+ *   variable of the Database object.
+ *
+ * Leave at false to use the single-server variables above. If you set this 
+ * variable, the single-server variables will generally be ignored (except 
+ * perhaps in some command-line scripts). 
+ *
+ * The first server listed in this array (with key 0) will be the master. The 
+ * rest of the servers will be slaves. To prevent writes to your slaves due to 
+ * accidental misconfiguration or MediaWiki bugs, set read_only=1 on all your 
+ * slaves in my.cnf. You can set read_only mode at runtime using:
+ *
+ *     SET @@read_only=1;
+ *
+ * Since the effect of writing to a slave is so damaging and difficult to clean
+ * up, we at Wikimedia set read_only=1 in my.cnf on all our DB servers, even 
+ * our masters, and then set read_only=0 on masters at runtime. 
+ */
 $wgDBservers		= false;
+
+/**
+ * Load balancer factory configuration
+ * To set up a multi-master wiki farm, set the class here to something that 
+ * can return a LoadBalancer with an appropriate master on a call to getMainLB().
+ * The class identified here is responsible for reading $wgDBservers, 
+ * $wgDBserver, etc., so overriding it may cause those globals to be ignored.
+ *
+ * The LBFactory_Multi class is provided for this purpose, please see 
+ * includes/LBFactory_Multi.php for configuration information.
+ */
+$wgLBFactoryConf    = array( 'class' => 'LBFactory_Simple' );
 
 /** How long to wait for a slave to catch up to the master */
 $wgMasterWaitTimeout = 10;
@@ -680,19 +688,6 @@ $wgDBmysql5			= false;
  * Array numeric key => database name
  */
 $wgLocalDatabases = array();
-
-/**
- * For multi-wiki clusters with multiple master servers; if an alternate
- * is listed for the requested database, a connection to it will be opened
- * instead of to the current wiki's regular master server when cross-wiki
- * data operations are done from here.
- *
- * Requires that the other server be accessible by network, with the same
- * username/password as the primary.
- *
- * eg $wgAlternateMaster['enwiki'] = 'ariel';
- */
-$wgAlternateMaster = array();
 
 /**
  * Object cache settings
@@ -920,6 +915,7 @@ $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
  * stop the parser before it hits the xdebug limit.
  */
 $wgMaxTemplateDepth = 40;
+$wgMaxPPExpandDepth = 40;
 
 $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
@@ -1048,7 +1044,8 @@ $wgBlockAllowsUTEdit    = false; # Blocks allow users to edit their own user tal
 $wgSysopEmailBans       = true; # Allow sysops to ban users from accessing Emailuser
 
 # Pages anonymous user may see as an array, e.g.:
-# array ( "Main Page", "Special:Userlogin", "Wikipedia:Help");
+# array ( "Main Page", "Wikipedia:Help");
+# Special:Userlogin and Special:Resetpass are always whitelisted.
 # NOTE: This will only work if $wgGroupPermissions['*']['read']
 # is false -- see below. Otherwise, ALL pages are accessible,
 # regardless of this setting.
@@ -1083,23 +1080,23 @@ $wgEmailConfirmToEdit=false;
 $wgGroupPermissions = array();
 
 // Implicit group for all visitors
-$wgGroupPermissions['*'    ]['createaccount']   = true;
-$wgGroupPermissions['*'    ]['read']            = true;
-$wgGroupPermissions['*'    ]['edit']            = true;
-$wgGroupPermissions['*'    ]['createpage']      = true;
-$wgGroupPermissions['*'    ]['createtalk']      = true;
+$wgGroupPermissions['*'    ]['createaccount']    = true;
+$wgGroupPermissions['*'    ]['read']             = true;
+$wgGroupPermissions['*'    ]['edit']             = true;
+$wgGroupPermissions['*'    ]['createpage']       = true;
+$wgGroupPermissions['*'    ]['createtalk']       = true;
 
 // Implicit group for all logged-in accounts
-$wgGroupPermissions['user' ]['move']            = true;
-$wgGroupPermissions['user' ]['read']            = true;
-$wgGroupPermissions['user' ]['edit']            = true;
-$wgGroupPermissions['user' ]['createpage']      = true;
-$wgGroupPermissions['user' ]['createtalk']      = true;
-$wgGroupPermissions['user' ]['upload']          = true;
-$wgGroupPermissions['user' ]['reupload']        = true;
-$wgGroupPermissions['user' ]['reupload-shared'] = true;
-$wgGroupPermissions['user' ]['minoredit']       = true;
-$wgGroupPermissions['user' ]['purge']           = true; // can use ?action=purge without clicking "ok"
+$wgGroupPermissions['user' ]['move']             = true;
+$wgGroupPermissions['user' ]['read']             = true;
+$wgGroupPermissions['user' ]['edit']             = true;
+$wgGroupPermissions['user' ]['createpage']       = true;
+$wgGroupPermissions['user' ]['createtalk']       = true;
+$wgGroupPermissions['user' ]['upload']           = true;
+$wgGroupPermissions['user' ]['reupload']         = true;
+$wgGroupPermissions['user' ]['reupload-shared']  = true;
+$wgGroupPermissions['user' ]['minoredit']        = true;
+$wgGroupPermissions['user' ]['purge']            = true; // can use ?action=purge without clicking "ok"
 
 // Implicit group for accounts that pass $wgAutoConfirmAge
 $wgGroupPermissions['autoconfirmed']['autoconfirmed'] = true;
@@ -1110,47 +1107,48 @@ $wgGroupPermissions['emailconfirmed']['emailconfirmed'] = true;
 
 // Users with bot privilege can have their edits hidden
 // from various log pages by default
-$wgGroupPermissions['bot'  ]['bot']             = true;
-$wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
-$wgGroupPermissions['bot'  ]['nominornewtalk']  = true;
-$wgGroupPermissions['bot'  ]['autopatrol']      = true;
+$wgGroupPermissions['bot'  ]['bot']              = true;
+$wgGroupPermissions['bot'  ]['autoconfirmed']    = true;
+$wgGroupPermissions['bot'  ]['nominornewtalk']   = true;
+$wgGroupPermissions['bot'  ]['autopatrol']       = true;
 $wgGroupPermissions['bot'  ]['suppressredirect'] = true;
-$wgGroupPermissions['bot'  ]['apihighlimits']   = true;
+$wgGroupPermissions['bot'  ]['apihighlimits']    = true;
+#$wgGroupPermissions['bot'  ]['editprotected']    = true; // can edit all protected pages without cascade protection enabled
 
 // Most extra permission abilities go to this group
-$wgGroupPermissions['sysop']['block']           = true;
-$wgGroupPermissions['sysop']['createaccount']   = true;
-$wgGroupPermissions['sysop']['delete']          = true;
-$wgGroupPermissions['sysop']['bigdelete']       = true; // can be separately configured for pages with > $wgDeleteRevisionsLimit revs
-$wgGroupPermissions['sysop']['deletedhistory'] 	= true; // can view deleted history entries, but not see or restore the text
-$wgGroupPermissions['sysop']['undelete']	= true;
-$wgGroupPermissions['sysop']['editinterface']   = true;
-$wgGroupPermissions['sysop']['editusercssjs']   = true;
-$wgGroupPermissions['sysop']['import']          = true;
-$wgGroupPermissions['sysop']['importupload']    = true;
-$wgGroupPermissions['sysop']['move']            = true;
-$wgGroupPermissions['sysop']['patrol']          = true;
-$wgGroupPermissions['sysop']['autopatrol']      = true;
-$wgGroupPermissions['sysop']['protect']         = true;
-$wgGroupPermissions['sysop']['editprotected']   = true;
-$wgGroupPermissions['sysop']['proxyunbannable'] = true;
-$wgGroupPermissions['sysop']['rollback']        = true;
-$wgGroupPermissions['sysop']['trackback']       = true;
-$wgGroupPermissions['sysop']['upload']          = true;
-$wgGroupPermissions['sysop']['reupload']        = true;
-$wgGroupPermissions['sysop']['reupload-shared'] = true;
-$wgGroupPermissions['sysop']['unwatchedpages']  = true;
-$wgGroupPermissions['sysop']['autoconfirmed']   = true;
-$wgGroupPermissions['sysop']['upload_by_url']   = true;
-$wgGroupPermissions['sysop']['ipblock-exempt']	= true;
-$wgGroupPermissions['sysop']['blockemail']      = true;
-$wgGroupPermissions['sysop']['markbotedits']	= true;
+$wgGroupPermissions['sysop']['block']            = true;
+$wgGroupPermissions['sysop']['createaccount']    = true;
+$wgGroupPermissions['sysop']['delete']           = true;
+$wgGroupPermissions['sysop']['bigdelete']        = true; // can be separately configured for pages with > $wgDeleteRevisionsLimit revs
+$wgGroupPermissions['sysop']['deletedhistory']   = true; // can view deleted history entries, but not see or restore the text
+$wgGroupPermissions['sysop']['undelete']         = true;
+$wgGroupPermissions['sysop']['editinterface']    = true;
+$wgGroupPermissions['sysop']['editusercssjs']    = true;
+$wgGroupPermissions['sysop']['import']           = true;
+$wgGroupPermissions['sysop']['importupload']     = true;
+$wgGroupPermissions['sysop']['move']             = true;
+$wgGroupPermissions['sysop']['patrol']           = true;
+$wgGroupPermissions['sysop']['autopatrol']       = true;
+$wgGroupPermissions['sysop']['protect']          = true;
+$wgGroupPermissions['sysop']['proxyunbannable']  = true;
+$wgGroupPermissions['sysop']['rollback']         = true;
+$wgGroupPermissions['sysop']['trackback']        = true;
+$wgGroupPermissions['sysop']['upload']           = true;
+$wgGroupPermissions['sysop']['reupload']         = true;
+$wgGroupPermissions['sysop']['reupload-shared']  = true;
+$wgGroupPermissions['sysop']['unwatchedpages']   = true;
+$wgGroupPermissions['sysop']['autoconfirmed']    = true;
+$wgGroupPermissions['sysop']['upload_by_url']    = true;
+$wgGroupPermissions['sysop']['ipblock-exempt']   = true;
+$wgGroupPermissions['sysop']['blockemail']       = true;
+$wgGroupPermissions['sysop']['markbotedits']     = true;
 $wgGroupPermissions['sysop']['suppressredirect'] = true;
-$wgGroupPermissions['sysop']['apihighlimits']   = true;
-#$wgGroupPermissions['sysop']['mergehistory']    = true;
+$wgGroupPermissions['sysop']['apihighlimits']    = true;
+$wgGroupPermissions['sysop']['browsearchive']    = true;
+#$wgGroupPermissions['sysop']['mergehistory']     = true;
 
 // Permission to change users' group assignments
-$wgGroupPermissions['bureaucrat']['userrights'] = true;
+$wgGroupPermissions['bureaucrat']['userrights']  = true;
 // Permission to change users' groups assignments across wikis
 #$wgGroupPermissions['bureaucrat']['userrights-interwiki'] = true;
 
@@ -1326,7 +1324,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '121';
+$wgStyleVersion = '127';
 
 
 # Server-side caching:
@@ -1680,8 +1678,8 @@ $wgCheckFileExtensions = true;
  */
 $wgStrictFileExtensions = true;
 
-/** Warn if uploaded files are larger than this (in bytes)*/
-$wgUploadSizeWarning = 150 * 1024;
+/** Warn if uploaded files are larger than this (in bytes), or false to disable*/
+$wgUploadSizeWarning = false;
 
 /** For compatibility with old installations set to false */
 $wgPasswordSalt = true;
@@ -1727,6 +1725,7 @@ $wgMediaHandlers = array(
 	'image/png' => 'BitmapHandler',
 	'image/gif' => 'BitmapHandler',
 	'image/x-ms-bmp' => 'BmpHandler',
+	'image/x-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler', // official
 	'image/svg' => 'SvgHandler', // compat
 	'image/vnd.djvu' => 'DjVuHandler', // official
@@ -2874,10 +2873,10 @@ $wgEnableWriteAPI = false;
 $wgAPIModules = array();
 
 /**
- * Minimum length of list=usercontribs's ucuserprefix parameter
- * Setting this to a low value can open DOS windows on large wikis
+ * Maximum amount of rows to scan in a DB query in the API
+ * The default value is generally fine
  */
-$wgAPIUCUserPrefixMinLength = 3;
+$wgAPIMaxDBRows = 5000;
 
 /**
  * Parser test suite files to be run by parserTests.php when no specific
@@ -2925,7 +2924,13 @@ $wgSlaveLagCritical = 30;
 /**
  * Parser configuration. Associative array with the following members:
  *
- *     class        The class name
+ *  class             The class name
+ *  preprocessorClass The preprocessor class, by default it is Preprocessor_DOM
+ *                    but it has a dependency of the dom module of PHP. If you
+ *                    don't have this module, you can use Preprocessor_Hash wich
+ *                    has not this depedency.
+ *                    It has no effect with Parser_OldPP parser class.
+ *                    
  * 
  * The entire associative array will be passed through to the constructor as 
  * the first parameter. Note that only Setup.php can use this variable -- 
@@ -2936,6 +2941,7 @@ $wgSlaveLagCritical = 30;
  */
 $wgParserConf = array( 
 	'class' => 'Parser',
+	'preprocessorClass' => 'Preprocessor_DOM',
 );
 
 /**
@@ -2955,3 +2961,9 @@ $wgExceptionHooks = array();
 $wgPagePropLinkInvalidations = array(
 	'hiddencat' => 'categorylinks',
 );
+
+/**
+ * Maximum number of links to a redirect page listed on
+ * Special:Whatlinkshere/RedirectDestination
+ */
+$wgMaxRedirectLinksRetrieved = 500;

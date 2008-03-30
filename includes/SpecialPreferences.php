@@ -343,7 +343,6 @@ class PreferencesForm {
 
 		$msg = '';
 		if ( !wfRunHooks( 'SavePreferences', array( $this, $wgUser, &$msg ) ) ) {
-			print "(($msg))";
 			$this->mainPrefsForm( 'error', $msg );
 			return;
 		}
@@ -357,7 +356,7 @@ class PreferencesForm {
 			return;
 		}
 
-		$wgOut->setParserOptions( ParserOptions::newFromUser( $wgUser ) );
+		$wgOut->parserOptions( ParserOptions::newFromUser( $wgUser ) );
 		$this->mainPrefsForm( $error === false ? 'success' : 'error', $error);
 	}
 

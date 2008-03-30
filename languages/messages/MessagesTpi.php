@@ -5,6 +5,9 @@
  *
  * @author Wantok
  * @author Niklas Laxström
+ * @author לערי ריינהארט
+ * @author Siebrand
+ * @author Wytukaze
  */
 
 $messages = array(
@@ -55,8 +58,9 @@ $messages = array(
 'fri'       => 'Frai',
 'sat'       => 'Sar',
 
-# Bits of text used by many pages
+# Categories related messages
 'categories'            => 'Ol grup',
+'categoriespagetext'    => 'Ol dispela grup istap.',
 'pagecategories'        => '{{PLURAL:$1|Grup|Ol grup}}',
 'category_header'       => 'Ol pes insait long grup "$1"',
 'subcategories'         => 'Ol grup insait long grup',
@@ -164,13 +168,13 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'mostlinkedcategories'    => 'Ol grup igat planti link i kam long ol',
 'mostlinkedtemplates'     => 'Ol templet igat planti link i kam long ol',
 'mostcategories'          => 'Ol pes bilong buk istap insait long planti grup',
-'allpages'                => 'Olgeta pes',
 'specialpages'            => 'Ol sipesol pes',
 'move'                    => 'Surikim',
 'movethispage'            => 'Surikim dispela pes',
 'unusedcategoriestext'    => 'Ol dispela grup istap yet, tasol i no gat wanpela pes o grup i stap insait long ol.',
 
-'categoriespagetext' => 'Ol dispela grup istap.',
+# Special:Allpages
+'allpages' => 'Olgeta pes',
 
 # Watchlist
 'watchlist'            => 'Lukautbuk bilong mi',
@@ -224,11 +228,6 @@ Yu mas painim narapela nem.',
 
 # Tooltip help for the actions
 'tooltip-ca-nstab-category' => 'Lukim grup',
-
-# Spam protection
-'subcategorycount'     => 'Igat {{PLURAL:$1|wanpela grup|$1 grup}} insait long dispela grup.',
-'categoryarticlecount' => 'Igat {{PLURAL:$1|wanpela pes bilong buk|$1 pes bilong buk}} insait long dispela grup.',
-'category-media-count' => 'Igat {{PLURAL:$1|wanpela|$1}} media (olsem piksa) insait long dispela grup.',
 
 # Watchlist editor
 'watchlistedit-numitems'       => 'Igat {{PLURAL:$1|1 samting|$1 samting}} insait long lukautbuk bilong yu (ol pes bilong toktok i no stap long dispela namba).',

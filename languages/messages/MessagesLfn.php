@@ -105,13 +105,15 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'des',
 
-# Bits of text used by many pages
-'categories'            => 'Categorias',
-'pagecategories'        => '{{PLURAL:$1|Categoria|Categorias}}',
-'category_header'       => 'Articles en categoria "$1"',
-'subcategories'         => 'Sucategorias',
-'category-media-header' => 'Medio en catagoria "$1"',
-'category-empty'        => "''Aora, esta categoria no conteni pajes o medio.''",
+# Categories related messages
+'categories'             => 'Categorias',
+'categoriespagetext'     => 'Es la categorias seguente en la vici.',
+'pagecategories'         => '{{PLURAL:$1|Categoria|Categorias}}',
+'category_header'        => 'Articles en categoria "$1"',
+'subcategories'          => 'Sucategorias',
+'category-media-header'  => 'Medio en catagoria "$1"',
+'category-empty'         => "''Aora, esta categoria no conteni pajes o medio.''",
+'listingcontinuesabbrev' => 'cont.',
 
 'mainpagetext'      => "<big>'''MediaWiki es aora instalada.'''</big>",
 'mainpagedocfooter' => 'Atenda la [http://meta.wikimedia.org/wiki/Help:Contents Gida per Usores] per informa supra la usa de la programa de vici.
@@ -364,7 +366,6 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'cur'                 => 'aora',
 'next'                => 'seguente',
 'last'                => 'dife',
-'orig'                => 'orij',
 'page_first'          => 'prima',
 'page_last'           => 'final',
 'histlegend'          => 'Diferente eleje: Marca la caxas de radio de esta varias per compare e clica entra o la boton a la funda.<br />
@@ -401,6 +402,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'savedprefs'        => 'Tu preferis es fisada',
 
 # User rights
+'userrights'     => 'Dirije de la diretos de usores', # Not used as normal message but as header for the special page itself
 'saveusergroups' => 'Fisa la grupo de usores',
 
 'grouppage-sysop' => '{{ns:project}}:Dirijores',
@@ -414,7 +416,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'recentchangestext'              => 'Asi la lista de cambias resente en la vici.',
 'recentchanges-feed-description' => 'Seque la cambias plu resente a la vici en esta flue.',
 'rcnote'                         => 'Su es {{PLURAL:$1|cambia|cambias}} en la presedente {{PLURAL:$2|dia|dias}}, de $3.',
-'rcnotefrom'                     => 'A su es la cambias de <b>$2</b> (asta <b>$1</b> es mostrada).',
+'rcnotefrom'                     => "A su es la cambias de '''$2''' (asta '''$1''' es mostrada).",
 'rclistfrom'                     => 'Mostra cambias nova, comensante de $1',
 'rcshowhideminor'                => '$1 editas minor',
 'rcshowhidebots'                 => '$1 botes',
@@ -444,10 +446,10 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'savefile'      => 'Fisa fix',
 'uploadedimage' => '"[[$1]]" es enviada',
 
-# Image list
-'imagelist'                 => 'Lista de imajes',
-'ilsubmit'                  => 'Xerca',
-'imgdelete'                 => 'sutr',
+# Special:Imagelist
+'imagelist' => 'Lista de imajes',
+
+# Image description page
 'filehist'                  => 'Istoria de fix',
 'filehist-help'             => 'Clica a un data/tempo per vide la fix como el ia aperi alora.',
 'filehist-current'          => 'aora',
@@ -512,7 +514,6 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'mostcategories'          => 'Pajes con la plu categorias',
 'mostimages'              => 'Imajes a ce es la plu lias',
 'mostrevisions'           => 'Pajes con la plu revisas',
-'allpages'                => 'Tota pajes',
 'prefixindex'             => 'Catalogo de prefises',
 'shortpages'              => 'Pajes corta',
 'longpages'               => 'Pajes longa',
@@ -532,11 +533,6 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 # Book sources
 'booksources' => 'Orijines de libros',
 
-'categoriespagetext' => 'Es la categorias seguente en la vici.',
-'userrights'         => 'Dirije de la diretos de usores',
-'alphaindexline'     => '$1 a $2',
-'version'            => 'Varia',
-
 # Special:Log
 'specialloguserlabel'  => 'Usor:',
 'speciallogtitlelabel' => 'Titulo:',
@@ -544,6 +540,8 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'all-logs-page'        => 'Tota catalogos',
 
 # Special:Allpages
+'allpages'       => 'Tota pajes',
+'alphaindexline' => '$1 a $2',
 'nextpage'       => 'Paje seguente ($1)',
 'prevpage'       => 'Paje presedente ($1)',
 'allpagesfrom'   => 'Mostra pajes comensante a:',
@@ -578,7 +576,7 @@ Si tu vole sutrae la paje de tu lista de pajes oservada en la futur, clica a \"n
 'watchlist-hide-own'   => 'Asconde me editas',
 'watchlist-hide-minor' => 'Asconde editas minor',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Oserva...',
 'unwatching' => 'No oserva...',
 
@@ -602,8 +600,8 @@ Vide $2 per un catalogo de sutraes resente.',
 'protectlogpage'              => 'Catalogo de protejes',
 'protectedarticle'            => '"[[$1]]" protejeda',
 'unprotectedarticle'          => "''[[$1]]'' desprotejeda",
-'protectsub'                  => '(Fisa nivel de proteje a "$1")',
-'confirmprotect'              => 'Aproba la proteje',
+'protect-title'               => 'Fisa nivel de proteje a "$1"',
+'protect-legend'              => 'Aproba la proteje',
 'protectcomment'              => 'Razona per proteje',
 'protectexpiry'               => 'Fini:',
 'protect_expiry_invalid'      => 'Ora de fini no es legal.',
@@ -671,13 +669,19 @@ Asi es la ajustas presente per la paje <strong>$1</strong>:',
 'blocklogentry'     => 'impedida [[$1]] con un tempo de fini de $2 $3',
 
 # Move page
-'move-page-legend'         => 'Move paje',
-'movepagetext'     => "Usa la forma a su va cambia la nom de un paje, e va move tota se istoria a la nom nova.  La titulo vea va deveni un paje de redirije a la titulo nova.  Lias a la titulo de la paje vea no va es cambiada; Tu debe vide serta ce es redirijes duple o rompeda.  Tu es respondable per es serta ce la lias va continua vade a la locas intendeda.
+'move-page-legend' => 'Move paje',
+'movepagetext'     => "Usa la forma a su va cambia la nom de un paje, e va move tota se istoria a la nom nova.
+La titulo vea va deveni un paje de redirije a la titulo nova.
+Lias a la titulo de la paje vea no va es cambiada;
+Tu debe vide serta ce es redirijes duple o rompeda.
+Tu es respondable per es serta ce la lias va continua vade a la locas intendeda.
 
-Nota ce la paje '''no''' va es moveda si es ja un paje a la titulo nova, sin el es vacua o un redirije e no ave un istoria de editas presedente.  Esta sinifia ce tu pote cambia la nom de un paje a la loca presedente si tu era, e tu no pote scrive supra un paje ce esiste ja.
+Nota ce la paje '''no''' va es moveda si es ja un paje a la titulo nova, sin el es vacua o un redirije e no ave un istoria de editas presedente.
+Esta sinifia ce tu pote cambia la nom de un paje a la loca presedente si tu era, e tu no pote scrive supra un paje ce esiste ja.
 
-<b>AVISA!</b>
-Esta pote es un cambia dramos e nonespetada per un paje poplal; per favore, es serta ce tu comprende la resulta de esta ata ante tu continua.",
+'''AVISA!'''
+Esta pote es un cambia dramos e nonespetada per un paje poplal;
+per favore, es serta ce tu comprende la resulta de esta ata ante tu continua.",
 'movepagetalktext' => "La paje de discuta de esta paje va es moveda automatica con el '''eseta si:'''
 *Un paje de discuta ce no es vacua esiste ja su la nom nova, o
 *Tu cambia la indica en la caxa su.
@@ -764,12 +768,6 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 # Attribution
 'others' => 'otras',
 
-# Spam protection
-'subcategorycount'       => 'Es $1 {{PLURAL:$1|sucategoria|sucategorias}} en esta categoria.',
-'categoryarticlecount'   => 'Es $1 {{PLURAL:$1|article|articles}} en esta categoria.',
-'category-media-count'   => 'Es {{PLURAL:$1|$1 fix|$1 fixes}} en esta categoria.',
-'listingcontinuesabbrev' => 'cont.',
-
 # Browsing diffs
 'previousdiff' => '← Difere presedente',
 'nextdiff'     => 'Difere seguente →',
@@ -783,6 +781,7 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 
 # Special:Newimages
 'newimages' => 'Imajes nova',
+'ilsubmit'  => 'Xerca',
 
 # Bad image list
 'bad_image_list' => 'La forma es...
@@ -816,5 +815,8 @@ Cada lias seguente a la mesma linia es considerada es esetas, ce es, la pajes do
 'watchlisttools-view' => 'Vide cambias pertinente',
 'watchlisttools-edit' => 'Vide e edita la lista de pajes oservada',
 'watchlisttools-raw'  => 'Edita la lista rua de pajes oservada',
+
+# Special:Version
+'version' => 'Varia', # Not used as normal message but as header for the special page itself
 
 );

@@ -142,10 +142,7 @@ class ParserTest {
 		} else {
 			global $IP;
 			$relative = wfRelativePath( $filename, $IP );
-			print $this->term->color( 1 ) .
-				"Reading tests from \"$relative\"..." .
-				$this->term->reset() .
-				"\n";
+			$this->showRunFile( $relative );
 		}
 
 		$data = array();
@@ -316,7 +313,7 @@ class ParserTest {
 			} else if (preg_match('/\\bcat\\b/i', $opts)) {
 				global $wgOut;
 				$wgOut->addCategoryLinks($output->getCategories());
-				$out = $this->tidy ( implode( ' ', $wgOut->getCategoryLinks() ) );
+				$out = $this->tidy( implode( ' ', $wgOut->getCategoryLinks() ) );
 			}
 
 			$result = $this->tidy($result);
@@ -405,6 +402,14 @@ class ParserTest {
 			'wgUseTidy' => false,
 			'wgDefaultLanguageVariant' => $variant,
 			'wgVariantArticlePath' => false,
+			'wgGroupPermissions' => array( '*' => array(
+				'createaccount' => true,
+				'read'          => true,
+				'edit'          => true,
+				'createpage'    => true,
+				'createtalk'    => true,
+			) ),
+			'wgDefaultExternalStore' => array(),
 			);
 		$this->savedGlobals = array();
 		foreach( $settings as $var => $val ) {
@@ -415,7 +420,6 @@ class ParserTest {
 		$GLOBALS['wgLang'] = $langObj;
 		$GLOBALS['wgContLang'] = $langObj;
 
-		$GLOBALS['wgLoadBalancer']->loadMasterPos();
 		//$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
 		$this->setupDatabase();
 
@@ -435,7 +439,7 @@ class ParserTest {
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'math', 'interwiki',
 			'querycache', 'objectcache', 'job', 'redirect', 'querycachetwo',
-			'archive', 'user_groups', 'page_props'
+			'archive', 'user_groups', 'page_props', 'category'
 		);
 
 		if ($wgDBtype === 'mysql') 
@@ -461,7 +465,7 @@ class ParserTest {
 		# Make sure we don't mess with the live DB
 		if (!$setupDB && $wgDBprefix === 'parsertest_') {
 			# oh teh horror
-			$GLOBALS['wgLoadBalancer'] = LoadBalancer::newFromParams( $GLOBALS['wgDBservers'] );
+			LBFactory::destroy();
 			$db = wfGetDB( DB_MASTER );
 
 			$tables = $this->listTables();
@@ -646,7 +650,7 @@ class ParserTest {
 	/**
 	 * "Running test $desc..."
 	 */
-	private function showTesting( $desc ) {
+	protected function showTesting( $desc ) {
 		print "Running test $desc... ";
 	}
 
@@ -656,7 +660,7 @@ class ParserTest {
 	 * @param string $desc The test name
 	 * @return bool
 	 */
-	private function showSuccess( $desc ) {
+	protected function showSuccess( $desc ) {
 		if( $this->showProgress ) {
 			print $this->term->color( '1;32' ) . 'PASSED' . $this->term->reset() . "\n";
 		}
@@ -672,7 +676,7 @@ class ParserTest {
 	 * @param string $html Actual HTML output
 	 * @return bool
 	 */
-	private function showFailure( $desc, $result, $html ) {
+	protected function showFailure( $desc, $result, $html ) {
 		if( $this->showFailure ) {
 			if( !$this->showProgress ) {
 				# In quiet mode we didn't show the 'Testing' message before the
@@ -703,7 +707,7 @@ class ParserTest {
 	 * @param string $outFileTail Tailing for the output file name
 	 * @return string
 	 */
-	private function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
+	protected function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
 		$prefix = wfTempDir() . "/mwParser-" . mt_rand();
 
 		$infile = "$prefix-$inFileTail";
@@ -738,12 +742,24 @@ class ParserTest {
 	 * @param string $text
 	 * @return string
 	 */
-	private function colorDiff( $text ) {
+	protected function colorDiff( $text ) {
 		return preg_replace(
 			array( '/^(-.*)$/m', '/^(\+.*)$/m' ),
 			array( $this->term->color( 34 ) . '$1' . $this->term->reset(),
 			       $this->term->color( 31 ) . '$1' . $this->term->reset() ),
 			$text );
+	}
+
+	/**
+	 * Show "Reading tests from ..."
+	 *
+	 * @param String $path
+	 */
+	protected function showRunFile( $path ){
+		print $this->term->color( 1 ) .
+			"Reading tests from \"$path\"..." .
+			$this->term->reset() .
+			"\n";
 	}
 
 	/**

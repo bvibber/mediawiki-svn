@@ -97,13 +97,14 @@ $messages = array(
 'nov'           => 'Dibatsela',
 'dec'           => 'Manthole',
 
-# Bits of text used by many pages
-'categories'            => 'Dihlopha',
-'pagecategories'        => '{{PLURAL:$1|Sehlopha|Dihlopha}}',
-'category_header'       => 'Matlakala go sehlopha "$1"',
-'subcategories'         => 'Dihlophana',
-'category-media-header' => 'Matlakala goba difaele go sehlopha "$1"',
-'category-empty'        => "''Sehlopha se, ga se na matlakala goba difaele.''",
+# Categories related messages
+'categories'             => 'Dihlopha',
+'pagecategories'         => '{{PLURAL:$1|Sehlopha|Dihlopha}}',
+'category_header'        => 'Matlakala go sehlopha "$1"',
+'subcategories'          => 'Dihlophana',
+'category-media-header'  => 'Matlakala goba difaele go sehlopha "$1"',
+'category-empty'         => "''Sehlopha se, ga se na matlakala goba difaele.''",
+'listingcontinuesabbrev' => 'tšweletša',
 
 'about'          => 'Mabapi',
 'article'        => 'Letlakala la mateng',
@@ -184,8 +185,8 @@ $messages = array(
 'disclaimers'       => 'Hlapa-matsogo',
 'disclaimerpage'    => 'Project:Hlapa-Matsogo',
 'edithelp'          => 'Thušo ya go fetola',
-'edithelppage'      => 'Thušo:Fetola',
-'helppage'          => 'Thušo:Mateng',
+'edithelppage'      => 'Help:Fetola',
+'helppage'          => 'Help:Mateng',
 'mainpage'          => 'Letlakala la Pele',
 'policy-url'        => 'Project:Melao',
 'portal'            => "''Portal'' ya badudi",
@@ -532,7 +533,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'recentchanges'                  => 'Diphetogo tša bjale',
 'recentchanges-feed-description' => "Lebalana diphetogo tše di mphsa-mphsa go wiki  ka ''feed'' ye.",
 'rcnote'                         => "Go latela {{PLURAL:$1|phetogo ye '''1'''|diphetogo tša bofelo tše '''$1'''}} ka {{PLURAL:$2|letšatši|matšatši a '''$2'''}} a go feta, go tloga $3.",
-'rcnotefrom'                     => 'Tlase ke diphetogo go tloga ka <b>$2</b> (go  fihla ka <b>$1</b>).',
+'rcnotefrom'                     => "Tlase ke diphetogo go tloga ka '''$2''' (go  fihla ka '''$1''').",
 'rclistfrom'                     => 'Laêtša dipheto tše mfsa go thoma go $1',
 'rcshowhideminor'                => '$1 ya diphetogo tše nnyenyane',
 'rcshowhidebots'                 => '$1 bots',
@@ -562,7 +563,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'uploadlogpage'     => "''log'' yago lokela",
 'filedesc'          => 'Kakaretšo',
 'fileuploadsummary' => 'Kakaretšo:',
-'filesource'        => 'Mothopo:',
+'filesource'        => 'Mothopo',
 'savefile'          => 'Boloka faele',
 'uploadedimage'     => '"[[$1]]" e loketšwe',
 'watchthisupload'   => 'Tlhapetša letlakala le',
@@ -570,13 +571,15 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'license-nopreview'  => '(Ponopele ga e gona)',
 'upload_source_file' => '(faele go khomphuthara ya gago)',
 
-# Image list
-'imagelist'                 => 'Lenano la difaele',
-'ilsubmit'                  => 'Fetleka',
-'byname'                    => 'ka leina',
-'bydate'                    => 'ka letšatšikgwedi',
-'bysize'                    => 'ka bogolo',
-'imgfile'                   => 'faele',
+# Special:Imagelist
+'imgfile'        => 'faele',
+'imagelist'      => 'Lenano la difaele',
+'imagelist_date' => 'Letšatšikgwedi',
+'imagelist_name' => 'Leina',
+'imagelist_user' => 'Mošumiši',
+'imagelist_size' => 'Bogolo',
+
+# Image description page
 'filehist'                  => 'Histori ya faele',
 'filehist-help'             => 'Pinyeletša go letšatšikgwedi/nako go bona faela ka tsela yeo ebego e le ka gona nakong yeo.',
 'filehist-deleteall'        => 'phumula ka moka',
@@ -594,10 +597,6 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'noimage'                   => 'Ga gona faele ya leina le, o ka $1.',
 'noimage-linktext'          => 'E lokele',
 'uploadnewversion-linktext' => 'Lokela peoletšo ye mphsa ya faele',
-'imagelist_date'            => 'Letšatšikgwedi',
-'imagelist_name'            => 'Leina',
-'imagelist_user'            => 'Mošumiši',
-'imagelist_size'            => 'Bogolo',
 
 # File reversion
 'filerevert-comment'        => 'Ahlaahla:',
@@ -669,7 +668,6 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'mostcategories'          => 'Matlakala a goba le dihlopha tše dintšhi',
 'mostimages'              => 'Dinepe tša go hlomaganya go feta tše dingwe',
 'mostrevisions'           => 'Matlakala a goba le diphetogo tše dintšhi',
-'allpages'                => 'Matlakala ka moka',
 'prefixindex'             => "Tšhupane hlogo(''index'')",
 'shortpages'              => 'Matlakala a makopana',
 'longpages'               => 'Matlakala a matelele',
@@ -686,9 +684,6 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'booksources'    => 'Dipuku tša mothopo',
 'booksources-go' => 'Sepela',
 
-'alphaindexline' => '$1 goya go $2',
-'version'        => "''Version''",
-
 # Special:Log
 'specialloguserlabel'  => 'Mošomiši:',
 'speciallogtitlelabel' => 'Thaetlele:',
@@ -697,6 +692,8 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'log-search-submit'    => 'Sepela',
 
 # Special:Allpages
+'allpages'       => 'Matlakala ka moka',
+'alphaindexline' => '$1 goya go $2',
 'nextpage'       => 'Letlakala lago latela ($1)',
 'prevpage'       => 'Letlakala la go feta ($1)',
 'allpagesfrom'   => 'Bontšha matlakala go thoma go :',
@@ -743,7 +740,7 @@ Ga eba o nyaka go hloša letlaka le go lenano la ditlhapetšo tša gago, šomiš
 'watchlist-show-minor' => 'Bontšha diphetogo tše nnyenyane',
 'watchlist-hide-minor' => 'Fihla diphetogo tše nnyenyane',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Tlhapeditše...',
 'unwatching' => 'Tlhapetšo eya tlošwa ...',
 
@@ -775,7 +772,7 @@ Lebelela $2 go hweetša sedi ka diphulo tša bjale.',
 'editcomment'                 => 'Ahlaahlo ya phetogo ke : "<i>$1</i>".', # only shown if there is an edit comment
 'protectlogpage'              => "''Log'' yago lota",
 'protectedarticle'            => 'lotilwe "[[$1]]"',
-'confirmprotect'              => 'Tiišetša go lota',
+'protect-legend'              => 'Tiišetša go lota',
 'protectcomment'              => 'Ahlaahla:',
 'protectexpiry'               => 'Fetatšatši:',
 'protect_expiry_invalid'      => 'Fetatšatši, nako ye ga ya dumelwa.',
@@ -862,17 +859,16 @@ Seemo sa go lota ga letlakala <strong>$1</strong>:',
 'proxyblocksuccess'       => 'Phetilwe.',
 
 # Move page
-'move-page-legend'                => 'Huduša letlakala',
-'movepagetext'            => "Ge o šomiša fomo ye mo tlase, letlakala le kgale le history ya lona 
-di tla huduga go ya letlakaleng le lemphsa.
+'move-page-legend'        => 'Huduša letlakala',
+'movepagetext'            => "Ge o šomiša fomo ye mo tlase, letlakala le kgale le history ya lona di tla huduga go ya letlakaleng le lemphsa.
 Letlakala la kgale le ba ''redirect'' go ya letlakaleng le lemphsa.
 Dihlomaganyo goya letlakaleng la kgale ga di fetolwe; gopola go sekaseka di ''redirect'' tša go ya go ''redirect'' (''double redirects'').
-Ke boikarabela ba gago go kgonthišisa gore dihlomaganyo di tšhwela pele go šupa mowe 
-di swanetšego goya.
+Ke boikarabela ba gago go kgonthišisa gore dihlomaganyo di tšhwela pele go šupa mowe di swanetšego goya.
 
-Ela hloko gpre letlakala le ka se hudušwe gaeba go ena letlakala la leina le lemphsa, ntle ga le sa selo goba ele ''redirect'' ebile le sa na histori. Se sera gore o ka huduša letlakala morago ge o direle phošo gape o ka se ngwale godimo (''overwrite'') ga letlakala leo le lego gona.
+Ela hloko gpre letlakala le ka se hudušwe gaeba go ena letlakala la leina le lemphsa, ntle ga le sa selo goba ele ''redirect'' ebile le sa na histori.
+Se sera gore o ka huduša letlakala morago ge o direle phošo gape o ka se ngwale godimo (''overwrite'') ga letlakala leo le lego gona.
 
-<b>TEMOŠO!</b>
+'''TEMOŠO!'''
 Se sekapa le dipheto tšeo di sa letelwago go matlakala atumilego;
 Ka kgopelo kgontišiša gore o kwešiša ditla morago tša se, pele o tšwelapele.",
 'movepagetalktext'        => "Letlakala la dipoledišano lago hlobana le letlakala le le tla hudušwa '''ntle le ge''':
@@ -969,12 +965,6 @@ Ka kgopelo, kgetha leina le lengwe.',
 'others'           => 'tše dingwe',
 'siteusers'        => '{{SITENAME}} mošumiši/bašumiši $1',
 
-# Spam protection
-'subcategorycount'       => 'Go nale {{PLURAL:$1|sehlophana|dihlophana tše $1}} sehlopheng se.',
-'categoryarticlecount'   => 'Go nale {{PLURAL:$1|letlakala le tee |matlakala a $1}} sehlopheng se.',
-'category-media-count'   => 'Go nale {{PLURAL:$1|faele e tee|difaele tše $1}} sehlopheng se.',
-'listingcontinuesabbrev' => 'tšweletša',
-
 # Info page
 'numedits'    => 'Palo ya diphetogo (letlakala): $1',
 'numwatchers' => 'Palo ya batlhapedi: $1',
@@ -1000,6 +990,8 @@ $1',
 
 # Special:Newimages
 'newimages' => "''Gallery'' ya difaele tše mpsha",
+'ilsubmit'  => 'Fetleka',
+'bydate'    => 'ka letšatšikgwedi',
 
 # Bad image list
 'bad_image_list' => "''format'' e ka mokgwa wo o latelago:
@@ -1072,5 +1064,8 @@ letlakala la seswantšho ge tafola ya metadata e bulwa. Tše dingwe tša di ''fi
 'watchlisttools-view' => 'Nyakoretša diphetogo tša gona',
 'watchlisttools-edit' => 'Lebelela lego fetola lenano la ditlhapetšo',
 'watchlisttools-raw'  => "Fetola lenano le letala (''raw'') la ditlhapetšo",
+
+# Special:Version
+'version' => "''Version''", # Not used as normal message but as header for the special page itself
 
 );

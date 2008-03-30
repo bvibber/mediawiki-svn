@@ -1,9 +1,10 @@
 <?php
-/** Toki Pona
+/** Toki Pona (Toki Pona)
  *
  * @addtogroup Language
  *
  * @author http://tokipona.wikia.com sysops
+ * @author Siebrand
  */
 
 $messages = array(
@@ -21,10 +22,11 @@ $messages = array(
 'november'  => 'tenpo mun pi nanpa luka luka wan',
 'december'  => 'tenpo mun pi nanpa luka luka tu',
 
-# Bits of text used by many pages
-'categories'      => 'kulupu lipu',
-'category_header' => 'lipu lon kulupu lipu "$1"',
-'subcategories'   => 'kulupu lipu lili',
+# Categories related messages
+'categories'             => 'kulupu lipu',
+'category_header'        => 'lipu lon kulupu lipu "$1"',
+'subcategories'          => 'kulupu lipu lili',
+'listingcontinuesabbrev' => ' li awen',
 
 'article'    => 'lipu sona',
 'newwindow'  => '(ona li open e lupa sin)',
@@ -56,7 +58,7 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'     => 'lipu sona pi toki pona li seme?',
-'aboutpage'     => 'lipu sona pi toki pona li seme?',
+'aboutpage'     => 'Project:lipu sona pi toki pona li seme?',
 'copyright'     => 'lipu ken $1 li lawa e lipu ni.',
 'currentevents' => 'seme li sin lon ma?',
 'disclaimers'   => 'wile ala',
@@ -131,10 +133,12 @@ kin la sina toki e ni: toki sina ni li tan sina taso anu lipu pi ken ali.
 
 # Miscellaneous special pages
 'lonelypages'  => 'lipu ni li jo ala e lipu sama',
-'allpages'     => 'lipu ale',
 'specialpages' => 'lipu suli',
 'move'         => 'o tawa',
 'movethispage' => 'o pana e nimi sin',
+
+# Special:Allpages
+'allpages' => 'lipu ale',
 
 # Watchlist
 'watchlist'       => 'mi sona e ante pi lipu seme',
@@ -148,8 +152,5 @@ kin la sina toki e ni: toki sina ni li tan sina taso anu lipu pi ken ali.
 
 # What links here
 'whatlinkshere' => 'lipu seme li tawa ni?',
-
-# Spam protection
-'listingcontinuesabbrev' => ' li awen',
 
 );

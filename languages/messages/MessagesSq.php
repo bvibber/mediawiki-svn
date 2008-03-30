@@ -155,13 +155,15 @@ $messages = array(
 'nov'           => 'Nën',
 'dec'           => 'Dhj',
 
-# Bits of text used by many pages
-'categories'            => 'Kategori',
-'pagecategories'        => '{{PLURAL:$1|Kategoria|Kategoritë}}',
-'category_header'       => 'Artikuj në kategorinë "$1"',
-'subcategories'         => 'Nën-kategori',
-'category-media-header' => 'Skeda në kategori "$1"',
-'category-empty'        => "''Kjo kategori aktualisht nuk përmban asnjë faqe apo media.''",
+# Categories related messages
+'categories'             => 'Kategori',
+'categoriespagetext'     => 'Ndodhen këto kategori:',
+'pagecategories'         => '{{PLURAL:$1|Kategoria|Kategoritë}}',
+'category_header'        => 'Artikuj në kategorinë "$1"',
+'subcategories'          => 'Nën-kategori',
+'category-media-header'  => 'Skeda në kategori "$1"',
+'category-empty'         => "''Kjo kategori aktualisht nuk përmban asnjë faqe apo media.''",
+'listingcontinuesabbrev' => 'vazh.',
 
 'mainpagetext'      => 'Wiki software u instalua me sukses.',
 'mainpagedocfooter' => 'Për më shumë informata rreth përdorimit të softwerit wiki , ju lutem shikoni [http://meta.wikimedia.org/wiki/Help:Contents dokumentacionin përkatës].
@@ -540,7 +542,11 @@ Numri idendifikues i bllokimit tuaj është $5. Ju lutemi përfshijeni këtë Nu
 'editingsection'           => 'Duke redaktuar $1 (seksion)',
 'editingcomment'           => 'Duke redaktuar $1 (koment)',
 'editconflict'             => 'Konflikt redaktimi: $1',
-'explainconflict'          => 'Dikush tjetër ka ndryshuar këtë faqe kur ju po e redaktonit. Kutiza e redaktimit mësipërme tregon tekstin e faqes siç ekziston tani. Ndryshimet juaja janë treguar poshtë kutisë së redaktimit. Ju duhet të përputhni ndryshimet tuaja me tekstin ekzistues. <b>Vetëm</b> teksti në kutinë e sipërme të redaktimit do të ruhet kur të shtypni "Ruaje faqen".',
+'explainconflict'          => "Dikush tjetër ka ndryshuar këtë faqe kur ju po e redaktonit.
+Kutiza e redaktimit mësipërme tregon tekstin e faqes siç ekziston tani.
+Ndryshimet juaja janë treguar poshtë kutisë së redaktimit.
+Ju duhet të përputhni ndryshimet tuaja me tekstin ekzistues.
+'''Vetëm''' teksti në kutinë e sipërme të redaktimit do të ruhet kur të shtypni \"Ruaje faqen\".",
 'yourtext'                 => 'Teksti juaj',
 'storedversion'            => 'Versioni i ruajtur',
 'nonunicodebrowser'        => '<strong>KUJDES: Shfletuesi juaj nuk përdor dot unikode, ju lutem ndryshoni shfletues para se të redaktoni artikuj.</strong>',
@@ -577,7 +583,6 @@ kështuqë nuk do keni mundësi të ruani redaktimet e tuaja tani. Mund të kopj
 'nohistory'           => 'Nuk ka histori redaktimesh për këtë faqe.',
 'revnotfound'         => 'Versioni nuk u gjet',
 'revnotfoundtext'     => 'Versioni i vjetër i faqes së kërkuar nuk mund të gjehej.Ju lutem kontrolloni URL-in që përdorët për të ardhur tek kjo faqe.',
-'loadhist'            => 'Duke ngarkuar historinë e faqes',
 'currentrev'          => 'Versioni i tanishëm',
 'revisionasof'        => 'Versioni i $1',
 'revision-info'       => 'Versioni më $1 nga $2',
@@ -587,7 +592,6 @@ kështuqë nuk do keni mundësi të ruani redaktimet e tuaja tani. Mund të kopj
 'cur'                 => 'tani',
 'next'                => 'mbas',
 'last'                => 'fund',
-'orig'                => 'Origjinal',
 'page_first'          => 'Së pari',
 'page_last'           => 'Së fundmi',
 'histlegend'          => 'Legjenda: (tani) = ndryshimet me versionin e tanishëm,
@@ -723,6 +727,7 @@ $2 Lidhje përcjellëse &nbsp; Kërko për $3 $9',
 'files'                    => 'Figura',
 
 # User rights
+'userrights'                 => 'Ndrysho privilegjet e përdoruesve', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'     => 'Ndrysho grupet e përdoruesit',
 'userrights-user-editname'   => 'Fusni emrin e përdoruesit:',
 'editusergroup'              => 'Redaktoni Grupet e Përdoruesve',
@@ -795,7 +800,7 @@ $2 Lidhje përcjellëse &nbsp; Kërko për $3 $9',
 'uploadnologintext'           => 'Duhet të keni [[Special:Userlogin|hyrë brenda]] për të dhënë skeda.',
 'upload_directory_read_only'  => 'Skedari i ngarkimit ($1) nuk mund të shkruhet nga shërbyesi.',
 'uploaderror'                 => 'Gabim dhënie',
-'uploadtext'                  => " '''NDALO!''' Përpara se të jepni këtu skedë, lexoni dhe ndiqni [[Project:Rregullat e përdorimit të figurave|Rregullat e përdorimit të figurave]] të {{SITENAME}}-s. Mos jepni skeda për të cilat autori (ose ju) nuk ka dhënë të drejtë për përdorim nën licencat e përdorura nga {{SITENAME}}.
+'uploadtext'                  => "'''NDALO!''' Përpara se të jepni këtu skedë, lexoni dhe ndiqni [[Project:Rregullat e përdorimit të figurave|Rregullat e përdorimit të figurave]] të {{SITENAME}}-s. Mos jepni skeda për të cilat autori (ose ju) nuk ka dhënë të drejtë për përdorim nën licencat e përdorura nga {{SITENAME}}.
 
 Për të parë ose për të kërkuar figurat e dhëna më parë,
 shkoni tek [[Special:Imagelist|lista e figurave të dhëna]].
@@ -848,18 +853,18 @@ Të gjithë orët janë me orën e shërbyesit (UTC).',
 'license'   => 'Licencimi:',
 'nolicense' => 'Asnjë nuk është zgjedhur',
 
-# Image list
-'imagelist'                 => 'Lista e figurave',
-'imagelisttext'             => 'Më poshtë është një listë e $1 figurave të renditura sipas $2.',
-'getimagelist'              => 'duke ngarkuar të gjithë listën e figurave',
-'ilsubmit'                  => 'Kërko',
-'showlast'                  => 'Trego $1 figurat e fundit të renditura sipas $2.',
-'byname'                    => 'emrit',
-'bydate'                    => 'datës',
-'bysize'                    => 'madhësisë',
-'imgdelete'                 => 'gris',
-'imgdesc'                   => 'për',
-'imgfile'                   => 'skeda',
+# Special:Imagelist
+'imagelist_search_for'  => 'Kërko për emrin e figurës:',
+'imgdesc'               => 'për',
+'imgfile'               => 'skeda',
+'imagelist'             => 'Lista e figurave',
+'imagelist_date'        => 'Data',
+'imagelist_name'        => 'Emri',
+'imagelist_user'        => 'Përdoruesi',
+'imagelist_size'        => 'Madhësia (bytes)',
+'imagelist_description' => 'Përshkrimi',
+
+# Image description page
 'filehist'                  => 'Historiku i dosjes',
 'filehist-datetime'         => 'Data/Ora',
 'filehist-user'             => 'Përdoruesi',
@@ -873,12 +878,6 @@ Të gjithë orët janë me orën e shërbyesit (UTC).',
 'noimage'                   => 'Një skedë me këtë emër nuk ekziston akoma, ju mundeni ta $1 atë.',
 'noimage-linktext'          => 'ngarkoni',
 'uploadnewversion-linktext' => 'Ngarkoni një version të ri për këtë skedë',
-'imagelist_date'            => 'Data',
-'imagelist_name'            => 'Emri',
-'imagelist_user'            => 'Përdoruesi',
-'imagelist_size'            => 'Madhësia (bytes)',
-'imagelist_description'     => 'Përshkrimi',
-'imagelist_search_for'      => 'Kërko për emrin e figurës:',
 
 # MIME search
 'mimesearch'         => 'Kërkime MIME',
@@ -960,7 +959,6 @@ Gjatësia e [http://meta.wikimedia.org/wiki/Help:Job_queue radhës së punëve] 
 'mostcategories'          => 'Artikuj më të kategorizuar',
 'mostimages'              => 'Figura më të lidhura',
 'mostrevisions'           => 'Artikuj më të redaktuar',
-'allpages'                => 'Të gjitha faqet',
 'prefixindex'             => 'Treguesi i parashtesave',
 'shortpages'              => 'Artikuj të shkurtër',
 'longpages'               => 'Artikuj të gjatë',
@@ -977,8 +975,8 @@ Gjatësia e [http://meta.wikimedia.org/wiki/Help:Job_queue radhës së punëve] 
 'ancientpages'            => 'Artikuj më të vjetër',
 'move'                    => 'Zhvendose',
 'movethispage'            => 'Zhvendose faqen',
-'unusedimagestext'        => '<p>Ju lutem, vini re se hapësira të tjera si p.sh ato që kanë të bëjnë me gjuhë të ndryshme mund të lidhin
-një figurë me një URL në mënyrë direkte, kështuqë ka mundësi që këto figura të rreshtohen këtu megjithëse janë në përdorim.</p>',
+'unusedimagestext'        => 'Ju lutem, vini re se hapësira të tjera si p.sh ato që kanë të bëjnë me gjuhë të ndryshme mund të lidhin
+një figurë me një URL në mënyrë direkte, kështuqë ka mundësi që këto figura të rreshtohen këtu megjithëse janë në përdorim.',
 'unusedcategoriestext'    => 'Kategoritë në vazhdim ekzistojnë edhe pse asnjë artikull ose kategori nuk i përdor ato.',
 'notargettitle'           => 'Asnjë artikull',
 'notargettext'            => 'Nuk keni dhënë asnjë artikull ose përdorues mbi të cilin të përdor këtë funksion.',
@@ -989,13 +987,6 @@ një figurë me një URL në mënyrë direkte, kështuqë ka mundësi që këto 
 'booksources-go'            => 'Shko',
 'booksources-text'          => 'Më posht është një listë me lidhje të cilët shesin ose përdorin libra dhe munden të kenë informacione për librat që kërkoni ju:',
 
-'categoriespagetext' => 'Ndodhen këto kategori:',
-'data'               => 'Të dhëna',
-'userrights'         => 'Ndrysho privilegjet e përdoruesve',
-'groups'             => 'Grupet e përdoruesve',
-'alphaindexline'     => '$1 deri në $2',
-'version'            => 'Versioni',
-
 # Special:Log
 'specialloguserlabel'  => 'Përdoruesi:',
 'speciallogtitlelabel' => 'Titulli:',
@@ -1004,6 +995,8 @@ një figurë me një URL në mënyrë direkte, kështuqë ka mundësi që këto 
 'logempty'             => 'Nuk ka asnjë përputhje në regjistër.',
 
 # Special:Allpages
+'allpages'          => 'Të gjitha faqet',
+'alphaindexline'    => '$1 deri në $2',
 'nextpage'          => 'Faqja më pas ($1)',
 'prevpage'          => 'Faqja më parë ($1)',
 'allpagesfrom'      => 'Trego faqet duke filluar nga:',
@@ -1134,8 +1127,8 @@ Redaktimi i fundit është bërë nga [[User:$3|$3]] ([[User talk:$3|Diskutim]])
 'protectlogtext'              => 'Më poshtë është një listë e "mbrojtjeve/lirimeve" të faqeve. Shikoni [[{{SITENAME}}:Faqe e mbrojtur]] për më shumë informacion.',
 'protectedarticle'            => 'mbrojti [[$1]]',
 'unprotectedarticle'          => 'liroi [[$1]]',
-'protectsub'                  => '(Duke ndryshuar mbrojtjen e "$1")',
-'confirmprotect'              => 'Konfirmoni',
+'protect-title'               => 'Duke ndryshuar mbrojtjen e "$1"',
+'protect-legend'              => 'Konfirmoni',
 'protectcomment'              => 'Arsyeja:',
 'protectexpiry'               => 'Afati',
 'protect-unchain'             => 'Ndrysho lejen e zhvendosjeve',
@@ -1199,8 +1192,6 @@ Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurime
 'mycontris'     => 'Redaktimet e mia',
 'contribsub2'   => 'Për $1 ($2)',
 'nocontribs'    => 'Nuk ka asnjë ndryshim që përputhet me këto kritere.',
-'ucnote'        => 'Më poshtë janë redaktimet më të fundit të <b>$1</b> gjatë <b>$2</b> ditëve.',
-'uclinks'       => 'Shikoni $1 redaktimet e fundit; shikoni $2 ditët e fundit.',
 'uctop'         => ' (sipër)',
 
 'sp-contributions-newbies'     => 'Trego vetëm redaktimet e llogarive të reja',
@@ -1209,8 +1200,6 @@ Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurime
 'sp-contributions-search'      => 'Kërko tek kontributet',
 'sp-contributions-username'    => 'IP Addresa ose Përdoruesi:',
 'sp-contributions-submit'      => 'Kërko',
-
-'sp-newimages-showfrom' => 'duke filluar nga $1',
 
 # What links here
 'whatlinkshere'       => 'Lidhjet këtu',
@@ -1305,7 +1294,7 @@ kur të mbaroni së kryeri mirëmbajtjen.',
 'unlockdbsuccesstext' => 'Regjistri i {{SITENAME}} është çbllokuar.',
 
 # Move page
-'move-page-legend'                => 'Zhvendose faqen',
+'move-page-legend'        => 'Zhvendose faqen',
 'movepagetext'            => "Duke përdorur formularin e mëposhtëm do të ndërroni titullin e një faqeje, duke zhvendosur gjithë historinë përkatëse tek titulli i ri. Titulli i vjetër do të bëhet një faqe përcjellëse tek titulli i ri. Lidhjet tek faqja e vjetër nuk do të ndryshohen; duhet të kontrolloni [[Special:SpecialPages|mirëmbajtjen]] për përcjellime të dyfishta ose të prishura.
 Keni përgjegjësinë për tu siguruar që lidhjet të vazhdojnë të jenë të sakta.
 
@@ -1461,16 +1450,12 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'nocredits'        => 'Për këtë faqe nuk ka informacione.',
 
 # Spam protection
-'spamprotectiontitle'    => 'Mbrojtje ndaj teksteve të padëshiruara',
-'spamprotectiontext'     => 'Faqja që dëshironit të ruani është bllokuar nga filtri i teksteve të padëshiruara. Ka mundësi që kjo të ketë ndodhur për shkak të ndonjë lidhjeje të jashtme.',
-'spamprotectionmatch'    => 'Teksti në vijim është cilësuar i padëshiruar nga softueri: $1',
-'subcategorycount'       => 'Ndodhen $1 nën-kategori në këtë kategori.',
-'categoryarticlecount'   => 'Ndodhen $1 artikuj në këtë kategori.',
-'category-media-count'   => 'Ndodhen {{PLURAL:$1|një skedë|$1 skeda}} në këtë kategori.',
-'listingcontinuesabbrev' => 'vazh.',
-'spambot_username'       => 'MediaWiki spam-pastrues',
-'spam_reverting'         => "U kthye tek versioni i fundit që s'ka lidhje tek $1",
-'spam_blanking'          => 'U boshatis sepse të gjitha versionet kanë lidhje tek $1',
+'spamprotectiontitle' => 'Mbrojtje ndaj teksteve të padëshiruara',
+'spamprotectiontext'  => 'Faqja që dëshironit të ruani është bllokuar nga filtri i teksteve të padëshiruara. Ka mundësi që kjo të ketë ndodhur për shkak të ndonjë lidhjeje të jashtme.',
+'spamprotectionmatch' => 'Teksti në vijim është cilësuar i padëshiruar nga softueri: $1',
+'spambot_username'    => 'MediaWiki spam-pastrues',
+'spam_reverting'      => "U kthye tek versioni i fundit që s'ka lidhje tek $1",
+'spam_blanking'       => 'U boshatis sepse të gjitha versionet kanë lidhje tek $1',
 
 # Info page
 'infosubtitle'   => 'Informacion për faqen',
@@ -1512,9 +1497,13 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'show-big-image' => 'Rezolucion i plotë',
 
 # Special:Newimages
-'newimages'    => 'Galeria e figurave të reja',
-'showhidebots' => '($1 robotët)',
-'noimages'     => "S'ka gjë për të parë.",
+'newimages'             => 'Galeria e figurave të reja',
+'imagelisttext'         => 'Më poshtë është një listë e $1 figurave të renditura sipas $2.',
+'showhidebots'          => '($1 robotët)',
+'noimages'              => "S'ka gjë për të parë.",
+'ilsubmit'              => 'Kërko',
+'bydate'                => 'datës',
+'sp-newimages-showfrom' => 'duke filluar nga $1',
 
 # Metadata
 'metadata-help'     => 'Kjo skedë përmban hollësira të tjera të cilat mund të jenë shtuar nga kamera ose skaneri dixhital që është përdorur për ta krijuar. Në qoftë se skeda është ndryshuar nga gjendja origjinale, disa hollësira mund të mos pasqyrojnë skedën e tanishme.',
@@ -1755,6 +1744,7 @@ $1',
 'watchlisttools-edit' => 'Shih dhe redakto listën mbikqyrëse.',
 
 # Special:Version
+'version'                  => 'Versioni', # Not used as normal message but as header for the special page itself
 'version-specialpages'     => 'Faqe speciale',
 'version-other'            => 'Të tjera',
 'version-version'          => 'Verzioni',

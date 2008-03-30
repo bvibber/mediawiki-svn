@@ -430,7 +430,7 @@ function rcDoOutputFeed( $rows, &$feed ) {
 			rcFormatDiff( $obj ),
 			$title->getFullURL( 'diff=' . $obj->rc_this_oldid . '&oldid=prev' ),
 			$obj->rc_timestamp,
-			$obj->rc_user_text,
+			($obj->rc_deleted & Revision::DELETED_USER) ? wfMsgHtml('rev-deleted-user') : $obj->rc_user_text,
 			$talkpage->getFullURL()
 			);
 		$feed->outItem( $item );
@@ -634,20 +634,36 @@ function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
  * Format a diff for the newsfeed
  */
 function rcFormatDiff( $row ) {
+	global $wgUser;
+
 	$titleObj = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 	$timestamp = wfTimestamp( TS_MW, $row->rc_timestamp );
+	$actiontext = '';
+	if( $row->rc_type == RC_LOG ) {
+		if( $row->rc_deleted & LogPage::DELETED_ACTION ) {
+			$actiontext = wfMsgHtml('rev-deleted-event');
+		} else {
+			$actiontext = LogPage::actionText( $row->rc_log_type, $row->rc_log_action, 
+				$titleObj, $wgUser->getSkin(), LogPage::extractParams($row->rc_params,true,true) );
+		}
+	}
 	return rcFormatDiffRow( $titleObj,
 		$row->rc_last_oldid, $row->rc_this_oldid,
 		$timestamp,
-		$row->rc_comment );
+		($row->rc_deleted & Revision::DELETED_COMMENT) ? wfMsgHtml('rev-deleted-comment') : $row->rc_comment,
+		$actiontext );
 }
 
-function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment ) {
+function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment, $actiontext='' ) {
 	global $wgFeedDiffCutoff, $wgContLang, $wgUser;
 	$fname = 'rcFormatDiff';
 	wfProfileIn( $fname );
 
 	$skin = $wgUser->getSkin();
+	# log enties
+	if( $actiontext ) {
+		$comment = "$actiontext $comment";
+	}
 	$completeText = '<p>' . $skin->formatComment( $comment ) . "</p>\n";
 
 	//NOTE: Check permissions for anonymous users, not current user.

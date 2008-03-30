@@ -138,7 +138,6 @@ $messages = array(
 'showdiff'       => 'Индерелгән үҙгәрештәр',
 'previewnote'    => 'Ҡарап сығыу өлгөһө, әлегә үҙгәрештәр яҙҙырылмаған!',
 'editing'        => 'Мөхәрирләү  $1',
-'editinguser'    => 'Мөхәрирләү  $1',
 'editingsection' => 'Мөхәрирләү  $1 (секция)',
 'editingcomment' => 'Мөхәрирләү $1 (комментарий)',
 'yourtext'       => 'Һеҙҙең текст',
@@ -146,6 +145,9 @@ $messages = array(
 
 # Preferences page
 'preferences' => 'Көйләүҙәр',
+
+# User rights
+'editinguser' => 'Мөхәрирләү  $1',
 
 # Groups
 'group-all' => '(бөтә)',
@@ -157,7 +159,7 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
 
-# Image list
+# Special:Imagelist
 'imagelist_user' => 'Ҡатнашыусы',
 
 # MIME search
@@ -173,7 +175,6 @@ $messages = array(
 'userstatstext' => "Бөтәһе '''$1''' ҡатнашыусы теркәлгән, шуларҙан '''$2''' ($4 %) хәким бурыстарын үтәй.",
 
 # Miscellaneous special pages
-'allpages'          => 'Бөтә биттәр',
 'listusers'         => 'Ҡатнашыусылар исемлеге',
 'specialpages'      => 'Махсус биттәр',
 'spheading'         => 'Ярҙамсы биттәр',
@@ -181,12 +182,12 @@ $messages = array(
 'ancientpages'      => 'Иң иҫке мәҡәләләр',
 'move'              => 'Яңы исем биреү',
 
-'alphaindexline' => '$1 алып $2 тиклем',
-
 # Special:Log
 'specialloguserlabel' => 'Ҡатнашыусы:',
 
 # Special:Allpages
+'allpages'          => 'Бөтә биттәр',
+'alphaindexline'    => '$1 алып $2 тиклем',
 'allpagesfrom'      => 'Ошондай хәрефтәрҙән башланған биттәрҙе күрһәтергә:',
 'allarticles'       => 'Бөтә мәҡәләләр',
 'allinnamespace'    => 'Бөтә биттәр (Исемдәре «$1» арауығында)',

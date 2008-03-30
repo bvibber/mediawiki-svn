@@ -4,35 +4,46 @@
  * @addtogroup Language
  *
  * @author Saluyot
+ * @author לערי ריינהארט
+ * @author SPQRobin
+ * @author Siebrand
  */
 
-$messages = array(
-# Dates
-'sunday'     => 'Domingo',
-'monday'     => 'Lunes',
-'tuesday'    => 'Martes',
-'wednesday'  => 'Miercoles',
-'thursday'   => 'Jueves',
-'friday'     => 'Viernes',
-'saturday'   => 'Sabado',
-'january'    => 'Enero',
-'february'   => 'Febrero',
-'march'      => 'Marso',
-'april'      => 'Abril',
-'may_long'   => 'Mayo',
-'june'       => 'Junio',
-'july'       => 'Julio',
-'august'     => 'Agosto',
-'september'  => 'Setiembre',
-'october'    => 'Octobre',
-'november'   => 'Noviembre',
-'december'   => 'Deciembre',
-'august-gen' => 'Agosto',
-'jan'        => 'Ene',
-'apr'        => 'Abr',
-'aug'        => 'Ago',
 
-# Bits of text used by many pages
+
+$messages = array(
+# User preference toggles
+'tog-underline' => 'Ugedan iti baba dagiti panilpo:',
+
+'underline-always' => 'Kanayon',
+
+# Dates
+'sunday'      => 'Domingo',
+'monday'      => 'Lunes',
+'tuesday'     => 'Martes',
+'wednesday'   => 'Miercoles',
+'thursday'    => 'Jueves',
+'friday'      => 'Viernes',
+'saturday'    => 'Sabado',
+'january'     => 'Enero',
+'february'    => 'Febrero',
+'march'       => 'Marso',
+'april'       => 'Abril',
+'may_long'    => 'Mayo',
+'june'        => 'Junio',
+'july'        => 'Julio',
+'august'      => 'Agosto',
+'september'   => 'Setiembre',
+'october'     => 'Octobre',
+'november'    => 'Noviembre',
+'december'    => 'Deciembre',
+'january-gen' => 'Enero',
+'august-gen'  => 'Agosto',
+'jan'         => 'Ene',
+'apr'         => 'Abr',
+'aug'         => 'Ago',
+
+# Categories related messages
 'categories'      => 'Dagiti Categoria',
 'category_header' => 'Dagiti articulo iti categoria "$1"',
 'subcategories'   => 'Dagiti subcategoria',
@@ -40,11 +51,13 @@ $messages = array(
 'about'          => 'Maipapan iti',
 'newwindow'      => '(aglukat iti sabali a tawa)',
 'cancel'         => 'Ibabawi',
+'qbfind'         => 'Biroken',
 'qbspecialpages' => 'Espesial a pampanid',
 'moredotdotdot'  => 'Adu pay...',
 'mypage'         => 'Panidko',
 'mytalk'         => 'pakitungtongak',
 'navigation'     => 'Pagdaliasatan',
+'and'            => 'ken',
 
 'returnto'          => 'Agsubli iti $1.',
 'help'              => 'Tulong',
@@ -63,6 +76,7 @@ $messages = array(
 'unprotectthispage' => 'Ikkaten ti saluad daytoy a panid',
 'newpage'           => 'Baro a panid',
 'talkpage'          => 'Pagtutungtongan daytoy a panid',
+'talkpagelinktext'  => 'Makipatang',
 'specialpage'       => 'naiduma a panid',
 'postcomment'       => 'Mangipaskil iti paliiw',
 'talk'              => 'Pagtutungtongan',
@@ -77,7 +91,7 @@ $messages = array(
 'aboutsite'         => 'Maipapan iti {{SITENAME}}',
 'copyright'         => 'Dagiti linaon ket maidaya babaen ti $1.',
 'currentevents'     => 'Paspasamak',
-'currentevents-url' => 'Agdama a paspasamak',
+'currentevents-url' => 'Project:Agdama a paspasamak',
 'edithelp'          => 'Tulong iti panagedit',
 'mainpage'          => 'Umuna a Panid',
 'portal'            => 'Pagdadanonan',
@@ -110,9 +124,11 @@ $messages = array(
 'notloggedin'        => 'Saan a naka-logged in',
 'nologinlink'        => 'Mangaramid iti account',
 'createaccount'      => 'Mangaramid iti baro nga account',
+'createaccountmail'  => 'babaen ti e-mail',
 'yourrealname'       => 'Pudno a nagan:',
 'yourlanguage'       => 'Pagsasao:',
 'yournick'           => 'Birngas:',
+'loginerror'         => 'Biddut ti login',
 'loginsuccesstitle'  => 'Balligi ti panag-login',
 'loginsuccess'       => "'''Nakastrekkan iti {{SITENAME}} a kas \"\$1\".'''",
 'nosuchuser'         => 'Awan ti agar-aramat nga agnagan iti "$1". Kitaem ti espelingmo, wenno mangaramidka iti baro nga account.',
@@ -148,6 +164,9 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'histfirst'           => 'Kaunaan',
 'histlast'            => 'Kaudian',
 
+# History merging
+'mergehistory-submit' => 'Pagtiponen dagiti panamalbaliw',
+
 # Diffs
 'compareselectedversions' => 'Paggidiaten dagiti pinili a version',
 
@@ -155,6 +174,7 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'prevn'        => 'napalabas $1',
 'nextn'        => 'sumaruno $1',
 'viewprevnext' => 'Kitaen ($1) ($2) ($3)',
+'searchall'    => 'amin',
 'powersearch'  => 'agbirok',
 
 # Preferences page
@@ -181,10 +201,7 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'filedesc'         => 'Pakabuklan',
 'successfulupload' => 'Balligi ti panag-upload',
 
-# Image list
-'ilsubmit'     => 'agbirok',
-'byname'       => 'babaen ti nagan',
-'bydate'       => 'babaen ti petsa',
+# Image description page
 'linkstoimage' => 'Dagiti sumaganad a panid ket nakasilpo itoy a file:',
 
 # Random page
@@ -195,7 +212,6 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'wantedcategories' => 'Dagiti masapul a categoria',
 'wantedpages'      => 'Kiddaw a pampanid',
 'mostrevisions'    => 'Dagiti articulo a kaaduan iti pannakabalbaliwna',
-'allpages'         => 'Amin a panid',
 'listusers'        => 'Listaan dagiti agar-aramat',
 'specialpages'     => 'Naiduma a pampanid',
 'newpages'         => 'Baro a pampanid',
@@ -203,6 +219,7 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'movethispage'     => 'Iyakar daytoy a panid',
 
 # Special:Allpages
+'allpages'       => 'Amin a panid',
 'nextpage'       => 'sumaruno a panid ($1)',
 'allpagesfrom'   => 'Ipakita dagiti panid a mangrugi iti:',
 'allarticles'    => 'Amin nga articulo',
@@ -235,7 +252,7 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'deletecomment'      => 'Rason no apay nga ikkaten',
 'revertpage'         => 'Naikkat ti panangbaliw ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Pagtutungtongan]]), naisubli iti kaudian a version ni [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'unprotectedarticle' => 'naikkat ti saluad ti "[[$1]]"',
-'confirmprotect'     => 'Pasingkedan ti panangsaluad',
+'protect-legend'     => 'Pasingkedan ti panangsaluad',
 'protectcomment'     => 'Rason no apay a saluadan daytoy a panid',
 
 # Contributions
@@ -246,13 +263,13 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 'whatlinkshere' => 'Dagiti nakasilpo ditoy',
 
 # Move page
-'move-page-legend'     => 'Iyakar ti panid',
-'movearticle'  => 'Iyakar ti panid',
-'movepagebtn'  => 'Iyakar ti panid',
-'pagemovedsub' => 'Balligi ti panangyakar',
-'movedto'      => 'nayakar iti',
-'1movedto2'    => '[[$1]] nayakar iti [[$2]]',
-'movereason'   => 'Rason',
+'move-page-legend' => 'Iyakar ti panid',
+'movearticle'      => 'Iyakar ti panid',
+'movepagebtn'      => 'Iyakar ti panid',
+'pagemovedsub'     => 'Balligi ti panangyakar',
+'movedto'          => 'nayakar iti',
+'1movedto2'        => '[[$1]] nayakar iti [[$2]]',
+'movereason'       => 'Rason',
 
 # Namespace 8 related
 'allmessagesname' => 'Nagan',
@@ -263,7 +280,8 @@ Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno k
 # Attribution
 'others' => 'dadduma pay',
 
-# Spam protection
-'subcategorycount' => 'Addaan {{PLURAL:$1|1 subcategoria|$1 subcategorias}} daytoy a categoria.',
+# Special:Newimages
+'ilsubmit' => 'agbirok',
+'bydate'   => 'babaen ti petsa',
 
 );

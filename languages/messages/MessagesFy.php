@@ -166,13 +166,14 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'des',
 
-# Bits of text used by many pages
-'categories'            => 'Kategoryen',
-'pagecategories'        => '{{PLURAL:$1|Kategory|Kategoryen}}',
-'category_header'       => 'Siden yn kategory "$1"',
-'subcategories'         => 'Underkategoryen',
-'category-media-header' => 'Media yn kategory "$1"',
-'category-empty'        => "''Dizze kategory befettet gjin siden of media.''",
+# Categories related messages
+'categories'             => 'Kategoryen',
+'pagecategories'         => '{{PLURAL:$1|Kategory|Kategoryen}}',
+'category_header'        => 'Siden yn kategory "$1"',
+'subcategories'          => 'Underkategoryen',
+'category-media-header'  => 'Media yn kategory "$1"',
+'category-empty'         => "''Dizze kategory befettet gjin siden of media.''",
+'listingcontinuesabbrev' => 'mear',
 
 'mainpagetext'      => 'Wiki-programma goed installearre.',
 'mainpagedocfooter' => "Rieplachtsje de [http://meta.wikimedia.org/wiki/Help:Ynhâldsopjefte hantlieding] foar ynformaasje oer it gebrûk fan 'e wikisoftware.
@@ -396,7 +397,8 @@ Query: $2',
 'namespaceprotected'   => "Jo hawwe gjin rjochten om siden yn'e nammerûmte '''$1''' te bewurkjen.",
 'customcssjsprotected' => "Jo kinne dizze side net bewurkje, om't er persoanlike ynstellings fan in oare brûker befettet.",
 'ns-specialprotected'  => "Siden yn'e nammerûmte {{ns:special}} kinne net bewurke wurde.",
-'titleprotected'       => 'It oanmeitsjen fan dizze side is befeilige troch [[User:$1|$1]]. De oanfierde reden is <i>$2</i>.',
+'titleprotected'       => "It oanmeitsjen fan dizze side is befeilige troch [[User:$1|$1]].
+De oanfierde reden is ''$2''.",
 
 # Login and logout pages
 'logouttitle'               => 'Ofmelde',
@@ -525,7 +527,6 @@ jo jo [[{{ns:special}}:Userlogin|oanmelde]], dat jo allinnich opmerkings foar jo
 'previewnote'            => 'Tink der om dat dizze side noch net fêstlein is!',
 'previewconflict'        => 'Dizze side belanget allinich it earste bewurkingsfjild oan.',
 'editing'                => 'Bewurkje "$1"',
-'editinguser'            => 'Bewurkje "$1"',
 'editingsection'         => 'Dwaande mei bewurkjen fan $1 (dielside)',
 'editconflict'           => 'Tagelyk bewurke: "$1"',
 'explainconflict'        => "In oar hat de side feroare sûnt jo begûn binne mei it bewurkjen.
@@ -564,7 +565,6 @@ Betink oft it gaadlik is dat jo dizze side fierder bewurkje. Foar jo geriif stie
 'revnotfound'         => 'Ferzje net fûn',
 'revnotfoundtext'     => "De âlde ferzje fan dizze side dêr't jo om frege hawwe, is der net.
 Gean nei of de keppeling dy jo brûkt hawwe wol goed is.",
-'loadhist'            => 'Sideskiednis ...',
 'currentrev'          => 'Dizze ferzje',
 'revisionasof'        => 'Ferzje op $1',
 'revision-info'       => 'Ferzje op $1 fan $2',
@@ -574,7 +574,6 @@ Gean nei of de keppeling dy jo brûkt hawwe wol goed is.",
 'cur'                 => 'no',
 'next'                => 'dan',
 'last'                => 'doe',
-'orig'                => 'ea',
 'page_first'          => 'earste',
 'page_last'           => 'lêste',
 'histlegend'          => "Utlis: (no) = ferskil mei de side sa't dy no is,
@@ -663,6 +662,9 @@ mooglik. Foar now kinne jo sykje fia Google:</p>",
 'guesstimezone'            => 'Freegje de blêder',
 'defaultns'                => "Nammeromten dy't normaal trochsykje wurde:",
 
+# User rights
+'editinguser' => 'Bewurkje "$1"',
+
 'grouppage-sysop' => '{{ns:project}}:Behearders',
 
 # User rights log
@@ -744,17 +746,11 @@ meitsje fan it systeem..",
 'uploadedimage'     => ' "[[$1]]" oanbean',
 'uploaddisabled'    => 'Sorry, op dizze tsjinner kin net oanbean wurde.',
 
-# Image list
-'imagelist'                 => 'Ofbyld list',
-'imagelisttext'             => 'Dit is in list fan $1 ôfbylden, op $2.',
-'getimagelist'              => 'Ofbyld list ...',
-'ilsubmit'                  => 'Sykje',
-'showlast'                  => 'Jou lêste $1 ôfbylden, op $2.',
-'byname'                    => 'namme',
-'bydate'                    => 'datum',
-'bysize'                    => 'grutte',
-'imgdelete'                 => 'wisk',
-'imgdesc'                   => 'tekst',
+# Special:Imagelist
+'imgdesc'   => 'tekst',
+'imagelist' => 'Ofbyld list',
+
+# Image description page
 'filehist'                  => 'Triemskiednis',
 'filehist-help'             => "Klik op in datum/tiid om de triem te sjen sa't er doedestiids wie.",
 'filehist-current'          => 'rinnend',
@@ -843,7 +839,6 @@ de twadde trochferwizing, wat it "echte" doel wêze moat.',
 'mostcategories'          => 'Siden mei de measte kategoryen',
 'mostimages'              => 'Meast brûkte ôfbyldings',
 'mostrevisions'           => 'Siden mei de measte bewurkings',
-'allpages'                => 'Alle titels',
 'prefixindex'             => 'Alle siden neffens foarheaksel',
 'shortpages'              => 'Koarte siden',
 'longpages'               => 'Lange siden',
@@ -865,9 +860,6 @@ an ôfbyld makke hawwe kinne. Dan wurde se noch brûke, mar stean al in dizze li
 # Book sources
 'booksources' => 'Boekynformaasje',
 
-'alphaindexline' => "$1 oan't $2",
-'version'        => 'Programmatuerferzje',
-
 # Special:Log
 'specialloguserlabel'  => 'Brûker:',
 'speciallogtitlelabel' => 'Sidenamme:',
@@ -875,6 +867,8 @@ an ôfbyld makke hawwe kinne. Dan wurde se noch brûke, mar stean al in dizze li
 'all-logs-page'        => 'Alle lochboeken',
 
 # Special:Allpages
+'allpages'       => 'Alle titels',
+'alphaindexline' => "$1 oan't $2",
 'nextpage'       => 'Folgjende side ($1)',
 'prevpage'       => 'Foargeande side ($1)',
 'allpagesfrom'   => 'Siden sjen litte, te begjinnen mei:',
@@ -936,7 +930,7 @@ en de side stiet dan ek <b>fet</b> yn de <a href="{{localurle:{{ns:special}}:Rec
 'watchlist-hide-own'   => 'Myn bewurkings ferskûlje',
 'watchlist-hide-minor' => 'Lytse bewurkings ferskûlje',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => "Dwaande mei op'e folchlist te setten ...",
 'unwatching' => "Dwaande mei fan'e folchlist ôf te heljen ...",
 
@@ -975,7 +969,7 @@ De lêste feroaring wie fan [[User:$3|$3]] ([[User talk:$3|Oerlis]]).',
 'editcomment'                 => 'De gearfetting wie: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Tebek set ta de ferzje fan "$1"', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'Befeiligingslochboek',
-'confirmprotect'              => 'Befeiliging befêstigje',
+'protect-legend'              => 'Befeiliging befêstigje',
 'protectcomment'              => 'Oanmerkings:',
 'protectexpiry'               => 'Doer:',
 'protect_expiry_invalid'      => 'De oanjûne doer is ûnjildich.',
@@ -1018,8 +1012,6 @@ troch de lêste ferzje út dy weromsette skiednis ferfangen.',
 'mycontris'     => 'Myn bydragen',
 'contribsub2'   => 'Foar "$1 ($2)"',
 'nocontribs'    => "Der binne gjin feroarings fûn dyt't hjirmei oerienkomme.",
-'ucnote'        => "Dit binne dizze brûker's leste <b>$1</b> feroarings yn de lêste <b>$2</b> dagen.",
-'uclinks'       => 'Besjoch de lêste $1 feroarings; besjoch de lêste $2 dagen.',
 'uctop'         => ' (boppen)',
 'month'         => 'Fan moanne (en earder):',
 'year'          => 'Fan jier (en earder):',
@@ -1088,7 +1080,7 @@ Befêstigje dat dit is wat jo wolle.',
 'unlockdbsuccesstext' => 'De {{SITENAME}} databank is skriuwber makke.',
 
 # Move page
-'move-page-legend'         => 'Werneam side',
+'move-page-legend' => 'Werneam side',
 'movepagetext'     => "Dit werneamt in side, mei alle sideskiednis.
 De âlde titel wurdt in trochferwizing nei de nije.
 Keppelings mei de âlde side wurde net feroare;
@@ -1182,12 +1174,6 @@ Gearfoegje de oerlissiden hânmjittig.",
 'tooltip-compareselectedversions' => 'Sjoch de ferskillen tusken de twa keazen ferzjes fan dizze side.',
 'tooltip-watch'                   => 'Foegje dizze side ta oan jo folchlist',
 
-# Spam protection
-'subcategorycount'       => 'Der {{PLURAL:$1|is ien ûnderkategory|binne $1 ûnderkategoryen}} yn dizze kategory.',
-'categoryarticlecount'   => 'Der {{PLURAL:$1|is ien side|binne $1 siden}} yn dizze kategory.',
-'category-media-count'   => 'Der {{PLURAL:$1|stiet ien triem|steane $1 triemmen}} yn dizze kategory.',
-'listingcontinuesabbrev' => 'mear',
-
 # Math options
 'mw_math_png'    => 'Altiten as PNG ôfbyldzje',
 'mw_math_simple' => 'HTML foar ienfâldiche formules, oars PNG',
@@ -1208,7 +1194,10 @@ Gearfoegje de oerlissiden hânmjittig.",
 'show-big-image-thumb' => '<small>Grutte fan dizze ôfbylding: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages' => 'Nije ôfbyldings',
+'newimages'     => 'Nije ôfbyldings',
+'imagelisttext' => 'Dit is in list fan $1 ôfbylden, op $2.',
+'ilsubmit'      => 'Sykje',
+'bydate'        => 'datum',
 
 # Bad image list
 'bad_image_list' => "De opmaak is as folget:
@@ -1242,5 +1231,8 @@ Alle folgjende links dy't op deselde rigel steane, wurde behannele as útsûnder
 'watchlisttools-view' => 'Folchlist besjen',
 'watchlisttools-edit' => 'Folchlist besjen en bewurkje',
 'watchlisttools-raw'  => 'Rûge folchlist bewurkje',
+
+# Special:Version
+'version' => 'Programmatuerferzje', # Not used as normal message but as header for the special page itself
 
 );

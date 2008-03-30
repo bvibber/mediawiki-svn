@@ -385,6 +385,24 @@
         return false;
       }
     }
+
+    /**
+     * Find out whether a string needs to be output as a literal rather than in plain style.
+     * Added by Roan Kattouw 13-03-2008
+     * @param $value The string to check
+     * @return bool
+     */
+    function _needLiteral($value) {
+      # Check whether the string contains # or : or begins with any of:
+      # [ - ? , [ ] { } ! * & | > ' " % @ ` ]
+      # or is a number or contains newlines
+      return (bool)(gettype($value) == "string" &&
+	(is_numeric($value)  ||
+	strpos($value, "\n") ||      	
+	preg_match("/[#:]/", $value) || 
+	preg_match("/^[-?,[\]{}!*&|>'\"%@`]/", $value)));
+	
+    }
   
     /**
      * Returns YAML from a key and a value
@@ -396,7 +414,7 @@
      */ 
     function _dumpNode($key,$value,$indent) {
       // do some folding here, for blocks
-      if (strpos($value,"\n")) {
+      if ($this->_needLiteral($value)) {
         $value = $this->_doLiteralBlock($value,$indent);
       } else {  
         $value  = $this->_doFolding($value,$indent);
@@ -406,10 +424,16 @@
 
       if (is_int($key)) {
         // It's a sequence
-        $string = $spaces.'- '.$value."\n";
+		if ($value)  
+			$string = $spaces.'- '.$value."\n";
+		else
+			$string = $spaces . "-\n";
       } else {
-        // It's mapped
-        $string = $spaces.$key.': '.$value."\n";
+		// It's mapped
+		if ($value)
+	        $string = $spaces.$key.': '.$value."\n";
+		else
+			$string = $spaces . $key . ":\n";
       }
       return $string;
     }
@@ -820,7 +844,7 @@
      * An ever-so-slightly modified version of the array_kmerge() function posted
      * to php.net by mail at nospam dot iaindooley dot com on 2004-04-08.
      *
-     * http://us3.php.net/manual/en/function.array-merge.php#41394
+     * http://www.php.net/manual/en/function.array-merge.php#41394
      *
      * @access private
      * @param array $arr1

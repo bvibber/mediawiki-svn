@@ -811,6 +811,7 @@ class PPFrame_DOM implements PPFrame {
 	}
 
 	function expand( $root, $flags = 0 ) {
+		static $depth = 0;
 		if ( is_string( $root ) ) {
 			return $root;
 		}
@@ -819,6 +820,11 @@ class PPFrame_DOM implements PPFrame {
 		{
 			return '<span class="error">Node-count limit exceeded</span>';
 		}
+
+		if ( $depth > $this->parser->mOptions->mMaxPPExpandDepth ) {
+			return '<span class="error">Expansion depth limit exceeded</span>';
+		}
+		++$depth;
 
 		if ( $root instanceof PPNode_DOM ) {
 			$root = $root->node;
@@ -973,7 +979,7 @@ class PPFrame_DOM implements PPFrame {
 						$titleText = $this->title->getPrefixedDBkey();
 						$this->parser->mHeadings[] = array( $titleText, $headingIndex );
 						$serial = count( $this->parser->mHeadings ) - 1;
-						$marker = "{$this->parser->mUniqPrefix}-h-$serial-{$this->parser->mMarkerSuffix}";
+						$marker = "{$this->parser->mUniqPrefix}-h-$serial-" . Parser::MARKER_SUFFIX;
 						$count = $contextNode->getAttribute( 'level' );
 						$s = substr( $s, 0, $count ) . $marker . substr( $s, $count );
 						$this->parser->mStripState->general->setPair( $marker, '' );
@@ -1006,6 +1012,7 @@ class PPFrame_DOM implements PPFrame {
 				}
 			}
 		}
+		--$depth;
 		return $outStack[0];
 	}
 

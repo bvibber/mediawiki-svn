@@ -109,13 +109,14 @@ $messages = array(
 'nov'           => 'erf',
 'dec'           => 'twa',
 
-# Bits of text used by many pages
-'categories'            => 'Den guru',
-'pagecategories'        => '{{PLURAL:$1|Guru|Guru}}',
-'category_header'       => 'Peprewoysi ini guru “$1”',
-'subcategories'         => 'Subguru',
-'category-media-header' => 'Media ini guru “$1”',
-'category-empty'        => "''Disi guru abi no papira efu media.''",
+# Categories related messages
+'categories'             => 'Den guru',
+'pagecategories'         => '{{PLURAL:$1|Guru|Guru}}',
+'category_header'        => 'Peprewoysi ini guru “$1”',
+'subcategories'          => 'Subguru',
+'category-media-header'  => 'Media ini guru “$1”',
+'category-empty'         => "''Disi guru abi no papira efu media.''",
+'listingcontinuesabbrev' => 'pasa',
 
 'about'          => 'Abra',
 'article'        => 'Papira',
@@ -421,7 +422,6 @@ Denka abra a ben gu taki yu kontinu kenki disi papira, Fu yu isi ben dyaso ondro
 'cur'                 => 'disi',
 'next'                => 'trawan',
 'last'                => 'bakaseywan',
-'orig'                => 'owrus',
 'page_first'          => 'foswan',
 'page_last'           => 'bakaseywan',
 'histlegend'          => 'Sileksi fu diff: sileksi den tu aluku si nanga gi ENTER efru a box ondro a.<br />
@@ -562,7 +562,7 @@ A kan ben trowe efu dribi.
 'recentchanges'                  => 'Bakaseywan kenki',
 'recentchanges-feed-description' => 'Nanga disi papira kan yu den bakaseywan kenki fu disi wiki libi si.',
 'rcnote'                         => "Dyaso {{PLURAL:$1|ben a bakaseywan kenki|ben den bakaseywan '''$1''' kenki}} ini {{PLURAL:$2|a bakaseywan dey|den bakaseywan '''$2''' dey}}, opo $3.",
-'rcnotefrom'                     => 'Kenki fu <b>$2</b> (nanga wan maksimum fu <b>$1</b> kenki libi si).',
+'rcnotefrom'                     => "Kenki fu '''$2''' (nanga wan maksimum fu '''$1''' kenki libi si).",
 'rclistfrom'                     => 'Libi a kenki si fu $1',
 'rcshowhideminor'                => '$1 den pikin kenki',
 'rcshowhidebots'                 => '$1 den bot',
@@ -605,16 +605,18 @@ A kan ben trowe efu dribi.
 
 'license-nopreview' => '(No fusi)',
 
-# Image list
-'imagelist'                 => 'Rey fu den gefre',
-'ilsubmit'                  => 'Suku',
-'showlast'                  => 'A bakaseywan $1 gefre libi si $2.',
-'byname'                    => 'opo nen',
-'bydate'                    => 'opo datum',
-'bysize'                    => 'opo gran',
-'imgdelete'                 => 'trowe',
-'imgdesc'                   => 'infru',
-'imgfile'                   => 'gefre',
+# Special:Imagelist
+'imagelist_search_for'  => 'Suku na gefre:',
+'imgdesc'               => 'infru',
+'imgfile'               => 'gefre',
+'imagelist'             => 'Rey fu den gefre',
+'imagelist_date'        => 'Datum',
+'imagelist_name'        => 'Nen',
+'imagelist_user'        => 'Masyin',
+'imagelist_size'        => 'Gran (byte)',
+'imagelist_description' => 'Infrumasi',
+
+# Image description page
 'filehist'                  => 'Stori fu disi gefre',
 'filehist-help'             => 'Klik opo wan datum/ten tu si a gefre leki a ben e si dy ten.',
 'filehist-deleteall'        => 'trowe ala',
@@ -635,12 +637,6 @@ A kan ben trowe efu dribi.
 'noimage'                   => 'Da ben no gefre nanga disi nen. Yu kan a $1.',
 'noimage-linktext'          => 'uploti',
 'uploadnewversion-linktext' => 'Wan nyunr si fu disi gefre uploti',
-'imagelist_date'            => 'Datum',
-'imagelist_name'            => 'Nen',
-'imagelist_user'            => 'Masyin',
-'imagelist_size'            => 'Gran (byte)',
-'imagelist_description'     => 'Infrumasi',
-'imagelist_search_for'      => 'Suku na gefre:',
 
 # File reversion
 'filerevert'                => '$1 bakadray',
@@ -737,7 +733,6 @@ A gran fu a [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] ben '''$7'
 'mostcategories'          => 'Peprewoysi nanga a pasa guru',
 'mostimages'              => 'Pasateki gefre',
 'mostrevisions'           => 'Peprewoysi nanga a pasa kenki',
-'allpages'                => 'Ala peprewoysi',
 'prefixindex'             => 'Prifiks fu ala peprewoysi',
 'shortpages'              => 'Syartu peprewoysi',
 'longpages'               => 'Langa peprewoysi',
@@ -759,11 +754,6 @@ A gran fu a [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] ben '''$7'
 'booksources'    => 'Bukuinfrumasi',
 'booksources-go' => 'Suku',
 
-'data'           => 'Data',
-'groups'         => 'Masyinguru',
-'alphaindexline' => '$1 te $2',
-'version'        => 'Si fu a softwer',
-
 # Special:Log
 'specialloguserlabel'  => 'Masyin:',
 'speciallogtitlelabel' => 'Papiranen:',
@@ -773,6 +763,8 @@ A gran fu a [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] ben '''$7'
 'log-title-wildcard'   => 'Peprewoysi suku dy nanga disi nen bigin',
 
 # Special:Allpages
+'allpages'          => 'Ala peprewoysi',
+'alphaindexline'    => '$1 te $2',
 'nextpage'          => 'Trawan papira ($1)',
 'prevpage'          => 'Foswan papira ($1)',
 'allpagesfrom'      => 'Libi peprewoysi si fru:',
@@ -819,7 +811,7 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'watchlist-hide-own'   => 'Kibri mi kenki',
 'watchlist-hide-minor' => 'Kibri pikin kenki',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Presi a yu sirey ...',
 'unwatching' => 'Trowe fu yu sirey ...',
 
@@ -836,7 +828,7 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'deletereasonotherlist'       => 'Trawan yesikrari',
 'rollbacklink'                => 'draywatra',
 'protectlogpage'              => 'Tapubuku',
-'confirmprotect'              => 'Gi tapu klari',
+'protect-legend'              => 'Gi tapu klari',
 'protectcomment'              => 'Opotaki:',
 'protectexpiry'               => 'Lasi:',
 'protect_expiry_invalid'      => 'A lasi ben fowtu.',
@@ -902,15 +894,21 @@ Disi ben a tapunivo fu a papira <strong>[[$1]]</strong> now:",
 'blocklogentry'      => 'abi "[[$1]]" e spikru nanga wan lasi opo $2 $3',
 
 # Move page
-'move-page-legend'         => 'Dribi papira',
-'movepagetext'     => "Nanaga a ondroben box kan yu wan papira dribi. A stori go na a nyun papira. A owru nen sey wan stir na a nyun papira sey. Stir na a owru papira ben no kenki. Luku na a dribi efu da no tustir efu broko stir ben e kon. Yu ben risponsibu fu den stir.
+'move-page-legend' => 'Dribi papira',
+'movepagetext'     => "Nanaga a ondroben box kan yu wan papira dribi.
+A stori go na a nyun papira.
+A owru nen sey wan stir na a nyun papira sey.
+Stir na a owru papira ben no kenki.
+Luku na a dribi efu da no tustir efu broko stir ben e kon.
+Yu ben risponsibu fu den stir.
 
 A papira kan '''wawan''' dribi sey leki a nyun papiranen:
 * no da ben, efu
 * a stirpapira nanga no stori ben.
 
-<b>ATESSI!</b>
-Fu poppelari peprewoysi kan a drabi drastiki nanga ofusi folo abi. Ben suri taki den folo abrasi ben pre yu disi aksi du.",
+'''ATESSI!'''
+Fu poppelari peprewoysi kan a drabi drastiki nanga ofusi folo abi.
+Ben suri taki den folo abrasi ben pre yu disi aksi du.",
 'movepagetalktext' => "A takipapira sey a trawan nen, '''iksi''':
 * A takipapira ondro a nyun nen da ala ben;
 * Yu a ondroben box odu.",
@@ -997,12 +995,6 @@ Gi wan trawan papiranen.',
 'siteuser'  => '{{SITENAME}}-masyin $1',
 'siteusers' => '{{SITENAME}}-masyin $1',
 
-# Spam protection
-'subcategorycount'       => 'Da {{PLURAL:$1|ben wan subguru|ben $1 subguru}} ini disi guru.',
-'categoryarticlecount'   => 'Da ben {{PLURAL:$1|wan papira|$1 prewoysi}} ini disi guru.',
-'category-media-count'   => 'Da ben {{PLURAL:$1|wan gefre|$1 gefre}} ini disi guru.',
-'listingcontinuesabbrev' => 'pasa',
-
 # Browsing diffs
 'previousdiff' => '← Foswan kenki',
 'nextdiff'     => 'Trawan kenki →',
@@ -1019,6 +1011,8 @@ Gi wan trawan papiranen.',
 'newimages'    => 'Nyun gefre',
 'showhidebots' => '(Bot $1)',
 'noimages'     => 'Noti a si.',
+'ilsubmit'     => 'Suku',
+'bydate'       => 'opo datum',
 
 # Bad image list
 'bad_image_list' => 'A opomeki ben leki ondro:
@@ -1069,5 +1063,8 @@ Ala trawan skaki dy opo se lina ben, ben awroko leki spesyal, leki fru eksempre 
 'watchlisttools-view' => 'Rilivant kenki libi si',
 'watchlisttools-edit' => 'Mi sirey libi si nanga kenki',
 'watchlisttools-raw'  => 'Raw sirey kenki',
+
+# Special:Version
+'version' => 'Si fu a softwer', # Not used as normal message but as header for the special page itself
 
 );

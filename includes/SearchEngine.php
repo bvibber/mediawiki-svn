@@ -176,6 +176,37 @@ class SearchEngine {
 	function setNamespaces( $namespaces ) {
 		$this->namespaces = $namespaces;
 	}
+	
+	/**
+	 * Parse some common prefixes: all (search everything)
+	 * or namespace names
+	 *
+	 * @param string $query
+	 */
+	function replacePrefixes( $query ){
+		global $wgContLang;
+				
+		if( strpos($query,':') === false )
+			return $query; // nothing to do
+			
+		$parsed = $query;
+		$allkeyword = wfMsg('searchall').":";
+		if( strncmp($query, $allkeyword, strlen($allkeyword)) == 0 ){
+			$this->namespaces = null;
+			$parsed = substr($query,strlen($allkeyword));
+		} else if( strpos($query,':') !== false ) {
+			$prefix = substr($query,0,strpos($query,':'));
+			$index = $wgContLang->getNsIndex($prefix);
+			if($index !== false){
+				$this->namespaces = array($index);
+				$parsed = substr($query,strlen($prefix)+1);
+			}
+		}
+		if(trim($parsed) == '')
+			return $query; // prefix was the whole query
+			
+		return $parsed;
+	}
 
 	/**
 	 * Make a list of searchable namespaces and their canonical names.
@@ -213,7 +244,7 @@ class SearchEngine {
 		if( $wgSearchType ) {
 			$class = $wgSearchType;
 		} elseif( $wgDBtype == 'mysql' ) {
-			$class = 'SearchMySQL4';
+			$class = 'SearchMySQL';
 		} else if ( $wgDBtype == 'postgres' ) {
 			$class = 'SearchPostgres';
 		} else if ( $wgDBtype == 'oracle' ) {
@@ -309,13 +340,16 @@ class SearchResultSet {
 	}
 
 	/**
-	 * Some search modes return a suggested alternate term if there are
-	 * no exact hits. Check hasSuggestion() first.
-	 *
-	 * @return string
-	 * @access public
+	 * @return string suggested query, null if none
 	 */
-	function getSuggestion() {
+	function getSuggestionQuery(){
+		return null;
+	}
+	
+	/**
+	 * @return string highlighted suggested query, '' if none
+	 */
+	function getSuggestionSnippet(){
 		return '';
 	}
 
@@ -368,6 +402,69 @@ class SearchResult {
 	 * @return double or null if not supported
 	 */
 	function getScore() {
+		return null;
+	}
+	
+	/**
+	 * @return string highlighted text snippet, null if not supported 
+	 */
+	function getTextSnippet(){
+		return null;		
+	}
+	
+	/**
+	 * @return string highlighted title, '' if not supported
+	 */
+	function getTitleSnippet(){
+		return '';
+	}
+	
+	/**
+	 * @return string highlighted redirect name (redirect to this page), '' if none or not supported
+	 */
+	function getRedirectSnippet(){
+		return '';
+	}
+	
+	/**
+	 * @return Title object for the redirect to this page, null if none or not supported
+	 */
+	function getRedirectTitle(){
+		return null;
+	}
+	
+	/**
+	 * @return string highlighted relevant section name, null if none or not supported
+	 */
+	function getSectionSnippet(){
+		return '';
+	}
+	
+	/**
+	 * @return Title object (pagename+fragment) for the section, null if none or not supported 
+	 */
+	function getSectionTitle(){
+		return null;
+	}
+	
+	/**
+	 * @return string timestamp, null if not supported
+	 */
+	function getTimestamp(){
+		return null;
+	}
+	
+	/**
+	 * @return int number of words, null if not supported
+	 */
+	function getWordCount(){
+		return null;
+	}
+	
+	/**
+	 * @return int size in bytes, null if not supported
+	 */
+	function getByteSize(){
 		return null;
 	}
 }

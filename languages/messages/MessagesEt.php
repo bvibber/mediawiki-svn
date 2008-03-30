@@ -181,13 +181,15 @@ $messages = array(
 'nov'           => 'nov',
 'dec'           => 'dets',
 
-# Bits of text used by many pages
-'categories'            => 'Kategooriad',
-'pagecategories'        => '{{PLURAL:$1|Kategooria|Kategooriad}}',
-'category_header'       => 'Artiklid kategooriast "$1"',
-'subcategories'         => 'Allkategooriad',
-'category-media-header' => 'Meediafailid kategooriast "$1"',
-'category-empty'        => "''Selles kategoorias pole ühtegi artiklit ega meediafaili.''",
+# Categories related messages
+'categories'             => 'Kategooriad',
+'categoriespagetext'     => 'Vikis on järgmised kategooriad.',
+'pagecategories'         => '{{PLURAL:$1|Kategooria|Kategooriad}}',
+'category_header'        => 'Artiklid kategooriast "$1"',
+'subcategories'          => 'Allkategooriad',
+'category-media-header'  => 'Meediafailid kategooriast "$1"',
+'category-empty'         => "''Selles kategoorias pole ühtegi artiklit ega meediafaili.''",
+'listingcontinuesabbrev' => 'jätk',
 
 'mainpagetext'      => "<big>'''Wiki tarkvara installeeritud.'''</big>",
 'mainpagedocfooter' => 'Juhiste saamiseks kasutamise ning konfigureerimise kohta vaata palun inglisekeelset [http://meta.wikimedia.org/wiki/MediaWiki_localisation dokumentatsiooni liidese kohaldamisest]
@@ -342,11 +344,12 @@ MySQL andis vea "$3: $4".',
 'readonlytext'         => 'Andmebaas on praegu kirjutuskaitse all, tõenäoliselt andmebaasi rutiinseks hoolduseks, mille lõppedes normaalne olukord taastub.
 Administraator, kes selle kaitse alla võttis, andis järgmise selgituse:
 <p>$1',
-'missingarticle'       => 'Andmebaas ei leidnud lehekülje "$1" teksti, kuigi see oleks pidanud olema leitav. 
+'missingarticle'       => 'Andmebaas ei leidnud lehekülje "$1" teksti, kuigi see oleks pidanud olema leitav.
 
-<p>Tavaliselt on selle põhjuseks vananenud erinevuste- või ajaloolink leheküljele, mis on kustutatud. 
+Tavaliselt on selle põhjuseks vananenud erinevuste- või ajaloolink leheküljele, mis on kustutatud.
 
-<p>Kui ei ole tegemist sellise juhtumiga, siis võib olla tegemist tarkvaraveaga. Palun teatage sellest administraatorile, märkides ära aadressi.',
+Kui ei ole tegemist sellise juhtumiga, siis võib olla tegemist tarkvaraveaga.
+Palun teatage sellest administraatorile, märkides ära aadressi.',
 'internalerror'        => 'Sisemine viga',
 'filecopyerror'        => 'Ei saanud faili "$1" kopeerida nimega "$2".',
 'filerenameerror'      => 'Ei saanud faili "$1" failiks "$2" ümber nimetada.',
@@ -544,7 +547,6 @@ Lehe eelnevad kustutamised:",
 'revnotfound'         => 'Redaktsiooni ei leitud',
 'revnotfoundtext'     => 'Teie poolt päritud vana redaktsiooni ei leitud.
 Palun kontrollige aadressi, millel Te seda lehekülge leida püüdsite.',
-'loadhist'            => 'Lehekülje ajaloo laadimine',
 'currentrev'          => 'Viimane redaktsioon',
 'revisionasof'        => 'Redaktsioon: $1',
 'previousrevision'    => '←Vanem redaktsioon',
@@ -648,6 +650,7 @@ sisse logida.',
 'files'                   => 'Failid',
 
 # User rights
+'userrights'                 => 'Kasutaja õiguste muutmine', # Not used as normal message but as header for the special page itself
 'userrights-lookup-user'     => 'Muuda kasutajagruppi',
 'userrights-user-editname'   => 'Sisesta kasutajatunnus:',
 'editusergroup'              => 'Muuda kasutajagruppi',
@@ -742,7 +745,7 @@ võidakse sinu ligipääs sulgeda.',
 'filedesc'             => 'Lühikirjeldus',
 'fileuploadsummary'    => 'Info faili kohta:',
 'uploadedfiles'        => 'Üleslaaditud failid',
-'ignorewarning'        => 'Ignoreeri hoiatust ja salvesta fail hoiatusest hoolimata.',
+'ignorewarning'        => 'Ignoreeri hoiatust ja salvesta fail hoiatusest hoolimata',
 'ignorewarnings'       => 'Ignoreeri hoiatusi',
 'illegalfilename'      => 'Faili "$1" nimi sisaldab sümboleid, mis pole pealkirjades lubatud. Palun nimetage fail ümber ja proovige uuesti.',
 'badfilename'          => 'Pildi nimi on muudetud. Uus nimi on "$1".',
@@ -764,17 +767,11 @@ võidakse sinu ligipääs sulgeda.',
 'license'   => 'Litsents:',
 'nolicense' => 'pole valitud',
 
-# Image list
-'imagelist'        => 'Piltide loend',
-'imagelisttext'    => 'Piltide arv järgnevas loendis: $1. Sorteeritud $2.',
-'getimagelist'     => 'hangin piltide nimekirja',
-'ilsubmit'         => 'Otsi',
-'showlast'         => 'Näita viimast $1 pilti sorteerituna $2.',
-'byname'           => 'nime järgi',
-'bydate'           => 'kuupäeva järgi',
-'bysize'           => 'suuruse järgi',
-'imgdelete'        => 'kust',
-'imgdesc'          => 'kirj',
+# Special:Imagelist
+'imgdesc'   => 'kirj',
+'imagelist' => 'Piltide loend',
+
+# Image description page
 'filehist-user'    => 'Kasutaja',
 'filehist-comment' => 'Kommentaar',
 'imagelinks'       => 'Viited pildile',
@@ -849,7 +846,6 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).',
 'mostcategories'          => 'Enim kategoriseeritud artiklid',
 'mostimages'              => 'Kõige kasutatumad pildid',
 'mostrevisions'           => 'Kõige pikema redigeerimislooga artiklid',
-'allpages'                => 'Kõik artiklid',
 'shortpages'              => 'Lühikesed artiklid',
 'longpages'               => 'Pikad artiklid',
 'deadendpages'            => 'Edasipääsuta artiklid',
@@ -862,21 +858,13 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).',
 'ancientpages'            => 'Kõige vanemad artiklid',
 'move'                    => 'Teisalda',
 'movethispage'            => 'Muuda pealkirja',
-'unusedimagestext'        => '<p>Pange palun tähele, et teised
-veebisaidid võivad linkida pildile otselingiga ja seega võivad
-siin toodud pildid olla ikkagi aktiivses kasutuses.',
+'unusedimagestext'        => 'Pange palun tähele, et teised veebisaidid võivad linkida pildile otselingiga ja seega võivad siin toodud pildid olla ikkagi aktiivses kasutuses.',
 'unusedcategoriestext'    => 'Need kategooriad pole ühesgi artiklis või teises kategoorias kasutuses.',
 'notargettitle'           => 'Puudub sihtlehekülg',
 'notargettext'            => 'Sa ei ole esitanud sihtlehekülge ega kasutajat, kelle kallal seda operatsiooni toime panna.',
 
 # Book sources
 'booksources' => 'Otsi raamatut',
-
-'categoriespagetext' => 'Vikis on järgmised kategooriad.',
-'userrights'         => 'Kasutaja õiguste muutmine',
-'groups'             => 'Kasutaja grupid',
-'alphaindexline'     => '$1 kuni $2',
-'version'            => 'Versioon',
 
 # Special:Log
 'specialloguserlabel'  => 'Kasutaja:',
@@ -886,6 +874,8 @@ siin toodud pildid olla ikkagi aktiivses kasutuses.',
 'logempty'             => 'Logides vastavad kirjed puuduvad.',
 
 # Special:Allpages
+'allpages'          => 'Kõik artiklid',
+'alphaindexline'    => '$1 kuni $2',
 'nextpage'          => 'Järgmine lehekülg ($1)',
 'allpagesfrom'      => 'Näita alates:',
 'allarticles'       => 'Kõik artiklid',
@@ -935,7 +925,7 @@ Kui tahad seda lehte hiljem jälgimisloendist eemaldada, klõpsa päisenupule "L
 'wlnote'               => 'Allpool on viimased $1 muudatust viimase <b>$2</b> tunni jooksul.',
 'wlshowlast'           => 'Näita viimast $1 tundi $2 päeva. $3',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'jälgin...',
 'unwatching' => 'Jälgimise lõpetamine...',
 
@@ -974,8 +964,8 @@ Kõik toodud kellaajad järgivad serveriaega (UTC).',
 'protectlogtext'              => 'Allpool on loetletud lehekülgede kaitsmised ja kaitsete eemaldamised. Praegu kaitstud lehekülgi vaata [[Special:Protectedpages|kaitstud lehtede loetelust]].',
 'protectedarticle'            => 'kaitses lehekülje "[[$1]]"',
 'unprotectedarticle'          => 'eemaldas lehekülje "[[$1]]" kaitse',
-'protectsub'                  => '("$1" kaitsmine)',
-'confirmprotect'              => 'Kinnita kaitsmine',
+'protect-title'               => '"$1" kaitsmine',
+'protect-legend'              => 'Kinnita kaitsmine',
 'protectcomment'              => 'Põhjus',
 'protect-text'                => 'Siin võite vaadata ja muuta lehekülje <strong><nowiki>$1</nowiki></strong> kaitsesätteid.',
 'protect-default'             => '(tavaline)',
@@ -1027,11 +1017,7 @@ versioonid varasema ajaloona. Kehtivat versiooni automaatselt välja ei vahetata
 'mycontris'     => 'Minu kaastöö',
 'contribsub2'   => 'Kasutaja "$1 ($2)" jaoks',
 'nocontribs'    => 'Antud kriteeriumile vastavaid muudatusi ei leidnud.',
-'ucnote'        => 'Esitatakse selle kasutaja tehtud viimased <b>$1</b> muudatust viimase <b>$2</b> päeva jooksul.',
-'uclinks'       => 'Näita viimast $1 muudatust; viimase $2 päeva jooksul.',
 'uctop'         => ' (üles)',
-
-'sp-newimages-showfrom' => 'Näita uusi pilte alates $1',
 
 # What links here
 'whatlinkshere'      => 'Viidad siia',
@@ -1092,12 +1078,19 @@ Kindlasti tuleb täita ka väli \"põhjus\", paigutades sinna näiteks viited ko
 'unlockdbsuccesstext' => 'Andmebaasi kirjutuspääs on taastatud.',
 
 # Move page
-'move-page-legend'         => 'Teisalda artikkel',
-'movepagetext'     => "Allolevat vormi kasutades saate lehekülje ümber nimetada. Lehekülje ajalugu tõstetakse uue pealkirja alla automaatselt. Praeguse pealkirjaga leheküljest saab ümbersuunamisleht uuele leheküljele. Teistes artiklites olevaid linke praeguse nimega leheküljele automaatselt ei muudeta. Teie kohuseks on hoolitseda, et ei tekiks topeltümbersuunamisi ning et kõik jääks toimima nagu enne ümbernimetamist.
+'move-page-legend' => 'Teisalda artikkel',
+'movepagetext'     => "Allolevat vormi kasutades saate lehekülje ümber nimetada.
+Lehekülje ajalugu tõstetakse uue pealkirja alla automaatselt.
+Praeguse pealkirjaga leheküljest saab ümbersuunamisleht uuele leheküljele.
+Teistes artiklites olevaid linke praeguse nimega leheküljele automaatselt ei muudeta.
+Teie kohuseks on hoolitseda, et ei tekiks topeltümbersuunamisi ning et kõik jääks toimima nagu enne ümbernimetamist.
 
-Lehekülge '''ei nimetata ümber''' juhul, kui uue nimega lehekülg on juba olemas. Erandiks on juhud, kui olemasolev lehekülg on tühi või ümbersuunamislehekülg ja sellel pole redigeerimisajalugu. See tähendab, et te ei saa kogemata üle kirjutada juba olemasolevat lehekülge, kuid saate ebaõnnestunud ümbernimetamise tagasi pöörata.
+Lehekülge '''ei nimetata ümber''' juhul, kui uue nimega lehekülg on juba olemas. Erandiks on juhud, kui olemasolev lehekülg on tühi või ümbersuunamislehekülg ja sellel pole redigeerimisajalugu.
+See tähendab, et te ei saa kogemata üle kirjutada juba olemasolevat lehekülge, kuid saate ebaõnnestunud ümbernimetamise tagasi pöörata.
 
-<strong>ETTEVAATUST!</strong> Võimalik, et kavatsete  teha ootamatut ning drastilist muudatust väga loetavasse artiklisse; enne muudatuse tegemist mõelge palun järele, mis võib olla selle tagajärjeks.",
+'''ETTEVAATUST!'''
+Võimalik, et kavatsete teha ootamatut ning drastilist muudatust väga loetavasse artiklisse;
+enne muudatuse tegemist mõelge palun järele, mis võib olla selle tagajärjeks.",
 'movepagetalktext' => "Koos artiklileheküljega teisaldatakse automaatselt ka arutelulehekülg, '''välja arvatud juhtudel, kui:'''
 *liigutate lehekülge ühest nimeruumist teise,
 *uue nime all on juba olemas mittetühi arutelulehekülg või
@@ -1208,12 +1201,6 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 'others'    => 'teised',
 'siteusers' => 'Viki kasutaja(d) $1',
 
-# Spam protection
-'subcategorycount'       => 'Sellel kategoorial on {{PLURAL:$1|üks allkategooria|$1 allkategooriat}}.',
-'categoryarticlecount'   => 'Lehel kuvatakse $1 kategooriasse {{PLURAL:$1|kuuluv artikkel|kuuluvat artiklit}}.',
-'category-media-count'   => 'Lehel kuvatakse $1 kategooriasse {{PLURAL:$1|kuuluv fail|kuuluvat faili}}.',
-'listingcontinuesabbrev' => 'jätk',
-
 # Math options
 'mw_math_png'    => 'Alati PNG',
 'mw_math_simple' => 'Kui väga lihtne, siis HTML, muidu PNG',
@@ -1232,8 +1219,12 @@ kasutajaks ja [[Special:Userlogin|sisse logima]]',
 'thumbsize'    => 'Pisipildi suurus:',
 
 # Special:Newimages
-'newimages'    => 'Uute meediafailide galerii',
-'showhidebots' => '($1 bottide kaastööd)',
+'newimages'             => 'Uute meediafailide galerii',
+'imagelisttext'         => 'Piltide arv järgnevas loendis: $1. Sorteeritud $2.',
+'showhidebots'          => '($1 bottide kaastööd)',
+'ilsubmit'              => 'Otsi',
+'bydate'                => 'kuupäeva järgi',
+'sp-newimages-showfrom' => 'Näita uusi pilte alates $1',
 
 # EXIF tags
 'exif-artist'          => 'Autor',
@@ -1301,5 +1292,8 @@ Kui see *ei* ole sinu loodud konto, siis ära kliki lingil. Kinnituskood aegub $
 'watchlisttools-view' => 'Näita vastavaid muudatusi',
 'watchlisttools-edit' => 'Vaata ja redigeeri jälgimisloendit',
 'watchlisttools-raw'  => 'Redigeeri lähtefaili',
+
+# Special:Version
+'version' => 'Versioon', # Not used as normal message but as header for the special page itself
 
 );

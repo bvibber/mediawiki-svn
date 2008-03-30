@@ -9,7 +9,46 @@
  */
 
 $messages = array(
+# User preference toggles
+'tog-underline'            => 'Gulisan lang panglalam deng suglung:',
+'tog-justify'              => 'Ibie ing sangkan kareng parapu',
+'tog-hideminor'            => 'Isalikut la reng kasalugsungang mangalating meyalili',
+'tog-extendwatchlist'      => 'Dagdagan la reng babanten para ipakit la reng kailangan mayalili',
+'tog-usenewrc'             => 'Mesanting la reng bayung mengayalili (JavaScript)',
+'tog-showtoolbar'          => 'Ipakit ya panaliling toolbar (JavaScript)',
+'tog-editondblclick'       => 'Alilan la reng bulung kapamilatan ning makataduang pamagpindut (JavaScript)',
+'tog-editsection'          => 'Enable section editing via [edit] links
+Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
+'tog-rememberpassword'     => 'Tandanan ya ing kanakung login keng computer a ini',
+'tog-editwidth'            => 'Cajun a alilan atin yang katmung lualas',
+'tog-watchcreations'       => 'Idagdag la deng bulung a lelengan ku kareng babanten',
+'tog-watchdefault'         => 'Idagdag la reng bulung a inalilan ku kareng babanten',
+'tog-watchmoves'           => 'Idagdag la reng bulung a inalis ku kareng babanten',
+'tog-watchdeletion'        => 'Idagdag la reng bulung a bira ku kareng babanten',
+'tog-enotifwatchlistpages' => 'E-mail mu ku ustung ing bulung a babanten ku meyalili ya',
+'tog-enotifusertalkpages'  => 'E-mail mu ku ustung ing kanakung gamit talamitam meyalili ya',
+'tog-enotifminoredits'     => 'E-mail mu ku kareng mangalating alili da reng bulung',
+'tog-enotifrevealaddr'     => 'Ipakit me ing kanakung e-mail address kareng pamanabisang sulat',
+'tog-shownumberswatching'  => 'Ipakit la reng bilang da reng magbanteng talagamit',
+'tog-watchlisthideown'     => 'Isaliut mo reng alili kareng babante',
+'tog-showhiddencats'       => 'Ipakit la reng makasalikut a categories',
+
+'underline-always' => 'Pane',
+
 # Dates
+'sunday'    => 'Dominggu',
+'monday'    => 'Lunis',
+'tuesday'   => 'Martis',
+'wednesday' => 'Mierkulis',
+'thursday'  => 'Juebis',
+'friday'    => 'Biernis',
+'saturday'  => 'Sabadu',
+'sun'       => 'Dom',
+'mon'       => 'Lun',
+'tue'       => 'Mar',
+'wed'       => 'Mie',
+'thu'       => 'Jue',
+'fri'       => 'Bie',
 'april'     => 'Abril',
 'june'      => 'Juniu',
 'july'      => 'Juliu',
@@ -148,11 +187,7 @@ Subukan me ing [[Special:Search|searching on the wiki]] para kareng bayung bulun
 'filesource'  => 'Pikuanan:',
 'badfilename' => 'Ing pamansag ning file miyalilan yang "$1".',
 
-# Image list
-'ilsubmit'       => 'Manintun',
-'byname'         => 'agpang keng lagyu',
-'bydate'         => 'agpang keng aldo',
-'bysize'         => 'agpang keng dagul',
+# Special:Imagelist
 'imagelist_name' => 'Lagyu',
 
 # Unwatched pages
@@ -167,7 +202,6 @@ Subukan me ing [[Special:Search|searching on the wiki]] para kareng bayung bulun
 'withoutinterwiki' => 'Bulung a yalang suglung kareng aliwang amanu',
 
 # Miscellaneous special pages
-'allpages'         => 'Deng eganaganang bulung',
 'shortpages'       => 'Mangakuyad a bulung',
 'longpages'        => 'Mangakabang bulung',
 'deadendpagestext' => 'E la makatuglung kareng aliwang bulung king wiking iti deng bulung a makatuki.',
@@ -181,13 +215,13 @@ Subukan me ing [[Special:Search|searching on the wiki]] para kareng bayung bulun
 'booksources-go'            => 'Sige',
 'booksources-text'          => 'Makabili la king lalam deng suglung kareng aliwang karinan o site a mamisaling librung bayu at megamit na, at mapalyaring atin la muring aliwang informaciun kareng librung paintunan mu.',
 
-'alphaindexline' => '$1 papuntang $2',
-
 # Special:Log
 'alllogstext' => 'Piyabeng talatag da ring pamanyampa, pamaglako, proteksyun, pamanyabat, at sysop pamangamittala.
 Malyari meng kitiran ing panimanman o akakit, kapamilatan ning pamamili ning nung sanu ing pamangamittala.',
 
 # Special:Allpages
+'allpages'          => 'Deng eganaganang bulung',
+'alphaindexline'    => '$1 papuntang $2',
 'allpagesfrom'      => 'Ipakit la reng bulung manibat:',
 'allarticles'       => 'Deng eganaganang artikulu',
 'allinnamespace'    => 'Deng eganaganang bulung ($1 lagyungpilatan)',
@@ -318,12 +352,13 @@ Gumamit na kang aliwang lagyu.',
 # Attribution
 'anonymous' => 'Ing/Deng gagamit king {{SITENAME}} a e pepakilala.',
 
-# Spam protection
-'categoryarticlecount' => 'Ating {{PLURAL:$1|metung a articulu|$1 a articulu}} king categoriang ini.',
-
 # Patrolling
 'rcpatroldisabled'     => 'Makapatda ya ing Recent Changes Patrol (Talabante Kareng Bayung Miyalilan)',
 'rcpatroldisabledtext' => 'Kasalungsungan yang makapatda ing Recent Changes Patrol (Talabante Kareng Bayung Miyalilan).',
+
+# Special:Newimages
+'ilsubmit' => 'Manintun',
+'bydate'   => 'agpang keng aldo',
 
 # EXIF tags
 'exif-software'        => 'Software a megamit',

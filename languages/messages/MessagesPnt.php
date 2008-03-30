@@ -115,7 +115,7 @@ $messages = array(
 # Search results
 'powersearch' => 'Εύρον',
 
-# Image list
+# Image description page
 'filehist-user' => 'Χρήστες',
 
 # Statistics
@@ -123,7 +123,6 @@ $messages = array(
 
 # Miscellaneous special pages
 'lonelypages'  => 'Ορφανά σελίδας',
-'allpages'     => 'Όλεα τα σελίδας',
 'ancientpages' => 'Ασ’ όλιον παλαιά σελίδας',
 'move'         => 'Αχταρμάν',
 'movethispage' => 'Εφτάτε έναν αχταρμάν τη σελίδαν',
@@ -135,6 +134,7 @@ $messages = array(
 'specialloguserlabel' => 'Χρήστες:',
 
 # Special:Allpages
+'allpages'       => 'Όλεα τα σελίδας',
 'allarticles'    => 'Όλεα τα σελίδας',
 'allpagessubmit' => 'Δέβα',
 

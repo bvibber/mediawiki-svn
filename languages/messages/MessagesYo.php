@@ -5,6 +5,7 @@
  *
  * @author Demmy
  * @author SPQRobin
+ * @author Siebrand
  */
 
 
@@ -63,6 +64,7 @@ $messages = array(
 'editthispage'     => "S'àtúnṣe ojúewé yi",
 'delete'           => 'Paarẹ́',
 'deletethispage'   => 'Pa ojúewé yi rẹ́',
+'protect'          => 'Dábòbò',
 'newpage'          => 'Ojúewé tuntun',
 'talkpage'         => 'Kábárawasọ̀rọ̀ nípa ojúewé yi',
 'talkpagelinktext' => 'Kábárawasọ̀rọ̀',
@@ -101,7 +103,7 @@ $messages = array(
 'viewsource'        => 'Àfihàn ọ̀rọ̀àmì',
 'protectedpagetext' => 'A ti se àtìpa ojúewé yi. Ẹ kò le se àtúnṣe.',
 'viewsourcetext'    => 'Ẹ lè wo ati ẹ lè se àwòkọ ọ̀rọ̀àmì ojúewé yi:',
-'titleprotected'    => 'This title has been protected from creation by [[User:$1|$1]]. The reason given is <i>$2</i>.',
+'titleprotected'    => "This title has been protected from creation by [[User:$1|$1]]. The reason given is ''$2''.",
 
 # Login and logout pages
 'logouttitle'        => 'Ẹnitínṣe tibọsóde',
@@ -144,7 +146,7 @@ A ti fi orúkọ yín s'ílẹ̀. Ẹ mọ́ gbàgbé l'áti s'àtúnṣe àwọ
 # Recent changes
 'recentchanges' => 'Àwọn àtúnṣe tuntun',
 
-# Image list
+# Special:Imagelist
 'imagelist_name' => 'Orúkọ',
 'imagelist_user' => 'Ẹnitínṣe',
 
@@ -153,7 +155,6 @@ A ti fi orúkọ yín s'ílẹ̀. Ẹ mọ́ gbàgbé l'áti s'àtúnṣe àwọ
 'filedelete-submit' => 'Paarẹ́',
 
 # Miscellaneous special pages
-'allpages'          => 'Gbogbo ojúewé',
 'specialpages'      => 'Àwọn ojúewé pàtàkì',
 'spheading'         => 'Àwọn ojúewé Pàtàkì fún gbogbo àwọn ẹnitínṣe',
 'newpages'          => 'Àwọn ojúewé tuntun',
@@ -164,6 +165,7 @@ A ti fi orúkọ yín s'ílẹ̀. Ẹ mọ́ gbàgbé l'áti s'àtúnṣe àwọ
 'speciallogtitlelabel' => 'Àkọlé:',
 
 # Special:Allpages
+'allpages'          => 'Gbogbo ojúewé',
 'allarticles'       => 'Gbogbo ojúewé',
 'allinnamespace'    => 'Gbogbo ojúewé ($1 namespace)',
 'allnotinnamespace' => 'Gbogbo ojúewé (tí kòsí ní $1 namespace)',

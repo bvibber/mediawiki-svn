@@ -68,7 +68,6 @@
 	'diq' => 'Zazaki',		# Zazaki
 	'dk' => 'Dansk (deprecated:da)', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
 	'dsb' => 'Dolnoserbski', # Lower Sorbian
-	'dum' => 'Middelnederlands', # Middle Dutch
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
 	'ee' => 'Eʋegbe',	# Éwé
@@ -187,7 +186,7 @@
 	'mi' => 'Māori',	# Maori
 	'mk' => 'Македонски',	# Macedonian
 	'ml' => 'മലയാളം',	# Malayalam
-	'mn' => 'Монгол',	# Mongolian, Peripheral
+	'mn' => 'Монгол',	# Halh Mongolian (Cyrillic) (ISO 639-3: khk)
 	'mo' => 'Молдовеняскэ',	# Moldovan
 	'mr' => 'मराठी',	# Marathi
 	'ms' => 'Bahasa Melayu',	# Malay
@@ -283,6 +282,7 @@
 	'su' => 'Basa Sunda',	# Sundanese
 	'sv' => 'Svenska',		# Swedish
 	'sw' => 'Kiswahili',	# Swahili
+	'szl' => 'ślůnski',	# Silesian
 	'ta' => 'தமிழ்',	# Tamil
 	'te' => 'తెలుగు',	# Telugu
 	'tet' => 'Tetun',	# Tetun
@@ -299,7 +299,9 @@
 	'tpi' => 'Tok Pisin',	# Tok Pisin
 	'tr' => 'Türkçe',	# Turkish
 	'ts' => 'Xitsonga',		# Tsonga
-	'tt' => 'Tatarça',	# Tatar
+	'tt' => 'Tatarça/Татарча',	# Tatar (multiple scripts - defaults to Latin)
+	'tt-cyrl' => 'Татарча',	# Tatar (Cyrillic script)
+	'tt-latn' => 'Tatarça',	# Tatar (Latin script)
 	'tum' => 'chiTumbuka',  # Tumbuka
 	'tw' => 'Twi',			# Twi, (FIXME!)
 	'ty' => 'Reo Mā`ohi',	# Tahitian

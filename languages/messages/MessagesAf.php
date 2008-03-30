@@ -140,13 +140,15 @@ $messages = array(
 'nov'           => 'Nov',
 'dec'           => 'Des',
 
-# Bits of text used by many pages
-'categories'            => 'Kategorieë',
-'pagecategories'        => '{{PLURAL:$1|Kategorie|Kategorieë}}',
-'category_header'       => 'Artikels in "$1"-kategorie',
-'subcategories'         => 'Subkategorieë',
-'category-media-header' => 'Media in kategorie "$1"',
-'category-empty'        => "''Hierdie kategorie bevat geen artikels of media nie.''",
+# Categories related messages
+'categories'             => 'Kategorieë',
+'categoriespagetext'     => 'Die volgende kategorieë bestaan op die wiki.',
+'pagecategories'         => '{{PLURAL:$1|Kategorie|Kategorieë}}',
+'category_header'        => 'Artikels in "$1"-kategorie',
+'subcategories'          => 'Subkategorieë',
+'category-media-header'  => 'Media in kategorie "$1"',
+'category-empty'         => "''Hierdie kategorie bevat geen artikels of media nie.''",
+'listingcontinuesabbrev' => 'vervolg',
 
 'mainpagetext' => "<big>'''MediaWiki is suksesvol geïnstalleer.'''</big>",
 
@@ -487,7 +489,6 @@ Probeer asseblief die bladsy verkort en die detail na subartikels skuif sodat di
 'nohistory'           => 'Daar is geen wysigingsgeskiedenis vir hierdie bladsy nie.',
 'revnotfound'         => 'Weergawe nie gevind nie',
 'revnotfoundtext'     => 'Die ou weergawe wat jy aangevra het kon nie gevind word nie. Gaan asseblief die URL na wat jy gebruik het.',
-'loadhist'            => 'Besig om bladsy wysigingsgeskiedenis te laai.',
 'currentrev'          => 'Huidige wysiging',
 'revisionasof'        => 'Wysiging soos op $1',
 'previousrevision'    => '← Ouer weergawe',
@@ -496,7 +497,6 @@ Probeer asseblief die bladsy verkort en die detail na subartikels skuif sodat di
 'cur'                 => 'huidige',
 'next'                => 'volgende',
 'last'                => 'vorige',
-'orig'                => 'oorspronklike',
 'page_first'          => 'eerste',
 'page_last'           => 'laaste',
 'histlegend'          => 'Byskrif: (huidige) = verskil van huidige weergawe,
@@ -533,6 +533,7 @@ Probeer asseblief die bladsy verkort en die detail na subartikels skuif sodat di
 'prevn'                 => 'vorige $1',
 'nextn'                 => 'volgende $1',
 'viewprevnext'          => 'Kyk na ($1) ($2) ($3).',
+'search-result-size'    => '$1 ({{PLURAL:$2|1 woord|$2 woorde}})',
 'showingresults'        => 'Hier volg <b>$1</b> resultate vanaf #<b>$2</b>.',
 'nonefound'             => "<strong>Nota</strong>: onsuksesvolle navrae word gewoonlik veroorsaak deur 'n soektog met algemene
 woorde wat nie geindekseer word nie, of spesifisering van meer as een woord (slegs blaaie wat alle navraagwoorde
@@ -714,18 +715,18 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 
 'license' => 'Lisensiëring:',
 
-# Image list
-'imagelist'                 => 'Prentelys',
-'imagelisttext'             => 'Hier onder is a lys van $1 prente gesorteer $2.',
-'getimagelist'              => 'Besig om prentelys te haal',
-'ilsubmit'                  => 'Soek',
-'showlast'                  => 'Wys laaste $1 prente gesorteer $2.',
-'byname'                    => 'volgens naam',
-'bydate'                    => 'volgens datum',
-'bysize'                    => 'volgens grootte',
-'imgdelete'                 => 'skrap',
-'imgdesc'                   => 'beskrywing',
-'imgfile'                   => 'lêer',
+# Special:Imagelist
+'imagelist_search_for'  => 'Soek vir beeldnaam:',
+'imgdesc'               => 'beskrywing',
+'imgfile'               => 'lêer',
+'imagelist'             => 'Prentelys',
+'imagelist_date'        => 'Datum',
+'imagelist_name'        => 'Naam',
+'imagelist_user'        => 'Gebruiker',
+'imagelist_size'        => 'Grootte',
+'imagelist_description' => 'Beskryving',
+
+# Image description page
 'filehist'                  => 'Lêergeskiedenis',
 'filehist-current'          => 'huidig',
 'filehist-datetime'         => 'Datum/Tyd',
@@ -738,12 +739,6 @@ Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander jou gelaaide lêe
 'noimage'                   => "Geen lêer met so 'n naam bestaan nie; $1 gerus.",
 'noimage-linktext'          => 'laai dit',
 'uploadnewversion-linktext' => 'Laai een nuwe weergawe van hierdie lêer',
-'imagelist_date'            => 'Datum',
-'imagelist_name'            => 'Naam',
-'imagelist_user'            => 'Gebruiker',
-'imagelist_size'            => 'Grootte',
-'imagelist_description'     => 'Beskryving',
-'imagelist_search_for'      => 'Soek vir beeldnaam:',
 
 # File deletion
 'filedelete'                  => 'Skrap $1',
@@ -832,7 +827,6 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 'mostcategories'          => 'Artikels met die meeste kategorieë',
 'mostimages'              => 'Beelde met meeste skakels daarheen',
 'mostrevisions'           => 'Artikels met meeste wysigings',
-'allpages'                => 'Alle bladsye',
 'prefixindex'             => 'Alle bladsye (voorvoegselindeks)',
 'shortpages'              => 'Kort bladsye',
 'longpages'               => 'Lang bladsye',
@@ -856,11 +850,6 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 'booksources-search-legend' => 'Soek vir boekbronne',
 'booksources-go'            => 'Gaan',
 
-'categoriespagetext' => 'Die volgende kategorieë bestaan op die wiki.',
-'groups'             => 'Gebruikersgroepe',
-'alphaindexline'     => '$1 tot $2',
-'version'            => 'Weergawe',
-
 # Special:Log
 'specialloguserlabel'  => 'Gebruiker:',
 'speciallogtitlelabel' => 'Titel:',
@@ -872,6 +861,8 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 Jy kan die vertoning vernou deur 'n logtipe, gebruikersnaam of spesifieke blad te kies.",
 
 # Special:Allpages
+'allpages'          => 'Alle bladsye',
+'alphaindexline'    => '$1 tot $2',
 'nextpage'          => 'Volgende blad ($1)',
 'prevpage'          => 'Vorige bladsye ($1)',
 'allpagesfrom'      => 'Wys bladsye vanaf:',
@@ -973,8 +964,8 @@ Kyk na $2 vir \'n rekord van onlangse skrappings.',
 'protectlogpage'              => 'Beskermlogboek',
 'protectedarticle'            => 'het [[$1]] beskerm',
 'unprotectedarticle'          => 'het beskerming van [[$1]] verwyder',
-'protectsub'                  => '(Beskerm "$1")',
-'confirmprotect'              => 'Bevestig beskerming',
+'protect-title'               => 'Beskerm "$1"',
+'protect-legend'              => 'Bevestig beskerming',
 'protectcomment'              => 'Rede vir beskerming:',
 'protectexpiry'               => 'Verval:',
 'protect-default'             => '(normaal)',
@@ -1220,11 +1211,6 @@ Die teikenartikel "[[$1]]" bestaan reeds. Wil u dit skrap om plek te maak vir di
 'others'    => 'ander',
 'siteusers' => '{{SITENAME}} gebruiker(s) $1',
 
-# Spam protection
-'subcategorycount'       => 'Daar is {{PLURAL:$1|een subkategorie|$1 subkategorieë}} onder hierdie kategorie.',
-'categoryarticlecount'   => 'Daar is {{PLURAL:$1|een artikel|$1 artikels}} in hierdie kategorie.',
-'listingcontinuesabbrev' => 'vervolg',
-
 # Math options
 'mw_math_png'    => 'Gebruik altyd PNG.',
 'mw_math_simple' => 'Gebruik HTML indien dit eenvoudig is, andersins PNG.',
@@ -1250,8 +1236,11 @@ Die teikenartikel "[[$1]]" bestaan reeds. Wil u dit skrap om plek te maak vir di
 'show-big-image-thumb' => '<small>Grootte van hierdie voorskou: $1 × $2 pixels</small>',
 
 # Special:Newimages
-'newimages' => 'Gallery van nuwe beelde',
-'noimages'  => 'Niks te sien nie.',
+'newimages'     => 'Gallery van nuwe beelde',
+'imagelisttext' => 'Hier onder is a lys van $1 prente gesorteer $2.',
+'noimages'      => 'Niks te sien nie.',
+'ilsubmit'      => 'Soek',
+'bydate'        => 'volgens datum',
 
 # EXIF tags
 'exif-imagewidth'          => 'Breedte',
@@ -1368,6 +1357,9 @@ $1',
 'watchlisttools-view' => 'Besigtig ter saaklike veranderinge',
 'watchlisttools-edit' => 'Bekyk en wysig dophoulys',
 'watchlisttools-raw'  => 'Redigeer brondophoulys',
+
+# Special:Version
+'version' => 'Weergawe', # Not used as normal message but as header for the special page itself
 
 # Special:Filepath
 'filepath'        => 'Lêerpad',

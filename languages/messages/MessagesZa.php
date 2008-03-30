@@ -1,8 +1,8 @@
 <?php
 /** Zhuang (壮语)
-  *
-  * @addtogroup Language
-  */
+ *
+ * @addtogroup Language
+ */
 
 $fallback = 'zh-cn';
 
@@ -92,9 +92,6 @@ $messages = array(
 'fileuploadsummary' => 'Saegmangj:',
 'watchthisupload'   => 'Demq mae-nej',
 
-# Image list
-'ilsubmit' => 'Cwmh',
-
 # Random page
 'randompage' => 'Mae zaihzex',
 
@@ -130,18 +127,21 @@ $messages = array(
 'ipblocklist-submit' => 'Cwmh',
 
 # Move page
-'move-page-legend'    => 'Caen doengh mae',
-'movearticle' => 'Caen doengh mae:',
-'movenologin' => 'Maengx laezhaej',
-'move-watch'  => 'Demq mae-nej',
-'movepagebtn' => 'Caen doengh mae',
-'movedto'     => 'Caen bei',
-'1movedto2'   => '[[$1]] caen bei [[$2]]',
-'movereason'  => 'Haujgaemj',
+'move-page-legend' => 'Caen doengh mae',
+'movearticle'      => 'Caen doengh mae:',
+'movenologin'      => 'Maengx laezhaej',
+'move-watch'       => 'Demq mae-nej',
+'movepagebtn'      => 'Caen doengh mae',
+'movedto'          => 'Caen bei',
+'1movedto2'        => '[[$1]] caen bei [[$2]]',
+'movereason'       => 'Haujgaemj',
 
 # Tooltip help for the actions
 'tooltip-pt-preferences' => 'Doenghgaeq gou hae',
 'tooltip-p-logo'         => 'Mae meh',
+
+# Special:Newimages
+'ilsubmit' => 'Cwmh',
 
 # Multipage image navigation
 'imgmultigo' => 'Bei！',

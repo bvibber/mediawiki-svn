@@ -67,10 +67,11 @@ $messages = array(
 'nov'       => 'nuv',
 'dec'       => 'dic',
 
-# Bits of text used by many pages
-'categories'      => '{{PLURAL:$1|Categurìa|Categurìe}}',
-'category_header' => 'Paggene rìnt\'a categurìa "$1"',
-'subcategories'   => 'Categurìe secunnarie',
+# Categories related messages
+'categories'         => '{{PLURAL:$1|Categurìa|Categurìe}}',
+'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
+'category_header'    => 'Paggene rìnt\'a categurìa "$1"',
+'subcategories'      => 'Categurìe secunnarie',
 
 'about'          => 'Nfromma',
 'article'        => 'Articulo',
@@ -258,14 +259,13 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'fileexists-thumb' => "<center>'''Immagine esistente'''</center>",
 'uploadedimage'    => 'ha carecato "[[$1]]"',
 
-# Image list
-'ilsubmit'         => 'Truova',
-'byname'           => 'nomme',
-'imgdelete'        => 'scanc',
+# Special:Imagelist
+'imagelist_name' => 'Nomme',
+
+# Image description page
 'filehist-user'    => 'Utente',
 'imagelinks'       => 'Jonte ê ffiure',
 'noimage-linktext' => 'carrecarlo mmo',
-'imagelist_name'   => 'Nomme',
 
 # Random page
 'randompage'         => 'Na paggena qualsiase',
@@ -281,7 +281,6 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'nlinks'       => '$1 {{PLURAL:$1|cullegamiento|cullegamiente}}',
 'popularpages' => "Paggene cchiù 'speziunate",
 'wantedpages'  => 'Paggene cchiù addemannate',
-'allpages'     => "Tutte 'e ppaggene",
 'shortpages'   => 'Paggene curte',
 'longpages'    => 'Paggene cchiú longhe',
 'specialpages' => 'Paggene speciale',
@@ -289,9 +288,8 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'move'         => 'Spusta',
 'movethispage' => 'Spusta chesta paggena',
 
-'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
-
 # Special:Allpages
+'allpages'       => "Tutte 'e ppaggene",
 'allarticles'    => "Tutt' 'e vvoce",
 'allinnamespace' => "Tutt' 'e ppaggene d&#39;&#39;o namespace $1",
 
@@ -381,16 +379,13 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 # Attribution
 'others' => 'ate',
 
-# Spam protection
-'subcategorycount'     => "Ce {{PLURAL:$1|sta n'ata categurìa|stanno ate $1 categurìe}} rìnt'a chésta categurìa.",
-'categoryarticlecount' => 'Nce {{PLURAL:$1|sta na voce|stanno $1 voce}} intâ sta categoria.',
-
 # Info page
 'numedits'    => "Nummero 'e cagnamiente (articulo): $1",
 'numwatchers' => "Nummero 'e asservature: $1",
 
 # Special:Newimages
 'noimages' => "Nun nc'è nind' 'a veré.",
+'ilsubmit' => 'Truova',
 
 'exif-xyresolution-i' => '$1 punte pe pollice (dpi)',
 

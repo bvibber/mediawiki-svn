@@ -699,6 +699,7 @@ class User {
 	 * @deprecated use wfSetupSession()
 	 */
 	function SetupSession() {
+		wfDeprecated( __METHOD__ );
 		wfSetupSession();
 	}
 
@@ -1163,6 +1164,7 @@ class User {
 	 * @deprecated use User::newFromId()
 	 */
 	function setID( $v ) {
+		wfDeprecated( __METHOD__ );
 		$this->mId = $v;
 		$this->clearInstanceCache( 'id' );
 	}
@@ -1758,6 +1760,7 @@ class User {
 	 * @deprecated
 	 */
 	function isBot() {
+		wfDeprecated( __METHOD__ );
 		return $this->isAllowed( 'bot' );
 	}
 
@@ -2017,7 +2020,9 @@ class User {
 		 		'user_email_authenticated' => $dbw->timestampOrNull( $this->mEmailAuthenticated ),
 				'user_options' => $this->encodeOptions(),
 				'user_touched' => $dbw->timestamp($this->mTouched),
-				'user_token' => $this->mToken
+				'user_token' => $this->mToken,
+				'user_email_token' => $this->mEmailToken,
+				'user_email_token_expires' => $dbw->timestampOrNull( $this->mEmailTokenExpires ),
 			), array( /* WHERE */
 				'user_id' => $this->mId
 			), __METHOD__
@@ -2208,7 +2213,9 @@ class User {
 	/**
 	 * @deprecated
 	 */
-	function setLoaded( $loaded ) {}
+	function setLoaded( $loaded ) {
+		wfDeprecated( __METHOD__ );
+	}
 
 	/**
 	 * Get this user's personal page title.
@@ -2371,21 +2378,24 @@ class User {
 	}
 
 	/**
-	 * Generate a new e-mail confirmation token and send a confirmation
+	 * Generate a new e-mail confirmation token and send a confirmation/invalidation
 	 * mail to the user's given address.
 	 *
 	 * @return mixed True on success, a WikiError object on failure.
 	 */
 	function sendConfirmationMail() {
-		global $wgContLang;
+		global $wgLang;
 		$expiration = null; // gets passed-by-ref and defined in next line.
-		$url = $this->confirmationTokenUrl( $expiration );
+		$token = $this->confirmationToken( $expiration );
+		$url = $this->confirmationTokenUrl( $token );
+		$invalidateURL = $this->invalidationTokenUrl( $token );
 		return $this->sendMail( wfMsg( 'confirmemail_subject' ),
 			wfMsg( 'confirmemail_body',
 				wfGetIP(),
 				$this->getName(),
 				$url,
-				$wgContLang->timeanddate( $expiration, false ) ) );
+				$wgLang->timeanddate( $expiration, false ),
+				$invalidateURL ) );
 	}
 
 	/**
@@ -2419,30 +2429,33 @@ class User {
 		$now = time();
 		$expires = $now + 7 * 24 * 60 * 60;
 		$expiration = wfTimestamp( TS_MW, $expires );
-
 		$token = $this->generateToken( $this->mId . $this->mEmail . $expires );
 		$hash = md5( $token );
-
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'user',
-			array( 'user_email_token'         => $hash,
-			       'user_email_token_expires' => $dbw->timestamp( $expires ) ),
-			array( 'user_id'                  => $this->mId ),
-			__METHOD__ );
-
+		$this->load();
+		$this->mEmailToken = $hash;
+		$this->mEmailTokenExpires = $expiration;
+		$this->saveSettings();
 		return $token;
 	}
 
 	/**
-	 * Generate and store a new e-mail confirmation token, and return
-	 * the URL the user can use to confirm.
-	 * @param &$expiration mixed output: accepts the expiration time
+	* Return a URL the user can use to confirm their email address.	
+	 * @param $token: accepts the email confirmation token
 	 * @return string
 	 * @private
 	 */
-	function confirmationTokenUrl( &$expiration ) {
-		$token = $this->confirmationToken( $expiration );
+	function confirmationTokenUrl( $token ) {
 		$title = SpecialPage::getTitleFor( 'Confirmemail', $token );
+		return $title->getFullUrl();
+	}
+	/**
+	 * Return a URL the user can use to invalidate their email address.
+	 * @param $token: accepts the email confirmation token
+	 * @return string
+	 * @private
+	 */
+	 function invalidationTokenUrl( $token ) {
+		$title = SpecialPage::getTitleFor( 'Invalidateemail', $token );
 		return $title->getFullUrl();
 	}
 
@@ -2452,6 +2465,19 @@ class User {
 	function confirmEmail() {
 		$this->load();
 		$this->mEmailAuthenticated = wfTimestampNow();
+		$this->saveSettings();
+		return true;
+	}
+	
+	/**
+	 * Invalidate the user's email confirmation, unauthenticate the email
+	 * if it was already confirmed and save.
+	 */
+	function invalidateEmail() {
+		$this->load();
+		$this->mEmailToken = null;
+		$this->mEmailTokenExpires = null;
+		$this->mEmailAuthenticated = null;
 		$this->saveSettings();
 		return true;
 	}

@@ -48,7 +48,8 @@ class LocalFile extends File
 		$description,      # Description of current revision of the file
 		$dataLoaded,       # Whether or not all this has been loaded from the database (loadFromXxx)
 		$upgraded,         # Whether the row was upgraded on load
-		$locked;           # True if the image row is locked
+		$locked,           # True if the image row is locked
+		$deleted;       # Bitfield akin to rev_deleted
 
 	/**#@-*/
 
@@ -235,7 +236,6 @@ class LocalFile extends File
 			$this->$name = $value;
 		}
 		$this->fileExists = true;
-		// Check for rows from a previous schema, quietly upgrade them
 		$this->maybeUpgradeRow();
 	}
 
@@ -345,6 +345,7 @@ class LocalFile extends File
 	/** getURL inherited */
 	/** getViewURL inherited */
 	/** getPath inherited */
+	/** isVisible inhereted */
 
 	/**
 	 * Return the width of the image
@@ -547,7 +548,7 @@ class LocalFile extends File
 		$this->purgeThumbnails();
 
 		// Purge squid cache for this file
-		wfPurgeSquidServers( array( $this->getURL() ) );
+		SquidUpdate::purge( array( $this->getURL() ) );
 	}
 
 	/**
@@ -571,7 +572,7 @@ class LocalFile extends File
 
 		// Purge the squid
 		if ( $wgUseSquid ) {
-			wfPurgeSquidServers( $urls );
+			SquidUpdate::purge( $urls );
 		}
 	}
 
@@ -620,7 +621,9 @@ class LocalFile extends File
 			$this->historyRes = $dbr->select( 'image', 
 				array(
 					'*',
-					"'' AS oi_archive_name"
+					"'' AS oi_archive_name",
+					'0 as oi_deleted',
+					'img_sha1'
 				),
 				array( 'img_name' => $this->title->getDBkey() ),
 				$fname
@@ -735,7 +738,7 @@ class LocalFile extends File
 		// Delete thumbnails and refresh the metadata cache
 		$this->purgeThumbnails();
 		$this->saveToCache();
-		wfPurgeSquidServers( array( $this->getURL() ) );
+		SquidUpdate::purge( array( $this->getURL() ) );
 
 		// Fail now if the file isn't there
 		if ( !$this->fileExists ) {
@@ -793,7 +796,7 @@ class LocalFile extends File
 					'oi_media_type' => 'img_media_type',
 					'oi_major_mime' => 'img_major_mime',
 					'oi_minor_mime' => 'img_minor_mime',
-					'oi_sha1' => 'img_sha1',
+					'oi_sha1' => 'img_sha1'
 				), array( 'img_name' => $this->getName() ), __METHOD__
 			);
 
@@ -907,11 +910,12 @@ class LocalFile extends File
 	 * Cache purging is done; logging is caller's responsibility.
 	 *
 	 * @param $reason
+	 * @param $suppress
 	 * @return FileRepoStatus object.
 	 */
-	function delete( $reason ) {
+	function delete( $reason, $suppress = false ) {
 		$this->lock();
-		$batch = new LocalFileDeleteBatch( $this, $reason );
+		$batch = new LocalFileDeleteBatch( $this, $reason, $suppress );
 		$batch->addCurrent();
 
 		# Get old version relative paths
@@ -944,12 +948,13 @@ class LocalFile extends File
 	 * Cache purging is done; logging is caller's responsibility.
 	 *
 	 * @param $reason
+	 * @param $suppress
 	 * @throws MWException or FSException on database or filestore failure
 	 * @return FileRepoStatus object.
 	 */
-	function deleteOld( $archiveName, $reason ) {
+	function deleteOld( $archiveName, $reason, $suppress=false ) {
 		$this->lock();
-		$batch = new LocalFileDeleteBatch( $this, $reason );
+		$batch = new LocalFileDeleteBatch( $this, $reason, $suppress );
 		$batch->addOld( $archiveName );
 		$status = $batch->execute();
 		$this->unlock();
@@ -968,10 +973,11 @@ class LocalFile extends File
 	 *
 	 * @param $versions set of record ids of deleted items to restore,
 	 *                    or empty to restore all revisions.
+	 * @param $unuppress
 	 * @return FileRepoStatus
 	 */
 	function restore( $versions = array(), $unsuppress = false ) {
-		$batch = new LocalFileRestoreBatch( $this );
+		$batch = new LocalFileRestoreBatch( $this, $unsuppress );
 		if ( !$versions ) {
 			$batch->addAll();
 		} else {
@@ -1157,12 +1163,13 @@ class Image extends LocalFile {
  * Helper class for file deletion
  */
 class LocalFileDeleteBatch {
-	var $file, $reason, $srcRels = array(), $archiveUrls = array(), $deletionBatch;
+	var $file, $reason, $srcRels = array(), $archiveUrls = array(), $deletionBatch, $suppress;
 	var $status;
 
-	function __construct( File $file, $reason = '' ) {
+	function __construct( File $file, $reason = '', $suppress = false ) {
 		$this->file = $file;
 		$this->reason = $reason;
+		$this->suppress = $suppress;
 		$this->status = $file->repo->newGood();
 	}
 
@@ -1243,6 +1250,18 @@ class LocalFileDeleteBatch {
 		$dotExt = $ext === '' ? '' : ".$ext";
 		$encExt = $dbw->addQuotes( $dotExt );
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
+		
+		// Bitfields to further suppress the content
+		if ( $this->suppress ) {
+			$bitfield = 0;
+			// This should be 15...
+			$bitfield |= Revision::DELETED_TEXT;
+			$bitfield |= Revision::DELETED_COMMENT;
+			$bitfield |= Revision::DELETED_USER;
+			$bitfield |= Revision::DELETED_RESTRICTED;
+		} else {
+			$bitfield = 'oi_deleted';
+		}
 
 		if ( $deleteCurrent ) {
 			$concat = $dbw->buildConcat( array( "img_sha1", $encExt ) );
@@ -1254,7 +1273,7 @@ class LocalFileDeleteBatch {
 					'fa_deleted_user'      => $encUserId,
 					'fa_deleted_timestamp' => $encTimestamp,
 					'fa_deleted_reason'    => $encReason,
-					'fa_deleted'		   => 0,
+					'fa_deleted'		   => $this->suppress ? $bitfield : 0,
 
 					'fa_name'         => 'img_name',
 					'fa_archive_name' => 'NULL',
@@ -1285,7 +1304,7 @@ class LocalFileDeleteBatch {
 					'fa_deleted_user'      => $encUserId,
 					'fa_deleted_timestamp' => $encTimestamp,
 					'fa_deleted_reason'    => $encReason,
-					'fa_deleted'		   => 0,
+					'fa_deleted'		   => $this->suppress ? $bitfield : 'oi_deleted',
 
 					'fa_name'         => 'oi_name',
 					'fa_archive_name' => 'oi_archive_name',
@@ -1300,7 +1319,8 @@ class LocalFileDeleteBatch {
 					'fa_description'  => 'oi_description',
 					'fa_user'         => 'oi_user',
 					'fa_user_text'    => 'oi_user_text',
-					'fa_timestamp'    => 'oi_timestamp'
+					'fa_timestamp'    => 'oi_timestamp',
+					'fa_deleted'      => $bitfield
 				), $where, __METHOD__ );
 		}
 	}
@@ -1328,15 +1348,30 @@ class LocalFileDeleteBatch {
 		wfProfileIn( __METHOD__ );
 
 		$this->file->lock();
-
+		// Leave private files alone
+		$privateFiles = array();
+		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
+		$dbw = $this->file->repo->getMasterDB();
+		if( !empty( $oldRels ) ) {
+			$res = $dbw->select( 'oldimage', 
+				array( 'oi_archive_name' ),
+				array( 'oi_name' => $this->file->getName(),
+					'oi_archive_name IN (' . $dbw->makeList( array_keys($oldRels) ) . ')',
+					'oi_deleted & ' . File::DELETED_FILE => File::DELETED_FILE ),
+				__METHOD__ );
+			while( $row = $dbw->fetchObject( $res ) ) {
+				$privateFiles[$row->oi_archive_name] = 1;
+			}
+		}
 		// Prepare deletion batch
 		$hashes = $this->getHashes();
 		$this->deletionBatch = array();
 		$ext = $this->file->getExtension();
 		$dotExt = $ext === '' ? '' : ".$ext";
 		foreach ( $this->srcRels as $name => $srcRel ) {
-			// Skip files that have no hash (missing source)
-			if ( isset( $hashes[$name] ) ) {
+			// Skip files that have no hash (missing source).
+			// Keep private files where they are.
+			if ( isset($hashes[$name]) && !array_key_exists($name,$privateFiles) ) {
 				$hash = $hashes[$name];
 				$key = $hash . $dotExt;
 				$dstRel = $this->file->repo->getDeletedHashPath( $key ) . $key;
@@ -1394,10 +1429,11 @@ class LocalFileDeleteBatch {
 class LocalFileRestoreBatch {
 	var $file, $cleanupBatch, $ids, $all, $unsuppress = false;
 
-	function __construct( File $file ) {
+	function __construct( File $file, $unsuppress = false ) {
 		$this->file = $file;
 		$this->cleanupBatch = $this->ids = array();
 		$this->ids = array();
+		$this->unsuppress = $unsuppress;
 	}
 
 	/**
@@ -1460,12 +1496,7 @@ class LocalFileRestoreBatch {
 		$archiveNames = array();
 		while( $row = $dbw->fetchObject( $result ) ) {
 			$idsPresent[] = $row->fa_id;
-			if ( $this->unsuppress ) {
-				// Currently, fa_deleted flags fall off upon restore, lets be careful about this
-			} else if ( ($row->fa_deleted & Revision::DELETED_RESTRICTED) && !$wgUser->isAllowed('hiderevision') ) {
-				// Skip restoring file revisions that the user cannot restore
-				continue;
-			}
+
 			if ( $row->fa_name != $this->file->getName() ) {
 				$status->error( 'undelete-filename-mismatch', $wgLang->timeanddate( $row->fa_timestamp ) );
 				$status->failCount++;
@@ -1503,6 +1534,11 @@ class LocalFileRestoreBatch {
 			}
 
 			if ( $first && !$exists ) {
+				// The live (current) version cannot be hidden!
+				if( !$this->unsuppress && $row->fa_deleted ) {
+					$this->file->unlock();
+					return $status;
+				}
 				// This revision will be published as the new current version
 				$destRel = $this->file->getRel();
 				$insertCurrent = array(
@@ -1549,13 +1585,17 @@ class LocalFileRestoreBatch {
 					'oi_media_type'   => $props['media_type'],
 					'oi_major_mime'   => $props['major_mime'],
 					'oi_minor_mime'   => $props['minor_mime'],
-					'oi_deleted'      => $row->fa_deleted,
+					'oi_deleted'      => $this->unsuppress ? 0 : $row->fa_deleted,
 					'oi_sha1'         => $sha1 );
 			}
 
 			$deleteIds[] = $row->fa_id;
-			$storeBatch[] = array( $deletedUrl, 'public', $destRel );
-			$this->cleanupBatch[] = $row->fa_storage_key;
+			if( !$this->unsuppress && $row->fa_deleted & File::DELETED_FILE ) {
+				// private files can stay where they are
+			} else {
+				$storeBatch[] = array( $deletedUrl, 'public', $destRel );
+				$this->cleanupBatch[] = $row->fa_storage_key;
+			}
 			$first = false;
 		}
 		unset( $result );

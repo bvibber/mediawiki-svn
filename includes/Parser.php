@@ -82,14 +82,17 @@ class Parser
 	const OT_WIKI = 2;
 	const OT_PREPROCESS = 3;
 	const OT_MSG = 3;
-	
+
+	// Marker Suffix needs to be accessible staticly.
+	const MARKER_SUFFIX = "-QINU\x7f";
+
 	/**#@+
 	 * @private
 	 */
 	# Persistent:
 	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables,
-		$mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerSuffix, $mMarkerIndex,
-		$mExtLinkBracketedRegex, $mPreprocessor, $mDefaultStripList, $mVarCache, $mConf;
+		$mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerIndex, $mPreprocessor,
+		$mExtLinkBracketedRegex, $mDefaultStripList, $mVarCache, $mConf;
 
 
 	# Cleared with clearState():
@@ -124,7 +127,6 @@ class Parser
 		$this->mFunctionHooks = array();
 		$this->mFunctionSynonyms = array( 0 => array(), 1 => array() );
 		$this->mDefaultStripList = $this->mStripList = array( 'nowiki', 'gallery' );
-		$this->mMarkerSuffix = "-QINU\x7f";
 		$this->mExtLinkBracketedRegex = '/\[(\b(' . wfUrlProtocols() . ')'.
 			'[^][<>"\\x00-\\x20\\x7F]+) *([^\]\\x0a\\x0d]*?)\]/S';
 		$this->mVarCache = array();
@@ -318,6 +320,7 @@ class Parser
 			'/(.) (?=\\?|:|;|!|%|\\302\\273)/' => '\\1&nbsp;\\2',
 			# french spaces, Guillemet-right
 			'/(\\302\\253) /' => '\\1&nbsp;',
+			'/&nbsp;(!\s*important)/' => ' \\1', #Beware of CSS magic word !important, bug #11874.
 		);
 		$text = preg_replace( array_keys($fixtags), array_values($fixtags), $text );
 
@@ -525,7 +528,7 @@ class Parser
 				$inside     = $p[4];
 			}
 
-			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . $this->mMarkerSuffix;
+			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . self::MARKER_SUFFIX;
 			$stripped .= $marker;
 
 			if ( $close === '/>' ) {
@@ -617,7 +620,7 @@ class Parser
 	 * @private
 	 */
 	function insertStripItem( $text ) {
-		$rnd = "{$this->mUniqPrefix}-item-{$this->mMarkerIndex}-{$this->mMarkerSuffix}";
+		$rnd = "{$this->mUniqPrefix}-item-{$this->mMarkerIndex}-" . self::MARKER_SUFFIX;
 		$this->mMarkerIndex++;
 		$this->mStripState->general->setPair( $rnd, $text );
 		return $rnd;
@@ -3184,7 +3187,7 @@ class Parser
 		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
 		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
 
-		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $this->mMarkerIndex++) . $this->mMarkerSuffix;
+		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $this->mMarkerIndex++) . self::MARKER_SUFFIX;
 		
 		if ( $this->ot['html'] ) {
 			$name = strtolower( $name );
@@ -3377,7 +3380,7 @@ class Parser
 		$prevlevel = 0;
 		$toclevel = 0;
 		$prevtoclevel = 0;
-		$markerRegex = "{$this->mUniqPrefix}-h-(\d+)-{$this->mMarkerSuffix}";
+		$markerRegex = "{$this->mUniqPrefix}-h-(\d+)-" . self::MARKER_SUFFIX;
 		$baseTitleText = $this->mTitle->getPrefixedDBkey();
 		$tocraw = array();
 
@@ -3436,6 +3439,7 @@ class Parser
 						if($prevtoclevel < $wgMaxTocLevel) {
 							# Unindent only if the previous toc level was shown :p
 							$toc .= $sk->tocUnindent( $prevtoclevel - $toclevel );
+							$prevtoclevel = $toclevel;
 						} else {
 							$toc .= $sk->tocLineEnd();
 						}
@@ -3494,11 +3498,15 @@ class Parser
 			# Save headline for section edit hint before it's escaped
 			$headlineHint = $safeHeadline;
 			$safeHeadline = Sanitizer::escapeId( $safeHeadline );
+			# HTML names must be case-insensitively unique (bug 10721)
+			$arrayKey = strtolower( $safeHeadline );
+
+			# XXX : Is $refers[$headlineCount] ever accessed, actually ?
 			$refers[$headlineCount] = $safeHeadline;
 
 			# count how many in assoc. array so we can track dupes in anchors
-			isset( $refers[$safeHeadline] ) ? $refers[$safeHeadline]++ : $refers[$safeHeadline] = 1;
-			$refcount[$headlineCount] = $refers[$safeHeadline];
+			isset( $refers[$arrayKey] ) ? $refers[$arrayKey]++ : $refers[$arrayKey] = 1;
+			$refcount[$headlineCount] = $refers[$arrayKey];
 
 			# Don't number the heading if it is the only one (looks silly)
 			if( $doNumberHeadings && count( $matches[3] ) > 1) {
@@ -3839,7 +3847,9 @@ class Parser
 		$tag = strtolower( $tag );
 		$oldVal = isset( $this->mTagHooks[$tag] ) ? $this->mTagHooks[$tag] : null;
 		$this->mTagHooks[$tag] = $callback;
-		$this->mStripList[] = $tag;
+		if( !in_array( $tag, $this->mStripList ) ) {
+			$this->mStripList[] = $tag;
+		}
 
 		return $oldVal;
 	}
@@ -4361,8 +4371,6 @@ class Parser
 	 * Parse image options text and use it to make an image
 	 */
 	function makeImage( $title, $options ) {
-		# @TODO: let the MediaHandler specify its transform parameters
-		#
 		# Check if the options text is of the form "options|alt text"
 		# Options are:
 		#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
@@ -4408,21 +4416,48 @@ class Parser
 			'horizAlign' => array(), 'vertAlign' => array() );
 		foreach( $parts as $part ) {
 			list( $magicName, $value ) = $mwArray->matchVariableStartToEnd( $part );
-			if ( isset( $paramMap[$magicName] ) ) {
+			$validated = false;
+			if( isset( $paramMap[$magicName] ) ) {
 				list( $type, $paramName ) = $paramMap[$magicName];
-				$params[$type][$paramName] = $value;
-				
+
 				// Special case; width and height come in one variable together
 				if( $type == 'handler' && $paramName == 'width' ) {
 					$m = array();
-					if ( preg_match( '/^([0-9]*)x([0-9]*)$/', $value, $m ) ) {
-						$params[$type]['width'] = intval( $m[1] );
-						$params[$type]['height'] = intval( $m[2] );
+					# (bug 13500) In both cases (width/height and width only),
+					# permit trailing "px" for backward compatibility.
+					if ( preg_match( '/^([0-9]*)x([0-9]*)\s*(?:px)?\s*$/', $value, $m ) ) {
+						$width = intval( $m[1] );
+						$height = intval( $m[2] );
+						if ( $handler->validateParam( 'width', $width ) ) {
+							$params[$type]['width'] = $width;
+							$validated = true;
+						}
+						if ( $handler->validateParam( 'height', $height ) ) {
+							$params[$type]['height'] = $height;
+							$validated = true;
+						}
+					} elseif ( preg_match( '/^[0-9]*\s*(?:px)?\s*$/', $value ) ) {
+						$width = intval( $value );
+						if ( $handler->validateParam( 'width', $width ) ) {
+							$params[$type]['width'] = $width;
+							$validated = true;
+						}
+					} // else no validation -- bug 13436
+				} else {
+					if ( $type == 'handler' ) {
+						# Validate handler parameter
+						$validated = $handler->validateParam( $paramName, $value );
 					} else {
-						$params[$type]['width'] = intval( $value );
+						# Validate internal parameters
+						$validated = ( $value === false || is_numeric( trim( $value ) ) );
+					}
+
+					if ( $validated ) {
+						$params[$type][$paramName] = $value;
 					}
 				}
-			} else {
+			}
+			if ( !$validated ) {
 				$caption = $part;
 			}
 		}
@@ -4433,15 +4468,6 @@ class Parser
 		}
 		if ( $params['vertAlign'] ) {
 			$params['frame']['valign'] = key( $params['vertAlign'] );
-		}
-
-		# Validate the handler parameters
-		if ( $handler ) {
-			foreach ( $params['handler'] as $name => $value ) {
-				if ( !$handler->validateParam( $name, $value ) ) {
-					unset( $params['handler'][$name] );
-				}
-			}
 		}
 
 		# Strip bad stuff out of the alt text
@@ -4459,7 +4485,7 @@ class Parser
 		wfRunHooks( 'ParserMakeImageParams', array( $title, $file, &$params ) );
 
 		# Linker does the rest
-		$ret = $sk->makeImageLink2( $title, $file, $params['frame'], $params['handler'] );
+		$ret = $sk->makeImageLink2( $title, $file, $params['frame'], $params['handler'], $time );
 
 		# Give the handler a chance to modify the parser object
 		if ( $handler ) {
@@ -4800,12 +4826,12 @@ class Parser
 				break;
 			} else {
 				$out .= call_user_func( $callback, substr( $s, $i, $markerStart - $i ) );
-				$markerEnd = strpos( $s, $this->mMarkerSuffix, $markerStart );
+				$markerEnd = strpos( $s, self::MARKER_SUFFIX, $markerStart );
 				if ( $markerEnd === false ) {
 					$out .= substr( $s, $markerStart );
 					break;
 				} else {
-					$markerEnd += strlen( $this->mMarkerSuffix );
+					$markerEnd += strlen( self::MARKER_SUFFIX );
 					$out .= substr( $s, $markerStart, $markerEnd - $markerStart );
 					$i = $markerEnd;
 				}

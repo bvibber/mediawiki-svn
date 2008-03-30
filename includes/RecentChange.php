@@ -25,6 +25,11 @@
  * 	rc_patrolled    boolean whether or not someone has marked this edit as patrolled
  * 	rc_old_len	integer byte length of the text before the edit
  * 	rc_new_len	the same after the edit
+  *	rc_deleted		partial deletion
+ *	rc_logid		the log_id value for this log entry (or zero)
+ *  rc_log_type		the log type (or null)
+ *	rc_log_action	the log action (or null)
+ *  rc_params		log params
  *
  * mExtra:
  * 	prefixedDBkey   prefixed db key, used by external app via msg queue
@@ -487,6 +492,12 @@ class RecentChange
 			'rc_new' => $row->page_is_new, # obsolete
 			'rc_old_len' => $row->rc_old_len,
 			'rc_new_len' => $row->rc_new_len,
+			'rc_params' => isset($row->rc_params) ? $row->rc_params : '',
+			'rc_log_type' => isset($row->rc_log_type) ? $row->rc_log_type : null,
+			'rc_log_action' => isset($row->rc_log_action) ? $row->rc_log_action : null,
+			'rc_log_id' => isset($row->rc_log_id) ? $row->rc_log_id: 0,
+			// this one REALLY should be set...
+			'rc_deleted' => isset($row->rc_deleted) ? $row->rc_deleted: 0,
 		);
 
 		$this->mExtra = array();
@@ -536,7 +547,7 @@ class RecentChange
 
 		$titleObj =& $this->getTitle();
 		if ( $rc_type == RC_LOG ) {
-			$title = Namespace::getCanonicalName( $titleObj->getNamespace() ) . $titleObj->getText();
+			$title = MWNamespace::getCanonicalName( $titleObj->getNamespace() ) . $titleObj->getText();
 		} else {
 			$title = $titleObj->getPrefixedText();
 		}
