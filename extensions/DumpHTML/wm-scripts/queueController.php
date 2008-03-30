@@ -30,13 +30,10 @@ if ( $wikiSizes ) {
 } else {
 	$wikiSizes = array();
 	foreach ( $wikiList as $wiki ) {
-		if ( $wgAlternateMaster[$wiki] ) {
-			$db = new Database( $wgAlternateMaster[$wiki], $wgDBuser, $wgDBpassword, $wiki );
-		} else {
-			$db = wfGetDB( DB_SLAVE );
-		}
-
+		$lb = wfGetLB( $wiki );
+		$db = $lb->getConnection( DB_SLAVE, array(), $wiki );
 		$wikiSizes[$wiki] = $db->selectField( "`$wiki`.site_stats", 'ss_total_pages' );
+		$lb->reuseConnection( $db );
 	}
 	file_put_contents( "$baseDir/var/checkpoints/wikiSizes", serialize( $wikiSizes ) );
 }
