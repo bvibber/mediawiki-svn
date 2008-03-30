@@ -896,6 +896,13 @@ $messages['tr'] = array(
 	'changeauthor-invalid-username' => '"$1" geçersiz kullanıcı.',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'changeauthor' => 'Зміна автора редагування',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

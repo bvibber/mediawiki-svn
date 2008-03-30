@@ -416,6 +416,7 @@ Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofi
 	'sqlislogged'     => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
 	'sqlquery'        => 'Ufro aginn',
 	'querybtn'        => 'Ufro schécken',
+	'selectonly'      => 'Et sinn nëmmen Offroen zougelooss fir ze liesen.',
 	'querysuccessful' => "D'Offro gouf mat Erfolleg ausgefouert",
 );
 

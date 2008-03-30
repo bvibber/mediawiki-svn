@@ -1231,22 +1231,29 @@ $messages['rm'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'signdocument'         => 'Подписать документ',
-	'sign-nodocselected'   => 'Пожалуйста, выберите документ, который вы хотите подписать.',
-	'sign-selectdoc'       => 'Документ:',
-	'sign-docheader'       => '<div class="noarticletext">Пожалуйста, используйте эту форму для подписи документа «[[$1]]», представленного ниже.
+	'signdocument'             => 'Подписание документа',
+	'sign-nodocselected'       => 'Пожалуйста, выберите документ, который вы хотите подписать.',
+	'sign-selectdoc'           => 'Документ:',
+	'sign-docheader'           => '<div class="noarticletext">Пожалуйста, используйте эту форму для подписи документа «[[$1]]», представленного ниже.
 Пожалуйста, прочтите документ целиком, и если вы хотите выразить ему поддержку, заполните требуемые поля, чтобы подписать его.</div>',
-	'sign-error-nosuchdoc' => 'Запрошенный вами документ ($1) не существует.',
-	'sign-realname'        => 'Имя:',
-	'sign-address'         => 'Адрес (улица, дом и пр.):',
-	'sign-city'            => 'Город:',
-	'sign-state'           => 'Положение:',
-	'sign-zip'             => 'Почтовый индекс:',
-	'sign-country'         => 'Страна:',
-	'sign-phone'           => 'Номер телефона:',
-	'sign-bday'            => 'Возраст:',
-	'sign-email'           => 'Адрес эл. почты:',
-	'sign-indicates-req'   => '<small><i><font color="red">*</font> отмечает обязательные поля.</i></small>',
+	'sign-error-nosuchdoc'     => 'Запрошенный вами документ ($1) не существует.',
+	'sign-realname'            => 'Имя:',
+	'sign-address'             => 'Адрес (улица, дом и пр.):',
+	'sign-city'                => 'Город:',
+	'sign-state'               => 'Положение:',
+	'sign-zip'                 => 'Почтовый индекс:',
+	'sign-country'             => 'Страна:',
+	'sign-phone'               => 'Номер телефона:',
+	'sign-bday'                => 'Возраст:',
+	'sign-email'               => 'Адрес эл. почты:',
+	'sign-indicates-req'       => '<small><i><font color="red">*</font> отмечает обязательные поля.</i></small>',
+	'sign-list-anonymous'      => 'Анонимно',
+	'sign-list-hideaddress'    => 'Не включать в список адрес',
+	'sign-list-hideextaddress' => 'Не включать в список город, страну и индекс',
+	'sign-list-hidephone'      => 'Не включать в список телефон',
+	'sign-list-hidebday'       => 'Не включать в список возраст',
+	'sign-list-hideemail'      => 'Не включать в список эл. почту',
+	'sign-submit'              => 'Подписать документ',
 );
 
 /** Slovak (Slovenčina)

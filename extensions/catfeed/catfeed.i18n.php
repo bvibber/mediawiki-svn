@@ -113,3 +113,11 @@ $messages['sv'] = array(
 	'catfeed-desc' => 'Använder information från senaste ändringarna. Man kan skapa versioner för användning till innehållssidor, något som är speciellt användbart för Wikinews.',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'catfeed-desc' => 'Використовує деякі частини стрічки свіжих змін.
+Створює її версію всередині сторінки, особливо корисно для Вікіновин.',
+);
+

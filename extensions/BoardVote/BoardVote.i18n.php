@@ -1956,6 +1956,15 @@ to date. $1 før æ enkriptet data.</p>",
 	'go_to_board_vote'       => 'Wikimedia Board Eleksje 2007',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'boardvote'       => 'Pemilihan Anggota Dewan Kapercayan Yayasan Wikimedia',
+	'boardvote_user'  => 'Panganggo',
+	'boardvote_edits' => 'Suntingan',
+);
+
 /** Georgian (ქართული)
  * @author Alsandro
  */
@@ -2283,7 +2292,9 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'boardvote_submit'       => 'Ofstëmmen',
 	'boardvote_strike'       => 'Stëmm läschen',
 	'boardvote_notstarted'   => "D'Ofstëmmung huet nach net ugefaang",
+	'boardvote_closed'       => "D'Wale sinn eriwwer. D'Resultat fannt Dir [http://meta.wikimedia.org/wiki/Election_results_2006/En hei].",
 	'boardvote_edits_many'   => 'vill',
+	'group-boardvote'        => 'Administrateure vun de Wale fir de Wikimedia Board of Trustees',
 	'boardvote_blocked'      => 'Dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
 	'boardvote_welcome'      => "Wëllkomm '''$1'''!",
 	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',

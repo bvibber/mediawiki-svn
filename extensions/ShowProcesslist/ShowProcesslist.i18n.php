@@ -256,6 +256,7 @@ $messages['ru'] = array(
 	'showprocesslist-id'      => 'Id',
 	'showprocesslist-user'    => 'Пользователь',
 	'showprocesslist-host'    => 'Хост',
+	'showprocesslist-db'      => 'БД',
 	'showprocesslist-command' => 'Команда',
 	'showprocesslist-time'    => 'Время',
 	'showprocesslist-state'   => 'Состояние',

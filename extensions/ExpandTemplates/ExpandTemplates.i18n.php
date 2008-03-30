@@ -659,8 +659,9 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'expand_templates_output' => 'ഫലം',
-	'expand_templates_ok'     => 'ശരി',
+	'expand_templates_output'  => 'ഫലം',
+	'expand_templates_ok'      => 'ശരി',
+	'expand_templates_preview' => 'പ്രിവ്യൂ',
 );
 
 /** Marathi (मराठी)
