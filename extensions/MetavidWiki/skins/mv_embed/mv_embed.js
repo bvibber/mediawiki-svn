@@ -108,6 +108,7 @@ var mvEmbed = {
   flist:Array(),
   load_callback:false,
   loading:false, 
+  libs_loaded:false,
   //plugin libs var names and paths:
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.1.js'},
   lib_plugins:{		
@@ -126,6 +127,7 @@ var mvEmbed = {
  		js_log('jquery loaded');
 		mvJsLoader.doLoad(_this.lib_plugins, function(){			
 			js_log('plugins loaded');
+			mvEmbed.libs_loaded=true;
 			mvEmbed.init();
 		});	
   	});	    		
@@ -486,13 +488,20 @@ function init_mv_embed(force){
  * this function allows for targeted rewriting (the host element does not have to be <video> tag)
  */
 function rewrite_by_id(vid_id){
-	var vidElm = document.getElementById(vid_id);
-	if(vidElm){
-		var videoInterface = new embedVideo(vidElm);
-		swapEmbedVideoElement(vidElm, videoInterface);
-		return videoInterface;
+	//confirm the video nessesary libs are loaded. 
+	if(!mvEmbed.libs_loaded){
+		mvEmbed.load_libs(function(){
+			rewrite_by_id(vid_id);
+		});
 	}else{
-		js_log('VID ELM NOT FOUND: '+vid_id);
+		var vidElm = document.getElementById(vid_id);
+		if(vidElm){
+			var videoInterface = new embedVideo(vidElm);
+			swapEmbedVideoElement(vidElm, videoInterface);
+			return videoInterface;
+		}else{
+			js_log('video element not found: '+vid_id);
+		}
 	}
 }
 
