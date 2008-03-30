@@ -754,6 +754,11 @@ mvClip.prototype = {
 		this.embed = new PlMvEmbed(init_pl_embed);		
 		js_log('type of embed:' + typeof(this.embed) + 'seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
 	},
+	//returns the mvClip representation of the clip ie stream_name?start_time/end_time
+	getMvClip:function(){
+		if(this.mvclip)return this.mvclip;
+		return false;
+	},
 	//@@todo group all remote data requests
 	//set src and image & title & desc from metavid source data 
 	getRemoteData:function(callback){
@@ -1380,6 +1385,15 @@ var xspfPlaylist ={
 						cur_clip[j] = tmpElm.childNodes[0].nodeValue;
 						js_log('set clip property: ' + j+' to '+cur_clip[j]);
 					}
+				}
+			}			
+			//add mvClip ref from info link: 
+			if(cur_clip.linkback){
+				//if mv linkback
+				mvInx = 'Stream:';
+				mvclippos = cur_clip.linkback.indexOf(mvInx);
+				if(mvclippos!==false){
+					cur_clip.mvclip=cur_clip.linkback.substr( mvclippos+mvInx.length );
 				}
 			}			
 			//set up the embed object now that all the values have been set

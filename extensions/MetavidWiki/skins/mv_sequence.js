@@ -54,12 +54,12 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 			case 'save':
 				eval(data);
 				if(mv_result['status']=='ok'){					
-					//wait 2 seconds to give time for defered updates
-					/*setTimeout(function(){
+					//wait 1 seconds to give time for defered updates
+					setTimeout(function(){
 						window.location.href = wgServer+
 						((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
-						'/' + wgPageName;
-					}, 2000);*/
+						'/' + wgPageName + '?action=purge';
+					}, 1000);
 				}else if(mv_result['status']=='error'){
   					$j('#mv_seq_edit_preview').html( mv_result['error_txt'] );   				
 	  			}

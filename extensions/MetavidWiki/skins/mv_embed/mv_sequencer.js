@@ -251,18 +251,19 @@ mvSequencer.prototype = {
 						clip = track.clips[j];						
 						//output clip header for varius types: 
 						js_log('on clip'+j+' type:'+ clip.type);
-						switch(clip.type){
+						s+="\n"+'|mvClip='+clip.getMvClip()+"\n";	
+						/*switch(clip.type){
 							case 'srcClip':
 								s+="\n"+'|srcClip='+clip.src+"\n";
 								s+='|image='+clip.img+"\n";
 								//output other properties if src clip
 								if(clip.title)s+='|title='+clip.title+"\n";
-								if(clip.desc)s+='|desc='+clip.desc+"\n";
+								if(clip.desc)s+='|desc='+clip.desc+"\n";																						
 							break;
 							case 'mvClip':
 								s+="\n"+'|mvClip='+clip.mvclip+"\n";
 							break;
-						}
+						}*/
 						
 					}
 				}
