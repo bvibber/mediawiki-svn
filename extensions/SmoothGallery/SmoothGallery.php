@@ -40,6 +40,9 @@ $wgAutoloadClasses['SmoothGallery'] = $dir . 'SmoothGalleryClass.php';
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
 $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
+$wgSmoothGalleryAllowExternal = false;
+$wgSmoothGalleryThumbHeight = "75px";
+$wgSmoothGalleryThumbWidth = "100px";
 
 function efSmoothGallery() {
 	global $wgParser;

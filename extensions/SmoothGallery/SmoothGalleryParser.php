@@ -117,6 +117,7 @@ class SmoothGalleryParser {
 	function parseGallery( $input, $parser ) {
 		global $wgTitle;
 		global $wgSmoothGalleryDelimiter;
+		global $wgSmoothGalleryAllowExternal;
 	
 		$galleryArray = Array();
 	
@@ -141,6 +142,26 @@ class SmoothGalleryParser {
 				$img_desc = $img_arr[1];
 			} else {
 				$img_desc = '';
+			}
+
+			if ( $wgSmoothGalleryAllowExternal &&
+			     ( ( strlen( $img ) >= 7 && substr( $img, 0, 7 ) == "http://" ) ||
+			       ( strlen( $img ) >= 7 && substr( $img, 0, 8 ) == "https://" ) )
+			   ) {
+				$imageArray["title"] = null;
+				//TODO: internationalize
+				$imageArray["heading"] = "External Image";
+				$imageArray["description"] = $img_desc;
+				$imageArray["full_url"] = $img;
+				$imageArray["view_url"] = $img;
+				$imageArray["full_thumb_url"] = $img;
+				$imageArray["icon_thumb_url"] = $img;
+				$imageArray["image_object"] = null;
+				$imageArray["external"] = true;
+
+				$galleryArray["images"][] = $imageArray;
+
+				continue;
 			}
 	
 			$title = Title::newFromText( $img, NS_IMAGE );
@@ -177,6 +198,7 @@ class SmoothGalleryParser {
 	
 	function parseImage( $title, $parser, $galleryArray, $getDescription=false ) {
 		global $wgUser;
+		global $wgSmoothGalleryThumbHeight, $wgSmoothGalleryThumbWidth;
 	
 		$imageArray = Array();
 	
@@ -220,7 +242,7 @@ class SmoothGalleryParser {
 			//We are going to show a carousel to the user; we need
 			//to make icon thumbnails
 			//$thumb_obj = $img_obj->getThumbnail( 120, 120 ); //would be nice to reuse images already loaded...
-			$thumb_obj = $img_obj->getThumbnail( 100, 75 );
+			$thumb_obj = $img_obj->getThumbnail( $wgSmoothGalleryThumbWidth, $wgSmoothGalleryThumbHeight );
 			if ( $thumb_obj ) {
 				$icon_thumb = $thumb_obj->getUrl();
 			}

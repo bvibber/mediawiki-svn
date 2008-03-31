@@ -103,6 +103,7 @@ class SmoothGallery {
 	
 	function renderGallery ( $galleryArray ) {
 		global $wgSmoothGalleryDelimiter;
+		global $wgSmoothGalleryThumbHeight, $wgSmoothGalleryThumbWidth;
 	
 		//Open the outer div of the gallery
 		if ( $this->set ) {
@@ -114,16 +115,25 @@ class SmoothGallery {
 	
 		//TODO iterate over the images and output each
 		foreach ( $galleryArray["images"] as $imageArray ) {
+			if ( isset( $imageArray["external"] ) && $imageArray["external"] ) {
+				#$thumbsizes = 'height="' . $wgSmoothGalleryThumbHeight . '" width="' . $wgSmoothGalleryThumbWidth . '" ';
+				#$fullsizes = 'height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '" ';
+				$thumbsizes = 'style="height: ' . $wgSmoothGalleryThumbHeight . '; width: ' . $wgSmoothGalleryThumbWidth . '" ';
+				$fullsizes = 'style="height: ' . $this->argumentArray["height"] . ' width: ' . $this->argumentArray["width"] . '" ';
+			} else {
+				$thumbsizes = '';
+				$fullsizes = '';
+			}
 			//Add the html for the image
 			$output .= '<div class="imageElement">';
 			$output .= '<h3>' . $imageArray["heading"] . '</h3>';
 			$output .= '<p>' . $imageArray["description"] . '</p>';
 			$output .=  '<a href="' . $imageArray["full_url"] . '" title="open image" class="open"></a>';
 			$output .=  '<a href="' . $imageArray["view_url"] . '" title="open image" class="open"></a>';
-			$output .=  '<img src="' . $imageArray["full_thumb_url"] . '"  class="full" alt="' . $imageArray["description"] . '" />';
+			$output .=  '<img src="' . $imageArray["full_thumb_url"] . '"  class="full" alt="' . $imageArray["description"] . '" ' . $fullsizes . '/>';
 	
 			if ( $this->argumentArray["carousel"] ) {
-				$output .=  '<img src="' . $imageArray["icon_thumb_url"] . '"  class="thumbnail" alt="' . $imageArray["description"] . '" />';
+				$output .=  '<img src="' . $imageArray["icon_thumb_url"] . '"  class="thumbnail" alt="' . $imageArray["description"] . '" ' . $thumbsizes . '/>';
 			}
 	
 			$output .= '</div>';
@@ -182,15 +192,27 @@ class SmoothGallery {
 		$output = '<div id="' . $galleryArray["gallery_name"] . '-fallback">';
 	
 		$plain_gallery = new ImageGallery();
-	
+
+		$i = 0;	
 		foreach ( $galleryArray["images"] as $image ) {
+			if ( isset( $image["external"] ) && $image["external"] ) {
+				continue;
+			}
+
 			if ( version_compare( $wgVersion, "1.11", '<' ) ) {
 				$plain_gallery->add( $image["image_object"], $image["description"] ); //TODO: use text
 			} else {
 				$plain_gallery->add( $image["image_object"]->getTitle(), $image["description"] ); //TODO: use text
 			}
+			$i++;
 		}
-	
+
+		// Return an empty div if there are no usable images in the gallery.
+		// This can happen if all images are external.
+		if ( $i == 0 ) {
+			return $output . '</div>';
+		}
+
 		$output .= $plain_gallery->toHTML();
 	
 		//Close the wrapper div for the plain old gallery
@@ -234,7 +256,7 @@ class SmoothGallery {
 			$output .= ', showInfopane: false';
 		}
 	
-		$output .= ', useHistoryManager: true';
+		#$output .= ', useHistoryManager: true';
 		#$output .= ', preloader: true';
 		#$output .= ', preloaderImage: true';
 		#$output .= ', preloaderErrorImage: true';
@@ -242,7 +264,7 @@ class SmoothGallery {
 		#$output .= ", textPreloadingCarousel: '" . wfMsg("smoothgallery-loading") . "'";
 	
 		$output .= '});';
-		$output .= 'HistoryManager.start();';
+		#$output .= 'HistoryManager.start();';
 		$output .= '}';
 		$output .= "window.addEvent('domready', startGallery_$name);";
 		#$output .= 'addOnloadHook(startGallery_' . $name . ');';
