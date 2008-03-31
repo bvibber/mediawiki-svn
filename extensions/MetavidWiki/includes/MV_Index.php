@@ -181,7 +181,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		return true;
  	}
  	function doFiltersQuery(&$filters){
- 		global $mvIndexTableName, $mvDefaultClipLength, $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult; 		
+ 		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength, $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult; 		
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
@@ -270,6 +270,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		}
  		$searchindexTable = $dbr->tableName( 'searchindex' );
  		$ret_ary = array();
+ 		//a join operation to restrict search results to streams with files
+ 		$join_streams_with_low_ogg_sql = "JOIN `$mvStreamFilesTable` ON (`$mvIndexTableName`.`stream_id` = `$mvStreamFilesTable`.`stream_id` AND `$mvStreamFilesTable`.`file_desc_msg`='mv_ogg_low_quality') ";
  		//only run the top range query if we have no secondary query
  		if($toplq_cat!='' && $ftq==''){ 			
  			//@@todo unify top query with ranged query ... kind of tricky 			
@@ -277,12 +279,14 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			//@@todo we should only look in annotative layer for top level queries? ...
  			//@@todo paging for top level queries? ... 200 hit limit is probably ok     			
  			
- 			$sql = "SELECT `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
+ 			$sql = "SELECT `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
 	 			FROM `$mvIndexTableName` 
 	 			$date_range_join
 	 			JOIN $categoryTable ON `$mvIndexTableName`.`mv_page_id` = $categoryTable.`cl_from`
+				$join_streams_with_low_ogg_sql 
 	 			LEFT JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
-	 			WHERE `mvd_type`='Anno_en' " .
+	 			WHERE 
+				`mvd_type`='Anno_en' " .
 	 			" $toplq_cat " .
 	 			" $snq " .  	
 	 			"$date_range_andor $date_range_where " .	
@@ -291,9 +295,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$top_result = $dbr->query($sql, 'MV_Index:doFiltersQuery_topQ'); 			
  			if($dbr->numRows($top_result)==0)return array();
  			//set up ranges sql query
- 			$sql="SELECT $selOpt `mv_page_id` as `id`, `stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
+ 			$sql="SELECT $selOpt `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
  				if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
  				$sql.="FROM `$mvIndexTableName` " .
+ 				$join_streams_with_low_ogg_sql . 
  				"JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` ";
  				if($mvSpokenByInSearchResult){
 	 				$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
@@ -311,7 +316,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  				$row->toplq=true;
  				MV_Index::insert_merge_range($ret_ary[$row->stream_id], $ret_ary, $row, $insertRow);	
  				 							
- 				$sql.=$or. ' (`stream_id`='.$row->stream_id.' AND ' .
+ 				$sql.=$or. " (`$mvIndexTableName`.`stream_id`='{$row->stream_id}' AND " . 
  						'`start_time`>='.$row->start_time.' AND '.
 						'`end_time`<='.$row->end_time.' ) ';						
  				$or=' OR ';
@@ -324,10 +329,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		}else{ 		
  			//add the top query to the base query: 
  			$ftq.=$toplq;
-	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` AS `text` ";
+	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` AS `text` ";
 	 		if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
 	 		$sql.="FROM `$mvIndexTableName` 
 	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
+				$join_streams_with_low_ogg_sql 
 	 			$date_range_join ";
 	 			
  			//include spoken by relation in results (LEFT JOIN should not be *that* costly )

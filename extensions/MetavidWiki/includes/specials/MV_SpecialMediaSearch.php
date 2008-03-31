@@ -184,6 +184,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		//for each stream range:		
 		if (count($this->results) == 0) {
 			$o.= '<h2><span class="mw-headline">' . wfMsg('mv_search_no_results') . '</span></h2>';
+			if($this->outputContainer)$o.='</div>';
 			return $o;
 		}else{
 			if($this->outputInlineHeader){
