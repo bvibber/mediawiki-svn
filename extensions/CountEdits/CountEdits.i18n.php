@@ -751,7 +751,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'countedits-username'     => 'Номи корбарӣ:',
 	'countedits-nosuchuser'   => 'Корбаре бо номи $1 вуҷуд надорад.',
 	'countedits-resultheader' => 'Натоиҷ барои $1',

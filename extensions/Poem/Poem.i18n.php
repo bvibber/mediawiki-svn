@@ -210,7 +210,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
 );
 

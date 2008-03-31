@@ -505,7 +505,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'deletedcontributions'      => 'Ҳиссагузориҳои ҳазфшудаи корбар',
 	'deletedcontributions-desc' => 'Ба мудирон имкони [[Special:DeletedContributions|мушоҳидаи вироишҳои ҳазфшудаи як корбар]]ро медиҳад',
 );

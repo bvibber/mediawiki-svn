@@ -949,7 +949,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'usernameblacklist-desc'          => 'Як [[MediaWiki:Usernameblacklist|феҳристи  сиёҳи номи корбарӣ]] изофа мекунад, ки барои пешгири аз сохтани ҳисобҳои корбарӣ бо ибораҳои мушаххас ба кор меравад',
 	'blacklistedusername'             => 'Номи корбарии ғайри миҷоз',
 	'blacklistedusernametext'         => 'Номи корбарии интихобкардаи шумо бо [[MediaWiki:Usernameblacklist|феҳристи сиёҳи номҳои корбарӣ]] мутобиқат дорад. Лутфан як номи корбарии дигареро интихоб кунед.',

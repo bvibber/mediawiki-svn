@@ -1036,7 +1036,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'expandtemplates'                  => 'Бастдодани шаблонҳо',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Шаблонҳо, дастурҳои таҷзеҳкунанда ва мутағйирҳоро густариш медиҳад]], то матни ниҳоиро намоиш диҳад ва саҳифаро ба пешнамоиш дароварад',
 	'expand_templates_intro'           => 'Ин саҳифаи вижа матнеро дарёфт карда ва тамоми шаблонҳои ба кор рафта дар онро ба таври бозгаште баст медиҳад. Ҳамчунин тобеҳои таҷзеҳ

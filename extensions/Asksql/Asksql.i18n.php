@@ -681,7 +681,7 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'sqlquery'        => 'Ворид кардани дархост',
 	'querybtn'        => 'Фиристодани дархост',
 	'querysuccessful' => 'Дархост бо муваффақият',

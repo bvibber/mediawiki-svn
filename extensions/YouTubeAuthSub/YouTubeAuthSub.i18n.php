@@ -512,7 +512,7 @@ Var tålmodig.',
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'youtubeauthsub_title'              => 'Унвон',
 	'youtubeauthsub_description'        => 'Тавсиф',
 	'youtubeauthsub_password'           => 'YouTube Гузарвожа',

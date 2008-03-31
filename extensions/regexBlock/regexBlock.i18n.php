@@ -951,7 +951,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'regexblock-form-username'  => 'Нишонаи IP ё номи корбарӣ:',
 	'regexblock-form-reason'    => 'Далел:',
 	'regexblock-block-log'      => "Номи корбарӣ ё нишонаи '''$1''' баста шуд.",

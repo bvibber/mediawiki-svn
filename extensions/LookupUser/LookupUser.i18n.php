@@ -408,7 +408,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'lookupuser_realname' => 'Номи аслӣ: $1',
 );
 

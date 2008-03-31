@@ -582,7 +582,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'vote'                => 'Раъйгирӣ',
 	'vote-header'         => "Шумо дар инҷо метавонед барои '''Арбоби Олии Ҷаҳон''' раъй бидиҳед!",
 	'vote-current'        => "Раъйи феълии шумо барои '''$1''' аст.",

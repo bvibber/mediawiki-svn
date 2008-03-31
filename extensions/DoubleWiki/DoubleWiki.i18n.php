@@ -253,7 +253,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
 );
 

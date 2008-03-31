@@ -445,7 +445,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Farrukh
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'block_title_error_page_title' => 'Сарлавҳаҳои басташуда',
 	'block_title_error'            => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );

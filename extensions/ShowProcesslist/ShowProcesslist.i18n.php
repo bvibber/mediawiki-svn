@@ -324,7 +324,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'showprocesslist-user' => 'Корбар',
 	'showprocesslist-time' => 'Вақт',
 );

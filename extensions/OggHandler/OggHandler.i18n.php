@@ -1612,7 +1612,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'ogg-desc'                => 'Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript',
 	'ogg-short-audio'         => 'Ogg $1 парвандаи савтӣ, $2',
 	'ogg-short-video'         => 'Ogg $1 парвандаи наворӣ, $2',

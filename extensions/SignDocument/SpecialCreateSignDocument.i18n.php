@@ -580,7 +580,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'createsigndoc-pagename'          => 'Саҳифа:',
 	'createsigndoc-email'             => 'Нишонаи E-mail:',
 	'createsigndoc-address'           => 'Суроғаи Хона:',

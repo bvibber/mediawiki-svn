@@ -1534,7 +1534,7 @@ $3 $9 $10 కొరకు వెతుకు',
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'lucene-desc'           => 'Интерфейс барои муҳаррики ҷустуҷӯии Апаче Лусин',
 	'searchnumber'          => '<strong>$1-$2 натоиҷ аз $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Қаблӣ</span>",

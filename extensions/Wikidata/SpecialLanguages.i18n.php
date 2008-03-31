@@ -2747,7 +2747,7 @@ $wdMessages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$wdMessages['tg'] = array(
+$wdMessages['tg-cyrl'] = array(
 	'ow_save'                          => 'Захира кардан',
 	'ow_history'                       => 'Таърих',
 	'ow_uiprefs'                       => 'Викидода',

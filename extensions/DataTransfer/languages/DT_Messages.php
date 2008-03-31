@@ -487,7 +487,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'dt_viewxml_namespaces' => 'Фазоҳои ном',
 	'dt_xml_page'           => 'Саҳифа',
 	'dt_xml_name'           => 'Ном',

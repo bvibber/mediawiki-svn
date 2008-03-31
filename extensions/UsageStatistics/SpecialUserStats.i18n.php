@@ -688,7 +688,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'usagestatisticstype'          => 'Навъ',
 	'usagestatisticsintervalday'   => 'Рӯз',
 	'usagestatisticsintervalweek'  => 'Ҳафта',

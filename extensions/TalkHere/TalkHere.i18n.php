@@ -449,7 +449,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'talkhere-addcomment'  => 'илова кардани тавзеҳот',
 	'talkhere-beforeinput' => 'Шумо метавонед дар зер як тавзеҳ илова кунед',
 );

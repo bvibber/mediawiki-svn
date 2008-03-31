@@ -391,7 +391,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'assert_edit_title'   => 'Таъйид номуваффақ шуд',
 	'assert_edit_desc'    => 'Имкони таъйиди вироишҳоро барои истифодаи роботҳо илова мекунад',
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',

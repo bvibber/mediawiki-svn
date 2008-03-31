@@ -638,7 +638,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'ajax-se-title'            => 'Дар ҳоли вироиш:',
 	'ajax-se-pagedoesnotexist' => 'саҳифа вуҷуд надорад',
 );

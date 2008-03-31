@@ -757,7 +757,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'review_topic_page'             => 'Бозбинии унвонҳо',
 	'review_save'                   => 'Захираи натиҷаи бозбини',
 	'review_page_link'              => 'омори бозбиниҳо',

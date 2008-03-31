@@ -882,7 +882,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'changeauthor-pagenameform-go' => 'Бирав',
 	'changeauthor-comment'         => 'Тавзеҳ:',
 );

@@ -480,7 +480,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'backforth-next' => 'Баъдӣ ($1)',
 	'backforth-prev' => 'Қаблӣ ($1)',
 );

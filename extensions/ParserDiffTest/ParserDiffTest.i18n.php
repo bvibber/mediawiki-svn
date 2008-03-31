@@ -801,7 +801,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'parserdifftest'      => 'Санҷиши тафовути таҳлилгар',
 	'pdtest-desc'         => '[[Special:ParserDiffTest|Саҳифаи вижа]] барои муқоисаи хуруҷи ду таҷзеҳкунандаи мухталиф',
 	'pdtest_no_target'    => 'Ҳадафе таъйид нашудааст.',

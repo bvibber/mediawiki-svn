@@ -841,7 +841,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'linksearch'       => 'Ҷусутҷӣ пайвандҳои веб',
 	'linksearch-desc'  => '[[Special:Linksearch|Саҳифаҳоеро бо пайвандҳои беруна пайдо мекунад]], ки бо нақшаҳои мушаххасе мувофиқат доранд',
 	'linksearch-pat'   => 'Ҷустуҷӯи нақш:',

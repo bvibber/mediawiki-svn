@@ -1383,7 +1383,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'badimages-name'       => 'Ном:',
 	'badimages-reason'     => 'Далел:',
 	'badimages-remove'     => '(ҳазф)',

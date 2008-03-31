@@ -1868,7 +1868,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'hiderevision'                => 'Бо ҳамешагӣ пинҳон кардани нусхаҳо',
 	'hiderevision-desc'           => 'Пинҳон кардани нусхаҳои хос аз тамоми корбарон ба далели қонунӣ ва ғайра.',
 	'group-oversight'             => 'Нозирон',

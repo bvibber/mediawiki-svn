@@ -757,7 +757,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'imagemap_desc'               => 'Имкони эҷоди нақшаҳои тасвирӣ қобили клик кардан дар самти корбарро бо истифода аз барчасби  <tt><nowiki><imagemap></nowiki></tt> фароҳам меоварад',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: бояд дар сатри аввал як аксро мушаххас кунед',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: акс ғайримиҷоз аст ё вуҷуд надорад',

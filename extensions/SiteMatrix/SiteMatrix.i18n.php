@@ -935,7 +935,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'sitematrix'           => 'Феҳристи викиҳои Викимедиа',
 	'sitematrix-summary'   => 'Ин саҳифаи вижа тамоми викиҳои Викимедиаро феҳрист мекунад.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|Феҳристи викиҳои Викимедиа]]ро намоиш медиҳад',

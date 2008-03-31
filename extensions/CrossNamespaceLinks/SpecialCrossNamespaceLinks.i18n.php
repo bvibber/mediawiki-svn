@@ -608,7 +608,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'crossnamespacelinks'         => 'Пайвандҳое аз як фазои ном ба фазои номи дигар',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Пайвандҳои байнивикиро феҳрист мекунад]], ки набояд дар {{SITENAME}} вуҷуд дошта бошанд',
 	'crossnamespacelinks-summary' => 'Ин саҳифа феҳристе аз пайвандҳое, ки аз як саҳифа дар фазои номи аслӣ ба як саҳифа дар дигар фазои ном (ба ғайр аз {{ns:special}}, {{ns:talk}}, {{ns:project}} ва {{ns:template}} namespaces), вуҷуд дорад ироаъ мекунад, ки истифода аз онҳо тавзеҳ намешавад.',

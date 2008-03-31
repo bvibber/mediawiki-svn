@@ -236,7 +236,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'filelist-show-list'    => 'Намоиши феҳрист',
 	'filelist-show-gallery' => 'Намоиши нигористон',
 );

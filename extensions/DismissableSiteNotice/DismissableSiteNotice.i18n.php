@@ -457,7 +457,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'sitenotice_close' => 'бастан',
 	'sitenotice-desc'  => 'Ба корбарон иҷозат медиҳад, ки эълоноти сомонаро пинҳон кунанд',
 );

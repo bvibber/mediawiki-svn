@@ -3776,7 +3776,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'boardvote'              => 'Интихоботи Ҳайати Амнои Викимедиа',
 	'boardvote-desc'         => '[[meta:Board elections|Интихоботи Ҳайати Амнои Викимедиа]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Раъй додан]]

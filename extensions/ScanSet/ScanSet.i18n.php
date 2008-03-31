@@ -640,7 +640,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'scanset-desc'                      => 'Мушоҳидаи аксҳои пӯйишшуда аз лаҳфи фишурдаи CD/DVD Андреас Гросз',
 	'scanset_no_name'                   => 'ScanSet: Шумо бояд номи маҷмӯъро мушаххас кунед, мисол. &lt;anset  name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet: Маҷмӯъи ғайримиҷоз ё гумшуда.',

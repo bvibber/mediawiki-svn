@@ -1140,7 +1140,7 @@ $messages['tet'] = array(
 	'makebot-logentryrevoke' => 'hasai kuana bot [[User:$1|$1]] nian',
 );
 
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'makebot-username'        => 'Корбар:',
 );
 

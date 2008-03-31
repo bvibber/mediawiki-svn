@@ -401,7 +401,7 @@ $messages['te'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'intersection-desc'          => 'Феҳристи гулулае аз саҳифаҳое ба намоиш дар меояд, ки ба тозагӣ дар як ё чанд гурӯҳ ворид шудаанд',
 	'intersection_toomanycats'   => 'DynamicPageList: Теъдоди гурӯҳҳо зиёд аст!',
 	'intersection_toofewcats'    => 'DynamicPageList: Теъдоди гурӯҳҳо кам аст!',

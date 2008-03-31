@@ -669,7 +669,7 @@ $allMessages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$allMessages['tg'] = array(
+$allMessages['tg-cyrl'] = array(
 	'whitelisttablepage'       => 'Саҳифаи Вики',
 	'whitelisttableedit'       => 'Вироиш',
 	'whitelisttableremove'     => 'Ҳазф',

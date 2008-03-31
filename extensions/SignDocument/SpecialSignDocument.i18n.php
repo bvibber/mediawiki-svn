@@ -1495,7 +1495,7 @@ $messages['tet'] = array(
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
-$messages['tg'] = array(
+$messages['tg-cyrl'] = array(
 	'sign-realname'                => 'Ном:',
 	'sign-city'                    => 'Шаҳр:',
 	'sign-state'                   => 'Вилоят:',
