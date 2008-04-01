@@ -50,9 +50,7 @@ Revert this change first.',
 
 	// Logging
 	'oversight-log-hiderev' => 'removed an edit from $1',
-	'oversightlog'          => 'Oversight log',
-	'overlogpagetext'       => 'Below is a list of the most recent deletions and blocks involving content hidden from sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
-
+	
 	// Oversight review page
 	'oversight'            => 'Oversight',
 	'oversight-view'       => 'details',
