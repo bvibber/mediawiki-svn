@@ -116,10 +116,8 @@ class SmoothGallery {
 		//TODO iterate over the images and output each
 		foreach ( $galleryArray["images"] as $imageArray ) {
 			if ( isset( $imageArray["external"] ) && $imageArray["external"] ) {
-				#$thumbsizes = 'height="' . $wgSmoothGalleryThumbHeight . '" width="' . $wgSmoothGalleryThumbWidth . '" ';
-				#$fullsizes = 'height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '" ';
-				$thumbsizes = 'style="height: ' . $wgSmoothGalleryThumbHeight . '; width: ' . $wgSmoothGalleryThumbWidth . '" ';
-				$fullsizes = 'style="height: ' . $this->argumentArray["height"] . ' width: ' . $this->argumentArray["width"] . '" ';
+				$thumbsizes = 'height="' . $wgSmoothGalleryThumbHeight . '" width="' . $wgSmoothGalleryThumbWidth . '" ';
+				$fullsizes = 'height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '" ';
 			} else {
 				$thumbsizes = '';
 				$fullsizes = '';
