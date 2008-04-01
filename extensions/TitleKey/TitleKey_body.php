@@ -110,12 +110,13 @@ class TitleKey {
 	 * Status info is sent to stdout.
 	 */
 	static function schemaUpdates() {
+		global $wgDBtype;
 		$db = wfGetDB( DB_MASTER );
 		if( $db->tableExists( 'titlekey' ) ) {
 			echo "...titlekey already exists.\n";
 		} else {
 			echo "...creating titlekey table...\n";
-			$sourcefile = '/titlekey.sql';
+			$sourcefile = $wgDBtype == 'postgres' ? '/titlekey.pg.sql' : '/titlekey.sql';
 			$err = $db->sourceFile( dirname( __FILE__ ) . $sourcefile );
 			if( $err !== true ) {
 				throw new MWException( $err );
