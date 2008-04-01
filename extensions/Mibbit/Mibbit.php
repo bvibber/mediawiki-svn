@@ -24,7 +24,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.0',
+	'version'        => '1.1',
 );
 
 // Register special page.

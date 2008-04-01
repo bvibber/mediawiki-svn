@@ -76,7 +76,7 @@ class Mibbit extends SpecialPage {
 function mibbitExpand(elem)
 {
 	height=elem.height;
-	elem.height=screen.height-400;
+	elem.height=screen.height-300;
 	width=elem.width;
 	elem.width=screen.width-250;
 }
