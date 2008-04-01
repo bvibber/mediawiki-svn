@@ -6,9 +6,9 @@
 
 class Mibbit extends SpecialPage {
 
-	function Mibbit() {
+	function __construct() {
 		global $wgMibbitAllowAnonymous;
-		wfLoadExtensionMessages( 'Mibbit' );
+
 		if( $wgMibbitAllowAnonymous ) {
 			SpecialPage::SpecialPage( 'Mibbit' );
 		} else {
@@ -19,6 +19,8 @@ class Mibbit extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser;
 		global $wgMibbitServer, $wgMibbitChannel, $wgMibbitExtraParameters;
+
+		wfLoadExtensionMessages( 'Mibbit' );
 
 		$this->setHeaders();
 
