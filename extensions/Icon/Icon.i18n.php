@@ -158,6 +158,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'icon-badimage' => 'Imatge corromput',
 	'icon-badwidth' => 'Largor erronèa',
+	'icon-desc'     => 'Vos autoriaz l’utilizacion dels imatges coma icònas o de ligams jos forma d’icònas',
 );
 
 /** Pashto (پښتو)

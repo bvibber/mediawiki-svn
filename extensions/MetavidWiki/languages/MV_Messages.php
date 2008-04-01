@@ -1447,11 +1447,16 @@ $messages['no'] = array(
 	'mv_tool_export_title'           => 'Eksporter dataflytmetadata',
 	'mv_tool_embed'                  => 'Inkluder',
 	'mv_tool_embed_title'            => 'Inkluder valgmuligheter for det etterspurte segmentet',
+	'mv_tool_overlay'                => 'Maloverlegg',
+	'mv_tool_overlay_title'          => 'Mal basert på metadataoverlegg',
 	'mv_results_found_for'           => 'Søkeresultat <b>$1</b> til <b>$2</b> av <b>$3</b> for:',
 	'mv_tool_mang_layers'            => 'Behandle lag',
 	'mv_update_layers'               => 'oppdater lagvisning',
 	'ht_en'                          => 'Transkripsjon',
+	'ht_en_desc'                     => 'Engelske transkripsjoner. Denne overleggstypen er for opplest tekst',
 	'anno_en'                        => 'Annoteringer og kategorier',
+	'anno_en_desc'                   => 'Engelske kategoriseringer og merknader.
+Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller til å legge til merknader som ikke er opplest tekst',
 	'thomas_en'                      => 'Offisiell transkripsjon',
 	'thomas_en_desc'                 => 'Offisiell Thomas-transkripsjon fra regjeringens THOMAS-innspillingstjeneste. Kildetid synkronisert av C-SPANs c-spanarchives.org',
 	'mvd_default_mismatch'           => 'Feil i innstillingsfil',
@@ -1535,6 +1540,7 @@ $messages['no'] = array(
 	'mv_search_stream'               => 'Søk dataflyt',
 	'mv_navigate_stream'             => 'Naviger full dataflyt',
 	'mv_embed_options'               => 'Inkluderingsvalg',
+	'mv_overlay'                     => 'Overleggkontroll',
 	'mv_stream_tool_heading'         => 'Dataflytverktøy',
 	'mv_tool_missing'                => 'verktøyforespørsel ($1) finnes ikke',
 	'mv_bad_tool_request'            => 'dårlig verktøylinje; burde være på formen: verktøynavn|visningsnavn',
@@ -2300,6 +2306,7 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'mv_save_changes' => 'மாற்றங்களைச் சேமி',
+	'mv_tool_search'  => 'தேடுக',
 );
 
 /** Telugu (తెలుగు)

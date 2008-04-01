@@ -144,3 +144,17 @@ $messages['sk'] = array(
 	'newsextension-desc' => 'Zobrazuje prispôsobené Posledné úpravy na wiki stránkach alebo ako kanál RSS alebo Atom',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'newsextension-desc' => 'Témbongkeun parobahan anyar saragam dina kaca wiki atawa dina rupa eupan RSS atawa Atom',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'newsextension-desc' => 'Visar skräddarsydda senaste ändringar på en wikisida, eller en RSS- eller Atom-matning',
+);
+

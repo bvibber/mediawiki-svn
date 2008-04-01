@@ -785,8 +785,8 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'bookinfo-header'            => 'Informacja o książce',
@@ -795,12 +795,12 @@ $messages['pl'] = array(
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Wydawca:',
 	'bookinfo-result-year'       => 'Rok:',
-	'bookinfo-error-invalidisbn' => 'Wprowadzono niepoprawny ISBN',
-	'bookinfo-error-nosuchitem'  => 'Pozycja nie istnieje lub nie może być znaleziona',
-	'bookinfo-error-nodriver'    => 'Nie udało się zainicjalizować odpowiedniego Book Information Driver',
-	'bookinfo-error-noresponse'  => 'Brak odpowiedzi lub przekroczony czas odpowiedzi',
-	'bookinfo-purchase'          => 'Zakup tę książkę w $1',
-	'bookinfo-provider'          => 'Dostawca danych: $1',
+	'bookinfo-error-invalidisbn' => 'Wprowadzono niepoprawny ISBN.',
+	'bookinfo-error-nosuchitem'  => 'Pozycja nie istnieje lub nie mogła zostać odnaleziona.',
+	'bookinfo-error-nodriver'    => 'Nie udało się zainicjować odpowiedniego sterownika Book Information.',
+	'bookinfo-error-noresponse'  => 'Brak odpowiedzi lub przekroczony dopuszczalny czas odpowiedzi.',
+	'bookinfo-purchase'          => 'Kup tą książkę w $1',
+	'bookinfo-provider'          => 'Źródło informacji: $1',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

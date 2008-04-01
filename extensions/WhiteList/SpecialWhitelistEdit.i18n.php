@@ -644,6 +644,13 @@ $allMessages['szl'] = array(
 	'whitelistbadtitle'  => 'Zuy titel',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$allMessages['ta'] = array(
+	'whitelisttablemodifyall' => 'அனைத்து',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

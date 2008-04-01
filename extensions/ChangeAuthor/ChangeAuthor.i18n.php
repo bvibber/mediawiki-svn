@@ -900,7 +900,20 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'changeauthor' => 'Зміна автора редагування',
+	'changeauthor'                      => 'Зміна автора редагування',
+	'changeauthor-desc'                 => 'Дозволяє змінювати автора редагування',
+	'changeauthor-title'                => 'Зміна автора редагування',
+	'changeauthor-search-box'           => 'Пошук редагувань',
+	'changeauthor-pagename-or-revid'    => 'Назва статті або ідентифікатор редагування:',
+	'changeauthor-pagenameform-go'      => 'Уперед',
+	'changeauthor-comment'              => 'Коментар:',
+	'changeauthor-changeauthors-multi'  => 'Змінити автора(ів)',
+	'changeauthor-explanation-multi'    => "За допомогою цієї форми можна змінити авторів редагувань.
+Просто змініть нижче одне або кілька імен користувачів, зазначте пояснення (необов'язково) і натисніть кнопку «Змінити автора(ів)».",
+	'changeauthor-changeauthors-single' => 'Змінити автора',
+	'changeauthor-explanation-single'   => "За допомогою цієї форми можна змінити автора редагування. просто змініть ім'я користувача, зазначте пояснення (необов'язково) і натисніть кнопку «Змінити автора».",
+	'changeauthor-invalid-username'     => "Недопустиме ім'я користувача: «$1».",
+	'changeauthor-nosuchuser'           => 'Нема користувача $1.',
 );
 
 /** Vietnamese (Tiếng Việt)

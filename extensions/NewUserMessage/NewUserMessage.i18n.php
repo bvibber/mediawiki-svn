@@ -155,6 +155,13 @@ $messages['sk'] = array(
 	'newusermessage-desc' => 'Pridáva [[MediaWiki:NewUserMessage|správu]] do novo vytvorených používateľských diskusných stránok',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'newusermessage-desc' => 'Kirim [[MediaWiki:NewUserMessage|surat]] ka kaca obrolan pamaké nu kakara dijieun',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

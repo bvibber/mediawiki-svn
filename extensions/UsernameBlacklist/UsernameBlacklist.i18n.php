@@ -903,10 +903,23 @@ $messages['stq'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ju foulgjende Riege|Do foulgjende Riegen}} in ju Lieste fon nit-wonskede Benutsernoomen {{PLURAL:$1|is|sunt}} uungultich; korrigier do foar dät Spiekerjen:',
 );
 
-/* Sundanese (Irwangatot via BetaWiki) */
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ * @author Irwangatot
+ */
 $messages['su'] = array(
-	'blacklistedusername' => 'Ngaran pamaké nu dicorét:',
-	'blacklistedusernametext' => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
+	'usernameblacklist-desc'          => 'Nambahkeun [[MediaWiki:Usernameblacklist|daptar hideung landihan]] pikeun mahing dijieunna rekening pamaké nu cocog jeung salah sahiji éksprési rutin',
+	'blacklistedusername'             => 'Ngaran pamaké nu dicorét:',
+	'blacklistedusernametext'         => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
+	'usernameblacklist'               => '<pre>
+# Éntri-éntri dina ieu béréndélan bakal dipaké salaku bagian tina éksprési rutin nalika
+# nyieun daptar hideung landihan tina régistrasi. Unggal éntri kudu diasupkeun kana
+# daptar pélor, misalna baé
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|baris|baris-baris}} dina daptar hideung di handap teu sah; ropéa heula méméh disimpen:',
 );
 
 /** Swedish (Svenska)

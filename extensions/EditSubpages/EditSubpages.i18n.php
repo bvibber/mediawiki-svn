@@ -118,6 +118,22 @@ $messages['no'] = array(
   #</pre><!-- la denne linja være som den er -->',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'editsubpages-desc' => 'Permet als administrators de desvarrolhar una pagina e totas sas sospaginas per las modificacions anonimas gràcia a [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '  #<!-- Daissatz aquesta linha tala coma es --><pre>
+# Indicatz, çaijós, las paginas que desiratz desvarrolhar en utilizant
+# * nomdelapagina
+# Las paginas desvarrolhadas devon començar per una lista amb de piuses per èsser presas en consideracion,
+# Tot autre caractèr serà considerat coma un comentari.
+# Los noms de paginas pòdon èsser de [[ligams]] e son sensibles a la cassa
+# Tanben, las paginas de discussion seràn desvarrolhadas automaticament amb sa pagina principala.
+# Vejatz http://www.mediawiki.org/wiki/Extension:EditSubpages per mai d’entresenhas
+  #</pre><!-- Daissatz aquesta linha tala coma es -->',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

@@ -721,6 +721,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'sitematrix'           => 'Lista dels wikis Wikimedia',
+	'sitematrix-summary'   => 'Aquesta pagina especiala aficha totes los wikis de la Fondacion Wikimèdia.',
 	'sitematrix-desc'      => 'Aficha una [[Special:SiteMatrix|tièra de wikis de la Fondacion Wikimèdia]]',
 	'sitematrix-language'  => 'Lenga',
 	'sitematrix-project'   => 'Nom del projècte, ligam interprojècte e ligam interwiki',
@@ -911,12 +912,13 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
- * @author Mpradeep
  * @author Veeven
+ * @author Mpradeep
  * @author לערי ריינהארט
  */
 $messages['te'] = array(
 	'sitematrix'           => 'వికీమీడియా వికీల జాబితా',
+	'sitematrix-summary'   => 'ఈ ప్రత్యేక పేజీ అన్ని వికీమీడియా వికీల జాబితాను చూపిస్తుంది.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|వికీమీడియా యొక్క వికీల జాబితా]]ని చూపిస్తుంది',
 	'sitematrix-language'  => 'భాష',
 	'sitematrix-project'   => 'ప్రాజెక్టు పేరు, అంతర్‌ప్రాజెక్టు లింకు మరియు అంతర్వికీ లింకు',

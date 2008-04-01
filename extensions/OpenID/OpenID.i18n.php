@@ -898,8 +898,10 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author Jon Harald Søby
+ * @author M.M.S.
  */
 $messages['sv'] = array(
+	'openid-desc'          => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
 	'openidlogin'          => 'Logga in med OpenID',
 	'openidxrds'           => 'Yadis-fil',
 	'openidoptional'       => 'Valfri',

@@ -1392,32 +1392,45 @@ $messages['pam'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'hiderevision'                => 'Trwałe usuwanie wersji',
+	'hiderevision'                => 'Trwałe ukrywanie wersji',
+	'hiderevision-desc'           => 'Pozwala ukryć pojedyncze zmiany przed wszystkimi użytkownikami np. ze względów prawnych.',
+	'group-oversight'             => 'Oversightowie',
 	'hiderevision-prompt'         => 'Numer wersji do usunięcia:',
 	'hiderevision-continue'       => 'Kontynuuj',
-	'hiderevision-text'           => "Ta funkcja powinna być '''jedynie''' użyta w następujących przypadkach: * Niewłaściwe informacje osobiste *: ''adresy domowe i numery telefoniczne, numery ubezpieczenia zdrowotnego tip.'' '''Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.''' Usunięte elementy nie będą widoczne dla nikogo na tej stronie, lecz usunięcia są rejestrowane i skasowane dane mogą być ręcznie przywrócone przez administratorów bazy danych w wypadku twojej pomyłki.",
-	'hiderevision-reason'         => 'Powód (będzie zarejestrowany prywatnie):',
-	'hiderevision-submit'         => 'Na stałe ukryj te dane',
-	'hiderevision-tab'            => 'Ukryj wersje',
+	'hiderevision-text'           => "Funkcja powinna być użyta '''jedynie''' w następujących przypadkach:
+* Zamieszczenie danych osobowych podlegających ochronie
+*: ''adres domowy, numer telefonu, numer PESEL itp.''
+
+'''Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.'''
+
+Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie usunięcia są rejestrowane, a skasowane dane mogą zostać ręcznie odtworzone przez administratorów bazy danych jeśli usunięcie było omyłkowe.",
+	'hiderevision-reason'         => 'Powód (nie będzie widoczny publicznie):',
+	'hiderevision-submit'         => 'Trwale ukryj te dane',
+	'hiderevision-tab'            => 'Ukryj tą wersję',
 	'hiderevision-norevisions'    => 'Nie określono wersji do usunięcia',
 	'hiderevision-noreason'       => 'Musisz wpisać powód usunięcia.',
-	'hiderevision-status'         => 'Wersje $1: $2',
+	'hiderevision-status'         => 'Wersja $1: $2',
 	'hiderevision-success'        => 'Pomyślnie zarchiwizowane i usunięte.',
 	'hiderevision-error-missing'  => 'Nie znaleziono w bazie danych.',
-	'hiderevision-error-current'  => 'Nie można usunąć najnowszej edycji strony. Najpierw cofnij tę edycję.',
+	'hiderevision-error-current'  => 'Nie można usunąć ostatniej edycji strony.
+Najpierw wycofaj ostatnią edycję.',
 	'hiderevision-error-delete'   => 'Nie można zarchiwizować; czy wcześniej była skasowana?',
-	'hiderevision-archive-status' => 'Usunięto wersje z $1: $2',
-	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: *Strona została usunięta *Ta ukryta wersja była pierwszą wersją',
+	'hiderevision-archive-status' => 'Usunięto wersję z $1: $2',
+	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: 
+*Strona została usunięta 
+*Ta ukryta wersja była pierwszą wersją',
 	'oversight-log-hiderev'       => 'usunięto edycję z $1',
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'szczegóły',
-	'oversight-difference'        => '(Różnica z poprzednią pozostałą wersją)',
+	'oversight-difference'        => '(Różnica z poprzednią wersją, która pozostała)',
 	'oversight-prev'              => 'Ostatnia z poprzednich wersji',
-	'oversight-hidden'            => 'Ukryta wersja',
-	'oversight-header'            => 'Poniżej znajduje się lista wersji w ostatnim czasie na stałe ukrytych przed dostępem publicznym. Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
+	'oversight-hidden'            => 'Wersja ukryta',
+	'oversight-header'            => 'Poniżej znajduje się lista ukrytych, w ostatnim czasie, trwale przed dostępem publicznym wersji.
+Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
 );
 
 /** Piemontèis (Piemontèis)

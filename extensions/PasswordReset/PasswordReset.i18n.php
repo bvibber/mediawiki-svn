@@ -358,17 +358,28 @@ $messages['oc'] = array(
 	'disabledusers-summary'            => 'Aquò es la tièra dels utilizaires que son estats desactivats per PasswordReset.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'passwordreset' => 'Wyczyszczenie hasła',
-	'passwordreset-invalidusername' => 'Nieprawidłowa nazwa użytkownika',
-	'passwordreset-emptyusername' => 'Pusta nazwa użytkownika',
-	'passwordreset-nopassmatch' => 'Hasła nie pasują',
-	'passwordreset-badtoken' => 'Nieprawidłowy żeton edycji',
-	'passwordreset-username' => 'Nazwa użytkownika',
-	'passwordreset-newpass' => 'Nowe hasło',
-	'passwordreset-confirmpass' => 'Potwierdź hasło',
-	'passwordreset-submit' => 'Wyczyść hasło',
-	'passwordreset-success' => 'Hasło zostało wyczyszczone dla użytkownika od ID $1',
+	'passwordreset'                    => 'Wyczyszczenie hasła',
+	'passwordreset-desc'               => "Ponowne ustawienie hasła użytkownika - wymaga uprawnienia 'passwordreset'",
+	'passwordreset-invalidusername'    => 'Nieprawidłowa nazwa użytkownika',
+	'passwordreset-emptyusername'      => 'Pusta nazwa użytkownika',
+	'passwordreset-nopassmatch'        => 'Hasła nie są identyczne',
+	'passwordreset-badtoken'           => 'Nieprawidłowy żeton edycji',
+	'passwordreset-username'           => 'Nazwa użytkownika',
+	'passwordreset-newpass'            => 'Nowe hasło',
+	'passwordreset-confirmpass'        => 'Potwierdź hasło',
+	'passwordreset-submit'             => 'Wyczyść hasło',
+	'passwordreset-success'            => 'Hasło zostało wyczyszczone dla użytkownika z ID: $1',
+	'passwordreset-disableuser'        => 'Czy wyłączyć konto tego użytkownika?',
+	'passwordreset-disableuserexplain' => '(ustawienie błędnego skrótu hasła uniemożliwi użytkownikowi zalogowanie)',
+	'passwordreset-disablesuccess'     => 'Konto użytkownika zostało zablokowane (ID użytkownika: $1)',
+	'passwordreset-accountdisabled'    => 'Konto zostało zablokowane',
+	'disabledusers'                    => 'Zablokowani użytkownicy',
+	'disabledusers-summary'            => 'Lista użytkowników, którzy zostali zablokowaniu poprzez użycie PasswordReset.',
 );
 
 

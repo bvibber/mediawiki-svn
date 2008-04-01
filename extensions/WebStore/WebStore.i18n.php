@@ -567,7 +567,7 @@ $messages['oc'] = array(
 	'inplace_scaler_no_temp'           => "Pas cap de dorsièr temporari valid, \$wgLocalTmpDirectory deu conténer lo nom d'un dorsièr amb dreches d'escritura.",
 	'inplace_scaler_not_enough_params' => 'Pas pro de paramètres',
 	'inplace_scaler_invalid_image'     => 'Imatge incorrècte, pòt pas determinar sa talha',
-	'inplace_scaler_failed'            => "Una error es susvenguda pendent la dilatacion/contraccion (« scaling ») de l'imatge.",
+	'inplace_scaler_failed'            => "Una error es susvenguda pendent la decompression/compression (« scaling ») de l'imatge : $1",
 	'inplace_scaler_no_handler'        => 'Cap de foncion (« handler ») per transformar aqueste format MIME.',
 	'inplace_scaler_no_output'         => 'Cap de fichièr de transformacion generit',
 	'inplace_scaler_zero_size'         => 'La transformacion a creat un fichièr de talha zèro.',
@@ -599,11 +599,11 @@ $messages['oc'] = array(
 	'webstore_metadata_not_found'      => 'Fichièr pas trobat : $1',
 	'webstore_postfile_not_found'      => "Fichièr d'enregistrar pas trobat.",
 	'webstore_scaler_empty_response'   => "L’escandilhatge de l'imatge a balhat una responsa nulla amb un còde de 200 responsas. Aquò poiriá èsser degut a una error de l'escandilhatge.",
-	'webstore_invalid_response'        => 'Responsa invalida dempuèi lo serveire :
+	'webstore_invalid_response'        => 'Responsa invalida dempuèi lo serveire :  
 
 $1',
 	'webstore_no_response'             => 'Lo serveire respondís pas',
-	'webstore_backend_error'           => 'Error dempuèi lo serveire de stocatge :
+	'webstore_backend_error'           => 'Error dempuèi lo serveire de stocatge :  
 
 $1',
 	'webstore_php_error'               => 'Las errors PHP seguentas son susvengudas',

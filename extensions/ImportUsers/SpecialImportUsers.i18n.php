@@ -561,6 +561,13 @@ $messages['sv'] = array(
 	'importusers-realname'                => 'riktigt namn',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'importusers-log-summary-all' => 'அனைத்து',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

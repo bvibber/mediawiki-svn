@@ -1761,6 +1761,7 @@ $wgGoogleMapsMessages['szl'] = array(
  * @author Trengarasu
  */
 $wgGoogleMapsMessages['ta'] = array(
+	'gm-search'    => 'தேடுக',
 	'gm-save-path' => 'சேமி',
 );
 

@@ -261,8 +261,10 @@ $messages['no'] = array(
 	'lookupuser_not_authenticated' => 'ikke bekreftet',
 	'lookupuser_id'                => 'Bruker-ID: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'ikke oppgitt',
 	'lookupuser_realname'          => 'Virkelig navn: $1',
 	'lookupuser_registration'      => 'Registrasjonsdato: $1',
+	'lookupuser_no_registration'   => 'ikke lagret',
 	'lookupuser_touched'           => 'Innstillinger sist endret: $1',
 	'lookupuser_useroptions'       => 'Brukervalg:',
 );
@@ -279,8 +281,10 @@ $messages['oc'] = array(
 	'lookupuser_not_authenticated' => 'pas identificat',
 	'lookupuser_id'                => "ID de l'utilizaire : <tt>#$1</tt>",
 	'lookupuser_email'             => 'Corrièr electronic : [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'pas provesit',
 	'lookupuser_realname'          => 'Nom vertadièr : $1',
 	'lookupuser_registration'      => "Data d'enregistrament : $1",
+	'lookupuser_no_registration'   => 'pas enregistrat',
 	'lookupuser_touched'           => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
 	'lookupuser_useroptions'       => "Opcions de l'utilizaire :",
 );

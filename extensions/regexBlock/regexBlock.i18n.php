@@ -905,6 +905,13 @@ $messages['szl'] = array(
 	'regexblock-form-reason' => 'Čymu:',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'regexblock-view-all' => 'அனைத்து',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

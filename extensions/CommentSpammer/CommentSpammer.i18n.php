@@ -147,9 +147,11 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'commentspammer-desc'    => "Refuséiert Ännerunge vu verdächtege Spammeren vun enger ''Schwaarzer DNS-Lësch''",
-	'commentspammer-log-msg' => 'Ännerunge vun [[Special:Contributions/$1|$1]] fir [[:$2]].',
-	'cspammer-log-page'      => 'Bemierkung Spammer Logbuch',
+	'commentspammer-save-blocked' => "Är IP-Adress gëtt als Spammer verdächtegt, dofir gouf d'Säit net gespäichert.
+[[Special:Userlogin|Loggt Iech an oder maacht e Benotzerkont op]] fir dëst ze verhënneren.",
+	'commentspammer-desc'         => "Refuséiert Ännerunge vu verdächtege Spammeren vun enger ''Schwaarzer DNS-Lësch''",
+	'commentspammer-log-msg'      => 'Ännerunge vun [[Special:Contributions/$1|$1]] fir [[:$2]].',
+	'cspammer-log-page'           => 'Bemierkung Spammer Logbuch',
 );
 
 /** Marathi (मराठी)

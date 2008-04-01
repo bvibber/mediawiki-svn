@@ -487,25 +487,31 @@ $messages['oc'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrolhaire',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'patrol' => 'Patrolowanie edycji',
-	'patrol-revert' => 'Cofnij',
-	'patrol-revert-reason' => 'Powód:',
-	'patrol-skip' => 'Pomiń',
-	'patrol-reverting' => 'Wycofywanie: $1',
-	'patrol-nonefound' => 'Nie znaleziono edycji do patrolowania.',
-	'patrol-endorsed-ok' => 'Edycja została oznaczona jako sprawdzona.',
+	'patrol'                 => 'Patrolowanie edycji',
+	'patrol-desc'            => 'Rozszerzony interfejs patrolowania ostatnich zmian',
+	'patrol-endorse'         => 'Zatwierdź',
+	'patrol-revert'          => 'Cofnij',
+	'patrol-revert-reason'   => 'Powód:',
+	'patrol-skip'            => 'Pomiń',
+	'patrol-reverting'       => 'Wycofanie: $1',
+	'patrol-nonefound'       => 'Nie znaleziono edycji do patrolowania.',
+	'patrol-endorsed-ok'     => 'Edycja została oznaczona jako sprawdzona.',
 	'patrol-endorsed-failed' => 'Nie udało się oznaczyć edycji jako sprawdzonej.',
-	'patrol-reverted-ok' => 'Edycja została cofnięta.',
+	'patrol-reverted-ok'     => 'Edycja została cofnięta.',
 	'patrol-reverted-failed' => 'Nie udało się cofnąć edycji.',
-	'patrol-skipped-ok' => 'Ignorowanie edycji.',
-	'patrol-reasons' => '* Prosty wandalizm * Test * Zobacz stronę dyskusji',
-	'patrol-another' => 'Pokaż inną edycję, jeśli istnieje.',
-	'patrol-stopped' => 'Wybrano, by nie patrolować więcej edycji. $1',
-	'patrol-resume' => 'Kliknij tu by kontynuować',
-	'group-patroller' => 'Patrolujący',
+	'patrol-skipped-ok'      => 'Ignorowanie edycji.',
+	'patrol-reasons'         => '* Prosty wandalizm * Test * Zobacz stronę dyskusji',
+	'patrol-another'         => 'Pokaż inną edycję, jeśli istnieje.',
+	'patrol-stopped'         => 'Wybrano, by nie patrolować więcej edycji. $1',
+	'patrol-resume'          => 'Kliknij tu by kontynuować',
+	'group-patroller'        => 'Patrolujący',
 	'group-patroller-member' => 'Patrolujący',
-	'grouppage-patroller' => '{{ns:project}}:Patrolujący',
+	'grouppage-patroller'    => '{{ns:project}}:Patrolujący',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

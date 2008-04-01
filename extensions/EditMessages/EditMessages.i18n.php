@@ -242,6 +242,28 @@ $messages['no'] = array(
 	'editmsg-patch-success'    => 'Oppdatert.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Edicion basada sur Internet]] d’un grand nombre de fichièrs Messatges*.php',
+	'editmessages'             => 'Modificar los messatges',
+	'editmsg-target'           => 'Messatge cibla :',
+	'editmsg-search'           => 'Recercar',
+	'editmsg-show-list'        => 'Afichatge de las valors pel nom del messatge « $1 »',
+	'editmsg-get-patch'        => 'Crear un patch',
+	'editmsg-new-search'       => 'Recèrca novèla',
+	'editmsg-warning-parse1'   => '* Expression correnta del nom de messatge pas detectada : $1',
+	'editmsg-warning-parse2'   => '* Caractèr de citacion esperat aprèp la sageta : $1',
+	'editmsg-warning-parse3'   => '* Fin de la cadena de caractèrs pas trobada : $1',
+	'editmsg-warning-file'     => "* D'errors de lectura del fichièr son estadas trobadas per las lengas seguentas : $1",
+	'editmsg-warning-mismatch' => '* Lo tèxt original a pas pres la valor prevista per las lengas seguentas : $1',
+	'editmsg-apply-patch'      => 'Aplicar lo patch',
+	'editmsg-no-patch'         => "Impossible d'executar la comanda del « patch »",
+	'editmsg-patch-failed'     => 'Fracàs del patch amb l’error de sortida $1',
+	'editmsg-patch-success'    => 'Patch aplicat amb succès.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -292,6 +314,13 @@ $messages['sv'] = array(
  */
 $messages['szl'] = array(
 	'editmsg-search' => 'Šnupej',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'editmsg-search' => 'தேடுக',
 );
 
 /** Thai (ไทย)

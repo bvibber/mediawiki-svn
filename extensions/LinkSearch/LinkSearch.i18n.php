@@ -630,7 +630,7 @@ $messages['oc'] = array(
 	'linksearch-pat'   => 'Recercar l’expression :',
 	'linksearch-ns'    => 'Espaci de noms :',
 	'linksearch-ok'    => 'Recercar',
-	'linksearch-text'  => 'Aquesta pagina especiala permetís de recercar las paginas dins lasqualas un ligam extèrn apareis.<br />De caractèrs « joker » pòdon èsser utilizats, per exemple <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'De caractèrs « joker » pòdon èsser utilizats, per exemple <code>*.wikipedia.org</code>.<br />Protocòls reconeguts : <tt>$1</tt>.',
 	'linksearch-line'  => '$1 amb un ligam a partir de $2',
 	'linksearch-error' => 'Los caractèrs « joker » pòdon pas èsser utilizats qu’al començament del nom de domeni.',
 );
@@ -821,6 +821,13 @@ $messages['sv'] = array(
  */
 $messages['szl'] = array(
 	'linksearch-ok' => 'Šnupej',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'linksearch-ok' => 'தேடுக',
 );
 
 /** Telugu (తెలుగు)

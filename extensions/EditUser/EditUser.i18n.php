@@ -359,6 +359,13 @@ $messages['szl'] = array(
 	'edituser-dosearch' => 'Šnupej',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'edituser-dosearch' => 'தேடுக',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
