@@ -36,9 +36,12 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
+import org.wikimedia.lsearch.index.IndexUpdateRecord.Action;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.util.Command;
 import org.wikimedia.lsearch.util.FSUtils;
+import org.wikimedia.lsearch.util.StringUtils;
 
 /**
  * Indexer.  
@@ -95,9 +98,11 @@ public class IndexThread extends Thread {
 		String pattern; // pattern to be mached
 		boolean forPrecursors; // match precursors only
 		boolean not = false; // *not* matching this pattern
+		boolean optimize = true;
 		
-		public Pattern(String pattern, boolean forPrecursors){
+		public Pattern(boolean optimize, String pattern, boolean forPrecursors){
 			this(pattern,forPrecursors,false);
+			this.optimize = optimize;
 		}
 		public Pattern(String pattern, boolean forPrecursors, boolean not){
 			this.pattern = pattern;
@@ -141,7 +146,7 @@ public class IndexThread extends Thread {
 			if(makeSnapshotNow || (System.currentTimeMillis() - lastSnapshot) > snapshotInterval){
 				flushNow = true;
 				applyUpdates();
-				makeSnapshot();
+				makeSnapshots();
 				lastSnapshot = System.currentTimeMillis();
 				makeSnapshotNow = false;
 			}
@@ -254,17 +259,17 @@ public class IndexThread extends Thread {
 	}
 	
 	/**
-	 * Make a snapshot of all changed indexes
+	 * Make snapshots of all changed indexes
 	 *
 	 */
-	protected void makeSnapshot() {
+	protected void makeSnapshots() {
 		HashSet<IndexId> indexes = WikiIndexModifier.getModifiedIndexes();
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
 		ArrayList<Pattern> pat = new ArrayList<Pattern>();
 		synchronized (snapshotPatterns) {
 			for(Pattern p : snapshotPatterns){ // convert wildcards into regexp				 
-				pat.add(new Pattern(p.pattern.replace(".","\\.").replace("*",".*?"),p.forPrecursors,p.pattern.startsWith("^")));
+				pat.add(new Pattern(StringUtils.wildcardToRegexp(p.pattern),p.forPrecursors,p.pattern.startsWith("^")));
 			}
 			snapshotPatterns.clear();
 		}
@@ -391,10 +396,23 @@ public class IndexThread extends Thread {
 		}
 	}
 	
-	public static void enqueue(IndexUpdateRecord[] records) {
+	public static HashSet<String> enqueue(IndexUpdateRecord[] records) throws Exception {
 		synchronized(staticLock){
-			for(IndexUpdateRecord r : records)
-				enqueue(r);
+			HashSet<String> add = new HashSet<String>();
+			HashSet<String> pageIds = new HashSet<String>();
+			if(records.length > 0){
+				IndexId iid = records[0].getIndexId(); // we asume all are on same iid
+				Links links = Links.openForRead(iid.getLinks(),iid.getLinks().getIndexPath());
+				
+				for(IndexUpdateRecord r : records){
+					pageIds.add(r.getIndexKey());
+					add.addAll(enqueue(r,links));
+				}			
+				links.close();
+			}
+			
+			add.removeAll(pageIds);
+			return add;
 		}
 	}
 	
@@ -403,69 +421,80 @@ public class IndexThread extends Thread {
 	 * enqueue a page update
 	 * @param record
 	 */
-	public static void enqueue(IndexUpdateRecord record) {
+	public static Set<String> enqueue(IndexUpdateRecord record, Links links) throws Exception {
 		synchronized(staticLock){
 			IndexId iid = record.getIndexId();
 			if(iid == null || !(iid.isLogical() || iid.isSingle()) || !iid.isMyIndex()){
 				log.error("Got update for database "+iid+", however this node does not accept updates for this DB");
-				return;
+				return new HashSet<String>();
 			}
+			
+			try{
+				Set<String> additional = WikiIndexModifier.fetchAdditional(iid,record,links);
 
-			if( iid.isSingle() ){
-				enqueueLocally(record);			
-			} else if( iid.isMainsplit() || iid.isNssplit()){
-				IndexId piid;
-				Article ar = record.getArticle();
-				// deletion when we have only page_id needs to be sent to all parts, 
-				// because we don't have namespace info
-				if(record.isDelete() && ar.getTitle().equals("")){
-					for(String dbrole : iid.getSplitParts()){
-						IndexUpdateRecord recp = (IndexUpdateRecord) record.clone();
-						recp.setIndexId(IndexId.get(dbrole));
-						enqueueRemotely(recp.getIndexId().getIndexHost(),recp);
-					}					
-				} else{
-					piid = iid.getPartByNamespace(ar.getNamespace());					
-					// set recipient to new host
-					record.setIndexId(piid);
-					enqueueRemotely(piid.getIndexHost(),record);
-				}
-			} else if( iid.isSplit() ){
-				int number = iid.getSplitFactor();
-				Article a = record.getArticle();
-				ReportId reportId = new ReportId(a.getPageId(),
-						System.currentTimeMillis(),
-						iid.toString(),
-						record);
-				Hashtable<String,ReportId> dbpending = pendingUpdates.get(iid.toString());
-				if(dbpending == null){
-					dbpending = new Hashtable<String,ReportId>();
-					pendingUpdates.put(iid.toString(),dbpending);
-				}
-				dbpending.put(reportId.getKey(),reportId); // overwrite old values (if any)
-				if(record.doDelete()){
-					if(record.doAdd()){		
-						// expect report on this reportId
-						reports.put(reportId,Collections.synchronizedList(new ArrayList<IndexReportCard>()));
-						record.setReportBack(true);
-						record.setAlwaysAdd(false);
-						record.setReportHost(global.getLocalhost());
-						record.setReportId(reportId);						
+				if( iid.isSingle() ){
+					enqueueLocally(record);			
+				} else if( iid.isMainsplit() || iid.isNssplit()){
+					IndexId piid;
+					Article ar = record.getArticle();
+					// always delete everywhere since we might not have namespace info
+					if(record.doDelete()){
+						for(String dbrole : iid.getSplitParts()){
+							IndexUpdateRecord recp = (IndexUpdateRecord) record.clone();
+							recp.setIndexId(IndexId.get(dbrole));
+							recp.setAction(Action.DELETE);
+							enqueueRemotely(recp.getIndexId().getIndexHost(),recp);
+						}					
+					} 
+					if(record.doAdd()){
+						piid = iid.getPartByNamespace(ar.getNamespace());					
+						// set recipient to new host
+						record.setIndexId(piid);
+						record.setAction(Action.ADD);
+						enqueueRemotely(piid.getIndexHost(),record);
 					}
-					// pass to all hosts the update record
-					for(int i=1; i<=number; i++){
-						IndexId iidp = iid.getPart(i);
-						IndexUpdateRecord recordPart = (IndexUpdateRecord) record.clone();
-						recordPart.setIndexId(iidp);
-						enqueueRemotely(iidp.getIndexHost(),recordPart);						
+				} else if( iid.isSplit() ){
+					int number = iid.getSplitFactor();
+					Article a = record.getArticle();
+					ReportId reportId = new ReportId(a.getPageId(),
+							System.currentTimeMillis(),
+							iid.toString(),
+							record);
+					Hashtable<String,ReportId> dbpending = pendingUpdates.get(iid.toString());
+					if(dbpending == null){
+						dbpending = new Hashtable<String,ReportId>();
+						pendingUpdates.put(iid.toString(),dbpending);
 					}
-				} else{					
-					int random = (int)Math.floor(Math.random()*number) + 1;
-					IndexId iidp = iid.getPart(random);			
-					// enqueue on a randomly choosen index part
-					record.setIndexId(iidp);
-					enqueueRemotely(iidp.getIndexHost(),record);
+					dbpending.put(reportId.getKey(),reportId); // overwrite old values (if any)
+					if(record.doDelete()){
+						if(record.doAdd()){		
+							// expect report on this reportId
+							reports.put(reportId,Collections.synchronizedList(new ArrayList<IndexReportCard>()));
+							record.setReportBack(true);
+							record.setAlwaysAdd(false);
+							record.setReportHost(global.getLocalhost());
+							record.setReportId(reportId);						
+						}
+						// pass to all hosts the update record
+						for(int i=1; i<=number; i++){
+							IndexId iidp = iid.getPart(i);
+							IndexUpdateRecord recordPart = (IndexUpdateRecord) record.clone();
+							recordPart.setIndexId(iidp);
+							enqueueRemotely(iidp.getIndexHost(),recordPart);						
+						}
+					} else{					
+						int random = (int)Math.floor(Math.random()*number) + 1;
+						IndexId iidp = iid.getPart(random);			
+						// enqueue on a randomly choosen index part
+						record.setIndexId(iidp);
+						enqueueRemotely(iidp.getIndexHost(),record);
+					}
 				}
+				return additional;
+			} catch(IOException e){
+				e.printStackTrace();
+				log.error("Cannot enqueue "+record+" : "+e.getMessage());
+				throw new Exception("I/O Exception on queueing of "+record,e);
 			}
 		}
 	}
@@ -669,9 +698,9 @@ public class IndexThread extends Thread {
 		suspended = false;		
 	}
 	
-	public void makeSnapshotsNow(String pattern, boolean forPrecursors){
+	public void makeSnapshotsNow(boolean optimize, String pattern, boolean forPrecursors){
 		synchronized(snapshotPatterns){
-			snapshotPatterns.add(new Pattern(pattern,forPrecursors));
+			snapshotPatterns.add(new Pattern(optimize,pattern,forPrecursors));
 			makeSnapshotNow = true;
 		}
 	}

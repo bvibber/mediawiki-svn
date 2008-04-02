@@ -26,6 +26,8 @@ public class TokenizerOptions {
 	boolean noTrailing = false;
 	/** catch ? and ! as trailing chars (and not sentence breaks) - useful for titles */
 	boolean extendedTrailing = false;
+	/** if to split tokens with apostrophes and points in them */
+	boolean split = true;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -38,6 +40,13 @@ public class TokenizerOptions {
 		}
 	}
 	
+	public static class NoRelocationNoSplit extends NoRelocation {
+		public NoRelocationNoSplit(boolean exactCase){
+			super(exactCase);
+			this.split = false;
+		}
+	}
+	
 	public static class Title extends TokenizerOptions {	
 		public Title(boolean exactCase){
 			super(exactCase);
@@ -47,9 +56,16 @@ public class TokenizerOptions {
 		}
 	}
 	
+	public static class TitleNoSplit extends Title{
+		public TitleNoSplit(boolean exactCase){
+			super(exactCase);
+			this.split = false;
+		}
+	}
+	
 	public static class Highlight extends TokenizerOptions {
-		public Highlight(){
-			super(false); 
+		public Highlight(boolean exactCase){
+			super(exactCase); 
 			this.highlightParsing = true;
 			this.relocationParsing = false;
 			this.simplifyGlue = true;
@@ -58,7 +74,8 @@ public class TokenizerOptions {
 	
 	/** Used for titles, doesn't simply glue and has no case detection */
 	public static class HighlightOriginal extends Highlight {
-		public HighlightOriginal(){
+		public HighlightOriginal(boolean exactCase){
+			super(exactCase);
 			this.simplifyGlue = false;
 			this.noCaseDetection = true;
 		}
@@ -73,6 +90,15 @@ public class TokenizerOptions {
 	
 	public static class SpellCheck extends TokenizerOptions {
 		public SpellCheck(){
+			super(false);
+			relocationParsing = false;
+			noAliases = true;
+			noTrailing = true;
+		}
+	}
+	
+	public static class SpellCheckSearch extends TokenizerOptions {
+		public SpellCheckSearch(){
 			super(false);
 			relocationParsing = false;
 			noAliases = true;

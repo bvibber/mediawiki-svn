@@ -194,8 +194,17 @@ public class RankingTest {
 		});
 	
 		assertHits("list of countries in Africa by population", new String[]{
-			"0:List of African countries by population"	
+				"0:List of African countries by population"	
 		});
+		
+		assertHits("tanzania somalia", new String[]{
+				"0:Kenya"	
+		});
+		
+		assertHits("bethlehem jesus", new String[]{
+				"0:Bethlehem"	
+		});
+
 	
 		
 		

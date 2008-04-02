@@ -102,6 +102,20 @@ public class FieldNameFactory {
 	public String spellcheck_context() {
 		return "spellcheck_context";
 	}
+	
+	public String hl_text(){
+		if(exactCase)
+			return "text_exact";
+		else
+			return "text";
+	}
+	
+	public String hl_alttitle(){
+		if(exactCase)
+			return "alttitle_exact";
+		else
+			return "alttitle";
+	}
 
 
 }

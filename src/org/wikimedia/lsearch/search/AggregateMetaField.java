@@ -39,6 +39,12 @@ public class AggregateMetaField {
 		}
 	}
 	
+	public static void invalidateCache(IndexReader reader){
+		synchronized (lock) {
+			cache.remove(reader.directory());
+		}
+	}
+	
 	/** Get a cached field source 
 	 * @throws IOException */
 	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) throws IOException{
@@ -99,6 +105,8 @@ public class AggregateMetaField {
 					for(int i=0;i<maxdoc;i++){
 						byte[] stored = null;
 						try{
+							if(reader.isDeleted(i))
+								continue;
 							Document doc = reader.document(i); 
 							stored = doc.getBinaryValue(field);
 							namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
@@ -140,12 +148,13 @@ public class AggregateMetaField {
 				} catch(Exception e){
 					e.printStackTrace();
 					log.error("Whole caching failed on field="+field+", reader="+reader.directory());
-				}
-				synchronized(cachingInProgress){
-					Set<String> set = cachingInProgress.get(reader.directory());
-					set.remove(field);
-					if(set.size() == 0)
-						cachingInProgress.remove(reader.directory());
+				} finally{
+					synchronized(cachingInProgress){
+						Set<String> set = cachingInProgress.get(reader.directory());
+						set.remove(field);
+						if(set.size() == 0)
+							cachingInProgress.remove(reader.directory());
+					}
 				}
 			}
 			protected byte[] extendBytes(byte[] array){
@@ -236,7 +245,7 @@ public class AggregateMetaField {
 					else
 						throwException(docid,position,(stored==null)? 0 : (stored.length/7));
 				}
-				int boostInt = (((stored[position*7+2]&0xff) << 24) + ((stored[position*7+3]&0xff) << 16) + ((stored[position*6+4]&0xff) << 8) + ((stored[position*7+5]&0xff) << 0));
+				int boostInt = (((stored[position*7+2]&0xff) << 24) + ((stored[position*7+3]&0xff) << 16) + ((stored[position*7+4]&0xff) << 8) + ((stored[position*7+5]&0xff) << 0));
 				return Float.intBitsToFloat(boostInt);
 			}
 			int inx = getValueIndex(docid,position,checkExists);

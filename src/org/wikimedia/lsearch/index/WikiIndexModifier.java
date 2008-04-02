@@ -68,6 +68,7 @@ import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.CleanIndexImporter;
 import org.wikimedia.lsearch.spell.CleanIndexWriter;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
+import org.wikimedia.lsearch.spell.api.TitleNgramIndexer;
 import org.wikimedia.lsearch.storage.RelatedStorage;
 import org.wikimedia.lsearch.util.Buffer;
 import org.wikimedia.lsearch.util.Localization;
@@ -105,7 +106,6 @@ public class WikiIndexModifier {
 		protected boolean rewrite;		
 		protected String langCode;
 		protected boolean exactCase;
-		protected IndexId original;
 		
 		protected HashSet<IndexUpdateRecord> nonDeleteDocuments;
 		
@@ -122,12 +122,11 @@ public class WikiIndexModifier {
 		 * @param rewrite - if true, will create new index
 		 * @param original - the source iid (for titles indexes, e.g. for en-titles.tspart1 it could be enwiki) 
 		 */
-		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase, IndexId original){
+		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase){
 			this.iid = iid;
 			this.rewrite = rewrite;
 			this.langCode = langCode;
 			this.exactCase = exactCase;
-			this.original = original;
 			reportQueue = new Hashtable<IndexUpdateRecord,IndexReportCard>();
 		}
 
@@ -143,7 +142,7 @@ public class WikiIndexModifier {
 		}
 		
 		/** Batch-delete documents, returns true if successfull */
-		boolean deleteDocuments(Collection<IndexUpdateRecord> records){
+		boolean deleteDocuments(Collection<IndexUpdateRecord> records){			
 			nonDeleteDocuments = new HashSet<IndexUpdateRecord>();
 			try {
 				try{
@@ -156,11 +155,14 @@ public class WikiIndexModifier {
 					} else
 						throw e;
 				}
-				for(IndexUpdateRecord rec : records){								
+				for(IndexUpdateRecord rec : records){
+					String suffix = rec.getIndexId().getDB().getTitlesSuffix();
 					if(rec.doDelete()){
 						int count = 0;
 						if(iid.isHighlight())
-							count = reader.deleteDocuments(new Term("key", rec.getNsTitleKey()));
+							count = reader.deleteDocuments(new Term("pageid", rec.getIndexKey()));
+						else if(iid.isTitlesBySuffix())
+							count = reader.deleteDocuments(new Term("pageid", suffix+":"+rec.getIndexKey()));
 						else // normal or titles index
 							count = reader.deleteDocuments(new Term("key", rec.getIndexKey()));
 						if(count == 0)
@@ -201,7 +203,7 @@ public class WikiIndexModifier {
 			
 			writer.setSimilarity(new WikiSimilarity());
 			int mergeFactor = iid.getIntParam("mergeFactor",10);
-			int maxBufDocs = iid.getIntParam("maxBufDocs",10);
+			int maxBufDocs = iid.getIntParam("maxBufDocs",100);
 			writer.setMergeFactor(mergeFactor);
 			writer.setMaxBufferedDocs(maxBufDocs);
 			writer.setUseCompoundFile(true);
@@ -210,9 +212,7 @@ public class WikiIndexModifier {
 			FieldBuilder builder = new FieldBuilder(iid,dCase);
 			Analyzer indexAnalyzer = null;
 			Analyzer highlightAnalyzer = null;
-			ReusableLanguageAnalyzer highlightContentAnalyzer = null;
-			highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder(dCase).getFilters());
-			highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid); 			
+			highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid,exactCase); 			
 			indexAnalyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
 			
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
@@ -226,10 +226,11 @@ public class WikiIndexModifier {
 					Document doc;					
 					try {
 						if(iid.isHighlight()){
-							doc = makeHighlightDocument(rec.getArticle(),highlightAnalyzer,highlightContentAnalyzer,iid);
+							doc = makeHighlightDocument(rec.getArticle(),builder,iid);
 							writer.addDocument(doc,highlightAnalyzer);
 						} else if(iid.isTitlesBySuffix()){
-							doc = makeTitleDocument(rec.getArticle(),indexAnalyzer,highlightAnalyzer,iid,original.getTitlesSuffix(),original.getDBname(),exactCase,stopWords);
+							IndexId orig = rec.getIndexId().getDB();
+							doc = makeTitleDocument(rec.getArticle(),indexAnalyzer,highlightAnalyzer,iid,orig.getTitlesSuffix(),orig.getDBname(),exactCase,stopWords);
 							writer.addDocument(doc,indexAnalyzer);
 						} else{ // normal index
 							doc = makeDocument(rec.getArticle(),builder,iid,stopWords,indexAnalyzer);
@@ -415,6 +416,7 @@ public class WikiIndexModifier {
 	 *  
 	 * @param iid
 	 * @param updateRecords
+	 * @param additionalFetch - pageids that need to be further fetched to update redirect info
 	 * @return success
 	 */
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
@@ -423,6 +425,7 @@ public class WikiIndexModifier {
 		    && fetchLinksInfo(iid,updateRecords)
 		    && updatePrefix(iid,updateRecords)
 		    && updateSpell(iid,updateRecords)
+		    && updateSimilar(iid,updateRecords)
 		    && updateDocumentsOn(iid,updateRecords,iid)
 		    && updateDocumentsOn(iid.getHighlight(),updateRecords,iid)
 		    && updateTitles(iid,updateRecords);
@@ -433,10 +436,59 @@ public class WikiIndexModifier {
 		}
 	}
 	
-	public boolean updateTitles(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
-		if(iid.hasTitlesIndex())
-			return updateDocumentsOn(iid.getTitlesIndex(),updateRecords,iid);
-		return true;
+	/** Wrapper for fetchAdditional(IndexId,Collection<IndexUpdateRecord>) */
+	public static Set<String> fetchAdditional(IndexId iid, IndexUpdateRecord record, Links links) throws IOException {
+		ArrayList<IndexUpdateRecord> list = new ArrayList<IndexUpdateRecord>();
+		list.add(record);
+		return fetchAdditional(iid,list,links);
+		
+	}
+	
+	/** 
+	 * If a rediret A->B changes to A->C then we need to update both B,C in addition to A, to maintain
+	 * correct redirects-to info at all times
+	 * 
+	 * This function will fetch these additional page ids, these should then be returned to 
+	 * the incremental updater client, and redelivered for updates to be complete 
+	 *  
+	 * @param iid
+	 * @param updateRecords
+	 * @return additionalFetch - list of article pageids to fetch
+	 */
+	public static Set<String> fetchAdditional(IndexId iid, Collection<IndexUpdateRecord> updateRecords, Links links) throws IOException {
+		HashSet<String> additionalFetch = new HashSet<String>();
+
+		HashSet<String> allKeys = new HashSet<String>();
+		HashSet<String> allPageIds = new HashSet<String>();
+		for(IndexUpdateRecord rec : updateRecords){
+			allKeys.add(rec.getNsTitleKey());
+			allPageIds.add(rec.getIndexKey());
+		}
+		iid = iid.getLinks();
+		for(IndexUpdateRecord rec : updateRecords){
+			Article a = rec.getArticle();
+			// where redirect currently leads
+			String redirect = Localization.getRedirectKey(a.getContents(),iid);
+			if(redirect != null && !allKeys.contains(redirect)){
+				String pageId = links.getPageId(redirect);
+				if(pageId != null && !allPageIds.contains(pageId)){
+					additionalFetch.add(pageId);
+					allKeys.add(redirect);
+					allPageIds.add(pageId);
+				}
+			}
+			// where redirect used to lead
+			String oldRedirect = links.getRedirectTarget(rec.getNsTitleKey());
+			if(oldRedirect != null && !allKeys.contains(oldRedirect)){
+				String pageId = links.getPageId(oldRedirect);
+				if(pageId != null && !allPageIds.contains(pageId)){
+					additionalFetch.add(pageId);
+					allKeys.add(oldRedirect);
+					allPageIds.add(pageId);
+				}
+			}
+		}
+		return additionalFetch;
 	}
 	
 	/** Update articles with latest linking & related information */ 
@@ -491,7 +543,7 @@ public class WikiIndexModifier {
 				if(rec.doDelete()){
 					Article a = rec.getArticle();
 					log.debug(iidLinks+": Deleting "+a);
-					if(a.getNamespace()==null || a.getNamespace().equals("")){
+					if(a.getTitle()==null || a.getTitle().equals("")){
 						// try to fetch ns:title so we can have nicer debug info					
 						String key = links.getKeyFromPageId(rec.getIndexKey());
 						if(key != null)
@@ -576,6 +628,43 @@ public class WikiIndexModifier {
 		}
 	}
 	
+	public boolean updateSimilar(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		if(!iid.hasTitleNgram())
+			return true;
+		IndexId iidSim = iid.getTitleNgram();
+		Transaction trans = new Transaction(iidSim,IndexId.Transaction.INDEX);
+		try{
+			trans.begin();
+			TitleNgramIndexer writer = TitleNgramIndexer.openForModification(iidSim);
+			for(IndexUpdateRecord rec : updateRecords){
+				if(rec.doDelete()){
+					log.debug(iidSim+": Deleting "+rec.getArticle());
+					writer.deleteTitle(rec.getIndexKey());
+				} 
+				if(rec.doAdd()){
+					Article a = rec.getArticle();
+					transformArticleForIndexing(a);
+					log.debug(iidSim+": Adding "+rec.getArticle());
+					writer.addTitle(a.getNamespace(),a.getTitle(),a.getRedirectTarget(),a.getRank(),Long.toString(a.getPageId()));
+				}
+			}
+			writer.close();
+			trans.commit();
+			return true;
+		} catch(IOException e){
+			trans.rollback();
+			e.printStackTrace();
+			log.error("Cannot update spellcheck index: "+e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean updateTitles(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		if(iid.hasTitlesIndex())
+			return updateDocumentsOn(iid.getTitlesIndex(),updateRecords,iid);
+		return true;
+	}
+	
 	/**
 	 * Update all documents in the collection. If needed the request  
 	 * is forwarded to a remote object (i.e. if the part of the split
@@ -595,7 +684,7 @@ public class WikiIndexModifier {
 			HashMap<String,Transaction> trans = new HashMap<String,Transaction>();
 			// init
 			for(IndexId part : subs){
-				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname()),original));
+				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname())));
 				Transaction t = new Transaction(part,IndexId.Transaction.INDEX);
 				t.begin();
 				trans.put(part.toString(),t);				
@@ -626,7 +715,7 @@ public class WikiIndexModifier {
 			
 		} else{
 			// normal index
-			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,global.exactCaseIndex(original.getDBname()),original);
+			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,original.isExactCase());
 			
 			Transaction trans = new Transaction(iid,IndexId.Transaction.INDEX);
 			trans.begin();
@@ -692,6 +781,11 @@ public class WikiIndexModifier {
 		// related
 		makeRelated(doc,"related",article,iid,stopWords,analyzer);
 		
+		// date
+		SimpleDateFormat isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		isoDate.setTimeZone(TimeZone.getTimeZone("GMT"));
+		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
+		
 		float rankBoost = transformRank(article.getRank());
 		
 		/** Following fields can be optionally case-dependent */  
@@ -751,16 +845,25 @@ public class WikiIndexModifier {
 	}
 
 	/** Make the document that will be indexed as highlighting data */
-	public static Document makeHighlightDocument(Article article, Analyzer analyzer, ReusableLanguageAnalyzer contentAnalyzer, IndexId iid) throws IOException{
+	public static Document makeHighlightDocument(Article article, FieldBuilder builder, IndexId iid) throws IOException{
 		WikiIndexModifier.transformArticleForIndexing(article);
 		String key = article.getTitleObject().getKey();
 		SimpleDateFormat isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		isoDate.setTimeZone(TimeZone.getTimeZone("GMT"));
 		Document doc = new Document();
+		doc.add(new Field("pageid",article.getPageIdStr(),Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("key",key,Store.NO,Index.UN_TOKENIZED));
-		doc.add(new Field("text",ExtToken.serialize(contentAnalyzer.tokenStream("contents",article.getContents())),Store.COMPRESS));
-		ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
-		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,iid,sections,analyzer,"alttitle"),Store.COMPRESS));
+		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
+			FieldNameFactory fields = bs.getFields();
+			FilterFactory filters = bs.getFilters();
+			boolean exactCase = bs.isExactCase();
+			
+			Analyzer analyzer = Analyzers.getHighlightAnalyzer(filters,fields,exactCase);
+			ReusableLanguageAnalyzer contentAnalyzer = Analyzers.getReusableHighlightAnalyzer(filters,exactCase);
+			doc.add(new Field(fields.hl_text(),ExtToken.serialize(contentAnalyzer.tokenStream(fields.contents(),article.getContents())),Store.COMPRESS));
+			ArrayList<String> sections = contentAnalyzer.getWikiTokenizer().getHeadingText();
+			doc.add(new Field(fields.hl_alttitle(),Alttitles.serializeAltTitle(article,iid,sections,analyzer,fields.alttitle()),Store.COMPRESS));
+		}
 		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
 		doc.add(new Field("size",Long.toString(article.getContents().getBytes().length),Store.YES,Index.NO));
 		return doc;
@@ -773,6 +876,8 @@ public class WikiIndexModifier {
 		String key = article.getTitleObject().getKey();
 		float rankBoost = transformRank(article.getRank());
 		Document doc = new Document();
+		log.debug("Adding interwiki title pageid="+suffix+":"+article.getPageIdStr()+", key="+suffix+":"+key);
+		doc.add(new Field("pageid",suffix+":"+article.getPageIdStr(),Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("key",suffix+":"+key,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("suffix",suffix,Store.YES,Index.UN_TOKENIZED));
 		doc.add(new Field("dbname",dbname,Store.NO,Index.UN_TOKENIZED));

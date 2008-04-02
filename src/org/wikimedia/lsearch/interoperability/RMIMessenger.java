@@ -58,8 +58,9 @@ public interface RMIMessenger extends Remote {
 	 *  
 	 * @param record
 	 * @throws RemoteException
+	 * @return pageids of additional records to fetch
 	 */
-	public void enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException;
+	public HashSet<String> enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException;
 	
 	/**
 	 * On split indexes, send back reports if addition/deletion of an 
@@ -163,6 +164,17 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public SuggestQuery suggest(String dbrole, String searchterm, ArrayList<Token> tokens, Suggest.ExtraInfo info, NamespaceFilter nsf) throws RemoteException;
+	
+	/**
+	 * Suggest similar titles 
+	 * 
+	 * @param dbrole
+	 * @param title
+	 * @param nsf
+	 * @return
+	 * @throws IOException
+	 */
+	public ArrayList<String> similar(String dbrole, String title, NamespaceFilter nsf, int maxdist) throws RemoteException;
 
 	/**
 	 * Fetch words for fuzzy queries (e.g. query~)
@@ -210,5 +222,5 @@ public interface RMIMessenger extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public SearchResults searchPrefix(String dbrole, String searchterm, int limit) throws RemoteException;
+	public SearchResults searchPrefix(String dbrole, String searchterm, int limit, NamespaceFilter nsf) throws RemoteException;
 }

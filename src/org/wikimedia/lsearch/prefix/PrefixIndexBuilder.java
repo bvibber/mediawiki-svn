@@ -23,6 +23,7 @@ import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.LowercaseAnalyzer;
 import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.analyzers.TokenizerOptions;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
@@ -162,41 +163,33 @@ public class PrefixIndexBuilder {
 		dict.setProgressReport(new ProgressReport("prefixes",10000));
 		Word w;
 		while((w = dict.next()) != null){
-			String prefixMain = w.getWord();
-			HashSet<String> prefixes = new HashSet<String>();
-			prefixes.add(prefixMain);
-			// add prefixes in all namespaces in default search
-			if(prefixMain.startsWith("0:")){
-				String title = prefixMain.substring(prefixMain.indexOf(':')+1);
-				for(Integer ns : namespaces)
-					prefixes.add(ns+":"+title);
-			}
+			String prefix = w.getWord();
+			int colon = prefix.indexOf(':'); 
+			if(colon == -1 || colon==prefix.length()-1)
+				continue; // empty prefixes like "0:"
+			Term t = new Term("key",prefix);
+			// filter out unique keys
+			if(ir.docFreq(t) <= 1)
+				continue;
+			TermDocs td = ir.termDocs(t);
 			// key -> rank
 			HashMap<String,Double> refs = new HashMap<String,Double>();
 			// key -> redirect target
 			HashMap<String,String> redirects = new HashMap<String,String>();
-			
-			for(String prefix : prefixes){
-				Term t = new Term("key",prefix);			
-				TermDocs td = ir.termDocs(t);
-				while(td.next()){
-					Document d = ir.document(td.doc());
-					String key = d.get("key");
-					String redirect = d.get("redirect");
-					double rank = Integer.parseInt(d.get("rank"));
-					if(redirect != null && redirect.length()>0){
-						redirects.put(key,redirect);
-						// rank = average (rank of redirect + rank of target article) 
-						rank = (int)Math.sqrt(rank  * Integer.parseInt(d.get("redirect_rank")));
-					}
-
-					if(key.equalsIgnoreCase(prefix))
-						rank *= 100; // boost for exact match
-					refs.put(key,rank);
+			while(td.next()){
+				Document d = ir.document(td.doc());
+				String key = d.get("key");
+				String redirect = d.get("redirect");
+				double ref = Integer.parseInt(d.get("rank"));
+				if(redirect != null && redirect.length()>0){
+					redirects.put(key,redirect);
+					ref = average(ref,Integer.parseInt(d.get("redirect_rank")));					
 				}
+				
+				if(key.equalsIgnoreCase(prefix))
+					ref *= 100; // boost for exact match
+				refs.put(key,ref);
 			}
-			if(refs.size() <= 1)
-				continue; // filter out unique
 			ArrayList<Entry<String,Double>> sorted = new ArrayList<Entry<String,Double>>();
 			sorted.addAll(refs.entrySet());
 			Collections.sort(sorted,new Comparator<Entry<String,Double>>() {
@@ -215,13 +208,13 @@ public class PrefixIndexBuilder {
 				String redirect = redirects.get(key);
 				if((redirect == null || !selectedWithRedirects.contains(redirect)) 
 						&& !selectedWithRedirects.contains(key)){
-					selected.add(key);
+					selected.add(serialize(key,sorted.get(i).getValue(),redirect));
 					selectedWithRedirects.add(key);
 					selectedWithRedirects.add(redirect);					
 				}
 			}
 			Document d = new Document();
-			d.add(new Field("prefix",prefixMain,Field.Store.NO,Field.Index.NO_NORMS));
+			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.NO_NORMS));
 			d.add(new Field("articles",new StringList(selected).toString(),Field.Store.YES,Field.Index.NO));
 			writer.addDocument(d);
 		}
@@ -231,9 +224,16 @@ public class PrefixIndexBuilder {
 			progress.inc();
 			if(ir.isDeleted(i))
 				continue;
+			
+			Document stored = ir.document(i); 
+			String key = stored.get("key");
+			String redirect = stored.get("redirect");
+			double ref = Integer.parseInt(stored.get("rank"));
+			if(redirect != null && redirect.length()>0){
+				ref = average(ref,Integer.parseInt(stored.get("redirect_rank")));					
+			}			
 			Document d = new Document();
-			String key = ir.document(i).get("key");
-			d.add(new Field("key",key,Field.Store.YES,Field.Index.NO));
+			d.add(new Field("article",serialize(key,ref,redirect),Field.Store.YES,Field.Index.NO));			
 			ArrayList<Token> canonized = canonize(key,iid,filters); 
 			for(Token t : canonized){
 				d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
@@ -246,6 +246,21 @@ public class PrefixIndexBuilder {
 		writer.close();		
 		
 		IndexThread.makeIndexSnapshot(prefixIid,prefixIid.getImportPath());
+	}
+	
+	private double average(double ref, int i) {
+		return Math.sqrt(ref * i);
+	}
+	private String serialize(String key, double score, String redirect) {
+		String r = "";
+		if(redirect != null){
+			// include redirect info only for inter-namespace redirects
+			String ns1 = key.substring(0,key.indexOf(':'));
+			String ns2 = redirect.substring(0,redirect.indexOf(':'));
+			if(!ns1.equals(ns2))
+				r = redirect.replace(' ','_');
+		}
+		return key.replace(' ','_')+" "+(int)score+" "+r;
 	}
 	
 	public static String strip(String s){

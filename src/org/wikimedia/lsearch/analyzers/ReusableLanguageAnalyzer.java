@@ -17,10 +17,10 @@ public class ReusableLanguageAnalyzer extends LanguageAnalyzer {
 	protected TokenizerOptions options;
 	
 	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase){
-		this(filters,exactCase,new TokenizerOptions.NoRelocation(exactCase));
+		this(filters,new TokenizerOptions.NoRelocation(exactCase));
 	}
 	
-	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase, TokenizerOptions options){
+	public ReusableLanguageAnalyzer(FilterFactory filters, TokenizerOptions options){
 		super(filters,null);
 		this.options = options;
 	}

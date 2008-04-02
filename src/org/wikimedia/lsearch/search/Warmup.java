@@ -3,8 +3,10 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.SimpleAnalyzer;
@@ -25,6 +27,7 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.spell.Suggest;
+import org.wikimedia.lsearch.spell.SuggestSimilar;
 
 /**
  * Methods to warm up index and preload caches.  
@@ -36,6 +39,11 @@ public class Warmup {
 	static Logger log = Logger.getLogger(Warmup.class);
 	protected static GlobalConfiguration global = null;
 	protected static Hashtable<String,Terms> langTerms = new Hashtable<String,Terms>();
+	protected static Set<String> beingWarmedup = Collections.synchronizedSet(new HashSet<String>());
+	
+	public static boolean isBeingWarmedup(IndexId iid){
+		return beingWarmedup.contains(iid.toString());
+	}
 	
 	protected static int getWarmupCount(IndexId iid){
 		String primary = "warmup";
@@ -50,6 +58,8 @@ public class Warmup {
 			secondary += "_titles_by_suffix";
 		else if(iid.isRelated())
 			secondary += "_related";
+		else if(iid.isTitleNgram())
+			secondary += "_title_ngram";
 		
 		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),secondary);
 		int count = warmup!=null? Integer.parseInt(warmup.get("count")) : 0;
@@ -70,7 +80,7 @@ public class Warmup {
 				do{
 					wait = false;
 					for(IndexSearcherMul is : pool){
-						if(AggregateMetaField.isBeingCached(is.getIndexReader())){
+						if(AggregateMetaField.isBeingCached(is.getIndexReader()) || ArticleMeta.isBeingCached(is.getIndexReader())){
 							wait = true;
 							break;
 						}
@@ -88,49 +98,61 @@ public class Warmup {
 	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay) throws IOException {
 		if(iid.isLinks() || iid.isPrecursor())
 			return; // no warmaup for these
-		log.info("Warming up index "+iid+" ...");
-		long start = System.currentTimeMillis();
-		IndexReader reader = is.getIndexReader();
-		
-		if(global == null)
-			global = GlobalConfiguration.getInstance();		
-		
-		int count = getWarmupCount(iid);
-		
-		if(iid.isSpell() && count > 0){
-			Terms terms = getTermsForLang(iid.getLangCode());
-			Suggest sug = new Suggest(iid,is,false);
-			WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer(),new FieldBuilder(iid).getBuilder(),StopWords.getPredefinedSet(iid));
-			for(int i=0;i<count;i++){
-				String searchterm = terms.next();
-				sug.suggest(searchterm,parser.tokenizeBareText(searchterm),new Suggest.ExtraInfo(),new NamespaceFilter());
-			}
-		} else if(iid.isPrefix() && count > 0){
-			Terms terms = getTermsForLang(iid.getLangCode());
-			SearchEngine search = new SearchEngine();
-			for(int i=0;i<count;i++){
-				String searchterm = terms.next();
-				searchterm = searchterm.substring(0,(int)Math.min(8*Math.random()+1,searchterm.length()));
-				search.searchPrefixLocal(iid,searchterm,20,is);
-			}
-		} else if((iid.isHighlight() || iid.isRelated()) && count > 0 && !iid.isTitlesBySuffix()){
-			// NOTE: this might not warmup all caches, but should read stuff into memory buffers
-			for(int i=0;i<count;i++){
-				int docid = (int)(Math.random()*is.maxDoc());
-				reader.document(docid).get("key");
-			}			
-		} else{
-			// normal indexes
-			if(count == 0){
-				makeNamespaceFilters(is,iid);
-				simpleWarmup(is,iid);				
-			} else{				
-				makeNamespaceFilters(is,iid);
-				warmupWithSearchTerms(is,iid,count,useDelay);
-			}
-		}	
-		long delta = System.currentTimeMillis() - start;
-		log.info("Warmed up "+iid+" in "+delta+" ms");
+		try{
+			beingWarmedup.add(iid.toString());
+			log.info("Warming up index "+iid+" ...");
+			long start = System.currentTimeMillis();
+			IndexReader reader = is.getIndexReader();
+
+			if(global == null)
+				global = GlobalConfiguration.getInstance();		
+
+			int count = getWarmupCount(iid);
+
+			if(iid.isSpell() && count > 0){
+				Terms terms = getTermsForLang(iid.getLangCode());
+				Suggest sug = new Suggest(iid,is,false);
+				WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer(),new FieldBuilder(iid).getBuilder(),StopWords.getPredefinedSet(iid));
+				NamespaceFilter nsf = iid.getDefaultNamespace();
+				for(int i=0;i<count;i++){
+					String searchterm = terms.next();
+					sug.suggest(searchterm,parser.tokenizeForSpellCheck(searchterm),new Suggest.ExtraInfo(),nsf);
+				}
+			} else if(iid.isTitleNgram() && count > 0){
+				Terms terms = getTermsForLang(iid.getLangCode());
+				SuggestSimilar sim = new SuggestSimilar(iid,is);
+				for(int i=0;i<count;i++){
+					sim.getSimilarTitles(terms.next(),new NamespaceFilter(),4);
+				}
+			} else if(iid.isPrefix() && count > 0){
+				Terms terms = getTermsForLang(iid.getLangCode());
+				SearchEngine search = new SearchEngine();
+				for(int i=0;i<count;i++){
+					String searchterm = terms.next();
+					searchterm = searchterm.substring(0,(int)Math.min(8*Math.random()+1,searchterm.length()));
+					search.searchPrefixLocal(iid,searchterm,20,iid.getDefaultNamespace(),is);
+				}
+			} else if((iid.isHighlight() || iid.isRelated()) && count > 0 && !iid.isTitlesBySuffix()){
+				// NOTE: this might not warmup all caches, but should read stuff into memory buffers
+				for(int i=0;i<count;i++){
+					int docid = (int)(Math.random()*is.maxDoc());
+					reader.document(docid).get("key");
+				}			
+			} else{
+				// normal indexes
+				if(count == 0){
+					makeNamespaceFilters(is,iid);
+					simpleWarmup(is,iid);				
+				} else{				
+					makeNamespaceFilters(is,iid);
+					warmupWithSearchTerms(is,iid,count,useDelay);
+				}
+			}	
+			long delta = System.currentTimeMillis() - start;
+			log.info("Warmed up "+iid+" in "+delta+" ms");
+		} finally{
+			beingWarmedup.remove(iid.toString());
+		}
 	}
 	
 	/** Warmup index using some number of simple searches */

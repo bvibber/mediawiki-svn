@@ -17,6 +17,9 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.search.AggregateInfo;
+import org.apache.lucene.search.ArticleQueryWrap;
+import org.apache.lucene.search.ArticleScaling;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.LogTransformScore;
@@ -31,6 +34,9 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexId.AgeScaling;
+import org.wikimedia.lsearch.search.AggregateInfoImpl;
+import org.wikimedia.lsearch.search.ArticleInfoImpl;
 import org.wikimedia.lsearch.search.Fuzzy;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.Wildcards;
@@ -322,11 +328,14 @@ public class WikiQueryParser {
 	}
 	
 	/** Find and delete all valid prefixes, return search terms in tokens */
-	public ArrayList<Token> tokenizeBareText(String queryText){
+	public ArrayList<Token> tokenizeForSpellCheck(String queryText){
 		int level = 0; // parenthesis count
 		int fieldLevel = -1;
 		TokenType tokenType;
 		boolean inPhrase = false;
+		
+		Analyzer oldAnalyzer = this.analyzer;
+		this.analyzer = Analyzers.getReusableAnalyzer(filters,new TokenizerOptions.SpellCheckSearch());
 		
 		ArrayList<Token> ret = new ArrayList<Token>();
 		
@@ -376,6 +385,7 @@ public class WikiQueryParser {
 			}
 		}
 		
+		this.analyzer = oldAnalyzer;
 		defaultField = oldDefault;
 		
 		return ret;
@@ -882,7 +892,7 @@ public class WikiQueryParser {
 		ArrayList<String> ew = expandedWordsFromParser.get(expandedWordsFromParser.size()-1);
 		ew.add(w);
 		ArrayList<Float> eb = expandedBoostFromParser.get(expandedBoostFromParser.size()-1);
-		eb.add(1f);
+		eb.add(0.5f);
 	}
 	
 	/** 
@@ -1181,7 +1191,23 @@ public class WikiQueryParser {
 		if(forbidden != null)
 			wrap.add(forbidden,Occur.MUST_NOT);
 		
-		return wrap;
+		// init global scaling of articles 
+		ArticleScaling scale = new ArticleScaling.None();
+		// based on age
+		AgeScaling age = iid.getAgeScaling();
+		if(age != AgeScaling.NONE){
+			switch(age){
+			case STRONG: scale = new ArticleScaling.SqrtScale(0.3f,1); break;
+			case MEDIUM: scale = new ArticleScaling.StepScale(0.6f,1); break;
+			case WEAK: scale = new ArticleScaling.StepScale(0.9f,1); break;
+			default: throw new RuntimeException("Unsupported age scaling "+age);
+			}  
+			
+		}
+		// additional rank
+		AggregateInfo rank = iid.useAdditionalRank()? new AggregateInfoImpl() :  null; 
+		return new ArticleQueryWrap(wrap,new ArticleInfoImpl(),scale,iid.getNamespacesWithSubpages(),rank);
+			
 	}
 	
 	private ArrayList<String> makeSingularWords(ArrayList<String> words){		
@@ -1372,7 +1398,9 @@ public class WikiQueryParser {
 		Query main = null;
 						
 		// all words as entered into the query
-		Query exact = makePositionalMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,fields.contents(),new PositionalOptions.Exact(),0,1);
+		Query exact = (!hasFuzzy() && !hasWildcards())? makePositional(words,fields.contents(),new PositionalOptions.Exact(),0,0.8f) :  null;
+		// words in right order (not stemmed)
+		Query inorder = makePositionalMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,fields.contents(),new PositionalOptions.Exact(),0,exact==null? 1f : 0.2f);
 		// words + stemmed + singulars + transliterations + wildcards + fuzzy - with slop factor
 		Query sloppy = makePositionalMulti(expandedWordsContents,expandedBoostContents,expandedTypes,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1,false);
 		
@@ -1383,8 +1411,10 @@ public class WikiQueryParser {
 		ArrayList<ArrayList<String>> wordnet = WordNet.replaceOne(words,iid.getLangCode());
 				
 		BooleanQuery combined = new BooleanQuery(true);
-		if(exact!=null)
+		if(exact != null)
 			combined.add(exact,Occur.SHOULD);
+		if(inorder!=null)
+			combined.add(inorder,Occur.SHOULD);
 		// combined various queries into mainphrase 
 		if(sloppy != null){			
 			combined.add(sloppy,Occur.SHOULD);

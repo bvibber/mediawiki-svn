@@ -27,7 +27,7 @@ public class SpellCheckTest {
 		String line;
 		int lineNum = 0;
 		while ( (line = br.readLine()) != null ) {
-			if(lineNum == 1){
+			if(lineNum == 2){
 				if(line.startsWith("#suggest")){
 					br.close();
 					return URLDecoder.decode(line.split(" ")[2],"utf-8");					
@@ -114,6 +114,8 @@ public class SpellCheckTest {
    	{"ommmmmmmmitted", "omitted"},
    	{"a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",""},
    	{"Douglas Adams's Guide to The Hitch-Hiker's Guide to the Galaxy",""},
+   	{"bethlem jesus","bethlehem jesus"},
+   	{"los angles gardens","los angeles gardens"},
    	
    };
 

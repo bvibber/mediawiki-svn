@@ -43,7 +43,7 @@ public class UpdateThread extends Thread {
 	enum RebuildType { STANDALONE, FULL };
 	
 	/** iids currently being deployed and out of rotation */
-	protected static Set<String> beingDeployed = Collections.synchronizedSet(new HashSet<String>());
+	protected static Set<String> beingDeployed = Collections.synchronizedSet(new HashSet<String>());	
 	
 	public static boolean isBeingDeployed(IndexId iid){
 		return beingDeployed.contains(iid.toString());
@@ -154,7 +154,7 @@ public class UpdateThread extends Thread {
 			hostiids.add(iid);			
 		}		
 		// check for new snapshots
-		for(Entry<String,ArrayList<IndexId>> hostiid : hostMap.entrySet()){
+		for(Entry<String,ArrayList<IndexId>> hostiid : hostMap.entrySet()){			
 			ArrayList<IndexId> hiids = hostiid.getValue();
 			String host = hostiid.getKey();
 			long[] timestamps = messenger.getIndexTimestamp(hiids, host);
@@ -273,7 +273,7 @@ public class UpdateThread extends Thread {
 		try{
 			// see if we can go ahead and deploy the searcher or should we wait
 			IndexId iid = li.iid;
-			HashSet<String> group = iid.getMySearchHosts();
+			HashSet<String> group = iid.getSearchHosts();
 			int succ = 0, fail = 0;
 			boolean reroute = false;
 			if(type == RebuildType.FULL){			
@@ -320,7 +320,7 @@ public class UpdateThread extends Thread {
 				}
 
 			}
-
+			
 			// do some typical queries to preload some lucene caches, pages into memory, etc..
 			for(IndexSearcherMul is : pool.searchers){
 				try{
@@ -331,6 +331,7 @@ public class UpdateThread extends Thread {
 				}
 			}
 			Warmup.waitForAggregate(pool.searchers);
+			
 			// add to cache
 			cache.invalidateLocalSearcher(li.iid,pool);
 			if( reroute ){

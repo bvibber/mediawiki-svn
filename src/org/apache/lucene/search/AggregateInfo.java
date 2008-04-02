@@ -6,8 +6,11 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 
 /** 
- * If field is aggregate of phrases provide info 
- * about the matching phrase 
+ * Meta information for a field in the index.
+ * 
+ * Allows collections of independent entries each with
+ * its own boost, length, etc...   
+ * 
  */
 public interface AggregateInfo {
 	/** Initialize for retrieval of info */

@@ -38,9 +38,9 @@ public class StopWords {
 		if(pre.size() > 0)
 			return pre.toArray(new String[]{});
 		try{
-			return HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",20).toArray(new String[] {});
-		} catch(IOException e){
-			log.warn("Cannot fetch stop words for "+iid);
+			return HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",50).toArray(new String[] {});
+		} catch(Exception e){
+			log.warn("Failed to fetch stop words for "+iid);
 			return new String[] {};
 		}		
 	}

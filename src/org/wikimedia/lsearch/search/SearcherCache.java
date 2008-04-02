@@ -41,8 +41,8 @@ public class SearcherCache {
 	}
 	class DeferredClose extends Thread {
 		long interval;
-		Searchable s;
-		public DeferredClose(Searchable s, int interval){
+		IndexSearcherMul s;
+		public DeferredClose(IndexSearcherMul s, int interval){
 			this.s=s;
 			this.interval = interval;
 		}
@@ -54,9 +54,14 @@ public class SearcherCache {
 			}
 			try {
 				log.debug("Closing searchable "+s);
-				s.close();
+				// invalidate various caches!
+				CachedFilter.invalideAllFilterCache(s.getIndexReader());
+				AggregateMetaField.invalidateCache(s.getIndexReader());
+				ArticleMeta.invalidateCache(s.getIndexReader());
+				s.close();				
 			} catch (IOException e) {
-				log.warn("I/O error closing searchables "+s);
+				e.printStackTrace();
+				log.warn("I/O error closing searchables "+s+" : "+e.getMessage());
 			}
 		}		
 	}	
@@ -181,6 +186,15 @@ public class SearcherCache {
 			String key = strkeys[random];
 			return key.substring(key.indexOf('@')+1);
 		}
+	}
+	
+	/** Get all searchers in a pool, if pool is initialized, null otherwise */
+	public IndexSearcherMul[] getPool(IndexId iid){
+		SearcherPool pool = localCache.get(iid.toString());
+		if(pool != null)
+			return pool.searchers;
+			
+		return null;
 	}
 	
 	/** Get searcher from local cache, or if doesn't exist null */

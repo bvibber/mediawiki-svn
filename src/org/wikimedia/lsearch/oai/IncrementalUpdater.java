@@ -46,6 +46,7 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
  */
 public class IncrementalUpdater {
 	static Logger log = Logger.getLogger(IncrementalUpdater.class);
+	protected static int maxQueueSize = 500;
 	
 	static public class OAIAuthenticator extends Authenticator {
 		protected String username,password;
@@ -87,12 +88,13 @@ public class IncrementalUpdater {
 		boolean daemon = false;
 		long sleepTime = 30000; // 30s
 		String timestamp = null;
-		int maxQueueSize = 500;
+		
 		String dblist = null;
 		boolean notification = true;
 		HashSet<String> excludeList = new HashSet<String>();
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
 		String defaultTimestamp = "2001-01-01";
+		
 		// args
 		for(int i=0; i<args.length; i++){
 			if(args[i].equals("-d"))
@@ -165,6 +167,7 @@ public class IncrementalUpdater {
 						continue;
 					IndexId iid = IndexId.get(dbname);
 					OAIHarvester harvester = new OAIHarvester(iid,iid.getOAIRepository(),auth);
+					OAIHarvester harvesterSingle = new OAIHarvester(iid,iid.getOAIRepository(),auth);
 					Properties status = new Properties();				
 					// read timestamp from status file
 					File statf = new File(iid.getStatusPath());
@@ -188,33 +191,37 @@ public class IncrementalUpdater {
 						continue;
 					boolean hasMore = false;
 					do{
-						for(IndexUpdateRecord rec : records){
-							Article ar = rec.getArticle();
-							log.info("Sending "+ar);
-						}
 						// send to indexer
 						RMIMessengerClient messenger = new RMIMessengerClient(true);
 						try {
-							// check if indexer is overloaded
-							int queueSize = 0;
-							do{
-								queueSize = messenger.getIndexerQueueSize(iid.getIndexHost());
-								if(queueSize >= maxQueueSize){
-									log.info("Remote queue is "+queueSize+", sleeping for 5s");
-									Thread.sleep(5000); // sleep five seconds then retry
-								}
-							} while(queueSize >= maxQueueSize);
-
+							// send main
+							printRecords(records);
+							ensureNotOverladed(messenger,iid);
 							log.info(iid+": Sending "+records.size()+" records to indexer");
-							messenger.enqueueFrontend(records.toArray(new IndexUpdateRecord[] {}),iid.getIndexHost());
+							HashSet<String> fetch = messenger.enqueueFrontend(records.toArray(new IndexUpdateRecord[] {}),iid.getIndexHost());
+							if(fetch.size()>0){
+								// fetch additional
+								ArrayList<IndexUpdateRecord> additional = new ArrayList<IndexUpdateRecord>();
+								for(String pageid : fetch){
+									additional.addAll(harvesterSingle.getRecord(pageid));
+								}
+								// send additional
+								printRecords(additional);
+								ensureNotOverladed(messenger,iid);
+								log.info(iid+": Sending additional "+additional.size()+" records to indexer");
+								messenger.enqueueFrontend(additional.toArray(new IndexUpdateRecord[] {}),iid.getIndexHost());
+							}
+							
 						} catch (Exception e) {
 							log.warn("Error sending index update records of "+iid+" to indexer at "+iid.getIndexHost());
 							continue main_loop;
 						}
 						// more results?
 						hasMore = harvester.hasMore();
-						if(hasMore)
+						if(hasMore){
+							log.info("Fetching more records...");
 							records = harvester.getMoreRecords();
+						}
 					} while(hasMore);
 
 					// see if we need to wait for notification
@@ -268,6 +275,26 @@ public class IncrementalUpdater {
 				} catch (InterruptedException e) { }
 			}
 		} while(daemon);
+	}
+	
+	private static void printRecords(ArrayList<IndexUpdateRecord> records) {
+		for(IndexUpdateRecord rec : records){
+			Article ar = rec.getArticle();
+			log.info("Sending "+ar);
+		}
+	}
+
+	private static void ensureNotOverladed(RMIMessengerClient messenger, IndexId iid) throws InterruptedException{
+		// check if indexer is overloaded
+		int queueSize = 0;
+		do{
+			queueSize = messenger.getIndexerQueueSize(iid.getIndexHost());
+			if(queueSize >= maxQueueSize){
+				log.info("Remote queue is "+queueSize+", sleeping for 5s");
+				Thread.sleep(5000); // sleep five seconds then retry
+			}
+		} while(queueSize >= maxQueueSize);
+
 	}
 	
 }

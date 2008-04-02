@@ -43,7 +43,8 @@ public class EnglishSingularFilter extends TokenFilter{
 		if(t == null) // EOS
 			return null;
 		
-		if(t.getPositionIncrement() != 0 && !t.type().equals("upper") && !t.type().equals("titlecase")
+		if(t.getPositionIncrement() != 0 && !t.type().equals("upper") 
+				// && !(t.type().equals("titlecase") && !t.termText().endsWith("'s")) 
 				&& !t.termText().contains(".")
 				&& !(t instanceof ExtToken && ((ExtToken)t).getType()!=ExtToken.Type.TEXT)){			
 			next = singular(t);
@@ -77,9 +78,12 @@ public class EnglishSingularFilter extends TokenFilter{
 		if("news".equals(w) || "atlas".equals(w) || "cosmos".equals(w) 
 				|| "bias".equals(w) || "andes".equals(w) || "aries".equals(w))
 			return null;
-		// no singular for possesive forms
-		if(w.endsWith("'s"))
+		// don't strip posssesive form
+		if(w.endsWith("'s")){
+			//if(w.length() > 2)
+			//	return w.substring(0,w.length()-2);
 			return null;
+		}
 		// irregular forms
 		String irregular = irregularSingular.get(w);
 		if(irregular != null)

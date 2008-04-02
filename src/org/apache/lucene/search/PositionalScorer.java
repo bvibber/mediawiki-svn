@@ -31,7 +31,7 @@ abstract public class PositionalScorer extends Scorer {
 
 	protected float freq; //phrase frequency in current doc as computed by phraseFreq().
 
-	/** super-detailed debug info */
+	/** super-detailed scoring info (should be off in release) */
 	public final static boolean DEBUG = false; 
 	public HashMap<Integer,ArrayList<Explanation>> explanations = null;
 
@@ -285,7 +285,7 @@ abstract public class PositionalScorer extends Scorer {
 				if(phraseLen == len)
 					wholeBoost = options.wholeBoost;
 				// no stop boost - only if matched words >= stop words
-				if(phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)
+				else if(phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)
 					wholeBoostNoStopWords = options.wholeNoStopWordsBoost;
 				if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)
 					wholeOnly = 0; // we didn't match the whole thing

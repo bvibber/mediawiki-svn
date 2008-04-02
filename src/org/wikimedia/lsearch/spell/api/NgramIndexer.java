@@ -9,6 +9,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.Term;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 /** 
@@ -24,7 +25,7 @@ public class NgramIndexer {
 	protected IndexWriter writer;
 	protected IndexReader reader;
 	
-	public static enum Type {WORDS, TITLES, NS_TITLES};
+	public static enum Type {WORDS, TITLES, TITLE_NGRAM};
 	
 	public NgramIndexer(){
 		path = null;
@@ -42,7 +43,7 @@ public class NgramIndexer {
 		openIndex(path,analyzer,false);
 	}
 	
-	public void openIndex(String path, Analyzer analyzer, boolean newIndex) throws IOException{
+	protected void openIndex(String path, Analyzer analyzer, boolean newIndex) throws IOException{
 		this.path = path;
 		this.analyzer = analyzer;
 		try {
@@ -168,7 +169,7 @@ public class NgramIndexer {
 			if(word.length() < 5)
 				new RuntimeException("title in getMinNgram() too short");
 			return 5;
-		case NS_TITLES:
+		case TITLE_NGRAM:
 			if(word.length() <= 4)
 				return 1;
 			else if(word.length() <= 6)
@@ -195,7 +196,7 @@ public class NgramIndexer {
 			if(word.length() < 5)
 				new RuntimeException("title in getMaxNgram() too short");
 			return 5;
-		case NS_TITLES:
+		case TITLE_NGRAM:
 			if(word.length() <= 4)
 				return 2;
 			else if(word.length() <= 6)
@@ -251,6 +252,16 @@ public class NgramIndexer {
 				doc.add(new Field(field, ngram, Field.Store.NO, Field.Index.UN_TOKENIZED));
 			}
 		}		
+	}
+	
+	public void deleteDocuments(Term t){
+		try {
+			log.debug("Deleting document matching term "+t);
+			writer.deleteDocuments(t);
+		} catch (Exception e) {
+			log.error("Cannot delete document : "+e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	public void addDocument(Document doc){

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class SuggestQuery implements Serializable {
 	protected String searchterm;
 	protected ArrayList<Integer> ranges;
+	protected ArrayList<String> similarTitles;
 	
 	public SuggestQuery(String searchterm, ArrayList<Integer> ranges) {
 		this.searchterm = searchterm;

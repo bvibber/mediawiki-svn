@@ -86,6 +86,16 @@ public class NamespaceFilter implements Serializable {
 		return ret;
 	}
 	
+	public ArrayList<Integer> getNamespacesOrdered(){
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		if(included.cardinality() == 0)
+			return ret;
+		for(int i = included.nextSetBit(0);i>=0;i=included.nextSetBit(i+1)){
+			ret.add(i);
+		}
+		return ret;
+	}
+	
 	public boolean filter(String namespace) {
 		return filter(Integer.parseInt(namespace));
 	}

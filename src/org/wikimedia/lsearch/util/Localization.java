@@ -25,6 +25,10 @@ public class Localization {
 	static org.apache.log4j.Logger log = Logger.getLogger(Localization.class);
 	/** langCode -> name -> ns_id */ 
 	protected static Hashtable<String,Hashtable<String,Integer>> namespaces = new Hashtable<String,Hashtable<String,Integer>>();
+	/** langCode -> ns_id -> name */
+	protected static Hashtable<String,Hashtable<Integer,String>> namespaceNames = new Hashtable<String,Hashtable<Integer,String>>();
+	/** dbname -> ns_id -> name */
+	protected static Hashtable<String,Hashtable<Integer,String>> customNames = new Hashtable<String,Hashtable<Integer,String>>();	
 	/** langCode -> redirect magic wods */
 	protected static Hashtable<String,HashSet<String>> redirects = new Hashtable<String,HashSet<String>>();
 	protected static Object lock = new Object();
@@ -35,6 +39,8 @@ public class Localization {
 	protected static HashSet<String> interwiki = null;
 	/** lowecased canonical names of namespaces */
 	protected static Hashtable<String,Integer> canonicalNamespaces = new Hashtable<String,Integer>();
+	/** canonical names of namespaces ns_id -> ns_name */
+	protected static Hashtable<Integer,String> canonicalNames = new Hashtable<Integer,String>();
 	/** custom maps (for oai headers, etc..) dbname -> nsname -> nsindex  */
 	protected static Hashtable<String,Hashtable<String,Integer>> customNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
 	
@@ -56,6 +62,25 @@ public class Localization {
 		canonicalNamespaces.put("help_talk",13);
 		canonicalNamespaces.put("category",14);
 		canonicalNamespaces.put("category_talk",15);
+		
+		canonicalNames.put(-2,"Media");
+		canonicalNames.put(-1,"Special");
+		canonicalNames.put(0,"");
+		canonicalNames.put(1,"Talk");
+		canonicalNames.put(2,"User");
+		canonicalNames.put(3,"User talk");
+		canonicalNames.put(4,"Project");
+		canonicalNames.put(5,"Project talk");
+		canonicalNames.put(6,"Image");
+		canonicalNames.put(7,"Image talk");
+		canonicalNames.put(8,"Mediawiki");
+		canonicalNames.put(9,"Mediawiki talk");
+		canonicalNames.put(10,"Template");
+		canonicalNames.put(11,"Template talk");
+		canonicalNames.put(12,"Help");
+		canonicalNames.put(13,"Help talk");
+		canonicalNames.put(14,"Category");
+		canonicalNames.put(15,"Category talk");
 	}
 		
 	/** Add custom mapping not found in localization files from other source, e.g. project name, etc.. */
@@ -67,6 +92,14 @@ public class Localization {
 				customNamespaces.put(dbname,map);
 			}
 			map.put(namespace.toLowerCase(),index);
+			
+			// update names
+			Hashtable<Integer,String> nsNames = customNames.get(dbname);
+			if(nsNames == null){
+				nsNames = new Hashtable<Integer,String>();
+				customNames.put(dbname,nsNames);
+			}
+			nsNames.put(index,namespace);
 		}
 	}
 	/** Get a new hashset of localized image namespace names */
@@ -116,6 +149,26 @@ public class Localization {
 		}
 	}
 	
+	public static Hashtable<Integer, String> getLocalizedNamespaceNames(String langCode, String dbname) {
+		langCode = langCode.toLowerCase();
+		synchronized(lock){
+			Hashtable<Integer,String> ret = new Hashtable<Integer,String>();
+			// get names from language files
+			Hashtable<Integer,String> r1 = namespaceNames.get(langCode);
+			if(r1 != null)
+				ret.putAll(r1);
+			// names specific to this db
+			Hashtable<Integer,String> r2 = customNames.get(dbname);
+			if(r2 != null)
+				ret.putAll(r2);
+			// fallback to canonical names
+			for(Entry<Integer,String> e : canonicalNames.entrySet()){
+				if(!ret.contains(e.getKey()))
+					ret.put(e.getKey(),e.getValue());
+			}
+			return ret;
+		}
+	}
 	/** Pre-load a number localizations for languages */
 	public static void readLocalizations(Collection<String> langCodes){
 		for(String langCode : langCodes){
@@ -133,6 +186,64 @@ public class Localization {
 				ret.add(e.getKey());
 		}
 		return ret;
+	}
+	
+	/** Read db localization from initialisesettings kind of file */
+	public static void readDBLocalizations(String text){
+		PHPParser parser = new PHPParser();
+		Hashtable<String,String> meta = parser.getMetaNamespace(text);
+		Hashtable<String,String> metaTalk = parser.getMetaNamespaceTalk(text);		
+		// loop through meta names
+		for(Entry<String,String> e : meta.entrySet()){
+			String dbname = e.getKey();
+			String name = e.getValue();
+			String talk = metaTalk.get(dbname);
+			
+			// index -> name
+			Hashtable<Integer,String> nsNames = customNames.get(dbname);
+			if(nsNames == null){
+				nsNames = new Hashtable<Integer,String>();
+				customNames.put(dbname,nsNames);
+			}
+			
+			nsNames.put(4,name); // add 4 - project, 5 - project talk
+			if(talk != null)
+				nsNames.put(5,talk);
+			
+			// name -> index
+			Hashtable<String,Integer> map = customNamespaces.get(dbname);
+			if(map == null){
+				map = new Hashtable<String,Integer>();
+				customNamespaces.put(dbname,map);
+			}
+			map.put(name.toLowerCase(),4);
+			if(talk != null)
+				map.put(talk.toLowerCase(),5);
+		}
+		// register extra namespaces
+		Hashtable<String,Hashtable<Integer,String>> extra = parser.getExtraNamespaces(text);
+		for(Entry<String,Hashtable<Integer,String>> e : extra.entrySet()){
+			String dbname = e.getKey();
+			Hashtable<Integer,String> map = e.getValue();
+			
+			// index -> name
+			Hashtable<Integer,String> nsNames = customNames.get(dbname);
+			if(nsNames == null){
+				nsNames = new Hashtable<Integer,String>();
+				customNames.put(dbname,nsNames);
+			}
+			nsNames.putAll(map);
+			
+			// name -> index
+			Hashtable<String,Integer> nsInx = customNamespaces.get(dbname);
+			if(nsInx == null){
+				nsInx = new Hashtable<String,Integer>();
+				customNamespaces.put(dbname,nsInx);
+			}
+			for(Entry<Integer,String> ee : map.entrySet()){
+				nsInx.put(ee.getValue().toLowerCase(),ee.getKey());
+			}
+		}
 	}
 
 	/** Reads localization for language, return true if success */
@@ -176,12 +287,14 @@ public class Localization {
 			if(text!=null && text.length()!=0){
 				Hashtable<String,Integer> ns = parser.getNamespaces(text);
 				HashSet<String> redirect = parser.getRedirectMagic(text);
+				Hashtable<Integer,String> nsNames = parser.getNamespaceNames(text);
 				if(redirect != null)
 					redirects.put(langCode.toLowerCase(),redirect);
 				else
 					redirects.put(langCode.toLowerCase(),new HashSet<String>());
 				if(ns!=null && ns.size()!=0){
-					namespaces.put(langCode.toLowerCase(),ns);					
+					namespaces.put(langCode.toLowerCase(),ns);
+					namespaceNames.put(langCode.toLowerCase(),nsNames);
 					log.debug("Succesfully loaded localization for "+langCode.toLowerCase());
 					loadedLocalizations.add(langCode);
 					return true;
@@ -194,6 +307,7 @@ public class Localization {
 							loadedLocalizations.add(fallback);
 							namespaces.put(langCode.toLowerCase(),namespaces.get(fallback.toLowerCase()));
 							redirects.put(langCode.toLowerCase(),redirects.get(fallback.toLowerCase()));
+							namespaceNames.put(langCode.toLowerCase(),namespaceNames.get(fallback.toLowerCase()));
 						}
 						return succ;
 					}
@@ -283,6 +397,16 @@ public class Localization {
 		// not recognized namespace, using main
 		return new Title(0,full);		
 	}
+	
+	/** Get ns:title key of redirect target */
+	public static String getRedirectKey(String text, IndexId iid){
+		Title t = getRedirectTitle(text,iid);
+		if(t == null)
+			return null;
+		return t.getKey();
+	}
+	
+	
 	
 	/** Loads interwiki from default location lib/interwiki.map */
 	public static void loadInterwiki(){

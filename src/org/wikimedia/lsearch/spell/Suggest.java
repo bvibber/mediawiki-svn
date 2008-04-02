@@ -230,16 +230,18 @@ public class Suggest {
 		protected HashSet<String> foundInContext;
 		protected HashSet<String> foundInTitles;
 		protected int firstRank;
+		protected boolean foundAllInAlttitle;
 		
-		public ExtraInfo(HashSet<String> phrases, HashSet<String> foundInContext, HashSet<String> foundInTitles, int firstRank) {
+		public ExtraInfo(HashSet<String> phrases, HashSet<String> foundInContext, HashSet<String> foundInTitles, int firstRank, boolean foundAllInAlttitle) {
 			this.phrases = phrases;
 			this.foundInContext = foundInContext;
 			this.foundInTitles = foundInTitles;
 			this.firstRank = firstRank;
+			this.foundAllInAlttitle = foundAllInAlttitle;
 		}
 		
 		public ExtraInfo(){
-			this(new HashSet<String>(),new HashSet<String>(),new HashSet<String>(),0);
+			this(new HashSet<String>(),new HashSet<String>(),new HashSet<String>(),0,false);
 		}
 		
 		
@@ -258,7 +260,7 @@ public class Suggest {
 		
 		// System.out.println("tokens: "+tokens+" inContext:"+info.foundInContext+" phrases:"+info.phrases+", inTitles="+info.foundInTitles);
 
-		if(tokens.size() > 30){
+		if(tokens.size() > 15){
 			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start);
 			return new SuggestQuery(searchterm,new ArrayList<Integer>());
 		}
@@ -316,11 +318,26 @@ public class Suggest {
 				}
 			}
 		}
+		
+		// TODO: maybe attempt to spellcheck based on (all) words found in titles!
+		// i.e. do a "fake suggest" on words based on these words
+		
+		/*if(info.foundAllInAlttitle && tokens.size()>1){
+			logRequest(searchterm,"CORRECT (found all in alttitle)",start);
+			return new SuggestQuery(searchterm,new ArrayList<Integer>());
+		} */
+
+		// check if all words are found within phrases during highlighting
+		boolean correctByPhrases = false;
+		if(tokens.size() > 1 && tokens.size() == info.phrases.size() + 1){
+			correctByPhrases = true;
+		}
+		
 		// title misspells via title suggestions
 		ArrayList<SuggestResult> titleRes = new ArrayList<SuggestResult>();
 		if(joinTokens.length() > 7)
 			titleRes = suggestTitles(joinTokens,1,POOL_TITLE,4,ns);
-		if(titleRes.size()>0 && titleRes.get(0).dist<2){
+		if(titleRes.size()>0 && (titleRes.get(0).dist<2 || (correctByPhrases && titleRes.get(0).dist<=2))){
 			SuggestResult r = titleRes.get(0);
 			if(r.isExactMatch()){
 				logRequest(searchterm,"CORRECT (exact title match)",start);
@@ -357,11 +374,11 @@ public class Suggest {
 			}
 		}
 		
-		// check if all words are found within phrases during highlighting
-		if(tokens.size() > 1 && tokens.size() == info.phrases.size() + 1){
+		// don't go further - there is no similar title, and we found the phrase in text
+		/*if(correctByPhrases){
 			logRequest(searchterm,"CORRECT (by highlight phrases)",start);
 			return new SuggestQuery(searchterm,new ArrayList<Integer>());
-		}	
+		}	 */
 		
 		// indexes of words in found during highlighting in phrases
 		//HashSet<Integer> inPhrases = new HashSet<Integer>();
@@ -379,20 +396,11 @@ public class Suggest {
 				addCorrectWord(w,wordSug,possibleStopWords);				
 				continue;
 			}
-			// words in phrases are also always correct
-			/*if(i+1<tokens.size() && phrases.contains(w+"_"+tokens.get(i+1).termText())){
-				inPhrases.add(i);
-				addCorrectWord(w,wordSug,possibleStopWords);
-				inPhrases.add(i+1);
-				addCorrectWord(tokens.get(i+1).termText(),wordSug,possibleStopWords);
-				i++;
-				continue;
-			} */
 			// words found within context should be spell-checked only if they are not valid words
-			/*if(foundInContext.contains(w) && wordExists(w,ns)){
+			if(info.foundInContext.contains(w) && wordExists(w,ns)){
 				addCorrectWord(w,wordSug,possibleStopWords);
 				continue;
-			} */
+			} 
 				
 			// suggest word
 			ArrayList<SuggestResult> sug = (tokens.size() == 1)? singleWordSug : suggestWords(w,POOL,ns);
@@ -493,9 +501,31 @@ public class Suggest {
 						Object[] ret = getPhrase(phrase,ns);
 						int freq = (Integer)ret[0];
 						boolean inTitle = (Boolean)ret[1];
-						
+						String misspell = (String)ret[2];
+						// index-time detected misspell
+						if(good1 && good2 && misspell != null){
+							log.debug("Found misspell "+phrase+" -> "+misspell);
+							Change c = new Change(1,freq,Change.Type.PHRASE);
+							String[] parts = misspell.split("_");
+							if(parts.length==2){ // sanity check, shouldn't have stop words
+								if(parts[0].equals(w1))
+									c.preserves.put(i,w1);
+								else
+									c.substitutes.put(i,parts[0]);
+								if(parts[1].equals(w2))
+									c.preserves.put(i2,w2);
+								else
+									c.substitutes.put(i2,parts[1]);
+								
+								suggestions.add(c);
+								suggestionsTitle.add(c);
+								continue;
+							}
+						}
+											
+						// check phrases
 						//log.debug("Checking "+phrase);
-						boolean inContext = inContext(s1.word,s2.word,contextCache,allWords,ns) || inContext(s2.word,s1.word,contextCache,allWords,ns); 
+						boolean inContext = inContext(s1.word,s2.word,contextCache,allWords,ns) || inContext(s2.word,s1.word,contextCache,allWords,ns);    
 						if(freq > 0 || inContext){
 							// number of characters added/substracted
 							int diff1 = Math.abs(s1.word.length()-w1.length());
@@ -504,11 +534,17 @@ public class Suggest {
 							int dist = s1.dist + s2.dist + distOffset;
 							boolean accept = true;
 							Change c = new Change(dist,freq,Change.Type.PHRASE);
+							// we can estimate hit rate, do it !
+							/* boolean acceptInContext = false;
+							if(inContext && liberalInContext && 
+									((inContext1 && betterRank(s1.frequency,info.firstRank))
+											|| (inContext2 && betterRank(s2.frequency,info.firstRank)))) 
+								acceptInContext = true; */
 							// register changes
 							if(s1.word.equals(w1))
 								c.preserves.put(i,w1);
 							else if((!good1 && !info.foundInTitles.contains(w1))
-									|| ((inTitle||inContext) && diff1 <=2 && !info.foundInContext.contains(w1)) )					
+									|| ((inTitle||inContext) && diff1 <=2 && !info.foundInContext.contains(w1))  )					
 								c.substitutes.put(i,s1.word);
 							else
 								accept = false;
@@ -516,7 +552,7 @@ public class Suggest {
 							if(s2.word.equals(w2))
 								c.preserves.put(i2,w2);
 							else if((!good2 && !info.foundInTitles.contains(w2)) 
-									|| ((inTitle||inContext) && diff2 <= 2 && !info.foundInContext.contains(w2)))					
+									|| ((inTitle||inContext) && diff2 <= 2 && !info.foundInContext.contains(w2)) )					
 								c.substitutes.put(i2,s2.word);
 							else
 								accept = false;
@@ -534,6 +570,7 @@ public class Suggest {
 				}
 			} while(maybeStopWord && i2+1<tokens.size());
 		}
+		log.debug("Suggestions: "+suggestions);
 		// try to construct a valid title by spell-checking all words
 		if(suggestionsTitle.size() > 0 && tokens.size() > 1){
 			Object[] ret = calculateChanges(suggestionsTitle,searchterm.length()/2,tokens,contextCache,allWords,ns);
@@ -578,26 +615,28 @@ public class Suggest {
 		}
 		
 		// if some words are still unchecked
-		for(int i=0;i<tokens.size();i++){
-			if(preserveTokens.containsKey(i) || proposedChanges.containsKey(i))
-				continue;
-			String w = tokens.get(i).termText();
-			ArrayList<SuggestResult> sug = wordSug.get(i);
-			if(sug == null)
-				continue;
-			SuggestResult s = sug.get(0);
-			if(!s.isExactMatch() && !info.foundInTitles.contains(w) && acceptWordChange(w,s)){
-				distance += s.dist;
-				proposedChanges.put(i,s.word);
-				if(using.equals("phrases"))
-					using = "phrases+words";
-				else
-					using = "words";
+		if(titleRes.size() == 0){ // always prefer titles to words
+			for(int i=0;i<tokens.size();i++){
+				if(preserveTokens.containsKey(i) || proposedChanges.containsKey(i))
+					continue;
+				String w = tokens.get(i).termText();
+				ArrayList<SuggestResult> sug = wordSug.get(i);
+				if(sug == null)
+					continue;
+				SuggestResult s = sug.get(0);
+				if(!s.isExactMatch() && !info.foundInTitles.contains(w) && acceptWordChange(w,s)){
+					distance += s.dist;
+					proposedChanges.put(i,s.word);
+					if(using.equals("phrases"))
+						using = "phrases+words";
+					else
+						using = "words";
+				}
 			}
 		}
 		
 		// finally, see if we can find a better whole title (within current max distance) 
-		if(joinTokens.length() > 7){
+		if(joinTokens.length() > 7 && !info.foundAllInAlttitle){
 			if(titleRes.size() > 0){
 				SuggestResult tr = titleRes.get(0);
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,tr.word,tokens);
@@ -651,6 +690,8 @@ public class Suggest {
 
 	/** Accept a single word change (when not part of a phrase) */
 	private boolean acceptWordChange(String w, SuggestResult s) {
+		if(isNumber(w) || isNumber(s.word))
+			return false;
 		int minlen = Math.min(w.length(),s.word.length());
 		if(minlen <= 4 && s.dist > 1) // at most 1 edit distance for short words 
 			return false;
@@ -832,7 +873,12 @@ public class Suggest {
 					sb.append(simulateCase(searchterm,t,nt));
 					ranges.add(getLength(sb));
 				}
-				start = eo;					
+				start = eo;				
+				// delete any trailing chars as well
+				if(nt.equals("")){
+					while(start<searchterm.length() && FastWikiTokenizerEngine.isTrailing(searchterm.charAt(start)))
+						start++;
+				}
 			}
 		}
 		if(start != searchterm.length())
@@ -866,7 +912,7 @@ public class Suggest {
 				map.put(i-1,corrected.substring(spaces.get(i-1)+1,spaces.get(j)));
 				for(int z=i;z<j;z++)
 					map.put(z,"");				
-				if(!acceptChange(tokens.get(i-1).termText(),map.get(i-1)))
+				if(!acceptChange(tokens.get(i-1).termText()+tokens.get(i).termText(),map.get(i-1)))
 					return null; // no large changes
 				i=j;
 			} else if(spaces.get(i-1)==spaces.get(i)){ // deletion
@@ -888,9 +934,16 @@ public class Suggest {
 		return changes;
 	}
 	
+	final protected boolean isNumber(String str){
+		for(int i=0;i<str.length();i++)
+			if(!Character.isDigit(str.charAt(i)))
+				return false;
+		return true;
+	}
+	
 	/** Accept change in the title iff we would accept it as a word change */
 	final protected boolean acceptChange(String orig, String corr){
-		if(orig.equals("") || corr.equals(""))
+		if(orig.equals("") || corr.equals("") || isNumber(orig) || isNumber(corr))
 			return false;
 		Metric metric = new Metric(orig);
 		DoubleMetaphone dmeta =  new DoubleMetaphone();
@@ -1231,11 +1284,12 @@ public class Suggest {
 		return freq;
 	}
 
-	/** @return {frequency (int), inTitle (boolean)} */
+	/** @return {frequency (int), inTitle (boolean), misspell (String)} */
 	private Object[] getPhrase(String phrase, Namespaces namespaces) throws IOException {
 		String prefix = getPrefix(namespaces);		
 		int freq = 0;
 		boolean inTitle = false;
+		String misspell = null;
 		// default namespaces
 		if(namespaces == null || namespaces.additional){
 			TermDocs td = reader.termDocs(new Term("phrase",phrase));
@@ -1246,6 +1300,7 @@ public class Suggest {
 				String it = d.get("intitle");
 				if(it!=null && it.equals("1"))
 					inTitle = true;
+				misspell = d.get("misspell");
 			}
 		}
 		// other
@@ -1271,7 +1326,7 @@ public class Suggest {
 			}
 		}
 			
-		return new Object[] { freq, inTitle};
+		return new Object[] { freq, inTitle, misspell };
 	}
 
 	public ArrayList<SuggestResult> suggestTitles(String title, int num, int pool_size, int distance, Namespaces namespaces){
@@ -1372,7 +1427,7 @@ public class Suggest {
 		return makeQuery(word,prefix,NgramIndexer.Type.TITLES);
 	}
 	
-	public Query makeQuery(String word, String prefix, NgramIndexer.Type type){
+	public final static Query makeQuery(String word, String prefix, NgramIndexer.Type type){
 		BooleanQuery bq = new BooleanQuery(true);
 		int min = NgramIndexer.getMinNgram(word,type);
 		int max = NgramIndexer.getMaxNgram(word,type);
@@ -1392,7 +1447,7 @@ public class Suggest {
 	}
 
 	/** Add a SHOULD clause to boolean query */
-	protected void addQuery(BooleanQuery q, String field, String value, float boost) {
+	protected static final void addQuery(BooleanQuery q, String field, String value, float boost) {
 		Query tq = new TermQuery(new Term(field, value));
 		tq.setBoost(boost);
 		q.add(new BooleanClause(tq, BooleanClause.Occur.SHOULD));

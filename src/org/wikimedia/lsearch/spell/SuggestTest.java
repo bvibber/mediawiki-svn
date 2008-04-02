@@ -25,18 +25,21 @@ public class SuggestTest {
 	public static void main(String args[]) throws IOException{
 		Configuration.open();
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		boolean suggestOnly = false;
+		boolean suggestOnly = false, similarOnly = false;;
 		int limit = 10;
 		String dbname = "enwiki";
 		for(int i=0;i<args.length;i++){
 			if(args[i].equals("-s"))
 				suggestOnly = true;
+			else if(args[i].equals("-sm"))
+				similarOnly = true;
 			else if(args[i].equals("-l"))
 				limit = Integer.parseInt(args[++i]);
 			else if(args[i].equals("--help")){
 				System.out.println("java SuggestTest [-s] [-l num] [dbname]");
 				System.out.println("Where:");
 				System.out.println("  -s       - final suggest only, no detailed report");
+				System.out.println("  -sm      - similar titles only");
 				System.out.println("  -l <num> - limit number of results (default:"+limit+")");
 				System.out.println("  dbname   - database name (default:"+dbname+")");
 			} else
@@ -52,6 +55,13 @@ public class SuggestTest {
 		FieldBuilder.Case dCase = FieldBuilder.Case.IGNORE_CASE;
 		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
+		SuggestSimilar similar = null;
+		try{
+			if(iid.hasTitleNgram())
+				similar = new SuggestSimilar(iid);
+		} catch(Exception e){
+			// might be broken, go silently
+		}
 		while(true){
 			System.out.print(">> ");
 			String inputtext = in.readLine().trim();
@@ -61,7 +71,7 @@ public class SuggestTest {
 			if(inputtext.startsWith("[2]:"))
 				inputtext = inputtext.substring(4);
 			long start = System.currentTimeMillis();
-			if(!suggestOnly){
+			if(!suggestOnly && !similarOnly){
 				for(String text : inputtext.split(" ")){
 					if(text.length()>=2){
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
@@ -81,7 +91,10 @@ public class SuggestTest {
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeBareText(inputtext),new Suggest.ExtraInfo(new HashSet<String>(),new HashSet<String>(),new HashSet<String>(),0),new NamespaceFilter("0")));
+			if(!similarOnly)
+				System.out.println("#suggest: "+sc.suggest(inputtext,parser.tokenizeForSpellCheck(inputtext),new Suggest.ExtraInfo(new HashSet<String>(),new HashSet<String>(),new HashSet<String>(),0,false),new NamespaceFilter("0")));
+			if(!suggestOnly && similar!=null)
+				System.out.println("#similar: "+similar.getSimilarTitles(inputtext,new NamespaceFilter(0),4));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

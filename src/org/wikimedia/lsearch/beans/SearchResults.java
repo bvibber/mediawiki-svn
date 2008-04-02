@@ -26,6 +26,7 @@ public class SearchResults implements Serializable {
 	protected ArrayList<ResultSet> titles;
 	public enum Format { STANDARD, JSON, OPENSEARCH };
 	protected Format format = Format.STANDARD;
+	protected ArrayList<String> similar = new ArrayList<String>();
 	
 	/** phrases (two_words) from highlight to aid spellchecking */
 	protected HashSet<String> phrases = new HashSet<String>();
@@ -39,6 +40,8 @@ public class SearchResults implements Serializable {
 	protected HashSet<String> foundInTitles = new HashSet<String>();	
 	/** information about how different parts of the result set where retrieved */
 	protected String info = "";
+	/** Found all words in a redirect */
+	protected boolean foundAllInAltTitle = false;
 	
 	public SearchResults(){
 		success = false;
@@ -143,6 +146,13 @@ public class SearchResults implements Serializable {
 	public void setFoundInTitles(HashSet<String> foundInTitles) {
 		this.foundInTitles = foundInTitles;
 	}
+	public boolean isFoundAllInAltTitle() {
+		return foundAllInAltTitle;
+	}
+	public void setFoundAllInAltTitle(boolean foundAllInAltTitle) {
+		this.foundAllInAltTitle = foundAllInAltTitle;
+	}
+
 	public void addInfo(String action, String host){
 		if(info.length() > 0)
 			info += ", ";
@@ -176,6 +186,25 @@ public class SearchResults implements Serializable {
 			sorted.addAll(groups.get(iw));
 		}
 		titles = sorted;
+	}
+	
+	public void addSimilar(String key){
+		similar.add(key);
+	}
+	public void addSimilar(Collection<String> similarKeys){
+		similar.addAll(similarKeys);
+	}
+	public ArrayList<String> getSimilar() {
+		return similar;
+	}
+	public String serializeSimilar(){
+		StringBuilder sb = new StringBuilder();
+		for(String key : similar){
+			if(sb.length()!=0)
+				sb.append(" ");
+			sb.append(key.replace(' ','_'));
+		}
+		return sb.toString();
 	}
 
 	@Override

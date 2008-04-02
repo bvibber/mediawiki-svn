@@ -175,6 +175,8 @@ public class ExtToken extends Token {
 
 	/** Serialize a token stream for highlight storage */
 	public static byte[] serialize(TokenStream tokens) throws IOException{
+		if(decomposer == null)
+			decomposer = UnicodeDecomposer.getInstance();
 		Buffer b = new Buffer();
 		Position pos = Position.NORMAL, lastPos = null;
 		Type lastType = null;
@@ -247,6 +249,11 @@ public class ExtToken extends Token {
 			// control 4: sentence break
 			if(t.type == Type.SENTENCE_BREAK){
 				b.writeControl(4);
+			}
+			// control 10: malformed word (happens very rarely on parser hickup on weird or bad syntax)
+			if(t.type == Type.TEXT && t.termText().length()>0 && 
+					!isText(t.termText().charAt(0),'\0',t.termText().length()>1? t.termText().charAt(1) : '\0')){
+				b.writeControl(10);
 			}
 			
 			lastType = t.type;
@@ -448,6 +455,9 @@ public class ExtToken extends Token {
 					break;
 				case 9:
 					// nop, delimiter for tokens
+					break;
+				case 10: // malformed word
+					t.setType(Type.TEXT);
 					break;
 				default:
 					throw new RuntimeException("Unknown control sequence "+control);

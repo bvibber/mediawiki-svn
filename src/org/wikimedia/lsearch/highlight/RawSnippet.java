@@ -8,8 +8,11 @@ import java.util.Set;
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
+import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
+import org.wikimedia.lsearch.analyzers.ExtToken.Type;
 import org.wikimedia.lsearch.highlight.Highlight.FragmentScore;
+import org.wikimedia.lsearch.highlight.Snippet.Range;
 
 /**
  * Building material for snippets of highlighted text.
@@ -31,6 +34,8 @@ public class RawSnippet {
 	protected HashSet<String> found;
 	protected int sequenceNum;
 	protected Set<String> stopWords;
+	
+	protected boolean highlightAllStop = false;
 
 	// for custom scoring
 	protected int textLength = 0;
@@ -243,6 +248,7 @@ public class RawSnippet {
 			tokens.remove(tokens.size()-1);
 			showEnd--;
 		}
+		ExtToken mainToken = null;
 		for(int i=showBegin;i<showEnd;i++){			
 			int inext = toGapEnd(gaps,i);
 			// split points 
@@ -269,12 +275,18 @@ public class RawSnippet {
 					continue;
 			}
 			if(t.getPositionIncrement() != 0){
+				mainToken = t;
 				start = getLength(sb);
 				sb.append(t.getText());
 				end = getLength(sb);
 			}
 			if(highlight.contains(t.termText()) && !isolatedStopWords(t.termText(),i)){
-				s.addRange(new Snippet.Range(start,end));
+				if(mainToken != null && mainToken!=t && (mainToken.termText().contains(".") || mainToken.termText().contains("'"))){
+					Snippet.Range range = findSubRange(mainToken,t,start);
+					if(range != null)
+						s.addRange(range);
+				} else
+					s.addRange(new Snippet.Range(start,end));
 			}
 		}
 		s.setText(sb.toString());
@@ -284,9 +296,37 @@ public class RawSnippet {
 		return s;
 	}
 	
+	private Range findSubRange(ExtToken mainToken, ExtToken t, int offset) {
+		ArrayList<String> parts = new ArrayList<String>();
+		ArrayList<Integer> starts = new ArrayList<Integer>();
+		ArrayList<Integer> ends = new ArrayList<Integer>();
+		int start=-1;
+		// split the main token around apostrophes and dots, find the matching part
+		char[] text = mainToken.termText().toCharArray();
+		for(int i=0;i<text.length+1;i++){
+			boolean sp = i==text.length || text[i]=='\'' || text[i]=='.';
+			if(!sp && start==-1){
+				start = i;
+			} else if(sp && start!=-1){
+				parts.add(FastWikiTokenizerEngine.decompose(new String(text, start, i-start)));
+				starts.add(start);
+				ends.add(i);
+				start = -1;
+			}
+		}
+		// find the right part
+		for(int i=0;i<parts.size();i++){
+			if(t.termText().equals(parts.get(i))){
+				return new Snippet.Range(offset+starts.get(i),offset+ends.get(i));
+			}
+		}
+		
+		return null;
+	}
+	
 	/** If this is a stop words without any highlighted words before or after */
 	final private boolean isolatedStopWords(String text, int index) {
-		if(stopWords == null || stopWords.size()==0 || !stopWords.contains(text))
+		if(stopWords == null || stopWords.size()==0 || !stopWords.contains(text) || highlightAllStop)
 			return false;
 		// look before the word
 		for(int prev=index-1;prev>=0;prev--){
@@ -346,15 +386,40 @@ public class RawSnippet {
 		this.sequenceNum = f.sequenceNum;
 		this.stopWords = stopWords;
 		this.textLength = noAliasLength();
+		if(stopWords!=null && stopWords.size()>0){
+			highlightAllStop = true;
+			for(String s : highlight){
+				if(!stopWords.contains(s)){
+					highlightAllStop = false;
+					break;
+				}
+			}
+		}
 	}
 	
-	protected int noAliasLength(){
+	public int noAliasLength(){
 		int len = 0;
 		for(ExtToken t : tokens){
 			if(t.getType() == ExtToken.Type.TEXT && t.getPositionIncrement() != 0)
 				len++;
 		}
 		return len;
+	}
+	
+	/** count number of positions where highlighted words are found */
+	public int countPositions(){
+		HashSet<Integer> pos = new HashSet<Integer>();
+		int count = 0;
+		for(int i=0;i<tokens.size();i++){
+			ExtToken t = tokens.get(i);
+			if(t.getType()!=Type.TEXT)
+				continue;
+			if(t.getPositionIncrement() != 0)
+				count++;
+			if(found.contains(t.termText()))
+				pos.add(count);
+		}
+		return pos.size();
 	}
 
 	public int getBestEnd() {

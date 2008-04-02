@@ -42,7 +42,7 @@ public class SuggestBuilder {
 				inputfile = args[i]; 
 		}
 		
-		if(dbname == null || (inputfile == null && !useSnapshot)){
+		if(dbname == null){
 			System.out.println("Syntax: java SuggestBuilder [-s] <dbname> [<dumpfile>]");
 			System.out.println("Options:");
 			System.out.println("   -s    use latest precursor snapshot");

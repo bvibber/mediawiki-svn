@@ -29,8 +29,11 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.wikimedia.lsearch.config.IndexId.AgeScaling;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.PHPParser;
+import org.wikimedia.lsearch.util.StringUtils;
 
 /**
  * Read and parse the global configuration file, is also used
@@ -48,10 +51,14 @@ public class GlobalConfiguration {
 	protected Hashtable<Integer,Hashtable<String,ArrayList<String>>> searchGroup;
 	/** host -> arraylist ( db.role ) */
 	protected Hashtable<String,ArrayList<String>> search;
+	/** host -> arraylist ( wildcards ) */
+	protected Hashtable<String,ArrayList<Pattern>> searchWildcard;
 	/** dbname@host -> group */
 	protected Hashtable<String,Integer> databaseHostGroup;
 	/** host -> arraylist ( db.role) */
 	protected Hashtable<String,ArrayList<String>> index;
+	/** wildcard -> host */
+	protected Hashtable<Pattern,String> indexWildcard;
 	/** dbrole -> host */
 	protected Hashtable<String,String> indexLocation;
 	/** host -> path */
@@ -68,10 +75,12 @@ public class GlobalConfiguration {
 	protected Hashtable<String,String> wgLanguageCode = null;
 	/** wgServer, suffix -> server (default server is "default")*/
 	protected Hashtable<String,String> wgServer = null;
-	/** wgNamespacesToBeSearchedDefault from InitialiseSettings, suffix -> lang code */
+	/** wgNamespacesToBeSearchedDefault from InitialiseSettings, dbname -> nsf */
 	protected Hashtable<String,NamespaceFilter> wgDefaultSearch = null;
 	/** for each database suffix, it's interwiki (suffix -> iw), e.g. wiki -> w */
 	protected Hashtable<String,String> suffixIwMap = new Hashtable<String,String>();
+	/** wgNamespacesWithSubpage from InitialiseSettings, dbname -> nsf */
+	protected Hashtable<String,NamespaceFilter> wgNamespacesWithSubpages= null;
 	
 	/** info about this host */
 	protected static InetAddress myHost;
@@ -83,6 +92,14 @@ public class GlobalConfiguration {
 	protected String[] keywordScoringSuffixes = null;
 	/** Databases ending in suffix will have 2 indexes, one with lowercased words, and one with exact case words */
 	protected String[] exactCaseSuffix = null;
+	
+	/** For scaling scores according how old the indexed page is */
+	protected String[] ageScalingStrong = null;
+	protected String[] ageScalingMedium = null;
+	protected String[] ageScalingWeak = null;
+	
+	/** wikis with additional global ranking data */
+	protected String[] additionalRank = null;
 	
 	protected Properties globalProperties = null;
 	
@@ -218,8 +235,10 @@ public class GlobalConfiguration {
 				database.get(dbname).put("links",new Hashtable<String,String>());
 			if(!types.contains("related"))
 				database.get(dbname).put("related",new Hashtable<String,String>());
-			if(!types.contains("prefix_titles"))
-				database.get(dbname).put("prefix_titles",new Hashtable<String,String>());
+			//if(!types.contains("prefix"))
+			//	database.get(dbname).put("prefix",new Hashtable<String,String>());
+			//if(!types.contains("title_ngram"))
+			//	database.get(dbname).put("title_ngram",new Hashtable<String,String>());
 		}
 		// expand logical index names on searchers
 		for(String host : search.keySet()){
@@ -241,7 +260,7 @@ public class GlobalConfiguration {
 					}
 				}
 				// spell check indexes are searched by default if they exist
-				addToList(hostsearch,dbname+".spell");
+				// addToList(hostsearch,dbname+".spell");
 			}
 		}
 
@@ -262,7 +281,8 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix")  || typeid.equals("prefix_titles")){
+				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") 
+						|| typeid.equals("prefix") || typeid.equals("title_ngram")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches(".*?\\.sub[0-9]+")){
@@ -287,12 +307,12 @@ public class GlobalConfiguration {
 					index.get(host).add(dbrole+".hl"); */
 					
 				}
-				boolean searched = (getSearchHosts(dbrole).size() != 0); 
+				/* boolean searched = (getSearchHosts(dbrole).size() != 0); 
 				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") 
-						|| typeid.equals("nssplit") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix_titles"))){
+						|| typeid.equals("nssplit") || typeid.equals("links") || typeid.equals("related") || typeid.equals("title_ngram"))){
 					if(verbose)
 						System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
-				}
+				} */
 			}
 		}
 		return true;
@@ -325,6 +345,7 @@ public class GlobalConfiguration {
 		database = new Hashtable<String, Hashtable<String, Hashtable<String, String>>>();		
 		searchGroup = new Hashtable<Integer,Hashtable<String, ArrayList<String>>>();
 		search = new Hashtable<String, ArrayList<String>>();
+		searchWildcard = new Hashtable<String, ArrayList<Pattern>>();
 		databaseHostGroup = new Hashtable<String,Integer>();
 		index = new Hashtable<String, ArrayList<String>>();
 		indexLocation = new Hashtable<String, String>();
@@ -332,6 +353,7 @@ public class GlobalConfiguration {
 		namespacePrefix = new Hashtable<String,NamespaceFilter>();
 		namespacePrefixAll = "all"; // default
 		oaiRepo = new Hashtable<String,String>();
+		indexWildcard = new Hashtable<Pattern,String>();
 	}
 	
 	protected String[] getArrayProperty(String name){
@@ -395,6 +417,10 @@ public class GlobalConfiguration {
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
 					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
 					this.exactCaseSuffix = getArrayProperty("ExactCase.suffix");
+					this.ageScalingStrong = getArrayProperty("AgeScaling.strong");
+					this.ageScalingMedium = getArrayProperty("AgeScaling.medium");
+					this.ageScalingWeak = getArrayProperty("AgeScaling.weak");
+					this.additionalRank = getArrayProperty("AdditionalRank.suffix");
 					this.useSmartInterwiki = globalProperties.getProperty("Database.smartInterwiki","false").equalsIgnoreCase("true");
 					// try reading intialisesettings
 					String initset = globalProperties.getProperty("WMF.InitialiseSettings");
@@ -511,6 +537,8 @@ public class GlobalConfiguration {
 			wgLanguageCode = parser.getLanguages(text);
 			wgServer = parser.getServer(text);
 			wgDefaultSearch = parser.getDefaultSearch(text);
+			wgNamespacesWithSubpages = parser.getNamespacesWithSubpages(text);
+			Localization.readDBLocalizations(text);
 		} catch (IOException e) {
 			System.out.println("Error: Cannot read InitialiseSettings.php from url "+initset+" : "+e.getMessage());
 		}	
@@ -520,8 +548,20 @@ public class GlobalConfiguration {
 	protected HashSet<String> getSearchHosts(String dbrole){
 		HashSet<String> searchHosts = new HashSet<String>();
 		for(String host : search.keySet()){
+			// match exact names
 			if(search.get(host).contains(dbrole))
 				searchHosts.add(host);
+			// match wildcards
+			ArrayList<Pattern> wildcards = searchWildcard.get(host);
+			if(wildcards != null && wildcards.size()>0){
+				for(Pattern p : wildcards){
+					Matcher m = p.matcher(dbrole);
+					if(m.matches()){
+						searchHosts.add(host);
+						break;
+					}
+				}
+			}
 		}
 		return searchHosts;
 	}
@@ -645,7 +685,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix") || typeid.equals("prefix_titles")){
+				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix") || typeid.equals("title_ngram")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches(".*?\\.sub[0-9]+")){
@@ -661,14 +701,12 @@ public class GlobalConfiguration {
 					continue; // uknown type, skip
 						
 				HashSet<String> searchHosts = getSearchHosts(dbrole);
-				HashSet<String> mySearchHosts = getMySearchHosts(dbname,dbrole);
+				// FIXME: grouping is largely broken and not really that useful
+				// HashSet<String> mySearchHosts = getMySearchHosts(dbname,dbrole);
+				HashSet<String> mySearchHosts = searchHosts;
 				boolean mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
-				String indexHost = indexLocation.get(dbrole);
-				if(indexHost == null)
-					indexHost = indexLocation.get(dbname);
-				if(indexHost == null)
-					indexHost = indexLocation.get("<default>");
-				boolean myIndex = hostAddr.equals(indexHost) || hostName.equals(indexHost);
+				String indexHost = getIndexHost(dbrole,dbname);
+				boolean myIndex = isMyHost(indexHost); 
 				Hashtable<String,String> typeidParams = database.get(dbname).get(typeid);
 				boolean isSubdivided = false;
 				if(typeidParams != null && typeidParams.containsKey("subdivisions")){
@@ -734,7 +772,8 @@ public class GlobalConfiguration {
 						||	type.equals("nssplit") || type.equals("subdivided")){
 					dbrole+=".hl";
 					searchHosts = getSearchHosts(dbrole);
-					mySearchHosts = getMySearchHosts(dbname,dbrole);
+					mySearchHosts = searchHosts;
+					// mySearchHosts = getMySearchHosts(dbname,dbrole);
 					mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
 					// other options are identical!
 					iid = new IndexId(dbrole,
@@ -762,6 +801,21 @@ public class GlobalConfiguration {
 				indexIdPool.get(dbname+".hl").rebuildNsMap(indexIdPool);
 			}
 		}		
+	}
+	
+	private String getIndexHost(String dbrole, String dbname){
+		String indexHost = indexLocation.get(dbrole);
+		if(indexHost == null)
+			indexHost = indexLocation.get(dbname);
+		if(indexHost == null){
+			// try wildcards
+			for(Entry<Pattern,String> ph : indexWildcard.entrySet()){ // pattern->host
+				Matcher m = ph.getKey().matcher(dbrole);
+				if(m.matches())
+					return ph.getValue();
+			}
+		}
+		return indexHost;
 	}
 
 	private Hashtable<String, String> getSuffixToDBMap(String dbrole, HashMap<String, String> dbnameTitlesPart, HashMap<String, String> dbnameSuffix) {
@@ -865,7 +919,10 @@ public class GlobalConfiguration {
 				continue;
 			}
 			hostroles.add(dbrole);
-			indexLocation.put(dbrole,host);					
+			if(dbrole.contains("*"))
+				indexWildcard.put(StringUtils.makeRegexp(dbrole),host);
+			else
+				indexLocation.put(dbrole,host);					
 		}
 	}
 	
@@ -886,6 +943,11 @@ public class GlobalConfiguration {
 			search.put(host,hostroles);
 		}
 		
+		// wildcards that if match will 
+		ArrayList<Pattern> hostwildcards = searchWildcard.get(host);
+		if(hostwildcards == null)
+			searchWildcard.put(host,hostwildcards = new ArrayList<Pattern>());
+		
 		// process groups
 		Integer grp = new Integer(groupNum);
 		Hashtable<String,ArrayList<String>> grouphosts = searchGroup.get(grp);
@@ -905,6 +967,7 @@ public class GlobalConfiguration {
 			dbrole = dbrole.trim();
 			if(dbrole.length()==0)
 				continue;
+			// BROKEN for wildcards
 			String name = dbrole.split("\\.")[0]+"@"+host;
 			Integer group;
 			if((group = databaseHostGroup.get(name)) != null){
@@ -913,7 +976,10 @@ public class GlobalConfiguration {
 				}
 			}
 			databaseHostGroup.put(name,grp);
-			hostroles.add(dbrole);
+			if(dbrole.contains("*"))
+				hostwildcards.add(StringUtils.makeRegexp(dbrole));
+			else
+				hostroles.add(dbrole);
 			grouproles.add(dbrole);
 		}
 	}
@@ -1032,7 +1098,13 @@ public class GlobalConfiguration {
 			if(tokens.length>3 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
 			
-			dbroles.put(type,params);			
+			dbroles.put(type,params);
+		} else if(type.equals("title_ngram")){
+			// no params
+			if(tokens.length>1 && verbose)
+				System.out.println("Unrecognized title_ngram parameters in ("+role+")");
+			
+			dbroles.put(type,params);
 		} else if(type.equals("prefix")){
 			// no params
 			if(tokens.length>1 && verbose)
@@ -1161,14 +1233,6 @@ public class GlobalConfiguration {
 	}
 
 	/**
-	 * @param db
-	 * @return the host which indexes this db
-	 */
-	public String getIndexHost(String db) {
-		return indexLocation.get(db);
-	}
-
-	/**
 	 * @param host
 	 * @return if the given string points to this hostname
 	 */
@@ -1257,6 +1321,11 @@ public class GlobalConfiguration {
 		return false;
 	}
 	
+	/** If dbname should have additional rank boost */
+	public boolean useAdditionalRank(String dbname){
+		return checkSuffix(additionalRank,dbname);
+	}
+	
 	/** Returns if keyword scoring should be used for this db, using
 	 *  the suffixes from the global configuration
 	 *  
@@ -1276,6 +1345,22 @@ public class GlobalConfiguration {
 	public boolean exactCaseIndex(String dbname){
 		return checkSuffix(exactCaseSuffix,dbname);		
 	}
+	
+	/** Find (longest) suffix that matches dbname */
+	public String findSuffix(String[] suffixes, String dbname){
+		if(suffixes == null)
+			return "";
+		String ret = "";
+		for(String suffix : suffixes){
+			if(dbname.endsWith(suffix)){
+				if(suffix.length() > ret.length())
+					ret = suffix;
+			}
+		}
+		if(ret.length()>0)
+			return ret;
+		return "";
+	}
 
 	/** Find (longest) suffix that matches dbname */
 	public String findSuffix(Collection<String> suffixes, String dbname){
@@ -1289,6 +1374,23 @@ public class GlobalConfiguration {
 		if(ret.length()>0)
 			return ret;
 		return null;
+	}
+	
+	public AgeScaling getAgeScaling(String dbname){
+		String strong = findSuffix(ageScalingStrong,dbname);
+		String medium = findSuffix(ageScalingMedium,dbname);
+		String weak = findSuffix(ageScalingWeak,dbname);
+		int s = strong.length(), m = medium.length(), w = weak.length();
+		if(s == 0 && m == 0 && w == 0)
+			return AgeScaling.NONE;
+		if(s>=m && s >=w)
+			return AgeScaling.STRONG;
+		if(m>=s && m>=w)
+			return AgeScaling.MEDIUM;
+		if(w>=s && s>=m)
+			return AgeScaling.WEAK;
+		
+		return AgeScaling.NONE;
 	}
 	
 	/** Get OAI-repo url for dbname */
@@ -1350,6 +1452,18 @@ public class GlobalConfiguration {
 		}
 		return new NamespaceFilter(0);
 	}
+	
+	public NamespaceFilter getNamespacesWithSubpages(String dbname){
+		if(wgNamespacesWithSubpages != null){
+			if(wgNamespacesWithSubpages.containsKey(dbname))
+				return wgNamespacesWithSubpages.get(dbname);
+			else if(wgNamespacesWithSubpages.containsKey("default"))
+				return wgNamespacesWithSubpages.get("default");
+		}
+		return new NamespaceFilter(2);
+	}
+	
+	
 
 	public HashSet<String> getSmartInterwikiCodes() {
 		return smartInterwikiCodes;

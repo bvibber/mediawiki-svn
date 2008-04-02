@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 
@@ -37,7 +38,7 @@ public class Command {
 				p = Runtime.getRuntime().exec(command);
 			p.waitFor();		
 			if(p.exitValue()!=0){
-				log.warn("Got exit value "+p.exitValue()+" while executing "+command);
+				log.warn("Got exit value "+p.exitValue()+" while executing "+Arrays.toString(command));
 				String line;
 				StringBuilder sb = new StringBuilder();
 				BufferedReader r = new BufferedReader(new InputStreamReader(p.getErrorStream()));

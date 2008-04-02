@@ -10,17 +10,27 @@ import java.net.Socket;
 import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.beans.SearchResults.Format;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.highlight.Snippet;
+import org.wikimedia.lsearch.search.AggregateMetaField;
+import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.SearchEngine;
+import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.search.UpdateThread;
+import org.wikimedia.lsearch.search.Warmup;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.QueryStringMap;
@@ -38,7 +48,8 @@ public class SearchDaemon extends HttpHandler {
 	String what;
 	/** Client-supplied database we should operate on */
 	String dbname;
-	
+
+	/** Current compatibility version */
 	public static final double CURRENT_VERSION = 2.1;
 
 	public SearchDaemon(Socket sock) {
@@ -54,6 +65,10 @@ public class SearchDaemon extends HttpHandler {
 		}
 		if (path.equals("/stats")) {
 			showStats();
+			return;
+		}
+		if (path.equals("/status")) {
+			showStatus();
 			return;
 		}
 		
@@ -93,13 +108,21 @@ public class SearchDaemon extends HttpHandler {
 					} else{
 						sendOutputLine(Integer.toString(res.getNumHits()));
 						if(version>=2.1){
-							// output info if any
+							// info if any
 							sendOutputLine("#info "+res.getInfo()+" in "+delta+" ms");
+							// suggest
 							SuggestQuery sq = res.getSuggest();
 							if(sq != null && sq.hasSuggestion()){
 								sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
 							} else 
 								sendOutputLine("#no suggestion");
+							// similar
+							ArrayList<String> similar = res.getSimilar();
+							if(similar.size() == 0)
+								sendOutputLine("#no similar");
+							else
+								sendOutputLine("#similar "+res.serializeSimilar());
+							// interwiki
 							if(res.getTitles() != null){
 								res.sortTitlesByInterwiki();
 								sendOutputLine("#interwiki "+res.getTitles().size());
@@ -275,6 +298,73 @@ public class SearchDaemon extends HttpHandler {
 		contentType = "text/plain";
 		sendHeaders(200, "OK");
 		sendOutputLine(SearchServer.stats.summarize());
+	}
+	
+	private String formatTimestamp(long timestampLong){
+		String timestamp = Long.toString(timestampLong);
+		return timestamp.substring(0,4)+"-"+timestamp.substring(4,6)+"-"
+		+timestamp.substring(6,8)+" "+timestamp.substring(8,10)+":"
+		+timestamp.substring(10,12)+":"+timestamp.substring(12,14);
+	}
+	
+	private String formatIid(IndexId iid, int maxlen){
+		StringBuilder sb = new StringBuilder(iid.toString());
+		while(sb.length()<maxlen) 
+			sb.append(" ");
+		return sb.toString();
+	}
+	
+	/** Show status of indexes */
+	private void showStatus() {
+		contentType = "text/plain";
+		sendHeaders(200, "OK");
+		IndexRegistry registry = IndexRegistry.getInstance();
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		SearcherCache cache = SearcherCache.getInstance();
+		ArrayList<IndexId> mysearch = new ArrayList<IndexId>();
+		mysearch.addAll(global.getMySearch());
+		Collections.sort(mysearch,new Comparator<IndexId>(){
+			public int compare(IndexId o1, IndexId o2) {
+				return o1.toString().compareTo(o2.toString());
+			}
+		});
+		int maxlen = 0;
+		for(IndexId iid : mysearch){
+			if(iid.toString().length()>maxlen)
+				maxlen = iid.toString().length();
+		}
+		for(IndexId iid : mysearch){
+			if(iid.isLogical())
+				continue;
+			LocalIndex li = registry.getLatestUpdate(iid);
+			if(UpdateThread.isBeingDeployed(iid))
+				sendOutputLine("[DEPLOY]   "+formatIid(iid,maxlen)+"     "+(li!=null? formatTimestamp(li.timestamp):""));
+			else if(Warmup.isBeingWarmedup(iid))
+				sendOutputLine("[WARMUP]   "+formatIid(iid,maxlen)+"     "+(li!=null? formatTimestamp(li.timestamp):""));
+			else{
+				// check if being cached
+				IndexSearcherMul[] pool = cache.getPool(iid);
+				boolean cached = false;
+				if(pool != null){					
+					for(IndexSearcherMul s : pool){
+						if(AggregateMetaField.isBeingCached(s.getIndexReader())){
+							cached = true;
+							break;
+						}
+					}
+				}
+				if(cached){
+					sendOutputLine("[CACHING]  "+formatIid(iid,maxlen)+"     "+(li!=null? formatTimestamp(li.timestamp):""));
+				} else{
+					// final states
+					li = registry.getCurrentSearch(iid);
+					if(li == null)
+						sendOutputLine("[FAILED]   "+formatIid(iid,maxlen));
+					else
+						sendOutputLine("  [OK]     "+formatIid(iid,maxlen)+"     "+formatTimestamp(li.timestamp));
+				}
+			}
+		}
 	}
 	
 	// never use keepalive

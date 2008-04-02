@@ -20,6 +20,17 @@ public class SuggestResult implements Serializable {
 	String serializedContext = null;
 	HashSet<String> context = null;
 	
+	public static class SimilarResult extends SuggestResult {
+		String key;
+		String redirectTo;
+		public SimilarResult(String word, int frequency, int dist, String key, String redirectTo) {
+			super(word, frequency, dist);
+			this.key = key;
+			this.redirectTo = redirectTo;
+		}
+		
+	}
+	
 	static class Comparator implements java.util.Comparator<SuggestResult> {
 		public int compare(SuggestResult o1, SuggestResult o2){
 			if(o1.dist - o2.dist == -1 && o1.frequency * 100 < o2.frequency)
@@ -76,6 +87,7 @@ public class SuggestResult implements Serializable {
 		this.decomposed = FastWikiTokenizerEngine.decompose(word);
 		this.frequency = frequency;
 		this.dist = dist;
+		this.exactMatch = true;
 	}
 	
 	/** Initialize all attributes using suggestion metrics */

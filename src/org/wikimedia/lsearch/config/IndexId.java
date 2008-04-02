@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 
 /**
@@ -62,7 +63,7 @@ public class IndexId {
 	protected boolean myIndex;
 	
 	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, 
-		PREFIX, PREFIX_TITLES, SUBDIVIDED, TITLES_BY_SUFFIX, PRECURSOR };
+		PREFIX, TITLE_NGRAM, SUBDIVIDED, TITLES_BY_SUFFIX, PRECURSOR };
 		
 	/** the index of this subdivided part */
 	protected int subpartNum;
@@ -132,8 +133,18 @@ public class IndexId {
 	/** Namespaces that are searched by default */
 	protected NamespaceFilter defaultNs = null;
 	
+	/** filter set to true for namespaces with subpages */
+	protected NamespaceFilter nsWithSubpages = null;
+	
+	/** If we should be using additional global rank for scores */
+	protected Boolean useAdditionalRank = null;
+	
 	/** on which index image are we doing transaction */
 	public static enum Transaction {INDEX, IMPORT, TEMP}; 
+	
+	public static enum AgeScaling { WEAK, MEDIUM, STRONG, NONE };
+	
+	protected AgeScaling ageScaling = null;
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -211,8 +222,8 @@ public class IndexId {
 			this.type = IndexType.RELATED;
 		else if(type.equals("prefix"))
 			this.type = IndexType.PREFIX;
-		else if(type.equals("prefix_titles"))
-			this.type = IndexType.PREFIX_TITLES;
+		else if(type.equals("title_ngram"))
+			this.type = IndexType.TITLE_NGRAM;
 		else if(type.equals("subdivided"))
 			this.type = IndexType.SUBDIVIDED;
 		else if(type.equals("titles_by_suffix"))
@@ -377,11 +388,11 @@ public class IndexId {
 	public boolean isPrefix(){
 		return type == IndexType.PREFIX;
 	}
-	/** If this is the index storing titles for the prefix index */
-	public boolean isPrefixTitles(){
-		return type == IndexType.PREFIX_TITLES;
+	/** If this index hold all titles ngrams */
+	public boolean isTitleNgram(){
+		return type == IndexType.TITLE_NGRAM;
 	}	
-	/** If this is the index storing titles for the prefix index */
+	/** If this is index is subdivided part of a logical index */
 	public boolean isSubdivided(){
 		return type == IndexType.SUBDIVIDED;
 	}
@@ -595,7 +606,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles() || isTitlesBySuffix())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isTitleNgram() || isTitlesBySuffix())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -651,7 +662,7 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isTitleNgram())
 			ret.add(dbrole);
 		else if(isTitlesBySuffix()){
 			if(part != null) // part
@@ -737,11 +748,17 @@ public class IndexId {
 
 	/** Return true if the spell-check index exists */
 	public boolean hasSpell(){
+		if(FilterFactory.isCJKLanguage(getLangCode()))
+			return false; // don't try to build spellchecks for CJK 
 		return GlobalConfiguration.getIndexId(dbname+".spell") != null;
 	}
 	
 	public boolean hasPrefix(){
 		return GlobalConfiguration.getIndexId(dbname+".prefix") != null;
+	}
+	
+	public boolean hasTitleNgram(){
+		return GlobalConfiguration.getIndexId(dbname+".title_ngram") != null;
 	}
 	
 	/** Get the coresponding spell words iid */
@@ -848,6 +865,22 @@ public class IndexId {
 		}		
 		return defaultNs;		
 	}
+	
+	/** Get namespaces where subpages are enabled */
+	public NamespaceFilter getNamespacesWithSubpages(){
+		if(nsWithSubpages == null){
+			nsWithSubpages = GlobalConfiguration.getInstance().getNamespacesWithSubpages(getDBname());
+		}		
+		return nsWithSubpages;		
+	}
+	
+	/** If we should use article additional rank in scoring, useful for non-encyclopedias */
+	public boolean useAdditionalRank(){
+		if(useAdditionalRank == null)
+			useAdditionalRank = GlobalConfiguration.getInstance().useAdditionalRank(getDBname());
+		return useAdditionalRank;
+	}
+	
 	/** For tspart indexes, mapping: suffix -> dbname */ 
 	public Hashtable<String, String> getSuffixToDbname() {
 		if(!isTitlesBySuffix() || part==null)
@@ -855,5 +888,16 @@ public class IndexId {
 		return suffixToDbname;
 	}
 	
+	/** Return age scaling to be used on this iid */
+	public AgeScaling getAgeScaling(){
+		if(ageScaling == null)
+			ageScaling = GlobalConfiguration.getInstance().getAgeScaling(getDBname());
+		return ageScaling;
+	}
+	
+	/** Get the related title_ngram index */
+	public IndexId getTitleNgram(){
+		return IndexId.get(dbname+".title_ngram");
+	}
 		
 }

@@ -150,7 +150,7 @@ public class CustomBoostQuery extends Query {
    * @param boostScore score of that doc by the Query.
    * @return custom score.
    */
-  public float customScore(int doc, float subQueryScore, float boostScore) {
+  public float customScore(int doc, float subQueryScore, float boostScore) throws IOException {
     return boostScore * subQueryScore;
   }
 
@@ -164,7 +164,7 @@ public class CustomBoostQuery extends Query {
    * @param boostExpl explanation for the value source part.
    * @return an explanation for the custom score
    */
-  public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation boostExpl) {
+  public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation boostExpl) throws IOException {
     float boostScore = boostExpl==null ? 1 : boostExpl.getValue();
     Explanation exp = new Explanation( boostScore * subQueryExpl.getValue(), "custom score: product of:");
     exp.addDetail(subQueryExpl);
@@ -175,7 +175,7 @@ public class CustomBoostQuery extends Query {
   }
   //=========================== W E I G H T ============================
   
-  private class CustomWeight implements Weight {
+  protected class CustomWeight implements Weight {
     Weight subQueryWeight;
     Weight boostWeight; // optional
     boolean qStrict;

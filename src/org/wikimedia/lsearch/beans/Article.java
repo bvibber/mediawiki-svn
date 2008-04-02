@@ -136,6 +136,10 @@ public class Article implements Serializable  {
 	public long getPageId() {
 		return pageId;
 	}
+	
+	public String getPageIdStr(){
+		return Long.toString(pageId);
+	}
 	/**
 	 * Return page_id
 	 * 
@@ -150,7 +154,7 @@ public class Article implements Serializable  {
 	}
 	
 	public String toString() {
-		return "(" + pageId + ", " + namespace + ":" + title + ")";
+		return "(" + pageId + ", " + namespace + ":" + title + ", date="+date+")";
 	}
 	
 	/** Page Rank: how many articles link to this article */

@@ -123,6 +123,7 @@ public class Transaction {
 		File index = new File(iid.getTransactionPath(type));
 		String path = iid.getPath(type);
 		try{
+			log.info("Recovering "+path+" from "+backup.getPath());
 			if(index.exists()) // clear locks before recovering
 				WikiIndexModifier.unlockIndex(path);
 			

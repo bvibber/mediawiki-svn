@@ -26,6 +26,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.index.TermPositions;
 import org.apache.lucene.util.PriorityQueue;
+import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.search.SearcherCache;
@@ -54,8 +55,14 @@ public class HighFreqTerms {
 	 * Get terms with highest frequency from latest snapshot of iid 
 	 */
 	public static Collection<String> getHighFreqTerms(IndexId iid, String field, int numTerms) throws IOException {
-		IndexRegistry registry = IndexRegistry.getInstance(); 
-		IndexReader reader =  IndexReader.open(registry.getLatestSnapshot(getIndexPart(iid)).getPath());		
+		IndexRegistry registry = IndexRegistry.getInstance();
+		IndexReader reader = null;
+		IndexId part = getIndexPart(iid);
+		LocalIndex snapshot = registry.getLatestSnapshot(part);
+		if(snapshot != null) // try snapshot
+			reader = IndexReader.open(snapshot.getPath());
+		else // try import path
+			reader = IndexReader.open(part.getImportPath());
 		TermInfoQueue tiq = new TermInfoQueue(numTerms);
 		TermEnum terms = reader.terms();
 		LinkedList<String> ret = new LinkedList<String>();

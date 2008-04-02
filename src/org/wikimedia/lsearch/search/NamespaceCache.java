@@ -4,17 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Hashtable;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.index.TermDocs;
+import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.CachingWrapperFilter;
 import org.apache.lucene.search.Filter;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.QueryFilter;
 import org.apache.lucene.search.QueryWrapperFilter;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
@@ -23,23 +21,47 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
- * Local cache of Filter, or more precisely of {@link CachingWrapperFilter}.
+ * Local cache of Filter, or more precisely of {@link CachedFilter}.
  * 
  * @author rainman
  *
  */
 public class NamespaceCache {
 	static org.apache.log4j.Logger log = Logger.getLogger(NamespaceCache.class);
-	protected static Hashtable<NamespaceFilter,CachingWrapperFilter> cache = new Hashtable<NamespaceFilter,CachingWrapperFilter>();
-	protected static Hashtable<NamespaceFilter,CachingWrapperFilter> redirectCache = new Hashtable<NamespaceFilter,CachingWrapperFilter>();
+	protected static Hashtable<NamespaceFilter,CachedFilter> cache = new Hashtable<NamespaceFilter,CachedFilter>();
+	protected static Hashtable<NamespaceFilter,CachedFilter> redirectCache = new Hashtable<NamespaceFilter,CachedFilter>();
 	/** for special cases, key is custom string - used for default namespaces filters on titles indexes */
-	protected static Hashtable<String,CachingWrapperFilter> specialCache = new Hashtable<String,CachingWrapperFilter>();
+	protected static Hashtable<String,CachedFilter> specialCache = new Hashtable<String,CachedFilter>();
 	
-	public static CachingWrapperFilter get(NamespaceFilter key){
+	public static class AllFilter extends Filter {
+
+		@Override
+		public BitSet bits(IndexReader reader) throws IOException {
+			BitSet bits = new BitSet(reader.maxDoc());
+			bits.set(0,reader.maxDoc());
+			TermEnum terms = reader.terms(new Term("redirect_namespace",""));
+			Term t;
+			while((t = terms.term()) != null){
+				if(!"redirect_namespace".equals(t.field()))
+					break;
+				// unset all documents that redirect somewhere
+				TermDocs td = reader.termDocs(t);
+				while(td.next()){
+					bits.clear(td.doc());
+				}
+				if(!terms.next())
+					break;
+			}
+			return bits;
+		}
+		
+	}
+	
+	public static CachedFilter get(NamespaceFilter key){
 		return cache.get(key);
 	}
 	
-	public static void put(NamespaceFilter key, CachingWrapperFilter value){
+	public static void put(NamespaceFilter key, CachedFilter value){
 		cache.put(key,value);
 	}
 	
@@ -80,7 +102,7 @@ public class NamespaceCache {
 							filters.add(cache.get(nsf));
 						else{ // didn't find the apropriate filter, make it
 							log.info("Making filter for "+nsf);
-							CachingWrapperFilter cwf = makeFilter(nsf);
+							CachedFilter cwf = makeFilter(nsf);
 							cache.put(nsf,cwf);
 							filters.add(cwf);
 						}
@@ -90,16 +112,13 @@ public class NamespaceCache {
 					// never cache composite filters
 					return new NamespaceCompositeFilter(filters,redirects).bits(reader);				
 				} else if(key.isAll()){
-					ArrayList<Filter> redirects = new ArrayList<Filter>();
-					for(NamespaceFilter nsf : cache.keySet())
-						redirects.add(getRedirectFilter(nsf));
-					CachingWrapperFilter cwf = new CachingWrapperFilter(new NamespaceCompositeFilter(new ArrayList<Filter>(),redirects));
+					CachedFilter cwf = new CachedFilter(new AllFilter());
 					cache.put(key,cwf); // always cache
 					log.info("Made \"all\" filter");
 					return cwf.bits(reader);
 				}
 				// build new filter from query
-				CachingWrapperFilter cwf = makeFilter(key);
+				CachedFilter cwf = makeFilter(key);
 				// cache only if defined as a textual prefix in global conf, or filters one namespace
 				if(GlobalConfiguration.getInstance().getNamespacePrefixes().containsValue(key) || key.cardinality()==1)
 					cache.put(key,cwf);
@@ -122,7 +141,7 @@ public class NamespaceCache {
 	public static BitSet defaultTitleBits(IndexId titles, IndexReader reader) throws IOException {
 		synchronized(reader){
 			String key = titles.toString()+":<default>";
-			CachingWrapperFilter cwf = specialCache.get(key);
+			CachedFilter cwf = specialCache.get(key);
 			if(cwf != null)
 				return cwf.bits(reader);
 			
@@ -137,7 +156,7 @@ public class NamespaceCache {
 				}
 			}
 			log.info("Caching "+key+" with "+bq);
-			cwf = new CachingWrapperFilter(new QueryWrapperFilter(bq));
+			cwf = new CachedFilter(new QueryWrapperFilter(bq));
 			specialCache.put(key,cwf);
 			return cwf.bits(reader);
 		}
@@ -149,20 +168,20 @@ public class NamespaceCache {
 			return redirectCache.get(nsf);
 		else{ // make the bitset of all pages that redirect to namespace
 			log.info("Making redirect cache for "+nsf);
-			CachingWrapperFilter cwf = makeRedirectFilter(nsf);
+			CachedFilter cwf = makeRedirectFilter(nsf);
 			redirectCache.put(nsf,cwf);
 			return cwf;						
 		}
 	}
 	
-	protected static CachingWrapperFilter makeFilter(NamespaceFilter key){
+	protected static CachedFilter makeFilter(NamespaceFilter key){
 		Query q = WikiQueryParser.generateRewrite(key);
-		return new CachingWrapperFilter(new QueryWrapperFilter(q));
+		return new CachedFilter(new QueryWrapperFilter(q));
 	}
 	
-	protected static CachingWrapperFilter makeRedirectFilter(NamespaceFilter key){
+	protected static CachedFilter makeRedirectFilter(NamespaceFilter key){
 		Query q = WikiQueryParser.generateRedirectRewrite(key);
-		return new CachingWrapperFilter(new QueryWrapperFilter(q));
+		return new CachedFilter(new QueryWrapperFilter(q));
 	}
 
 }

@@ -148,7 +148,7 @@ public class GlobalConfigurationTest extends TestCase {
 			assertTrue(ir.contains("entest.mainpart.sub1"));
 			assertTrue(ir.contains("entest.mainpart.sub2"));
 			assertTrue(ir.contains("entest.mainpart.sub3"));
-			assertEquals(21,sir.length);
+			assertEquals(25,sir.length);
 			
 			// indexLocation
 			Hashtable indexLocation = testgc.getIndexLocation();
@@ -217,7 +217,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("entest",entest.toString());
 		assertEquals("192.168.0.5",entest.getIndexHost());
 		assertFalse(entest.isMyIndex());
-		assertEquals(null,entest.getSnapshotPath());
+		//assertEquals(null,entest.getSnapshotPath());
 		assertEquals("mainsplit",entest.getType());
 		assertEquals("/mwsearch2/snapshot/entest",entest.getRsyncSnapshotPath());
 		
@@ -231,7 +231,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("/mwsearch2/snapshot/entest.restpart",enrest.getRsyncSnapshotPath());
 		assertFalse(enrest.isMyIndex());
 		assertEquals("mainsplit",enrest.getType());
-		assertEquals(null,enrest.getIndexPath());
+		//assertEquals(null,enrest.getIndexPath());
 		
 		IndexId frtest = IndexId.get("frtest");
 		assertTrue(frtest.isSplit());
@@ -281,18 +281,18 @@ public class GlobalConfigurationTest extends TestCase {
 		assertFalse(sub1.isFurtherSubdivided());
 		assertTrue(sub1.isSubdivided());
 		assertEquals(1,sub1.getSubpartNum());
-		assertNull(sub1.getImportPath());
+		//assertNull(sub1.getImportPath());
 		
 		IndexId enmain = IndexId.get("entest.mainpart");
 		assertEquals(sub1,enmain.getSubpart(1));
 		assertTrue(enmain.isFurtherSubdivided());
 		assertFalse(enmain.isSubdivided());
 		assertEquals(3,enmain.getSubdivisionFactor());
-		assertNull(enmain.getImportPath());
+		//assertNull(enmain.getImportPath());
 		
 		IndexId hmpart1 = IndexId.get("hmwiki.nspart1");
 		assertTrue(hmpart1.isFurtherSubdivided());
-		assertNull(hmpart1.getImportPath());
+		//assertNull(hmpart1.getImportPath());
 		
 		assertEquals("[hmwiki.nspart1.sub1, hmwiki.nspart1.sub2]",hmpart1.getPhysicalIndexIds().toString());
 		assertEquals("[hmwiki.nspart3, hmwiki.nspart1.sub1, hmwiki.nspart2, hmwiki.nspart1.sub2]",IndexId.get("hmwiki").getPhysicalIndexIds().toString());
@@ -318,7 +318,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertTrue(ents1.isTitlesBySuffix());
 		assertEquals("w",ents1.getInterwikiBySuffix("wiki"));
 		assertEquals(ents1,IndexId.get("enwiki").getTitlesIndex());
-		assertEquals("en",ents1.getLangCode());
+		assertEquals("en",testgc.getLanguage(ents1.getDBname()));
 		assertEquals("{wiki=enwiki}",ents1.getSuffixToDbname().toString());
 		IndexId ents2 = IndexId.get("en-titles.tspart2");
 		assertEquals("{wikisource=enwikisource, wiktionary=enwiktionary, test=entest}",ents2.getSuffixToDbname().toString());
@@ -338,6 +338,9 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("entest.spell",ep.getPrecursorTarget().toString());
 		assertEquals("192.168.0.2",ep.getIndexHost());
 		assertEquals("/usr/local/var/mwsearch/snapshot/entest.spell.pre",ep.getSnapshotPath());
+		
+		IndexId tn = IndexId.get("entest.title_ngram");
+		assertTrue(tn.isTitleNgram());
 		
 	}
 }

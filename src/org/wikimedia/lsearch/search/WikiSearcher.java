@@ -88,6 +88,7 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 				
 		if(iid.isSingle()){ // is always local 
 			searcher = cache.getLocalSearcher(iid);
+			searcherParts.put(iid.toString(),searcher);
 		} else {
 			ArrayList<IndexId> parts = iid.getPhysicalIndexIds();
 			searcher = ms = makeMultiSearcher(parts);

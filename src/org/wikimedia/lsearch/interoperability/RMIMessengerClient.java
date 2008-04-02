@@ -66,7 +66,9 @@ public class RMIMessengerClient {
 	}
 	
 	public static boolean isLocal(String host){
-		return global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("");
+		if(global == null)
+			global = GlobalConfiguration.getInstance();
+		return host==null || global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("");
 	}
 	
 	/** notify remote hosts that a local search index is changes (to reload remote object) */
@@ -161,11 +163,11 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public void enqueueFrontend(IndexUpdateRecord[] records, String host) throws Exception{
+	public HashSet<String> enqueueFrontend(IndexUpdateRecord[] records, String host) throws Exception{
 		try {
 			RMIMessenger r = messengerFromCache(host);
 			log.debug("Calling enqueueFrontend("+records.length+" records) on "+host);
-			r.enqueueFrontend(records);
+			return r.enqueueFrontend(records);
 		} catch (Exception e) {
 			log.warn("Error invoking remote method enqueueFrontend() on host "+host+" : "+e.getMessage());
 			throw e;
@@ -254,7 +256,7 @@ public class RMIMessengerClient {
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
 		} catch(Exception e){
 			e.printStackTrace();
-			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0,new HashSet<String>());
+			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0,new HashSet<String>(),false);
 		}		
 	}
 	
@@ -342,16 +344,29 @@ public class RMIMessengerClient {
 		
 	}
 	
-	public SearchResults searchPrefix(String host, String dbrole, String searchterm, int limit) throws RemoteException {
+	public SearchResults searchPrefix(String host, String dbrole, String searchterm, int limit, NamespaceFilter nsf) throws RemoteException {
 		RMIMessenger r;
 		try {
 			r = messengerFromCache(host);
-			return r.searchPrefix(dbrole,searchterm,limit);
+			return r.searchPrefix(dbrole,searchterm,limit,nsf);
 		} catch (NotBoundException e) {
 			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage());
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error search prefix index: "+e.getMessage());
 			return res;
+		}
+	}
+	
+	public ArrayList<String> similar(String host, String dbrole, String title, NamespaceFilter nsf, int maxdist) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			return r.similar(dbrole,title,nsf,maxdist);
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage());
+			return new ArrayList<String>();
 		}
 	}
 }

@@ -6,7 +6,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
 #search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
-search_host = {'<default>' : 'localhost:8123' }
+search_host = {'<default>' : 'localhost:8123', 'enwiki' : "srv79:8123", 'srwiki' : "srv79:8123" }
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
@@ -34,7 +34,7 @@ def rewrite_callback(match):
         # check for canonical namespace names
         iscanonical = False
         for ns,name in canon_namespaces.iteritems():
-            if name.lower() == prefix:
+            if name.lower() == prefix.lower():
                 iscanonical = True # is there a way to continue outer loop in python?
                 namespaces.append(str(ns))
                 break
@@ -248,7 +248,9 @@ class MyHandler(BaseHTTPRequestHandler):
                         [suggestHl,suggest] = extract_suggest(suggest)
                     else:
                         suggest = ""
-                    # grouped titles
+                    # similar 
+                    similar = results.readline()
+                    # interwiki
                     interwiki_count = results.readline();
                     interwiki_count = int(interwiki_count.split(' ')[1])
                     i = 0
@@ -426,18 +428,25 @@ class MyHandler(BaseHTTPRequestHandler):
                 params = cgi.parse_qs(s[4])
                 query = ''
                 dbname = ''
+                namespaces = ''
                 for key,val in params.iteritems():
                     if key == 'dbname':
                         dbname = val[0]
                     elif key == 'query':
                         query = val[0]
+                    elif key == 'namespaces':
+                        namespaces = val[0]
                         
                 if search_host.has_key(dbname):
                     host = search_host[dbname]
                 else:
                     host = search_host['<default>']
                     
-                search_url = 'http://%s/prefix/%s/%s?format=json' % (host,dbname,urllib.quote(query.encode('utf-8')))
+                search_url = 'http://%s/prefix/%s/%s?format=json' % (host,dbname,urllib.quote(query))
+                if namespaces != '':
+                    search_url += '&namespaces=%s' % namespaces
+                    
+                print(search_url)
                 
                 # forward json text
                 try:

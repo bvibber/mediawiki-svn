@@ -35,6 +35,7 @@ import org.wikimedia.lsearch.search.Wildcards;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
+import org.wikimedia.lsearch.spell.SuggestSimilar;
 
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
@@ -83,11 +84,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 	
 	// inherit javadoc
-	public void enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException {
+	public HashSet<String> enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException {
 		log.debug("Received request enqueueUpdateRecords("+records.length+" records)");
 		if(indexer == null)
 			indexer = new IndexDaemon(); // start the indexer
-		IndexThread.enqueue(records);		
+		try {
+			return IndexThread.enqueue(records);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RemoteException("Exception during queue()",e);
+		}		
 	}
 
 	// inherit javadoc
@@ -188,15 +194,25 @@ public class RMIMessengerImpl implements RMIMessenger {
 		return cache.hasLocalSearcher(IndexId.get(dbrole));
 	}
 	
-	public SearchResults searchPrefix(String dbrole, String searchterm, int limit) throws RemoteException {
+	public SearchResults searchPrefix(String dbrole, String searchterm, int limit, NamespaceFilter nsf) throws RemoteException {
 		if(cache == null)
 			cache = SearcherCache.getInstance();
 		
 		IndexId iid = IndexId.get(dbrole);
 		try {
-			return new SearchEngine().searchPrefixLocal(iid,searchterm,limit,cache.getLocalSearcher(iid));
+			return new SearchEngine().searchPrefixLocal(iid,searchterm,limit,nsf,cache.getLocalSearcher(iid));
 		} catch (IOException e) {
 			throw new RemoteException("IO Error in searchPrefix()",e);
+		}
+	}
+	
+	public ArrayList<String> similar(String dbrole, String title, NamespaceFilter nsf, int maxdist) throws RemoteException {
+		IndexId iid = IndexId.get(dbrole);
+		try{
+			SuggestSimilar similar = new SuggestSimilar(iid);
+			return similar.getSimilarTitles(title,nsf,maxdist);
+		} catch(IOException e){
+			throw new RemoteException("IO Error in similar()",e);
 		}
 	}
 
@@ -212,6 +228,8 @@ public class RMIMessengerImpl implements RMIMessenger {
 		
 		return instance;
 	}
+
+	
 
 
 }

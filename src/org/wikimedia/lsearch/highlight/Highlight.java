@@ -20,6 +20,7 @@ import org.apache.lucene.index.TermDocs;
 import org.wikimedia.lsearch.analyzers.Alttitles;
 import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.analyzers.ExtToken.Type;
@@ -72,13 +73,16 @@ public class Highlight {
 		public int firstHitRank = 0;
 		/** Words found in titles */
 		public HashSet<String> foundInTitles;
-		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle, int firstHitRank, HashSet<String> foundInTitles) {
+		/** If we found all words in title or redirect */
+		public boolean foundAllInAltTitle;
+		public ResultSet(HashMap<String, HighlightResult> highlighted, HashSet<String> phrases, HashSet<String> foundInContext, boolean foundAllInTitle, int firstHitRank, HashSet<String> foundInTitles, boolean foundAllInAltTitle) {
 			this.highlighted = highlighted;
 			this.phrases = phrases;
 			this.foundInContext = foundInContext;
 			this.foundAllInTitle = foundAllInTitle;
 			this.firstHitRank = firstHitRank;
 			this.foundInTitles = foundInTitles;
+			this.foundAllInAltTitle = foundAllInAltTitle;
 		}
 	}
 	/**
@@ -104,7 +108,7 @@ public class Highlight {
 		
 		HashSet<String> phrases = new HashSet<String>();
 		HashSet<String> inContext = new HashSet<String>();
-		boolean foundAllInTitle = false;
+		boolean foundAllInTitle = false, foundAllInAltTitle = false;
 		int firstHitRank = 0;
 		HashSet<String> inTitle = new HashSet<String>();
 		
@@ -112,24 +116,28 @@ public class Highlight {
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
 		for(int i=0;i<terms.length;i++){
 			Term t = terms[i];
-			double idf = idf(df[i],maxDoc); 
+			double idf = idf(df[i],maxDoc);
 			weightTerm.put(t.text(),idf);
 		}
 		// position within main phrase
 		HashMap<String,Integer> wordIndex = new HashMap<String,Integer>();
-		for(int i=0;i<words.size();i++)
-			wordIndex.put(words.get(i),i);
+		for(int i=0;i<words.size();i++){
+			String w = words.get(i);
+			if(!wordIndex.containsKey(w))
+				wordIndex.put(w,i);
+		}
 		
 		// process requested documents
 		if(reader == null) // get new reader if none is supplied
 			reader = cache.getLocalSearcher(iid.getHighlight()).getIndexReader();
 		HashMap<String,HighlightResult> res = new HashMap<String,HighlightResult>();
 		Set<String> allTerms = weightTerm.keySet();
+		FieldNameFactory fields = new FieldNameFactory(exactCase);
 		for(int hi=0;hi<hits.size();hi++){
 			String key = hits.get(hi);
 			Object[] ret = null;
 			try{
-				ret = getTokens(reader,key,allTerms);			
+				ret = getTokens(reader,key,allTerms,fields);			
 			} catch(Exception e){
 				log.error("Error geting tokens: "+e.getMessage());
 				e.printStackTrace();
@@ -147,23 +155,21 @@ public class Highlight {
 				firstHitRank = alttitles.getTitle().getRank();
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
-			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases, alwaysIncludeFirstLine );
-			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,wordIndex,1,true,stopWords,false,phrases,inContext,false,false);
-			int redirectAdditional = 0;
-			if(titleSnippets.size()>0 && 
-					((titleSnippets.get(0).found.containsAll(words) && textTokenLength(titleSnippets.get(0).tokens) == words.size())
-					|| (titleSnippets.get(0).found.size() == textTokenLength(titleSnippets.get(0).tokens)))){
-				redirectAdditional = 1; // don't show redirect if it's same as title
-			}			
-			RawSnippet redirectSnippets = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,wordIndex,redirectAdditional,phrases,inContext);
-			RawSnippet sectionSnippets = null;
-			if(redirectSnippets == null){
+			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases, alwaysIncludeFirstLine );
+			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,words,wordIndex,1,true,stopWords,false,phrases,inContext,false,false);
+			RawSnippet redirectSnippet = null;
+			// don't show redirect if we matched whole title
+			if(! (titleSnippets.size()>0 && titleSnippets.get(0).countPositions()==titleSnippets.get(0).noAliasLength())){
+				redirectSnippet = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext);
+			}
+			RawSnippet sectionSnippet = null;
+			if(redirectSnippet == null){
 				// remove stop words for section higlighting
 				for(String s : stopWords){
 					if(notInTitle.containsKey(s))
 						notInTitle.remove(s);
 				}
-				sectionSnippets = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,wordIndex,0,phrases,inContext);
+				sectionSnippet = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext);
 			}
 			
 			HighlightResult hr = new HighlightResult();
@@ -229,15 +235,15 @@ public class Highlight {
 				inTitle.addAll(titleSnippets.get(0).found);
 			}
 			
-			if(redirectSnippets != null){
-				hr.setRedirect(redirectSnippets.makeSnippet(MAX_CONTEXT,true));
-				if(!foundAllInTitle && redirectSnippets.found.containsAll(words))
-					foundAllInTitle = true;
-				inTitle.addAll(redirectSnippets.found);
+			if(redirectSnippet != null){
+				hr.setRedirect(redirectSnippet.makeSnippet(MAX_CONTEXT,true));
+				if(redirectSnippet.found.containsAll(words))
+					foundAllInAltTitle = true;
+				inTitle.addAll(redirectSnippet.found);
 			}
 			
-			if(sectionSnippets != null){
-				hr.setSection(sectionSnippets.makeSnippet(MAX_CONTEXT,true));
+			if(sectionSnippet != null){
+				hr.setSection(sectionSnippet.makeSnippet(MAX_CONTEXT,true));
 			}
 			
 			// date
@@ -252,7 +258,7 @@ public class Highlight {
 			res.put(key,hr);
 			
 		}
-		return new ResultSet(res,phrases,inContext,foundAllInTitle,firstHitRank,inTitle);
+		return new ResultSet(res,phrases,inContext,foundAllInTitle,firstHitRank,inTitle,foundAllInAltTitle);
 	}	
 	
 	/** Number of tokens excluding aliases and glue stuff */
@@ -411,31 +417,35 @@ public class Highlight {
 	
 	/** Alttitle and sections highlighting */	
 	protected static RawSnippet getBestAltTitle(ArrayList<Alttitles.Info> altInfos, HashMap<String,Double> weightTerm, 
-			HashMap<String,Double> notInTitle, HashSet<String> stopWords, HashMap<String,Integer> wordIndex, int minAdditional,
-			HashSet<String> phrases, HashSet<String> inContext){
+			HashMap<String,Double> notInTitle, HashSet<String> stopWords, ArrayList<String> words, HashMap<String,Integer> wordIndex, 
+			int minAdditional, HashSet<String> phrases, HashSet<String> inContext){
 		ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
 		for(Alttitles.Info ainf : altInfos){			
 			double matched = 0, additionalScore = 0;
 			int additional = 0;
 			ArrayList<ExtToken> tokens = ainf.getTokens();
-			boolean completeMatch=true;
+			HashSet<Integer> matchedPositions = new HashSet<Integer>();
+			int count = 0;
+			int length = textTokenLength(tokens);
 			for(int i=0;i<tokens.size();i++){
 				ExtToken t = tokens.get(i);
-				if(t.getPositionIncrement() == 0 || t.getType() != Type.TEXT)
-					continue; // skip aliases
+				if(t.getType() != Type.TEXT)
+					continue;
+				if(t.getPositionIncrement() != 0)
+					count++;
 				
-				if(weightTerm.containsKey(t.termText()))
+				if(weightTerm.containsKey(t.termText())){
 					matched += weightTerm.get(t.termText());
-				else if(!stopWords.contains(t.termText()))
-					completeMatch = false;
+					matchedPositions.add(count);
+				} 
 				
 				if(notInTitle.containsKey(t.termText()) && !stopWords.contains(t.termText())){
 					additional++;
 					additionalScore += notInTitle.get(t.termText());
 				}
 			}
-			if((completeMatch && additional >= minAdditional) || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
-				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, wordIndex, 1, false, stopWords, false, phrases, inContext, false, false);
+			if(length == matchedPositions.size() || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
+				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 1, false, stopWords, false, phrases, inContext, false, false);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);
 					snippet.setAlttitle(ainf);
@@ -509,8 +519,8 @@ public class Highlight {
 	
 	/** Highlight text */
 	protected static ArrayList<RawSnippet> getBestTextSnippets(ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
-			HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, boolean showFirstIfNone,
-			HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases, final boolean alwaysIncludeFirstLine) {
+			ArrayList<String> words, HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, 
+			boolean showFirstIfNone, HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases, final boolean alwaysIncludeFirstLine) {
 		
 		// pieces of text to ge highlighted
 		ArrayList<FragmentScore> fragments = new ArrayList<FragmentScore>();
@@ -531,6 +541,8 @@ public class Highlight {
 		// if first sentence has all the terms
 		boolean foundAllInFirst = false;
 		FragmentScore firstFragment = null;
+		// index in words of last in phrase
+		Integer lastInPhraseInx = null;
 		// length of text since first sentence
 		int beginLen = 0;
 		HashSet<String> availableWeight = new HashSet<String>();
@@ -596,9 +608,9 @@ public class Highlight {
 			ExtToken phraseToken = null;
 			int phraseIndex = i;
 			// fetch index within a phrase
-			if(t.getPositionIncrement() != 0){
+			if(t.getPositionIncrement() != 0 && t.getType() == Type.TEXT){
 				if(!t.isStub() && t.getType() == Type.TEXT)
-					inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(t.termText()));
+					inx = getIndex(t,words,wordIndex,lastInPhraseInx);
 				if(inx != null){
 					wordsInSentence.add(t.termText());
 					phraseIndex = i;					 
@@ -609,7 +621,7 @@ public class Highlight {
 						if(alias.getPositionIncrement() != 0)
 							break;
 						if(!alias.isStub()){
-							inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(alias.termText()));
+							inx = getIndex(alias,words,wordIndex,lastInPhraseInx);
 							if(inx != null){
 								wordsInSentence.add(alias.termText());
 								phraseIndex = j;
@@ -624,20 +636,23 @@ public class Highlight {
 				
 				// process phrases				
 				Double phraseWeight = inx != null? weightTerms.get(phraseToken.termText()) : null;
-				Integer lastInx = (lastText != null && lastText.termText()!=null)? wordIndex.get(FastWikiTokenizerEngine.clearTrailing(lastText.termText())) : null;
+				Integer lastInx = null;
+				if(lastText != null && lastText.termText()!=null){
+					lastInx = (lastInPhraseInx!=null)? lastInPhraseInx : getIndex(lastText,words,wordIndex,null);
+				}
 				
 				if(phraseWeight != null){
-					if(inx != null && (lastInx == null || phraseStart == -1)){
+					if(inx != null && lastInx == null && phraseStart == -1){
 						// begin of phrase
 						phraseScore = phraseWeight;
 						phraseStart = phraseIndex;
-						phraseCount = 1;
-					} else if((inx == null && lastInx != null)){
-						// end of phrase
+						phraseCount = 1;						
+					} else if(inx != null && lastInx == null && phraseStart != -1){
+						// end of phrase, begin of new
 						addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,phraseIndex,phraseCount);
-						phraseScore = 0;
-						phraseStart = -1;
-						phraseCount = 0;
+						phraseScore = phraseWeight;
+						phraseStart = phraseIndex;
+						phraseCount = 1;
 					} else if(inx != null && lastInx != null){
 						if(lastInx + 1 != inx){
 							// end of last phrase, begin of new
@@ -659,7 +674,7 @@ public class Highlight {
 					phraseStart = -1;
 					phraseCount = 0;
 				}
-
+				lastInPhraseInx = inx;
 				lastIndex = phraseIndex;
 			} 
 						
@@ -711,6 +726,17 @@ public class Highlight {
 				else return -1;
 			}});
 		
+		boolean allStopWords = false;
+		if(stopWords!=null && stopWords.size()>0 && wordIndex.size()>0){
+			allStopWords = true;
+			for(String w : wordIndex.keySet()){
+				if(!stopWords.contains(w)){
+					allStopWords = false;
+					break;
+				}
+			}
+		}
+		
 		ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
 		Set<String> wordHighlight = weightTerms.keySet();
 		HashSet<String> termsFound = new HashSet<String>();
@@ -723,7 +749,7 @@ public class Highlight {
 			HashSet<String> newTerms = new HashSet<String>();
 			if(f.found != null){
 				for(String w : f.found){
-					if(!termsFound.contains(w) && !stopWords.contains(w)){
+					if(!termsFound.contains(w) && (!stopWords.contains(w) || allStopWords)){
 						hasNew = true;
 						newTerms.add(w);
 					}
@@ -732,7 +758,7 @@ public class Highlight {
 			if(hasNew || (alwaysIncludeFirstLine && f.isFirstSentence)){
 				if(f.found != null)
 					termsFound.addAll(f.found);
-				adjustBest(f,tokens,weightTerms,wordIndex,newTerms); 
+				adjustBest(f,tokens,weightTerms,words,wordIndex,newTerms); 
 				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms,stopWords);
 				res.add(s);
 			} else if(resNoNew.size() < maxSnippets)
@@ -756,6 +782,15 @@ public class Highlight {
 	private static double boostPhrase(double baseScore, int phraseCount){
 		return baseScore * Math.pow(2,phraseCount);
 	}
+	/** Get best guess of index of the word within a phrase */
+	private static final Integer getIndex(ExtToken t, ArrayList<String> words, HashMap<String,Integer> wordIndex, Integer lastInPhraseInx){
+		String w = FastWikiTokenizerEngine.clearTrailing(t.termText());
+		// check if it's next in phrase
+		if(lastInPhraseInx != null && lastInPhraseInx + 1 < words.size() && words.get(lastInPhraseInx+1).equals(w))
+			return lastInPhraseInx + 1;
+		// guess based on word -> position map (which might not be 1-1)
+		return wordIndex.get(w);
+	}
 
 	/** Have we moved to new position ? */
 	private static boolean positionChange(ExtToken current, ExtToken lastToken) {
@@ -777,13 +812,14 @@ public class Highlight {
 
 	/** Recalculate the best score for fragment, but requiring that the best phrase has some terms */
 	private static void adjustBest(FragmentScore f, ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
-			HashMap<String, Integer> wordIndex, HashSet<String> requiredTerms) {
+			ArrayList<String> words, HashMap<String, Integer> wordIndex, HashSet<String> requiredTerms) {
 		f.bestScore = 0;
 		
 		double phraseScore=0;
 		int phraseStart=-1;
 		int requiredCount = 0;
 		ExtToken lastText = null;
+		Integer lastInPhraseInx = null;
 		for(int i=f.start;i<f.end;i++){
 			ExtToken t = tokens.get(i);
 			
@@ -791,9 +827,9 @@ public class Highlight {
 			ExtToken phraseToken = null;
 			int phraseIndex = i;
 			// fetch index within a phrase
-			if(t.getPositionIncrement() != 0){
+			if(t.getPositionIncrement() != 0 && t.getType() == Type.TEXT){
 				if(!t.isStub() && t.getType() == Type.TEXT)
-					inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(t.termText()));
+					inx = getIndex(t,words,wordIndex,lastInPhraseInx);
 				if(inx != null){
 					phraseIndex = i;					 
 				} else{
@@ -803,7 +839,7 @@ public class Highlight {
 						if(alias.getPositionIncrement() != 0)
 							break;
 						if(!alias.isStub()){
-							inx = wordIndex.get(FastWikiTokenizerEngine.clearTrailing(alias.termText()));
+							inx = getIndex(alias,words,wordIndex,lastInPhraseInx);
 							if(inx != null){
 								phraseIndex = j;
 								break;
@@ -814,31 +850,36 @@ public class Highlight {
 				if(inx != null)
 					phraseToken = tokens.get(phraseIndex);	
 				Double phraseWeight = inx != null? weightTerms.get(phraseToken.termText()) : null;
-				Integer lastInx = (lastText != null && lastText.termText()!=null)? wordIndex.get(FastWikiTokenizerEngine.clearTrailing(lastText.termText())) : null;
+				Integer lastInx = null;
+				if(lastText != null && lastText.termText()!=null){
+					lastInx = (lastInPhraseInx!=null)? lastInPhraseInx : getIndex(lastText,words,wordIndex,null);
+				}
 				
 				if(phraseWeight != null){
-					if(inx != null && (lastInx == null || phraseStart == -1)){
+					if(inx != null && lastInx == null && phraseStart == -1){
 						// begin of phrase
 						phraseScore = phraseWeight;
 						phraseStart = phraseIndex;
 						requiredCount = 0;
 						if(requiredTerms.contains(phraseToken.termText()))
 							requiredCount++;
-					} else if((inx == null && lastInx != null)){
-						// end of phrase
+					} else if(inx != null && lastInx == null && phraseStart != -1){
+						// end of phrase, begin of new
 						updateBest(f,phraseScore,phraseStart,phraseIndex,requiredCount);
-						phraseScore = 0;
-						phraseStart = -1;
+						phraseScore = phraseWeight;
+						phraseStart = phraseIndex;
 						requiredCount = 0;
+						if(requiredTerms.contains(phraseToken.termText()))
+							requiredCount++;
 					} else if(inx != null && lastInx != null){
 						if(lastInx + 1 != inx){
-							// end of last phrase, begin of new
-							if(requiredTerms.contains(phraseToken.termText()))
-								requiredCount++;
+							// end of last phrase, begin of new							
 							updateBest(f,phraseScore,phraseStart,phraseIndex,requiredCount);
 							phraseScore = phraseWeight;
 							phraseStart = phraseIndex;
 							requiredCount = 0;
+							if(requiredTerms.contains(phraseToken.termText()))
+								requiredCount++;
 						} else{
 							// continuation of phrase
 							if(requiredTerms.contains(phraseToken.termText()))
@@ -853,6 +894,7 @@ public class Highlight {
 					phraseStart = -1;
 					requiredCount = 0;
 				}
+				lastInPhraseInx = inx;
 			} 
 				
 			Double weight = weightTerms.get(t.termText());
@@ -893,7 +935,7 @@ public class Highlight {
 	}
 	
 	/** @return ArrayList<ExtToken> tokens, Altitles alttitles, String date, long size */
-	protected static Object[] getTokens(IndexReader reader, String key, Set<String> termSet) throws IOException{
+	protected static Object[] getTokens(IndexReader reader, String key, Set<String> termSet, FieldNameFactory fields) throws IOException{
 		TermDocs td = reader.termDocs(new Term("key",key));
 		if(td.next()){
 			Utf8Set terms = new Utf8Set(termSet);
@@ -902,8 +944,8 @@ public class Highlight {
 				posMap.put(p.ordinal(),p);
 			
 			Document doc = reader.document(td.doc());
-			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue("text"),terms,posMap);
-			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue("alttitle"),terms,posMap);
+			ArrayList<ExtToken> tokens = ExtToken.deserialize(doc.getBinaryValue(fields.hl_text()),terms,posMap);
+			Alttitles alttitles  = Alttitles.deserializeAltTitle(doc.getBinaryValue(fields.hl_alttitle()),terms,posMap);
 			String date = doc.get("date");
 			String sizeStr = doc.get("size");
 			Long size = sizeStr != null? Long.parseLong(sizeStr) : 0;

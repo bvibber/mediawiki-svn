@@ -28,6 +28,7 @@ import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
@@ -49,6 +50,8 @@ import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.spell.SuggestResult;
+import org.wikimedia.lsearch.spell.SuggestSimilar;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -62,13 +65,15 @@ public class SearchEngine {
 	static org.apache.log4j.Logger log = Logger.getLogger(SearchEngine.class);
 
 	protected final int MAXLINES = 1000;
-	protected final int MAXPREFIX = 100;
+	protected final int MAXPREFIX = 50;
 	protected final int MAXOFFSET = 10000;
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
 	protected static SearcherCache cache = null;
+	/** dbname -> ns_string -> ns_index */
 	protected static Hashtable<String,Hashtable<String,Integer>> dbNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
-	// protected long timelimit;
+	/** dbname -> ns_index -> ns_string */
+	protected static Hashtable<String,Hashtable<Integer,String>> dbNamespaceNames = new Hashtable<String,Hashtable<Integer,String>>();
 	
 	public SearchEngine(){
 		if(config == null)
@@ -138,7 +143,12 @@ public class SearchEngine {
 			int limit = MAXPREFIX;
 			if (query.containsKey("limit"))
 				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXPREFIX);
-			SearchResults res = searchPrefix(iid, searchterm, limit);
+			NamespaceFilter nsf = null;
+			if(query.containsKey("namespaces"))
+				nsf = new NamespaceFilter((String)query.get("namespaces"));
+			else
+				nsf = iid.getDefaultNamespace();
+			SearchResults res = searchPrefix(iid, searchterm, limit, nsf);
 			if(query.containsKey("format")){
 				String format = (String)query.get("format");
 				if(format.equalsIgnoreCase("json"))
@@ -154,6 +164,27 @@ public class SearchEngine {
 			if (query.containsKey("limit"))
 				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
 			return searchRelated(iid, searchterm, offset, limit);
+		} else if(what.equals("similar")){
+			NamespaceFilter nsf = null;
+			int dist = searchterm.length()/2;
+			int limit = 10;
+			if (query.containsKey("dist"))
+				dist = Math.max(Integer.parseInt((String)query.get("dist")), dist);
+			if(query.containsKey("namespaces"))
+				nsf = new NamespaceFilter((String)query.get("namespaces"));
+			else
+				nsf = iid.getDefaultNamespace();
+			if (query.containsKey("limit"))
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), MAXLINES);
+			return searchSimilar(iid,searchterm,nsf,dist,limit);
+		} else if(what.equals("suggest")){
+			NamespaceFilter nsf = null;
+			if(query.containsKey("namespaces"))
+				nsf = new NamespaceFilter((String)query.get("namespaces"));
+			else
+				nsf = iid.getDefaultNamespace();
+			return searchSuggest(iid,searchterm,nsf);
+
 		} else {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Unrecognized search type. Try one of: " +
@@ -163,6 +194,37 @@ public class SearchEngine {
 		}
 	}
 	
+	public SearchResults searchSuggest(IndexId iid, String searchterm, NamespaceFilter nsf){
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(iid).getBuilder();
+		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsf,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
+		NamespaceFilterWrapper nsfw = new NamespaceFilterWrapper(nsf);
+		SearchResults res = new SearchResults();
+		res.setSuccess(true);
+		suggest(iid,searchterm,parser,res,0,nsfw);
+		return res;
+	}
+		
+	/** Suggest similar titles */
+	public SearchResults searchSimilar(IndexId iid, String searchterm, NamespaceFilter nsf, int dist, int limit) {
+		SearchResults res = new SearchResults();
+		try{
+			RMIMessengerClient messenger = new RMIMessengerClient();
+			String host = cache.getRandomHost(iid.getTitleNgram());
+			ArrayList<String> keys = messenger.similar(host,iid.toString(),searchterm,nsf,dist);
+			for(int i=0;i<keys.size() && i<limit;i++)
+				res.addSimilar(keys.get(i));
+			res.setSuccess(true);
+			res.addInfo("similar",formatHost(host));
+		} catch(IOException e){
+			e.printStackTrace();
+			res.setErrorMsg("I/O error in searchSimilar() : "+e.getMessage());
+			log.error("I/O error in searchSimilar() : "+e.getMessage());
+		}
+		return res;
+	}
+
 	/** Convert namespace names into numbers, e.g. User:Rainman into 2:Rainman  */
 	protected String getKey(String title, IndexId iid){
 		title = title.replace('_',' ');
@@ -244,19 +306,20 @@ public class SearchEngine {
 				dbNamespaces.put(iid.getDBname(),map);
 			}
 		}
+		if(!dbNamespaceNames.containsKey(iid.getDBname())){
+			synchronized (dbNamespaceNames) {
+				dbNamespaceNames.put(iid.getDBname(),Localization.getLocalizedNamespaceNames(iid.getLangCode(),iid.getDBname()));
+			}
+		}
 	}
 	
-	protected SearchResults searchPrefix(IndexId iid, String searchterm, int limit) {
+	protected SearchResults searchPrefix(IndexId iid, String searchterm, int limit, NamespaceFilter nsf) {
 		IndexId pre = iid.getPrefix();
 		try{
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(pre);
-			return messenger.searchPrefix(host,pre.toString(),searchterm,limit);
-			
-			/* SearcherCache cache = SearcherCache.getInstance();		
-			IndexSearcherMul searcher = cache.getLocalSearcher(pre);
-			return searchPrefix(iid,searchterm,limit,searcher); */
+			return messenger.searchPrefix(host,pre.toString(),searchterm,limit,nsf);
 		} catch(IOException e){
 			e.printStackTrace();
 			log.error("Error opening searcher in prefixSearch on "+pre+" : "+e.getMessage());
@@ -265,54 +328,121 @@ public class SearchEngine {
 			return res;
 		}
 	}
-
 	
-	public SearchResults searchPrefixLocal(IndexId iid, String searchterm, int limit, IndexSearcherMul searcher) {
+	static class PrefixMatch {
+		String key;
+		int score;
+		String redirect=null;
+		
+		PrefixMatch(String serialized){
+			int d1 = serialized.indexOf(' ');
+			int d2 = serialized.indexOf(' ',d1+1);
+			if(d1 == -1)
+				d1 = serialized.length();
+			else
+				this.redirect = serialized.substring(d2+1).replace('_',' '); 
+			this.key = serialized.substring(0,d1).replace('_',' ');
+			this.score = Integer.parseInt(serialized.substring(d1+1,d2));
+		}
+		static class Comparator implements java.util.Comparator<PrefixMatch> {
+			public int compare(PrefixMatch o1, PrefixMatch o2) {
+				return o2.score-o1.score;
+			}			
+		}
+		public String toString(){
+			return key+" "+score+(!redirect.equals("")? " -> "+redirect : "");
+		}
+	}
+	
+	public SearchResults searchPrefixLocal(IndexId iid, String searchterm, int limit, NamespaceFilter nsf, IndexSearcherMul searcher) {
 		readLocalization(iid);
 		IndexId pre = iid.getPrefix();		
 		SearchResults res = new SearchResults();
-		try {			
-			long start = System.currentTimeMillis();
-			String key = getKey(searchterm.toLowerCase(),iid);
+		long start = System.currentTimeMillis();
+		try {
+			FilterFactory filters = new FilterFactory(iid);
+			//long start = System.currentTimeMillis();
+			String prefixKey = getKey(searchterm.toLowerCase(),iid);
+			prefixKey = filters.canonicalStringFilter(prefixKey);
+			String prefixNamespace = prefixKey.substring(0,prefixKey.indexOf(':'));
 			String namespace = getNamespace(searchterm,iid);
+			Hashtable<Integer,String> nsNames = dbNamespaceNames.get(iid.getDBname());
 			
-			IndexReader reader = searcher.getIndexReader();
-			TermDocs td = reader.termDocs(new Term("prefix",key));
-			if(td.next()){
-				// found entry with a prefix, return				
-				StringList sl = new StringList(reader.document(td.doc()).get("articles"));
-				int limitCount = 0;
-				Iterator<String> it = sl.iterator();
-				while(it.hasNext()){
-					if(limitCount >= limit)
-						break;
-					ResultSet rs = new ResultSet(it.next());
-					rs.setNamespaceTextual(capitalizeFirst(namespace));
-					res.addResult(rs);
-					limitCount++;
+			ArrayList<String> keys = new ArrayList<String>();
+			if(prefixKey.startsWith("0:")){
+				String title = prefixKey.substring(2);
+				for(Integer ns : nsf.getNamespacesOrdered()){
+					keys.add(ns+":"+title);
 				}
-				res.setNumHits(limitCount);
-				//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
-				return res;
-			}
-			// check if it's an unique prefix
-			TermEnum te = reader.terms(new Term("key",key));
-			if(te.term() != null){
-				String r = te.term().text();
-				if(r.startsWith(key)){
-					TermDocs td1 = reader.termDocs(new Term("key",r));
-					if(td1.next()){
-						ResultSet rs = new ResultSet(reader.document(td1.doc()).get("key"));
-						rs.setNamespaceTextual(capitalizeFirst(namespace));
-						res.addResult(rs);
-						//logRequest(pre,"prefix",searchterm,null,1,start,searcher);
-						return res;
+			} else
+				keys.add(prefixKey);
+			
+			ArrayList<PrefixMatch> results = new ArrayList<PrefixMatch>();
+			IndexReader reader = searcher.getIndexReader();
+			
+			for(String key : keys){				
+				TermDocs td = reader.termDocs(new Term("prefix",key));
+				if(td.next()){
+					// found entry with a prefix, return				
+					StringList sl = new StringList(reader.document(td.doc()).get("articles"));
+					int limitCount = 0;
+					Iterator<String> it = sl.iterator();
+					while(it.hasNext()){
+						if(limitCount >= limit)
+							break;
+						results.add(new PrefixMatch(it.next()));						
+						limitCount++;
+					}					
+				} else{
+					// check if it's an unique prefix
+					TermEnum te = reader.terms(new Term("key",key));
+					if(te.term() != null){
+						String r = te.term().text();
+						if(r.startsWith(key)){
+							TermDocs td1 = reader.termDocs(new Term("key",r));
+							if(td1.next()){
+								PrefixMatch m = new PrefixMatch(reader.document(td1.doc()).get("article"));
+								if(r.equals(key))
+									m.score *= 100; // exact boost
+								results.add(m);
+
+							}
+						}
 					}
 				}
 			}
-			// we didn't find a match, but we didn't encounter an error either
-			res.setNumHits(0);
+			
+			// make results
+			
+			if(keys.size() > 1) // if we did multiple fetch we need to resort things
+				Collections.sort(results,new PrefixMatch.Comparator());
+			
+			HashSet<String> selected = new HashSet<String>();
+			for(PrefixMatch m : results){
+				if(selected.contains(m) || (m.redirect!=null && selected.contains(m.redirect)))
+					continue;
+				if(res.getResults().size() >= limit)
+					break;
+				ResultSet rs = new ResultSet(m.key);
+				String ns = m.key.substring(0,m.key.indexOf(':'));
+				if(ns.equals("0"))
+					rs.setNamespaceTextual("");
+				else if(prefixNamespace.equals(ns))
+					rs.setNamespaceTextual(capitalizeFirst(namespace));
+				else 
+					rs.setNamespaceTextual(nsNames.get(Integer.parseInt(ns)));
+					
+				res.addResult(rs);
+				selected.add(m.key);
+				if(m.redirect != null && m.redirect.length()>0)
+					selected.add(m.redirect);
+			}
+			res.setNumHits(res.getResults().size());
 			res.setSuccess(true);
+			res.addInfo("prefix",global.getLocalhost());
+			
+			// don't log but send stats
+			sendStats(start-System.currentTimeMillis());
 		} catch (IOException e) {
 			e.printStackTrace();
 			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
@@ -464,6 +594,7 @@ public class SearchEngine {
 							highlight(iid,q,parser.getWordsClean(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null,parser.hasPhrases(),false);
 							fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 							suggest(iid,searchterm,parser,res,offset,nsfw);
+							fetchSimilar(res,iid,searchterm,nsfw);
 						}
 						return res;
 					}
@@ -495,6 +626,7 @@ public class SearchEngine {
 					highlight(iid,q,parser.getWordsClean(),searcher,parser.getHighlightTerms(),res,exactCase,parser.hasPhrases(),false);
 					fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 					suggest(iid,searchterm,parser,res,offset,nsfw);
+					fetchSimilar(res,iid,searchterm,nsfw);
 				}
 				return res;
 			} catch(Exception e){				
@@ -544,22 +676,44 @@ public class SearchEngine {
 	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
 	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
 		if(offset == 0 && iid.hasSpell()){
-			//if(res.isFoundAllInTitle())
-			//	return;
+			if(res.isFoundAllInTitle())
+				return;
 			if(nsfw == null)
 				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
 			// suggest !
 			res.setSuggest(null);
-			ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);
+			ArrayList<Token> tokens = parser.tokenizeForSpellCheck(searchterm);
 			if(tokens.size() == 0)
 				return; // nothing to spellchek
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(iid.getSpell());
-			Suggest.ExtraInfo info = new Suggest.ExtraInfo(res.getPhrases(),res.getFoundInContext(),res.getFoundInTitles(),res.getFirstHitRank());
+			Suggest.ExtraInfo info = new Suggest.ExtraInfo(res.getPhrases(),res.getFoundInContext(),res.getFoundInTitles(),res.getFirstHitRank(),res.isFoundAllInAltTitle());
 			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,info,nsfw.getFilter());
 			res.setSuggest(sq);	
 			res.addInfo("suggest",formatHost(host));
+		}
+	}
+	
+	/** Fetch similar titles to searchterm entered */
+	protected void fetchSimilar(SearchResults res, IndexId iid, String searchterm, NamespaceFilterWrapper nsfw) {
+		if(true) // NOTE: disabled this for now, as it is not as useful as we might want it to be... 
+			return; 
+		try{
+			if(!iid.hasTitleNgram())
+				return;
+			if(nsfw == null)
+				return; // mixed namespaces, bail out
+			IndexId similar = iid.getTitleNgram();
+			if(searchterm.length()>1){
+				RMIMessengerClient messenger = new RMIMessengerClient();
+				String host = cache.getRandomHost(similar);
+				res.addSimilar(messenger.similar(host,iid.toString(),searchterm,nsfw.getFilter(),2));
+				res.addInfo("similar",formatHost(host));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+			log.error("Cannot fetch similar titles for "+searchterm+" on "+iid+" : "+e.getMessage());
 		}
 	}
 
@@ -652,13 +806,13 @@ public class SearchEngine {
 
 			if(r.isSuccess()){
 				res.setTitles(r.getResults());
-				if(r.isFoundAllInTitle())
-					res.setFoundAllInTitle(true);
+				//if(r.isFoundAllInTitle())
+				//	res.setFoundAllInTitle(true);
 				//res.addToFirstHitRank(r.getNumHits());
 			} else
 				log.error("Error getting grouped titles search results: "+r.getErrorMsg());
 			res.addInfo("titles",formatHosts(searcher.getAllHosts().values()));
-		} catch(IOException e){
+		} catch(Exception e){
 			e.printStackTrace();
 			log.error("Error fetching grouped titles: "+e.getMessage());
 		}
@@ -824,6 +978,8 @@ public class SearchEngine {
 				res.getFoundInContext().addAll(rs.foundInContext);
 				if(rs.foundAllInTitle && words.size()>1)
 					res.setFoundAllInTitle(true);
+				if(rs.foundAllInAltTitle && words.size()>1)
+					res.setFoundAllInAltTitle(true);
 				res.getFoundInTitles().addAll(rs.foundInTitles);
 			}
 		}
@@ -839,9 +995,14 @@ public class SearchEngine {
 		return Math.min(Math.min(i1,i2),i3);
 	}
 	
+	protected void sendStats(long delta){
+		boolean succ = delta < 10000; // we queries taking more than 10s as bad 
+		SearchServer.stats.add(succ, delta, SearchDaemon.getOpenCount());
+	}
+	
 	protected void logRequest(IndexId iid, String what, String searchterm, Query query, int numhits, long start, Searchable searcher) {
 		long delta = System.currentTimeMillis() - start;
-		SearchServer.stats.add(true, delta, SearchDaemon.getOpenCount());
+		sendStats(delta);
 		log.info(MessageFormat.format("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms using {6}",
 			new Object[] {what, iid.toString(), searchterm, query==null? "" : query.toString(), new Integer(numhits), new Long(delta), searcher.toString()}));
 	}

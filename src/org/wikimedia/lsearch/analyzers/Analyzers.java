@@ -42,16 +42,30 @@ public class Analyzers {
 	 * @param language
 	 * @return
 	 */
-	public static Analyzer getReusableAnalyzer(FilterFactory filters, boolean exactCase){
+	public static Analyzer getReusableIndexAnalyzer(FilterFactory filters, boolean exactCase){
 		if(filters.isSpellCheck())
-			return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.SpellCheck());
-		return new ReusableLanguageAnalyzer(filters,exactCase);
+			return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.SpellCheck());
+		return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.NoRelocation(exactCase));
+	}
+	public static Analyzer getReusableTitleIndexAnalyzer(FilterFactory filters, boolean exactCase){
+		if(filters.isSpellCheck())
+			return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.SpellCheckTitle());
+		return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.Title(exactCase));
 	}
 	
-	public static Analyzer getReusableTitleAnalyzer(FilterFactory filters, boolean exactCase){
+	public static Analyzer getReusableAnalyzer(FilterFactory filters, TokenizerOptions options){
+		return new ReusableLanguageAnalyzer(filters,options);
+	}
+	
+	public static Analyzer getReusableSearchAnalyzer(FilterFactory filters, boolean exactCase){
 		if(filters.isSpellCheck())
-			return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.SpellCheckTitle());
-		return new ReusableLanguageAnalyzer(filters,exactCase,new TokenizerOptions.Title(exactCase));
+			return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.SpellCheck());
+		return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.NoRelocationNoSplit(exactCase));
+	}
+	public static Analyzer getReusableTitleSearchAnalyzer(FilterFactory filters, boolean exactCase){
+		if(filters.isSpellCheck())
+			return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.SpellCheckTitle());
+		return new ReusableLanguageAnalyzer(filters,new TokenizerOptions.TitleNoSplit(exactCase));
 	}
 	
 	/** 
@@ -60,17 +74,17 @@ public class Analyzers {
 	 * @param language
 	 * @return
 	 */
-	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters){
-		return getReusableHighlightAnalyzer(filters,false);
+	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters, boolean exactCase){
+		return getReusableHighlightAnalyzer(filters,false,exactCase);
 	}
 	
-	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters, boolean original){
+	public static ReusableLanguageAnalyzer getReusableHighlightAnalyzer(FilterFactory filters, boolean original, boolean exactCase){
 		TokenizerOptions options = null;
 		if(original)
-			options = new TokenizerOptions.HighlightOriginal();
+			options = new TokenizerOptions.HighlightOriginal(exactCase);
 		else
-			options = new TokenizerOptions.Highlight();
-		return new ReusableLanguageAnalyzer(filters,false,options);
+			options = new TokenizerOptions.Highlight(exactCase);
+		return new ReusableLanguageAnalyzer(filters,options);
 	}
 
 	/**
@@ -79,7 +93,7 @@ public class Analyzers {
 	 * @return analyzer
 	 */
 	public static PerFieldAnalyzerWrapper getIndexerAnalyzer(FieldBuilder builder){
-		PerFieldAnalyzerWrapper analyzer = new PerFieldAnalyzerWrapper(getReusableAnalyzer(builder.getBuilder().getFilters().getNoStemmerFilterFactory(),false));
+		PerFieldAnalyzerWrapper analyzer = new PerFieldAnalyzerWrapper(getReusableIndexAnalyzer(builder.getBuilder().getFilters().getNoStemmerFilterFactory(),false));
 		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
@@ -88,18 +102,18 @@ public class Analyzers {
 			 
 			// all fields are pre-analyzed, except titles
 			analyzer.addAnalyzer(fields.title(),
-					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.stemtitle(),
-					getReusableTitleAnalyzer(filters,exactCase));
+					getReusableTitleIndexAnalyzer(filters,exactCase));
 			analyzer.addAnalyzer(fields.reverse_title(),
-					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			// and aggregates:
 			analyzer.addAnalyzer(fields.related(),
-					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.alttitle(),
-					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.sections(),
-					getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		}
 		
 		return analyzer;
@@ -129,33 +143,33 @@ public class Analyzers {
 		PerFieldAnalyzerWrapper analyzer = null;
 		boolean exactCase = fields.isExactCase();
 		
-		analyzer = new PerFieldAnalyzerWrapper(getReusableAnalyzer(filters,exactCase));
+		analyzer = new PerFieldAnalyzerWrapper(getReusableSearchAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.contents(), 
-				getReusableAnalyzer(filters,exactCase));
+				getReusableSearchAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.title(),
-				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleSearchAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.stemtitle(),
-				getReusableTitleAnalyzer(filters,exactCase));
+				getReusableTitleSearchAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.alttitle(),
-				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleSearchAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.related(),
-				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleSearchAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.sections(),
-				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleSearchAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.keyword(), 
-				getReusableTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+				getReusableTitleSearchAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		
 		if(!exactCase){ // add exact-case analyzer, needed for titles indexes
 			FieldNameFactory fieldsExact = new FieldNameFactory(true);
 			analyzer.addAnalyzer(fieldsExact.title(),
-					getReusableAnalyzer(filters.getNoStemmerFilterFactory(),true));
+					getReusableSearchAnalyzer(filters.getNoStemmerFilterFactory(),true));
 		}
 		
 		return analyzer;
 	}
 	
-	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(IndexId iid){
-		return getHighlightAnalyzer(new FilterFactory(iid), new FieldNameFactory());
+	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(IndexId iid, boolean exactCase){
+		return getHighlightAnalyzer(new FilterFactory(iid), new FieldNameFactory(),exactCase);
 	}
 	
 	/**
@@ -164,20 +178,20 @@ public class Analyzers {
 	 * @param text
 	 * @return
 	 */
-	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(FilterFactory filters, FieldNameFactory fields) {
+	public static PerFieldAnalyzerWrapper getHighlightAnalyzer(FilterFactory filters, FieldNameFactory fields, boolean exactCase) {
 		PerFieldAnalyzerWrapper analyzer = null;
 		
-		analyzer = new PerFieldAnalyzerWrapper(getReusableHighlightAnalyzer(filters));
+		analyzer = new PerFieldAnalyzerWrapper(getReusableHighlightAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.contents(), 
-				getReusableHighlightAnalyzer(filters));
+				getReusableHighlightAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.title(),
-				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		analyzer.addAnalyzer(fields.stemtitle(),
-				getReusableHighlightAnalyzer(filters));
+				getReusableHighlightAnalyzer(filters,exactCase));
 		analyzer.addAnalyzer(fields.alttitle(),
-				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory(),true));
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory(),true,exactCase));
 		analyzer.addAnalyzer(fields.keyword(), 
-				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory()));
+				getReusableHighlightAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		
 		return analyzer;
 	}

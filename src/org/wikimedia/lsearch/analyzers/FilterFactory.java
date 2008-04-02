@@ -17,6 +17,7 @@ import org.wikimedia.lsearch.analyzers.EnglishSingularFilter.EnglishSingular;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer.ArrayTokens;
 import org.wikimedia.lsearch.config.IndexId;
 
+
 /**
  * Make a language-dependent pair of filters. The custom filter is to be applied before the stemmer.
  * 
@@ -122,8 +123,7 @@ public class FilterFactory {
 			langFilter = SerbianFilter.class;
 		else if(lang.equals("vi"))
 			langFilter = VietnameseFilter.class;
-		else if(lang.equals("zh") || lang.equals("cjk") || lang.equals("ja") ||
-				lang.equals("zh-classical") || lang.equals("zh-yue")){
+		else if(isCJKLanguage(lang)){
 			langFilter = CJKFilter.class;
 			usingCJK = true;
 		} else 
@@ -146,6 +146,11 @@ public class FilterFactory {
 		if(lang.equals("sr"))
 			hasCanonicalFilter = true;
 		
+	}
+	
+	public static boolean isCJKLanguage(String lang){
+		return lang.equals("zh") || lang.equals("cjk") || lang.equals("ja") ||
+		lang.equals("zh-classical") || lang.equals("zh-yue");
 	}
 	
 	protected void addAdditionalFilter(Class filterClass){
@@ -348,7 +353,7 @@ public class FilterFactory {
 		} 
 		return null;
 	}
-	/** always return the canonical form, even if its identical to the input */
+	/** for langs with cacnonical form: always return the canonical form, even if its identical to the input */
 	public String canonicalStringFilter(String w){
 		if(!hasCanonicalFilter)
 			return w;

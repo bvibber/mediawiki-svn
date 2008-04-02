@@ -94,9 +94,11 @@ public class FastWikiTokenizerEngine {
 	/** Token gap at new bulletins (like *, #...) */ 
 	public static int BULLETIN_GAP = 10;
 	/** Gap between sentences */ 
-	public static int SENTENCE_GAP = 2;
+	public static int SENTENCE_GAP = 3;
 	/** Gap between references */ 
 	public static int REFERENCE_GAP = 20;
+	/** Gap between stuff separated by commas, etc.. */
+	public static int MINOR_GAP = 2;
 	
 	/** language code */
 	private String language;
@@ -200,6 +202,7 @@ public class FastWikiTokenizerEngine {
 			boolean addDecomposed = false;
 			boolean allUpperCase = true;
 			boolean titleCase = true;			
+			boolean split = false; // if more tokens shold be produced, e.g. joe's -> joe + s
 			for(int i=0;i<length;i++){
 				if(decomposer.isCombiningChar(buffer[i])){
 					addDecomposed = true;
@@ -271,11 +274,13 @@ public class FastWikiTokenizerEngine {
 					addToAlias = false;
 				} 
 				
-				// delete single quotes / dots in aliases
+				// split around single quotes / dots in aliases
 				if(!options.noTokenization && (cl == '\'' || (cl=='.' && !numberToken))){
-					addToTokenAlias("");
-					addToAlias = false;
+					split = true;
+					//addToTokenAlias("");
+					//addToAlias = false;
 				}
+				
 				if(!options.noTokenization && isTrailing(cl)){
 					addToTokenAlias("");
 					addToAlias = false;
@@ -332,6 +337,24 @@ public class FastWikiTokenizerEngine {
 					t.setPositionIncrement(0);
 					t.setType(exact.type());
 					addToTokens(t);
+				}
+			}
+			
+			// split buffer around non-letter chars, add all as aliases
+			// FIXME: produces bad results on queries like c'est (where C is a common term, e.g. in C programming language)
+			if(split && options.split){
+				int start=-1;
+				for(int i=0;i<decompLength+1;i++){
+					boolean sp = i==decompLength || decompBuffer[i]=='\'' || decompBuffer[i]=='.';
+					if(!sp && start==-1){
+						start = i;
+					} else if(sp && start!=-1){
+						Token t = makeToken(new String(decompBuffer, start, i-start), start, start + length, false);
+						t.setPositionIncrement(0);
+						t.setType(exact.type());
+						addToTokens(t);
+						start = -1;
+					}
 				}
 			}
 			length = 0;
@@ -524,7 +547,7 @@ public class FastWikiTokenizerEngine {
 		tokens.add(t);
 	}
 
-	private static final boolean isTrailing(char ch){
+	public static final boolean isTrailing(char ch){
 		return ch=='-' || ch=='/' || ch=='+' || ch=='&' || ch =='@' || ch=='\\' || ch=='#' || ch=='%' || ch=='^' || ch=='*' || ch=='!' || ch=='?';	
 	}
 	
@@ -550,7 +573,7 @@ public class FastWikiTokenizerEngine {
 			// add new character to buffer
 			if(Character.isLetter(c) || (!numberToken && length>0 && Character.isLetterOrDigit(c))
 					|| (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
-					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]))
+					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]) && (length<=2 || (length>2 && buffer[length-1]!='.' && buffer[length-2]=='.')))
 					|| decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
 					addToken(false);
@@ -850,6 +873,10 @@ public class FastWikiTokenizerEngine {
 			return tokens;
 		}
 		
+		// strip comments so we don't neded to complicate syntax parsing even more
+		stripComments();				
+			
+		// start parsing
 		for(cur = 0; cur < textLength; cur++ ){
 			c = text[cur];			
 			
@@ -1022,10 +1049,14 @@ public class FastWikiTokenizerEngine {
 					continue;
 				case '<':
 					addToken();
+					if(matchesString("<!--")){
+						// unstripped comment (within nowiki tags)
+						continue;
+					}
 					if(checkRefStart()){ 
 						inRef = true;
 						firstRef = true;
-					}					
+					}							
 					if(matchesString("</ref>")){
 						flushGlue();
 						inRef = false;
@@ -1087,6 +1118,9 @@ public class FastWikiTokenizerEngine {
 						continue;
 				}
 				addLetter();
+				// some other non-character
+				if(options.relocationParsing && c!=' ' && !Character.isLetterOrDigit(c) && !decomposer.isCombiningChar(c))
+					gap = MINOR_GAP; 				
 				continue;
 			case IGNORE:
 				if(c == ignoreEnd){
@@ -1369,6 +1403,32 @@ public class FastWikiTokenizerEngine {
 		return tokens;
 	}
 
+	private void stripComments() {
+		char[] stripped = new char[textLength];
+		int slen = 0;
+		boolean inNoWiki = false, inComment = false;
+		for(cur = 0; cur < textLength; cur++ ){
+			if(text[cur]=='<'){
+				if(!inComment && matchesString("<nowiki>"))
+					inNoWiki = true;
+				else if(!inComment && matchesString("</nowiki>"))
+					inNoWiki = false;
+				else if(!inNoWiki && matchesString("<!--"))
+					inComment = true;
+			} else if(!inNoWiki && text[cur]=='-' && cur+2<textLength && text[cur+1]=='-' && text[cur+2]=='>')
+				inComment = false;
+			
+			if(!inComment)
+				stripped[slen++] = text[cur];			
+		}
+		
+		if(slen != textLength){
+			text = stripped;
+			textLength = slen;
+		}
+		
+	}
+
 	/** Check if this is an "image" keyword using localization */
 	private final boolean isImage(String prefix){
 		prefix = prefix.toLowerCase();
@@ -1494,8 +1554,7 @@ public class FastWikiTokenizerEngine {
 				}
 			}
 		}
-		return new String(buf,0,len).trim();	
-		
+		return new String(buf,0,len).trim();
 	}
 	
 	/** Delete everything that is not being indexes, decompose chars */

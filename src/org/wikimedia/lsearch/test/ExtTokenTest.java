@@ -17,7 +17,7 @@ public class ExtTokenTest {
 	public static void main(String[] args) throws Exception {
 		Configuration.open();
 		
-		Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
+		Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"),false);
 		
 		String text = "Some extremely [[simple]] example text. With two sentences, by Šostakovič.";
 		byte[] serialized = ExtToken.serialize(analyzer.tokenStream("",text));

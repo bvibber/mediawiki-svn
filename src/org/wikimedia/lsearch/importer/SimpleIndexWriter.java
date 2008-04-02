@@ -45,8 +45,7 @@ public class SimpleIndexWriter {
 	protected String langCode;
 	protected Links links;
 	protected Analyzer indexAnalyzer;
-	protected Analyzer highlightAnalyzer;	
-	protected ReusableLanguageAnalyzer highlightContentAnalyzer;
+	protected Analyzer interwikiHighlightAnalyzer;	
 	protected HashSet<String> stopWords;
 	protected String suffix = null;
 	protected IndexId original;
@@ -67,8 +66,7 @@ public class SimpleIndexWriter {
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();		
 		indexAnalyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(iid,FieldBuilder.Case.EXACT_CASE));
-		highlightAnalyzer = Analyzers.getHighlightAnalyzer(iid);
-		highlightContentAnalyzer = Analyzers.getReusableHighlightAnalyzer(builder.getBuilder().getFilters());
+		interwikiHighlightAnalyzer = Analyzers.getHighlightAnalyzer(iid,false);
 		stopWords = StopWords.getPredefinedSet(iid);
 		this.exactCase = global.exactCaseIndex(original.getDBname());
 		// open all relevant indexes
@@ -167,7 +165,7 @@ public class SimpleIndexWriter {
 		if(writer == null)
 			return;		
 		try {
-			Document doc = WikiIndexModifier.makeHighlightDocument(a,highlightAnalyzer,highlightContentAnalyzer,target);
+			Document doc = WikiIndexModifier.makeHighlightDocument(a,builder,target);
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -184,7 +182,7 @@ public class SimpleIndexWriter {
 		if(writer == null)
 			return;		
 		try {
-			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,highlightAnalyzer,target,suffix,original.getDBname(),exactCase,stopWords);
+			Document doc = WikiIndexModifier.makeTitleDocument(a,indexAnalyzer,interwikiHighlightAnalyzer,target,suffix,original.getDBname(),exactCase,stopWords);
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();

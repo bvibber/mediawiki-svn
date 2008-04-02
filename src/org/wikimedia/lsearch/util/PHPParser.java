@@ -126,6 +126,32 @@ public class PHPParser {
 		return ns;
 	}
 	
+	/** Get a map of localized namespace names: ns_id -> namespace name */
+	public Hashtable<Integer,String> getNamespaceNames(String text){
+		Hashtable<Integer,String> ns = new Hashtable<Integer,String>();
+		
+		text = text.replaceAll("(#.*)",""); // strip comments
+		
+		// namespaceNames
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern nsnames = Pattern.compile("\\$namespaceNames\\s*=\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("(\\w+)\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		Matcher matcher = nsnames.matcher(text);
+		while(matcher.find()){
+			Matcher me = entry.matcher(matcher.group(1));
+			while(me.find()){
+				Integer i = namespaces.get(me.group(1).toUpperCase());
+				if(i!=null){
+					String name = me.group(2).trim();
+					if(name.length() != 0)
+						ns.put(i,name);
+				}
+			}
+		}
+		
+		return ns;
+	}
+	
 	/** Get wgLanguages from InitialiseSettings */
 	public Hashtable<String,String> getLanguages(String text){
 		text = text.replaceAll("(#.*)",""); // strip comments
@@ -180,6 +206,24 @@ public class PHPParser {
 		return meta;
 	}
 	
+	/** Get wgMetaNamespaceTalk (dbname->metans name) from InitialiseSettings */
+	public Hashtable<String,String> getMetaNamespaceTalk(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,String> meta = new Hashtable<String,String>();
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern wgmeta = Pattern.compile("[\"']wgMetaNamespaceTalk[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		Matcher matcher = wgmeta.matcher(text);
+		while(matcher.find()){
+			Matcher me = entry.matcher(matcher.group(1));
+			while(me.find()){
+				meta.put(me.group(1),me.group(2));				
+			}
+		}
+		return meta;
+	}
+	
 	/** Get wgNamespacesToBeSearchedDefault from InitialiseSettings */
 	public Hashtable<String,NamespaceFilter> getDefaultSearch(String text){
 		text = text.replaceAll("(#.*)",""); // strip comments
@@ -188,7 +232,7 @@ public class PHPParser {
 		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
 		//Pattern wgns = Pattern.compile("[\"']wgNamespacesToBeSearchedDefault[\"']\\s*=>\\s*array\\s*\\(((.*?\\(.*?\\).*?)+)\\)",flags);
 		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
-		Pattern entry = Pattern.compile("(-?[0-9]+)\\s*=>\\s*([01])",flags);
+		Pattern entry = Pattern.compile("(-?[0-9A-Z_]+)\\s*=>\\s*([01true])",flags);
 		String t = fetchArray(text,"'wgNamespacesToBeSearchedDefault'");
 		Matcher md = db.matcher(t);
 		while(md.find()){
@@ -197,9 +241,78 @@ public class PHPParser {
 			Matcher me = entry.matcher(md.group(2));
 			while(me.find()){
 				if(!me.group(2).equals("0"))
-					nsf.set(Integer.parseInt(me.group(1)));
+					nsf.set(parseNamespace(me.group(1)));
 			}
 			ret.put(dbname,nsf);
+		}
+		return ret;
+	}
+	
+	/** Get wgNamespacesWithSubpages from InitialiseSettings */
+	public Hashtable<String,NamespaceFilter> getNamespacesWithSubpages(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,NamespaceFilter> ret = new Hashtable<String,NamespaceFilter>();		
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("(-?[0-9A-Z_]+)\\s*=>\\s*([01true])",flags);
+		String t = fetchArray(text,"'wgNamespacesWithSubpages'");
+		Matcher md = db.matcher(t);
+		while(md.find()){
+			String dbname = md.group(1);
+			NamespaceFilter nsf = new NamespaceFilter();
+			Matcher me = entry.matcher(md.group(2));
+			while(me.find()){
+				if(!me.group(2).equals("0"))
+					nsf.set(parseNamespace(me.group(1)));
+			}
+			ret.put(dbname,nsf);
+		}
+		return ret;
+	}
+	
+	protected int parseNamespace(String ns){
+		if(Character.isLetter(ns.charAt(0))){
+			if(ns.equals("NS_MAIN")) return 0;
+			if(ns.equals("NS_TALK")) return 1;
+			if(ns.equals("NS_USER")) return 2;
+			if(ns.equals("NS_USER_TALK")) return 3;
+			if(ns.equals("NS_PROJECT")) return 4;
+			if(ns.equals("NS_PROJECT_TALK")) return 5;
+			if(ns.equals("NS_IMAGE")) return 6;
+			if(ns.equals("NS_IMAGE_TALK")) return 7;
+			if(ns.equals("NS_MEDIAWIKI")) return 8;
+			if(ns.equals("NS_MEDIAWIKI_TALK")) return 9;
+			if(ns.equals("NS_TEMPLATE")) return 10;
+			if(ns.equals("NS_TEMPLATE_TALK")) return 11;
+			if(ns.equals("NS_HELP")) return 12;
+			if(ns.equals("NS_HELP_TALK")) return 13;
+			if(ns.equals("NS_CATEGORY")) return 14;
+			if(ns.equals("NS_CATEGORY_TALK")) return 15;
+			System.out.println("Unrecognized namespace name "+ns);
+			return 0; // error, but continue with a warning.. 
+		} else 
+			return Integer.parseInt(ns);
+	}
+	
+	/** Get extra namespaces for each wiki defined in InitialiseSettings */
+	public Hashtable<String,Hashtable<Integer,String>> getExtraNamespaces(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,Hashtable<Integer,String>> ret = new Hashtable<String,Hashtable<Integer,String>>();		
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("(-?[0-9]+)\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		String t = fetchArray(text,"'wgExtraNamespaces'");
+		Matcher md = db.matcher(t);
+		while(md.find()){
+			String dbname = md.group(1);
+			Hashtable<Integer,String> extra = new Hashtable<Integer,String>();
+			Matcher me = entry.matcher(md.group(2));
+			while(me.find()){
+				extra.put(Integer.parseInt(me.group(1)),me.group(2));
+			}
+			ret.put(dbname,extra);
 		}
 		return ret;
 	}
@@ -295,7 +408,9 @@ public class PHPParser {
 		System.out.println(p.getServer(initset));
 		System.out.println(p.getDefaultSearch(initset));
 		System.out.println(p.getMetaNamespace(initset));
-		
+		System.out.println(p.getMetaNamespaceTalk(initset));
+		System.out.println(p.getExtraNamespaces(initset));
+		System.out.println(p.getNamespacesWithSubpages(initset));
 		
 	}
 }

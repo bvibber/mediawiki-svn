@@ -35,7 +35,7 @@ mw-titles: (titles_by_suffix,1) (tspart1, [ mediawikiwiki|mw, metawiki|meta ])
 192.168.0.4 : frtest.part1, frtest.part2
 192.168.0.6 : frtest.part3, detest
 [Search-Group]
-192.168.0.10 :entest.mainpart
+192.168.0.10: entest.mainpart
 192.168.0.2 : entest.restpart, rutest
 192.168.0.2 : hmwiki.nspart1 hmwiki.nspart2 hmwiki.nspart3
 [Search-Group]

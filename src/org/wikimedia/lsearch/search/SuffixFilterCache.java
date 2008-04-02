@@ -8,12 +8,11 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
-import org.apache.lucene.search.CachingWrapperFilter;
 import org.apache.lucene.search.Filter;
 
 public class SuffixFilterCache {
 	static Logger log = Logger.getLogger(SuffixFilterCache.class);
-	protected static Hashtable<SuffixFilter,CachingWrapperFilter> cache = new Hashtable<SuffixFilter,CachingWrapperFilter>();
+	protected static Hashtable<SuffixFilter,CachedFilter> cache = new Hashtable<SuffixFilter,CachedFilter>();
 	
 	/** class to create the bitset that is to be cached */
 	protected static class SuffixFilterBuilder extends Filter {
@@ -42,9 +41,9 @@ public class SuffixFilterCache {
 	/** Get locally cached bitset for the filter */
 	public static BitSet bits(SuffixFilter filter, IndexReader reader) throws IOException {
 		synchronized(reader){
-			CachingWrapperFilter cwf = cache.get(filter);
+			CachedFilter cwf = cache.get(filter);
 			if(cwf == null){
-				cwf = new CachingWrapperFilter(new SuffixFilterBuilder(filter));
+				cwf = new CachedFilter(new SuffixFilterBuilder(filter));
 				cache.put(filter,cwf);
 			}
 			return cwf.bits(reader);

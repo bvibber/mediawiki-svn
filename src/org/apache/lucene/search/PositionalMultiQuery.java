@@ -97,14 +97,29 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 			this.idf = 0;
 	      // compute idf - take average when multiple terms
 	      Iterator i = termArrays.iterator();
+	      int count = 0;
 	      while (i.hasNext()) {
 	        Term[] terms = (Term[])i.next();
 	        float av = 0;
+	        float[] idfs = new float[terms.length];
 	        for (int j=0; j<terms.length; j++) {
-	          av += getSimilarity(searcher).idf(terms[j], searcher);
+	      	  idfs[j] = getSimilarity(searcher).idf(terms[j], searcher); 
+	      	  av += idfs[j];
 	        }
-	        idf += av / terms.length;
+	        av /= terms.length;
+	        idf += av;
+	        
+	        // rescale boosts to reinstall right idfs per term
+	        ArrayList<Float> fb = boosts.get(count);
+	        for(int j=0; j<idfs.length; j++){
+	      	  fb.set(j,fb.get(j)*(idfs[j]/av));
+	        }	        
+	        count++;
 	      }
+		}
+		
+		private final float sq(float x){
+			return x*x;
 		}
 
 		public Scorer scorer(IndexReader reader) throws IOException {
@@ -159,7 +174,7 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 			Explanation queryExpl = new Explanation();
 			queryExpl.setDescription("queryWeight(" + getQuery() + "), product of:");
 
-			Explanation boostExpl = new Explanation(getBoost(), "boost");
+			Explanation boostExpl = new Explanation(getBoost(), "boost (per term="+boosts+")");
 			if (getBoost() != 1.0f)
 				queryExpl.addDetail(boostExpl);
 

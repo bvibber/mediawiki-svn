@@ -71,7 +71,7 @@ public class SpellCheckIndexer {
 	protected DoubleMetaphone dmeta = new DoubleMetaphone();
 	
 	public SpellCheckIndexer(IndexId iid){
-		this(iid,false);
+		this(iid.getSpell(),false);
 	}
 	
 	public SpellCheckIndexer(IndexId spell, boolean createNew){
@@ -97,6 +97,10 @@ public class SpellCheckIndexer {
 			this.phrase = w.getWord();
 			this.freq = w.getFrequency();
 			dist = new EditDistance(phrase,false);
+		}
+		
+		public String toString(){
+			return phrase+" "+freq;
 		}
 	}
 	
@@ -129,19 +133,47 @@ public class SpellCheckIndexer {
 				String titleText = d.get(title);
 				if(titleText != null){
 					String rank = d.get("rank");
-					String redirect = d.get("redirect");				
-					addTitle(titleText,rank,redirect);
+					String redirect = d.get("redirect");
+					String ns = d.get("namespace");
+					addTitle(titleText,ns,rank,redirect);
 					String canonicalTitle = filters.canonizeString(titleText);
 					if(canonicalTitle != null)
-						addTitle(canonicalTitle,rank,filters.canonicalStringFilter(redirect));
+						addTitle(canonicalTitle,ns,rank,filters.canonicalStringFilter(redirect));
 				}
 				
 			}
 			
-			log.info("Adding words and phrases");
+			log.info("Getting most common phrases");
 			LuceneDictionary dict = new LuceneDictionary(ir,contents);
-			dict.setProgressReport(new ProgressReport("terms",10000));
 			Word word;
+			dict.setNoProgressReport();
+			// prefix -> list of phrases
+			HashMap<String,ArrayList<Phrase>> commonPhrases = new HashMap<String,ArrayList<Phrase>>();
+			while((word = dict.next()) != null){
+				if(word.getFrequency() > (minPhraseFreq * 100) && word.getWord().contains("_")){					
+					String w = word.getWord();
+					String[] parts = w.split("_");
+					if(!anyStop(parts,stopWords)){
+						String key = w.substring(0,2);
+						ArrayList<Phrase> targ = commonPhrases.get(key);
+						if(targ == null)
+							commonPhrases.put(key,(targ=new ArrayList<Phrase>()));
+						targ.add(new Phrase(word));
+					}
+				}
+			}
+			// sort descending on freq
+			for(ArrayList<Phrase> targ : commonPhrases.values()){
+				Collections.sort(targ,  new Comparator<Phrase>() {
+					public int compare(Phrase o1, Phrase o2) {
+						return o2.freq - o1.freq;
+					}});
+			} 
+			
+			log.info("Adding words and phrases");
+			dict = new LuceneDictionary(ir,contents);
+			dict.setProgressReport(new ProgressReport("terms",10000));
+			// Word word;
 			while((word = dict.next()) != null){
 				String w = word.getWord();
 				int freq = word.getFrequency();				
@@ -160,7 +192,10 @@ public class SpellCheckIndexer {
 					}
 					if(allowed && freq >= minPhraseFreq){
 						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
-						addPhrase(w,freq,inTitle,null,null);
+						String common = getCommonMisspell(w,freq,commonPhrases);
+						if(common != null && !validateCommonMisspell(w,common,stopWords,filters))
+							common = null;
+						addPhrase(w,freq,inTitle,common,null);
 					}
 				} else{ // word
 					if(freq >= minWordFreq){
@@ -238,6 +273,14 @@ public class SpellCheckIndexer {
 		
 	}	
 	
+	/** If all strings has stop words or numbers */
+	private boolean anyStop(String[] parts, HashSet<String> stopWords) {
+		for(String s : parts)
+			if(stopWords.contains(s) || isNumberLike(s) || s.length()<=2)
+				return true;
+		return false;
+	}
+
 	/** Provide contextual words for words and phraes in title */
 	protected String makeContext(String w, IndexReader ir, FieldNameFactory fields, HashSet<String> stopWords) throws IOException{
 		// add additional information about context
@@ -268,11 +311,12 @@ public class SpellCheckIndexer {
 	 * 
 	 * @param title
 	 */
-	public void addTitle(String title, String rank, String redirect){
+	public void addTitle(String title, String ns, String rank, String redirect){
 		Document doc = new Document();
 		// store normalized version (only letters and spaces)
 		String normalized = FastWikiTokenizerEngine.normalize(title.toLowerCase());
 		String decomposed = FastWikiTokenizerEngine.decompose(normalized);
+		// doc.add(new Field("title", ns+":"+title, Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("title", normalized, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		if(decomposed != normalized)
 			doc.add(new Field("title", decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
@@ -292,7 +336,8 @@ public class SpellCheckIndexer {
 		Document doc = new Document();
 		String normalized = FastWikiTokenizerEngine.normalize(title.toLowerCase());
 		String decomposed = FastWikiTokenizerEngine.decompose(normalized);
-		doc.add(new Field("ns_title", ns+":"+normalized, Field.Store.YES, Field.Index.NO));
+		//doc.add(new Field("ns_title", ns+":"+title, Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("ns_title", ns+":"+normalized, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		if(decomposed != normalized)
 			doc.add(new Field("ns_title", ns+":"+decomposed, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("ns_namespace", ns, Field.Store.YES, Field.Index.UN_TOKENIZED));
@@ -392,9 +437,9 @@ public class SpellCheckIndexer {
 		}
 		if(corrected != null){
 			doc.add(new Field("misspell",corrected, Field.Store.YES, Field.Index.NO));
-			System.out.println(phrase+" -> "+corrected);
+			System.out.println("Misspell: "+phrase+" -> "+corrected);
 		}
-		addContext(phrase,context);			
+		//addContext(phrase,context);			
 
 		ngramWriter.addDocument(doc);
 	}
@@ -438,8 +483,8 @@ public class SpellCheckIndexer {
 		doc.add(new Field("meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
 		addContext(word,context);		
 		ngramWriter.addDocument(doc);
-	}	
-	
+	}
+		
 	public void addContext(String key, String context){
 		if(context == null)
 			return;
@@ -447,5 +492,86 @@ public class SpellCheckIndexer {
 		doc.add(new Field("context_key",key, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("context", context, Field.Store.YES, Field.Index.NO));
 		ngramWriter.addDocument(doc);
+	}
+	
+	
+	private String[] splitPhrase(String p){
+		return p.split("_");		
+	}
+	
+	private boolean isNumber(String p){
+		for(int i=0;i<p.length();i++){
+			if(!Character.isDigit(p.charAt(i)))
+				return false;
+		}
+		return true;
+	}
+	
+	private boolean isNumberLike(String p){
+		if(p.length()>0)
+			return Character.isDigit(p.charAt(0));
+		return false;
+	}
+
+	
+	/** Check if this is a valid misspell correction */
+	protected boolean validateCommonMisspell(String phrase, String corrected, HashSet<String> stopWords, FilterFactory filters){
+		// no numbers, corrected words 5+ letters, & doesn't stem to same
+		// corrected words cannot be stopwords
+		String[] p = splitPhrase(phrase);
+		String[] c = splitPhrase(corrected);
+		String old=null, corr=null;
+		// no numbers or stop words
+		for(String pp : p){
+			if(isNumber(pp) || stopWords.contains(pp))
+				return false;
+		}
+		for(String cc : c){
+			if(isNumber(cc) || stopWords.contains(cc))
+				return false;
+		}
+		
+		if(p.length != c.length)
+			return true; // split/join words
+		
+		// figure out what changed
+		for(int i=0;i<p.length;i++){
+			if(!p[i].equals(c[i])){
+				old = p[i];
+				corr = c[i];
+				break;
+			}
+		}
+		// check length
+		if(old==null || corr==null || corr.length()<5)
+			return false;
+		
+		// if they are same decomposed
+		if(FastWikiTokenizerEngine.decompose(old).equals(FastWikiTokenizerEngine.decompose(corr)))
+			return false;
+		
+		// check stem
+		HashSet<String> words = new HashSet<String>();
+		words.add(old); words.add(corr);
+		if(filters.stem(words).size() == 1)
+			return false; // new and old words stem to same
+		
+		return true;		
+	}
+	
+	/** See if this phrase is a misspell of some very common phrase */
+	protected String getCommonMisspell(String phrase, int freq, HashMap<String,ArrayList<Phrase>> commonPhrases){
+		String key = phrase.substring(0,2);
+		if(!commonPhrases.containsKey(key))
+			return null;
+		int minFreq = freq * 100;
+		for(Phrase p : commonPhrases.get(key)){
+			if(p.freq < minFreq)
+				return null;
+			if(p.dist.getDistance(phrase) == 1){				
+				return p.phrase;
+			}
+		}
+		return null;
 	}
 }
