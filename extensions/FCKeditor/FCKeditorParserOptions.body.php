@@ -2,8 +2,8 @@
 
 class FCKeditorParserOptions extends ParserOptions
 {
-    function getNumberHeadings() {return false;}
-    function getEditSection() {return false;}
+	function getNumberHeadings() {return false;}
+	function getEditSection() {return false;}
 
 	function getSkin() {
 		if ( !isset( $this->mSkin ) ) {

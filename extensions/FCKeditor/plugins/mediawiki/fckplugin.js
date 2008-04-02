@@ -44,12 +44,18 @@ tbButton = new FCKToolbarButton( 'MW_Math', 'Formula', 'Insert/Edit Formula' ) ;
 tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_math.gif' ;
 FCKToolbarItems.RegisterItem( 'MW_Math', tbButton ) ;
 
+tbButton = new FCKToolbarButton( 'MW_Special', 'Special Tag', 'Insert/Edit Special Tag' ) ;
+tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_special.gif' ;
+FCKToolbarItems.RegisterItem( 'MW_Special', tbButton ) ;
+
 // Override some dialogs.
 FCKCommands.RegisterCommand( 'MW_Template', new FCKDialogCommand( 'MW_Template', 'Template Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/template.html', 400, 330 ) ) ;
 FCKCommands.RegisterCommand( 'MW_Ref', new FCKDialogCommand( 'MW_Ref', 'Reference Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/ref.html', 400, 250 ) ) ;
 FCKCommands.RegisterCommand( 'MW_Math', new FCKDialogCommand( 'MW_Math', 'Formula', FCKConfig.PluginsPath + 'mediawiki/dialogs/math.html', 400, 300 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Special', new FCKDialogCommand( 'MW_Special', 'Special Tag Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/special.html', 400, 330 ) ) ; //YC
 FCKCommands.RegisterCommand( 'Link', new FCKDialogCommand( 'Link', FCKLang.DlgLnkWindowTitle, FCKConfig.PluginsPath + 'mediawiki/dialogs/link.html', 400, 250 ) ) ;
 FCKCommands.RegisterCommand( 'Image', new FCKDialogCommand( 'Image', FCKLang.DlgImgTitle, FCKConfig.PluginsPath + 'mediawiki/dialogs/image.html', 450, 300 ) ) ;
+
 
 // MediaWiki Wikitext Data Processor implementation.
 FCK.DataProcessor =
@@ -89,8 +95,8 @@ FCK.DataProcessor =
 			rootNode.normalize() ;
 
 		var stringBuilder = new Array() ;
-		this._AppendNode( rootNode, stringBuilder ) ;
-		return stringBuilder.join( '' ).Trim() ;
+		this._AppendNode( rootNode, stringBuilder, '' ) ;
+		return stringBuilder.join( '' ).RTrim().replace(/^\n*/, "") ;
 	},
 
 	/*
@@ -125,7 +131,7 @@ FCK.DataProcessor =
 	} ,
 
 	// This function is based on FCKXHtml._AppendNode.
-	_AppendNode : function( htmlNode, stringBuilder )
+	_AppendNode : function( htmlNode, stringBuilder, prefix )
 	{
 		if ( !htmlNode )
 			return ;
@@ -190,14 +196,36 @@ FCK.DataProcessor =
 				var basicElement = this._BasicElements[ sNodeName ] ;
 				if ( basicElement )
 				{
-					if ( basicElement[0] )
-						stringBuilder.push( basicElement[0] ) ;
+					var basic0 = basicElement[0];
+					var basic1 = basicElement[1];
+
+					if ( ( basicElement[0] == "''" || basicElement[0] == "'''" ) && stringBuilder.length > 2 )
+					{
+						var pr1 = stringBuilder[stringBuilder.length-1];
+						var pr2 = stringBuilder[stringBuilder.length-2];
+
+						if ( pr1 + pr2 == "'''''") {
+							if ( basicElement[0] == "''")
+							{
+								basic0 = '<i>';
+								basic1 = '</i>';
+							}
+							if ( basicElement[0] == "'''")
+							{
+								basic0 = '<b>';
+								basic1 = '</b>';
+							}
+						}
+					}
+
+					if ( basic0 )
+						stringBuilder.push( basic0 ) ;
 
 					if ( !basicElement[2] )
-						this._AppendChildNodes( htmlNode, stringBuilder ) ;
+						this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 
-					if ( basicElement[1] )
-						stringBuilder.push( basicElement[1] ) ;
+					if ( basic1 )
+						stringBuilder.push( basic1 ) ;
 				}
 				else
 				{
@@ -205,38 +233,49 @@ FCK.DataProcessor =
 					{
 						case 'ol' :
 						case 'ul' :
-							var isFirstLevel = !htmlNode.parentNode.nodeName.IEquals( 'ul', 'ol', 'li' ) ;
+							var isFirstLevel = !htmlNode.parentNode.nodeName.IEquals( 'ul', 'ol', 'li', 'dl', 'dt', 'dd' ) ;
 
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 
-							if ( isFirstLevel )
+							if ( isFirstLevel && stringBuilder[ stringBuilder.length - 1 ] != "\n" ) {
 								stringBuilder.push( '\n' ) ;
+							}
 
 							break ;
 
 						case 'li' :
 
-							stringBuilder.push( '\n' ) ;
-
-							var listPrefix = '' ;
+							if( stringBuilder.length > 1)
+							{
+								var sLastStr = stringBuilder[ stringBuilder.length - 1 ] ;
+								if ( sLastStr != ";" && sLastStr != ":" && sLastStr != "#" && sLastStr != "*")
+ 									stringBuilder.push( '\n' + prefix ) ;
+							}
+							
 							var parent = htmlNode.parentNode ;
-
+							var listType = "#" ;
+							
 							while ( parent )
 							{
 								if ( parent.nodeName.toLowerCase() == 'ul' )
-									listPrefix = '*' + listPrefix ;
+								{
+									listType = "*" ;
+									break ;
+								}
 								else if ( parent.nodeName.toLowerCase() == 'ol' )
-									listPrefix = '#' + listPrefix ;
+								{
+									listType = "#" ;
+									break ;
+								}
 								else if ( parent.nodeName.toLowerCase() != 'li' )
 									break ;
 
 								parent = parent.parentNode ;
 							}
-
-							stringBuilder.push( listPrefix ) ;
-							stringBuilder.push( ' ' ) ;
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
-
+							
+							stringBuilder.push( listType ) ;
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix + listType ) ;
+							
 							break ;
 
 						case 'a' :
@@ -248,42 +287,61 @@ FCK.DataProcessor =
 							if ( href == null )
 								href = htmlNode.getAttribute( 'href' , 2 ) || '' ;
 
+							var isWikiUrl = true ;
+							
 							if ( hrefType == "media" )
-							{
-								var isWikiUrl = true ;
 								stringBuilder.push( '[[Media:' ) ;
-							}
+							else if ( htmlNode.className == "extiw" )
+								stringBuilder.push( '[[' ) ;
 							else
 							{
 								var isWikiUrl = !( href.StartsWith( 'mailto:' ) || /^\w+:\/\//.test( href ) ) ;
 								stringBuilder.push( isWikiUrl ? '[[' : '[' ) ;
 							}
 							stringBuilder.push( href ) ;
-							if ( href != htmlNode.innerHTML && htmlNode.innerHTML != '[n]' )
+							//if ( href != htmlNode.innerHTML && htmlNode.innerHTML != '[n]' )
+							if ( htmlNode.innerHTML != '[n]' )
 							{
 								stringBuilder.push( isWikiUrl? '|' : ' ' ) ;
-								this._AppendChildNodes( htmlNode, stringBuilder ) ;
+								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 							}
 							stringBuilder.push( isWikiUrl ? ']]' : ']' ) ;
 
 							break ;
 							
 						case 'dl' :
-							stringBuilder.push( '\n' ) ;
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
-							if (stringBuilder.length > 0 && !stringBuilder[ stringBuilder.length - 1 ].EndsWith( '\n' ))
-								stringBuilder.push( '\n' ) ;
+						
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
+							var isFirstLevel = !htmlNode.parentNode.nodeName.IEquals( 'ul', 'ol', 'li', 'dl', 'dd', 'dt' ) ;
+							if ( isFirstLevel && stringBuilder[ stringBuilder.length - 1 ] != "\n" )
+								stringBuilder.push( '\n') ;
+							
 							break ;
 
 						case 'dt' :
+						
+							if( stringBuilder.length > 1)
+							{
+								var sLastStr = stringBuilder[ stringBuilder.length - 1 ] ;
+								if ( sLastStr != ";" && sLastStr != ":" && sLastStr != "#" && sLastStr != "*" )
+ 									stringBuilder.push( '\n' + prefix ) ;
+							}
 							stringBuilder.push( ';' ) ;
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix + ";") ;
+							
 							break ;
 
 						case 'dd' :
+						
+							if( stringBuilder.length > 1)
+							{
+								var sLastStr = stringBuilder[ stringBuilder.length - 1 ] ;
+								if ( sLastStr != ";" && sLastStr != ":" && sLastStr != "#" && sLastStr != "*" )
+ 									stringBuilder.push( '\n' + prefix ) ;
+							}
 							stringBuilder.push( ':' ) ;
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
-							stringBuilder.push( '\n' ) ;
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix + ":" ) ;
+							
 							break ;
 							
 						case 'table' :
@@ -298,7 +356,7 @@ FCK.DataProcessor =
 							if ( htmlNode.caption && htmlNode.caption.innerHTML.length > 0 )
 							{
 								stringBuilder.push( '|+ ' ) ;
-								this._AppendChildNodes( htmlNode.caption, stringBuilder ) ;
+								this._AppendChildNodes( htmlNode.caption, stringBuilder, prefix ) ;
 								stringBuilder.push( '\n' ) ;
 							}
 
@@ -315,7 +373,10 @@ FCK.DataProcessor =
 								{
 									attribs = this._GetAttributesStr( htmlNode.rows[r].cells[c] ) ;
 
-									stringBuilder.push( '|' ) ;
+									if ( htmlNode.rows[r].cells[c].tagName.toLowerCase() == "th" )
+										stringBuilder.push( '!' ) ; 
+									else
+										stringBuilder.push( '|' ) ;
 
 									if ( attribs.length > 0 )
 										stringBuilder.push( attribs + ' |' ) ;
@@ -323,7 +384,7 @@ FCK.DataProcessor =
 									stringBuilder.push( ' ' ) ;
 
 									this._IsInsideCell = true ;
-									this._AppendChildNodes( htmlNode.rows[r].cells[c], stringBuilder ) ;
+									this._AppendChildNodes( htmlNode.rows[r].cells[c], stringBuilder, prefix ) ;
 									this._IsInsideCell = false ;
 
 									stringBuilder.push( '\n' ) ;
@@ -405,7 +466,7 @@ FCK.DataProcessor =
 									return ;
 
 								case 'fck_mw_template' :
-									stringBuilder.push( FCKTools.HTMLDecode(htmlNode.innerHTML) ) ;
+									stringBuilder.push( FCKTools.HTMLDecode(htmlNode.innerHTML).replace(/fckLR/g,'\r\n') ) ;
 									return ;
 								
 								case 'fck_mw_magic' :
@@ -424,8 +485,13 @@ FCK.DataProcessor =
 									sNodeName = 'noinclude' ;
 									break ;
 
+								case 'fck_mw_gallery' :
+									sNodeName = 'gallery' ;
+									break ;
+									
 								case 'fck_mw_onlyinclude' :
 									sNodeName = 'onlyinclude' ;
+									
 									break ;
 							}
 
@@ -440,11 +506,9 @@ FCK.DataProcessor =
 							{
 								stringBuilder.push( "\n " ) ;
 								this._inLSpace = true ;
-								this._AppendChildNodes( htmlNode, stringBuilder ) ;
+								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 								this._inLSpace = false ;
-								if ( stringBuilder[stringBuilder.length-2] == "\n" && stringBuilder[stringBuilder.length-1] == " " )
-									stringBuilder.pop() ;
-								else
+								if ( !stringBuilder[stringBuilder.length-1].EndsWith("\n") )
 									stringBuilder.push( "\n" ) ;
 							}
 							else
@@ -457,11 +521,12 @@ FCK.DataProcessor =
 
 								stringBuilder.push( '>' ) ;
 								this._inPre = true ;
-								this._AppendChildNodes( htmlNode, stringBuilder ) ;
+								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 								this._inPre = false ;
+
 								stringBuilder.push( '<\/' ) ;
 								stringBuilder.push( sNodeName ) ;
-								stringBuilder.push( '>' ) ;								
+								stringBuilder.push( '>' ) ;
 							}
 						
 							break ;
@@ -475,7 +540,7 @@ FCK.DataProcessor =
 								stringBuilder.push( attribs ) ;
 
 							stringBuilder.push( '>' ) ;
-							this._AppendChildNodes( htmlNode, stringBuilder ) ;
+							this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 							stringBuilder.push( '<\/' ) ;
 							stringBuilder.push( sNodeName ) ;
 							stringBuilder.push( '>' ) ;
@@ -491,36 +556,40 @@ FCK.DataProcessor =
 
 				var parentIsSpecialTag = htmlNode.parentNode.getAttribute( '_fck_mw_customtag' ) ; 
 				var textValue = htmlNode.nodeValue;
-
+	
 				if ( !parentIsSpecialTag ) 
 				{
+					if ( FCKBrowserInfo.IsIE && this._inLSpace ) {
+						textValue = textValue.replace(/\r/, "\r ") ;
+					}
+					
 					textValue = textValue.replace( /[\n\t]/g, ' ' ) ; 
+	
 					textValue = FCKTools.HTMLEncode( textValue ) ;
 					textValue = textValue.replace( /\u00A0/g, '&nbsp;' ) ;
 
-					if ( !htmlNode.previousSibling ||
-					( stringBuilder.length > 0 && stringBuilder[ stringBuilder.length - 1 ].EndsWith( '\n' ) ) && !this._inLSpace )
+					if ( ( !htmlNode.previousSibling ||
+					( stringBuilder.length > 0 && stringBuilder[ stringBuilder.length - 1 ].EndsWith( '\n' ) ) ) && !this._inLSpace && !this._inPre )
 					{
 						textValue = textValue.LTrim() ;
 					}
 
-					if ( !htmlNode.nextSibling && !this._inLSpace )
+					if ( !htmlNode.nextSibling && !this._inLSpace && !this._inPre && (!htmlNode.parentNode || !htmlNode.parentNode.nextSibling))
 						textValue = textValue.RTrim() ;
 
-					textValue = textValue.replace( / {2,}/g, ' ' ) ;
+					if (!this._inLSpace && !this._inPre)
+						textValue = textValue.replace( / {2,}/g, ' ' ) ;
 
 					if ( this._inLSpace && textValue.length == 1 && textValue.charCodeAt(0) == 13 )
 						textValue = textValue + " " ;
-					
 					if ( this._IsInsideCell )
 						textValue = textValue.replace( /\|/g, '&#124;' ) ;
-	
 				}
 				else 
 				{
-					textValue = FCKTools.HTMLDecode( textValue ) ;
+					textValue = FCKTools.HTMLDecode(textValue).replace(/fckLR/g,'\r\n');
 				}
-
+				
 				stringBuilder.push( textValue ) ;
 				return ;
 
@@ -536,18 +605,18 @@ FCK.DataProcessor =
 				try	{ stringBuilder.push( htmlNode.nodeValue ) ; }
 				catch (e) { /* Do nothing... probably this is a wrong format comment. */ }
 
-				stringBuilder.push( " -->" ) ;
+				stringBuilder.push( "-->" ) ;
 				return ;
 		}
 	},
 
-	_AppendChildNodes : function( htmlNode, stringBuilder, isBlockElement )
+	_AppendChildNodes : function( htmlNode, stringBuilder, listPrefix )
 	{
 		var child = htmlNode.firstChild ;
 
 		while ( child )
 		{
-			this._AppendNode( child, stringBuilder ) ;
+			this._AppendNode( child, stringBuilder, listPrefix ) ;
 			child = child.nextSibling ;
 		}
 	},
@@ -581,13 +650,16 @@ FCK.DataProcessor =
 					if ( sAttValue.length == 0 )
 						continue ;
 				}
+				else if ( sAttName == 'style' && FCKBrowserInfo.IsIE ) {
+					sAttValue = htmlNode.style.cssText.toLowerCase() ;
+				}
 				// XHTML doens't support attribute minimization like "CHECKED". It must be trasformed to cheched="checked".
 				else if ( oAttribute.nodeValue === true )
 					sAttValue = sAttName ;
 				else
 					sAttValue = htmlNode.getAttribute( sAttName, 2 ) ;	// We must use getAttribute to get it exactly as it is defined.
 
-				attStr += ' ' + sAttName + '="' + sAttValue.replace( '"', '&quot;' ) + '"' ;
+				attStr += ' ' + sAttName + '="' + String(sAttValue).replace( '"', '&quot;' ) + '"' ;
 			}
 		}
 		return attStr ;
@@ -650,16 +722,52 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 				if ( className == null )
 					className = 'FCK__MWReferences' ;
 			case 'fck_mw_template' :
+				if ( className == null ) //YC
+					className = 'FCK__MWTemplate' ; //YC
 			case 'fck_mw_magic' :
 				if ( className == null )
-					className = 'FCK__MWTemplate' ;
-
+					className = 'FCK__MWMagicWord' ;
+			case 'fck_mw_magic' :
+				if ( className == null )
+					className = 'FCK__MWMagicWord' ;
+			case 'fck_mw_special' : //YC
+				if ( className == null )
+					className = 'FCK__MWSpecial' ;
+			case 'fck_mw_nowiki' :
+				if ( className == null )
+					className = 'FCK__MWNowiki' ;
+			case 'fck_mw_includeonly' :
+				if ( className == null )
+					className = 'FCK__MWIncludeonly' ;
+			case 'fck_mw_gallery' :
+				if ( className == null )
+					className = 'FCK__MWGallery' ;
+			case 'fck_mw_noinclude' :
+				if ( className == null )
+					className = 'FCK__MWNoinclude' ;
+			case 'fck_mw_onlyinclude' :
+				if ( className == null )
+					className = 'FCK__MWOnlyinclude' ;
+					
 				var oImg = FCKDocumentProcessor_CreateFakeImage( className, eSpan.cloneNode(true) ) ;
 				oImg.setAttribute( '_' + eSpan.className, 'true', 0 ) ;
 
 				eSpan.parentNode.insertBefore( oImg, eSpan ) ;
 				eSpan.parentNode.removeChild( eSpan ) ;
 			break ;
+		}
+	}
+	
+	// Templates and magic words.
+	var aHrefs = document.getElementsByTagName( 'A' ) ;
+	var a ;
+	var i = aHrefs.length - 1 ;
+	while ( i >= 0 && ( a = aHrefs[i--] ) )
+	{
+		if (a.className == 'extiw')
+		{
+			 a.href = a.innerHTML = ":" + a.title ;
+			 a.setAttribute( '_fcksavedurl', ":" + a.title ) ;
 		}
 	}
 }
@@ -689,6 +797,11 @@ FCK.ContextMenu.RegisterListener({
 			{
 				contextMenu.AddSeparator() ;
 				contextMenu.AddItem( 'MW_Math', 'Edit Formula' ) ;
+			}
+			if ( tag.getAttribute( '_fck_mw_special' ) || tag.getAttribute( '_fck_mw_nowiki' ) || tag.getAttribute( '_fck_mw_includeonly' ) || tag.getAttribute( '_fck_mw_noinclude' ) || tag.getAttribute( '_fck_mw_onlyinclude' ) || tag.getAttribute( '_fck_mw_gallery' )) //YC
+			{
+				contextMenu.AddSeparator() ;
+				contextMenu.AddItem( 'MW_Special', 'Special Tag Properties' ) ;
 			}
 		}
 	}

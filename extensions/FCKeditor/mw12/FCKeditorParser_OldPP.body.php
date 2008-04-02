@@ -1,6 +1,6 @@
 <?php
 
-class FCKeditorParser extends Parser
+class FCKeditorParser extends Parser_OldPP
 {
 	public static $fkc_mw_makeImage_options;
 	protected $fck_mw_strtr_span;
@@ -27,7 +27,7 @@ class FCKeditorParser extends Parser
 
 	function __construct() {
 		global $wgParser;
-		parent::Parser();
+		parent::__construct();
 
 		foreach ($wgParser->getTags() as $h) {
 			if (!in_array($h, array("pre"))) {
@@ -182,7 +182,7 @@ class FCKeditorParser extends Parser
 		}
 
 		$matches = array();
-		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
 
 		foreach( $matches as $marker => $data ) {
 			list( $element, $content, $params, $tag ) = $data;
@@ -429,7 +429,7 @@ class FCKeditorParser extends Parser
 		return $text;
 	}
 	function replaceFreeExternalLinks( $text ) { return $text; }
-	function stripNoGallery(&$text) {}
+	function stripNoGallery( &$text) {}
 	function stripToc( $text ) {
 		//$prefix = '<span class="fck_mw_magic">';
 		//$suffix = '</span>';
@@ -460,7 +460,6 @@ class FCKeditorParser extends Parser
 		if (!empty($this->fck_mw_strtr_span)) {
 			$parserOutput->setText(strtr($parserOutput->getText(), $this->fck_mw_strtr_span));
 		}
-
 		if (!empty($this->fck_matches)) {
 			$text = $parserOutput->getText() ;
 			foreach ($this->fck_matches as $key => $m) {
@@ -474,7 +473,7 @@ class FCKeditorParser extends Parser
 				$parserOutput->setText($parserOutput->getText() . "\n" . "<a href=\"".$l."\">".$l."</a>") ;
 			}
 		}
-
+		
 		$parserOutput->setText(str_replace("<!--FCK_REDIRECT-->", "#REDIRECT", $parserOutput->getText()));
 
 		return $parserOutput;

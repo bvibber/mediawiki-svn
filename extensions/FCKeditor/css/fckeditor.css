@@ -1649,3 +1649,8 @@ img.fck_mw_notfound
 	width: 25px;
 	overflow: hidden ;
 }
+
+img.fck_mw_border
+{
+	border: 1px solid #dddddd;
+}

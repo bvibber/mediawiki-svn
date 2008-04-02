@@ -12,7 +12,7 @@ FCKConfig.ToolbarSets['Wiki'] = [
 	['Cut','Copy','Paste',/*'PasteText','PasteWord',*/'-','Print'],
 	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
 	['SpecialChar','Table','Image','Rule'],
-	['MW_Template','MW_Ref','MW_Math'],
+	['MW_Template','MW_Special','MW_Ref','MW_Math'],
 	'/',
 	['FontFormat'],
 	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
@@ -36,34 +36,65 @@ FCKConfig.DefaultLanguage		= 'en' ;
 // FCKConfig.DisableObjectResizing = true ;
 
 FCKConfig.EditorAreaStyles = '\
-.FCK__MWTemplate \
+.FCK__MWTemplate, .FCK__MWRef, .FCK__MWSpecial, .FCK__MWReferences, .FCK__MWNowiki, .FCK__MWIncludeonly, .FCK__MWNoinclude, .FCK__MWOnlyinclude, .FCK__MWGallery \
 { \
 	border: 1px dotted #00F; \
 	background-position: center center; \
-	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_template.gif); \
 	background-repeat: no-repeat; \
+	vertical-align: middle; \
+} \
+.FCK__MWTemplate \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_template.gif); \
 	width: 20px; \
 	height: 15px; \
-	vertical-align: middle; \
 } \
 .FCK__MWRef \
 { \
-	border: 1px dotted #00F; \
-	background-position: center center; \
 	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_ref.gif); \
-	background-repeat: no-repeat; \
 	width: 18px; \
 	height: 15px; \
-	vertical-align: middle; \
+} \
+.FCK__MWSpecial \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_special.gif); \
+	width: 66px; \
+	height: 15px; \
+} \
+.FCK__MWNowiki \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_nowiki.gif); \
+	width: 66px; \
+	height: 15px; \
+} \
+.FCK__MWIncludeonly \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_includeonly.gif); \
+	width: 66px; \
+	height: 15px; \
+} \
+.FCK__MWNoinclude \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_noinclude.gif); \
+	width: 66px; \
+	height: 15px; \
+} \
+.FCK__MWGallery \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_gallery.gif); \
+	width: 66px; \
+	height: 15px; \
+} \
+.FCK__MWOnlyinclude \
+{ \
+	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_onlyinclude.gif); \
+	width: 66px; \
+	height: 15px; \
 } \
 .FCK__MWReferences \
 { \
-	border: 1px dotted #00F; \
-	background-position: center center; \
 	background-image: url(' + FCKConfig.PluginsPath + 'mediawiki/images/icon_references.gif); \
-	background-repeat: no-repeat; \
 	width: 66px; \
 	height: 15px; \
-	vertical-align: middle; \
 } \
 ' ;

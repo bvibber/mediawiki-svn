@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!--
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2007 Frederico Caldeira Knabben
@@ -45,6 +45,8 @@ var oLink = FCK.Selection.MoveToAncestorNode( 'A' ) ;
 if ( oLink )
 	FCK.Selection.SelectNode( oLink ) ;
 
+var bLinkEqualsName	= false ;
+	
 window.onload = function()
 {
 	// Translate the dialog box texts.
@@ -66,6 +68,9 @@ function LoadSelection()
 	var sHRef = oLink.getAttribute( '_fcksavedurl' ) ;
 	if ( sHRef == null )
 		sHRef = oLink.getAttribute( 'href' , 2 ) || '' ;
+		
+	if ( sHRef == oLink.innerHTML )
+		bLinkEqualsName = true ;
 
 	GetE('txtUrl').value = sHRef ;
 }
@@ -204,7 +209,10 @@ function Ok()
 		oLink.href = sUri ;
 		SetAttribute( oLink, '_fcksavedurl', sUri ) ;
 
-		oLink.innerHTML = sInnerHtml ;		// Set (or restore) the innerHTML
+		if ( bLinkEqualsName )
+			oLink.innerHTML = sUri ;
+		else
+			oLink.innerHTML = sInnerHtml ;		// Set (or restore) the innerHTML
 
 	}
 
