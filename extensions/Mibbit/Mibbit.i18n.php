@@ -38,6 +38,30 @@ Si esteu identificat amb un compte, el vostre nom d'usuari serà l'àlies per de
 Els usuaris anònims en tindran un d'automàtic, però els podeu canviar.",
 );
 
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'mibbit'        => 'Mibbit-Chat',
+	'mibbit-desc'   => 'Ergänzt eine [[Special:Mibbit|Spezialseite]], um in Echtzeit mit anderen Benutzer zu chatten',
+	'mibbit-header' => 'Diese Spezialseite ermöglicht es dir, mit anderen Benutzern in Echtzeit zusammenzuarbeiten.
+Um die Verbindung herzustellen, klicke auf die „Connect“-Schaltfläche.
+Wenn du angemeldet bist, wird dein Nickname automatisch vorbelegt.
+Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert werden.',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'mibbit'        => 'Mibbit-Chat',
+	'mibbit-header' => 'Diese Spezialseite ermöglicht es Ihnen, mit anderen Benutzern in Echtzeit zusammenzuarbeiten.
+Um die Verbindung herzustellen, klicken Sie auf die „Connect“-Schaltfläche.
+Wenn Sie angemeldet sind, wird Ihr Nickname automatisch vorbelegt.
+Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert werden.',
+);
+
 /** French (Français)
  * @author Grondin
  */
