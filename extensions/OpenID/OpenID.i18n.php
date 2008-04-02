@@ -895,6 +895,14 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Ak máte blog na niektorej z týchto služieb, zadajte do poľa vyššie URL svojho blogu. Napríklad ''<nowiki>http://pouzivatelskemeno.blogspot.com/</nowiki>'', ''<nowiki>http://pouzivatelskemeno.wordpress.com/</nowiki>'', ''<nowiki>http://pouzivatelskemeno.livejournal.com/</nowiki>'' alebo ''<nowiki>http://pouzivatelskemeno.vox.com/</nowiki>''.",
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'openidemail'    => 'Е-пошта',
+	'openidlanguage' => 'Језик',
+);
+
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author Jon Harald Søby
@@ -929,6 +937,21 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'openidemail' => 'Diresaun korreiu eletróniku',
+);
+
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'openidoptional' => 'Ихтиёрӣ',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'openidemail'    => 'Нишонаи почтаи электронӣ',
+	'openidlanguage' => 'Забон',
 );
 
 /** Vietnamese (Tiếng Việt)

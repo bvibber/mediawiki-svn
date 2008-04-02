@@ -181,6 +181,14 @@ $messages['he'] = array(
 	'sitenotice_close' => 'הסתרה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'sitenotice_close' => 'हटायें',
+	'sitenotice-desc'  => 'सदस्योंको साईटनोटिस हटाने की अनुमति देता हैं',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales

@@ -1010,11 +1010,12 @@ $messages['te'] = array(
 * [[$4]]",
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'crosswikiblock-reason' => 'Далел:',
+	'crosswikiblock-reason'   => 'Далел:',
+	'crosswikiunblock-reason' => 'Сабаб:',
 );
 
 /** Vietnamese (Tiếng Việt)

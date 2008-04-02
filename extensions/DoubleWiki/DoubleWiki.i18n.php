@@ -110,6 +110,13 @@ $messages['gl'] = array(
 	'doublewiki-desc' => 'Amosa unha páxina e a súa tradución doutro wiki en dúas columnas na mesma páxina',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'doublewiki-desc' => 'एक लेख और उसका अन्य विकिपर उपलब्ध अनुवाद उसी पन्नेपर दो विभागोंमें दर्शाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

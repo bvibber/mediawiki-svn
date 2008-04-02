@@ -279,11 +279,13 @@ $messages['te'] = array(
 	'sc_gotomonth'     => 'నెలకి వెళ్ళండి',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'sc_today' => 'Имрӯз',
+	'sc_previousmonth' => 'Моҳи қаблӣ',
+	'sc_nextmonth'     => 'Моҳи баъдӣ',
+	'sc_today'         => 'Имрӯз',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -477,11 +477,12 @@ $messages['te'] = array(
 	'backforth-prev' => 'గత ($1)',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'backforth-next' => 'Баъдӣ ($1)',
+	'backforth-desc' => 'Ба болои саҳифаҳои тартибии аз рӯи алифбо пайвандҳои "Баъдӣ" ва "Қаблӣ" илова мекунад',
 	'backforth-prev' => 'Қаблӣ ($1)',
 );
 

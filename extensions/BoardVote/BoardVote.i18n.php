@@ -1394,6 +1394,48 @@ $messages['he'] = array(
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'boardvote'              => 'विकिमीडिया विश्वस्त मंडल चुनाव',
+	'boardvote-desc'         => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडलका चुनाव]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|मत दें]]
+* [[Special:Boardvote/list|आजतकके मतोंकी सूची]]
+* [[Special:Boardvote/dump|एन्क्रिप्ट की हुई मतोंकी सूची डम्प करें]]',
+	'boardvote_intro_change' => '<p>आपने पहले मत दिया हुआ हैं। अगर आप उसमें बदलाव करना चाहते हैं तो निचे दिये ढाँचे का इस्तेमाल करें। कृपया आप प्रमाणित करनेवाले उम्मीदवार के आगे दिये बक्सेमें सही का चिन्ह दें।</p>',
+	'boardvote_nosession'    => 'आपका विकिमीडिया सदस्य क्रमांक मिल नहीं रहा।
+कृपया अपने सदस्यनामसे जहां आपको वोट देनेकी अनुमति हैं, उस विकिपर लॉग इन करें, एवम्‌ <nowiki>[[Special:Boardvote]]</nowiki> यहां जायें।
+आपको वोट देने के लिये कमसेकम $1 बदलाव $2 के पहले, और पहिला बदलाव $3 के पहले किये होने आवश्यक हैं।',
+	'boardvote_notloggedin'  => 'आपने लॉग इन नहीं किया हैं।
+वोट देने के लिये आपने कमसे कम $1 बदलाव $2 के पहले, और पहिला बदलाव $3 के पहले किये होने आवश्यक हैं।',
+	'boardvote_notqualified' => 'आप यहांपर वोट देने के लिये योग्यता प्राप्त नहीं हैं।
+वोट देने के लिये आपने कमसे कम $3 बदलाव $2 के पहले, और पहिला बदलाव $5 के पहले किये होने आवश्यक हैं।',
+	'boardvote_novotes'      => 'अबतक किसीनेभी वोट नहीं किया हैं।',
+	'boardvote_time'         => 'समय',
+	'boardvote_user'         => 'सदस्य',
+	'boardvote_edits'        => 'बदलाव',
+	'boardvote_days'         => 'दिन',
+	'boardvote_ip'           => 'आईपी',
+	'boardvote_ua'           => 'सदस्य एजंट',
+	'boardvote_listintro'    => '<p>यह आजतक मिले वोटोंकी सूची हैं। एन्क्रीप्टेड ज़ानकारी के लिये $1 देखें।</p>',
+	'boardvote_dumplink'     => 'यहांपर क्लिक करें',
+	'boardvote_submit'       => 'ओके',
+	'boardvote_strike'       => 'कांटें',
+	'boardvote_unstrike'     => 'कांट निकाल दें',
+	'boardvote_needadmin'    => 'सिर्फ चुनाव प्रबंधक ही इस क्रिया को कर सकतें हैं।',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">विकिमीडिया बोर्ड चुनाव</a>:  जुलै १२ तक मतदान चलेगा',
+	'boardvote_notstarted'   => 'मतदान अभीतक शुरू नहीं हुआ हैं',
+	'boardvote_closed'       => 'मतदान अब बंद हो गया हैं। कृपया परिणामोंके लिये [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En चुनाव पृष्ठ] देखें।',
+	'boardvote_edits_many'   => 'ज्यादा',
+	'group-boardvote'        => 'बोर्ड वोट प्रबंधक',
+	'group-boardvote-member' => 'बोर्ड वोट प्रबंधक',
+	'grouppage-boardvote'    => '{{ns:project}}:बोर्ड वोट प्रबंधक',
+	'boardvote_blocked'      => 'माफ किजीये, जिस विकिपर आप पंजीकृत हैं वहां आपको ब्लॉक कर दिया गया हैं। आप वोट नहीं दे सकतें।',
+	'boardvote_welcome'      => "सुस्वागतम्‌ '''$1'''!",
+	'go_to_board_vote'       => 'विकिमीडिया मंडल चुनाव २००७',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
@@ -1571,7 +1613,12 @@ Vèsyon kripte an ap vini. Li ap afiche piblikman anlè [[Special:Boardvote/dump
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Ritounen]]',
+	'boardvote_nosession'    => 'Nou pa kapab idantifye nimewo ID pou kont ou an.
+Souple, konekte ou nan wiki ou otorize vote, epi ale nan <nowiki>[[Special:Boardvote]]</nowiki>.
+Ou dwèt genyen yon kont avèk minimòm $1 kontribisyon anvan $2, epitou avèk premye edisyon ou an anvan $3.',
 	'boardvote_notloggedin'  => 'Ou poko idantifye nan sistèm an.Pou ou kapab vote, ou dwèt itilize yon kont ki kontribiyeplis ke $1 fwa anvan $2, epitou premye kontribisyon te fèt depi $3.',
+	'boardvote_notqualified' => 'Ou pa kapab vote nan eleksyon sa.
+Ou dwèt fè $3 edisyon anvan $2, epitou premye edisyon ou an dwèt fèt anvan $5.',
 	'boardvote_novotes'      => 'Pon moun poko vote.',
 	'boardvote_time'         => 'Tan, lè li ye',
 	'boardvote_user'         => 'Itilizatè',
@@ -1579,7 +1626,8 @@ Vèsyon kripte an ap vini. Li ap afiche piblikman anlè [[Special:Boardvote/dump
 	'boardvote_days'         => 'Jou yo',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Reprezantan itilizatè sa a',
-	'boardvote_listintro'    => 'Lis moun ki vote :<br /><br />',
+	'boardvote_listintro'    => 'Lis moun ki vote :<br /><br />
+$1 pou done yo ki pa kripte, sekirize.</p>',
 	'boardvote_dumplink'     => 'Klike anlè lyen sa',
 	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Elimine',
@@ -2176,7 +2224,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_time'         => 'ពេល',
 	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
 	'boardvote_edits'        => 'ចំនួនកំនែប្រែ',
-	'boardvote_days'         => 'ថ្ងៃ',
+	'boardvote_days'         => 'ចំនួនថ្ងៃ',
 	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>នេះជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ ។ $1 សំរាប់​ទិន្នន័យ​បំលែង​ជា​អក្សរកូដ ។</p>',
 	'boardvote_dumplink'     => 'ចុចទីនេះ',
@@ -2805,13 +2853,6 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_welcome'      => "Velkommen, '''$1'''!",
 	'go_to_board_vote'       => 'Styrevalg i Wikimedia',
 	'boardvote_redirecting'  => 'Stemmegivingen blir avholdt på en ekstern tjener som kontrolleres av en uavhengig tredjepart for å øke sikkerheten og åpenheten rundt valget. Du blir omdirigert til denne tjener om 20&nbsp;sekunder. [$1 Klikk her] for å gå direkte til tjeneren. Du vil muligens få en sikkerhetsadvarsel om et usignert sertifikat.',
-);
-
-/** Old Norse (Norrǿna)
- * @author SPQRobin
- */
-$messages['non'] = array(
-	'boardvote_days' => 'Dagar',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

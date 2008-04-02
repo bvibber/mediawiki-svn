@@ -1562,6 +1562,7 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'metavid'                        => 'Pagina metavid',
@@ -1578,8 +1579,8 @@ $messages['oc'] = array(
 	'mvexportstream'                 => 'Flus d’exportacion de Metavid',
 	'mv_add_stream_page'             => "Ajust d'un flus metavid",
 	'mv_edit_strea_docu'             => "<b>Editar l'administracion dels fluses</b> <br /> per qu'un utilizaire pòsca veire o editar la pagina $1 de visualizacion.",
-	'mv_add_stream_docu'             => "<p>Ajustar un flus novèl amb lo champ çaijós.</p><p>Mai d'informacions son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajust d'un flus.",
-	'mv_add_stream_submit'           => 'Ajustar un flus',
+	'mv_add_stream_docu'             => "<p>Apondre un flus novèl amb lo camp çaijós.</p><p>Mai d'entrenhas son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajuston d'un flus.",
+	'mv_add_stream_submit'           => 'Apondre un flus',
 	'mv_no_stream_files'             => 'Fichièrs de flus inexistents.',
 	'mv_edit_stream_files'           => 'Modificar los fichièrs de flus',
 	'mv_path_type_url_anx'           => 'Adreça internet complèta del mèdia',
@@ -1593,9 +1594,9 @@ $messages['oc'] = array(
 	'mv_file_with_same_desc'         => 'Error : fichièr de flus amb la meteissa clau de descripcion  <i>$1</i> ja presenta',
 	'mv_updated_stream_files'        => 'Mesa a jorn dels enregistraments dels fichièrs de flus',
 	'mv_removed_file_stream'         => 'Fichièr de flus levat : $1',
-	'mv_missing_stream_text'         => 'Lo flus <b>$1</b> qu\'avètz demandat es pas disponible.<br />Vos es permes de consultar la <a href="$2">Lista dels fluses</a><br />O alara vos cal èsser autorizat a <a href="$3">Ajustar lo flus</a>',
+	'mv_missing_stream_text'         => 'Lo flus <b>$1</b> qu\'avètz demandat es pas disponible.<br />Vos es permes de consultar la <a href="$2">Lista dels fluses</a><br />O alara vos cal èsser autorizat a <a href="$3">Apondre lo flus</a>',
 	'mv_user_cant_edit'              => 'Podètz aver $1 per modificar, $2',
-	'mv_add_stream_file'             => 'Ajustar un fichièr de flus',
+	'mv_add_stream_file'             => 'Apondre un fichièr de flus',
 	'mv_media_path'                  => 'camin del mèdia',
 	'mv_file_list'                   => 'Fichièrs de fluses',
 	'mv_label_stream_name'           => 'Nom del flus',
@@ -1623,8 +1624,8 @@ $messages['oc'] = array(
 	'mv_tool_navigate_title'         => 'Navegar dins lo flus entièr',
 	'mv_tool_export'                 => 'Exportar',
 	'mv_tool_export_title'           => 'Exportar las metadonadas del flus',
-	'mv_tool_embed'                  => 'Inclòure',
-	'mv_tool_embed_title'            => 'Inclòure las opcions pel segment actual demandat',
+	'mv_tool_embed'                  => 'Inclure',
+	'mv_tool_embed_title'            => 'Inclure las opcions pel segment actual demandat',
 	'mv_tool_overlay'                => 'Presentacions del modèl',
 	'mv_tool_overlay_title'          => 'Presentacions del modèl sus la banca de las metadonadas',
 	'mv_results_found_for'           => 'Resultats de la recèrca <b>$1</b> vèrs <b>$2</b> de <b>$3</b> per :',
@@ -1633,7 +1634,7 @@ $messages['oc'] = array(
 	'ht_en'                          => 'Transcriure',
 	'ht_en_desc'                     => "Transcripcions anglesas. Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De ligams pòdon èsser ajustats, mas tot tèxt deuriá èsser en correlacion amb çò qu'es dich dins lo flus vidèo.",
 	'anno_en'                        => 'Anotacions e categorias',
-	'anno_en_desc'                   => "Anotacions e categorizacion anglesas. Aquesta presentacion pòt èsser utilizada per balisar o categorizar de seccions de vidèo o per ajustar d'anotacions que son pas de tèxt parlat.",
+	'anno_en_desc'                   => "Anotacions e categorizacion anglesas. Aquesta presentacion pòt èsser utilizada per balisar o categorizar de seccions de vidèo o per apondre d'anotacions que son pas de tèxt parlat.",
 	'thomas_en'                      => 'Transcripcion oficiala',
 	'thomas_en_desc'                 => "Transcripcion oficiala de Thomas del servici THOMAS d'enregistrament dels govèrnaments. Data de la font sincronizada per c-spanarchives.org de C-SPAN.",
 	'mvd_default_mismatch'           => 'Error dins la configuracion del fichièr',
@@ -1658,9 +1659,9 @@ $messages['oc'] = array(
 	'mv_edit_adjust_title'           => "Modificar lo tèxt e l'alinhament vidèo",
 	'mv_remove'                      => 'levar',
 	'mv_remove_title'                => 'levar aqueste segment de metadonadas',
-	'mv_adjust'                      => 'ajustar',
+	'mv_adjust'                      => 'apondre',
 	'mv_adjust_submit'               => "Salvagardar l'ajustament",
-	'mv_adjust_title'                => 'Ajustar lo començament e la fin de la durada',
+	'mv_adjust_title'                => 'Apondre lo començament e la fin de la durada',
 	'mv_adjust_preview'              => "Previsualizar l'ajustament",
 	'mv_adjust_preview_stop'         => 'Arrestar la previsualizacion',
 	'mv_adjust_default_reason'       => "Ajustament de l'interfàcia metavid",
@@ -1672,7 +1673,7 @@ $messages['oc'] = array(
 	'mediasearch'                    => 'Recèrca del mèdia',
 	'mv_search_sel_t'                => 'Causir lo mòde de recèrca',
 	'mv_run_search'                  => 'Amodar la recèrca',
-	'mv_add_filter'                  => 'Ajustar un filtre',
+	'mv_add_filter'                  => 'Apondre un filtre',
 	'mv_search_match'                => 'Recercar lo tèxt',
 	'mv_search_spoken_by'            => 'Parlat per',
 	'mv_search_category'             => 'Categoria',
@@ -1702,17 +1703,17 @@ $messages['oc'] = array(
 	'mv_sequence_player_title'       => 'lector de sequéncia',
 	'mv_save_sequence'               => 'Salvagardar la sequéncia',
 	'mv_sequence_page_desc'          => 'Salvagardar la sequéncia actuala',
-	'mv_sequence_add'                => 'Ajustar de clips',
-	'mv_sequence_add_manual'         => 'Ajustar per nom',
-	'mv_sequence_add_manual_desc'    => 'Ajustar de clips per nom de flus',
-	'mv_sequence_add_search'         => 'Ajustar per recèrca',
-	'mv_sequence_add_search_desc'    => 'Ajustar de clips per recèrca de mèdias',
-	'mv_seq_add_end'                 => 'Ajustar a la fin de la sequéncia',
+	'mv_sequence_add'                => 'Apondre de clips',
+	'mv_sequence_add_manual'         => 'Apondre per nom',
+	'mv_sequence_add_manual_desc'    => 'Apondre de clips per nom de flus',
+	'mv_sequence_add_search'         => 'Apondre per recèrca',
+	'mv_sequence_add_search_desc'    => 'Apondre de clips per recèrca de mèdias',
+	'mv_seq_add_end'                 => 'Apondre a la fin de la sequéncia',
 	'mv_sequence_timeline'           => 'Sequéncia cronologica :',
 	'mv_edit_sequence_desc_help'     => 'Descripcion de la sequéncia',
 	'mv_edithelpsequence'            => 'Ajuda:Edicion_de_sequéncia',
 	'mv_seq_summary'                 => 'Edicion del somari de la sequéncia',
-	'mv_add_clip_by_name'            => 'Ajustar un clip per nom',
+	'mv_add_clip_by_name'            => 'Apondre un clip per nom',
 	'mv_export_cmml'                 => 'exportar cmml',
 	'mv_search_stream'               => 'Recercar lo flus',
 	'mv_navigate_stream'             => 'Navegar dins lo flus entièr',
@@ -1760,6 +1761,7 @@ $messages['ps'] = array(
  * @author 555
  * @author Malafaya
  * @author Lijealso
+ * @author Cedric31
  */
 $messages['pt'] = array(
 	'metavid'                       => 'Página Metavid',
@@ -1810,7 +1812,7 @@ $messages['pt'] = array(
 	'mv_edit_title'                 => 'Editar texto',
 	'mv_edit_adjust_title'          => 'Editar texto e alinhamento de vídeo',
 	'mv_remove'                     => 'remover',
-	'mv_adjust'                     => 'ajustar',
+	'mv_adjust'                     => 'apondre',
 	'mv_adjust_submit'              => 'Salvar ajuste',
 	'mv_adjust_preview'             => 'Prever ajuste',
 	'mv_adjust_preview_stop'        => 'Interromper a previsão',
@@ -2196,6 +2198,17 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_protect_source_material'     => 'Originálny zdrojový materiál zamknutý proti úpravám',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'mv_tool_search' => 'Претрага',
+	'mv_tool_export' => 'Извоз',
+	'mv_edit'        => 'Уреди',
+	'mv_history'     => 'Историја',
+	'mv_remove'      => 'уклони',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
@@ -2265,6 +2278,14 @@ $messages['sv'] = array(
 	'mv_tool_overlay'               => 'Mallöverdrag',
 	'mv_tool_overlay_title'         => 'Mall baserad på metadataöverdrag',
 	'mv_results_found_for'          => 'Sökresultat <b>$1</b> till <b>$2</b> av <b>$3</b> för:',
+	'mv_tool_mang_layers'           => 'Behandla lager',
+	'mv_update_layers'              => 'uppdatera lagervisning',
+	'ht_en'                         => 'Transkription',
+	'ht_en_desc'                    => 'Engelska transkriptioner. Denna överläggstypen är för uppläst text',
+	'anno_en'                       => 'Annoteringar och kategorier',
+	'anno_en_desc'                  => 'Engelska kategoriseringar och annoteringar.
+Denna överläggstyp kan användas för att kategorisera sektioner av videor eller till att lägga till annotationer som inte är uppläst text.',
+	'thomas_en'                     => 'Officiell transkription',
 	'mv_data_page_title'            => '$1 för $2 från $3',
 	'mv_time_separator'             => '$1 till $2',
 	'video_feed_cat'                => 'Video matning för kategori:',
@@ -2371,6 +2392,15 @@ $messages['tet'] = array(
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and'      => 'ho',
 	'mv_category'        => 'kategoria',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'mv_edit_title' => 'Вироиши матн',
+	'mv_search_and' => 'ва',
+	'mv_search_or'  => 'ё',
 );
 
 /** Vietnamese (Tiếng Việt)

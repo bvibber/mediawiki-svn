@@ -827,6 +827,20 @@ $1',
 	'webstore_no_response'         => 'సర్వరునుండి స్పందన లేదు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'webstore_path_invalid'       => 'Номи парванда номӯътабар буд.',
+	'webstore_no_file'            => 'Ҳеҷ парвандае бор нашудааст.',
+	'webstore_invalid_zone'       => 'Ноҳияи номӯътабар "$1".',
+	'webstore_no_deleted'         => 'Ҳеҷ пӯшаи бойгонӣ барои парвандаҳои ҳазфшуда мушаххас нашудааст.',
+	'webstore_404'                => 'Парванда ёфт нашуд.',
+	'webstore_php_warning'        => 'Ҳушдори PHP: $1',
+	'webstore_metadata_not_found' => 'Парванда ёфт нашуд: $1',
+	'webstore_postfile_not_found' => 'Парванда барои фиристодан ёфт нашуд.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -469,6 +469,15 @@ $messages['te'] = array(
 	'multiupload-fileuploaded'         => 'ఫైలు ఎగుమతయ్యింది.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'multipleupload'              => 'Боргузории парвандаҳо',
+	'multipleupload-saveallfiles' => 'Захираи ҳамаи парвандаҳо',
+	'multiupload-fileuploaded'    => 'Парванда боргузорӣ шуд.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

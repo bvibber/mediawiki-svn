@@ -204,8 +204,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'categorystepper-desc'  => 'Wyświetla ramkę na stronie pozwalającą na poruszanie się do następnej i poprzedniej strony w układzie alfabetycznym, wewnątrz jednej lub wielu kategorii, w których jest dana strona.',
 	'categorystepper-end'   => '(Koniec kategorii)',
 	'categorystepper-start' => '(Początek kategorii)',
 );
@@ -278,6 +280,14 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'categorystepper-end'   => '(వర్గపు చివర)',
 	'categorystepper-start' => '(వర్గపు మొదలు)',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'categorystepper-end'   => '(Поёни гурӯҳ)',
+	'categorystepper-start' => '(Оғози гурӯҳ)',
 );
 
 /** Thai (ไทย)

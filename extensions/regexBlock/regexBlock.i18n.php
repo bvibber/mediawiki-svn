@@ -660,7 +660,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'regexblock'                      => 'Expressions regularas per blocar un utilizaire o una IP',
-	'regexblock-desc'                 => "Extension utilizada per blocar d'utilizaires o d'adreças IP amb d'expressions regularas. Conten a l'encòp un mecanisme de blocatge e mai [[Special:Regexblock|una pagina]] podent ajustar e gerir los blocatges",
+	'regexblock-desc'                 => "Extension utilizada per blocar d'utilizaires o d'adreças IP amb d'expressions regularas. Conten a l'encòp un mecanisme de blocatge e mai [[Special:Regexblock|una pagina]] podent apondre e gerir los blocatges",
 	'regexblock-special-desc'         => "Blocatge alternatiu d’un utilizaire (per un nom balhat o per d'expressions regularas)",
 	'regexblock-stat-desc'            => 'Aficha las [[Special:Regexblockstats|estatisticas de blocatges]] per l’extension regexblock.',
 	'regexblock-page-title'           => 'Blocatge d’un nom per una expression regulara',
@@ -709,10 +709,22 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author McMonster
  */
 $messages['pl'] = array(
-	'regexblock-form-username' => 'Adres IP lub nazwa użytkownika:',
+	'regexblock'                   => 'BlokadaRegEx',
+	'regexblock-desc'              => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
+	'regexblock-unblock-error'     => 'Błąd przy odblokowaniu $1.
+Prawdopodobnie nie ma takiego użytkownika.',
+	'regexblock-form-username'     => 'Adres IP lub nazwa użytkownika:',
+	'regexblock-form-reason'       => 'Przyczyna:',
+	'regexblock-form-expiry'       => 'Wygasa:&#160;',
+	'regexblock-block-log'         => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
+	'regexblock-block-success'     => 'Pomyślnie zablokowano',
+	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
+	'regexblock-stats-username'    => 'Dla $1',
+	'regexblock-view-time'         => '$1',
 );
 
 /** Pashto (پښتو)

@@ -517,6 +517,21 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] asinado [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dsvyas
+ */
+$messages['gu'] = array(
+	'sign-realname' => 'નામ:',
+	'sign-address'  => 'સરનામુ:',
+	'sign-city'     => 'શહેર/નગરઃ',
+	'sign-state'    => 'રાજ્ય:',
+	'sign-zip'      => 'પોસ્ટ કોડ:',
+	'sign-country'  => 'દેશ:',
+	'sign-phone'    => 'દુરભાષઃ',
+	'sign-bday'     => 'ઉંમરઃ',
+	'sign-email'    => 'ઇ મેલ:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Siebrand
@@ -943,7 +958,6 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'signdocument'                    => 'Autentificar lo document',
@@ -969,7 +983,7 @@ $messages['oc'] = array(
 	'sign-list-hidebday'              => "Listar pas l'edat",
 	'sign-list-hideemail'             => "Listar pas l'adreça de corrièr electronic",
 	'sign-submit'                     => 'Autentificar lo document',
-	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çaijós e en clicant « Autentificar document ». Mercés de verificar que vòstras informacions personalas son exactas e qu'avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras informacions que vos pòdon identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las informacions picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div>
+	'sign-information'                => "<div class=\"noarticletext\">Mercés d'aver complètament legit aqueste document. Se sètz d'acòrdi amb son contengut, significatz vòstre sosten en emplenant los camps requeses çaijós e en clicant « Autentificar document ». Mercés de verificar que vòstras entresenhas personalas son exactas e qu'avèm un mejan de vos contactar per validar vòstra identitat. Vòstra adreça IP e d'autras entresenhas que vos pòdon identificar son notadas e seràn utilizadas pels moderaires per eliminar de signaturas en doblon e confirmar las entresenhas picadas. Los proxys nos permeton pas d'identificar de segur lo signatari, las signaturas obtengudas a travèrs los proxys seràn probablament pas comptadas. Se sètz connectat a travèrs un proxy, mercés d'utilizar un compte que l'utiliza pas.</div>
 
 \$1",
 	'sig-success'                     => 'Avètz autentificat lo document.',
@@ -1004,15 +1018,15 @@ $messages['oc'] = array(
 	'sign-sigdetails'                 => 'Detalhs de la signatura',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
--->[[Special:Contributions/$1|contribs]] • <!--
--->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
--->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|block user]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
---></span>',
+		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+		-->[[Special:Contributions/$1|contribs]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|block user]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+		--></span>',
 	'sign-viewfield-stricken'         => 'Fautiu',
 	'sign-viewfield-reviewedby'       => 'Revisor',
 	'sign-viewfield-reviewcomment'    => 'Comentari',
@@ -1344,6 +1358,15 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'sign-email'                   => 'Е-пошта:',
+	'sign-viewfield-reviewcomment' => 'Коментар',
+	'sign-review-comment'          => 'Коментар',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1492,11 +1515,13 @@ $messages['tet'] = array(
 	'sign-viewfield-email'    => 'Korreiu eletróniku',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
 	'sign-realname'                => 'Ном:',
+	'sign-address'                 => 'Нишонаи кӯча:',
 	'sign-city'                    => 'Шаҳр:',
 	'sign-state'                   => 'Вилоят:',
 	'sign-country'                 => 'Кишвар:',
@@ -1512,6 +1537,7 @@ $messages['tg-cyrl'] = array(
 	'sign-viewfield-ip'            => 'Нишонаи IP',
 	'sign-viewfield-phone'         => 'Телефон',
 	'sign-viewfield-email'         => 'Почтаи электронӣ',
+	'sign-viewfield-options'       => 'Ихтиёрот',
 	'sign-viewfield-reviewcomment' => 'Тавзеҳот',
 	'sign-review-comment'          => 'Тавзеҳ',
 );

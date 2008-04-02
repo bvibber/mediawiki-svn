@@ -936,7 +936,7 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'badimages'                => 'Lista dels imatges indesirables',
 	'badimages-desc'           => 'Augmenta la capacitat de la lista dels imatges indesirables de MediaWiki',
-	'badimages-add-btn'        => 'Ajustar',
+	'badimages-add-btn'        => 'Apondre',
 	'badimages-added'          => '$1 es estat ajustat a la lista.',
 	'badimages-count'          => "I a '''$1''' imatges dins la lista dels imatges indesirables.",
 	'badimages-name'           => 'Nom:',
@@ -1380,14 +1380,30 @@ $messages['tet'] = array(
 	'badimages-name' => 'Naran:',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'badimages-name'       => 'Ном:',
-	'badimages-reason'     => 'Далел:',
-	'badimages-remove'     => '(ҳазф)',
-	'badimages-remove-btn' => 'Ҳазф',
+	'badimages'                => 'Феҳристи акси номусоид',
+	'badimages-desc'           => 'Қобилиятҳои феҳристи акси номусоиди МедиаВикиро васеъ кунед',
+	'badimages-add-btn'        => 'Илова',
+	'badimages-added'          => '$1 ба феҳрист илова шуда буд.',
+	'badimages-count'          => "Феҳристи акси номусоид '''$1''' аксҳо дорад.",
+	'badimages-name'           => 'Ном:',
+	'badimages-not-added'      => 'Аксро наметавон илова намуд.',
+	'badimages-not-removed'    => 'Акс наметавонад пок шавад.',
+	'badimages-reason'         => 'Далел:',
+	'badimages-remove'         => '(ҳазф)',
+	'badimages-remove-btn'     => 'Ҳазф',
+	'badimages-remove-confirm' => 'Лутфан таъйид кунед, ки шумо мехоҳед $1ро аз феҳрист пок кунед:',
+	'badimages-removed'        => '$1 аз феҳрист пок шуда буд.',
+	'badimages-subheading'     => 'Маводҳои кунунӣ',
+	'badimages-unprivileged'   => '(Шумо барои тағйири феҳристе иҷозати кофӣ надоред)',
+	'badimages-log-name'       => 'Феҳристи акси номусоид',
+	'badimages-log-header'     => 'Ин гузориши тағйирот ба [[{{MediaWiki:Badimages-page}}|феҳристи акси номусоид]] аст.',
+	'badimages-log-add'        => '[[$1]] ба феҳристи акси номусоид илова шуд',
+	'badimages-log-remove'     => '[[$1]] аз феҳристи акси номусоид пок шуд',
+	'badimages-page'           => '{{ns:help}}:Феҳристи акси номусоид',
 );
 
 /** Thai (ไทย)

@@ -157,6 +157,13 @@ $messages['te'] = array(
 	'usercontactlink-baduser' => 'తప్పుడు వాడుకరిపేరు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'usercontactlink-baduser' => 'номи корбарии нодуруст',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

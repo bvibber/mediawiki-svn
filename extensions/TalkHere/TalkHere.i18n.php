@@ -332,8 +332,8 @@ $messages['oc'] = array(
 Lo gestionari del sit es pas responsable de lor contengut.',
 	'talkhere-talkpage'    => 'pagina de dscussion',
 	'talkhere-notalk'      => "''(cap de comentari actualament)''",
-	'talkhere-addcomment'  => 'ajustar un comentari',
-	'talkhere-beforeinput' => 'Podètz ajustar un comentari çaijós.',
+	'talkhere-addcomment'  => 'apondre un comentari',
+	'talkhere-beforeinput' => 'Podètz apondre un comentari çaijós.',
 	'talkhere-loading'     => 'cargament de l’editor...',
 	'talkhere-collapse'    => 'amagar l’editor',
 );

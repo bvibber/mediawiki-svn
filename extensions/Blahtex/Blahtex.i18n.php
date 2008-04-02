@@ -1154,7 +1154,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'math_noblahtex'                        => 'Pòt pas executar blahtex, que deuriá èsser a $1',
 	'math-desc'                             => 'Sortida MathML per las balisas &lt;math&gt;',
-	'math_AmbiguousInfix'                   => "La posicion de « $1 » es ambigua (ajustar de balisas adicionalas « { ... } » pòt levar l'ambigüitat)",
+	'math_AmbiguousInfix'                   => "La posicion de « $1 » es ambigua (apondre de balisas adicionalas « { ... } » pòt levar l'ambigüitat)",
 	'math_CannotChangeDirectory'            => 'Pòt pas cambiar de dorsièr de trabalh',
 	'math_CannotCreateTexFile'              => 'Pòt pas crear un fichièr tex',
 	'math_CannotRunDvipng'                  => 'Pòt pas executar dvipng',
@@ -1662,6 +1662,17 @@ $messages['te'] = array(
 	'math_TooManyTokens'                    => 'ఇన్&zwnj;పుట్ మరీ పెద్దగా ఉంది',
 	'math_UnavailableSymbolFontCombination' => '"$1" అనే గుర్తు "$2" ఫాంటులో లేదు.',
 	'math_UnrecognisedCommand'              => '"$1" అనేది గుర్తుతెలియని ఆదేశం',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'math_CannotChangeDirectory'   => 'Пӯшаи дар ҳоли корро наметавон тағйир дод',
+	'math_CannotCreateTexFile'     => 'Наметавон парвандаи tex эҷод кард',
+	'math_CannotWritePngDirectory' => 'Наметавон ба пӯшаи судури PNG навишт',
+	'math_CannotWriteTexFile'      => 'Наметавон ба парвандани tex навишт',
+	'math_InvalidColour'           => 'Ранги "$1" номӯътабар аст',
 );
 
 /** Thai (ไทย)

@@ -123,6 +123,15 @@ $messages['gl'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dsvyas
+ */
+$messages['gu'] = array(
+	'showprocesslist-user' => 'સભ્ય',
+	'showprocesslist-time' => 'સમય',
+	'showprocesslist-info' => 'માહિતિ',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -220,7 +229,7 @@ $messages['oc'] = array(
 	'showprocesslist-command' => 'Comanda',
 	'showprocesslist-time'    => 'Durada',
 	'showprocesslist-state'   => 'Estat',
-	'showprocesslist-info'    => 'Informacions',
+	'showprocesslist-info'    => 'Entresenhas',
 );
 
 /** Pashto (پښتو)

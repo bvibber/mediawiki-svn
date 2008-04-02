@@ -770,6 +770,13 @@ $messages['sr'] = array(
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'linksearch-ok' => 'Претрага',
+);
+
 $messages['ss'] = array(
 	'linksearch-ok'    => 'Kucálata',
 );

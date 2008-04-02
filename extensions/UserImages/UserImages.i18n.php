@@ -246,6 +246,13 @@ $messages['te'] = array(
 	'userimages-noname'  => 'వాడుకరిపేరు తప్పు లేదా అసలు ఇవ్వనేలేదు.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'userimages-caption' => 'Аксҳо тавассути $1 боргузорӣ шудаанд',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

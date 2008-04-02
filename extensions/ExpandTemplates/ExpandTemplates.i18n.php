@@ -380,6 +380,21 @@ $messages['he'] = array(
 	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'expandtemplates'                  => 'टेम्प्लेट्स बढायें',
+	'expand_templates_title'           => '{{PAGENAME}} इ. के लिये, कन्टेक्स्ट शीर्षक:',
+	'expand_templates_input'           => 'इनपुट पाठ:',
+	'expand_templates_output'          => 'रिज़ल्ट',
+	'expand_templates_xml_output'      => 'XML आउटपुट',
+	'expand_templates_ok'              => 'ठीक',
+	'expand_templates_remove_comments' => 'टिप्पणी हटायें',
+	'expand_templates_generate_xml'    => 'XML का पार्स (parse) वृक्ष दर्शायें',
+	'expand_templates_preview'         => 'झलक',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

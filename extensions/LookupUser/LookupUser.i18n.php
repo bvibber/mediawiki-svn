@@ -273,8 +273,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'lookupuser'                   => "Percórrer las informacions de l'utilizaire",
-	'lookupuser-desc'              => 'Extracha las informacions concernent un utilizaire talas coma una adreça electronica e lo numèro ID',
+	'lookupuser'                   => "Percórrer las entresenhas a prepaus de l'utilizaire",
+	'lookupuser-desc'              => 'Extracha las entresenhas concernent un utilizaire talas coma una adreça electronica e lo numèro ID',
 	'lookupuser_intro'             => "Picar un nom d'utilizaire per veire sas preferéncias",
 	'lookupuser_nonexistent'       => "Error : l'utilizaire existís pas",
 	'lookupuser_authenticated'     => "Corrièr electronic d'identificacion : $1",
@@ -354,8 +354,10 @@ $messages['sk'] = array(
 	'lookupuser_not_authenticated' => 'neoverený',
 	'lookupuser_id'                => 'ID používateľa: <tt>#$1</tt>',
 	'lookupuser_email'             => 'Email: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'nebol poskytnutý',
 	'lookupuser_realname'          => 'Skutočné meno: $1',
 	'lookupuser_registration'      => 'Dátum registrácie: $1',
+	'lookupuser_no_registration'   => 'nebol zaznamenaný',
 	'lookupuser_touched'           => 'Posledný záznam používateľa: $1',
 	'lookupuser_useroptions'       => 'Nastavenia používateľa:',
 );
@@ -389,8 +391,10 @@ $messages['sv'] = array(
 	'lookupuser_not_authenticated' => 'inte bekräftad',
 	'lookupuser_id'                => 'Användar ID: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'inte uppgett',
 	'lookupuser_realname'          => 'Riktigt namn: $1',
 	'lookupuser_registration'      => 'Registrerings datum: $1',
+	'lookupuser_no_registration'   => 'inte lagrat',
 	'lookupuser_touched'           => 'Inställningar sist ändrat: $1',
 	'lookupuser_useroptions'       => 'Användarval:',
 );

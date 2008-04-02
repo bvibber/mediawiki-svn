@@ -635,11 +635,12 @@ $messages['te'] = array(
 	'ajax-se-usernotfound'     => 'పొరపాటు: వాడుకరి కనబడలేదు',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'ajax-se-title'            => 'Дар ҳоли вироиш:',
+	'ajax-se-idling'           => '($1c пеш)',
 	'ajax-se-pagedoesnotexist' => 'саҳифа вуҷуд надорад',
 );
 

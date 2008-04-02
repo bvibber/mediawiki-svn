@@ -787,11 +787,12 @@ $messages['te'] = array(
 	'contributors-nosuchpage'  => '$1 అనే పేజీ లేనే లేదు.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'contributors-target' => 'Унвон:',
+	'contributors-target'   => 'Унвон:',
+	'contributors-badtitle' => 'Унвони номӯътабар',
 );
 
 /** Thai (ไทย)

@@ -144,6 +144,13 @@ $messages['oc'] = array(
 	'breadcrumbs-desc' => 'Aficha lo ligam de las darrièras paginas que l’utilizaire a visitadas dins lo wiki.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'breadcrumbs-desc' => 'Pokazuje ścieżki poruszania się użytkowników poprzez wiki.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

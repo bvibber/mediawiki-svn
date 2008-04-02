@@ -589,7 +589,16 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'review_sidebar_title' => 'Ocenianie',
+	'review_sidebar_title'          => 'Kontrola',
+	'review-desc'                   => 'Obsługa ponownej [[Special:Review|recenzji]] artykułów.',
+	'review_error'                  => 'Wystąpił błąd!',
+	'review_total_statistics'       => 'Podsumowanie',
+	'review_statistics_left_corner' => 'Wersja',
+	'review_version_link'           => 'Wersja #$1',
+	'review_user_details_link'      => '(szczegóły)',
+	'review_blocked'                => 'Zostałeś zablokowany.',
+	'review_no_opinion'             => 'Brak opinii',
+	'review_comment'                => 'Komentarz',
 );
 
 /** Pashto (پښتو)
@@ -706,6 +715,13 @@ $messages['sk'] = array(
 	'review_no_opinion'                                      => 'bez názoru',
 	'review_rating'                                          => 'Hodnotenie',
 	'review_comment'                                         => 'Komentár',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'review_comment' => 'Коментар',
 );
 
 /** Swedish (Svenska)

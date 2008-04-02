@@ -171,6 +171,13 @@ $messages['te'] = array(
 	'nstab-comments'    => 'వ్యాఖ్యానము',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'nstab-comments' => 'Тафсир',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

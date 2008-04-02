@@ -355,6 +355,13 @@ $messages['sk'] = array(
 	'languageselector-setlang' => 'nastaviť',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'languageselector' => 'Језик',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -389,6 +396,13 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'languageselector'         => 'Lian',
 	'languageselector-setlang' => 'hili',
+);
+
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'languageselector' => 'Забон',
 );
 
 /** Turkish (Türkçe)

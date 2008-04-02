@@ -401,3 +401,10 @@ $messages['tet'] = array(
 	'inspectcache-delete' => 'Halakon',
 );
 
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'inspectcache-delete' => 'Ҳафз',
+);
+

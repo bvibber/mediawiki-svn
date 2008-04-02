@@ -150,6 +150,22 @@ $messages['ru'] = array(
   #</pre><!-- не трогайте эту строчку -->',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'editsubpages-desc' => 'Umožniť správcom odomknúť stránku so všetkými podstránkami danej stránky pre anonymné úpravy prostredníctvom [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '  #<!-- nechajte tento riadok ako je --><pre>
+# Stránky, ktoré chcete odomknúť uveďte v zozname nižšie pomocou
+# * názov stránky
+# Stránky, ktoré sa majú odomknúť musia začínať odrážkou, aby sa počítali,
+# všetko ostatné sa považuje za komentár
+# Názvy stránok môžu byť [[odkazmi]] a na veľkosti písmen záleží.
+# Budú odomknuté aj diskusné stránky uvedených stránok.
+# Podrobnosti pozri na  http://www.mediawiki.org/wiki/Extension:EditSubpages
+  #</pre><!-- nechajte tento riadok ako je -->',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab

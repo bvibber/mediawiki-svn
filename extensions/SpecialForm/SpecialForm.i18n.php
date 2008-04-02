@@ -316,25 +316,28 @@ $messages['no'] = array(
 	'formsaveerrortext'            => 'Det var en ukjent feil under lagring av siden ‘$1’.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'form' => 'Formulari',
-	'formnoname' => 'Cap de nom',
-	'formnonametext' => 'Especificatz lo nom del formulari, jos la forma "Special:Formulari/NomDelFormulari".',
-	'formbadname' => 'Nom incorrècte',
-	'formbadnametext' => 'Lo nom causit pel formulari es incorrècte. Cap de formulari existís jos aqueste nom.',
-	'formpattern' => 'formulari-$1',
-	'formtitlepattern' => 'Ajustar un(a) $1',
-	'formsave' => 'Salvagadar',
-	'formindexmismatch' => 'Aqueste formulari a de patrons e de modèls que correspòndon pas a partir de $1.',
-	'formarticleexists' => 'L\'article existís ja.',
-	'formarticleexiststext' => 'L\'article nomenat [[$1]] existís ja.',
-	'formbadpagename' => 'Marrit nom de pagina',
-	'formbadpagenametext' => 'Las donadas picadas fòrman un marrit nom de pagina, « $1 ».',
+	'form'                         => 'Formulari',
+	'formnoname'                   => 'Cap de nom',
+	'formnonametext'               => 'Especificatz lo nom del formulari, jos la forma "Special:Formulari/NomDelFormulari".',
+	'formbadname'                  => 'Nom incorrècte',
+	'formbadnametext'              => 'Lo nom causit pel formulari es incorrècte. Cap de formulari existís jos aqueste nom.',
+	'formpattern'                  => 'formulari-$1',
+	'formtitlepattern'             => 'Apondre un(a) $1',
+	'formsave'                     => 'Salvagadar',
+	'formindexmismatch'            => 'Aqueste formulari a de patrons e de modèls que correspòndon pas a partir de $1.',
+	'formarticleexists'            => "L'article existís ja.",
+	'formarticleexiststext'        => "L'article nomenat [[$1]] existís ja.",
+	'formbadpagename'              => 'Marrit nom de pagina',
+	'formbadpagenametext'          => 'Las donadas picadas fòrman un marrit nom de pagina, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Los camps $1 son requeses dins aqueste formulari.',
-	'formrequiredfielderror' => 'Lo camp $1 es requés dins aqueste formulari.',
-	'formsavesummary' => 'Crear un article novèl amb l\'ajuda de [[Special:Formulari/$1]]',
-	'formsaveerror' => 'Una error s\'es producha pendent la salvagàrdia.',
-	'formsaveerrortext' => 'Una error desconeguda s\'es producha pendent la salvagàrdia de \'\'$1\'\'.',
+	'formrequiredfielderror'       => 'Lo camp $1 es requés dins aqueste formulari.',
+	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Formulari/$1]]",
+	'formsaveerror'                => "Una error s'es producha pendent la salvagàrdia.",
+	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent la salvagàrdia de ''$1''.",
 );
 
 $messages['pl'] = array(
@@ -424,6 +427,13 @@ $messages['so'] = array(
 	'formsave' => 'Kaydi',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'formsave' => 'Сачувај',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -507,5 +517,12 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'formsave'          => 'Захира кардан',
 	'formarticleexists' => 'Саҳифа вуҷуд дорад',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'formsave' => 'บันทึก',
 );
 

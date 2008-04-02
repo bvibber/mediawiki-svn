@@ -879,12 +879,25 @@ $messages['tet'] = array(
 	'changeauthor-pagenameform-go' => 'Bá',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'changeauthor-pagenameform-go' => 'Бирав',
-	'changeauthor-comment'         => 'Тавзеҳ:',
+	'changeauthor'                      => 'Тағйири муаллифи нусха',
+	'changeauthor-title'                => 'Тағйир додани муаллифи нусха',
+	'changeauthor-search-box'           => 'Ҷустуҷӯи нусхаҳо',
+	'changeauthor-pagename-or-revid'    => 'Номи саҳифа ё нишонаи нусха:',
+	'changeauthor-pagenameform-go'      => 'Бирав',
+	'changeauthor-comment'              => 'Тавзеҳ:',
+	'changeauthor-changeauthors-multi'  => 'Тағйири муаллиф(он)',
+	'changeauthor-explanation-multi'    => "Бо ин форм шумо метавонед муаллифони нусхаро тағйир диҳед.
+Басоддагӣ як ё якчанд номҳои корбариро дар феҳристи зер тағйир диҳед, тавзеҳотеро илова кунед (ихтиёрӣ) ва тугмаи 'Тағйири муаллиф(он)'-ро пахш кунед.",
+	'changeauthor-changeauthors-single' => 'Тағйири муаллиф',
+	'changeauthor-explanation-single'   => "Бо ин форм шумо метавонед муаллифи нусхаеро тағйир диҳед. Басоддагӣ номи корбарии зерро тағйир диҳед, тавзеҳотеро илова кунед (ихтиёрӣ) ва тугмаи 'Тағйири муаллиф'-ро пахш кунед.",
+	'changeauthor-invalid-username'     => 'Номи корбарии номӯътабар "$1".',
+	'changeauthor-nosuchuser'           => 'Чунин корбар нест "$1".',
+	'changeauthor-nosuchtitle'          => 'Саҳифае бо унвони "$1" нест.',
+	'changeauthor-logpagename'          => 'Гузориши тағйири муаллиф',
 );
 
 /** Turkish (Türkçe)
@@ -914,6 +927,15 @@ $messages['uk'] = array(
 	'changeauthor-explanation-single'   => "За допомогою цієї форми можна змінити автора редагування. просто змініть ім'я користувача, зазначте пояснення (необов'язково) і натисніть кнопку «Змінити автора».",
 	'changeauthor-invalid-username'     => "Недопустиме ім'я користувача: «$1».",
 	'changeauthor-nosuchuser'           => 'Нема користувача $1.',
+	'changeauthor-revview'              => 'Версія #$1 з $2',
+	'changeauthor-nosuchtitle'          => 'Нема сторінки з назвою «$1».',
+	'changeauthor-weirderror'           => 'Відбулася дуже дивна помилка.
+Будь ласка, повторіть ваш запит.
+Якщо помилка виникне знову, то це означає, що база даних імовірно зіпсована',
+	'changeauthor-invalidform'          => 'Будь ласка, використовуйте форму на сторінці Special:ChangeAuthor, а не якусь іншу.',
+	'changeauthor-success'              => 'Ваш запити успішно оброблений.',
+	'changeauthor-logentry'             => 'Змінено автора $2 $1 з $3 на $4',
+	'changeauthor-logpagename'          => 'Журнал змін авторів',
 );
 
 /** Vietnamese (Tiếng Việt)

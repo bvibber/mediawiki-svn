@@ -523,6 +523,16 @@ používateľom inštrukcie.
 	'createsigndoc-error-alreadycreated' => 'Podpis dokumentu „$1“ už existuje.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'createsigndoc-pagename'     => 'Страна:',
+	'createsigndoc-allowedgroup' => 'Дозвољена група:',
+	'createsigndoc-email'        => 'Е-пошта:',
+	'createsigndoc-extaddress'   => 'Град, држава:',
+);
+
 $messages['ss'] = array(
 	'createsigndoc-phone' => 'Inombolo yelucingo:',
 	'createsigndoc-create' => 'Kúdála',
@@ -577,7 +587,7 @@ $messages['tet'] = array(
 	'createsigndoc-create'   => 'Kria',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -587,6 +597,7 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-extaddress'        => 'Шаҳр, Вилоят, Кишвар:',
 	'createsigndoc-phone'             => 'Шумораи телефон:',
 	'createsigndoc-bday'              => 'Зодрӯз:',
+	'createsigndoc-optional'          => 'Ихтиёрӣ',
 	'createsigndoc-create'            => 'Эҷод',
 	'createsigndoc-error-generic'     => 'Хато: $1',
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',

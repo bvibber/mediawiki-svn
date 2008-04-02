@@ -427,9 +427,9 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'povwatch'                         => 'Susvelhança de las guèrras d’edicions',
-	'povwatch_desc'                    => 'Extension permetent d’[[Special:PovWatch|ajustar de paginas a la lista de seguit]] d’autres utilizaires',
-	'povwatch_no_session'              => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la session.',
-	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas ajustar los articles dins la lista correspondenta.',
+	'povwatch_desc'                    => 'Extension permetent d’[[Special:PovWatch|apondre de paginas a la lista de seguit]] d’autres utilizaires',
+	'povwatch_no_session'              => 'Error : Impossible de sometre lo formulari en seguida de la pèrda de las donadas de la sesilha.',
+	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas apondre los articles dins la lista correspondenta.',
 	'povwatch_already_subscribed'      => 'Ja sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
 	'povwatch_subscribed'              => 'Ara sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
 	'povwatch_not_subscribed'          => 'Sètz pas inscrich(-a) per la susvelhança de las guèrras d’edicion. Atal doncas, podètz pas vos desincriure.',
@@ -541,6 +541,13 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'povwatch_subscribe_intro'         => 'Nie ste prihlásený na odber PovWatch. Prihlásiť odber môžete kliknutím na tlačidlo dolu.',
 	'povwatch_subscribe'               => 'Prihlásiť odber',
 	'povwatch_added'                   => 'pridaný',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'povwatch_title' => 'Наслов:',
 );
 
 /** Swedish (Svenska)

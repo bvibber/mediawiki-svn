@@ -79,6 +79,15 @@ $messages['oc'] = array(
 	'rightfunctions-restcasc' => '$1 (a partir de las fonts en cascada)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'rightfunctions'          => 'Funkcje parsera pracujące na uprawnieniach',
+	'rightfunctions-restboth' => '$1 (z lokalnej strony), $2 (ze źródeł kaskadowych)',
+	'rightfunctions-restcasc' => '$1 (ze źródeł kaskadowych)',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

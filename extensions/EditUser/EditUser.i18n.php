@@ -274,7 +274,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'edituser-desc'     => "Permet als utilizaires dispausant de cèrts privilègis d'editar las preferéncias dels autres utilizaires.",
 	'edituser'          => "Editar l'utilizaire",
-	'edituser-logout'   => "Tampa la session d'utilizaire",
+	'edituser-logout'   => "Tampa la sesilha d'utilizaire",
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Recercar',
 	'edituser-nouser'   => "L'utilizaire especificat existís pas",
@@ -336,6 +336,13 @@ $messages['sk'] = array(
 	'edituser-dosearch' => 'Hľadať',
 	'edituser-nouser'   => 'Uvedený používateľ neexistuje',
 	'edituser-exempt'   => 'Uvedeného používateľa nie je možné upravovať',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'edituser-dosearch' => 'Претрага',
 );
 
 /** Swedish (Svenska)

@@ -583,6 +583,15 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 	'whitelistnummatches'       => '  - $1 výsledkov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$allMessages['sr-ec'] = array(
+	'whitelisttablemodifynone' => 'Нема',
+	'whitelisttableedit'       => 'Уреди',
+	'whitelisttableremove'     => 'Уклони',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab
@@ -673,13 +682,27 @@ $allMessages['tet'] = array(
 	'whitelisttableedit'      => 'Edita',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $allMessages['tg-cyrl'] = array(
+	'whitelist'                => 'Саҳифаҳои Феҳристи сафед',
+	'mywhitelistpages'         => 'Саҳифаҳои Ман',
+	'whitelistfor'             => '<center>Иттилооти кунунӣ барои <b>$1</b></center>',
+	'whitelisttablemodify'     => 'Пиростан',
+	'whitelisttablemodifyall'  => 'Ҳама',
+	'whitelisttablemodifynone' => 'Ҳеҷ',
 	'whitelisttablepage'       => 'Саҳифаи Вики',
+	'whitelisttabletype'       => 'Навъи Дастрасӣ',
+	'whitelisttableexpires'    => 'Сипарӣ мешавад дар',
+	'whitelisttablemodby'      => 'Охирин маротиба пироста шуда буд тавассути',
+	'whitelisttablemodon'      => 'Охирин маротиба пироста шуда буд дар',
 	'whitelisttableedit'       => 'Вироиш',
+	'whitelisttableview'       => 'Дидан',
+	'whitelisttablenewdate'    => 'Таърихи Нав:',
+	'whitelisttablechangedate' => 'Тағйири Таърихи Баинтиҳорасӣ',
 	'whitelisttableremove'     => 'Ҳазф',
+	'whitelistnewtabledate'    => 'Таърихи Баинтиҳорасӣ:',
 	'whitelistnewtableprocess' => 'Раванд',
 	'whitelistnever'           => 'ҳеҷгоҳ',
 );

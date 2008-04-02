@@ -68,24 +68,8 @@ $messages['qqq'] = array(
 	'oversight' => 'Oversight extension. The name of the page Special:Oversight, used in the list of special pages and at the top of Special:Oversight.',
 );
 
-/** Amharic (አማርኛ)
- * @author Codex Sinaiticus
- */
-$messages['am'] = array(
-	'oversightlog' => 'የላዕላይ መቆጣጠር መዝገብ',
-);
-
-/** Aragonese (Aragonés)
- * @author Juanpabl
- */
-$messages['an'] = array(
-	'oversightlog'    => "Rechistro d'escudios",
-	'overlogpagetext' => "Contino s'amuestra una lista de borraus y bloqueyos más rezients relatibos á contenius amagatos d'os almenistradors d'o sistema. Consulte a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer una lista d'os bloqueyos autuals.",
-);
-
 /** Arabic (العربية)
  * @author Meno25
- * @author Alnokta
  */
 $messages['ar'] = array(
 	'hiderevision'                => 'أخف النسخ بشكل دائم',
@@ -118,8 +102,6 @@ $messages['ar'] = array(
 *الصفحة تم حذفها
 *هذه النسخة المخفية كانت النسخة الأولى',
 	'oversight-log-hiderev'       => 'أزال تعديلا من $1',
-	'oversightlog'                => 'سجل الأوفرسايت',
-	'overlogpagetext'             => 'بالأسفل قائمة بأحدث عمليات الحذف والمنع المتضمنة محتويات تم إخفائها عن الإداريين. انظر [[Special:Ipblocklist|قائمة منع عناوين الأيبي]] لترى حالات المنع والطرد الحالية.',
 	'oversight'                   => 'أوفرسايت',
 	'oversight-view'              => 'التفاصيل',
 	'oversight-difference'        => '(الفرق من النسخة المتبقية السابقة)',
@@ -160,9 +142,6 @@ manualmente por un alministrador de la base de datos.",
 *La páxina foi borrada; o
 *Esta revisión escondida yera la primer revisión',
 	'oversight-log-hiderev'       => 'eliminó una edición de $1',
-	'oversightlog'                => "Rexistru d'ediciones ocultes",
-	'overlogpagetext'             => "Abaxo amuésase una llista de los borraos y bloqueos más recientes de conteníu
-ocultáu por alministradores. Vete a la [[Special:Ipblocklist|llista de bloqueos d'IP]] pa consultar la llista de bloqueos activos anguaño.",
 	'oversight'                   => 'Supervisión',
 	'oversight-view'              => 'detalles',
 	'oversight-difference'        => '(Diferencia ente les revisiones previes restantes)',
@@ -170,32 +149,6 @@ ocultáu por alministradores. Vete a la [[Special:Ipblocklist|llista de bloqueos
 	'oversight-hidden'            => 'Revisión escondida',
 	'oversight-header'            => 'Embaxo amuésase una llista de les revisiones escondíes recién permanentemente de la vista pública.
 Esparder esta información pue llevar a la perda permanente de privilexos de supervisión.',
-);
-
-/** Samogitian (Žemaitėška)
- * @author Hugo.arg
- */
-$messages['bat-smg'] = array(
-	'oversightlog'    => 'Privaizuos istuorėjė',
-	'overlogpagetext' => 'Žemiau īr sārašos paskotėniu trīnimu ė bluokavėmu. [[Special:Ipblocklist|IP bluokavėmu istuorėjuo]] rasėt šėtuo čieso veikiantiu draudėmu ė bluokavėmu sāraša.',
-);
-
-/** Bikol Central (Bikol Central)
- * @author Filipinayzd
- * @author Steven*fung
- */
-$messages['bcl'] = array(
-	'oversightlog'    => 'Historial nin pagmanaw',
-	'overlogpagetext' => 'Mahihiling sa babâ an lista kan kaaagi pa sanang mga pagparâ asin mga binagat na may mga laog na pigtatago sa mga Sysops.
-Hilingon tabî an [[Special:Ipblocklist|lista nin binagat na IP]] para sa lista kan mga presenteng pagbawal asin pagbagat.',
-);
-
-/** Belarusian (Беларуская)
- * @author Yury Tarasievich
- */
-$messages['be'] = array(
-	'oversightlog'    => 'Журнал звышнагляду',
-	'overlogpagetext' => 'Тут паказаны спіс нядаўніх сціранняў і блокаў, лучна з такімі, што схаваныя ад сісопаў. Актуальныя забароны і блокі гл. [[Special:Ipblocklist|спіс IP-блокаў]].',
 );
 
 /** Bulgarian (Български)
@@ -219,8 +172,6 @@ $messages['bg'] = array(
 	'hiderevision-error-delete'   => 'Не можа да бъде архивирана. Да не е била вече изтрита?',
 	'hiderevision-archive-status' => 'Изтрита версия от $1: $2',
 	'oversight-log-hiderev'       => 'премахната редакция от $1',
-	'oversightlog'                => 'Дневник на потулванията',
-	'overlogpagetext'             => 'Страницата съдържа списък на последните изтривания и блокирания, които са скрити от администраторите. Можете да прегледате [[{{ns:special}}:Ipblocklist|списъка на текущите блокирания]].',
 	'oversight-view'              => 'детайли',
 	'oversight-prev'              => 'Последна предишна версия',
 	'oversight-hidden'            => 'Скрита редакция',
@@ -256,8 +207,6 @@ $messages['bn'] = array(
 	'hiderevision-error-delete'   => 'আর্কাইভ করা যায়নি; এটা কি আগে মুছে ফেলা হয়েছিল?',
 	'hiderevision-archive-status' => '$1 থেকে এই সংশোধনটি মুছে ফেলা হয়েছে: $2',
 	'oversight-log-hiderev'       => '$1 থেকে একটি সম্পাদনা মুছে ফেলা হয়েছে',
-	'oversightlog'                => 'ওভারসাইট লগ',
-	'overlogpagetext'             => 'সবচেয়ে সাম্প্রতিক মুছে ফেলা ও বাধাদানের ঘটনা, যেগুলির বিষয়বস্তু প্রশাসকদের কাছ থেকে লুকানো আছে, নিচে তাদের একটি তালিকা দেয়া হল। বর্তমানে কার্যকর নিষিদ্ধকরণ ও বাধাদানের তালিকার জন্য [[Special:Ipblocklist|আইপি বাধাদান তালিকা]] দেখুন।',
 	'oversight'                   => 'ওভারসাইট',
 	'oversight-view'              => 'বিস্তারিত',
 	'oversight-hidden'            => 'লুকায়িত সংশোধন',
@@ -268,8 +217,6 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'hiderevision-continue' => "Kenderc'hel",
-	'oversightlog'          => 'Roll ar fazioù',
-	'overlogpagetext'       => "Diskouez a ra ar roll a-is an diverkadenoù hag ar stankadennoù diwezhañ zo kuzhet an danvez anezho ha pa vije d'ar verourien. Sellet ouzh [[Special:Ipblocklist|Roll an IPoù stanket]] evit gwelet roll ar stankadennoù hag an argasadennoù zo er mare-mañ.",
 );
 
 /** Catalan (Català)
@@ -284,8 +231,6 @@ $messages['ca'] = array(
 	'hiderevision-status'         => 'Revisió $1: $2',
 	'hiderevision-error-missing'  => "No s'ha trobat a la base de dades.",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
-	'oversightlog'                => "Registre d'oversight",
-	'overlogpagetext'             => 'A continuació trabareu una llista dels esborrats i blocatges més recents relacionats amb contingut amagat pels administradors. Vegeu la [[Special:Ipblocklist|llista de blocatges]] per a la llista completa de tots els blocatges actius.',
 	'oversight-view'              => 'detalls',
 	'oversight-prev'              => 'Darrera revisió anterior',
 );
@@ -299,23 +244,10 @@ $messages['co'] = array(
 	'hiderevision-status'   => 'Revisione $1: $2',
 );
 
-/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
- * @author Alessandro
- */
-$messages['crh-latn'] = array(
-	'oversightlog' => 'Gizleme jurnalı',
-);
-
-/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
- * @author Alessandro
- */
-$messages['crh-cyrl'] = array(
-	'oversightlog' => 'Гизлеме журналы',
-);
-
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Li-sung
+ * @author Sp5uhe
  */
 $messages['cs'] = array(
 	'hiderevision'                => 'Natrvalo skrýt revize',
@@ -349,28 +281,12 @@ administrátorům databáze v případě, že uděláte chybu.",
 * stránka byla smazána nebo
 * tato skrytá revize byla první revize',
 	'oversight-log-hiderev'       => 'odstraňuje editaci stránky $1',
-	'oversightlog'                => 'Kniha dohledu',
-	'overlogpagetext'             => 'Níže je seznam posledních smazání a blokování s obsah skrytým pro správce. Přehled současných blokování je na [[Special:Ipblocklist|Seznamu probíhajících zablokování]].',
 	'oversight'                   => 'Dozor',
 	'oversight-view'              => 'podrobnosti',
 	'oversight-difference'        => '(Rozdíl oproti předchozí zbývající revizi)',
 	'oversight-prev'              => 'Poslední předešlá revize',
 	'oversight-hidden'            => 'Skrytá revize',
 	'oversight-header'            => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
-);
-
-/** Welsh (Cymraeg)
- * @author Lloffiwr
- */
-$messages['cy'] = array(
-	'oversightlog'    => 'Lòg arolygiaeth',
-	'overlogpagetext' => "Ceir isod restr o'r dileadau a'r blociau yn ymwneud â chynnwys sydd wedi ei guddio rhag y gweinyddwyr. Gweler [[Special:Ipblocklist|rhestr y blociau IP]] i weld y blociau a'r gwaharddiadau cyfredol.",
-);
-
-/** Danish (Dansk) */
-$messages['da'] = array(
-	'oversightlog'    => 'Oversight-logbog',
-	'overlogpagetext' => 'Dette er logbogen med sletninger og spærringer, som er skjult for administratorerne.',
 );
 
 /** German (Deutsch)
@@ -405,8 +321,6 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 *Die Seite wurde gelöscht
 *Die entfernte Version war die erste Version',
 	'oversight-log-hiderev'       => 'Entfernte eine Bearbeitung von $1',
-	'oversightlog'                => 'Oversight-Logbuch',
-	'overlogpagetext'             => 'Das ist das Logbuch der Löschungen und Sperren, die vor Administratoren versteckt sind.',
 	'oversight-view'              => 'Details',
 	'oversight-difference'        => '(Unterschied zur vorhergehenden verbleibenden Version)',
 	'oversight-prev'              => 'Letzte vorhergehenden Version',
@@ -422,17 +336,8 @@ $messages['de-formal'] = array(
 	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setzen Sie die Bearbeitung erst zurück.',
 );
 
-/** Lower Sorbian (Dolnoserbski)
- * @author Nepl1
- */
-$messages['dsb'] = array(
-	'oversightlog'    => 'Pśeglědowa log-lisćina',
-	'overlogpagetext' => 'Dołojce jo wiźeś lisćina nejnowšych wulašowanjow a zakazow, kótarež su teke za administratory schowane. Glědaj na [[Special:Ipblocklist|zakazowu lisćinu]], aby wiźeł aktualne zakaze.',
-);
-
 /** Greek (Ελληνικά)
  * @author Consta
- * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -440,9 +345,6 @@ $messages['el'] = array(
 	'hiderevision-continue'      => 'Συνέχεια',
 	'hiderevision-status'        => 'Επανάληψη $1: $2',
 	'hiderevision-error-missing' => 'Δεν βρέθηκε στην βάση δεδομένων.',
-	'oversightlog'               => 'Αρχείο καταγραφής παραδρομών',
-	'overlogpagetext'            => 'Παρακάτω είναι μια λίστα με τις πιο πρόσφατες διαγραφές και φραγές που περιλαμβάνουν περιεχόμενο
-κρυμμένο από τους Sysops. Δείτε τη [[Special:Ipblocklist|λίστα φραγών IP]] για τη λίστα με τις τρέχουσες φραγές και αποκλεισμούς',
 	'oversight-view'             => 'λεπτομέρειες',
 );
 
@@ -457,16 +359,8 @@ $messages['eo'] = array(
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
-	'oversightlog'                => 'Loglibro de superrigardo',
-	'overlogpagetext'             => 'Jen sube estas listo de la plej lastatempaj forigoj kaj blokoj (baroj) koncernantaj enhavon kasxitan de administrantoj (Sysops). Vidu la [[Special:Ipblocklist|IP-an forbarliston]] por la listo de aktuale funkciantaj forbaroj kaj blokoj.',
 	'oversight-view'              => 'detaloj',
 	'oversight-hidden'            => 'Kaŝita revizio',
-);
-
-/** Spanish (Español) */
-$messages['es'] = array(
-	'oversightlog'    => 'Registro de descuidos',
-	'overlogpagetext' => 'A continuación se muestra una lista de los borrados y bloqueos más recientes relacionados con contenidos ocultos de los operadores del sistema. Consulte la [[Special:Ipblocklist|lista de IPs bloqueadas]] para ver una lista de los bloqueos actuales.',
 );
 
 /** Basque (Euskara)
@@ -497,14 +391,6 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 	'oversight-log-hiderev'       => '$1(e)tik aldaketa bat ezabatu da',
 	'oversight'                   => 'Oharkabetasuna',
 	'oversight-view'              => 'xehetasunak',
-);
-
-/** Extremaduran (Estremeñu)
- * @author Better
- */
-$messages['ext'] = array(
-	'oversightlog'    => 'Rustrihu e descúdius',
-	'overlogpagetext' => "Embahu se muestra una lista al tentu los úrtimus esborraus i tarugus relacionaus con continius açonchaus de los çahorilis. Consurta la [[Special:Ipblocklist|lista d'IP atarugás]] pa vel una lista colos úrtimus tarugus.",
 );
 
 /** Persian (فارسی)
@@ -541,8 +427,6 @@ $messages['fa'] = array(
 *صفحه حذف شده‌است
 *نسخه پنهان شده اولین نسخه صفحه بوده‌است',
 	'oversight-log-hiderev'       => 'نسخه‌ای از $1 را حذف کرد',
-	'oversightlog'                => 'سیاههٔ نظارت',
-	'overlogpagetext'             => 'آن چه در زیر می‌آید فهرست آخرین موارد حذف و قطع دسترسی است که شامل اطلاعاتی است که مدیران قادر به مشاهدهٔ آن نیستند.',
 	'oversight'                   => 'ناظر',
 	'oversight-view'              => 'بیشتر',
 	'oversight-difference'        => '(تفاوت از آخرین نسخه باقی مانده قبلی)',
@@ -578,27 +462,16 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-error-current'  => 'Sivun viimeisintä muokkausta ei voi poistaa. Palauta muutos ensin.',
 	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
 	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
-	'oversightlog'                => 'Tietosuojaloki',
-	'overlogpagetext'             => 'Alla on lista viimeaikaisista poistoista ja estoista liittyen ylläpitäjiltä piilotettuun sisältöön. [[Special:Ipblocklist|Estolistalla]] on luettelo voimassa olevista estoista.',
 	'oversight-view'              => 'tiedot',
 	'oversight-hidden'            => 'Piilotettu versio',
 	'oversight-header'            => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
-);
-
-/** Võro (Võro)
- * @author Võrok
- */
-$messages['fiu-vro'] = array(
-	'oversightlog'    => 'Perrävalvmismuutuisi nimekiri',
-	'overlogpagetext' => 'Tan om nimekiri vahtsõmbist kistutuisist ja kinniqpidämiisist, miä pututasõq kõrraldajidõ iist käkitüt sissu. Kaeq [[Special:Ipblocklist|puutridõ võrgoaadrõssidõ kinniqpidämisnimekirjä]], et nätäq, määntseq kinniqpidämiseq ommaq parhillaq jovvun.',
 );
 
 /** Faroese (Føroyskt)
  * @author Spacebirdy
  */
 $messages['fo'] = array(
-	'oversightlog' => 'Yvurlits logg',
-	'oversight'    => 'Yvirlit',
+	'oversight' => 'Yvirlit',
 );
 
 /** French (Français)
@@ -637,23 +510,12 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
 	'oversight-log-hiderev'       => 'a supprimé une édition de $1',
-	'oversightlog'                => 'Historique de supervision',
-	'overlogpagetext'             => 'la liste ci-dessous montre les suppressions et blocages récents dont le contenu est masqué même pour les administrateurs.
-Consulter la [[Special:Ipblocklist|liste des comptes bloqués]] pour la liste des blocages en cours.',
 	'oversight'                   => 'Supervision',
 	'oversight-view'              => 'détails',
 	'oversight-difference'        => '(Différence par rapport à la révision précédente)',
 	'oversight-prev'              => 'Dernière révision précédente',
 	'oversight-hidden'            => 'Révision cachée',
 	'oversight-header'            => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
-);
-
-/** Cajun French (Français cadien)
- * @author RoyAlcatraz
- */
-$messages['frc'] = array(
-	'oversightlog'    => "Notes d'oubli",
-	'overlogpagetext' => 'Cette liste ici montre les ôtages et les blocages avec du texte caché des administrateurs.  Lire la [[Special:Ipblocklist|liste des comptes bloqués]] pour la liste des blocages courants.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -686,23 +548,12 @@ Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes sup
 *La pâge at étâ suprimâ.
 *La vèrsion cachiê ére la tota premiére de la pâge.',
 	'oversight-log-hiderev'       => 'at suprimâ una èdicion de $1',
-	'oversightlog'                => 'Jornal de survelyence',
-	'overlogpagetext'             => 'La lista ce-desot montre les suprèssions et los blocâjos novéls que lo contegnu est mâscâ mémo por los administrators.
-Consultâd la [[Special:Ipblocklist|lista des comptos blocâs]] por la lista des blocâjos en cors.',
 	'oversight'                   => 'Survelyér',
 	'oversight-view'              => 'dètalys',
 	'oversight-difference'        => '(Difèrence per rapôrt a la vèrsion prècèdenta)',
 	'oversight-prev'              => 'Dèrriére vèrsion prècèdenta',
 	'oversight-hidden'            => 'Vèrsion cachiê',
 	'oversight-header'            => 'Ce-desot, figure la lista de les vèrsions cachiês de maniére durâbla u publico. La publecacion de ceta enformacion pôt avêr coment consèquence la pèrta des privilèjos de survelyence.',
-);
-
-/** Gan (贛語)
- * @author Symane
- */
-$messages['gan'] = array(
-	'oversightlog'    => '監督記錄',
-	'overlogpagetext' => '下底係隻最近刪除同到由操作員封鎖牽涉到嗰內容列表。眵吖底下嗰[[Special:Ipblocklist|IP封鎖列表]]去查看眼下嗰封鎖。',
 );
 
 /** Galician (Galego)
@@ -737,8 +588,6 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 *Se eliminase a páxina
 *Esta revisión agochada sexa a primeira revisión',
 	'oversight-log-hiderev'       => 'eliminouse unha edición de $1',
-	'oversightlog'                => 'Rexistro de edicións ocultadas',
-	'overlogpagetext'             => 'Abaixo aparece unha listaxe coas eliminacións e bloqueos máis recentes relacionados con contido agochado para os administradores. Vexa [[Special:Ipblocklist|Listaxe de bloqueos de IP]] para unha listaxe das prohibicións e bloqueos que teñen efecto neste momento.',
 	'oversight'                   => 'Supervisión',
 	'oversight-view'              => 'detalles',
 	'oversight-difference'        => '(Diferenza das anteriores pendentes de revisión)',
@@ -746,14 +595,6 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'oversight-hidden'            => 'Revisión agochada',
 	'oversight-header'            => 'Embaixo amósase unha listaxe recente das revisións ocultas permanentemente á opinión pública.
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
-);
-
-/** Hakka (Hak-kâ-fa)
- * @author Hakka
- */
-$messages['hak'] = array(
-	'oversightlog'    => 'Kam-tuk ki-liu̍k',
-	'overlogpagetext' => 'Ha-mien he yit-ke chui-khiûn chhù-hi yî-khi̍p chhâu-chok-yèn fûng-só khiên-sa̍p-to ke nui-yùng lie̍t-péu. Chhâm-siòng ha-mien ke [[Special:Ipblocklist|IP fûng-só lie̍t-péu]] chhà-khon hien-chhai chin-hàng ke fûng-só.',
 );
 
 /* Hebrew (Rotem Liss) */
@@ -783,8 +624,6 @@ $messages['he'] = array(
 * הדף נמחק
 * הגרסה שהוסתרה הייתה הגרסה האחרונה',
 	'oversight-log-hiderev'       => 'הסיר עריכה מהדף $1',
-	'oversightlog'                => 'יומן הסתרות',
-	'overlogpagetext'             => 'להלן רשימת המחיקות והחסימות האחרונות הכוללות תוכן המוסתר ממפעילי המערכת.',
 	'oversight'                   => 'אוברסייט',
 	'oversight-view'              => 'פרטים',
 	'oversight-difference'        => '(שינויים מהגרסה הקודמת שנשארה)',
@@ -794,17 +633,8 @@ $messages['he'] = array(
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 );
 
-/** Hindi (हिन्दी)
- * @author Kaustubh
- */
-$messages['hi'] = array(
-	'oversightlog'    => 'ओवरसाईट लॉग',
-	'overlogpagetext' => 'नीचे सबसे हाल में हटायें गयें अवतरणों (प्रबंधकोंसे भी छुपायें गयें) की सूची हैं। हाल में चल रहे ब्लॉक की सूची  [[Special:Ipblocklist|आईपी ब्लॉक सूची]] यहां देखें।',
-);
-
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
- * @author Roberta F.
  * @author Dnik
  */
 $messages['hr'] = array(
@@ -836,9 +666,6 @@ učinite pogrešku.",
 *stranica obrisana
 *ova skrivena promjena je prva promjena',
 	'oversight-log-hiderev'       => 'uklonjeno uređivanje $1',
-	'oversightlog'                => 'Oversight log',
-	'overlogpagetext'             => 'Slijedi popis posljednjih brisanja stranica i blokiranja koja uključuju sadržaj sakriven od Administratora.
-Vidi [[Special:Ipblocklist|IP popis blokiranja]] za popis trenutačno blokiranih IP adresa.',
 	'oversight'                   => "Nadzor (''oversight'')",
 	'oversight-view'              => 'potankosti',
 	'oversight-difference'        => '(razlike prema prethodnim promjenama)',
@@ -878,8 +705,6 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 *Strona bu zničena
 *Schowana wersija běše přenja wersija',
 	'oversight-log-hiderev'       => 'změna wot $1 bu wotstronjena.',
-	'oversightlog'                => 'Protokol funkcije Oversight',
-	'overlogpagetext'             => 'Deleka je lisćina aktualnych wušmórnjenjow a blokowanjow, kotrež su před adminstratorami schowane. Hlej [[Special:Ipblocklist|lisćinu blokowanych IP]] za lisćinu tuchwilnych wuhnaćow a blokowanjow.',
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'podrobnosće',
 	'oversight-difference'        => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
@@ -924,8 +749,6 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 *Az oldalt törölték, vagy
 *ez a rejtett változat volt az első változat',
 	'oversight-log-hiderev'       => '$1 egyik változatának eltávolítása',
-	'oversightlog'                => 'Adatvédelmi biztos-napló',
-	'overlogpagetext'             => 'Az alábbiakban látható az adminisztrátorok elől legutóbb elrejtett törlések és blokkok listája. A jelenleg érvényben lévő kitiltásokat és blokkolásokat lásd az [[Special:Ipblocklist|Blokkolt IP-címek listáján]].',
 	'oversight'                   => 'Felügyelet',
 	'oversight-view'              => 'részletek',
 	'oversight-difference'        => '(Különbség az előző verziótól)',
@@ -935,17 +758,8 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 );
 
-/** Armenian (Հայերեն)
- * @author Teak
- */
-$messages['hy'] = array(
-	'oversightlog'    => 'Վերահսկման տեղեկամատյան',
-	'overlogpagetext' => 'Ստորև բերված է ադմինիստրատորներից թաքնված նյութերի վերջին ջնջումների և արգելափակուկմների ցանկը։ Տեսեք նաև [[Special:Ipblocklist|ներկայումս գործող արգելափակումների ցանկը]]։',
-);
-
 /** Indonesian (Bahasa Indonesia)
  * @author Borgx
- * @author IvanLanin
  */
 $messages['id'] = array(
 	'hiderevision'                => 'Sembunyikan revisi',
@@ -976,8 +790,6 @@ administrator basis data jika Anda membuat kesalahan.",
 *Halaman telah dihapus
 *Revisi yang disembunyikan merupakan revisi pertama',
 	'oversight-log-hiderev'       => 'menghapus sebuah suntingan dari $1',
-	'oversightlog'                => 'Log pengawas',
-	'overlogpagetext'             => 'Berikut ini adalah daftar terbaru penghapusan dan pemblokiran yang melibatkan isi yang disembunyikan dari pengurus. Lihat [[Special:Ipblocklist|daftar blokir IP]] untuk daftar terkini pencekalan dan pemblokiran yang berlaku.',
 	'oversight'                   => 'Log penghapusan revisi secara permanen',
 	'oversight-view'              => 'detil',
 	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
@@ -988,14 +800,13 @@ Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 );
 
 /** Icelandic (Íslenska)
- * @author S.Örvarr.S
  * @author SPQRobin
+ * @author S.Örvarr.S
  */
 $messages['is'] = array(
 	'hiderevision-continue'      => 'Halda áfram',
 	'hiderevision-noreason'      => 'Þú verður að skilgreina ástæðu fyrir eyðingu.',
 	'hiderevision-error-missing' => 'Ekki fundið í skráasafni.',
-	'oversightlog'               => 'Yfirsýnaskrá',
 	'oversight-view'             => 'smáatriði',
 );
 
@@ -1032,8 +843,6 @@ in caso di errori.",
 *La pagina è stata cancellata
 *Questa revisione oscurata era la prima per la pagina',
 	'oversight-log-hiderev'       => 'ha oscurato una modifica di $1',
-	'oversightlog'                => 'Registro azioni di oversight',
-	'overlogpagetext'             => "Qui di seguito viene presentata una lista delle cancellazioni e dei blocchi che riguardano contenuti oscurati agli amministratori. Consultare l'[[Special:Ipblocklist|elenco IP bloccati]] per l'elenco dei blocchi e dei bandi al momento operativi.",
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'dettagli',
 	'oversight-difference'        => '(Differenza rispetto alla versione precedente rimasta)',
@@ -1077,8 +886,6 @@ $messages['ja'] = array(
 *このページは既に削除されている
 *この秘匿された版は最初の版である',
 	'oversight-log-hiderev'       => '―― $1の編集を消去',
-	'oversightlog'                => '版隠蔽ログ',
-	'overlogpagetext'             => '以下は{{int:group-sysop}}が最近隠蔽した版削除およびブロックの記録です。現時点で有効な投稿ブロックは[[Special:Ipblocklist|{{int:ipblocklist}}]]をご覧ください。',
 	'oversight'                   => '秘匿版の閲覧',
 	'oversight-view'              => '詳細',
 	'oversight-difference'        => '（残存している前の版との差分）',
@@ -1113,26 +920,6 @@ $messages['jut'] = array(
 Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt priiviilesje.',
 );
 
-/** Javanese (Basa Jawa) */
-$messages['jv'] = array(
-	'oversightlog' => 'Log pangawas',
-);
-
-/** Kara-Kalpak (Qaraqalpaqsha)
- * @author AlefZet
- */
-$messages['kaa'] = array(
-	'oversightlog' => 'Nusqa jasırıw jurnalı',
-);
-
-/** Kabyle (Taqbaylit)
- * @author Agurzil
- */
-$messages['kab'] = array(
-	'oversightlog'    => 'Aɣmis n oversight',
-	'overlogpagetext' => 'Deg ukessar, d umuɣ n umḥay d wumuɣ n uɛekkil ineggura n wayen yettwaffren ɣef inedbalen. Ẓer [[Special:Ipblocklist|Umuɣ n uɛekkil n IP]].',
-);
-
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
 	'hiderevision'                => 'نۇسقالاردى تۇراقتى جاسىرۋ',
@@ -1162,9 +949,6 @@ $messages['kk-arab'] = array(
 * بەت جويلعان
 * جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
 	'oversight-log-hiderev'       => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
-	'oversightlog'                => 'نۇسقا جاسىرۋ جۋرنالى',
-	'overlogpagetext'             => 'تومەندە اكىمشىلەردەن جاسىرىلعان ماعلۇماتقا ىقپال ەتەتىن جۋىقتاعى بولعان جويۋ جانە بۇعاتتاۋ
-ٴتىزىمى بەرىلەدى. اعىمداعى امالدى بۇعاتتاۋ مەن تىيىم ٴۇشىن [[{{ns:special}}:Ipblocklist|IP بۇعاتتاۋ ٴتىزىمىن]] قاراڭىز.',
 	'oversight'                   => 'بەت نۇسقالارىن جاسىرۋ',
 	'oversight-view'              => 'ەگجەي-تەگجەيلەرٸ',
 	'oversight-difference'        => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
@@ -1203,9 +987,6 @@ $messages['kk-cyrl'] = array(
 * Бет жойлған
 * Жасырылған нұсқа бірінші болған',
 	'oversight-log-hiderev'       => '$1 кезіндегі түзету жойылды',
-	'oversightlog'                => 'Нұсқа жасыру журналы',
-	'overlogpagetext'             => 'Төменде әкімшілерден жасырылған мағлұматқа ықпал ететін жуықтағы болған жою және бұғаттау
-тізімі беріледі. Ағымдағы амалды бұғаттау мен тиым үшін [[{{ns:special}}:Ipblocklist|IP бұғаттау тізімін]] қараңыз.',
 	'oversight'                   => 'Бет нұсқаларын жасыру',
 	'oversight-view'              => 'егжей-тегжейлері',
 	'oversight-difference'        => '(Алдынан қалған нұсқамен айырмашылық)',
@@ -1244,9 +1025,6 @@ derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
 * Bet joýlğan
 * Jasırılğan nusqa birinşi bolğan',
 	'oversight-log-hiderev'       => '$1 kezindegi tüzetw joýıldı',
-	'oversightlog'                => 'Nusqa jasırw jwrnalı',
-	'overlogpagetext'             => 'Tömende äkimşilerden jasırılğan mağlumatqa ıqpal etetin jwıqtağı bolğan joyw jäne buğattaw
-tizimi beriledi. Ağımdağı amaldı buğattaw men tïım üşin [[{{ns:special}}:Ipblocklist|IP buğattaw tizimin]] qarañız.',
 	'oversight'                   => 'Bet nusqaların jasırw',
 	'oversight-view'              => 'egjeý-tegjeýleri',
 	'oversight-difference'        => '(Aldınan qalğan nusqamen aýırmaşılıq)',
@@ -1279,7 +1057,6 @@ $messages['km'] = array(
 	'hiderevision-error-delete'   => 'មិនអាចប្រមូលផ្តុំបានទេ។ តើវាត្រូវបានគេលុបពីមុនដែឬទេ?',
 	'hiderevision-archive-status' => 'បានលុបកំនែប្រែពី$1: $2',
 	'oversight-log-hiderev'       => 'បានដកចេញ កំណែប្រែ ពី $1',
-	'oversightlog'                => 'កំណត់ហេតុ ត្រួតមើល',
 	'oversight'                   => 'ការត្រួតមើល ពីលើ',
 	'oversight-view'              => 'សេចក្តីលំអិត',
 	'oversight-hidden'            => 'កំនែប្រែដែលត្រូវបានលាក់',
@@ -1288,12 +1065,6 @@ $messages['km'] = array(
 /** Ripoarisch (Ripoarisch) */
 $messages['ksh'] = array(
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
-);
-
-/** Kurdish (Latin) (Kurdî / كوردی (Latin)) */
-$messages['ku-latn'] = array(
-	'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content
-hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1316,7 +1087,6 @@ Annulléiert dës Ännerung d'éischt.",
 	'hiderevision-error-delete'   => "Kann net archivéiert ginn. Gouf d'Säit virdru geläscht?",
 	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
 	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
-	'overlogpagetext'             => "Dëst ass d'Lëscht vun de Läschungen a Spären, déi virun den Administrateure verstoppt sinn.",
 	'oversight'                   => 'Iwwersiicht',
 	'oversight-view'              => 'Detailer',
 	'oversight-prev'              => 'Lescht vireg Versioun',
@@ -1359,8 +1129,6 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
 *De pagina waar gewis
 *Deze verborge versie de eerste versie waar',
 	'oversight-log-hiderev'       => "wiste 'n bewerking oet $1",
-	'oversightlog'                => 'Oversight-logbook',
-	'overlogpagetext'             => "Hiej onher is 'ne lies mit de meist recente verwiederinge en blokkeringe mit betrekking tot informatie dae neet zichbaar is veur admins. Zee de [[Special:Ipblocklist|Lies van geblokkeerde gebroekers en IP-adresse]] veur 'ne lies van de blokkades en verbanninge die noe gelje.",
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'details',
 	'oversight-difference'        => '(Versjille met vorge zichtbare versie)',
@@ -1375,17 +1143,7 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
 $messages['lt'] = array(
 	'hiderevision-continue'      => 'Tęsti',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
-	'oversightlog'               => 'Priežiūros istorija',
-	'overlogpagetext'            => 'Žemiau yra paskutinių trynimų ir blokavimų, įskaitant turinio slėpimą nuo administratorių, sąrašas. [[{{ns:special}}:Ipblocklist|IP blokavimų istorijoje]] rasite šiuo metu veikiančių draudimų ir blokavimų sąrašą.',
 	'oversight-view'             => 'detalės',
-);
-
-/** Moksha (мокшень кяль)
- * @author Kranch
- */
-$messages['mdf'] = array(
-	'oversightlog'    => 'Кяшемань лувома',
-	'overlogpagetext' => 'Ватт ала ащи улхкомбань нардаматнень эди пякстаматнень лувомасна, сембе ся потмосна кяшфоль системонь вийкснень эзда. Ватт тяниень кардафкснень эди пякстаматнень лувкссна [[Special:Ipblocklist|IP пякстамонь лувомаса]].',
 );
 
 /** Malayalam (മലയാളം)
@@ -1393,13 +1151,11 @@ $messages['mdf'] = array(
  */
 $messages['ml'] = array(
 	'hiderevision-status' => 'പതിപ്പ് $1: $2',
-	'overlogpagetext'     => 'കാര്യനിര്‍‌വാഹകരില്‍ നിന്നു മറച്ചു വെക്കപ്പെട്ട പുതിയതായി നടന്ന മായ്ക്കലുകളും ബ്ലോക്കുകളും ആണ്‌ താഴെയുള്ള പട്ടികയില്‍. നിലവിലുള്ള തടയലിന്റെ പട്ടികയ്ക്കായി [[Special:Ipblocklist|ഐപി തടയല്‍ പട്ടിക]] കാണുക.',
 	'oversight-view'      => 'വിശദാംശങ്ങള്‍',
 );
 
 /** Marathi (मराठी)
  * @author Kaustubh
- * @author Mahitgar
  */
 $messages['mr'] = array(
 	'hiderevision'                => 'आवृत्त्या कायमस्वरूपी लपवा',
@@ -1433,8 +1189,6 @@ $messages['mr'] = array(
 *हे पान अगोदरच वगळले आहे किंवा
 *लपविलेली आवृत्ती ही या पानाची पहिलीच आवृत्ती आहे',
 	'oversight-log-hiderev'       => '$1 कडचे एक संपादन वगळले',
-	'oversightlog'                => 'झापडबंद(ovhersight) नोंदी',
-	'overlogpagetext'             => '(सिसॉप)प्रचालकांपासून अदृश्य मजकुर असलेली अगदी अलिकडील वगळलेले आणि प्रतिबंधीतांची सूची खाली दिली आहे.सध्या लागू प्रतिबंधनांची आणि बंदीची  [[Special:Ipblocklist|प्रतिबंधीत अंकपत्त्यांची यादी]] पाहा .',
 	'oversight'                   => 'झापडबंद',
 	'oversight-view'              => 'अधिक माहिती',
 	'oversight-difference'        => '(उरलेल्या जुन्या आवृत्त्यांमधील फरक)',
@@ -1444,18 +1198,10 @@ $messages['mr'] = array(
 ही माहिती उघड केल्यास झापडबंद अधिकार कायमस्वरूपी काढून घेतले जातील.',
 );
 
-/** Malay (Bahasa Melayu) */
-$messages['ms'] = array(
-	'oversightlog'    => 'Log pengawas',
-	'overlogpagetext' => 'Berikut ialah senarai bagi penghapusan dan sekatan terkini yang melibatkan kandungan
-yang terlindung daripada penyelia. Lihat [[Special:Ipblocklist|senarai sekatan IP]] untuk senarai sekatan yang sedang aktif.',
-);
-
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
 $messages['nds'] = array(
-	'oversightlog'   => 'Opsicht-Logbook',
 	'oversight-view' => 'Details',
 );
 
@@ -1465,8 +1211,6 @@ $messages['nds'] = array(
 $messages['nds-nl'] = array(
 	'hiderevision-reason'   => 'Rejen:',
 	'hiderevision-noreason' => 'Beschrief eers de rejen waorumme disse pagina vort mut.',
-	'oversightlog'          => 'Overzichslogboek',
-	'overlogpagetext'       => "Hieronder steet een lieste mit pagina's dee krek vort-edaon bin en de leste blokkeringen dee uut-evoerd bin waorvan de inhoud verbörgen is veur beheeerders. Zie de [[Special:Ipblocklist|IP-blokkeerlieste]] veur een lieste mit blokkeringen en verbanningen dee noen van krach bin.",
 );
 
 /** Nepali (नेपाली)
@@ -1516,8 +1260,6 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 *De pagina was verwijderd
 *Deze verborgen versie de eerste versie was',
 	'oversight-log-hiderev'       => 'verwijderde een bewerking uit $1',
-	'oversightlog'                => 'Oversightlogboek',
-	'overlogpagetext'             => 'Hier onder is een lijst met de meest recente verwijderingen en blokkeringen met betrekking tot informatie die niet zichtbaar is voor admins. Zie de [[Special:Ipblocklist|Lijst van geblokkeerde gebruikers en IP-adressen]] voor een lijst van de blokkades en verbanningen die nu gelden.',
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'details',
 	'oversight-difference'        => '(Verschillen met vorige zichtbare versie)',
@@ -1557,8 +1299,6 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 *Er sida sletta
 *Eller den fjerna versjonen var den fyrste versjonen',
 	'oversight-log-hiderev'       => 'fjerna ei endring frå $1',
-	'oversightlog'                => 'Oversynslogg',
-	'overlogpagetext'             => 'Nedanfor finn du ei liste over dei siste slettingane og blokkeringane som er gøymde for administratorane. Sjå [[Special:Ipblocklist|blokkeringslista]] for ei liste over noverande sperringar og blokkeringar.',
 	'oversight'                   => 'Versjonsfjerning',
 	'oversight-view'              => 'detaljar',
 	'oversight-difference'        => '(Skilnad frå tidlegare attverande versjon)',
@@ -1570,7 +1310,6 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author M.M.S.
- * @author Kph
  */
 $messages['no'] = array(
 	'hiderevision'                => 'Fjern revisjoner permanent',
@@ -1602,8 +1341,6 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 *Ble siden slettet
 *Eller så var den skjulte revisjonen den første',
 	'oversight-log-hiderev'       => 'fjernet en redigering fra $1',
-	'oversightlog'                => 'Overoppsynslogg',
-	'overlogpagetext'             => 'Under er en liste over de siste slettinger og blokkeringer som involverer innhold skjult for administratorer. Se [[Special:Ipblocklist|IP-blokkeringslisten]] for aktive utestengelser.',
 	'oversight'                   => 'Revisjonssletting',
 	'oversight-view'              => 'detaljer',
 	'oversight-difference'        => '(Forskjell fra forrige gjenværende revisjon)',
@@ -1637,8 +1374,6 @@ $messages['oc'] = array(
 	'hiderevision-archive-status' => 'Modificacion suprimida de $1 : $2',
 	'oversight-nodiff'            => 'Impossible de detectar de cambiaments tant que se tròba pas cap de revision anteriora per la pagina. Las rasons pòdon èsser las seguentas : *La pagina es estada suprimida, *La revision amagada èra la tota primièra de la pagina',
 	'oversight-log-hiderev'       => 'a suprimit una edicion de $1',
-	'oversightlog'                => 'Jornal oversight',
-	'overlogpagetext'             => 'la lista çaijós mòstra las supressions e blocatges recents que lo contengut es amagat quitament pels administrators. Consultatz la [[Special:Ipblocklist|lista dels comptes blocats]] per la lista dels blocatges en cors.',
 	'oversight'                   => 'Susvelhar',
 	'oversight-view'              => 'detalhs',
 	'oversight-difference'        => '(Diferéncia per rapòrt a la revision precedenta)',
@@ -1670,7 +1405,9 @@ $messages['pam'] = array(
 $messages['pl'] = array(
 	'hiderevision'                => 'Trwałe ukrywanie wersji',
 	'hiderevision-desc'           => 'Pozwala ukryć pojedyncze zmiany przed wszystkimi użytkownikami np. ze względów prawnych.',
-	'group-oversight'             => 'Oversightowie',
+	'group-oversight'             => 'Rewizorzy',
+	'group-oversight-member'      => 'Rewizor',
+	'grouppage-oversight'         => '{{ns:project}}:Rewizorzy',
 	'hiderevision-prompt'         => 'Numer wersji do usunięcia:',
 	'hiderevision-continue'       => 'Kontynuuj',
 	'hiderevision-text'           => "Funkcja powinna być użyta '''jedynie''' w następujących przypadkach:
@@ -1696,15 +1433,13 @@ Najpierw wycofaj ostatnią edycję.',
 *Strona została usunięta 
 *Ta ukryta wersja była pierwszą wersją',
 	'oversight-log-hiderev'       => 'usunięto edycję z $1',
-	'oversightlog'                => 'Log Oversight',
-	'overlogpagetext'             => 'Poniżej znajduje się lista najnowszych usunięć i blokad dotyczących ukrywania zawartości przed administratorami. Wejdź na stronę [[Special:Ipblocklist|IP block list]], by zobaczyć listę aktywnych zakazów i blokad.',
-	'oversight'                   => 'Oversight',
+	'oversight'                   => 'Rejestr ukrywania',
 	'oversight-view'              => 'szczegóły',
 	'oversight-difference'        => '(Różnica z poprzednią wersją, która pozostała)',
 	'oversight-prev'              => 'Ostatnia z poprzednich wersji',
 	'oversight-hidden'            => 'Wersja ukryta',
 	'oversight-header'            => 'Poniżej znajduje się lista ukrytych, w ostatnim czasie, trwale przed dostępem publicznym wersji.
-Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
+Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
 );
 
 /** Piemontèis (Piemontèis)
@@ -1734,8 +1469,6 @@ $messages['pms'] = array(
 *la pàgina a l'é staita scancelà
 *sta revision stërmà a l'era la prima",
 	'oversight-log-hiderev'       => 'gavà e modificà da $1',
-	'oversightlog'                => "Registr dle ròbe scondùe a j'aministrator",
-	'overlogpagetext'             => "Ambelessì sota a-i é na lista djë scancelament e blòch pì davsin ant ël temp, ch'a toco contnù ch'a resta scondù a j'aministrator. Ch'a varda la [[Special:Ipblocklist|lista dj'IP blocà]] për vëdde ij blòch ch'a stan travajand.",
 	'oversight'                   => 'Gafada',
 	'oversight-view'              => 'detaj',
 	'oversight-difference'        => "(Diferense da 'nt le revision veje ch'a resto)",
@@ -1754,7 +1487,6 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Malafaya
  * @author 555
- * @author SPQRobin
  * @author Lijealso
  */
 $messages['pt'] = array(
@@ -1789,8 +1521,6 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 *A página foi eliminada
 *Esta edição oculta era a primeira edição da página',
 	'oversight-log-hiderev'       => 'removida uma edição de $1',
-	'oversightlog'                => 'Registo de edições ocultadas',
-	'overlogpagetext'             => 'É exibida a seguir uma listagem das deleções e bloqueios mais recentes envolvendo conteúdos ocultados por Administradores. Veja a [[{{ns:special}}:Ipblocklist|lista de bloqueios]] para os bloqueios e banimentos atualmente vigentes.',
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'detalhes',
 	'oversight-difference'        => '(Diferenças entre as edições anteriores restantes)',
@@ -1798,21 +1528,6 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 	'oversight-hidden'            => 'Edição oculta',
 	'oversight-header'            => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
-);
-
-/** Brazilian Portuguese (Português do Brasil)
- * @author 555
- */
-$messages['pt-br'] = array(
-	'oversightlog' => 'Registro de edições ocultadas',
-);
-
-/** Quechua (Runa Simi)
- * @author AlimanRuna
- */
-$messages['qu'] = array(
-	'oversightlog'    => "Yanqalla panta hallch'a",
-	'overlogpagetext' => "Kay qatiqpiqa aswan ñaqha qullusqakunatawan hark'asqakunatam rikunki, kamachiqkunamanta pakasqa samiqta ch'aqtaq. [[Special:Ipblocklist|Hark'asqakunamanta p'anqata]] qhaway kunan hark'asqakunata rikunaykipaq.",
 );
 
 /** Romani (Romani)
@@ -1857,8 +1572,6 @@ $messages['ru'] = array(
 *Данная страница была удалена
 *Скрытая версия была первой',
 	'oversight-log-hiderev'       => 'скрыта правка со страницы $1',
-	'oversightlog'                => 'Журнал сокрытия',
-	'overlogpagetext'             => 'Ниже представлен список последних удалений и блокировок, затрагивающих материалы, скрытые от администраторов. Просмотреть список действующих блокировок можно на [[Special:Ipblocklist|соответствующей странице]].',
 	'oversight'                   => 'Журнал скрытия версий',
 	'oversight-view'              => 'подробнее',
 	'oversight-difference'        => '(Разница с предыдущей неудалённой версией)',
@@ -1898,9 +1611,6 @@ $messages['sah'] = array(
 *Сирэй сотуллубута буолуо
 *Кистэниллибит торум бастакы буолуо',
 	'oversight-log-hiderev'       => 'мантан $1 көннөрүү кистэммит',
-	'oversightlog'                => 'Кистээһин историята',
-	'overlogpagetext'             => 'Манна администратордартан кистэммит матырыйаалларыга сигэнэр бүтэһик сотуулар уонна хааччахтааһыннар көстөллөр.
-Билигин туттуллар хааччахтаныылары [[Special:Ipblocklist|манна]] көрүөххэ сөп.',
 	'oversight'                   => 'Торумнары кистээһин сурунаала',
 	'oversight-view'              => 'сиһилии',
 	'oversight-difference'        => '(бу иннинээҕи сотуллубатах торумтан уратыта)',
@@ -1908,29 +1618,6 @@ $messages['sah'] = array(
 	'oversight-hidden'            => 'Кистэммит торум',
 	'oversight-header'            => 'Манна соторутааҕыта кистэммит торумнар көрдөрүлүннүлэр.
 Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
-);
-
-/** Sicilian (Sicilianu)
- * @author Tonyfroio
- */
-$messages['scn'] = array(
-	'oversightlog'    => 'Riggistru azzioni di oversight',
-	'overlogpagetext' => "Ccà sutta veni prisentata na lista dê cancillazioni e dî blocchi ca riguardanu cuntinuti oscurati a l'amministratura. Conzurtari l'[[Special:Ipblocklist|alencu IP bluccati]] pi l'alencu dî blocchi e dî banni attuarmenti operativi.",
-);
-
-/** Sassaresu (Sassaresu)
- * @author Felis
- */
-$messages['sdc'] = array(
-	'oversightlog'    => 'Rigisthru di li mudìfigghi traschuraddi',
-	'overlogpagetext' => "Inogghi v'è una listha di li canzilladduri e di li brocchi reratibi a cuntinuddi cuaddi pa l'amministhradori. Cunsulthà la [[Special:Ipblocklist|listha di l'IP broccaddi]] pa l'erencu di brocchi e bandi chi so attibi abà.",
-);
-
-/** Cmique Itom (Cmique Itom)
- * @author Ccaxjoj Iteja Z Iti Poop
- */
-$messages['sei'] = array(
-	'oversightlog' => 'Logamde oversight',
 );
 
 /** Slovak (Slovenčina)
@@ -1968,9 +1655,6 @@ administrátorom databázy v prípade, že spravíte chybu.",
 * stránka bola zmazaná, alebo
 * táto skrytá revízia bola prvá revízia',
 	'oversight-log-hiderev'       => 'Odstránená úprava z $1',
-	'oversightlog'                => 'Záznam Dozoru',
-	'overlogpagetext'             => 'Nižšie sa nachádza zoznam posledných mazaní a blokovaní vrátane obsahu skrytého správcom.
-Pozri Záznam momentálne platných [[Special:Ipblocklist|IP blokovaní]].',
 	'oversight'                   => 'Dozor',
 	'oversight-view'              => 'podrobnosti',
 	'oversight-difference'        => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
@@ -1986,7 +1670,7 @@ $messages['sm'] = array(
 	'hiderevision-continue' => 'Tumau',
 );
 
-/* Serbian default (Sasa Stefanovic) */
+/** Serbian (Српски / Srpski) */
 $messages['sr'] = array(
 	'hiderevision'                => 'Трајно сакриј ревизије',
 	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
@@ -2016,7 +1700,7 @@ $messages['sr'] = array(
 	'oversight-view'              => 'детаљи',
 );
 
-/* Serbian cyrillic (Sasa Stefanovic) */
+/** Serbian Cyrillic ekavian (ћирилица) */
 $messages['sr-ec'] = array(
 	'hiderevision'                => 'Трајно сакриј ревизије',
 	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
@@ -2107,8 +1791,6 @@ Muugelke Gruunde:
 *Ju Siede wuude läsked
 *Ju wächhoalde Version waas ju eerste Version',
 	'oversight-log-hiderev'       => 'Hoalde ne Beoarbaidenge fon $1 wäch',
-	'oversightlog'                => 'Oversight-Logbouk',
-	'overlogpagetext'             => 'Dät is dät Logbouk fon do Läskengen un Speeren, do der foar Administratore ferstopped sunt.',
 	'oversight'                   => 'Fersjoon',
 	'oversight-view'              => 'Details',
 	'oversight-difference'        => '(Unnerscheed tou ju foarige ferblieuwene Version)',
@@ -2119,7 +1801,6 @@ Muugelke Gruunde:
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
- * @author Irwangatot
  */
 $messages['su'] = array(
 	'hiderevision-continue'       => 'Teruskeun',
@@ -2130,7 +1811,6 @@ $messages['su'] = array(
 	'hiderevision-error-missing'  => 'Teu kapanggih di pangkalan data.',
 	'hiderevision-archive-status' => 'Révisi dihapus ti $1: $2',
 	'oversight-log-hiderev'       => 'ngahapus hiji éditan ti $1',
-	'oversightlog'                => 'Log pangawas',
 	'oversight-hidden'            => 'Révisi nyumput',
 );
 
@@ -2168,8 +1848,6 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 * Sidan har raderats
 * Den dolda versionen var den första sidversionen',
 	'oversight-log-hiderev'       => 'tog bort en version av $1',
-	'oversightlog'                => 'Översynslogg',
-	'overlogpagetext'             => 'Här nedanför finns en lista över de senaste raderingarna och blockeringarna av innehåll som är gömt för administratörer. Se [[Special:Ipblocklist|listan över blockerade IP]] för en lista över nu gällande blockeringar.',
 	'oversight'                   => 'Översyn',
 	'oversight-view'              => 'detaljer',
 	'oversight-difference'        => '(Skillnad mot föregående synliga version)',
@@ -2179,17 +1857,8 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 Användare som sprider den här informationen vidare kan få sina översynsrättigheter permanent borttagna.',
 );
 
-/** Tamil (தமிழ்)
- * @author Trengarasu
- */
-$messages['ta'] = array(
-	'oversightlog'    => 'மேற்பார்வைப் பதிகை',
-	'overlogpagetext' => 'பின்வருவது முறைமை செயற்படுத்துனர்களிடமிருந்து மறைக்கப்பட்ட உள்ளடக்கங்கள் அடஙலாக அண்மைய நீக்கல்களும் தடைகளுமாகும். தற்போது நடைமுறையிலுள்ள தடைகளைக் காண  [[Special:Ipblocklist|ஐ.பி. தடைப் பட்டியலைக்]] பார்க்க.',
-);
-
 /** Telugu (తెలుగు)
  * @author Veeven
- * @author Chaduvari
  */
 $messages['te'] = array(
 	'hiderevision'                => 'కూర్పులను శాశ్వతంగా దాచు',
@@ -2206,8 +1875,6 @@ $messages['te'] = array(
 	'hiderevision-error-current'  => 'ఈ పేజీకి జరిగిన చిట్ట చివరి మార్పుని తొలగించలేము. ఈ మార్పుని మొదట తిరగ్గొట్టండి.',
 	'hiderevision-archive-status' => '$1 నుండి తొలగించిన కూర్పు: $2',
 	'oversight-log-hiderev'       => '$1 నుండి ఓ మార్పుని తొలగించాం',
-	'oversightlog'                => 'ఓవర్‌సైట్ లాగ్',
-	'overlogpagetext'             => 'ఇటీవలి కాలంలో విధించిన తొలగింపులు, నిరోధాల జాబితా కింద ఇచ్చాం. నిర్వాహకులకు కనబడని విషయం కలిగిన వాటి జాబితా ఇది.  ప్రస్తుతం అమల్లో ఉన్న నిరోధాలు, నిషేధాల కోసం [[Special:Ipblocklist|ఐపీ నిరోధ జాబితా]] చూడండి.',
 	'oversight-view'              => 'వివరాలు',
 	'oversight-difference'        => '(గతంలో ఉన్న కూర్పు నుండి తేడా)',
 	'oversight-prev'              => 'చివరి గత కూర్పు',
@@ -2263,8 +1930,6 @@ $messages['tg-cyrl'] = array(
 *Саҳифа ҳазф шудааст
 *Нусхаи пинҳоншуда аввалин нусхаи саҳифа будааст',
 	'oversight-log-hiderev'       => 'нусхае аз $1ро ҳазф кард',
-	'oversightlog'                => 'Гузориши назорат',
-	'overlogpagetext'             => 'Он чи дар зер меояд феҳристи охирини мавориди ҳазфшуда ё қатъи дастрасӣ аст, ки иттилооте аст, ки мудиро қодир ба мушоҳидаи он нестанд. Барои феҳристи бастагиҳои амалии кунунӣ, нагаред ба [[Special:Ipblocklist|Феҳристи IP баста]].',
 	'oversight'                   => 'Назар',
 	'oversight-view'              => 'бештар',
 	'oversight-difference'        => '(Тафовут аз қаблан нусхаи боқимонда)',
@@ -2273,19 +1938,11 @@ $messages['tg-cyrl'] = array(
 	'oversight-header'            => 'Дар зер феҳристе аз нусхаҳои, ки ба тозагӣ аз диди умум барои ҳамеша пинҳон шударо мебинед. Мунташир кардани ин иттилоот метавонад ба натиҷаи аз даст додани ҳамешагии ихтиёроти шумо оварда расонад.',
 );
 
-/** Thai (ไทย) */
-$messages['th'] = array(
-	'oversightlog'    => 'บันทึกการเฝ้าดูแล',
-	'overlogpagetext' => 'ด้านล่างเป็นรายการของการลบและบล็อกล่าสุดที่ถูกซ่อนจากผู้ดูแลระบบ
-สำหรับการบล็อกและห้ามใช้งานในปัจจุบันดูได้ที่  [[Special:Ipblocklist|รายการไอพีที่โดนบล็อก]]',
-);
-
 /** Turkish (Türkçe)
  * @author SPQRobin
  */
 $messages['tr'] = array(
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
-	'oversightlog'               => 'Gözetmen kayıtları',
 );
 
 /** Ukrainian (Українська)
@@ -2295,9 +1952,9 @@ $messages['uk'] = array(
 	'group-oversight'        => 'Ревізори',
 	'group-oversight-member' => 'ревізор',
 	'grouppage-oversight'    => '{{ns:project}}:Ревізори',
-	'oversightlog'           => 'Журнал приховувань',
-	'overlogpagetext'        => 'Нижче наведений список останніх вилучень та блокувань, які стосуються матеріалів, прихованих від адміністраторів. Переглянути список діючих блокувань можна на [[Special:Ipblocklist|відповідній сторінці]].',
 	'oversight'              => 'Журнал приховування версій',
+	'oversight-header'       => 'Нижче наведені версії, які нещодавно були приховані.
+Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -2307,6 +1964,9 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'hiderevision'                => 'Giấu phiên bản',
 	'hiderevision-desc'           => 'Giấu những phiên bản để cho tất cả mọi người dùng không xem được, vì lý do luật pháp, v.v.',
+	'group-oversight'             => 'Giám sát viên',
+	'group-oversight-member'      => 'Giám sát viên',
+	'grouppage-oversight'         => '{{ns:project}}:Giám sát viên',
 	'hiderevision-prompt'         => 'Số phiên bản để giấu:',
 	'hiderevision-continue'       => 'Tiếp',
 	'hiderevision-text'           => "'''Chỉ''' được xài chức năng này trong những trường hợp có:
@@ -2333,14 +1993,13 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 *Trang bị xóa
 *Bản giấu này là phiên bản đầu tiên của trang',
 	'oversight-log-hiderev'       => 'giấu sửa đổi khỏi $1',
-	'oversightlog'                => 'Nhật trình giám thị',
-	'overlogpagetext'             => 'Dưới đây là danh sách các tác vụ xóa và cấm gần nhất có liên quan đến nội dung đã được che đi đối với Người quản lý. Xem [[Special:Ipblocklist|danh sách các địa chỉ bị cấm]] để có danh sách các lần cấm hẳn và cấm thành viên hiện tại.',
-	'oversight'                   => 'Nhật ký giám sát',
+	'oversight'                   => 'Giám sát viên',
 	'oversight-view'              => 'chi tiết',
 	'oversight-difference'        => '(Khác biệt với bản cuối cùng còn lại)',
 	'oversight-prev'              => 'Phiên bản trước',
 	'oversight-hidden'            => 'Phiên bản giấu',
-	'oversight-header'            => 'Đây là các phiên bản bị giấu luôn khỏi các độc giả. Nếu đưa ra thông tin này, bạn sẽ mất quyền giám sát luôn.',
+	'oversight-header'            => 'Đây là các phiên bản bị giấu luôn khỏi các độc giả.
+Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
 );
 
 /** Volapük (Volapük)
@@ -2361,13 +2020,6 @@ $messages['vo'] = array(
 	'oversight-log-hiderev'       => 'emoükon redakami se $1',
 	'oversight-view'              => 'pats',
 	'oversight-hidden'            => 'Fomam peklänedöl',
-);
-
-/** Wolof (Wolof)
- * @author Ibou
- */
-$messages['wo'] = array(
-	'overlogpagetext' => 'Lim bii ci suuf day wone farte yeek téye yi mujj te seen ëmbit nëbbu ci ñépp, ba ci yorkat yi sax. yëral [[Special:Ipblocklist|limu sàq yi ñu téye]] ngir gis limu téye yi teew.',
 );
 
 /* Cantonese (Shinjiman) */
@@ -2400,8 +2052,6 @@ $messages['yue'] = array(
 *嗰一版已經刪除咗，又或者
 *呢個收埋咗嘅版本係第一個修訂',
 	'oversight-log-hiderev'       => '已經響$1度拎走咗一個編輯',
-	'oversightlog'                => '監督記錄',
-	'overlogpagetext'             => '下面係一個最近刪除以及由操作員封鎖牽涉到嘅內容清單。睇睇下面嘅[[Special:Ipblocklist|IP封鎖名單]]去睇現時進行緊嘅封鎖。',
 	'oversight'                   => '監督',
 	'oversight-view'              => '細節',
 	'oversight-difference'        => '(由之前剩底修訂嘅差異)',
@@ -2409,12 +2059,6 @@ $messages['yue'] = array(
 	'oversight-hidden'            => '收埋修訂',
 	'oversight-header'            => '下面係一個之前永久收埋，唔畀公眾睇嘅修訂清單。
 發放呢啲資料可以導致永久損失監督嘅權限。',
-);
-
-/** 古文 / 文言文 (古文 / 文言文) */
-$messages['zh-classical'] = array(
-	'oversightlog'    => '誌督',
-	'overlogpagetext' => '下乃刪及錮物之列也。[[Special:Ipblocklist|IP之錮]]有現之閱。',
 );
 
 /* Chinese (Simplified) (Alex S.H. Lin) */
@@ -2446,8 +2090,6 @@ $messages['zh-hans'] = array(
 *这个页面已经被删除。
 *隐藏的页面为最先建立的版本。',
 	'oversight-log-hiderev'       => '隐藏 $1 中的一个修订版本',
-	'oversightlog'                => '监督记录',
-	'overlogpagetext'             => '下面是一个最近删除以及由操作员封锁牵涉到的内容列表。参看下面的[[Special:Ipblocklist|IP封锁列表]]去查看现时进行的封锁。',
 	'oversight-view'              => '内容',
 	'oversight-difference'        => '(与之前存在之修订版本的差异)',
 	'oversight-prev'              => '最后一个之前的修订版本',
@@ -2484,18 +2126,10 @@ $messages['zh-hant'] = array(
 *此頁面已經被刪除。
 *隱藏的頁面為最先建立的版本。',
 	'oversight-log-hiderev'       => '隱藏 $1 中的一個修訂版本',
-	'oversightlog'                => '監督記錄',
-	'overlogpagetext'             => '下面是一個最近刪除以及由操作員封鎖牽涉到的內容列表。參看下面的[[Special:Ipblocklist|IP封鎖列表]]去查看現時進行的封鎖。',
 	'oversight-view'              => '內容',
 	'oversight-difference'        => '(與之前存在之修訂版本的差異)',
 	'oversight-prev'              => '最後一個之前的修訂版本',
 	'oversight-hidden'            => '隱藏修訂',
 	'oversight-header'            => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
-);
-
-/** ‪中文(台灣)‬ (‪中文(台灣)‬) */
-$messages['zh-tw'] = array(
-	'oversightlog'    => '監督記錄',
-	'overlogpagetext' => '下面是一個最近刪除以及由操作員封鎖牽涉到的內容列表。參看下面的[[Special:Ipblocklist|IP封鎖列表]]去查看現時進行的封鎖。',
 );
 

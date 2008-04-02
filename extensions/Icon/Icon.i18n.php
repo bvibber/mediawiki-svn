@@ -192,6 +192,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'icon-badimage' => 'Zlý obrázok',
 	'icon-badwidth' => 'Zlá šírka',
+	'icon-desc'     => 'Umožnuje použíť obrázky ako ikony a ikony odkazov',
 );
 
 /** Seeltersk (Seeltersk)
@@ -212,10 +213,12 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'icon-badimage' => 'Dålig bild',
 	'icon-badwidth' => 'Dålig bredd',
+	'icon-desc'     => 'Låter dig använda bilder som ikoner och ikonlänkar',
 );
 
 /** Telugu (తెలుగు)

@@ -157,6 +157,15 @@ $messages['gl'] = array(
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'assert_edit_title'   => 'ऍसर्ट जमा नहीं',
+	'assert_edit_desc'    => 'बोटोंके इस्तेमाल के लिये संपादन ऍसर्शन बढ़ायें',
+	'assert_edit_message' => 'बताया हुआ ऍसर्शन ($1) हो नहीं पाया।',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
@@ -179,6 +188,7 @@ $messages['hsb'] = array(
  */
 $messages['ht'] = array(
 	'assert_edit_title'   => 'Sa ou ta renmen ajoute a pa fèt',
+	'assert_edit_desc'    => 'Ajoute tout edisyon ki te rantre pou wobo yo kapab itilize',
 	'assert_edit_message' => 'Sa ou ta renmen ajoute a ($1) pa fèt.',
 );
 

@@ -434,7 +434,7 @@ $messages['oc'] = array(
 	'chemicalsources'                  => 'Fonts per la quimia',
 	'chemicalsource-desc'              => 'Ajusta la balisa <nowiki><chemform></nowiki>, per las formulas quimicas',
 	'chemFunctions_ListPage'           => 'Fonts per la quimia',
-	'chemFunctions_DataList'           => 'Seguís una lista de ligams vèrs de sits que pòdon aportar d\'informacions a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
+	'chemFunctions_DataList'           => 'Seguís una lista de ligams vèrs de sits que pòdon aportar d\'entresenhas a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
 	'chemFunctions_CAS'                => 'Numèro CAS',
 	'chemFunctions_EINECS'             => 'Numèro EINECS',
 	'chemFunctions_ATCCode'            => 'Còde ATC',
@@ -507,6 +507,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'chemicalsources'                  => 'Источники по химии',
@@ -519,7 +520,7 @@ $messages['ru'] = array(
 	'chemFunctions_ATCCode'            => 'ATCCode',
 	'chemFunctions_ECNumber'           => 'ECNumber',
 	'chemFunctions_Formula'            => 'Формула',
-	'chemFunctions_Name'               => 'IUPAC-название',
+	'chemFunctions_Name'               => 'Название ИЮПАК',
 	'chemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!',
 );
 
@@ -654,11 +655,32 @@ $messages['te'] = array(
 	'chemFunctions_Name'     => 'IUPAC పేరు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'chemFunctions_Formula' => 'Қоида',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'chemFunctions_Name' => 'IUPAC adı',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'chemicalsources'        => 'Джерела з хімії',
+	'chemicalsource-desc'    => 'Додає тег <nowiki><chemform></nowiki> для хімічних формул',
+	'chemFunctions_ListPage' => 'Джерела з хімії',
+	'chemFunctions_CAS'      => 'Номер ХРС',
+	'chemFunctions_ATCCode'  => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula'  => 'Формула',
+	'chemFunctions_Name'     => 'Назва ІЮПАК',
 );
 
 /** Vietnamese (Tiếng Việt)

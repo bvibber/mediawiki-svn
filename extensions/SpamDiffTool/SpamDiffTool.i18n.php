@@ -312,23 +312,22 @@ Ikke blikker hele domener til sider som er vert for mange brukere, type blogpost
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'spamdifftool'                  => 'Gestion de la Lista Negra dels Spams',
-	'spamdifftool-desc'             => "Provesís un metòde simple per ajustar d'entradas dins la lista negra dels spams a partir de las dif",
+	'spamdifftool-desc'             => "Provesís un metòde simple per apondre d'entradas dins la lista negra dels spams a partir de las dif",
 	'spamdifftool_cantedit'         => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
 	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
-	'spamdifftool_confirm'          => "Confirmatz que volètz ajustar aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
+	'spamdifftool_confirm'          => "Confirmatz que volètz apondre aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary'          => 'Ajustat a la Lista Negra dels Spams',
-	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas edicions.
-Qualas son las que volètz ajustar a la Lista Negra dels Spams ?
+	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas modificacions.
+Qualas son las que volètz apondre a la Lista Negra dels Spams ?
 Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas.
 Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
 
 Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
 	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
-	'spamdifftool_spam_link_text'   => 'ajustar als spams',
+	'spamdifftool_spam_link_text'   => 'apondre als spams',
 	'spamdifftool_option_domain'    => 'tot dempuèi aqueste domeni',
 	'spamdifftool_option_subdomain' => 'tot dempuèi aqueste sosdomeni',
 	'spamdifftool_option_directory' => 'aqueste sosdomeni e aqueste repertòri',
@@ -382,6 +381,15 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 	'spamdifftool_option_none'      => 'nič',
 	'spamdifftool_block'            => 'Blokovať:',
 	'spamdifftool_submit_buttom'    => 'Odoslať',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'spamdifftool_option_none'   => 'ништа',
+	'spamdifftool_block'         => 'Блок:',
+	'spamdifftool_submit_buttom' => 'Прихвати',
 );
 
 /** Seeltersk (Seeltersk)

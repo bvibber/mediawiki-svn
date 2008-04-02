@@ -685,14 +685,29 @@ $messages['te'] = array(
 	'usagestatisticsintervalmonth' => 'నెల',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'usagestatisticstype'          => 'Навъ',
-	'usagestatisticsintervalday'   => 'Рӯз',
-	'usagestatisticsintervalweek'  => 'Ҳафта',
-	'usagestatisticsintervalmonth' => 'Моҳ',
+	'specialuserstats'                => 'Омори истифода',
+	'usagestatistics'                 => 'Омори истифода',
+	'usagestatisticsallusers'         => 'Ҳамаи корбарон',
+	'usagestatisticsinterval'         => 'Фосила',
+	'usagestatisticstype'             => 'Навъ',
+	'usagestatisticsstart'            => 'Таърихи оғоз',
+	'usagestatisticsend'              => 'Таърихи хотима',
+	'usagestatisticssubmit'           => 'Ҳосил кардани омор',
+	'usagestatisticsnostart'          => '* <font color=red>Лутфан таърихи оғозро мушаххас кунед</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Лутфан таърихи хотимаро мушаххас кунед</font>',
+	'usagestatisticsbadstartend'      => '<b>Таърихи <i>оғози</i> ва/ё <i>хотимаи</i> номусоид!</b>',
+	'usagestatisticsintervalday'      => 'Рӯз',
+	'usagestatisticsintervalweek'     => 'Ҳафта',
+	'usagestatisticsintervalmonth'    => 'Моҳ',
+	'usagestatisticsincremental'      => 'Афзоишӣ',
+	'usagestatisticsincremental-text' => 'афзоишӣ',
+	'usagestatisticscumulative'       => 'Анбошта',
+	'usagestatisticscumulative-text'  => 'анбошта',
+	'usagestatisticscalselect'        => 'Интихоб кардан',
 );
 
 /** Turkish (Türkçe)

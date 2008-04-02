@@ -164,6 +164,13 @@ $messages['sv'] = array(
 	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'charinsert-desc' => 'Дозволяє створити JavaScript-блок для [[MediaWiki:Edittools|вставки нестандартних символів]]',
+);
+
 /** Cantonese
  * @author Shinjiman
  */

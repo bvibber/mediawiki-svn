@@ -131,14 +131,19 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  * @author לערי ריינהארט
  */
 $messages['ca'] = array(
-	'sitematrix'          => 'Llista de tots els projectes en els diferents idiomes.',
-	'sitematrix-language' => 'Idioma',
-	'sitematrix-project'  => 'Nom del projecte, enllaç interwiki entre projectes',
-	'sitematrix-others'   => 'Altres projectes de Wikimedia',
+	'sitematrix'           => 'Llista de tots els projectes en els diferents idiomes.',
+	'sitematrix-summary'   => 'Aquesta pàgina especial és una llista del wikis de Wikimedia.',
+	'sitematrix-desc'      => 'Mostra una [[Special:SiteMatrix|llista de wikis de Wikimedia]]',
+	'sitematrix-language'  => 'Idioma',
+	'sitematrix-project'   => 'Nom del projecte, enllaç interwiki entre projectes',
+	'sitematrix-others'    => 'Altres projectes de Wikimedia',
+	'sitematrix-total'     => "'''Recompte total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['cdo'] = array(
@@ -459,10 +464,12 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author .anaconda
+ * @author Ramac
  * @author לערי ריינהארט
  */
 $messages['it'] = array(
 	'sitematrix'           => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
+	'sitematrix-summary'   => 'Questa pagina speciale elenca tutti i progetti Wikimedia',
 	'sitematrix-desc'      => 'Mostra un [[Special:SiteMatrix|elenco dei siti Wikimedia]]',
 	'sitematrix-language'  => 'Lingua',
 	'sitematrix-project'   => 'Nome del progetto, collegamento interprogetto e collegamento inter-wiki',

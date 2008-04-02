@@ -286,6 +286,35 @@ $messages['ru'] = array(
 	'editmsg-patch-success'    => 'Патч успешно применён.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Webové rozhranie]] na úpravu veľkého počtu súborov Messages*.php',
+	'editmessages'             => 'Upraviť správy',
+	'editmsg-target'           => 'Cieľová správa:',
+	'editmsg-search'           => 'Hľadať',
+	'editmsg-show-list'        => 'Zobrazujú sa hodnoty správy s názvom „$1“',
+	'editmsg-get-patch'        => 'Vytvoriť záplatu',
+	'editmsg-new-search'       => 'Nové hľadanie',
+	'editmsg-warning-parse1'   => '* Nebol nájdený názov správy zodpovedajúci regulárnemu výrazu: $1',
+	'editmsg-warning-parse2'   => '* Po šípke sa očakával znak citácie: $1',
+	'editmsg-warning-parse3'   => '* Koniec reťazca s hodnotou nebol nájdený: $1',
+	'editmsg-warning-file'     => '* Vyskytli sa chyby pri čítaní súborov nasledovných jazykov: $1',
+	'editmsg-warning-mismatch' => '* Pôvodný text neobsahoval očakávanú hodnotu v nasledovných jazykoch: $1',
+	'editmsg-apply-patch'      => 'Použiť záplatu',
+	'editmsg-no-patch'         => 'Nebolo možné vykonat príkaz „patch“',
+	'editmsg-patch-failed'     => 'Použitie záplaty zlyhalo s návratovou hodnotou $1',
+	'editmsg-patch-success'    => 'Záplata úspešne použitá.',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'editmsg-search' => 'Претрага',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke

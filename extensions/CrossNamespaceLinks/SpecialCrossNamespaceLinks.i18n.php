@@ -214,6 +214,14 @@ $messages['he'] = array(
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'crossnamespacelinks'     => 'आंतर-नामस्थान कड़ियां',
+	'crossnamespacelinkstext' => '$1: $3 को होनेवाली $2 {{PLURAL:$2|कड़ी|कड़ियां}}',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

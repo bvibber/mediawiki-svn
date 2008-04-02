@@ -198,6 +198,14 @@ $messages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'deletedcontributions'      => 'हटाये गये सदस्य योगदान',
+	'deletedcontributions-desc' => 'कोई भी [[Special:DeletedContributions|सदस्यके हटाये गये बदलाव]] देखने की अनुमति प्रबंधकोंको देता हैं।',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SPQRobin

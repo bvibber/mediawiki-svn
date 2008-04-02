@@ -425,6 +425,13 @@ $messages['sk'] = array(
 	'player-goto-file'     => 'súbor',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'player-goto-page' => 'Страна',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -486,6 +493,13 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'player-goto-page' => 'Pájina',
+);
+
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'player-invalid-title' => 'унвони номӯътабар',
 );
 
 /** Vietnamese (Tiếng Việt)

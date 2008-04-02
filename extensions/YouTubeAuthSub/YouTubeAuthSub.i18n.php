@@ -470,6 +470,14 @@ Buďte prosím trpezliví.',
 	'youtubeauthsub_jserror_nodesc'      => 'Prosím, zadajte popis videa.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'youtubeauthsub_title'  => 'Наслов:',
+	'youtubeauthsub_submit' => 'Прихвати',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab
@@ -528,6 +536,44 @@ $messages['tg-cyrl'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Лутфан 1 ё якчанд калидвожаҳоро ворид кунед.',
 	'youtubeauthsub_jserror_notitle'    => 'Лутфан як унвонеро барои навор ворид кунед.',
 	'youtubeauthsub_jserror_nodesc'     => 'Лутфан як тавсиф барои навор ворид кунед.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'youtubeauthsub'                     => 'อัปโหลดคลิปวิดีโอยูทูบ',
+	'youtubeauthsub-desc'                => 'อนุญาตให้ผู้ใช้[[Special:YouTubeAuthSub|อัปโหลดคลิปวิดีโอ]]โดยตรงไปที่ยูทูบ',
+	'youtubeauthsub_info'                => 'เพื่อที่จะอัปโหลดคลิปวิดีโอบนยูทูบ กรุณาใส่ข้อมูลดังต่อไปนี้ :',
+	'youtubeauthsub_title'               => 'ชื่อคลิป',
+	'youtubeauthsub_description'         => 'คำอธิบาย',
+	'youtubeauthsub_password'            => 'รหัสผ่านบนยูทูบ',
+	'youtubeauthsub_username'            => 'ชื่อผู้ใช้บนยูทูบ',
+	'youtubeauthsub_keywords'            => 'คำสำคัญ',
+	'youtubeauthsub_category'            => 'หมวดหมู่',
+	'youtubeauthsub_submit'              => 'ตกลง',
+	'youtubeauthsub_clickhere'           => 'คลิกตรงนี้เพื่อล็อกอินเข้ายูทูบ',
+	'youtubeauthsub_tokenerror'          => 'มีข้อผิดพลาดเกิดขึ้น กรุณาลองโหลดหน้านี้ใหม่ดูอีกครั้ง',
+	'youtubeauthsub_success'             => "ขอแสดงความยินดี !
+คลิปวิดีโอของคุณถูกอัปโหลดแล้ว
+เพื่อที่จะดูคลิปวิดีโอของคุณ คลิก<a href='http://www.youtube.com/watch?v=$1'>ที่นี่</a>
+ยูทูบอาจจะต้องการเวลาสักพัก เพื่อที่จะโหลดคลิปวิดีโอของคุณ ดังนั้นมันอาจจะยังไม่พร้อม
+
+หากคุณต้องการใส่คลิปวิดีโอของคุณลงไปในวิกิ เพิ่มโค้ดดังต่อไปนี้ลงไปในหน้า :
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'เพื่อที่จะอัปโหลดคลิปวิดีโอ กรุณาล็อกอินเข้ายูทูบก่อน',
+	'youtubeauthsub_uploadhere'          => 'อัปโหลดคลิปวิดีโอของคุณจากที่นี่ :',
+	'youtubeauthsub_uploadbutton'        => 'อัปโหลด',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+คุณสามารถดูคลิปวิดีโอ[http://www.youtube.com/watch?v=$1 ได้ที่นี่]',
+	'youtubeauthsub_summary'             => 'กำลังอัปโหลดคลิปวิดีโอยูทูบ',
+	'youtubeauthsub_uploading'           => 'คลิปวิดีโอของคุณกำลังถูกอัปโหลดอยู่
+กรุณารอสักครู่',
+	'youtubeauthsub_viewpage'            => 'นอกจากนี้ คุณสามารถดูคลิปวิดีโอของคุณ[[$1|ได้ที่นี่ด้วย]]',
+	'youtubeauthsub_jserror_nokeywords'  => 'กรุณาใส่คำสำคัญอย่างน้อย 1 คำ หรือ มากกว่า',
+	'youtubeauthsub_jserror_notitle'     => 'กรุณาใส่ชื่อสำหรับคลิปวิดีโอด้วย',
+	'youtubeauthsub_jserror_nodesc'      => 'กรุณาใส่คำอธิบายสำหรับคลิปวิดีโอนี้ด้วย',
 );
 
 /** Vietnamese (Tiếng Việt)

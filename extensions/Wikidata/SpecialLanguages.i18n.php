@@ -2746,12 +2746,13 @@ $wdMessages['tet'] = array(
 	'ow_dm_OK' => 'OK',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $wdMessages['tg-cyrl'] = array(
 	'ow_save'                          => 'Захира кардан',
 	'ow_history'                       => 'Таърих',
+	'ow_uipref_datasets'               => 'Намуди пешфарз',
 	'ow_uiprefs'                       => 'Викидода',
 	'ow_Annotation'                    => 'Тафсир',
 	'ow_ClassAttributeLevel'           => 'Сатҳ',
@@ -2761,7 +2762,11 @@ $wdMessages['tg-cyrl'] = array(
 	'ow_DefinedMeaningAttributes'      => 'Тафсир',
 	'ow_Language'                      => 'Забон',
 	'ow_LevelAnnotation'               => 'Тафсир',
+	'ow_OptionAttribute'               => 'Хосият',
+	'ow_OptionAttributeOption'         => 'Ихтиёр',
+	'ow_OptionAttributeOptions'        => 'Ихтиёрот',
 	'ow_Relations'                     => 'Равобит',
+	'ow_RelationType'                  => 'Навъи робита',
 	'ow_Source'                        => 'Манбаъ',
 	'ow_TextAttribute'                 => 'Хосият',
 	'ow_Text'                          => 'Матн',
@@ -2772,6 +2777,7 @@ $wdMessages['tg-cyrl'] = array(
 	'ow_LinkAttribute'                 => 'Хосият',
 	'ow_LinkAttributeValues'           => 'Пайвандҳо',
 	'ow_Property'                      => 'Хосият',
+	'ow_Value'                         => 'Қимат',
 	'ow_meaningsoftitle'               => 'Маъниҳои "$1"',
 	'ow_copy_no_action_specified'      => 'Лутфан амалеро мушаххас кунед',
 );

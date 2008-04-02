@@ -212,6 +212,13 @@ $messages['te'] = array(
 	'donationform-submit' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'donationform-submit' => 'Ҳадя тавассути PayPal',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

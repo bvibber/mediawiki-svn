@@ -424,6 +424,14 @@ $messages['sk'] = array(
 	'dt_xml_freetext'             => 'Voľný text',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'dt_xml_page'  => 'Страна',
+	'dt_xml_title' => 'Наслов',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -482,6 +490,13 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'dt_xml_page' => 'Pájina',
 	'dt_xml_name' => 'Naran',
+);
+
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'dt_xml_namespace' => 'Фазоином',
 );
 
 /** Tajik (Тоҷикӣ)

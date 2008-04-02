@@ -233,6 +233,13 @@ $messages['te'] = array(
 	'minnamelength-error' => 'మీ వాడుకరిపేరు మరీ చిన్నగా ఉంది. కనిష్ఠ పొడవు $1.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'minnamelength-error' => 'Номи корбарии шумо хеле кӯтоҳ аст. Дарозии он дасти кам $1 бошад.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'minnamelength-error' => '你嘅用戶名太短喇。最少嘅長度係$1個字元。',

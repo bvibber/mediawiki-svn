@@ -181,6 +181,17 @@ $messages['oc'] = array(
 	'categoryintersection-results'       => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categoryintersection'               => 'Część wspólna kategorii',
+	'categoryintersection-desc'          => 'Wprowadza do bazy danych tabelę haszy dla szybkiego wyświetlenia [[Special:CategoryIntersection|części wspólnej kilku kategorii]]',
+	'categoryintersection-doit'          => 'Lista stron, które są w każdej z tych kategorii',
+	'categoryintersection-maxcategories' => 'Maksymalna dostępna liczba kategorii, dla których można sprawdzić część wspólną to $1.',
+	'categoryintersection-results'       => 'Wyszukiwanie zwróciło $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */
@@ -241,6 +252,14 @@ $messages['te'] = array(
 	'categoryintersection'         => 'వర్గం ఖండన',
 	'categoryintersection-doit'    => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
 	'categoryintersection-results' => 'ఈ అన్వేషణ $1 {{PLURAL:$1|ఫలితాన్ని|ఫలితాలను}} ఇచ్చింది.',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'categoryintersection-doit'    => 'Саҳифаҳои дар ҳамаи ин гурӯҳҳо буда феҳрист шавад',
+	'categoryintersection-results' => 'Ҷустуҷӯ бо $1 {{PLURAL:$1|натиҷа|натоиҷ}} баргашт.',
 );
 
 /** Thai (ไทย)

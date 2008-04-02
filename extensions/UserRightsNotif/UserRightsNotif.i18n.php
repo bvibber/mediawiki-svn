@@ -380,6 +380,33 @@ $2',
 	'userrightsnotif-desc'    => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'userrightsnotifybody' => 'Hello $1.
+
+This is to inform you that your group memberships on $2 were changed by $3 at $4.
+
+Added: $5
+Removed: $6
+
+With regards,
+
+$2
+-----
+Салом $1.
+
+Ба иттилоъи шумо мерасонем, ки узвияти шумо дар $2 тавассути $3 дар $4 тағйир дода шуд.
+
+Илова шуд: $5
+Пок шуд: $6
+
+Бо салом,
+
+$2',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

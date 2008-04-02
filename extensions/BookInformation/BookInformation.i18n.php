@@ -383,6 +383,24 @@ $messages['gl'] = array(
 	'bookinfo-provider'          => 'Fornecedor de datos: $1',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'bookinfo-header'            => 'किताब ज़ानकारी',
+	'bookinfo-desc'              => 'इंटरनेट से ज़ानकारी लेकर [[Special:Booksources]] बढायें',
+	'bookinfo-result-title'      => 'शीर्षक:',
+	'bookinfo-result-author'     => 'लेखक:',
+	'bookinfo-result-publisher'  => 'प्रकाशक:',
+	'bookinfo-result-year'       => 'सन:',
+	'bookinfo-error-invalidisbn' => 'गलत ISBN दिया हैं',
+	'bookinfo-error-nosuchitem'  => 'आईटम मिला नहीं या अस्तित्वमें नहीं हैं।',
+	'bookinfo-error-nodriver'    => 'बुक इन्फर्मेशन ड्राइवर शुरू करने में असमर्थ।',
+	'bookinfo-error-noresponse'  => 'कोई भी जवाब नहीं या समय समाप्त हो गया हैं।',
+	'bookinfo-purchase'          => 'यह किताब $1 से खरीदें',
+	'bookinfo-provider'          => 'डाटा प्रोवाईडर: $1',
+);
+
 $messages['hr'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
 	'bookinfo-result-title' => 'Naslov:',
@@ -670,16 +688,16 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'bookinfo-header'            => 'ग्रंथ माहिती',
 	'bookinfo-desc'              => 'जालावरील माहिती घेवून [[Special:Booksources]] वाढवा',
-	'bookinfo-result-title'      => 'शिर्षक:',
+	'bookinfo-result-title'      => 'शीर्षक:',
 	'bookinfo-result-author'     => 'लेखक:',
 	'bookinfo-result-publisher'  => 'प्रकाशक:',
-	'bookinfo-result-year'       => 'वर्ष',
+	'bookinfo-result-year'       => 'वर्ष:',
 	'bookinfo-error-invalidisbn' => 'चूकीचा ISBN भरला',
 	'bookinfo-error-nosuchitem'  => 'संचिका सापडली नाही किंवा अस्तित्वात नाही.',
 	'bookinfo-error-nodriver'    => 'योग्य असा बुक माहिती ड्रायव्हर सुरु करु शकत नाही.',
@@ -770,8 +788,8 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'bookinfo-header'            => 'Informacions suls obratges',
-	'bookinfo-desc'              => "Espandís [[Special:Booksources]] amb d'informacions a partir d’un servici internet",
+	'bookinfo-header'            => 'Entresenhas suls obratges',
+	'bookinfo-desc'              => "Espandís [[Special:Booksources]] amb d'entresenhas a partir d’un servici internet",
 	'bookinfo-result-title'      => 'Títol:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editor:',
