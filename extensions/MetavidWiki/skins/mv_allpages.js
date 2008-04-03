@@ -29,26 +29,28 @@ function mv_page_specific_rewrites(){
 	var rssImg = '<img border="0" src="'+wgScriptPath+'/extensions/MetavidWiki/skins/images/feed-icon-28x28.png"/>';
 	var msg_video_rss = 'video rss';
 	//add in rss-media feed link if on Special:Ask page
-	if(wgPageName=='Special:Ask'){
-		js_log("url : " + document.location);
-		var sURL = parseUri(document.location);				
-		var podLink=wgArticlePath.replace('$1',  mvAskTitle);
-		if(sURL.queryKey['title']){
-			//pass along all url params (update the title) 
-			podLink+='?';
-			for(i in sURL.queryKey){
-				if(i !='title')podLink+=i+'='+sURL.queryKey[i]+'&';
-			}			
-		}else{
-			// /title/askparam format	
-			var pInx =sURL.relative.indexOf(wgPageName);
-			if(pInx!==false){
-				podLink+= sURL.relative.substring(pInx+wgPageName.length);
+	if(wgPageName){
+		if(wgPageName=='Special:Ask'){
+			js_log("url : " + document.location);
+			var sURL = parseUri(document.location);				
+			var podLink=wgArticlePath.replace('$1',  mvAskTitle);
+			if(sURL.queryKey['title']){
+				//pass along all url params (update the title) 
+				podLink+='?';
+				for(i in sURL.queryKey){
+					if(i !='title')podLink+=i+'='+sURL.queryKey[i]+'&';
+				}			
+			}else{
+				// /title/askparam format	
+				var pInx =sURL.relative.indexOf(wgPageName);
+				if(pInx!==false){
+					podLink+= sURL.relative.substring(pInx+wgPageName.length);
+				}
 			}
+			//@@todo add to javascript msg system
+			$j('#bodyContent').before('<span style="float: right;"><a title="'+
+					msg_video_rss+'" href="'+podLink+'">'+ rssImg + '</a></span>');
 		}
-		//@@todo add to javascript msg system
-		$j('#bodyContent').before('<span style="float: right;"><a title="'+
-				msg_video_rss+'" href="'+podLink+'">'+ rssImg + '</a></span>');
 	}
 	//if we have an inline query add a search link
 	$j('.smwtable').each(function(){
