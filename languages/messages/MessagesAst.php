@@ -731,7 +731,7 @@ y nos rexistros, pero parte del so conteníu nun va ser accesible al públicu.
 Otros alministrados de {{SITENAME}} van siguir pudiendo acceder al conteníu escondíu
 y puen restauralu de nuevo al traviés d'esta mesma interfaz, a nun ser que s'establezan
 restricciones adicionales.",
-'revdelete-legend'            => 'Establecer restricciones:',
+'revdelete-legend'            => 'Establecer restricciones',
 'revdelete-hide-text'         => 'Esconder testu de revisión',
 'revdelete-hide-name'         => 'Esconder aición y oxetivu',
 'revdelete-hide-comment'      => "Esconder comentariu d'edición",
@@ -746,13 +746,8 @@ restricciones adicionales.",
 'logdelete-logentry'          => "camudada la visibilidá d'eventos de [[$1]]",
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revisión establecida|revisiones establecíes}} en mou $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|eventu a [[$3]] establecíu|eventos a [[$3]] establecíos}} en mou $2',
-'revdelete-success'           => 'Visibilidá de revisiones establecida correutamente.',
-'logdelete-success'           => "Visibilidá d'eventos establecida correutamente.",
-
-# Oversight log
-'oversightlog'    => "Rexistru d'ediciones ocultes",
-'overlogpagetext' => "Abaxo amuésase una llista de los borraos y bloqueos más recientes de conteníu
-ocultáu por alministradores. Vete a la [[Special:Ipblocklist|llista de bloqueos d'IP]] pa consultar la llista de bloqueos activos anguaño.",
+'revdelete-success'           => "'''Visibilidá de revisiones establecida correutamente.'''",
+'logdelete-success'           => "'''Visibilidá d'eventos establecida correutamente.'''",
 
 # History merging
 'mergehistory'                     => 'Fusionar historiales de páxina',
@@ -888,8 +883,6 @@ resultáu les páxines que contengan tolos términos de la busca).",
 'userrights-groupsmember'          => 'Miembru de:',
 'userrights-groupsremovable'       => "Grupos d'onde pue ser elimináu:",
 'userrights-groupsavailable'       => 'Grupos disponibles:',
-'userrights-groupshelp'            => 'Seleiciona los grupos de/a los que quies quitar/añader esti usuariu.
-Los grupos non seleicionaos nun se van modificar. Pues deseleicionar un grupu calcando CTRL + Botón Esquierdu del ratón',
 'userrights-reason'                => 'Motivu del cambéu:',
 'userrights-available-none'        => 'Nun pues modificar la pertenencia a un grupu.',
 'userrights-available-add'         => 'Pues añader usuarios a {{PLURAL:$2|esti grupu|estos grupos}}: $1.',
@@ -1569,7 +1562,7 @@ Esto debería facese sólo pa prevenir vandalismu como indiquen les [[{{MediaWik
 'ipboptions'                  => '2 hores:2 hours,1 día:1 day,3 díes:3 days,1 selmana:1 week,2 selmanes:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 añu:1 year,pa siempre:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'otru',
 'ipbotherreason'              => 'Otru motivu/motivu adicional:',
-'ipbhidename'                 => "Ocultar el nome d'usuariu / IP del rexistru de bloqueos, de la llista de bloqueos activos y de la llista d'usuarios",
+'ipbhidename'                 => "Ocultar el nome d'usuariu del rexistru de bloqueos, de la llista de bloqueos activos y de la llista d'usuarios",
 'badipaddress'                => 'IP non válida',
 'blockipsuccesssub'           => 'Bloquéu fechu correctamente',
 'blockipsuccesstext'          => "Bloquióse al usuariu [[Special:Contributions/$1|$1]].

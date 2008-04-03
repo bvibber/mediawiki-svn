@@ -495,9 +495,7 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'newarticle'                => '(Nouveau)',
 'newarticletext'            => "Vous avez suit un lien à une page qu'existe pas encore.  Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWiki:Helppage}}|page d'aide]] pour plus d'information.  Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
 'anontalkpagetext'          => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:Userlogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
-'noarticletext'             => 'À présent, y a pas de texte sus cette page.
-
-Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page].',
+'noarticletext'             => 'À présent, y a pas de texte sus cette page. Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page].',
 'clearyourcache'            => "'''Notez:''' Après que vous avez sauvé votres changements, il foudra peut-être dépasser le cache de votre navigateur pour voir les changements.  '''Mozilla / Firefox / Safari:''' Tenez le bouton ''Shift'' en pèsant ''Reload'', ou pèsez ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sus Apple Mac); '''IE:''' Tenez ''Ctrl'' en pèsant ''Refresh'', ou pèsez ''Ctrl-F5''; '''Konqueror:''' Simplement pèsez le bouton ''Reload'', ou pèsez ''F5''; Pour les useurs de '''Opera''', il foudra peut-être vider complètement le cache dans ''Tools→Preferences''.",
 'usercssjsyoucanpreview'    => '<strong>Conseil:</strong> Usez le bouton "Vue d\'avance" pour tester votre nouvelle feuille CSS/JS avant de la sauver.',
 'usercsspreview'            => "'''Rappelez-vous que vous êtes après regarder votre feuille CSS qu'a pas encore été sauvée!'''",
@@ -607,7 +605,7 @@ Assayez de [[Special:Search|charcher dans le wiki]] pour des nouvelles pages.',
 'revdelete-text'              => "La liste des changements va sauver les versions ôtées, mais le public pourra pas voir certains morceaux de ces versions.  
 
 Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir les morceaux cachés hormis qu'y aye des restrictions.",
-'revdelete-legend'            => 'Mettre des restrictions:',
+'revdelete-legend'            => 'Mettre des restrictions',
 'revdelete-hide-text'         => 'Cacher le texte de la version',
 'revdelete-hide-name'         => "Cacher l'action et l'objet",
 'revdelete-hide-comment'      => 'Cacher la remarque du changement',
@@ -622,12 +620,8 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 'logdelete-logentry'          => "La visibilité de l'événement a été changée pour [[$1]]",
 'revdelete-logaction'         => '$1 {{PLURAL:$1|version changée|versions changées}} en mode $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|événement de [[$3]] changé|événements de [[$3]] changés}} en mode $2',
-'revdelete-success'           => 'Vous avez bien changé la visibilité des versions.',
-'logdelete-success'           => 'Vous avez bien changé la visibilité des événements.',
-
-# Oversight log
-'oversightlog'    => "Notes d'oubli",
-'overlogpagetext' => 'Cette liste ici montre les ôtages et les blocages avec du texte caché des administrateurs.  Lire la [[Special:Ipblocklist|liste des comptes bloqués]] pour la liste des blocages courants.',
+'revdelete-success'           => "'''Vous avez bien changé la visibilité des versions.'''",
+'logdelete-success'           => "'''Vous avez bien changé la visibilité des événements.'''",
 
 # Diffs
 'difference'              => '(Différences entre les versions)',

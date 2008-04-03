@@ -563,7 +563,8 @@ Doe kins deze blokkaasj bespraeke mèt $1 of 'ne angere [[{{MediaWiki:Grouppage-
 'whitelistacctitle'         => 'Geer maag gein account aanmake',
 'whitelistacctext'          => 'Óm accounts op {{SITENAME}} aan te make mót geer [[Special:Userlogin|ingelog]] zeen en de zjuste permissies höbbe.',
 'confirmedittitle'          => 'E-mailbevestiging is verplich veurdetse kins bewerke',
-'confirmedittext'           => "Doe mos dien e-mailadres bevestige veurse kins bewerke. Veur dien e-mailadres in en bevestig 'm via [[{{ns:special}}:Preferences|dien veurkeure]].",
+'confirmedittext'           => "Doe mos dien e-mailadres bevestige veurse kins bewerke.
+Veur dien e-mailadres in en bevestig 'm via [[Special:Preferences|dien veurkeure]].",
 'nosuchsectiontitle'        => 'Deze subkop bestuit neet',
 'nosuchsectiontext'         => "Doe probeers 'n subkop te bewerke dae neet bestuit. Omdet subkop $1 neet bestuit, kin diene bewerking ouch neet waere opgeslage.",
 'loginreqtitle'             => 'Aanmelje verplich',
@@ -638,7 +639,7 @@ Euverwaeg of 't terech is detse wiejer wèrks aan dees pazjena. Veur dien gemaak
 # "Undo" feature
 'undo-success' => "Hiej onger stuit de teks wo in de verangering ongedaon gemaak is. Controleer veur 't opslaon of 't resultaot gewins is.",
 'undo-failure' => 'De verangering kòs neet ongedaon gemaak waere waeges angere striedige verangeringe.',
-'undo-summary' => 'Versie $1 van [[{{ns:special}}:Contributions/$2|$2]] ([[User talk:$2|euverlèk]]) ongedaon gemaak',
+'undo-summary' => 'Versie $1 van [[Special:Contributions/$2|$2]] ([[User talk:$2|euverlèk]]) ongedaon gemaak',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Aanmake gebroeker misluk.',
@@ -699,7 +700,7 @@ d'r kinne details aanwezig zeen in 't [{{fullurl:Special:Log/delete|page={{PAGEN
 'revdelete-text'              => "Gewisjde bewerkinge zeen zichbaar in de gesjiedenis, maar de inhoud is neet langer publiek toegankelik.
 
 Anger beheerders van {{SITENAME}} kinne de verborge inhoud benäöjere en de verwiedering ongedaon make mit behölp van dit sjerm, tenzij d'r additionele restricties gelje die zeen ingesteld door de systeembeheerder.",
-'revdelete-legend'            => 'Stel versiebeperkinge in:',
+'revdelete-legend'            => 'Stel versiebeperkinge in',
 'revdelete-hide-text'         => 'Verberg de bewerkte teks',
 'revdelete-hide-name'         => 'Actie en doel verberge',
 'revdelete-hide-comment'      => 'De bewerkingssamevatting verberge',
@@ -714,12 +715,8 @@ Anger beheerders van {{SITENAME}} kinne de verborge inhoud benäöjere en de ver
 'logdelete-logentry'          => 'gewiezigde zichbaarheid van gebeurtenis [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|wieziging|wieziginge}} gezat nao mode $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|actie|acties}} om [[$3]] nao modus $2 in te stelle',
-'revdelete-success'           => 'Wieziging zichbaarheid succesvol ingesteld.',
-'logdelete-success'           => 'Zichbaarheid van de gebeurtenis succesvol ingesteld.',
-
-# Oversight log
-'oversightlog'    => 'Oversight-logbook',
-'overlogpagetext' => "Hiej onher is 'ne lies mit de meist recente verwiederinge en blokkeringe mit betrekking tot informatie dae neet zichbaar is veur admins. Zee de [[Special:Ipblocklist|Lies van geblokkeerde gebroekers en IP-adresse]] veur 'ne lies van de blokkades en verbanninge die noe gelje.",
+'revdelete-success'           => "'''Wieziging zichbaarheid succesvol ingesteld.'''",
+'logdelete-success'           => "'''Zichbaarheid van de gebeurtenis succesvol ingesteld.'''",
 
 # History merging
 'mergehistory'                     => "Gesjiedenis van pagina's samevoege",
@@ -856,8 +853,6 @@ $2 Toen redirects   Zeuk: $3 $9',
 'userrights-groupsmember'          => 'Leed van:',
 'userrights-groupsremovable'       => 'Verwiederbare groepe:',
 'userrights-groupsavailable'       => 'Besjikbare gruup:',
-'userrights-groupshelp'            => 'Selecteer de gruup wo oetse de gebroeker wils wisse of aan toe wils voege.
-Neet geselecteerde gruup waere neet gewiezig. Deselecteer \'ne groep mit "Ctrl + linkermoesknoep".',
 'userrights-reason'                => "Reje veur 't verangere:",
 'userrights-available-none'        => 'Doe moogs gein gebroekersrechte verangere.',
 'userrights-available-add'         => 'Doe kins gebroekers toevoege aan {{PLURAL:$2|deze groep|dees gruup}}: $1.',
@@ -1520,7 +1515,7 @@ $1",
 'ipboptions'                  => '2 oer:2 hours,1 daag:1 day,3 daag:3 days,1 waek:1 week,2 waek:2 weeks,1 maondj:1 month,3 maondj:3 months,6 maondj:6 months,1 jaor:1 year,veur iwweg:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'anger verloup',
 'ipbotherreason'              => 'Angere/eventuele rejer:',
-'ipbhidename'                 => "Verberg gebroekersnaam/IP van 't blokkeerlogbook, de actieve blokkeerlies en de gebroekerslies",
+'ipbhidename'                 => "Verberg gebroekersnaam van 't blokkeerlogbook, de actieve blokkeerlies en de gebroekerslies",
 'badipaddress'                => "'t IP-adres haet 'n ongeldige opmaak.",
 'blockipsuccesssub'           => 'Blokkaad gelök',
 'blockipsuccesstext'          => '\'t IP-adres "$1" is geblokkeerd.<br />
@@ -1653,7 +1648,7 @@ In 't letste geval kanse ouch 'ne link gebroeken, beveurbeild [[Special:Export/{
 'allmessagesdefault'        => 'Obligaten teks',
 'allmessagescurrent'        => 'Hujige teks',
 'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.",
-'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages neet óngersjteundj ómdat wgUseDatabaseMessages oet (off) sjteit.',
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' neet óngersjteundj ómdat '''\$wgUseDatabaseMessages''' oet (off) sjteit.",
 'allmessagesfilter'         => 'Berich naamfilter:',
 'allmessagesmodified'       => 'Tuun allein gewiezigde systeemtekste',
 

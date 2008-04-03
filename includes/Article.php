@@ -2156,12 +2156,7 @@ class Article {
 	 */
 	function showLogExtract( $out ) {
 		$out->addHtml( Xml::element( 'h2', null, LogPage::logName( 'delete' ) ) );
-		$logViewer = new LogViewer(
-			new LogReader(
-				new FauxRequest(
-					array( 'page' => $this->mTitle->getPrefixedText(),
-					       'type' => 'delete' ) ) ) );
-		$logViewer->showList( $out );
+		LogEventsList::showLogExtract( $out, 'delete', $this->mTitle->getPrefixedText() );
 	}
 
 
@@ -2300,7 +2295,7 @@ class Article {
 		Article::onArticleDelete( $this->mTitle );
 
 		# Log the deletion, if the page was suppressed, log it at Oversight instead
-		$logtype = $suppress ? 'oversight' : 'delete';
+		$logtype = $suppress ? 'suppress' : 'delete';
 		$log = new LogPage( $logtype );
 		$log->addEntry( 'delete', $this->mTitle, $reason );
 

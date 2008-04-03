@@ -363,7 +363,7 @@ $messages = array(
 'badaccess-groups' => "D'Aktioun déi dir gewielt hutt, kann nëmme vu Benotzer aus de Gruppen $1 duerchgefouert ginn.",
 
 'versionrequired'     => 'Versioun $1 vu MediaWiki gëtt gebraucht',
-'versionrequiredtext' => "D'Versioun $1 vu MediaWiki ass néideg, fir dës Säit ze notzen. Kuckt d'[[{{ns:special}}:Version|Versiounssäit]]",
+'versionrequiredtext' => "D'Versioun $1 vu MediaWiki ass néideg, fir dës Säit ze notzen. Kuckt d'[[Special:Version|Versiounssäit]]",
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Vun „$1“',
@@ -462,7 +462,7 @@ Ufro: $2',
 $2',
 'namespaceprotected'   => "Dir hutt net déi néideg Rechter fir d'Säiten am Nummraum '''$1''' ze änneren.",
 'customcssjsprotected' => 'Dir hutt net déi néideg Rechter fir dës Säit ze änneren, wëll si zu de perséinlechen Astellungen vun engem anere Benotzer gehéiert.',
-'ns-specialprotected'  => 'Säiten am {{ns:special}}-Nummraum kënnen net verännert ginn.',
+'ns-specialprotected'  => 'Spezialsäite kënnen net verännert ginn.',
 'titleprotected'       => "Eng Säit mat dësem Numm kann net ugeluecht ginn. Dës Spär gouf vum [[User:$1|$1]] gemaach deen als Grond ''$2'' uginn huet.",
 
 # Login and logout pages
@@ -709,7 +709,7 @@ Fir iech z'informéieren fannt Dir hei d'Läschlescht mat dem Grond:",
 # "Undo" feature
 'undo-success' => "D'Ännerung gëtt réckgängeg gemaach. Iwwerpréift w.e.g. de Verglach ënnedrënner fir nozekuckeen ob et esou richteg ass, duerno späichert w.e.g d'Ännerungen of fir dës Aktioun ofzeschléissen.",
 'undo-failure' => '<span class="error">D\'Ännerung konnt net réckgängeg gemaach ginn, wëll de betraffenen Abschnitt an der Tëschenzäit geännert gouf.</span>',
-'undo-summary' => 'Ännerung $1 vu(n) [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Diskussioun]]) gouf annulléiert.',
+'undo-summary' => 'Ännerung $1 vu(n) [[Special:Contributions/$2|$2]] ([[User_talk:$2|Diskussioun]]) gouf annulléiert.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benotzerkont konnt net opgemaach ginn',
@@ -755,9 +755,10 @@ Vläicht gouf se geläscht oder geréckelt.
 'rev-deleted-event'       => '(Aktioun ewechgeholl)',
 'rev-delundel'            => 'weisen/verstoppen',
 'revisiondelete'          => 'Versioune läschen/restauréieren',
-'revdelete-nooldid-title' => 'Keng Versioun uginn',
-'revdelete-nooldid-text'  => 'Dir hutt keng Versioun uginn fir dës Funktioun ze benotzen.',
-'revdelete-selected'      => "{{PLURAL:$2|Gewielte Versioun|Gewielte Versiounen}} vu(n) '''$1:'''",
+'revdelete-nooldid-title' => 'Ongülteg Zilversioun',
+'revdelete-nooldid-text'  => 'Dir hutt entweder keng Versioun uginn fir dës Funktioun ze benotzen, déi Versioun déi Diruginn huet gëtt et net, oder dir versicht déi aktuell Versioun ze verstoppen.',
+'revdelete-selected'      => "{{PLURAL:$2|Gewielte Versioun|Gewielte Versioune}} vu(n) '''$1''' :",
+'logdelete-selected'      => "Ausgewielten {{PLURAL:$2|Evenement|Evenementer}} aus dem Logbuch fir '''$1:'''",
 'revdelete-hide-text'     => 'Text vun der Versioun verstoppen',
 'revdelete-hide-name'     => 'Logbuch-Aktioun verstoppen',
 'revdelete-hide-comment'  => 'Bemierkung verstoppen',
@@ -768,12 +769,14 @@ Vläicht gouf se geläscht oder geréckelt.
 'revdelete-log'           => "Bemierkung (fir d'Logbicher/Lëschten):",
 'revdelete-submit'        => 'Op déi gewielte Versioun uwenden',
 'revdelete-logaction'     => '$1 {{PLURAL:$1|Versioun|Versiounen}} an de Modus $2 gesat',
-'revdelete-success'       => 'Sichtbarkeet vun de Versioune geännert.',
+'revdelete-success'       => "'''Sichtbarkeet vun de Versioune geännert.''''",
+'revdel-restore'          => 'Sichtbarkeet änneren',
 'pagehist'                => 'Versioune vun dëser Säit',
 'deletedhist'             => 'Geläschte Versiounen',
 
-# Oversight log
-'overlogpagetext' => "Dëst ass d'Lëscht vun de Läschungen a Spären, déi virun den Administrateure verstoppt sinn.",
+# Suppression log
+'suppressionlog'     => 'Lëscht vun de verstoppten a geläschte Säiten',
+'suppressionlogtext' => "Ënnendrënner ass eng Lëscht vun de rezente geläschte Säiten a Spären déi fir d'Administrateuren net sichtbar sinn. Kuckt[[Special:Ipblocklist|Lëscht vun de gesparten IPen]] fir déi akrtuell Spären.",
 
 # History merging
 'mergehistory'                     => 'Historiquë fusionéieren',
@@ -908,11 +911,13 @@ Sich no: $3 $9',
 'userrights-groupsavailable'  => "Et ginn d'Gruppen:",
 'userrights-reason'           => 'Grond:',
 'userrights-available-none'   => 'Dir däerft keng Benotzerrechter änneren.',
-'userrights-available-add'    => 'Dir kënnt Benotzer an déi folgend {{PLURAL:$2|Grupp derbäisetzen|Grupppen derbäisetzen}}: $1
-.',
-'userrights-available-remove' => 'Dir kënnt Benotzer aus {{PLURAL:$2|dëser Gruppe|dëse(n) $2 Gruppen}} eraushuelen: $1.',
+'userrights-available-add'    => 'Dir kënnt Benotzer an {{PLURAL:$2|dëse Grupp|dës Grupppen}} derbäisetzen: $1.',
+'userrights-available-remove' => 'Dir kënnt Benotzer aus {{PLURAL:$2|dëser Gruppe|dëse Gruppen}} eraushuelen: $1.',
 'userrights-no-interwiki'     => "Dir hutt net déi néideg Rechter, fir d'Rechter vu Benoutzer op anere Wikien z'änneren.",
 'userrights-nodatabase'       => "D'Datebank $1 gëtt et net oder se ass net lokal.",
+'userrights-notallowed'       => "Dir hutt net déi néideg Rechter fir d'Rechter vun anere Benotzer z'änneren.",
+'userrights-changeable-col'   => 'Gruppen déi Dir ännere kënnt',
+'userrights-unchangeable-col' => 'Gruppen déi Dir net ännere kënnt',
 
 # Groups
 'group'               => 'Grupp:',
@@ -920,22 +925,26 @@ Sich no: $3 $9',
 'group-bot'           => 'Botten',
 'group-sysop'         => 'Administrateuren',
 'group-bureaucrat'    => 'Bürokraten',
+'group-suppress'      => 'Iwwersicht',
 'group-all'           => '(all)',
 
 'group-autoconfirmed-member' => 'Registréierte Benotzer',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Administrateur',
 'group-bureaucrat-member'    => 'Bürokrat',
+'group-suppress-member'      => 'Iwwersiicht',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Registréiert Benotzer',
 'grouppage-bot'           => '{{ns:project}}:Botten',
 'grouppage-sysop'         => '{{ns:project}}:Administrateuren',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bürokraten',
+'grouppage-suppress'      => '{{ns:project}}:Iwwersiicht',
 
 # User rights log
-'rightslog'     => 'Logbuch vun de Benotzerrechter',
-'rightslogtext' => "Dëst ass d'Lëscht vun den Ännerunge vu Benotzerrechter.",
-'rightsnone'    => '(keen)',
+'rightslog'      => 'Logbuch vun de Benotzerrechter',
+'rightslogtext'  => "Dëst ass d'Lëscht vun den Ännerunge vu Benotzerrechter.",
+'rightslogentry' => "huet d'Benotzerrechter vum $1 vun $2 op $3 geännert.",
+'rightsnone'     => '(keen)',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
@@ -1257,6 +1266,7 @@ An all Rei sti Linken zur éischter an zweeter Viruleedung, souwéi déi éischt
 'notargettext'                    => 'Dir hutt keng Zilsäit oder keen Zilbenotzer uginn fir déi dës Funktioun ausgheféiert soll ginn.',
 'pager-newer-n'                   => '{{PLURAL:$1|nächsten|nächst $1}}',
 'pager-older-n'                   => '{{PLURAL:$1|vireg|vireg $1}}',
+'suppress'                        => 'Iwwersiicht',
 
 # Book sources
 'booksources'               => 'Bicherreferenzen',
@@ -1383,6 +1393,7 @@ W.e.g. konfirméiert, datt Dir dëst wierklech wëllt, datt Dir d'Konsequenze ve
 'actioncomplete'              => 'Aktioun ofgeschloss',
 'deletedtext'                 => '"<nowiki>$1</nowiki>" gouf geläscht. Kuckt $2 fir eng Lëscht vun de Säiten déi viru Kuerzem geläscht goufen.',
 'deletedarticle'              => '"$1" gouf geläscht',
+'suppressedarticle'           => 'geläscht "$1"',
 'dellogpage'                  => 'Läschungslog',
 'dellogpagetext'              => 'Hei fannt dir eng Lëscht mat rezent geläschte Säiten. All Auerzäiten sinn déi vum Server (UTC).',
 'deletionlog'                 => 'Läschungslog',
@@ -1538,7 +1549,7 @@ $1',
 'ipboptions'                  => '1 Stonn:1 hour,2 Stonen:2 hours,6 Stonnen:6 hours,1 Dag:1 day,3 Deeg:3 days,1 Woch:1 week,2 Wochen:2 weeks,1 Mount:1 month,3 Méint:3 months,1 Joer:1 year,Onbegrenzt:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'Aner Dauer',
 'ipbotherreason'              => 'Aneren oder zousätzleche Grond:',
-'ipbhidename'                 => 'Benotzernumm/IP-Adress an der Spärlëscht, der Lëscht vun den aktive Spären an der Lëscht vun de Benotzer verstoppen',
+'ipbhidename'                 => 'Benotzernumm an der Spärlëscht, der Lëscht vun den aktive Spären an der Lëscht vun de Benotzer verstoppen',
 'badipaddress'                => "D'IP-Adress huet dat falscht Format.",
 'blockipsuccesssub'           => 'Gouf gespaart',
 'blockipsuccesstext'          => "[[Special:Contributions/$1|$1]] gouf gespaart. <br />
@@ -1674,7 +1685,7 @@ An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéiere
 'allmessagesdefault'        => 'Standardtext',
 'allmessagescurrent'        => 'Aktuellen Text',
 'allmessagestext'           => "Dëst ass eng Lëscht vun alle '''Messagen am MediaWiki:namespace''', déi vun der MediaWiki-Software benotzt ginn. Si kënnen nëmme vun [[Wikipedia:Administrators|Administrateure]] geännert ginn.",
-'allmessagesnotsupportedDB' => "'''Special:AllMessages''' gëtt den Ament net ënnertstëtzt well d'Datebank ''offline'' ass.",
+'allmessagesnotsupportedDB' => "Dës Sàit kann net benotzt gi well '''\$wgUseDatabaseMessages''' ausgeschalt ass.",
 'allmessagesfilter'         => 'Noriichtennummfilter:',
 'allmessagesmodified'       => 'Nëmme geännerter weisen',
 

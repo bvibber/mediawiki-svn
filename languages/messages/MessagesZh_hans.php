@@ -1,6 +1,5 @@
 <?php
-/**
- * Chinese (Simplified) ((‪中文 (简化字)‬)
+/** Chinese (Simplified) (‪中文 (简化字)‬)
  *
  * @addtogroup Language
  *
@@ -185,9 +184,9 @@ $messages = array(
 # Categories related messages
 'categories'                     => '页面分类',
 'categoriespagetext'             => '以下的分类中包含了页面或媒体。',
-'pagecategories'                 => '$1个分类',
 'special-categories-sort-count'  => '按数量排列',
 'special-categories-sort-abc'    => '按字母排列',
+'pagecategories'                 => '$1个分类',
 'category_header'                => '"$1"分类中的页面',
 'subcategories'                  => '亚类',
 'category-media-header'          => '"$1"分类中的媒体',
@@ -759,10 +758,6 @@ $2',
 'pagehist'                    => '页面历史',
 'deletedhist'                 => '已删除之历史',
 
-# Oversight log
-'oversightlog'    => '监督记录',
-'overlogpagetext' => '下面是一个最近删除以及由操作员封锁牵涉到的内容列表。参看下面的[[Special:Ipblocklist|IP封锁列表]]去查看现时进行的封锁。',
-
 # History merging
 'mergehistory'                     => '合并页面历史',
 'mergehistory-header'              => '这一页可以讲您合并一个来源页面的历史到另一个新页面中。
@@ -901,17 +896,18 @@ $2',
 'userrights-groupsmember'          => '隶属于:',
 'userrights-groupsremovable'       => '可移除群组:',
 'userrights-groupsavailable'       => '可加入群组:',
-'userrights-groupshelp'            => '选择您想使该用户退出或加入的组群。反选时组群将不改变。您可以通过按住 CTRL 键 + 单击鼠标左键来反选',
 'userrights-reason'                => '更改原因:',
 'userrights-available-none'        => '您不可以更改组别成员。',
-'userrights-available-add'         => '您可以加入用户到{{PLURAL:$2|一个|多个}}组中: $1。',
-'userrights-available-remove'      => '您可以从{{PLURAL:$2|一个|多个}}组中移除用户: $1。',
+'userrights-available-add'         => '您可以加入任何用户到{{PLURAL:$2|一个|多个}}组中: $1。',
+'userrights-available-remove'      => '您可以从{{PLURAL:$2|一个|多个}}组中移除任何用户: $1。',
 'userrights-available-add-self'    => '您可以加入您自己到{{PLURAL:$2|一个|多个}}组中: $1。',
 'userrights-available-remove-self' => '您可以从{{PLURAL:$2|一个|多个}}组中移除您自己: $1。',
 'userrights-no-interwiki'          => '您并没有权限去编辑在其它wiki上的用户权限。',
 'userrights-nodatabase'            => '数据库$1不存在或并非为本地的。',
 'userrights-nologin'               => '您必须要以操作员帐户[[Special:Userlogin|登入]]之后才可以指定用户权限。',
 'userrights-notallowed'            => '您的帐户无权限去指定用户权限。',
+'userrights-changeable-col'        => '您可以更改的组群',
+'userrights-unchangeable-col'      => '您不可以更改的组群',
 
 # Groups
 'group'               => '群组:',
@@ -1352,7 +1348,7 @@ Template:消除歧義',
 'watchlist-show-minor' => '显示小编辑',
 'watchlist-hide-minor' => '隐藏小编辑',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '监视……',
 'unwatching' => '解除监视……',
 
@@ -1530,8 +1526,6 @@ $1',
 'mycontris'     => '我的贡献',
 'contribsub2'   => '$1的贡献 ($2)',
 'nocontribs'    => '没有找到符合特征的更改。',
-'ucnote'        => '以下是该用户最近<b>$2</b>天内的最后<b>$1</b>次修改。',
-'uclinks'       => '参看最后$1次修改；参看最后$2天。',
 'uctop'         => '(最新修改)',
 'month'         => '从该月份 (或更早):',
 'year'          => '从该年份 (或更早):',

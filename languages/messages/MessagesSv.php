@@ -395,7 +395,7 @@ $messages = array(
 'badaccess-groups' => 'Den handling du har begärt kan enbart utföras av användare i grupperna $1.',
 
 'versionrequired'     => 'Version $1 av MediaWiki krävs',
-'versionrequiredtext' => 'För att kunna använda den här sidan, behövs version $1 av MediaWiki. Se [[Special:Version]].',
+'versionrequiredtext' => 'Version $1 av MediaWiki är nödvändig för att använda denna sida. Se [[Special:Version|versionssidan]].',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Den här sidan är hämtad från $1',
@@ -497,7 +497,7 @@ felaktigt länkad till.',
 $2',
 'namespaceprotected'   => "Du har inte behörighet att redigera sidor i namrymden '''$1'''.",
 'customcssjsprotected' => 'Du har inte behörighet att redigera den här sidan eftersom den innehåller en annan användares personliga inställningar.',
-'ns-specialprotected'  => 'Sidor i namnrymden {{ns:special}} kan inte redigeras.',
+'ns-specialprotected'  => 'Specialsidor kan inte redigeras.',
 'titleprotected'       => "Den här sidtiteln har skyddats från att skapas.
 [[User:$1|$1]] skyddade sidan med motiveringen ''$2''.",
 
@@ -676,12 +676,7 @@ Blockeringens ID är $5. Vänligen ange blockerings-ID i alla förfrågningar so
 'newarticle'                => '(Ny)',
 'newarticletext'            => 'Du har klickat på en länk till en sida som inte finns ännu. Du kan själv skapa sidan genom att skriva i fältet nedan (du kan läsa mer på [[{{MediaWiki:Helppage}}|hjälpsidan]]). Om du inte vill skriva något kan du bara trycka på "tillbaka" i din webbläsare.',
 'anontalkpagetext'          => "---- ''Detta är en diskussionssida för en användare som inte har loggat in. {{SITENAME}} måste därför använda personens numeriska IP-adress för att identifiera honom eller henne. En sådan IP-adress kan ibland användas av flera olika personer. Om du får meddelanden här som inte tycks vara riktade till dig, kan du gärna [[Special:Userlogin|logga in]]. Då undviker du framtida förväxlingar.''",
-'noarticletext'             => "<div class=\"plainlinks\" style=\"border: 1px solid #ccc; padding: 7px;\">'''{{SITENAME}} har inte någon artikel om \"{{PAGENAME}}\" ännu.'''<br />
-*Du kan '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera den här sidan]''' för att skapa en ny artikel.<br />
-*Du kan också [[Special:Search/{{PAGENAME}}|söka efter {{PAGENAME}}]] i andra artiklar på {{SITENAME}}.<br />
-*Det kan också hända att artikeln har raderats. Se då i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} raderingsloggen].<br />
-----<br />
-*Om du har skapat artikeln under de senaste minuterna kan du ändå få upp denna sida ifall {{SITENAME}}s cache inte hunnit uppdateras. Vänligen vänta då en liten stund och se om artikeln syns senare innan du försöker skapa den igen.</div>",
+'noarticletext'             => 'Det finns just nu ingen text på denna sida. Du kan [[Special:Search/{{PAGENAME}}|söka efter denna sidtitel]] i andra sidor eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida].',
 'userpage-userdoesnotexist' => '"$1" är inte ett registrerat användarkonto. Tänk efter om du vill skapa/redigera den här sidan.',
 'clearyourcache'            => "'''Obs:''' Sedan du sparat sidan, måste du tömma din webbläsares cache för att se ändringarna. '''Mozilla/Safari/Firefox:''' håll ner ''skift'' och klicka på ''reload'' eller tryck ''ctrl-shift-r'', (cmd-shift-R på mac:ar); '''Internet Explorer:'''  håll ner ctr och klicka på \"Refresh\" eller tryck ''ctrl-f5'', '''Konqueror:''': klicka helt enkelt på \"Reload\" eller F5; '''Opera:''' tryck ''F5''",
 'usercssjsyoucanpreview'    => "<strong>Tips:</strong> Använd 'Visa förhandsgranskning' för att testa din nya css/js innan du sparar.",
@@ -802,19 +797,21 @@ Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENA
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks"> Denna version av sidan har avlägsnats från de öppna arkiven. Som administratör på denna wiki kan du se den. Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen]. </div>',
 'rev-delundel'                => 'visa/göm',
 'revisiondelete'              => 'Ta bort/återställ versioner',
-'revdelete-nooldid-title'     => 'Ingen version angiven',
-'revdelete-nooldid-text'      => 'Du angav inte vilken eller vilka versioner du vill utföra funktionen på.',
-'revdelete-selected'          => "{{PLURAL:$2|Vald version|Valda versioner}} av '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Vald loggåtgärd|valda loggåtgärder}} för '''$1:'''",
+'revdelete-nooldid-title'     => 'Ogiltig målversion',
+'revdelete-nooldid-text'      => 'Antingen har du inte angivit någon sidversion att utföra funktionen på,
+eller så finns inte den version du angav,
+eller så försöker du gömma den senaste versionen av sidan.',
+'revdelete-selected'          => '{{PLURAL:$2|Vald version|Valda versioner}} av [[:$1]]:',
+'logdelete-selected'          => '{{PLURAL:$1|Vald loggåtgärd|Valda loggåtgärder}}:',
 'revdelete-text'              => 'Borttagna versioner och åtgärder kommer fortfarande att synas i historiken och i loggar, men deras innehåll kommer ej att vara tillgängligt för allmänheten.
 
 Andra administratörer på {{SITENAME}} kommer fortfarande att kunna läsa det dolda innehållet och kan återställa sidan genom samma gränssnitt, om inte en ytterligare begränsningar finns.',
-'revdelete-legend'            => 'Ange begränsningar för version:',
+'revdelete-legend'            => 'Ange begränsningar för version',
 'revdelete-hide-text'         => 'Dölj versionstext',
 'revdelete-hide-name'         => 'Dölj åtgärd och sidnamn',
 'revdelete-hide-comment'      => 'Dölj redigeringskommentar',
 'revdelete-hide-user'         => 'Dölj redaktörens användarnamn/IP-adress',
-'revdelete-hide-restricted'   => 'Låt dessa begränsningar gälla administratörer likväl som andra',
+'revdelete-hide-restricted'   => 'Låt dessa begränsningar gälla även för administratörer och lås det här gränssnittet',
 'revdelete-suppress'          => 'Undanhåll data även från administratörer',
 'revdelete-hide-image'        => 'Dölj filinnehåll',
 'revdelete-unsuppress'        => 'Ta bort begränsningar på återställda versioner',
@@ -823,15 +820,16 @@ Andra administratörer på {{SITENAME}} kommer fortfarande att kunna läsa det d
 'revdelete-logentry'          => 'ändrade synlighet för versioner av [[$1]]',
 'logdelete-logentry'          => 'ändrade synlighet för åtgärder på [[$1]]',
 'revdelete-logaction'         => '$1 {{plural:$1|version|versioner}} satta till $2',
-'logdelete-logaction'         => '$1 {{plural:$1|åtgärd|åtgärder}} för [[$3]] satta till $2',
-'revdelete-success'           => 'Ändringen av versionssynlighet är utförd.',
-'logdelete-success'           => 'Ändringen av åtgärdssynlighet är utförd.',
+'logdelete-logaction'         => '$1 {{plural:$1|åtgärd ändrad|åtgärder ändrade}} till läge $2',
+'revdelete-success'           => "'''Versionens synlighet har ändrats.'''",
+'logdelete-success'           => "'''Loggåtgärdens synlighet har ändrats.'''",
+'revdel-restore'              => 'Ändra synlighet',
 'pagehist'                    => 'Sidhistorik',
 'deletedhist'                 => 'Raderad historik',
 
-# Oversight log
-'oversightlog'    => 'Översynslogg',
-'overlogpagetext' => 'Här nedanför finns en lista över de senaste raderingarna och blockeringarna av innehåll som är gömt för administratörer. Se [[Special:Ipblocklist|listan över blockerade IP]] för en lista över nu gällande blockeringar.',
+# Suppression log
+'suppressionlog'     => 'Upphävningslogg',
+'suppressionlogtext' => 'Nedan är en lista av dom senaste raderingarna och blockeringarna innefattande innehåll dolt för admimistratörer. Se [[Special:Ipblocklist|IP-blockeringslistan]] för listan över nuvarande operationella förbud och blockeringar.',
 
 # History merging
 'mergehistory'                     => 'Sammanfoga sidhistoriker',
@@ -972,17 +970,21 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-groupsmember'          => 'Medlem i:',
 'userrights-groupsremovable'       => 'Grupper som kan tas bort:',
 'userrights-groupsavailable'       => 'Tillgängliga grupper:',
-'userrights-groupshelp'            => 'Markera de grupper, som du vill lägga till eller ta bort användare i. De grupper som du inte markerar, kommer inte att förändras. Du kan avmarkera en grupp med CTRL + vänsterklick.',
+'userrights-groups-help'           => 'Du kan ändra vilka grupper denna användare är medlem i.
+En ikryssad ruta betyder användaren är medlem i den gruppen.
+En okryssad ruta betyder att användaren inte är medlem i den gruppen.',
 'userrights-reason'                => 'Anledning till ändringen:',
 'userrights-available-none'        => 'Du kan inte ändra några grupptillhörigheter.',
-'userrights-available-add'         => 'Du kan lägga till användare i följande {{PLURAL:$2|grupp|grupper}}: $1.',
-'userrights-available-remove'      => 'Du kan ta bort användare från följande {{PLURAL:$2|grupp|grupper}}: $1.',
+'userrights-available-add'         => 'Du kan lägga till användare i {{PLURAL:$2|denna grupp|dessa grupper}}: $1.',
+'userrights-available-remove'      => 'Du kan ta bort användare från {{PLURAL:$2|denna grupp|dessa grupper}}: $1.',
 'userrights-available-add-self'    => 'Du kan lägga till dig själv till följande {{PLURAL:$2|grupp|grupper}}: $1.',
 'userrights-available-remove-self' => 'Du kan ta bort dig själv från följande {{PLURAL:$2|grupp|grupper}}: $1.',
 'userrights-no-interwiki'          => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
 'userrights-nodatabase'            => 'Databasen $1 finns inte eller så är den inte lokal.',
 'userrights-nologin'               => 'Du måste [[Special:Userlogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
 'userrights-notallowed'            => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
+'userrights-changeable-col'        => 'Grupper du kan ändra',
+'userrights-unchangeable-col'      => 'Grupper du inte kan ändra',
 
 # Groups
 'group'               => 'Grupp:',
@@ -990,17 +992,20 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'group-bot'           => 'Robotar',
 'group-sysop'         => 'Administratörer',
 'group-bureaucrat'    => 'Byråkrater',
+'group-suppress'      => 'Oversightare',
 'group-all'           => '(alla)',
 
 'group-autoconfirmed-member' => 'Bekräftad användare',
 'group-bot-member'           => 'Robot',
 'group-sysop-member'         => 'Administratör',
 'group-bureaucrat-member'    => 'Byråkrat',
+'group-suppress-member'      => 'Oversight',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Bekräftade användare',
 'grouppage-bot'           => '{{ns:project}}:Robotar',
 'grouppage-sysop'         => '{{ns:project}}:Administratörer',
 'grouppage-bureaucrat'    => '{{ns:project}}:Byråkrater',
+'grouppage-suppress'      => '{{ns:project}}:Oversight',
 
 # User rights log
 'rightslog'      => 'Användarrättighetslogg',
@@ -1327,6 +1332,7 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'notargettext'            => 'Du har inte angivit någon sida eller användare att utföra denna funktion på.',
 'pager-newer-n'           => '$1 nyare',
 'pager-older-n'           => '$1 äldre',
+'suppress'                => 'Oversight',
 
 # Book sources
 'booksources'               => 'Bokkällor',
@@ -1479,6 +1485,7 @@ Bekräfta att du förstår vad du håller på med och vilka konsekvenser detta l
 'deletedtext'                 => '"<nowiki>$1</nowiki>" har tagits bort.
 Se $2 för noteringar om de senaste raderingarna.',
 'deletedarticle'              => 'raderade "$1"',
+'suppressedarticle'           => 'upphävde "[[$1]]"',
 'dellogpage'                  => 'Raderingslogg',
 'dellogpagetext'              => 'Nedan listas de senaste raderingarna och återställningarna.',
 'deletionlog'                 => 'raderingsloggen',
@@ -1798,7 +1805,7 @@ I det senare fallet kan du även använda en länk, exempel [[{{ns:special}}:Exp
 'allmessagestext'           => 'Detta är en lista över alla meddelanden i namnrymden MediaWiki.
 
 De går att översätta lokalt, genom att klicka på länkarna nedan, men översättes med fördel på [http://translatewiki.net/wiki/Main_Page Translatewiki], då slår översättningen igenom på samtliga svenskspråkiga projekt.',
-'allmessagesnotsupportedDB' => "Det finns inte stöd för ''{{ns:special}}:Allmessages'', eftersom '''\$wgUseDatabaseMessages''' är avstängd.",
+'allmessagesnotsupportedDB' => "Den här sidan kan inte användas eftersom '''\$wgUseDatabaseMessages''' är avstängd.",
 'allmessagesfilter'         => 'Filter för meddelandenamn:',
 'allmessagesmodified'       => 'Visa bara ändrade',
 

@@ -478,7 +478,7 @@ Query: $2',
 $2',
 'namespaceprotected'   => "Non si dispone dei permessi necessari per modificare le pagine del namespace '''$1'''.",
 'customcssjsprotected' => 'Non si dispone dei permessi necessari alla modifica della pagina, in quanto contiene le impostazioni personali di un altro utente.',
-'ns-specialprotected'  => 'Non è possibile modificare le pagine del namespace {{ns:special}}.',
+'ns-specialprotected'  => 'Non è possibile modificare le pagine speciali.',
 'titleprotected'       => "La creazione di una pagina con questo titolo è stata bloccata da [[User:$1|$1]].
 La motivazione è la seguente: ''$2''.",
 
@@ -808,14 +808,10 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'logdelete-logentry'          => "ha modificato la visibilità dell'evento [[$1]]",
 'revdelete-logaction'         => 'ha impostato la modalità $2 per {{plural:$1|una revisione|$1 revisioni}}',
 'logdelete-logaction'         => 'ha impostato la modalità $2 per {{plural:$1|un evento relativo|$1 eventi relativi}} a [[$3]]',
-'revdelete-success'           => 'Visibilità della revisione impostata correttamente.',
-'logdelete-success'           => "Visibilità dell'evento impostata correttamente.",
+'revdelete-success'           => "'''Visibilità della revisione impostata correttamente.'''",
+'logdelete-success'           => "'''Visibilità dell'evento impostata correttamente.'''",
 'pagehist'                    => 'Cronologia della pagina',
 'deletedhist'                 => 'Cronologia cancellata',
-
-# Oversight log
-'oversightlog'    => 'Registro azioni di oversight',
-'overlogpagetext' => "Qui di seguito viene presentata una lista delle cancellazioni e dei blocchi che riguardano contenuti oscurati agli amministratori. Consultare l'[[Special:Ipblocklist|elenco IP bloccati]] per l'elenco dei blocchi e dei bandi al momento operativi.",
 
 # History merging
 'mergehistory'                     => 'Unione cronologie',
@@ -954,17 +950,20 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'userrights-groupsmember'          => 'Appartiene ai gruppi:',
 'userrights-groupsremovable'       => 'Gruppi eliminabili:',
 'userrights-groupsavailable'       => 'Gruppi disponibili:',
-'userrights-groupshelp'            => "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
+'userrights-groups-help'           => "È possibile modificare i gruppi cui è assegnato l'utente.
+Una casella di spunta selezionata indica l'appartenenza dell'utente al gruppo; una casella di spunta deselezionata indica la sua mancata appartenenza al gruppo.",
 'userrights-reason'                => 'Motivo della modifica:',
 'userrights-available-none'        => "Non è consentito modificare l'appartenenza ai gruppi.",
-'userrights-available-add'         => 'È possibile associare utenti {{PLURAL:$2|al gruppo|ai gruppi}}: $1.',
-'userrights-available-remove'      => 'È possibile rimuovere utenti {{PLURAL:$2|dal gruppo|dai gruppi}}: $1.',
+'userrights-available-add'         => 'È possibile associare gli utenti {{PLURAL:$2|al gruppo|ai gruppi}}: $1.',
+'userrights-available-remove'      => 'È possibile rimuovere gli utenti {{PLURAL:$2|dal gruppo|dai gruppi}}: $1.',
 'userrights-available-add-self'    => 'È possibile aggiungere il proprio account {{PLURAL:$2|al gruppo indicato|ai gruppi indicati}} di seguito: $1.',
 'userrights-available-remove-self' => 'È possibile rimuovere il proprio account {{PLURAL:$2|dal gruppo indicato|dai gruppi indicati}} di seguito: $1.',
 'userrights-no-interwiki'          => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
 'userrights-nodatabase'            => 'Il database $1 non esiste o non è un database locale.',
 'userrights-nologin'               => "Per assegnare diritti agli utenti è necessario [[Special:Userlogin|effettuare l'accesso]] come amministratore.",
 'userrights-notallowed'            => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
+'userrights-changeable-col'        => 'Gruppi modificabili',
+'userrights-unchangeable-col'      => 'Gruppi non modificabili',
 
 # Groups
 'group'               => 'Gruppo:',
@@ -1627,7 +1626,7 @@ $1',
 'ipboptions'                  => '2 ore:2 hours,1 giorno:1 day,3 giorni:3 days,1 settimana:1 week,2 settimane:2 weeks,1 mese:1 month,3 mesi:3 months,6 mesi:6 months,1 anno:1 year,infinito:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'altro',
 'ipbotherreason'              => 'Altri motivi/dettagli:',
-'ipbhidename'                 => "Nascondi il nome utente o l'indirizzo IP dal log dei blocchi, dall'elenco dei blocchi attivi e dall'elenco utenti.",
+'ipbhidename'                 => "Nascondi il nome utente dal log dei blocchi, dall'elenco dei blocchi attivi e dall'elenco utenti.",
 'badipaddress'                => 'Indirizzo IP non valido.',
 'blockipsuccesssub'           => 'Blocco eseguito',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] è stato bloccato.

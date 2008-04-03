@@ -451,7 +451,7 @@ $messages = array(
 'badaccess-groups' => 'L’action que vous essayez de réaliser n’est accessible qu’aux utilisateurs des groupes $1.',
 
 'versionrequired'     => 'Version $1 de MediaWiki nécessaire',
-'versionrequiredtext' => 'La version $1 de MediaWiki est nécessaire pour utiliser cette page. Consultez [[Special:Version]]',
+'versionrequiredtext' => 'La version $1 de MediaWiki est nécessaire pour utiliser cette page. Consultez [[Special:Version|la page des versions]]',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Récupérée de « $1 »',
@@ -735,7 +735,7 @@ Votre adresse IP est $3 et votre identifiant de blocage est #$5. Veuillez les pr
 Pour créer cette page, entrez votre texte dans la boîte ci-dessous (vous pouvez consulter [[{{MediaWiki:Helppage}}|la page d’aide]] pour plus d’informations).
 Si vous êtes arrivé ici par erreur, cliquez sur le bouton '''retour''' de votre navigateur.",
 'anontalkpagetext'          => "---- ''Vous êtes sur la page de discussion d’un utilisateur anonyme qui n’a pas encore créé de compte ou qui n’en utilise pas. Pour cette raison, nous devons utiliser son adresse IP pour l’identifier. Une adresse IP peut être partagée par plusieurs utilisateurs. Si vous êtes un utilisateur anonyme et si vous constatez que des commentaires qui ne vous concernent pas vous ont été adressés, vous pouvez [[Special:Userlogin|créer un compte ou vous connecter]] afin d’éviter toute confusion future avec d’autres contributeurs anonymes.''",
-'noarticletext'             => 'Il n’y a pour l’instant aucun texte sur cette page ; vous pouvez [[{{ns:special}}:Search/{{PAGENAME}}|lancer une recherche sur le titre de cette page]], vérifier qu’elle n’a pas été [{{fullurl:Special:Log|type=delete&page={{FULLPAGENAMEE}}}} supprimée] ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifier cette page].',
+'noarticletext'             => 'Il n’y a pour l’instant aucun texte sur cette page ; vous pouvez [[Special:Search/{{PAGENAME}}|lancer une recherche sur son titre]] dans d’autres pages ou de [{{fullurl:{{FULLPAGENAME}}|action=edit}} la modifier].',
 'userpage-userdoesnotexist' => 'Le compte utilisateur « $1 » n’est pas enregistré. Veuillez vérifier que vous voulez créer cette page.',
 'clearyourcache'            => "'''Note :''' Après avoir sauvegardé la page, vous devrez forcer son rechargement pour voir les changements : '''Mozilla / Konqueror / Firefox :''' ''Shift-Ctrl-R'', '''Internet Explorer / Opera :''' ''Ctrl-F5'', '''Safari :''' ''Cmd-R''.",
 'usercssjsyoucanpreview'    => "'''Astuce :''' utilisez le bouton « Prévisualisation » pour tester votre nouvelle feuille CSS/JS avant de l’enregistrer.",
@@ -845,7 +845,7 @@ La raison donnée par $3 était ''$2''.",
 'revdelete-nooldid-title'     => 'Pas de cible pour la révision',
 'revdelete-nooldid-text'      => 'Vous n’avez pas précisé la ou les révision(s) cible(s) pour utiliser cette fonction.',
 'revdelete-selected'          => "{{PLURAL:$2|Version sélectionnée|Versions sélectionnées}} de '''$1''' :",
-'logdelete-selected'          => "{{PLURAL:$2|Événement d’historique sélectionné|Événements d’historiques sélectionnés}} pour '''$1''' :",
+'logdelete-selected'          => '{{PLURAL:$1|Événement d’historique sélectionné|Événements d’historique sélectionnés}} :',
 'revdelete-text'              => 'Les révisions et événements supprimés apparaîtront encore dans l’historique de l’article, mais leur contenu textuel sera inaccessible au public.
 
 D’autres administrateurs de {{SITENAME}} pourront toujours accéder au contenu caché et le restaurer à nouveau à travers cette même interface, à moins qu’une restriction supplémentaire ne soit mise en place par les opérateurs du site.',
@@ -863,16 +863,16 @@ D’autres administrateurs de {{SITENAME}} pourront toujours accéder au contenu
 'revdelete-logentry'          => 'La visibilité de la version a été modifiée pour [[$1]]',
 'logdelete-logentry'          => 'La visibilité de l’événement a été modifiée pour [[$1]]',
 'revdelete-logaction'         => '$1 {{plural:$1|version changée|versions changées}} en mode $2',
-'logdelete-logaction'         => '$1 {{plural:$1|événement de [[$3]] changé|événements de [[$3]] changés}} en mode $2',
+'logdelete-logaction'         => '$1 {{plural:$1|événement changé|événements changés}} en mode $2',
 'revdelete-success'           => 'Visibilité des versions changées avec succès.',
-'logdelete-success'           => 'Visibilité des événements changée avec succès.',
+'logdelete-success'           => "'''Journal des visibilités paramétré avec succès.'''",
+'revdel-restore'              => 'Modifier la visibilité',
 'pagehist'                    => 'Historique de la page',
 'deletedhist'                 => 'Historique des suppressions',
 
-# Oversight log
-'oversightlog'    => 'Historique de supervision',
-'overlogpagetext' => 'la liste ci-dessous montre les suppressions et blocages récents dont le contenu est masqué même pour les administrateurs.
-Consulter la [[Special:Ipblocklist|liste des comptes bloqués]] pour la liste des blocages en cours.',
+# Suppression log
+'suppressionlog'     => 'Journal des suppressions',
+'suppressionlogtext' => 'Ci-dessous, se trouve la liste des suppressions les plus récentes et des blocages comprenant les révisions cachées aux administrateurs. Voyez [[Special:Ipblocklist|la liste des blocages des IP]] pour la liste des bannissements et des blocages.',
 
 # History merging
 'mergehistory'                     => 'Fusionner les historiques',
@@ -1014,17 +1014,23 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'userrights-groupsmember'          => 'Membre de :',
 'userrights-groupsremovable'       => 'Groupes supprimables :',
 'userrights-groupsavailable'       => 'Groupes disponibles :',
-'userrights-groupshelp'            => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l’utilisateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
+'userrights-groups-help'           => "Vous pouvez remamier les groupes dont appartient cet utilisateur.
+Une case cochée signifie que l'utilisateur se trouve dans ce groupe.
+Une case non cochée signifie, au contraire, qu'il ne s’y trouve pas.",
 'userrights-reason'                => 'Motif du changement :',
 'userrights-available-none'        => 'Vous ne pouvez pas changer l’appartenance aux différents groupes.',
-'userrights-available-add'         => 'Vous pouvez ajouter des utilisateurs à {{PLURAL:$2|ce groupe|ces groupes}}: $1.',
-'userrights-available-remove'      => 'Vous pouvez enlever des utilisateurs de {{PLURAL:$2|ce groupe|ces groupes}}: $1.',
+'userrights-available-add'         => '* Le paramètre $1 est la liste des groupes dont un utilisateur est autorisé pour y ajouter les autres.
+* Le paramètre $2 est le nombre des groupes dans la liste (pour {{PLURAL:}}).',
+'userrights-available-remove'      => '* Le paramètre $1 est la liste des groupes dont un utilisateur est autorisé pour y enlever les autres.
+* Le paramètre $2 est le nombre des groupes dans la liste (pour {{PLURAL:}}).',
 'userrights-available-add-self'    => 'Vous pouvez vous ajouter vous-même à {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
 'userrights-available-remove-self' => 'Vous pouvez vous enlever vous-même de {{PLURAL:$2|ce groupe|ces groupes}} : $1.',
 'userrights-no-interwiki'          => 'Vous n’avez pas la permission de modifier des droits d’utilisateurs sur d’autres wikis.',
 'userrights-nodatabase'            => 'La base de donnée « $1 » n’existe pas ou n’est pas locale.',
 'userrights-nologin'               => 'Vous devez vous [[Special:Userlogin|connecter]] avec un compte d’administrateur pour modifier des droits d’utilisateur.',
 'userrights-notallowed'            => 'Votre compte n’a pas la permission de modifier des droits d’utilisateur.',
+'userrights-changeable-col'        => 'Les groupes dont vous avez la possibilité de changer',
+'userrights-unchangeable-col'      => "Les groupes dont vous n'avez pas la possibilité de changer",
 
 # Groups
 'group'               => 'Groupe :',
@@ -1032,17 +1038,20 @@ $2 Inclure les pages de redirection<br /> Rechercher $3 $9',
 'group-bot'           => 'Bots',
 'group-sysop'         => 'Administrateurs',
 'group-bureaucrat'    => 'Bureaucrates',
+'group-suppress'      => 'Superviseurs',
 'group-all'           => 'Tous',
 
 'group-autoconfirmed-member' => 'Utilisateur enregistré',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Administrateur',
 'group-bureaucrat-member'    => 'Bureaucrate',
+'group-suppress-member'      => 'Superviseur',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Utilisateurs enregistrés',
 'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Administrateurs',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bureaucrates',
+'grouppage-suppress'      => '{{ns:project}}:Superviseur',
 
 # User rights log
 'rightslog'      => 'Historique des modifications de statut',
@@ -1369,6 +1378,7 @@ Il y a {{PLURAL:$7|'''$7''' article|'''$7''' articles}} dans [[meta:Help:Job_que
 'notargettext'            => 'Indiquez une page cible ou un utilisateur cible.',
 'pager-newer-n'           => '{{PLURAL:$1|1 plus récente|$1 plus récentes}}',
 'pager-older-n'           => '{{PLURAL:$1|1 plus ancienne|$1 plus anciennes}}',
+'suppress'                => 'Superviseur',
 
 # Book sources
 'booksources'               => 'Ouvrages de référence',
@@ -1517,6 +1527,7 @@ Retour et assistance :
 'deletedtext'                 => '« <nowiki>$1</nowiki> » a été supprimé.
 Voir $2 pour une liste des suppressions récentes.',
 'deletedarticle'              => 'a effacé « [[$1]] »',
+'suppressedarticle'           => 'caché  « [[$1]] »',
 'dellogpage'                  => 'Historique des suppressions',
 'dellogpagetext'              => 'Voici la liste des suppressions récentes.
 L’heure indiquée est celle du serveur (UTC).',
@@ -1698,7 +1709,7 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'ipboptions'                  => '2 heures:2 hours,1 jour:1 day,3 jours:3 days,1 semaine:1 week,2 semaines:2 weeks,1 mois:1 month,3 mois:3 months,6 mois:6 months,1 an:1 year,indéfiniment:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'autre',
 'ipbotherreason'              => 'Motif différent ou supplémentaire',
-'ipbhidename'                 => 'Masquer le nom d’utilisateur ou l’IP de l’historique des blocages, de la liste des blocages actifs et de la liste des utilisateurs',
+'ipbhidename'                 => 'Masquer le nom d’utilisateur de l’historique des blocages, de la liste des blocages actifs et de la liste des utilisateurs',
 'badipaddress'                => 'L’adresse IP n’est pas correcte.',
 'blockipsuccesssub'           => 'Blocage réussi',
 'blockipsuccesstext'          => '[[{{ns:special}}:Contributions/$1|$1]] a été bloqué.<br />Vous pouvez consulter la [[Special:Ipblocklist|liste des comptes et des adresses IP bloqués]].',

@@ -379,7 +379,7 @@ $messages = array(
 'badaccess-groups' => 'A ação que você requisitou está limitada a usuários de um dos seguintes grupos: $1.',
 
 'versionrequired'     => 'É necessária a versão $1 do MediaWiki',
-'versionrequiredtext' => 'Esta página requer a versão $1 do MediaWiki para poder ser utilizada. Consulte [[{{ns:special}}:Version|a página sobre a versão do sistema]].',
+'versionrequiredtext' => 'Esta página requer a versão $1 do MediaWiki para poder ser utilizada. Consulte [[Special:Version|a página sobre a versão do sistema]].',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Obtido em "$1"',
@@ -634,7 +634,8 @@ Sua ID de bloqueio é $5. Por favor, inclua esse dado em qualquer tentativa de e
 'whitelistreadtext'         => 'Você precisa se [[Special:Userlogin|logar]] para ler artigos.',
 'whitelistacctitle'         => 'Não lhe é permitido criar uma conta',
 'whitelistacctext'          => 'Para poder criar contas de usuário neste Wiki, você precisará estar [[Special:Userlogin|autenticado]] e possuir as devidas permissões.',
-'confirmedittext'           => 'Você precisa confirmar o seu endereço de e-mail antes de começar a editar páginas. Por favor, introduza um e valide-o através das suas [[{{ns:special}}:Preferences|preferências de usuário]].',
+'confirmedittext'           => 'Você precisa confirmar o seu endereço de e-mail antes de começar a editar páginas.
+Por favor, introduza um e valide-o através das suas [[Special:Preferences|preferências de usuário]].',
 'nosuchsectiontitle'        => 'Seção inexistente',
 'nosuchsectiontext'         => 'Você tentou editar uma seção que não existe. Uma vez que não há a seção $1, não há um local para salvar a sua edição.',
 'loginreqtitle'             => 'Autenticação Requerida',
@@ -648,7 +649,7 @@ Para criá-la, começe escrevendo na caixa abaixo
 (veja [[{{MediaWiki:Helppage}}|a página de ajuda]] para mais informações).
 Se você chegou aqui por engano, apenas clique no botão '''voltar''' do seu navegador.",
 'anontalkpagetext'          => "---- ''Esta é a página de discussão para um usuário anônimo que ainda não criou uma conta ou que não a usa, de forma que temos de utilizar o endereço de IP para identificá-lo(a). Um endereço de IP pode ser compartilhado por vários usuários. Se você é um usuário anônimo e acha irrelevantes os comentários direcionados a você, por gentileza, [[Special:Userlogin|crie uma conta ou autentique-se]], a fim de evitar futuras confusões com outros usuários anônimos.''",
-'noarticletext'             => 'Não existe atualmente texto nesta página; você pode [[{{ns:special}}:Search/{{PAGENAME}}|pesquisar pelo título desta página em outras páginas]] ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página].',
+'noarticletext'             => 'Não existe atualmente texto nesta página; você pode [[Special:Search/{{PAGENAME}}|pesquisar pelo título desta página em outras páginas]] ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página].',
 'userpage-userdoesnotexist' => 'A conta "$1" não se encontra registrada. Por gentileza, verifique se deseja mesmo criar/editar esta página.',
 'updated'                   => '(Atualizado)',
 'note'                      => '<strong>Nota:</strong>',
@@ -698,7 +699,7 @@ O registro de eliminação desta página é exibido a seguir, para sua comodidad
 # "Undo" feature
 'undo-success' => 'A edição pôde ser desfeita. Por gentileza, verifique o comparativo a seguir para se certificar de que é isto que deseja fazer, salvando as alterações após ter terminado de revisá-las.',
 'undo-failure' => 'A edição não pôde ser desfeita devido a alterações intermediárias conflitantes.',
-'undo-summary' => 'Desfeita a edição $1 de [[{{ns:special}}:Contributions/$2|$2]] ([[User talk:$2|Discussão]])',
+'undo-summary' => 'Desfeita a edição $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussão]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Não é possível criar uma conta',
@@ -744,7 +745,7 @@ Legenda: (atu) = diferenças da versão atual,
 'revdelete-nooldid-title' => 'Nenhuma edição foi selecionada',
 'revdelete-selected'      => "{{PLURAL:$2|Edição selecionada|Edições selecionadas}} de '''[[:$1]]''':",
 'logdelete-selected'      => "{{PLURAL:$2|Evento de registro selecionado|Eventos de registro selecionados}} para '''$1:'''",
-'revdelete-legend'        => 'Atribuir restrições de edições:',
+'revdelete-legend'        => 'Atribuir restrições de edições',
 'revdelete-hide-user'     => 'Ocultar nome de usuário/IP do editor',
 'revdelete-hide-image'    => 'Ocultar os conteúdos do arquivo',
 'revdelete-unsuppress'    => 'Remover restrições das edições restauradas',
@@ -754,11 +755,8 @@ Legenda: (atu) = diferenças da versão atual,
 'logdelete-logentry'      => 'foi alterada a visibilidade de eventos para [[$1]]',
 'revdelete-logaction'     => '$1 {{PLURAL:$1|edição definida|edições definidas}} como $2',
 'logdelete-logaction'     => '$1 {{PLURAL:$1|evento|eventos}} de [[$3]] {{PLURAL:$1|definido|definidos}} como $2',
-'revdelete-success'       => 'Visibilidade de edição definida com sucesso.',
-'logdelete-success'       => 'Visibilidade de evento definida com sucesso.',
-
-# Oversight log
-'oversightlog' => 'Registro de edições ocultadas',
+'revdelete-success'       => "'''Visibilidade de edição definida com sucesso.'''",
+'logdelete-success'       => "'''Visibilidade de evento definida com sucesso.'''",
 
 # Merge log
 'mergelog' => 'Registro de fusão de históricos',
@@ -842,8 +840,6 @@ para definir suas preferências.',
 'userrights-editusergroup'         => 'Editar grupos do usuário',
 'saveusergroups'                   => 'Salvar grupos do usuário',
 'userrights-groupsavailable'       => 'Grupos disponíveis:',
-'userrights-groupshelp'            => 'Selecione os grupos nos quais deseja que o usuário seja removido ou adicionado.
-Grupos não selecionados não serão alterados. Você pode selecionar ou des-selecionar um grupo com CTRL + clique esquerdo',
 'userrights-reason'                => 'Motivo das alterações:',
 'userrights-available-none'        => 'Não é possível alterar o grupo de acesso.',
 'userrights-available-add'         => 'É possível adicionar usuários {{PLURAL:$2|neste grupo|nestes grupos}}: $1',
@@ -1321,7 +1317,7 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{MediaWik
 'ipbanononly'              => 'Bloquear apenas usuários anônimos',
 'ipbsubmit'                => 'Bloquear este endereço',
 'ipboptions'               => '2 horas:2 hours,1 dia:1 day,3 dias:3 days,1 semana:1 week,2 semanas:2 weeks,1 mês:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,indefinido:infinite', # display1:time1,display2:time2,...
-'ipbhidename'              => 'Ocultar usuário/IP do registro de bloqueios, lista de bloqueios e lista de usuários',
+'ipbhidename'              => 'Ocultar usuário do registro de bloqueios, lista de bloqueios e lista de usuários',
 'badipaddress'             => 'O endereço de IP está mal-formado.',
 'blockipsuccesssub'        => 'Bloqueio bem sucedido',
 'blockipsuccesstext'       => 'O endereço de IP "$1" Foi bloqueado.

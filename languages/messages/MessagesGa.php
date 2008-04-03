@@ -756,8 +756,6 @@ den am an freastalaí (UTC).',
 'saveusergroups'             => 'Sábháil Grúpaí na n-Úsáideoirí',
 'userrights-groupsmember'    => 'Ball de:',
 'userrights-groupsavailable' => 'Grúpaí atá le fáil:',
-'userrights-groupshelp'      => 'Roghnaigh na grúpaí a bhfuil tú ag cur an úsáideoir leis nó ag baint an úsáideoir de.
-Ní bheidh aon athrú le grúpaí neamhroghnaithe. Is féidir leat grúpa a díroghnú le húsáid CTRL + cléchliceáil',
 
 # Groups
 'group'     => 'Grúpa:',
@@ -1330,7 +1328,7 @@ air, nó is féidir leat é a coinniú do do chuid shiamsa féin.',
 'allmessagesdefault'        => 'Téacs réamhshocraithe',
 'allmessagescurrent'        => 'Téacs reatha',
 'allmessagestext'           => 'Liosta is ea seo de theachtaireachtaí córais atá le fáil san ainmspás MediaWiki: .',
-'allmessagesnotsupportedDB' => "Níl aon tacaíocht anseo do {{ns:special}}:Allmessages dá bharr go bhfuil '''\$wgUseDatabaseMessages''' druidte.",
+'allmessagesnotsupportedDB' => "Níl aon tacaíocht anseo do '''{{ns:special}}:Allmessages''' dá bharr go bhfuil '''\$wgUseDatabaseMessages''' druidte.",
 'allmessagesfilter'         => "Scagaire teachtaireacht d'ainm:",
 
 # Thumbnails

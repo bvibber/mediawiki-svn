@@ -656,15 +656,11 @@ Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Spe
 </div>',
 'rev-delundel'                => 'nîşan bide/veşêre',
 'revisiondelete'              => 'Rêvîsyona jêbibe/dîsa çêke',
-'revdelete-legend'            => 'Qebûlkirinan ji vê versyonê ra:',
+'revdelete-legend'            => 'Qebûlkirinan ji vê versyonê ra',
 'revdelete-hide-comment'      => 'Nivîsandinê kurte yê guherandinê veşêre',
 'revdelete-hide-user'         => "Navî bikarhêner/IP'yê veşêre",
 'revdelete-hide-restricted'   => 'Ev qebûlkirin ji koordînatoran ra ye jî',
 'revdelete-suppress'          => 'Sedemê jêbirinê ji koordînatoran ra jî veşêre',
-
-# Oversight log
-'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content
-hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 
 # History merging
 'mergehistory-from' => 'Çavkanîya rûpelê:',
@@ -751,7 +747,6 @@ $2 Ragihandinan nîşan bide &amp;nbsp; Lêbigere: $3 $9',
 'userrights-groupsmember'          => 'Endamê:',
 'userrights-groupsremovable'       => 'Grûp, yên dikarin werin jêbirin:',
 'userrights-groupsavailable'       => 'Grûpên henê:',
-'userrights-groupshelp'            => "Li grûpan xe yên tu dixazê bikarhêneran jêbibê ya têkê. Grûpên nexistî netên guherandin. Tu dikarê grûpan bi klîkkirina CTRL + 'Klîka çepê' dîsa derxê.",
 'userrights-reason'                => 'Sedemê guherandinê:',
 'userrights-available-none'        => 'Tu nikanê mafên bikarhêneran biguherînê.',
 'userrights-available-add'         => 'Tu dikarê bikarhêneran têke di nav {{PLURAL:$2|vê komê|van koman}}: $1.',

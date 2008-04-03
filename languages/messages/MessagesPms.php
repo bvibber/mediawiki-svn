@@ -723,14 +723,10 @@ na restrission adissional da j'operator dël sit.",
 'logdelete-logentry'          => "a l'ha cangiaje visibilità a l'event [[$1]]",
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revision|revision}} butà a la meuda $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|event|event}} për [[$3]] butà a la meuda $2',
-'revdelete-success'           => "Visibilità dla revision butà coma ch'as dev.",
-'logdelete-success'           => "Visibilità dla revision butà coma ch'as dev.",
+'revdelete-success'           => "'''Visibilità dla revision butà coma ch'as dev.'''",
+'logdelete-success'           => "'''Visibilità dla revision butà coma ch'as dev.'''",
 'pagehist'                    => 'Stòria dla pàgina',
 'deletedhist'                 => 'Stòria scancelà',
-
-# Oversight log
-'oversightlog'    => "Registr dle ròbe scondùe a j'aministrator",
-'overlogpagetext' => "Ambelessì sota a-i é na lista djë scancelament e blòch pì davsin ant ël temp, ch'a toco contnù ch'a resta scondù a j'aministrator. Ch'a varda la [[Special:Ipblocklist|lista dj'IP blocà]] për vëdde ij blòch ch'a stan travajand.",
 
 # History merging
 'mergehistory'                     => 'Buté ansema jë stòrie',
@@ -870,8 +866,6 @@ për podej specifiché ij sò gust.',
 'userrights-groupsmember'          => "A l'é andrinta a:",
 'userrights-groupsremovable'       => "Partìe dont as peul gavesse l'utent:",
 'userrights-groupsavailable'       => 'Partìe disponibij:',
-'userrights-groupshelp'            => "Che as selession-a le partìe d'andoa che a veul gavé ò andoa che a veul buteje andrinta l'utent.
-Le partìe nen selessionà a saran nen tocà. Për deselessioné na partìa a venta che a jë sgnaca ansima ën tnisend ësgnacà ëdcò ël tast CTRL ëd soa tastera.",
 'userrights-reason'                => 'Rason dla modìfica:',
 'userrights-available-none'        => 'A peul pa modifiché le partìe.',
 'userrights-available-add'         => "A peul gionté dj'utent an {{PLURAL:$2|sta partìa|ste partìe}}-sì: $1.",
@@ -1586,7 +1580,7 @@ Che a scriva codì che st'adrëssa IP-sì a dev second chiel (chila) esse blocà
 'ipboptions'                  => "2 ore:2 ore,1 dì:1 dì,3 dì:3 dì,na sman-a:na sman-a,2 sman-e:2 sman-e,1 mèis:1 mèis,3 mèis:3 mèis,6 mèis:6 mèis,n'ann:n'ann,për sempe:për sempe", # display1:time1,display2:time2,...
 'ipbotheroption'              => "d'àutr",
 'ipbotherreason'              => 'Àotri motiv/spiegon',
-'ipbhidename'                 => "Stërma lë stranòm/IP da 'nt ël registr dij blòch, da col dij blòch ativ e da 'nt la lista dj'utent",
+'ipbhidename'                 => "Stërma lë stranòm da 'nt ël registr dij blòch, da col dij blòch ativ e da 'nt la lista dj'utent",
 'badipaddress'                => "L'adrëssa IP che a l'ha dane a l'é nen giusta.",
 'blockipsuccesssub'           => 'Blocagi fait',
 'blockipsuccesstext'          => ' L\'adrëssa IP "$1" a l\'é staita blocà.<br />
@@ -1741,7 +1735,7 @@ Se costa ùltima possibilità a fussa lòn che a-j serv, a podrìa ëdcò dovré
 'allmessagesdefault'        => "Test che a-i sarìa se a-i fusso pa 'd modìfiche",
 'allmessagescurrent'        => 'Test corent',
 'allmessagestext'           => "Costa-sì a l'é na lista ëd tùit ij messagi ëd sistema ant lë spassi nominal MediaWiki:",
-'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages a travaja nen përchè a-i é ël component wgUseDatabaseMessages frëmm.',
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' a travaja nen përchè a-i é ël component '''\$wgUseDatabaseMessages''' frëmm.",
 'allmessagesfilter'         => 'Seletor dël nòm dël messagi:',
 'allmessagesmodified'       => "Most-me mach lòn che a l'é modificasse",
 

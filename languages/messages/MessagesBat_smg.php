@@ -340,7 +340,7 @@ Ožklausėms: $2',
 'editinginterface'     => "'''Diemesė:''' Tamsta redagoujat poslapi, katros īr nauduojams pruogramėnės irongos sōsėjės tekstė. Pakeitėmā šėtam poslapī tēpuogi pakeis nauduotuojė sōsėjės ėšruoda ė kėtėm nauduotuojam.",
 'sqlhidden'            => '(SQL ožklausa pakavuota)',
 'namespaceprotected'   => "Tamsta netorėt teisiu keistė poslapiu '''$1''' srėtī.",
-'ns-specialprotected'  => '„Specēlos“ vardū srėtī poslapē negal būtė keitamė.',
+'ns-specialprotected'  => '„{{ns:special}}“ vardū srėtī poslapē negal būtė keitamė.',
 
 # Login and logout pages
 'logouttitle'                => 'Nauduotuojė atsėjongėms',
@@ -571,10 +571,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'revdelete-unsuppress' => 'Šalėntė apribuojėmos atkortuos versėjės',
 'logdelete-logentry'   => 'pakeists [[$1]] atsėtėkima veiziemoms',
 
-# Oversight log
-'oversightlog'    => 'Privaizuos istuorėjė',
-'overlogpagetext' => 'Žemiau īr sārašos paskotėniu trīnimu ė bluokavėmu. [[Special:Ipblocklist|IP bluokavėmu istuorėjuo]] rasėt šėtuo čieso veikiantiu draudėmu ė bluokavėmu sāraša.',
-
 # History merging
 'mergehistory-success' => '$3 [[:$1]] versėju siekmėngā sojongta so [[:$2]].',
 
@@ -658,8 +654,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'userrights-editusergroup'   => 'Keistė nauduotuoju gropes',
 'userrights-groupsmember'    => 'Narīs:',
 'userrights-groupsavailable' => 'Galėmas gropės:',
-'userrights-groupshelp'      => "Pasėrėnkėt gropes, i katras pridietė o ėš katrū pašalėntė nauduotoja.
-Nepasirėnktos gropes nabus pakeistos. Galit atžīmiet grope laikīdamė ''Ctrl'' ėr paspausdamė kairiouju pelės klavėšu",
 'userrights-reason'          => 'Keitėma prižastis:',
 'userrights-available-none'  => 'Tamsta nagalėt keistė gropės narīstės.',
 
@@ -1268,7 +1262,7 @@ Paskėrties straipsnis „[[$1]]“ jau īr. A nuorėt ana ėštrintė, kū gali
 'allmessagesdefault'        => 'Pradėnis teksts',
 'allmessagescurrent'        => 'Dabartėnis teksts',
 'allmessagestext'           => 'Čė pateikamė sėstemėniu pranešėmu sārašos, esontis MediaWiki srėtie.',
-'allmessagesnotsupportedDB' => "'''Specēlos:Allmessages''' nepalaikuoms īr, nes nustatīms '''\$wgUseDatabaseMessages''' ėšjungts īr.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' nepalaikuoms īr, nes nustatīms '''\$wgUseDatabaseMessages''' ėšjungts īr.",
 'allmessagesfilter'         => 'Tekstu pavadėnėmu atsėjuotuos:',
 'allmessagesmodified'       => 'Ruodītė vėn pakeistus',
 

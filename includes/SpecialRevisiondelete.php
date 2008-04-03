@@ -45,11 +45,11 @@ function wfSpecialRevisiondelete( $par = null ) {
 	# does not exist...might be helpful
 	if( !is_null($page) ) {
 		$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
-		$logViewer = new LogViewer(
-			new LogReader(
-				new FauxRequest(
-					array( 'page' => $page->getPrefixedText(), 'type' => 'delete' ) ) ) );
-		$logViewer->showList( $wgOut );
+		LogEventsList::showLogExtract( $wgOut, 'delete', $page->getPrefixedText() );
+		if( $wgUser->isAllowed( 'suppress' ) ){
+			$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'suppress' ) ) . "</h2>\n" );
+			LogEventsList::showLogExtract( $wgOut, 'suppress', $page->getPrefixedText() );
+		}
 	}
 }
 
@@ -245,51 +245,52 @@ class RevisionDeleteForm {
 				$wgOut->addHtml( $this->historyLine( $rev ) );
 				$bitfields |= $rev->mDeleted;
 			}
-		} 
+		}
 		$wgOut->addHtml( "</ul>" );
-		
+
 		$wgOut->addWikiText( wfMsgHtml( 'revdelete-text' ) );
-		
+
 		// Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
-		
+
 		$items = array(
-			wfInputLabel( wfMsgHtml( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ),
-			wfSubmitButton( wfMsgHtml( 'revdelete-submit' ) ) );
+			Xml::inputLabel( wfMsg( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ),
+			Xml::submitButton( wfMsg( 'revdelete-submit' ) )
+		);
 		$hidden = array(
-			wfHidden( 'wpEditToken', $wgUser->editToken() ),
-			wfHidden( 'target', $this->page->getPrefixedText() ),
-			wfHidden( 'type', $this->deleteKey ) );
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ),
+			Xml::hidden( 'target', $this->page->getPrefixedText() ),
+			Xml::hidden( 'type', $this->deleteKey )
+		);
 		if( $this->deleteKey=='oldid' ) {
 			foreach( $revObjs as $rev )
 				$hidden[] = wfHidden( 'oldid[]', $rev->getID() );
-		} else {	
+		} else {
 			foreach( $revObjs as $rev )
 				$hidden[] = wfHidden( 'artimestamp[]', $rev->getTimestamp() );
 		}
 		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
-		$wgOut->addHtml( wfElement( 'form', array(
-			'method' => 'post',
-			'action' => $special->getLocalUrl( 'action=submit' ) ),
-			null ) );
-		
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'revdelete-legend' ) . '</legend>' );
+		$wgOut->addHtml(
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $special->getLocalUrl( 'action=submit' ), 'id' => 'mw-revdel-form-revisions' ) ) .
+			Xml::openElement( 'fieldset' ) .
+			xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) )
+		);
 		// FIXME: all items checked for just one rev are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
 			list( $message, $name, $field ) = $item;
-			$wgOut->addHtml( "<div>" .
-				wfCheckLabel( wfMsgHtml( $message), $name, $name, $bitfields & $field ) .
-				"</div>\n" );
+			$wgOut->addHtml( Xml::tags( 'div', null, Xml::checkLabel( wfMsg( $message ), $name, $name, $bitfields & $field ) ) );
 		}
-		$wgOut->addHtml( '</fieldset>' );
 		foreach( $items as $item ) {
-			$wgOut->addHtml( '<p>' . $item . '</p>' );
+			$wgOut->addHtml( Xml::tags( 'p', null, $item ) );
 		}
 		foreach( $hidden as $item ) {
 			$wgOut->addHtml( $item );
 		}
-		
-		$wgOut->addHtml( '</form>' );
+		$wgOut->addHtml( 
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n"
+		);
+
 	}
 
 	/**
@@ -383,18 +384,20 @@ class RevisionDeleteForm {
 			}
 		}
 		$wgOut->addHtml( "</ul>" );
-		
+
 		$wgOut->addWikiText( wfMsgHtml( 'revdelete-text' ) );
 		//Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
-		
+
 		$items = array(
-			wfInputLabel( wfMsgHtml( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ),
-			wfSubmitButton( wfMsgHtml( 'revdelete-submit' ) ) );
+			Xml::inputLabel( wfMsg( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ),
+			Xml::submitButton( wfMsg( 'revdelete-submit' ) )
+		);
 		$hidden = array(
-			wfHidden( 'wpEditToken', $wgUser->editToken() ),
-			wfHidden( 'target', $this->page->getPrefixedText() ),
-			wfHidden( 'type', $this->deleteKey ) );
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ),
+			Xml::hidden( 'target', $this->page->getPrefixedText() ),
+			Xml::hidden( 'type', $this->deleteKey )
+		);
 		if( $this->deleteKey=='oldimage' ) {
 			foreach( $this->ofiles as $filename )
 				$hidden[] = wfHidden( 'oldimage[]', $filename );
@@ -403,36 +406,35 @@ class RevisionDeleteForm {
 				$hidden[] = wfHidden( 'fileid[]', $fileid );
 		}
 		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
-		$wgOut->addHtml( wfElement( 'form', array(
-			'method' => 'post',
-			'action' => $special->getLocalUrl( 'action=submit' ) ),
-			null ) );
-		
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'revdelete-legend' ) . '</legend>' );
+		$wgOut->addHtml( 
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $special->getLocalUrl( 'action=submit' ), 'id' => 'mw-revdel-form-filerevisions' ) ) .
+			Xml::openElement( 'fieldset' ) .
+			xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) )
+		);
 		// FIXME: all items checked for just one file are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
 			list( $message, $name, $field ) = $item;
-			$wgOut->addHtml( '<div>' .
-				wfCheckLabel( wfMsgHtml( $message), $name, $name, $bitfields & $field ) .
-				'</div>' );
+			$wgOut->addHtml( Xml::tags( 'div', null, Xml::checkLabel( wfMsg( $message ), $name, $name, $bitfields & $field ) ) );
 		}
-		$wgOut->addHtml( '</fieldset>' );
 		foreach( $items as $item ) {
-			$wgOut->addHtml( '<p>' . $item . '</p>' );
+			$wgOut->addHtml( Xml::tags( 'p', null, $item ) );
 		}
 		foreach( $hidden as $item ) {
 			$wgOut->addHtml( $item );
 		}
-		
-		$wgOut->addHtml( '</form>' );
+
+		$wgOut->addHtml( 
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n"
+		);
 	}
-		
+
 	/**
 	 * This lets a user set restrictions for log items
 	 * @param WebRequest $request
 	 */
 	function showLogItems( $request ) {
-		global $wgOut, $wgUser, $action;
+		global $wgOut, $wgUser, $action, $wgMessageCache;
 
 		$UserAllowed = true;
 		$wgOut->addWikiText( wfMsgExt( 'logdelete-selected', array('parsemag'), count($this->events) ) );
@@ -453,12 +455,13 @@ class RevisionDeleteForm {
 		while( $row = $dbr->fetchObject( $result ) ) {
 			$logRows[$row->log_id] = $row;
 		}
+		$wgMessageCache->loadAllMessages();
 		foreach( $this->events as $logid ) {
 			// Don't hide from oversight log!!!
-			if( !isset( $logRows[$logid] ) || $logRows[$logid]->log_type=='oversight' ) {
+			if( !isset( $logRows[$logid] ) || $logRows[$logid]->log_type=='suppress' ) {
 				$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 				return;
-			} else if( !LogPage::userCan( $logRows[$logid],Revision::DELETED_RESTRICTED) ) {
+			} else if( !LogEventsList::userCan( $logRows[$logid],Revision::DELETED_RESTRICTED) ) {
 			// If an event is hidden from sysops
 				if( $action != 'submit') {
 					$wgOut->permissionRequired( 'hiderevision' );
@@ -474,7 +477,7 @@ class RevisionDeleteForm {
 		$wgOut->addWikiMsg( 'revdelete-text' );
 		// Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
-		
+
 		$items = array(
 			Xml::inputLabel( wfMsg( 'revdelete-log' ), 'wpReason', 'wpReason', 60 ),
 			Xml::submitButton( wfMsg( 'revdelete-submit' ) ) );
@@ -484,32 +487,31 @@ class RevisionDeleteForm {
 		foreach( $this->events as $logid ) {
 			$hidden[] = Xml::hidden( 'logid[]', $logid );
 		}
-		
+
 		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
-		$wgOut->addHtml( Xml::element( 'form', array(
-			'method' => 'post',
-			'action' => $special->getLocalUrl( 'action=submit' ) ),
-			null ) );
-		
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'revdelete-legend' ) . '</legend>' );
+		$wgOut->addHtml(
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $special->getLocalUrl( 'action=submit' ), 'id' => 'mw-revdel-form-logs' ) ) .
+			Xml::openElement( 'fieldset' ) .
+			xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) )
+		);
 		// FIXME: all items checked for just on event are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
 			list( $message, $name, $field ) = $item;
-			$wgOut->addHtml( '<div>' .
-				Xml::checkLabel( wfMsg( $message), $name, $name, $bitfields & $field ) .
-				'</div>' );
+			$wgOut->addHtml( Xml::tags( 'div', null, Xml::checkLabel( wfMsg( $message ), $name, $name, $bitfields & $field ) ) );
 		}
-		$wgOut->addHtml( '</fieldset>' );
 		foreach( $items as $item ) {
-			$wgOut->addHtml( '<p>' . $item . '</p>' );
+			$wgOut->addHtml( Xml::tags( 'p', null, $item ) );
 		}
 		foreach( $hidden as $item ) {
 			$wgOut->addHtml( $item );
 		}
-		
-		$wgOut->addHtml( '</form>' );
+
+		$wgOut->addHtml( 
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n"
+		);
 	}
-	
+
 	/**
 	 * @param Revision $rev
 	 * @returns string
@@ -619,7 +621,7 @@ class RevisionDeleteForm {
 		$loglink = $this->skin->makeKnownLinkObj( $logtitle, wfMsgHtml( 'log' ),
 			wfArrayToCGI( array( 'page' => $title->getPrefixedUrl() ) ) );
 		// Action text
-		if( !LogPage::userCan($row,LogPage::DELETED_ACTION) ) {
+		if( !LogEventsList::userCan($row,LogPage::DELETED_ACTION) ) {
 			$action = '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';	
 		} else {
 			$action = LogPage::actionText( $row->log_type, $row->log_action, $title, 
@@ -629,12 +631,12 @@ class RevisionDeleteForm {
 		}
 		// User links
 		$userLink = $this->skin->userLink( $row->log_user, User::WhoIs($row->log_user) );
-		if( LogPage::isDeleted($row,LogPage::DELETED_USER) ) {
+		if( LogEventsList::isDeleted($row,LogPage::DELETED_USER) ) {
 			$userLink = '<span class="history-deleted">' . $userLink . '</span>';
 		}
 		// Comment
 		$comment = $wgContLang->getDirMark() . $this->skin->commentBlock( $row->log_comment );
-		if( LogPage::isDeleted($row,LogPage::DELETED_COMMENT) ) {
+		if( LogEventsList::isDeleted($row,LogPage::DELETED_COMMENT) ) {
 			$comment = '<span class="history-deleted">' . $comment . '</span>';
 		}
 		return "<li>($loglink) $date $userLink $action $comment</li>";
@@ -713,6 +715,7 @@ class RevisionDeleteForm {
 			$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'revdelete-success' ) ), false );
 		  	$this->showImages( $request );
 		} else if( $this->deleteKey=='oldimage' ) {
+			$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'revdelete-success' ) ), false );
 			$this->showImages( $request );
 		}
 	}
@@ -1069,8 +1072,8 @@ class RevisionDeleter {
 			if( !isset($logRows[$logid]) ) {
 				$success = false;
 				continue; // Must exist
-			} else if( !LogPage::userCan($logRows[$logid], Revision::DELETED_RESTRICTED)
-				 || $logRows[$logid]->log_type=='oversight' ) {
+			} else if( !LogEventsList::userCan($logRows[$logid], Revision::DELETED_RESTRICTED)
+				 || $logRows[$logid]->log_type == 'suppress' ) {
 			// Don't hide from oversight log!!!
     			$userAllowedAll=false;
     			continue;
@@ -1333,7 +1336,7 @@ class RevisionDeleter {
 	 */
 	function updateLog( $title, $count, $nbitfield, $obitfield, $comment, $target, $param, $items = array() ) {
 		// Put things hidden from sysops in the oversight log
-		$logtype = ( ($nbitfield | $obitfield) & Revision::DELETED_RESTRICTED ) ? 'oversight' : 'delete';
+		$logtype = ( ($nbitfield | $obitfield) & Revision::DELETED_RESTRICTED ) ? 'suppress' : 'delete';
 		$log = new LogPage( $logtype );
 		// FIXME: do this better
 		if( $param=='logid' ) {

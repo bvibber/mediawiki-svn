@@ -610,7 +610,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'revisiondelete'          => 'Delatom/diidelatom revición',
 'revdelete-nooldid-title' => 'Necoccebj aimde revicion',
 'revdelete-selected'      => "{{PLURAL:$2|Revicion selectonde|Revición selectónde}} '''$1:'''",
-'revdelete-legend'        => 'Xuniim restricción:',
+'revdelete-legend'        => 'Xuniim restricción',
 'revdelete-hide-text'     => 'Camaát textuade revicion',
 'revdelete-hide-name'     => 'Camaát accion öjaim',
 'revdelete-hide-comment'  => 'Camaát commentuade ticpatlöx',
@@ -621,9 +621,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 'logdelete-logentry'      => 'quiixöx eventua visibilitiitde [[$1]]',
 'revdelete-logaction'     => "$1 {{PLURAL:$1|revicion|revición}} set'de mode $2",
 'logdelete-logaction'     => "$1 {{PLURAL:$1|eventuade|eventuámde}} [[$3]] set'de mode $2",
-
-# Oversight log
-'oversightlog' => 'Logamde oversight',
 
 # Diffs
 'history-title'           => 'Históriade revicionde "$1"',

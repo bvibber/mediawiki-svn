@@ -294,7 +294,7 @@ $messages = array(
 'badaccess-groups' => 'この処理は $1 のうちいずれかの権限を持った利用者のみが実行できます。',
 
 'versionrequired'     => 'MediaWiki バージョン $1 が必要',
-'versionrequiredtext' => 'このページの利用には MediaWiki バージョン $1 が必要です。[[Special:Version|{{int:version}}]]を確認してください。',
+'versionrequiredtext' => 'このページの利用には MediaWiki バージョン $1 が必要です。[[Special:Version|バージョン情報]]を確認してください。',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => ' "$1" より作成',
@@ -584,7 +584,7 @@ $1 または他の[[{{MediaWiki:grouppage-sysop}}|管理者]]にこの件につ�
 'newarticletext'            => 'ページを新規に作成するには新しい内容を書き込んでください。',
 'anontalkpagetext'          => "----
 ''これはアカウントをまだ作成していないか、あるいは使っていない匿名利用者のための会話ページです。{{SITENAME}}では匿名利用者の識別は利用者名のかわりにIPアドレスを用います。IPアドレスは何人かで共有されることがあります。もしも、あなたが匿名利用者で無関係なコメントがここに寄せられる場合は、[[Special:Userlogin|アカウントを作成するかログインして]]他の匿名利用者と間違えられないようにしてくださるようお願いします。",
-'noarticletext'             => '現在このページには内容がありません。他のページから[[{{ns:special}}:Search/{{PAGENAME}}|このページタイトルを検索する]]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]できます。',
+'noarticletext'             => '現在このページには内容がありません。他のページから[[Special:Search/{{PAGENAME}}|このページタイトルを検索する]]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]できます。',
 'userpage-userdoesnotexist' => '"$1" という名前のアカウントは登録されていません。このページを編集することが適切かどうか確認してください。',
 'clearyourcache'            => "'''お知らせ:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
 * '''Mozilla / Firefox / Safari:''' [Shift] を押しながら [再読み込み] をクリック、または [Shift]-[Ctrl]-[R] （Macでは [Cmd]-[Shift]-[R]）
@@ -724,10 +724,6 @@ $1 または他の[[{{MediaWiki:grouppage-sysop}}|管理者]]にこの件につ�
 'revdelete-success'           => '版の隠蔽状態を変更しました',
 'logdelete-success'           => '操作情報の隠蔽状態を変更しました',
 
-# Oversight log
-'oversightlog'    => '版隠蔽ログ',
-'overlogpagetext' => '以下は{{int:group-sysop}}が最近隠蔽した版削除およびブロックの記録です。現時点で有効な投稿ブロックは[[Special:Ipblocklist|{{int:ipblocklist}}]]をご覧ください。',
-
 # History merging
 'mergehistory'                     => 'ページの統合履歴',
 'mergehistory-header'              => 'ページの履歴を他のページの履歴と統合しようとしています。
@@ -858,7 +854,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'userrights-groupsmember'          => '所属グループ:',
 'userrights-groupsremovable'       => '削除可能なグループ:',
 'userrights-groupsavailable'       => '有効なグループ:',
-'userrights-groupshelp'            => 'この利用者に対し、削除または追加するグループを選択してください。選択されていないグループは変更されません。選択の解除は [CTRL]+[左クリック] で行うことができます。',
 'userrights-reason'                => '変更理由:',
 'userrights-available-none'        => '利用者の所属グループを変更することは出来ません。',
 'userrights-available-add'         => '利用者をグループ $1に追加できます。',
@@ -883,10 +878,10 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'group-sysop-member'         => '{{int:group-sysop}}',
 'group-bureaucrat-member'    => '{{int:group-bureaucrat}}',
 
-'grouppage-autoconfirmed' => '{{ns:project}}:{{int:group-autoconfirmed}}',
-'grouppage-bot'           => '{{ns:project}}:{{int:group-bot}}',
-'grouppage-sysop'         => '{{ns:project}}:{{int:group-sysop}}',
-'grouppage-bureaucrat'    => '{{ns:project}}:{{int:group-bureaucrat}}',
+'grouppage-autoconfirmed' => '{{ns:project}}:自動承認された利用者',
+'grouppage-bot'           => '{{ns:project}}:ボット',
+'grouppage-sysop'         => '{{ns:project}}:管理者',
+'grouppage-bureaucrat'    => '{{ns:project}}:ビューロクラット',
 
 # User rights log
 'rightslog'      => '利用者権限変更記録',
@@ -1052,6 +1047,7 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'noimage'                   => '同名のファイルは存在しません。「$1」リンクをクリックしてください。',
 'noimage-linktext'          => 'このファイル名でアップロードする',
 'uploadnewversion-linktext' => 'このファイルの新しいバージョンをアップロードする',
+'imagepage-searchdupe'      => '重複ファイルを検索する',
 
 # File reversion
 'filerevert'                => '$1 を差し戻す',
@@ -1665,7 +1661,7 @@ $NEWPAGE
 'allmessagesdefault'        => '既定の文章',
 'allmessagescurrent'        => '現在の文章',
 'allmessagestext'           => 'これは{{ns:mediawiki}}名前空間にある全てのシステムメッセージの一覧です。',
-'allmessagesnotsupportedDB' => 'wgUseDatabaseMessages が無効のため、[[{{ns:special}}:Allmessages]] はサポートされません。',
+'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages''' が無効のため、'''{{ns:special}}:Allmessages''' はサポートされません。",
 'allmessagesfilter'         => 'メッセージ名フィルタ:',
 'allmessagesmodified'       => '条件に当てはまるものを表示',
 
@@ -2360,5 +2356,17 @@ $1',
 画像は最大解像度で表示され、他のファイルタイプでは関連付けられたプログラムが直接起動します。
 
 ファイル名は"{{ns:image}}:"を付けずに入力してください。',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => '重複ファイルの検索',
+'fileduplicatesearch-summary'  => '重複ファイルを、ファイルのハッシュ値に基づいて検索します。
+
+先頭の「{{ns:image}}:」を付けないでファイル名を入力してください。',
+'fileduplicatesearch-legend'   => '重複の検索',
+'fileduplicatesearch-filename' => 'ファイル名:',
+'fileduplicatesearch-submit'   => '検索',
+'fileduplicatesearch-info'     => '$1 × $2 ピクセル<br />ファイルサイズ: $3<br />MIMEタイプ: $4',
+'fileduplicatesearch-result-1' => '「$1」と重複するファイルはありません。',
+'fileduplicatesearch-result-n' => '「$1」と重複するファイルが $2 個あります。',
 
 );

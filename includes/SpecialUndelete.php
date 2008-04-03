@@ -587,7 +587,7 @@ class UndeleteForm {
 		$this->mPreview = $request->getCheck( 'preview' ) && $posted;
 		$this->mDiff = $request->getCheck( 'diff' );
 		$this->mComment = $request->getText( 'wpComment' );
-		$this->mUnsuppress = $request->getVal( 'wpUnsuppress' ) && $wgUser->isAllowed( 'oversight' );
+		$this->mUnsuppress = $request->getVal( 'wpUnsuppress' ) && $wgUser->isAllowed( 'suppress' );
 		
 		if( $par != "" ) {
 			$this->mTarget = $par;
@@ -956,23 +956,13 @@ class UndeleteForm {
 
 		# Show relevant lines from the deletion log:
 		$wgOut->addHTML( Xml::element( 'h2', null, LogPage::logName( 'delete' ) ) . "\n" );
-		$logViewer = new LogViewer(
-			new LogReader(
-				new FauxRequest(
-					array( 
-						'page' => $this->mTargetObj->getPrefixedText(),
-						'type' => 'delete' 
-					)
-				)
-			), LogViewer::NO_ACTION_LINK
-	   	);
-		$logViewer->showList( $wgOut );
+		LogEventsList::showLogExtract( $wgOut, 'delete', $this->mTargetObj->getPrefixedText() );
 
 		if( $this->mAllowed && ( $haveRevisions || $haveFiles ) ) {
 			# Format the user-visible controls (comment field, submission button)
 			# in a nice little table
 			$align = $wgContLang->isRtl() ? 'left' : 'right';
-			if( $wgUser->isAllowed( 'oversight' ) ) {
+			if( $wgUser->isAllowed( 'suppress' ) ) {
 				$unsuppressBox = 
 					"<tr>
 						<td>&nbsp;</td>

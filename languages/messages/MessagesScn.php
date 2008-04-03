@@ -633,7 +633,7 @@ L'alencu dî relativi cancillaziuni veni riportatu ccà pi comodità:",
 # "Undo" feature
 'undo-success' => "Lu canciamentu hà statu annullatu cu successu. Virificati lu cumfruntu prisentatu ccà sutta pi accuràrivi vhi lu cuntinutu è chiddu addisiatu e doppu sarvati la pàggina pi cumplitari l'annullamentu.",
 'undo-failure' => "Lu canciamentu nun pò èssiri annullatu a càusa d'un cunflittu cu li canciamenti ntermedi.",
-'undo-summary' => 'Annullatu lu canciamentu $1 di [[Special:Cuntribbuti/$2|$2]] ([[User talk:$2|discussioni]])',
+'undo-summary' => 'Annullatu lu canciamentu $1 di [[Special:Contributions/$2|$2]] ([[User talk:$2|discussioni]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => "Mpussìbbili riggistrari n'utenti",
@@ -694,12 +694,8 @@ Lu motivu è ''$2''",
 'logdelete-logentry'          => "hà canciatu la visibbilitati de l'eventu [[$1]]",
 'revdelete-logaction'         => 'hà mpustatu la mudalitati $2 pi $1 rivisioni',
 'logdelete-logaction'         => "hà mpustatu la mudalitati $2 pi {{PLURAL:$1|n'eventu relativu|$1 eventi relativi}} a [[$3]]",
-'revdelete-success'           => 'Visibbilitati dâ rivisioni mpustata currittamenti.',
-'logdelete-success'           => "Visibbilitati de l'eventu mpustata currittamenti.",
-
-# Oversight log
-'oversightlog'    => 'Riggistru azzioni di oversight',
-'overlogpagetext' => "Ccà sutta veni prisentata na lista dê cancillazioni e dî blocchi ca riguardanu cuntinuti oscurati a l'amministratura. Conzurtari l'[[Special:Ipblocklist|alencu IP bluccati]] pi l'alencu dî blocchi e dî banni attuarmenti operativi.",
+'revdelete-success'           => "'''Visibbilitati dâ rivisioni mpustata currittamenti.'''",
+'logdelete-success'           => "'''Visibbilitati de l'eventu mpustata currittamenti.'''",
 
 # Diffs
 'history-title'           => 'Crunoluggìa dî canciamenti di "$1"',
@@ -799,7 +795,6 @@ Lu motivu è ''$2''",
 'saveusergroups'              => 'Sarva gruppi utenti',
 'userrights-groupsmember'     => 'Membru di:',
 'userrights-groupsavailable'  => 'Gruppi dispunìbbili:',
-'userrights-groupshelp'       => "Silizziona li gruppi ca voi rimòviri o agghiùnciri a l'utenti. Li gruppi nun silizziunati nun vèninu canciati. Poi disilizziunari un gruppu primennu CTRL + lu tastu a manu manca dû mouse.",
 'userrights-reason'           => 'Mutivu dû canciu:',
 'userrights-available-none'   => "Nun è cunzintitu canciari l'appartinenza a li gruppi.",
 'userrights-available-add'    => 'È pussibbili assuciari utenti ô gruppu $1.',
@@ -1397,7 +1392,7 @@ $1',
 'ipboptions'                  => '2 uri:2 hours,1 jornu:1 day,3 jorna:3 days,1 simana:1 week,2 simani:2 weeks,1 misi:1 month,3 misi:3 months,6 misi:6 months,1 annu:1 year,nfinitu:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'àutru',
 'ipbotherreason'              => 'Àutri mutivi/dittagghi:',
-'ipbhidename'                 => "Ammuccia lu nomu utenti o lu nnirizzu IP dô log dî blocchi, di l'alencu dî blocchi attivi e di l'alencu utenti.",
+'ipbhidename'                 => "Ammuccia lu nomu utenti dô log dî blocchi, di l'alencu dî blocchi attivi e di l'alencu utenti.",
 'badipaddress'                => 'Ndirizzu IP nun vàlidu.',
 'blockipsuccesssub'           => 'Bloccu esiquitu',
 'blockipsuccesstext'          => "[[{{ns:special}}:Contributions/$1|$1]] fu bluccatu.

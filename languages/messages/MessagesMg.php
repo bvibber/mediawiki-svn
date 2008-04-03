@@ -506,10 +506,6 @@ Fenoy araka ny datin'ny solosainan'ny mpitsidika",
 'saveusergroups'             => 'Tehirizo ny vondrom-pikambana',
 'userrights-groupsmember'    => "Mpikambana amin'ny vondrona:",
 'userrights-groupsavailable' => 'Vondrona misy:',
-'userrights-groupshelp'      => "
-Safidio ny vondrona tianao hanalana na hanatsofohana ny mpikambana.
-Ny vondrona tsy voasafidy dia tsy hiova. Raha tsy tianao hosafidiana indray ny 
-vondrona iray efa voasafidy dia tsindrio ny CTRL + bokotra havia amin'ny totozy",
 
 # User rights log
 'rightslogtext' => "Tantaran'asa momba ny fahazoan-dàlan'ny mpikambana.",
@@ -821,8 +817,6 @@ pejy vaovao io ny tantaran'ity pejy voafafa ity, fa tsy ho voafafa akory.",
 'contributions' => "Fandraisan'anjaran'ny mpikambana",
 'mycontris'     => 'Ny nosoratako',
 'nocontribs'    => "Tsy misy fanovana mifanaraka amin'ireo critères ireo.",
-'ucnote'        => "Inty ary ny lisitry ny <b>$1</b> farany novain'io mpikambana io tato anatin'ny <b>$2</b> andro.",
-'uclinks'       => 'Jereo ny fanovana $1 farany; jereo ny $2 andro farany.',
 'uctop'         => ' (loha)',
 
 # What links here

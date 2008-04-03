@@ -782,14 +782,10 @@ Atros almenistradors de {{SITENAME}} encara podrán azeder t'o contineiu amagato
 'logdelete-logentry'          => "S'ha cambiato a bisibilidat d'escaizimientos de [[$1]]",
 'revdelete-logaction'         => '$1 {{PLURAL:$1|bersión|bersions}} en modo $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|escaizimiento|escaizimientos}} en [[$3]] {{PLURAL:$1|cambiato|cambiatos}} ta o modo $2',
-'revdelete-success'           => "S'ha cambiato correutament a bisibilidat d'as bersions.",
-'logdelete-success'           => "S'ha cambiato correutament a bisibilidat d'os escaizimientos.",
+'revdelete-success'           => "'''S'ha cambiato correutament a bisibilidat d'as bersions.'''",
+'logdelete-success'           => "'''S'ha cambiato correutament a bisibilidat d'os escaizimientos.'''",
 'pagehist'                    => 'Istorial',
 'deletedhist'                 => 'Istorial de borrau',
-
-# Oversight log
-'oversightlog'    => "Rechistro d'escudios",
-'overlogpagetext' => "Contino s'amuestra una lista de borraus y bloqueyos más rezients relatibos á contenius amagatos d'os almenistradors d'o sistema. Consulte a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer una lista d'os bloqueyos autuals.",
 
 # History merging
 'mergehistory'                     => 'Aunir istorials',
@@ -931,8 +927,6 @@ Mirar $3 $9',
 'userrights-groupsmember'          => 'Miembro de:',
 'userrights-groupsremovable'       => 'Collas sacables:',
 'userrights-groupsavailable'       => 'Collas disponibles:',
-'userrights-groupshelp'            => "Selezione as collas d'as que quiere sacar u adibir bel usuario.
-As collas no trigatas no cambiarán. Puede sacar a selezión pretando de bez a tecla CTRL y o botón zurdo d'a rateta.",
 'userrights-reason'                => 'Razón ta o cambeo:',
 'userrights-available-none'        => "No puede cambiar a pertenenzia á las collas d'usuarios.",
 'userrights-available-add'         => 'Puede adibir usuarios ta {{PLURAL:$2|ista colla|istas collas}}: $1.',
@@ -1617,7 +1611,7 @@ as pachinas que s'han bandalizatas).",
 'ipboptions'                  => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'atro',
 'ipbotherreason'              => 'Razons diferens u adizionals',
-'ipbhidename'                 => "Amagar usuario/IP en o rechistro de bloqueyos, a lista de bloqueyos autibos y a lista d'usuarios",
+'ipbhidename'                 => "Amagar usuario en o rechistro de bloqueyos, a lista de bloqueyos autibos y a lista d'usuarios",
 'badipaddress'                => "L'adreza IP no ye conforme.",
 'blockipsuccesssub'           => "O bloqueyo s'ha feito correutament",
 'blockipsuccesstext'          => "L'adreza IP [[Special:Contributions/$1|$1]] ye bloqueyata. <br />Ir t'a [[Special:Ipblocklist|lista d'adrezas IP bloqueyatas]] ta beyer os bloqueyos.",

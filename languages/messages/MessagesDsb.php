@@ -371,7 +371,7 @@ $messages = array(
 'badaccess-groups' => 'Jano wužywarje kupkow(u) $1 maju pšawo toś tu akciju wuwjasć.',
 
 'versionrequired'     => 'Wersija $1 softwary MediaWiki trěbna',
-'versionrequiredtext' => 'Wersija $1 softwary MediaWiki jo trěbna, aby toś ten bok se mógał wužywaś. Glědaj [[{{ns:special}}:Version]]',
+'versionrequiredtext' => 'Wersija $1 softwary MediaWiki jo trěbna, aby toś ten bok se mógał wužywaś. Glědaj [[Special:Version]]',
 
 'ok'                      => 'Pytaś',
 'retrievedfrom'           => 'Z {{GRAMMAR:genitiw|$1}}',
@@ -742,7 +742,7 @@ Pśicyna, kótaruž $3 jo zapódał, jo ''$2''.",
 'revnotfoundtext'     => 'Njejo móžno było, wersiju togo boka namakaś, za kótaremž sy pytał. Pšosym kontrolěruj zapódanu URL.',
 'currentrev'          => 'Aktualna wersija',
 'revisionasof'        => 'Wersija wót $1',
-'revision-info'       => 'Wersija wót $1 do $2',
+'revision-info'       => 'Wersija z $1 wót wužywarja $2',
 'previousrevision'    => '← Zachadna rewizija',
 'nextrevision'        => 'Pśiduca wersija →',
 'currentrevisionlink' => 'Aktualna wersija',
@@ -785,7 +785,7 @@ Snaź jo se z wiki wulašował abo hynac pómjenił.
 'revdelete-text'              => 'Wulašowane wersije budu dalej se wujawjowaś w stawiznach boka, ale jich wopśimjeśe njebuźo za zjawnosć wěcej wiźobna.
 
 Dalšne administratory we {{GRAMMAR:lokatiw|{{SITENAME}}}} mógu ale pśecej hyšći schowane wopśimjeśe wiźeś a mógu jo wótnowiś tak dłujko ako njepłaśe restrikcije teke za administratory.',
-'revdelete-legend'            => 'wobgranicowanje póstajiś:',
+'revdelete-legend'            => 'wobgranicowanje póstajiś',
 'revdelete-hide-text'         => 'Tekst wersije schowaś',
 'revdelete-hide-name'         => 'Akciju log-lisćiny schowaś',
 'revdelete-hide-comment'      => 'Komentar wobźěłanja schowaś',
@@ -800,12 +800,8 @@ Dalšne administratory we {{GRAMMAR:lokatiw|{{SITENAME}}}} mógu ale pśecej hy�
 'logdelete-logentry'          => 'wiźobnosć za [[$1]] změnjona.',
 'revdelete-logaction'         => '$1 {{plural:$1|wersija sajźona|wersiji sajźonej|wersije sajźone}} na modus $2.',
 'logdelete-logaction'         => '$1 {{plural:$1|zapis|zapisa|zapise}} za [[$3]] na modus $2 {{plural:$1|sajźony|sajźonej|sajźone}}.',
-'revdelete-success'           => 'Wiźobnosć wersije jo se z wuspěchom změniła.',
-'logdelete-success'           => 'Wiźobnosć log-lisćiny z wuspěchom změnjona.',
-
-# Oversight log
-'oversightlog'    => 'Pśeglědowa log-lisćina',
-'overlogpagetext' => 'Dołojce jo wiźeś lisćina nejnowšych wulašowanjow a zakazow, kótarež su teke za administratory schowane. Glědaj na [[Special:Ipblocklist|zakazowu lisćinu]], aby wiźeł aktualne zakaze.',
+'revdelete-success'           => "'''Wiźobnosć wersije jo se z wuspěchom změniła.'''",
+'logdelete-success'           => "'''Wiźobnosć log-lisćiny z wuspěchom změnjona.'''",
 
 # History merging
 'mergehistory'                     => 'Zwězaś stawizny bokow',
@@ -938,7 +934,6 @@ Móžoš bok ale teke [[$1|sam załožyś]].",
 'userrights-groupsmember'          => 'Cłonk kupki:',
 'userrights-groupsremovable'       => 'Kupki, kótarež daju se wótwónoźeś:',
 'userrights-groupsavailable'       => 'Eksistěrujuce kupki:',
-'userrights-groupshelp'            => 'Wuzwól kupki, z kótarychž coš wužywarja wulašowaś abo kótarymž coš wužywarja pśidaś. Njewubrane kupki se njezměniju. Demarkěrowaś móžoš kupku z CTRL (= STRG) + lěwym kliknjenim.',
 'userrights-reason'                => 'Pśicyna změny:',
 'userrights-available-none'        => 'Njamaš pšawo cłonkojstwo wužywarskeje kupki změniś.',
 'userrights-available-add'         => 'Móžoš wužywarjow {{PLURAL:$2|slědujucej kupce|slědujucyma kupkoma|slědujucym kupkam}} pśidaś: $1.',

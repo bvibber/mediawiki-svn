@@ -661,7 +661,7 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'revdelete-nooldid-text'      => "No hai ippizzificaddu la o li versioni di la pàgina i' la quari eseguì chistha funzioni.",
 'revdelete-selected'          => "{{PLURAL:$2|Versioni sciubaradda|Versioni sciubaraddi}} di '''$1:'''",
 'logdelete-selected'          => "{{PLURAL:$2|Eventu di lu rigisthru sciubaraddu|Eventi di li rigisthri sciubaraddi}} pa '''$1:'''",
-'revdelete-legend'            => 'Impustha li sighenti limitazioni i li versioni canzilladdi:',
+'revdelete-legend'            => 'Impustha li sighenti limitazioni i li versioni canzilladdi',
 'revdelete-hide-text'         => 'Cua lu testhu di la versioni',
 'revdelete-hide-name'         => 'Cua azioni e oggettu di la matessi',
 'revdelete-hide-comment'      => "Cua l'oggettu di la mudìfigga",
@@ -676,12 +676,8 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'logdelete-logentry'          => "à mudìfiggaddu la visibiriddai di l'eventu [[$1]]",
 'revdelete-logaction'         => 'à impusthaddu la manera $2 pa {{PLURAL:$1|una ribisioni|$1 ribisioni}}',
 'logdelete-logaction'         => "à impusthaddu la manera $2 pa {{PLURAL:$1|un'eventu reratibu|$1 eventi reratibi}} a [[$3]]",
-'revdelete-success'           => 'Visibiriddai di la ribisioni impusthadda.',
-'logdelete-success'           => "Visibiriddai di l'eventu impusthadda.",
-
-# Oversight log
-'oversightlog'    => 'Rigisthru di li mudìfigghi traschuraddi',
-'overlogpagetext' => "Inogghi v'è una listha di li canzilladduri e di li brocchi reratibi a cuntinuddi cuaddi pa l'amministhradori. Cunsulthà la [[Special:Ipblocklist|listha di l'IP broccaddi]] pa l'erencu di brocchi e bandi chi so attibi abà.",
+'revdelete-success'           => "'''Visibiriddai di la ribisioni impusthadda.'''",
+'logdelete-success'           => "'''Visibiriddai di l'eventu impusthadda.'''",
 
 # History merging
 'mergehistory'                     => 'Unioni cronologi',
@@ -806,7 +802,6 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'userrights-groupsmember'     => 'Appartheni a li gruppi:',
 'userrights-groupsremovable'  => 'Gruppi supprimibiri:',
 'userrights-groupsavailable'  => 'Gruppi dipunìbiri:',
-'userrights-groupshelp'       => "Isciubarà i gruppi a li quari si vó lià o buggà l'utenti. L'apparthinènzia a li gruppi non sciubaraddi nò sarà mudìfiggadda. Pa libà un gruppu, incalchà Ctrl + lu buttoni mancu di lu mouse.",
 'userrights-reason'           => 'Mutibu di la mudìffiga:',
 'userrights-available-none'   => "Nò t'è cunsintiddu mudìffigà l'apparthinènzia a li gruppi.",
 'userrights-available-add'    => 'È pussìbiri assuzià utenti a {{PLURAL:$2|chisthu gruppu|chisthi gruppi}}: $1.',
@@ -1418,7 +1413,7 @@ $1",
 'ipboptions'                  => '2 ori:2 hours,1 dì:1 day,3 dì:3 days,1 chedda:1 week,2 cheddi:2 weeks,1 mesi:1 month,3 mesi:3 months,6 mesi:6 months,1 anni:1 year,infiniddu:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'althru',
 'ipbotherreason'              => 'Althri dettàgli/rasgioni aggiuntiba:',
-'ipbhidename'                 => "Cua l'innòmu utenti o l'indirizzu IP da lu rigisthru di li brocchi, da l'erencu di li brocci attibi e da l'erencu utenti.",
+'ipbhidename'                 => "Cua l'innòmu utenti da lu rigisthru di li brocchi, da l'erencu di li brocci attibi e da l'erencu utenti.",
 'badipaddress'                => 'Indirizzu IP invàriddu',
 'blockipsuccesssub'           => 'Broccu eseguiddu',
 'blockipsuccesstext'          => "[[Special:Contributions/$1|$1]] è isthaddu broccaddu.

@@ -303,7 +303,7 @@ $messages = array(
 'badaccess-groups' => 'Veiksmas, kurio prašėte, galimas tik naudotojams, esantiems vienoje iš šių grupių $1.',
 
 'versionrequired'     => 'Reikalinga $1 MediaWiki versija',
-'versionrequiredtext' => 'Reikalinga $1 MediaWiki versija, kad pamatytumėte šį puslapį. Žiūrėkite [[{{ns:special}}:Version|versijos puslapį]].',
+'versionrequiredtext' => 'Reikalinga $1 MediaWiki versija, kad pamatytumėte šį puslapį. Žiūrėkite [[Special:Version|versijos puslapį]].',
 
 'ok'                      => 'Gerai',
 'retrievedfrom'           => 'Gauta iš „$1“',
@@ -594,11 +594,12 @@ Jūsų blokavimo ID yra $5. Prašome nurodyti šį ID visuose prašymuose, kuriu
 'whitelistedittitle'        => 'Norint redaguoti reikia prisijungti',
 'whitelistedittext'         => 'Jūs turite $1, kad redaguotumėte puslapius.',
 'whitelistreadtitle'        => 'Norint skaityti reikia prisijungti',
-'whitelistreadtext'         => 'Jums reikia [[{{ns:special}}:Userlogin|prisijungti]], kad skaitytumėte puslapius.',
+'whitelistreadtext'         => 'Jums reikia [[Special:Userlogin|prisijungti]], kad skaitytumėte puslapius.',
 'whitelistacctitle'         => 'Jums neleidžiama kurti paskyros',
 'whitelistacctext'          => 'Norėdami leisti kurti paskyras {{SITENAME}}, jums reikia [[Special:Userlogin|prisijungti]] ir turėti atitinkamas teises.',
 'confirmedittitle'          => 'Reikalingas el. pašto patvirtinimas, kad redaguotumėte',
-'confirmedittext'           => 'Jums reikia patvirtinti el. pašto adresą, prieš redaguojant puslapius. Prašome nurodyti ir patvirtinti jūsų el. pašto adresą per jūsų [[{{ns:special}}:Preferences|naudotojo nustatymus]].',
+'confirmedittext'           => 'Jums reikia patvirtinti el. pašto adresą, prieš redaguojant puslapius.
+Prašome nurodyti ir patvirtinti jūsų el. pašto adresą per jūsų [[Special:Preferences|naudotojo nustatymus]].',
 'nosuchsectiontitle'        => 'Nėra tokio skyriaus',
 'nosuchsectiontext'         => 'Jūs mėginote redaguoti skyrių, kuris neegzistuoja. Kadangi nėra skyriaus „$1“, tai nėra kur įrašyti jūsų keitimo.',
 'loginreqtitle'             => 'Reikalingas prisijungimas',
@@ -687,7 +688,7 @@ Jūs turite nuspręsti, ar tinka toliau redaguoti šį puslapį.
 # "Undo" feature
 'undo-success' => 'Keitimas gali būti atšauktas. Prašome patikrinti palyginimą, esantį žemiau, kad patvirtintumėte, kad jūs tai ir norite padaryti, ir tada išsaugokite pakeitimus, esančius žemiau, kad užbaigtumėte keitimo atšaukimą.',
 'undo-failure' => 'Keitimas negali būti atšauktas dėl konfliktuojančių tarpinių keitimų.',
-'undo-summary' => 'Atšaukti [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Aptarimas]]) versiją $1',
+'undo-summary' => 'Atšaukti [[Special:Contributions/$2|$2]] ([[User_talk:$2|Aptarimas]]) versiją $1',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Paskyrų kūrimas negalimas',
@@ -767,10 +768,6 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'logdelete-success'           => 'Įvykio matomumas sėkmingai nustatytas.',
 'pagehist'                    => 'Puslapio istorija',
 'deletedhist'                 => 'Ištrinta istorija',
-
-# Oversight log
-'oversightlog'    => 'Priežiūros istorija',
-'overlogpagetext' => 'Žemiau yra paskutinių trynimų ir blokavimų, įskaitant turinio slėpimą nuo administratorių, sąrašas. [[{{ns:special}}:Ipblocklist|IP blokavimų istorijoje]] rasite šiuo metu veikiančių draudimų ir blokavimų sąrašą.',
 
 # History merging
 'mergehistory'                     => 'Sujungti puslapių istorijas',
@@ -914,8 +911,6 @@ teisės",
 'userrights-groupsmember'          => 'Narys:',
 'userrights-groupsremovable'       => 'Pašalinamos grupės:',
 'userrights-groupsavailable'       => 'Galimos grupės:',
-'userrights-groupshelp'            => 'Pasirinkite grupes, į kurias pridėti ar iš kurių pašalinti naudotoją.
-Nepasirinktos grupės nebus pakeistos. Galite atžymėti grupę laikydami Ctrl ir paspausdami kairiuoju pelės klavišu',
 'userrights-reason'                => 'Keitimo priežastis:',
 'userrights-available-none'        => 'Jūs negalite keisti grupės narystės.',
 'userrights-available-add'         => 'Jūs galite pridėti naudotojus į {{PLURAL:$2|šią grupę|šias grupes}}: $1.',
@@ -926,6 +921,8 @@ Nepasirinktos grupės nebus pakeistos. Galite atžymėti grupę laikydami Ctrl i
 'userrights-nodatabase'            => 'Duomenų bazė $1 neegzistuoja arba yra ne vietinė.',
 'userrights-nologin'               => 'Jūs privalote [[Special:Userlogin|prisijungti]] kaip administratorius, kad galėtumėte priskirti naudotojų teises.',
 'userrights-notallowed'            => 'Jūsų paskyra neturi teisių priskirti naudotojų teises.',
+'userrights-changeable-col'        => 'Grupės, kurias galite keisti',
+'userrights-unchangeable-col'      => 'Grupės, kurių negalite keisti',
 
 # Groups
 'group'               => 'Grupė:',
@@ -990,7 +987,7 @@ Nepasirinktos grupės nebus pakeistos. Galite atžymėti grupę laikydami Ctrl i
 'reupload'                    => 'Pakartoti įkėlimą',
 'reuploaddesc'                => 'Grįžti į įkėlimo formą.',
 'uploadnologin'               => 'Neprisijungęs',
-'uploadnologintext'           => 'Norėdami įkelti failą, turite būti [[{{ns:special}}:Userlogin|prisijungęs]].',
+'uploadnologintext'           => 'Norėdami įkelti failą, turite būti [[Special:Userlogin|prisijungęs]].',
 'upload_directory_read_only'  => 'Tinklapio serveris negali rašyti į įkėlimo aplanką ($1).',
 'uploaderror'                 => 'Įkėlimo klaida',
 'uploadtext'                  => "Naudokitės žemiau pateikta forma failų įkėlimui, norėdami peržiūrėti ar ieškoti anksčiau įkeltų paveikslėlių,

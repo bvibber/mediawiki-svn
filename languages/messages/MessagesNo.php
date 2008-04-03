@@ -391,7 +391,7 @@ $messages = array(
 'badaccess-groups' => 'Handlingen du prøvde å utføre kan kun utføres av $1.',
 
 'versionrequired'     => 'Versjon $1 av MediaWiki påtrengt',
-'versionrequiredtext' => 'Versjon $1 av MediaWiki er nødvendig for å bruke denne siden. Se [[Special:Version]]',
+'versionrequiredtext' => 'Versjon $1 av MediaWiki er nødvendig for å bruke denne siden. Se [[Special:Version|versjonsiden]]',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Hentet fra «$1»',
@@ -791,7 +791,7 @@ Denne revisjonen har blitt fjernet fra det offentlige arkivet. Som administrator
 'revdelete-text'              => 'Slettede revisjoner vil fortsatt vises i sidehistorikken, men innholdet vil ikke være tilgjengelig for offentligheten.
 
 Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innholdet, og kan gjenopprette det, med mindre videre begrensninger blir gitt av sideoperatørene.',
-'revdelete-legend'            => 'Angi revisjonsbegrensninger:',
+'revdelete-legend'            => 'Angi revisjonsbegrensninger',
 'revdelete-hide-text'         => 'Skjul revisjonstekst',
 'revdelete-hide-name'         => 'Skjul handling og mål',
 'revdelete-hide-comment'      => 'Skjul redigeringsforklaring',
@@ -806,14 +806,10 @@ Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innhold
 'logdelete-logentry'          => 'endre hendelsessynlighet for [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revisjon|revisjoner}} satt til modus $2',
 'logdelete-logaction'         => '$1 {{plural:$1|hendelse|hendelser}} angående [[$3]] satt til modus $2',
-'revdelete-success'           => 'Revisjonssynlighet satt.',
-'logdelete-success'           => 'Hendelsessynlighet satt.',
+'revdelete-success'           => "'''Revisjonssynlighet satt.'''",
+'logdelete-success'           => "'''Hendelsessynlighet satt.'''",
 'pagehist'                    => 'Sidehistorikk',
 'deletedhist'                 => 'Slettet historikk',
-
-# Oversight log
-'oversightlog'    => 'Overoppsynslogg',
-'overlogpagetext' => 'Under er en liste over de siste slettinger og blokkeringer som involverer innhold skjult for administratorer. Se [[Special:Ipblocklist|IP-blokkeringslisten]] for aktive utestengelser.',
 
 # History merging
 'mergehistory'                     => 'Flett sidehistorikker',
@@ -952,7 +948,8 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'userrights-groupsmember'          => 'Medlem av:',
 'userrights-groupsremovable'       => 'Fjernbare grupper:',
 'userrights-groupsavailable'       => 'Tilgjengelige grupper:',
-'userrights-groupshelp'            => 'Velg grupper du vil at brukeren skal fjernes fra eller lagt til. Ikke valgte grupper forandres ikke. Du kan fjerne merkingen av en gruppe med Ctrl&nbsp;+ Venstreklikk.',
+'userrights-groups-help'           => 'Du kan endre hvilke grupper denne brukeren er medlem av.
+Når en boks er merket betyr det at brukeren er medlem av den gruppen.',
 'userrights-reason'                => 'Endringsgrunn:',
 'userrights-available-none'        => 'Du kan ikke endre gruppemedlemsskaper.',
 'userrights-available-add'         => 'Du kan legge til brukere i {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
@@ -963,6 +960,8 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'userrights-nodatabase'            => 'Databasen $1 finnes ikke, eller er ikke lokal.',
 'userrights-nologin'               => 'Du må [[Special:Userlogin|logge inn]] med en administratorkonto for å endre brukerrettigheter.',
 'userrights-notallowed'            => 'Kontoen din har ikke tillatelse til å endre brukerrettigheter.',
+'userrights-changeable-col'        => 'Grupper du kan endre',
+'userrights-unchangeable-col'      => 'Grupper du ikke kan endre',
 
 # Groups
 'group'               => 'Gruppe:',
@@ -1612,7 +1611,7 @@ $1',
 'ipboptions'                  => '2 timer:2 hours,1 dag:1 day,3 dager:3 days,1 uke:1 week,2 uker:2 weeks,1 måned:1 month,3 måneder:3 months,6 måneder:6 months,1 år:1 year,uendelig:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'annet',
 'ipbotherreason'              => 'Annen/utdypende grunn:',
-'ipbhidename'                 => 'Skjul brukernavn/IP i blokkeringsloggen, blokkeringslisten og brukerlisten',
+'ipbhidename'                 => 'Skjul brukernavn i blokkeringsloggen, blokkeringslisten og brukerlisten',
 'badipaddress'                => 'Ugyldig IP-adresse.',
 'blockipsuccesssub'           => 'Blokkering utført',
 'blockipsuccesstext'          => 'IP-adressen «$1» er blokkert. Se [[Special:Ipblocklist|blokkeringslisten]] for alle blokkeringer.',

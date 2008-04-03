@@ -723,10 +723,6 @@ Otros administradores de este wiki aún podrán acceder al contenido oculto y po
 'revdelete-success'           => 'Visibilidad de revisiones cambiada correctamente.',
 'logdelete-success'           => 'Visibilidad de eventos cambiada correctamente.',
 
-# Oversight log
-'oversightlog'    => 'Registro de descuidos',
-'overlogpagetext' => 'A continuación se muestra una lista de los borrados y bloqueos más recientes relacionados con contenidos ocultos de los operadores del sistema. Consulte la [[Special:Ipblocklist|lista de IPs bloqueadas]] para ver una lista de los bloqueos actuales.',
-
 # Diffs
 'history-title'           => 'Historial de revisiones para "$1"',
 'difference'              => '(Diferencias entre revisiones)',
@@ -833,8 +829,6 @@ $2 Listar redirecciones   Buscar $3 $9',
 'userrights-groupsmember'    => 'Miembro de:',
 'userrights-groupsremovable' => 'Grupos removibles:',
 'userrights-groupsavailable' => 'Grupos disponibles:',
-'userrights-groupshelp'      => 'Seleccione los grupos a los que quiere añadir al usuario (o de los que le quiere dar de baja).
-Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla CTRL',
 'userrights-reason'          => 'Motivo para el cambio:',
 
 # Groups
@@ -1593,7 +1587,7 @@ En el último caso también puedes usar un enlace, por ejemplo [[Special:Export/
 'allmessagesdefault'        => 'Texto predeterminado',
 'allmessagescurrent'        => 'Texto actual',
 'allmessagestext'           => 'Esta es una lista de mensajes del sistema disponibles en el espacio de nombres MediaWiki:',
-'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages no está disponible porque wgUseDatabaseMessages está deshabilitado.',
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' no está disponible porque '''\$wgUseDatabaseMessages''' está deshabilitado.",
 'allmessagesfilter'         => 'Filtrar por nombre del mensaje:',
 'allmessagesmodified'       => 'Mostrar sólo los modificados',
 

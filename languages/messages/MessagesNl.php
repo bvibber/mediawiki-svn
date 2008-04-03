@@ -953,18 +953,18 @@ er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{PAGE
 'rev-delundel'                => 'weergeven/verbergen',
 'revisiondelete'              => 'Versies verwijderen/terugplaatsen',
 'revdelete-nooldid-title'     => 'Geen doelversie',
-'revdelete-nooldid-text'      => 'U hebt geen doelversie(s) voor deze handeling opgegeven.',
-'revdelete-selected'          => "Geselecteerde {{PLURAL:$2|bewerking|bewerkingen}} van '''[[:$1]]''':",
-'logdelete-selected'          => "{{PLURAL:$2|Geselecteerde logboekactie|Geselecteerde logboekacties}} voor '''$1:'''",
+'revdelete-nooldid-text'      => 'U hebt geen doelversie(s) voor deze handeling opgegeven, de aangegeven versie bestaat niet, of u probeert de laatste versie te verbergen.',
+'revdelete-selected'          => 'Geselecteerde {{PLURAL:$2|bewerking|bewerkingen}} van [[:$1]]:',
+'logdelete-selected'          => '{{PLURAL:$1|Geselecteerde logboekactie|Geselecteerde logboekacties}}:',
 'revdelete-text'              => 'Verwijderde bewerkingen zijn zichtbaar in de geschiedenis, maar de inhoud is niet langer publiek toegankelijk.
 
 Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit scherm, tenzij er aanvullende beperkingen gelden die zijn ingesteld door de systeembeheerder.',
-'revdelete-legend'            => 'Versiebeperkingen instellen:',
+'revdelete-legend'            => 'Versiebeperkingen instellen',
 'revdelete-hide-text'         => 'De bewerkte tekst verbergen',
 'revdelete-hide-name'         => 'Actie en doel verbergen',
 'revdelete-hide-comment'      => 'De bewerkingssamenvatting verbergen',
 'revdelete-hide-user'         => 'Gebruikersnaam/IP van de gebruiker verbergen',
-'revdelete-hide-restricted'   => 'Deze beperkingen toepassen op zowel beheerders als anderen',
+'revdelete-hide-restricted'   => 'Deze beperkingen toepassen op beheerders en deze interface afsluiten',
 'revdelete-suppress'          => 'Gegevens voor zowel beheerders als anderen onderdrukken',
 'revdelete-hide-image'        => 'Bestandsinhoud verbergen',
 'revdelete-unsuppress'        => 'Beperkingen op teruggezette wijzigingen verwijderen',
@@ -973,15 +973,16 @@ Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de ve
 'revdelete-logentry'          => 'zichtbaarheid van bewerkingen is gewijzigd voor [[$1]]',
 'logdelete-logentry'          => 'wijzigde zichtbaarheid van gebeurtenis [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|wijziging|wijzigingen}} ingesteld naar modus $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|actie|acties}} om [[$3]] naar modus $2 in te stellen',
-'revdelete-success'           => 'Zichtbaarheid van de wijziging succesvol ingesteld.',
-'logdelete-success'           => 'Zichtbaarheid van de gebeurtenis succesvol ingesteld.',
+'logdelete-logaction'         => '$1 {{PLURAL:$1|actie|acties}} omgezet naar modus $2',
+'revdelete-success'           => "'''Zichtbaarheid van de wijziging succesvol ingesteld.'''",
+'logdelete-success'           => "'''Zichtbaarheid van de gebeurtenis succesvol ingesteld.'''",
+'revdel-restore'              => 'Zichtbaarheid wijzigen',
 'pagehist'                    => 'Paginageschiedenis',
 'deletedhist'                 => 'Verwijderde geschiedenis',
 
-# Oversight log
-'oversightlog'    => 'Oversightlogboek',
-'overlogpagetext' => 'Hier onder is een lijst met de meest recente verwijderingen en blokkeringen met betrekking tot informatie die niet zichtbaar is voor admins. Zie de [[Special:Ipblocklist|Lijst van geblokkeerde gebruikers en IP-adressen]] voor een lijst van de blokkades en verbanningen die nu gelden.',
+# Suppression log
+'suppressionlog'     => 'Verbergingslogboek',
+'suppressionlogtext' => 'De onderstaande lijst bevat de meeste recente verwijderingen en blokkades die voor beheerders verborgen zijn. In de [[Special:Ipblocklist|IP-blokkeerlijst]] zijn de huidige blokkades te bekijken.',
 
 # History merging
 'mergehistory'                     => "Geschiedenis van pagina's samenvoegen",
@@ -1122,18 +1123,21 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'userrights-groupsmember'          => 'Lid van:',
 'userrights-groupsremovable'       => 'Verwijderbare groepen:',
 'userrights-groupsavailable'       => 'Beschikbare groepen:',
-'userrights-groupshelp'            => 'Selecteer de groepen waaruit u de gebruiker wilt verwijderen of aan toe wilt voegen.
-Niet geselecteerde groepen worden niet gewijzigd. Deselecteer een groep met "Ctrl + linkermuisknop".',
+'userrights-groups-help'           => 'U kunt de groepen wijzigen waar deze gebruiker lid van is.
+Een aangekruisd vinkvakje betekent dat de gebruiker lid is van de groep.
+Een niet aangekruisd vinkvakje betekent dat de gebruiker geen lid is van de groep.',
 'userrights-reason'                => 'Reden voor het veranderen:',
 'userrights-available-none'        => 'U mag geen gebruikersrechten veranderen.',
 'userrights-available-add'         => 'U kunt gebruikers toevoegen aan deze {{PLURAL:$2|groep|groepen}}: $1.',
-'userrights-available-remove'      => 'U kunt gebruikers verwijderen van deze {{PLURAL:$2|groep|groepen}}: $1.',
+'userrights-available-remove'      => 'U kunt gebruikers verwijderen uit deze {{PLURAL:$2|groep|groepen}}: $1.',
 'userrights-available-add-self'    => 'U kunt uzelf toevoegen aan deze {{PLURAL:$2|groep|groepen}}: $1.',
 'userrights-available-remove-self' => 'U kunt uzelf verwijderen uit deze {{PLURAL:$2|groep|groepen}}: $1.',
 'userrights-no-interwiki'          => "U hebt geen rechten om gebruikersrechten op andere wiki's te wijzigen.",
 'userrights-nodatabase'            => 'Database $1 bestaat niet of is geen plaatselijke database.',
 'userrights-nologin'               => 'U moet zich [[Special:Userlogin|aanmelden]] met een gebruiker met de juiste rechten om gebruikersrechten toe te wijzen.',
 'userrights-notallowed'            => 'U hebt geen rechten om gebruikersrechten toe te wijzen.',
+'userrights-changeable-col'        => 'Groepen die u kunt beheren',
+'userrights-unchangeable-col'      => 'Groepen die u niet kunt beheren',
 
 # Groups
 'group'               => 'Groep:',
@@ -1141,17 +1145,20 @@ Niet geselecteerde groepen worden niet gewijzigd. Deselecteer een groep met "Ctr
 'group-bot'           => 'Bots',
 'group-sysop'         => 'Beheerders',
 'group-bureaucrat'    => 'Bureaucraten',
+'group-suppress'      => 'Toezichthouders',
 'group-all'           => '(alles)',
 
 'group-autoconfirmed-member' => 'Geregistreerde gebruiker',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Beheerder',
 'group-bureaucrat-member'    => 'Bureaucraat',
+'group-suppress-member'      => 'Toezichthouder',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Geregistreerde gebruikers',
 'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Beheerders',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bureaucraten',
+'grouppage-suppress'      => '{{ns:project}}:Toezicht',
 
 # User rights log
 'rightslog'      => 'Gebruikersrechtenlogboek',
@@ -1494,6 +1501,7 @@ De lengte van de [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] is ''
 'notargettext'            => 'U hebt niet opgegeven voor welke pagina of gebruiker u deze handeling wilt uitvoeren.',
 'pager-newer-n'           => '{{PLURAL:$1|1 nieuwere|$1 nieuwere}}',
 'pager-older-n'           => '{{PLURAL:$1|1 oudere|$1 oudere}}',
+'suppress'                => 'Toezicht',
 
 # Book sources
 'booksources'               => 'Boekinformatie',
@@ -1643,6 +1651,7 @@ Feedback en andere assistentie:
 'actioncomplete'              => 'Handeling voltooid',
 'deletedtext'                 => '"<nowiki>$1</nowiki>" is verwijderd. Zie het $2 voor een overzicht van recente verwijderingen.',
 'deletedarticle'              => 'verwijderde "[[$1]]"',
+'suppressedarticle'           => 'heeft "[[$1]]" verborgen',
 'dellogpage'                  => 'Verwijderingslogboek',
 'dellogpagetext'              => "Hieronder is een lijst van recent verwijderde pagina's en bestanden weergegeven.",
 'deletionlog'                 => 'Verwijderingslogboek',
@@ -1818,7 +1827,7 @@ Geef hieronder een reden op (bijvoorbeeld welke pagina's gevandaliseerd zijn).",
 'ipboptions'                  => '15 minuten:15 min,1 uur:1 hour,2 uur:2 hours,6 uur:6 hours,12 uur:12 hours,1 dag:1 day,3 dagen:3 days,1 week:1 week,2 weken:2 weeks,1 maand:1 month,3 maanden:3 months,6 maanden:6 months,1 jaar:1 year,onbeperkt:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'ander verloop',
 'ipbotherreason'              => 'Andere/eventuele reden:',
-'ipbhidename'                 => 'Gebruikersnaam/IP van het blokkeerlogboek, de actieve blokkeerlijst en de gebruikerslijst verbergen',
+'ipbhidename'                 => 'Gebruiker in het blokkeerlogboek, de actieve blokkeerlijst en de gebruikerslijst verbergen',
 'badipaddress'                => 'Geen geldig IP-adres',
 'blockipsuccesssub'           => 'Blokkering geslaagd',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] is geblokkeerd.<br />
@@ -1972,7 +1981,7 @@ In het laatste geval kunt u ook een link gebruiken, bijvoorbeeld [[Special:Expor
 'allmessagesdefault'        => 'Standaardinhoud',
 'allmessagescurrent'        => 'Huidige inhoud',
 'allmessagestext'           => 'Hieronder staan de systeemberichten uit de MediaWiki-naamruimte:',
-'allmessagesnotsupportedDB' => "Er is geen ondersteuning voor '''{{ns:special}}:AllMessages''' omdat '''\$wgUseDatabaseMessages''' is uitgeschakeld.",
+'allmessagesnotsupportedDB' => "Deze pagina kan niet gebruikt worden omdat '''\$wgUseDatabaseMessages''' is uitgeschakeld.",
 'allmessagesfilter'         => 'Bericht naamfilter:',
 'allmessagesmodified'       => 'Alleen gewijzigde systeemteksten bekijken',
 
@@ -2093,7 +2102,7 @@ U kunt wel de broncode bekijken.',
 
 # Scripts
 'common.js'   => '/* JavaScript hier zal invloed hebben op elke pagina voor elke gebruiker. */',
-'monobook.js' => '/* Het wordt aangeraden om [[MediaWiki:common.js]] te gebruiken */',
+'monobook.js' => '/* Het wordt aangeraden om [[MediaWiki:Common.js]] te gebruiken */',
 
 # Metadata
 'nodublincore'      => 'Dublin Core RDF metadata is uitgeschakeld op deze server.',

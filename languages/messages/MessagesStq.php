@@ -256,7 +256,7 @@ $messages = array(
 'badaccess-groups' => 'Disse Aktion is bloot muugelk foar Benutsere, do der een fon do Gruppen „$1“ anheere.',
 
 'versionrequired'     => 'Version $1 fon MediaWiki is nöödich',
-'versionrequiredtext' => 'Version $1 fon MediaWiki is nöödich uum disse Siede tou nutsjen. Sjuch ju [[{{ns:special}}:Version|Versionssiede]]',
+'versionrequiredtext' => 'Version $1 fon MediaWiki is nöödich uum disse Siede tou nutsjen. Sjuch ju [[Special:Version|Versionssiede]]',
 
 'ok'                      => 'Säike',
 'retrievedfrom'           => 'Fon "$1"',
@@ -626,7 +626,7 @@ Tou Dien Information foulget dät Läsk-Logbouk mäd ju Begründenge foar ju fr�
 # "Undo" feature
 'undo-success' => 'Ju Annerenge kuud mäd Ärfoulch tourääch annerd wäide. Jädden ju Beoarbaidenge in ju Ferglieksansicht kontrollierje un dan ap „Siede spiekerje“ klikke, uum ju tou spiekerjen.',
 'undo-failure' => '<span class="error">Ju Annerenge kuud nit tourääch annerd wäide, deer ju betroffene Oudeelenge intwisken ferannerd wuude.</span>',
-'undo-summary' => 'Annerenge $1 fon [[{{ns:special}}:Contributions/$2|$2]] ([[User_talk:$2|Diskussion]]) wuude tourääch annerd.',
+'undo-summary' => 'Annerenge $1 fon [[Special:Contributions/$2|$2]] ([[User_talk:$2|Diskussion]]) wuude tourääch annerd.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benutserkonto kon nit moaked wäide',
@@ -683,7 +683,7 @@ Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{f
 'revdelete-text'              => 'Die Inhoold of uur Bestanddeele fon läskede Versione sunt nit moor eepentelk ientousjoon, man ärschiene wieders as Iendraage in ju Versionsgeschichte.
 
 Uur Administratore ap {{SITENAME}} konnen dän wächhoalde Inhoold of uur wächhoalde Bestanddeele wieders ienkiekje un wier häärstaale, of dät moaste weese, dät fäästlaid wuude, dät do Tougongsbeschränkengen uk foar Administratore jäilde.',
-'revdelete-legend'            => 'Ienschränkengen foar do Versione fäästlääse:',
+'revdelete-legend'            => 'Ienschränkengen foar do Versione fäästlääse',
 'revdelete-hide-text'         => 'Text fon ju Version ferstopje',
 'revdelete-hide-name'         => 'Logbouk-Aktion ferstopje',
 'revdelete-hide-comment'      => 'Beoarbaidengskommentoar ferstopje',
@@ -698,12 +698,8 @@ Uur Administratore ap {{SITENAME}} konnen dän wächhoalde Inhoold of uur wächh
 'logdelete-logentry'          => 'annerde ju Sichtboarkaid foar [[$1]]',
 'revdelete-logaction'         => '$1 {{plural:$1|Version|Versione}} ap Modus $2 sät',
 'logdelete-logaction'         => '$1 {{plural:$1|Iendraach|Iendraage}} foar [[$3]] ap Modus $2 sät',
-'revdelete-success'           => 'Versionsansicht mäd Ärfoulch annerd.',
-'logdelete-success'           => 'Logbouk-Aktion mäd Ärfoulch sät.',
-
-# Oversight log
-'oversightlog'    => 'Oversight-Logbouk',
-'overlogpagetext' => 'Dät is dät Logbouk fon do Läskengen un Speeren, do der foar Administratore ferstopped sunt.',
+'revdelete-success'           => "'''Versionsansicht mäd Ärfoulch annerd.'''",
+'logdelete-success'           => "'''Logbouk-Aktion mäd Ärfoulch sät.'''",
 
 # History merging
 'mergehistory'                     => 'Versionsgeschichten fereenigje',
@@ -838,7 +834,6 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju Siede „[[$1]]“ fer
 'userrights-groupsmember'          => 'Meeglid fon:',
 'userrights-groupsremovable'       => 'Gruppen, do der wächhoald wäide konnen:',
 'userrights-groupsavailable'       => 'Ferföigboare Gruppen:',
-'userrights-groupshelp'            => "Wääl do Gruppen, uut do die Benutser wächhoald of tou do hie touföiged wäide schäl. Nit selektierde Gruppen wäide nit annerd. Ne Uutwoal kon mäd '''Strg + Linksklick''' wier wächhoald wäide.",
 'userrights-reason'                => 'Gruund:',
 'userrights-available-none'        => 'Du duurst neen Benutsergjuchte ferannerje.',
 'userrights-available-add'         => 'Du duurst Benutsere an {{PLURAL:$2|ju foulgjende Gruppe|do foulgjende $2 Grupppen}} touföigje: $1.',
@@ -1515,7 +1510,7 @@ Reek dän Gruund foar ju Speere oun.',
 'ipboptions'                  => '1 Uure:1 hour,2 Uuren:2 hours,6 Uuren:6 hours,1 Dai:1 day,3 Deege:3 days,1 Wiek:1 week,2 Wieke:2 weeks,1 Mound:1 month,3 Mounde:3 months,1 Jier:1 year,Uunbestimd:indefinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'Uur Duur',
 'ipbotherreason'              => 'Uur/additionelle Begründenge:',
-'ipbhidename'                 => 'Benutsernoome/IP-Adresse in dät Speer-Logbouk, in ju Lieste fon aktive Speeren un in dät Benutserferteeknis ferstopje.',
+'ipbhidename'                 => 'Benutsernoome in dät Speer-Logbouk, in ju Lieste fon aktive Speeren un in dät Benutserferteeknis ferstopje.',
 'badipaddress'                => 'Dissen Benutser bestoant nit, d.h. die Noome is falsk',
 'blockipsuccesssub'           => 'Blokkoade geloangen',
 'blockipsuccesstext'          => 'Ju IP-Adrässe [[Special:Contributions/$1|$1]] wuude blokkierd.

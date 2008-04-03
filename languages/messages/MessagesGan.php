@@ -625,7 +625,7 @@ $2',
 'revdelete-text'              => '刪吥嗰改動還會到頁面歷史裡度顯示, 但公眾瀏覽伓正佢嗰內容。 
 
 箇站別嗰管理員還係能眵吖弆到嗰內容，同到通過同佢一樣嗰界面恢復刪除，除非設正嘞附加嗰限制。',
-'revdelete-legend'            => '設置修改限制:',
+'revdelete-legend'            => '設置修改限制',
 'revdelete-hide-text'         => '弆到修改內容',
 'revdelete-hide-name'         => '弆到動作同目標',
 'revdelete-hide-comment'      => '弆到編輯說明',
@@ -640,12 +640,8 @@ $2',
 'logdelete-logentry'          => '已更改[[$1]]嗰事件可見性',
 'revdelete-logaction'         => '$1嗰改動設置到嘞模式$2',
 'logdelete-logaction'         => '對[[$3]]嗰$1場事設置到嘞模式$2',
-'revdelete-success'           => '修訂嗰可見性設置正嘍。',
-'logdelete-success'           => '事件嗰可見性設置正嘍。',
-
-# Oversight log
-'oversightlog'    => '監督記錄',
-'overlogpagetext' => '下底係隻最近刪除同到由操作員封鎖牽涉到嗰內容列表。眵吖底下嗰[[Special:Ipblocklist|IP封鎖列表]]去查看眼下嗰封鎖。',
+'revdelete-success'           => "'''修訂嗰可見性設置正嘍。'''",
+'logdelete-success'           => "'''事件嗰可見性設置正嘍。'''",
 
 # History merging
 'mergehistory'                     => '合并頁面歷史',
@@ -767,7 +763,6 @@ $2',
 'userrights-groupsmember'       => '歸到:',
 'userrights-groupsremovable'    => '移得動箇組：',
 'userrights-groupsavailable'    => '可加入群:',
-'userrights-groupshelp'         => '選擇倷想讓箇隻用戶退出或加入嗰組群，反選時群伓會變。倷可以按到 CTRL + 單擊鼠標左鍵來反選',
 'userrights-reason'             => '改嗰原因:',
 'userrights-available-none'     => '倷改組伓正別嗰成員。',
 'userrights-available-add'      => '倷可以把用戶加到{{PLURAL:$2|這隻組|這集組}}：$1。',
@@ -1388,7 +1383,7 @@ $NEWPAGE
 'ipboptions'                  => '兩個鍾頭:2 hours,一日:1 day,三日:3 days,一個禮拜:1 week,兩個禮拜:2 weeks,一個月:1 month,三個月:3 months,六個月:6 months,一年:1 year,一世:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => '別嗰',
 'ipbotherreason'              => '別嗰／附加原因:',
-'ipbhidename'                 => '封鎖日誌、活躍封鎖列表同用戶列表裡頭弆到用戶名／IP',
+'ipbhidename'                 => '封鎖日誌、活躍封鎖列表同用戶列表裡頭弆到用戶名',
 'badipaddress'                => 'IP位置伓對。',
 'blockipsuccesssub'           => '封鎖正嘞',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]]封卟嘞。 <br />望吖[[Special:Ipblocklist|拕封IP列表]]來審過封鎖。',

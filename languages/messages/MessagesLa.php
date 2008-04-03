@@ -400,7 +400,7 @@ $1',
 'viewsourcetext'      => 'Fontem videas et exscribeas:',
 'protectedinterface'  => 'Haec pagina dat textum interfaciei pro logiciali, et est protecta ad vandalismum vetandum.',
 'editinginterface'    => "'''Caveat censor:''' Emendas iam paginam quae textum interfaciei logicialem dat. Mutationes vultum {{grammar:genitive|{{SITENAME}}}} omnibus usoribus afficient. In nuntia MediaWiki vertendo, quaesumus te uti [http://translatewiki.net/wiki/Main_Page?setlang=la Betawiki].",
-'ns-specialprotected' => 'Paginae in spatio nominali "{{ns:special}}" recenseri non possunt.',
+'ns-specialprotected' => 'Paginae speciales recenseri non possunt.',
 'titleprotected'      => "Hic titulus protectus est ab usore [[User:$1|$1]] ne creetur.
 Ratio data est ''$2''.",
 
@@ -727,8 +727,8 @@ Titulus: (nov) = dissimilis ab forma novissima, (prox) = dissimilis ab forma pro
 'userrights'                       => 'Usorum potestas', # Not used as normal message but as header for the special page itself
 'editusergroup'                    => 'Greges usorum recensere',
 'editinguser'                      => "Modificare iura usoris '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-available-add'         => 'Potes usores addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
-'userrights-available-remove'      => 'Potes usores removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
+'userrights-available-add'         => 'Potes usorem aliquem addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
+'userrights-available-remove'      => 'Potes usorem aliquem removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
 'userrights-available-add-self'    => 'Potes te addere ad {{PLURAL:$2|hanc gregem|has greges}}: $1.',
 'userrights-available-remove-self' => 'Potes te removere ex {{PLURAL:$2|hac grege|his gregibus}}: $1.',
 
@@ -1289,7 +1289,7 @@ Quaesitum "[[$1]]" etiam existit. Vin tu eam delere ut moveas?',
 'allmessagesdefault'        => 'Textus originalis',
 'allmessagescurrent'        => 'Textus recens',
 'allmessagestext'           => 'Hic est index omnium nuntiorum in MediaWiki.',
-'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' non adhibier potest, quia '''\$wgUseDatabaseMessages''' non iam agitur.",
+'allmessagesnotsupportedDB' => "Haec pagina non adhibier potest, quia '''\$wgUseDatabaseMessages''' non iam agitur.",
 'allmessagesfilter'         => 'Colum nominibus nuntiorum:',
 'allmessagesmodified'       => 'Ea modificata sola monstrare',
 

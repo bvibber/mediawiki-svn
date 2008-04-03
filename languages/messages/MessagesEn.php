@@ -584,7 +584,7 @@ XHTML id names.
 'category-file-count-limited'    => 'The following {{PLURAL:$1|file is|$1 files are}} in the current category.',
 'listingcontinuesabbrev'         => 'cont.',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD', # only translate this message to other languages if you have to change it
+'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
 'mainpagedocfooter' => "Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
 
@@ -829,7 +829,7 @@ For translations, please consider using [http://translatewiki.net/wiki/Main_Page
 $2',
 'namespaceprotected'   => "You do not have permission to edit pages in the '''$1''' namespace.",
 'customcssjsprotected' => "You do not have permission to edit this page, because it contains another user's personal settings.",
-'ns-specialprotected'  => 'Pages in the {{ns:special}} namespace cannot be edited.',
+'ns-specialprotected'  => 'Special pages cannot be edited.',
 'titleprotected'       => "This title has been protected from creation by [[User:$1|$1]].
 The reason given is ''$2''.",
 
@@ -1189,20 +1189,21 @@ As an administrator on {{SITENAME}} you can view it;
 there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].</div>',
 'rev-delundel'                => 'show/hide',
 'revisiondelete'              => 'Delete/undelete revisions',
-'revdelete-nooldid-title'     => 'No target revision',
-'revdelete-nooldid-text'      => 'You have not specified target revision or revisions to perform this function on.',
-'revdelete-selected'          => "{{PLURAL:$2|Selected revision|Selected revisions}} of '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Selected log event|Selected log events}} for '''$1:'''",
+'revdelete-nooldid-title'     => 'Invalid target revision',
+'revdelete-nooldid-text'      => 'You have either not specified a target revision(s) to perform this 
+function, the specified revision does not exist, or you are attempting to hide the current revision.',
+'revdelete-selected'          => '{{PLURAL:$2|Selected revision|Selected revisions}} of [[:$1]]:',
+'logdelete-selected'          => '{{PLURAL:$1|Selected log event|Selected log events}}:',
 'revdelete-text'              => 'Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.
 
 Other admins on {{SITENAME}} will still be able to access the hidden content and can undelete it again through this same interface, unless additional restrictions are set.',
-'revdelete-legend'            => 'Set restrictions:',
+'revdelete-legend'            => 'Set restrictions',
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-name'         => 'Hide action and target',
 'revdelete-hide-comment'      => 'Hide edit comment',
 'revdelete-hide-user'         => "Hide editor's username/IP",
-'revdelete-hide-restricted'   => 'Apply these restrictions to sysops as well as others',
-'revdelete-suppress'          => 'Suppress data from sysops as well as others',
+'revdelete-hide-restricted'   => 'Apply these restrictions to Sysops and lock this interface',
+'revdelete-suppress'          => 'Suppress data from Sysops as well as others',
 'revdelete-hide-image'        => 'Hide file content',
 'revdelete-unsuppress'        => 'Remove restrictions on restored revisions',
 'revdelete-log'               => 'Log comment:',
@@ -1210,15 +1211,16 @@ Other admins on {{SITENAME}} will still be able to access the hidden content and
 'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
 'logdelete-logentry'          => 'changed event visibility of [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revision|revisions}} set to mode $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|event|events}} to [[$3]] set to mode $2',
-'revdelete-success'           => 'Revision visibility successfully set.',
-'logdelete-success'           => 'Event visibility successfully set.',
+'logdelete-logaction'         => '$1 {{PLURAL:$1|event|events}} set to mode $2',
+'revdelete-success'           => "'''Revision visibility successfully set.'''",
+'logdelete-success'           => "'''Log visibility successfully set.'''",
+'revdel-restore'              => 'Change visiblity',
 'pagehist'                    => 'Page history',
 'deletedhist'                 => 'Deleted history',
 
-# Oversight log
-'oversightlog'    => 'Oversight log',
-'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content hidden from sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
+# Suppression log
+'suppressionlog'     => 'Suppression log',
+'suppressionlogtext' => 'Below is a list of the most recent deletions and blocks involving content hidden from sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 
 # History merging
 'mergehistory'                     => 'Merge page histories',
@@ -1382,19 +1384,21 @@ please see math/README to configure.',
 'userrights-groupsmember'          => 'Member of:',
 'userrights-groupsremovable'       => 'Removable groups:',
 'userrights-groupsavailable'       => 'Available groups:',
-'userrights-groupshelp'            => 'Select groups you want the user to be removed from or added to.
-Unselected groups will not be changed.
-You can deselect a group with CTRL + Left Click',
+'userrights-groups-help'           => 'You may alter the groups this user is in.
+A checked box means the user is in that group.
+An unchecked box means the user is not in that group.',
 'userrights-reason'                => 'Reason for change:',
 'userrights-available-none'        => 'You may not alter group membership.',
-'userrights-available-add'         => 'You can add users to {{PLURAL:$2|this group|these groups}}: $1.',
-'userrights-available-remove'      => 'You can remove users from {{PLURAL:$2|this group|these groups}}: $1.',
+'userrights-available-add'         => 'You can add any user to {{PLURAL:$2|this group|these groups}}: $1.',
+'userrights-available-remove'      => 'You can remove any user from {{PLURAL:$2|this group|these groups}}: $1.',
 'userrights-available-add-self'    => 'You can add yourself to {{PLURAL:$2|this group|these groups}}: $1.',
 'userrights-available-remove-self' => 'You can remove yourself from {{PLURAL:$2|this group|these groups}}: $1.',
 'userrights-no-interwiki'          => 'You do not have permission to edit user rights on other wikis.',
 'userrights-nodatabase'            => 'Database $1 does not exist or is not local.',
 'userrights-nologin'               => 'You must [[Special:Userlogin|log in]] with an administrator account to assign user rights.',
 'userrights-notallowed'            => 'Your account does not have permission to assign user rights.',
+'userrights-changeable-col'        => 'Groups you can change',
+'userrights-unchangeable-col'      => 'Groups you cannot change',
 
 # Groups
 'group'               => 'Group:',
@@ -1402,17 +1406,20 @@ You can deselect a group with CTRL + Left Click',
 'group-bot'           => 'Bots',
 'group-sysop'         => 'Sysops',
 'group-bureaucrat'    => 'Bureaucrats',
+'group-suppress'      => 'Oversights',
 'group-all'           => '(all)',
 
 'group-autoconfirmed-member' => 'Autoconfirmed user',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Sysop',
 'group-bureaucrat-member'    => 'Bureaucrat',
+'group-suppress-member'      => 'Oversight',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Autoconfirmed users',
 'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Administrators',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bureaucrats',
+'grouppage-suppress'      => '{{ns:project}}:Oversight',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -1806,6 +1813,7 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'notargettext'                    => 'You have not specified a target page or user to perform this function on.',
 'pager-newer-n'                   => '{{PLURAL:$1|newer 1|newer $1}}',
 'pager-older-n'                   => '{{PLURAL:$1|older 1|older $1}}',
+'suppress'                        => 'Oversight',
 
 # Book sources
 'booksources'               => 'Book sources',
@@ -1967,6 +1975,7 @@ Please confirm that you intend to do this, that you understand the consequences,
 'deletedtext'                 => '"<nowiki>$1</nowiki>" has been deleted.
 See $2 for a record of recent deletions.',
 'deletedarticle'              => 'deleted "[[$1]]"',
+'suppressedarticle'           => 'suppressed "[[$1]]"',
 'dellogpage'                  => 'Deletion log',
 'dellogpagetext'              => 'Below is a list of the most recent deletions.',
 'deletionlog'                 => 'deletion log',
@@ -2167,7 +2176,7 @@ Fill in a specific reason below (for example, citing particular pages that were 
 'ipboptions'                  => '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'other',
 'ipbotherreason'              => 'Other/additional reason:',
-'ipbhidename'                 => 'Hide username/IP from the block log, active block list and user list',
+'ipbhidename'                 => 'Hide username from the block log, active block list and user list',
 'badipaddress'                => 'Invalid IP address',
 'blockipsuccesssub'           => 'Block succeeded',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] has been blocked.<br />
@@ -2328,7 +2337,7 @@ In the latter case you can also use a link, e.g. [[{{ns:special}}:Export/{{Media
 'allmessagesdefault'        => 'Default text',
 'allmessagescurrent'        => 'Current text',
 'allmessagestext'           => 'This is a list of system messages available in the MediaWiki namespace.',
-'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' cannot be used because '''\$wgUseDatabaseMessages''' is switched off.",
+'allmessagesnotsupportedDB' => "This page cannot be used because '''\$wgUseDatabaseMessages''' has been disabled.",
 'allmessagesfilter'         => 'Message name filter:',
 'allmessagesmodified'       => 'Show only modified',
 

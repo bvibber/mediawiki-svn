@@ -679,7 +679,7 @@ Ca administrator la acest site poţi să o vezi; s-ar putea să găseşti mai mu
 'revdelete-text'              => 'Reviziile şterse vor apărea în istoricul paginii, dar conţinutul lor nu va fi accesibil publicului.
 
 Alţi administratori de pe acest wiki vor putea accesa conţinutul ascuns şi îl pot recupera prin aceeaşi interfaţă, dacă nu este impusă o altă restricţie de către operatorii sitului.',
-'revdelete-legend'            => 'Setează restricţii pentru revizie:',
+'revdelete-legend'            => 'Setează restricţii pentru revizie',
 'revdelete-hide-text'         => 'Ascunde textul reviziei',
 'revdelete-hide-comment'      => 'Ascunde descrierea modificării',
 'revdelete-hide-user'         => 'Ascunde numele de utilizator/IP-ul editorului',
@@ -800,7 +800,6 @@ Căutări după $3 $9',
 'saveusergroups'                   => 'Salvează grupul de utilizatori',
 'userrights-groupsmember'          => 'Membru al:',
 'userrights-groupsavailable'       => 'Grupuri disponibile:',
-'userrights-groupshelp'            => 'Selectează grupurile din care doreşti ca utilizatorul să fie şters sau în care doreşti să fie adăugat. Grupurile deselectate nu se vor modifica. Poţi deselecta un grup cu CTRL + Clic stânga',
 'userrights-reason'                => 'Motivul schimbării:',
 'userrights-available-none'        => 'Nu poţi modifica apartenenţa la grup.',
 'userrights-available-add'         => 'Poţi adăuga utilizatorii la {{PLURAL:$2|acest grup|aceste grupuri}}: $1.',

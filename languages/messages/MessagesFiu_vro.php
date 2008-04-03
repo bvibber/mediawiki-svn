@@ -661,7 +661,7 @@ Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} k
 'revdelete-selected'          => "{{PLURAL:$2|Valit kujo|Validuq kujoq}} lehele '''$1:'''",
 'logdelete-selected'          => "{{PLURAL:$2|Valit muutminõ|Validuq muutmisõq}} lehele '''$1:'''",
 'revdelete-text'              => 'Kistudõduq kujoq ommaq olõman lehe aoluun, a näide sissu saa-i avaligult nätäq. Seo viki tõõsõq kõrraldajaq saavaq taad käkitüt teksti lukõq ja taa tagasi avaligult nättäväs tetäq, ku olõ-i säet muid piirdmiisi.',
-'revdelete-legend'            => 'Kujo piirdmiseq:',
+'revdelete-legend'            => 'Kujo piirdmiseq',
 'revdelete-hide-text'         => 'Käkiq kujo sisu',
 'revdelete-hide-name'         => 'Käkiq kujo nimi',
 'revdelete-hide-comment'      => 'Käkiq kokkovõtõq',
@@ -676,12 +676,8 @@ Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} k
 'logdelete-logentry'          => 'muudõt lehe [[$1]] muutmiisi nättävüst',
 'revdelete-logaction'         => '$1 {{plural:$1|kujo|kujjo}} säet muudu $2',
 'logdelete-logaction'         => '$1 {{plural:$1|muutminõ|muutmist}} lehele [[$3]] säet muudu $2',
-'revdelete-success'           => 'Kujo nättävüs paika säet.',
-'logdelete-success'           => 'Muutmiisi nättävüs paika säet.',
-
-# Oversight log
-'oversightlog'    => 'Perrävalvmismuutuisi nimekiri',
-'overlogpagetext' => 'Tan om nimekiri vahtsõmbist kistutuisist ja kinniqpidämiisist, miä pututasõq kõrraldajidõ iist käkitüt sissu. Kaeq [[Special:Ipblocklist|puutridõ võrgoaadrõssidõ kinniqpidämisnimekirjä]], et nätäq, määntseq kinniqpidämiseq ommaq parhillaq jovvun.',
+'revdelete-success'           => "'''Kujo nättävüs paika säet.'''",
+'logdelete-success'           => "'''Muutmiisi nättävüs paika säet.'''",
 
 # History merging
 'mergehistory'       => 'Panõq lehti aoluuq kokko',
@@ -791,7 +787,6 @@ mitmõ otsmissõna pruukminõ (sis ilmusõq õnnõ leheküleq, kon ommaq kõik o
 'saveusergroups'             => 'Pästäq pruukjidõrühmä muutmisõq',
 'userrights-groupsmember'    => 'Kuulus rühmä:',
 'userrights-groupsavailable' => 'Või mano pandaq rühmihe:',
-'userrights-groupshelp'      => 'Valiq rühmäq, minkast sa tahat pruukjat ärq võttaq vai kohe mano pandaq. Valimalda jätetüid rühmi muudõda-i. Rühmä valimist saa tühäs tetäq CTRL + hüä hiirevaotusõga.',
 'userrights-reason'          => 'Muutmisõ põhjus:',
 
 # Groups

@@ -10,6 +10,7 @@
  * @author Nike
  * @author SPQRobin
  * @author Siebrand
+ * @author Meursault2004
  */
 
 /**
@@ -772,9 +773,9 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 'whitelistedittitle'        => 'Perlu masuk log untuk menyunting',
 'whitelistedittext'         => 'Anda harus $1 untuk dapat menyunting artikel.',
 'whitelistreadtitle'        => 'Perlu masuk log untuk membaca',
-'whitelistreadtext'         => 'Anda harus [[{{ns:special}}:Userlogin|masuk log]] untuk dapat membaca artikel.',
+'whitelistreadtext'         => 'Anda harus [[Special:Userlogin|masuk log]] untuk dapat membaca artikel.',
 'whitelistacctitle'         => 'Anda tidak diperbolehkan untuk membuat akun',
-'whitelistacctext'          => 'Untuk dapat membuat akun dalam wiki ini, Anda harus [[{{ns:special}}:Userlogin|masuk log]] dan mempunyai izin yang tepat.',
+'whitelistacctext'          => 'Untuk dapat membuat akun dalam wiki ini, Anda harus [[Special:Userlogin|masuk log]] dan mempunyai izin yang tepat.',
 'confirmedittitle'          => 'Konfirmasi surat-e diperlukan untuk melakukan penyuntingan',
 'confirmedittext'           => 'Anda harus mengkonfirmasikan dulu alamat surat-e Anda sebelum menyunting halaman. Harap masukkan dan validasikan alamat surat-e Anda sebelum melakukan penyuntingan. Alamat surat-e dapat diubah melalui [[{{ns:special}}:Preferences|halaman preferensi]]',
 'nosuchsectiontitle'        => 'Subbagian tersebut tak ditemukan',
@@ -912,13 +913,11 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'revdelete-logentry'          => 'ubah tampilan revisi untuk [[$1]]',
 'logdelete-logentry'          => 'ubah aturan penyembunyian dari [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revisi|revisi}} telah diubah menjadi mode $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|tindakan|tindakan}} terhadap [[$3]] diubah menjadi mode $2',
+'logdelete-logaction'         => '{{PLURAL:$1|peristiwa|peristiwa}} terhadap $1 diset menjadi mode $2',
 'revdelete-success'           => 'Aturan penyembunyian revisi berhasil diterapkan.',
 'logdelete-success'           => 'Aturan penyembunyian tindakan berhasil diterapkan.',
-
-# Oversight log
-'oversightlog'    => 'Log pengawas',
-'overlogpagetext' => 'Berikut ini adalah daftar terbaru penghapusan dan pemblokiran yang melibatkan isi yang disembunyikan dari pengurus. Lihat [[Special:Ipblocklist|daftar blokir IP]] untuk daftar terkini pencekalan dan pemblokiran yang berlaku.',
+'pagehist'                    => 'Sejarah halaman',
+'deletedhist'                 => 'Sejarah yang dihapus',
 
 # History merging
 'mergehistory'                     => 'Gabung sejarah halaman',
@@ -935,7 +934,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'mergehistory-fail'                => 'Tidak dapat melakukan penggabungan, harap periksa kembali halaman dan parameter waktu.',
 'mergehistory-no-source'           => 'Halaman sumber $1 tidak ada.',
 'mergehistory-no-destination'      => 'Halaman tujuan $1 tidak ada.',
-'mergehistory-invalid-source'      => 'Judul halaman sumber haruslah judul yang valid.',
+'mergehistory-invalid-source'      => 'Judul halaman sumber haruslah judul yang berlaku.',
 'mergehistory-invalid-destination' => 'Judul halaman tujuan haruslah judul yang valid.',
 
 # Merge log
@@ -982,7 +981,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'mypreferences'            => 'Preferensi saya',
 'prefs-edits'              => 'Jumlah suntingan:',
 'prefsnologin'             => 'Belum masuk log',
-'prefsnologintext'         => 'Anda harus [[{{ns:special}}:Userlogin|masuk log]] untuk menetapkan preferensi Anda.',
+'prefsnologintext'         => 'Anda harus [[Special:Userlogin|masuk log]] untuk menetapkan preferensi Anda.',
 'prefsreset'               => 'Preferensi telah dikembalikan ke konfigurasi baku.',
 'qbsettings'               => 'Pengaturan bar pintas',
 'qbsettings-none'          => 'Tidak ada',
@@ -1049,7 +1048,6 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'userrights-groupsmember'          => 'Anggota dari:',
 'userrights-groupsremovable'       => 'Grup yang dapat dicabut:',
 'userrights-groupsavailable'       => 'Grup yang dapat diberikan:',
-'userrights-groupshelp'            => 'Pilih kelompok yang Anda ingin hapus dari atau tambahkan pada pengguna. Kelompok yang tak dipilih tak akan diganti. Anda dapat membatalkan pilihan dengan menekan tombol CTRL + Klik kiri',
 'userrights-reason'                => 'Alasan pengubahan:',
 'userrights-available-none'        => 'Anda tak dapat mengganti keangotaan kelompok.',
 'userrights-available-add'         => 'Anda dapat memasukkan pengguna ke {{PLURAL:$2|grup|grup-grup}}: $1.',
@@ -1125,7 +1123,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'reupload'                    => 'Muat ulang',
 'reuploaddesc'                => 'Kembali ke formulir pemuatan',
 'uploadnologin'               => 'Belum masuk log',
-'uploadnologintext'           => 'Anda harus [[{{ns:special}}:Userlogin|masuk log]] untuk dapat memuatkan berkas.',
+'uploadnologintext'           => 'Anda harus [[Special:Userlogin|masuk log]] untuk dapat memuatkan berkas.',
 'upload_directory_read_only'  => 'Direktori pemuatan ($1) tidak dapat ditulis oleh server web.',
 'uploaderror'                 => 'Kesalahan pemuatan',
 'uploadtext'                  => "Gunakan isian di bawah untuk memuat berkas. Gunakan [[{{ns:special}}:Imagelist|daftar berkas]] atau [[{{ns:special}}:Log/upload|log pemuatan]] untuk menampilkan atau mencari berkas atau gambar yang telah dimuat sebelumnya.
@@ -1572,7 +1570,7 @@ Umpan balik dan bantuan lanjutan:
 'protect-level-autoconfirmed' => 'Hanya pengguna terdaftar',
 'protect-level-sysop'         => 'Hanya pengurus',
 'protect-summary-cascade'     => 'runtun',
-'protect-expiring'            => 'kadalawarsa $1 (UTC)',
+'protect-expiring'            => 'kadaluwarsa $1 (UTC)',
 'protect-cascade'             => 'Lindungi semua halaman yang termasuk dalam halaman ini (perlindungan runtun ).',
 'protect-cantedit'            => 'Anda tidak dapat mengubah tingkatan perlindungan halaman ini karena Anda tidak memiliki hak untuk itu.',
 'restriction-type'            => 'Perlindungan:',
@@ -1831,7 +1829,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'allmessagesdefault'        => 'Teks baku',
 'allmessagescurrent'        => 'Teks sekarang',
 'allmessagestext'           => 'Ini adalah daftar semua pesan sistem yang tersedia dalam ruang nama MediaWiki:',
-'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' tidak didukung karena wgUseDatabaseMessages dimatikan.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' tidak didukung karena '''\$wgUseDatabaseMessages''' dimatikan.",
 'allmessagesfilter'         => 'Filter nama pesan:',
 'allmessagesmodified'       => 'Hanya tampilkan yang diubah',
 

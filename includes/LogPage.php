@@ -54,7 +54,7 @@ class LogPage {
 	function saveContent() {
 		if( wfReadOnly() ) return false;
 
-		global $wgUser;
+		global $wgUser, $wgLogRestrictions;
 		$fname = 'LogPage::saveContent';
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -72,20 +72,18 @@ class LogPage {
 			'log_comment' => $this->comment,
 			'log_params' => $this->params
 		);
-
-		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
-		# schema update to do. Hack it for now to ignore the field on MySQL.
-		if ( !is_null( $log_id ) ) {
-			$data['log_id'] = $log_id;
-		}
 		$dbw->insert( 'logging', $data, $fname );
+		$newId = $dbw->insertId();
 
 		# And update recentchanges
-		if ( $this->updateRecentChanges ) {
-			$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
-			$rcComment = $this->getRcComment();
-			RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
-				$this->type, $this->action, $this->target, $this->comment, $this->params );
+		if( $this->updateRecentChanges ) {
+			# Don't add private logs to RC!
+			if( !isset($wgLogRestrictions[$this->type]) || $wgLogRestrictions[$this->type]=='*' ) {
+				$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
+				$rcComment = $this->getRcComment();
+				RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
+					$this->type, $this->action, $this->target, $this->comment, $this->params, $newId );
+			}
 		}
 		return true;
 	}
@@ -137,7 +135,7 @@ class LogPage {
 	 */
 	static function logHeader( $type ) {
 		global $wgLogHeaders;
-		return wfMsg( $wgLogHeaders[$type] );
+		return wfMsgHtml( $wgLogHeaders[$type] );
 	}
 
 	/**
@@ -208,7 +206,7 @@ class LogPage {
 					}
 				} else {
 					array_unshift( $params, $titleLink );
-					if ( $key == 'block/block' ) {
+					if ( $key == 'block/block' || $key == 'suppress/block' ) {
 						if ( $skin ) {
 							$params[1] = '<span title="' . htmlspecialchars( $params[1] ). '">' . $wgLang->translateBlockExpiry( $params[1] ) . '</span>';
 						} else {
@@ -313,35 +311,6 @@ class LogPage {
 			$messages[$flag] = htmlspecialchars( wfEmptyMsg( $k, $msg ) ? $flag : $msg );
 		}
 		return $messages[$flag];
-	}
-	
-	/**
-	 * Determine if the current user is allowed to view a particular
-	 * field of this log row, if it's marked as deleted.
-	 * @param Row $row
-	 * @param int $field
-	 * @return bool
-	 */
-	public static function userCan( $row, $field ) {
-		if( ( $row->log_deleted & $field ) == $field ) {
-			global $wgUser;
-			$permission = ( $row->log_deleted & self::DELETED_RESTRICTED ) == self::DELETED_RESTRICTED
-				? 'hiderevision'
-				: 'deleterevision';
-			wfDebug( "Checking for $permission due to $field match on $event->log_deleted\n" );
-			return $wgUser->isAllowed( $permission );
-		} else {
-			return true;
-		}
-	}
-
-	/**
-	 * int $field one of DELETED_* bitfield constants
-	 * @param Row $row
-	 * @return bool
-	 */
-	public static function isDeleted( $row, $field ) {
-		return ($row->log_deleted & $field) == $field;
 	}
 }
 

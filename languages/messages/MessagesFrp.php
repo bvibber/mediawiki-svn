@@ -725,7 +725,7 @@ mas lor contegnu tèxtuèl serat pas accèssiblo u publico.
 
 D’ôtros administrators de {{SITENAME}} porront tojorn arrevar u contegnu cachiê et lo tornar rèstorar
 a travèrs de cela méma entèrface, a muens qu’una rèstriccion suplèmentèra seye betâ en place per los opèrators du seto.',
-'revdelete-legend'            => 'Betar en place des rèstriccions de vèrsion :',
+'revdelete-legend'            => 'Betar en place des rèstriccions de vèrsion',
 'revdelete-hide-text'         => 'Mâscar lo tèxte de la vèrsion',
 'revdelete-hide-name'         => 'Mâscar l’accion et la ciba',
 'revdelete-hide-comment'      => 'Mâscar lo comentèro de modificacion',
@@ -740,13 +740,8 @@ a travèrs de cela méma entèrface, a muens qu’una rèstriccion suplèmentèr
 'logdelete-logentry'          => 'La visibilitât de l’èvènement at étâ modifiâ por [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|vèrsion changiê|vèrsions changiês}} en môdo $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|èvènement de [[$3]] changiê|èvènements de [[$3]] changiês}} en môdo $2',
-'revdelete-success'           => 'Visibilitât de les vèrsions changiê avouéc reusséta.',
-'logdelete-success'           => 'Visibilitât des èvènements changiê avouéc reusséta.',
-
-# Oversight log
-'oversightlog'    => 'Jornal de survelyence',
-'overlogpagetext' => 'La lista ce-desot montre les suprèssions et los blocâjos novéls que lo contegnu est mâscâ mémo por los administrators.
-Consultâd la [[Special:Ipblocklist|lista des comptos blocâs]] por la lista des blocâjos en cors.',
+'revdelete-success'           => "'''Visibilitât de les vèrsions changiê avouéc reusséta.'''",
+'logdelete-success'           => "'''Visibilitât des èvènements changiê avouéc reusséta.'''",
 
 # History merging
 'mergehistory'                     => 'Fusion des historicos d’una pâge',
@@ -883,8 +878,6 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'userrights-groupsmember'          => 'Membro de :',
 'userrights-groupsremovable'       => 'Tropes suprimâbles :',
 'userrights-groupsavailable'       => 'Tropes disponibles :',
-'userrights-groupshelp'            => 'Chouèsésséd/cièrde les tropes de lesquintes vos voléd enlevar ou ben rapondre l’utilisator.
-Les tropes pas sèlèccionâs seront pas modifiâs. Vos pouede dèsèlèccionar una tropa avouéc CTRL + clic gôcho.',
 'userrights-reason'                => 'Rêson du changement :',
 'userrights-available-none'        => 'Vos pouede pas changiér l’apartegnence a les difèrentes tropes.',
 'userrights-available-add'         => 'Vos pouede apondre des utilisators a {{PLURAL:$2|la tropa siuventa|les tropes siuventes}} : $1.',
@@ -1574,7 +1567,7 @@ Balyéd ce-desot una rêson cllâra (per ègzemplo en endiquent les pâges qu’
 'ipboptions'                  => '2 hores:2 hours,1 jorn:1 day,3 jorns:3 days,1 semana:1 week,2 semanes:2 weeks,1 mês:1 month,3 mês:3 months,6 mês:6 months,1 an:1 year,sen fin:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'ôtra',
 'ipbotherreason'              => 'Rêson difèrenta ou suplèmentèra :',
-'ipbhidename'                 => 'Mâscar lo nom d’utilisator ou l’IP de l’historico des blocâjos, de la lista des blocâjos actifs et de la lista des utilisators',
+'ipbhidename'                 => 'Mâscar lo nom d’utilisator de l’historico des blocâjos, de la lista des blocâjos actifs et de la lista des utilisators',
 'badipaddress'                => 'L’adrèce IP est fôssa.',
 'blockipsuccesssub'           => 'Blocâjo reussi',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] at étâ blocâ.

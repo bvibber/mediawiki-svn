@@ -820,7 +820,7 @@ Aquesta versió de la pàgina ha estat eliminada dels arxius públics. Com a adm
 'revdelete-text'              => 'Les versions esborrades es mostraran encara als historial i registres de les pàgines, si bé part del seu contingut serà inaccessible al públic.
 
 Els altres administradors del projecte {{SITENAME}} encara podrien accedir al contingut amagat i restituir-lo de nou mitjançant aquesta mateixa interfície, si no hi ha cap altra restricció addicional pels operadors del lloc web.',
-'revdelete-legend'            => 'Defineix restriccions en la revisió:',
+'revdelete-legend'            => 'Defineix restriccions en la revisió',
 'revdelete-hide-text'         => 'Amaga el text de revisió',
 'revdelete-hide-name'         => "Acció d'amagar i objectiu",
 'revdelete-hide-comment'      => "Amaga el comentari de l'edició",
@@ -835,14 +835,10 @@ Els altres administradors del projecte {{SITENAME}} encara podrien accedir al co
 'logdelete-logentry'          => "s'ha canviat la visibilitat de [[$1]]",
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revisió canviada|revisions canviades}} al mode $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|element|elements}} a [[$3]] canviats al mode $2',
-'revdelete-success'           => "S'ha establert correctament la visibilitat d'aquesta revissió.",
-'logdelete-success'           => "S'ha establert correctament la visibilitat d'aquest element.",
+'revdelete-success'           => "'''S'ha establert correctament la visibilitat d'aquesta revissió.'''",
+'logdelete-success'           => "'''S'ha establert correctament la visibilitat d'aquest element.'''",
 'pagehist'                    => 'Historial',
 'deletedhist'                 => "Historial d'esborrat",
-
-# Oversight log
-'oversightlog'    => "Registre d'oversight",
-'overlogpagetext' => 'A continuació trabareu una llista dels esborrats i blocatges més recents relacionats amb contingut amagat pels administradors. Vegeu la [[Special:Ipblocklist|llista de blocatges]] per a la llista completa de tots els blocatges actius.',
 
 # History merging
 'mergehistory'                     => 'Fusiona els historials de les pàgines',
@@ -987,8 +983,9 @@ $2 Llista redireccions   Cerca $3 $9',
 'userrights-groupsmember'          => 'Membre de:',
 'userrights-groupsremovable'       => 'Grups dels quals us podeu treure:',
 'userrights-groupsavailable'       => 'Grups disponibles:',
-'userrights-groupshelp'            => "Seleccioneu els grups dels quals voleu suprimir-ne l'usuari o afegir-lo.
-Els grups no seleccionats no es canviaran. Podeu treure la selecció d'un grup amb CTRL + Clic",
+'userrights-groups-help'           => "Podeu modificarels grups als quals pertany aquest usuari.
+Els requadres marcats indiquen que l'usuari és dins del grup.
+Els requadres sense macar indiquen que l'usuari no hi pertany.",
 'userrights-reason'                => 'Motiu del canvi:',
 'userrights-available-none'        => "No podeu alterar l'afiliació al grup.",
 'userrights-available-add'         => 'Podeu afegir usuaris {{PLURAL:$2|al grup|als grups:}} $1.',
@@ -999,6 +996,8 @@ Els grups no seleccionats no es canviaran. Podeu treure la selecció d'un grup a
 'userrights-nodatabase'            => 'La base de dades $1 no existeix o no és local.',
 'userrights-nologin'               => "Heu [[Special:Userlogin|d'iniciar una sessió]] amb un compte d'administrador per a poder assignar permisos d'usuari.",
 'userrights-notallowed'            => "El vostre compte no té permisos per a assignar permisos d'usuari.",
+'userrights-changeable-col'        => 'Grups que podeu canviar',
+'userrights-unchangeable-col'      => 'Grups que no podeu canviar',
 
 # Groups
 'group'               => 'Grup:',
@@ -1261,7 +1260,7 @@ Això resulta en una mitjana {{PLURAL:$5|d'una edició|de '''$5''' edicions}} pe
 i {{PLURAL:$6|'''$6''' visita|'''$6''' visites}} per edició.
 
 La mida de la [http://meta.wikimedia.org/wiki/Help:Job_queue cua de treballs] és '''$7'''.",
-'userstatstext'          => "Hi ha '''$1''' usuaris registrats, dels quals {{PLURAL:$2|un (el '''$4%''') n'és $5|'''$2''' (el '''$4%''') en són $5}}.",
+'userstatstext'          => "Hi ha {{PLURAL:$1|'''1''' usuari registrat i, a més,|'''$1''' usuaris registrats, dels quals}} {{PLURAL:$2|un (el '''$4%''') té|'''$2''' (el '''$4%''') tenen}} drets de: $5.",
 'statistics-mostpopular' => 'Pàgines més visualitzades',
 
 'disambiguations'      => 'Pàgines de desambiguació',
@@ -1690,7 +1689,7 @@ quines pàgines en concret estan sent vandalitzades).",
 'ipboptions'                  => '2 hores:2 hours,1 dia:1 day,3 dies:3 days,1 setmana:1 week,2 setmanes:2 weeks,1 mes:1 month,3 mesos:3 months,6 mesos:6 months,1 any:1 year,infinit:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'un altre',
 'ipbotherreason'              => 'Altres motius o addicionals:',
-'ipbhidename'                 => "Amaga el nom d'usuari / IP del registre de bloquejos, activa la llista de bloqueig i d'usuaris",
+'ipbhidename'                 => "Amaga el nom d'usuari del registre de bloquejos, activa la llista de bloqueig i d'usuaris",
 'badipaddress'                => "L'adreça IP no té el format correcte.",
 'blockipsuccesssub'           => "S'ha blocat amb èxit",
 'blockipsuccesstext'          => 'L\'usuari "[[Special:Contributions/$1|$1]]" ha estat blocat.
@@ -1783,7 +1782,7 @@ Tingueu en compte que la pàgina '''no''' serà traslladada si ja existeix una p
 Això significa que podeu reanomenar de nou una pàgina al seu títol original si cometeu un error, i que no podeu sobreescriure una pàgina existent.
 
 '''ADVERTÈNCIA!'''
-Això pot ser un canvi dràstic i inesperat per a una pàgina popular;
+Açò pot ser un canvi dràstic i inesperat per a una pàgina popular;
 assegureu-vos d'entendre les conseqüències que comporta abans de seguir endavant.",
 'movepagetalktext'        => "La pàgina de discussió associada, si existeix, serà traslladada automàticament '''a menys que:'''
 *Ja existeixi una pàgina de discussió no buida amb el nom nou, o

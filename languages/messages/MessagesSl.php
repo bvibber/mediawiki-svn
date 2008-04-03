@@ -667,8 +667,6 @@ $2 Seznam se preusmerja   Iskanje za $3 $9',
 'saveusergroups'             => 'Shrani spremembe',
 'userrights-groupsmember'    => 'Član skupine:',
 'userrights-groupsavailable' => 'Skupine, ki so na razpolago:',
-'userrights-groupshelp'      => 'Izberite skupine, iz katerih želite odstraniti ali vanje dodati uporabnika.
-Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom in hkratnim pritiskom tipke CTRL.',
 
 # Groups
 'group'            => 'Skupina:',
@@ -1046,8 +1044,6 @@ Nedavna brisanja in obnove so zapisani v [[Special:Log/delete|dnevniku brisanja]
 'mycontris'     => 'Prispevki',
 'contribsub2'   => 'Uporabnik: $1 ($2)',
 'nocontribs'    => 'Ne najdem nobene merilom ustrezajoče spremembe.',
-'ucnote'        => 'Prikazujem {{plural:$1|zadnje|zadnji|zadnje|zadnjih|zadnjih}} <strong>$1</strong> uporabnikovih {{plural:$1|urejanj|urejanji|urejanja|urejanj|urejanj}} v {{plural:$2|zadnjem|zadnjih|zadnjih|zadnjih|zadnjih}} <strong>$2</strong> {{plural:$2|dnevu|dneh|dneh|dneh|dneh}}.',
-'uclinks'       => 'Prikaži {{plural:$1|zadnjo|zadnji|zadnje|zadnjih}} $1 {{plural:spremembo|spremembi|spremembe|sprememb|sprememb}}; prikaži {{plural:$2|zadnji|zadnja|zadnje|zadnjih|zadnjih}} $2 {{plural:$2|dan|dni|dni|dni|dni}}.',
 'uctop'         => ' (vrh)',
 
 'sp-contributions-newbies-sub' => 'Prispevki novincev',
@@ -1180,7 +1176,7 @@ Ciljna stran »[[$1]]« že obstaja. Ali jo želite, da bi pripravili prostor za
 'allmessagesdefault'        => 'Prednastavljeno besedilo',
 'allmessagescurrent'        => 'Trenutno besedilo',
 'allmessagestext'           => 'Navedena so v imenskem prostoru MediaWiki dostopna sistemska sporočila. Urejajo jih lahko [[{{MediaWiki:Grouppage-sysop}}|administratorji]] in drugi sodelavci z vzdrževalnimi pravicami.',
-'allmessagesnotsupportedDB' => 'Ker je wgUseDatabaseMessages izključeno, {{ns:special}}:Allmessages ni podprto.',
+'allmessagesnotsupportedDB' => "Ker je '''\$wgUseDatabaseMessages''' izključeno, '''{{ns:special}}:Allmessages''' ni podprto.",
 'allmessagesfilter'         => 'Filter pogostih izrazov:',
 'allmessagesmodified'       => 'Prikaži le spremenjeno',
 

@@ -9,6 +9,7 @@
  * @author לערי ריינהארט
  * @author Siebrand
  * @author M.M.S.
+ * @author Jack Phoenix
  */
 
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
@@ -350,7 +351,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'permalink'         => 'Ikilinkki',
 'print'             => 'Tulosta',
 'edit'              => 'Muokkaa',
-'create'            => 'Luo',
+'create'            => 'Luo sivu',
 'editthispage'      => 'Muokkaa tätä sivua',
 'create-this-page'  => 'Luo tämä sivu',
 'delete'            => 'Poista',
@@ -680,8 +681,9 @@ Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta
 'newarticletext'            => 'Linkki toi sivulle, jota ei vielä ole. Voit luoda sivun kirjoittamalla alla olevaan tilaan. Jos et halua luoda sivua, käytä selaimen paluutoimintoa.',
 'anontalkpagetext'          => "----''Tämä on nimettömän käyttäjän keskustelusivu. Hän ei ole joko luonut itselleen käyttäjätunnusta tai ei käytä sitä. Siksi hänet tunnistetaan nyt numeerisella IP-osoitteella. Kyseinen IP-osoite voi olla useamman henkilön käytössä. Jos olet nimetön käyttäjä, ja sinusta tuntuu, että aiheettomia kommentteja on ohjattu sinulle, [[Special:Userlogin|luo itsellesi käyttäjätunnus tai kirjaudu sisään]] välttääksesi jatkossa sekaannukset muiden nimettömien käyttäjien kanssa.''",
 'noarticletext'             => "<big>'''{{GRAMMAR:inessive|{{SITENAME}}}} ei ole tämän nimistä sivua.'''</big>
+* Voit [[Special:Search/{{PAGENAME}}|etsiä sivun nimellä]] muilta sivuilta.
 * Voit kirjoittaa uuden sivun '''<span class=\"plainlinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} {{PAGENAME}}]</span>.'''
-* Jos olet luonut sivun tällä nimellä, se on saatettu poistaa — katso [[Special:Log/delete|poistoloki]].",
+* Jos olet luonut sivun tällä nimellä, se on saatettu poistaa – katso [[Special:Log/delete|poistoloki]].",
 'userpage-userdoesnotexist' => 'Käyttäjätunnusta $1 ei ole rekisteröity. Varmista haluatko muokata tätä sivua.',
 'clearyourcache'            => "'''Huomautus:''' Selaimen välimuisti pitää tyhjentää asetusten tallentamisen jälkeen, jotta muutokset tulisivat voimaan:
 *'''Mozilla, Konqueror ja Safari:''' napsauta ''Shift''-näppäin pohjassa päivitä tai paina ''Ctrl-Shift-R'' (''Cmd-Shift-R'' Applella)
@@ -691,7 +693,7 @@ Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta
 'usercssjsyoucanpreview'    => 'Voit testata uutta CSS:ää tai JavaScriptiä ennen tallennusta esikatselulla.',
 'usercsspreview'            => "'''Tämä on CSS:n esikatselu.'''",
 'userjspreview'             => "'''Tämä on JavaScriptin esikatselu.'''",
-'userinvalidcssjstitle'     => 'Tyyliä nimeltä ”$1” ei ole olemassa. Käyttäjän määrittelemät .css- ja .js-sivut alkavat pienellä alkukirjaimella.',
+'userinvalidcssjstitle'     => "'''Varoitus:''' Tyyliä nimeltä ”$1” ei ole olemassa. Muista, että käyttäjän määrittelemät .css- ja .js-sivut alkavat pienellä alkukirjaimella, esim. {{ns:user}}:Matti Meikäläinen/monobook.css eikä {{ns:user}}:Matti Meikäläinen/Monobook.css.",
 'updated'                   => '(Päivitetty)',
 'note'                      => 'Huomautus:',
 'previewnote'               => '<strong>Tämä on vasta sivun esikatselu. Sivua ei ole vielä tallennettu!</strong>',
@@ -812,12 +814,9 @@ Muut ylläpitäjät voivat lukea piilotetun sisällön ja palauttaa sen.',
 'logdelete-logaction'         => '$1 sivun [[$3]] {{PLURAL:$1|tapahtuma|tapahtumaa}} asetettiin tilaan $2',
 'revdelete-success'           => 'Version näkyvyys asetettu.',
 'logdelete-success'           => 'Tapahtuman näkyvyys asetettu.',
+'revdel-restore'              => 'Muuta näkyvyyttä',
 'pagehist'                    => 'Muutoshistoria',
 'deletedhist'                 => 'Poistettu muutoshistoria',
-
-# Oversight log
-'oversightlog'    => 'Tietosuojaloki',
-'overlogpagetext' => 'Alla on lista viimeaikaisista poistoista ja estoista liittyen ylläpitäjiltä piilotettuun sisältöön. [[Special:Ipblocklist|Estolistalla]] on luettelo voimassa olevista estoista.',
 
 # History merging
 'mergehistory'                     => 'Yhdistä sivuhistoriat',
@@ -956,7 +955,7 @@ $1 | $2',
 'userrights-groupsmember'          => 'Jäsenenä ryhmissä',
 'userrights-groupsremovable'       => 'Poistettavat ryhmät',
 'userrights-groupsavailable'       => 'Saatavilla olevat ryhmät',
-'userrights-groupshelp'            => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
+'userrights-groups-help'           => 'Voit muuttaa ryhmiä, joissa tämä käyttäjä on. Merkattu ruutu tarkoittaa, että käyttäjä on kyseisessä ryhmässä. Merkkaamaton ruutu tarkoittaa, että käyttäjä ei ole kyseisessä ryhmässä.',
 'userrights-reason'                => 'Kommentti',
 'userrights-available-none'        => 'Et voi muuttaa ryhmäjäsenyyksiä.',
 'userrights-available-add'         => 'Voit lisätä käyttäjiä {{PLURAL:$2|ryhmään|ryhmiin}} $1.',
@@ -967,6 +966,8 @@ $1 | $2',
 'userrights-nodatabase'            => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
 'userrights-nologin'               => 'Sinun täytyy [[Special:Userlogin|kirjautua sisään]] ylläpitäjätunnuksella, jotta voisit muuttaa käyttöoikeuksia.',
 'userrights-notallowed'            => 'Tunnuksellasi ei ole lupaa muuttaa käyttöoikeuksia.',
+'userrights-changeable-col'        => 'Ryhmät, joita voit muuttaa',
+'userrights-unchangeable-col'      => 'Ryhmät, joita et voi muuttaa',
 
 # Groups
 'group'               => 'Ryhmä',

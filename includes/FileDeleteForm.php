@@ -91,8 +91,11 @@ class FileDeleteForm {
 				$status = $this->file->delete( $reason, $suppress );
 				if( $status->ok ) {
 					// Need to delete the associated article
-					$article = new Article( $this->title );
-					$article->doDeleteArticle( $reason, $suppress );
+					$article = new Article( $this->title );					
+					if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason)) ){												
+						if( $article->doDeleteArticle( $reason, $suppress ) )
+							wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason));
+					}
 				}
 			}
 			if( $status->isGood() ) wfRunHooks('FileDeleteComplete', array( 
@@ -179,17 +182,7 @@ class FileDeleteForm {
 	private function showLogEntries() {
 		global $wgOut;
 		$wgOut->addHtml( '<h2>' . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
-		$reader = new LogViewer(
-			new LogReader(
-				new FauxRequest(
-					array(
-						'type' => 'delete',
-						'page' => $this->title->getPrefixedText(),
-					)
-				)
-			)
-		);
-		$reader->showList( $wgOut );		
+		LogEventsList::showLogExtract( $wgOut, 'delete', $this->title->getPrefixedText() );
 	}
 	
 	/**

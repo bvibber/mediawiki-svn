@@ -679,9 +679,6 @@ Révisi kaca ieu geus dihapus tina arsip publik. Tapi, salaku administrator dina
 'revdelete-logaction'         => '$1 {{PLURAL:$1|révisi|révisi}} dirobah jadi modeu $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|robahan|robahan}} ka [[$3]] dirobah jadi modeu $2',
 
-# Oversight log
-'oversightlog' => 'Log pangawas',
-
 # History merging
 'mergehistory'                     => 'Gabungkeun jujutan kaca',
 'mergehistory-header'              => 'Di dieu anjeun bisa ngagabungkeun révisi tina jujutan hiji kaca ka kaca séjén nu leuwih anyar.
@@ -1420,7 +1417,7 @@ $1',
 'ipboptions'                  => '2 jam:2 hours,sapoé:1 day,3 poé:3 days,saminggu:1 week,2 minggu:2 weeks,sabulan:1 month,3 bulan:3 months,6 bulan:6 months,sataun:1 year,tanpa wates:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'séjénna',
 'ipbotherreason'              => 'Alesan séjén/tambahan',
-'ipbhidename'                 => 'Sumputkeun landihan pamaké/IP tina log peungpeuk, daptar peungpeuk aktif, jeung daptar pamaké',
+'ipbhidename'                 => 'Sumputkeun landihan pamaké tina log peungpeuk, daptar peungpeuk aktif, jeung daptar pamaké',
 'badipaddress'                => 'Alamat IP teu sah',
 'blockipsuccesssub'           => 'Meungpeuk geus hasil',
 'blockipsuccesstext'          => '"$1" dipeungpeuk.
@@ -1555,7 +1552,7 @@ Artikel nu dituju "[[$1]]" geus aya. Badé dihapus baé sangkan bisa mindahkeun?
 'allmessagesdefault'        => 'Téks ti dituna',
 'allmessagescurrent'        => 'Téks kiwari',
 'allmessagestext'           => 'Ieu mangrupa daptar talatah sistim nu aya na spasi ngaran MediaWiki:.',
-'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages teu dirojong sabab wgUseDatabaseMessages pareum.',
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' teu dirojong sabab '''\$wgUseDatabaseMessages''' pareum.",
 'allmessagesfilter'         => 'Saringan ngaran talatah:',
 'allmessagesmodified'       => 'Témbongkeun ukur nu robah',
 

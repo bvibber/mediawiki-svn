@@ -684,7 +684,7 @@ astawan rikunki [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} qulluy hallch
 'revdelete-text'              => "Qullusqa llamk'apusqakunaqa p'anqap wiñay kawsayninpi paqarinqaraqmi, samiqnintaq manam uyanalla qhawanapaqchu.
 
 {{SITENAME}}pi huk kamachiqkunaqa p'anqap pakasqa samiqninta qhawaspa qullusqa kaymanta kutichiyta atinkuraqmi kay kaqlla uyapuratam llamk'achispa, kay wikip kamariqninkuna mana huk saywachanakunata tiyachiptinqa.",
-'revdelete-legend'            => "Llamk'apuypaq saywachanakunata tiyachiy:",
+'revdelete-legend'            => "Llamk'apuypaq saywachanakunata tiyachiy",
 'revdelete-hide-text'         => 'Qhawana qillqata pakay',
 'revdelete-hide-name'         => 'Rurayta paqtaytapas pakay',
 'revdelete-hide-comment'      => "Llamk'apuymanta willapuyta pakay",
@@ -699,14 +699,10 @@ astawan rikunki [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} qulluy hallch
 'logdelete-logentry'          => 'hukchasqa [[$1]]-paq tukusqap rikunalla kaynin',
 'revdelete-logaction'         => "$1 {{PLURAL:$1|llamk'apusqa|llamk'apusqakuna}} $2 hamuyman",
 'logdelete-logaction'         => '$1 {{PLURAL:$1|tukusqa|tukusqakuna}} [[$3]]-man $2 hamuypi',
-'revdelete-success'           => "Llamk'apusqap rikunalla kayninqa aypalla hukchasqañam.",
-'logdelete-success'           => 'Tukusqap rikunalla kayninqa aypalla hukchasqañam.',
+'revdelete-success'           => "'''Llamk'apusqap rikunalla kayninqa aypalla hukchasqañam.'''",
+'logdelete-success'           => "'''Tukusqap rikunalla kayninqa aypalla hukchasqañam.'''",
 'pagehist'                    => "P'anqap wiñay kawsaynin",
 'deletedhist'                 => 'Qullusqa wiñay kawsay',
-
-# Oversight log
-'oversightlog'    => "Yanqalla panta hallch'a",
-'overlogpagetext' => "Kay qatiqpiqa aswan ñaqha qullusqakunatawan hark'asqakunatam rikunki, kamachiqkunamanta pakasqa samiqta ch'aqtaq. [[Special:Ipblocklist|Hark'asqakunamanta p'anqata]] qhaway kunan hark'asqakunata rikunaykipaq.",
 
 # History merging
 'mergehistory'                     => "P'anqa wiñay kawsaykunata huñuy",
@@ -847,17 +843,21 @@ $2 Pusapunakunata rikuchiy<br />Maskay: $3 $9",
 'userrights-groupsmember'          => 'Kayman kapuq:',
 'userrights-groupsremovable'       => 'Qichunalla huñukuna:',
 'userrights-groupsavailable'       => 'Makihawa huñukuna:',
-'userrights-groupshelp'            => "Ruraqkunap huñunkunata akllay ruraqta qichunaykipaq icha yapanaykipaq. Mana akllasqa huñukunaqa manam hukchasqachu kanqa. Ukuchapi lluq'i ñit'inata CTRL ñit'inatapas t'uyllata ñit'ispa akllasqata puchukachinkim.",
+'userrights-groups-help'           => 'Ima huñukunapichus kay ruraq kachkan, chaytam hukchayta atinki.
+Sananchasqa kahacha niyta munan, ruraqqa kay huñupim kachkan, nispa.
+Mana sananchasqa kahachataq niyta munan, ruraqqa manam kay huñupichu kachkan, nispa.',
 'userrights-reason'                => 'Imarayku hukchasqa:',
 'userrights-available-none'        => 'Manam saqillasunkichu ruraqpa huñunman kapuy hukchayta.',
-'userrights-available-add'         => 'Ruraqkunataqa kay {{PLURAL:$2|huñumanmi|huñukunamanmi}} yapayta atinki: $1.',
-'userrights-available-remove'      => 'Ruraqkunataqa kay {{PLURAL:$2|huñumantam|huñukunamantam}} qichuyta atinki: $1.',
+'userrights-available-add'         => 'Ima ruraqtapas kay {{PLURAL:$2|huñumanmi|huñukunamanmi}} yapayta atinki: $1.',
+'userrights-available-remove'      => 'Ima ruraqtapas kay {{PLURAL:$2|huñumantam|huñukunamantam}} qichuyta atinki: $1.',
 'userrights-available-add-self'    => 'Kikiykitaqa kay {{PLURAL:$2|huñumanmi|huñukunamanmi}} yapakamuyta atinki: $1.',
 'userrights-available-remove-self' => 'Kikiykitaqa kay {{PLURAL:$2|huñumantam|huñukunamantam}} qichukuyta atinki: $1.',
 'userrights-no-interwiki'          => 'Manam saqillasunkichu huk wikikunapi ruraqkunap hayñinkunata hukchayta.',
 'userrights-nodatabase'            => '$1 sutiyuq willañiqintinqa manam kanchu icha manam kayllapichu.',
 'userrights-nologin'               => 'Kamachiqpa rakiqunaykiwan [[Special:Userlogin|yaykunaykim]] tiyan ruraqkunap hayñinkunata rurapunaykipaq.',
 'userrights-notallowed'            => 'Qampa rakiqunaykiwanqa manam ruraqkunap hayñinkunata rurapuyta atinkichu.',
+'userrights-changeable-col'        => 'Hukchanayki huñukuna',
+'userrights-unchangeable-col'      => 'Mana hukchanayki huñukuna',
 
 # Groups
 'group'               => 'Huñu:',
@@ -985,6 +985,7 @@ Kay churkunayki rikcha hunt'a chhikan kayniyuq kaptinqa, chay hunt'atam churkuy,
 'uploadvirus'                 => 'Willañiqipiqa añawmi! Yuyay: $1',
 'sourcefilename'              => 'Qallariy willañiqip sutin:',
 'destfilename'                => 'Tukuna willañiqip sutin:',
+'upload-maxfilesize'          => 'Lliwmanta aswan willañiqi chhikan kay: $1',
 'watchthisupload'             => "Kay p'anqata watiqay",
 'filewasdeleted'              => 'Kay sutiyuq willañiqi huk kutiña churkusqa karqaspa chaymanta qullusqam karqan. $1-ta llanchinaykim tiyanman manaraq musuqmanta churkuspayki.',
 'upload-wasdeleted'           => "'''Paqtataq: Huk kutiña qullusqa willañiqitam churkuykachachkanki.'''
@@ -1656,7 +1657,7 @@ Qhipaqta munaspaykiqa, t'inkitapas llamk'achiyta atinki, ahinataq [[{{ns:special
 'allmessagesdefault'        => 'Ñawpaq qillqa',
 'allmessagescurrent'        => 'Kunan kachkaq qillqa',
 'allmessagestext'           => "Kayqa MediaWiki suti k'itipi tukuy llamk'achinalla willaykunam:",
-'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' manam llamk'achinallachu, '''wgUseDatabaseMessages''' nisqaman ama nisqa kaptinmi.",
+'allmessagesnotsupportedDB' => "'''{{ns:special}}:AllMessages''' manam llamk'achinallachu, '''\$wgUseDatabaseMessages''' nisqaman ama nisqa kaptinmi.",
 'allmessagesfilter'         => "Willaypa sutinkama ch'illchiy:",
 'allmessagesmodified'       => 'Hukchasqallata rikuchiy',
 
@@ -2151,32 +2152,38 @@ Kikin siq'ipi ima qatiq t'inkillapas sapaqllatam hamut'arisqa, ahinataq siq'ipi 
 'monthsall'        => '(tukuy)',
 
 # E-mail address confirmation
-'confirmemail'            => 'E-chaski imamaytaykita takyachiy',
-'confirmemail_noemail'    => 'Manaraq [[Special:Preferences|allinkachinaykikunapi]] chaniyuq e-chaski imamaytayki kachkanchu.',
-'confirmemail_text'       => "{{SITENAME}}piqa e-chaski imamaytaykita takyachinaykim tiyan e-chaskita llamk'achinaykipaq. Urapi butunta ñit'ipay e-chaski imamaytaykiman takyachina chaskita kachamunaykupaq.
+'confirmemail'             => 'E-chaski imamaytaykita takyachiy',
+'confirmemail_noemail'     => 'Manaraq [[Special:Preferences|allinkachinaykikunapi]] chaniyuq e-chaski imamaytayki kachkanchu.',
+'confirmemail_text'        => "{{SITENAME}}piqa e-chaski imamaytaykita takyachinaykim tiyan e-chaskita llamk'achinaykipaq. Urapi butunta ñit'ipay e-chaski imamaytaykiman takyachina chaskita kachamunaykupaq.
 Chay takyachina chaskiqa tuyru t'inkiyuqmi kanqa. Chay tuyru t'inkita qatiy e-chaski imamaytaykip chaniyuq kayninta takyachinaykipaq.",
-'confirmemail_pending'    => '<div class="error">
+'confirmemail_pending'     => '<div class="error">
 Takyachina tuyruqa e-chaski imamaytaykiman kachasqañam; rakiqunaykita ñaqha kichariptiykiqa, huk minutukunata suyanaykichá chayamusunaykipaq, manaraq musuq tuyruta mañakuspayki.
 </div>',
-'confirmemail_send'       => 'Takyachina tuyruta kachamuway',
-'confirmemail_sent'       => 'Takyachina chaskiqa kachasqañam.',
-'confirmemail_oncreate'   => "Takyachina chaskiqa e-chaski imamaytaykiman kachamusqam. Yaykunaykipaqqa qatinayki manam tiyanchu, ichataq kay wikipi e-chaski ruranakunata llamk'achinaykipaq tiyanmi.",
-'confirmemail_sendfailed' => 'Manam atinichu takyachina e-chaskita kachayta. Ama hina kaspa, imamaytaykita mana saqillasqa sananchakunakama llanchiy.
+'confirmemail_send'        => 'Takyachina tuyruta kachamuway',
+'confirmemail_sent'        => 'Takyachina chaskiqa kachasqañam.',
+'confirmemail_oncreate'    => "Takyachina chaskiqa e-chaski imamaytaykiman kachamusqam. Yaykunaykipaqqa qatinayki manam tiyanchu, ichataq kay wikipi e-chaski ruranakunata llamk'achinaykipaq tiyanmi.",
+'confirmemail_sendfailed'  => 'Manam atinichu takyachina e-chaskita kachayta. Ama hina kaspa, imamaytaykita mana saqillasqa sananchakunakama llanchiy.
 
 Kutichisqa chaski: $1',
-'confirmemail_invalid'    => "Takyachina tuyruqa manam allinchu, mawk'ayasqañachá.",
-'confirmemail_needlogin'  => '$1-llawanmi e-chaski imamaytaykita takyachiyta atinki.',
-'confirmemail_success'    => 'E-chaski imamaytaykiqa takyachisqañam. Kunanqa wikiman yaykamuspayki ayniytam atinki.',
-'confirmemail_loggedin'   => 'E-chaski imamaytaykiqa takyachisqañam.',
-'confirmemail_error'      => 'Ima pantasqapas tukurqan takyachinaykita waqaychaypi.',
-'confirmemail_subject'    => '{{SITENAME}} e-chaski imamayta takyachina',
-'confirmemail_body'       => 'Pipas (qamchiki, $1 IP huchhayuq tiyaymanta) kicharirqan {{SITENAME}}paq "$2" sutiyuq rakiqunatam, kay e-chaski imamaytayuq.
+'confirmemail_invalid'     => "Takyachina tuyruqa manam allinchu, mawk'ayasqañachá.",
+'confirmemail_needlogin'   => '$1-llawanmi e-chaski imamaytaykita takyachiyta atinki.',
+'confirmemail_success'     => 'E-chaski imamaytaykiqa takyachisqañam. Kunanqa wikiman yaykamuspayki ayniytam atinki.',
+'confirmemail_loggedin'    => 'E-chaski imamaytaykiqa takyachisqañam.',
+'confirmemail_error'       => 'Ima pantasqapas tukurqan takyachinaykita waqaychaypi.',
+'confirmemail_subject'     => '{{SITENAME}} e-chaski imamayta takyachina',
+'confirmemail_body'        => 'Pipas (qamchiki, $1 IP huchhayuq tiyaymanta) kicharirqan {{SITENAME}}paq "$2" sutiyuq rakiqunatam, kay e-chaski imamaytayuq.
 
 Kay rakiquna chiqapta qamman kapuptinqa, kay t\'inkita qatiy {{SITENAME}}pi e-chaski ruranaykita takyachinaykipaq:
 
 $3
 
-Rakiquna mana qamman kapuptinqa, ama t\'inkita qatiychu. Takyachina tuyruqa $4 pachapim puchukanqa.',
+Rakiquna *mana* qamman kapuptinqa, kay t\'inkita qatiy takyachinaman ama ninaykipaq:
+
+$5
+
+Kay takyachina tuyruqa $4 pachapim puchukanqa.',
+'confirmemail_invalidated' => 'E-chaski imamayta takyachinaman ama nisqam',
+'invalidateemail'          => 'E-chaski takyachinaman ama niy',
 
 # Scary transclusion
 'scarytranscludedisabled' => "[Interwiki ch'aqtayman ama nisqa]",

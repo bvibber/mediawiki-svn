@@ -460,7 +460,7 @@ Du geavaheaddjidovddaldat lea dál anus. Ále vajáldahte rievdadit [[Special:Pr
 'revdelete-text'          => 'Sihkojuvvon veršuvnnat oidnojit siiddu siidohistorjjás, muhto daid sisdoallu ii leat álmmolaš.
 
 Eará bajasdoallit sáhtet lohkat čihkojuvvon sisdoalu ja máhcahit dan.',
-'revdelete-legend'        => 'Veršuvnna rádjehusat:',
+'revdelete-legend'        => 'Veršuvnna rádjehusat',
 'revdelete-hide-text'     => 'Čiega veršuvnna sisdoalu',
 'revdelete-hide-name'     => 'Čiega doaibma ja mearri',
 'revdelete-hide-comment'  => 'Čiega čoahkkáigeasu',
@@ -553,7 +553,6 @@ $1 | $2',
 'saveusergroups'              => 'Vurke',
 'userrights-groupsmember'     => 'Lahttun čuovvovaš joavkkuin:',
 'userrights-groupsavailable'  => 'Joavkkut mat dihttot',
-'userrights-groupshelp'       => 'Vállje joavkku, man hálidat sihkut dahje lasihit. Válljekeahtes joavkkut eai rievdaduvvo. Sáhtat šluhttet válljema nu ahte doalat Ctrl-boalu vuollin deaddildettiin.',
 'userrights-reason'           => 'Sivva',
 'userrights-available-add'    => 'Sáhtat lasihit geavaheddjiid joavkui $1.',
 'userrights-available-remove' => 'Sáhtat sirdit geavaheddjiid joavkkus $1.',

@@ -734,10 +734,6 @@ $2',
 'pagehist'                    => '頁面歷史',
 'deletedhist'                 => '已刪除之歷史',
 
-# Oversight log
-'oversightlog'    => '監督記錄',
-'overlogpagetext' => '下面是一個最近刪除以及由操作員封鎖牽涉到的內容列表。參看下面的[[Special:Ipblocklist|IP封鎖列表]]去查看現時進行的封鎖。',
-
 # History merging
 'mergehistory'                     => '合併頁面歷史',
 'mergehistory-header'              => '這一頁可以講您合併一個來源頁面的歷史到另一個新頁面中。
@@ -876,17 +872,18 @@ $2',
 'userrights-groupsmember'          => '屬於:',
 'userrights-groupsremovable'       => '可移除群組:',
 'userrights-groupsavailable'       => '可用群組:',
-'userrights-groupshelp'            => '請選擇您想讓用戶加入或退出的群組。沒有選擇的群組將不會被改變。您也可以用"CTRL + 左擊滑鼠"複選或取消已經選擇的群組。',
 'userrights-reason'                => '更改原因:',
 'userrights-available-none'        => '您不可以更改組別成員。',
-'userrights-available-add'         => '您可以加入用戶到{{PLURAL:$2|一個|多個}}組中: $1。',
-'userrights-available-remove'      => '您可以從{{PLURAL:$2|一個|多個}}組中移除用戶: $1。',
+'userrights-available-add'         => '您可以加入任何用戶到{{PLURAL:$2|一個|多個}}組中: $1。',
+'userrights-available-remove'      => '您可以從{{PLURAL:$2|一個|多個}}組中移除任何用戶: $1。',
 'userrights-available-add-self'    => '您可以加入您自己到{{PLURAL:$2|一個|多個}}組中: $1。',
 'userrights-available-remove-self' => '您可以從{{PLURAL:$2|一個|多個}}組中移除您自己: $1。',
 'userrights-no-interwiki'          => '您並沒有權限去編輯在其它wiki上的用戶權限。',
 'userrights-nodatabase'            => '資料庫$1不存在或並非為本地的。',
 'userrights-nologin'               => '您必須要以操作員帳戶[[Special:Userlogin|登入]]之後才可以指定用戶權限。',
 'userrights-notallowed'            => '您的帳戶無權限去指定用戶權限。',
+'userrights-changeable-col'        => '您可以更改的群組',
+'userrights-unchangeable-col'      => '您不可以更改的群組',
 
 # Groups
 'group'               => '群組:',
@@ -1712,7 +1709,7 @@ $1',
 'allmessagesdefault'        => '預設的文字',
 'allmessagescurrent'        => '當前的文字',
 'allmessagestext'           => '這裡列出所有可定製的系統介面。',
-'allmessagesnotsupportedDB' => '系統介面功能處於關閉狀態 (wgUseDatabaseMessages)。',
+'allmessagesnotsupportedDB' => "'''{{ns:Special}}:Allmessages'''無法使用，因為'''\$wgUseDatabaseMessages'''選項已被設定關閉。",
 'allmessagesfilter'         => '正則表達式過濾條件：',
 'allmessagesmodified'       => '僅顯示修改過的',
 

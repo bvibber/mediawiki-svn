@@ -571,12 +571,8 @@ Ngì thùng-sṳ̀ ya-yeu hiong Wikimedia pó-chṳn ngì só thì-kâu ke nui-y
 'logdelete-logentry'          => '[[$1]]-ke sṳ-khien khó-kien-sin yí-kîn kiên-kói',
 'revdelete-logaction'         => '$1-chhṳ siû-thin yí-kîn sat-thin chṳ mù-sṳt $2',
 'logdelete-logaction'         => 'Tui-yî [[$3]] ke $1-ke sṳ-khien yí-kîn sat-thin chṳ mù-sṳt $2',
-'revdelete-success'           => 'Siû-thin ke khó-kien-sin yí-kîn sṳ̀n-kûng sat-thin.',
-'logdelete-success'           => 'Sṳ-khien ke khó-kien-sin yí-kîn sṳ̀n-kûng sat-thin.',
-
-# Oversight log
-'oversightlog'    => 'Kam-tuk ki-liu̍k',
-'overlogpagetext' => 'Ha-mien he yit-ke chui-khiûn chhù-hi yî-khi̍p chhâu-chok-yèn fûng-só khiên-sa̍p-to ke nui-yùng lie̍t-péu. Chhâm-siòng ha-mien ke [[Special:Ipblocklist|IP fûng-só lie̍t-péu]] chhà-khon hien-chhai chin-hàng ke fûng-só.',
+'revdelete-success'           => "'''Siû-thin ke khó-kien-sin yí-kîn sṳ̀n-kûng sat-thin.'''",
+'logdelete-success'           => "'''Sṳ-khien ke khó-kien-sin yí-kîn sṳ̀n-kûng sat-thin.'''",
 
 # Diffs
 'difference'              => '(Siû-thin pán-pún-kiên ke chhâ-yi)',
@@ -675,7 +671,6 @@ Ngì thùng-sṳ̀ ya-yeu hiong Wikimedia pó-chṳn ngì só thì-kâu ke nui-y
 'saveusergroups'             => 'Pó-chhùn yung-fu khiùn-chû',
 'userrights-groupsmember'    => 'Su̍k-yî:',
 'userrights-groupsavailable' => 'Hí-khó yung khiùn-chû:',
-'userrights-groupshelp'      => 'Chhiáng sién-chet ngì sióng-ngiong yung-fu kâ-ngi̍p fe̍t-chá thui-chhut ke khiùn-chû. Mò-yû sién-chet ke khiùn-chû chiông put-voi pûn kói-pien. Ngì ya-he khó-yî yung "CTRL + chó-kit va̍t-chhú "fuk-sién fe̍t-he chhí-sêu yí-kîn sién-chet ke khiùn-chû.',
 'userrights-reason'          => 'Kiên-kói ngièn-yîn:',
 
 # Groups
@@ -1172,7 +1167,7 @@ Chhiáng chhâm-kháu [[Special:Log/delete|chhù-hi ngit-ki]] lòi chhà-chhut c
 'ipboptions'                  => '2 séu-sṳ̀:2 séu-sṳ̀, 1 thiên:1 thiên, 3 thiên:3 thiên, 1 chû:1 chû, 2 chû:2 chû, 1-ke ngie̍t:1-ke ngie̍t, 3-ke ngie̍t:3-ke ngie̍t, 6-ke ngie̍t:6-ke ngie̍t, 1-ngièn:1-ngièn, yún-kiú :yún-kiú', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'khì-thâ',
 'ipbotherreason'              => 'Khì-thâ lî-yù:',
-'ipbhidename'                 => 'Chhai chhà-fûng ngit-ki, fa̍t-chhiok chhà-fûng lie̍t-péu yî-khi̍p yung-fu lie̍t-péu chûng yún-chhòng yung-fu-miàng/IP',
+'ipbhidename'                 => 'Chhai chhà-fûng ngit-ki, fa̍t-chhiok chhà-fûng lie̍t-péu yî-khi̍p yung-fu lie̍t-péu chûng yún-chhòng yung-fu-miàng.',
 'badipaddress'                => 'IP-ke thi-tiám mò chṳn-khok.',
 'blockipsuccesssub'           => 'chhà-fûng sṳ̀n-kûng',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] yí-kîn pûn chhà-fûng. <br />Chhâm-siòng [[Special:Ipblocklist|pûn-fûng IP thi-tiám lie̍t-péu]] yî fu̍k-sṳ́m chhà-fûng.',

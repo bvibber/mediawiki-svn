@@ -210,7 +210,6 @@
 	'nl' => 'Nederlands',	# Dutch
 	'nn' => "\xE2\x80\xAANorsk (nynorsk)\xE2\x80\xAC",	# Norwegian (Nynorsk)
 	'no' => "\xE2\x80\xAANorsk (bokmål)\xE2\x80\xAC",		# Norwegian
-	'non' => 'Norrǿna',		# Old Norse
 	'nov' => 'Novial',		# Novial
 	'nrm' => 'Nouormand',	# Norman
 	'nso' => 'Sesotho sa Leboa',	# Northern Sotho
@@ -286,7 +285,9 @@
 	'ta' => 'தமிழ்',	# Tamil
 	'te' => 'తెలుగు',	# Telugu
 	'tet' => 'Tetun',	# Tetun
-	'tg' => 'Тоҷикӣ',	# Tajiki
+	'tg' => 'Тоҷикӣ/tojikī',	# Tajiki (falls back to tg-cyrl)
+	'tg-cyrl' => 'Тоҷикӣ',	# Tajiki (Cyrllic script) (default)
+	'tg-latn' => 'tojikī',	# Tajiki (Latin script)
 	'th' => 'ไทย',	# Thai
 	'ti' => 'ትግርኛ',		# Tigrinya
 	'tk' => 'Türkmen',	# Turkmen

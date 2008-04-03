@@ -690,10 +690,6 @@ $2',
 'revdelete-success'           => '修訂的可見性已經成功設定。',
 'logdelete-success'           => '事件的可見性已經成功設定。',
 
-# Oversight log
-'oversightlog'    => '監督記錄',
-'overlogpagetext' => '下面是一個最近刪除以及由操作員封鎖牽涉到的內容列表。參看下面的[[Special:Ipblocklist|IP封鎖列表]]去查看現時進行的封鎖。',
-
 # History merging
 'mergehistory'         => '合併修訂記錄',
 'mergehistory-header'  => "這一頁可以講您合併一個來源頁面的歷史到另一個新頁面中。
@@ -817,7 +813,6 @@ $2',
 'saveusergroups'              => '保存使用者群組',
 'userrights-groupsmember'     => '屬於:',
 'userrights-groupsavailable'  => '可用群組:',
-'userrights-groupshelp'       => '請選擇您想讓使用者加入或退出的群組。沒有選擇的群組將不會被改變。您也可以用"CTRL + 左擊滑鼠"複選或取消已經選擇的群組。',
 'userrights-reason'           => '更改原因:',
 'userrights-available-none'   => '您不可以更改組別成員。',
 'userrights-available-add'    => '您可以加入使用者到$1。',

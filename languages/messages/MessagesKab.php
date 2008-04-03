@@ -622,7 +622,7 @@ Waqila yella kter n talɣut [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}
 meɛna imuren seg-sen zemren imdanen a ten-ẓren.
 
 Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a ten-mḥan, ḥaca ma llan icekkilen.',
-'revdelete-legend'            => 'Eg icekkilen:',
+'revdelete-legend'            => 'Eg icekkilen',
 'revdelete-hide-text'         => 'Ffer aḍris n tsiwelt',
 'revdelete-hide-name'         => 'Ffer tigawt d nnican',
 'revdelete-hide-comment'      => 'Ffer abeddel n uwennit',
@@ -637,12 +637,8 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 'logdelete-logentry'          => 'asekkud n tamirt tettubeddel i [[$1]]',
 'revdelete-logaction'         => '$1 {{plural:$1|tasiwelt tettuxdem|tisiwal ttuxedment}} i anaw $2',
 'logdelete-logaction'         => '$1 {{plural:$1|tamirt|isallen}} n [[$3]] {{plural:$1|tettuxdem|ttuxedmen}} i anaw $2',
-'revdelete-success'           => 'Asekkud n tasiwelt yettuxdem.',
-'logdelete-success'           => 'Asekkud n tamirt yettuxdem.',
-
-# Oversight log
-'oversightlog'    => 'Aɣmis n oversight',
-'overlogpagetext' => 'Deg ukessar, d umuɣ n umḥay d wumuɣ n uɛekkil ineggura n wayen yettwaffren ɣef inedbalen. Ẓer [[Special:Ipblocklist|Umuɣ n uɛekkil n IP]].',
+'revdelete-success'           => "'''Asekkud n tasiwelt yettuxdem.'''",
+'logdelete-success'           => "'''Asekkud n tamirt yettuxdem.'''",
 
 # Diffs
 'difference'              => '(Imgerraden ger tisiwal)',
@@ -742,8 +738,6 @@ i yesɛan akk awalen i banen-d).",
 'saveusergroups'              => 'Smekti iderman n yimseqdacen',
 'userrights-groupsmember'     => 'Amaslad deg:',
 'userrights-groupsavailable'  => 'Iderman i yellan:',
-'userrights-groupshelp'       => 'Xtar anda amseqdac yettwakkes/yettnerni seg/deg iderman.
-Iderman ayen ur ten-textareḍ ara ur ttbeddlen ara. Tzemreḍ ad tekkseḍ adrum s CTRL + Click aẓelmaḍ',
 'userrights-reason'           => 'Ayɣer yettubeddel:',
 'userrights-available-add'    => 'Tzemreḍ ad ternuḍ imseqdacen i $1.',
 'userrights-available-remove' => 'Tzemreḍ ad tekkseḍ imseqdacen seg $1.',

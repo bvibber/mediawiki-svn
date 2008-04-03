@@ -678,7 +678,7 @@ pwede ser na igwang mga detalye sa [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'revdelete-text'              => "An mga pagpakarhay asin mga panyayari na pigparâ mahihiling pa sa historya asin mga historial kan páhina, pero an ibang parte kan mga laog kaini dai na ipapahiling sa publiko.
 
 An ibang mga administrador sa ining wiki pwede pang maghiling kan mga nakatagong laog asin pwede pa nindang bawîon an pagparâ kaini sa paggamit kan parehong ''interface'', kun mayô pang mga ibang restriksyón.",
-'revdelete-legend'            => 'Ipwesto an mga restriksyón:',
+'revdelete-legend'            => 'Ipwesto an mga restriksyón',
 'revdelete-hide-text'         => 'Tagôon an teksto kan pagpakarhay',
 'revdelete-hide-name'         => 'Tagôon an aksyon asin target',
 'revdelete-hide-comment'      => 'Tagôon an komento sa paghirá',
@@ -693,13 +693,8 @@ An ibang mga administrador sa ining wiki pwede pang maghiling kan mga nakatagong
 'logdelete-logentry'          => 'Pigribayan an bisibilidad nin panyayari kan [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revision|revisions}} pigpwesto sa modang $2',
 'logdelete-logaction'         => '$1 {{PLURAL$1|panyayari|mga panyayari}} sa [[$3]] pigpwesto sa modang $2',
-'revdelete-success'           => 'Nakapwesto na an bisibilidad kan pagpakarhay.',
-'logdelete-success'           => 'Nakapuesto na an katalâan kan nangyari.',
-
-# Oversight log
-'oversightlog'    => 'Historial nin pagmanaw',
-'overlogpagetext' => 'Mahihiling sa babâ an lista kan kaaagi pa sanang mga pagparâ asin mga binagat na may mga laog na pigtatago sa mga Sysops.
-Hilingon tabî an [[Special:Ipblocklist|lista nin binagat na IP]] para sa lista kan mga presenteng pagbawal asin pagbagat.',
+'revdelete-success'           => "'''Nakapwesto na an bisibilidad kan pagpakarhay.'''",
+'logdelete-success'           => "'''Nakapuesto na an katalâan kan nangyari.'''",
 
 # Diffs
 'history-title'           => 'Historial kan pagriribay kan "$1"',
@@ -800,8 +795,6 @@ Hilingon tabî an [[Special:Ipblocklist|lista nin binagat na IP]] para sa lista 
 'saveusergroups'              => 'Itagama an mga Grupo nin Páragamit',
 'userrights-groupsmember'     => 'Myembro kan:',
 'userrights-groupsavailable'  => 'Mga grupong dispuesto:',
-'userrights-groupshelp'       => 'Pilion tabî an mga grupong boot mong halîon o idugang ining parágamit.
-Dai babâgohon an mga grupong dai pigpili. Pwede mong bawîon an pagpili sa pagpindot kan CTRL + Left',
 'userrights-reason'           => 'Rasón kan pagribay:',
 'userrights-available-none'   => 'Dai mo puedeng hirâon an grupo nin mga miembro.',
 'userrights-available-add'    => 'Pwede kang magdugang nin mga parágamit sa $1.',
@@ -1426,7 +1419,7 @@ Magkaag nin espisipikong rason (halimbawa, magtao nin ehemplo kan mga páhinang 
 'ipboptions'                  => '2ng oras:2 hours,1ng aldaw:1 day,3ng aldaw:3 days,1ng semana:1 week,2ng semana:2 weeks,1ng bulan:1 month,3ng bulan:3 months,6 na bulan:6 months,1ng taon:1 year,daing kasagkoran:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'iba',
 'ipbotherreason'              => 'Iba/dugang na rasón:',
-'ipbhidename'                 => 'Itago an ngaran in paragamit/IP para dai mahiling sa historial nin pagbagat, nakaandar na lista nin binagat asin lista nin paragamit',
+'ipbhidename'                 => 'Itago an ngaran in paragamit para dai mahiling sa historial nin pagbagat, nakaandar na lista nin binagat asin lista nin paragamit',
 'badipaddress'                => 'Dai pwede ining IP',
 'blockipsuccesssub'           => 'Nagibo na an pagbagát',
 'blockipsuccesstext'          => 'Binagat si [[Special:Contributions/$1|$1]].

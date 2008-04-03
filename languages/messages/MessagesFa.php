@@ -253,7 +253,7 @@ $magicWords = array(
 	'contentlanguage'        => array( 1,    'زبان‌محتوا', 'زبان_محتوا', 'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'       => array( 1,    'صفحه‌درفضای‌نام', 'صفحه_در_فضای_نام', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'         => array( 1,    'تعدادمدیران', 'تعداد_مدیران', 'NUMBEROFADMINS' ),
-	'formatnum'              => array( 0,    'FORMATNUM' ),
+	'formatnum'              => array( 0,    'بافت‌عدد', 'بافت_عدد' ),
 	'padleft'                => array( 0,    'PADLEFT' ),
 	'padright'               => array( 0,    'PADRIGHT' ),
 	'special'                => array( 0,    'ویژه', 'special' ),
@@ -814,8 +814,7 @@ $3
 'whitelistedittitle'        => 'برای ویرایش باید به سیستم وارد شوید.',
 'whitelistedittext'         => 'برای ویرایش مقاله‌ها باید به سیستم شوید: $1.',
 'whitelistreadtitle'        => 'برای خواندن باید به سیستم وارد شوید',
-'whitelistreadtext'         => '
-برای خواندن مقاله‌ها باید [[Special:Userlogin|به سیستم وارد شوید]].',
+'whitelistreadtext'         => 'برای خواندن مقاله‌ها باید [[Special:Userlogin|به سیستم وارد شوید]].',
 'whitelistacctitle'         => 'شما مجاز نیستید حساب درست کنید.',
 'whitelistacctext'          => 'برای ایجاد حساب در این ویکی باید [[Special:Userlogin|به سیستم وارد شوید]] و اجازه
 ‌های مربوط به این کار را داشته باشید.',
@@ -851,7 +850,8 @@ $3
 'usercssjsyoucanpreview'    => "<strong>نکته:</strong> قبل از این که فایل CSS یا JS خود را ذخیره کنید، با استفاده از دکمه '''پیش‌نمایش''' می‌توان آن را آزمایش کنید.",
 'usercsspreview'            => "'''فراموش مکنید که CSS کاربریتان فقط پیش‌نمایش یافته و هنوز ذخیره نشده‌است.'''",
 'userjspreview'             => "'''فراموش مکنید که شما فقط دارید جاوااسکریپت کاربریتان را امتحان می‌کنید/پیش‌نمایشش را می‌بینید. هنوز ذخیره نشده‌است!'''",
-'userinvalidcssjstitle'     => "'''هشدار:''' پوسته‌ای با نام ''$1'' وجود ندارد. توجه کنید که صفحه‌های &#8206;.css و &#8206;.js با حروف کوچک نوشته می‌شوند. نمونه:  کاربر:فو/monobook.css در مقابل کاربر:فو/Monobook.css",
+'userinvalidcssjstitle'     => "'''هشدار:''' پوسته‌ای به نام «$1» وجود ندارد.
+به یاد داشته باشید که صفحه‌های شخصی &#8206;.css و &#8206;.js باید عنوانی با حروف کوچک داشته باشند؛ نمونه: {{ns:user}}:فو/monobook.css در مقابل {{ns:user}}:فو/Monobook.css.",
 'updated'                   => '(به‌روز شد)',
 'note'                      => '<strong>نکته:</strong>',
 'previewnote'               => 'توجه کنید که این فقط پیش‌نمایش است، و ذخیره نشده است!',
@@ -981,10 +981,14 @@ $3
 'logdelete-logaction'         => '$1 {{PLURAL:$1|مورد|مورد}} به [[$3]] به وضعیت $2 تغییر یافتند.',
 'revdelete-success'           => 'تغییر پیدایی نسخه با موفقیت انجام شد.',
 'logdelete-success'           => 'تغییر پیدایی مورد با موفقیت انجام شد.',
+'revdel-restore'              => 'تغییر پیدایی',
+'pagehist'                    => 'تاریخچهٔ صفحه',
+'deletedhist'                 => 'تاریخچهٔ حذف شده',
 
-# Oversight log
-'oversightlog'    => 'سیاههٔ نظارت',
-'overlogpagetext' => 'آن چه در زیر می‌آید فهرست آخرین موارد حذف و قطع دسترسی است که شامل اطلاعاتی است که مدیران قادر به مشاهدهٔ آن نیستند.',
+# Suppression log
+'suppressionlog'     => 'سیاههٔ فرونشانی',
+'suppressionlogtext' => 'در زیر فهرستی از آخرین حذف‌ها و قطع دسترسی‌هایی که حاوی محتوایی هستند که از مدیران پنهان شده‌اند را می‌بینید. 
+برای مشاهدهٔ فهرستی از قطع دسترسی‌های فعال [[Special:Ipblocklist|فهرست قطع‌دسترسی‌ها]] را ببینید.',
 
 # History merging
 'mergehistory'                     => 'ادغام تاریخچه صفحه‌ها',
@@ -1002,12 +1006,14 @@ $3
 'mergehistory-go'                  => 'نمایش تاریخچه قابل ادغام',
 'mergehistory-submit'              => 'ادغام نسخه‌ها',
 'mergehistory-empty'               => 'هیچ‌یک از نسخه‌ها قابل ادغام نیستند',
-'mergehistory-success'             => '$3 نسخه از [[:$1]] با [[:$2]] ادغام شد.',
+'mergehistory-success'             => '$3 نسخه از [[:$1]]  با موفقیت در [[:$2]] ادغام {{PLURAL:$3|شد|شدند}}.',
 'mergehistory-fail'                => 'ادغام تاریخچه ممکن نیست، لطفاً گزینه‌های صفحه و زمان را بازبینی کنید.',
 'mergehistory-no-source'           => 'صفحهٔ مبدا $1 وجود ندارد.',
 'mergehistory-no-destination'      => 'صفحهٔ مقصد $1 وجود ندارد.',
 'mergehistory-invalid-source'      => 'صفحهٔ مبدا باید عنوان قابل قبولی داشته باشد.',
 'mergehistory-invalid-destination' => 'صفحهٔ مقصد باید عنوان قابل قبولی داشته باشد.',
+'mergehistory-autocomment'         => '[[:$1]] را در [[:$2]] ادغام کرد',
+'mergehistory-comment'             => '[[:$1]] را در [[:$2]] ادغام کرد: $3',
 
 # Merge log
 'mergelog'           => 'سیاهه ادغام',
@@ -1040,8 +1046,13 @@ $3
 'viewprevnext'          => 'نمایش ($1) ($2) ($3).',
 'search-result-size'    => '$1 ({{PLURAL:$2|یک کلمه|$2 کلمه}})',
 'search-result-score'   => 'ارتباط: $1%',
+'search-redirect'       => '(تغییر مسیر $1)',
+'search-section'        => '(بخض $1)',
+'search-suggest'        => 'آیا منظورتان این بود: $1',
+'searchall'             => 'همه',
 'showingresults'        => "نمایش {{PLURAL:$1|'''1''' نتیجه|'''$1''' نتیجه}} در پایین، آغاز از #'''$2'''.",
 'showingresultsnum'     => "نمایش '''$3''' {{PLURAL:$3|نتیجه|نتیجه}} در پایین، آغاز از #'''$2'''.",
+'showingresultstotal'   => "نمایش نتیجه‌های '''$1 - $2''' از '''$3'''",
 'nonefound'             => "<strong>نکته</strong>
 جستجوهای ناموفق معمولاً به علت جستن واژگان متداولی چون ''از'' و ''را'' که فهرست نشده‌اند، رخ می‌دهد یا اینکه چندین گزارهٔ جستجو وارد می‌شود (فقط صفحه‌هایی که حاوی همهٔ این گزاره‌ها باشند در نتیجه نمایش داده می‌شوند.).",
 'powersearch'           => 'جستجوی پیشرفته',
@@ -1124,7 +1135,9 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'userrights-groupsmember'          => 'عضو:',
 'userrights-groupsremovable'       => 'گروه‌های قابل حذف:',
 'userrights-groupsavailable'       => 'گروه‌های موجود:',
-'userrights-groupshelp'            => 'گروه‌هایی را که می‌خواهید یک کاربر از آن حذف یا به آن اضافه شود انتخاب کنید. برای این که یک گروه را از حالت انتخاب شده در بیاورید دکمه CTRL را نگاه دارید و کلیک چپ کنید.',
+'userrights-groups-help'           => 'شما می‌توانید گروه‌هایی که کاربر در آن قرار دارد را تغییر دهید.
+یک جعبه علامت خورده به این معنی است که کاربر در آن گروه قرار دارد.
+یک جعبه خالی به این معنی است که کاربر در آن گروه قرار ندارد.',
 'userrights-reason'                => 'علت تغییر:',
 'userrights-available-none'        => 'شما نمی‌توانید عضویت در گروه‌ها را تغییر دهید.',
 'userrights-available-add'         => 'شما می‌توانید کاربرانی را به این {{PLURAL:$2|گروه|گروه‌ها}} اضافه کنید: $1.',
@@ -1135,6 +1148,8 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'userrights-nodatabase'            => 'پایگاه داده $1 وجود ندارد یا محلی نیست.',
 'userrights-nologin'               => 'شما باید با یک حساب کاربری دارای اختیار مدیریتی [[Special:Userlogin|به سیستم وارد شوید]] تا بتوانید اختیارات کاربران را تعیین کنید.',
 'userrights-notallowed'            => 'حساب کاربری شما اجازه تغییر اختیارات کاربری را ندارد.',
+'userrights-changeable-col'        => 'گروه‌هایی که می‌توانید تغییر دهید',
+'userrights-unchangeable-col'      => 'گروه‌هایی که نمی‌توانید تغییر دهید',
 
 # Groups
 'group'               => 'گروه:',
@@ -1142,17 +1157,20 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'group-bot'           => 'ربات‌ها',
 'group-sysop'         => 'مدیران',
 'group-bureaucrat'    => 'دیوان‌سالاران',
+'group-suppress'      => 'ناظران',
 'group-all'           => '(همه)',
 
 'group-autoconfirmed-member' => 'کاربر تاییدشده',
 'group-bot-member'           => 'ربات',
 'group-sysop-member'         => 'مدیر',
 'group-bureaucrat-member'    => 'دیوان‌سالار',
+'group-suppress-member'      => 'ناظر',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:کاربران تاییدشده',
 'grouppage-bot'           => '{{ns:project}}:ربات‌ها',
 'grouppage-sysop'         => '{{ns:project}}:مدیران',
 'grouppage-bureaucrat'    => '{{ns:project}}:دیوان‌سالارها',
+'grouppage-suppress'      => '{{ns:project}}:نظارت',
 
 # User rights log
 'rightslog'      => 'سیاههٔ اختیارات کاربر',
@@ -1262,6 +1280,7 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'uploadvirus'                 => 'این پرونده ویروس دارد! جزئیات : $1',
 'sourcefilename'              => 'نام پروندهٔ اصلی:',
 'destfilename'                => 'نام پروندهٔ مقصد:',
+'upload-maxfilesize'          => 'حداکثر اندازهٔ پرونده: $1',
 'watchthisupload'             => 'پی‌گیری این صفحه',
 'filewasdeleted'              => 'پرونده‌ای با همین نام پیشتر بارگذاری و پس از آن پاک شده‌است. بهتر است پیش از بارگذاری مجدد نگاهی به $1 بیندازید.',
 'upload-wasdeleted'           => "'''هشدار: شما در حال بارگذاری پرونده‌ای هستید که پیش از این حذف شده است.'''
@@ -1474,6 +1493,7 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'notargettext'            => 'شما صفحهٔ یا کاربر مقصدی برای انجام این عمل روی آن مشخص نکرده‌اید.',
 'pager-newer-n'           => '{{PLURAL:$1|یک مورد جدیدتر|$1 مورد جدیدتر}}',
 'pager-older-n'           => '{{PLURAL:$1|یک مورد قدیمی‌تر|$1 مورد قدیمی‌تر}}',
+'suppress'                => 'نظارت',
 
 # Book sources
 'booksources'               => 'منابع کتاب',
@@ -1578,7 +1598,7 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'watchlist-show-minor' => 'نمایش ویرایش‌های جزئی',
 'watchlist-hide-minor' => 'پنهان کردن ویرایش‌های جزئی',
 
-# Displayed when you click the "watch" button and it's in the process of watching
+# Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'پی‌گیری...',
 'unwatching' => 'توقف پی‌گیری...',
 
@@ -1632,6 +1652,7 @@ $NEWPAGE
 'deletedtext'                 => '«<nowiki>$1</nowiki>» حذف شده است.
 برای سابقهٔ حذف‌های اخیر به $2 مراجعه کنید.',
 'deletedarticle'              => '«$1» حذف شد',
+'suppressedarticle'           => '«[[$1]]» را فرونشاند',
 'dellogpage'                  => 'سیاههٔ_حذف',
 'dellogpagetext'              => 'فهرست زیر فهرستی از آخرین حذف‌هاست.
 همهٔ زمان‌های نشان‌داده‌شده زمان خادم (وقت گرینویچ) است.',
@@ -1760,8 +1781,6 @@ $1',
 'mycontris'     => 'مشارکت‌های من',
 'contribsub2'   => 'برای $1 ($2)',
 'nocontribs'    => 'هیچ تغییری با این مشخصات یافت نشد.',
-'ucnote'        => 'در زیر آخرین <b>$1</b> تغییر این کاربر در <b>$2</b> روز اخیر می‌آید.',
-'uclinks'       => 'نمایش آخرین $1 تغییر؛ نمایش $2 روز اخیر.',
 'uctop'         => ' (بالا)',
 'month'         => 'در این ماه (و قبل از آن)',
 'year'          => 'در این سال (و قبل از آن)',
@@ -1965,7 +1984,7 @@ $1',
 'allmessagesdefault'        => 'متن پیش‌فرض',
 'allmessagescurrent'        => 'متن کنونی',
 'allmessagestext'           => 'این فهرستی از همهٔ پیغام‌های موجود در فضای نام مدیاویکی است.',
-'allmessagesnotsupportedDB' => "نمی‌توان از '''ویژه:همهٔ پیغام‌ها''' استفاده کرد چود '''\$wgUseDatabaseMessages''' خاموش شده است.",
+'allmessagesnotsupportedDB' => "نمی‌توان از '''{{ns:special}}:همهٔ پیغام‌ها''' استفاده کرد چود '''\$wgUseDatabaseMessages''' خاموش شده است.",
 'allmessagesfilter'         => 'صافی نام پیغام:',
 'allmessagesmodified'       => 'تنها نمایش تغییریافته‌ها',
 
@@ -2466,31 +2485,36 @@ $1',
 'monthsall'        => 'همهٔ ماه‌ها',
 
 # E-mail address confirmation
-'confirmemail'            => 'تأیید نشانی پست الکترونیکی',
-'confirmemail_noemail'    => 'شما در صفحهٔ [[Special:Preferences|ترجیحات کاربری]] خود نشانی پست الکترونیک معتبری وارد نکرده‌اید.',
-'confirmemail_text'       => 'این ویکی شما را ملزم به تأیید اعتبار پست الکترونیک خود، پیش از استفاده از خدمات پست الکترونیک اینجا می‌کند. دکمهٔ زیرین را فعال کنید تا نامهٔ تأییدی به نشانی شما فرستاده شود. این نامه دربردارندهٔ پیوندی خواهد بود که حاوی یک کد است. پیوند را در مرورگر خود بار کنید (اجرا) کنید تا اعتبار نشانی پست الکترونیک شما مسجل شود.',
-'confirmemail_pending'    => '<div class="error">
+'confirmemail'             => 'تأیید نشانی پست الکترونیکی',
+'confirmemail_noemail'     => 'شما در صفحهٔ [[Special:Preferences|ترجیحات کاربری]] خود نشانی پست الکترونیک معتبری وارد نکرده‌اید.',
+'confirmemail_text'        => 'این ویکی شما را ملزم به تأیید اعتبار پست الکترونیک خود، پیش از استفاده از خدمات پست الکترونیک اینجا می‌کند. دکمهٔ زیرین را فعال کنید تا نامهٔ تأییدی به نشانی شما فرستاده شود. این نامه دربردارندهٔ پیوندی خواهد بود که حاوی یک کد است. پیوند را در مرورگر خود بار کنید (اجرا) کنید تا اعتبار نشانی پست الکترونیک شما مسجل شود.',
+'confirmemail_pending'     => '<div class="error">
 یک کد تأییدی پیشتر برای شما به صورت الکترونیک فرستاده شده‌است. اگر همین اواخر حساب خود را باز کرده‌اید شاید بد نباشد که پیش از درخواست یک کد جدید چند دقیقه درنگ کنید تا شاید نامهٔ قبلی برسد.
 </div>',
-'confirmemail_send'       => 'پُست‌کردن یک کد تأیید',
-'confirmemail_sent'       => 'نامهٔ الکترونیکی تأییدی فرستاده شد.',
-'confirmemail_oncreate'   => 'یک کد تأییدی به نشانی پست الکترونیک شما فرستاده شد. برای واردشدن به سیستم نیازی به این کد نیست، ولی برای راه‌اندازی امکانات وابسته به پست الکترونیک در این ویکی به آن نیاز خواهید داشت.',
-'confirmemail_sendfailed' => 'فرستادن پست الکترونیکی تأییدی ممکن نشد. وجود نویسه‌های نامعتبر در نشانی را وارسی کنید.
+'confirmemail_send'        => 'پُست‌کردن یک کد تأیید',
+'confirmemail_sent'        => 'نامهٔ الکترونیکی تأییدی فرستاده شد.',
+'confirmemail_oncreate'    => 'یک کد تأییدی به نشانی پست الکترونیک شما فرستاده شد. برای واردشدن به سیستم نیازی به این کد نیست، ولی برای راه‌اندازی امکانات وابسته به پست الکترونیک در این ویکی به آن نیاز خواهید داشت.',
+'confirmemail_sendfailed'  => 'فرستادن پست الکترونیکی تأییدی ممکن نشد. وجود نویسه‌های نامعتبر در نشانی را وارسی کنید.
 
 $1',
-'confirmemail_invalid'    => 'کد تأیید نامعتبر است. ممکن است که منقضی شده باشد.',
-'confirmemail_needlogin'  => 'برای تأیید نشانی پست الکترونیکتان نیاز به $1 دارید.',
-'confirmemail_success'    => 'نشانی پست الکترونیکی شما تأیید شده‌است. همکنون می‌توانید به سیستم وارد شده و از ویکی لذت ببرید.',
-'confirmemail_loggedin'   => 'نشانی پست الکترونیکی شما تأیید شد.',
-'confirmemail_error'      => 'هنگام ذخیرهٔ تأیید شما به مشکلی برخورده شد.',
-'confirmemail_subject'    => 'تأیید نشانی پست الکترونیک {{SITENAME}}',
-'confirmemail_body'       => 'Someone, probably you from IP address $1, has registered an
+'confirmemail_invalid'     => 'کد تأیید نامعتبر است. ممکن است که منقضی شده باشد.',
+'confirmemail_needlogin'   => 'برای تأیید نشانی پست الکترونیکتان نیاز به $1 دارید.',
+'confirmemail_success'     => 'نشانی پست الکترونیکی شما تأیید شده‌است. همکنون می‌توانید به سیستم وارد شده و از ویکی لذت ببرید.',
+'confirmemail_loggedin'    => 'نشانی پست الکترونیکی شما تأیید شد.',
+'confirmemail_error'       => 'هنگام ذخیرهٔ تأیید شما به مشکلی برخورده شد.',
+'confirmemail_subject'     => 'تأیید نشانی پست الکترونیک {{SITENAME}}',
+'confirmemail_body'        => 'Someone, probably you from IP address $1, has registered an
 account "$2" with this e-mail address on {{SITENAME}}.
 
 To confirm that this account really does belong to you and activate
 e-mail features on {{SITENAME}}, open this link in your browser:
 
 $3
+
+If you did *not* register the account, follow this link
+to cancel the e-mail address confirmation:
+
+$5
 
 If this is *not* you, don\'t follow the link. This confirmation code
 will expire at $4.
@@ -2503,8 +2527,15 @@ will expire at $4.
 
 $3
 
+اگر شما این حساب کاربری را ثبت *نکرده‌اید*، لطفاً پیوند زیر را
+دنبال کنید تا تایید نشانی پست الکترونیکی لغو شود:
+
+$5
+
 اگر این شما *نیستید* لطفاً پیوند را دنبال مکنید. این کدِ تأیید در تاریخ $4 منقضی خواهد شد.
 </div>',
+'confirmemail_invalidated' => 'تایید نشانی پست الکترونیکی لغو شد',
+'invalidateemail'          => 'لغو کردن تایید نشانی پست الکترونیکی',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[تراگنجانش بین‌ویکیانه فعال نیست]',

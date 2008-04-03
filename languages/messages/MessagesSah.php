@@ -598,7 +598,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 # "Undo" feature
 'undo-success' => 'Правка может быть отменена. Пожалуйста, просмотрите сравнение версий, чтобы убедиться, что это именно те изменения, которые вас интересуют, и нажмите «Записать страницу», чтобы изменения вступили в силу.',
 'undo-failure' => 'Уларытыы төннөр кыаҕа суох. Ыккардынааҕы көннөрүүлэр бэйэ бэйэлэригэр сөп түбэспэттэр.',
-'undo-summary' => '[[{{ns:special}}:Contributions/$2|$2]] кыттааччы ([[User_talk:$2|ырытыы]]) $1 нүөмэрдээх уларытыытын сотон оннугар туһэрэргэ.',
+'undo-summary' => '[[Special:Contributions/$2|$2]] кыттааччы ([[User_talk:$2|ырытыы]]) $1 нүөмэрдээх уларытыытын сотон оннугар туһэрэргэ.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Саҥа ааты киллэрэр сатаммат',
@@ -659,7 +659,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 
 {{SITENAME}} администратордара кистэммит суруктары көрөр уонна сотуллубуту төттөрү төннөрөр кыахтаахтар
 (эбии хааччахтааһын турбатах буоллаҕына).',
-'revdelete-legend'            => 'Хааччахтааһын:',
+'revdelete-legend'            => 'Хааччахтааһын',
 'revdelete-hide-text'         => 'Сирэй бу торумун кистээ',
 'revdelete-hide-name'         => 'Дьайыыны уонна дьайыы сыалын кистээ.',
 'revdelete-hide-comment'      => 'Ырытыыны кистээ',
@@ -674,13 +674,8 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'logdelete-logentry'          => '[[$1]] дьайыы көстүүтэ уларыйда',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|торум|торумнар}} $2 режимҥа {{PLURAL:$1|көстө|көстүлэр}}',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|событие|события|событий}} страницы [[$3]] {{plural:$1|переведено|переведены|переведены}} в режим $2',
-'revdelete-success'           => 'Торум көстүүтэ сөпкө уларыйда.',
-'logdelete-success'           => 'Дьайыы көстүүтэ сөпкө уларыйда.',
-
-# Oversight log
-'oversightlog'    => 'Кистээһин историята',
-'overlogpagetext' => 'Манна администратордартан кистэммит матырыйаалларыга сигэнэр бүтэһик сотуулар уонна хааччахтааһыннар көстөллөр.
-Билигин туттуллар хааччахтаныылары [[Special:Ipblocklist|манна]] көрүөххэ сөп.',
+'revdelete-success'           => "'''Торум көстүүтэ сөпкө уларыйда.'''",
+'logdelete-success'           => "'''Дьайыы көстүүтэ сөпкө уларыйда.'''",
 
 # History merging
 'mergehistory'                     => 'Силбэһии сирэйин хронологията',
@@ -810,7 +805,6 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'userrights-groupsmember'          => 'Бу бөлөхтөргө киирэр:',
 'userrights-groupsremovable'       => 'Уларытыллар бөлөхтөр:',
 'userrights-groupsavailable'       => 'Бу бөлөхтөргө киириэххэ сөп:',
-'userrights-groupshelp'            => 'Кыттааччыны киллэриэххин эбэтэр таһаарыаххын баҕарар бөлөхтөргүн тал. Талбатах бөлөхтөрүҥ уларыйбаттар. Снять выделение с группы можно используя CTRL + левую клавишу мыши.',
 'userrights-reason'                => 'Уларытыы төрүөтэ:',
 'userrights-available-none'        => 'Бөлөххө киириини уларытар кыаҕыҥ суох.',
 'userrights-available-add'         => 'Эн бу {{PLURAL:$2|бөлөххө|бөлөхтөргө}} кыттааччылары киллэрэр кыахтааххын: $1',
@@ -1487,7 +1481,7 @@ $1',
 'ipboptions'                  => '2 чаас:2 hours,1 күн:1 day,3 күн:3 day,1 нэдиэлэ:1 week,2 нэдиэлэ:2 week,1 ый:1 month,3 ый:3 month,6 ый:6 month,1 сыл:1 month,больдьоҕо суох:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'атын',
 'ipbotherreason'              => 'Атын/эбии биричиинэлэр:',
-'ipbhidename'                 => 'Кыттааччы аатын/IP-тын бобуу сурунаалыгар, бобуллубуттар уонна кытааччылар уопсай испииһэктэригэр көрдөрүмэ',
+'ipbhidename'                 => 'Кыттааччы аатын бобуу сурунаалыгар, бобуллубуттар уонна кытааччылар уопсай испииһэктэригэр көрдөрүмэ',
 'badipaddress'                => 'IP аадырыһа сыыһа',
 'blockipsuccesssub'           => 'Тохтотулунна',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|«$1»]] бобуллубут/тохтотуллубут.<br />

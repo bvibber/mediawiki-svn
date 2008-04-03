@@ -517,7 +517,7 @@ Sa màkkaanu IP mooy $3 xammeekaayu téye gi mooy #$5. Di la sakku nga joxe leen
 'newarticle'                => '(Bees)',
 'newarticletext'            => "Da ngaa topp ab lëkkalekaay buy jëme ci aw xët wu amagul. ngir sos xët wi léegi, duggalal sa mbind ci boyot bii ci suuf (man ngaa yër [[{{MediaWiki:Helppage}}|xëtu ndimbal wi]] ngir yeneeni xamle). Su fekkee njuumtee la fi indi cuqal ci '''dellu''' bu sa joowukaay.",
 'anontalkpagetext'          => "---- ''Yaa ngi ci xëtu waxtaanuwaayu ab jëfandikukat bu kenn-xamul, bu bindoogul walla du jëfandikoo sàqam. Kon ngir xamme ko faaw nga jëfandikoo màkkaanub IP wan. Te màkkaanub IP jëfandikukat yu bari man nañ ka bokk. Su fekkee jëfandikukat bu kenn-xamul nga, te nga gis ne dañ laa féetale ay sànni-kaddu yoo moomul, man ngaa [[Special:Userlogin|bindu walla duggu]] ngi benn jaxase bañatee am ëllëg .''",
-'noarticletext'             => 'Fi mu ne ni amul benn mbind ci xët wii; man ngaa [[{{ns:special}}:Search/{{PAGENAME}}|tambli ab seet ci koju xët wii]] walla [{{fullurl:{{FULLPAGENAME}}|action=edit}} soppi xët wii].',
+'noarticletext'             => 'Fi mu ne ni amul benn mbind ci xët wii; man ngaa [[Special:Search/{{PAGENAME}}|tambli ab seet ci koju xët wii]] walla [{{fullurl:{{FULLPAGENAME}}|action=edit}} soppi xët wii].',
 'userpage-userdoesnotexist' => 'Bii sàqum jëfandikukat « $1 » du bu ku bindu. Seetal bu baax ndax da ngaa namma sos walla soppi wii xët.',
 'clearyourcache'            => "'''Karmat :''' Soo dence xët wi ba noppi, faaw nga bës ci si sa arafukaay yii di toftal, te nga bàyyi xel ci joowukaay bi ngay jëfandikoo : '''Mozilla / Konqueror / Firefox :''' ''Shift-Ctrl-R'', '''Internet Explorer / Opera :''' ''Ctrl-F5'', '''Safari :''' ''Cmd-R''.",
 'usercssjsyoucanpreview'    => "'''Xelal :''' di la digël nga cuq ci «Wonendi» ngir gis say xobi CSS walla JavaScript yu bees laata nga leen di denc.",
@@ -638,7 +638,7 @@ Ngirtey téye gi $3 joxe, mooy ne: ''$2''.",
 'revdelete-text'              => 'Sumb yi nga far dañuy wéy di feeñ ci jaar-jaaru xët wi, waaye mbind yi ñu ëmb ñépp duñ leen man a gis .
 
 Yeneen yorkati {{SITENAME}} itam di nañ man a gis ëmbit yu laqu yi te loppanti leen, walla xanaa rek kay dañ fee def ay digal yu leen koy tere man a def.',
-'revdelete-legend'            => 'Taxawal ay digal ci sumb yi ñu far :',
+'revdelete-legend'            => 'Taxawal ay digal ci sumb yi ñu far',
 'revdelete-hide-text'         => 'Nëbb mbindum sumb mi',
 'revdelete-hide-name'         => 'Nëbb jëf ji ak njeexitam',
 'revdelete-hide-comment'      => 'Nëbb sanni-kàddub coppite gi',
@@ -652,11 +652,8 @@ Yeneen yorkati {{SITENAME}} itam di nañ man a gis ëmbit yu laqu yi te loppanti
 'revdelete-logentry'          => 'Gisinu sumb mi soppiku na ngir [[$1]]',
 'logdelete-logentry'          => 'Gisub xew-xew bii [[$1]] dañ kaa soppi',
 'logdelete-logaction'         => 'Soppi nga doxaliin bi di $2 ngir {{plural:$1|ab xew-xew bu|ay xew-xew yu}} ñeel [[$3]]',
-'revdelete-success'           => 'Coppiteg gisinug sumb mi, baax na',
-'logdelete-success'           => 'Gisub xew-xew bi soppiku na bu baax',
-
-# Oversight log
-'overlogpagetext' => 'Lim bii ci suuf day wone farte yeek téye yi mujj te seen ëmbit nëbbu ci ñépp, ba ci yorkat yi sax. yëral [[Special:Ipblocklist|limu sàq yi ñu téye]] ngir gis limu téye yi teew.',
+'revdelete-success'           => "'''Coppiteg gisinug sumb mi, baax na.'''",
+'logdelete-success'           => "'''Gisub xew-xew bi soppiku na bu baax.'''",
 
 # History merging
 'mergehistory'                     => 'Booleb jaar-jaar yu aw xët',
@@ -753,7 +750,6 @@ $2 boole ci xëti yoonalaat yi<br /> Seet $3 $9',
 'saveusergroups'             => 'Duggal mbooloo jëjëndikookat yi',
 'userrights-groupsmember'    => 'Way-bokk gu:',
 'userrights-groupsavailable' => 'Mbooloo yi jappandi:',
-'userrights-groupshelp'      => 'Tannal mbooloo yi nga bëgg a jëlee walla yokk ab jëfëndikookat. Mbooloo yi nga tannul duñu soppiku. Man nga tannadi am mbooloo ak CTRL + klig cammooñ.',
 'userrights-reason'          => 'Ngirtey coppite yi :',
 
 # Groups

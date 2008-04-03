@@ -26,6 +26,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Set $wgUploadSizeWarning to false by default
 * Added $wgLBFactoryConf, for generic configuration of multi-master wiki farms
 * Removed $wgAlternateMaster, use $wgLBFactoryConf
+* (bug 13562) Misspelled option $wgUserNotifedOnAllChanges changed to
+  $wgUserNotifiedOnAllChanges
 
 === New features in 1.13 ===
 
@@ -59,6 +61,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Image redirects are now enabled
 * (bug 13450) Email confirmation can now be canceled before the expiration
 * (bug 13490) Show upload/file size limit on upload form
+* Redesign of Special:Userrights
 
 === Bug fixes in 1.13 ===
 
@@ -145,6 +148,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13540) Date format in confirmation e-mail now matches message language
 * (bug 13554) PHP Notice in old pre-processor when list item is empty.
 * (bug 13556) Don't show a blank form if no image is attached in Special:Upload
+* (bug 13576) maintenance/rebuildrecentchanges.php fails
+* (bug 13441) Allow Special:Recentchanges to show bots only
+* (bug 13431) Show true message source in Special:Allmessages&ot=php / xml
 
 === API changes in 1.13 ===
 
@@ -180,6 +186,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13541) Added siprop=specialpagealiases to meta=siteinfo
 * Added fallback8bitEncoding field to meta=siteinfo&siprop=general output
 * (bug 13544) Added prop=revid to action=parse
+* (bug 13603) Added siprop=usergroups to meta=siteinfo
 
 === Languages updated in 1.13 ===
 
@@ -199,6 +206,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Welsh (cy)
 * Danish (da)
 * Lower Sorbian (dsb)
+* Middle Dutch (dum) (removed)
 * Greek (el)
 * Esperanto (eo)
 * Spanish (es)
@@ -235,6 +243,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Dutch (nl)
 * Norwegian Nynorsk (nn)
 * Norwegian (bokmål)‬ (no)
+* Old Norse (non) (removed)
 * Polish (pl)
 * Pashto (ps)
 * Portuguese (pt)

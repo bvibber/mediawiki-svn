@@ -274,7 +274,7 @@ $messages = array(
 'badaccess-groups' => 'A acción solicitada está limitada aos usuarios nalgún dos grupos $1.',
 
 'versionrequired'     => 'Necesítase a versión $1 de MediaWiki',
-'versionrequiredtext' => 'Necesítase a versión $1 de MediaWiki para utilizar esta páxina. Vexa [[Special:Version]]',
+'versionrequiredtext' => 'Necesítase a versión $1 de MediaWiki para utilizar esta páxina. Vexa [[Special:Version|a páxina da versión]].',
 
 'ok'                      => 'Aceptar',
 'retrievedfrom'           => 'Traído desde "$1"',
@@ -712,7 +712,7 @@ pode ampliar detalles no [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rexi
 'revdelete-text'              => 'As revisión eliminadas aínda aparecerán no historial da páxina, pero o contido do seu texto será inaccesíbel ao público.
 
 Outros administradores de {{SITENAME}} poderán acceder aínda ao contido oculto e poderán volver atrás esa eliminación a través desta mesma interface, a non ser que os operadores do sitio leven a cabo unha restrición adicional.',
-'revdelete-legend'            => 'Aplicar restricións de revisión:',
+'revdelete-legend'            => 'Aplicar restricións de revisión',
 'revdelete-hide-text'         => 'Agochar texto da revisión',
 'revdelete-hide-name'         => 'Agochar acción e destino',
 'revdelete-hide-comment'      => 'Agochar comentario da edición',
@@ -727,14 +727,14 @@ Outros administradores de {{SITENAME}} poderán acceder aínda ao contido oculto
 'logdelete-logentry'          => 'mudouse a visibilidade do evento para [[$1]]',
 'revdelete-logaction'         => '$1 {{PLURAL:$1|revisión|revisións}} configuradas no modo $2',
 'logdelete-logaction'         => '$1 {{PLURAL:$1|evento|eventos}} para [[$3]] configurados no modo $2',
-'revdelete-success'           => 'Configurouse sen problemas a visibilidade da revisión.',
-'logdelete-success'           => 'Configurouse a visibilidade do evento sen problemas.',
+'revdelete-success'           => "'''Configurouse sen problemas a visibilidade da revisión.'''",
+'logdelete-success'           => "'''Configurouse a visibilidade do evento sen problemas.'''",
+'revdel-restore'              => 'Cambiar visibilidade',
 'pagehist'                    => 'Historial da páxina',
 'deletedhist'                 => 'Historial de borrado',
 
-# Oversight log
-'oversightlog'    => 'Rexistro de edicións ocultadas',
-'overlogpagetext' => 'Abaixo aparece unha listaxe coas eliminacións e bloqueos máis recentes relacionados con contido agochado para os administradores. Vexa [[Special:Ipblocklist|Listaxe de bloqueos de IP]] para unha listaxe das prohibicións e bloqueos que teñen efecto neste momento.',
+# Suppression log
+'suppressionlogtext' => 'Embaixo amósase unha listaxe coas eliminacións e cos bloqueos recentes, que inclúen contido oculto dos administradores. Vexa a [[Special:Ipblocklist|listaxe de enderezos IP bloqueados]] para comprobar as prohibicións e os bloqueos vixentes.',
 
 # History merging
 'mergehistory'                     => 'Fusionar historiais das páxinas',
@@ -769,7 +769,7 @@ Asegúrese de que esta modificación da páxina mantén a continuidade históric
 'lineno'                  => 'Liña $1:',
 'compareselectedversions' => 'Comparar as versións seleccionadas',
 'editundo'                => 'desfacer',
-'diff-multi'              => '(Non se {{PLURAL:$1|mostra unha revisión do historial|mostran $1 revisións do historial}}.)',
+'diff-multi'              => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial.)',
 
 # Search results
 'searchresults'         => 'Resultados da procura',
@@ -877,7 +877,6 @@ Procurar $3 $9',
 'userrights-groupsmember'          => 'Membro de:',
 'userrights-groupsremovable'       => 'Grupos eliminábeis:',
 'userrights-groupsavailable'       => 'Grupos dispoñíbeis:',
-'userrights-groupshelp'            => 'Escolla os grupos dos que quere retirar ou sumar o usuario. Os grupos non seleccionados non se modificarán. Pode deseleccionar un grupo con CTRL + Clic Esquerdo',
 'userrights-reason'                => 'Razón para a modificación:',
 'userrights-available-none'        => 'Non pode mudar a pertenza ao grupo.',
 'userrights-available-add'         => 'Pode engadir usuarios a {{PLURAL:$2|este grupo|estes grupos}}: $1.',
@@ -888,6 +887,8 @@ Procurar $3 $9',
 'userrights-nodatabase'            => 'A base de datos $1 non existe ou non é local.',
 'userrights-nologin'               => 'Ten que [[Special:Userlogin|rexistrarse]] cunta conta de administrador para asignar dereitos de usuario.',
 'userrights-notallowed'            => 'A súa conta non dispón de permiso para asignar dereitos de usuario.',
+'userrights-changeable-col'        => 'Os grupos que pode cambiar',
+'userrights-unchangeable-col'      => 'Os grupos que non pode cambiar',
 
 # Groups
 'group'               => 'Grupo:',
@@ -1368,7 +1369,7 @@ Feedback e axuda:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete/protect/revert
-'deletepage'                  => 'Borrar unha páxina',
+'deletepage'                  => 'Borrar a páxina',
 'confirm'                     => 'Confirmar',
 'excontent'                   => "o contido era: '$1'",
 'excontentauthor'             => "O texto puña: '$1' (e o único editor foi '$2')",
@@ -1559,7 +1560,7 @@ Explique a razón específica do bloqueo (por exemplo, citando as páxinas concr
 'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,para sempre:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'outra',
 'ipbotherreason'              => 'Outros motivos adicionais:',
-'ipbhidename'                 => 'Agochar nome de usuario/IP no rexistro de bloqueos, na listaxe de bloqueos activos e na listaxe de usuarios',
+'ipbhidename'                 => 'Agochar nome de usuario no rexistro de bloqueos, na listaxe de bloqueos activos e na listaxe de usuarios',
 'badipaddress'                => 'O enderezo IP non é válido',
 'blockipsuccesssub'           => 'Bloqueo con éxito',
 'blockipsuccesstext'          => 'O enderezo IP [[Special:Contributions/$1|$1]] foi bloqueado.<br />

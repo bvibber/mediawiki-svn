@@ -517,7 +517,7 @@ $messages = array(
 'badaccess-groups' => 'Požadovanou činnost smějí provádět jen uživatelé ve skupinách $1.',
 
 'versionrequired'     => 'Vyžadováno MediaWiki verze $1',
-'versionrequiredtext' => 'Pro použití této stránky je vyžadováno MediaWiki verze $1. Vizte [[{{ns:special}}:Version]].',
+'versionrequiredtext' => 'Pro použití této stránky je vyžadováno MediaWiki verze $1. Vizte [[Special:Version|stránku verze]].',
 
 'ok'                      => 'OK',
 'retrievedfrom'           => 'Citováno z „$1“',
@@ -962,14 +962,10 @@ pokud to provozovatel serveru nezakázal.',
 'logdelete-logentry'          => 'mění viditelnost události [[$1]]',
 'revdelete-logaction'         => 'U $1 {{PLURAL:$1|revize|revizí|revizí}} nastaven mód $2',
 'logdelete-logaction'         => 'U $1 {{PLURAL:$1|události|událostí|událostí}} pro [[$3]] nastaven mód $2',
-'revdelete-success'           => 'Viditelnost revize úspěšně nastavena.',
-'logdelete-success'           => 'Viditelnost události úspěšně nastavena.',
+'revdelete-success'           => "'''Viditelnost revize úspěšně nastavena.'''",
+'logdelete-success'           => "'''Viditelnost události úspěšně nastavena.'''",
 'pagehist'                    => 'Historie stránky',
 'deletedhist'                 => 'Smazaná historie',
-
-# Oversight log
-'oversightlog'    => 'Kniha dohledu',
-'overlogpagetext' => 'Níže je seznam posledních smazání a blokování s obsah skrytým pro správce. Přehled současných blokování je na [[Special:Ipblocklist|Seznamu probíhajících zablokování]].',
 
 # History merging
 'mergehistory'                     => 'Slučování historií stránek',
@@ -1111,18 +1107,21 @@ $2 Vypsat přesměrování &nbsp; Hledat $3 $9',
 'userrights-groupsmember'          => 'Člen skupin:',
 'userrights-groupsremovable'       => 'Odebratelné skupiny:',
 'userrights-groupsavailable'       => 'Dostupné skupiny:',
-'userrights-groupshelp'            => 'Zvolte skupiny, do/ze kterých chcete uživatele přidat/odebrat.
-Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pomocí CTRL + Levé tlačítko myši',
+'userrights-groups-help'           => 'Můžete měnit skupiny, do který je uživatel zařazen.
+Zaškrtnuté políčko znamená, že uživatel je ve skupině.
+Nezaškrtnuté políčko značí, že uživatel ve skupině není.',
 'userrights-reason'                => 'Zdůvodnění:',
 'userrights-available-none'        => 'Nemůžete měnit zařazení do skupin.',
-'userrights-available-add'         => 'Můžete uživatele přidat do {{PLURAL:$2|skupiny|skupin|skupin}}: $1.',
-'userrights-available-remove'      => 'Můžete odebrat uživatele z {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
+'userrights-available-add'         => 'Kteréhokoliv uživatele můžete přidat do {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
+'userrights-available-remove'      => 'Kteréhokoliv uživatele můžete odebrat z {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
 'userrights-available-add-self'    => 'Můžete se přidat do {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
 'userrights-available-remove-self' => 'Můžete se odebrat z {{PLURAL:$2|této skupiny|těchto skupin|těchto skupin}}: $1.',
 'userrights-no-interwiki'          => 'Nemáte povoleno měnit uživatelská práva na jiných wiki.',
 'userrights-nodatabase'            => 'Databáze $1 neexistuje nebo není místní.',
 'userrights-nologin'               => 'Musíte se [[Special:Userlogin|přihlásit]] k účtu správce, abyste mohli měnit uživatelská práva.',
 'userrights-notallowed'            => 'Tento účet nemá povoleno měnit uživatelská práva.',
+'userrights-changeable-col'        => 'Skupiny, které můžete měnit',
+'userrights-unchangeable-col'      => 'Skupiny, které nemůžete měnit',
 
 # Groups
 'group'               => 'Skupina:',
@@ -1786,7 +1785,7 @@ $1',
 'ipboptions'                  => '2 hodiny:2 hours,1 den:1 day,3 dny:3 days,1 týden:1 week,2 týdny:2 weeks,1 měsíc:1 month,3 měsíce:3 months,6 měsíců:6 months,1 rok:1 year,do odvolání:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'jiný',
 'ipbotherreason'              => 'Jiný nebo další důvod:',
-'ipbhidename'                 => 'Skrýt uživatelské jméno nebo IP v knize zablokování a seznamu probíhajících bloků',
+'ipbhidename'                 => 'Skrýt uživatelské jméno nebo v knize zablokování a seznamu probíhajících bloků',
 'badipaddress'                => 'Neplatná IP adresa',
 'blockipsuccesssub'           => 'Zablokování uspělo',
 'blockipsuccesstext'          => 'Uživatel „[[Special:Contributions/$1|$1]]“ je zablokován. <br />Podívejte se na [[Special:Ipblocklist|seznam zablokovaných]], [[Special:Log/block|kniha zablokování]] zaznamenává všechny podobné úkony.',
