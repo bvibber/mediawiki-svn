@@ -363,6 +363,7 @@ $messages['ps'] = array(
 	'dt_xml_page'           => 'مخ',
 	'dt_xml_name'           => 'نوم',
 	'dt_xml_title'          => 'سرليک',
+	'dt_xml_freetext'       => 'خپلواکه متن',
 );
 
 /** Portuguese (Português)
@@ -492,17 +493,11 @@ $messages['tet'] = array(
 	'dt_xml_name' => 'Naran',
 );
 
-/** Tajik (Тоҷикӣ/tojikī)
- * @author Ibrahim
- */
-$messages['tg'] = array(
-	'dt_xml_namespace' => 'Фазоином',
-);
-
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'dt_xml_namespace'      => 'Фазоином',
 	'dt_viewxml_namespaces' => 'Фазоҳои ном',
 	'dt_xml_page'           => 'Саҳифа',
 	'dt_xml_name'           => 'Ном',

@@ -311,7 +311,8 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'sitenotice-desc' => 'സൈറ്റ്നോട്ടീസ് മറയ്ക്കുവാന്‍ ഉപയോക്താക്കളെ അനുവദിക്കുക',
+	'sitenotice_close' => 'നീക്കം ചെയ്യുക',
+	'sitenotice-desc'  => 'സൈറ്റ്നോട്ടീസ് മറയ്ക്കുവാന്‍ ഉപയോക്താക്കളെ അനുവദിക്കുക',
 );
 
 /** Marathi (मराठी)

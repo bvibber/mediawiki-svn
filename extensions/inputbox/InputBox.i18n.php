@@ -330,6 +330,19 @@ $messages['he'] = array(
 	'createarticle'  => 'יצירת הדף',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'inputbox-desc'           => 'पहलेसे लिखे गये HTML फार्म इस्तेमाल करने की अनुमति दें',
+	'inputbox-error-no-type'  => 'इनपुट बक्सा बनाने के लिये आपने इसका प्रकार बताया नहीं हैं।',
+	'inputbox-error-bad-type' => 'इनपुट बक्से का "$1" यह प्रकार उचित नहीं हैं। 
+कृपया "create", "comment", "search" या फिर "search2" में से एक चुनें।',
+	'tryexact'                => 'दिये हुए शब्दही खोजें',
+	'searchfulltext'          => 'पूरा पाठ खोजें',
+	'createarticle'           => 'लेख बनाईयें',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

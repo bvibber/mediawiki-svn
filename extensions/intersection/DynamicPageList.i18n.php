@@ -151,6 +151,17 @@ $messages['gl'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'intersection-desc'          => 'एक श्रेणी या श्रेणीसमूहमें उपलब्ध नवीनतम लेख दर्शायें।',
+	'intersection_toomanycats'   => 'DynamicPageList: बहुत ज्यादा श्रेणीयां!',
+	'intersection_toofewcats'    => 'DynamicPageList: बहुत कम श्रेणीयां!',
+	'intersection_noresults'     => 'DynamicPageList: रिज़ल्ट नहीं!',
+	'intersection_noincludecats' => 'DynamicPageList: कमसे कम एक श्रेणी या नामस्थान देना अनिवार्य हैं!',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

@@ -39,6 +39,13 @@ $messages['fr'] = array(
 	'mwsearch-desc' => 'Plug-in Recherches MW',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'mwsearch-desc' => 'एमडब्ल्यूखोज प्लगीन',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -143,3 +150,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'mwsearch-desc' => 'MWSearch 增益集',
 );
+

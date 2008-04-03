@@ -171,6 +171,13 @@ $messages['uk'] = array(
 	'charinsert-desc' => 'Дозволяє створити JavaScript-блок для [[MediaWiki:Edittools|вставки нестандартних символів]]',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'charinsert-desc' => 'Cho phép tạo nên một hộp dùng để [[MediaWiki:Edittools|chèn các ký tự không chuẩn hóa]] dùng JavaScript',
+);
+
 /** Cantonese
  * @author Shinjiman
  */

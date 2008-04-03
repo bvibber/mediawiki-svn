@@ -398,10 +398,8 @@ $messages['tet'] = array(
 	'languageselector-setlang' => 'hili',
 );
 
-/** Tajik (Тоҷикӣ/tojikī)
- * @author Ibrahim
- */
-$messages['tg'] = array(
+/** Tajik (Тоҷикӣ/tojikī) */
+$messages['tg-cyrl'] = array(
 	'languageselector' => 'Забон',
 );
 

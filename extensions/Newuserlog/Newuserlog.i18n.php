@@ -385,6 +385,18 @@ $messages['he'] = array(
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'newuserlogpage'           => 'नये सदस्योंकी सूची',
+	'newuserlogpagetext'       => 'यह नये सदस्योंकी सूची हैं।',
+	'newuserlog-desc'          => '[[Special:Log]] में [[Special:Log/newusers|नये सदस्योंकी सूची]] बढायें।',
+	'newuserlog-byemail'       => 'कूटशब्द इ-मेल द्वारा भेजा गया हैं',
+	'newuserlog-create-entry'  => 'नवीन सदस्य',
+	'newuserlog-create2-entry' => '$1 के लिये खाता खोला',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

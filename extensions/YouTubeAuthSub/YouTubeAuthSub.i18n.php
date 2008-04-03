@@ -426,10 +426,11 @@ Czekaj.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'youtubeauthsub_title'    => 'سرليک',
-	'youtubeauthsub_password' => 'د YouTube پټنوم',
-	'youtubeauthsub_username' => 'د YouTube کارن-نوم',
-	'youtubeauthsub_category' => 'وېشنيزه',
+	'youtubeauthsub_title'     => 'سرليک',
+	'youtubeauthsub_password'  => 'د YouTube پټنوم',
+	'youtubeauthsub_username'  => 'د YouTube کارن-نوم',
+	'youtubeauthsub_category'  => 'وېشنيزه',
+	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
 );
 
 /** Slovak (Slovenčina)

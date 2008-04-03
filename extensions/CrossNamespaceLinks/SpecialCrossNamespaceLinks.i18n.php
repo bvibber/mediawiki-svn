@@ -468,14 +468,14 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'crossnamespacelinks'         => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Generuje spis linków pomiędzy przestrzeniami nazw]], których nie powinno być na {{GRAMMAR:MS.lp|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'Ta strona podaje listę linków ze stron w głównej przestrzeni nazw do stron w innych przestrzeniach nazw (poza przestrzeniami {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}). Odradza się używanie takich linków.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|linki}} do $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|linki|linków}} do $3',
 );
 
 $messages['pms'] = array(

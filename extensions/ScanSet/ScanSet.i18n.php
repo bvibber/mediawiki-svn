@@ -498,6 +498,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'scanset_next' => 'راتلونکی &gt;',
 	'scanset_prev' => '&lt; پخوانی',
 );
 

@@ -422,6 +422,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'assert_edit_title'   => 'Xác nhận thất bại',
+	'assert_edit_desc'    => 'Thêm xác nhận sửa đổi để bot sử dụng',
 	'assert_edit_message' => 'Xác nhận được chỉ định ($1) đã thất bại.',
 );
 

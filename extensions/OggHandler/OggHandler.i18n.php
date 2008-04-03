@@ -570,6 +570,36 @@ $messages['he'] = array(
 	'ogg-desc-link'           => 'אודות הקובץ',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'ogg-desc'                => 'ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ',
+	'ogg-short-audio'         => 'ऑग $1 ध्वनी फ़ाईल, $2',
+	'ogg-short-video'         => 'ऑग $1 चलतचित्र फ़ाईल, $2',
+	'ogg-short-general'       => 'ऑग $1 मीडिया फ़ाईल, $2',
+	'ogg-long-audio'          => '(ऑग $1 ध्वनी फ़ाईल, लंबाई $2, $3)',
+	'ogg-long-video'          => '(ऑग $1 चलतचित्र फ़ाईल, लंबाई $2, $4×$5 पीक्सेल्स, $3)',
+	'ogg-long-multiplexed'    => '(ऑग ध्वनी/चित्र फ़ाईल, $1, लंबाई $2, $4×$5 पिक्सेल्स, $3 कुल)',
+	'ogg-long-general'        => '(ऑग मीडिया फ़ाईल, लंबाई $2, $3)',
+	'ogg-long-error'          => '(गलत ऑग फ़ाईल: $1)',
+	'ogg-play'                => 'शुरू करें',
+	'ogg-pause'               => 'विराम',
+	'ogg-stop'                => 'रोकें',
+	'ogg-play-video'          => 'विडियो शुरू करें',
+	'ogg-play-sound'          => 'ध्वनी चलायें',
+	'ogg-player-videoElement' => '<video> घटक',
+	'ogg-player-oggPlugin'    => 'ऑग प्लगीन',
+	'ogg-player-thumbnail'    => 'सिर्फ स्थिर चित्र',
+	'ogg-player-soundthumb'   => 'प्लेअर नहीं हैं',
+	'ogg-player-selected'     => '(चुने हुए)',
+	'ogg-use-player'          => 'यह प्लेअर इस्तेमाल करें:',
+	'ogg-more'                => 'और...',
+	'ogg-dismiss'             => 'बंद करें',
+	'ogg-download'            => 'फ़ाईल डाउनलोड करें',
+	'ogg-desc-link'           => 'इस फ़ाईलके बारे में',
+);
+
 $messages['hr'] = array(
 	'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'ogg-short-video' => 'Ogg $1 video datoteka, $2',
@@ -912,8 +942,8 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
- * @author T-Rithy
  * @author Lovekhmer
+ * @author T-Rithy
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -921,16 +951,16 @@ $messages['km'] = array(
 	'ogg-short-audio'         => 'ឯកសារ សំលេង Ogg $1, $2',
 	'ogg-short-video'         => 'ឯកសារ វិឌីអូ Ogg $1, $2',
 	'ogg-short-general'       => 'ឯកសារមេឌាOgg $1, $2',
-	'ogg-long-audio'          => '(ឯកសារ សំលេង Ogg $1, វែង $2, $3)',
-	'ogg-long-video'          => '(ឯកសារ វិឌីអូ Ogg $1, វែង $2, $4×$5 ធាតុរូបភាព, $3)',
-	'ogg-long-multiplexed'    => '(ឯកសារ Ogg ចំរុះ សំលេង/វិឌីអូ, $1, វែង $2, $4×$5 ធាតុរូបភាព, $3 ទាំងអស់)',
-	'ogg-long-general'        => '(ឯកសារ មីឌា Ogg, វែង $2, $3)',
+	'ogg-long-audio'          => '(ឯកសារសំលេងប្រភេទOgg $1, រយៈពេល$2 និងទំហំ$3)',
+	'ogg-long-video'          => '(ឯកសារវីដេអូប្រភេទOgg $1, រយៈពេល$2, $4×$5px, $3)',
+	'ogg-long-multiplexed'    => '(ឯកសារអូឌីយ៉ូ/វីដេអូចំរុះប្រភេទOgg , $1, រយៈពេល$2, $4×$5px, ប្រហែល$3)',
+	'ogg-long-general'        => '(ឯកសារមេឌាប្រភេទOgg, រយៈពេល$2, $3)',
 	'ogg-long-error'          => '(ឯកសារ ogg មិនមាន សុពលភាព ៖ $1)',
 	'ogg-play'                => 'លេង',
 	'ogg-pause'               => 'ផ្អាក',
 	'ogg-stop'                => 'ឈប់',
 	'ogg-play-video'          => 'លេងវីដេអូ',
-	'ogg-play-sound'          => 'លេងសំលេង',
+	'ogg-play-sound'          => 'បន្លឺសំលេង',
 	'ogg-no-player'           => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នកហាក់បីដូចជាមិនមានកម្មវិធីណាមួយសំរាប់លេងទេ។ សូម<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធីសំរាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',

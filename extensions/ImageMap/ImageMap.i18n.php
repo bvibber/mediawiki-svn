@@ -264,6 +264,23 @@ $messages['he'] = array(
 	'imagemap_description'          => 'אודות התמונה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'imagemap_desc'               => 'क्लायंटके चित्रनक्शे <tt><nowiki><imagemap></nowiki></tt> टॅग देकर इस्तेमाल किये जा सकतें हैं',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: पहली कतारमें चित्र देना जरूरी हैं',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: गलत या अस्तित्वमें ना होने वाला चित्र',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 कतार के आखिर में वैध कड़ी मिली नहीं',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 कतारमें दिये कड़ीका अवैध शीर्षक',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1 कतारपर आकार के लिये जरूरी कोऑर्डिनेट्स नहीं हैं',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1 कतारमें गलत आकार, हर कतार: default, rect, circle अथवा poly से शुरू होनी चाहियें',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: कमसे कम एक आकार देना चाहिये',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1 कतार में गलत कोऑर्डिनेट्स, संख्या चाहिये',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: गलत ज़ानकारी, इसमेंसे एक होनी चाहिये: <tt>$1</tt>',
+	'imagemap_description'        => 'इस चित्र के बारे में',
+);
+
 $messages['hr'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: morate navesti ime slike koju rabite u prvom retku',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: slika ne postoji ili je krivog tipa',

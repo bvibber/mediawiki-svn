@@ -305,6 +305,25 @@ $messages['he'] = array(
 	'pdt_comparing_page'  => 'משווה את פלט המפענחים מהדף [[$1]]',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'parserdifftest'      => 'पार्सर फर्क परिक्षण',
+	'pdtest-desc'         => 'दो अलग अलग पार्सरमें से फर्क देखने के लिये [[Special:ParserDiffTest|विशेष पृष्ठ]]',
+	'pdtest_no_target'    => 'लक्ष्य दिया नहीं हैं',
+	'pdtest_page_missing' => 'दिया हुआ पन्ना डाटाबेस में मिला नहीं',
+	'pdtest_no_changes'   => 'फर्क मिले नहीं।',
+	'pdtest_time_report'  => '<b>$1</b> को $2 सेकेंड लगें, <b>$3</b> को $4 सेकेंड लगें।',
+	'pdtest_title'        => 'कंटेक्स्टका शीर्षक:',
+	'pdtest_text'         => 'इनपुट पाठ:',
+	'pdtest_ok'           => 'ओके',
+	'pdtest_get_text'     => 'पन्ने से पाठ उठायें',
+	'pdtest_diff'         => 'फर्क',
+	'pdtest_side_by_side' => 'आउटपुट कम्पॅरिज़न',
+	'pdt_comparing_page'  => '[[$1]] के पार्सर आउटपुटमें फर्क देख रहें हैं',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

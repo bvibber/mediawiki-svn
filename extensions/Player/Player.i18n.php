@@ -495,10 +495,8 @@ $messages['tet'] = array(
 	'player-goto-page' => 'Pájina',
 );
 
-/** Tajik (Тоҷикӣ/tojikī)
- * @author Ibrahim
- */
-$messages['tg'] = array(
+/** Tajik (Тоҷикӣ/tojikī) */
+$messages['tg-cyrl'] = array(
 	'player-invalid-title' => 'унвони номӯътабар',
 );
 

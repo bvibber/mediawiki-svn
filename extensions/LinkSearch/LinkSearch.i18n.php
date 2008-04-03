@@ -319,6 +319,20 @@ $messages['he'] = array(
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'linksearch'       => 'वेब कड़ीयाँ खोजें',
+	'linksearch-desc'  => 'दिये हुए पाठसे मेल खानेवाले [[Special:Linksearch|बाहरी कड़ीयाँ होनेवाले पन्ने खोजें]]',
+	'linksearch-pat'   => 'खोजने के लिये पाठ:',
+	'linksearch-ns'    => 'नामस्थान:',
+	'linksearch-ok'    => 'खोजें',
+	'linksearch-text'  => '"*.wikipedia.org" जैसे वाईल्डकार्ड्स इस्तेमाल करनेकी अनुमति हैं।<br />निम्नलिखित प्रोटोकॉल्समें: <tt>$1</tt>',
+	'linksearch-line'  => '$2 में से $1 जुडा हुआ हैं',
+	'linksearch-error' => 'वाईल्डकार्ड्स होस्टनामके सिर्फ शुरु में आ सकतें हैं।',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dalibor Bosits
@@ -537,7 +551,7 @@ $messages['mr'] = array(
 	'linksearch'       => 'आंतरजाल दुवे शोधा',
 	'linksearch-desc'  => 'दिलेल्या मजकूराशी जुळणारी [[Special:Linksearch|बाह्यदुवे असणारी पाने शोधा]]',
 	'linksearch-pat'   => 'शोधण्याचा मजकूर:',
-	'linksearch-ns'    => 'नामविश्व',
+	'linksearch-ns'    => 'नामविश्व:',
 	'linksearch-ok'    => 'शोध',
 	'linksearch-text'  => '"*.wikipedia.org" सारखी वाईल्डकार्ड्स वापरायला परवानगी आहे.<br />पुढील प्रोटोकॉल्समध्ये चालेल: <tt>$1</tt>',
 	'linksearch-line'  => '$2 मधून $1 जोडलेले आहे',

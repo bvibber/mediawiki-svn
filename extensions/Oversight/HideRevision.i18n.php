@@ -633,6 +633,39 @@ $messages['he'] = array(
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'hiderevision'                => 'अवतरण हमेशा के लिये छुपायें',
+	'hiderevision-desc'           => 'कानूनी कारणोंसे हर अवतरण सदस्योंसे हमेशा के लिये छुपायें।',
+	'group-oversight'             => 'ओवरसाईट अधिकारी',
+	'group-oversight-member'      => 'ओवरसाईट',
+	'grouppage-oversight'         => '{{ns:project}}:ओवरसाईट',
+	'hiderevision-prompt'         => 'हटाने योग्य अवतरण का क्रमांक:',
+	'hiderevision-continue'       => 'कन्टिन्यू',
+	'hiderevision-reason'         => 'कारण (यह अलग रखा जायेगा):',
+	'hiderevision-submit'         => 'यह डाटा हमेशाके लिये छुपायें',
+	'hiderevision-tab'            => 'अवतरण छुपायें',
+	'hiderevision-norevisions'    => 'हटाने योग्य अवतरण का क्रमांक दिया नहीं हैं।',
+	'hiderevision-noreason'       => 'हटाने का कारण देना अनिवार्य हैं।',
+	'hiderevision-status'         => 'अवतरण $1: $2',
+	'hiderevision-success'        => 'आर्चिव्ह करके हटा दिया।',
+	'hiderevision-error-missing'  => 'डाटाबेसमें मिला नहीं।',
+	'hiderevision-error-current'  => 'इस पन्ने में हाल में हुए बदलाव हटा नहीं सकते.
+पहले इन्हें पूर्ववत करें।',
+	'hiderevision-error-delete'   => 'आर्चिव्ह करू शकत नाही; क्या यह पन्ना पहले हटाया था?',
+	'hiderevision-archive-status' => '$1 से अवतरण हटा दिये: $2',
+	'oversight-log-hiderev'       => '$1 से एक बदलाव हटाया',
+	'oversight'                   => 'ओवरसाईट',
+	'oversight-view'              => 'अधिक ज़ानकारी',
+	'oversight-difference'        => '(बचे हुए पुराने अवतरणोंमें फर्क)',
+	'oversight-prev'              => 'आखिरी पुराना अवतरण',
+	'oversight-hidden'            => 'छुपाया हुआ अवतरण',
+	'oversight-header'            => 'नीचे हाल में हमेशा के लिये छुपायें गयें अवतरणोंकी सूची हैं।
+अगर इसे रिलिज कर दिया तो ओवरसाईट अधिकार हमेशा के लिये निकाल दिये जायेंगे।',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

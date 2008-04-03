@@ -466,6 +466,7 @@ Gioanin|Gioanin',
  */
 $messages['ps'] = array(
 	'vote'              => 'رايه ورکول',
+	'vote-current'      => "ستاسو اوسنۍ رايه د '''$1''' لپاره ورکړ شوې.",
 	'vote-caption'      => 'ستاسو ټاکنه:',
 	'vote-submit'       => 'رايه ورکول',
 	'vote-registered'   => 'ستاسو رايه ثبته شوه.',

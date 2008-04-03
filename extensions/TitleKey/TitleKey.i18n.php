@@ -105,6 +105,13 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'titlekey-desc' => 'Bộ giúp đỡ tìm kiếm theo tiền tố của tựa đề',
+);
+
 /** Cantonese
  * @author Shinjiman
  */
@@ -125,3 +132,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'titlekey-desc' => '標題前綴搜尋建議背幹',
 );
+

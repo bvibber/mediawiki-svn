@@ -989,14 +989,16 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'sitematrix'           => 'Danh sách các wiki của Wikimedia',
+	'sitematrix-summary'   => 'Trang đặc biệt này liệt kê tất cả các wiki của Wikimedia.',
 	'sitematrix-desc'      => 'Liệt kê [[Special:SiteMatrix|các wiki trực thuộc Wikimedia]]',
 	'sitematrix-language'  => 'Ngôn ngữ',
 	'sitematrix-project'   => 'Tên dự án, tiền tố trong liên kết, và liên kết liên wiki',
 	'sitematrix-others'    => 'Các dự án khác của Wikimedia',
-	'sitematrix-total'     => "'''$1 wiki tổng cộng'''",
+	'sitematrix-total'     => "'''Tổng cộng: $1'''",
 	'sitematrix-sitetotal' => 'Tổng cộng',
 );
 

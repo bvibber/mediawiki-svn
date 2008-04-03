@@ -939,17 +939,11 @@ $messages['tet'] = array(
 	'openidemail' => 'Diresaun korreiu eletróniku',
 );
 
-/** Tajik (Тоҷикӣ/tojikī)
- * @author Ibrahim
- */
-$messages['tg'] = array(
-	'openidoptional' => 'Ихтиёрӣ',
-);
-
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'openidoptional' => 'Ихтиёрӣ',
 	'openidemail'    => 'Нишонаи почтаи электронӣ',
 	'openidlanguage' => 'Забон',
 );

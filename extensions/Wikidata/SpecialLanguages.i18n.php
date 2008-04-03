@@ -2123,6 +2123,7 @@ $wdMessages['ps'] = array(
 	'ow_LinkAttributeValues'                => 'تړنې',
 	'ow_Property'                           => 'ځانتيا',
 	'ow_Value'                              => 'ارزښت',
+	'ow_Permission_denied'                  => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified'           => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help'                          => 'يوه ورځ به موږ ستاسو سره مرسته وکړو.',
 );

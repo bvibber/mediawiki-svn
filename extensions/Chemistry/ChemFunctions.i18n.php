@@ -673,14 +673,18 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'chemicalsources'        => 'Джерела з хімії',
-	'chemicalsource-desc'    => 'Додає тег <nowiki><chemform></nowiki> для хімічних формул',
-	'chemFunctions_ListPage' => 'Джерела з хімії',
-	'chemFunctions_CAS'      => 'Номер ХРС',
-	'chemFunctions_ATCCode'  => 'ATCCode',
-	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula'  => 'Формула',
-	'chemFunctions_Name'     => 'Назва ІЮПАК',
+	'chemicalsources'                  => 'Джерела з хімії',
+	'chemicalsource-desc'              => 'Додає тег <nowiki><chemform></nowiki> для хімічних формул',
+	'chemFunctions_ListPage'           => 'Джерела з хімії',
+	'chemFunctions_DataList'           => 'Нижче наведено список посилань на сайти, які можуть містити інформацію про хімічну речовину, яка вас цікавить.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Сполука $MIXCASNameFormula на сайті NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на сайті Оксфордського університету (Велика Британія) (відсутній пошук)</a><br />',
+	'chemFunctions_CAS'                => 'Номер ХРС',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Формула',
+	'chemFunctions_Name'               => 'Назва ІЮПАК',
+	'chemFunctions_ChemFormInputError' => 'Chemform: помилка вводу!',
 );
 
 /** Vietnamese (Tiếng Việt)
