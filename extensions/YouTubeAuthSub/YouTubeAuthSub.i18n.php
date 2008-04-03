@@ -71,6 +71,13 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'youtubeauthsub_category' => 'Categoria',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
