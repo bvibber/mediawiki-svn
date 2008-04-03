@@ -4,7 +4,7 @@
  * Used to add Woopra Live Stat Tracking to your MediaWiki Instllation
  *
  * @addtogroup Extensions
- * @author Shane Froebel
+ * @author Shane
  * @copyright © 2008-2009 FrakMedia! Productions, http://www.frakmedia.net/main/woopra
  * @license GNU General Public Licence 2.0 or later
  */
@@ -16,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  
 $wgExtensionCredits['specialpage'][] = array(
         'name' => 'Woopra Live Stats Tracking',
-        'author' => array( 'Shane Froebel'),
+        'author' => array( 'Shane'),
         'version' => '1.0.0',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Woopra',
         'description' => 'Allows for the [http://www.woopra.com/ Woopra Live Tracking Software] to work for your MediaWiki installation',
