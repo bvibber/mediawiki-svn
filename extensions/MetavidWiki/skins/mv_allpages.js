@@ -5,7 +5,7 @@ var mv_setup_allpage_flag=false;
 var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
 var gMvd={};
 function mv_setup_allpage(){	
-	js_log("mv embed done loading now setup all page");
+	js_log("mv embed done loading now setup 'all page'");
 	//make sure we have jQuery and any base requried libs: 
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){			
  		_global['$j'] = jQuery.noConflict();	
@@ -19,8 +19,44 @@ function mv_setup_allpage(){
 						mv_setup_search_ac();
 						mv_do_mvd_link_rewrite();						
 						mv_setup_allpage_flag=true; 
+						mv_page_specific_rewrites();					
 					}
 				});
+	});		
+}
+function mv_page_specific_rewrites(){
+	var mvAskTitle = 'Special:MvExportAsk';
+	var rssImg = '<img border="0" src="'+wgScriptPath+'/extensions/MetavidWiki/skins/images/feed-icon-28x28.png"/>';
+	var msg_video_rss = 'video rss';
+	//add in rss-media feed link if on Special:Ask page
+	if(wgPageName=='Special:Ask'){
+		js_log("url : " + document.location);
+		var sURL = parseUri(document.location);				
+		var podLink=wgArticlePath.replace('$1',  mvAskTitle);
+		if(sURL.queryKey['title']){
+			//pass along all url params (update the title) 
+			podLink+='?';
+			for(i in sURL.queryKey){
+				if(i !='title')podLink+=i+'='+sURL.queryKey[i];
+			}			
+		}else{
+			// /title/askparam format	
+			var pInx =sURL.relative.indexOf(wgPageName);
+			if(pInx!==false){
+				podLink+= sURL.relative.substring(pInx+wgPageName.length);
+			}
+		}
+		//@@todo add to javascript msg system
+		$j('#bodyContent').before('<span style="float: right;"><a title="'+
+				msg_video_rss+'" href="'+podLink+'">'+ rssImg + '</a></span>');
+	}
+	//if we have an inline query add a search link
+	$j('.smwtable').each(function(){
+		var pLink = $j('#'+this.id+' .smwfooter a').attr('href').replace('Special:Ask',mvAskTitle );		
+		var colspan = $j('.smwfooter .sortbottom').attr('colspan');
+		var pHTML = '<a title="'+msg_video_rss+'" href="'+pLink+'">'+rssImg+'</a>';
+		js_log("plink: "+pLink + ' colspan:'+ colspan + ' ph:'+pHTML);
+		$j('#'+this.id+' tbody').prepend('<tr><td colspan="'+colspan+'">'+pHTML+'</td></tr>');		
 	});	
 }
 function mv_do_mvd_link_rewrite(){

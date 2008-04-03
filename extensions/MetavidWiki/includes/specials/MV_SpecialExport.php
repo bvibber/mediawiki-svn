@@ -24,11 +24,13 @@ function doExportStream($par = null){$MvSpecialExport = new MV_SpecialExport('st
 function doExportCat($par = null){$MvSpecialExport = new MV_SpecialExport('category',$par);}
 function doExportSeq($par = null){$MvSpecialExport = new MV_SpecialExport('sequence',$par);}
 function doExportSearch($par = null){$MvSpecialExport = new MV_SpecialExport('search',$par);}
+function doExportAsk($par =null){$MvSpecialExport = new MV_SpecialExport('ask',$par);}
 
 SpecialPage::addPage( new SpecialPage('MvVideoFeed','',true,'doExportCat',false) );
 SpecialPage::addPage( new SpecialPage('MvExportStream','',true,'doExportStream',false) );
 SpecialPage::addPage( new SpecialPage('MvExportSequence','',true,'doExportSeq',false) );
 SpecialPage::addPage( new SpecialPage('MvExportSearch','',true,'doExportSearch',false) );
+SpecialPage::addPage( new SpecialPage('MvExportAsk','',true,'doExportAsk',false) );
 
 //extend supported feed types:
 $wgFeedClasses['cmml']='CmmlFeed';
@@ -83,10 +85,12 @@ class MV_SpecialExport {
 				$this->seq_title = $this->par;				
 				$this->get_sequence_xspf();
 			break;			
+			case 'ask':				
+				$this->get_ask_feed();
+			break;
 		}
-		//@@todo cleaner exit? 
 		if($error_page==''){
-			exit();
+			$wgOut->disable();
 		}else{
 			$wgOut->addHTML($error_page);
 		}	
@@ -268,6 +272,38 @@ class MV_SpecialExport {
 		}
 		if($encap)print '</cmml_set>';
 	}
+	//this is dependent on semantic wiki ASK functionality
+	function get_ask_feed(){
+		global $wgSitename, $wgTitle;
+		//check for semantic wiki: 
+		if(!defined('SMW_VERSION')){
+			return new WikiError( "Export Ask is dependent on semantic media wiki" );
+		}			
+		//bootstrap off of SMWAskPage: 				
+		$SMWAskPage = new SMWAskPage();		
+		$SMWAskPage->extractQueryParameters($this->par);
+		
+		//print 'query string: ' . $SMWAskPage->m_querystring . "\n<br>";
+		//print 'm_params: ' . print_r($SMWAskPage->m_params) . "\n<br>";
+		//print 'print outs: ' .print_r($SMWAskPage->m_printouts) . "\n<br>";
+		//set up the feed: 
+		$this->feed = new mvRSSFeed(
+			$wgSitename . ' - ' .wfMsg('mediasearch'). ' : '. strip_tags($SMWAskPage->m_querystring), //title 
+			strip_tags($SMWAskPage->m_querystring), //description
+			$wgTitle->getFullUrl() //link 
+		);		
+		$this->feed->outHeader();
+						
+		$queryobj = SMWQueryProcessor::createQuery($SMWAskPage->m_querystring, $SMWAskPage->m_params, false, '', $SMWAskPage->m_printouts);
+		$res = smwfGetStore()->getQueryResult($queryobj);
+		$row = $res->getNext();
+		while ( $row !== false ) {
+			$wikititle = $row[0]->getNextObject();		
+			$this->feed->outPutItem($wikititle->getTitle());
+			$row = $res->getNext();
+		}
+		$this->feed->outFooter();
+	}
 	// @@todo integrate cache query (similar to SpecialRecentChanges::rcOutputFeed ))
 	function get_category_feed(){
 		global $wgSitename, $wgRequest, $wgOut, $wgCategoryPagingLimit;		
@@ -398,9 +434,11 @@ class mvRSSFeed extends ChannelFeed{
 		global $wgOut;		
 		$mvTitle = new MV_Title($wikiTitle);
 		$mStreamTitle = Title::makeTitle(MV_NS_STREAM, ucfirst($mvTitle->getStreamName()) . '/'.$mvTitle->getTimeRequest());
+		
+		//only output media RSS item if its valid media: 
+		if(!$mvTitle->validRequestTitle())return ;
 
-		//@@todo this should be done cleaner/cached 
-		//@@todo we need absolute links		
+		//@@todo this should be cached 	
 		$thumb_ref = $mvTitle->getStreamImageURL('320x240');
 		if($desc_html==''){
 			$article = new Article($wikiTitle);
@@ -424,7 +462,7 @@ class mvRSSFeed extends ChannelFeed{
 		$time_desc = ($mvTitle->getTimeDesc())?$mvTitle->getTimeDesc():'';					
 		?>	
 		<item>
-		<link><?=mvRSSFeed::xmlEncode($wikiTitle->getFullUrl())?></link>
+		<link><?=mvRSSFeed::xmlEncode($mStreamTitle->getFullUrl())?></link>
 		<title><?=mvRSSFeed::xmlEncode(
 			$mvTitle->getStreamNameText() . ' ' .  $time_desc)?></title>
 		<description><?=$desc_xml?></description>

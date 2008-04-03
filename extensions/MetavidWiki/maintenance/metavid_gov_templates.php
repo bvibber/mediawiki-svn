@@ -172,7 +172,7 @@ do_update_wiki_page($wgPropTitle, '[[has type:=Page;Number]]',null, $force);
 			$template_body .= "{{ #if: {{{" . $name . "|}}}| [[$name:={{{" . $name . "}}}| ]] |}}";		
 	}	
 	//$template_body.='<span style="width:40%;float:left;">';
-	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video_search.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';
+	$template_body.='<span style="float:right">{{navimg|xsize=50|ysize=50|image=Crystal_Clear_mimetype_video_search.png|link=Special:MediaSearch/person/{{PAGENAME}} }}</span>';	
 	//ask for speeches media~	
 	$template_body.="\n".'{{#ask: [[Speech_by::{{PAGENAME}}]] 
 |?Category | ?Bill
