@@ -29,7 +29,7 @@ function mv_page_specific_rewrites(){
 	var rssImg = '<img border="0" src="'+wgScriptPath+'/extensions/MetavidWiki/skins/images/feed-icon-28x28.png"/>';
 	var msg_video_rss = 'video rss';
 	//add in rss-media feed link if on Special:Ask page
-	if(wgPageName){
+	if(typeof wgPageName!='undefined'){
 		if(wgPageName=='Special:Ask'){
 			js_log("url : " + document.location);
 			var sURL = parseUri(document.location);				
