@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Extension based on SkinPerPage to allow as skin per namespace
+ * Extension based on SkinPerPage to allow a customized skin per namespace
  *
  * Warning : does *not* work for some special pages that don't use SpecialPage
  * class.
