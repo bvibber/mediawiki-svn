@@ -37,7 +37,7 @@ function mv_page_specific_rewrites(){
 			//pass along all url params (update the title) 
 			podLink+='?';
 			for(i in sURL.queryKey){
-				if(i !='title')podLink+=i+'='+sURL.queryKey[i];
+				if(i !='title')podLink+=i+'='+sURL.queryKey[i]+'&';
 			}			
 		}else{
 			// /title/askparam format	
@@ -52,11 +52,13 @@ function mv_page_specific_rewrites(){
 	}
 	//if we have an inline query add a search link
 	$j('.smwtable').each(function(){
-		var pLink = $j('#'+this.id+' .smwfooter a').attr('href').replace('Special:Ask',mvAskTitle );		
-		var colspan = $j('.smwfooter .sortbottom').attr('colspan');
-		var pHTML = '<a title="'+msg_video_rss+'" href="'+pLink+'">'+rssImg+'</a>';
-		js_log("plink: "+pLink + ' colspan:'+ colspan + ' ph:'+pHTML);
-		$j('#'+this.id+' tbody').prepend('<tr><td colspan="'+colspan+'">'+pHTML+'</td></tr>');		
+		if($j('#'+this.id+' .smwfooter a').length!=0){
+			var pLink = $j('#'+this.id+' .smwfooter a').attr('href').replace('Special:Ask',mvAskTitle );		
+			var colspan = $j('.smwfooter .sortbottom').attr('colspan');
+			var pHTML = '<a title="'+msg_video_rss+'" href="'+pLink+'">'+rssImg+'</a>';
+			js_log("plink: "+pLink + ' colspan:'+ colspan + ' ph:'+pHTML);
+			$j('#'+this.id+' tbody').prepend('<tr><td colspan="'+colspan+'">'+pHTML+'</td></tr>');		
+		}
 	});	
 }
 function mv_do_mvd_link_rewrite(){
