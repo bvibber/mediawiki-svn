@@ -296,6 +296,8 @@ $messages['de'] = array(
 	'hiderevision'                => 'Versionen dauerhaft entfernen',
 	'hiderevision-desc'           => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
 	'group-oversight'             => 'Oversighter',
+	'group-oversight-member'      => 'Oversighter ',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue'       => 'Weiter',
 	'hiderevision-text'           => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
@@ -321,6 +323,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 *Die Seite wurde gelöscht
 *Die entfernte Version war die erste Version',
 	'oversight-log-hiderev'       => 'Entfernte eine Bearbeitung von $1',
+	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'Details',
 	'oversight-difference'        => '(Unterschied zur vorhergehenden verbleibenden Version)',
 	'oversight-prev'              => 'Letzte vorhergehenden Version',
