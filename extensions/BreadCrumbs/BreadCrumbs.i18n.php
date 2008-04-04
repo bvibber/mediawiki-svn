@@ -81,6 +81,13 @@ $messages['gl'] = array(
 	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'breadcrumbs-desc' => 'विकिमें सदस्यका पाथ दर्शाता हैं।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

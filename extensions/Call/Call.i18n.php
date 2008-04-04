@@ -164,6 +164,18 @@ $messages['gl'] = array(
 	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'call'              => 'कॉल',
+	'call-desc'         => 'एक टेम्प्लेटसे (या साधारण विकिपन्ने से) जुडने वाली और कुछ पॅरॅमीटरके मिलने के बाद ही इस्तेमाल में आने वाली कड़ी बनायें।
+यह कड़ी ब्राउज़रके कमांड लाईनमें अथवा विकिसंज्ञाओं द्वारा इस्तेमाल की जा सकती हैं।',
+	'call-save'         => "इस कॉलका आउटपुट ''$1'' नाम के पन्नेपर दर्ज किया जायेगा।",
+	'call-save-success' => 'नीचे दिया हुआ पाठ <big>[[$1]]</big> नामके पन्नेपर दर्ज किया गया हैं।',
+	'call-save-failed'  => 'नीचे का पाठ <big>[[$1]]</big> इस पन्ने पर संजोया नहीं गया हैं, क्योंकि यह पन्ना पहले से अस्तित्वमें हैं।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

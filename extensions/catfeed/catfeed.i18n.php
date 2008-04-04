@@ -41,6 +41,14 @@ $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'catfeed-desc' => 'हाल में हुए बदलावोंके फीड्स इस्तेमाल करता हैं।
+पन्ने के अंदर ही अवतरण बन जाते हैं, जो कि विकिन्युज के लिये विशेष उपयुक्त हैं।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

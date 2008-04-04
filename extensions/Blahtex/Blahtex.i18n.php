@@ -626,6 +626,77 @@ $messages['gl'] = array(
 	'math_WrongFontEncodingWithHint'        => 'O símbolo "$1" non pode aparecer na codificación de fonte "$2" (tente usando o comando "$3{...}")',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'math_noblahtex'                        => '$1 की जगह पाये जाने वाले blahtex को शुरू नहीं कर सकतें हैं',
+	'math-desc'                             => '&lt;math&gt; चिन्होंका MathML आउटपुट',
+	'math_AmbiguousInfix'                   => '"$1" की गलत जगह।
+ज्यादा "{ ... }" का इस्तेमाल करके ठीक करने की कोशीश करें।',
+	'math_CannotChangeDirectory'            => 'जिस डाइरेक्टरीमें काम चल रहा हैं उसे बदल नहीं सकतें',
+	'math_CannotCreateTexFile'              => 'tex फ़ाईल बना नहीं पा रहे हैं',
+	'math_CannotRunDvipng'                  => 'dvipng चला नहीं पा रहें हैं',
+	'math_CannotRunLatex'                   => 'latex चला नहीं पा रहे हैं',
+	'math_CannotWritePngDirectory'          => 'आउटपुट PNG डाइरेक्टरीमें लिख नहीं पा रहें हैं',
+	'math_CannotWriteTexFile'               => 'tex फ़ाईलमें लिख नहीं पा रहें हैं',
+	'math_CasesRowTooBig'                   => '"cases" ब्लॉकमें एक लाईन पर सिर्फ दो ही एन्ट्री हो सकती हैं',
+	'math_DoubleSubscript'                  => 'एकही बेस से जुडे हुए दो सबस्क्रीप्ट मिले हैं।
+सिर्फ एक का इस्तेमाल किया जा सकता हैं।',
+	'math_DoubleSuperscript'                => 'एकही बेस से जुडे हुए दो सुपरस्क्रीप्ट मिले हैं।
+सिर्फ एक का ही इस्तेमाल कर सकते हैं।',
+	'math_IllegalCharacter'                 => 'इनपुटमें अवैध अक्षर हैं',
+	'math_IllegalCommandInMathMode'         => 'मॅथ मोडमें "$1" यह क्रिया अवैध हैं',
+	'math_IllegalCommandInMathModeWithHint' => 'मॅथ मोड में "$1" यह क्रिया अवैध हैं।
+क्या आप "$2" का इस्तेमाल करना चाहेंगे?',
+	'math_IllegalCommandInTextMode'         => 'टेक्स्ट मोडमें "$1" यह क्रिया अवैध हैं',
+	'math_IllegalCommandInTextModeWithHint' => '"$1" यह क्रिया टेक्स्ट मोड में अवैध हैं।
+क्या आप "$2" का इस्तेमाल करना चाहेंगे?',
+	'math_IllegalDelimiter'                 => '"$1" के आगे अवैध डिलीमीटर दिया हैं',
+	'math_IllegalFinalBackslash'            => 'इनपुटके आखिरीमें अवैध बॅक स्लॅश "\\" दिया हैं',
+	'math_IllegalNestedFontEncodings'       => 'फॉन्ट एन्कोड करनेवाली क्रियायें एक दूसरेमें मिला नहीं सकते',
+	'math_IllegalRedefinition'              => '"$1" यह क्रिया पहले से डिफाईन की गई हैं; आप उसे फिरसे बदल नहीं सकते',
+	'math_InvalidColour'                    => '"$1" यह रंग अवैध हैं',
+	'math_InvalidUtf8Input'                 => 'इनपुट वैध UTF-8 में नहीं हैं',
+	'math_LatexFontNotSpecified'            => '"$1" के लिये कोईभी LaTeX फॉन्ट दिया नहीं हैं',
+	'math_LatexPackageUnavailable'          => '"$1" यह लॅटेक्स पॅकेज उपलब्ध ना होने के कारण PNG नहीं बना पा रहें हैं',
+	'math_MismatchedBeginAndEnd'            => '"$1" और "$2" क्रियारें मेल नहीं खाती',
+	'math_MisplacedLimits'                  => '"$1" यह क्रिया सिर्फ गणिती सूत्रोंमें ही आ सकती हैं।
+कृपया "\\mathop" का इस्तेमाल करें।',
+	'math_MissingCommandAfterNewcommand'    => '"\\newcommand" के बाद दी हुई नयी क्रिया अवैध अथवा अनुपलब्ध हैं।
+एक क्रिया देना आवश्यक हैं;
+जो "\\" से शुरू होती हैं और जिसमें सिर्फ अक्षर हैं।',
+	'math_MissingDelimiter'                 => '"$1" के बाद डिलिमीटर दिया नहीं हैं',
+	'math_MissingOpenBraceAfter'            => '"$1" के बाद खुलनेवाला ब्रैकेट "{" दिया नहीं हैं',
+	'math_MissingOpenBraceAtEnd'            => 'इनपुट के आखिरी में खुलनेवाला ब्रैकेट "{" दिया नहीं हैं',
+	'math_MissingOpenBraceBefore'           => '"$1" के पहले खुलनेवाला ब्रैकेट "{" दिया नहीं हैं',
+	'math_MissingOrIllegalParameterCount'   => '"$1" में अवैध अथवा अनुपलब्ध पॅरॅमीटर काऊंट दिया हुआ हैं।
+१ से ९ के बीच की एक संख्या देन आवश्यक हैं।',
+	'math_MissingOrIllegalParameterIndex'   => '"$1" में अवैध अथवा अनुपलब्ध पॅरॅमीटरका अनुक्रम दिया हुआ हैं',
+	'math_NonAsciiInMathMode'               => 'नॉन-ASCII अक्षर सिर्फ टेक्स्ट मोडमें दिये जा सकते हैं
+इन्हें "\\text{...}" के बीच लिखने का प्रयास करें।',
+	'math_NotEnoughArguments'               => '"$1" के लिये जरूरी सारी अर्ग्युमेंट्स नहीं दी हैं',
+	'math_PngIncompatibleCharacter'         => '$1 यह चिन्ह (अक्षर) होनेवाला पीएनजी ठीक से तैयार नहीं कर पा रहें हैं',
+	'math_ReservedCommand'                  => 'blahtex के इस्तेमाल के लिये "$1" यह क्रिया रिज़र्व हैं',
+	'math_SubstackRowTooBig'                => '"substack" ब्लॉकके हर लाईनमें सिर्फ एक ही एन्ट्री होनी चाहिये',
+	'math_TooManyMathmlNodes'               => 'MathML ट्रीमें बहुत ज्यादा नोड हैं',
+	'math_TooManyTokens'                    => 'इनपुट बहुत लंबा हैं',
+	'math_UnavailableSymbolFontCombination' => '"$2" इस फॉन्टमें "$1" यह अक्षर नहीं हैं',
+	'math_UnexpectedNextCell'               => '"&" यह क्रिया सिर्फ "\\begin ... \\end" इस ब्लॉकमें ही हो सकती हैं',
+	'math_UnexpectedNextRow'                => '"\\\\" यह क्रिया सिर्फ "\\begin ... \\end" इस ब्लॉकमें ही हो सकती हैं',
+	'math_UnmatchedBegin'                   => '"\\begin" से जुडनेवाला "\\end" मिला नहीं',
+	'math_UnmatchedCloseBrace'              => 'क्लोजिंग ब्रैकेट "}" से जुडनेवाला ओपनिंग ब्रैकेट "{" मिला नहीं',
+	'math_UnmatchedEnd'                     => '"\\end" को जुडनेवाला "\\begin" मिला नहीं',
+	'math_UnmatchedLeft'                    => '"\\left" को जुडनेवाला "\\right" मिला नहीं',
+	'math_UnmatchedOpenBrace'               => 'ओपनिंग ब्रैकेट "{" से जुडनेवाला क्लोजिंग ब्रैकेट "}" मिला नहीं',
+	'math_UnmatchedOpenBracket'             => 'ओपनिंग ब्रैकेट "[" से जुडनेवाला क्लोजिंग ब्रैकेट "]" मिला नहीं',
+	'math_UnmatchedRight'                   => '"\\right" को जुडनेवाला "\\left" मिला नहीं',
+	'math_UnrecognisedCommand'              => 'अज्ञात क्रिया "$1"',
+	'math_WrongFontEncoding'                => '"$2" के फॉन्ट एन्कोडिंग में शायद "$1" चिन्ह मिलेगा नहीं',
+	'math_WrongFontEncodingWithHint'        => '"$2" के फॉन्ट एन्कोडिंगमें शायद "$1" मिलेगा नहीं।
+"$3{...}" यह क्रिया इस्तेमाल करके देखें।',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

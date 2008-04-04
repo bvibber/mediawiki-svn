@@ -173,6 +173,15 @@ $messages['gl'] = array(
 	'dt_xml_freetext'             => 'Texto Libre',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'dt_xml_page'  => 'पन्ना',
+	'dt_xml_name'  => 'नाम',
+	'dt_xml_title' => 'शीर्षक',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

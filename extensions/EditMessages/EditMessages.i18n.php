@@ -121,9 +121,13 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'editmessages'       => 'Editar mensaxes',
-	'editmsg-search'     => 'Procurar',
-	'editmsg-new-search' => 'Nova busca',
+	'editmessages'          => 'Editar mensaxes',
+	'editmsg-search'        => 'Procurar',
+	'editmsg-get-patch'     => 'Xerar parche',
+	'editmsg-new-search'    => 'Nova busca',
+	'editmsg-apply-patch'   => 'Aplicar o parche',
+	'editmsg-no-patch'      => 'Non pode executar o comando "parche"',
+	'editmsg-patch-success' => 'Parcheado exitoso.',
 );
 
 /** Hungarian (Magyar)

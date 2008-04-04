@@ -498,6 +498,32 @@ $messages['gl'] = array(
 	'badimages-page'           => '{{ns:help}}:Listaxe de imaxes con fallas',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'badimages'                => 'गलत चित्र सूची',
+	'badimages-desc'           => 'मीडियाविकिकी गलत चित्र सूची दर्शाने की क्षमता बढायें',
+	'badimages-add-btn'        => 'बढायें',
+	'badimages-added'          => '$1 को सूची में डाला गया हैं।',
+	'badimages-count'          => "गलत चित्र सूची में कुल '''$1''' चित्र हैं।",
+	'badimages-name'           => 'नाम:',
+	'badimages-not-added'      => 'इस चित्र को डाल नहीं पायें।',
+	'badimages-not-removed'    => 'यह चित्र हटा नहीं सकतें।',
+	'badimages-reason'         => 'कारण:',
+	'badimages-remove'         => '(हटायें)',
+	'badimages-remove-btn'     => 'हटायें',
+	'badimages-remove-confirm' => 'कृपया $1 को सूची से हटाने में आपकी सहमती दें:',
+	'badimages-removed'        => '$1 को सूची से हटाया।',
+	'badimages-subheading'     => 'सद्य चित्र',
+	'badimages-unprivileged'   => '(सूचीमें बदलाव के अधिकार आपको नहीं हैं)',
+	'badimages-log-name'       => 'गलत चित्र सूची',
+	'badimages-log-header'     => '[[{{MediaWiki:Badimages-page}}|गलत चित्र सूची]] में हुए बदलावोंका यह लॉग हैं।',
+	'badimages-log-add'        => '[[$1]] को गलत चित्र सूचीमें डाला गया',
+	'badimages-log-remove'     => '[[$1]] को गलत चित्र सूची से हटाया गया',
+	'badimages-page'           => '{{ns:help}}:गलत चित्र सूची',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales

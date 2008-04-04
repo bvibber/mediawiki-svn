@@ -229,6 +229,13 @@ $2',
 	'whitelistnever'           => 'nunca',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$allMessages['hi'] = array(
+	'whitelisttableremove' => 'हटायें',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

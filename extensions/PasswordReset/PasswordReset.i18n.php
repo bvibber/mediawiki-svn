@@ -527,6 +527,13 @@ $messages['te'] = array(
 	'disabledusers'                 => 'అచేతన వాడుకరులు',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'passwordreset-username' => 'Tên người dùng',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

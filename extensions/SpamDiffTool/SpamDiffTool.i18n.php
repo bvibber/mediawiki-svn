@@ -186,6 +186,13 @@ $messages['gl'] = array(
 	'spamdifftool_block'            => 'Bloqueo:',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'spamdifftool_submit_buttom' => 'भेजें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Siebrand

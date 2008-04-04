@@ -194,6 +194,15 @@ $messages['gl'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'backforth-next' => 'अगला ($1)',
+	'backforth-desc' => 'पन्नेके उपरी हिस्से में "अगला" और "पिछला" कड़ीयाँ दर्शाता हैं',
+	'backforth-prev' => 'पिछला ($1)',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

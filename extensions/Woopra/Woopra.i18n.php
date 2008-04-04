@@ -19,3 +19,11 @@ $messages['de'] = array(
 $messages['fr'] = array (
 	'woopra-desc' => 'Autorise pour [http://www.woopra.com/ le suivi en direct du logiciel Woopra] de travailler pour votre installation Mediawiki',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'woopra-desc' => 'Maakt het mogelijk om de [http://www.woopra.com/ Woopra Live Tracking software] te gebruiken voor MediaWiki',
+);
+

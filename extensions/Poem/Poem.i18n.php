@@ -74,6 +74,13 @@ $messages['gl'] = array(
 	'poem-desc' => 'Engada a etiqueta <tt>&lt;poem&gt;</tt> para o formato poema',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'poem-desc' => 'कविता लिखने के लिये आवश्यक <tt>&lt;poem&gt;</tt> टॅग देता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

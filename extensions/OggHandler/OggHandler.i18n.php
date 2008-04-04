@@ -1070,18 +1070,19 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'ogg-short-audio'     => 'ഓഗ് $1 ശബ്ദപ്രമാണം, $2',
-	'ogg-short-video'     => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, $2',
-	'ogg-short-general'   => 'ഓഗ് $1 മീഡിയ പ്രമാണം, $2',
-	'ogg-long-audio'      => '(ഓഗ് $1 ശബ്ദ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
-	'ogg-long-video'      => '(ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈര്‍ഘ്യം $2, $4×$5 pixels, $3)',
-	'ogg-long-general'    => '(ഓഗ് മീഡിയ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
-	'ogg-long-error'      => '(അസാധുവായ ഓഗ് പ്രമാണം: $1)',
-	'ogg-player-selected' => '(തിരഞ്ഞെടുത്തവ)',
-	'ogg-more'            => 'കൂടുതല്‍...',
-	'ogg-dismiss'         => 'അടയ്ക്കുക',
-	'ogg-download'        => 'പ്രമാണം ഡൗണ്‍ലോഡ് ചെയ്യുക',
-	'ogg-desc-link'       => 'ഈ പ്രമാണത്തെക്കുറിച്ച്',
+	'ogg-short-audio'      => 'ഓഗ് $1 ശബ്ദപ്രമാണം, $2',
+	'ogg-short-video'      => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, $2',
+	'ogg-short-general'    => 'ഓഗ് $1 മീഡിയ പ്രമാണം, $2',
+	'ogg-long-audio'       => '(ഓഗ് $1 ശബ്ദ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
+	'ogg-long-video'       => '(ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈര്‍ഘ്യം $2, $4×$5 pixels, $3)',
+	'ogg-long-general'     => '(ഓഗ് മീഡിയ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
+	'ogg-long-error'       => '(അസാധുവായ ഓഗ് പ്രമാണം: $1)',
+	'ogg-player-oggPlugin' => 'ഓഗ് പ്ലഗിന്‍',
+	'ogg-player-selected'  => '(തിരഞ്ഞെടുത്തവ)',
+	'ogg-more'             => 'കൂടുതല്‍...',
+	'ogg-dismiss'          => 'അടയ്ക്കുക',
+	'ogg-download'         => 'പ്രമാണം ഡൗണ്‍ലോഡ് ചെയ്യുക',
+	'ogg-desc-link'        => 'ഈ പ്രമാണത്തെക്കുറിച്ച്',
 );
 
 /** Marathi (मराठी)

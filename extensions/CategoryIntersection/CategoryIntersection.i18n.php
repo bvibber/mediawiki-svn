@@ -99,6 +99,25 @@ $messages['fr'] = array(
 	'categoryintersection-results'       => 'La recherche a retourné $1 {{PLURAL:$1|titre|titres}}.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categoryintersection-doit'    => 'Poñer as páxinas en todas estas categorías',
+	'categoryintersection-results' => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'categoryintersection'               => 'श्रेणी इन्टरसेक्शन',
+	'categoryintersection-desc'          => 'एक पन्ने के अंदर पाये जाने वाले [[Special:CategoryIntersection|श्रेणी इन्टरसेक्शन]] के हॅश मूल्योंको सम्हालता हैं।',
+	'categoryintersection-doit'          => 'इन सभी श्रेणीयोंमें होनेवाले पन्ने दर्शायें',
+	'categoryintersection-maxcategories' => 'ज्यादा से ज्यादा इन्टरसेक्शन होने वाली श्रेणीयोंकी संख्या $1 तक सीमीत हैं।',
+	'categoryintersection-results'       => 'खोज में $1 रिज़ल्ट {{PLURAL:$1|मिला|मिलें}}।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

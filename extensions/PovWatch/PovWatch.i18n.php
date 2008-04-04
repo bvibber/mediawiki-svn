@@ -207,6 +207,13 @@ Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_added'                   => 'engadido',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'povwatch_title' => 'शीर्षक:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

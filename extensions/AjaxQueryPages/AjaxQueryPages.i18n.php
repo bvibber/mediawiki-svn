@@ -53,6 +53,13 @@ $messages['fr'] = array(
 	'ajax-qp-desc' => 'Ajoute du script AJAX aux pages de requêtes telles que [[Special:Shortpages]]',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'ajax-qp-desc' => 'पृच्छापन्नोंमें [[Special:Shortpages]] जैसे AJAX बढायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -156,6 +163,13 @@ $messages['sv'] = array(
  */
 $messages['uk'] = array(
 	'ajax-qp-desc' => 'Додає трохи AJAX до QueryPages, наприклад, [[Special:Shortpages]]',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'ajax-qp-desc' => 'Thêm một số AJAX vào QueryPages như [[Special:Shortpages]]',
 );
 
 /** Cantonese (廣東話)

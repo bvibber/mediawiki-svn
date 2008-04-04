@@ -26,6 +26,17 @@ $messages['bg'] = array(
 	'mibbit-desc' => 'Добавя [[Special:Mibbit|специална страница]], използвана за чат в реално време с други уики-потребители.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'mibbit'        => 'Flap Mibbit',
+	'mibbit-desc'   => 'Ouzhpennañ a ra ur [[Special:Mibbit|bajenn zibar]] a dalvez da flapañ war-eeun gant implijerien all eus ar wiki',
+	'mibbit-header' => "A-drugarez d'ar bajenn zibar-mañ e c'hallit kenlabourat war-eeun gan timplijerien all eus ar wiki.
+Evit kevreañ, klikit war ar bouton \"Kevreañ\" zo bet rakleuniet.
+Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer met gallout a ra bezañ cheñchet.",
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -36,6 +47,14 @@ $messages['ca'] = array(
 Per a connectar-vos-hi simplement premeu el botó «Connect»
 Si esteu identificat amb un compte, el vostre nom d'usuari serà l'àlies per defecte.
 Els usuaris anònims en tindran un d'automàtic, però els podeu canviar.",
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'mibbit'      => 'Mibbit Chat',
+	'mibbit-desc' => 'Přidáva [[Special:Mibbit|speciální stránku]], pomocí které můžete komunikovat s ostatními uživateli wiki v reálném čase',
 );
 
 
@@ -109,6 +128,18 @@ $messages['nl'] = array(
 Klik op de knop "Connect" om te beginnen.
 Als u aangemeld bent bij de wiki is uw gebruikersnaam ingevuld.
 Anonieme gebruikers krijgen automatisch een gebruikersnaam toegewezen die te wijzigen is.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'mibbit'        => 'Чат Mibbit',
+	'mibbit-desc'   => 'Добавляет [[Special:Mibbit|служебную страницу]], позволяющую общаться в реальном времени с другими вики-участниками.',
+	'mibbit-header' => 'Эта служебная страница позволяет вам взаимодействовать в реальном времени с другими участниками вики.
+Чтобы подключиться, просто нажмите кнопку «Подключиться».
+Если вы представились системе, то ваше имя будет сохранено.
+Анонимные участники получают автоматически сгенерированные имена, но могут изменить их.',
 );
 
 /** Slovak (Slovenčina)

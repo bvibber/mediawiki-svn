@@ -378,6 +378,13 @@ $messages['hak'] = array(
 	'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'blacklistedusername' => 'ब्लॅकलिस्ट किया हुआ सदस्यनाम',
+);
+
 $messages['hr'] = array(
 	'blacklistedusername' => 'Nedozvoljeno suradničko ime',
 	'blacklistedusernametext' => 'Ime koje ste izabrali je na popisu [[MediaWiki:Usernameblacklist|nedozvoljenih imena]]. Molimo izaberite drugo ime.',

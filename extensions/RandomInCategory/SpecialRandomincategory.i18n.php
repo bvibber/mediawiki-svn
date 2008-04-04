@@ -107,6 +107,13 @@ $messages['gl'] = array(
 	'randomincategory-submit'     => 'Adiante',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'randomincategory-submit' => 'जायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

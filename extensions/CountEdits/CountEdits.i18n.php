@@ -532,6 +532,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'countedits'              => 'Liczba edycji',
+	'countedits-desc'         => '[[Special:CountEdits|Strona specjalna]] zawierająca liczniki edycji użytkowników oraz spis dziesięciu najaktywniejszych',
 	'countedits-warning'      => "'''Uwaga:''' Nie oceniaj książki po jej okładce.
 Nie oceniaj użytkownika po jego liczbie edycji.",
 	'countedits-username'     => 'Nazwa użytkownika:',
@@ -771,10 +772,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'countedits'              => 'Đếm các sửa đổi',
-	'countedits-username'     => 'Thành viên:',
+	'countedits-username'     => 'Tên người dùng:',
 	'countedits-ok'           => 'Đếm',
 	'countedits-nosuchuser'   => 'Không có thành viên với tên $1.',
 	'countedits-resultheader' => 'Kết quả của $1',

@@ -354,6 +354,35 @@ $messages['gl'] = array(
 	'changeauthor-rev'                  => 'r$1',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'changeauthor'                      => 'अवतरण का लेखक बदलें',
+	'changeauthor-desc'                 => 'अवतरण का लेखक बदलने की अनुमति देता हैं',
+	'changeauthor-title'                => 'अवतरण का लेखक बदलें',
+	'changeauthor-search-box'           => 'अवतरण खोजें',
+	'changeauthor-pagename-or-revid'    => 'पन्ने का नाम या अवतरण क्रमांक:',
+	'changeauthor-pagenameform-go'      => 'जायें',
+	'changeauthor-comment'              => 'टिप्पणी:',
+	'changeauthor-changeauthors-multi'  => 'लेखक बदलें',
+	'changeauthor-explanation-multi'    => "नीचे दिया हुआ फार्म इस्तेमाल कर आप अवतरणोंके लेखक बदल सकतें हैं।
+नीचे दी हुई सूची से एक या अनेक सदस्य बदलें, टिप्पणी दें (आवश्यक नहीं) और 'लेखक बदलें' बटन पर क्लिक करें।",
+	'changeauthor-changeauthors-single' => 'लेखक बदलें',
+	'changeauthor-explanation-single'   => "नीचे दिया हुआ फार्म इस्तेमाल कर आप अवतरण का लेखक बदल सकतें हैं। नीचे दी हुई सूची से एक सदस्य बदलें, टिप्पणी दें (आवश्यक नहीं) और 'लेखक बदलें' बटन पर क्लिक करें।",
+	'changeauthor-invalid-username'     => 'अवैध सदस्यनाम "$1"।',
+	'changeauthor-nosuchuser'           => '"$1" नामसे कोई भी सदस्य नहीं हैं।',
+	'changeauthor-revview'              => '$2 का #$1 अवतरण',
+	'changeauthor-nosuchtitle'          => '"$1" नामसे कोई भी लेख अस्तित्वमें नहीं हैं।',
+	'changeauthor-weirderror'           => 'एक अलगही गलती मिली हैं।
+कॄपया पुन: यत्न करें।
+अगर यह गलती फिर से आती हैं, तो इसका मतलब डाटाबेसमें बडी समस्या हो सकता हैं।',
+	'changeauthor-invalidform'          => 'खुद तैयार किया फार्म इस्तेमाल करने के बजाय Special:ChangeAuthor का इस्तेमाल करें',
+	'changeauthor-success'              => 'आपकी रिक्वेस्टको प्रोसेस कर दिया हैं।',
+	'changeauthor-logentry'             => '$1 के $2 अवतरणका लेखक $3 से $4 को बदल दिया हैं',
+	'changeauthor-logpagename'          => 'लेखक बदलाव सूची',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
@@ -524,12 +553,12 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'changeauthor'                      => 'आवृत्तीचा लेखक बदला',
-	'changeauthor-desc'                 => 'एखाद्या बदल आवृत्तीचा लेखक बदलण्याची परवानगी देतो',
+	'changeauthor-desc'                 => 'एखाद्या आवृत्तीचा लेखक बदलण्याची परवानगी देतो',
 	'changeauthor-title'                => 'एखाद्या आवृत्तीचा लेखक बदला',
 	'changeauthor-search-box'           => 'आवृत्त्या शोधा',
 	'changeauthor-pagename-or-revid'    => 'पानाचे नाव किंवा आवृत्ती क्रमांक:',
 	'changeauthor-pagenameform-go'      => 'चला',
-	'changeauthor-comment'              => 'प्रतिक्रीया',
+	'changeauthor-comment'              => 'प्रतिक्रीया:',
 	'changeauthor-changeauthors-multi'  => 'लेखक बदला',
 	'changeauthor-explanation-multi'    => "खालील अर्ज वापरुन तुम्ही आवृत्त्यांचे लेखक बदलू शकता. खालील यादीतील एक किंवा अनेक सदस्यनावे बदला, शेरा लिहा (वैकल्पिक) व 'लेखक बदला' या कळीवर टिचकी द्या.",
 	'changeauthor-changeauthors-single' => 'लेखक बदला',

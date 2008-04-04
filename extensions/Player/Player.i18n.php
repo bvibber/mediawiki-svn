@@ -172,6 +172,13 @@ $messages['gl'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'player-goto-page' => 'पन्ना',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -857,6 +857,16 @@ $wgGoogleMapsMessages['he'] = array(
 	'gm-mars'                      => 'מאדים',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$wgGoogleMapsMessages['hi'] = array(
+	'gm-balloon-title' => 'शीर्षक:',
+	'gm-remove'        => 'हटायें',
+	'gm-yes'           => 'हां',
+	'gm-no'            => 'नहीं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -2088,6 +2098,7 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
 	'gm-remove'                    => 'бетерергә',
 	'gm-start-path'                => 'юл төзүене башларга',
 	'gm-save-point'                => 'сакларга һәм ябарга',
+	'gm-load-map-from-article'     => 'Чираттагы биттән хаританы йөкләргә:',
 	'gm-no-maps'                   => 'Бу биттә йөкләү өчен хариталар юк.',
 	'gm-refresh-list'              => 'Исемлекне яңатырга',
 	'gm-load-map'                  => 'Хаританы йөкләргә',

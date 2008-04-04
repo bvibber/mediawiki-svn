@@ -659,6 +659,9 @@ $messages['hi'] = array(
 पहले इन्हें पूर्ववत करें।',
 	'hiderevision-error-delete'   => 'आर्चिव्ह करू शकत नाही; क्या यह पन्ना पहले हटाया था?',
 	'hiderevision-archive-status' => '$1 से अवतरण हटा दिये: $2',
+	'oversight-nodiff'            => 'इस पन्ने के पुराने अवतरण नहीं हैं, इसलिये फर्क नहीं देख सकते। कारण:
+*यह पन्ना पहले से हटाया गया हैं या फिर
+*छुपाया हुआ अवतरण इस पन्ने का पहला अवतरण हैं',
 	'oversight-log-hiderev'       => '$1 से एक बदलाव हटाया',
 	'oversight'                   => 'ओवरसाईट',
 	'oversight-view'              => 'अधिक ज़ानकारी',
@@ -1186,8 +1189,14 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'hiderevision-status' => 'പതിപ്പ് $1: $2',
-	'oversight-view'      => 'വിശദാംശങ്ങള്‍',
+	'hiderevision-continue'    => 'തുടരുക',
+	'hiderevision-reason'      => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
+	'hiderevision-submit'      => 'ഈ ഡാറ്റ സ്ഥിരമായി മറയ്ക്കുക',
+	'hiderevision-tab'         => 'പതിപ്പ് മറയ്ക്കുക',
+	'hiderevision-norevisions' => 'മായ്ക്കുവാന്‍ വേണ്ടി പതിപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.',
+	'hiderevision-noreason'    => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
+	'hiderevision-status'      => 'പതിപ്പ് $1: $2',
+	'oversight-view'           => 'വിശദാംശങ്ങള്‍',
 );
 
 /** Marathi (मराठी)

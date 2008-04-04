@@ -236,6 +236,24 @@ $messages['gl'] = array(
 	'scanset_prev'           => '&lt; Anterior',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'scanset-desc'                      => 'ऍंड्रियास ग्रॉसके सीडी/डीव्हीडी में से चित्र देखें',
+	'scanset_no_name'                   => 'स्कॅनसेट: आपने स्कॅनसेटको नाम देना आवश्यक हैं, उदा. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'स्कॅनसेट: गलत या अनुपलब्ध स्कॅन सेट',
+	'scanset_unrecognised_index_format' => 'स्कॅनसेट: अज्ञात अनुक्रम',
+	'scanset_opendir_error'             => 'स्कॅनसेट: गलती, $1 डाइरेक्टरी खोल नहीं सकतें',
+	'scanset_no_files'                  => 'स्कॅनसेट: दिये हुए डाइरेक्टरीमें फ़ाइलें नहीं हैं।',
+	'scanset_no_volumes'                => 'स्कॅनसेट: बडी डाइरेक्टरी मिली नहीं',
+	'scanset_missing_index_file'        => 'स्कॅनसेट: अनुक्रम फ़ाईल $1 मिली नहीं',
+	'scanset_index_file_error'          => 'स्कॅनसेट: अनुक्रम फ़ाईलमें $1 लाईनपर गलती हैं',
+	'scanset_invalid_volume'            => 'स्कॅनसेट: गलत घनमान',
+	'scanset_next'                      => 'अगला &gt;',
+	'scanset_prev'                      => '&lt; पिछला',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
@@ -668,8 +686,10 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'scanset_next' => 'Sau →',
-	'scanset_prev' => '← Trước',
+	'scanset-desc'         => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
+	'scanset_invalid_name' => 'ScanSet: Bộ trang quét không hợp lệ hay không tồn tại.',
+	'scanset_next'         => 'Sau →',
+	'scanset_prev'         => '← Trước',
 );
 
 /** Volapük (Volapük)

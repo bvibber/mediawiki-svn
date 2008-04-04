@@ -158,11 +158,22 @@ $messages['frp'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
 	'block_title_error_page_title' => 'Título Bloqueado',
+	'block_title_error-desc'       => 'Proporciona un camiño básico para previr que páxinas con certos títulos sexan gardadas ou creadas',
 	'block_title_error'            => 'Sentímolo, non se permite gardar o título desta páxina.',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'block_title_error_page_title' => 'ब्लॉक किया हुआ शीर्षक',
+	'block_title_error-desc'       => 'विशिष्ट शीर्षकके पन्ने बनानेसे रोकनेका आसान तरीका',
+	'block_title_error'            => 'माफ किजीये, इस शीर्षक का पन्ना संजोनेसे मनाई हैं',
 );
 
 /** Croatian (Hrvatski)

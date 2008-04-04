@@ -197,6 +197,14 @@ Por favor, sexa paciente.',
 	'youtubeauthsub_jserror_nodesc'      => 'Por favor, insira unha descrición para o vídeo.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'youtubeauthsub_title'  => 'शीर्षक',
+	'youtubeauthsub_submit' => 'भेजें',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

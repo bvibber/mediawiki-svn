@@ -284,6 +284,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'sitematrix'           => 'Luettelo Wikimedian wikeistä',
+	'sitematrix-summary'   => 'Tämä toimintosivu näyttää luettelon kaikista Wikimedian wikeistä.',
 	'sitematrix-desc'      => 'Näyttää [[Special:SiteMatrix|luettelon Wikimedian wikeistä]].',
 	'sitematrix-language'  => 'Kieli',
 	'sitematrix-project'   => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
@@ -385,6 +386,20 @@ $messages['he'] = array(
 	'sitematrix-others'    => 'מיזמים אחרים של ויקימדיה',
 	'sitematrix-total'     => "'''מספר האתרים: $1'''",
 	'sitematrix-sitetotal' => 'סך הכל',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'sitematrix'           => 'विकिमीडियाके विकियोंकी सूची',
+	'sitematrix-summary'   => 'यह विशेष पृष्ठ विकिमीडिया विकियोंकी सूची दर्शाता हैं।',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|विकिमीडिया विकिंयोंकी सूची]] दर्शाता हैं',
+	'sitematrix-language'  => 'भाषा',
+	'sitematrix-project'   => 'प्रकल्पका नाम, आंतरप्रकल्प कड़ीयाँ और आंतरविकि कड़ीयाँ',
+	'sitematrix-others'    => 'विकिमीडियाके अन्य प्रकल्प',
+	'sitematrix-total'     => "'''कुल गिनती: $1'''",
+	'sitematrix-sitetotal' => 'कुल',
 );
 
 /** Croatian (Hrvatski)

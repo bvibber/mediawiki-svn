@@ -284,6 +284,22 @@ Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que 
 	'querysuccessful' => 'Consulta con éxito',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'asksql'          => 'SQL पृच्छा',
+	'asksql-desc'     => 'SQL पृच्छा करने के लिये इस [[Special:Asksql|विशेष पृष्ठ]] का इस्तेमाल करें',
+	'asksqltext'      => "सीधे डाटाबेस को पृच्छा करने के लिये नीचे दिया फार्म इस्तेमाल करें।
+स्ट्रींग लिटरल्सको delimit करनेके लिये अवतरणचिन्होंका प्रयोग करें ('इस प्रकार')।
+यह करते समय सर्वर पर ज्यादा लोड आता हैं, इसलिये इसे कम से कम इस्तेमाल करें।",
+	'sqlislogged'     => 'कृपया ध्यान दें कि सभी पृच्छायें अपने आप लॉग होती हैं।',
+	'sqlquery'        => 'पॄच्छा लिखें',
+	'querybtn'        => 'पॄच्छा भेजें',
+	'selectonly'      => 'सिर्फ पढनेलायक पृच्छायें ही भेजी जा सकती हैं।',
+	'querysuccessful' => 'पृच्छा यशस्वी',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

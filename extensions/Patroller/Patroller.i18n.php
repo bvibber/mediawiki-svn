@@ -225,6 +225,13 @@ $messages['gl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrulleiro',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'patrol-revert-reason' => 'कारण:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

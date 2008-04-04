@@ -68,6 +68,13 @@ $messages['eo'] = array(
 	'seealso-desc' => "Asimilita 'Vidu ankaŭ' sekcio-titolo uzante la markojn <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'seealso' => 'Katso myös',
+);
+
 /** French (Français)
  * @author Bertrand GRONDIN
  */

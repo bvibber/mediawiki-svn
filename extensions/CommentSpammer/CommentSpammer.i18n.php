@@ -107,6 +107,17 @@ $messages['gl'] = array(
 	'cspammer-log-page'           => 'Rexistro dos comentarios Spam',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'commentspammer-desc'         => 'डीएनएस ब्लॅकलिस्टपर होनेवाले संशयित स्पॅमर्सके बदलाव रद्द कर देता हैं',
+	'commentspammer-log-msg'      => '[[:$2]] पर किये हुए [[Special:Contributions/$1|$1]] के बदलाव।',
+	'commentspammer-log-msg-info' => 'आखिरमें $1 {{PLURAL:$1|दिन पहले|दिनों पहले}} स्पॅम किया था, स्तर $2, और ऑफेन्स कोड $3 हैं। [http://www.projecthoneypot.org/search_ip.php?ip=$4 अधिक ज़ानकारी], या [[Special:Blockip/$4|ब्लॉक करें]]।',
+	'cspammerlogpagetext'         => 'यह सूची ऐसे बदलाव दर्शाती हैं जो स्रोतके टिप्पणी स्पॅमर स्थितीके अनुसार रोके या स्वीकार किये गये हैं।',
+	'cspammer-log-page'           => 'टिप्पणी स्पॅमर सूची',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Siebrand

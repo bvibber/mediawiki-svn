@@ -296,6 +296,14 @@ $messages['gl'] = array(
 	'regexblock-view-time'            => 'en $1',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'regexblock-form-reason' => 'कारण:',
+	'regexblock-view-go'     => 'जायें',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales

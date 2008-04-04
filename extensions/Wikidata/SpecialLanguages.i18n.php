@@ -1073,6 +1073,13 @@ $wdMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$wdMessages['hi'] = array(
+	'ow_Collection' => 'कलेक्शन',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

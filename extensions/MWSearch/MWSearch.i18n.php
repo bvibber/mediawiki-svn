@@ -60,6 +60,13 @@ $messages['lb'] = array(
 	'mwsearch-desc' => 'Plug-in Sichen Media-Wiki',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'mwsearch-desc' => 'മീഡിയാവിക്കി തിരച്ചില്‍ പ്ലഗിന്‍',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

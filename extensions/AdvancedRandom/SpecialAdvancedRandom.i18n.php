@@ -105,6 +105,14 @@ $messages['frp'] = array(
 	'advancedrandom-desc' => 'Obtint una pâge a l’hasârd dês una discussion ou un lim d’un sujèt vers una pâge balyê. Pôt étre utilisâ coment [[Special:AdvancedRandom/Template:Featured/Talk]] por obtegnir un articllo de qualitât a l’hasârd ou ben coment [[Special:AdvancedRandom/Template:GFDL/Image]] por obtegnir un fichiér desot licence GFDL a l’hasârd.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'advancedrandom'      => 'एडवान्स्ड रॅन्डम',
+	'advancedrandom-desc' => 'ऐसा एक अविशिष्ट पान खोजें कि जिसका वार्ता अथवा विषयपान दिये हुए पन्ने से जुडता हैं, जैसे कि अविशिष्ट विशेष लेख खोजनेके लिये [[Special:AdvancedRandom/Template:Featured/Talk]] का इस्तेमाल हो सकता हैं अथवा अविशिष्ट जीएफडीएल (GFDL) फ़ाईल खोजेने के लिये [[Special:AdvancedRandom/Template:GFDL/Image]] का इस्तेमाल हो सकता हैं',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

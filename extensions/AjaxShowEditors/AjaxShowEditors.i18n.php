@@ -221,6 +221,19 @@ $messages['gl'] = array(
 	'ajax-se-usernotfound'     => 'ERRO: o usuario non foi atopado',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'ajax-se-desc'             => 'इसी पन्नेमें बदलाव करने वाले सदस्य दर्शायें',
+	'ajax-se-title'            => 'अभी बदलाव कर रहें हैं:',
+	'ajax-se-pending'          => 'रिफ्रेश करना बाकी... (इस बक्सेपर क्लिक करें या संपादन शुरू करें)',
+	'ajax-se-idling'           => '($1 सेकंद पहले)',
+	'ajax-se-pagedoesnotexist' => 'पन्ना अस्तित्वमें नहीं हैं',
+	'ajax-se-userinvalid'      => 'गलती: अवैध सदस्य',
+	'ajax-se-usernotfound'     => 'गलती: सदस्य मिला नहीं',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dalibor Bosits

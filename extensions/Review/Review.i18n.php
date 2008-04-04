@@ -331,6 +331,13 @@ $messages['gl'] = array(
 	'review_comment'                         => 'Comentario',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'review_comment' => 'टिप्पणी',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Siebrand

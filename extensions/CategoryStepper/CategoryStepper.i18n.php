@@ -104,6 +104,15 @@ $messages['gl'] = array(
 	'categorystepper-end'   => '(Final da categoría)',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'categorystepper-desc'  => 'एखाद पन्ना जिन श्रेणीयोंमें हैं उन श्रेणीयोंमें आसानी से नैविगेशन होने के लिये अनुक्रम के हिसाब से पिछली और अगली कड़ीयाँ दर्शानेवाला "श्रेणी नैविगेशन सन्दूक" दर्शाता हैं',
+	'categorystepper-end'   => '(श्रेणी की समाप्ति)',
+	'categorystepper-start' => '(श्रेणी की शुरुवात)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -169,8 +178,8 @@ $messages['lo'] = array(
  */
 $messages['mr'] = array(
 	'categorystepper-desc'  => 'एखादे पान ज्या वर्गांमध्ये आहे त्यांच्यातील सुचालन सुलभ होण्यासाठी अनुक्रमे मागील व पुढील वर्ग दाखविणारी "वर्ग सुचालन खिडकी" दर्शवितो',
-	'categorystepper-end'   => '(शेवटचा वर्ग)',
-	'categorystepper-start' => '(सुरवातीचा वर्ग)',
+	'categorystepper-end'   => '(वर्गाचा शेवट)',
+	'categorystepper-start' => '(वर्गाची शेवट)',
 );
 
 /** Dutch (Nederlands)

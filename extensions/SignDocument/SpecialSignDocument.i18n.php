@@ -217,6 +217,7 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Siebrand
  */
 $messages['bg'] = array(
 	'sign-selectdoc'               => 'Документ:',
@@ -530,6 +531,17 @@ $messages['gu'] = array(
 	'sign-phone'    => 'દુરભાષઃ',
 	'sign-bday'     => 'ઉંમરઃ',
 	'sign-email'    => 'ઇ મેલ:',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'sign-realname'                => 'नाम:',
+	'sign-email'                   => 'इ-मेल एड्रेस:',
+	'sign-viewfield-realname'      => 'नाम',
+	'sign-viewfield-reviewcomment' => 'टिप्पणी',
+	'sign-review-comment'          => 'टिप्पणी',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

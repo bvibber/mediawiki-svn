@@ -382,6 +382,14 @@ Voltar a:
 * [[$4]]",
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'crosswikiblock-reason'   => 'कारण:',
+	'crosswikiunblock-reason' => 'कारण:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

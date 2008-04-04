@@ -8,7 +8,9 @@
 
 $messages = array();
 
-/* English (Rob Church) */
+/** English
+ * @author Rob Church
+ */
 $messages['en'] = array(
 	'contributors'             => 'Contributors',
 	'contributors-desc'        => 'Summarises the main contributors to a page',
@@ -267,6 +269,13 @@ $messages['gl'] = array(
 	'contributors-others'      => 'e outros $1',
 	'contributors-badtitle'    => 'Título non válido.',
 	'contributors-nosuchpage'  => 'Non existe a páxina $1.',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'contributors-target' => 'शीर्षक:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

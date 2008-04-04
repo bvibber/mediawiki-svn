@@ -741,6 +741,13 @@ $messages['gl'] = array(
 	'mv_new_anno_en'                => 'Nova Etiqueta ou Anotación',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'mv_remove' => 'हटायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Yekrats
@@ -2394,13 +2401,35 @@ $messages['tet'] = array(
 	'mv_category'        => 'kategoria',
 );
 
+/** Tajik (Тоҷикӣ/tojikī)
+ * @author Ibrahim
+ */
+$messages['tg'] = array(
+	'mv_search_stream_name' => 'Номи ҷараён',
+	'mv_stream_name'        => 'номи ҷараён',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'mv_edit_title' => 'Вироиши матн',
-	'mv_search_and' => 'ва',
-	'mv_search_or'  => 'ё',
+	'mv_no_stream_files'      => 'Парвандаҳои Ҷараёнии Мавҷудбуда нест',
+	'mv_edit_stream_files'    => 'Вироиши парвандаҳои ҷараёнӣ',
+	'mv_path_type_url_anx'    => 'нишонаи пурраи расона',
+	'mv_path_type_wiki_title' => 'унвони расонаи вики',
+	'mv_path_type_label'      => 'навъи масир',
+	'mv_duration_label'       => 'тӯл',
+	'mv_save_changes'         => 'Захираи тағйирот',
+	'mv_removed_file_stream'  => 'Парвандаи Ҷараёнии ҳазфшуда: $1',
+	'mv_add_stream_file'      => 'Илова кардани парвандаи ҷараён',
+	'mv_media_path'           => 'масири расона',
+	'mv_file_list'            => 'Парвандаҳои ҷараён',
+	'mv_label_stream_name'    => 'Номи ҷараён',
+	'mv_label_stream_desc'    => 'Тавсифи ҷараён',
+	'add_stream_permission'   => 'Шумо иҷозати илова кардани ҷараёни ҷадидро надоред',
+	'mv_edit_title'           => 'Вироиши матн',
+	'mv_search_and'           => 'ва',
+	'mv_search_or'            => 'ё',
 );
 
 /** Vietnamese (Tiếng Việt)

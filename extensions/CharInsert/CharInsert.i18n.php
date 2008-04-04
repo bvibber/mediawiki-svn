@@ -66,6 +66,13 @@ $messages['fr'] = array(
 	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères non-standards]]',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'charinsert-desc' => '[[MediaWiki:Edittools|नॉन-स्टैडेर्ड चिन्ह]] के इस्तेमाल के लिये एक जावास्क्रीप्ट कुंजीफलक बनाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

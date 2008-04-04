@@ -68,6 +68,14 @@ $messages['gl'] = array(
 	'nstab-comments'    => 'Comentario',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'commentpages-desc' => 'मुख्य नामस्थानके लिये टिप्पणी पन्ने',
+	'nstab-comments'    => 'समीक्षा',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

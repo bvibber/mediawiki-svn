@@ -151,6 +151,13 @@ $messages['gl'] = array(
 	'edituser-exempt'   => 'O usuario especificado non pode ser editado',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'edituser-username' => 'नाम',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

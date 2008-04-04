@@ -132,6 +132,13 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'expandtemplates'                  => 'Emled ar patromoù',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplates|Astenn a ra ar patromoù, an arc'hwelioù parser hag an argemmoù]] evit diskouez an testennoù wiki astennet ha rakwelet tres ar pajennoù a seurt-se.",
+	'expand_templates_intro'           => "Kemer a ra ar bajenn zibar-mañ tammoù testenn hag astenn a ra an holl batromoù enni en un doare azkizat.
+Astenn a ra ivez an arc'hwelioù parser evel
+<nowiki>{{</nowiki>#if:…}}, hag an argemmoù evel
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; e gwirionez, koulz lavaret kement tra zo etre briataennoù.
+Ober a ra kement-mañ dre c'hervel pazenn ar parser a zegouezh digant MediaWiki e-unan.",
+	'expand_templates_title'           => 'Titl ar gendestenn, evit {{PAGENAME}} h.a. :',
 	'expand_templates_input'           => 'Merkañ ho testenn amañ :',
 	'expand_templates_output'          => "Disoc'h :",
 	'expand_templates_xml_output'      => 'Ezvont XML',
@@ -674,9 +681,11 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'expand_templates_output'  => 'ഫലം',
-	'expand_templates_ok'      => 'ശരി',
-	'expand_templates_preview' => 'പ്രിവ്യൂ',
+	'expandtemplates'                  => 'ഫലകങ്ങള്‍ വിപുലീകരിക്കുക',
+	'expand_templates_output'          => 'ഫലം',
+	'expand_templates_ok'              => 'ശരി',
+	'expand_templates_remove_comments' => 'അഭിപ്രായങ്ങള്‍ ഒഴിവാക്കുക',
+	'expand_templates_preview'         => 'പ്രിവ്യൂ',
 );
 
 /** Marathi (मराठी)

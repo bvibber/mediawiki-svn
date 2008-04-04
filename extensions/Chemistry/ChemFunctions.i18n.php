@@ -213,6 +213,21 @@ href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">
 	'chemFunctions_Name'     => 'Nome da IUPAC',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'chemicalsources'                  => 'रासायनिक स्रोत',
+	'chemicalsource-desc'              => 'रासायनिक सूत्रोंके लिये <nowiki><chemform></nowiki> यह टॅग देता हैं',
+	'chemFunctions_ListPage'           => 'रासायनिक स्रोत',
+	'chemFunctions_CAS'                => 'CAS क्रमांक',
+	'chemFunctions_ATCCode'            => 'एटीसीकोड',
+	'chemFunctions_ECNumber'           => 'इसीक्रमांक',
+	'chemFunctions_Formula'            => 'सूत्र',
+	'chemFunctions_Name'               => 'आययूपीएसी नाम',
+	'chemFunctions_ChemFormInputError' => 'Chemform: इनपुट गलती!',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

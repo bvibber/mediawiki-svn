@@ -167,6 +167,13 @@ $messages['gl'] = array(
 	'todo-form-submit'      => 'Presentar Consulta',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'todo-list-cancel' => 'रद्द करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
