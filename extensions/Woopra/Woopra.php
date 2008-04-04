@@ -13,6 +13,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
         echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
         die( 1 );
 }
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['Woopra'] = $dir . 'Woopra.i18n.php';
  
 $wgExtensionCredits['specialpage'][] = array(
         'name' => 'Woopra Live Stats Tracking',
@@ -20,6 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
         'version' => '1.0.0',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Woopra',
         'description' => 'Allows for the [http://www.woopra.com/ Woopra Live Tracking Software] to work for your MediaWiki installation',
+	'descriptionmsg' => 'woopra-desc',
 );
  
 $wgHooks['BeforePageDisplay'][] = 'fnWoopraJavascript';
