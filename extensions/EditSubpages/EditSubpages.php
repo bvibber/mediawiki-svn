@@ -17,29 +17,28 @@ for anonymous editing via [[MediaWiki:Unlockedpages]]",
 'descriptionmsg' => 'editsubpages-desc',
 'author' => "Ryan Schmidt",
 'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
-'version' => "1.2.2",
+'version' => "2.0",
 );
 
-$wgHooks['UserGetRights'][] = 'EditSubpages';
+$wgHooks['userCan'][] = 'EditSubpages';
+$wgGroupPermissions['*']['edit'] = false; //what's the point if they can edit to begin with?
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['EditSubpages'] = $dir .'EditSubpages.i18n.php';
-$wgGroupPermissions['*']['edit'] = false; //what's the point if they can edit to begin with?
 
-function EditSubpages(&$user, &$aRights) {
-	global $wgTitle;
-	$pagename = $wgTitle->getText(); //name of page w/ spaces, not underscores
-	if(!in_array('edit', $aRights)) {
-		if($wgTitle->getNamespace == NS_MAIN) {
-			$ns = ''; //for easier testing
-		} else {
-			$ns = $wgTitle->getNsText(); //namespace
-		}
-		if( $wgTitle->isTalkPage() ) {
-			$ns = $wgTitle->getTalkNsText();
+function EditSubpages($title, $user, $action, $result) {
+	if($action == 'edit' && !$user->isLoggedIn() ){
+		$result = false;
+		$pagename = $title->getText(); //name of page w/ spaces, not underscores
+		$ns = $title->getNsText(); //namespace
+		if( $title->isTalkPage() ) {
+			$ns = $title->getTalkNsText();
 			$nstalk = '';
 		} else {
-			$nstalk = $wgTitle->getTalkNsText();
+			$nstalk = $title->getTalkNsText();
 		}
+		//underscores -> spaces
+		$ns = str_replace('_', ' ', $ns);
+		$nstalk = str_replace('_', ' ', $nstalk);
 		if($ns == '') {
 			$text = $pagename;
 		} else {
@@ -50,16 +49,13 @@ function EditSubpages(&$user, &$aRights) {
 		} else {
 			$talktext = $pagename;
 		}
-		
 		$pages = explode ("\n", wfMsg ('unlockedpages')); //grabs MediaWiki:Unlockedpages
-
 		foreach($pages as $value) {
 			if( strpos( $value, '*' ) === false || strpos( $value, '*' ) !== 0 )
 				continue; // "*" doesn't start the line, so treat it as a comment (aka skip over it)
 			$value = trim( trim( trim( trim( $value ), "*[]" ) ), "*[]" );
 			if ( $value == $text || strpos( $text, $value . '/' ) === 0 ) {
-				$aRights = array_merge($aRights, array('edit', 'createpage', 'createtalk' ));
-				$aRights = array_unique($aRights);
+				$result = true;
 				break;
 			}
 			$title = Title::newFromText($value);
@@ -67,12 +63,12 @@ function EditSubpages(&$user, &$aRights) {
 				$talk = $title->getTalkPage();
 				$talkpage = $talk->getPrefixedText();
 				if($talkpage == $talktext || $talkpage == $text || strpos( $talktext, $talkpage . '/' ) === 0 || strpos( $text, $talkpage . '/' ) === 0 ) {
-					$aRights = array_merge($aRights, array('edit', 'createpage', 'createtalk'));
-					$aRights = array_unique($aRights);
+					$result = true;
 					break;
 				}
 			}
 		}
+		return false; //so internal checks cannot override
 	}
-	return true; //Never EVER change this line! Needs to return true to continue hook processing
+	return true;
 }

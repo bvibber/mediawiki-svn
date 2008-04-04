@@ -15,27 +15,26 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'wfRightFunctions';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'RightFunctions',
-	'version' => '1.9',
+	'version' => '2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RightFunctions',
 	'author' => 'Ryan Schmidt',
-	#'description' => 'Permission-based parser functions',
+	'description' => 'Permission-based parser functions',
 	'descriptionmsg' => 'rightfunctions',
 );
 
 $wgExtensionMessageFiles['RightFunctions'] = dirname(__FILE__) . '/RightFunctions.i18n.php';
 $wgHooks['LanguageGetMagic'][] = 'wfRightFunctionsLanguageGetMagic';
 
-//Default globals
-$wgRightFunctionsUserGroups = array('*', 'user', 'autoconfirmed', 'sysop', 'bureaucrat');
-$wgRightFunctionsAllowExpensiveQueries = true;
-$wgRightFunctionsAllowCaching = false;
-$wgRightFunctionsDisableFunctions = array();
+//Default globals. Wrapping in isset() so that it doesn't override any previously-defined stuff
+$wgRightFunctionsUserGroups = isset($wgRightFunctionsUserGroups) ? $wgRightFunctionsUserGroups : array('*', 'user', 'autoconfirmed', 'sysop', 'bureaucrat');
+$wgRightFunctionsAllowExpensiveQueries = isset($wgRightFunctionsAllowExpensiveQueries) ? $wgRightFunctionsAllowExpensiveQueries : true;
+$wgRightFunctionsAllowCaching = isset($wgRightFunctionsAllowCaching) ? $wgRightFunctionsAllowCaching : false;
+$wgRightFunctionsDisableFunctions = isset($wgRightFunctionsDisableFunctions) ? $wgRightFunctionsDisableFunctions : array();
 
 function wfRightFunctions() {
 	global $wgParser, $wgExtRightFunctions;
 
 	$wgExtRightFunctions = new ExtRightFunctions();
-	$wgParser->setFunctionHook( 'test', array(&$wgExtRightFunctions, 'test') );
 	$wgParser->setFunctionHook( 'ifright', array(&$wgExtRightFunctions, 'ifright') );
 	$wgParser->setFunctionHook( 'ifallowed', array(&$wgExtRightFunctions, 'ifallowed') );
 	$wgParser->setFunctionHook( 'switchright', array( &$wgExtRightFunctions, 'switchright') );
@@ -52,7 +51,6 @@ function wfRightFunctions() {
 function wfRightFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
 	switch ( $langCode ) {
 	default:
-		$magicWords['test'] = array( 0, 'test' );
 		$magicWords['ifright'] = array( 0, 'ifright' );
 		$magicWords['ifallowed'] = array( 0, 'ifallowed' );
 		$magicWords['switchright'] = array( 0, 'switchright' );
