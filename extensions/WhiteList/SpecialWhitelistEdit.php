@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'WhiteListEdit',
-	'version'        => 'v0.8.4',
+	'version'        => 'v0.8.5',
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'description'    => 'Edit the access permissions of restricted users',

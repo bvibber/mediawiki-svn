@@ -49,6 +49,7 @@ class WhitelistExec
 
 		$override = WHITELIST_NOACTION;
 
+
 		/* Bail if the user isn't restricted.... */
 		if( !in_array($wgWhiteListRestrictedRight, $wgUser->getRights()) ) {
 			$result = null; /* don't care */
@@ -59,20 +60,23 @@ class WhitelistExec
 		if (!$title)
 			return $hideMe;
 
+		# If this is a talk page, we need to check permissions
+		# of the subject page instead...
+		$true_title = $title->getSubjectPage();
+
 		/* Check global allow/deny lists */
-		$override = self::GetOverride($title, $action);
+		$override = self::GetOverride($true_title, $action);
 
-		/* Check if user page */
-		if( WHITELIST_NOACTION == $override )
-			$override = self::IsUserPage( $title->GetPrefixedText(), $wgUser );
-
-		/* Handle special pages */
-		if( WHITELIST_NOACTION == $override )
-			$override = self::IsAllowedSpecialPage( $title, $wgUser );
+		#if( WHITELIST_NOACTION == $override )
+		#	$override = self::IsAllowedExact( $true_title, $wgUser, $action );
 
 		/* Check if page is on whitelist */
 		if( WHITELIST_NOACTION == $override )
-			$override = self::IsAllowed( $title, $wgUser, $action );
+			$override = self::IsAllowed( $true_title, $wgUser, $action );
+
+		/* Check if user page */
+		if( WHITELIST_NOACTION == $override )
+			$override = self::IsUserPage( $true_title->GetPrefixedText(), $wgUser );
 
 		switch( $override )
 		{
@@ -168,128 +172,95 @@ class WhitelistExec
 			return WHITELIST_NOACTION;
 	}
 
-	/* Special page wildcard notes:
-	 *  - Special: namespace entries can either be the exact name of
-	 *    a page, or Special:*. Other entries will be ignored.
-	 *    Action is ignored for these pages.
-	 */
-	static function IsAllowedSpecialPage( &$title, &$wgUser )
+	static function IsAllowedExact( &$title, &$wgUser, $action)
 	{
-		global $wgContLanguageCode;
-
 		$dbr = wfGetDB( DB_SLAVE );
+		$db_return_cols = array( 'wl_expires_on' );
+		$db_conditions = array(
+			'wl_user_id' => $wgUser->getId(),
+			'wl_page_title' => $title->getPrefixedText()
+		);
+		$db_result = $dbr->selectRow('whitelist', $db_return_cols,
+			$db_conditions, __METHOD__ );
 
-		if( NS_SPECIAL == $title->getNamespace() )
-			{
-			/* Get localized Special: namespace text */
-			$lang = Language::Factory($wgContLanguageCode);
-			$special_ns_text = $lang->getNsText( $title->getNamespace() );
-
-			/* Check for wildcard (Special:%) */
-			$db_result = $dbr->selectRow('whitelist',
-				array( 'wl_allow_edit',
-				'wl_expires_on', ),
-				array( 'wl_user_id' => $wgUser->getId(),
-				'wl_page_title' => $special_ns_text . ":%" ),
-				__METHOD__
-			);
-			if( false != $db_result )
-				return 1; /* Allow */
-
-			/* Check for exact page name */
-			$db_result = $dbr->selectRow('whitelist',
-				array( 'wl_allow_edit',
-				'wl_expires_on', ),
-				array( 'wl_user_id' => $wgUser->getId(),
-				'wl_page_title' => $title->getPrefixedText() ),
-				__METHOD__
-			);
-			if( false != $db_result )
+		if( $db_result ) {
+			if(strtotime($db_result->wl_expires_on) < strtotime(date("Y-m-d H:i:s")))
+				return WHITELIST_NOACTION; /* Expired */
+			else
 				return WHITELIST_GRANT;
 		}
-
-		/* No hits */
-		return WHITELIST_NOACTION;
+		else
+			return WHITELIST_NOACTION;
 	}
+
 
 	/* Check whether the page is whitelisted.
 	 * returns true if page is on whitelist, false if it is not.
 	 */
 	static function IsAllowed( &$title, &$wgUser, $action )
 	{
-		if( NS_MAIN <= $title->getNamespace() )
-		{
+		$expired = false;
 
-			/* Get all valid database rows for the user.
-			 * Throw out any results which do not give sufficient
-			 * privilege for the current action.
-			 */
-			$dbr = wfGetDB( DB_SLAVE );
+		/* Get all valid database rows for the user.
+		 * Throw out any results which do not give sufficient
+		 * privilege for the current action.
+		 */
+		$dbr = wfGetDB( DB_SLAVE );
 
-			/* Query Parameters */
-			$db_return_cols = array( 'wl_id',
-								     'wl_page_title',
-									 'wl_expires_on' );
-			$db_conditions = array( 'wl_user_id' => $wgUser->getId() );
-
-			/* If editing, only get entries with edit privileges */
-			if( $action == 'edit' )
-				array_push( $db_conditions, 'wl_allow_edit', '1' );
-
-			/* Do the query */
-			$db_results = $dbr->select('whitelist', $db_return_cols,
-				$db_conditions, __METHOD__ );
-
-			/* Loop through each result returned and
-			 * check for matches.
-			 */
-			while( $db_result = $dbr->fetchObject($db_results) )
-			{
-				/* Check for expired privilege */
-				$expired = strtotime($db_result->wl_expires_on) > strtotime(date("Y-m-d H:i:s"));
-
-				/* Check page title against regex */
-				if( ! $expired )
-				{
-					if( self::RegexCompare($title, $db_result->wl_page_title) )
-					{
-						$dbr->freeResult($db_results);
-						return WHITELIST_GRANT;
-					}
-				}
-			}
-			$dbr->freeResult($db_results);
+		$wl_table_name = $dbr->tableName( 'whitelist' );
+		$current_date = date("Y-m-d H:i:s");
+		$sql = "SELECT wl_page_title 
+			FROM " . $wl_table_name . "
+			WHERE wl_user_id = "     . $dbr->addQuotes($wgUser->getId()) . "
+			AND ( (wl_expires_on >= " . $dbr->addQuotes($current_date)  . ") 
+			 OR ( wl_expires_on = "  . $dbr->addQuotes('') . "))";
+		if( $action == 'edit' ) {
+			$sql .= "
+                        AND wl_allow_edit = " . $dbr->addQuotes('1');
 		}
+		#print $sql;
+	
+		/* Loop through each result returned and
+		 * check for matches.
+		 */
+		$db_results = $dbr->query( $sql , __METHOD__, true);
+		while( $db_result = $dbr->fetchObject($db_results) )
+		{
+			if( self::RegexCompare($title, $db_result->wl_page_title) )
+			{
+				$dbr->freeResult($db_results);
+				#wfDebug("\n\nAccess granted based on PAGE [" . $db_result->wl_page_title . "]\n\n");
+				return WHITELIST_GRANT;
+			}
+		}
+		$dbr->freeResult($db_results);
+
 		return WHITELIST_NOACTION;
 	}
 
 	/* Returns true if hit, false otherwise */
 	static function RegexCompare(&$title, $sql_regex)
 	{
-		if( $title->exists() )
-		{
-			$matches = WhitelistEdit::ExpandWildCardWhiteList( $sql_regex );
-			foreach( $matches as $match )
-			{
-				$match_title = Title::newFromId($match);
-				if( $match_title->getPrefixedText() == $title->getPrefixedText() )
-				return true;
+		$ret_val = false;
+                
+		/* Convert regex to PHP format */
+		$php_regex = str_replace('%', '.*', $sql_regex);
+                $php_regex = str_replace('_', ' ', $php_regex);
+
+		/* Generate regex; use | as delimiter as it is an illegal title character. */
+		$php_regex_full = '|' . $php_regex . '|';
+                if ($wgWhitelistWildCardInsensitive)
+                        $php_regex_full .= 'i';
+
+		#print( $php_regex_full . " [" . $title->getPrefixedText() . "]<br />\n");
+		if (self::preg_test($php_regex_full)) {
+			if( preg_match( $php_regex_full, $title->getPrefixedText() ) ) {
+				#print("MATCH!!");
+				$ret_val = true;
 			}
 		}
-		else
-		{
-			/* Convert regex to PHP format */
-			$php_regex = str_replace('%', '*', $sql_regex);
-
-			/* Generate regex; use | as delimiter as it is an illegal title character. */
-			$php_regex_full = $wgWhitelistWildCardInsensitive ?
-				'|' . $php_regex . '|i' : '|' . $php_regex . '|';
-
-
-			if (self::preg_test($php_regex_full))
-			if( preg_match( $php_regex_full, $title->getPrefixedText() ) )
-			return true;
-		}
+		
+		return $ret_val;
 	}
 
 	# test to see if a regular expression is valid
