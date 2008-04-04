@@ -828,13 +828,13 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper{
 					$files[$k][$inx]=trim($v);
 				}
 			}
+			//add the flv:
+			$files[]=array('',
+					 'http://www.archive.org/download/mv_'.$stream_name.'/'.$stream_name.'.flv',
+					 'flash flv', '');
 		}else{
 			return false;
-		}
-		//add the flv:
-		$files[]=array('',
-				 'http://www.archive.org/download/mv_'.$stream_name.'/'.$stream_name.'.flv',
-				 'flash flv', '');
+		}		
 		return $files;
 	}
 }

@@ -147,11 +147,10 @@ function mv_do_ajax_search(){
 	
 }
 function mv_do_ajax_search_request(url){
-	//annimate the transition: 
-	$j('#mv_search_results_container').fadeOut(function(){
-		$j('#mv_search_results_container').html(getMsg('loading_txt'));
-		$j('#mv_search_results_container').fadeIn();
-	});
+	//(don't) annimate the transition: 
+	//$j('#mv_search_results_container').fadeOut(function(){	
+	//});
+	$j('#mv_search_results_container').html(getMsg('loading_txt'));		
 	$j.get(url, function(data){
 		//populate results
 		$j('#mv_search_results_container').html(data);

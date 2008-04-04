@@ -250,9 +250,10 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$mvd_out .= $sk->makeKnownLinkObj($mvStreamTitle, '<img border="0" src="' . $mvgScriptPath . '/skins/images/run_mv_stream.png">', '', '', '', '', ' title="' . wfMsg('mv_view_in_stream_interface') . '" ');
 										
 					//$title = MakeTitle::()
-					$mvd_out .='&nbsp;';
+					//don't inclue link to wiki page (too confusing) 
+					//$mvd_out .='&nbsp;';
 					$mvdTitle = Title::MakeTitle(MV_NS_MVD, $mvd->wiki_title);
-					$mvd_out .= $sk->makeKnownLinkObj($mvdTitle, '<img border="0" src="' . $mvgScriptPath . '/skins/images/run_mediawiki.png">', '', '', '', '', ' title="' . wfMsg('mv_view_wiki_page') . '" ');												
+					//$mvd_out .= $sk->makeKnownLinkObj($mvdTitle, '<img border="0" src="' . $mvgScriptPath . '/skins/images/run_mediawiki.png">', '', '', '', '', ' title="' . wfMsg('mv_view_wiki_page') . '" ');												
 										
 					$mvd_out.='<span id="mvr_desc_'.$mvd->id.'">';
 										 

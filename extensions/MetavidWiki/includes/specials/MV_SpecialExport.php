@@ -144,7 +144,7 @@ class MV_SpecialExport {
 		wfProfileIn( $fname );
 		$this->get_row_data();		
 		//sucks to do big XML page operations ... 
-		//but we should be able to cache it?
+		//@@todo cache it..
 		ob_start();
 		$this->get_roe_xml(false);
 		$xml_page = ob_get_clean();
@@ -165,6 +165,12 @@ class MV_SpecialExport {
 		//print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 		?>		
+		<xs:schema targetNamespace="http://www.xiph.org/roe"
+	    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	    xmlns:cmml="http://www.annodex.org/cmml4.0"
+	    xmlns:html="http://www.w3.org/1999/xhtml"
+	    elementFormDefault="qualified"
+	    attributeFormDefault="unqualified">
 <!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 <ROE>
 	<head>
