@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Woopra'] = $dir . 'Woopra.i18n.php';
  
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['other'][] = array(
         'name' => 'Woopra Live Stats Tracking',
         'author' => array( 'Shane'),
         'version' => '1.0.0',
