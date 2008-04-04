@@ -368,12 +368,13 @@ class MV_SpecialExport {
 				break;
 			}
 			//@@link mvd namespace to stream:
-			if($x->page_namespace == MV_NS_MVD){
+			/*if($x->page_namespace == MV_NS_MVD){
 				$mvTitle = new MV_Title($x->page_title);
 				$title = Title::makeTitle( MV_NS_STREAM, $mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest());
 			}else{	
-				$title = Title::makeTitle( $x->page_namespace, $x->page_title );
-			}			
+				
+			}*/	
+			$title = Title::makeTitle( $x->page_namespace, $x->page_title );		
 			$this->feed->outPutItem($title);
 		}				
 		$this->feed->outFooter();
@@ -442,11 +443,11 @@ class mvRSSFeed extends ChannelFeed{
 		$mStreamTitle = Title::makeTitle(MV_NS_STREAM, ucfirst($mvTitle->getStreamName()) . '/'.$mvTitle->getTimeRequest());
 		
 		//only output media RSS item if its valid media: 
-		if(!$mvTitle->validRequestTitle())return ;
+		if(!$mvTitle->doesStreamExist())return ;
 
 		//@@todo this should be cached 	
 		$thumb_ref = $mvTitle->getStreamImageURL('320x240');
-		if($desc_html==''){
+		if($desc_html==''){			
 			$article = new Article($wikiTitle);
 			$wgOut->clearHTML(); 			
 			$wgOut->addWikiText($article->getContent() );
