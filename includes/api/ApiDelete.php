@@ -99,7 +99,7 @@ class ApiDelete extends ApiBase {
 		
 		// Check permissions
 		$errors = $title->getUserPermissionsErrors('delete', $wgUser);
-		if (count($errors)) return $errors;
+		if (count($errors) > 0) return $errors;
 		
 		// Check token
 		if(!$wgUser->matchEditToken($token))
@@ -118,8 +118,7 @@ class ApiDelete extends ApiBase {
 	public static function delete(&$article, $token, &$reason = NULL)
 	{
 		$errors = self::getPermissionsError($article->getTitle(), $token);
-		if (count(errors)) return $errors;
-
+		if (count($errors)) return $errors;
 
 		// Auto-generate a summary, if necessary
 		if(is_null($reason))
@@ -139,7 +138,7 @@ class ApiDelete extends ApiBase {
 	public static function deleteFile($token, &$title, $oldimage, &$reason = NULL, $suppress = false)
 	{
 		$errors = self::getPermissionsError($title, $token);
-		if (count(errors)) return $errors;
+		if (count($errors)) return $errors;
 
 		if( $oldimage && !FileDeleteForm::isValidOldSpec($oldimage) )
 			return array(array('invalidoldimage'));
@@ -153,7 +152,7 @@ class ApiDelete extends ApiBase {
 		if( !FileDeleteForm::haveDeletableFile($file, $oldfile, $oldimage) )
 			return array(array('nofile'));
 
-		$status = self::doDelete( $title, $file, $oldimage, $reason, $suppress );
+		$status = FileDeleteForm::doDelete( $title, $file, $oldimage, $reason, $suppress );
 				
 		if( !$status->isGood() )
 			return array(array('cannotdelete', $title->getPrefixedText()));
