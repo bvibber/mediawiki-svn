@@ -67,6 +67,7 @@ class ApiDelete extends ApiBase {
 		$dbw = wfGetDb(DB_MASTER);
 		$dbw->immediateBegin();
 		
+		$reason = (isset($params['reason']) ? $params['reason'] : NULL);
 		if ($titleObj->getNamespace() == NS_IMAGE) {
 			$retval = self::deletefile($params['token'], $titleObj, $params['oldimage'], $reason, false);
 			if(!empty($retval))
@@ -74,7 +75,6 @@ class ApiDelete extends ApiBase {
 				$this->dieUsageMsg(current($retval));
 		} else {
 			$articleObj = new Article($titleObj);
-			$reason = (isset($params['reason']) ? $params['reason'] : NULL);
 			$retval = self::delete($articleObj, $params['token'], $reason);
 			
 			if(!empty($retval))
@@ -104,6 +104,7 @@ class ApiDelete extends ApiBase {
 		// Check token
 		if(!$wgUser->matchEditToken($token))
 			return array(array('sessionfailure'));
+		return array();
 	}
 
 	/**
