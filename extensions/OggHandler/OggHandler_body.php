@@ -259,7 +259,7 @@ class OggHandler extends MediaHandler {
 		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
 	}
 
-	function canRender() { return true; }
+	function canRender( $file ) { return true; }
 	function mustRender( $file ) { return true; }
 
 	/*
