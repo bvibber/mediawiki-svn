@@ -229,6 +229,13 @@ $messages['te'] = array(
 	'icon-badwidth' => 'తప్పుడు వెడల్పు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'icon-badimage' => 'Акси номуносиб',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

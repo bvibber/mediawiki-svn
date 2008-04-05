@@ -94,12 +94,13 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Badseed
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'assert_edit_title'   => 'Η διεκδίκηση απέτυχε',
-	'assert_edit_desc'    => 'Προσθέτει διεκδικήσεις επεξεργασιών για χρήση από τα μποτ',
-	'assert_edit_message' => 'Η συγκεκριμένη διεκδίκηση ($1) απέτυχε.',
+	'assert_edit_desc'    => 'Προσθέτει επιβεβαιώσεις επεξεργασιών για χρήση από τα μποτ',
+	'assert_edit_message' => 'Η συγκεκριμένη επιβεβαίωση ($1) απέτυχε.',
 );
 
 /** Esperanto (Esperanto)

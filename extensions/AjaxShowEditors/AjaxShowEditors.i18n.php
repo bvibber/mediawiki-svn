@@ -652,9 +652,13 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'ajax-se-desc'             => 'Корбароне, ки дар ҳоли вироиши як саҳифабударо намоиш медиҳад',
 	'ajax-se-title'            => 'Дар ҳоли вироиш:',
+	'ajax-se-pending'          => 'дар тайи тоза кардан… (ин қуттиро клик кунед ё ба вироиш шурӯъ кунед)',
 	'ajax-se-idling'           => '($1c пеш)',
 	'ajax-se-pagedoesnotexist' => 'саҳифа вуҷуд надорад',
+	'ajax-se-userinvalid'      => 'ERR: корбари номӯътабар',
+	'ajax-se-usernotfound'     => 'ERR: корбар ёфт нашуд',
 );
 
 /** Thai (ไทย)

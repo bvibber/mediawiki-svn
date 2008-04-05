@@ -408,6 +408,13 @@ $messages['lv'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|saite|saites}} uz $3',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

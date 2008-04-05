@@ -353,6 +353,14 @@ $messages['te'] = array(
 	'latexdoc_get_pdf'         => 'PDFని పొందండి',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'latexdoc_get_dvi' => 'Гирифтани DVI',
+	'latexdoc_get_pdf' => 'Гирифтани PDF',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

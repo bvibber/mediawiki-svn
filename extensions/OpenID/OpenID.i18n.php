@@ -164,6 +164,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'openidoptional'       => 'Nedeviga',
 	'openidrequired'       => 'Deviga',
 	'openidnickname'       => 'Kaŝnomo',
 	'openidfullname'       => 'Plena nomo',
@@ -941,11 +942,24 @@ $messages['tet'] = array(
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
-	'openidoptional' => 'Ихтиёрӣ',
-	'openidemail'    => 'Нишонаи почтаи электронӣ',
-	'openidlanguage' => 'Забон',
+	'openid-desc'           => 'Ба вики бо [http://openid.net/ OpenID] вуруд кунед, ва ба дигар сомонаҳои OpenID бо ҳисоби корбарии вики вуруд кунед',
+	'openidlogin'           => 'Бо OpenID вуруд кунед',
+	'openidfinish'          => 'Хотима додан вурудшавии OpenID',
+	'openidserver'          => 'Хидматгузори OpenID',
+	'openidxrds'            => 'Парвандаи Yadis',
+	'openidconvert'         => 'Табдилкунандаи OpenID',
+	'openiderror'           => 'Хатои тасдиқ',
+	'openiderrortext'       => 'Дар ҳолати тасдиқи нишонаи OpenID хатое рух дод.',
+	'openidconfigerror'     => 'Хатои Танзимоти OpenID',
+	'openidconfigerrortext' => 'Танзимоти захирасозии OpenID барои ин вики номӯътабар аст.
+Лутфан бо мудири сомона тамос бигиред.',
+	'openidoptional'        => 'Ихтиёрӣ',
+	'openidemail'           => 'Нишонаи почтаи электронӣ',
+	'openidlanguage'        => 'Забон',
+	'openidchoosepassword'  => 'гузарвожа:',
 );
 
 /** Vietnamese (Tiếng Việt)

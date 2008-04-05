@@ -398,6 +398,17 @@ $messages['tet'] = array(
 	'edituser-username' => 'Naran',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'edituser'          => 'Вироиш кардани Корбар',
+	'edituser-username' => 'Ном',
+	'edituser-dosearch' => 'Ҷустуҷӯ',
+	'edituser-nouser'   => 'Корбари мушаххасшуда вуҷуд надорад',
+	'edituser-exempt'   => 'Корбари мушаххасшударо наметавон вироиш кард',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

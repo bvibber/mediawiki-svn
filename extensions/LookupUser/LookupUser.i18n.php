@@ -81,9 +81,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'lookupuser_id'       => 'Salutnomo: <tt>#$1</tt>',
-	'lookupuser_email'    => 'Retpoŝto: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'Reala nomo: $1',
+	'lookupuser_authenticated'     => 'retpoŝta aŭtentkontrolo: $1',
+	'lookupuser_not_authenticated' => 'ne aŭtentita',
+	'lookupuser_id'                => 'Salutnomo: <tt>#$1</tt>',
+	'lookupuser_email'             => 'Retpoŝto: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'ne provizita',
+	'lookupuser_realname'          => 'Reala nomo: $1',
+	'lookupuser_useroptions'       => 'Opcioj de uzanto:',
 );
 
 /** French (Français)
@@ -413,11 +417,15 @@ $messages['te'] = array(
 	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'lookupuser_realname' => 'Номи аслӣ: $1',
+	'lookupuser_nonexistent'  => 'Хато: Корбар вуҷуд надорад',
+	'lookupuser_email'        => 'Фиристодани E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'     => 'пешниҳод нашудааст',
+	'lookupuser_realname'     => 'Номи аслӣ: $1',
+	'lookupuser_registration' => 'Таърихи сабти ном: $1',
 );
 
 /** Volapük (Volapük)

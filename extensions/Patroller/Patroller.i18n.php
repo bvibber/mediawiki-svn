@@ -141,9 +141,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'patrol-revert-reason' => 'Kialo:',
-	'patrol-skipped-ok'    => 'Ignorante redakton.',
-	'patrol-reasons'       => '* Simpla vandalismo
+	'patrol-revert'          => 'Restarigu',
+	'patrol-revert-reason'   => 'Kialo:',
+	'patrol-reverting'       => 'Restarigante: $1',
+	'patrol-reverted-ok'     => 'La redakto estis restarigita.',
+	'patrol-reverted-failed' => 'Ne eblis restarigi la redakton.',
+	'patrol-skipped-ok'      => 'Ignorante redakton.',
+	'patrol-reasons'         => '* Simpla vandalismo
 * Novula testo
 * Vidu diskuto-paĝon',
 );
@@ -717,6 +721,14 @@ $messages['szl'] = array(
 $messages['te'] = array(
 	'patrol-revert-reason' => 'కారణం:',
 	'patrol-resume'        => 'కొనసాగించడానికి ఇక్కడ నొక్కండి.',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'patrol-revert-reason' => 'Сабаб:',
+	'patrol-skip'          => 'Ҷаҳиш',
 );
 
 /* Cantonese (Hillgentleman, Shinjiman) */

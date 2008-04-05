@@ -95,7 +95,9 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'imagemap_description' => 'Diwar-benn ar skeudenn-mañ',
+	'imagemap_no_link'       => "&lt;imagemap&gt;: n'eus bet kavet liamm reizh ebet e dibenn al linenn $1",
+	'imagemap_invalid_title' => '&lt;imagemap&gt;: titl direizh el liamm el linenn $1',
+	'imagemap_description'   => 'Diwar-benn ar skeudenn-mañ',
 );
 
 /** Czech (Česky)

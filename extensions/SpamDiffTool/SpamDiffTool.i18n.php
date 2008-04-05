@@ -50,6 +50,13 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'spamdifftool_submit_buttom' => 'Nimbiar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Siebrand
@@ -461,6 +468,14 @@ $messages['te'] = array(
 	'spamdifftool_option_none'      => 'ఏమీలేదు',
 	'spamdifftool_block'            => 'నిరోధం:',
 	'spamdifftool_submit_buttom'    => 'దాఖలుచెయ్యి',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'spamdifftool'             => 'Феҳристи сиёҳи харобкориро идора кунед',
+	'spamdifftool_option_none' => 'ҳеҷчиз',
 );
 
 /** Volapük (Volapük)

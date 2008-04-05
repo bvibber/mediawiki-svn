@@ -45,6 +45,13 @@ Please be patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'youtubeauthsub_submit' => 'Nimbiar',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -441,11 +448,29 @@ Czekaj.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'youtubeauthsub_title'     => 'سرليک',
-	'youtubeauthsub_password'  => 'د YouTube پټنوم',
-	'youtubeauthsub_username'  => 'د YouTube کارن-نوم',
-	'youtubeauthsub_category'  => 'وېشنيزه',
-	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
+	'youtubeauthsub_title'           => 'سرليک',
+	'youtubeauthsub_password'        => 'د YouTube پټنوم',
+	'youtubeauthsub_username'        => 'د YouTube کارن-نوم',
+	'youtubeauthsub_category'        => 'وېشنيزه',
+	'youtubeauthsub_clickhere'       => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
+	'youtubeauthsub_uploading'       => 'ستاسو ويډيو د پورته کېدلو په حال کې ده.
+
+لطفاً لږ صبر وکړی.',
+	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'youtubeauthsub'                    => 'Загрузка видео YouTube',
+	'youtubeauthsub-desc'               => 'Позволяет участникам [[Special:YouTubeAuthSub|загружать видео]] напрямую в YouTube',
+	'youtubeauthsub_info'               => 'Чтобы загрузить видео на YouTube и вставить его на страницу, заполните следующие поля:',
+	'youtubeauthsub_title'              => 'Заголовок',
+	'youtubeauthsub_description'        => 'Описание',
+	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
+	'youtubeauthsub_jserror_notitle'    => 'Пожалуйста, введите заголовок видео.',
+	'youtubeauthsub_jserror_nodesc'     => 'Пожалуйста, введите описание видео.',
 );
 
 /** Slovak (Slovenčina)
@@ -533,25 +558,39 @@ Var tålmodig.',
 	'youtubeauthsub_jserror_nodesc'      => 'Var god välj en beskrivning för videon.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'youtubeauthsub_title'              => 'Унвон',
-	'youtubeauthsub_description'        => 'Тавсиф',
-	'youtubeauthsub_password'           => 'YouTube Гузарвожа',
-	'youtubeauthsub_username'           => 'YouTube Номи корбарӣ',
-	'youtubeauthsub_keywords'           => 'Калидвожаҳо',
-	'youtubeauthsub_submit'             => 'Гурӯҳ',
-	'youtubeauthsub_clickhere'          => 'Барои вуруд шудан ба YouTube инҷо клик кунед',
-	'youtubeauthsub_uploadhere'         => 'Наворҳоятонро аз инҷо боргузорӣ кунед:',
-	'youtubeauthsub_uploadbutton'       => 'Боргузорӣ',
-	'youtubeauthsub_summary'            => 'Дар ҳоли богузории навор ба YouTube',
-	'youtubeauthsub_uploading'          => 'Навори шумо дар ҳоли боргузорӣ аст.
+	'youtubeauthsub'                     => 'Навореро ба YouTube боргузорӣ кунед',
+	'youtubeauthsub_title'               => 'Унвон',
+	'youtubeauthsub_description'         => 'Тавсифот',
+	'youtubeauthsub_password'            => 'YouTube Гузарвожа',
+	'youtubeauthsub_username'            => 'YouTube Номи корбарӣ',
+	'youtubeauthsub_keywords'            => 'Калидвожаҳо',
+	'youtubeauthsub_category'            => 'Гурӯҳ',
+	'youtubeauthsub_submit'              => 'Гурӯҳ',
+	'youtubeauthsub_clickhere'           => 'Барои вуруд шудан ба YouTube инҷо клик кунед',
+	'youtubeauthsub_success'             => "Табрик!
+Навори шумо боргузорӣ шуд.
+Барои дидани наворатон <a href='http://www.youtube.com/watch?v=$1'>инҷо</a> клик кунед.
+YouTube метавонад каме вақтеро барои пешкаш кардани наворатон талаб кунад, чун он шояд тайёр набошад.
+
+Барои илова кардани навори худ ба вики, коди зеринро ба саҳифа дохил кунед:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Барои боргузорӣ кардани навор, аввал ба шумо лозим аст ба YouTube ворид шавед.',
+	'youtubeauthsub_uploadhere'          => 'Наворҳоятонро аз инҷо боргузорӣ кунед:',
+	'youtubeauthsub_uploadbutton'        => 'Боргузорӣ',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Ин навор метавонад [http://www.youtube.com/watch?v=$1 инҷо] қобили тамошо бошад',
+	'youtubeauthsub_summary'             => 'Дар ҳоли богузории навор ба YouTube',
+	'youtubeauthsub_uploading'           => 'Навори шумо дар ҳоли боргузорӣ аст.
 Лутфан сабр кунед.',
-	'youtubeauthsub_jserror_nokeywords' => 'Лутфан 1 ё якчанд калидвожаҳоро ворид кунед.',
-	'youtubeauthsub_jserror_notitle'    => 'Лутфан як унвонеро барои навор ворид кунед.',
-	'youtubeauthsub_jserror_nodesc'     => 'Лутфан як тавсиф барои навор ворид кунед.',
+	'youtubeauthsub_viewpage'            => 'Бо тарзи дигар, шумо метавонед навори худро [[$1|инҷо]] тамошо кунед.',
+	'youtubeauthsub_jserror_nokeywords'  => 'Лутфан 1 ё якчанд калидвожаҳоро ворид кунед.',
+	'youtubeauthsub_jserror_notitle'     => 'Лутфан як унвонеро барои навор ворид кунед.',
+	'youtubeauthsub_jserror_nodesc'      => 'Лутфан як тавсиф барои навор ворид кунед.',
 );
 
 /** Thai (ไทย)

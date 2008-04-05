@@ -520,6 +520,16 @@ $messages['te'] = array(
 	'invitations-invite-success'       => 'ఈ విశేషాన్ని వాడుకోమని $1ని మీరు విజయవంతంగా ఆహ్వానించారు!',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'invitations-inviteform-submit'    => 'Таклиф',
+	'invitations-error-baduser'        => 'Корбари шумо мушаххас карда ба назар мерасад, ки вуҷуд надорад',
+	'invitations-error-alreadyinvited' => 'Корбари шумо мушаххас карда аллакай ба ин хусусият дастрасӣ дорад!',
+	'invitations-invite-success'       => 'Барои истифодаи ин хусусия шумо $1-ро бо муваффақият таклиф кардед',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen

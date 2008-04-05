@@ -342,10 +342,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Wpedzich
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'spamregex-text'        => '{Tekst)',
-	'spamregex-summary-log' => '{Podsumowanie)',
+	'spamregex-text'        => '(Tekst)',
+	'spamregex-summary-log' => '(Podsumowanie)',
 );
 
 /** Portuguese (Português)
@@ -435,11 +436,12 @@ $messages['te'] = array(
 	'spamregex-summary-log'          => '(సంగ్రహం)',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'spamregex-text' => '(Матн)',
+	'spamregex-text'        => '(Матн)',
+	'spamregex-summary-log' => '(Хулоса)',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -693,6 +693,7 @@ $allMessages['tet'] = array(
  * @author Ibrahim
  */
 $allMessages['tg-cyrl'] = array(
+	'whitelist-desc'           => 'Иҷозаҳои дастрасии корбарони маҳдудшударо вироиш кунед',
 	'whitelist'                => 'Саҳифаҳои Феҳристи сафед',
 	'mywhitelistpages'         => 'Саҳифаҳои Ман',
 	'whitelistfor'             => '<center>Иттилооти кунунӣ барои <b>$1</b></center>',
@@ -711,6 +712,12 @@ $allMessages['tg-cyrl'] = array(
 	'whitelisttableremove'     => 'Ҳазф',
 	'whitelistnewtabledate'    => 'Таърихи Баинтиҳорасӣ:',
 	'whitelistnewtableprocess' => 'Раванд',
+	'whitelistbadtitle'        => 'Унвони номуносиб -',
+	'whitelistrequest'         => 'Ба саҳифаҳои бештар дастрасиро дархост кунед',
+	'whitelistrequestmsg'      => '$1 дастрасиро барои саҳифаҳои зерин дархост кард:
+
+$2',
+	'whitelistrequestconf'     => 'Дархост барои саҳифаҳои ҷадид ба $1 фиристода шуд',
 	'whitelistnever'           => 'ҳеҷгоҳ',
 );
 

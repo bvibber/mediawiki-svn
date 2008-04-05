@@ -91,6 +91,7 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'inspectcache'         => 'Rigardu Kaŝmemoro',
 	'inspectcache-ok'      => 'Ek!',
 	'inspectcache-general' => 'Ĝenerala kaŝmemoro',
 	'inspectcache-parser'  => 'Sintaksa kaŝmemoro',
@@ -401,8 +402,12 @@ $messages['tet'] = array(
 	'inspectcache-delete' => 'Halakon',
 );
 
-/** Tajik (Тоҷикӣ/tojikī) */
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
 $messages['tg-cyrl'] = array(
 	'inspectcache-delete' => 'Ҳафз',
+	'inspectcache-list'   => 'Феҳрист',
 );
 

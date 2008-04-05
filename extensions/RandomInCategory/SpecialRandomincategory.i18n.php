@@ -335,6 +335,13 @@ $messages['tet'] = array(
 	'randomincategory-submit' => 'Bá',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'randomincategory-label' => 'Гурӯҳ:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

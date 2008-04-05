@@ -357,8 +357,8 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Wpedzich
  * @author Sp5uhe
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
@@ -378,9 +378,9 @@ $4',
 	'todo-update-else-item' => 'Próba uaktualnienia listy pozycji innego użytkownika',
 	'todo-unrecognize-type' => 'Nie rozpoznano typu',
 	'todo-user-invalide'    => 'Podano nieprawidłową lub nieistniejącą nazwę użytkownika, albo użytkownik nie jest w stanie wykorzystywać funkcji zadań do wykonania.',
-	'todo-item-list'        => 'Twoje pozycje',
-	'todo-no-item'          => 'Brak pozycji na liście "ToDo".',
-	'todo-invalid-owner'    => 'Właściciel tej pozycji jest nieprawidłowy',
+	'todo-item-list'        => 'Twoje zadania',
+	'todo-no-item'          => 'Brak wpisów na liście zadań do wykonania.',
+	'todo-invalid-owner'    => 'Właściciel tego zadania jest nieprawidłowy',
 	'todo-add-queue'        => 'Dodaj kolejkę…',
 	'todo-move-queue'       => 'Przesuń do kolejki…',
 	'todo-list-for'         => 'Lista zadań dla',
@@ -483,11 +483,14 @@ $messages['te'] = array(
 	'todo-form-details'     => 'వివరాలు:',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'todo-new-queue'   => 'нав',
+	'todo-list-change' => 'Тағйир',
 	'todo-list-cancel' => 'Лағв',
+	'todo-new-item'    => 'Маводи ҷадид',
 );
 
 /** Thai (ไทย)

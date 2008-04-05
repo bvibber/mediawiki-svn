@@ -303,6 +303,14 @@ $messages['te'] = array(
 	'pageby-anon'         => '<i>అనామకులు</i>',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'pageby-first'        => 'Саҳифаи эҷодшуда тавассути $1, $2',
+	'pageby-contributors' => 'Ҳиссагузорон:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

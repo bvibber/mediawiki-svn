@@ -86,7 +86,11 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'linksearch-ok' => 'Klask',
+	'linksearch'      => 'Klask liammoù Kenrouedad',
+	'linksearch-pat'  => 'Klask an droienn :',
+	'linksearch-ns'   => 'Esaouenn anv :',
+	'linksearch-ok'   => 'Klask',
+	'linksearch-line' => '$1 gant ul liamm adal $2',
 );
 
 /** Catalan (Català)
@@ -539,8 +543,10 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'linksearch-ns' => 'നെയിംസ്പേസ്:',
-	'linksearch-ok' => 'തിരയുക',
+	'linksearch'      => 'വെബ്ബ് കണ്ണികള്‍ തിരയുക',
+	'linksearch-ns'   => 'നെയിംസ്പേസ്:',
+	'linksearch-ok'   => 'തിരയുക',
+	'linksearch-line' => '$1,  $2ല്‍ നിന്നു കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്നു.',
 );
 
 /** Marathi (मराठी)

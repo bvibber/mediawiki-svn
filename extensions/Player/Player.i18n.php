@@ -332,10 +332,11 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Wpedzich
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'player'               => 'Odtwarzacz',
-	'player-desc'          => 'Osadzone odtwarzanie plików multimedialnych z wykorzystaniem standardowych wtyczek do przeglądarek internetowych oraz [[Special:Player|strony specjalnej]]',
+	'player-desc'          => 'Odtwarzanie plików multimedialnych wewnątrz okna przeglądarki internetowej, z wykorzystaniem standardowych wtyczek oraz [[Special:Player|strona specjalna]]',
 	'player-title'         => 'Odtwarzacz',
 	'player-playertitle'   => 'Odtwarzacz: $1',
 	'player-file'          => 'Nazwa pliku',
@@ -502,9 +503,15 @@ $messages['tet'] = array(
 	'player-goto-page' => 'Pájina',
 );
 
-/** Tajik (Тоҷикӣ/tojikī) */
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
 $messages['tg-cyrl'] = array(
+	'player-file'          => 'Номи парванда',
 	'player-invalid-title' => 'унвони номӯътабар',
+	'player-goto-page'     => 'Саҳифа',
+	'player-goto-file'     => 'парванда',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -343,6 +343,14 @@ $messages['tet'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'findspam-ip'          => 'Нишонаи IP:',
+	'findspam-notextfound' => 'Ҳеҷ ҳиссагузорие ёфт нашуд',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

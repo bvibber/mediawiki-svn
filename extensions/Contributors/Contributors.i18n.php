@@ -800,7 +800,11 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'contributors'          => 'Ҳиссагузорон',
+	'contributors-toolbox'  => 'Ҳиссагузорони асосӣ',
+	'contributors-legend'   => 'Ҳиссагузорони асосиро ба як саҳифа феҳрист кун',
 	'contributors-target'   => 'Унвон:',
+	'contributors-others'   => 'ва $1 дигарон',
 	'contributors-badtitle' => 'Унвони номӯътабар',
 );
 
@@ -810,6 +814,13 @@ $messages['tg-cyrl'] = array(
 $messages['th'] = array(
 	'contributors'         => 'ผู้เขียน',
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
+);
+
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Ерней
+ */
+$messages['tt-cyrl'] = array(
+	'contributors-submit' => 'Күрсәтергә',
 );
 
 /** Ukrainian (Українська)

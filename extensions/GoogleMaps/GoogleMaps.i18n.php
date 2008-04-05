@@ -358,6 +358,13 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-hide-map' => 'ocultar el mapa',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$wgGoogleMapsMessages['cs'] = array(
+	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte seznam kompatibilních prohlížečů.',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -477,20 +484,38 @@ $wgGoogleMapsMessages['el'] = array(
  * @author Yekrats
  */
 $wgGoogleMapsMessages['eo'] = array(
+	'gm-incompatible-browser'      => 'Por rigardi la mapon kiu aperus en ĉi tiu spaco, vi bezonus kongruan retumilon.',
 	'gm-incompatible-browser-link' => 'Klaku ĉi tien por vidi liston de konguaj retumiloj',
+	'gm-no-editor'                 => 'Bedaŭrinde, via retumilo ne subtenas la interaktivajn map-farantajn ecojn.
+Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplorilo</a> (Vindozo) aŭ <a href="http://www.mozilla.org/products/firefox">Fajrfokso</a> (Vindozo, Makintoŝo, kaj Linukso).',
 	'gm-balloon-title'             => 'Titolo:',
+	'gm-balloon-link-article'      => 'Ligilo en ĉi tiu paĝo (nedevige):',
+	'gm-make-marker'               => 'Subteksto (vikiaj etikedoj estas akcepteblaj):',
 	'gm-remove'                    => 'forigu',
+	'gm-caption'                   => 'Subteksto',
+	'gm-tab-title'                 => 'Titolo de langeto',
+	'gm-tab'                       => 'Langeto',
+	'gm-start-path'                => 'komencigu vojon',
+	'gm-trace-area'                => 'limdifinu areon',
 	'gm-save-point'                => 'konservu & fermu',
 	'gm-load-map-from-article'     => 'Ŝarĝu mapon de la paĝo',
+	'gm-no-maps'                   => 'Neniuj mapoj en ĉi tiu paĝo ŝarĝi.',
 	'gm-refresh-list'              => 'Refreŝigu liston',
 	'gm-load-map'                  => 'Ŝarĝu mapon',
 	'gm-clip-result'               => 'Aldonu al mapo',
+	'gm-no-results'                => 'Bedaŭrinde, neniuj rezultoj',
 	'gm-searching'                 => 'serĉante...',
 	'gm-map'                       => 'Mapo',
+	'gm-note'                      => 'Notu: certigu kopii kion vi volas konservi en ĉi tiun paĝon suban antaŭ klakante "Konservu mapon", "Konservu" aŭ "Antaŭrigardu"!',
+	'gm-instructions'              => 'Jen la viki-etikedoj por krei la supran mapon.',
 	'gm-are-you-sure'              => 'Ĉu vi certas?',
+	'gm-clear-all-points'          => 'Forviŝu ĉiujn punktojn',
+	'gm-refresh-points'            => 'Refreŝigu punktojn',
 	'gm-width'                     => 'Larĝo',
 	'gm-height'                    => 'Alto',
+	'gm-scale-control'             => 'Skalo',
 	'gm-overview-control'          => 'Superrigardo',
+	'gm-selector-control'          => 'Mapa-Satelita selektilo',
 	'gm-zoom-control'              => 'Navigado',
 	'gm-large'                     => 'Granda',
 	'gm-medium'                    => 'Meza',
@@ -498,16 +523,29 @@ $wgGoogleMapsMessages['eo'] = array(
 	'gm-no-zoom-control'           => 'Neniu',
 	'gm-yes'                       => 'Jes',
 	'gm-no'                        => 'Ne',
+	'gm-search-preface'            => 'Klaku la mapon por aldoni punkton, aŭ salti al urbo, lando, adreso, aŭ entrepreno:',
+	'gm-geocode-preface'           => 'Klaku la mapon por aldoni punkton, aŭ salti al urbo, lando, aŭ adreso:',
+	'gm-no-search-preface'         => 'Klaku la mapon por aldoni punkton.',
 	'gm-search'                    => 'Serĉu',
+	'gm-clear-search'              => 'forviŝu serĉ-rezultojn',
 	'gm-meters'                    => 'metroj',
 	'gm-miles'                     => 'mejloj',
+	'gm-editing-path'              => 'Klaku la mapon por aldoni pliajn punktojn al ĉi tiun vojon.',
 	'gm-save-path'                 => 'Konservu',
 	'gm-edit-path'                 => 'aldonu punktojn',
 	'gm-show-path'                 => 'montru punktojn',
 	'gm-color-path'                => 'ŝanĝu koloron',
+	'gm-color-fill'                => 'ŝanĝu plenigan koloron',
+	'gm-add-fill'                  => 'plenigu areon',
+	'gm-remove-fill'               => 'forigu plenigon',
+	'gm-fill-color'                => 'Pleniga koloro',
+	'gm-line-color'                => 'Linia koloro',
+	'gm-opacity'                   => 'Travidebleco',
 	'gm-line-width'                => 'Larĝo',
 	'gm-make-map'                  => 'faru mapon',
+	'gm-hide-map'                  => 'kaŝu mapon',
 	'gm-back'                      => 'reen',
+	'gm-kml-include'               => 'Ekstera KML/GeoRSS:',
 	'gm-kml-include-link'          => 'aldonu al mapo',
 	'gm-kml-loading'               => 'ŝarĝante...',
 	'gm-kml-export'                => 'eksportu ĉi tiun mapon al KML',
@@ -834,10 +872,13 @@ $wgGoogleMapsMessages['he'] = array(
 	'gm-no-search-preface'         => 'לחצו על המפה להוספת נקודה.',
 	'gm-search'                    => 'חיפוש',
 	'gm-clear-search'              => 'ניקוי תוצאות חיפוש',
+	'gm-meters'                    => 'מטרים',
 	'gm-miles'                     => 'מילים',
 	'gm-editing-path'              => 'לחצו על המפה להוספת עוד נקודות למסלול.',
 	'gm-save-path'                 => 'שמירה',
 	'gm-edit-path'                 => 'הוספת נקודות',
+	'gm-show-path'                 => 'הראה נקודות',
+	'gm-color-path'                => 'שינוי צבע',
 	'gm-color-fill'                => 'שינוי צבע המילוי',
 	'gm-add-fill'                  => 'מילוי איזור',
 	'gm-remove-fill'               => 'הסרת מילוי',
@@ -2051,6 +2092,34 @@ $wgGoogleMapsMessages['tet'] = array(
 	'gm-no'  => 'Lae',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
+$wgGoogleMapsMessages['tg-cyrl'] = array(
+	'gm-balloon-title'   => 'Унвон:',
+	'gm-tab-title'       => 'Унвони барга',
+	'gm-tab'             => 'Барга',
+	'gm-clip-result'     => 'Илова ба харита',
+	'gm-no-results'      => 'Бубахшед, ҳеҷ натоиҷе нест',
+	'gm-searching'       => 'дар ҳоли ҷустуҷӯ…',
+	'gm-map'             => 'Харита',
+	'gm-large'           => 'Калон',
+	'gm-medium'          => 'Миёна',
+	'gm-small'           => 'Хурд',
+	'gm-no-zoom-control' => 'Ҳеҷ',
+	'gm-yes'             => 'Ҳа',
+	'gm-no'              => 'Не',
+	'gm-search'          => 'Ҷустуҷӯ',
+	'gm-meters'          => 'метр',
+	'gm-miles'           => 'мил',
+	'gm-save-path'       => 'Захира',
+	'gm-color-path'      => 'тағйири ранг',
+	'gm-earth'           => 'Замин',
+	'gm-moon'            => 'Моҳ',
+	'gm-mars'            => 'Марс',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */
@@ -2154,7 +2223,12 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
  * @author Ahonc
  */
 $wgGoogleMapsMessages['uk'] = array(
-	'gm-balloon-title' => 'Заголовок:',
+	'gm-balloon-title'        => 'Заголовок:',
+	'gm-balloon-link-article' => "Посилання на цю сторінку (необов'язково):",
+	'gm-caption'              => 'Заголовок',
+	'gm-tab'                  => 'Помітка',
+	'gm-width'                => 'Ширина',
+	'gm-height'               => 'Висота',
 );
 
 /** Vietnamese (Tiếng Việt)

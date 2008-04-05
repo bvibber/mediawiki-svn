@@ -356,6 +356,14 @@ $messages['ta'] = array(
 	'editmsg-search' => 'தேடுக',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'editmsg-search'     => 'Ҷустуҷӯ',
+	'editmsg-new-search' => 'Ҷустуҷӯи ҷадид',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

@@ -130,6 +130,18 @@ Als u aangemeld bent bij de wiki is uw gebruikersnaam ingevuld.
 Anonieme gebruikers krijgen automatisch een gebruikersnaam toegewezen die te wijzigen is.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'mibbit'        => 'Mibbit-chat',
+	'mibbit-desc'   => 'Legger til en [[Special:Mibbit|spesialside]] brukt for å prate med andre brukere i sanntid.',
+	'mibbit-header' => 'Denne spesialsiden lar deg samarbeide med andre brukere i sanntid.
+Trykk på «Connect»-knappen for å koble deg til.
+Om du er logget inn vil kallenavnet ditt være fylt inn allerede.
+Uregistrerte brukere får et automatisk laget kallenavn, men det kan endres.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

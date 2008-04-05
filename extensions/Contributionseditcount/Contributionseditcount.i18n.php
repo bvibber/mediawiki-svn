@@ -257,6 +257,13 @@ $messages['te'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'contributionseditcount' => 'Ин корбар $1 вироишҳо дорад.',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

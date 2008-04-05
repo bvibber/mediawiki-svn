@@ -694,12 +694,19 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querysuccessful' => 'Frågan lyckades',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'asksql'          => 'Пурсиши SQL',
+	'asksql-desc'     => 'Тариқи [[Special:Asksql|саҳифаи вижа]] пурсишҳои SQL гузаронед',
+	'asksqltext'      => "Барои пурсиши ҷустуҷӯи мустақими пойгоҳи дода аз форми зерин истифода баред.
+Барои маҳдуд кардани риштаҳои ҳарфҳо аз нохунаки якка ('монанди ин') истифода баред.
+Ин амал метавонад ба хидматгузор бори зиёде илова кунад, бинобар ин лутфан ин амалро кам истифода баред.",
+	'sqlislogged'     => 'Лутфан таваҷҷӯҳ кунед, ки ҳамаи пурсишҳо сабт мешаванд.',
 	'sqlquery'        => 'Ворид кардани дархост',
 	'querybtn'        => 'Фиристодани дархост',
+	'selectonly'      => 'Танҳо пурсишҳои фақат-хондан иҷозат дода шудаанд.',
 	'querysuccessful' => 'Дархост бо муваффақият',
 );
 

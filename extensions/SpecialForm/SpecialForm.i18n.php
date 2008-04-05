@@ -511,12 +511,17 @@ $messages['te'] = array(
 	'formbadpagename'       => 'తప్పుడు పేజీ పేరు',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'formsave'          => 'Захира кардан',
-	'formarticleexists' => 'Саҳифа вуҷуд дорад',
+	'formnonametext'        => 'Шумо бояд номи формро, ба монанди "Special:Form/Nameofform" пешниҳод кунед.',
+	'formbadname'           => 'Номи форми номуносиб',
+	'formtitlepattern'      => 'Илова $1и нав',
+	'formsave'              => 'Захира кардан',
+	'formarticleexists'     => 'Саҳифа вуҷуд дорад',
+	'formarticleexiststext' => 'Саҳифа [[$1]] аллакай вуҷуд дорад.',
+	'formbadpagename'       => 'Номи саҳифа номуносиб',
 );
 
 /** Thai (ไทย)

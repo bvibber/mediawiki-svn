@@ -246,7 +246,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'changeauthor-title'                => 'Ŝanĝu la aŭtoron de revizio',
 	'changeauthor-search-box'           => 'Serĉu reviziojn',
+	'changeauthor-pagename-or-revid'    => 'Paĝnomo aŭ revizia identigo:',
 	'changeauthor-pagenameform-go'      => 'Ek!',
 	'changeauthor-comment'              => 'Komento:',
 	'changeauthor-changeauthors-multi'  => 'Ŝanĝu aŭtoro(j)n',
@@ -255,6 +257,10 @@ $messages['eo'] = array(
 	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',
 	'changeauthor-revview'              => 'Revizio #$1 de $2',
 	'changeauthor-nosuchtitle'          => 'Estas neniu pagxo titolata "$1".',
+	'changeauthor-weirderror'           => 'Tre stranga eraro okazis.
+Bonvolu reprovi vian peton.
+Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
+	'changeauthor-success'              => 'Via peto estis traktita sukcese.',
 	'changeauthor-logentry'             => 'Ŝanĝis aŭtoron de $2 de $1 de $3 al $4',
 	'changeauthor-logpagename'          => 'Loglibro pri ŝanĝoj de aŭtoroj',
 );
@@ -913,6 +919,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'changeauthor'                      => 'Тағйири муаллифи нусха',
+	'changeauthor-desc'                 => 'Барои тағйир додани муаллифи нусха иҷозат медиҳад',
 	'changeauthor-title'                => 'Тағйир додани муаллифи нусха',
 	'changeauthor-search-box'           => 'Ҷустуҷӯи нусхаҳо',
 	'changeauthor-pagename-or-revid'    => 'Номи саҳифа ё нишонаи нусха:',
@@ -925,7 +932,14 @@ $messages['tg-cyrl'] = array(
 	'changeauthor-explanation-single'   => "Бо ин форм шумо метавонед муаллифи нусхаеро тағйир диҳед. Басоддагӣ номи корбарии зерро тағйир диҳед, тавзеҳотеро илова кунед (ихтиёрӣ) ва тугмаи 'Тағйири муаллиф'-ро пахш кунед.",
 	'changeauthor-invalid-username'     => 'Номи корбарии номӯътабар "$1".',
 	'changeauthor-nosuchuser'           => 'Чунин корбар нест "$1".',
+	'changeauthor-revview'              => 'Нусхаи #$1 аз $2',
 	'changeauthor-nosuchtitle'          => 'Саҳифае бо унвони "$1" нест.',
+	'changeauthor-weirderror'           => 'Хатои хеле ғайриоддӣ рух дод.
+Лутфан дубора дархости худро такрор кунед.
+Агар ин хато такроран намоиш шавад, эҳтимолан пойгоҳи дода шикаста аст.',
+	'changeauthor-invalidform'          => 'Лутфан аз форми тавассути Special:ChangeAuthor истифода кунед, нисбат аз форми оддӣ.',
+	'changeauthor-success'              => 'Дархости шумо бо муваффақият пардозиш шуд.',
+	'changeauthor-logentry'             => 'Муаллифи $2 аз нусхаи $1 аз $3 ба $4 иваз шуд',
 	'changeauthor-logpagename'          => 'Гузориши тағйири муаллиф',
 );
 

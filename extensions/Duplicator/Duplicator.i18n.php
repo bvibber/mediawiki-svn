@@ -805,6 +805,35 @@ $messages['te'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]]కి చాలా ($2) కూర్పులున్నాయి కనుక దాన్ని కాపీ చేయలేము. ప్రస్తుత పరిమితి $3.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
+$messages['tg-cyrl'] = array(
+	'duplicator'                       => 'Саҳифаеро такрорӣ кунед',
+	'duplicator-desc'                  => 'Эҷод кардани нусхаҳои саҳифаҳои мустақил бо таърихҳои пурраи вироиш',
+	'duplicator-toolbox'               => 'Ин саҳифаро такрорӣ кунед',
+	'duplicator-header'                => 'Ин саҳифа имкони комилан такрор кардани саҳифаеро пешниҳод мекунад, бо эҷоди нусхаҳои мустақили тамоми таърихҳо.
+Ин барои эҷоди шохаҳои саҳифаҳо ва ғайраҳо судманд аст.',
+	'duplicator-options'               => 'Ихтиёрот',
+	'duplicator-source'                => 'Манбаъ:',
+	'duplicator-dest'                  => 'Мақсад:',
+	'duplicator-dotalk'                => 'Такрорӣ кардани саҳифаи баҳс (агар муносиб бошад)',
+	'duplicator-submit'                => 'Такрорӣ кардан',
+	'duplicator-summary'               => 'Аз [[$1]] нусхабардорӣ шудааст',
+	'duplicator-success'               => "<big>'''[[$1]] ба [[$2]] нусхабардорӣ шуд.'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|нусха|нусхаҳо}} нусхабардорӣ {{PLURAL:|шуд|шуданд}}.',
+	'duplicator-success-talkcopied'    => 'Саҳифаи баҳс низ нусхабардорӣ шуд.',
+	'duplicator-success-talknotcopied' => 'Саҳифаи баҳс наметавонад нусхабардорӣ шавад.',
+	'duplicator-failed'                => 'Саҳифа қобили такрорӣ шудан нест.
+Хатои ношинос рух дод.',
+	'duplicator-source-invalid'        => 'Лутфан унвони мӯътабари манбаъро пешкаш кунед.',
+	'duplicator-source-notexist'       => '[[$1]] вуҷуд надорад. Лутфан унвони саҳифаи вуҷуддоштаро пешкаш кунед.',
+	'duplicator-dest-invalid'          => 'Лутфан унвони мақсади мӯътабареро пешкаш кунед.',
+	'duplicator-toomanyrevisions'      => '[[$1]] хеле зиёд ($2) нусхаҳо дорад ва қобили нусхабардорӣ нест.
+Маҳдудияти кунунӣ $3 аст.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

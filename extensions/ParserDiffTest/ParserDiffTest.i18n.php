@@ -527,8 +527,10 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'pdtest_ok'   => 'ശരി',
-	'pdtest_diff' => 'വ്യത്യാസങ്ങള്‍',
+	'pdtest_no_changes'  => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
+	'pdtest_time_report' => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
+	'pdtest_ok'          => 'ശരി',
+	'pdtest_diff'        => 'വ്യത്യാസങ്ങള്‍',
 );
 
 /** Marathi (मराठी)

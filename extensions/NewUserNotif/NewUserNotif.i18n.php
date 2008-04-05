@@ -276,6 +276,17 @@ $messages['tet'] = array(
 uza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'newusernotifsubj'  => 'Огоҳсозии корбарии ҷадид барои $1',
+	'newusernotif-desc' => 'Дар ҳолат эҷод шудани ҳисобҳои корбарӣ паёми огоҳсозӣ тариқи почтаи электронӣ бифирист.',
+	'newusernotifbody'  => 'Салом $1,
+
+Ҳисоби корбарии ҷадид, $2, дар $3 дар $4 эҷод шуд.',
+);
+
 /** Turkish (Türkçe)
  * @author Srhat
  */

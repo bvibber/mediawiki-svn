@@ -342,11 +342,12 @@ $messages['de-formal'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author ZaDiak
+ * @author Badseed
  */
 $messages['el'] = array(
-	'hiderevision-prompt'        => 'Αριθμός επανάληψης για αφαίρεση:',
+	'hiderevision-prompt'        => 'Αριθμός έκδοσης προς αφαίρεση:',
 	'hiderevision-continue'      => 'Συνέχεια',
-	'hiderevision-status'        => 'Επανάληψη $1: $2',
+	'hiderevision-status'        => 'Έκδοση $1: $2',
 	'hiderevision-error-missing' => 'Δεν βρέθηκε στην βάση δεδομένων.',
 	'oversight-view'             => 'λεπτομέρειες',
 );

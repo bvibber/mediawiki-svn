@@ -300,3 +300,10 @@ $messages['te'] = array(
 	'cspammer-log-page'           => 'వ్యాఖ్యల స్పామింగు లాగ్',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'commentspammer-log-msg' => 'вироиш аз [[Special:Contributions/$1|$1]] ба [[:$2]].',
+);
+

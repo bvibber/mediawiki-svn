@@ -1024,6 +1024,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'math-desc'                             => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
+	'math_NotEnoughArguments'               => 'Dir hutt net genuch Parameter ugi fir "$1"',
 	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
@@ -1281,15 +1282,15 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Dodek
- * @author McMonster
- * @author Wpedzich
  * @author Sp5uhe
+ * @author McMonster
  * @author Equadus
  * @author Derbeth
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'math_noblahtex'                        => 'Nie udało sie uruchomić rozszerzenia blahtex, które powinno znajdować się w',
-	'math-desc'                             => 'Dane wyjściowe znaczników &lt;math&gt; w MathML',
+	'math-desc'                             => 'Informacje wyjściowe znaczników &lt;math&gt; w MathML',
 	'math_AmbiguousInfix'                   => 'Niejednoznaczne ustawienie "$1" (spróbuj użyć dodatkowych nawiasów "{ ... }" by ujednoznacznić)',
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
 	'math_CannotCreateTexFile'              => 'Nie udało się stworzyć pliku tex',
@@ -1298,13 +1299,16 @@ $messages['pl'] = array(
 	'math_CannotWritePngDirectory'          => 'Nie można zapisać do wyjściowego katalogu PNG',
 	'math_CannotWriteTexFile'               => 'Nie można pisać do pliku tex',
 	'math_CasesRowTooBig'                   => 'W każdym wierszu bloku "cases" mogą być jedynie dwa wpisy',
-	'math_DoubleSubscript'                  => 'Znaleziono dwa indeksy dolne dołączone do tej samej bazy (możliwe jest korzystanie z tylko jednego)',
-	'math_DoubleSuperscript'                => 'Znaleziono dwa indeksy górne dołączone do tej samej bazy (możliwe jest korzystanie z tylko jednego)',
+	'math_DoubleSubscript'                  => 'Znaleziono dwa indeksy dolne dołączone do tej samej bazy.
+Możliwe jest korzystanie tylko z jednego.',
+	'math_DoubleSuperscript'                => 'Znaleziono dwa indeksy górne dołączone do tej samej bazy.
+Możliwe jest korzystanie tylko z jednego.',
 	'math_IllegalCharacter'                 => 'Nieprawidłowy znak w danych wejściowych',
 	'math_IllegalCommandInMathMode'         => 'Polecenie "$1" jest niedozwolne w trybie matematycznym',
 	'math_IllegalCommandInMathModeWithHint' => 'Polecenie "$1" jest niedozwolone w trybie matematycznym (może miałeś na myśli "$2"?)',
 	'math_IllegalCommandInTextMode'         => 'Polecenie "$1" jest niedozwolone w trybie tekstowym',
-	'math_IllegalCommandInTextModeWithHint' => 'Polecenie "$1" jest niedozwolone w trybie tekstowym (może miałeś na myśli "$2"?)',
+	'math_IllegalCommandInTextModeWithHint' => 'Polecenie "$1" nie jest dozwolone w trybie tekstowym
+Podobnym poleceniem jest "$2".',
 	'math_IllegalDelimiter'                 => 'Niedozwolony separator przed "$1"',
 	'math_IllegalFinalBackslash'            => 'Niedozwolony backslash "\\" na końcu wejścia',
 	'math_IllegalNestedFontEncodings'       => 'Komendy kodowania czcionek nie mogą być zagnieżdżane',
@@ -1312,9 +1316,10 @@ $messages['pl'] = array(
 	'math_InvalidColour'                    => 'Kolor "$1" jest niepoprawny',
 	'math_InvalidUtf8Input'                 => 'Ciąg danych wejściowych nie był zgodny z UTF-8',
 	'math_LatexFontNotSpecified'            => 'Nie określono czcionki LaTeX-a dla "$1"',
-	'math_LatexPackageUnavailable'          => 'Nie udało się sporządzić pliku PNG, gdyż pakiet "$1" LaTeX nie jest dostępny',
+	'math_LatexPackageUnavailable'          => 'Nie udało się wygenerować pliku w formacie PNG, ponieważ pakiet "$1" LaTeX nie jest dostępny',
 	'math_MismatchedBeginAndEnd'            => 'Polecenia "$1" i "$2" nie pasują',
-	'math_MisplacedLimits'                  => 'Polecenie "$1" może wystąpić tylko po operatorze matematycznym - zaleca sie skorzystanie z "\\mathop"',
+	'math_MisplacedLimits'                  => 'Polecenie "$1" może wystąpić tylko po operatorze matematycznym.
+Zaleca sie skorzystanie z "\\mathop".',
 	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Brakujący nawias otwierający "{" na końcu wejścia',
@@ -1337,7 +1342,7 @@ $messages['pl'] = array(
 	'math_UnmatchedOpenBracket'             => 'Napotkano na nawias otwierający "[" bez bez odpowiadającego mu nawiasu zamykającego "]"',
 	'math_UnmatchedRight'                   => 'Napotkano na "\\right" bez odpowiadającego mu "\\left"',
 	'math_UnrecognisedCommand'              => 'Nierozpoznane polecenie "$1"',
-	'math_WrongFontEncoding'                => 'Symbol "$1" może się nie pojawić w kodowaniu "$2"',
+	'math_WrongFontEncoding'                => 'Symbol "$1" może się nie pojawić przy kodowaniu czcionką "$2"',
 	'math_WrongFontEncodingWithHint'        => 'Znak "$1" może nie występować w czcionce "$2" (spróbuj użyć polecenia "$3{...}")',
 );
 
@@ -1739,11 +1744,48 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'math_CannotChangeDirectory'   => 'Пӯшаи дар ҳоли корро наметавон тағйир дод',
-	'math_CannotCreateTexFile'     => 'Наметавон парвандаи tex эҷод кард',
-	'math_CannotWritePngDirectory' => 'Наметавон ба пӯшаи судури PNG навишт',
-	'math_CannotWriteTexFile'      => 'Наметавон ба парвандани tex навишт',
-	'math_InvalidColour'           => 'Ранги "$1" номӯътабар аст',
+	'math_noblahtex'                        => 'Наметавон blahtex иҷро кард, чун он бояд дар $1 бошад',
+	'math-desc'                             => 'Додаҳои хуруҷии MathML барои барчасбҳои &lt;math&gt;',
+	'math_AmbiguousInfix'                   => 'Ҷойгиркунии нофаҳмои "$1".
+Барои ибҳомзудоӣ кӯшиш кунед аз қафсҳои иловагии "{ ... }" истифода баред.',
+	'math_CannotChangeDirectory'            => 'Пӯшаи дар ҳоли корро наметавон тағйир дод',
+	'math_CannotCreateTexFile'              => 'Наметавон парвандаи tex эҷод кард',
+	'math_CannotRunDvipng'                  => 'Наметавон dvipng-ро ба кор андохт',
+	'math_CannotRunLatex'                   => 'Наметавон latex-ро ба кор андохт',
+	'math_CannotWritePngDirectory'          => 'Наметавон ба пӯшаи судури PNG навишт',
+	'math_CannotWriteTexFile'               => 'Наметавон ба парвандани tex навишт',
+	'math_CasesRowTooBig'                   => 'Танҳо ду сабт дар ҳар сатри ҷаъбаи "маворид" бошад',
+	'math_DoubleSubscript'                  => 'Бо ду зерскрипт пайваста ба як пойгоҳ бархӯрд.
+Танҳо ба яке иҷозат аст.',
+	'math_DoubleSuperscript'                => 'Бо ду зерскрипт пайваста ба як пойгоҳ бархӯрд.
+Танҳо ба яке иҷозат аст.',
+	'math_IllegalCharacter'                 => 'Аломати ғайри миҷоз дар вуруди',
+	'math_IllegalCommandInMathMode'         => 'Фармони "$1"  дар тарзи риёзӣ ғайри миҷоз аст',
+	'math_IllegalCommandInMathModeWithHint' => 'Фармони "$1" дар тарзи риёзӣ ғайри миҷоз аст
+Шояд шумо мехостед баҷои он аз "$2" истифода баред?',
+	'math_IllegalCommandInTextMode'         => 'Фармони "$1"  дар тарзи матнӣ ғайри миҷоз аст',
+	'math_IllegalCommandInTextModeWithHint' => 'Фармони "$1" дар тарзи матнӣ ғайри миҷоз аст
+Шояд шумо мехостед баҷои он аз "$2" истифода баред?',
+	'math_IllegalDelimiter'                 => 'Маҳдудкунандаи ғайри миҷоз баъд аз "$1"',
+	'math_IllegalFinalBackslash'            => 'Касри ғайри миҷоз "\\" дар охири вуруди',
+	'math_IllegalNestedFontEncodings'       => 'Фармонҳои рамзгузории ҳуруф наметавонад ошёнавӣ шавад',
+	'math_IllegalRedefinition'              => 'Фармони "$1" аллакай мушаххас шудааст; шумо наметавонед онро дубора мушаххас кунед',
+	'math_InvalidColour'                    => 'Ранги "$1" номӯътабар аст',
+	'math_InvalidUtf8Input'                 => 'Риштаи вуруди UTF-8-и мӯътабар нест',
+	'math_LatexFontNotSpecified'            => 'Ҳеҷ ҳуруфи LaTeX барои "$1" мушаххас нашудааст',
+	'math_LatexPackageUnavailable'          => 'Наметавон PNG-ро ироаъ дода чун бастаи LaTeX "$1" дастнорас аст',
+	'math_MismatchedBeginAndEnd'            => 'Фармонҳои "$1" ва "$2" рост намеоянд',
+	'math_MisplacedLimits'                  => 'Фармони "$1" танҳо метавонад баъд аз амалгари риёзӣ намоён шавад.
+Истифодаи "\\mathop" ба назар гиред.',
+	'math_MissingCommandAfterNewcommand'    => 'Номи фармони ҷадид баъд аз "\\newcommand" нопадид ё номӯътабар аст.
+Дақиқан як фармон бояд мушаххас шавад;
+он бояд бо каср шурӯъ шавад "\\" ва дорои танҳо аломатҳои алифбоӣ бошад.',
+	'math_MissingDelimiter'                 => 'Маҳдудкунандаи нопадид баъд аз "$1"',
+	'math_MissingOpenBraceAfter'            => 'Қафси кушоди нопадид "{" баъд аз "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Қафси кушоди нопадид "{" дар охири вуруди',
+	'math_MissingOpenBraceBefore'           => 'Қафси кушоди нопадид "{" пеш аз "$1"',
+	'math_MissingOrIllegalParameterCount'   => 'Параметри шумори нопадид ё номӯътабар дар таърифи "$1".
+Бояд адади шомили танхо байни 1 ва 9 бошад.',
 );
 
 /** Thai (ไทย)

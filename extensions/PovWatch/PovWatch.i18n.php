@@ -581,6 +581,13 @@ $messages['te'] = array(
 	'povwatch_no_subscribers'        => 'చందాదార్లు ఎవరూ లేరు.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'povwatch_title' => 'Унвон:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

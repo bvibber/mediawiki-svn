@@ -840,6 +840,7 @@ $messages['tg-cyrl'] = array(
 	'webstore_php_warning'        => 'Ҳушдори PHP: $1',
 	'webstore_metadata_not_found' => 'Парванда ёфт нашуд: $1',
 	'webstore_postfile_not_found' => 'Парванда барои фиристодан ёфт нашуд.',
+	'webstore_php_error'          => 'Хатоҳои PHP рух доданд:',
 );
 
 /** Turkish (Türkçe)

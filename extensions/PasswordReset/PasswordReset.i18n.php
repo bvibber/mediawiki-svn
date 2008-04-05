@@ -115,6 +115,7 @@ $messages['eo'] = array(
 	'passwordreset'                 => 'Restarigo de pasvorto',
 	'passwordreset-invalidusername' => 'Nevalida Salutnomo',
 	'passwordreset-emptyusername'   => 'Malplena Salutnomo',
+	'passwordreset-nopassmatch'     => 'Pasvortoj ne estas samaj',
 	'passwordreset-username'        => 'Salutnomo',
 	'passwordreset-newpass'         => 'Nova pasvorto',
 	'passwordreset-confirmpass'     => 'Konfirmu Pasvorton',
@@ -525,6 +526,16 @@ $messages['te'] = array(
 	'passwordreset-disablesuccess'  => 'వాడుకరి ఖాతాని అచేతనం చేసారు (user_id: $1)',
 	'passwordreset-accountdisabled' => 'ఖాతాని అచేతనం చేసారు',
 	'disabledusers'                 => 'అచేతన వాడుకరులు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'passwordreset-invalidusername' => 'Номи корбарии номӯътабар',
+	'passwordreset-username'        => 'Номи корбарӣ',
+	'passwordreset-newpass'         => 'Гузарвожаи ҷадид',
+	'passwordreset-confirmpass'     => 'Тасдиқи гузарвожа',
 );
 
 /** Vietnamese (Tiếng Việt)

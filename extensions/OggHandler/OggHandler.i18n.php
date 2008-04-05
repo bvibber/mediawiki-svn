@@ -339,15 +339,16 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'ogg-short-audio'     => 'Ogg $1 sondosiero, $2',
-	'ogg-short-video'     => 'Ogg $1 videodosiero, $2',
-	'ogg-long-error'      => '(Nevalida ogg-dosiero: $1)',
-	'ogg-stop'            => 'Haltu',
-	'ogg-player-selected' => '(elektita)',
-	'ogg-more'            => 'Pli...',
-	'ogg-dismiss'         => 'Fermu',
-	'ogg-download'        => 'Alŝutu dosieron',
-	'ogg-desc-link'       => 'Pri ĉi tiu dosiero',
+	'ogg-short-audio'         => 'Ogg $1 sondosiero, $2',
+	'ogg-short-video'         => 'Ogg $1 videodosiero, $2',
+	'ogg-long-error'          => '(Nevalida ogg-dosiero: $1)',
+	'ogg-stop'                => 'Haltu',
+	'ogg-player-videoElement' => '<video> elemento',
+	'ogg-player-selected'     => '(elektita)',
+	'ogg-more'                => 'Pli...',
+	'ogg-dismiss'             => 'Fermu',
+	'ogg-download'            => 'Alŝutu dosieron',
+	'ogg-desc-link'           => 'Pri ĉi tiu dosiero',
 );
 
 $messages['es'] = array(

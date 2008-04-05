@@ -235,10 +235,11 @@ $messages['de-formal'] = array(
 
 /** Greek (Ελληνικά)
  * @author ZaDiak
+ * @author Badseed
  */
 $messages['el'] = array(
-	'blacklistedusername'     => 'Ονόματα χρηστών εγγεγραμμένα στα μαύρη λίστα',
-	'blacklistedusernametext' => 'Το όνομα χρήστη που επέλεξες ταιριάζει με την [[MediaWiki:Usernameblacklist|μαύρη λίστα των ονομάτων χρηστών]]. Παρακαλώ επέλεξε ένα άλλο όνομα.',
+	'blacklistedusername'     => 'Ονόματα χρηστών στη μαύρη λίστα',
+	'blacklistedusernametext' => 'Το όνομα χρήστη που επιλέξατε περιλαμβάνεται στη [[MediaWiki:Usernameblacklist|μαύρη λίστα ονομάτων χρηστών]]. Παρακαλούμε επιλέξτε ένα άλλο όνομα.',
 );
 
 /** Esperanto (Esperanto)

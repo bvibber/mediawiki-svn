@@ -302,6 +302,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'sign-selectdoc'               => 'Dosiero:',
 	'sign-realname'                => 'Nomo:',
 	'sign-address'                 => 'Adreso:',
 	'sign-city'                    => 'Urbo:',
@@ -310,6 +311,10 @@ $messages['eo'] = array(
 	'sign-country'                 => 'Lando:',
 	'sign-bday'                    => 'Aĝo:',
 	'sign-email'                   => 'Retpoŝta adreso:',
+	'sign-list-hideaddress'        => 'Ne listigu adreson',
+	'sign-list-hidephone'          => 'Ne listigu nombron de telefono',
+	'sign-list-hideemail'          => 'Ne listigu retadreson',
+	'sign-view-selectfields'       => '<b>Kampoj montri:</b>',
 	'sign-viewfield-realname'      => 'Nomo',
 	'sign-viewfield-address'       => 'Adreso',
 	'sign-viewfield-city'          => 'Urbo',
@@ -319,6 +324,10 @@ $messages['eo'] = array(
 	'sign-viewfield-ip'            => 'IP-adreso',
 	'sign-viewfield-email'         => 'Retadreso',
 	'sign-viewfield-age'           => 'Aĝo',
+	'sign-closed'                  => 'fermita',
+	'sig-anonymous'                => '<i>Anonima</i>',
+	'sig-private'                  => '<i>Privata</i>',
+	'sign-emailto'                 => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewedby'    => 'Kontrolanto',
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-review-comment'          => 'Komento',
@@ -1257,29 +1266,93 @@ $messages['rm'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'signdocument'             => 'Подписание документа',
-	'sign-nodocselected'       => 'Пожалуйста, выберите документ, который вы хотите подписать.',
-	'sign-selectdoc'           => 'Документ:',
-	'sign-docheader'           => '<div class="noarticletext">Пожалуйста, используйте эту форму для подписи документа «[[$1]]», представленного ниже.
+	'signdocument'                    => 'Подписание документа',
+	'sign-nodocselected'              => 'Пожалуйста, выберите документ, который вы хотите подписать.',
+	'sign-selectdoc'                  => 'Документ:',
+	'sign-docheader'                  => '<div class="noarticletext">Пожалуйста, используйте эту форму для подписи документа «[[$1]]», представленного ниже.
 Пожалуйста, прочтите документ целиком, и если вы хотите выразить ему поддержку, заполните требуемые поля, чтобы подписать его.</div>',
-	'sign-error-nosuchdoc'     => 'Запрошенный вами документ ($1) не существует.',
-	'sign-realname'            => 'Имя:',
-	'sign-address'             => 'Адрес (улица, дом и пр.):',
-	'sign-city'                => 'Город:',
-	'sign-state'               => 'Положение:',
-	'sign-zip'                 => 'Почтовый индекс:',
-	'sign-country'             => 'Страна:',
-	'sign-phone'               => 'Номер телефона:',
-	'sign-bday'                => 'Возраст:',
-	'sign-email'               => 'Адрес эл. почты:',
-	'sign-indicates-req'       => '<small><i><font color="red">*</font> отмечает обязательные поля.</i></small>',
-	'sign-list-anonymous'      => 'Анонимно',
-	'sign-list-hideaddress'    => 'Не включать в список адрес',
-	'sign-list-hideextaddress' => 'Не включать в список город, страну и индекс',
-	'sign-list-hidephone'      => 'Не включать в список телефон',
-	'sign-list-hidebday'       => 'Не включать в список возраст',
-	'sign-list-hideemail'      => 'Не включать в список эл. почту',
-	'sign-submit'              => 'Подписать документ',
+	'sign-error-nosuchdoc'            => 'Запрошенный вами документ ($1) не существует.',
+	'sign-realname'                   => 'Имя:',
+	'sign-address'                    => 'Адрес (улица, дом и пр.):',
+	'sign-city'                       => 'Город:',
+	'sign-state'                      => 'Положение:',
+	'sign-zip'                        => 'Почтовый индекс:',
+	'sign-country'                    => 'Страна:',
+	'sign-phone'                      => 'Номер телефона:',
+	'sign-bday'                       => 'Возраст:',
+	'sign-email'                      => 'Адрес эл. почты:',
+	'sign-indicates-req'              => '<small><i><font color="red">*</font> отмечает обязательные поля.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> Замечание: невключённая в список информация будет видна модераторам.</i></small>',
+	'sign-list-anonymous'             => 'Анонимно',
+	'sign-list-hideaddress'           => 'Не включать в список адрес',
+	'sign-list-hideextaddress'        => 'Не включать в список город, страну и индекс',
+	'sign-list-hidephone'             => 'Не включать в список телефон',
+	'sign-list-hidebday'              => 'Не включать в список возраст',
+	'sign-list-hideemail'             => 'Не включать в список эл. почту',
+	'sign-submit'                     => 'Подписать документ',
+	'sign-information'                => '<div class="noarticletext">Спасибо, что потратили своё время на прочтение этого документа.
+Если вы согласны с ним, пожалуйста, выразите вашу поддержку, заполнив приведённые ниже поля и нажав кнопку «Подписать документ». 
+Пожалуйста, убедитесь, что приводимые вами личные сведения правильны, что указаны способы связи, которыми можено воспользоваться для проверки подлинности.
+Заметьте, что ваш IP-адрес и иная идентификационная информация будет записана с помощью этой формы и использована модераторами для удаления повторных подписей и подтверждения правильности личных сведений.
+Поскольку использование открытых и анонимизирующих прокси препятствует нашей возможности выполнить эту задачу, подписи с таких прокси, скорее всего, будут учитываться.
+Если вы подключены через прокси-сервер, пожалуйста, отсоединитесь от него, используйте обычное подключение к сети во время подписи документа.</div>
+
+$1',
+	'sig-success'                     => 'Подписание документа прошло успешно.',
+	'sign-view-selectfields'          => '<b>Поля для оображения:</b>',
+	'sign-viewfield-entryid'          => 'ID записи',
+	'sign-viewfield-timestamp'        => 'Дата/время',
+	'sign-viewfield-realname'         => 'Имя',
+	'sign-viewfield-address'          => 'Адрес',
+	'sign-viewfield-city'             => 'Город',
+	'sign-viewfield-state'            => 'Штат',
+	'sign-viewfield-country'          => 'Страна',
+	'sign-viewfield-zip'              => 'Почт. индекс',
+	'sign-viewfield-ip'               => 'IP-адрес',
+	'sign-viewfield-agent'            => 'Браузер',
+	'sign-viewfield-phone'            => 'Телефон',
+	'sign-viewfield-email'            => 'Эл. почта',
+	'sign-viewfield-age'              => 'Возраст',
+	'sign-viewfield-options'          => 'Настройки',
+	'sign-viewsigs-intro'             => 'Ниже показаны подписи, собранные за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen'     => 'Сбор подписей включён для этого документа.',
+	'sign-sigadmin-close'             => 'Отключить сбор подписей',
+	'sign-sigadmin-currentlyclosed'   => 'Сбор подписей сейчас отключён для этого документа.',
+	'sign-sigadmin-open'              => 'Включить сбор подписей',
+	'sign-signatures'                 => 'Подписи',
+	'sign-sigadmin-closesuccess'      => 'Сбор подписей успешно отключён.',
+	'sign-sigadmin-opensuccess'       => 'Сбор подписей успешно включён.',
+	'sign-viewsignatures'             => 'просмотреть подписи',
+	'sign-closed'                     => 'закрыто',
+	'sign-error-closed'               => 'Сбор подписей для этого документа в настоящее время отключён.',
+	'sig-anonymous'                   => '<i>Аноним</i>',
+	'sig-private'                     => '<i>Частный</i>',
+	'sign-sigdetails'                 => 'Подробнее о подписи',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|обсуждение]] • <!--
+-->[[Special:Contributions/$1|вклад]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|заблокировать участника]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} журнал блокировок] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверить])<!--
+--></span>',
+	'sign-viewfield-stricken'         => 'Вычеркнуто',
+	'sign-viewfield-reviewedby'       => 'Проверяющий',
+	'sign-viewfield-reviewcomment'    => 'Примечание',
+	'sign-detail-uniquequery'         => 'Схожие записи',
+	'sign-detail-uniquequery-run'     => 'Выполнить запрос',
+	'sign-detail-strike'              => 'Вычеркнуть подпись',
+	'sign-reviewsig'                  => 'Проверить подпись',
+	'sign-review-comment'             => 'Примечание',
+	'sign-submitreview'               => 'Отправить проверку',
+	'sign-uniquequery-similarname'    => 'Схожее имя',
+	'sign-uniquequery-similaraddress' => 'Схожий адрес',
+	'sign-uniquequery-similarphone'   => 'Схожий телефон',
+	'sign-uniquequery-similaremail'   => 'Схожий эл. адрес',
+	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] подписал [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Slovak (Slovenčina)

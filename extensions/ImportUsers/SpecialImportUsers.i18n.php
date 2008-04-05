@@ -597,6 +597,17 @@ $messages['tet'] = array(
 	'importusers-email'           => 'korreiu eletróniku',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
+$messages['tg-cyrl'] = array(
+	'importusers-log-summary'     => 'Хулоса',
+	'importusers-log-summary-all' => 'Ҳама',
+	'importusers-password'        => 'гузарвожа',
+	'importusers-realname'        => 'номи аслӣ',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

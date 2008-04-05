@@ -285,6 +285,17 @@ $messages['te'] = array(
 	'postcomment_replyto'                  => '$1కి స్పందన',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'postcomment_notloggedin'              => 'Шумо вуруд нашудаед.',
+	'postcomment_youareloggedinas'         => 'Шумо чун $1 вуруд шудаед',
+	'postcomment_addcommentdiscussionpage' => 'Тавзеҳоти худро дар ин саҳифаи баҳс илова кунед',
+	'postcomment_said'                     => 'гуфт',
+	'postcomment_invalidrequest'           => 'Дархости номӯътабар.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

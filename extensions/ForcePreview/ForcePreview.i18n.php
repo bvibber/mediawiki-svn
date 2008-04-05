@@ -149,6 +149,13 @@ $messages['te'] = array(
 	'forcepreview' => 'పేజీని భద్రపరచండి (ముందుగా సరిచూడండి)',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'forcepreview' => 'Захираи саҳифа (пешнамоишро аввал истифода баред)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

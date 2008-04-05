@@ -1022,8 +1022,25 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'crosswikiblock-reason'   => 'Далел:',
-	'crosswikiunblock-reason' => 'Сабаб:',
+	'crosswikiblock-reason'         => 'Далел:',
+	'crosswikiunblock-reason'       => 'Сабаб:',
+	'crosswikiunblock-submit'       => 'Боз кардани ин корбар',
+	'crosswikiunblock-success'      => "Корбар '''$1''' бо муваффақият боз шуд.
+
+Баргардед ба:
+* [[Special:CrosswikiBlock|Форми бастан]]
+* [[$2]]",
+	'crosswikiblock-dbnotfound'     => 'Пойгоҳи додаи $1 вуҷуд надорад',
+	'crosswikiblock-noname'         => '"$1" номи корбарии номӯътабар аст.',
+	'crosswikiblock-nouser'         => 'Корбар "$3" ёфт нашуд.',
+	'crosswikiblock-noreason'       => 'Сабабе мушаххас нашудааст.',
+	'crosswikiblock-alreadyblocked' => 'Корбар $3 аллакай баста шудааст.',
+	'crosswikiblock-noblock'        => 'Ин корбар баста нашудааст.',
+	'crosswikiblock-success'        => "Корбар '''$3''' бо муваффақият баста шуд.
+
+Баргардед ба:
+* [[Special:CrosswikiBlock|Форми бастан]]
+* [[$4]]",
 );
 
 /** Vietnamese (Tiếng Việt)

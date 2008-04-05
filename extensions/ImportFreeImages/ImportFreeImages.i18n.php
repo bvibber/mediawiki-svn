@@ -438,6 +438,13 @@ $messages['tet'] = array(
 	'importfreeimages_owner' => 'Autór',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'importfreeimages_owner' => 'Муаллиф',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

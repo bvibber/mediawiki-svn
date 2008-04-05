@@ -241,3 +241,12 @@ $messages['te'] = array(
 $2',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'email_footer' => 'Ин номаи электронӣ ба шумо тариқи системеи почтаи электронии {{SITENAME}} тавассути $1 фиристода шуд.
+
+$2',
+);
+

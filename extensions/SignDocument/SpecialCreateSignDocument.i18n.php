@@ -177,7 +177,9 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'createsigndoc-pagename'      => 'Paĝo:',
 	'createsigndoc-email'         => 'Retpoŝta adreso',
+	'createsigndoc-minage'        => 'Minimuma aĝo:',
 	'createsigndoc-hidden'        => 'Kaŝita',
+	'createsigndoc-optional'      => 'Nedeviga',
 	'createsigndoc-create'        => 'Kreu',
 	'createsigndoc-error-generic' => 'Eraro: $1',
 );
@@ -500,6 +502,13 @@ $messages['pt'] = array(
 	'createsigndoc-error-generic' => 'Erro: $1',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'createsigndocument' => 'Включить сбор подписей для документа',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -606,6 +615,7 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-extaddress'        => 'Шаҳр, Вилоят, Кишвар:',
 	'createsigndoc-phone'             => 'Шумораи телефон:',
 	'createsigndoc-bday'              => 'Зодрӯз:',
+	'createsigndoc-introtext'         => 'Шиносоӣ:',
 	'createsigndoc-optional'          => 'Ихтиёрӣ',
 	'createsigndoc-create'            => 'Эҷод',
 	'createsigndoc-error-generic'     => 'Хато: $1',

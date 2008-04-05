@@ -125,7 +125,9 @@ V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'call' => 'Voku',
+	'call'              => 'Voku',
+	'call-save-success' => 'La jena teksto estis konservita al paĝo <big>[[$1]]</big> .',
+	'call-save-failed'  => 'La jena teksto NE estis konservita al paĝo <big>[[$1]]</big> ĉar tiu paĝo jam ekzistas.',
 );
 
 /** Finnish (Suomi)

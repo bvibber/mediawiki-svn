@@ -233,10 +233,11 @@ $messages['te'] = array(
 	'filelist-show-list' => 'జాబితాని చూపించు',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'filelist'              => 'Феҳристи парванда',
 	'filelist-show-list'    => 'Намоиши феҳрист',
 	'filelist-show-gallery' => 'Намоиши нигористон',
 );

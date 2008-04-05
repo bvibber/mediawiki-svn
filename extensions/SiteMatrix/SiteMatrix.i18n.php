@@ -32,12 +32,14 @@ $messages['af'] = array(
  * @author SPQRobin
  */
 $messages['an'] = array(
-	'sitematrix'          => 'Lista de wikis de Wikimedia',
-	'sitematrix-desc'     => 'Amuestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
-	'sitematrix-language' => 'Luenga',
-	'sitematrix-project'  => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
-	'sitematrix-others'   => 'Atros procheutos de Wikimedia',
-	'sitematrix-total'    => "'''Total: $1'''",
+	'sitematrix'           => 'Lista de wikis de Wikimedia',
+	'sitematrix-summary'   => 'Ista pachina espezial amuestra a lista de wikis de Wikimedia.',
+	'sitematrix-desc'      => 'Amuestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
+	'sitematrix-language'  => 'Luenga',
+	'sitematrix-project'   => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
+	'sitematrix-others'    => 'Atros procheutos de Wikimedia',
+	'sitematrix-total'     => "'''Total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 $messages['ang'] = array(
@@ -212,14 +214,15 @@ $messages['ee'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Badseed
  * @author ZaDiak
  * @author Consta
  */
 $messages['el'] = array(
-	'sitematrix'           => 'Λίστα των Wikimedia βίκι',
+	'sitematrix'           => 'Κατάλογος wiki του Wikimedia',
 	'sitematrix-language'  => 'Γλώσσα',
 	'sitematrix-project'   => 'Όνομα εγχειρήματος, διαεγχειρηματικός (interproject) σύνδεσμος και διαγλωσσικός (interwiki) σύνδεσμος',
-	'sitematrix-others'    => 'Άλλα εγχειρήματα της Wikimedia',
+	'sitematrix-others'    => 'Άλλα εγχειρήματα του Wikimedia',
 	'sitematrix-sitetotal' => 'Συνολικά',
 );
 
@@ -652,6 +655,7 @@ $messages['ml'] = array(
 	'sitematrix'           => 'വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക',
 	'sitematrix-summary'   => 'ഈ താള്‍ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുന്നു.',
 	'sitematrix-language'  => 'ഭാഷ',
+	'sitematrix-project'   => 'സം‌രംഭത്തിന്റെ പേര്‌, സഹസം‌രംഭങ്ങളിലേക്കുള്ള കണ്ണി, മറ്റ് വിക്കികളിലേക്കുള്ള കണ്ണി',
 	'sitematrix-others'    => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങള്‍',
 	'sitematrix-total'     => "'''മൊത്തം എണ്ണം: $1'''",
 	'sitematrix-sitetotal' => 'മൊത്തം',

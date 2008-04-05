@@ -337,10 +337,11 @@ $messages['pl'] = array(
 	'tasklistemail'          => '%s',
 	'tasklistemailsubject'   => '[%s] Zmiana listy zadań',
 	'tasklistmytasks'        => 'Moje zadania',
-	'tasklistbyprojectbad'   => "Projekt '''%s''' nie jest poprawnym projektem. By zobaczyć listę poprawnych projektów, odwiedź stronę [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad'   => "'''%s''' nie jest poprawnym projektem.
+Listę poprawnych projektów znajdziesz na stronie [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'     => "Przypisano zadania do '''%s'''",
 	'tasklistchooseproj'     => 'Wybierz projekt:',
-	'tasklistprojdisp'       => 'Pokaż',
+	'tasklistprojdisp'       => 'Wyświetl',
 	'tasklistbyname'         => '== Lista zadań do wykonania dla %s ==',
 	'tasklistnoprojects'     => "BŁĄD: Najprawdopodobniej włączono zmienną '''\$wgUseProjects''', lecz nie utworzono pliku [[MediaWiki:TodoTasksValidProjects]]. Szczegóły w pliku [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instrukcja instalacji].",
 	'tasklistemailbody'      => ',
@@ -349,7 +350,7 @@ Ktoś przydzielił Ci nowe zadanie w %s.
 
 By zobaczyć kompletną listę zadań, przejdź do strony %s.
 
-Przyjazny system informowania - %s',
+%s - automatyczny system informowania.',
 );
 
 /** Pashto (پښتو)
@@ -451,11 +452,16 @@ $messages['te'] = array(
 	'tasklistbyname'        => '== %s కొరకు చేయాల్సిన పనుల జాబితా ==',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'tasklistemail' => 'Мӯҳтарам %s',
+	'tasklist'               => 'Феҳристи Вазифа',
+	'tasklistbyproject'      => 'Феҳристи Вазифа Тавассути Лоиҳа',
+	'tasklistunknownproject' => 'Лоиҳаи ношинос',
+	'tasklistunspecuser'     => 'Корбари мушаххаснашуда',
+	'tasklistincorrectuser'  => 'Номи корбарии нодуруст',
+	'tasklistemail'          => 'Мӯҳтарам %s',
 );
 
 /** Turkish (Türkçe)

@@ -190,6 +190,7 @@ $messages['eo'] = array(
 	'regexblock-already-blocked'    => '$1 jam estas forbarita.',
 	'regexblock-stats-username'     => 'Por $1',
 	'regexblock-stats-times'        => 'estis forbarita je',
+	'regexblock-currently-blocked'  => 'Nune forbaritaj adresoj:',
 	'regexblock-view-all'           => 'Ĉiuj',
 	'regexblock-view-go'            => 'Ek!',
 	'regexblock-view-reason'        => 'kialo: $1',

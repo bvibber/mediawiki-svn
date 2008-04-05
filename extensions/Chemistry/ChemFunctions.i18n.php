@@ -674,7 +674,13 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'chemFunctions_Formula' => 'Қоида',
+	'chemicalsources'        => 'Сарчашмаҳои кимёӣ',
+	'chemicalsource-desc'    => 'Барчасби <nowiki><chemform></nowiki>-ро барои қоидаҳои кимёӣ илова мекунад',
+	'chemFunctions_ListPage' => 'Сарчашмаҳои кимёӣ',
+	'chemFunctions_DataList' => 'Дар зер феҳристи пайвандҳо ба сомонаҳое, ки эҳтимолан метавонанд барои шумо иттилооти ҷустуҷӯ карда истодаатон оиди моддаи кимёӣ пешкаш кунанд.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula дар NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS дар Донишгоҳи Оксфорд (Инглистон) (қобили ҷустуҷӯ нест)</a><br />',
+	'chemFunctions_Formula'  => 'Қоида',
 );
 
 /** Turkish (Türkçe)

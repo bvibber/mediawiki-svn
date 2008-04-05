@@ -116,6 +116,13 @@ $messages['sv'] = array(
 	'didyoumean-desc' => 'Lägger till länkar till sidor med "liknande" titlar',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'didyoumean-desc' => 'Ба саҳифаҳои бо унвонҳои "монандӣ" пайвандҳо илова кунед',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

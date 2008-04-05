@@ -158,6 +158,13 @@ $messages['sv'] = array(
 	'ajax-qp-desc' => 'Lägger till AJAX-funktioner på vissa specialsidor, som t.ex. [[Special:Shortpages]]',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'ajax-qp-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages]]',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

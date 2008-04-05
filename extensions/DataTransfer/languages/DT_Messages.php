@@ -502,15 +502,18 @@ $messages['tet'] = array(
 	'dt_xml_name' => 'Naran',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
-	'dt_xml_namespace'      => 'Фазоином',
+	'dt_viewxml_categories' => 'Гурӯҳҳо',
 	'dt_viewxml_namespaces' => 'Фазоҳои ном',
+	'dt_xml_namespace'      => 'Фазоином',
 	'dt_xml_page'           => 'Саҳифа',
 	'dt_xml_name'           => 'Ном',
 	'dt_xml_title'          => 'Унвон',
+	'dt_xml_freetext'       => 'Матни дилхоҳ',
 );
 
 /** Vietnamese (Tiếng Việt)

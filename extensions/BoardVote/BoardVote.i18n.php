@@ -778,12 +778,13 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Badseed
  * @author ZaDiak
  * @author MF-Warburg
  */
 $messages['el'] = array(
-	'boardvote'             => 'Εκλογές της Wikimedia Επιτροπής των Εμπίστων',
-	'boardvote-desc'        => '[[meta:Board elections|Εκλογή της Wikimedia επιτροπής των εμπίστων]]',
+	'boardvote'             => 'Εκλογές για το Διοιηκτικό Συμβούλιο του Ιδρύματος Wikimedia',
+	'boardvote-desc'        => '[[meta:Board elections|Εκλογές για το Διοικητικό Συμβούλιο του Wikimedia]]',
 	'boardvote_novotes'     => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_time'        => 'Ώρα',
 	'boardvote_user'        => 'Χρήστης',
@@ -796,7 +797,7 @@ $messages['el'] = array(
 	'boardvote_notstarted'  => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
 	'boardvote_edits_many'  => 'πολλές',
 	'boardvote_welcome'     => "Καλώς ήλθατε '''$1'''!",
-	'go_to_board_vote'      => 'Εκλογές Επιτροπής Wikimedia 2007',
+	'go_to_board_vote'      => 'Εκλογές για το Διοικητικό Συμβούλιο του Wikimedia 2007',
 	'boardvote_redirecting' => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
 
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.

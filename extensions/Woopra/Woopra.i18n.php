@@ -27,3 +27,17 @@ $messages['nl'] = array(
 	'woopra-desc' => 'Maakt het mogelijk om de [http://www.woopra.com/ Woopra Live Tracking software] te gebruiken voor MediaWiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungere med MediaWiki',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
+);
+

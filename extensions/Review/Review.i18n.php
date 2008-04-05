@@ -154,6 +154,51 @@ $messages['bg'] = array(
 	'review_comment'                => 'Коментар',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'review_sidebar_title'                                   => 'Adweladenn',
+	'review-desc'                                            => "Adlañsañ a ra arc'hwel [[Special:Review|kadarnaat]] ur pennad.",
+	'review_topics'                                          => "# Roll an dodennoù evit astenn \"adwelet\" wiki.
+# Termenet eo pep dodenn gant ul linenn 5 talvoud enni, dispartiet dre ':' (ne gemer ket e kont al linennoù all).
+# Setu urzh an talvoudoù : alc'hwez niverel (>0), anv, emled (>1; 2=ya/ket), talvoudegezh an talvoud izelañ (evel, 'fall'), talvoudegezh ar talvoud uhelañ (da skouer, 'mat').
+1: Perzhded: 5:fall:mat
+2: Prest evit 1.0:2: ya:ket",
+	'review_topic_page'                                      => 'Dodennoù da adwelet',
+	'review_sidebar_explanation'                             => 'Al log askañ ar muiañ a-gleiz a dalvez atav  "hep tamm soñj ebet".',
+	'review_save'                                            => 'Saveteiñ an adweladenn',
+	'review_your_review'                                     => "Hoc'h adweladenn/reizhadenn eus ar bajenn-mañ :",
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Adwelet eo bet ganeoc'h stummoù all ar bajenn-mañ c'hoazh. Kendeuzet e vo ho priziadennoù kent gant ar re-mañ m'hoc'h eus dibabet \"hep tamm soñj ebet\".",
+	'review_page_link'                                       => 'Stadegoù adwelet',
+	'review_sidebar_final'                                   => 'Evit gwelet roadennoù adwelet gweladenn ar bajenn-mañ, mont da $1',
+	'review_for_page'                                        => 'Adweladennoù evit ar bajenn "$1"',
+	'review_for_user'                                        => 'Adweladennoù an implijer "$1"',
+	'review_error'                                           => 'Un dra bennak a-dreuz zo!',
+	'review_no_reviews_for_page'                             => 'Evit poent n\'eus bet adweladenn ebet "$1".',
+	'review_total_statistics'                                => 'Hollad',
+	'review_statistics_left_corner'                          => 'Adweladenn',
+	'review_version_link'                                    => 'Adweladenn #$1',
+	'review_statistic_cell'                                  => 'Keidenn : $1 diwar $2<br />($4 implijer enskrivet, $5 dianv)',
+	'review_version_statistic_cell'                          => '$1 diwar $2',
+	'review_version_reviews_link'                            => 'small>(adweladennoù stumm)</small>',
+	'review_concerns_page'                                   => 'Diwar-benn ar bajenn "$1" eo an adweladenn-mañ.',
+	'review_concerns_user'                                   => 'Diwar-benn adweladennoù an implijer "$1" eo.',
+	'review_user_reviews'                                    => '<small>(adweladennoù gant an implijer-mañ)</small>',
+	'review_user_page_list'                                  => 'Adwelet eo bet ar pajennoù da-heul gant an implijer :',
+	'review_user_details_link'                               => '(munudoù)',
+	'review_do_merge'                                        => 'Kendeuziñ ma adweladennoù eus ar reizhadennoù all gant ar bajenn-mañ',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Enrollet eo bet hoc'h adweladenn</span>",
+	'revision_review_this_page_version_link'                 => 'Adwelet ar stumm-mañ eus ar bajenn.',
+	'review_page_review'                                     => 'Adweladenn ar bajenn "$1"',
+	'review_blocked'                                         => "Stanket oc'h, kit kuit.",
+	'review_wrong_namespace'                                 => "N'haller ket adwelet ar pajennoù en esaouen anv-mañ.",
+	'review_topic'                                           => 'Danvez',
+	'review_no_opinion'                                      => 'Hep tamm soñj ebet',
+	'review_rating'                                          => 'Priziadenn',
+	'review_comment'                                         => 'Notenn',
+);
+
 /** Danish (Dansk)
  * @author Morten
  */
@@ -180,6 +225,8 @@ $messages['eo'] = array(
 	'review_statistics_left_corner' => 'Revizio',
 	'review_version_link'           => 'Revizio #$1',
 	'review_version_statistic_cell' => '$1 de $2',
+	'review_user_details_link'      => '(detaloj)',
+	'review_no_opinion'             => 'Neniu opinio',
 	'review_comment'                => 'Komento',
 );
 

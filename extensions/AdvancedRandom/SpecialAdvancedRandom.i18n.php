@@ -283,6 +283,14 @@ $messages['te'] = array(
 	'advancedrandom' => 'మొరుగైన యాదృచ్ఛికం',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'advancedrandom'      => 'Тасодуфи пешрафта',
+	'advancedrandom-desc' => 'Гирифтани саҳифаи тасодуфӣ аз пайвандҳои баҳси киҳо ё саҳифаи мавзӯъ, ки ба саҳифа дода шудаанд, метавонанд монанди [[Special:AdvancedRandom/Template:Featured/Talk]] барои дастрас кардани мақолаи барҷастаи тасодуфии барҷаста ё монанди [[Special:AdvancedRandom/Template:GFDL/Image]] барои дастрас кардани парвандаи тасодуфии GFDL истифода шаванд',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */
