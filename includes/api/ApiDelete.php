@@ -68,7 +68,7 @@ class ApiDelete extends ApiBase {
 		$dbw->immediateBegin();
 		
 		if ($titleObj->getNamespace() == NS_IMAGE) {
-			$retval = self::deletefile($params['token'], $titleobj, $params['oldimage'], $reason, false);
+			$retval = self::deletefile($params['token'], $titleObj, $params['oldimage'], $reason, false);
 			if(!empty($retval))
 				// We don't care about multiple errors, just report one of them
 				$this->dieUsageMsg(current($retval));
@@ -92,13 +92,13 @@ class ApiDelete extends ApiBase {
 		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}
 
-	private static function getPermissionsError($title, $token) {
+	private static function getPermissionsError(&$title, $token) {
 		global $wgUser;
 		// Check wiki readonly
 		if (wfReadOnly()) return array(array('readonlytext'));
 		
 		// Check permissions
-		$errors = $title->getUserPermissionsError('delete', $wgUser);
+		$errors = $title->getUserPermissionsErrors('delete', $wgUser);
 		if (count($errors)) return $errors;
 		
 		// Check token
@@ -137,7 +137,7 @@ class ApiDelete extends ApiBase {
 	
 	public static function deleteFile($token, &$title, $oldimage, &$reason = NULL, $suppress = false)
 	{
-		$errors = self::getPermissionsError($article->getTitle(), $token);
+		$errors = self::getPermissionsError($title, $token);
 		if (count(errors)) return $errors;
 
 		if( $oldimage && !FileDeleteForm::isValidOldSpec($oldimage) )
