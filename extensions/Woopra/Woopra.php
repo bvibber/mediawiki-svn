@@ -30,7 +30,7 @@ $wgHooks['BeforePageDisplay'][] = 'fnWoopraJavascript';
  
 function fnWoopraJavascript($out)
 {
-        global $wgUser, $wgWoopraSitekey;
+        global $wgUser, $wgWoopraSitekey, $html;
  
         $html .= "<script type=\"text/javascript\">\r\n";
         $html .= "woopra_id = '" . $wgWoopraSitekey . "';\r\n";
