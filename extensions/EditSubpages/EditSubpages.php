@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 'description' => "Allows sysops to unlock a page and all subpages of that page
 for anonymous editing via [[MediaWiki:Unlockedpages]]",
 'descriptionmsg' => 'editsubpages-desc',
-'author' => "Ryan Schmidt",
+'author' => "<span class=\"plainlinks\">[http://strategywiki.org/wiki/User:Ryan Schmidt Ryan Schmidt] and [http://strategywiki.org/wiki/User:Prod Prod]</span>",
 'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
 'version' => "2.0",
 );
