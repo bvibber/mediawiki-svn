@@ -30,9 +30,9 @@ $wgHooks['BeforePageDisplay'][] = 'fnWoopraJavascript';
  
 function fnWoopraJavascript($out)
 {
-        global $wgUser, $wgWoopraSitekey, $html;
+        global $wgUser, $wgWoopraSitekey;
  
-        $html .= "<script type=\"text/javascript\">\r\n";
+        $html = "<script type=\"text/javascript\">\r\n";
         $html .= "woopra_id = '" . $wgWoopraSitekey . "';\r\n";
  
         if (!$wgUser->isAnon())
