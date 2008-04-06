@@ -2,8 +2,8 @@
 
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
-// Copyright (C) 2007 Norbert Huffschmid
-// Last modified: 4. December 2007
+// Copyright (C) 2008 Norbert Huffschmid
+// Last modified: 6. April 2008
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -20,6 +20,9 @@
 //
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
+//
+// changes against V5.17:
+// - consider additional XHTML devices: Aspen Simulator and Android
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -40,7 +43,7 @@
 ###################################
 
 // miscellaneous constants
-define("HAW_HAW_VERSION", "HAWHAW V5.16");
+define("HAW_HAW_VERSION", "HAWHAW V5.18B");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 if (defined("HAW_TERA_WURFL_PATH"))
   define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
@@ -911,8 +914,8 @@ class HAW_deck
   }
 
 
-  /*
-    Adds a HAW_raw object to HAW_deck. (undocumented feature - for test only!)
+  /**
+    Adds a HAW_raw object to HAW_deck.
     @param raw Some HAW_raw object.
     @see HAW_raw
   */
@@ -927,14 +930,12 @@ class HAW_deck
   }
 
 
-  /*
-    Adds some user-defined HAWHAW object to HAW_deck (undocumented feature)<br>
-    For skilled HAWHAW programmers only!
+  /**
+    Adds some user-defined HAWHAW object to HAW_deck.<br>
     @param udef Some user-defined object.
-  */
-  function add_userdefined($udef)
-  {
-    /* A user-defined HAWHAW class definition MUST look like this:
+
+    <pre>
+    A user-defined HAWHAW class definition should look like this:
 
       class HAW_foo // some class name of your choice
       {
@@ -942,15 +943,15 @@ class HAW_deck
       
         function HAW_foo(...)
         {
-          // some constructor code of your choice
+          # some constructor code (if required)
         }
 
-        function HAW_boobaz(...)
+        function set_bar($bar)
         {
-          // as many user-defined functions as needed
+          # as many user-defined functions as you need
         }
 
-        // this member function is called by HAWHAW and MUST NOT be changed!
+        # this member function is called by HAWHAW and MUST NOT be changed!
         function get_elementtype()
         {
           return HAW_USERDEFINED;
@@ -958,23 +959,26 @@ class HAW_deck
       
         function create($deck)
         {
-          // this member function is called by HAWHAW and MUST be present!
-          // it is in the programmers responsibility what kind of markup is created here!
-          // you have access to all HAW_deck properties by evaluating $deck
+          # this member function is called by HAWHAW and MUST be present!
+          # it is in the programmers responsibility what kind of markup is created here!
+          # you have access to all HAW_deck properties by evaluating $deck
         }
-      } ;
-
-      You have to define this class somewhere after your require("hawhaw.inc") statement
+      };
 
       Usage: ...
+             require_once("hawhaw.inc);
+             require_once("HAW_foo.php");
+             ...       
              $myText = new HAW_text("Classic text");
              $myDeck->add_text($myText);
              $myClass = new HAW_foo("Cool output");
-             $myClass->boobaz($ringtone, $sms, $userposition);
+             $myClass->set_coolstuff($ringtone, $sms, $userlocation);
              $myDeck->add_userdefined($myClass);
              ...
-    */
-
+    </pre>
+  */
+  function add_userdefined($udef)
+  {
     if (!is_object($udef))
       die("invalid argument in add_userdefined()");
 
@@ -1602,8 +1606,7 @@ class HAW_deck
 
   /**
     Get markup language evaluated for the detected browser. <br>
-    (returns <b>int</b> and not <b>void</b>. Must update this documentation tool ...)<br><br>
-    Returns:<br>
+    @returns
     - HAW_HTML (HTML)<br>
     - HAW_WML (WML)<br>
     - HAW_HDML (HDML)<br>
@@ -1612,10 +1615,10 @@ class HAW_deck
     ...<br>
     $myDeck = new HAW_deck();<br>
     if ($myDeck->get_markup_language() == HAW_VXML) {<br>
-      // some VoiceXML stuff<br>
+      # some VoiceXML stuff<br>
     }<br>
     else {<br>
-      // some visual stuff<br>
+      # some visual stuff<br>
     } 
   */
   function get_markup_language()
@@ -2293,16 +2296,20 @@ class HAW_deck
   
   function determine_capabilities_generic($HTTP_USER_AGENT, $HTTP_ACCEPT, $HTTP_UA_OS)
   {
-    if (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
-        strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
-        strstr(strtolower($HTTP_USER_AGENT), "o2imode") ||
-        strstr(strtolower($HTTP_USER_AGENT), "opera ") ||
-        strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
-        strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml"))
+    // make this only once for performance reasons
+    $ua_low  = strtolower($HTTP_USER_AGENT);
+    $acc_low = strtolower($HTTP_ACCEPT);
+    
+    if (strstr($ua_low, "docomo") ||
+        strstr($ua_low, "portalmmm") ||
+        strstr($ua_low, "o2imode") ||
+        strstr($ua_low, "opera ") ||
+        strstr($ua_low, "reqwirelessweb") ||
+        strstr($acc_low, "vnd.wap.xhtml"))
     {
       $this->ml = HAW_HTML;   // create HTML (even when device accepts text/vnd.wap.wml too!)
     }
-    elseif (strstr(strtolower($HTTP_ACCEPT), "text/vnd.wap.wml"))
+    elseif (strstr($acc_low, "text/vnd.wap.wml"))
     {
       $this->ml = HAW_WML;  // create WML
 
@@ -2316,25 +2323,25 @@ class HAW_deck
            strstr($HTTP_USER_AGENT, "UP.Link")) // Non-UP.Link gateways sometimes have problems!
         $this->owgui_1_3 = true; // device accepts Openwave GUI extensions for WML 1.3
     }
-    elseif (strstr(strtolower($HTTP_ACCEPT), "hdml;version=3.")) // HDML 3.0 and 3.1
+    elseif (strstr($acc_low, "hdml;version=3.")) // HDML 3.0 and 3.1
       $this->ml = HAW_HDML; // create HDML
-    elseif (strstr(strtolower($HTTP_ACCEPT), "vxml") ||               // VoiceXML signalled in accept header
-            strstr(strtolower($HTTP_ACCEPT), "voicexml") ||           // alternative accept header
-            strstr($HTTP_USER_AGENT, "OpenVXI") ||                    // Speechworks OpenVXI
-            strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml") || // PublicVoiceXML voice browser
-            strstr(strtolower($HTTP_USER_AGENT), "hastenix") ||       // hawhaw asterisk adapter
-            strstr($HTTP_USER_AGENT, "Tellme"))                       // Tellme studio voice browser
+    elseif (strstr($acc_low, "vxml") ||               // VoiceXML signalled in accept header
+            strstr($acc_low, "voicexml") ||           // alternative accept header
+            strstr($HTTP_USER_AGENT, "OpenVXI") ||    // Speechworks OpenVXI
+            strstr($ua_low, "publicvoicexml") || // PublicVoiceXML voice browser
+            strstr($ua_low, "hastenix") ||       // hawhaw asterisk adapter
+            strstr($HTTP_USER_AGENT, "Tellme"))  // Tellme studio voice browser
     {
       $this->ml = HAW_VXML; // create VoiceXML
 
       // PublicVoiceXML browser cannot handle <break> elements!!!
-      if (strstr(strtolower($HTTP_USER_AGENT), "publicvoicexml"))
+      if (strstr($ua_low, "publicvoicexml"))
       {
         $this->supportsVXMLBreakTag = false;
       }
 
       // detect Motorola VoiceXML platform
-      if (strstr(strtolower($HTTP_USER_AGENT), "motorola"))
+      if (strstr($ua_low, "motorola"))
       {
         $this->MotorolaVoiceXML = true;
       }
@@ -2343,10 +2350,10 @@ class HAW_deck
     {
       if (strstr($HTTP_USER_AGENT, "Mozilla") ||
           strstr($HTTP_USER_AGENT, "MSIE") ||
-          strstr(strtolower($HTTP_USER_AGENT), "lynx") ||
-          strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
-          strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
-          strstr(strtolower($HTTP_USER_AGENT), "j-"))
+          strstr($ua_low, "lynx") ||
+          strstr($ua_low, "avantgo") ||
+          strstr($ua_low, "pendragonweb") ||
+          strstr($ua_low, "j-"))
         $this->ml = HAW_HTML;   // HTML-based browser
       else
       {
@@ -2366,9 +2373,10 @@ class HAW_deck
       }
     }
 
-    if (strstr(strtolower($HTTP_ACCEPT), "vnd.wap.xhtml") ||
-        strstr(strtolower($HTTP_USER_AGENT), "opera mini") ||
-        strstr(strtolower($HTTP_USER_AGENT), "google wireless transcoder") ||
+    if (strstr($acc_low, "vnd.wap.xhtml") ||
+        strstr($ua_low, "opera mini") ||
+        strstr($ua_low, "google wireless transcoder") ||
+        (strstr($ua_low, "symbianos") && strstr($acc_low, "xhtml+xml")) ||
         strstr($HTTP_USER_AGENT, "(iPhone") ||
         strstr($HTTP_USER_AGENT, "(iPod") ||
         strstr($HTTP_USER_AGENT, "(Aspen Simulator") ||
@@ -2380,18 +2388,12 @@ class HAW_deck
       $this->display_banners = false;
       $this->gif_enabled = true;
       $this->css_enabled = true;
-      
-      # Hack for iPhone SDK simulator
-      # Doesn't seem to like application/vnd.wap.xhtml+xml
-      if( strstr($HTTP_USER_AGENT, "(Aspen Simulator") ) {
-	      $this->xhtmlmp_preferred_mime_type = 'text/html';
-      }
     }
-    elseif ( strstr(strtolower($HTTP_USER_AGENT), "avantgo") ||
-             strstr(strtolower($HTTP_USER_AGENT), "reqwirelessweb") ||
-             strstr(strtolower($HTTP_USER_AGENT), "pendragonweb") ||
-             strstr(strtolower($HTTP_USER_AGENT), "palmos") ||
-             strstr(strtolower($HTTP_USER_AGENT), "windows ce") ||
+    elseif ( strstr($ua_low, "avantgo") ||
+             strstr($ua_low, "reqwirelessweb") ||
+             strstr($ua_low, "pendragonweb") ||
+             strstr($ua_low, "palmos") ||
+             strstr($ua_low, "windows ce") ||
              strstr(strtolower($HTTP_UA_OS),      "windows ce") ||
              strstr($HTTP_USER_AGENT, "Mozilla/4.7"))
     {
@@ -2400,23 +2402,23 @@ class HAW_deck
       $this->pureHTML = false;
       $this->display_banners = false;
     }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "docomo") ||
-            strstr(strtolower($HTTP_USER_AGENT), "portalmmm") ||
-            strstr(strtolower($HTTP_USER_AGENT), "o2imode"))
+    elseif (strstr($ua_low, "docomo") ||
+            strstr($ua_low, "portalmmm") ||
+            strstr($ua_low, "o2imode"))
     {
       // i-mode browser detected
       $this->iModestyle = true;
       $this->pureHTML = false;
       $this->display_banners = false;
     }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "j-"))
+    elseif (strstr($ua_low, "j-"))
     {
       // MML browser detected
       $this->MMLstyle = true;
       $this->pureHTML = false;
       $this->display_banners = false;
     }
-    elseif (strstr(strtolower($HTTP_USER_AGENT), "lynx"))
+    elseif (strstr($ua_low, "lynx"))
     {
       // text browser detected
       $this->lynx = true;
@@ -2435,18 +2437,19 @@ class HAW_deck
 
     // determine if browser is able to display GIF images
     if (($this->ml == HAW_HTML) ||
-        (strstr(strtolower($HTTP_ACCEPT), "image/gif")) ||
-        (strstr(strtolower($HTTP_USER_AGENT), "t68")))
+        (strstr($acc_low, "image/gif")) ||
+        (strstr($ua_low, "t68")))
       $this->gif_enabled = true; // browsers can display GIF
 
     // determine how forms are to be transmitted 
-    if (strstr(strtolower($HTTP_USER_AGENT), "ericsson") ||
-        (strstr(strtolower($HTTP_USER_AGENT), "nokia")))
+    if (strstr($ua_low, "ericsson") ||
+        (strstr($ua_low, "nokia")))
       $this->submitViaLink = true; // with some WAP devices it's quite difficult to submit WML forms
 
     // set alternative mime-type for some XHTML Mobile Profile devices 
     if (strstr($HTTP_USER_AGENT, "(iPhone") ||
-        strstr($HTTP_USER_AGENT, "(iPod"))
+        strstr($HTTP_USER_AGENT, "(iPod") ||
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
       $this->xhtmlmp_preferred_mime_type = "text/html";
   }
   
@@ -2768,8 +2771,8 @@ class HAW_form
   }
 
 
-  /*
-    Adds a HAW_raw object to HAW_form. (undocumented feature - for test only!)
+  /**
+    Adds a HAW_raw object to HAW_form.
     @param raw_markup_object Some HAW_raw object.
     @see HAW_raw
   */
@@ -2784,15 +2787,13 @@ class HAW_form
   }
 
 
-  /*
-    Adds some user-defined HAWHAW object to HAW_form (undocumented feature)<br>
-    For skilled HAWHAW programmers only!
+  /**
+    Adds some user-defined HAWHAW object to HAW_form
     @param udef Some user-defined object.
+    @see HAW_deck::add_userdefined()
   */
   function add_userdefined($udef)
   {
-    // see HAW_deck->add_userdefined($def) for documentation
-
     if (!is_object($udef))
       die("invalid argument in add_userdefined()");
 
@@ -6259,8 +6260,20 @@ class HAW_linkset
 
 
 
-/*
-  Undocumented class for raw markup insertion - For test only!
+/**
+  This class allows direct insertion of markup code - Handle with care!
+  <p><b>Example:</b><p>
+  <pre>
+  $myPage = new HAW_deck(...);
+  $pageContent = new HAW_text("Here comes some content ...");
+  $myPage->add_text($pageContent);
+  $myHtmlCode = "<p>Here comes an adblock for html devices ...</p>";
+  $myAdBlock = new HAW_raw(HAW_HTML, $myHtmlCode);
+  $myPage->add_raw($myAdblock);
+  $myPage->create_page();
+  </pre>
+  @see HAW_deck
+  @see HAW_form
 */
 class HAW_raw
 {
@@ -6270,9 +6283,7 @@ class HAW_raw
   /**
     Constructor
     @param ml Markup language (HAW_HTML, HAW_WML, HAW_HDML, HAW_VXML).
-    @param code Some markup code to be inserted for the selected markup language<br>
-                Note: Using this class is for meant for test purposes only. Inproper usage
-                can result in highly incompatible applications.
+    @param code Some markup code to be inserted for the selected markup language
   */
   function HAW_raw($ml,$code)
   {
