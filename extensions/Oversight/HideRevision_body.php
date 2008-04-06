@@ -113,7 +113,7 @@ class HideRevisionForm extends SpecialPage {
 		$result = $dbr->select(
 			array( 'page', 'revision' ),
 			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len,
-			NULL AS rc_log_action, 0 AS rc_deleted, 0 AS rc_logid, NULL AS rc_log_type, "" AS rc_params',
+			NULL AS rc_log_action, 0 AS rc_deleted, 0 AS rc_logid, NULL AS rc_log_type, \'\' AS rc_params',
 			array(
 				'rev_id' => $this->mRevisions,
 				'rev_page=page_id',
