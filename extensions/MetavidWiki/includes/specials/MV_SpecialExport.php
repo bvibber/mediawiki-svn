@@ -165,13 +165,13 @@ class MV_SpecialExport {
 		//print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 		?>		
+		<!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 		<xs:schema targetNamespace="http://www.xiph.org/roe"
 	    xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	    xmlns:cmml="http://www.annodex.org/cmml4.0"
 	    xmlns:html="http://www.w3.org/1999/xhtml"
 	    elementFormDefault="qualified"
 	    attributeFormDefault="unqualified">
-<!DOCTYPE roe SYSTEM "http://svn.annodex.net/standards/roe/roe_1_0.xsd">
 <ROE>
 	<head>
 		<link id="html_linkback" rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
@@ -213,7 +213,8 @@ class MV_SpecialExport {
 			</switch>
 		</track>
 	</body>
-</ROE><?
+</ROE>
+</xs:schema><?
 		//get all available stream text layers ( inline request CMML (if apropo ))		
 	}
 	
