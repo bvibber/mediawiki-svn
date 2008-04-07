@@ -13,5 +13,5 @@ $messages = array();
  */
 $messages['en'] = array(
                 'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
-                'watchsubpages'      => 'Watch Guide Subpages',
+                'watchsubpages'      => 'Watch subpages',
 );
