@@ -207,6 +207,13 @@ $messages['te'] = array(
 	'breadcrumbs-desc' => 'వాడుకరులకు వికీలో తోవ చూపిస్తుంది',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'breadcrumbs-desc' => 'Роҳи корбар тариқи викиро нишон медиҳад.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

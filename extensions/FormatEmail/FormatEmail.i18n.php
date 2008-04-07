@@ -88,7 +88,9 @@ $2',
 $messages['hsb'] = array(
 	'email-desc'   => 'Dowola wužiwarjej e-mejlkam swójske hłowowe/nohowe linki přidać',
 	'email_footer' => '----------------------------------------------------------------------------
-Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} pósłana.',
+Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} připósłana.
+
+$2',
 );
 
 /** Hungarian (Magyar)

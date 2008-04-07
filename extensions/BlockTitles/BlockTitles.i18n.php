@@ -453,11 +453,13 @@ $messages['te'] = array(
 	'block_title_error'            => 'క్షమించండి, ఈ పేజీ శీర్షికని భద్రపరచడానికి అనుమతించము.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Farrukh
+ * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'block_title_error_page_title' => 'Сарлавҳаҳои басташуда',
+	'block_title_error-desc'       => 'Рохҳои асосиро барои ҷилавгирӣ аз захира ё эчод кардани саҳифаҳое бо баъзе унвонҳоро пешниҳод мекунад',
 	'block_title_error'            => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );
 

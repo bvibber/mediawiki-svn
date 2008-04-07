@@ -23,6 +23,14 @@ $messages['ar'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'randomrootpage'      => 'Случайна начална страница',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
+);
+
 /** Persian (فارسی)
  * @author Hojjat (aka Huji)
  */
@@ -101,6 +109,13 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'randomrootpage'      => 'Náhodná koreňová stránka',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Špeciálna stránka]], ktorá zobrazuje náhodnú koreňovú stránku',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'randomrootpage' => 'Саҳифаи решавии тасодуфӣ',
 );
 
 /** Vietnamese (Tiếng Việt)

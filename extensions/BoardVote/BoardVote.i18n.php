@@ -1246,7 +1246,9 @@ Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.
  * @author Klenje
  */
 $messages['fur'] = array(
-	'boardvote_ip' => 'IP',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'Frache culì',
+	'boardvote_welcome'  => "Benvignût/Benvignude '''$1'''!",
 );
 
 /** Irish (Gaeilge)
@@ -2009,9 +2011,20 @@ to date. $1 før æ enkriptet data.</p>",
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'boardvote'       => 'Pemilihan Anggota Dewan Kapercayan Yayasan Wikimedia',
-	'boardvote_user'  => 'Panganggo',
-	'boardvote_edits' => 'Suntingan',
+	'boardvote'          => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
+	'boardvote-desc'     => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
+	'boardvote_entry'    => '* [[Special:Boardvote/vote|Coblos]]
+* [[Special:Boardvote/list|Daftar coblosan nganti saiki]]
+* [[Special:Boardvote/dump|Data pamilihan sing diènkripsi]]',
+	'boardvote_novotes'  => 'Durung ana sing nyoblos.',
+	'boardvote_time'     => 'Wektu',
+	'boardvote_user'     => 'Panganggo',
+	'boardvote_edits'    => 'Suntingan',
+	'boardvote_days'     => 'Dina',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'Kliken ing kéné',
+	'boardvote_submit'   => 'OK',
+	'boardvote_welcome'  => "Sugeng rawuh '''$1'''!",
 );
 
 /** Georgian (ქართული)
@@ -2314,6 +2327,7 @@ $messages['lb'] = array(
 <p>Liest w.e.g. d'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d'Verbreedung vu fräiem Wëssen aluet.</p>
 
 <p>Dir kënnt fir esou vill Kandidate stëmme wéi Dir wëllt. Déi zwéi Kandidate mat de meeschte Stëmme gewannen d'Wal. Sollt et dobäi zu engem Rampo kommen, kënnt et zu engem Ballottage.</p>",
+	'boardvote_intro_change' => "<p>Dir hutt schonn ofgestëmmt. Dir kënnt är Stëmm awer mat dem Formulaire ënnedrënner änneren. Klickt op d'Këschten niewent de Kandidaten fir déi Dir wiele wëllt.</p>",
 	'boardvote_entered'      => "Merci, är Stëmm gouf gespäichert.
 
 Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
@@ -2958,6 +2972,20 @@ $messages['pl'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Głosuj]]
 * [[Special:Boardvote/list|Pokaż listę głosów]]
 * [[Special:Boardvote/dump|Zrzut zakodowanych danych wyborów]]',
+	'boardvote_intro'        => '<p>Witamy na specjalnych wyborach do Rady Powierniczej Fundacji Wikimedia. 
+Wybieramy dwóch Wikipedystów, którzy mają reprezentować społeczności użytkowników różnych
+projektów Wikimedia. Pomogą oni w określeniu przyszłości projektów Wikimedia, 
+pojedynczych i wszystkich ogólnie, a także będą reprezentować <em>wasz</em> głos i wszelkie 
+sprawy w Radzie Powierniczej. Będą decydować jak zbierać pieniądze i w co je zainwestować.</p>
+
+<p>Prosimy o uważne przeczytanie oświadczeń kandydatów i odpowiedzi na wszelkie 
+pytania przed zagłosowaniem. Każdy z kandydatów jest cenionym użytkownikiem, który 
+poświęcił swój czas i chęci dla rozwijaniu projektów tak, aby dalej służyły wolnemu 
+rozpowszechnianiu ludzkiej wiedzy.<p>
+
+<p>Więcej informacji:</p>
+<ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006" class="external">FAQ wyborów</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/" class="external">Kandydaci</a></li></ul>',
 	'boardvote_intro_change' => '<p>Już głosowałeś w tych wyborach. Możesz jednak zmienić swoje głosy za pomocą poniższego formularza. Zaznacz kandydatów, na których głosujesz.</p>',
 	'boardvote_entered'      => 'Dziękujemy, twój głos został zapisany.
 
@@ -3991,6 +4019,55 @@ $messages['uk'] = array(
 Ви будете переадресовані на цей зовнішній сервер через 20 секунд. [$1 Клацніть сюди], щоб перейти туди прямо зараз.
 
 Може з'явитися попередження про непідписаний сертифікат.",
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'boardvote'              => 'Elezion del Consejo diretivo de la Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Elezion del Consejo diretivo Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
+* [[Special:Boardvote/list|Varda i voti epressi fin desso]]
+* [[Special:Boardvote/dump|Scarica i voti in forma cifrada]]',
+	'boardvote_intro_change' => '<p>Te ghè zà votà. Comunque te podi canbiar el to voto doparando el modulo qua soto. Par piaser spunta la casela de fianco de ognuno dei candicati che te vol sostegner.</p>',
+	'boardvote_entered'      => "El to voto el xe stà registrà. Grassie.
+
+Se te voli, te pol registrar i detagli del to voto, riportà de seguito:
+
+<pre>$1</pre>
+
+El voto el xe stà crità con la ciave publica de la comission eletoral:
+
+<pre>$2</pre>
+
+El voto espresso in forma cifrà el xe riportà de seguito. Se pol védarlo anca a l'indirizo [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Indrìo]]",
+	'boardvote_nosession'    => "No semo in grado de determinar el to ID utente Wikimedia. Par piaser, esegui el login nel progeto in cui te ghè i requisiti par votar, e và a la pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Te ghè de doparar un account con almanco $1 contributi prima de $2 e col primo contributo precedente a $3.
+
+Bisogna inpostar el proprio browser parché l'aceta i cookie dal nostro server de voto esterno: '''wikimedia.spi-inc.org'''.",
+	'boardvote_notloggedin'  => "Acesso mìa efetuà. Par esprìmar un voto bisogna verghe un'utenza che gabia efetuà almanco $1 contributi prima del $2; la prima modifica registrà la gà da èssar precedente al $3.",
+	'boardvote_notqualified' => 'No te ghè i requisiti necessari par votar in sta elezion. Bisogna necessariamente che te gavi $3 contributi prima de $2, e el to primo contributo el gà da èssar stà conpiù prima de $5.',
+	'boardvote_novotes'      => 'No gà gnancora votà nissuni.',
+	'boardvote_time'         => 'Data e ora',
+	'boardvote_user'         => 'Utente',
+	'boardvote_edits'        => 'Modifiche',
+	'boardvote_days'         => 'Giòrni',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'User agent',
+	'boardvote_dumplink'     => 'Struca qua',
+	'boardvote_submit'       => 'Va ben',
+	'boardvote_strike'       => 'Anula sto voto',
+	'boardvote_unstrike'     => 'Elimina anulamento',
+	'boardvote_edits_many'   => 'tanti',
+	'group-boardvote'        => 'Comission eletoral',
+	'group-boardvote-member' => 'Comissario eletoral',
+	'grouppage-boardvote'    => '{{ns:project}}:Comissario eletoral',
+	'boardvote_welcome'      => "Benvegnù '''$1'''!",
+	'go_to_board_vote'       => 'Elezion 2007 del Board de Wikimedia',
 );
 
 /** Vietnamese (Tiếng Việt)

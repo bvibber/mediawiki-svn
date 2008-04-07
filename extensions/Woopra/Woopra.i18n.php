@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'woopra-desc' => 'Allows for the [http://www.woopra.com/ Woopra Live Tracking Software] to work for your MediaWiki installation',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'woopra-desc' => 'Позволява работата на [http://www.woopra.com/ Woopra Live Tracking Software] в МедияУики',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

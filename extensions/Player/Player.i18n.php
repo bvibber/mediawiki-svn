@@ -509,6 +509,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'player-file'          => 'Номи парванда',
+	'player-not-found'     => 'парванда ёфт нашуд',
 	'player-invalid-title' => 'унвони номӯътабар',
 	'player-goto-page'     => 'Саҳифа',
 	'player-goto-file'     => 'парванда',

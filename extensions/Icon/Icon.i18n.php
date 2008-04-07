@@ -234,6 +234,7 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'icon-badimage' => 'Акси номуносиб',
+	'icon-badwidth' => 'Васеъии номуносиб',
 );
 
 /** Turkish (Türkçe)

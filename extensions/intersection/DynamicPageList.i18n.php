@@ -326,6 +326,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'intersection-desc'          => 'Zwraca listę wypunktowaną najnowszych elementów w kategorii lub grupie kilku kategorii',
 	'intersection_toomanycats'   => 'DynamicPageList: Zbyt wiele kategorii!',
 	'intersection_toofewcats'    => 'DynamicPageList: Zbyt mało kategorii!',
 	'intersection_noresults'     => 'DynamicPageList: Brak wyników!',

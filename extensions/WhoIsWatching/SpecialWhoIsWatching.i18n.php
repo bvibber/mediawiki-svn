@@ -54,6 +54,7 @@ $messages['avk'] = array(
 $messages['bg'] = array(
 	'whoiswatching'                => 'Кой наблюдава страница в уикито',
 	'specialwhoiswatchingthepage'  => 'Кой наблюдава %s',
+	'specialwhoiswatchingusage'    => 'Тази специална страница не може да се използва сама по себе си. Използвайте страницата [[MediaWiki:Number_of_watching_users_pageview]] за определяне на входната точка към тази специална страница.',
 	'specialwhoiswatchingaddusers' => 'Добавяне на потребители да наблюдават страницата',
 	'specialwhoiswatchingaddbtn'   => 'Добавяне на избраните потребители',
 );
@@ -287,5 +288,12 @@ $messages['te'] = array(
 	'specialwhoiswatchingusage'    => 'ఈ ప్రత్యేక పేజీని దానంతట అది ఉపయోగించటం కుదరదు. దయచేసి [[MediaWiki:Number_of_watching_users_pageview]] అనే పేజీని సృష్టించి, అక్కడి నుండి ఈ ప్రత్యేక పేజీకి మీకు కావలిసిన విధంగా లింకులను ఇవ్వండి.',
 	'specialwhoiswatchingaddusers' => 'ఈ పేజీని వీక్షించగలిగేటట్లు వాడుకరులను చేర్చండి',
 	'specialwhoiswatchingaddbtn'   => 'ఎంచుకున్న వాడుకరులను చేర్చు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 

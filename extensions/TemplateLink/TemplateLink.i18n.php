@@ -193,3 +193,11 @@ $messages['te'] = array(
 	'templatelink' => 'మూస లింకు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'templatelink'       => 'Пайванди Шаблон',
+	'templatelink_empty' => 'Шумо бояд параметре пешниҳод кунед.',
+);
+

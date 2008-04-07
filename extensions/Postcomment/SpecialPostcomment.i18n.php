@@ -292,8 +292,10 @@ $messages['tg-cyrl'] = array(
 	'postcomment_notloggedin'              => 'Шумо вуруд нашудаед.',
 	'postcomment_youareloggedinas'         => 'Шумо чун $1 вуруд шудаед',
 	'postcomment_addcommentdiscussionpage' => 'Тавзеҳоти худро дар ин саҳифаи баҳс илова кунед',
+	'postcomment_leavemessagefor'          => 'Гузоштани паём барои $1',
 	'postcomment_said'                     => 'гуфт',
 	'postcomment_invalidrequest'           => 'Дархости номӯътабар.',
+	'postcomment_replyto'                  => 'Посух ба $1',
 );
 
 /** Turkish (Türkçe)

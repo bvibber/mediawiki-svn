@@ -309,7 +309,9 @@ $messages['hsb'] = array(
 	'openidconvertsuccesstext'      => 'Sy swój OpenID wuspěšnje do $1 konwertował.',
 	'openidconvertyourstext'        => 'To je hižo twój OpenID.',
 	'openidconvertothertext'        => 'To je OpenID někoho druheho.',
-	'openidalreadyloggedin'         => '<strong>Wužiwar $1, sy hižo přizjewjeny!</strong>',
+	'openidalreadyloggedin'         => "'''Sy hižo přizjewjeny, $1!'''
+
+Jeli chceš OpenID wužiwać, hdyž přichodnje přizjewiš, móžeš [[Special:OpenIDConvert|swoje konto za wužiwanje OpenID konwertować]].",
 	'tog-hideopenid'                => 'Twój <a href="http://openid.net/">OpenID</a> na twojej wužiwarskej stronje schować, jeli so z OpenID přizjewješ.',
 	'openidlogininstructions'       => 'Zapodaj swój identifikator OpenID, zo by so přizjewił:',
 );

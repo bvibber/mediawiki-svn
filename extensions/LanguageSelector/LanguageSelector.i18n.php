@@ -398,9 +398,13 @@ $messages['tet'] = array(
 	'languageselector-setlang' => 'hili',
 );
 
-/** Tajik (Тоҷикӣ/tojikī) */
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ * @author Siebrand
+ */
 $messages['tg-cyrl'] = array(
-	'languageselector' => 'Забон',
+	'languageselector'      => 'Забон',
+	'languageselector-desc' => 'Забон интихобкунанда дар ҳар саҳифа, барои ташрифоварандагон низ',
 );
 
 /** Turkish (Türkçe)

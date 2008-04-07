@@ -339,7 +339,12 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'randomincategory-label' => 'Гурӯҳ:',
+	'randomincategory'            => 'Саҳифаи тасодуфӣ дар гурӯҳ',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Саҳифаи вижа]] барои гирифтани саҳифаи тасодуфӣ дар гурӯҳ',
+	'randomincategory-toolbox'    => 'Саҳифаи тасодуфӣ',
+	'randomincategory-nocategory' => 'Гурӯҳи $1 вуҷуд надорад ё холӣ аст',
+	'randomincategory-label'      => 'Гурӯҳ:',
+	'randomincategory-submit'     => 'Бирав',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -44,6 +44,16 @@ $messages['bg'] = array(
 	'sc_today'            => 'Днес',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'sc_previousmonth' => 'Miz a-raok',
+	'sc_nextmonth'     => 'Miz a zeu',
+	'sc_today'         => 'Hiziv',
+	'sc_gotomonth'     => "Mont d'ar miz",
+);
+
 /** German (Deutsch)
  * @author Krabina
  */
@@ -286,6 +296,7 @@ $messages['tg-cyrl'] = array(
 	'sc_previousmonth' => 'Моҳи қаблӣ',
 	'sc_nextmonth'     => 'Моҳи баъдӣ',
 	'sc_today'         => 'Имрӯз',
+	'sc_gotomonth'     => 'Рафтан ба моҳ',
 );
 
 /** Vietnamese (Tiếng Việt)

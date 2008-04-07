@@ -134,9 +134,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Masti
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'nstab-comments' => 'Komentarz',
+	'commentpages-desc' => 'Strony komentarzy w głównej przestrzeni nazw',
+	'nstab-comments'    => 'Komentarz',
 );
 
 /** Portuguese (Português)

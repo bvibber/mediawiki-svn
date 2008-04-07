@@ -484,6 +484,13 @@ $messages['te'] = array(
 	'call-save-failed'  => '<big>[[$1]]</big> అనే పేజీ ఈసరికే ఉన్నందువల్ల ఈ క్రింది పాఠ్యాన్ని అందులో భద్రపరచలేకపోయాం.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'call-save-success' => 'Матни зерин ба саҳифа <big>[[$1]]</big> захира шуд.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

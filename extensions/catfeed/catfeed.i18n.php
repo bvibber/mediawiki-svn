@@ -93,6 +93,13 @@ $messages['oc'] = array(
 	'catfeed-desc' => 'Utiliza de bits per alimentar las modificacions recentas. Crèa una version de pagina, fòrça practica per Wikinews.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'catfeed-desc' => 'Wykorzystując informacje z listy ostatnich zmian tworzy wersję umieszczaną wewnątrz treści strony. Szczególnie użyteczne dla Wikinews.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

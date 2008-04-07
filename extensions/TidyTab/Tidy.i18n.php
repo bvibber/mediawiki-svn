@@ -128,3 +128,11 @@ $messages['sv'] = array(
 	'tidy' => 'Städa',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'tidy'   => 'Муратаб',
+	'untidy' => 'Номуратаб',
+);
+

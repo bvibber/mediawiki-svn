@@ -32,7 +32,7 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'mibbit'        => 'Flap Mibbit',
 	'mibbit-desc'   => 'Ouzhpennañ a ra ur [[Special:Mibbit|bajenn zibar]] a dalvez da flapañ war-eeun gant implijerien all eus ar wiki',
-	'mibbit-header' => "A-drugarez d'ar bajenn zibar-mañ e c'hallit kenlabourat war-eeun gan timplijerien all eus ar wiki.
+	'mibbit-header' => "A-drugarez d'ar bajenn zibar-mañ e c'hallit kenlabourat war-eeun gant implijerien all eus ar wiki.
 Evit kevreañ, klikit war ar bouton \"Kevreañ\" zo bet rakleuniet.
 Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer met gallout a ra bezañ cheñchet.",
 );

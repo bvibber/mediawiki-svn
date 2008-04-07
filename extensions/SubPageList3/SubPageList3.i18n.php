@@ -167,6 +167,15 @@ $messages['te'] = array(
 	'spl3_nosubpages' => '$1లో చూపించాల్సిన ఉపపేజీలు ఏమీలేవు.',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'spl3-desc'       => 'Бо роҳи худкор феҳристи зерсаҳифаҳои саҳифаи барчасби <code><nowiki><splist /></nowiki></code> истифодабурдаро эҷод мекунад',
+	'spl3_debug'      => 'Қимати ношинос барои ихтиёри $1.',
+	'spl3_nosubpages' => '$1 дорои ҳеҷ зерсаҳифаҳое барои феҳристкунӣ нест.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

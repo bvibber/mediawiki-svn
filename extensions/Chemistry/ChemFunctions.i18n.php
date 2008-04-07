@@ -460,11 +460,22 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author McMonster
  */
 $messages['pl'] = array(
-	'chemFunctions_CAS'     => 'Numer CAS',
-	'chemFunctions_Formula' => 'Formuła',
+	'chemicalsources'                  => 'Źródła informacji z zakresu Chemii',
+	'chemicalsource-desc'              => 'Dodaje znacznik <nowiki><chemform></nowiki> służący do wstawiania wzorów chemicznych',
+	'chemFunctions_ListPage'           => 'Źródła informacji z zakresu Chemii',
+	'chemFunctions_DataList'           => 'Poniżej znajduje się lista linków do witryn, które mogą udostępniać informacje o substancji chemicznej, o której informacji szukasz.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Związek chemiczny $MIXCASNameFormula w NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Uniwersytecie Oksfordzkim w UK (brak wyszukiwania)</a><br />',
+	'chemFunctions_CAS'                => 'Numer CAS',
+	'chemFunctions_ATCCode'            => 'Kod ATC',
+	'chemFunctions_ECNumber'           => 'Numer EC',
+	'chemFunctions_Formula'            => 'Formuła',
+	'chemFunctions_Name'               => 'Nazwa IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Błąd danych wejściowych!',
 );
 
 /** Piemontèis (Piemontèis)

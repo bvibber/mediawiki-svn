@@ -1699,6 +1699,18 @@ $messages['tr'] = array(
 	'ogg-desc-link'         => 'Bu dosya hakkında',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ogg-play'       => 'Riprodusi',
+	'ogg-pause'      => 'Pausa',
+	'ogg-stop'       => 'Fèrma',
+	'ogg-play-video' => 'Varda el video',
+	'ogg-play-sound' => 'Scolta el file',
+	'ogg-dismiss'    => 'Sara',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

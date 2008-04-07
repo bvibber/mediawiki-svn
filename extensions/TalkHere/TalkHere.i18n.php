@@ -446,12 +446,19 @@ $messages['te'] = array(
 	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'talkhere-foottext'    => 'Тавзеҳоти дар боло оварда шуда аз тарафи ташрифовардагон чоп шудаанд.
+
+Шахсони муттасадии сомона бар дӯши худ масъулият барои мӯҳтавои чунин тавзеҳот гирифта наметавонанд.',
+	'talkhere-talkpage'    => 'саҳифаи баҳс',
+	'talkhere-notalk'      => "''(ҳанӯз тавзеҳот нест)''",
 	'talkhere-addcomment'  => 'илова кардани тавзеҳот',
 	'talkhere-beforeinput' => 'Шумо метавонед дар зер як тавзеҳ илова кунед',
+	'talkhere-loading'     => 'дар ҳоли боргирии вироишгар…',
+	'talkhere-collapse'    => 'пинҳон кардани вироишгар',
 );
 
 /** Turkish (Türkçe)

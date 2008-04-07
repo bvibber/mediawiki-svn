@@ -462,6 +462,10 @@ $messages['tg-cyrl'] = array(
 	'tasklistunspecuser'     => 'Корбари мушаххаснашуда',
 	'tasklistincorrectuser'  => 'Номи корбарии нодуруст',
 	'tasklistemail'          => 'Мӯҳтарам %s',
+	'tasklistmytasks'        => 'Вазифаҳои ман',
+	'tasklistbyprojname'     => "Вазифаҳои таъйин шуда барои '''%s'''",
+	'tasklistchooseproj'     => 'Интихоби Лоиҳа:',
+	'tasklistprojdisp'       => 'Намоиш',
 );
 
 /** Turkish (Türkçe)

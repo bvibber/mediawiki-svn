@@ -800,12 +800,15 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'contributors'          => 'Ҳиссагузорон',
-	'contributors-toolbox'  => 'Ҳиссагузорони асосӣ',
-	'contributors-legend'   => 'Ҳиссагузорони асосиро ба як саҳифа феҳрист кун',
-	'contributors-target'   => 'Унвон:',
-	'contributors-others'   => 'ва $1 дигарон',
-	'contributors-badtitle' => 'Унвони номӯътабар',
+	'contributors'             => 'Ҳиссагузорон',
+	'contributors-toolbox'     => 'Ҳиссагузорони асосӣ',
+	'contributors-legend'      => 'Ҳиссагузорони асосиро ба як саҳифа феҳрист кун',
+	'contributors-target'      => 'Унвон:',
+	'contributors-subtitle'    => 'Ҳиссагузоронӣ асосӣ ба $1',
+	'contributors-others-long' => '$1 нафар дигар ҳиссагузорон ба ин саҳифа ҳастанд.',
+	'contributors-others'      => 'ва $1 дигарон',
+	'contributors-badtitle'    => 'Унвони номӯътабар',
+	'contributors-nosuchpage'  => 'Саҳифаи $1 вуҷуд надорад.',
 );
 
 /** Thai (ไทย)

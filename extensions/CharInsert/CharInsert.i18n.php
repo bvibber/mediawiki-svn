@@ -129,6 +129,13 @@ $messages['oc'] = array(
 	'charinsert-desc' => 'Permet la creacion d’una boita JavaScript per [[MediaWiki:Edittools|l’insercion de caractèrs pas estandards]]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'charinsert-desc' => 'Umożliwia stworzenie z użyciem JavaScript ramki z linkami [[MediaWiki:Edittools|wstawiającymi niestandardowe znaki]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

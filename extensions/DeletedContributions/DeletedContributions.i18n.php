@@ -181,6 +181,13 @@ $messages['frp'] = array(
 	'deletedcontributions-desc' => 'Balye la possibilitât ux administrators de [[Special:DeletedContributions|visualisar les contribucions suprimâs d’un utilisator]].',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'deletedcontributions' => 'Contribûts dal utent eliminâts',
+);
+
 $messages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );
@@ -343,7 +350,8 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'deletedcontributions' => 'മായ്ക്കപ്പെട്ട ഉപയോക്തൃസംഭാവനകള്‍',
+	'deletedcontributions'      => 'മായ്ക്കപ്പെട്ട ഉപയോക്തൃസംഭാവനകള്‍',
+	'deletedcontributions-desc' => "ഉപയോക്താക്കളുടെ [[Special:DeletedContributions|മായ്ക്കപ്പെട്ട തിരുത്തലുകള്‍ കാണുവാനുള്ള]] സൗകര്യം '''സിസോപ്പിനു''' നല്‍കുക.",
 );
 
 /** Marathi (मराठी)

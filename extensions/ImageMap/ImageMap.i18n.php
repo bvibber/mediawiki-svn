@@ -494,11 +494,16 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'imagemap_no_image'      => '&lt;imagemap&gt;: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
-	'imagemap_no_link'       => '&lt;imagemap&gt;: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: $1-മത്തെ വരിയില്‍ അസാധുവായ തലക്കെട്ട്',
-	'imagemap_description'   => 'ഈ ചിത്രത്തെ കുറിച്ച്',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1-മത്തെ വരിയില്‍ അസാധുവായ തലക്കെട്ട്',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1-മത്തെ വരിയില്‍ രൂപത്തിനുള്ള നിര്‍ദ്ദേശാങ്കങ്ങള്‍ നിര്‍‌വചിച്ചിട്ടില്ല.',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1മത്തെ വരിയില്‍ മനസ്സിലാക്കാന്‍ പറ്റാത്ത രൂപം. ഓരോ വരിയും ഇനി പറയുന്ന ഒന്നു കൊണ്ടു വേണം തുടങ്ങാന്‍:default, rect, circle or poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: കുറഞ്ഞപക്ഷം ഒരു വിസ്തീര്‍ണ്ണ നിര്‍ദ്ദേശമെങ്കിലും കൊടുത്തിരിക്കണം',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1-മത്തെ വരിയില്‍ അസാധുവായ നിര്‍ദേശാങ്കം. നിര്‍ബന്ധമായും അത് ഒരു സംഖ്യയായിരിക്കണം.',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: അസാധുവായ വിവരണ നിര്‍ദ്ദേശം. ഇനി പറയുന്ന ഇനങ്ങളില്‍ ഒനായിരിക്കണം: <tt>$1</tt>',
+	'imagemap_description'        => 'ഈ ചിത്രത്തെ കുറിച്ച്',
 );
 
 /** Marathi (मराठी)

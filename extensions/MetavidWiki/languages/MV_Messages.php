@@ -2431,6 +2431,7 @@ $messages['tg-cyrl'] = array(
 	'mv_label_stream_name'        => 'Номи ҷараён',
 	'mv_label_stream_desc'        => 'Тавсифи ҷараён',
 	'add_stream_permission'       => 'Шумо иҷозати илова кардани ҷараёни ҷадидро надоред',
+	'mv_upload_file'              => 'Фиристодани парванда',
 	'mv_tool_search'              => 'Ҷустуҷӯ',
 	'ht_en'                       => 'Рӯнавишт',
 	'thomas_en'                   => 'Рӯнавишти расмӣ',

@@ -86,25 +86,29 @@ This page is only applicable to restricted users",
  * @author DCLXVI
  */
 $allMessages['bg'] = array(
-	'mywhitelistpages'        => 'Моите страници',
-	'whitelistfor'            => '<center>Текуща информация за <b>$1</b></center>',
-	'whitelisttablemodify'    => 'Промяна',
-	'whitelisttablemodifyall' => 'Всички',
-	'whitelisttableedit'      => 'Редактиране',
-	'whitelisttableview'      => 'Преглед',
-	'whitelisttablenewdate'   => 'Нова дата:',
-	'whitelisttableremove'    => 'Премахване',
-	'whitelistpagelist'       => 'Страници за $1 в {{SITENAME}}',
-	'whitelistbadtitle'       => 'Грешно заглавие -',
-	'whitelistoverviewcd'     => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
-	'whitelistoverviewrm'     => '* Премахване на достъпа до [[:$1|$1]]',
-	'whitelistrequest'        => 'Поискване на достъп до още страници',
-	'whitelistrequestmsg'     => '$1 пожела достъп до следните страници:
+	'mywhitelistpages'         => 'Моите страници',
+	'whitelistfor'             => '<center>Текуща информация за <b>$1</b></center>',
+	'whitelisttablemodify'     => 'Промяна',
+	'whitelisttablemodifyall'  => 'Всички',
+	'whitelisttablemodifynone' => 'Няма',
+	'whitelisttableexpires'    => 'Изтича на',
+	'whitelisttablemodby'      => 'Последна промяна от',
+	'whitelisttablemodon'      => 'Последна промяна на',
+	'whitelisttableedit'       => 'Редактиране',
+	'whitelisttableview'       => 'Преглед',
+	'whitelisttablenewdate'    => 'Нова дата:',
+	'whitelisttableremove'     => 'Премахване',
+	'whitelistpagelist'        => 'Страници за $1 в {{SITENAME}}',
+	'whitelistbadtitle'        => 'Грешно заглавие -',
+	'whitelistoverviewcd'      => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
+	'whitelistoverviewrm'      => '* Премахване на достъпа до [[:$1|$1]]',
+	'whitelistrequest'         => 'Поискване на достъп до още страници',
+	'whitelistrequestmsg'      => '$1 пожела достъп до следните страници:
 
 $2',
-	'whitelistrequestconf'    => 'Заявка за нови страници беше изпратена на $1',
-	'whitelistnever'          => 'никога',
-	'whitelistnummatches'     => ' - $1 съвпадения',
+	'whitelistrequestconf'     => 'Заявка за нови страници беше изпратена на $1',
+	'whitelistnever'           => 'никога',
+	'whitelistnummatches'      => ' - $1 съвпадения',
 );
 
 /** Catalan (Català)
@@ -712,6 +716,7 @@ $allMessages['tg-cyrl'] = array(
 	'whitelisttableremove'     => 'Ҳазф',
 	'whitelistnewtabledate'    => 'Таърихи Баинтиҳорасӣ:',
 	'whitelistnewtableprocess' => 'Раванд',
+	'whitelistnewtablereview'  => 'Пешнамоиш',
 	'whitelistbadtitle'        => 'Унвони номуносиб -',
 	'whitelistrequest'         => 'Ба саҳифаҳои бештар дастрасиро дархост кунед',
 	'whitelistrequestmsg'      => '$1 дастрасиро барои саҳифаҳои зерин дархост кард:
@@ -719,6 +724,7 @@ $allMessages['tg-cyrl'] = array(
 $2',
 	'whitelistrequestconf'     => 'Дархост барои саҳифаҳои ҷадид ба $1 фиристода шуд',
 	'whitelistnever'           => 'ҳеҷгоҳ',
+	'whitelistnummatches'      => ' - $1 мутобиқат мекунад',
 );
 
 /** Vietnamese (Tiếng Việt)

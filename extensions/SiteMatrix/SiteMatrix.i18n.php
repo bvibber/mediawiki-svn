@@ -334,7 +334,10 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'sitematrix'           => 'Liste di ducj i progjets Wikimedia',
+	'sitematrix-summary'   => 'Cheste pagjine speciâl e mostre ducj i progjets Wikimedia.',
 	'sitematrix-language'  => 'Lenghe',
+	'sitematrix-others'    => 'Altris progjets di Wikimedia',
+	'sitematrix-total'     => "'''Cont totâl: $1'''",
 	'sitematrix-sitetotal' => 'Totâl',
 );
 
@@ -523,6 +526,16 @@ $messages['jut'] = array(
 	'sitematrix-sitetotal' => 'I alt',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'sitematrix'          => 'Daftar wiki Wikimedia',
+	'sitematrix-summary'  => 'Kaca astaméwa utawa kusus iki ngandhut daftar kabèh wiki Wikimedia.',
+	'sitematrix-language' => 'Basa',
+	'sitematrix-others'   => 'Proyèk-proyèk liya Wikimedia',
+);
+
 $messages['ka'] = array(
 	'sitematrix-language' => 'ენა',
 );
@@ -593,6 +606,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'sitematrix'           => 'Lëscht vun de Wikimedia-Wikiën',
+	'sitematrix-summary'   => 'Op dëser Spezialsäit stinn all Wikimedia Wikien.',
 	'sitematrix-desc'      => 'Weis eng  [[Special:SiteMatrix|Lëscht vun de Wikimedia-Wikien]]',
 	'sitematrix-language'  => 'Sprooch',
 	'sitematrix-project'   => 'Numm vum Projet, Interprojet-Link an Interwiki-Link',
@@ -764,12 +778,13 @@ $messages['pag'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  * @author Siebrand
  */
 $messages['pl'] = array(
 	'sitematrix'           => 'Lista projektów Wikimedia',
+	'sitematrix-summary'   => 'Ta strona specjalna zawiera spis wszystkich wiki Wikimedia.',
 	'sitematrix-desc'      => 'Pokazuje [[Special:SiteMatrix|spis wiki Fundacji Wikimedia]]',
 	'sitematrix-language'  => 'Język',
 	'sitematrix-project'   => 'Nazwa projektu, link do projektu i link interwiki',

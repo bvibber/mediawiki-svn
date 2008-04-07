@@ -353,6 +353,13 @@ tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont
 	'expand_templates_preview'         => 'Prèvisualisacion',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'expand_templates_ok' => 'Va ben',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
@@ -682,9 +689,12 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'expandtemplates'                  => 'ഫലകങ്ങള്‍ വിപുലീകരിക്കുക',
+	'expand_templates_input'           => 'ഇന്‍പുട്ട് ടെക്സ്റ്റ്:',
 	'expand_templates_output'          => 'ഫലം',
+	'expand_templates_xml_output'      => 'XML ഔട്ട്പുട്ട്',
 	'expand_templates_ok'              => 'ശരി',
 	'expand_templates_remove_comments' => 'അഭിപ്രായങ്ങള്‍ ഒഴിവാക്കുക',
+	'expand_templates_generate_xml'    => 'XML പാര്‍സര്‍ ട്രീ പ്രദര്‍ശിപ്പിക്കുക',
 	'expand_templates_preview'         => 'പ്രിവ്യൂ',
 );
 
@@ -1102,6 +1112,14 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'expand_templates_generate_xml' => 'Показати дерево аналізу XML',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'expandtemplates'      => 'Espansion dei template',
+	'expandtemplates-desc' => "[[Special:ExpandTemplates|Espande i template, le funzion del parser e le variabili]] par mostrar el wikitesto espanso e visualizar n'anteprima de la pagina ne la so forma final",
 );
 
 /** Vietnamese (Tiếng Việt)

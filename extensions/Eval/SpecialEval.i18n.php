@@ -232,6 +232,16 @@ $messages['te'] = array(
 	'eval_code' => 'కోడు',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'eval_submit' => 'Арзёбӣ',
+	'eval_escape' => 'Раҳойи тавлид',
+	'eval_out'    => 'Тавлид',
+	'eval_code'   => 'Рамз',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

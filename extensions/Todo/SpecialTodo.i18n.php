@@ -487,10 +487,12 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'todo-new-queue'   => 'нав',
-	'todo-list-change' => 'Тағйир',
-	'todo-list-cancel' => 'Лағв',
-	'todo-new-item'    => 'Маводи ҷадид',
+	'todo-new-queue'        => 'нав',
+	'todo-unrecognize-type' => 'Навъи ношинос',
+	'todo-list-change'      => 'Тағйир',
+	'todo-list-cancel'      => 'Лағв',
+	'todo-new-item'         => 'Маводи ҷадид',
+	'todo-issue-summary'    => 'Хулосаи амал:',
 );
 
 /** Thai (ไทย)

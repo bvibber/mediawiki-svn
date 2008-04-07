@@ -442,7 +442,11 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'importfreeimages_owner' => 'Муаллиф',
+	'importfreeimages'                       => 'Ворид кардани Аксҳои Озод',
+	'importfreeimages_owner'                 => 'Муаллиф',
+	'importfreeimages_importthis'            => 'инро ворид кунед',
+	'importfreeimages_next'                  => 'Баъдӣ $1',
+	'importfreeimages_promptuserforfilename' => 'Лутфан номи парвандаи мақсадро ворид кунед:',
 );
 
 /** Vietnamese (Tiếng Việt)

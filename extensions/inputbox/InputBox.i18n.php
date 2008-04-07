@@ -931,9 +931,13 @@ $messages['uz'] = array(
 	'createarticle' => 'Maqola kiritish',
 );
 
-/** Vèneto (Vèneto) */
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
 $messages['vec'] = array(
-	'createarticle' => 'Crea voçe',
+	'tryexact'       => 'Çerca corispondenza precisa',
+	'searchfulltext' => 'Çerca nel testo',
+	'createarticle'  => 'Crea pagina',
 );
 
 /** Vietnamese (Tiếng Việt)

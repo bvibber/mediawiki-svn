@@ -39,6 +39,13 @@ $messages['bg'] = array(
 	'seealso-desc' => "Добавя възможност за използване на раздел 'Вижте също' с помощта на етикет <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Breton (Brezhoneg)
+ * @author SPQRobin
+ */
+$messages['br'] = array(
+	'seealso' => 'Gwelet ivez',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -232,6 +239,13 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'seealso'      => 'ఇవి కూడా చూడండి',
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> అనే టాగుని వాడడం ద్వారా స్థానికీకరించిన 'ఇవి కూడా చూడండి' శీర్షికలు",
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'seealso' => 'Нигаред низ',
 );
 
 /** Vietnamese (Tiếng Việt)

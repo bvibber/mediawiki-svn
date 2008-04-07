@@ -683,20 +683,36 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Wpedzich
+ * @author Sp5uhe
  * @author Equadus
+ * @author Wpedzich
  * @author McMonster
  */
 $messages['pl'] = array(
 	'changeauthor'                      => 'Zmień autora wersji',
 	'changeauthor-desc'                 => 'Pozwala na zmianę autora wersji',
-	'changeauthor-title'                => 'Zmień autora wersji',
-	'changeauthor-pagenameform-go'      => 'Idź',
+	'changeauthor-title'                => 'Zmiana autora wersji artykułu',
+	'changeauthor-search-box'           => 'Szukaj wersji',
+	'changeauthor-pagename-or-revid'    => 'Nazwa strony lub ID wersji:',
+	'changeauthor-pagenameform-go'      => 'Dalej',
 	'changeauthor-comment'              => 'Komentarz:',
-	'changeauthor-changeauthors-multi'  => 'Zmień autora / autorów',
+	'changeauthor-changeauthors-multi'  => 'Zmień autorów',
+	'changeauthor-explanation-multi'    => "Tutaj możesz zmienić autora wersji artykułu.
+Zmień jedną lub wiele nazw użytkowników na poniższej liście, dodaj komentarz (opcjonalny) i wciśnij przycisk 'Zmień autorów'.",
 	'changeauthor-changeauthors-single' => 'Zmień autora',
+	'changeauthor-explanation-single'   => "Tutaj możesz zmienić autora wersji artykułu.
+Zmień nazwę użytkownika na poniższej liście, dodaj komentarz (opcjonalny) i wciśnij przycisk 'Zmień autora'.",
 	'changeauthor-invalid-username'     => 'Niepoprawna nazwa użytkownika "$1".',
 	'changeauthor-nosuchuser'           => 'Brak użytkownika "$1".',
+	'changeauthor-revview'              => 'Wersja #$1 z $2',
+	'changeauthor-nosuchtitle'          => 'Brak strony "$1".',
+	'changeauthor-weirderror'           => 'Wystąpił nieznany błąd.
+Spróbuj powtórzyć polecenie.
+Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
+	'changeauthor-invalidform'          => 'Zamiast tej strony co zazwyczaj użyj Special:ChangeAuthor.',
+	'changeauthor-success'              => 'Twoje polecenie zostało wykonane z powodzeniem.',
+	'changeauthor-logentry'             => 'Zmieniono autora wersji $2, strony $1. Poprzedni autor $3, obecny $4.',
+	'changeauthor-logpagename'          => 'Rejestr zmiany autora',
 );
 
 /** Pashto (پښتو)

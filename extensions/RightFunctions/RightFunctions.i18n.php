@@ -24,6 +24,14 @@ $messages['ar'] = array(
 	'rightfunctions-restcasc' => '$1 (من المصادر المضمنة)',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'rightfunctions-restboth' => '$1 (от локална страница), $2 (от каскадни източници)',
+	'rightfunctions-restcasc' => '$1 (от каскадни източници)',
+);
+
 /** French (Français)
  * @author Grondin
  */

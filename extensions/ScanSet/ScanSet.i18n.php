@@ -379,6 +379,14 @@ $messages['km'] = array(
 	'scanset_prev' => '&lt; មុន',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'scanset_next' => 'Nächst &gt;',
+	'scanset_prev' => '&lt; Vireg',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias

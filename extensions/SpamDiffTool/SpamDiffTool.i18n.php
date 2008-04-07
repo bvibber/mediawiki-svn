@@ -474,8 +474,12 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'spamdifftool'             => 'Феҳристи сиёҳи харобкориро идора кунед',
-	'spamdifftool_option_none' => 'ҳеҷчиз',
+	'spamdifftool'                => 'Феҳристи сиёҳи харобкориро идора кунед',
+	'spamdifftool_cantedit'       => 'Бубахшед - шумо иҷозаи вироиши феҳристи сиёҳи ҳаразномаро надоред.',
+	'spamdifftool_spam_link_text' => 'ба ҳаразнома илова кунед',
+	'spamdifftool_option_none'    => 'ҳеҷчиз',
+	'spamdifftool_block'          => 'Бастан:',
+	'spamdifftool_submit_buttom'  => 'Ирсол',
 );
 
 /** Volapük (Volapük)

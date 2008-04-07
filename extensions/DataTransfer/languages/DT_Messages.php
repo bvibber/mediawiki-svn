@@ -479,6 +479,13 @@ $messages['sv'] = array(
 	'dt_xml_freetext'             => 'Fritext',
 );
 
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'dt_viewxml_categories' => 'பகுப்புகள்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

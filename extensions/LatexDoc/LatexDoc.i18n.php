@@ -357,8 +357,19 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'latexdoc_get_dvi' => 'Гирифтани DVI',
-	'latexdoc_get_pdf' => 'Гирифтани PDF',
+	'latexdoc_no_text'         => 'Саҳифаи дори матн нест, наметавон DVI тавлид кард',
+	'latexdoc_cant_create_dir' => 'Наметавон пӯшаи муваққатии $1 эҷод кард',
+	'latexdoc_cant_write'      => 'Наметавон ба парвандаи $1 навишт',
+	'latexdoc_error'           => 'Хатои LaTeX
+
+Фармон: $1
+
+Маҳсул: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Гирифтани DVI',
+	'latexdoc_get_pdf'         => 'Гирифтани PDF',
+	'latexdoc-desc'            => 'Вироиши ҳамдастии парвандаҳои LaTeX',
 );
 
 /** Volapük (Volapük)

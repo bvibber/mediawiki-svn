@@ -147,6 +147,7 @@ $messages['bg'] = array(
 	'webstore_temp_copy'               => 'Грешка при копиране на временния файл „$1“ като целеви файл „$2“.',
 	'webstore_temp_close'              => 'Грешка при затваряне на временния файл "$1".',
 	'webstore_temp_lock'               => 'Грешка при заключване на временния файл "$1".',
+	'webstore_no_archive'              => 'Целевият файл съществува и не е посочен архив.',
 	'webstore_no_file'                 => 'Не беше качен файл.',
 	'webstore_invalid_zone'            => 'Невалидна зона "$1".',
 	'webstore_no_deleted'              => 'Не е указана архивна директория за изтритите файлове.',
@@ -832,15 +833,16 @@ $1',
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'webstore_path_invalid'       => 'Номи парванда номӯътабар буд.',
-	'webstore_no_file'            => 'Ҳеҷ парвандае бор нашудааст.',
-	'webstore_invalid_zone'       => 'Ноҳияи номӯътабар "$1".',
-	'webstore_no_deleted'         => 'Ҳеҷ пӯшаи бойгонӣ барои парвандаҳои ҳазфшуда мушаххас нашудааст.',
-	'webstore_404'                => 'Парванда ёфт нашуд.',
-	'webstore_php_warning'        => 'Ҳушдори PHP: $1',
-	'webstore_metadata_not_found' => 'Парванда ёфт нашуд: $1',
-	'webstore_postfile_not_found' => 'Парванда барои фиристодан ёфт нашуд.',
-	'webstore_php_error'          => 'Хатоҳои PHP рух доданд:',
+	'inplace_scaler_not_enough_params' => 'Параметрҳо нокифоя.',
+	'webstore_path_invalid'            => 'Номи парванда номӯътабар буд.',
+	'webstore_no_file'                 => 'Ҳеҷ парвандае бор нашудааст.',
+	'webstore_invalid_zone'            => 'Ноҳияи номӯътабар "$1".',
+	'webstore_no_deleted'              => 'Ҳеҷ пӯшаи бойгонӣ барои парвандаҳои ҳазфшуда мушаххас нашудааст.',
+	'webstore_404'                     => 'Парванда ёфт нашуд.',
+	'webstore_php_warning'             => 'Ҳушдори PHP: $1',
+	'webstore_metadata_not_found'      => 'Парванда ёфт нашуд: $1',
+	'webstore_postfile_not_found'      => 'Парванда барои фиристодан ёфт нашуд.',
+	'webstore_php_error'               => 'Хатоҳои PHP рух доданд:',
 );
 
 /** Turkish (Türkçe)

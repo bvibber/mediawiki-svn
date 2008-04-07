@@ -264,6 +264,13 @@ $messages['tg-cyrl'] = array(
 	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'doublewiki-desc' => "Mostra na pagina e la so traduzion provegnente da n'altro sito wiki su do colone una in parte a l'altra",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

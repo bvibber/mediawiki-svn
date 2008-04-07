@@ -146,6 +146,7 @@ $messages['bg'] = array(
 	'regexblock-view-block-by'        => 'блокиран от',
 	'regexblock-view-block-unblock'   => 'отблокиране',
 	'regexblock-view-stats'           => '(статистика)',
+	'regexblock-view-time'            => 'на $1',
 );
 
 /** Catalan (Català)
@@ -976,17 +977,44 @@ $messages['tet'] = array(
 	'regexblock-view-go'        => 'Bá',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
-	'regexblock-form-username'  => 'Нишонаи IP ё номи корбарӣ:',
-	'regexblock-form-reason'    => 'Далел:',
-	'regexblock-block-log'      => "Номи корбарӣ ё нишонаи '''$1''' баста шуд.",
-	'regexblock-stats-username' => 'Барои $1',
-	'regexblock-view-go'        => 'Бирав',
-	'regexblock-view-reason'    => 'далел: $1',
-	'regexblock-view-time'      => 'дар $1',
+	'regexblock-unblock-success'      => 'Боз кардан аз бастан муваффақ шуд',
+	'regexblock-unblock-log'          => "Номи корбарӣ ё нишонаи IP '''$1''' аз бастан боз шуд.",
+	'regexblock-unblock-error'        => 'Хато дар боз кардани $1.
+Эҳтимолан чунин корбаре нест.',
+	'regexblock-form-username'        => 'Нишонаи IP ё номи корбарӣ:',
+	'regexblock-form-reason'          => 'Далел:',
+	'regexblock-form-match'           => 'Мутобиқати дақиқ',
+	'regexblock-form-account-block'   => 'Эҷоди бастани ҳисобҳои ҷадид',
+	'regexblock-form-submit'          => 'Бастани&nbsp;ин&nbsp;Корбар',
+	'regexblock-block-log'            => "Номи корбарӣ ё нишонаи '''$1''' баста шуд.",
+	'regexblock-block-success'        => 'Бастан муваффақ шуд',
+	'regexblock-form-submit-empty'    => 'Барои бастан номи корбарӣ ё нишонаи IP диҳед.',
+	'regexblock-form-submit-regex'    => 'Ибораи оддии номӯътабар.',
+	'regexblock-form-submit-expiry'   => 'Лутфан давраи ба хотимарасиро мушаххас кунед.',
+	'regexblock-already-blocked'      => '"$1" аллакай баста шудааст.',
+	'regexblock-stats-title'          => 'Омори Бастани Regex',
+	'regexblock-stats-username'       => 'Барои $1',
+	'regexblock-stats-times'          => 'басташуда буд дар',
+	'regexblock-stats-logging'        => 'вурудшави аз нишонаи',
+	'regexblock-currently-blocked'    => 'Нишонаҳои басташудаи кунунӣ:',
+	'regexblock-view-all'             => 'Ҳама',
+	'regexblock-view-go'              => 'Бирав',
+	'regexblock-view-match'           => '(мутобиқати дақиқ)',
+	'regexblock-view-account'         => '(бастани эҷоди ҳисоби ҷадид)',
+	'regexblock-view-reason'          => 'далел: $1',
+	'regexblock-view-reason-default'  => 'далели умумӣ',
+	'regexblock-view-block-infinite'  => 'бастани доимӣ',
+	'regexblock-view-block-temporary' => 'сипарӣ мешавад дар',
+	'regexblock-view-block-by'        => 'баста шуд тавассути',
+	'regexblock-view-block-unblock'   => 'боз кардан',
+	'regexblock-view-stats'           => '(омор)',
+	'regexblock-view-empty'           => 'Феҳристи номҳо ва нишонаҳои баста шуда холӣ аст.',
+	'regexblock-view-time'            => 'дар $1',
 );
 
 /** Vietnamese (Tiếng Việt)

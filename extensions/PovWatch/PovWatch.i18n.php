@@ -585,7 +585,8 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'povwatch_title' => 'Унвон:',
+	'povwatch_unknown_subpage' => 'Зерсаҳифаи ношинос.',
+	'povwatch_title'           => 'Унвон:',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -988,8 +988,17 @@ $messages['ur'] = array(
 	'newuserlog-create-entry'  => 'صارف جدید',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ * @author Robbot
+ */
 $messages['vec'] = array(
+	'newuserlogpage'           => 'Registro utenti novi',
 	'newuserlogpagetext'       => 'Questo xè el log dei novi utenti registrai',
+	'newuserlog-desc'          => 'Zontae un [[Special:Log/newusers|registro dei utenti creà]] a la [[Special:Log|pagina dei registri]]',
+	'newuserlog-byemail'       => 'password spedìa par e-mail',
+	'newuserlog-create-entry'  => 'se gà registrà',
+	'newuserlog-create2-entry' => 'ga registrà el nome utente $1',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -76,6 +76,7 @@ $messages['bcl'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
+	'duplicator-desc'                  => 'Създава независими копия на страниците с оълните им редакционни истории',
 	'duplicator-options'               => 'Настройки',
 	'duplicator-source'                => 'Източник:',
 	'duplicator-dest'                  => 'Цел:',

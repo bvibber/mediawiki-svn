@@ -403,6 +403,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'edituser'          => 'Вироиш кардани Корбар',
+	'edituser-logout'   => 'Берун кардани корбар',
 	'edituser-username' => 'Ном',
 	'edituser-dosearch' => 'Ҷустуҷӯ',
 	'edituser-nouser'   => 'Корбари мушаххасшуда вуҷуд надорад',

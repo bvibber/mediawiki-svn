@@ -39,6 +39,13 @@ $messages['nl'] = array(
 	'htmlets-desc' => 'Voegt de tag <tt><nowiki><htmlet></nowiki></tt> toe om HTML snippets uit bestanden te kunnen gebruiken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'htmlets-desc' => 'Lar deg bruke HTML-fragmenter fra filer ved bruk av taggen <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

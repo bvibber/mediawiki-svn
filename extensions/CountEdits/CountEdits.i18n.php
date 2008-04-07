@@ -754,10 +754,12 @@ $messages['tet'] = array(
 	'countedits-nocontribs' => 'Ema lá\'os kintribui iha wiki ne\'e.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'countedits-warning'      => "'''Ҳушдор:''' Ба китобро аз рӯи муқовааш баҳо надиҳед.
+Ба ҳиссагузорон аз рӯи теъдоди вироишашон баҳо надиҳед.",
 	'countedits-username'     => 'Номи корбарӣ:',
 	'countedits-nosuchuser'   => 'Корбаре бо номи $1 вуҷуд надорад.',
 	'countedits-resultheader' => 'Натоиҷ барои $1',

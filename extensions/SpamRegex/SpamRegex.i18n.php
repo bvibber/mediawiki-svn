@@ -440,8 +440,10 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'spamregex-text'        => '(Матн)',
-	'spamregex-summary-log' => '(Хулоса)',
+	'spamregex-error-1'         => 'Ибораи оддии номӯътабар',
+	'spamregex-already-blocked' => '"$1" аллакай баста шудааст',
+	'spamregex-text'            => '(Матн)',
+	'spamregex-summary-log'     => '(Хулоса)',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1320,10 +1320,16 @@ Podobnym poleceniem jest "$2".',
 	'math_MismatchedBeginAndEnd'            => 'Polecenia "$1" i "$2" nie pasują',
 	'math_MisplacedLimits'                  => 'Polecenie "$1" może wystąpić tylko po operatorze matematycznym.
 Zaleca sie skorzystanie z "\\mathop".',
+	'math_MissingCommandAfterNewcommand'    => 'Brakująca lub nieprawidłowa nazwa nowego polecenia za "\\newcommand".
+Musi to być definicja dokładnie jednego polecenia,
+zaczynać się od ukośnika lewego "\\" i zawierać wyłącznie litery.',
 	'math_MissingDelimiter'                 => 'Brak separatora po "$1"',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Brakujący nawias otwierający "{" na końcu wejścia',
 	'math_MissingOpenBraceBefore'           => 'Brakujący nawias otwierający "{" przed "$1"',
+	'math_MissingOrIllegalParameterCount'   => 'Brakujący lub nieprawidłowy licznik ilości parametrów w definicji "$1".
+Musi to być pojedyncza cyfra z zakresu od 1 do 9 włącznie.',
+	'math_MissingOrIllegalParameterIndex'   => 'Brakujący lub nieprawidłowy indeks parametru w definicji "$1".',
 	'math_NonAsciiInMathMode'               => 'Znaki spoza ASCII mogą być użyte jedynie w trybie tekstowym (spróbuj zamknąć znaki w "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Zbyt mało argumentów dla "$1"',
 	'math_PngIncompatibleCharacter'         => 'Nie można poprawnie wygenerować pliku PNG zawierającego znak $1',
@@ -1786,6 +1792,29 @@ $messages['tg-cyrl'] = array(
 	'math_MissingOpenBraceBefore'           => 'Қафси кушоди нопадид "{" пеш аз "$1"',
 	'math_MissingOrIllegalParameterCount'   => 'Параметри шумори нопадид ё номӯътабар дар таърифи "$1".
 Бояд адади шомили танхо байни 1 ва 9 бошад.',
+	'math_MissingOrIllegalParameterIndex'   => 'Параметри индекси гумшуда ё ғайримиҷоз дар таърифи "$1"',
+	'math_NonAsciiInMathMode'               => 'Аломатҳои ғайри-ASCII метавонанд танҳо дар тарзи матнӣ истифода шаванд
+Ба миён гузоштани аломатҳои мушкил кӯшиш кунед "\\text{...}".',
+	'math_NotEnoughArguments'               => 'Мунозираи нокифоя барои "$1" пешниҳод шудааст',
+	'math_PngIncompatibleCharacter'         => 'Наметавон дурурст PNG-и аломати $1 доштаро тавлид кард',
+	'math_ReservedCommand'                  => 'Фармони "$1" барои истифодаи дохилӣ тавассути blahtex банд карда шудааст',
+	'math_SubstackRowTooBig'                => 'Танҳо як мудохила метавонад дар ҳар қатори блоки "зертӯда" бошад',
+	'math_TooManyMathmlNodes'               => 'Теъдоди хеле зиёди гиреҳҳо дар шохаи MathML',
+	'math_TooManyTokens'                    => 'Вуруди хеле дароз аст',
+	'math_UnavailableSymbolFontCombination' => 'Аломати "$1" дар ҳуруфи "$2" дастрас нест',
+	'math_UnexpectedNextCell'               => 'Фармони "&" метавонад танҳо байни блоки "\\begin ... \\end" намоён шавад',
+	'math_UnexpectedNextRow'                => 'Фармони "\\\\" метавонад танҳо байни блоки "\\begin ... \\end" намоён шавад',
+	'math_UnmatchedBegin'                   => 'Бархӯрд бо "\\begin" бидуни мутобиқат бо "\\end"',
+	'math_UnmatchedCloseBrace'              => 'Бархӯрд бо қафси пӯшида "}" бидуни мутобиқат бо қафси кушода "{"',
+	'math_UnmatchedEnd'                     => 'Бархӯрд бо "\\end" бидуни мутобиқат бо "\\begin"',
+	'math_UnmatchedLeft'                    => 'Бархӯрд бо "\\left" бидуни мутобиқат бо "\\right"',
+	'math_UnmatchedOpenBrace'               => 'Бархӯрд бо қафси кушод "{" бидуни мутобиқат бо қафси пӯшида "}"',
+	'math_UnmatchedOpenBracket'             => 'Бархӯрд бо қолаби кушод "[" бидуни мутобиқат бо қолаби пӯшида "]"',
+	'math_UnmatchedRight'                   => 'Бархӯрд бо "\\right" бидуни мутобиқат бо "\\left',
+	'math_UnrecognisedCommand'              => 'Фармони ношиноси "$1"',
+	'math_WrongFontEncoding'                => 'Аломати "$1" наметавонад дар рамзгузории ҳуруфи "$2" намоён шавад',
+	'math_WrongFontEncodingWithHint'        => 'Аломати "$1" наметавонад дар рамзгузории ҳуруфи "$2" намоён шавад.
+Ба истифодаи фармони "$3{...}" кӯшиш кунед.',
 );
 
 /** Thai (ไทย)

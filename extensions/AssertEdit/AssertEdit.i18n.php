@@ -418,6 +418,15 @@ $messages['uk'] = array(
 	'assert_edit_message' => 'Зазначене твердження ($1) не виконується.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'assert_edit_title'   => 'Asserzion mìa riussìa',
+	'assert_edit_desc'    => 'Zonta asserzion de modifica ad uso dei bot',
+	'assert_edit_message' => "L'asserzion indicà ($1) no la xe riussìa.",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

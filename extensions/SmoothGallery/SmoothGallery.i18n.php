@@ -112,7 +112,7 @@ $messages['hsb'] = array(
 	'smoothgallery-gallery-not-found'   => 'Požadana galerija njeeksistuje.',
 	'smoothgallery-not-found'           => 'Žane wobrazy njebuchu ke galeriji přidate. Prošu přidaj znajmjeńša jedyn wobraz.',
 	'smoothgallery-no-images'           => 'W tutej galeriji njebuchu wobrazy namakane. Zawěsć, zo wšě wobrazy eksistuja. Slědowace wobrazy njebuchu namakane: $1',
-	'smoothgallery-invalid-images'      => 'Slědowace požadane wobrazy maja njepłaćiwy typ:',
+	'smoothgallery-invalid-images'      => 'Slědowace požadane wobrazy maja njepłaćiwy typ: $1',
 	'smoothgallery-unexpected-error'    => 'Běše njewočakowany zmylk. Prošu spisaj zmylkowu rozprawu.',
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );

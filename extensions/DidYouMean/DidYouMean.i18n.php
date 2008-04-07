@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'didyoumean-desc' => 'Adds links to pages with "similar" titles',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'didyoumean-desc' => 'Добавя препратки към страници със „подобни” заглавия',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

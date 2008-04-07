@@ -363,6 +363,7 @@ $messages['fur'] = array(
 	'bookinfo-header'        => 'Informazions sui libris',
 	'bookinfo-result-title'  => 'Titul:',
 	'bookinfo-result-author' => 'Autôr:',
+	'bookinfo-result-year'   => 'An:',
 );
 
 /** Galician (Galego)
@@ -1100,6 +1101,24 @@ $messages['uk'] = array(
 	'bookinfo-error-noresponse'  => 'Нема відповіді або перевищений час очікування відповіді.',
 	'bookinfo-purchase'          => 'Купити цю книгу на $1',
 	'bookinfo-provider'          => 'Постачальник інформації: $1',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'bookinfo-header'            => 'Informazion sui libri',
+	'bookinfo-desc'              => 'Zonta a [[Special:Booksources]] informazion provenienti da un servizio Web',
+	'bookinfo-result-title'      => 'Titolo:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Ano:',
+	'bookinfo-error-invalidisbn' => 'Codice ISBN sbaglià.',
+	'bookinfo-error-nosuchitem'  => "L'elemento no l'esiste o no s'à podù catarlo.",
+	'bookinfo-error-nodriver'    => 'Impossibile inizializar un driver coreto par le Informazion sui libri.',
+	'bookinfo-error-noresponse'  => 'Mancata risposta o risposta assente.',
+	'bookinfo-purchase'          => 'Cronpa el libro presso: $1',
+	'bookinfo-provider'          => 'Dati tirà fora da: $1',
 );
 
 /** Vietnamese (Tiếng Việt)

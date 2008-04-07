@@ -347,6 +347,8 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'findspam'             => 'Ёфтани ҳаразнома',
+	'findspam-desc'        => '[[Special:FindSpam|Саҳифаи вижаеро]] илова мекунад, ки имкони дарёфти ҳаразномаи батозагӣ иловашударо медиҳад',
 	'findspam-ip'          => 'Нишонаи IP:',
 	'findspam-notextfound' => 'Ҳеҷ ҳиссагузорие ёфт нашуд',
 );

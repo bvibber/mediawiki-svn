@@ -515,13 +515,19 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'formnonametext'        => 'Шумо бояд номи формро, ба монанди "Special:Form/Nameofform" пешниҳод кунед.',
-	'formbadname'           => 'Номи форми номуносиб',
-	'formtitlepattern'      => 'Илова $1и нав',
-	'formsave'              => 'Захира кардан',
-	'formarticleexists'     => 'Саҳифа вуҷуд дорад',
-	'formarticleexiststext' => 'Саҳифа [[$1]] аллакай вуҷуд дорад.',
-	'formbadpagename'       => 'Номи саҳифа номуносиб',
+	'formnonametext'               => 'Шумо бояд номи формро, ба монанди "Special:Form/Nameofform" пешниҳод кунед.',
+	'formbadname'                  => 'Номи форми номуносиб',
+	'formbadnametext'              => 'Ҳеҷ форме бо он ном нест.',
+	'formtitlepattern'             => 'Илова $1и нав',
+	'formsave'                     => 'Захира кардан',
+	'formarticleexists'            => 'Саҳифа вуҷуд дорад',
+	'formarticleexiststext'        => 'Саҳифа [[$1]] аллакай вуҷуд дорад.',
+	'formbadpagename'              => 'Номи саҳифа номуносиб',
+	'formbadpagenametext'          => 'Додаи форме, ки шумо ворид кардаед номи номуносибе ба саҳифа, "$1" мекунад.',
+	'formrequiredfieldpluralerror' => 'Ноҳияҳои $1 дар ин форм заруранд.
+Лутфон онҳоро пур кунед.',
+	'formsaveerror'                => 'Хато дар ҳоли захираи форм',
+	'formsaveerrortext'            => "Дар ҳоли захираи саҳифаи '$1' хатои ношиносе буд.",
 );
 
 /** Thai (ไทย)

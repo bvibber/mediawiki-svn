@@ -567,20 +567,45 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'review_sidebar_title'          => 'Gå gjennom',
-	'review_sidebar_explanation'    => 'Den venstre avmerkingsboksen betyr alltid «ingen mening».',
-	'review_error'                  => 'Noe er feil!',
-	'review_total_statistics'       => 'Totalt',
-	'review_statistics_left_corner' => 'Revisjon',
-	'review_version_link'           => 'Revisjon #$1',
-	'review_statistic_cell'         => 'Gjennomsnitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
-	'review_version_statistic_cell' => '$1 av $2',
-	'review_user_details_link'      => '(detaljer)',
-	'review_blocked'                => 'Du er blokkert, gå vekk.',
-	'review_topic'                  => 'Emne',
-	'review_no_opinion'             => 'Ingen mening',
-	'review_rating'                 => 'Vurdering',
-	'review_comment'                => 'Kommentar',
+	'review_sidebar_title'                                   => 'Gå gjennom',
+	'review-desc'                                            => 'Den gjenoppståtte [[Special:Review|valideringsfunksjonen]].',
+	'review_topics'                                          => '# Følgende er en liste over emner og verdier for valideringsutvidelse.
+# Hvert emne defineres av en linje på fem verdier, skilt fra hverandre med «:» (alle andre linjer ignoreres).
+# Rekkeølgen er: Numerisk verdi (>0), navn, maksimum verdi (>1; 2=yes/no), betydning av laveste verdi (f.eks. «dårlig»), betydning av høyeste verdi (f.eks. «bra»).
+1:Kvalitet:5:dårlig:bra
+2:Klar for 1.0:2:no:yes',
+	'review_topic_page'                                      => 'Gjennomgangsemner',
+	'review_sidebar_explanation'                             => 'Den venstre avmerkingsboksen betyr alltid «ingen mening».',
+	'review_save'                                            => 'Lagre gjennomgang',
+	'review_your_review'                                     => 'Din gjennomgang av denne siden/revisjonen:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Du har allerede gått gjennom andre versjoner av denne siden. De andre vurderingene dine vil slås sammen med denne der du har valgt «ingen mening».',
+	'review_page_link'                                       => 'gjennomgangsstatistikk',
+	'review_sidebar_final'                                   => 'For gjennomgangsinformasjon om denne siden, se $1',
+	'review_for_page'                                        => 'Gjennomgang av siden «$1»',
+	'review_for_user'                                        => 'Gjennomgang av brukeren «$1»',
+	'review_error'                                           => 'Noe er feil!',
+	'review_no_reviews_for_page'                             => 'Det er ingen nåværende gjennomganger av «$1».',
+	'review_total_statistics'                                => 'Totalt',
+	'review_statistics_left_corner'                          => 'Revisjon',
+	'review_version_link'                                    => 'Revisjon #$1',
+	'review_statistic_cell'                                  => 'Gjennomsnitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_version_statistic_cell'                          => '$1 av $2',
+	'review_version_reviews_link'                            => '<small>(versjonsgjennomganger)</small>',
+	'review_concerns_page'                                   => 'Denne gjennomgangen gjelder siden «$1».',
+	'review_concerns_user'                                   => 'Dette er om gjennomganger av brukeren «$1».',
+	'review_user_reviews'                                    => '<small>(gjennomganger av denne brukeren)</small>',
+	'review_user_page_list'                                  => 'Brukeren har gjennomgått følgende sider:',
+	'review_user_details_link'                               => '(detaljer)',
+	'review_do_merge'                                        => 'Slå sammen mine gjennomganger av andre revisjoner av denne siden med denne',
+	'review_has_been_stored'                                 => '<span id="review_has_been_stored">Gjennomgangen din har blitt lagret!</span>',
+	'revision_review_this_page_version_link'                 => 'Gå gjennom denne versjonen av siden.',
+	'review_page_review'                                     => 'Gjennomgang av siden «$1»',
+	'review_blocked'                                         => 'Du er blokkert, gå vekk.',
+	'review_wrong_namespace'                                 => 'Kan ikke gå gjennom sider i dette navnerommet.',
+	'review_topic'                                           => 'Emne',
+	'review_no_opinion'                                      => 'Ingen mening',
+	'review_rating'                                          => 'Vurdering',
+	'review_comment'                                         => 'Kommentar',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -845,14 +870,17 @@ $messages['te'] = array(
 	'review_comment'                         => 'వ్యాఖ్య',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'review_sidebar_title'          => 'Пешнамоиш',
 	'review_topic_page'             => 'Бозбинии унвонҳо',
 	'review_save'                   => 'Захираи натиҷаи бозбини',
 	'review_page_link'              => 'омори бозбиниҳо',
 	'review_version_statistic_cell' => '$1 аз $2',
+	'review_blocked'                => 'Шумо баста шудаед, равед.',
+	'review_comment'                => 'Тавзеҳ',
 );
 
 /** Vietnamese (Tiếng Việt)

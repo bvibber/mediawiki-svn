@@ -482,6 +482,14 @@ $messages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'sitenotice_close' => 'scondi',
+	'sitenotice-desc'  => 'Permete ai utenti de sarar el sitenotice',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -67,6 +67,13 @@ $messages['bg'] = array(
 	'youtubeauthsub_category'            => 'Категория',
 	'youtubeauthsub_submit'              => 'Изпращане',
 	'youtubeauthsub_clickhere'           => 'Щракнете тук за влизане в YouTube',
+	'youtubeauthsub_success'             => "Поздравления!
+Видеото беше качено.
+Можете да прегледате видеото <a href='http://www.youtube.com/watch?v=$1'>тук</a>.
+Възможно е YouTube да имат нужда от известно време за обработка на видеото, затова е възможно то все още да е недостъпно.
+
+За включване на видеото в страница от уикито е необходимо да се вмъкне следният код в страницата:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'За качване на видео е необходимо влизане в YouTube.',
 	'youtubeauthsub_uploadbutton'        => 'Качване',
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
@@ -76,6 +83,44 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nokeywords'  => 'Необходимо е да се въведе една или повече ключови думи.',
 	'youtubeauthsub_jserror_notitle'     => 'Необходимо е да се въведе заглавие на видеото.',
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'youtubeauthsub'                     => 'Enporzhiañ ur video YouTube',
+	'youtubeauthsub-desc'                => 'Aotren a ra an implierien da [[Special:YouTubeAuthSub|enprozhiañ videoioù]] war-eeun war YouTube',
+	'youtubeauthsub_info'                => 'Evit enporzhiañ ur video war YouTube a-benn e lakaat war ur bajenn, merkit an titouroù da-heul :',
+	'youtubeauthsub_title'               => 'Titl',
+	'youtubeauthsub_description'         => 'Deskrivadenn',
+	'youtubeauthsub_password'            => 'Ger-tremen YouTube',
+	'youtubeauthsub_username'            => 'Anv implijer YouTube',
+	'youtubeauthsub_keywords'            => "Gerioù alc'hwez",
+	'youtubeauthsub_category'            => 'Rummad',
+	'youtubeauthsub_submit'              => 'Kas',
+	'youtubeauthsub_clickhere'           => "Klikañ amañ d'en em lugañ ouzh YouTube",
+	'youtubeauthsub_tokenerror'          => 'Fazi e-ser krouiñ an aotre, klaskit freskaat ar bajenn.',
+	'youtubeauthsub_success'             => "Gourc'hemennoù!
+Enporzhiet eo bet ho video.
+Evit sellet ouzh ho video, klikit <a href='http://www.youtube.com/watch?v=$1'>amañ</a>.
+Un tamm amzer en deus ezhomm YouTube evit kargañ ho video, setu marteze n'eo ket prest diouzhtu c'hoazh.
+
+Evit enframmañ ho video en ur bajenn eus ar wiki, lakait enni ar c'hod da-heul :
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => "A-raok enporzhiañ ur video e vo ret deoc'h kevreañ ouzh YouTube.",
+	'youtubeauthsub_uploadhere'          => 'Enporzhiit ho video eus amañ :',
+	'youtubeauthsub_uploadbutton'        => 'Enporzhiañ',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Gallout a reer sellet ouzh ar video-mañ [http://www.youtube.com/watch?v=$1 amañ]',
+	'youtubeauthsub_summary'             => 'Enporzhiañ ur video YouTube',
+	'youtubeauthsub_uploading'           => 'Emeur o kargañ ho video. 
+Un tamm pasianted mar plij.',
+	'youtubeauthsub_viewpage'            => "A-hend-all e c'hallit sellet ouzh ho video [[$1|amañ]].",
+	'youtubeauthsub_jserror_nokeywords'  => 'Lakait ur ger-tremen pe meur a hini.',
+	'youtubeauthsub_jserror_notitle'     => 'Lakait un titl evit ar video mar plij',
+	'youtubeauthsub_jserror_nodesc'      => 'Lakait un deskrivadur evit ar video mar plij',
 );
 
 /** Catalan (Català)
@@ -563,14 +608,17 @@ Var tålmodig.',
  */
 $messages['tg-cyrl'] = array(
 	'youtubeauthsub'                     => 'Навореро ба YouTube боргузорӣ кунед',
+	'youtubeauthsub-desc'                => 'Ба корбарон имкони бевосита [[Special:YouTubeAuthSub|боргузори кардани наворҳоро]] ба YouTube медиҳад',
+	'youtubeauthsub_info'                => 'Барои боргузори кардани наворе ба YouTube барои шомиле саҳифе кардан, иттилооте зеринро пур кунед:',
 	'youtubeauthsub_title'               => 'Унвон',
 	'youtubeauthsub_description'         => 'Тавсифот',
 	'youtubeauthsub_password'            => 'YouTube Гузарвожа',
 	'youtubeauthsub_username'            => 'YouTube Номи корбарӣ',
 	'youtubeauthsub_keywords'            => 'Калидвожаҳо',
 	'youtubeauthsub_category'            => 'Гурӯҳ',
-	'youtubeauthsub_submit'              => 'Гурӯҳ',
+	'youtubeauthsub_submit'              => 'Ирсол',
 	'youtubeauthsub_clickhere'           => 'Барои вуруд шудан ба YouTube инҷо клик кунед',
+	'youtubeauthsub_tokenerror'          => 'Дар тавлиди иҷозаи рамзӣ бо хатое бархӯрд, саҳифаро аз нав бор кунед.',
 	'youtubeauthsub_success'             => "Табрик!
 Навори шумо боргузорӣ шуд.
 Барои дидани наворатон <a href='http://www.youtube.com/watch?v=$1'>инҷо</a> клик кунед.

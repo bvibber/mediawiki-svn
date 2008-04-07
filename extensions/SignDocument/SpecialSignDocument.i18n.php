@@ -231,6 +231,7 @@ $messages['bg'] = array(
 	'sign-bday'                    => 'Възраст:',
 	'sign-email'                   => 'Адрес за е-поща:',
 	'sign-indicates-req'           => '<small><i><font color="red">*</font> задължително поле</i></small>',
+	'sign-view-selectfields'       => '<b>Полета за показване:</b>',
 	'sign-viewfield-realname'      => 'Име',
 	'sign-viewfield-address'       => 'Адрес',
 	'sign-viewfield-city'          => 'Град',

@@ -348,7 +348,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'parserdifftest'      => 'Test rozdźělow parsera',
-	'pdtest-desc'         => 'Specialna strona za přirunanje wudaća dweju rozdźělneju parserow.',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Specialna strona]] za přirunanje wudaća dweju rozdźělneju parserow',
 	'pdtest_no_target'    => 'Žadyn cil podaty.',
 	'pdtest_page_missing' => 'Podata strona njebu w datowej bance namakana.',
 	'pdtest_no_changes'   => 'Žane změny wotkryte.',
@@ -527,6 +527,7 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'pdtest_no_target'   => 'ലക്ഷ്യം നിര്‍‌വചിച്ചിട്ടില്ല',
 	'pdtest_no_changes'  => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
 	'pdtest_time_report' => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
 	'pdtest_ok'          => 'ശരി',
@@ -845,6 +846,14 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tr'] = array(
 	'pdtest_ok' => 'Tamam',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'pdtest_ok'   => 'OK',
+	'pdtest_diff' => 'Difarenze',
 );
 
 /** Vietnamese (Tiếng Việt)

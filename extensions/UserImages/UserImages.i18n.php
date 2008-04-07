@@ -250,7 +250,8 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'userimages-caption' => 'Аксҳо тавассути $1 боргузорӣ шудаанд',
+	'userimages-caption'  => 'Аксҳо тавассути $1 боргузорӣ шудаанд',
+	'userimages-noimages' => '$1 дорои боргузориҳои аксе нест.',
 );
 
 /** Turkish (Türkçe)

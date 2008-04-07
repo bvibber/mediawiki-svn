@@ -602,10 +602,16 @@ $messages['tet'] = array(
  * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
-	'importusers-log-summary'     => 'Хулоса',
-	'importusers-log-summary-all' => 'Ҳама',
-	'importusers-password'        => 'гузарвожа',
-	'importusers-realname'        => 'номи аслӣ',
+	'importusers'                         => 'Ворид кардани Корбарон',
+	'importusers-uploadfile'              => 'Фиристодани парванда',
+	'importusers-user-added'              => 'Корбар <b>%s</b> илова шуд.',
+	'importusers-user-present-update'     => 'Корбар <b>%s</b> аллакай вуҷуд дорад. Барӯз шудааст.',
+	'importusers-user-present-not-update' => 'Корбар <b>%s</b> аллакай вуҷуд дорад. Барӯз нашудааст.',
+	'importusers-log-summary'             => 'Хулоса',
+	'importusers-log-summary-all'         => 'Ҳама',
+	'importusers-password'                => 'гузарвожа',
+	'importusers-email'                   => 'почтаи электронӣ',
+	'importusers-realname'                => 'номи аслӣ',
 );
 
 /** Vietnamese (Tiếng Việt)

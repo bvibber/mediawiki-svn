@@ -544,6 +544,7 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'linksearch'      => 'വെബ്ബ് കണ്ണികള്‍ തിരയുക',
+	'linksearch-pat'  => 'തിരച്ചിലിന്റെ മാതൃക:',
 	'linksearch-ns'   => 'നെയിംസ്പേസ്:',
 	'linksearch-ok'   => 'തിരയുക',
 	'linksearch-line' => '$1,  $2ല്‍ നിന്നു കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്നു.',
@@ -917,6 +918,14 @@ $messages['uk'] = array(
 	'linksearch-text'  => 'Можна використовувати підстановочні символи, наприклад, <code>*.wikipedia.org</code>.<br />Підтримувані протоколи: <tt>$1</tt>',
 	'linksearch-line'  => 'Посилання на $1 із $2',
 	'linksearch-error' => 'Підстановочні знаки можуть використовуватися лише на початку адрес.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'linksearch-ns' => 'Namespace:',
+	'linksearch-ok' => 'Çerca',
 );
 
 /** Vietnamese (Tiếng Việt)

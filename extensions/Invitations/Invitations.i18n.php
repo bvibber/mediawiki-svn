@@ -51,17 +51,20 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'invite-logpage'                  => 'Дневник на поканите',
-	'invite-logpagetext'              => 'Тази страница съдържа дневник на поканите между потребителите за достъп до различни услуги.',
-	'invite-logentry'                 => 'покани $1 да използва <i>$2</i>.',
-	'invitations'                     => 'Управление на поканите за различните услуги',
-	'invitations-invitedlist-item'    => '<b>$1</b> ($2 налични покани)',
-	'invitations-pagetitle'           => 'Възможности на софтуера, достъпни с покана',
-	'invitations-feature-pagetitle'   => 'Управление на поканите - $1',
-	'invitations-feature-notallowed'  => 'Нямате достъп да използвате <i>$1</i>.',
-	'invitations-inviteform-title'    => 'Изпращане на покана на потребител да използва $1',
-	'invitations-inviteform-username' => 'Потребител',
-	'invitations-inviteform-submit'   => 'Изпращане на покана',
+	'invite-logpage'                   => 'Дневник на поканите',
+	'invite-logpagetext'               => 'Тази страница съдържа дневник на поканите между потребителите за достъп до различни услуги.',
+	'invite-logentry'                  => 'покани $1 да използва <i>$2</i>.',
+	'invitations'                      => 'Управление на поканите за различните услуги',
+	'invitations-invitedlist-item'     => '<b>$1</b> ($2 налични покани)',
+	'invitations-pagetitle'            => 'Възможности на софтуера, достъпни с покана',
+	'invitations-feature-pagetitle'    => 'Управление на поканите - $1',
+	'invitations-feature-notallowed'   => 'Нямате достъп да използвате <i>$1</i>.',
+	'invitations-inviteform-title'     => 'Изпращане на покана на потребител да използва $1',
+	'invitations-inviteform-username'  => 'Потребител',
+	'invitations-inviteform-submit'    => 'Изпращане на покана',
+	'invitations-error-baduser'        => 'Посоченият потребител не съществува.',
+	'invitations-error-alreadyinvited' => 'Посоченият потребител вече има достъп до тази услуга!',
+	'invitations-invite-success'       => 'Поканата на $1 за достъп до услугата беше изпратена успешно!',
 );
 
 /** German (Deutsch)
@@ -524,6 +527,7 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'invitations-inviteform-username'  => 'Корбар барои таклиф',
 	'invitations-inviteform-submit'    => 'Таклиф',
 	'invitations-error-baduser'        => 'Корбари шумо мушаххас карда ба назар мерасад, ки вуҷуд надорад',
 	'invitations-error-alreadyinvited' => 'Корбари шумо мушаххас карда аллакай ба ин хусусият дастрасӣ дорад!',

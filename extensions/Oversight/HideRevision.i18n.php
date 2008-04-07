@@ -1190,14 +1190,20 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'hiderevision-continue'    => 'തുടരുക',
-	'hiderevision-reason'      => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
-	'hiderevision-submit'      => 'ഈ ഡാറ്റ സ്ഥിരമായി മറയ്ക്കുക',
-	'hiderevision-tab'         => 'പതിപ്പ് മറയ്ക്കുക',
-	'hiderevision-norevisions' => 'മായ്ക്കുവാന്‍ വേണ്ടി പതിപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.',
-	'hiderevision-noreason'    => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
-	'hiderevision-status'      => 'പതിപ്പ് $1: $2',
-	'oversight-view'           => 'വിശദാംശങ്ങള്‍',
+	'hiderevision'                => 'മാറ്റങ്ങള്‍ സ്ഥിരമായി മറയ്ക്കുക',
+	'hiderevision-continue'       => 'തുടരുക',
+	'hiderevision-reason'         => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
+	'hiderevision-submit'         => 'ഈ ഡാറ്റ സ്ഥിരമായി മറയ്ക്കുക',
+	'hiderevision-tab'            => 'പതിപ്പ് മറയ്ക്കുക',
+	'hiderevision-norevisions'    => 'മായ്ക്കുവാന്‍ വേണ്ടി പതിപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.',
+	'hiderevision-noreason'       => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
+	'hiderevision-status'         => 'പതിപ്പ് $1: $2',
+	'hiderevision-error-missing'  => 'ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
+	'hiderevision-error-delete'   => 'പത്തായത്തിലാക്കാന്‍ പറ്റിയില്ല; അതു മുന്‍പ് മായ്ക്കപ്പെട്ടതാണോ?',
+	'hiderevision-archive-status' => '$1-ല്‍ നിന്നു മായ്ക്കപ്പെട്ട പതിപ്പ്: $2',
+	'oversight-log-hiderev'       => '$1-ല്‍ നിന്നു ഒരു തിരുത്തല്‍ ഒഴിവാക്കിയിരിക്കുന്നു',
+	'oversight-view'              => 'വിശദാംശങ്ങള്‍',
+	'oversight-hidden'            => 'മറഞ്ഞിരിക്കുന്ന പതിപ്പ്',
 );
 
 /** Marathi (मराठी)

@@ -360,8 +360,16 @@ $messages['ta'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'editmsg-search'     => 'Ҷустуҷӯ',
-	'editmsg-new-search' => 'Ҷустуҷӯи ҷадид',
+	'editmessages'          => 'Вироиши паёмҳо',
+	'editmsg-target'        => 'Паёми мақсад:',
+	'editmsg-search'        => 'Ҷустуҷӯ',
+	'editmsg-show-list'     => 'Дар ҳоли намоиши қиматҳо барои номи паём "$1"',
+	'editmsg-get-patch'     => 'Тавлиди васила',
+	'editmsg-new-search'    => 'Ҷустуҷӯи ҷадид',
+	'editmsg-apply-patch'   => 'Иҷрои васила',
+	'editmsg-no-patch'      => 'Наметавон фармони "василаро" иҷро кард',
+	'editmsg-patch-failed'  => 'Васила бо ҳолати хориҷ шудан $1 номуваффақ шуд',
+	'editmsg-patch-success' => 'Бо муваффақият васила карда шуд.',
 );
 
 /** Thai (ไทย)
