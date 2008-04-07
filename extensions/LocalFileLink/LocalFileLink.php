@@ -6,7 +6,7 @@
 $wgExtensionCredits['other'][] = array(
 	'name' => 'LocalFileLink',
 	'author' => 'Moisa Doru (tmoisa@optaros.com), Optaros Inc.',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate: 2008-04-07 21:51:06 +1000 (Mon, 07 Apr 2008) $'), #just the date of the last change
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'description' => 'Allows the usage of local file links with FCKEditor',
 );
 
