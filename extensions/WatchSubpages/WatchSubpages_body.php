@@ -8,7 +8,9 @@ class WatchSubpages extends SpecialPage
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		
+
+		wfLoadExtensionMessages( 'WatchSubpages' );
+
 		$namespace = $wgRequest->getInt( 'namespace' );
 		$guide = $wgRequest->getVal( 'guide' );
 		if ( isset( $guide ) ) {
@@ -70,7 +72,7 @@ class WatchSubpages extends SpecialPage
 	 * @return array
 	 */
 	private function getWatchlist( $user ) {
-		$list = array();	
+		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
 			'watchlist',
@@ -86,7 +88,7 @@ class WatchSubpages extends SpecialPage
 				if( $title instanceof Title && !$title->isTalkPage() )
 					$list[] = $title->getPrefixedText();
 			}
-			$res->free();		
+			$res->free();
 		}
 		return $list;
 	}
@@ -136,7 +138,7 @@ class WatchSubpages extends SpecialPage
 	 */
 	private function showTitles( $titles, $output, $skin ) {
 		$talk = wfMsgHtml( 'talkpagelinktext' );
-		// Do a batch existence check		
+		// Do a batch existence check
 		$batch = new LinkBatch();
 		foreach( $titles as $title ) {
 			if( !$title instanceof Title )
@@ -153,7 +155,7 @@ class WatchSubpages extends SpecialPage
 			if( !$title instanceof Title )
 				$title = Title::newFromText( $title );
 			if( $title instanceof Title ) {
-				$output->addHtml( "<li>" . $skin->makeLinkObj( $title ) 
+				$output->addHtml( "<li>" . $skin->makeLinkObj( $title )
 				. ' (' . $skin->makeLinkObj( $title->getTalkPage(), $talk ) . ")</li>\n" );
 			}
 		}
@@ -169,7 +171,7 @@ class WatchSubpages extends SpecialPage
 	 */
 	private function showForm( $output, $user, $namespace, $guide ) {
 		global $wgScript, $wgContLang;
-	
+
 		$self = SpecialPage::getTitleFor( 'Watchsubpages' );
 		# Input boxes at the top
 		$form .= Xml::openElement( 'div', array( 'class' => 'namespaceoptions' ) );
@@ -325,5 +327,5 @@ class WatchSubpages extends SpecialPage
 		return '<li>'
 			. Xml::check( 'titles[]', true, array( 'value' => $title->getPrefixedText() ) )
 			. $link . ' (' . implode( ' | ', $tools ) . ')' . '</li>';
-		}
+	}
 }

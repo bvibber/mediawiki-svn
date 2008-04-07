@@ -11,9 +11,13 @@ EOT;
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => '[http://www.strategywiki.org/wiki/User:Prod User:Prod]',
 	'name' => 'Watch Guide Subpages',
+	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'url' => 'http://www.strategywiki.org/wiki/User:Prod',
-	'description' => 'Quickly add all subpages of a guide to the users watchlist'
+	'description' => 'Quickly add all subpages of a guide to the users watchlist',
+	'descriptionmsg' => 'watchsubpages-desc',
 );
 
-$wgAutoloadClasses['WatchSubpages'] = dirname(__FILE__) . '/WatchSubpages_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['WatchSubpages'] = $dir . 'WatchSubpages.i18n.php';
+$wgAutoloadClasses['WatchSubpages'] = $dir . 'WatchSubpages_body.php';
 $wgSpecialPages['WatchSubpages'] = 'WatchSubpages';
