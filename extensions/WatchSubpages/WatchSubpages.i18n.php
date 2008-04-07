@@ -12,6 +12,6 @@ $messages = array();
  * @author http://www.strategywiki.org/wiki/User:Prod
  */
 $messages['en'] = array(
-                'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a guide to the users watchlist'
-                'watchsubpages'      => 'Watch Guide Subpages'
+                'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a guide to the users watchlist',
+                'watchsubpages'      => 'Watch Guide Subpages',
 );
