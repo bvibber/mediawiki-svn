@@ -3,20 +3,18 @@
 /**
  * Extension based on SkinPerPage to allow a customized skin per namespace
  *
- * Warning : does *not* work for some special pages that don't use SpecialPage
- * class.
- * Require MediaWiki 1.12.0 for the MediaWikiPerformAction hook, will only work
- * for special pages on previous versions.
+ * Require MediaWiki 1.13.0 for the new version of BeforePageDisplay hook, will
+ * produce a warning on older versions.
  *
  * @author Alexandre Emsenhuber
  * @license GPLv2
  */
 
 // For ns >= 0
-$wgHooks['MediaWikiPerformAction'][] = 'efSkinPerPageSetSkin';
+$wgHooks['MediaWikiPerformAction'][] = 'efSkinPerPagePerformActionHook';
 
 // For ns == -1
-$wgHooks['SpecialPageExecuteBeforePage'][] = 'efSkinPerPageSetSkinSpecial';
+$wgHooks['BeforePageDisplay'][] = 'efSkinPerPageBeforePageDisplayHook';
 
 // Add credits :)
 $wgExtensionCredits['other'][] = array(
@@ -43,12 +41,12 @@ $wgSkinPerNamespace = array();
  */
 $wgSkinPerNamespaceOverrideLoggedIn = true;
 
-// Hook functions
+// Implementation
 
 /**
  * Hook function for MediaWikiPerformAction
  */
-function efSkinPerPageSetSkin( &$output, &$article, &$title, &$user, &$request ){
+function efSkinPerPagePerformActionHook( &$output, &$article, &$title, &$user, &$request ){
 	global $wgSkinPerNamespace, $wgSkinPerNamespaceOverrideLoggedIn;
 	if( !$wgSkinPerNamespaceOverrideLoggedIn && $user->isLoggedIn() )
 		return true;
@@ -61,15 +59,19 @@ function efSkinPerPageSetSkin( &$output, &$article, &$title, &$user, &$request )
 }
 
 /**
- * Hook function for SpecialPageExecuteBeforePage
+ * Hook function for BeforePageDisplay
  */
-function efSkinPerPageSetSkinSpecial(){
-	global $wgSkinPerNamespace, $wgSkinPerNamespaceOverrideLoggedIn, $wgUser;
+function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
+	global $wgSkinPerNamespace, $wgSkinPerNamespaceOverrideLoggedIn, $wgUser, $wgTitle;
 	if( !$wgSkinPerNamespaceOverrideLoggedIn && $wgUser->isLoggedIn() )
 		return true;
 
-	if( isset( $wgSkinPerNamespace[-1] ) )
-		$wgUser->mSkin = Skin::newFromKey( $wgSkinPerNamespace[-1] );
+	$ns = $wgTitle->getNamespace();
+	if( $ns >= 0 )
+		return true;
+
+	if( isset( $wgSkinPerNamespace[$ns] ) )
+		$skin = Skin::newFromKey( $wgSkinPerNamespace[$ns] );
 
 	return true;
 }
