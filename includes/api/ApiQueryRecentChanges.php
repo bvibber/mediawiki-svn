@@ -59,7 +59,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		 * 		AND rc_timestamp < $end AND rc_namespace = $namespace 
 		 * 		AND rc_deleted = '0'
 		 */
-		$this->addTables('recentchanges');
+		$db = $this->getDB();
+		$rc = $db->tableName('recentchanges');
 		$this->addWhereRange('rc_timestamp', $dir, $start, $end);
 		$this->addWhereFld('rc_namespace', $namespace);
 		$this->addWhereFld('rc_deleted', 0);
@@ -92,7 +93,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			/* Check for conflicting parameters. */
 			if ((isset ($show['minor']) && isset ($show['!minor'])) 
 					|| (isset ($show['bot']) && isset ($show['!bot'])) 
-					|| (isset ($show['anon']) && isset ($show['!anon']))) {
+					|| (isset ($show['anon']) && isset ($show['!anon']))
+					|| (isset ($show['redirect']) && isset ($show['!redirect']))) {
 						
 				$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
 			}
@@ -104,6 +106,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addWhereIf('rc_bot != 0', isset ($show['bot']));
 			$this->addWhereIf('rc_user = 0', isset ($show['anon']));
 			$this->addWhereIf('rc_user != 0', isset ($show['!anon']));
+			$this->addWhereIf('page_is_redirect = 1', isset ($show['redirect']));
+			// Don't throw log entries out the window here
+			$this->addWhereIf('page_is_redirect = 0 OR page_is_redirect IS NULL', isset ($show['!redirect']));
 		}
 
 		/* Add the fields we're concerned with to out query. */
@@ -128,6 +133,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->fld_title = isset ($prop['title']);
 			$this->fld_ids = isset ($prop['ids']);
 			$this->fld_sizes = isset ($prop['sizes']);
+			$this->fld_redirect = isset($prop['redirect']);
 			$this->fld_patrolled = isset($prop['patrolled']);
 			
 			global $wgUser;
@@ -148,14 +154,19 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf('rc_old_len', $this->fld_sizes);
 			$this->addFieldsIf('rc_new_len', $this->fld_sizes);
 			$this->addFieldsIf('rc_patrolled', $this->fld_patrolled);
+			if($this->fld_redirect || isset($show['redirect']) || isset($show['!redirect']))
+			{
+				$page = $db->tableName('page');
+				$tables = "$page RIGHT JOIN $rc FORCE INDEX(rc_timestamp) ON page_namespace=rc_namespace AND page_title=rc_title";
+				$this->addFields('page_is_redirect');
+			}
 		}
-
+		if(!isset($tables))
+			$tables = "$rc FORCE INDEX(rc_timestamp)";
+		$this->addTables($tables);
 		/* Specify the limit for our query. It's $limit+1 because we (possibly) need to 
 		 * generate a "continue" parameter, to allow paging. */
 		$this->addOption('LIMIT', $limit +1);
-
-		/* Specify the index to use in the query as rc_timestamp, instead of rc_revid (default). */
-		$this->addOption('USE INDEX', 'rc_timestamp');
 
 		$data = array ();
 		$count = 0;
@@ -266,6 +277,10 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$vals['comment'] = $row->rc_comment;
 		}
 		
+		if ($this->fld_redirect)
+			if($row->page_is_redirect)
+				$vals['redirect'] = '';
+
 		/* Add the patrolled flag */
 		if ($this->fld_patrolled && $row->rc_patrolled == 1)
 			$vals['patrolled'] = '';
@@ -323,6 +338,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'title',
 					'ids',
 					'sizes',
+					'redirect',
 					'patrolled'
 				)
 			),
@@ -334,7 +350,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'bot',
 					'!bot',
 					'anon',
-					'!anon'
+					'!anon',
+					'redirect',
+					'!redirect'
 				)
 			),
 			'limit' => array (

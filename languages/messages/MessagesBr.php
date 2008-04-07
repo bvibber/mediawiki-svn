@@ -32,11 +32,13 @@ $namespaceNames = array(
 );
 
 $skinNames = array(
-	'standard'     => 'Standard',
-	'nostalgia'    => 'Melkoni',
-	'cologneblue'  => 'Glaz Kologn',
-	'monobook'     => 'MonoBook',
-	'myskin'       => 'MySkin'
+	'standard'    => 'Standard',
+	'nostalgia'   => 'Melkoni',
+	'cologneblue' => 'Glaz Kologn',
+	'monobook'    => 'MonoBook',
+	'myskin'      => 'MySkin',
+	'chick'       => 'Plogig',
+	'simple'      => 'Eeun',
 );
 
 $bookstoreList = array(
@@ -172,8 +174,8 @@ $messages = array(
 'hidden-category-category'       => 'Rummadoù kuzhet', # Name of the category where hidden categories will be listed
 'category-subcat-count'          => "{{PLURAL:$2|N'eus er rummad-mañ nemet an isrummad da-heul.|{{PLURAL:$1|isrummad|$1 isrummad}} zo d'ar rummad-mañ diwar un hollad a $2.}}",
 'category-subcat-count-limited'  => 'Er rummad-mañ e kaver an {{PLURAL:$1|isrummad-se|$1 isrummadoù-se}}.',
-'category-article-count'         => "{{PLURAL:$2|N'eus er rummad-mañ nemet ar bajenn da-heul.|Emañ ar {{PLURAL:$1|bajenn da-heul|$1 pajenn da-heul}} er rummad-maén war un hollad a $2.}}",
-'category-article-count-limited' => '{{PLURAL:$1|Emañ ar bajenn|Emañ an $1 pajenn}} da-heul er rummmad-mañ.',
+'category-article-count'         => "{{PLURAL:$2|N'eus er rummad-mañ nemet ar bajenn da-heul.|Emañ ar {{PLURAL:$1|bajenn da-heul|$1 pajenn da-heul}} er rummad-mañ, war un hollad a $2.}}",
+'category-article-count-limited' => '{{PLURAL:$1|Emañ ar bajenn|Emañ an $1 pajenn}} da-heul er rummad-mañ.',
 'category-file-count'            => "{{PLURAL:$2|N'eus er rummad-mañ nemet ar restr da-heul.|Emañ ar {{PLURAL:$1|restr|$1 restr}} da-heul er rummad-mañ, war un hollad a $2.}}",
 'category-file-count-limited'    => '{{PLURAL:$1|Emañ ar restr|Emañ an $1 restr}} da-heul er rummad-mañ.',
 'listingcontinuesabbrev'         => "(war-lerc'h)",
@@ -257,7 +259,7 @@ $messages = array(
 'redirectedfrom'    => '(Adkaset eus $1)',
 'redirectpagesub'   => 'Pajenn adkas',
 'lastmodifiedat'    => "Kemmoù diwezhañ degaset d'ar bajenn-mañ : $2, $1.", # $1 date, $2 time
-'viewcount'         => 'Sellet ez eus bet ouzh ar bajenn-mañ $1 (g)wech.',
+'viewcount'         => 'Sellet euz eus bet {{PLURAL:$1|$1 wech|$1 (g)wech}} ouzh ar bajenn-mañ.',
 'protectedpage'     => 'Pajenn warezet',
 'jumpto'            => 'Mont da :',
 'jumptonavigation'  => 'merdeiñ',
@@ -718,7 +720,7 @@ Marteze e kavot munudoù all war [{{fullurl:Special:Log/delete|page={{PAGENAMEE}
 met n'hallo ket an dud sellet outo.
 
 Gouest e vo merourien all {{SITENAME}} da dapout krog en testennoù kuzhet ha da ziziverkañ anezho en-dro dre an hevelep etrefas, nemet e vije bet lakaet e plas strishadurioù ouzhpenn gant renerien al lec'hienn.",
-'revdelete-legend'            => 'Lakaat strishadurioù',
+'revdelete-legend'            => 'Lakaat strishadurioù gwelet',
 'revdelete-hide-text'         => 'Kuzhat testenn ar stumm',
 'revdelete-hide-name'         => 'Kuzhat an ober hag ar vukadenn',
 'revdelete-hide-comment'      => "Kuzhat notenn ar c'hemm",
@@ -731,13 +733,19 @@ Gouest e vo merourien all {{SITENAME}} da dapout krog en testennoù kuzhet ha da
 'revdelete-submit'            => 'Lakaat da dalvezout evit ar stumm diuzet',
 'revdelete-logentry'          => 'Cheñchet eo bet hewelusted ar stumm evit [[$1]]',
 'logdelete-logentry'          => 'kemmet eo bet gwelusted an darvoud evit [[$1]]',
-'revdelete-logaction'         => '$1 {{plural:$1|stumm kemmet|stumm kemmet}} e mod $2',
-'logdelete-logaction'         => '$1 {{plural:$1|darvoud|darvoud}} kemmet e mod $2',
 'revdelete-success'           => "'''Gwelusted ar stummoù kaset da benn vat.'''",
 'logdelete-success'           => "'''Gwelusted an darvoud kaset da benn vat.'''",
 'revdel-restore'              => 'Cheñch ar gweluster',
 'pagehist'                    => 'Istor ar bajenn',
 'deletedhist'                 => 'Diverkañ an istor',
+'revdelete-content'           => 'danvez',
+'revdelete-summary'           => 'kemmañ an diverrañ',
+'revdelete-uname'             => 'anv implijer',
+'revdelete-restricted'        => 'Lakaat ar strishadurioù da dalvezout evit ar verourien',
+'revdelete-unrestricted'      => 'dilemel ar strishadurioù evit ar verourien',
+'revdelete-hid'               => 'kuzhat $1',
+'revdelete-unhid'             => 'diguzhat $1',
+'revdelete-log-message'       => '$1 evit $2 {{PLURAL:$2|adweladenn|adweladenn}}',
 
 # Suppression log
 'suppressionlog'     => 'Marilh diverkañ',
@@ -1611,7 +1619,7 @@ Roit a-is an abeg resis (o verkañ, da skouer, roll ar pajennoù bet graet gaou 
 'ipblocklist-no-results'      => "An anv implier pe ar chomlec'h IP goulennet n'eo ket stanket anezhañ.",
 'blocklink'                   => 'stankañ',
 'unblocklink'                 => 'distankañ',
-'contribslink'                => 'degasadenn',
+'contribslink'                => 'degasadennoù',
 'autoblocker'                 => 'Emstanket rak rannañ a rit ur chomlec\'h IP gant "$1". Abeg : "$2".',
 'blocklogpage'                => 'Log stankañ',
 'blocklogentry'               => 'stanket "[[$1]]" e-pad $2 $3',

@@ -584,7 +584,7 @@ XHTML id names.
 'category-file-count-limited'    => 'The following {{PLURAL:$1|file is|$1 files are}} in the current category.',
 'listingcontinuesabbrev'         => 'cont.',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
+'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
 'mainpagedocfooter' => "Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
 
@@ -1179,7 +1179,7 @@ Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 # Revision deletion
 'rev-deleted-comment'         => '(comment removed)',
 'rev-deleted-user'            => '(username removed)',
-'rev-deleted-event'           => '(entry removed)',
+'rev-deleted-event'           => '(log action removed)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
 There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].</div>',
@@ -1197,7 +1197,7 @@ function, the specified revision does not exist, or you are attempting to hide t
 'revdelete-text'              => 'Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.
 
 Other admins on {{SITENAME}} will still be able to access the hidden content and can undelete it again through this same interface, unless additional restrictions are set.',
-'revdelete-legend'            => 'Set restrictions',
+'revdelete-legend'            => 'Set visibility restrictions',
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-name'         => 'Hide action and target',
 'revdelete-hide-comment'      => 'Hide edit comment',
@@ -1210,13 +1210,20 @@ Other admins on {{SITENAME}} will still be able to access the hidden content and
 'revdelete-submit'            => 'Apply to selected revision',
 'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
 'logdelete-logentry'          => 'changed event visibility of [[$1]]',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|revision|revisions}} set to mode $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|event|events}} set to mode $2',
 'revdelete-success'           => "'''Revision visibility successfully set.'''",
 'logdelete-success'           => "'''Log visibility successfully set.'''",
 'revdel-restore'              => 'Change visiblity',
 'pagehist'                    => 'Page history',
 'deletedhist'                 => 'Deleted history',
+'revdelete-content'           => 'content',
+'revdelete-summary'           => 'edit summary',
+'revdelete-uname'             => 'username',
+'revdelete-restricted'        => 'applied restrictions to sysops',
+'revdelete-unrestricted'      => 'removed restrictions for sysops',
+'revdelete-hid'               => 'hid $1',
+'revdelete-unhid'             => 'unhid $1',
+'revdelete-log-message'       => '$1 for $2 {{PLURAL:$2|revision|revisions}}',
+'logdelete-log-message'       => '$1 for $2 {{PLURAL:$2|event|events}}',
 
 # Suppression log
 'suppressionlog'     => 'Suppression log',
@@ -1346,7 +1353,7 @@ please see math/README to configure.',
 'prefs-watchlist-edits'    => 'Maximum number of changes to show in expanded watchlist:',
 'prefs-misc'               => 'Misc',
 'saveprefs'                => 'Save',
-'resetprefs'               => 'Reset',
+'resetprefs'               => 'Clear unsaved changes',
 'oldpassword'              => 'Old password:',
 'newpassword'              => 'New password:',
 'retypenew'                => 'Retype new password:',
@@ -2663,6 +2670,11 @@ Variants for Chinese language
 'variantname-ku-arab' => 'ku-Arab', # only translate this message to other languages if you have to change it
 'variantname-ku-latn' => 'ku-Latn', # only translate this message to other languages if you have to change it
 'variantname-ku'      => 'ku', # only translate this message to other languages if you have to change it
+
+# Variants for Tajiki language
+'variantname-tg-cyrl' => 'tg-Cyrl', # only translate this message to other languages if you have to change it
+'variantname-tg-latn' => 'tg-Latn', # only translate this message to other languages if you have to change it
+'variantname-tg'      => 'tg', # only translate this message to other languages if you have to change it
 
 # Metadata
 'metadata'          => 'Metadata',

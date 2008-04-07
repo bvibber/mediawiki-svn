@@ -61,7 +61,7 @@ $messages = array(
 
 # Dates
 'sunday'        => 'Ńedźela',
-'monday'        => 'Pyńdźołek',
+'monday'        => 'Pyńdźouek',
 'tuesday'       => 'Wtorek',
 'wednesday'     => 'Střoda',
 'thursday'      => 'Štwortek',
@@ -284,7 +284,7 @@ $messages = array(
 'nstab-mediawiki' => 'Komunikat',
 'nstab-template'  => 'Šablôna',
 'nstab-help'      => 'Zajta pomocy',
-'nstab-category'  => 'Katégoryjo',
+'nstab-category'  => 'Kategoryja',
 
 # Main script and global functions
 'nosuchaction'      => 'Ńy ma takiy uoperacje',
@@ -666,13 +666,20 @@ Inkśi admińistratoři {{GRAMMAR:D.lp|{{SITENAME}}}} dali bydům mjeć dostymp 
 'revdelete-submit'            => 'Zaakceptuj do wybranych wersyji',
 'revdelete-logentry'          => 'půmjyńůno widočność wersyji w [[$1]]',
 'logdelete-logentry'          => 'půmjyńůno widočność zdořyńůw w [[$1]]',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|wersyja|wersyje|wersyji}} naštalůwano na tryb $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|zdařyńe|zdařyńa|zdařyń}} do [[$3]] přećapano na tryb $2',
 'revdelete-success'           => 'Půmyślńy zmjyńůno widočność wersyji.',
 'logdelete-success'           => 'Půmyślńy půmjyńůno widočność zdařyń',
 'revdel-restore'              => 'Půmjyń widočność',
 'pagehist'                    => 'Historia sprowjyń zajty',
 'deletedhist'                 => 'Wyćepano historyja sprowjyń',
+'revdelete-content'           => 'zawartość',
+'revdelete-summary'           => 'uopis pomjyńań',
+'revdelete-uname'             => 'mjano užytkowńika',
+'revdelete-restricted'        => 'naštaluj uograničyńo do administratorůw',
+'revdelete-unrestricted'      => 'wycofej uograničyńo do administratorůw',
+'revdelete-hid'               => 'schrůń $1',
+'revdelete-unhid'             => 'ńy schrůńyj $1',
+'revdelete-log-message'       => '$1 - $2 {{PLURAL:$2|wersyjo|wersyji|wersjůw}}',
+'logdelete-log-message'       => '$1 - $2 {{PLURAL:$2|zdařyńe|zdařyńa|zdařyń}}',
 
 # Suppression log
 'suppressionlog'     => 'Log schrůńyńć',
@@ -883,6 +890,7 @@ Zaznačůne pole uoznača přinoležność užytkowńika do danej grupy.
 'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|dowajůncy pozůr užytkowńik|dowajůncych pozůr užytkowńikůw}}]',
 'rc_categories'                     => 'Uůgrańič do katygorii (oddźelej za půmocům "|")',
 'rc_categories_any'                 => 'Wšyskie',
+'newsectionsummary'                 => '/* $1 */ nowo tajla',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Pomjéńane w adrésowanych',
@@ -892,22 +900,114 @@ Zaznačůne pole uoznača přinoležność užytkowńika do danej grupy.
 Artikle na pozorli'śće sům '''rube'''.",
 
 # Upload
-'upload'        => 'Wćepnij plik',
-'uploadbtn'     => 'Wćepnij sam plik',
-'uploadlogpage' => 'Wćepane sam',
-'filename'      => 'Mjano pliku',
-'uploadedimage' => 'wćepano "[[$1]]"',
+'upload'                      => 'Wćepnij plik',
+'uploadbtn'                   => 'Wćepnij sam plik',
+'reupload'                    => 'Wćepnij zaś',
+'reuploaddesc'                => 'Nazod do formulařa uod wćepywańo.',
+'uploadnologin'               => 'Ńy jest žeś zalogůwany',
+'uploadnologintext'           => 'Muśyš śe [[Special:Userlogin|zalůgować]] ńim wćepńeš pliki.',
+'upload_directory_read_only'  => 'Serwer ńy može škryflać do katalůgu ($1) kery je přeznačůny na wćepywane pliki.',
+'uploaderror'                 => 'Feler při wćepywańu',
+'uploadtext'                  => "Ůžyj formulařa půńižej do wćepywańo plikůw.
+Jak chceš přejřeć dotychčas wćepane pliki, abo w ńich šnupać, přeńdź do [[Special:Imagelist|listy douůnčůnych plikůw]]. Wšyjstke wćepańo uodnotowane sům we [[Special:Log/upload|rejeře přesůuanych plikůw]].
 
-'license' => 'Licencyjo:',
+Plik pojawi śe na zajće, jak užyješ linka wedle jydnygo s nastympujůncych wzorůw:
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.png|tekst uopisu]]</nowiki>''' abo
+'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Plik.ogg]]</nowiki>''' coby uzyskać bezpośredńi link do plika.",
+'upload-permitted'            => 'Dopuščalne formaty plikůw: $1.',
+'upload-preferred'            => 'Zalecane formaty plikůw: $1.',
+'upload-prohibited'           => 'Zakozane formaty plikůw: $1.',
+'uploadlog'                   => 'Wykoz wćepywań',
+'uploadlogpage'               => 'Wćepane sam',
+'uploadlogpagetext'           => 'Půńižej znojdowo śe lista plikůw wćepanych na uostatku.',
+'filename'                    => 'Mjano pliku',
+'filedesc'                    => 'Uopis',
+'fileuploadsummary'           => 'Uopis:',
+'filestatus'                  => 'Status prawny:',
+'filesource'                  => 'Kod zdřůduowy:',
+'uploadedfiles'               => 'Wćepane pliki',
+'ignorewarning'               => 'Zignoruj uostřežyńo i wymuś wćepańe pliku.',
+'ignorewarnings'              => 'Ignoruj uostřežyńo',
+'minlength1'                  => 'Mjano plika muśi mjeć aby jedna buchštaba.',
+'illegalfilename'             => 'Mjano plika ("$1") mo znoki zakozane we titlach zajtůw. Proša zmjyńić mjano plika i wćepać go zaś.',
+'badfilename'                 => 'Mjano plika zostouo zmjyńone na "$1".',
+'filetype-badmime'            => 'Wćepywanie plikůw ou typje MIME "$1" je sam zakozane.',
+'filetype-unwanted-type'      => "'''\".\$1\"''' ńy je zalecanym typym plika. Preferowane sům pliki we formatach \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' je ńydozwolůnym typym plika. Dostympne sům pliki we formatach \$2.",
+'filetype-missing'            => 'Plik ńy mo rozšyřyńo (np. ".jpg").',
+'large-file'                  => 'Zaleco śe coby rozmjar plika ńy bůu wjynkšy jak $1 bajtůw. Tyn plik mo rozmjar $2 bajtůw.',
+'largefileserver'             => 'Plik je wjynkšy ńiž maksymalny dozwolůny rozmjar.',
+'emptyfile'                   => 'Wćepywany plik cheba je pusty. Može to być bez tůž, co žeś wklepou zuo buchštaba w jygo mjańe. Sprowdź, čy mjano kere žeś wklepou je poprawne.',
+'fileexists'                  => 'Plik uo takym mjańe juž je sam wćepany! Wćepańe nowyj grafiki ńyodwracalńe wyćepńe ta kero sam juž je wćepano ($1)! Sprowdź čy žeś je pewny co chceš tyn plik sam wćepać.',
+'filepageexists'              => 'Je juž sam zajta uopisu tygo plika utwořůno <strong><tt>$1</tt></strong>, ino ńy ma terozki plika uo tym mjańy. Informacyje uo pliku, kere žeś wćepou, ńy bydům pokozane na zajće uopisu. Jakbyś chćou coby te informacyje zostouy pokozane, muśyš jeich sprowjać rynčńy.',
+'fileexists-extension'        => 'Plik uo podobnym mjańe juž sam je:<br />
+Mjano wćepywanygo plika: <strong><tt>$1</tt></strong><br />
+Mjano plika kery juž sam je: <strong><tt>$2</tt></strong><br />
+Wybjer proša inkše mjano.',
+'fileexists-thumb'            => "<center>'''Istniejůnco grafika'''</center>",
+'fileexists-thumbnail-yes'    => 'Zdowo śe co tyn plik je půmńijšůnům wersyjom grafiki <i>(mińjaturkom)</i>. Uobejřij plik: <strong><tt>$1</tt></strong>.<br />
+Jak to je ta sama grafika, ino wjelgo, ńy muśiš juž jei sam zaś wćepywać.',
+'file-thumbnail-no'           => 'Mjano plika začyno śe uod <strong><tt>$1</tt></strong>. Zdowo śe, co to je půmńijšůna grafika <i>(mińaturka)</i>.
+Jak moš ta grafika we peunym rozmjaře - wćepej ja sam, abo bydźeš muśou zmjyńić mjano wćepywanygo terozki plika.',
+'fileexists-forbidden'        => 'Plik uo takym mjańy juž sům můmy! Idź nazod i wćepej tyn plik pod inkšym mjanym. [[Image:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Plik uo takym mjańe juž sam momy! Idź nazod i wćepej tyn plik pod inkšym mjanym. [[Image:$1|thumb|center|$1]]',
+'successfulupload'            => 'Wćepańe plika udouo śe',
+'uploadwarning'               => 'Uostřežyńe uo wćepywańu',
+'savefile'                    => 'Naškryflej plik',
+'uploadedimage'               => 'wćepano "[[$1]]"',
+'overwroteimage'              => 'wćepano nowšo wersyjo "[[$1]]"',
+'uploaddisabled'              => 'Wćepywanie sam plikůw je zawarte',
+'uploaddisabledtext'          => 'Funkcjo wćepywańo plikůw zostoua zawarto.',
+'uploadscripted'              => 'Tyn plik zawjyro kod HTML abo skrypt kery može zostać felerńe zinterpretowany bez přyglůndarka internetowo.',
+'uploadcorrupt'               => 'Tyn plik je uškodzůny abo mo felerne rozšeřyńy. Proša sprawdźić plik i wćepać sam poprawno wersja.',
+'uploadvirus'                 => 'W tym pliku je wirus! Ščygůuy: $1',
+'sourcefilename'              => 'Mjano oryginalne:',
+'destfilename'                => 'Mjano docylowe:',
+'upload-maxfilesize'          => 'Maksymalny rozmior plika: $1',
+'watchthisupload'             => 'Dowej pozůr na ta zajta',
+'filewasdeleted'              => 'Plik uo takym mjańy juž bůu sam wćepany, ale zostou wyćepńjynty. Ńim wćepńeš go zaś, sprowdź $1.',
+'upload-wasdeleted'           => "'''Uostřežyńy: Wćepuješ sam plik, kery bůu popředńo wyćepany.'''
+
+Zastanůw śe, čy powinno śe go sam wćepywać.
+Rejer wyćepań tygo plika je podany půńižej, cobyś miou wygoda:",
+'filename-bad-prefix'         => 'Mjano plika, kery wćepuješ, začyno śe uod <strong>"$1"</strong> &ndash; je to mjano nojčynśćy připisywane autůmatyčńy bez cyfrowe fotoaparaty, uůno ńy dowo žodnych informacyji uo zawartośći plika. Prošymy cobyś nadou plikowi inkše, lepij zrozůmjaue mjano.',
+
+'upload-proto-error'      => 'Ńyprowiduowy protokůu',
+'upload-proto-error-text' => 'Zdalne přesůuańy plikůw wymago podańo adresu URL kery začyno śe na <code>http://</code> abo <code>ftp://</code>.',
+'upload-file-error'       => 'Wewnyntřny feler',
+'upload-file-error-text'  => 'Wystůmpiu wewnyntřny feler kej průbowano naškryflać tymčasowy plik na serweře. Skůntaktuj śe s admińistratorym systemu',
+'upload-misc-error'       => 'Ńyznany feler při wćepywańu',
+'upload-misc-error-text'  => 'Zašou ńyznany feler při wćepywańu. Sprawdź poša čy podany URL je poprawny i dostympny, a potym poprůbuj zaś. Jak problym bydźe śe powtařou dalej dej znoć ku admińistratorowi systymu.',
+
+# Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
+'upload-curl-error6'       => 'URL je ńyosůngalny',
+'upload-curl-error6-text'  => 'Podany URL je ńyosiůngalny. Proša, sprowdź dokuadńy čy podany URL je prawidouwy i čy dano zajta dźauo.',
+'upload-curl-error28'      => 'Překročůny čas kery bůu na wćepywańe',
+'upload-curl-error28-text' => 'Zajta uodpowjado za powoli. Proša, sprawdź čy zajta dźauo, uodčekej pora minut i sprůbuj zaś. Možeš tyž sprůbować wončas kej zajta bydźe mńij uobćůnžůno.',
+
+'license'            => 'Licencyjo:',
+'nolicense'          => 'Ńy wybrano (naškryflej rynčńy!)',
+'license-nopreview'  => '(Podglůnd ńydostympny)',
+'upload_source_url'  => ' (poprowny, publičńy dostympny URL)',
+'upload_source_file' => ' (plik na twojym komputře)',
 
 # Special:Imagelist
-'imgfile'        => 'plik',
-'imagelist'      => 'Lista plikůw',
-'imagelist_name' => 'Mjano',
+'imagelist-summary'     => 'To je ekstra zajta na kery sům pokazywane wšyske pliki wćepane na serwer. Důmyślńy na wiyrchu listy wyśwjetlajům śe pliki wćepane na uostatku. Coby půmjyńić sposůb sortowańo, klikńij na naguůwek kolůmny.',
+'imagelist_search_for'  => 'Šnupej za grafikům uo mjańe:',
+'imgdesc'               => 'uopis',
+'imgfile'               => 'plik',
+'imagelist'             => 'Lista plikůw',
+'imagelist_date'        => 'Data',
+'imagelist_name'        => 'Mjano',
+'imagelist_user'        => 'Užytkowńik',
+'imagelist_size'        => 'Rozmior (bajty)',
+'imagelist_description' => 'Uopis',
 
 # Image description page
 'filehist'                  => 'Historjo pliku',
 'filehist-help'             => 'Klikńij na data/čas, coby uobejřeć plik taki jak wtedy wyglůndou.',
+'filehist-deleteall'        => 'wyćep wšyskie',
 'filehist-deleteone'        => 'wyćep ta wersyjo',
 'filehist-revert'           => 'cofej',
 'filehist-current'          => 'aktůalny',
@@ -920,62 +1020,119 @@ Artikle na pozorli'śće sům '''rube'''.",
 'linkstoimage'              => 'Nastympujůnce zajty sům adrésowane do tygo plika:',
 'nolinkstoimage'            => 'Žodno zajta ńy je adrésowano do tygo plika.',
 'sharedupload'              => 'Tyn plik je wćepńjynty na wspůlny serwer i inkše projekty tyž můgům go užywać.',
+'shareduploadwiki'          => 'Wjyncyj informacyji znojdźeš we $1',
+'shareduploadwiki-desc'     => 'Uopis kery je na $1 možeš uobejřeć půńižej.',
+'shareduploadwiki-linktext' => 'zajte uopisu grafiki',
 'noimage'                   => 'Ńjy ma sam plika uo takiej nazwje. Možeš go sam $1.',
 'noimage-linktext'          => 'wćepać',
 'uploadnewversion-linktext' => 'Wćepńij nowšo wersyjo tygo plika',
+'imagepage-searchdupe'      => 'šnupej za plikůma kere śe powtařajům',
+
+# File reversion
+'filerevert'                => 'Přiwracańy $1',
+'filerevert-legend'         => 'Přiwracańy poprzedńy wersje plika',
+'filerevert-intro'          => '<span class="plainlinks">Zamjeřoš přiwrůćić \'\'\'[[Media:$1|$1]]\'\'\' do wersje z [$4 $3, $2].</span>',
+'filerevert-comment'        => 'Kůmyntorz:',
+'filerevert-defaultcomment' => 'Přiwrůcůno wersyjo z $2, $1',
+'filerevert-submit'         => 'Přiwrůć',
+'filerevert-success'        => '<span class="plainlinks">Plik \'\'\'[[Media:$1|$1]]\'\'\' zostou cofniynty do [wersyje $4 ze $3, $2].</span>',
+'filerevert-badversion'     => 'Ńy ma sam popředńij lokalnyj wersyji tygo plika s podanům datům.',
 
 # File deletion
 'filedelete'                  => 'Wyćepańe $1',
 'filedelete-legend'           => 'Wyćep plik',
+'filedelete-intro'            => "Wyćepuješ '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'        => '<span class="plainlinks">Wyćepuješ wersyja plika \'\'\'[[Media:$1|$1]]\'\'\' s datům [$4 $3, $2].</span>',
 'filedelete-comment'          => 'Čymu chceš wyćepnůńć:',
+'filedelete-submit'           => 'Wyćep',
 'filedelete-success'          => "Wyćepano plik '''$1'''.",
+'filedelete-success-old'      => '<span class="plainlinks">Wyćepano plik \'\'\'[[Media:$1|$1]]\'\'\' we wersyje ze $3, $2.</span>',
+'filedelete-nofile'           => "Plika '''$1''' ńy ma we {{GRAMMAR:MS.pl|{{SITENAME}}}}.",
+'filedelete-nofile-old'       => "Ńy ma sam zarchiwizowanyj wersje '''$1''' o atrybutach jake žeś podou.",
+'filedelete-iscurrent'        => 'Průbuješ wyćepać nojnowšo wersyjo tygo plika. Muśyš wpjyrw přiwrůćić staršo wersyjo.',
 'filedelete-otherreason'      => 'Inkšy powůd:',
 'filedelete-reason-otherlist' => 'Inkszy powůd',
+'filedelete-reason-dropdown'  => '* Nojčynstše powody wyćepańa
+** Narušyńy praw autorskych
+** Kopja plika kery juž sam jest',
+'filedelete-edit-reasonlist'  => 'Sprowjańe powodůw wyćepańo zajty',
 
 # MIME search
-'mimesearch' => 'Sznupej MIME',
-'mimetype'   => 'Typ MIME:',
+'mimesearch'         => 'Sznupej MIME',
+'mimesearch-summary' => 'Ta zajta ůmožliwjo šnupańe za plikůma wedle jeich typu MIME. Užyće: typtreśći/podtyp, np. <tt>image/jpeg</tt>.',
+'mimetype'           => 'Typ MIME:',
+'download'           => 'pobier',
+
+# Unwatched pages
+'unwatchedpages' => 'Zajty na kere ńy je dowany pozůr',
 
 # List redirects
 'listredirects' => 'Lista překerowań',
 
 # Unused templates
-'unusedtemplates' => 'Ńyužywane šablôny',
+'unusedtemplates'     => 'Ńyužywane šablôny',
+'unusedtemplatestext' => 'Půńižej znojdowo śe lista šablůnůw kerych inkše zajty ńy užywajům',
+'unusedtemplateswlh'  => 'ku adresatu',
 
 # Random page
-'randompage' => 'Losuj zajta',
+'randompage'         => 'Losuj zajta',
+'randompage-nopages' => 'W tej přestřyńi nazw ńy ma žodnych zajtůw.',
 
 # Random redirect
-'randomredirect' => 'Losowe překerowańy',
+'randomredirect'         => 'Losowe překerowańy',
+'randomredirect-nopages' => 'W tej přestřyńi nazw ńy ma překerowań.',
 
 # Statistics
-'statistics' => 'Statystyka',
-'sitestats'  => 'Statystyki {{SITENAME}}',
+'statistics'             => 'Statystyka',
+'sitestats'              => 'Statystyki {{SITENAME}}',
+'userstats'              => 'Statystyka užytkowńikůw',
+'sitestatstext'          => "We baźe danych je cuzamyn '''\$1''' {{PLURAL:\$1|zajta|zajty|zajtůw}}.
 
-'disambiguations'     => 'Zajty ujydnoznačńajůnce',
-'disambiguationspage' => '{{ns:template}}:disambig',
+Ta ličba uwzglyndńo zajty godki, zajty na tymat {{GRAMMAR:D.lp|{{SITENAME}}}}, zajty prowizoryčne (\"stuby\"), zajty překerowujůnce, a inkše, kere trudno uwažać za artikle. Wůuůnčajůnc powyžše, je prawdopodobńy '''\$2''' {{PLURAL:\$2|zajta, kero idźe uwažać za artikel|zajty, kere idźe uwažać za artikle|zajtůw, kere idźe uwažać za artikle}}.
 
-'doubleredirects' => 'Podwůjne překierowańa',
+Wćepano sam \$8 {{PLURAL:\$8|plik|pliki|plikůw}}.
+
+Uod uruchůmjyńo {{GRAMMAR:D.lp|{{SITENAME}}}} {{PLURAL:\$3|'''1''' raz filowano w zajty|'''\$3''' razy filowano w zajty|bůuo '''\$3''' filowań w zajty}} i wykůnano '''\$4''' {{PLURAL:\$4|sprowjyńy|sprowjyńa|sprowjyń}}. To dowo średńo '''\$5''' {{PLURAL:\$5|sprowjyńy|sprowjyńa|sprowjyń}} na zajta i '''\$6''' {{PLURAL:\$4|filowańy|filowańa|filowań}} na sprawjyńy.
+
+Duůgość [http://meta.wikymedja.org/wiki/Help:Job_queue kolejki zadań] je '''\$7'''.",
+'userstatstext'          => "Je sam {{PLURAL:$1|'''1''' zarejerowany užytkowńik|'''$1''' zarejerowanych užytkowńikůw}}. {{PLURAL:$1|Užytkowńik tyn|Spośrůd ńich '''$2''' ('''$4%''')}} mo status $5.",
+'statistics-mostpopular' => 'Zajty we kere nojčyńśći sam filujom',
+
+'disambiguations'      => 'Zajty ujydnoznačńajůnce',
+'disambiguationspage'  => '{{ns:template}}:disambig',
+'disambiguations-text' => "Artikle půńižej uodwouujům śe do '''zajtůw ujydnoznačńajůncych''', a powinny uodwouywać śe bezpośredńo do hasua kere je zwjůnzane ze treśćům artikla. Zajta uznawano je za ujydnoznačńajůnco kej zawiyro šablůn uokreślůny we [[MediaWiki:disambiguationspage]].",
+
+'doubleredirects'     => 'Podwůjne překierowańa',
+'doubleredirectstext' => 'Na tyi liśće mogům znojdować śe překerowańo pozorne. Uoznača to, aže půńižej pjyrwšej lińii artikla, zawjerajůncyj "#REDIRECT ...", može znojdować śe dodotkowy tekst. Koždy wjerš listy zawjero uodwouańo do pjyrwšygo i drůgygo překerowańo a pjyrwšom lińjům tekstu drůgygo překerowańo. Uůmožliwjo to na ogůu uodnaleźyńy wuaśćiwygo artikla, do kerygo powinno śe překerowywać.',
 
 'brokenredirects'        => 'Zuomane překerowańa',
+'brokenredirectstext'    => 'Překerowańo půńižej wskazujům na artikle kerych sam ńy ma.',
 'brokenredirects-edit'   => '(sprowjéj)',
 'brokenredirects-delete' => '(wyćep)',
 
-'withoutinterwiki' => 'Artikle bez interwiki',
+'withoutinterwiki'        => 'Artikle bez interwiki',
+'withoutinterwiki-header' => 'Zajty půńižej ńy majům uodwouań do wersjůw w inkšych godkach.',
+'withoutinterwiki-submit' => 'Pokož',
 
 'fewestrevisions' => 'Zajty z nojmńijšom ilośćům wersyji',
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|bajty|bajtůw}}',
+'ncategories'             => '$1 {{PLURAL:$1|kategoryja|kategorje|kategorjůw}}',
 'nlinks'                  => '$1 {{PLURAL:$1|link|linki|linkůw}}',
 'nmembers'                => '$1 {{PLURAL:$1|elyment|elymenty|elymentůw}}',
+'nrevisions'              => '$1 {{PLURAL:$1|wersja|wersje|wersjůw}}',
+'nviews'                  => 'filowano $1 {{PLURAL:$1|roz|rozůw}}',
+'specialpage-empty'       => 'Ta zajta je pusto.',
 'lonelypages'             => 'Poćepńynte zajty',
+'lonelypagestext'         => 'Do zajtůw půńižej ńy adresuje žodno inkšo zajta we {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
 'uncategorizedpages'      => 'Zajty bez kategoryje',
 'uncategorizedcategories' => 'Kategoryje bez kategoriůw',
 'uncategorizedimages'     => 'Pliki bez kategoriůw',
 'uncategorizedtemplates'  => 'Šablôny bez kategorii',
 'unusedcategories'        => 'Ńyužywane kategoryje',
 'unusedimages'            => 'Ńyužywane pliki',
+'popularpages'            => 'Zajty we kere nojčynśćej sam filujům',
 'wantedcategories'        => 'Potřebne katygoryje',
 'wantedpages'             => 'Nojpotřebńijše zajty',
 'mostlinked'              => 'Nojčyńśćej adrésowane',
@@ -988,7 +1145,9 @@ Artikle na pozorli'śće sům '''rube'''.",
 'shortpages'              => 'Nojkrůtše zajty',
 'longpages'               => 'Dugje artikle',
 'deadendpages'            => 'Artikle bez linkůw',
+'deadendpagestext'        => 'Zajty wymjyńůne půńižej ńy majům uodnośńikůw do žodnych inkšych zajtůw kere sům na tej wiki.',
 'protectedpages'          => 'Zawarte zajty',
+'protectedpagestext'      => 'Zajty wymjyńůne půńižej sům zawarte uod prećepywańo i sprowjańo.',
 'protectedtitles'         => 'Zawarte mjana artikli',
 'listusers'               => 'Lista užytkowńikůw',
 'specialpages'            => 'Extra zajty',

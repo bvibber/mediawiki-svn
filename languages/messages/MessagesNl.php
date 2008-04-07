@@ -942,7 +942,7 @@ Wellicht is die verwijderd of hernoemd.
 # Revision deletion
 'rev-deleted-comment'         => '(opmerking verwijderd)',
 'rev-deleted-user'            => '(gebruiker verwijderd)',
-'rev-deleted-event'           => '(actie verwijderd)',
+'rev-deleted-event'           => '(logboekregel verwijderd)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
 Deze bewerking van de pagina is verwijderd uit de publieke archieven.
 Er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderingslogboek].
@@ -959,7 +959,7 @@ er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{PAGE
 'revdelete-text'              => 'Verwijderde bewerkingen zijn zichtbaar in de geschiedenis, maar de inhoud is niet langer publiek toegankelijk.
 
 Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de verwijdering ongedaan maken met behulp van dit scherm, tenzij er aanvullende beperkingen gelden die zijn ingesteld door de systeembeheerder.',
-'revdelete-legend'            => 'Versiebeperkingen instellen',
+'revdelete-legend'            => 'Zichtbaarheidsbeperkingen instellen',
 'revdelete-hide-text'         => 'De bewerkte tekst verbergen',
 'revdelete-hide-name'         => 'Actie en doel verbergen',
 'revdelete-hide-comment'      => 'De bewerkingssamenvatting verbergen',
@@ -972,13 +972,20 @@ Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de ve
 'revdelete-submit'            => 'Toepassen op de geselecteerde bewerking',
 'revdelete-logentry'          => 'zichtbaarheid van bewerkingen is gewijzigd voor [[$1]]',
 'logdelete-logentry'          => 'wijzigde zichtbaarheid van gebeurtenis [[$1]]',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|wijziging|wijzigingen}} ingesteld naar modus $2',
-'logdelete-logaction'         => '$1 {{PLURAL:$1|actie|acties}} omgezet naar modus $2',
 'revdelete-success'           => "'''Zichtbaarheid van de wijziging succesvol ingesteld.'''",
 'logdelete-success'           => "'''Zichtbaarheid van de gebeurtenis succesvol ingesteld.'''",
 'revdel-restore'              => 'Zichtbaarheid wijzigen',
 'pagehist'                    => 'Paginageschiedenis',
 'deletedhist'                 => 'Verwijderde geschiedenis',
+'revdelete-content'           => 'inhoud',
+'revdelete-summary'           => 'samenvatting bewerken',
+'revdelete-uname'             => 'gebruikersnaam',
+'revdelete-restricted'        => 'heeft beperkingen aan beheerders opgelegd',
+'revdelete-unrestricted'      => 'heeft beperkingen voor beheerders opgeheven',
+'revdelete-hid'               => 'heeft $1 verborgen',
+'revdelete-unhid'             => 'heeft $1 zichtbaar gemaakt',
+'revdelete-log-message'       => '$1 voor $2 {{PLURAL:$2|versie|versies}}',
+'logdelete-log-message'       => '$1 voor $2 {{PLURAL:$2|logboekregel|logboekregels}}',
 
 # Suppression log
 'suppressionlog'     => 'Verbergingslogboek',
@@ -1069,7 +1076,7 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'math'                     => 'Formules',
 'dateformat'               => 'Datumopmaak',
 'datedefault'              => 'Geen voorkeur',
-'datetime'                 => 'Datum en tijd',
+'datetime'                 => 'Datum/tijd',
 'math_failure'             => 'Parsen mislukt',
 'math_unknown_error'       => 'onbekende fout',
 'math_unknown_function'    => 'onbekende functie',
@@ -1086,7 +1093,7 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'prefs-watchlist-edits'    => 'Maximaal aantal bewerkingen in de uitgebreide volglijst:',
 'prefs-misc'               => 'Diversen',
 'saveprefs'                => 'Opslaan',
-'resetprefs'               => 'Standaardvoorkeuren herstellen',
+'resetprefs'               => 'Niet opgeslagen wijzigingen herstellen',
 'oldpassword'              => 'Huidige wachtwoord:',
 'newpassword'              => 'Nieuwe wachtwoord:',
 'retypenew'                => 'Herhaling nieuwe wachtwoord:',

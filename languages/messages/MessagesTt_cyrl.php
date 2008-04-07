@@ -112,6 +112,7 @@ $messages = array(
 'category-empty'                => "''Бу төркем әле буш.''",
 'hidden-categories'             => '{{PLURAL:$1|Яшерен төркем|Яшерен төркемнәр}}',
 'hidden-category-category'      => 'Яшерен төркемнәр', # Name of the category where hidden categories will be listed
+'category-file-count-limited'   => 'Агымдагы төркемдә {{PLURAL:$1|$1 файл}} бар.',
 'listingcontinuesabbrev'        => 'дәвам',
 
 'about'          => 'Тасвир',
@@ -136,7 +137,7 @@ $messages = array(
 'metadata_help' => 'Мета мәгълүматлар:',
 
 'errorpagetitle'    => 'Хата',
-'returnto'          => 'Биткә $1 кайту.',
+'returnto'          => '$1 битенә кайтырга.',
 'tagline'           => '{{grammar:genitive|{{SITENAME}}}} дан',
 'help'              => 'Белешмә',
 'search'            => 'Эзләү',
@@ -200,6 +201,7 @@ $messages = array(
 'disclaimerpage'    => 'Project:Җаваплылыктан баш тарту',
 'edithelp'          => 'Үзгәртү хакында',
 'edithelppage'      => 'Help:Үзгәртү',
+'faq'               => 'ЕБС (FAQ)',
 'helppage'          => 'Help:Эчтәлек',
 'mainpage'          => 'Төп бит',
 'policy-url'        => 'Project:Сәясәт',
@@ -210,9 +212,14 @@ $messages = array(
 'sitesupport'       => 'Иганә',
 'sitesupport-url'   => 'Project:Ярдәм',
 
-'badaccess' => 'Рөхсәт хатасы',
+'badaccess'        => 'Рөхсәт хатасы',
+'badaccess-group0' => 'Сез сораган гамәлне башкара алмыйсыз.',
+'badaccess-group1' => 'Сораган гамәл $1 төркеменең кулланучылары гына өчен.',
+'badaccess-group2' => 'Сораган гамәл $1 төркемләренең кулланучылары гына өчен.',
+'badaccess-groups' => 'Сораган гамәл $1 төркемләренең кулланучылары гына өчен.',
 
-'versionrequired' => 'MediaWiki версия $1 белән кирәк',
+'versionrequired'     => 'MediaWiki версия $1 белән кирәк',
+'versionrequiredtext' => "Бу бит белән эшләү өчен MediaWiki'нең $1 юрама кирәк. [[Special:Version|Юрама битене]] кара.",
 
 'ok'                      => 'Ярар',
 'retrievedfrom'           => 'Чыганак — «$1»',
@@ -226,8 +233,13 @@ $messages = array(
 'toc'                     => 'Эчтәлек',
 'showtoc'                 => 'күрсәтергә',
 'hidetoc'                 => 'яшерергә',
+'thisisdeleted'           => '$1 караргамы яки торгызыргамы?',
+'viewdeleted'             => '$1 караргамы?',
+'restorelink'             => '{{PLURAL:$1|$1 бетерергән төзәтмә}}',
 'site-rss-feed'           => '$1 — RSS тасмасы',
 'site-atom-feed'          => '$1 — Atom тасмасы',
+'page-rss-feed'           => '«$1» — RSS тасмасы',
+'page-atom-feed'          => '«$1» — Atom тасмасы',
 'red-link-title'          => '$1 (әле язылмаган)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -289,7 +301,7 @@ $messages = array(
 'loginerror'                 => 'Керү хатасы',
 'prefs-help-email-required'  => 'Электрон почта адресы кирәк.',
 'loginsuccesstitle'          => 'Керү уңышлы үтте',
-'loginsuccess'               => "Сез '''$1''' исем белән кергәнсез.",
+'loginsuccess'               => "'''Сез {{SITENAME}} проектына $1 исеме белән кергәнсез.'''",
 'nosuchuser'                 => '$1 исемле кулланучы барлыкта юк.<br />
 Язылышыгызны тикшерегез яки яңа хисап язмасыны төзегез.',
 'nosuchusershort'            => "Кулланучы '''<nowiki>$1</nowiki>''' ирешү исеме белән юк. Исем язу тикшерегез.",
@@ -380,7 +392,9 @@ $messages = array(
 'noarticletext'          => "Хәзер бу биттә текст юк. Сез [[Special:Search/{{PAGENAME}}|аның башы башка мәкаләләрдә таба]] яки '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} андый баш белән бит ясый]''' аласыз.",
 'clearyourcache'         => "'''Искәрмә:''' Битне саклаудан соң төзәтмәләр күрү өчен күзәтүчегезнең кэшын буш итегез.
 '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' сайлагында.",
+'previewnote'            => '<strong>Бу фәкать алдан карау, төзәтмәләр әле сакланмаган!</strong>',
 'editing'                => 'Төзәтү: $1',
+'editingsection'         => '$1 үзгәртүе (бүлек)',
 'yourtext'               => 'Сезнең текст',
 'storedversion'          => 'Сакланган юрама',
 'yourdiff'               => 'Аермалыклар',
@@ -395,9 +409,11 @@ $messages = array(
 'cantcreateaccounttitle' => 'Хисап язмасыны төзергә мөмкинлек юк',
 
 # History pages
+'viewpagelogs'        => 'Бу бит өчен журналларны карарга',
 'currentrev'          => 'Агымдагы юрама',
 'revisionasof'        => 'Юрама $1',
 'revision-info'       => 'Юрама: $1; $2',
+'previousrevision'    => '← Алдагы төзәтмәләр',
 'nextrevision'        => 'Чираттагы төзәтмәләр →',
 'currentrevisionlink' => 'Агымдагы юрама',
 'cur'                 => 'агым.',
@@ -414,19 +430,26 @@ $messages = array(
 'rev-delundel'        => 'күрсәтергә/яшерергә',
 
 # Diffs
+'history-title'           => '$1 — төзәтү тарихы',
 'difference'              => '(Төзәтмәләр арасында аермалар)',
 'lineno'                  => '$1 юл:',
 'compareselectedversions' => 'Сайланган юрамаларны чагыштырырга',
 'editundo'                => 'үткәрмәү',
 
 # Search results
-'noexactmatch'       => "'''«$1» атлы битне әле юк.'''
+'searchresults'       => 'Эзләү нәтиҗәләре',
+'noexactmatch'        => "'''«$1» атлы битне әле юк.'''
 Аны [[:$1|төзергә]] мөмкин.",
-'prevn'              => 'алдагы $1',
-'nextn'              => 'чираттагы $1',
-'viewprevnext'       => '($1) ($2) ($3) карарга',
-'powersearch'        => 'Өстәмә эзләү',
-'powersearch-legend' => 'Өстәмә эзләү',
+'prevn'               => 'алдагы $1',
+'nextn'               => 'чираттагы $1',
+'viewprevnext'        => '($1) ($2) ($3) карарга',
+'search-result-size'  => '$1 ({{PLURAL:$2|$2 сүз}})',
+'search-redirect'     => '($1 җибәрүлеге)',
+'search-section'      => '($1 бүлеге)',
+'searchall'           => 'барлык',
+'showingresultstotal' => "Астарак '''$3''' данәдән '''$1—$2''' нәтиҗәләре күрсәтелгән",
+'powersearch'         => 'Өстәмә эзләү',
+'powersearch-legend'  => 'Өстәмә эзләү',
 
 # Preferences page
 'preferences'           => 'Көйләнмәләр',
@@ -436,6 +459,11 @@ $messages = array(
 'prefsnologintext'      => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез [[Special:Userlogin|керергә]] тиешсез.',
 'qbsettings'            => 'Күчешләр аслыгы',
 'qbsettings-none'       => 'Күрсәтмәскә',
+'changepassword'        => 'Серсүзне алыштырырга',
+'skin'                  => 'Күренеш',
+'math'                  => 'Формулалар',
+'dateformat'            => 'Датаның форматы',
+'datetime'              => 'Дата һәм вакыт',
 'prefs-personal'        => 'Шәхси мәгълүматлар',
 'prefs-rc'              => 'Баягы төзәтмәләр',
 'prefs-watchlist'       => 'Күзәтү исемлеге',
@@ -447,34 +475,60 @@ $messages = array(
 'oldpassword'           => 'Иске серсүз:',
 'newpassword'           => 'Яңа серсүз:',
 'retypenew'             => 'Яңа серсүзне кабатлагыз:',
+'textboxsize'           => 'Үзгәртү',
+'rows'                  => 'Юллар:',
+'columns'               => 'Баганалар:',
+'servertime'            => 'Серверның вакыты',
+'default'               => 'килешү буенча',
+'files'                 => 'Файллар',
+
+# User rights
+'userrights-groupsmember' => 'Әгъза:',
+
+# Groups
+'group-bot'        => 'Ботлар',
+'group-sysop'      => 'Идарәчеләр',
+'group-bureaucrat' => 'Бюрократлар',
+'group-suppress'   => 'Тикшерүчеләр',
+'group-all'        => '(барлык)',
 
 'group-autoconfirmed-member' => 'Авторасланган кулланучы',
 'group-bot-member'           => 'Бот',
 'group-sysop-member'         => 'Идарәче',
 'group-bureaucrat-member'    => 'Бюрократ',
+'group-suppress-member'      => 'Тикшерүче',
 
-'grouppage-sysop' => '{{ns:project}}:Идарәчеләр',
+'grouppage-autoconfirmed' => '{{ns:project}}:Авторасланган кулланучылар',
+'grouppage-bot'           => '{{ns:project}}:Ботлар',
+'grouppage-sysop'         => '{{ns:project}}:Идарәчеләр',
+'grouppage-bureaucrat'    => '{{ns:project}}:Бюрократлар',
+'grouppage-suppress'      => '{{ns:project}}:Тикшерүчеләр',
 
 # User rights log
-'rightslog' => 'Кулланучының хокулары журналы',
+'rightslog'  => 'Кулланучының хокуклары журналы',
+'rightsnone' => '(юк)',
 
 # Recent changes
-'nchanges'        => '$1 {{PLURAL:$1|төзәтмә|төзәтмә}}',
-'recentchanges'   => 'Баягы төзәтмәләр',
-'rcnotefrom'      => "Астарак '''$2''' башлап ('''$1''' кадәр) төзәтмәләр күрсәтелгән.",
-'rcshowhideminor' => '$1 әһәмиятсез үзгәртүләр',
-'rcshowhidebots'  => '$1 бот',
-'rcshowhideliu'   => '$1 кергән кулланучы',
-'rcshowhideanons' => '$1 кермәгән кулланучы',
-'rcshowhidepatr'  => '$1 тикшерергән үзгәртү',
-'rcshowhidemine'  => '$1 минем үзгәртү',
-'diff'            => 'аерма.',
-'hist'            => 'тарих',
-'hide'            => 'Яшерергә',
-'show'            => 'Күрсәтергә',
-'minoreditletter' => 'ә',
-'newpageletter'   => 'Я',
-'boteditletter'   => 'б',
+'nchanges'                          => '$1 {{PLURAL:$1|төзәтмә|төзәтмә}}',
+'recentchanges'                     => 'Баягы төзәтмәләр',
+'rcnotefrom'                        => "Астарак '''$2''' башлап ('''$1''' кадәр) төзәтмәләр күрсәтелгән.",
+'rclistfrom'                        => '$1 башлап яңа төзәтмәләрне күрсәтергә',
+'rcshowhideminor'                   => '$1 әһәмиятсез үзгәртүләр',
+'rcshowhidebots'                    => '$1 бот',
+'rcshowhideliu'                     => '$1 кергән кулланучы',
+'rcshowhideanons'                   => '$1 кермәгән кулланучы',
+'rcshowhidepatr'                    => '$1 тикшерергән үзгәртү',
+'rcshowhidemine'                    => '$1 минем үзгәртү',
+'rclinks'                           => 'Соңгы $2 көн эчендә соңгы $1 төзәтмәне күрсәтергә<br />$3',
+'diff'                              => 'аерма.',
+'hist'                              => 'тарих',
+'hide'                              => 'Яшерергә',
+'show'                              => 'Күрсәтергә',
+'minoreditletter'                   => 'ә',
+'newpageletter'                     => 'Я',
+'boteditletter'                     => 'б',
+'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|күзәтеп тора кулланучы}}]',
+'rc_categories_any'                 => 'Һәрбер',
 
 # Recent changes linked
 'recentchangeslinked'       => 'Бәйләнешле төзәтмәләр',
@@ -483,6 +537,7 @@ $messages = array(
 # Upload
 'upload'        => 'Файлны йөкләргә',
 'uploadbtn'     => 'Файлны йөкләргә',
+'uploadlogpage' => 'Йөкләү журналы',
 'uploadedimage' => '«[[$1]]» йөкләнгән',
 
 # Special:Imagelist
@@ -503,6 +558,7 @@ $messages = array(
 'filehist-comment'          => 'Искәрмә',
 'imagelinks'                => 'Сылтамалар',
 'linkstoimage'              => 'Бу файлга түбәндәге битләр сылтый:',
+'nolinkstoimage'            => 'Бу файлга сылтаган битләр юк.',
 'noimage'                   => 'Бу атлы файлны барлыкта юк, $1 сез булдырасыз.',
 'noimage-linktext'          => 'аны йөкләргә',
 'uploadnewversion-linktext' => 'Бу файлның яңа юрамасыны йөкләргә',
@@ -531,12 +587,15 @@ $messages = array(
 
 'brokenredirects' => 'Бәйләнешсез җибәрүлек',
 
-'withoutinterwiki' => 'Телләрара сылтамасыз битләр',
+'withoutinterwiki'        => 'Телләрара сылтамасыз битләр',
+'withoutinterwiki-submit' => 'Күрсәтергә',
 
 'fewestrevisions' => 'Аз үзгәртүләр белән битләр',
 
 # Miscellaneous special pages
+'nbytes'                  => '$1 {{PLURAL:$1|байт}}',
 'nlinks'                  => '$1 {{PLURAL:$1|сылтама}}',
+'nmembers'                => '$1 {{PLURAL:$1|әгъза}}',
 'lonelypages'             => 'Үксез битләр',
 'uncategorizedpages'      => 'Төркемләнмәгән битләр',
 'uncategorizedcategories' => 'Төркемләнмәгән төркемнәр',
@@ -564,23 +623,47 @@ $messages = array(
 'move'                    => 'Күчерергә',
 'movethispage'            => 'Бу битне күчерергә',
 
+# Book sources
+'booksources'               => 'Китап чыганаклары',
+'booksources-search-legend' => 'Китап чыганакларыны эзләү',
+'booksources-go'            => 'Башкару',
+
 # Special:Log
 'specialloguserlabel'  => 'Кулланучы:',
 'speciallogtitlelabel' => 'Башлам:',
+'log'                  => 'Журналлар',
 'all-logs-page'        => 'Барлык журналлар',
+'log-search-legend'    => 'Журналларны эзләү',
+'log-search-submit'    => 'Башкару',
 
 # Special:Allpages
 'allpages'       => 'Барлык битләр',
 'alphaindexline' => '$1 дан $2 гача',
 'nextpage'       => 'Чираттагы бит ($1)',
+'prevpage'       => 'Алдагы бит ($1)',
 'allarticles'    => 'Барлык мәкаләләр',
 'allpagesprev'   => 'Элекке',
 'allpagesnext'   => 'Киләсе',
 'allpagessubmit' => 'Башкару',
 'allpagesprefix' => 'Алкушымчалы битләрне күрсәтергә:',
 
+# Special:Listusers
+'listusers-submit'   => 'Күрсәтергә',
+'listusers-noresult' => 'Кулланучыларны табылмады.',
+
 # E-mail user
-'emailuser' => 'Бу кулланучыга хат',
+'emailuser'       => 'Бу кулланучыга хат',
+'emailpage'       => 'Кулланучыга хат җибәрергә',
+'defemailsubject' => '{{SITENAME}}: хат',
+'noemailtitle'    => 'Электрон почта адресы юк',
+'emailfrom'       => 'Кемдән',
+'emailto'         => 'Кемгә',
+'emailsubject'    => 'Тема',
+'emailmessage'    => 'Хәбәр',
+'emailsend'       => 'Җибәрергә',
+'emailccme'       => 'Миңа хәбәрнең күчермәсене җибәрергә.',
+'emailccsubject'  => '$1 өчен хәбәрегезнең күчермәсе: $2',
+'emailsent'       => 'Хат җибәрелгән',
 
 # Watchlist
 'watchlist'            => 'Күзәтү исемлегем',
@@ -593,27 +676,43 @@ $messages = array(
 'watchthispage'        => 'Бу битне күзәтергә',
 'unwatch'              => 'Күзәтмәскә',
 'wlshowlast'           => 'Баягы $1 сәгать $2 көн эчендә яки $3ны күрсәтергә',
+'watchlist-show-bots'  => 'Ботларның үзгәртүләрене күрсәтергә',
 'watchlist-hide-bots'  => 'Ботлар төзәтмәләрне яшерергә',
+'watchlist-show-own'   => 'Минем үзгәртүләремне күрсәтергә',
 'watchlist-hide-own'   => 'Төзәтмәләремне яшерергә',
+'watchlist-show-minor' => 'Әһәмиятсез үзгәртүләрне күрсәтергә',
 'watchlist-hide-minor' => 'Әһәмиятсез үзгәртүләрне яшерергә',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Күзәтү исемлегемә өстәүе…',
 'unwatching' => 'Күзәтү исемлегемнән чыгаруы…',
 
+'enotif_newpagetext'           => 'Бу яңа бит.',
+'enotif_impersonal_salutation' => '{{SITENAME}} кулланучы',
+'changed'                      => 'үзгәртергән',
+'created'                      => 'төзергән',
+
 # Delete/protect/revert
 'deletepage'                  => 'Битне бетерергә',
+'confirm'                     => 'Расларга',
+'excontent'                   => 'эчтәлек: «$1»',
+'exblank'                     => 'бит буш иде',
+'delete-confirm'              => '«$1» бетерүе',
+'delete-legend'               => 'Бетерү',
 'historywarning'              => 'Кисәтү: сез бетерергә теләгән биттә үзгәртү тарихы бар:',
 'actioncomplete'              => 'Гамәл башкарган',
 'deletedtext'                 => '«<nowiki>$1</nowiki>» бетерергән инде.<br />
 Соңгы бетерүләр карау өчен, $2 кара.',
 'deletedarticle'              => '«[[$1]]» бетерергән',
 'dellogpage'                  => 'Бетерү исемлеге',
+'deletionlog'                 => 'бетерү журналы',
 'deletecomment'               => 'Бетерү сәбәбе:',
 'deleteotherreason'           => 'Башка/өстәмә сәбәп:',
 'deletereasonotherlist'       => 'Башка сәбәп',
 'rollbacklink'                => 'кире кайтару',
 'protectlogpage'              => 'Яклану журналы',
+'protectedarticle'            => '«[[$1]]» якланган',
+'unprotectedarticle'          => '«[[$1]]» инде якланмаган',
 'protectcomment'              => 'Искәрмә:',
 'protect-unchain'             => 'Битнең күчерү рөхсәте ачарга',
 'protect-text'                => 'Биредә сез <strong>[[:$1]]</strong> бите өчен яклау дәрәҗәсене карый һәм үзгәрә аласыз.',
@@ -627,9 +726,30 @@ $messages = array(
 'protect-cantedit'            => 'Сез бу битнең яклау дәрәҗәсене үзгәрә алмыйсыз, чөнки сездә аны үзгәртергә рөхсәтегез юк.',
 'restriction-type'            => 'Рөхсәт:',
 'restriction-level'           => 'Мөмкинлек дәрәҗәсе:',
+'minimum-size'                => 'Иң кечкенә зурлык',
+'maximum-size'                => 'Иң югары зурлык',
+'pagesize'                    => '(байт)',
+
+# Restrictions (nouns)
+'restriction-edit'   => 'Үзгәртү',
+'restriction-move'   => 'Күчерү',
+'restriction-create' => 'Төзү',
+
+# Restriction levels
+'restriction-level-sysop'         => 'тулы яклау',
+'restriction-level-autoconfirmed' => 'өлешчә яклау',
+'restriction-level-all'           => 'барлык дәрәҗәләр',
 
 # Undelete
-'undeletebtn' => 'Торгызырга',
+'undelete'               => 'Бетерергән битләрне карарга',
+'undeletepage'           => 'Бетерергән битләрне карау һәм торгызу',
+'viewdeletedpage'        => 'Бетерергән битләрне карарга',
+'undeletebtn'            => 'Торгызырга',
+'undeletelink'           => 'торгызырга',
+'undeletereset'          => 'Ташлатырга',
+'undeletecomment'        => 'Искәрмә:',
+'undeletedarticle'       => '«[[$1]]» торгызырган',
+'undelete-search-submit' => 'Эзләргә',
 
 # Namespace form on various pages
 'namespace'      => 'Исемнәр мәйданы:',
@@ -640,23 +760,34 @@ $messages = array(
 'contributions' => 'Кулланучының кертеме',
 'mycontris'     => 'Кертемем',
 'uctop'         => '(ахыргы)',
+'month'         => 'Айдан башлап (һәм элегрәк):',
+'year'          => 'Елдан башлап (һәм элегрәк):',
 
 'sp-contributions-newbies-sub' => 'Яңа хисап язмалары өчен',
+'sp-contributions-blocklog'    => 'Кысу журналы',
+'sp-contributions-username'    => 'Кулланучының IP адресы яки исеме:',
+'sp-contributions-submit'      => 'Эзләргә',
 
 # What links here
 'whatlinkshere'       => 'Бирегә нәрсә сылтый',
 'whatlinkshere-title' => '$1 битенә сылтаган битләр',
+'whatlinkshere-page'  => 'Бит:',
 'linklistsub'         => '(Сылтамалар исемлеге)',
+'linkshere'           => "'''[[:$1]]''' биткә чираттагы битләр сылтый:",
 'nolinkshere'         => "'''[[:$1]]''' битенә башка битләр сылтамыйлар.",
 'isredirect'          => 'җибәрү өчен бит',
+'whatlinkshere-prev'  => '{{PLURAL:$1|алдагы|алдагы $1}}',
+'whatlinkshere-next'  => '{{PLURAL:$1|чираттагы|чираттагы $1}}',
 'whatlinkshere-links' => '← сылтамалар',
 
 # Block/unblock
 'blockip'      => 'Кулланучыны кысарга',
+'ipboptions'   => '15 минут:15 minutes,2 сәгать:2 hours,6 сәгать:6 hours,12 сәгать:12 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3 ай:3 months,6 ай:6 months,1 ел:1 year,вакытсыз:infinite', # display1:time1,display2:time2,...
 'ipblocklist'  => 'Кысылган IP-адреслар һәм кулланучы исемләр исемлеге',
 'blocklink'    => 'кысарга',
 'unblocklink'  => 'кысмаска',
 'contribslink' => 'кертем',
+'blocklogpage' => 'Кысу журналы',
 
 # Move page
 'movearticle'      => 'Битне күчерергә:',
@@ -670,13 +801,19 @@ $messages = array(
 'talkpagemoved'    => 'Бәйләнешле фикер алышу бите шулай ук күчерергән.',
 'talkpagenotmoved' => 'Бәйләнешле фикер алышу бите күчерү <strong>алмаган</strong>.',
 '1movedto2'        => '«[[$1]]» бите «[[$2]]» биткә күчерергән',
+'movelogpage'      => 'Күчерү журналы',
 'movereason'       => 'Сәбәп:',
+'revertmove'       => 'кире кайту',
+
+# Export
+'export' => 'Битләрне чыгаруы',
 
 # Namespace 8 related
 'allmessages' => 'Система хәбәрләре',
 
 # Thumbnails
-'thumbnail-more' => 'Зурайтырга',
+'thumbnail-more'  => 'Зурайтырга',
+'thumbnail_error' => 'Кечкенә сүрәт төзүе хатасы: $1',
 
 # Import log
 'importlogpage' => 'Кертү журналы',
@@ -685,6 +822,7 @@ $messages = array(
 'tooltip-pt-userpage'       => 'Минем кулланучы битем',
 'tooltip-pt-mytalk'         => 'Фикер алышу битем',
 'tooltip-pt-preferences'    => 'Минем көйләнмәләрем',
+'tooltip-pt-watchlist'      => 'Сез күзәтелгән төзәтмәле битләр исемлеге',
 'tooltip-pt-mycontris'      => 'Минем кертемем исемлеге',
 'tooltip-pt-logout'         => 'Чыгарга',
 'tooltip-ca-talk'           => 'Битнең эчтәлеге турында фикер алышу',
@@ -694,35 +832,53 @@ $messages = array(
 'tooltip-ca-delete'         => 'Бу битне бетерергә',
 'tooltip-ca-move'           => 'Бу битне күчерергә',
 'tooltip-ca-watch'          => 'Бу битне сезнең күзәтү исемлегезгә өстәргә',
+'tooltip-ca-unwatch'        => 'Бу битне сезнең күзәтү исемлегездә бетерергә',
 'tooltip-search'            => 'Эзләү {{SITENAME}}',
 'tooltip-n-mainpage'        => 'Төп битне кереп чыгарга',
+'tooltip-n-currentevents'   => 'Агымдагы вакыйгалар турында мәгълүматны табарга',
 'tooltip-n-recentchanges'   => 'Баягы төзәтмәләр исемлеге.',
 'tooltip-n-randompage'      => 'Очраклы битне карарга',
 'tooltip-n-sitesupport'     => 'Безгә ярдәм итегез',
 'tooltip-t-whatlinkshere'   => 'Бирегә сылтаган барлык битләрнең исемлеге',
+'tooltip-t-contributions'   => 'Кулланучының кертеме исемлегене карарга',
 'tooltip-t-emailuser'       => 'Бу кулланучыга хат җибәрергә',
 'tooltip-t-upload'          => 'Файлларны йөкләргә',
 'tooltip-t-specialpages'    => 'Барлык махсус битләр исемлеге',
 'tooltip-ca-nstab-user'     => 'Кулланучының битене карарга',
+'tooltip-ca-nstab-project'  => 'Проектның битене карарга',
 'tooltip-ca-nstab-image'    => 'Сүрәтнең битене карарга',
+'tooltip-ca-nstab-template' => 'Өлгене карарга',
 'tooltip-ca-nstab-help'     => 'Белешмәнең битене карарга',
 'tooltip-ca-nstab-category' => 'Төркемнең битене карарга',
 'tooltip-minoredit'         => 'Бу үзгәртүне әһәмиятсез булып билгеләргә',
 'tooltip-save'              => 'Сезнең төзетмәләрегезне сакларга',
+'tooltip-preview'           => 'Сезнең төзәтмәләрегезнең алдан карауы, саклаудан кадәр кулланыгыз әле!',
 'tooltip-watch'             => 'Бу битне күзәтү исемлегемә өстәргә',
 
+# Browsing diffs
+'previousdiff' => '← Алдагы аерма',
+'nextdiff'     => 'Чираттагы аерма →',
+
 # Media information
-'show-big-image' => 'Тулы ачыклык',
+'file-info-size'       => '($1 × $2 нокта, файлның зурлыгы: $3, MIME тибы: $4)',
+'file-nohires'         => '<small>Югары ачыклык белән юрама юк.</small>',
+'svg-long-desc'        => '(SVG файлы, шартлы $1 × $2 нокта, файлның зурлыгы: $3)',
+'show-big-image'       => 'Тулы ачыклык',
+'show-big-image-thumb' => '<small>Алдан карау зурлыгы: $1 × $2 нокта</small>',
 
 # Special:Newimages
 'newimages' => 'Яңа сүрәтләр җыелмасы',
 
 # Metadata
-'metadata'        => 'Мета мәгълүматлар',
-'metadata-expand' => 'Өстәмә мәгълүматларны күрсәтергә',
+'metadata'          => 'Мета мәгълүматлар',
+'metadata-expand'   => 'Өстәмә мәгълүматларны күрсәтергә',
+'metadata-collapse' => 'Өстәмә мәгълүматларны яшерергә',
 
 # EXIF tags
 'exif-brightnessvalue' => 'Яктылык',
+
+# External editor support
+'edit-externally' => 'Бу файлны тышкы кушымтаны кулланып үзгәртергә',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'барлык',

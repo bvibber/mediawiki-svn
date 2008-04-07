@@ -941,8 +941,8 @@ podrobnosti o smazání mohou být uvedeny v [{{fullurl:Special:Log/delete|page=
 'revisiondelete'              => 'Smazat/obnovit revize',
 'revdelete-nooldid-title'     => 'Nezadána revize',
 'revdelete-nooldid-text'      => 'Nezvolili jste revize, na které chcete tuto funkci použít.',
-'revdelete-selected'          => "{{plural:$2|Zvolená|Zvolené|Zvolené}} revize stránky '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Vybraná protokolovaná událost|Vybrané protokolované události|Vybrané protokolované události}} pro '''$1:'''",
+'revdelete-selected'          => "{{plural:$2|Vybrána $1 revize|Vybrány $1 revize|Vybráno $1 revizí}} stránky '''[[:$1]]:'''",
+'logdelete-selected'          => '{{PLURAL:$1|Vybraná protokolovaná událost|Vybrané protokolované události}}:',
 'revdelete-text'              => 'Smazané verze a události budou nadále zobrazeny v historii stránky a protokolovacích záznamech, ale jejich text nebude veřejně dostupný.
 
 Ostatní správci {{grammar:2sg|{{SITENAME}}}} si budou moci skrytý obsah prohlížet a pomocí stejného rozhraní jej také obnovit,
@@ -961,11 +961,16 @@ pokud to provozovatel serveru nezakázal.',
 'revdelete-logentry'          => 'změnil viditelnost revizí u [[$1]]',
 'logdelete-logentry'          => 'mění viditelnost události [[$1]]',
 'revdelete-logaction'         => 'U $1 {{PLURAL:$1|revize|revizí|revizí}} nastaven mód $2',
-'logdelete-logaction'         => 'U $1 {{PLURAL:$1|události|událostí|událostí}} pro [[$3]] nastaven mód $2',
+'logdelete-logaction'         => 'U $1 {{PLURAL:$1|události|událostí}} nastaven mód $2',
 'revdelete-success'           => "'''Viditelnost revize úspěšně nastavena.'''",
 'logdelete-success'           => "'''Viditelnost události úspěšně nastavena.'''",
+'revdel-restore'              => 'Změnit viditelnost',
 'pagehist'                    => 'Historie stránky',
 'deletedhist'                 => 'Smazaná historie',
+
+# Suppression log
+'suppressionlog'     => 'Záznam potlačení',
+'suppressionlogtext' => 'Toto je záznam činností dohlížitelů – mazání a blokování zahrnující skrytí obsahu i před správci. Vizte též [[Special:Ipblocklist|seznam všech probíhajících bloků]].',
 
 # History merging
 'mergehistory'                     => 'Slučování historií stránek',
@@ -1129,17 +1134,20 @@ Nezaškrtnuté políčko značí, že uživatel ve skupině není.',
 'group-bot'           => 'Boti',
 'group-sysop'         => 'Správci',
 'group-bureaucrat'    => 'Byrokraté',
+'group-suppress'      => 'Dohlížitelé',
 'group-all'           => '(všechny)',
 
 'group-autoconfirmed-member' => 'schválený uživatel',
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Správce',
 'group-bureaucrat-member'    => 'Byrokrat',
+'group-suppress-member'      => 'Dohlížitel',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Schválení uživatelé',
 'grouppage-bot'           => '{{ns:project}}:Boti',
 'grouppage-sysop'         => '{{ns:project}}:Správci',
 'grouppage-bureaucrat'    => '{{ns:project}}:Byrokraté',
+'grouppage-suppress'      => '{{ns:project}}:Dohlížitelé',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
@@ -1615,6 +1623,7 @@ Rady a kontakt:
 'actioncomplete'              => 'Provedeno',
 'deletedtext'                 => 'Stránka nebo soubor „<nowiki>$1</nowiki>“ byla smazána. $2 zaznamenává poslední smazání.',
 'deletedarticle'              => 'maže „$1“',
+'suppressedarticle'           => 'potlačil „[[$1]]“',
 'dellogpage'                  => 'Kniha smazaných stránek',
 'dellogpagetext'              => 'Zde je seznam posledních smazaných stránek.',
 'deletionlog'                 => 'Kniha smazaných stránek',
@@ -1785,7 +1794,7 @@ $1',
 'ipboptions'                  => '2 hodiny:2 hours,1 den:1 day,3 dny:3 days,1 týden:1 week,2 týdny:2 weeks,1 měsíc:1 month,3 měsíce:3 months,6 měsíců:6 months,1 rok:1 year,do odvolání:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'              => 'jiný',
 'ipbotherreason'              => 'Jiný nebo další důvod:',
-'ipbhidename'                 => 'Skrýt uživatelské jméno nebo v knize zablokování a seznamu probíhajících bloků',
+'ipbhidename'                 => 'Skrýt uživatelské jméno v&nbsp;knize zablokování, seznamu probíhajících bloků a&nbsp;seznamu uživatelů',
 'badipaddress'                => 'Neplatná IP adresa',
 'blockipsuccesssub'           => 'Zablokování uspělo',
 'blockipsuccesstext'          => 'Uživatel „[[Special:Contributions/$1|$1]]“ je zablokován. <br />Podívejte se na [[Special:Ipblocklist|seznam zablokovaných]], [[Special:Log/block|kniha zablokování]] zaznamenává všechny podobné úkony.',

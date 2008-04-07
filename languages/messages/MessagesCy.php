@@ -488,12 +488,16 @@ Rhydd ichi anwybyddu\'r neges hon os mai camgymeriad oedd creu\'r cyfrif.',
 'loginlanguagelabel'         => 'Iaith: $1',
 
 # Password reset dialog
-'resetpass'          => 'Ailosod cyfrinair y cyfrif',
-'resetpass_announce' => "Fe wnaethoch fewngofnodi gyda chôd dros dro oddi ar e-bost.
+'resetpass'               => 'Ailosod cyfrinair y cyfrif',
+'resetpass_announce'      => "Fe wnaethoch fewngofnodi gyda chôd dros dro oddi ar e-bost.
 Er mwyn cwblhau'r mewngofnodi, rhaid i chi osod cyfrinair newydd fel hyn:",
-'resetpass_header'   => 'Ailosod y cyfrinair',
-'resetpass_submit'   => 'Gosod y cyfrinair a mewngofnodi',
-'resetpass_missing'  => 'Dim data ar y ffurflen.',
+'resetpass_header'        => 'Ailosod y cyfrinair',
+'resetpass_submit'        => 'Gosod y cyfrinair a mewngofnodi',
+'resetpass_success'       => "Llwyddodd y newid i'ch cyfrinair! Wrthi'n mewngofnodi...",
+'resetpass_bad_temporary' => 'Cyfrinair dros dro annilys.
+Efallai eich bod eisoes wedi llwyddo newid eich cyfrinair neu eich bod wedi gwneud cais am gyfrinair dros dro newydd.',
+'resetpass_forbidden'     => 'Ni ellir newid cyfrineiriau ar {{SITENAME}}',
+'resetpass_missing'       => 'Dim data ar y ffurflen.',
 
 # Edit page toolbar
 'bold_sample'     => 'Testun cryf',
@@ -522,7 +526,7 @@ Er mwyn cwblhau'r mewngofnodi, rhaid i chi osod cyfrinair newydd fel hyn:",
 'subject'                   => 'Testun/pennawd',
 'minoredit'                 => 'Golygiad bychan yw hwn',
 'watchthis'                 => 'Gwyliwch erthygl hon',
-'savearticle'               => 'Cadw tudalen',
+'savearticle'               => "Cadw'r dudalen",
 'preview'                   => 'Rhagolwg',
 'showpreview'               => 'Dangos rhagolwg',
 'showlivepreview'           => 'Rhagolwg byw',
@@ -677,13 +681,11 @@ Eglurhad: (cyf.) = gwahaniaethau rhyngddo a'r fersiwn cyfredol,
 'history-feed-item-nocomment' => '$1 am $2', # user at time
 
 # Revision deletion
-'rev-delundel'        => 'dangos/cuddio',
-'revdelete-selected'  => 'Y {{PLURAL:$2|golygiad|golygiad|golygiadau|golygiadau|golygiadau|golygiadau}} dewisedig o [[:$1]]:',
-'logdelete-selected'  => "{{PLURAL:$1|Digwyddiad|Digwyddiad|Digwyddiadau|Digwyddiadau|Digwyddiadau|Digwyddiadau}} a ddewiswyd o'r lòg:",
-'logdelete-logentry'  => 'newidiwyd y gallu i weld y digwyddiad [[$1]]',
-'revdelete-logaction' => "Gosodwyd $1 {{PLURAL:$1|diwygiad|diwygiad|ddiwygiad|diwygiad|diwygiad|diwygiad}} i'r modd $2",
-'logdelete-logaction' => "$1 {{PLURAL:$1|digwyddiad|digwyddiad|ddigwyddiad|digwyddiad|digwyddiad|digwyddiad}} {{PLURAL:$1|wedi'i osod|wedi'i osod|wedi'u gosod|wedi'u gosod|wedi'u gosod|wedi'u gosod}} i'r modd $2",
-'logdelete-success'   => "'''Llwyddwyd i guddio'r digwyddiad.'''",
+'rev-delundel'       => 'dangos/cuddio',
+'revdelete-selected' => 'Y {{PLURAL:$2|golygiad|golygiad|golygiadau|golygiadau|golygiadau|golygiadau}} dewisedig o [[:$1]]:',
+'logdelete-selected' => "{{PLURAL:$1|Digwyddiad|Digwyddiad|Digwyddiadau|Digwyddiadau|Digwyddiadau|Digwyddiadau}} a ddewiswyd o'r lòg:",
+'logdelete-logentry' => 'newidiwyd y gallu i weld y digwyddiad [[$1]]',
+'logdelete-success'  => "'''Llwyddwyd i guddio'r digwyddiad.'''",
 
 # History merging
 'mergehistory'                     => 'Cyfuno hanesion y tudalennau',
@@ -730,6 +732,8 @@ Pan yn gwneud hyn dylid sicrhau nad yw dilyniant hanes tudalennau yn cael ei ddi
 'prevn'                 => 'y $1 cynt',
 'nextn'                 => 'y $1 nesaf',
 'viewprevnext'          => 'Dangos ($1) ($2) ($3).',
+'search-result-size'    => '$1 ({{PLURAL:$2|dim geiriau|$2 gair|$2 air|$2 gair|$2 gair|$2 gair|}})',
+'search-result-score'   => 'Perthnasedd: $1%',
 'searchall'             => 'oll',
 'showingresults'        => "Yn dangos hyd at $1 {{PLURAL:$1|canlyniad|canlyniad|ganlyniad|chanlyniad|chanlyniad|canlyniad}} isod gan ddechrau gyda rhif '''$2'''.",
 'showingresultsnum'     => "Yn dangos $3 {{PLURAL:$3|canlyniad|canlyniad|ganlyniad|chanlyniad|chanlyniad|canlyniad}} isod gan ddechrau gyda rhif '''$2'''.",
@@ -775,8 +779,8 @@ $2 Rhestri ailgyfeiriadau<br />Chwilio am $3 $9',
 'prefs-watchlist-days'     => "Nifer y diwrnodau i'w dangos yn y rhestr gwylio:",
 'prefs-watchlist-edits'    => "Nifer y golygiadau i'w dangos wrth ehangu'r rhestr gwylio:",
 'prefs-misc'               => 'Amrywiol',
-'saveprefs'                => 'Cadw ffafraethau',
-'resetprefs'               => 'Ail-setio ffafraethau',
+'saveprefs'                => "Cadw'r dewisiadau",
+'resetprefs'               => 'Ailosod',
 'oldpassword'              => 'Hen gyfrinair:',
 'newpassword'              => 'Cyfrinair newydd:',
 'retypenew'                => 'Ail-teipiwch yr allweddair newydd',
@@ -784,7 +788,7 @@ $2 Rhestri ailgyfeiriadau<br />Chwilio am $3 $9',
 'rows'                     => 'Rhesi',
 'columns'                  => 'Colofnau:',
 'searchresultshead'        => 'Canlyniadau chwilio',
-'resultsperpage'           => 'Hitiau i ddangos ar pob tudalen',
+'resultsperpage'           => 'Cyfradd taro fesul tudalen:',
 'contextlines'             => "Nifer y llinellau i'w dangos ar gyfer pob hit:",
 'contextchars'             => 'Characters of context per line',
 'recentchangesdays'        => "Nifer y diwrnodau i'w dangos yn 'newidiadau diweddar':",
@@ -808,7 +812,7 @@ $2 Rhestri ailgyfeiriadau<br />Chwilio am $3 $9',
 'editusergroup'                    => 'Golygu Grwpiau Defnyddwyr',
 'editinguser'                      => 'Yn golygu $1',
 'userrights-editusergroup'         => 'Golygu grwpiau defnyddwyr',
-'saveusergroups'                   => 'Cadw Grŵpiau Defnyddwyr',
+'saveusergroups'                   => "Cadw'r Grwpiau Defnyddwyr",
 'userrights-groupsmember'          => 'Yn aelod o:',
 'userrights-groupsavailable'       => 'Grwpiau ar gael:',
 'userrights-reason'                => 'Y rheswm dros y newid:',
@@ -926,7 +930,7 @@ Os yw'r ddelwedd ar ei lawn faint gallwch barhau i'w uwchlwytho. Os na, newidiwc
 'fileexists-shared-forbidden' => "Mae ffeil gyda'r enw hwn eisoes yn bodoli yn y storfa ffeiliau cyfrannol; ewch nôl ac uwchlwythwch y ffeil o dan enw newydd. [[Image:$1|thumb|center|$1]]",
 'successfulupload'            => 'Llwyth i fynu yn llwyddiannus',
 'uploadwarning'               => 'Rhybudd llwytho i fynu',
-'savefile'                    => 'Cadw ffeil',
+'savefile'                    => "Cadw'r ffeil",
 'uploadedimage'               => '"[[$1]]" wedi llwytho',
 'overwroteimage'              => "uwchlwythwyd fersiwn newydd o '[[$1]]'",
 'uploaddisabled'              => 'Mae ddrwg gennym ni, mae uwchllwytho wedi anablo.',
@@ -1313,7 +1317,7 @@ Dyma'r gosodiadau diogelu cyfredol ar gyfer y dudalen <strong>$1</strong>:",
 'protect-expiring'            => 'yn dod i ben am $1 (UTC)',
 'protect-cascade'             => 'Diogelwch dudalennau sydd wedi eu cynnwys yn y dudalen hon (diogelu sgydol)',
 'protect-cantedit'            => "Ni allwch newid lefel diogelu'r dudalen hon, am nad yw'r gallu i olygu'r dudalen ganddoch.",
-'restriction-type'            => 'Caniatâd:',
+'restriction-type'            => 'Cyfyngiad:',
 'restriction-level'           => 'Lefel cyfyngu:',
 'minimum-size'                => 'Maint lleiaf',
 'maximum-size'                => 'Maint mwyaf',
@@ -1325,8 +1329,9 @@ Dyma'r gosodiadau diogelu cyfredol ar gyfer y dudalen <strong>$1</strong>:",
 'restriction-create' => 'Gosod',
 
 # Restriction levels
-'restriction-level-sysop' => 'llwyr diogelwyd',
-'restriction-level-all'   => 'unrhyw lefel',
+'restriction-level-sysop'         => 'llwyr diogelwyd',
+'restriction-level-autoconfirmed' => 'lled-ddiogelwyd',
+'restriction-level-all'           => 'pob lefel',
 
 # Undelete
 'undelete'                 => 'Gwrthdroi tudalen wedi dileuo',
@@ -1757,7 +1762,7 @@ I gadarnhau mai chi yn wir yw perchennog y cyfrif hwn, ac i alluogi nodweddion e
 
 $3
 
-Os *nad* chi sydd berchen ar y cyfrif hwn, dilynwch y cyswllt hwn er mwyn dileu cadarnhad y cyfeiriad e-bost:
+Os *nad* chi sydd berchen y cyfrif hwn, dilynwch y cyswllt hwn er mwyn dileu cadarnhad y cyfeiriad e-bost:
 
 $5 
 
@@ -1847,5 +1852,10 @@ Gallwch hefyd [[Special:Watchlist/edit|ddefnyddio'r rhestr arferol]].",
 # Special:Version
 'version'              => 'Fersiwn', # Not used as normal message but as header for the special page itself
 'version-specialpages' => 'Tudalennau arbennig',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch-submit'   => 'Chwilier',
+'fileduplicatesearch-result-1' => 'Nid oes yr un ffeil i gael sydd yn union yr un fath â\'r ffeil "$1".',
+'fileduplicatesearch-result-n' => '{{PLURAL:$2|Nid oes yr un ffeil|Mae $2 ffeil|Mae $2 ffeil|Mae $2 ffeil|Mae $2 ffeil|Mae $2 ffeil|}} i gael sydd yn union yr un fath â\'r ffeil "$1".',
 
 );

@@ -35,14 +35,10 @@ class FileDeleteForm {
 		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		} elseif( !$wgUser->isLoggedIn() ) {
-			$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
-			return;
-		} elseif( !$wgUser->isAllowed( 'delete' ) ) {
-			$wgOut->permissionRequired( 'delete' );
-			return;
-		} elseif( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
+		} 
+		$permission_errors = $this->title->getUserPermissionsErrors('delete', $wgUser);
+		if (count($permission_errors)>0) {
+			$wgOut->showPermissionsErrorPage( $permission_errors );
 			return;
 		}
 		
@@ -51,14 +47,14 @@ class FileDeleteForm {
 		# Flag to hide all contents of the archived revisions
 		$suppress = $wgRequest->getVal( 'wpSuppress' ) && $wgUser->isAllowed('deleterevision');
 		
-		if( $this->oldimage && !$this->isValidOldSpec() ) {
+		if( $this->oldimage && !self::isValidOldSpec($this->oldimage) ) {
 			$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars( $this->oldimage ) );
 			return;
 		}
 		if( $this->oldimage )
 			$this->oldfile = RepoGroup::singleton()->getLocalRepo()->newFromArchiveName( $this->title, $this->oldimage );
 		
-		if( !$this->haveDeletableFile() ) {
+		if( !self::haveDeletableFile($this->file, $this->oldfile, $this->oldimage) ) {
 			$wgOut->addHtml( $this->prepareMessage( 'filedelete-nofile' ) );
 			$wgOut->addReturnTo( $this->title );
 			return;
@@ -75,31 +71,8 @@ class FileDeleteForm {
 			} elseif ( $reason == 'other' ) {
 				$reason = $this->DeleteReason;
 			}
-				
-			$article = null;
-			if( $this->oldimage ) {
-				$status = $this->file->deleteOld( $this->oldimage, $reason, $suppress );
-				if( $status->ok ) {
-					// Need to do a log item
-					$log = new LogPage( 'delete' );
-					$logComment = wfMsgForContent( 'deletedrevision', $this->oldimage );
-					if( trim( $reason ) != '' )
-						$logComment .= ": {$reason}";
-					$log->addEntry( 'delete', $this->title, $logComment );
-				}
-			} else {
-				$status = $this->file->delete( $reason, $suppress );
-				if( $status->ok ) {
-					// Need to delete the associated article
-					$article = new Article( $this->title );					
-					if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason)) ){												
-						if( $article->doDeleteArticle( $reason, $suppress ) )
-							wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason));
-					}
-				}
-			}
-			if( $status->isGood() ) wfRunHooks('FileDeleteComplete', array( 
-				&$this->file, &$this->oldimage, &$article, &$wgUser, &$reason));
+			
+			$status = self::doDelete( $this->title, $this->file, $this->oldimage, $reason, $suppress );
 			
 			if( !$status->isGood() )
 				$wgOut->addWikiText( $status->getWikiText( 'filedeleteerror-short', 'filedeleteerror-long' ) );
@@ -115,6 +88,35 @@ class FileDeleteForm {
 		
 		$this->showForm();
 		$this->showLogEntries();
+	}
+	
+	public static function doDelete( &$title, &$file, &$oldimage, $reason, $suppress ) {
+		$article = null;
+		if( $oldimage ) {
+			$status = $file->deleteOld( $oldimage, $reason, $suppress );
+			if( $status->ok ) {
+				// Need to do a log item
+				$log = new LogPage( 'delete' );
+				$logComment = wfMsgForContent( 'deletedrevision', $oldimage );
+				if( trim( $reason ) != '' )
+					$logComment .= ": {$reason}";
+					$log->addEntry( 'delete', $title, $logComment );
+			}
+		} else {
+			$status = $file->delete( $reason, $suppress );
+			if( $status->ok ) {
+				// Need to delete the associated article
+				$article = new Article( $title );					
+				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason)) ) {												
+					if( $article->doDeleteArticle( $reason, $suppress ) )
+						wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason));
+				}
+			}
+		}
+		if( $status->isGood() ) wfRunHooks('FileDeleteComplete', array( 
+			&$file, &$oldimage, &$article, &$wgUser, &$reason));
+		
+		return $status;
 	}
 
 	/**
@@ -228,10 +230,10 @@ class FileDeleteForm {
 	 *
 	 * @return bool
 	 */
-	private function isValidOldSpec() {
-		return strlen( $this->oldimage ) >= 16
-			&& strpos( $this->oldimage, '/' ) === false
-			&& strpos( $this->oldimage, '\\' ) === false;
+	public static function isValidOldSpec($oldimage) {
+		return strlen( $oldimage ) >= 16
+			&& strpos( $oldimage, '/' ) === false
+			&& strpos( $oldimage, '\\' ) === false;
 	}
 	
 	/**
@@ -241,10 +243,10 @@ class FileDeleteForm {
 	 *
 	 * @return bool
 	 */
-	private function haveDeletableFile() {
-		return $this->oldimage
-			? $this->oldfile && $this->oldfile->exists() && $this->oldfile->isLocal()
-			: $this->file && $this->file->exists() && $this->file->isLocal();
+	public static function haveDeletableFile(&$file, &$oldfile, $oldimage) {
+		return $oldimage
+			? $oldfile && $oldfile->exists() && $oldfile->isLocal()
+			: $file && $file->exists() && $file->isLocal();
 	}
 	
 	/**

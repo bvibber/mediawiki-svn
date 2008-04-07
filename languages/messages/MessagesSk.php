@@ -16,6 +16,7 @@
  * @author לערי ריינהארט
  * @author Siebrand
  * @author Sp5uhe
+ * @author Kandy Talbot
  */
 
 $datePreferences = array(
@@ -819,7 +820,7 @@ Skúste [[Special:Search|vyhľadávať na wiki]] relevantné nové stránky.',
 # Revision deletion
 'rev-deleted-comment'         => '(komentár odstránený)',
 'rev-deleted-user'            => '(používateľské meno odstránené)',
-'rev-deleted-event'           => '(záznam odstránený)',
+'rev-deleted-event'           => '(činnosť odstránená zo záznamu)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
 Táto revízia stránky bola odstránená z verejných archívov.
 Podrobnosti nájdete v [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} zázname mazaní].
@@ -841,7 +842,7 @@ ale ich obsah nebude prístupný verejnosti.
 Iní správcovia {{GRAMMAR:genitív|{{SITENAME}}}} budú stále môcť pristupovať k skrytému obsahu a môžu
 ho znova obnoviť použitím tohto rozhrania v prípade, že operátormi projektu
 nie sú stanovené ďalšie obmedzenia.',
-'revdelete-legend'            => 'Nastaviť obmedzenia',
+'revdelete-legend'            => 'Nastaviť obmedzenia viditeľnosti',
 'revdelete-hide-text'         => 'Skryť text revízie',
 'revdelete-hide-name'         => 'Skryť činnosť a cieľ',
 'revdelete-hide-comment'      => 'Skryť zhrnutie úprav',
@@ -854,13 +855,20 @@ nie sú stanovené ďalšie obmedzenia.',
 'revdelete-submit'            => 'Použiť na zvolenú revíziu',
 'revdelete-logentry'          => 'viditeľnosť revízie bola zmenená pre [[$1]]',
 'logdelete-logentry'          => 'viditeľnosť udalosti [[$1]] bola zmenená',
-'revdelete-logaction'         => '$1 {{plural:$1|revízia|revízie|revízií}} nastavených do režimu $2',
-'logdelete-logaction'         => '$1 {{plural:$1|udalosť nastavená|udalosti nastavené|udalostí nastavených}} do režimu $2',
 'revdelete-success'           => "'''Viditeľnosť revízie bola úspešne nastavená.'''",
 'logdelete-success'           => "'''Viditeľnosť záznamu bola úspešne nastavená.'''",
 'revdel-restore'              => 'Zmeniť viditeľnosť',
 'pagehist'                    => 'História stránky',
 'deletedhist'                 => 'Zmazaná história',
+'revdelete-content'           => 'obsah',
+'revdelete-summary'           => 'zhrnutie úprav',
+'revdelete-uname'             => 'používateľské meno',
+'revdelete-restricted'        => 'obmedzenia správcov použité',
+'revdelete-unrestricted'      => 'obmedzenia správcov odstránené',
+'revdelete-hid'               => 'skryl $1',
+'revdelete-unhid'             => 'odkryl $1',
+'revdelete-log-message'       => '$1 $2 {{PLURAL:$2|revíziu|revízie|revízií}}',
+'logdelete-log-message'       => '$1 $2 {{PLURAL:$2|udalosť|udalosti|udalostí}}',
 
 # Suppression log
 'suppressionlog'     => 'Záznam potlačení',
@@ -951,7 +959,7 @@ $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'math'                     => 'Vykreslenie matematiky',
 'dateformat'               => 'Formát dátumu',
 'datedefault'              => 'štandardný',
-'datetime'                 => 'Dátum a čas',
+'datetime'                 => 'Dátum/čas',
 'math_failure'             => 'Syntaktická analýza (parsing) neúspešná',
 'math_unknown_error'       => 'neznáma chyba',
 'math_unknown_function'    => 'neznáma funkcia',

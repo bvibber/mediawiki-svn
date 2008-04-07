@@ -518,20 +518,22 @@ class RevisionDeleteForm {
 	 */
 	private function historyLine( $rev ) {
 		global $wgContLang;
-		$date = $wgContLang->timeanddate( $rev->getTimestamp() );
 		
-		$difflink=''; $del = '';
+		$date = $wgContLang->timeanddate( $rev->getTimestamp() );
+		$difflink = $del = '';
 		// Live revisions
 		if( $this->deleteKey=='oldid' ) {
+			$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid=' . $rev->getId() );
 			$difflink = '(' . $this->skin->makeKnownLinkObj( $this->page, wfMsgHtml('diff'), 
 				'diff=' . $rev->getId() . '&oldid=prev' ) . ')';
-			$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid=' . $rev->getId() );
-		} else {
 		// Archived revisions
+		} else {
 			$undelete = SpecialPage::getTitleFor( 'Undelete' );
 			$target = $this->page->getPrefixedText();
 			$revlink = $this->skin->makeLinkObj( $undelete, $date, 
 				"target=$target&timestamp=" . $rev->getTimestamp() );
+			$difflink = '(' . $this->skin->makeKnownLinkObj( $undelete, wfMsgHtml('diff'), 
+				"target=$target&diff=prev&timestamp=" . $rev->getTimestamp() ) . ')';
 		}
 	
 		if( $rev->isDeleted(Revision::DELETED_TEXT) ) {
@@ -539,6 +541,7 @@ class RevisionDeleteForm {
 			$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 			if( !$rev->userCan(Revision::DELETED_TEXT) ) {
 				$revlink = '<span class="history-deleted">'.$date.'</span>';
+				$difflink = '(' . wfMsgHtml('diff') . ')';
 			}
 		}
 		
@@ -879,7 +882,7 @@ class RevisionDeleter {
 			   $Id_set[]=$timestamp;
 			   $count++;
 			   
-			   $this->updateArchive( $revObjs[$timestamp], $bitfield );
+			   $this->updateArchive( $revObjs[$timestamp], $title, $bitfield );
 			}
 		}
 		// For logging, maintain a count of revisions
@@ -1231,31 +1234,37 @@ class RevisionDeleter {
 	function updateRevision( $rev, $bitfield ) {
 		$this->dbw->update( 'revision',
 			array( 'rev_deleted' => $bitfield ),
-			array( 'rev_id' => $rev->getId() ),
+			array( 'rev_id' => $rev->getId(),
+				'rev_page' => $rev->getPage() ),
 			__METHOD__ );
 	}
 	
 	/**
 	 * Update the revision's rev_deleted field
 	 * @param Revision $rev
+	 * @param Title $title
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
-	function updateArchive( $rev, $bitfield ) {
+	function updateArchive( $rev, $title, $bitfield ) {
 		$this->dbw->update( 'archive',
 			array( 'ar_deleted' => $bitfield ),
-			array( 'ar_rev_id' => $rev->getId() ),
+			array( 'ar_namespace' => $title->getNamespace(),
+				'ar_title'     => $title->getDBKey(),
+				'ar_timestamp' => $this->dbw->timestamp( $rev->getTimestamp() ),
+				'ar_rev_id' => $rev->getId() ),
 			__METHOD__ );
 	}
 
 	/**
 	 * Update the images's oi_deleted field
-	 * @param File $oimage
+	 * @param File $file
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
-	function updateOldFiles( $oimage, $bitfield ) {
+	function updateOldFiles( $file, $bitfield ) {
 		$this->dbw->update( 'oldimage',
 			array( 'oi_deleted' => $bitfield ),
-			array( 'oi_archive_name' => $oimage->archive_name ),
+			array( 'oi_name' => $file->getName(),
+				'oi_timestamp' => $this->dbw->timestamp( $file->getTimestamp() ) ),
 			__METHOD__ );
 	}
 	
@@ -1292,7 +1301,8 @@ class RevisionDeleter {
 		$this->dbw->update( 'recentchanges',
 			array( 'rc_deleted' => $bitfield,
 				   'rc_patrolled' => 1 ),
-			array( 'rc_this_oldid' => $rev->getId() ),
+			array( 'rc_this_oldid' => $rev->getId(),
+				'rc_timestamp' => $this->dbw->timestamp( $rev->getTimestamp() ) ),
 			__METHOD__ );
 	}
 	
@@ -1305,7 +1315,8 @@ class RevisionDeleter {
 		$this->dbw->update( 'recentchanges',
 			array( 'rc_deleted' => $bitfield,
 				   'rc_patrolled' => 1 ),
-			array( 'rc_logid' => $row->log_id ),
+			array( 'rc_logid' => $row->log_id,
+				'rc_timestamp' => $row->log_timestamp ),
 			__METHOD__ );
 	}
 	
@@ -1322,7 +1333,102 @@ class RevisionDeleter {
 		// Extensions that require referencing previous revisions may need this
 		wfRunHooks( 'ArticleRevisionVisiblitySet', array( &$title ) );
 	}
-	
+
+	/**
+	 * Checks for a change in the bitfield for a certain option and updates the
+	 * provided array accordingly.
+	 *
+	 * @param String $desc Description to add to the array if the option was 
+	 * enabled / disabled.
+	 * @param int $field The bitmask describing the single option.
+	 * @param int $diff The xor of the old and new bitfields.
+	 * @param array $arr The array to update.
+	 */
+	function checkItem ( $desc, $field, $diff, $new, &$arr ) {
+		if ( $diff & $field ) {
+			$arr [ ( $new & $field ) ? 0 : 1 ][] = $desc;
+		}
+	}
+
+	/**
+	 * Gets an array describing the changes made to the visibilit of the revision.
+	 * If the resulting array is $arr, then $arr[0] will contain an array of strings
+	 * describing the items that were hidden, $arr[2] will contain an array of strings
+	 * describing the items that were unhidden, and $arr[3] will contain an array with
+	 * a single string, which can be one of "applied restrictions to sysops", 
+	 * "removed restrictions from sysops", or null.
+	 *
+	 * @param int $n The new bitfield.
+	 * @param int $o The old bitfield.
+	 * @return An array as described above.
+	 */
+	function getChanges ( $n, $o ) {
+		$diff = $n ^ $o;
+		$ret = array ( 0 => array(), 1 => array(), 2 => array() );
+
+		$this->checkItem ( wfMsgForContent ( 'revdelete-content' ), 
+				Revision::DELETED_TEXT, $diff, $n, $ret );
+		$this->checkItem ( wfMsgForContent ( 'revdelete-summary' ), 
+				Revision::DELETED_COMMENT, $diff, $n, $ret );
+		$this->checkItem ( wfMsgForContent ( 'revdelete-uname' ), 
+				Revision::DELETED_USER, $diff, $n, $ret );
+
+		// Restriction application to sysops
+		if ( $diff & Revision::DELETED_RESTRICTED ) {
+			if ( $n & Revision::DELETED_RESTRICTED )
+				$ret[2][] = wfMsgForContent ( 'revdelete-restricted' );
+			else
+				$ret[2][] = wfMsgForContent ( 'revdelete-unrestricted' );
+		}
+
+		return $ret;
+	}
+
+	/**
+	 * Gets a log message to describe the given revision visibility change. This
+	 * message will be of the form "[hid {content, edit summary, username}]; 
+	 * [unhid {...}][applied restrictions to sysops] for $count revisions: $comment".
+	 *
+	 * @param int $count The number of effected revisions.
+	 * @param int $nbitfield The new bitfield for the revision.
+	 * @param int $obitfield The old bitfield for the revision.
+	 * @param string $comment The comment associated with the change.
+	 * @param bool $isForLog
+	 */
+	function getLogMessage ( $count, $nbitfield, $obitfield, $comment, $isForLog = false ) {
+		global $wgContLang;
+
+		$s = '';
+		$changes = $this->getChanges( $nbitfield, $obitfield );
+
+		if ( count ( $changes[0] ) ) {
+			$s .= wfMsgForContent ( 'revdelete-hid', implode ( ', ', $changes[0] ) );
+		}
+
+		if ( count ( $changes[1] ) ) {
+			if ($s) $s .= '; ';
+
+			$s .= wfMsgForContent ( 'revdelete-unhid', implode ( ', ', $changes[1] ) );
+		}
+
+		if ( count ( $changes[2] )) {
+			if ($s)
+				$s .= ' (' . $changes[2][0] . ')';
+			else
+				$s = $changes[2][0];
+		}
+
+		$msg = $isForLog ? 'logdelete-log-message' : 'revdelete-log-message';
+		$ret = wfMsgExt ( $msg, array( 'parsemag', 'content' ), 
+			$s, $wgContLang->formatNum( $count ) );
+
+		if ( $comment )
+			$ret .= ": $comment";
+
+		return $ret;
+
+	}
+
 	/**
 	 * Record a log entry on the action
 	 * @param Title $title, page where item was removed from
@@ -1338,17 +1444,15 @@ class RevisionDeleter {
 		// Put things hidden from sysops in the oversight log
 		$logtype = ( ($nbitfield | $obitfield) & Revision::DELETED_RESTRICTED ) ? 'suppress' : 'delete';
 		$log = new LogPage( $logtype );
-		// FIXME: do this better
-		if( $param=='logid' ) {
+	
+		$reason = $this->getLogMessage ( $count, $nbitfield, $obitfield, $comment, $param == 'logid' );
+
+		if( $param == 'logid' ) {
 			$params = array( implode( ',', $items) );
-    		$reason = wfMsgExt('logdelete-logaction', array('parsemag'), $count, $nbitfield );
-			if($comment) $reason .= ": $comment";
 			$log->addEntry( 'event', $title, $reason, $params );
 		} else {
 			// Add params for effected page and ids
 			$params = array( $target->getPrefixedText(), $param, implode( ',', $items) );
-    		$reason = wfMsgExt('revdelete-logaction', array('parsemag'), $count, $nbitfield );
-			if($comment) $reason .= ": $comment";
 			$log->addEntry( 'revision', $title, $reason, $params );
 		}
 	}

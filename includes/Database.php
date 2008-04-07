@@ -295,7 +295,7 @@ class Database {
 	 * If the failFunction is set to a non-zero integer, returns success
 	 */
 	function open( $server, $user, $password, $dbName ) {
-		global $wguname;
+		global $wguname, $wgAllDBsAreLocalhost;
 		wfProfileIn( __METHOD__ );
 
 		# Test for missing mysql.so
@@ -310,6 +310,12 @@ class Database {
 			throw new DBConnectionError( $this, "MySQL functions missing, have you compiled PHP with the --with-mysql option?\n" );
 		}
 
+		# Debugging hack -- fake cluster
+		if ( $wgAllDBsAreLocalhost ) {
+			$realServer = 'localhost';
+		} else {
+			$realServer = $server;
+		}
 		$this->close();
 		$this->mServer = $server;
 		$this->mUser = $user;
@@ -330,10 +336,10 @@ class Database {
 				usleep( 1000 );
 			}
 			if ( $this->mFlags & DBO_PERSISTENT ) {
-				@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
+				@/**/$this->mConn = mysql_pconnect( $realServer, $user, $password );
 			} else {
 				# Create a new connection...
-				@/**/$this->mConn = mysql_connect( $server, $user, $password, true );
+				@/**/$this->mConn = mysql_connect( $realServer, $user, $password, true );
 			}
 			if ($this->mConn === false) {
 				#$iplus = $i + 1;
@@ -441,10 +447,10 @@ class Database {
 	 * @throws DBQueryError Thrown when the database returns an error of any kind
 	 */
 	public function query( $sql, $fname = '', $tempIgnore = false ) {
-		global $wgProfiling;
+		global $wgProfiler;
 
 		$isMaster = !is_null( $this->getLBInfo( 'master' ) );
-		if ( $wgProfiling ) {
+		if ( isset( $wgProfiler ) ) {
 			# generalizeSQL will probably cut down the query to reasonable
 			# logging size most of the time. The substr is really just a sanity check.
 
@@ -527,7 +533,7 @@ class Database {
 			$this->reportQueryError( $this->lastError(), $this->lastErrno(), $sql, $fname, $tempIgnore );
 		}
 
-		if ( $wgProfiling ) {
+		if ( isset( $wgProfiler ) ) {
 			wfProfileOut( $queryProf );
 			wfProfileOut( $totalProf );
 		}

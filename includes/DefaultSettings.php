@@ -461,6 +461,11 @@ $wgHashedSharedUploadDirectory = true;
  */
 $wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
 
+/**
+ * File redirects
+ * If enabled, MediaWiki checks redirects in Image: namespace.
+ */
+$wgFileRedirects = false;
 
 #
 # Email settings
@@ -564,6 +569,13 @@ $wgSearchType	    = null;
 $wgDBprefix         = '';
 /** MySQL table options to use during installation or update */
 $wgDBTableOptions = 'TYPE=InnoDB';
+
+/**
+ * Make all database connections secretly go to localhost. Fool the load balancer
+ * thinking there is an arbitrarily large cluster of servers to connect to. 
+ * Useful for debugging.
+ */
+$wgAllDBsAreLocalhost = false;
 
 /**#@-*/
 
@@ -1331,7 +1343,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '129';
+$wgStyleVersion = '132';
 
 
 # Server-side caching:
@@ -2470,6 +2482,7 @@ $wgLogActions = array(
 	'delete/delete'     => 'deletedarticle',
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
+	'delete/event'      => 'logdelete-logentry',
 	'upload/upload'     => 'uploadedimage',
 	'upload/overwrite'  => 'overwroteimage',
 	'upload/revert'     => 'uploadedimage',
@@ -2484,6 +2497,11 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 );
+
+/**
+ * Group logs under date headings similar to enhanced recent changes.
+ */
+$wgDateGroupedLogs = true;
 
 /**
  * Experimental preview feature to fetch rendered text
@@ -2662,6 +2680,7 @@ $wgExternalStores = false;
 /**
  * An array of external mysql servers, e.g.
  * $wgExternalServers = array( 'cluster1' => array( 'srv28', 'srv29', 'srv30' ) );
+ * Used by LBFactory_Simple, may be ignored if $wgLBFactoryConf is set to another class.
  */
 $wgExternalServers = array();
 

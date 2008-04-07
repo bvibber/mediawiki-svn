@@ -136,13 +136,19 @@ class LogEventsList {
 	private function getTitlePattern( $pattern ) {
 		return Xml::checkLabel( wfMsg( 'log-title-wildcard' ), 'pattern', 'pattern', $pattern );
 	}
+
+
+	protected function getWrapperElement() {
+		global $wgDateGroupedLogs;
+		return $wgDateGroupedLogs ? 'div' : 'ul';
+	}
 	
 	public function beginLogEventsList() {
-		return "<ul>\n";
+		return Xml::openElement( $this->getWrapperElement() ) . "\n";
 	}
 	
 	public function endLogEventsList() {
-		return "</ul>\n";
+		return Xml::closeElement( $this->getWrapperElement() ) . "\n";
 	}
 	
 		/**
@@ -212,7 +218,7 @@ class LogEventsList {
 					) 
 				) . ')';
 			// If an edit was hidden from a page give a review link to the history
-			} else if( $row->log_action == 'revision' && $wgUser->isAllowed( 'deleterevision' ) && !empty( $paramArray ) ) {
+			} else if( $row->log_action == 'revision' && $wgUser->isAllowed( 'deleterevision' ) && isset($paramArray[2]) ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// Different revision types use different URL params...
 				$subtype = isset($paramArray[2]) ? $paramArray[1] : '';
@@ -230,7 +236,7 @@ class LogEventsList {
 				}
 				$revert = "($revert)";
 			// Hidden log items, give review link
-			} else if( $row->log_action == 'event' && $wgUser->isAllowed( 'deleterevision' ) ) {
+			} else if( $row->log_action == 'event' && $wgUser->isAllowed( 'deleterevision' ) && isset($paramArray[0]) ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				$revert .= $this->message['revdel-restore'];
 				$Ids = explode( ',', $paramArray[0] );
@@ -258,8 +264,24 @@ class LogEventsList {
 		} else {
 			$action = LogPage::actionText( $row->log_type, $row->log_action, $title, $this->skin, $paramArray, true );
 		}
-		
-		return "<li>$del$time $userLink $action $comment $revert</li>\n";
+
+		global $wgDateGroupedLogs;
+		if ( $wgDateGroupedLogs ) {
+			$time = $wgLang->time( wfTimestamp(TS_MW, $row->log_timestamp), true );
+			$date = $wgLang->date( wfTimestamp(TS_MW, $row->log_timestamp), true );
+			$line = Xml::tags('div', null, "$del$time $userLink $action $comment $revert" );
+
+			static $lastdate = false;
+			if ( $date !== $lastdate ) {
+				$lastdate = $date;
+				return Xml::element('h4', null, $date) . "\n" . $line;
+			} else {
+				return $line;
+			}
+		} else {
+			return Xml::tags('li', null, "$del$time $userLink $action $comment $revert" );
+		}
+
 	}
 	
 	/**
@@ -322,6 +344,7 @@ class LogEventsList {
 	 * @param OutputPage $out
 	 * @param string $type
 	 * @param string $page
+	 * @param string $user
 	 */
 	 public static function showLogExtract( $out, $type='', $page='', $user='' ) {
 		global $wgUser;
@@ -509,8 +532,7 @@ class LogPager extends ReverseChronologicalPager {
  * @addtogroup SpecialPage
  */
 class LogReader {
-	var $db, $joinClauses, $whereClauses;
-	var $type = '', $user = '', $title = null, $pattern = false;
+	var $pager;
 	/**
 	 * @param WebRequest $request For internal use use a FauxRequest object to pass arbitrary parameters.
 	 */
@@ -545,9 +567,6 @@ class LogViewer {
 	 * @var LogReader $reader
 	 */
 	var $reader;
-	var $numResults = 0;
-	var $flags = 0;
-
 	/**
 	 * @param LogReader &$reader where to get our data from
 	 * @param integer $flags Bitwise combination of flags:
@@ -555,7 +574,6 @@ class LogViewer {
 	 */
 	function __construct( &$reader, $flags = 0 ) {
 		global $wgUser;
-		$this->skin = $wgUser->getSkin();
 		$this->reader =& $reader;
 		$this->reader->pager->mLogEventsList->flags = $flags;
 		# Aliases for shorter code...

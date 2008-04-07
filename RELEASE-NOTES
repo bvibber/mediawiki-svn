@@ -28,6 +28,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Removed $wgAlternateMaster, use $wgLBFactoryConf
 * (bug 13562) Misspelled option $wgUserNotifedOnAllChanges changed to
   $wgUserNotifiedOnAllChanges
+* $wgDateGroupedLogs can be set to false to restore old log formatting
 
 === New features in 1.13 ===
 
@@ -62,6 +63,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13450) Email confirmation can now be canceled before the expiration
 * (bug 13490) Show upload/file size limit on upload form
 * Redesign of Special:Userrights
+* Make rev_deleted log entries more intelligible.
+* Logs are grouped under date headings similar to enhanced changes list
 
 === Bug fixes in 1.13 ===
 
@@ -151,6 +154,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13576) maintenance/rebuildrecentchanges.php fails
 * (bug 13441) Allow Special:Recentchanges to show bots only
 * (bug 13431) Show true message source in Special:Allmessages&ot=php / xml
+* (bug 13616) Replace underscores in search terms by spaces
+* (bug 13463) Login successful page doesn't use user's preferred interface language
+* (bug 13630) Fixed warnings for pass by reference at call time in
+  Special:Revisiondelete when generating the log entry.
+* (bug 12064) BeforePageDisplay hook is now called for all skins
 
 === API changes in 1.13 ===
 
@@ -187,6 +195,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added fallback8bitEncoding field to meta=siteinfo&siprop=general output
 * (bug 13544) Added prop=revid to action=parse
 * (bug 13603) Added siprop=usergroups to meta=siteinfo
+* Cleaned up redirect resolution
+* Added possibility to obtain all external links through list=exturlusage
+* (bug 13606) Added archivename to iiprop
+* (bug 11633) Explicitly convert redirect titles to strings due to PHP's
+  very weak typing on array keys.
+* (bug 12136) Extend allowed characters in JSON callback to ][.'"_A-Za-z0-9
+* (bug 11673) Return error 'unknown_action' in specified format
+* (bug 13618) Added rcprop=redirect and rcshow=redirect to list=recentchanges
 
 === Languages updated in 1.13 ===
 
@@ -230,6 +246,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Japanese (ja)
 * Georgian (ka)
 * Kalaallisut (kl)
+* Kazakh (Arabic) (kk-arab)
+* Kazakh (Cyrillic) (kk-cyrl)
+* Kazakh (Latin) (kk-latn)
 * Khmer (km)
 * Latin (la)
 * Luxembourgish (lb)

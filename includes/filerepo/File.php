@@ -723,7 +723,7 @@ abstract class File {
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	function getArchivePath( $suffix = false ) {
-		return $this->repo->getZonePath('public') . '/' . $this->getArchiveRel();
+		return $this->repo->getZonePath('public') . '/' . $this->getArchiveRel( $suffix );
 	}
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
@@ -1040,7 +1040,7 @@ abstract class File {
 		if ( !file_exists( $path ) ) {
 			return false;
 		}
-		return wfTimestamp( filemtime( $path ) );
+		return wfTimestamp( TS_MW, filemtime( $path ) );
 	}
 
 	/**

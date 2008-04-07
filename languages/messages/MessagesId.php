@@ -912,8 +912,6 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'revdelete-submit'            => 'Terapkan pada revisi terpilih',
 'revdelete-logentry'          => 'ubah tampilan revisi untuk [[$1]]',
 'logdelete-logentry'          => 'ubah aturan penyembunyian dari [[$1]]',
-'revdelete-logaction'         => '$1 {{PLURAL:$1|revisi|revisi}} telah diubah menjadi mode $2',
-'logdelete-logaction'         => '{{PLURAL:$1|peristiwa|peristiwa}} terhadap $1 diset menjadi mode $2',
 'revdelete-success'           => 'Aturan penyembunyian revisi berhasil diterapkan.',
 'logdelete-success'           => 'Aturan penyembunyian tindakan berhasil diterapkan.',
 'pagehist'                    => 'Sejarah halaman',
@@ -1049,10 +1047,10 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'userrights-groupsremovable'       => 'Grup yang dapat dicabut:',
 'userrights-groupsavailable'       => 'Grup yang dapat diberikan:',
 'userrights-reason'                => 'Alasan pengubahan:',
-'userrights-available-none'        => 'Anda tak dapat mengganti keangotaan kelompok.',
+'userrights-available-none'        => 'Anda tak dapat mengganti keanggotaan kelompok.',
 'userrights-available-add'         => 'Anda dapat memasukkan pengguna ke {{PLURAL:$2|grup|grup-grup}}: $1.',
 'userrights-available-remove'      => 'Anda dapat mengeluarkan pengguna dari {{PLURAL:$2|grup|grup-grup}}: $1.',
-'userrights-available-add-self'    => 'Anda dapat menambahkan Anda sendiri ke {{PLURAL:$2|grup|grup-group}}: $1.',
+'userrights-available-add-self'    => 'Anda dapat menambahkan Anda sendiri ke {{PLURAL:$2|grup|grup-grup}}: $1.',
 'userrights-available-remove-self' => 'Anda dapat mengeluarkan Anda sendiri dari {{PLURAL:$2|grup|grup-grup}}: $1.',
 'userrights-no-interwiki'          => 'Anda tidak memiliki hak untuk mengubah hak pengguna di wiki yang lain.',
 'userrights-nodatabase'            => 'Basis data $1 tidak ada atau bukan lokal.',
@@ -1535,7 +1533,7 @@ Umpan balik dan bantuan lanjutan:
 ** Permintaan pengguna
 ** Pelanggaran hak cipta
 ** Vandalisme',
-'delete-edit-reasonlist'      => 'Alasan penghapusan suntingan',
+'delete-edit-reasonlist'      => 'Sunting alasan penghapusan',
 'delete-toobig'               => 'Halaman ini memiliki sejarah penyuntingan yang panjang yaitu melebihi $1 revisi. Penghapusan halaman dengan sejarah penyuntingan yang banyak tidak diperbolehkan untuk mencegah kerusakan di {{SITENAME}}.',
 'delete-warning-toobig'       => 'Halaman ini memiliki sejarah penyuntingan yang panjang yaitu melebihi $1 revisi. Menghapus halaman ini dapat menyebabkan masalah dalam operasional basis data {{SITENAME}}.',
 'rollback'                    => 'Kembalikan suntingan',
@@ -1595,7 +1593,7 @@ Umpan balik dan bantuan lanjutan:
 'undeletepagetitle'            => "'''Berikut daftar revisi yang dihapus dari [[:$1]]'''.",
 'viewdeletedpage'              => 'Lihat halaman yang telah dihapus',
 'undeletepagetext'             => 'Halaman-halaman berikut ini telah dihapus tapi masih ada di dalam arsip dan dapat dikembalikan. Arsip tersebut mungkin akan dibersihkan secara berkala.',
-'undeleteextrahelp'            => "Untuk mengembalikan keseruhan halaman, biarkan seluruh kotak cek tidak terpilih dan klik '''Kembalikan'''. Untuk melakukan pengembalian selektif, cek kotak revisi yang diinginkan dan klik '''Kembalikan'''. Menekan tombol '''Reset''' akan mengosongkan isian komentar dan semua kotak cek",
+'undeleteextrahelp'            => "Untuk mengembalikan keseluruhan halaman, biarkan seluruh kotak cek tidak terpilih dan klik '''''Kembalikan'''''. Untuk melakukan pengembalian selektif, cek kotak revisi yang diinginkan dan klik '''''Kembalikan'''''. Menekan tombol '''''Reset''''' akan mengosongkan isian komentar dan semua kotak cek.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revisi|revisi}} diarsipkan',
 'undeletehistory'              => 'Jika Anda mengembalikan halaman tersebut, semua revisi akan dikembalikan ke dalam sejarah. Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, revisi yang telah dikembalikan akan kelihatan dalam sejarah dahulu, dan revisi terkini halaman tersebut tidak akan ditimpa secara otomatis. Ingat pula bahwa pembatasan revisi berkas terhapus sewaktu pemulihan',
 'undeleterevdel'               => 'Pembatalan penghapusan tidak akan dilakukan jika hal tersebut akan mengakibatkan revisi terkini halaman terhapus sebagian. Pada kondisi tersebut, Anda harus menghilangkan cek atau menghilangkan penyembunyian revisi yang dihapus terakhir. Revisi berkas yang tidak dapat Anda lihat tidak akan dipulihkan.',
@@ -1736,7 +1734,7 @@ $1',
 'ipb_cant_unblock'            => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 'ipb_blocked_as_range'        => 'Kesalahan: IP $1 tidak diblok secara langsung dan tidak dapat dilepaskan. IP $1 diblok sebagai bagian dari pemblokiran kelompok IP $2, yang dapat dilepaskan.',
 'ip_range_invalid'            => 'Blok IP tidak sah.',
-'blockme'                     => 'Blok saya',
+'blockme'                     => 'Blokir saya',
 'proxyblocker'                => 'Pemblokir proxy',
 'proxyblocker-disabled'       => 'Fitur ini sedang tidak diakfifkan.',
 'proxyblockreason'            => 'Alamat IP Anda telah diblokir karena alamat IP Anda adalah proxy terbuka. Silakan hubungi penyedia jasa internet Anda atau dukungan teknis dan beritahukan mereka masalah keamanan serius ini.',
@@ -2180,7 +2178,7 @@ Pranala-pranala selanjutnya pada baris yang sama dianggap sebagai pengecualian, 
 
 'exif-unknowndate' => 'Tanggal tak diketahui',
 
-'exif-orientation-2' => 'Dibalik horizontal', # 0th row: top; 0th column: right
+'exif-orientation-2' => 'Dibalik horisontal', # 0th row: top; 0th column: right
 'exif-orientation-3' => 'Diputar 180°', # 0th row: bottom; 0th column: right
 'exif-orientation-4' => 'Dibalik vertikal', # 0th row: bottom; 0th column: left
 'exif-orientation-5' => 'Diputar 90° CCW dan dibalik vertikal', # 0th row: left; 0th column: top
@@ -2199,8 +2197,8 @@ Pranala-pranala selanjutnya pada baris yang sama dianggap sebagai pengecualian, 
 'exif-exposureprogram-4' => 'Prioritas penutup',
 'exif-exposureprogram-5' => 'Program kreatif (condong ke kedalaman ruang)',
 'exif-exposureprogram-6' => 'Program aksi (condong ke kecepatan rana)',
-'exif-exposureprogram-7' => 'Mode potret (untuk foto closeup dengan latar belakang tak fokus)',
-'exif-exposureprogram-8' => 'Mode pemandangan (untuk foto pemandangan dengan latar belakang fokus)',
+'exif-exposureprogram-7' => 'Modus potret (untuk foto closeup dengan latar belakang tak fokus)',
+'exif-exposureprogram-8' => 'Modus pemandangan (untuk foto pemandangan dengan latar belakang fokus)',
 
 'exif-subjectdistance-value' => '$1 meter',
 
@@ -2461,7 +2459,7 @@ Gambar ditampilkan dalam resolusi penuh dan tipe lain berkas akan dibuka langsun
 Masukkan nama berkas tanpa prefiks "{{ns:image}}:"-nya.',
 
 # Special:FileDuplicateSearch
-'fileduplicatesearch'          => 'Pencarian duplikat berkas',
+'fileduplicatesearch'          => 'Pencarian berkas duplikat',
 'fileduplicatesearch-summary'  => 'Pencarian duplikat berkas berdasarkan nilai hash-nya.
 
 Masukkan nama berkas tanpa prefiks "{{ns:image}}:".',
