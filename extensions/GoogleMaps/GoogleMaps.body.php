@@ -562,8 +562,8 @@ JAVASCRIPT;
             $titleMaybeNonexistent = is_null($title) ? Title::makeTitleSafe(NS_MAIN, $pTitle) : $title;
             $skin = $wgUser->getSkin();
             $titleLink = is_null($titleMaybeNonexistent) ? '' : $skin->makeLinkObj($titleMaybeNonexistent);
-            if (count($tabs)) {
-                $tabs[count($tabs)-1]['gm-caption'] = $parsed;
+            if (count($pTabs)) {
+                $pTabs[count($pTabs)-1]['gm-caption'] = $parsed;
                 $pExporter->addMarker( $pLat, $pLon, $pIcon, $pTitle, $titleLink,
                     $pTabs, $parsedArticleText, $pLineColorSet );
             } else {
