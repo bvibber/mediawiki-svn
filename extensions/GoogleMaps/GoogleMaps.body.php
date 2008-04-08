@@ -5,9 +5,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( );
 }
 
-define(GOOGLE_MAPS_PARSE_INCLUDES, 0);
-define(GOOGLE_MAPS_PARSE_ADD_MARKER, 1);
-define(GOOGLE_MAPS_PARSE_POINTS, 2);
+define('GOOGLE_MAPS_PARSE_INCLUDES', 0);
+define('GOOGLE_MAPS_PARSE_ADD_MARKER', 1);
+define('GOOGLE_MAPS_PARSE_POINTS', 2);
 /**
  * This is a class for adding Google maps to Mediawiki articles.  The class
  * takes care of all hook registration and output of both the map editing
@@ -359,7 +359,7 @@ JAVASCRIPT;
 		global $wgGoogleMaps;
 		// pass through to the main render function, creating a new parser
 		// for parsing the local content
-	return $wgGoogleMaps->render( $pContent, $pArgv, $pParser, new Parser() );
+                return $wgGoogleMaps->render( $pContent, $pArgv, $pParser, new Parser() );
 	}
 
 	/**
@@ -376,7 +376,6 @@ JAVASCRIPT;
 	function render ( $pContent, $pArgv, &$pParser, &$pLocalParser ) {
             $pLocalParser->mTitle = $this->mTitle;
             $pLocalParser->mOptions = $pParser->mOptions;
-            $pLocalParser->clearState();
 
             // Keep a count of how many <googlemap> tags were used for unique ids
             if( !isset( $this->mGoogleMapsOnThisPage ) ) {
@@ -574,12 +573,9 @@ JAVASCRIPT;
         }
 
         static function parseWikiText(&$pParser, &$pLocalParser, $pText, $pTitle, &$pOptions) {
-            if (method_exists($pLocalParser, 'recursiveTagParse')) {
-                $html = $pLocalParser->recursiveTagParse($pText);
-            } else {
-                $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
-                $html = $parsed->getText();
-            }
+            // recursiveTagParse seems broken, so do it the old-fashioned way.
+            $parsed = $pLocalParser->parse( $pText, $pTitle, $pOptions, false );
+            $html = $parsed->getText();
             return preg_replace('/<script.*?<\/script>/', '', $html);
         }
 

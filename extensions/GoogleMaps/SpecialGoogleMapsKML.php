@@ -33,22 +33,21 @@ class GoogleMapsKML extends SpecialPage {
 			$wgParser->mOptions = ParserOptions::newFromUser( $wgUser );
 			$wgParser->mOptions->setEditSection( false );
 			$wgParser->mTitle = $wgTitle;
+                        $wgParser->clearState();
 
                         $localParser = new Parser();
                         $localParser->mTitle = $title;
                         $localParser->mOptions = $wgParser->mOptions;
-                        $localParser->clearState();
-
 
 			if (preg_match_all("/<googlemap( .*?|)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
 				$exporter->addFileHeader();
 				for($i=0;$i<count($matches[2]);$i++) {
-					$attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
-					$mapOptions['version'] = isset($attrs['version']) ? $attrs['version'] : "0";
-					$exporter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
-					GoogleMaps::renderContent($matches[2][$i], $wgParser, $localParser, $exporter, $mapOptions);
-					$exporter->addTrailer();
-				}
+                                    $attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
+                                    $mapOptions['version'] = isset($attrs['version']) ? $attrs['version'] : "0";
+                                    $exporter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
+                                    GoogleMaps::renderContent($matches[2][$i], $wgParser, $localParser, $exporter, $mapOptions);
+                                    $exporter->addTrailer();
+                                }
 				$exporter->addFileTrailer();
 				echo $exporter->render();
 			} else {
