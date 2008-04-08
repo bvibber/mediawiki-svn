@@ -13,19 +13,22 @@
  //avoids conflicts of inline display with full article display
  class MV_ParserCache extends ParserCache{
  	var $extraKeyOpt='mv';
- 	public static function &singleton() {
+ 	var $addToKey ='';
+ 	public static function & singleton() {
 		static $instance;
 		if ( !isset( $instance ) ) {
 			global $parserMemc;
 			$instance = new MV_ParserCache( $parserMemc );
 		}
+		//reset addToKey
+		$instance->addToKey='';
 		return $instance;
 	} 	
 	function addToKey($opt){
-		$this->extraKeyOpt.=$opt;
+		$this->addToKey=$opt;
 	}
  	function getKey( &$article, &$user ) { 	
- 		return parent::getKey( $article, $user ) .$this->extraKeyOpt;
+ 		return parent::getKey( $article, $user ).$this->extraKeyOpt.$this->addToKey;
  	}
  }
 ?>

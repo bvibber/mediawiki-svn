@@ -236,8 +236,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//use the cache by default: 
 		//$usepCache = (isset($mvd_page->usePcache))?$mvd_page->usePcache:true;
 		
-		/*try to pull from cache: (should do new key on edits)*/		
-		$MvParserCache =& MV_ParserCache::singleton();
+		/*try to pull from cache: seperate out cache for internal links vs external links cache*/		
+		$MvParserCache = & MV_ParserCache::singleton();
 		$add_opt = ($absolute_links)?'a':'';
 		$MvParserCache->addToKey($add_opt);
 		
