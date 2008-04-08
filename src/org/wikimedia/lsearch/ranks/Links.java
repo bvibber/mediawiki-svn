@@ -38,6 +38,7 @@ import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
 import org.wikimedia.lsearch.beans.Article;
@@ -74,6 +75,7 @@ public class Links {
 	protected FieldSelector keyOnly,redirectOnly,contextOnly,linksOnly;
 	protected boolean optimized = false;
 	protected boolean autoOptimize = false;
+	protected FilterFactory filters = null;
 	
 	private Links(IndexId iid, String path, IndexWriter writer, boolean autoOptimize) throws CorruptIndexException, IOException{
 		this.writer = writer;
@@ -93,6 +95,7 @@ public class Links {
 		redirectOnly = makeSelector("redirect");
 		contextOnly = makeSelector("context");
 		linksOnly = makeSelector("links");
+		filters = new FilterFactory(iid.getDB());
 	}
 	
 	protected FieldSelector makeSelector(String field){
@@ -259,7 +262,6 @@ public class Links {
 		if(redirect != null){
 			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle(),exactCase);
 		} else { 
-			HashSet<String> contextLinks = new HashSet<String>();
 			ContextParser.Context curContext = null;
 			while(true){
 				boolean hasNext = matcher.find();
@@ -275,7 +277,6 @@ public class Links {
 						curContext = context;
 					else if(curContext!=context){
 						pagelinks.add("");
-						contextLinks.clear();
 						curContext = context;
 					}					
 				}
@@ -314,13 +315,10 @@ public class Links {
 					continue; // skip links from other namespaces into the main namespace
 				String target = findTargetLink(ns,title,exactCase);				
 				if(target != null){
-					int targetNs = Integer.parseInt(target.substring(0,target.indexOf(':')));
+					ArrayList<String> variants = filters.getVariants(target);
 					pagelinks.add(target); 
-					// register context of this link
-					if(context != null && nsf.contains(targetNs)){
-						contextLinks.add(target);
-					}
-						
+					if(variants != null)
+						pagelinks.addAll(variants);
 				}
 			}
 		}

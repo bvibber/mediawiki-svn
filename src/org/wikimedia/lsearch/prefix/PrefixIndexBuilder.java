@@ -45,6 +45,8 @@ import org.wikimedia.lsearch.util.ProgressReport;
 public class PrefixIndexBuilder {
 	static Logger log = Logger.getLogger(PrefixIndexBuilder.class);
 	
+	public static float EXACT_BOOST = 25;
+	
 	protected IndexId iid, prefixIid, pre;
 	protected FilterFactory filters;
 	protected Links links=null;
@@ -187,7 +189,7 @@ public class PrefixIndexBuilder {
 				}
 				
 				if(key.equalsIgnoreCase(prefix))
-					ref *= 100; // boost for exact match
+					ref *= EXACT_BOOST; // boost for exact match
 				refs.put(key,ref);
 			}
 			ArrayList<Entry<String,Double>> sorted = new ArrayList<Entry<String,Double>>();

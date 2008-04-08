@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
+import org.wikimedia.lsearch.analyzers.ExtToken.Type;
 
 /**
  * Simple CJK (Chinese Japanese Korean) token filter. 
@@ -24,9 +25,15 @@ public final class CJKFilter extends TokenFilter {
 		if(buffer.size()!=0)
 			return buffer.removeFirst();
 	
-		Token token = input.next();
-		if(token == null)
-			return null;
+		Token token;
+		do{
+			token = input.next();
+			if(token == null)
+				return null;
+		} while(token.getPositionIncrement()==0); // discard aliases
+		
+		if(token instanceof ExtToken && ((ExtToken)token).getType()!=Type.TEXT)
+			return token;
 		
 		String text = token.termText();
 		

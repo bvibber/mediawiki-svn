@@ -24,7 +24,7 @@ import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 public class FastWikiTokenizerTest {		
 		public static void displayTokensForParser(String text) {
-			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions.Highlight(true));
+			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions.Highlight(false));
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
@@ -70,11 +70,13 @@ public class FastWikiTokenizerTest {
 		
 		public static void main(String args[]) throws Exception{
 			Configuration.open();
-			String text = "''italic'' text bre! <nowiki><!-- see--></nowiki> <!-- nosee --> (ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
+			String text = "ATA, [[:link]] [[zh-min-nan:Something]] [[zh-min-nana:Something]] str_replace";
+			showTokens(text);
+			text = "''italic'' text bre! <nowiki><!-- see--></nowiki> <!-- nosee --> (ant) and some. it's stupid it's something and 5\"6' or more, links abacus";
 			showTokens(text);
 			text = ":''This article is about the humorist. For the [[Indo-Europeanist]] see [[Douglas Q. Adams]].''\n{{Infobox writer <!-- for more information see [[:Template:Infobox writer]] -->\n| name = Douglas Adams\n| image = Douglas adams cropped.jpg\n| caption = Douglas Adams signing books at ApacheCon 2000\n| birthdate = {{birth date|1952|3|11|df=yes}}\n| birthplace = [[Cambridge]], [[England]]\n| deathdate = {{Death date and age|2001|5|11|1952|3|11|df=yes}}\n| deathplace = [[Santa Barbara, California]], [[United States|U.S.]]\n| occupation = comedy writer, novelist, dramatist, fantasist\n| genre = [[Science fiction]], [[Comedy]]\n| movement =\n| influences = [[Richard Dawkins]] <ref>[http://www.bbc.co.uk/cult/hitchhikers/metaguide/radio.shtml Interview extract (in RealAudio format)] where Adams states the influences on his work.</ref>, [[Monty Python]], [[Neil Gaiman]], [[Robert Sheckley]], [[Kurt Vonnegut]], <br/>[[P. G. Wodehouse]]\n| influenced =\n| website = http://www.douglasadams.com/\n}} And now text";
 			showTokens(text);
-			text = "klarinet3.jpg Also, I think that the syntax could be changed to\n <nowiki>[[category:''category_name''|''sort_key''|''display_text'']]</nowiki>\nwith ''sort_key'' and ''display_text'' defaulting to ''category_name''.";
+			text = "メインページ klarinet3.jpg Also, I think that the syntax could be changed to\n <nowiki>[[category:''category_name''|''sort_key''|''display_text'']]</nowiki>\nwith ''sort_key'' and ''display_text'' defaulting to ''category_name''.";
 			showTokens(text);
 			text = "[[meta:jao]] L.A. W. B.M.W and This. is a '''list of [[African]] countries and dependencies by [[population]]'''.\n\n{| border=\"1\" cellpadding=\"2\" cellspacing=\"0\" style=\"border-collapse:collapse; text-align:right;\"\n|- style=\"text-align:center; background:#efefef\"\n!Pos !! Country !! Population\n|-\n| align=\"left\" |-\n| align=\"left\" |'''Africa''' || 934,283,426\n|-\n";
 			showTokens(text);

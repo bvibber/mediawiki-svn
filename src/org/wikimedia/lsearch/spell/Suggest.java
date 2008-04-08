@@ -49,6 +49,7 @@ import org.wikimedia.lsearch.spell.dist.EditDistance;
 
 public class Suggest {
 	static Logger log = Logger.getLogger(Suggest.class);
+	protected static GlobalConfiguration global=null;
 	protected IndexId iid;
 	protected IndexSearcher searcher;	
 	protected IndexReader reader;
@@ -58,6 +59,7 @@ public class Suggest {
 	protected HashMap<String,Boolean> wordExistCache = new HashMap<String,Boolean>();
 	protected enum Filtering { STRONG, WEAK };
 	protected boolean useLogging = true;
+	protected int minWordFreq = 0;
 	
 	/** Distance an metaphone metrics */
 	static public class Metric {
@@ -175,10 +177,13 @@ public class Suggest {
 		this.iid = iid;
 		if(searcher == null)
 			searcher = cache.getLocalSearcher(iid.getSpell());
+		if(global == null)
+			global = GlobalConfiguration.getInstance();
 		this.searcher = searcher;
 		this.reader = searcher.getIndexReader();
 		this.defaultNs = iid.getDefaultNamespace();
 		this.useLogging = useLogging;
+		this.minWordFreq = global.getIntDBParam(iid.getDBname(),"spell","wordsMinFreq",3);
 		
 		synchronized(stopWordsIndexes){
 			if(!stopWordsIndexes.containsKey(searcher)){
@@ -397,7 +402,7 @@ public class Suggest {
 				continue;
 			}
 			// words found within context should be spell-checked only if they are not valid words
-			if(info.foundInContext.contains(w) && wordExists(w,ns)){
+			if(info.foundInContext.contains(w) && wordExists(w,ns) && wordFrequency(w,ns)>minWordFreq*100){
 				addCorrectWord(w,wordSug,possibleStopWords);
 				continue;
 			} 
@@ -544,7 +549,7 @@ public class Suggest {
 							if(s1.word.equals(w1))
 								c.preserves.put(i,w1);
 							else if((!good1 && !info.foundInTitles.contains(w1))
-									|| ((inTitle||inContext) && diff1 <=2 && !info.foundInContext.contains(w1))  )					
+									|| ((inTitle||inContext) && diff1 <=2 && !info.foundInTitles.contains(w1))  )					
 								c.substitutes.put(i,s1.word);
 							else
 								accept = false;
@@ -552,7 +557,7 @@ public class Suggest {
 							if(s2.word.equals(w2))
 								c.preserves.put(i2,w2);
 							else if((!good2 && !info.foundInTitles.contains(w2)) 
-									|| ((inTitle||inContext) && diff2 <= 2 && !info.foundInContext.contains(w2)) )					
+									|| ((inTitle||inContext) && diff2 <= 2 && !info.foundInTitles.contains(w2)) )					
 								c.substitutes.put(i2,s2.word);
 							else
 								accept = false;
@@ -1205,6 +1210,7 @@ public class Suggest {
 	 * @return
 	 */
 	public ArrayList<SuggestResult> suggestWords(String word, int num, Namespaces namespaces, Filtering filter){
+		log.debug("Suggesting words for "+word);
 		if(namespaces == null) // default
 			return suggestWordsOnNamespaces(word,word,num,num,null,filter);
 		

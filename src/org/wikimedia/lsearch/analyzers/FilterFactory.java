@@ -35,6 +35,7 @@ public class FilterFactory {
 	protected ArrayList<Class> additionalFilters = null;
 	protected Singular singular = null;
 	protected boolean hasCanonicalFilter = false;
+	protected boolean hasLanguageVariants = false;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
 	protected Set<String> stopWords;
@@ -146,6 +147,9 @@ public class FilterFactory {
 		if(lang.equals("sr"))
 			hasCanonicalFilter = true;
 		
+		// variants (TODO: add zh)
+		if(lang.equals("sr"))
+			hasLanguageVariants = true;
 	}
 	
 	public static boolean isCJKLanguage(String lang){
@@ -367,5 +371,15 @@ public class FilterFactory {
 	
 	public boolean isSpellCheck(){
 		return type == Type.SPELL_CHECK;
+	}
+	
+	/** Convert word into language variants if any */
+	public ArrayList<String> getVariants(String word){
+		if(!hasLanguageVariants)
+			return null;
+		if(lang.equals("sr")){
+			return SerbianFilter.getVariants(word);
+		} else 
+			return null;
 	}
 }

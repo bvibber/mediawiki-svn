@@ -100,6 +100,21 @@ public class Snippet implements Serializable {
 		return getFormatted();
 	}
 	
+	/** If consequtive words are being highlighted, merge ranges */
+	public void simplifyRanges(){
+		Range last = null;
+		ArrayList<Range> simplified = new ArrayList<Range>();
+		for(Range r : highlighted){
+			if(last != null && last.end >= r.start)
+				last.end = r.end;
+			else{
+				simplified.add(r);
+				last = r;
+			}
+		}
+		highlighted = simplified;
+	}
+	
 	/** Get default formatting with <b> and </b> tags */
 	public String getFormatted(){
 		return getFormatted("<b>","</b>");

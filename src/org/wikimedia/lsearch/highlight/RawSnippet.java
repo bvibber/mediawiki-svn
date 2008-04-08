@@ -36,6 +36,7 @@ public class RawSnippet {
 	protected Set<String> stopWords;
 	
 	protected boolean highlightAllStop = false;
+	protected boolean isCJK = false;
 
 	// for custom scoring
 	protected int textLength = 0;
@@ -236,7 +237,7 @@ public class RawSnippet {
 		// make snippet in range showBegin,showEnd
 		Snippet s = new Snippet();
 		StringBuilder sb = new StringBuilder();
-		int start=0, end=0; // range 
+		int start=0, end=0, mid=0; // range 
 		if(showBegin > 0 && tokens.get(showBegin).getType() == ExtToken.Type.TEXT)
 			showBegin--; // always start with nontext token to catch " and (
 		if(showEnd == tokens.size())
@@ -275,12 +276,42 @@ public class RawSnippet {
 					continue;
 			}
 			if(t.getPositionIncrement() != 0){
+				if(isCJK && t.getType() == Type.TEXT && t.type().equals("cjk")){
+					boolean lastOnly = false;
+					// reconstruct CJK tokens from stream C1C2 C2C3 C3C4 -> C1C2C3C4					
+					if(mainToken != null && mainToken.getType()==Type.TEXT && mainToken.type().equals("cjk") && mid!=start){
+						start = mid; // C2C3 token, start of this token is "in the middle of last added token"
+						lastOnly = true;
+					} else
+						start = getLength(sb); // C1C2 token
+					
+					// add current
+					mid = start;
+					String tt = t.getText();
+					int len = tt.length();
+					if(len>=2){ 
+						// not terminal, calculate new midpoint
+						int point = len-1;
+						if(Character.isSurrogatePair(tt.charAt(len-2),tt.charAt(len-1)))
+							point = len-2;
+						
+						if(!lastOnly)
+							sb.append(tt.substring(0,point));
+						mid = getLength(sb);
+						sb.append(tt.substring(point));
+					} else
+						sb.append(tt);
+
+					end = getLength(sb);
+				} else{
+					start = getLength(sb);
+					sb.append(t.getText());
+					end = getLength(sb);
+				}
 				mainToken = t;
-				start = getLength(sb);
-				sb.append(t.getText());
-				end = getLength(sb);
 			}
 			if(highlight.contains(t.termText()) && !isolatedStopWords(t.termText(),i)){
+				// highlight part of the text
 				if(mainToken != null && mainToken!=t && (mainToken.termText().contains(".") || mainToken.termText().contains("'"))){
 					Snippet.Range range = findSubRange(mainToken,t,start);
 					if(range != null)
@@ -293,6 +324,7 @@ public class RawSnippet {
 		if(alttitle != null)
 			s.setOriginalText(alttitle.getTitle());
 		
+		s.simplifyRanges();
 		return s;
 	}
 	
@@ -362,7 +394,9 @@ public class RawSnippet {
 		}
 	}
 	
-	public RawSnippet(ArrayList<ExtToken> tokens, FragmentScore f, Set<String> highlight, Set<String> newTerms, Set<String> stopWords){
+	public RawSnippet(ArrayList<ExtToken> tokens, FragmentScore f, 
+			Set<String> highlight, Set<String> newTerms, Set<String> stopWords,
+			boolean isCJK){
 		this.tokens = new ArrayList<ExtToken>();
 		// include initial nontext token 
 		if(f.start > 0 && f.start < tokens.size() && tokens.get(f.start).getType()==ExtToken.Type.TEXT)
@@ -385,6 +419,7 @@ public class RawSnippet {
 		this.cur = f;
 		this.sequenceNum = f.sequenceNum;
 		this.stopWords = stopWords;
+		this.isCJK = isCJK;
 		this.textLength = noAliasLength();
 		if(stopWords!=null && stopWords.size()>0){
 			highlightAllStop = true;

@@ -899,5 +899,10 @@ public class IndexId {
 	public IndexId getTitleNgram(){
 		return IndexId.get(dbname+".title_ngram");
 	}
+	
+	/** If this iid is in chinese or japanese */
+	public boolean isCJK(){
+		return FilterFactory.isCJKLanguage(getLangCode());
+	}
 		
 }

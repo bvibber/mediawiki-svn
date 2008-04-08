@@ -787,6 +787,10 @@ public class WikiIndexModifier {
 		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
 		
 		float rankBoost = transformRank(article.getRank());
+
+		// add both title and redirects to content, so queries that match part of title and content won't fail
+		String contents = article.getContents();
+		contents = article.getTitle()+". "+contents+". "+serializeRedirects(article.getRedirectKeywords());
 		
 		/** Following fields can be optionally case-dependent */  
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
@@ -797,7 +801,7 @@ public class WikiIndexModifier {
 			TokenizerOptions options = new TokenizerOptions(bs.isExactCase());
 			if(filters.isSpellCheck())
 				options = new TokenizerOptions.SpellCheck();
-			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,options);
+			WikiTokenizer tokenizer = new WikiTokenizer(contents,iid,options);
 			tokenizer.tokenize();
 			
 			// title
@@ -844,6 +848,18 @@ public class WikiIndexModifier {
 		return doc;
 	}
 
+	/** Serialize redirects that will be added to end of the article */
+	private static String serializeRedirects(ArrayList<String> redirectKeywords) {
+		if(redirectKeywords.size()==0)
+			return "";
+		StringBuilder sb = new StringBuilder();
+		for(String s : redirectKeywords){
+			sb.append(s);
+			sb.append(". ");
+		}
+		return sb.toString();
+	}
+	
 	/** Make the document that will be indexed as highlighting data */
 	public static Document makeHighlightDocument(Article article, FieldBuilder builder, IndexId iid) throws IOException{
 		WikiIndexModifier.transformArticleForIndexing(article);

@@ -6,7 +6,14 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
 #search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
-search_host = {'<default>' : 'localhost:8123', 'enwiki' : "srv79:8123", 'srwiki' : "srv79:8123" }
+search_host = {'<default>' : 'srv79:8123', 
+               'jawiki' : "localhost:8123",
+               'frwiki' : "localhost:8123", 
+               'dewiki' : "localhost:8123",  
+               'itwiki' : "localhost:8123",  
+               'jawikiquote' : "localhost:8123",
+               'wikilucene' : 'localhost:8123' }
+#search_host = {'<default>' : 'localhost:8123'}
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',

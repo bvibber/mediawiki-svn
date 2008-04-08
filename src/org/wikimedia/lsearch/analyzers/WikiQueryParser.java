@@ -1187,7 +1187,7 @@ public class WikiQueryParser {
 		
 		BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(full,Occur.SHOULD);
-		wrap.add(makeComplete(expandedWordsTitle),Occur.SHOULD);
+		wrap.add(makeComplete(expandedWordsTitle,expandedBoostTitle,expandedTypes),Occur.SHOULD);
 		if(forbidden != null)
 			wrap.add(forbidden,Occur.MUST_NOT);
 		
@@ -1197,7 +1197,7 @@ public class WikiQueryParser {
 		AgeScaling age = iid.getAgeScaling();
 		if(age != AgeScaling.NONE){
 			switch(age){
-			case STRONG: scale = new ArticleScaling.SqrtScale(0.3f,1); break;
+			case STRONG: scale = new ArticleScaling.StepScale(0.3f,1); break;
 			case MEDIUM: scale = new ArticleScaling.StepScale(0.6f,1); break;
 			case WEAK: scale = new ArticleScaling.StepScale(0.9f,1); break;
 			default: throw new RuntimeException("Unsupported age scaling "+age);
@@ -1231,14 +1231,15 @@ public class WikiQueryParser {
 	}
 	
 	/** Make alternate "complete" query that will match redirects not in contents like los angles -> los angeles */
-	private Query makeComplete(ArrayList<ArrayList<String>> expanded) {
-		PositionalQuery pq = new PositionalQuery(new PositionalOptions.RedirectComplete());
+	private Query makeComplete(ArrayList<ArrayList<String>> expanded, ArrayList<ArrayList<Float>> boosts, ArrayList<ExpandedType> types) {
+		return makePositionalMulti(expanded,boosts,types,fields.alttitle(),new PositionalOptions.RedirectComplete(),0,1);
+		/* PositionalQuery pq = new PositionalQuery(new PositionalOptions.RedirectComplete());
 		for(int i=0;i<expanded.size();i++){
 			for(String w : expanded.get(i)){
 				pq.add(new Term(fields.alttitle(),w),i,stopWords.contains(w));
 			}
 		}
-		return pq;
+		return pq; */
 	}
 
 	private ArrayList<String> cleanupWords(ArrayList<String> words) {
@@ -1475,8 +1476,12 @@ public class WikiQueryParser {
 			return query;
 		BooleanQuery bq = new BooleanQuery(true);
 		bq.add(query,Occur.SHOULD);
-		for(Query q : additional)
-			bq.add(q,Occur.SHOULD);
+		for(Query q : additional){
+			if(q != null)
+				bq.add(q,Occur.SHOULD);
+		}
+		if(bq.clauses().size()==1)
+			return query;
 		return bq;
 	}	
 	
@@ -1637,6 +1642,15 @@ public class WikiQueryParser {
 		return bq;
 	}
 	
+	private int countNonStopWords(ArrayList<String> words){
+		int count = 0;
+		for(String w : words){
+			if(!stopWords.contains(w))
+				count++;
+		}
+		return count;
+	}
+	
 	/** Make query with short subphrases anchored in non-stop words */
 	protected Query makeAnchoredQueryMulti(ArrayList<ArrayList<String>> words, ArrayList<ArrayList<Float>> boosts, ArrayList<ExpandedType> types, 
 			String field, PositionalOptions options, PositionalOptions whole, PositionalOptions wholeSloppy, 
@@ -1768,9 +1782,7 @@ public class WikiQueryParser {
 		
 		Query q = parseRaw(queryText);
 		
-		ArrayList<String> words = wordsFromParser;
-		if(words == null || words.size() == 0)
-			return q;
+		ArrayList<String> words = wordsFromParser;		
 		
 		this.builder = oldBuilder;		
 		this.defaultField = oldDefaultField;
@@ -1786,31 +1798,33 @@ public class WikiQueryParser {
 		BooleanQuery full = new BooleanQuery(true);
 		full.add(q,Occur.MUST);
 		
-		// main relevance
-		Query redirects = makeAlttitleForRedirects(words,20,1);
-		if(redirects != null)
-			full.add(redirects,Occur.SHOULD);
-		
-		// singular words
-		ArrayList<String> singularWords = makeSingularWords(words);
-		if(singularWords != null){
-			Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
-			if(redirectsSing != null)
-				full.add(redirectsSing,Occur.SHOULD);
-		}		
+		/*if(words != null || words.size() > 0){
+			// main relevance
+			Query redirects = makeAlttitleForRedirects(words,20,1);
+			if(redirects != null)
+				full.add(redirects,Occur.SHOULD);
+
+			// singular words
+			ArrayList<String> singularWords = makeSingularWords(words);
+			if(singularWords != null){
+				Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
+				if(redirectsSing != null)
+					full.add(redirectsSing,Occur.SHOULD);
+			}		
+		} */
 		
 		// fuzzy & wildcards
 		// NOTE: for these to work parseForTitles needs to called after parse()
-		if(hasWildcards() || hasFuzzy()){
-			Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
-			if(redirectsMulti != null)
-				full.add(redirectsMulti,Occur.SHOULD);
-		}		
+		//if(hasWildcards() || hasFuzzy()){
+		Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
+		if(redirectsMulti != null)
+			full.add(redirectsMulti,Occur.SHOULD);
+		//}		
 
 		// add another for complete matches
 		BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(full,Occur.SHOULD);
-		wrap.add(makeComplete(expandedWordsTitle),Occur.SHOULD);
+		wrap.add(makeComplete(expandedWordsTitle,expandedBoostTitle,expandedTypes),Occur.SHOULD);
 		if(forbidden != null)
 			wrap.add(forbidden,Occur.MUST_NOT);
 		

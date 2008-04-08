@@ -81,6 +81,7 @@ public class AggregateMetaField {
 		protected IndexReader reader = null;
 		protected String field;
 		protected boolean cachingFinished = false;
+		protected boolean isOptimized;
 		
 		protected class CachingThread extends Thread {
 			public void run(){
@@ -105,7 +106,7 @@ public class AggregateMetaField {
 					for(int i=0;i<maxdoc;i++){
 						byte[] stored = null;
 						try{
-							if(reader.isDeleted(i))
+							if(!isOptimized && reader.isDeleted(i))
 								continue;
 							Document doc = reader.document(i); 
 							stored = doc.getBinaryValue(field);
@@ -134,6 +135,7 @@ public class AggregateMetaField {
 						} catch(Exception e){
 							log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
 							e.printStackTrace();
+							throw e;
 						}
 					}
 					// compact arrays
@@ -178,6 +180,7 @@ public class AggregateMetaField {
 		protected AggregateMetaFieldSource(IndexReader reader, String fieldBase) throws IOException{
 			this.reader = reader;
 			this.field = fieldBase+"_meta";
+			this.isOptimized = reader.isOptimized();
 			Collection fields = reader.getFieldNames(FieldOption.ALL);
 			if(!fields.contains(field)){
 				cachingFinished = true;

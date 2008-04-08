@@ -254,9 +254,9 @@ public class UpdateThread extends Thread {
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
 			warmupAndDeploy(pool,li,type);
+			registry.refreshCurrent(li);
 			if(type != RebuildType.STANDALONE)
 				RMIServer.rebind(iid);
-			registry.refreshCurrent(li);
 			
 			// notify all remote searchers of change
 			messenger.notifyIndexUpdated(iid,iid.getDBSearchHosts());

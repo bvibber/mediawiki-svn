@@ -20,6 +20,7 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 	protected PositionalOptions options; 
 	protected int stopWordCount = 0;
 	protected ArrayList<ArrayList<Float>> boosts = new ArrayList<ArrayList<Float>>();
+	protected boolean scaledBoosts = false;
 
 	public PositionalMultiQuery(PositionalOptions options){
 		this.options = options;
@@ -109,17 +110,16 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 	        av /= terms.length;
 	        idf += av;
 	        
-	        // rescale boosts to reinstall right idfs per term
-	        ArrayList<Float> fb = boosts.get(count);
-	        for(int j=0; j<idfs.length; j++){
-	      	  fb.set(j,fb.get(j)*(idfs[j]/av));
-	        }	        
+	        if(!scaledBoosts){
+	      	  // rescale boosts to reinstall right idfs per term
+	      	  ArrayList<Float> fb = boosts.get(count);
+	      	  for(int j=0; j<idfs.length; j++){
+	      		  fb.set(j,fb.get(j)*(idfs[j]/av));
+	      	  } 	        
+	        }
 	        count++;
 	      }
-		}
-		
-		private final float sq(float x){
-			return x*x;
+	      scaledBoosts = true;
 		}
 
 		public Scorer scorer(IndexReader reader) throws IOException {
@@ -224,7 +224,8 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 	}
 	
 	public Query rewrite(IndexReader reader) {
-	    if (termArrays.size() == 1) {                 // optimize one-term case
+		// optimize one-term case
+	    if (termArrays.size() == 1 && (options==null || !options.takeMaxScore)) {                 
 	      Term[] terms = (Term[])termArrays.get(0);
 	      ArrayList<Float> boost = boosts.get(0);
 	      if(terms.length == 1){

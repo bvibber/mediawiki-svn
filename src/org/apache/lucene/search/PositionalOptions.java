@@ -67,6 +67,7 @@ public class PositionalOptions implements Serializable {
 		public Alttitle(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
+			//exactBoost = 2;
 			//wholeBoost = 10;
 		}
 	}
@@ -96,6 +97,7 @@ public class PositionalOptions implements Serializable {
 		public Related(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
+			//exactBoost = 2;
 		}
 	}
 	
@@ -154,6 +156,14 @@ public class PositionalOptions implements Serializable {
 	public static class PhraseQueryFallback extends PositionalOptions {
 		public PhraseQueryFallback(){
 			phraseQueryFallback = true;
+		}
+	}
+	
+	/** Near match phrases, when more than 50% of nonstopwords are matched */
+	public static class AlttitleNearMatch extends PositionalOptions {
+		public AlttitleNearMatch(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
 		}
 	}
 	

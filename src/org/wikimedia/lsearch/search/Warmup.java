@@ -76,6 +76,7 @@ public class Warmup {
 		try{
 			boolean waitForAggregate = Configuration.open().getString("Search","warmupaggregate","false").equalsIgnoreCase("true");
 			if(waitForAggregate){ // wait for aggregate fields to be cached
+				log.info("Wait for aggregate caches...");
 				boolean wait;
 				do{
 					wait = false;
@@ -109,35 +110,46 @@ public class Warmup {
 
 			int count = getWarmupCount(iid);
 
-			if(iid.isSpell() && count > 0){
-				Terms terms = getTermsForLang(iid.getLangCode());
-				Suggest sug = new Suggest(iid,is,false);
-				WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer(),new FieldBuilder(iid).getBuilder(),StopWords.getPredefinedSet(iid));
-				NamespaceFilter nsf = iid.getDefaultNamespace();
-				for(int i=0;i<count;i++){
-					String searchterm = terms.next();
-					sug.suggest(searchterm,parser.tokenizeForSpellCheck(searchterm),new Suggest.ExtraInfo(),nsf);
+			if(iid.isSpell()){
+				if(count > 0){
+					Terms terms = getTermsForLang(iid.getLangCode());
+					Suggest sug = new Suggest(iid,is,false);
+					WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer(),new FieldBuilder(iid).getBuilder(),StopWords.getPredefinedSet(iid));
+					NamespaceFilter nsf = iid.getDefaultNamespace();
+					for(int i=0;i<count;i++){
+						String searchterm = terms.next();
+						sug.suggest(searchterm,parser.tokenizeForSpellCheck(searchterm),new Suggest.ExtraInfo(),nsf);
+					}
 				}
-			} else if(iid.isTitleNgram() && count > 0){
-				Terms terms = getTermsForLang(iid.getLangCode());
-				SuggestSimilar sim = new SuggestSimilar(iid,is);
-				for(int i=0;i<count;i++){
-					sim.getSimilarTitles(terms.next(),new NamespaceFilter(),4);
+			} else if(iid.isTitleNgram()){
+				if(count > 0){
+					Terms terms = getTermsForLang(iid.getLangCode());
+					SuggestSimilar sim = new SuggestSimilar(iid,is);
+					for(int i=0;i<count;i++){
+						sim.getSimilarTitles(terms.next(),new NamespaceFilter(),4);
+					}
 				}
-			} else if(iid.isPrefix() && count > 0){
-				Terms terms = getTermsForLang(iid.getLangCode());
-				SearchEngine search = new SearchEngine();
-				for(int i=0;i<count;i++){
-					String searchterm = terms.next();
-					searchterm = searchterm.substring(0,(int)Math.min(8*Math.random()+1,searchterm.length()));
-					search.searchPrefixLocal(iid,searchterm,20,iid.getDefaultNamespace(),is);
+			} else if(iid.isPrefix()){
+				if(count > 0){
+					Terms terms = getTermsForLang(iid.getLangCode());
+					SearchEngine search = new SearchEngine();
+					for(int i=0;i<count;i++){
+						String searchterm = terms.next();
+						searchterm = searchterm.substring(0,(int)Math.min(8*Math.random()+1,searchterm.length()));
+						search.searchPrefixLocal(iid,searchterm,20,iid.getDefaultNamespace(),is);
+					}
 				}
-			} else if((iid.isHighlight() || iid.isRelated()) && count > 0 && !iid.isTitlesBySuffix()){
-				// NOTE: this might not warmup all caches, but should read stuff into memory buffers
-				for(int i=0;i<count;i++){
-					int docid = (int)(Math.random()*is.maxDoc());
-					reader.document(docid).get("key");
-				}			
+			} else if((iid.isHighlight() || iid.isRelated()) && !iid.isTitlesBySuffix()){
+				if(count > 0){
+					// NOTE: this might not warmup all caches, but should read stuff into memory buffers
+					for(int i=0;i<count;i++){
+						int docid = (int)(Math.random()*is.maxDoc());
+						reader.document(docid).get("key");
+					}			
+				}
+			} else if(iid.isTitlesBySuffix()){
+				// just initiate meta field caching, we want to avoid caching unnecessary filters
+				AggregateMetaField.getCachedSource(is.getIndexReader(),"alttitle");
 			} else{
 				// normal indexes
 				if(count == 0){
@@ -180,7 +192,7 @@ public class Warmup {
 			log.error("Error warming up local IndexSearcherMul for "+iid);
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Exception during warmup "+e.getMessage());
+			log.error("Exception during warmup of "+iid+" : "+e.getMessage());
 		}		
 	}
 
@@ -188,14 +200,9 @@ public class Warmup {
 	protected static Terms getTermsForLang(String lang) {
 		String lib = Configuration.open().getLibraryPath();
 		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
-			langTerms.put(lang,new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz"));		
-		if(lang.equals("sample"))
-			return new SampleTerms();
-		
-		if(langTerms.containsKey(lang))
-			return langTerms.get(lang);
+			return new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz");		
 		else
-			return langTerms.get("en");
+			return new SampleTerms();		
 	}
 
 	/** Preload all predefined filters */
@@ -218,7 +225,7 @@ public class Warmup {
 		try{
 			FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 			WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
-			Query q = parser.parse("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons");
+			Query q = parser.parse("wikimedia foundation");
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {
 			log.error("Error warming up local IndexSearcherMul for "+iid);

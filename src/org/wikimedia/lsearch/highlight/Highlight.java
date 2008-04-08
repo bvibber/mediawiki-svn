@@ -111,6 +111,10 @@ public class Highlight {
 		boolean foundAllInTitle = false, foundAllInAltTitle = false;
 		int firstHitRank = 0;
 		HashSet<String> inTitle = new HashSet<String>();
+		boolean isCJK = iid.getDB().isCJK();
+		
+		//System.out.println("Terms: "+Arrays.toString(terms));
+		//System.out.println("Words: "+words);
 		
 		// terms weighted with idf
 		HashMap<String,Double> weightTerm = new HashMap<String,Double>();
@@ -155,12 +159,12 @@ public class Highlight {
 				firstHitRank = alttitles.getTitle().getRank();
 			
 			HashMap<String,Double> notInTitle = getTermsNotInTitle(weightTerm,alttitles,wordIndex);
-			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases, alwaysIncludeFirstLine );
-			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,words,wordIndex,1,true,stopWords,false,phrases,inContext,false,false);
+			ArrayList<RawSnippet> textSnippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 2, false, stopWords, true, phrases, inContext, sortByPhrases, alwaysIncludeFirstLine, isCJK );
+			ArrayList<RawSnippet> titleSnippets = getBestTextSnippets(alttitles.getTitle().getTokens(),weightTerm,words,wordIndex,1,true,stopWords,false,phrases,inContext,false,false,isCJK);
 			RawSnippet redirectSnippet = null;
 			// don't show redirect if we matched whole title
 			if(! (titleSnippets.size()>0 && titleSnippets.get(0).countPositions()==titleSnippets.get(0).noAliasLength())){
-				redirectSnippet = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext);
+				redirectSnippet = getBestAltTitle(alttitles.getRedirects(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext,isCJK);
 			}
 			RawSnippet sectionSnippet = null;
 			if(redirectSnippet == null){
@@ -169,7 +173,7 @@ public class Highlight {
 					if(notInTitle.containsKey(s))
 						notInTitle.remove(s);
 				}
-				sectionSnippet = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext);
+				sectionSnippet = getBestAltTitle(alttitles.getSections(),weightTerm,notInTitle,stopWords,words,wordIndex,0,phrases,inContext,isCJK);
 			}
 			
 			HighlightResult hr = new HighlightResult();
@@ -182,7 +186,7 @@ public class Highlight {
 				boolean addSection = true, added = true;
 				while(added && more(hr.textLength())){
 					// add more snippets if there is still space					
-					added = extendSnippet(raw,hr,raw.size()-1,tokens,addSection,stopWords);
+					added = extendSnippet(raw,hr,raw.size()-1,tokens,addSection,stopWords,isCJK);
 					addSection = false;					
 				}				
 			} else if(textSnippets.size() >= 2){
@@ -203,13 +207,13 @@ public class Highlight {
 				if(more(hr.textLength())){
 					// first pass of snippet extension, extend shortest first
 					if(s1.length() < s2.length()){
-						extendSnippet(raw,hr,0,tokens,true,stopWords);
+						extendSnippet(raw,hr,0,tokens,true,stopWords,isCJK);
 						if(more(hr.textLength()))
-							extendSnippet(raw,hr,raw.size()-1,tokens,true,stopWords);
+							extendSnippet(raw,hr,raw.size()-1,tokens,true,stopWords,isCJK);
 					} else {
-						extendSnippet(raw,hr,1,tokens,true,stopWords);
+						extendSnippet(raw,hr,1,tokens,true,stopWords,isCJK);
 						if(more(hr.textLength()))
-							extendSnippet(raw,hr,0,tokens,true,stopWords);
+							extendSnippet(raw,hr,0,tokens,true,stopWords,isCJK);
 					}
 				}
 				boolean added = true;
@@ -219,7 +223,7 @@ public class Highlight {
 					for(int i=0;i<hr.getText().size() && more(hr.textLength());i++){
 						boolean addedNow = false;
 						if(hr.getText().get(i).isExtendable()){
-							addedNow = extendSnippet(raw,hr,i,tokens,false,stopWords);
+							addedNow = extendSnippet(raw,hr,i,tokens,false,stopWords,isCJK);
 							if(addedNow)
 								i++;
 						}
@@ -337,14 +341,14 @@ public class Highlight {
 	}
 	
 	private static boolean extendSnippet(ArrayList<RawSnippet> raw, HighlightResult hr, int index, 
-			ArrayList<ExtToken> tokens, boolean addSection, HashSet<String> stopWords){
+			ArrayList<ExtToken> tokens, boolean addSection, HashSet<String> stopWords, boolean isCJK){
 		Snippet curS = hr.getText().get(index);
 		RawSnippet curRs = raw.get(index);
 		int len = hr.textLength();
 		boolean added = false;
 		// add section
 		if(addSection && more(len)){
-			RawSnippet rs = sectionSnippet(curRs,curS,tokens,stopWords);
+			RawSnippet rs = sectionSnippet(curRs,curS,tokens,stopWords,isCJK);
 			if(rs != null && !raw.contains(rs)){
 				Snippet s = rs.makeSnippet(diff(len));
 				setSuffix(s,rs);
@@ -364,7 +368,7 @@ public class Highlight {
 		}
 		// add next snippet
 		if(more(len)){										
-			RawSnippet rs = nextSnippet(curRs,curS,tokens,stopWords);
+			RawSnippet rs = nextSnippet(curRs,curS,tokens,stopWords,isCJK);
 			if(rs != null && !raw.contains(rs)){
 				Snippet s = rs.makeSnippet(diff(len));
 				setSuffix(curS,curRs);
@@ -378,17 +382,17 @@ public class Highlight {
 		return added;
 	}
 	
-	protected static RawSnippet nextSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords){
+	protected static RawSnippet nextSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords, boolean isCJK){
 		if(rs.next == null)
 			return null;
-		return new RawSnippet(tokens,rs.next,rs.highlight,new HashSet<String>(),stopWords);
+		return new RawSnippet(tokens,rs.next,rs.highlight,new HashSet<String>(),stopWords,isCJK);
 	}
 	
-	protected static RawSnippet sectionSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords){
+	protected static RawSnippet sectionSnippet(RawSnippet rs, Snippet s, ArrayList<ExtToken> tokens, HashSet<String> stopWords, boolean isCJK){
 		if(rs.section == null)
 			return null;
 		if(s.length() < SHORT_SNIPPET)
-			return new RawSnippet(tokens,rs.section,rs.highlight,new HashSet<String>(),stopWords);
+			return new RawSnippet(tokens,rs.section,rs.highlight,new HashSet<String>(),stopWords,isCJK);
 		return null;
 	}
 	
@@ -418,7 +422,7 @@ public class Highlight {
 	/** Alttitle and sections highlighting */	
 	protected static RawSnippet getBestAltTitle(ArrayList<Alttitles.Info> altInfos, HashMap<String,Double> weightTerm, 
 			HashMap<String,Double> notInTitle, HashSet<String> stopWords, ArrayList<String> words, HashMap<String,Integer> wordIndex, 
-			int minAdditional, HashSet<String> phrases, HashSet<String> inContext){
+			int minAdditional, HashSet<String> phrases, HashSet<String> inContext, boolean isCJK){
 		ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
 		for(Alttitles.Info ainf : altInfos){			
 			double matched = 0, additionalScore = 0;
@@ -445,7 +449,7 @@ public class Highlight {
 				}
 			}
 			if(length == matchedPositions.size() || additional > minAdditional || (additional != 0 && additional == notInTitle.size())){
-				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 1, false, stopWords, false, phrases, inContext, false, false);
+				ArrayList<RawSnippet> snippets = getBestTextSnippets(tokens, weightTerm, words, wordIndex, 1, false, stopWords, false, phrases, inContext, false, false, isCJK);
 				if(snippets.size() > 0){
 					RawSnippet snippet = snippets.get(0);
 					snippet.setAlttitle(ainf);
@@ -520,7 +524,8 @@ public class Highlight {
 	/** Highlight text */
 	protected static ArrayList<RawSnippet> getBestTextSnippets(ArrayList<ExtToken> tokens, HashMap<String, Double> weightTerms, 
 			ArrayList<String> words, HashMap<String,Integer> wordIndex, int maxSnippets, boolean ignoreBreaks, HashSet<String> stopWords, 
-			boolean showFirstIfNone, HashSet<String> phrases, HashSet<String> foundInContext, final boolean sortByPhrases, final boolean alwaysIncludeFirstLine) {
+			boolean showFirstIfNone, HashSet<String> phrases, HashSet<String> foundInContext, 
+			final boolean sortByPhrases, final boolean alwaysIncludeFirstLine, final boolean isCJK) {
 		
 		// pieces of text to ge highlighted
 		ArrayList<FragmentScore> fragments = new ArrayList<FragmentScore>();
@@ -593,7 +598,7 @@ public class Highlight {
 				if(foundAllInFirst && beginLen > 2*MAX_CONTEXT && firstFragment!=null){
 					// made enough snippets, return the first one					
 					ArrayList<RawSnippet> res = new ArrayList<RawSnippet>();
-					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet(),firstFragment.found,stopWords));
+					res.add(new RawSnippet(tokens,firstFragment,weightTerms.keySet(),firstFragment.found,stopWords,isCJK));
 					return res;					
 				}
 				fs.next = new FragmentScore(fs.end, sequence++); // link into list			
@@ -759,7 +764,7 @@ public class Highlight {
 				if(f.found != null)
 					termsFound.addAll(f.found);
 				adjustBest(f,tokens,weightTerms,words,wordIndex,newTerms); 
-				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms,stopWords);
+				RawSnippet s = new RawSnippet(tokens,f,wordHighlight,newTerms,stopWords,isCJK);
 				res.add(s);
 			} else if(resNoNew.size() < maxSnippets)
 				resNoNew.add(f);
@@ -768,7 +773,7 @@ public class Highlight {
 		}
 		// if text doesn't match show some body text
 		if(showFirstIfNone && res.size() == 0 && fragmentsBeginning != null){
-			res.add(new RawSnippet(tokens,fragmentsBeginning,wordHighlight,wordHighlight,stopWords));
+			res.add(new RawSnippet(tokens,fragmentsBeginning,wordHighlight,wordHighlight,stopWords,isCJK));
 		} 
 		// always show snippet that is before in the text first 
 		Collections.sort(res,  new Comparator<RawSnippet>() {

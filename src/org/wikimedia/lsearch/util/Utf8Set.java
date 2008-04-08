@@ -63,9 +63,13 @@ public class Utf8Set {
 	protected Utf8String str = new Utf8String();
 	
 	public Utf8Set(Set<String> words){		
-		for(String w : words){
-			lookup[w.charAt(0)&MASK] = true;
-			set.add(new Utf8String(w));
+		try{
+			for(String w : words){
+				lookup[w.getBytes("utf-8")[0]&MASK] = true;
+				set.add(new Utf8String(w));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	

@@ -116,6 +116,9 @@ public class ExtToken extends Token {
 		if(isStub()){
 			try {
 				setTermText(new String(serialized,termTextStart,termTextEnd-termTextStart,"utf-8"));
+				// check if this is a cjk token 
+				if(termText().length()>0 && type==Type.TEXT && CJKFilter.isCJKChar(termText().codePointAt(0)))
+					setType("cjk");
 				unstubOriginal();
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();

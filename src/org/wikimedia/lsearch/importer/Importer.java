@@ -218,7 +218,7 @@ public class Importer {
 					IndexThread.makeIndexSnapshot(p,p.getImportPath());
 				}
 			}
-			if(makeTitles){
+			if(makeTitles && iid.hasTitlesIndex()){
 				for(IndexId p : iid.getTitlesIndex().getPhysicalIndexIds()){
 					if(snapshotDb)
 						IndexThread.optimizeIndex(p,p.getImportPath(),IndexId.Transaction.IMPORT);

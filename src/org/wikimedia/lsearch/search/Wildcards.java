@@ -177,6 +177,7 @@ public class Wildcards {
 			return WildcardType.INVALID;		
 	}
 	
+	/** Get terms from a local searcher if available */
 	public static ArrayList<String> getLocalTerms(IndexId iid, String wildcard, boolean exactCase) throws IOException {
 		if(searcherCache == null)
 			searcherCache = SearcherCache.getInstance();
@@ -218,6 +219,7 @@ public class Wildcards {
 		return list;
 	}
 	
+	/** Fetch terms matching a wildcard pattern into the target collection */
 	protected static void addTerms(Collection<String> ret, Term wildcardTerm, IndexReader reader, WildcardType type) throws IOException{
 		Term t;
 		WildcardTermEnum te = new WildcardTermEnum(reader,wildcardTerm);

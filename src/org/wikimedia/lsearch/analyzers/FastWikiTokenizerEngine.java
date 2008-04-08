@@ -305,7 +305,7 @@ public class FastWikiTokenizerEngine {
 			}
 			if(templateLevel == 0 && tableLevel == 0)
 				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
-
+			
 			// add exact token
 			Token exact;
 			if(options.exactCase)
@@ -322,6 +322,14 @@ public class FastWikiTokenizerEngine {
 					exact.setType("titlecase");
 			}
 			addToTokens(exact);
+			
+			// extra uppercase token, prevent exact-matches for titles
+			if(options.extraUpperCaseToken && allUpperCase){
+				Token t = makeToken(new String(buffer, 0, length), start, start + length, false);
+				t.setPositionIncrement(0);
+				t.setType(exact.type());
+				addToTokens(t);
+			}
 			 
 			if(!options.noAliases){
 				// add decomposed token to stream
@@ -650,8 +658,7 @@ public class FastWikiTokenizerEngine {
 				prefixLen = 0;
 				semicolonInx = -1;
 				break;
-			}
-			if(Character.isLetter(lc)){
+			} else{
 				prefixBuf[ prefixLen++ ] = Character.toLowerCase(lc);
 			} 
 		}

@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.search.RemoteSearchableMul;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.search.SearcherCache;
 
 /** Starts the RMI registry and binds all RMI objects */
@@ -17,6 +18,7 @@ public class RMIServer {
 	protected static org.apache.log4j.Logger log = Logger.getLogger(RMIServer.class);
 	
 	protected static SearcherCache cache = null;
+	protected static IndexRegistry indexes = null; 
 	
 	public static void register(Remote engine, String name){
 		try {
@@ -41,18 +43,24 @@ public class RMIServer {
 	}
 	
 	/** After updating local copy of iid, rebind it's rmi object */
-	public static void rebind(IndexId iid){
+	public static boolean rebind(IndexId iid){
 		if(cache == null)
 			cache = SearcherCache.getInstance();
+		if(indexes == null)
+			indexes = IndexRegistry.getInstance();
 		String name = "RemoteSearchable<"+iid+">";
 		try {
-			RemoteSearchableMul rs = new RemoteSearchableMul(cache.getLocalSearcher(iid));
-			register(rs,name);			
+			if(indexes.getCurrentSearch(iid) != null){
+				RemoteSearchableMul rs = new RemoteSearchableMul(cache.getLocalSearcher(iid));
+				register(rs,name);		
+				return true;
+			}
 		} catch (RemoteException e) {
 			log.warn("Error making remote searchable for "+name);
 		} catch(Exception e){
 			// do nothing, error is logged by some other class (possible SearchCache)
 		}
+		return false;
 	}
 
 	/** Bind all RMI objects (Messenger, RemoteSeachables and RMIIndexDaemon) */

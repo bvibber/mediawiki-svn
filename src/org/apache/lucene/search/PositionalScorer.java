@@ -444,7 +444,6 @@ abstract public class PositionalScorer extends Scorer {
 		 */
 		protected final float phraseFreq() throws IOException {
 			int end = initPhrasePositionsBoost();
-
 			float freq = 0.0f;
 			boolean done = (end<0);
 			while (!done) {

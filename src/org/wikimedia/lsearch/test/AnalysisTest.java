@@ -157,8 +157,8 @@ public class AnalysisTest {
 		QueryParser parser = new QueryParser("contents",new CJKAnalyzer());
 		Query q = parser.parse("プロサッカークラブをつくろう");
 		System.out.println("Japanese in standard analyzer: "+q);
-		displayTokens(new CJKAnalyzer(),"『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");
-		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("jawiki")),"『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");
+		displayTokens(new CJKAnalyzer(),"は、工学者、大学教授、工学博士。『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");
+		displayTokens(Analyzers.getHighlightAnalyzer(IndexId.get("jawiki"),false),"鈴木 孝治（すずき こうじ、1954年 - ）『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("jawiki")),"『パンツぱんくろう』というタjavaイトルはbalaton");
 		displayTokens(Analyzers.getSearcherAnalyzer(IndexId.get("jawiki")),"パ ン");
 		

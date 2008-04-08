@@ -28,6 +28,8 @@ public class TokenizerOptions {
 	boolean extendedTrailing = false;
 	/** if to split tokens with apostrophes and points in them */
 	boolean split = true;
+	/** generate extra original token if the word is in upper case */
+	boolean extraUpperCaseToken = false;
 	
 	public TokenizerOptions(boolean exactCase){
 		this.exactCase = exactCase;
@@ -53,10 +55,11 @@ public class TokenizerOptions {
 			relocationParsing = false;
 			noCaseDetection = true;
 			extendedTrailing = true;
+			extraUpperCaseToken = true;
 		}
 	}
 	
-	public static class TitleNoSplit extends Title{
+	public static class TitleNoSplit extends Title {
 		public TitleNoSplit(boolean exactCase){
 			super(exactCase);
 			this.split = false;
@@ -111,6 +114,7 @@ public class TokenizerOptions {
 			super(false);
 			noAliases = true;
 			noTrailing = true;
+			extraUpperCaseToken = false;
 		}
 	}
 }

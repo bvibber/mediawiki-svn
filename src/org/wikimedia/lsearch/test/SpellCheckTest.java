@@ -116,6 +116,7 @@ public class SpellCheckTest {
    	{"Douglas Adams's Guide to The Hitch-Hiker's Guide to the Galaxy",""},
    	{"bethlem jesus","bethlehem jesus"},
    	{"los angles gardens","los angeles gardens"},
+   	{"huston we have a problem","houston we have a problem"},
    	
    };
 

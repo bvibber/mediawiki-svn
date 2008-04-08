@@ -31,7 +31,7 @@ public class BuildAll {
 	static org.apache.log4j.Logger log = null;
 	
 	protected static void printHelp(){
-		System.out.println("Syntax: BuildAll [-f <file>] [-lt] [-i] [-sc] [dbname] [dump file]");
+		System.out.println("Syntax: BuildAll [-f <file>] [-lt] [-i] [-sc] [dump file] [dbname]");
 		System.out.println("Options:");
 		System.out.println("    -f <file>   - use a file with a list of pairs <dbname> <dump file>");
 		System.out.println("    -lt         - leave titles - don't delete old titles indexes");
@@ -55,10 +55,14 @@ public class BuildAll {
 				importOnly = true;
 			else if(args[i].equals("-sc"))
 				noSpellcheck = true;
+			else if(args[i].startsWith("-")){
+				System.out.println("Unrecognized option "+args[i]);
+				printHelp();
+				return;
+			} else if(dump == null)
+				dump = args[i];
 			else if(dbname == null)
 				dbname = args[i];
-			else if(dump == null)
-				dump = args[i];
 			else if(args[i].equals("--help")){
 				printHelp();
 				return;
@@ -145,7 +149,7 @@ public class BuildAll {
 				}
 			}
 		}
-		System.out.println("Finished building in "+ProgressReport.formatTime(System.currentTimeMillis()-start));
+		System.out.println("Finished build in "+ProgressReport.formatTime(System.currentTimeMillis()-start));
 	}
 	
 	protected static void copy(String from, String to) throws IOException{

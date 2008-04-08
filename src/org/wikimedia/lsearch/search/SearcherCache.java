@@ -91,6 +91,7 @@ public class SearcherCache {
 				searcher = new IndexSearcherMul(path);
 				searcher.setSimilarity(new WikiSimilarity());
 			} catch (IOException e) {
+				e.printStackTrace();
 				// tell registry this is not a good index
 				IndexRegistry.getInstance().invalidateCurrent(iid);
 				log.error("I/O Error opening index at path "+iid.getCanonicalSearchPath()+" : "+e.getMessage());
@@ -257,18 +258,21 @@ public class SearcherCache {
 	
 	/** Warmup all local IndexSearcher (create if necessary) */
 	public void warmupLocalCache(){
+		IndexRegistry registry = IndexRegistry.getInstance();
 		HashSet<IndexId> mys =  global.getMySearch();
 		for(IndexId iid : mys){
 			try {
 				if(iid.isLogical())
 					continue;
-				IndexSearcherMul[] pool = getSearcherPool(iid);
-				for(IndexSearcherMul is : pool)				
-					Warmup.warmupIndexSearcher(is,iid,false);
-				
-				Warmup.waitForAggregate(pool);
+				if(registry.getCurrentSearch(iid) != null){
+					IndexSearcherMul[] pool = getSearcherPool(iid);
+					for(IndexSearcherMul is : pool)				
+						Warmup.warmupIndexSearcher(is,iid,false);
+					
+					Warmup.waitForAggregate(pool);
+				}
 			} catch (IOException e) {
-				log.warn("I/O error warming index for "+iid);				
+				log.warn("I/O error warming index for "+iid+" : "+e.getMessage());				
 			}
 		}
 	}

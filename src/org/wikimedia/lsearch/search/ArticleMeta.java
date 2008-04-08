@@ -56,6 +56,7 @@ public class ArticleMeta {
 		protected SimpleDateFormat isoDate;
 		protected long now = 0;
 		protected NamespaceFilter subpages;
+		protected boolean isOptimized;
 		
 		protected class CachingThread extends Thread {
 			public void run(){
@@ -67,12 +68,16 @@ public class ArticleMeta {
 					subpage = new boolean[reader.maxDoc()];
 					daysOld = new float[reader.maxDoc()];
 					for(int i=0;i<reader.maxDoc();i++){
+						if(!isOptimized && reader.isDeleted(i))
+							continue;
 						try{
-							subpage[i] = resolveSubpage(i);	
-							daysOld[i] = resolveDaysOld(i);
+							Document d = reader.document(i);
+							subpage[i] = resolveSubpage(d);	
+							daysOld[i] = resolveDaysOld(d);
 						} catch(Exception e2){
 							e2.printStackTrace();
 							log.error("Error reading article meta for docid="+i+" : "+e2.getMessage());
+							throw e2;
 						}
 					}
 					log.info("Finished caching article info for "+reader.directory());
@@ -90,10 +95,7 @@ public class ArticleMeta {
 		/** See if article is a subpage 
 		 * @throws IOException 
 		 * @throws CorruptIndexException */
-		protected final boolean resolveSubpage(int docid) throws IOException{
-			if(reader.isDeleted(docid))
-				return false;
-			Document d = reader.document(docid);
+		protected final boolean resolveSubpage(Document d) throws IOException{			
 			String ns = d.get("namespace");
 			if(ns == null)
 				return false;
@@ -107,10 +109,7 @@ public class ArticleMeta {
 			return false;
 		}
 		/** Calculate how old the indexed article is */
-		protected final float resolveDaysOld(int docid) throws IOException {
-			if(reader.isDeleted(docid))
-				return 0;
-			Document d = reader.document(docid);
+		protected final float resolveDaysOld(Document d) throws IOException {
 			String dateStr = d.get("date");
 			if(dateStr == null)
 				return 0;
@@ -141,6 +140,7 @@ public class ArticleMeta {
 			this.subpages = subpages;
 			isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 			isoDate.setTimeZone(TimeZone.getTimeZone("GMT"));
+			this.isOptimized = reader.isOptimized();
 			
 			// run background caching
 			new CachingThread().start();
@@ -148,14 +148,14 @@ public class ArticleMeta {
 
 		public final boolean isSubpage(int docid) throws IOException {
 			if(!finishedCaching)
-				return resolveSubpage(docid);
+				return resolveSubpage(reader.document(docid));
 			
 			return subpage[docid];
 		}
 
 		public float daysOld(int docid) throws IOException {
 			if(!finishedCaching)
-				return resolveDaysOld(docid);
+				return resolveDaysOld(reader.document(docid));
 			
 			return daysOld[docid];
 		}

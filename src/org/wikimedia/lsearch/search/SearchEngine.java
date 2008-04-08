@@ -45,6 +45,7 @@ import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.MessengerThread;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.prefix.PrefixIndexBuilder;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
@@ -371,12 +372,18 @@ public class SearchEngine {
 			ArrayList<String> keys = new ArrayList<String>();
 			if(prefixKey.startsWith("0:")){
 				String title = prefixKey.substring(2);
+				String alt = null;
+				if(title.startsWith("\"") && title.length()>1)
+					alt = title.substring(1); 
 				for(Integer ns : nsf.getNamespacesOrdered()){
 					keys.add(ns+":"+title);
+					if(alt != null)
+						keys.add(ns+":"+alt);
 				}
+
 			} else
 				keys.add(prefixKey);
-			
+						
 			ArrayList<PrefixMatch> results = new ArrayList<PrefixMatch>();
 			IndexReader reader = searcher.getIndexReader();
 			
@@ -403,7 +410,7 @@ public class SearchEngine {
 							if(td1.next()){
 								PrefixMatch m = new PrefixMatch(reader.document(td1.doc()).get("article"));
 								if(r.equals(key))
-									m.score *= 100; // exact boost
+									m.score *= PrefixIndexBuilder.EXACT_BOOST; // exact boost
 								results.add(m);
 
 							}
@@ -996,8 +1003,9 @@ public class SearchEngine {
 	}
 	
 	protected void sendStats(long delta){
-		boolean succ = delta < 10000; // we queries taking more than 10s as bad 
-		SearchServer.stats.add(succ, delta, SearchDaemon.getOpenCount());
+		boolean succ = delta < 10000; // we queries taking more than 10s as bad
+		if(SearchServer.stats != null)
+			SearchServer.stats.add(succ, delta, SearchDaemon.getOpenCount());
 	}
 	
 	protected void logRequest(IndexId iid, String what, String searchterm, Query query, int numhits, long start, Searchable searcher) {
