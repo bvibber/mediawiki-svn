@@ -725,3 +725,56 @@ $messages['vo'] = array(
 	'scanset_prev' => '&lt; Büik',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'scanset-desc'                      => '響 Andreas Grosz 嘅 CD/DVD 度睇掃瞄咗嘅頁圖像',
+	'scanset_no_name'                   => 'ScanSet: 你一定要指定一個 scan set 嘅名，好似 &lt;scanset name="EB1911" /&gt;。',
+	'scanset_invalid_name'              => 'ScanSet: 無效或者唔見 scan set。',
+	'scanset_unrecognised_index_format' => 'ScanSet: 未知嘅索引格式',
+	'scanset_opendir_error'             => 'ScanSet: 錯誤，唔能夠開目錄$1',
+	'scanset_no_files'                  => 'ScanSet: 響指定嘅目錄度無檔案存在。',
+	'scanset_no_volumes'                => 'ScanSet: 無卷宗目錄搵到',
+	'scanset_missing_index_file'        => 'ScanSet: 索引檔 $1 搵唔到',
+	'scanset_index_file_error'          => 'ScanSet: 響索引檔嘅第$1行有錯誤',
+	'scanset_invalid_volume'            => 'ScanSet: 無效嘅卷宗',
+	'scanset_next'                      => '後 &gt;',
+	'scanset_prev'                      => '&lt; 前',
+);
+
+/** Chinese (Simplifiedl)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'scanset-desc'                      => '于 Andreas Grosz 的 CD/DVD 中看已扫瞄的页面图像',
+	'scanset_no_name'                   => 'ScanSet: 您必须要指定一个 scan set 的名字，例如 &lt;scanset name="EB1911" /&gt;。',
+	'scanset_invalid_name'              => 'ScanSet: 无效或遗失 scan set。',
+	'scanset_unrecognised_index_format' => 'ScanSet: 未知的索引格式',
+	'scanset_opendir_error'             => 'ScanSet: 错误，不能开启目录$1',
+	'scanset_no_files'                  => 'ScanSet: 在指定的目录中无文件存在。',
+	'scanset_no_volumes'                => 'ScanSet: 无卷宗目录找到',
+	'scanset_missing_index_file'        => 'ScanSet: 索引文件 $1 找不到',
+	'scanset_index_file_error'          => 'ScanSet: 在索引文件中的第$1行有错误',
+	'scanset_invalid_volume'            => 'ScanSet: 无效的卷宗',
+	'scanset_next'                      => '后 &gt;',
+	'scanset_prev'                      => '&lt; 前',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'scanset-desc'                      => '於 Andreas Grosz 的 CD/DVD 中看已掃瞄的頁面圖像',
+	'scanset_no_name'                   => 'ScanSet: 您必須要指定一個 scan set 的名字，例如 &lt;scanset name="EB1911" /&gt;。',
+	'scanset_invalid_name'              => 'ScanSet: 無效或遺失 scan set。',
+	'scanset_unrecognised_index_format' => 'ScanSet: 未知的索引格式',
+	'scanset_opendir_error'             => 'ScanSet: 錯誤，不能開啟目錄$1',
+	'scanset_no_files'                  => 'ScanSet: 在指定的目錄中無檔案存在。',
+	'scanset_no_volumes'                => 'ScanSet: 無卷宗目錄找到',
+	'scanset_missing_index_file'        => 'ScanSet: 索引檔案 $1 找不到',
+	'scanset_index_file_error'          => 'ScanSet: 在索引檔案中的第$1行有錯誤',
+	'scanset_invalid_volume'            => 'ScanSet: 無效的卷宗',
+	'scanset_next'                      => '後 &gt;',
+	'scanset_prev'                      => '&lt; 前',
+);

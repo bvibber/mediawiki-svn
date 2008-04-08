@@ -292,3 +292,23 @@ $messages['vo'] = array(
 	'doublewiki-desc' => 'Jonön padi sa tradutod onik se vük votik su padüls tel pada ot',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'doublewiki-desc' => '響同一版度以兩欄同時顯示一版同埋佢響另一個wiki嘅翻譯',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'doublewiki-desc' => '在同一页面中以两栏同时显示一页以及它在另一个wiki中的翻译',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'doublewiki-desc' => '在同一頁面中以兩欄同時顯示一頁以及它在另一個wiki中的翻譯',
+);
