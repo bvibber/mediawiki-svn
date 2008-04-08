@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'gotocategory-desc' => "Checks search terms against the Category: namespace for Go 'jump to page' functionality",
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'gotocategory-desc' => 'Prüft Suchbegriffe gegen den Kategorien-Namensraum für die „Gehe direkt zur Seite“-Funktionalität',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

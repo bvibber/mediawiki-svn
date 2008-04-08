@@ -12,8 +12,8 @@ $messages = array();
  * @author http://www.strategywiki.org/wiki/User:Prod
  */
 $messages['en'] = array(
-                'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
-                'watchsubpages'      => 'Watch subpages',
+	'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
+	'watchsubpages'      => 'Watch subpages',
 );
 
 /** Catalan (Català)
@@ -21,6 +21,14 @@ $messages['en'] = array(
  */
 $messages['ca'] = array(
 	'watchsubpages' => 'Vigila subpàgines',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'watchsubpages-desc' => 'Schnelles [[Special:WatchSubpages|Hinzufügen aller Unterseiten]] einer Seite zur Beobachtungsliste',
+	'watchsubpages'      => 'Beobachte Unterseiten',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
