@@ -541,6 +541,14 @@ $messages['uk'] = array(
 	'deletedcontributions' => 'Вилучені редагування користувачів',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'deletedcontributions'      => 'Contributi utente scancelà',
+	'deletedcontributions-desc' => 'Fornisse ai aministradori la possibilità de [[Special:DeletedContributions|visualizar i contributi scancelà de un utente]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen

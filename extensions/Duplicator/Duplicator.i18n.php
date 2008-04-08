@@ -844,6 +844,13 @@ $messages['tr'] = array(
 	'duplicator-dest'    => 'Hedef:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'duplicator-options' => 'Tùy chọn',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'duplicator' => '複製一篇文章',

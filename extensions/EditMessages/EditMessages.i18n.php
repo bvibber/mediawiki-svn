@@ -268,6 +268,13 @@ $messages['oc'] = array(
 	'editmsg-patch-success'    => 'Patch aplicat amb succès.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editmsg-new-search' => 'Nowe wyszukiwanie',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

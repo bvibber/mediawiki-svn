@@ -1630,10 +1630,12 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'sign-city'           => 'Thành phố:',
-	'sign-viewfield-city' => 'Thành phố',
+	'sign-city'              => 'Thành phố:',
+	'sign-viewfield-city'    => 'Thành phố',
+	'sign-viewfield-options' => 'Tùy chọn',
 );
 
 /** Volapük (Volapük)

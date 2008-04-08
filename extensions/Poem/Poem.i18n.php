@@ -144,6 +144,13 @@ $messages['lt'] = array(
 	'poem-desc' => 'Prideda <tt>&lt;poema&gt;</tt> tagus poemų formatavimui',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'poem-desc' => 'പദ്യത്തിന്റെ ഫോര്‍മാറ്റിങ്ങിനു <tt>&lt;poem&gt;</tt>  എന്ന ടാഗ് ചേര്‍ക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -219,6 +226,13 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'poem-desc' => 'Zonta el tag <tt>&lt;poem&gt;</tt> par la formatazion dei testi poetici',
 );
 
 /** Vietnamese (Tiếng Việt)

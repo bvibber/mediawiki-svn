@@ -264,6 +264,13 @@ $messages['hu'] = array(
 	'youtubeauthsub_title' => 'Cím',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'youtubeauthsub_submit' => 'Kirim',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

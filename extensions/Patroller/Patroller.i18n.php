@@ -731,6 +731,13 @@ $messages['tg-cyrl'] = array(
 	'patrol-skip'          => 'Ҷаҳиш',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'patrol-revert-reason' => 'Lý do:',
+);
+
 /* Cantonese (Hillgentleman, Shinjiman) */
 $messages['yue'] = array(
 	'patrol' => '巡啲編輯',

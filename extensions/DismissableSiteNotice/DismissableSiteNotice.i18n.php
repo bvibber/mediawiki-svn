@@ -471,6 +471,14 @@ $messages['tg-cyrl'] = array(
 	'sitenotice-desc'  => 'Ба корбарон иҷозат медиҳад, ки эълоноти сомонаро пинҳон кунанд',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'sitenotice_close' => 'ซ่อน',
+	'sitenotice-desc'  => 'อนุญาตให้ผู้ใช้ปิดประกาศของเว็บ',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

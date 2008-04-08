@@ -407,6 +407,13 @@ $messages['tg-cyrl'] = array(
 	'languageselector-desc' => 'Забон интихобкунанда дар ҳар саҳифа, барои ташрифоварандагон низ',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'languageselector' => 'ภาษา',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

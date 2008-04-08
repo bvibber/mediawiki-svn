@@ -412,7 +412,10 @@ $messages['lv'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
+	'crossnamespacelinks'         => 'അന്തര്‍ വിക്കി നേംസ്പേസ് കണ്ണികള്‍',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} സം‌രംഭത്തില്‍ നിലവിലില്ലാത്ത [[Special:CrossNamespaceLinks|നേംസ്പേസ് കണ്ണികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക]]',
+	'crossnamespacelinks-summary' => 'മുഖ്യ നേംസ്പേസില്‍ നിന്നു മറ്റു നേംസ്പേസുകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നേംസ്പേസുകള്‍ ഒഴിച്ച്) കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താള്‍ പ്രദര്‍ശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശ്വാസകരമല്ല)',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
 );
 
 /** Marathi (मराठी)
@@ -645,8 +648,16 @@ $messages['tr'] = array(
 	'crossnamespacelinks' => 'Alanlar arası bağlantısı olan sayfalar',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ * @author Robbot
+ */
 $messages['vec'] = array(
-	'crossnamespacelinks'         => 'Collegamenti da un namespace a l\'altro',
+	'crossnamespacelinks'         => "Collegamenti da un namespace a l'altro",
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Elenco dei colegamenti tra namespace]] che no dovarìa esìstar su {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Sta pagina la presenta un elenco de colegamenti tra le pagine del namespace prinçipale e le pagine de altri namespace, che no dovarìà èssar doparà.
+
+Xe esclusi i colegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
 	'crossnamespacelinkstext'     => '$1: $2 cołegamento/i $3',
 );
 

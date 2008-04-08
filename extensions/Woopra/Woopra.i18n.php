@@ -27,6 +27,13 @@ $messages['fr'] = array (
 	'woopra-desc' => 'Autorise pour [http://www.woopra.com/ le suivi en direct du logiciel Woopra] de travailler pour votre installation Mediawiki',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'woopra-desc' => "Erlaabt et datt d'[http://www.woopra.com/ Woopra Live Tracking Software] fir är MediaWiki Installatioun schafft",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -46,5 +53,12 @@ $messages['no'] = array(
  */
 $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'woopra-desc' => 'Gör att [http://woopra.com/ Woopra Live Tracking Software] fungerar med MediaWiki',
 );
 

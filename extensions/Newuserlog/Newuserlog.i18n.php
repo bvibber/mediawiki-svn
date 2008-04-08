@@ -504,6 +504,13 @@ $messages['jut'] = array(
 	'newuserlog-create2-entry' => 'åprettede brugerkonto før $1',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'newuserlogpage' => 'Log panganggo anyar',
+);
+
 $messages['kk-arab'] = array(
 	'newuserlogpage'           => 'تىركەلۋ جۋرنالى',
 	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تىركەلگى جاساۋ جۋرنالى',
@@ -641,6 +648,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'newuserlogpage'           => 'പുതിയ ഉപയോക്താക്കളുടെ പട്ടിക',
 	'newuserlogpagetext'       => 'പുതിയതായി അംഗത്വമെടുത്ത ഉപയോക്താക്കളുടെ പട്ടിക താഴെ കാണാം.',
+	'newuserlog-desc'          => '[[Special:Log]] ലേക്ക് [[Special:Log/newusers|അക്കൗണ്ട്  സൃഷ്ടിക്കുന്നതിന്റെ പ്രവര്‍ത്തനരേഖ]] ചേര്‍ക്കുന്നു',
 	'newuserlog-byemail'       => 'രഹസ്യവാക്ക് ഇ-മെയില്‍ വഴി അയച്ചിരിക്കുന്നു',
 	'newuserlog-create-entry'  => 'പുതിയ ഉപയോക്താവ്',
 	'newuserlog-create2-entry' => '$1 എന്ന ഉപയോക്താവിനുവേണ്ടി അക്കൗണ്ട് സൃഷ്ടിച്ചിരിക്കുന്നു',

@@ -528,6 +528,13 @@ $messages['jut'] = array(
 	'usernameblacklist-invalid-lines' => 'Nedenstående {{PLURAL:$1|linje|linjer}} i den sorte liste over brugernavne er ugyldige, ret {{PLURAL:$1|den|dem}} venligst før du gemmer:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'blacklistedusername' => 'Daftar ireng panganggo',
+);
+
 /* Kazakh Arabic (kk:AlefZet) */
 $messages['kk-arab'] = array(
 	'blacklistedusername' => 'قارا تىزىمدەگى قاتىسۋشى اتى',

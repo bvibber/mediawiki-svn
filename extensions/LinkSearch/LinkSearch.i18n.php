@@ -543,11 +543,15 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'linksearch'      => 'വെബ്ബ് കണ്ണികള്‍ തിരയുക',
-	'linksearch-pat'  => 'തിരച്ചിലിന്റെ മാതൃക:',
-	'linksearch-ns'   => 'നെയിംസ്പേസ്:',
-	'linksearch-ok'   => 'തിരയുക',
-	'linksearch-line' => '$1,  $2ല്‍ നിന്നു കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്നു.',
+	'linksearch'       => 'വെബ്ബ് കണ്ണികള്‍ തിരയുക',
+	'linksearch-desc'  => 'നിര്‍ദ്ദിഷ്ട മാതൃകയുമായി യോജിക്കുന്ന [[Special:Linksearch|പുറം കണ്ണികളുള്ള താളുകള്‍ തിരയുക]]',
+	'linksearch-pat'   => 'തിരച്ചിലിന്റെ മാതൃക:',
+	'linksearch-ns'    => 'നെയിംസ്പേസ്:',
+	'linksearch-ok'    => 'തിരയുക',
+	'linksearch-text'  => '"*.wikipedia.org" പോലുള്ള വൈല്‍ഡ് കാര്‍ഡുകള്‍ ഉപയോഗിക്കാവുന്നതാണ്‌.<br />
+പിന്താങ്ങുന്ന പ്രോട്ടോക്കോളുകള്‍: <tt>$1</tt>',
+	'linksearch-line'  => '$1,  $2ല്‍ നിന്നു കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്നു.',
+	'linksearch-error' => 'ഹോസ്റ്റ്നെയിമിന്റെ തുടക്കത്തില്‍ മാത്രമേ വൈല്‍ഡ് കാര്‍ഡുകള്‍ വരാവൂ.',
 );
 
 /** Marathi (मराठी)
@@ -890,6 +894,14 @@ $messages['tg-cyrl'] = array(
 	'linksearch-error' => 'Нишонаҳо фақат дар ибтидои номи мизбони интернетӣ метавонанд истифода шаванд.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'linksearch-ns' => 'เนมสเปซ :',
+	'linksearch-ok' => 'ค้นหา',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
@@ -924,8 +936,14 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'linksearch-ns' => 'Namespace:',
-	'linksearch-ok' => 'Çerca',
+	'linksearch'       => 'Çerca colegamenti foresti',
+	'linksearch-desc'  => '[[Special:Linksearch|Cata fora le pagine con colegamenti foresti]] che corispe a criteri specificà',
+	'linksearch-pat'   => 'Pattern de riçerca:',
+	'linksearch-ns'    => 'Namespace:',
+	'linksearch-ok'    => 'Çerca',
+	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.org".',
+	'linksearch-line'  => '$1 presente ne la pagina $2',
+	'linksearch-error' => "I metacaràteri i pode vegner doparài solo a l'inizio del nome de l'host.",
 );
 
 /** Vietnamese (Tiếng Việt)

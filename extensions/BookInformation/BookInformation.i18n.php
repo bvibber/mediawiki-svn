@@ -542,6 +542,16 @@ $messages['jut'] = array(
 	'bookinfo-provider'          => 'Data leveret åf: $1',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'bookinfo-header'            => 'Informasi buku',
+	'bookinfo-result-title'      => 'Irah-irahan',
+	'bookinfo-result-year'       => 'Taun:',
+	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
+);
+
 /** Georgian (ქართული)
  * @author Alsandro
  */
@@ -675,8 +685,8 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
- * @author Jacob.jose
  * @author Shijualex
+ * @author Jacob.jose
  */
 $messages['ml'] = array(
 	'bookinfo-header'            => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
@@ -686,7 +696,9 @@ $messages['ml'] = array(
 	'bookinfo-result-year'       => 'വര്‍ഷം:',
 	'bookinfo-error-invalidisbn' => 'താങ്കള്‍ രേഖപ്പെടുത്തിയ ISBN സംഖ്യ അസാധുവാണ്‌.',
 	'bookinfo-error-nosuchitem'  => 'ഈ ഇനം കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല അല്ലെങ്കില്‍ നിലവിലില്ല.',
+	'bookinfo-error-noresponse'  => 'പ്രതികരണമില്ല അല്ലെങ്കില്‍ അപേക്ഷയുടെ സമയപരിധി കഴിഞ്ഞു',
 	'bookinfo-purchase'          => 'ഈ പുസ്തകം $1ല്‍ നിന്നു വാങ്ങുക',
+	'bookinfo-provider'          => 'ഡാറ്റ ദാതാവ്: $1',
 );
 
 /** Marathi (मराठी)

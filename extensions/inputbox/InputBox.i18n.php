@@ -935,9 +935,12 @@ $messages['uz'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'tryexact'       => 'Çerca corispondenza precisa',
-	'searchfulltext' => 'Çerca nel testo',
-	'createarticle'  => 'Crea pagina',
+	'inputbox-desc'           => "Consente l'inserimento de moduli HTML predefinìi",
+	'inputbox-error-no-type'  => 'No te ghè specificà el tipo de inputbox da crear.',
+	'inputbox-error-bad-type' => '"$1" no\'l xe mìa un tipo de inputbox riconossiùo. Siegli el tipo tra "create", "comment", "search" e "search2".',
+	'tryexact'                => 'Çerca corispondenza precisa',
+	'searchfulltext'          => 'Çerca nel testo',
+	'createarticle'           => 'Crea pagina',
 );
 
 /** Vietnamese (Tiếng Việt)

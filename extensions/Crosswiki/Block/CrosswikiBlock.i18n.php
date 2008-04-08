@@ -1022,7 +1022,14 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
+	'crosswikiblock-target'         => 'Нишонаи IP ё номи корбарӣ ва викии мақсад:',
 	'crosswikiblock-reason'         => 'Далел:',
+	'crosswikiblock-submit'         => 'Бастани ин корбар',
+	'crosswikiblock-anononly'       => 'Фақат бастани корбарони гумном',
+	'crosswikiblock-nocreate'       => 'Ҷилавгирӣ аз эҷоди ҳисоб',
+	'crosswikiblock-noemail'        => 'Ҷилавгирии корбар аз фиристодани почтаи электронӣ',
+	'crosswikiunblock'              => 'Аз бастан озод кардани корбар дар дигар вики',
+	'crosswikiunblock-user'         => 'Номи корбарӣ, нишонаи IP  ё нишонаи бастан ва викии мақсад:',
 	'crosswikiunblock-reason'       => 'Сабаб:',
 	'crosswikiunblock-submit'       => 'Боз кардани ин корбар',
 	'crosswikiunblock-success'      => "Корбар '''$1''' бо муваффақият боз шуд.
@@ -1045,11 +1052,14 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'crosswikiblock-reason'         => 'Lý do:',
 	'crosswikiblock-submit'         => 'Cấm',
 	'crosswikiblock-anononly'       => 'Chỉ cấm thành viên vô danh',
 	'crosswikiblock-autoblock'      => 'Tự động cấm các địa chỉ IP mà thành viên này sử dụng',
+	'crosswikiunblock-reason'       => 'Lý do:',
 	'crosswikiblock-alreadyblocked' => '“$3” đã bị cấm rồi.',
 );
 

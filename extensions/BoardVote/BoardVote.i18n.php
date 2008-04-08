@@ -1042,6 +1042,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author M.M.S.
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -1074,9 +1075,11 @@ Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla 
 	'boardvote_user'         => 'Käyttäjä',
 	'boardvote_edits'        => 'Muokkausta',
 	'boardvote_days'         => 'Päivää',
+	'boardvote_ip'           => 'IP-osoite',
 	'boardvote_ua'           => 'Käyttäjäagentti',
 	'boardvote_listintro'    => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
 	'boardvote_dumplink'     => 'Napsauta tästä',
+	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Älä tue',
 	'boardvote_unstrike'     => 'Palauta tuetuksi',
 	'boardvote_needadmin'    => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
@@ -2011,20 +2014,37 @@ to date. $1 før æ enkriptet data.</p>",
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'boardvote'          => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
-	'boardvote-desc'     => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
-	'boardvote_entry'    => '* [[Special:Boardvote/vote|Coblos]]
+	'boardvote'            => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
+	'boardvote-desc'       => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|Coblos]]
 * [[Special:Boardvote/list|Daftar coblosan nganti saiki]]
 * [[Special:Boardvote/dump|Data pamilihan sing diènkripsi]]',
-	'boardvote_novotes'  => 'Durung ana sing nyoblos.',
-	'boardvote_time'     => 'Wektu',
-	'boardvote_user'     => 'Panganggo',
-	'boardvote_edits'    => 'Suntingan',
-	'boardvote_days'     => 'Dina',
-	'boardvote_ip'       => 'IP',
-	'boardvote_dumplink' => 'Kliken ing kéné',
-	'boardvote_submit'   => 'OK',
-	'boardvote_welcome'  => "Sugeng rawuh '''$1'''!",
+	'boardvote_entered'    => 'Matur nuwun, pilihané panjenengan wis dicathet.
+
+Yèn kersa, panjenengan bisa nyathet détail sing kapacak ing ngisor iki. Cathetan swara panjenengan:
+
+<pre>$1</pre>
+
+Cathetan iku wis diènkripsi mawa kunci publik Pangurus Pamilihan:
+
+<pre>$2</pre>
+
+Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacara umum ing [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Back]]',
+	'boardvote_novotes'    => 'Durung ana sing nyoblos.',
+	'boardvote_time'       => 'Wektu',
+	'boardvote_user'       => 'Panganggo',
+	'boardvote_edits'      => 'Suntingan',
+	'boardvote_days'       => 'Dina',
+	'boardvote_ip'         => 'IP',
+	'boardvote_dumplink'   => 'Kliken ing kéné',
+	'boardvote_submit'     => 'OK',
+	'boardvote_edits_many' => 'akèh',
+	'boardvote_welcome'    => "Sugeng rawuh '''$1'''!",
+	'go_to_board_vote'     => 'Pamilihan Déwan Wikimedia 2007',
 );
 
 /** Georgian (ქართული)
@@ -4058,16 +4078,23 @@ Bisogna inpostar el proprio browser parché l'aceta i cookie dal nostro server d
 	'boardvote_days'         => 'Giòrni',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'User agent',
+	'boardvote_listintro'    => '<p>Qua se cata na lista dei voti registrà fin desso. $1 par descargar i dati in forma cifrà.</p>',
 	'boardvote_dumplink'     => 'Struca qua',
 	'boardvote_submit'       => 'Va ben',
 	'boardvote_strike'       => 'Anula sto voto',
 	'boardvote_unstrike'     => 'Elimina anulamento',
+	'boardvote_needadmin'    => 'Solo i conponenti de la comission eletoral i pol far sta operazion.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezion del Consejo diretivo de Wikimedia</a>:
+la votazion la xe verta fin al 12 de lujo',
+	'boardvote_notstarted'   => 'La votazion no la xe gnancora verta',
 	'boardvote_edits_many'   => 'tanti',
 	'group-boardvote'        => 'Comission eletoral',
 	'group-boardvote-member' => 'Comissario eletoral',
 	'grouppage-boardvote'    => '{{ns:project}}:Comissario eletoral',
+	'boardvote_blocked'      => 'Ne despiase, ma te sì stà blocà nel progeto in do che te sì registrà. I utenti blocà no i gà dirito de voto.',
 	'boardvote_welcome'      => "Benvegnù '''$1'''!",
 	'go_to_board_vote'       => 'Elezion 2007 del Board de Wikimedia',
+	'boardvote_redirecting'  => "Par verghe na mazor sicureza e trasparensa, el voto el se tien su un server esterno, a controlo indipendente. Te sarè reindirizà a sto server esterno in 20 secondi. [$1 Struca qua] par 'ndarghe diretamente. Podarìa vegner fora un aviso de sicureza riguardante un certificato de protezion mìa verificà.",
 );
 
 /** Vietnamese (Tiếng Việt)

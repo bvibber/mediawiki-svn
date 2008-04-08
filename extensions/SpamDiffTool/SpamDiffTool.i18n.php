@@ -232,6 +232,13 @@ $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'spamdifftool_submit_buttom' => 'Kirim',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

@@ -530,10 +530,12 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'sitematrix'          => 'Daftar wiki Wikimedia',
-	'sitematrix-summary'  => 'Kaca astaméwa utawa kusus iki ngandhut daftar kabèh wiki Wikimedia.',
-	'sitematrix-language' => 'Basa',
-	'sitematrix-others'   => 'Proyèk-proyèk liya Wikimedia',
+	'sitematrix'           => 'Daftar wiki Wikimedia',
+	'sitematrix-summary'   => 'Kaca astaméwa utawa kusus iki ngandhut daftar kabèh wiki Wikimedia.',
+	'sitematrix-language'  => 'Basa',
+	'sitematrix-others'    => 'Proyèk-proyèk liya Wikimedia',
+	'sitematrix-total'     => "'''Gunggungé cacahé: $1'''",
+	'sitematrix-sitetotal' => 'Gunggungé',
 );
 
 $messages['ka'] = array(
@@ -668,6 +670,7 @@ $messages['lv'] = array(
 $messages['ml'] = array(
 	'sitematrix'           => 'വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക',
 	'sitematrix-summary'   => 'ഈ താള്‍ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുന്നു.',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|മീഡിയാവിക്കി വിക്കികളുടെ പട്ടിക]] പ്രദര്‍ശിപ്പിക്കുന്നു',
 	'sitematrix-language'  => 'ഭാഷ',
 	'sitematrix-project'   => 'സം‌രംഭത്തിന്റെ പേര്‌, സഹസം‌രംഭങ്ങളിലേക്കുള്ള കണ്ണി, മറ്റ് വിക്കികളിലേക്കുള്ള കണ്ണി',
 	'sitematrix-others'    => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങള്‍',
@@ -1017,8 +1020,19 @@ $messages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ * @author Robbot
+ */
 $messages['vec'] = array(
-	'sitematrix' => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',
+	'sitematrix'           => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',
+	'sitematrix-summary'   => 'Sta pagina speciale la elenca tuti i progeti Wikimedia',
+	'sitematrix-desc'      => 'Mostra un [[Special:SiteMatrix|elenco dei siti Wikimedia]]',
+	'sitematrix-language'  => 'Lengua',
+	'sitematrix-project'   => 'Nome del progeto, colegamento interprogeto e colegamento inter-wiki',
+	'sitematrix-others'    => 'Altri progeti Wikimedia',
+	'sitematrix-total'     => "'''Contegio total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 );
 
 /** Vietnamese (Tiếng Việt)

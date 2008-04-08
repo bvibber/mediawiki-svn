@@ -188,17 +188,18 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'ogg-play'              => 'Lenn',
-	'ogg-pause'             => 'Ehan',
-	'ogg-stop'              => 'Paouez',
-	'ogg-play-video'        => 'Lenn ar video',
-	'ogg-play-sound'        => 'Lenn ar son',
-	'ogg-player-soundthumb' => 'Lenner ebet',
-	'ogg-use-player'        => 'Ober gant al lenner :',
-	'ogg-more'              => "Muioc'h...",
-	'ogg-dismiss'           => 'Serriñ',
-	'ogg-download'          => 'Pellgargañ ar restr',
-	'ogg-desc-link'         => 'Diwar-benn ar restr-mañ',
+	'ogg-play'                => 'Lenn',
+	'ogg-pause'               => 'Ehan',
+	'ogg-stop'                => 'Paouez',
+	'ogg-play-video'          => 'Lenn ar video',
+	'ogg-play-sound'          => 'Lenn ar son',
+	'ogg-player-videoElement' => 'elfenn <video>',
+	'ogg-player-soundthumb'   => 'Lenner ebet',
+	'ogg-use-player'          => 'Ober gant al lenner :',
+	'ogg-more'                => "Muioc'h...",
+	'ogg-dismiss'             => 'Serriñ',
+	'ogg-download'            => 'Pellgargañ ar restr',
+	'ogg-desc-link'           => 'Diwar-benn ar restr-mañ',
 );
 
 /** Catalan (Català)
@@ -857,6 +858,27 @@ $messages['jut'] = array(
 	'ogg-desc-link'           => 'Åver dette file',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'ogg-short-audio'      => 'Berkas swara $1 ogg, $2',
+	'ogg-short-video'      => 'Berkas vidéo $1 ogg, $2',
+	'ogg-short-general'    => 'Berkas média $1 ogg, $2',
+	'ogg-long-audio'       => '(Berkas swara $1 ogg, dawané $2, $3)',
+	'ogg-long-video'       => '(Berkas vidéo $1 ogg, dawané $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Berkas audio/vidéo multiplexed ogg, $1, dawané $2, $4×$5 piksel, $3 gunggungé)',
+	'ogg-long-general'     => '(Berkas média ogg, dawané $2, $3)',
+	'ogg-long-error'       => '(Berkas ogg ora absah: $1)',
+	'ogg-play'             => 'Main',
+	'ogg-pause'            => 'Lèrèn',
+	'ogg-stop'             => 'Mandeg',
+	'ogg-play-video'       => 'Main vidéo',
+	'ogg-play-sound'       => 'Main swara',
+	'ogg-player-thumbnail' => 'Namung gambar statis waé',
+	'ogg-download'         => 'Undhuh berkas',
+);
+
 $messages['kk-arab'] = array(
 	'ogg-short-audio'      => 'Ogg $1 دىبىس فايلى, $2',
 	'ogg-short-video'      => 'Ogg $1 بەينە فايلى, $2',
@@ -1078,7 +1100,9 @@ $messages['ml'] = array(
 	'ogg-long-video'       => '(ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈര്‍ഘ്യം $2, $4×$5 pixels, $3)',
 	'ogg-long-general'     => '(ഓഗ് മീഡിയ പ്രമാണം, ദൈര്‍ഘ്യം $2, $3)',
 	'ogg-long-error'       => '(അസാധുവായ ഓഗ് പ്രമാണം: $1)',
+	'ogg-stop'             => 'നിര്‍ത്തുക',
 	'ogg-player-oggPlugin' => 'ഓഗ് പ്ലഗിന്‍',
+	'ogg-player-thumbnail' => 'നിശ്ചല ചിത്രം മാത്രം',
 	'ogg-player-selected'  => '(തിരഞ്ഞെടുത്തവ)',
 	'ogg-more'             => 'കൂടുതല്‍...',
 	'ogg-dismiss'          => 'അടയ്ക്കുക',
@@ -1703,12 +1727,32 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'ogg-play'       => 'Riprodusi',
-	'ogg-pause'      => 'Pausa',
-	'ogg-stop'       => 'Fèrma',
-	'ogg-play-video' => 'Varda el video',
-	'ogg-play-sound' => 'Scolta el file',
-	'ogg-dismiss'    => 'Sara',
+	'ogg-desc'                => 'Gestor par i file Ogg Theora e Vorbis, con riprodutor JavaScript',
+	'ogg-short-audio'         => 'File audio Ogg $1, $2',
+	'ogg-short-video'         => 'File video Ogg $1, $2',
+	'ogg-short-general'       => 'File multimedial Ogg $1, $2',
+	'ogg-long-audio'          => '(File audio Ogg $1, durata $2, $3)',
+	'ogg-long-video'          => '(File video Ogg $1, durata $2, dimensioni $4×$5 pixel, $3)',
+	'ogg-long-multiplexed'    => '(File audio/video multiplexed Ogg $1, durata $2, dimensioni $4×$5 pixel, conplessivamente $3)',
+	'ogg-long-general'        => '(File multimedial Ogg, durata $2, $3)',
+	'ogg-long-error'          => '(File ogg mìa valido: $1)',
+	'ogg-play'                => 'Riprodusi',
+	'ogg-pause'               => 'Pausa',
+	'ogg-stop'                => 'Fèrma',
+	'ogg-play-video'          => 'Varda el video',
+	'ogg-play-sound'          => 'Scolta el file',
+	'ogg-no-player'           => 'Semo spiacenti, ma sul to sistema no risulta instalà nissun software de riproduzion conpatibile. Par piaser <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete un letor</a> che vaga ben.',
+	'ogg-no-xiphqt'           => 'No risulta mìa instalà el conponente XiphQT de QuickTime. Senza sto conponente no se pode mìa riprodur i file Ogg con QuickTime. Par piaser, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete XiphQT</a> o siegli n\'altro letor.',
+	'ogg-player-videoElement' => 'elemento <video>',
+	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-thumbnail'    => 'Solo imagini fisse',
+	'ogg-player-soundthumb'   => 'Nissun letor',
+	'ogg-player-selected'     => '(selezionà)',
+	'ogg-use-player'          => 'Dòpara el letor:',
+	'ogg-more'                => 'Altro...',
+	'ogg-dismiss'             => 'Sara',
+	'ogg-download'            => 'Descarga el file',
+	'ogg-desc-link'           => 'Informazion su sto file',
 );
 
 /** Vietnamese (Tiếng Việt)

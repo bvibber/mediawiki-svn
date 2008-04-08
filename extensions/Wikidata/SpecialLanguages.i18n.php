@@ -1439,6 +1439,7 @@ $wdMessages['lb'] = array(
 	'ow_TranslatedTextAttributeValues' => 'Iwwersetzbaren Text',
 	'ow_LinkAttributeValues'           => 'Linken',
 	'ow_meaningsoftitle'               => 'Bedeitung vun "$1"',
+	'ow_meaningsofsubtitle'            => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_help'                     => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
@@ -2850,6 +2851,7 @@ $wdMessages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $wdMessages['vi'] = array(
 	'datasearch'                      => 'Wikidata: Tìm kiếm cho dữ liệu',
@@ -2872,6 +2874,7 @@ $wdMessages['vi'] = array(
 	'ow_DefinedMeaningReference'      => 'Định nghĩa',
 	'ow_Language'                     => 'Ngôn ngữ',
 	'ow_LevelAnnotation'              => 'Chú thích',
+	'ow_OptionAttributeOptions'       => 'Tùy chọn',
 	'ow_PopupAnnotation'              => 'Chú thích',
 	'ow_Relations'                    => 'Các mối quan hệ',
 	'ow_Spelling'                     => 'Chính tả',

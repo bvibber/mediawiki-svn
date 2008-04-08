@@ -192,6 +192,13 @@ $messages['uk'] = array(
 	'charinsert-desc' => 'Дозволяє створити JavaScript-блок для [[MediaWiki:Edittools|вставки нестандартних символів]]',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'charinsert-desc' => 'Permete la creazion de un riquadro in JavaScript par [[MediaWiki:Edittools|inserir i caràteri mìà standard]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

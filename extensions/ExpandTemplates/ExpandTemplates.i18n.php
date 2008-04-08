@@ -1118,8 +1118,17 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'expandtemplates'      => 'Espansion dei template',
-	'expandtemplates-desc' => "[[Special:ExpandTemplates|Espande i template, le funzion del parser e le variabili]] par mostrar el wikitesto espanso e visualizar n'anteprima de la pagina ne la so forma final",
+	'expandtemplates'                  => 'Espansion dei template',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplates|Espande i template, le funzion del parser e le variabili]] par mostrar el wikitesto espanso e visualizar n'anteprima de la pagina ne la so forma final",
+	'expand_templates_intro'           => 'Sta pagina speciale la elabora un testo espandendo tuti i template presenti. La calcola inoltre el risultato de le funzion suportàe dal parser come <nowiki>{{</nowiki>#if:...}} e de le variabili de sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, overo in pratica tuto quel che se cata tra dopie parentesi grafe. La funsiona riciamando le oportune funzion del parser de MediaWiki.',
+	'expand_templates_title'           => 'Contesto (par {{PAGENAME}} ecc.):',
+	'expand_templates_input'           => 'Testo da espàndar:',
+	'expand_templates_output'          => 'Risultato',
+	'expand_templates_xml_output'      => 'Output in formato XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Ignora i comenti',
+	'expand_templates_generate_xml'    => 'Mostra àlbaro sintàtico XML',
+	'expand_templates_preview'         => 'Anteprima',
 );
 
 /** Vietnamese (Tiếng Việt)

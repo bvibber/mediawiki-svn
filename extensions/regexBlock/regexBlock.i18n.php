@@ -1019,8 +1019,10 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'regexblock-form-reason'     => 'Lý do:',
 	'regexblock-already-blocked' => '“$1” đã bị cấm rồi.',
 	'regexblock-view-all'        => 'Tất cả',
 	'regexblock-view-go'         => 'Xem',

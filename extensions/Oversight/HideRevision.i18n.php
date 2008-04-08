@@ -960,6 +960,14 @@ $messages['jut'] = array(
 Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt priiviilesje.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'hiderevision-prompt' => 'Nomer révisi sing kudu diilangi:',
+	'hiderevision-tab'    => 'Delikna révisi',
+);
+
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
 	'hiderevision'                => 'نۇسقالاردى تۇراقتى جاسىرۋ',
@@ -1191,6 +1199,7 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'hiderevision'                => 'മാറ്റങ്ങള്‍ സ്ഥിരമായി മറയ്ക്കുക',
+	'hiderevision-prompt'         => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
 	'hiderevision-continue'       => 'തുടരുക',
 	'hiderevision-reason'         => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
 	'hiderevision-submit'         => 'ഈ ഡാറ്റ സ്ഥിരമായി മറയ്ക്കുക',
@@ -2007,6 +2016,16 @@ $messages['uk'] = array(
 	'oversight'              => 'Журнал приховування версій',
 	'oversight-header'       => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'group-oversight'        => 'Supervisori',
+	'group-oversight-member' => 'Supervision',
+	'grouppage-oversight'    => '{{ns:project}}:Supervision',
+	'hiderevision-continue'  => 'Continua',
 );
 
 /** Vietnamese (Tiếng Việt)

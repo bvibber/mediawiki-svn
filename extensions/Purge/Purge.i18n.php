@@ -169,6 +169,13 @@ $messages['stq'] = array(
 	'purge' => 'Cache loosmoakje',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'purge' => 'ล้างแคช',
+);
+
 /** Tonga (faka-Tonga)
  * @author Tauʻolunga
  */

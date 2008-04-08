@@ -173,6 +173,13 @@ $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'doublewiki-desc' => 'ഒരു താളും മറ്റൊരു വിക്കിയിലുള്ള അതിന്റെ പരിഭാഷയം, രണ്ടു കളങ്ങളിലായി ഒരേ താളില്‍ പ്രദര്‍ശിപ്പിക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

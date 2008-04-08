@@ -130,6 +130,20 @@ $messages['sv'] = array(
 	'mwsearch-desc' => 'MWSearch-programtillägg',
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'mwsearch-desc' => 'Афзунаи MWSearch',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'mwsearch-desc' => 'MWSearch plugin',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

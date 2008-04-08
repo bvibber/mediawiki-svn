@@ -371,6 +371,13 @@ $messages['jut'] = array(
 	'scanset_prev' => '&lt; Førge',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'scanset-desc' => "Tuduhna gambar kaca sing di-''scan'' saka sèt CD/DVD Andreas Grosz",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -418,8 +425,18 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'scanset_next' => 'അടുത്തത് &gt;',
-	'scanset_prev' => '&lt; മുന്‍പുള്ളത്',
+	'scanset-desc'                      => 'ആന്‍ഡ്രാസ് ഗ്രോസ്സിന്റെ സിഡി/ഡിവിഡി സെറ്റുകളില്‍ നിന്നു സ്കാന്‍ ചെയ്ത താളിന്റെ ചിത്രം കാണുക',
+	'scanset_no_name'                   => 'ScanSet: നിങ്ങള്‍ ഒരു സ്കാന്‍സെറ്റ് നാമം (ഉദാ. &lt;scanset name="EB1911" /&gt;) നിര്‍ബന്ധമായും കൊടുത്തിരിക്കണം.',
+	'scanset_invalid_name'              => 'ScanSet: അസാധുവായ അല്ലെങ്കില്‍ നഷ്ടപെട്ടുപോയ സ്കാന്‍സെറ്റ്.',
+	'scanset_unrecognised_index_format' => 'ScanSet: അറിയപ്പെടാത്ത ഇന്‍ഡെക്സ് ഫോര്‍മാറ്റ്',
+	'scanset_opendir_error'             => 'ScanSet: പ്രിഴവ്, $1 എന്ന ഡയറക്ടറി തുറക്കാന്‍ പറ്റിയില്ല',
+	'scanset_no_files'                  => 'ScanSet: നിര്‍ദ്ദിഷ്ട ഡയറക്ടറിയില്‍ ഫയലുകള്‍ ഒന്നുമില്ല.',
+	'scanset_no_volumes'                => 'ScanSet: വാല്യം ഡയറക്ടറികള്‍ കണ്ടില്ല',
+	'scanset_missing_index_file'        => 'ScanSet: $1 എന്ന ഇന്‍ഡെക്സ് ഫയല്‍ കണ്ടില്ല',
+	'scanset_index_file_error'          => 'ScanSet: ഇന്‍ഡെക്സ് ഫയല്‍ ഫോര്‍മാറ്റിന്റെ $1 എന്ന ലൈനില്‍ പിഴവ്',
+	'scanset_invalid_volume'            => 'ScanSet: അസാധുവായ വാല്യം',
+	'scanset_next'                      => 'അടുത്തത് &gt;',
+	'scanset_prev'                      => '&lt; മുന്‍പുള്ളത്',
 );
 
 /** Marathi (मराठी)

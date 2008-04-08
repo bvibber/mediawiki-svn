@@ -67,6 +67,15 @@ $messages['bn'] = array(
 	'intersection_noresults'   => 'DynamicPageList: ফলাফল নাই!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: Re a rummadoù !',
+	'intersection_toofewcats'  => 'DynamicPageList: Re nebeut a rummadoù !',
+	'intersection_noresults'   => "DynamicPageList: Disoc'h ebet !",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -277,6 +286,17 @@ $messages['lt'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Jums reikia įtraukti bent vieną kategoriją, arba nurodyti vardų sritį!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'intersection-desc'          => 'ഒരു കാറ്റഗറിയില്‍ പുതിയതായി വന്ന ഇനങ്ങളുടെ ബുള്ളറ്റ് പട്ടികയോ, അല്ലെങ്കില്‍ നിരവധി കാറ്റഗറികളുടെ കൂട്ടത്തെയോ ഔട്ട് പുട്ടായി കിട്ടുന്നു.',
+	'intersection_toomanycats'   => 'DynamicPageList: വളരെയധികം കാറ്റഗറികള്‍!',
+	'intersection_toofewcats'    => 'DynamicPageList: വളരെ കുറച്ച് കാറ്റഗറികള്‍!',
+	'intersection_noresults'     => 'DynamicPageList: ഫലങ്ങള്‍ ഒന്നുമില്ല!',
+	'intersection_noincludecats' => 'DynamicPageList: ചുരുങ്ങിയത് ഒരു കാറ്റഗറിയെങ്കിലും ഉള്‍പ്പെടുത്തുകയോ അല്ലെങ്കില്‍ ഒരു നേംസ്പേസ് എങ്കിലും നിഷ്കര്‍ഷിച്ചിരിക്കുകയോ വേണം!',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -419,6 +439,17 @@ $messages['tg-cyrl'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: Теъдоди гурӯҳҳо кам аст!',
 	'intersection_noresults'     => 'DynamicPageList: Натиҷае вуҷуд надорад!',
 	'intersection_noincludecats' => 'DynamicPageList: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'intersection-desc'          => "Mostra un elenco puntato coi elementi piassè reçenti inserìi in te na categoria o ne l'union de più categorie",
+	'intersection_toomanycats'   => 'DynamicPageList: Ghe xe massa categorie!',
+	'intersection_toofewcats'    => 'DynamicPageList: Ghe xe massa póche categorie!',
+	'intersection_noresults'     => 'DynamicPageList: Nissun risultato!',
+	'intersection_noincludecats' => 'DynamicPageList: Te ghè da inclùdar almanco na categoria opure specificar un namespace.',
 );
 
 /** Vietnamese (Tiếng Việt)

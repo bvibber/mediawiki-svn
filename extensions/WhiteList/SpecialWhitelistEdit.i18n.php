@@ -288,6 +288,7 @@ $allMessages['lb'] = array(
 	'whitelistbadtitle'        => 'Schlechten Titel -',
 	'whitelistoverview'        => '== Iwwersiicht vun den Ännerunge vun $1 ==',
 	'whitelistoverviewcd'      => "* Datum vun '''$1''' ännere  fir [[:$2|$2]]",
+	'whitelistrequestconf'     => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever'           => 'nie',
 	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
 );

@@ -279,11 +279,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  * @author Masti
  */
 $messages['pl'] = array(
-	'inspectcache-ok'   => 'OK',
-	'inspectcache-list' => 'Lista',
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Usuń',
+	'inspectcache-list'   => 'Lista',
 );
 
 /** Pashto (پښتو)

@@ -219,6 +219,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author M.M.S.
  */
 $messages['fi'] = array(
 	'parserdifftest'      => 'Esikäsittelijöiden eroavaisuudet',
@@ -226,6 +227,8 @@ $messages['fi'] = array(
 	'pdtest_no_target'    => 'Kohdetta ei määritetty.',
 	'pdtest_page_missing' => 'Kyseistä sivua ei löytynyt tietokannasta.',
 	'pdtest_no_changes'   => 'Ei havaittuja muutoksia.',
+	'pdtest_text'         => 'Tekstisyöte',
+	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Hae teksti sivulta',
 	'pdtest_diff'         => 'Eroavaisuudet',
 	'pdtest_side_by_side' => 'Tulosteen vertailu',
@@ -527,11 +530,15 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'pdtest_no_target'   => 'ലക്ഷ്യം നിര്‍‌വചിച്ചിട്ടില്ല',
-	'pdtest_no_changes'  => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
-	'pdtest_time_report' => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
-	'pdtest_ok'          => 'ശരി',
-	'pdtest_diff'        => 'വ്യത്യാസങ്ങള്‍',
+	'pdtest-desc'         => 'രണ്ട് വ്യത്യസ്ത പാര്‍സറുകളുടെ ഔട്ട്പുട്ട് താരതമ്യപ്പെടുത്താനുള്ള [[Special:ParserDiffTest|പ്രത്യേക താള്‍]]',
+	'pdtest_no_target'    => 'ലക്ഷ്യം നിര്‍‌വചിച്ചിട്ടില്ല',
+	'pdtest_page_missing' => 'നിര്‍ദ്ദിഷ്ട താള്‍ ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
+	'pdtest_no_changes'   => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
+	'pdtest_time_report'  => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
+	'pdtest_ok'           => 'ശരി',
+	'pdtest_diff'         => 'വ്യത്യാസങ്ങള്‍',
+	'pdtest_side_by_side' => 'ഔട്ട്പുട്ടിന്റെ താരതമ്യം',
+	'pdt_comparing_page'  => '[[$1]]ല്‍ നിന്നുള്ള പാര്‍സര്‍ ഔട്ട്പുട്ട് താരതമ്യപ്പെടുത്തുന്നു',
 );
 
 /** Marathi (मराठी)
@@ -852,8 +859,9 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'pdtest_ok'   => 'OK',
-	'pdtest_diff' => 'Difarenze',
+	'parserdifftest' => 'Verifica de le modifiche introdote nel parser',
+	'pdtest_ok'      => 'OK',
+	'pdtest_diff'    => 'Difarenze',
 );
 
 /** Vietnamese (Tiếng Việt)
