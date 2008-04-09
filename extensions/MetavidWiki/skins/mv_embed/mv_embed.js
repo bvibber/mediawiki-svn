@@ -40,8 +40,11 @@ gMsg['error_load_lib']='mv_embed: unable to load required javascript libraries\n
 			 	'insert script via DOM has failed, try reloading?  ';
 			 	
 gMsg['download_from']='Download Selection:';
-gMsg['download_full']='Download Full File:'
+gMsg['download_full']='Download Full Video File:'
 gMsg['download_clip']='Download the Clip';
+gMsg['download_text']='Download Text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">cmml</a> xml):';
+
+gMsg['clip_linkback']='Clip Source Page';
 //plugin names:
 gMsg['ogg-player-vlc-mozilla']='VLC Plugin';
 gMsg['ogg-player-videoElement']='Native Ogg Video Support';
@@ -90,7 +93,7 @@ var video_attributes = {
     //roe url (for xml based metadata)
     "roe":null,
     //if roe includes metadata tracks we can expose a link to metadata
-    "show_meta_link":false,
+    "show_meta_link":true,
             
     //custom attributes for mv_embed: 
     "play_button":true,
@@ -681,6 +684,7 @@ var embedVideo = function(element) {
 //base embedVideo object
 embedVideo.prototype = {
 	slider:null,
+	roe_data:null,
 	load_external_data:false,
 	//state attributes (per html5 spec http://www.whatwg.org/specs/web-apps/current-work/#video)
 	video_states:{
@@ -783,17 +787,20 @@ embedVideo.prototype = {
 			if(typeof data == 'object' ){
 				js_log('type of data is object');
 				_this.roe_data = data;
-				
+				var cmml_available=false;
 				$j.each(_this.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
 					if(n.getAttribute('content-type')=='video/ogg' && n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
 						_this['src'] = n.getAttribute("src");
 					}
 					if(n.getAttribute('content-type')=='text/cmml'){
-						js_log('cmml available');
-						_this['show_meta_link']=true;
+						js_log('cmml available');						
+						cmml_available=true;
 					}
-				});								
+				});				
+				if(cmml_available){
+					_this['show_meta_link']=true;				
+				}
 				/*
 				//set the src to video tag with "default" attribute:
 				//var rVids = _this.roe_data.getElementsByTagName('video');
@@ -992,11 +999,20 @@ embedVideo.prototype = {
 				 '</a>'+
 			 '</div>';
 	  	 }
+	  	//add in cmml inline dispaly if roe descption avaliable
+	  	//not to be displayed in stream interface. 
+	  	/*if(this.show_meta_link){
+	  		thumb_html+='<div style="position:absolute;top:2px;right:2px;z-index:1">'+
+		     '<a title="text tracks" href="#" onClick="document.getElementById(\''+this.id+'\').showTextInterface();return false;">';
+		    thumb_html+=getTransparentPng({id:'metaText_'+this.id, width:"40", height:"27", border:"0", 
+						src:mv_embed_path + 'images/cc_meta_sm.png' });
+			thumb_html+='</div>';    	
+	  	}*/
 	  	
 	    //add link back if requested
 	    if(this.linkback){
 	    	thumb_html+='<div style="position:absolute;bottom:2px;right:2px;z-index:1">'+
-		     '<a title="clip linkback" target="_new" href="'+this.linkback+'">';
+		     '<a title="'+getMsg('clip_linkback')+'" target="_new" href="'+this.linkback+'">';
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0", 
 						src:mv_embed_path + 'images/vid_info_sm.png' });
 			thumb_html+='</div>';    	
@@ -1094,12 +1110,14 @@ embedVideo.prototype = {
 	 	 if(width<320)width=320;
 	 	 if(height<240)height=240;
 	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+	 	 var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>';
 		 //fade in a black bg div ontop of everything
 		 var select_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
 				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+	
-			 '<span id="con_vl_'+this.id+'" style="position:relative;top:20px;left:20px;color:white;">';			 	
-		var dl_list='';
+			 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</sapn>'+
+			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
+		var dl_list='';		
 		//set to loading if we don't have the roe data yet: 
 		if(!this.roe_data && this.roe){		
 			select_code+=getMsg('loading_txt');			
@@ -1108,10 +1126,10 @@ embedVideo.prototype = {
 				$j('#con_vl_'+_this.id).html(_this.getDLlist());				
 			});
 		}else{
+			js_log('get dl list');			
 			select_code+=this.getDLlist();
 		}		
-		select_code+='</span>'+
-			'<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>'+
+		select_code+=close_link+'</span>'+			
 		 '</div>';
 		 //js_log('appending to: ' + sel_id +' sc: '+ select_code );
 		 $j('#'+sel_id).append(select_code);
@@ -1120,19 +1138,20 @@ embedVideo.prototype = {
 	getDLlist:function(){		
 		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
-		var dl_list='';
-		$j.each(this.roe_data.getElementsByTagName('video'), function(inx,n){	
+		var dl_list=dl_txt_list='';
+		$j.each(this.roe_data.getElementsByTagName('mediaSource'), function(inx,n){	
 			var dl_line = '<a style="color:white" href="' + n.getAttribute("src") +'"> '+
 						n.getAttribute("title")+'</a><br>'+"\n";						
 			if(n.getAttribute("content-type")=="video/ogg"){
 				out+=dl_line;
+			}if(n.getAttribute("content-type")=="text/cmml"){
+				dl_txt_list+=dl_line;
 			}else{
 				dl_list+=dl_line;
 			}
-		});
-		out+='</blockquote>'+getMsg('download_full')+"<blockquote>";
-		out+=dl_list;
-		out+='</blockquote></span>';
+		});		
+		out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
+		out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';		
 		return out;
 	},
 	closeVideoDownload:function(){
