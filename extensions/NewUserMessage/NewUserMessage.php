@@ -39,7 +39,7 @@ function wfCreateNewUserMessage($user) {
 
 	if (!$talk->exists()) {
 		$article = new Article($talk);
-		$article->insertNewArticle('{'.'{'."$wgNewUserMessageTemplate|$name}}",false,false,true,false);
+		$article->doEdit('{'.'{'."$wgNewUserMessageTemplate|$name}}", false, EDIT_MINOR);
 	}
 
 	return true;
