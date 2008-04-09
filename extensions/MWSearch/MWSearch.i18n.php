@@ -39,6 +39,13 @@ $messages['de'] = array(
 	'mwsearch-desc' => 'Hintergrundprozess für die Lucene-Suchmaschine',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'mwsearch-desc' => 'افزونهٔ MWSearch',
+);
+
 /** French (Français)
  * @author Grondin
  */

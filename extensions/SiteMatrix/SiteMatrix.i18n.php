@@ -273,6 +273,7 @@ $messages['ext'] = array(
  */
 $messages['fa'] = array(
 	'sitematrix'           => 'فهرست ویکی‌های ویکی‌مدیا',
+	'sitematrix-summary'   => 'این صفحهٔ ویژه فهرستی از ویکی‌های ویکی‌مدیا را نشان می‌دهد.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|فهرستی]] از ویکی‌های ویکی‌مدیا را نمایش می‌دهد',
 	'sitematrix-language'  => 'زبان',
 	'sitematrix-project'   => 'نام پروژه، پیوند میان‌پروژه و پیوند میان‌ویکی',

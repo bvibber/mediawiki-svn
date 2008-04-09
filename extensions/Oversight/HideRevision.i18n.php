@@ -409,6 +409,7 @@ $messages['fa'] = array(
 	'hiderevision-desc'           => 'پنهان کردن نسخه‌های خاص از تمام کاربرها به دلایل قانونی و غیره',
 	'group-oversight'             => 'ناظران',
 	'group-oversight-member'      => 'ناظر',
+	'grouppage-oversight'         => '{{ns:project}}:ناظر',
 	'hiderevision-prompt'         => 'شماره نسخه‌ای که حذف می‌شود:',
 	'hiderevision-continue'       => 'ادامه',
 	'hiderevision-text'           => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
