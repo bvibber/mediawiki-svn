@@ -373,7 +373,7 @@ class SpecialOversight extends SpecialPage {
 		if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 			$this->showDiff( $revision);
 		} else if( is_null( $revision ) ) {
-			$this->showList( $wgRCMaxAge );
+			$this->showList( time() - $wgRCMaxAge );
 		} else {
 			$this->showRevision( $revision );
 		}
