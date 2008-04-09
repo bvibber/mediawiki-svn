@@ -164,7 +164,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$days_in_cur_month = SCHistoricalDate::daysInMonth($cur_year, $cur_month_num);
 	$today_string = date("Y n j", mktime());
 	$url_year = $wgRequest->getVal('year');
-	$title = str_replace(' ', '_', $wgTitle->getText());
+	$title = $wgTitle->getPrefixedDbKey();
 
 	// create table for holding calendar, and the top (navigation) row
 	$text .=<<<END
@@ -256,8 +256,7 @@ END;
 		foreach ($events as $event_pair) {
 			list($event_title, $event_date) = $event_pair;
 			if ($event_date == $date_str) {
-				//$event_title = Title::newFromText($event_name);
-				$text .= $skin->makeLinkObj($event_title, $event_title->getText());
+				$text .= $skin->makeLinkObj($event_title, str_replace('_', ' ', $event_title->getPrefixedDbKey()));
 				$text .= "\n\n";
 			}
 		}
