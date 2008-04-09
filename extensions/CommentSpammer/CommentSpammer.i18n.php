@@ -245,9 +245,10 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
-	'commentspammer-save-blocked' => 'Подозревается, что ваш IP-адрес использовался для размещения спам-комментариев. Странице не может быть сохранена. [[Special:Userlogin|Представьтесь системе]], чтобы продолжить работу.',
+	'commentspammer-save-blocked' => 'Подозревается, что ваш IP-адрес использовался для размещения спам-комментариев. Страница не может быть сохранена. [[Special:Userlogin|Представьтесь системе]], чтобы продолжить работу.',
 	'commentspammer-desc'         => 'Отвергает правки подозреваемых в спаме комментариев на основе чёрного списка DNS',
 	'commentspammer-log-msg'      => 'правка с [[Special:Contributions/$1|$1]] [[:$2]].',
 	'commentspammer-log-msg-info' => 'Последний случай спама $1 {{PLURAL:$1|день|дня|дней}} назад, уровень угрозы — $2, код нарушения — $3.
@@ -312,5 +313,14 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'commentspammer-log-msg' => 'вироиш аз [[Special:Contributions/$1|$1]] ба [[:$2]].',
 	'cspammer-log-page'      => 'Гузориши Ҳаразнигорро тавзеҳ диҳед',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'commentspammer-save-blocked' => 'Імовірно, що ваша IP-адреса використовувалася для розміщення спам-коментарів, тому сторінка не може бути збережена. [[Special:Userlogin|Увійдіть до системи або зареєструйтесь]], щоб продовжити роботу.',
+	'commentspammer-desc'         => 'Відкидає редагування підозрілих на спам коментарів на основі чорного списку DNS',
+	'commentspammer-log-msg'      => 'редагування з [[Special:Contributions/$1|$1]] [[:$2]].',
 );
 

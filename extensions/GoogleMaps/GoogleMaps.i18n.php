@@ -363,6 +363,7 @@ $wgGoogleMapsMessages['ca'] = array(
  */
 $wgGoogleMapsMessages['cs'] = array(
 	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte seznam kompatibilních prohlížečů.',
+	'gm-balloon-title'             => 'Nadpis:',
 );
 
 /** Danish (Dansk)
@@ -902,10 +903,69 @@ $wgGoogleMapsMessages['he'] = array(
  * @author Kaustubh
  */
 $wgGoogleMapsMessages['hi'] = array(
-	'gm-balloon-title' => 'शीर्षक:',
-	'gm-remove'        => 'हटायें',
-	'gm-yes'           => 'हां',
-	'gm-no'            => 'नहीं',
+	'gm-balloon-title'         => 'शीर्षक:',
+	'gm-balloon-link-article'  => 'इस पन्ने को कड़ी बनायें (वैकल्पिक):',
+	'gm-make-marker'           => 'टिप्पणी (विकिसंज्ञाएँ चलेगी):',
+	'gm-remove'                => 'हटायें',
+	'gm-caption'               => 'टिप्पणी',
+	'gm-tab-title'             => 'टॅब का शीर्षक',
+	'gm-tab'                   => 'टॅब',
+	'gm-start-path'            => 'एक पाथ शुरू करें',
+	'gm-trace-area'            => 'एक क्षेत्रके उपर नजर रखें',
+	'gm-save-point'            => 'संजोयें और बंद करें',
+	'gm-load-map-from-article' => 'पन्ने पर उपलब्ध नक्शा लोड करें:',
+	'gm-no-maps'               => 'इस पन्नेपर लोड करने के लिये नक्शा नहीं हैं।',
+	'gm-refresh-list'          => 'सूची रिफ्रेश करें',
+	'gm-load-map'              => 'नक्शा लोड करें',
+	'gm-clip-result'           => 'नक्शेमें बढायें',
+	'gm-no-results'            => 'माफ किजीये, रिज़ल्ट नहीं',
+	'gm-searching'             => 'खोज रहें हैं...',
+	'gm-map'                   => 'नक्शा',
+	'gm-instructions'          => 'उपर में नक्शा बनाने के लिये उपयुक्त विकि-संज्ञाओंकी सूची नीचे दी हुई हैं।',
+	'gm-are-you-sure'          => 'पक्का?',
+	'gm-clear-all-points'      => 'सभी बिन्दु हटायें',
+	'gm-refresh-points'        => 'बिन्दु रिफ्रेश करें',
+	'gm-width'                 => 'चौड़ाई',
+	'gm-height'                => 'उंचाई',
+	'gm-scale-control'         => 'प्रमाण',
+	'gm-overview-control'      => 'ओवरव्ह्यू',
+	'gm-selector-control'      => 'नक्शा/सैटेलाईट सिलेक्टर',
+	'gm-zoom-control'          => 'नैविगेशन',
+	'gm-large'                 => 'बडा',
+	'gm-medium'                => 'मध्यम',
+	'gm-small'                 => 'छोटा',
+	'gm-no-zoom-control'       => 'बिल्कुल नहीं',
+	'gm-yes'                   => 'हां',
+	'gm-no'                    => 'नहीं',
+	'gm-search-preface'        => 'बिन्दु देने के लिये नक्शे पर क्लिक करें, या शहर, देश, पता या व्यवसाय पर जायें:',
+	'gm-geocode-preface'       => 'बिन्दु देने के लिये नक्शे पर क्लिक करें, या शहर, देश, या पते पर जायें:',
+	'gm-no-search-preface'     => 'बिन्दु देने के लिये नक्शे पर क्लिक करें।',
+	'gm-search'                => 'खोजें',
+	'gm-clear-search'          => 'खोज रिज़ल्ट हटायें',
+	'gm-meters'                => 'मीटर',
+	'gm-miles'                 => 'मील',
+	'gm-editing-path'          => 'इस पाथ पर और बिन्दु दर्शाने के लिये नक्शे पर क्लिक करें।',
+	'gm-save-path'             => 'संजोयें',
+	'gm-edit-path'             => 'बिन्दु बढायें',
+	'gm-show-path'             => 'बिन्दु दर्शायें',
+	'gm-color-path'            => 'रंग बदलें',
+	'gm-color-fill'            => 'फिल रंग बदलें',
+	'gm-add-fill'              => 'क्षेत्रमें रंग भरें',
+	'gm-remove-fill'           => 'भरा हुआ रंग हटा दें',
+	'gm-fill-color'            => 'रंग भरें',
+	'gm-line-color'            => 'रेखा रंग',
+	'gm-opacity'               => 'ओपेसिटी',
+	'gm-line-width'            => 'चौड़ाई',
+	'gm-make-map'              => 'नक्शा बनायें',
+	'gm-hide-map'              => 'नक्शा छुपायें',
+	'gm-back'                  => 'पीछे',
+	'gm-kml-include'           => 'बाह्य KML/GeoRSS:',
+	'gm-kml-include-link'      => 'नक्शेमें बढायें',
+	'gm-kml-loading'           => 'लोड हो रहा हैं...',
+	'gm-kml-export'            => 'यह नक्शा KML को भेजें',
+	'gm-earth'                 => 'पृथ्वी',
+	'gm-moon'                  => 'चाँद',
+	'gm-mars'                  => 'मंगल',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1689,6 +1749,25 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-earth'                     => 'Земля',
 	'gm-moon'                      => 'Луна',
 	'gm-mars'                      => 'Марс',
+);
+
+/** Sinhalese (සිංහල)
+ * @author Asiri wiki
+ */
+$wgGoogleMapsMessages['si'] = array(
+	'gm-width'       => 'පළල',
+	'gm-height'      => 'උස',
+	'gm-large'       => 'විශාල',
+	'gm-medium'      => 'මධ්‍යම',
+	'gm-small'       => 'කුඩා',
+	'gm-search'      => 'සොයන්න',
+	'gm-meters'      => 'මීටර',
+	'gm-miles'       => 'හැතැප්ම',
+	'gm-save-path'   => 'සුරකින්න',
+	'gm-kml-loading' => 'බා ගත‍ වෙමින් පවතී...',
+	'gm-earth'       => 'පෘථිවිය',
+	'gm-moon'        => 'චන්ද්‍රයා',
+	'gm-mars'        => 'අඟහරු',
 );
 
 /** Slovak (Slovenčina)

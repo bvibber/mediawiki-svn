@@ -302,8 +302,10 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'regexblock-form-reason' => 'कारण:',
-	'regexblock-view-go'     => 'जायें',
+	'regexblock-form-reason'     => 'कारण:',
+	'regexblock-form-expiry'     => 'समाप्ती:&#160;',
+	'regexblock-already-blocked' => '$1 को पहलेसे ब्लॉक किया हुआ हैं।',
+	'regexblock-view-go'         => 'जायें',
 );
 
 /** Croatian (Hrvatski)
@@ -733,6 +735,7 @@ Prawdopodobnie nie ma takiego użytkownika.',
 	'regexblock-block-log'         => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
 	'regexblock-block-success'     => 'Pomyślnie zablokowano',
 	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
+	'regexblock-already-blocked'   => '$1 jest już zablokowany',
 	'regexblock-stats-username'    => 'Dla $1',
 	'regexblock-view-time'         => '$1',
 );

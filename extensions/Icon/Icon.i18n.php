@@ -74,6 +74,15 @@ $messages['gl'] = array(
 	'icon-badwidth' => 'Anchura mala',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'icon-badimage' => 'खराब चित्र',
+	'icon-badwidth' => 'गलत चौड़ाई',
+	'icon-desc'     => 'आयकॉन और आयकॉन कड़ी के लिये चित्र का इस्तेमाल करने की अनुमति देता हैं',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

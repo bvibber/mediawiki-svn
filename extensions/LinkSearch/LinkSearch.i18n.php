@@ -679,10 +679,8 @@ $messages['pl'] = array(
 	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
 	'linksearch-ns'    => 'Przestrzeń nazw:',
 	'linksearch-ok'    => 'Szukaj',
-	'linksearch-text'  => 'Można użyć maski *.
-
-Dla przykładu "*.wikipedia.org" wyszuka wszystkie linki prowadzące do domeny "wikipedia.org" i jej poddomen.
-<br />Obsługiwane protokoły: <tt>$1</tt>',
+	'linksearch-text'  => 'Można użyć symbolu wieloznacznego „*”. Dla przykładu „*.wikipedia.org” spowoduje wyszukanie wszystkich linków prowadzących do domeny „wikipedia.org” i jej poddomen.<br />
+Obsługiwane protokoły: <tt>$1</tt>',
 	'linksearch-line'  => '$1 link na stronie $2',
 	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
 );

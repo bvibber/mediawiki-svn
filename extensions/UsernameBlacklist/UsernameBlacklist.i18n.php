@@ -670,10 +670,12 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Shijualex
  * @author Jacob.jose
  */
 $messages['ml'] = array(
-	'blacklistedusername' => 'കരിമ്പട്ടികയില്‍പ്പെട്ട ഉപയോക്തൃനാമം',
+	'blacklistedusername'     => 'കരിമ്പട്ടികയില്‍പ്പെട്ട ഉപയോക്തൃനാമം',
+	'blacklistedusernametext' => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്തൃനാമം [[MediaWiki:Usernameblacklist|കരിമ്പട്ടികയില്‍ പെട്ട ഉപയോക്തൃനാമങ്ങളിലൊന്നുമായി]] യോജിക്കുന്നു. ദയവായി മറ്റൊരു നാമം തിരഞ്ഞെടുക്കുക.',
 );
 
 /** Marathi (मराठी)
@@ -1014,6 +1016,24 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'blacklistedusername'     => "Заборонене ім'я користувача",
 	'blacklistedusernametext' => "Ім'я користувача, вибране вами, містить елементи, вказані у [[MediaWiki:Usernameblacklist|списку заборонених імен]]. Будь ласка, виберіть інше ім'я.",
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'usernameblacklist-desc'          => 'Zonta na [[MediaWiki:Usernameblacklist|lista nera dei nomi utente]] par inpedir la creazion de account corispondenti a una o più espressioni regolari',
+	'blacklistedusername'             => 'Nome utente mìa consentìo',
+	'blacklistedusernametext'         => 'El nome utente sielto el xe inserìo ne la [[MediaWiki:Usernameblacklist|lista dei nomi mìa consentìi]]. Se prega de siègliar un altro nome.',
+	'usernameblacklist'               => '<pre>
+# Le voçi contegnùe su sta lista le vegnarà doparà par costruir na
+# espression regolar dei nomi utente ai quali no xe consentìa la registrassion.
+# Ciascun elemento el gà da èssar ne la forma de un elenco puntato, ad es.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} de l'elenco dei nomi utente mìa consentìi {{PLURAL:$1|no la xe valida|no le xe valide}}; se prega de corègiar {{PLURAL:$1|l'eror|i eror}} prima de salvar la pagina.",
 );
 
 /** Vietnamese (Tiếng Việt)

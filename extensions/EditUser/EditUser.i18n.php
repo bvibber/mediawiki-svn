@@ -155,7 +155,13 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'edituser-desc'     => 'कुछ विशिष्ट सदस्योंको अन्य सदस्योंकी वरीयतायें बदलनेकी अनुमति देता हैं',
+	'edituser'          => 'सदस्य संपादन करें',
+	'edituser-logout'   => 'सदस्य को लॉग आउट करायें',
 	'edituser-username' => 'नाम',
+	'edituser-dosearch' => 'खोजें',
+	'edituser-nouser'   => 'दिया हुआ सदस्य अस्तित्वमें नहीं हैं',
+	'edituser-exempt'   => 'दिये हुए सदस्यको संपादित नहीं कर सकतें',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

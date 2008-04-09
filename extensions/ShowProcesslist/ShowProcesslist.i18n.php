@@ -132,6 +132,13 @@ $messages['gu'] = array(
 	'showprocesslist-info' => 'માહિતિ',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'showprocesslist-id' => 'आईडी',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

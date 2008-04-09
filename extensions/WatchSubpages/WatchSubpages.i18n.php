@@ -31,6 +31,14 @@ $messages['de'] = array(
 	'watchsubpages'      => 'Beobachte Unterseiten',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'watchsubpages-desc' => 'Ajouter rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi.',
+	'watchsubpages'      => 'Observer les sous-pages',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

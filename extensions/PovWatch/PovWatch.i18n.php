@@ -439,7 +439,7 @@ $messages['oc'] = array(
 	'povwatch_not_allowed_push'        => 'Sètz pas un administrator per la susvelhança de las guèrras d’edicion. Podètz pas apondre los articles dins la lista correspondenta.',
 	'povwatch_already_subscribed'      => 'Ja sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
 	'povwatch_subscribed'              => 'Ara sètz inscrich(-a) per la susvelhança de las guèrras d’edicion.',
-	'povwatch_not_subscribed'          => 'Sètz pas inscrich(-a) per la susvelhança de las guèrras d’edicion. Atal doncas, podètz pas vos desincriure.',
+	'povwatch_not_subscribed'          => 'Sètz pas marcat(ada) per la susvelhança de las guèrras d’edicions. Atal doncas, vos podètz pas desmarcar.',
 	'povwatch_unsubscribed'            => 'Vòstra inscripcion per la susvelhança de las guèrras d’edicion ara es resiliada.',
 	'povwatch_invalid_title'           => 'Lo títol indicat es invalid.',
 	'povwatch_pushed'                  => '[[$1]] es estada inscricha amb succès dins la lista de susvelhança de l’utilizaire $2.',
@@ -456,7 +456,7 @@ $messages['oc'] = array(
 	'povwatch_no_subscribers'          => 'Existís pas cap de persona abonada.',
 	'povwatch_unsubscribe_intro'       => 'Sètz inscrich(-a) a la lista de susvelhança de las guèrras d’edicion. Clicatz sul boton çaijós per vos desinscriure.',
 	'povwatch_unsubscribe'             => 'Resiliar',
-	'povwatch_subscribe_intro'         => 'Sètz pas inscrich(-a) sus la lista de susvelhança de las guèrras d’edicion. Clicatz sul boton çaijós per vos inscriure.',
+	'povwatch_subscribe_intro'         => 'Sètz pas marcat(ada) sus la tièra de susvelhança de las guèrras d’edicions. Clicatz sul boton çaijós per vos marcar.',
 	'povwatch_subscribe'               => 'Soscriure',
 	'povwatch_added'                   => 'ajustat',
 );

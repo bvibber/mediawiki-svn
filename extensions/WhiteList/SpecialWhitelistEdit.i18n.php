@@ -237,7 +237,9 @@ $2',
  * @author Kaustubh
  */
 $allMessages['hi'] = array(
-	'whitelisttableremove' => 'हटायें',
+	'whitelisttablemodifynone' => 'बिल्कुल नहीं',
+	'whitelisttableremove'     => 'हटायें',
+	'whitelistnewtablereview'  => 'अवलोकन',
 );
 
 /** Hungarian (Magyar)
@@ -472,11 +474,12 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
 
 /** Polish (Polski)
  * @author Wpedzich
+ * @author Sp5uhe
  */
 $allMessages['pl'] = array(
 	'whitelist-desc'            => 'Edytuj możliwość dostępu dla użytkowników z ograniczeniami',
-	'whitelistedit'             => 'Edytor dostępu do "białej listy"',
-	'whitelist'                 => 'Strony z "białej listy"',
+	'whitelistedit'             => 'Edytor listy stron ogólnie dostępnych',
+	'whitelist'                 => 'Strony z listy ogólnie dostępnych',
 	'mywhitelistpages'          => 'Strony użytkownika',
 	'whitelistfor'              => '<center>Aktualne informacje na temat <b>$1<b></center>',
 	'whitelisttablemodify'      => 'Zmodyfikuj',
@@ -494,8 +497,8 @@ $allMessages['pl'] = array(
 	'whitelisttablesetedit'     => 'Przełącz na edycję',
 	'whitelisttablesetview'     => 'Przełącz na podgląd',
 	'whitelisttableremove'      => 'Usuń',
-	'whitelistnewpagesfor'      => 'Dodaje nowe strony do "białej listy" wiki <b>$1</b><br />
-Możliwe jest stosowanie symboli wieloznacznych * i %',
+	'whitelistnewpagesfor'      => 'Dodaj nowe strony do listy stron ogólnie dostępnych <b>$1</b><br />
+Można stosować symbole wieloznaczne * i %',
 	'whitelistnewtabledate'     => 'Wygasa:',
 	'whitelistnewtableedit'     => 'Przełącz na edycję',
 	'whitelistnewtableview'     => 'Przełącz na podgląd',
@@ -503,13 +506,13 @@ Możliwe jest stosowanie symboli wieloznacznych * i %',
 	'whitelistnewtablereview'   => 'Przejrzyj',
 	'whitelistselectrestricted' => '== Wybierz nazwę użytkownika z ograniczeniami ==',
 	'whitelistpagelist'         => 'Strony $1 w serwisie {{SITENAME}}',
-	'whitelistnocalendar'       => '<font color=\'red\' size=3>Prawdopodobnie wymagane do pracy tego modułu rozszerzenie "[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics]" nie zostało poprawnie zainstalowane.</font>',
+	'whitelistnocalendar'       => "<font color='red' size=3>Prawdopodobnie, wymagane do pracy tego modułu rozszerzenie [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] nie zostało poprawnie zainstalowane.</font>",
 	'whitelistbadtitle'         => 'Nieprawidłowa nazwa -',
 	'whitelistoverview'         => '== Przegląd zmian dla elementu $1 ==',
 	'whitelistoverviewcd'       => "* Zmiana daty ograniczenia na '''$1''' w odniesieniu do elementu [[:$2:$2]]",
 	'whitelistoverviewsa'       => "* Ustalanie dostępu dla elementu '''$1''' do elementu [[:$2|$2]]",
 	'whitelistoverviewrm'       => '* Usuwanie dostępu do [[:$1|$1]]',
-	'whitelistoverviewna'       => "* Dodawanie elementu [[:\$1|\$1]] do \"białej listy\" - dostęp dla '''\$2''', data wygaśnięcia '''\$3'''",
+	'whitelistoverviewna'       => "* Dodawanie elementu [[:$1|$1]] do listy dostępu - dostęp dla '''$2''', data wygaśnięcia '''$3'''",
 	'whitelistrequest'          => 'Zażądaj dostępu do większej ilości stron',
 	'whitelistrequestmsg'       => 'Użytkownik $1 zażądał dostępu do następujących stron:
 

@@ -130,6 +130,28 @@ $messages['gl'] = array(
 	'editmsg-patch-success' => 'Parcheado exitoso.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'editmessages-desc'        => 'Messages*.php फ़ाईलके संदेश बदलनेके लिये [[Special:EditMessages|वेब-बेस्ड संपादन]] सुविधा',
+	'editmessages'             => 'संदेश बदलें',
+	'editmsg-target'           => 'लक्ष्य संदेश:',
+	'editmsg-search'           => 'खोजें',
+	'editmsg-show-list'        => '"$1" इस नामसे होने वाले पन्ने दर्शाता हैं',
+	'editmsg-get-patch'        => 'पॅच बनायें',
+	'editmsg-new-search'       => 'नई खोज',
+	'editmsg-warning-parse1'   => '* संदेशका नाम मिलता नहीं: $1',
+	'editmsg-warning-parse2'   => '* एरो के बाद अवतरण चिन्ह चाहिये: $1',
+	'editmsg-warning-parse3'   => '* स्ट्रींगके आखिरी का अक्षर मिला नहीं: $1',
+	'editmsg-warning-file'     => '* निम्नलिखित भाषाओंके फ़ाईल पढने के लिये गलती हुई हैं: $1',
+	'editmsg-warning-mismatch' => '* निम्नलिखित भाषाओंमें मूल पाठमें अपेक्षित किमतें मिली नहीं: $1',
+	'editmsg-apply-patch'      => 'पॅच करें',
+	'editmsg-no-patch'         => '"patch" क्रिया नहीं कर पायें',
+	'editmsg-patch-failed'     => '$1 यह स्थिती दिखाके पॅच रद्द हो गया हैं',
+	'editmsg-patch-success'    => 'पॅच पूरा हुआ।',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

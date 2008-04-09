@@ -121,10 +121,12 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Toniher
  */
 $messages['ca'] = array(
-	'pdtest_ok' => "D'acord",
+	'pdtest_ok'   => "D'acord",
+	'pdtest_diff' => 'Diferències',
 );
 
 /** Czech (Česky)
@@ -535,6 +537,7 @@ $messages['ml'] = array(
 	'pdtest_page_missing' => 'നിര്‍ദ്ദിഷ്ട താള്‍ ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
 	'pdtest_no_changes'   => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
 	'pdtest_time_report'  => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
+	'pdtest_text'         => 'ഇന്‍‌പുട്ട് ടെക്സ്റ്റ്',
 	'pdtest_ok'           => 'ശരി',
 	'pdtest_diff'         => 'വ്യത്യാസങ്ങള്‍',
 	'pdtest_side_by_side' => 'ഔട്ട്പുട്ടിന്റെ താരതമ്യം',
@@ -859,9 +862,19 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'parserdifftest' => 'Verifica de le modifiche introdote nel parser',
-	'pdtest_ok'      => 'OK',
-	'pdtest_diff'    => 'Difarenze',
+	'parserdifftest'      => 'Verifica de le modifiche introdote nel parser',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pagina speciale]] par métar a confronto el risultato de do parser difarenti',
+	'pdtest_no_target'    => 'Nissuna pagina specificà.',
+	'pdtest_page_missing' => 'La pagina richiesta no la xe mìa stà catà nel database.',
+	'pdtest_no_changes'   => 'No xe stà catà difarense.',
+	'pdtest_time_report'  => "L'elaborassion de <b>$1</b> la gà richiesto $2 secondi, quela de <b>$3</b> $4 secondi.",
+	'pdtest_title'        => 'Titolo del contesto:',
+	'pdtest_text'         => 'Testo de input:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Preleva el testo da la pagina',
+	'pdtest_diff'         => 'Difarenze',
+	'pdtest_side_by_side' => 'Confronto tra i output',
+	'pdt_comparing_page'  => 'Confronto tra i output del parser par [[$1]]',
 );
 
 /** Vietnamese (Tiếng Việt)

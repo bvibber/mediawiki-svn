@@ -172,11 +172,11 @@ $messages['oc'] = array(
 	'smoothgallery-title'               => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
 	'smoothgallery-error'               => "'''Error de SmoothGallery :'''",
-	'smoothgallery-gallery-not-found'   => "Cap d'imatge ajustat a la galariá. Ajustatz al mens un imatge.",
-	'smoothgallery-not-found'           => "Cap d'imatge ajustat a la galariá. Ajustatz al mens un imatge.",
+	'smoothgallery-gallery-not-found'   => "Cap d'imatge ajustat a la galariá. Ajustatz almens un imatge.",
+	'smoothgallery-not-found'           => "Cap d'imatge ajustat a la galariá. Apondetz almens un imatge.",
 	'smoothgallery-no-images'           => "Cap d'imatge trobat dins aquesta galariá. Verificatz que totes los imatges requeses existisson. Aquestes imatges son pas estats trobats : $1.",
 	'smoothgallery-invalid-images'      => 'Los imatges demandats seguents son d’un format incorrècte : $1',
-	'smoothgallery-unexpected-error'    => "Error inesperada. Mercés d'emplenar un rapòrt de bòg.",
+	'smoothgallery-unexpected-error'    => "Error imprevista. Mercés d'emplenar un rapòrt de bòg.",
 	'smoothgallery-javascript-disabled' => "JavaScript es necessari per veire aquesta galariá d'imatges (<code><nowiki><gallery>...</gallery></nowiki></code>).",
 );
 

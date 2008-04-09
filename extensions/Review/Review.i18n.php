@@ -382,7 +382,9 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'review_comment' => 'टिप्पणी',
+	'review_sidebar_title'    => 'अवलोकन',
+	'review_total_statistics' => 'कुल',
+	'review_comment'          => 'टिप्पणी',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -674,25 +676,25 @@ $messages['pl'] = array(
 	'review_save'                            => 'Zapisz recenzję',
 	'review_your_review'                     => 'Twoja recenzja dla tej strony lub wersji:',
 	'review_page_link'                       => 'statystyka wykonanych recenzji',
-	'review_for_page'                        => 'Recenzja strony "$1"',
-	'review_for_user'                        => 'Recenzja użytkownika "$1"',
+	'review_for_page'                        => 'Recenzja strony „$1”',
+	'review_for_user'                        => 'Recenzja użytkownika „$1”',
 	'review_error'                           => 'Wystąpił błąd!',
-	'review_no_reviews_for_page'             => 'Brak obecnie recenzji dla artykułu "$1".',
+	'review_no_reviews_for_page'             => 'Brak obecnie recenzji dla artykułu „$1”.',
 	'review_total_statistics'                => 'Podsumowanie',
 	'review_statistics_left_corner'          => 'Wersja',
-	'review_version_link'                    => 'Wersja #$1',
+	'review_version_link'                    => 'Wersja $1',
 	'review_statistic_cell'                  => 'Średnia: $1 z $2<br />($4 zalogowanych, $5 anonimowych)',
 	'review_version_statistic_cell'          => '$1 lub $2',
 	'review_version_reviews_link'            => '<small>(recenzje tej wersji)</small>',
-	'review_concerns_page'                   => 'Ta recenzja dotyczy strony "$1".',
-	'review_concerns_user'                   => 'O recenzjach wykonanych przez użytkownika "$1".',
+	'review_concerns_page'                   => 'Ta recenzja dotyczy strony „$1”.',
+	'review_concerns_user'                   => 'O recenzjach wykonanych przez użytkownika „$1”.',
 	'review_user_reviews'                    => '<small>(recenzje tego użytkownika)</small>',
 	'review_user_page_list'                  => 'Użytkownik recenzował następujące strony:',
 	'review_user_details_link'               => '(szczegóły)',
 	'review_do_merge'                        => 'Połącz moją recenzję z innymi recenzjami tej strony',
 	'review_has_been_stored'                 => "<span id='review_has_been_stored'>Twoja recenzja została zapisana!</span>",
 	'revision_review_this_page_version_link' => 'Recenzuj tą wersję strony.',
-	'review_page_review'                     => 'Recenzja strony "$1"',
+	'review_page_review'                     => 'Recenzja strony „$1”',
 	'review_blocked'                         => 'Zostałeś zablokowany.',
 	'review_wrong_namespace'                 => 'Strony w tej przestrzeni nazw nie mogą być recenzowane!',
 	'review_topic'                           => 'Temat',

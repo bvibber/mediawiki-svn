@@ -291,6 +291,32 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-toomanyrevisions'      => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'duplicator'                       => 'पन्ने की कापी बनायें',
+	'duplicator-desc'                  => 'पूरे अवतरण इतिहास के साथ अलग अलग कापीयाँ बनायें',
+	'duplicator-toolbox'               => 'इस पन्ने को कापी करें',
+	'duplicator-options'               => 'विकल्प',
+	'duplicator-source'                => 'स्रोत:',
+	'duplicator-dest'                  => 'लक्ष्य:',
+	'duplicator-dotalk'                => 'वार्ता पॄष्ठ की कापी करें (अगर जरूरी हैं तो)',
+	'duplicator-submit'                => 'कापी',
+	'duplicator-summary'               => '[[$1]] से कापी किया',
+	'duplicator-success'               => "<big>'''[[$1]] की [[$2]] यह कापी बना दी गई हैं।'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|अवतरणकी|अवतरणोंकी}} कापी बनाई।',
+	'duplicator-success-talkcopied'    => 'वार्ता पृष्ठ की भी कापी बनाई।',
+	'duplicator-success-talknotcopied' => 'वार्ता पृष्ठ की कापी नहीं बना सकें।',
+	'duplicator-failed'                => 'इस पन्नेकी कापी नहीं कर पाये हैं।
+अज्ञात गलती पाई गई हैं।',
+	'duplicator-source-invalid'        => 'कृपया स्रोत के लिये एक वैध शीर्षक दें।',
+	'duplicator-source-notexist'       => '[[$1]] अस्तित्वमें नहीं हैं। कृपया अस्तित्वमें होनेवाले पन्नेका शीर्षक दें।',
+	'duplicator-dest-invalid'          => 'कृपया वैध लक्ष्य शीर्षक दें।',
+	'duplicator-dest-exists'           => '[[$1]] पहलेसे अस्तित्वमें हैं। कृपया अस्तित्वमें ना होनेवाला शीर्षक दें।',
+	'duplicator-toomanyrevisions'      => '[[$1]] को बहुत सारे ($2) अवतरण हैं और उसकी कापी नहीं कर सकतें। अभीकी मर्यादा $3 इतनी हैं।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -453,7 +479,7 @@ $messages['lb'] = array(
 	'duplicator'                       => 'En Doublon vun enger Säit maachen',
 	'duplicator-desc'                  => 'Onofhängeg Kopie vu Säite maachen, mat dem kompletten Historique vun den Ännerungen',
 	'duplicator-toolbox'               => 'Een Doublon vun dëser Säit maachen',
-	'duplicator-options'               => 'Méiglechkeeten',
+	'duplicator-options'               => 'Optiounen',
 	'duplicator-source'                => 'Quell:',
 	'duplicator-dest'                  => 'Zil:',
 	'duplicator-dotalk'                => 'Een Doublon vun der Diskussiounssäit maachen (wann se existéiert)',
@@ -478,11 +504,11 @@ $messages['mr'] = array(
 	'duplicator-header'                => 'हे पान एखाद्या पानाची प्रत काढायला मदत करते, यामध्ये प्रत्येक इतिहासाची स्वतंत्र प्रत तयार होते. हे पानाचे फोर्किंग वगैरे करण्यासाठी उपयुक्त आहे.',
 	'duplicator-options'               => 'पर्याय',
 	'duplicator-source'                => 'स्रोत:',
-	'duplicator-dest'                  => 'लक्ष्य',
+	'duplicator-dest'                  => 'लक्ष्य:',
 	'duplicator-dotalk'                => 'चर्चा पानाची प्रत करा (जर गरज असेल तर)',
 	'duplicator-submit'                => 'हुबहू',
 	'duplicator-summary'               => '[[$1]]कडून नक्कल केली',
-	'duplicator-success'               => "big>'''[[$1]] ची [[$2]] ही प्रत तयार केलेली आहे.'''</big>",
+	'duplicator-success'               => "<big>'''[[$1]] ची [[$2]] ही प्रत तयार केलेली आहे.'''</big>",
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|आवृत्तीची|आवृत्त्यांची}} प्रत केली.',
 	'duplicator-success-talkcopied'    => 'चर्चा पान सुद्धा प्रत केले.',
 	'duplicator-success-talknotcopied' => 'चर्चापान नकलवले जाऊ शकले नाही.',

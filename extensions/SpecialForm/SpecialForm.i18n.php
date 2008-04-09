@@ -340,23 +340,27 @@ $messages['oc'] = array(
 	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent la salvagàrdia de ''$1''.",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'form' => 'Formularz',
-	'formnoname' => 'Brak nazwy formularza',
-	'formnonametext' => 'Musisz podać nazwę formularza, np. "{{ns:special}}:Formularz/Nazwaformularza".',
-	'formbadname' => 'Zła nazwa formularza',
-	'formbadnametext' => 'Nie ma formularza o takiej nazwie.',
-	'formtitlepattern' => 'Dodaj nowy $1',
-	'formsave' => 'Zapisz',
-	'formarticleexists' => 'Strona istnieje',
-	'formarticleexiststext' => 'Strona [[$1]] już istnieje.',
-	'formbadpagename' => 'Zła nazwa strony',
-	'formbadpagenametext' => 'Dane wpisane do formularza tworzą złą nazwę strony, "$1".',
+	'form'                         => 'Formularz',
+	'formnoname'                   => 'Brak nazwy formularza',
+	'formnonametext'               => 'Musisz podać nazwę formularza, np. „{{ns:special}}:Formularz/Nazwaformularza”.',
+	'formbadname'                  => 'Zła nazwa formularza',
+	'formbadnametext'              => 'Nie ma formularza o takiej nazwie.',
+	'formtitlepattern'             => 'Dodaj nowy $1',
+	'formsave'                     => 'Zapisz',
+	'formarticleexists'            => 'Strona istnieje',
+	'formarticleexiststext'        => 'Strona [[$1]] już istnieje.',
+	'formbadpagename'              => 'Zła nazwa strony',
+	'formbadpagenametext'          => 'Dane wpisane do formularza tworzą niepoprawną nazwę strony, „$1”.',
 	'formrequiredfieldpluralerror' => 'Pola $1 są wymagane w tym formularzu. Prosimy o wypełnienie ich.',
-	'formrequiredfielderror' => 'Pole $1 jest wymagane w tym formularzu. Wypełnij je.',
-	'formsavesummary' => 'Nowa strona za pomocą [[Special:Form/$1]]',
-	'formsaveerror' => 'Błąd przy zapisywaniu formularza',
-	'formsaveerrortext' => 'Wystąpił nieznany błąd przy zapisywaniu strony \'$1\'.',
+	'formrequiredfielderror'       => 'Pole $1 jest wymagane w tym formularzu. Wypełnij je.',
+	'formsavesummary'              => 'Nowa strona za pomocą [[Special:Form/$1]]',
+	'formsaveerror'                => 'Błąd przy zapisywaniu formularza',
+	'formsaveerrortext'            => "Wystąpił nieznany błąd przy zapisywaniu strony '$1'.",
 );
 
 $messages['pms'] = array(

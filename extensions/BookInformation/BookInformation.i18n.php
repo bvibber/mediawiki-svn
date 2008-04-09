@@ -550,6 +550,7 @@ $messages['jv'] = array(
 	'bookinfo-result-title'      => 'Irah-irahan',
 	'bookinfo-result-year'       => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
+	'bookinfo-purchase'          => 'Tuku buku ini saka $1',
 );
 
 /** Georgian (ქართული)
@@ -690,6 +691,7 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'bookinfo-header'            => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
+	'bookinfo-desc'              => '[[Special:Booksources]] എന്ന പ്രത്യേകതാള്‍ വെബ്ബ് സര്‍‌വീസിലെ വിവരവും ചേര്‍ത്ത് വികസിപ്പിക്കുന്നു.',
 	'bookinfo-result-title'      => 'തലക്കെട്ട്:',
 	'bookinfo-result-author'     => 'ഗ്രന്ഥകര്‍ത്താവ്:',
 	'bookinfo-result-publisher'  => 'പ്രസാധകന്‍:',

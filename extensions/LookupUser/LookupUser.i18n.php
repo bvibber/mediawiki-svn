@@ -295,9 +295,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'lookupuser_id' => 'ID użytkownika: <tt>#$1</tt>',
+	'lookupuser_id' => 'ID użytkownika: <tt>$1</tt>',
 );
 
 /** Pashto (پښتو)

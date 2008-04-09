@@ -770,7 +770,7 @@ $messages['pl'] = array(
 	'newuserlogpagetext'       => 'To jest rejestr ostatnio utworzonych kont użytkowników',
 	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
 	'newuserlog-byemail'       => 'hasło zostało wysłane e-mailem',
-	'newuserlog-create-entry'  => 'Nowy użytkownik',
+	'newuserlog-create-entry'  => '- nowy użytkownik',
 	'newuserlog-create2-entry' => 'utworzono nowe konto $1',
 );
 

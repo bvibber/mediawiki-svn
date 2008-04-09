@@ -32,6 +32,13 @@ $messages['fr'] = array(
 	'gnuplot-desc' => 'Ajoute la balise <code><nowiki><gnuplot></nowiki></code> afin d’utiliser Gnuplot',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'gnuplot-desc' => 'Gnuplot में <code><nowiki><gnuplot></nowiki></code> टैग बढायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

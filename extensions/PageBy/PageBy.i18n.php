@@ -102,6 +102,13 @@ $messages['gl'] = array(
 	'pageby-anon'         => '<i>anónimo</i>',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'pageby-contributors' => 'योगदानकर्ता:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

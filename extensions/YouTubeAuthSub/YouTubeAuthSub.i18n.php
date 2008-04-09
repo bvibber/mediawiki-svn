@@ -253,8 +253,9 @@ Por favor, sexa paciente.',
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'youtubeauthsub_title'  => 'शीर्षक',
-	'youtubeauthsub_submit' => 'भेजें',
+	'youtubeauthsub_title'       => 'शीर्षक',
+	'youtubeauthsub_description' => 'ज़ानकारी',
+	'youtubeauthsub_submit'      => 'भेजें',
 );
 
 /** Hungarian (Magyar)
@@ -262,6 +263,20 @@ $messages['hi'] = array(
  */
 $messages['hu'] = array(
 	'youtubeauthsub_title' => 'Cím',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'youtubeauthsub'              => 'Hlaða inn YouTube-myndbandi',
+	'youtubeauthsub-desc'         => 'Heimilar notendum að [[Special:YouTubeAuthSub|hlaða inn]] myndböndum beint frá YouTube',
+	'youtubeauthsub_title'        => 'Titill',
+	'youtubeauthsub_description'  => 'Lýsing',
+	'youtubeauthsub_keywords'     => 'Lykilorð',
+	'youtubeauthsub_category'     => 'Flokkur',
+	'youtubeauthsub_submit'       => 'Senda',
+	'youtubeauthsub_uploadbutton' => 'Hlaða inn',
 );
 
 /** Javanese (Basa Jawa)

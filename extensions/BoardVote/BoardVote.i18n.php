@@ -2910,7 +2910,7 @@ $messages['oc'] = array(
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
-	'boardvote_intro_change' => "<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòtre supòrt.</p></p>",
+	'boardvote_intro_change' => "<p>Ja avètz votat. Çaquelà, podètz modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòstre supòrt.</p></p>",
 	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
@@ -2926,7 +2926,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 <pre>$3</pre> 
 
 [[Special:Boardvote/entry|Retorn]]",
-	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb al mens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
+	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb almens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
 	'boardvote_notloggedin'  => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
 	'boardvote_notqualified' => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En mai, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
 	'boardvote_novotes'      => 'Degun a pas encara votat.',
@@ -2943,7 +2943,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_unstrike'     => 'Desraiar',
 	'boardvote_needadmin'    => 'Sols los administrators del vòte pòdon efectuar aquesta operacion.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al conselh d’administracion Wikimedia</a> : Vòte dobert fins al 12 de julhet',
-	'boardvote_notstarted'   => 'Lo vòte a pas encara començat',
+	'boardvote_notstarted'   => 'Lo vòte es pas encara començat',
 	'boardvote_closed'       => "L’eleccion es d'ara enlà clausa. Lo resultat es proclamat sus [[meta:Election results 2006/oc|la pagina de resultats]] (oc).",
 	'boardvote_edits_many'   => 'mantun',
 	'group-boardvote'        => 'Membres votants del conselh d’administracion',
@@ -4050,6 +4050,20 @@ $messages['vec'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Varda i voti epressi fin desso]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrada]]',
+	'boardvote_intro'        => '<blockquote>
+<p>
+Benvegnùo/a a la quarta elezion par el Consejo diretivo Wikimedia, l\'autorità a cao de la Wikimedia Foundation. Se vota per le tri persone che le rapresentarà la comunità de utenti dei vari progeti Wikimedia. I eleti i restarà in carica par du ani nel consejo diretivo e i jutarà a determinar el futuro orientamento dei progeti Wikimedia, individualmente e come grupo, rapresentando i <em>to</em> interessi e le to idee. I deciderà in merito a vari temi, tra cui, in particolare, le modalità par catar su i fondi e investirli.</p>
+
+<p>Par piaser, prima de votar, lezi atentamente le presentazion dei candidati e le risposte a le domande che ghe xe stà fato. Ognuno dei candidati el xe un utente rispetà, che el gà contribuìo con molto del so tenpo e con notevoli sforzi a réndar sti progetti un anbiente acogliente e dedicà a la lìbara racolta, organizazion e distribuzion de la conosienza umana.</p>
+
+<p>Te pol votar par più de un candidato a to sielta: i tri col magior nùmaro de voti i sarà dichiarà eleti. In caso de paregio, sarà tegnùa na votazion de balotagio.</p>
+
+<p>Par piaser, tiente in mente che te pol efetuar el to voto solamente in un progeto. Anca se te ghè 400 edit su più progeti, no vol mìa dir che te gavi el dirito de votar piassè de na olta. Se sucessivamente te vorè canbiar el to voto, ricòrdete de votar dal progeto da cui te gavéi precedentemente votà.</p>
+
+<p>Par magiori informazioni, varda:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ" class="external">FAQ su le elezion (in inglese)</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/it" class="external">Candidati</a></li></ul>
+</blockquote>',
 	'boardvote_intro_change' => '<p>Te ghè zà votà. Comunque te podi canbiar el to voto doparando el modulo qua soto. Par piaser spunta la casela de fianco de ognuno dei candicati che te vol sostegner.</p>',
 	'boardvote_entered'      => "El to voto el xe stà registrà. Grassie.
 
@@ -4087,6 +4101,7 @@ Bisogna inpostar el proprio browser parché l'aceta i cookie dal nostro server d
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezion del Consejo diretivo de Wikimedia</a>:
 la votazion la xe verta fin al 12 de lujo',
 	'boardvote_notstarted'   => 'La votazion no la xe gnancora verta',
+	'boardvote_closed'       => 'La votazion la xe sarà, se invita a consultar  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/It la pagina dei risultati].',
 	'boardvote_edits_many'   => 'tanti',
 	'group-boardvote'        => 'Comission eletoral',
 	'group-boardvote-member' => 'Comissario eletoral',

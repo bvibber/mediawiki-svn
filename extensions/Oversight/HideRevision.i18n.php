@@ -223,14 +223,18 @@ $messages['br'] = array(
  * @author Toniher
  * @author SMP
  * @author Iradigalesc
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'hiderevision'                => 'Oculta aquestes revisions permanentment',
+	'hiderevision-continue'       => 'Continua',
 	'hiderevision-reason'         => 'Motiu (es registrarà de forma privada):',
 	'hiderevision-submit'         => 'Amaga aquestes dades permanentment',
 	'hiderevision-tab'            => 'Amaga la revisió',
 	'hiderevision-status'         => 'Revisió $1: $2',
 	'hiderevision-error-missing'  => "No s'ha trobat a la base de dades.",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
+	'oversight-log-hiderev'       => 'Esborrada una edició de $1',
 	'oversight-view'              => 'detalls',
 	'oversight-prev'              => 'Darrera revisió anterior',
 );
@@ -1208,6 +1212,7 @@ $messages['ml'] = array(
 	'hiderevision-noreason'       => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
 	'hiderevision-status'         => 'പതിപ്പ് $1: $2',
 	'hiderevision-error-missing'  => 'ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
+	'hiderevision-error-current'  => 'ഒരു താളിന്റെ ഏറ്റവും അവസാനത്തെ തിരുത്തല്‍ മായ്ക്കുവാന്‍ പറ്റില്ല. ഈ മാറ്റം ആദ്യം തിരസ്ക്കരിക്കുക.',
 	'hiderevision-error-delete'   => 'പത്തായത്തിലാക്കാന്‍ പറ്റിയില്ല; അതു മുന്‍പ് മായ്ക്കപ്പെട്ടതാണോ?',
 	'hiderevision-archive-status' => '$1-ല്‍ നിന്നു മായ്ക്കപ്പെട്ട പതിപ്പ്: $2',
 	'oversight-log-hiderev'       => '$1-ല്‍ നിന്നു ഒരു തിരുത്തല്‍ ഒഴിവാക്കിയിരിക്കുന്നു',
@@ -1477,7 +1482,7 @@ $messages['pl'] = array(
 
 '''Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.'''
 
-Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie usunięcia są rejestrowane, a skasowane dane mogą zostać ręcznie odtworzone przez administratorów bazy danych jeśli usunięcie było omyłkowe.",
+Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie usunięcia są rejestrowane, a usuwane dane mogą zostać ręcznie odtworzone przez administratorów bazy danych jeśli usunięcie było omyłkowe.",
 	'hiderevision-reason'         => 'Powód (nie będzie widoczny publicznie):',
 	'hiderevision-submit'         => 'Trwale ukryj te dane',
 	'hiderevision-tab'            => 'Ukryj tą wersję',
@@ -1488,12 +1493,12 @@ Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie
 	'hiderevision-error-missing'  => 'Nie znaleziono w bazie danych.',
 	'hiderevision-error-current'  => 'Nie można usunąć ostatniej edycji strony.
 Najpierw wycofaj ostatnią edycję.',
-	'hiderevision-error-delete'   => 'Nie można zarchiwizować; czy wcześniej była skasowana?',
+	'hiderevision-error-delete'   => 'Nie można zarchiwizować. Czy wcześniej została usunięta?',
 	'hiderevision-archive-status' => 'Usunięto wersję z $1: $2',
 	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: 
 *Strona została usunięta 
 *Ta ukryta wersja była pierwszą wersją',
-	'oversight-log-hiderev'       => 'usunięto edycję z $1',
+	'oversight-log-hiderev'       => 'usunął edycję z $1',
 	'oversight'                   => 'Rejestr ukrywania',
 	'oversight-view'              => 'szczegóły',
 	'oversight-difference'        => '(Różnica z poprzednią wersją, która pozostała)',
@@ -2022,10 +2027,45 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'group-oversight'        => 'Supervisori',
-	'group-oversight-member' => 'Supervision',
-	'grouppage-oversight'    => '{{ns:project}}:Supervision',
-	'hiderevision-continue'  => 'Continua',
+	'hiderevision'                => 'Oscuramento permanente de na revision',
+	'hiderevision-desc'           => 'Rende invisibili a tuti i utenti singole revision de le pagine (par motivi legali, ecc.)',
+	'group-oversight'             => 'Supervisori',
+	'group-oversight-member'      => 'Supervision',
+	'grouppage-oversight'         => '{{ns:project}}:Supervision',
+	'hiderevision-prompt'         => 'Nùmaro de la revision da oscurar:',
+	'hiderevision-continue'       => 'Continua',
+	'hiderevision-text'           => "Sta funzion la gà da èssar doparà '''unicamente''' nei seguenti casi:
+* Dati personali mìa apropriati
+*: ''indirizi postali, nùmari de telefono, codici fiscali, ecc.''
+
+'''Qualunque abuso del sistema el conportarà la rimozion dei relativi privilegi.'''
+
+I elementi oscurài i xe invisibili par chiunque sul sito, ma
+esiste un registro de le revision oscurà e la possibilità de
+un ripristino manuale da parte de un aministrador del database
+in caso de erori.",
+	'hiderevision-reason'         => 'Motivo (par el registro riservà):',
+	'hiderevision-submit'         => 'Oscura i dati in modo permanente',
+	'hiderevision-tab'            => 'Oscura revision',
+	'hiderevision-norevisions'    => 'No xe stà indicà nissuna revision da oscurar.',
+	'hiderevision-noreason'       => "Bisogna indicar el motivo de l'oscuramento.",
+	'hiderevision-status'         => 'Revision $1: $2',
+	'hiderevision-success'        => 'Archiviazion e oscuramento conpletài.',
+	'hiderevision-error-missing'  => 'Mìa catà nel database.',
+	'hiderevision-error-current'  => "No se pol oscurar l'ultima modifica de na pagina. Te ghè da anular la modifica prima de 'ndar vanti co l'oscuramento.",
+	'hiderevision-error-delete'   => "No se riesse ad archiviar; gh'èra forsi dele scancelassion precedenti?",
+	'hiderevision-archive-status' => 'Revision oscurà de $1: $2',
+	'oversight-nodiff'            => 'No se pode mostrar le modifiche in quanto no ghe xe revision precedenti de la pagina. Podarìa èssar parché:
+*La pagina la xe stà scancelà
+*Sta revisione oscurà la xera la prima par la pagina',
+	'oversight-log-hiderev'       => 'gà oscurà na modifica de $1',
+	'oversight'                   => 'Supervision',
+	'oversight-view'              => 'detagli',
+	'oversight-difference'        => '(Difarensa rispeto a la version precedente restà)',
+	'oversight-prev'              => 'Ultima revision precedente',
+	'oversight-hidden'            => 'Revisione oscurà',
+	'oversight-header'            => 'Qua de seguito vien presentà na lista de le revision oscurà in modo permanente ai visitatori del sito.
+La divulgazion di ste informassion la pol conportar la rimozion permanente dei diriti de supervisor.',
 );
 
 /** Vietnamese (Tiếng Việt)

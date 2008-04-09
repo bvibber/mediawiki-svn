@@ -748,7 +748,9 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'mv_remove' => 'हटायें',
+	'mv_upload_file' => 'फ़ाइल अपलोड करें',
+	'mv_tool_search' => 'खोजें',
+	'mv_remove'      => 'हटायें',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

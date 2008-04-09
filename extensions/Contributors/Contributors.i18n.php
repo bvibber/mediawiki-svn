@@ -275,7 +275,17 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'contributors-target' => 'शीर्षक:',
+	'contributors'             => 'योगदानकर्ता',
+	'contributors-desc'        => 'पन्नेके मुख्य योगदानकर्ताओंकी संक्षिप्त सूची',
+	'contributors-toolbox'     => 'मुख्य योगदानकर्ता',
+	'contributors-legend'      => 'पन्ने के मुख्य योगदानकर्ताओंकी सूची बनायें',
+	'contributors-target'      => 'शीर्षक:',
+	'contributors-submit'      => 'दर्शायें',
+	'contributors-subtitle'    => '$1 के प्रमुख योगदानकर्ता',
+	'contributors-others-long' => 'इस पन्नेको अन्य $1 योगदानकर्ता हैं।',
+	'contributors-others'      => 'और $1 अन्य',
+	'contributors-badtitle'    => 'अवैध शीर्षक।',
+	'contributors-nosuchpage'  => '$1 पन्ना अस्तित्वमें नहीं हैं',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

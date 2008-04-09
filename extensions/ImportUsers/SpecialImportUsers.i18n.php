@@ -210,6 +210,21 @@ $messages['gl'] = array(
 	'importusers-realname'             => 'nome real',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'importusers'                      => 'सदस्य आयात करें',
+	'importusers-uploadfile'           => 'फ़ाइल अपलोड करें',
+	'importusers-form-caption'         => 'इनपुट CSV-फ़ाईल (UTF-8)',
+	'importusers-form-file'            => 'सदस्य फ़ाईल का स्वरूप (csv):',
+	'importusers-form-replace-present' => 'अभीके सदस्य रिप्लेस करें',
+	'importusers-form-button'          => 'आयात',
+	'importusers-user-added'           => '<b>%s</b> सदस्य बढा दिया।',
+	'importusers-user-present-update'  => '<b>%s</b> सदस्य अस्तित्वमें हैं। अपडेट किया।',
+	'importusers-email'                => 'इ-मेल',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

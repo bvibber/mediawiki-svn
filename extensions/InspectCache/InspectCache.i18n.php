@@ -134,6 +134,14 @@ $messages['gl'] = array(
 	'inspectcache-list'    => 'Listaxe',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'inspectcache-ok'     => 'ओके',
+	'inspectcache-delete' => 'हटायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -266,7 +274,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'inspectcache'         => "Inspeccion de l'Amagatal",
-	'inspectcache-desc'    => "Un esplech simple de debogatge per inspectar los elements dins l'amagatal pertejat.",
+	'inspectcache-desc'    => "Un esplech simple de debogatge per inspectar los elements dins l'amagatal partejat.",
 	'inspectcache-ok'      => 'Amodar',
 	'inspectcache-general' => 'Amagatal general',
 	'inspectcache-parser'  => 'Amagatal dels parsers',

@@ -246,18 +246,19 @@ $messages['oc'] = array(
 	'watchers_error_article' => '<b>Error :</b> La pagina existís pas.',
 	'watchers_header'        => 'Personas que seguisson « $1 »',
 	'watchers_noone_watches' => 'Degun seguís pas aquesta pagina.',
-	'watchers_x_or_more'     => 'Al mens $1 utilizaire(s) seguís(-isson) aquesta pagina.',
+	'watchers_x_or_more'     => 'Almens $1 utilizaire(s) seguís(-isson) aquesta pagina.',
 	'watchers_less_than_x'   => 'Mens de $1 utilizaires seguisson aquesta pagina.',
 );
 
 /** Polish (Polski)
  * @author Masti
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'watchers'               => 'Obserwujący',
 	'watchers_link_title'    => 'Kto obserwuje tę stronę?',
 	'watchers_error_article' => '<b>Błąd:</b> Strona nie istnieje',
-	'watchers_header'        => 'Obserwujący "$1"',
+	'watchers_header'        => 'Obserwujący „$1”',
 	'watchers_noone_watches' => 'Nikt nie obserwuje tej strony',
 	'watchers_x_or_more'     => 'Osób obserwujących: $1 lub więcej',
 	'watchers_less_than_x'   => 'Osób obserwujących mniej niż $1',

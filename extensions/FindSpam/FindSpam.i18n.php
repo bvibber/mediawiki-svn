@@ -118,6 +118,17 @@ $messages['gl'] = array(
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'findspam'             => 'स्पॅम खोजें',
+	'findspam-desc'        => 'एक [[Special:FindSpam|विशेष पृष्ठ]] बढाता हैं जो हाल में बढे स्पॅम दर्शाता हैं',
+	'findspam-ip'          => 'आइपी एड्रेस:',
+	'findspam-ok'          => 'ओके',
+	'findspam-notextfound' => 'योगदान मिला नहीं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

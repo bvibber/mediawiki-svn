@@ -707,6 +707,24 @@ $messages['tr'] = array(
 	'scanset_prev' => '&lt; Önceki',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'scanset-desc'                      => 'Mostra le imagini de le scansion provenienti dai CD/DVD de Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: te ghè da indicar un nome par el set de scansioni, ad es. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: set de scansioni sbaglià o mancante.',
+	'scanset_unrecognised_index_format' => 'ScanSet: formato indice sconossiùo',
+	'scanset_opendir_error'             => 'ScanSet: eror, inpossibile vèrzar la directory $1',
+	'scanset_no_files'                  => 'Scanset: ne la directory indicà no ghe xe gnanca un file.',
+	'scanset_no_volumes'                => 'ScanSet: directory de volume mìa catè',
+	'scanset_missing_index_file'        => 'ScanSet: file indice $1 mìa catà',
+	'scanset_index_file_error'          => 'ScanSet: eror nel formato del file indice a la riga $1',
+	'scanset_invalid_volume'            => 'ScanSet: volume mìa valido',
+	'scanset_next'                      => 'Sucessivo &gt;',
+	'scanset_prev'                      => '&lt; Precedente',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -778,3 +796,4 @@ $messages['zh-hant'] = array(
 	'scanset_next'                      => '後 &gt;',
 	'scanset_prev'                      => '&lt; 前',
 );
+

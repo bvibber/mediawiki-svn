@@ -984,12 +984,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  * @author Wpedzich
  * @author SPQRobin
  */
 $messages['pl'] = array(
 	'badimages'                => 'Zła lista grafik',
-	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w MediaWiki',
+	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w Mediawiki',
 	'badimages-add-btn'        => 'Dodaj',
 	'badimages-added'          => 'dodano $1 do listy.',
 	'badimages-count'          => "Jest '''$1''' grafik na liście złych grafik.",
@@ -1005,8 +1006,8 @@ $messages['pl'] = array(
 	'badimages-unprivileged'   => '(Nie masz wystarczających uprawnień by zmienić listę)',
 	'badimages-log-name'       => 'Lista złych grafik',
 	'badimages-log-header'     => 'Lista zmian w [[{{MediaWiki:Badimages-page}}|liście złych grafik]].',
-	'badimages-log-add'        => 'dodano [[$1]] do listy złych grafik',
-	'badimages-log-remove'     => 'usunięto [[$1]] z listy złych grafik',
+	'badimages-log-add'        => 'dodał [[$1]] do listy złych grafik',
+	'badimages-log-remove'     => 'usunął [[$1]] z listy złych grafik',
 	'badimages-page'           => '{{ns:help}}:Lista nieprawidłowych grafik',
 );
 

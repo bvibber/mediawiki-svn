@@ -200,6 +200,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'asksql'          => 'SQL-serĉomendo',
+	'asksql-desc'     => 'Faru SQL-serĉomendoj per [[Special:Asksql|speciala paĝo]]',
 	'sqlislogged'     => 'Bonvolu noti ke ĉiuj serĉomendoj estas listigitaj en la loglibro.',
 	'sqlquery'        => 'Entajpu SQL-serĉomendon',
 	'querybtn'        => 'Sendu SQL-serĉomendon',

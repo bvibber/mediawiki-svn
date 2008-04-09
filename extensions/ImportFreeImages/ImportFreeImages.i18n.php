@@ -151,6 +151,20 @@ $messages['gl'] = array(
 	'importfreeimages_returntoform'          => "Ou, prema <a href='$1'>here</a> para voltar á súa procura de resultados",
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'importfreeimages'                       => 'मुक्त चित्र आयात करें',
+	'importfreeimages_nophotosfound'         => "'$1' से मिलने वाले फ़ोटो मिले नहीं, कृपया फिरसे यत्न करें।",
+	'importfreeimages_invalidurl'            => 'URL "$1" यह वैध फ्लिकर चित्र नहीं हैं।',
+	'importfreeimages_owner'                 => 'लेखक',
+	'importfreeimages_importthis'            => 'इसे आयात करें',
+	'importfreeimages_next'                  => 'अगले $1',
+	'importfreeimages_filefromflickr'        => 'फ्लिकर से $1 <b>[$2]</b> सदस्यने दिया हुआ। मूल URL',
+	'importfreeimages_promptuserforfilename' => 'कॄपया लक्ष्य फ़ाईलनाम दें:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -299,9 +313,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_invalidurl' => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',
+	'importfreeimages_owner'      => 'Autor',
 );
 
 /** Pashto (پښتو)

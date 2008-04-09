@@ -211,6 +211,20 @@ $messages['gl'] = array(
 	'countedits-nocontribs'   => 'Non houbo ningunha colaboración neste wiki.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'countedits'              => 'बदलाव गिनें',
+	'countedits-username'     => 'सदस्यनाम:',
+	'countedits-ok'           => 'ओके',
+	'countedits-nosuchuser'   => '$1 इस नामका सदस्य अस्तित्वमें नहीं हैं।',
+	'countedits-resultheader' => '$1 के लिये रिज़ल्ट',
+	'countedits-resulttext'   => '$1 ने $2 बदलाव किये हैं',
+	'countedits-mostactive'   => 'सबसे ज्यादा कार्यशील सदस्य',
+	'countedits-nocontribs'   => 'इस विकिपर योगदान नहीं किया हैं।',
+);
+
 $messages['hr'] = array(
 	'countedits' => 'Broj uređivanja',
 	'countedits-warning' => '\'\'\'Upozorenje:\'\'\' Ne sudite knjigu po koricama. Ne sudite suradnike po njihovom broju uređivanja.',

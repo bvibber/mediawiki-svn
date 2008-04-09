@@ -246,6 +246,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'changeauthor'                      => 'Ŝanĝu aŭtoron de revizio',
+	'changeauthor-desc'                 => 'Permesas la ŝanĝadon de aŭtoro de revizio',
 	'changeauthor-title'                => 'Ŝanĝu la aŭtoron de revizio',
 	'changeauthor-search-box'           => 'Serĉu reviziojn',
 	'changeauthor-pagename-or-revid'    => 'Paĝnomo aŭ revizia identigo:',
@@ -711,7 +713,7 @@ Spróbuj powtórzyć polecenie.
 Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
 	'changeauthor-invalidform'          => 'Zamiast tej strony co zazwyczaj użyj Special:ChangeAuthor.',
 	'changeauthor-success'              => 'Twoje polecenie zostało wykonane z powodzeniem.',
-	'changeauthor-logentry'             => 'Zmieniono autora wersji $2, strony $1. Poprzedni autor $3, obecny $4.',
+	'changeauthor-logentry'             => 'zmienił autora wersji $2 strony $1 z $3 na $4',
 	'changeauthor-logpagename'          => 'Rejestr zmiany autora',
 );
 

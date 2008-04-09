@@ -369,8 +369,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'invite-logentry'               => 'zaprosił $1 do używania dodatku <i>$2</i>',
 	'invitations-inviteform-submit' => 'Zaproś',
 );
 

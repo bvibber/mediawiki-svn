@@ -32,6 +32,13 @@ $messages['fr'] = array(
 	'contributorsaddon-desc' => 'Ajoute le popup JS onMouseOver aux liens des « Contributeurs principaux »',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'contributorsaddon-desc' => 'मुख्य योगदानकर्ता" कड़ीयोंपर माउस लेके जाने के बाद दिखने वाले पॉप-अप के लिये जावास्क्रीप्ट बढाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

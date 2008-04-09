@@ -177,9 +177,17 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'dt_xml_page'  => 'पन्ना',
-	'dt_xml_name'  => 'नाम',
-	'dt_xml_title' => 'शीर्षक',
+	'viewxml'                     => 'XML देखें',
+	'dt_viewxml_categories'       => 'श्रेणीयाँ',
+	'dt_viewxml_namespaces'       => 'नामस्थान',
+	'dt_viewxml_simplifiedformat' => 'आसान फॉरमैट',
+	'dt_xml_namespace'            => 'नामस्थान',
+	'dt_xml_page'                 => 'पन्ना',
+	'dt_xml_field'                => 'फिल्ड़',
+	'dt_xml_name'                 => 'नाम',
+	'dt_xml_title'                => 'शीर्षक',
+	'dt_xml_id'                   => 'आईडी',
+	'dt_xml_freetext'             => 'मुक्त पाठ',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

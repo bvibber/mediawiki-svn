@@ -53,6 +53,13 @@ $messages['gl'] = array(
 	'didyoumean-desc' => 'Engade ligazóns cara a páxinas con títulos "similares"',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'didyoumean-desc' => '"समान" शीर्षक होने वाले पन्नोंमें कड़ीयाँ देता हैं',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

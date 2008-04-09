@@ -35,6 +35,13 @@ $messages['gl'] = array(
 	'editown-desc' => 'Os usuarios sen o dereito de editar só poden editar as páxinas que crearon',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'editown-desc' => 'जिन सदस्योंको Editall अधिकार नहीं है वे सिर्फ खुद बनाये पन्ने ही संपादित कर सकतें हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

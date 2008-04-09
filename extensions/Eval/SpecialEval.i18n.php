@@ -65,6 +65,18 @@ $messages['gl'] = array(
 	'eval_code'   => 'Código',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'eval'        => 'इवैल',
+	'eval-desc'   => '<code>eval()</code> कार्य के लिये एक [[Special:Eval|इंटरफेस]] देता हैं',
+	'eval_submit' => 'इवैल्युएट',
+	'eval_escape' => 'आउटपुट छोड दें',
+	'eval_out'    => 'आउटपुट',
+	'eval_code'   => 'कोड',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

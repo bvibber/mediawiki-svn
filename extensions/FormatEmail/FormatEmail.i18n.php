@@ -82,6 +82,17 @@ Esta mensaxe foille enviada a través do sistema de correo electrónico de {{SIT
 $2',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'email-desc'   => 'सदस्य इ-मेल में स्वरचित हेडर/फ़ूटर के इस्तेमाल की अनुमति देता हैं।',
+	'email_footer' => '----------------------------------------------------------------------------
+यह इमेल आपको {{SITENAME}} के इमेल सिस्टीम से $1 ने भेजी हैं।
+
+$2',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

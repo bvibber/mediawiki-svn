@@ -171,6 +171,14 @@ $messages['gl'] = array(
 	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'passwordreset-badtoken' => 'गलत एडिट टोकन',
+	'passwordreset-username' => 'सदस्यनाम',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

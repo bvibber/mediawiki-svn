@@ -93,6 +93,13 @@ $messages['gl'] = array(
 	'profiling-no-data'      => 'Non coinciden os datos atopados.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'profiling-ok' => 'ओके',
+);
+
 $messages['hsb'] = array(
 	'profiling' => 'Profilowanske daty',
 	'profiling-process' => 'Znamjenjowy slěd předźěłać:',

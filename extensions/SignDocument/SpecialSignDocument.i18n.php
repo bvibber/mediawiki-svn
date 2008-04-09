@@ -550,6 +550,9 @@ $messages['hi'] = array(
 	'sign-realname'                => 'नाम:',
 	'sign-email'                   => 'इ-मेल एड्रेस:',
 	'sign-viewfield-realname'      => 'नाम',
+	'sign-viewfield-ip'            => 'आइपी एड्रेस',
+	'sign-viewfield-email'         => 'इ-मेल',
+	'sign-viewfield-options'       => 'विकल्प',
 	'sign-viewfield-reviewcomment' => 'टिप्पणी',
 	'sign-review-comment'          => 'टिप्पणी',
 );

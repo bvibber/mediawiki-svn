@@ -127,6 +127,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'block_title_error_page_title' => 'Forbarita titolo',
+	'block_title_error'            => 'Bedaŭrinde, la titolo de ĉi tiu paĝo ne estas permesita esti konservata.',
 );
 
 /** Finnish (Suomi)

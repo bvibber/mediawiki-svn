@@ -181,6 +181,14 @@ $messages['gl'] = array(
 	'spamregex-summary-log'          => '(Resumo)',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'spamregex-already-blocked' => '"$1" को पहलेसे ब्लॉक किया हुआ हैं',
+	'spamregex-summary-log'     => '(संक्षिप्त ज़ानकारी)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -330,7 +338,7 @@ $messages['oc'] = array(
 	'spamregex-block-message'        => "La frasa '''$1''' a estada blocada.",
 	'spamregex-warning-1'            => 'Indicatz una frasa de blocar.',
 	'spamregex-error-1'              => 'Expression regulara invalida.',
-	'spamregex-warning-2'            => 'Causissètz al mens un mòde de blocatge.',
+	'spamregex-warning-2'            => 'Causissètz almens un mòde de blocatge.',
 	'spamregex-already-blocked'      => '« $1 » ja es blocat',
 	'spamregex-phrase-block'         => 'Frasa de blocar :',
 	'spamregex-phrase-block-text'    => 'blocar la frasa dins lo tèxt de l’article',
@@ -345,8 +353,9 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'spamregex-text'        => '(Tekst)',
-	'spamregex-summary-log' => '(Podsumowanie)',
+	'spamregex-already-blocked' => '„$1” jest już zablokowany',
+	'spamregex-text'            => '(Tekst)',
+	'spamregex-summary-log'     => '(Podsumowanie)',
 );
 
 /** Portuguese (Português)

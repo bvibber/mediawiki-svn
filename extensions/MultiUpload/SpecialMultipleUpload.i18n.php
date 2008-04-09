@@ -179,6 +179,13 @@ Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Mult
 	'multiupload-toolbox'              => 'Cargar múltiples arquivos',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'multipleupload' => 'फ़ाईल अपलोड करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -341,18 +348,22 @@ Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pag
 	'multiupload-toolbox'              => 'Telecargar mantun fichièr',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'multipleupload' => "Prześlij pliki",
-	'multipleupload-ignoreallwarnings' => "Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.",
-	'multipleupload-saveallfiles' => "Zapisz wszystkie pliki",
-	'multipleupload-addresswarnings' => "Rozwiąż wszystkie problemy, zanim prześlesz pliki.",
-	'multipleupload-text' => "Prześlij wszystkie wymienione pliki. <br /><br />
-			Kliknij 'Przeglądaj...' i wybierz plik, który chcesz wysłac. Możesz wysłać od 1 do $1
-			plików za jednym razem. <br /><br />
-			Możesz wprowadzić opcjonalne <b>$2</b> i <b>$3</b> opisujące wysyłany plik. <br /><br />
-			<br />
-			Nieprawidłowe pliki będą natychmiast kasowane, zobacz [[Projekt:Zasady kasowania plików|Zasady kasowania plików]].<br /><br />
-				",
+	'multipleupload'                   => 'Prześlij pliki',
+	'multipleupload-ignoreallwarnings' => 'Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.',
+	'multipleupload-saveallfiles'      => 'Zapisz wszystkie pliki',
+	'multipleupload-addresswarnings'   => 'Rozwiąż wszystkie problemy, zanim prześlesz pliki.',
+	'multipleupload-text'              => "Prześlij wiele plików.
+
+Kliknij „Przeglądaj...” i wybierz pliki, które chcesz wysłać.
+Możesz wysłać od 1 do $1 plików za jednym razem.
+
+Wprowadzić, jeśli chcesz, '''Nazwę docelową''' oraz wypełnił '''Opis''' dla wysyłanych plików.
+
+Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleupload-page}}|Zasady usuwania plików]].",
 );
 
 /** Pashto (پښتو)

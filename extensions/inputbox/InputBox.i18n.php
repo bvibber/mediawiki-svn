@@ -111,8 +111,10 @@ $messages['br'] = array(
 /** Catalan (Català)
  * @author Toniher
  * @author SMP
+ * @author Paucabot
  */
 $messages['ca'] = array(
+	'inputbox-desc'  => 'Permet la inclusió de formularis HTML predefinits',
 	'tryexact'       => 'Prova una coincidència exacta',
 	'searchfulltext' => 'Cerca un text sencer',
 	'createarticle'  => 'Crea una pàgina',
@@ -589,7 +591,13 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'createarticle' => 'താള്‍ സൃഷ്ടിക്കുക',
+	'inputbox-desc'           => 'നിര്‍‌വചിക്കപ്പെട്ടു വെച്ചിരിക്കുന്ന HTML ഫോമുകള്‍ ഉള്‍പ്പെടുത്താന്‍ അനുവദിക്കുക',
+	'inputbox-error-no-type'  => 'സൃഷ്ടിക്കേണ്ട ഇന്‍‌പുട്ട് ബോക്സിന്റെ തരം നിഷ്കര്‍ഷിച്ചിട്ടില്ല',
+	'inputbox-error-bad-type' => '"$1" എന്ന ഇന്‍പുട്ട് ബോക്സ് തരം തിരിച്ചറിഞ്ഞില്ല.
+ദയവു ചെയ്ത് "create", "comment", "search", "search2" ഇവയിലൊന്നു നിഷ്കര്‍ഷിക്കുക',
+	'tryexact'                => 'കൃത്യമായി യോജിക്കുന്ന ഫലങ്ങള്‍ ഉണ്ടോയെന്നു പരിശോധിക്കുക',
+	'searchfulltext'          => 'ടെക്സ്റ്റ് മൊത്തമായി തിരയുക',
+	'createarticle'           => 'താള്‍ സൃഷ്ടിക്കുക',
 );
 
 /** Marathi (मराठी)
@@ -692,13 +700,14 @@ $messages['pam'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'inputbox-desc'           => 'Umożliwia włączenie w treść strony wcześniej zdefiniowanych formularzy HTML',
 	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
-	'inputbox-error-bad-type' => 'Typ "$1" pola wejściowego nie został rozpoznany. Proszę wybrać "create", "comment", "search" lub "search2".',
+	'inputbox-error-bad-type' => 'Typ „$1” pola wejściowego nie został rozpoznany.
+Proszę wybrać „create”, „comment”, „search” lub „search2”.',
 	'tryexact'                => 'Użyj dokładnego wyrażenia',
 	'searchfulltext'          => 'Szukaj w całych tekstach',
 	'createarticle'           => 'Utwórz artykuł',

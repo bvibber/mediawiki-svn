@@ -176,7 +176,8 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'player-goto-page' => 'पन्ना',
+	'player-invalid-title' => 'अवैध शीर्षक',
+	'player-goto-page'     => 'पन्ना',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

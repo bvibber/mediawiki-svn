@@ -49,7 +49,8 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'nstab-comments' => 'Komentaro',
+	'commentpages-desc' => 'Diskuto-paĝoj por la ĉefa nomspaco',
+	'nstab-comments'    => 'Komentaro',
 );
 
 /** French (Français)
@@ -186,6 +187,14 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'nstab-comments' => 'Тафсир',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'commentpages-desc' => 'Сторінки коментарів для основного простору назв',
+	'nstab-comments'    => 'Коментар',
 );
 
 /** Vietnamese (Tiếng Việt)

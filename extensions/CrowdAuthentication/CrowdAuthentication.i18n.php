@@ -44,6 +44,13 @@ $messages['fr'] = array(
 	'crowdauthentication-desc' => 'Plugiciel d’authenfication pour l’affluence de l’Atlas',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड के लिये प्रमाणिकरण प्लग-इन',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

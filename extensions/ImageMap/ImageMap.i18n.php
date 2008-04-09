@@ -95,11 +95,20 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'imagemap_desc'          => "Aotren a ra ar c'hartennoù skeudennoù arval klikadus, a-drugarez d'ar valizenn <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image'      => '&lt;imagemap&gt;: rankout a rit spisaat ur skeudenn el linenn gentañ',
 	'imagemap_invalid_image' => "&lt;imagemap&gt; : direizh eo ar skeudenn pe n'eus ket anezhi",
 	'imagemap_no_link'       => "&lt;imagemap&gt;: n'eus bet kavet liamm reizh ebet e dibenn al linenn $1",
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: titl direizh el liamm el linenn $1',
+	'imagemap_missing_coord' => '&lt;imagemap&gt;: diouer a zaveennoù zo evit stumm al linenn $1',
 	'imagemap_description'   => 'Diwar-benn ar skeudenn-mañ',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'imagemap_description' => 'Sobre aquesta imatge',
 );
 
 /** Czech (Česky)
@@ -590,7 +599,7 @@ $messages['oc'] = array(
 	'imagemap_invalid_title'      => '&lt;imagemap&gt; : títol invalid dins lo ligam a la linha $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt; : pas pro de coordenadas per la forma a la linha $1',
 	'imagemap_unrecognised_shape' => '&lt;imagemap&gt; : forma pas reconeguda a la linha $1, cada linha deu començar amb un dels mots seguents : default, rect, circle o poly',
-	'imagemap_no_areas'           => '&lt;imagemap&gt; : al mens una especificacion d’aira deu èsser balhada',
+	'imagemap_no_areas'           => '&lt;imagemap&gt; : almens una especificacion d’aira deu èsser balhada',
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt; : coordenada invalida a la linha $1, deu èsser un nombre',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt; : paramètre « desc » invalid, los paramètres possibles son : $1',
 	'imagemap_description'        => "A prepaus d'aqueste imatge",
@@ -809,6 +818,23 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'imagemap_description' => 'Опис зображення',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'imagemap_desc'               => "Parméte de realizar ''image map'' clicàbili lato client col tag <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => '&lt;imagemap&gt;: se gà da specificar na imagine ne la prima riga',
+	'imagemap_invalid_image'      => "&lt;imagemap&gt;: l'imagine no la xe valida o no la esiste",
+	'imagemap_no_link'            => '&lt;imagemap&gt;: no xe stà catà nissun colegamento valido a la fine de la riga $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: titolo del colegamento mìa valido ne la riga $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: no ghe xe coordinate in bisogno par la forma speçificada ne la riga $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: Forma (shape) mìa riconossiùa ne la riga $1, ogni riga la ga da scuminsiar con uno dei seguenti: default, rect, circle o poly',
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: gà da èssar speçificada almanco un'area",
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: coordinata mìa valida ne la riga $1, la gà da èssar un nùmaro',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: Valor mìa valido par el parametro desc, el gà da èssar uno dei seguenti: $1',
+	'imagemap_description'        => 'Informazion su sta imagine',
 );
 
 /** Vietnamese (Tiếng Việt)

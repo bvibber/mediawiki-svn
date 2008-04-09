@@ -25,6 +25,13 @@ $messages['fr'] = array(
 	'fixedimage-desc' => 'Ajoute la balise <tt><nowiki><fundraising></nowiki></tt> comme une image',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> टैग, एक चित्र के रुप में दर्शाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -130,3 +137,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'fixedimage-desc' => '加入 <tt><nowiki><fundraising></nowiki></tt> 標籤作為一幅圖像',
 );
+

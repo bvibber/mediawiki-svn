@@ -144,10 +144,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
 	'usercontactlink-baduser' => 'felaktigt användarnamn',
+	'usercontactlink-desc'    => 'Ger möjligheten att länka till andra användarnamn med syntaxen ^^^användare^^^.',
 );
 
 /** Telugu (తెలుగు)

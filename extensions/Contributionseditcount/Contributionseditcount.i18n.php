@@ -77,6 +77,14 @@ $messages['gl'] = array(
 	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'contributionseditcount'      => 'इस सदस्यके $1 संपादन हैं।',
+	'contributionseditcount-desc' => '[[Special:Contributions]] पर संपादन संख्या दर्शाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

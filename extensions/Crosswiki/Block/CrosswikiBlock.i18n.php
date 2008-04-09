@@ -386,8 +386,29 @@ Voltar a:
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'crosswikiblock-reason'   => 'कारण:',
-	'crosswikiunblock-reason' => 'कारण:',
+	'crosswikiblock'                => 'अन्य विकिपर सदस्यको ब्लॉक करें',
+	'crosswikiblock-target'         => 'आईपी एड्रेस या सदस्यनाम तथा लक्ष्य विकि:',
+	'crosswikiblock-expiry'         => 'समाप्ती:',
+	'crosswikiblock-reason'         => 'कारण:',
+	'crosswikiblock-submit'         => 'इस सदस्य को ब्लॉक करें',
+	'crosswikiblock-anononly'       => 'सिर्फ अनामक सदस्योंको ब्लॉक करें',
+	'crosswikiblock-nocreate'       => 'खाता खोलने पर प्रतिबंध लगायें',
+	'crosswikiblock-noemail'        => 'इ-मेल भेजने पर प्रतिबंध लगायें',
+	'crosswikiunblock'              => 'अन्य विकियोंपर सदस्यको अनब्लॉक करें',
+	'crosswikiunblock-user'         => 'सदस्य नाम, आईपी एड्रेस या ब्लॉक क्रमांक तथा लक्ष्य विकि:',
+	'crosswikiunblock-reason'       => 'कारण:',
+	'crosswikiunblock-submit'       => 'इस सदस्य को अनब्लॉक करें',
+	'crosswikiblock-nousername'     => 'सदस्यनाम दिया नहीं',
+	'crosswikiblock-local'          => 'स्थानिक ब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:Blockip]] का इस्तेमाल करें',
+	'crosswikiblock-dbnotfound'     => 'डाटाबेस $1 उपलब्ध नहीं हैं',
+	'crosswikiblock-noname'         => '"$1" यह वैध सदस्यनाम नहीं हैं।',
+	'crosswikiblock-nouser'         => 'सदस्य "$3" मिला नहीं।',
+	'crosswikiblock-noexpiry'       => 'गलत समाप्ती: $1।',
+	'crosswikiblock-noreason'       => 'कारण दिया नहीं।',
+	'crosswikiblock-notoken'        => 'गलत एडिट टोकन',
+	'crosswikiblock-alreadyblocked' => 'सदस्य $3 को पहलेसे ब्लॉक किया हुआ हैं।',
+	'crosswikiblock-noblock'        => 'इस सदस्यको ब्लॉक नहीं किया हैं।',
+	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:Ipblocklist]] का इस्तेमाल करें',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -573,7 +594,7 @@ $messages['mr'] = array(
 परत जा:
 * [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'स्थानिक ब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist]] चा उपयोग करा',
+	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist]] चा उपयोग करा',
 );
 
 /** Dutch (Nederlands)

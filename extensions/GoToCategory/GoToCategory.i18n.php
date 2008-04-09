@@ -22,6 +22,13 @@ $messages['de'] = array(
 	'gotocategory-desc' => 'Prüft Suchbegriffe gegen den Kategorien-Namensraum für die „Gehe direkt zur Seite“-Funktionalität',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'gotocategory-desc' => "Cocher les termes des recherches à l’encontre de la catégorie : nom d'espace pour « Aller » à partir de la fonctionnalité « aller à la page »",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -41,5 +48,12 @@ $messages['no'] = array(
  */
 $messages['sk'] = array(
 	'gotocategory-desc' => 'Vyhľadá slová v mennom priestore Kategória: pomocou funkcie „Ísť na stránku“',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'gotocategory-desc' => 'Checkar sökord upp mot kategorinamnrymden för "Gå"-funktionaliteten i sökboxen',
 );
 

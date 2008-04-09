@@ -55,6 +55,14 @@ $messages['gl'] = array(
 	'forcepreview-desc' => 'Forzar a vista previa aos usuarios sen privilexios',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'forcepreview'      => 'लेख संजोयें (पहलें झलक देखें)',
+	'forcepreview-desc' => 'कम अधिकार होने वाले सदस्योंको जानबूझकर झलक दिखायें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

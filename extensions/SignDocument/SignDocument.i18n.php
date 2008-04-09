@@ -109,6 +109,13 @@ $messages['oc'] = array(
 	'signaturelogentry'    => 'a signat lo document $1.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'signaturelogentry' => 'podpisał dokument $1',
+);
+
 $messages['pms'] = array(
 	'signaturelogpage' => 'Registr dle firme',
 	'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',

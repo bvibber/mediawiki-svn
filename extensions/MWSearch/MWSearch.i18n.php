@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'mwsearch-desc' => 'إضافة MWSearch',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'mwsearch-desc' => 'Extensió MWSearch',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

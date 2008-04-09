@@ -132,9 +132,12 @@ $messages['oc'] = array(
 	'mediafunctions-not-exist'     => '« $1 » existís pas.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'mediafunctions-invalid-title' => '"$1" nie jest poprawnym tytułem',
-	'mediafunctions-not-exist'     => '"$1" nie istnieje',
+	'mediafunctions-invalid-title' => '„$1” nie jest poprawnym tytułem',
+	'mediafunctions-not-exist'     => '„$1” nie istnieje',
 );
 
 $messages['pms'] = array(

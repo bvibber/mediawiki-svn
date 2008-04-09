@@ -407,11 +407,10 @@ $messages['pam'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
- * @author Derbeth
  */
 $messages['pl'] = array(
-	'deletedcontributions'      => 'Skasowany wkład użytkownika',
-	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie skasowanego wkładu użytkowników]]',
+	'deletedcontributions'      => 'Usunięty wkład użytkownika',
+	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie usuniętego wkładu użytkowników]]',
 );
 
 $messages['pms'] = array(
