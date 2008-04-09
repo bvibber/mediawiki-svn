@@ -20,6 +20,20 @@ $messages['en'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'onlinestatus-desc'             => 'Ergänzt eine Option zur Anzeige des Online-Status in den persönlichen Einstellungen',
+	'onlinestatus-subtitle-offline' => 'Dieser Benutzer ist gegenwärtig offline',
+	'onlinestatus-subtitle-online'  => 'Dieser Benutzer ist gegenwärtig online',
+	'onlinestatus-toggles-desc'     => 'Dein Status:',
+	'onlinestatus-toggles-explain'  => 'Diese Einstellung ermöglicht dir, anderen Benutzern auf deiner Benutzerseite zu zeigen, ob du online oder offline bist.',
+	'onlinestatus-toggles-show'     => 'Zeige Onlinestatus auf meiner Benutzerseite',
+	'onlinestatus-toggle-offline'   => 'Offline',
+	'onlinestatus-toggle-online'    => 'Online',
+);
+
 /** French (Français)
  * @author IAlex
  */
