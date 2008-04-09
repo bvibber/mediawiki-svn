@@ -5,12 +5,12 @@
  * @addtogroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2006-2008 Daniel Kinzler
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  */
 
 $messages = array();
 
-/* English
+/** English
  * @author Daniel Kinzler, brightbyte.de
  */
 $messages['en'] = array(
@@ -460,14 +460,15 @@ $messages['da'] = array(
 	'categorytree-too-many-subcats' => 'Kan ikke vise underkategorier som træ, der er for mange.',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'categorytree'                  => 'Kategorienbaum',
 	'categorytree-tab'              => 'Baum',
-	'categorytree-desc'             => 'AJAX-basiertes Gadget, um sich die [[Special:CategoryTree|Kategorien-Struktur]] eines Wikis anzuzeigen',
+	'categorytree-desc'             => 'Ajax-basiertes Gadget, um die [[Special:CategoryTree|Kategorien-Struktur]] eines Wikis anzuzeigen',
 	'categorytree-header'           => 'Zeigt für die angegebene Kategorie die Unterkategorien in einer Baumstruktur.
-Diese Seite benötigt bestimmte JavaScript-Funktionen (AJAX).
-In sehr alten Browsern, oder wenn JavaScript abgeschaltet ist, funktioniert diese Seite eventuell nicht.',
+Diese Seite benötigt bestimmte JavaScript-Funktionen (Ajax) und funktioniert möglicherweise nicht, wenn JavaScript ausgeschaltet ist oder ein sehr alter Browser verwendet wird.',
 	'categorytree-category'         => 'Kategorie',
 	'categorytree-go'               => 'Laden',
 	'categorytree-parents'          => 'Oberkategorien',
@@ -487,6 +488,13 @@ In sehr alten Browsern, oder wenn JavaScript abgeschaltet ist, funktioniert dies
 	'categorytree-show-list'        => 'Zeige als Liste',
 	'categorytree-show-tree'        => 'Zeige als Baum',
 	'categorytree-too-many-subcats' => 'Unterkategorien können nicht als Baum dargestellt werden, da es zuviele sind.',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'categorytree-retry'            => 'Bitte warten Sie einen Moment und versuchen Sie es dann erneut.',
 );
 
 /** Zazaki (Zazaki)
