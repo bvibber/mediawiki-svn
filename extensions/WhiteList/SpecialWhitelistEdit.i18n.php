@@ -135,6 +135,56 @@ $allMessages['da'] = array(
 	'whitelistnever'           => 'aldrig',
 );
 
+/** German (Deutsch)
+ * @author Liam Rosen
+ */
+$allMessages['de'] = array(
+    'whitelist-desc'              => 'Zugriffrechte von beschr�kten Benutzern bearbeiten',
+    'whitelistedit'               => 'Whitelist Zugriff Editor',
+    'whitelist'                   => 'Whitelist Seiten',
+    'mywhitelistpages'            => 'Meine Seiten',
+    'whitelistfor'                => "<center>Aktuelle Information fr <b>$1</b></center>",
+    'whitelisttablemodify'        => 'Modifizieren',
+    'whitelisttablemodifyall'     => 'Alles modifizieren',
+    'whitelisttablemodifynone'    => 'Nichts modifizieren',
+    'whitelisttablepage'          => 'Seite',
+    'whitelisttabletype'          => 'Zugriff Typ',
+    'whitelisttableexpires'       => 'Abl�ft am',
+    'whitelisttablemodby'         => 'Zuletz modifiziert von',
+    'whitelisttablemodon'         => 'Zuletzt modifiziert am',
+    'whitelisttableedit'          => 'Beiarbeiten',
+    'whitelisttableview'          => 'Anschauen',
+    'whitelisttablenewdate'       => 'Neues Datum:',
+    'whitelisttablechangedate'    => 'Ablaufsdatum �dern',
+    'whitelisttablesetedit'       => 'Beiarbeiten',
+    'whitelisttablesetview'       => 'Anschauen',
+    'whitelisttableremove'        => 'Entfernen',
+    'whitelistnewpagesfor'        => "Neue Seiten zu <b>$1's</b> white list hinzufgen<br />
+Entweder * oder % als Maskenzeichen benutzen",
+    'whitelistnewtabledate'       => 'Ablaufsdatum:',
+    'whitelistnewtableedit'       => 'Bearbeiten',
+    'whitelistnewtableview'       => 'Anschauen',
+    'whitelistnewtableprocess'    => 'Bearbeiten',
+    'whitelistnewtablereview'     => '�erprfen',
+    'whitelistselectrestricted'   => '== Beschr�kter Benutzername selektieren ==',
+    'whitelistpagelist'           => "{{SITENAME}} Seiten fr $1",
+    'whitelistnocalendar'         => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], eine Vorraussetzung fr dieses Extension, wurde nicht installiert oder kann nicht gefunden werden!</font>",
+    'whitelistbadtitle'           => 'Titel inkompatibel - ',
+    'whitelistoverview'           => "== �derungsbersicht fr $1 ==",
+    'whitelistoverviewcd'         => "* Datum ('''$1''') fr [[:$2|$2]] wird ge�dert",
+    'whitelistoverviewsa'         => "* Zugriff '''$1''' fr [[:$2|$2]] wird angewendet",
+    'whitelistoverviewrm'         => "* Zugriff auf [[:$1|$1]] wird entfernt",
+    'whitelistoverviewna'         => "* Adding [[:$1|$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
+    'whitelistrequest'            => "Weiterer Zugriff beantragen",
+    'whitelistrequestmsg'         => "$1 hat Zugriff auf die folgenden Seiten beantragt:
+$2",
+    'whitelistrequestconf'        => "Beantragung an $1 geschickt",
+    'whitelistnonrestricted'      => "'''$1''' ist nicht ein beschr�kter Benutzer.
+Diese Seite gilt nur fr beschr�kte Bentzer.",
+    'whitelistnever'              => 'niemals',
+    'whitelistnummatches'         => " - $1 �ereinstimmungen",
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
