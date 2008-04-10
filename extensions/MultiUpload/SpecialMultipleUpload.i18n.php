@@ -183,7 +183,13 @@ Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Mult
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'multipleupload' => 'फ़ाईल अपलोड करें',
+	'multipleupload'                   => 'फ़ाईल अपलोड करें',
+	'multipleupload-desc'              => 'सदस्योंको [[Special:MultipleUpload|एकसाथ अनेक फ़ाईल अपलोड]] करने की अनुमति देता हैं',
+	'multipleupload-ignoreallwarnings' => "'''सभी सूचना''' नजर अंदाज करें और फ़ाईल कैसे भी संजोयें।",
+	'multipleupload-saveallfiles'      => 'सभी फ़ाइलें संजोयें',
+	'multipleupload-page'              => '{{ns:project}}:फ़ाइल हटानेकी नीति',
+	'multiupload-fileuploaded'         => 'फ़ाइल अपलोड हो गई।',
+	'multiupload-toolbox'              => 'एकसे ज्यादा फ़ाइल अपलोड करें',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -352,7 +358,7 @@ Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pag
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'multipleupload'                   => 'Prześlij pliki',
+	'multipleupload'                   => 'Prześlij wiele plików',
 	'multipleupload-ignoreallwarnings' => 'Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.',
 	'multipleupload-saveallfiles'      => 'Zapisz wszystkie pliki',
 	'multipleupload-addresswarnings'   => 'Rozwiąż wszystkie problemy, zanim prześlesz pliki.',

@@ -20,6 +20,13 @@ $messages['fr'] = array(
 	'navigationpopups-desc' => 'Charge, dans médiawiki, les scripts des fenêtres de navigation de Lupin',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'navigationpopups-desc' => 'मीडियाविकि में ल्युपिनकी नेव्हिगेशन स्क्रीप्ट्स पॉप-अप्स लोड करता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

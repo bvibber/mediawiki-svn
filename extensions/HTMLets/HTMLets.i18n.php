@@ -25,6 +25,13 @@ $messages['fr'] = array(
 	'htmlets-desc' => 'Vous laisse le lien HTML abrégé en ligne depuis les fichiers utilisant la balise <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> टैग का इस्तेमाल करके फ़ाइलमें इन-लाइन HTML स्निपेट्ट्स डालने की अनुमति देता हैं',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

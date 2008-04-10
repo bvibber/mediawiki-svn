@@ -134,6 +134,26 @@ $messages['gl'] = array(
 	'lookupuser_useroptions' => 'Opcións do usuario:',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'lookupuser'                   => 'सदस्य ज़ानकारी खोजें',
+	'lookupuser-desc'              => 'एक सदस्यकी [[Special:LookupUser|अधिक ज़ानकारी खोजें]] उदा. इमेल एड्रेस और सदस्य क्रमांक',
+	'lookupuser_intro'             => 'एक सदस्यकी वरीयतायें देखने के लिये उसका नाम लिखें।',
+	'lookupuser_nonexistent'       => 'गलती: सदस्य अस्तित्वमें नहीं हैं',
+	'lookupuser_authenticated'     => 'इ-मेल प्रमाणिकरण: $1',
+	'lookupuser_not_authenticated' => 'जाँच पूरी नहीं हुई हैं',
+	'lookupuser_id'                => 'सदस्य क्रमांक: <tt>#$1</tt>',
+	'lookupuser_email'             => 'इ-मेल: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'नहीं दिया हैं',
+	'lookupuser_realname'          => 'असली नाम: $1',
+	'lookupuser_registration'      => 'पंजिकरण तिथी: $1',
+	'lookupuser_no_registration'   => 'रेकार्डमें नहीं हैं',
+	'lookupuser_touched'           => 'देखी हुआ आखिरी सदस्य रेकार्ड: $1',
+	'lookupuser_useroptions'       => 'सदस्य विकल्प:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

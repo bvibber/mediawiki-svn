@@ -27,6 +27,13 @@ $messages['gl'] = array(
 	'tog-microid' => 'Publicar unha <a href="http://microid.org/">MicroID</a> para confirmar a conta con servizos externos',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'tog-microid' => 'बाहरी सेवाओंका खाता प्रमाणित करनेके लिये एक <a href="http://microid.org/">MicroID</a> प्रकाशित करें',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

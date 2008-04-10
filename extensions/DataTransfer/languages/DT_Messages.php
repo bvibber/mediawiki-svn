@@ -177,7 +177,9 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'dt-desc'                     => 'टेम्प्लेट कॉल में उपलब्ध डाटाकी आयात-निर्यात करने की अनुमति देता हैं',
 	'viewxml'                     => 'XML देखें',
+	'dt_viewxml_docu'             => 'कॄपया XML में देखने के लिये श्रेणीयाँ और नामस्थान चुनें।',
 	'dt_viewxml_categories'       => 'श्रेणीयाँ',
 	'dt_viewxml_namespaces'       => 'नामस्थान',
 	'dt_viewxml_simplifiedformat' => 'आसान फॉरमैट',
@@ -192,6 +194,7 @@ $messages['hi'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
 	'dt-desc'                     => 'Dowola strukturowane daty za importowanje a eksportowanje w předłohowych wołanjach',
@@ -205,6 +208,7 @@ $messages['hsb'] = array(
 	'dt_xml_field'                => 'Polo',
 	'dt_xml_name'                 => 'Mjeno',
 	'dt_xml_title'                => 'Titul',
+	'dt_xml_id'                   => 'Id',
 	'dt_xml_freetext'             => 'Swobodny tekst',
 );
 

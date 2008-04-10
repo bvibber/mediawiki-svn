@@ -107,6 +107,7 @@ $messages['gl'] = array(
  */
 $messages['hi'] = array(
 	'pageby-contributors' => 'योगदानकर्ता:',
+	'pageby-anon'         => '<i>अनामक</i>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -39,6 +39,14 @@ $messages['fr'] = array(
 	'watchsubpages'      => 'Observer les sous-pages',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
+	'watchsubpages'      => 'Vixiar as subpáxinas',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

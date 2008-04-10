@@ -877,6 +877,7 @@ $messages['jv'] = array(
 	'ogg-play-sound'       => 'Main swara',
 	'ogg-player-thumbnail' => 'Namung gambar statis waé',
 	'ogg-download'         => 'Undhuh berkas',
+	'ogg-desc-link'        => 'Prekara berkas iki',
 );
 
 $messages['kk-arab'] = array(
@@ -1729,6 +1730,16 @@ $messages['tr'] = array(
 	'ogg-more'              => 'Daha...',
 	'ogg-dismiss'           => 'Kapat',
 	'ogg-desc-link'         => 'Bu dosya hakkında',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'ogg-play'     => 'Відтворити',
+	'ogg-pause'    => 'Пауза',
+	'ogg-stop'     => 'Зупинити',
+	'ogg-download' => 'Завантажити файл',
 );
 
 /** Vèneto (Vèneto)

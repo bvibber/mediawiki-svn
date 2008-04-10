@@ -255,6 +255,7 @@ Por favor, sexa paciente.',
 $messages['hi'] = array(
 	'youtubeauthsub_title'       => 'शीर्षक',
 	'youtubeauthsub_description' => 'ज़ानकारी',
+	'youtubeauthsub_category'    => 'श्रेणी',
 	'youtubeauthsub_submit'      => 'भेजें',
 );
 
@@ -262,7 +263,37 @@ $messages['hi'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'youtubeauthsub_title' => 'Cím',
+	'youtubeauthsub'                     => 'YouTube videó feltöltése',
+	'youtubeauthsub-desc'                => 'Lehetővé teszi a szerkesztők számára, hogy közvetlenül [[Special:YouTubeAuthSub|töltsenek fel videókat]] a YouTube-ra',
+	'youtubeauthsub_info'                => 'A videó feltöltéséhez meg kell adnod a következő információkat:',
+	'youtubeauthsub_title'               => 'Cím',
+	'youtubeauthsub_description'         => 'Leírás',
+	'youtubeauthsub_password'            => 'Jelszó a YouTube-on',
+	'youtubeauthsub_username'            => 'Felhasználói név a YouTube-on',
+	'youtubeauthsub_keywords'            => 'Kulcsszavak',
+	'youtubeauthsub_category'            => 'Kategória',
+	'youtubeauthsub_submit'              => 'Elküldés',
+	'youtubeauthsub_clickhere'           => 'Kattints ide a YouTube-ra való bejelentkezéshez',
+	'youtubeauthsub_success'             => "Gratulálunk!
+A videó fel lett töltve.
+A megtekintéshez kattints <a href='http://www.youtube.com/watch?v=$1'>ide</a>.
+Szükség lehet egy kis időre a videó feldolgozásához, ezért lehet, hogy még nincs kész.
+
+A wikire való beillesztéshez illeszd be az következő kódot:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Videó feltöltéséhez be kell jelentkezned a YouTube-ba.',
+	'youtubeauthsub_uploadhere'          => 'Videó feltöltése innen:',
+	'youtubeauthsub_uploadbutton'        => 'Feltöltés',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+A videó [http://www.youtube.com/watch?v=$1 itt] tekinthető meg',
+	'youtubeauthsub_summary'             => 'YouTube videó feltöltése',
+	'youtubeauthsub_uploading'           => 'A videó most töltődik fel.
+Kérlek várj türelemmel.',
+	'youtubeauthsub_viewpage'            => 'A videót [[$1|itt]] is megtekintheted.',
+	'youtubeauthsub_jserror_nokeywords'  => 'Adj meg egy, vagy több kulcsszót.',
+	'youtubeauthsub_jserror_notitle'     => 'Kérlek, add meg a videó címét.',
+	'youtubeauthsub_jserror_nodesc'      => 'Kérlek, add meg a videó leírását.',
 );
 
 /** Icelandic (Íslenska)

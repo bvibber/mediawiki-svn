@@ -449,6 +449,15 @@ $messages['jut'] = array(
 	'linksearch-error' => "Wildkårter må ken benyttes i'n stårt åf håstnavnet.",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'linksearch'    => 'Golèk pranala jaba',
+	'linksearch-ns' => 'Bilik nama:',
+	'linksearch-ok' => 'Golèk',
+);
+
 $messages['kk-arab'] = array(
 	'linksearch'       => 'سىرتقى سٸلتەمەلەردٸ ٸزدەۋ',
 	'linksearch-pat'   => 'ٸزدەۋ شارتى:',

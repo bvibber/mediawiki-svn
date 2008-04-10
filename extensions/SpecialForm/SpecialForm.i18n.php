@@ -435,7 +435,8 @@ $messages['so'] = array(
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'formsave' => 'Сачувај',
+	'formsave'          => 'Сачувај',
+	'formarticleexists' => 'Страна постоји',
 );
 
 /** Seeltersk (Seeltersk)

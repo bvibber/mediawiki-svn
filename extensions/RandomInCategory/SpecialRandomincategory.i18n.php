@@ -111,6 +111,7 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'randomincategory-label'  => 'श्रेणी:',
 	'randomincategory-submit' => 'जायें',
 );
 

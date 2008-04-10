@@ -590,8 +590,10 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author ToePeu
  */
 $messages['ko'] = array(
+	'usernameblacklist-desc'          => '정규 표현식을 이용해 특정 사용자 이름을 쓰지 못하도록 하기 위해 [[MediaWiki:Usernameblacklist|사용자 이름 금지 목록]]을 추가',
 	'blacklistedusername'             => '금지된 사용자 이름',
 	'blacklistedusernametext'         => '사용자 이름에 [[MediaWiki:Usernameblacklist|사용이 금지된 문장]]이 들어 있습니다. 다른 이름으로 가입해주세요.',
 	'usernameblacklist'               => '<pre>

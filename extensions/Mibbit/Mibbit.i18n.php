@@ -105,6 +105,14 @@ Se está rexistrado o seu nome de usuario será fixado por defecto.
 Aos usuarios anónimos concederáselles un nome automático, que pode ser cambiado.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'mibbit'      => 'मीब्बीट चैट',
+	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -167,15 +175,16 @@ Anonymným používateľom sa meno vygeneruje automaticky, ale je možné ho zme
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'mibbit'        => 'Mibbit chatt',
-	'mibbit-desc'   => 'Lägger till en [[Special:Mibbit|specialsida]] använd för att chatta i riktig tid med andra wikianvändare',
-	'mibbit-header' => 'Denna specialsida låter dig kollaborera i riktig tid med andra användare på wikin.
-För att ansluta enkelt tryck på "Connect"-knappen.
-Om du är inloggad på ditt smeknamn kommer det ha blivit återfyllt.
-Anonyma användare ges ett automatiskt genererat smeknamn, men det kan ändras.',
+	'mibbit-desc'   => 'Lägger till en [[Special:Mibbit|specialsida]] för att chatta  med andra användare på wikin i realtid',
+	'mibbit-header' => 'Denna specialsida låter dig samarbeta med andra användare på wikin i realtid.
+Tryck bara på knappen "Connect" för att ansluta.
+Om du är inloggad kommer ditt namn redan vara ifyllt.
+Anonyma användare får ett automatiskt genererat namn, men det kan ändras.',
 );
 
 /** Thai (ไทย)

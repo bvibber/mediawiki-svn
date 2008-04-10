@@ -214,15 +214,26 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'importusers'                      => 'सदस्य आयात करें',
-	'importusers-uploadfile'           => 'फ़ाइल अपलोड करें',
-	'importusers-form-caption'         => 'इनपुट CSV-फ़ाईल (UTF-8)',
-	'importusers-form-file'            => 'सदस्य फ़ाईल का स्वरूप (csv):',
-	'importusers-form-replace-present' => 'अभीके सदस्य रिप्लेस करें',
-	'importusers-form-button'          => 'आयात',
-	'importusers-user-added'           => '<b>%s</b> सदस्य बढा दिया।',
-	'importusers-user-present-update'  => '<b>%s</b> सदस्य अस्तित्वमें हैं। अपडेट किया।',
-	'importusers-email'                => 'इ-मेल',
+	'importusers'                         => 'सदस्य आयात करें',
+	'importusers-desc'                    => 'CSV-फ़ाईल से अनेक सदस्य आयात करें; एन्कोडिंग: UTF-8',
+	'importusers-uploadfile'              => 'फ़ाइल अपलोड करें',
+	'importusers-form-caption'            => 'इनपुट CSV-फ़ाईल (UTF-8)',
+	'importusers-form-file'               => 'सदस्य फ़ाईल का स्वरूप (csv):',
+	'importusers-form-replace-present'    => 'अभीके सदस्य रिप्लेस करें',
+	'importusers-form-button'             => 'आयात',
+	'importusers-user-added'              => '<b>%s</b> सदस्य बढा दिया।',
+	'importusers-user-present-update'     => '<b>%s</b> सदस्य अस्तित्वमें हैं। अपडेट किया।',
+	'importusers-user-present-not-update' => '<b>%s</b> सदस्य अस्तित्वमें हैं। अपडेट नहीं किया।',
+	'importusers-user-invalid-format'     => '#%s इस लाईन पर दी हुई सदस्य ज़ानकारी गलत अथवा खाली हैं। हटाई।',
+	'importusers-log'                     => 'आयात सूची',
+	'importusers-log-summary'             => 'संक्षिप्त ज़ानकारी',
+	'importusers-log-summary-all'         => 'सभी',
+	'importusers-log-summary-added'       => 'बढाया',
+	'importusers-log-summary-updated'     => 'अपडेट किया',
+	'importusers-login-name'              => 'लॉग इन नाम',
+	'importusers-password'                => 'कूटशब्द',
+	'importusers-email'                   => 'इ-मेल',
+	'importusers-realname'                => 'असली नाम',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

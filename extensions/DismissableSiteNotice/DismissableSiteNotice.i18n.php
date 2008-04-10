@@ -258,6 +258,14 @@ $messages['jut'] = array(
 	'sitenotice-desc'  => "Enmåge bruger til slette'n sitenotice",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'sitenotice_close' => 'tutup',
+	'sitenotice-desc'  => 'Marengaké para panganggo nutup wara-wara situs',
+);
+
 $messages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاتۋ',
 );
@@ -484,6 +492,14 @@ $messages['th'] = array(
  */
 $messages['tr'] = array(
 	'sitenotice_close' => 'Kapat',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'sitenotice_close' => 'приховати',
+	'sitenotice-desc'  => 'Дозволяє користувачам приховувати повідомлення сайта',
 );
 
 $messages['ur'] = array(

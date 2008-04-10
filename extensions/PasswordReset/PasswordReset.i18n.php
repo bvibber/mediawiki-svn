@@ -151,14 +151,15 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
 	'passwordreset'                 => 'Eliminar o contrasinal',
 	'passwordreset-invalidusername' => 'Nome de usuario non válido',
 	'passwordreset-emptyusername'   => 'Nome de usuario baleiro',
 	'passwordreset-nopassmatch'     => 'Os contrasinais non coinciden',
+	'passwordreset-badtoken'        => 'Sinal de edición non válido',
 	'passwordreset-username'        => 'Nome de usuario',
 	'passwordreset-newpass'         => 'Contrasinal Novo',
 	'passwordreset-confirmpass'     => 'Confirme o Contrasinal',
@@ -175,8 +176,18 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'passwordreset-badtoken' => 'गलत एडिट टोकन',
-	'passwordreset-username' => 'सदस्यनाम',
+	'passwordreset'                 => 'कूटशब्द रिसैट',
+	'passwordreset-invalidusername' => 'अवैध सदस्यनाम',
+	'passwordreset-emptyusername'   => 'खाली सदस्यनाम',
+	'passwordreset-nopassmatch'     => 'कूटशब्द मिलते नहीं',
+	'passwordreset-badtoken'        => 'गलत एडिट टोकन',
+	'passwordreset-username'        => 'सदस्यनाम',
+	'passwordreset-newpass'         => 'नया कूटशब्द',
+	'passwordreset-confirmpass'     => 'कूटशब्द निश्चित करें',
+	'passwordreset-submit'          => 'कूटशब्द रिसैट करें',
+	'passwordreset-disableuser'     => 'सदस्य खाता बंद करें?',
+	'passwordreset-accountdisabled' => 'खाता बंद कर दिया गया हैं',
+	'disabledusers'                 => 'बंद किये हुए खाता',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -518,6 +529,13 @@ $messages['sv'] = array(
 	'passwordreset-confirmpass'     => 'Konfirmera lösenord',
 	'disabledusers'                 => 'Invalidisera konton',
 	'disabledusers-summary'         => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'passwordreset-username' => 'பயனர் பெயர்',
 );
 
 /** Telugu (తెలుగు)

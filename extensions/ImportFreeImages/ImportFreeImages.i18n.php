@@ -163,6 +163,7 @@ $messages['hi'] = array(
 	'importfreeimages_next'                  => 'अगले $1',
 	'importfreeimages_filefromflickr'        => 'फ्लिकर से $1 <b>[$2]</b> सदस्यने दिया हुआ। मूल URL',
 	'importfreeimages_promptuserforfilename' => 'कॄपया लक्ष्य फ़ाईलनाम दें:',
+	'importfreeimages_returntoform'          => "या फिर, आपके खोज रिज़ल्टपर वापिस जाने के लिये <a href='$1'>यहां</a> क्लिक करें",
 );
 
 /** Upper Sorbian (Hornjoserbsce)

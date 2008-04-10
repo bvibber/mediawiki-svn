@@ -429,6 +429,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'sitematrix'           => 'Lisćina wšěch wikijow we Wikimediji',
+	'sitematrix-summary'   => 'Tuta specialna strona wšě Wikimedijowe wikije nalistuje.',
 	'sitematrix-desc'      => 'Zwobraznja [[Special:SiteMatrix|lisćinu wikijow Wikimedije]]',
 	'sitematrix-language'  => 'Rěč',
 	'sitematrix-project'   => 'Projektowe mjeno, mjezyprojektowy wotkaz a mjezyrěčny wotkaz',
@@ -533,6 +534,7 @@ $messages['jut'] = array(
 $messages['jv'] = array(
 	'sitematrix'           => 'Daftar wiki Wikimedia',
 	'sitematrix-summary'   => 'Kaca astaméwa utawa kusus iki ngandhut daftar kabèh wiki Wikimedia.',
+	'sitematrix-desc'      => 'Nuduhaké sawijining [[Special:SiteMatrix|daftar wiki Wikimedia]]',
 	'sitematrix-language'  => 'Basa',
 	'sitematrix-others'    => 'Proyèk-proyèk liya Wikimedia',
 	'sitematrix-total'     => "'''Gunggungé cacahé: $1'''",

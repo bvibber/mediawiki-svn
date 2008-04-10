@@ -115,6 +115,25 @@ $3',
 	'latexdoc_get_pdf'         => 'Obter PDF',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'latexdoc_no_text'         => 'पन्ने में कुछभी पाठ नहीं हैं, DVI नहीं बना सकतें हैं',
+	'latexdoc_cant_create_dir' => 'अस्थायी डाइरेक्टरी $1 नहीं बना पायें',
+	'latexdoc_cant_write'      => '$1 फ़ाईलमें लिख नहीं पायें',
+	'latexdoc_error'           => 'LaTeX गलती
+
+क्रिया: $1
+
+आउटपुट: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'DVI बनायें',
+	'latexdoc_get_pdf'         => 'PDF बनायें',
+	'latexdoc-desc'            => 'LaTeX पन्नोंका एकत्रित संपादन',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

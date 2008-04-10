@@ -102,6 +102,16 @@ $messages['gl'] = array(
 	'minipreview-no_category_gallery' => 'Non hai categorías ou galerías!',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'minipreview-files_in_category'   => 'इस श्रेणीमें कुल $1 फ़ाईल हैं।',
+	'minipreview-files_in_gallery'    => 'इस प्रदर्शनमें कुल $1 फ़ाईल हैं।',
+	'minipreview-no_more_files_here'  => 'इसके आगे कोईभी फ़ाईल नहीं हैं।',
+	'minipreview-no_category_gallery' => 'श्रेणी या प्रदर्शन नहीं हैं!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

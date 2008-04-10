@@ -37,6 +37,13 @@ $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'i18ntags-desc' => 'सभी उपलब्ध भाषाओंमें संख्यालेखन, व्याकरण और अनेकवचन देने की i18n कार्योंका इस्तेमाल करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

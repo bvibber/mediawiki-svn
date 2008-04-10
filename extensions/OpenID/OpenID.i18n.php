@@ -273,6 +273,36 @@ Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDCon
 	'openidbadusername'             => 'O nome de usuario especificado é incorrecto.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'openidlogin'                   => 'OpenID से लॉग इन करें',
+	'openidfinish'                  => 'OpenID लॉग इन पूरा करें',
+	'openidserver'                  => 'OpenID सर्वर',
+	'openidxrds'                    => 'Yadis फ़ाइल',
+	'openidconvert'                 => 'OpenID कन्वर्टर',
+	'openiderror'                   => 'प्रमाणिकरण गलती',
+	'openiderrortext'               => 'OpenID URL के प्रमाणिकरण में समस्या आई हैं।',
+	'openidconfigerror'             => 'OpenID व्यवस्थापन समस्या',
+	'openidpermission'              => 'OpenID अनुमति समस्या',
+	'openidcancel'                  => 'प्रमाणिकरण रद्द कर दिया',
+	'openidfailure'                 => 'प्रमाणिकरण पूरा नहीं हुआ',
+	'openidsuccess'                 => 'प्रमाणिकरण पूर्ण',
+	'openidusernameprefix'          => 'OpenIDसदस्य',
+	'openidserverlogininstructions' => '$3 पर $2 नामसे (सदस्य पृष्ठ $1) लॉग इन करनेके लिये अपना कूटशब्द नीचे दें।',
+	'openidtrustinstructions'       => 'आप $1 के साथ डाटा शेअर करना चाहते हैं इसकी जाँच करें।',
+	'openidoptional'                => 'वैकल्पिक',
+	'openidrequired'                => 'आवश्यक',
+	'openidnickname'                => 'उपनाम',
+	'openidfullname'                => 'पूरानाम',
+	'openidemail'                   => 'इ-मेल एड्रेस',
+	'openidlanguage'                => 'भाषा',
+	'openidchoosefull'              => 'आपका पूरा नाम ($1)',
+	'openidchoosepassword'          => 'कूटशब्द:',
+	'openidloginlabel'              => 'ओपनID URL',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

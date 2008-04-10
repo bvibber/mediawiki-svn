@@ -194,7 +194,6 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Toliño
- * @author Xosé
  */
 $messages['gl'] = array(
 	'deletedcontributions'      => 'Contribucións eliminadas do usuario',
@@ -276,6 +275,14 @@ $messages['ja'] = array(
  */
 $messages['jut'] = array(
 	'deletedcontributions'      => 'Slettede brugerbidråg',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'deletedcontributions'      => 'Kontribusi panganggo sing dibusak',
+	'deletedcontributions-desc' => 'Mènèhi opsis fasilitas kanggo mriksa [[Special:DeletedContributions|suntingan sawijining panganggo sing wis dibusak]]',
 );
 
 $messages['kk-cyrl'] = array(
@@ -536,8 +543,12 @@ $messages['tr'] = array(
 	'deletedcontributions' => 'Silinen kullanıcı katkıları',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
 $messages['uk'] = array(
-	'deletedcontributions' => 'Вилучені редагування користувачів',
+	'deletedcontributions'      => 'Вилучені редагування користувачів',
+	'deletedcontributions-desc' => 'Дає адміністраторам можливість [[Special:DeletedContributions|переглядати вилученні редагування]] користувачів',
 );
 
 /** Vèneto (Vèneto)

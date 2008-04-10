@@ -255,6 +255,7 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'regexblock-reason-ip'            => 'A este enderezo IP estalle prohibido editar debido a vandalismo ou outras actividades negativas realizadas por vostede ou por alguén que comparte o seu enderezo IP. Se pensa que se trata dun erro, $1',
@@ -263,7 +264,7 @@ $messages['gl'] = array(
 	'regexblock-help'                 => "Use o formulario seguinte para bloquear o acceso de escritura desde un determinado enderezo IP ou nome de usuario. Esto debería facerse só para previr vandalismo, e de conformidade coa política. \"Esta páxina lle permitirá bloquear incluso os non usuarios existentes, e tamén cos nomes dos usuarios bloqueados similares aos dados, é dicir,«Test» se bloqueará xunto con « Test 2 », etc. Tamén pode bloquear enderezos IP completos, no sentido de que ninguén rexistrado nos mesmos será capaz de editar páxinas. Nota: os enderezos IP parciais serán tratados polos nomes de usuarios na determinación do bloqueo. Se non se especifica a razón, será usado por defecto un motivo xenérico.''",
 	'regexblock-page-title-1'         => 'Bloquear enderezos usando expresións regulares',
 	'regexblock-unblock-success'      => 'O desbloqueo foi un éxito',
-	'regexblock-unblock-log'          => "O nome de Usuario ou o enderezo IP '''$1''' foi desbloqueado.",
+	'regexblock-unblock-log'          => "O nome de usuario ou o enderezo IP '''$1''' foi desbloqueado.",
 	'regexblock-unblock-error'        => 'Erro desbloqueando $1. Probabelmente non existe tal usuario.',
 	'regexblock-form-username'        => 'Enderezo IP ou nome de usuario:',
 	'regexblock-form-reason'          => 'Razón:',
@@ -305,6 +306,7 @@ $messages['hi'] = array(
 	'regexblock-form-reason'     => 'कारण:',
 	'regexblock-form-expiry'     => 'समाप्ती:&#160;',
 	'regexblock-already-blocked' => '$1 को पहलेसे ब्लॉक किया हुआ हैं।',
+	'regexblock-view-all'        => 'सभी',
 	'regexblock-view-go'         => 'जायें',
 );
 
@@ -488,7 +490,7 @@ $messages['mr'] = array(
 	'regexblock-reason-name'          => 'ह्या सदस्यनावाला उत्पात अथवा इतर कारणांमुळे संपादनांपासून रोखण्यात आलेले आहे.
 तुमच्या मते हे चुकून झाले आहे, तर $1 करा',
 	'regexblock-reason-regex'         => 'ह्या सदस्यनावाशी साम्य असणार्‍या सदस्यनावावरून झालेला उत्पात अथवा इतर कारणांमुळे या सदस्यनावाला संपादनांपासून रोखण्यात आलेले आहे.
-कृपया दुसरे सदस्यनाव तयार करा किंवा या संदेशाबद्दल $1 करा',
+कृपया दुसरे सदस्यनाव तयार करा किंवा या संदेशाबद्दल विकियाशी संपर्क ($1) करा',
 	'regexblock-help'                 => "खालील अर्ज विशिष्ट आयपी अंकपत्ता किंवा सदस्यनाव यांना ब्लॉक करण्यासाठी वापरता येईल.
 हे फक्त उत्पात रोखण्यासाठीच वापरायचे आहे, तसेच नीतीला धरून असल्याची खात्री करा.
 ''हे पान वापरुन तुम्हाला अस्तित्वात नसलेले सदस्य सुद्धा ब्लॉक करता येतील, तसेच दिलेल्या नावाशी साधर्म्य राखणारी सदस्य नावे सुद्धा ब्लॉक केली जातील. उदा. « Test 2 » सोबत « Test » सुद्धा ब्लॉक होईल.
@@ -904,6 +906,13 @@ $messages['sk'] = array(
 	'regexblock-view-stats'           => '(štatistiky)',
 	'regexblock-view-empty'           => 'Zoznam blokovaných mien a IP adries je prázdny.',
 	'regexblock-view-time'            => '$1',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'regexblock-form-reason' => 'Разлог:',
 );
 
 /** Swedish (Svenska)

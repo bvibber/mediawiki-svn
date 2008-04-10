@@ -146,6 +146,15 @@ $messages['gl'] = array(
 	'languageselector-setlang' => 'elixir',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'languageselector'         => 'भाषा',
+	'languageselector-desc'    => 'हर पन्नेपर भाषा-सिलेक्टर, भेंट देनेवालोंके लिये भी',
+	'languageselector-setlang' => 'सैट करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

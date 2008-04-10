@@ -648,6 +648,16 @@ $messages['tr'] = array(
 	'crossnamespacelinks' => 'Alanlar arası bağlantısı olan sayfalar',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'crossnamespacelinks'         => 'Посилання між просторами назв',
+	'crossnamespacelinks-desc'    => 'Виводить [[Special:CrossNamespaceLinks|список посилань між просторами назв]], яких не повинно бути у {{grammar:genitive|{{SITENAME}}}}',
+	'crossnamespacelinks-summary' => 'На цій сторінці наведений список посилань зі сторінок в основному просторі назв на сторінки в інших просторах (за винятком просторів назв: {{ns:special}}, {{ns:talk}}, {{ns:project}} і {{ns:template}}). Подібні посилання не варто використовувати.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|посилання|посилання|посилань}} на $3',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  * @author Robbot

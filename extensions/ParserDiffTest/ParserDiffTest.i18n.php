@@ -470,6 +470,17 @@ $messages['jut'] = array(
 	'pdt_comparing_page'  => 'Ændrenger parser output der [[$1]]',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'pdtest_no_changes' => 'Ora ditemokaké owah-owahan.',
+	'pdtest_title'      => 'Irah-irahan kontèks:',
+	'pdtest_ok'         => 'OK',
+	'pdtest_get_text'   => 'Jupuk tèks saka kaca',
+	'pdtest_diff'       => 'Prabédan',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -532,13 +543,16 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'parserdifftest'      => 'പാര്‍സറുകള്‍ തമ്മിലുള്ള വ്യത്യാസം അറിയാനുള്ള പരീക്ഷണം',
 	'pdtest-desc'         => 'രണ്ട് വ്യത്യസ്ത പാര്‍സറുകളുടെ ഔട്ട്പുട്ട് താരതമ്യപ്പെടുത്താനുള്ള [[Special:ParserDiffTest|പ്രത്യേക താള്‍]]',
 	'pdtest_no_target'    => 'ലക്ഷ്യം നിര്‍‌വചിച്ചിട്ടില്ല',
 	'pdtest_page_missing' => 'നിര്‍ദ്ദിഷ്ട താള്‍ ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
 	'pdtest_no_changes'   => 'മാറ്റങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ പറ്റിയില്ല.',
 	'pdtest_time_report'  => "'''$1''',  $2 സെക്കന്റുകള്‍ എടുത്തു; '''$3''', $4 സെക്കന്റുകള്‍ എടുത്തു.",
+	'pdtest_title'        => 'സാന്ദര്‍ഭിക തലക്കെട്ട്:',
 	'pdtest_text'         => 'ഇന്‍‌പുട്ട് ടെക്സ്റ്റ്',
 	'pdtest_ok'           => 'ശരി',
+	'pdtest_get_text'     => 'താളില്‍ നിന്നു ടെക്സ്റ്റ് ശേഖരിക്കുക',
 	'pdtest_diff'         => 'വ്യത്യാസങ്ങള്‍',
 	'pdtest_side_by_side' => 'ഔട്ട്പുട്ടിന്റെ താരതമ്യം',
 	'pdt_comparing_page'  => '[[$1]]ല്‍ നിന്നുള്ള പാര്‍സര്‍ ഔട്ട്പുട്ട് താരതമ്യപ്പെടുത്തുന്നു',

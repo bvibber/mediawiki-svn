@@ -550,6 +550,16 @@ $messages['jut'] = array(
 	'expand_templates_preview'         => 'Førhåndsvesnenge',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'expand_templates_input'   => 'Tèks sumber:',
+	'expand_templates_output'  => 'Pituwas (kasil)',
+	'expand_templates_ok'      => 'OK',
+	'expand_templates_preview' => 'Pratayang',
+);
+
 $messages['kk-arab'] = array(
 	'expandtemplates'                  => 'ۇلگىلەردى ۇلعايتۋ',
 	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتى الدەبىر ٴماتىندى الادى دا,
@@ -1108,10 +1118,25 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Ahonc
  * @author AS
  */
 $messages['uk'] = array(
-	'expand_templates_generate_xml' => 'Показати дерево аналізу XML',
+	'expandtemplates'                  => 'Розгортання шаблонів',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Розгортає шаблони, функції парсера і змінні]], щоб показати розгорнутий вікі-текст і попередній перегляд сторінки',
+	'expand_templates_intro'           => 'Ця спеціальна сторінка перетворює текст, рекурсивно розгортаючи всі шаблони в ньому.
+Також розгортаються всі функції парсера
+(наприклад <nowiki>{{</nowiki>#if:...}}) і змінні
+(наприклад <nowiki>{{</nowiki>CURRENTDAY}}) — загалом, усе всередині подвійних фігурних дужок.
+Це відбувається коректним чином з викликом відповідного обробника MediaWiki.',
+	'expand_templates_title'           => 'Заголовок сторінки для {{PAGENAME}} тощо:',
+	'expand_templates_input'           => 'Вхідний текст:',
+	'expand_templates_output'          => 'Результат',
+	'expand_templates_xml_output'      => 'XML-вивід',
+	'expand_templates_ok'              => 'ОК',
+	'expand_templates_remove_comments' => 'Вилучити коменатрі',
+	'expand_templates_generate_xml'    => 'Показати дерево аналізу XML',
+	'expand_templates_preview'         => 'Попередній перегляд',
 );
 
 /** Vèneto (Vèneto)

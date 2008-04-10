@@ -176,7 +176,9 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'player-play'          => 'शुरू करें',
 	'player-invalid-title' => 'अवैध शीर्षक',
+	'player-clicktoplay'   => '$1 शुरू करें',
 	'player-goto-page'     => 'पन्ना',
 );
 

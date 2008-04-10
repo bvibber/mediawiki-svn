@@ -115,7 +115,8 @@ $2',
  * @author SMP
  */
 $allMessages['ca'] = array(
-	'whitelisttableedit' => 'Edita',
+	'whitelisttablemodifynone' => 'Cap',
+	'whitelisttableedit'       => 'Edita',
 );
 
 /** Welsh (Cymraeg)
@@ -286,7 +287,9 @@ $2',
  * @author Kaustubh
  */
 $allMessages['hi'] = array(
+	'whitelisttablemodifyall'  => 'सभी',
 	'whitelisttablemodifynone' => 'बिल्कुल नहीं',
+	'whitelisttableedit'       => 'संपादन',
 	'whitelisttableremove'     => 'हटायें',
 	'whitelistnewtablereview'  => 'अवलोकन',
 );

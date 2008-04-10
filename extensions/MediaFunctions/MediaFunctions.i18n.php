@@ -66,6 +66,14 @@ $messages['gl'] = array(
 	'mediafunctions-not-exist'     => '"$1" non existe',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'mediafunctions-invalid-title' => '"$1" यह वैध शीर्षक नहीं हैं',
+	'mediafunctions-not-exist'     => '"$1" अस्तित्वमें नहीं',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

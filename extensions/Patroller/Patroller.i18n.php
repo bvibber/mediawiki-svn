@@ -241,6 +241,8 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'patrol'               => 'बदलावोंपर नजर रखें',
+	'patrol-endorse'       => 'समर्थन दें',
 	'patrol-revert-reason' => 'कारण:',
 );
 
@@ -649,6 +651,13 @@ $messages['sk'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Strážca',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'patrol-revert-reason' => 'Разлог:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -737,6 +746,18 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'patrol-revert-reason' => 'Сабаб:',
 	'patrol-skip'          => 'Ҷаҳиш',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'patrol'               => 'Патрулювання',
+	'patrol-endorse'       => 'Підтвердити',
+	'patrol-revert'        => 'Відкотити',
+	'patrol-revert-reason' => 'Причина:',
+	'patrol-skip'          => 'Відкласти',
+	'patrol-reverting'     => 'Відкіт: $1',
 );
 
 /** Vietnamese (Tiếng Việt)

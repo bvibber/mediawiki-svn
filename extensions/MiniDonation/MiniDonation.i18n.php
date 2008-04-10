@@ -69,6 +69,13 @@ $messages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'donationform-submit' => 'पे-पाल (PayPal) द्वारा दान करें',
+);
+
 $messages['hsb'] = array(
 	'donationform-submit' => 'Přez PayPal darić',
 );

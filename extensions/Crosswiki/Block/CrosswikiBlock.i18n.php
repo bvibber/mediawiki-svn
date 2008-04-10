@@ -373,6 +373,7 @@ Voltar a:
 	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
 	'crosswikiblock-noexpiry'       => 'Caducidade non válida: $1.',
 	'crosswikiblock-noreason'       => 'Ningunha razón especificada.',
+	'crosswikiblock-notoken'        => 'Sinal de edición non válido.',
 	'crosswikiblock-alreadyblocked' => 'O usuario $3 xa está bloqueado.',
 	'crosswikiblock-noblock'        => 'Este usuario non está bloqueado.',
 	'crosswikiblock-success'        => "O usuario '''$3''' foi bloqueado con éxito.
@@ -386,7 +387,10 @@ Voltar a:
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'crosswikiblock-desc'           => 'अन्य विकियोंपर [[Special:Crosswikiblock|विशेष पृष्ठ]] का इस्तेमाल करके सदस्य ब्लॉक करने की अनुमति देता हैं।',
 	'crosswikiblock'                => 'अन्य विकिपर सदस्यको ब्लॉक करें',
+	'crosswikiblock-header'         => 'यह पन्ना अन्य विकियोंपर सदस्य को ब्लॉक करने की अनुमति देता हैं।
+कृपया यह क्रिया करनेके लिये पर्याप्त अधिकार आपको हैं और यह क्रिया नीती के अनुसार ही हैं यह जाँच लें।',
 	'crosswikiblock-target'         => 'आईपी एड्रेस या सदस्यनाम तथा लक्ष्य विकि:',
 	'crosswikiblock-expiry'         => 'समाप्ती:',
 	'crosswikiblock-reason'         => 'कारण:',
@@ -747,6 +751,7 @@ Tornar vèrs :
 /** Polish (Polski)
  * @author Masti
  * @author McMonster
+ * @author Sp5uhe
  * @author Equadus
  */
 $messages['pl'] = array(
@@ -754,7 +759,7 @@ $messages['pl'] = array(
 	'crosswikiblock-submit'         => 'Zablokuj użytkownika',
 	'crosswikiblock-anononly'       => 'Zablokuj tylko anonimowych użytkowników',
 	'crosswikiblock-nocreate'       => 'Zablokuj tworzenie konta',
-	'crosswikiblock-autoblock'      => 'Automatycznie zablokuj ostatni adres IP tego użytkownika i wszystkie, z których będzie próbował edytować',
+	'crosswikiblock-autoblock'      => 'Zablokuj ostatni adres IP tego użytkownika i automatycznie wszystkie kolejne, z których będzie próbował edytować',
 	'crosswikiblock-noemail'        => 'Zablokuj możliwość wysyłania e-maili',
 	'crosswikiunblock-reason'       => 'Powód:',
 	'crosswikiunblock-submit'       => 'Odblokuj użytkownika',
@@ -902,6 +907,14 @@ Vrátiť sa na:
 * [[Special:CrosswikiBlock|Blokovací formulár]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:Ipblocklist]].',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'crosswikiblock-reason'   => 'Разлог:',
+	'crosswikiunblock-reason' => 'Разлог:',
 );
 
 /** Seeltersk (Seeltersk)

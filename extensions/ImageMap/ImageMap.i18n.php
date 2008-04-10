@@ -403,6 +403,13 @@ $messages['ja'] = array(
 	'imagemap_description'        => '画像の詳細',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'imagemap_description' => 'Prekara gambar iki',
+);
+
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
 	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',

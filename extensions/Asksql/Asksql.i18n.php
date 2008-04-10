@@ -621,6 +621,22 @@ si prega di usàrila cu giudizziu.",
 	'querysuccessful' => 'Query esequita currittamenti',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Zanatos
+ */
+$messages['shi'] = array(
+	'asksql'          => 'saqsa SQL',
+	'asksql-desc'     => 'skr isqsitn n SQL ɣ [[Special:Asksql|tawriqt tasebtart]]',
+	'asksqltext'      => "skhdm lformat ad iyzdar bach atskrt asksi igan direct i database.
+skhdm lɛalamat ('zod khtid') bach atsbynt lḥodod lkhyot.
+zod ɣikkad izdar ayfk tql iggotn i serveur, ɣayan afk ikhassa ast bahra ortskhdamt.",
+	'sqlislogged'     => 'ikhssak atlaḥt izd kolchi isksitn tysjaln',
+	'sqlquery'        => 'chkchk asqsi',
+	'querybtn'        => 'skr asqsi',
+	'selectonly'      => 'ɣar isksitn n lqraya waḥdutn aytiyoqbaln',
+	'querysuccessful' => 'asqsi injḥ !',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -212,6 +212,7 @@ Faga clic no botón de embaixo para subscribirse.',
  */
 $messages['hi'] = array(
 	'povwatch_title' => 'शीर्षक:',
+	'povwatch_added' => 'बढाया',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

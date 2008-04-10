@@ -216,6 +216,7 @@ $messages['gl'] = array(
  */
 $messages['hi'] = array(
 	'countedits'              => 'बदलाव गिनें',
+	'countedits-desc'         => '[[Special:CountEdits|विशेष पृष्ठ]] जो सदस्योंने किये बदलाव गिनता हैं और पहले दस सदस्योंकी सूची दर्शाता हैं।',
 	'countedits-username'     => 'सदस्यनाम:',
 	'countedits-ok'           => 'ओके',
 	'countedits-nosuchuser'   => '$1 इस नामका सदस्य अस्तित्वमें नहीं हैं।',
@@ -741,6 +742,13 @@ $messages['sv'] = array(
  */
 $messages['szl'] = array(
 	'countedits-ok' => 'OK',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'countedits-username' => 'பயனர் பெயர்:',
 );
 
 /** Telugu (తెలుగు)

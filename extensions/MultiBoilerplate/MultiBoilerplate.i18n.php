@@ -59,6 +59,14 @@ $messages['gl'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'multiboilerplate-legend' => 'बॉईलरप्लेट चुनें',
+	'multiboilerplate-submit' => 'लोड',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

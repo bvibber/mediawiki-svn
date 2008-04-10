@@ -91,6 +91,13 @@ $messages['hsb'] = array(
 	'whosonline-desc' => 'Zwobraznja [[Special:WhosOnline|lisćinu]] přizjewjenych a anonymnych wužiwarjow, kotřiž su runje online',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'whosonline' => 'Online felhasználók',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

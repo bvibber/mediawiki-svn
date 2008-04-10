@@ -409,6 +409,16 @@ $messages['th'] = array(
 	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดในภาษาดังกล่าว : $1',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'editmessages'       => 'Редагування повідомлень',
+	'editmsg-target'     => 'Цільове повідомлення:',
+	'editmsg-search'     => 'Пошук',
+	'editmsg-new-search' => 'Новий пошук',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

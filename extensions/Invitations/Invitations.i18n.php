@@ -212,11 +212,46 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'invite-logpage'                => 'Rexistro de invitacións',
-	'invitations-feature-access'    => 'Actualmente ten acceso para usar <i>$1</i>.',
-	'invitations-feature-numleft'   => 'Aínda ten <b>$1</b> á parte das $2 invitaciones restantes.',
-	'invitations-inviteform-title'  => 'Invitar a un usuario a usar $1',
-	'invitations-inviteform-submit' => 'Invitar',
+	'invite-logpage'                   => 'Rexistro de invitacións',
+	'invite-logpagetext'               => 'Este é un rexistro dos usuarios que invitaron a outros a usar varias características do software.',
+	'invite-logentry'                  => 'invitou a $1 a usar a característica <i>$2</i>.',
+	'invitations-invitedlist-item'     => '<b>$1</b> ($2 invitacións dispoñibles)',
+	'invitations-feature-access'       => 'Actualmente ten acceso para usar <i>$1</i>.',
+	'invitations-feature-numleft'      => 'Aínda ten <b>$1</b> á parte das $2 invitaciones restantes.',
+	'invitations-feature-notallowed'   => 'Non ten acceso para usar <i>$1</i>.',
+	'invitations-inviteform-title'     => 'Invitar a un usuario a usar $1',
+	'invitations-inviteform-username'  => 'Usuario para invitar',
+	'invitations-inviteform-submit'    => 'Invitar',
+	'invitations-error-baduser'        => 'Parece que o usuario que especificou non existe.',
+	'invitations-error-alreadyinvited' => 'O usuario que especificou xa ten acceso a esta característica!',
+	'invitations-invite-success'       => 'Invitou con éxito a $1 para usar esta característica!',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'invite-logpage'                        => 'आमंत्रण सूची',
+	'invite-logpagetext'                    => 'यह अलग‍अलग प्रणाली फीचर्स का इस्तेमाल करके देखनेके लिये सदस्योंने एक दूसरे को दिये आमंत्रणोंकी सूची हैं।',
+	'invite-logentry'                       => '<i>$2</i> फीचर इस्तेमाल करने के लिये $1 को आमंत्रित किया।',
+	'invitations'                           => 'प्रणाली फीचर्स को दी हुई आमंत्रण नियंत्रित करें',
+	'invitations-invitedlist-none'          => 'आपको आमंत्रण आधारित प्रणाली फीचर्स देखनेके लिये एक भी आमंत्रण नहीं मिला हैं।',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 आमंत्रण उपलब्ध)',
+	'invitations-pagetitle'                 => 'आमंत्रण आधारित प्रणाली फीचर्स',
+	'invitations-uninvitedlist-description' => 'आपको यह अन्य आमंत्रण आधारित प्रणाली फीचर्स देखनेकी अनुमति नहीं हैं।',
+	'invitations-uninvitedlist-none'        => 'इस समयपर, अन्य कोईभी प्रणाली फीचर आमंत्रण आधारित नहीं रखा गया हैं।',
+	'invitations-feature-pagetitle'         => 'आमंत्रण व्यवस्थापन - $1',
+	'invitations-feature-access'            => 'आपको अभी <i>$1</i> का इस्तेमाल करने की अनुमति हैं।',
+	'invitations-feature-numleft'           => 'आपके पास अबभी $2 में से <b>$1</b> आमंत्रण बचे हुए हैं।',
+	'invitations-feature-noneleft'          => 'इस फीचर के लिये दिये गये सभी आमंत्रण आपने इस्तेमाल कर दिये हैं',
+	'invitations-feature-noneyet'           => 'इस फीचर के लिये अभी तक आपको आमंत्रण नहीं मिले हैं।',
+	'invitations-feature-notallowed'        => 'आपको <i>$1</i> का इस्तेमाल करने की अनुमति नहीं हैं।',
+	'invitations-inviteform-title'          => '$1 के इस्तेमाल के लिये सदस्यको आमंत्रित करें',
+	'invitations-inviteform-username'       => 'आमंत्रित करनेके लिये सदस्य',
+	'invitations-inviteform-submit'         => 'आमंत्रित करें',
+	'invitations-error-baduser'             => 'आपने दिया हुआ सदस्य अस्तित्वमें नहीं हैं।',
+	'invitations-error-alreadyinvited'      => 'आपने दिये हुए सदस्य को यह फीचर का इस्तेमाल करने की पहले से अनुमति हैं!',
+	'invitations-invite-success'            => 'आपने $1 को यह फीचर इस्तेमाल करने के लिये आमंत्रित किया!',
 );
 
 /** Khmer (ភាសាខ្មែរ)

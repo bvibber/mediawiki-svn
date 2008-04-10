@@ -238,6 +238,13 @@ $messages['jut'] = array(
 	'assert_edit_message' => 'Æ spesifisæren assersje ($1) førgeng.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'assert_edit_title' => 'Pandhedhesan gagal',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'assert_edit_title'   => 'ماقۇلداۋ سٵتسٸز',

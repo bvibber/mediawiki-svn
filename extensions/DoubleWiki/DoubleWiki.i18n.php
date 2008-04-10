@@ -271,6 +271,13 @@ $messages['tg-cyrl'] = array(
 	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'doublewiki-desc' => 'Показує сторінку та її переклад з іншої вікі у вигляді двох колонок',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -312,3 +319,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'doublewiki-desc' => '在同一頁面中以兩欄同時顯示一頁以及它在另一個wiki中的翻譯',
 );
+

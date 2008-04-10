@@ -83,9 +83,10 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'categoryintersection'         => 'Kategoria Intersekcio',
-	'categoryintersection-doit'    => 'Listigu paĝojn en ĉiuj ĉi tiuj kategorioj',
-	'categoryintersection-results' => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
+	'categoryintersection'               => 'Kategoria Intersekcio',
+	'categoryintersection-doit'          => 'Listigu paĝojn en ĉiuj ĉi tiuj kategorioj',
+	'categoryintersection-maxcategories' => 'La maksimuma permesita nombro de intersekciaj kategorioj estas $1.',
+	'categoryintersection-results'       => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
 );
 
 /** French (Français)
@@ -230,6 +231,14 @@ $messages['ru'] = array(
 	'categoryintersection-doit'          => 'Вывести страницы во всех этих категориях',
 	'categoryintersection-maxcategories' => 'Максимально допустимое число пересекающихся категорий — $1.',
 	'categoryintersection-results'       => 'Поиск дал {{PLURAL:$1|$1 результат|$1 результата|$1 результатов}}.',
+);
+
+/** Tachelhit (Tašlḥiyt)
+ * @author Zanatos
+ */
+$messages['shi'] = array(
+	'categoryintersection'      => "taqatoɛ n'omgrd",
+	'categoryintersection-doit' => 'Umuɣ n tiwriqin ɣ kollo imgrad ad',
 );
 
 /** Slovak (Slovenčina)

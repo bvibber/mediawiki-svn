@@ -510,11 +510,15 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author ToePeu
  * @author Klutzy
  */
 $messages['ko'] = array(
-	'searchfulltext' => '전체 글 검색',
-	'createarticle'  => '문서 만들기',
+	'inputbox-error-no-type'  => 'type 속성을 정하지 않았습니다.',
+	'inputbox-error-bad-type' => '"$1"은 사용할 수 없는 type 속성입니다.
+"create", "comment", "search", "search2" 중 하나를 사용하세요.',
+	'searchfulltext'          => '전체 글 검색',
+	'createarticle'           => '문서 만들기',
 );
 
 $messages['ksh'] = array(

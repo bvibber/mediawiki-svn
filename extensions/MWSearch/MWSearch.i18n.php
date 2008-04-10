@@ -60,6 +60,13 @@ $messages['hi'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूखोज प्लगीन',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'mwsearch-desc' => 'Tykač MWSearch',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

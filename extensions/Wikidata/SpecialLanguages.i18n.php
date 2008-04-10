@@ -1078,8 +1078,10 @@ $wdMessages['he'] = array(
  */
 $wdMessages['hi'] = array(
 	'ow_save'                   => 'संजोयें',
+	'ow_history'                => 'इतिहास',
 	'ow_dm_OK'                  => 'ओके',
 	'ow_Collection'             => 'कलेक्शन',
+	'ow_Language'               => 'भाषा',
 	'ow_OptionAttributeOptions' => 'विकल्प',
 	'ow_Source'                 => 'स्रोत',
 	'ow_Permission_denied'      => '<h2>अनुमति नहीं दी</h2>',

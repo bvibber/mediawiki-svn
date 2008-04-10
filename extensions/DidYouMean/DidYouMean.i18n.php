@@ -60,6 +60,13 @@ $messages['hi'] = array(
 	'didyoumean-desc' => '"समान" शीर्षक होने वाले पन्नोंमें कड़ीयाँ देता हैं',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'didyoumean-desc' => 'Přidawa wotkazy stronam z "podobnymi" titulemi',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

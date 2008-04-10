@@ -83,9 +83,20 @@ $messages['gl'] = array(
 Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'newusernotifsubj' => '$1 का नये सदस्योंका निर्देशन',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
-	'newusernotifbody' => 'Witaj $1,
+	'newusernotifsubj'  => 'Zdźělenka za noweho wužiwarja $1',
+	'newusernotif-desc' => 'Sćele e-mejlowe zdźělenje, hdyž so wužiwarske konta wutworja',
+	'newusernotifbody'  => 'Witaj $1,
 
 Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 );

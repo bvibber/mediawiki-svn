@@ -138,8 +138,16 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'inspectcache-ok'     => 'ओके',
-	'inspectcache-delete' => 'हटायें',
+	'inspectcache'         => 'कैशे जाँचे',
+	'inspectcache-desc'    => 'शेअर्ड कैश जाँचने के लिये सरल उपकरण',
+	'inspectcache-ok'      => 'ओके',
+	'inspectcache-general' => 'साधारण कैशे',
+	'inspectcache-parser'  => 'पार्सर कैशे',
+	'inspectcache-message' => 'संदेश कैशे',
+	'inspectcache-get'     => 'मंगायें',
+	'inspectcache-delete'  => 'हटायें',
+	'inspectcache-deleted' => 'हटाई हुई कैशे',
+	'inspectcache-list'    => 'सूची',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -74,6 +74,14 @@ $messages['gl'] = array(
 	'minnamelength-error' => 'O seu nome de usuario é curto de máis. O tamaño mínimo é $1.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'minnamelength-error' => 'आपका सदस्यनाम बहुतही छोटा हैं। कमसे कम आवश्यक लंबाई $1 इतनी हैं।',
+	'minnamelength-desc'  => 'कमसेकम आवश्यक सदस्यनाम लंबाई दें',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

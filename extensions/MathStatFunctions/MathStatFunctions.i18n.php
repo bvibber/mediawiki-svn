@@ -84,6 +84,15 @@ $messages['gl'] = array(
 	'msfunc_div_zero' => 'División por cero',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'msfunc_nan'      => 'रिज़ल्ट संख्यामें नहीं हैं',
+	'msfunc_inf'      => 'रिज़ल्ट अनंत (इन्फिनिटी) हैं',
+	'msfunc_div_zero' => 'शून्य से भाग',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

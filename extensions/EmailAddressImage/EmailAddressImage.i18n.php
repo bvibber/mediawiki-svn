@@ -35,6 +35,13 @@ $messages['fr'] = array(
 	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'emailaddressimage-desc' => 'एखाद इमेल एड्रेस चित्र के रूप में दर्शाने के लिये <tt>&lt;email&gt;</tt> टैग देता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

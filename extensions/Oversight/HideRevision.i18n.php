@@ -221,9 +221,9 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Toniher
- * @author SMP
  * @author Iradigalesc
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'hiderevision'                => 'Oculta aquestes revisions permanentment',
@@ -234,7 +234,7 @@ $messages['ca'] = array(
 	'hiderevision-status'         => 'Revisió $1: $2',
 	'hiderevision-error-missing'  => "No s'ha trobat a la base de dades.",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
-	'oversight-log-hiderev'       => 'Esborrada una edició de $1',
+	'oversight-log-hiderev'       => 'esborrada una edició de $1',
 	'oversight-view'              => 'detalls',
 	'oversight-prev'              => 'Darrera revisió anterior',
 );
@@ -726,6 +726,9 @@ Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
 $messages['hsb'] = array(
 	'hiderevision'                => 'Wersije na přeco schować',
 	'hiderevision-desc'           => 'Chowa jednotliwe wersije z prawniskich přičinow atd. před wšěmi wužiwarjemi',
+	'group-oversight'             => 'Dohladowarjo',
+	'group-oversight-member'      => 'Dohladowanje',
+	'grouppage-oversight'         => '{{ns:project}}:Dohladowanje',
 	'hiderevision-prompt'         => 'Wersijowe čisło, kotrež ma so wotstronić:',
 	'hiderevision-continue'       => 'Dale',
 	'hiderevision-text'           => "To smě '''jeničce''' w slědowacych padach wužić;
@@ -969,8 +972,10 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'hiderevision-prompt' => 'Nomer révisi sing kudu diilangi:',
-	'hiderevision-tab'    => 'Delikna révisi',
+	'hiderevision-prompt'       => 'Nomer révisi sing kudu diilangi:',
+	'hiderevision-tab'          => 'Delikna révisi',
+	'hiderevision-success'      => 'Révisi wis dibusak lan diarsipaké.',
+	'hiderevision-error-delete' => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -1204,6 +1209,9 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'hiderevision'                => 'മാറ്റങ്ങള്‍ സ്ഥിരമായി മറയ്ക്കുക',
+	'group-oversight'             => 'മേല്‍നോട്ടക്കാര്‍',
+	'group-oversight-member'      => 'മേല്‍നോട്ടം',
+	'grouppage-oversight'         => '{{ns:project}}:മേല്‍നോട്ടം',
 	'hiderevision-prompt'         => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
 	'hiderevision-continue'       => 'തുടരുക',
 	'hiderevision-reason'         => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',
@@ -1212,13 +1220,22 @@ $messages['ml'] = array(
 	'hiderevision-norevisions'    => 'മായ്ക്കുവാന്‍ വേണ്ടി പതിപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.',
 	'hiderevision-noreason'       => 'ഇതു ഒഴിവാക്കുന്നതിനു സാധുവായ ഒരു കാരണം രേഖപ്പെടുത്തേണ്ടതാണ്‌.',
 	'hiderevision-status'         => 'പതിപ്പ് $1: $2',
+	'hiderevision-success'        => 'വിയകരമായി പത്തായത്തിലാക്കുകയും മായ്ക്കുകയും ചെയ്തിരിക്കുന്നു.',
 	'hiderevision-error-missing'  => 'ഡാറ്റാബേസില്‍ കണ്ടില്ല.',
 	'hiderevision-error-current'  => 'ഒരു താളിന്റെ ഏറ്റവും അവസാനത്തെ തിരുത്തല്‍ മായ്ക്കുവാന്‍ പറ്റില്ല. ഈ മാറ്റം ആദ്യം തിരസ്ക്കരിക്കുക.',
 	'hiderevision-error-delete'   => 'പത്തായത്തിലാക്കാന്‍ പറ്റിയില്ല; അതു മുന്‍പ് മായ്ക്കപ്പെട്ടതാണോ?',
 	'hiderevision-archive-status' => '$1-ല്‍ നിന്നു മായ്ക്കപ്പെട്ട പതിപ്പ്: $2',
+	'oversight-nodiff'            => 'താളിനു നിലവില്‍ മുന്‍പതിപ്പ് ഇല്ലാത്തതിനാല്‍ മാറ്റങ്ങള്‍ നിരീക്ഷിക്കാന്‍ പറ്റിയില്ല. ഇതിനു താഴെ പറയുന്നവയില്‍ ഒന്നായിരിക്കാം കാരണം: 
+*താള്‍ മായ്ക്കപ്പെട്ടിരിക്കാം
+*ഈ മറയ്ക്കപ്പെട്ട പതിപ്പായിരിക്കാം ആദ്യത്തെ പതിപ്പ്',
 	'oversight-log-hiderev'       => '$1-ല്‍ നിന്നു ഒരു തിരുത്തല്‍ ഒഴിവാക്കിയിരിക്കുന്നു',
+	'oversight'                   => 'മേല്‍നോട്ടം',
 	'oversight-view'              => 'വിശദാംശങ്ങള്‍',
+	'oversight-difference'        => 'ബാക്കിയുള്ള മുന്‍പതിപ്പുമായുള്ള വ്യത്യാസം',
+	'oversight-prev'              => 'അവസാനത്തെ മുന്‍പതിപ്പ്',
 	'oversight-hidden'            => 'മറഞ്ഞിരിക്കുന്ന പതിപ്പ്',
+	'oversight-header'            => 'സമീപ കാലത്ത് പൊതുജനങ്ങളുടെ കാഴ്ചയില്‍ നിന്നു മറയ്ക്കപ്പെട്ട പതിപ്പുകളുടെ പട്ടികയാണു താഴെ.
+ഈ വിവരം പുറത്താക്കുന്നതു മേല്‍നോട്ട അവകാശങ്ങള്‍ സ്ഥിരമായി നഷ്ടമാകുന്നതിനു കാരണമാകും.',
 );
 
 /** Marathi (मराठी)

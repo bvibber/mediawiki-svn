@@ -508,7 +508,10 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'newuserlogpage' => 'Log panganggo anyar',
+	'newuserlogpage'           => 'Log panganggo anyar',
+	'newuserlog-byemail'       => 'tembung sandhi wis dikirim liwat e-mail',
+	'newuserlog-create-entry'  => 'Panganggo anyar',
+	'newuserlog-create2-entry' => 'ndaftaraké rékening (akun) kanggo $1',
 );
 
 $messages['kk-arab'] = array(
