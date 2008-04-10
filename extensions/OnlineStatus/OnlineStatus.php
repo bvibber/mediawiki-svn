@@ -206,7 +206,7 @@ class OnlineStatus {
 				continue;
 			$lev = trim( $line, '* ' );
 			$radios[] = Xml::radioLabel(
-				wfMsgExt( 'onlinestatus-toggle-' . $lev, array( 'escapenoentities' ) ),
+				wfMsg( 'onlinestatus-toggle-' . $lev ),
 				'wpOnline',
 				$lev,
 				'wpOnline-' . $lev,
@@ -219,12 +219,15 @@ class OnlineStatus {
 		$html .= $prefsForm->tableRow(
 			wfMsgExt( 'onlinestatus-toggles-desc', array( 'escapenoentities' ) ),
 			$out .
-			Xml::checkLabel( wfMsgExt( 'onlinestatus-toggles-show', array( 'escapenoentities' ) ), 'wpOpShowOnline', 'wpOpShowOnline', (bool)$prefsForm->mToggles['showonline'] ) .
+			Xml::checkLabel( wfMsg( 'onlinestatus-toggles-show' ), 'wpOpShowOnline', 'wpOpShowOnline', (bool)$prefsForm->mToggles['showonline'] ) .
 			wfMsgExt( 'onlinestatus-toggles-explain', array( 'parse' ) )
 		);
 		return true;
 	}
 
+	/**
+	 * Hook function for BeforePageDisplay
+	 */
 	static function BeforePageDisplay( &$out ){
 		global $wgTitle, $wgRequest;
 		if( !in_array( $wgRequest->getVal( 'action', 'view' ), array( 'view', 'purge' ) ) )
