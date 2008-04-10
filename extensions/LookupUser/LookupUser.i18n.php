@@ -56,6 +56,8 @@ $messages['bg'] = array(
 	'lookupuser_useroptions'  => 'Потребителски настройки:',
 );
 
+/** German (Deutsch)
+ */
 $messages['de'] = array(
 	'lookupuser'                   => 'Benutzerinformationen einsehen',
 	'lookupuser_intro'             => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',
@@ -69,6 +71,13 @@ $messages['de'] = array(
 	'lookupuser_touched'           => 'Benutzerkonto zuletzt berührt: $1',
 	'lookupuser_authenticated'     => 'E-Mail-Bestätigung: $1',
 	'lookupuser_useroptions'       => 'Einstellungen des Benutzerkontos:',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'lookupuser_intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen eines Benutzers anzusehen.',
 );
 
 $messages['el'] = array(

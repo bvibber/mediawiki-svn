@@ -65,6 +65,7 @@ $messages['da'] = array(
 
 $messages['de'] = array(
 	'findspam'             => 'Spam finden',
+	'findspam-desc'        => 'Ergänzt eine [[Special:FindSpam|Spezialseite]] zum Auffinden von Spam',
 	'findspam-ip'          => 'IP-Adresse:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Keine Beiträge gefunden',

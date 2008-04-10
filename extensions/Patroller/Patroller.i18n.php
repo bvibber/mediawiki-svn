@@ -5,7 +5,7 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
- * @licence GNU General Public Licence 2.0
+ * @license GNU General Public Licence 2.0
  */
 
 $messages = array();
@@ -123,11 +123,19 @@ $messages['de'] = array(
 * Test eines Neulings
 * Siehe Diskussionsseite",
 	'patrol-another'         => 'Zeige eine weitere Bearbeitung, sofern verfügbar.',
-	'patrol-stopped'         => 'Sie haben entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
-	'patrol-resume'          => 'Klicken Sie hier zum fortsetzen.',
+	'patrol-stopped'         => 'Du hast entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
+	'patrol-resume'          => 'Klicke hier zum fortsetzen.',
 	'group-patroller'        => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
+);
+
+/** German - formal address (Deutsch - förmliche Anrede)
+ * @author Raimond Spekking
+ */
+$messages['de-formal'] = array(
+	'patrol-stopped' => 'Sie haben entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
+	'patrol-resume'  => 'Klicken Sie hier zum fortsetzen.',
 );
 
 /** Greek (Ελληνικά)
