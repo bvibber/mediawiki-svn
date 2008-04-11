@@ -86,6 +86,16 @@ $messages['gl'] = array(
 	'purgecache-button'  => 'Depurar',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'purgecache'         => 'कैशे साफ़ करें (purge)',
+	'purgecache-warning' => 'इससे कैशे तालिका साफ (purge) हो जायेगी।',
+	'purgecache-purged'  => 'कैशे साफ़ (purge) कर दी गई हैं।',
+	'purgecache-button'  => 'साफ़ करें (purge)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

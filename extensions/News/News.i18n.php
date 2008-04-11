@@ -76,6 +76,13 @@ $messages['fr'] = array(
 	'newsextension-freshfeed'     => '$1 : sortie alimentation récente<br />',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'newsextension-desc' => 'विकिके पन्नोंमें हुए बदलाव आरएसएस फीड या ऍटम फीड के रूपमें दर्शाता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

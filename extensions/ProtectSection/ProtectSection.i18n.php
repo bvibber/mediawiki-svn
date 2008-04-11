@@ -63,6 +63,13 @@ $messages['gl'] = array(
 	'protectsection_forbidden'  => 'Prohibido',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'protectsection_forbidden' => 'प्रतिबंधित',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

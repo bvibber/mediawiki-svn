@@ -97,7 +97,16 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'profiling-ok' => 'ओके',
+	'profiling'              => 'प्रोफिलींग डाटा',
+	'profiling-process'      => 'क्रिया स्ट्रींग:',
+	'profiling-wildcard'     => 'वाईल्डकार्ड का इस्तेमाल करें',
+	'profiling-ok'           => 'ओके',
+	'profiling-data'         => '`$1` के लिये प्रोफिलींग डाटा',
+	'profiling-data-process' => 'कार्य',
+	'profiling-data-count'   => 'गिनती',
+	'profiling-data-time'    => 'समय (सभी)',
+	'profiling-data-average' => 'समय (एवरेज)',
+	'profiling-no-data'      => 'मिलता जुलता डाटा मिला नहीं।',
 );
 
 $messages['hsb'] = array(

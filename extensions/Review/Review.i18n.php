@@ -382,9 +382,32 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'review_sidebar_title'    => 'अवलोकन',
-	'review_total_statistics' => 'कुल',
-	'review_comment'          => 'टिप्पणी',
+	'review_sidebar_title'                   => 'अवलोकन',
+	'review-desc'                            => 'पुनर्जिवीत [[Special:Review|पुष्टीकरण]] वैशिष्ठ्य',
+	'review_topic_page'                      => 'विषय अवलोकन',
+	'review_save'                            => 'अवलोकन संजोयें',
+	'review_page_link'                       => 'अवलोकन सांख्यिकी',
+	'review_for_page'                        => '"$1" पन्नेका अवलोकन',
+	'review_for_user'                        => '"$1" सदस्यका अवलोकन',
+	'review_error'                           => 'कुछ तो गड़बड हैं!',
+	'review_total_statistics'                => 'कुल',
+	'review_statistics_left_corner'          => 'अवतरण',
+	'review_version_link'                    => 'अवतरण #$1',
+	'review_statistic_cell'                  => 'एवरेज़: $2 के $1<br />($4 सदस्य, $5 अनामक)',
+	'review_version_statistic_cell'          => '$2 के $1',
+	'review_version_reviews_link'            => '<small>(अवतरण अवलोकन)</small>',
+	'review_concerns_page'                   => 'यह अवलोकन "$1" इस पन्ने का हैं।',
+	'review_concerns_user'                   => 'यह "$1" इस सदस्यने किया हुआ अवलोकन है।',
+	'review_user_reviews'                    => '<small>(इस सदस्यने किया हुआ अवलोकन)</small>',
+	'review_user_page_list'                  => 'इस सदस्यने निम्नलिखित पन्नोंका अवलोकन किया हुआ हैं:',
+	'review_user_details_link'               => '(विस्तॄत ज़ानकारी)',
+	'revision_review_this_page_version_link' => 'इस पन्नेके इस अवतरणका अवलोकन करें।',
+	'review_page_review'                     => '"$1" पन्नेका अवलोकन',
+	'review_blocked'                         => 'आपको ब्लॉक कर दिया गया हैं, यहां से चले जायें।',
+	'review_topic'                           => 'विषय',
+	'review_no_opinion'                      => 'मत नहीं',
+	'review_rating'                          => 'गुणांकन',
+	'review_comment'                         => 'टिप्पणी',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

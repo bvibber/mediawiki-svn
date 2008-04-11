@@ -47,6 +47,13 @@ $messages['fr'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Page spéciale]] qui va chercher une page racine au hasard',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'randomrootpage' => 'अविशिष्ट मूल पृष्ठ',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

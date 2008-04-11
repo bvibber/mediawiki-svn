@@ -106,6 +106,8 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
+	'pageby-first'        => '$1 ने पन्ना बनाया, $2',
+	'pageby-last'         => 'आखिरी <a href="$3">बदलाव</a> $1, $2 ने',
 	'pageby-contributors' => 'योगदानकर्ता:',
 	'pageby-anon'         => '<i>अनामक</i>',
 );

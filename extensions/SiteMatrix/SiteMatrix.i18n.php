@@ -155,11 +155,12 @@ $messages['cdo'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Danny B.
  * @author לערי ריינהארט
  */
 $messages['cs'] = array(
 	'sitematrix'           => 'Seznam všech wiki nadace Wikimedia',
-	'sitematrix-summary'   => 'Tato speciální stránka obsahuje seznam všech Wikimedia wiki.',
+	'sitematrix-summary'   => 'Tato speciální stránka obsahuje seznam všech wiki nadace Wikimedia Foundation.',
 	'sitematrix-desc'      => 'Zobrazuje [[Special:SiteMatrix|seznam projektů nadace Wikimedia]]',
 	'sitematrix-language'  => 'Jazyk',
 	'sitematrix-project'   => 'Jméno projektu, meziprojektový odkaz a mezijazykový odkaz',

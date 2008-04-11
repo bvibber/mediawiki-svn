@@ -41,6 +41,13 @@ $messages['fr'] = array(
 	'rightfunctions-restcasc' => '$1 (à partir des sources en cascade)',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'rightfunctions' => 'अनुमति-आधारित पार्सर कार्य',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

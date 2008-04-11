@@ -241,9 +241,28 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'patrol'               => 'बदलावोंपर नजर रखें',
-	'patrol-endorse'       => 'समर्थन दें',
-	'patrol-revert-reason' => 'कारण:',
+	'patrol'                 => 'बदलावोंपर नजर रखें',
+	'patrol-desc'            => 'कार्य का लोड शेअर करने में मदत करने वाला एनहान्सड पेट्रोलिंग इंटरफेस',
+	'patrol-endorse'         => 'समर्थन दें',
+	'patrol-revert'          => 'पूर्ववत करें',
+	'patrol-revert-reason'   => 'कारण:',
+	'patrol-skip'            => 'नजर‍अंदाज करें',
+	'patrol-reverting'       => 'पलट रहें हैं: $1',
+	'patrol-nonefound'       => 'पहरा देने लायक बदलाव मिलें नहीं।',
+	'patrol-endorsed-ok'     => 'इस बदलाव पर पहरा दे दिया।',
+	'patrol-endorsed-failed' => 'इस बदलाव पर पहरा नहीं दे पायें।',
+	'patrol-reverted-ok'     => 'यह बदलाव पलट दिया।',
+	'patrol-reverted-failed' => 'यह बदलाव पलट नहीं पायें।',
+	'patrol-skipped-ok'      => 'बदलाव को नजर अंदाज कर रहें हैं।',
+	'patrol-reasons'         => '* सर्वसाधारण उत्पात
+* नये सदस्योंके अस्थायी बदलाव
+* वार्ता पृष्ठ देखें',
+	'patrol-another'         => 'अगर उपलब्ध हैं तो अन्य बदलाव दर्शायें।',
+	'patrol-stopped'         => 'आपने दुसरे बदलावोंपर पहरा रखने से मना किया हैं। $1',
+	'patrol-resume'          => 'फिरसे शुरू करने के लिये यहां क्लिक करें।',
+	'group-patroller'        => 'निरीक्षक',
+	'group-patroller-member' => 'निरीक्षक',
+	'grouppage-patroller'    => '{{ns:project}}:निरीक्षक',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

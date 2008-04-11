@@ -211,8 +211,18 @@ Faga clic no botón de embaixo para subscribirse.',
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'povwatch_title' => 'शीर्षक:',
-	'povwatch_added' => 'बढाया',
+	'povwatch'                       => 'पीओव्हीवॉच',
+	'povwatch_invalid_title'         => 'दिया हुआ शीर्षक अवैध हैं',
+	'povwatch_subscriber_list_intro' => '<strong>सदस्य सूची</strong>',
+	'povwatch_unknown_subpage'       => 'अज्ञात उपपृष्ठ।',
+	'povwatch_push'                  => 'घुसायें',
+	'povwatch_title'                 => 'शीर्षक:',
+	'povwatch_comment'               => 'टिप्पणी दें:',
+	'povwatch_no_log'                => 'सूची में एन्ट्री नहीं हैं।',
+	'povwatch_no_subscribers'        => 'सदस्य नहीं हैं।',
+	'povwatch_unsubscribe'           => 'सदस्यत्व निकालें',
+	'povwatch_subscribe'             => 'सदस्यत्व लें',
+	'povwatch_added'                 => 'बढाया',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

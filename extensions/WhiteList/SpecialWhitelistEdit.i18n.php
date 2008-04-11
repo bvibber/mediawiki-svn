@@ -289,8 +289,10 @@ $2',
 $allMessages['hi'] = array(
 	'whitelisttablemodifyall'  => 'सभी',
 	'whitelisttablemodifynone' => 'बिल्कुल नहीं',
+	'whitelisttableexpires'    => 'समाप्ती',
 	'whitelisttableedit'       => 'संपादन',
 	'whitelisttableremove'     => 'हटायें',
+	'whitelistnewtableprocess' => 'कार्य',
 	'whitelistnewtablereview'  => 'अवलोकन',
 );
 

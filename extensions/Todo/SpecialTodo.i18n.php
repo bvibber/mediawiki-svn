@@ -171,7 +171,8 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'todo-list-cancel' => 'रद्द करें',
+	'todo-list-cancel'  => 'रद्द करें',
+	'todo-form-details' => 'विस्तॄत ज़ानकारी:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

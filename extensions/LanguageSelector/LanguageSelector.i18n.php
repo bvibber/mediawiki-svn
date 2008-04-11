@@ -355,6 +355,13 @@ $messages['ru'] = array(
 	'languageselector-setlang' => 'установить',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Zanatos
+ */
+$messages['shi'] = array(
+	'languageselector' => 'tutlayt',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

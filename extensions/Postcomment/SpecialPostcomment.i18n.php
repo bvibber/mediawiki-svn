@@ -89,6 +89,22 @@ $messages['gl'] = array(
 	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'postcomment_notloggedin'              => 'आपने लॉग इन नहीं किया हैं।',
+	'postcomment_youareloggedinas'         => 'आपने $1 नामसे लॉग इन किया हैं।',
+	'postcomment_addcommentdiscussionpage' => 'आपकी टिप्पणी इस वार्ता पृष्ठ पर दें',
+	'postcomment_leavemessagefor'          => '$1 के लिये एक संदेश छोडें',
+	'postcomment_post'                     => 'भेजें',
+	'postcomment_on'                       => 'शुरू',
+	'postcomment_said'                     => 'बताया हुआ',
+	'postcomment_invalidrequest'           => 'अवैध माँग।',
+	'postcomment_replyto'                  => '$1 को जवाब भेजें',
+	'postcomment_nopostingtoadd'           => 'बढाने के लिये संदेश नहीं हैं।',
+);
+
 $messages['hsb'] = array(
 	'postcomment_discussionprotected' => 'Tuta diskusijna strona je přećiwo dalšim zdźělenkam škitana.',
 	'postcomment_notloggedin' => 'Njejsy so přizjewił.',

@@ -111,8 +111,10 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'randomincategory-label'  => 'श्रेणी:',
-	'randomincategory-submit' => 'जायें',
+	'randomincategory'         => 'श्रेणीमें से कोईभी पन्ना',
+	'randomincategory-toolbox' => 'अविशिष्ट पृष्ठ',
+	'randomincategory-label'   => 'श्रेणी:',
+	'randomincategory-submit'  => 'जायें',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

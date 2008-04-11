@@ -973,6 +973,8 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
  */
 $messages['jv'] = array(
 	'hiderevision-prompt'       => 'Nomer révisi sing kudu diilangi:',
+	'hiderevision-continue'     => 'Banjurna',
+	'hiderevision-submit'       => 'Delikna data iki sacara permanèn',
 	'hiderevision-tab'          => 'Delikna révisi',
 	'hiderevision-success'      => 'Révisi wis dibusak lan diarsipaké.',
 	'hiderevision-error-delete' => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',

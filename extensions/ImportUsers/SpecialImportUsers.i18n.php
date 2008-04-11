@@ -507,6 +507,15 @@ $messages['ru'] = array(
 	'importusers-realname'                => 'настоящее имя',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Zanatos
+ */
+$messages['shi'] = array(
+	'importusers-log-summary-all' => 'kolchi',
+	'importusers-login-name'      => 'ism omskhdam',
+	'importusers-password'        => 'awal n tbadnit',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

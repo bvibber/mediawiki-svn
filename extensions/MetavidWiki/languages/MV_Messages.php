@@ -760,6 +760,7 @@ $messages['hi'] = array(
 	'mvexportsequence'               => 'मेटाविड निर्यात क्रम',
 	'mvexportstream'                 => 'मेटाविड निर्यात स्ट्रीम',
 	'mv_add_stream_page'             => 'मेवि स्ट्रीम बढायें',
+	'mv_edit_strea_docu'             => '<p><b>प्रबंधक</b> स्ट्रीम संपादित करें<br />साधारण सदस्य देखें/संपादित करें $1 पृष्ठ पर जायें',
 	'mv_add_stream_submit'           => 'स्ट्रीम बढायें',
 	'mv_no_stream_files'             => 'कोईभी स्ट्रीम फ़ाईल अस्तित्वमें नहीं हैं',
 	'mv_edit_stream_files'           => 'स्ट्रीम फ़ाईल संपादित करें',

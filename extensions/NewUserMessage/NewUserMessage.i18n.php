@@ -71,6 +71,13 @@ $messages['gl'] = array(
 	'newusermessage-desc' => 'Engade unha [[MediaWiki:NewUserMessage|mensaxe]] ás páxinas de conversa dos usuarios novos',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'newusermessage-desc' => 'नये सदस्योंके वार्ता पृष्ठपर एक [[MediaWiki:NewUserMessage|संदेश]] देता हैं',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

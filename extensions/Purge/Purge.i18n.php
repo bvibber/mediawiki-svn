@@ -55,6 +55,13 @@ $messages['gl'] = array(
 	'purge' => 'limpar',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'purge' => 'साफ करें (purge)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

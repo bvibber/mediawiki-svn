@@ -625,7 +625,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'usernameblacklist-desc'          => "Eng [[MediaWiki:Usernameblacklist|Lëscht vun onerwënswchte Benotzernimm]] kompletéieren, fir d'Opmaache vu Benotzerkonten ze verhënneren déi aus enger oder méi regulären Ausdréck zesummegesat sinn.",
+	'usernameblacklist-desc'          => "Eng [[MediaWiki:Usernameblacklist|Lëscht vun onerwënschte Benotzernimm]] kompletéieren, fir d'Opmaache vu Benotzerkonten ze verhënneren déi aus engem oder méi regulären Ausdréck zesummegesat sinn.",
 	'blacklistedusername'             => 'Verbuede Benotzernimm',
 	'blacklistedusernametext'         => 'De gewielte Benotzernumm steet op der [[MediaWiki:Usernameblacklist|Lëscht vun de verbuedene Benotzernimm]]. Sicht iech w.e.g en anere Benotzernumm.',
 	'usernameblacklist'               => "<pre>

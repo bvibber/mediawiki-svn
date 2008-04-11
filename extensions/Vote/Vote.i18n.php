@@ -241,6 +241,20 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Ten que escoller unha das opcións dispoñíbeis.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author AndreasJS
+ */
+$messages['grc'] = array(
+	'vote-login-link' => 'συνδεῖσθαι',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'vote-results-count' => 'गिनती',
+);
+
 $messages['hsb'] = array(
 	'vote' => 'Hłosować',
 	'vote-header' => 'Móžeš tu za \'\'\'Supreme Overlord of the World\'\'\' hłosować!',

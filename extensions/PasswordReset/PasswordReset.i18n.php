@@ -176,18 +176,23 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'passwordreset'                 => 'कूटशब्द रिसैट',
-	'passwordreset-invalidusername' => 'अवैध सदस्यनाम',
-	'passwordreset-emptyusername'   => 'खाली सदस्यनाम',
-	'passwordreset-nopassmatch'     => 'कूटशब्द मिलते नहीं',
-	'passwordreset-badtoken'        => 'गलत एडिट टोकन',
-	'passwordreset-username'        => 'सदस्यनाम',
-	'passwordreset-newpass'         => 'नया कूटशब्द',
-	'passwordreset-confirmpass'     => 'कूटशब्द निश्चित करें',
-	'passwordreset-submit'          => 'कूटशब्द रिसैट करें',
-	'passwordreset-disableuser'     => 'सदस्य खाता बंद करें?',
-	'passwordreset-accountdisabled' => 'खाता बंद कर दिया गया हैं',
-	'disabledusers'                 => 'बंद किये हुए खाता',
+	'passwordreset'                    => 'कूटशब्द रिसैट',
+	'passwordreset-desc'               => "विकिसदस्य का कूटशब्द पूर्ववत करें - इसके लिये 'passwordreset' अधिकार होना आवश्यक हैं",
+	'passwordreset-invalidusername'    => 'अवैध सदस्यनाम',
+	'passwordreset-emptyusername'      => 'खाली सदस्यनाम',
+	'passwordreset-nopassmatch'        => 'कूटशब्द मिलते नहीं',
+	'passwordreset-badtoken'           => 'गलत एडिट टोकन',
+	'passwordreset-username'           => 'सदस्यनाम',
+	'passwordreset-newpass'            => 'नया कूटशब्द',
+	'passwordreset-confirmpass'        => 'कूटशब्द निश्चित करें',
+	'passwordreset-submit'             => 'कूटशब्द रिसैट करें',
+	'passwordreset-success'            => 'निम्नलिखित सदस्य क्रमांक का कूटशब्द पूर्ववत कर दिया गया हैं: $1',
+	'passwordreset-disableuser'        => 'सदस्य खाता बंद करें?',
+	'passwordreset-disableuserexplain' => '(कूटशब्दमें एक गलत हॅश लिखता हैं - सदस्य लॉग इन नहीं कर सकता)',
+	'passwordreset-disablesuccess'     => 'सदस्या खाता बंद कर दिया गया हैं (सदस्य क्रमांक: $1)',
+	'passwordreset-accountdisabled'    => 'खाता बंद कर दिया गया हैं',
+	'disabledusers'                    => 'बंद किये हुए खाता',
+	'disabledusers-summary'            => 'यह ऐसे सदस्योंकी सूची हैं जिनके खाते PasswordReset का इस्तेमाल करके बंद कर दिये गये हैं।',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

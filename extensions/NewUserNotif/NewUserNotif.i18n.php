@@ -87,7 +87,11 @@ Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'newusernotifsubj' => '$1 का नये सदस्योंका निर्देशन',
+	'newusernotifsubj'  => '$1 का नये सदस्योंका निर्देशन',
+	'newusernotif-desc' => 'नया खाता खुलने के बाद इ-मेल भेजता हैं',
+	'newusernotifbody'  => 'नमस्कार $1,
+
+$3 पर एक नया सदस्य, $2, $4 को पंजिकृत हुआ हैं।',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

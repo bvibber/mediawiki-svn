@@ -370,6 +370,13 @@ $1',
 	'webstore_no_handler'              => 'Non hai un programa para transformar este tipo MIME',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'webstore_404' => 'फ़ाइल मिली नहीं।',
+);
+
 $messages['hsb'] = array(
 	'inplace_access_disabled' => 'Přistup k tutej słužbje bu za wšě klienty znjemóžnjeny.',
 	'inplace_access_denied' => 'Tuta słužba so přez klientowy IP wobmjezuje.',
