@@ -1,7 +1,6 @@
 /*
- * mv_embed version .6
+ * ~mv_embed~
  * for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed
- * and or the README
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http:/metavid.ucsc.edu/code
@@ -641,7 +640,10 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	js_log('do swap');
 	embed_video = document.createElement('div');	
 	//inherit the video interface  
-	for(method in  videoInterface){
+	for(method in videoInterface){
+		//string -> boolean:
+		if(videoInterface[method]=='false')videoInterface[method]=false;
+		if(videoInterface[method]=='true')videoInterface[method]=true;
 		if(method!='readyState'){ //readyState crashes IE
 			if(method=='style'){
 					embed_video.setAttribute('style', videoInterface[method]);			
@@ -678,6 +680,145 @@ function swapEmbedVideoElement(video_element, videoInterface){
 /* 
 *  The base embedVideo object constructor 
 */
+var textInterface = function(parentEmbed){
+	return this.init(parentEmbed);	
+}
+textInterface.prototype = {	
+	text_lookahead_time:0,
+	body_ready:false,
+	request_length:5*60,
+	init:function(parentEmbed){
+		this.pe=parentEmbed;
+		//parse roe if not already done: 
+		
+		//if not "live" or under 5 min load all transcript in one request	
+		if(!this.pe.roe_data){
+			js_log("MISSING ROE DATA for text interface");
+			var _this = this;
+			this.pe.getParseROE( function(){				
+				_this.textInterface.getParseCMML();
+			});
+		}else{
+			this.getParseCMML();
+		}
+		
+	},
+	getParseCMML:function(){		
+		js_log("load cmml");
+		//read the current play head time (if embed object is playing)
+		
+		//look at avaliable layers and default layer set 
+		//@@todo use user-language as key to select transcript layer.
+		_this = this;
+		$j.each(this.pe.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
+			if(n.getAttribute('content-type')=='text/cmml'){
+				js_log('cmml available');						
+				cmml_available=true;
+				//add transcript to bodyHTML
+				var cmml_url = n.getAttribute('src');
+				var pcurl =  parseUri(cmml_url);
+				var req_time =pcurl.queryKey['t'].split('/');
+				req_time[0]=ntp2seconds(req_time[0]);
+				req_time[1]=ntp2seconds(req_time[1]);
+				if(req_time[1]-req_time[0]> _this.request_length){
+					//longer than 5 min will only issue a (request for 5 min)
+					req_time[1] = req_time[0]+_this.request_length;
+				}
+				//do request: 
+				url = pcurl.protocol+'://'+pcurl.authority+pcurl.path+'?';
+				for( i in pcurl.queryKey){
+					if(i!='t'){
+						url+=i+'='+pcurl.queryKey[i]+'&';
+					}else{
+						url+='t='+seconds2ntp(req_time[0])+'/'+seconds2ntp(req_time[1])+'&';
+					}
+				}
+				//only select the 
+				js_log('do request on url:' + url);				
+				do_request(url, function(data){	
+					$j.each(data.getElementsByTagName('clip'), function(inx, n){
+						var text_clip = {
+							start:n.getAttribute('start').replace('ntp:', ''),
+							end:n.getAttribute('end').replace('ntp:', ''),
+							id:n.getAttribute('id')
+						}
+						$j.each(n.getElementsByTagName('body'), function(binx, bn){
+							text_clip.body = bn.textContent;
+						});
+						_this.add_merge_text_clip(text_clip);
+					});
+				});
+			}
+		});					
+	},
+	add_merge_text_clip:function(text_clip){
+		//grab the body
+		if($j('#tc_'+text_clip.id).length==0){
+			//@@todo append in order (include start end time in div attr)
+			$j('#mmbody_'+this.pe.id).append('<div id="tc_'+text_clip.id+'">' +
+						text_clip.body + 
+					'</div>');
+		}		
+	},
+	show:function(){
+		js_log("show text interface");
+		/*fade out cc*/
+		$j('#metaText_'+this.pe.id).fadeOut('fast');		
+		/*slide in intefrace container*/
+		if($j('#metaBox_'+this.pe.id).length==0){
+			//append it to body relative to offset of this.pe
+			var loc = $j(this.pe).position();
+			js_log('top ' +loc.top + ' left:'+loc.left );
+			var append ='<div style="position:absolute;z-index: 5001;' +
+						'top:'+(loc.top-4)+'px;' +
+						'left:'+(parseInt(loc.left)+parseInt(this.pe.width))+'px;' +
+						'height:'+this.pe.height+'px;width:400px;' +
+						'background:white;border:solid black;" ' +
+					'id="metaBox_'+this.pe.id+'">' +
+					this.getMenu() +
+					this.getBody() + 
+					'</div>';
+			$j(this.pe).after(append);
+			//$j('body').append();
+		}else{
+			$j('#metaBox_'+this.pe.id).fadeIn("fast");
+		}
+		/*start text timer*/
+		
+		/*fade in caption interface*/
+	},	
+	close:function(){
+		//the meta box: 
+		$j('#metaBox_'+this.pe.id).fadeOut('fast');
+		//the icon link: 
+		$j('#metaText_'+this.pe.id).fadeIn('fast');	
+	},
+	getBody:function(){
+		var bodyHTML = (this.roe_data)? 'roe data':getMsg('loading_txt');
+		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">'+
+					bodyHTML+
+				'</div>';
+	},
+	getMenu:function(){
+		var out='';
+		out+= '<div id="mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
+				'<a style="font-color:#000;" title="'+getMsg('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
+					getMsg('close')+'</a> ' +
+				'<a style="font-color:#000;" title="'+getMsg('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
+					getMsg('select_transcript_set')+'</a> ';
+		if(this.pe.linkback){
+			out+='<a style="font-color:#000;" title="'+getMsg('improve_transcript')+'" href="'+this.pe.linkback+'">'+
+				getMsg('improve_transcript')+'</a> ';
+		}	
+		out+='</div>';
+		return out;			
+	},
+	getTsSelect:function(){
+		var test = 'transcript select page';
+	}
+}
+
+
 var embedVideo = function(element) {	
 	return this.init(element);
 };
@@ -720,6 +861,9 @@ embedVideo.prototype = {
 		//if roe set & (src is not) ... load settings from xml (where not already set) 
 		if(this.roe!=null && this.src==null){
 			this.loading_external_data=true;
+		}
+		if(this.roe==null){
+			this['show_meta_link']=false;				
 		}
 		//init the default states: 
 	    for(var state in this.video_states){
@@ -781,7 +925,6 @@ embedVideo.prototype = {
 	//parse roe file and store data in this object
 	getParseROE: function(callback){
 		var _this = this;
-		//@@todo split long rage data requests over a few ajax queries as video playing advances 
 		do_request(this.roe, function(data){			
 			js_log("on: "+_this.id + " got data "+ data);
 			if(typeof data == 'object' ){
@@ -798,8 +941,9 @@ embedVideo.prototype = {
 						cmml_available=true;
 					}
 				});				
-				if(cmml_available){
-					_this['show_meta_link']=true;				
+				//overide show_meta_link if cmml is not available 
+				if(!cmml_available){
+					_this['show_meta_link']=false;				
 				}
 				/*
 				//set the src to video tag with "default" attribute:
@@ -993,7 +1137,7 @@ embedVideo.prototype = {
 	  	
 	  	 //add plugin config button (don't add for playlists) 
 	  	 if(!this.pc){
-			 thumb_html+='<div style="position:absolute;top:2px;left:2px;z-index:99;width:28px;height:28px;">' +
+			 thumb_html+='<div style="border:none;position:absolute;top:2px;left:2px;z-index:99;width:28px;height:28px;">' +
 				 '<a title="'+getMsg('select_playback')+'" href="#" onClick="document.getElementById(\''+this.id+'\').selectPlaybackMethod();return false;">'+
 				 	getTransparentPng({id:'plug_'+this.id,width:'27',height:'27',src:mv_embed_path + 'images/vid_plugin_edit_sm.png'})+
 				 '</a>'+
@@ -1001,17 +1145,17 @@ embedVideo.prototype = {
 	  	 }
 	  	//add in cmml inline dispaly if roe descption avaliable
 	  	//not to be displayed in stream interface. 
-	  	/*if(this.show_meta_link){
-	  		thumb_html+='<div style="position:absolute;top:2px;right:2px;z-index:1">'+
+	  	if(this.show_meta_link){
+	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
 		     '<a title="text tracks" href="#" onClick="document.getElementById(\''+this.id+'\').showTextInterface();return false;">';
 		    thumb_html+=getTransparentPng({id:'metaText_'+this.id, width:"40", height:"27", border:"0", 
 						src:mv_embed_path + 'images/cc_meta_sm.png' });
 			thumb_html+='</div>';    	
-	  	}*/
+	  	}
 	  	
 	    //add link back if requested
 	    if(this.linkback){
-	    	thumb_html+='<div style="position:absolute;bottom:2px;right:2px;z-index:1">'+
+	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('clip_linkback')+'" target="_new" href="'+this.linkback+'">';
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0", 
 						src:mv_embed_path + 'images/vid_info_sm.png' });
@@ -1021,7 +1165,7 @@ embedVideo.prototype = {
 	    if(this.download_link){
 	    	//check for roe attribute (extened download options)
 	    	var dlLink = (this.roe)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.src;	    	
-	    	thumb_html+='<div style="position:absolute;bottom:2px;left:2px;z-index:1">'+
+	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;left:2px;z-index:1">'+
 		     '<a title="'+getMsg('download_clip')+'" href="'+dlLink+'">';		     
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0", 
 						src:mv_embed_path + 'images/vid_download_sm.png' });
@@ -1030,7 +1174,7 @@ embedVideo.prototype = {
 	    //add in embed link (if requested) 
 	    if(this.embed_link){	
 	    	var right_offset = (this.linkback)?32:0;
-			thumb_html+='<div style="position:absolute;bottom:2px;right:'+right_offset+'px;z-index:1">'+
+			thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:'+right_offset+'px;z-index:1">'+
 		     '<a title="Embed Clip Code" href="javascript:document.getElementById(\''+this.id+'\').hideShowEmbedCode();">';
 	
 			thumb_html+=getTransparentPng(new Object ({id:'le_'+this.id, width:"27", height:"27", border:"0", 
@@ -1074,7 +1218,7 @@ embedVideo.prototype = {
 	    var left = Math.round(this.width/2)- (play_btn_width/2);
 	    
 	    out='';
-	    out+='<div style="position:absolute;top:'+top+'px;left:'+left+'px;z-index:1">'+
+	    out+='<div style="border:none;position:absolute;top:'+top+'px;left:'+left+'px;z-index:1">'+
 				     '<a id="big_play_link_'+id+'" title="Play Media" href="javascript:document.getElementById(\''+id+'\').play();">';	
 				     
 	        //fix for IE<7 and its lack of PNG support:
@@ -1101,6 +1245,20 @@ embedVideo.prototype = {
 		* 
 		*/		
 	},		
+	showTextInterface:function(){
+		//check if textObj present:
+		if(typeof this.textInterface == 'undefined' ){
+			this.textInterface = new textInterface(this);
+		}
+		//show interface
+		this.textInterface.show();
+	},
+	closeTextInterface:function(){
+		js_log('closeTextInterface '+ typeof this.textInterface);
+		if(typeof this.textInterface !== 'undefined' ){
+			this.textInterface.close();			
+		}
+	},
 	//@@todo we should group/abstract hide show video and set playback preference	
 	showVideoDownload:function(){		
 		 $j('#'+this.id).css('position', 'relative');

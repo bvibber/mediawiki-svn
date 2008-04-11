@@ -40,7 +40,7 @@ $sample_embed[1]['tag'] = '<video roe="http://mammoth.dnip.net/wiki/index.php?ti
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
 
-$sample_embed[2]['tag'] = '<video roe="http://mammoth.dnip.net/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
+$sample_embed[2]['tag'] = '<video show_meta_link="false" roe="http://mammoth.dnip.net/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
 $sample_embed[2]['desc'] = 'Demo2  of json ROE attribute';
 
 
