@@ -294,8 +294,9 @@
 					'</span>';
 			}				
 			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
-				'src="'.$stream_web_url .'" ' .
+				'src="'.$stream_web_url .'" ' .				
 				'roe="'.$roe_url.'" '.
+				'show_meta_link="false" ' . 
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
 				'controls="true" embed_link="true" />';				
 			return $o;	
