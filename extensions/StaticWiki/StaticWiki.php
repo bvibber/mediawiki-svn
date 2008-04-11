@@ -21,7 +21,7 @@ $wgHooks['AlternateEdit'][] = 'wfStaticEditHook' ;
 function wfStaticWikiGetRevisionText ( $url_title , $revision ) {
 	global $wgStaticWikiExternalSite ;
 	$url = $wgStaticWikiExternalSite . "index.php?title=" . $url_title . "&oldid=" . $revision . "&action=raw" ;
-	$text = @file_get_contents ( $url ) ;
+	$text = Http::get( $url ) ;
 	return $text ;
 	}
 
@@ -61,7 +61,7 @@ function wfStaticEditHook ( $a ) {
 
 	# Read list of latest revisions
 	$side = "" ;
-	$history = file_get_contents ( $wgStaticWikiExternalSite . "index.php?title=" . urlencode ( $url_title ) . "&action=history" ) ;
+	$history = Http::get ( $wgStaticWikiExternalSite . "index.php?title=" . urlencode ( $url_title ) . "&action=history" ) ;
 	$history = explode ( "<li>" , $history ) ;
 	array_shift ( $history ) ;
 	$match = "/w/index.php?title=" . str_replace ( "%3A" , ":" , urlencode ( $url_title ) ) . "&amp;oldid=" ;
