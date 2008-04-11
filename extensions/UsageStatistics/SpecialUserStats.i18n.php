@@ -313,6 +313,14 @@ $messages['gl'] = array(
 	'usagestatistics-editpages'      => 'Páxinas estatísticas $1 do usuario individual',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'usagestatisticstype'          => 'प्रकार',
+	'usagestatisticsintervalmonth' => 'महिना',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

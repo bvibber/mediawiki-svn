@@ -308,11 +308,20 @@ $messages['hi'] = array(
 	'regexblockstats'                 => 'रेजएक्स ब्लॉक सांख्यिकी',
 	'regexblock-page-title-1'         => 'रेग्युलर एक्स्प्रेशनका इस्तेमाल करके एड्रेस ब्लॉक करें',
 	'regexblock-unblock-success'      => 'अनब्लॉक यशस्वी',
+	'regexblock-unblock-log'          => "सदस्यनाम या आइपी एड्रेस '''$1''' को अनब्लॉक किया।",
+	'regexblock-unblock-error'        => '$1 को अनब्लॉक करनेमें समस्या।
+शायद ऐसा सदस्य अस्तित्वमें नहीं।',
 	'regexblock-form-username'        => 'आइपी एड्रेस या सदस्यनाम:',
 	'regexblock-form-reason'          => 'कारण:',
 	'regexblock-form-expiry'          => 'समाप्ती:&#160;',
 	'regexblock-form-match'           => 'सही मैच',
+	'regexblock-form-account-block'   => 'नया खाता खोलने के लिये प्रतिबंधित करें',
+	'regexblock-form-submit'          => 'इस&nbsp;सदस्यको&nbsp;ब्लॉक&nbsp;करें',
+	'regexblock-block-log'            => "'''$1''' इस सदस्य नाम अथव आयपी एड्रेसको ब्लॉक कर दिया हैं।",
 	'regexblock-block-success'        => 'ब्लॉक यशस्वी',
+	'regexblock-form-submit-empty'    => 'ब्लॉक करनेके लिये एक सदस्य नाम या आइपी एड्रेस दें।',
+	'regexblock-form-submit-regex'    => 'गलत रेग्युलर एक्स्प्रेशन।',
+	'regexblock-form-submit-expiry'   => 'कृपया समाप्ति कालावधि दें।',
 	'regexblock-already-blocked'      => '$1 को पहलेसे ब्लॉक किया हुआ हैं।',
 	'regexblock-stats-title'          => 'रेजएक्स ब्लॉक सांख्यिकी',
 	'regexblock-stats-username'       => '$1 के लिये',
@@ -333,6 +342,7 @@ $messages['hi'] = array(
 	'regexblock-view-block-by'        => 'ब्लॉक कर्ता',
 	'regexblock-view-block-unblock'   => 'अनब्लॉक',
 	'regexblock-view-stats'           => '(सांख्यिकी)',
+	'regexblock-view-empty'           => 'ब्लॉक किये सदस्यनाम और आइपी एड्रेसोंकी सूची खाली हैं।',
 	'regexblock-view-time'            => '$1 पर',
 );
 

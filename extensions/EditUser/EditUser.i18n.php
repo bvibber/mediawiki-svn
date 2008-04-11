@@ -29,6 +29,7 @@ $messages['ar'] = array(
 	'edituser-logout'   => 'تسجيل خروج المستخدم',
 	'edituser-username' => 'اسم',
 	'edituser-dosearch' => 'بحث',
+	'edituser-nouser'   => 'المستخدم المحدد غير موجود',
 );
 
 /** Bulgarian (Български)

@@ -109,6 +109,16 @@ $messages['gl'] = array(
 	'sc_gotomonth'     => 'Ir ao mes',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'sc_previousmonth' => 'पिछला महिना',
+	'sc_nextmonth'     => 'अगला महिना',
+	'sc_today'         => 'आज़',
+	'sc_gotomonth'     => 'महिनेपर चलें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

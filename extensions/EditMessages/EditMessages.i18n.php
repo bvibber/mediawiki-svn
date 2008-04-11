@@ -26,6 +26,16 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'editmessages'       => 'عدل الرسائل',
+	'editmsg-target'     => 'الرسالة الهدف:',
+	'editmsg-search'     => 'بحث',
+	'editmsg-new-search' => 'بحث جديد',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

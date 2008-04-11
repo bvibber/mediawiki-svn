@@ -257,6 +257,7 @@ sinaturas será o texto ''actual'' da páxina, independentemente das modificaci�
  */
 $messages['hi'] = array(
 	'createsigndoc-pagename' => 'पन्ना:',
+	'createsigndoc-hidden'   => 'छुपाई हुई',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

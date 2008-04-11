@@ -102,6 +102,13 @@ $messages['gsw'] = array(
 	'selectcategory-subtitle' => 'Gross-Muus go verschiedeni Iiträg hintrenander go uswähle, Strg-Muus go einzelni Iiträg go uswähle',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'selectcategory-title' => 'श्रेणीयाँ चुनें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

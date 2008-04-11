@@ -573,11 +573,20 @@ $messages['sr-ec'] = array(
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'povwatch_unknown_subpage' => 'Okänd undersida.',
-	'povwatch_push'            => 'Tryck',
-	'povwatch_title'           => 'Titel:',
-	'povwatch_comment'         => 'Kommentar:',
-	'povwatch_added'           => 'tillaggd',
+	'povwatch'                    => 'PovÖvervakning',
+	'povwatch_desc'               => 'Programtillägg för att [[Special:PovWatch|placera sidor på andra användares övervakningslistor]]',
+	'povwatch_no_session'         => 'Fel: Kunde inte leverera formulär på grund av tapp av sessionsdata.',
+	'povwatch_not_allowed_push'   => 'Du är inte en PovÖvervaknings-administratör, du kan inte placera sidor på övervakningslistor.',
+	'povwatch_already_subscribed' => 'Du abonnerar redan på PovÖvervakning',
+	'povwatch_subscribed'         => 'Du abonnerar nu på PovÖvervakning',
+	'povwatch_not_subscribed'     => 'Du abonnerar inte på PovÖvervakning, så du kan inte sluta abonnera.',
+	'povwatch_unsubscribed'       => 'Du har nu slutat abonnera på PovÖvervakning',
+	'povwatch_invalid_title'      => 'Den angivna titeln var ogiltig',
+	'povwatch_unknown_subpage'    => 'Okänd undersida.',
+	'povwatch_push'               => 'Tryck',
+	'povwatch_title'              => 'Titel:',
+	'povwatch_comment'            => 'Kommentar:',
+	'povwatch_added'              => 'tillaggd',
 );
 
 /** Telugu (తెలుగు)

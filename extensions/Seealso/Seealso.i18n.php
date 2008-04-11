@@ -99,6 +99,13 @@ $messages['gl'] = array(
 	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'seealso' => 'यह भी देखें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
