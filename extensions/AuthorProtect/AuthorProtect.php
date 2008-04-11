@@ -10,12 +10,12 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
-'name' => 'Author Protect',
-'author' => 'Ryan Schmidt',
-'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
-'version' => '1.0',
-'description' => 'Allows the author of a page to protect it from other users',
-'descriptionmsg' => 'authorprotect-desc',
+	'name' => 'Author Protect',
+	'author' => 'Ryan Schmidt',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
+	'version' => '1.0',
+	'description'    => 'Allows the author of a page to protect it from other users',
+	'descriptionmsg' => 'authorprotect-desc',
 );
 
 $wgAvailableRights[] = 'author'; //dynamically assigned to the author of a page, but can be set w/ GroupPermissions too
@@ -198,7 +198,7 @@ function doProtect( $limit = array(), $reason = '', $expiry = null ) {
 			$comment .= " [$updated]";
 		if ( $expiry_description && $protect )
 			$comment .= "$expiry_description";
-		
+
 		# Update restrictions table
 		foreach( $limit as $action => $restrictions ) {
 			if ($restrictions != '' ) {
@@ -228,7 +228,7 @@ function doProtect( $limit = array(), $reason = '', $expiry = null ) {
 		);
 		# Update the protection log
 		$log = new LogPage( 'protect' );
-		
+
 		if( $protect ) {
 			$log->addEntry( $modified ? 'modify' : 'protect', $wgTitle, trim( $reason . " [$updated]$expiry_description" ) );
 		} else {
