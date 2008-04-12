@@ -17,13 +17,24 @@ void png_read_data(pngreader *info, u_int32_t length);
 void png_defilter(pngreader *info, unsigned char *buffer, u_int32_t size);
 void png_read_ancillary(pngreader *info, u_int32_t length);
 
-void png_read(FILE* fin, FILE* fout, void* callbacks)
+void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1)
 {
 	pngreader info;
 	
 	info.fin = fin;
 	info.fout = fout;
+	if (callbacks == NULL)
+	{
+		callbacks = malloc(sizeof(pngcallbacks));
+		callbacks->completed_scanline = NULL;
+		callbacks->read_header = NULL;
+		callbacks->done = NULL;
+	}
+	if (callbacks->completed_scanline == NULL)
+		callbacks->completed_scanline = &png_write_scanline;
 	info.callbacks = callbacks;
+	
+	info.extra1 = extra1;
 	
 	char header[8];
 	fread(header, 1, 8, fin);
@@ -31,6 +42,9 @@ void png_read(FILE* fin, FILE* fout, void* callbacks)
 		png_die("header", header);
 	
 	while (png_read_chunk(&info));
+		
+	if (callbacks->done != NULL)
+		(*callbacks->done)(&info);
 }
 
 void png_die(char *msg, void *data)
@@ -134,6 +148,7 @@ void png_read_header(pngreader *info, u_int32_t length)
 	info->previous_scanline = malloc(info->header->width * info->bpp);
 	memset(info->previous_scanline, 0, info->header->width * info->bpp);
 	info->current_scanline = malloc(info->header->width * info->bpp);
+	info->line_count = 0;
 	
 	info->zst.zalloc = Z_NULL;
 	info->zst.zfree = Z_NULL;
@@ -145,6 +160,8 @@ void png_read_header(pngreader *info, u_int32_t length)
 	if (ret != Z_OK)
 		png_die("zlib_init_error", &ret);
 	
+	if (info->callbacks->read_header != NULL)
+		(*info->callbacks->read_header)(info);
 }
 
 void png_read_palette(pngreader *info, u_int32_t length)
@@ -277,8 +294,10 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		if ((info->scan_pos % info->bpp) == 0 &&
 			(info->scan_pos / info->bpp) == info->header->width) 
 		{
-			png_write_scanline(info->current_scanline, info->previous_scanline,
-				info->scan_pos, info);
+			info->line_count++;
+			if (info->callbacks->completed_scanline != NULL)
+				(*info->callbacks->completed_scanline)(info->current_scanline, 
+				info->previous_scanline, info->scan_pos, info);
 			memcpy(info->previous_scanline, info->current_scanline, info->scan_pos);
 			info->expect_filter = 1;
 		}
@@ -294,8 +313,9 @@ void png_read_ancillary(pngreader *info, u_int32_t length)
 }
 
 void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanline, 
-	u_int32_t length, pngreader *info)
+	u_int32_t length, void *info_)
 {
+	pngreader *info = (pngreader*)info_;
 	u_int32_t i;
 	for (i = 0; i < length; i += info->bpp)
 	{
@@ -331,7 +351,7 @@ int main(int argc, char **argv)
 	if (!*(opts[PNGOPT_STDOUT]))
 		pngcmd_die("output unspecified");
 	
-	png_read(stdin, stdout, NULL);
+	png_read(stdin, stdout, NULL, NULL);
 	
 	fclose(stdout);
 	
