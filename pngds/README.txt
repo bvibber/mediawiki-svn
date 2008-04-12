@@ -8,3 +8,5 @@ recompress to PNG.
 
 The C version is supposed to be faster and even less memory using, but not yet
 working.
+
+It currently decompresses any PNG to raw RGB data.

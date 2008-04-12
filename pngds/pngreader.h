@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "zlib.h"
 
 /*
@@ -28,19 +30,19 @@
 
 typedef struct
 {
-	unsigned int width;
-	unsigned int height;
+	u_int32_t width;
+	u_int32_t height;
 	unsigned char bitdepth;
 	unsigned char colortype;
 	unsigned char compression;
 	unsigned char filter_method;
 	unsigned char interlace;
-} pngheader;
+} __attribute__ ((packed)) pngheader;
 
 typedef struct
 {
-	unsigned int length;
-	char[4] type;
+	u_int32_t length;
+	char *type;
 } chunkheader;
 
 typedef struct
@@ -48,7 +50,7 @@ typedef struct
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
-} rgbcolor;
+} __attribute__ ((packed)) rgbcolor;
 
 typedef struct
 {
@@ -62,20 +64,30 @@ typedef struct
 	
 	unsigned char expect_filter;
 	unsigned char filter;
-	int scan_pos;
+	u_int32_t scan_pos;
 	unsigned char *previous_scanline;
 	unsigned char *current_scanline;
 	
 	FILE *fin;
 	FILE *fout;
 	
+	void *callbacks;
+	
 	void *extra1;
 } pngreader;
 
 typedef struct
 {
-	unsigned int width;
-	unsigned int height;
+	u_int32_t width;
+	u_int32_t height;
 	double fx;
 	double fy;
 } pngresize;
+
+/* 
+ * Functions
+ */
+void png_read(FILE* fin, FILE* fout, void* callbacks);
+void png_die(char *msg, void *data);
+void png_read_int(u_int32_t *ptr, FILE* stream);
+void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanline, u_int32_t length, pngreader *info);
