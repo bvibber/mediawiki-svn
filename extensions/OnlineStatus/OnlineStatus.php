@@ -13,7 +13,7 @@
 
 // Add credit :)
 $wgExtensionCredits['other'][] = array(
-	'version'        => '0.1',
+	'version'        => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
@@ -165,13 +165,24 @@ class OnlineStatus {
 	/**
 	 * Hook function for SavePreferences
 	 */
-	static function SavePreferences( &$prefs, $user, &$msg ){
+	static function SavePreferences( &$prefs, &$user, &$msg, $old = array() ){
 		# We need to invalidate caches for these pages, maybe it would be good
 		# to be done for subpages, but it would too expensive
-		# We can't check if the user changed the online toggle as it is already
-		# saved :(
-		$user->getUserPage()->invalidateCache();
-		$user->getTalkPage()->invalidateCache();
+		if( !is_array( $old ) || empty( $old ) ){
+			# MediaWiki is < 1.13, at that time, $old param wasn't present
+			# We can't check if the user changed the online toggle as it is
+			# already saved :(
+			$changed = true;
+		} elseif( !isset( $old['online'] ) || !isset( $old['showonline'] ) )  {
+			$changed = true;
+		} else {
+			$changed = !( $old['online'] == $user->mOptions['online']
+				&& $old['showonline'] == $user->mOptions['showonline'] );
+		}
+		if( $changed ){
+			$user->getUserPage()->invalidateCache();
+			$user->getTalkPage()->invalidateCache();
+		}
 		return true;
 	}
 
