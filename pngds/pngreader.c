@@ -180,49 +180,44 @@ void png_read_palette(pngreader *info, u_int32_t length)
 
 void png_read_data(pngreader *info, u_int32_t length)
 {
-	unsigned char buffer_overflow = 0;
 	unsigned char in[BUFFER_IN_SIZE], out[BUFFER_OUT_SIZE];
 	int ret = Z_OK;
 	
 	// Loop until everything is read and the buffer is empty
-	while (ret != Z_STREAM_END && (length != 0 && !buffer_overflow))
+	while (ret != Z_STREAM_END && length != 0)
 	{		
 		u_int32_t size = 0;
-		if (!buffer_overflow)
-		{
-			size = length > BUFFER_IN_SIZE ? BUFFER_IN_SIZE : length;
-			info->zst.avail_in = fread(in, 1, size, info->fin);
-			info->zst.next_in = in;
-			length -= size;
-		} else if (!length)
-			png_die("premature_stream_end", NULL);
+		size = length > BUFFER_IN_SIZE ? BUFFER_IN_SIZE : length;
+		info->zst.avail_in = fread(in, 1, size, info->fin);
+		info->zst.next_in = in;
+		length -= size;
 		
-		info->zst.next_out = out;
-		info->zst.avail_out = BUFFER_OUT_SIZE;
-		ret = inflate(&info->zst, Z_SYNC_FLUSH);
-		//ret = inflate(&info->zst, Z_NO_FLUSH);
-		switch (ret)
+		do
 		{
-			case (Z_BUF_ERROR):
-				// Not enough buffer size, but still size left?
-	    			if (info->zst.avail_out > 0) 
-					png_die("input_error", NULL);
-				// Fall through
-			case (Z_STREAM_END):
-				// Fall through
-			case (Z_OK):
-				png_defilter(info, out, BUFFER_OUT_SIZE - info->zst.avail_out);
-			
-				buffer_overflow = (ret == Z_BUF_ERROR);
-			
-				info->zst.avail_out = BUFFER_OUT_SIZE;
-				break;
-			default:
-				png_die("unknown_zlib_return", &ret);
-		}
+			info->zst.next_out = out;
+			info->zst.avail_out = BUFFER_OUT_SIZE;
+			ret = inflate(&info->zst, Z_SYNC_FLUSH);
+			switch (ret)
+			{
+				case (Z_BUF_ERROR):
+					// Not enough buffer size, but still size left?
+					if (info->zst.avail_out > 0) 
+						png_die("input_error", NULL);
+					// Fall through
+				case (Z_STREAM_END):
+					// Fall through
+				case (Z_OK):
+					png_defilter(info, out, BUFFER_OUT_SIZE - info->zst.avail_out);
+					break;
+				default:
+					png_die("unknown_zlib_return", &ret);
+			}
+		} while (info->zst.avail_out == 0);
 	}
 	if (ret == Z_STREAM_END)
 		inflateEnd(&info->zst);
+	if (ret	 == Z_STREAM_END && length > 0)
+		png_die("premature_stream_end", NULL);
 }
 
 void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)

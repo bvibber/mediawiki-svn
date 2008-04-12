@@ -4,7 +4,7 @@ PROG		= pngds
 SRCS		= pngreader.c pngcmd.c pngresize.c
 OBJS		= $(SRCS:.c=.o)
 
-all: pngreader
+all: pngreader pngresize
 
 pngreader:
 	$(CC) $(CFLAGS) $(SRCS) -o pngreader -DPNGREADER
