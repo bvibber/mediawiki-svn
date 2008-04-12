@@ -330,12 +330,13 @@ $messages['lb'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'createsigndoc-pagename' => 'पान',
 	'createsigndoc-phone'    => 'दूरध्वनी क्रमांक',
 	'createsigndoc-bday'     => 'जन्मदिवस',
-	'createsigndoc-hidden'   => 'छूपा',
+	'createsigndoc-hidden'   => 'लपविलेले',
 	'createsigndoc-optional' => 'पर्यायी',
 	'createsigndoc-create'   => 'निर्मीतकरा',
 );
@@ -494,6 +495,8 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'createsigndoc-pagename'      => 'Página:',
+	'createsigndoc-allowedgroup'  => 'Grupo autorizado:',
+	'createsigndoc-email'         => 'Endereço de e-mail:',
 	'createsigndoc-extaddress'    => 'Cidade, Estado, País:',
 	'createsigndoc-phone'         => 'Número de telefone:',
 	'createsigndoc-minage'        => 'Idade mínima:',

@@ -33,6 +33,7 @@ $messages['ar'] = array(
 	'editmessages'       => 'عدل الرسائل',
 	'editmsg-target'     => 'الرسالة الهدف:',
 	'editmsg-search'     => 'بحث',
+	'editmsg-get-patch'  => 'توليد باتش',
 	'editmsg-new-search' => 'بحث جديد',
 );
 
@@ -393,6 +394,13 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'editmsg-search' => 'தேடுக',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'editmsg-search' => 'Buka',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

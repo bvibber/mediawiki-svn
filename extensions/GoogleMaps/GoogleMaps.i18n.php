@@ -2248,8 +2248,10 @@ $wgGoogleMapsMessages['te'] = array(
  * @author MF-Warburg
  */
 $wgGoogleMapsMessages['tet'] = array(
-	'gm-yes' => 'Sin',
-	'gm-no'  => 'Lae',
+	'gm-yes'    => 'Sin',
+	'gm-no'     => 'Lae',
+	'gm-search' => 'Buka',
+	'gm-moon'   => 'Fulan',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

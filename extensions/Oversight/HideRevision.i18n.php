@@ -448,9 +448,11 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Cimon Avaro
  */
 $messages['fi'] = array(
 	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
+	'hiderevision-desc'           => 'Mahdollistaa yksittäisten muokkausversioiden piilottamisen käyttäjiltä lakisyistä, jne.',
 	'hiderevision-prompt'         => 'Poistettava versionumero',
 	'hiderevision-continue'       => 'Jatka',
 	'hiderevision-text'           => "Tätä toimintoa tulisi käyttää '''vain''' seuraavissa tapauksissa:
@@ -469,6 +471,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-success'        => 'Arkistoitu ja poistettu onnistuneesti.',
 	'hiderevision-error-missing'  => 'Ei löydy tietokannasta.',
 	'hiderevision-error-current'  => 'Sivun viimeisintä muokkausta ei voi poistaa. Palauta muutos ensin.',
+	'hiderevision-error-delete'   => 'Ei voitu arkistoida; oliko se aiemmin poistettu?',
 	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
 	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
 	'oversight-view'              => 'tiedot',
@@ -972,12 +975,17 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'hiderevision-prompt'       => 'Nomer révisi sing kudu diilangi:',
-	'hiderevision-continue'     => 'Banjurna',
-	'hiderevision-submit'       => 'Delikna data iki sacara permanèn',
-	'hiderevision-tab'          => 'Delikna révisi',
-	'hiderevision-success'      => 'Révisi wis dibusak lan diarsipaké.',
-	'hiderevision-error-delete' => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',
+	'hiderevision-prompt'        => 'Nomer révisi sing kudu diilangi:',
+	'hiderevision-continue'      => 'Banjurna',
+	'hiderevision-reason'        => 'Alesan (bakal dilebokna log sacara pribadi):',
+	'hiderevision-submit'        => 'Delikna data iki sacara permanèn',
+	'hiderevision-tab'           => 'Delikna révisi',
+	'hiderevision-noreason'      => 'Panjenengan kudu nulis alesan pambusakané.',
+	'hiderevision-success'       => 'Révisi wis dibusak lan diarsipaké.',
+	'hiderevision-error-missing' => 'Ora bisa ditemokaké ing basis data.',
+	'hiderevision-error-delete'  => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',
+	'oversight-log-hiderev'      => 'mbusak suntingan saka $1',
+	'oversight-view'             => 'détail',
 );
 
 /* Kazakh Arabic (AlefZet) */
@@ -1313,6 +1321,7 @@ $messages['ne'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Meursault2004
  */
 $messages['nl'] = array(
 	'hiderevision'                => 'Versies permanent verbergen',
@@ -1331,7 +1340,7 @@ $messages['nl'] = array(
 Verwijderde versies zijn niet voor iedereen zichtbaar via de website,
 maar verwijderde objecten worden in logboeken bijgehouden en kunnen handmatig
 teruggezet worden door databasebeheerders als u een fout maakt.",
-	'hiderevision-reason'         => 'Reden (wordt discreet opgeslaten):',
+	'hiderevision-reason'         => 'Reden (wordt discreet opgeslagen):',
 	'hiderevision-submit'         => 'Deze gegevens permanent verbergen',
 	'hiderevision-tab'            => 'Versie verbergen',
 	'hiderevision-norevisions'    => 'Er zijn geen te verwijderen versies opgegeven.',

@@ -125,6 +125,18 @@ Wann dir erageloggec sidd da gëtt äre Nickmae virausgefëllt.
 Déi anonyme Benotzer kréien automatesch e Nckname zougedeelt, den si awer änner kënnen.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'mibbit'        => 'मिब्बीट गप्पा-टप्पा (Chat)',
+	'mibbit-desc'   => 'इतर विकि सदस्यांसोबत गप्पा-टप्पा करण्यासाठी एक [[Special:Mibbit|विशेष पृष्ठ]] वाढविते',
+	'mibbit-header' => 'हे विशेष पृष्ठ तुम्हाला इतर विकि सदस्यांशी गप्पा मारायची संधी देते.
+संपर्क साधण्यासाठी "संपर्क" कळीवर टिचकी द्या.
+जर तुम्ही प्रवेश केलेला असेल तर तुमचे टोपणनाव आपोआप दिले जाईल.
+अनामिक सदस्यांसाठी एक अविशिष्ट नाव दिले जाईल, जे बदलता येईल.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

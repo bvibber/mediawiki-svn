@@ -795,7 +795,9 @@ $messages['pt'] = array(
 	'openidoptional'                => 'Opcional',
 	'openidrequired'                => 'Requerido',
 	'openidfullname'                => 'Nome completo',
+	'openidemail'                   => 'Endereço de e-mail',
 	'openidlanguage'                => 'Língua',
+	'openidchoosemanual'            => 'Um nome à sua escolha:',
 	'openidchoosepassword'          => 'palavra-chave:',
 );
 

@@ -312,6 +312,13 @@ $messages['jut'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|henvesnenge|henvesnenger}} til $3',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'crossnamespacelinkstext' => '$1: $2 nyambung menyang $3',
+);
+
 $messages['kaa'] = array(
 	'crossnamespacelinks'         => 'Basqa isimler ko\'pligine silteytug\'ın betler',
 );

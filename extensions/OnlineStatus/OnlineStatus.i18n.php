@@ -48,6 +48,20 @@ $messages['fr'] = array(
 	'onlinestatus-toggle-online'    => 'Présent',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'onlinestatus-desc'             => 'Engade unha preferencia para amosar se o usuario está actualmente conectado ou non no wiki',
+	'onlinestatus-subtitle-offline' => 'Este usuario está actualmente desconectado',
+	'onlinestatus-subtitle-online'  => 'Este usuario está actualmente conectado',
+	'onlinestatus-toggles-desc'     => 'O seu estado:',
+	'onlinestatus-toggles-explain'  => 'Isto permítelle ensinar aos demais usuarios se está actualmente conectado ou non vendo a súa páxina de usuario.',
+	'onlinestatus-toggles-show'     => 'Amosar o meu estado na miña páxina de usuario',
+	'onlinestatus-toggle-offline'   => 'Desconectado',
+	'onlinestatus-toggle-online'    => 'Conectado',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -74,6 +88,20 @@ $messages['lb'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'onlinestatus-desc'             => 'पसंती मध्ये एक नवीन गुणधर्म वाढवितो ज्याद्वारे एखादा सदस्य विकिवर उपस्थित आहे का ते दिसते',
+	'onlinestatus-subtitle-offline' => 'हा सदस्य अनुपस्थित आहे',
+	'onlinestatus-subtitle-online'  => 'हा सदस्य उपस्थित आहे',
+	'onlinestatus-toggles-desc'     => 'तुमची स्थिती:',
+	'onlinestatus-toggles-explain'  => 'तुमचे सदस्य पान पाहून इतर सदस्यांना तुम्ही उपस्थित आहात का नाही ते याच्यामुळे कळते.',
+	'onlinestatus-toggles-show'     => 'माझ्या सदस्य पानावर उपस्थिती दाखवा',
+	'onlinestatus-toggle-offline'   => 'अनुपस्थित',
+	'onlinestatus-toggle-online'    => 'उपस्थित',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -88,6 +116,20 @@ $messages['nl'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'onlinestatus-desc'             => 'Legger til en innstilling for å vise om brukeren er logget på wikien eller ikke',
+	'onlinestatus-subtitle-offline' => 'Denne brukeren er ikke logget på',
+	'onlinestatus-subtitle-online'  => 'Denne brukeren er logget på',
+	'onlinestatus-toggles-desc'     => 'Din status:',
+	'onlinestatus-toggles-explain'  => 'Dette viser brukere om du er logget på eller ikke ved å se brukersiden din.',
+	'onlinestatus-toggles-show'     => 'Vis innloggingsstatus på brukersiden min',
+	'onlinestatus-toggle-offline'   => 'Ikke logget på',
+	'onlinestatus-toggle-online'    => 'Logget på',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -100,6 +142,34 @@ $messages['pl'] = array(
 	'onlinestatus-toggles-show'     => 'Pokaż moją obecność na mojej stronie użytkownika',
 	'onlinestatus-toggle-offline'   => 'nieobecny',
 	'onlinestatus-toggle-online'    => 'obecny',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'onlinestatus-desc'             => 'Добавляет настройку, определяющую присутствие участника на сайте в данный момент',
+	'onlinestatus-subtitle-offline' => 'Этого участника сейчас нет на сайте',
+	'onlinestatus-subtitle-online'  => 'Этот участник сейчас на сайте',
+	'onlinestatus-toggles-desc'     => 'Ваш статус:',
+	'onlinestatus-toggles-explain'  => 'Позволяет другим участникам, просматривающим вашу страницу, увидеть присутствуете ли вы сейчас на сайте',
+	'onlinestatus-toggles-show'     => 'Показывать присутствие на сайте на моей странице учасника',
+	'onlinestatus-toggle-offline'   => 'Нет на сайте',
+	'onlinestatus-toggle-online'    => 'На сайте',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'onlinestatus-desc'             => 'Pridá možnosť zobrazovať, či je používateľ momentálne prítomný na wiki alebo nie',
+	'onlinestatus-subtitle-offline' => 'Tento používateľ je momentálne odpojený',
+	'onlinestatus-subtitle-online'  => 'Tento používateľ je momentálne pripojený',
+	'onlinestatus-toggles-desc'     => 'Váš stav:',
+	'onlinestatus-toggles-explain'  => 'Toto vám umožní zobrazovať na vašej používateľskej stránke ostatným používateľom, či ste v skutočnosti pripojený alebo nie.',
+	'onlinestatus-toggles-show'     => 'Zobrazovať stav pripojenia na mojej používateľskej stránke',
+	'onlinestatus-toggle-offline'   => 'Odpojený',
+	'onlinestatus-toggle-online'    => 'Pripojený',
 );
 
 /** Swedish (Svenska)

@@ -591,10 +591,12 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author ToePeu
  * @author לערי ריינהארט
  */
 $messages['ko'] = array(
 	'sitematrix'          => '위키미디어 위키 목록',
+	'sitematrix-desc'     => '[[Special:SiteMatrix|위키미디어 위키 목록]]을 보여줍니다.',
 	'sitematrix-language' => '언어',
 	'sitematrix-project'  => '프로젝트 이름, 각 프로젝트 간의 인터위키',
 	'sitematrix-others'   => '다른 위키미디어 프로젝트 목록',

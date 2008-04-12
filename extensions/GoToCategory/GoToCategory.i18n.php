@@ -29,6 +29,13 @@ $messages['fr'] = array(
 	'gotocategory-desc' => "Cocher les termes des recherches à l’encontre de la catégorie : nom d'espace pour « Aller » à partir de la fonctionnalité « aller à la page »",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'gotocategory-desc' => "'पानावर उडी मारा' कडे जाण्यासाठीचे कार्य वाढविण्यासाठी शोध शब्द वर्ग: नामविश्वाप्रमाणे तपासतो",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -41,6 +48,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'gotocategory-desc' => 'Sjekker søkeord opp mot kategorinavnerommet for «Gå»-funksjonaliteten i søkeboksen',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'gotocategory-desc' => 'Проверка условий поиска в категориях: пространство имён для функции «Перейти на страницу»',
 );
 
 /** Slovak (Slovenčina)

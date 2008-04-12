@@ -234,10 +234,12 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Lejonel
  * @author SPQRobin
  */
 $messages['sv'] = array(
-	'seealso' => 'Se även',
+	'seealso'      => 'Se även',
+	'seealso-desc' => '"Se även"-rubriker på olika språk med hjälp av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Telugu (తెలుగు)

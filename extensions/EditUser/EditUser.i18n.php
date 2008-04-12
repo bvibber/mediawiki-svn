@@ -30,6 +30,7 @@ $messages['ar'] = array(
 	'edituser-username' => 'اسم',
 	'edituser-dosearch' => 'بحث',
 	'edituser-nouser'   => 'المستخدم المحدد غير موجود',
+	'edituser-exempt'   => 'المستخدم المحدد لا يمكن تعديله',
 );
 
 /** Bulgarian (Български)
@@ -402,7 +403,9 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'edituser'          => "Edita preferénsia uza-na'in nian",
 	'edituser-username' => 'Naran',
+	'edituser-dosearch' => 'Buka',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

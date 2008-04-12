@@ -1994,7 +1994,9 @@ $messages['pt'] = array(
 	'mv_search_or'                  => 'ou',
 	'mv_search_not'                 => 'não',
 	'mv_search_stream_name'         => 'Nome de Stream',
+	'mv_search_date_range'          => 'Intervalo de datas',
 	'mv_stream_name'                => 'nome da "stream"',
+	'mv_date_range'                 => 'intervalo de datas',
 	'mv_category'                   => 'categoria',
 	'mv_remove_filter'              => 'remover filtro',
 	'mv_advaced_search'             => 'Pesquisa avançada de multimédia',
@@ -2550,6 +2552,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'mv_tool_search'     => 'Buka',
 	'mv_edit'            => 'Edita',
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and'      => 'ho',

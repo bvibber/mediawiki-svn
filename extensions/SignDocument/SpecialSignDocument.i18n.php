@@ -761,9 +761,11 @@ $messages['mr'] = array(
 	'sign-viewfield-realname'       => 'नाव',
 	'sign-viewfield-country'        => 'देश',
 	'sign-viewfield-zip'            => 'झीप(पीन)',
+	'sign-viewfield-ip'             => 'आयपी अंकपत्ता:',
 	'sign-viewfield-phone'          => 'दूरध्वनी',
 	'sign-viewfield-email'          => 'विपत्र',
 	'sign-viewfield-age'            => 'वय',
+	'sign-viewfield-options'        => 'विकल्प',
 	'sign-signatures'               => 'सह्या',
 	'sign-uniquequery-similaremail' => 'तसलेच विपत्र',
 );

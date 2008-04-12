@@ -554,10 +554,13 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'expand_templates_input'   => 'Tèks sumber:',
-	'expand_templates_output'  => 'Pituwas (kasil)',
-	'expand_templates_ok'      => 'OK',
-	'expand_templates_preview' => 'Pratayang',
+	'expandtemplates'                  => 'Cithakan dikembangaké',
+	'expand_templates_input'           => 'Tèks sumber:',
+	'expand_templates_output'          => 'Pituwas (kasil)',
+	'expand_templates_xml_output'      => 'Pituwas XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Busaken komentar',
+	'expand_templates_preview'         => 'Pratayang',
 );
 
 $messages['kk-arab'] = array(

@@ -557,6 +557,19 @@ $messages['ps'] = array(
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'youtubeauthsub_title'              => 'Título',
+	'youtubeauthsub_description'        => 'Descrição',
+	'youtubeauthsub_keywords'           => 'Palavras-chave',
+	'youtubeauthsub_category'           => 'Categoria',
+	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
+	'youtubeauthsub_jserror_notitle'    => 'Por favor, introduza um título para o vídeo.',
+	'youtubeauthsub_jserror_nodesc'     => 'Por favor, introduza uma descrição para o vídeo.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

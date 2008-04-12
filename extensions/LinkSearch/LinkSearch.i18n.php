@@ -887,6 +887,13 @@ $messages['te'] = array(
 	'linksearch-error' => 'హోస్ట్‌నేముకు ముందు మాత్రమే వైల్డ్ కార్డులు వాడవచ్చు.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'linksearch-ok' => 'Buka',
+);
+
 /** Tajik (Тоҷикӣ)
  * @author Ibrahim
  */

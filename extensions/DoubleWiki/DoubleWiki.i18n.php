@@ -152,6 +152,13 @@ $messages['ja'] = array(
 	'doublewiki-desc' => 'あるページと、他ウィキにある別言語の該当ページを、横に並べて同一ページに表示する',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'doublewiki-desc' => 'Nuduhaké sawijining kaca lan pretalané saka wiki liya ing rong kolom ing kaca sing padha',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
