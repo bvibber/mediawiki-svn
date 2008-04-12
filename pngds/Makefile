@@ -1,10 +1,13 @@
-CC              = cc
-CFLAGS          = -g -lz
-PROG            = pngds
-SRCS            = pngreader.c pngcmd.c
-OBJS            = $(SRCS:.c=.o)
+CC		= cc
+CFLAGS		= -g -lz
+PROG		= pngds
+SRCS		= pngreader.c pngcmd.c
+OBJS		= $(SRCS:.c=.o)
 
-all: $(PROG)
+all: pngreader
 
-$(PROG):
-        $(CC) $(CFLAGS) $(OBJS) -o $(PROG) -DPNGREADER
+pngreader:
+	$(CC) $(CFLAGS) $(SRCS) -o pngreader -DPNGREADER
+
+clean:
+	rm -rf pngreader

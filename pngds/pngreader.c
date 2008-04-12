@@ -204,10 +204,8 @@ void png_read_data(pngreader *info, u_int32_t length)
 				png_die("unknown_zlib_return", &ret);
 		}
 	}
-	fprintf(stderr, "Finished deflating\n");
 	if (ret == Z_STREAM_END)
 		inflateEnd(&info->zst);
-	fprintf(stderr, "Cleaned up deflation\n");
 }
 
 void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
@@ -219,7 +217,6 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		
 		if (info->expect_filter)
 		{
-			fprintf(stderr, "filter: %i\n", (int)byte);
 			info->expect_filter = 0;
 			info->filter = byte;
 			info->scan_pos = 0;
@@ -263,11 +260,11 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 				}
 				
 				p = a + b - c;
-				pa = (p - a) & 0x7fff;
-				pb = (p - b) & 0x7fff;
-				pc = (p - c) & 0x7fff;
+				pa = abs(p - a);
+				pb = abs(p - b);
+				pc = abs(p - c);
 				
-				if (pa <= pb && pa <= pc) byte += a;
+				if ((pa <= pb) && (pa <= pc)) byte += a;
 				else if (pb <= pc) byte += b;
 				else byte += c;
 				break;
@@ -282,7 +279,7 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		{
 			png_write_scanline(info->current_scanline, info->previous_scanline,
 				info->scan_pos, info);
-			memcpy(info->current_scanline, info->previous_scanline, info->scan_pos);
+			memcpy(info->previous_scanline, info->current_scanline, info->scan_pos);
 			info->expect_filter = 1;
 		}
 	}
