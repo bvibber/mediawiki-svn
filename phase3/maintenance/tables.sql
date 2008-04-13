@@ -53,8 +53,8 @@ CREATE TABLE /*$wgDBprefix*/user (
   
   -- Usernames must be unique, must not be in the form of
   -- an IP address. _Shouldn't_ allow slashes or case
-  -- conflicts. Spaces are allowed, and are _not_ converted
-  -- to underscores like titles. See the User::newFromName() for
+  -- conflicts. Spaces are allowed, and follow the same
+  -- normalization as titles. See the User::newFromName() for
   -- the specific tests that usernames have to pass.
   user_name varchar(255) binary NOT NULL default '',
   

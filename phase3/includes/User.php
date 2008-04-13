@@ -348,7 +348,7 @@ class User {
 			return null;
 		}
 		$dbr = wfGetDB( DB_SLAVE );
-		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getText() ), __METHOD__ );
+		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getDBkey() ), __METHOD__ );
 
 		if ( $s === false ) {
 			return 0;
@@ -435,7 +435,7 @@ class User {
 		$parsed = Title::newFromText( $name );
 		if( is_null( $parsed )
 			|| $parsed->getNamespace()
-			|| strcmp( $name, $parsed->getPrefixedText() ) ) {
+			|| strcmp( $name, $parsed->getPrefixedDBkey() ) ) {
 			wfDebugLog( 'username', __METHOD__ .
 				": '$name' invalid due to ambiguous prefixes" );
 			return false;
@@ -571,9 +571,8 @@ class User {
 		}
 
 		# Reject various classes of invalid names
-		$name = $t->getText();
 		global $wgAuth;
-		$name = $wgAuth->getCanonicalName( $t->getText() );
+		$name = $wgAuth->getCanonicalName( $t->getDBkey() );
 
 		switch ( $validate ) {
 			case false:
@@ -1117,7 +1116,7 @@ class User {
 		wfDebug( __METHOD__.": asking isBlocked()\n" );
 		$blocked = $this->isBlocked( $bFromSlave );
 		# If a user's name is suppressed, they cannot make edits anywhere
-		if ( !$this->mHideName && $wgBlockAllowsUTEdit && $title->getText() === $this->getName() &&
+		if ( !$this->mHideName && $wgBlockAllowsUTEdit && $title->getDBkey() === $this->getName() &&
 		  $title->getNamespace() == NS_USER_TALK ) {
 			$blocked = false;
 			wfDebug( __METHOD__.": self-talk page, ignoring any blocks\n" );
@@ -1841,7 +1840,7 @@ class User {
 		}
 
 		if ($title->getNamespace() == NS_USER_TALK &&
-			$title->getText() == $this->getName() ) {
+			$title->getDBkey() == $this->getName() ) {
 			if (!wfRunHooks('UserClearNewTalkNotification', array(&$this)))
 				return;
 			$this->setNewtalk( false );
@@ -1861,7 +1860,7 @@ class User {
 		// and when it does have to be executed, it can be on a slave
 		// If this is the user's newtalk page, we always update the timestamp
 		if ($title->getNamespace() == NS_USER_TALK &&
-			$title->getText() == $wgUser->getName())
+			$title->getDBkey() == $wgUser->getName())
 		{
 			$watched = true;
 		} elseif ( $this->getID() == $wgUser->getID() ) {
@@ -2679,7 +2678,7 @@ class User {
 		}
 		$title = self::getGroupPage( $group );
 		if( $title ) {
-			$page = $title->getPrefixedText();
+			$page = $title->getPrefixedDBkey();
 			return "[[$page|$text]]";
 		} else {
 			return $text;

@@ -141,6 +141,7 @@ $wgMysqlUpdates = array(
 	array( 'do_populate_parent_id' ),
 	array( 'add_field', 'page',          'page_title_ui',    'patch-page_title_ui.sql'),
 	array( 'do_populate_page_title_ui' ),
+	array( 'do_username_schema_change' ),
 );
 
 
@@ -1176,6 +1177,34 @@ function do_populate_page_title_ui() {
 	populate_page_title_ui( $wgDatabase, array(
 		'override' => 0
 	) );
+}
+
+function do_username_schema_change() {
+	global $wgDatabase;
+	$update = array();
+	$fields = array(
+		array( 'archive', 'ar_user_text' ),
+		array( 'filearchive', 'fa_user_text' ),
+		array( 'image', 'img_user_text' ),
+		array( 'ipblocks', 'ipb_by_text' ),
+		array( 'oldimage', 'oi_user_text' ),
+		array( 'recentchanges', 'rc_user_text' ),
+		array( 'revision', 'rev_user_text' ),
+		array( 'user', 'user_name' ),
+	);
+	
+	foreach( $fields as $field ) {
+		if( update_row_exists( "schema_change {$field[0]}.{$field[1]}" ) ) {
+			echo "...{$field[0]}.{$field[1]} column already converted.\n";
+		} else {
+			$update[] = $field;
+		}
+	}
+	if( count($update) > 1 ) {
+		$dontAutoRun = true;
+		require_once( 'convertUsernames.php' );
+		convert_usernames( $wgDatabase, $update );
+	}
 }
 
 function
