@@ -551,7 +551,7 @@ class Title {
 	public function getText() {
 		if( $this->mTextform == '' ) {
 			// TODO: Convert this temporary fallback into the real code
-			$this->mTextform = str_replace( '_', ' ', $t->mDbkeyform );
+			$this->mTextform = str_replace( '_', ' ', $this->mDbkeyform );
 		}
 		return $this->mTextform;
 	}
