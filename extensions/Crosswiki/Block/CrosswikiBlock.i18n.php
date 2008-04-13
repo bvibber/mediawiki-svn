@@ -750,11 +750,14 @@ Tornar vèrs :
 
 /** Polish (Polski)
  * @author Masti
+ * @author Derbeth
  * @author McMonster
  * @author Sp5uhe
  * @author Equadus
  */
 $messages['pl'] = array(
+	'crosswikiblock-desc'           => 'Umożliwia blokowanie użytkowników na innych wiki za pomocą [[{{ns:Special}}:Crosswikiblock|strony specjalnej]]',
+	'crosswikiblock-expiry'         => 'Wygasa:',
 	'crosswikiblock-reason'         => 'Powód:',
 	'crosswikiblock-submit'         => 'Zablokuj użytkownika',
 	'crosswikiblock-anononly'       => 'Zablokuj tylko anonimowych użytkowników',
@@ -767,9 +770,17 @@ $messages['pl'] = array(
 	'crosswikiblock-dbnotfound'     => 'Baza $1 nie istnieje',
 	'crosswikiblock-noname'         => '"$1" nie jest poprawną nazwą użytkownika.',
 	'crosswikiblock-nouser'         => 'Nie znaleziono użytkownika "$3".',
+	'crosswikiblock-noexpiry'       => 'Nieprawidłowy czas wygaśnięcia: $1.',
 	'crosswikiblock-noreason'       => 'Nie podano powodu.',
+	'crosswikiblock-notoken'        => 'Nieprawidłowy token edycji',
 	'crosswikiblock-alreadyblocked' => 'Użytkownik $3 jest już zablokowany.',
 	'crosswikiblock-noblock'        => 'Ten użytkownik nie jest zablokowany.',
+	'crosswikiblock-success'        => "Pomyślnie zablokowano użytkownika '''$3'''.
+
+Powrót do:
+* [[{{ns:special}}:CrosswikiBlock|Formularza blokowania]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Lokalne odblokowywanie nie jest obsługiwane w tym interfejsie. Użyj [[Special:Ipblocklist]]',
 );
 
 /** Pashto (پښتو)
@@ -1008,10 +1019,11 @@ Gå tillbaka till:
 	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:Ipblocklist]] istället.',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
+	'crosswikiblock-expiry'   => 'Wygaso:',
 	'crosswikiblock-reason'   => 'Čymu:',
 	'crosswikiunblock-reason' => 'Čymu:',
 );

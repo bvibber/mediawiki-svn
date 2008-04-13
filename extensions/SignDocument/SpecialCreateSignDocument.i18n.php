@@ -582,6 +582,13 @@ $messages['sv'] = array(
 	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
 );
 
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'createsigndoc-pagename' => 'Zajta:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

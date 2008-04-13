@@ -120,7 +120,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'multipleupload'                   => 'Tallenna tiedostoja',
-	'multipleupload-desc'              => 'Käyttäjät voivat [[Special:MultipleUpload|tallentaa monta tiedosta kerralla]]',
+	'multipleupload-desc'              => 'Käyttäjät voivat [[Special:MultipleUpload|tallentaa monta tiedostoa kerralla]].',
 	'multipleupload-ignoreallwarnings' => "Ohita '''kaikki varoitukset''' ja tallenna tiedostot kaikesta huolimatta.",
 	'multipleupload-saveallfiles'      => 'Tallenna kaikki tiedostot',
 	'multipleupload-addresswarnings'   => 'Ota huomioon kaikki varoitukset ennen kuin tallennat tiedostoja uudelleen.',

@@ -37,6 +37,13 @@ $messages['hsb'] = array(
 	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tooltip-desc' => 'Setzt den <tt><nowiki><tooltip></nowiki></tt> an den <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tag derbäi',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

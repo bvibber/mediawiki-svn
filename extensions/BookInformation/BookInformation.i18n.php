@@ -547,7 +547,10 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'bookinfo-header'            => 'Informasi buku',
+	'bookinfo-desc'              => 'Ngembangaké [[Special:Booksources]] mawa informasi saka sumber-sumber buku',
 	'bookinfo-result-title'      => 'Irah-irahan',
+	'bookinfo-result-author'     => 'Pangripta:',
+	'bookinfo-result-publisher'  => 'Panerbit:',
 	'bookinfo-result-year'       => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
 	'bookinfo-purchase'          => 'Tuku buku ini saka $1',

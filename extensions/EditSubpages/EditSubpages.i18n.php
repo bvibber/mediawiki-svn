@@ -29,6 +29,23 @@ $messages['bg'] = array(
 	'editsubpages-desc' => 'Позволява на администраторите чрез [[MediaWiki:Unlockedpages]] да свалят защитата на страница и всички нейни подстраници за анонимно редактиране',
 );
 
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'editsubpages-desc' => 'Ylläpitäjät voivat sallia sivun ja sen kaikkien alasivujen muokkaamisen kirjautumattomille käyttäjille sivulla [[MediaWiki:Unlockedpages]].',
+	'unlockedpages'     => '  #<!-- jätä tämä rivi rauhaan --><pre>
+# Pistä sivut, jotka haluat avata kirjautumattomien käyttäjien muokkauksille alapuolelle käyttäen muotoa:
+# * sivun nimi
+# Avattavien sivujen nimien tulee alkaa asteriskilla, jotta ne laskettaisiin.
+# Kaikki muu lasketaan kommenteiksi
+# Sivujen nimet voivat olla [[linkkejä]] ja ovat kirjainkoosta riippuvaisia
+# Myös keskustelusivut avataan sivun kanssa
+# Katso http://www.mediawiki.org/wiki/Extension:EditSubpages saadaksesi lisätietoja
+  #</pre><!-- jätä tämä rivi rauhaan -->',
+);
+
 /** French (Français)
  * @author Grondin
  */

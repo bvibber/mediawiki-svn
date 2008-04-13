@@ -1535,6 +1535,14 @@ $messages['sv'] = array(
 	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerade [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'sign-realname'           => 'Mjano:',
+	'sign-viewfield-realname' => 'Mjano',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -452,7 +452,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
-	'hiderevision-desc'           => 'Mahdollistaa yksittäisten muokkausversioiden piilottamisen käyttäjiltä lakisyistä, jne.',
+	'hiderevision-desc'           => 'Mahdollistaa yksittäisten muokkausversioiden piilottamisen käyttäjiltä esimerkiksi lakisyistä.',
 	'hiderevision-prompt'         => 'Poistettava versionumero',
 	'hiderevision-continue'       => 'Jatka',
 	'hiderevision-text'           => "Tätä toimintoa tulisi käyttää '''vain''' seuraavissa tapauksissa:
@@ -471,7 +471,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-success'        => 'Arkistoitu ja poistettu onnistuneesti.',
 	'hiderevision-error-missing'  => 'Ei löydy tietokannasta.',
 	'hiderevision-error-current'  => 'Sivun viimeisintä muokkausta ei voi poistaa. Palauta muutos ensin.',
-	'hiderevision-error-delete'   => 'Ei voitu arkistoida; oliko se aiemmin poistettu?',
+	'hiderevision-error-delete'   => 'Arkistointi epäonnistui. Kenties se on jo aiemmin poistettu?',
 	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
 	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
 	'oversight-view'              => 'tiedot',
@@ -1409,8 +1409,8 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 $messages['no'] = array(
 	'hiderevision'                => 'Fjern revisjoner permanent',
 	'hiderevision-desc'           => 'Skjul enkeltrevisjoner fra alle brukere av juridiske grunner, etc.',
-	'group-oversight'             => 'Oversightare',
-	'group-oversight-member'      => 'Revjsonssletter',
+	'group-oversight'             => 'Revisjonsslettere',
+	'group-oversight-member'      => 'Revisjonssletter',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue'       => 'Fortsett',

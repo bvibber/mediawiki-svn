@@ -2053,12 +2053,15 @@ to date. $1 før æ enkriptet data.</p>",
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'boardvote'            => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
-	'boardvote-desc'       => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
-	'boardvote_entry'      => '* [[Special:Boardvote/vote|Coblos]]
+	'boardvote'              => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Coblos]]
 * [[Special:Boardvote/list|Daftar coblosan nganti saiki]]
 * [[Special:Boardvote/dump|Data pamilihan sing diènkripsi]]',
-	'boardvote_entered'    => 'Matur nuwun, pilihané panjenengan wis dicathet.
+	'boardvote_intro_change' => '<p>Panjenengan wis tau nyoblos. Senadyan mengkono, panjenengan bisa
+ngowahi pilihan panjenengan mawa formulir ing ngisor iki. Mangga dipriksa dhisik kothak
+ing sandhingé saben kandidat sing panjenengan pilih.</p>',
+	'boardvote_entered'      => 'Matur nuwun, pilihané panjenengan wis dicathet.
 
 Yèn kersa, panjenengan bisa nyathet détail sing kapacak ing ngisor iki. Cathetan swara panjenengan:
 
@@ -2073,23 +2076,23 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]',
-	'boardvote_novotes'    => 'Durung ana sing nyoblos.',
-	'boardvote_time'       => 'Wektu',
-	'boardvote_user'       => 'Panganggo',
-	'boardvote_edits'      => 'Suntingan',
-	'boardvote_days'       => 'Dina',
-	'boardvote_ip'         => 'IP',
-	'boardvote_ua'         => 'Agèn panganggo',
-	'boardvote_dumplink'   => 'Kliken ing kéné',
-	'boardvote_submit'     => 'OK',
-	'boardvote_strike'     => 'Corèt',
-	'boardvote_unstrike'   => 'Batalna corètan',
-	'boardvote_needadmin'  => 'Namung para pangurus pamilihan waé sing bisa ngalakoni operasi iki.',
-	'boardvote_notstarted' => 'Coblosané durung diwiwiti',
-	'boardvote_edits_many' => 'akèh',
-	'boardvote_blocked'    => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
-	'boardvote_welcome'    => "Sugeng rawuh '''$1'''!",
-	'go_to_board_vote'     => 'Pamilihan Déwan Wikimedia 2007',
+	'boardvote_novotes'      => 'Durung ana sing nyoblos.',
+	'boardvote_time'         => 'Wektu',
+	'boardvote_user'         => 'Panganggo',
+	'boardvote_edits'        => 'Suntingan',
+	'boardvote_days'         => 'Dina',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Agèn panganggo',
+	'boardvote_dumplink'     => 'Kliken ing kéné',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Corèt',
+	'boardvote_unstrike'     => 'Batalna corètan',
+	'boardvote_needadmin'    => 'Namung para pangurus pamilihan waé sing bisa ngalakoni operasi iki.',
+	'boardvote_notstarted'   => 'Coblosané durung diwiwiti',
+	'boardvote_edits_many'   => 'akèh',
+	'boardvote_blocked'      => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
+	'boardvote_welcome'      => "Sugeng rawuh '''$1'''!",
+	'go_to_board_vote'       => 'Pamilihan Déwan Wikimedia 2007',
 );
 
 /** Georgian (ქართული)

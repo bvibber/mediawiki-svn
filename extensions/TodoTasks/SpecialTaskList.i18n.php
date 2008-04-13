@@ -213,6 +213,8 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'tasklist'               => 'Lëscht vun den Aufgaben',
+	'tasklist-parser-desc'   => "setzt d'<nowiki>{{#todo:}}</nowiki> Parserfonctioun derbäi fir Aufgaben zouzedeelen",
+	'tasklist-special-desc'  => 'Setzt eng Spezialsäit derbäi mat nger Iwwersiicht vun den [[Special:TaskList|zugdeelten Aufgaben]]',
 	'tasklistbyproject'      => 'Lëscht vun den Aufgabe pro Projet',
 	'tasklistunknownproject' => 'Onbekannte Projet',
 	'tasklistunspecuser'     => 'Onbestemmte Benotzer',
@@ -220,10 +222,20 @@ $messages['lb'] = array(
 	'tasklistemail'          => 'Léiwe %s',
 	'tasklistemailsubject'   => '[%s] Ännerunge vun der Lëscht vun den Aufgaben',
 	'tasklistmytasks'        => 'Meng Aufgaben',
+	'tasklistbyprojectbad'   => "De Projet '''%s''' ass an dësem Kontext net disponibel.
+Fir eng Lëschtvun den disponibele Projeten, kuckt w.e.g. [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'     => "Aufgaben déi dem '''%s''' zougedeelt sinn.",
 	'tasklistchooseproj'     => 'Projet auswielen:',
 	'tasklistprojdisp'       => 'Weisen',
 	'tasklistbyname'         => '== Lëscht vun den Aufgabe fir %s ==',
+	'tasklistnoprojects'     => "FEELER: Et gesäit esou aus wéi wann Dir '''\$wgUseProjects''' ageschalt hätt, mee Dir hutt [[MediaWiki:TodoTasksValidProjects]] net erstalt. Kuckt [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installatiouns Instructiounen] fir méi Informatiounen.",
+	'tasklistemailbody'      => ',
+
+Iergend een huet Iech op %s eng Aufgab zougedeelt.
+
+Fir är komlett Aufgabelësch  ze gesinn, gitt w.e.g. op %s.
+
+Äre frëndleche  %s Informatiounssystem',
 );
 
 /** Marathi (मराठी)

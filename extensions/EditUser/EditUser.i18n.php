@@ -378,6 +378,7 @@ $messages['sv'] = array(
  * @author Herr Kriss
  */
 $messages['szl'] = array(
+	'edituser-username' => 'Mjano',
 	'edituser-dosearch' => 'Šnupej',
 );
 

@@ -970,6 +970,7 @@ $messages['sv'] = array(
 	'openidemail'          => 'E-postadress',
 	'openidlanguage'       => 'Språk',
 	'openidchoosepassword' => 'lösenord:',
+	'tog-hideopenid'       => 'Dölj <a href="http://openid.net/">OpenID</a> på din användarsida, om du loggar in med OpenID.',
 	'openidnousername'     => 'Inget användarnamn angivet.',
 	'openidbadusername'    => 'Ogiltigt användarnamn angivet.',
 );

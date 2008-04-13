@@ -492,6 +492,7 @@ $messages['sv'] = array(
  */
 $messages['szl'] = array(
 	'player-file'      => 'Mjano pliku',
+	'player-goto-page' => 'Zajta',
 	'player-goto-file' => 'plik',
 );
 

@@ -824,7 +824,13 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'imagemap_description' => 'Опис зображення',
+	'imagemap_desc'          => 'Дозволяє створювати на боці клієнта карти зображень, які спрацьовують при натисканні, за допомогою тегу <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'      => '&lt;imagemap&gt;: у першому рядку має бути задане зображення',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: неправильне або відсутнє зображення',
+	'imagemap_no_link'       => '&lt;imagemap&gt;: неправильне посилання в кінці рядка $1',
+	'imagemap_invalid_title' => '&lt;imagemap&gt;: неправильний заголовок посилання в рядку $1',
+	'imagemap_missing_coord' => '&lt;imagemap&gt;: недостатньо координат для фігури в рядку $1',
+	'imagemap_description'   => 'Опис зображення',
 );
 
 /** Vèneto (Vèneto)

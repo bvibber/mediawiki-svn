@@ -72,6 +72,19 @@ $messages['fr'] = array(
 	'restriction-level-author' => 'Auteur-protégé',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'authorprotect'            => "Ännere vun der Säit op d'Auteure limitéieren",
+	'authorprotect-desc'       => "Erlaabt dem Auteur vun enger Säit fir dës fir d'Verännerung dovun fir aner Benotzer ze spären",
+	'authorprotect-notauthor'  => 'Dir sidd net den Auteur vun dëser Säit',
+	'authorprotect-confirm'    => 'Protegéieren',
+	'authorprotect-reason'     => 'Grond',
+	'authorprotect-intro'      => "Benotzt dëse Formulaire fir d'änner vun dëser Säit op d'Auteuren ze limitéieren",
+	'restriction-level-author' => 'Auteur-protegéiert',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -108,6 +121,35 @@ $messages['nl'] = array(
 	'authorprotect-failure'    => 'Beveiligen niet geslaagd.',
 	'protect-level-author'     => 'Beveiligen voor niet-auteurs',
 	'restriction-level-author' => 'Alleen te bewerken door auteurs',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'authorprotect'            => 'Beskytt siden for andre enn forfatteren',
+	'authorprotect-desc'       => 'Lar forfatteren av en side beskytte den mot endringer fra andre brukere',
+	'authorprotect-notauthor'  => 'Du er ikke forfatteren av denne siden',
+	'authorprotect-confirm'    => 'Beskytt',
+	'authorprotect-edit'       => 'Begrens redigering til forfattere',
+	'authorprotect-move'       => 'Begrens flytting til forfattere',
+	'authorprotect-expiry'     => 'Varighet',
+	'authorprotect-reason'     => 'Årsak',
+	'authorprotect-intro'      => 'Bruk dette skjemaet for å låse denne siden for andre enn forfattere',
+	'authorprotect-success'    => 'Beskytting lyktes.',
+	'authorprotect-failure'    => 'Beskytting mislyktes',
+	'protect-level-author'     => 'Beskytt for andre enn forfattere',
+	'restriction-level-author' => 'Beskyttet for forfattere',
+);
+
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'authorprotect-notauthor' => 'Nie jesteś autorem tej strony',
+	'authorprotect-confirm'   => 'Zabezpiecz',
+	'authorprotect-reason'    => 'Powód',
+	'authorprotect-intro'     => 'Użyj tego formularza, by zabezpieczyć tę stronę przed edycją przez osoby, które nie są jej autorami',
 );
 
 /** Portuguese (Português)
@@ -165,6 +207,25 @@ $messages['sk'] = array(
 	'authorprotect-failure'    => 'Ochrana neprebehla úspešne',
 	'protect-level-author'     => 'Ochrániť pred neautorskými úpravami',
 	'restriction-level-author' => 'Len pre autorov',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'authorprotect'            => 'Beskyddar sidan för andra än författaren',
+	'authorprotect-desc'       => 'Låter författaren av en sida beskydda den från andra användare',
+	'authorprotect-notauthor'  => 'Du är inte författaren av denna sida',
+	'authorprotect-confirm'    => 'Beskydda',
+	'authorprotect-edit'       => 'Begränsar redigering till författare',
+	'authorprotect-move'       => 'Begränsar flyttning till författare',
+	'authorprotect-expiry'     => 'Varighet',
+	'authorprotect-reason'     => 'Anledning',
+	'authorprotect-intro'      => 'Använd detta formulär för att låsa denna för andra än författaren',
+	'authorprotect-success'    => 'Beskyddningen lyckades!',
+	'authorprotect-failure'    => 'Beskyddning misslyckades',
+	'protect-level-author'     => 'Beskydd för andra än författaren',
+	'restriction-level-author' => 'Beskyddad för författaren',
 );
 
 /** Vietnamese (Tiếng Việt)

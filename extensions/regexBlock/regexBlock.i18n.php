@@ -968,11 +968,12 @@ $messages['sv'] = array(
 	'regexblock-view-time'            => 'på $1',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
 	'regexblock-form-reason' => 'Čymu:',
+	'regexblock-form-expiry' => 'Wygaso:&#160;',
 );
 
 /** Tamil (தமிழ்)

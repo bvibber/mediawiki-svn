@@ -491,6 +491,14 @@ $messages['sv'] = array(
 	'dt_xml_freetext'             => 'Fritext',
 );
 
+/** Silesian (ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'dt_xml_page' => 'Zajta',
+	'dt_xml_name' => 'Mjano',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */

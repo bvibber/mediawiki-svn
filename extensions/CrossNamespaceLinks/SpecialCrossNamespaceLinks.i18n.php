@@ -218,8 +218,10 @@ $messages['he'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'crossnamespacelinks'     => 'आंतर-नामस्थान कड़ियां',
-	'crossnamespacelinkstext' => '$1: $3 को होनेवाली $2 {{PLURAL:$2|कड़ी|कड़ियां}}',
+	'crossnamespacelinks'         => 'आंतर-नामस्थान कड़ियां',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} पर जो नहीं होनी चाहिये ऐसी [[Special:CrossNamespaceLinks|नामस्थानांतर्गत कड़ीयोंकी सूची]]',
+	'crossnamespacelinks-summary' => 'यह पृष्ठ मुख्य नामस्थानके पन्नेपर दी हुई ऐसी कड़ीयोंकी सूची देता हैं जो कड़ीयाँ अन्य नामस्थानोंके पन्नोंको जोडती हैं ({{ns:special}}, {{ns:talk}}, {{ns:project}} और {{ns:template}} नामस्थान छोडकर), जिनका इस्तेमाल करना ठीक नहीं हैं।',
+	'crossnamespacelinkstext'     => '$1: $3 को होनेवाली $2 {{PLURAL:$2|कड़ी|कड़ियां}}',
 );
 
 /** Croatian (Hrvatski)

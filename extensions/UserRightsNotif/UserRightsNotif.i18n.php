@@ -223,9 +223,12 @@ $messages['lb'] = array(
 Heimat gitt Dir informéiert, datt äer Meberschaft am Grupp vun $2 vum $3 den $4 geännert gouf.
 
 Derbäigesat: $5
-Erausgeholl: $6\
+Erausgeholl: $6
 
-Mat beschte Gréiss,',
+Mat beschte Gréiss,
+
+$2',
+	'userrightsnotif-desc'    => 'Schéckt dem Benotzer eng Informatioun per E-mail wa seng Rechter änneren',
 );
 
 /** Dutch (Nederlands)
