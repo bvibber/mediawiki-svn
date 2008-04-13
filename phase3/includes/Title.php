@@ -44,9 +44,9 @@ class Title {
 	 * @private
 	 */
 
-	var $mTextform;           	# Text form (spaces not underscores) of the main part
+	var $mTextform;           	# UI form of the main part, fetched from the link cache on demand
 	var $mUrlform;            	# URL-encoded form of the main part
-	var $mDbkeyform;          	# Main part with underscores
+	var $mDbkeyform;          	# Main part DB key
 	var $mUserCaseDBKey;        # DB key with the initial letter in the case specified by the user
 	var $mNamespace;          	# Namespace index, i.e. one of the NS_xxxx constants
 	var $mInterwiki;          	# Interwiki prefix (or null string)
@@ -259,7 +259,7 @@ class Title {
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
 		$t->mArticleID = ( $ns >= 0 ) ? -1 : 0;
 		$t->mUrlform = wfUrlencode( $t->mDbkeyform );
-		$t->mTextform = str_replace( '_', ' ', $title );
+		#TOREMOVE: $t->mTextform = str_replace( '_', ' ', $title );
 		return $t;
 	}
 
@@ -545,17 +545,23 @@ class Title {
 
 	/** Simple accessors */
 	/**
-	 * Get the text form (spaces not underscores) of the main part
+	 * Get the ui form of the main part
 	 * @return string
 	 */
-	public function getText() { return $this->mTextform; }
+	public function getText() {
+		if( $this->mTextform == '' ) {
+			// TODO: Convert this temporary fallback into the real code
+			$this->mTextform = str_replace( '_', ' ', $t->mDbkeyform );
+		}
+		return $this->mTextform;
+	}
 	/**
 	 * Get the URL-encoded form of the main part
 	 * @return string
 	 */
 	public function getPartialURL() { return $this->mUrlform; }
 	/**
-	 * Get the main part with underscores
+	 * Get the main part DB key
 	 * @return string
 	 */
 	public function getDBkey() { return $this->mDbkeyform; }
@@ -649,13 +655,13 @@ class Title {
 	 * 	search index
 	 */
 	public function getIndexTitle() {
-		return Title::indexTitle( $this->mNamespace, $this->mTextform );
+		return Title::indexTitle( $this->mNamespace, $this->getText() );
 	}
 
 	/**
 	 * Get the prefixed database key form
-	 * @return string the prefixed title, with underscores and
-	 * 	any interwiki and namespace prefixes
+	 * @return string the prefixed title, with any interwiki
+	 * 	and namespace prefixes
 	 */
 	public function getPrefixedDBkey() {
 		$s = $this->prefix( $this->mDbkeyform );
@@ -666,12 +672,12 @@ class Title {
 	/**
 	 * Get the prefixed title with spaces.
 	 * This is the form usually used for display
-	 * @return string the prefixed title, with spaces
+	 * @return string the prefixed ui title
 	 */
 	public function getPrefixedText() {
 		if ( empty( $this->mPrefixedText ) ) { // FIXME: bad usage of empty() ?
-			$s = $this->prefix( $this->mTextform );
-			$s = str_replace( '_', ' ', $s );
+			$s = $this->prefix( $this->getText() );
+			#TOREMOVE: $s = str_replace( '_', ' ', $s );
 			$this->mPrefixedText = $s;
 		}
 		return $this->mPrefixedText;
@@ -715,10 +721,10 @@ class Title {
 	public function getSubpageText() {
 		global $wgNamespacesWithSubpages;
 		if( isset( $wgNamespacesWithSubpages[ $this->mNamespace ] ) && $wgNamespacesWithSubpages[ $this->mNamespace ] ) {
-			$parts = explode( '/', $this->mTextform );
+			$parts = explode( '/', $this->getText() );
 			return( $parts[ count( $parts ) - 1 ] );
 		} else {
-			return( $this->mTextform );
+			return( $this->getText() );
 		}
 	}
 
@@ -1179,7 +1185,7 @@ class Title {
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
 		if( $this->isCssJsSubpage()
 			&& !$user->isAllowed('editusercssjs')
-			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) ) {
+			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->getText()) ) {
 			$errors[] = array('customcssjsprotected');
 		}
 		
@@ -1505,7 +1511,7 @@ class Title {
 	 */
 	public function isCssOrJsPage() {
 		return $this->mNamespace == NS_MEDIAWIKI
-			&& preg_match( '!\.(?:css|js)$!u', $this->mTextform ) > 0;
+			&& preg_match( '!\.(?:css|js)$!u', $this->getText() ) > 0;
 	}
 
 	/**
@@ -1513,7 +1519,7 @@ class Title {
 	 * @return bool
 	 */
 	public function isCssJsSubpage() {
-		return ( NS_USER == $this->mNamespace and preg_match("/\\/.*\\.(?:css|js)$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace and preg_match("/\\/.*\\.(?:css|js)$/", $this->getText() ) );
 	}
 	/**
 	 * Is this a *valid* .css or .js subpage of a user page?
@@ -1531,7 +1537,7 @@ class Title {
 	 * Trim down a .css or .js subpage title to get the corresponding skin name
 	 */
 	public function getSkinFromCssJsSubpage() {
-		$subpage = explode( '/', $this->mTextform );
+		$subpage = explode( '/', $this->getText() );
 		$subpage = $subpage[ count( $subpage ) - 1 ];
 		return( str_replace( array( '.css', '.js' ), array( '', '' ), $subpage ) );
 	}
@@ -1540,14 +1546,14 @@ class Title {
 	 * @return bool
 	 */
 	public function isCssSubpage() {
-		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.css$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.css$/", $this->getText() ) );
 	}
 	/**
 	 * Is this a .js subpage of a user page?
 	 * @return bool
 	 */
 	public function isJsSubpage() {
-		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.js$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.js$/", $this->getText() ) );
 	}
 	/**
 	 * Protect css/js subpages of user pages: can $wgUser edit
@@ -1558,7 +1564,7 @@ class Title {
 	 */
 	public function userCanEditCssJsSubpage() {
 		global $wgUser;
-		return ( $wgUser->isAllowed('editusercssjs') || preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+		return ( $wgUser->isAllowed('editusercssjs') || preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->getText()) );
 	}
 
 	/**
@@ -2176,7 +2182,7 @@ class Title {
 		$this->mDbkeyform = $dbkey;
 		$this->mUrlform = wfUrlencode( $dbkey );
 
-		$this->mTextform = str_replace( '_', ' ', $dbkey );
+		#TOREMOVE: $this->mTextform = str_replace( '_', ' ', $dbkey );
 
 		return true;
 	}
