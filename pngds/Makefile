@@ -1,7 +1,7 @@
 CC		= cc
 CFLAGS		= -g -lz
 PROG		= pngds
-SRCS		= pngreader.c pngcmd.c pngresize.c
+SRCS		= pngreader.c pngcmd.c pngresize.c pngutil.c
 OBJS		= $(SRCS:.c=.o)
 
 all: pngreader pngresize

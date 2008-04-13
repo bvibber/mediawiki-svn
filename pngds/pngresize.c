@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "pngreader.h"
+#include "pngutil.h"
 #include "pngcmd.h"
 #include "pngresize.h"
 

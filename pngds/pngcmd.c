@@ -22,11 +22,13 @@ char** pngcmd_getopts(int argc, char **argv)
 			**(res + PNGOPT_STDIN) = 1;
 		else if (strcmp(*(argv + i), "--to-stdout") == 0)
 			**(res + PNGOPT_STDOUT) = 1;
+		else if (strncmp(*(argv + i), "--", 2) == 0)
+			pngcmd_die("unknown option
 	}
 	return res;
 }
 
-void pngcmd_die(char *msg)
+void pngcmd_die(char *msg, char *extra)
 {
 	char newline = '\n';
 	fwrite(msg, strlen(msg), 1, stderr);
