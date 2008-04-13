@@ -187,8 +187,12 @@ CREATE TABLE /*$wgDBprefix*/page (
   page_namespace int NOT NULL,
   
   -- The rest of the title, as text.
-  -- Spaces are transformed into underscores in title storage.
+  -- Database key form
   page_title varchar(255) binary NOT NULL,
+  
+  -- The rest of the title, as text.
+  -- User inteface form
+  page_title_ui varchar(255) binary NOT NULL,
   
   -- Comma-separated set of permission keys indicating who
   -- can move or edit the page.

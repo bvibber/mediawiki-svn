@@ -139,6 +139,8 @@ $wgMysqlUpdates = array(
 	array( 'do_category_population' ),
 	array( 'add_field', 'archive',       'ar_parent_id',     'patch-ar_parent_id.sql'),
 	array( 'do_populate_parent_id' ),
+	array( 'add_field', 'page',          'page_title_ui',    'patch-page_title_ui.sql'),
+	array( 'do_populate_page_title_ui' ),
 );
 
 
@@ -1161,6 +1163,19 @@ function do_populate_parent_id() {
 		return;
 	}
 	require_once( 'populateParentId.php' );
+}
+
+function do_populate_page_title_ui() {
+	global $wgDatabase;
+	if( update_row_exists( 'populate page_title_ui' ) ) {
+		echo "...page_title_ui column already populated.\n";
+		return;
+	}
+	$dontAutoRun = true;
+	require_once( 'populatePageTitleUi.php' );
+	populate_page_title_ui( $wgDatabase, array(
+		'override' => 0
+	) );
 }
 
 function
