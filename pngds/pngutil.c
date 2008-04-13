@@ -4,6 +4,7 @@
 
 #include "zlib.h"
 #include "pngutil.h"
+#include "pngcmd.h"
 
 void png_die(char *msg, void *data)
 {
@@ -41,5 +42,23 @@ unsigned int png_fread(void *ptr, unsigned int size,
 		*crc = crc32(*crc, ptr, size);
 #endif
 	return size;
+}
+
+void png_open_streams(char **opts, FILE **in, FILE **out)
+{
+	if (!*(opts[PNGOPT_STDIN]) && opts[PNGOPT_IN] == NULL)
+		pngcmd_die("input unspecified", NULL);
+	if (!*(opts[PNGOPT_STDOUT]) && opts[PNGOPT_OUT] == NULL)
+		pngcmd_die("output unspecified", NULL);
+	
+	if (*(opts[PNGOPT_STDIN]))
+		*in = stdin;
+	else
+		*in = fopen(opts[PNGOPT_IN], "rb");
+	
+	if (*(opts[PNGOPT_STDOUT]))
+		*out = stdout;
+	else
+		*out = fopen(opts[PNGOPT_OUT], "wb");
 }
 

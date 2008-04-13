@@ -21,6 +21,10 @@ void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcal
 	info.height = height;
 	info.line_count = 0;
 	
+	if (width == 0 && height == 0)
+		png_die("unspecified_dimensions", NULL);
+
+	
 	if (callbacks == NULL)
 	{
 		callbacks = malloc(sizeof(callbacks));
@@ -37,6 +41,9 @@ void png_resize_init(void *info_)
 	pngreader *info = (pngreader*)info_;
 	pngresize *rinfo = (pngresize*)info->extra1;
 	
+	if (info->header->colortype == COLOR_PALETTE)
+		png_die("palette_resizing_unsupported", NULL);
+	
 	if (rinfo->width != 0 && rinfo->height != 0)
 	{
 		rinfo->fx = (float)info->header->width / (float)rinfo->width;
@@ -44,16 +51,14 @@ void png_resize_init(void *info_)
 	}		
 	else if (rinfo->width != 0)
 	{
-		rinfo->fx = rinfo->fy = (float)rinfo->width / (float)info->header->width;
-		rinfo->height = (u_int32_t)(rinfo->fy * info->header->height);
+		rinfo->fx = rinfo->fy = (float)info->header->width / (float)rinfo->width;
+		rinfo->height = (u_int32_t)(info->header->height / rinfo->fy);
 	}
 	else if (rinfo->height != 0)
 	{
-		rinfo->fx = rinfo->fy = (float)rinfo->height / (float)info->header->height;
-		rinfo->width = (u_int32_t)(rinfo->fx * info->header->width);
+		rinfo->fx = rinfo->fy = (float)info->header->height / (float)rinfo->height;
+		rinfo->width = (u_int32_t)(info->header->width / rinfo->fy);
 	}
-	else
-		png_die("unspecified_dimensions", NULL);
 	
 	if (rinfo->fx < 1.0 || rinfo->fy < 1.0)
 		png_die("upscaling_unsupported", NULL);
@@ -71,7 +76,6 @@ void png_resize_init(void *info_)
 	rinfo->written_lines = 0;
 	rinfo->last_line = calloc(rinfo->width * info->bpp * sizeof(char), 1);
 	
-	fprintf(stderr, "fx: %f; fy: %f\n", (double)rinfo->fx, (double)rinfo->fy);
 }
 
 void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, 
@@ -106,7 +110,6 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 	
 	if ((info->line_count / rinfo->fy) > (rinfo->written_lines + 1))
 	{
-		fprintf(stderr, "writing %i lines\n", rinfo->line_count);
 		unsigned char scanline[rinfo->width * info->bpp];
 		memset(scanline, 0, rinfo->width * info->bpp);
 		for (i = 0; i < rinfo->width * info->bpp; i++)
@@ -123,31 +126,27 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 	
 void png_resize_done(void *info_)
 {
-	fprintf(stderr, "cleaning up\n");
 	pngreader *info = (pngreader*)info_;
 	pngresize *rinfo = (pngresize*)info->extra1;
 	
 	while (rinfo->written_lines < rinfo->height)
 	{
-		fprintf(stderr, "writing another line\n");
 		png_write_scanline(rinfo->last_line, rinfo->last_line, rinfo->width * info->bpp, info);
 		rinfo->written_lines++;
 	}
-	fprintf(stderr, "done\n");
 }
 
 #ifdef PNGRESIZE
 int main(int argc, char **argv)
 {
 	char **opts = pngcmd_getopts(argc, argv);
-	if (!*(opts[PNGOPT_STDIN]))
-		pngcmd_die("input unspecified");
-	if (!*(opts[PNGOPT_STDOUT]))
-		pngcmd_die("output unspecified");
+	FILE *in, *out;
+	png_open_streams(opts, &in, &out);
 	
-	png_resize(stdin, stdout, 80, 80, NULL);
+	png_resize(in, out, *((u_int32_t*)opts[PNGOPT_WIDTH]), 
+		*((u_int32_t*)opts[PNGOPT_HEIGHT]), NULL);
 	
-	fclose(stdout);
+	fclose(in); fclose(out);
 	
 	return 0;
 }

@@ -132,8 +132,7 @@ void png_read_header(pngreader *info, u_int32_t length)
 	}
 	
 	info->expect_filter = 1;
-	info->previous_scanline = malloc(info->header->width * info->bpp);
-	memset(info->previous_scanline, 0, info->header->width * info->bpp);
+	info->previous_scanline = calloc(info->header->width * info->bpp, 1);
 	info->current_scanline = malloc(info->header->width * info->bpp);
 	info->line_count = 0;
 	
@@ -328,14 +327,12 @@ void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanlin
 int main(int argc, char **argv)
 {
 	char **opts = pngcmd_getopts(argc, argv);
-	if (!*(opts[PNGOPT_STDIN]))
-		pngcmd_die("input unspecified");
-	if (!*(opts[PNGOPT_STDOUT]))
-		pngcmd_die("output unspecified");
+	FILE *in, *out;
+	png_open_streams(opts, &in, &out);
 	
-	png_read(stdin, stdout, NULL, NULL);
+	png_read(in, out, NULL, NULL);
 	
-	fclose(stdout);
+	fclose(in); fclose(out);
 	
 	return 0;
 }
