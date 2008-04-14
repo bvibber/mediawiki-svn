@@ -225,7 +225,7 @@ class WhitelistEdit extends SpecialPage
                 self::DisplayWildCardMatches($pagename,
                                     wfMsg('whitelistoverviewna',
                                           $pagename,
-                                          ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
+                                          ($newAction == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
                                           ($expiryDate == '') ? wfMsg('whitelistnever') : $expiryDate
                                          ),
                                          -1
@@ -245,7 +245,7 @@ class WhitelistEdit extends SpecialPage
                     else
                         $wgOut->addWikiText(wfMsg('whitelistoverviewna',
                                                 $redirecttitle->getPrefixedText(),
-                                                ($action == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
+                                                ($newAction == 'SetEdit') ? wfMsg('whitelisttablesetedit') : wfMsg('whitelisttablesetview'),
                                                 $expiryDate
                                                 )
                                            );
@@ -287,7 +287,7 @@ class WhitelistEdit extends SpecialPage
 
     function DisplayContractorEditDetails($contractorId)
     {
-        global $wgOut, $wgUser;
+        global $wgOut, $wgUser, $wgWhitelistUsePrettyCalendar;
         $dbr = wfGetDB( DB_SLAVE );
 
         $wgOut->addScript(<<<END
@@ -310,11 +310,14 @@ dml.elements[i].checked=val;
 </script>
 END
 );
-        SpecialUserStats::AddCalendarJavascript();
+        if ($wgWhitelistUsePrettyCalendar)
+        {
+            SpecialUserStats::AddCalendarJavascript();
+            $wgOut->addScript("<script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>");
+        }
 
         ob_start();
 print  <<<END
-<script type='text/javascript'>document.write(getCalendarStyles());</SCRIPT>
 <form name="mainform" method="post">
   <input type="hidden" name="contractor" value="$contractorId">
   <table cellpadding=0 cellspacing=10 border=0>
@@ -370,14 +373,22 @@ print  <<<END
     </tr>
     <tr>
       <td>
-        <script type='text/javascript'>
-          var cal1 = new CalendarPopup('testdiv1');
-          cal1.showNavigationDropdowns();
-        </SCRIPT>
-        <A HREF='#' onClick="cal1.select(document.forms[0].NewExpiryDate,'anchor1','MM/dd/yyyy'); return false;" NAME='anchor1' ID='anchor1'>
 END;
         $wgOut->addHTML(ob_get_contents());
         ob_clean();
+        
+        if ($wgWhitelistUsePrettyCalendar)
+        {
+print  <<<END
+            <script type='text/javascript'>
+              var cal1 = new CalendarPopup('testdiv1');
+              cal1.showNavigationDropdowns();
+            </SCRIPT>
+            <A HREF='#' onClick="cal1.select(document.forms[0].NewExpiryDate,'anchor1','MM/dd/yyyy'); return false;" NAME='anchor1' ID='anchor1'>
+END;
+            $wgOut->addHTML(ob_get_contents());
+            ob_clean();
+        }
 
         $wgOut->addHtml(wfMsg('whitelisttablenewdate') .
                         "</A> <input type='text' size='10'  name='NewExpiryDate'/><input type='radio' name='action' value='ChangeDate'>" .
@@ -398,14 +409,22 @@ print  <<<END
           </tr>
           <tr>
             <td>
+END;
+        $wgOut->addHTML(ob_get_contents());
+        ob_clean();
+        
+        if ($wgWhitelistUsePrettyCalendar)
+        {
+print  <<<END
                 <script type='text/javascript'>
                 var cal1 = new CalendarPopup('testdiv2');
                 cal1.showNavigationDropdowns();
                 </SCRIPT>
                 <A HREF='#' onClick="cal1.select(document.forms[0].ExpiryDate,'anchor2','MM/dd/yyyy'); return false;" NAME='anchor2' ID='anchor2'>
 END;
-        $wgOut->addHTML(ob_get_contents());
-        ob_clean();
+            $wgOut->addHTML(ob_get_contents());
+            ob_clean();
+        }
 
         $wgOut->addHtml(wfMsg('whitelistnewtabledate') .
                         "</A><input type='text' size='10'  name='ExpiryDate'/> <input type='radio' name='newAction' value='SetEdit'>" .
@@ -420,14 +439,16 @@ END;
     }
 
     function DisplayContractorSelectForm() {
-        global $wgOut, $wgWhiteListRestrictedGroup;
+        global $wgOut, $wgWhiteListRestrictedGroup, $wgWhitelistUsePrettyCalendar;
         $dbr = wfGetDB( DB_SLAVE );
 
         $wgOut->addWikiText(wfMsg('whitelistselectrestricted'));
 
-        $required = new SpecialUserStats();
-        if (!method_exists($required, 'AddCalendarJavascript'))
-            $wgOut->addWikiText(wfMsg('whitelistnocalendar'));
+        if ($wgWhitelistUsePrettyCalendar)
+        {
+            if (!class_exists("SpecialUserStats"))
+                $wgOut->addWikiText(wfMsg('whitelistnocalendar'));
+        }
 
         $wgOut->addHTML("<form method=\"post\">");
         $wgOut->addHTML('<select name="contractor">');

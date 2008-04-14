@@ -31,7 +31,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'WhiteListEdit',
-	'version'        => 'v0.8.5',
+	'version'        => 'v0.8.6',
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'description'    => 'Edit the access permissions of restricted users',
@@ -86,9 +86,12 @@ if( !isset($wgWhitelistWildCardInsensitive) )
 if( !isset($wgWhitelistAllowUserPages) )
 	$wgWhitelistAllowUserPages = true;
 
-# This extension requires the Extension:Usage_Statistics
+# If you want the pretty calendar feature, you must install the Extension:Usage_Statistics.
+# If you do not want that feature, then set the following variable to false.
 # NOTE: you don't actually need the gnuplot extension for the functinoality needed by this extension
-#require_once('SpecialUserStats.php');
+if( !isset($wgWhitelistUsePrettyCalendar) )
+        $wgWhitelistUsePrettyCalendar = true;
+
 
 $dir = dirname(__FILE__) . '/';
 

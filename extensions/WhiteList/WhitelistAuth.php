@@ -246,6 +246,7 @@ class WhitelistExec
 		/* Convert regex to PHP format */
 		$php_regex = str_replace('%', '.*', $sql_regex);
                 $php_regex = str_replace('_', ' ', $php_regex);
+		$php_regex = ltrim($php_regex, ":");
 
 		/* Generate regex; use | as delimiter as it is an illegal title character. */
 		$php_regex_full = '|' . $php_regex . '|';
