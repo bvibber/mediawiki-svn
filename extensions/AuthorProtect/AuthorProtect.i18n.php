@@ -63,6 +63,20 @@ $messages['de'] = array(
 	'restriction-level-author' => 'Autor-geschützt',
 );
 
+ /** Persian (فارسی)
+ * @author Mardetanha
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'authorprotect-desc'      => 'به نویسنده اجازه بده تا صفحه را در مقابل سایر کاربرها محافظت کند',
+	'authorprotect-notauthor' => 'شما نویسندهٔ این صفحه نیستید',
+	'authorprotect-confirm'   => 'حفاظت',
+	'authorprotect-expiry'    => 'زمان انقضا',
+	'authorprotect-reason'    => 'دلیل',
+	'authorprotect-success'   => 'محافظت موفقیت‌آمیز بود!',
+	'authorprotect-failure'   => 'محافظت موفقیت‌آمیز نبود!',
+);
+
 /** French (Français)
  * @author Grondin
  */

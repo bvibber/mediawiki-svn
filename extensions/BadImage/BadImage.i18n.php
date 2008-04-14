@@ -358,6 +358,21 @@ $messages['ext'] = array(
 	'badimages-remove-btn' => 'Esborral',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'badimages-add-btn'      => 'افزودن',
+	'badimages-name'         => 'نام:',
+	'badimages-not-added'    => 'افزودن تصویر ممکن‌نشد.',
+	'badimages-not-removed'  => 'حذف تصویر ممکن‌نشد.',
+	'badimages-reason'       => 'دلیل:',
+	'badimages-remove'       => '(حذف)',
+	'badimages-remove-btn'   => 'حذف',
+	'badimages-unprivileged' => 'شما دسترسی کافی برای تغییر فهرست ندارید',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Cimon Avaro

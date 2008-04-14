@@ -161,6 +161,15 @@ $messages['ext'] = array(
 	'ajax-se-idling' => '(hazi $1s)',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'ajax-se-title'            => 'در حال ویرایش:',
+	'ajax-se-pagedoesnotexist' => 'صفحه وجود ندارد',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Cimon Avaro
