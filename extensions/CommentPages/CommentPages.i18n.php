@@ -37,6 +37,14 @@ $messages['cs'] = array(
 	'nstab-comments'    => 'Komentář',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'commentpages-desc'    => 'Kommentieren von Seiten im Haupt-Namensraum',
+	'nstab-comments'       => 'Kommentar',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
