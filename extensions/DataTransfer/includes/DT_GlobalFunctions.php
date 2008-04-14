@@ -7,34 +7,39 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.1.4');
+define('DT_VERSION','0.1.5');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
 define('DT_SP_IS_EXCLUDED_FROM_XML', 2);
 
 $wgExtensionFunctions[] = 'dtgSetupExtension';
-$wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
+
+$dtgIP = $IP . '/extensions/DataTransfer';
+require_once($dtgIP . '/languages/DT_Language.php');
+
+if (version_compare($wgVersion, '1.11', '>=' )) {
+	$wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
+} else {
+	$wgExtensionFunctions[] = 'dtfLoadMessagesManually';
+}
 
 /**
  *  Do the actual intialisation of the extension. This is just a delayed init that makes sure
  *  MediaWiki is set up properly before we add our stuff.
  */
 function dtgSetupExtension() {
-	global $dtgVersion, $dtgNamespace, $dtgIP;
-	global $wgLanguageCode, $wgHooks, $wgExtensionCredits, $wgArticlePath, $wgScriptPath, $wgServer;
+	global $dtgIP, $dtgVersion, $dtgNamespace;
+	global $wgVersion, $wgLanguageCode, $wgExtensionCredits;
 
-	global $IP;
-	$dtgIP = $IP . '/extensions/DataTransfer';
-	require_once($dtgIP . '/languages/DT_Language.php');
+	if (version_compare($wgVersion, '1.11', '>='))
+		wfLoadExtensionMessages('DataTransfer');
 
-	dtfInitMessages();
 	dtfInitContentLanguage($wgLanguageCode);
 
 	/**********************************************/
 	/***** register specials                  *****/
 	/**********************************************/
-
 	require_once($dtgIP . '/specials/DT_ViewXML.php');
 
 	/**********************************************/
@@ -116,23 +121,8 @@ function dtfInitUserLanguage($langcode) {
 }
 
 /**
- * Initialize messages - these settings must be applied later on, since
- * the MessageCache does not exist yet when the settings are loaded in
- * LocalSettings.php.
- * Function based on version in ContributionScores extension
- */
-function dtfInitMessages() {
-	global $wgVersion, $wgExtensionFunctions;
-	if (version_compare($wgVersion, '1.11', '>=' )) {
-		wfLoadExtensionMessages('DataTransfer');
-	} else {
-		$wgExtensionFunctions[] = 'dtfLoadMessagesManually';
-	}
-}
-
-/**
  * Setting of message cache for versions of MediaWiki that do not support
- * wgExtensionFunctions
+ * wgExtensionMessagesFiles
  */
 function dtfLoadMessagesManually() {
 	global $dtgIP, $wgMessageCache;
