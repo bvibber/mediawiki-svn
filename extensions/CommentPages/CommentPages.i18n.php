@@ -150,6 +150,14 @@ $messages['pt'] = array(
 	'nstab-comments'    => 'Comentário',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'commentpages-desc' => "Uma suti k'itipaq rimapuna p'anqakuna",
+	'nstab-comments'    => 'Rimapuna',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

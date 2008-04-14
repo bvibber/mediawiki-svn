@@ -357,6 +357,13 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d
 	'spamdifftool_submit_buttom'    => 'Sometre',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'spamdifftool_submit_buttom' => 'Wyślij',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

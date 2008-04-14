@@ -472,6 +472,13 @@ $messages['oc'] = array(
 	'povwatch_added'                   => 'ajustat',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'povwatch_title' => 'Tytuł:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

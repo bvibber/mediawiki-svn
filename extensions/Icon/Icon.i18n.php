@@ -170,6 +170,14 @@ $messages['oc'] = array(
 	'icon-desc'     => 'Vos autoriaz l’utilizacion dels imatges coma icònas o de ligams jos forma d’icònas',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'icon-badimage' => 'Zły obrazek',
+	'icon-badwidth' => 'Zła szerokość',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -476,10 +476,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'player'               => 'Spelare',
+	'player-desc'          => 'Inkludera multimediaspelare med vanliga programtillägg för webbläsare och en [[Special:Player|specialsida]]',
 	'player-title'         => 'Spelare',
 	'player-playertitle'   => 'Spelare: $1',
 	'player-file'          => 'Filnamn',
 	'player-play'          => 'Spela',
+	'player-not-allowed'   => 'ej tillåtet format',
+	'player-not-found'     => 'filen hittades inte',
 	'player-invalid-title' => 'ogiltig titel',
 	'player-clicktoplay'   => 'Spela $1',
 	'player-goto-player'   => 'spelare',

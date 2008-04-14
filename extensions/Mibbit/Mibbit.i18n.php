@@ -162,6 +162,18 @@ Om du er logget inn vil kallenavnet ditt være fylt inn allerede.
 Uregistrerte brukere får et automatisk laget kallenavn, men det kan endres.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'mibbit'        => 'Czat Mibbit',
+	'mibbit-desc'   => 'Dodaje [[Special:Mibbit|stronę specjalną]] służącą do czatowania z innymi użytkownikami w czasie rzeczywistym',
+	'mibbit-header' => 'Ta strona specjalna pozwala na współpracę z innymi użytkownikami tej wiki w czasie rzeczywistym.
+Żeby się podłączyć po prostu kliknij przycisk „Connect”.
+Jeżeli jesteś zalogowany, Twoja nazwa użytkownika zostanie wpisana jako nazwa domyślna.
+Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

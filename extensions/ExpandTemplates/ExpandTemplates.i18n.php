@@ -827,15 +827,15 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'expandtemplates'                  => 'Rozwijanie szablonów',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Rozwija szablony, funkcje analizatora składni oraz zmienne]] by pokazać rozwiniętą składnię wiki oraz podgląd zinterpretowanej strony',
-	'expand_templates_intro'           => 'Ta strona specjalna pobiera tekst i rozwija w nim rekursywnie wszystkie szablony. Rozwija także [[Wikipedia:Funkcje parsera|funkcje parsera]] takie jak <nowiki>{{</nowiki>#if...}} i zmienne jak <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych. Robi się to przez wezwanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
-	'expand_templates_title'           => 'Tytuł kontekstu, dla komunikatów typu {{PAGENAME}} itp.:',
-	'expand_templates_input'           => 'Tekst wejściowy:',
+	'expand_templates_intro'           => 'Ta strona specjalna pobiera tekst i rozwija w nim rekursywnie wszystkie szablony. Rozwija także [[Wikipedia:Funkcje parsera|funkcje parsera]] takie jak <nowiki>{{</nowiki>#if...}} i zmienne jak <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych. Wykonywane jest to poprzez wywołanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
+	'expand_templates_title'           => 'Tytuł kontekstu, dla komunikatów typu {{PAGENAME}} itp.',
+	'expand_templates_input'           => 'Tekst wejściowy',
 	'expand_templates_output'          => 'Rezultat',
 	'expand_templates_xml_output'      => 'wynik w formacie XML',
 	'expand_templates_ok'              => 'OK',

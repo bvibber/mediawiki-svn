@@ -91,6 +91,13 @@ $messages['oc'] = array(
 	'editown-desc' => "Los utilizaires privats del drech de modificar las paginas pòdon pas editar sonque las qu'an creadas",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editown-desc' => 'Użytkownicy bez uprawnienia do edycji wszystkich stron mogą edytować tylko te strony, które sami utworzyli',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

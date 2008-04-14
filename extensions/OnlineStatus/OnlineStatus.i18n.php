@@ -20,6 +20,19 @@ $messages['en'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'onlinestatus-subtitle-offline' => 'Actualment aquest usuari no està connectat',
+	'onlinestatus-subtitle-online'  => 'Actualment aquest usuari està connectat',
+	'onlinestatus-toggles-desc'     => 'El vostre estat:',
+	'onlinestatus-toggles-explain'  => "Us permet mostrar a la resta d'usuaris si us trobeu connectats al wiki.",
+	'onlinestatus-toggles-show'     => "Mostra l'estat de connexió a la pàgina d'usuari",
+	'onlinestatus-toggle-offline'   => 'Desconnectat',
+	'onlinestatus-toggle-online'    => 'Connectat',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

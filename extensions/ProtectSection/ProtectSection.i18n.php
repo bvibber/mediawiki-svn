@@ -149,6 +149,15 @@ $messages['oc'] = array(
 	'protectsection_forbidden'  => 'Interdich',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'protectsection_add_remove' => 'Próbujesz dodać lub usunąć zabezpieczoną sekcję',
+	'protectsection_modify'     => 'Próbujesz zmienić zabezpieczony tekst',
+	'protectsection_forbidden'  => 'Zabezpieczony',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso

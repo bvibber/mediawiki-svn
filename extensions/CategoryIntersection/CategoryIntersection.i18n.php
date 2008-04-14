@@ -212,6 +212,13 @@ $messages['pl'] = array(
 	'categoryintersection-results'       => 'Wyszukiwanie zwróciło $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categoryintersection-doit' => 'په همدغو ټولو وېشنيزو کې د مخونو لړليک راښکاره کوي',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

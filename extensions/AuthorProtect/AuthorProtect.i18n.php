@@ -34,6 +34,16 @@ $messages['ar'] = array(
 	'authorprotect-reason'  => 'السبب',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'authorprotect-desc'    => 'Позволява на автора на страница да я защити от другите потребители',
+	'authorprotect-reason'  => 'Причина',
+	'authorprotect-success' => 'Защитата беше успешна!',
+	'authorprotect-failure' => 'Защитата беше неуспешна',
+);
+
 /**  German (Deutsch)
  * @author Raimond Spekking
  */
@@ -72,6 +82,25 @@ $messages['fr'] = array(
 	'restriction-level-author' => 'Auteur-protégé',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'authorprotect'            => 'Protexer a páxina fronte á edición dos que non son os seus autores',
+	'authorprotect-desc'       => 'Permítelle ao autor dunha páxina que a protexa fronte á edición doutros usuarios',
+	'authorprotect-notauthor'  => 'Non é o autor desta páxina',
+	'authorprotect-confirm'    => 'Protexer',
+	'authorprotect-edit'       => 'Restrinxir o editado aos autores',
+	'authorprotect-move'       => 'Restrinxir o movemento aos usuarios',
+	'authorprotect-expiry'     => 'Data de expiración',
+	'authorprotect-reason'     => 'Motivo',
+	'authorprotect-intro'      => 'Use isto para protexer esta páxina fronte á edición dos que non son os seus autores',
+	'authorprotect-success'    => 'A protección foi un éxito!',
+	'authorprotect-failure'    => 'A protección non se puido levar a cabo',
+	'protect-level-author'     => 'Protexer fronte á edición dos que non son os seus autores',
+	'restriction-level-author' => 'Protexido polo autor',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -80,6 +109,8 @@ $messages['lb'] = array(
 	'authorprotect-desc'       => "Erlaabt dem Auteur vun enger Säit fir dës fir d'Verännerung dovun fir aner Benotzer ze spären",
 	'authorprotect-notauthor'  => 'Dir sidd net den Auteur vun dëser Säit',
 	'authorprotect-confirm'    => 'Protegéieren',
+	'authorprotect-edit'       => 'Ännerungen nëmmen fir Auteure méiglech maachen',
+	'authorprotect-move'       => 'Récklen nëmme fir Auteure méiglech maachen',
 	'authorprotect-reason'     => 'Grond',
 	'authorprotect-intro'      => "Benotzt dëse Formulaire fir d'änner vun dëser Säit op d'Auteuren ze limitéieren",
 	'restriction-level-author' => 'Auteur-protegéiert',
@@ -143,13 +174,23 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'authorprotect-notauthor' => 'Nie jesteś autorem tej strony',
-	'authorprotect-confirm'   => 'Zabezpiecz',
-	'authorprotect-reason'    => 'Powód',
-	'authorprotect-intro'     => 'Użyj tego formularza, by zabezpieczyć tę stronę przed edycją przez osoby, które nie są jej autorami',
+	'authorprotect'            => 'Zabezpiecz stronę przed wszystkimi poza autorami',
+	'authorprotect-desc'       => 'Autor strony może ją zabezpieczyć przed innymi użytkownikami',
+	'authorprotect-notauthor'  => 'Nie jesteś autorem tej strony',
+	'authorprotect-confirm'    => 'Zabezpiecz',
+	'authorprotect-edit'       => 'Ogranicz możliwość edycji do autorów',
+	'authorprotect-move'       => 'Ogranicz możliwość przenoszenia do autorów',
+	'authorprotect-expiry'     => 'Upływa',
+	'authorprotect-reason'     => 'Powód',
+	'authorprotect-intro'      => 'Użyj tego formularza, by zabezpieczyć tę stronę przed edycją przez osoby, które nie są jej autorami',
+	'authorprotect-success'    => 'Zabezpieczono!',
+	'authorprotect-failure'    => 'Zabezpieczenie nie powiodło się',
+	'protect-level-author'     => 'Zabezpieczenie przed wszystkimi poza autorami',
+	'restriction-level-author' => 'Tylko autorzy',
 );
 
 /** Portuguese (Português)

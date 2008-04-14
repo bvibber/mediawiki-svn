@@ -376,6 +376,15 @@ $messages['pt'] = array(
 	'block_title_error'            => 'Desculpe-nos, não é permitido salvar dados neste título de página.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'block_title_error_page_title' => "Hark'asqa p'anqa suti",
+	'block_title_error-desc'       => "Kaypiqa rikunki ima hinam huk p'anqa sutikuna ama waqaychasqachu ama kamarisqachu kanqa",
+	'block_title_error'            => "Achachaw, manam saqillasunkichu kay p'anqa sutita waqaychayta.",
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

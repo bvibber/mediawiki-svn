@@ -93,6 +93,13 @@ $messages['oc'] = array(
 	'i18ntags-desc' => 'Permet l’accès de las foncions i18n pel format dels nombres, la gramatica e lo plural dins cada lenga disponibla.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'i18ntags-desc' => 'Dostęp do funkcji i18n formatowania liczb, grammar i plural we wszystkich dostępnych językach',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

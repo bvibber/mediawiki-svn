@@ -824,13 +824,17 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'imagemap_desc'          => 'Дозволяє створювати на боці клієнта карти зображень, які спрацьовують при натисканні, за допомогою тегу <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image'      => '&lt;imagemap&gt;: у першому рядку має бути задане зображення',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: неправильне або відсутнє зображення',
-	'imagemap_no_link'       => '&lt;imagemap&gt;: неправильне посилання в кінці рядка $1',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: неправильний заголовок посилання в рядку $1',
-	'imagemap_missing_coord' => '&lt;imagemap&gt;: недостатньо координат для фігури в рядку $1',
-	'imagemap_description'   => 'Опис зображення',
+	'imagemap_desc'               => 'Дозволяє створювати на боці клієнта карти зображень, які спрацьовують при натисканні, за допомогою тегу <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: у першому рядку має бути задане зображення',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: неправильне або відсутнє зображення',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: неправильне посилання в кінці рядка $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: неправильний заголовок посилання в рядку $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: недостатньо координат для фігури в рядку $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: нерозпізнана фігура в рядку $1, кожен рядок повинен починатися з одного з ключових слів: default, rect, circle або poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: повинна бути зазначена принаймні одна область',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: помилкова координата в рядку $1, має бути число',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: помилкове значення desc, має бути одне з наступних значень: <tt>$1</tt>',
+	'imagemap_description'        => 'Опис зображення',
 );
 
 /** Vèneto (Vèneto)

@@ -77,11 +77,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'filelist'              => 'Listaxe de arquivos',
 	'filelist-desc'         => 'Páxina especial para listar ficheiros cargados',
-	'filelist-show-list'    => 'Amosar listaxe',
+	'filelist-show-list'    => 'Amosar a listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
 );
 

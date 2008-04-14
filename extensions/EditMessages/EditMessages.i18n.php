@@ -305,7 +305,22 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'editmsg-new-search' => 'Nowe wyszukiwanie',
+	'editmsg-search'        => 'Szukaj',
+	'editmsg-new-search'    => 'Nowe wyszukiwanie',
+	'editmsg-apply-patch'   => 'Zastosuj poprawkę',
+	'editmsg-no-patch'      => 'Nie można uruchomić polecenia „patch”',
+	'editmsg-patch-failed'  => 'Wprowadzanie poprawki zakończyło się błędem $1',
+	'editmsg-patch-success' => 'Poprawka została wprowadzona.',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'editmessages-desc'  => '[[{{ns:special}}:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
+	'editmessages'       => 'Editar mensagens',
+	'editmsg-search'     => 'Pesquisar',
+	'editmsg-new-search' => 'Nova pesquisa',
 );
 
 /** Russian (Русский)

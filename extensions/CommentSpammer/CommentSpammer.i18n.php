@@ -218,11 +218,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
- * @author Siebrand
  * @author Sp5uhe
+ * @author Siebrand
  */
 $messages['pl'] = array(
-	'commentspammer-save-blocked' => 'Twój adres IP jest podejrzewany o bycie spammerem - zapisywanie stron jest zablokowane. Utwórz konto, aby uniknąć tego komunikatu.',
+	'commentspammer-save-blocked' => 'Twój adres IP jest podejrzewany o spamowanie – zapisywanie stron jest zablokowane.
+[[Special:Userlogin|Zaloguj się lub utwórz konto]], aby uniknąć tego komunikatu.',
 	'commentspammer-desc'         => 'Odrzuca podejrzane edycje komentarzy robione przez spamerów na podstawie listy zabronionych nazw DNS',
 	'commentspammer-log-msg'      => 'edycja [[Special:Contributions/$1|$1]] w [[:$2]].',
 	'commentspammer-log-msg-info' => 'Ostatni spam $1 {{PLURAL:$1|dzień|dni}} temu, poziom zagrożenia $2, kod naruszenia $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Zobacz szczegóły] lub [[Special:Blockip/$4|zablokuj]].',

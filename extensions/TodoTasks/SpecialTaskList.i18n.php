@@ -362,7 +362,7 @@ Ktoś przydzielił Ci nowe zadanie w %s.
 
 By zobaczyć kompletną listę zadań, przejdź do strony %s.
 
-%s - automatyczny system informowania.',
+%s – automatyczny system informowania.',
 );
 
 /** Pashto (پښتو)

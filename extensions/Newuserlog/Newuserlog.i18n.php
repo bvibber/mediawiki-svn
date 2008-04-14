@@ -367,7 +367,7 @@ $messages['gl'] = array(
 	'newuserlog-desc'          => 'Engada un [[Special:Log/newusers|rexistro de creación de contas]] a [[Special:Log]]',
 	'newuserlog-byemail'       => 'contrasinal enviado por correo electrónico',
 	'newuserlog-create-entry'  => 'Novo usuario',
-	'newuserlog-create2-entry' => 'creada conta para $1',
+	'newuserlog-create2-entry' => 'creada unha conta para $1',
 );
 
 $messages['hak'] = array(
@@ -774,7 +774,7 @@ $messages['pl'] = array(
 	'newuserlogpagetext'       => 'To jest rejestr ostatnio utworzonych kont użytkowników',
 	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
 	'newuserlog-byemail'       => 'hasło zostało wysłane e-mailem',
-	'newuserlog-create-entry'  => '- nowy użytkownik',
+	'newuserlog-create-entry'  => '– nowy użytkownik',
 	'newuserlog-create2-entry' => 'utworzono nowe konto $1',
 );
 

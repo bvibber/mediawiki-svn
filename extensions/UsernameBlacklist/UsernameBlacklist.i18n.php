@@ -532,7 +532,8 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'blacklistedusername' => 'Daftar ireng panganggo',
+	'blacklistedusername'     => 'Daftar ireng panganggo',
+	'blacklistedusernametext' => 'Jeneng panganggo sing panjenengan pilih ana ing sajroning [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]]. Mangga milih jeneng panganggo liya.',
 );
 
 /* Kazakh Arabic (kk:AlefZet) */

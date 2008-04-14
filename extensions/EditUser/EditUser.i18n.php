@@ -297,12 +297,18 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Szczepan1990
  * @author Masti
  */
 $messages['pl'] = array(
+	'edituser-desc'     => 'Umożliwia uprzywilejowanym użytkownikom na edycję preferencji innych użytkowników',
+	'edituser'          => 'Edytuj użytkownika',
 	'edituser-logout'   => 'Wyloguj użytkownika',
+	'edituser-username' => 'Nazwa użytkownika',
 	'edituser-dosearch' => 'Szukaj',
+	'edituser-nouser'   => 'Taki użytkownik nie istnieje',
+	'edituser-exempt'   => 'Nie możesz edytować tego użytkownika',
 );
 
 /** Pashto (پښتو)

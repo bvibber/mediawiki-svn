@@ -553,7 +553,9 @@ $messages['jv'] = array(
 	'bookinfo-result-publisher'  => 'Panerbit:',
 	'bookinfo-result-year'       => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
+	'bookinfo-error-nosuchitem'  => 'Item sing dilebokaké ora ana utawa ora bisa ditemokaké.',
 	'bookinfo-purchase'          => 'Tuku buku ini saka $1',
+	'bookinfo-provider'          => 'Sing nyedyakaké data: $1',
 );
 
 /** Georgian (ქართული)

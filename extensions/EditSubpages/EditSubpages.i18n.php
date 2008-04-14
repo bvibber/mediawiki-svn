@@ -31,19 +31,20 @@ $messages['bg'] = array(
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Nike
  * @author Crt
  */
 $messages['fi'] = array(
 	'editsubpages-desc' => 'Ylläpitäjät voivat sallia sivun ja sen kaikkien alasivujen muokkaamisen kirjautumattomille käyttäjille sivulla [[MediaWiki:Unlockedpages]].',
-	'unlockedpages'     => '  #<!-- jätä tämä rivi rauhaan --><pre>
-# Pistä sivut, jotka haluat avata kirjautumattomien käyttäjien muokkauksille alapuolelle käyttäen muotoa:
+	'unlockedpages'     => '  #<!-- älä koske tähän riviin --><pre>
+# Lisää sivut, jotka haluat sallia kirjautumattomien käyttäjien muokkauksille alapuolelle käyttäen muotoa:
 # * sivun nimi
-# Avattavien sivujen nimien tulee alkaa asteriskilla, jotta ne laskettaisiin.
-# Kaikki muu lasketaan kommenteiksi
-# Sivujen nimet voivat olla [[linkkejä]] ja ovat kirjainkoosta riippuvaisia
-# Myös keskustelusivut avataan sivun kanssa
-# Katso http://www.mediawiki.org/wiki/Extension:EditSubpages saadaksesi lisätietoja
-  #</pre><!-- jätä tämä rivi rauhaan -->',
+# Avattavien sivujen nimien tulee alkaa *:llä jotta ne laskettaisiin.
+# Kaikki muu lasketaan kommenteiksi.
+# Sivujen nimet voivat olla [[linkkejä]] ja ovat kirjainkoosta riippuvaisia.
+# Myös keskustelusivut avataan sivun kanssa.
+# Lisätietoja on sivulla http://www.mediawiki.org/wiki/Extension:EditSubpages
+  #</pre><!-- älä koske tähän riviin -->',
 );
 
 /** French (Français)

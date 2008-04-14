@@ -441,6 +441,17 @@ $messages['tg-cyrl'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'intersection-desc'          => "Виводить у маркований список останні додавання до категорії або об'єднання кількох категорій",
+	'intersection_toomanycats'   => 'DynamicPageList: дуже багато категорій!',
+	'intersection_toofewcats'    => 'DynamicPageList: дуже мало категорій!',
+	'intersection_noresults'     => 'DynamicPageList: нема результатів!',
+	'intersection_noincludecats' => 'DynamicPageList: ви повинні включити хоча б одну категорію або зазначити простір назв!',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

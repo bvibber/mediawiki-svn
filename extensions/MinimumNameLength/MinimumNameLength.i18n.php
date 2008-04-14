@@ -191,6 +191,13 @@ $messages['pms'] = array(
 	'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'minnamelength-error' => 'ستاسو کارن-نوم ډېر لنډ دی. پکاره ده چې کارن-نوم مو لږ تر لږه $1 توري ولري.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

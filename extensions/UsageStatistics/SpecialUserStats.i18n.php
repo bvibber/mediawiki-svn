@@ -33,6 +33,15 @@ $messages['en'] = array(
 	'usagestatistics-editpages'       => 'Individual user $1 pages statistics',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Week',
+	'usagestatisticsintervalmonth' => 'Maand',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

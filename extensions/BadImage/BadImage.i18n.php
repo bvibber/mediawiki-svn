@@ -326,6 +326,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'badimages'                => 'Nevalida bildo-listo',
+	'badimages-desc'           => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
 	'badimages-add-btn'        => 'Aldonu',
 	'badimages-added'          => '$1 estis enlistigita.',
 	'badimages-count'          => "Estas '''$1''' bildoj en la listo de nevalidaj bildoj.",

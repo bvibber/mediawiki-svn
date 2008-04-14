@@ -139,6 +139,13 @@ $messages['eo'] = array(
 	'importusers-realname'            => 'reala nomo',
 );
 
+/** Spanish (Español)
+ * @author Piolinfax
+ */
+$messages['es'] = array(
+	'importusers-log-summary-all' => 'Todos',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -429,6 +436,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Dodek
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'importusers-uploadfile'              => 'Prześlij plik',
@@ -439,6 +447,7 @@ $messages['pl'] = array(
 	'importusers-log'                     => 'Rejestr importu',
 	'importusers-log-summary'             => 'Podsumowanie',
 	'importusers-password'                => 'hasło',
+	'importusers-realname'                => 'imię i nazwisko',
 );
 
 /** Pashto (پښتو)

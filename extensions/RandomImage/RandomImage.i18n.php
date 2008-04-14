@@ -74,6 +74,13 @@ $messages['oc'] = array(
 	'randomimage-desc' => "Provesís un mèdia a l'azard en utilizant <tt>&lt;randomimage /&gt;</tt>",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'randomimage-desc' => 'Zwraca losowy plik z użyciem znacznika <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

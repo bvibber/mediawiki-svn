@@ -100,6 +100,20 @@ $messages['oc'] = array(
 	'crowdauthentication-desc' => 'Plugin d’autenficacion per l’afluéncia de l’Atlàs',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'crowdauthentication-desc' => 'Wtyczka logowania dla Atlassian Crowd',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'crowdauthentication-desc' => 'Plugin de autenticação para Atlassian Crowd',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

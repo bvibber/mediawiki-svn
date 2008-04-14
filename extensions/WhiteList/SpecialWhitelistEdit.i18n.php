@@ -205,6 +205,13 @@ $allMessages['eo'] = array(
 	'whitelistnummatches'      => '- $1 pafoj',
 );
 
+/** Spanish (Español)
+ * @author Piolinfax
+ */
+$allMessages['es'] = array(
+	'whitelisttablemodifyall' => 'Todos',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -276,11 +283,13 @@ $allMessages['gl'] = array(
 Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistnewtabledate'    => 'Data de expiración:',
 	'whitelistnewtableprocess' => 'Proceso',
+	'whitelistpagelist'        => 'Páxinas de {{SITENAME}} para $1',
 	'whitelistbadtitle'        => 'Título incorrecto -',
 	'whitelistrequestmsg'      => '$1 solicitou ter acceso ás seguintes páxinas:
 
 $2',
 	'whitelistnever'           => 'nunca',
+	'whitelistnummatches'      => '  - $1 coincidencias',
 );
 
 /** Hindi (हिन्दी)
@@ -566,8 +575,8 @@ Można stosować symbole wieloznaczne * i %',
 	'whitelistoverviewcd'       => "* Zmiana daty ograniczenia na '''$1''' w odniesieniu do elementu [[:$2:$2]]",
 	'whitelistoverviewsa'       => "* Ustalanie dostępu dla elementu '''$1''' do elementu [[:$2|$2]]",
 	'whitelistoverviewrm'       => '* Usuwanie dostępu do [[:$1|$1]]',
-	'whitelistoverviewna'       => "* Dodawanie elementu [[:$1|$1]] do listy dostępu - dostęp dla '''$2''', data wygaśnięcia '''$3'''",
-	'whitelistrequest'          => 'Zażądaj dostępu do większej ilości stron',
+	'whitelistoverviewna'       => "* Dodawanie elementu [[:$1|$1]] do listy dostępu – dostęp dla '''$2''', data wygaśnięcia '''$3'''",
+	'whitelistrequest'          => 'Zażądaj dostępu do większej liczby stron',
 	'whitelistrequestmsg'       => 'Użytkownik $1 zażądał dostępu do następujących stron:
 
 $2',

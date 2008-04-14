@@ -109,6 +109,17 @@ $messages['oc'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limita la creacion d’utilizaires',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'acct_creation_global_soft_throttle_hit'      => 'Możliwość utworzenia nowego konta została automatycznie zawieszona na pewien czas z uwagi na niezwykle dużą liczbę prób zalogowania.
+Poczekaj kilka minut i spróbuj ponownie.',
+	'acct_creation_global_hard_throttle_hit'      => 'Możliwość utworzenia nowego konta została automatycznie zawieszona na kilka sekund by uniemożliwić atak polegający na przeciążeniu serwera próbami rejestracji.
+Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operację.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -199,6 +199,13 @@ $messages['eo'] = array(
 	'regexblock-view-time'          => 'je $1',
 );
 
+/** Spanish (Español)
+ * @author Piolinfax
+ */
+$messages['es'] = array(
+	'regexblock-view-all' => 'Todos',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
@@ -768,8 +775,8 @@ $messages['pl'] = array(
 	'regexblock-unblock-error'     => 'Błąd przy odblokowaniu $1.
 Prawdopodobnie nie ma takiego użytkownika.',
 	'regexblock-form-username'     => 'Adres IP lub nazwa użytkownika:',
-	'regexblock-form-reason'       => 'Przyczyna:',
-	'regexblock-form-expiry'       => 'Wygasa:&#160;',
+	'regexblock-form-reason'       => 'Powód:',
+	'regexblock-form-expiry'       => 'Czas blokady:&#160;',
 	'regexblock-block-log'         => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
 	'regexblock-block-success'     => 'Pomyślnie zablokowano',
 	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',

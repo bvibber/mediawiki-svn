@@ -34,6 +34,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'tryexact'       => 'Mirar títol esauto',
 	'searchfulltext' => 'Mirar por testo completo',
 	'createarticle'  => 'Creyar pachina',
 );
@@ -929,10 +930,17 @@ $messages['tr'] = array(
 	'createarticle'  => 'Sayfayı oluştur',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
 $messages['uk'] = array(
-	'tryexact'       => 'Строгий пошук',
-	'searchfulltext' => 'Повнотекстовий пошук',
-	'createarticle'  => 'Створити статтю',
+	'inputbox-desc'           => 'Дозволяє включати заздалегідь визначені HTML-форми',
+	'inputbox-error-no-type'  => 'Ви не зазначили тип поля вводу, яке створюється.',
+	'inputbox-error-bad-type' => 'Невідомий тип поля вводу «$1».
+Будь ласка, зазначте один з допустимих типів: «create», «comment», «search» або «search2».',
+	'tryexact'                => 'Строгий пошук',
+	'searchfulltext'          => 'Повнотекстовий пошук',
+	'createarticle'           => 'Створити статтю',
 );
 
 $messages['ur'] = array(

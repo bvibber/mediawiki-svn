@@ -957,14 +957,20 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lokal Profil
  * @author Jon Harald Søby
- * @author M.M.S.
  */
 $messages['sv'] = array(
 	'openid-desc'          => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
 	'openidlogin'          => 'Logga in med OpenID',
+	'openidfinish'         => 'Fullfölj OpenID-inloggning',
+	'openidserver'         => 'OpenID-server',
 	'openidxrds'           => 'Yadis-fil',
+	'openidconvert'        => 'OpenID-konvertering',
+	'openiderror'          => 'Bekräftelsefel',
+	'openiderrortext'      => 'Ett fel uppstod under bekräftning av OpenID-adressen.',
+	'openidconfigerror'    => 'Konfigurationsfel med OpenID',
 	'openidoptional'       => 'Valfri',
 	'openidnickname'       => 'Smeknamn',
 	'openidemail'          => 'E-postadress',

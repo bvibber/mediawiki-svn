@@ -453,9 +453,11 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'linksearch'    => 'Golèk pranala jaba',
-	'linksearch-ns' => 'Bilik nama:',
-	'linksearch-ok' => 'Golèk',
+	'linksearch'       => 'Golèk pranala jaba',
+	'linksearch-ns'    => 'Bilik nama:',
+	'linksearch-ok'    => 'Golèk',
+	'linksearch-line'  => '$1 disambung saka $2',
+	'linksearch-error' => "''Wildcards'' namung bisa dienggo ing bagéyan awal saka jeneng host.",
 );
 
 $messages['kk-arab'] = array(
@@ -679,14 +681,14 @@ $messages['pag'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'linksearch'       => 'Szukanie linków zewnętrznych',
 	'linksearch-desc'  => 'Odnajduje strony zawierające zewnętrzne linki pasujące do zadanego wzorca',
-	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
-	'linksearch-ns'    => 'Przestrzeń nazw:',
+	'linksearch-pat'   => 'Wzorzec wyszukiwania',
+	'linksearch-ns'    => 'Przestrzeń nazw',
 	'linksearch-ok'    => 'Szukaj',
 	'linksearch-text'  => 'Można użyć symbolu wieloznacznego „*”. Dla przykładu „*.wikipedia.org” spowoduje wyszukanie wszystkich linków prowadzących do domeny „wikipedia.org” i jej poddomen.<br />
 Obsługiwane protokoły: <tt>$1</tt>',

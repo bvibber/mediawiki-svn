@@ -1328,7 +1328,7 @@ zaczynać się od ukośnika lewego "\\" i zawierać wyłącznie litery.',
 	'math_MissingOpenBraceAfter'            => 'Brak otwierającego nawiasu klamrowego "{" po "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Brakujący nawias otwierający "{" na końcu wejścia',
 	'math_MissingOpenBraceBefore'           => 'Brakujący nawias otwierający "{" przed "$1"',
-	'math_MissingOrIllegalParameterCount'   => 'Brakujący lub nieprawidłowy licznik ilości parametrów w definicji "$1".
+	'math_MissingOrIllegalParameterCount'   => 'Brakujący lub nieprawidłowy licznik liczby parametrów w definicji "$1".
 Musi to być pojedyncza cyfra z zakresu od 1 do 9 włącznie.',
 	'math_MissingOrIllegalParameterIndex'   => 'Brakujący lub nieprawidłowy indeks parametru w definicji "$1".',
 	'math_NonAsciiInMathMode'               => 'Znaki spoza ASCII mogą być użyte jedynie w trybie tekstowym (spróbuj zamknąć znaki w "\\text{...}")',

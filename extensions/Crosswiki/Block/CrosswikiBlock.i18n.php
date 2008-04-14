@@ -749,36 +749,50 @@ Tornar vèrs :
 );
 
 /** Polish (Polski)
- * @author Masti
- * @author Derbeth
- * @author McMonster
  * @author Sp5uhe
+ * @author Masti
+ * @author McMonster
+ * @author Derbeth
  * @author Equadus
  */
 $messages['pl'] = array(
 	'crosswikiblock-desc'           => 'Umożliwia blokowanie użytkowników na innych wiki za pomocą [[{{ns:Special}}:Crosswikiblock|strony specjalnej]]',
-	'crosswikiblock-expiry'         => 'Wygasa:',
+	'crosswikiblock'                => 'Zablokuj użytkownika na innych wiki',
+	'crosswikiblock-header'         => 'Ta strona pozawala zablokować użytkownika na innych wiki.
+Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',
+	'crosswikiblock-target'         => 'Adres IP lub nazwa użytkownika i docelowa wiki:',
+	'crosswikiblock-expiry'         => 'Czas blokady:',
 	'crosswikiblock-reason'         => 'Powód:',
 	'crosswikiblock-submit'         => 'Zablokuj użytkownika',
 	'crosswikiblock-anononly'       => 'Zablokuj tylko anonimowych użytkowników',
 	'crosswikiblock-nocreate'       => 'Zablokuj tworzenie konta',
 	'crosswikiblock-autoblock'      => 'Zablokuj ostatni adres IP tego użytkownika i automatycznie wszystkie kolejne, z których będzie próbował edytować',
 	'crosswikiblock-noemail'        => 'Zablokuj możliwość wysyłania e-maili',
+	'crosswikiunblock'              => 'Odblokuj użytkownika na innych wiki',
+	'crosswikiunblock-header'       => 'Ta strona pozwala na odblokowanie użytkownika na innych wiki.
+Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',
+	'crosswikiunblock-user'         => 'Nazwa użytkownika, adres IP lub ID blokady i docelowa wiki:',
 	'crosswikiunblock-reason'       => 'Powód:',
 	'crosswikiunblock-submit'       => 'Odblokuj użytkownika',
+	'crosswikiunblock-success'      => "Użytkownik '''$1''' został odblokowany.
+
+Wróć do:
+* [[Special:CrosswikiBlock|Strona blokowania]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Nie wprowadzono nazwy użytkownika',
+	'crosswikiblock-local'          => 'Lokalne blokowanie nie jest możliwe przy pomocy tego interfejsu. Użyj strony [[Special:Blockip|blokowania adresów IP]].',
 	'crosswikiblock-dbnotfound'     => 'Baza $1 nie istnieje',
 	'crosswikiblock-noname'         => '"$1" nie jest poprawną nazwą użytkownika.',
 	'crosswikiblock-nouser'         => 'Nie znaleziono użytkownika "$3".',
-	'crosswikiblock-noexpiry'       => 'Nieprawidłowy czas wygaśnięcia: $1.',
+	'crosswikiblock-noexpiry'       => 'Nieprawidłowy czas blokady: $1.',
 	'crosswikiblock-noreason'       => 'Nie podano powodu.',
-	'crosswikiblock-notoken'        => 'Nieprawidłowy token edycji',
+	'crosswikiblock-notoken'        => 'Nieprawidłowy żeton edycji.',
 	'crosswikiblock-alreadyblocked' => 'Użytkownik $3 jest już zablokowany.',
 	'crosswikiblock-noblock'        => 'Ten użytkownik nie jest zablokowany.',
 	'crosswikiblock-success'        => "Pomyślnie zablokowano użytkownika '''$3'''.
 
 Powrót do:
-* [[{{ns:special}}:CrosswikiBlock|Formularza blokowania]]
+* [[Special:CrosswikiBlock|Formularz blokowania]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Lokalne odblokowywanie nie jest obsługiwane w tym interfejsie. Użyj [[Special:Ipblocklist]]',
 );

@@ -362,8 +362,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'dt-desc'                     => 'Pozwala na importowanie i eksportowanie struktur danych zawartych w wywołaniach szablonu',
+	'viewxml'                     => 'Podgląd XML',
 	'dt_viewxml_categories'       => 'Kategorie',
 	'dt_viewxml_namespaces'       => 'Przestrzenie nazw',
 	'dt_viewxml_simplifiedformat' => 'Format uproszczony',
@@ -372,6 +375,7 @@ $messages['pl'] = array(
 	'dt_xml_field'                => 'Pole',
 	'dt_xml_name'                 => 'Nazwa',
 	'dt_xml_title'                => 'Tytuł',
+	'dt_xml_id'                   => 'ID',
 );
 
 /** Pashto (پښتو)

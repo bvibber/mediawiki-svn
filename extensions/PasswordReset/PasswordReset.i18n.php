@@ -389,7 +389,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'passwordreset'                    => 'Wyczyszczenie hasła',
-	'passwordreset-desc'               => "Ponowne ustawienie hasła użytkownika - wymaga uprawnienia 'passwordreset'",
+	'passwordreset-desc'               => "Ponowne ustawienie hasła użytkownika – wymaga uprawnienia 'passwordreset'",
 	'passwordreset-invalidusername'    => 'Nieprawidłowa nazwa użytkownika',
 	'passwordreset-emptyusername'      => 'Pusta nazwa użytkownika',
 	'passwordreset-nopassmatch'        => 'Hasła nie są identyczne',

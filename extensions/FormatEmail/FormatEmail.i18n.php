@@ -172,8 +172,10 @@ Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SI
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'email-desc'   => 'Umożliwia dodanie nagłówka i stopki do wiadomości e-mail wysyłanych do użytkowników.',
 	'email_footer' => '---------------------------------------------------------------------------
 Ta wiadomość została wysłana poprzez system pocztowy {{SITENAME}} przez $1.
 

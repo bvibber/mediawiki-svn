@@ -723,6 +723,7 @@ Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
 $messages['ps'] = array(
 	'changeauthor-pagenameform-go' => 'ورځه',
 	'changeauthor-nosuchtitle'     => 'داسې هېڅ کوم مخ نشته چې نوم يې "$1" وي.',
+	'changeauthor-success'         => 'ستاسو غوښتنه په برياليتوب سره پلي شوه.',
 );
 
 /** Portuguese (Português)
@@ -750,6 +751,36 @@ $messages['pt'] = array(
 	'changeauthor-success'              => 'O seu pedido foi processado com sucesso.',
 	'changeauthor-logentry'             => 'Alterado autor de $2 de $1, de $3 para $4',
 	'changeauthor-logpagename'          => 'Registo de alterações de autor',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'changeauthor'                      => "Llamk'apuqpa sutinta hukchay",
+	'changeauthor-desc'                 => "Kaywanqa llamk'apuqpa sutinta hukchaytam atinki",
+	'changeauthor-title'                => "Llamk'apuqpa sutinta hukchay",
+	'changeauthor-search-box'           => 'Musuqchasqakunata maskay',
+	'changeauthor-pagename-or-revid'    => "P'anqap sutin icha musuqchasqap kikin huchhan:",
+	'changeauthor-pagenameform-go'      => 'Riy',
+	'changeauthor-comment'              => "Llamk'apuqpa nisqan pisichayta hukchay",
+	'changeauthor-changeauthors-multi'  => "Llamk'apuqpa sutinta hukchay",
+	'changeauthor-explanation-multi'    => "Kay hunt'ana p'anqawanqa llamk'apuqkunap sutinkunata hukchaytam atinki.
+Kay qatiq sutisuyupi ruraqkunap sutinkunata hukchaspa pisichay willaytachá yapaspa 'Llamk'apuqpa sutinta hukchay' nisqapi ñit'illay.",
+	'changeauthor-changeauthors-single' => "Llamk'apuqpa sutinta hukchay",
+	'changeauthor-explanation-single'   => "Kay hunt'ana p'anqawanqa llamk'apuqpa sutinta hukchaytam atinki.
+Kay qatiq ruraqpa sutinta hukchaspa pisichay willaytachá yapaspa 'Llamk'apuqpa sutinta hukchay' nisqapi ñit'illay.",
+	'changeauthor-invalid-username'     => '"$1" nisqa ruraqpa sutinqa manam allinchu.',
+	'changeauthor-nosuchuser'           => '"$1" sutiyuq ruraqqa manam kanchu.',
+	'changeauthor-revview'              => '$2-manta #$1 kaq musuqchasqa',
+	'changeauthor-nosuchtitle'          => '"$1" sutiyuq p\'anqaqa manam kanchu.',
+	'changeauthor-weirderror'           => 'Ancha wamaq pantasqam tukurqan.
+Ama hina kaspa, musuqmanta mañaykachay.
+Kay pantasqa musuqmanta kanqaptinqa, willañiqintin waqllisqachá.',
+	'changeauthor-invalidform'          => "Ama hina kaspa, Special:ChangeAuthor nisqap hunt'ana p'anqanta llamk'achiy, amataq sapsi p'anqatachu.",
+	'changeauthor-success'              => 'Mañakusqaykiqa aypalla rurapusqañam.',
+	'changeauthor-logentry'             => "$2-manta $1-pa llamk'apuqninpa sutinta $3-manta $4-man hukchasqa",
+	'changeauthor-logpagename'          => "Llamk'apuq suti hukchay hallch'asqa",
 );
 
 /** Russian (Русский)

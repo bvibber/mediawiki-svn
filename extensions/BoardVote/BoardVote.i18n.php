@@ -103,6 +103,7 @@ $messages['af'] = array(
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
+ * @author Siebrand
  */
 $messages['an'] = array(
 	'boardvote'              => "Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia",
@@ -110,6 +111,15 @@ $messages['an'] = array(
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Botar]]
 * [[Special:Boardvote/list|Amostrar os botos dica agora]]
 * [[Special:Boardvote/dump|Bulcar o rechistro zifrato d'a elezión]]",
+	'boardvote_intro'        => "<p>Biemplegato t'a segunda eslezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia. Somos esliyendo dos presonas que representen á la comunidat d'usuarios d'os procheutos de Wikimedia. Els aduyarán á determinar a endrezera futura que abrán de prener os procheutos de Wikimedia, endibidualment y como grupo, y representarán os intreses y procupazions <em>d'os usuarios</em> en o Consello d'Almenistrazión. Tamién dezidirán sobre as trazas de chenerar ingresos y sobre o emplego d'os diners aconseguius.</p>
+
+<p>Leiga-se con ficazio as declarazions y respuestas d'os candidatos antes de botar. Toz os candidatos son usuarios respetaus, que han contrebuyiu con un tiempo y esfuerzo considerables ta fer d'istos procheutos un puesto acullidor, adedicato á aconseguir a libre destribuzión d'o conoximiento umán.</p>
+
+<p>Bustet puede botar por tantos candidatos como quiera. O candidato con más botos en cada puesto será declarato o ganador de ixe puesto. Caso d'empazar á botos, se ferá una nueba eslezión entre os candidatos empazatos.</p>
+
+<p>Ta más informazión, mire-se:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>",
 	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere
 fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada
 candidato que quiera aprebar</p>",
@@ -2076,6 +2086,8 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]',
+	'boardvote_notloggedin'  => 'Panjenengan ora mlebu log. Supaya bisa mèlu nyoblos, panjenengan kudu nganggo rékening (akun) mawa paling ora $1 suntingan sadurungé $2, lan suntingan sing kapisan dilakoni sadurungé $3.',
+	'boardvote_notqualified' => 'Panjenengan ora bisa mèlu mènèhaké swara ing pamilihan iki. Panjenengan kudu wis nglakoni $3 suntingan sadurungé $2, lan suntingan kapisan wis ana sadurungé $5.',
 	'boardvote_novotes'      => 'Durung ana sing nyoblos.',
 	'boardvote_time'         => 'Wektu',
 	'boardvote_user'         => 'Panganggo',
@@ -2083,6 +2095,7 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 	'boardvote_days'         => 'Dina',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Agèn panganggo',
+	'boardvote_listintro'    => '<p>Ing ngisor iki kapacak daftar kabèh swara sing wis mlebu nganti dina iki. $1 iku kanggo data sing diènkripsi.</p>',
 	'boardvote_dumplink'     => 'Kliken ing kéné',
 	'boardvote_submit'       => 'OK',
 	'boardvote_strike'       => 'Corèt',
