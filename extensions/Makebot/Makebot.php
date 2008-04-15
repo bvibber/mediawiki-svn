@@ -55,7 +55,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgLogHeaders['makebot'] = 'makebot-logpagetext';
 		$wgLogActions['makebot/grant']  = 'makebot-logentrygrant';
 		$wgLogActions['makebot/revoke'] = 'makebot-logentryrevoke';
-		$wgRCTypeGroupedLogs[] = 'makebot';
 	}
 
 } else {

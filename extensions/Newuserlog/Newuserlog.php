@@ -25,14 +25,13 @@ $wgExtensionMessagesFiles['Newuserlog'] = dirname(__FILE__) . '/Newuserlog.i18n.
 
 function wfNewuserlog() {
 	# Add a new log type
-	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgRCTypeGroupedLogs;
+	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 	$wgLogTypes[]                      = 'newusers';
 	$wgLogNames['newusers']            = 'newuserlogpage';
 	$wgLogHeaders['newusers']          = 'newuserlogpagetext';
 	$wgLogActions['newusers/newusers'] = 'newuserlogentry';
 	$wgLogActions['newusers/create']   = 'newuserlog-create-entry';
 	$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
-	$wgRCTypeGroupedLogs[] = 'newusers';
 	# Run this hook on new account creation
 	global $wgHooks;
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
