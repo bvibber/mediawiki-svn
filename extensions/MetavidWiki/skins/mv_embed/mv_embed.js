@@ -120,6 +120,10 @@ var mvEmbed = {
   },
   pc:null, //used to store pointer to parent clip (when in playlist mode) 
   load_libs:function(callback){
+  	//load css:
+  	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
+		loadExternalCss(mv_embed_path+'mv_embed.css');
+		
   	if(callback)this.load_callback = callback;
  	//two loading stages, first get jQuery
 	var _this = this;
@@ -735,7 +739,10 @@ textInterface.prototype = {
 				}
 				//only select the 
 				js_log('do request on url:' + url);				
+				$j('#mv_loading_icon').css('display','inline');
 				do_request(url, function(data){	
+					//hide loading icon:
+					$j('#mv_loading_icon').css('display','none');										
 					$j.each(data.getElementsByTagName('clip'), function(inx, n){
 						var text_clip = {
 							start:n.getAttribute('start').replace('ntp:', ''),
@@ -752,12 +759,17 @@ textInterface.prototype = {
 		});					
 	},
 	add_merge_text_clip:function(text_clip){
-		//grab the body
+		//make sure the clip does not alreay exist: 
 		if($j('#tc_'+text_clip.id).length==0){
-			//@@todo append in order (include start end time in div attr)
-			$j('#mmbody_'+this.pe.id).append('<div id="tc_'+text_clip.id+'">' +
+			//@todo append in order (include start end time in div attr)
+			$j('#mmbody_'+this.pe.id).append('<div style="border:solid thin black;" id="tc_'+text_clip.id+'" ' +
+					'start="'+text_clip.start+'" end="'+text_clip.end+'">' +
+						'<div style="top:0px;left:0px;right:0px;height:20px;font-size:small">'+
+							'<img src="'+mv_embed_path+'/images/control_play_blue.png">'+
+							text_clip.start + ' to ' +text_clip.end+
+						'</div>'+
 						text_clip.body + 
-					'</div>');
+				'</div>');
 		}		
 	},
 	show:function(){
@@ -793,14 +805,16 @@ textInterface.prototype = {
 		//the icon link: 
 		$j('#metaText_'+this.pe.id).fadeIn('fast');	
 	},
-	getBody:function(){
-		var bodyHTML = (this.roe_data)? 'roe data':getMsg('loading_txt');
-		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">'+
-					bodyHTML+
-				'</div>';
+	getBody:function(){		
+		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;"/>';
 	},
 	getMenu:function(){
 		var out='';
+		//add in loading icon: 
+		out+= '<div class="mv_loading_icon" style="background:url(\''+mv_embed_path+'images/indicator.gif\');display:';
+		out+= (this.roe_data)? 'none':'inline';
+		out+='"/>';
+		
 		out+= '<div id="mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
 				'<a style="font-color:#000;" title="'+getMsg('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
 					getMsg('close')+'</a> ' +

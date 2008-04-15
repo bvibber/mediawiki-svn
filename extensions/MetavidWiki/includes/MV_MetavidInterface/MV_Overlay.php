@@ -221,8 +221,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$wgOut->addHTML($pre_out);
 		return $value;
 	}
-	/*@@TODO we will get the some millage if CACHE THIS 
-	 * with purge on mvd_edit/move/delete */
 	function outputMVD(&$mvd_page, $absolute_links=false){
 		global $wgOut,$wgUser, $wgEnableParserCache;				
 		//$mvdTile = Title::makeTitle(MV_NS_MVD, $mvd_page->wiki_title );
