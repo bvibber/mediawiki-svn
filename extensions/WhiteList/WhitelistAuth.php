@@ -219,7 +219,16 @@ class WhitelistExec
                         AND wl_allow_edit = " . $dbr->addQuotes('1');
 		}
 		#print $sql;
-	
+
+                // We should also check that $title is not a redirect to a whitelisted page
+                $redirecttitle = NULL;
+                $article = new Article($title);
+                if (is_object($article))
+                {
+                        $pagetext = $article->getContent();
+                        $redirecttitle = Title::newFromRedirect($pagetext);
+                }
+                        
 		/* Loop through each result returned and
 		 * check for matches.
 		 */
@@ -232,6 +241,15 @@ class WhitelistExec
 				#wfDebug("\n\nAccess granted based on PAGE [" . $db_result->wl_page_title . "]\n\n");
 				return WHITELIST_GRANT;
 			}
+                        if ($redirecttitle)
+                        {
+                                if( self::RegexCompare($redirecttitle, $db_result->wl_page_title) )
+                                {
+                                        $dbr->freeResult($db_results);
+                                        #wfDebug("\n\nAccess granted based on REDIRECT to PAGE [" . $db_result->wl_page_title . "]\n\n");
+                                        return WHITELIST_GRANT;
+                                }
+                        }
 		}
 		$dbr->freeResult($db_results);
 
@@ -241,6 +259,8 @@ class WhitelistExec
 	/* Returns true if hit, false otherwise */
 	static function RegexCompare(&$title, $sql_regex)
 	{
+                global $wgWhitelistWildCardInsensitive;
+                
 		$ret_val = false;
                 
 		/* Convert regex to PHP format */
@@ -249,14 +269,14 @@ class WhitelistExec
 		$php_regex = ltrim($php_regex, ":");
 
 		/* Generate regex; use | as delimiter as it is an illegal title character. */
-		$php_regex_full = '|' . $php_regex . '|';
+		$php_regex_full = '|^' . $php_regex . '$|';
                 if ($wgWhitelistWildCardInsensitive)
                         $php_regex_full .= 'i';
 
-		#print( $php_regex_full . " [" . $title->getPrefixedText() . "]<br />\n");
+#print( $php_regex_full . " [" . $title->getPrefixedText() . "]<br />\n");
 		if (self::preg_test($php_regex_full)) {
 			if( preg_match( $php_regex_full, $title->getPrefixedText() ) ) {
-				#print("MATCH!!");
+#print("MATCH!!");
 				$ret_val = true;
 			}
 		}
