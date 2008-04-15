@@ -43,6 +43,7 @@ import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.highlight.Highlight;
 import org.wikimedia.lsearch.highlight.HighlightResult;
+import org.wikimedia.lsearch.highlight.Snippet;
 import org.wikimedia.lsearch.index.MessengerThread;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.prefix.PrefixIndexBuilder;
@@ -215,7 +216,8 @@ public class SearchEngine {
 			String host = cache.getRandomHost(iid.getTitleNgram());
 			ArrayList<String> keys = messenger.similar(host,iid.toString(),searchterm,nsf,dist);
 			for(int i=0;i<keys.size() && i<limit;i++)
-				res.addSimilar(keys.get(i));
+				res.addResult(new ResultSet(keys.get(i),1));
+			res.setNumHits(keys.size());
 			res.setSuccess(true);
 			res.addInfo("similar",formatHost(host));
 		} catch(IOException e){
@@ -281,6 +283,7 @@ public class SearchEngine {
 				ResultSet rs = new ResultSet(rt.getScore(),t.getNamespaceAsString(),t.getTitle());
 				res.addResult(rs);
 			}
+			res.addInfo("related",global.getLocalhost());
 			// highlight stuff
 			Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
 			NamespaceFilter nsDefault = new NamespaceFilter(key.substring(0,key.indexOf(':')));
@@ -290,6 +293,7 @@ public class SearchEngine {
 			Query q = parser.parse(key.substring(key.indexOf(':')+1),new WikiQueryParser.ParsingOptions(true));
 			highlight(iid,q,parser.getWordsClean(),searcher,res,true,true);
 		} else{
+			res.addInfo("related",global.getLocalhost());
 			res.setSuccess(true);
 			res.setNumHits(0);
 		}
@@ -430,7 +434,7 @@ public class SearchEngine {
 					continue;
 				if(res.getResults().size() >= limit)
 					break;
-				ResultSet rs = new ResultSet(m.key);
+				ResultSet rs = new ResultSet(m.key,m.score);
 				String ns = m.key.substring(0,m.key.indexOf(':'));
 				if(ns.equals("0"))
 					rs.setNamespaceTextual("");
@@ -601,7 +605,6 @@ public class SearchEngine {
 							highlight(iid,q,parser.getWordsClean(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null,parser.hasPhrases(),false);
 							fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 							suggest(iid,searchterm,parser,res,offset,nsfw);
-							fetchSimilar(res,iid,searchterm,nsfw);
 						}
 						return res;
 					}
@@ -633,7 +636,6 @@ public class SearchEngine {
 					highlight(iid,q,parser.getWordsClean(),searcher,parser.getHighlightTerms(),res,exactCase,parser.hasPhrases(),false);
 					fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 					suggest(iid,searchterm,parser,res,offset,nsfw);
-					fetchSimilar(res,iid,searchterm,nsfw);
 				}
 				return res;
 			} catch(Exception e){				
@@ -701,29 +703,7 @@ public class SearchEngine {
 			res.addInfo("suggest",formatHost(host));
 		}
 	}
-	
-	/** Fetch similar titles to searchterm entered */
-	protected void fetchSimilar(SearchResults res, IndexId iid, String searchterm, NamespaceFilterWrapper nsfw) {
-		if(true) // NOTE: disabled this for now, as it is not as useful as we might want it to be... 
-			return; 
-		try{
-			if(!iid.hasTitleNgram())
-				return;
-			if(nsfw == null)
-				return; // mixed namespaces, bail out
-			IndexId similar = iid.getTitleNgram();
-			if(searchterm.length()>1){
-				RMIMessengerClient messenger = new RMIMessengerClient();
-				String host = cache.getRandomHost(similar);
-				res.addSimilar(messenger.similar(host,iid.toString(),searchterm,nsfw.getFilter(),2));
-				res.addInfo("similar",formatHost(host));
-			}
-		} catch(Exception e){
-			e.printStackTrace();
-			log.error("Cannot fetch similar titles for "+searchterm+" on "+iid+" : "+e.getMessage());
-		}
-	}
-
+		
 	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
 		Fuzzy fuzzy = null;
@@ -790,11 +770,12 @@ public class SearchEngine {
 					if(nsf != null || sf != null)
 						wrap = new SuffixNamespaceWrapper(new SuffixNamespaceFilter(nsf,sf,iid,target));
 					SearchResults r = messenger.searchTitles(host,target.toString(),searchterm,words,q,wrap,iwoffset,iwlimit,explain,parser.hasPhrases());
-					if(r.isSuccess())
+					if(r.isSuccess()){
 						res.setTitles(r.getResults());
-					else
+						res.setTitlesTotal(r.getNumHits());						
+					} else
 						log.error("Error getting grouped titles results from "+host+":"+r.getErrorMsg());
-					res.addInfo("titles",formatHost(host));
+					res.addInfo("interwiki",formatHost(host));
 					return;
 				}			
 			}
@@ -812,13 +793,14 @@ public class SearchEngine {
 			highlightTitles(main,q,words,searcher,r,parser.hasWildcards(),false);
 
 			if(r.isSuccess()){
-				res.setTitles(r.getResults());
+				res.setTitles(r.getResults());				
 				//if(r.isFoundAllInTitle())
 				//	res.setFoundAllInTitle(true);
 				//res.addToFirstHitRank(r.getNumHits());
 			} else
 				log.error("Error getting grouped titles search results: "+r.getErrorMsg());
-			res.addInfo("titles",formatHosts(searcher.getAllHosts().values()));
+			res.addInfo("interwiki",formatHosts(searcher.getAllHosts().values()));
+			
 		} catch(Exception e){
 			e.printStackTrace();
 			log.error("Error fetching grouped titles: "+e.getMessage());
@@ -886,6 +868,9 @@ public class SearchEngine {
 			String interwiki = iid.getInterwikiBySuffix(suffix);
 			float score = transformScore(scores[j]/maxScore); 
 			ResultSet rs = new ResultSet(score,namespace,title,suffix,interwiki);
+			IndexId target = iid.getIndexIdforSuffix(suffix);
+			readLocalization(target);
+			rs.setNamespaceTextual(dbNamespaceNames.get(target.getDBname()).get(Integer.parseInt(namespace)));
 			if(explain)
 				rs.setExplanation(((Searcher)s).explain(q,docids[j]));
 			res.addResult(rs);
@@ -932,6 +917,7 @@ public class SearchEngine {
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,false,searcher.getIndexReader(),sortByPhrases,alwaysIncludeFirst);
+		resolveInterwikiNamespaces(res,iid);
 	}
 	
 	/** Highlight search results from titles index using a wikisearcher */
@@ -940,6 +926,7 @@ public class SearchEngine {
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst);
+		resolveInterwikiNamespaces(res,iid);
 	}
 	
 	/** Highlight article (don't call directly, use one of the interfaces above instead) */
@@ -996,6 +983,48 @@ public class SearchEngine {
 			keys.get(e.getKey()).setHighlight(e.getValue());
 		}
 		res.addInfo("highlight",formatHosts(hosts));
+	}
+	
+	/** 
+	 * Ugly hack to resolve 100:Something namespaces into proper prefixed namespaces
+	 * This is needed since MediaWiki cannot handle interwiki namespace numerals  
+	 */
+	protected void resolveInterwikiNamespaces(SearchResults res, IndexId titles){
+		for(ResultSet r : res.getResults()){
+			HighlightResult h = r.getHighlight();
+			Snippet redirect = h.getRedirect();
+			if(redirect != null){
+				String key = redirect.getOriginalText();
+				String ns = key.substring(0,key.indexOf(':'));
+				String title = key.substring(key.indexOf(':')+1);
+				if(ns.equals(r.getNamespace())) // same as title
+					setPrefixedTitle(redirect,r.getNamespaceTextual(),title);
+				else{
+					// find the target index based on suffix, use that to find ns name 
+					IndexId targ = null;
+					for(IndexId part : titles.getPhysicalIndexIds()){
+						targ = part.getIndexIdforSuffix(r.getSuffix());
+						if(targ != null)
+							break;
+					}
+					if(targ != null){
+						readLocalization(targ);
+						setPrefixedTitle(redirect,dbNamespaceNames.get(targ.getDBname()).get(Integer.parseInt(ns)),title);
+					} else{
+						log.warn("Cannot resolve interwiki namespace for suffix="+r.getSuffix()+", ns="+ns+", on "+titles);
+						// this is prolly wrong, but makes a more graceful failure
+						setPrefixedTitle(redirect,r.getNamespaceTextual(),title);
+					}
+				}
+			}
+		}
+	}
+	
+	private void setPrefixedTitle(Snippet redirect, String ns, String title){
+		if(ns.equals(""))
+			redirect.setOriginalText(title);
+		else
+			redirect.setOriginalText(ns+":"+title);
 	}
 	
 	protected int min(int i1, int i2, int i3){

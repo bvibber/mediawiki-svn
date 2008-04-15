@@ -117,6 +117,7 @@ public class SpellCheckTest {
    	{"bethlem jesus","bethlehem jesus"},
    	{"los angles gardens","los angeles gardens"},
    	{"huston we have a problem","houston we have a problem"},
+   	{"janeus","janus"},
    	
    };
 

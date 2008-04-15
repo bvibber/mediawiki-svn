@@ -101,66 +101,54 @@ public class SearchDaemon extends HttpHandler {
 					sendHeaders(200, "OK");
 					// format: 
 					// <namespace> <title> (resNum-times)
-					if(what.equals("prefix")){
-						for(ResultSet rs : res.getResults()){
-							sendResultLine(rs.namespace, rs.title);
-						}
-					} else{
-						sendOutputLine(Integer.toString(res.getNumHits()));
-						if(version>=2.1){
-							// info if any
-							sendOutputLine("#info "+res.getInfo()+" in "+delta+" ms");
-							// suggest
-							SuggestQuery sq = res.getSuggest();
-							if(sq != null && sq.hasSuggestion()){
-								sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
-							} else 
-								sendOutputLine("#no suggestion");
-							// similar
-							ArrayList<String> similar = res.getSimilar();
-							if(similar.size() == 0)
-								sendOutputLine("#no similar");
-							else
-								sendOutputLine("#similar "+res.serializeSimilar());
-							// interwiki
-							if(res.getTitles() != null){
-								res.sortTitlesByInterwiki();
-								sendOutputLine("#interwiki "+res.getTitles().size());
-								for(ResultSet rs : res.getTitles()){
-									sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encodeTitle(rs.getTitle()));
-									if(rs.getExplanation() != null)
-										sendOutputLine(rs.getExplanation().toString());
-									if(rs.getHighlight() != null){
-										HighlightResult hr = rs.getHighlight();
-										sendHighlight("title",hr.getTitle());								
-										sendHighlightWithTitle("redirect",hr.getRedirect());
-									}
-								}
-							} else
-								sendOutputLine("#interwiki 0");
-							sendOutputLine("#results "+res.getResults().size());
-						}
-						for(ResultSet rs : res.getResults()){
-							sendResultLine(rs.score, rs.namespace, rs.title);
-							if(version>=2.1){
-								if(rs.getContext() != null){
-									for(String c : rs.getContext())
-										sendOutputLine("#context "+c);
-								}
+					sendOutputLine(Integer.toString(res.getNumHits()));
+					if(version>=2.1){
+						// info if any
+						sendOutputLine("#info "+res.getInfo()+" in "+delta+" ms");
+						// suggest
+						SuggestQuery sq = res.getSuggest();
+						if(sq != null && sq.hasSuggestion()){
+							sendOutputLine("#suggest ["+sq.getRangesSerialized()+"] "+encode(sq.getSearchterm()));
+						} else 
+							sendOutputLine("#no suggestion");
+						// interwiki
+						if(res.getTitles() != null){
+							res.sortTitlesByInterwiki();
+							sendOutputLine("#interwiki "+res.getTitles().size()+" "+res.getTitlesTotal());
+							for(ResultSet rs : res.getTitles()){
+								sendOutputLine(rs.getScore()+" "+encode(rs.getInterwiki())+" "+rs.getNamespace()+" "+encode(rs.getNamespaceTextual())+" "+encodeTitle(rs.getTitle()));
 								if(rs.getExplanation() != null)
 									sendOutputLine(rs.getExplanation().toString());
 								if(rs.getHighlight() != null){
 									HighlightResult hr = rs.getHighlight();
-									sendHighlight("title",hr.getTitle());
-									for(Snippet sn : hr.getText())
-										sendHighlight("text",sn);
+									sendHighlight("title",hr.getTitle());								
 									sendHighlightWithTitle("redirect",hr.getRedirect());
-									sendHighlightWithFragment("section",hr.getSection());
-									if(hr.getDate() != null)
-										sendHighlight("date",hr.getDate());
-									sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
-									sendHighlight("size",Long.toString(hr.getSize()));
 								}
+							}
+						} else
+							sendOutputLine("#interwiki 0 0");
+						sendOutputLine("#results "+res.getResults().size());
+					}
+					for(ResultSet rs : res.getResults()){
+						sendResultLine(rs.score, rs.namespace, rs.title);
+						if(version>=2.1){
+							if(rs.getContext() != null){
+								for(String c : rs.getContext())
+									sendOutputLine("#context "+c);
+							}
+							if(rs.getExplanation() != null)
+								sendOutputLine(rs.getExplanation().toString());
+							if(rs.getHighlight() != null){
+								HighlightResult hr = rs.getHighlight();
+								sendHighlight("title",hr.getTitle());
+								for(Snippet sn : hr.getText())
+									sendHighlight("text",sn);
+								sendHighlightWithTitle("redirect",hr.getRedirect());
+								sendHighlightWithFragment("section",hr.getSection());
+								if(hr.getDate() != null)
+									sendHighlight("date",hr.getDate());
+								sendHighlight("wordcount",Integer.toString(hr.getWordCount()));
+								sendHighlight("size",Long.toString(hr.getSize()));
 							}
 						}
 					}

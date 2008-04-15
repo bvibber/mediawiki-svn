@@ -303,17 +303,9 @@ public class WikiIndexModifier {
 	 * @return
 	 */	
 	public static boolean checkAddPreconditions(Article ar, IndexId iid){
-		Title redirect = Localization.getRedirectTitle(ar.getContents(),iid);
 		int ns = Integer.parseInt(ar.getNamespace());
-		if(redirect!=null && redirect.getNamespace() == ns){
+		if(ar.isRedirect() && ar.getRedirectTargetNamespace()==ns)
 			return false; // don't add redirects to same namespace, always add as redirect field
-		} 
-		
-			/*if(ar.getNamespace().equals("0")){
-			  if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
-				log.debug("Not adding "+ar+" into index: "+ar.getContents());
-				return false;
-			} */
 		return true;
 	}
 	
@@ -898,6 +890,11 @@ public class WikiIndexModifier {
 		doc.add(new Field("suffix",suffix,Store.YES,Index.UN_TOKENIZED));
 		doc.add(new Field("dbname",dbname,Store.NO,Index.UN_TOKENIZED));
 		doc.add(new Field("namespace",article.getNamespace(),Store.YES,Index.UN_TOKENIZED));
+		// redirect namespace
+		if(article.isRedirect()){
+			doc.add(new Field("redirect_namespace",Integer.toString(article.getRedirectTargetNamespace()),
+					Field.Store.NO, Field.Index.UN_TOKENIZED));
+		}
 		Field title = new Field("title",article.getTitle(),Store.YES, Index.NO);
 		title.setBoost(rankBoost);
 		doc.add(title);

@@ -172,10 +172,9 @@ public class SimpleIndexWriter {
 			log.error("Error adding highlight document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
 		}
 	}
-	
 	/** Add to title to the titles index */
 	public void addArticleTitle(Article a){
-		if(!WikiIndexModifier.checkAddPreconditions(a,iid))
+		if(!WikiIndexModifier.checkAddPreconditions(a,original))
 			return; // don't add if preconditions are not met
 		IndexId target = getTarget(a);		
 		IndexWriter writer = indexes.get(target.toString());

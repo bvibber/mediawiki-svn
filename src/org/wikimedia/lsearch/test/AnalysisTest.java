@@ -138,7 +138,7 @@ public class AnalysisTest {
 		displayTokens(analyzer,"ä, ö, ü; Đ đViệt Nam Đ/đ ↔ D/d lastone");
 		
 		analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("dewiki"));
-		displayTokens(analyzer," ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; čakšire");
+		displayTokens(analyzer,"Gunzen ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; čakšire");
 		
 		analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
 		displayTokens(analyzer," ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; čakšire");

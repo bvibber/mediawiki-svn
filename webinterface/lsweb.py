@@ -103,11 +103,12 @@ def make_title_link(line,dbname,caption=''):
     score = float(parts[0])
     title = ''
     iw = parts[1]
-    ns = canon_namespaces[int(parts[2])]
+    # ns = canon_namespaces[int(parts[2])]    
+    ns = parts[3]
     if ns != '':
         ns = ns +":"
-    title = iw+':'+ns+parts[3]
-    titleText = ns+parts[3]
+    title = iw+':'+ns+parts[4]
+    titleText = ns+parts[4]
     
     if dbname == 'mediawikiwiki':
         link= 'http://www.mediawiki.org/wiki/%s' % (title)
@@ -255,8 +256,6 @@ class MyHandler(BaseHTTPRequestHandler):
                         [suggestHl,suggest] = extract_suggest(suggest)
                     else:
                         suggest = ""
-                    # similar 
-                    similar = results.readline()
                     # interwiki
                     interwiki_count = results.readline();
                     interwiki_count = int(interwiki_count.split(' ')[1])
@@ -274,11 +273,11 @@ class MyHandler(BaseHTTPRequestHandler):
                                 [titleHl, orig] = extract_snippet(nextLine,False)
                                 nextLine = results.readline()
                                 if nextLine.startswith('#h.redirect'):
-                                    [redirectHl, redirectLink] = extract_snippet(nextLine,False,True);
+                                    [redirectHl, redirectLink] = extract_snippet(nextLine,False);
                                     if redirectLink != None:
                                         redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                             elif nextLine.startswith('#h.redirect'):
-                                [redirectHl, redirectLink] = extract_snippet(nextLine,False,True);
+                                [redirectHl, redirectLink] = extract_snippet(nextLine,False);
                                 if redirectLink != None:
                                     redirectLink = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],redirectLink)
                                         

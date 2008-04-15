@@ -369,12 +369,30 @@ public class Suggest {
 				if(r.isExactMatch()){
 					logRequest(searchterm,"CORRECT (by single word index)",start);
 					return new SuggestQuery(searchterm,new ArrayList<Integer>());
-				} else if(r.dist == 1 && betterRank(r.frequency,info.firstRank)){
-					HashMap<Integer,String> proposedChanges = new HashMap<Integer,String>();
-					proposedChanges.put(0,r.word);
-					SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>(),ns);
-					logRequest(sq.getSearchterm(),"single word common misspell",start);
-					return sq;
+				} else{  //if(r.dist <= 1 && betterRank(r.frequency,info.firstRank)){
+					SuggestResult best = null;
+					int bestRank = 0;
+					if(r.dist <=1 && betterRank(r.frequency,info.firstRank)){
+						best = r;
+						bestRank = titleRank(r.word,ns);
+					}
+					// find the best suggestion that is also a full title
+					for(int i=0;i<singleWordSug.size();i++){
+						SuggestResult sw = singleWordSug.get(i);
+						if((best != null && sw.dist>best.dist) || sw.dist>2 || !betterRank(sw.frequency,info.firstRank))
+							break;
+						if(titleExists(sw.word,ns) && titleRank(sw.word,ns)>bestRank){
+							best = sw;
+							break;
+						}
+					}
+					if(best != null){
+						HashMap<Integer,String> proposedChanges = new HashMap<Integer,String>();
+						proposedChanges.put(0,best.word);
+						SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>(),ns);
+						logRequest(sq.getSearchterm(),"single word misspell",start);
+						return sq;
+					}
 				}
 			}
 		}

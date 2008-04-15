@@ -888,6 +888,11 @@ public class IndexId {
 		return suffixToDbname;
 	}
 	
+	/** Get IndexId for a suffix in tspart indexes */
+	public IndexId getIndexIdforSuffix(String suffix){
+		return IndexId.get(getSuffixToDbname().get(suffix));
+	}
+	
 	/** Return age scaling to be used on this iid */
 	public AgeScaling getAgeScaling(){
 		if(ageScaling == null)

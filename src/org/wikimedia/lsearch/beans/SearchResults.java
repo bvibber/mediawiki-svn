@@ -24,9 +24,9 @@ public class SearchResults implements Serializable {
 	protected boolean retry;
 	protected SuggestQuery suggest;
 	protected ArrayList<ResultSet> titles;
+	protected int titlesTotal=0;
 	public enum Format { STANDARD, JSON, OPENSEARCH };
 	protected Format format = Format.STANDARD;
-	protected ArrayList<String> similar = new ArrayList<String>();
 	
 	/** phrases (two_words) from highlight to aid spellchecking */
 	protected HashSet<String> phrases = new HashSet<String>();
@@ -99,7 +99,12 @@ public class SearchResults implements Serializable {
 	public void addTitlesResult(ResultSet rs){
 		titles.add(rs);
 	}
-
+	public int getTitlesTotal() {
+		return titlesTotal;
+	}
+	public void setTitlesTotal(int titlesTotal) {
+		this.titlesTotal = titlesTotal;
+	}
 	public SuggestQuery getSuggest() {
 		return suggest;
 	}
@@ -186,25 +191,6 @@ public class SearchResults implements Serializable {
 			sorted.addAll(groups.get(iw));
 		}
 		titles = sorted;
-	}
-	
-	public void addSimilar(String key){
-		similar.add(key);
-	}
-	public void addSimilar(Collection<String> similarKeys){
-		similar.addAll(similarKeys);
-	}
-	public ArrayList<String> getSimilar() {
-		return similar;
-	}
-	public String serializeSimilar(){
-		StringBuilder sb = new StringBuilder();
-		for(String key : similar){
-			if(sb.length()!=0)
-				sb.append(" ");
-			sb.append(key.replace(' ','_'));
-		}
-		return sb.toString();
 	}
 
 	@Override

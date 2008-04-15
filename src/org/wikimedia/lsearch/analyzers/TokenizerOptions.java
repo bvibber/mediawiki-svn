@@ -46,6 +46,7 @@ public class TokenizerOptions {
 		public NoRelocationNoSplit(boolean exactCase){
 			super(exactCase);
 			this.split = false;
+			this.noCaseDetection = true;
 		}
 	}
 	

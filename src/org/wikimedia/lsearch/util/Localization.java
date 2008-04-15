@@ -111,6 +111,29 @@ public class Localization {
 		return getLocalizedNamespace(langCode,14,dbname);
 	}
 	
+	/** Get a single valid namespace name for namespace index */
+	public static String getNamespaceText(String langCode, int nsId, String dbname){
+		synchronized (lock){
+			// dbname-specific
+			if(dbname != null){
+				HashSet<String> r =  collect(customNamespaces.get(dbname),nsId);
+				if(r.size()>0)
+					return r.iterator().next();
+			}
+			// from message files
+			langCode = langCode.toLowerCase();
+			if(namespaces.get(langCode)==null)
+				readLocalization(langCode);
+			
+			Hashtable<Integer,String> r = namespaceNames.get(langCode);
+			if(r != null)
+				return r.get(nsId);
+			
+			return null; 
+		}
+	}
+	
+	/** Get all localized namespaces names for namespace index */
 	public static HashSet<String> getLocalizedNamespace(String langCode, int nsId, String dbname){
 		synchronized (lock){
 			HashSet<String> res = new HashSet<String>();

@@ -19,9 +19,9 @@ public class ResultSet implements Serializable {
 	public String suffix = null;
 	public String namespaceTextual = ""; // e.g. "User" or "" for main
 	
-	public ResultSet(String key) {
+	public ResultSet(String key, double score) {
 		int colon = key.indexOf(':');
-		this.score = 0;
+		this.score = score;
 		this.namespace = key.substring(0,colon);
 		this.title = key.substring(colon+1);
 	}
@@ -100,6 +100,13 @@ public class ResultSet implements Serializable {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	/** Title prefixed with textual namespace prefix */ 
+	public String getPrefixedTitle(){
+		if(namespaceTextual==null || namespaceTextual.equals(""))
+			return title;
+		else
+			return namespaceTextual+":"+title;
 	}
 	public void setContext(ArrayList<String> context) {
 		this.context = context;
