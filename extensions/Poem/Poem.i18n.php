@@ -123,6 +123,13 @@ $messages['jut'] = array(
 	'poem-desc' => 'Tilføje <tt>&lt;poem&gt;</tt> tag før digt formåter',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'poem-desc' => '시 형식을 위해 <tt>&lt;poem&gt;</tt> 태그를 추가',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

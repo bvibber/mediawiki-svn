@@ -102,6 +102,14 @@ $messages['gl'] = array(
 	'pageby-anon'         => '<i>anónimo</i>',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'pageby-contributors' => 'Cohoyrtee:',
+	'pageby-anon'         => '<i>neuenmyssit</i>',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

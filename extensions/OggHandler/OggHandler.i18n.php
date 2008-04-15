@@ -878,6 +878,9 @@ $messages['jv'] = array(
 	'ogg-player-videoElement' => 'élemèn <video>',
 	'ogg-player-oggPlugin'    => 'plugin Ogg',
 	'ogg-player-thumbnail'    => 'Namung gambar statis waé',
+	'ogg-player-soundthumb'   => 'Ora ana piranti pamain',
+	'ogg-player-selected'     => '(dipilih)',
+	'ogg-use-player'          => 'Nganggo piranti pamain:',
 	'ogg-more'                => 'Luwih akèh...',
 	'ogg-dismiss'             => 'Tutup',
 	'ogg-download'            => 'Undhuh berkas',
@@ -1740,10 +1743,19 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'ogg-play'     => 'Відтворити',
-	'ogg-pause'    => 'Пауза',
-	'ogg-stop'     => 'Зупинити',
-	'ogg-download' => 'Завантажити файл',
+	'ogg-desc'          => 'Обробник файлів Ogg Theora і Vorbis з використанням JavaScript-програвача',
+	'ogg-short-audio'   => 'Звуковий файл Ogg $1, $2',
+	'ogg-short-video'   => 'Відео-файл Ogg $1, $2',
+	'ogg-short-general' => 'Файл Ogg $1, $2',
+	'ogg-long-audio'    => '(звуковий файл Ogg $1, довжина $2, $3)',
+	'ogg-long-video'    => '(відео-файл Ogg $1, довжина $2, $4×$5 пікселів, $3)',
+	'ogg-long-error'    => '(Неправильний ogg-файл: $1)',
+	'ogg-play'          => 'Відтворити',
+	'ogg-pause'         => 'Пауза',
+	'ogg-stop'          => 'Зупинити',
+	'ogg-play-video'    => 'Відтворити відео',
+	'ogg-play-sound'    => 'Відтворити звук',
+	'ogg-download'      => 'Завантажити файл',
 );
 
 /** Vèneto (Vèneto)

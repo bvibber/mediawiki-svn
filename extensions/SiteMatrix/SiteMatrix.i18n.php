@@ -537,6 +537,7 @@ $messages['jv'] = array(
 	'sitematrix-summary'   => 'Kaca astaméwa utawa kusus iki ngandhut daftar kabèh wiki Wikimedia.',
 	'sitematrix-desc'      => 'Nuduhaké sawijining [[Special:SiteMatrix|daftar wiki Wikimedia]]',
 	'sitematrix-language'  => 'Basa',
+	'sitematrix-project'   => 'Jeneng proyèk, pranala interproyèk lan pranala interwiki',
 	'sitematrix-others'    => 'Proyèk-proyèk liya Wikimedia',
 	'sitematrix-total'     => "'''Gunggungé cacahé: $1'''",
 	'sitematrix-sitetotal' => 'Gunggungé',

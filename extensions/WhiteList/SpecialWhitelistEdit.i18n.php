@@ -805,3 +805,36 @@ $allMessages['vi'] = array(
 	'whitelistbadtitle'        => 'Tựa trang sai –',
 );
 
+/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$allMessages['zh-tw'] = array(
+	'whitelist-desc'            => '設定受限制用戶的存取權',
+	'whitelistedit'             => '授權名單內的編輯用戶',
+	'whitelist'                 => '授權清單頁面',
+	'mywhitelistpages'          => '我的頁面',
+	'whitelistfor'              => '<center><b>$1</b>的當今訊息</center>',
+	'whitelisttablemodify'      => '修訂',
+	'whitelisttablemodifyall'   => '全部',
+	'whitelisttablemodifynone'  => '無',
+	'whitelisttablepage'        => 'wiki頁面',
+	'whitelisttabletype'        => '存取型態',
+	'whitelisttableexpires'     => '到期日',
+	'whitelisttablemodby'       => '最後編輯者',
+	'whitelisttablemodon'       => '最後編輯時間',
+	'whitelisttableedit'        => '編輯',
+	'whitelisttableview'        => '查看',
+	'whitelisttablenewdate'     => '新日期：',
+	'whitelisttablechangedate'  => '更改到期日',
+	'whitelisttablesetedit'     => '設為可編輯',
+	'whitelisttablesetview'     => '設為可查看',
+	'whitelisttableremove'      => '刪除',
+	'whitelistnewpagesfor'      => '增加頁面於<b>$1</b>的編輯清單<br />
+請用* 或 % 做為萬用字元。',
+	'whitelistnewtabledate'     => '到期日：',
+	'whitelistnewtableedit'     => '設為可編輯',
+	'whitelistnewtableview'     => '設為可查看',
+	'whitelistselectrestricted' => '== 選取受限制用戶姓名 ==',
+	'whitelistnummatches'       => '-$1筆相符',
+);
+

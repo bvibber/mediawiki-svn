@@ -362,16 +362,23 @@ $messages['fur'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
 	'expandtemplates'                  => 'Ampliar modelos',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar wikitexto expandido e unha vista previa da páxina renderizada',
+	'expand_templates_intro'           => 'Esta páxina especial toma texto e amplía todos os modelos dentro del recursivamente.
+Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; de feito, case calquera cousa entre chaves duplas.
+Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Texto de entrada:',
 	'expand_templates_output'          => 'Resultado',
 	'expand_templates_xml_output'      => 'saída XML',
 	'expand_templates_ok'              => 'De acordo',
 	'expand_templates_remove_comments' => 'Eliminar os comentarios',
+	'expand_templates_generate_xml'    => 'Amosar as árbores de análise XML',
 	'expand_templates_preview'         => 'Vista previa',
 );
 
@@ -555,11 +562,13 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'expandtemplates'                  => 'Cithakan dikembangaké',
+	'expand_templates_title'           => 'Irah-irahan kontèks, kanggo {{PAGENAME}} lan sabanjuré:',
 	'expand_templates_input'           => 'Tèks sumber:',
 	'expand_templates_output'          => 'Pituwas (kasil)',
 	'expand_templates_xml_output'      => 'Pituwas XML',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Busaken komentar',
+	'expand_templates_generate_xml'    => 'Tuduhna uwit parser XML',
 	'expand_templates_preview'         => 'Pratayang',
 );
 

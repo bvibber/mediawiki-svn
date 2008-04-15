@@ -38,10 +38,13 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'authorprotect-desc'    => 'Позволява на автора на страница да я защити от другите потребители',
-	'authorprotect-reason'  => 'Причина',
-	'authorprotect-success' => 'Защитата беше успешна!',
-	'authorprotect-failure' => 'Защитата беше неуспешна',
+	'authorprotect-desc'      => 'Позволява на автора на страница да я защити от другите потребители',
+	'authorprotect-notauthor' => 'Не сте автор на тази страница',
+	'authorprotect-confirm'   => 'Защитаване',
+	'authorprotect-expiry'    => 'Срок на изтичане',
+	'authorprotect-reason'    => 'Причина',
+	'authorprotect-success'   => 'Защитата беше успешна!',
+	'authorprotect-failure'   => 'Защитата беше неуспешна',
 );
 
 /**  German (Deutsch)
@@ -61,6 +64,24 @@ $messages['de'] = array(
 	'authorprotect-failure'    => 'Seite konnte nicht geschützt werden!',
 	'protect-level-author'     => 'Seitenbearbeitung auf Autoren beschränken',
 	'restriction-level-author' => 'Autor-geschützt',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'authorprotect'            => 'Pretektu paĝon kontraŭ ne-aŭtoroj',
+	'authorprotect-desc'       => 'Permesas al la aŭtoro de paĝo protekti ĝin de aliaj uzantoj',
+	'authorprotect-notauthor'  => 'Vi ne estas la aŭtoro de ĉi tiu paĝo',
+	'authorprotect-confirm'    => 'Protektu',
+	'authorprotect-edit'       => 'Limigu redaktadon por aŭtoroj',
+	'authorprotect-move'       => 'Limigu movado por aŭtoroj',
+	'authorprotect-reason'     => 'Kialo',
+	'authorprotect-intro'      => 'Utiligu ĉi tiun kamparon por ŝlosi ĉi tiu paĝo kontraŭ ne-aŭtoroj',
+	'authorprotect-success'    => 'Protektado sukcesis!',
+	'authorprotect-failure'    => 'Protektado malsukcesis',
+	'protect-level-author'     => 'Protektu kontraŭ ne-aŭtoroj',
+	'restriction-level-author' => 'Protektita per aŭtoro',
 );
 
  /** Persian (فارسی)

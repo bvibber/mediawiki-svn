@@ -214,6 +214,26 @@ $messages['ps'] = array(
 ته اړتيا ده.',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'smoothgallery'                     => 'Плавная галерея',
+	'smoothgallery-desc'                => 'Позволяет участникам создавать галереи загруженных изображений . Поддерживает большинство настроек SmoothGallery',
+	'smoothgallery-title'               => 'Плавная галерея',
+	'smoothgallery-smoothgallerytitle'  => 'Плавная галерея: $1',
+	'smoothgallery-error'               => '<b>Ошибка плавной галереи:</b>',
+	'smoothgallery-gallery-not-found'   => 'Запрашиваемой галереи не существует.',
+	'smoothgallery-not-found'           => 'В галерею не было добавлено изображений. Пожалуйста, добавте хотя бы одно.',
+	'smoothgallery-no-images'           => 'Не найдено изображений для этой галереи.
+Убедитесь, что все требуемые изображения существуют.
+Следующий изображения не найдены: $1',
+	'smoothgallery-invalid-images'      => 'Следующее требуемые изображения имеют неправильный тип: $1',
+	'smoothgallery-unexpected-error'    => 'Произошла непредвиденная ошибка.
+Пожалуйста, отправьте отчёт об ошибке.',
+	'smoothgallery-javascript-disabled' => 'Для правильной работы этой галереи требуется Javascript.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

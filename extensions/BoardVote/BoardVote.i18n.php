@@ -1276,6 +1276,7 @@ $messages['ga'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'boardvote'              => 'Elección dos Membros do Consello de Administración de Wikimedia',
@@ -1339,12 +1340,19 @@ até o momento. $1 para os datos encriptados.</p>',
 	'boardvote_blocked'      => 'Sentímolo, vostede foi bloqueado no wiki no que está rexistrado. Aos usuarios bloqueados non se lles permite votar.',
 	'boardvote_welcome'      => "Reciba a nosa benvida, '''$1'''!",
 	'go_to_board_vote'       => 'Eleccións do Consello de Administración de Wikimedia de 2007',
-	'boardvote_redirecting'  => 'Para unha maior seguranza e transparencia, a votación realízase nun servidor
-externo con control independente.
+	'boardvote_redirecting'  => 'Para unha maior seguranza e transparencia, a votación realízase nun servidor externo con control independente.
 
-Vai ser redirixido cara este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
+Vai ser redirixido cara a este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'boardvote_time' => 'Am',
+	'boardvote_user' => 'Ymmydeyr',
 );
 
 $messages['he'] = array(
@@ -2068,6 +2076,15 @@ $messages['jv'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Coblos]]
 * [[Special:Boardvote/list|Daftar coblosan nganti saiki]]
 * [[Special:Boardvote/dump|Data pamilihan sing diènkripsi]]',
+	'boardvote_intro'        => '<p>Sugeng rawuh ing pamilihan kapindho Déwan Kapercayan Wikimedia. Kita milih wong loro kanggo ngwakili komunitas panganggo ing sawetara proyek-proyek Wikimedia. Wong loro iki bakal ngréwangi nemtokaké arah tujuan proyèk-proyèk Wikimedia iki ing mangsa ngarep, minangka individu lan minangka kelompok, lan ngwakili kawigatèn saha kakuwatiran <em>panjenengan</em> menyang Déwan Kapercayan. Wong-wong iku kabèh bakal nemtokaké cara golèk dhuwit lan alokasi dana sing wis olèh.</p>
+
+<p>Mangga diwaca dhisik pranyatan lan wangsulan para kandidat minangka saksama sadurungé panjenengan miwiti nyoblos. Saben kandidat iku panganggo sing wis dikurmati, sing wis nyumbangsihaké wektu lan daya upaya supaya nggawé proyèk-proyèk iki dadi sawijining lingkungan sing ramah lan duwé komitmen kanggo nggolèk serta nyebaraké kawruh umat manungsa minangka bébas.</p>
+
+<p>Panjenengan bisa nyoblos saakèh-akèh kandidat sing panjenengan péngèni. Kandidat sing olèh swara akèh dhéwé ing saben posisi, bakal dinyatakaké dadi pamenang ing posisi iku. Yèn anaa séri utawa remis, mengko bakal dianakaké pamilihan swara lanjutan.</p>
+
+<p>Kanggo informasi sabanjuré, mangga mirsanit:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ" class="external">Pitakonan bab Pamilihan sing kerep diajokaké</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en" class="external">Kandidat</a></li></ul>',
 	'boardvote_intro_change' => '<p>Panjenengan wis tau nyoblos. Senadyan mengkono, panjenengan bisa
 ngowahi pilihan panjenengan mawa formulir ing ngisor iki. Mangga dipriksa dhisik kothak
 ing sandhingé saben kandidat sing panjenengan pilih.</p>',
@@ -2086,6 +2103,9 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]',
+	'boardvote_nosession'    => 'Idèntitas panganggo Wikimedia panjenengan ora bisa ditemtokaké.
+Mangga log mlebu ing wiki ing ngendi panjenengan duwé hak kanggo mèlu coblosan, lan tumujua menyang <nowiki>[[Special:Boardvote]]</nowiki>.
+Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi sadurungé $2, lan suntingan kapisan sadurungé $3.',
 	'boardvote_notloggedin'  => 'Panjenengan ora mlebu log. Supaya bisa mèlu nyoblos, panjenengan kudu nganggo rékening (akun) mawa paling ora $1 suntingan sadurungé $2, lan suntingan sing kapisan dilakoni sadurungé $3.',
 	'boardvote_notqualified' => 'Panjenengan ora bisa mèlu mènèhaké swara ing pamilihan iki. Panjenengan kudu wis nglakoni $3 suntingan sadurungé $2, lan suntingan kapisan wis ana sadurungé $5.',
 	'boardvote_novotes'      => 'Durung ana sing nyoblos.',
@@ -2101,7 +2121,9 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 	'boardvote_strike'       => 'Corèt',
 	'boardvote_unstrike'     => 'Batalna corètan',
 	'boardvote_needadmin'    => 'Namung para pangurus pamilihan waé sing bisa ngalakoni operasi iki.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Pamilihan Déwan Wikimedia</a>: Pamilihan dibuka nganti 12 Juli',
 	'boardvote_notstarted'   => 'Coblosané durung diwiwiti',
+	'boardvote_closed'       => 'Pamilihan wis ditutup, mangga mirsani [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kaca pamilihan kanggo nuwèni kasilé] sadélok manèh.',
 	'boardvote_edits_many'   => 'akèh',
 	'boardvote_blocked'      => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
 	'boardvote_welcome'      => "Sugeng rawuh '''$1'''!",
@@ -3044,8 +3066,8 @@ $messages['pam'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'boardvote'              => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
@@ -3070,7 +3092,7 @@ rozpowszechnianiu ludzkiej wiedzy.<p>
 	'boardvote_intro_change' => '<p>Już głosowałeś w tych wyborach. Możesz jednak zmienić swoje głosy za pomocą poniższego formularza. Zaznacz kandydatów, na których głosujesz.</p>',
 	'boardvote_entered'      => 'Dziękujemy, twój głos został zapisany.
 
-Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis twojego głosu:
+Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis Twojego głosu:
 
 <pre>$1</pre>
 
@@ -3078,7 +3100,7 @@ Został on zakodowany poniższym kluczem publicznym Koordynatorów Wyborów:
 
 <pre>$2</pre>
 
-Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote/dump|zrzucie danych]].
+Oto zakodowana wersja. Będzie ona publicznie widoczna w [[Special:Boardvote/dump|zrzucie danych]].
 
 <pre>$3</pre>
 
@@ -3109,7 +3131,7 @@ Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote
 	'boardvote_blocked'      => 'Przykro nam, ale zablokowani użytkownicy nie mogą głosować.',
 	'boardvote_welcome'      => "Witamy, '''$1'''!",
 	'go_to_board_vote'       => 'Wybory do Rady Powierniczej Fundacji Wikimedia 2007',
-	'boardvote_redirecting'  => 'Ze względu na bezpieczeństwo i przejrzystość, głosowanie odbywa się na zewnętrznym, niezależnie kontrolowanym serwerze. Zostaniesz przekierowany (-a) na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz. Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
+	'boardvote_redirecting'  => 'Ze względu na bezpieczeństwo i przejrzystość, głosowanie odbywa się na zewnętrznym, niezależnie kontrolowanym serwerze. Zostaniesz przekierowany na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz. Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
 );
 
 $messages['pms'] = array(

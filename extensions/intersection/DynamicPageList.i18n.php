@@ -248,6 +248,16 @@ $messages['jut'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Du nødst til inkludær til mendst en klynge, æller spæsifiær en navnerum!',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Kakèhan kategori!',
+	'intersection_toofewcats'    => 'DynamicPageList: Kesithikan kategori!',
+	'intersection_noresults'     => 'DynamicPageList: Ora ana pituwasé (kasilé)!',
+	'intersection_noincludecats' => 'DynamicPageList: Panjenengan perlu minimal mènèhi kategori sawiji, utawa spésifikasi bilik nama sawiji!',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

@@ -158,6 +158,13 @@ $messages['tg-cyrl'] = array(
 	'mwsearch-desc' => 'Афзунаи MWSearch',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'mwsearch-desc' => 'Плаґін MWSearch',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

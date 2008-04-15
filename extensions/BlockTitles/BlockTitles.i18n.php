@@ -127,6 +127,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'block_title_error_page_title' => 'Forbarita titolo',
+	'block_title_error-desc'       => 'Provizas bazan ilon por malebligi paĝojn kun certaj titoloj esti konservita aŭ kreita.',
 	'block_title_error'            => 'Bedaŭrinde, la titolo de ĉi tiu paĝo ne estas permesita esti konservata.',
 );
 

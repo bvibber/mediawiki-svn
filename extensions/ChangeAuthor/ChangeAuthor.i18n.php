@@ -542,7 +542,11 @@ $messages['lb'] = array(
 	'changeauthor-nosuchuser'           => 'Et gëtt kee Benotzer "$1".',
 	'changeauthor-revview'              => 'Versioun #$1 vun $2',
 	'changeauthor-nosuchtitle'          => 'Et gëtt keng Säit mam Numm "$1".',
+	'changeauthor-weirderror'           => "E seelene Feeler ass geschitt.
+Probéiert w.e.g. nach eng Kéier.
+Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
 	'changeauthor-success'              => 'Är Ufro gouf duerchgefouert.',
+	'changeauthor-logentry'             => 'Den Auteur gouf vun $2 op $1 vum $3 op den $4 geännert',
 	'changeauthor-logpagename'          => 'Lëscht vun den Ännerunge vun dësem Auteur',
 	'changeauthor-rev'                  => 'Versioun $1',
 );

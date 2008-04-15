@@ -1069,6 +1069,24 @@ $wdMessages['gl'] = array(
 	'ow_no_action_specified'           => '<h3>Non foi especificada ningunha acción</h3> Quizais veu a esta páxina directamente? Normalmente non precisa estar aquí.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$wdMessages['gv'] = array(
+	'langman_title'                   => 'Reireyder çhengey',
+	'languages'                       => 'Wikidata: Reireyder çhengey',
+	'ow_save'                         => 'Sauail',
+	'ow_history'                      => 'Shennaghys',
+	'ow_uiprefs'                      => 'Wikidata',
+	'ow_dm_OK'                        => 'OK',
+	'ow_ClassAttributeLevel'          => 'Corrym',
+	'ow_ClassAttributeType'           => 'Sorçh',
+	'ow_Language'                     => 'Çhengey',
+	'ow_Text'                         => 'Teks',
+	'ow_TranslatedTextAttributeValue' => 'Teks',
+	'ow_LinkAttributeValues'          => 'Kianglaghyn',
+);
+
 $wdMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );

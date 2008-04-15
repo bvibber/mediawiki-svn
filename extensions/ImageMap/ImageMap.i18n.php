@@ -407,7 +407,16 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'imagemap_description' => 'Prekara gambar iki',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: kudu mènèhi sawijining gambar ing baris kapisan',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: gambar ora absah utawa ora ditemokaké',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: ora ditemokaké pranala sing absah ing pungkasan baris kaping $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: irah-irahan ora absah ing pranala ing baris kaping $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: ora cukup koordinat kanggo wujud ing baris kaping $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: wujud ora ditepungi ing baris kaping $1, saben baris kudu diwiwiti mawa salah siji saka: default, rect, circle utawa poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: kudu diwènèhi spésifikasi area minimal sawiji',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: koordinat ora absah ing baris kaping $1, kudu awujud angka',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: spésifikasi desc ora absah, kudu salah siji saka: $1',
+	'imagemap_description'        => 'Prekara gambar iki',
 );
 
 /* Kazakh Arabic (AlefZet) */

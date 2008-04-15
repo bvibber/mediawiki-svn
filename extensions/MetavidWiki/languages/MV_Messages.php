@@ -1894,10 +1894,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'mv_save_changes'      => 'Zapisz zmiany',
 	'mv_label_stream_type' => 'Typ strumienia',
+	'mv_remove'            => 'usuń',
 );
 
 /** Pashto (پښتو)

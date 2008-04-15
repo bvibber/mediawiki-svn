@@ -786,6 +786,13 @@ $messages['vi'] = array(
 	'patrol-revert-reason' => 'Lý do:',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'patrol-revert' => 'Sädunön',
+);
+
 /* Cantonese (Hillgentleman, Shinjiman) */
 $messages['yue'] = array(
 	'patrol' => '巡啲編輯',

@@ -242,7 +242,9 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'assert_edit_title' => 'Pandhedhesan gagal',
+	'assert_edit_title'   => 'Pandhedhesan gagal',
+	'assert_edit_desc'    => 'Nambahaké pandhedhesan suntingan kanggo digunakaké déning bot',
+	'assert_edit_message' => 'Pandhedhesan sing dikarepaké ($1) gagal.',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

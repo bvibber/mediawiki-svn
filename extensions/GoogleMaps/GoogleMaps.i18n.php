@@ -1634,10 +1634,12 @@ $wgGoogleMapsMessages['oc'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Dodek
+ * @author Sp5uhe
  * @author Masti
  */
 $wgGoogleMapsMessages['pl'] = array(
 	'gm-balloon-title'    => 'Tytuł:',
+	'gm-remove'           => 'usuń',
 	'gm-save-point'       => 'zapisz i zamknij',
 	'gm-searching'        => 'wyszukiwanie...',
 	'gm-are-you-sure'     => 'Czy jesteś pewien?',

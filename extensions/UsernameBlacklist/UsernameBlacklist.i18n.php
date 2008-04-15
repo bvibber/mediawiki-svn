@@ -532,8 +532,9 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'blacklistedusername'     => 'Daftar ireng panganggo',
-	'blacklistedusernametext' => 'Jeneng panganggo sing panjenengan pilih ana ing sajroning [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]]. Mangga milih jeneng panganggo liya.',
+	'blacklistedusername'             => 'Daftar ireng panganggo',
+	'blacklistedusernametext'         => 'Jeneng panganggo sing panjenengan pilih ana ing sajroning [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]]. Mangga milih jeneng panganggo liya.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Èntri|Èntri}} ing daftar ireng jeneng panganggo {{PLURAL:$1|iki|iki}} ora absah; mangga benakna {{PLURAL:$1|èntri|èntri}} iku sadurungé disimpen:',
 );
 
 /* Kazakh Arabic (kk:AlefZet) */
@@ -787,13 +788,14 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
- * @author Derbeth
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|czarnej listy użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
 	'blacklistedusername'             => 'Nazwa użytkownika na czarnej liście',
-	'blacklistedusernametext'         => 'Wybrana przez ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|czarnej listy]]. Prosimy o wybranie innej nazwy.',
+	'blacklistedusernametext'         => 'Wybrana przez Ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|listy zabronionych nazw]].
+Wybierz inną nazwę.',
 	'usernameblacklist'               => '<pre>
 # Wpisy na tej liście będą użyte jako części wyrażenia regularnego stanowiącego czarną listę
 # nazw użytkowników zakazanych przy rejestracji. Każdy element powinien być częścią

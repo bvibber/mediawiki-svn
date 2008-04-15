@@ -385,6 +385,16 @@ $messages['gl'] = array(
 	'bookinfo-provider'          => 'Fornecedor de datos: $1',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'bookinfo-result-title'     => 'Ennym:',
+	'bookinfo-result-author'    => 'Ughtar:',
+	'bookinfo-result-publisher' => 'Soilsheyder:',
+	'bookinfo-result-year'      => 'Blein:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -554,6 +564,7 @@ $messages['jv'] = array(
 	'bookinfo-result-year'       => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
 	'bookinfo-error-nosuchitem'  => 'Item sing dilebokaké ora ana utawa ora bisa ditemokaké.',
+	'bookinfo-error-noresponse'  => 'Ora ana wangsulan utawa rèsponsé kesuwèn.',
 	'bookinfo-purchase'          => 'Tuku buku ini saka $1',
 	'bookinfo-provider'          => 'Sing nyedyakaké data: $1',
 );

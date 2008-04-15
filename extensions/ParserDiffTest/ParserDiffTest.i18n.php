@@ -277,19 +277,24 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
- * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
+	'parserdifftest'      => 'Test de análise de diferenzas',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Páxina especial]] para comparar a saída de dous analizadores diferentes',
 	'pdtest_no_target'    => 'Non se especificou o destino.',
 	'pdtest_page_missing' => 'A páxina especificada non foi atopada na base de datos.',
 	'pdtest_no_changes'   => 'Non foron detectados cambios.',
-	'pdtest_time_report'  => 'b>$1</b> leva $2 segundos, <b>$3</b> leva $4 segundos.',
+	'pdtest_time_report'  => '<b>$1</b> leva $2 segundos, <b>$3</b> leva $4 segundos.',
+	'pdtest_title'        => 'Título do contexto:',
+	'pdtest_text'         => 'Texto de entrada:',
 	'pdtest_ok'           => 'De acordo',
-	'pdtest_get_text'     => 'Obter texto da páxina',
+	'pdtest_get_text'     => 'Obter o texto da páxina',
 	'pdtest_diff'         => 'Diferenzas',
 	'pdtest_side_by_side' => 'Comparación da saída',
+	'pdt_comparing_page'  => 'Comparando a análise de saída de [[$1]]',
 );
 
 /** Hebrew (עברית)
@@ -474,11 +479,14 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'pdtest_no_changes' => 'Ora ditemokaké owah-owahan.',
-	'pdtest_title'      => 'Irah-irahan kontèks:',
-	'pdtest_ok'         => 'OK',
-	'pdtest_get_text'   => 'Jupuk tèks saka kaca',
-	'pdtest_diff'       => 'Prabédan',
+	'pdtest_no_target'    => 'Ora ana targèt sing dispésifikasi.',
+	'pdtest_page_missing' => 'Kaca sing diwènèhaké ora ditemokaké ing sajroné database.',
+	'pdtest_no_changes'   => 'Ora ditemokaké owah-owahan.',
+	'pdtest_title'        => 'Irah-irahan kontèks:',
+	'pdtest_text'         => 'Tèks sing dilebokaké',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Jupuk tèks saka kaca',
+	'pdtest_diff'         => 'Prabédan',
 );
 
 /** Khmer (ភាសាខ្មែរ)

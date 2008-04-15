@@ -98,6 +98,13 @@ $messages['pl'] = array(
 	'editown-desc' => 'Użytkownicy bez uprawnienia do edycji wszystkich stron mogą edytować tylko te strony, które sami utworzyli',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'editown-desc' => "Utilizadores sem o privilégio 'editall' só podem editar as páginas que os próprios criaram",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

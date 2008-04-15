@@ -291,7 +291,7 @@ A videó [http://www.youtube.com/watch?v=$1 itt] tekinthető meg',
 	'youtubeauthsub_uploading'           => 'A videó most töltődik fel.
 Kérlek várj türelemmel.',
 	'youtubeauthsub_viewpage'            => 'A videót [[$1|itt]] is megtekintheted.',
-	'youtubeauthsub_jserror_nokeywords'  => 'Adj meg egy, vagy több kulcsszót.',
+	'youtubeauthsub_jserror_nokeywords'  => 'Adj meg egy vagy több kulcsszót.',
 	'youtubeauthsub_jserror_notitle'     => 'Kérlek, add meg a videó címét.',
 	'youtubeauthsub_jserror_nodesc'      => 'Kérlek, add meg a videó leírását.',
 );

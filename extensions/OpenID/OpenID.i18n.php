@@ -962,23 +962,49 @@ $messages['sr-ec'] = array(
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'openid-desc'          => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
-	'openidlogin'          => 'Logga in med OpenID',
-	'openidfinish'         => 'Fullfölj OpenID-inloggning',
-	'openidserver'         => 'OpenID-server',
-	'openidxrds'           => 'Yadis-fil',
-	'openidconvert'        => 'OpenID-konvertering',
-	'openiderror'          => 'Bekräftelsefel',
-	'openiderrortext'      => 'Ett fel uppstod under bekräftning av OpenID-adressen.',
-	'openidconfigerror'    => 'Konfigurationsfel med OpenID',
-	'openidoptional'       => 'Valfri',
-	'openidnickname'       => 'Smeknamn',
-	'openidemail'          => 'E-postadress',
-	'openidlanguage'       => 'Språk',
-	'openidchoosepassword' => 'lösenord:',
-	'tog-hideopenid'       => 'Dölj <a href="http://openid.net/">OpenID</a> på din användarsida, om du loggar in med OpenID.',
-	'openidnousername'     => 'Inget användarnamn angivet.',
-	'openidbadusername'    => 'Ogiltigt användarnamn angivet.',
+	'openid-desc'               => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
+	'openidlogin'               => 'Logga in med OpenID',
+	'openidfinish'              => 'Fullfölj OpenID-inloggning',
+	'openidserver'              => 'OpenID-server',
+	'openidxrds'                => 'Yadis-fil',
+	'openidconvert'             => 'OpenID-konvertering',
+	'openiderror'               => 'Bekräftelsefel',
+	'openiderrortext'           => 'Ett fel uppstod under bekräftning av OpenID-adressen.',
+	'openidconfigerror'         => 'Konfigurationsfel med OpenID',
+	'openidoptional'            => 'Valfri',
+	'openidnickname'            => 'Smeknamn',
+	'openidemail'               => 'E-postadress',
+	'openidlanguage'            => 'Språk',
+	'openidchoosefull'          => 'Fullt namn ($1)',
+	'openidchooseurl'           => 'Ett namn taget från din OpenID ($1)',
+	'openidchooseauto'          => 'Ett automatiskt genererat namn ($1)',
+	'openidchoosemanual'        => 'Ett valfritt namn:',
+	'openidchooseexisting'      => 'Ett existerande konto på denna wiki:',
+	'openidchoosepassword'      => 'lösenord:',
+	'openidconvertinstructions' => 'Detta formulär låter dig ändra dina användarkonton till att använda en OpenID-adress.',
+	'openidconvertsuccess'      => 'Konverterade till OpenID',
+	'openidconvertsuccesstext'  => 'Du har konverterat din OpenID till $1.',
+	'openidconvertyourstext'    => 'Det är redan din OpenID.',
+	'openidconvertothertext'    => 'Den OpenID tillhör någon annan.',
+	'openidalreadyloggedin'     => "'''Du är redan inloggad, $1!'''
+
+Om du vill använda OpenID att logga in i framtiden, kan du [[Special:OpenIDConvert|konvertera dina konton till att använda OpenID]].",
+	'tog-hideopenid'            => 'Dölj <a href="http://openid.net/">OpenID</a> på din användarsida, om du loggar in med OpenID.',
+	'openidnousername'          => 'Inget användarnamn angivet.',
+	'openidbadusername'         => 'Ogiltigt användarnamn angivet.',
+	'openidautosubmit'          => 'Denna sida innehåller ett formulär som kommer levereras automatiskt om du har slagit på JavaScript. Om inte, tryck på "Fortsätt".',
+	'openidclientonlytext'      => 'Du kan inte använda konton från denna wikin som OpenID på en annan sida.',
+	'openidloginlabel'          => 'OpenID-adress',
+	'openidlogininstructions'   => "{{SITENAME}} stödjer [http://openid.net/ OpenID]-standarden för enhetlig inlogging på många webbsidor. OpenID låter dig logga in på många webbsidor utan att använda massor med lösenord överallt. (Se [http://en.wikipedia.org/wiki/OpenID Wikipedia-artikeln om OpenID] för mer information.)
+
+Om du redan har ett konto på {{SITENAME}}, kan du logga in som vanligt med ditt användarnamn och lösenord. För att använda OpenID i framtiden kan du [[Special:OpenIDConvert|konvertera dina konton till OpenID]] efter att du har loggat in på normalt sätt.
+
+Det finns många [http://wiki.openid.net/Public_OpenID_providers leverantörer av OpenID], och du kan redan ha ett OpenID-aktiverat konto på en annan plats.
+
+;Andra wikier :Om du har ett konto på en OpenID-aktiverad wiki, som [http://wikitravel.org/ Wikitravel], [http://wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] eller [http://kei.ki/ Keiki], kan du logga in på {{SITENAME}} genom att skriva in den '''fullständiga adressen''' till din användarsida på den wikin i boxen ovanför. För exempel ''<nowiki>http://kei.kei/en/User:Exempel</nowiki>''.
+;[http://openid.yahoo.com/ Yahoo!] :Om du har ett konto hos Yahoo! kan du logga in på denna sida genom att skriva in din OpenID från Yahoo i boxen övanför. Yahoo!s OpenID-adresser har formen ''<nowiki>https://me.yahoo.com/dittanvändarnamn</nowiki>''.
+;[http://dev.aol.com/aol-and-63-million-openids AOL] :Om du har ett konto hos [http://aol.com/ AOL], för exempel ett [http://aim.com/ AIM]-konto, kan du logga in på {{{SITENAME}} genom att skriva in din OpenID från AOL i boxen ovanför. AOLs OpenID-adresser har formen ''<nowiki>http://openid.aol.com/dittanvändarnamn</nowiki>''. Användarnamner måste vara små bokstäver och utan mellanrum.
+;[http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] :Om du har ett konto på en av dessa tjänster, skriv in adressen till din bloggen i boxen ovanför. För exempel ''<nowiki>http://dittanvändarnamn.blogspot.com/</nowiki>'', ''<nowiki>http://dittanvändarnamn.wordpress.com/</nowiki>'', ''<nowiki>http://dittanvändarnamn.livejournal.com/</nowiki>'', or ''<nowiki>http://dittanvändarnamn.vox.com/</nowiki>''.",
 );
 
 /** Telugu (తెలుగు)

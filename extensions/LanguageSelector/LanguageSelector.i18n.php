@@ -108,6 +108,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'languageselector'         => 'Lingvo',
+	'languageselector-desc'    => 'Lingvo-selektilo en ĉiuj paĝo, ankaŭ por vizitantoj',
 	'languageselector-setlang' => 'faru',
 );
 
@@ -144,6 +145,15 @@ $messages['gl'] = array(
 	'languageselector'         => 'Lingua',
 	'languageselector-desc'    => 'Seleccionador da lingua en todas as páxinas, tamén para os visitantes',
 	'languageselector-setlang' => 'elixir',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'languageselector'         => 'Çhengey',
+	'languageselector-desc'    => 'Reihder hengey er dagh ooilley ghuillag, gys sleih er keayrt myrgeddin',
+	'languageselector-setlang' => 'soiaghey',
 );
 
 /** Hindi (हिन्दी)

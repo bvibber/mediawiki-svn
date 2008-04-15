@@ -86,6 +86,15 @@ $messages['hsb'] = array(
 		'templatelink_newtitle' => '$1 (narunany)',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'templatelink'          => 'Lyen pou modèl an',
+	'templatelink_empty'    => 'Ou dwèt bay yon paramèt.',
+	'templatelink_newtitle' => '$1 (mete paj sa anndan yon lòt paj)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន

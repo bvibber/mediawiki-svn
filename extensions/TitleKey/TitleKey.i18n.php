@@ -91,6 +91,13 @@ $messages['oc'] = array(
 	'titlekey-desc' => "Retorn vèrs la fin de la sugestion de recèrca d'un prefix de títol",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'titlekey-desc' => 'Wsparcie dla podpowiedzi początku tytułu przy wyszukiwaniu',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -431,6 +431,7 @@ sphinx|Esfinx',
 
 /** Polish (Polski)
  * @author Wpedzich
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'vote'                => 'Głosuj',
@@ -449,7 +450,7 @@ riddler|Człowiek-Zagadka',
 	'vote-results-count'  => 'Policz',
 	'vote-results-none'   => 'Nikt jeszcze dotąd nie głosował.',
 	'vote-login'          => 'By głosować, musisz $1.',
-	'vote-login-link'     => 'zaloguj',
+	'vote-login-link'     => 'zaloguj się',
 	'vote-invalid-choice' => 'Musisz wybrać jedną z dostępnych opcji.',
 );
 

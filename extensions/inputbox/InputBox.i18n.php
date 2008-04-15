@@ -452,7 +452,12 @@ $messages['jut'] = array(
 	'createarticle'           => 'Åprette side',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
 $messages['jv'] = array(
+	'inputbox-desc'  => 'Ngidinaké nganggo formulir HTML sing wis ditemtokaké',
+	'tryexact'       => 'Cobanen pancocogan èksak',
 	'searchfulltext' => 'Golèk ing tèks jangkep',
 	'createarticle'  => 'Damel artikel',
 );
