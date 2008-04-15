@@ -12,6 +12,14 @@ $messages['en'] = array(
 	'whosonline-desc' => 'Displays [[Special:WhosOnline|a list]] of logged-in and anonymous users currently online',
 );
 
+/** Danish (Dansk)
+ * @author Tomas Jensen
+ */
+$messages['da'] = array(
+	'whosonline'	=> 'Hvem er på',
+	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] af, både anonyme og kendte bruger der er logget på',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
