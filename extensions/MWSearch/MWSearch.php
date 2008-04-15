@@ -39,11 +39,17 @@
 # - it's in the 'lucene-search' and 'mwsearch' modules in CVS.
 ##########
 
-$wgLuceneDisableSuggestions = false;
-$wgLuceneDisableTitleMatches = false;
+# If to show related links (if available) below search results
+$wgLuceneUseRelated = true;
 
-# Back-end version
-$wgLuceneSearchVersion = 2;
+# Back-end version (override before including MWSearch.php)
+if( !isset($wgLuceneSearchVersion) )
+	$wgLuceneSearchVersion = 2;
+# For how long (in seconds) to cache lucene results, off by default (0)
+# NOTE: caching is typically inefficient for queries, with cache 
+#       hit rates way below 1% even for very long expiry times
+if( !isset($wgLuceneSearchCacheExpiry) )
+	$wgLuceneSearchCacheExpiry = 0;
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (defined('MEDIAWIKI')) {
@@ -58,6 +64,9 @@ $wgExtensionCredits['other'][] = array(
 );
 $wgExtensionMessagesFiles['MWSearch'] = dirname(__FILE__) . '/MWSearch.i18n.php';
 
+if($wgLuceneSearchVersion >= 2.1)
+	$wgHooks['PrefixSearchBackend'][] = 'LuceneSearch::prefixSearch';
+
 function wfLuceneSearch() {
 
 require_once( 'SearchEngine.php' );
@@ -71,7 +80,7 @@ class LuceneSearch extends SearchEngine {
 	 * @access public
 	 */
 	function searchText( $term ) {
-		return LuceneSearchSet::newFromQuery( 'search',
+		return LuceneSearchSet::newFromQuery( isset($this->related)? 'related' : 'search',
 				$term, $this->namespaces, $this->limit, $this->offset );
 	}
 
@@ -85,7 +94,20 @@ class LuceneSearch extends SearchEngine {
 	function searchTitle( $term ) {
 		return null;		
 	}
-	
+
+	/**
+	 *  PrefixSearchBackend override for OpenSearch results
+	 */
+	static function prefixSearch( $ns, $search, $limit, &$results ) {
+		$it = LuceneSearchSet::newFromQuery( 'prefix', $search, $ns, $limit, 0 );
+		$results = array();
+		while( $res = $it->next() ) {
+			$results[] = $res->getTitle()->getPrefixedText(); 
+		}
+		
+		return false;
+	}
+		
 	/**
 	 * Prepare query for the lucene-search daemon:
 	 * 
@@ -101,7 +123,7 @@ class LuceneSearch extends SearchEngine {
 	 * @access private
 	 */
 	function replacePrefixes( $query ) {
-		global $wgContLang;
+		global $wgContLang, $wgLuceneUseRelated;
 		$fname = 'LuceneSearch::replacePrefixes';
 		wfProfileIn($fname);
 		$qlen = strlen($query);
@@ -116,9 +138,18 @@ class LuceneSearch extends SearchEngine {
 			return $query;
 		}
 
+		// check if this is query for related articles
+		$relatedkey = wfMsg('searchrelated').':';
+		if($wgLuceneUseRelated && strncmp($query, $relatedkey, strlen($relatedkey)) == 0){
+			$this->related = true;
+			list($dummy,$ret) = explode(":",$query,2);
+			wfProfileOut($fname);
+			return trim($ret);
+		}
+		
 		// "search everything"
-		// NOTE: might not be at the beginning for complex queries
-		$allkeyword = wfMsg('searchall');
+		//  might not be at the beginning for complex queries
+		$allkeyword = wfMsg('searchall');		
 		
 		for($i = 0 ; $i < $qlen ; $i++){
 			$c = $query[$i];
@@ -218,12 +249,15 @@ class LuceneResult extends SearchResult {
 		if(count($parts) == 3)
 			list( $score, $namespace, $title ) = $parts;
 		else
-			list( $score, $interwiki, $namespace, $title ) = $parts;
+			list( $score, $interwiki, $namespace, $nsText, $title ) = $parts;
 
 		$score     = floatval( $score );
 		$namespace = intval( $namespace );
 		$title     = urldecode( $title );
-		$nsText    = $wgContLang->getNsText($namespace);
+		if(!isset($nsText))
+			$nsText = $wgContLang->getNsText($namespace);
+		else
+			$nsText = urldecode($nsText);
 
 		$this->mInterwiki = '';
 		// make title
@@ -253,18 +287,26 @@ class LuceneResult extends SearchResult {
 			
 		// various snippets
 		list( $this->mHighlightTitle, $dummy ) = $this->extractSnippet($lines,$nsText,"#h.title");
+		if( is_null($this->mHighlightTitle) && $this->isInterwiki() ){
+			// construct highlighted interwiki title without the interwiki part
+			$this->mHighlightTitle = ($nsText==''? '' : $nsText.':') . str_replace( '_', ' ', $title );
+		}
 		
-		list( $this->mHighlightText, $dummy ) = $this->extractSnippet($lines,$nsText,"#h.text",true);
+		list( $this->mHighlightText, $dummy ) = $this->extractSnippet($lines,'',"#h.text",true);
 		
 		list( $this->mHighlightRedirect, $redirect ) = $this->extractSnippet($lines,$nsText,"#h.redirect");
 		$this->mRedirectTitle = null;
 		if( !is_null($redirect)){
-			# build redirect Title object
+			# build redirect Title object			
 			if($interwiki != ''){
-				$t = $interwiki.':'.$nsText.':'.str_replace( '_', ' ', $redirect );
+				$t = $interwiki.':'.$redirect;
 				$this->mRedirectTitle = Title::newFromText( $t );
-			} else
-				$this->mRedirectTitle = Title::makeTitle($namespace,$redirect);
+			} else{
+				$parts = explode(":",$redirect,2);
+				$redirectNs = intval($parts[0]);
+				$redirectText = str_replace('_', ' ', $parts[1]);
+				$this->mRedirectTitle = Title::makeTitle($redirectNs,$redirectText);
+			}
 		}
 			
 		list( $this->mHighlightSection, $section) = $this->extractSnippet($lines,'',"#h.section");
@@ -274,6 +316,9 @@ class LuceneResult extends SearchResult {
 			$t = $nsText.':'.str_replace( '_', ' ', $title ).'#'.$section;
 			$this->mSectionTitle = Title::newFromText($t);
 		} 
+		
+		if($this->mInterwiki == '')
+			$this->mRevision = Revision::newFromTitle( $this->mTitle );
 	}
 	
 	/**
@@ -379,17 +424,19 @@ class LuceneResult extends SearchResult {
 		return null; // lucene scores are meaningless to the user... 
 	}
 	
-	function getTitleSnippet(){
+	function getTitleSnippet($terms){				
 		if( is_null($this->mHighlightTitle) )
 			return '';
 		return $this->mHighlightTitle;
 	}
 	
-	function getTextSnippet() {
+	function getTextSnippet($terms) {
+		if( is_null($this->mHighlightText) )
+			return parent::getTextSnippet($terms);
 		return $this->mHighlightText;
 	}
 	
-	function getRedirectSnippet() {
+	function getRedirectSnippet($terms) {
 		if( is_null($this->mHighlightRedirect) )
 			return '';
 		return $this->mHighlightRedirect;
@@ -413,16 +460,31 @@ class LuceneResult extends SearchResult {
 		return $this->mInterwiki;
 	}
 	
+	function isInterwiki(){
+		return $this->mInterwiki != '';
+	}
+	
 	function getTimestamp(){
+		if( is_null($this->mDate) )
+			return parent::getTimestamp();
 		return $this->mDate;
 	}
 	
 	function getWordCount(){
+		if( is_null($this->mWordCount) )
+			return parent::getWordCount();
 		return $this->mWordCount;
 	}
 	
 	function getByteSize(){
+		if( is_null($this->mSize) )
+			return parent::getByteSize();
 		return $this->mSize;
+	}	
+	
+	function hasRelated(){
+	 	global $wgLuceneSearchVersion, $wgLuceneUseRelated;
+	 	return $wgLuceneSearchVersion >= 2.1 && $wgLuceneUseRelated;
 	}
 }
 
@@ -438,11 +500,12 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @access public
 	 * @static
 	 */
-	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0 ) {
+	function newFromQuery( $method, $query, $namespaces = array(), $limit = 20, $offset = 0 ) {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 		
-		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc, $wgLuceneSearchVersion;
+		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
+		global $wgLuceneSearchVersion, $wgLuceneSearchCacheExpiry;
 		
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
@@ -458,21 +521,21 @@ class LuceneSearchSet extends SearchResultSet {
 				'offset'     => $offset,
 				'limit'      => $limit,
 				'version'    => $wgLuceneSearchVersion,
+				'iwlimit'	 => 10,
 			) );
-		
-		
-		// Cache results for fifteen minutes; they'll be read again
-		// on reloads and paging.
-		$key = "$wgDBname:lucene:" . md5( $searchUrl );
-		$expiry = 60 * 15;
-		$resultSet = $wgMemc->get( $key );
-		if( is_object( $resultSet ) ) {
-			wfDebug( "$fname: got cached lucene results for key $key\n" );
-			wfProfileOut( $fname );
-			return $resultSet;
+				
+		// try to fetch cached if caching is turned on
+		if($wgLuceneSearchCacheExpiry > 0){
+			$key = "$wgDBname:lucene:" . md5( $searchUrl );
+			$resultSet = $wgMemc->get( $key );
+			if( is_object( $resultSet ) ) {
+				wfDebug( "$fname: got cached lucene results for key $key\n" );
+				wfProfileOut( $fname );
+				return $resultSet;
+			}
 		}
 
-		wfDebug( "Fetching search data from $searchUrl\n" );
+		wfDebug( "Fetching search data from $searchUrl\n" ); 
 		$inputLines = @file( $searchUrl );
 		if( $inputLines === false ) {
 			// Network error or server error
@@ -484,49 +547,59 @@ class LuceneSearchSet extends SearchResultSet {
 
 		$suggestion = null;
 		$totalHits = null;
+		$info = null;
+		$interwiki = null;
 		
-		if( $method == 'search' ) {
-			# This method outputs a summary line first.
-			$totalHits = array_shift( $resultLines );
-			if( $totalHits === false ) {
-				# I/O error? this shouldn't happen
-				wfDebug( "Couldn't read summary line...\n" );
-			} else {
-				$totalHits = intval( $totalHits );
-				wfDebug( "total [$totalHits] hits\n" );
-				if($wgLuceneSearchVersion >= 2.1){
-					# second line is suggestions
-					$s = array_shift($resultLines);
-					if(LuceneSearchSet::startsWith($s,'#suggest '))
-						$suggestion = $s;
-						
-					# third line is interwiki info line
-					$iwHeading = array_shift($resultLines);
-					$iwCount = intval(substr($iwHeading,strpos($iwHeading,' ')+1));
-					// TODO: we shouldn't be ignoring this... 
-					while(!LuceneSearchSet::startsWith($resultLines[0],"#results"))
-						array_shift($resultLine);
+		# All methods have same syntax... 
+		$totalHits = array_shift( $resultLines );
+		if( $totalHits === false ) {
+			# I/O error? this shouldn't happen
+			wfDebug( "Couldn't read summary line...\n" );
+		} else {
+			$totalHits = intval( $totalHits );
+			wfDebug( "total [$totalHits] hits\n" );
+			if($wgLuceneSearchVersion >= 2.1){
+				# second line is info
+				list($dummy,$info) = explode(' ',array_shift($resultLines),2);
+				# third line is suggestions
+				$s = array_shift($resultLines);
+				if(self::startsWith($s,'#suggest '))
+					$suggestion = $s;
 					
-					// how many results we got
-					list($dummy,$resultCount) = explode(" ",array_shift($resultLines));
-					$resultCount = intval($resultCount);
-				} else{
-					$resultCount = count($resultLines);
+				# fifth line is interwiki info line
+				$iwHeading = array_shift($resultLines);
+				list($dummy,$iwCount,$iwTotal) = explode(' ',$iwHeading);
+				if($iwCount>0){
+					# pack interwiki lines into a separate result set
+					$interwikiLen = 0; 
+					while(!self::startsWith($resultLines[$interwikiLen],"#results")) 
+						$interwikiLen++;
+					$interwikiLines = array_splice($resultLines,0,$interwikiLen);
+					$interwiki = new LuceneSearchSet( $query, $interwikiLines, intval($iwCount), intval($iwTotal) );
 				}
+				
+				# how many results we got
+				list($dummy,$resultCount) = explode(" ",array_shift($resultLines));
+				$resultCount = intval($resultCount);
+			} else{
+				$resultCount = count($resultLines);
 			}
 		}
 		
 		
-		$resultSet = new LuceneSearchSet( $query, $resultLines, $resultCount, $totalHits, $suggestion );
+		$resultSet = new LuceneSearchSet( $query, $resultLines, $resultCount, $totalHits, 
+		             $suggestion, $info, $interwiki );
 		
-		wfDebug( "$fname: caching lucene results for key $key\n" );
-		$wgMemc->add( $key, $resultSet, $expiry );
+		if($wgLuceneSearchCacheExpiry > 0){
+			wfDebug( "$fname: caching lucene results for key $key\n" );
+			$wgMemc->add( $key, $resultSet, $wgLuceneSearchCacheExpiry );
+		}
 		
 		wfProfileOut( $fname );
 		return $resultSet;
 	}
 	
-	function startsWith($source, $prefix){
+	static function startsWith($source, $prefix){
    		return strncmp($source, $prefix, strlen($prefix)) == 0;
 	}
 	
@@ -538,9 +611,10 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @param int $resultCount
 	 * @param int $totalHits
 	 * @param string $suggestion
+	 * @param string $info
 	 * @access private
 	 */
-	function LuceneSearchSet( $query, $lines, $resultCount, $totalHits = null, $suggestion = null ) {
+	function LuceneSearchSet( $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
 		$this->mQuery             = $query;
 		$this->mTotalHits         = $totalHits;
 		$this->mResults           = $lines;
@@ -549,11 +623,15 @@ class LuceneSearchSet extends SearchResultSet {
 		$this->mSuggestionQuery   = null;
 		$this->mSuggestionSnippet = '';
 		$this->parseSuggestion($suggestion);
+		$this->mInfo              = $info;
+		$this->mInterwiki         = $interwiki;
 	}
 	
+	/** Get suggestions from a suggestion result line */
 	function parseSuggestion($suggestion){
 		if( is_null($suggestion) )
 			return;
+		// parse split points and highlight changes
 		list($dummy,$points,$sug) = explode(" ",$suggestion);
 		$sug = urldecode($sug);
 		$points = explode(",",substr($points,1,-1));
@@ -565,8 +643,25 @@ class LuceneSearchSet extends SearchResultSet {
 		}
 		$suggestText .= substr($sug,end($points));
 		
-		$this->mSuggestionQuery = $sug;
-		$this->mSuggestionSnippet = $suggestText; 		
+		$this->mSuggestionQuery = $this->replaceGenericPrefixes($sug);
+		$this->mSuggestionSnippet = $this->replaceGenericPrefixes($suggestText); 		
+	}
+	
+	/** replace prefixes like [2]: that are not in phrases */
+	function replaceGenericPrefixes($text){
+		$out = "";
+		$phrases = explode('"',$text);
+		for($i=0;$i<count($phrases);$i+=2){
+			$out .= preg_replace_callback('/\[([0-9]+)\]:/', array($this,'genericPrefixCallback'), $phrases[$i]);
+			if($i+1 < count($phrases))
+				$out .= '"'.$phrases[$i+1].'"'; // phrase text	
+		}
+		return $out;
+	}
+	
+	function genericPrefixCallback($matches){
+		global $wgContLang;
+		return $wgContLang->getFormattedNsText($matches[1]).":";
 	}
 	
 	function numRows() {
@@ -605,6 +700,28 @@ class LuceneSearchSet extends SearchResultSet {
 	 */
 	function getTotalHits() {
 		return $this->mTotalHits;
+	}
+	
+	/**
+	 * Return information about how and from where the results were fetched,
+	 * should be useful for diagnostics and debugging 
+	 *
+	 * @return string
+	 */
+	function getInfo() {
+		if( is_null($this->mInfo) )
+			return null;
+		return "Search results fetched via ".$this->mInfo;
+	}
+	
+	/**
+	 * Return a result set of hits on other (multiple) wikis associated with this one
+	 *
+	 * @return SearchResultSet
+	 */
+	function getInterwikiResults() {
+		wfDebug("iw: ".$this->mInterwiki."\n");
+		return $this->mInterwiki;
 	}
 	
 	/**
