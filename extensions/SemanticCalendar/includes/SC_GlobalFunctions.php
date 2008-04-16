@@ -7,27 +7,33 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.2.3');
+define('SC_VERSION','0.2.4');
 
 // constants for special properties
 
 $wgExtensionFunctions[] = 'scgSetupExtension';
 $wgExtensionFunctions[] = 'scgParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'scgLanguageGetMagic';
-$wgExtensionMessagesFiles['SemanticCalendar'] = $scgIP . '/languages/SC_Messages.php';
 
 require_once($scgIP . '/includes/SC_ParserFunctions.php');
 require_once($scgIP . '/includes/SC_HistoricalDate.php');
 require_once($scgIP . '/languages/SC_Language.php');
+
+if (version_compare($wgVersion, '1.11', '>=')) {
+	$wgExtensionMessagesFiles['SemanticCalendar'] = $scgIP . '/languages/SC_Messages.php';
+} else {
+	$wgExtensionFunctions[] = 'scfLoadMessagesManually';
+}
 
 /**
  *  Do the actual intialization of the extension. This is just a delayed init that makes sure
  *  MediaWiki is set up properly before we add our stuff.
  */
 function scgSetupExtension() {
-	global $scgNamespace, $scgIP, $wgExtensionCredits, $wgArticlePath, $wgScriptPath, $wgServer;
+	global $scgNamespace, $scgIP, $wgVersion, $wgExtensionCredits;
 
-	scfInitMessages();
+	if (version_compare($wgVersion, '1.11', '>='))
+		wfLoadExtensionMessages('SemanticCalendar');
 
 	/**********************************************/
 	/***** register specials                  *****/
@@ -111,21 +117,6 @@ function scfInitUserLanguage($langcode) {
 	} else {
 		$scgLang = new $scLangClass();
 	}
-}
-
-/**
- * Initialize messages - these settings must be applied later on, since
- * the MessageCache does not exist yet when the settings are loaded in
- * LocalSettings.php.
- * Function based on version in ContributionScores extension
- */
-function scfInitMessages() {
-        global $wgVersion, $wgExtensionFunctions;
-        if (version_compare($wgVersion, '1.11', '>=' )) {
-                wfLoadExtensionMessages( 'SemanticCalendar' );
-        } else {
-                $wgExtensionFunctions[] = 'scfLoadMessagesManually';
-        }
 }
 
 /**
