@@ -720,7 +720,6 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @return SearchResultSet
 	 */
 	function getInterwikiResults() {
-		wfDebug("iw: ".$this->mInterwiki."\n");
 		return $this->mInterwiki;
 	}
 	
