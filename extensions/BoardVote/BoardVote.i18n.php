@@ -1859,6 +1859,13 @@ Anda akan dialihkan ke server eksternal tersebut dalam waktu 20 detil. [$1 Klik 
 Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'boardvote_user' => 'Uzanto',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  * @author Spacebirdy
@@ -3013,7 +3020,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 <pre>$3</pre> 
 
 [[Special:Boardvote/entry|Retorn]]",
-	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimedia. Rendetz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendetz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devètz possedir un compte amb almens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
+	'boardvote_nosession'    => 'Impossible de determinar vòstre identificant Wikimèdia. Rendètz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendètz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Vos cal aver un compte amb almens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3.',
 	'boardvote_notloggedin'  => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
 	'boardvote_notqualified' => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En mai, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
 	'boardvote_novotes'      => 'Degun a pas encara votat.',

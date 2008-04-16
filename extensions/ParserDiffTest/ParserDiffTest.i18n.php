@@ -410,6 +410,13 @@ $messages['id'] = array(
 	'pdt_comparing_page' => 'Membandingkan keluaran parser dari [[$1]]',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'pdtest_diff' => 'Diferi',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -880,6 +887,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tr'] = array(
 	'pdtest_ok' => 'Tamam',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'pdtest-desc' => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
 );
 
 /** Vèneto (Vèneto)

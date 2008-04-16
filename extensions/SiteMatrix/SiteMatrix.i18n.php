@@ -98,6 +98,7 @@ $messages['be'] = array(
  */
 $messages['bg'] = array(
 	'sitematrix'           => 'Списък на уикитата на Уикимедия',
+	'sitematrix-summary'   => 'Тази специална страница съдържа списък на всички уикита на Уикимедия.',
 	'sitematrix-desc'      => 'Показва списък с [[Special:SiteMatrix|уикитата във фермата]]',
 	'sitematrix-language'  => 'Език',
 	'sitematrix-project'   => 'Име на проекта, междупроектна препратка и междууики',
@@ -384,6 +385,19 @@ $messages['gu'] = array(
 	'sitematrix-others'    => 'વિકિમીડીયાની અન્ય પરિયોજનાઓ',
 	'sitematrix-total'     => "'''કુલ સંખ્યા: $1'''",
 	'sitematrix-sitetotal' => 'કુલ',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'sitematrix'           => 'Rolley wikighyn Wikimedia',
+	'sitematrix-summary'   => 'Ta rolley dagh ooilley wiki Wikimedia er y duillag er lheh shoh',
+	'sitematrix-language'  => 'Çhengey',
+	'sitematrix-project'   => 'Ennym y halee, kiangley eddyrhalee as kiangley eddyrwiki',
+	'sitematrix-others'    => 'Shaleeghyn elley Wikimedia',
+	'sitematrix-total'     => "'''Coontey yn clane: $1'''",
+	'sitematrix-sitetotal' => 'Yn clane',
 );
 
 $messages['he'] = array(
@@ -1019,8 +1033,14 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'sitematrix'          => 'Список проектів Вікімедіа',
-	'sitematrix-language' => 'Мова',
+	'sitematrix'           => 'Список проектів Вікімедіа',
+	'sitematrix-summary'   => 'Ця спеціальна сторінка показує всі проекти Фонду «Вікімедіа»',
+	'sitematrix-desc'      => 'Показує [[Special:SiteMatrix|список проектів Вікімедіа]]',
+	'sitematrix-language'  => 'Мова',
+	'sitematrix-project'   => 'Назва проекту, міжпроектне посилання та інтервікі-посилання',
+	'sitematrix-others'    => 'Інші проекти Фонду «Вікімедіа»',
+	'sitematrix-total'     => "'''Загальна кількість: $1'''",
+	'sitematrix-sitetotal' => 'Усього',
 );
 
 $messages['ur'] = array(

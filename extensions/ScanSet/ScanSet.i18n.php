@@ -508,7 +508,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'scanset-desc'                      => 'Aficha los imatges numerizats a partir dels parametratges CD/DVD d’Andréas Grosz',
-	'scanset_no_name'                   => 'ScanSet : Devètz especificar un nom pel scanset, per exemple &lt;scanset name="EB1911" /&gt;.',
+	'scanset_no_name'                   => 'ScanSet : Vos cal especificar un nom pel scanset, per exemple &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'ScanSet : set invalid o mancant',
 	'scanset_unrecognised_index_format' => "ScanSet : Format d'indèx desconegut",
 	'scanset_opendir_error'             => 'ScanSet : Error, impossible de dobrir lo repertòri $1',

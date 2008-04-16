@@ -134,7 +134,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newsextension-desc' => 'Visiona las modificacions recentas especificas sus una pagina wiki o coma un flus RSS o Atom.',
+	'newsextension-desc' => 'Visiona los darrièrscambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
 );
 
 /** Russian (Русский)

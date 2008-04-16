@@ -123,20 +123,21 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'importusers'                     => 'Importu Uzantojn',
-	'importusers-uploadfile'          => 'Alŝutu dosieron',
-	'importusers-form-button'         => 'Importu',
-	'importusers-user-added'          => 'Uzanto <b>%s</b> estis aldonita.',
-	'importusers-user-present-update' => 'Uzanto <b>%s</b> jam ekzistas. Ĝisdatigita.',
-	'importusers-log'                 => 'Loglibro de importoj',
-	'importusers-log-summary'         => 'Resumo',
-	'importusers-log-summary-all'     => 'Ĉiuj',
-	'importusers-log-summary-added'   => 'Aldonita',
-	'importusers-log-summary-updated' => 'Ĝisdatigita',
-	'importusers-login-name'          => 'Salutnomo',
-	'importusers-password'            => 'pasvorto',
-	'importusers-email'               => 'retadreso',
-	'importusers-realname'            => 'reala nomo',
+	'importusers'                         => 'Importu Uzantojn',
+	'importusers-uploadfile'              => 'Alŝutu dosieron',
+	'importusers-form-button'             => 'Importu',
+	'importusers-user-added'              => 'Uzanto <b>%s</b> estis aldonita.',
+	'importusers-user-present-update'     => 'Uzanto <b>%s</b> jam ekzistas. Ĝisdatigita.',
+	'importusers-user-present-not-update' => 'Uzanto <b>%s</b> jam ekzistas. Ne estis ĝisdatigita.',
+	'importusers-log'                     => 'Loglibro de importoj',
+	'importusers-log-summary'             => 'Resumo',
+	'importusers-log-summary-all'         => 'Ĉiuj',
+	'importusers-log-summary-added'       => 'Aldonita',
+	'importusers-log-summary-updated'     => 'Ĝisdatigita',
+	'importusers-login-name'              => 'Salutnomo',
+	'importusers-password'                => 'pasvorto',
+	'importusers-email'                   => 'retadreso',
+	'importusers-realname'                => 'reala nomo',
 );
 
 /** Spanish (Español)

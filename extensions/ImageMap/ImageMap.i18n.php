@@ -609,7 +609,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'imagemap_desc'               => "Permet qu'una mapa imatge clienta siá clicabla en utilizant la balisa <tt><nowiki><imagemap></nowiki></tt>",
-	'imagemap_no_image'           => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',
+	'imagemap_no_image'           => '&lt;imagemap&gt; : vos cal especificar un imatge dins la primièra linha',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt; : l’imatge es invalid o existís pas',
 	'imagemap_no_link'            => '&lt;imagemap&gt; : cap de ligam valid es pas estat trobat a la fin de la linha $1',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt; : títol invalid dins lo ligam a la linha $1',

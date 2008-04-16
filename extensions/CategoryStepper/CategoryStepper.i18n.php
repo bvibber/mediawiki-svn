@@ -206,7 +206,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'categorystepper-desc'  => 'Aficha una boita de categoria sus de paginas que son indicadas dins una categoria per òrdre alfabetic.',
+	'categorystepper-desc'  => 'Aficha una bóstia de categoria sus de paginas que son indicadas dins una categoria per òrdre alfabetic.',
 	'categorystepper-end'   => '(Fin de categoria)',
 	'categorystepper-start' => '(Començament de categoria)',
 );

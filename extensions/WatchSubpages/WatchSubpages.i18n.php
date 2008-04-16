@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'watchsubpages'      => 'Watch subpages',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'watchsubpages-desc' => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',
+	'watchsubpages'      => 'Наблюдаване на подстраниците',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -69,6 +77,14 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Legg til alle undersider]] av en side til overvåkningslisten',
 	'watchsubpages'      => 'Overvåk undersider',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'watchsubpages-desc' => 'Apondre rapidament [[Special:WatchSubpages|totas las sospaginas]] a la tièra de seguit.',
+	'watchsubpages'      => 'Observar las sospaginas',
 );
 
 /** Slovak (Slovenčina)

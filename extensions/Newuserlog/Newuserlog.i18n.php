@@ -455,6 +455,13 @@ $messages['id'] = array(
 	'newuserlog-create2-entry' => 'mendaftarkan akun untuk $1',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'newuserlog-create-entry' => 'Nova uzanto',
+);
+
 /** Icelandic (Íslenska)
  * @author Spacebirdy
  * @author Jóna Þórunn

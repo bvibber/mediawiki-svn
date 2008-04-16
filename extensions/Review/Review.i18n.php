@@ -660,7 +660,7 @@ $messages['oc'] = array(
 # ....
 # Las donadas dins l'òrdre son : ## identificant numeric (>0) ## nom ## espandida (>1) ## significacion de la valor mai pichona (ex. « marrit ») ## significacion de la valor mai granda (ex. « bon ») # .... # Per exemple, se cal solament causir « non » o « òc », l'espandida val 2. # Per exemple, se cal causir entre « mejancièr », « marrit », « de melhorar », « plan » o « fòrt plan », l'espandida val 5. # .... 1:Qualitat:5:marrit:bon 2:Prèst per 1.0:2:non:òc",
 	'review_topic_page'                                      => 'Subjèctes a revision',
-	'review_sidebar_explanation'                             => 'La boita de marcar a esquèrra tota significa totjorn « sens opinion ».',
+	'review_sidebar_explanation'                             => 'La bóstia de marcar a esquèrra tota significa totjorn « sens opinion ».',
 	'review_save'                                            => 'Salvagardar la revision',
 	'review_your_review'                                     => "Vòstra revision d'aquesta pagina o revision :",
 	'review_sidebar_you_have_other_reviews_for_this_article' => "Ja avètz revisat las autras versions d'aquesta pagina. Vòstras autras evaluacions seràn fusionadas amb aquesta se avètz seleccionat « sens opinion ».",

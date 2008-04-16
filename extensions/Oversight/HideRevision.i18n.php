@@ -300,7 +300,7 @@ $messages['de'] = array(
 	'hiderevision'                => 'Versionen dauerhaft entfernen',
 	'hiderevision-desc'           => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
 	'group-oversight'             => 'Oversighter',
-	'group-oversight-member'      => 'Oversighter',
+	'group-oversight-member'      => 'Oversighter ',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
 	'hiderevision-prompt'         => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue'       => 'Weiter',
@@ -571,9 +571,13 @@ Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes sup
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'hiderevision'                => 'Agochar revisións permanentemente',
+	'group-oversight'             => 'Supervisores',
+	'group-oversight-member'      => 'Supervisor',
+	'grouppage-oversight'         => '{{ns:project}}:Supervisor',
 	'hiderevision-prompt'         => 'Número de revisión a eliminar:',
 	'hiderevision-continue'       => 'Continuar',
 	'hiderevision-text'           => "Isto debe ser usado '''só''' para os seguintes casos:
@@ -849,6 +853,13 @@ administrator basis data jika Anda membuat kesalahan.",
 	'oversight-hidden'            => 'Revisi disembunyikan',
 	'oversight-header'            => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari umum.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'oversight-view' => 'detali',
 );
 
 /** Icelandic (Íslenska)
@@ -1483,7 +1494,7 @@ $messages['oc'] = array(
 	'hiderevision-submit'         => 'Amagar aquesta donada de biais permanent',
 	'hiderevision-tab'            => 'Amagar la modificacion',
 	'hiderevision-norevisions'    => 'Cap de modificacion indicada de suprimir.',
-	'hiderevision-noreason'       => "Devètz indicar la rason precisa d'aquesta supression.",
+	'hiderevision-noreason'       => "Vos cal indicar la rason precisa d'aquesta supression.",
 	'hiderevision-status'         => 'Modificacion $1 : $2',
 	'hiderevision-success'        => 'Archivat e suprimit amb succès.',
 	'hiderevision-error-missing'  => 'Pas trobat dins la banca de donadas.',
@@ -2067,11 +2078,20 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'group-oversight'        => 'Ревізори',
-	'group-oversight-member' => 'ревізор',
-	'grouppage-oversight'    => '{{ns:project}}:Ревізори',
-	'oversight'              => 'Журнал приховування версій',
-	'oversight-header'       => 'Нижче наведені версії, які нещодавно були приховані.
+	'hiderevision'             => 'Приховати версії',
+	'hiderevision-desc'        => 'Приховує окремі версії сторінок від користувачів, використовується із судово-юридичних причин тощо.',
+	'group-oversight'          => 'Ревізори',
+	'group-oversight-member'   => 'ревізор',
+	'grouppage-oversight'      => '{{ns:project}}:Ревізори',
+	'hiderevision-prompt'      => 'Номер версії, яку потрібно приховати',
+	'hiderevision-continue'    => 'Продовжити',
+	'hiderevision-reason'      => 'Причина (буде записана в закритий журнал):',
+	'hiderevision-submit'      => 'Приховати ці дані',
+	'hiderevision-tab'         => 'Приховати версію',
+	'hiderevision-norevisions' => 'Не були зазначені версії для приховування.',
+	'hiderevision-noreason'    => 'Ви повинні написати причину приховування.',
+	'oversight'                => 'Журнал приховування версій',
+	'oversight-header'         => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
 );
 

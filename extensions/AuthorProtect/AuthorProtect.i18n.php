@@ -76,6 +76,7 @@ $messages['eo'] = array(
 	'authorprotect-confirm'    => 'Protektu',
 	'authorprotect-edit'       => 'Limigu redaktadon por aŭtoroj',
 	'authorprotect-move'       => 'Limigu movado por aŭtoroj',
+	'authorprotect-expiry'     => 'Findato',
 	'authorprotect-reason'     => 'Kialo',
 	'authorprotect-intro'      => 'Utiligu ĉi tiun kamparon por ŝlosi ĉi tiu paĝo kontraŭ ne-aŭtoroj',
 	'authorprotect-success'    => 'Protektado sukcesis!',
@@ -329,6 +330,25 @@ $messages['sv'] = array(
 	'authorprotect-failure'    => 'Beskyddning misslyckades',
 	'protect-level-author'     => 'Beskydd för andra än författaren',
 	'restriction-level-author' => 'Beskyddad för författaren',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'authorprotect'            => 'Захист сторінок від не-авторів',
+	'authorprotect-desc'       => 'Дозволяє автору сторінки захищати її від інших користувачів',
+	'authorprotect-notauthor'  => 'Ви не є автором цієї сторінки',
+	'authorprotect-confirm'    => 'Захищати',
+	'authorprotect-edit'       => 'Редагувати можуть тільки автори',
+	'authorprotect-move'       => 'Перейменовувати можуть тільки автори',
+	'authorprotect-expiry'     => 'Минає',
+	'authorprotect-reason'     => 'Причина',
+	'authorprotect-intro'      => 'Користуйтеся цією формою для захисту сторінки від не-авторів',
+	'authorprotect-success'    => 'Захист встановлено успішно!',
+	'authorprotect-failure'    => 'Встановити захист не вдалося',
+	'protect-level-author'     => 'Захист від не-авторів',
+	'restriction-level-author' => 'Авторський захист',
 );
 
 /** Vietnamese (Tiếng Việt)

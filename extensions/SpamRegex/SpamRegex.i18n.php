@@ -80,6 +80,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'spamregex-desc'                 => '[[Special:Spamregex|Филтриране]] на нежелани фрази в редактираните страници с помощта на регулярни изрази',
 	'spamregex_summary'              => 'Текстът е намерен в резюмето на страницата.',
 	'spamregex-currently-blocked'    => "'''Текущо блокирани фрази:'''",
 	'spamregex-no-currently-blocked' => "'''Няма блокирани фрази.'''",

@@ -90,7 +90,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'catfeed-desc' => 'Utiliza de bits per alimentar las modificacions recentas. Crèa una version de pagina, fòrça practica per Wikinews.',
+	'catfeed-desc' => 'Utiliza de bits per alimentar los darrièrs cambiaments. Crèa una version de pagina, fòrça practica per Wikinews.',
 );
 
 /** Polish (Polski)

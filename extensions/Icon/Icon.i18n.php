@@ -57,6 +57,7 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'icon-badimage' => 'Malbona bildo',
 	'icon-badwidth' => 'Fuŝa Larĝo',
+	'icon-desc'     => 'Permesas al vi utiligi bildojn kiel ikonojn kaj ikonligilojn',
 );
 
 /** French (Français)

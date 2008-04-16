@@ -244,6 +244,7 @@ $messages['eo'] = array(
 	'expand_templates_xml_output'      => 'XML-eligo',
 	'expand_templates_ok'              => 'Ek!',
 	'expand_templates_remove_comments' => 'Forigu komentojn',
+	'expand_templates_generate_xml'    => 'Montru XML-sintaksarbon',
 	'expand_templates_preview'         => 'Antaŭrigardo',
 );
 

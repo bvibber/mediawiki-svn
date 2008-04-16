@@ -55,6 +55,13 @@ $messages['no'] = array(
 	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungere med MediaWiki',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'woopra-desc' => 'Autoriza pel [http://www.woopra.com/ seguit en dirècte del logicial Woopra] de trabalhar per vòstra installacion Mediawiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

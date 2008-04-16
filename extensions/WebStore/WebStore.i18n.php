@@ -130,6 +130,7 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'inplace_access_denied'            => 'Тази услуга е ограничена по клиентски IP адрес.',
 	'inplace_scaler_not_enough_params' => 'Няма достатъчно параметри',
 	'inplace_scaler_invalid_image'     => 'Невалидна картинка, размерът й е невъзможно да бъде определен.',
 	'webstore_path_invalid'            => 'Името на файла е невалидно.',

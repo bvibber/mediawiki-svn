@@ -123,7 +123,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'multiboilerplate-desc'   => "Permet de seleccionar una pagina o un modèl d'incorporar a partir d'una boita en naut del formulari d'edicion d'una pagina.",
+	'multiboilerplate-desc'   => "Permet de seleccionar una pagina o un modèl d'incorporar a partir d'una bóstia en naut del formulari d'edicion d'una pagina.",
 	'multiboilerplate-legend' => "Seleccionar la pagina d'incorporar",
 	'multiboilerplate-submit' => 'Cargar',
 );

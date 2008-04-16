@@ -136,10 +136,13 @@ $messages['no'] = array(
 	'templatelink_newtitle' => '$1 (inkluderes)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-		'templatelink' => 'Ligam vèrs modèl',
-		'templatelink_empty' => 'Devètz picar un paramètre.',
-		'templatelink_newtitle' => '$1 (tranclut)',
+	'templatelink'          => 'Ligam vèrs modèl',
+	'templatelink_empty'    => 'Vos cal picar un paramètre.',
+	'templatelink_newtitle' => '$1 (tranclut)',
 );
 
 $messages['pl'] = array(

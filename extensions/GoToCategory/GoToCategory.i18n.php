@@ -50,6 +50,13 @@ $messages['no'] = array(
 	'gotocategory-desc' => 'Sjekker søkeord opp mot kategorinavnerommet for «Gå»-funksjonaliteten i søkeboksen',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'gotocategory-desc' => "Marcar los tèrmes de las recèrcas a l’endrech de la categoria : nom d'espaci per « Anar » a partir de la foncionalitat « anar a la pagina »",
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

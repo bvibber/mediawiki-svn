@@ -482,6 +482,14 @@ $messages['id'] = array(
 	'bookinfo-provider' => 'Penyedia data: $1',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'bookinfo-result-author' => 'Autoro:',
+	'bookinfo-result-year'   => 'Yaro:',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

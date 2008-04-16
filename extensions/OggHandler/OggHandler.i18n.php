@@ -1758,10 +1758,19 @@ $messages['uk'] = array(
 	'ogg-play-video'          => 'Відтворити відео',
 	'ogg-play-sound'          => 'Відтворити звук',
 	'ogg-no-player'           => 'Вибачте, ваша ситема не має необхідного програмного забезпечення для відтворення файлів. Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте програвач</a>.',
+	'ogg-no-xiphqt'           => 'Відсутній компонент XiphQT для QuickTime.
+QuickTime не може відтворювати ogg-файли без цього компонента.
+Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте XiphQT</a> або оберіть інший програвач.',
 	'ogg-player-videoElement' => 'елемент <video>',
 	'ogg-player-oggPlugin'    => 'Ogg-модуль',
 	'ogg-player-thumbnail'    => 'Тільки нерухоме зображення',
+	'ogg-player-soundthumb'   => 'Нема програвача',
+	'ogg-player-selected'     => '(обраний)',
+	'ogg-use-player'          => 'Використовувати програвач:',
+	'ogg-more'                => 'Більше…',
+	'ogg-dismiss'             => 'Закрити',
 	'ogg-download'            => 'Завантажити файл',
+	'ogg-desc-link'           => 'Інформація про цей файл',
 );
 
 /** Vèneto (Vèneto)

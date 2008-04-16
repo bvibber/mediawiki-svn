@@ -81,6 +81,7 @@ $messages['ar'] = array(
 $messages['bg'] = array(
 	'povwatch_desc'                  => 'Разширение за [[Special:PovWatch|добавяне на страници в списъка за наблюдение]] на други потребители',
 	'povwatch_invalid_title'         => 'Посоченото заглавие е невалидно',
+	'povwatch_pushed'                => '[[$1]] беше успешно добавена в списъка за наблюдение на $2',
 	'povwatch_subscriber_list_intro' => '<strong>Списък на абонираните</strong>',
 	'povwatch_unknown_subpage'       => 'Непозната подстраница.',
 	'povwatch_title'                 => 'Заглавие:',

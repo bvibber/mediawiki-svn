@@ -426,7 +426,7 @@ sphinx|Esfinx',
 	'vote-results-none'   => 'Cap de vòte es pas estat efectuat a aqueste moment.',
 	'vote-login'          => 'Devètz $1 per votar.',
 	'vote-login-link'     => 'vos connectar',
-	'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
+	'vote-invalid-choice' => 'Vos cal causir una de las opcions disponiblas.',
 );
 
 /** Polish (Polski)

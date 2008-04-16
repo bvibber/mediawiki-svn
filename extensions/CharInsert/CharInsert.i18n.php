@@ -126,7 +126,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'charinsert-desc' => 'Permet la creacion d’una boita JavaScript per [[MediaWiki:Edittools|l’insercion de caractèrs pas estandards]]',
+	'charinsert-desc' => 'Permet la creacion d’una bóstia JavaScript per [[MediaWiki:Edittools|l’insercion de caractèrs pas estandards]]',
 );
 
 /** Polish (Polski)

@@ -162,6 +162,18 @@ Om du er logget inn vil kallenavnet ditt være fylt inn allerede.
 Uregistrerte brukere får et automatisk laget kallenavn, men det kan endres.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'mibbit'        => 'Chat Mibbit',
+	'mibbit-desc'   => "Apond una [[Special:Mibbit|pagina especiala]] qu'utiliza lo chat en temps real amb los autres utilizaires wiki",
+	'mibbit-header' => 'Aquesta pagina especiala vos autoriza a collaborar en temps real amb los autres utilizaires del wiki.
+Per vos connectar, sufís de quichar simplament sul boton « Connectar ».
+Se sètz connectat vòstre escais serà estat utilizat.
+Los utilizaires anonims se veràn atribuir un escais creat automaticament, mas pòt èsser modificat.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

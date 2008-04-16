@@ -1562,9 +1562,9 @@ $wgGoogleMapsMessages['no'] = array(
  * @author Cedric31
  */
 $wgGoogleMapsMessages['oc'] = array(
-	'gm-incompatible-browser'      => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navegaire compatible</a>.',
-	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navegaires compatibles.',
-	'gm-no-editor'                 => 'Malaüstrosament, vòstre navegaire supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
+	'gm-incompatible-browser'      => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigaire compatible</a>.',
+	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navigaires compatibles.',
+	'gm-no-editor'                 => 'Malurosament, vòstre navigaire supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title'             => 'Títol :',
 	'gm-balloon-link-article'      => 'Ligam cap a aquesta pagina (opcional) :',
 	'gm-make-marker'               => 'Legenda (wiki anotacion OK):',
