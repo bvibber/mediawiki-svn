@@ -206,6 +206,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'contributors'             => 'Kontribuantoj',
 	'contributors-toolbox'     => 'Ĉefaj kontribuantoj',
+	'contributors-legend'      => 'Listigu ĉefajn kontribuantojn al paĝo',
 	'contributors-target'      => 'Titolo:',
 	'contributors-submit'      => 'Montru',
 	'contributors-subtitle'    => 'Ĉefaj kontribuantoj al $1',

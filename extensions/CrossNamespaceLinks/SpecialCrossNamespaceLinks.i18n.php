@@ -318,7 +318,9 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'crossnamespacelinkstext' => '$1: $2 nyambung menyang $3',
+	'crossnamespacelinks'      => 'Pranala lintas bilik nama',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Macak daftar pranala lintas bilik nama]] sing sajatiné ora pareng ana ing {{SITENAME}}',
+	'crossnamespacelinkstext'  => '$1: $2 nyambung menyang $3',
 );
 
 $messages['kaa'] = array(

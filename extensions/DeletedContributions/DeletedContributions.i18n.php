@@ -421,7 +421,7 @@ $messages['pam'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'deletedcontributions'      => 'Usunięty wkład użytkownika',
+	'deletedcontributions'      => 'usunięty wkład użytkownika',
 	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie usuniętego wkładu użytkowników]]',
 );
 

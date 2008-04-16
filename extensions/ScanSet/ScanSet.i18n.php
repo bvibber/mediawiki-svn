@@ -376,6 +376,8 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'scanset-desc' => "Tuduhna gambar kaca sing di-''scan'' saka sèt CD/DVD Andreas Grosz",
+	'scanset_next' => 'Sabanjuré &gt;',
+	'scanset_prev' => '&lt; Sadurungé',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -720,7 +720,7 @@ $messages['pl'] = array(
 Proszę wybrać „create”, „comment”, „search” lub „search2”.',
 	'tryexact'                => 'Użyj dokładnego wyrażenia',
 	'searchfulltext'          => 'Szukaj w całych tekstach',
-	'createarticle'           => 'Utwórz artykuł',
+	'createarticle'           => 'Utwórz stronę',
 );
 
 $messages['pms'] = array(

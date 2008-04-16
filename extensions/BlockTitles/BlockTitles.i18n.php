@@ -169,6 +169,13 @@ $messages['gl'] = array(
 	'block_title_error'            => 'Sentímolo, non se permite gardar o título desta páxina.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'block_title_error_page_title' => 'Ennym fo ghlass',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -514,6 +514,13 @@ $messages['gl'] = array(
 	'badimages-page'           => '{{ns:help}}:Listaxe de imaxes con fallas',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'badimages-name' => 'Ennym:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -810,6 +810,7 @@ Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elves
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Meursault2004
  * @author Borgx
  */
 $messages['id'] = array(
@@ -846,7 +847,7 @@ administrator basis data jika Anda membuat kesalahan.",
 	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
 	'oversight-prev'              => 'revisi terdahulu terakhir',
 	'oversight-hidden'            => 'Revisi disembunyikan',
-	'oversight-header'            => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari publik.
+	'oversight-header'            => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari umum.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 );
 
@@ -975,30 +976,39 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'hiderevision'               => 'Delikna révisi sacara permanèn',
-	'hiderevision-desc'          => 'Ndelikaké révisi-révisi individu saka kabèh panganggo kanggo alesan hukum lan liya-liyané.',
-	'hiderevision-prompt'        => 'Nomer révisi sing kudu diilangi:',
-	'hiderevision-continue'      => 'Banjurna',
-	'hiderevision-text'          => "Iki '''namung''' bisa dienggo ing kasus-kasus kaya ta:
+	'hiderevision'                => 'Delikna révisi sacara permanèn',
+	'hiderevision-desc'           => 'Ndelikaké révisi-révisi individu saka kabèh panganggo kanggo alesan hukum lan liya-liyané.',
+	'hiderevision-prompt'         => 'Nomer révisi sing kudu diilangi:',
+	'hiderevision-continue'       => 'Banjurna',
+	'hiderevision-text'           => "Iki '''namung''' bisa dienggo ing kasus-kasus kaya ta:
 * Informasi pribadi
 *: ''alamat omah lan nomer tilpun, nomer pribadi liyané''
 
 '''Panganggonan fasilitas iki minangka ora bener bisa mituwasaké panjenengan kèlangan hak.'''
 
 Item sing diilangi ora bakal bisa dideleng sapa-sapa menèh liwat situs wèb iki, nanging pambusakan iki dicathet lan bisa dibalèkaké sacara manual déning administrator database yèn panjenengan luput.",
-	'hiderevision-reason'        => 'Alesan (bakal dilebokna log sacara pribadi):',
-	'hiderevision-submit'        => 'Delikna data iki sacara permanèn',
-	'hiderevision-tab'           => 'Delikna révisi',
-	'hiderevision-norevisions'   => 'Ora ana révisi kanggo dibusak.',
-	'hiderevision-noreason'      => 'Panjenengan kudu nulis alesan pambusakané.',
-	'hiderevision-status'        => 'Révisi $1: $2',
-	'hiderevision-success'       => 'Révisi wis dibusak lan diarsipaké.',
-	'hiderevision-error-missing' => 'Ora bisa ditemokaké ing basis data.',
-	'hiderevision-error-current' => 'Ora bisa mbusak suntingan pungkasan ing sawijining kaca.
+	'hiderevision-reason'         => 'Alesan (bakal dilebokna log sacara pribadi):',
+	'hiderevision-submit'         => 'Delikna data iki sacara permanèn',
+	'hiderevision-tab'            => 'Delikna révisi',
+	'hiderevision-norevisions'    => 'Ora ana révisi kanggo dibusak.',
+	'hiderevision-noreason'       => 'Panjenengan kudu nulis alesan pambusakané.',
+	'hiderevision-status'         => 'Révisi $1: $2',
+	'hiderevision-success'        => 'Révisi wis dibusak lan diarsipaké.',
+	'hiderevision-error-missing'  => 'Ora bisa ditemokaké ing basis data.',
+	'hiderevision-error-current'  => 'Ora bisa mbusak suntingan pungkasan ing sawijining kaca.
 Balèkna suntingan iki dhisik.',
-	'hiderevision-error-delete'  => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',
-	'oversight-log-hiderev'      => 'mbusak suntingan saka $1',
-	'oversight-view'             => 'détail',
+	'hiderevision-error-delete'   => 'Ora bisa ngarsipaké; apa sadurungé dibusak?',
+	'hiderevision-archive-status' => 'Révisi kabusak saka $1: $2',
+	'oversight-nodiff'            => 'Ora bisa ngrunut ulang owah-owahan amerga ora ana révisi sadurungé kanggo kaca iki. Bab iki dumadi amerga:
+*Kacané wis dibusak
+*Révisi sing didelikaké iki, iku révisi kapisan',
+	'oversight-log-hiderev'       => 'mbusak suntingan saka $1',
+	'oversight-view'              => 'détail',
+	'oversight-difference'        => '(Prabédan saka révisi sadurungé sing ana)',
+	'oversight-prev'              => 'Révisi pungkasan sadurungé',
+	'oversight-hidden'            => 'Révisi sing didelikaké',
+	'oversight-header'            => "Ing ngisor iki kapacak daftar révisi sing wis didelikaké sacara permanèn saka umum.
+Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenengan dijabel.",
 );
 
 /* Kazakh Arabic (AlefZet) */

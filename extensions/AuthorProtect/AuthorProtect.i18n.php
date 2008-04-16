@@ -136,6 +136,13 @@ $messages['gl'] = array(
 	'restriction-level-author' => 'Protexido polo autor',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'authorprotect-confirm' => 'Coadee',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -206,6 +213,25 @@ $messages['no'] = array(
 	'authorprotect-failure'    => 'Beskytting mislyktes',
 	'protect-level-author'     => 'Beskytt for andre enn forfattere',
 	'restriction-level-author' => 'Beskyttet for forfattere',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'authorprotect'            => 'Protegir la pagina dels non-autors',
+	'authorprotect-desc'       => 'Permet a l’autor d’una pagina de la protegir dels autres utilizaires',
+	'authorprotect-notauthor'  => "Sètz pas l’autor d'aquesta pagina",
+	'authorprotect-confirm'    => 'Protegir',
+	'authorprotect-edit'       => 'Restrénher l’edicion als autors',
+	'authorprotect-move'       => 'Restrénher lo renomenatge als autors',
+	'authorprotect-expiry'     => 'Durada d’expiracion',
+	'authorprotect-reason'     => 'Motiu',
+	'authorprotect-intro'      => 'Utilizatz aqueste formulari per varrolhar aquesta pagina dels non-autors',
+	'authorprotect-success'    => 'Proteccion capitada !',
+	'authorprotect-failure'    => 'Fracàs de la proteccion',
+	'protect-level-author'     => 'Protegir de non-autors',
+	'restriction-level-author' => 'Autor protegit',
 );
 
 /** Polish (Polski)
@@ -287,12 +313,13 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'authorprotect'            => 'Beskyddar sidan för andra än författaren',
-	'authorprotect-desc'       => 'Låter författaren av en sida beskydda den från andra användare',
+	'authorprotect'            => 'Skydda sidan från andra än författaren',
+	'authorprotect-desc'       => 'Låter författaren av en sida skydda den från andra användare',
 	'authorprotect-notauthor'  => 'Du är inte författaren av denna sida',
-	'authorprotect-confirm'    => 'Beskydda',
+	'authorprotect-confirm'    => 'Skydda',
 	'authorprotect-edit'       => 'Begränsar redigering till författare',
 	'authorprotect-move'       => 'Begränsar flyttning till författare',
 	'authorprotect-expiry'     => 'Varighet',

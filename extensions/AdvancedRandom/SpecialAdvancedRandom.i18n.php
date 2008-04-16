@@ -20,6 +20,13 @@ $messages['ar'] = array(
 	'advancedrandom-desc' => 'احصل على صفحة عشوائية من نقاش أو صفحة موضوع موصولة لصفحة معطاة، يمكن استخدامها مثل [[Special:AdvancedRandom/Template:Featured/Talk]] للحصول على مقالة مختارة عشوائية أو مثل [[Special:AdvancedRandom/Template:GFDL/Image]] للحصول على ملف عشوائي مرخص برخصة جنو للوثائق الحرة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'advancedrandom' => 'عشوائي متقدم',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

@@ -67,6 +67,7 @@ $messages['bg'] = array(
 	'tasklistbyproject'      => 'Списък със задачи по проект',
 	'tasklistunknownproject' => 'Неизвестен проект',
 	'tasklistincorrectuser'  => 'Невалидно потребителско име',
+	'tasklistemail'          => 'Уважаеми %s',
 	'tasklistmytasks'        => 'Моите задачи',
 	'tasklistbyprojectbad'   => "Проектът '''%s''' не е валиден проект. За списък с проекти, вижте [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj'     => 'Избор на проект:',

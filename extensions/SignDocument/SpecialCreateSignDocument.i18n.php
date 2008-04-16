@@ -132,6 +132,7 @@ $messages['bg'] = array(
 	'createsigndoc-extaddress'        => 'Град, щат, държава:',
 	'createsigndoc-phone'             => 'Телефонен номер:',
 	'createsigndoc-bday'              => 'Дата на раждане:',
+	'createsigndoc-minage'            => 'Минимална възраст:',
 	'createsigndoc-introtext'         => 'Въведение:',
 	'createsigndoc-hidden'            => 'Скрито',
 	'createsigndoc-optional'          => 'Незадължително',

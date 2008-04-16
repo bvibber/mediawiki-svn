@@ -482,11 +482,13 @@ $messages['jv'] = array(
 	'pdtest_no_target'    => 'Ora ana targèt sing dispésifikasi.',
 	'pdtest_page_missing' => 'Kaca sing diwènèhaké ora ditemokaké ing sajroné database.',
 	'pdtest_no_changes'   => 'Ora ditemokaké owah-owahan.',
+	'pdtest_time_report'  => '<b>$1</b> merlokaké $2 detik, <b>$3</b> merlokaké $4 detik.',
 	'pdtest_title'        => 'Irah-irahan kontèks:',
 	'pdtest_text'         => 'Tèks sing dilebokaké',
 	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Jupuk tèks saka kaca',
 	'pdtest_diff'         => 'Prabédan',
+	'pdtest_side_by_side' => 'Prabandhingan wetonan',
 );
 
 /** Khmer (ភាសាខ្មែរ)

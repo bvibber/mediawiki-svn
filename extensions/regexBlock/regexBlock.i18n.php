@@ -140,6 +140,7 @@ $messages['bg'] = array(
 	'regexblock-already-blocked'      => '$1 е вече блокиран.',
 	'regexblock-stats-username'       => 'За $1',
 	'regexblock-currently-blocked'    => 'Текущо блокирани адреси:',
+	'regexblock-view-blocked'         => 'Преглед на блокираните по:',
 	'regexblock-view-all'             => 'Всички',
 	'regexblock-view-reason'          => 'причина: $1',
 	'regexblock-view-block-temporary' => 'изтича на',

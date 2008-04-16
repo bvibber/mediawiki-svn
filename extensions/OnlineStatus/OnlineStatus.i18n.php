@@ -143,6 +143,18 @@ $messages['no'] = array(
 	'onlinestatus-toggle-online'    => 'Logget på',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'onlinestatus-subtitle-online' => 'Aqueste utilizaire actualament es en linha',
+	'onlinestatus-toggles-desc'    => 'Vòstre estatut :',
+	'onlinestatus-toggles-explain' => "Aquò permet als autres utilizaires de saber se actualament sètz present en agachant vòstra pagina d'utilizaire.",
+	'onlinestatus-toggles-show'    => "Mostrar mon estatut sus ma pagina d'utilizaire",
+	'onlinestatus-toggle-offline'  => 'Absent',
+	'onlinestatus-toggle-online'   => 'Present',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

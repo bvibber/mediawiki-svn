@@ -1353,6 +1353,7 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
 $messages['gv'] = array(
 	'boardvote_time' => 'Am',
 	'boardvote_user' => 'Ymmydeyr',
+	'boardvote_days' => 'Laaghyn',
 );
 
 $messages['he'] = array(
@@ -2125,6 +2126,9 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 	'boardvote_notstarted'   => 'Coblosané durung diwiwiti',
 	'boardvote_closed'       => 'Pamilihan wis ditutup, mangga mirsani [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kaca pamilihan kanggo nuwèni kasilé] sadélok manèh.',
 	'boardvote_edits_many'   => 'akèh',
+	'group-boardvote'        => 'Pangurus pamilihan anggota déwan',
+	'group-boardvote-member' => 'Pangurus pamilihan anggota déwan',
+	'grouppage-boardvote'    => '{{ns:project}}:Pangurus pamilihan anggota déwan',
 	'boardvote_blocked'      => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
 	'boardvote_welcome'      => "Sugeng rawuh '''$1'''!",
 	'go_to_board_vote'       => 'Pamilihan Déwan Wikimedia 2007',

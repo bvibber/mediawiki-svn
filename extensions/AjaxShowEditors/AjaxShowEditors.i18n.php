@@ -65,6 +65,7 @@ $messages['bg'] = array(
 	'ajax-se-idling'           => '(преди $1 секунди)',
 	'ajax-se-pagedoesnotexist' => 'страницата не съществува',
 	'ajax-se-userinvalid'      => 'Грешка: невалиден потребител',
+	'ajax-se-usernotfound'     => 'ГРЕШКА: потребителят не беше открит',
 );
 
 /** Bengali (বাংলা)

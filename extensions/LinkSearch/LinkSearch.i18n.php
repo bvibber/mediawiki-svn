@@ -454,6 +454,7 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'linksearch'       => 'Golèk pranala jaba',
+	'linksearch-pat'   => 'Pola panggolèkan:',
 	'linksearch-ns'    => 'Bilik nama:',
 	'linksearch-ok'    => 'Golèk',
 	'linksearch-line'  => '$1 disambung saka $2',

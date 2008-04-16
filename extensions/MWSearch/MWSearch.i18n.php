@@ -74,6 +74,13 @@ $messages['hu'] = array(
 	'mwsearch-desc' => 'MWSearch beépülő modul',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'mwsearch-desc' => 'plugin MWSearch',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
