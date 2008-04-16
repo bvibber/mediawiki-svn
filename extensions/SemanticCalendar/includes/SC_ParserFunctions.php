@@ -172,11 +172,11 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 <tr>
 <td class="month_name">$cur_month $cur_year</td>
 <td class="nav_links">
-<a href="$prev_month_url" title="$prev_month_text"><img src="$scgScriptPath/skins/images/left-arrow.png" /></a>
+<a href="$prev_month_url" title="$prev_month_text"><img src="$scgScriptPath/skins/images/left-arrow.png" border="0" /></a>
 &nbsp;
 <a href="$today_url">$today_text</a>
 &nbsp;
-<a href="$next_month_url" title="$next_month_text"><img src="$scgScriptPath/skins/images/right-arrow.png" /></a>
+<a href="$next_month_url" title="$next_month_text"><img src="$scgScriptPath/skins/images/right-arrow.png" border="0" /></a>
 </td>
 <td class="nav_form">
 <form>
