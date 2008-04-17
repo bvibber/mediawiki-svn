@@ -223,6 +223,7 @@ function wfSpecialImportFreeImages( $par )
 	global $wgUser, $wgOut, $wgRequest, $wgIFI_FlickrAPIKey, $wgEnableUploads;
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow;
 	global $wgIFI_PromptForFilename, $wgIFI_FlickrSearchBy, $wgIFI_ThumbType;
+	wfSetupSession();
 	require_once("phpFlickr-2.2.0/phpFlickr.php");
 
 	$importPage = Title::makeTitle(NS_SPECIAL, "ImportFreeImages");
