@@ -139,7 +139,7 @@ class LuceneSearch extends SearchEngine {
 		}
 
 		// check if this is query for related articles
-		$relatedkey = wfMsg('searchrelated').':';
+		$relatedkey = wfMsgForContent('searchrelated').':';
 		if($wgLuceneUseRelated && strncmp($query, $relatedkey, strlen($relatedkey)) == 0){
 			$this->related = true;
 			list($dummy,$ret) = explode(":",$query,2);
@@ -149,7 +149,7 @@ class LuceneSearch extends SearchEngine {
 		
 		// "search everything"
 		//  might not be at the beginning for complex queries
-		$allkeyword = wfMsg('searchall');		
+		$allkeyword = wfMsgForContent('searchall');		
 		
 		for($i = 0 ; $i < $qlen ; $i++){
 			$c = $query[$i];
