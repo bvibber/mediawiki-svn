@@ -1,0 +1,15 @@
+This is an interface to the ICU text transformation/transliteration service.
+
+For some reason some PHP installations need a CXX environment variable to
+configure properly:
+
+CXX=g++ ./configure
+
+Not sure if that's my fault or not.
+
+Typical usage:
+
+   $latin = transliterate_with_id('Any-Latin', $foreign);
+
+Observed timing for is ~30ms on first call and ~3ms thereafter, plus ~1.5us per
+character.
