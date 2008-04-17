@@ -17,11 +17,11 @@ for anonymous editing via [[MediaWiki:Unlockedpages]]",
 'descriptionmsg' => 'editsubpages-desc',
 'author' => "<span class=\"plainlinks\">[http://strategywiki.org/wiki/User:Ryan_Schmidt Ryan Schmidt] and [http://strategywiki.org/wiki/User:Prod Prod]</span>",
 'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
-'version' => "2.1",
+'version' => "2.2",
 );
 
 $wgHooks['userCan'][] = 'EditSubpages';
-$wgGroupPermissions['*']['edit'] = false; //what's the point if they can edit to begin with?
+$wgGroupPermissions['*']['edit'] = true;
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['EditSubpages'] = $dir .'EditSubpages.i18n.php';
 
