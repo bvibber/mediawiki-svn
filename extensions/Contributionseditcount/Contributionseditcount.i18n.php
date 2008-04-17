@@ -100,6 +100,14 @@ $messages['hu'] = array(
 	'contributionseditcount' => 'A felhasználónak $1 szerkesztése van.',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'contributionseditcount'      => 'Þessi notandi hefur gert $1 breytingar.',
+	'contributionseditcount-desc' => 'Sýna breytingarfjöld á [[Special:Contributions]]',
+);
+
 $messages['it'] = array(
 	'contributionseditcount' => 'Questo utente ha $1 edit',
 );

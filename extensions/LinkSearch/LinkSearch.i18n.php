@@ -457,6 +457,7 @@ $messages['jv'] = array(
 	'linksearch-pat'   => 'Pola panggolèkan:',
 	'linksearch-ns'    => 'Bilik nama:',
 	'linksearch-ok'    => 'Golèk',
+	'linksearch-text'  => "''Wildcards'' kaya ta \"*.wikipedia.org\" bisa dienggo.<br />Protokol sing disengkuyung: <tt>\$1</tt>",
 	'linksearch-line'  => '$1 disambung saka $2',
 	'linksearch-error' => "''Wildcards'' namung bisa dienggo ing bagéyan awal saka jeneng host.",
 );

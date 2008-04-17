@@ -534,6 +534,14 @@ $messages['jut'] = array(
 $messages['jv'] = array(
 	'blacklistedusername'             => 'Daftar ireng panganggo',
 	'blacklistedusernametext'         => 'Jeneng panganggo sing panjenengan pilih ana ing sajroning [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]]. Mangga milih jeneng panganggo liya.',
+	'usernameblacklist'               => '<pre>
+# Èntri ing daftar iki bakal dienggo minangka bagéyan saka sawijining èksprèsi régulèr nalika
+# nggawé daftar ireng jeneng panganggo ing pandaftaran. Saben item kudu dumadi bagéyan saka
+# sawijining daftar kaya ta
+#
+# * Foo
+# * [Bb]ar
+</pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Èntri|Èntri}} ing daftar ireng jeneng panganggo {{PLURAL:$1|iki|iki}} ora absah; mangga benakna {{PLURAL:$1|èntri|èntri}} iku sadurungé disimpen:',
 );
 

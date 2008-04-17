@@ -407,6 +407,7 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'imagemap_desc'               => 'Nyedyakaké péta gambar sing bisa diklik saka klièn mawa nganggo tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: kudu mènèhi sawijining gambar ing baris kapisan',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: gambar ora absah utawa ora ditemokaké',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: ora ditemokaké pranala sing absah ing pungkasan baris kaping $1',

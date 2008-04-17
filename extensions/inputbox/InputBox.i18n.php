@@ -208,10 +208,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'inputbox-desc'  => 'Permesu enhavon de antaŭdifinitaj HTML-kamparoj',
-	'tryexact'       => 'Provu ekzaktan trafon',
-	'searchfulltext' => 'Serĉu plentekste',
-	'createarticle'  => 'Kreu artikolon',
+	'inputbox-desc'           => 'Permesu enhavon de antaŭdifinitaj HTML-kamparoj',
+	'inputbox-error-no-type'  => 'Vi ne enigis la specon de enigo-kesto por krei.',
+	'inputbox-error-bad-type' => 'Enigo-kesto "$1" ne estas konata.
+Bonvolu specifigi "krea", "komenta", "serĉa" aŭ "serĉa2".',
+	'tryexact'                => 'Provu ekzaktan trafon',
+	'searchfulltext'          => 'Serĉu plentekste',
+	'createarticle'           => 'Kreu artikolon',
 );
 
 $messages['es'] = array(
@@ -463,10 +466,13 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'inputbox-desc'  => 'Ngidinaké nganggo formulir HTML sing wis ditemtokaké',
-	'tryexact'       => 'Cobanen pancocogan èksak',
-	'searchfulltext' => 'Golèk ing tèks jangkep',
-	'createarticle'  => 'Damel artikel',
+	'inputbox-desc'           => 'Ngidinaké nganggo formulir HTML sing wis ditemtokaké',
+	'inputbox-error-no-type'  => 'Panjenengan durung nemtokaké tipe kothak input sing arep digawé.',
+	'inputbox-error-bad-type' => 'Tipe kothak input "$1" ora ditepungi. 
+Tulung nganggoa "create", "comment", "search" utawa "search2".',
+	'tryexact'                => 'Cobanen pancocogan èksak',
+	'searchfulltext'          => 'Golèk ing tèks jangkep',
+	'createarticle'           => 'Damel artikel',
 );
 
 $messages['ka'] = array(

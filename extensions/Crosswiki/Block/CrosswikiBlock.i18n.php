@@ -544,16 +544,25 @@ Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir
 	'crosswikiblock-reason'         => 'Grond:',
 	'crosswikiblock-submit'         => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
+	'crosswikiblock-noemail'        => 'Verhënneren datt de Benotzer E-Maile verschéckt',
 	'crosswikiunblock'              => "D'Spär vum Benotzer op enger anerer Wiki ophiewen",
+	'crosswikiunblock-user'         => 'Benotzernumm, IP-Adress oder Nummer vun der Spär an Zilwiki:',
 	'crosswikiunblock-reason'       => 'Grond:',
 	'crosswikiunblock-submit'       => 'Spär fir dëse Benotzer ophiewen',
+	'crosswikiunblock-success'      => "D'spär vum Benotzer '''$1''' gouf opgehuewen.
+
+Zréck op:
+* [[Special:CrosswikiBlock|Spärformulaire]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'Dir hutt kee Benotzernumm aginn',
+	'crosswikiblock-local'          => 'Op dëser Säit kënne keng lokal Spären ageriicht ginn. Benotzt w.e.g. [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => "D'Datebank $1 gëtt et net.",
 	'crosswikiblock-noname'         => '"$1" ass kee gültege Benotzernumm.',
 	'crosswikiblock-nouser'         => 'De Benotzer "$3" gouf net fonnt.',
 	'crosswikiblock-noreason'       => 'Kee Grond uginn.',
 	'crosswikiblock-alreadyblocked' => 'De Benotzer $3 ass scho gespaart.',
 	'crosswikiblock-noblock'        => 'Dëse Benotzer ass net gespaart.',
+	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:Ipblocklist]]',
 );
 
 /** Marathi (मराठी)

@@ -77,6 +77,14 @@ $messages['gl'] = array(
 	'nstab-comments'    => 'Comentario',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'commentpages-desc' => "Duillagyn coontey da'n ard-boayl ennym",
+	'nstab-comments'    => 'Coontey',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -91,6 +99,13 @@ $messages['hi'] = array(
 $messages['hsb'] = array(
 	'commentpages-desc' => 'Komentarne strony za hłowny mjenowy rum',
 	'nstab-comments'    => 'Komentar',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'nstab-comments' => 'Skýring',
 );
 
 /** Japanese (日本語)

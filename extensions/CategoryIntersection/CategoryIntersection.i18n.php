@@ -140,6 +140,14 @@ $messages['hu'] = array(
 	'categoryintersection-results'       => 'A keresésnek $1 eredménye van.',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'categoryintersection-doit'    => 'Listi yfir síður í öllum þessum flokkum',
+	'categoryintersection-results' => 'Leitin skilaði $1 {{PLURAL:$1|útkomu|útkomum}}.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

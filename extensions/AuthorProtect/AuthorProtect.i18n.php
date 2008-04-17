@@ -144,6 +144,25 @@ $messages['gv'] = array(
 	'authorprotect-confirm' => 'Coadee',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'authorprotect'            => 'Vernda síðu gegn öðrum en höfundum hennar',
+	'authorprotect-desc'       => 'Heimilar höfundi síðu að vernda hana gegn öðrum notendum',
+	'authorprotect-notauthor'  => 'Þú ert ekki höfundur þessarar síðu',
+	'authorprotect-confirm'    => 'Vernda',
+	'authorprotect-edit'       => 'Takamarka síðubreytingar við höfunda',
+	'authorprotect-move'       => 'Takamarka síðufæringar við höfunda',
+	'authorprotect-expiry'     => 'Gildislok',
+	'authorprotect-reason'     => 'Ástæða',
+	'authorprotect-intro'      => 'Notaðu þetta eyðublað til að loka þessari síðu fyrir öðrum en höfunum hennar',
+	'authorprotect-success'    => 'Verndun heppnaðist!',
+	'authorprotect-failure'    => 'Verndun mistókst',
+	'protect-level-author'     => 'Vernda gegn öðrum en höfundum',
+	'restriction-level-author' => 'Höfundavarið',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -334,18 +353,19 @@ $messages['sv'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  */
 $messages['uk'] = array(
 	'authorprotect'            => 'Захист сторінок від не-авторів',
-	'authorprotect-desc'       => 'Дозволяє автору сторінки захищати її від інших користувачів',
+	'authorprotect-desc'       => 'Дозволяє автору сторінки захищати її від редагувань інших користувачів',
 	'authorprotect-notauthor'  => 'Ви не є автором цієї сторінки',
-	'authorprotect-confirm'    => 'Захищати',
+	'authorprotect-confirm'    => 'Захистити',
 	'authorprotect-edit'       => 'Редагувати можуть тільки автори',
 	'authorprotect-move'       => 'Перейменовувати можуть тільки автори',
-	'authorprotect-expiry'     => 'Минає',
+	'authorprotect-expiry'     => 'Термін захисту',
 	'authorprotect-reason'     => 'Причина',
-	'authorprotect-intro'      => 'Користуйтеся цією формою для захисту сторінки від не-авторів',
-	'authorprotect-success'    => 'Захист встановлено успішно!',
+	'authorprotect-intro'      => 'Використовуйте цю форму для захисту сторінки від не-авторів',
+	'authorprotect-success'    => 'Захист успішно встановлений!',
 	'authorprotect-failure'    => 'Встановити захист не вдалося',
 	'protect-level-author'     => 'Захист від не-авторів',
 	'restriction-level-author' => 'Авторський захист',

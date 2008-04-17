@@ -375,9 +375,18 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'scanset-desc' => "Tuduhna gambar kaca sing di-''scan'' saka sèt CD/DVD Andreas Grosz",
-	'scanset_next' => 'Sabanjuré &gt;',
-	'scanset_prev' => '&lt; Sadurungé',
+	'scanset-desc'                      => "Tuduhna gambar kaca sing di-''scan'' saka sèt CD/DVD Andreas Grosz",
+	'scanset_no_name'                   => 'ScanSet: Panjenengan kudu spésifikasi sawijining jeneng scan set, contoné &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Scan set ora absah utawa ilang.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Format indèks ora dimangertèni',
+	'scanset_opendir_error'             => 'ScanSet: Kaluputan, ora bisa mbuka dirèktori $1',
+	'scanset_no_files'                  => 'ScanSet: Ora ana berkas ing dirèktori sing diwènèhaké.',
+	'scanset_no_volumes'                => 'ScanSet: Dirèktori jilid ora ditemokaké',
+	'scanset_missing_index_file'        => 'ScanSet: Berkas indèks $1 ora ditemokaké',
+	'scanset_index_file_error'          => 'ScanSet: Kaluputan format berkas indèks ing baris $1',
+	'scanset_invalid_volume'            => 'ScanSet: Jilid ora absah',
+	'scanset_next'                      => 'Sabanjuré &gt;',
+	'scanset_prev'                      => '&lt; Sadurungé',
 );
 
 /** Khmer (ភាសាខ្មែរ)

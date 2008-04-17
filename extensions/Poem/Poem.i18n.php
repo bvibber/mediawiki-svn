@@ -123,6 +123,13 @@ $messages['jut'] = array(
 	'poem-desc' => 'Tilføje <tt>&lt;poem&gt;</tt> tag før digt formåter',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'poem-desc' => 'Nambahaké tag <tt>&lt;poem&gt;</tt> tag kanggo formatting tembang utawa puisi',
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */

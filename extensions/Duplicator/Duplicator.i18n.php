@@ -191,6 +191,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'duplicator'                       => 'Duplikatu paĝon',
+	'duplicator-desc'                  => 'Kreu sendependajn kopiojn de paĝoj kun plenaj redakto-historioj',
 	'duplicator-toolbox'               => 'Duplikatu ĉi paĝon',
 	'duplicator-header'                => 'Ĉi paĝo permesas la tutan dupklikatadon de paĝo, kreante sendependajn kopiojn de ĉiuj historioj. Estus utila por disigo de artikoloj, ktp.',
 	'duplicator-options'               => 'Preferoj',

@@ -486,6 +486,8 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'parserdifftest'      => 'Uji parser pambéda',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Kaca astaméwa]] kanggo mbandhingaké wetonan saka rong parser sing béda',
 	'pdtest_no_target'    => 'Ora ana targèt sing dispésifikasi.',
 	'pdtest_page_missing' => 'Kaca sing diwènèhaké ora ditemokaké ing sajroné database.',
 	'pdtest_no_changes'   => 'Ora ditemokaké owah-owahan.',
@@ -496,6 +498,7 @@ $messages['jv'] = array(
 	'pdtest_get_text'     => 'Jupuk tèks saka kaca',
 	'pdtest_diff'         => 'Prabédan',
 	'pdtest_side_by_side' => 'Prabandhingan wetonan',
+	'pdt_comparing_page'  => 'Mbandhingaké wetonan parser saka [[$1]]',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -894,6 +897,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'pdtest-desc' => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
+	'pdtest_diff' => 'Відмінності',
 );
 
 /** Vèneto (Vèneto)

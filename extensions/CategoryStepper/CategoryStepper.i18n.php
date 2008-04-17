@@ -104,6 +104,14 @@ $messages['gl'] = array(
 	'categorystepper-end'   => '(Final da categoría)',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'categorystepper-end'   => '(Jerrey y ronney)',
+	'categorystepper-start' => '(Toshiaght y ronney)',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

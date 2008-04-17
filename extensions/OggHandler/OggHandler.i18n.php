@@ -862,6 +862,7 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'ogg-desc'                => 'Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript',
 	'ogg-short-audio'         => 'Berkas swara $1 ogg, $2',
 	'ogg-short-video'         => 'Berkas vidéo $1 ogg, $2',
 	'ogg-short-general'       => 'Berkas média $1 ogg, $2',

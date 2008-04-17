@@ -362,6 +362,14 @@ $messages['gl'] = array(
 	'changeauthor-rev'                  => 'r$1',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'changeauthor-pagenameform-go' => 'Gow',
+	'changeauthor-comment'         => 'Cohaggloo:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
