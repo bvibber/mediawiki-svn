@@ -225,6 +225,7 @@ $messages['gl'] = array(
 	'youtubeauthsub_username'            => 'Alcume YouTube',
 	'youtubeauthsub_keywords'            => 'Palabras clave',
 	'youtubeauthsub_category'            => 'Categoría',
+	'youtubeauthsub_submit'              => 'Enviar',
 	'youtubeauthsub_clickhere'           => 'Fai clic aquí para acceder ao sistema YouTube',
 	'youtubeauthsub_tokenerror'          => 'Erro ao xerar a autorización de mostra, proba a refrescar a páxina.',
 	'youtubeauthsub_success'             => "Parabéns!
@@ -314,7 +315,38 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub'                     => 'Ngunggahaké vidéo YouTube',
+	'youtubeauthsub-desc'                => 'Ngidinaké para panganggo [[Special:YouTubeAuthSub|ngunggahaké vidéo]] sacara langsung ing YouTube',
+	'youtubeauthsub_info'                => 'Kanggo ngunggahaké vidéo ing YouTube supaya bisa dilebokaké ing sawijining kaca, isinen dhisik informasi iki:',
+	'youtubeauthsub_title'               => 'Irah-irahan (judhul)',
+	'youtubeauthsub_description'         => 'Dèskripsi',
+	'youtubeauthsub_password'            => 'Tembung sandhi YouTube',
+	'youtubeauthsub_username'            => 'Jeneng panganggo YouTube',
+	'youtubeauthsub_keywords'            => 'Tembung-tembung kunci',
+	'youtubeauthsub_category'            => 'Kategori',
+	'youtubeauthsub_submit'              => 'Kirim',
+	'youtubeauthsub_clickhere'           => 'Klik ing kéné kanggo log mlebu ing YouTube',
+	'youtubeauthsub_tokenerror'          => 'Ana sing salah nalika nggawé token otorisasi, tulung coba direfresh.',
+	'youtubeauthsub_success'             => "Slamet!
+Vidéo panjenengan wis diunggahaké.
+Kanggo mirsani vidéo panjenengan klik<a href='http://www.youtube.com/watch?v=$1'>ing kéné</a>.
+YouTube mbok-menawa merlokaké sawetara wektu kanggo prosès vidéo panjenengan, dadi mbok-menawa saiki durung cumepak.
+
+Kanggo ndokok vidéo panjenengan ing sawijining wiki, lebokna kode sing kapacak ing ngisor iki ing sawijining kaca:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Kanggo ngunggahaké vidéo, panjenengan kudu log mlebu dhisik ing YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Unggahna vidéo panjenengan saka kéné:',
+	'youtubeauthsub_uploadbutton'        => 'Unggah',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Vidéo iki bisa dideleng ing [http://www.youtube.com/watch?v=$1 kéné]',
+	'youtubeauthsub_summary'             => 'Ngunggahaké vidéo YouTube',
+	'youtubeauthsub_uploading'           => 'Vidéo panjenengan lagi diunggahaké.
+Tulung sabar dhisik.',
+	'youtubeauthsub_viewpage'            => 'Sacara alternatif, panjenengan bisa mirsani vidéo panjenengan ing [[$1|kéné]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Mangga lebokna 1 utawa luwih tembung kunci.',
+	'youtubeauthsub_jserror_notitle'     => 'Mangga lebokna irah-irahan (judhul) kanggo vidéo iki.',
+	'youtubeauthsub_jserror_nodesc'      => 'Mangga lebokna dèskripsi kanggo vidéo iki.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

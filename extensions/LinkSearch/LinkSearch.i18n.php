@@ -687,7 +687,7 @@ $messages['pag'] = array(
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'linksearch'       => 'Szukanie linków zewnętrznych',
+	'linksearch'       => 'Wyszukiwarka linków zewnętrznych',
 	'linksearch-desc'  => 'Odnajduje strony zawierające zewnętrzne linki pasujące do zadanego wzorca',
 	'linksearch-pat'   => 'Wzorzec wyszukiwania',
 	'linksearch-ns'    => 'Przestrzeń nazw',

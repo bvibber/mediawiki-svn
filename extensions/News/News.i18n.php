@@ -134,7 +134,21 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newsextension-desc' => 'Visiona los darrièrscambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
+	'newsextension-desc'          => 'Visiona los darrièrscambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
+	'newsextension-unknownformat' => '$1 : format de flus desconegut : $2<br />',
+	'newsextension-feednotfound'  => '$1 : pagina de fluses introbabla : $2<br />',
+	'newsextension-feedrequest'   => '$1 : Presa en carga de la requèsta per $2<br />',
+	'newsextension-checkok'       => '$1 : amagatal HTTP corrècte, entèsta 304 header mandat</br >',
+	'newsextension-checkok1'      => "$1 : verificacion de l'amagatal corrècta :  IMS $2 c/ $3 modificat<br />",
+	'newsextension-gotcached'     => '$1 : ($2 ? « obtengut amagat » : « pas amagat »)<br />',
+	'newsextension-purge'         => '$1 : purga, amagatal ignorat<br />',
+	'newsextension-loggin'        => '$1 : en sesilha, amagatal ignorat<br />',
+	'newsextension-outputting'    => '$1 : sortida de la còpia en amagatal ($2): $3 < {$4}',
+	'newsextension-stale'         => '$1 : trobat una còpia en amagatal anciana ($2): $3 >= {$4}<br />',
+	'newsextension-nofoundonpage' => "$1 : cap d'alimentacion pas trobada sus la pagina : $2<br / >",
+	'newsextension-renderedfeed'  => '$1 : alimentacion renduda<br />',
+	'newsextension-cachingfeed'   => '$1 : amaga l’alimentacion ($2)<br / >',
+	'newsextension-freshfeed'     => '$1 : sortida alimentacion recenta<br />',
 );
 
 /** Russian (Русский)

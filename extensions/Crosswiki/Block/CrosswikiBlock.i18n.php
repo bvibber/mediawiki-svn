@@ -383,6 +383,13 @@ Voltar a:
 * [[$4]]",
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'crosswikiunblock-reason' => 'Fa:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

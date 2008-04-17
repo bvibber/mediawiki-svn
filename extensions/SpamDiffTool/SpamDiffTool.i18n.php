@@ -191,6 +191,7 @@ $messages['gl'] = array(
 	'spamdifftool_option_directory' => 'este subdominio e directorio',
 	'spamdifftool_option_none'      => 'nada',
 	'spamdifftool_block'            => 'Bloqueo:',
+	'spamdifftool_submit_buttom'    => 'Enviar',
 );
 
 /** Hindi (हिन्दी)

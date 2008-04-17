@@ -800,19 +800,18 @@ $messages['oc'] = array(
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|czarnej listy użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
-	'blacklistedusername'             => 'Nazwa użytkownika na czarnej liście',
-	'blacklistedusernametext'         => 'Wybrana przez Ciebie nazwa użytkownika pasuje do [[MediaWiki:Usernameblacklist|listy zabronionych nazw]].
-Wybierz inną nazwę.',
+	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|listy zabronionych nazw użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
+	'blacklistedusername'             => 'Zabroniona nazwa użytkownika',
+	'blacklistedusernametext'         => 'Wybrana przez Ciebie nazwa użytkownika lub jej część jest niedozwolona i znajduje się na [[MediaWiki:Usernameblacklist|liście zabronionych nazw]]. Wybierz inną nazwę użytkownika.',
 	'usernameblacklist'               => '<pre>
-# Wpisy na tej liście będą użyte jako części wyrażenia regularnego stanowiącego czarną listę
-# nazw użytkowników zakazanych przy rejestracji. Każdy element powinien być częścią
+# Wpisy na tej liście będą użyte jako części wyrażenia regularnego zabronionych
+# przy rejestracji nazw użytkowników. Każdy wpis powinien być elementem
 # listy wypunktowanej, np.
 #
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na czarnej liście użytkowników {{PLURAL:$1|jest niepoprawna|są niepoprawne}} ; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na liście zabronionych nazw użytkowników {{PLURAL:$1|jest niepoprawna|są niepoprawne}} ; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

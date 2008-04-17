@@ -141,6 +141,14 @@ $messages['gl'] = array(
 	'editmsg-patch-success' => 'Parcheado exitoso.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'editmsg-search'     => 'Ronsaghey',
+	'editmsg-new-search' => 'Ronsaght noa',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

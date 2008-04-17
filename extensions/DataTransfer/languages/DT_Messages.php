@@ -173,6 +173,18 @@ $messages['gl'] = array(
 	'dt_xml_freetext'             => 'Texto Libre',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'viewxml'               => 'Jeeagh er XML',
+	'dt_viewxml_categories' => 'Ronnaghyn',
+	'dt_xml_page'           => 'Duillag',
+	'dt_xml_name'           => 'Ennym',
+	'dt_xml_title'          => 'Ard-ennym',
+	'dt_xml_freetext'       => 'Teks seyr',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

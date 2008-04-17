@@ -125,6 +125,7 @@ $messages['fa'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
+	'intersection-desc'        => 'Tulostaa listan luokassa tai useamman luokan yhdisteessä olevista sivuista.',
 	'intersection_toomanycats' => 'DynamicPageList: Liian monta luokkaa.',
 	'intersection_toofewcats'  => 'DynamicPageList: Liian vähän luokkia.',
 	'intersection_noresults'   => 'DynamicPageList: Ei tuloksia.',

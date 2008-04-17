@@ -1351,9 +1351,13 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'boardvote_time' => 'Am',
-	'boardvote_user' => 'Ymmydeyr',
-	'boardvote_days' => 'Laaghyn',
+	'boardvote_time'     => 'Am',
+	'boardvote_user'     => 'Ymmydeyr',
+	'boardvote_days'     => 'Laaghyn',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'Click ayns shoh',
+	'boardvote_submit'   => 'OK',
+	'boardvote_welcome'  => "Failt ort '''$1'''!",
 );
 
 $messages['he'] = array(
@@ -2625,7 +2629,7 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/du
 	'go_to_board_vote'       => 'Vikimedijos tarybos rinkimai 2007',
 	'boardvote_redirecting'  => 'Pagerintam saugumui ir aiškumui, mes balsavimą leidžiame išoriniame, nepriklausomai kontroliuojamame serveryje.
 
-Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [1$ Spauskite čia], jei norite patekti dabar.
+Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [$1 Spauskite čia], jei norite patekti dabar.
 
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 );

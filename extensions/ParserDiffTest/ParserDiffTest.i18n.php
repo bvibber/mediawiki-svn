@@ -222,6 +222,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author M.M.S.
+ * @author Nike
  */
 $messages['fi'] = array(
 	'parserdifftest'      => 'Esikäsittelijöiden eroavaisuudet',
@@ -229,6 +230,7 @@ $messages['fi'] = array(
 	'pdtest_no_target'    => 'Kohdetta ei määritetty.',
 	'pdtest_page_missing' => 'Kyseistä sivua ei löytynyt tietokannasta.',
 	'pdtest_no_changes'   => 'Ei havaittuja muutoksia.',
+	'pdtest_time_report'  => '<b>$1</b> kesti $2 sekuntia. <b>$3</b> kesti $4 sekuntia.',
 	'pdtest_text'         => 'Tekstisyöte',
 	'pdtest_ok'           => 'OK',
 	'pdtest_get_text'     => 'Hae teksti sivulta',
@@ -896,8 +898,10 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'pdtest-desc' => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
-	'pdtest_diff' => 'Відмінності',
+	'pdtest-desc'  => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
+	'pdtest_title' => 'Назва сторінки:',
+	'pdtest_text'  => 'Вхідний текст:',
+	'pdtest_diff'  => 'Відмінності',
 );
 
 /** Vèneto (Vèneto)

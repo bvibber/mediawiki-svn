@@ -153,6 +153,15 @@ $messages['gl'] = array(
 	'edituser-exempt'   => 'O usuario especificado non pode ser editado',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'edituser'          => 'Ymmydeyr y reaghey',
+	'edituser-username' => 'Ennym',
+	'edituser-dosearch' => 'Ronsaghey',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

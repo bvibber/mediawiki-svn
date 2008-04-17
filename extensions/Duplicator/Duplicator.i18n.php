@@ -292,6 +292,14 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-toomanyrevisions'      => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'duplicator-options' => 'Reihghyn',
+	'duplicator-source'  => 'Bun:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

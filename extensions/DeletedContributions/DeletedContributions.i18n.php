@@ -350,8 +350,13 @@ $messages['loz'] = array(
 	'deletedcontributions' => 'Afina di sebelu bye sa afi kulobala',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ * @author SPQRobin
+ */
 $messages['lt'] = array(
-	'deletedcontributions' => 'Ištrintas naudotojo indėlis',
+	'deletedcontributions'      => 'Ištrintas naudotojo indėlis',
+	'deletedcontributions-desc' => 'Suteikia administratoriams galimybę [[Special:DeletedContributions|parinkti ištrintus naudotojo keitimus]]',
 );
 
 $messages['mk'] = array(

@@ -569,6 +569,7 @@ $1',
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'inplace_access_disabled'          => "L'accès a aqueste servici es desactivat per totes los clients.",
@@ -605,6 +606,7 @@ $messages['oc'] = array(
 	'webstore_no_deleted'              => 'Cap de repertòri d’archius pels fichièrs suprimits es pas estat definit.',
 	'webstore_curl'                    => 'Error dempuèi cURL : $1',
 	'webstore_404'                     => 'Fichièr pas trobat.',
+	'webstore_php_warning'             => 'Atencion de PHP: $1',
 	'webstore_metadata_not_found'      => 'Fichièr pas trobat : $1',
 	'webstore_postfile_not_found'      => "Fichièr d'enregistrar pas trobat.",
 	'webstore_scaler_empty_response'   => "L’escandilhatge de l'imatge a balhat una responsa nulla amb un còde de 200 responsas. Aquò poiriá èsser degut a una error de l'escandilhatge.",

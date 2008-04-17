@@ -53,6 +53,13 @@ $messages['fr'] = array(
 	'mwsearch-desc' => 'Plug-in Recherches MW',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mwsearch-desc' => 'Complemento de procura MediaWiki',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

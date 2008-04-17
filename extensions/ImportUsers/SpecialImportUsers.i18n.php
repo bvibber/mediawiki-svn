@@ -218,6 +218,16 @@ $messages['gl'] = array(
 	'importusers-realname'             => 'nome real',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'importusers-login-name' => "Dt'ennym ymmydeyr",
+	'importusers-password'   => "dt'ockle arrey",
+	'importusers-email'      => 'post-L',
+	'importusers-realname'   => 'feer-ennym',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

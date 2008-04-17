@@ -2081,22 +2081,26 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'hiderevision'             => 'Приховати версії',
-	'hiderevision-desc'        => 'Приховує окремі версії сторінок від користувачів, використовується із судово-юридичних причин тощо.',
-	'group-oversight'          => 'Ревізори',
-	'group-oversight-member'   => 'ревізор',
-	'grouppage-oversight'      => '{{ns:project}}:Ревізори',
-	'hiderevision-prompt'      => 'Номер версії, яку потрібно приховати',
-	'hiderevision-continue'    => 'Продовжити',
-	'hiderevision-reason'      => 'Причина (буде записана в закритий журнал):',
-	'hiderevision-submit'      => 'Приховати ці дані',
-	'hiderevision-tab'         => 'Приховати версію',
-	'hiderevision-norevisions' => 'Не були зазначені версії для приховування.',
-	'hiderevision-noreason'    => 'Ви повинні написати причину приховування.',
-	'hiderevision-status'      => 'Версія №$1: $2',
-	'oversight'                => 'Журнал приховування версій',
-	'oversight-hidden'         => 'Прихована версія',
-	'oversight-header'         => 'Нижче наведені версії, які нещодавно були приховані.
+	'hiderevision'                => 'Приховати версії',
+	'hiderevision-desc'           => 'Приховує окремі версії сторінок від користувачів, використовується із судово-юридичних причин тощо.',
+	'group-oversight'             => 'Ревізори',
+	'group-oversight-member'      => 'ревізор',
+	'grouppage-oversight'         => '{{ns:project}}:Ревізори',
+	'hiderevision-prompt'         => 'Номер версії, яку потрібно приховати',
+	'hiderevision-continue'       => 'Продовжити',
+	'hiderevision-reason'         => 'Причина (буде записана в закритий журнал):',
+	'hiderevision-submit'         => 'Приховати ці дані',
+	'hiderevision-tab'            => 'Приховати версію',
+	'hiderevision-norevisions'    => 'Не були зазначені версії для приховування.',
+	'hiderevision-noreason'       => 'Ви повинні написати причину приховування.',
+	'hiderevision-status'         => 'Версія №$1: $2',
+	'hiderevision-success'        => 'Успішно заархівована і прихована.',
+	'hiderevision-error-missing'  => 'Не знайдена в базі даних.',
+	'hiderevision-archive-status' => 'Вилучена версія зі сторінки $1: $2',
+	'oversight'                   => 'Журнал приховування версій',
+	'oversight-view'              => 'докладніше',
+	'oversight-hidden'            => 'Прихована версія',
+	'oversight-header'            => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
 );
 

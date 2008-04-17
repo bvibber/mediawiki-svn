@@ -60,6 +60,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Dereckson
+ * @author Siebrand
  */
 $messages['fr'] = array(
 	'postcomment_discussionprotected'      => 'La page de discussion a été protégée en écriture.',
@@ -68,7 +69,7 @@ $messages['fr'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
 	'postcomment_leavemessagefor'          => 'Laissez un message pour $1',
 	'postcomment_post'                     => 'Message',
-	'postcomment_on'                       => 'On',
+	'postcomment_on'                       => 'A',
 	'postcomment_said'                     => 'a dit',
 	'postcomment_invalidrequest'           => 'Requête invalide',
 	'postcomment_replyto'                  => 'Répondre à $1',
@@ -193,6 +194,7 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'postcomment_discussionprotected'      => 'La pagina de discussion es estada protegida en escritura.',
@@ -201,6 +203,7 @@ $messages['oc'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Ajustatz un comentari sus aquesta pagina de discussion',
 	'postcomment_leavemessagefor'          => 'Daissatz un messatge per $1',
 	'postcomment_post'                     => 'Messatge',
+	'postcomment_on'                       => 'Lo',
 	'postcomment_said'                     => 'a dich',
 	'postcomment_invalidrequest'           => 'Requèsta invalida',
 	'postcomment_replyto'                  => 'Respondre a $1',

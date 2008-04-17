@@ -246,10 +246,17 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $messages['fi'] = array(
-	'tryexact'       => 'Yritä tarkkaa osumaa',
-	'searchfulltext' => 'Etsi koko tekstiä',
-	'createarticle'  => 'Luo sivu',
+	'inputbox-desc'           => 'Sallii ennalta määriteltyjen lomakkeiden sisällyttämisen sivuille.',
+	'inputbox-error-no-type'  => 'Et määritellyt syötekentän tyyppiä.',
+	'inputbox-error-bad-type' => 'Syötekentän tyyppi ”$1” ei kelpaa.
+Sallittuja arvoja ovat create, comment, search ja search2.',
+	'tryexact'                => 'Yritä tarkkaa osumaa',
+	'searchfulltext'          => 'Etsi koko tekstiä',
+	'createarticle'           => 'Luo sivu',
 );
 
 /** Võro (Võro)
@@ -733,7 +740,7 @@ $messages['pl'] = array(
 Proszę wybrać „create”, „comment”, „search” lub „search2”.',
 	'tryexact'                => 'Użyj dokładnego wyrażenia',
 	'searchfulltext'          => 'Szukaj w całych tekstach',
-	'createarticle'           => 'Utwórz stronę',
+	'createarticle'           => 'Utwórz artykuł',
 );
 
 $messages['pms'] = array(

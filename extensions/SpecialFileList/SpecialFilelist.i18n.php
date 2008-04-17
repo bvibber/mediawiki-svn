@@ -18,14 +18,37 @@ $messages['en'] = array(
 	'filelist-image-desc'   => 'desc',
 );
 
+/** Amharic (አማርኛ)
+ * @author Siebrand
+ */
+$messages['am'] = array(
+	'filelist-image-desc' => 'መግለጫ',
+);
+
+/** Aragonese (Aragonés)
+ * @author Siebrand
+ */
+$messages['an'] = array(
+	'filelist-image-desc' => 'desc',
+);
+
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'filelist'              => 'قائمة الملف',
 	'filelist-desc'         => 'صفحة خاصة لعرض الملفات المرفوعة',
 	'filelist-show-list'    => 'عرض القائمة',
 	'filelist-show-gallery' => 'عرض المعرض',
+	'filelist-image-desc'   => 'وصف',
+);
+
+/** Asturian (Asturianu)
+ * @author Siebrand
+ */
+$messages['ast'] = array(
+	'filelist-image-desc' => 'desc',
 );
 
 /** Kotava (Kotava)
@@ -35,6 +58,13 @@ $messages['avk'] = array(
 	'filelist'              => 'Iyeltakeem',
 	'filelist-show-list'    => 'Nedira va iyeltakeem',
 	'filelist-show-gallery' => 'Nedira va ginsa',
+);
+
+/** Belarusian (Беларуская)
+ * @author Siebrand
+ */
+$messages['be'] = array(
+	'filelist-image-desc' => 'апісанне',
 );
 
 /** Bulgarian (Български)
@@ -48,6 +78,27 @@ $messages['bg'] = array(
 	'filelist-show-gallery' => 'Показване на галерията',
 );
 
+/** Bengali (বাংলা)
+ * @author Siebrand
+ */
+$messages['bn'] = array(
+	'filelist-image-desc' => 'বিবরণ',
+);
+
+/** Catalan (Català)
+ * @author Siebrand
+ */
+$messages['ca'] = array(
+	'filelist-image-desc' => 'desc',
+);
+
+/** Welsh (Cymraeg)
+ * @author Siebrand
+ */
+$messages['cy'] = array(
+	'filelist-image-desc' => 'disg.',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -57,12 +108,28 @@ $messages['da'] = array(
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['dsb'] = array(
 	'filelist'              => 'Lisćina datajow',
 	'filelist-desc'         => 'Specialny bok za nalistowanje nagratych datajow',
 	'filelist-show-list'    => 'Lisćinu pokazaś',
 	'filelist-show-gallery' => 'Galeriju pokazaś',
+	'filelist-image-desc'   => 'Zespominanje',
+);
+
+/** Võro (Võro)
+ * @author Siebrand
+ */
+$messages['fiu-vro'] = array(
+	'filelist-image-desc' => 'seletüs',
+);
+
+/** Faroese (Føroyskt)
+ * @author Siebrand
+ */
+$messages['fo'] = array(
+	'filelist-image-desc' => 'lýs',
 );
 
 /** French (Français)
@@ -76,8 +143,23 @@ $messages['fr'] = array(
 	'filelist-show-gallery' => 'Voir la galerie',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Siebrand
+ */
+$messages['frp'] = array(
+	'filelist-image-desc' => 'pâge de l’émâge',
+);
+
+/** Gan (贛語)
+ * @author Siebrand
+ */
+$messages['gan'] = array(
+	'filelist-image-desc' => '話',
+);
+
 /** Galician (Galego)
  * @author Alma
+ * @author Siebrand
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -85,6 +167,21 @@ $messages['gl'] = array(
 	'filelist-desc'         => 'Páxina especial para listar ficheiros cargados',
 	'filelist-show-list'    => 'Amosar a listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
+	'filelist-image-desc'   => 'desc',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Siebrand
+ */
+$messages['hak'] = array(
+	'filelist-image-desc' => 'mèu-sut',
+);
+
+/** Hindi (हिन्दी)
+ * @author Siebrand
+ */
+$messages['hi'] = array(
+	'filelist-image-desc' => 'ज़ानकारी',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -98,12 +195,56 @@ $messages['hsb'] = array(
 	'filelist-show-gallery' => 'Galeriju pokazać',
 );
 
+/** Armenian (Հայերեն)
+ * @author Siebrand
+ */
+$messages['hy'] = array(
+	'filelist-image-desc' => 'նկարագրություն',
+);
+
+/** Italian (Italiano)
+ * @author Siebrand
+ */
+$messages['it'] = array(
+	'filelist-image-desc' => 'disc',
+);
+
+/** Georgian (ქართული)
+ * @author Siebrand
+ */
+$messages['ka'] = array(
+	'filelist-image-desc' => 'აღწერა',
+);
+
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author Siebrand
+ */
+$messages['kaa'] = array(
+	'filelist-image-desc' => 'aniqlama',
+);
+
+/** Kabyle (Taqbaylit)
+ * @author Siebrand
+ */
+$messages['kab'] = array(
+	'filelist-image-desc' => 'aglam',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Siebrand
  */
 $messages['km'] = array(
 	'filelist-show-list'    => 'បង្ហាញ បញ្ជី',
 	'filelist-show-gallery' => 'បង្ហាញ ទីតាំងពិពណ៌',
+	'filelist-image-desc'   => 'លំដាប់ចុះ',
+);
+
+/** Korean (한국어)
+ * @author Siebrand
+ */
+$messages['ko'] = array(
+	'filelist-image-desc' => '설명',
 );
 
 /** Latin (Latina)
@@ -113,16 +254,54 @@ $messages['la'] = array(
 	'filelist'              => 'Fasciculorum index',
 	'filelist-show-list'    => 'Indicem monstrare',
 	'filelist-show-gallery' => 'Pinacothecam monstrare',
+	'filelist-image-desc'   => 'desc',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
 	'filelist'              => 'Lëscht vun de Fichieren',
 	'filelist-desc'         => 'Spezialsäit vun de Fichieren déi eropgeluede goufen.',
 	'filelist-show-list'    => 'Lëscht weisen',
 	'filelist-show-gallery' => 'Gallerie weisen',
+	'filelist-image-desc'   => 'Beschreiwung',
+);
+
+/** Limburgish (Limburgs)
+ * @author Siebrand
+ */
+$messages['li'] = array(
+	'filelist-image-desc' => 'besj',
+);
+
+/** Latvian (Latviešu)
+ * @author Siebrand
+ */
+$messages['lv'] = array(
+	'filelist-image-desc' => 'apraksts',
+);
+
+/** Moksha (мокшень кяль)
+ * @author Siebrand
+ */
+$messages['mdf'] = array(
+	'filelist-image-desc' => 'колга',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Siebrand
+ */
+$messages['ml'] = array(
+	'filelist-image-desc' => 'കുറിപ്പ്',
+);
+
+/** Mongolian (Монгол)
+ * @author Siebrand
+ */
+$messages['mn'] = array(
+	'filelist-image-desc' => 'тайлбар',
 );
 
 /** Dutch (Nederlands)
@@ -134,16 +313,19 @@ $messages['nl'] = array(
 	'filelist-desc'         => '[[Special:Filelist|Speciale pagina]] met een lijst van geüploade bestanden',
 	'filelist-show-list'    => 'Lijst bekijken',
 	'filelist-show-gallery' => 'Galerij bekijken',
+	'filelist-image-desc'   => 'beschrijving',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['no'] = array(
 	'filelist'              => 'Filliste',
 	'filelist-desc'         => 'Spesialside som viser en liste over opplastede filer',
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
+	'filelist-image-desc'   => 'beskrivelse',
 );
 
 /** Occitan (Occitan)
@@ -178,22 +360,68 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Siebrand
  */
 $messages['pt'] = array(
 	'filelist'              => 'Lista de arquivos',
 	'filelist-desc'         => 'Página Especial para listar arquivos carregados',
 	'filelist-show-list'    => 'Mostrar lista',
 	'filelist-show-gallery' => 'Mostrar galeria',
+	'filelist-image-desc'   => 'desc',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Siebrand
+ */
+$messages['pt-br'] = array(
+	'filelist-image-desc' => 'desc',
+);
+
+/** Quechua (Runa Simi)
+ * @author Siebrand
+ */
+$messages['qu'] = array(
+	'filelist-image-desc' => 'uray',
+);
+
+/** Romanian (Română)
+ * @author Siebrand
+ */
+$messages['ro'] = array(
+	'filelist-image-desc' => 'desc',
+);
+
+/** Yakut (Саха тыла)
+ * @author Siebrand
+ */
+$messages['sah'] = array(
+	'filelist-image-desc' => 'быһаарыы',
+);
+
+/** Sassaresu (Sassaresu)
+ * @author Siebrand
+ */
+$messages['sdc'] = array(
+	'filelist-image-desc' => "pàgina di l'immàgina",
+);
+
+/** Northern Sami (Sámegiella)
+ * @author Siebrand
+ */
+$messages['se'] = array(
+	'filelist-image-desc' => 'govvádus',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'filelist'              => 'Zoznam súborov',
 	'filelist-desc'         => 'Špeciálna stránka zobrazujúca nahrané súbory',
 	'filelist-show-list'    => 'Zobraziť zoznam',
 	'filelist-show-gallery' => 'Zobraziť galériu',
+	'filelist-image-desc'   => 'popis',
 );
 
 /** ћирилица (ћирилица)
@@ -203,6 +431,20 @@ $messages['sr-ec'] = array(
 	'filelist'              => 'Списак фајлова',
 	'filelist-show-list'    => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
+);
+
+/** Sranan Tongo (Sranantongo)
+ * @author Siebrand
+ */
+$messages['srn'] = array(
+	'filelist-image-desc' => 'infru',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Siebrand
+ */
+$messages['stq'] = array(
+	'filelist-image-desc' => 'Beschrieuwenge',
 );
 
 /** Swedish (Svenska)
@@ -216,31 +458,58 @@ $messages['sv'] = array(
 	'filelist-show-gallery' => 'Visa galleri',
 );
 
+/** Silesian (ślůnski)
+ * @author Siebrand
+ */
+$messages['szl'] = array(
+	'filelist-image-desc' => 'uopis',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
+ * @author Siebrand
  */
 $messages['ta'] = array(
 	'filelist'              => 'கோப்புப் பட்டியல்',
 	'filelist-desc'         => 'பதிவேற்றப்பட்ட கோப்புகளைக் காட்டுவதற்கான சிறப்புப் பக்கம்',
 	'filelist-show-list'    => 'பட்டியலைக் காட்டு',
 	'filelist-show-gallery' => 'படத்தொகுப்பைக் காட்டு',
+	'filelist-image-desc'   => 'விபரம்',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Siebrand
  */
 $messages['te'] = array(
-	'filelist'           => 'ఫైళ్ళ జాబితా',
-	'filelist-desc'      => 'ఎగుమతైన ఫైళ్ళ జాబితాని చూపించడానికి ప్రత్యేక పేజీ',
-	'filelist-show-list' => 'జాబితాని చూపించు',
+	'filelist'            => 'ఫైళ్ళ జాబితా',
+	'filelist-desc'       => 'ఎగుమతైన ఫైళ్ళ జాబితాని చూపించడానికి ప్రత్యేక పేజీ',
+	'filelist-show-list'  => 'జాబితాని చూపించు',
+	'filelist-image-desc' => 'వివరణ',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Siebrand
  */
 $messages['tg-cyrl'] = array(
 	'filelist'              => 'Феҳристи парванда',
 	'filelist-show-list'    => 'Намоиши феҳрист',
 	'filelist-show-gallery' => 'Намоиши нигористон',
+	'filelist-image-desc'   => 'тавсиф',
+);
+
+/** Vèneto (Vèneto)
+ * @author Siebrand
+ */
+$messages['vec'] = array(
+	'filelist-image-desc' => 'desc',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Siebrand
+ */
+$messages['vi'] = array(
+	'filelist-image-desc' => 'miêu tả',
 );
 

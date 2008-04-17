@@ -65,6 +65,13 @@ $messages['gl'] = array(
 	'eval_code'   => 'Código',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'eval_code' => 'Coad',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

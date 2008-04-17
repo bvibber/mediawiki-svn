@@ -211,6 +211,14 @@ $messages['gl'] = array(
 	'countedits-nocontribs'   => 'Non houbo ningunha colaboración neste wiki.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'countedits-username' => "Dt'ennym ymmydeyr:",
+	'countedits-ok'       => 'OK',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -758,7 +766,7 @@ $messages['te'] = array(
 	'countedits'              => 'మార్పులను లెక్కించు',
 	'countedits-desc'         => 'వాడుకరి మార్పులను మరియు పై-పది రచయితల జాబితాను చూపించే [[Special:CountEdits|ప్రత్యేక పేజీ]]',
 	'countedits-warning'      => "'''హెచ్చరిక:''' పుస్తకాన్ని దాని అట్ట చూసి అంచనా వెయ్యవద్దు. ఒకరిని వారి మార్పుల సంఖ్య చూసి నిర్ణయించకూడదు.",
-	'countedits-username'     => 'వాడుకరి పేరు:',
+	'countedits-username'     => 'వాడుకరిపేరు:',
 	'countedits-ok'           => 'సరే',
 	'countedits-nosuchuser'   => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',
 	'countedits-resultheader' => '$1కి ఫలితాలు',

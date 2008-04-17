@@ -466,20 +466,21 @@ $messages['hu'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Meursault2004
  */
 $messages['id'] = array(
-	'bookinfo-header' => 'Informasi buku',
-	'bookinfo-desc' => 'Mengembangkan [[Special:Booksources]] dengan informasi dari sumber-sumber buku',
-	'bookinfo-result-title' => 'Judul:',
-	'bookinfo-result-author' => 'Pengarang:',
-	'bookinfo-result-publisher' => 'Penerbit:',
-	'bookinfo-result-year' => 'Tahun:',
+	'bookinfo-header'            => 'Informasi buku',
+	'bookinfo-desc'              => 'Mengembangkan [[Special:Booksources]] dengan informasi dari sumber-sumber buku',
+	'bookinfo-result-title'      => 'Judul:',
+	'bookinfo-result-author'     => 'Pengarang:',
+	'bookinfo-result-publisher'  => 'Penerbit:',
+	'bookinfo-result-year'       => 'Tahun:',
 	'bookinfo-error-invalidisbn' => 'ISBN yang dimasukkan tidak sah.',
-	'bookinfo-error-nosuchitem' => 'Item yang dimasukkan tidak ada atau tidak ditemukan.',
-	'bookinfo-error-nodriver' => 'Tidak dapat menginisiasi Book Information Driver.',
-	'bookinfo-error-noresponse' => 'Tak ada respons atau respons terlalu lama.',
-	'bookinfo-purchase' => 'Beli buku ini dari $1',
-	'bookinfo-provider' => 'Penyedia data: $1',
+	'bookinfo-error-nosuchitem'  => 'Item yang dimasukkan tidak ada atau tidak ditemukan.',
+	'bookinfo-error-nodriver'    => 'Tidak dapat menginisialisasi Book Information Driver.',
+	'bookinfo-error-noresponse'  => 'Tak ada respons atau respons terlalu lama.',
+	'bookinfo-purchase'          => 'Beli buku ini dari $1',
+	'bookinfo-provider'          => 'Penyedia data: $1',
 );
 
 /** Ido (Ido)
@@ -572,6 +573,7 @@ $messages['jv'] = array(
 	'bookinfo-result-year'       => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN sing dilebokaké ora absah.',
 	'bookinfo-error-nosuchitem'  => 'Item sing dilebokaké ora ana utawa ora bisa ditemokaké.',
+	'bookinfo-error-nodriver'    => 'Ora bisa inisialisasi Book Information Driver.',
 	'bookinfo-error-noresponse'  => 'Ora ana wangsulan utawa rèsponsé kesuwèn.',
 	'bookinfo-purchase'          => 'Tuku buku ini saka $1',
 	'bookinfo-provider'          => 'Sing nyedyakaké data: $1',

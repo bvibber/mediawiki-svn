@@ -119,6 +119,14 @@ $messages['gl'] = array(
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'findspam-ip' => 'Enmys IP:',
+	'findspam-ok' => 'OK',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

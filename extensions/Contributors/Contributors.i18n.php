@@ -258,9 +258,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'contributors'             => 'Colaboradores',
+	'contributors-desc'        => 'Sintetiza as contribucións principais nunha páxina',
 	'contributors-toolbox'     => 'Principais colaboradores',
 	'contributors-legend'      => 'Listaxe cos principais colaboradores dunha páxina',
 	'contributors-target'      => 'Título:',
@@ -270,6 +272,15 @@ $messages['gl'] = array(
 	'contributors-others'      => 'e outros $1',
 	'contributors-badtitle'    => 'Título non válido.',
 	'contributors-nosuchpage'  => 'Non existe a páxina $1.',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'contributors'        => 'Cohoyrtee',
+	'contributors-target' => 'Ard-ennym:',
+	'contributors-submit' => 'Taishbyney',
 );
 
 /** Hindi (हिन्दी)

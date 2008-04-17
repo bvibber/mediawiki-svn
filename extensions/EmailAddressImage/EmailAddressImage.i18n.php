@@ -70,6 +70,13 @@ $messages['lb'] = array(
 	'emailaddressimage-desc' => 'Setzt <tt>&lt;E-Mail&gt;</tt> derbäi fir eng E-Mailadress als Bild unzeweisen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'emailaddressimage-desc' => 'Prideda <tt>&lt;email&gt;</tt>, kad rodytų elektroninio pašto adresą kaip paveikslėlį',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

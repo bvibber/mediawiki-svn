@@ -178,6 +178,14 @@ $messages['lb'] = array(
 	'restriction-level-author' => 'Auteur-protegéiert',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'authorprotect-confirm' => 'Apsaugoti',
+	'authorprotect-reason'  => 'Priežastis',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

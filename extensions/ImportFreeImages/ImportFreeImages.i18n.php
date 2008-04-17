@@ -151,6 +151,13 @@ $messages['gl'] = array(
 	'importfreeimages_returntoform'          => "Ou, prema <a href='$1'>here</a> para voltar á súa procura de resultados",
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'importfreeimages_owner' => 'Ughtar',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

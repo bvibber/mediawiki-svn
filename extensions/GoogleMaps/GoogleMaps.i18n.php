@@ -908,6 +908,22 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-mars'                      => 'Marte',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$wgGoogleMapsMessages['gv'] = array(
+	'gm-balloon-title'   => 'Ard-ennym:',
+	'gm-zoom-control'    => 'Stiureydys',
+	'gm-large'           => 'Mooar',
+	'gm-medium'          => 'Meanagh',
+	'gm-small'           => 'Beg',
+	'gm-no-zoom-control' => 'Veg',
+	'gm-yes'             => 'Ta',
+	'gm-no'              => 'Cha',
+	'gm-search'          => 'Ronsaghey',
+	'gm-save-path'       => 'Sauail',
+);
+
 /** Hebrew (עברית)
  * @author שומבלע
  */
@@ -1254,6 +1270,33 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-earth'                     => 'Äerd',
 	'gm-moon'                      => 'Mount',
 	'gm-mars'                      => 'Mars',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$wgGoogleMapsMessages['lt'] = array(
+	'gm-no-results'       => 'Atsiprašome, rezultatų nerasta',
+	'gm-searching'        => 'ieškoma…',
+	'gm-map'              => 'Žemėlapis',
+	'gm-are-you-sure'     => 'Esate tikras?',
+	'gm-width'            => 'Plotis',
+	'gm-height'           => 'Aukštis',
+	'gm-scale-control'    => 'Skalė',
+	'gm-overview-control' => 'Peržiūra',
+	'gm-zoom-control'     => 'Naršymas',
+	'gm-yes'              => 'Taip',
+	'gm-no'               => 'Ne',
+	'gm-search'           => 'Ieškoti',
+	'gm-clear-search'     => 'išvalyti paieškos rezultatus',
+	'gm-meters'           => 'metrai',
+	'gm-miles'            => 'mylios',
+	'gm-save-path'        => 'Išsaugoti',
+	'gm-back'             => 'atgal',
+	'gm-kml-loading'      => 'kraunama…',
+	'gm-earth'            => 'Žemė',
+	'gm-moon'             => 'Mėnulis',
+	'gm-mars'             => 'Marsas',
 );
 
 /** Malayalam (മലയാളം)
@@ -1632,35 +1675,80 @@ $wgGoogleMapsMessages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author McMonster
  * @author Dodek
- * @author Sp5uhe
  * @author Masti
  */
 $wgGoogleMapsMessages['pl'] = array(
-	'gm-balloon-title'    => 'Tytuł:',
-	'gm-remove'           => 'usuń',
-	'gm-save-point'       => 'zapisz i zamknij',
-	'gm-searching'        => 'wyszukiwanie...',
-	'gm-are-you-sure'     => 'Czy jesteś pewien?',
-	'gm-height'           => 'Wysokość',
-	'gm-large'            => 'Duży',
-	'gm-medium'           => 'Średni',
-	'gm-small'            => 'Mały',
-	'gm-yes'              => 'Tak',
-	'gm-no'               => 'Nie',
-	'gm-search'           => 'Szukaj',
-	'gm-clear-search'     => 'wyczyść wyniki wyszukiwania',
-	'gm-save-path'        => 'Zapisz',
-	'gm-color-path'       => 'zmień kolor',
-	'gm-line-width'       => 'Szerokość',
-	'gm-make-map'         => 'stwórz mapę',
-	'gm-hide-map'         => 'ukryj mapę',
-	'gm-back'             => 'wstecz',
-	'gm-kml-include-link' => 'dodaj do mapy',
-	'gm-kml-loading'      => 'ładowanie...',
-	'gm-earth'            => 'Ziemia',
-	'gm-moon'             => 'Księżyc',
+	'gm-incompatible-browser'      => 'Korzystanie z mapy wymaga byś używał współpracującej z nią przeglądarki.',
+	'gm-incompatible-browser-link' => 'Kliknij tutaj, by zobaczyć listę wspieranych przeglądarek.',
+	'gm-no-editor'                 => 'Niestety używana przez Ciebie przeglądarka internetowa nie obsługuje mechanizmu mapy interaktywnej.
+Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet Explorer</a> (dla systemów Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (dla systemów Windows, Mac oraz Linux).',
+	'gm-balloon-title'             => 'Tytuł:',
+	'gm-balloon-link-article'      => 'Link do tej strony (opcjonalnie):',
+	'gm-make-marker'               => 'Podpis (możesz użyć składni wiki)',
+	'gm-remove'                    => 'usuń',
+	'gm-caption'                   => 'Podpis',
+	'gm-tab-title'                 => 'Nazwa zakładki',
+	'gm-tab'                       => 'Zakładka',
+	'gm-start-path'                => 'początek ścieżki',
+	'gm-trace-area'                => 'odnajdź obszar',
+	'gm-save-point'                => 'zapisz i zamknij',
+	'gm-load-map-from-article'     => 'Załaduj mapę ze strony:',
+	'gm-no-maps'                   => 'Brak na tej stronie mapy do załadowania.',
+	'gm-refresh-list'              => 'Odśwież spis',
+	'gm-load-map'                  => 'Załaduj mapę',
+	'gm-clip-result'               => 'Dodaj do mapy',
+	'gm-no-results'                => 'Brak wyników',
+	'gm-searching'                 => 'wyszukiwanie...',
+	'gm-map'                       => 'Mapa',
+	'gm-note'                      => 'Upewnij się, że skopiowałeś to czego potrzebujesz do poniższej strony zanim wciśniesz „Załaduj mapę”, „Zapisz” lub „Podgląd”.',
+	'gm-instructions'              => 'Poniżej jest kod wiki, który utworzy powyższą mapę.',
+	'gm-are-you-sure'              => 'Czy jesteś pewien?',
+	'gm-clear-all-points'          => 'Usuń wszystkie punkty',
+	'gm-refresh-points'            => 'Odśwież punkty',
+	'gm-width'                     => 'Szerokość',
+	'gm-height'                    => 'Wysokość',
+	'gm-scale-control'             => 'Powiększenie',
+	'gm-overview-control'          => 'Przegląd',
+	'gm-selector-control'          => 'Wybór mapa/satelita',
+	'gm-zoom-control'              => 'Nawigacja',
+	'gm-large'                     => 'Duży',
+	'gm-medium'                    => 'Średni',
+	'gm-small'                     => 'Mały',
+	'gm-no-zoom-control'           => 'Brak',
+	'gm-yes'                       => 'Tak',
+	'gm-no'                        => 'Nie',
+	'gm-search-preface'            => 'Kliknij mapę by dodać punkt lub przeskocz do miasta, kraju, adresu lub firmy',
+	'gm-geocode-preface'           => 'Kliknij mapę by dodać punkt lub przeskocz do miasta, kraju lub adresu',
+	'gm-no-search-preface'         => 'Kliknij mapę aby dodać punkt.',
+	'gm-search'                    => 'Szukaj',
+	'gm-clear-search'              => 'wyczyść wyniki wyszukiwania',
+	'gm-meters'                    => 'metry',
+	'gm-miles'                     => 'mile',
+	'gm-editing-path'              => 'Kliknij mapę by dodać więcej punktów do tej ścieżki.',
+	'gm-save-path'                 => 'Zapisz',
+	'gm-edit-path'                 => 'dodaj punkty',
+	'gm-show-path'                 => 'pokaż punkty',
+	'gm-color-path'                => 'zmień kolor',
+	'gm-color-fill'                => 'zmień kolor wypełnienia',
+	'gm-add-fill'                  => 'wypełnij obszar',
+	'gm-remove-fill'               => 'usuń wypełnienie',
+	'gm-fill-color'                => 'Kolor wypełnienia',
+	'gm-line-color'                => 'Kolor linii',
+	'gm-opacity'                   => 'Nieprzezroczysty',
+	'gm-line-width'                => 'Szerokość',
+	'gm-make-map'                  => 'stwórz mapę',
+	'gm-hide-map'                  => 'ukryj mapę',
+	'gm-back'                      => 'wstecz',
+	'gm-kml-include'               => 'Zewnętrzny KML/GeoRSS',
+	'gm-kml-include-link'          => 'dodaj do mapy',
+	'gm-kml-loading'               => 'ładowanie...',
+	'gm-kml-export'                => 'Eksportuj tą mapę w formacie KML',
+	'gm-earth'                     => 'Ziemia',
+	'gm-moon'                      => 'Księżyc',
+	'gm-mars'                      => 'Mars',
 );
 
 /** Pashto (پښتو)
