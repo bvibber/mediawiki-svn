@@ -228,7 +228,7 @@ function wfSpecialFilelist () {
 				$nb = wfMsg( "nbytes", $wgLang->formatNum( $s->img_size ) );
 				$l = "(" .
 				  $this->sk->makeKnownLinkObj( Title::makeTitle( NS_IMAGE, $name ),
-				  wfMsg( "imgdesc" ) ) .
+				  wfMsg( 'filelist-image-desc' ) ) .
 				  ") {$ilink} . . {$nb} . . {$ul} . . " .
 				  $wgLang->timeanddate( $s->img_timestamp, true );
 

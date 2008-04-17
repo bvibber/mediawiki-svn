@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'filelist-desc'         => 'Special page for listing uploaded files',
 	'filelist-show-list'    => 'Show list',
 	'filelist-show-gallery' => 'Show gallery',
+	'filelist-image-desc'   => 'desc',
 );
 
 /** Arabic (العربية)
