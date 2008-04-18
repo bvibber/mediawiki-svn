@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Array mapping all editable settings to their type.
- * These settings are in the same order as 
+ * These settings are in the same order as
  * http://www.mediawiki.org/wiki/Manual:Configuration_settings
  */
 $settings = array(

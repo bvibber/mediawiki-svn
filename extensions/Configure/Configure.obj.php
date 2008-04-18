@@ -52,7 +52,7 @@ class WebConfiguration extends SiteConfiguration {
 			# Wired, should not happen too
 			return;
 		$this->mConf = $arr;
-		
+
 		# We'll need to invert the order of keys as SiteConfiguration use
 		# $settings[$setting][$wiki] and the extension use $settings[$wiki][$setting]
 		foreach( $this->mConf as $site => $settings ){
@@ -118,7 +118,7 @@ class WebConfiguration extends SiteConfiguration {
 		$file = "{$this->mDir}conf-$ts.ser";
 		return $file;
 	}
-	
+
 	/**
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
@@ -133,7 +133,7 @@ class WebConfiguration extends SiteConfiguration {
 		}
 		return $files;
 	}
-	
+
 	/**
 	 * Return the configuration from the conf-{$ts}.ser file in the $this->mDir
 	 * Does *not* return site specific settings but *all* settings
@@ -157,7 +157,7 @@ class WebConfiguration extends SiteConfiguration {
 			return array();
 		return $arr;
 	}
-	
+
 	/**
 	 * Get the directory used to store the files
 	 *

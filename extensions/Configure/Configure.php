@@ -58,13 +58,13 @@ function efConfigureSetup( $wiki = 'default' ){
 	$oldConf = $wgConf;
 	require_once( dirname( __FILE__ ) . '/Configure.obj.php' );
 	$wgConf = new WebConfiguration( $wiki, $wgConfigureFilesPath );
-	
+
 	# Copy the existing settings...
 	$wgConf->suffixes = $oldConf->suffixes;
 	$wgConf->wikis = $oldConf->wikis;
 	$wgConf->settings = $oldConf->settings;
 	$wgConf->localVHosts = $oldConf->localVHosts;
-	
+
 	# Load the new configuration, and fill in the settings
 	$wgConf->initialise();
 	$wgConf->extract();
