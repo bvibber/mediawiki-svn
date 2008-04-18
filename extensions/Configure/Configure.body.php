@@ -198,6 +198,7 @@ class SpecialConfigure extends SpecialPage {
 				unset( $settings[$name] );
 		}
 
+		$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
 		$ok = $wgConf->saveNewSettings( $settings, $wiki );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';
