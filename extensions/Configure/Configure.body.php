@@ -372,8 +372,8 @@ class SpecialConfigure extends SpecialPage {
 			Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'div' ) . "\n" .
-			Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpEditToken', 'value' => htmlspecialchars( $wgUser->editToken() ) ) ) . "\n" .
-			( $wiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => htmlspecialchars( $wiki ) ) ) . "\n" : '' ) .
+			Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpEditToken', 'value' => $wgUser->editToken() ) ) . "\n" .
+			( $wiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => $wiki ) ) . "\n" : '' ) .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'form' )
 		);
@@ -515,7 +515,7 @@ class SpecialConfigure extends SpecialPage {
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
-							'type' => 'text', 'value' => htmlspecialchars( $key )
+							'type' => 'text', 'value' => $key
 						) ) . "<br/>\n";
 					else
 						$text .= htmlspecialchars( $key );
@@ -523,7 +523,7 @@ class SpecialConfigure extends SpecialPage {
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
-							'type' => 'text', 'value' => htmlspecialchars( $val )
+							'type' => 'text', 'value' => $val
 						) ) . "<br/>\n";
 					else
 						$text .= htmlspecialchars( $val );
@@ -573,7 +573,7 @@ class SpecialConfigure extends SpecialPage {
 				$text .= '<tr><td>'.htmlspecialchars( $name ) . '</td><td>';
 				$text .= Xml::element( 'input', array(
 					'name' => 'wp' . $conf . "-ns{$ns}",
-					'type' => 'text', 'value' => htmlspecialchars( isset( $default[$ns] ) ? $default[$ns] : '' )
+					'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
 				) ) . "<br/>\n";
 				$text .= '</td></tr>';
 			}
