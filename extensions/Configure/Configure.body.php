@@ -191,7 +191,7 @@ class SpecialConfigure extends SpecialPage {
 						throw new MWException( "Value for \$$name setting is not in permitted (given: $val, permitted: $perm)" );
 					}
 				} else {
-					throw new MWException( "Unkonwn setting type $type (setting name: \$$name)" );
+					throw new MWException( "Unknown setting type $type (setting name: \$$name)" );
 				}
 			}
 			if( isset( $settings[$name] ) && $settings[$name] === null )

@@ -71,10 +71,13 @@ Please create it or change it to use this extension.',
 	'configure-setting-not-available' => 'This setting is not available in this version of MediaWiki',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
 	'configure' => 'Configurer le wiki',
 	'configure-desc' => 'Permet aux utilisateurs avec les permisssions adéquates de configurer le wiki via une page spéciale',
-	'configure-summary' => 'Cette page spéciale vous permet de configurer ce wiki, voyez http://www.mediawiki.org/wiki/Manual:Configuration_settings/fr pour plus d\'informations.',
+	'configure-summary' => 'Cette page spéciale vous permet de configurer ce wiki, voyez les [http://www.mediawiki.org/wiki/Manual:Configuration_settings/fr paramètres de configuration] pour plus d\'informations.',
 	'configure-btn-save' => 'Savegarder les réglages',
 	'configure-edit-old' => 'Attention : vous êtes en train de modifier une <strong>ancienne</strong> version de la configuration.',
 	'configure-no-directory' => 'Le dosier utilisé pour sauver la configuration, <tt>$1</tt>, n\'existe pas, merci de le créer ou de le changer pour que cette extension fonctionne.',
