@@ -61,6 +61,7 @@ class SiteMatrix
 			'species' => 'species.wikipedia.org',
 			'test' => 'test.wikipedia.org',
 			'wg-en' => 'wg.en.wikipedia.org',
+			'beta' => 'beta.wikiversity.org',
 		);
 
 		# Some internal databases for other domains.
@@ -81,7 +82,7 @@ class SiteMatrix
 				$m = array();
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
 					$lang =  str_replace( '_', '-', $m[1] );
-					if ( !isset( $xLanglist[$lang] ) && $site == 'wiki' ) {
+					if ( !isset( $xLanglist[$lang] ) && ($site == 'wiki' || $site == 'wikiversity') ) {
 						$this->specials[] = $lang;
 					} else {
 						$this->matrix[$site][$lang] = 1;
@@ -113,6 +114,10 @@ class SiteMatrix
 		if( $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
 			return true;
 		return false;
+	}
+
+	public function sitenameById( $name ) {
+		return $name == 'wiki' ? 'wikipedia' : $name;
 	}
 }
 
@@ -181,8 +186,8 @@ class SiteMatrixPage extends SpecialPage {
 			"</tr>
 			<tr>
 				<th>&nbsp;</th>";
-				foreach ( $matrix->names as $name ) {
-					$s .= Xml::tags( 'th', null,  $name );
+				foreach ( $matrix->names as $id => $name ) {
+					$s .= Xml::tags( 'th', null, '<a href="http://www.' . $matrix->sitenameById($id) . '.org/">' .  $name . '</a>' );
  				}
 		$s .= "</tr>\n";
 
@@ -241,6 +246,7 @@ class SiteMatrixPage extends SpecialPage {
 			if( $matrix->isFishbowl( $lang ) )
 				$flags[] = wfMsgHtml( 'sitematrix-fishbowl' );
 			$flagsStr = implode( ', ', $flags );
+			if( $lang == 'beta' ) $lang = 'betawikiversity';	//ugly hack for betawikiversity
 			$s .= '<li>' . wfSpecialList( '<a href="http://' . $domain . '/">' . $lang . "</a>", $flagsStr ) . "</li>\n";
 		}
 		$s .= '</ul>';
