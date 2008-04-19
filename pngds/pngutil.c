@@ -44,6 +44,24 @@ unsigned int png_fread(void *ptr, unsigned int size,
 	return size;
 }
 
+unsigned int png_fwrite(void *ptr, unsigned int size,
+	FILE *stream, u_int32_t *crc)
+{
+	if (size == 0) return 0;
+	
+	if (fwrite(ptr, 1, size, stream) != size ||
+			ferror(stream))
+		png_die("write_error", stream);
+	if (crc != NULL)
+		*crc = crc32(*crc, ptr, size);
+}
+void png_write_int(u_int32_t value, FILE *stream, u_int32_t *crc)
+{
+	signed char i;
+	for (i = 3; i >= 0; i--)
+		png_fwrite((char*)(&value) + i, 1, stream, crc);
+}
+
 void png_open_streams(char **opts, FILE **in, FILE **out)
 {
 	if (!*(opts[PNGOPT_STDIN]) && opts[PNGOPT_IN] == NULL)

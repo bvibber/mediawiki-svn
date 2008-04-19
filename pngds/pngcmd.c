@@ -34,7 +34,7 @@ char** pngcmd_getopts(int argc, char **argv)
 			*res[PNGOPT_STDIN] = 1;
 		else if (strcmp(argv[i], "--to-stdout") == 0)
 			*res[PNGOPT_STDOUT] = 1;
-#ifdef PNGRESIZE
+#ifndef PNGREADER
 		else if (strcmp(argv[i], "--height") == 0 || 
 				strcmp(argv[i], "--width") == 0)
 			; // Do nothing
@@ -72,6 +72,10 @@ void pngcmd_help()
 #endif
 #ifdef PNGRESIZE
 		"pngresize [--from-stdin] [--to-stdout] [<source>] [<target>]\n"
+		"	[--width <width>] [--height <height>]\n"
+#endif
+#ifdef PNGDS
+		"pngds [--from-stdin] [--to-stdout] [<source>] [<target>]\n"
 		"	[--width <width>] [--height <height>]\n"
 #endif
 		"\n");

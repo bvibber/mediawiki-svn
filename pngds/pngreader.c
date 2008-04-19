@@ -32,7 +32,7 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1)
 		callbacks->done = NULL;
 	}
 	if (callbacks->completed_scanline == NULL)
-		callbacks->completed_scanline = &png_write_scanline;
+		callbacks->completed_scanline = &png_write_scanline_raw;
 	info.callbacks = callbacks;
 	
 	info.extra1 = extra1;
@@ -293,7 +293,7 @@ void png_read_ancillary(pngreader *info, u_int32_t length)
 		png_fread(&buf, 1, info->fin, &info->crc);
 }
 
-void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanline, 
+void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, 
 	u_int32_t length, void *info_)
 {
 	pngreader *info = (pngreader*)info_;

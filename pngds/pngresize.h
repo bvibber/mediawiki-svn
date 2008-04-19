@@ -13,4 +13,5 @@ typedef struct
 	u_int32_t written_lines;
 	unsigned char *last_line;
 	
+	pngcallbacks *callbacks;
 } pngresize;

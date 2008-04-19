@@ -26,12 +26,16 @@ void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcal
 
 	
 	if (callbacks == NULL)
-	{
-		callbacks = malloc(sizeof(callbacks));
-	}
+		info.callbacks = calloc(sizeof(pngcallbacks), 1);
+	else
+		info.callbacks = callbacks;
+	callbacks = malloc(sizeof(pngcallbacks));
 	callbacks->completed_scanline = &png_resize_line;
 	callbacks->read_header = &png_resize_init;
 	callbacks->done = &png_resize_done;
+	
+	if (info.callbacks->completed_scanline == NULL)
+		info.callbacks->completed_scanline = &png_write_scanline_raw;
 	
 	png_read(fin, fout, callbacks, &info);
 }
@@ -76,6 +80,8 @@ void png_resize_init(void *info_)
 	rinfo->written_lines = 0;
 	rinfo->last_line = calloc(rinfo->width * info->bpp * sizeof(char), 1);
 	
+	if (rinfo->callbacks->read_header != NULL)
+		(*rinfo->callbacks->read_header)(info);
 }
 
 void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, 
@@ -118,7 +124,8 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 				scanline[i] += rinfo->scanlines[j][i] / rinfo->line_count;
 		}
 		rinfo->line_count = 0;
-		png_write_scanline(scanline, rinfo->last_line, rinfo->width * info->bpp, info);
+		(*rinfo->callbacks->completed_scanline)(scanline, 
+			rinfo->last_line, rinfo->width * info->bpp, info);
 		memcpy(rinfo->last_line, scanline, rinfo->width * info->bpp);
 		rinfo->written_lines++;
 	}
@@ -131,9 +138,13 @@ void png_resize_done(void *info_)
 	
 	while (rinfo->written_lines < rinfo->height)
 	{
-		png_write_scanline(rinfo->last_line, rinfo->last_line, rinfo->width * info->bpp, info);
+		(*rinfo->callbacks->completed_scanline)(
+			rinfo->last_line, rinfo->last_line, 
+			rinfo->width * info->bpp, info);
 		rinfo->written_lines++;
 	}
+	if (rinfo->callbacks->done != NULL)
+		(*rinfo->callbacks->done)(info);
 }
 
 #ifdef PNGRESIZE
