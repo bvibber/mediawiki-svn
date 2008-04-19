@@ -23,7 +23,6 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.related.RelatedTitle;
-import org.wikimedia.lsearch.test.AliasPorterStemFilter;
 
 /**
  * Global functions related to creation/usage of analyzers.

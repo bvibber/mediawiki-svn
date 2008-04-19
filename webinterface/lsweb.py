@@ -98,13 +98,13 @@ def make_wiki_link(line,dbname,caption=''):
 
 def make_title_link(line,dbname,caption=''):
     interwiki={'w':'wikipedia', 'wikt':'wiktionary', 's':'wikisource', 'b': 'wikibooks', 'n':'wikinews', 'v':'wikiversity', 'q':'wikiquote',
-               'mw': 'mediawiki', 'meta': 'meta'};
+               'mw': 'mediawiki', 'meta': 'meta', 'wikinews': 'wikinews'};
     parts = line.split(' ')
     score = float(parts[0])
     title = ''
     iw = parts[1]
     # ns = canon_namespaces[int(parts[2])]    
-    ns = parts[3]
+    ns = urllib.unquote(parts[3])
     if ns != '':
         ns = ns +":"
     title = iw+':'+ns+parts[4]

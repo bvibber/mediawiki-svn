@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.prefix;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -23,11 +24,14 @@ import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.LowercaseAnalyzer;
 import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.analyzers.TokenizerOptions;
+import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.index.Transaction;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
@@ -60,9 +64,13 @@ public class PrefixIndexBuilder {
 	static public PrefixIndexBuilder forPrecursorModification(IndexId iid) throws IOException{
 		iid = iid.getPrefix();
 		IndexWriter writer = WikiIndexModifier.openForWrite(iid.getPrecursor().getIndexPath(),false,new PrefixAnalyzer());
-		writer.setMergeFactor(20);
-		writer.setMaxBufferedDocs(500);
+		initWriter(writer);
 		return new PrefixIndexBuilder(iid,null,writer);
+	}
+	/** Batch modification of the index */
+	static public PrefixIndexBuilder forPrecursorBatchModification(IndexId iid) throws IOException{
+		iid = iid.getPrefix();
+		return new PrefixIndexBuilder(iid,null,null);
 	}
 	
 	private PrefixIndexBuilder(IndexId iid, Links links, IndexWriter writer) throws IOException {
@@ -75,7 +83,12 @@ public class PrefixIndexBuilder {
 		this.namespaces = iid.getDefaultNamespace().getNamespaces();
 	}
 	
-	
+	protected static void initWriter(IndexWriter writer){
+		if(writer != null){
+			writer.setMergeFactor(20);
+			writer.setMaxBufferedDocs(500);	
+		}
+	}
 	
 	public static void main(String[] args) throws IOException{
 		int perPrefix = 15;
@@ -276,6 +289,39 @@ public class PrefixIndexBuilder {
 		return filters.canonicalFilter(tokenizer.parse());		
 	}
 	
+	/** Do an old-fashioned batch update of the precursor index */
+	public void batchUpdate(Collection<IndexUpdateRecord> records) throws IOException {
+		Transaction trans = new Transaction(pre, IndexId.Transaction.INDEX);
+		trans.begin();
+		try{
+			IndexReader reader = IndexReader.open(pre.getIndexPath()); 
+			// batch delete
+			for(IndexUpdateRecord rec : records){
+				if(rec.doDelete()){
+					Article a = rec.getArticle();
+					log.debug(iid+": Deleting "+a);
+					reader.deleteDocuments(new Term("pageid",rec.getIndexKey()));
+				}
+			}
+			reader.close();
+			// batch add
+			writer = WikiIndexModifier.openForWrite(pre.getIndexPath(),false,new PrefixAnalyzer());
+			initWriter(writer);
+			for(IndexUpdateRecord rec : records){
+				if(rec.doAdd()){
+					Article a = rec.getArticle();					
+					WikiIndexModifier.transformArticleForIndexing(a);
+					log.debug(iid+": Adding "+a.toStringFull());
+					addToPrecursor(rec.getNsTitleKey(),a.getRank(),a.getRedirectTarget(),a.getRedirectRank(),rec.getIndexKey());
+				}
+			}
+			writer.close();
+			trans.commit();
+		} catch(IOException e){
+			trans.rollback();
+			throw e;
+		}
+	}
 	
 	/** Add a new precursor index entry */
 	protected void addToPrecursor(String key) throws IOException{

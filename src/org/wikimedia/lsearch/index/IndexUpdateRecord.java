@@ -34,6 +34,8 @@ public class IndexUpdateRecord implements Serializable {
 	protected String reportHost;
 	/** Used to identify this object in a back report */
 	protected ReportId reportId;
+	/** If this is link/precursor update */
+	protected boolean linkUpdate = false;
 	
 	@Deprecated
 	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, String redirectTo, int rank, Action role){
@@ -57,7 +59,7 @@ public class IndexUpdateRecord implements Serializable {
 		dbrole = iid.toString();
 		reportId = null;
 	}	
-	public IndexUpdateRecord(Article article, Action action, IndexId iid, String dbrole, boolean alwaysAdd, boolean reportBack, String reportHost, ReportId reportId) {
+	public IndexUpdateRecord(Article article, Action action, IndexId iid, String dbrole, boolean alwaysAdd, boolean reportBack, String reportHost, ReportId reportId, boolean linkUpdate) {
 		this.article = article;
 		this.action = action;
 		this.iid = iid;
@@ -66,6 +68,7 @@ public class IndexUpdateRecord implements Serializable {
 		this.reportBack = reportBack;
 		this.reportHost = reportHost;
 		this.reportId = reportId;
+		this.linkUpdate = linkUpdate;
 	}
 	
 	public void setAction(Action action) {
@@ -73,7 +76,7 @@ public class IndexUpdateRecord implements Serializable {
 	}
 	@Override
 	public Object clone() {
-		return new IndexUpdateRecord(article,action,iid,dbrole,alwaysAdd,reportBack,reportHost,reportId);
+		return new IndexUpdateRecord(article,action,iid,dbrole,alwaysAdd,reportBack,reportHost,reportId,linkUpdate);
 	}
 	public ReportId getReportId() {
 		return reportId;
@@ -110,6 +113,12 @@ public class IndexUpdateRecord implements Serializable {
 		dbrole = iid.toString();
 	}
 	
+	public boolean isLinkUpdate() {
+		return linkUpdate;
+	}
+	public void setLinkUpdate(boolean linkUpdate) {
+		this.linkUpdate = linkUpdate;
+	}
 	public String toString(){
 		if(iid == null)
 			iid = IndexId.get(dbrole);

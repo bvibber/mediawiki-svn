@@ -174,16 +174,6 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public void sendReports(IndexReportCard[] cards, String host){
-		try {
-			RMIMessenger r = messengerFromCache(host);
-			log.debug("Calling reportBack("+cards.length+" records) on "+host);
-			r.reportBack(cards);
-		} catch (Exception e) {
-			log.warn("Error invoking remote method sendReports on host "+host+" : "+e.getMessage());
-		}
-	}
-	
 	public HighlightPack searchPart(IndexId iid, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);

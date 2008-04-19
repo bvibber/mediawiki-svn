@@ -8,14 +8,14 @@ import java.util.Set;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.FieldSelector;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.search.MultiSearcher;
+import org.apache.lucene.search.MultiSearcherBase;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.SearchableMul;
 import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.Weight;
 
 /** MultiSearcher that can return multiple documents in one method call */
-public class MultiSearcherMul extends MultiSearcher implements SearchableMul {
+public class MultiSearcherMul extends MultiSearcherBase implements SearchableMul {
 	protected CachedDfSource cacheSim;
 
 	public MultiSearcherMul(SearchableMul[] searchables) throws IOException {

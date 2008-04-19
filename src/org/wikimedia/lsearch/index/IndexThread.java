@@ -62,21 +62,22 @@ public class IndexThread extends Thread {
 	protected int maxQueueTimeout;
 	protected long snapshotInterval;
 	
-	/** hashtable of updates while they are being processed */ 
-	protected Hashtable<String,Hashtable<String,IndexUpdateRecord>> workUpdates;
 	/** time of last updates flush */
 	protected long lastFlush;
 	protected WikiIndexModifier indexModifier;	
 	protected static GlobalConfiguration global;
 	/** this lock is used when threads access static members */
 	protected static Object staticLock = new Object();
-	/** This is where pages are queued for processing 
-	 * 	Structure: dbrole -> hashtable(ns:title -> indexUpdateRecord) 
+	/** 
+	 * This is where pages are queued for processing. 
+	 * dbrole -> hashtable(ns:title -> indexUpdateRecord) 
 	 */
-	protected static Hashtable<String,Hashtable<String,IndexUpdateRecord>> queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
-	
-	/** Local reports: reportd Id -> list (reports from distributed indexes) */ 
-	protected static Hashtable<ReportId,List<IndexReportCard>> reports = new Hashtable<ReportId,List<IndexReportCard>>();
+	protected static Hashtable<String,Hashtable<String,IndexUpdateRecord>> queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();	
+	/** 
+	 * Updates to links index and various precursors
+	 * dbrole -> ns:title -> update record 
+	 */
+	protected static Hashtable<String,Hashtable<String,IndexUpdateRecord>> linksUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
 	
 	/** set of dbs to be flushed */
 	protected static Set<String> needFlushDBs = Collections.synchronizedSet(new HashSet<String>());
@@ -84,11 +85,6 @@ public class IndexThread extends Thread {
 	protected static Hashtable<String,Boolean> flushedDBs = new Hashtable<String,Boolean>(); 
 	protected Set<String> workFlushes;
 
-	/** dbrole -> ns:title -> ReportId <br/>
-	 * Records the latest reportid (if new updates arrives 
-	 * while old is till processed by some remote indexer) */
-	protected static Hashtable<String,Hashtable<String,ReportId>> pendingUpdates = new Hashtable<String,Hashtable<String,ReportId>>();
-	
 	/** Thread that enqueues updates to distributed indexers in a batch */
 	protected static MessengerThread messenger = null;
 	
@@ -140,7 +136,6 @@ public class IndexThread extends Thread {
 		log.debug("Starting IndexThread...");
 		long lastSnapshot = System.currentTimeMillis();
 		while(!quit){			
-			checkReports();
 			applyUpdates();
 			// make snapshot?
 			if(makeSnapshotNow || (System.currentTimeMillis() - lastSnapshot) > snapshotInterval){
@@ -159,103 +154,6 @@ public class IndexThread extends Thread {
 		if(queuedUpdatesExist())
 			applyUpdates();
 		WikiIndexModifier.getModifiedIndexes();
-	}
-	
-	/**
-	 * For split indexes, a reporting system is needed to manage
-	 * all parts of the split index as one logical index. I.e.
-	 * if an index update needs to be made, it's sent to all 
-	 * parts of the index, and those need to report back if the
-	 * update operation has succeeded of failed - the article will
-	 * be updated on the index part where it's found. However, if
-	 * it's not found it still needs to be added to the index. 
-	 * 
-	 * Also a system for keeping track of current updates is needed
-	 * if during the report-back phrase of update new update arrives. 
-	 * 
-	 * @param rc
-	 */
-	public static void enqueuReport(IndexReportCard rc){
-		synchronized(staticLock){
-			List<IndexReportCard> cards = reports.get(rc.getId());
-			if(cards == null){
-				log.warn("Unexpected report "+rc);
-				return;
-			}
-			cards.add(rc);
-		}
-	}
-	
-	/** See enqueuReport(IndexReportCard) */
-	public static void enqueuReports(IndexReportCard[] rcs){
-		synchronized(staticLock){
-			for(IndexReportCard rc : rcs){
-				List<IndexReportCard> cards = reports.get(rc.getId());
-				if(cards == null){
-					log.warn("Unexpected report "+rc);
-					continue;
-				}
-				cards.add(rc);
-			}
-		}
-	}
-	
-	/** Check if complete reports have been recieved and process them */
-	protected void checkReports(){
-		if(reports.size() != 0 ){
-			Hashtable<ReportId,List<IndexReportCard>> reportsLocal;
-			synchronized (staticLock) {
-				 reportsLocal = (Hashtable<ReportId, List<IndexReportCard>>) reports.clone();
-			}
-			for(Entry<ReportId,List<IndexReportCard>> entry : reportsLocal.entrySet()){				
-				ReportId reportId = entry.getKey();
-				IndexId iid = reportId.getIndexId();
-				if(iid.isSplit()){
-					int splitFactor = iid.getSplitFactor();
-					if(entry.getValue().size() == splitFactor){
-						// got all reports, process						
-						// for now only process update reports
-						synchronized(staticLock){
-							if(!reportId.equals(pendingUpdates.get(iid.toString()).get(reportId.getKey()))){
-								log.info(reportId+" has a newer update!");
-								reports.remove(entry.getKey());
-								continue;
-							} else{
-								pendingUpdates.get(iid.toString()).remove(reportId.getKey());
-							}
-						}
-						if(reportId.record.doAdd() && reportId.record.doDelete()){
-							boolean succAdd=false, succDel=false;
-							for(IndexReportCard card : entry.getValue()){
-								if(card.isSuccAdd())
-									succAdd = true;
-								if(card.isSuccDelete())
-									succDel = true;
-							}
-							if(succAdd && succDel){ // all ok
-								log.debug("Good report for "+reportId);
-							} else if((!succAdd && succDel) || (succAdd && !succDel))
-								log.warn("Inconsistent report for "+reportId);
-							else if(!succAdd && !succDel){
-								// enqueue addition
-								int random = (int)Math.floor(Math.random()*splitFactor) + 1;
-								IndexId iidp = iid.getPart(random);
-								IndexUpdateRecord record = (IndexUpdateRecord) reportId.record.clone();			
-								// enqueue on a randomly choosen index part
-								record.setIndexId(iidp);
-								record.setAlwaysAdd(true);
-								record.setReportBack(false);
-								record.setAction(IndexUpdateRecord.Action.ADD);
-								enqueueRemotely(iidp.getIndexHost(),record);
-							}
-						}
-						// processed, remove from queue
-						reports.remove(entry.getKey());
-					}
-				}
-				
-			}
-		}
 	}
 	
 	/**
@@ -396,116 +294,87 @@ public class IndexThread extends Thread {
 		}
 	}
 	
+	/** Enqueue a number of records, and get pageids of records that additionaly needs to be sent */
 	public static HashSet<String> enqueue(IndexUpdateRecord[] records) throws Exception {
-		synchronized(staticLock){
-			HashSet<String> add = new HashSet<String>();
-			HashSet<String> pageIds = new HashSet<String>();
-			if(records.length > 0){
-				IndexId iid = records[0].getIndexId(); // we asume all are on same iid
-				Links links = Links.openForRead(iid.getLinks(),iid.getLinks().getIndexPath());
-				
-				for(IndexUpdateRecord r : records){
-					pageIds.add(r.getIndexKey());
-					add.addAll(enqueue(r,links));
-				}			
-				links.close();
-			}
-			
-			add.removeAll(pageIds);
-			return add;
+		HashSet<String> add = new HashSet<String>();
+		if(records.length > 0){
+			IndexId iid = records[0].getIndexId(); // we asume all are on same iid
+			Links links = Links.openForBatchModifiation(iid);
+			// update links
+			links.batchUpdate(records);
+			WikiIndexModifier.fetchLinksInfo(iid,records,links);
+			// get additional
+			add.addAll(WikiIndexModifier.fetchAdditional(iid,records,links));			
+			links.close();
+						
+			for(IndexUpdateRecord r : records){
+				enqueue(r);
+			}			
 		}
+
+		return add;
 	}
 	
 	/**
-	 * Call this method from an XMLRPC or HTTP frontend to 
-	 * enqueue a page update
+	 * Enqueue a single update
 	 * @param record
 	 */
-	public static Set<String> enqueue(IndexUpdateRecord record, Links links) throws Exception {
+	protected static void enqueue(IndexUpdateRecord record) throws Exception {
 		synchronized(staticLock){
 			IndexId iid = record.getIndexId();
 			if(iid == null || !(iid.isLogical() || iid.isSingle()) || !iid.isMyIndex()){
 				log.error("Got update for database "+iid+", however this node does not accept updates for this DB");
-				return new HashSet<String>();
+				return;
 			}
 			
-			try{
-				Set<String> additional = WikiIndexModifier.fetchAdditional(iid,record,links);
+			// always do link update irregardless of index architecture 
+			enqueueLink(record);
 
-				if( iid.isSingle() ){
-					enqueueLocally(record);			
-				} else if( iid.isMainsplit() || iid.isNssplit()){
-					IndexId piid;
-					Article ar = record.getArticle();
-					// always delete everywhere since we might not have namespace info
-					if(record.doDelete()){
-						for(String dbrole : iid.getSplitParts()){
-							IndexUpdateRecord recp = (IndexUpdateRecord) record.clone();
-							recp.setIndexId(IndexId.get(dbrole));
-							recp.setAction(Action.DELETE);
-							enqueueRemotely(recp.getIndexId().getIndexHost(),recp);
-						}					
-					} 
-					if(record.doAdd()){
-						piid = iid.getPartByNamespace(ar.getNamespace());					
-						// set recipient to new host
-						record.setIndexId(piid);
-						record.setAction(Action.ADD);
-						enqueueRemotely(piid.getIndexHost(),record);
-					}
-				} else if( iid.isSplit() ){
-					int number = iid.getSplitFactor();
-					Article a = record.getArticle();
-					ReportId reportId = new ReportId(a.getPageId(),
-							System.currentTimeMillis(),
-							iid.toString(),
-							record);
-					Hashtable<String,ReportId> dbpending = pendingUpdates.get(iid.toString());
-					if(dbpending == null){
-						dbpending = new Hashtable<String,ReportId>();
-						pendingUpdates.put(iid.toString(),dbpending);
-					}
-					dbpending.put(reportId.getKey(),reportId); // overwrite old values (if any)
-					if(record.doDelete()){
-						if(record.doAdd()){		
-							// expect report on this reportId
-							reports.put(reportId,Collections.synchronizedList(new ArrayList<IndexReportCard>()));
-							record.setReportBack(true);
-							record.setAlwaysAdd(false);
-							record.setReportHost(global.getLocalhost());
-							record.setReportId(reportId);						
-						}
-						// pass to all hosts the update record
-						for(int i=1; i<=number; i++){
-							IndexId iidp = iid.getPart(i);
-							IndexUpdateRecord recordPart = (IndexUpdateRecord) record.clone();
-							recordPart.setIndexId(iidp);
-							enqueueRemotely(iidp.getIndexHost(),recordPart);						
-						}
-					} else{					
-						int random = (int)Math.floor(Math.random()*number) + 1;
-						IndexId iidp = iid.getPart(random);			
-						// enqueue on a randomly choosen index part
-						record.setIndexId(iidp);
-						enqueueRemotely(iidp.getIndexHost(),record);
-					}
+			if( iid.isSingle() ){
+				enqueueLocally(record);
+			} else if( iid.isMainsplit() || iid.isNssplit()){
+				IndexId piid;
+				Article ar = record.getArticle();
+				// always delete everywhere since we might not have namespace info
+				if(record.doDelete()){
+					for(String dbrole : iid.getSplitParts()){
+						IndexUpdateRecord recp = (IndexUpdateRecord) record.clone();
+						recp.setIndexId(IndexId.get(dbrole));
+						recp.setAction(Action.DELETE);
+						enqueueRemotely(recp);
+					}										
+				} 
+				if(record.doAdd()){
+					piid = iid.getPartByNamespace(ar.getNamespace());					
+					// set recipient to new host
+					record.setIndexId(piid);
+					record.setAction(Action.ADD);
+					enqueueRemotely(record);
 				}
-				return additional;
-			} catch(IOException e){
-				e.printStackTrace();
-				log.error("Cannot enqueue "+record+" : "+e.getMessage());
-				throw new Exception("I/O Exception on queueing of "+record,e);
+			} else if( iid.isSplit() ){
+				throw new RuntimeException("FIXME: Indexing for split indexes is broken, use nssplit architecture instead");
 			}
+			return;
 		}
+	}
+
+	/** Make a link update for this record and enqueue it */
+	protected static void enqueueLink(IndexUpdateRecord record){
+		IndexId iid = record.getIndexId();
+		IndexUpdateRecord recl = (IndexUpdateRecord) record.clone();
+		recl.setIndexId(iid.getDB());
+		recl.setLinkUpdate(true);
+		enqueueRemotely(recl);
 	}
 	/**
 	 * Put update record on remote queue
 	 * @param host
 	 * @param record
 	 */
-	protected static void enqueueRemotely(String host, IndexUpdateRecord record) {
+	protected static void enqueueRemotely(IndexUpdateRecord record) {
 		IndexId iid = record.getIndexId();
-		if(host.equals("127.0.0.1") || host.equals("localhost") || iid.isMyIndex()){
+		String host = iid.getIndexHost();
+		if(iid.isMyIndex() || RMIMessengerClient.isLocal(host)){
 			// this is the target machine, enqueue locally
 			enqueueLocally(record);
 			return;
@@ -521,10 +390,14 @@ public class IndexThread extends Thread {
 	static protected void enqueueLocally(IndexUpdateRecord record){
 		synchronized (staticLock){
 			IndexId iid = record.getIndexId();
-			Hashtable<String,IndexUpdateRecord> dbUpdates = queuedUpdates.get(iid.toString());
+			// get relavant mapping
+			Hashtable<String,Hashtable<String,IndexUpdateRecord>> dest = 
+				(record.isLinkUpdate())? linksUpdates : queuedUpdates;
+			
+			Hashtable<String,IndexUpdateRecord> dbUpdates = dest.get(iid.toString());
 			if (dbUpdates == null){
 				dbUpdates = new Hashtable<String,IndexUpdateRecord>();
-				queuedUpdates.put(iid.toString(), dbUpdates);
+				dest.put(iid.toString(), dbUpdates);
 			}
 			IndexUpdateRecord oldr = dbUpdates.get(record.getIndexKey());
 			// combine a previous delete with current add to form update
@@ -546,6 +419,15 @@ public class IndexThread extends Thread {
 		}
 	}
 	
+	protected static class WorkSet {
+		Hashtable<String,Hashtable<String,IndexUpdateRecord>> index;
+		Hashtable<String,Hashtable<String,IndexUpdateRecord>> link;
+		public WorkSet(Hashtable<String, Hashtable<String, IndexUpdateRecord>> indexUpdates, Hashtable<String, Hashtable<String, IndexUpdateRecord>> linkUpdates) {
+			this.index = indexUpdates;
+			this.link = linkUpdates;
+		}		
+	}
+	
 	/** 
 	 * Fetches queued updates for processing, will clear
 	 * the queuedUpdates hashtable. Use filter to fetch 
@@ -554,13 +436,15 @@ public class IndexThread extends Thread {
 	 * @param filter - set of dbnames
 	 * @return hashtable of db->key->updates
 	 */
-	public static Hashtable<String,Hashtable<String,IndexUpdateRecord>> fetchIndexUpdates(Set<String> filter){
+	public static WorkSet fetchIndexUpdates(Set<String> filter){
 		synchronized(staticLock){
 			if(queuedUpdates.size() == 0)
 				return null;
 			Hashtable<String,Hashtable<String,IndexUpdateRecord>> updates;
+			Hashtable<String,Hashtable<String,IndexUpdateRecord>> links;
 			// filter out only certain dbs 
 			if(filter != null){
+				// index updates
 				updates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
 				HashSet<String> dbroles = new HashSet<String>();
 				dbroles.addAll(queuedUpdates.keySet());
@@ -570,11 +454,23 @@ public class IndexThread extends Thread {
 						updates.put(dbrole,queuedUpdates.remove(dbrole));
 					}
 				}	
-				return updates;
+				// link updates
+				links = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
+				HashSet<String> linkDBs = new HashSet<String>();
+				linkDBs.addAll(linksUpdates.keySet());
+				for(String dbname : linkDBs){
+					IndexId iid = IndexId.get(dbname);
+					if(filter.contains(iid.getDBname())){
+						links.put(dbname,linksUpdates.remove(dbname));
+					}
+				}
+				return new WorkSet( updates, links );
 			} else{
 				updates = queuedUpdates;
+				links = linksUpdates;
 				queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
-				return updates;
+				linksUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
+				return new WorkSet( updates, links ) ;
 			}
 		}
 	}
@@ -584,6 +480,7 @@ public class IndexThread extends Thread {
 	 */
 	private void applyUpdates() {
 		log.debug("Applying index updates...");
+		WorkSet updates;
 		try {						
 			// check preconditions
 			if (suspended) {
@@ -621,8 +518,8 @@ public class IndexThread extends Thread {
 				}
 			}
 			// fetch for update
-			workUpdates = fetchIndexUpdates(workFlushes);
-			if(workUpdates == null || workUpdates.size() == 0){				
+			updates = fetchIndexUpdates(workFlushes);
+			if(updates.index == null || updates.index.size() == 0){				
 				flushNow = false;
 				lastFlush =  System.currentTimeMillis();		
 				log.info("Queue processed by other thread");
@@ -630,9 +527,14 @@ public class IndexThread extends Thread {
 			}			
 
 			// update
-			for ( String dbname: workUpdates.keySet() ){
-				Hashtable<String,IndexUpdateRecord> dbUpdates = workUpdates.get( dbname );
-				update(IndexId.get(dbname), dbUpdates.values());
+			for ( String dbrole : updates.index.keySet() ){
+				IndexId iid = IndexId.get(dbrole);
+				IndexId db = iid.getDB();
+				boolean succ = true;
+				if(updates.link.containsKey(db.toString())) // always update links first
+					succ = updateLinks( iid.getDB(), updates.link.remove(db.toString()).values() );
+				if(succ)
+					update( iid, updates.index.get(dbrole).values() );
 			}
 			if(workFlushes != null){
 				// figure out from index parts if the update was successful
@@ -670,6 +572,14 @@ public class IndexThread extends Thread {
 				flushedDBs.put(iid.toString(),succ);
 			}
 		}
+	}
+	
+	/**
+	 * Update links and precursor indexes, always call before update()
+	 * @return success
+	 */
+	private boolean updateLinks(IndexId iid, Collection<IndexUpdateRecord> updates) {
+		return indexModifier.updateLinksAndPrecursors(iid,updates);
 	}
 	
 	public String getStatus() {

@@ -34,7 +34,7 @@
 		<jar destfile="${basedir}/${jar.name}">
 			<manifest>
 	            <attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager"/>
-                <attribute name="Class-Path" value="${jar.name} lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.2.0.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
+                <attribute name="Class-Path" value="${jar.name} lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.3.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
             </manifest>
 			<zipfileset dir="${bin}" prefix="">
 				<include name="org/**"/>
@@ -56,7 +56,7 @@
 			<zipfileset src="lib/commons-logging-1.1.jar" />
 			<zipfileset src="lib/ws-commons-util-1.0.1.jar" />
 			<zipfileset src="lib/log4j-1.2.14.jar" />			
-			<zipfileset src="lib/lucene-core-2.2.0.jar" />
+			<zipfileset src="lib/lucene-core-2.3.jar" />
 			<zipfileset src="lib/lucene-analyzers.jar" />			
 			<zipfileset src="lib/snowball.jar" />
 			<zipfileset src="lib/mwdumper.jar" />

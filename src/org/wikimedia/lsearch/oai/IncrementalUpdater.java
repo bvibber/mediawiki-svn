@@ -47,6 +47,7 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
 public class IncrementalUpdater {
 	static Logger log = Logger.getLogger(IncrementalUpdater.class);
 	protected static int maxQueueSize = 500;
+	protected static int bufferDocs = 50;
 	
 	static public class OAIAuthenticator extends Authenticator {
 		protected String username,password;
@@ -138,7 +139,7 @@ public class IncrementalUpdater {
 			System.out.println("Syntax: java IncrementalUpdater [-d] [-s sleep] [-t timestamp] [-e dbname] [-f dblist] [-n] [--no-ranks] dbname1 dbname2 ...");
 			System.out.println("Options:");
 			System.out.println("  -d   - daemonize, otherwise runs only one round of updates to dbs");
-			System.out.println("  -s   - sleep time in seconds after one cycle (default: "+sleepTime+"ms)");
+			System.out.println("  -s   - sleep time in seconds after one cycle (default: "+sleepTime/1000+"s)");
 			System.out.println("  -t   - timestamp to start from");
 			System.out.println("  -dt  - default timestamp (default: "+defaultTimestamp+")");
 			System.out.println("  -f   - dblist file, one dbname per line");
@@ -148,7 +149,7 @@ public class IncrementalUpdater {
 		}
 		// config
 		Configuration config = Configuration.open();
-		GlobalConfiguration global = GlobalConfiguration.getInstance();		
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		// preload
 		UnicodeDecomposer.getInstance();
 		for(String dbname: dbnames){
@@ -157,7 +158,8 @@ public class IncrementalUpdater {
 		Localization.loadInterwiki();
 		OAIAuthenticator auth = new OAIAuthenticator();
 		
-		maxQueueSize = config.getInt("OAI","maxqueue",5000);
+		maxQueueSize = config.getInt("OAI","maxqueue",500);
+		bufferDocs = config.getInt("OAI","bufferdocs",50);
 		firstPass.addAll(dbnames);
 		// update
 		do{
@@ -186,7 +188,7 @@ public class IncrementalUpdater {
 					else
 						from = status.getProperty("timestamp",defaultTimestamp);
 					log.info("Resuming update of "+iid+" from "+from);
-					ArrayList<IndexUpdateRecord> records = harvester.getRecords(from);
+					ArrayList<IndexUpdateRecord> records = harvester.getRecords(from,bufferDocs);
 					if(records.size() == 0)
 						continue;
 					boolean hasMore = false;
@@ -220,7 +222,7 @@ public class IncrementalUpdater {
 						hasMore = harvester.hasMore();
 						if(hasMore){
 							log.info("Fetching more records...");
-							records = harvester.getMoreRecords();
+							records = harvester.getMoreRecords(bufferDocs);
 						}
 					} while(hasMore);
 

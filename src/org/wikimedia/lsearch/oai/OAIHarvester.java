@@ -38,11 +38,16 @@ public class OAIHarvester {
 		Authenticator.setDefault(auth); 
 	}
 	
-	/** Invoke ListRecords from a certain timestamp */
-	public ArrayList<IndexUpdateRecord> getRecords(String from) throws IOException {
+	/** Invoke ListRecords from a certain timestamp, fetching at least records..  */
+	public ArrayList<IndexUpdateRecord> getRecords(String from, int atLeast) throws IOException {
+		ArrayList<IndexUpdateRecord> ret = new ArrayList<IndexUpdateRecord>();
 		read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=mediawiki&from="+from));
-		return collector.getRecords();
-	}
+		ret.addAll(collector.getRecords());
+		if(ret.size() < atLeast && hasMore())
+			ret.addAll( getMoreRecords(atLeast - ret.size()) );
+		
+		return ret;
+	}		
 	
 	/** Get single record */
 	public ArrayList<IndexUpdateRecord> getRecord(String key) throws IOException {
@@ -62,15 +67,19 @@ public class OAIHarvester {
 		in.close();
 	}
 
-	/** Invoke ListRecords using the last resumption token */
-	public ArrayList<IndexUpdateRecord> getMoreRecords(){
-		try{
-			read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=mediawiki&resumptionToken="+resumptionToken));
-			return collector.getRecords();
+	/** Invoke ListRecords using the last resumption token, get atLeast num of records */
+	public ArrayList<IndexUpdateRecord> getMoreRecords(int atLeast){
+		ArrayList<IndexUpdateRecord> ret = new ArrayList<IndexUpdateRecord>();
+		try{			
+			do{
+				read(new URL(urlbase+"&verb=ListRecords&metadataPrefix=mediawiki&resumptionToken="+resumptionToken));
+				ret.addAll(collector.getRecords());
+			} while(hasMore() && ret.size() < atLeast);
 		} catch(IOException e){
 			log.warn("I/O exception listing records: "+e.getMessage());
 			return null;
 		}
+		return ret;
 	}
 	
 	public boolean hasMore(){

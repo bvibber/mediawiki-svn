@@ -10,13 +10,17 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.Field.Index;
 import org.apache.lucene.document.Field.Store;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
+import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.index.Transaction;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 
@@ -45,9 +49,15 @@ public class CleanIndexWriter {
 		return w;
 	}
 	/** Opet index for modifiation (on indexPath())*/
-	public static CleanIndexWriter newForModification(IndexId iid) throws IOException{
+	public static CleanIndexWriter openForModification(IndexId iid) throws IOException{
 		CleanIndexWriter w = new CleanIndexWriter(iid);
 		w.openWriter(iid.getIndexPath(),false);
+		return w;
+	}
+	
+	/** Opet index for batch modifiation (on indexPath())*/
+	public static CleanIndexWriter openForBatchModification(IndexId iid) throws IOException{
+		CleanIndexWriter w = new CleanIndexWriter(iid);
 		return w;
 	}
 	
@@ -68,12 +78,44 @@ public class CleanIndexWriter {
 		
 	}
 	
-	protected void openWriter(String path, boolean forWrite) throws IOException {
-		writer = WikiIndexModifier.openForWrite(path,forWrite);
+	protected void openWriter(String path, boolean overwrite) throws IOException {
+		writer = WikiIndexModifier.openForWrite(path,overwrite);
 		writer.setMergeFactor(20);
 		writer.setMaxBufferedDocs(500);		
 		writer.setUseCompoundFile(true);
 		writer.setMaxFieldLength(WikiIndexModifier.MAX_FIELD_LENGTH);
+	}
+	
+	/** Old-fashioned batch update, all-delete + all-add */
+	public void batchUpdate(Collection<IndexUpdateRecord> records) throws IOException {
+		Transaction trans = new Transaction(iid, IndexId.Transaction.INDEX);
+		trans.begin();
+		try{
+			IndexReader reader = IndexReader.open(iid.getIndexPath()); 
+			// batch delete
+			for(IndexUpdateRecord rec : records){
+				if(rec.doDelete()){
+					Article a = rec.getArticle();
+					log.debug(iid+": Deleting "+a);
+					reader.deleteDocuments(new Term("key",rec.getIndexKey()));
+				}
+			}
+			reader.close();
+			// batch add
+			openWriter(iid.getIndexPath(),false);
+			for(IndexUpdateRecord rec : records){
+				if(rec.doAdd()){
+					Article a = rec.getArticle();
+					log.debug(iid+": Adding "+a.toStringFull());
+					addArticleInfo(rec.getArticle());
+				}
+			}
+			writer.close();
+			trans.commit();
+		} catch(IOException e){
+			trans.rollback();
+			throw e;
+		}
 	}
 	
 	public void deleteArticleInfo(String pageId) throws IOException {
@@ -117,6 +159,7 @@ public class CleanIndexWriter {
 		if(article.isRedirect())
 			doc.add(new Field("ns_redirect",article.getRedirectTarget(),Store.YES,Index.NO));
 		try {
+			log.debug("Addint title "+article);
 			writer.addDocument(doc,analyzer);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -62,13 +62,6 @@ public interface RMIMessenger extends Remote {
 	 */
 	public HashSet<String> enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException;
 	
-	/**
-	 * On split indexes, send back reports if addition/deletion of an 
-	 * article on parts of the index succeeded 
-	 * @param cards
-	 * @throws RemoteException
-	 */
-	public void reportBack(IndexReportCard[] cards) throws RemoteException;
 	
 	/**
 	 * For mainsplit indexes, sometimes only a part of index needs to be searched, 

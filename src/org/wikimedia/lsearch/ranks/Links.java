@@ -46,6 +46,8 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
+import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.index.Transaction;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.search.NamespaceFilter;
@@ -121,6 +123,14 @@ public class Links {
 		log.info("Using index at "+path);
 		IndexWriter writer = WikiIndexModifier.openForWrite(path,false);
 		return new Links(iid,path,writer,false);		
+	}
+	
+	/** Open index for old-style batch-delete, batch-add modification */
+	public static Links openForBatchModifiation(IndexId iid) throws IOException{
+		iid = iid.getLinks();
+		String path = iid.getIndexPath();
+		log.info("Using index at "+path);
+		return new Links(iid,path,null,false);
 	}
 	
 	public static Links openStandalone(IndexId iid) throws IOException {
@@ -227,6 +237,45 @@ public class Links {
 	protected final void ensureWrite() throws IOException {
 		if(writer == null)
 			openForWrite();
+	}
+	
+	/** Do a batch update on a number of records */
+	public void batchUpdate(IndexUpdateRecord[] records) throws IOException {
+		Transaction trans = new Transaction(iid, IndexId.Transaction.INDEX);
+		trans.begin();
+		try{
+			ensureRead();
+			// batch delete
+			for(IndexUpdateRecord rec : records){
+				if(rec.doDelete()){
+					Article a = rec.getArticle();
+					if(a.getTitle()==null || a.getTitle().equals("")){
+						// try to fetch ns:title so we can have nicer debug info					
+						String key = getKeyFromPageId(rec.getIndexKey());
+						if(key != null)
+							a.setNsTitleKey(key);
+					}
+					log.debug(iid+": Deleting "+a);
+					reader.deleteDocuments(new Term("article_pageid",rec.getIndexKey()));
+				}
+			}
+			flush();
+			// batch add
+			writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
+			initWriter(writer);
+			for(IndexUpdateRecord rec : records){
+				if(rec.doAdd()){
+					Article a = rec.getArticle();
+					log.debug(iid+": Adding "+a);
+					addArticleInfo(a.getContents(),a.getTitleObject(),iid.isExactCase(),a.getIndexKey());
+				}
+			}
+			flush();
+			trans.commit();
+		} catch(IOException e){
+			trans.rollback();
+			throw e;
+		}
 	}
 	
 	/** Delete article info connected to title t */
@@ -365,7 +414,6 @@ public class Links {
 		if(optimized)
 			return reader.docFreq(new Term("links",key));
 		else{
-			// TODO: check if this is too slow in incremental updates..  
 			TermDocs td = reader.termDocs(new Term("links",key));
 			int count = 0;
 			while(td.next()) // this will skip deleted docs, while docFreq won't
@@ -406,6 +454,13 @@ public class Links {
 		return ret;
 	}
 	
+	/** Check if a term has at least one valid document */
+	protected boolean notDeleted(Term t) throws IOException {
+		if(optimized)
+			return true; // no deleted docs in optimized indexes
+		return reader.termDocs(t).next();
+	}
+	
 	/** Get all article titles that redirect to given title */
 	public ArrayList<String> getRedirectsTo(String key) throws IOException{
 		ensureRead();
@@ -415,7 +470,8 @@ public class Links {
 		for(;te.term()!=null;te.next()){
 			String t = te.term().text();
 			if(t.startsWith(prefix)){
-				ret.add(t.substring(t.indexOf('|')+1));
+				if(notDeleted(te.term()))
+					ret.add(t.substring(t.indexOf('|')+1));
 			} else
 				break;
 		}

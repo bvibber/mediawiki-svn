@@ -97,14 +97,6 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public void reportBack(IndexReportCard[] cards) throws RemoteException {
-		log.debug("Received request reportBack("+cards.length+" records)");
-		if(indexer == null)
-			indexer = new IndexDaemon(); // start the indexer
-		IndexThread.enqueuReports(cards);
-	}
-
-	// inherit javadoc
 	public HighlightPack searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
 		return new SearchEngine().searchPart(IndexId.get(dbrole),searchterm,query,filter,offset,limit,explain);

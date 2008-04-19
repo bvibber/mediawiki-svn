@@ -107,11 +107,6 @@ public class WikiIndexModifier {
 		protected String langCode;
 		protected boolean exactCase;
 		
-		protected HashSet<IndexUpdateRecord> nonDeleteDocuments;
-		
-		/** All reports to be sent back to main indexer host */
-		Hashtable<IndexUpdateRecord,IndexReportCard> reportQueue;
-				
 		// TODO : synchronize multiple threads
 		
 		/**
@@ -127,23 +122,10 @@ public class WikiIndexModifier {
 			this.rewrite = rewrite;
 			this.langCode = langCode;
 			this.exactCase = exactCase;
-			reportQueue = new Hashtable<IndexUpdateRecord,IndexReportCard>();
-		}
-
-		protected IndexReportCard getReportCard(IndexUpdateRecord rec){
-			if(!rec.isReportBack())
-				return null;
-			IndexReportCard card = reportQueue.get(rec);
-			if(card == null){
-				card = new IndexReportCard(rec.getReportId(),global.getLocalhost(),iid.toString());
-				reportQueue.put(rec,card);
-			}
-			return card;
 		}
 		
 		/** Batch-delete documents, returns true if successfull */
 		boolean deleteDocuments(Collection<IndexUpdateRecord> records){			
-			nonDeleteDocuments = new HashSet<IndexUpdateRecord>();
 			try {
 				try{
 					reader = IndexReader.open(iid.getIndexPath());
@@ -158,34 +140,18 @@ public class WikiIndexModifier {
 				for(IndexUpdateRecord rec : records){
 					String suffix = rec.getIndexId().getDB().getTitlesSuffix();
 					if(rec.doDelete()){
-						int count = 0;
 						if(iid.isHighlight())
-							count = reader.deleteDocuments(new Term("pageid", rec.getIndexKey()));
+							reader.deleteDocuments(new Term("pageid", rec.getIndexKey()));
 						else if(iid.isTitlesBySuffix())
-							count = reader.deleteDocuments(new Term("pageid", suffix+":"+rec.getIndexKey()));
+							reader.deleteDocuments(new Term("pageid", suffix+":"+rec.getIndexKey()));
 						else // normal or titles index
-							count = reader.deleteDocuments(new Term("key", rec.getIndexKey()));
-						if(count == 0)
-							nonDeleteDocuments.add(rec);
-						IndexReportCard card = getReportCard(rec);
-						if(card!=null){
-							if(count == 0 && rec.isReportBack())
-								card.setFailedDelete();
-							else 
-								card.setSuccessfulDelete();
-						}
+							reader.deleteDocuments(new Term("key", rec.getIndexKey()));
 						log.debug(iid+": Deleting document "+rec.getArticle());
 					}
 				}
 				reader.close();
 			} catch (IOException e) {
 				log.warn("I/O Error: could not open/read "+iid.getIndexPath()+" while deleting document.");
-				for(IndexUpdateRecord rec : records){
-					nonDeleteDocuments.add(rec);
-					IndexReportCard card = getReportCard(rec);
-					if(card!=null)
-						card.setFailedDelete();
-				}
 				return false;
 			}
 			return true;
@@ -218,11 +184,8 @@ public class WikiIndexModifier {
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
-					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
-						continue; // don't add if delete/add are paired operations
 					if(!checkPreconditions(rec))
 						continue; // article shouldn't be added for some reason					
-					IndexReportCard card = getReportCard(rec);
 					Document doc;					
 					try {
 						if(iid.isHighlight()){
@@ -238,18 +201,12 @@ public class WikiIndexModifier {
 						}
 												
 						log.debug(iid+": Adding document "+rec.getArticle().toStringFull());
-						if(card != null)
-							card.setSuccessfulAdd();
 					} catch (IOException e) {
 						log.error("Error writing  document "+rec+" to index "+path);
-						if(card != null)
-							card.setFailedAdd();
 						succ = false; // report unsucc, but still continue, to process all cards 
 					} catch(Exception e){
 						e.printStackTrace();
 						log.error("Error adding document "+rec.getIndexKey()+" with message: "+e.getMessage());
-						if(card != null)
-							card.setFailedAdd();
 						succ = false; // report unsucc, but still continue, to process all cards
 					}
 				}
@@ -404,7 +361,21 @@ public class WikiIndexModifier {
 	}
 	
 	/**
-	 * Update both the search and highlight index for iid.
+	 * Fetch links info and update precursor indexes (for spell, prefix, title_ngram) 
+	 * 
+	 * @param iid
+	 * @param updateRecords
+	 * @return
+	 */
+	public boolean updateLinksAndPrecursors(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+		// note: we assume articles are shared between links are index update records
+		return updatePrefix(iid,updateRecords)
+		    && updateSpell(iid,updateRecords)
+		    && updateSimilar(iid,updateRecords);
+	}
+	
+	/**
+	 * Update search/highlight/titles indexes
 	 *  
 	 * @param iid
 	 * @param updateRecords
@@ -413,12 +384,7 @@ public class WikiIndexModifier {
 	 */
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		try{
-		return updateLinks(iid,updateRecords) 
-		    && fetchLinksInfo(iid,updateRecords)
-		    && updatePrefix(iid,updateRecords)
-		    && updateSpell(iid,updateRecords)
-		    && updateSimilar(iid,updateRecords)
-		    && updateDocumentsOn(iid,updateRecords,iid)
+		return updateDocumentsOn(iid,updateRecords,iid)
 		    && updateDocumentsOn(iid.getHighlight(),updateRecords,iid)
 		    && updateTitles(iid,updateRecords);
 		} catch(Exception e){
@@ -432,6 +398,15 @@ public class WikiIndexModifier {
 	public static Set<String> fetchAdditional(IndexId iid, IndexUpdateRecord record, Links links) throws IOException {
 		ArrayList<IndexUpdateRecord> list = new ArrayList<IndexUpdateRecord>();
 		list.add(record);
+		return fetchAdditional(iid,list,links);
+		
+	}
+	
+	/** Wrapper for fetchAdditional(IndexId,Collection<IndexUpdateRecord>) */
+	public static Set<String> fetchAdditional(IndexId iid, IndexUpdateRecord[] records, Links links) throws IOException {
+		ArrayList<IndexUpdateRecord> list = new ArrayList<IndexUpdateRecord>(records.length);
+		for(IndexUpdateRecord r : records)
+			list.add(r);
 		return fetchAdditional(iid,list,links);
 		
 	}
@@ -483,11 +458,16 @@ public class WikiIndexModifier {
 		return additionalFetch;
 	}
 	
+	public static boolean fetchLinksInfo(IndexId iid, IndexUpdateRecord[] updateRecords, Links links) throws IOException {
+		ArrayList<IndexUpdateRecord> list = new ArrayList<IndexUpdateRecord>(updateRecords.length);
+		for(IndexUpdateRecord r : updateRecords)
+			list.add(r);
+		return fetchLinksInfo(iid,list,links);
+	}
+	
 	/** Update articles with latest linking & related information */ 
-	public boolean fetchLinksInfo(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+	public static boolean fetchLinksInfo(IndexId iid, Collection<IndexUpdateRecord> updateRecords, Links links) throws IOException {
 		try{
-			iid = iid.getLinks();
-			Links links = Links.openForRead(iid,iid.getIndexPath());
 			RelatedStorage related = new RelatedStorage(iid);
 			for(IndexUpdateRecord rec : updateRecords){
 				if(rec.doAdd()){
@@ -515,12 +495,11 @@ public class WikiIndexModifier {
 						article.setRelated(related.getRelated(key));
 				}
 			}
-			links.close();
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
 			log.error("Cannot fetch links info: "+e.getMessage());
-			return false;
+			throw e;
 		}
 	}
 	
@@ -563,28 +542,12 @@ public class WikiIndexModifier {
 	public boolean updatePrefix(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(!iid.hasPrefix())
 			return true;
-		IndexId iidPrefix = iid.getPrefix().getPrecursor();
-		Transaction trans = new Transaction(iidPrefix,IndexId.Transaction.INDEX);
+		
 		try{
-			trans.begin();
-			PrefixIndexBuilder prefix = PrefixIndexBuilder.forPrecursorModification(iid);
-			for(IndexUpdateRecord rec : updateRecords){
-				if(rec.doDelete()){
-					log.debug(iidPrefix+": Deleting "+rec.getArticle());
-					prefix.deleteFromPrecursor(rec.getIndexKey());
-				} 
-				if(rec.doAdd()){
-					Article a = rec.getArticle();
-					transformArticleForIndexing(a);
-					log.debug(iidPrefix+": Adding "+a.toStringFull());
-					prefix.addToPrecursor(rec.getNsTitleKey(),a.getRank(),a.getRedirectTarget(),a.getRedirectRank(),rec.getIndexKey());
-				}
-			}
-			prefix.close();
-			trans.commit();
+			PrefixIndexBuilder prefix = PrefixIndexBuilder.forPrecursorBatchModification(iid);
+			prefix.batchUpdate(updateRecords);
 			return true;
 		} catch(IOException e){
-			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update prefix index: "+e.getMessage());
 			return false;
@@ -594,26 +557,11 @@ public class WikiIndexModifier {
 	public boolean updateSpell(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(!iid.hasSpell())
 			return true;
-		IndexId iidSpell = iid.getSpell().getPrecursor();
-		Transaction trans = new Transaction(iidSpell,IndexId.Transaction.INDEX);
 		try{
-			trans.begin();
-			CleanIndexWriter writer = CleanIndexWriter.newForModification(iid.getSpell().getPrecursor());
-			for(IndexUpdateRecord rec : updateRecords){
-				if(rec.doDelete()){
-					log.debug(iidSpell+": Deleting "+rec.getArticle());
-					writer.deleteArticleInfo(rec.getIndexKey());
-				} 
-				if(rec.doAdd()){
-					log.debug(iidSpell+": Adding "+rec.getArticle());
-					writer.addArticleInfo(rec.getArticle());
-				}
-			}
-			writer.close();
-			trans.commit();
+			CleanIndexWriter writer = CleanIndexWriter.openForBatchModification(iid.getSpell().getPrecursor());
+			writer.batchUpdate(updateRecords);
 			return true;
 		} catch(IOException e){
-			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update spellcheck index: "+e.getMessage());
 			return false;
@@ -623,28 +571,11 @@ public class WikiIndexModifier {
 	public boolean updateSimilar(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		if(!iid.hasTitleNgram())
 			return true;
-		IndexId iidSim = iid.getTitleNgram();
-		Transaction trans = new Transaction(iidSim,IndexId.Transaction.INDEX);
 		try{
-			trans.begin();
-			TitleNgramIndexer writer = TitleNgramIndexer.openForModification(iidSim);
-			for(IndexUpdateRecord rec : updateRecords){
-				if(rec.doDelete()){
-					log.debug(iidSim+": Deleting "+rec.getArticle());
-					writer.deleteTitle(rec.getIndexKey());
-				} 
-				if(rec.doAdd()){
-					Article a = rec.getArticle();
-					transformArticleForIndexing(a);
-					log.debug(iidSim+": Adding "+rec.getArticle());
-					writer.addTitle(a.getNamespace(),a.getTitle(),a.getRedirectTarget(),a.getRank(),Long.toString(a.getPageId()));
-				}
-			}
-			writer.close();
-			trans.commit();
+			TitleNgramIndexer indexer = TitleNgramIndexer.openForBatchModification(iid);
+			indexer.batchUpdate(updateRecords);
 			return true;
 		} catch(IOException e){
-			trans.rollback();
 			e.printStackTrace();
 			log.error("Cannot update spellcheck index: "+e.getMessage());
 			return false;
@@ -715,13 +646,7 @@ public class WikiIndexModifier {
 			boolean succAdd = modifier.addDocuments(updateRecords);
 			succ = succAdd; // it's OK if articles cannot be deleted
 			trans.commit();
-			
-			// send reports back to the main indexer host
-			RMIMessengerClient messenger = new RMIMessengerClient();
-			if(modifier.reportQueue.size() != 0)
-				messenger.sendReports(modifier.reportQueue.values().toArray(new IndexReportCard[] {}),
-						IndexId.get(iid.getDBname()).getIndexHost());
-			
+						
 			modifiedDBs.add(iid);		
 		}
 		long delta = System.currentTimeMillis()-now;
