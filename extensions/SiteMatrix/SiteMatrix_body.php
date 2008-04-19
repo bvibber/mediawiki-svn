@@ -64,9 +64,7 @@ class SiteMatrix
 		);
 
 		# Some internal databases for other domains.
-		$this->hidden = array(
-			'foundation', 'mediawiki',
-		);
+		$this->hidden = array();
 
 		# Initialize $countPerSite
 		$this->countPerSite = array();
@@ -94,6 +92,27 @@ class SiteMatrix
 			}
 		}
 		$this->count = count( $wgLocalDatabases );
+	}
+
+	public function isPrivate( $dbname ) {
+		global $wmgPrivateWikis;
+		return $wmgPrivateWikis ? in_array( "{$dbname}wiki", $wmgPrivateWikis ) : false;
+	}
+
+	public function isFishbowl( $dbname ) {
+		global $wmgFishbowlWikis;
+		return $wmgFishbowlWikis ? in_array( "{$dbname}wiki", $wmgFishbowlWikis ) : false;
+	}
+
+	public function isClosed( $dbname ) {
+		global $wgConf;
+		if( !$wgConf ) return false;
+		list( $major, $minor ) = $wgConf->siteFromDB( $dbname );
+		if( $wgConf->get( 'wgReadOnly', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
+			return true;
+		if( $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
+			return true;
+		return false;
 	}
 }
 
@@ -180,7 +199,8 @@ class SiteMatrixPage extends SpecialPage {
 					$s .= '<td><a href="' . $url . '" class="new">' . $lang . '</a></td>';
 				} else {
 					# Wiki exists
-					$s .= '<td><a href="' . $url . '">' . $lang . '</a></td>';
+					$closed = $matrix->isClosed( "{$lang}{$site}" );
+					$s .= "<td>" . ($closed ? "<s>" : '') . "<a href=\"" . $url . '">' . $lang . '</a>' . ($closed ? "</s>" : '') . '</td>';
 				}
 			}
 			$s .= "</tr>\n";
@@ -213,7 +233,15 @@ class SiteMatrixPage extends SpecialPage {
 			} else {
 				$domain = $langhost . ".wikimedia.org";
 			}
-			$s .= '<li><a href="http://' . $domain . '/">' . $lang . "</a></li>\n";
+
+			# Handle options
+			$flags = array();
+			if( $matrix->isPrivate( $lang ) )
+				$flags[] = wfMsgHtml( 'sitematrix-private' );
+			if( $matrix->isFishbowl( $lang ) )
+				$flags[] = wfMsgHtml( 'sitematrix-fishbowl' );
+			$flagsStr = implode( ', ', $flags );
+			$s .= '<li>' . wfSpecialList( '<a href="http://' . $domain . '/">' . $lang . "</a>", $flagsStr ) . "</li>\n";
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );

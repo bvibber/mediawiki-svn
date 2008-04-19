@@ -16,6 +16,8 @@ $messages['en'] = array(
 	'sitematrix-others'    => 'Other projects of Wikimedia',
 	'sitematrix-total'     => "'''Total count: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'private',
+	'sitematrix-fishbowl'  => 'fishbowl',
 );
 
 /** Afrikaans (Afrikaans)
