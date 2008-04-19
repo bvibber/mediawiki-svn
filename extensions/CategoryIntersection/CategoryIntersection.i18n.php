@@ -229,9 +229,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'categoryintersection'               => 'Intersecção de categorias',
+	'categoryintersection-desc'          => "Mantém uma tabela com valores 'hash' para [[{{ns:Special}}:CategoryIntersection|intersecções de categorias]] numa página",
 	'categoryintersection-doit'          => 'Listar páginas em todas estas categorias',
 	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se intersectam é $1.',
 	'categoryintersection-results'       => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',

@@ -370,6 +370,13 @@ $messages['gl'] = array(
 	'newuserlog-create2-entry' => 'creada unha conta para $1',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'newuserlog-create-entry' => 'Ymmydeyr noa',
+);
+
 $messages['hak'] = array(
 	'newuserlogpage'           => 'Sîn-chin yung-fu miàng-chhak',
 	'newuserlogpagetext'       => 'Liá-he yit-ke chui-khiun pûn chhóng-kien yung-fu ke ngit-ki',

@@ -1314,7 +1314,8 @@ A versión seguinte, sen encriptar, é a que segue. Mostrarase publicamente en [
 
 [[Special:Boardvote/entry|Atrás]]',
 	'boardvote_nosession'    => 'Non se pode determinar o seu ID de usuario de Wikipedia. Rexístrese no wiki no que cumpre os requisitos e vaia a <nowiki>[[Special:Boardvote]]</nowiki>. Debe usar unha conta cun mínimo de $1 contribucións antes de $2 e cunha primeira edición anterior a $3.',
-	'boardvote_notloggedin'  => 'Vostede non está rexistrado. Para votar, vostede debe usar unha conta con como mínimo $1 contribucións antes de $2, e cunha primeira edición antes de $3.',
+	'boardvote_notloggedin'  => 'Non accedeu ao sistema.
+Para votar, debe usar unha conta con, como mínimo, $1 contribucións antes de $2, e cunha primeira edición antes de $3.',
 	'boardvote_notqualified' => 'Vostede non está cualificado para votar nesta elección. Necesita ter feitas $3 edicións antes $2, e a súa primeira edición debe ser anterior a $5.',
 	'boardvote_novotes'      => 'Aínda non votou ninguén.',
 	'boardvote_time'         => 'Tempo',
@@ -1705,6 +1706,14 @@ $1 pou done yo ki pa kripte, sekirize.</p>',
 	'boardvote_notstarted'   => 'Vòt an poko koumanse.',
 	'boardvote_closed'       => 'Eleksyon an fini. Rezilta a make anlè [[meta:Election results 2006/fr|paj rezilta yo]] (ht).',
 	'boardvote_edits_many'   => 'pliszyè',
+	'group-boardvote'        => 'Tablo pou vòt administratè yo',
+	'group-boardvote-member' => 'Tablo pou vòt administratè a',
+	'grouppage-boardvote'    => '{{ns:project}}:Tablo pou vòt administratè a',
+	'boardvote_blocked'      => 'Eskize nou, kont ou an bloke nan wiki ou te anrejistre w. Itilizatè yo ki bloke pa otorize vote.',
+	'boardvote_welcome'      => "Byenvini '''$1'''!",
+	'go_to_board_vote'       => 'Konsèy administrasyon pou eleksyon Wikimedya 2007',
+	'boardvote_redirecting'  => 'Pou rann sekirite ak transparans pi wo, n ap mennen vòt an sou yon sèvè dewò ki kontrole ak endepandans.
+W ap dirije nan sèvè dewò sa nan 20 segonn. [$1 Klike isit] pou ale nan paj an kounye a.',
 );
 
 /** Hungarian (Magyar)
@@ -1867,7 +1876,8 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
  * @author Malafaya
  */
 $messages['io'] = array(
-	'boardvote_user' => 'Uzanto',
+	'boardvote_user'    => 'Uzanto',
+	'boardvote_welcome' => "Bonveno, '''$1'''!",
 );
 
 /** Icelandic (Íslenska)
@@ -3083,6 +3093,7 @@ $messages['pam'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Derbeth
+ * @author Leinad
  */
 $messages['pl'] = array(
 	'boardvote'              => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
@@ -3099,7 +3110,9 @@ sprawy w Radzie Powierniczej. Będą decydować jak zbierać pieniądze i w co j
 <p>Prosimy o uważne przeczytanie oświadczeń kandydatów i odpowiedzi na wszelkie 
 pytania przed zagłosowaniem. Każdy z kandydatów jest cenionym użytkownikiem, który 
 poświęcił swój czas i chęci dla rozwijaniu projektów tak, aby dalej służyły wolnemu 
-rozpowszechnianiu ludzkiej wiedzy.<p>
+rozpowszechnianiu ludzkiej wiedzy.</p>
+
+<p>Możesz głosować na dowolną liczbę kandydatów. Kandydat z największą ilością głosów poparcia zostanie ogłoszony zwycięzcą. Jeżeli wybory zakończą się wynikiem remisowym, zostaną rozegrane drugie wybory mające na celu rozstrzygnąć remisową sytuację.</p>
 
 <p>Więcej informacji:</p>
 <ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006" class="external">FAQ wyborów</a></li>
@@ -3696,7 +3709,6 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 /** Seeltersk (Seeltersk)
  * @author Pyt
  * @author Maartenvdbent
- * @author Siebrand
  */
 $messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
@@ -3729,7 +3741,13 @@ Wan du moatest, koast du foulgjende Eempeldhaide fäästhoolde. Dien Oustämmeng
 
 Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
-<pre>$2</pre>',
+<pre>$2</pre>
+
+Ju deeruut foulgjende, ferslöätelde Version foulget hierunner. Ju wäd eepentelk ap [[{{ns:special}}:Boardvote/dump]] anwiesd.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Tourääch]]',
 	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer

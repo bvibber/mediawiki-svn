@@ -237,6 +237,13 @@ $messages['gl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrulleiro',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'patrol-revert-reason' => 'Fa:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -93,6 +93,13 @@ $messages['gl'] = array(
 	'profiling-no-data'      => 'Non coinciden os datos atopados.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

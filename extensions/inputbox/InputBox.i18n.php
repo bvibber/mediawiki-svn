@@ -328,6 +328,13 @@ $messages['gu'] = array(
 	'createarticle' => 'નવો લેખ શરૂ કરો',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'createarticle' => 'Croo duillag',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

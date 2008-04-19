@@ -132,10 +132,11 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
 	'sitenotice_close' => 'piilota',
-	'sitenotice-desc'  => 'Sallii käyttäjien piilottaa sitenotice-tekstin',
+	'sitenotice-desc'  => 'Sallii käyttäjien piilottaa sitenotice-tekstin.',
 );
 
 $messages['fiu-vro'] = array(

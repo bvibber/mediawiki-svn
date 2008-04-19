@@ -107,6 +107,15 @@ $messages['gl'] = array(
 	'randomincategory-submit'     => 'Adiante',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'randomincategory-toolbox' => 'Duillag gyn tort',
+	'randomincategory-label'   => 'Ronney:',
+	'randomincategory-submit'  => 'Gow',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

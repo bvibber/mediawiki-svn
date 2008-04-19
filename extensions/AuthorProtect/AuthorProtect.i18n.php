@@ -34,6 +34,16 @@ $messages['ar'] = array(
 	'authorprotect-reason'  => 'السبب',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'authorprotect-confirm' => 'Nendara',
+	'authorprotect-reason'  => 'Lazava',
+	'authorprotect-success' => 'Kiewaskiyina nendara !',
+	'authorprotect-failure' => 'Keluyuna nendara',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -142,6 +152,7 @@ $messages['gl'] = array(
  */
 $messages['gv'] = array(
 	'authorprotect-confirm' => 'Coadee',
+	'authorprotect-reason'  => 'Fa',
 );
 
 /** Icelandic (Íslenska)

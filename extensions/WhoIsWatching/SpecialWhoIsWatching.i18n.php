@@ -92,6 +92,17 @@ $messages['de'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Füge Benutzer hinzu',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'whoiswatching'                => 'Kiu spektas vikian paĝon',
+	'specialwhoiswatchingthepage'  => 'Kiu spektas paĝon $s',
+	'specialwhoiswatchingusage'    => 'Ĉi tiu speciala paĝo ne povas esti utiligita sole. Bonvolu uzi [[MediaWiki:Number_of_watching_users_pageview|ĉi tiun paĝon]] por difini enirpaĝon al ĉi tiu speciala paĝo.',
+	'specialwhoiswatchingaddusers' => 'Aldonas uzantojn por spekti la paĝon',
+	'specialwhoiswatchingaddbtn'   => 'Aldonas selektitajn Uzantojn',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

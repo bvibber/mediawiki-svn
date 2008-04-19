@@ -132,6 +132,14 @@ $messages['gu'] = array(
 	'showprocesslist-info' => 'માહિતિ',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'showprocesslist-user' => 'Ymmydeyr',
+	'showprocesslist-time' => 'Am',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -230,6 +230,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
+	'linksearch-desc'  => 'Toimintosivu [[Special:Linksearch|ulkoisten linkkien käytön]] kartoittamiseen.',
 	'linksearch-pat'   => 'Osoite',
 	'linksearch-ns'    => 'Nimiavaruus',
 	'linksearch-ok'    => 'Etsi',
@@ -311,6 +312,13 @@ $messages['gsw'] = array(
 /** Gujarati (ગુજરાતી) */
 $messages['gu'] = array(
 	'linksearch-ok' => 'શોધ',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'linksearch-ok' => 'Ronsaghey',
 );
 
 $messages['he'] = array(
@@ -454,6 +462,7 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'linksearch'       => 'Golèk pranala jaba',
+	'linksearch-desc'  => '[[Special:Linksearch|Golèka kaca mawa pranala jaba]] sing cocog mawa pola/patrun tartamtu',
 	'linksearch-pat'   => 'Pola panggolèkan:',
 	'linksearch-ns'    => 'Bilik nama:',
 	'linksearch-ok'    => 'Golèk',
@@ -853,7 +862,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
-	'linksearch-desc'  => 'Söker efter externa länkar som matchar vissa mönster',
+	'linksearch-desc'  => '[[Special:Linksearch|Sök efter externa länkar]] som matchar vissa mönster',
 	'linksearch-pat'   => 'Sökmönster:',
 	'linksearch-ns'    => 'Namnrymd:',
 	'linksearch-ok'    => 'Sök',

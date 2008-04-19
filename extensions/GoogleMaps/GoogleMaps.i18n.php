@@ -1238,6 +1238,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-incompatible-browser-link' => 'Klickt heihinner fir eng Lëscht vu kompatibele Browser ze gesinn.',
 	'gm-balloon-title'             => 'Titel:',
 	'gm-balloon-link-article'      => 'Link op dës Säit (fakultativ):',
+	'gm-remove'                    => 'ewechhuelen',
 	'gm-save-point'                => 'Späicheren and zoumaachen',
 	'gm-load-map'                  => 'Kaart lueden',
 	'gm-no-results'                => 'Pardon, kee Resultat',

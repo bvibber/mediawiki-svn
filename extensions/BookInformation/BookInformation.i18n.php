@@ -273,6 +273,13 @@ $messages['es'] = array(
 	'bookinfo-error-invalidisbn' => 'Se introduce el ISBN inválido.',
 );
 
+/** Basque (Euskara)
+ * @author Bengoa
+ */
+$messages['eu'] = array(
+	'bookinfo-result-title' => 'Titulua:',
+);
+
 $messages['ext'] = array(
 	'bookinfo-header' => 'Enhormación el libru',
 	'bookinfo-result-title' => 'Entítulu:',
@@ -445,6 +452,23 @@ $messages['hsb'] = array(
 	'bookinfo-provider'          => 'Dodawar datow: $1',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'bookinfo-header'            => 'Enfòmasyon anlè liv yo',
+	'bookinfo-desc'              => 'Ap etann [[Special:Booksources]] ak enfòmasyon twouve nan sèvis wèb, entènèt',
+	'bookinfo-result-title'      => 'Tit, non l:',
+	'bookinfo-result-publisher'  => 'Editè :',
+	'bookinfo-result-year'       => 'Lane :',
+	'bookinfo-error-invalidisbn' => 'ISBN ou bay an pa bon ditou.',
+	'bookinfo-error-nosuchitem'  => 'Eleman sa a pa egziste oubyen nou pa kapab twouve l.',
+	'bookinfo-error-nodriver'    => 'Nou pa kapab twouve tout enfòmasyon itil pou liv yo, motè enfòmasyon sa pa mache ditou.',
+	'bookinfo-error-noresponse'  => 'Pa gen pyès repons oubyen delè nesesè a depase.',
+	'bookinfo-purchase'          => 'Achte liv sa anlè $1',
+	'bookinfo-provider'          => 'Moun ki ap bay enfòmasyon sa : $1',
+);
+
 /** Hungarian (Magyar)
  * @author KossuthRad
  * @author Dani
@@ -487,6 +511,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'bookinfo-result-title'  => 'Titulo:',
 	'bookinfo-result-author' => 'Autoro:',
 	'bookinfo-result-year'   => 'Yaro:',
 );
@@ -668,6 +693,7 @@ $messages['lb'] = array(
 	'bookinfo-result-year'       => 'Joer:',
 	'bookinfo-error-invalidisbn' => 'Dir hutt eng ISBN aginn déi et net gëtt.',
 	'bookinfo-error-nosuchitem'  => "D'Säit gëtt et net oder si gouf net fonnt.",
+	'bookinfo-error-nodriver'    => "Et war net méiglech fir déi respektiv Buchinformatiounsquell z'initialiséieren.",
 	'bookinfo-error-noresponse'  => "Keng Äntwert oder d'Ufro huet ze laang gebraucht (timed out)",
 	'bookinfo-purchase'          => 'Dëst Buch op $1 kafen',
 	'bookinfo-provider'          => 'Informatioune vun: $1',
@@ -832,10 +858,10 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'bookinfo-header'            => 'Entresenhas suls obratges',
 	'bookinfo-desc'              => "Espandís [[Special:Booksources]] amb d'entresenhas a partir d’un servici internet",
-	'bookinfo-result-title'      => 'Títol:',
-	'bookinfo-result-author'     => 'Autor:',
-	'bookinfo-result-publisher'  => 'Editor:',
-	'bookinfo-result-year'       => 'Annada:',
+	'bookinfo-result-title'      => 'Títol :',
+	'bookinfo-result-author'     => 'Autor :',
+	'bookinfo-result-publisher'  => 'Editor :',
+	'bookinfo-result-year'       => 'Annada :',
 	'bookinfo-error-invalidisbn' => 'ISBN invalid.',
 	'bookinfo-error-nosuchitem'  => 'Aqueste element existís pas o es pas pogut èsser trobat.',
 	'bookinfo-error-nodriver'    => 'Impossible d’inicializar un motor d’informacion suls obratges.',

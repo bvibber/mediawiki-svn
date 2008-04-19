@@ -172,6 +172,15 @@ $messages['gl'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'player-file'      => 'Ennym y choadan',
+	'player-goto-page' => 'Duillag',
+	'player-goto-file' => 'coadan',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -398,10 +407,17 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'player'               => 'Reprodutor',
+	'player-desc'          => 'Reprodução multimédia incorporada usando plugins de browser comuns, e uma [[{{ns:Special}}:Player|página especial]]',
+	'player-title'         => 'Reprodutor',
+	'player-playertitle'   => 'Reprodutor: $1',
 	'player-file'          => 'Nome do ficheiro',
+	'player-play'          => 'Reproduzir',
 	'player-not-allowed'   => 'formato não permitido',
 	'player-not-found'     => 'ficheiro não encontrado',
 	'player-invalid-title' => 'título inválido',
+	'player-clicktoplay'   => 'Reproduzir $1',
+	'player-goto-player'   => 'reprodutor',
 	'player-goto-page'     => 'Página',
 	'player-goto-file'     => 'ficheiro',
 );

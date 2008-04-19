@@ -744,6 +744,19 @@ $messages['gl'] = array(
 	'mv_new_anno_en'                => 'Nova Etiqueta ou Anotación',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'mv_tool_search'     => 'Ronsaghey',
+	'mv_tool_navigate'   => 'Stiurey',
+	'mv_history'         => 'Shennaghys',
+	'mv_search_category' => 'Ronney',
+	'mv_search_and'      => 'as',
+	'mv_search_or'       => 'ny',
+	'mv_category'        => 'ronney',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -1151,6 +1164,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'metavid'             => 'Metavid-Säit',
 	'mv_save_changes'     => 'Ännerunge späicheren',
+	'mv_missing_cat'      => 'Den Numm vun der Kategorie feelt',
 	'mv_remove_reason'    => 'Grond vum Läschen:',
 	'mv_upload_file'      => 'Fichier eroplueden',
 	'mv_tool_search'      => 'Sichen',
@@ -1940,6 +1954,7 @@ $messages['pt'] = array(
 	'mv_stream_meta'                => 'Página de stream',
 	'mv_add_stream_submit'          => 'Adicionar stream',
 	'mv_edit_stream_files'          => 'Editar ficheiros de stream',
+	'mv_path_type_label'            => 'tipo de caminho',
 	'mv_base_offset_label'          => 'desvio da base',
 	'mv_duration_label'             => 'duração',
 	'mv_save_changes'               => 'Salvar alterações',
@@ -1951,6 +1966,8 @@ $messages['pt'] = array(
 	'mv_label_stream_desc'          => 'Descrição do stream',
 	'add_stream_permission'         => 'Você não possui permissões para adicionar um novo stream',
 	'edit_stream_missing'           => 'Falta nome de stream',
+	'mv_missing_req_time'           => 'Tempo do pedido não especificado',
+	'mv_missing_cat'                => 'Nome de categoria não especificado',
 	'mv_stream_already_exists'      => 'A stream <a href="$2">$1</a> já existe',
 	'mv_error_stream_insert'        => 'falhou inserção de stream',
 	'mv_redirect_and_delete_reason' => 'página de redireccionamento removida',
@@ -1965,13 +1982,18 @@ $messages['pt'] = array(
 	'mv_tool_export'                => 'Exportar',
 	'mv_tool_export_title'          => 'Exportar metadados do stream',
 	'mv_results_found_for'          => 'Resultados de Busca <b>$1</b> a <b>$2</b> de <b>$3</b> para:',
+	'mv_tool_mang_layers'           => 'Gerir camadas',
+	'mv_update_layers'              => 'actualizar vista de camadas',
 	'anno_en'                       => 'Anotações e Categorias',
 	'mvd_default_mismatch'          => 'Erro no ficheiro de configuração',
+	'mvd_default_mismatch_text'     => 'Há um erro no seu ficheiro de configuração.
+$mvMVDTypeDefaultDisp deverá ser um subconjunto de $mvMVDTypeAllAvailable',
 	'mv_data_page_title'            => '$1 para $2 de $3',
 	'mv_time_separator'             => '$1 a $2',
 	'mv_list_streams_docu'          => 'Os seguintes streams se encontram disponíveis:',
 	'mv_list_streams_none'          => 'Não há streams disponíveis',
 	'video_feed_cat'                => '"Feed" de vídeo para a Categoria:',
+	'mvMVDFormat'                   => 'O título MVD deverá estar no formato: mvd:type:nome_da_stream/tempo_início/tempo_fim',
 	'mv_play'                       => 'Tocar',
 	'mv_edit'                       => 'Editar',
 	'mv_history'                    => 'Histórico',
@@ -2020,6 +2042,7 @@ $messages['pt'] = array(
 	'mv_stream_tool_heading'        => 'Ferramentas de Stream',
 	'mv_search_stream_title'        => 'Pesquisar Stream Actual',
 	'mv_mang_layers'                => 'Gerir Camadas',
+	'mv_mang_layers_title'          => "Gerir o conjunto de visualização de camadas para a 'stream' actual",
 );
 
 /** Russian (Русский)

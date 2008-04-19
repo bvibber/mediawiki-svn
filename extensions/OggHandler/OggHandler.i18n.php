@@ -406,6 +406,7 @@ $messages['fa'] = array(
  * @author Crt
  */
 $messages['fi'] = array(
+	'ogg-desc'                => 'Käsittelijä Ogg Theora ja Vorbis -tiedostoille ja JavaScript-soitin.',
 	'ogg-short-audio'         => 'Ogg $1 -äänitiedosto, $2',
 	'ogg-short-video'         => 'Ogg $1 -videotiedosto, $2',
 	'ogg-short-general'       => 'Ogg $1 -mediatiedosto, $2',
@@ -541,6 +542,13 @@ $messages['gl'] = array(
 	'ogg-dismiss'             => 'Fechar',
 	'ogg-download'            => 'Baixar ficheiro',
 	'ogg-desc-link'           => 'Acerca deste ficheiro',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'ogg-desc-link' => 'Mychione y choadan shoh',
 );
 
 $messages['he'] = array(
@@ -1305,7 +1313,7 @@ $messages['oc'] = array(
 	'ogg-stop'                => 'Stòp',
 	'ogg-play-video'          => 'Legir la vidèo',
 	'ogg-play-sound'          => 'Legir lo son',
-	'ogg-no-player'           => 'O planhèm, vòstre sistèma possedís aparentament pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un dels lectors suportats</a>.',
+	'ogg-no-player'           => 'O planhèm, aparentament, vòstre sistèma a pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/oc">un dels lectors suportats</a>.',
 	'ogg-no-xiphqt'           => 'Aparentament avètz pas lo compausant XiphQT per Quicktime. Quicktime pòt pas legir los fiquièrs Ogg sens aqueste compausant. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr"> Telecargatz-lo XiphQT</a> o causissetz un autre lector.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin'    => 'Plugin Ogg',

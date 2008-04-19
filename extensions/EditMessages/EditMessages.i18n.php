@@ -325,10 +325,14 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'editmessages-desc'  => '[[{{ns:special}}:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
-	'editmessages'       => 'Editar mensagens',
-	'editmsg-search'     => 'Pesquisar',
-	'editmsg-new-search' => 'Nova pesquisa',
+	'editmessages-desc'      => '[[{{ns:special}}:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
+	'editmessages'           => 'Editar mensagens',
+	'editmsg-target'         => 'Mensagem alvo:',
+	'editmsg-search'         => 'Pesquisar',
+	'editmsg-show-list'      => 'Mostrando valores para o nome de mensagem "$1"',
+	'editmsg-new-search'     => 'Nova pesquisa',
+	'editmsg-warning-parse2' => '* Caracter de aspa esperado após seta: $1',
+	'editmsg-warning-file'   => 'Erros de leitura de ficheiro foram encontrados para as seguintes línguas: $1',
 );
 
 /** Russian (Русский)

@@ -109,6 +109,15 @@ $messages['gl'] = array(
 	'sc_gotomonth'     => 'Ir ao mes',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'sc_previousmonth' => 'Yn mee roish shen',
+	'sc_nextmonth'     => 'Yn chied mee elley',
+	'sc_today'         => 'Jiu',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

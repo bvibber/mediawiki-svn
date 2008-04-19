@@ -134,6 +134,15 @@ $messages['gl'] = array(
 	'inspectcache-list'    => 'Listaxe',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Scryss',
+	'inspectcache-list'   => 'Rolley',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -116,6 +116,13 @@ $messages['pl'] = array(
 	'didyoumean-desc' => 'Dodaje linki do stron o "podobnych" tytułach',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

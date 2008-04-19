@@ -307,6 +307,16 @@ $messages['gl'] = array(
 	'regexblock-view-time'            => 'en $1',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'regexblock-form-username' => 'Enmys IP ny ennym ymmydeyr:',
+	'regexblock-form-reason'   => 'Fa:',
+	'regexblock-view-go'       => 'Gow',
+	'regexblock-view-reason'   => 'fa: $1',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -378,6 +378,13 @@ $messages['gl'] = array(
 	'review_comment'                         => 'Comentario',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'review_total_statistics' => 'Yn clane',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

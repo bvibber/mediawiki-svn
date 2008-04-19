@@ -209,6 +209,13 @@ Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_added'                   => 'engadido',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'povwatch_title' => 'Ard-ennym:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

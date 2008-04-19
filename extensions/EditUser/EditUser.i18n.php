@@ -235,6 +235,8 @@ $messages['lb'] = array(
 	'edituser-logout'   => 'Sessioun vum Benotzer zoumaachen',
 	'edituser-username' => 'Numm',
 	'edituser-dosearch' => 'Sichen',
+	'edituser-nouser'   => 'Dee Benotzer gëtt et net',
+	'edituser-exempt'   => 'Dee Benotzer kann net geännert ginn',
 );
 
 /** Malayalam (മലയാളം)

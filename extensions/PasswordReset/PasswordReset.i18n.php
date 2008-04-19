@@ -172,6 +172,13 @@ $messages['gl'] = array(
 	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'passwordreset-username' => "Dt'ennym ymmydeyr",
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -52,6 +52,17 @@ $messages['an'] = array(
 	'youtubeauthsub_submit' => 'Nimbiar',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'youtubeauthsub_title'        => 'عنوان',
+	'youtubeauthsub_description'  => 'وصف',
+	'youtubeauthsub_category'     => 'تصنيف',
+	'youtubeauthsub_submit'       => 'تنفيذ',
+	'youtubeauthsub_uploadbutton' => 'رفع',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -391,6 +402,16 @@ $messages['lb'] = array(
 	'youtubeauthsub_category'            => 'Kategorie',
 	'youtubeauthsub_submit'              => 'Späicheren',
 	'youtubeauthsub_clickhere'           => 'Klickt hei fir Iech op YouTube eranzeloggen',
+	'youtubeauthsub_success'             => "Gratulatioun!
+
+Äre Video ass eropgelueden.
+
+Fir äre video z ekucken klickt w.e.g. <a href='http://www.youtube.com/watch?v=$1'>heihinn</a>.
+YouTube brauch e bëssen Zäit fir äre Video ze verschaffen, do wéint kéint et et sinn datt en nach net prätt ass.
+
+Fir äre Video an eng Wiki-Säit anzebannen, gitt w.e.g. de folgende Code an eng Säit an:
+
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => "Fir ee Video eropzelueden musst Dir iech fir d'éischt op YouTube eraloggen.",
 	'youtubeauthsub_uploadhere'          => 'Äre Video vun hei eroplueden:',
 	'youtubeauthsub_uploadbutton'        => 'Eroplueden',
@@ -597,6 +618,13 @@ $messages['pt'] = array(
 	'youtubeauthsub_description'        => 'Descrição',
 	'youtubeauthsub_keywords'           => 'Palavras-chave',
 	'youtubeauthsub_category'           => 'Categoria',
+	'youtubeauthsub_uploadhere'         => 'Carregar o seu vídeo a partir de:',
+	'youtubeauthsub_uploadbutton'       => 'Carregar',
+	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
+
+Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
+	'youtubeauthsub_summary'            => 'A carregar vídeo YouTube',
+	'youtubeauthsub_viewpage'           => 'Como alternativa, pode visualizar o seu vídeo [[$1|aqui]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
 	'youtubeauthsub_jserror_notitle'    => 'Por favor, introduza um título para o vídeo.',
 	'youtubeauthsub_jserror_nodesc'     => 'Por favor, introduza uma descrição para o vídeo.',

@@ -37,8 +37,10 @@ $messages['ar'] = array(
 	'lookupuser_not_authenticated' => 'غير مرخص',
 	'lookupuser_id'                => 'رقم المستخدم: <tt>#$1</tt>',
 	'lookupuser_email'             => 'البريد الإلكتروني: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'غير متوفر',
 	'lookupuser_realname'          => 'الاسم الحقيقي: $1',
 	'lookupuser_registration'      => 'تاريخ التسجيل: $1',
+	'lookupuser_no_registration'   => 'غير مسجل',
 	'lookupuser_touched'           => 'سجل المستخدم تم تعديله آخر مرة في: $1',
 	'lookupuser_useroptions'       => 'خيارات المستخدم:',
 );
@@ -132,6 +134,13 @@ $messages['gl'] = array(
 	'lookupuser_registration' => 'Data de rexistro: $1',
 	'lookupuser_touched' => 'Rexistro do usuario tocado por última vez: $1',
 	'lookupuser_useroptions' => 'Opcións do usuario:',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'lookupuser_realname' => 'Feer-ennym: $1',
 );
 
 /** Hindi (हिन्दी)
@@ -350,8 +359,10 @@ $messages['pt'] = array(
 	'lookupuser_not_authenticated' => 'não autenticado',
 	'lookupuser_id'                => 'ID de utilizador: <tt>#$1</tt>',
 	'lookupuser_email'             => 'Email: [[{{ns:special}}:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'não fornecido',
 	'lookupuser_realname'          => 'Nome real: $1',
 	'lookupuser_registration'      => 'Data de registo: $1',
+	'lookupuser_no_registration'   => 'não registado',
 	'lookupuser_touched'           => 'Registo de utilizador alterado pela última vez: $1',
 	'lookupuser_useroptions'       => 'Opções de utilizador:',
 );

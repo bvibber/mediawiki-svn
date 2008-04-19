@@ -387,6 +387,7 @@ Voltar a:
  * @author MacTire02
  */
 $messages['gv'] = array(
+	'crosswikiblock-reason'   => 'Fa:',
 	'crosswikiunblock-reason' => 'Fa:',
 );
 
@@ -510,6 +511,16 @@ $messages['ja'] = array(
 * [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
 * [[$2]]",
 	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[{{ns:special}}:Ipblocklist]]を利用してください。',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'crosswikiblock-expiry'   => 'Kadaluwarsa:',
+	'crosswikiblock-reason'   => 'Alesan:',
+	'crosswikiblock-submit'   => 'Blokir panganggo iki',
+	'crosswikiunblock-reason' => 'Alesan:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -833,6 +844,7 @@ $messages['pt'] = array(
 	'crosswikiblock-submit'         => 'Bloquear este utilizador',
 	'crosswikiblock-anononly'       => 'Bloquear apenas utilizadores anónimos',
 	'crosswikiblock-nocreate'       => 'Impedir criação de conta',
+	'crosswikiblock-autoblock'      => 'Bloquear automaticamente o último endereço IP usado por este utilizador, e qualquer endereço IP subsequente a partir do qual ele tente editar',
 	'crosswikiblock-noemail'        => 'Impedir utilizador de enviar email',
 	'crosswikiunblock'              => 'Desbloquear utilizador noutro wiki',
 	'crosswikiunblock-user'         => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',

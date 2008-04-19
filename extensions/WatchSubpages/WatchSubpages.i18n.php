@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'watchsubpages'      => 'Watch subpages',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'watchsubpages' => 'مراقبة الصفحات الفرعية',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

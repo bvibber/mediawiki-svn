@@ -274,6 +274,15 @@ Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDCon
 	'openidbadusername'             => 'O nome de usuario especificado é incorrecto.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'openidemail'          => 'Enmys post-L',
+	'openidlanguage'       => 'Çhengey',
+	'openidchoosepassword' => 'fockle yn arrey:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

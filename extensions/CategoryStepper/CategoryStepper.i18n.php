@@ -22,7 +22,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'categorystepper-desc'  => 'يعرض صندوق تصنيف في الصفحات الموجودة في مجموعة من التصنيفات.',
+	'categorystepper-desc'  => 'يعرض صندوق تصنيف في الصفحات الموجودة في مجموعة من التصنيفات مما يسمح بالإبحار للأمام والخلف أبجديا خلال تصنيف أو أكثر موجود بصفحة.',
 	'categorystepper-end'   => '(نهاية التصنيف)',
 	'categorystepper-start' => '(بداية التصنيف)',
 );

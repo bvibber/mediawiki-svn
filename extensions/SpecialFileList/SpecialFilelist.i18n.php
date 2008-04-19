@@ -133,7 +133,7 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
- * @author Bertrand Grondin
+ * @author Grondin
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -141,6 +141,7 @@ $messages['fr'] = array(
 	'filelist-desc'         => 'Page spéciale pour énumérer les fichiers téléchargés.',
 	'filelist-show-list'    => 'Voir la liste',
 	'filelist-show-gallery' => 'Voir la galerie',
+	'filelist-image-desc'   => 'desc',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -456,6 +457,7 @@ $messages['sv'] = array(
 	'filelist-desc'         => 'Specialsida som visar en lista över uppladdade filer',
 	'filelist-show-list'    => 'Visa lista',
 	'filelist-show-gallery' => 'Visa galleri',
+	'filelist-image-desc'   => 'beskrivning',
 );
 
 /** Silesian (ślůnski)

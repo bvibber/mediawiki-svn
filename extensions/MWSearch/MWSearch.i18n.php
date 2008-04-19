@@ -46,6 +46,13 @@ $messages['fa'] = array(
 	'mwsearch-desc' => 'افزونهٔ MWSearch',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'mwsearch-desc' => 'MWSearch-liitännäinen',
+);
+
 /** French (Français)
  * @author Grondin
  */

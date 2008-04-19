@@ -339,7 +339,7 @@ Om du har noen problemer kan du prøve <b>Special:Call/DebuG</b>.',
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'call'              => 'Apèl',
+	'call'              => 'Ampèl',
 	'call-desc'         => 'Crèa un ligam ipertèxt vèrs un modèl o un article wiki normals tot i passant de paramètres. Pòt èsser utilizada en linha de comanda dempuèi un navigaire o a travèrs un tèxt wiki.',
 	'call-text'         => "L’extension Ampèl a besonh d’una pagina wiki e de paramètres facultatius per aquesta darrièra.<br /><br />
 Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèl,parm1=value1]]</tt><br />

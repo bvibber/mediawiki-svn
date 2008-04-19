@@ -188,7 +188,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'parserdifftest'      => 'Ekzameno de diff por sintaksa analizilo',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Speciala paĝo]] por kompari la eligon de du apartaj sintaksaj analiziloj',
 	'pdtest_no_target'    => 'Neniu celo specifigita.',
+	'pdtest_page_missing' => 'La enigita paĝo ne estis trovita en la datumbazo.',
 	'pdtest_no_changes'   => 'Neniuj ŝanĝoj malkovritaj.',
 	'pdtest_time_report'  => '<b>$1</b> daŭris $2 sekundojn, <b>$3</b> daŭris $4 sekundojn.',
 	'pdtest_title'        => 'Kunteksta titolo:',
@@ -197,6 +200,7 @@ $messages['eo'] = array(
 	'pdtest_get_text'     => 'Prenu tekston el paĝo',
 	'pdtest_diff'         => 'Malsamaĵoj',
 	'pdtest_side_by_side' => 'Komparo de eligaĵoj.',
+	'pdt_comparing_page'  => 'Komparante eligon de sintaksa analizilo pri [[$1]]',
 );
 
 /** Persian (فارسی)
@@ -297,6 +301,13 @@ $messages['gl'] = array(
 	'pdtest_diff'         => 'Diferenzas',
 	'pdtest_side_by_side' => 'Comparación da saída',
 	'pdt_comparing_page'  => 'Comparando a análise de saída de [[$1]]',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'pdtest_ok' => 'OK',
 );
 
 /** Hebrew (עברית)
@@ -898,10 +909,14 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'pdtest-desc'  => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
-	'pdtest_title' => 'Назва сторінки:',
-	'pdtest_text'  => 'Вхідний текст:',
-	'pdtest_diff'  => 'Відмінності',
+	'parserdifftest'      => 'Перевірка змін синтаксичного аналізатора',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Спеціальна сторінка]] для порівняння виводу двох різних парсерів',
+	'pdtest_no_target'    => 'Не зазначена ціль.',
+	'pdtest_page_missing' => 'Зазначена сторінка не знайдена в базі даних.',
+	'pdtest_no_changes'   => 'Змін не виявлено.',
+	'pdtest_title'        => 'Назва сторінки:',
+	'pdtest_text'         => 'Вхідний текст:',
+	'pdtest_diff'         => 'Відмінності',
 );
 
 /** Vèneto (Vèneto)

@@ -281,6 +281,7 @@ $messages['lb'] = array(
 	'dt_xml_field'                => 'Feld',
 	'dt_xml_name'                 => 'Numm',
 	'dt_xml_title'                => 'Titel',
+	'dt_xml_id'                   => 'Nummer',
 	'dt_xml_freetext'             => 'Fräien Text',
 );
 

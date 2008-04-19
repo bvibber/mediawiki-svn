@@ -247,9 +247,11 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
+	'webstore_access'                  => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
 	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
 	'webstore_404'                     => 'Dosiero ne trovita.',
+	'webstore_metadata_not_found'      => 'Dosiero ne trovita: $1',
 	'webstore_invalid_response'        => 'Nevalida respondo de servilo:
 
 $1',

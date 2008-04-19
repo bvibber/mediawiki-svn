@@ -365,10 +365,15 @@ $messages['eo'] = array(
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-status'         => 'Revizio $1: $2',
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
+	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
 	'oversight-view'              => 'detaloj',
+	'oversight-difference'        => '(Diferenco de la antaŭa lasta revizio)',
+	'oversight-prev'              => 'Lasta antaŭa revizio',
 	'oversight-hidden'            => 'Kaŝita revizio',
+	'oversight-header'            => 'Jen listo de revizioj laste daŭre kaŝitaj de publika vido.
+Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
 );
 
 /** Basque (Euskara)
@@ -1671,8 +1676,8 @@ $messages['rmy'] = array(
 
 /** Russian (Русский)
  * @author .:Ajvol:.
- * @author HalanTul
  * @author Ahonc
+ * @author HalanTul
  */
 $messages['ru'] = array(
 	'hiderevision'                => 'Скрыть версию страницы',
@@ -1698,7 +1703,7 @@ $messages['ru'] = array(
 	'hiderevision-success'        => 'Успешно заархивирована и скрыта.',
 	'hiderevision-error-missing'  => 'Не найдена в базе данных.',
 	'hiderevision-error-current'  => 'Невозможно удалить текущую версию страницы. Сначала откатите изменения',
-	'hiderevision-error-delete'   => 'Невозможно заархивировать. Проверьте, не была ли версия удалена ранее?',
+	'hiderevision-error-delete'   => 'Невозможно заархивировать. Проверьте, не была ли версия удалена ранее.',
 	'hiderevision-archive-status' => 'Удалена версия со страницы $1: $2',
 	'oversight-nodiff'            => 'Невозможно определить изменения из-за недоступности предыдущей версии страницы. Возможно:
 *Данная страница была удалена
@@ -2088,6 +2093,13 @@ $messages['uk'] = array(
 	'grouppage-oversight'         => '{{ns:project}}:Ревізори',
 	'hiderevision-prompt'         => 'Номер версії, яку потрібно приховати',
 	'hiderevision-continue'       => 'Продовжити',
+	'hiderevision-text'           => "Ця сторінка повинна використовуватися '''тільки''' у випадках:
+* розголошення особистої інформації
+*: розголошення ''домашніх адрес, телефонних номерів номера, паспортних даних'' тощо.
+
+'''Зловживання цією системою призведе до позбавлення прав.'''
+
+Приховані версії сторінок не буде видно через інтерфейс MediaWiki, але вони записуються до журналу і можуть бути відновлені адміністратором бази даних, якщо ви зробите помилку.",
 	'hiderevision-reason'         => 'Причина (буде записана в закритий журнал):',
 	'hiderevision-submit'         => 'Приховати ці дані',
 	'hiderevision-tab'            => 'Приховати версію',
@@ -2096,9 +2108,18 @@ $messages['uk'] = array(
 	'hiderevision-status'         => 'Версія №$1: $2',
 	'hiderevision-success'        => 'Успішно заархівована і прихована.',
 	'hiderevision-error-missing'  => 'Не знайдена в базі даних.',
+	'hiderevision-error-current'  => 'Неможливо вилучити поточну версію сторінки.
+Спочатку відкотіть зміни.',
+	'hiderevision-error-delete'   => 'Неможливо заархівувати. Перевірте, чи не була версія вилучена раніше.',
 	'hiderevision-archive-status' => 'Вилучена версія зі сторінки $1: $2',
+	'oversight-nodiff'            => 'Неможливо визначити зміни через недоступність попередньої версії сторінки. Можливо:
+* Ця сторінка була вилучена
+* Прихована версія була першою',
+	'oversight-log-hiderev'       => 'приховане редагування зі сторінки $1',
 	'oversight'                   => 'Журнал приховування версій',
 	'oversight-view'              => 'докладніше',
+	'oversight-difference'        => '(Різниця з попередньою невилученою версією)',
+	'oversight-prev'              => 'Попередня версія',
 	'oversight-hidden'            => 'Прихована версія',
 	'oversight-header'            => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',

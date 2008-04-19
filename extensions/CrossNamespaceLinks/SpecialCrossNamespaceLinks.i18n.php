@@ -485,7 +485,7 @@ $messages['oc'] = array(
 	'crossnamespacelinks'         => 'Paginas contenent de ligams vèrs un autre espaci de nom',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Enumèra los ligams a travèrs los espacis de nomenatges]] que deurián pas existir sus {{SITENAME}}',
 	'crossnamespacelinks-summary' => "Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.",
-	'crossnamespacelinkstext'     => '$1 : possedís $2 {{PLURAL:$2|ligam|ligams}} vèrs l’espaci « $3 »',
+	'crossnamespacelinkstext'     => '$1 : a $2 {{PLURAL:$2|ligam|ligams}} vèrs l’espaci « $3 »',
 );
 
 /** Polish (Polski)

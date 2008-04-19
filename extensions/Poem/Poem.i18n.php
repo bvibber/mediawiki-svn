@@ -53,6 +53,13 @@ $messages['fa'] = array(
 	'poem-desc' => 'برچسب <tt>&lt;poem&gt;</tt> را برای قالب‌بندی شعرها می‌افزاید',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'poem-desc' => 'Mahdollistaa runojen muotoilun <tt><nowiki><poem></nowiki></tt>-elementillä.',
+);
+
 /** French (Français)
  * @author Grondin
  */

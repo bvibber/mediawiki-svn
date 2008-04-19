@@ -47,6 +47,15 @@ $messages['ast'] = array(
 	'ajax-se-idling'  => '(hai $1s)',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'ajax-se-pagedoesnotexist' => 'bu me tir',
+	'ajax-se-userinvalid'      => 'ROKLA : meenaf favesik',
+	'ajax-se-usernotfound'     => 'ROKLA : metrasin favesik',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -329,6 +338,15 @@ $messages['ja'] = array(
 	'ajax-se-pagedoesnotexist' => 'このページは一度も保存されていません',
 	'ajax-se-userinvalid'      => 'エラー: 不正な利用者です',
 	'ajax-se-usernotfound'     => 'エラー: 利用者情報が存在しません',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'ajax-se-title'            => 'Saiki lagi nyunting:',
+	'ajax-se-idling'           => '($1d kapungkur)',
+	'ajax-se-pagedoesnotexist' => 'kaca ora ana',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

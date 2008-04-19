@@ -205,6 +205,14 @@ $messages['fa'] = array(
 
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: kuva ei kelpaa tai sitä ei ole olemassa',
+	'imagemap_description'   => 'Kuvan tiedot',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur

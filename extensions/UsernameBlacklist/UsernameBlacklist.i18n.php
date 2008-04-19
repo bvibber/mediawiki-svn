@@ -285,6 +285,7 @@ $messages['fa'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
+	'usernameblacklist-desc'          => 'Mahdollistaa käyttäjätunnusten luomisen estämisen säännöllisiä lausekkeita tukevan  [[MediaWiki:Usernameblacklist|mustan listan]] avulla.',
 	'blacklistedusername'             => 'Kielletty tunnus',
 	'blacklistedusernametext'         => 'Haluamasi tunnus on [[MediaWiki:Usernameblacklist|kiellettyjen tunnusten listalla]]. Valitse toinen nimi.',
 	'usernameblacklist'               => '<pre>

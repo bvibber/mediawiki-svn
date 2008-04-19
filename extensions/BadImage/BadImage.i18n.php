@@ -107,13 +107,18 @@ $messages['ast'] = array(
 
 /** Kotava (Kotava)
  * @author Nkosi ya Cabinda
+ * @author Wikimistusik
  */
 $messages['avk'] = array(
-	'badimages'         => 'Ewavaja yo',
-	'badimages-add-btn' => 'Loplekura',
-	'badimages-added'   => '$1 su zo kovexalar.',
-	'badimages-count'   => "'''$1''' ewava tid ewavaja.",
-	'badimages-name'    => 'Yolt :',
+	'badimages'            => 'Ewavaja yo',
+	'badimages-add-btn'    => 'Loplekura',
+	'badimages-added'      => '$1 su zo kovexalar.',
+	'badimages-count'      => "'''$1''' ewava tid ewavaja.",
+	'badimages-name'       => 'Yolt :',
+	'badimages-reason'     => 'Lazava :',
+	'badimages-remove-btn' => 'Tioltera',
+	'badimages-log-name'   => 'Ewaveemaj',
+	'badimages-page'       => '{{ns:help}}:Ewaveemaj',
 );
 
 /** Bikol Central (Bikol Central)
@@ -518,7 +523,8 @@ $messages['gl'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'badimages-name' => 'Ennym:',
+	'badimages-name'   => 'Ennym:',
+	'badimages-reason' => 'Fa:',
 );
 
 /** Hindi (हिन्दी)
@@ -723,6 +729,20 @@ $messages['ja'] = array(
 	'badimages-log-add'        => '[[$1]] を一覧に追加しました。',
 	'badimages-log-remove'     => '[[$1]] を一覧から削除しました。',
 	'badimages-page'           => '{{ns:help}}:好ましくない画像の一覧表',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'badimages'            => 'Daftar gambar ala',
+	'badimages-add-btn'    => 'Tambahna',
+	'badimages-name'       => 'Jeneng:',
+	'badimages-log-name'   => 'Daftar gambar ala',
+	'badimages-log-header' => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
+	'badimages-log-add'    => 'nambahaké [[$1]] menyang daftar gambar ala',
+	'badimages-log-remove' => 'mbusak [[$1]] saka daftar gambar ala',
+	'badimages-page'       => '{{ns:help}}:Daftar gambar ala',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -988,10 +1008,10 @@ $messages['oc'] = array(
 	'badimages-add-btn'        => 'Apondre',
 	'badimages-added'          => '$1 es estat ajustat a la lista.',
 	'badimages-count'          => "I a '''$1''' imatges dins la lista dels imatges indesirables.",
-	'badimages-name'           => 'Nom:',
+	'badimages-name'           => 'Nom :',
 	'badimages-not-added'      => 'L’imatge es pas pogut estat ajustat.',
 	'badimages-not-removed'    => 'L’imatge es pas pogut èsser levat.',
-	'badimages-reason'         => 'Motiu:',
+	'badimages-reason'         => 'Motiu :',
 	'badimages-remove'         => '(levar)',
 	'badimages-remove-btn'     => 'Levar',
 	'badimages-remove-confirm' => 'Confirmatz que volètz levar $1 de la lista :',

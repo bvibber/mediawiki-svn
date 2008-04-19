@@ -135,6 +135,13 @@ $messages['ar'] = array(
 	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2" (حاول استخدام أمر "$3{...}")',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'math_InvalidColour' => '"$1" kseva tir meenafa',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  * @author Borislav
@@ -994,6 +1001,13 @@ $messages['ja'] = array(
 	'math_UnrecognisedCommand'              => 'コマンド "$1" は有効なコマンドではありません',
 	'math_WrongFontEncoding'                => 'シンボル "$1" は、文字エンコード "$2" で利用できません',
 	'math_WrongFontEncodingWithHint'        => 'シンボル "$1" は、文字エンコード "$2" で利用できません（"$3{...}" をお試しください）',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'math_IllegalCharacter' => 'Ana karakter ilegal sing dilebokaké',
 );
 
 /** Khmer (ភាសាខ្មែរ)

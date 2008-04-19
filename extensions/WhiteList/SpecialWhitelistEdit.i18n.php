@@ -82,6 +82,19 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$allMessages['ar'] = array(
+	'whitelisttablemodifyall'  => 'الكل',
+	'whitelisttablemodifynone' => 'لا شيء',
+	'whitelisttableedit'       => 'تعديل',
+	'whitelisttableview'       => 'عرض',
+	'whitelisttableremove'     => 'إزالة',
+	'whitelistnewtableprocess' => 'عملية',
+	'whitelistnever'           => 'أبدا',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -199,11 +212,28 @@ $allMessages['el'] = array(
  * @author Yekrats
  */
 $allMessages['eo'] = array(
+	'whitelist'                => 'Blanklisto Paĝoj',
 	'mywhitelistpages'         => 'Miaj Paĝoj',
+	'whitelistfor'             => '<center>Nuna informo por <b>$1</b></center>',
+	'whitelisttablemodify'     => 'Modifu',
+	'whitelisttablemodifyall'  => 'Ĉiuj',
 	'whitelisttablemodifynone' => 'Neniu',
+	'whitelisttablepage'       => 'Vikia Paĝo',
+	'whitelisttableexpires'    => 'Finas je',
+	'whitelisttablemodby'      => 'Laste modifita de',
+	'whitelisttablemodon'      => 'Laste modifita je',
 	'whitelisttableedit'       => 'Redaktu',
+	'whitelisttableview'       => 'Rigardu',
+	'whitelisttablenewdate'    => 'Nova Dato:',
+	'whitelisttablechangedate' => 'Ŝanĝu Findaton',
+	'whitelisttableremove'     => 'Forigu',
+	'whitelistnewtabledate'    => 'Findato:',
 	'whitelistnewtablereview'  => 'Kontrolu',
+	'whitelistpagelist'        => '{{SITENAME}} paĝoj por $1',
 	'whitelistbadtitle'        => 'Fuŝa titolo -',
+	'whitelistoverview'        => '== Resumo de ŝanĝoj por $1 ==',
+	'whitelistrequest'         => 'Petu atingon por pliaj paĝoj',
+	'whitelistrequestconf'     => 'Peto por novaj paĝoj estis sendita al $1',
 	'whitelistnever'           => 'neniam',
 	'whitelistnummatches'      => '- $1 pafoj',
 );
