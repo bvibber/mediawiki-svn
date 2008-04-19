@@ -9,7 +9,23 @@ Not sure if that's my fault or not.
 
 Typical usage:
 
-   $latin = transliterate_with_id('Any-Latin', $foreign);
+    $latin = transliterate_with_id('Any-Latin', $foreign);
 
-Observed timing for is ~30ms on first call and ~3ms thereafter, plus ~1.5us per
-character.
+The last used transliterator is kept open, since opening a new transliterator 
+is slow, taking about 2-3ms. So arrange your code to keep multiple calls to 
+the same transliterator together. For instance, this code will be slow:
+
+    for ( $names as $name ) {
+        transliterate_with_id( 'Any-Latin', $name );
+        transliterate_with_id( 'Any-Tamil', $name );
+    }
+
+And this code will be fast:
+
+    for ( $names as $name ) {
+        transliterate_with_id( 'Any-Latin', $name );
+    }
+    for ( $names as $name ) {
+        transliterate_with_id( 'Any-Tamil', $name );
+    }
+
