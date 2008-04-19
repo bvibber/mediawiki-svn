@@ -6,34 +6,29 @@
 
 void pngcmd_help();
 
-char** pngcmd_getopts(int argc, char **argv)
+void** pngcmd_getopts(int argc, char **argv)
 {
 	int i;
-	char **res;
+	void **res;
 	
 	if (argc == 0) pngcmd_help();
 	
-	res = malloc(PNGOPT_COUNT * sizeof(char*));
+	res = calloc(sizeof(void*), PNGOPT_COUNT);
 	
-	res[PNGOPT_STDIN] = malloc(sizeof(char));
-	*res[PNGOPT_STDIN] = 0;
-	res[PNGOPT_STDOUT] = malloc(sizeof(char));
-	*res[PNGOPT_STDOUT] = 0;
+	res[PNGOPT_STDIN] = calloc(sizeof(char), 1);
+	res[PNGOPT_STDOUT] = calloc(sizeof(char), 1);
 	
-	// Those are really ints...
-	res[PNGOPT_WIDTH] = malloc(sizeof(u_int32_t));
-	*((u_int32_t*)res[PNGOPT_WIDTH]) = 0;
-	res[PNGOPT_HEIGHT] = malloc(sizeof(u_int32_t));
-	*((u_int32_t*)res[PNGOPT_HEIGHT]) = 0;
+	res[PNGOPT_WIDTH] = calloc(sizeof(u_int32_t), 1);
+	res[PNGOPT_HEIGHT] = calloc(sizeof(u_int32_t), 1);
 	
-	for (i = 0; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "--help") == 0)
 			pngcmd_help();
 		else if (strcmp(argv[i], "--from-stdin") == 0)
-			*res[PNGOPT_STDIN] = 1;
+			*(char *)res[PNGOPT_STDIN] = 1;
 		else if (strcmp(argv[i], "--to-stdout") == 0)
-			*res[PNGOPT_STDOUT] = 1;
+			*(char *)res[PNGOPT_STDOUT] = 1;
 #ifndef PNGREADER
 		else if (strcmp(argv[i], "--height") == 0 || 
 				strcmp(argv[i], "--width") == 0)

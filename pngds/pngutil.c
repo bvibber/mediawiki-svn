@@ -62,21 +62,21 @@ void png_write_int(u_int32_t value, FILE *stream, u_int32_t *crc)
 		png_fwrite((char*)(&value) + i, 1, stream, crc);
 }
 
-void png_open_streams(char **opts, FILE **in, FILE **out)
+void png_open_streams(void **opts, FILE **in, FILE **out)
 {
-	if (!*(opts[PNGOPT_STDIN]) && opts[PNGOPT_IN] == NULL)
+	if (!*((char*)opts[PNGOPT_STDIN]) && opts[PNGOPT_IN] == NULL)
 		pngcmd_die("input unspecified", NULL);
-	if (!*(opts[PNGOPT_STDOUT]) && opts[PNGOPT_OUT] == NULL)
+	if (!*((char*)opts[PNGOPT_STDOUT]) && opts[PNGOPT_OUT] == NULL)
 		pngcmd_die("output unspecified", NULL);
 	
-	if (*(opts[PNGOPT_STDIN]))
+	if (*((char*)opts[PNGOPT_STDIN]))
 		*in = stdin;
 	else
-		*in = fopen(opts[PNGOPT_IN], "rb");
+		*in = fopen((char*)opts[PNGOPT_IN], "rb");
 	
-	if (*(opts[PNGOPT_STDOUT]))
+	if (*((char*)opts[PNGOPT_STDOUT]))
 		*out = stdout;
 	else
-		*out = fopen(opts[PNGOPT_OUT], "wb");
+		*out = fopen((char*)opts[PNGOPT_OUT], "wb");
 }
 

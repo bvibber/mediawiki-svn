@@ -38,6 +38,9 @@ void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcal
 		info.callbacks->completed_scanline = &png_write_scanline_raw;
 	
 	png_read(fin, fout, callbacks, &info);
+	free(callbacks);
+	// Need to free info.scanlines, but don't know its length
+	free(info.last_line);
 }
 
 void png_resize_init(void *info_)
@@ -150,7 +153,7 @@ void png_resize_done(void *info_)
 #ifdef PNGRESIZE
 int main(int argc, char **argv)
 {
-	char **opts = pngcmd_getopts(argc, argv);
+	void **opts = pngcmd_getopts(argc, argv);
 	FILE *in, *out;
 	png_open_streams(opts, &in, &out);
 	

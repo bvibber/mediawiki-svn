@@ -46,6 +46,12 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1)
 		
 	if (callbacks->done != NULL)
 		(*callbacks->done)(&info);
+	
+	// Cleanup
+	free(info.header);
+	free(info.previous_scanline);
+	free(info.current_scanline);
+	// Hmmm need to find a way to free the palette
 }
 
 int png_read_chunk(pngreader *info)
@@ -84,6 +90,9 @@ int png_read_chunk(pngreader *info)
 	if (crc != info->crc)
 		png_die("crc_mismatch", &info->crc);
 #endif
+	
+	// When I free this, I get a read error. Wtf?
+	// free(c_head.type);
 	
 	return strncmp(c_head.type, "IEND", 4);
 }
@@ -279,7 +288,9 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 			if (info->callbacks->completed_scanline != NULL)
 				(*info->callbacks->completed_scanline)(info->current_scanline, 
 				info->previous_scanline, info->scan_pos, info);
-			memcpy(info->previous_scanline, info->current_scanline, info->scan_pos);
+			char *tmp = info->previous_scanline;
+			info->previous_scanline = info->current_scanline;
+			info->current_scanline = tmp;
 			info->expect_filter = 1;
 		}
 	}
@@ -326,7 +337,7 @@ void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_sca
 #ifdef PNGREADER
 int main(int argc, char **argv)
 {
-	char **opts = pngcmd_getopts(argc, argv);
+	void **opts = pngcmd_getopts(argc, argv);
 	FILE *in, *out;
 	png_open_streams(opts, &in, &out);
 	

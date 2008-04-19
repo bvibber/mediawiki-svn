@@ -10,7 +10,7 @@
 
 #define PNGOPT_COUNT	6
 
-char** pngcmd_getopts(int argc, char **argv);
+void** pngcmd_getopts(int argc, char **argv);
 void pngcmd_die(char *msg, char *extra);
 
 #endif

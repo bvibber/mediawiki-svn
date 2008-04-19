@@ -114,12 +114,17 @@ void png_write_end(void *_info)
 	deflateEnd(&winfo->zst);
 	
 	png_write_chunk(info, "IEND", NULL, 0);
+	
+	// Cleanup
+	free(winfo->in);
+	free(winfo->out);
+	free(winfo);
 }
 
 #ifdef PNGDS
 int main(int argc, char **argv)
 {
-	char **opts = pngcmd_getopts(argc, argv);
+	void **opts = pngcmd_getopts(argc, argv);
 	FILE *in, *out;
 	png_open_streams(opts, &in, &out);
 	
