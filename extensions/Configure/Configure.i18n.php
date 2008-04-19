@@ -18,7 +18,7 @@ $messages['en'] = array(
 Please create it or change it to use this extension.',
 	'configure-no-old'                => 'No old version of the configuration available',
 	'configure-no-setup'              => 'You have to call <code>efConfigureSetup()</code> explicitly in your LocalSettings.php file to use this extension.',
-	'configure-no-transwiki'          => 'Your are not allowed to change settings in other wikis',
+	'configure-no-transwiki'          => 'You are not allowed to change settings in other wikis',
 	'configure-old-versions'          => 'List of old versions of the configuration:',
 	'configure-old-not-available'     => 'The old version of the settings you requested, $1, is not available',
 	'configure-saved'                 => 'The configuration has been saved',
