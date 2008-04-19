@@ -9,12 +9,11 @@
 
 #define paranoia_ceil(d)	(u_int32_t)d + (u_int32_t)d < d ? 1: 0;
 
-void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks);
 void png_resize_init(void *info_);
 void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, u_int32_t length, void *info_);
 void png_resize_done(void *info_);
 
-void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks)
+void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks, void* extra2)
 {
 	pngresize info;
 	info.width = width;
@@ -37,7 +36,7 @@ void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcal
 	if (info.callbacks->completed_scanline == NULL)
 		info.callbacks->completed_scanline = &png_write_scanline_raw;
 	
-	png_read(fin, fout, callbacks, &info);
+	png_read(fin, fout, callbacks, &info, extra2);
 	free(callbacks);
 	// Need to free info.scanlines, but don't know its length
 	free(info.last_line);
@@ -158,7 +157,7 @@ int main(int argc, char **argv)
 	png_open_streams(opts, &in, &out);
 	
 	png_resize(in, out, *((u_int32_t*)opts[PNGOPT_WIDTH]), 
-		*((u_int32_t*)opts[PNGOPT_HEIGHT]), NULL);
+		*((u_int32_t*)opts[PNGOPT_HEIGHT]), NULL, NULL);
 	
 	fclose(in); fclose(out);
 	

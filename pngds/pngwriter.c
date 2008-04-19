@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "zlib.h"
+
 #include "pngreader.h"
 #include "pngresize.h"
 #include "pngutil.h"
@@ -34,18 +36,16 @@ void png_write_header(void *_info)
 	png_fwrite((char*)&header + 8, 5, info->fout, &crc);
 	png_write_int(crc, info->fout, NULL);
 
-	pngwriter *winfo = calloc(sizeof(pngwriter), 1);
+	pngwriter *winfo = (pngwriter*)info->extra2;
 	winfo->zst.zalloc = Z_NULL;
 	winfo->zst.zfree = Z_NULL;
 	winfo->zst.opaque = Z_NULL;
-	if (deflateInit(&winfo->zst, Z_DEFAULT_COMPRESSION) != Z_OK)
+	if (deflateInit(&winfo->zst, winfo->deflate_level) != Z_OK)
 		png_die("zlib_init_error", NULL);
 	winfo->in = malloc(header.width * info->bpp + 1);
 	winfo->out = malloc(BUFFER_OUT_SIZE);
 	winfo->zst.next_out = winfo->out;
 	winfo->zst.avail_out = BUFFER_OUT_SIZE;
-	
-	info->extra2 = winfo;
 }
 
 void png_write_chunk(pngreader *info, char *type, void *ptr, u_int32_t size)
@@ -63,9 +63,44 @@ void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanlin
 	pngreader *info = (pngreader*)info_;
 	pngwriter *winfo = (pngwriter*)info->extra2;
 	
-	// Filter type
-	winfo->in[0] = FILTER_NONE;
-	memcpy(winfo->in + 1, scanline, length);
+	int i;
+	unsigned char a, b, c;
+	short p, pa, pb, pc;
+	switch (winfo->filter_method)
+	{
+		case FILTER_NONE:
+			// Filter type
+			memcpy(winfo->in + 1, scanline, length);
+			break;
+		case FILTER_PAETH:
+			for (i = 0; i < length; i++)
+			{
+				winfo->in[i + 1] = scanline[i];
+				if (i >= info->bpp)
+				{
+					a = scanline[i - info->bpp];
+					c = previous_scanline[i - info->bpp];
+				}
+				else
+				{
+					a = c = 0;
+				}
+				b = previous_scanline[i];
+				
+				p = a + b - c;
+				pa = abs(p - a);
+				pb = abs(p - b);
+				pc = abs(p - c);
+				
+				if ((pa <= pb) && (pa <= pc)) winfo->in[i + 1] -= a;
+				else if (pb <= pc) winfo->in[i + 1] -= b;
+				else winfo->in[i + 1] -= c;
+			}
+			break;
+		default:
+			png_die("unsupported_filter", &winfo->filter_method);
+	}
+	winfo->in[0] = winfo->filter_method;
 	
 	int ret;
 	winfo->zst.next_in = winfo->in;
@@ -133,8 +168,12 @@ int main(int argc, char **argv)
 	callbacks.read_header = &png_write_header;
 	callbacks.done = &png_write_end;
 	
-	png_resize(in, out, *((u_int32_t*)opts[PNGOPT_WIDTH]), 
-		*((u_int32_t*)opts[PNGOPT_HEIGHT]), &callbacks);
+	pngwriter *winfo = calloc(sizeof(pngwriter), 1);
+	winfo->deflate_level = *(char *)opts[PNGOPT_DEFLATE_LEVEL];
+	winfo->filter_method = *(char *)opts[PNGOPT_NO_FILTERING] ? FILTER_NONE : FILTER_PAETH;
+	
+	png_resize(in, out, *(u_int32_t *)opts[PNGOPT_WIDTH], 
+		*(u_int32_t *)opts[PNGOPT_HEIGHT], &callbacks, winfo);
 	
 	fclose(in); fclose(out);
 	

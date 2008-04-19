@@ -15,3 +15,5 @@ typedef struct
 	
 	pngcallbacks *callbacks;
 } pngresize;
+
+void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks, void *extra2);

@@ -18,7 +18,7 @@ void png_read_data(pngreader *info, u_int32_t length);
 void png_defilter(pngreader *info, unsigned char *buffer, u_int32_t size);
 void png_read_ancillary(pngreader *info, u_int32_t length);
 
-void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1)
+void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2)
 {
 	pngreader info;
 	
@@ -36,6 +36,7 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1)
 	info.callbacks = callbacks;
 	
 	info.extra1 = extra1;
+	info.extra2 = extra2;
 	
 	char header[8];
 	png_fread(header, 8, fin, NULL);
@@ -341,7 +342,7 @@ int main(int argc, char **argv)
 	FILE *in, *out;
 	png_open_streams(opts, &in, &out);
 	
-	png_read(in, out, NULL, NULL);
+	png_read(in, out, NULL, NULL, NULL);
 	
 	fclose(in); fclose(out);
 	

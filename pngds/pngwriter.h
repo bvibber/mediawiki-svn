@@ -3,7 +3,8 @@ typedef struct
 	char *in;
 	char *out;
 	z_stream zst;
-	
+	char deflate_level;
+	char filter_method;
 } pngwriter;
 
 void png_write_header(void *_info);

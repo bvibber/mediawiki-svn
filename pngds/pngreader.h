@@ -96,7 +96,7 @@ typedef struct
 /* 
  * Functions
  */
-void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1);
+void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2);
 void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, u_int32_t length, void *info_);
 
 #endif

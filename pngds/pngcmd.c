@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "zlib.h"
 #include "pngcmd.h"
 
 void pngcmd_help();
@@ -11,7 +12,7 @@ void** pngcmd_getopts(int argc, char **argv)
 	int i;
 	void **res;
 	
-	if (argc == 0) pngcmd_help();
+	if (argc == 1) pngcmd_help();
 	
 	res = calloc(sizeof(void*), PNGOPT_COUNT);
 	
@@ -20,6 +21,11 @@ void** pngcmd_getopts(int argc, char **argv)
 	
 	res[PNGOPT_WIDTH] = calloc(sizeof(u_int32_t), 1);
 	res[PNGOPT_HEIGHT] = calloc(sizeof(u_int32_t), 1);
+	
+	res[PNGOPT_DEFLATE_LEVEL] = malloc(sizeof(char));
+	*(char *)res[PNGOPT_DEFLATE_LEVEL] = Z_DEFAULT_COMPRESSION;
+	res[PNGOPT_NO_FILTERING] = calloc(sizeof(char), 1);
+	
 	
 	for (i = 1; i < argc; i++)
 	{
@@ -34,9 +40,16 @@ void** pngcmd_getopts(int argc, char **argv)
 				strcmp(argv[i], "--width") == 0)
 			; // Do nothing
 		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--height") == 0 && i != 0)
-			*((u_int32_t*)res[PNGOPT_HEIGHT]) = strtol(argv[i], NULL, 10);
+			*(u_int32_t *)res[PNGOPT_HEIGHT] = strtol(argv[i], NULL, 10);
 		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--width") == 0 && i != 0)
-			*((u_int32_t*)res[PNGOPT_WIDTH]) = strtol(argv[i], NULL, 10);
+			*(u_int32_t *)res[PNGOPT_WIDTH] = strtol(argv[i], NULL, 10);
+#endif
+#ifdef PNGDS
+		else if (argv[i][0] == '-' && 
+				(argv[i][1] >= '0' && argv[i][1] <= '9'))
+			*(char *)res[PNGOPT_DEFLATE_LEVEL] = argv[i][1] - 48;
+		else if (strcmp(argv[i], "--no-filtering") == 0)
+			*(char *)res[PNGOPT_NO_FILTERING] = 1;
 #endif
 		else if (strncmp(argv[i], "--", 2) == 0)
 			pngcmd_die("unknown option",  argv[i]);
@@ -68,10 +81,16 @@ void pngcmd_help()
 #ifdef PNGRESIZE
 		"pngresize [--from-stdin] [--to-stdout] [<source>] [<target>]\n"
 		"	[--width <width>] [--height <height>]\n"
+		"\n"
+		"Either width or height can be specified to keep aspect ratio.\n"
 #endif
 #ifdef PNGDS
 		"pngds [--from-stdin] [--to-stdout] [<source>] [<target>]\n"
-		"	[--width <width>] [--height <height>]\n"
+		"	[--width <width>] [--height <height>] [-n] [--no-filtering]\n"
+		"\n"
+		"Either width or height can be specified to keep aspect ratio.\n"
+		"	-n		Compression level from 0-9\n"
+		"	--no-filtering	Don't use Paeth filtering (faster)\n"
 #endif
 		"\n");
 	exit(0);
