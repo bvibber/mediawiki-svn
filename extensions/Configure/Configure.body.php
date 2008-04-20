@@ -140,7 +140,10 @@ class SpecialConfigure extends SpecialPage {
 				switch( $arrType ){
 				case 'simple':
 					$text = $wgRequest->getText( 'wp' . $name );
-					$arr = explode( "\n", $text );
+					if( $text == '' )
+						$arr = array();
+					else
+						$arr = explode( "\n", $text );
 					$settings[$name] = $arr;
 					break;
 				case 'assoc':
