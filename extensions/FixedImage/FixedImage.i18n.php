@@ -81,6 +81,13 @@ $messages['oc'] = array(
 	'fixedimage-desc' => 'Ajusta la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'fixedimage-desc' => 'Adiciona a marca <tt><nowiki><fundraising></nowiki></tt> como uma imagem',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

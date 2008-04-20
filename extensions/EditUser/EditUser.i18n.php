@@ -327,7 +327,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'edituser-username' => 'نوم',
-	'edituser-dosearch' => 'لټون',
+	'edituser-dosearch' => 'پلټل',
 );
 
 /** Portuguese (Português)

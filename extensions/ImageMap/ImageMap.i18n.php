@@ -209,7 +209,11 @@ $messages['fa'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
+	'imagemap_desc'          => 'Mahdollistaa napsautettavien kuvakarttojen tekemisen <tt><nowiki><imagemap></nowiki></tt>-elementillä.',
+	'imagemap_no_image'      => '&lt;imagemap&gt;: kuva pitää määritellä ensimmäisellä rivillä.',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: kuva ei kelpaa tai sitä ei ole olemassa',
+	'imagemap_no_areas'      => '&lt;imagemap&gt;: aluemäärittelyitä pitää olla ainakin yksi.',
+	'imagemap_invalid_coord' => '&lt;imagemap&gt;: kelpaamaton koordinaatti rivillä $1. Koordinaatin täytyy olla numero.',
 	'imagemap_description'   => 'Kuvan tiedot',
 );
 

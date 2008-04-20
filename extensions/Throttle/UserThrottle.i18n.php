@@ -104,7 +104,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'acct_creation_global_soft_throttle_hit'      => 'La creacion del compte es estada suspendida automaticament per un cèrt temps. Aquò es degut a un fòrt nombre de creacions de comptes. Pacientatz pendent qualques minutas puèi ensajatz tornamai.',
+	'acct_creation_global_soft_throttle_hit'      => 'La creacion del compte es estada suspenduda automaticament per un cèrt temps. Aquò es degut a un fòrt nombre de creacions de comptes. Pacientatz pendent qualques minutas puèi ensajatz tornamai.',
 	'acct_creation_global_hard_throttle_hit'      => "La creacion es estada suspendida automaticament pendent qualques segondas per limitar los atacs informatics per l'enregistrament en massa de comptes novèls. Pacientatz un moment e clicatz sus « recargar » dins vòstre navigaire per sometre, un còp de mai, la demanda.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limita la creacion d’utilizaires',
 );

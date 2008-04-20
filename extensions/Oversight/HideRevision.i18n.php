@@ -360,6 +360,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'hiderevision'                => 'Daŭre kaŝu reviziojn',
 	'hiderevision-continue'       => 'Kontinuu',
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
@@ -458,6 +459,9 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
 	'hiderevision-desc'           => 'Mahdollistaa yksittäisten muokkausversioiden piilottamisen käyttäjiltä esimerkiksi lakisyistä.',
+	'group-oversight'             => 'häivyttäjä',
+	'group-oversight-member'      => 'häivyttäjät',
+	'grouppage-oversight'         => '{{ns:project}}:Häivytysoikeudet',
 	'hiderevision-prompt'         => 'Poistettava versionumero',
 	'hiderevision-continue'       => 'Jatka',
 	'hiderevision-text'           => "Tätä toimintoa tulisi käyttää '''vain''' seuraavissa tapauksissa:

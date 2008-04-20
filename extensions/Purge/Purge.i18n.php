@@ -77,6 +77,13 @@ $messages['hu'] = array(
 	'purge' => 'frissít',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'purge' => 'hreinsa',
+);
+
 /** Japanese (日本語)
  * @author Kahusi
  */

@@ -395,6 +395,9 @@ $messages['bg'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Обратно]]',
+	'boardvote_nosession'    => 'Вашият потребителски номер в Уикимедия не можа да бъде определен.
+Необходимо е да влезете в уикито, в което имате права за гласуване, и да отворите <nowiki>[[Special:Boardvote]]</nowiki>.
+Необходимо е потребителската сметка да има поне $1 редакции преди $2 и първата редакция трябва да е била преди $3.',
 	'boardvote_notloggedin'  => 'Не сте влезли в системата. За да гласувате, трябва да използвате сметка с най-малко $1 приноса към $2, като първата ви редакция е отпреди $3.',
 	'boardvote_notqualified' => 'Не отговаряте на условията за гласуване в тези избори. Трябвало е да имате $3 редакции към $2, като първата ви редакция е отпреди $5.',
 	'boardvote_novotes'      => 'Все още никой не е гласувал.',
@@ -2157,6 +2160,7 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author Malafaya
  */
 $messages['ka'] = array(
 	'boardvote'            => 'ვიკიმედიის რწმუნებულთა საბჭოს არჩევნები',
@@ -2164,6 +2168,7 @@ $messages['ka'] = array(
 * [[Special:Boardvote/list|დღემდე მიცემული ხმების სია]]
 * [[Special:Boardvote/dump|წაშალე კრიპტირებული არჩევნების მონაცემები]]',
 	'boardvote_time'       => 'დრო',
+	'boardvote_user'       => 'მომხმარებელი',
 	'boardvote_dumplink'   => 'აქ დააწკაპუნეთ',
 	'boardvote_notstarted' => 'კენჭისყრა ჯერ არ დაწყებულა',
 	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",
@@ -2471,6 +2476,9 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zréck]]",
+	'boardvote_notloggedin'  => 'Dir sidd net agelogged.
+
+Fir ze wiele musst Dir e Benotzerkont matt mindestens $1 Kontributioune virum $2 hunn, an Dir musst är éischt Ännerung virum $3 gemaach hunn.',
 	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. Dir musst $3 Ännerunge virum $2 gemaacht hunn (Dir hutt der $1). Är éischt Ännerung muss virum $5 gemaach gi sinn (Är éischt Ännerung ass vum $4).',
 	'boardvote_novotes'      => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time'         => 'Zäit',
@@ -2482,6 +2490,7 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 	'boardvote_dumplink'     => 'Hei klicken',
 	'boardvote_submit'       => 'Ofstëmmen',
 	'boardvote_strike'       => 'Stëmm läschen',
+	'boardvote_needadmin'    => 'Nëmme Administrateure vun de Walen kënnen dëst maachen.',
 	'boardvote_notstarted'   => "D'Ofstëmmung huet nach net ugefaang",
 	'boardvote_closed'       => "D'Wale sinn eriwwer. D'Resultat fannt Dir [http://meta.wikimedia.org/wiki/Election_results_2006/En hei].",
 	'boardvote_edits_many'   => 'vill',
@@ -3752,7 +3761,7 @@ Ju deeruut foulgjende, ferslöätelde Version foulget hierunner. Ju wäd eepente
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
-	'boardvote_notloggedin'  => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 Beoarbaidengen moaked wuuden.',
+	'boardvote_notloggedin'  => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 Beoarbaidengen moaked wuuden, un mäd ne eerste Beoarbaidenge foar $3.',
 	'boardvote_notqualified' => 'Du bäst nit begjuchtiged an dissen Woal deeltouniemen. Du moast $3 Beoarbaidengen foar dän $2 moaked hääbe un die eerste Beoarbaidenge mout foar dän $5 geböärd weese. Aal Bedingengengen mouten tou ju Woaldeelnoame ärfäld weese.',
 	'boardvote_novotes'      => 'Tou nu tou häd noch neemens oustämd.',
 	'boardvote_time'         => 'Tied',

@@ -231,8 +231,8 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
- * @author Tlustulimu
  * @author Yekrats
+ * @author Tlustulimu
  * @author לערי ריינהארט
  */
 $messages['eo'] = array(
@@ -242,6 +242,7 @@ $messages['eo'] = array(
 	'sitematrix-others'    => 'Aliaj projektoj de Wikimedia',
 	'sitematrix-total'     => "'''Tuta nombrado: $1'''",
 	'sitematrix-sitetotal' => 'Tuto',
+	'sitematrix-private'   => 'privata',
 );
 
 $messages['es'] = array(
@@ -297,13 +298,14 @@ $messages['fi'] = array(
 	'sitematrix-language'  => 'Kieli',
 	'sitematrix-project'   => 'Projektin nimi, projektienvälinen linkki ja interwiki-linkki',
 	'sitematrix-others'    => 'Muut Wikimedian projektit',
-	'sitematrix-total'     => "'''Kaikki yhteensä: $1'''",
+	'sitematrix-total'     => "'''Wikejä yhteensä: $1'''",
 	'sitematrix-sitetotal' => 'Yhteensä',
 );
 
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author IAlex
  * @author Seb35
  */
 $messages['fr'] = array(
@@ -315,6 +317,7 @@ $messages['fr'] = array(
 	'sitematrix-others'    => 'Autres projets de Wikimedia Foundation',
 	'sitematrix-total'     => "'''Total du compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privé',
 );
 
 $messages['frc'] = array(
@@ -557,6 +560,8 @@ $messages['jv'] = array(
 	'sitematrix-others'    => 'Proyèk-proyèk liya Wikimedia',
 	'sitematrix-total'     => "'''Gunggungé cacahé: $1'''",
 	'sitematrix-sitetotal' => 'Gunggungé',
+	'sitematrix-private'   => 'pribadi',
+	'sitematrix-fishbowl'  => 'waskom iwak',
 );
 
 $messages['ka'] = array(
@@ -613,6 +618,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'sitematrix'          => '위키미디어 위키 목록',
+	'sitematrix-summary'  => '모든 위키미디어 위키의 목록입니다.',
 	'sitematrix-desc'     => '[[Special:SiteMatrix|위키미디어 위키 목록]]을 보여줍니다.',
 	'sitematrix-language' => '언어',
 	'sitematrix-project'  => '프로젝트 이름, 각 프로젝트 간의 인터위키',
@@ -755,6 +761,8 @@ $messages['nl'] = array(
 	'sitematrix-others'    => 'Andere projecten van Wikimedia',
 	'sitematrix-total'     => "'''Totaal aantal: $1'''",
 	'sitematrix-sitetotal' => 'Totaal',
+	'sitematrix-private'   => 'beperkte toegang',
+	'sitematrix-fishbowl'  => 'beperkt bewerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -780,13 +788,15 @@ $messages['no'] = array(
 	'sitematrix-others'    => 'Andre Wikimedia-prosjekter',
 	'sitematrix-total'     => "'''Totalt antall: $1'''",
 	'sitematrix-sitetotal' => 'Totalt',
+	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'utstillingswiki',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'sitematrix'           => 'Lista dels wikis Wikimedia',
+	'sitematrix'           => 'Lista dels wikis de Wikimèdia',
 	'sitematrix-summary'   => 'Aquesta pagina especiala aficha totes los wikis de la Fondacion Wikimèdia.',
 	'sitematrix-desc'      => 'Aficha una [[Special:SiteMatrix|tièra de wikis de la Fondacion Wikimèdia]]',
 	'sitematrix-language'  => 'Lenga',
@@ -851,6 +861,8 @@ $messages['pt'] = array(
 	'sitematrix-others'    => 'Outros projectos da Wikimedia',
 	'sitematrix-total'     => "'''Contagem total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privado',
+	'sitematrix-fishbowl'  => 'aquário',
 );
 
 $messages['pt-br'] = array(
@@ -976,6 +988,8 @@ $messages['sv'] = array(
 	'sitematrix-others'    => 'Andra Wikimediaprojekt',
 	'sitematrix-total'     => "'''Totalt antal: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'utställningswiki',
 );
 
 /** Telugu (తెలుగు)

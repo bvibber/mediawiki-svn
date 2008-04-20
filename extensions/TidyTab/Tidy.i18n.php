@@ -94,7 +94,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'tidy'   => 'Classar',
-	'untidy' => 'Declassar',
+	'untidy' => 'Desclassar',
 );
 
 /** Russian (Русский)

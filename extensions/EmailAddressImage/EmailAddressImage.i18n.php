@@ -105,6 +105,13 @@ $messages['oc'] = array(
 	'emailaddressimage-desc' => 'Ajusta <tt>&lt;email&gt;</tt> per afichar una adreça de corrièr electronic coma imatge',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

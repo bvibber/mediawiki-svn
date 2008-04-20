@@ -98,6 +98,7 @@ $messages['eo'] = array(
 	'lookupuser_email'             => 'Retpoŝto: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_no_email'          => 'ne provizita',
 	'lookupuser_realname'          => 'Reala nomo: $1',
+	'lookupuser_no_registration'   => 'ne registrita',
 	'lookupuser_useroptions'       => 'Opcioj de uzanto:',
 );
 

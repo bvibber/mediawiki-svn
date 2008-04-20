@@ -1083,9 +1083,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'badimages-add-btn' => 'ورګډول',
-	'badimages-name'    => 'نوم:',
-	'badimages-reason'  => 'سبب:',
+	'badimages-add-btn'    => 'ورګډول',
+	'badimages-name'       => 'نوم:',
+	'badimages-reason'     => 'سبب:',
+	'badimages-remove'     => '(غورځول)',
+	'badimages-remove-btn' => 'غورځول',
 );
 
 /** Portuguese (Português)

@@ -121,6 +121,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'spamregex-log-2'           => 'je $1',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
+	'spamregex-block-success'   => 'Forbaro sukcesis',
 	'spamregex-text'            => '(Teksto)',
 );
 

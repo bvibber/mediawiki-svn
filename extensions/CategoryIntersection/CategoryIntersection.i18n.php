@@ -269,6 +269,17 @@ $messages['sk'] = array(
 	'categoryintersection-results'       => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'categoryintersection'               => 'Kategorien-Snitboudel',
+	'categoryintersection-desc'          => 'Pleeget ne Tabelle mäd Hashwäide foar ju [[Special:CategoryIntersection|Kategorien-Snitboudelsäike]]',
+	'categoryintersection-doit'          => 'Aal Sieden in dissen Snitboudel anwiese',
+	'categoryintersection-maxcategories' => 'Ju maximoale Antaal fon Kategorien foar Snitboudele is $1.',
+	'categoryintersection-results'       => 'Ju Säike roate $1 {{PLURAL:$1|Träffer|Träffere}}.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

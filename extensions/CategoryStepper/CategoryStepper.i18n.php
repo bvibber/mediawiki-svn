@@ -272,6 +272,15 @@ $messages['sr-ec'] = array(
 	'categorystepper-start' => '(Почетак категорије)',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'categorystepper-desc'  => 'Wiest n Kategorie-Stapper-Kaste, ju dät muugelk moaked foudels un räägels tou bleederjen truch een of moor Kategorien, wier ne Siede tou heert.',
+	'categorystepper-end'   => '(Eende fon Kategorie)',
+	'categorystepper-start' => '(Ounfang fon Kategorie)',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

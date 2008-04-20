@@ -12,14 +12,6 @@ $messages['en'] = array(
 	'whosonline-desc' => 'Displays [[Special:WhosOnline|a list]] of logged-in and anonymous users currently online',
 );
 
-/** Danish (Dansk)
- * @author Tomas Jensen
- */
-$messages['da'] = array(
-	'whosonline'	=> 'Hvem er på',
-	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] af, både anonyme og kendte bruger der er logget på',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -58,6 +50,14 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'whosonline'      => 'Piv zo enlinenn ?',
 	'whosonline-desc' => 'Diskouez a ra [[Special:WhosOnline|ur roll]] eus an dud enskrivet hag eus an dud dianav zo enlinenn bremañ.',
+);
+
+/** Danish (Dansk)
+ * @author Tomas Jensen
+ */
+$messages['da'] = array(
+	'whosonline'	=> 'Hvem er på',
+	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] af, både anonyme og kendte bruger der er logget på',
 );
 
 /** German (Deutsch)
@@ -112,6 +112,13 @@ $messages['hu'] = array(
 $messages['is'] = array(
 	'whosonline'      => 'Hver er tengdur',
 	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
+);
+
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'whosonline-desc' => '로그인 하거나 하지 않은 지금 접속해 있는 사용자의 [[Special:WhosOnline|목록]]을 보여줍니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

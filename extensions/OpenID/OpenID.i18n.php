@@ -173,6 +173,7 @@ $messages['eo'] = array(
 	'openidlanguage'       => 'Lingvo',
 	'openidchoosefull'     => 'Via plena nomo ($1)',
 	'openidchoosepassword' => 'pasvorto:',
+	'openidnousername'     => 'Neniu salutnomo estis donita.',
 );
 
 /** French (Français)
@@ -799,17 +800,29 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
+	'openidserver'                  => 'Servidor OpenID',
 	'openidxrds'                    => 'Ficheiro Yadis',
+	'openiderror'                   => 'Erro de verificação',
+	'openidcancel'                  => 'Verificação cancelada',
+	'openidfailure'                 => 'Verificação falhou',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
 	'openidoptional'                => 'Opcional',
 	'openidrequired'                => 'Requerido',
 	'openidfullname'                => 'Nome completo',
 	'openidemail'                   => 'Endereço de e-mail',
 	'openidlanguage'                => 'Língua',
+	'openidchoosefull'              => 'O seu nome completo ($1)',
+	'openidchooseauto'              => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual'            => 'Um nome à sua escolha:',
+	'openidchooseexisting'          => 'Uma conta existente neste wiki:',
 	'openidchoosepassword'          => 'palavra-chave:',
+	'openidconvertyourstext'        => 'Esse já é o seu OpenID.',
+	'openidconvertothertext'        => 'Esse é o OpenID de outra pessoa.',
+	'openidnousername'              => 'Nenhum nome de utilizador especificado.',
+	'openidloginlabel'              => 'URL do OpenID',
 );
 
 /** Russian (Русский)

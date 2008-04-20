@@ -222,6 +222,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'review_sidebar_title'          => 'Kontrolu',
+	'review_error'                  => 'Io fuŝas!',
 	'review_statistics_left_corner' => 'Revizio',
 	'review_version_link'           => 'Revizio #$1',
 	'review_version_statistic_cell' => '$1 de $2',
@@ -660,7 +661,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'review_sidebar_title'                                   => 'Revision',
-	'review-desc'                                            => 'Relança la foncionalitat de [[Special:Review|validacion]] d’un article.',
+	'review-desc'                                            => 'Torna aviar la foncionalitat de [[Special:Review|validacion]] d’un article.',
 	'review_topics'                                          => "# Lista de subjèctes per l'extension « review » de MediaWiki. 
 # .... 
 # Cada subjècte es definit per una lista de donadas separadas per « : » (tota autra lista es ignorada).
@@ -692,7 +693,7 @@ $messages['oc'] = array(
 	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Vòstra revision es estada salvagardada.</span>",
 	'revision_review_this_page_version_link'                 => 'Revisar aquesta version de la pagina',
 	'review_page_review'                                     => 'Revision de la pagina « $1 »',
-	'review_blocked'                                         => 'Sètz blocat(-ada).',
+	'review_blocked'                                         => 'Sètz blocat(ada).',
 	'review_wrong_namespace'                                 => 'Las paginas dins aqueste espaci de nom pòdon pas èsser revisadas.',
 	'review_topic'                                           => 'Subjècte',
 	'review_no_opinion'                                      => 'Sens opinion',
@@ -741,6 +742,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'review_sidebar_title'     => 'مخکتنه',
 	'review_total_statistics'  => 'ټولټال',
 	'review_user_details_link' => '(تفصيل)',
 );

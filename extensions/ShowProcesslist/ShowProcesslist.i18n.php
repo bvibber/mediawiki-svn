@@ -161,6 +161,13 @@ $messages['hsb'] = array(
 	'showprocesslist-info'    => 'Informacija',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'showprocesslist-user' => 'მომხმარებელი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -264,7 +271,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'showprocesslist'         => 'Mostrar Lista de Processos',
 	'showprocesslist-id'      => 'Id',
-	'showprocesslist-user'    => 'Usuário',
+	'showprocesslist-user'    => 'Utilizador',
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time'    => 'Tempo',
 	'showprocesslist-state'   => 'Estado',

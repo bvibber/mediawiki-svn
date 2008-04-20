@@ -121,6 +121,7 @@ $messages['eo'] = array(
 	'passwordreset-confirmpass'     => 'Konfirmu Pasvorton',
 	'passwordreset-submit'          => 'Restarigu Pasvorton',
 	'passwordreset-success'         => 'Pasvorto estis restarigita por user_id: $1',
+	'passwordreset-disablesuccess'  => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
 );
 
 /** French (Français)
@@ -376,7 +377,7 @@ $messages['oc'] = array(
 	'passwordreset-invalidusername'    => "Nom d'utilizaire desconegut",
 	'passwordreset-emptyusername'      => "Nom d'utilizaire void",
 	'passwordreset-nopassmatch'        => "Los senhals qu'avètz picats son pas identics.",
-	'passwordreset-badtoken'           => 'Token de modificacion desconegut',
+	'passwordreset-badtoken'           => 'Geton de modificacion desconegut',
 	'passwordreset-username'           => "Nom d'utilizaire",
 	'passwordreset-newpass'            => 'Senhal novèl',
 	'passwordreset-confirmpass'        => 'Confirmatz lo senhal',
@@ -437,6 +438,7 @@ $messages['ps'] = array(
 	'passwordreset-nopassmatch'     => 'پټنومونه مو کټ مټ د يو بل سره سمون نه خوري',
 	'passwordreset-username'        => 'کارن-نوم',
 	'passwordreset-newpass'         => 'نوی پټنوم',
+	'passwordreset-disablesuccess'  => 'کارن-حساب مو ناچارند شوی (د کارونکي پېژند: $1)',
 	'passwordreset-accountdisabled' => 'کارن-حساب مو ناچارن شوی',
 );
 

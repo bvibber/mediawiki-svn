@@ -124,6 +124,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'talkhere-talkpage'   => 'diskuto-paĝo',
 	'talkhere-notalk'     => "''(ankoraŭ neniuj komentoj)''",
 	'talkhere-addcomment' => 'aldonu komenton',
 );

@@ -333,6 +333,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'importfreeimages_owner' => 'ليکوال',
+	'importfreeimages_next'  => 'راتلونکي $1',
 );
 
 /** Portuguese (Português)

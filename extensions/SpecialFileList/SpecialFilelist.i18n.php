@@ -337,6 +337,7 @@ $messages['oc'] = array(
 	'filelist-desc'         => 'Pagina especiala per enumerar los fichièrs telecargats.',
 	'filelist-show-list'    => 'Veire la lista',
 	'filelist-show-gallery' => 'Veire la galariá',
+	'filelist-image-desc'   => 'desc',
 );
 
 /** Polish (Polski)

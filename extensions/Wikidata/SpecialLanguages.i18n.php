@@ -877,6 +877,7 @@ $wdMessages['fi'] = array(
  * @author Grondin
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Meithal
  */
 $wdMessages['fr'] = array(
 	'datasearch'                            => 'Wikidata: Recherche de données',
@@ -955,7 +956,7 @@ $wdMessages['fr'] = array(
 	'ow_TranslatedText'                     => 'Texte traduit',
 	'ow_TranslatedTextAttributeValue'       => 'Texte',
 	'ow_TranslatedTextAttributeValues'      => 'Textes traduisibles',
-	'ow_LinkAttribute'                      => 'Propriété',
+	'ow_LinkAttribute'                      => 'Attribut',
 	'ow_LinkAttributeValues'                => 'Liens',
 	'ow_Property'                           => 'Propriété',
 	'ow_Value'                              => 'Valeur',
@@ -2143,6 +2144,7 @@ $wdMessages['ps'] = array(
 	'ow_dm_not_present'                     => 'نه دی ورکړ شوی',
 	'ow_ClassAttributeLevel'                => 'کچه',
 	'ow_ClassAttributeType'                 => 'ډول',
+	'ow_Collection'                         => 'غونډ',
 	'ow_Definition'                         => 'پېژند',
 	'ow_Language'                           => 'ژبه',
 	'ow_OptionAttribute'                    => 'ځانتيا',
@@ -2584,7 +2586,7 @@ $wdMessages['stq'] = array(
 	'ow_dm_OK'                              => 'OK',
 	'ow_dm_not_present'                     => 'nit ienroat',
 	'ow_dm_not_found'                       => 'nit in ju Doatenboank fuunen of failerhaft',
-	'ow_mapping_successful'                 => 'Aal do mäd [OK] markierde Fäildere wuuden tou-oardend<br>',
+	'ow_mapping_successful'                 => 'Aal do mäd [OK] markierde Fäildere wuuden tou-oardend<br />',
 	'ow_mapping_unsuccessful'               => 'Deer sunt mindestens two DefinedMeanings toun Ferknätten nöödich.',
 	'ow_will_insert'                        => 'Dät Foulgjende wäd iensät:',
 	'ow_contents_of_mapping'                => 'Inhoolde fon ju Ferknättenge',
@@ -2646,9 +2648,12 @@ $wdMessages['stq'] = array(
 	'ow_Permission_denied'                  => '<h2>FERLOF FERWÄIGERD</h2>',
 	'ow_copy_no_action_specified'           => 'Lääs ne Aktion fääst.',
 	'ow_copy_help'                          => 'Ap n Dai konnen wie die hälpe.',
-	'ow_please_proved_dmid'                 => 'Oje, an dien Iengoawe failt ?dmid=<something> (dmid=Defined Meaning ID)<br>Ups, kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc1'                  => 'Oje, an dien Iengoawe  failt ?dc1=<something> (dc1=dataset context 1, dataset to copy FROM)<br>Ups, kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc2'                  => 'Oje, an dien Iengoawe failt ?dc2=<something> (dc2=dataset context 2, dataset to copy TO) <br>Ups,  kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dmid'                 => 'Dät lät, dät an dien Iengoawe failt "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dc1'                  => 'Dät lät, as wan an dien Iengoawe  failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+Kontaktier dän Serveradminstrator.',
+	'ow_please_proved_dc2'                  => 'Dät lät, as wan an dien Iengoawe failt "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) <br />
+Kontaktier dän Serveradminstrator.',
 	'ow_copy_successful'                    => '<h2>Kopierjen mäd Ärfoulch</h2>Dien Doaten schiene mäd Ärfoulch kopierd wuuden tou weesen. Ferjät nit noch moal tou wröigjen uum sichertougungen!',
 );
 

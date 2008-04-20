@@ -319,7 +319,7 @@ $messages['gl'] = array(
 	'usagestatisticsintervalmonth'   => 'Mes',
 	'usagestatisticscalselect'       => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Estatísticas das edicións do usuario individual $1',
-	'usagestatistics-editpages'      => 'Páxinas estatísticas $1 do usuario individual',
+	'usagestatistics-editpages'      => 'Páxinas de estatísticas $1 do usuario individual',
 );
 
 /** Hindi (हिन्दी)

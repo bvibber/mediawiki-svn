@@ -185,19 +185,20 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'regexblock-unblock-success'    => 'Malforbaro sukcesis',
-	'regexblock-form-username'      => 'IP Adreso aŭ salutnomo:',
-	'regexblock-form-reason'        => 'Kialo:',
-	'regexblock-block-success'      => 'Forbaro sukcesis',
-	'regexblock-already-blocked'    => '$1 jam estas forbarita.',
-	'regexblock-stats-username'     => 'Por $1',
-	'regexblock-stats-times'        => 'estis forbarita je',
-	'regexblock-currently-blocked'  => 'Nune forbaritaj adresoj:',
-	'regexblock-view-all'           => 'Ĉiuj',
-	'regexblock-view-go'            => 'Ek!',
-	'regexblock-view-reason'        => 'kialo: $1',
-	'regexblock-view-block-unblock' => 'restarigu',
-	'regexblock-view-time'          => 'je $1',
+	'regexblock-unblock-success'     => 'Malforbaro sukcesis',
+	'regexblock-form-username'       => 'IP Adreso aŭ salutnomo:',
+	'regexblock-form-reason'         => 'Kialo:',
+	'regexblock-block-success'       => 'Forbaro sukcesis',
+	'regexblock-already-blocked'     => '$1 jam estas forbarita.',
+	'regexblock-stats-username'      => 'Por $1',
+	'regexblock-stats-times'         => 'estis forbarita je',
+	'regexblock-currently-blocked'   => 'Nune forbaritaj adresoj:',
+	'regexblock-view-all'            => 'Ĉiuj',
+	'regexblock-view-go'             => 'Ek!',
+	'regexblock-view-reason'         => 'kialo: $1',
+	'regexblock-view-reason-default' => 'malspecifa kialo',
+	'regexblock-view-block-unblock'  => 'restarigu',
+	'regexblock-view-time'           => 'je $1',
 );
 
 /** Spanish (Español)

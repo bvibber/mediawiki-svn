@@ -764,7 +764,7 @@ Tornar a :
 	'crosswikiblock-nouser'         => 'L’utilizaire « $3 » es introbable.',
 	'crosswikiblock-noexpiry'       => 'Data o durada d’expiracion incorrècta : $1.',
 	'crosswikiblock-noreason'       => 'Cap de motiu indicat.',
-	'crosswikiblock-notoken'        => 'Edicion presa incorrècta.',
+	'crosswikiblock-notoken'        => 'Geton d’edicion invalida.',
 	'crosswikiblock-alreadyblocked' => 'L’utilizaire « $3 » ja es blocat.',
 	'crosswikiblock-noblock'        => 'Aqueste utilizaire es pas blocat en escritura.',
 	'crosswikiblock-success'        => "L’utilizaire '''$3''' es estat blocat amb succès.

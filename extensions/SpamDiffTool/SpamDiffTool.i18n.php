@@ -141,7 +141,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'spamdifftool'             => 'Kontrolu spaman nigraliston',
 	'spamdifftool_option_none' => 'nenio',
+	'spamdifftool_block'       => 'Forbaru:',
 );
 
 /** French (Français)
@@ -424,13 +426,12 @@ $messages['sr-ec'] = array(
 /** Seeltersk (Seeltersk)
  * @author Pyt
  * @author Siebrand
- * @author SieBot
  */
 $messages['stq'] = array(
 	'spamdifftool'                  => 'Spam-Blacklist beoarbaidje',
 	'spamdifftool_cantedit'         => 'Du hääst neen Begjuchtigenge tou ju Beoarbaidenge fon ju Spam-Blacklist.',
 	'spamdifftool_notext'           => "Dät rakt naan Text, die der an ju Spam-Blacklist bietouföiged wäide kuude. Klik <a href='$1'>hier</a> toun Fääregungen.",
-	'spamdifftool_confirm'          => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new' target='new'>hier</a>, uum n Problem tou mäldjen.)",
+	'spamdifftool_confirm'          => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='$1' target='new'>hier</a>, uum n Problem tou mäldjen.)",
 	'spamdifftool_summary'          => 'Tou ju Spam-Blacklist bietouföigje',
 	'spamdifftool_urls_detected'    => 'Do foulgjende URLs wuuden in ju Beoarbaidenge fuunen;
 wäkke deerfon moatest du ju Spam-Blacklist bietouföigje?

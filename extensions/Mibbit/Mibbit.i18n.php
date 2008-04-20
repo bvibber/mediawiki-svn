@@ -23,7 +23,12 @@ Anonymous users are given an automatically generated one, but it can be changed.
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'mibbit-desc' => 'Добавя [[Special:Mibbit|специална страница]], използвана за чат в реално време с други уики-потребители.',
+	'mibbit'        => 'Mibbit чат',
+	'mibbit-desc'   => 'Добавя [[Special:Mibbit|специална страница]], използвана за чат в реално време с други уики-потребители.',
+	'mibbit-header' => 'Тази специална страница позволява на потребителите да общуват в релано време с останалите потребители на уикито.
+За свързване е необходимо да се натисне бутонът „Свързване“.
+Ако сте влезли в системата, ще бъде използвано потребителското име.
+Анонимните потребители ще получат случайно име, но то може да бъде променено.',
 );
 
 /** Breton (Brezhoneg)
@@ -184,6 +189,14 @@ $messages['pl'] = array(
 Żeby się podłączyć po prostu kliknij przycisk „Connect”.
 Jeżeli jesteś zalogowany, Twoja nazwa użytkownika zostanie wpisana jako nazwa domyślna.
 Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'mibbit'      => 'Chat Mibbit',
+	'mibbit-desc' => 'Adiciona uma [[{{ns:Special}}:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
 );
 
 /** Russian (Русский)

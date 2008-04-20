@@ -134,7 +134,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newsextension-desc'          => 'Visiona los darrièrscambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
+	'newsextension-desc'          => 'Mòstra los darrièrs cambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
 	'newsextension-unknownformat' => '$1 : format de flus desconegut : $2<br />',
 	'newsextension-feednotfound'  => '$1 : pagina de fluses introbabla : $2<br />',
 	'newsextension-feedrequest'   => '$1 : Presa en carga de la requèsta per $2<br />',

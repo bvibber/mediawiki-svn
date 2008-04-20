@@ -198,8 +198,8 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'postcomment_discussionprotected'      => 'La pagina de discussion es estada protegida en escritura.',
-	'postcomment_notloggedin'              => 'Sètz pas identificat(-ada).',
-	'postcomment_youareloggedinas'         => 'Sètz pas identificat(-ada) en tant que $1.',
+	'postcomment_notloggedin'              => 'Sètz pas identificat(ada).',
+	'postcomment_youareloggedinas'         => 'Sètz pas identificat(ada) en tant que $1.',
 	'postcomment_addcommentdiscussionpage' => 'Ajustatz un comentari sus aquesta pagina de discussion',
 	'postcomment_leavemessagefor'          => 'Daissatz un messatge per $1',
 	'postcomment_post'                     => 'Messatge',
@@ -240,6 +240,7 @@ $messages['pt'] = array(
 	'postcomment_leavemessagefor'  => 'Deixe uma mensagem para $1',
 	'postcomment_said'             => 'disse',
 	'postcomment_invalidrequest'   => 'Pedido inválido.',
+	'postcomment_replyto'          => 'Resposta a $1',
 );
 
 /** Russian (Русский)

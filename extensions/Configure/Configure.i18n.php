@@ -99,6 +99,7 @@ $messages['bg'] = array(
 	'configure-section-namespaces'    => 'Именни пространства',
 	'configure-section-skin'          => 'Облик',
 	'configure-section-category'      => 'Категории',
+	'configure-section-interwiki'     => 'Междууики',
 	'configure-section-access'        => 'Достъп',
 	'configure-section-groups'        => 'Групи',
 	'configure-section-block'         => 'Блокирания',
@@ -107,6 +108,7 @@ $messages['bg'] = array(
 	'configure-section-sharedupload'  => 'Споделено качване',
 	'configure-section-images'        => 'Файлове',
 	'configure-section-antivirus'     => 'Антивирус',
+	'configure-section-parser'        => 'Парсер',
 	'configure-section-specialpages'  => 'Специални страници',
 	'configure-section-recentchanges' => 'Последни промени',
 	'configure-section-users'         => 'Потребители',
@@ -115,6 +117,73 @@ $messages['bg'] = array(
 	'configure-section-copyright'     => 'Авторско право',
 	'configure-section-misc'          => 'Разни',
 	'configure-setting-not-available' => 'Тази настройка не е налична в използваната версия на МедияУики',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'configure'                       => 'Nastavení wiki',
+	'configure-desc'                  => 'Umožňuje oprávněným uživatelům měnit nastavení wiki prostřednictvím webového rozhraní',
+	'configure-summary'               => 'Tato speciální stránka Vám umožňuje konfiguraci této wiki. Další informace najdete na stránce [http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavení konfigurace]',
+	'configure-btn-save'              => 'Uložit nastavení',
+	'configure-edit-old'              => 'Upozornění: Upravujete <strong>starou</strong> verzi konfigurace.',
+	'configure-error'                 => 'Nebylo možné uložit nastavení.',
+	'configure-no-directory'          => 'Adresář pro uložení nastavení (<tt>$1</tt>) neexistuje.
+Aby jste mohli používat toto rozšíření, vytvořte ho nebo ho změňte.',
+	'configure-no-old'                => 'Není dostupná žádná stará verze konfigurace',
+	'configure-no-setup'              => 'Musíte explicitně zavolat <tt>efConfigureSetup()</tt> ve svém <tt>LocalSettings.php</tt>, aby jste mohli používat toto rozšíření.',
+	'configure-no-transwiki'          => 'Nemáte oprávnění měnit nastavení na jiných wiki',
+	'configure-old-versions'          => 'Seznam starých verzí konfigurace:',
+	'configure-old-not-available'     => 'Stará verze konfigurace $1, kterou jste požadovali, není dostupná.',
+	'configure-saved'                 => 'Nastavení bylo uloženo',
+	'configure-section-general'       => 'Všeobecná nastavení',
+	'configure-section-paths'         => 'Cesty',
+	'configure-section-db'            => 'Databáze',
+	'configure-section-db-notallowed' => 'Nemáte oprávnění měnit nastavení databáze.',
+	'configure-section-email'         => 'E-mail',
+	'configure-section-enotif'        => 'E-mailová upozornění',
+	'configure-section-localization'  => 'Lokalizace',
+	'configure-section-debug'         => 'Ladění',
+	'configure-section-profiling'     => 'Profilování',
+	'configure-section-site'          => 'Přizpůsobení webu',
+	'configure-section-namespaces'    => 'Jmenné prostory',
+	'configure-section-skin'          => 'Vzhledy',
+	'configure-section-category'      => 'Kategorie',
+	'configure-section-cache'         => 'Vyrovnávací paměť',
+	'configure-section-pcache'        => 'Vyrovnávací paměť syntaktického analyzátoru',
+	'configure-section-messagecache'  => 'Vyrovnávací paměť zpráv',
+	'configure-section-memcached'     => 'Memchached',
+	'configure-section-access'        => 'Přístup',
+	'configure-section-groups'        => 'Skupiny',
+	'configure-section-block'         => 'Blokování',
+	'configure-section-rates'         => 'Rychlostní omezení',
+	'configure-section-proxy'         => 'Proxy',
+	'configure-section-cookie'        => 'Cookies',
+	'configure-setting-not-available' => 'Toto nastavení není v této verzi MediaWiki dostupné',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'configure'                    => 'Agordu la vikion',
+	'configure-btn-save'           => 'Konservu preferojn',
+	'configure-edit-old'           => 'Averto: vi redaktas <strong>malnovan</strong> version de la agordo.',
+	'configure-saved'              => 'La agordo estis konservita',
+	'configure-section-general'    => 'Ĝeneralaj preferoj',
+	'configure-section-paths'      => 'Vojoj',
+	'configure-section-db'         => 'Datumbazo',
+	'configure-section-email'      => 'Retadreso',
+	'configure-section-debug'      => 'Sencimigo',
+	'configure-section-site'       => 'Agordado de retejo',
+	'configure-section-namespaces' => 'Nomspacoj',
+	'configure-section-skin'       => 'Etoso',
+	'configure-section-category'   => 'Kategorioj',
+	'configure-section-cache'      => 'Kaŝejo',
+	'configure-section-pcache'     => 'Kaŝejo de sintaksa analizilo',
+	'configure-section-copyright'  => 'Kopirajto',
+	'configure-section-misc'       => 'Diversaĵoj',
 );
 
 /** French (Français)
@@ -183,6 +252,71 @@ $messages['fr'] = array(
 	'configure-setting-not-available' => 'Ce paramètre n\'est pas disponible sur cette version de MediaWiki',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'configure'                       => 'Configurar o wiki',
+	'configure-desc'                  => 'Permite que os usuarios autorizados configuren o wiki por medio dunha interface baseada no web',
+	'configure-summary'               => 'Esta páxina especial permítelle configurar este wiki, vexa a [http://www.mediawiki.org/wiki/Manual:Configuration_settings configuración] para máis información.',
+	'configure-btn-save'              => 'Gardar as configuracións',
+	'configure-edit-old'              => 'Aviso: está editando unha versión <strong>vella</strong> da configuración.',
+	'configure-error'                 => 'A configuración non pode ser gardada',
+	'configure-no-directory'          => 'O directorio usado para almacenar as configuracións, <tt>$1</tt>, non existe.
+Por favor, créeo ou tróqueo para usar esta extensión.',
+	'configure-no-old'                => 'Non hai dispoñible ningunha versión vella da configuración',
+	'configure-no-setup'              => 'Ten que chamar explicitamente <code>efConfigureSetup()</code> no seu ficheiro LocalSettings.php para usar esta extensión.',
+	'configure-no-transwiki'          => 'Non ten permiso para cambiar as configuracións noutros wikis',
+	'configure-old-versions'          => 'Listaxe de versións vellas da configuración:',
+	'configure-old-not-available'     => 'A versión vella das configuracións que solicitou, $1, non está dispoñible',
+	'configure-saved'                 => 'A configuración foi gardada',
+	'configure-section-general'       => 'Configuracións xerais',
+	'configure-section-paths'         => 'Camiños',
+	'configure-section-db'            => 'Base de datos',
+	'configure-section-db-notallowed' => 'Non ten permiso para cambiar a configuración da base de datos.',
+	'configure-section-email'         => 'Correo electrónico',
+	'configure-section-enotif'        => 'Notificación por correo electrónico',
+	'configure-section-localization'  => 'Localización',
+	'configure-section-debug'         => 'Depurando',
+	'configure-section-profiling'     => 'Facendo o perfil',
+	'configure-section-site'          => 'Personalización do sitio',
+	'configure-section-namespaces'    => 'Espazos de nomes',
+	'configure-section-skin'          => 'Apariencias',
+	'configure-section-category'      => 'Categorías',
+	'configure-section-cache'         => 'Caché',
+	'configure-section-pcache'        => 'Analizador da caché',
+	'configure-section-messagecache'  => 'Caché das mensaxes',
+	'configure-section-access'        => 'Acceso',
+	'configure-section-groups'        => 'Grupos',
+	'configure-section-block'         => 'Bloqueos',
+	'configure-section-rates'         => 'Límites de frecuencia',
+	'configure-section-proxy'         => 'Proxies',
+	'configure-section-cookie'        => 'Cookies',
+	'configure-section-reduction'     => 'Redución',
+	'configure-section-upload'        => 'Cargar',
+	'configure-section-sharedupload'  => 'Cargas compartidas',
+	'configure-section-mime'          => 'Tipos de MIME',
+	'configure-section-images'        => 'Imaxes',
+	'configure-section-antivirus'     => 'Antivirus',
+	'configure-section-parser'        => 'Analizador',
+	'configure-section-specialpages'  => 'Páxinas especiais',
+	'configure-section-recentchanges' => 'Cambios recentes',
+	'configure-section-users'         => 'Usuarios',
+	'configure-section-job'           => 'Traballos',
+	'configure-section-extension'     => 'Extensións',
+	'configure-section-copyright'     => 'Dereitos de autor (Copyright)',
+	'configure-section-misc'          => 'Varios',
+	'configure-setting-not-available' => 'A configuración non está dispoñible nesta versión de MediaWiki',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'configure-section-email'    => 'អ៊ីមែល',
+	'configure-section-category' => 'ចំនាត់ថ្នាក់ក្រុម',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -196,7 +330,9 @@ $messages['lb'] = array(
 	'configure-no-directory'          => "De Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, gëtt et net.
 
 Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
+	'configure-no-old'                => 'Et gëtt keng al Versioun vun der Configuratioun',
 	'configure-no-transwiki'          => "Dir däerft d'Configuratioun an anere Wikien net änneren",
+	'configure-old-versions'          => 'Lëscht vun den ale Versioune vun der Configuratioun:',
 	'configure-saved'                 => "D'Configuratioun gouf gespäichert",
 	'configure-section-db'            => 'Datebank',
 	'configure-section-email'         => 'E-Mail',
@@ -276,6 +412,66 @@ Maak die map alstublieft aan, of verander de instelling voordat u deze extensie 
 	'configure-setting-not-available' => 'Deze instelling is niet beschikbaar in deze versie van MediaWiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'configure'                       => 'Konfigurer wikien',
+	'configure-desc'                  => 'Tillat autoriserte brukere å konfigurere wikien via et nettbasert grensesnitt',
+	'configure-summary'               => 'Denne spesialsiden lar deg konfigurere denne wikien, se [http://mediawiki.org/wiki/Manual:Configuration_settings Konfiguerasjonsinnstillinger] for mer informasjon.',
+	'configure-btn-save'              => 'Lagre innstillinger',
+	'configure-edit-old'              => 'Advarsel: Du redigerer en <strong>gammel</strong> versjon av konfigurasjonen.',
+	'configure-error'                 => 'Konfigurasjonen kunne ikke lagres',
+	'configure-no-directory'          => 'Mappen som brukes til lagring av innstillingene, <tt>$1</tt>, finnes ikke.
+Opprett den eller endre den for å bruke denne utvidelsen.',
+	'configure-no-old'                => 'Ingen gammel versjon av konfigurasjonen er tilgjengelig.',
+	'configure-no-setup'              => 'Du må kalle opp <code>efConfigureSetup()</code> i LocalSettings.php for å bruke denne utvidelsen.',
+	'configure-no-transwiki'          => 'Du har ikke tillatelse til å endre innstillinger på andre wikier',
+	'configure-old-versions'          => 'Liste over gamle versjoner av konfigurasjonen:',
+	'configure-old-not-available'     => 'Den gamle versjonen av innstillingene du etterspurte, $1, er ikke tilgjengelig',
+	'configure-saved'                 => 'Konfigurasjonen har blitt lagret',
+	'configure-section-general'       => 'Generelle innstillinger',
+	'configure-section-paths'         => 'Stier',
+	'configure-section-db'            => 'Database',
+	'configure-section-db-notallowed' => 'Du har ikke tillatelse til å endre databaseinnstillingene.',
+	'configure-section-email'         => 'E-post',
+	'configure-section-enotif'        => 'E-postvarsling',
+	'configure-section-localization'  => 'Oversetting',
+	'configure-section-debug'         => 'Feilsøking',
+	'configure-section-profiling'     => 'Profilering',
+	'configure-section-site'          => 'Egendefinering av siden',
+	'configure-section-namespaces'    => 'Navnerom',
+	'configure-section-skin'          => 'Utseende',
+	'configure-section-category'      => 'Kategorier',
+	'configure-section-cache'         => 'Mellomlager',
+	'configure-section-pcache'        => 'Fortolkermellomlager',
+	'configure-section-messagecache'  => 'Meldingsmellomlager',
+	'configure-section-memcached'     => 'Minnemellomlager',
+	'configure-section-access'        => 'Tilgang',
+	'configure-section-groups'        => 'Grupper',
+	'configure-section-block'         => 'Blokkeringer',
+	'configure-section-rates'         => 'Rategrenser',
+	'configure-section-proxy'         => 'Mellomtjenere',
+	'configure-section-cookie'        => 'Informasjonskapsler',
+	'configure-section-reduction'     => 'Redusering',
+	'configure-section-upload'        => 'Last opp',
+	'configure-section-sharedupload'  => 'Delt opplasting',
+	'configure-section-mime'          => 'MIME-typer',
+	'configure-section-images'        => 'Bilder',
+	'configure-section-antivirus'     => 'Antivirus',
+	'configure-section-parser'        => 'Fortolker',
+	'configure-section-specialpages'  => 'Spesialsider',
+	'configure-section-recentchanges' => 'Siste endringer',
+	'configure-section-users'         => 'Brukere',
+	'configure-section-feed'          => 'Kilde',
+	'configure-section-job'           => 'Jobber',
+	'configure-section-extension'     => 'Utvidelser',
+	'configure-section-copyright'     => 'Opphavsrett',
+	'configure-section-htcp'          => 'HTCP-multicast',
+	'configure-section-misc'          => 'Diverse',
+	'configure-setting-not-available' => 'Denne innstillingen er ikke tilgjengelig i denne versjonen av MediaWiki',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -306,10 +502,46 @@ $messages['oc'] = array(
 	'configure-section-namespaces'    => 'Espacis de noms',
 	'configure-section-skin'          => 'Abilhatge',
 	'configure-section-category'      => 'Categorias',
+	'configure-section-cache'         => 'Amagatal',
+	'configure-section-pcache'        => 'Amagatal del parsaire',
+	'configure-section-messagecache'  => 'Amagatal dels messatges',
+	'configure-section-access'        => 'Accès',
+	'configure-section-groups'        => 'Gropes',
+	'configure-section-block'         => 'Blocatges',
+	'configure-section-rates'         => 'Limits',
+	'configure-section-proxy'         => 'Serveires mandataris',
+	'configure-section-cookie'        => 'Cookies',
+	'configure-section-reduction'     => 'Reduccion',
+	'configure-section-upload'        => 'Telecargaments',
+	'configure-section-sharedupload'  => 'Telecargaments partejats',
+	'configure-section-mime'          => 'Tipes MIME',
+	'configure-section-images'        => 'Imatges',
+	'configure-section-antivirus'     => 'Antivirús',
+	'configure-section-parser'        => 'Parsaire',
+	'configure-section-specialpages'  => 'Paginas especialas',
+	'configure-section-recentchanges' => 'Darrièrs cambiaments',
+	'configure-section-users'         => 'Utilizaires',
+	'configure-section-job'           => 'Trabalhs',
+	'configure-section-copyright'     => 'Copyrights',
+	'configure-section-misc'          => 'Autres',
+	'configure-setting-not-available' => 'Aqueste paramètre es pas disponible sus aquesta version de MediaWiki',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'configure-section-groups'       => 'ډلې',
+	'configure-section-cookie'       => 'کوکيز',
+	'configure-section-images'       => 'انځورونه',
+	'configure-section-specialpages' => 'ځانګړي مخونه',
+	'configure-section-users'        => 'کارونکي',
+	'configure-section-job'          => 'دندې',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'configure'                       => 'Configurar o wiki',
@@ -319,11 +551,15 @@ $messages['pt'] = array(
 	'configure-edit-old'              => 'Atenção: você está a editar uma versão <strong>antiga</strong> da configuração.',
 	'configure-error'                 => 'A configuração não pôde ser gravada',
 	'configure-no-old'                => 'Nenhuma versão antiga da configuração disponível',
+	'configure-no-setup'              => 'Você tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
 	'configure-no-transwiki'          => 'Você não está autorizado a alterar os parâmetros noutros wikis',
 	'configure-old-versions'          => 'Lista de versões antigas da configuração:',
+	'configure-old-not-available'     => 'A versão antiga da parametrização que pediu, $1, não está disponível',
+	'configure-saved'                 => 'A configuração foi gravada',
 	'configure-section-general'       => 'Parâmetros gerais',
 	'configure-section-paths'         => 'Caminhos',
 	'configure-section-db'            => 'Base de dados',
+	'configure-section-db-notallowed' => 'Você não possui permissão para alterar as configurações da base de dados.',
 	'configure-section-email'         => 'E-mail',
 	'configure-section-enotif'        => 'Notificação por e-mail',
 	'configure-section-localization'  => 'Localização',
@@ -337,6 +573,7 @@ $messages['pt'] = array(
 	'configure-section-groups'        => 'Grupos',
 	'configure-section-block'         => 'Bloqueios',
 	'configure-section-proxy'         => 'Proxies',
+	'configure-section-cookie'        => 'Cookies',
 	'configure-section-reduction'     => 'Redução',
 	'configure-section-upload'        => 'Carregamento',
 	'configure-section-sharedupload'  => 'Carregamento partilhado',
@@ -352,6 +589,116 @@ $messages['pt'] = array(
 	'configure-section-copyright'     => 'Direitos de autor',
 	'configure-section-misc'          => 'Diversos',
 	'configure-setting-not-available' => 'Este parâmetro não está disponível nesta versão do MediaWiki',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'configure'                       => 'Konfigurácia wiki',
+	'configure-desc'                  => 'Umožňuje oprávneným používateľom konfigurovať wiki prostredníctvom webového rozhrania',
+	'configure-summary'               => 'Táto špeciálna stránka vám umožňuje konfiguráciu tejto wiki. Ďalšie informácie nájdete na stránke[http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavenie konfigurácie].',
+	'configure-btn-save'              => 'Uložiť nastavenia',
+	'configure-edit-old'              => 'Upozornenie: upravujete <strong>starú</strong> verziu konfigurácie.',
+	'configure-error'                 => 'Konfiguráciu nebolo možné uložiť',
+	'configure-no-directory'          => 'Adresár na uloženie nastavení, <tt>$1</tt>, neexistuje.
+Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
+	'configure-no-old'                => 'Nie je dostupná žiadna stará verzia konfigurácie',
+	'configure-no-setup'              => 'Musíte explicitne zavolať <code>efConfigureSetup()</code> vo svojom súbore LocalSettings.php, aby ste mohli používať toto rozšírenie.',
+	'configure-no-transwiki'          => 'Nemáte oprávnenie meniť nastavenia na iných wiki',
+	'configure-old-versions'          => 'Zoznam starých verzií konfigurácie:',
+	'configure-old-not-available'     => 'Stará verzia konfigurácie $1, ktorú ste požadovali, nie je dostupná.',
+	'configure-saved'                 => 'Konfigurácia bola uložená',
+	'configure-section-general'       => 'Všeobecné nastavenia',
+	'configure-section-paths'         => 'Cesty',
+	'configure-section-db'            => 'Databáza',
+	'configure-section-db-notallowed' => 'Nemáte oprávnenie meniť nastavenia databázy.',
+	'configure-section-email'         => 'Email',
+	'configure-section-enotif'        => 'Upozornenie emailom',
+	'configure-section-localization'  => 'Lokalizácia',
+	'configure-section-debug'         => 'Ladenie',
+	'configure-section-profiling'     => 'Profilovanie',
+	'configure-section-site'          => 'Prispôsobenie lokality',
+	'configure-section-namespaces'    => 'Menné priestory',
+	'configure-section-skin'          => 'Témy vzhľadu',
+	'configure-section-category'      => 'Kategórie',
+	'configure-section-cache'         => 'Vyrovnávacia pamäť',
+	'configure-section-pcache'        => 'Vyrovnávacia pamäť syntaktického analyzátora',
+	'configure-section-messagecache'  => 'Vyrovnávacia pamäť správ',
+	'configure-section-memcached'     => 'Memcached',
+	'configure-section-access'        => 'Prístup',
+	'configure-section-groups'        => 'Skupiny',
+	'configure-section-block'         => 'Blokovania',
+	'configure-section-rates'         => 'Rýchlostné obmedzenia',
+	'configure-section-proxy'         => 'Proxy',
+	'configure-section-cookie'        => 'Cookies',
+	'configure-section-reduction'     => 'Redukcia',
+	'configure-section-upload'        => 'Nahrávanie',
+	'configure-section-sharedupload'  => 'Zdieľané nahrávanie',
+	'configure-section-mime'          => 'Typy MIME',
+	'configure-section-images'        => 'Obrázky',
+	'configure-section-antivirus'     => 'Antivírus',
+	'configure-section-parser'        => 'Syntaktický analyzátor',
+	'configure-section-specialpages'  => 'Špeciálne stránky',
+	'configure-section-recentchanges' => 'Posledné zmeny',
+	'configure-section-users'         => 'Používatelia',
+	'configure-section-feed'          => 'Kanál správ',
+	'configure-section-job'           => 'Úlohy',
+	'configure-section-extension'     => 'Rozšírenia',
+	'configure-section-copyright'     => 'Autorské práva',
+	'configure-section-htcp'          => 'HTCP multicast',
+	'configure-section-misc'          => 'Rôzne',
+	'configure-setting-not-available' => 'Toto nastavenie nie je v tejto verzii MediaWiki dostupné',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'configure'                       => 'Konfigurera wikin',
+	'configure-desc'                  => 'Låter användare med viss behörighet ändra wikins konfigurering genom ett nätbaserat gränssnitt',
+	'configure-summary'               => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',
+	'configure-btn-save'              => 'Spara inställningar',
+	'configure-edit-old'              => 'Varning: du redigerar en <strong>gammal</strong> version av konfigurationen',
+	'configure-error'                 => 'Konfigureringen kunde inte sparas',
+	'configure-no-directory'          => 'Katalogen där inställningar lagras, <tt>$1</tt>, finns inte.
+För att använda det här programtillägget måste du skapa den eller byta den.',
+	'configure-no-old'                => 'Ingen gammal version av konfigurationen finns tillgänglig.',
+	'configure-no-setup'              => 'Du måste anropa funktionen <code>efConfigureSetup()</code> i LocalSettings.php för att kunna använda det här programtillägget.',
+	'configure-no-transwiki'          => 'Du har inte behörighet att ändra inställningar på andra wikier',
+	'configure-old-versions'          => 'Lista över gamla versioner av konfigureringen:',
+	'configure-old-not-available'     => 'Den version av inställningarna som du angav, $1, är inte tillgänglig.',
+	'configure-saved'                 => 'Konfigureringen har sparats',
+	'configure-section-general'       => 'Allmänna inställningar',
+	'configure-section-paths'         => 'Sökvägar',
+	'configure-section-db'            => 'Databas',
+	'configure-section-db-notallowed' => 'Du har inte behörighet att ändra databasinställningarna.',
+	'configure-section-email'         => 'E-post',
+	'configure-section-debug'         => 'Avlusning',
+	'configure-section-profiling'     => 'Profilering',
+	'configure-section-namespaces'    => 'Namnrymder',
+	'configure-section-skin'          => 'Utseenden',
+	'configure-section-category'      => 'Kategorier',
+	'configure-section-cache'         => 'Cache',
+	'configure-section-pcache'        => 'Parsercache',
+	'configure-section-messagecache'  => 'Meddelandecache',
+	'configure-section-memcached'     => 'Memcached',
+	'configure-section-groups'        => 'Grupper',
+	'configure-section-block'         => 'Blockeringar',
+	'configure-section-cookie'        => 'Cookies',
+	'configure-section-upload'        => 'Uppladdning',
+	'configure-section-sharedupload'  => 'Delad uppladdning',
+	'configure-section-mime'          => 'MIME-typer',
+	'configure-section-images'        => 'Bilder',
+	'configure-section-antivirus'     => 'Antivirus',
+	'configure-section-specialpages'  => 'Specialsidor',
+	'configure-section-recentchanges' => 'Senaste ändringar',
+	'configure-section-users'         => 'Användare',
+	'configure-section-extension'     => 'Tillägg',
+	'configure-section-copyright'     => 'Upphovsrätt',
+	'configure-section-misc'          => 'Diverse',
+	'configure-setting-not-available' => 'Inställningen är inte tillgänglig i den här versionen av MediaWiki',
 );
 
 /** Vietnamese (Tiếng Việt)

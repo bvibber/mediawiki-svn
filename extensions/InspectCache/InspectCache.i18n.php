@@ -122,12 +122,13 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'inspectcache'         => 'Inspeccionar a Caché',
+	'inspectcache'         => 'Inspeccionar a caché',
 	'inspectcache-ok'      => 'De acordo',
 	'inspectcache-general' => 'Caché xeral',
-	'inspectcache-message' => 'Caché de mensaxes',
+	'inspectcache-message' => 'Caché das mensaxes',
 	'inspectcache-get'     => 'Obter',
 	'inspectcache-delete'  => 'Eliminar',
 	'inspectcache-deleted' => 'Caché eliminada',

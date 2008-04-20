@@ -95,15 +95,16 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'editmessages'          => 'Redeaktu mesaĝojn',
-	'editmsg-target'        => 'Cela mesaĝo:',
-	'editmsg-search'        => 'Serĉu',
-	'editmsg-get-patch'     => 'Generu flikaĵon',
-	'editmsg-new-search'    => 'Nova serĉo',
-	'editmsg-apply-patch'   => 'Apliku flikaĵon',
-	'editmsg-no-patch'      => 'Ne eblas starti "flikan" komandon',
-	'editmsg-patch-failed'  => 'Flikaĵo malsukcesis kun statuso $1',
-	'editmsg-patch-success' => 'Sukcese flikita.',
+	'editmessages'           => 'Redeaktu mesaĝojn',
+	'editmsg-target'         => 'Cela mesaĝo:',
+	'editmsg-search'         => 'Serĉu',
+	'editmsg-get-patch'      => 'Generu flikaĵon',
+	'editmsg-new-search'     => 'Nova serĉo',
+	'editmsg-warning-parse3' => '* Fino de valuta ĉeno ne trovita: $1',
+	'editmsg-apply-patch'    => 'Apliku flikaĵon',
+	'editmsg-no-patch'       => 'Ne eblas starti "flikan" komandon',
+	'editmsg-patch-failed'   => 'Flikaĵo malsukcesis kun statuso $1',
+	'editmsg-patch-success'  => 'Sukcese flikita.',
 );
 
 /** French (Français)
@@ -321,6 +322,14 @@ $messages['pl'] = array(
 	'editmsg-patch-success' => 'Poprawka została wprowadzona.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'editmsg-search'     => 'پلټل',
+	'editmsg-new-search' => 'نوې پلټنه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -332,6 +341,7 @@ $messages['pt'] = array(
 	'editmsg-show-list'      => 'Mostrando valores para o nome de mensagem "$1"',
 	'editmsg-new-search'     => 'Nova pesquisa',
 	'editmsg-warning-parse2' => '* Caracter de aspa esperado após seta: $1',
+	'editmsg-warning-parse3' => '* Fim de cadeia de caracteres de valor não encontrado: $1',
 	'editmsg-warning-file'   => 'Erros de leitura de ficheiro foram encontrados para as seguintes línguas: $1',
 );
 

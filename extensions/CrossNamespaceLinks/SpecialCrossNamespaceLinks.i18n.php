@@ -318,9 +318,10 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'crossnamespacelinks'      => 'Pranala lintas bilik nama',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Macak daftar pranala lintas bilik nama]] sing sajatiné ora pareng ana ing {{SITENAME}}',
-	'crossnamespacelinkstext'  => '$1: $2 nyambung menyang $3',
+	'crossnamespacelinks'         => 'Pranala lintas bilik nama',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Macak daftar pranala lintas bilik nama]] sing sajatiné ora pareng ana ing {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Kaca iki mènèhi daftar pranala saka sawijining kaca ing bilik nama utama menyang kaca liya ing bilik nama liya (kejaba bilik-bilik nama {{ns:special}}, {{ns:talk}}, {{ns:project}} lan {{ns:template}}), sing ora dianjuraké kanggo dienggo.',
+	'crossnamespacelinkstext'     => '$1: $2 nyambung menyang $3',
 );
 
 $messages['kaa'] = array(
@@ -348,6 +349,13 @@ $messages['kk-latn'] = array(
 $messages['kn'] = array(
 	'crossnamespacelinks'         => 'Cross-namespace ಸಂಪರ್ಕಗಳು',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ಸಂಪರ್ಕ|ಸಂಪರ್ಕಗಳು}} $3 ಗೆ',
+);
+
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'crossnamespacelinks' => '이름공간 사이의 연결 목록',
 );
 
 /** Kölsch

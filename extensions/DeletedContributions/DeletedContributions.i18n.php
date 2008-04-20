@@ -172,9 +172,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Meithal
  */
 $messages['fr'] = array(
-	'deletedcontributions'      => 'Contributions supprimées d’un utilisateur',
+	'deletedcontributions'      => 'Contributions supprimées',
 	'deletedcontributions-desc' => "Donne la possibilité aux administrateurs de [[Special:DeletedContributions|visualiser les contributions supprimées d'un utilisateur]]",
 );
 
@@ -306,6 +307,13 @@ $messages['kk-arab'] = array(
 $messages['km'] = array(
 	'deletedcontributions'      => 'ការរួមចំណែក ត្រូវបានលុបចេញ',
 	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់ អ្នកប្រើប្រាស់]]',
+);
+
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'deletedcontributions' => '지워진 사용자 기여 목록',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

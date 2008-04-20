@@ -403,6 +403,13 @@ $messages['id'] = array(
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'linksearch-ns' => 'Nomaro:',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  * @author S.Örvarr.S
@@ -675,7 +682,7 @@ $messages['oc'] = array(
 	'linksearch'       => 'Recercar de ligams Internet',
 	'linksearch-desc'  => 'Recèrca de las paginas dins lasqualas un ligam extèrn apareis.',
 	'linksearch-pat'   => 'Recercar l’expression :',
-	'linksearch-ns'    => 'Espaci de noms :',
+	'linksearch-ns'    => 'Espacis de noms :',
 	'linksearch-ok'    => 'Recercar',
 	'linksearch-text'  => 'De caractèrs « joker » pòdon èsser utilizats, per exemple <code>*.wikipedia.org</code>.<br />Protocòls reconeguts : <tt>$1</tt>.',
 	'linksearch-line'  => '$1 amb un ligam a partir de $2',
@@ -724,7 +731,7 @@ $messages['ps'] = array(
 	'linksearch'      => 'د جال تړنې پلټل',
 	'linksearch-pat'  => 'د پلټنې مخبېلګه:',
 	'linksearch-ns'   => 'نوم-تشيال:',
-	'linksearch-ok'   => 'لټون',
+	'linksearch-ok'   => 'پلټل',
 	'linksearch-line' => '$1 د $2 سره تړل شوی',
 );
 

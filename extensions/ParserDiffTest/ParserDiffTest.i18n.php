@@ -526,6 +526,14 @@ $messages['km'] = array(
 	'pdtest_diff'       => 'ភាពខុសគ្នា',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'pdtest-desc'       => '두개의 파서의 출력을 비교하는 [[Special:ParserDiffTest|특수문서]]',
+	'pdtest_no_changes' => '바뀐 점이 없습니다.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -717,6 +725,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'pdtest_no_changes' => 'هېڅ بدلون و نه ليدلای شو.',
+	'pdtest_title'      => 'د متن سرليک:',
 	'pdtest_text'       => 'ځايونکی متن:',
 	'pdtest_ok'         => 'ښه/هو',
 	'pdtest_diff'       => 'توپيرونه',
@@ -914,9 +923,14 @@ $messages['uk'] = array(
 	'pdtest_no_target'    => 'Не зазначена ціль.',
 	'pdtest_page_missing' => 'Зазначена сторінка не знайдена в базі даних.',
 	'pdtest_no_changes'   => 'Змін не виявлено.',
+	'pdtest_time_report'  => '<b>$1</b> зайняло $2 секунд, <b>$3</b> зайняло $4 секунд.',
 	'pdtest_title'        => 'Назва сторінки:',
 	'pdtest_text'         => 'Вхідний текст:',
+	'pdtest_ok'           => 'ОК',
+	'pdtest_get_text'     => 'Отримати текст зі сторінки',
 	'pdtest_diff'         => 'Відмінності',
+	'pdtest_side_by_side' => 'Порівняння виводу',
+	'pdt_comparing_page'  => 'Порівняння виводу синтаксичного аналізатора для [[$1]]',
 );
 
 /** Vèneto (Vèneto)

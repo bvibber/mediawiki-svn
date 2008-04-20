@@ -223,7 +223,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'minipreview-desc'                => "Aficha un mini aperebut, aprèp vèrs un imatge, pichons apercebuts d'autres mèdias dins las meteissas categorias o alara afichat dins las meteissas paginas.",
+	'minipreview-desc'                => "Aficha un mini apercebut, al costat d'un imatge, d’autres mèdias qu'apartenon a las meteissas categorias o afichats dins las meteissas paginas",
 	'minipreview-files_in_category'   => 'I a {{PLURAL:$1|un fiquièr|$1 fiquièrs}} al total dins aquesta categoria.',
 	'minipreview-files_in_gallery'    => "I a {{PLURAL:$1|un fiquièr|$1 fiquièrs}} al total dins aquesta galariá d'imatges.",
 	'minipreview-no_more_files_here'  => 'Pas mai cap de fichièr dins aquesta direccion',
@@ -254,6 +254,15 @@ $messages['pms'] = array(
 	'minipreview-no_more_files_here' => 'Pa pì gnun archivi an sta diression-sì.',
 	'minipreview-ignore_categories' => 'Ambelessì a-i é na lista ëd nòm ëd categorìa ò d\'inissiaj dij nòm. Ste categorìe-sì a saran pa smonùe ant la mini-presentassion. Pr\'esempi, "* PD-" a smon nen gnun-a categorìa dont nòm as anandia për "PD-", coma "PD-old". * GFDL- * GFDL * CC- * PD- * Self',
 	'minipreview-no_category_gallery' => 'Nì \'d categorìe, nì \'d galerìe!',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'minipreview-files_in_category'   => 'په همدې وېشنيزه کې ټولټال $1 دوتنې دي.',
+	'minipreview-files_in_gallery'    => 'په همدې نندارتون کې ټولټال $1 دوتنې دي.',
+	'minipreview-no_category_gallery' => 'هېڅ کومې وېشنيزې يا نندارتونونه نه!',
 );
 
 /** Portuguese (Português)

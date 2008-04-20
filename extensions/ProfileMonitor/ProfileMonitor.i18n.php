@@ -281,9 +281,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Lijealso
  */
 $messages['pt'] = array(
 	'profiling-ok'           => 'OK',
+	'profiling-data-count'   => 'Contagem',
 	'profiling-data-time'    => 'Tempo (todos)',
 	'profiling-data-average' => 'Tempo (média)',
 );

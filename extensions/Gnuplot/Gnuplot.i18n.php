@@ -88,6 +88,13 @@ $messages['pl'] = array(
 	'gnuplot-desc' => 'Dodaj tag <code><nowiki><gnuplot></nowiki></code> by użyć Gnuplota',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

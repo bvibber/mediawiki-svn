@@ -249,6 +249,7 @@ $messages['eo'] = array(
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
 	'webstore_access'                  => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
+	'webstore_temp_open'               => 'Eraro malfermante laboran dosieron "$1".',
 	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
 	'webstore_404'                     => 'Dosiero ne trovita.',
 	'webstore_metadata_not_found'      => 'Dosiero ne trovita: $1',
@@ -734,6 +735,7 @@ $messages['pt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'webstore_path_invalid'       => 'د دوتنې نوم مو سم نه وو.',
 	'webstore_no_file'            => 'هېڅ کومه دوتنه پورته نه شوه.',
 	'webstore_invalid_zone'       => 'ناسمه سيمه "$1".',
 	'webstore_404'                => 'دوتنه و نه موندل شوه.',

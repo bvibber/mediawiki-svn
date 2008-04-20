@@ -241,6 +241,24 @@ $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'player'               => 'Spilari',
+	'player-title'         => 'Spilari',
+	'player-playertitle'   => 'Spilari: $1',
+	'player-file'          => 'Skráarnafn',
+	'player-play'          => 'Spila',
+	'player-not-allowed'   => 'óheimilað skráarsnið',
+	'player-not-found'     => 'skrá fannst ekki',
+	'player-invalid-title' => 'ógildur titill',
+	'player-clicktoplay'   => 'Spila $1',
+	'player-goto-player'   => 'spilari',
+	'player-goto-page'     => 'Síða',
+	'player-goto-file'     => 'skrá',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

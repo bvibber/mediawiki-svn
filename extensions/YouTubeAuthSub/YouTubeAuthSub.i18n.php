@@ -604,10 +604,14 @@ $messages['ps'] = array(
 	'youtubeauthsub_username'        => 'د YouTube کارن-نوم',
 	'youtubeauthsub_category'        => 'وېشنيزه',
 	'youtubeauthsub_clickhere'       => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
+	'youtubeauthsub_code'            => '{{#ev:youtube|$1}}.
+
+همدا ويډيو کولای شی چې [http://www.youtube.com/watch?v=$1 دلته] وګورۍ',
 	'youtubeauthsub_uploading'       => 'ستاسو ويډيو د پورته کېدلو په حال کې ده.
 
 لطفاً لږ صبر وکړی.',
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
+	'youtubeauthsub_jserror_nodesc'  => 'مهرباني وکړۍ د ويډيو څرګندونه مو وکړۍ.',
 );
 
 /** Portuguese (Português)

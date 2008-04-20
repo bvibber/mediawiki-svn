@@ -155,6 +155,13 @@ $messages['pms'] = array(
 		'templatelink_newtitle' => '$1 (an transclusion)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'templatelink' => 'د کينډۍ تړنه',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

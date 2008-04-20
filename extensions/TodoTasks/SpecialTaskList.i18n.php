@@ -96,9 +96,10 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'tasklist'        => 'Tasklisto',
-	'tasklistemail'   => 'Kara %j',
-	'tasklistmytasks' => 'Miaj taskoj',
+	'tasklist'               => 'Tasklisto',
+	'tasklistunknownproject' => 'Nekonata projekto',
+	'tasklistemail'          => 'Kara %j',
+	'tasklistmytasks'        => 'Miaj taskoj',
 );
 
 /** French (Français)
@@ -316,7 +317,7 @@ $messages['oc'] = array(
 	'tasklistunknownproject' => 'Projècte desconegut',
 	'tasklistunspecuser'     => 'Contributor desconegut',
 	'tasklistincorrectuser'  => 'Pseudonim incorrècte',
-	'tasklistemail'          => 'Car(-a) %s',
+	'tasklistemail'          => 'Car(a) %s',
 	'tasklistemailsubject'   => '[%s] Cambiament a la lista de prètzfaches',
 	'tasklistmytasks'        => 'Mos prètzfaches',
 	'tasklistbyprojectbad'   => "Lo projècte '''%s''' es pas valid. Consultatz la [[MediaWiki:TodoTasksValidProjects|lista dels projèctes]].",

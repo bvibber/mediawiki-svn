@@ -47,6 +47,15 @@ $messages['de'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'onlinestatus-toggles-desc'   => 'Via statuso:',
+	'onlinestatus-toggle-offline' => 'Nekonektita',
+	'onlinestatus-toggle-online'  => 'Konektita',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -169,6 +178,13 @@ $messages['pl'] = array(
 	'onlinestatus-toggles-show'     => 'Pokaż moją obecność na mojej stronie użytkownika',
 	'onlinestatus-toggle-offline'   => 'nieobecny',
 	'onlinestatus-toggle-online'    => 'obecny',
+);
+
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'onlinestatus-toggles-desc' => 'O seu estado:',
 );
 
 /** Russian (Русский)

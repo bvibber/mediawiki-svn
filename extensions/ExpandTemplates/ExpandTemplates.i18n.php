@@ -645,8 +645,14 @@ $messages['km'] = array(
 	'expand_templates_preview'         => 'មើលជាមុន',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ * @author Klutzy
+ */
 $messages['ko'] = array(
 	'expandtemplates'                  => '틀 확장',
+	'expand_templates_remove_comments' => '주석 지우기',
+	'expand_templates_preview'         => '미리보기',
 );
 
 $messages['ksh'] = array(

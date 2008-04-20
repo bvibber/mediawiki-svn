@@ -80,9 +80,9 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'purgecache'         => 'Purgar a caché',
-	'purgecache-warning' => 'Isto purgará a memoria <i>caché</i> das táboas.',
-	'purgecache-purged'  => 'A memoria <i>caché</i> foi purgada.',
+	'purgecache'         => 'Purgar a memoria caché',
+	'purgecache-warning' => 'Isto purgará a memoria caché das táboas.',
+	'purgecache-purged'  => 'A memoria caché foi purgada.',
 	'purgecache-button'  => 'Depurar',
 );
 

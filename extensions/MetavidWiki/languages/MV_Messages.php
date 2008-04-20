@@ -434,6 +434,7 @@ $messages['bg'] = array(
 	'mv_category'          => 'категория',
 	'mv_remove_filter'     => 'премахване на филтър',
 	'mv_match_text'        => '~  $1 съвпадения',
+	'mv_mang_layers'       => 'Управление на слоевете',
 );
 
 /** Bengali (বাংলা)
@@ -1863,7 +1864,7 @@ $messages['oc'] = array(
 	'mv_search_not'                  => 'non',
 	'mv_search_stream_name'          => 'Nom del flus',
 	'mv_search_date_range'           => 'Forqueta de data',
-	'mv_stream_name'                 => 'nom du flux',
+	'mv_stream_name'                 => 'nom del flus',
 	'mv_date_range'                  => 'forqueta de data',
 	'mv_match'                       => 'assortir',
 	'mv_spoken_by'                   => 'parlat per',
@@ -1926,9 +1927,10 @@ $messages['ps'] = array(
 	'mv_save_changes'    => 'بدلونونه خوندي کول',
 	'mv_upload_file'     => 'دوتنه پورته کول',
 	'mv_external_file'   => 'باندنۍ دوتنه',
-	'mv_tool_search'     => 'لټون',
+	'mv_tool_search'     => 'پلټل',
 	'mv_play'            => 'غږول',
 	'mv_history'         => 'پېښليک',
+	'mv_remove'          => 'غورځول',
 	'mv_start_desc'      => 'د پيل وخت',
 	'mv_end_desc'        => 'د پای وخت',
 	'mediasearch'        => 'د رسنيو لټون',
@@ -1984,7 +1986,12 @@ $messages['pt'] = array(
 	'mv_results_found_for'          => 'Resultados de Busca <b>$1</b> a <b>$2</b> de <b>$3</b> para:',
 	'mv_tool_mang_layers'           => 'Gerir camadas',
 	'mv_update_layers'              => 'actualizar vista de camadas',
+	'ht_en'                         => 'Transcrição',
+	'ht_en_desc'                    => 'Transcrições inglesas. Este tipo de overlay é para texto falado.',
 	'anno_en'                       => 'Anotações e Categorias',
+	'thomas_en'                     => 'Transcrição oficial',
+	'thomas_en_desc'                => 'Transcrição Thomas oficial do serviço de registo THOMAS do governo.
+Hora fonte sincronizada por c-spanarchives.org da C-SPAN',
 	'mvd_default_mismatch'          => 'Erro no ficheiro de configuração',
 	'mvd_default_mismatch_text'     => 'Há um erro no seu ficheiro de configuração.
 $mvMVDTypeDefaultDisp deverá ser um subconjunto de $mvMVDTypeAllAvailable',

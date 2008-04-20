@@ -376,9 +376,10 @@ Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleup
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'multipleupload'              => 'دوتنې پورته کول',
-	'multipleupload-saveallfiles' => 'ټولې دوتنې خوندي کول',
-	'multiupload-toolbox'         => 'ګڼ شمېر دوتنې پورته کول',
+	'multipleupload'                   => 'دوتنې پورته کول',
+	'multipleupload-ignoreallwarnings' => "'''ټول ګواښونه''' بابېزه وګڼه او په هر ډول چې وي دوتنې خوندي کړه.",
+	'multipleupload-saveallfiles'      => 'ټولې دوتنې خوندي کول',
+	'multiupload-toolbox'              => 'ګڼ شمېر دوتنې پورته کول',
 );
 
 /** Portuguese (Português)

@@ -161,6 +161,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'vote'            => 'Voĉdonu',
 	'vote-submit'     => 'Balotu',
 	'vote-login-link' => 'ensalutu',
 );

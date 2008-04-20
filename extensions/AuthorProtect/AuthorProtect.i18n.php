@@ -109,6 +109,13 @@ $messages['fa'] = array(
 	'authorprotect-failure'   => 'محافظت موفقیت‌آمیز نبود!',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'authorprotect-desc' => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -174,6 +181,20 @@ $messages['is'] = array(
 	'restriction-level-author' => 'Höfundavarið',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'authorprotect'           => 'ការពារទំព័រពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ។',
+	'authorprotect-desc'      => 'អនុញ្ញាតអោយអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
+	'authorprotect-notauthor' => 'អ្នកមិនមែនជាអ្នកនិពន្ឋទំព័រនេះទេ',
+	'authorprotect-expiry'    => 'កាលបរិច្ឆេទផុតកំនត់',
+	'authorprotect-reason'    => 'មូលហេតុ',
+	'authorprotect-success'   => 'ការការពារដោយជោគជ័យ!',
+	'authorprotect-failure'   => 'ការការពារបានបរាជ័យ',
+	'protect-level-author'    => 'ការពារពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -184,8 +205,12 @@ $messages['lb'] = array(
 	'authorprotect-confirm'    => 'Protegéieren',
 	'authorprotect-edit'       => 'Ännerungen nëmmen fir Auteure méiglech maachen',
 	'authorprotect-move'       => 'Récklen nëmme fir Auteure méiglech maachen',
+	'authorprotect-expiry'     => 'Dauer vun der Spär',
 	'authorprotect-reason'     => 'Grond',
 	'authorprotect-intro'      => "Benotzt dëse Formulaire fir d'änner vun dëser Säit op d'Auteuren ze limitéieren",
+	'authorprotect-success'    => "D'Säit gouf protegéiert!",
+	'authorprotect-failure'    => "D'Säit konnt net protegéiert ginn",
+	'protect-level-author'     => "Protegéiert viru ''Net-Auteuren''",
 	'restriction-level-author' => 'Auteur-protegéiert',
 );
 
@@ -348,6 +373,25 @@ $messages['sk'] = array(
 	'authorprotect-failure'    => 'Ochrana neprebehla úspešne',
 	'protect-level-author'     => 'Ochrániť pred neautorskými úpravami',
 	'restriction-level-author' => 'Len pre autorov',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'authorprotect'            => 'Siedenbeoarbaidenge bloot foar Autoren touläite',
+	'authorprotect-desc'       => 'Moaket dät muugelk foar n Autor fon ne Siede, ju juun uur Benutsere tou beschutsjen.',
+	'authorprotect-notauthor'  => 'Du bäst nit die Autor fon disse Siede',
+	'authorprotect-confirm'    => 'Beschutsje',
+	'authorprotect-edit'       => 'Bloot Beoarbaidenge truch Autore',
+	'authorprotect-move'       => 'Ferschuuwenge bloot foar Autore',
+	'authorprotect-expiry'     => 'Speerduur',
+	'authorprotect-reason'     => 'Gruund',
+	'authorprotect-intro'      => 'Mäd dit Formular koast du ju Beoarbaidenge fon disse Siede speere foar nit-Autore',
+	'authorprotect-success'    => 'Siede wuud schutsed!',
+	'authorprotect-failure'    => 'Siede kuud nit schutsed wäide!',
+	'protect-level-author'     => 'Siedenbeoarbaidenge bloot foar Autore',
+	'restriction-level-author' => 'Autor-schutsed',
 );
 
 /** Swedish (Svenska)

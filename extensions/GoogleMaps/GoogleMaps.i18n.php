@@ -1191,6 +1191,7 @@ $wgGoogleMapsMessages['is'] = array(
  * @author Chhorran
  */
 $wgGoogleMapsMessages['km'] = array(
+	'gm-balloon-title'    => 'ចំនងជើង៖',
 	'gm-remove'           => 'ដកចេញ',
 	'gm-load-map'         => 'ផ្ទុក​ផែនទី',
 	'gm-clip-result'      => 'បន្ថែមទៅលើផែនទី',
@@ -1200,6 +1201,7 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-are-you-sure'     => 'អ្នកប្រាកដហើយឬ ?',
 	'gm-width'            => 'ទទឹង',
 	'gm-height'           => 'កំពស់',
+	'gm-scale-control'    => 'មាត្រដ្ឋាន',
 	'gm-zoom-control'     => 'ការរុករក',
 	'gm-large'            => 'ធំ',
 	'gm-medium'           => 'មធ្យម',
@@ -1757,6 +1759,8 @@ Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet
  */
 $wgGoogleMapsMessages['ps'] = array(
 	'gm-balloon-title'    => 'سرليک:',
+	'gm-remove'           => 'غورځول',
+	'gm-clip-result'      => 'يوه نخشه ورګډول',
 	'gm-no-results'       => 'اوبښۍ، هېڅ کومه پايله نشته',
 	'gm-searching'        => 'د پلټنې په حال کې...',
 	'gm-map'              => 'نخشه',
@@ -1769,7 +1773,7 @@ $wgGoogleMapsMessages['ps'] = array(
 	'gm-no-zoom-control'  => 'هېڅ',
 	'gm-yes'              => 'هو',
 	'gm-no'               => 'نه',
-	'gm-search'           => 'لټون',
+	'gm-search'           => 'پلټل',
 	'gm-meters'           => 'متره',
 	'gm-miles'            => 'ميل',
 	'gm-save-path'        => 'خوندي کول',

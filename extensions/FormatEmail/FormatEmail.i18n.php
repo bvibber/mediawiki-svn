@@ -114,6 +114,16 @@ Ezt az üzenetet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül
 $2',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+អ៊ីមែលនេះត្រូវបានផ្ញើមកអ្នកដោយ $1 តាមរយៈប្រព័ន្ឋផ្ញើអ៊ីមែលរបស់ {{SITENAME}} ។
+
+$2',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -231,7 +241,9 @@ $2',
  */
 $messages['stq'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
-Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.',
+Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.
+
+$2',
 );
 
 /** Swedish (Svenska)

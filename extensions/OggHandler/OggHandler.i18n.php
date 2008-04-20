@@ -750,6 +750,13 @@ $messages['id'] = array(
 	'ogg-desc-link'        => 'Mengenai berkas ini',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'ogg-dismiss' => 'Klozar',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  * @author Spacebirdy
@@ -1012,6 +1019,15 @@ $messages['km'] = array(
 	'ogg-dismiss'             => 'បិទ',
 	'ogg-download'            => 'ទាញយកឯកសារ',
 	'ogg-desc-link'           => 'អំពីឯកសារនេះ',
+);
+
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'ogg-play'  => '재생',
+	'ogg-pause' => '일시정지',
+	'ogg-stop'  => '정지',
 );
 
 $messages['la'] = array(

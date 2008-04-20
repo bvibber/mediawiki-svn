@@ -121,7 +121,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'watchers'               => 'Rigardantoj',
 	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
+	'watchers_noone_watches' => 'Neniu rigardas ĉi tiun paĝon',
 );
 
 /** French (Français)
@@ -241,7 +243,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'watchers'               => 'Agachadors',
+	'watchers'               => 'Agachaires',
 	'watchers_link_title'    => 'Qui seguís aquesta pagina ?',
 	'watchers_error_article' => '<b>Error :</b> La pagina existís pas.',
 	'watchers_header'        => 'Personas que seguisson « $1 »',

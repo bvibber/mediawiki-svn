@@ -263,6 +263,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'pageby-desc'         => 'Mostra contribuidores dentro de uma página wiki usando a marca <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Página criada por $1, $2',
 	'pageby-contributors' => 'Contribuidores:',
 	'pageby-anon'         => '<i>anónimo</i>',

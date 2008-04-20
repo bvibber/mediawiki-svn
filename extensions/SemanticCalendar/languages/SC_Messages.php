@@ -75,7 +75,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'sc_today' => 'Hodiaŭ',
+	'sc_previousmonth' => 'Antaŭa monato',
+	'sc_nextmonth'     => 'Posta monato',
+	'sc_today'         => 'Hodiaŭ',
 );
 
 /** Persian (فارسی)

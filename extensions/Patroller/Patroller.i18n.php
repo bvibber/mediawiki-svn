@@ -611,6 +611,7 @@ $messages['pt'] = array(
 * Teste de principiante
 * Ver página de discussão',
 	'patrol-another'         => 'Mostrar outra edição, se disponível.',
+	'patrol-resume'          => 'Carregue aqui para continuar.',
 	'group-patroller'        => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',
 	'grouppage-patroller'    => '{{ns:project}}:Patrulhador',

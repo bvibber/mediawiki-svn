@@ -27,8 +27,13 @@ $messages['bcl'] = array(
 	'minnamelength-error' => 'An saimong username halîpoton. An minimum na labâ $1.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'minnamelength-error' => 'Потребителското ви име е твърде кратко. Минималната му дължина е $1.',
+	'minnamelength-desc'  => 'Налагане на ограничение за минимална дължина на потребителското име',
 );
 
 /** Catalan (Català)
