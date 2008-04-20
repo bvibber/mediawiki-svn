@@ -413,6 +413,8 @@ $messages['he'] = array(
 	'sitematrix-others'    => 'מיזמים אחרים של ויקימדיה',
 	'sitematrix-total'     => "'''מספר האתרים: $1'''",
 	'sitematrix-sitetotal' => 'סך הכל',
+	'sitematrix-private'   => 'פרטיים',
+	'sitematrix-fishbowl'  => 'העריכה מוגבלת',
 );
 
 /** Hindi (हिन्दी)
