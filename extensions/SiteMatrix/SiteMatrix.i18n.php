@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'sitematrix-total'     => "'''Total count: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'private',
-	'sitematrix-fishbowl'  => 'fishbowl',
+	'sitematrix-fishbowl'  => 'editing restricted',
 );
 
 /** Afrikaans (Afrikaans)
