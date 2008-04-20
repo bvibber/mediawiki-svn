@@ -16,14 +16,33 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'sitematrix-desc',
 );
 
-$wgExtensionMessagesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.i18n.php';
+$dirname = dirname( __FILE__ );
+
+$wgExtensionMessagesFiles['SiteMatrix'] = $dirname . '/SiteMatrix.i18n.php';
 
 $wgSiteMatrixFile = '/home/wikipedia/common/langlist';
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/SiteMatrix_body.php', 'SiteMatrix', 'SiteMatrixPage' );
+$wgAutoloadClasses['SiteMatrix'] = $dirname . '/SiteMatrix_body.php';
+$wgAutoloadClasses['ApiQuerySiteMatrix'] = $dirname . '/SiteMatrix_body.php';
+$wgAutoloadClasses['SiteMatrixPage'] = $dirname . '/SiteMatrix_body.php';
+$wgAutoloadClasses['SiteMatrixParserFunctions'] = $dirname . '/SiteMatrix.funcs.php';
+require_once( $dirname . '/SiteMatrix.funcs.i18n.php' );
 
-$wgAutoloadClasses['ApiQuerySiteMatrix'] = dirname( __FILE__ ) . '/SiteMatrix_body.php';
 $wgAPIModules['sitematrix'] = 'ApiQuerySiteMatrix';
+$wgSpecialPages['SiteMatrix'] = 'SiteMatrixPage';
+$wgExtensionFunctions[] = 'efSetupSiteMatrixFunctions';
+$wgHooks['LanguageGetMagic'][] = 'SiteMatrixMagicI18n::getMagic';
+
+function efSetupSiteMatrixFunctions() {
+	globaL $wgParser, $wgHooks;
+
+	$functions = SiteMatrixParserFunctions::singleton();
+	if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+		$wgHooks['ParserFirstCallInit'][] = array( &$functions, 'registerParser' );
+	} else {
+		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
+			$wgParser->_unstub();
+		}
+		$functions->registerParser( $wgParser );
+	}
+}
