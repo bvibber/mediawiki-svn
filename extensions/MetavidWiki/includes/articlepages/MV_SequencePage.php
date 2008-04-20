@@ -87,8 +87,8 @@ define('SEQUENCE_TAG', 'sequence');
  				}
 				//check if we should look up the image:  		
 				if(!isset($clip['image']))$clip['image']=='';
-				if($clip['image']=='')
-					$clip['image'] = $streamTitle->getStreamImageURL();
+				if($clip['image']=='')					
+					$clip['image'] =$streamTitle->getFullStreamImageURL();
 				//check if desc was present: 				
 				if(!isset($clip['desc']))$clip['desc']='';
 				//for now just lookup all ... @@todo future expose diffrent language tracks

@@ -216,12 +216,7 @@
 		global $mvDefaultVideoPlaybackRes;
 		if($size==null){
 			$size = $mvDefaultVideoPlaybackRes;
-		}else{
-			//if a non-stadard size just use null for size
-			list($sx, $sy) = explode('x',$size);
-			list($dx, $dy) = MV_StreamImage::getSizeType($size);
-			if($sx!=$dx && $sy!=$dy)$size=null;	
-		}	
+		}
 		if($req_time==null){
 			$req_time = $this->getStartTime();
 			if(!$req_time)$req_time='0:00:00';
@@ -277,7 +272,8 @@
 		$query = 'feed_format=roe&stream_name='.$this->getStreamName().'&t='.$this->getTimeRequest();
 		return $roeTitle->getFullURL($query) ;
 	}
-	function getEmbedVideoHtml($vid_id='', $size='', $tag='video', $force_server=''){
+	function getEmbedVideoHtml($vid_id='', $size='', $force_server='', $autoplay=false){
+		$tag='video';
 		if($size==''){
 			global $mvDefaultVideoPlaybackRes;
 			$size=$mvDefaultVideoPlaybackRes;
@@ -293,10 +289,11 @@
 					$this->getEndTime() . 
 					'</span>';
 			}				
+			$auto_play_attr=($autoplay)?' autoplay="true" ':'';
 			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
 				'src="'.$stream_web_url .'" ' .				
 				'roe="'.$roe_url.'" '.
-				'show_meta_link="false" ' . 
+				'show_meta_link="false" ' . $auto_play_attr . 
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
 				'controls="true" embed_link="true" />';				
 			return $o;	

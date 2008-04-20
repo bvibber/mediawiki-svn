@@ -96,6 +96,9 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_results_found_for'      => 'Search results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
 	'mv_tool_mang_layers'       => 'Manage layers',
 	'mv_update_layers'          => 'Update layers',
+	'mv_watch_clip'				=> 'Watch Clip',
+	'mv_close_clip'				=> 'Close Clip',
+	'mv_improve_transcript'		=> 'Improve Transcript',
 
 	#mvd types:
 	'ht_en'          => 'Transcript',

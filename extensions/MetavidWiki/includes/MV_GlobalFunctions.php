@@ -565,4 +565,41 @@ function mvGetMVStream($stream_init){
 function mvGetMVTitle(){
 	
 }
+function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
+	global $wgLang;
+	$fmtLimit = $wgLang->formatNum( $limit );
+	$prev = wfMsg( 'prevn', $fmtLimit );
+	$next = wfMsg( 'nextn', $fmtLimit );
+
+	if( is_object( $link ) ) {
+		$title =& $link;
+	} else {
+		$title = Title::newFromText( $link );
+		if( is_null( $title ) ) {
+			return false;
+		}
+	}
+
+	if ( 0 != $offset ) {
+		$po = $offset - $limit;
+		if ( $po < 0 ) { $po = 0; }
+		$q = "limit={$limit}&offset={$po}";
+		if ( '' != $query ) { $q .= '&'.$query; }
+		$plink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-prevlink\">{$prev}</a>";
+	} else { $plink = $prev; }
+
+	$no = $offset + $limit;
+	$q = 'limit='.$limit.'&offset='.$no;
+	if ( '' != $query ) { $q .= '&'.$query; }
+
+	if ( $atend ) {
+		$nlink = $next;
+	} else {
+		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-nextlink\">{$next}</a>";
+	}
+	$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
+	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
+	  wfNumLink( $offset, 100, $title, $query ) ;	  
+	return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
+}
 ?>

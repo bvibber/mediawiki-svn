@@ -86,13 +86,16 @@ $mvDefaultStreamViewLength = 60*20; //20 min
 //default aspect ratio (should be derived from media resolution once we integrate with oggHandler)
 $mvDefaultAspectRatio = .75;
 
+//limit for media search results:
+$mvMediaSearchResultsLimit = 100; 
+
 #define how offten (in seconds) clients do http pull requests
-# new info when watching live broadcasts
+#to get new info when watching live broadcasts
 $mvLiveUpdateInterval = 5;
 
 //should be the same resolution as webstream encode.
 $mvDefaultVideoPlaybackRes = '320x240';
-$mvDefaultSearchVideoPlaybackRes='160x120';
+$mvDefaultSearchVideoPlaybackRes='320x240';
 $mvDefaultVideoIconSize = '80x60';
 
 /*

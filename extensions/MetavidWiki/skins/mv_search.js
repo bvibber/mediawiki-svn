@@ -233,15 +233,18 @@ function add_date_binddings(inx, mvDateInitObj){
 	);
 }
 function mv_ex(mvd_id){
-	uri = wgServer +
-	((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);	
-	js_log(mvd_id);	
+	uri = wgServer +((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);	
+	js_log('expand ' + mvd_id);	
 	//swap the image: 
 	img_parts = $j('#mv_img_ex_'+mvd_id).attr('src').split('/');
 	if(img_parts.pop()=='closed.png'){
-		$j('#mvr_desc_'+mvd_id).fadeOut('fast');
+		//$j('#mvr_desc_'+mvd_id).fadeOut('fast');
 		
 		$j('#mv_img_ex_'+mvd_id).attr('src', img_parts.join('/') + '/opened.png');
+		$j('#mv_watch_clip_'+mvd_id).fadeOut('fast', function(){
+			$j('#mv_close_clip_'+mvd_id).fadeIn('fast');
+		});
+		
 		$j('#mvr_'+mvd_id).css('display', 'block').html(global_loading_txt);
 		//grab search terms:
 		var terms='';
@@ -259,7 +262,11 @@ function mv_ex(mvd_id){
 			rewrite_by_id('vid_'+mvd_id);
 		});
 	}else{
-		$j('#mvr_desc_'+mvd_id).fadeIn('fast');
+		$j('#mv_close_clip_'+mvd_id).fadeOut('fast', function(){
+			$j('#mv_watch_clip_'+mvd_id).fadeIn('fast');
+		});
+		//$j('#mvr_desc_'+mvd_id).fadeIn('fast');
+		//$j('#vrdesc_'+mvd_id).fadeIn('fast');		
 		$j('#mv_img_ex_'+mvd_id).attr('src', img_parts.join('/') + '/closed.png');
 		$j('#mvr_'+mvd_id).css('display', 'none');
 	}		

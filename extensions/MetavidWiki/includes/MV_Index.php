@@ -181,7 +181,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		return true;
  	}
  	function doFiltersQuery(&$filters){
- 		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength, $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult; 		
+ 		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength,
+ 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult, $mvMediaSearchResultsLimit; 		
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
@@ -191,6 +192,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':''; 
  		
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
+ 		if($this->limit > $mvMediaSearchResultsLimit)$this->limit = $mvMediaSearchResultsLimit;
  		//print_r($filters);
  		//print_r($_GET);
  		$group_spoken=true;

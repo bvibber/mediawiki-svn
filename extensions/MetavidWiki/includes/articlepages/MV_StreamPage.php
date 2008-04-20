@@ -39,13 +39,32 @@ require_once($mvgIP . '/includes/MV_Stream.php');
 
 class MV_StreamPage extends Article{
  	var $mvTitle;
- 	function __construct($title, $mvTitle){
- 		$this->mvTitle = $mvTitle;
- 		//check request type (if base request set to special)
+ 	function __construct($title, $mvTitle=false){
+ 		if($mvTitle)$this->mvTitle = $mvTitle;
  		return parent::__construct($title);
  	} 
+ 	function newFromArticle($article){
+ 		$mvTitle = new MV_Title($article->mTitle); 		
+ 		return new MV_StreamPage($article->mTitle, $mvTitle);
+ 	}
+ 	public function view() {
+		global $wgRequest, $wgUser, $wgOut, $wgTitle, $wgJsMimeType, $mvgScriptPath;
+		//@@TODO fix stream view() for old versions ... will likely have to replicate Article::view() 
+		
+		//include the metavid headers (for embedding video in the page) 
+		mvfAddHTMLHeader('stream_interface');			
+			
+		// copied from CategoryPage ...
+		$diff = $wgRequest->getVal( 'diff' );
+		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
+		if ( isset( $diff ) && $diffOnly ) {
+			return Article::view();
+		}		
+		$text = $this->getContent();
+		$this->outputWikiText($text);			
+	}
 	function outputWikiText( $text, $cache = true ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser;		
 		wfProfileIn( __METHOD__ );
 		$MV_MetavidInterface = new MV_MetavidInterface('stream', $this);				
 		//will require the mv_embed script for video playback:		

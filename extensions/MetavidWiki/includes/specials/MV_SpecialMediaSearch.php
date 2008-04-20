@@ -197,7 +197,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			}
 		}	
 		//media pagging:
-		$prevnext = wfViewPrevNext( $this->offset, $this->limit,
+		$prevnext = mvViewPrevNext( $this->offset, $this->limit,
 				SpecialPage::getTitleFor( 'MediaSearch' ),
 					$this->get_httpd_filters_query(),
 					($this->num < $this->limit) );
@@ -231,24 +231,40 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					if(count($srange['rows'])!=1 && $inx!=0)				
 						$mvd_out.='&nbsp; &nbsp; &nbsp; &nbsp;';
 					//'<img src="'. $mvgScriptPath . '/skins/images/film.png">'					
-					$mvd_out .= '<span class="mv_rtdesc" title="' . wfMsg('mv_expand_play') . '" onclick="mv_ex(\'' . $mvd->id . '\')" style="cursor:pointer;background:#'.$bgcolor.'">&nbsp; &nbsp; &nbsp; &nbsp;';				
-					$mvd_out.= $mvTitle->getTimeDesc() . '&nbsp;</span>';
+					//$mvd_out .= '<div class="mv_rtdesc" title="' . wfMsg('mv_expand_play') . '"  '. 
+					//				'> ';
+					$mvd_out .= '<img style="float:left;width:84px;cursor:pointer;border:solid #'.$bgcolor.'" '.
+						' onclick="mv_ex(\'' . $mvd->id . '\')" width="80" height="60" src="'.$mvTitle->getStreamImageURL('icon') . '">';
+					$mvd_out.= '</div>';
+					$mvd_out.='<b>' .$mvTitle->getTimeDesc() . '</b>&nbsp;';
+					$mvd_cnt_links='';
+					if(isset($mvd->spoken_by)){											
+						$ptitle = Title::MakeTitle(NS_MAIN, $mvd->spoken_by);					
+						$mvd_cnt_links.=wfMsg('mv_search_spoken_by').': '.$sk->makeKnownLinkObj($ptitle);
+						$mvd_cnt_links.='<br>';
+					}
 					if($this->outputSeqLinks==true){
-						$mvd_out .='&nbsp;<img style="cursor:pointer;" onClick="mv_add_to_seq({mvclip:\''.
+						$mvd_cnt_links .='&nbsp;<a href="javascript:mv_add_to_seq({mvclip:\''.
 										$mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest().'\','.
 										'src:\''.$mvTitle->getWebStreamURL().'\','.
-										'img_url:\''.$mvTitle->getStreamImageURL().'\'})" '.
+										'img_url:\''.$mvTitle->getStreamImageURL().'\'})">'.
+										'<img style="cursor:pointer;" '.
 										'title="'.wfMsg('mv_seq_add_end').'" '.
-										'src="'.$mvgScriptPath .'/skins/mv_embed/images/application_side_expand.png">';
-					} 
-					$mvd_out .= '<a title="' . wfMsg('mv_expand_play') . '" href="javascript:mv_ex(\'' . $mvd->id . '\')"><img id="mv_img_ex_'.$mvd->id.'" border="0" src="' . $mvgScriptPath . '/skins/images/closed.png"></a>' .
-					'&nbsp;';
+										'src="'.$mvgScriptPath .'/skins/mv_embed/images/application_side_expand.png">'. wfMsg('mv_seq_add_end').'</a>';
+					}
+					$mvd_cnt_links .= '<a title="' . wfMsg('mv_expand_play') . '" href="javascript:mv_ex(\'' . $mvd->id . '\')">'.
+							'<img id="mv_img_ex_'.$mvd->id.'"  src="' . $mvgScriptPath . '/skins/images/closed.png">'.
+								'<span id="mv_watch_clip_'.$mvd->id.'">'.wfMsg('mv_watch_clip').'</span>'.
+								'<span style="display:none;" id="mv_close_clip_'.$mvd->id.'">'.wfMsg('mv_close_clip').'</span>'.
+							'</a>' .
+						'&nbsp;&nbsp;';
 					//output control links:
-					//make stream title link: 
+					//make stream title link:						
+					 
 					$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName());
 					//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
-					$mvd_out .= $sk->makeKnownLinkObj($mvStreamTitle, '<img border="0" src="' . $mvgScriptPath . '/skins/images/run_mv_stream.png">', '', '', '', '', ' title="' . wfMsg('mv_view_in_stream_interface') . '" ');
-										
+					$mvd_cnt_links .= $sk->makeKnownLinkObj($mvStreamTitle, '<img border="1" src="' . $mvgScriptPath . '/skins/images/run_mv_stream.png"> '.wfMsg('mv_improve_transcript'), '', '', '', '', ' title="' . wfMsg('mv_view_in_stream_interface') . '" ');
+					$mvd_cnt_links .= '<br>';			
 					//$title = MakeTitle::()
 					//don't inclue link to wiki page (too confusing) 
 					//$mvd_out .='&nbsp;';
@@ -257,16 +273,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 										
 					$mvd_out.='<span id="mvr_desc_'.$mvd->id.'">';
 										 
-					if(isset($mvd->spoken_by)){											
-						$ptitle = Title::MakeTitle(NS_MAIN, $mvd->spoken_by);					
-						$mvd_out.=' '.$sk->makeKnownLinkObj($ptitle);
-					}		
+					
 					if(!isset($mvd->toplq))$mvd->toplq=false;							
 					//output short desc send partial regEx: 
 					if (!$mvd->toplq){					
 						$mvd_out.= $this->termHighlight($mvd->text, implode('|', $this->getTerms()));						
 					}else {
-						if($mvdTitle->exists()){	
+						if($mvdTitle->exists() && !isset($mvd->text)){	
 							//grab the article text:
 							$curRevision = Revision::newFromTitle($mvdTitle);			
 							$wikiText = $curRevision->getText();
@@ -300,8 +313,10 @@ class MV_SpecialMediaSearch extends SpecialPage {
 						//$wgOut->mCategoryLinks = array();	
 					}
 					$mvd_out.='</span>';
-					$mvd_out .= '<div id="mvr_' . $mvd->id . '" style="display:none;background:#'.$bgcolor.';" ></div>';
-					$mvd_out .= '<br />' . "\n";					
+					$mvd_out.='<br>'.$mvd_cnt_links;
+					$mvd_out.='<div style="display:block;clear:both;padding-top:4px;padding-bottom:4px;"/>';
+					$mvd_out .= '<div id="mvr_' . $mvd->id . '" style="display:none;background:#'.$bgcolor.';" ></div>';					
+														
 				}			
 				$stream_out .= $mvd_out;
 				/*if(count($srange['rows'])!=1){					
@@ -319,7 +334,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				$mvTitle->getStreamName() .
 					'" align="left" src="'.$mvgScriptPath.'/skins/mv_embed/images/vid_play_sm.png">';
 			*/					
-			$o.= '<h3>' . $mvTitle->getStreamNameText() . wfMsg('mv_match_text', $matches).'</h3>';
+			$o.= '<h3>' . $mvTitle->getStreamNameText();
+			$o.=($matches==1)?wfMsg('mv_match_text_one'):wfMsg('mv_match_text', $matches);
+			$o.='</h3>';
 			$o.= '<div id="mv_stream_' . $stream_id . '">' . $stream_out . '</div>';
 		}
 		if($this->outputContainer)$o.='</div>';
@@ -428,7 +445,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			if($mvTitle->validRequestTitle()){				
 				list($vWidth, $vHeight) = explode('x', $mvDefaultSearchVideoPlaybackRes); 
 				$embedHTML='<span style="float:left;width:'.($vWidth+20).'px">' . 
-								$mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $mvDefaultSearchVideoPlaybackRes) .
+								$mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $mvDefaultSearchVideoPlaybackRes, '',$autoplay=true) .
 							'</span>';
 				$wgOut->clearHTML();
 				$MvOverlay = new MV_Overlay();	
@@ -652,12 +669,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	}
 	function auto_complete_category($category, $val,  $result_limit='5'){
 		$dbr =& wfGetDB(DB_SLAVE);		
-		$val = ucfirst($val);
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>$category, 
-			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\''),
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\'  COLLATE utf8_unicode_ci '),
 			__METHOD__,
 			array('LIMIT'=>$result_limit));
+		print $dbr->lastQuery();
 		//mention_bill catebory Bill
 		if($dbr->numRows($result) == 0)return '';
 		$out='';
@@ -672,15 +689,12 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	/*@@todo cache result for given values*/
 	function auto_complete_person($val, $result_limit='5'){
 		$dbr =& wfGetDB(DB_SLAVE);		
-		//check against anybody in category 'Person' do an or for case insensitivity
-        //@@TODO look into a mysql way to correlate in a non case sensitive manner
-        $val = ucfirst($val);
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>'Person', 
-			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\''),
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\' COLLATE utf8_unicode_ci '),
 			__METHOD__,
 			array('LIMIT'=>$result_limit));
-		//print "ran: " . $dbr->lastQuery();
+		print "ran: " . $dbr->lastQuery();
 		if($dbr->numRows($result) == 0)return '';
 		//$out='<ul>'."\n";
 		$out='';
@@ -723,7 +737,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		return $out;
 	}
 	//return a json date obj 
-	//@@todo fix for big sites...(will start to be no fun if number of streams > 2000 ... over many years)
+	//@@todo fix for big sites...(will start to be no fun if number of streams > 2000 )
 	function getJsonDateObj($obj_name='mv_result'){
 		$dbr =& wfGetDB(DB_SLAVE);		
 		$sql = 'SELECT `date_start_time` FROM `mv_streams` ' .

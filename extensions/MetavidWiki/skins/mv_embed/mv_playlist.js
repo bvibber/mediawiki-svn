@@ -1364,11 +1364,13 @@ var xspfPlaylist ={
 		//get the first instance of any of the meta tags (ok that may be the meta on the first clip)
 		//js_log('do loop on properties:' + properties);
 		for(i in properties){
-			//js_log('on property: '+i);
+			js_log('on property: '+i);			
 			tmpElm = this.data.getElementsByTagName(properties[i])[0];
 			if(tmpElm){
-				this[i] = tmpElm.childNodes[0].nodeValue;
-				js_log('set pl property: ' + i+' to '+this[i]);
+				if(tmpElm.childNodes[0]){
+					this[i] = tmpElm.childNodes[0].nodeValue;
+					js_log('set pl property: ' + i+' to '+this[i]);
+				}
 			}
 		}
 		var clips = this.data.getElementsByTagName("track");

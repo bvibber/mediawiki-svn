@@ -150,7 +150,9 @@ var vlcEmbed = {
     	}
     	//do monitor update: 
 	    if( ! this.monitorTimerId ){
-	        this.monitorTimerId = setInterval('document.getElementById(\''+this.id+'\').monitor()', 250);
+	    	if(document.getElementById(this.id)){
+	        	this.monitorTimerId = setInterval('document.getElementById(\''+this.id+'\').monitor()', 250);
+	    	}
 	    }
     },
 /* events */

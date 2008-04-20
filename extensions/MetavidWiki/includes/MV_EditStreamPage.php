@@ -39,9 +39,9 @@
  	/*put thrown together quickly... could clean up/simplify*/ 
  	function displayEditStreamFiles(){
  		global $wgOut, $wgTitle,$wgScriptPath,$wgRequest;
- 		$html='';  		
-		$streamFiles = $this->mArticle->mvTitle->mvStream->getFileList();
-		
+ 		$html='';
+ 	
+		$streamFiles = $this->mArticle->mvTitle->mvStream->getFileList();				
 		//proccess the requested changes
  		$this->proccessReq($streamFiles);  	
 		if($this->status_error!='')$html.='<span class="error">'.$this->status_error.'</span><br />';
