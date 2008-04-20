@@ -4,6 +4,7 @@
 
 #include "zlib.h"
 
+
 #include "pngreader.h"
 #include "pngutil.h"
 #include "pngcmd.h"
@@ -12,11 +13,11 @@
 #define BUFFER_OUT_SIZE	131072
 
 int png_read_chunk(pngreader *info);
-void png_read_header(pngreader *info, u_int32_t length);
-void png_read_palette(pngreader *info, u_int32_t length);
-void png_read_data(pngreader *info, u_int32_t length);
-void png_defilter(pngreader *info, unsigned char *buffer, u_int32_t size);
-void png_read_ancillary(pngreader *info, u_int32_t length);
+void png_read_header(pngreader *info, uint32_t length);
+void png_read_palette(pngreader *info, uint32_t length);
+void png_read_data(pngreader *info, uint32_t length);
+void png_defilter(pngreader *info, unsigned char *buffer, uint32_t size);
+void png_read_ancillary(pngreader *info, uint32_t length);
 
 void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2)
 {
@@ -85,7 +86,7 @@ int png_read_chunk(pngreader *info)
 		png_die("critical_chunk", c_head.type);
 	}
 	
-	u_int32_t crc;
+	uint32_t crc;
 	png_read_int(&crc, info->fin, NULL);
 #ifndef NO_CRC	
 	if (crc != info->crc)
@@ -98,7 +99,7 @@ int png_read_chunk(pngreader *info)
 	return strncmp(c_head.type, "IEND", 4);
 }
 
-void png_read_header(pngreader *info, u_int32_t length)
+void png_read_header(pngreader *info, uint32_t length)
 {
 	if (length != 13)
 		png_die("unexpected_header_length", &length);
@@ -108,7 +109,7 @@ void png_read_header(pngreader *info, u_int32_t length)
 	png_read_int(&info->header->height, info->fin, &info->crc);
 	
 	// Read the last 5 members
-	png_fread(((u_int32_t*)info->header) + 2, 5, info->fin, &info->crc);
+	png_fread(((uint32_t*)info->header) + 2, 5, info->fin, &info->crc);
 	
 	if (info->header->compression != COMPRESS_DEFLATE)
 		png_die("unknown_compression", &info->header->compression);
@@ -160,7 +161,7 @@ void png_read_header(pngreader *info, u_int32_t length)
 		(*info->callbacks->read_header)(info);
 }
 
-void png_read_palette(pngreader *info, u_int32_t length)
+void png_read_palette(pngreader *info, uint32_t length)
 {
 	if (length % 3)
 		png_die("malformed_palette_length", &length);
@@ -174,7 +175,7 @@ void png_read_palette(pngreader *info, u_int32_t length)
 	}
 }
 
-void png_read_data(pngreader *info, u_int32_t length)
+void png_read_data(pngreader *info, uint32_t length)
 {
 	unsigned char in[BUFFER_IN_SIZE], out[BUFFER_OUT_SIZE];
 	int ret = Z_OK;
@@ -182,7 +183,7 @@ void png_read_data(pngreader *info, u_int32_t length)
 	// Loop until everything is read and the buffer is empty
 	while (ret != Z_STREAM_END && length != 0)
 	{		
-		u_int32_t size = 0;
+		uint32_t size = 0;
 		size = length > BUFFER_IN_SIZE ? BUFFER_IN_SIZE : length;
 		info->zst.avail_in = png_fread(in, size, info->fin, &info->crc);
 		info->zst.next_in = in;
@@ -236,7 +237,7 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		unsigned char a, b, c;
 		short p, pa, pb, pc;
 		
-		u_int32_t x = info->scan_pos - info->bpp;
+		uint32_t x = info->scan_pos - info->bpp;
 		switch (info->filter)
 		{
 			case (FILTER_NONE):
@@ -297,19 +298,19 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 	}
 }
 
-void png_read_ancillary(pngreader *info, u_int32_t length) 
+void png_read_ancillary(pngreader *info, uint32_t length) 
 {
 	char buf;
-	u_int32_t i;
+	uint32_t i;
 	for (i = 0; i < length; i++)
 		png_fread(&buf, 1, info->fin, &info->crc);
 }
 
 void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, 
-	u_int32_t length, void *info_)
+	uint32_t length, void *info_)
 {
 	pngreader *info = (pngreader*)info_;
-	u_int32_t i;
+	uint32_t i;
 	for (i = 0; i < length; i += info->bpp)
 	{
 		rgbcolor color;

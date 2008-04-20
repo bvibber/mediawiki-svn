@@ -12,7 +12,7 @@
 
 #define BUFFER_OUT_SIZE	32768
 
-void png_write_chunk(pngreader *info, char *type, void *ptr, u_int32_t size);
+void png_write_chunk(pngreader *info, char *type, void *ptr, uint32_t size);
 
 void png_write_header(void *_info)
 {
@@ -28,7 +28,7 @@ void png_write_header(void *_info)
 	}
 	png_fwrite("\x89PNG\r\n\x1a\n", 8, info->fout, NULL);
 	
-	u_int32_t crc = crc32(0, Z_NULL, 0);
+	uint32_t crc = crc32(0, Z_NULL, 0);
 	png_write_int(13, info->fout, NULL);
 	png_fwrite("IHDR", 4, info->fout, &crc);
 	png_write_int(header.width, info->fout, &crc);
@@ -48,9 +48,9 @@ void png_write_header(void *_info)
 	winfo->zst.avail_out = BUFFER_OUT_SIZE;
 }
 
-void png_write_chunk(pngreader *info, char *type, void *ptr, u_int32_t size)
+void png_write_chunk(pngreader *info, char *type, void *ptr, uint32_t size)
 {
-	u_int32_t crc = crc32(0, Z_NULL, 0);
+	uint32_t crc = crc32(0, Z_NULL, 0);
 	png_write_int(size, info->fout, NULL);
 	png_fwrite(type, 4, info->fout, &crc);
 	png_fwrite(ptr, size, info->fout, &crc);
@@ -58,7 +58,7 @@ void png_write_chunk(pngreader *info, char *type, void *ptr, u_int32_t size)
 }
 
 void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanline, 
-	u_int32_t length, void *info_)
+	uint32_t length, void *info_)
 {
 	pngreader *info = (pngreader*)info_;
 	pngwriter *winfo = (pngwriter*)info->extra2;
@@ -172,8 +172,8 @@ int main(int argc, char **argv)
 	winfo->deflate_level = *(char *)opts[PNGOPT_DEFLATE_LEVEL];
 	winfo->filter_method = *(char *)opts[PNGOPT_NO_FILTERING] ? FILTER_NONE : FILTER_PAETH;
 	
-	png_resize(in, out, *(u_int32_t *)opts[PNGOPT_WIDTH], 
-		*(u_int32_t *)opts[PNGOPT_HEIGHT], &callbacks, winfo);
+	png_resize(in, out, *(uint32_t *)opts[PNGOPT_WIDTH], 
+		*(uint32_t *)opts[PNGOPT_HEIGHT], &callbacks, winfo);
 	
 	fclose(in); fclose(out);
 	

@@ -2,13 +2,25 @@ Portable Network Graphics Downsampler is a tool which allows downsizing of PNG
 images without loading the entire file in memory. This makes it possible to 
 resize extremely large PNGs.
 
-The implementation is Python works and uses indeed only few memory, but is much
-too slow for use. This implementation also only outputs raw data and does not 
-recompress to PNG.
+== Installation ==
+# svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/pngds
+# cd pngds && make
 
-The C version is supposed to be faster and even less memory using.
+== Usage ==
+pngds [--from-stdin] [--to-stdout] [<source>] [<target>]
+	[--width <width>] [--height <height>] [--no-filtering] [-n]
 
-It currently decompresses any PNG into raw RGB data.
+	--from-stdin	Read data from stdin instead from <source>
+	--to-stdout	Output data to stdout instead to <target>
+	
+	--width		Resize width
+	--height	Resize height
+			If only one of width or height is specified, 
+			the image is resized keeping aspect ratio.
+			
+	--no-filtering	Disable Paeth filtering (faster)
+	-n		Compression level from 0-9 (-0 .. -9)
+
 
 == License ==
 Copyright (C) 2008 Bryan Tong Minh

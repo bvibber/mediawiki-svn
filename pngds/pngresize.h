@@ -2,18 +2,18 @@
 
 typedef struct
 {
-	u_int32_t width;
-	u_int32_t height;
+	uint32_t width;
+	uint32_t height;
 	float fx;
 	float fy;
 	
-	u_int32_t line_count;
+	uint32_t line_count;
 	unsigned char **scanlines;
 	
-	u_int32_t written_lines;
+	uint32_t written_lines;
 	unsigned char *last_line;
 	
 	pngcallbacks *callbacks;
 } pngresize;
 
-void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks, void *extra2);
+void png_resize(FILE* fin, FILE* fout, uint32_t width, uint32_t height, pngcallbacks* callbacks, void *extra2);

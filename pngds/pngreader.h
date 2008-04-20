@@ -2,6 +2,7 @@
 #define _PNGREADER_H	1
 
 #include <stdio.h>
+#include <stdint.h>
 
 #include "zlib.h"
 
@@ -33,18 +34,18 @@
 
 typedef struct
 {
-	u_int32_t width;
-	u_int32_t height;
+	uint32_t width;
+	uint32_t height;
 	unsigned char bitdepth;
 	unsigned char colortype;
 	unsigned char compression;
 	unsigned char filter_method;
 	unsigned char interlace;
-} __attribute__ ((packed)) pngheader;
+} pngheader;
 
 typedef struct
 {
-	u_int32_t length;
+	uint32_t length;
 	char *type;
 } chunkheader;
 
@@ -53,12 +54,12 @@ typedef struct
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
-} __attribute__ ((packed)) rgbcolor;
+} rgbcolor;
 
 typedef struct
 {
 	// Both last parameters are really pointer to pngreader
-	void (*completed_scanline)(unsigned char*, unsigned char*, u_int32_t, void*);
+	void (*completed_scanline)(unsigned char*, unsigned char*, uint32_t, void*);
 	void (*read_header)(void*); 
 	void (*done)(void*);
 } pngcallbacks;
@@ -68,7 +69,7 @@ typedef struct
 {
 	pngheader *header;
 	
-	u_int32_t crc;
+	uint32_t crc;
 	
 	unsigned char bytedepth;
 	unsigned char bpp;
@@ -79,8 +80,8 @@ typedef struct
 	unsigned char expect_filter;
 	unsigned char filter;
 	
-	u_int32_t scan_pos;
-	u_int32_t line_count;
+	uint32_t scan_pos;
+	uint32_t line_count;
 	unsigned char *previous_scanline;
 	unsigned char *current_scanline;
 	
@@ -97,6 +98,6 @@ typedef struct
  * Functions
  */
 void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2);
-void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, u_int32_t length, void *info_);
+void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, uint32_t length, void *info_);
 
 #endif

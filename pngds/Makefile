@@ -1,5 +1,5 @@
-CC		= cc
-CFLAGS		= -g -lz
+CC		= gcc
+CFLAGS		= -lz
 SRCS		= pngreader.c pngcmd.c pngresize.c pngutil.c pngwriter.c
 OBJS		= $(SRCS:.c=.o)
 

@@ -7,13 +7,13 @@
 #include "pngcmd.h"
 #include "pngresize.h"
 
-#define paranoia_ceil(d)	(u_int32_t)d + (u_int32_t)d < d ? 1: 0;
+#define paranoia_ceil(d)	(uint32_t)d + (uint32_t)d < d ? 1: 0;
 
 void png_resize_init(void *info_);
-void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, u_int32_t length, void *info_);
+void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, uint32_t length, void *info_);
 void png_resize_done(void *info_);
 
-void png_resize(FILE* fin, FILE* fout, u_int32_t width, u_int32_t height, pngcallbacks* callbacks, void* extra2)
+void png_resize(FILE* fin, FILE* fout, uint32_t width, uint32_t height, pngcallbacks* callbacks, void* extra2)
 {
 	pngresize info;
 	info.width = width;
@@ -58,18 +58,18 @@ void png_resize_init(void *info_)
 	else if (rinfo->width != 0)
 	{
 		rinfo->fx = rinfo->fy = (float)info->header->width / (float)rinfo->width;
-		rinfo->height = (u_int32_t)(info->header->height / rinfo->fy);
+		rinfo->height = (uint32_t)(info->header->height / rinfo->fy);
 	}
 	else if (rinfo->height != 0)
 	{
 		rinfo->fx = rinfo->fy = (float)info->header->height / (float)rinfo->height;
-		rinfo->width = (u_int32_t)(info->header->width / rinfo->fy);
+		rinfo->width = (uint32_t)(info->header->width / rinfo->fy);
 	}
 	
 	if (rinfo->fx < 1.0 || rinfo->fy < 1.0)
 		png_die("upscaling_unsupported", NULL);
 	
-	u_int32_t max_line_count = (unsigned int)rinfo->fy;
+	uint32_t max_line_count = (unsigned int)rinfo->fy;
 	if (rinfo->fy > max_line_count) max_line_count++;
 		
 	unsigned int i;
@@ -87,12 +87,12 @@ void png_resize_init(void *info_)
 }
 
 void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, 
-	u_int32_t length, void *info_)
+	uint32_t length, void *info_)
 {
 	pngreader *info = (pngreader*)info_;
 	pngresize *rinfo = (pngresize*)info->extra1;
 	
-	u_int32_t i, j, k, start, end;
+	uint32_t i, j, k, start, end;
 	
 	float divisor;
 	unsigned char pixel[info->bpp];
@@ -100,9 +100,9 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 	for (i = 0; i < rinfo->width; i++)
 	{
 		// TODO: Check whether ceil() is suitable
-		start = (u_int32_t)(rinfo->fx * i);
+		start = (uint32_t)(rinfo->fx * i);
 		if ((rinfo->fx * i) > start) start++;
-		end = (u_int32_t)(rinfo->fx * (i + 1));
+		end = (uint32_t)(rinfo->fx * (i + 1));
 		if ((rinfo->fx * (i + 1)) > end) end++;
 		divisor = end - start;
 		
@@ -156,8 +156,8 @@ int main(int argc, char **argv)
 	FILE *in, *out;
 	png_open_streams(opts, &in, &out);
 	
-	png_resize(in, out, *((u_int32_t*)opts[PNGOPT_WIDTH]), 
-		*((u_int32_t*)opts[PNGOPT_HEIGHT]), NULL, NULL);
+	png_resize(in, out, *((uint32_t*)opts[PNGOPT_WIDTH]), 
+		*((uint32_t*)opts[PNGOPT_HEIGHT]), NULL, NULL);
 	
 	fclose(in); fclose(out);
 	
