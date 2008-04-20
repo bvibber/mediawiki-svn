@@ -671,17 +671,23 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$dbr =& wfGetDB(DB_SLAVE);		
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>$category, 
-			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\'  COLLATE utf8_unicode_ci '),
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\'  COLLATE latin1_general_ci'),
 			__METHOD__,
 			array('LIMIT'=>$result_limit));
-		print $dbr->lastQuery();
+		//print 'ran: ' .  $dbr->lastQuery();
 		//mention_bill catebory Bill
 		if($dbr->numRows($result) == 0)return '';
 		$out='';
 		while($row = $dbr->fetchObject($result)){
 			$page_title = $row->cl_sortkey;
 			//bold matching part of title: 
-			$page_title_bold = str_replace($val, '<b>'.$val.'</b>',$page_title);
+			$bs = stripos($page_title, $val);		
+			if($bs!==false){	
+				$page_title_bold = substr($page_title, 0, $bs) . '<b>'.substr($page_title, $bs+strlen($val) ) . '</b>';
+			}else{
+				$page_title_bold = 	$page_title;
+			} 
+			//$page_title_bold = str_ireplace($val, '<b>'.$val.'</b>',$page_title);
 			$out.=$page_title.'|'.$page_title_bold.'|no_image'."\n";
 		}
 		return $out;
@@ -691,10 +697,10 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$dbr =& wfGetDB(DB_SLAVE);		
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>'Person', 
-			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\' COLLATE utf8_unicode_ci '),
+			'`cl_sortkey` LIKE \'%'.mysql_escape_string($val).'%\' COLLATE latin1_general_ci'),
 			__METHOD__,
 			array('LIMIT'=>$result_limit));
-		print "ran: " . $dbr->lastQuery();
+		//print "ran: " . $dbr->lastQuery();
 		if($dbr->numRows($result) == 0)return '';
 		//$out='<ul>'."\n";
 		$out='';
@@ -712,9 +718,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				}else{
 					$pvalue = $dbr->fetchObject($person_result);
 					$person_full_name = $pvalue->value_xsd;
-				}
-				//bold the part of the selected title 
-				$person_full_name = str_replace($val, '<b>'.$val.'</b>', $person_full_name);
+				}			
 				//if we have a image toss that in there too 				
 				$imgHTML='';
 				$imgTitle = Title::makeTitle(NS_IMAGE, $person_name.'.jpg');
@@ -728,7 +732,19 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$img= wfFindFile($imgTitle);	
 				}
 				//$imgHTML="<img src=\"{$img->getURL()}\" width=\"44\">";
-				$out.=  $person_name.'|'.$person_full_name .'|'.$img->getURL() . "\n";
+				//bold the part of the selected title 
+				$sval = str_replace('_', ' ', $val); 
+				//$person_name_bold = str_ireplace($val, '<b>'.$val.'</b>', $person_full_name);
+				$bs = stripos($person_full_name, $sval);		 
+				//print $person_full_name . ' serch for: ' . $val . "<br>";
+				if($bs!==false){	
+					$person_name_bold = substr($person_full_name, 0, $bs) .
+					 '<b>'.substr($person_full_name, $bs, strlen($val)) .
+					 '</b>' . substr($person_full_name, $bs+strlen($val)); 
+				}else{
+					$person_name_bold = $person_full_name;
+				} 
+				$out.=  $person_name.'|'.$person_name_bold .'|'.$img->getURL() . "\n";
 				//$out.="<li name=\"{$person_name}\"> $imgHTML $person_full_name</il>\n";
 			} 			
 		}
