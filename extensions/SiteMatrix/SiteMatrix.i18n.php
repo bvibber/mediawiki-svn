@@ -285,6 +285,8 @@ $messages['fa'] = array(
 	'sitematrix-others'    => 'دیگر پروژه‌های ویکی‌مدیا',
 	'sitematrix-total'     => "'''جمع کل: $1'''",
 	'sitematrix-sitetotal' => 'کل',
+	'sitematrix-private'   => 'خصوصی',
+	'sitematrix-fishbowl'  => 'دارای محدودیت ویرایش',
 );
 
 /** Finnish (Suomi)
