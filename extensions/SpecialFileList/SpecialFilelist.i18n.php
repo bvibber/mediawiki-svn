@@ -109,7 +109,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  */
-$messages['en'] = array(
+$messages['de'] = array(
 	'filelist'              => 'Dateiliste',
 	'filelist-desc'         => 'Spezialseite zur Anzeige hochgeladener Dateien',
 	'filelist-show-list'    => 'Zeige Liste',
