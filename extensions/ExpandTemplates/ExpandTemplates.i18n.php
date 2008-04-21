@@ -571,6 +571,12 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'expandtemplates'                  => 'Cithakan dikembangaké',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Ngembangaké cithakan, fungsi parser lan variabel]] kanggo nuduhaké kasil tèks wiki lan pratayang kaca kasilé',
+	'expand_templates_intro'           => 'Kaca astaméwa iki njupuk sawetara tèks lan ngembangaké kabèh cithakan sajroning iku sacara rékursif.
+Kaca iki uga ngembangaké fungsi parser kaya ta
+<nowiki>{{</nowiki>#if:…}}, lan variabel kaya ta
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;sajatiné mèh kabèh sing ana ing antara rong tandha kurung akolade.
+Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka MediaWiki dhéwé.',
 	'expand_templates_title'           => 'Irah-irahan kontèks, kanggo {{PAGENAME}} lan sabanjuré:',
 	'expand_templates_input'           => 'Tèks sumber:',
 	'expand_templates_output'          => 'Pituwas (kasil)',

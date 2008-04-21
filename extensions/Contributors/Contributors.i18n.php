@@ -447,6 +447,13 @@ $messages['km'] = array(
 	'contributors-nosuchpage'  => 'មិនមានទំព័រ$1ទេ។',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'contributors-submit' => '보이기',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

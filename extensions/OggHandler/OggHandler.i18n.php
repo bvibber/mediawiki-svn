@@ -337,15 +337,36 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Yekrats
+ * @author Amikeco
  */
 $messages['eo'] = array(
+	'ogg-desc'                => 'Traktilo por dosieroj Ogg Theora kaj Vobis kun Ĵavaskripta legilo.',
 	'ogg-short-audio'         => 'Ogg $1 sondosiero, $2',
 	'ogg-short-video'         => 'Ogg $1 videodosiero, $2',
+	'ogg-short-general'       => 'Media ogg-dosiero $1, $2',
+	'ogg-long-audio'          => '(Aŭda ogg-dosiero $1, longeco $2, $3 entute)',
+	'ogg-long-video'          => '(Video ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute)',
+	'ogg-long-multiplexed'    => '(Kunigita aŭdio/video ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute)',
+	'ogg-long-general'        => '(Ogg-mediodosiero, longeco $2, $3)',
 	'ogg-long-error'          => '(Nevalida ogg-dosiero: $1)',
+	'ogg-play'                => 'Legu',
+	'ogg-pause'               => 'Paŭzu',
 	'ogg-stop'                => 'Haltu',
+	'ogg-play-video'          => 'Montru videon',
+	'ogg-play-sound'          => 'Aŭdigu sonon',
+	'ogg-no-player'           => 'Ŝajnas ke via sistemo malhavas ian medilegilan programon por legi tian dosieron. 
+Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti iun</a>.',
+	'ogg-no-xiphqt'           => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime. 
+QuickTime ne kapablas aŭdigi sondosierojn sentiu komponaĵo. 
+Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti XiphQT</a> aux elektu alian legilon.',
 	'ogg-player-videoElement' => '<video> elemento',
+	'ogg-player-oggPlugin'    => 'Ogg-kromprogramo',
+	'ogg-player-thumbnail'    => 'Nur senmova bildo',
+	'ogg-player-soundthumb'   => 'Neniu legilo',
 	'ogg-player-selected'     => '(elektita)',
+	'ogg-use-player'          => 'Uzu legilon :',
 	'ogg-more'                => 'Pli...',
 	'ogg-dismiss'             => 'Fermu',
 	'ogg-download'            => 'Alŝutu dosieron',
@@ -891,6 +912,11 @@ $messages['jv'] = array(
 	'ogg-stop'                => 'Mandeg',
 	'ogg-play-video'          => 'Main vidéo',
 	'ogg-play-sound'          => 'Main swara',
+	'ogg-no-player'           => 'Nuwun sèwu, sistém panjenengan katoné ora ndarbèni siji-sijia piranti empuk sing didukung. 
+Mangga <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ngundhuh salah siji piranti pamain</a>.',
+	'ogg-no-xiphqt'           => 'Katoné panjenengan ora ana komponèn XiphQT kanggo QuickTime.
+QuickTime ora bisa mainaké berkas-berkas Ogg tanpa komponèn iki.
+Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ngundhuh XiphQT</a> utawa milih piranti pamain liya.',
 	'ogg-player-videoElement' => 'élemèn <video>',
 	'ogg-player-oggPlugin'    => 'plugin Ogg',
 	'ogg-player-thumbnail'    => 'Namung gambar statis waé',

@@ -735,14 +735,18 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'badimages'            => 'Daftar gambar ala',
-	'badimages-add-btn'    => 'Tambahna',
-	'badimages-name'       => 'Jeneng:',
-	'badimages-log-name'   => 'Daftar gambar ala',
-	'badimages-log-header' => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
-	'badimages-log-add'    => 'nambahaké [[$1]] menyang daftar gambar ala',
-	'badimages-log-remove' => 'mbusak [[$1]] saka daftar gambar ala',
-	'badimages-page'       => '{{ns:help}}:Daftar gambar ala',
+	'badimages'             => 'Daftar gambar ala',
+	'badimages-add-btn'     => 'Tambahna',
+	'badimages-added'       => '$1 wis ditambahaké ing daftar.',
+	'badimages-count'       => "Ana '''$1''' gambar ing daftar gambar ala.",
+	'badimages-name'        => 'Jeneng:',
+	'badimages-not-added'   => 'Gambaré ora bisa ditambahaké.',
+	'badimages-not-removed' => 'Gambaré ora bisa diilangi.',
+	'badimages-log-name'    => 'Daftar gambar ala',
+	'badimages-log-header'  => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
+	'badimages-log-add'     => 'nambahaké [[$1]] menyang daftar gambar ala',
+	'badimages-log-remove'  => 'mbusak [[$1]] saka daftar gambar ala',
+	'badimages-page'        => '{{ns:help}}:Daftar gambar ala',
 );
 
 /** Khmer (ភាសាខ្មែរ)

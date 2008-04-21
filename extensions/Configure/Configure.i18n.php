@@ -297,6 +297,17 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-setting-not-available' => 'A configuración non está dispoñible nesta versión de MediaWiki',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'configure-section-localization' => 'Lokalisasi',
+	'configure-section-namespaces'   => 'Bilik-bilik nama',
+	'configure-section-cache'        => 'Cache',
+	'configure-section-access'       => 'Aksès',
+	'configure-section-cookie'       => 'Cookies',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -561,6 +572,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-section-skin'          => 'Temas',
 	'configure-section-category'      => 'Categorias',
 	'configure-section-cache'         => 'Cache',
+	'configure-section-messagecache'  => 'Cache de mensagens',
 	'configure-section-access'        => 'Acesso',
 	'configure-section-groups'        => 'Grupos',
 	'configure-section-block'         => 'Bloqueios',
@@ -572,6 +584,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-section-mime'          => 'Tipos MIME',
 	'configure-section-images'        => 'Imagens',
 	'configure-section-antivirus'     => 'Anti-vírus',
+	'configure-section-parser'        => "Analisador 'parser'",
 	'configure-section-specialpages'  => 'Páginas especiais',
 	'configure-section-recentchanges' => 'Mudanças recentes',
 	'configure-section-users'         => 'Utilizadores',
@@ -671,7 +684,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-localization'  => 'Lokalisering',
 	'configure-section-debug'         => 'Avlusning',
 	'configure-section-profiling'     => 'Profilering',
-	'configure-section-site'          => 'Egendefiniering av sidan',
+	'configure-section-site'          => 'Anpassning av sajten',
 	'configure-section-namespaces'    => 'Namnrymder',
 	'configure-section-skin'          => 'Utseenden',
 	'configure-section-category'      => 'Kategorier',
@@ -696,7 +709,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-recentchanges' => 'Senaste ändringar',
 	'configure-section-users'         => 'Användare',
 	'configure-section-feed'          => 'Matning',
-	'configure-section-job'           => 'Arbeten',
+	'configure-section-job'           => 'Jobb',
 	'configure-section-extension'     => 'Tillägg',
 	'configure-section-copyright'     => 'Upphovsrätt',
 	'configure-section-htcp'          => 'HTCP-multicast',

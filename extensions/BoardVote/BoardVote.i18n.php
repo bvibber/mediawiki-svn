@@ -1806,14 +1806,15 @@ Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmez
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Meursault2004
  */
 $messages['id'] = array(
-	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
-	'boardvote-desc'          => '[[meta:Board elections|Pemilihan Dewan Kepercayaan Wikimedia]]',
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Berikan suara]]
+	'boardvote'              => 'Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Pemilihan Dewan Kepercayaan Wikimedia]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Berikan suara]]
 * [[Special:Boardvote/list|Daftar suara hingga saat ini]]
-* [[Special:Boardvote/dump|Data pemilihan terenkripsi]]",
-	'boardvote_intro'         => "
+* [[Special:Boardvote/dump|Data pemilihan terenkripsi]]',
+	'boardvote_intro'        => '
 <p>Selamat datang di pemilihan keempat Dewan Kepercayaan Wikimedia, otoritas pemerintahan bagi Yayasan Wikimedia. Kita akan memilih tiga orang untuk mewakili komunitas pengguna untuk berbagai proyek Wikimedia. Tiga orang terpilih tersebut akan bertugas selama dua tahun di Dewan Kepercayaan. Mereka akan membantu menentukan arah ke depan dari proyek-proyek Wikimedia, baik untuk tiap proyek maupun secara keseluruhan, dan mereka akan mewakili kepentingan dan kepedulian <em>Anda</em>. Mereka akan menentukan cara-cara mendapatkan pemasukan dan alokasinya serta berbagai isu lainnya.</p>
 
 <p>Sebelum memberikan suara, harap baca dengan seksama pernyataan dan jawaban kandidat terhadap pertanyaan. Tiap kandidat adalah pengguna yang diakui, yang telah menyumbangkan cukup waktu dan upaya untuk menjadikan proyek-proyek ini menjadi suatu lingkungan yang ramah dan berkomitmen untuk pencapaian dan penyebaran bebas pengetahuan manusia.</p>
@@ -1823,11 +1824,10 @@ $messages['id'] = array(
 <p>Harap diingat bahwa Anda hanya dapat memberikan suara dari satu proyek. Bahkan jika Anda memiliki 400 suntingan pada berbagai proyek, tidak berarti bahwa Anda memiliki hak memberikan suara dua kali. Jika Anda kemudian ingin mengganti pilihan Anda, silakan memberikannya melalui proyek yang telah Anda pilih sebelumnya.</p>
 
 <p>Untuk informasi tambahan, lihat:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ\" class=\"external\">Tanya jawab Pemilihan</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en\" class=\"external\">Kandidat</a></li></ul>",
-	'boardvote_intro_change'  => "<p>Anda telah memilih sebelumnya. Meskipun demikian, Anda masih dapat mengganti pilihan Anda pada isian berikut. Harap pilih kotak disamping masing-masing kandidat yang Anda pilih.</p>",
-	'boardvote_footer'        => "&nbsp;", # Do not translate this
-	'boardvote_entered'       => "Terima kasih, pilihan Anda telah dicatat.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ" class="external">Tanya jawab Pemilihan</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en" class="external">Kandidat</a></li></ul>',
+	'boardvote_intro_change' => '<p>Anda telah memilih sebelumnya. Meskipun demikian, Anda masih dapat mengganti pilihan Anda pada isian berikut. Harap pilih kotak disamping masing-masing kandidat yang Anda pilih.</p>',
+	'boardvote_entered'      => 'Terima kasih, pilihan Anda telah dicatat.
 
 Jika mau, Anda dapat mencatat detil berikut. Catatan suara Anda adalah:
 
@@ -1841,36 +1841,35 @@ Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk 
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]",
-	'boardvote_nosession'     => "Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Boardvote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.",
-	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.",
-	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, dan suntingan pertama Anda harus sebelum $5.",
-	'boardvote_novotes'       => "Belum ada pemilih.",
-	'boardvote_time'          => "Waktu",
-	'boardvote_user'          => "Pengguna",
-	'boardvote_edits'         => "Suntingan",
-	'boardvote_days'          => "Hari",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "Agen pengguna",
-	'boardvote_listintro'     => "<p>Berikut adalah daftar semua suara yang telah masuk sampai hari ini. $1 untuk data terenkripsi.</p>",
-	'boardvote_dumplink'      => "Klik di sini",
-	'boardvote_submit'        => 'Kirim',
-	'boardvote_strike'        => "Coret",
-	'boardvote_unstrike'      => "Hapus coretan",
-	'boardvote_needadmin'     => "Hanya pengurus pemilihan yang dapat melakukan tindakan ini.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Pemilihan Dewan Wikimedia</a>: Pemilihan dibuka sampai 12 Juli",
-	'boardvote_notstarted'    => 'Pemilihan belum dimulai',
-	'boardvote_closed'        => 'Pemilihan telah ditutup, lihat [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En halaman pemilihan untuk mengetahui hasilnya] sebentar lagi.',
-	'boardvote_edits_many'    => 'banyak',
-	'group-boardvote'         => 'Pengurus pemilihan anggota dewan',
-	'group-boardvote-member'  => 'Pengurus pemilihan anggota dewan',
-	'grouppage-boardvote'     => '{{ns:project}}:Pengurus pemilihan anggota dewan',
-	'boardvote_blocked'       => 'Maaf, Anda telah diblokir pada wiki tempat Anda terdaftar. Pengguna yang diblokir tidak diizinkan untuk memberikan suaranya.',
-	'boardvote_welcome'       => "Selamat datang '''$1'''!",
-	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
-	'boardvote_redirecting'   => 'Untuk keamanan dan transparansi yang lebih baik, kami melakukan pemungutan suara dengan menggunakan suatu server eksternal dan dikontrol secara independen.
+[[Special:Boardvote/entry|Back]]',
+	'boardvote_nosession'    => 'Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Boardvote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.',
+	'boardvote_notloggedin'  => 'Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.',
+	'boardvote_notqualified' => 'Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, dan suntingan pertama Anda harus sebelum $5.',
+	'boardvote_novotes'      => 'Belum ada pemilih.',
+	'boardvote_time'         => 'Waktu',
+	'boardvote_user'         => 'Pengguna',
+	'boardvote_edits'        => 'Suntingan',
+	'boardvote_days'         => 'Hari',
+	'boardvote_ua'           => 'Agen pengguna',
+	'boardvote_listintro'    => '<p>Berikut adalah daftar semua suara yang telah masuk sampai hari ini. $1 untuk data terenkripsi.</p>',
+	'boardvote_dumplink'     => 'Klik di sini',
+	'boardvote_submit'       => 'Kirim',
+	'boardvote_strike'       => 'Coret',
+	'boardvote_unstrike'     => 'Hapus coretan',
+	'boardvote_needadmin'    => 'Hanya pengurus pemilihan yang dapat melakukan tindakan ini.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Pemilihan Dewan Wikimedia</a>: Pemilihan dibuka sampai 12 Juli',
+	'boardvote_notstarted'   => 'Pemilihan belum dimulai',
+	'boardvote_closed'       => 'Pemilihan telah ditutup, lihat [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En halaman pemilihan untuk mengetahui hasilnya] sebentar lagi.',
+	'boardvote_edits_many'   => 'banyak',
+	'group-boardvote'        => 'Pengurus pemilihan anggota dewan',
+	'group-boardvote-member' => 'Pengurus pemilihan anggota dewan',
+	'grouppage-boardvote'    => '{{ns:project}}:Pengurus pemilihan anggota dewan',
+	'boardvote_blocked'      => 'Maaf, Anda telah diblokir pada wiki tempat Anda terdaftar. Pengguna yang diblokir tidak diizinkan untuk memberikan suaranya.',
+	'boardvote_welcome'      => "Selamat datang '''$1'''!",
+	'go_to_board_vote'       => 'Pemilihan Dewan Wikimedia 2007',
+	'boardvote_redirecting'  => 'Untuk keamanan dan transparansi yang lebih baik, kami melakukan pemungutan suara dengan menggunakan suatu server eksternal dan dikontrol secara independen.
 
-Anda akan dialihkan ke server eksternal tersebut dalam waktu 20 detil. [$1 Klik di sini] untuk langsung menuju ke sana.
+Anda akan dialihkan ke server eksternal tersebut dalam waktu 20 detik. [$1 Klik di sini] untuk langsung menuju ke sana.
 
 Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.',
 );
@@ -2156,6 +2155,11 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 	'boardvote_blocked'      => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
 	'boardvote_welcome'      => "Sugeng rawuh '''$1'''!",
 	'go_to_board_vote'       => 'Pamilihan Déwan Wikimedia 2007',
+	'boardvote_redirecting'  => 'Kanggo kaamanan lan transparansi sing luwih apik, kita nglakoni pamungutan swara iki ing sawijining server èkstèrnal sing dikontrol sacara mardika.
+
+Panjenengan bakal dialihaké menyang server èkstèrnal iki sajroning 20 detik. [$1 Kliken ing kéné] kanggo langsung manuju menyang kana.
+
+Sawijining pèngetan kaamanan ngenani sèrtifikat sing ora ditandhani mbok-menawa bakal dituduhaké.',
 );
 
 /** Georgian (ქართული)
@@ -2169,6 +2173,7 @@ $messages['ka'] = array(
 * [[Special:Boardvote/dump|წაშალე კრიპტირებული არჩევნების მონაცემები]]',
 	'boardvote_time'       => 'დრო',
 	'boardvote_user'       => 'მომხმარებელი',
+	'boardvote_days'       => 'დღეები',
 	'boardvote_dumplink'   => 'აქ დააწკაპუნეთ',
 	'boardvote_notstarted' => 'კენჭისყრა ჯერ არ დაწყებულა',
 	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",

@@ -151,6 +151,13 @@ $messages['ja'] = array(
 	'advancedrandom-desc' => '[[Special:AdvancedRandom/Template:Featured/Talk]]でノート上の利用者ページ、または[[Special:AdvancedRandom/Template:GFDL/Image]]でページにあるGFDLファイルといったように、与えられたページに含まれるリンクからランダムで表示を行う',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'advancedrandom' => 'Acak canggih',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

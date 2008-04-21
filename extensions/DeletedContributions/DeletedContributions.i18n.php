@@ -313,7 +313,7 @@ $messages['km'] = array(
  * @author ToePeu
  */
 $messages['ko'] = array(
-	'deletedcontributions' => '지워진 사용자 기여 목록',
+	'deletedcontributions' => '삭제된 기여',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -548,6 +548,13 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'deletedcontributions'      => 'Ҳиссагузориҳои ҳазфшудаи корбар',
 	'deletedcontributions-desc' => 'Ба мудирон имкони [[Special:DeletedContributions|мушоҳидаи вироишҳои ҳазфшудаи як корбар]]ро медиҳад',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'deletedcontributions' => 'ลบเรื่องที่เขียน',
 );
 
 /** Tonga (faka-Tonga)

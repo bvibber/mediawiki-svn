@@ -251,7 +251,9 @@ $messages['eo'] = array(
 	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
 	'webstore_temp_open'               => 'Eraro malfermante laboran dosieron "$1".',
 	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
+	'webstore_curl'                    => 'Eraro de cURL: $1',
 	'webstore_404'                     => 'Dosiero ne trovita.',
+	'webstore_php_warning'             => 'PHP-Averto: $1',
 	'webstore_metadata_not_found'      => 'Dosiero ne trovita: $1',
 	'webstore_invalid_response'        => 'Nevalida respondo de servilo:
 

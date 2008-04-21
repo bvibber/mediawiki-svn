@@ -60,6 +60,13 @@ $messages['oc'] = array(
 	'htmlets-desc' => 'Vos daissa lo ligam HTML abrejat en linha dempuèi los fichièrs utilizant la balisa <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'htmlets-desc' => 'Permite-lhe incluir "inline" blocos de HTML a partir de ficheiros usando a marca <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

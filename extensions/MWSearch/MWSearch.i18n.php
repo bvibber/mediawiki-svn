@@ -102,6 +102,13 @@ $messages['lb'] = array(
 	'mwsearch-desc' => 'Plug-in Sichen Media-Wiki',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'mwsearch-desc' => 'MWZeuk ingaef',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -709,6 +709,7 @@ $wdMessages['eo'] = array(
 	'ow_available_contexts'                 => 'Haveblaj kuntekstoj',
 	'ow_AlternativeDefinition'              => 'Alternativa difino',
 	'ow_AlternativeDefinitions'             => 'Alternativaj difinoj',
+	'ow_Annotation'                         => 'Prinotado',
 	'ow_ApproximateMeanings'                => 'Similaj signifoj',
 	'ow_ClassAttributeAttribute'            => 'Atribuo',
 	'ow_ClassAttributes'                    => 'Klasaj atribuoj',
@@ -717,6 +718,7 @@ $wdMessages['eo'] = array(
 	'ow_ClassMembership'                    => 'Klasa membreco',
 	'ow_Collection'                         => 'Kolekto',
 	'ow_Definition'                         => 'Difino',
+	'ow_DefinedMeaningAttributes'           => 'Prinotado',
 	'ow_DefinedMeaning'                     => 'Difinita signifo',
 	'ow_DefinedMeaningReference'            => 'Difinita signifo',
 	'ow_ExactMeanings'                      => 'Precizaj signifoj',
@@ -726,12 +728,16 @@ $wdMessages['eo'] = array(
 	'ow_IdenticalMeaning'                   => 'Identa signifo?',
 	'ow_GotoSource'                         => 'Iru al fonto',
 	'ow_Language'                           => 'Lingvo',
+	'ow_LevelAnnotation'                    => 'Prinotado',
 	'ow_OptionAttributeOption'              => 'Opcio',
 	'ow_OptionAttributeOptions'             => 'Opcioj',
 	'ow_OptionAttributeValues'              => 'Valutoj de opcioj',
 	'ow_OtherDefinedMeaning'                => 'Alia difinita signifo',
+	'ow_PopupAnnotation'                    => 'Prinotado',
+	'ow_Relations'                          => 'Rilatoj',
 	'ow_Spelling'                           => 'Literumado',
 	'ow_Synonyms'                           => 'Sinonimoj',
+	'ow_SynonymsAndTranslations'            => 'Sinonimoj kaj tradukoj',
 	'ow_Source'                             => 'Fonto',
 	'ow_SourceIdentifier'                   => 'Identigilo de fontoj',
 	'ow_Text'                               => 'Teksto',
@@ -1233,6 +1239,13 @@ $wdMessages['hu'] = array(
 	'ow_Property'                      => 'Tulajdonság',
 	'ow_Value'                         => 'Érték',
 	'ow_meaningsoftitle'               => '„$1” jelentései',
+);
+
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$wdMessages['ia'] = array(
+	'ow_LinkAttributeValues' => 'Ligamines',
 );
 
 $wdMessages['id'] = array(

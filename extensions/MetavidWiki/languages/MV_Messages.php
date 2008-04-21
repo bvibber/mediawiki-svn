@@ -487,6 +487,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author ArnoLagrange
  */
 $messages['eo'] = array(
 	'mv_duration_label'    => 'daŭro',
@@ -500,6 +501,7 @@ $messages['eo'] = array(
 	'mv_results_found_for' => 'Serĉrezultoj <b>$1</b> al <b>$2</b> de <b>$3</b> por:',
 	'mv_data_page_title'   => '$1 por $2 de $3',
 	'mv_time_separator'    => '$1 al $2',
+	'mv_play'              => 'Legu',
 	'mv_edit'              => 'Redaktu',
 	'mv_history'           => 'Historio',
 	'mv_remove'            => 'forigu',
@@ -1445,6 +1447,9 @@ $messages['nl'] = array(
 	'mv_results_found_for'           => 'Zoekresultaten <b>$1</b> tot <b>$2</b> van <b>$3</b> voor:',
 	'mv_tool_mang_layers'            => 'Lagen beheren',
 	'mv_update_layers'               => 'Lagenoverzicht bijwerken',
+	'mv_watch_clip'                  => 'Clip bekijken',
+	'mv_close_clip'                  => 'Clip sluiten',
+	'mv_improve_transcript'          => 'Transscript verbeteren',
 	'ht_en'                          => 'Transcriptie',
 	'ht_en_desc'                     => 'Engelstalige transcripties. Dit type overlay is voor gesproken tekst in een videostream.
 U kunt links toevoegen, maar alle tekst moet gesproken worden in de videostream.',
@@ -2229,6 +2234,7 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'metavid'                        => 'Stránka Metavid',
@@ -2301,6 +2307,9 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_results_found_for'           => 'Výsledny vyhľadávania <b>$1</b> až <b>$2</b> z <b>$3</b>:',
 	'mv_tool_mang_layers'            => 'Spravovať vrstvy',
 	'mv_update_layers'               => 'aktualizovať zobrazenie vrstiev',
+	'mv_watch_clip'                  => 'Sledovať klip',
+	'mv_close_clip'                  => 'Zatvoriť klip',
+	'mv_improve_transcript'          => 'Vylepšiť prepis',
 	'ht_en'                          => 'Prepis',
 	'ht_en_desc'                     => 'Anglické prepisy. Tento typ prekladania je pre text, ktorý je v streame hovorený. Je možné pridávať odkazy, ale text by mal byť len to, čo sa hovorí vo video streame.',
 	'anno_en'                        => 'Komentáre a kategórie',

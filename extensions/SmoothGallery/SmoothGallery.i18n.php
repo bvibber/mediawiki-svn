@@ -214,6 +214,13 @@ $messages['ps'] = array(
 ته اړتيا ده.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'smoothgallery-gallery-not-found' => 'A galeria requisitada não existe.',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

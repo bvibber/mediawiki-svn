@@ -530,6 +530,14 @@ $messages['jv'] = array(
 	'newuserlog-create2-entry' => 'ndaftaraké rékening (akun) kanggo $1',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'newuserlog-byemail'      => 'პაროლი ელ-ფოსტითაა გამოგზავნილი',
+	'newuserlog-create-entry' => 'ახალი მომხმარებელი',
+);
+
 $messages['kk-arab'] = array(
 	'newuserlogpage'           => 'تىركەلۋ جۋرنالى',
 	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تىركەلگى جاساۋ جۋرنالى',

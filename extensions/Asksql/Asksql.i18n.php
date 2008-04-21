@@ -410,6 +410,18 @@ $messages['ja'] = array(
 	'querysuccessful' => 'クエリは成功しました',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'asksql'          => 'Kwéri SQL',
+	'sqlislogged'     => 'Élinga yèn kabèh kwéri bakal dicathet.',
+	'sqlquery'        => 'Lebokna kwéri',
+	'querybtn'        => 'Kirim kwéri',
+	'selectonly'      => 'Namung marengaké kwéri maca-waé.',
+	'querysuccessful' => 'Kwéri sida kasil',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

@@ -453,9 +453,10 @@ $messages['hy'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Meursault2004
  */
 $messages['id'] = array(
-	'usernameblacklist-desc'          => 'Menambahkan [[MediaWiki:Usernameblacklist|daftar hitam nama pengguna]] untuk membatasi pembuatan akun pengguna yang cocok dengan salah satu atau lebih ekspresi regular',
+	'usernameblacklist-desc'          => 'Menambahkan [[MediaWiki:Usernameblacklist|daftar hitam nama pengguna]] untuk membatasi pembuatan akun pengguna yang cocok dengan salah satu atau lebih ekspresi reguler',
 	'blacklistedusername'             => 'Daftar hitam nama pengguna',
 	'blacklistedusernametext'         => 'Nama pengguna yang Anda pilih berada dalam [[MediaWiki:Usernameblacklist|
 daftar hitam nama pengguna]]. Harap pilih nama lain.',
@@ -533,6 +534,7 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'usernameblacklist-desc'          => 'Nambahaké [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]] kanggo mbatesi panggawéan rékening (akun) panganggo sing cocog karo salah siji utawa luwih saka siji èksprèsi regulèr',
 	'blacklistedusername'             => 'Daftar ireng panganggo',
 	'blacklistedusernametext'         => 'Jeneng panganggo sing panjenengan pilih ana ing sajroning [[MediaWiki:Usernameblacklist|daftar ireng jeneng panganggo]]. Mangga milih jeneng panganggo liya.',
 	'usernameblacklist'               => '<pre>

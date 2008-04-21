@@ -1007,7 +1007,8 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'math_IllegalCharacter' => 'Ana karakter ilegal sing dilebokaké',
+	'math_IllegalCharacter'    => 'Ana karakter ilegal sing dilebokaké',
+	'math_UnrecognisedCommand' => 'Paréntah "$1" ora ditepungi',
 );
 
 /** Khmer (ភាសាខ្មែរ)

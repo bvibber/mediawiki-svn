@@ -599,11 +599,16 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'patrol'                 => 'Edições de patrulha',
+	'patrol-desc'            => 'Interface de patrulhagem melhorada com partilha de carga de trabalho',
 	'patrol-endorse'         => 'Aprovar',
 	'patrol-revert'          => 'Reverter',
 	'patrol-revert-reason'   => 'Motivo:',
 	'patrol-skip'            => 'Saltar',
 	'patrol-reverting'       => 'Revertendo: $1',
+	'patrol-nonefound'       => 'Nenhuma edição apropriada foi encontrada para ser patrulhada.',
+	'patrol-endorsed-ok'     => 'A edição foi marcada como patrulhada.',
+	'patrol-endorsed-failed' => 'A edição não pôde ser marcada como patrulhada.',
 	'patrol-reverted-ok'     => 'A edição foi revertida.',
 	'patrol-reverted-failed' => 'A edição não pôde ser revertida.',
 	'patrol-skipped-ok'      => 'Ignorando edição.',
@@ -611,6 +616,7 @@ $messages['pt'] = array(
 * Teste de principiante
 * Ver página de discussão',
 	'patrol-another'         => 'Mostrar outra edição, se disponível.',
+	'patrol-stopped'         => 'Você optou por não patrulhar uma outra edição. $1',
 	'patrol-resume'          => 'Carregue aqui para continuar.',
 	'group-patroller'        => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',

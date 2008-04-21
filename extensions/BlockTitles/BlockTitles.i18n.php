@@ -247,6 +247,15 @@ $messages['ja'] = array(
 	'block_title_error'            => '申し訳ありませんが、この項目名でページを保存することは許可できません。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'block_title_error_page_title' => 'Irah-irahan (judhul) Diblokir',
+	'block_title_error-desc'       => 'Mènèhi cara prasaja kanggo menggak kaca-kaca mawa irah-irahan (judhul) tartamtu supaya aja disimpen utawa digawé',
+	'block_title_error'            => 'Nuwun sèwu, irah-irahan (judhul) kaca iki ora pareng disimpen.',
+);
+
 /**
  * @author AlefZet
  */

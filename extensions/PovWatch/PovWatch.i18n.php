@@ -287,10 +287,40 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'povwatch'                 => 'Iwwerwaachung vun Ännerungskonflikter',
-	'povwatch_unknown_subpage' => 'Onbekannten Ënnersäit.',
-	'povwatch_title'           => 'Titel:',
-	'povwatch_added'           => 'derbäigesat',
+	'povwatch'                         => 'Iwwerwaachung vun Ännerungskonflikter',
+	'povwatch_desc'                    => "Erweiderung fir [[Special:PovWatch|Säiten op d'Iwwerwwaachungslëscht]] vun anere Benotzer derbäizesetzen",
+	'povwatch_no_session'              => "Feeler: De Formulaire konnt net verschafft ginn well d'Informatioune vun ärer Sessioun verluer gaang sinn.",
+	'povwatch_not_allowed_push'        => "Dir sidd keen Administrateur fir d'Iwwerwaache vun Ännerungskonflikten (POV Watch). Dir kënnt keng Säiten op d'Iwwerwaachungslëschte vun anere Benotzer derbäisetzen.",
+	'povwatch_already_subscribed'      => "Dir sidd scho fir d'Iwwerwwache vun Ännerungskonflikter ageschriwwen.",
+	'povwatch_subscribed'              => "Dir sidd elo fir d'Iwwerwaache vun Ännerungskonflikter ageschriwwen.",
+	'povwatch_not_subscribed'          => "Dir sidd net ageschriwwen fir Ännerungskonflikter z'iwwerwwachen. Dofir kënnt Dir iech och net ofmelden.",
+	'povwatch_unsubscribed'            => "Dir hutt iech elo ofgemeld fir Ännerungskonflikter z'iwwerwaachen.",
+	'povwatch_invalid_title'           => 'Den Titel deen Dir uginn hutt ass ongëlteg.',
+	'povwatch_pushed'                  => '[[$1]] gouf op Iwwerwwachungslëscht(en) vum Bentzer $2 derbäigesat',
+	'povwatch_intro'                   => "D'Iwwerwaache vun Ännerungskonflikten (PovWatch) erlaabt et fir ëmstridde Säiten diskret op d'Iwwerwaachungslëscht vun ageschriwwenen Administrateuren ze setzen.
+
+Eng Lëscht vun de Säiten déi rezent ageschriwwe goufen ass [[Special:PovWatch/log|hei disponibel]].",
+	'povwatch_subscriber_list'         => "D'[[Special:PovWatch/subscribers|Lëscht vun den ageschriwwene Benotzer fannt Dir hei]].",
+	'povwatch_subscriber_list_intro'   => '<strong>Lëscht vun den ageschriwwene Benotzer</strong>',
+	'povwatch_not_allowed_subscribers' => "Dir sidd net berechtegt fir d'Lëscht vun dene Benotzer ze gesinn déi ageschriwwe sinn fir Ännerungskonflikter z'iwwerwaachen.",
+	'povwatch_unknown_subpage'         => 'Onbekannten Ënnersäit.',
+	'povwatch_push'                    => 'Derbäisetzen',
+	'povwatch_push_intro'              => "Benotzt de Formulaire ënnendrënner fir Säiten op d'Iwwerwaachungslëschte vun ageschriwwene Benotzer derbäizesetzen.
+
+Sidd w.e.g. virsichteg wann Dir den Titel tippt: esouguer Säiten déi et net gëtt kënnen derbäigesat ginn, an et ass net méiglech den Titel nees ewechzehuelen wann et bis eemol derbäigesat gouf.",
+	'povwatch_title'                   => 'Titel:',
+	'povwatch_comment'                 => "Bemierkung (fir d'Logbicher/Lëschten):",
+	'povwatch_no_log'                  => 'Dës Lëscht ass eidel.',
+	'povwatch_no_subscribers'          => 'Et gëtt keng Benotzer déi sech ageschriwwen hunn.',
+	'povwatch_unsubscribe_intro'       => "Dir sidd elo fir d'Iwwerwaache vun Ännerungskonflikter ageschriwwen.
+
+Klickt the Knäppchen hei ënnendrënner fir iech ofzemelden.",
+	'povwatch_unsubscribe'             => 'Ofmelden',
+	'povwatch_subscribe_intro'         => "Dir sidd net ageschriwwen fir Ännerungskonflikter z'iwwerwaachen.
+
+Klickt op de Knäppchen hei ënnendrënner fir iech anzeschreiwen.",
+	'povwatch_subscribe'               => 'Aschreiwen',
+	'povwatch_added'                   => 'derbäigesat',
 );
 
 /** Limburgish (Limburgs)

@@ -803,11 +803,17 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'openidlogin'                   => 'Autenticação com OpenID',
+	'openidfinish'                  => 'Terminar autenticação OpenID',
 	'openidserver'                  => 'Servidor OpenID',
 	'openidxrds'                    => 'Ficheiro Yadis',
+	'openidconvert'                 => 'Conversor de OpenID',
 	'openiderror'                   => 'Erro de verificação',
+	'openidconfigerror'             => 'Erro de Configuração do OpenID',
+	'openidpermission'              => 'Erro de permissões OpenID',
 	'openidcancel'                  => 'Verificação cancelada',
 	'openidfailure'                 => 'Verificação falhou',
+	'openidsuccess'                 => 'Verificação com sucesso',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
 	'openidoptional'                => 'Opcional',
 	'openidrequired'                => 'Requerido',
@@ -819,9 +825,12 @@ $messages['pt'] = array(
 	'openidchoosemanual'            => 'Um nome à sua escolha:',
 	'openidchooseexisting'          => 'Uma conta existente neste wiki:',
 	'openidchoosepassword'          => 'palavra-chave:',
+	'openidconvertsuccess'          => 'Convertido para OpenID com sucesso',
 	'openidconvertyourstext'        => 'Esse já é o seu OpenID.',
 	'openidconvertothertext'        => 'Esse é o OpenID de outra pessoa.',
 	'openidnousername'              => 'Nenhum nome de utilizador especificado.',
+	'openidbadusername'             => 'Nome de utilizador especificado inválido.',
+	'openidclientonlytext'          => 'Você pode usar contas deste wiki como OpenIDs noutro sítio.',
 	'openidloginlabel'              => 'URL do OpenID',
 );
 

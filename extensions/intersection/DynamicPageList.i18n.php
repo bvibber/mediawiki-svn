@@ -254,6 +254,7 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'intersection-desc'          => 'Ngasilaké sawijining daftar item paling anyar ing sawijining kategori utawa gabungan sawetara kategori',
 	'intersection_toomanycats'   => 'DynamicPageList: Kakèhan kategori!',
 	'intersection_toofewcats'    => 'DynamicPageList: Kesithikan kategori!',
 	'intersection_noresults'     => 'DynamicPageList: Ora ana pituwasé (kasilé)!',

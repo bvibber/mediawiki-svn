@@ -455,6 +455,7 @@ $messages['pt'] = array(
 	'passwordreset-confirmpass'     => 'Confirme Palavra-Chave',
 	'passwordreset-submit'          => 'Repor Palavra-Chave',
 	'passwordreset-disableuser'     => 'Desactivar Conta de Utilizador?',
+	'passwordreset-disablesuccess'  => 'A conta de utilizador foi desactivada (ID do utilizador: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desactivada',
 	'disabledusers'                 => 'Utilizadores desactivados',
 );

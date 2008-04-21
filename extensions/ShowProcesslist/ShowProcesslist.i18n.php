@@ -272,6 +272,7 @@ $messages['pt'] = array(
 	'showprocesslist'         => 'Mostrar Lista de Processos',
 	'showprocesslist-id'      => 'Id',
 	'showprocesslist-user'    => 'Utilizador',
+	'showprocesslist-host'    => 'Anfitrião',
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time'    => 'Tempo',
 	'showprocesslist-state'   => 'Estado',

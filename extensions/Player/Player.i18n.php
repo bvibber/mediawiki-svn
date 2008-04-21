@@ -125,12 +125,15 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author ArnoLagrange
  */
 $messages['eo'] = array(
 	'player'             => 'Ludanto',
 	'player-title'       => 'Ludanto',
 	'player-playertitle' => 'Ludanto: $1',
 	'player-file'        => 'Dosiernomo',
+	'player-play'        => 'Legu',
+	'player-clicktoplay' => 'Legu $1',
 	'player-goto-player' => 'ludanto',
 	'player-goto-page'   => 'Paĝo',
 	'player-goto-file'   => 'dosiero',

@@ -1001,6 +1001,9 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
 $messages['jv'] = array(
 	'hiderevision'                => 'Delikna révisi sacara permanèn',
 	'hiderevision-desc'           => 'Ndelikaké révisi-révisi individu saka kabèh panganggo kanggo alesan hukum lan liya-liyané.',
+	'group-oversight'             => 'Oversighters (Para pambusak révisi)',
+	'group-oversight-member'      => 'Oversight (Pambusak révisi)',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight (Pambusak révisi)',
 	'hiderevision-prompt'         => 'Nomer révisi sing kudu diilangi:',
 	'hiderevision-continue'       => 'Banjurna',
 	'hiderevision-text'           => "Iki '''namung''' bisa dienggo ing kasus-kasus kaya ta:
@@ -1026,6 +1029,7 @@ Balèkna suntingan iki dhisik.',
 *Kacané wis dibusak
 *Révisi sing didelikaké iki, iku révisi kapisan',
 	'oversight-log-hiderev'       => 'mbusak suntingan saka $1',
+	'oversight'                   => 'Log pambusakan révisi sacara permanèn',
 	'oversight-view'              => 'détail',
 	'oversight-difference'        => '(Prabédan saka révisi sadurungé sing ana)',
 	'oversight-prev'              => 'Révisi pungkasan sadurungé',
@@ -1203,6 +1207,7 @@ Annulléiert dës Ännerung d'éischt.",
 	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
 	'oversight'                   => 'Iwwersiicht',
 	'oversight-view'              => 'Detailer',
+	'oversight-difference'        => '(Ënnerscheed zu der viregter läschter Versioun)',
 	'oversight-prev'              => 'Lescht vireg Versioun',
 	'oversight-hidden'            => 'Verstoppte Versioun',
 );

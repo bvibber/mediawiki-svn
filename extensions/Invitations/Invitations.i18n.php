@@ -426,6 +426,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'invite-logpage'                        => 'Registo de Convites',
+	'invite-logpagetext'                    => 'Isto é um registo de utilizadores que se convidam uns aos outros a usarem as várias funcionalidades do software.',
 	'invite-logentry'                       => 'convidou $1 a usar a funcionalidade <i>$2</i>.',
 	'invitations'                           => 'Gerir convites para funcionalidades de software',
 	'invitations-desc'                      => 'Permite [[{{ns:special}}:Invitations|a gestão de novas funcionalidades]] através da sua restrição a um sistema baseado em convites',

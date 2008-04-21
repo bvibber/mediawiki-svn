@@ -515,6 +515,13 @@ $messages['ja'] = array(
 	'changeauthor-logpagename'          => '編集者の変更ログ',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'changeauthor-comment' => 'Komentar:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Lovekhmer

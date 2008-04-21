@@ -313,6 +313,13 @@ $messages['km'] = array(
 	'createsigndoc-create'    => 'បង្កើត',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'createsigndoc-create' => '만들기',
+);
+
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
@@ -499,16 +506,19 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'createsigndoc-pagename'      => 'Página:',
-	'createsigndoc-allowedgroup'  => 'Grupo autorizado:',
-	'createsigndoc-email'         => 'Endereço de e-mail:',
-	'createsigndoc-extaddress'    => 'Cidade, Estado, País:',
-	'createsigndoc-phone'         => 'Número de telefone:',
-	'createsigndoc-minage'        => 'Idade mínima:',
-	'createsigndoc-introtext'     => 'Introdução:',
-	'createsigndoc-optional'      => 'Opcional',
-	'createsigndoc-create'        => 'Criar',
-	'createsigndoc-error-generic' => 'Erro: $1',
+	'createsigndoc-pagename'          => 'Página:',
+	'createsigndoc-allowedgroup'      => 'Grupo autorizado:',
+	'createsigndoc-email'             => 'Endereço de e-mail:',
+	'createsigndoc-extaddress'        => 'Cidade, Estado, País:',
+	'createsigndoc-phone'             => 'Número de telefone:',
+	'createsigndoc-bday'              => 'Data de nascimento:',
+	'createsigndoc-minage'            => 'Idade mínima:',
+	'createsigndoc-introtext'         => 'Introdução:',
+	'createsigndoc-hidden'            => 'Escondido',
+	'createsigndoc-optional'          => 'Opcional',
+	'createsigndoc-create'            => 'Criar',
+	'createsigndoc-error-generic'     => 'Erro: $1',
+	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
 );
 
 /** Russian (Русский)

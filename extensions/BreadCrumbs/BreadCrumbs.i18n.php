@@ -116,6 +116,13 @@ $messages['ja'] = array(
 	'breadcrumbs-desc' => '利用者のウィキ上での軌跡を表示する',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'breadcrumbs-desc' => 'Nuduhaké para panganggo dalan ngliwati wiki.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

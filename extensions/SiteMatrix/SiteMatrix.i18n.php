@@ -60,6 +60,8 @@ $messages['ar'] = array(
 	'sitematrix-others'    => 'مشاريع ويكيميديا الأخرى',
 	'sitematrix-total'     => "'''إجمالي العدد: $1'''",
 	'sitematrix-sitetotal' => 'الإجمالي',
+	'sitematrix-private'   => 'خاص',
+	'sitematrix-fishbowl'  => 'التعديل محدد',
 );
 
 /** Asturian (Asturianu)
@@ -302,6 +304,8 @@ $messages['fi'] = array(
 	'sitematrix-others'    => 'Muut Wikimedian projektit',
 	'sitematrix-total'     => "'''Wikejä yhteensä: $1'''",
 	'sitematrix-sitetotal' => 'Yhteensä',
+	'sitematrix-private'   => 'yksityinen',
+	'sitematrix-fishbowl'  => 'muokkaaminen rajoitettu',
 );
 
 /** French (Français)
@@ -320,6 +324,7 @@ $messages['fr'] = array(
 	'sitematrix-total'     => "'''Total du compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privé',
+	'sitematrix-fishbowl'  => 'modifications limitées',
 );
 
 $messages['frc'] = array(
@@ -565,7 +570,7 @@ $messages['jv'] = array(
 	'sitematrix-total'     => "'''Gunggungé cacahé: $1'''",
 	'sitematrix-sitetotal' => 'Gunggungé',
 	'sitematrix-private'   => 'pribadi',
-	'sitematrix-fishbowl'  => 'waskom iwak',
+	'sitematrix-fishbowl'  => 'suntingan diwatesi',
 );
 
 $messages['ka'] = array(
@@ -656,12 +661,15 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'sitematrix'           => "Lies van Wikimedia wiki's",
+	'sitematrix-summary'   => "Dees speciaal pazjena belies alle Wikimedia wikji's.",
 	'sitematrix-desc'      => "Toent 'n [[special:SiteMatrix|lijst van Wikimedia-wiki's]]",
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => "Naam van 't perjèk, interperjèk link enne interwiki link",
 	'sitematrix-others'    => 'Anger perjèkter van Wikimedia',
 	'sitematrix-total'     => "'''Totaal aantal: $1'''",
 	'sitematrix-sitetotal' => 'Totaal',
+	'sitematrix-private'   => 'beperkte toegang',
+	'sitematrix-fishbowl'  => 'beperk bewerke',
 );
 
 /** Lumbaart (Lumbaart)
@@ -781,6 +789,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  * @author לערי ריינהארט
  */
 $messages['no'] = array(
@@ -808,6 +817,7 @@ $messages['oc'] = array(
 	'sitematrix-others'    => 'Autres projèctes de Wikimedia Foundation',
 	'sitematrix-total'     => "'''Total del compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privat',
 );
 
 /** Pangasinan (Pangasinan)
@@ -866,7 +876,7 @@ $messages['pt'] = array(
 	'sitematrix-total'     => "'''Contagem total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privado',
-	'sitematrix-fishbowl'  => 'aquário',
+	'sitematrix-fishbowl'  => 'edição restricta',
 );
 
 $messages['pt-br'] = array(
@@ -930,6 +940,8 @@ $messages['sk'] = array(
 	'sitematrix-others'    => 'Iné projekty nadácie Wikimedia',
 	'sitematrix-total'     => "'''Celkový počet: $1'''",
 	'sitematrix-sitetotal' => 'Celkom',
+	'sitematrix-private'   => 'súkromné',
+	'sitematrix-fishbowl'  => 'úpravy obmedzené',
 );
 
 $messages['sq'] = array(
@@ -993,7 +1005,7 @@ $messages['sv'] = array(
 	'sitematrix-total'     => "'''Totalt antal: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privat',
-	'sitematrix-fishbowl'  => 'utställningswiki',
+	'sitematrix-fishbowl'  => 'redigerinng begränsad',
 );
 
 /** Telugu (తెలుగు)
