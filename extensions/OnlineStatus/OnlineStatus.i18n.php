@@ -51,9 +51,12 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'onlinestatus-toggles-desc'   => 'Via statuso:',
-	'onlinestatus-toggle-offline' => 'Nekonektita',
-	'onlinestatus-toggle-online'  => 'Konektita',
+	'onlinestatus-subtitle-offline' => 'Ĉi tiu uzanto estas nune nekonektita',
+	'onlinestatus-subtitle-online'  => 'Ĉi tiu uzanto estas nune konektita',
+	'onlinestatus-toggles-desc'     => 'Via statuso:',
+	'onlinestatus-toggles-show'     => 'Montru retkonektan statuson en mia uzanto-paĝo',
+	'onlinestatus-toggle-offline'   => 'Nekonektita',
+	'onlinestatus-toggle-online'    => 'Konektita',
 );
 
 /** French (Français)

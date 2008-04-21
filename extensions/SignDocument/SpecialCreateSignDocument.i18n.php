@@ -444,6 +444,13 @@ $messages['oc'] = array(
 	'createsigndoc-error-alreadycreated' => 'Lo document d’autentificacion per « $1 » ja es estat creat.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'createsigndoc-pagename' => 'Фарс:',
+);
+
 $messages['pl'] = array(
 	'createsigndoc-pagename' => 'Strona:',
 	'createsigndoc-email' => 'Adres e-mail:',

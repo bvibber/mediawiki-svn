@@ -320,6 +320,13 @@ $messages['oc'] = array(
 	'languageselector-setlang' => 'Definir',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'languageselector' => 'Æвзаг',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author McMonster

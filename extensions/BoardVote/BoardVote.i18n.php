@@ -696,6 +696,7 @@ $messages['da'] = array(
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
 	'boardvote_user'    => 'Bruger',
+	'boardvote_ip'      => 'IP',
 	'boardvote_submit'  => 'OK',
 	'boardvote_welcome' => "Velkommen '''$1'''!",
 );
@@ -2838,21 +2839,28 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'boardvote_entry'      => '* [[{{ns:special}}:Boardvote/vote|Afstimmen]]
+	'boardvote'              => 'Wahlen to dat Wikimedia-Kuratorium',
+	'boardvote-desc'         => '[[meta:Board elections|Wahlen to dat Wikimedia-Kuratorium]]',
+	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Afstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bet nu al afgevene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verslötelte Wahlindrääg]]',
-	'boardvote_novotes'    => 'Noch hett nüms afstimmt.',
-	'boardvote_time'       => 'Tiet',
-	'boardvote_user'       => 'Bruker',
-	'boardvote_edits'      => 'Ännern',
-	'boardvote_days'       => 'Daag',
-	'boardvote_ip'         => 'IP',
-	'boardvote_dumplink'   => 'Hier klicken',
-	'boardvote_submit'     => 'Afstimmen',
-	'boardvote_strike'     => 'Strieken',
-	'boardvote_unstrike'   => 'Strieken trüchnehmen',
-	'boardvote_edits_many' => 'veel',
-	'boardvote_welcome'    => "Moin '''$1'''.",
+	'boardvote_novotes'      => 'Noch hett nüms afstimmt.',
+	'boardvote_time'         => 'Tiet',
+	'boardvote_user'         => 'Bruker',
+	'boardvote_edits'        => 'Ännern',
+	'boardvote_days'         => 'Daag',
+	'boardvote_ip'           => 'IP',
+	'boardvote_dumplink'     => 'Hier klicken',
+	'boardvote_submit'       => 'Afstimmen',
+	'boardvote_strike'       => 'Strieken',
+	'boardvote_unstrike'     => 'Strieken trüchnehmen',
+	'boardvote_notstarted'   => 'De Wahl hett noch nich anfungen',
+	'boardvote_edits_many'   => 'veel',
+	'group-boardvote'        => 'Wahl-Administraters',
+	'group-boardvote-member' => 'Wahl-Administrater',
+	'grouppage-boardvote'    => '{{ns:project}}:Wahl-Administrater',
+	'boardvote_welcome'      => "Moin '''$1'''.",
+	'go_to_board_vote'       => 'Wahlen to dat Wikimedia-Kuratorium 2007',
 );
 
 /** Nepali (नेपाली)
@@ -3075,6 +3083,14 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_welcome'      => "Benvengut '''$1'''!",
 	'go_to_board_vote'       => 'Tablèu de las eleccions Wikimèdia 2007',
 	'boardvote_redirecting'  => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'boardvote_time' => 'Рæстæг',
+	'boardvote_ip'   => 'IP-адрис',
 );
 
 /** Pangasinan (Pangasinan)

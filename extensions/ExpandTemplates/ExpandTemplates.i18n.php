@@ -657,6 +657,14 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'expandtemplates'                  => '틀 확장',
+	'expandtemplates-desc'             => '틀, 파서 함수, 변수 등을 모두 풀어낸 문서를 볼 수 있는 [[Special:ExpandTemplates|틀 확장]] 기능',
+	'expand_templates_intro'           => '이 특수문서는 글의 모든 틀을 끝까지 풀어 줍니다.
+<nowiki>{{</nowiki>#if:…}} 같은 파서 함수나 <nowiki>{{</nowiki>CURRENTDAY}} 같은 변수를 포함해 두개의 중괄호 사이에 있는 것은 모두 풀어줍니다.
+미디어위키의 자체 파서로 작동합니다.',
+	'expand_templates_input'           => '입력:',
+	'expand_templates_output'          => '결과',
+	'expand_templates_xml_output'      => 'XML 출력',
+	'expand_templates_ok'              => '확인',
 	'expand_templates_remove_comments' => '주석 지우기',
 	'expand_templates_preview'         => '미리보기',
 );
@@ -780,8 +788,13 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'expandtemplates'                  => 'Vörlagen oplösen',
+	'expand_templates_input'           => 'Inputtext:',
+	'expand_templates_output'          => 'Resultat',
+	'expand_templates_xml_output'      => 'XML-Utgaav',
 	'expand_templates_ok'              => 'Los',
 	'expand_templates_remove_comments' => 'Kommentaren rutnehmen',
+	'expand_templates_generate_xml'    => 'XML-Parser-Boom wiesen',
 	'expand_templates_preview'         => 'Vörschau',
 );
 

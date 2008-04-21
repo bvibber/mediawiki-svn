@@ -97,9 +97,12 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'tasklist'               => 'Tasklisto',
+	'tasklistbyproject'      => 'Tasklisto Laŭ Projekto',
 	'tasklistunknownproject' => 'Nekonata projekto',
+	'tasklistincorrectuser'  => 'Malkorekta salutnomo',
 	'tasklistemail'          => 'Kara %j',
 	'tasklistmytasks'        => 'Miaj taskoj',
+	'tasklistchooseproj'     => 'Selektu Projekton:',
 );
 
 /** French (Français)

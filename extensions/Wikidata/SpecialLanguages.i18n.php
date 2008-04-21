@@ -2002,6 +2002,14 @@ Contactatz l’administrator.',
 	'ow_db_consistency_not_found'           => "<h2>Error</h2> Un problèma es estat trobat dins la banca de donadas. Wikidata pòt pas trobar de donadas validas ligadas al numèro de sens definit. Poiriá èsser perdut. Contactatz l'operator o l'administrator del serveire.",
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$wdMessages['os'] = array(
+	'ow_Language'            => 'Æвзаг',
+	'ow_LinkAttributeValues' => 'Æрвитæнтæ',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe

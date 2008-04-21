@@ -226,6 +226,13 @@ $messages['km'] = array(
 	'edituser-dosearch' => 'ស្វែងរក',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'edituser-dosearch' => '찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

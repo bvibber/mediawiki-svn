@@ -146,7 +146,10 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'formsave' => 'Konservu',
+	'formsave'              => 'Konservu',
+	'formarticleexists'     => 'Paĝo ekzistas',
+	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
+	'formbadpagename'       => 'Fuŝa paĝnomo',
 );
 
 $messages['fr'] = array(

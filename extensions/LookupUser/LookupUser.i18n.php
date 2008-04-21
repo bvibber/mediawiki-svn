@@ -49,13 +49,17 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'lookupuser_nonexistent'  => 'Грешка: Потребителят не съществува',
-	'lookupuser_id'           => 'Потребителски номер: <tt>#$1</tt>',
-	'lookupuser_email'        => 'Е-поща: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname'     => 'Име и фамилия: $1',
-	'lookupuser_registration' => 'Дата на регистрация: $1',
-	'lookupuser_touched'      => 'Последна промяна на потребителските настройки: $1',
-	'lookupuser_useroptions'  => 'Потребителски настройки:',
+	'lookupuser'               => 'Извличане на потребителска информация',
+	'lookupuser-desc'          => '[[Special:LookupUser|Извлича информация]] за потребител - електронна поща, потребителски номер и др.',
+	'lookupuser_intro'         => 'Въведете потребителско име за да видите предпочитанията и настройките на потребителя.',
+	'lookupuser_nonexistent'   => 'Грешка: Потребителят не съществува',
+	'lookupuser_authenticated' => 'Потвърждение на е-поща: $1',
+	'lookupuser_id'            => 'Потребителски номер: <tt>#$1</tt>',
+	'lookupuser_email'         => 'Е-поща: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'      => 'Име и фамилия: $1',
+	'lookupuser_registration'  => 'Дата на регистрация: $1',
+	'lookupuser_touched'       => 'Последна промяна на потребителските настройки: $1',
+	'lookupuser_useroptions'   => 'Потребителски настройки:',
 );
 
 /** German (Deutsch)

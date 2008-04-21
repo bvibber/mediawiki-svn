@@ -129,6 +129,13 @@ $messages['dsb'] = array(
 	'filelist-image-desc'   => 'Zespominanje',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'filelist' => 'Listo de Dosieroj',
+);
+
 /** Võro (Võro)
  * @author Siebrand
  */

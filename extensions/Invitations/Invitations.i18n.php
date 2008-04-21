@@ -58,6 +58,7 @@ $messages['bg'] = array(
 	'invitations-invitedlist-item'     => '<b>$1</b> ($2 налични покани)',
 	'invitations-pagetitle'            => 'Възможности на софтуера, достъпни с покана',
 	'invitations-feature-pagetitle'    => 'Управление на поканите - $1',
+	'invitations-feature-access'       => 'В момента имате достъп да използвате <i>$1</i>.',
 	'invitations-feature-notallowed'   => 'Нямате достъп да използвате <i>$1</i>.',
 	'invitations-inviteform-title'     => 'Изпращане на покана на потребител да използва $1',
 	'invitations-inviteform-username'  => 'Потребител',
@@ -540,9 +541,29 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'invite-logpage'     => 'Invitationslogg',
-	'invite-logpagetext' => 'Detta är en logg över vilka användare som har inviterat varandra till att använda diverse mjukvarefunktioner.',
-	'invite-logentry'    => 'inviterade $1 till att använda funktionen <i>$2</i>',
+	'invite-logpage'                        => 'Invitationslogg',
+	'invite-logpagetext'                    => 'Detta är en logg över vilka användare som har inviterat varandra till att använda diverse mjukvarefunktioner.',
+	'invite-logentry'                       => 'inviterade $1 till att använda funktionen <i>$2</i>',
+	'invitations'                           => 'Behandling av inbjudningar till programvarefunktioner',
+	'invitations-desc'                      => 'Gör det möjligt att [[Special:Invitations|kontrollera nya funktioner]] genom att begränsa dem med ett inbjudningsbaserat system',
+	'invitations-invitedlist-description'   => 'Du har tillgång till följande funktioner som kräver en inbjudan. Klicka på funktionens namn för att behandla inbjudningar för dom enkla funktionerna.',
+	'invitations-invitedlist-none'          => 'Du har inte blivit inbjuden att använda några funktioner som kräver inbjudan.',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 inbjudningar tillgängliga)',
+	'invitations-pagetitle'                 => 'Funktioner som kräver inbjudning',
+	'invitations-uninvitedlist-description' => 'Du har inte tillgång till dessa funktioner som kräver inbjudan.',
+	'invitations-uninvitedlist-none'        => 'Inga programvarefunktioner kräver inbjudan.',
+	'invitations-feature-pagetitle'         => 'Inbjudningsbehandling - $1',
+	'invitations-feature-access'            => 'Du har tillgång att använda <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Av dina $1 inbjudningar har du kvar <b>$1</b>.',
+	'invitations-feature-noneleft'          => 'Du har använt alla dina inbjudningar för den här funktionen',
+	'invitations-feature-noneyet'           => 'Du har inte tilldelats din andel inbjudningar för den här funktionen.',
+	'invitations-feature-notallowed'        => 'Du har inte tillgång att använda <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Bjuder in en användare att använda $1',
+	'invitations-inviteform-username'       => 'Användare som ska bjudas in',
+	'invitations-inviteform-submit'         => 'Bjud in',
+	'invitations-error-baduser'             => 'Användaren du angav finns inte.',
+	'invitations-error-alreadyinvited'      => 'Användare du angav har redan tillgång till den här funktionen!',
+	'invitations-invite-success'            => 'Du har bjudit in $1 att använda den här funktionen!',
 );
 
 /** Telugu (తెలుగు)

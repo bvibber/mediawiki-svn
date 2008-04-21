@@ -173,6 +173,7 @@ $messages['eo'] = array(
 	'youtubeauthsub_keywords'           => 'Ŝlosilvortoj',
 	'youtubeauthsub_category'           => 'Kategorio',
 	'youtubeauthsub_submit'             => 'Enigu',
+	'youtubeauthsub_clickhere'          => 'Klaku ĉi tien por ensaluti YouTube-on',
 	'youtubeauthsub_uploadbutton'       => 'Alŝutu',
 	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
 
@@ -556,6 +557,13 @@ Siatz pacient.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Mercés de picar un o mantuns mots claus.',
 	'youtubeauthsub_jserror_notitle'     => 'Mercés de picar un títol per la vidèo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Picatz una descripcion per la vidèo.',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'youtubeauthsub_category' => 'Категори',
 );
 
 /** Polish (Polski)

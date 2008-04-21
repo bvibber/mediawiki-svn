@@ -186,8 +186,10 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'regexblock-unblock-success'     => 'Malforbaro sukcesis',
+	'regexblock-unblock-log'         => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
 	'regexblock-form-username'       => 'IP Adreso aŭ salutnomo:',
 	'regexblock-form-reason'         => 'Kialo:',
+	'regexblock-form-expiry'         => 'Findato:&#160;',
 	'regexblock-block-success'       => 'Forbaro sukcesis',
 	'regexblock-already-blocked'     => '$1 jam estas forbarita.',
 	'regexblock-stats-username'      => 'Por $1',
@@ -197,6 +199,7 @@ $messages['eo'] = array(
 	'regexblock-view-go'             => 'Ek!',
 	'regexblock-view-reason'         => 'kialo: $1',
 	'regexblock-view-reason-default' => 'malspecifa kialo',
+	'regexblock-view-block-by'       => 'forbarita de',
 	'regexblock-view-block-unblock'  => 'restarigu',
 	'regexblock-view-time'           => 'je $1',
 );

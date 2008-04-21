@@ -250,6 +250,7 @@ $messages['eo'] = array(
 	'webstore_access'                  => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
 	'webstore_temp_open'               => 'Eraro malfermante laboran dosieron "$1".',
+	'webstore_no_file'                 => 'Neniu dosiero estis alŝutita.',
 	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
 	'webstore_curl'                    => 'Eraro de cURL: $1',
 	'webstore_404'                     => 'Dosiero ne trovita.',

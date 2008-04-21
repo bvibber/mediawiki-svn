@@ -127,6 +127,7 @@ $messages['eo'] = array(
 	'talkhere-talkpage'   => 'diskuto-paĝo',
 	'talkhere-notalk'     => "''(ankoraŭ neniuj komentoj)''",
 	'talkhere-addcomment' => 'aldonu komenton',
+	'talkhere-loading'    => 'ŝarĝante redaktilon...',
 );
 
 /** Spanish (Español)

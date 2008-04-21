@@ -655,6 +655,8 @@ $messages['lb'] = array(
 	'sitematrix-others'    => 'Aner Wikimedia-Projetën',
 	'sitematrix-total'     => "'''Total vum Kont: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'ännere limitéiert',
 );
 
 /** Limburgish (Limburgs)
@@ -760,6 +762,7 @@ $messages['nds'] = array(
 	'sitematrix-others'    => 'Annere Projekten vun Wikimedia',
 	'sitematrix-total'     => "'''Alltohoop: $1'''",
 	'sitematrix-sitetotal' => 'Alltohoop',
+	'sitematrix-private'   => 'privat',
 );
 
 /** Dutch (Nederlands)
@@ -791,7 +794,6 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
- * @author Siebrand
  * @author לערי ריינהארט
  */
 $messages['no'] = array(
@@ -804,7 +806,7 @@ $messages['no'] = array(
 	'sitematrix-total'     => "'''Totalt antall: $1'''",
 	'sitematrix-sitetotal' => 'Totalt',
 	'sitematrix-private'   => 'privat',
-	'sitematrix-fishbowl'  => 'utstillingswiki',
+	'sitematrix-fishbowl'  => 'redigering begrenset',
 );
 
 /** Occitan (Occitan)
@@ -820,6 +822,13 @@ $messages['oc'] = array(
 	'sitematrix-total'     => "'''Total del compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privat',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'sitematrix-language' => 'Æвзаг',
 );
 
 /** Pangasinan (Pangasinan)
@@ -915,6 +924,8 @@ $messages['ru'] = array(
 	'sitematrix-others'    => 'Другие проекты «Фонда Викимедиа»',
 	'sitematrix-total'     => "'''Общее количество: $1'''",
 	'sitematrix-sitetotal' => 'Всего',
+	'sitematrix-private'   => 'частный',
+	'sitematrix-fishbowl'  => 'редактирование ограничено',
 );
 
 /** Yakut (Саха тыла)

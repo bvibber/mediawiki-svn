@@ -444,6 +444,15 @@ $messages['oc'] = array(
 	'importusers-realname'                => 'nom vertadièr',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'importusers-uploadfile' => 'Ног файл сæвæр',
+	'importusers-password'   => 'пароль',
+	'importusers-email'      => 'эл. посты адрис',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Dodek

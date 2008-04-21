@@ -292,10 +292,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author ToePeu
  * @author Klutzy
  */
 $messages['ko'] = array(
 	'sitenotice_close' => '숨기기',
+	'sitenotice-desc'  => '사용자가 알림말을 숨길 수 있습니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

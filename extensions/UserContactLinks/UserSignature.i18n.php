@@ -48,6 +48,13 @@ $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'usercontactlink-baduser' => 'malkorekta salutnomo',
+);
+
 /** French (Français)
  * @author Grondin
  */

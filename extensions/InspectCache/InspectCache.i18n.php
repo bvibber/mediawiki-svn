@@ -303,6 +303,13 @@ $messages['oc'] = array(
 	'inspectcache-list'    => 'Lista',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'inspectcache-delete' => 'Аппар',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

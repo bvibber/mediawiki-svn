@@ -303,10 +303,18 @@ $messages['id'] = array(
 );
 
 /** Icelandic (Íslenska)
+ * @author S.Örvarr.S
  * @author SPQRobin
  */
 $messages['is'] = array(
-	'countedits-username' => 'Notandanafn:',
+	'countedits'              => 'Telja breytingar',
+	'countedits-username'     => 'Notandanafn:',
+	'countedits-ok'           => 'Í lagi',
+	'countedits-nosuchuser'   => 'Það er enginn notandi með nafnið $1.',
+	'countedits-resultheader' => 'Útkoma $1',
+	'countedits-resulttext'   => '$1 hefur gert $2 breytingar',
+	'countedits-mostactive'   => 'Virkustu framleggjendurnir',
+	'countedits-nocontribs'   => 'Það hafa engar breytingar verið gerðar á þessum wiki.',
 );
 
 /* Italian (BrokenArrow) */

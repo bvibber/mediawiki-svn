@@ -210,6 +210,7 @@ $messages['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'importfreeimages'                       => 'នាំចូល រូបភាព សេរី',
@@ -217,6 +218,7 @@ $messages['km'] = array(
 	'importfreeimages_invalidurl'            => 'URL "$1" មិនមែនជា រូបភាព ត្រឹមត្រូវ របស់ Flickr ។',
 	'importfreeimages_owner'                 => 'អ្នកនិពន្ធ',
 	'importfreeimages_importthis'            => 'នាំចូល នេះ',
+	'importfreeimages_next'                  => 'បន្ទាប់ $1',
 	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
 );
 
@@ -317,6 +319,13 @@ $messages['oc'] = array(
 	'importfreeimages_filefromflickr'        => '$1 per l’utilizaire <b>[$2]</b> dempuèi flickr. URL d’origina',
 	'importfreeimages_promptuserforfilename' => 'Indicatz lo nom del fichièr de destinacion',
 	'importfreeimages_returntoform'          => "o, clicatz <a href='$1'>aicí</a> per tornar a vòstra lista de resultats.",
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'importfreeimages_owner' => 'Автор',
 );
 
 /** Polish (Polski)

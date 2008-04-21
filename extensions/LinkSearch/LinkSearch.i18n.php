@@ -610,9 +610,11 @@ $messages['nap'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'linksearch-pat' => 'Söökmunster:',
-	'linksearch-ns'  => 'Naamruum:',
-	'linksearch-ok'  => 'Söken',
+	'linksearch'      => 'Weblenken söken',
+	'linksearch-pat'  => 'Söökmunster:',
+	'linksearch-ns'   => 'Naamruum:',
+	'linksearch-ok'   => 'Söken',
+	'linksearch-line' => '$1 hett en Lenk vun $2',
 );
 
 /** Nepali (नेपाली)

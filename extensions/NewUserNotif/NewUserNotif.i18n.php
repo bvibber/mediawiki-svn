@@ -39,8 +39,9 @@ $2 warzafa favesikpata su zo redur koe $3 ko $4.',
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'newusernotifsubj' => 'Съобщение за нов потребител в $1',
-	'newusernotifbody' => 'Здравейте $1,
+	'newusernotifsubj'  => 'Съобщение за нов потребител в $1',
+	'newusernotif-desc' => 'Изпраща оповестяване на електронна поща при създаване на нова потребителска сметка',
+	'newusernotifbody'  => 'Здравейте $1,
 
 В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
 );

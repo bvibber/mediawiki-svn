@@ -787,6 +787,7 @@ $messages['myv'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'bookinfo-header'            => 'Informatschonen to Böker',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Schriever:',
 	'bookinfo-result-publisher'  => 'Verlag:',
@@ -868,6 +869,17 @@ $messages['oc'] = array(
 	'bookinfo-error-noresponse'  => 'Cap de responsa o depassament de la sosta.',
 	'bookinfo-purchase'          => 'Comprar aqueste libre sus $1',
 	'bookinfo-provider'          => 'Fornidor de donadas : $1',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'bookinfo-header'        => 'Чиныджы тыххæй информаци',
+	'bookinfo-result-title'  => 'Сæргонд:',
+	'bookinfo-result-author' => 'Автор:',
+	'bookinfo-result-year'   => 'Аз:',
+	'bookinfo-purchase'      => 'Ацы чиныг алхæнæн ис ам:',
 );
 
 /** Polish (Polski)

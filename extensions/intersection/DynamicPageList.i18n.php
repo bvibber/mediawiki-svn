@@ -275,7 +275,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'intersection_noresults' => 'Dynamesch Säite-Lëscht: Kee Resultat!',
+	'intersection_toomanycats'   => 'Dynamesch Säite-Lëscht: Zevill Kategorien!',
+	'intersection_toofewcats'    => 'Dynamesch Säite-Lëscht: Ze wéineg Kategorien!',
+	'intersection_noresults'     => 'Dynamesch Säite-Lëscht: Kee Resultat!',
+	'intersection_noincludecats' => 'Dynamesch Säite-Lëscht: Dir musst mindestens eng Kategorie abannen, oder de Nummraum uginn!',
 );
 
 /** Limburgish (Limburgs)
@@ -319,6 +322,15 @@ $messages['mr'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: खूप कमी वर्ग!',
 	'intersection_noresults'     => 'DynamicPageList: निकाल नाहीत!',
 	'intersection_noincludecats' => 'DynamicPageList: कमीतकमी एक वर्ग अथवा नामविश्व देणे गरजेचे आहे!',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'intersection_toomanycats' => 'DynamicPageList: Toveel Kategorien!',
+	'intersection_toofewcats'  => 'DynamicPageList: To wenig Kategorien!',
+	'intersection_noresults'   => 'DynamicPageList: Nix funnen!',
 );
 
 /** Dutch (Nederlands)

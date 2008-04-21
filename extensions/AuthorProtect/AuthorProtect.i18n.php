@@ -162,6 +162,25 @@ $messages['gv'] = array(
 	'authorprotect-reason'  => 'Fa',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'authorprotect'            => 'लेखक छोडके अन्य सदस्योंसे पन्ना सुरक्षित करें',
+	'authorprotect-desc'       => 'एक लेखकको उसके द्वारा लिखे गये लेख को अन्य सदस्योंसे सुरक्षित करने की अनुमति देता हैं',
+	'authorprotect-notauthor'  => 'आप इस लेख के लेखक नहीं हैं',
+	'authorprotect-confirm'    => 'सुरक्षित करें',
+	'authorprotect-edit'       => 'सिर्फ लेखकोंको बदलाव करने की अनुमति दें',
+	'authorprotect-move'       => 'सिर्फ लेखकोंको नाम बदलने की अनुमति दें',
+	'authorprotect-expiry'     => 'समाप्ति समय',
+	'authorprotect-reason'     => 'कारण',
+	'authorprotect-intro'      => 'लेखक छोडकर अन्य सदस्योंसे यह पन्ना सुरक्षित करने के लिये इस फ़ार्म का इस्तेमाल करें',
+	'authorprotect-success'    => 'सुरक्षित कर दिया!',
+	'authorprotect-failure'    => 'सुरक्षित नहीं कर पायें',
+	'protect-level-author'     => 'लेखक छोडकर अन्य सदस्योंसे सुरक्षित करें',
+	'restriction-level-author' => 'लेखक-सुरक्षित',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

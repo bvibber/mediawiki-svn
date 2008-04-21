@@ -254,6 +254,13 @@ $messages['oc'] = array(
 	'showprocesslist-info'    => 'Entresenhas',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'showprocesslist-time' => 'Рæстæг',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

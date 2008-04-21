@@ -373,6 +373,13 @@ $messages['oc'] = array(
 	'dt_xml_freetext'             => 'Tèxt Liure',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'dt_xml_page' => 'Фарс',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

@@ -313,7 +313,8 @@ $messages['km'] = array(
  * @author ToePeu
  */
 $messages['ko'] = array(
-	'deletedcontributions' => '삭제된 기여',
+	'deletedcontributions'      => '삭제된 기여',
+	'deletedcontributions-desc' => '관리자에게 사용자의 [[특수기능:DeletedContributions|지워진 기여 보기]] 기능 추가',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -393,6 +394,13 @@ $messages['ms'] = array(
 
 $messages['nan'] = array(
 	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'deletedcontributions' => 'Wegsmetene Bidrääg vun’n Bruker',
 );
 
 $messages['nl'] = array(

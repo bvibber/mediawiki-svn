@@ -257,6 +257,13 @@ $messages['oc'] = array(
 	'randomincategory-submit'     => 'Amodar',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'randomincategory-label' => 'Категори',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

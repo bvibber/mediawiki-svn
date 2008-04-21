@@ -530,8 +530,17 @@ $messages['km'] = array(
  * @author ToePeu
  */
 $messages['ko'] = array(
-	'pdtest-desc'       => '두개의 파서의 출력을 비교하는 [[Special:ParserDiffTest|특수문서]]',
-	'pdtest_no_changes' => '바뀐 점이 없습니다.',
+	'parserdifftest'      => '파서 바뀐점 시험하기',
+	'pdtest-desc'         => '두개의 파서의 출력을 비교하는 [[Special:ParserDiffTest|특수문서]]',
+	'pdtest_page_missing' => '지정한 문서를 찾을 수 없습니다.',
+	'pdtest_no_changes'   => '바뀐 점이 없습니다.',
+	'pdtest_time_report'  => '<b>$1</b>은(는) $2초, <b>$3</b>은(는) $4초 걸렸습니다.',
+	'pdtest_text'         => '입력:',
+	'pdtest_ok'           => '확인',
+	'pdtest_get_text'     => '문서에서 가져오기',
+	'pdtest_diff'         => '차이',
+	'pdtest_side_by_side' => '출력 비교',
+	'pdt_comparing_page'  => '[[$1]]에서 출력 비교',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -622,7 +631,11 @@ $messages['mr'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'pdtest_diff' => 'Ünnerscheed',
+	'parserdifftest'    => 'Parser-Differenz-Test',
+	'pdtest_no_changes' => 'Keen Ünnerscheed funnen.',
+	'pdtest_ok'         => 'OK',
+	'pdtest_get_text'   => 'Text halen vun de Siet',
+	'pdtest_diff'       => 'Ünnerscheed',
 );
 
 /** Dutch (Nederlands)

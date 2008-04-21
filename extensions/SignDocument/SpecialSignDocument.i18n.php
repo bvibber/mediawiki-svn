@@ -313,8 +313,11 @@ $messages['eo'] = array(
 	'sign-phone'                   => 'Nombro de telefono:',
 	'sign-bday'                    => 'Aĝo:',
 	'sign-email'                   => 'Retpoŝta adreso:',
+	'sign-list-anonymous'          => 'Listigu anonime',
 	'sign-list-hideaddress'        => 'Ne listigu adreson',
+	'sign-list-hideextaddress'     => 'Ne montru urbon, subŝtaton, poŝtkodon, aŭ landon',
 	'sign-list-hidephone'          => 'Ne listigu nombron de telefono',
+	'sign-list-hidebday'           => 'Ne montru aĝon',
 	'sign-list-hideemail'          => 'Ne listigu retadreson',
 	'sign-view-selectfields'       => '<b>Kampoj montri:</b>',
 	'sign-viewfield-realname'      => 'Nomo',
@@ -1070,6 +1073,13 @@ $messages['oc'] = array(
 	'sign-uniquequery-similarphone'   => 'Numèro de telèfon similar',
 	'sign-uniquequery-similaremail'   => 'Adreça de corrièr electronica similara',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a autentificat [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'sign-viewfield-email' => 'Эл. посты адрис',
 );
 
 /** Polish (Polski)

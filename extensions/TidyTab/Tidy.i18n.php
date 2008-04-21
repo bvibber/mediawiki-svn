@@ -125,7 +125,8 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'tidy' => 'Städa',
+	'tidy'   => 'Städa',
+	'untidy' => 'Avsystematisera kod',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

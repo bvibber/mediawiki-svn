@@ -128,15 +128,16 @@ $messages['el'] = array(
  * @author ArnoLagrange
  */
 $messages['eo'] = array(
-	'player'             => 'Ludanto',
-	'player-title'       => 'Ludanto',
-	'player-playertitle' => 'Ludanto: $1',
-	'player-file'        => 'Dosiernomo',
-	'player-play'        => 'Legu',
-	'player-clicktoplay' => 'Legu $1',
-	'player-goto-player' => 'ludanto',
-	'player-goto-page'   => 'Paĝo',
-	'player-goto-file'   => 'dosiero',
+	'player'               => 'Ludanto',
+	'player-title'         => 'Ludanto',
+	'player-playertitle'   => 'Ludanto: $1',
+	'player-file'          => 'Dosiernomo',
+	'player-play'          => 'Legu',
+	'player-invalid-title' => 'nevalida titolo',
+	'player-clicktoplay'   => 'Legu $1',
+	'player-goto-player'   => 'ludanto',
+	'player-goto-page'     => 'Paĝo',
+	'player-goto-file'     => 'dosiero',
 );
 
 /** French (Français)
@@ -368,6 +369,13 @@ $messages['oc'] = array(
 	'player-goto-player'   => 'Lector',
 	'player-goto-page'     => 'Pagina',
 	'player-goto-file'     => 'fichièr',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'player-goto-page' => 'Фарс',
 );
 
 /** Polish (Polski)

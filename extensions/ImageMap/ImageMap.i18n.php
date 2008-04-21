@@ -634,6 +634,13 @@ $messages['oc'] = array(
 	'imagemap_description'        => "A prepaus d'aqueste imatge",
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'imagemap_description' => 'Ацы нывы тыххæй',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

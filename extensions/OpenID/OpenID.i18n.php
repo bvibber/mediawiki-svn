@@ -165,15 +165,17 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'openidoptional'       => 'Nedeviga',
-	'openidrequired'       => 'Deviga',
-	'openidnickname'       => 'Kaŝnomo',
-	'openidfullname'       => 'Plena nomo',
-	'openidemail'          => 'Retadreso',
-	'openidlanguage'       => 'Lingvo',
-	'openidchoosefull'     => 'Via plena nomo ($1)',
-	'openidchoosepassword' => 'pasvorto:',
-	'openidnousername'     => 'Neniu salutnomo estis donita.',
+	'openidoptional'           => 'Nedeviga',
+	'openidrequired'           => 'Deviga',
+	'openidnickname'           => 'Kaŝnomo',
+	'openidfullname'           => 'Plena nomo',
+	'openidemail'              => 'Retadreso',
+	'openidlanguage'           => 'Lingvo',
+	'openidchooseinstructions' => 'Ĉiuj uzantoj bezonas kromnomo;
+vi povas selekti el unu la jenaj opcioj.',
+	'openidchoosefull'         => 'Via plena nomo ($1)',
+	'openidchoosepassword'     => 'pasvorto:',
+	'openidnousername'         => 'Neniu salutnomo estis donita.',
 );
 
 /** French (Français)
@@ -785,6 +787,14 @@ Existís maites [http://wiki.openid.net/Public_OpenID_providers provesidors d'Op
 ; [http://openid.yahoo.com/ Yahoo!] : Se avètz un compte amb Yahoo! , vos podètz connectar sus aqueste sit en picant vòstra OpenID Yahoo! provesida dins la bóstia çaijós. Las adreças OpenID devon aver la sintaxi ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : se avètz un compte amb [http://www.aol.com/ AOL], coma un compte [http://www.aim.com/ AIM], vos podètz connectar sus {SITENAME}} en picant vòstra OpenID provesida per AOL dins la bóstia çaijós. Las adreças OpenID devon aver lo format ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Vòstre nom d’utilizaire deu èsser entièrament en letras minusculas amb cap d'espaci.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se avètz un blog o un autre d'aquestes servicis, picatz l’adreça de vòstre blog dins la bóstia çaijós. Per exemple, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', o encara ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'openidlanguage'       => 'Æвзаг',
+	'openidchoosepassword' => 'пароль:',
 );
 
 /** Pashto (پښتو)

@@ -189,6 +189,21 @@ $messages['hu'] = array(
 	'editmsg-patch-success' => 'A javítás sikeresen befejeződött.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'editmessages'   => 'កែប្រែសារ',
+	'editmsg-search' => 'ស្វែងរក',
+);
+
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'editmsg-search' => '찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

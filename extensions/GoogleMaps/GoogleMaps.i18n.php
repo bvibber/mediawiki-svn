@@ -1233,6 +1233,13 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-mars'             => 'ភពអង្គារ',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$wgGoogleMapsMessages['ko'] = array(
+	'gm-search' => '찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1675,6 +1682,14 @@ $wgGoogleMapsMessages['oc'] = array(
 	'gm-earth'                     => 'Tèrra',
 	'gm-moon'                      => 'Luna',
 	'gm-mars'                      => 'Mart',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$wgGoogleMapsMessages['os'] = array(
+	'gm-yes' => 'О',
+	'gm-no'  => 'Нæ',
 );
 
 /** Polish (Polski)

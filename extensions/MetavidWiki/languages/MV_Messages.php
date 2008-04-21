@@ -414,30 +414,33 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'mv_duration_label'    => 'продължителност',
-	'mv_save_changes'      => 'Съхранение на промените',
-	'mv_remove_reason'     => 'Причина за изтриването:',
-	'mv_upload_file'       => 'Качване на файл',
-	'mv_external_file'     => 'Външен файл',
-	'mv_tool_search'       => 'Търсене',
-	'mv_tool_export'       => 'Изнасяне',
-	'mv_results_found_for' => 'Резултати от търсенето от <b>$1</b> до <b>$2</b> от общо <b>$3</b> за:',
-	'anno_en'              => 'Анотации и категории',
-	'mv_data_page_title'   => '$1 за $2 от $3',
-	'mv_edit'              => 'Редактиране',
-	'mv_history'           => 'История',
-	'mv_remove'            => 'премахване',
-	'mv_remove_title'      => 'премахване на този сегмент от метаданни',
-	'mv_start_desc'        => 'Начало',
-	'mv_end_desc'          => 'Край',
-	'mv_add_filter'        => 'Добавяне на филтър',
-	'mv_search_category'   => 'Категория',
-	'mv_search_and'        => 'и',
-	'mv_search_or'         => 'или',
-	'mv_category'          => 'категория',
-	'mv_remove_filter'     => 'премахване на филтър',
-	'mv_match_text'        => '~  $1 съвпадения',
-	'mv_mang_layers'       => 'Управление на слоевете',
+	'mv_duration_label'      => 'продължителност',
+	'mv_save_changes'        => 'Съхранение на промените',
+	'mv_remove_reason'       => 'Причина за изтриването:',
+	'mv_upload_file'         => 'Качване на файл',
+	'mv_external_file'       => 'Външен файл',
+	'mv_tool_search'         => 'Търсене',
+	'mv_tool_export'         => 'Изнасяне',
+	'mv_results_found_for'   => 'Резултати от търсенето от <b>$1</b> до <b>$2</b> от общо <b>$3</b> за:',
+	'anno_en'                => 'Анотации и категории',
+	'mvd_default_mismatch'   => 'Грешка във файла с настройките',
+	'mv_data_page_title'     => '$1 за $2 от $3',
+	'mv_edit'                => 'Редактиране',
+	'mv_history'             => 'История',
+	'mv_remove'              => 'премахване',
+	'mv_remove_title'        => 'премахване на този сегмент от метаданни',
+	'mv_adjust_preview_stop' => 'Спиране на прегледа',
+	'mv_start_desc'          => 'Начало',
+	'mv_end_desc'            => 'Край',
+	'mv_add_filter'          => 'Добавяне на филтър',
+	'mv_search_category'     => 'Категория',
+	'mv_search_and'          => 'и',
+	'mv_search_or'           => 'или',
+	'mv_category'            => 'категория',
+	'mv_remove_filter'       => 'премахване на филтър',
+	'mv_match_text'          => '~  $1 съвпадения',
+	'mv_match_text_one'      => '~ 1 съвпадение',
+	'mv_mang_layers'         => 'Управление на слоевете',
 );
 
 /** Bengali (বাংলা)
@@ -492,6 +495,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'mv_duration_label'    => 'daŭro',
 	'mv_save_changes'      => 'Konservu Ŝanĝojn',
+	'mv_missing_cat'       => 'Kategoria nomo mankas',
 	'mv_remove_reason'     => 'Kialo por forigo:',
 	'mv_upload_file'       => 'Alŝutu dosieron',
 	'mv_external_file'     => 'Ekstera Dosieron',
@@ -521,6 +525,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Siebrand
  */
 $messages['fr'] = array(
 	'metavid'                        => 'Page metavid',
@@ -592,6 +597,9 @@ $messages['fr'] = array(
 	'mv_results_found_for'           => 'Résultats de la recherche <b>$1</b> vers <b>$2</b> de <b>$3</b> pour :',
 	'mv_tool_mang_layers'            => 'Gère les couches',
 	'mv_update_layers'               => 'met à jour le visionnement des couches',
+	'mv_watch_clip'                  => 'Visionner le clip',
+	'mv_close_clip'                  => 'Fermer le clip',
+	'mv_improve_transcript'          => 'Améliorer la transcription',
 	'ht_en'                          => 'Transcrire',
 	'ht_en_desc'                     => 'Transcriptions anglaises. Ce type de présentation est pour le texte qui est parlé avec le flux vidéo. Des liens peuvent êtres ajoutés, mais tout texte devrait être en corrélation avec ce qui est dit dans le flux vidéo.',
 	'anno_en'                        => 'Annotations et catégories',
@@ -1164,6 +1172,13 @@ $messages['km'] = array(
 	'mv_mang_layers'         => 'គ្រប់គ្រង ស្រទាប់',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'mv_tool_search' => '찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1637,6 +1652,9 @@ $messages['no'] = array(
 	'mv_results_found_for'           => 'Søkeresultat <b>$1</b> til <b>$2</b> av <b>$3</b> for:',
 	'mv_tool_mang_layers'            => 'Behandle lag',
 	'mv_update_layers'               => 'oppdater lagvisning',
+	'mv_watch_clip'                  => 'Se klipp',
+	'mv_close_clip'                  => 'Steng klipp',
+	'mv_improve_transcript'          => 'Forbedre transkripsjon',
 	'ht_en'                          => 'Transkripsjon',
 	'ht_en_desc'                     => 'Engelske transkripsjoner. Denne overleggstypen er for opplest tekst',
 	'anno_en'                        => 'Annoteringer og kategorier',
@@ -1916,6 +1934,15 @@ $messages['oc'] = array(
 	'mv_mang_layers'                 => 'Administra los jaces',
 	'mv_mang_layers_title'           => "Gerís los paramètres d'afichatge de la jaça pel flus corrent",
 	'mv_protect_source_material'     => 'Original protegit en escritura',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'mv_upload_file'     => 'Ног файл сæвæр',
+	'mv_search_category' => 'Категори',
+	'mv_category'        => 'категори',
 );
 
 /** Polish (Polski)

@@ -78,6 +78,7 @@ $messages['eo'] = array(
 	'sc_previousmonth' => 'Antaŭa monato',
 	'sc_nextmonth'     => 'Posta monato',
 	'sc_today'         => 'Hodiaŭ',
+	'sc_gotomonth'     => 'Iru al monato',
 );
 
 /** Persian (فارسی)

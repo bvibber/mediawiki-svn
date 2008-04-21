@@ -1347,7 +1347,17 @@ $messages['mr'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'oversight-view' => 'Details',
+	'group-oversight'            => 'Oversighters',
+	'group-oversight-member'     => 'Oversight',
+	'grouppage-oversight'        => '{{ns:project}}:Oversight',
+	'hiderevision-continue'      => 'Wieder',
+	'hiderevision-reason'        => 'Grund (warrt nich sichtbor in’t Logbook opnahmen):',
+	'hiderevision-tab'           => 'Version versteken',
+	'hiderevision-status'        => 'Version $1: $2',
+	'hiderevision-error-missing' => 'Nich funnen in’e Datenbank.',
+	'oversight-log-hiderev'      => 'en Ännern vun $1 rutnahmen',
+	'oversight'                  => 'Oversight',
+	'oversight-view'             => 'Details',
 );
 
 /** Nedersaksisch (Nedersaksisch)

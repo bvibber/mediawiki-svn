@@ -347,6 +347,23 @@ $messages['id'] = array(
 	'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'contributors'             => 'Framleggjendur',
+	'contributors-desc'        => 'Dregur saman aðalframleggjendur síðu',
+	'contributors-toolbox'     => 'Aðalframleggjendur',
+	'contributors-legend'      => 'Lista aðalframleggjendur síðu',
+	'contributors-target'      => 'Titill:',
+	'contributors-submit'      => 'Sýna',
+	'contributors-subtitle'    => 'Aðalframleggjendur $1',
+	'contributors-others-long' => 'Þessi síða hefur $1 aðra framleggjendur.',
+	'contributors-others'      => 'og $1 aðrir',
+	'contributors-badtitle'    => 'Ógildur titill.',
+	'contributors-nosuchpage'  => 'Síðan $1 er ekki til.',
+);
+
 /* Italian (BrokenArrow) */
 $messages['it'] = array(
 	'contributors' => 'Autori',

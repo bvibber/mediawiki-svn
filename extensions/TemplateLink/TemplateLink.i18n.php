@@ -68,6 +68,13 @@ $messages['el'] = array(
 	'templatelink_empty' => 'Πρέπει να ορίσετε μια παράμετρο.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'templatelink' => 'Ŝablona Ligilo',
+);
+
 $messages['fr'] = array(
 		'templatelink' => 'Lien vers modèle',
 		'templatelink_empty' => 'Vous devez saisir un paramètre.',
