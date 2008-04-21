@@ -106,6 +106,17 @@ $messages['da'] = array(
 	'filelist' => 'Filliste',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['en'] = array(
+	'filelist'              => 'Dateiliste',
+	'filelist-desc'         => 'Spezialseite zur Anzeige hochgeladener Dateien',
+	'filelist-show-list'    => 'Zeige Liste',
+	'filelist-show-gallery' => 'Zeige Galerie',
+	'filelist-image-desc'   => 'absteigend',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  * @author Siebrand

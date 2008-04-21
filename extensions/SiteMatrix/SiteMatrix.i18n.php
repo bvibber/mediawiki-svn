@@ -199,6 +199,8 @@ $messages['de'] = array(
 	'sitematrix-others'    => 'Weitere Wikimedia-Projekte',
 	'sitematrix-total'     => "'''Gesamtanzahl: $1'''",
 	'sitematrix-sitetotal' => 'Gesamt',
+	'sitematrix-private'   => 'Privat',
+	'sitematrix-fishbowl'  => 'Bearbeitung eingeschränkt',
 );
 
 /** Lower Sorbian (Dolnoserbski)
