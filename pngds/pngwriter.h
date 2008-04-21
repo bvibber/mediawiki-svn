@@ -1,7 +1,7 @@
 typedef struct
 {
-	char *in;
-	char *out;
+	unsigned char *in;
+	unsigned char *out;
 	z_stream zst;
 	char deflate_level;
 	char filter_method;

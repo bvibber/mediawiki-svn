@@ -290,7 +290,7 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 			if (info->callbacks->completed_scanline != NULL)
 				(*info->callbacks->completed_scanline)(info->current_scanline, 
 				info->previous_scanline, info->scan_pos, info);
-			char *tmp = info->previous_scanline;
+			unsigned char *tmp = info->previous_scanline;
 			info->previous_scanline = info->current_scanline;
 			info->current_scanline = tmp;
 			info->expect_filter = 1;
