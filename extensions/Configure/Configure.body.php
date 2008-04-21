@@ -183,7 +183,10 @@ class SpecialConfigure extends SpecialPage {
 							$all = array_merge( $all, array_keys( $rights ) );
 						$all = array_unique( $all );
 					} else {
-						$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
+						if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
+							$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
+						else
+							$all = $iter;
 					}
 					foreach( $iter as $group ){
 						foreach( $all as $right ){
@@ -618,7 +621,8 @@ class SpecialConfigure extends SpecialPage {
 				$iter = array();
 				foreach( $all as $group )
 					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
-				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
+				if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
+					$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
 			$text = '<table border="1" cellpadding="1">';
 			foreach( $iter as $group => $levs ){
@@ -848,8 +852,8 @@ class SpecialConfigure extends SpecialPage {
 		$arr = array( 'wgAutopromote', 'wgAccountCreationThrottle', 'wgAllowPageInfo',
 			'wgAutoblockExpiry', 'wgDeleteRevisionsLimit', 'wgDisabledActions',
 			'wgEmailConfirmToEdit', 'wgEnableCascadingProtection', 'wgEnableAPI',
-			'wgEnableWriteAPI', 'wgPasswordSalt', 'wgReadOnly', 'wgReadOnlyFile',
-			'wgWhitelistRead' );
+			'wgEnableWriteAPI', 'wgImplicitGroups', 'wgPasswordSalt', 'wgReadOnly',
+			'wgReadOnlyFile', 'wgWhitelistRead' );
 		$out .= $this->buildSimpleSettingArray( $arr );
 		$out .= $this->buildTableHeading( 'configure-section-groups' );
 		$arr = array( 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
