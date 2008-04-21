@@ -41,8 +41,7 @@ to any group. This right allow to change only "common" settings. If you want to
 be able to change all settings, you will need to have the 'configure-all' right.
 This right allow to change some specific settings, like paths, database settings
 (all what need also "external" changes, i.e. server rewrite rules, squid
-configuration, ...) but also $wgGroupPermission (still not editable at the
-moment, see the 'To do' section).
+configuration, ...) but also $wgGroupPermission.
 
 Even this extension allows you configure about the whole settings, it's
 recommanded to keep the original LocalSettings.php file. You can simply add the
@@ -65,10 +64,10 @@ LocalSettings.php. It's why it's important to keep that file.
 
 == To do ==
 
-* Some settings are still uneditable, like $wgGroupPermissions because of their
-  array usage, this will need to develop some specific method to change them.
-* It is already possible to rollback to an eralier version of the configutation
-  by editing and saving, but i think an diff possiblility would be nice to see
-  wich changed were made between version.
+* Some settings are still uneditable because of their array usage, this will
+  need to develop some specific method to change them.
+* It is already possible to rollback to an earlier version of the configuration
+  by editing it and saving, but i think an diff possibility would be nice to see
+  which changes were made between versions. 
 * Support extensions
 * Many other things, if i have time :)

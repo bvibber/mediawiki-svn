@@ -174,6 +174,27 @@ class SpecialConfigure extends SpecialPage {
 					}
 					$settings[$name] = $arr;
 					break;
+				case 'group-bool':
+				case 'group-array':
+					$all = array();
+					$iter = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
+					if( $arrType == 'group-bool' ){
+						foreach( $this->getSettingValue( 'wgGroupPermissions' ) as $rights )
+							$all = array_merge( $all, array_keys( $rights ) );
+						$all = array_unique( $all );
+					} else {
+						$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
+					}
+					foreach( $iter as $group ){
+						foreach( $all as $right ){
+							$id = 'wp'.$name.'-'.$group.'-'.$right;
+							if( $arrType == 'group-bool' )
+								$settings[$name][$group][$right] = $wgRequest->getCheck( $id );
+							else if( $wgRequest->getCheck( $id ) )
+								$settings[$name][$group][] = $right;
+						}
+					}
+					break;
 				}
 				break;
 			case 'text':
@@ -580,6 +601,39 @@ class SpecialConfigure extends SpecialPage {
 					'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
 				) ) . "<br/>\n";
 				$text .= '</td></tr>';
+			}
+			$text .= '</table>';
+			return $text;
+		}
+		if( $type == 'group-bool' || $type == 'group-array' ){
+			$all = array();
+			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
+			if( $type == 'group-bool' ){
+				foreach( $default as $rights )
+					$all = array_merge( $all, array_keys( $rights ) );
+				$all = array_unique( $all );
+				$iter = $default;
+			} else {
+				$all = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
+				$iter = array();
+				foreach( $all as $group )
+					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
+				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
+			}
+			$text = '<table border="1" cellpadding="1">';
+			foreach( $iter as $group => $levs ){
+				$row = '<div style="-moz-column-count:2"><ul>';
+				foreach( $all as $right ){
+					if( $type == 'group-bool' )
+						$checked = ( isset( $levs[$right] ) && $levs[$right] );
+					else
+						$checked = in_array( $right, $levs );
+					$id = Sanitizer::escapeId( 'wp'.$conf.'-'.$group.'-'.$right );
+					$row .= '<li>'.Xml::checkLabel( $right, $id, $id, $checked, $attr ) . "</li>\n";
+				}
+				$row .= '</ul></div>';
+				$groupName = User::getGroupName( $group );
+				$text .= "<tr>\n<td>$groupName</td>\n<td>$row</td>\n</tr>";
 			}
 			$text .= '</table>';
 			return $text;

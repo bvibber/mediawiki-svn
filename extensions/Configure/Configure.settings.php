@@ -608,12 +608,12 @@ $arrayDefs = array(
 	'wgImportSources' => 'simple',
 # Access
 	'wgAutopromote' => 'array',
-	'wgAddGroups' => 'array',
+	'wgAddGroups' => 'group-array',
 	'wgDisabledActions' => 'simple',
-	'wgGroupPermissions' => 'array',
-	'wgGroupsAddToSelf' => 'array',
-	'wgGroupsRemoveFromSelf' => 'array',
-	'wgRemoveGroups' => 'array',
+	'wgGroupPermissions' => 'group-bool',
+	'wgGroupsAddToSelf' => 'group-array',
+	'wgGroupsRemoveFromSelf' => 'group-array',
+	'wgRemoveGroups' => 'group-array',
 	'wgWhitelistRead' => 'simple',
 # Rate limits
 	'wgRateLimits' => 'array',
