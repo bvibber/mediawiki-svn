@@ -11,15 +11,8 @@ require_once( $IP.'/languages/Names.php' );
 
 class SiteMatrix
 {
-	public $langlist, $sites, $names, $hosts, $hostlist;
+	public $langlist, $sites, $names, $hosts;
 	public $specialRewrites, $hidden, $specials, $matrix, $count, $countPerSite;
-
-	private static $instance = null;
-	public static function singleton() {
-		if( !self::$instance )
-			self::$instance = new SiteMatrix();
-		return self::$instance;
-	}
 
 	public function __construct()
 	{
@@ -56,23 +49,13 @@ class SiteMatrix
 			'wikiquote' => 'wikiquote.org',
 			'wikiversity' => 'wikiversity.org',
 		);
-		$this->hostlist = array(
-			'wikimedia' => 'wiki',
-			'wikipedia' => 'wiki',
-			'wiktionary' => 'wiktionary',
-			'wikibooks' => 'wikibooks',
-			'wikinews' => 'wikinews',
-			'wikisource' => 'wikisource',
-			'wikiquote' => 'wikiquote',
-			'wikiversity' => 'wikiversity',
-		);
 
 		# Special wikis that don't are at $lang.wikimedia.org
 		$this->specialRewrites = array(
 			'arbcom-en' => 'arbcom.en.wikipedia.org',
 			'dk' => 'dk.wikipedia.org', # FIXME
 			'foundation' => 'wikimediafoundation.org',
-			'mediawiki' => 'mediawiki.org',
+			'mediawiki' => 'www.mediawiki.org',
 			'nostalgia' => 'nostalgia.wikipedia.org',
 			'sources' => 'wikisource.org',
 			'species' => 'species.wikipedia.org',
@@ -136,58 +119,6 @@ class SiteMatrix
 	public function sitenameById( $name ) {
 		return $name == 'wiki' ? 'wikipedia' : $name;
 	}
-
-	public function getSitenameById( $id ) {
-		//Try something like en.wikipedia.org
-		$id = strtolower( $id );
-		if( preg_match( '/\.org$/', $id ) )
-			return $id;
-		//Now just en.wikipedia
-		if( in_string( '.', $id ) )
-			return "{$id}.org";
-		//Now DB names: enwiki, dewikisoure, sep11wiki
-		$regex = '/^([a-z\-_]+?)(' . implode( '|', $this->sites ) . ')$/';
-		$matches = array();
-		if( preg_match( $regex, $id, &$matches ) ) {
-			list( $id, $lang, $site ) = $matches;
-			$lang = str_replace( '_', '-', $lang );
-			if( in_array( $site, $this->sites ) ) {
-				if( in_array( $lang, $this->langlist ) ) {
-					return $lang . '.' . $this->sitenameById( $site ) . '.org';
-				} elseif( in_array( $lang, $this->specials ) ) {
-					if( isset( $this->specialRewrites[$lang] ) )
-						return $this->specialRewrites[$lang];
-					else
-						return "{$lang}.wikimedia.org";
-				}
-			}
-		}
-		//Fail
-		return false;
-	}
-
-	public function siteExists( $id ) {
-		global $wgLocalDatabases;
-		$id = str_replace( '-', '_', strtolower( $id ) );
-		if( preg_match( '/^[a-z_]+$/', $id ) ) {
-			//Valid or near-valid DB name. Check it
-			return in_array( $id, $wgLocalDatabases );
-		}
-		$regex = '/^([.a-z_]+?).(' . implode( '|', array_keys( $this->hostlist ) ) . ')(\.org)?/';
-		if( preg_match( $regex, $id, &$matches ) ) {
-			$major = $this->hostlist[$matches[2]];
-			$minor = $matches[1];
-			$dbname = $minor.$major;
-			return in_array( $dbname, $wgLocalDatabases );
-		}
-		//Last chance: special rewrite
-		$id = str_replace( 'www.', '', $id );
-		$rewrites = array_flip( $this->specialRewrites );
-		if( isset( $rewrites[$id] ) )
-			return true;	//No need to check
-		//Fail
-		return false;
-	}
 }
 
 class SiteMatrixPage extends SpecialPage {
@@ -203,7 +134,7 @@ class SiteMatrixPage extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$matrix = SiteMatrix::singleton();
+		$matrix = new SiteMatrix();
 
 		if ($wgRequest->getVal( 'action' ) == "raw")
 		{
