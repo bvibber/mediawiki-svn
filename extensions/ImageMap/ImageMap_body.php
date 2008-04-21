@@ -290,7 +290,6 @@ class ImageMap {
 		$output .= preg_replace( '/<\?xml[^?]*\?>/', '', $domDoc->saveXML() );
 
 		# Register links
-		$parser->mOutput->addImage( $imageTitle->getDBkey() );
 		foreach ( $links as $title ) {
 			if( $title->isExternal() || $title->getNamespace() == NS_SPECIAL ) {
 				// Don't register special or interwiki links...
