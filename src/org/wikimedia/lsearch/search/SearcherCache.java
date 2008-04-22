@@ -1,21 +1,18 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.lucene.index.Term;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
@@ -25,21 +22,13 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.WikiSimilarity;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.interoperability.RMIServer;
 
-/**
- * Caches both local and remote {@link Searchable} objects.  
- * 
- * @author rainman
- *
- */
 public class SearcherCache {
-	class SimpleInt {
-		int count;
-		public SimpleInt(int value) {
-			this.count = value;
-		}
-	}
-	class DeferredClose extends Thread {
+	protected static Logger log = Logger.getLogger(SearcherCache.class);
+	
+	static class DeferredClose extends Thread {
 		long interval;
 		IndexSearcherMul s;
 		public DeferredClose(IndexSearcherMul s, int interval){
@@ -103,128 +92,69 @@ public class SearcherCache {
 		synchronized IndexSearcherMul get(){
 			if(index >= searchers.length)
 				index = 0;
-			log.debug("Using "+iid+" searcher "+index);
+			log.debug("Using "+iid+" remote searcher "+index);
 			return searchers[index++];
-		}
+		}		
 		
-	}	
-	static org.apache.log4j.Logger log = Logger.getLogger(SearcherCache.class);
-	/** dbrole@host -> RemoteSearchable */
-	protected Hashtable<String,CachedSearchable> remoteCache;
-	/** dbrole -> set(dbrole@host) */
-	protected Hashtable<String,Set<String>> remoteKeys;
-	/** dbrole -> IndexSearcher */
-	protected Hashtable<String,SearcherPool> localCache;
-	/** searchable -> host */
-	protected Hashtable<Searchable,String> searchableHost;
-	
-	public int searchPoolSize = 1;
-	
-	/** lazy initalization of search indexes (set of dbroles) */
-	protected Set<String> initialized;
-	
-	/** Hosts for which RemoteSearcher could not be created,
-	 *  update via NetworkStatusThread */
-	protected Set<SearchHost> deadHosts;
-	
-	static protected SearcherCache instance = null;
-	
-	protected Object lock;
-	
-	protected GlobalConfiguration global;
-	
-	/** Get the host where the searchable is */
-	public String getSearchableHost(Searchable s){
-		return searchableHost.get(s);
-	}
-	
-	/** Contact all hosts the first time iid is being searched,
-	 * and and them to cache */
-	protected void initialize(IndexId iid){
-		log.debug("Initializing "+iid);
-		synchronized (iid) {
-			if(!initialized.contains(iid.toString())){
-				for(String host : iid.getSearchHosts()){
-					try {
-						getSearchable(iid,host);
-					} catch (Exception e) {
-						e.printStackTrace();
-						// logged at lower level
-					}
-				}
-				initialized.add(iid.toString());
+		void close(){
+			for(IndexSearcherMul s : searchers){
+				// deferred close
+				log.debug("Deferred closure of searcher "+s);
+				new DeferredClose(s,15000).start();
 			}
 		}
 	}
 	
-	/** Get one of the remote objects for this iid, randomly */
-	public Searchable getRandomRemoteSearchable(IndexId iid){
-		if(!initialized.contains(iid.toString()))
-			initialize(iid);
-		synchronized(lock){
-			Set<String> keys = remoteKeys.get(iid.toString());
-			if(keys==null || keys.size()==0)
-				return null;
-			int random = (int)(Math.floor(Math.random()*keys.size()));
-			String[] strkeys = keys.toArray(new String[] {});
-			log.debug("getRandomSearchable returns "+strkeys[random]);
-			return remoteCache.get(strkeys[random]);			
+	public static class SearcherPoolStatus implements Serializable {
+		boolean ok = false;
+		int poolSize = 0;
+		
+		public SearcherPoolStatus(boolean ok){
+			this.ok = ok;
+		}
+		public SearcherPoolStatus(boolean ok, int poolSize){
+			this.ok = ok;
+			this.poolSize = poolSize;
 		}
 	}
 	
-	/** get a random host that searches iid, always returns "localhost" for local searchers (if not being deployed) */
-	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid))
-			return "localhost";
-		if(!initialized.contains(iid.toString()))
-			initialize(iid);
-		synchronized(lock){			
-			Set<String> keys = remoteKeys.get(iid.toString());
-			if(keys==null || keys.size()==0)
-				return null;
-			int random = (int)(Math.floor(Math.random()*keys.size()));
-			String[] strkeys = keys.toArray(new String[] {});
-			String key = strkeys[random];
-			return key.substring(key.indexOf('@')+1);
+	public static class RemoteSearcherPool {
+		CachedSearchable searchers[];
+		IndexId iid;
+		int index = 0;
+		
+		RemoteSearcherPool(IndexId iid, String host, int poolsize) throws IOException, NotBoundException {
+			Registry registry = LocateRegistry.getRegistry(host);
+			this.iid = iid;
+			String name = "RemoteSearchable<"+iid+">";
+			this.searchers = new CachedSearchable[poolsize];
+			for(int i=0;i<poolsize;i++){
+				searchers[i] = new CachedSearchable( (SearchableMul) registry.lookup(name+"$"+i), iid, host );
+			}
 		}
-	}
-	
-	/** Get all searchers in a pool, if pool is initialized, null otherwise */
-	public IndexSearcherMul[] getPool(IndexId iid){
-		SearcherPool pool = localCache.get(iid.toString());
-		if(pool != null)
-			return pool.searchers;
-			
-		return null;
-	}
-	
-	/** Get searcher from local cache, or if doesn't exist null */
-	protected IndexSearcherMul fromLocalCache(String key){
-		SearcherPool pool = localCache.get(key);
-		if(pool != null)
-			return pool.get();
-		return null;
-	}
-	
-	/** 
-	 * Returns a searchable from cache. If the searchable is not
-	 * in cache, the method will create it (via local call or RMI)
-	 * @return  searchable instance
-	 * @throws IOException 
-	 * @throws NotBoundException 
-	 */
-	public Searchable getSearchable(IndexId iid, String host) throws NotBoundException, IOException{
-		Searchable s = null;
-		if(global.isLocalhost(host))
-			s = fromLocalCache(iid.toString());
-		else
-			s = remoteCache.get(makeKey(iid,host));
 		
-		if(s == null)
-			s = addSearchableToCache(iid,host);			
-		
-		return s;
+		synchronized CachedSearchable get(){
+			if(index >= searchers.length)
+				index = 0;
+			log.debug("Using "+iid+" searcher "+index);
+			return searchers[index++];
+		}	
 	}
+	
+	/** dbrole -> host -> remote pool */
+	protected Hashtable<String,Hashtable<String,RemoteSearcherPool>> remoteCache = new Hashtable<String,Hashtable<String,RemoteSearcherPool>>();	
+	/** dbrole -> local pool */
+	protected Hashtable<String,SearcherPool> localCache = new Hashtable<String,SearcherPool>();
+	/** update lock */
+	protected Object lock = new Object();
+	/** dbroles we have initialized */
+	protected Set<String> initialized = Collections.synchronizedSet(new HashSet<String>());
+	/** default size of the local search pool */
+	protected int searchPoolSize;
+	/** Host/iid pairs for which remote pool couldn't be initialized */
+	protected Set<SearchHost> deadPools = Collections.synchronizedSet(new HashSet<SearchHost>());
+	
+	protected static SearcherCache instance = null;
 	
 	/**
 	 * If there is a cached local searcher of iid
@@ -233,90 +163,188 @@ public class SearcherCache {
 	 * @return
 	 */
 	public boolean hasLocalSearcher(IndexId iid){
-		return fromLocalCache(iid.toString()) != null;
-		
+		return localCache.containsKey(iid.toString());		
 	}
 	
 	/**
-	 * Get {@link IndexSearcher} for IndexId from cache, if it not is cached
+	 * Get a random host for iid, if local and being deployed
+	 * always return the localhost
+	 * 
+	 * @param iid
+	 * @return
+	 */
+	public String getRandomHost(IndexId iid){
+		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid))
+			return "localhost";
+		if(!initialized.contains(iid.toString()))
+			initializeRemote(iid);
+		synchronized(iid.getSearcherCacheLock()){
+			Hashtable<String,RemoteSearcherPool> pools = remoteCache.get(iid.toString());
+			if(pools == null)
+				return null;
+			int num = (int)(Math.random()*pools.size());
+			for(String host : pools.keySet()){
+				if(--num < 0)
+					return host;
+			}
+		}
+		return null;		
+	}
+	
+	/** Get a remote searchable object from a remote pool */
+	public CachedSearchable getRemoteSearcher(IndexId iid, String host){
+		Hashtable<String,RemoteSearcherPool> pools = remoteCache.get(iid.toString());
+		if(pools == null)
+			return null;
+		RemoteSearcherPool pool = pools.get(host);
+		if(pool == null)
+			return null;
+		return pool.get();
+	}
+	
+	
+	/**
+	 * Get {@link IndexSearcherMul} for IndexId from cache, if it not is cached
 	 * new object will be created.
 	 * @param iid
 	 * @throws IOException 
 	 */
 	public IndexSearcherMul getLocalSearcher(IndexId iid) throws IOException{
 		if(iid == null)
-			throw new IOException("Index unavailable");
+			throw new RuntimeException("No such index");
 		if(UpdateThread.isBeingDeployed(iid))
 			throw new IOException(iid+" is being deployed");
-		IndexSearcherMul s = fromLocalCache(iid.toString());
-
-		if(s == null)
-			s = addLocalSearcherToCache(iid);
-		
-		return s;
+		return fromLocalCache(iid.toString());
 	}
 	
-	/** Warmup all local IndexSearcher (create if necessary) */
-	public void warmupLocalCache(){
+	/** Get single searcher from local cached pool, or if doesn't exist null */
+	protected IndexSearcherMul fromLocalCache(String key){
+		SearcherPool pool = localCache.get(key);
+		if(pool != null)
+			return pool.get();
+		return null;
+	}
+	
+	/**
+	 * On update or error, call this function to reinitialize
+	 * the remote search pool
+	 * @param iid
+	 */
+	public void reInitializeRemote(IndexId iid, String host){
+		if(RMIMessengerClient.isLocal(host))
+			return;
+		log.debug("Reinitializing remote for "+iid);
+		synchronized (iid.getSearcherCacheLock()) {
+			// delete old values
+			Hashtable<String,RemoteSearcherPool> hostpool = remoteCache.get(iid.toString());
+			if(hostpool != null){
+				hostpool.remove(host);
+			}
+			// init
+			initializeRemote(iid,host);
+		}
+	}
+	
+	/** 
+	 *  Initialize all remote search pools for iid 
+	 */
+	protected void initializeRemote(IndexId iid){
+		log.debug("Initializing remote for "+iid);
+		synchronized (iid.getSearcherCacheLock()) {
+			
+			if(!initialized.contains(iid.toString())){
+				for(String host : iid.getSearchHosts()){
+					if(!RMIMessengerClient.isLocal(host))
+						initializeRemote(iid,host);
+				}
+				initialized.add(iid.toString());
+			}
+			
+		}
+	}
+	
+	/** Construct a remote searcher pool for iid on host */
+	protected void initializeRemote(IndexId iid, String host){
+		RMIMessengerClient messenger = new RMIMessengerClient();
+		try{
+			synchronized (iid.getSearcherCacheLock()) {
+				SearcherPoolStatus status = messenger.getSearcherPoolStatus(host,iid.toString());
+				if(status!=null && status.ok){
+					// host -> remote pool
+					Hashtable<String,RemoteSearcherPool> hostpool = remoteCache.get(iid.toString());
+					if(hostpool == null)
+						remoteCache.put(iid.toString(), hostpool = new Hashtable<String,RemoteSearcherPool>());
+					hostpool.put(host,new RemoteSearcherPool(iid,host,status.poolSize));
+					deadPools.remove(new SearchHost(iid,host)); // make sure not marked as dead
+					return;
+				}
+			}
+		} catch(RemoteException e){
+			e.printStackTrace();
+			log.warn("Cannot get searcher status for "+iid+" on "+host+" : "+e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.warn("I/O error trying to construct remote searcher pool for "+iid+" on "+host+" : "+e.getMessage());
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+			log.warn("Remote searcher for "+iid+" on "+host+" not bound : "+e.getMessage());
+		}
+		// if we reach this point something went wrong
+		deadPools.add(new SearchHost(iid,host));
+	}
+	
+	/**
+	 * Initialize all local searcher pools 
+	 */
+	protected void initializeLocal(){
 		IndexRegistry registry = IndexRegistry.getInstance();
-		HashSet<IndexId> mys =  global.getMySearch();
+		HashSet<IndexId> mys =  GlobalConfiguration.getInstance().getMySearch();
 		for(IndexId iid : mys){
 			try {
-				if(iid.isLogical())
-					continue;
-				if(registry.getCurrentSearch(iid) != null){
-					IndexSearcherMul[] pool = getSearcherPool(iid);
-					for(IndexSearcherMul is : pool)				
-						Warmup.warmupIndexSearcher(is,iid,false);
-					
-					Warmup.waitForAggregate(pool);
+				// when searcher is linked into "search" path it's good, initialize it
+				if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
+					log.debug("Initializing local for "+iid);
+					IndexSearcherMul[] pool = getLocalSearcherPool(iid);
+					RMIServer.bind(iid,pool);
 				}
 			} catch (IOException e) {
 				log.warn("I/O error warming index for "+iid+" : "+e.getMessage());				
 			}
 		}
 	}
-
-	/** Get all searchers for iid, open/create if doesn't exist */
-	private IndexSearcherMul[] getSearcherPool(IndexId iid) throws IOException {
-		SearcherPool pool = localCache.get(iid.toString());
+	
+	/** Provide new value for the local searcher pool */
+	public void updateLocalSearcherPool(IndexId iid, SearcherPool pool){
+		SearcherPool old = localCache.get(iid.toString());
+		// passed null - remove searcher altogether
 		if(pool == null)
-			addLocalSearcherToCache(iid);
-		return localCache.get(iid.toString()).searchers;
-	}
-
-	/** 
-	 * Make a searchable instance, and add it to cache
-	 * @return   the created searchable instance
-	 * @throws NotBoundException 
-	 * @throws IOException 
-	 */
-	protected Searchable addSearchableToCache(IndexId iid, String host) throws NotBoundException, IOException{
-		CachedSearchable rs = null;
+			localCache.remove(iid.toString());
+		else
+			localCache.put(iid.toString(),pool);
 		
-		if(global.isLocalhost(host)){
-			return addLocalSearcherToCache(iid);
-		} else{
-			rs = new CachedSearchable(getRemote(iid,host));
-			synchronized (lock) {
-				String key = makeKey(iid,host);
-				// sync only here, after the remote procedure call
-				if(remoteCache.get(key) == null){
-					remoteCache.put(key,rs);
-					if(remoteKeys.get(iid.toString()) == null)
-						remoteKeys.put(iid.toString(),Collections.synchronizedSet(new HashSet<String>()));
-					remoteKeys.get(iid.toString()).add(key);
-					searchableHost.put(rs,host);
-					return rs;
-				}
-				else 
-					return remoteCache.get(makeKey(iid,host));				
-			}			
-		}		
+		// finally, close the old searcher pool 
+		if(old != null)
+			old.close();
 	}
 	
-	protected IndexSearcherMul addLocalSearcherToCache(IndexId iid) throws IOException{
-		synchronized(iid){
+	/** Get a searcher pool, will create if doesn't exist */
+	public IndexSearcherMul[] getLocalSearcherPool(IndexId iid) throws IOException {
+		SearcherPool pool = localCache.get(iid.toString());
+		if(pool == null){
+			// try to init
+			initLocalPool(iid);
+			pool = localCache.get(iid.toString());
+		}
+		
+		if(pool == null)
+			return null;
+		else
+			return pool.searchers;
+	}
+	
+	/** Make local searcher pool */
+	protected void initLocalPool(IndexId iid) throws IOException{
+		synchronized(iid.getSearcherCacheLock()){
 			// make sure some other thread has not opened the searcher
 			if(localCache.get(iid.toString()) == null){
 				if(!iid.isMySearch())
@@ -325,203 +353,50 @@ public class SearcherCache {
 					throw new IOException(iid+": will not open logical index.");
 				SearcherPool pool = new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
 				localCache.put(iid.toString(),pool);
-				for(IndexSearcherMul s : pool.searchers)
-					searchableHost.put(s,"");
-				return pool.get();
-			} else
-				return fromLocalCache(iid.toString());
-		}
-	}
-	
-	/** Modify list of active keys and inactive hosts to tell the cache that the host is down */
-	protected void registerBadIndex(IndexId iid, String host){ 
-		deadHosts.add(new SearchHost(iid,host));
-		String key = makeKey(iid,host);
-		if(remoteKeys.get(iid.toString())!=null)
-			remoteKeys.get(iid.toString()).remove(key);
-	}
-	
-	/** Get remote {@link Searchable} object (via RMI) 
-	 * @throws NotBoundException 
-	 * @throws IOException */
-	protected SearchableMul getRemote(IndexId iid, String host) throws NotBoundException, IOException{
-		Registry registry;
-		SearchableMul r;
-		String name = "RemoteSearchable<"+iid+">";
-		try {
-			if(deadHosts.contains(new SearchHost(iid,host)))
-				return null; // no retry for dead hosts
-			registry = LocateRegistry.getRegistry(host);
-			r = (SearchableMul) registry.lookup(name);
-			r.maxDoc(); // call one method to be sure the reference is OK
-			return r;
-		} catch (RemoteException e) {
-			log.warn("Could not get a registry for host "+host);
-			registerBadIndex(iid,host);
-			throw e;
-		} catch (NotBoundException e) {
-			log.warn("Could not find RemoteSearchable instance on host \""+host+"\" for indexid \""+iid+"\"");
-			registerBadIndex(iid,host);
-			throw e;
-		} catch (IOException e) {
-			log.warn("Failed to call remote method for object remote object "+iid+" at "+host);
-			registerBadIndex(iid,host);
-			throw e;
-		} 
-	}
-	
-	/** make a key for cache hashtables */
-	protected String makeKey(IndexId iid, String host){
-		return iid+"@"+host;
-	}
-	
-	/** Check if this (remote) searchable is good, and if not, invalide its cache. 
-	 *  Update: since there is no good way to check if searchable is OK, always get 
-	 *  another instance of the remote object. */
-	public void checkSearchable(Searchable s, CachedSearchable rs){
-		// something is wrong, invalidate cache
-		log.warn("Checking searchable "+s);
-		if(remoteCache.containsValue(rs)){
-			for(Entry<String,CachedSearchable> es : remoteCache.entrySet()){
-				if(es.getValue().equals(rs)){
-					String parts[] = es.getKey().split("@");
-					if(parts!=null && parts.length==2){
-						invalidateSearchable(IndexId.get(parts[0]),parts[1]);
-					}
-				}
 			}
 		}
 	}
 	
 	/**
-	 * Invalidates (remote) searchable cache 
-	 * @param iid
-	 * @param host
+	 * Get status of local search pool
+	 * @throws IOException
 	 */
-	public void invalidateSearchable(IndexId iid, String host){
-		invalidateSearchable(iid,host,null);
+	public SearcherPoolStatus getSearcherPoolStatus(IndexId iid) throws IOException {
+		 IndexSearcherMul[] pool = getLocalSearcherPool(iid);
+		 if(pool == null){
+			 return new SearcherPoolStatus(false);
+		 } else
+			 return new SearcherPoolStatus(true,pool.length);
+	}
+	
+	/** Get a singleton standalon instance */
+	public static synchronized SearcherCache getStandalone(){
+		if(instance == null)
+			instance = new SearcherCache(false);
+		
+		return instance;
+		
 	}
 
-	/**
-	 * Invalidates (remote) searchable cache, replaces the old
-	 * value (if any) with the passed remote Searchable object. 
-	 * 
-	 * @param iid
-	 * @param host
-	 * @param rs
-	 */
-	public void invalidateSearchable(IndexId iid, String host, SearchableMul rs){
-		if(global.isLocalhost(host) || host=="localhost" || host==""){
-			log.error("Should use function invalidateLocalSearcher for local searcher invalidation");
-			return;
-		}
-		String key = makeKey(iid,host);
-		CachedSearchable oldrs = remoteCache.get(key);
-		
-		CachedSearchable newrs;
-		if(rs == null){
-			try {
-				newrs = new CachedSearchable(getRemote(iid,host));
-			} catch (Exception e) {
-				synchronized(lock){
-					// remove old values
-					if(remoteCache.get(key) == oldrs){
-						remoteCache.remove(key);
-						if(oldrs != null)
-							searchableHost.remove(oldrs);
-					}
-				}
-				return;
-			}
-		}
-		else
-			newrs = new CachedSearchable(rs);
-		
-		synchronized(lock){
-			if(remoteCache.get(key) == oldrs){
-				remoteCache.put(key,newrs);
-				if(oldrs != null)
-					searchableHost.remove(oldrs);
-				searchableHost.put(newrs,host);
-				// register key 
-				if(remoteKeys.get(iid.toString()) == null)
-					remoteKeys.put(iid.toString(),Collections.synchronizedSet(new HashSet<String>()));
-				remoteKeys.get(iid.toString()).add(key);
-				// mark that host is not dead any more (if it was previously)
-				deadHosts.remove(new SearchHost(iid,host));					
-			}
-		}			
-	}
-	
-	/**
-	 * Invalidate the old instance of IndexSearcher, and replace with
-	 * a new one. (IndexSearcher is create by the calling method)
-	 * 
-	 * @param iid
-	 * @param searcher
-	 */
-	public IndexSearcherMul[] invalidateLocalSearcher(IndexId iid, SearcherPool newpool) {
-		log.debug("Invalidating local searcher for "+iid);		
-		synchronized(lock){
-			SearcherPool oldpool = localCache.get(iid.toString());			
-			// put in the new value
-			if(newpool == null)
-				localCache.remove(iid.toString());
-			else{
-				localCache.put(iid.toString(),newpool);
-				for(IndexSearcherMul s : newpool.searchers)
-					searchableHost.put(s,"");
-			}
-			// close old
-			if(oldpool != null){
-				for(IndexSearcherMul s : oldpool.searchers){
-					searchableHost.remove(s);
-					// deferred close
-					log.debug("Deferred closure of searcher "+s);
-					new DeferredClose(s,15000).start();
-				}
-			}
-		}
-		if(newpool != null)
-			return newpool.searchers;
-		else
-			return null;
-	}	
-	
-	/** Get a copy of array of dead hosts */
-	public HashSet<SearchHost> getDeadHosts(){
-		synchronized(lock){
-			HashSet<SearchHost> copy = new HashSet<SearchHost>();
-			copy.addAll(deadHosts);
-			return copy;
-		}
-	}
-	
 	/** Get singleton instance */
 	public static synchronized SearcherCache getInstance(){
 		if(instance == null)
-			instance = new SearcherCache();
+			instance = new SearcherCache(true);
 		
 		return instance;
 	}
 	
-	protected SearcherCache(){
-		remoteCache = new Hashtable<String,CachedSearchable>();
-		localCache = new Hashtable<String,SearcherPool>();
-		deadHosts = Collections.synchronizedSet(new HashSet<SearchHost>());
-		global = GlobalConfiguration.getInstance();
-		searchableHost = new Hashtable<Searchable,String>();
-		remoteKeys = new Hashtable<String,Set<String>>();
-		lock = new Object();
-		initialized = Collections.synchronizedSet(new HashSet<String>());
+	protected SearcherCache(boolean initialize){
 		searchPoolSize = Configuration.open().getInt("SearcherPool","size",1);
+		if(initialize)
+			initializeLocal();
 	}
-
+	
 	public int getSearchPoolSize() {
 		return searchPoolSize;
 	}
 
-
-	
-	
+	public Set<SearchHost> getDeadPools() {
+		return deadPools;
+	}
 }

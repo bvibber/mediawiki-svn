@@ -808,12 +808,17 @@ public class GlobalConfiguration {
 		if(indexHost == null)
 			indexHost = indexLocation.get(dbname);
 		if(indexHost == null){
-			// try wildcards
+			// try longest matching wildcard
+			Pattern longest = null;
 			for(Entry<Pattern,String> ph : indexWildcard.entrySet()){ // pattern->host
 				Matcher m = ph.getKey().matcher(dbrole);
-				if(m.matches())
-					return ph.getValue();
+				if(m.matches()){
+					if(longest == null || longest.pattern().length() < ph.getKey().pattern().length())
+						longest = ph.getKey();
+				}
 			}
+			if(longest != null)
+				return indexWildcard.get(longest);
 		}
 		return indexHost;
 	}

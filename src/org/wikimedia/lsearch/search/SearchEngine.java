@@ -214,6 +214,10 @@ public class SearchEngine {
 		try{
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			String host = cache.getRandomHost(iid.getTitleNgram());
+			if(host == null){
+				res.setErrorMsg("No available searchers");
+				return res;
+			}
 			ArrayList<String> keys = messenger.similar(host,iid.toString(),searchterm,nsf,dist);
 			for(int i=0;i<keys.size() && i<limit;i++)
 				res.addResult(new ResultSet(keys.get(i),1));
@@ -222,7 +226,7 @@ public class SearchEngine {
 			res.addInfo("similar",formatHost(host));
 		} catch(IOException e){
 			e.printStackTrace();
-			res.setErrorMsg("I/O error in searchSimilar() : "+e.getMessage());
+			res.setErrorMsg("I/O processing the request : "+e.getMessage());
 			log.error("I/O error in searchSimilar() : "+e.getMessage());
 		}
 		return res;
@@ -258,6 +262,11 @@ public class SearchEngine {
 	protected SearchResults searchRelated(IndexId iid, String searchterm, int offset, int limit) {
 		RMIMessengerClient messenger = new RMIMessengerClient();
 		String host = cache.getRandomHost(iid.getRelated());
+		if(host == null){
+			SearchResults res = new SearchResults();
+			res.setErrorMsg("No available searchers");
+			return res;
+		}
 		return messenger.searchRelated(host,iid.toString(),searchterm,offset,limit);
 		
 	}
@@ -324,6 +333,11 @@ public class SearchEngine {
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(pre);
+			if(host == null){
+				SearchResults res = new SearchResults();
+				res.setErrorMsg("No available hosts for "+pre);
+				return res;
+			}
 			return messenger.searchPrefix(host,pre.toString(),searchterm,limit,nsf);
 		} catch(IOException e){
 			e.printStackTrace();
@@ -579,18 +593,11 @@ public class SearchEngine {
 					IndexId piid = parts.iterator().next();
 					if(!piid.isFurtherSubdivided()){
 						// search on single index part
-						String host;
-						if(piid.isMySearch())
-							host = "localhost";
-						else{
-							// load balance remote hosts
-							WikiSearcher ts = new WikiSearcher(iid);
-							host = ts.getHost(piid);
-						}
+						String host = cache.getRandomHost(piid);
 						if(host == null){
 							res = new SearchResults();
-							res.setErrorMsg("Error contacting searcher for "+piid);
-							log.error("Error contacting searcher for "+piid);
+							res.setErrorMsg("No available searcher for "+piid);
+							log.error("No available searcher for "+piid);
 							return res;
 						}
 						// query 
@@ -697,6 +704,8 @@ public class SearchEngine {
 			RMIMessengerClient messenger = new RMIMessengerClient();
 			// find host 
 			String host = cache.getRandomHost(iid.getSpell());
+			if(host == null)
+				return; // no available 
 			Suggest.ExtraInfo info = new Suggest.ExtraInfo(res.getPhrases(),res.getFoundInContext(),res.getFoundInTitles(),res.getFirstHitRank(),res.isFoundAllInAltTitle());
 			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,info,nsfw.getFilter());
 			res.setSuggest(sq);	
@@ -707,8 +716,11 @@ public class SearchEngine {
 	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
 		Fuzzy fuzzy = null;
-		if(iid.hasSpell())
-			fuzzy = new Fuzzy(iid,cache.getRandomHost(iid.getSpell()));
+		if(iid.hasSpell()){
+			String host = cache.getRandomHost(iid.getSpell());
+			if(host != null)
+				fuzzy = new Fuzzy(iid,host);
+		}
 		if(raw){
 			// do minimal parsing, make a raw query
 			parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
@@ -765,6 +777,8 @@ public class SearchEngine {
 
 				if(target != null){
 					String host = cache.getRandomHost(target);
+					if(host == null)
+						return; // no available searchers
 					RMIMessengerClient messenger = new RMIMessengerClient();
 					SuffixNamespaceWrapper wrap = null;
 					if(nsf != null || sf != null)
@@ -951,7 +965,7 @@ public class SearchEngine {
 		HashMap<String,HighlightResult> results = new HashMap<String,HighlightResult>();
 		RMIMessengerClient messenger = new RMIMessengerClient();
 		HashSet<String> hosts = new HashSet<String>();
-		
+
 		for(Entry<IndexId,ArrayList<String>> e : map.entrySet()){
 			IndexId piid = e.getKey();
 			for(IndexId hiid : piid.getPhysicalIndexIds()){
@@ -964,6 +978,8 @@ public class SearchEngine {
 				} else{ 
 					// remote call
 					String host = cache.getRandomHost(hiid);
+					if(host == null)
+						continue; // no available hosts
 					rs = messenger.highlight(host,e.getValue(),hiid.toString(),terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
 					hosts.add(host);
 				}

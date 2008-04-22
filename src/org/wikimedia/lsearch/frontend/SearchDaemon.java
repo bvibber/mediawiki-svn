@@ -331,15 +331,19 @@ public class SearchDaemon extends HttpHandler {
 				sendOutputLine("[WARMUP]   "+formatIid(iid,maxlen)+"     "+(li!=null? formatTimestamp(li.timestamp):""));
 			else{
 				// check if being cached
-				IndexSearcherMul[] pool = cache.getPool(iid);
 				boolean cached = false;
-				if(pool != null){					
-					for(IndexSearcherMul s : pool){
-						if(AggregateMetaField.isBeingCached(s.getIndexReader())){
-							cached = true;
-							break;
+				try{
+					IndexSearcherMul[] pool = cache.getLocalSearcherPool(iid);				
+					if(pool != null){					
+						for(IndexSearcherMul s : pool){
+							if(AggregateMetaField.isBeingCached(s.getIndexReader())){
+								cached = true;
+								break;
+							}
 						}
 					}
+				} catch(IOException e){
+					
 				}
 				if(cached){
 					sendOutputLine("[CACHING]  "+formatIid(iid,maxlen)+"     "+(li!=null? formatTimestamp(li.timestamp):""));

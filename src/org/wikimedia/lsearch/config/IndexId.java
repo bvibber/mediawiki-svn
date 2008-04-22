@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.search.SearcherCache;
 
 /**
  * Encapsulated an index ID in form db.part, e.g. entest.mainpart.
@@ -115,7 +116,7 @@ public class IndexId {
 	/** For titles part (tspart) indexes, maps suffix -> iw */
 	protected Hashtable<String,String> suffixIwMap = null;
 	/** For titles parts (tspart) indexes, map suffix -> dbname */
-	protected Hashtable<String,String> suffixToDbname = new Hashtable<String,String>();
+	protected Hashtable<String,String> suffixToDbname = null;
 	/** Dbname after suffix is deleted */
 	protected String reducedDbname = null;
 	
@@ -145,6 +146,9 @@ public class IndexId {
 	public static enum AgeScaling { WEAK, MEDIUM, STRONG, NONE };
 	
 	protected AgeScaling ageScaling = null;
+	
+	/** lock used in {@link SearcherCache} class */
+	protected Object searcherCacheLock  = new Object();
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -883,12 +887,19 @@ public class IndexId {
 	
 	/** For tspart indexes, mapping: suffix -> dbname */ 
 	public Hashtable<String, String> getSuffixToDbname() {
-		if(!isTitlesBySuffix() || part==null)
+		if(!isTitlesBySuffix())
 			throw new RuntimeException("Trying to get suffix->dbname map for "+dbrole);
+		if(part == null && suffixToDbname == null){
+			// init for the main logical index
+			suffixToDbname = new Hashtable<String,String>();
+			for(IndexId part : getPhysicalIndexIds()){
+				suffixToDbname.putAll(part.getSuffixToDbname());
+			}
+		}
 		return suffixToDbname;
 	}
 	
-	/** Get IndexId for a suffix in tspart indexes */
+	/** Get IndexId for a suffix in tspart (or main) indexes */
 	public IndexId getIndexIdforSuffix(String suffix){
 		return IndexId.get(getSuffixToDbname().get(suffix));
 	}
@@ -908,6 +919,10 @@ public class IndexId {
 	/** If this iid is in chinese or japanese */
 	public boolean isCJK(){
 		return FilterFactory.isCJKLanguage(getLangCode());
+	}
+
+	public Object getSearcherCacheLock() {
+		return searcherCacheLock;
 	}
 		
 }

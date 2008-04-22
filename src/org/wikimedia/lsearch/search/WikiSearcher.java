@@ -25,6 +25,7 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.TopFieldDocs;
 import org.apache.lucene.search.Weight;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 
 /**
  * A generalized index searcher, supports various index
@@ -52,6 +53,8 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	protected Hashtable<String,Searchable> searcherParts = new Hashtable<String,Searchable>();
 	protected MultiSearcherMul ms = null;
 	protected Searcher cachedDfs = null;
+	/** searchable -> host */
+	protected Hashtable<Searchable,String> searchableHost = new Hashtable<Searchable,String>();
 	
 	public static final boolean INVALIDATE_CACHE = true;
 	
@@ -59,20 +62,18 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		ArrayList<Searchable> ss = new ArrayList<Searchable>();
 		for(IndexId iid : iids){
 			Searchable s = null;
-			if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid)){
-				// always try to use a local copy if available
-				try {
+			String host = cache.getRandomHost(iid);
+			if(host != null){
+				if(RMIMessengerClient.isLocal(host))
 					s = cache.getLocalSearcher(iid);
-				} catch (IOException e) {
-					// ok, try remote
-				}
+				else
+					s = cache.getRemoteSearcher(iid,host);
 			}
-			if(s == null)
-				s = cache.getRandomRemoteSearchable(iid);
-			
+						
 			if(s != null){
 				ss.add(s);
 				searcherParts.put(iid.toString(),s);
+				searchableHost.put(s,host);
 			} else
 				log.warn("Cannot get a search index (nor local or remote) for "+iid);				
 		}
@@ -112,14 +113,14 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		if(s == null)
 			return null;
 		else
-			return cache.getSearchableHost(s);
+			return searchableHost.get(s);
 	}
 	
 	/** Get map iid->host for of all parts in this searcher */
 	public HashMap<String,String> getAllHosts(){
 		HashMap<String,String> ret = new HashMap<String,String>();
 		for(Entry<String,Searchable> e : searcherParts.entrySet()){
-			ret.put(e.getKey(),cache.getSearchableHost(e.getValue()));
+			ret.put(e.getKey(),searchableHost.get(e.getValue()));
 		}
 		return ret;
 	}

@@ -140,10 +140,9 @@ public class IndexThread extends Thread {
 			// make snapshot?
 			if(makeSnapshotNow || (System.currentTimeMillis() - lastSnapshot) > snapshotInterval){
 				flushNow = true;
-				applyUpdates();
+				applyUpdates();				
 				makeSnapshots();
-				lastSnapshot = System.currentTimeMillis();
-				makeSnapshotNow = false;
+				lastSnapshot = System.currentTimeMillis();				
 			}
 			try {
 				Thread.sleep(1000);
@@ -170,6 +169,7 @@ public class IndexThread extends Thread {
 				pat.add(new Pattern(StringUtils.wildcardToRegexp(p.pattern),p.forPrecursors,p.pattern.startsWith("^")));
 			}
 			snapshotPatterns.clear();
+			makeSnapshotNow = false;
 		}
 		log.info("Making snapshots...");
 		

@@ -22,6 +22,7 @@ import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
+import org.wikimedia.lsearch.search.SearcherCache.SearcherPoolStatus;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
@@ -44,6 +45,15 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public long[] getIndexTimestamp(String[] dbroles) throws RemoteException;
+	
+	/**
+	 * Get status of a local searcher pool
+	 * 
+	 * @param dbrole
+	 * @return
+	 * @throws RemoteException
+	 */
+	public SearcherPoolStatus getSearcherPoolStatus(String dbrole) throws RemoteException;
 	
 	/**
 	 * Enqueue on local indexer an index update record. Used for distributed

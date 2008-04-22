@@ -32,6 +32,7 @@ import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.search.SearcherCache.SearcherPoolStatus;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
@@ -205,6 +206,16 @@ public class RMIMessengerImpl implements RMIMessenger {
 			return similar.getSimilarTitles(title,nsf,maxdist);
 		} catch(IOException e){
 			throw new RemoteException("IO Error in similar()",e);
+		}
+	}
+
+	public SearcherPoolStatus getSearcherPoolStatus(String dbrole) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		try{
+			return cache.getSearcherPoolStatus(IndexId.get(dbrole));
+		} catch(IOException e){
+			throw new RemoteException("IO error in getSearcherPoolStatus()",e);
 		}
 	}
 

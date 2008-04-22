@@ -60,6 +60,10 @@ public class PrefixIndexBuilder {
 	static public PrefixIndexBuilder newFromStandalone(IndexId iid) throws IOException{
 		return new PrefixIndexBuilder(iid,Links.openStandalone(iid),null);
 	}
+	/** To rebuild the prefix index only (and not the precursor) */
+	static public PrefixIndexBuilder newForPrefixOnly(IndexId iid) throws IOException{
+		return new PrefixIndexBuilder(iid,null,null);
+	}
 	/** Builder for incremental updates to precursor index */
 	static public PrefixIndexBuilder forPrecursorModification(IndexId iid) throws IOException{
 		iid = iid.getPrefix();
@@ -123,7 +127,7 @@ public class PrefixIndexBuilder {
 		}		
 		
 		IndexId iid = IndexId.get(dbname);
-		PrefixIndexBuilder builder = newFromStandalone(iid);
+		PrefixIndexBuilder builder = usetemp? newForPrefixOnly(iid) : newFromStandalone(iid);
 		IndexId pre = iid.getPrefix().getPrecursor();
 		String precursorPath = pre.getImportPath();
 		if(useSnapshot)

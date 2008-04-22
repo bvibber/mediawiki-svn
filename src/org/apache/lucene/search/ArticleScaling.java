@@ -1,5 +1,7 @@
 package org.apache.lucene.search;
 
+import java.io.Serializable;
+
 /**
  * Scoring method to apply in ArticleQueryWrap using
  * ArticleInfo
@@ -7,7 +9,7 @@ package org.apache.lucene.search;
  * @author rainman
  *
  */
-abstract public class ArticleScaling {
+abstract public class ArticleScaling implements Serializable {
 	
 	abstract public float score(float score, float diff);
 	public String explain(float score, float diff){

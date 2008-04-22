@@ -32,6 +32,7 @@ import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.search.SearcherCache.SearcherPoolStatus;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
@@ -71,6 +72,17 @@ public class RMIMessengerClient {
 		return host==null || global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("");
 	}
 	
+	protected void recheckRemote(String dbrole, String host){
+		recheckRemote(IndexId.get(dbrole),host);
+	}
+	
+	/** check remote host and corresponding remote pool */
+	protected void recheckRemote(IndexId iid, String host) {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		cache.reInitializeRemote(iid,host);
+	}
+	
 	/** notify remote hosts that a local search index is changes (to reload remote object) */
 	public void notifyIndexUpdated(IndexId iid, Collection<String> hosts){
 		if(cache == null)
@@ -78,7 +90,7 @@ public class RMIMessengerClient {
 		if(iid.isSingle() || iid.isLinks())
 			return; // no need to notify if this is not split index
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		Set<SearchHost> deadHosts = cache.getDeadHosts();
+		Set<SearchHost> deadHosts = cache.getDeadPools();
 		String myhost = global.getLocalhost();
 		if(myhost == null){
 			log.error("Local hostname is null in notifyIndexUpdated(). Probably a bug.");
@@ -182,11 +194,7 @@ public class RMIMessengerClient {
 			log.debug(" \\-> got: "+res);
 			return res;
 		} catch (Exception e) {
-			// invalidate the searcher cache
-			if(cache == null)
-				cache = SearcherCache.getInstance();
-			if(!isLocal(host))
-				cache.invalidateSearchable(iid,host);
+			recheckRemote(iid,host);
 			HighlightPack pack = new HighlightPack(new SearchResults());
 			pack.res.retry();			
 			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
@@ -195,6 +203,7 @@ public class RMIMessengerClient {
 		}
 	}
 	
+
 	public boolean requestFlushAndNotify(String dbname, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);
@@ -235,6 +244,7 @@ public class RMIMessengerClient {
 			RMIMessenger r = messengerFromCache(host);
 			return r.getTerms(dbrole,wildcard,exactCase);
 		} catch(Exception e){
+			recheckRemote(dbrole,host);
 			e.printStackTrace();
 			return new ArrayList<String>();
 		}
@@ -245,6 +255,7 @@ public class RMIMessengerClient {
 			RMIMessenger r = messengerFromCache(host);
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
 		} catch(Exception e){
+			recheckRemote(dbrole,host);
 			e.printStackTrace();
 			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0,new HashSet<String>(),false);
 		}		
@@ -260,11 +271,7 @@ public class RMIMessengerClient {
 				return new SearchResults();
 			}
 			e.printStackTrace();
-			if(host!=null && !isLocal(host)){
-				if(cache == null)
-					cache = SearcherCache.getInstance();
-				cache.invalidateSearchable(IndexId.get(dbrole),host);
-			}
+			recheckRemote(dbrole,host);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching titles: "+e.getMessage());			
 			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage());
@@ -282,11 +289,7 @@ public class RMIMessengerClient {
 				return null;
 			}
 			e.printStackTrace();
-			if(host != null && !isLocal(host)){
-				if(cache == null)
-					cache = SearcherCache.getInstance();
-				cache.invalidateSearchable(IndexId.get(dbrole),host);
-			}
+			recheckRemote(dbrole,host);
 			log.warn("Error invoking suggest() on "+host+" : "+e.getMessage());
 			return null;
 		}		
@@ -296,6 +299,7 @@ public class RMIMessengerClient {
 			RMIMessenger r = messengerFromCache(host);
 			return r.getFuzzy(dbrole,word,nsf);
 		} catch(Exception e){
+			recheckRemote(dbrole,host);
 			e.printStackTrace();
 			log.warn("Error invoking getFuzzy() on "+host+" : "+e.getMessage());
 			return new ArrayList<SuggestResult>();
@@ -310,11 +314,7 @@ public class RMIMessengerClient {
 		} catch(Exception e){
 			e.printStackTrace();
 			log.warn("Error invoking searchRelated() on "+host+" : "+e.getMessage());
-			if(host!=null && !isLocal(host)){
-				if(cache == null)
-					cache = SearcherCache.getInstance();
-				cache.invalidateSearchable(IndexId.get(dbrole),host);
-			}
+			recheckRemote(dbrole,host);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching related index: "+e.getMessage());
 			return res;
@@ -339,9 +339,9 @@ public class RMIMessengerClient {
 		try {
 			r = messengerFromCache(host);
 			return r.searchPrefix(dbrole,searchterm,limit,nsf);
-		} catch (NotBoundException e) {
+		} catch (Exception e) {
+			recheckRemote(dbrole,host);
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error search prefix index: "+e.getMessage());
 			return res;
@@ -353,10 +353,23 @@ public class RMIMessengerClient {
 		try {
 			r = messengerFromCache(host);
 			return r.similar(dbrole,title,nsf,maxdist);
-		} catch (NotBoundException e) {
+		} catch (Exception e) {
+			recheckRemote(dbrole,host);
 			e.printStackTrace();
 			log.error("Messenger not bound: "+e.getMessage());
 			return new ArrayList<String>();
+		}
+	}
+	
+	public SearcherPoolStatus getSearcherPoolStatus(String host, String dbrole) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			return r.getSearcherPoolStatus(dbrole);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage());
+			return new SearcherPoolStatus(false);
 		}
 	}
 }

@@ -293,13 +293,14 @@ public class UpdateThread extends Thread {
 								} catch(RemoteException e){
 									e.printStackTrace();
 									log.warn("Error response from "+host+" : "+e.getMessage());
-									fail++;
 								}
 							}
 						}
 						if(fail == 0 && succ >= 1){
 							wait = false; // proceed to deployment
 							reroute = true;
+						} else if(fail == 0 && succ == 0){
+							wait = false; // we're the only one alive, just deploy.. 
 						} else
 							wait = true;
 					}
@@ -316,7 +317,12 @@ public class UpdateThread extends Thread {
 				if( reroute ){
 					log.info("Deploying "+iid);
 					beingDeployed.add(iid.toString());
-					cache.invalidateLocalSearcher(iid,null);
+					try{
+						RMIServer.unbind(iid,cache.getLocalSearcherPool(iid));
+					} catch(IOException e) {
+						// we gave it a shot...
+					}
+					cache.updateLocalSearcherPool(iid,null);
 				}
 
 			}
@@ -333,7 +339,7 @@ public class UpdateThread extends Thread {
 			Warmup.waitForAggregate(pool.searchers);
 			
 			// add to cache
-			cache.invalidateLocalSearcher(li.iid,pool);
+			cache.updateLocalSearcherPool(li.iid,pool);
 			if( reroute ){
 				log.info("Deployed "+iid);
 				beingDeployed.remove(iid.toString());
@@ -344,7 +350,7 @@ public class UpdateThread extends Thread {
 		}
 	}
 	
-	protected UpdateThread(){
+	protected UpdateThread(RebuildType type){
 		messenger = new RMIMessengerClient();
 		global = GlobalConfiguration.getInstance();
 		registry = IndexRegistry.getInstance();
@@ -352,18 +358,21 @@ public class UpdateThread extends Thread {
 		// query interval in config is in minutes
 		queryInterval = (long)(config.getDouble("Search","updateinterval",15) * 60 * 1000);
 		delayInterval = (long)(config.getDouble("Search","updatedelay",0)*1000);
-		cache = SearcherCache.getInstance();
+		if(type == RebuildType.STANDALONE)
+			cache = SearcherCache.getStandalone();
+		else
+			cache = SearcherCache.getInstance();
 		rsyncPath = config.getString("Rsync","path","/usr/bin/rsync");
 		rsyncParams = config.getString("Rsync","params","");
 	}
 	
 	public static UpdateThread getStandalone(){
-		return new UpdateThread();
+		return new UpdateThread(RebuildType.STANDALONE);
 	}
 	
 	public static synchronized UpdateThread getInstance(){
 		if(instance == null)
-			instance = new UpdateThread();
+			instance = new UpdateThread(RebuildType.FULL);
 		
 		return instance;
 	}
