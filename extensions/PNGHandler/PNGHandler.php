@@ -1,12 +1,15 @@
 <?php
 
-$wgAutoloadClasses['PngHandler'] = dirname(__FILE__) . '/PngHandler_body.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['PNGHandler'] = $dir . 'PNGHandler_body.php';
+$wgExtensionMessagesFiles['PNGHandler'] = $dir . 'PNGHandler.i18n.php';
 
-$wgExtensionCredits['PngHandler'][] = array(
-	'name' => 'PngHandler',
+$wgExtensionCredits['PNGHandler'][] = array(
+	'name' => 'PNGHandler',
 	'author' => 'Bryan Tong Minh', 
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PngHandler', 
-	'description' => 'Resize PNGs using pngds'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:PNGHandler', 
+	'description' => 'Resize PNGs using pngds',
+	'descriptionmsg' => 'pnghandler-desc',
 );
 
 /*
@@ -26,4 +29,4 @@ $egPngdsFallback = true;
  */
 $egPngdsMinSize = 2000000;
 
-$wgMediaHandlers['image/png'] = 'PngHandler';
+$wgMediaHandlers['image/png'] = 'PNGHandler';

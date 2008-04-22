@@ -1,6 +1,6 @@
 <?php
 
-class PngHandler extends BitmapHandler
+class PNGHandler extends BitmapHandler
 {
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $egPngdsPath, $egPngdsFallback, $egPngdsMinSize;
