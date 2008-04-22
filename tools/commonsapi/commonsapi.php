@@ -55,6 +55,7 @@ $ignore_categories = array (
 
 // Function to convert text in attributes and between tags to XML by changing some charactes to entities
 function myurlencode ( $text ) {
+  $text = str_replace ( '<a href="/w' , '<a href="http://commons.wikimedia.org/w' , $text ) ;
 	return str_replace ( array ( '&', '"', "'", '<', '>', "'" ), array ( '&amp;' , '&quot;', '&apos;' , '&lt;' , '&gt;', '&apos;' ), $text );
 }
 
@@ -70,10 +71,21 @@ function end_run ( $text ) {
   exit ;
 }
 
+function wiki2html ( &$wiki ) {
+  global $force_html , $img ;
+  if ( !$force_html ) return ;
+  if ( $wiki == '' ) return ;
+  if ( false === strpos ( $wiki , '[[' ) && false === strpos ( $wiki , '{|' ) && false === strpos ( $wiki , '{{' ) && false === strpos ( $wiki , "''" ) ) return ;
+  
+  $wiki = trim ( $wiki ) ;
+  $url = "http://commons.wikimedia.org/w/api.php?format=php&action=parse&text=" . urlencode ( $wiki ) . "&title=" . urlencode ( $img ) ;
+  $wiki = unserialize ( file_get_contents ( $url ) ) ;
+  $wiki = $wiki['parse']['text']['*'] ;
+}
 
 
 // Fake user agent
-ini_set('user_agent','MSIE 4\.0b2;');
+ini_set('user_agent','Commons API;');
 
 /* USEFUL TEST IMAGES
 	ChathamHDY0016.JPG	                has location
@@ -84,15 +96,26 @@ ini_set('user_agent','MSIE 4\.0b2;');
 // Get parameters
 $testing = isset ( $_REQUEST['test'] ) ;
 $img = $_REQUEST['image'] ;
+$force_html = isset ( $_REQUEST['forcehtml'] ) ;
+$thumb_width = $_REQUEST['thumbwidth'] ;
+$thumb_height = $_REQUEST['thumbheight'] ;
+if ( !$thumb_height || !$thumb_width ) $thumb_height = 0 ;
+if ( !$thumb_width ) $thumb_width = 0 ;
 
 // Die with explanation if no image given
 if ( !isset ( $img ) ) {
 	print "<h1>Wikimedia Commons API</h1>
 <hr/>
-Usage : commonsapi.php?image=IMAGENAME <br/>
+Usage : <b>commonsapi.php?image=IMAGENAME</b><br/>
 IMAGENAME must not have an Image: prefix <br/>
-Example : <a href='commonsapi.php?image=Sa-warthog.jpg'>Sa-warthog.jpg</a><br/>
-<i>Note:</i> All attributes and texts are entity-encoded.
+Optional parameters:
+<ul>
+<li><b>&thumbwidth=XX</b> returns a URL to a thumbnail maximal XX pixel wide</li>
+<li><b>&thumbheight=YY</b> returns a URL to a thumbnail maximal YY pixel high (requires <b>thumbwidth</b>)</li>
+<li><b>&forcehtml</b> converts wiki text into HTML (slower)</li>
+</ul>
+Example : <a href='commonsapi.php?image=Sa-warthog.jpg&thumbwidth=150&thumbheight=150'>Sa-warthog.jpg</a><br/>
+<i>Note:</i> All returned attributes and texts are entity-encoded.
 " ;
 	exit ;
 }
@@ -104,11 +127,17 @@ srand(time()) ;
 $text = file_get_contents ( $url."?".rand() ) ;
 
 // get file data via "normal" API
+// &iiurlwidth=100
 $ii_url = "http://commons.wikimedia.org/w/api.php?format=php&action=query&prop=imageinfo&iilimit=500&iiprop=timestamp|user|url|size|sha1|metadata&titles=Image:" . $img ;
+if ( $thumb_width != 0 ) $ii_url .= '&iiurlwidth=' . $thumb_width ;
+if ( $thumb_height != 0 ) $ii_url .= '&iiurlheight=' . $thumb_height ;
+
 $data = unserialize ( file_get_contents ( $ii_url ) ) ;
 $data = array_shift ( $data['query']['pages'] ) ;
 $data = $data['imageinfo'] ;
 $file_url = $data[0]['url'] ;
+if ( isset ( $data[0]['thumburl'] ) ) $thumb_url = $data[0]['thumburl'] ;
+else $thumb_url = '' ;
 if ( isset ( $data[0]['metadata'] ) ) $metadata = $data[0]['metadata'] ;
 else $metadata = array () ;
 $filedata = array () ;
@@ -146,6 +175,12 @@ foreach ( $matches AS $m ) {
 	$k = str_replace ( '"' , '' , $k[1] ) ;
 	$titles[$k] = $title ;
 }
+wiki2html ( $titles['description'] ) ;
+wiki2html ( $titles['date'] ) ;
+wiki2html ( $titles['author'] ) ;
+wiki2html ( $titles['source'] ) ;
+wiki2html ( $titles['permission'] ) ;
+wiki2html ( $titles['otherversions'] ) ;
 
 // Set default description
 $desc = array () ;
@@ -280,8 +315,11 @@ print '<response version="' . $api_version . '">' ;
 print '<file>' ;
 print '<name>' . myurlencode ( $img ) . '</name>' ;
 print '<title>' . myurlencode ( "Image:$img" ) . '</title>' ;
-print '<url>' . $file_url . '</url>' ;
-print '<page>' . myurlencode ( $url ) . '</page>' ;
+print '<urls>' ;
+print '<file>' . $file_url . '</file>' ;
+print '<description>' . myurlencode ( $url ) . '</description>' ;
+if ( $thumb_url != '' ) print '<thumbnail>' . myurlencode ( $thumb_url ) . '</thumbnail>' ;
+print '</urls>' ;
 print '<size>' . myurlencode ( $filedata[0]['size'] ) . '</size>' ;
 print '<width>' . myurlencode ( $filedata[0]['width'] ) . '</width>' ;
 print '<height>' . myurlencode ( $filedata[0]['height'] ) . '</height>' ;
