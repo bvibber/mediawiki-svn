@@ -1,7 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifdef _MSC_VER
+typedef unsigned __int32  uint32_t;
+#else
 #include <stdint.h>
+#endif
 
 #include "zlib.h"
 #include "pngcmd.h"

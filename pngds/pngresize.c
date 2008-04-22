@@ -46,6 +46,8 @@ void png_resize_init(void *info_)
 {
 	pngreader *info = (pngreader*)info_;
 	pngresize *rinfo = (pngresize*)info->extra1;
+	uint32_t max_line_count;
+	unsigned int i;
 	
 	if (info->header->colortype == COLOR_PALETTE)
 		png_die("palette_resizing_unsupported", NULL);
@@ -69,10 +71,8 @@ void png_resize_init(void *info_)
 	if (rinfo->fx < 1.0 || rinfo->fy < 1.0)
 		png_die("upscaling_unsupported", NULL);
 	
-	uint32_t max_line_count = (unsigned int)rinfo->fy;
+	max_line_count = (unsigned int)rinfo->fy;
 	if (rinfo->fy > max_line_count) max_line_count++;
-		
-	unsigned int i;
 	
 	rinfo->scanlines = malloc(max_line_count * sizeof(char*));
 	for (i = 0; i < max_line_count; i++) 
@@ -95,7 +95,7 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 	uint32_t i, j, k, start, end;
 	
 	float divisor;
-	unsigned char pixel[info->bpp];
+	unsigned char *pixel = malloc(info->bpp);
 	
 	for (i = 0; i < rinfo->width; i++)
 	{
@@ -114,12 +114,12 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 			rinfo->scanlines[rinfo->line_count][i * info->bpp + j] = pixel[j];
 		}
 	}
+	free(pixel);
 	rinfo->line_count++;
 	
 	if ((info->line_count / rinfo->fy) > (rinfo->written_lines + 1))
 	{
-		unsigned char scanline[rinfo->width * info->bpp];
-		memset(scanline, 0, rinfo->width * info->bpp);
+		unsigned char *scanline = calloc(rinfo->width, info->bpp);
 		for (i = 0; i < rinfo->width * info->bpp; i++)
 		{
 			for (j = 0; j < rinfo->line_count; j++)

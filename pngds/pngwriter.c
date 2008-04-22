@@ -17,6 +17,8 @@ void png_write_chunk(pngreader *info, char *type, void *ptr, uint32_t size);
 void png_write_header(void *_info)
 {
 	pngreader *info = (pngreader*)_info;
+	pngwriter *winfo = (pngwriter*)info->extra2;
+	uint32_t crc = crc32(0, Z_NULL, 0);
 	pngheader header;
 	
 	memcpy(&header, info->header, 13);
@@ -28,7 +30,6 @@ void png_write_header(void *_info)
 	}
 	png_fwrite("\x89PNG\r\n\x1a\n", 8, info->fout, NULL);
 	
-	uint32_t crc = crc32(0, Z_NULL, 0);
 	png_write_int(13, info->fout, NULL);
 	png_fwrite("IHDR", 4, info->fout, &crc);
 	png_write_int(header.width, info->fout, &crc);
@@ -36,7 +37,6 @@ void png_write_header(void *_info)
 	png_fwrite((char*)&header + 8, 5, info->fout, &crc);
 	png_write_int(crc, info->fout, NULL);
 
-	pngwriter *winfo = (pngwriter*)info->extra2;
 	winfo->zst.zalloc = Z_NULL;
 	winfo->zst.zfree = Z_NULL;
 	winfo->zst.opaque = Z_NULL;
@@ -62,10 +62,12 @@ void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanlin
 {
 	pngreader *info = (pngreader*)info_;
 	pngwriter *winfo = (pngwriter*)info->extra2;
-	
-	int i;
+	int ret;
+
+	unsigned int i;
 	unsigned char a, b, c;
 	short p, pa, pb, pc;
+
 	switch (winfo->filter_method)
 	{
 		case FILTER_NONE:
@@ -102,7 +104,6 @@ void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanlin
 	}
 	winfo->in[0] = winfo->filter_method;
 	
-	int ret;
 	winfo->zst.next_in = winfo->in;
 	winfo->zst.avail_in = length + 1;
 	
@@ -161,14 +162,16 @@ int main(int argc, char **argv)
 {
 	void **opts = pngcmd_getopts(argc, argv);
 	FILE *in, *out;
+	pngcallbacks callbacks;
+	pngwriter *winfo;
+
 	png_open_streams(opts, &in, &out);
 	
-	pngcallbacks callbacks;
 	callbacks.completed_scanline = &png_write_scanline;
 	callbacks.read_header = &png_write_header;
 	callbacks.done = &png_write_end;
 	
-	pngwriter *winfo = calloc(sizeof(pngwriter), 1);
+	winfo = calloc(sizeof(pngwriter), 1);
 	winfo->deflate_level = *(char *)opts[PNGOPT_DEFLATE_LEVEL];
 	winfo->filter_method = *(char *)opts[PNGOPT_NO_FILTERING] ? FILTER_NONE : FILTER_PAETH;
 	

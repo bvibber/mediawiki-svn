@@ -22,6 +22,7 @@ void png_read_ancillary(pngreader *info, uint32_t length);
 void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2)
 {
 	pngreader info;
+	char header[8];
 	
 	info.fin = fin;
 	info.fout = fout;
@@ -39,7 +40,6 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 	info.extra1 = extra1;
 	info.extra2 = extra2;
 	
-	char header[8];
 	png_fread(header, 8, fin, NULL);
 	if (strncmp(header, "\x89PNG\r\n\x1a\n", 8))
 		png_die("header", header);
@@ -59,6 +59,8 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 int png_read_chunk(pngreader *info)
 {
 	chunkheader c_head;
+	uint32_t crc;
+
 	png_read_int(&c_head.length, info->fin, NULL);
 	
 	info->crc = crc32(0, Z_NULL, 0);
@@ -86,7 +88,6 @@ int png_read_chunk(pngreader *info)
 		png_die("critical_chunk", c_head.type);
 	}
 	
-	uint32_t crc;
 	png_read_int(&crc, info->fin, NULL);
 #ifndef NO_CRC	
 	if (crc != info->crc)
@@ -101,6 +102,8 @@ int png_read_chunk(pngreader *info)
 
 void png_read_header(pngreader *info, uint32_t length)
 {
+	int ret;
+
 	if (length != 13)
 		png_die("unexpected_header_length", &length);
 	
@@ -153,7 +156,7 @@ void png_read_header(pngreader *info, uint32_t length)
 	info->zst.avail_in = 0;
 	info->zst.next_in = Z_NULL;
 	
-	int ret = inflateInit(&info->zst);
+	ret = inflateInit(&info->zst);
 	if (ret != Z_OK)
 		png_die("zlib_init_error", &ret);
 	
@@ -163,11 +166,11 @@ void png_read_header(pngreader *info, uint32_t length)
 
 void png_read_palette(pngreader *info, uint32_t length)
 {
+	unsigned short i;
 	if (length % 3)
 		png_die("malformed_palette_length", &length);
 	
-	info->palette = malloc(sizeof(rgbcolor*) * length / 3);
-	unsigned short i;
+	info->palette = calloc(256, sizeof(rgbcolor*));
 	for (i = 0; i < length; i += 3)
 	{
 		info->palette[i / 3] = malloc(sizeof(rgbcolor));
@@ -223,6 +226,11 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 	for (i = 0; i < size; i++)
 	{
 		unsigned char byte = buffer[i];
+		uint32_t x;
+
+		// Paeth variables
+		unsigned char a, b, c;
+		short p, pa, pb, pc;
 		
 		if (info->expect_filter)
 		{
@@ -233,11 +241,8 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		}
 		
 		
-		// Paeth variables
-		unsigned char a, b, c;
-		short p, pa, pb, pc;
 		
-		uint32_t x = info->scan_pos - info->bpp;
+		x = info->scan_pos - info->bpp;
 		switch (info->filter)
 		{
 			case (FILTER_NONE):
@@ -286,11 +291,13 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 		if ((info->scan_pos % info->bpp) == 0 &&
 			(info->scan_pos / info->bpp) == info->header->width) 
 		{
+			unsigned char *tmp;
+				
 			info->line_count++;
 			if (info->callbacks->completed_scanline != NULL)
 				(*info->callbacks->completed_scanline)(info->current_scanline, 
 				info->previous_scanline, info->scan_pos, info);
-			unsigned char *tmp = info->previous_scanline;
+			tmp = info->previous_scanline;
 			info->previous_scanline = info->current_scanline;
 			info->current_scanline = tmp;
 			info->expect_filter = 1;

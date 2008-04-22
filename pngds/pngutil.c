@@ -54,6 +54,7 @@ unsigned int png_fwrite(void *ptr, unsigned int size,
 		png_die("write_error", stream);
 	if (crc != NULL)
 		*crc = crc32(*crc, ptr, size);
+	return size;
 }
 void png_write_int(uint32_t value, FILE *stream, uint32_t *crc)
 {
