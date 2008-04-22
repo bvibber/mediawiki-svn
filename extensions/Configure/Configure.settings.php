@@ -606,7 +606,7 @@ $arrayDefs = array(
 	'wgArticleRobotPolicies' => 'assoc',
 # Skins
 	'wgSkipSkins' => 'simple',
-	'wgValidSkinNames' => 'simple',
+	'wgValidSkinNames' => 'assoc',
 # Cache
 	'wgMemCachedServers' => 'simple',
 # Interwiki
