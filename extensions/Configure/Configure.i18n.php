@@ -121,6 +121,7 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'configure'                       => 'Nastavení wiki',
@@ -130,9 +131,9 @@ $messages['cs'] = array(
 	'configure-edit-old'              => 'Upozornění: Upravujete <strong>starou</strong> verzi konfigurace.',
 	'configure-error'                 => 'Nebylo možné uložit nastavení.',
 	'configure-no-directory'          => 'Adresář pro uložení nastavení (<tt>$1</tt>) neexistuje.
-Aby jste mohli používat toto rozšíření, vytvořte ho nebo ho změňte.',
+Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfiguraci.',
 	'configure-no-old'                => 'Není dostupná žádná stará verze konfigurace',
-	'configure-no-setup'              => 'Musíte explicitně zavolat <tt>efConfigureSetup()</tt> ve svém <tt>LocalSettings.php</tt>, aby jste mohli používat toto rozšíření.',
+	'configure-no-setup'              => 'Abyste mohli používat toto rozšíření, musíte ve svém <tt>LocalSettings.php</tt> explicitně zavolat <code>efConfigureSetup()</code>.',
 	'configure-no-transwiki'          => 'Nemáte oprávnění měnit nastavení na jiných wiki',
 	'configure-old-versions'          => 'Seznam starých verzí konfigurace:',
 	'configure-old-not-available'     => 'Stará verze konfigurace $1, kterou jste požadovali, není dostupná.',
@@ -396,6 +397,8 @@ $messages['hi'] = array(
 	'configure-btn-save'              => 'सेटिंग संजोयें',
 	'configure-error'                 => 'कोन्फ़िगरेशन संजोया नहीं जा सका',
 	'configure-no-transwiki'          => 'अन्य विकियोंकी सैटिंग बदलने की आपको अनुमति नहीं हैं',
+	'configure-old-versions'          => 'कोन्फ़िगरेशनके पुराने अवतरणोंकी सूची:',
+	'configure-saved'                 => 'कोन्फ़िगरेशन संजोया गया हैं',
 	'configure-section-general'       => 'साधारण सैटिंग',
 	'configure-section-paths'         => 'पाथ',
 	'configure-section-db'            => 'डाटाबेस',
@@ -440,6 +443,9 @@ $messages['hi'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'configure-error'                => 'Konfigurasiné ora bisa disimpen',
+	'configure-section-email'        => 'E-mail',
+	'configure-section-enotif'       => 'Notifikasi e-mail',
 	'configure-section-localization' => 'Lokalisasi',
 	'configure-section-namespaces'   => 'Bilik-bilik nama',
 	'configure-section-cache'        => 'Cache',
@@ -490,6 +496,66 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-job'           => 'Aarbechten',
 	'configure-section-extension'     => 'Erweiderungen',
 	'configure-section-misc'          => 'Verschiddenes',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'configure'                       => 'विकि कॉन्फिगर करा',
+	'configure-desc'                  => 'वेब वर आधारित इंटरफेस वापरून नोंदणी केलेल्या सदस्यांना विकि कॉन्फिगर करण्याची परवानगी द्या',
+	'configure-summary'               => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
+	'configure-btn-save'              => 'सेटिंग्स जतन करा',
+	'configure-edit-old'              => 'इशारा: तुम्ही कॉन्फिगरेशनची एक <strong>जुनी</strong> आवृत्ती संपादित आहात.',
+	'configure-error'                 => 'कॉन्फिगरेशन जतन करू शकलेलो नाही',
+	'configure-no-directory'          => 'सेटिंग जतन करणारी डिरेक्टरी <tt>$1</tt>, अस्तित्वात नाही.
+कृपया ती तयार करा अथवा बदला.',
+	'configure-no-old'                => 'या कॉन्फिगरेशनची जुनी आवृत्ती उपलब्ध नाही',
+	'configure-no-setup'              => 'हा विस्तारकक्ष वापरण्यासाठी तुम्हाला <code>efConfigureSetup()</code> हे कार्य कॉल करावे लागेल',
+	'configure-no-transwiki'          => 'तुम्हांला इतर विकिंचे सेटिंग बदलण्याची परवानगी नाही',
+	'configure-old-versions'          => 'कॉन्फिगरेशनच्या जुन्या आवृत्त्यांची यादी:',
+	'configure-old-not-available'     => 'तुम्ही मागितलेले जुने सेटिंग $1 उपलब्ध नाही',
+	'configure-saved'                 => 'कॉन्फिगरेशन जतन केलेले आहे',
+	'configure-section-general'       => 'साधारण सेटिंग',
+	'configure-section-paths'         => 'पाथ',
+	'configure-section-db'            => 'डाटाबेस',
+	'configure-section-db-notallowed' => 'तुम्हाला डाटाबेसचे सेटिंग बदलण्याची परवानगी नाही.',
+	'configure-section-email'         => 'इ-मेल',
+	'configure-section-enotif'        => 'इ-मेल नोटिफिकेशन',
+	'configure-section-localization'  => 'स्थानिकीकरण',
+	'configure-section-debug'         => 'डिबगिंग',
+	'configure-section-profiling'     => 'प्रोफिलिंग',
+	'configure-section-site'          => 'संकेतस्थळ कस्टमायझेशन',
+	'configure-section-namespaces'    => 'नामविश्वे',
+	'configure-section-skin'          => 'त्वचा',
+	'configure-section-category'      => 'वर्ग',
+	'configure-section-cache'         => 'सय',
+	'configure-section-pcache'        => 'पार्सर सय',
+	'configure-section-messagecache'  => 'संदेश सय',
+	'configure-section-memcached'     => 'मेमकॅशड',
+	'configure-section-access'        => 'एक्सेस',
+	'configure-section-groups'        => 'गट',
+	'configure-section-block'         => 'ब्लॉक',
+	'configure-section-rates'         => 'रेट लिमिट्स',
+	'configure-section-proxy'         => 'प्रॉक्सी',
+	'configure-section-cookie'        => 'कूकीज',
+	'configure-section-reduction'     => 'रिडक्शन',
+	'configure-section-upload'        => 'चढवा',
+	'configure-section-sharedupload'  => 'शेयर्ड अपलोड',
+	'configure-section-mime'          => 'MIME प्रकार',
+	'configure-section-images'        => 'चित्र',
+	'configure-section-antivirus'     => 'एन्टीव्हायरस',
+	'configure-section-parser'        => 'पार्सर',
+	'configure-section-specialpages'  => 'विशेष पृष्ठे',
+	'configure-section-recentchanges' => 'अलीकडील बदल',
+	'configure-section-users'         => 'सदस्य',
+	'configure-section-feed'          => 'फीड',
+	'configure-section-job'           => 'कार्ये',
+	'configure-section-extension'     => 'विस्तारकक्ष',
+	'configure-section-copyright'     => 'प्रताधिकारीत',
+	'configure-section-htcp'          => 'HTCP मल्टीकास्ट',
+	'configure-section-misc'          => 'मिसलेनियस',
+	'configure-setting-not-available' => 'हे सेटिंग मीडियाविकिच्या या आवृत्तीत उपलब्ध नाही',
 );
 
 /** Dutch (Nederlands)
@@ -646,6 +712,7 @@ $messages['oc'] = array(
 	'configure-section-cache'         => 'Amagatal',
 	'configure-section-pcache'        => 'Amagatal del parsaire',
 	'configure-section-messagecache'  => 'Amagatal dels messatges',
+	'configure-section-memcached'     => 'Memòria amagada',
 	'configure-section-access'        => 'Accès',
 	'configure-section-groups'        => 'Gropes',
 	'configure-section-block'         => 'Blocatges',
@@ -662,6 +729,7 @@ $messages['oc'] = array(
 	'configure-section-specialpages'  => 'Paginas especialas',
 	'configure-section-recentchanges' => 'Darrièrs cambiaments',
 	'configure-section-users'         => 'Utilizaires',
+	'configure-section-feed'          => 'Alimentacion',
 	'configure-section-job'           => 'Trabalhs',
 	'configure-section-extension'     => 'Extensions',
 	'configure-section-copyright'     => 'Copyrights',
@@ -902,6 +970,24 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-htcp'          => 'HTCP-multicast',
 	'configure-section-misc'          => 'Diverse',
 	'configure-setting-not-available' => 'Inställningen är inte tillgänglig i den här versionen av MediaWiki',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'configure'              => 'Конфігурувати вікі',
+	'configure-desc'         => 'Дозволити авторизованим користувачам конфігурувати вікі, використовуючи веб-інтерфейс',
+	'configure-summary'      => 'На цій спеціальній сторінці ви можете конфігурувати вікі, гляньте [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] для детальнішої інформації.',
+	'configure-btn-save'     => 'Зберегти налаштування',
+	'configure-edit-old'     => 'Попередження: ви редагуєте <strong>стару</strong> версію конфігурації.',
+	'configure-error'        => 'Конфігурація не могла бути збережена',
+	'configure-no-directory' => "Директорія для запам'ятовування налаштувань <tt>$1</tt> не існує.
+Будь ласка, створіть або змініть її, щоб використати це розширення.",
+	'configure-no-old'       => 'Немає доступної старої версії конфігурації',
+	'configure-no-setup'     => 'Ви повинні явно викликати <code>efConfigureSetup()</code> у вашому LocalSettings.php файлі, щоб використати це розширення.',
+	'configure-no-transwiki' => 'Вам не дозволено змінювати налаштування в інших вікі',
 );
 
 /** Vietnamese (Tiếng Việt)

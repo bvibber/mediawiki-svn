@@ -62,6 +62,11 @@ $messages['bg'] = array(
 	'passwordreset-username'        => 'Потребителско име',
 	'passwordreset-newpass'         => 'Нова парола',
 	'passwordreset-confirmpass'     => 'Парола (повторно)',
+	'passwordreset-disableuser'     => 'Деактивиране на потребителската сметка?',
+	'passwordreset-disablesuccess'  => 'Потребителската сметка беше деактивирана (потребителски номер: $1)',
+	'passwordreset-accountdisabled' => 'Потребителската сметка беше деактивирана',
+	'disabledusers'                 => 'Деактивирани потребителски сметки',
+	'disabledusers-summary'         => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
 /** Danish (Dansk)
@@ -278,15 +283,19 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'passwordreset'                 => 'Passwuert zrécksetzen',
+	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername'   => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch'     => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
 	'passwordreset-username'        => 'Benotzernumm',
 	'passwordreset-newpass'         => 'Neit Passwuert',
 	'passwordreset-confirmpass'     => 'Passwuert confirméieren',
 	'passwordreset-submit'          => 'Passwuert zrécksetzen',
+	'passwordreset-disableuser'     => 'Benotzerkont deaktivéieren?',
 	'passwordreset-disablesuccess'  => 'De benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
 	'disabledusers'                 => 'Desaktivéiert Benotzer',
+	'disabledusers-summary'         => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',
 );
 
 /** Marathi (मराठी)

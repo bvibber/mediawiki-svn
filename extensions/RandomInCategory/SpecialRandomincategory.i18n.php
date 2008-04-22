@@ -33,6 +33,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'randomincategory'            => 'Случайна страница в категорията',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Специална страница]] за извличане на случайна страница от категория',
 	'randomincategory-toolbox'    => 'Случайна страница',
 	'randomincategory-nocategory' => 'Категорията $1 не съществува или е празна',
 	'randomincategory-label'      => 'Категория:',

@@ -45,6 +45,13 @@ $messages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'sitenotice_close' => 'схаваць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

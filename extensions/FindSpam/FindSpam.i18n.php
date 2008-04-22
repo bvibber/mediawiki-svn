@@ -158,6 +158,13 @@ $messages['hu'] = array(
 	'findspam-ip' => 'IP-cím:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'findspam' => 'Golèk spam',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran

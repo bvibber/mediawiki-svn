@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'fixedimage-desc' => 'Adds <tt><nowiki><fundraising></nowiki></tt> tag as an image',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'fixedimage-desc' => 'Добавяне на етикета <tt><nowiki><fundraising></nowiki></tt> като картинка',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

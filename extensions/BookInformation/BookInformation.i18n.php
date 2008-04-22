@@ -1025,17 +1025,18 @@ $messages['sk'] = array(
 	'bookinfo-provider'          => 'Poskytovateľ údajov: $1',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'bookinfo-header'           => 'Информације за књигу',
-	'bookinfo-result-title'     => 'Наслов:',
-	'bookinfo-result-author'    => 'Аутор:',
-	'bookinfo-result-publisher' => 'Издавач:',
-	'bookinfo-result-year'      => 'Година:',
-	'bookinfo-purchase'         => 'Купите ову књигу од $1',
-	'bookinfo-provider'         => 'Подаци из: $1',
+	'bookinfo-header'            => 'Информације за књигу',
+	'bookinfo-result-title'      => 'Наслов:',
+	'bookinfo-result-author'     => 'Аутор:',
+	'bookinfo-result-publisher'  => 'Издавач:',
+	'bookinfo-result-year'       => 'Година:',
+	'bookinfo-error-invalidisbn' => 'Погрешно укуцан ISBN',
+	'bookinfo-purchase'          => 'Купите ову књигу од $1',
+	'bookinfo-provider'          => 'Подаци из: $1',
 );
 
 /** Seeltersk (Seeltersk)

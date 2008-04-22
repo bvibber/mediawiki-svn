@@ -1185,6 +1185,13 @@ $wgGoogleMapsMessages['is'] = array(
 	'gm-no'  => 'Nei',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$wgGoogleMapsMessages['jv'] = array(
+	'gm-balloon-link-article' => 'Pranala menyang kaca iki (opsional):',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Lovekhmer

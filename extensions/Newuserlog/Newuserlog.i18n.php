@@ -93,6 +93,18 @@ $messages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'newuserlogpage'           => 'Журнал стварэньня рахункаў',
+	'newuserlogpagetext'       => 'Гэта журнал стварэньня рахункаў удзельнікаў і ўдзельніц',
+	'newuserlog-desc'          => 'Дадае [[Special:Log/newusers|журнал стварэньня рахункаў]] у [[Special:Log]]',
+	'newuserlog-byemail'       => 'Пароль адасланы па электроннай пошце',
+	'newuserlog-create-entry'  => 'Новы ўдзельнік',
+	'newuserlog-create2-entry' => 'створаны рахунак для $1',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

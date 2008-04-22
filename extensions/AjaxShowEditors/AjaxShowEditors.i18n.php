@@ -348,6 +348,8 @@ $messages['jv'] = array(
 	'ajax-se-title'            => 'Saiki lagi nyunting:',
 	'ajax-se-idling'           => '($1d kapungkur)',
 	'ajax-se-pagedoesnotexist' => 'kaca ora ana',
+	'ajax-se-userinvalid'      => 'LUPUT: panganggo ora absah',
+	'ajax-se-usernotfound'     => 'LUPUT: panganggo ora ditemokaké',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -464,12 +466,14 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Jorunn
  */
 $messages['nn'] = array(
-	'ajax-se-desc'    => 'Viser kva brukarar som endrar same side som ein sjølv',
-	'ajax-se-title'   => 'Endrar no:',
-	'ajax-se-pending' => 'Ventar på oppdatering … (klikk på denne boksen eller set i gang med å endre)',
-	'ajax-se-idling'  => '($1 sekund sidan)',
+	'ajax-se-desc'             => 'Viser kva brukarar som endrar same side som ein sjølv',
+	'ajax-se-title'            => 'Endrar no:',
+	'ajax-se-pending'          => 'Ventar på oppdatering … (klikk på denne boksen eller set i gang med å endre)',
+	'ajax-se-idling'           => '($1 sekund sidan)',
+	'ajax-se-pagedoesnotexist' => 'sida finst ikkje',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)

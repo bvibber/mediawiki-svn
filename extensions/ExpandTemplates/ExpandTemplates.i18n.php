@@ -696,6 +696,7 @@ $messages['lb'] = array(
 	'expand_templates_title'           => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
 	'expand_templates_input'           => 'Gitt ären Text hei an:',
 	'expand_templates_output'          => 'Resultat',
+	'expand_templates_xml_output'      => 'Resultat als XML',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Bemierkunge läschen',
 	'expand_templates_generate_xml'    => "Weis d'Struktur vum XML",

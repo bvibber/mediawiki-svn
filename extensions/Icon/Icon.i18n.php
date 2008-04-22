@@ -29,10 +29,12 @@ $messages['avk'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'icon-badimage' => 'Неприемливо изображение',
 	'icon-badwidth' => 'Неприемлива ширина',
+	'icon-desc'     => 'Позволява да се използват картинките като икони и като иконни препратки',
 );
 
 /** German (Deutsch)

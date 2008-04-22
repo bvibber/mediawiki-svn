@@ -159,9 +159,9 @@ $messages['cdo'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
- * @author Matěj Grabovský
  * @author Danny B.
  * @author לערי ריינהארט
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'sitematrix'           => 'Seznam všech wiki nadace Wikimedia',
@@ -172,6 +172,8 @@ $messages['cs'] = array(
 	'sitematrix-others'    => 'Ostatní projekty nadace Wikimedia',
 	'sitematrix-total'     => "'''Celkový počet: $1'''",
 	'sitematrix-sitetotal' => 'Celkem',
+	'sitematrix-private'   => 'privátní',
+	'sitematrix-fishbowl'  => 'editování omezeno',
 );
 
 /** Danish (Dansk)
@@ -724,8 +726,8 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'sitematrix'           => 'विकिमीडियाच्या विकिंची यादी',
@@ -736,6 +738,8 @@ $messages['mr'] = array(
 	'sitematrix-others'    => 'विकिमीडियाचे इतर प्रकल्प',
 	'sitematrix-total'     => "'''एकूण संख्या: $1'''",
 	'sitematrix-sitetotal' => 'एकूण',
+	'sitematrix-private'   => 'खासगी',
+	'sitematrix-fishbowl'  => 'संपादनांवर बंदी',
 );
 
 /** Erzya (эрзянь кель)
@@ -822,6 +826,7 @@ $messages['oc'] = array(
 	'sitematrix-total'     => "'''Total del compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'modificacions limitadas',
 );
 
 /** Ossetic (Иронау)
@@ -852,6 +857,8 @@ $messages['pl'] = array(
 	'sitematrix-others'    => 'Inne projekty Wikimedia',
 	'sitematrix-total'     => "'''Ogólna liczba: $1'''",
 	'sitematrix-sitetotal' => 'Suma',
+	'sitematrix-private'   => 'poufny',
+	'sitematrix-fishbowl'  => 'edycja ograniczona',
 );
 
 $messages['pms'] = array(

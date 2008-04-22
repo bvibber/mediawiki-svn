@@ -45,7 +45,8 @@ $messages['fr'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'rightfunctions' => 'अनुमति-आधारित पार्सर कार्य',
+	'rightfunctions'          => 'अनुमति-आधारित पार्सर कार्य',
+	'rightfunctions-restcasc' => '$1 (अन्य स्रोतोंसे)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

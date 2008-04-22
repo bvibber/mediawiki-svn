@@ -263,6 +263,14 @@ $messages['ja'] = array(
 	'backforth-prev' => '前へ ($1)',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'backforth-next' => 'Sabanjuré ($1)',
+	'backforth-prev' => 'Sadurungé ($1)',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author Jiemurat
  */

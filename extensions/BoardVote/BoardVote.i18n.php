@@ -2662,6 +2662,7 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex
+ * @author Praveenp
  */
 $messages['ml'] = array(
 	'boardvote'              => 'വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തിരഞ്ഞെടുപ്പ്',
@@ -2696,7 +2697,7 @@ $messages['ml'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]',
-	'boardvote_nosession'    => 'താങ്കളുടെ വിക്കിമീഡിയ ഉപയോക്ത ഐഡി കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല. 
+	'boardvote_nosession'    => 'താങ്കളുടെ വിക്കിമീഡിയ ഉപയോക്തൃ ഐഡി കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല. 
 
 താങ്കള്‍ വോട്ട് ചെയ്യാന്‍ യോഗ്യത നേടിയ വിക്കിയിലേക്ക് ലോഗിന്‍ ചെയ്ത്, <nowiki>[[Special:Boardvote]]</nowiki> എന്ന ലിങ്കിലേക്ക് പോവുക. 
 

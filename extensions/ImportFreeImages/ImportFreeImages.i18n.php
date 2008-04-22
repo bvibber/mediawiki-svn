@@ -54,6 +54,7 @@ $messages['bg'] = array(
 	'importfreeimages_description'           => 'Тази страница позволява търсенето на подходящо лицензирани картинки от flickr и качването им в уикито.',
 	'importfreeimages_noapikey'              => 'Не е конфигуриран Flickr API ключ. Такъв API ключ може да се получи [http://www.flickr.com/services/api/misc.api_keys.html оттук], след което е необходимо да се настрои wgFlickrAPIKey в ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Не бяха открити резултати за търсенето ви по критерия '$1'. Моля, опитайте отново.",
+	'importfreeimages_invalidurl'            => 'Адресът „$1“ не е валидна картинка във Flickr.',
 	'importfreeimages_owner'                 => 'Автор',
 	'importfreeimages_next'                  => 'Следващи $1',
 	'importfreeimages_filefromflickr'        => '$1 от потребител <b>[$2]</b> от flickr. Оригинален адрес',
@@ -226,10 +227,17 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'importfreeimages'            => 'Fräi Biller importéieren',
-	'importfreeimages_owner'      => 'Auteur:',
-	'importfreeimages_importthis' => 'importéieren',
-	'importfreeimages_next'       => 'Nächst $1',
+	'importfreeimages'                       => 'Fräi Biller importéieren',
+	'importfreeimages-desc'                  => "Erméiglecht et fir [[Special:ImportFreeImages|ordentlich lizenzéiert Fotoen]] vu [http://www.flickr.com flickr] z'importéieren",
+	'importfreeimages_description'           => "Dës Säit erlaabt iech et fir no uerdentlech lizenzéierte Biller vu flickr ze sichen an dës an är Wiki z'importéieren.",
+	'importfreeimages_nophotosfound'         => "Et goufe keng Photoen no ärer Sich '$1' fonnt, versicht et w.e.g. nach eng Kéier.",
+	'importfreeimages_invalidurl'            => 'D\'URL "$1" ass kee gëltegt Flickr-Bild.',
+	'importfreeimages_owner'                 => 'Auteur:',
+	'importfreeimages_importthis'            => 'importéieren',
+	'importfreeimages_next'                  => 'Nächst $1',
+	'importfreeimages_filefromflickr'        => '$1 vum Benotzer <b>[$2]</b> vun flickr. Original URL',
+	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie fichier un:',
+	'importfreeimages_returntoform'          => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
 );
 
 /** Marathi (मराठी)

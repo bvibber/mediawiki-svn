@@ -135,6 +135,7 @@ $messages['ar'] = array(
 $messages['bg'] = array(
 	'regexblock-form-username'        => 'IP адрес или потребителско име:',
 	'regexblock-form-reason'          => 'Причина:',
+	'regexblock-form-expiry'          => 'Срок на изтичане:&#160;',
 	'regexblock-form-match'           => 'Пълно съвпадение',
 	'regexblock-form-account-block'   => 'Блокиране създаването на нови сметки',
 	'regexblock-already-blocked'      => '$1 е вече блокиран.',

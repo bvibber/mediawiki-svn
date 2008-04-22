@@ -62,6 +62,13 @@ $messages['oc'] = array(
 	'woopra-desc' => 'Autoriza pel [http://www.woopra.com/ seguit en dirècte del logicial Woopra] de trabalhar per vòstra installacion Mediawiki',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'woopra-desc' => 'Pozwala oprogramowaniu do śledzenia [http://www.woopra.com/ „Woopra”] na współpracą z MediaWiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

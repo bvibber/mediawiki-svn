@@ -408,24 +408,27 @@ $messages['km'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
-	'specialuserstats'             => 'Benotzungs-Statistiken',
-	'usagestatistics'              => 'Benotzungs-Statistiken',
-	'usagestatisticsfor'           => '<h2>Benotzungs-Statistik fir [[User:$1|$1]]</h2>',
-	'usagestatisticsallusers'      => 'All Benotzer',
-	'usagestatisticsinterval'      => 'Intervall',
-	'usagestatisticstype'          => 'Typ',
-	'usagestatisticsstart'         => 'Ufanksdatum',
-	'usagestatisticsend'           => 'Schlussdatum',
-	'usagestatisticssubmit'        => 'Statistik opstellen',
-	'usagestatisticsnostart'       => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
-	'usagestatisticsnoend'         => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
-	'usagestatisticsbadstartend'   => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
-	'usagestatisticsintervalday'   => 'Dag',
-	'usagestatisticsintervalweek'  => 'Woch',
-	'usagestatisticsintervalmonth' => 'Mount',
-	'usagestatisticscalselect'     => 'Auswielen',
+	'specialuserstats'               => 'Benotzungs-Statistiken',
+	'usagestatistics'                => 'Benotzungs-Statistiken',
+	'usagestatisticsfor'             => '<h2>Benotzungs-Statistik fir [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'        => 'All Benotzer',
+	'usagestatisticsinterval'        => 'Intervall',
+	'usagestatisticstype'            => 'Typ',
+	'usagestatisticsstart'           => 'Ufanksdatum',
+	'usagestatisticsend'             => 'Schlussdatum',
+	'usagestatisticssubmit'          => 'Statistik opstellen',
+	'usagestatisticsnostart'         => '* <font color=red>Gitt w.e.g een Ufanksdatum un</font>',
+	'usagestatisticsnoend'           => '* <font color=red>Gitt w.e.g. ee Schlussdatum un</font>',
+	'usagestatisticsbadstartend'     => '<b>Falsche Format vum <i>Ufanks-</i> oder vum <i>Schluss</i> Datum!</b>',
+	'usagestatisticsintervalday'     => 'Dag',
+	'usagestatisticsintervalweek'    => 'Woch',
+	'usagestatisticsintervalmonth'   => 'Mount',
+	'usagestatisticscalselect'       => 'Auswielen',
+	'usagestatistics-editindividual' => 'Individuell $1 Statistiken vun den Ännerunge pro Benotzer',
+	'usagestatistics-editpages'      => 'Individuell $1 Statistiken vun de Säite pro Benotzer',
 );
 
 /** Marathi (मराठी)

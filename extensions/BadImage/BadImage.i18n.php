@@ -742,6 +742,7 @@ $messages['jv'] = array(
 	'badimages-name'        => 'Jeneng:',
 	'badimages-not-added'   => 'Gambaré ora bisa ditambahaké.',
 	'badimages-not-removed' => 'Gambaré ora bisa diilangi.',
+	'badimages-reason'      => 'Alesan:',
 	'badimages-log-name'    => 'Daftar gambar ala',
 	'badimages-log-header'  => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
 	'badimages-log-add'     => 'nambahaké [[$1]] menyang daftar gambar ala',

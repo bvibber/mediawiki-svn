@@ -91,6 +91,9 @@ $messages['bg'] = array(
 
 Каченото видео е достъпно [http://www.youtube.com/watch?v=$1 тук]',
 	'youtubeauthsub_summary'             => 'Качване на видео в YouTube',
+	'youtubeauthsub_uploading'           => 'Вашето видео е в процес на качване.
+Молим за търпение.',
+	'youtubeauthsub_viewpage'            => 'Алтернативно, можете да видите вашето видео [[$1|тук]].',
 	'youtubeauthsub_jserror_nokeywords'  => 'Необходимо е да се въведе една или повече ключови думи.',
 	'youtubeauthsub_jserror_notitle'     => 'Необходимо е да се въведе заглавие на видеото.',
 	'youtubeauthsub_jserror_nodesc'      => 'Необходимо е да се въведе описание на видеото.',

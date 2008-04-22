@@ -31,8 +31,10 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'purgecache-purged' => 'Складираното копие беше изчистено.',
-	'purgecache-button' => 'Изчистване',
+	'purgecache'         => 'Изчистване на складираното копие',
+	'purgecache-warning' => 'Това ще изчисти таблиците със складирани копия.',
+	'purgecache-purged'  => 'Складираното копие беше изчистено.',
+	'purgecache-button'  => 'Изчистване',
 );
 
 /** Catalan (Català)

@@ -79,15 +79,22 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'povwatch_desc'                  => 'Разширение за [[Special:PovWatch|добавяне на страници в списъка за наблюдение]] на други потребители',
-	'povwatch_invalid_title'         => 'Посоченото заглавие е невалидно',
-	'povwatch_pushed'                => '[[$1]] беше успешно добавена в списъка за наблюдение на $2',
-	'povwatch_subscriber_list_intro' => '<strong>Списък на абонираните</strong>',
-	'povwatch_unknown_subpage'       => 'Непозната подстраница.',
-	'povwatch_title'                 => 'Заглавие:',
-	'povwatch_no_log'                => 'Дневникът не съдържа записи.',
-	'povwatch_unsubscribe'           => 'Отписване',
-	'povwatch_subscribe'             => 'Записване',
+	'povwatch_desc'                    => 'Разширение за [[Special:PovWatch|добавяне на страници в списъка за наблюдение]] на други потребители',
+	'povwatch_not_allowed_push'        => 'Вие не сте PovWatch администратор, затова не можете да включвате страници в списъците за наблюдение.',
+	'povwatch_already_subscribed'      => 'Вече сте се записал/а за PovWatch',
+	'povwatch_subscribed'              => 'Сега сте записан/а за PovWatch',
+	'povwatch_not_subscribed'          => 'Не сте записан/а за PovWatch, затова не можете да се отпишете.',
+	'povwatch_unsubscribed'            => 'Сега сте отписан/а от PovWatch',
+	'povwatch_invalid_title'           => 'Посоченото заглавие е невалидно',
+	'povwatch_pushed'                  => '[[$1]] беше успешно добавена в списъка за наблюдение на $2',
+	'povwatch_subscriber_list'         => 'Наличен е [[Special:PovWatch/subscribers|списък със записани]].',
+	'povwatch_subscriber_list_intro'   => '<strong>Списък на абонираните</strong>',
+	'povwatch_not_allowed_subscribers' => 'Нямате права да преглеждате списъка със записани за PovWatch.',
+	'povwatch_unknown_subpage'         => 'Непозната подстраница.',
+	'povwatch_title'                   => 'Заглавие:',
+	'povwatch_no_log'                  => 'Дневникът не съдържа записи.',
+	'povwatch_unsubscribe'             => 'Отписване',
+	'povwatch_subscribe'               => 'Записване',
 );
 
 /** Danish (Dansk)
@@ -221,6 +228,8 @@ $messages['gv'] = array(
  */
 $messages['hi'] = array(
 	'povwatch'                       => 'पीओव्हीवॉच',
+	'povwatch_already_subscribed'    => 'आप पहलेसे पीओव्हीवॉचके सदस्य हैं',
+	'povwatch_subscribed'            => 'आप अब पीओव्हीवॉचके सदस्य बन गये हैं',
 	'povwatch_invalid_title'         => 'दिया हुआ शीर्षक अवैध हैं',
 	'povwatch_subscriber_list_intro' => '<strong>सदस्य सूची</strong>',
 	'povwatch_unknown_subpage'       => 'अज्ञात उपपृष्ठ।',

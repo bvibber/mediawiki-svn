@@ -303,9 +303,10 @@ $messages['kk-arab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'deletedcontributions'      => 'ការរួមចំណែក ត្រូវបានលុបចេញ',
+	'deletedcontributions'      => 'ប្រវត្តិនៃការលុបការរួមចំនែករបស់អ្នកប្រើប្រាស់',
 	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់ អ្នកប្រើប្រាស់]]',
 );
 

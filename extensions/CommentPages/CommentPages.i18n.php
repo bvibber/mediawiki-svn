@@ -116,6 +116,13 @@ $messages['ja'] = array(
 	'nstab-comments'    => 'コメント',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'nstab-comments' => 'Komentar',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

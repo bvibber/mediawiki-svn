@@ -51,21 +51,28 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'invite-logpage'                   => 'Дневник на поканите',
-	'invite-logpagetext'               => 'Тази страница съдържа дневник на поканите между потребителите за достъп до различни услуги.',
-	'invite-logentry'                  => 'покани $1 да използва <i>$2</i>.',
-	'invitations'                      => 'Управление на поканите за различните услуги',
-	'invitations-invitedlist-item'     => '<b>$1</b> ($2 налични покани)',
-	'invitations-pagetitle'            => 'Възможности на софтуера, достъпни с покана',
-	'invitations-feature-pagetitle'    => 'Управление на поканите - $1',
-	'invitations-feature-access'       => 'В момента имате достъп да използвате <i>$1</i>.',
-	'invitations-feature-notallowed'   => 'Нямате достъп да използвате <i>$1</i>.',
-	'invitations-inviteform-title'     => 'Изпращане на покана на потребител да използва $1',
-	'invitations-inviteform-username'  => 'Потребител',
-	'invitations-inviteform-submit'    => 'Изпращане на покана',
-	'invitations-error-baduser'        => 'Посоченият потребител не съществува.',
-	'invitations-error-alreadyinvited' => 'Посоченият потребител вече има достъп до тази услуга!',
-	'invitations-invite-success'       => 'Поканата на $1 за достъп до услугата беше изпратена успешно!',
+	'invite-logpage'                      => 'Дневник на поканите',
+	'invite-logpagetext'                  => 'Тази страница съдържа дневник на поканите между потребителите за достъп до различни услуги.',
+	'invite-logentry'                     => 'покани $1 да използва <i>$2</i>.',
+	'invitations'                         => 'Управление на поканите за различните услуги',
+	'invitations-desc'                    => 'Позволява [[Special:Invitations|управление на новите възможности на софтуера]] като ги ограничава за използване чрез система с покани',
+	'invitations-invitedlist-description' => 'Имате достъп до следните софтуерни възможности, достъпни с покана.
+За управление на поканите за отделна възможности, щракнете върху името й.',
+	'invitations-invitedlist-none'        => 'Нямате покана да използвате нито една от софтуерните възможности, достъпни с покана.',
+	'invitations-invitedlist-item'        => '<b>$1</b> ($2 налични покани)',
+	'invitations-pagetitle'               => 'Възможности на софтуера, достъпни с покана',
+	'invitations-uninvitedlist-none'      => 'На този етап няма други софтуерни възможности, които да са отбелязани, че са достъпни с покана.',
+	'invitations-feature-pagetitle'       => 'Управление на поканите - $1',
+	'invitations-feature-access'          => 'В момента имате достъп да използвате <i>$1</i>.',
+	'invitations-feature-numleft'         => 'Имате оставащи <b>$1</b> от $2 предоставени покани.',
+	'invitations-feature-noneleft'        => 'Вече сте използвали всички отпуснати покани за тази услуга',
+	'invitations-feature-notallowed'      => 'Нямате достъп да използвате <i>$1</i>.',
+	'invitations-inviteform-title'        => 'Изпращане на покана на потребител да използва $1',
+	'invitations-inviteform-username'     => 'Потребител',
+	'invitations-inviteform-submit'       => 'Изпращане на покана',
+	'invitations-error-baduser'           => 'Посоченият потребител не съществува.',
+	'invitations-error-alreadyinvited'    => 'Посоченият потребител вече има достъп до тази услуга!',
+	'invitations-invite-success'          => 'Поканата на $1 за достъп до услугата беше изпратена успешно!',
 );
 
 /** German (Deutsch)

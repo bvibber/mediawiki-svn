@@ -20,6 +20,20 @@ $messages['en'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'onlinestatus-desc'             => 'Добавя настройка, която показва дали потребителят е на линия или не в уикито',
+	'onlinestatus-subtitle-offline' => 'Този потребител в момента не е на линия',
+	'onlinestatus-subtitle-online'  => 'Този потребител в момента е на линия',
+	'onlinestatus-toggles-desc'     => 'Вашият статут:',
+	'onlinestatus-toggles-explain'  => 'Това позволява да показвате на другите потребители, които разглеждат потребителската ви страница, дали сте действително на линия или не.',
+	'onlinestatus-toggles-show'     => 'Показване на статута ми на потребителската ми страница',
+	'onlinestatus-toggle-offline'   => 'Извън линия',
+	'onlinestatus-toggle-online'    => 'На линия',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

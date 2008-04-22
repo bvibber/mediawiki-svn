@@ -836,6 +836,9 @@ $messages['hi'] = array(
 	'mv_results_found_for'           => 'नीचे दिये खोज रिज़ल्ट <b>$3</b> में से <b>$1</b> से <b>$2</b>:',
 	'mv_tool_mang_layers'            => 'स्तर व्यवस्थापन',
 	'mv_update_layers'               => 'स्तर दर्शाना अपडेट करें',
+	'mv_watch_clip'                  => 'क्लिप देखें',
+	'mv_close_clip'                  => 'क्लिप बंद करें',
+	'mv_improve_transcript'          => 'ट्रान्स्क्रीप्ट ठीक करें',
 	'ht_en'                          => 'ट्रानस्क्रीप्ट',
 	'ht_en_desc'                     => 'अंग्रेजी ट्रानस्क्रीप्ट्स। यह ओव्हरले प्रकार बोले हुए पाठ के लिये हैं',
 	'anno_en'                        => 'ऍनोटेशन्स और श्रेणीयाँ',
@@ -1216,6 +1219,7 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author Siebrand
  * @author Mahitgar
  */
 $messages['mr'] = array(
@@ -1288,6 +1292,9 @@ $messages['mr'] = array(
 	'mv_results_found_for'           => 'खालीलचे शोध निकाल <b>$3</b> पैकी <b>$1</b> ते <b>$2</b>:',
 	'mv_tool_mang_layers'            => 'स्तर व्यवस्थापन',
 	'mv_update_layers'               => 'स्तर दर्शवा',
+	'mv_watch_clip'                  => 'क्लिप पहा',
+	'mv_close_clip'                  => 'क्लिप बंद करा',
+	'mv_improve_transcript'          => 'ट्रान्स्क्रीप्ट इम्प्रूव्ह करा',
 	'ht_en'                          => 'ट्रानस्क्रीप्ट',
 	'ht_en_desc'                     => 'इंग्रजी ट्रानस्क्रीप्ट्स. हा ओव्हरले प्रकार बोललेल्या मजकूरासाठी आहे',
 	'anno_en'                        => 'ऍनोटेशन्स व वर्ग',
@@ -1306,6 +1313,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 	'mv_list_streams_docu'           => 'खालील स्ट्रीम्स अस्तित्वात आहे:',
 	'mv_list_streams_none'           => 'एकही स्ट्रीम अस्तित्वात नाही',
 	'mvvideofeed'                    => 'मेटाविड व्हिडियो फीड निर्यात',
+	'mvexportask'                    => 'सिमँटिक व्हिडियो फिड निर्यात',
 	'video_feed_cat'                 => 'वर्गा साठी व्हिडियो फीड:',
 	'mv_cat_search_note'             => 'सूचना: वर्ग फक्त वरच्या स्तरावरील वर्ग दर्शवितो.
 वर्ग सीमांमध्ये संपूर्ण मेटाडाटा शोधण्यासाठी $1 चा शोध घ्या',
@@ -1482,6 +1490,7 @@ U kunt links toevoegen, maar alle tekst moet gesproken worden in de videostream.
 	'mv_list_streams_docu'           => 'De volgende streams zijn beschikbaar:',
 	'mv_list_streams_none'           => 'Er zijn geen streams',
 	'mvvideofeed'                    => 'Metavid videofeed exporteren',
+	'mvexportask'                    => 'Videofeed semantisch exporteren',
 	'video_feed_cat'                 => 'Videofeed voor categorie:',
 	'mv_cat_search_note'             => 'Let op: alleen ondercategorieën van het eerste niveau worden weergegeven.
 Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
@@ -1838,6 +1847,9 @@ $messages['oc'] = array(
 	'mv_results_found_for'           => 'Resultats de la recèrca <b>$1</b> vèrs <b>$2</b> de <b>$3</b> per :',
 	'mv_tool_mang_layers'            => 'Administra los jaces',
 	'mv_update_layers'               => 'met a jorn lo visionament dels jaces',
+	'mv_watch_clip'                  => 'Visionar lo clip',
+	'mv_close_clip'                  => 'Tampar lo clip',
+	'mv_improve_transcript'          => 'Melhorar la transcripcion',
 	'ht_en'                          => 'Transcriure',
 	'ht_en_desc'                     => "Transcripcions anglesas. Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De ligams pòdon èsser ajustats, mas tot tèxt deuriá èsser en correlacion amb çò qu'es dich dins lo flus vidèo.",
 	'anno_en'                        => 'Anotacions e categorias',
@@ -2353,6 +2365,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_list_streams_docu'           => 'Existujú nasledovné streamy:',
 	'mv_list_streams_none'           => 'Neexistujú žiadne streamy',
 	'mvvideofeed'                    => 'Metavid Export videokanála',
+	'mvexportask'                    => 'Export kanála Semantic Video',
 	'video_feed_cat'                 => 'Videokanál kategórie:',
 	'mv_cat_search_note'             => 'Pozn.: Medzi kategóriami sú iba kategórie najvyššej úrovne, všetky metadáta v kategórii nájdete vyhľadávaním $1',
 	'mv_mvd_linkback'                => 'Časť streamu $1 <br />Prejsť na zobrazenie streamu: $2<br />',
@@ -2519,15 +2532,35 @@ $messages['sv'] = array(
 	'mv_results_found_for'          => 'Sökresultat <b>$1</b> till <b>$2</b> av <b>$3</b> för:',
 	'mv_tool_mang_layers'           => 'Behandla lager',
 	'mv_update_layers'              => 'uppdatera lagervisning',
+	'mv_watch_clip'                 => 'Se klipp',
+	'mv_close_clip'                 => 'Stäng klipp',
+	'mv_improve_transcript'         => 'Förbättra transkription',
 	'ht_en'                         => 'Transkription',
 	'ht_en_desc'                    => 'Engelska transkriptioner. Denna överläggstypen är för uppläst text',
 	'anno_en'                       => 'Annoteringar och kategorier',
 	'anno_en_desc'                  => 'Engelska kategoriseringar och annoteringar.
 Denna överläggstyp kan användas för att kategorisera sektioner av videor eller till att lägga till annotationer som inte är uppläst text.',
 	'thomas_en'                     => 'Officiell transkription',
+	'thomas_en_desc'                => 'Officiell Thomas-transkription från regeringens THOMAS-inspelningstjänst.
+Källtid synkroniserad av C-SPANs c-spanarchives.org',
+	'mvd_default_mismatch'          => 'Fel i inställningsfil',
+	'mvd_default_mismatch_text'     => 'Det finns ett fel i din inställningsfil,
+$mvMVDTypeDefaultDisp borde vara ett undersätt av $mvMVDTypeAllAvailable',
 	'mv_data_page_title'            => '$1 för $2 från $3',
 	'mv_time_separator'             => '$1 till $2',
+	'mv_list_streams'               => 'Metavid listar dataflöder',
+	'mv_list_streams_page'          => 'Mv listar dataflöden',
+	'mv_list_streams_docu'          => 'Följande dataflöden finns:',
+	'mv_list_streams_none'          => 'Inga dataflöden finns',
+	'mvvideofeed'                   => 'Metavid exportering av videokälla',
+	'mvexportask'                   => 'Semantisk videomatningsexportering',
 	'video_feed_cat'                => 'Video matning för kategori:',
+	'mv_cat_search_note'            => 'Notera: Kategorier listar endast underkategorier i högsta nivå;
+för alla metadata i ett kategoriområde, sök efter $1',
+	'mv_mvd_linkback'               => 'Del av dataflödet $1 <br />
+Hoppa till dataflödesvisning: $2',
+	'mvBadMVDtitle'                 => 'missad typ, missat dataflöde eller ogiltigt tidsformat',
+	'mvMVDFormat'                   => 'MVD-titel borde vara i formatet: mvd:typ:dataflödesnamn/starttid/sluttid',
 	'mv_play'                       => 'Spela',
 	'mv_edit'                       => 'Redigera',
 	'mv_history'                    => 'Historik',
