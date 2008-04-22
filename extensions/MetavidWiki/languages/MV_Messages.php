@@ -125,7 +125,8 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'mv_list_streams_none' => 'No streams exist',
 
 	#messages for metavid export feed:
-	'mvvideofeed'        => 'Metavid video feed export',
+	'mvvideofeed'        => 'Metavid video feed export',	
+	'mvexportask'		 => 'Semantic Video Feed Export',
 	'video_feed_cat'     => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
 For all metadata in category ranges search for $1',

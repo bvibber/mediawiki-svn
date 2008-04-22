@@ -765,7 +765,7 @@ textInterface.prototype = {
 			$j('#mmbody_'+this.pe.id).append('<div style="border:solid thin black;" id="tc_'+text_clip.id+'" ' +
 					'start="'+text_clip.start+'" end="'+text_clip.end+'">' +
 						'<div style="top:0px;left:0px;right:0px;height:20px;font-size:small">'+
-							'<img src="'+mv_embed_path+'/images/control_play_blue.png">'+
+							'<img style="display:inline;" src="'+mv_embed_path+'/images/control_play_blue.png">'+
 							text_clip.start + ' to ' +text_clip.end+
 						'</div>'+
 						text_clip.body + 

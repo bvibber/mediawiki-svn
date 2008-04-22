@@ -68,6 +68,7 @@ class MV_StreamImage{
 		if(is_file(MV_StreamImage::getLocalImagePath($stream_id, $req_time, $req_size))){			
 			if($req_size==null){
 				$s='';
+				$ext='jpg'; //default type is jpg
 			}else{				
 				list($im_width, $im_height, $ext) = MV_StreamImage::getSizeType($req_size);
 				$s='_'.$im_width.'x'.$im_height;				

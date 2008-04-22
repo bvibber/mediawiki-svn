@@ -781,9 +781,35 @@ function do_video_mvd_update(mvd_id){
 		if(!vid_elm)return '';
 		do_video_time_update(time_ary[1], time_ary[2]);
 		//update the thumbnail: 
-		//we should not need this:
-		if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail)
-				$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));			
+		do_update_thumb(mvd_id, time_ary[1]);
+	}
+}
+function do_update_thumb(mvd_id, start_time){
+	//set via mvd
+	if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail){
+			$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
+			return ;
+	}
+	//else set via org_thum_src
+	if(org_thum_src.indexOf('?')!=-1){
+		var url = org_thum_src.split('?');
+		var args = Array();
+		var arg_parts = url[1].split('&');
+		for(i in arg_parts){
+			var tmp = arg_parts[i].split('=');
+			args[tmp[0]]=tmp[1];
+		}		
+		var new_thumb = url[0]+'?';
+		for(k in args){
+			var v = args[k];
+			if(k!='t'){
+				new_thumb+=k+'='+v+'&';
+			}
+		}
+	 	new_thumb+= 't='+ start_time;	 
+		//js_log("new thumb:" + new_thumb);
+		if(new_thumb!=$j('#embed_vid').get(0).thumbnail)
+			$j('#embed_vid').get(0).updateThumbnail(new_thumb);		
 	}
 }
 function do_video_time_update(start_time, end_time)	{
@@ -797,29 +823,6 @@ function do_video_time_update(start_time, end_time)	{
 			if(new_vid_url!=$j('#embed_vid').attr('src'))
 				$j('#embed_vid').get(0).updateVideoSrc(new_vid_url);
 		}
-		if(org_thum_src.indexOf('?')!=-1){
-			//js_log('org src:' + org_thum_src);
-			var url = org_thum_src.split('?');
-			var args = Array();
-			//probably not the ideal implementation :P should swap out for 
-			//some library function
-			var arg_parts = url[1].split('&');
-			for(i in arg_parts){
-				var tmp = arg_parts[i].split('=');
-				args[tmp[0]]=tmp[1];
-			}		
-			var new_thumb = url[0]+'?';
-			for(k in args){
-				var v = args[k];
-				if(k!='t'){
-					new_thumb+=k+'='+v+'&';
-				}
-			}
-		 	new_thumb+= 't='+ start_time;	 
-			//js_log("new thumb:" + new_thumb);
-			if(new_thumb!=$j('#embed_vid').get(0).thumbnail)
-				$j('#embed_vid').get(0).updateThumbnail(new_thumb);		
-		}	
 	}
 }
 function mv_tool_disp(tool_id){
