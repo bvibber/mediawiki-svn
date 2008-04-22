@@ -104,7 +104,7 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 		if ((rinfo->fx * i) > start) start++;
 		end = (uint32_t)(rinfo->fx * (i + 1));
 		if ((rinfo->fx * (i + 1)) > end) end++;
-		divisor = end - start;
+		divisor = (float)(end - start);
 		
 		memset(pixel, 0, info->bpp);
 		for (j = 0; j < info->bpp; j++)

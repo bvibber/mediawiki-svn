@@ -6,6 +6,15 @@ resize extremely large PNGs.
 # svn co http://svn.wikimedia.org/svnroot/mediawiki/trunk/pngds
 # cd pngds && make
 
+== Windows installation ==
+pngds can be compiled using mingw as well as with the Microsft Visual C 
+compiler. Microsoft Visual C++ 9.0 project files can be downloaded from
+<http://toolserver.org/~bryan/pngds/>
+
+== Precompiled binaries ==
+Precompiled binaries for Linux and Windows can be downloaded from 
+<http://toolserver.org/~bryan/pngds/>
+
 == Usage ==
 pngds [--from-stdin] [--to-stdout] [<source>] [<target>]
 	[--width <width>] [--height <height>] [--no-filtering] [-n]
