@@ -1,6 +1,10 @@
 #ifndef	_PNGUTIL_H
 #define _PNGUTIL_H	1
+#ifdef _MSC_VER
+typedef unsigned __int32  uint32_t;
+#else
 #include <stdint.h>
+#endif
 
 void png_die(char *msg, void *data);
 void png_read_int(uint32_t *ptr, FILE *stream, uint32_t *crc);

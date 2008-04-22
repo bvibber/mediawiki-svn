@@ -2,7 +2,12 @@
 #define _PNGREADER_H	1
 
 #include <stdio.h>
+
+#ifdef _MSC_VER
+typedef unsigned __int32  uint32_t;
+#else
 #include <stdint.h>
+#endif
 
 #include "zlib.h"
 
