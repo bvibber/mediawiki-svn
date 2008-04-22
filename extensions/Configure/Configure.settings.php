@@ -567,6 +567,10 @@ $restricted = array(
  * - ns-bool: single dimension array with namespaces numbers in the key and a
  *            boolean value
  * - ns-text: same as ns-bool but with a string in the value
+ * - group-bool: two dimensions array with group name in first key, right name
+ *               in the second and boolean value
+ * - group-array: two dimensions array with group name in first key and then
+ *                a 'simple' array
  * - array: other types of arrays not currenty supported
  */
 $arrayDefs = array(
@@ -593,7 +597,7 @@ $arrayDefs = array(
 	'wgContentNamespaces' => 'ns-bool',
 	'wgExtraNamespaces' => 'assoc',
 	'wgNamespaceAliases' => 'assoc',
-	'wgNamespaceProtection' => 'array',
+	'wgNamespaceProtection' => 'ns-array',
 	'wgNamespaceRobotPolicies' => 'ns-text',
 	'wgNamespacesToBeSearchedDefault' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',

@@ -174,6 +174,21 @@ class SpecialConfigure extends SpecialPage {
 					}
 					$settings[$name] = $arr;
 					break;
+				case 'ns-array':
+					global $wgContLang;
+					$arr = array();
+					foreach( $wgContLang->getNamespaces() as $ns => $unused ){
+						if( $ns < 0 )
+							continue;
+						$text = $wgRequest->getText( 'wp' . $name . '-ns' . strval( $ns ) );
+						if( $text == '' )
+							$nsProtection = array();
+						else
+							$nsProtection = explode( "\n", $text );
+						$arr[$ns] = $nsProtection;
+					}
+					$settings[$name] = $arr;
+					break;
 				case 'group-bool':
 				case 'group-array':
 					$all = array();
@@ -598,11 +613,37 @@ class SpecialConfigure extends SpecialPage {
 				if( '' == $name ) {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
-				$text .= '<tr><td>'.htmlspecialchars( $name ) . '</td><td>';
+				$text .= '<tr><td>'. $name . '</td><td>';
 				$text .= Xml::element( 'input', array(
-					'name' => 'wp' . $conf . "-ns{$ns}",
+					'name' => "wp{$conf}-ns{$ns}",
 					'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
 				) ) . "<br/>\n";
+				$text .= '</td></tr>';
+			}
+			$text .= '</table>';
+			return $text;
+		}
+		if( $type == 'ns-array' ){
+			global $wgContLang;
+			$text = '<table border="1">';
+			foreach( $wgContLang->getNamespaces() as $ns => $name ){
+				if( $ns < 0 )
+					continue;
+				$name = str_replace( '_', ' ', $name );
+				if( '' == $name ) {
+					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
+				}
+				$text .= '<tr><td>'. $name . '</td><td>';
+				if( $allowed )
+					$text .= Xml::openElement( 'textarea', array(
+						'name' => "wp{$conf}-ns{$ns}",
+						'id' => "wp{$conf}-ns{$ns}",
+						'cols' => 30,
+						'rows' => 5, ) ) .
+					( isset( $default[$ns] ) ? implode( "\n", $default[$ns] ) : '' ) .
+					Xml::closeElement( 'textarea' ) . "<br/>\n";
+				else 
+					$text .= "<pre>\n" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n", $default[$ns] ) ) : '' ) . "\n</pre>";
 				$text .= '</td></tr>';
 			}
 			$text .= '</table>';
