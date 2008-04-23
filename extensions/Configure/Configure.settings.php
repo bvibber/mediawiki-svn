@@ -644,7 +644,7 @@ $arrayDefs = array(
 	'wgImageLimits' => 'array',
 	'wgMediaHandlers' => 'assoc',
 	'wgSVGConverters' => 'assoc',
-	'wgThumbLimits' => 'array',
+	'wgThumbLimits' => 'simple',
 	'wgTrustedMediaFormats' => 'simple',
 	'wgAntivirusSetup' => 'array',
 # Parser
