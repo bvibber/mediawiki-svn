@@ -38,6 +38,13 @@ $messages['en'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'patrol-revert-reason' => 'Razón:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -91,8 +98,10 @@ $messages['bg'] = array(
 * Упражнения извън пясъчника
 * Виж беседата',
 	'patrol-another'         => 'Показване на други евентуални редакции.',
+	'patrol-resume'          => 'Натиснете тук за продължаване.',
 	'group-patroller'        => 'Патрулиращи',
 	'group-patroller-member' => 'Патрулиращ',
+	'grouppage-patroller'    => '{{ns:project}}:Патрулиращи',
 );
 
 /** Danish (Dansk)
@@ -749,10 +758,24 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'patrol'                 => 'Patrullera redigeringar',
+	'patrol-desc'            => 'Förbereder patrulleringsgränssnitt med arbetsfördelning',
+	'patrol-endorse'         => 'Godkänn',
+	'patrol-revert'          => 'Återställ',
 	'patrol-revert-reason'   => 'Anledning:',
+	'patrol-skip'            => 'Hoppa över',
+	'patrol-reverting'       => 'Återställer: $1',
+	'patrol-nonefound'       => 'Inga redigeringar som passar för patrullering hittades.',
 	'patrol-endorsed-ok'     => 'Redigeringen blev markerad som patrullerad.',
 	'patrol-endorsed-failed' => 'Redigeringen kunde inte markeras som patrullerad.',
+	'patrol-reverted-ok'     => 'Redigeringen återställdes.',
+	'patrol-reverted-failed' => 'Redigeringen kunde inte återställas.',
+	'patrol-skipped-ok'      => 'Ignorera redigering.',
+	'patrol-reasons'         => '* Enkel vandalism
+* Nybörjartest
+* Se diskussionssida',
 	'patrol-another'         => 'Visa andra redigeringar, om det är tillgängligt.',
+	'patrol-stopped'         => 'Du har valt och inte patrullera en annan redigering. $1',
+	'patrol-resume'          => 'Klicka här för att fortsätta.',
 	'group-patroller'        => 'Patrullerare',
 	'group-patroller-member' => 'Patrullerare',
 	'grouppage-patroller'    => '{{ns:project}}:Patrullerare',

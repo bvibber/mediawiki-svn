@@ -54,6 +54,14 @@ Return to:
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'crosswikiblock-reason'   => 'Razón:',
+	'crosswikiunblock-reason' => 'Razón:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -466,6 +474,14 @@ Wróćo k:
 * [[Special:CrosswikiBlock|Blokowanski formular]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist]]',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'crosswikiblock-reason'   => 'Ástæða:',
+	'crosswikiunblock-reason' => 'Ástæða:',
 );
 
 /** Japanese (日本語)

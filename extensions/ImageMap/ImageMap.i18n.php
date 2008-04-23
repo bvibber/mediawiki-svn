@@ -33,6 +33,23 @@ $messages['af'] = array(
 	'imagemap_description' => 'Beeldinligting',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'imagemap_desc'               => "Premite mapas d'imachens punchables en o client fendo serbir a etiqueta <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => "&lt;imagemap&gt;: ha d'endicar una imachen a primer ringlera",
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: a imachen no ye conforme u no esiste',
+	'imagemap_no_link'            => "&lt;imagemap&gt;: no s'ha trobato garra binclo conforme á la fin d'a ringlera $1",
+	'imagemap_invalid_title'      => "&lt;imagemap&gt;: títol no conforme en o binclo d'a ringlera $1",
+	'imagemap_missing_coord'      => "&lt;imagemap&gt;: No bi'n ha prous de coordinadas ta definir a forma en a ringlera $1",
+	'imagemap_unrecognised_shape' => "&lt;imagemap&gt;: no s'ha reconoixito a forma en a ringlera $1, cada linia ha de prenzipiar con una d'as siguients espresions: default, rect, circle u poly",
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: s'ha d'endicar á o menos una espezificazión d'aria",
+	'imagemap_invalid_coord'      => "&lt;imagemap&gt;: coordinada no conforme en a ringlera $1, ha d'estar un numero",
+	'imagemap_invalid_desc'       => "&lt;imagemap&gt;: A descripzión (desc) espezificata no ye conforme, ha d'estar una de: <tt>$1</tt>",
+	'imagemap_description'        => 'Informazión sobre ista imachen',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

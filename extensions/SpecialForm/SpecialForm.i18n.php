@@ -85,6 +85,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'form'                         => 'Формуляр',
+	'formnoname'                   => 'Липсва име на формуляра',
 	'formnonametext'               => 'Необходимо е да се посочи име на формуляр, напр. „Special:Form/ИмеНаФормуляр“',
 	'formbadname'                  => 'Грешно име на формуляр',
 	'formbadnametext'              => 'Не съществува формуляр с това име.',

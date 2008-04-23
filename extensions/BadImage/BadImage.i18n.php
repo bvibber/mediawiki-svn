@@ -45,6 +45,13 @@ $messages['af'] = array(
 	'badimages-remove-btn' => 'Skrap',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'badimages-reason' => 'Razón:',
+);
+
 /** Old English (Anglo Saxon)
  * @author SPQRobin
  */

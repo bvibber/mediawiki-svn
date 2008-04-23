@@ -84,6 +84,13 @@ $messages['eo'] = array(
 	'randomincategory-submit'  => 'Ek!',
 );
 
+/** Spanish (Español)
+ * @author Jatrobat
+ */
+$messages['es'] = array(
+	'randomincategory-submit' => 'Ir',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Cedric31

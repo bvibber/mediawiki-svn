@@ -569,6 +569,14 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
 	'whitelistnummatches'       => ' - $1 {{PLURAL:$1|ocuréncia|ocuréncias}}',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$allMessages['os'] = array(
+	'whitelisttableedit' => 'Баив æй',
+	'whitelistnever'     => 'никуы',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe
@@ -839,6 +847,7 @@ $allMessages['vi'] = array(
 	'whitelisttablemodifynone' => 'Không có',
 	'whitelisttableedit'       => 'Sửa',
 	'whitelistbadtitle'        => 'Tựa trang sai –',
+	'whitelistnever'           => 'không bao giờ',
 );
 
 /** ‪中文(台灣)‬ (‪中文(台灣)‬)

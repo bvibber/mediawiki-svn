@@ -469,11 +469,22 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
  * @author Lokal Profil
  */
 $messages['sv'] = array(
-	'multipleupload'              => 'Ladda upp filer',
-	'multipleupload-saveallfiles' => 'Spara alla filer',
-	'multipleupload-page'         => '{{ns:project}}:Filborttagnings policy',
-	'multiupload-fileuploaded'    => 'Fil uppladdad.',
-	'multiupload-toolbox'         => 'Ladda upp flera filer',
+	'multipleupload'                   => 'Ladda upp filer',
+	'multipleupload-desc'              => 'Gör det möjligt att [[Special:MultipleUpload|ladda upp flera filer på en gång]]',
+	'multipleupload-ignoreallwarnings' => "Ignorera '''alla varningar''' och spara filerna likväl.",
+	'multipleupload-saveallfiles'      => 'Spara alla filer',
+	'multipleupload-addresswarnings'   => 'Var god adressera alla varningar före du laddar upp filerna igen.',
+	'multipleupload-page'              => '{{ns:project}}:Filborttagnings policy',
+	'multipleupload-text'              => "Ladda upp flera filer här.
+
+Välj \"Bläddra\" och välj vilka filer du vill ladda upp.
+Du kan ladda upp från 1 till \$1 på en gång.
+
+Du kan skriva in valfritt '''målnamn''' och ange en '''sammanfattning''' för att beskriva filen.
+
+Opassande filer raderas omedelbart, se [[{{MediaWiki:Multipleupload-page}}|riktlinjer för filraderingar]].",
+	'multiupload-fileuploaded'         => 'Fil uppladdad.',
+	'multiupload-toolbox'              => 'Ladda upp flera filer',
 );
 
 /** Tamil (தமிழ்)

@@ -282,12 +282,17 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'postcomment_discussionprotected'      => 'Den här diskussionssidan har skyddats från vidare postning.',
 	'postcomment_notloggedin'              => 'Du är inte inloggad.',
 	'postcomment_youareloggedinas'         => 'Du är inloggad som $1',
 	'postcomment_addcommentdiscussionpage' => 'Lägg till din kommentar på denna diskussions sida',
 	'postcomment_leavemessagefor'          => 'Lämna ett meddelande för $1',
 	'postcomment_post'                     => 'Posta',
 	'postcomment_on'                       => 'På',
+	'postcomment_said'                     => 'sade',
+	'postcomment_invalidrequest'           => 'Ogiltig efterfrågning.',
+	'postcomment_replyto'                  => 'Svar på $1',
+	'postcomment_nopostingtoadd'           => 'Inga postningar att lägga till.',
 );
 
 /** Telugu (తెలుగు)

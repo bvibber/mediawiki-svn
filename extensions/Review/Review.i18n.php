@@ -49,6 +49,13 @@ $messages['en'] = array(
 	'review_comment' => "Comment",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'review_user_details_link' => '(detalles)',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Siebrand

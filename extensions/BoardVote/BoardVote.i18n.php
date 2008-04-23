@@ -4134,7 +4134,7 @@ $messages['uk'] = array(
 <p>Ви можете голосувати за будь-яку кількість кандидатів. Кандидат, який набере найбільшу кількість голосів на будь-яку з двох позицій, буде оголошений переможцем у виборах на цю позицію. У випадку рівності голосів буде проведене повторне голосування з вибуванням найменш популярних кандидатів.</p>
 
 <p>Додаткова інформація:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Часті питання про вибори</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006/Ru" class="external">Кандидати</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Часті питання про вибори</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006/Uk" class="external">Кандидати</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ви вже проголосували. Тим не менш, за допомогою наведеної нижче форми ви можете змінити своє рішення. Будь ласка, помітьте кандидатів, яких ви підтримуєте.</p>',
 	'boardvote_entered'      => 'Дякуємо, ваш голос врахований.
 

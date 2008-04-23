@@ -88,14 +88,15 @@ Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert we
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'mibbit'        => 'Chat Mibbit',
-	'mibbit-desc'   => 'Ajoute une [[Special:Mibbit|page spéciale]] utilisant le chat en temps réel avec les autres utilisateurs wiki',
-	'mibbit-header' => "Cette page spécial vous autorise à collaborer en temps réel avec les autres utilisateurs du wiki.
-Pour vous connecter, il suffit d'appuyer simplement sur le bouton « Connecter ».
-Si vous êtes connecté votre pseudo aura été utilisé.
-Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement, mais il peut être modifié.",
+	'mibbit'        => 'Clavardage Mibbit',
+	'mibbit-desc'   => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
+	'mibbit-header' => 'Cette page spéciale vous autorise à collaborer en temps réel avec les autres utilisateurs du wiki.
+Pour commencer, il suffit de cliquer le bouton « Connect ».
+Si vous êtes connecté, votre pseudo sera déjà instruit.
+Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement, mais qui peut être modifié.',
 );
 
 /** Galician (Galego)

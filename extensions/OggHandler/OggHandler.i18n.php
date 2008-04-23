@@ -52,6 +52,41 @@ $messages['af'] = array(
 	'ogg-more' => 'Meer...',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'ogg-desc'                => 'Manullador ta archibos Ogg Theora and Vorbis, con un reproductor JavaScript',
+	'ogg-short-audio'         => 'Archibo de son ogg $1, $2',
+	'ogg-short-video'         => 'Archibo de bidio ogg $1, $2',
+	'ogg-short-general'       => 'Archibo multimedia ogg $1, $2',
+	'ogg-long-audio'          => '(Archibo de son ogg $1, durada $2, $3)',
+	'ogg-long-video'          => '(Archibo de bidio ogg $1, durada $2, $4×$5 píxels, $3)',
+	'ogg-long-multiplexed'    => '(archibo ogg multiplexato audio/bidio, $1, durada $2, $4×$5 píxels, $3 total)',
+	'ogg-long-general'        => '(archibo ogg multimedia durada $2, $3)',
+	'ogg-long-error'          => '(Archibo ogg no conforme: $1)',
+	'ogg-play'                => 'Reproduzir',
+	'ogg-pause'               => 'Pausa',
+	'ogg-stop'                => 'Aturar',
+	'ogg-play-video'          => 'Reproduzir bidio',
+	'ogg-play-sound'          => 'Reproduzir son',
+	'ogg-no-player'           => 'No puedo trobar garra software reproductor suportato.
+Abría d\'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar un reproductor</a>.',
+	'ogg-no-xiphqt'           => 'No puedo trobar o component XiphQT ta QuickTime.
+QuickTime no puede reproduzir archibos ogg sin este component.
+Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar XiphQT</a> u trigar un atro reproductor.',
+	'ogg-player-videoElement' => 'elemento <video>',
+	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-thumbnail'    => 'Nomás imachen fixa',
+	'ogg-player-soundthumb'   => 'Garra reproductor',
+	'ogg-player-selected'     => '(trigato)',
+	'ogg-use-player'          => 'Fer serbir o reprodutor:',
+	'ogg-more'                => 'Más…',
+	'ogg-dismiss'             => 'Zarrar',
+	'ogg-download'            => 'Escargar archibo',
+	'ogg-desc-link'           => 'Informazión sobre este archibo',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
@@ -1369,6 +1404,13 @@ $messages['oc'] = array(
 	'ogg-dismiss'             => 'Tampar',
 	'ogg-download'            => 'Telecargar lo fichièr',
 	'ogg-desc-link'           => "A prepaus d'aqueste fichièr",
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'ogg-more' => 'Фылдæр…',
 );
 
 /** Polish (Polski)

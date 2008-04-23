@@ -130,10 +130,14 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'inplace_access_disabled'          => 'Достъпът до тази услуга е изключен за всички клиенти.',
 	'inplace_access_denied'            => 'Тази услуга е ограничена по клиентски IP адрес.',
+	'inplace_scaler_no_temp'           => 'Няма валидна временна директория.
+Посочете в $wgLocalTmpDirectory директория с права за запис.',
 	'inplace_scaler_not_enough_params' => 'Няма достатъчно параметри',
 	'inplace_scaler_invalid_image'     => 'Невалидна картинка, размерът й е невъзможно да бъде определен.',
 	'inplace_scaler_failed'            => 'Възникна грешка при скалирането на картинката: $1',
+	'webstore_access'                  => 'Тази услуга е ограничена по клиентски IP адрес.',
 	'webstore_path_invalid'            => 'Името на файла е невалидно.',
 	'webstore_dest_open'               => 'Целевият файл „$1“ не може да бъде отворен.',
 	'webstore_dest_mkdir'              => 'Невъзможно е да бъде създадена целевата директория „$1“.',
@@ -151,6 +155,7 @@ $messages['bg'] = array(
 	'webstore_temp_lock'               => 'Грешка при заключване на временния файл "$1".',
 	'webstore_no_archive'              => 'Целевият файл съществува и не е посочен архив.',
 	'webstore_no_file'                 => 'Не беше качен файл.',
+	'webstore_move_uploaded'           => 'Грешка при преместване на качения файл „$1“ във временния склад „$2“.',
 	'webstore_invalid_zone'            => 'Невалидна зона "$1".',
 	'webstore_no_deleted'              => 'Не е указана архивна директория за изтритите файлове.',
 	'webstore_curl'                    => 'Грешка от cURL: $1',
@@ -162,6 +167,10 @@ $messages['bg'] = array(
 
 $1',
 	'webstore_no_response'             => 'Няма отговор от сървъра',
+	'webstore_backend_error'           => 'Грешка от складовия сървър:
+
+$1',
+	'webstore_php_error'               => 'Възникнаха следните PHP грешки:',
 );
 
 /** Bengali (বাংলা)

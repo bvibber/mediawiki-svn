@@ -316,6 +316,7 @@ $messages['lb'] = array(
 	'importusers-user-added'              => 'De Benotzer <b>%s</b> gouf derbäigesat.',
 	'importusers-user-present-update'     => 'De Benotzer <b>%s</b> gëtt et schonn. Aktualiséiert.',
 	'importusers-user-present-not-update' => 'De Benotzer <b>%s</b> gëtt et schonn. Net aktualiséiert.',
+	'importusers-user-invalid-format'     => "D'Benotzerdaten an der Linn #%s huet een ongëltege Format oder ass eidel. Iwwersprong.",
 	'importusers-log'                     => 'Lëscht vun den Importen',
 	'importusers-log-summary'             => 'Resumé',
 	'importusers-log-summary-all'         => 'Alleguer',

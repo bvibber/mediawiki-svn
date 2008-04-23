@@ -27,6 +27,7 @@ $messages['en'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'parserdifftest'      => "Preba d'o diff ta o parseyador",
 	'pdtest-desc'         => '[[Special:ParserDiffTest|Pachina espezial]] ta contimparar a salida de dos pársers diferents',
 	'pdtest_no_target'    => "No s'ha espezificato un obchetibo.",
 	'pdtest_page_missing' => "A pachina espezificata no s'ha trobato en a base de datos.",
@@ -38,6 +39,7 @@ $messages['an'] = array(
 	'pdtest_get_text'     => "Prener o testo d'a pachina",
 	'pdtest_diff'         => 'Esferenzias',
 	'pdtest_side_by_side' => "Comparanza d'as salidas",
+	'pdt_comparing_page'  => "Contimparando a salida d'o parseyador dende [[$1]]",
 );
 
 /** Arabic (العربية)

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'mwsearch-desc' => 'MWSearch plugin',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

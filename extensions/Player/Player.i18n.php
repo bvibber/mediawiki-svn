@@ -575,6 +575,13 @@ $messages['tg-cyrl'] = array(
 	'player-goto-file'     => 'парванда',
 );
 
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$messages['tr'] = array(
+	'player-file' => 'Dosya adı',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

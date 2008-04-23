@@ -557,6 +557,13 @@ $messages['oc'] = array(
 	'countedits-nocontribs'   => 'Cap de contribucion sus aqueste wiki.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'countedits-username' => 'Архайæг:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

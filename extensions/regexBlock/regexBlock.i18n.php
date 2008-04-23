@@ -76,6 +76,13 @@ $messages['af'] = array(
 	'regexblock-view-time'      => 'op $1',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'regexblock-form-reason' => 'Razón:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -133,17 +140,25 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'regexblock-page-title-1'         => 'Блокиране на адреси чрез регулярни изрази',
+	'regexblock-unblock-success'      => 'Отблокирането беше успешно',
+	'regexblock-unblock-log'          => "Потребителят или IP адресът '''$1''' беше отблокиран.",
+	'regexblock-unblock-error'        => 'Грешка при отблокиране на $1.
+Вероятно не съществува такъв потребител.',
 	'regexblock-form-username'        => 'IP адрес или потребителско име:',
 	'regexblock-form-reason'          => 'Причина:',
 	'regexblock-form-expiry'          => 'Срок на изтичане:&#160;',
 	'regexblock-form-match'           => 'Пълно съвпадение',
 	'regexblock-form-account-block'   => 'Блокиране създаването на нови сметки',
+	'regexblock-block-success'        => 'Блокирането беше успешно',
 	'regexblock-already-blocked'      => '$1 е вече блокиран.',
 	'regexblock-stats-username'       => 'За $1',
 	'regexblock-currently-blocked'    => 'Текущо блокирани адреси:',
 	'regexblock-view-blocked'         => 'Преглед на блокираните по:',
 	'regexblock-view-all'             => 'Всички',
+	'regexblock-view-match'           => '(пълно съвпадение)',
 	'regexblock-view-reason'          => 'причина: $1',
+	'regexblock-view-block-infinite'  => 'перманентно блокиране',
 	'regexblock-view-block-temporary' => 'изтича на',
 	'regexblock-view-block-by'        => 'блокиран от',
 	'regexblock-view-block-unblock'   => 'отблокиране',
@@ -206,10 +221,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Jatrobat
  * @author Piolinfax
  */
 $messages['es'] = array(
 	'regexblock-view-all' => 'Todos',
+	'regexblock-view-go'  => 'Ir',
 );
 
 /** French (Français)
@@ -476,8 +493,10 @@ $messages['hsb'] = array(
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
+ * @author S.Örvarr.S
  */
 $messages['is'] = array(
+	'regexblock-form-reason'    => 'Ástæða:',
 	'regexblock-stats-username' => 'Fyrir $1',
 );
 

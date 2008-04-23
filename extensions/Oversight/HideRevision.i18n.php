@@ -68,6 +68,49 @@ $messages['qqq'] = array(
 	'oversight' => 'Oversight extension. The name of the page Special:Oversight, used in the list of special pages and at the top of Special:Oversight.',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'hiderevision'                => 'Amagar bersions ta cutio',
+	'hiderevision-desc'           => 'Amagar as bersions endibiduals ta toz os usuarios por razons legals, etz.',
+	'group-oversight'             => 'Superbisors',
+	'group-oversight-member'      => 'Superbisor',
+	'grouppage-oversight'         => '{{ns:project}}:Superbisión',
+	'hiderevision-prompt'         => 'Numero de bersión á borrar:',
+	'hiderevision-continue'       => 'Continar',
+	'hiderevision-text'           => "'''Nomás''' d'ha de fer serbir esto en os casos siguients:
+* Informazión personal inapropiata
+*: ''adrezas particulars, numeros de telefono, numeros de seguridat sozial, etc''
+
+'''Si abusa d'este sistema puede perder os suyos dreitos.'''
+
+Os elementos borratos no serán bisibles ta dengún en o sitio web, pero os borraus serán rechistratos y si s'entiboca, un almenistrador d'a base de datos puede recuperar-los.",
+	'hiderevision-reason'         => 'Razón (se rechistrará pribadament)',
+	'hiderevision-submit'         => 'Amagar estos datos ta cutio',
+	'hiderevision-tab'            => 'Amagar bersión',
+	'hiderevision-norevisions'    => "No s'han endicato as bersions que s'han de borrar.",
+	'hiderevision-noreason'       => 'Ha de describir a razón ta iste borrau.',
+	'hiderevision-status'         => 'Bersión $1: $2',
+	'hiderevision-success'        => 'Archibato y borrato esitosament.',
+	'hiderevision-error-missing'  => "No s'ha trobato en a base de datos.",
+	'hiderevision-error-current'  => "No se puede borrar a zaguera edizión d'una pachina.
+Desfaiga en primeras o zaguer cambio.",
+	'hiderevision-error-delete'   => "No s'ha puesto archibar; s'eba borrato dinantes?",
+	'hiderevision-archive-status' => "S'ha borrato a bersión de $1: $2",
+	'oversight-nodiff'            => "No podié seguir os cambios pues no bi ha autualment garra bersión anterior ta ista pachina.
+Puestar que:
+* A pachina s'aiga borrato
+* Esta bersión amagata sía a primer bersión",
+	'oversight-log-hiderev'       => 'borrata una edizión de $1',
+	'oversight'                   => 'Superbisión',
+	'oversight-view'              => 'detalles',
+	'oversight-difference'        => '(Esferenzias dende a bersión anterior autual)',
+	'oversight-prev'              => 'Zaguera bersión anterior',
+	'oversight-hidden'            => 'Bersión amagata',
+	'oversight-header'            => "En o cobaixo bi ye una lista de bersions que han estato amagatas de traza permanent fa poco tiempo. Si fa publica esta informazión podría perder de traza permanent os dreitos d'superbisión",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -520,7 +563,7 @@ $messages['fr'] = array(
 
 Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
 	'hiderevision-reason'         => 'Motif (sera enregistré séparément) :',
-	'hiderevision-submit'         => 'Cacher cette donnée de manière permanente',
+	'hiderevision-submit'         => 'Cacher cette révision de manière permanente',
 	'hiderevision-tab'            => 'Cacher la modification',
 	'hiderevision-norevisions'    => 'Aucune modification indiquée à supprimer.',
 	'hiderevision-noreason'       => 'Vous devez indiquer la raison précise de cette suppression.',

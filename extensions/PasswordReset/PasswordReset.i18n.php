@@ -544,15 +544,23 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'passwordreset'                 => 'Lösenordsåterställning',
-	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
-	'passwordreset-emptyusername'   => 'Tomt användarnamn',
-	'passwordreset-nopassmatch'     => 'Lösenordet matchar inte',
-	'passwordreset-username'        => 'Användarnamn',
-	'passwordreset-newpass'         => 'Nytt lösenord',
-	'passwordreset-confirmpass'     => 'Konfirmera lösenord',
-	'disabledusers'                 => 'Invalidisera konton',
-	'disabledusers-summary'         => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
+	'passwordreset'                    => 'Lösenordsåterställning',
+	'passwordreset-desc'               => "Återställ användarens lösenord - kräver 'passwordreset'-rättigheter",
+	'passwordreset-invalidusername'    => 'Ogiltigt användarnamn',
+	'passwordreset-emptyusername'      => 'Tomt användarnamn',
+	'passwordreset-nopassmatch'        => 'Lösenordet matchar inte',
+	'passwordreset-badtoken'           => 'Ogiltigt redigeringstecken',
+	'passwordreset-username'           => 'Användarnamn',
+	'passwordreset-newpass'            => 'Nytt lösenord',
+	'passwordreset-confirmpass'        => 'Konfirmera lösenord',
+	'passwordreset-submit'             => 'Återställ lösenord',
+	'passwordreset-success'            => 'Lösenordet för användaren "$1" har återställts.',
+	'passwordreset-disableuser'        => 'Avaktivera kontot?',
+	'passwordreset-disableuserexplain' => '(sätter ett ogiltigt lösenord - användaren kan inte logga in)',
+	'passwordreset-disablesuccess'     => 'Kontot har avaktiverats (användar-ID: $1)',
+	'passwordreset-accountdisabled'    => 'Kontot har avaktiverats',
+	'disabledusers'                    => 'Invalidisera konton',
+	'disabledusers-summary'            => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
 );
 
 /** Tamil (தமிழ்)

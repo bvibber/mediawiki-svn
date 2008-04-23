@@ -232,6 +232,7 @@ $messages['de'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author Amikeco
  */
 $messages['eo'] = array(
 	'configure'                       => 'Agordu la vikion',
@@ -241,6 +242,7 @@ $messages['eo'] = array(
 	'configure-no-old'                => 'Neniu malnova versio de la konfiguro havebla',
 	'configure-no-transwiki'          => 'Vi ne estas permesita ŝanĝi konfigurojn en aliaj vikioj',
 	'configure-old-versions'          => 'Listo de malnovaj versioj de la konfiguro:',
+	'configure-old-not-available'     => 'La malnova versio de la agordoj, kiun vi serĉas, $1, ne plu uzeblas',
 	'configure-saved'                 => 'La agordo estis konservita',
 	'configure-section-general'       => 'Ĝeneralaj preferoj',
 	'configure-section-paths'         => 'Vojoj',
@@ -266,6 +268,7 @@ $messages['eo'] = array(
 	'configure-section-specialpages'  => 'Specialaj paĝoj',
 	'configure-section-recentchanges' => 'Lastaj ŝanĝoj',
 	'configure-section-users'         => 'Uzantoj',
+	'configure-section-job'           => 'Taskoj',
 	'configure-section-extension'     => 'Etendiloj',
 	'configure-section-copyright'     => 'Kopirajto',
 	'configure-section-misc'          => 'Diversaĵoj',
@@ -982,7 +985,7 @@ $messages['uk'] = array(
 	'configure-summary'      => 'На цій спеціальній сторінці ви можете конфігурувати вікі, гляньте [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] для детальнішої інформації.',
 	'configure-btn-save'     => 'Зберегти налаштування',
 	'configure-edit-old'     => 'Попередження: ви редагуєте <strong>стару</strong> версію конфігурації.',
-	'configure-error'        => 'Конфігурація не могла бути збережена',
+	'configure-error'        => 'Конфігурація не може бути збережена',
 	'configure-no-directory' => "Директорія для запам'ятовування налаштувань <tt>$1</tt> не існує.
 Будь ласка, створіть або змініть її, щоб використати це розширення.",
 	'configure-no-old'       => 'Немає доступної старої версії конфігурації',

@@ -28,6 +28,13 @@ $messages['de'] = array(
 	'pnghandler-desc' => 'Ändere die Größe von PNGs mit Hilfe von "pngds"',
 );
 
+/** French (Français)
+ * @author Urhixidur
+ */
+$messages['fr'] = array(
+	'pnghandler-desc' => 'Redimensionner les PNG grâce à pngds',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -54,6 +61,13 @@ $messages['no'] = array(
  */
 $messages['sk'] = array(
 	'pnghandler-desc' => 'Zmeniť veľkosť obrázkov PNG pomocou pngds',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'pnghandler-desc' => 'Ändra storleken på PNG-bilder med pngds',
 );
 
 /** Vietnamese (Tiếng Việt)

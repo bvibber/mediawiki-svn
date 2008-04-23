@@ -107,6 +107,13 @@ $messages['eo'] = array(
 	'editmsg-patch-success'  => 'Sukcese flikita.',
 );
 
+/** Spanish (Español)
+ * @author Jatrobat
+ */
+$messages['es'] = array(
+	'editmsg-search' => 'Buscar',
+);
+
 /** French (Français)
  * @author Grondin
  */

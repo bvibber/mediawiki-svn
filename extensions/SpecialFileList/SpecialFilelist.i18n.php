@@ -76,6 +76,7 @@ $messages['bg'] = array(
 	'filelist-desc'         => 'Специална страница със списък на качените файлове',
 	'filelist-show-list'    => 'Показване на списъка',
 	'filelist-show-gallery' => 'Показване на галерията',
+	'filelist-image-desc'   => 'описание',
 );
 
 /** Bengali (বাংলা)

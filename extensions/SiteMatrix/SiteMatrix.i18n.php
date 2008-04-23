@@ -42,6 +42,8 @@ $messages['an'] = array(
 	'sitematrix-others'    => 'Atros procheutos de Wikimedia',
 	'sitematrix-total'     => "'''Total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'pribau',
+	'sitematrix-fishbowl'  => 'edizión restrinchita',
 );
 
 $messages['ang'] = array(
@@ -1112,6 +1114,8 @@ $messages['vec'] = array(
 	'sitematrix-others'    => 'Altri progeti Wikimedia',
 	'sitematrix-total'     => "'''Contegio total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privato',
+	'sitematrix-fishbowl'  => 'modifiche limità',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -34,9 +34,13 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'tryexact'       => 'Mirar títol esauto',
-	'searchfulltext' => 'Mirar por testo completo',
-	'createarticle'  => 'Creyar pachina',
+	'inputbox-desc'           => 'Premite a enclusión de formularios HTML predefinitos',
+	'inputbox-error-no-type'  => 'No ha endicato o tipo de caixa de dentrada que cal creyar.',
+	'inputbox-error-bad-type' => 'No se reconoixe o tipo de caixa de dentrada "$1".
+Please specify "create", "comment", "search" or "search2".',
+	'tryexact'                => 'Mirar títol esauto',
+	'searchfulltext'          => 'Mirar por testo completo',
+	'createarticle'           => 'Creyar pachina',
 );
 
 /** Arabic (العربية)

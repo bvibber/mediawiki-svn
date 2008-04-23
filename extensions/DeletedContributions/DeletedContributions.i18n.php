@@ -582,7 +582,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'deletedcontributions'      => 'Вилучені редагування користувачів',
-	'deletedcontributions-desc' => 'Дає адміністраторам можливість [[Special:DeletedContributions|переглядати вилученні редагування]] користувачів',
+	'deletedcontributions-desc' => 'Дає адміністраторам можливість [[Special:DeletedContributions|переглядати вилучені редагування]] користувачів',
 );
 
 /** Vèneto (Vèneto)

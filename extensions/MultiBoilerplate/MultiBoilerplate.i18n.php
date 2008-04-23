@@ -157,6 +157,8 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'multiboilerplate-desc'   => 'Visar en box på toppen av redigeringssidan för att välja och ladda en standardtext',
+	'multiboilerplate-legend' => 'Välj standardtext',
 	'multiboilerplate-submit' => 'Ladda',
 );
 

@@ -220,8 +220,9 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'newusernotifsubj' => 'Nova Notificação de Utilizador para $1',
-	'newusernotifbody' => 'Olá, $1,
+	'newusernotifsubj'  => 'Nova Notificação de Utilizador para $1',
+	'newusernotif-desc' => 'Envia uma notificação por e-mail quando uma conta de utilizador é criada',
+	'newusernotifbody'  => 'Olá, $1,
 
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
@@ -271,7 +272,9 @@ N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'newusernotifbody' => 'Hej $1,
+	'newusernotifsubj'  => 'Meddelande om ny användare för $1',
+	'newusernotif-desc' => 'Skickar ett meddelande genom e-post när konton skapas',
+	'newusernotifbody'  => 'Hej $1,
 
 Ett nytt användar konto, $2, har skapats på $3 som $4.',
 );

@@ -111,6 +111,13 @@ $messages['eo'] = array(
 	'edituser-nouser'   => 'La specifigita uzanto ne ekzistas',
 );
 
+/** Spanish (Español)
+ * @author Jatrobat
+ */
+$messages['es'] = array(
+	'edituser-dosearch' => 'Buscar',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike

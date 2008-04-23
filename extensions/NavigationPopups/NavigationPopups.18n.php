@@ -83,6 +83,13 @@ $messages['sk'] = array(
 	'navigationpopups-desc' => 'Načíta Lupinove vyskakovacie navigačné skripty v MediaWiki',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'navigationpopups-desc' => 'Laddar Lunins popupnavigationsskript i MediaWiki',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

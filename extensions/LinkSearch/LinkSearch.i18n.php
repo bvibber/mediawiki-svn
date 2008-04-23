@@ -24,6 +24,21 @@ $messages['af'] = array(
 	'linksearch'       => 'Soek webskakels',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'linksearch'       => 'Mirar binclos web',
+	'linksearch-desc'  => '[[Special:Linksearch|Mirar pachinas con binclos esternos]] que concuerden con patrons espezificos',
+	'linksearch-pat'   => 'Mirar patrón:',
+	'linksearch-ns'    => 'Espazio de nombres:',
+	'linksearch-ok'    => 'Mirar',
+	'linksearch-text'  => 'Pueden usar-se caráuters comodín como "*.wikipedia.org".<br />
+Protocolos suportados: <tt>$1</tt>',
+	'linksearch-line'  => '$1 tiene un binclo dende $2',
+	'linksearch-error' => "Os caráuters comodín nomás pueden apareixer en o prenzipio d'o nombre d'o sitio.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

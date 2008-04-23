@@ -617,6 +617,13 @@ $messages['oc'] = array(
 	'contributors-nosuchpage'  => 'L’article $1 existís pas.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'contributors-submit' => 'Равдис',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

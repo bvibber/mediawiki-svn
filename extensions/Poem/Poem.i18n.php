@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'poem-desc' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'poem-desc' => 'Adibe a etiqueta <tt>&lt;poem&gt;</tt> ta formateyar poesía',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -247,6 +254,13 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'poem-desc' => 'Додає тег <tt>&lt;poem&gt;</tt> для форматування віршів',
 );
 
 /** Vèneto (Vèneto)

@@ -412,9 +412,11 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Shyam
  */
 $messages['hi'] = array(
 	'expandtemplates'                  => 'टेम्प्लेट्स बढायें',
+	'expandtemplates-desc'             => 'विकी विषय वस्तु में विस्तार प्रदर्शन एवं पूर्वदर्शन प्रदर्शन हेतु [[Special:ExpandTemplates|सांचे, प्रेजर फलनों एवं परिवर्तों में विस्तार करें]]।',
 	'expand_templates_title'           => '{{PAGENAME}} इ. के लिये, कन्टेक्स्ट शीर्षक:',
 	'expand_templates_input'           => 'इनपुट पाठ:',
 	'expand_templates_output'          => 'रिज़ल्ट',
