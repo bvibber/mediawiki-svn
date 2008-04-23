@@ -218,6 +218,7 @@ $wgContLang = new StubContLang;
 // Now that variant lists may be available...
 $wgRequest->interpolateTitle();
 
+$wgTitleNormalizer = new $wgTitleNormalizerClass;
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );

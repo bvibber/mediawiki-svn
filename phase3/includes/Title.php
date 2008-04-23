@@ -543,17 +543,47 @@ class Title {
 #	Other stuff
 #----------------------------------------------------------------------------
 
-	/** Simple accessors */
+	/** Simple accessors and minor setters */
 	/**
 	 * Get the ui form of the main part
+	 * from the link cache adding it if necessary
+	 * @param int $flags a bit field; may be GAID_FOR_UPDATE to select
 	 * @return string
 	 */
 	public function getText() {
-		if( $this->mTextform == '' ) {
-			// TODO: Convert this temporary fallback into the real code
-			$this->mTextform = str_replace( '_', ' ', $this->mDbkeyform );
+		// Try to get the ui title through the LinkCache, force update if requested.
+		$linkCache =& LinkCache::singleton();
+		if( $flags & GAID_FOR_UPDATE ) {
+			$oldUpdate = $linkCache->forUpdate( true );
+			$linkCache->addLinkObj( $this );
+			$linkCache->forUpdate( $oldUpdate );
+		} else {
+			if ( $this->mTextform == '' ) {
+				$linkCache->addLinkObj( $this );
+			}
 		}
 		return $this->mTextform;
+	}
+	
+	/**
+	 * Set the ui form of the main part
+	 * 
+	 * This is primarily for doing page moves or for the LinkCache to set it
+	 * The ui title passed must normalize back to the database key, if it
+	 * does not this function will fail, returning false.
+	 * WARNING: if getText is used with the GAID_FOR_UPDATE flag,
+	 * or getArticleID is used then the ui title will be overriden.
+	 * 
+	 * @param string $uiTitle ui title form to use
+	 * @return bool true if successfull, false if it failed. 
+	 */
+	public function setUITitle( $uiTitle ) {
+		//TODO: Use the TitleNormalizer to require that any inputed uiTitle
+		//Normalizes back to the DBkey.
+		//Make sure to use the text form from the normalization rather than the input
+		
+		$this->mTextform = $uiTitle;
+		return true;
 	}
 	/**
 	 * Get the URL-encoded form of the main part
@@ -670,7 +700,7 @@ class Title {
 	}
 
 	/**
-	 * Get the prefixed title with spaces.
+	 * Get the prefixed ui title.
 	 * This is the form usually used for display
 	 * @return string the prefixed ui title
 	 */
@@ -684,9 +714,9 @@ class Title {
 	}
 
 	/**
-	 * Get the prefixed title with spaces, plus any fragment
+	 * Get the prefixed ui title, plus any fragment
 	 * (part beginning with '#')
-	 * @return string the prefixed title, with spaces and
+	 * @return string the prefixed ui title, with
 	 * 	the fragment, including '#'
 	 */
 	public function getFullText() {
@@ -2373,7 +2403,10 @@ class Title {
 		if( !$this or !$nt ) {
 			return 'badtitletext';
 		}
-		if( $this->equals( $nt ) ) {
+		# Check for self moves. Make sure that we check for realtitle
+		# matches rather than key matches so that we can do moves like
+		# [[Main Page]] to [[Main_Page]]. ~Daniel Friesen(Dantman)
+		if( $this->equals( $nt, 'ui' ) ) {
 			return 'selfmove';
 		}
 		if( !$this->isMovable() || !$nt->isMovable() ) {
@@ -2650,6 +2683,7 @@ class Title {
 				'page_touched'   => $now,
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
+				//TODO: Insert something to change the page_title_ui value
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
@@ -2877,14 +2911,23 @@ class Title {
 	/**
 	 * Compare with another title.
 	 *
-	 * @param Title $title
+	 * @param Title $title the title to compare against.
+	 * @param string $match the other title's realtitle must also match.
 	 * @return bool
 	 */
-	public function equals( $title ) {
+	public function equals( $title, $match = 'key' ) {
+		if( $this->getInterwiki() !== $title->getInterwiki()
+		 || $this->getNamespace() !=  $title->getNamespace() ) return false;
 		// Note: === is necessary for proper matching of number-like titles.
-		return $this->getInterwiki() === $title->getInterwiki()
-			&& $this->getNamespace() == $title->getNamespace()
-			&& $this->getDBkey() === $title->getDBkey();
+		switch( $match ) {
+			case 'ui':
+				return $this->getText() === $title->getText();
+				break;
+			case 'key':
+			default:
+				return $this->getDBkey() === $title->getDBkey();
+				break;
+		}
 	}
 	
 	/**

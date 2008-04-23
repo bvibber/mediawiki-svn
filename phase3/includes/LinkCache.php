@@ -163,13 +163,18 @@ class LinkCache {
 			}
 
 			$s = $db->selectRow( 'page', 
-				array( 'page_id', 'page_len', 'page_is_redirect' ),
+				array( 'page_id', 'page_title_ui', 'page_len', 'page_is_redirect' ),
 				array( 'page_namespace' => $ns, 'page_title' => $t ),
 				$fname, $options );
 			# Set fields...
 			$id = $s ? $s->page_id : 0;
 			$len = $s ? $s->page_len : -1;
 			$redirect = $s ? $s->page_is_redirect : 0;
+			if( $s ) {
+				$nt->setUITitle( $s->page_title_ui );
+			} else {
+				$nt->setUITitle( $wgTitleNormalizer->backconvert( $t ) );
+			}
 		}
 
 		if( 0 == $id ) {

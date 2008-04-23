@@ -255,6 +255,13 @@ $wgForeignFileRepos = array();
  */
 $wgLegalTitleChars = " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+";
 
+/**
+ * Normalizer class for titles.
+ * 
+ * This can be overridden if the helper methods inside the standard TitleNormalizer
+ * are not enough to customize the normalization process. 
+ */
+$wgTitleNormalizerClass = 'TitleNormalizer';
 
 /**
  * The external URL protocols
