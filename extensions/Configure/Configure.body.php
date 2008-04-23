@@ -158,6 +158,20 @@ class SpecialConfigure extends SpecialPage {
 					}
 					$settings[$name] = $arr;
 					break;
+				case 'simple-dual':
+					$text = $wgRequest->getText( 'wp' . $name );
+					if( $text == '' ){
+						$arr = array();
+					} else {
+						$arr = array();
+						foreach( explode( "\n", $text ) as $line ){
+							$items = array_map( 'intval', array_map( 'trim', explode( ',', $line ) ) );
+							if( count( $items == 2 ) )
+								$arr[] = $items;
+						}
+					}
+					$settings[$name] = $arr;
+					break;
 				case 'ns-bool':
 					global $wgContLang;
 					$arr = array();
@@ -591,6 +605,20 @@ class SpecialConfigure extends SpecialPage {
 				}
 			}
 			$text .= '</table>';
+			return $text;
+		}
+		if( $type == 'simple-dual' ){
+			$var = array();
+			foreach( $default as $arr ){
+				$var[] = implode( ',', $arr );
+			}
+			if( !$allowed ){
+				return "<pre>\n" . htmlspecialchars( implode( "\n", $var ) ) . "\n</pre>";
+			}
+			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8'>";
+			if( is_array( $var ) )
+				$text .= implode( "\n", $var );
+			$text .= "</textarea>\n";
 			return $text;
 		}
 		if( $type == 'ns-bool' ){

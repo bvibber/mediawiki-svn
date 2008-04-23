@@ -641,7 +641,7 @@ $arrayDefs = array(
 	'wgForeignFileRepos' => 'array',
 	'wgMimeTypeBlacklist' => 'simple',
 # Images
-	'wgImageLimits' => 'array',
+	'wgImageLimits' => 'simple-dual',
 	'wgMediaHandlers' => 'assoc',
 	'wgSVGConverters' => 'assoc',
 	'wgThumbLimits' => 'simple',
