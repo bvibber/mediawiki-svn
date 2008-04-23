@@ -779,16 +779,30 @@ function do_video_mvd_update(mvd_id){
 		//get the current thumbnail
 		var vid_elm = document.getElementById('embed_vid');
 		if(!vid_elm)return '';
-		do_video_time_update(time_ary[1], time_ary[2]);
-		//update the thumbnail: 
-		do_update_thumb(mvd_id, time_ary[1]);
+		do_video_time_update(time_ary[1], time_ary[2],mvd_id);
+	}
+}
+function do_video_time_update(start_time, end_time, mvd_id)	{
+	if(mv_lock_vid_updates==false){		
+		//update the vid title:	
+		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
+		if(org_vid_src.indexOf('?')!=-1){
+			var url = org_vid_src.split('?');
+			var new_vid_url = url[0] + '?t=' + start_time+'/'+end_time;
+			//js_log("new vid url:" +new_vid_url);
+			if(new_vid_url!=$j('#embed_vid').attr('src'))
+				$j('#embed_vid').get(0).updateVideoSrc(new_vid_url);
+		}
+		do_update_thumb(mvd_id, start_time);
 	}
 }
 function do_update_thumb(mvd_id, start_time){
 	//set via mvd
-	if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail){
-			$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
-			return ;
+	if(mvd_id){
+		if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail){
+				$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
+				return ;
+		}
 	}
 	//else set via org_thum_src
 	if(org_thum_src.indexOf('?')!=-1){
@@ -810,19 +824,6 @@ function do_update_thumb(mvd_id, start_time){
 		//js_log("new thumb:" + new_thumb);
 		if(new_thumb!=$j('#embed_vid').get(0).thumbnail)
 			$j('#embed_vid').get(0).updateThumbnail(new_thumb);		
-	}
-}
-function do_video_time_update(start_time, end_time)	{
-	if(mv_lock_vid_updates==false){		
-		//update the vid title:	
-		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
-		if(org_vid_src.indexOf('?')!=-1){
-			var url = org_vid_src.split('?');
-			var new_vid_url = url[0] + '?t=' + start_time+'/'+end_time;
-			//js_log("new vid url:" +new_vid_url);
-			if(new_vid_url!=$j('#embed_vid').attr('src'))
-				$j('#embed_vid').get(0).updateVideoSrc(new_vid_url);
-		}
 	}
 }
 function mv_tool_disp(tool_id){
