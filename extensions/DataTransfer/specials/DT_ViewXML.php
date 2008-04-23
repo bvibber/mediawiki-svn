@@ -186,17 +186,21 @@ function getPagesForNamespace($namespace) {
  * Helper function for getXMLForPage()
  */
 function treeContainsElement($tree, $element) {
-  foreach ($tree as $node => $child_tree) {
-    if ($node === $element) {
-      return true;
-    } elseif (count($child_tree) > 0) {
-      if (treeContainsElement($child_tree, $element)) {
-	return true;
-      }
-    }
-  }
-  // no match found
-  return false;
+	// escape out if there's no tree (i.e., category)
+	if ($tree == null)
+		return false;
+
+	foreach ($tree as $node => $child_tree) {
+		if ($node === $element) {
+			return true;
+		} elseif (count($child_tree) > 0) {
+			if (treeContainsElement($child_tree, $element)) {
+				return true;
+			}
+		}
+	}
+	// no match found
+	return false;
 }
 
 function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
