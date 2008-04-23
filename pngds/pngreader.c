@@ -240,8 +240,6 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 			continue;
 		}
 		
-		
-		
 		x = info->scan_pos - info->bpp;
 		switch (info->filter)
 		{

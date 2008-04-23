@@ -7,7 +7,8 @@
 #include "pngcmd.h"
 #include "pngresize.h"
 
-#define paranoia_ceil(d)	(uint32_t)d + (uint32_t)d < d ? 1: 0;
+#define paranoia_ceil(d)	(uint32_t)d + ((uint32_t)d < d ? 1 : 0)
+#define roundl(d)			((uint32_t)d + ((d - (uint32_t)d) >= 0.5 ? 1 : 0))
 
 void png_resize_init(void *info_);
 void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline, uint32_t length, void *info_);
@@ -22,7 +23,6 @@ void png_resize(FILE* fin, FILE* fout, uint32_t width, uint32_t height, pngcallb
 	
 	if (width == 0 && height == 0)
 		png_die("unspecified_dimensions", NULL);
-
 	
 	if (callbacks == NULL)
 		info.callbacks = calloc(sizeof(pngcallbacks), 1);
@@ -60,12 +60,12 @@ void png_resize_init(void *info_)
 	else if (rinfo->width != 0)
 	{
 		rinfo->fx = rinfo->fy = (float)info->header->width / (float)rinfo->width;
-		rinfo->height = (uint32_t)(info->header->height / rinfo->fy);
+		rinfo->height = roundl((float)(info->header->height / rinfo->fy));
 	}
 	else if (rinfo->height != 0)
 	{
 		rinfo->fx = rinfo->fy = (float)info->header->height / (float)rinfo->height;
-		rinfo->width = (uint32_t)(info->header->width / rinfo->fy);
+		rinfo->width = roundl((float)(info->header->width / rinfo->fy));
 	}
 	
 	if (rinfo->fx < 1.0 || rinfo->fy < 1.0)
@@ -80,7 +80,7 @@ void png_resize_init(void *info_)
 	rinfo->line_count = 0;
 	
 	rinfo->written_lines = 0;
-	rinfo->last_line = calloc(rinfo->width * info->bpp * sizeof(char), 1);
+	rinfo->last_line = calloc(rinfo->width * info->bpp, sizeof(char));
 	
 	if (rinfo->callbacks->read_header != NULL)
 		(*rinfo->callbacks->read_header)(info);
@@ -95,26 +95,24 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 	uint32_t i, j, k, start, end;
 	
 	float divisor;
-	unsigned char *pixel = malloc(info->bpp);
 	
 	for (i = 0; i < rinfo->width; i++)
 	{
+		unsigned char pixel;
+
 		// TODO: Check whether ceil() is suitable
-		start = (uint32_t)(rinfo->fx * i);
-		if ((rinfo->fx * i) > start) start++;
-		end = (uint32_t)(rinfo->fx * (i + 1));
-		if ((rinfo->fx * (i + 1)) > end) end++;
+		start = paranoia_ceil(rinfo->fx * i);
+		end = paranoia_ceil(rinfo->fx * (i + 1));
 		divisor = (float)(end - start);
 		
-		memset(pixel, 0, info->bpp);
 		for (j = 0; j < info->bpp; j++)
 		{
+			pixel = 0;
 			for (k = 0; k < end - start; k++)
-				pixel[j] += (unsigned char)(scanline[(start + k) * info->bpp + j] / divisor);
-			rinfo->scanlines[rinfo->line_count][i * info->bpp + j] = pixel[j];
+				pixel += (unsigned char)(scanline[(start + k) * info->bpp + j] / divisor);
+			rinfo->scanlines[rinfo->line_count][i * info->bpp + j] = pixel;
 		}
 	}
-	free(pixel);
 	rinfo->line_count++;
 	
 	if ((info->line_count / rinfo->fy) > (rinfo->written_lines + 1))
@@ -128,7 +126,9 @@ void png_resize_line(unsigned char *scanline, unsigned char *previous_scanline,
 		rinfo->line_count = 0;
 		(*rinfo->callbacks->completed_scanline)(scanline, 
 			rinfo->last_line, rinfo->width * info->bpp, info);
-		memcpy(rinfo->last_line, scanline, rinfo->width * info->bpp);
+
+		free(rinfo->last_line);
+		rinfo->last_line = scanline;
 		rinfo->written_lines++;
 	}
 }
