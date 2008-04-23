@@ -98,6 +98,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 			break;
 		 default:
 			if (strlen($par)) {
+				wfDebug("OpenID: aborting in user validation because the parameter was empty\n");
 				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			} else {
@@ -117,6 +118,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 
 		if (!isset($request)) {
+			wfDebug("OpenID: aborting in user validation because the request was missing\n");
 			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}

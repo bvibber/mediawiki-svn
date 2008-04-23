@@ -94,6 +94,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			}
 
 			if (!isset($user)) {
+				wfDebug("OpenID: aborting in ChooseName because we could not create user object\n");
 				$this->clearValues();
 				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
@@ -111,6 +112,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			$response = $consumer->complete($this->scriptUrl('OpenIDFinish'));
 
 			if (!isset($response)) {
+				wfDebug("OpenID: aborting in auth because no response was recieved\n");
 				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
@@ -132,6 +134,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				$sreg = $sreg_resp->contents();
 
 				if (!isset($openid)) {
+					wfDebug("OpenID: aborting in auth success because display identifier is missing\n");
 					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 					return;
 				}
@@ -154,6 +157,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 				}
 
 				if (!isset($user)) {
+					wfDebug("OpenID: aborting in auth success because we could not create user object\n");
 					$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				} else {
 					$wgUser = $user;

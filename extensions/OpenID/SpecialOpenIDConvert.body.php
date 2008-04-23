@@ -121,6 +121,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$response = $consumer->complete($this->scriptUrl('OpenIDConvert/Finish'));
 
 		if (!isset($response)) {
+			wfDebug("OpenID: aborting in openid converter because the response was missing\n");
 			$wgOut->showErrorPage('openiderror', 'openiderrortext');
 			return;
 		}
@@ -139,6 +140,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			$openid_url = $response->identity_url;
 
 			if (!isset($openid_url)) {
+				wfDebug("OpenID: aborting in openid converter because the openid_url was missing\n");
 				$wgOut->showErrorPage('openiderror', 'openiderrortext');
 				return;
 			}
