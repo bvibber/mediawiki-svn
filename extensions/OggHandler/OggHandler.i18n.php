@@ -640,6 +640,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Shyam
  */
 $messages['hi'] = array(
 	'ogg-desc'                => 'ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ',
@@ -656,6 +657,11 @@ $messages['hi'] = array(
 	'ogg-stop'                => 'रोकें',
 	'ogg-play-video'          => 'विडियो शुरू करें',
 	'ogg-play-sound'          => 'ध्वनी चलायें',
+	'ogg-no-player'           => 'क्षमा करें, आपके तंत्र में कोई प्रमाणिक चालक सॉफ्टवेयर दर्शित नहीं हो रहा है।
+कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">एक चालक डाउनलोड करें</a>।',
+	'ogg-no-xiphqt'           => 'आपके पास QuickTime के लिए XiphQT घटक प्रतीत नहीं हो रहा है।
+QuickTime बिना इस घटक के Ogg files चलने में असमर्थ है।
+कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करें</a> अथवा अन्य चालक चुनें।',
 	'ogg-player-videoElement' => '<video> घटक',
 	'ogg-player-oggPlugin'    => 'ऑग प्लगीन',
 	'ogg-player-thumbnail'    => 'सिर्फ स्थिर चित्र',
@@ -1051,8 +1057,8 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
  * @author T-Rithy
  * @author គីមស៊្រុន
  */
@@ -1071,7 +1077,7 @@ $messages['km'] = array(
 	'ogg-stop'                => 'ឈប់',
 	'ogg-play-video'          => 'លេងវីដេអូ',
 	'ogg-play-sound'          => 'បន្លឺសំលេង',
-	'ogg-no-player'           => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នកហាក់បីដូចជាមិនមានកម្មវិធីណាមួយសំរាប់លេងទេ។ សូម<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធីសំរាប់លេងនៅទីនេះ</a> ។',
+	'ogg-no-player'           => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសំរាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សំរាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',
 	'ogg-player-thumbnail'    => 'នៅតែជារូបភាព',

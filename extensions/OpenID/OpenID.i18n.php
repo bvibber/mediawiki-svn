@@ -812,6 +812,7 @@ Existís maites [http://wiki.openid.net/Public_OpenID_providers provesidors d'Op
  * @author Amikeco
  */
 $messages['os'] = array(
+	'openidnickname'       => 'Фæсномыг',
 	'openidlanguage'       => 'Æвзаг',
 	'openidchoosepassword' => 'пароль:',
 );

@@ -417,6 +417,11 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'expandtemplates'                  => 'टेम्प्लेट्स बढायें',
 	'expandtemplates-desc'             => 'विकी विषय वस्तु में विस्तार प्रदर्शन एवं पूर्वदर्शन प्रदर्शन हेतु [[Special:ExpandTemplates|सांचे, प्रेजर फलनों एवं परिवर्तों में विस्तार करें]]।',
+	'expand_templates_intro'           => 'यह विशेष पृष्ठ कुछ विषय वस्तु लेता है और सभी सांचों को बार-बार फैलाता है।
+यह प्रेजर फलनों को भी फैलाता है, जैसे - 
+<nowiki>{{</nowiki>#if:…}}, और परिवर्तियों को, जैसे -
+<nowiki>{{</nowiki>तत्कालीनदिन}}&mdash; वास्तव में दोहरे-कोष्टक में लगभग सभी को फैलाता है।
+यह मीडियाविकी ही से संबंधित प्रेजर स्तर को बुलाकर कार्य करता है।',
 	'expand_templates_title'           => '{{PAGENAME}} इ. के लिये, कन्टेक्स्ट शीर्षक:',
 	'expand_templates_input'           => 'इनपुट पाठ:',
 	'expand_templates_output'          => 'रिज़ल्ट',
@@ -870,6 +875,13 @@ $messages['oc'] = array(
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
 	'expand_templates_generate_xml'    => "Veire l'arborescéncia XML",
 	'expand_templates_preview'         => 'Previsualizacion',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'expand_templates_ok' => 'Афтæ уæд!',
 );
 
 /** Polish (Polski)

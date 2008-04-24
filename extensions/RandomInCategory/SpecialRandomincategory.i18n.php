@@ -47,6 +47,13 @@ $messages['ca'] = array(
 	'randomincategory-submit' => 'Vés-hi',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'randomincategory-submit' => 'Hånao',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

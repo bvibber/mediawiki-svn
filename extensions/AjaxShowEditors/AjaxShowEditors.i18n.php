@@ -320,11 +320,14 @@ $messages['is'] = array(
 	'ajax-se-usernotfound'     => 'Villa: notandi ekki fundinn',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Cruccone
+ */
 $messages['it'] = array(
-	'ajax-se-title'   => 'Modifica in corso:',
-	'ajax-se-pending' => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
-	'ajax-se-idling'  => '(da $1 s)',
+	'ajax-se-title'            => 'Modifica in corso:',
+	'ajax-se-pending'          => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
+	'ajax-se-idling'           => '(da $1 s)',
+	'ajax-se-pagedoesnotexist' => 'La pagina non esiste',
 );
 
 /** Japanese (日本語)

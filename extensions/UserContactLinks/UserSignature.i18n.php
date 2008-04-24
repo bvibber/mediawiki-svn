@@ -86,6 +86,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'usercontactlink-baduser' => 'falsche Benotzernumm',
+	'usercontactlink-desc'    => 'Erméiglecht et fir einfach an dauernd aner Benotzernimm mat Hellëf vun der Syntax ^^^user^^^ derbäizesetzen',
 );
 
 /** Dutch (Nederlands)

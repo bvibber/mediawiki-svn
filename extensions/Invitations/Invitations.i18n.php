@@ -164,6 +164,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Dmcdevit
+ * @author Jatrobat
  */
 $messages['es'] = array(
 	'invitations-desc'                      => 'Permite [[Especial:Invitaciones|control de funciones nuevas]] por restringirlas a un sistema basado en invitaciones.',
@@ -175,7 +176,7 @@ $messages['es'] = array(
 	'invitations-uninvitedlist-none'        => 'Ahora mismo, ninguna otra función está designado sólo por invitación.',
 	'invitations-feature-pagetitle'         => 'Gestión de invitaciones - $1',
 	'invitations-feature-access'            => 'Tiene permiso para usar <i>$1</i>.',
-	'invitations-feature-numleft'           => 'Todavía tiene <b>$1</b> de sus $1 invitaciones.',
+	'invitations-feature-numleft'           => 'Todavía tiene <b>$1</b> de sus $2 invitaciones.',
 	'invitations-feature-noneleft'          => 'Ha usado todo de sus invitaciones destinado a esta función.',
 	'invitations-feature-noneyet'           => 'No ha recibido su cuota de invitaciones para esta función.',
 	'invitations-feature-notallowed'        => 'No tiene permiso para usar <i>$1</i>.',

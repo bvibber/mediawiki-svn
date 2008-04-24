@@ -297,6 +297,15 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 );
 
+/** Italian (Italiano)
+ * @author Cruccone
+ */
+$messages['it'] = array(
+	'vote'         => 'Vota',
+	'vote-current' => "Il tuo voto corrente è per '''$1'''.",
+	'vote-caption' => 'La tua selezione:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

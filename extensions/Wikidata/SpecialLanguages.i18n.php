@@ -2011,6 +2011,7 @@ Contactatz l’administrator.',
  * @author Amikeco
  */
 $wdMessages['os'] = array(
+	'ow_dm_OK'               => 'Афтæ уæд!',
 	'ow_Language'            => 'Æвзаг',
 	'ow_LinkAttributeValues' => 'Æрвитæнтæ',
 );

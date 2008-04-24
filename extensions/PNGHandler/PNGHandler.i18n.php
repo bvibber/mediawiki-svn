@@ -56,6 +56,20 @@ $messages['no'] = array(
 	'pnghandler-desc' => 'Endre størrelsen på PNG-bilder med pngds',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'pnghandler-desc' => 'Redimensionar las PNG gràcia a pngds',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'pnghandler-desc' => 'Redimensiona PNGs usando pngds',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

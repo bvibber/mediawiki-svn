@@ -460,6 +460,15 @@ $messages['ca'] = array(
 	'mv_category'        => 'categoria',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'mv_upload_file' => "Na'kåtga hulu' i atkibu",
+	'mv_tool_search' => 'Aligao',
+	'mv_edit'        => 'Tulaika',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -1874,6 +1883,7 @@ $messages['oc'] = array(
 	'mv_list_streams_docu'           => 'Lo flus seguent existís :',
 	'mv_list_streams_none'           => 'Cap de flus existís pas :',
 	'mvvideofeed'                    => "Alimentacion de l'expòrt de la vidèo metavid",
+	'mvexportask'                    => 'Exportacion d’un fial vidèo semantic',
 	'video_feed_cat'                 => 'Alimentacion de la vidèo per la categoria :',
 	'mv_cat_search_note'             => 'Nòta : las categorias listan pas que las del nivèl mai naut, per tota recèrca de metadonadas dins los gropes de categorias per $1',
 	'mv_mvd_linkback'                => 'Partida del flus $1 <br />Saut vèrs lo visionament del flus : $2<br />',

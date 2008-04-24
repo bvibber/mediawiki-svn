@@ -172,6 +172,13 @@ $messages['ca'] = array(
 	'changeauthor-pagenameform-go' => 'Vés-hi',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'changeauthor-pagenameform-go' => 'Hånao',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -265,6 +272,13 @@ Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
 	'changeauthor-success'              => 'Via peto estis traktita sukcese.',
 	'changeauthor-logentry'             => 'Ŝanĝis aŭtoron de $2 de $1 de $3 al $4',
 	'changeauthor-logpagename'          => 'Loglibro pri ŝanĝoj de aŭtoroj',
+);
+
+/** Spanish (Español)
+ * @author Jatrobat
+ */
+$messages['es'] = array(
+	'changeauthor-pagenameform-go' => 'Ir',
 );
 
 /** Finnish (Suomi)

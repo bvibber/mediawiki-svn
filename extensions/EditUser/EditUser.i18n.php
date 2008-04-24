@@ -60,6 +60,13 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'edituser-dosearch' => 'Aligao',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

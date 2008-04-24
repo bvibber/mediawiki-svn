@@ -432,6 +432,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Shyam
  */
 $messages['hi'] = array(
 	'sitematrix'           => 'विकिमीडियाके विकियोंकी सूची',
@@ -442,6 +443,8 @@ $messages['hi'] = array(
 	'sitematrix-others'    => 'विकिमीडियाके अन्य प्रकल्प',
 	'sitematrix-total'     => "'''कुल गिनती: $1'''",
 	'sitematrix-sitetotal' => 'कुल',
+	'sitematrix-private'   => 'निजी',
+	'sitematrix-fishbowl'  => 'संपादन प्रतिबंधित',
 );
 
 /** Croatian (Hrvatski)

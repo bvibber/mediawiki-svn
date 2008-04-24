@@ -3067,7 +3067,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_days'         => 'Jorns',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Representant de l’utilizaire',
-	'boardvote_listintro'    => 'Vaquí la lista de las personas qua ja an votat :<br /><br />',
+	'boardvote_listintro'    => 'Vaquí la lista de las personas que ja an votat :<br /><br />',
 	'boardvote_dumplink'     => 'Clicatz aicí',
 	'boardvote_submit'       => "D'acòrdi",
 	'boardvote_strike'       => 'Raiar',
@@ -3090,8 +3090,9 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
  * @author Amikeco
  */
 $messages['os'] = array(
-	'boardvote_time' => 'Рæстæг',
-	'boardvote_ip'   => 'IP-адрис',
+	'boardvote_time'   => 'Рæстæг',
+	'boardvote_ip'     => 'IP-адрис',
+	'boardvote_submit' => 'Афтæ уæд!',
 );
 
 /** Pangasinan (Pangasinan)
@@ -4167,7 +4168,7 @@ $messages['uk'] = array(
 	'boardvote_listintro'    => '<p>Це список всіх прийнятих на даний момент бюлетенів для голосування.
 У зашифрованому вигляді вони доступні $1.</p>',
 	'boardvote_dumplink'     => 'тут',
-	'boardvote_submit'       => 'ОК',
+	'boardvote_submit'       => 'Гаразд',
 	'boardvote_strike'       => 'Закреслити',
 	'boardvote_unstrike'     => 'Прибрати закреслення',
 	'boardvote_needadmin'    => 'Ця операція доступна лише адміністрації виборів.',

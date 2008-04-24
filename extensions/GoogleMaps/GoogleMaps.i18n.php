@@ -358,6 +358,14 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-hide-map' => 'ocultar el mapa',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$wgGoogleMapsMessages['ch'] = array(
+	'gm-zoom-control' => 'Nabegasion',
+	'gm-search'       => 'Aligao',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -2458,6 +2466,14 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-earth'                     => 'โลก',
 	'gm-moon'                      => 'ดวงจันทร์',
 	'gm-mars'                      => 'ดาวอังคาร',
+);
+
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$wgGoogleMapsMessages['tr'] = array(
+	'gm-yes' => 'Evet',
+	'gm-no'  => 'Hayır',
 );
 
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))

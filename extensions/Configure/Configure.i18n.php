@@ -119,6 +119,13 @@ $messages['bg'] = array(
 	'configure-setting-not-available' => 'Тази настройка не е налична в използваната версия на МедияУики',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'configure-section-specialpages' => 'Manespesiat na påhina',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

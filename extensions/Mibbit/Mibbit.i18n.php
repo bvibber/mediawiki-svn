@@ -155,6 +155,7 @@ $messages['nl'] = array(
 Klik op de knop "Connect" om te beginnen.
 Als u aangemeld bent bij de wiki is uw gebruikersnaam ingevuld.
 Anonieme gebruikers krijgen automatisch een gebruikersnaam toegewezen die te wijzigen is.',
+	'right-mibbit'  => 'Mag Mibbit-chat gebruiken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -167,6 +168,7 @@ $messages['no'] = array(
 Trykk på «Connect»-knappen for å koble deg til.
 Om du er logget inn vil kallenavnet ditt være fylt inn allerede.
 Uregistrerte brukere får et automatisk laget kallenavn, men det kan endres.',
+	'right-mibbit'  => 'Kan bruke Mibbit-chat',
 );
 
 /** Occitan (Occitan)
@@ -211,6 +213,7 @@ $messages['ru'] = array(
 Чтобы подключиться, просто нажмите кнопку «Подключиться».
 Если вы представились системе, то ваше имя будет сохранено.
 Анонимные участники получают автоматически сгенерированные имена, но могут изменить их.',
+	'right-mibbit'  => 'использование чата Mibbit',
 );
 
 /** Slovak (Slovenčina)
@@ -236,6 +239,7 @@ $messages['sv'] = array(
 Tryck bara på knappen "Connect" för att ansluta.
 Om du är inloggad kommer ditt namn redan vara ifyllt.
 Anonyma användare får ett automatiskt genererat namn, men det kan ändras.',
+	'right-mibbit'  => 'Kan använda Mibbit-chatten',
 );
 
 /** Thai (ไทย)

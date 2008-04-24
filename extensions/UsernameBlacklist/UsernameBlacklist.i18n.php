@@ -381,10 +381,23 @@ $messages['hak'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Shyam
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'blacklistedusername' => 'ब्लॅकलिस्ट किया हुआ सदस्यनाम',
+	'usernameblacklist-desc'          => 'एक या अधिक नियमित अभिव्यक्तियों के मेल खाने पर यह सदस्य खातों को निर्माण से प्रतिबंधित करने लिए एक [[MediaWiki:Usernameblacklist|सदस्यनाम ब्लैकलिस्ट]] जोड़ता है',
+	'blacklistedusername'             => 'ब्लॅकलिस्ट किया हुआ सदस्यनाम',
+	'blacklistedusernametext'         => 'आपके द्वारा चुना हुआ सदस्य नाम [[MediaWiki:Usernameblacklist|सदस्यनामों की ब्लैकलिस्ट सूची]] से मेल खाता है।
+कृपया दूसरा नाम चुनें।',
+	'usernameblacklist'               => '<pre>
+# जब पंजीयन से सदस्यनामों को ब्लैकलिस्ट किया जाता है, तब इस सूची में प्रवेशिकाएं
+# एक नियमित अभिव्यक्ति के रूप में प्रयोग ली जायेगी। हर विषय एक धमाकेदार सूची
+# का भाग होना चाहिए, उदाहरण के तौर पर,
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'निम्नांकित {{PLURAL:$1|पंक्ति|पंक्तियाँ}} सदस्यनाम ब्लैकलिस्ट के लिए अमान्य {{PLURAL:$1|है|हैं}}; कृपया {{PLURAL:$1|इसे|इन्हें}} जमा करने से पहले ठीक करें:',
 );
 
 $messages['hr'] = array(

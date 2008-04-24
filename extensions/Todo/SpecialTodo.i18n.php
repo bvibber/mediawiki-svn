@@ -233,12 +233,18 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'todo'              => 'Lëscht vun den Aufgaben',
-	'todo-tab'          => 'fir ze maachen',
-	'todo-new-queue'    => 'nei',
-	'todo-list-change'  => 'Änneren',
-	'todo-list-cancel'  => 'Annulléieren',
-	'todo-form-details' => 'Detailer:',
+	'todo'                  => 'Lëscht vun den Aufgaben',
+	'todo-desc'             => 'Experimentell Erweiderung mat der perséinlecher [[Special:Todo|Lëscht vun Aufgaben]]',
+	'todo-tab'              => 'fir ze maachen',
+	'todo-new-queue'        => 'nei',
+	'todo-invalid-item'     => 'Keen oder ongëltegen Objet',
+	'todo-update-else-item' => "Versuch engem anere seng Objeten z'aktualiséieren",
+	'todo-item-list'        => 'Är Objeten',
+	'todo-no-item'          => 'Keng Objeten op der Lëscht vun den Aufgaben.',
+	'todo-list-change'      => 'Änneren',
+	'todo-list-cancel'      => 'Annulléieren',
+	'todo-new-item'         => 'Neien Objet',
+	'todo-form-details'     => 'Detailer:',
 );
 
 /** Marathi (मराठी)

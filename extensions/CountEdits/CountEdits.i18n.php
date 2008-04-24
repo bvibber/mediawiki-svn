@@ -562,6 +562,7 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'countedits-username' => 'Архайæг:',
+	'countedits-ok'       => 'Афтæ уæд!',
 );
 
 /** Polish (Polski)

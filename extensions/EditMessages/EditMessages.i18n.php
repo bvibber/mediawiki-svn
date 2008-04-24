@@ -41,11 +41,13 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'editmessages-desc'  => '[[Special:EditMessages|Уеб-базиран интерфейс]] за редактиране на голям брой файлове Messages*.php',
-	'editmessages'       => 'Редактиране на съобщенията',
-	'editmsg-target'     => 'Целево съобщение:',
-	'editmsg-search'     => 'Търсене',
-	'editmsg-new-search' => 'Ново търсене',
+	'editmessages-desc'   => '[[Special:EditMessages|Уеб-базиран интерфейс]] за редактиране на голям брой файлове Messages*.php',
+	'editmessages'        => 'Редактиране на съобщенията',
+	'editmsg-target'      => 'Целево съобщение:',
+	'editmsg-search'      => 'Търсене',
+	'editmsg-get-patch'   => 'Генериране на кръпка',
+	'editmsg-new-search'  => 'Ново търсене',
+	'editmsg-apply-patch' => 'Прилагане на кръпка',
 );
 
 /** Bengali (বাংলা)
@@ -53,6 +55,13 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'editmsg-search' => 'অনুসন্ধান',
+);
+
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'editmsg-search' => 'Aligao',
 );
 
 /** Danish (Dansk)

@@ -307,6 +307,7 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'inspectcache-ok'     => 'Афтæ уæд!',
 	'inspectcache-delete' => 'Аппар',
 );
 

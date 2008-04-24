@@ -872,6 +872,13 @@ $messages['th'] = array(
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
 );
 
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$messages['tr'] = array(
+	'contributors-submit' => 'Göster',
+);
+
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
  * @author Ерней
  */

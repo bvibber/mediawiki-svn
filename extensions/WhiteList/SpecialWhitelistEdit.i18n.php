@@ -135,6 +135,13 @@ $allMessages['ca'] = array(
 	'whitelisttableedit'       => 'Edita',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$allMessages['ch'] = array(
+	'whitelisttableedit' => 'Tulaika',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -574,6 +581,7 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
  */
 $allMessages['os'] = array(
 	'whitelisttableedit' => 'Баив æй',
+	'whitelistbadtitle'  => 'Æнæмбæлон сæргонд —',
 	'whitelistnever'     => 'никуы',
 );
 

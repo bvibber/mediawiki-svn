@@ -74,6 +74,13 @@ $messages['bg'] = array(
 	'importusers-realname'            => 'истинско име',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'importusers-uploadfile' => "Na'kåtga hulu' i atkibu",
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

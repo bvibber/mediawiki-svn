@@ -431,23 +431,23 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'authorprotect'            => 'Skydda sidan från andra än författaren',
 	'authorprotect-desc'       => 'Låter författaren av en sida skydda den från andra användare',
 	'authorprotect-notauthor'  => 'Du är inte författaren av denna sida',
 	'authorprotect-confirm'    => 'Skydda',
-	'authorprotect-edit'       => 'Begränsar redigering till författare',
-	'authorprotect-move'       => 'Begränsar flyttning till författare',
-	'authorprotect-expiry'     => 'Varighet',
-	'authorprotect-reason'     => 'Anledning',
-	'authorprotect-intro'      => 'Använd detta formulär för att låsa denna för andra än författaren',
+	'authorprotect-edit'       => 'Låt endast författaren redigera sidan',
+	'authorprotect-move'       => 'Låt endast författaren flytta sidan',
+	'authorprotect-expiry'     => 'Varaktighet:',
+	'authorprotect-reason'     => 'Anledning:',
+	'authorprotect-intro'      => 'Använd detta formulär för att låsa sidan för andra än författaren',
 	'authorprotect-success'    => 'Beskyddningen lyckades!',
 	'authorprotect-failure'    => 'Beskyddning misslyckades',
-	'protect-level-author'     => 'Beskydd för andra än författaren',
-	'restriction-level-author' => 'Beskyddad för författaren',
+	'protect-level-author'     => 'Skydda från andra än författaren',
+	'restriction-level-author' => 'författarskyddad',
 );
 
 /** Ukrainian (Українська)

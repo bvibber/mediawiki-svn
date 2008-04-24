@@ -126,6 +126,13 @@ $messages['cdo'] = array(
 	'linksearch-ok'    => 'Sìng-tō̤',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'linksearch-ok' => 'Aligao',
+);
+
 $messages['co'] = array(
 	'linksearch-ns'    => 'Spaziu:',
 	'linksearch-ok'    => 'Ricerca',

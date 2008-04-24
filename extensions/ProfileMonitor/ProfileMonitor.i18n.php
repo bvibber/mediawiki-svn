@@ -259,6 +259,13 @@ $messages['oc'] = array(
 	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'profiling-ok' => 'Афтæ уæд!',
+);
+
 $messages['pms'] = array(
 	'profiling' => 'Antramentr ch\'as càlcola ël profil da \'nt ij dat',
 	'profiling-process' => 'Espression processà:',

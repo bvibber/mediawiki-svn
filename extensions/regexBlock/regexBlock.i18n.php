@@ -173,6 +173,13 @@ $messages['ca'] = array(
 	'regexblock-view-go' => 'Vés-hi',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'regexblock-view-go' => 'Hånao',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

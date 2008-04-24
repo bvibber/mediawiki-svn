@@ -716,6 +716,13 @@ $messages['oc'] = array(
 	'pdt_comparing_page'  => 'Comparason del parser en sortida a partir de [[$1]]',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'pdtest_ok' => 'Афтæ уæд!',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

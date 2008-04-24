@@ -265,6 +265,13 @@ $messages['oc'] = array(
 	'findspam-notextfound' => 'Cap de contribucion trobada',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'findspam-ok' => 'Афтæ уæд!',
+);
+
 /** Polish (Polski)
  * @author McMonster
  */

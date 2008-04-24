@@ -70,6 +70,13 @@ $messages['bg'] = array(
 	'multiupload-toolbox'              => 'Качване на няколко файла',
 );
 
+/** Chamorro (Chamoru)
+ * @author Jatrobat
+ */
+$messages['ch'] = array(
+	'multipleupload' => "Na'kåtga hulu' atkibu",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
