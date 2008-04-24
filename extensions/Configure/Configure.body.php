@@ -215,7 +215,7 @@ class SpecialConfigure extends SpecialPage {
 						if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
 							$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
 						else
-							$all = $iter;
+							$all = array_diff( $all, User::getImplicitGroups() );
 					}
 					foreach( $iter as $group ){
 						foreach( $all as $right ){
@@ -692,6 +692,8 @@ class SpecialConfigure extends SpecialPage {
 					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
 				if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
 					$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
+				else
+					$all = array_diff( $all, User::getImplicitGroups() );
 			}
 			$text = '<table border="1" cellpadding="1">';
 			foreach( $iter as $group => $levs ){
@@ -702,7 +704,10 @@ class SpecialConfigure extends SpecialPage {
 					else
 						$checked = in_array( $right, $levs );
 					$id = Sanitizer::escapeId( 'wp'.$conf.'-'.$group.'-'.$right );
-					$row .= '<li>'.Xml::checkLabel( $right, $id, $id, $checked, $attr ) . "</li>\n";
+					$desc = ( $type == 'group-bool' && is_callable( array( 'User', 'getRightDescription' ) ) ) ?
+						User::getRightDescription( $right ) :
+						$right;
+					$row .= '<li>'.Xml::checkLabel( $desc, $id, $id, $checked, $attr ) . "</li>\n";
 				}
 				$row .= '</ul></div>';
 				$groupName = User::getGroupName( $group );
