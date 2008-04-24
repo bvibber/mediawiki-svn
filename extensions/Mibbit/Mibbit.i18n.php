@@ -17,6 +17,7 @@ $messages['en'] = array(
 To connect simply press the "Connect" button.
 If you are logged in your nickname will have been prefilled.
 Anonymous users are given an automatically generated one, but it can be changed.',
+        'right-mibbit'  => 'Allowed to use Mibbit chat',
 );
 
 /** Bulgarian (Български)
