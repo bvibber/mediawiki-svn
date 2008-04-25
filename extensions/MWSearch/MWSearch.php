@@ -536,12 +536,17 @@ class LuceneSearchSet extends SearchResultSet {
 		}
 
 		wfDebug( "Fetching search data from $searchUrl\n" ); 
-		$inputLines = @file( $searchUrl );
-		if( $inputLines === false ) {
+		wfSuppressWarnings();
+		wfProfileIn( $fname.'-contact-'.$host );
+		$data = Http::get( $searchUrl );
+		wfProfileOut( $fname.'-contact-'.$host );
+		wfRestoreWarnings();
+		if( $data === false ) {
 			// Network error or server error
 			wfProfileOut( $fname );
 			return false;
 		} else {
+			$inputLines = explode( "\n", trim( $data ) );
 			$resultLines = array_map( 'trim', $inputLines );
 		}
 
