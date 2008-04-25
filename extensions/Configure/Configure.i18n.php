@@ -69,6 +69,8 @@ Please create it or change it to use this extension.',
 	'configure-section-htcp'          => 'HTCP multicast',
 	'configure-section-misc'          => 'Miscellaneous',
 	'configure-setting-not-available' => 'This setting is not available in this version of MediaWiki',
+	'right-configure'                 => 'Configure the wiki',
+	'right-configure-all'             => "Configure all wiki's settings",
 );
 
 /** Bulgarian (Български)
@@ -282,6 +284,7 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -340,6 +343,8 @@ $messages['fr'] = array(
 	'configure-section-htcp'          => 'HTCP multicanal',
 	'configure-section-misc'          => 'Autres',
 	'configure-setting-not-available' => "Ce paramètre n'est pas disponible sur cette version de MediaWiki",
+	'right-configure'                 => 'Configurer le wiki',
+	'right-configure-all'             => 'Configurer tous les paramètres du wiki',
 );
 
 /** Galician (Galego)
