@@ -35,7 +35,7 @@ class BadImageManipulator extends SpecialPage {
 				$this->showAdd( $wgOut, $wgUser );
 			}
 		} else {
-			$wgOut->addWikiText( wfMsg( 'badimages-unprivileged' ) );
+			$wgOut->addWikiMsg( 'badimages-unprivileged' );
 		}
 		
 		# List existing bad images
@@ -44,13 +44,13 @@ class BadImageManipulator extends SpecialPage {
 	
 	function showAdd( &$output, &$user ) {
 		$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
-		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= wfHidden( 'action', 'add' ) . wfHidden( 'wpToken', $user->editToken() );
+		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= Xml::hidden( 'action', 'add' ) . Xml::hidden( 'wpToken', $user->editToken() );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
-		$form .= '<td>' . wfInput( 'wpImage' ) . '</td></tr>';
+		$form .= '<td>' . Xml::input( 'wpImage' ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
-		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
-		$form .= wfSubmitButton( wfMsg( 'badimages-add-btn' ) ) . '</td></tr></table></form>';
+		$form .= '<td>' . Xml::input( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
+		$form .= Xml::submitButton( wfMsg( 'badimages-add-btn' ) ) . '</td></tr></table></form>';
 		$output->addHtml( $form );
 	}
 	
@@ -80,13 +80,13 @@ class BadImageManipulator extends SpecialPage {
 		$title = Title::makeTitleSafe( NS_IMAGE, $name );
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
 		$output->addHtml( '<p>' . wfMsgHtml( 'badimages-remove-confirm', $link ) . '</p>' );
-		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= wfHidden( 'action', 'remove' ) . wfHidden( 'wpToken', $user->editToken() ) . wfHidden( 'wpImage', $name );
+		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= Xml::hidden( 'action', 'remove' ) . Xml::hidden( 'wpToken', $user->editToken() ) . Xml::hidden( 'wpImage', $name );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
-		$form .= '<td>' . wfInput( 'wpImage2', false, $name, array( 'readonly' => 'readonly' ) ) . '</td></tr>';
+		$form .= '<td>' . Xml::input( 'wpImage2', false, $name, array( 'readonly' => 'readonly' ) ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
-		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
-		$form .= wfSubmitButton( wfMsg( 'badimages-remove-btn' ) ) . '</td></tr></table></form>';
+		$form .= '<td>' . Xml::input( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
+		$form .= Xml::submitButton( wfMsg( 'badimages-remove-btn' ) ) . '</td></tr></table></form>';
 		$output->addHtml( $form );
 	}
 
@@ -138,10 +138,10 @@ class BadImageManipulator extends SpecialPage {
 		extract( $dbr->tableNames( 'bad_images', 'user' ) );
 		$sql = "SELECT * FROM {$bad_images} LEFT JOIN {$user} ON bil_user = user_id";
 		$res = $dbr->query( $sql, __METHOD__ );
-		$wgOut->addHtml( '<h2>' . wfMsgHtml( 'badimages-subheading' ) . '</h2>' );
+		$wgOut->addHtml( Xml::element( 'h2', null, wfMsg( 'badimages-subheading' ) ) );
 		if( $res ) {
 			$count = $wgLang->formatNum( $dbr->numRows( $res ) );
-			$wgOut->addWikiText( wfMsg( 'badimages-count', $count ) );
+			$wgOut->addWikiMsg( 'badimages-count', $count );
 			$skin =& $wgUser->getSkin();
 			$wgOut->addHtml( '<ul>' );
 			while( $row = $dbr->fetchObject( $res ) )
