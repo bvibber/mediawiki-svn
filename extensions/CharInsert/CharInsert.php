@@ -30,7 +30,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-$wgExtensionFunctions[] = 'setupSpecialChars';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'setupSpecialChars';
+} else {
+	$wgExtensionFunctions[] = 'setupSpecialChars';
+}
+
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'CharInsert',
 	'author' => 'Brion Vibber',
@@ -43,8 +48,9 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CharInsert'] = $dir . 'CharInsert.i18n.php';
 
 function setupSpecialChars() {
-    global $wgParser;
-    $wgParser->setHook( 'charinsert', 'charInsert' );
+	global $wgParser;
+	$wgParser->setHook( 'charinsert', 'charInsert' );
+	return true;
 }
 
 function charInsert( $data ) {
