@@ -51,8 +51,16 @@ class SpecialConfigure extends SpecialPage {
 			return;
 		}
 
+		// Check that the directory exists...
 		if( !is_dir( $wgConf->getDir() ) ){
 			$msg = wfMsgNoTrans( 'configure-no-directory', $wgConf->getDir() );
+			$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+			return;
+		}
+
+		// And that it's writable by PHP
+		if( !is_writable( $wgConf->getDir() ) ){
+			$msg = wfMsgNoTrans( 'configure-directory-not-writable', $wgConf->getDir() );
 			$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
 			return;
 		}

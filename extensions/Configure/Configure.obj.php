@@ -45,11 +45,11 @@ class WebConfiguration extends SiteConfiguration {
 			return;
 		$cont = file_get_contents( $file );
 		if( empty( $cont ) )
-			# Wired, should not happen
+			# Weird, should not happen
 			return;
 		$arr = unserialize( $cont );
 		if( !is_array( $arr ) || $arr === array() )
-			# Wired, should not happen too
+			# Weird, should not happen too
 			return;
 		$this->mConf = $arr;
 
@@ -149,11 +149,11 @@ class WebConfiguration extends SiteConfiguration {
 			return array();
 		$cont = file_get_contents( $file );
 		if( empty( $cont ) )
-			# Wired, should not happen
+			# Weird, should not happen
 			return array();
 		$arr = unserialize( $cont );
 		if( !is_array( $arr ) )
-			# Wired, should not happen too
+			# Weird, should not happen too
 			return array();
 		return $arr;
 	}
