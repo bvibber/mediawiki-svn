@@ -228,6 +228,13 @@ $messages['ru'] = array(
 	'poem-desc' => 'Добавляет тег <tt>&lt;poem&gt;</tt> для форматирования стихов',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'poem-desc' => 'Хоһооннору суруйарга <tt>&lt;poem&gt;</tt> тиэги эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

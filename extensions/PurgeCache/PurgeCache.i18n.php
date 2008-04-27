@@ -265,6 +265,17 @@ $messages['sr-ec'] = array(
 	'purgecache-button'  => 'Освежи',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'purgecache'         => 'Rensa cachen',
+	'purgecache-desc'    => '[[Special:PurgeCache|Specialsida]] använd för att rensa OBJEKTCACHE-tabellen',
+	'purgecache-warning' => 'Detta rensar cachetabellerna.',
+	'purgecache-purged'  => 'Cachen har rensats.',
+	'purgecache-button'  => 'Rensa',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

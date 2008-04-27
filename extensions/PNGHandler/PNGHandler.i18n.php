@@ -42,6 +42,13 @@ $messages['lb'] = array(
 	'pnghandler-desc' => 'PNGen redimensionéiere mat Hellëf vu pngds',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'pnghandler-desc' => 'pngds चा वापर करून पीएनजी संचिकांचा आकार बदला',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -61,6 +68,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'pnghandler-desc' => 'Redimensionar las PNG gràcia a pngds',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'pnghandler-desc' => 'Zmiana rozmiaru obrazu w formacie PNG z użyciem „pngds”',
 );
 
 /** Portuguese (Português)

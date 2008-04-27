@@ -312,6 +312,23 @@ $2',
 	'userrightsnotif-desc'    => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
 );
 
+/** Russian (Русский)
+ * @author Flrn
+ */
+$messages['ru'] = array(
+	'userrightsnotifysubject' => 'Членство в группах было изменено на «$1»',
+	'userrightsnotifybody'    => 'Здравствуйте, $1.
+
+Это сообщение информирует вас о том, что ваше членство в группах было изменено $3 в $4.
+
+Добавлено: $5
+Удалено: $6
+
+С наилучшими пожеланиями,
+
+$2',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

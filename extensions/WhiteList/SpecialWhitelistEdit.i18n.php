@@ -655,6 +655,13 @@ $allMessages['ps'] = array(
 	'whitelistnever'           => 'هېڅکله',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$allMessages['pt'] = array(
+	'whitelisttablemodify' => 'Modificar',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

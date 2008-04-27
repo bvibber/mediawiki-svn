@@ -341,6 +341,14 @@ $messages['uk'] = array(
 	'categorystepper-start' => '(початок категорії)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'categorystepper-end'   => '(Cuối thể loại)',
+	'categorystepper-start' => '(Đầu thể loại)',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

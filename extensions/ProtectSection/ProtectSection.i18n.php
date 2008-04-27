@@ -194,6 +194,15 @@ $messages['stq'] = array(
 	'protectsection_forbidden'  => 'Ferbeeden',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'protectsection_add_remove' => 'Du prövade att lägga till eller ta bort en beskyddad sektion',
+	'protectsection_modify'     => 'Du prövade att ändra en beskyddad text',
+	'protectsection_forbidden'  => 'Förbjudet',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

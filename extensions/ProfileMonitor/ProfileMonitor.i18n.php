@@ -339,9 +339,16 @@ $messages['stq'] = array(
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'profiling-ok'         => 'OK',
-	'profiling-data-count' => 'Antal',
-	'profiling-data-time'  => 'Tid (alla)',
+	'profiling'              => 'Profileringsdata',
+	'profiling-process'      => 'Processeringssträng:',
+	'profiling-wildcard'     => 'Använd jokertecken',
+	'profiling-ok'           => 'OK',
+	'profiling-data'         => 'Profileringsdata för "$1"',
+	'profiling-data-process' => 'Process',
+	'profiling-data-count'   => 'Antal',
+	'profiling-data-time'    => 'Tid (alla)',
+	'profiling-data-average' => 'Tid (genomsnitt)',
+	'profiling-no-data'      => 'Inga matchande resultat.',
 );
 
 /** Telugu (తెలుగు)

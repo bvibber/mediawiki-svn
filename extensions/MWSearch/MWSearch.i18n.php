@@ -172,6 +172,13 @@ $messages['ru'] = array(
 	'mwsearch-desc' => 'Плагин MWSearch',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'mwsearch-desc' => 'MWSearch плагин',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

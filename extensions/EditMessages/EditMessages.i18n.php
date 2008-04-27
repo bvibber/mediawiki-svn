@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$messages['krl'] = array(
+	'editmsg-search' => 'Ečindy',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -186,6 +193,13 @@ $messages['hi'] = array(
 	'editmsg-no-patch'         => '"patch" क्रिया नहीं कर पायें',
 	'editmsg-patch-failed'     => '$1 यह स्थिती दिखाके पॅच रद्द हो गया हैं',
 	'editmsg-patch-success'    => 'पॅच पूरा हुआ।',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'editmsg-search' => 'Pangita-a',
 );
 
 /** Hungarian (Magyar)

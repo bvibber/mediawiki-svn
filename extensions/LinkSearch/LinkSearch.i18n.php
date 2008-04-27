@@ -20,6 +20,13 @@ Supported protocols: <tt>$1</tt>',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$messages['krl'] = array(
+	'linksearch-ok' => 'Ečindy',
+);
+
 $messages['af'] = array(
 	'linksearch'       => 'Soek webskakels',
 );
@@ -365,6 +372,13 @@ $messages['hi'] = array(
 	'linksearch-text'  => '"*.wikipedia.org" जैसे वाईल्डकार्ड्स इस्तेमाल करनेकी अनुमति हैं।<br />निम्नलिखित प्रोटोकॉल्समें: <tt>$1</tt>',
 	'linksearch-line'  => '$2 में से $1 जुडा हुआ हैं',
 	'linksearch-error' => 'वाईल्डकार्ड्स होस्टनामके सिर्फ शुरु में आ सकतें हैं।',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'linksearch-ok' => 'Pangita-a',
 );
 
 /** Croatian (Hrvatski)
@@ -811,6 +825,7 @@ $messages['sah'] = array(
 	'linksearch'       => 'Тас сигэлэри көрдөөһүн',
 	'linksearch-desc'  => 'Этиллибит халыыпка сөп түбэһэр [[Special:Linksearch|тас сигэлээх (ыйынньыктаах) сирэйдэри көрдөрөр]]',
 	'linksearch-pat'   => 'Көрдөөһүн халыыба:',
+	'linksearch-ns'    => 'Аат хочото (namespace):',
 	'linksearch-ok'    => 'Бул',
 	'linksearch-text'  => 'Туруоран биэрэр бэлиэлэри туһаныахха сөп, холобур, "*.wikipedia.org".
 

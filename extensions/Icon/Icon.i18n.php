@@ -195,6 +195,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'icon-badimage' => 'Imagem Inválida',
 	'icon-badwidth' => 'Largura Inválida',
+	'icon-desc'     => 'Permite-lhe usar imagens como ícones e ligações de ícones',
 );
 
 /** Russian (Русский)

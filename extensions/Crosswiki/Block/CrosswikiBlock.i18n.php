@@ -580,6 +580,8 @@ Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
 	'crosswikiblock-noemail'        => 'Verhënneren datt de Benotzer E-Maile verschéckt',
 	'crosswikiunblock'              => "D'Spär vum Benotzer op enger anerer Wiki ophiewen",
+	'crosswikiunblock-header'       => "Dës Säit erlaabt et d'spär vu Benotzer op enger anerer Wiki opzehiewen.
+Kukct w.e.g. no ob Dir berechtegt sidd fir dat op där Wiki ze maachen an ob är Aktiounen mat alle Richtlinnen iwwereneestëmmen.",
 	'crosswikiunblock-user'         => 'Benotzernumm, IP-Adress oder Nummer vun der Spär an Zilwiki:',
 	'crosswikiunblock-reason'       => 'Grond:',
 	'crosswikiunblock-submit'       => 'Spär fir dëse Benotzer ophiewen',
@@ -854,6 +856,8 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'crosswikiblock-desc'           => 'Permite bloquear utilizadores noutros wikis usando uma [[{{ns:special}}:Crosswikiblock|página especial]]',
 	'crosswikiblock'                => 'Bloquear utilizador noutro wiki',
+	'crosswikiblock-header'         => 'Esta página permite bloquear um utilizador noutro wiki.
+Por favor, verifique se tem permissão para agir neste wiki e as suas acções respeitam todas as políticas.',
 	'crosswikiblock-target'         => 'Endereço IP ou nome de utilizador e wiki destino:',
 	'crosswikiblock-expiry'         => 'Expiração:',
 	'crosswikiblock-reason'         => 'Motivo:',
@@ -863,6 +867,8 @@ $messages['pt'] = array(
 	'crosswikiblock-autoblock'      => 'Bloquear automaticamente o último endereço IP usado por este utilizador, e qualquer endereço IP subsequente a partir do qual ele tente editar',
 	'crosswikiblock-noemail'        => 'Impedir utilizador de enviar email',
 	'crosswikiunblock'              => 'Desbloquear utilizador noutro wiki',
+	'crosswikiunblock-header'       => 'Esta página permite desbloquear um utilizador noutro wiki.
+Por favor, verifique se tem permissão para agir neste wiki e as suas acções respeitam todas as políticas.',
 	'crosswikiunblock-user'         => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason'       => 'Motivo:',
 	'crosswikiunblock-submit'       => 'Desbloquear este utilizador',
@@ -1165,5 +1171,13 @@ $messages['vi'] = array(
 	'crosswikiblock-autoblock'      => 'Tự động cấm các địa chỉ IP mà thành viên này sử dụng',
 	'crosswikiunblock-reason'       => 'Lý do:',
 	'crosswikiblock-alreadyblocked' => '“$3” đã bị cấm rồi.',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'crosswikiblock-reason'   => 'Kod:',
+	'crosswikiunblock-reason' => 'Kod:',
 );
 

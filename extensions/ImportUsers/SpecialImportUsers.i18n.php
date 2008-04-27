@@ -262,6 +262,13 @@ $messages['hi'] = array(
 	'importusers-realname'                => 'असली नाम',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'importusers-uploadfile' => 'Karga file',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -141,6 +141,14 @@ $messages['hi'] = array(
 	'randomincategory-submit'  => 'जायें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'randomincategory-toolbox' => 'Lagpat nga Panid',
+	'randomincategory-submit'  => 'Lakat',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -340,14 +348,15 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author M.M.S.
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'randomincategory'         => 'Slump sida i kategori',
-	'randomincategory-toolbox' => 'Slumpsida',
-	'randomincategory-label'   => 'Kategori:',
-	'randomincategory-submit'  => 'Gå',
+	'randomincategory'            => 'Slump sida i kategori',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Specialsida]] för att få en slumpsida från en kategori',
+	'randomincategory-toolbox'    => 'Slumpsida',
+	'randomincategory-nocategory' => 'Kategorin $1 hittades inte, eller är tom',
+	'randomincategory-label'      => 'Kategori:',
+	'randomincategory-submit'     => 'Gå',
 );
 
 /** Telugu (తెలుగు)

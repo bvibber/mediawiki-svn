@@ -204,17 +204,19 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'authorprotect'           => 'Reksa kaca saka non-pangripta',
-	'authorprotect-desc'      => 'Marengaké pangripta sawijining kaca ngreksa saka panganggo liyané',
-	'authorprotect-notauthor' => 'Panjenengan dudu pangripta kaca iki',
-	'authorprotect-confirm'   => 'Reksa',
-	'authorprotect-edit'      => 'Watesana panyuntingan kanggo para pangripta waé',
-	'authorprotect-move'      => 'Watesana pangalihan kaca kanggo para pangripta',
-	'authorprotect-expiry'    => 'Wektu kadaluwarsa',
-	'authorprotect-reason'    => 'Alesan',
-	'authorprotect-intro'     => 'Enggonen formulir iki kanggo ngunci kaca iki saka non-pangripta',
-	'authorprotect-success'   => 'Pangreksané sida kasil!',
-	'authorprotect-failure'   => 'Pangreksané ora kasil',
+	'authorprotect'            => 'Reksa kaca saka non-pangripta',
+	'authorprotect-desc'       => 'Marengaké pangripta sawijining kaca ngreksa saka panganggo liyané',
+	'authorprotect-notauthor'  => 'Panjenengan dudu pangripta kaca iki',
+	'authorprotect-confirm'    => 'Reksa',
+	'authorprotect-edit'       => 'Watesana panyuntingan kanggo para pangripta waé',
+	'authorprotect-move'       => 'Watesana pangalihan kaca kanggo para pangripta',
+	'authorprotect-expiry'     => 'Wektu kadaluwarsa',
+	'authorprotect-reason'     => 'Alesan',
+	'authorprotect-intro'      => 'Enggonen formulir iki kanggo ngunci kaca iki saka non-pangripta',
+	'authorprotect-success'    => 'Pangreksané sida kasil!',
+	'authorprotect-failure'    => 'Pangreksané ora kasil',
+	'protect-level-author'     => 'Reksa saka non-pangripta',
+	'restriction-level-author' => 'Direksa-pangripta',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -487,5 +489,12 @@ $messages['vi'] = array(
 	'authorprotect-failure'    => 'Không khóa được',
 	'protect-level-author'     => 'Khóa đối với những người không phải tác giả',
 	'restriction-level-author' => 'Khóa cho mức tác giả',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'authorprotect-reason' => 'Kod',
 );
 

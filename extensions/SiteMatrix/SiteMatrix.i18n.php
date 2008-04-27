@@ -945,12 +945,15 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'sitematrix'           => 'Викимедиа бырайыактарын испииһэгэ',
+	'sitematrix-summary'   => 'Бу анал сирэйгэ Wikimedia пуондатын бырайыактара тиһиллибиттэр.',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|Викимедиа бырайыактарын испииһэгин]] көрдөрөр',
 	'sitematrix-language'  => 'Тыла',
 	'sitematrix-project'   => 'Бырайыак аата, бырайыак ыккардынааҕы ыйынньык уонна интервики',
 	'sitematrix-others'    => '«Викимедиа» атын бырайыактара',
 	'sitematrix-total'     => "'''Уопсай ахсаана: $1'''",
 	'sitematrix-sitetotal' => 'Барыта',
+	'sitematrix-private'   => 'приватнай/чааһынай',
+	'sitematrix-fishbowl'  => 'көннөрүү хааччахтаммыт',
 );
 
 /** Slovak (Slovenčina)
@@ -1056,7 +1059,7 @@ $messages['tet'] = array(
 	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1068,6 +1071,8 @@ $messages['tg-cyrl'] = array(
 	'sitematrix-others'    => 'Дигар лоиҳаҳои Викимедиа',
 	'sitematrix-total'     => "'''Ҷамъи кул: $1'''",
 	'sitematrix-sitetotal' => 'Кул',
+	'sitematrix-private'   => 'шахсӣ',
+	'sitematrix-fishbowl'  => 'вироишкунӣ маҳдуд шудааст',
 );
 
 /** Tonga (faka-Tonga)
@@ -1134,6 +1139,7 @@ $messages['vi'] = array(
 	'sitematrix-others'    => 'Các dự án khác của Wikimedia',
 	'sitematrix-total'     => "'''Tổng cộng: $1'''",
 	'sitematrix-sitetotal' => 'Tổng cộng',
+	'sitematrix-fishbowl'  => 'hạn chế sửa đổi',
 );
 
 /** Volapük (Volapük)

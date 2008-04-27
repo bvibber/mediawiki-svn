@@ -167,6 +167,15 @@ $messages['cv'] = array(
 	'createarticle' => 'Çĕнĕ статья çыр',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'tryexact'       => 'Chwilio am yr union gymal',
+	'searchfulltext' => "Chwilio'r testun cyfan",
+	'createarticle'  => "Creu'r dudalen",
+);
+
 $messages['da'] = array(
 	'tryexact'       => 'Forsøg eksakt søgning:',
 	'searchfulltext' => 'Gennemsøge hele teksten',
@@ -712,6 +721,13 @@ $messages['no'] = array(
 	'tryexact'                => 'Prøv nøyaktig treff',
 	'searchfulltext'          => 'Søk full tekst',
 	'createarticle'           => 'Opprett side',
+);
+
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'searchfulltext' => 'Sercha kompleti texte',
 );
 
 /** Occitan (Occitan)

@@ -265,6 +265,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'pageby-desc'         => 'Mostra contribuidores dentro de uma página wiki usando a marca <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Página criada por $1, $2',
+	'pageby-last'         => '<a href="$3">Modificado</a> pela última vez por $1, $2',
 	'pageby-contributors' => 'Contribuidores:',
 	'pageby-anon'         => '<i>anónimo</i>',
 );

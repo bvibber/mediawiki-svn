@@ -239,6 +239,7 @@ $messages['pt'] = array(
 	'postcomment_notloggedin'      => 'Você não se encontra autenticado.',
 	'postcomment_youareloggedinas' => 'Você está autenticado como $1',
 	'postcomment_leavemessagefor'  => 'Deixe uma mensagem para $1',
+	'postcomment_on'               => 'Em',
 	'postcomment_said'             => 'disse',
 	'postcomment_invalidrequest'   => 'Pedido inválido.',
 	'postcomment_replyto'          => 'Resposta a $1',

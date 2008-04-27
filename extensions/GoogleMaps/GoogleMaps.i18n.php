@@ -81,6 +81,14 @@ Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explore
 	'gm-mars'                      => 'Mars',
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$wgGoogleMapsMessages['krl'] = array(
+	'gm-zoom-control' => 'Valličy',
+	'gm-search'       => 'Ečindy',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
@@ -1071,6 +1079,14 @@ $wgGoogleMapsMessages['hi'] = array(
 	'gm-earth'                     => 'पृथ्वी',
 	'gm-moon'                      => 'चाँद',
 	'gm-mars'                      => 'मंगल',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['hil'] = array(
+	'gm-zoom-control' => 'Nabigayson',
+	'gm-search'       => 'Pangita-a',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2637,6 +2653,18 @@ $wgGoogleMapsMessages['vi'] = array(
 	'gm-earth'                     => 'Trái đất',
 	'gm-moon'                      => 'Mặt trăng',
 	'gm-mars'                      => 'Sao Hỏa',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$wgGoogleMapsMessages['vo'] = array(
+	'gm-balloon-title' => 'Tiäd:',
+	'gm-map'           => 'Kaed',
+	'gm-yes'           => 'Si',
+	'gm-no'            => 'Nö',
+	'gm-earth'         => 'Tal',
+	'gm-moon'          => 'Mun',
 );
 
 /** Cantonese (廣東話)

@@ -154,10 +154,12 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author 555
  */
 $messages['pt'] = array(
-	'purge' => 'purgar',
+	'purge'      => 'purgar',
+	'purge-desc' => 'Adiciona uma pestana para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anónimos, permitindo um purga rápida da cache',
 );
 
 /** Russian (Русский)
@@ -181,6 +183,14 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'purge' => 'Cache loosmoakje',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'purge'      => 'rensa',
+	'purge-desc' => 'Lägger till en flik för rensning på alla vanliga sidor, och slår av rensning för anonyma användare, vilket gör att cachen kan uppdateras snabbare',
 );
 
 /** Thai (ไทย)

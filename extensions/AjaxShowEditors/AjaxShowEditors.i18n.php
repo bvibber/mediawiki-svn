@@ -735,11 +735,13 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'ajax-se-title'   => 'Đang sửa đổi:',
-	'ajax-se-pending' => 'chờ làm tươi ... (nhấn vào hộp này hoặc bắt đầu sửa đổi)',
-	'ajax-se-idling'  => '($1 giây trước)',
+	'ajax-se-title'            => 'Đang sửa đổi:',
+	'ajax-se-pending'          => 'chờ làm tươi ... (nhấn vào hộp này hoặc bắt đầu sửa đổi)',
+	'ajax-se-idling'           => '($1 giây trước)',
+	'ajax-se-pagedoesnotexist' => 'trang không tồn tại',
 );
 
 /** Volapük (Volapük)

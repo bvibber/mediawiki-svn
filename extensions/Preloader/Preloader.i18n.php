@@ -84,6 +84,13 @@ $messages['sk'] = array(
 	'preloader-desc' => 'Poskytuje prispôsobiteľný šablónový text pre nové stránky na báze menných priestorov',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'preloader-desc' => 'Ger en egendefinierad förhandsladdad text för nya sidor',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

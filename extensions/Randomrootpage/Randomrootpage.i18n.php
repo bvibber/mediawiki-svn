@@ -118,6 +118,14 @@ $messages['sk'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Špeciálna stránka]], ktorá zobrazuje náhodnú koreňovú stránku',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'randomrootpage'      => 'Slumprotsida',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialsida]] som hämtar en slumpmässig rotsida',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */

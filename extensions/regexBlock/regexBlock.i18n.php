@@ -393,6 +393,13 @@ $messages['hi'] = array(
 	'regexblock-view-time'            => '$1 पर',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'regexblock-view-go' => 'Lakat',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales

@@ -40,6 +40,13 @@ $4",
 	'todo-form-submit'      => 'Submit query',
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$messages['krl'] = array(
+	'todo-list-cancel' => 'Keskevytä',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

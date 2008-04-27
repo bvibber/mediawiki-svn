@@ -413,6 +413,13 @@ $messages['hi'] = array(
 	'changeauthor-logpagename'          => 'लेखक बदलाव सूची',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'changeauthor-pagenameform-go' => 'Lakat',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
@@ -1067,8 +1074,14 @@ $messages['uk'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'changeauthor-pagenameform-go' => 'Tìm kiếm',
-	'changeauthor-comment'         => 'Lý do:',
+	'changeauthor-search-box'        => 'Tìm kiếm phiên bản',
+	'changeauthor-pagename-or-revid' => 'Tên trang hay số phiên bản:',
+	'changeauthor-pagenameform-go'   => 'Tìm kiếm',
+	'changeauthor-comment'           => 'Lý do:',
+	'changeauthor-invalid-username'  => 'Tên người dùng “$1” không hợp lệ.',
+	'changeauthor-nosuchuser'        => 'Không có người dùng nào với tên “$1”.',
+	'changeauthor-revview'           => 'Phiên bản số $1 của $2',
+	'changeauthor-nosuchtitle'       => 'Không có trang nào với tên “$1”.',
 );
 
 /** Volapük (Volapük)

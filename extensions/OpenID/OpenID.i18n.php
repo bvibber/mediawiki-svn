@@ -844,7 +844,9 @@ $messages['pt'] = array(
 	'openidcancel'                  => 'Verificação cancelada',
 	'openidfailure'                 => 'Verificação falhou',
 	'openidsuccess'                 => 'Verificação com sucesso',
+	'openidusernameprefix'          => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
+	'openidnopolicy'                => 'O sítio não especificou uma política de privacidade.',
 	'openidoptional'                => 'Opcional',
 	'openidrequired'                => 'Requerido',
 	'openidfullname'                => 'Nome completo',
@@ -856,6 +858,7 @@ $messages['pt'] = array(
 	'openidchooseexisting'          => 'Uma conta existente neste wiki:',
 	'openidchoosepassword'          => 'palavra-chave:',
 	'openidconvertsuccess'          => 'Convertido para OpenID com sucesso',
+	'openidconvertsuccesstext'      => 'Você converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext'        => 'Esse já é o seu OpenID.',
 	'openidconvertothertext'        => 'Esse é o OpenID de outra pessoa.',
 	'openidnousername'              => 'Nenhum nome de utilizador especificado.',
@@ -1172,5 +1175,12 @@ $messages['vi'] = array(
 	'openidchooseauto'              => 'Tên tự động ($1)',
 	'openidchoosemanual'            => 'Tên khác:',
 	'openidloginlabel'              => 'Địa chỉ OpenID',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'openidlanguage' => 'Pük',
 );
 

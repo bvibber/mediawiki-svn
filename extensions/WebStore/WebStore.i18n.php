@@ -837,6 +837,8 @@ $1',
  */
 $messages['sv'] = array(
 	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
+	'webstore_404'          => 'Filen hittades inte.',
+	'webstore_php_warning'  => 'PHP-varning: $1',
 );
 
 /** Telugu (తెలుగు)

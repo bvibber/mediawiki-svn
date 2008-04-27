@@ -852,3 +852,11 @@ Có thể coi video này [http://www.youtube.com/watch?v=$1 tại đây].',
 	'youtubeauthsub_jserror_nodesc'      => 'Xin hãy miêu tả video.',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'youtubeauthsub_title'    => 'Tiäd',
+	'youtubeauthsub_category' => 'Klad',
+);
+

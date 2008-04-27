@@ -586,6 +586,14 @@ $messages['vi'] = array(
 	'dt_xml_freetext'             => 'Văn bản Tự do',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'dt_viewxml_categories' => 'Klads',
+	'dt_xml_name'           => 'Nem',
+);
+
 /** ‪中文(台灣)‬ (‪中文(台灣)‬)
  * @author Roc michael
  */

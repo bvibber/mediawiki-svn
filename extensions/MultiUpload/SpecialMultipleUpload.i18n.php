@@ -26,6 +26,13 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 	'multiupload-toolbox'              => "Upload multiple files",
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$messages['krl'] = array(
+	'multipleupload' => 'Panna fajlit',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author SPQRobin

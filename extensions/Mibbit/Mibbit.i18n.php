@@ -53,6 +53,7 @@ $messages['ca'] = array(
 Per a connectar-vos-hi simplement premeu el botó «Connect»
 Si esteu identificat amb un compte, el vostre nom d'usuari serà l'àlies per defecte.
 Els usuaris anònims en tindran un d'automàtic, però els podeu canviar.",
+	'right-mibbit'  => 'Poder usar el xat Mibbit',
 );
 
 /** Czech (Česky)
@@ -88,8 +89,8 @@ Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert we
 );
 
 /** French (Français)
- * @author Grondin
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'mibbit'        => 'Clavardage Mibbit',
@@ -98,6 +99,7 @@ $messages['fr'] = array(
 Pour commencer, il suffit de cliquer le bouton « Connect ».
 Si vous êtes connecté, votre pseudo sera déjà instruit.
 Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement, mais qui peut être modifié.',
+	'right-mibbit'  => "Autorise l'utilisation du Chat Mibbit",
 );
 
 /** Galician (Galego)
@@ -142,6 +144,7 @@ $messages['mr'] = array(
 संपर्क साधण्यासाठी "संपर्क" कळीवर टिचकी द्या.
 जर तुम्ही प्रवेश केलेला असेल तर तुमचे टोपणनाव आपोआप दिले जाईल.
 अनामिक सदस्यांसाठी एक अविशिष्ट नाव दिले जाईल, जे बदलता येईल.',
+	'right-mibbit'  => 'मीब्बीट गप्पा-टप्पा वापरण्याची परवानगी',
 );
 
 /** Dutch (Nederlands)
@@ -199,8 +202,9 @@ Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'mibbit'      => 'Chat Mibbit',
-	'mibbit-desc' => 'Adiciona uma [[{{ns:Special}}:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
+	'mibbit'       => 'Chat Mibbit',
+	'mibbit-desc'  => 'Adiciona uma [[{{ns:Special}}:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
+	'right-mibbit' => 'Autorizado a usar o chat Mibbit',
 );
 
 /** Russian (Русский)
@@ -226,6 +230,7 @@ $messages['sk'] = array(
 Pripojíte sa jednoducho stlačením talčidla „Pripojiť“.
 Ak ste prihlásený, vaše používateľské meno sa vyplní automaticky.
 Anonymným používateľom sa meno vygeneruje automaticky, ale je možné ho zmeniť.',
+	'right-mibbit'  => 'Používať Mibbit chat',
 );
 
 /** Swedish (Svenska)

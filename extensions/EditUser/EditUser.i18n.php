@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'edituser-exempt' => 'The specified user cannot be edited',
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$messages['krl'] = array(
+	'edituser-dosearch' => 'Ečindy',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -187,6 +194,13 @@ $messages['hi'] = array(
 	'edituser-dosearch' => 'खोजें',
 	'edituser-nouser'   => 'दिया हुआ सदस्य अस्तित्वमें नहीं हैं',
 	'edituser-exempt'   => 'दिये हुए सदस्यको संपादित नहीं कर सकतें',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'edituser-dosearch' => 'Pangita-a',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -272,6 +272,18 @@ $messages['sr-ec'] = array(
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'smoothgallery'                    => 'SmoothGalleri',
+	'smoothgallery-desc'               => 'Låter användare skapa gallerier med bilder som blivit uppladdade.
+Innehåller de flesta av SmoothGalleris alternativ',
+	'smoothgallery-title'              => 'SmoothGalleri',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGalleri: $1',
+	'smoothgallery-error'              => '<b>Fel med SmoothGalleri:</b>',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -118,6 +118,13 @@ It might be lost.
 Please contact the server operator or administrator.",
 );
 
+/** Karelian (Karjala)
+ * @author Flrn
+ */
+$wdMessages['krl'] = array(
+	'ow_LinkAttributeValues' => 'Viippaukset',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -877,6 +884,7 @@ $wdMessages['fi'] = array(
 	'ow_TranslatedText'                => 'Käännetty teksti',
 	'ow_TranslatedTextAttributeValue'  => 'Teksti',
 	'ow_TranslatedTextAttributeValues' => 'Käännettävä teksti',
+	'ow_Property'                      => 'Ominaisuus',
 );
 
 /** French (Français)

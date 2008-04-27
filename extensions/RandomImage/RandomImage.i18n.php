@@ -81,6 +81,13 @@ $messages['pl'] = array(
 	'randomimage-desc' => 'Zwraca losowy plik z użyciem znacznika <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'randomimage-desc' => 'Providencia um selector de media aleatória usando <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */
@@ -93,6 +100,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'randomimage-desc' => 'Poskytuje náhodný výber multimediálnych súborov pomocou značky <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'randomimage-desc' => 'Ger en tillfällig mediafil genom att använda <tt>&lt;randomimage /&gt;</tt>',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
