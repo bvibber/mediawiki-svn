@@ -13,7 +13,7 @@ $messages['en'] = array(
 	'editsubpages-desc' => "Allows sysops to unlock a page and all subpages of that page for anonymous editing via [[MediaWiki:Unlockedpages]]",
 	'unlockedpages'     => ' #<!-- leave this line alone --><pre>
 # Put pages you want to unlock below using
-# * pagename
+# * Pagename
 # Unlocked pages must begin with a bullet to be counted,
 # everything else is considered a comment
 # Pagenames may be [[links]] and are case-sensitive
@@ -27,6 +27,21 @@ $messages['en'] = array(
  */
 $messages['bg'] = array(
 	'editsubpages-desc' => 'Позволява на администраторите чрез [[MediaWiki:Unlockedpages]] да свалят защитата на страница и всички нейни подстраници за анонимно редактиране',
+);
+
+/** German (Deutsch)
+ * @author Flominator
+ */
+$messages['de'] = array(
+	'editsubpages-desc' => "Gibt den Administratoren die M�glichkeit, eine Seite und deren Unterseiten f�r das unangemeldete Bearbeiten �ber [[MediaWiki:Unlockedpages]] freizuschalten",
+	'unlockedpages'     => ' #<!-- Lassen Sie diese Zeile wie sie ist --><pre>
+# Listen Sie freigegebene Seiten mittels
+# * Seitenname
+# Zu entsperrende Seiten m�ssen mit einem * gelistet werden.
+# Alle anderen Eintr�ge werden als Kommentar gewertet.
+# Diskussionsseiten werden ebenfalls entsperrt.
+# Mehr Informationen: http://www.mediawiki.org/wiki/Extension:EditSubpages 
+ #</pre><!-- Lassen Sie diese Zeile wie sie ist -->',
 );
 
 /** Finnish (Suomi)

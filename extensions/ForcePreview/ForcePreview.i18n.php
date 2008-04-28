@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'forcepreview-desc' => 'إجبار على العرض المسبق للمستخدمين الذين لا يمتلكون الصلاحيات اللازمة',
 );
 
+/** German (Deutsch)
+ * @author sokai
+ */
+$messages['de'] = array( 
+	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview-desc' => 'Vorschau f�r unpriviligierte Benutzer forcieren',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
