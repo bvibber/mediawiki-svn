@@ -6,7 +6,7 @@
 
 $messages = array();
 
-/* English
+/** English
  @author Ryan Schmidt
  */
 $messages['en'] = array(
@@ -27,7 +27,7 @@ $messages['ar'] = array(
  */
 $messages['de'] = array( 
 	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
-	'forcepreview-desc' => 'Vorschau f�r unpriviligierte Benutzer forcieren',
+	'forcepreview-desc' => 'Vorschau für unpriviligierte Benutzer erzwingen',
 );
 
 /** Esperanto (Esperanto)
@@ -181,4 +181,5 @@ $messages['vi'] = array(
 Lưu trang (sau khi xem thử)',
 	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
 );
+
 

@@ -6,7 +6,7 @@
 
 $messages = array();
 
-/* English
+/** English
  @author Ryan Schmidt
  */
 $messages['en'] = array(
@@ -33,15 +33,16 @@ $messages['bg'] = array(
  * @author Flominator
  */
 $messages['de'] = array(
-	'editsubpages-desc' => "Gibt den Administratoren die M�glichkeit, eine Seite und deren Unterseiten f�r das unangemeldete Bearbeiten �ber [[MediaWiki:Unlockedpages]] freizuschalten",
-	'unlockedpages'     => ' #<!-- Lassen Sie diese Zeile wie sie ist --><pre>
-# Listen Sie freigegebene Seiten mittels
+	'editsubpages-desc' => "Gibt den Administratoren die Möglichkeit, eine Seite und deren Unterseiten für das unangemeldete Bearbeiten über [[MediaWiki:Unlockedpages]] freizuschalten",
+	'unlockedpages'     => ' #<!-- Diese Zeile nicht verändern --><pre>
+# Freigegebene Seiten mittels
 # * Seitenname
-# Zu entsperrende Seiten m�ssen mit einem * gelistet werden.
-# Alle anderen Eintr�ge werden als Kommentar gewertet.
+# auflisten
+# Zu entsperrende Seiten müssen mit einem * gelistet werden.
+# Alle anderen Einträge werden als Kommentar gewertet.
 # Diskussionsseiten werden ebenfalls entsperrt.
 # Mehr Informationen: http://www.mediawiki.org/wiki/Extension:EditSubpages 
- #</pre><!-- Lassen Sie diese Zeile wie sie ist -->',
+ #</pre><!-- Diese Zeile nicht verändern -->',
 );
 
 /** Finnish (Suomi)
@@ -265,4 +266,5 @@ $messages['vi'] = array(
 # Xem http://www.mediawiki.org/wiki/Extension:EditSubpages để có thêm thông tin
   #</pre><!-- đừng sửa vào dòng này -->',
 );
+
 
