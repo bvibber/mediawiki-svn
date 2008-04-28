@@ -248,6 +248,9 @@ $messages['de'] = array(
 	'configure-section-htcp'          => 'HTCP multicast',
 	'configure-section-misc'          => 'Verschiedenes',
 	'configure-setting-not-available' => 'Diese Einstellung ist in dieser Version von MediaWiki nicht verfügbar',
+
+	'right-configure'                 => 'Wiki einrichten',
+	'right-configure-all'             => 'Alle Einstellungen im Wiki vornehmen',
 );
 
 /** Esperanto (Esperanto)

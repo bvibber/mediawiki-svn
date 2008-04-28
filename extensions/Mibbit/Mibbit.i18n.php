@@ -75,6 +75,7 @@ $messages['de'] = array(
 Um die Verbindung herzustellen, klicke auf die „Connect“-Schaltfläche.
 Wenn du angemeldet bist, wird dein Nickname automatisch vorbelegt.
 Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert werden.',
+	'right-mibbit'  => 'Benutzer des Mibbit-Chats',
 );
 
 /** German - formal address (Deutsch - förmliche Anrede)
