@@ -26,6 +26,7 @@ Please choose another name.',
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'The following {{PLURAL:$1|line|lines}} in the username blacklist {{PLURAL:$1|is|are}} invalid; please correct {{PLURAL:$1|it|them}} before saving:',
+	'right-uboverride'                => 'Override the username blacklist',
 );
 
 /** Aragonese (Aragonés)
@@ -223,6 +224,7 @@ $messages['de'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
+	'right-uboverride'                => 'Außer Kraft setzen der Liste unerwünschter Benutzernamen',
 );
 
 /** German - formal address (Deutsch - formale Anrede)
