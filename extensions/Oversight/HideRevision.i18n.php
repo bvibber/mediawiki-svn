@@ -15,6 +15,8 @@ $messages['en'] = array(
 	'group-oversight'        => 'Oversighters',
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight'    => '{{ns:project}}:Oversight',
+	'right-hiderevision'     => 'Review and restore revisions hidden from Sysops',
+	'right-oversight'        => 'View a previously hidden revision',
 
 	// Empty form
 	'hiderevision-prompt'   => 'Revision number to remove:',
@@ -50,7 +52,7 @@ Revert this change first.',
 
 	// Logging
 	'oversight-log-hiderev' => 'removed an edit from $1',
-	
+
 	// Oversight review page
 	'oversight'            => 'Oversight',
 	'oversight-view'       => 'details',
@@ -59,13 +61,6 @@ Revert this change first.',
 	'oversight-hidden'     => 'Hidden revision',
 	'oversight-header'     => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
-);
-
-/** Message documentation (Message documentation)
- * @author Lejonel
- */
-$messages['qqq'] = array(
-	'oversight' => 'Oversight extension. The name of the page Special:Oversight, used in the list of special pages and at the top of Special:Oversight.',
 );
 
 /** Aragonese (Aragonés)
@@ -348,6 +343,8 @@ $messages['de'] = array(
 	'group-oversight'             => 'Oversighter',
 	'group-oversight-member'      => 'Oversighter ',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
+	'right-hiderevision'          => 'Entfernen und wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
+	'right-oversight'             => 'Ansehen einer zuvor verborgenen Version',
 	'hiderevision-prompt'         => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue'       => 'Weiter',
 	'hiderevision-text'           => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
