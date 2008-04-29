@@ -669,6 +669,7 @@ $messages['he'] = array(
 	'group-oversight'             => 'מסתירים',
 	'group-oversight-member'      => 'מסתיר',
 	'grouppage-oversight'         => '{{ns:project}}:מסתיר',
+	'right-oversight'             => 'צפייה בגרסה שהוסתרה',
 	'hiderevision-prompt'         => 'מספר גרסה למחיקה:',
 	'hiderevision-continue'       => 'המשך',
 	'hiderevision-text'           => "יש להשתמש באפשרות זו '''אך ורק''' במקרים הבאים:
