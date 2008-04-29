@@ -23,14 +23,17 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
 );
 
+/** Dangerous if not configured properly. */
 # Sysop SQL queries
 #   The sql user shouldn't have too many rights other the database, restrict
 #   it to SELECT only on 'page', 'revision' and 'text' tables for example
 #
-/** Dangerous if not configured properly. */
-$wgAllowSysopQueries = true;
+# Copy & paste the following three line into your localSettings.php and replace 'sqluser' and 'sqlpass' with the real values:
 #$wgDBsqluser = 'sqluser';
 #$wgDBsqlpassword = 'sqlpass';
+#$wgGroupPermissions['sysop']['asksql'] = true;
+
+$wgAllowSysopQueries = true;
 $wgSqlLogFile = "{$wgUploadDirectory}/sqllog_mFhyRe6";
 
 $dir = dirname(__FILE__) . '/';

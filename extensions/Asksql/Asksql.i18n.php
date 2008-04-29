@@ -22,6 +22,7 @@ This can often add considerable load to the server, so please use this function 
 	'querybtn'        => 'Submit query',
 	'selectonly'      => 'Only read-only queries are allowed.',
 	'querysuccessful' => 'Query successful',
+	'right-asksql'    => 'Make SQL queries',
 );
 
 /** Old English (Anglo Saxon)
@@ -168,6 +169,7 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutze die Funktion 
 	'querybtn'        => 'Abfrage durchführen',
 	'selectonly'      => 'Es sind nur reine Lesezugriffe erlaubt.',
 	'querysuccessful' => 'Abfrage erfolgreich',
+	'right-asksql'    => 'Ausführung von SQL-Abfragen',
 );
 
 /** German - formal adress (Deutsch - förmlich)
