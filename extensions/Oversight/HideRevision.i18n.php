@@ -15,7 +15,6 @@ $messages['en'] = array(
 	'group-oversight'        => 'Oversighters',
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight'    => '{{ns:project}}:Oversight',
-	'right-hiderevision'     => 'Review and restore revisions hidden from Sysops',
 	'right-oversight'        => 'View a previously hidden revision',
 
 	// Empty form
@@ -343,7 +342,6 @@ $messages['de'] = array(
 	'group-oversight'             => 'Oversighter',
 	'group-oversight-member'      => 'Oversighter ',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
-	'right-hiderevision'          => 'Entfernen und wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
 	'right-oversight'             => 'Ansehen einer zuvor verborgenen Version',
 	'hiderevision-prompt'         => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue'       => 'Weiter',
