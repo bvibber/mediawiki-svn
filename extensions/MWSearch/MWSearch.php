@@ -39,15 +39,22 @@
 # - it's in the 'lucene-search' and 'mwsearch' modules in CVS.
 ##########
 
-# If to show related links (if available) below search results
-$wgLuceneUseRelated = true;
 
 # Back-end version (override before including MWSearch.php)
 if( !isset($wgLuceneSearchVersion) )
 	$wgLuceneSearchVersion = 2;
+	
+# If to show related links (if available) below search results
+if( !isset($wgLuceneUseRelated) )
+	$wgLuceneUseRelated = false;
+
+# If to use lucene as a prefix search backend
+if( !isset($wgEnableLucenePrefixSearch) )
+	$wgEnableLucenePrefixSearch = false;
+	
 # For how long (in seconds) to cache lucene results, off by default (0)
 # NOTE: caching is typically inefficient for queries, with cache 
-#       hit rates way below 1% even for very long expiry times
+# hit rates way below 1% even for very long expiry times
 if( !isset($wgLuceneSearchCacheExpiry) )
 	$wgLuceneSearchCacheExpiry = 0;
 
@@ -64,7 +71,7 @@ $wgExtensionCredits['other'][] = array(
 );
 $wgExtensionMessagesFiles['MWSearch'] = dirname(__FILE__) . '/MWSearch.i18n.php';
 
-if($wgLuceneSearchVersion >= 2.1)
+if($wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch)
 	$wgHooks['PrefixSearchBackend'][] = 'LuceneSearch::prefixSearch';
 
 function wfLuceneSearch() {
@@ -676,7 +683,7 @@ class LuceneSearchSet extends SearchResultSet {
 	function termMatches() {		
 		$resq = preg_replace( "/\\[.*?\\]:/", " ", $this->mQuery ); # generic prefixes
 		$resq = preg_replace( "/all:/", " ", $resq ); 
-		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+]+/", " ", $resq ) );
+		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+\\-_@!?%&*=\\|:;><,.\\/]+/", " ", $resq ) );
 		$terms = array_map( array( &$this, 'regexQuote' ),
 			explode( ' ', $resq ) );
 		return $terms;
