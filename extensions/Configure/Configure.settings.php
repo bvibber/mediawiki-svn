@@ -63,7 +63,7 @@ $settings = array(
 		),
 	),
 	'email' => array(
-		'enotif' => array(
+		'email' => array(
 			'wgEmailAuthentication' => 'bool',
 			'wgEmergencyContact' => 'text',
 			'wgEnableEmail' => 'bool',
