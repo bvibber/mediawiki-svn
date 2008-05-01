@@ -1,0 +1,26 @@
+This file lists changes on this extension.
+Localisation updates are done on betawiki and aren't listed here.
+
+0.2.0 - 1 May 2008
+  Rewrote the part that generate the form, will now use $settings variable that
+  is defined Configure.settings.php to put the variables into groups.
+
+0.1.5 - 26 April 2008
+  Now check that the directory used to store the settings is writable.
+
+0.1.4 - 23 April 2008
+  Now support $wgImageLimits.
+
+0.1.3 - 22 April 2008
+  Now support $wgNamespaceProtection.
+
+0.1.2 - 21 April 2008
+  Now support $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups,
+  $wgGroupsAddToSelf and $wgGroupsRemoveFromSelf.
+
+0.1.1 - 20 April 2008
+  Now treats an empty an empty text area as an empty array, was breaking some
+  settings.
+
+0.1.0 - 18 April 2008
+  Initial version of the extension.

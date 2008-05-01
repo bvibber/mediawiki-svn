@@ -43,13 +43,13 @@ This right allow to change some specific settings, like paths, database settings
 (all what need also "external" changes, i.e. server rewrite rules, squid
 configuration, ...) but also $wgGroupPermission.
 
-Even this extension allows you configure about the whole settings, it's
-recommanded to keep the original LocalSettings.php file. You can simply add the
-extension after the default settings. If you don't want a setting to be
-modified, simply redeclare it after calling efConfigureSetup(), it will still be
-customizable in Special:Configure but changes won't have any effect.
+Although this extension allows you to configure all settings, it's recommended
+to keep the original LocalSettings.php file. You can simply add the extension
+after the default settings. If you don't want a setting to be modified, simply
+redeclare it after calling efConfigureSetup(), it will still be customizable in
+Special:Configure but changes won't have any effect.
 
-This extension use an extended class of SiteConfiguration, for "normal"
+This extension uses an extended class of SiteConfiguration, for "normal"
 installation, it isn't useful, but for some wiki farms, it will allow to
 multiple with only one copy of the software. To change the configuration you
 want to load, pass an argument to efConfigureSetup(). A user with

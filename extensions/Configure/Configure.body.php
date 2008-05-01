@@ -11,13 +11,12 @@ class SpecialConfigure extends SpecialPage {
 	protected static $settings, $restricted, $arrayDefs, $settingsVersion;
 	protected $conf;
 
+	// Static methods
+
 	/**
-	 * Constructor
 	 * Load messages and initialise static variables
 	 */
-	public function __construct() {
-		efConfigureLoadMessages();
-		parent::__construct( 'Configure', 'configure' );
+	protected static function loadSettingsDefs(){
 		if( !self::$initialized ){
 			self::$initialized = true;
 			require( dirname( __FILE__ ) . '/Configure.settings.php' );
@@ -26,6 +25,69 @@ class SpecialConfigure extends SpecialPage {
 			self::$arrayDefs = $arrayDefs;
 			self::$settingsVersion = $settingsVersion;
 		}
+	}
+
+	/**
+	 * Return true if the setting is available in this version of MediaWiki
+	 *
+	 * @param string $setting setting name
+	 * @return bool
+	 */
+	protected static function isSettingAvailable( $setting ){
+		global $wgVersion;
+		self::loadSettingsDefs();
+		if( !array_key_exists( $setting, self::getAllSettings() ) )
+			return false;
+		if( !array_key_exists( $setting, self::$settingsVersion ) )
+			return true;
+		foreach( self::$settingsVersion[$setting] as $test ){
+			list( $ver, $comp ) = $test;
+			if( !version_compare( $wgVersion, $ver, $comp ) )
+				return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Get a simple array with all config settings
+	 *
+	 * @return array
+	 */
+	protected static function getAllSettings(){
+		static $arr = null;
+		if( is_array( $arr ) && !empty( $arr ) )
+			return $arr;
+		self::loadSettingsDefs();
+		$arr = array();
+		foreach( self::$settings as $section ){
+			foreach( $section as $group ){
+				$arr = array_merge( $arr, $group );
+			}
+		}
+		return $arr;
+	}
+
+	/**
+	 * Get the type of a setting
+	 *
+	 * @param string $setting
+	 * @return mixed
+	 */
+	protected static function getSettingType( $setting ){
+		$settings = self::getAllSettings();
+		if( isset( $settings[$setting] ) )
+			return $settings[$setting];
+		else
+			return false;
+	}
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		efConfigureLoadMessages();
+		parent::__construct( 'Configure', 'configure' );
+		self::loadSettingsDefs();
 	}
 
 	/**
@@ -104,26 +166,6 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
-	 * Return true if the setting is available in this version of MediaWiki
-	 *
-	 * @param string $setting setting name
-	 * @return bool
-	 */
-	protected function isSettingAvailable( $setting ){
-		global $wgVersion;
-		if( !array_key_exists( $setting, self::$settings ) )
-			return false;
-		if( !array_key_exists( $setting, self::$settingsVersion ) )
-			return true;
-		foreach( self::$settingsVersion[$setting] as $test ){
-			list( $ver, $comp ) = $test;
-			if( !version_compare( $wgVersion, $ver, $comp ) )
-				return false;
-		}
-		return true;
-	}
-
-	/**
 	 * Submit the posted request
 	 */
 	protected function doSubmit(){
@@ -137,7 +179,7 @@ class SpecialConfigure extends SpecialPage {
 			}
 		}
 		$settings = array();
-		foreach( self::$settings as $name => $type ){
+		foreach( self::getAllSettings() as $name => $type ){
 			if( in_array( $name, self::$restricted ) && !$allowedRestricted ){
 				$settings[$name] = $this->getSettingValue( $name );
 				continue;
@@ -292,145 +334,7 @@ class SpecialConfigure extends SpecialPage {
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action ) ) . "\n" .
 			Xml::openElement( 'div', array( 'id' => 'preferences' ) ) . "\n" .
 
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-general', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildGeneralSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-db', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildDbSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-email', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildEmailSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-localization', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildLocalizationSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-debug', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildDebugSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-site', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildSiteSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-namespaces', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildNamespacesSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-skin', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildSkinSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-category', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildCategorySettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-cache', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildCacheSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-interwiki', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildInterwikiSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-access', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildAccessSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-rates', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildRateLimitsSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-proxy', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildProxySettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-squid', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildSquidSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-cookie', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildCookieSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-reduction', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildReductionSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-upload', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildUploadSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-images', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildImageSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-parser', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildParserSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-specialpages', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildSpecialPagesSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-users', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildUsersSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-feed', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildFeedSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-job', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildJobSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-extension', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildExtensionSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-copyright', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildCopyrightSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-htcp', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildHtcpSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
-
-			Xml::openElement( 'fieldset' ) . "\n" .
-			Xml::element( 'legend', null, wfMsgExt( 'configure-section-misc', array( 'parseinline' ) ) ) . "\n" .
-			$this->buildMiscSettings() .
-			Xml::closeElement( 'fieldset' ) . "\n" .
+			$this->buildAllSettings() . "\n" .
 
 			Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 			Xml::openElement( 'div', array() ) . "\n" .
@@ -465,19 +369,6 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
-	 * Build a beginning of table with a header if requested
-	 *
-	 * @param String $msg name of the message to display or null
-	 * @return String xhtml fragment
-	 */
-	protected function buildTableStart( $msg = null ){
-		$table = "<table>\n";
-		if( $msg !== null )
-			$table .= $this->buildTableHeading( $msg );
-		return $table;
-	}
-
-	/**
 	 * Like before but only for the header
 	 *
 	 * @param String $msg name of the message to display
@@ -491,17 +382,17 @@ class SpecialConfigure extends SpecialPage {
 	 * Build an input for $conf setting with $default as default value
 	 *
 	 * @param String $conf name of the setting
+	 * @param String $type type of the setting
 	 * @param String $default default value
 	 * @return String xhtml fragment
 	 */
-	protected function buildInput( $conf, $default ){
+	protected function buildInput( $conf, $type, $default ){
 		$allowed = true;
 		if( in_array( $conf, self::$restricted ) ){
 			global $wgUser;
 			if( !$wgUser->isAllowed( 'configure-all' ) )
 				$allowed = false;
 		}
-		$type = self::$settings[$conf];
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return htmlspecialchars( $default );
@@ -732,10 +623,11 @@ class SpecialConfigure extends SpecialPage {
 	 * @parm String $msg message name to display, use $conf if the message is
 	 *                   empty
 	 * @param String $conf name of the setting
+	 * @param String $type type of the setting
 	 * @param String $default default value
 	 * @return String xhtml fragment
 	 */
-	protected function buildTableRow( $msg, $conf, $default ){
+	protected function buildTableRow( $msg, $conf, $type, $default ){
 		global $wgContLang;
 
 		$align = array();
@@ -745,7 +637,7 @@ class SpecialConfigure extends SpecialPage {
 			$msgVal = "\$$conf";
 		$td1 = Xml::openElement( 'td', $align ) . $msgVal . '</td>';
 		if( $this->isSettingAvailable( $conf ) )
-			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $default ) . '</td>';
+			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $type, $default ) . '</td>';
 		else
 			$td2 = Xml::openElement( 'td', $align ) . wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
 
@@ -753,384 +645,25 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
-	 * Simple wrapper for self::buildTableRow()
+	 * Build the content of the form
 	 *
-	 * @param String $setting setting name
-	 * @return String xhtml fragment
+	 * @return xhtml
 	 */
-	protected function buildSimpleSetting( $setting ){
-		return $this->buildTableRow( 'configure-setting-' . $setting, $setting, $this->getSettingValue( $setting ) );
-	}
-
-	/**
-	 * Like self::buildSimpleSetting() but accepts an array of settings
-	 *
-	 * @param array $settingArr array of settings name
-	 * @return string html
-	 */
-	protected function buildSimpleSettingArray( $settingArr ){
-		$text = '';
-		foreach( $settingArr as $setting ){
-			$text .= $this->buildSimpleSetting( $setting );
+	protected function buildAllSettings(){
+		$ret = '';
+		foreach( self::$settings as $title => $groups ){
+			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
+				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n" .
+				Xml::openElement( 'table' ) . "\n";
+			foreach( $groups as $group => $settings ){
+				$ret .= $this->buildTableHeading( 'configure-section-' . $group );
+				foreach( $settings as $setting => $type ){
+					$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
+				}
+			}
+			$ret .= Xml::closeElement( 'table' ) . "\n" .
+				Xml::closeElement( 'fieldset' );
 		}
-		return $text;
-	}
-
-	private function buildGeneralSettings(){
-		$out = $this->buildTableStart( 'configure-section-general' );
-		$out .= $this->buildSimpleSetting( 'wgSitename' );
-		$out .= $this->buildTableHeading( 'configure-section-paths' );
-		$arr = array( 'wgAppleTouchIcon', 'wgArticlePath', 'wgDiff3', 'wgFavicon',
-			'wgLogo', 'wgMathDirectory', 'wgMathPath', 'wgRedirectScript', 'wgScriptExtension',
-			'wgScriptPath', 'wgStyleDirectory', 'wgStylePath', 'wgTmpDirectory', 'wgUsePathInfo',
-			'wgUploadNavigationUrl', 'wgVariantArticlePath' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildDbSettings(){
-		global $wgUser;
-		if( !$wgUser->isAllowed( 'configure-all' ) )
-			return wfMsgExt( 'configure-section-db-notallowed', array( 'parse' ) );
-		$out = $this->buildTableStart( 'configure-section-db' );
-		$arr = array( 'wgAllDBsAreLocalhost', 'wgCheckDBSchema',  'wgDBAvgStatusPoll',
-			'wgDBClusterTimeout', 'wgDBminWordLen', 'wgDBmwschema', 'wgDBmysql5',
-			'wgDBprefix', 'wgDBservers', 'wgDBTableOptions', 'wgDBtransactions',
-			'wgDBts2schema', 'wgDBtype', 'wgLBFactoryConf', 'wgDefaultExternalStore',
-			'wgLocalDatabases', 'wgMasterWaitTimeout', 'wgSearchType', 'wgSlaveLagCritical',
-			'wgSlaveLagWarning', 'wgExternalServers' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildEmailSettings(){
-		$out = $this->buildTableStart( 'configure-section-email' );
-		$arr = array( 'wgEmailAuthentication', 'wgEmergencyContact', 'wgEnableEmail',
-			'wgEnableUserEmail', 'wgNoReplyAddress', 'wgPasswordSender', 'wgSMTP',
-			'wgUserEmailUseReplyTo' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-enotif' );
-		$arr = array( 'wgEnotifFromEditor', 'wgEnotifImpersonal', 'wgEnotifMaxRecips',
-			'wgEnotifMinorEdits', 'wgEnotifRevealEditorAddress', 'wgEnotifUseJobQ',
-			'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgShowUpdatedMarker',
-			'wgUsersNotifedOnAllChanges', 'wgUsersNotifiedOnAllChanges' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildLocalizationSettings(){
-		$out = $this->buildTableStart( 'configure-section-localization' );
-		$arr = array( 'wgAmericanDates', 'wgDisableLangConversion', 'wgForceUIMsgAsContentMsg',
-			'wgInterwikiMagic', 'wgLanguageCode', 'wgLegacyEncoding', 'wgLocaltimezone',
-			'wgLocalTZoffset', 'wgLoginLanguageSelector', 'wgTranslateNumerals',
-			'wgUseDatabaseMessages', 'wgUseDynamicDates', 'wgUseZhdaemon', 'wgZhdaemonHost',
-			'wgZhdaemonPort' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-html' );
-		$arr = array( 'wgDocType', 'wgDTD', 'wgMimeType', 'wgXhtmlDefaultNamespace', 'wgXhtmlNamespaces' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildDebugSettings(){
-		$out = $this->buildTableStart( 'configure-section-debug' );
-		$arr = array( 'wgColorErrors', 'wgDebugComments', 'wgDebugDumpSql', 'wgDebugLogFile',
-			'wgDebugLogGroups', 'wgDebugRawPage', 'wgDebugRedirects', 'wgLogQueries',
-			'wgShowSQLErrors', 'wgStatsMethod' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-profiling' );
-		$arr = array( 'wgDebugFunctionEntry', 'wgDebugProfiling', 'wgDebugSquid',
-			'wgProfileCallTree', 'wgProfileLimit', 'wgProfileOnly', 'wgProfilePerHost',
-			'wgProfileToDatabase', 'wgUDPProfilerHost', 'wgUDPProfilerPort' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildSiteSettings(){
-		$out = $this->buildTableStart( 'configure-section-site' );
-		$arr = array( 'wgAllowUserCss', 'wgAllowUserJs', 'wgDefaultUserOptions',
-			'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgDefaultRobotPolicy',
-			'wgExtraLanguageNames', 'wgExtraSubtitle', 'wgHideInterlanguageLinks',
-			'wgLegalTitleChars', 'wgNoFollowLinks', 'wgPageShowWatchingUsers',
-			'wgPageShowWatchingUsers', 'wgRestrictionLevels', 'wgRestrictionTypes',
-			'wgSiteNotice', 'wgSiteSupportPage', 'wgUrlProtocols', 'wgUseSiteCss',
-			'wgUseSiteJs' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-ajax' );
-		$arr = array( 'wgUseAjax', 'wgAjaxSearch', 'wgAjaxUploadDestCheck',
-			'wgAjaxWatch', 'wgLivePreview' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildNamespacesSettings(){
-		$out = $this->buildTableStart( 'configure-section-namespaces' );
-		$arr = array( 'wgContentNamespaces', 'wgExtraNamespaces', 'wgMetaNamespace',
-			'wgMetaNamespaceTalk', 'wgNamespaceAliases', 'wgNamespaceProtection',
-			'wgNamespaceRobotPolicies', 'wgNamespacesToBeSearchedDefault',
-			'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
-			'wgArticleRobotPolicies' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildSkinSettings(){
-		$out = $this->buildTableStart( 'configure-section-skin' );
-		$arr = array( 'wgDefaultSkin', 'wgSkipSkin', 'wgSkipSkins', 'wgValidSkinNames' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildCategorySettings(){
-		$out = $this->buildTableStart( 'configure-section-category' );
-		$arr = array( 'wgCategoryMagicGallery', 'wgCategoryPagingLimit', 'wgUseCategoryBrowser' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildCacheSettings(){
-		$out = $this->buildTableStart( 'configure-section-cache' );
-		$arr = array( 'wgCacheEpoch', 'wgCachePages', 'wgForcedRawSMaxage', 'wgMainCacheType',
-			'wgQueryCacheLimit', 'wgRevisionCacheExpiry', 'wgThumbnailEpoch', 'wgTranscludeCacheExpiry',
-			'wgUseFileCache', 'wgFileCacheDirectory', 'wgUseGzip' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-pcache' );
-		$arr = array( 'wgEnableParserCache', 'wgEnableSidebarCache', 'wgParserCacheType',
-			'wgSidebarCacheExpiry' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-messagecache' );
-		$arr = array( 'wgMessageCacheType', 'wgLocalMessageCache', 'wgMsgCacheExpiry',
-			'wgCachedMessageArrays', 'wgCheckSerialized', 'wgLocalMessageCacheSerialized',
-			'wgMaxMsgCacheEntrySize' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-memcached' );
-		$arr = array( 'wgLinkCacheMemcached', 'wgMemCachedDebug', 'wgMemCachedPersistent',
-			'wgMemCachedServers', 'wgSessionsInMemcached' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildInterwikiSettings(){
-		$out = $this->buildTableStart( 'configure-section-interwiki' );
-		$arr = array( 'wgEnableScaryTranscluding', 'wgImportSources', 'wgInterwikiCache',
-			'wgInterwikiExpiry', 'wgInterwikiFallbackSite', 'wgInterwikiScopes', 'wgLocalInterwiki' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildAccessSettings(){
-		$out = $this->buildTableStart( 'configure-section-access' );
-		$arr = array( 'wgAutopromote', 'wgAccountCreationThrottle', 'wgAllowPageInfo',
-			'wgAutoblockExpiry', 'wgDeleteRevisionsLimit', 'wgDisabledActions',
-			'wgEmailConfirmToEdit', 'wgEnableCascadingProtection', 'wgEnableAPI',
-			'wgEnableWriteAPI', 'wgImplicitGroups', 'wgPasswordSalt', 'wgReadOnly',
-			'wgReadOnlyFile', 'wgWhitelistRead' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-groups' );
-		$arr = array( 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
-			'wgGroupsRemoveFromSelf' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-block' );
-		$arr = array(  'wgBlockAllowsUTEdit', 'wgSysopEmailBans', 'wgSysopRangeBans',
-			'wgSysopUserBans' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildRateLimitsSettings(){
-		$out = $this->buildTableStart( 'configure-section-rates' );
-		$arr = array( 'wgRateLimitLog', 'wgRateLimits', 'wgRateLimitsExcludedGroups' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildProxySettings(){
-		$out = $this->buildTableStart( 'configure-section-proxy' );
-		$arr = array( 'wgBlockOpenProxies', 'wgEnableSorbs', 'wgProxyList', 'wgProxyMemcExpiry',
-			'wgProxyPorts', 'wgProxyScriptPath', 'wgProxyWhitelist', 'wgSecretKey' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildSquidSettings(){
-		$out = $this->buildTableStart( 'configure-section-squid' );
-		$arr = array( 'wgInternalServer', 'wgMaxSquidPurgeTitles', 'wgSquidMaxage',
-			'wgSquidServers', 'wgSquidServersNoPurge', 'wgUseESI', 'wgUseSquid' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildCookieSettings(){
-		$out = $this->buildTableStart( 'configure-section-cookie' );
-		$arr = array( 'wgCookieDomain', 'wgCookieExpiration', 'wgCookieHttpOnly',
-			'wgCookiePath', 'wgCookieSecure', 'wgDisableCookieCheck', 'wgSessionName' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildReductionSettings(){
-		$out = $this->buildTableStart( 'configure-section-reduction' );
-		$arr = array( 'wgDisableAnonTalk', 'wgDisableCounters', 'wgDisableQueryPages',
-			'wgDisableQueryPageUpdate', 'wgDisableSearchContext', 'wgDisableSearchUpdate',
-			'wgDisableTextSearch', 'wgMiserMode', 'wgShowHostnames', 'wgUseDumbLinkUpdate',
-			'wgWantedPagesThreshold' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildUploadSettings(){
-		$out = $this->buildTableStart( 'configure-section-upload' );
-		$arr = array( 'wgAjaxLicensePreview', 'wgAllowCopyUploads', 'wgCheckFileExtensions',
-			'wgEnableUploads', 'wgFileBlacklist', 'wgFileExtensions', 'wgFileStore',
-			'wgLocalFileRepo', 'wgRemoteUploads', 'wgStrictFileExtensions', 'wgUploadSizeWarning',
-			'wgMaxUploadSize', 'wgHTTPTimeout', 'wgHTTPProxy', 'wgSaveDeletedFiles' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-sharedupload' );
-		$out .= $this->buildSimpleSetting( 'wgForeignFileRepos' );
-		$out .= $this->buildTableHeading( 'configure-section-mime' );
-		$arr = array( 'wgLoadFileinfoExtension', 'wgMimeDetectorCommand', 'wgMimeInfoFile',
-			'wgMimeTypeFile', 'wgVerifyMimeType', 'wgMimeTypeBlacklist' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildImageSettings(){
-		$out = $this->buildTableStart( 'configure-section-images' );
-		$arr = array( 'wgDjvuPostProcessor', 'wgDjvuRenderer', 'wgDjvuToXML',
-			'wgGenerateThumbnailOnParse', 'wgFileRedirects', 'wgIgnoreImageErrors',
-			'wgImageLimits', 'wgImageMagickConvertCommand', 'wgMaxImageArea', 'wgMediaHandlers',
-			'wgThumbnailScriptPath', 'wgThumbUpright', 'wgUseImageMagick', 'wgShowEXIF',
-			'wgThumbLimits', 'wgTrustedMediaFormats' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-svg' );
-		$arr = array( 'wgAllowTitlesInSVG', 'wgSVGConverter', 'wgSVGConverterPath',
-			'wgSVGConverters', 'wgSVGMaxSize' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-antivirus' );
-		$arr = array( 'wgAntivirus', 'wgAntivirusRequired', 'wgAntivirusSetup' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildParserSettings(){
-		$out = $this->buildTableStart( 'configure-section-parser' );
-		$arr = array( 'wgAllowDisplayTitle', 'wgAllowExternalImages', 'wgAllowExternalImagesFrom',
-			'wgExpensiveParserFunctionLimit', 'wgMaxPPNodeCount', 'wgMaxPPExpandDepth',
-			'wgParserConf', 'wgParserCacheExpireTime' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-html' );
-		$arr = array( 'wgRawHtml', 'wgUserHtml' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-tex' );
-		$arr = array( 'wgTexvc', 'wgUseTeX' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-tidy' );
-		$arr = array( 'wgAlwaysUseTidy', 'wgDebugTidy', 'wgTidyBin', 'wgTidyConf',
-			'wgTidyInternal', 'wgTidyOpts', 'wgUseTidy', 'wgValidateAllHtml' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildSpecialPagesSettings(){
-		$out = $this->buildTableStart( 'configure-section-specialpages' );
-		$arr = array( 'wgAllowSpecialInclusion', 'wgExportAllowHistory', 'wgCountCategorizedImagesAsUsed',
-			'wgExportAllowListContributors', 'wgExportMaxHistory', 'wgImportTargetNamespace',
-			'wgLogRestrictions', 'wgMaxRedirectLinksRetrieved', 'wgUseNPPatrol', 'wgSortSpecialPages' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= $this->buildTableHeading( 'configure-section-recentchanges' );
-		$arr = array( 'wgAllowCategorizedRecentChanges', 'wgPutIPinRC', 'wgRCChangedSizeThreshold',
-			'wgRCMaxAge', 'wgRCShowChangedSize', 'wgRCShowWatchingUsers', 'wgUseRCPatrol',
-			'wgRC2UDPAddress', 'wgRC2UDPPort', 'wgRC2UDPPrefix' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildUsersSettings(){
-		$out = $this->buildTableStart( 'configure-section-users' );
-		$arr = array( 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgAllowRealName',
-			'wgMaxNameChars', 'wgMinimalPasswordLength', 'wgMaxSigChars', 'wgPasswordReminderResendTime',
-			'wgReservedUsernames', 'wgBrowserBlackList' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildFeedSettings(){
-		$out = $this->buildTableStart( 'configure-section-feed' );
-		$arr = array( 'wgFeed', 'wgFeedCacheTimeout', 'wgFeedDiffCutoff', 'wgFeedLimit' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildCopyrightSettings(){
-		$out = $this->buildTableStart( 'configure-section-copyright' );
-		$arr = array( 'wgCheckCopyrightUpload', 'wgCopyrightIcon', 'wgEnableCreativeCommonsRdf',
-			'wgEnableDublinCoreRdf', 'wgMaxCredits', 'wgRightsIcon', 'wgRightsPage',
-			'wgRightsText', 'wgRightsUrl', 'wgShowCreditsIfMax', 'wgUseCopyrightUpload' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildJobSettings(){
-		$out = $this->buildTableStart( 'configure-section-job' );
-		$arr = array( 'wgJobRunRate', 'wgUpdateRowsPerJob' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildExtensionSettings(){
-		$out = $this->buildTableStart( 'configure-section-extension' );
-		$arr = array( 'wgAllowSlowParserFunctions', 'wgDisableInternalSearch',
-			'wgExternalStores', 'wgSearchForwardUrl' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildHtcpSettings(){
-		$out = $this->buildTableStart( 'configure-section-htcp' );
-		$arr = array( 'wgHTCPMulticastAddress', 'wgHTCPMulticastTTL', 'wgHTCPPort' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
-	}
-
-	private function buildMiscSettings(){
-		$out = $this->buildTableStart( 'configure-section-misc' );
-		$arr = array( 'wgAntiLockFlags', 'wgBreakFrames', 'wgClockSkewFudge', 'wgCommandLineDarkBg',
-			'wgCompressRevisions', 'wgDisableHardRedirects', 'wgDisableOutputCompression',
-			'wgEnableMWSuggest', 'wgExternalDiffEngine', 'wgExtraRandompageSQL',
-			'wgGoToEdit', 'wgGrammarForms', 'wgHitcounterUpdateFreq', 'wgJsMimeType',
-			'wgMaxArticleSize', 'wgMaxShellFileSize', 'wgMaxShellMemory', 'wgMaxTocLevel',
-			'wgMWSuggestTemplate', 'wgOpenSearchTemplate', 'wgRedirectSources',
-			'wgShowIPinHeader', 'wgSpamRegex', 'wgUpdateRowsPerQuery', 'wgUseCommaCount',
-			'wgUseETag', 'wgUseExternalEditor' );
-		$out .= $this->buildSimpleSettingArray( $arr );
-		$out .= "</table>\n";
-		return $out;
+		return $ret;
 	}
 }
