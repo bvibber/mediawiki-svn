@@ -25,6 +25,7 @@ $wgExtensionMessagesFiles['CrossNamespaceLinks'] = $dir . 'SpecialCrossNamespace
 $wgAutoloadClasses['CrossNamespaceLinks'] = $dir . 'SpecialCrossNamespaceLinks_body.php';
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';
 $wgSpecialPages['CrossNamespaceLinks'] = 'CrossNamespaceLinks';
+$wgSpecialPageGroups['CrossNamespaceLinks'] = 'maintenance';
 
 function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
 	$QueryPages[] = array(
