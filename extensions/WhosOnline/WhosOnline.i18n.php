@@ -114,6 +114,13 @@ $messages['is'] = array(
 	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'whosonline' => "Sapa waé sing ana ing jaringan (''online'')",
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */
@@ -190,6 +197,13 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'whosonline'      => 'Quem está ligado',
 	'whosonline-desc' => 'Apresenta [[{{ns:special}}:WhosOnline|uma lista]] de utilizadores autenticados e anónimos que se encontram ligados neste momento',
+);
+
+/** Sinhalese (සිංහල)
+ * @author Asiri wiki
+ */
+$messages['si'] = array(
+	'whosonline-desc' => 'දැන‍ට යාවත්කාලීක අනාමික පරිශීලකයෝ [[Special:WhosOnline|a list]] පිවිසි ඇති බව පෙන්වයි.',
 );
 
 /** Slovak (Slovenčina)

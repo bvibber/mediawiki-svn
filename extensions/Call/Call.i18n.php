@@ -249,6 +249,21 @@ $messages['ja'] = array(
 	'call-save-failed'  => "以下のテキストは、既に同名のページが存在するため、ページ <big>[[$1]]</big> として'''保存されませんでした'''。",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'call' => 'Celuk',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'call-save-success' => 'អត្ថបទដូចតទៅនេះត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big>។',
+	'call-save-failed'  => 'អត្ថបទដូចតទៅនេះមិនត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big> ពីព្រោះទំព័រនោះមានរួចហើយ។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

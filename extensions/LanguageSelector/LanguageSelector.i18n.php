@@ -200,6 +200,14 @@ $messages['ja'] = array(
 	'languageselector-setlang' => '設定',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'languageselector'      => 'Basa',
+	'languageselector-desc' => 'Pamilih basa ana ing saben kaca, uga kanggo tamu',
+);
+
 /** Kazakh
  * @author AlefZet
 */

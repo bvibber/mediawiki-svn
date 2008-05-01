@@ -227,6 +227,13 @@ Soyez patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Veuiller entrer une description pour la vidéo.',
 );
 
+/** Irish (Gaeilge)
+ * @author Moilleadóir
+ */
+$messages['ga'] = array(
+	'youtubeauthsub_category' => 'Catagóir',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -436,8 +443,47 @@ Hutt w.e.g. e bësse Gedold!',
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'youtubeauthsub_category' => 'വിഭാഗം',
-	'youtubeauthsub_submit'   => 'സമര്‍പ്പിക്കുക',
+	'youtubeauthsub_description' => 'വിവരണം',
+	'youtubeauthsub_category'    => 'വിഭാഗം',
+	'youtubeauthsub_submit'      => 'സമര്‍പ്പിക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'youtubeauthsub'                     => 'यूट्यूब व्हीडियो चढवा',
+	'youtubeauthsub-desc'                => 'सदस्यांना थेट यूट्यूबवर [[Special:YouTubeAuthSub|व्हीडियो चढविण्याची]] परवानगी देतो',
+	'youtubeauthsub_info'                => 'एखादा व्हिडियो एखाद्या पानावर देण्यासाठी, यूट्यूब मध्ये चढविण्यासाठी, खालील माहिती भरा:',
+	'youtubeauthsub_title'               => 'शीर्षक',
+	'youtubeauthsub_description'         => 'माहिती',
+	'youtubeauthsub_password'            => 'यूट्यूब परवलीचा शब्द',
+	'youtubeauthsub_username'            => 'यूट्यूब सदस्यनाव',
+	'youtubeauthsub_keywords'            => 'शोधशब्द',
+	'youtubeauthsub_category'            => 'वर्ग',
+	'youtubeauthsub_submit'              => 'पाठवा',
+	'youtubeauthsub_clickhere'           => 'यूट्यूब मध्ये प्रवेश करण्यासाठी इथे टिचकी द्या',
+	'youtubeauthsub_tokenerror'          => 'अधिकृत करण्याचे टोकन तयार करण्यामध्ये त्रुटी, ताजेतवाने करून पहा.',
+	'youtubeauthsub_success'             => "अभिनंदन!
+तुमचा व्हिडियो चढविण्यात आलेला आहे.
+तुमचा व्हिडियो पाहण्यासाठी <a href='http://www.youtube.com/watch?v=$1'>इथे</a> टिचकी द्या.
+यूट्यूबला तुमचा व्हिडियो दाखविण्यासाठी काही वेळ लागू शकतो.
+
+तुमचा व्हिडियो एखाद्या विकि पानावर दाखविण्यासाठी, खालील कोड वापरा:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'व्हिडीयो चढविण्यासाठी तुम्ही यूट्यूब वर प्रवेश केलेला असणे आवश्यक आहे.',
+	'youtubeauthsub_uploadhere'          => 'इथून तुमचा व्हिडियो चढवा:',
+	'youtubeauthsub_uploadbutton'        => 'चढवा',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+हा व्हिडियो [http://www.youtube.com/watch?v=$1 इथे] पाहता येईल',
+	'youtubeauthsub_summary'             => 'यूट्यूब व्हिडियो चढवित आहे',
+	'youtubeauthsub_uploading'           => 'तुमचा व्हिडियो चढवित आहोत.
+कृपया धीर धरा.',
+	'youtubeauthsub_viewpage'            => 'किंवा, तुम्ही तुमचा व्हिडियो [[$1|इथे]] पाहू शकता.',
+	'youtubeauthsub_jserror_nokeywords'  => 'कृपया १ किंवा अधिक शोधशब्द लिहा.',
+	'youtubeauthsub_jserror_notitle'     => 'कृपया व्हिडियोचे शीर्षक लिहा.',
+	'youtubeauthsub_jserror_nodesc'      => 'कृपया व्हिडियोची माहिती लिहा.',
 );
 
 /** Dutch (Nederlands)
@@ -629,20 +675,24 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'youtubeauthsub_title'              => 'Título',
-	'youtubeauthsub_description'        => 'Descrição',
-	'youtubeauthsub_keywords'           => 'Palavras-chave',
-	'youtubeauthsub_category'           => 'Categoria',
-	'youtubeauthsub_uploadhere'         => 'Carregar o seu vídeo a partir de:',
-	'youtubeauthsub_uploadbutton'       => 'Carregar',
-	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
+	'youtubeauthsub_title'               => 'Título',
+	'youtubeauthsub_description'         => 'Descrição',
+	'youtubeauthsub_password'            => 'Palavra-chave no YouTube',
+	'youtubeauthsub_username'            => 'Nome de utilizador no YouTube',
+	'youtubeauthsub_keywords'            => 'Palavras-chave',
+	'youtubeauthsub_category'            => 'Categoria',
+	'youtubeauthsub_submit'              => 'Submeter',
+	'youtubeauthsub_authsubinstructions' => 'Para carregar um vídeo, será necessário que se autentique primeiro no YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Carregar o seu vídeo a partir de:',
+	'youtubeauthsub_uploadbutton'        => 'Carregar',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
 
 Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
-	'youtubeauthsub_summary'            => 'A carregar vídeo YouTube',
-	'youtubeauthsub_viewpage'           => 'Como alternativa, pode visualizar o seu vídeo [[$1|aqui]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
-	'youtubeauthsub_jserror_notitle'    => 'Por favor, introduza um título para o vídeo.',
-	'youtubeauthsub_jserror_nodesc'     => 'Por favor, introduza uma descrição para o vídeo.',
+	'youtubeauthsub_summary'             => 'A carregar vídeo YouTube',
+	'youtubeauthsub_viewpage'            => 'Como alternativa, pode visualizar o seu vídeo [[$1|aqui]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Por favor, introduza 1 ou mais palavras-chave.',
+	'youtubeauthsub_jserror_notitle'     => 'Por favor, introduza um título para o vídeo.',
+	'youtubeauthsub_jserror_nodesc'      => 'Por favor, introduza uma descrição para o vídeo.',
 );
 
 /** Russian (Русский)
@@ -657,6 +707,39 @@ $messages['ru'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
 	'youtubeauthsub_jserror_notitle'    => 'Пожалуйста, введите заголовок видео.',
 	'youtubeauthsub_jserror_nodesc'     => 'Пожалуйста, введите описание видео.',
+);
+
+/** Sinhalese (සිංහල)
+ * @author Asiri wiki
+ */
+$messages['si'] = array(
+	'youtubeauthsub'                    => 'YouTube වීඩියෝව උඩුගතකරන්න',
+	'youtubeauthsub_title'              => 'සිරස',
+	'youtubeauthsub_description'        => 'විස්තරය',
+	'youtubeauthsub_password'           => 'YouTube මුරපදය',
+	'youtubeauthsub_username'           => 'YouTube පරිශීලක නාමය',
+	'youtubeauthsub_keywords'           => 'මූලපද',
+	'youtubeauthsub_category'           => 'වර්ගය',
+	'youtubeauthsub_submit'             => 'යොමන්න',
+	'youtubeauthsub_clickhere'          => 'YouTube වෙත පිවිසීම‍ට ‍මෙතැන ක්ලික් කරන්න',
+	'youtubeauthsub_tokenerror'         => 'වරදාන ටෝකනය ‍සදොස් ය, නැවුම් කර යළි උත්සහ කරන්න.',
+	'youtubeauthsub_success'            => "සුබ පැතුම්!
+ඔබේ වීඩියෝව උ‍‍ඩුගතවී ඇත.
+ඔබේ වීඩියෝව නැරඹීම‍ට <a href='http://www.youtube.com/watch?v=$1'> මෙතැන </a>.ක්ලික් කරන්න.
+YouTube may require some time to process your video, so it might not be ready just yet.
+
+වීඩියෝව ඔබගේ විකි පිටුවකට යෙදීමක‍ට නම් පහත දැක්වෙන කේත පි‍ටුව‍ට ඇතුල් කරන්න:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_uploadhere'         => 'ඔබේ වීඩීයෝව මෙතැනින් උඩුගතකරන්න:',
+	'youtubeauthsub_uploadbutton'       => 'උඩුගතකරන්න',
+	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
+මෙම වීඩියෝව ‍[http://www.youtube.com/watch?v=$1 මෙතැනින්] නැරඹීය හැකිය.',
+	'youtubeauthsub_summary'            => 'YouTube වීඩියෝව උඩුගත වෙමින් පවතී',
+	'youtubeauthsub_uploading'          => 'ඔබගේ වීඩියෝව උඩුගත වෙමින් පවතී,මඳක් ඉවසන්න.',
+	'youtubeauthsub_viewpage'           => 'නො එසේ නම් ඔබගේ වීඩියෝව ඔබට [[$1|මෙතැනින්]] නැරඹිය හැක',
+	'youtubeauthsub_jserror_nokeywords' => 'කරුණාකර 1 හෝ ඊට වඩා මූලපද ගනනක් ඇතුලත් කරන්න.',
+	'youtubeauthsub_jserror_notitle'    => 'කරුණාකර විඩියාව සඳහා සිරසක් සපයන්න.',
+	'youtubeauthsub_jserror_nodesc'     => 'කරුණාකර විඩියෝව සඳහා විස්තරයක් සපයන්න.',
 );
 
 /** Slovak (Slovenčina)

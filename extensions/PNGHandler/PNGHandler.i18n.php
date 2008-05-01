@@ -56,6 +56,13 @@ $messages['nl'] = array(
 	'pnghandler-desc' => 'PNG-bestanden verkleinen met pngds',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'pnghandler-desc' => 'Endre storleiken på PNG-bilete med pngds',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

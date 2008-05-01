@@ -263,6 +263,15 @@ $messages['hi'] = array(
 	'invitations-invite-success'            => 'आपने $1 को यह फीचर इस्तेमाल करने के लिये आमंत्रित किया!',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'invitations-inviteform-title'    => 'Undhang sawijining panganggo supaya nganggo $1',
+	'invitations-inviteform-username' => 'Panganggo sing diundhang',
+	'invitations-inviteform-submit'   => 'Undhang',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran
@@ -291,6 +300,13 @@ $messages['lb'] = array(
 	'invitations-error-baduser'        => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
 	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
 	'invitations-invite-success'       => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'invitations-inviteform-submit' => 'ക്ഷണിക്കുക',
 );
 
 /** Marathi (मराठी)

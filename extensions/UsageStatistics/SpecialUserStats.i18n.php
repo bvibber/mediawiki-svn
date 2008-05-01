@@ -386,6 +386,15 @@ $messages['is'] = array(
 	'usagestatisticsintervalmonth' => 'Mánuður',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'usagestatisticsintervalday'   => 'Dina',
+	'usagestatisticsintervalweek'  => 'Minggu (saptawara)',
+	'usagestatisticsintervalmonth' => 'Sasi',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន

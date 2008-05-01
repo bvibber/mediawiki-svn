@@ -98,6 +98,14 @@ $messages['cs'] = array(
 	'sitenotice-desc'  => 'Umožňuje uživatelům zavřít zprávu v záhlaví',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'sitenotice_close' => 'cau',
+	'sitenotice-desc'  => "Yn galluogi defnyddwyr i gau'r hysbysiad",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

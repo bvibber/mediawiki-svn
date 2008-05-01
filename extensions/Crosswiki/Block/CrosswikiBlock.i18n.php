@@ -59,6 +59,7 @@ Return to:
  */
 $messages['an'] = array(
 	'crosswikiblock-reason'   => 'Razón:',
+	'crosswikiblock-anononly' => 'Bloqueyar nomás os usuarios anonimos',
 	'crosswikiunblock-reason' => 'Razón:',
 );
 
@@ -601,6 +602,17 @@ Zréck op:
 	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:Ipblocklist]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'crosswikiblock-expiry'   => 'കാലാവധി:',
+	'crosswikiblock-reason'   => 'കാരണം:',
+	'crosswikiblock-submit'   => 'ഈ ഉപയോക്താവിനെ തടയുക',
+	'crosswikiunblock-reason' => 'കാരണം:',
+	'crosswikiunblock-submit' => 'ഈ ഉപയോക്താവിനെ സ്വതന്ത്രമാക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -846,6 +858,7 @@ Powrót do:
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'crosswikiblock-reason'   => 'سبب:',
 	'crosswikiunblock-reason' => 'سبب:',
 );
 

@@ -209,6 +209,15 @@ $messages['hu'] = array(
 	'importfreeimages_returntoform'          => "Vagy kattints <a href='$1'>ide</a>, hogy visszatérj az eredmények listájához",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'importfreeimages'            => 'Impor Gambar-Gambar Bébas',
+	'importfreeimages_owner'      => 'Pangripta',
+	'importfreeimages_importthis' => 'impor iki',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -238,6 +247,14 @@ $messages['lb'] = array(
 	'importfreeimages_filefromflickr'        => '$1 vum Benotzer <b>[$2]</b> vun flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie fichier un:',
 	'importfreeimages_returntoform'          => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'importfreeimages_owner' => 'ലേഖകന്‍',
+	'importfreeimages_next'  => 'അടുത്ത $1',
 );
 
 /** Marathi (मराठी)

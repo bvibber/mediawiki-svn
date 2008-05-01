@@ -341,6 +341,20 @@ $messages['ja'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: 入力エラー！',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'chemicalsources'        => 'Sumber-sumber kimia',
+	'chemicalsource-desc'    => 'Nambahna tag <nowiki><chemform></nowiki>, kanggo rumus kimia',
+	'chemFunctions_ListPage' => 'Sumber-sumber kimia',
+	'chemFunctions_CAS'      => 'Nomer CAS',
+	'chemFunctions_ATCCode'  => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula'  => 'Formula',
+	'chemFunctions_Name'     => 'Jeneng IUPAC',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran

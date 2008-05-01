@@ -386,6 +386,7 @@ $messages['km'] = array(
 	'ajax-se-title'            => 'បច្ចុប្បន្នកំពុង​កែប្រែ៖',
 	'ajax-se-idling'           => '($1 វិនាទី កន្លងមក)',
 	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
+	'ajax-se-userinvalid'      => 'កំហុស៖ អ្នកប្រើប្រាស់គ្មានសុពលភាព',
 	'ajax-se-usernotfound'     => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',
 );
 
@@ -434,10 +435,14 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Shijualex
  * @author Jacob.jose
  */
 $messages['ml'] = array(
-	'ajax-se-title' => 'നിലവില്‍ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
+	'ajax-se-desc'             => 'ഒരേ താള്‍ തന്നെ തിരുത്തുന്ന  ഉപയോക്താക്കളെ പ്രദര്‍ശിപ്പിക്കുന്നു.',
+	'ajax-se-title'            => 'നിലവില്‍ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
+	'ajax-se-idling'           => '($1 സെക്കന്റുകള്‍ക്ക് മുന്‍പ്)',
+	'ajax-se-pagedoesnotexist' => 'താള്‍ നിലവിലില്ല',
 );
 
 /** Marathi (मराठी)
@@ -550,6 +555,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Brunoy Anastasiya Seryozhenko
  */
 $messages['pt'] = array(
 	'ajax-se-desc'             => 'Mostra utilizadores que estão a editar a mesma página',

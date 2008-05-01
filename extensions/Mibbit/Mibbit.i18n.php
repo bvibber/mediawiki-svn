@@ -107,12 +107,13 @@ Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement,
  * @author Toliño
  */
 $messages['gl'] = array(
-	'mibbit'        => 'Chat Mibbit',
+	'mibbit'        => 'Conversa Mibbit',
 	'mibbit-desc'   => 'Engade unha [[Special:Mibbit|páxina especial]] usada para chatear en tempo real con outros usuarios do wiki',
 	'mibbit-header' => 'Esta páxina especial permítelle colaborar en tempo real con outros usuarios do wiki.
 Para conectarse simplemente prema no botón "Conectar".
 Se está rexistrado o seu nome de usuario será fixado por defecto.
 Aos usuarios anónimos concederáselles un nome automático, que pode ser cambiado.',
+	'right-mibbit'  => 'Autorizado para usar a conversa Mibbit',
 );
 
 /** Hindi (हिन्दी)
@@ -133,6 +134,7 @@ $messages['lb'] = array(
 Fir iech ze verbannen klickt einfach op de "Verbannen" Knäppchen.
 Wann dir erageloggec sidd da gëtt äre Nickmae virausgefëllt.
 Déi anonyme Benotzer kréien automatesch e Nckname zougedeelt, den si awer änner kënnen.',
+	'right-mibbit'  => 'Däerf de Mibbit-Chat benotzen',
 );
 
 /** Marathi (मराठी)
@@ -185,6 +187,7 @@ $messages['oc'] = array(
 Per vos connectar, sufís de quichar simplament sul boton « Connectar ».
 Se sètz connectat vòstre escais serà estat utilizat.
 Los utilizaires anonims se veràn atribuir un escais creat automaticament, mas pòt èsser modificat.',
+	'right-mibbit'  => "Autoriza l'utilizacion del Chat Mibbit",
 );
 
 /** Polish (Polski)

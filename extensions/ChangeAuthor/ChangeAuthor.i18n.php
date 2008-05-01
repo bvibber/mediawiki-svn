@@ -540,7 +540,16 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'changeauthor-comment' => 'Komentar:',
+	'changeauthor'                   => 'Ngganti révisi pangripta',
+	'changeauthor-search-box'        => 'Golèk révisi',
+	'changeauthor-pagename-or-revid' => 'ID jeneng kaca utawa révisi:',
+	'changeauthor-pagenameform-go'   => 'Tumuju',
+	'changeauthor-comment'           => 'Komentar:',
+	'changeauthor-invalid-username'  => 'Jeneng panganggo "$1" ora absah.',
+	'changeauthor-nosuchuser'        => 'Ora ana panganggo "$1".',
+	'changeauthor-revview'           => 'Révisi #$1 saka $2',
+	'changeauthor-nosuchtitle'       => 'Ora ana kaca sing diarani "$1".',
+	'changeauthor-success'           => 'Panyuwunan panjenengan wis kasil diprosès.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

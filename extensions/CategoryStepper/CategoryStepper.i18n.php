@@ -155,6 +155,14 @@ $messages['ja'] = array(
 	'categorystepper-start' => '（カテゴリの先頭）',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'categorystepper-end'   => '(Pungkasan kategori)',
+	'categorystepper-start' => '(Wiwitan kategori)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -179,6 +187,14 @@ $messages['lb'] = array(
 $messages['lo'] = array(
 	'categorystepper-end'   => '(ຈົບໝວດ)',
 	'categorystepper-start' => '(ເລິ່ມໝວດ)',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'categorystepper-end'   => '(വിഭാഗത്തിന്റെ അവസാനം)',
+	'categorystepper-start' => '(വിഭാഗത്തിന്റെ തുടക്കം)',
 );
 
 /** Marathi (मराठी)

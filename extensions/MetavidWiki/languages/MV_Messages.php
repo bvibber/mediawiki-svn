@@ -520,6 +520,7 @@ $messages['eo'] = array(
 	'mv_tool_search'       => 'Serĉu',
 	'mv_tool_navigate'     => 'Navigado',
 	'mv_tool_export'       => 'Eksportu',
+	'mv_tool_embed'        => 'Enigu',
 	'mv_results_found_for' => 'Serĉrezultoj <b>$1</b> al <b>$2</b> de <b>$3</b> por:',
 	'mv_data_page_title'   => '$1 por $2 de $3',
 	'mv_time_separator'    => '$1 al $2',
@@ -536,6 +537,7 @@ $messages['eo'] = array(
 	'mv_search_not'        => 'ne',
 	'mv_spoken_by'         => 'parolata de',
 	'mv_category'          => 'kategorio',
+	'mv_remove_filter'     => 'forigu filtrilon',
 	'mv_view_wiki_page'    => 'Rigardu vikian paĝon',
 	'mv_match_text'        => '~ $1 pafoj',
 );
@@ -723,6 +725,14 @@ $messages['fr'] = array(
 	'mv_mang_layers'                 => 'Gère les couches',
 	'mv_mang_layers_title'           => "Gère les paramètres d'affichage de la couche pour le flux courant",
 	'mv_protect_source_material'     => 'Original protégé en écriture',
+);
+
+/** Irish (Gaeilge)
+ * @author Moilleadóir
+ */
+$messages['ga'] = array(
+	'mv_search_category' => 'Catagóir',
+	'mv_category'        => 'catagóir',
 );
 
 /** Galician (Galego)
@@ -1172,6 +1182,22 @@ $messages['hu'] = array(
 	'mv_search_not'           => 'nem',
 );
 
+/** Lojban (Lojban)
+ * @author Malafaya
+ */
+$messages['jbo'] = array(
+	'mv_category' => 'klesi',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'mv_duration_label' => 'durasi',
+	'mv_history'        => 'Sajarah',
+	'mv_remove'         => 'busak',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -1245,7 +1271,11 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'mv_upload_file'     => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mv_tool_search'     => 'തിരയുക',
+	'mv_edit'            => 'തിരുത്തുക',
+	'mv_history'         => 'നാള്‍വഴി',
+	'mv_remove'          => 'നീക്കം ചെയ്യുക',
 	'mv_search_category' => 'വിഭാഗം',
 	'mv_category'        => 'വിഭാഗം',
 );
@@ -2116,6 +2146,7 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_remove'                      => 'remover',
 	'mv_adjust'                      => 'apondre',
 	'mv_adjust_submit'               => 'Salvar ajuste',
+	'mv_adjust_title'                => 'Ajustar tempo de início e fim',
 	'mv_adjust_preview'              => 'Prever ajuste',
 	'mv_adjust_preview_stop'         => 'Interromper a previsão',
 	'mv_adjust_old_title_missing'    => 'A página a partir da qual está a tentar mover ($1) não existe',
@@ -2128,6 +2159,7 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_run_search'                  => 'Efectuar pesquisa',
 	'mv_add_filter'                  => 'Adicionar filtro',
 	'mv_search_match'                => 'Procurar Texto',
+	'mv_search_spoken_by'            => 'Falado por',
 	'mv_search_category'             => 'Categoria',
 	'mv_search_smw_property'         => 'Propriedades semânticas',
 	'mv_search_smw_property_numeric' => 'Valor semântico numérico',
@@ -2141,6 +2173,7 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_category'                    => 'categoria',
 	'mv_remove_filter'               => 'remover filtro',
 	'mv_advaced_search'              => 'Pesquisa avançada de multimédia',
+	'mv_view_in_stream_interface'    => 'Ver na interface de stream',
 	'mv_view_wiki_page'              => 'Ver página wiki',
 	'mv_match_text'                  => '~  $1 resultados',
 	'mv_match_text_one'              => '~ 1 resultado',
@@ -2157,9 +2190,11 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_edit_sequence_desc_help'     => 'Descrição da sequência',
 	'mv_seq_summary'                 => 'Sumário de edição da sequência',
 	'mv_add_clip_by_name'            => 'Adicionar clip por nome',
+	'mv_navigate_stream'             => 'Navegar stream completa',
 	'mv_stream_tool_heading'         => 'Ferramentas de Stream',
 	'mv_tool_missing'                => 'pedido de ferramenta ($1) não existe',
 	'mv_search_stream_title'         => 'Pesquisar Stream Actual',
+	'mv_new_anno_en'                 => 'Nova marca ou anotação',
 	'mv_mang_layers'                 => 'Gerir Camadas',
 	'mv_mang_layers_title'           => "Gerir o conjunto de visualização de camadas para a 'stream' actual",
 	'mv_protect_source_material'     => 'Material fonte original protegido contra edições',

@@ -89,9 +89,16 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'showprocesslist'         => 'Montru Liston de Procezoj',
+	'showprocesslist-desc'    => 'Montru la eligon de [[Special:ShowProcesslist|MONTRU PLENAN PROCEZLISTON]]',
+	'showprocesslist-id'      => 'N-o',
 	'showprocesslist-user'    => 'Uzanto',
+	'showprocesslist-host'    => 'Ĉefkomputilo',
+	'showprocesslist-db'      => 'db',
 	'showprocesslist-command' => 'Komando',
 	'showprocesslist-time'    => 'Tempo',
+	'showprocesslist-state'   => 'Stato',
+	'showprocesslist-info'    => 'Informo',
 );
 
 /** French (Français)
@@ -161,6 +168,15 @@ $messages['hsb'] = array(
 	'showprocesslist-info'    => 'Informacija',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'showprocesslist-time'  => 'Wektu',
+	'showprocesslist-state' => 'Negara bagéyan',
+	'showprocesslist-info'  => 'Info',
+);
+
 /** Georgian (ქართული)
  * @author Malafaya
  */
@@ -189,6 +205,29 @@ $messages['lb'] = array(
 	'showprocesslist-time'  => 'Zäit',
 	'showprocesslist-state' => 'Zoustand',
 	'showprocesslist-info'  => 'Informatiounen',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'showprocesslist-user' => 'ഉപയോക്താവ്',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'showprocesslist'         => 'कार्य यादी दाखवा',
+	'showprocesslist-desc'    => '[[Special:ShowProcesslist|पूर्ण कार्य यादी दाखवा]] चे आउटपुट दर्शवितो',
+	'showprocesslist-id'      => 'क्र',
+	'showprocesslist-user'    => 'सदस्य',
+	'showprocesslist-host'    => 'यजमान',
+	'showprocesslist-db'      => 'db',
+	'showprocesslist-command' => 'कमांड',
+	'showprocesslist-time'    => 'वेळ',
+	'showprocesslist-state'   => 'स्थिती',
+	'showprocesslist-info'    => 'माहिती',
 );
 
 /** Dutch (Nederlands)

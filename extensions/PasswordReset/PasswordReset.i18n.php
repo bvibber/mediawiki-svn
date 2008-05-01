@@ -268,6 +268,13 @@ $messages['is'] = array(
 	'passwordreset-username' => 'Notandanafn',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'passwordreset-newpass' => 'Tembung sandhi anyar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -296,6 +303,13 @@ $messages['lb'] = array(
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
 	'disabledusers'                 => 'Desaktivéiert Benotzer',
 	'disabledusers-summary'         => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'passwordreset-username' => 'ഉപയോക്തൃനാമം',
 );
 
 /** Marathi (मराठी)

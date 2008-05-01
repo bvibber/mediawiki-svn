@@ -231,6 +231,11 @@ $messages['bg'] = array(
 	'sign-bday'                    => 'Възраст:',
 	'sign-email'                   => 'Адрес за е-поща:',
 	'sign-indicates-req'           => '<small><i><font color="red">*</font> задължително поле</i></small>',
+	'sign-list-hideaddress'        => 'Без показване на адрес',
+	'sign-list-hideextaddress'     => 'Без показване на град, щат, пощенски код или държава',
+	'sign-list-hidephone'          => 'Без показване на телефон',
+	'sign-list-hidebday'           => 'Без показване на възраст',
+	'sign-list-hideemail'          => 'Без показване на е-поща',
 	'sign-view-selectfields'       => '<b>Полета за показване:</b>',
 	'sign-viewfield-realname'      => 'Име',
 	'sign-viewfield-address'       => 'Адрес',
@@ -670,6 +675,33 @@ $messages['is'] = array(
 	'sign-city'     => 'Staður:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'sign-realname'           => 'Jeneng:',
+	'sign-address'            => 'Dalan:',
+	'sign-city'               => 'Kutha:',
+	'sign-state'              => 'Negara bagéyan:',
+	'sign-zip'                => 'Kode pos:',
+	'sign-country'            => 'Negara:',
+	'sign-phone'              => 'Nomer tilpun:',
+	'sign-bday'               => 'Umur:',
+	'sign-email'              => 'Alamat e-mail:',
+	'sign-viewfield-realname' => 'Jeneng',
+	'sign-viewfield-address'  => 'Alamat',
+	'sign-viewfield-city'     => 'Kutha',
+	'sign-viewfield-state'    => 'Negara bagéyan',
+	'sign-viewfield-country'  => 'Negara',
+	'sign-viewfield-zip'      => 'Kode pos',
+	'sign-viewfield-ip'       => 'Alamat IP',
+	'sign-viewfield-agent'    => 'User agent',
+	'sign-viewfield-phone'    => 'Tilpun',
+	'sign-viewfield-email'    => 'E-mail',
+	'sign-viewfield-age'      => 'Umur',
+	'sign-viewfield-options'  => 'Opsi:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran
@@ -722,6 +754,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'sign-selectdoc'                => 'Dokument:',
+	'sign-error-nosuchdoc'          => 'Dat Dokument, dat Dir ugefrot hutt, gëtt et net.',
 	'sign-realname'                 => 'Numm:',
 	'sign-city'                     => 'Stad/Gemeng:',
 	'sign-state'                    => 'Staat:',
@@ -753,6 +786,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'sign-realname'                => 'പേര്‌:',
+	'sign-viewfield-realname'      => 'പേര്‌',
+	'sign-viewfield-ip'            => 'ഐപി വിലാസം',
+	'sign-viewfield-email'         => 'ഇമെയില്‍',
 	'sign-viewfield-reviewcomment' => 'അഭിപ്രായം',
 	'sign-review-comment'          => 'അഭിപ്രായം',
 );
@@ -1510,6 +1547,7 @@ $messages['sv'] = array(
 	'sign-submit'                  => 'Signera dokumentet',
 	'sig-success'                  => 'Du har signerat dokumentet lyckat.',
 	'sign-view-selectfields'       => '<b>Fält som visas:</b>',
+	'sign-viewfield-entryid'       => 'Inskrifts-ID',
 	'sign-viewfield-timestamp'     => 'Tidssttämpel',
 	'sign-viewfield-realname'      => 'Namn',
 	'sign-viewfield-address'       => 'Adress',
@@ -1522,6 +1560,7 @@ $messages['sv'] = array(
 	'sign-viewfield-phone'         => 'Telefon',
 	'sign-viewfield-email'         => 'E-post',
 	'sign-viewfield-age'           => 'Ålder',
+	'sign-viewfield-options'       => 'Alternativ',
 	'sign-signatures'              => 'Signaturer',
 	'sign-viewsignatures'          => 'visa signaturer',
 	'sign-closed'                  => 'stängd',

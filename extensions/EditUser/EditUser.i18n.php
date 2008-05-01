@@ -40,6 +40,17 @@ $messages['ar'] = array(
 	'edituser-exempt'   => 'المستخدم المحدد لا يمكن تعديله',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'edituser'          => 'Betara va favesikpata',
+	'edituser-username' => 'Yolt',
+	'edituser-dosearch' => 'Aneyara',
+	'edituser-nouser'   => 'Bazen favesik me krulder',
+	'edituser-exempt'   => 'Bazena favesikpata me zo robetar',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

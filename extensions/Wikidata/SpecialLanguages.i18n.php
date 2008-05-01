@@ -736,6 +736,7 @@ $wdMessages['eo'] = array(
 	'ow_GotoSource'                         => 'Iru al fonto',
 	'ow_Language'                           => 'Lingvo',
 	'ow_LevelAnnotation'                    => 'Prinotado',
+	'ow_OptionAttribute'                    => 'Eco',
 	'ow_OptionAttributeOption'              => 'Opcio',
 	'ow_OptionAttributeOptions'             => 'Opcioj',
 	'ow_OptionAttributeValues'              => 'Valutoj de opcioj',
@@ -747,12 +748,16 @@ $wdMessages['eo'] = array(
 	'ow_SynonymsAndTranslations'            => 'Sinonimoj kaj tradukoj',
 	'ow_Source'                             => 'Fonto',
 	'ow_SourceIdentifier'                   => 'Identigilo de fontoj',
+	'ow_TextAttribute'                      => 'Eco',
 	'ow_Text'                               => 'Teksto',
 	'ow_TextAttributeValues'                => 'Ordinaraj tekstoj',
+	'ow_TranslatedTextAttribute'            => 'Eco',
 	'ow_TranslatedText'                     => 'Tradukita teksto',
 	'ow_TranslatedTextAttributeValue'       => 'Teksto',
 	'ow_TranslatedTextAttributeValues'      => 'Tradukeblaj tekstoj',
+	'ow_LinkAttribute'                      => 'Eco',
 	'ow_LinkAttributeValues'                => 'Ligiloj',
+	'ow_Property'                           => 'Eco',
 	'ow_Value'                              => 'Valuto',
 	'ow_meaningsoftitle'                    => 'Signifoj de "$1"',
 	'ow_meaningsofsubtitle'                 => '<em>Vikiligilo:</em> [[$1]]',
@@ -1300,6 +1305,49 @@ $wdMessages['ja'] = array(
 	'ow_dm_missing'                         => 'このページは存在しない意味定義（概念）を指し示しているように見えます。URLの指定が正しいか確認してください。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$wdMessages['jv'] = array(
+	'datasearch'                            => 'Wikidata: Panggolèkan data',
+	'langman_title'                         => 'Pangurus basa',
+	'languages'                             => 'Wikidata: Pangurus basa',
+	'ow_save'                               => 'Simpen',
+	'ow_history'                            => 'Sajarah',
+	'ow_datasets'                           => 'Sèlèksi data-set',
+	'ow_noedit_title'                       => 'Ora ana idin kanggo nyunting',
+	'ow_uipref_datasets'                    => 'Pamandhangan baku',
+	'ow_uiprefs'                            => 'Wikidata',
+	'ow_none_selected'                      => '<Ora ana sing disèlèksi>',
+	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
+	'ow_dm_OK'                              => 'OK',
+	'ow_dm_not_present'                     => 'ora dilebokaké',
+	'ow_available_contexts'                 => 'Kontèks sing ana',
+	'ow_concept_panel'                      => 'Panèl Konsèp',
+	'ow_Annotation'                         => 'Anotasi',
+	'ow_ClassAttributeLevel'                => 'Tingkatan',
+	'ow_ClassAttributeType'                 => 'Jenis',
+	'ow_Collection'                         => 'Kolèksi',
+	'ow_Definition'                         => 'Définisi',
+	'ow_DefinedMeaningAttributes'           => 'Anotasi',
+	'ow_GotoSource'                         => 'Menyang sumber',
+	'ow_Language'                           => 'Basa',
+	'ow_LevelAnnotation'                    => 'Anotasi',
+	'ow_OptionAttributeOption'              => 'Opsi',
+	'ow_PopupAnnotation'                    => 'Anotasi',
+	'ow_Spelling'                           => 'Pasang aksara (éjaan)',
+	'ow_Source'                             => 'Sumber',
+	'ow_Text'                               => 'Tèks',
+	'ow_TextAttributeValues'                => 'Tèks-tèks prasaja',
+	'ow_TranslatedText'                     => 'Tèks sing wis dipertal',
+	'ow_TranslatedTextAttributeValue'       => 'Tèks',
+	'ow_TranslatedTextAttributeValues'      => 'Tèks sing bisa dipertal',
+	'ow_LinkAttributeValues'                => 'Pranala',
+	'ow_Property'                           => 'Sifat',
+	'ow_meaningsofsubtitle'                 => '<em>Pranala wiki:</em> [[$1]]',
+	'ow_copy_help'                          => 'Ing sawijining dina ing tembé, kita mbok-menawa bisa nulungi panjenengan.',
+);
+
 /** Georgian (ქართული)
  * @author Sopho
  * @author Malafaya
@@ -1468,9 +1516,11 @@ $wdMessages['lb'] = array(
 	'ow_uiprefs'                       => 'Wikidata',
 	'ow_none_selected'                 => '<Näischt ausgewielt>',
 	'ow_dm_OK'                         => 'OK',
+	'ow_dm_not_present'                => 'net aginn',
 	'ow_AlternativeDefinition'         => 'Alternativ Definitioun',
 	'ow_AlternativeDefinitions'        => 'Alternativ Definitiounen',
 	'ow_ClassAttributeLevel'           => 'Niveau',
+	'ow_ClassAttributeType'            => 'Typ',
 	'ow_Definition'                    => 'Definitioun',
 	'ow_ExactMeanings'                 => 'Genee Bedeitungen',
 	'ow_Expression'                    => 'Ausdrock',
@@ -1518,11 +1568,13 @@ $wdMessages['mai'] = array(
  * @author Shijualex
  */
 $wdMessages['ml'] = array(
-	'ow_dm_OK' => 'ശരി',
+	'ow_history' => 'നാള്‍വഴി',
+	'ow_dm_OK'   => 'ശരി',
 );
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $wdMessages['mr'] = array(
 	'datasearch'                            => 'विकिविदा:विदा शोध',
@@ -1536,19 +1588,49 @@ $wdMessages['mr'] = array(
 	'ow_uipref_datasets'                    => 'अविचल दृश्य',
 	'ow_uiprefs'                            => 'विकिविदा',
 	'ow_none_selected'                      => '<कोणतेही निवडले नाही>',
+	'ow_conceptmapping_help'                => '<p>शक्य क्रिया: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  एक मॅपिंग टाका</li>
+<li>&action=get&concept=<concept_id>  एक मॅपिंग वाचा</li>
+<li>&action=list_sets  शक्य असलेले डाटा कन्टेक्स्ट उपपदांची यादी व ती काय दर्शवितात त्याच्यासकट द्या.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> एखाद्या विशिष्ट अर्थासाठी, इतर सर्व द्या</li>
+<li>&action=help  माहितीपूर्ण मदत दाखवा.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext'              => '<p>कन्सेप्ट मॅपिंग मुळे तुम्हाला एखाद्या डाटाबेस मध्ये असणारा अर्थ दुसर्‍या डाटाबेस मधल्या कुठल्या अर्थाशी तंतोतंत जुळतो हे कळते.</p>',
 	'ow_conceptmapping_no_action_specified' => '"$1" कसे करावे मला ठावूक नाही,क्षमस्व',
 	'ow_dm_OK'                              => 'ठीक',
 	'ow_dm_not_present'                     => 'भरले नाही',
 	'ow_dm_not_found'                       => 'विदेत सापडले नाही अथवा बरोबर नाही',
+	'ow_mapping_successful'                 => '[OK] लिहिलेले सर्व रकाने जोडले<br />',
+	'ow_mapping_unsuccessful'               => 'जोडण्यापूर्वी कमीतकमी दोन अर्थ असणे आवश्यक आहे.',
 	'ow_will_insert'                        => 'खालील भर घातली जाईल',
+	'ow_contents_of_mapping'                => 'मॅपिंगचे कंटेन्ट्स',
 	'ow_available_contexts'                 => 'उपलब्ध संदर्भ',
+	'ow_add_concept_link'                   => 'इतर कन्सेप्ट्सना दुवा द्या',
 	'ow_concept_panel'                      => 'संकल्पना दल',
+	'ow_dm_badtitle'                        => 'हे पान कुठल्याही DefinedMeaning (कन्सेप्ट) कडे निर्देश देत नाही.
+कृपया संकेतस्थळाचा पत्ता तपासा.',
+	'ow_dm_missing'                         => 'हे पान अस्तित्वात नसलेल्या DefinedMeaning (कन्सेप्ट) कडे निर्देश देते.
+कृपया संकेतस्थळाचा पत्ता तपासा.',
+	'ow_AlternativeDefinition'              => 'दुसरी व्याख्या',
+	'ow_AlternativeDefinitions'             => 'दुसर्‍या व्याख्या',
 	'ow_Annotation'                         => 'टीका-टिप्पणी',
+	'ow_ApproximateMeanings'                => 'जवळजवळ अर्थ',
+	'ow_ClassAttributeAttribute'            => 'एट्रिब्यूट',
+	'ow_ClassAttributes'                    => 'क्लास एट्रिब्यूट',
 	'ow_ClassAttributeLevel'                => 'पातळी',
 	'ow_ClassAttributeType'                 => 'प्रकार',
+	'ow_ClassMembership'                    => 'क्लास सदस्यत्व',
+	'ow_Collection'                         => 'कलेक्शन',
+	'ow_CollectionMembership'               => 'कलेक्शन सदस्यत्व',
 	'ow_Definition'                         => 'व्याख्या',
 	'ow_DefinedMeaningAttributes'           => 'टीका-टिप्पणी',
+	'ow_DefinedMeaning'                     => 'दिलेला अर्थ',
+	'ow_DefinedMeaningReference'            => 'दिलेला अर्थ',
 	'ow_ExactMeanings'                      => 'नेमका अर्थ',
+	'ow_Expression'                         => 'एक्स्प्रेशन',
+	'ow_ExpressionMeanings'                 => 'एक्स्प्रेशन अर्थ',
+	'ow_Expressions'                        => 'एक्स्प्रेशन्स',
+	'ow_IdenticalMeaning'                   => 'सारखा अर्थ?',
 	'ow_IncomingRelations'                  => 'येते संबध',
 	'ow_GotoSource'                         => 'स्रोताकडे जा',
 	'ow_Language'                           => 'भाषा',
@@ -1582,6 +1664,12 @@ $wdMessages['mr'] = array(
 	'ow_Permission_denied'                  => '<h2>परवानगी नाकारली</h2>',
 	'ow_copy_no_action_specified'           => 'कृपया कृती निर्देशीत करा',
 	'ow_copy_help'                          => 'एकदिवस आम्ही तुम्हाला मदत करु शकु',
+	'ow_please_proved_dmid'                 => 'असं दिसतंय की तुमच्या इनपुट मध्ये एक "?dmid=<ID>" (dmid=दिलेल्या अर्थाचा क्र) दिलेला नाही<br />
+कृपया सर्व्हर प्रबंधकाशी संपर्क करा.',
+	'ow_please_proved_dc1'                  => 'असं दिसतंय की तुमच्या इनपुट मध्ये एक "?dc1=<something>" (dc1=डाटासेट कन्टेक्स्ट 1, डाटासेट कुठून प्रत करायचा ते ठिकाण) दिलेले नाही<br />
+कृपया सर्व्हर प्रबंधकाशी संपर्क करा.',
+	'ow_please_proved_dc2'                  => 'असं दिसतंय की तुमच्या इनपुट मध्ये एक "?dc2=<something>" (dc2=डाटासेट कन्टेक्स्ट 2, डाटासेट कुठे प्रत करायचा ते ठिकाण) दिलेले नाही<br />
+कृपया सर्व्हर प्रबंधकाशी संपर्क करा.',
 	'ow_copy_successful'                    => '<h2>नक्कल यशस्वी</h2>तुमची विदा यशस्वीपणे नकलली गेल्याचे दिसते.निश्चित करण्यासाठी पुन्हाएकदा पडताळून पहा!',
 	'ow_copy_unsuccessful'                  => '<h3>नक्कल अयशस्वी</h3> नकलण्याचे कोणतेही काम झाले नाही.',
 	'ow_no_action_specified'                => '<h3>कोणतीही कृती सांगीतली नाही</h3>काय तुम्ही या पानापाशी सरळच पोहचले आहात? सर्वसाधारणता तुम्ही येथे पोहचण्याची आवशकता नाही.',

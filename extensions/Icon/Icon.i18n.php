@@ -108,6 +108,13 @@ $messages['hu'] = array(
 	'icon-badwidth' => 'Érvénytelen szélesség',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'icon-badimage' => 'Gambaré salah',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

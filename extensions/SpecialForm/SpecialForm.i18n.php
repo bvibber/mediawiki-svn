@@ -254,11 +254,14 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'form'                  => 'Formulaire',
+	'formpattern'           => '$1-Formulaire',
 	'formtitlepattern'      => 'Nei $1 derbäisetzen',
 	'formsave'              => 'Späicheren',
 	'formarticleexists'     => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename'       => 'Falsche Säitennumm',
+	'formsavesummary'       => 'Nei Säit, déi [[Special:Form/$1]] benotzt',
 );
 
 /** Marathi (मराठी)

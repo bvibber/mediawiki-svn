@@ -353,6 +353,23 @@ $allMessages['hu'] = array(
 	'whitelisttablemodifynone' => 'Nincs',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$allMessages['jv'] = array(
+	'whitelisttablemodifyall'  => 'Kabèh',
+	'whitelisttableedit'       => 'Sunting',
+	'whitelisttablenewdate'    => 'Tanggal Anyar:',
+	'whitelisttableremove'     => 'Busak',
+	'whitelistnewtabledate'    => 'Tanggal kadaluwarsa:',
+	'whitelistnewtableprocess' => 'Prosès',
+	'whitelistbadtitle'        => 'Judhul ala -',
+	'whitelistoverview'        => '== Paninjoan amba owah-owahan kanggo $1 ==',
+	'whitelistoverviewcd'      => "* Ngowahi tanggal menyang '''$1''' kanggo [[:$2|$2]]",
+	'whitelistrequest'         => 'Nyuwun aksès ing luwih akèh kaca',
+	'whitelistnever'           => 'ora tau',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -404,6 +421,8 @@ $allMessages['lb'] = array(
  */
 $allMessages['ml'] = array(
 	'whitelisttablemodifyall' => 'എല്ലാം',
+	'whitelisttableedit'      => 'തിരുത്തുക',
+	'whitelisttableremove'    => 'നീക്കം ചെയ്യുക',
 );
 
 /** Marathi (मराठी)
@@ -659,7 +678,14 @@ $allMessages['ps'] = array(
  * @author Malafaya
  */
 $allMessages['pt'] = array(
-	'whitelisttablemodify' => 'Modificar',
+	'mywhitelistpages'      => 'Minhas Páginas',
+	'whitelisttablemodify'  => 'Modificar',
+	'whitelisttableedit'    => 'Editar',
+	'whitelisttableview'    => 'Ver',
+	'whitelisttablenewdate' => 'Nova Data:',
+	'whitelistbadtitle'     => 'Titulo inválido -',
+	'whitelistnever'        => 'nunca',
+	'whitelistnummatches'   => '  - $1 resultados',
 );
 
 /** Russian (Русский)

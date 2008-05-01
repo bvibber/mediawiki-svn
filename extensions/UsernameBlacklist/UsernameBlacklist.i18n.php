@@ -45,6 +45,7 @@ $messages['an'] = array(
 # * [Pp]reba
 </pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|A linia|As linias}} siguients d'a lista negra de nombres d'usuarios no {{PLURAL:$1|ye|son}} correutas; por fabor, corricha-{{PLURAL:$1|lo|los}} antes d'alzar-la:",
+	'right-uboverride'                => "Inorar a lista negra de nombres d'usuarios",
 );
 
 /** Arabic (العربية)
@@ -64,6 +65,7 @@ $messages['ar'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|السطر التالي|السطور التالية}} في قائمة اسم المستخدم السوداء {{PLURAL:$1|غير صحيح|غير صحيحة}} ؛ من فضلك {{PLURAL:$1|صححه|صححها}} قبل الحفظ:',
+	'right-uboverride'                => 'تجاوز قائمة أسماء المستخدمين السوداء',
 );
 
 /** Asturian (Asturianu)
@@ -188,6 +190,7 @@ $messages['cs'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Následující {{plural:$1|řádka|řádky|řádky}} v&nbsp;seznamu nepovolených uživatelských jmen {{plural:$1|je neplatná|jsou neplatné|jsou neplatné}}; prosíme, opravte {{plural:$1|ji|je|je}} před uložením:',
+	'right-uboverride'                => 'Potlačení nepovolených uživatelských jmen',
 );
 
 /** Danish (Dansk)
@@ -301,6 +304,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Seb35
  * @author Sherbrooke
  * @author Urhixidur
@@ -320,6 +324,7 @@ $messages['fr'] = array(
 # * [Bb]ar
 </pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La ligne suivante|Les lignes suivantes}} de la liste noire des noms d'utilisateurs {{PLURAL:$1|est invalide|sont invalides}} ; veuillez {{PLURAL:$1|la|les}} corriger avant d'enregistrer :",
+	'right-uboverride'                => "Ignorer la liste noire des noms d'utilisateurs",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -400,6 +405,7 @@ $messages['hi'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'निम्नांकित {{PLURAL:$1|पंक्ति|पंक्तियाँ}} सदस्यनाम ब्लैकलिस्ट के लिए अमान्य {{PLURAL:$1|है|हैं}}; कृपया {{PLURAL:$1|इसे|इन्हें}} जमा करने से पहले ठीक करें:',
+	'right-uboverride'                => 'सदस्यनाम ब्लॅकलिस्ट को नजर अंदाज करें',
 );
 
 $messages['hr'] = array(
@@ -561,6 +567,7 @@ $messages['jv'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Èntri|Èntri}} ing daftar ireng jeneng panganggo {{PLURAL:$1|iki|iki}} ora absah; mangga benakna {{PLURAL:$1|èntri|èntri}} iku sadurungé disimpen:',
+	'right-uboverride'                => "''Override'' daftar ireng jeneng panganggo",
 );
 
 /* Kazakh Arabic (kk:AlefZet) */
@@ -723,6 +730,7 @@ $messages['mr'] = array(
 # * [बा]बल
 </pre>',
 	'usernameblacklist-invalid-lines' => 'सदस्यनम ब्लॉक यादीतील खालील {{PLURAL:$1|ओळ चुकीची आहे|ओळी चुकीच्या आहेत}}; कृपया जतन करण्यापूर्वी {{PLURAL:$1|ती|त्या}} दुरुस्त करा:',
+	'right-uboverride'                => 'सदस्य नाव ब्लॅक यादी कडे दुर्लक्ष करा',
 );
 
 $messages['nds'] = array(
@@ -784,7 +792,7 @@ $messages['nn'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Denne lina|Desse linene}} i lista over svartelista brukarnamn er {{PLURAL:$1|ugyldig|ugyldige}}, ver venleg og rett {{PLURAL:$1|henne|dei}} før du lagrar:',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -800,6 +808,7 @@ $messages['no'] = array(
 # * [Bb]jarne
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Følgende {{PLURAL:$1|linje|linjer}} i brukernavnsvartelista er {{PLURAL:$1|ugyldig|ugyldige}}; vennligst rett {{PLURAL:$1|den|dem}} før du lagrer:',
+	'right-uboverride'                => 'Overkjøre brukernavnsvartelisten',
 );
 
 /** Occitan (Occitan)
@@ -811,6 +820,7 @@ $messages['oc'] = array(
 	'blacklistedusernametext'         => "Lo nom d’utilizaire qu'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.",
 	'usernameblacklist'               => "<pre> # Las dintradas d'aquesta lista seràn utilizadas en tant qu'expressions regularas # per empachar la creacion de noms d'utilizaires interdiches. Cada item deu # far partida d'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La linha seguenta|Las linhas seguentas}} de la lista negra dels noms d'utilizaires {{PLURAL:$1|es invalida|son invalidas}} ; corregissetz-{{PLURAL:$1|la|las}} abans d'enregistrar :",
+	'right-uboverride'                => "Ignorar la lista negra dels noms d'utilizaires",
 );
 
 /** Polish (Polski)
@@ -830,6 +840,7 @@ $messages['pl'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na liście zabronionych nazw użytkowników {{PLURAL:$1|jest niepoprawna|są niepoprawne}} ; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
+	'right-uboverride'                => 'Zarządzanie listą zabronionych nazw użytkowników',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -857,6 +868,7 @@ $messages['pt'] = array(
 # * [Ff]ulano
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por favor,  corrija-{{PLURAL:$1|a|as}} antes de gravar as alterações:',
+	'right-uboverride'                => 'Sobrepor a lista negra de nomes de utilizador',
 );
 
 /** Quechua (Runa Simi)
@@ -931,6 +943,7 @@ $messages['sk'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Nasledovný riadok|Nasledovné riadky}} čiernej listiny používateľských mien {{PLURAL:$1|je neplatný|sú neplatné}} a je potrebné {{PLURAL:$1|ho|ich}} opraviť pred uložením stránky:',
+	'right-uboverride'                => 'Prekonať čiernu listinu mien používateľov',
 );
 
 /** Seeltersk (Seeltersk)
@@ -970,6 +983,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author SPQRobin
  */
 $messages['sv'] = array(
@@ -985,6 +999,7 @@ $messages['sv'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Följande {{PLURAL:$1|rad|rader}} i listan är {{PLURAL:$1|ogiltig|ogiltiga}}; rätta {{PLURAL:$1|den|dem}} innan du sparar:',
+	'right-uboverride'                => 'Upphäva den svarta listan över användarnamn',
 );
 
 /** Telugu (తెలుగు)
@@ -1064,6 +1079,7 @@ $messages['vec'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} de l'elenco dei nomi utente mìa consentìi {{PLURAL:$1|no la xe valida|no le xe valide}}; se prega de corègiar {{PLURAL:$1|l'eror|i eror}} prima de salvar la pagina.",
+	'right-uboverride'                => 'Ignora la lista nera dei nomi utente',
 );
 
 /** Vietnamese (Tiếng Việt)

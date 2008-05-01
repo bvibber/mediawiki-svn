@@ -24,8 +24,13 @@ $messages['bcl'] = array(
 	'contributionseditcount' => 'An parágamit na ini igwang $1 na mga hirá.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ * @author Spiritia
+ */
 $messages['bg'] = array(
-	'contributionseditcount' => 'Този потребител е направил $1 редакции.',
+	'contributionseditcount'      => 'Този потребител е направил $1 редакции.',
+	'contributionseditcount-desc' => 'Показва броят редакции на [[Special:Contributions]]',
 );
 
 $messages['bn'] = array(

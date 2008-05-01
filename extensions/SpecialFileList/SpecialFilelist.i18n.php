@@ -134,7 +134,10 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'filelist' => 'Listo de Dosieroj',
+	'filelist'              => 'Listo de Dosieroj',
+	'filelist-desc'         => 'Speciala paĝo por listigi alŝutitajn dosierojn',
+	'filelist-show-list'    => 'Montru liston',
+	'filelist-show-gallery' => 'Montru galerion',
 );
 
 /** Võro (Võro)

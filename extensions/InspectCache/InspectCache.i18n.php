@@ -192,6 +192,14 @@ $messages['hu'] = array(
 	'inspectcache-list'    => 'Listázás',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'inspectcache-delete'  => 'Busak',
+	'inspectcache-deleted' => 'Cache wis dikosongaké',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran
@@ -209,6 +217,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'inspectcache-ok'      => 'Lass',
 	'inspectcache-get'     => 'Kréien',
 	'inspectcache-delete'  => 'Läschen',
 	'inspectcache-deleted' => 'Cache läschen',
@@ -219,7 +228,8 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'inspectcache-ok' => 'ശരി',
+	'inspectcache-ok'     => 'ശരി',
+	'inspectcache-delete' => 'മായ്ക്കുക',
 );
 
 /** Marathi (मराठी)

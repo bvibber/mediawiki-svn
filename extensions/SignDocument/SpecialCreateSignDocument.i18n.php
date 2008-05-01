@@ -176,17 +176,24 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'createsigndoc-pagename'      => 'Paĝo:',
-	'createsigndoc-email'         => 'Retpoŝta adreso',
-	'createsigndoc-address'       => 'Hejma Adreso:',
-	'createsigndoc-extaddress'    => 'Urbo, Subŝtato, Lando:',
-	'createsigndoc-phone'         => 'Nombro de telefono:',
-	'createsigndoc-bday'          => 'Naskodato:',
-	'createsigndoc-minage'        => 'Minimuma aĝo:',
-	'createsigndoc-hidden'        => 'Kaŝita',
-	'createsigndoc-optional'      => 'Nedeviga',
-	'createsigndoc-create'        => 'Kreu',
-	'createsigndoc-error-generic' => 'Eraro: $1',
+	'createsigndocument'                 => 'Ebligu Dokumentan Subskribadon',
+	'createsigndoc-pagename'             => 'Paĝo:',
+	'createsigndoc-allowedgroup'         => 'Permesita grupo:',
+	'createsigndoc-email'                => 'Retpoŝta adreso',
+	'createsigndoc-address'              => 'Hejma Adreso:',
+	'createsigndoc-extaddress'           => 'Urbo, Subŝtato, Lando:',
+	'createsigndoc-phone'                => 'Nombro de telefono:',
+	'createsigndoc-bday'                 => 'Naskodato:',
+	'createsigndoc-minage'               => 'Minimuma aĝo:',
+	'createsigndoc-introtext'            => 'Enkonduko:',
+	'createsigndoc-hidden'               => 'Kaŝita',
+	'createsigndoc-optional'             => 'Nedeviga',
+	'createsigndoc-create'               => 'Kreu',
+	'createsigndoc-error-generic'        => 'Eraro: $1',
+	'createsigndoc-error-pagenoexist'    => 'Eraro: La paĝo [[$1]] ne ekzistas.',
+	'createsigndoc-success'              => 'Dokumenta subskribado estis sukcese ebligita ĉe [[$1]].
+Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ĉi tiun paĝon].',
+	'createsigndoc-error-alreadycreated' => 'Subskribado de dokumento "$1" jam ekzistas.',
 );
 
 $messages['ext'] = array(
@@ -298,6 +305,17 @@ $messages['is'] = array(
 	'createsigndoc-pagename' => 'Síða:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'createsigndoc-email'      => 'Alamat e-mail:',
+	'createsigndoc-address'    => 'Alamat omah:',
+	'createsigndoc-extaddress' => 'Kutha, Negara bagéyan, Negara:',
+	'createsigndoc-phone'      => 'Nomer tilpun:',
+	'createsigndoc-minage'     => 'Umur minimum:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran
@@ -338,6 +356,13 @@ $messages['lb'] = array(
 	'createsigndoc-hidden'            => 'Verstoppt',
 	'createsigndoc-error-generic'     => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'createsigndoc-pagename' => 'താള്‍:',
 );
 
 /** Marathi (मराठी)

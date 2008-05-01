@@ -157,6 +157,13 @@ $messages['it'] = array(
 	'profiling-no-data' => 'Nessun dato corrispondente.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

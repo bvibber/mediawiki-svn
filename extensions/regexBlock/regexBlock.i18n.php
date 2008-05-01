@@ -514,6 +514,15 @@ $messages['is'] = array(
 	'regexblock-stats-username' => 'Fyrir $1',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'regexblock-form-username' => 'Alamat IP utawa jeneng panganggo:',
+	'regexblock-view-all'      => 'Kabèh',
+	'regexblock-view-go'       => 'Golèk',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -563,8 +572,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'regexblock-view-all' => 'എല്ലാം',
-	'regexblock-view-go'  => 'പോകൂ',
+	'regexblock-form-reason' => 'കാരണം:',
+	'regexblock-form-expiry' => 'കാലാവധി:&#160;',
+	'regexblock-view-all'    => 'എല്ലാം',
+	'regexblock-view-go'     => 'പോകൂ',
 );
 
 /** Marathi (मराठी)
@@ -1011,16 +1022,61 @@ $messages['sr-ec'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
+	'regexblock'                      => 'Regex-blockering',
+	'regexblock-desc'                 => 'Tillägg som används för att blockera användarnamn och IP-adresser med hjälp av reguljära uttryck. Innehåller både blockeringsmekansimen och en [[Special:Regexblock|specialsida]] för att lägga till och ändra blockeringar',
+	'regexblock-special-desc'         => 'alternativ användarblockering (med angivet namn, med hjälp av reguljära uttryck)',
+	'regexblock-stat-desc'            => "Visar [[Special:Regexblockstats|blockeringstatistik]] för tillägget ''regexblock''",
+	'regexblock-page-title'           => 'Blockering med hjälp av reguljära uttryck',
+	'regexblockstats'                 => 'Regex-blockeringsstatistik',
+	'regexblock-reason-ip'            => 'Den här IP-adressen är hindrad från att redigera på grund av vandalism eller annan förstörelse av dig eller någon annan som använder samma IP-adress.
+Om du menar att detta är ett fel, var god $1',
+	'regexblock-reason-name'          => 'Det här användarnamnet är hindrad från att redigera på grund av vandalism eller annan förstörelse.
+Om du menar att detta är ett fel, var god $1',
+	'regexblock-reason-regex'         => 'Den här IP-adressen är hindrad från att redigera på grund av vandalism eller annan förstörelse av en användare med liknande namn. 
+Var god skapa ett annat användarnamn eller $1 om problemet.',
+	'regexblock-help'                 => 'Använd formuläret nedan för att blockera vissa IP-adresser eller användarnamn från att redigera. 
+Det här borde endast göras för att förhindra vandalism, i följd med riktlinjerna.
+\'\'Den här sidan låter dig även blockera ej existerande användare, och kommer också blockera användare med liknande namn. t.ex. kommer "Test" blockeras samtidigt med "Test 2" o.s.v.
+Du kan också blockera fulla IP-adresser, vilket betyder att ingen som loggar in via dessa kan redigera sidor.
+Notera att delvisa IP-adresser kommer behandlas som användarnamn under blockering.
+Om ingen beskrivning uppges kommer en standardbeskrivning användas.\'\'',
+	'regexblock-page-title-1'         => 'Blockera adress med hjälp av reguljära uttryck',
+	'regexblock-unblock-success'      => 'Avblockering lyckades',
+	'regexblock-unblock-log'          => "Användarnamnet eller IP-adressen '''$1''' har avblockerats",
+	'regexblock-unblock-error'        => 'Fel under avblockering av $1.
+Troligen så finns det ingen användare med det namnet.',
 	'regexblock-form-username'        => 'IP adress eller användarnamn:',
 	'regexblock-form-reason'          => 'Anledning:',
 	'regexblock-form-expiry'          => 'Utgång:&#160;',
+	'regexblock-form-match'           => 'Exakt träff',
+	'regexblock-form-account-block'   => 'Blockera skapandet av nya konton',
+	'regexblock-form-submit'          => 'Blockera&nbsp;den här&nbsp;användaren',
+	'regexblock-block-log'            => "Användarnamnet eller IP-adressen '''$1''' har blockerats.",
+	'regexblock-block-success'        => 'Blockering lyckades',
+	'regexblock-form-submit-empty'    => 'Ange ett användarnamn eller en IP-adress att blockera.',
+	'regexblock-form-submit-regex'    => 'Ogiltigt reguljärt uttryck',
+	'regexblock-form-submit-expiry'   => 'Var god ange en utgångstid.',
+	'regexblock-already-blocked'      => '"$1" är redan blockerad.',
+	'regexblock-stats-title'          => 'Regex-blockeringsstatistik',
 	'regexblock-stats-username'       => 'För $1',
+	'regexblock-stats-times'          => 'blev blockerad',
+	'regexblock-stats-logging'        => 'loggar in från adressen',
+	'regexblock-currently-blocked'    => 'Nuvarande blockerade adresser:',
+	'regexblock-view-blocked'         => 'Visa de blockerade efter:',
 	'regexblock-view-all'             => 'Alla',
 	'regexblock-view-go'              => 'Gå',
+	'regexblock-view-match'           => '(exakt träff)',
+	'regexblock-view-regex'           => '(regex-träff)',
+	'regexblock-view-account'         => '(kontoskapande blockerat)',
 	'regexblock-view-reason'          => 'anledning: $1',
+	'regexblock-view-reason-default'  => 'generisk grund',
+	'regexblock-view-block-infinite'  => 'permanent blockering',
 	'regexblock-view-block-temporary' => 'utgår på',
 	'regexblock-view-block-expired'   => 'GICK UT på',
 	'regexblock-view-block-by'        => 'blockerad av',
+	'regexblock-view-block-unblock'   => 'avblockera',
+	'regexblock-view-stats'           => '(statistik)',
+	'regexblock-view-empty'           => 'Listan över blockerade namn och adresser är tom.',
 	'regexblock-view-time'            => 'på $1',
 );
 

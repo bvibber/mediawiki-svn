@@ -162,7 +162,10 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'findspam' => 'Golèk spam',
+	'findspam'             => 'Golèk spam',
+	'findspam-ip'          => 'Alamat IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Ora ditemokaké kontribusi',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -188,11 +191,12 @@ $messages['lb'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'findspam'             => 'സ്പാം(spam) കണ്ടെത്തുക',
 	'findspam-desc'        => 'പുതുതായി ചേര്‍ക്കപ്പെട്ട സ്പാം കണ്ടെത്താനുതകുന്ന [[Special:FindSpam|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
-	'findspam-ip'          => 'IP വിലാസം:',
+	'findspam-ip'          => 'ഐപി വിലാസം:',
 	'findspam-ok'          => 'ശരി',
 	'findspam-notextfound' => 'സംഭാവനകളൊന്നും കണ്ടെത്താനായില്ല',
 );

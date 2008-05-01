@@ -113,6 +113,20 @@ $messages['hi'] = array(
 	'onlinestatus-toggle-online'    => 'ओनलाइन',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'onlinestatus-desc'             => 'Omogućuje postavku prikazivanja suradnikove prisutnosti na wiki',
+	'onlinestatus-subtitle-offline' => 'Ovaj suradnik trenutačno nije spojen',
+	'onlinestatus-subtitle-online'  => 'Ovaj je suradnik trenutačno spojen',
+	'onlinestatus-toggles-desc'     => 'Tvoj status:',
+	'onlinestatus-toggles-explain'  => 'Ovo omogućava da drugi suradnici uoče tvoju prisutnost kada gledaju tvoju suradničku stranicu.',
+	'onlinestatus-toggles-show'     => 'Prikaži da sam spojen na mojoj suradničkoj stranici',
+	'onlinestatus-toggle-offline'   => 'Nije spojen',
+	'onlinestatus-toggle-online'    => 'Spojen',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -199,8 +213,10 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
+	'onlinestatus-desc'         => 'Adiciona uma preferência para mostrar se o utilizador está correntemente presente no wiki ou não',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 );
 
@@ -244,6 +260,20 @@ $messages['sv'] = array(
 	'onlinestatus-toggles-show'     => 'Visa anslutningsstatus på min användarsida',
 	'onlinestatus-toggle-offline'   => 'Ej ansluten',
 	'onlinestatus-toggle-online'    => 'Ansluten',
+);
+
+/** Tamil (தமிழ்)
+ * @author Trengarasu
+ */
+$messages['ta'] = array(
+	'onlinestatus-desc'             => 'பயனர் இணைப்பில் உள்ளாரா இல்லையா என்பதைக் காட்ட விருப்பத்தேர்வு இணைக்கப்படுகிறது',
+	'onlinestatus-subtitle-offline' => 'இந்தப் பயனர் தற்போது இணைப்பிலில்லை',
+	'onlinestatus-subtitle-online'  => 'இந்தப் பயனர் தற்போது இணைப்பிலுள்ளார்',
+	'onlinestatus-toggles-desc'     => 'உங்களது நிலை:',
+	'onlinestatus-toggles-explain'  => 'இது நீங்கள் இணைப்பில் உள்ளீர்களா இல்லையா என்பதை உங்கள் பயனர் பக்கத்தைப் பார்பதன் மூல்ம் ஏனைய பயனர்களுக்கு காட்ட உதவும்.',
+	'onlinestatus-toggles-show'     => 'நான் இணைப்பில் உள்ளேனா இல்லையா என்பதை பயனர் பக்கத்தில் காட்டுக',
+	'onlinestatus-toggle-offline'   => 'இணைப்பிலில்லை',
+	'onlinestatus-toggle-online'    => 'இணைப்பில்',
 );
 
 /** Vietnamese (Tiếng Việt)

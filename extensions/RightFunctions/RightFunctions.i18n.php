@@ -32,6 +32,15 @@ $messages['bg'] = array(
 	'rightfunctions-restcasc' => '$1 (от каскадни източници)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'rightfunctions'          => 'Rajtecaj funkcioj de sintaksaj analiziloj',
+	'rightfunctions-restboth' => '$1 (de loka paĝo), $2 (de rilataj fontoj)',
+	'rightfunctions-restcasc' => '$1 (de rilataj fontoj)',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -123,10 +132,13 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'rightfunctions' => 'Parserfunktioner som är baserade på användarrättigheter',
+	'rightfunctions'          => 'Parserfunktioner som är baserade på användarrättigheter',
+	'rightfunctions-restboth' => '$1 (från lokal sida), $2 (från kaskaderade källor)',
+	'rightfunctions-restcasc' => '$1 (från kaskaderade källor)',
 );
 
 /** Vietnamese (Tiếng Việt)

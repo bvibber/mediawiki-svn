@@ -443,7 +443,8 @@ $messages['ilo'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
-	'createarticle' => 'Krear pagino',
+	'searchfulltext' => 'Serchar tota texto',
+	'createarticle'  => 'Krear pagino',
 );
 
 /** Icelandic (Íslenska)

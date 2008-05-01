@@ -148,6 +148,14 @@ $messages['hu'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Összes kiválasztott felhasználó hozzáadása',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'whoiswatching'               => 'Sapa sing ngawasi sawijining kaca wiki',
+	'specialwhoiswatchingthepage' => 'Sapa sing ngawasi %s',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

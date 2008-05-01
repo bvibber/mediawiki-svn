@@ -1007,8 +1007,14 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'math_IllegalCharacter'    => 'Ana karakter ilegal sing dilebokaké',
-	'math_UnrecognisedCommand' => 'Paréntah "$1" ora ditepungi',
+	'math_CannotCreateTexFile'   => 'Ora bisa nggawé berkas tex',
+	'math_CannotRunLatex'        => 'Ora bisa nglakokaké latex',
+	'math_CannotWriteTexFile'    => 'Ora bisa nulis in berkas tex',
+	'math_IllegalCharacter'      => 'Ana karakter ilegal sing dilebokaké',
+	'math_InvalidColour'         => 'Warna "$1" iku ora absah',
+	'math_LatexFontNotSpecified' => 'Ora ana font LaTeX sing dispésifikasi kanggo "$1"',
+	'math_TooManyTokens'         => 'Input-é kedawan',
+	'math_UnrecognisedCommand'   => 'Paréntah "$1" ora ditepungi',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1044,6 +1050,14 @@ $messages['lb'] = array(
 	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'math_InvalidColour'         => '"$1" എന്ന നിറം അസാധുവാണ്‌',
+	'math_MismatchedBeginAndEnd' => '"$1"  "$2" എന്നീ രണ്ട് നിര്‍ദ്ദേശങ്ങള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
 );
 
 /** Marathi (मराठी)

@@ -2461,6 +2461,9 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'boardvote'              => 'Wale fir de Wikimedia Board of Trustees',
 	'boardvote-desc'         => "[[meta:Board elections|Wale vum Conseil d'administration vu Wikimedia]]",
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Ofstëmmen]]
+* [[Special:Boardvote/list|Lëscht vun de Stëmmen bis haut]]
+* [[Special:Boardvote/dump|Verschlësselt Donnéeë vun der Ofstëmmung]]',
 	'boardvote_intro'        => "<p>Wëllkomm bei der zweeter Wal fir de Wikimedia Board of Trustees. Et ginn zwou Persoune gewielt, déi d'Benotzer vun de verschiddene Wikimedia-Projete representéieren. Si wäerten dobäi hëllefe fir z'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéieren. Si wäerten och dobäi hëllefen, Konzepter z'entwéckelen, fir d'Recetten an d'Spende fir Wikimedia z'erhéijen.</p>
 
 <p>Liest w.e.g. d'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d'Verbreedung vu fräiem Wëssen aluet.</p>
@@ -2493,6 +2496,8 @@ Fir ze wiele musst Dir e Benotzerkont matt mindestens $1 Kontributioune virum $2
 	'boardvote_days'         => 'Deeg',
 	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Vertrieder vum Benotzer',
+	'boardvote_listintro'    => '<p>Dëst ass eng Lëscht mat all Stëmmen déi bis haut gespäichert goufen.
+$1 fir déi verschlëselt Daten.</p>',
 	'boardvote_dumplink'     => 'Hei klicken',
 	'boardvote_submit'       => 'Ofstëmmen',
 	'boardvote_strike'       => 'Stëmm läschen',
@@ -2509,6 +2514,11 @@ dir kënnt bis den 12. Juli ofstëmmen',
 	'boardvote_blocked'      => 'Dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
 	'boardvote_welcome'      => "Wëllkomm '''$1'''!",
 	'go_to_board_vote'       => '"Wikimedia Board" Walen 2007',
+	'boardvote_redirecting'  => "Aus Sécherheetsgrënn a wéinst der Transparenz sinn d'Walen op engem externen an onofhägeg kontrolléierte Server.
+
+Dir gitt an 20 Sekonnen op dësen externe Server virugeleed. [$1 Klickt hei] fir elo dohinn ze goen.
+
+Eng Sécherheetswarnung iwwer een net ënnerschriwwenen Zertifikat kann ugewise ginn.",
 );
 
 /** Lezghian (Лезги)
@@ -3924,6 +3934,13 @@ $1 för de krypterade uppgifterna.</p>',
 Du kommer bli omdirigerad till den externa servern inom 20 sekunder. [$1 Klicka här] för att gå dit nu.
 
 En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'boardvote_ip' => 'IP',
 );
 
 /** Tamil (தமிழ்)

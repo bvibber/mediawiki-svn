@@ -148,6 +148,21 @@ $messages['is'] = array(
 	'categoryintersection-results' => 'Leitin skilaði $1 {{PLURAL:$1|útkomu|útkomum}}.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'categoryintersection'      => 'Intersèksi Kategori',
+	'categoryintersection-doit' => 'Deleng kaca-kaca ing kabèh kategori iki',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -163,6 +178,13 @@ $messages['lb'] = array(
  */
 $messages['lo'] = array(
 	'categoryintersection-doit' => 'ສະແດງລາຍຊື່ໜ້າທີ່ຢູ່ໃນໝວດເຫຼົ່ານີ້',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'categoryintersection-doit' => 'ഈ വിഭാഗത്തിലുള്ള താളുകളെല്ലാം പ്രദര്‍ശിപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

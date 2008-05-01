@@ -204,6 +204,13 @@ $messages['hu'] = array(
 	'lookupuser_useroptions'       => 'Beállításai:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'lookupuser_realname' => 'Jeneng asli: $1',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -228,6 +235,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'lookupuser'                   => 'Benotzerinformatiounen nokucken',
 	'lookupuser_intro'             => "Gitt e Benotzernumm an fir d'Astellungen vun dem Benotzer ze kucken.",
 	'lookupuser_nonexistent'       => 'Feeler: De Benotzer gëtt et net',
 	'lookupuser_not_authenticated' => 'net identifizéiert',

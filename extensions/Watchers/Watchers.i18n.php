@@ -175,6 +175,15 @@ $messages['it'] = array(
 	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'watchers_link_title'    => 'Sapa sing ngawasi kaca iki?',
+	'watchers_error_article' => '<b>Kaluputan:</b> Kaca iki ora ana.',
+	'watchers_noone_watches' => 'Ora ana sing ngawasi kaca iki.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran

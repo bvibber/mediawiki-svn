@@ -200,6 +200,13 @@ Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 Twój přećelny zdźělenski system %s.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'tasklistemail' => '%s sing minulya',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran

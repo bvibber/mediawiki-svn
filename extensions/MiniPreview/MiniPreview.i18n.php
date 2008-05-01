@@ -147,6 +147,13 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 * Saját',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'minipreview-no_category_gallery' => 'Ora ana kategori utawa galeri!',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

@@ -1817,6 +1817,7 @@ $messages['tg-cyrl'] = array(
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  * @author Srhat
+ * @author Mach
  */
 $messages['tr'] = array(
 	'ogg-short-audio'       => 'Ogg $1 ses dosyası, $2',
@@ -1837,6 +1838,7 @@ $messages['tr'] = array(
 	'ogg-player-selected'   => '(seçilmiş)',
 	'ogg-more'              => 'Daha...',
 	'ogg-dismiss'           => 'Kapat',
+	'ogg-download'          => 'Dosya indir',
 	'ogg-desc-link'         => 'Bu dosya hakkında',
 );
 

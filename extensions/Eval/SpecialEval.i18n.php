@@ -117,6 +117,14 @@ $messages['ja'] = array(
 	'eval_code'   => 'コード',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'eval_submit' => 'Évaluasi',
+	'eval_code'   => 'Kode',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Chhorran

@@ -71,6 +71,7 @@ $messages['an'] = array(
 	'group-oversight'             => 'Superbisors',
 	'group-oversight-member'      => 'Superbisor',
 	'grouppage-oversight'         => '{{ns:project}}:Superbisión',
+	'right-oversight'             => 'Amostrar una bersión prebiament amagata',
 	'hiderevision-prompt'         => 'Numero de bersión á borrar:',
 	'hiderevision-continue'       => 'Continar',
 	'hiderevision-text'           => "'''Nomás''' d'ha de fer serbir esto en os casos siguients:
@@ -114,6 +115,7 @@ $messages['ar'] = array(
 	'group-oversight'             => 'مستخدمون أوفرسايت',
 	'group-oversight-member'      => 'أوفرسايت',
 	'grouppage-oversight'         => '{{ns:project}}:أوفرسايت',
+	'right-oversight'             => 'رؤية نسخة مخفية سابقة',
 	'hiderevision-prompt'         => 'رقم النسخة للإزالة:',
 	'hiderevision-continue'       => 'استمر',
 	'hiderevision-text'           => "هذا يجب أن يستخدم '''فقط''' في الحالات التالية:
@@ -292,6 +294,7 @@ $messages['co'] = array(
  * @author Matěj Grabovský
  * @author Li-sung
  * @author Sp5uhe
+ * @author Danny B.
  */
 $messages['cs'] = array(
 	'hiderevision'                => 'Natrvalo skrýt revize',
@@ -299,6 +302,7 @@ $messages['cs'] = array(
 	'group-oversight'             => 'Dozorci',
 	'group-oversight-member'      => 'Dozorce',
 	'grouppage-oversight'         => '{{ns:Project}}:Dozorci',
+	'right-oversight'             => 'Zobrazování dříve skryté revize',
 	'hiderevision-prompt'         => 'Číslo revize, která se má odstranit:',
 	'hiderevision-continue'       => 'Pokračovat',
 	'hiderevision-text'           => "Tato funkce by se měla využívat '''pouze''' v následujících případech:
@@ -541,6 +545,7 @@ $messages['fo'] = array(
  * @author Urhixidur
  * @author Meithal
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'hiderevision'                => 'Cacher définitivement les révisions',
@@ -548,6 +553,7 @@ $messages['fr'] = array(
 	'group-oversight'             => 'Superviseurs',
 	'group-oversight-member'      => 'Superviseur',
 	'grouppage-oversight'         => '{{ns:project}}:Superviseur',
+	'right-oversight'             => 'Voir les révisions précédemment cachées',
 	'hiderevision-prompt'         => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue'       => 'Continuer',
 	'hiderevision-text'           => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
@@ -713,6 +719,7 @@ $messages['hi'] = array(
 	'group-oversight'             => 'ओवरसाईट अधिकारी',
 	'group-oversight-member'      => 'ओवरसाईट',
 	'grouppage-oversight'         => '{{ns:project}}:ओवरसाईट',
+	'right-oversight'             => 'पहले छुपाया हुआ अवतरण देखें',
 	'hiderevision-prompt'         => 'हटाने योग्य अवतरण का क्रमांक:',
 	'hiderevision-continue'       => 'कन्टिन्यू',
 	'hiderevision-text'           => "यह '''केवल''' निम्न स्थितियों में उपयोगी है:
@@ -1054,6 +1061,7 @@ $messages['jv'] = array(
 	'group-oversight'             => 'Oversighters (Para pambusak révisi)',
 	'group-oversight-member'      => 'Oversight (Pambusak révisi)',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight (Pambusak révisi)',
+	'right-oversight'             => 'Ndeleng révisi sing sadurungé didelikaké',
 	'hiderevision-prompt'         => 'Nomer révisi sing kudu diilangi:',
 	'hiderevision-continue'       => 'Banjurna',
 	'hiderevision-text'           => "Iki '''namung''' bisa dienggo ing kasus-kasus kaya ta:
@@ -1241,6 +1249,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'hiderevision'                => 'Versioune definitiv verstoppen',
 	'hiderevision-desc'           => 'Eenzel Versioune fir all Benotzer aus legalen an aneren Uursaachen definitiv verstoppen',
+	'right-oversight'             => 'Eng virdru verstoppte Versioun weisen',
 	'hiderevision-prompt'         => 'Versiounsnummer déi geläscht gi soll:',
 	'hiderevision-continue'       => 'Weider',
 	'hiderevision-reason'         => 'Grond (gëtt verstoppt ofgespäichert)',
@@ -1249,6 +1258,7 @@ $messages['lb'] = array(
 	'hiderevision-norevisions'    => 'Keng Versioun uginn déi soll geläscht ginn.',
 	'hiderevision-noreason'       => 'Dir musst de Grond fir dës Läschung uginn.',
 	'hiderevision-status'         => 'Versioun $1: $2',
+	'hiderevision-success'        => 'Archivéiert a geläscht.',
 	'hiderevision-error-missing'  => 'Net an der Datebank fonnt.',
 	'hiderevision-error-current'  => "Déi läscht Ännerung vun enger Säit kann net geläscht ginn.
 Annulléiert dës Ännerung d'éischt.",
@@ -1358,6 +1368,7 @@ $messages['mr'] = array(
 	'group-oversight'             => 'झापडबंद अधिकारी',
 	'group-oversight-member'      => 'झापडबंद',
 	'grouppage-oversight'         => '{{ns:project}}:झापडबंद',
+	'right-oversight'             => 'पूर्वी लपविलेली आवृत्ती पहा',
 	'hiderevision-prompt'         => 'वगळण्यासाठीच्या आवृत्तीचा क्रमांक:',
 	'hiderevision-continue'       => 'पुढे चालू',
 	'hiderevision-text'           => "हे '''फक्त''' खालील वेळीच वापरले पाहिजे:
@@ -1523,6 +1534,7 @@ $messages['no'] = array(
 	'group-oversight'             => 'Revisjonsslettere',
 	'group-oversight-member'      => 'Revisjonssletter',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
+	'right-oversight'             => 'Vise tidligere slettede revisjoner',
 	'hiderevision-prompt'         => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue'       => 'Fortsett',
 	'hiderevision-text'           => "Dette burde '''kun''' brukes i følgende saker:
@@ -1564,6 +1576,7 @@ $messages['oc'] = array(
 	'group-oversight'             => 'Supervisaires',
 	'group-oversight-member'      => 'Supervisaire',
 	'grouppage-oversight'         => '{{ns:project}}:Supervisaire',
+	'right-oversight'             => 'Veire las revisions precedentament amagadas',
 	'hiderevision-prompt'         => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue'       => 'Contunhar',
 	'hiderevision-text'           => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
@@ -1614,6 +1627,7 @@ $messages['pl'] = array(
 	'group-oversight'             => 'Rewizorzy',
 	'group-oversight-member'      => 'Rewizor',
 	'grouppage-oversight'         => '{{ns:project}}:Rewizorzy',
+	'right-oversight'             => 'Podgląd ukrytych wersji',
 	'hiderevision-prompt'         => 'Numer wersji do usunięcia:',
 	'hiderevision-continue'       => 'Kontynuuj',
 	'hiderevision-text'           => "Funkcja powinna być użyta '''jedynie''' w następujących przypadkach:
@@ -1701,6 +1715,7 @@ $messages['pt'] = array(
 	'group-oversight'             => 'Oversighters',
 	'group-oversight-member'      => 'Oversight',
 	'grouppage-oversight'         => '{{ns:project}}:Oversight',
+	'right-oversight'             => 'Ver uma revisão previamente ocultada',
 	'hiderevision-prompt'         => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue'       => 'Avançar',
 	'hiderevision-text'           => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
@@ -1838,6 +1853,7 @@ $messages['sk'] = array(
 	'group-oversight'             => 'Dozorcovia',
 	'group-oversight-member'      => 'Dozorca',
 	'grouppage-oversight'         => '{{ns:project}}:Dozorcovia',
+	'right-oversight'             => 'Zobraziť predtým skrytú revíziu',
 	'hiderevision-prompt'         => 'Číslo revízie, ktorá sa má odstrániť:',
 	'hiderevision-continue'       => 'Pokračovať',
 	'hiderevision-text'           => "Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:
@@ -2026,6 +2042,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Jon Harald Søby
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'hiderevision'                => 'Dölj sidversioner permanent',
@@ -2033,6 +2050,7 @@ $messages['sv'] = array(
 	'group-oversight'             => 'Översynare',
 	'group-oversight-member'      => 'Översynare',
 	'grouppage-oversight'         => '{{ns:project}}:Översyn',
+	'right-oversight'             => 'Visa tidigare dolda versioner',
 	'hiderevision-prompt'         => 'Nummer för sidversionen som ska tas bort:',
 	'hiderevision-continue'       => 'Fortsätt',
 	'hiderevision-text'           => "Översyn ska användas '''endast''' i följande fall:
@@ -2163,6 +2181,7 @@ $messages['uk'] = array(
 	'group-oversight'             => 'Ревізори',
 	'group-oversight-member'      => 'ревізор',
 	'grouppage-oversight'         => '{{ns:project}}:Ревізори',
+	'right-oversight'             => 'Перегляд прихованих версій',
 	'hiderevision-prompt'         => 'Номер версії, яку потрібно приховати',
 	'hiderevision-continue'       => 'Продовжити',
 	'hiderevision-text'           => "Ця сторінка повинна використовуватися '''тільки''' у випадках:
@@ -2206,6 +2225,7 @@ $messages['vec'] = array(
 	'group-oversight'             => 'Supervisori',
 	'group-oversight-member'      => 'Supervision',
 	'grouppage-oversight'         => '{{ns:project}}:Supervision',
+	'right-oversight'             => 'Varda na revision sconta in precedensa',
 	'hiderevision-prompt'         => 'Nùmaro de la revision da oscurar:',
 	'hiderevision-continue'       => 'Continua',
 	'hiderevision-text'           => "Sta funzion la gà da èssar doparà '''unicamente''' nei seguenti casi:

@@ -229,12 +229,16 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'review_sidebar_title'          => 'Kontrolu',
+	'review_page_link'              => 'rigardu statistikojn',
 	'review_error'                  => 'Io fuŝas!',
 	'review_statistics_left_corner' => 'Revizio',
 	'review_version_link'           => 'Revizio #$1',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_user_details_link'      => '(detaloj)',
+	'review_blocked'                => 'Vi estas forbarita. Foriru.',
+	'review_topic'                  => 'Temo',
 	'review_no_opinion'             => 'Neniu opinio',
+	'review_rating'                 => 'Takso',
 	'review_comment'                => 'Komento',
 );
 
@@ -873,14 +877,52 @@ $messages['sr-ec'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'review_sidebar_title'          => 'Granska',
-	'review_page_link'              => 'granska statistik',
-	'review_total_statistics'       => 'Total',
-	'review_statistics_left_corner' => 'Revision',
-	'review_version_link'           => 'Revision #$1',
-	'review_version_statistic_cell' => '$1 av $2',
-	'review_user_details_link'      => '(detaljer)',
-	'review_comment'                => 'Kommentar',
+	'review_sidebar_title'                                   => 'Granska',
+	'review-desc'                                            => 'Den återupplivade [[Special:Review|kontrolleringsfunktionen]].',
+	'review_topics'                                          => '# Följande är listan över ämnen och rankningar för kontrolleringstillägget.
+# Varje ämne definieras av en linje på fem värden, skiljt från varandra med ":" (alla andra linjer ignoreras).
+# Följden är: numeriskt värde (>0), namn, maximalt värde (>1; 2=yes/no), betydelsen av de lägsta värdena (t.ex. "dålig"), betydelse av högsta värde (t.ex. "bra").
+1:Kvalitet:5:dålig:bra
+2:Klar för 1.0:2:no:yes',
+	'review_topic_page'                                      => 'Granska ämnen',
+	'review_sidebar_explanation'                             => 'Den vänstra kryssrutan betyder alltid "ingen mening".',
+	'review_save'                                            => 'Spara granskning',
+	'review_your_review'                                     => 'Din granskning av den här sidan/versionen:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Du har redan granskat andra versioner av den här sidan. Dina andra värderingar kommer slås samman med denna när du har väljt "ingen mening".',
+	'review_page_link'                                       => 'granska statistik',
+	'review_sidebar_final'                                   => 'För granskningsdata om den här sidan, se $1',
+	'review_for_page'                                        => 'Granskning av sidan "$1"',
+	'review_for_user'                                        => 'Granskning av användaren "$1"',
+	'review_error'                                           => 'Något är fel!',
+	'review_no_reviews_for_page'                             => 'Den finns just nu inga granskningar av "$1".',
+	'review_total_statistics'                                => 'Total',
+	'review_statistics_left_corner'                          => 'Revision',
+	'review_version_link'                                    => 'Revision #$1',
+	'review_statistic_cell'                                  => 'Genomsnitt: $1 av $2<br />($4 registrerade, $5 andra)',
+	'review_version_statistic_cell'                          => '$1 av $2',
+	'review_version_reviews_link'                            => '<small>(versionsgranskningar)</small>',
+	'review_concerns_page'                                   => 'Den här granskningen gäller sidan "$1".',
+	'review_concerns_user'                                   => 'Den här är om granskningar av användaren "$1".',
+	'review_user_reviews'                                    => '<small>(granskningar av den här användaren)</small>',
+	'review_user_page_list'                                  => 'Användaren har granskat följande sidor:',
+	'review_user_details_link'                               => '(detaljer)',
+	'review_do_merge'                                        => 'Slå ihop mina granskningar av andra versioner av den här sidan med denna',
+	'review_has_been_stored'                                 => '<span id="review_has_benn_stored">Din granskning har sparats!</span>',
+	'revision_review_this_page_version_link'                 => 'Granska den här versionen av sidan.',
+	'review_page_review'                                     => 'Granskning av sidan "$1"',
+	'review_blocked'                                         => 'Du är blockerad, gå bort.',
+	'review_wrong_namespace'                                 => 'Sidor i den här namnrymden kan inte granskas!',
+	'review_topic'                                           => 'Ämne',
+	'review_no_opinion'                                      => 'Ingen mening',
+	'review_rating'                                          => 'Värdering',
+	'review_comment'                                         => 'Kommentar',
+);
+
+/** Silesian (Ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'review_total_statistics' => 'Do kupy',
 );
 
 /** Telugu (తెలుగు)

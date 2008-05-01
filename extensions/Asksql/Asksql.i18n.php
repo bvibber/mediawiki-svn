@@ -103,6 +103,7 @@ $messages['bg'] = array(
 	'querybtn'        => 'Изпращане',
 	'selectonly'      => 'Позволени са единствено заявки за четене.',
 	'querysuccessful' => 'Заявката беше изпълнена успешно',
+	'right-asksql'    => 'отправяне на SQL заявки',
 );
 
 /** Bengali (বাংলা)
@@ -226,6 +227,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'asksql'          => 'Requête SQL',
@@ -237,6 +239,7 @@ Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci p
 	'querybtn'        => 'Soumettre la requête',
 	'selectonly'      => 'Seules les requêtes en lecture seulement sont permises.',
 	'querysuccessful' => 'La requête a été exécutée avec succès.',
+	'right-asksql'    => 'Crée des requêtes SQL',
 );
 
 /** Cajun French (Français cadien)
@@ -422,6 +425,7 @@ $messages['jv'] = array(
 	'querybtn'        => 'Kirim kwéri',
 	'selectonly'      => 'Namung marengaké kwéri maca-waé.',
 	'querysuccessful' => 'Kwéri sida kasil',
+	'right-asksql'    => 'Nggawé kwéri SQL',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -511,6 +515,7 @@ $messages['no'] = array(
 	'querybtn'        => 'Utfør',
 	'selectonly'      => 'Kun lesespørringer godtas',
 	'querysuccessful' => 'Spørring vellykket',
+	'right-asksql'    => 'Gjøre SQL-spørringer',
 );
 
 /** Occitan (Occitan)
@@ -525,10 +530,12 @@ $messages['oc'] = array(
 	'querybtn'        => 'Sometre la requèsta',
 	'selectonly'      => 'Solas las requèstas en lecturas solas son permesas.',
 	'querysuccessful' => 'La requèsta es estada executada amb succès.',
+	'right-asksql'    => 'Crèa de requèstas SQL',
 );
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  * @author McMonster
  */
 $messages['pl'] = array(
@@ -540,6 +547,7 @@ $messages['pl'] = array(
 	'querybtn'        => 'Wyślij zapytanie',
 	'selectonly'      => 'Dozwolone są tylko zapytania czytające dane.',
 	'querysuccessful' => 'Zapytanie zakończone powodzeniem',
+	'right-asksql'    => 'Wykonaj zapytanie SQL',
 );
 
 /** Piemontèis (Piemontèis)
@@ -571,6 +579,7 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
 	'querybtn'        => 'Submeter consulta',
 	'selectonly'      => 'Apenas consultas só de leitura são permitidas.',
 	'querysuccessful' => 'Consulta com sucesso',
+	'right-asksql'    => 'Fazer pesquisas SQL',
 );
 
 /** Romanian (Română)
@@ -666,6 +675,7 @@ používajte túto funkciu s rozmyslom.",
 	'querybtn'        => 'Poslať požiadavku',
 	'selectonly'      => 'Sú povolené požiadavky iba na čítanie.',
 	'querysuccessful' => 'Požiadavka úspešne vykonaná',
+	'right-asksql'    => 'Zadávanie SQL požiadaviek',
 );
 
 /** ћирилица (ћирилица)
@@ -709,8 +719,9 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Sannab
- * @author Siebrand
+ * @author M.M.S.
  * @author Lejonel
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'asksql'          => 'SQL-fråga',
@@ -723,6 +734,7 @@ Detta kan leda till väsentlig belastning av servern, så använd denna funktion
 	'querybtn'        => 'Skicka in fråga',
 	'selectonly'      => 'Endast läs-frågor tillåts.',
 	'querysuccessful' => 'Frågan lyckades',
+	'right-asksql'    => 'Göra SQL-frågningar',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

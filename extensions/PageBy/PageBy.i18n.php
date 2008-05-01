@@ -161,6 +161,13 @@ $messages['it'] = array(
 	'pageby-anon'         => '<i>anonimo</i>',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'pageby-first' => 'Kaca digawé déning $1, $2',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

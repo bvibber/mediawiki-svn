@@ -22,11 +22,20 @@ $messages['ar'] = array(
 	'nstab-comments'    => 'تعليق',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'commentpages-desc' => 'Sebuksbu ke nelkafo yoltxo',
+	'nstab-comments'    => 'Sebuks',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
 	'commentpages-desc' => 'Страници за коментари към основното именно пространство',
+	'nstab-comments'    => 'Коментари',
 );
 
 /** Czech (Česky)

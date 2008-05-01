@@ -38,10 +38,19 @@ $messages['ar'] = array(
  * @author Wikimistusik
  */
 $messages['avk'] = array(
-	'authorprotect-confirm' => 'Nendara',
-	'authorprotect-reason'  => 'Lazava',
-	'authorprotect-success' => 'Kiewaskiyina nendara !',
-	'authorprotect-failure' => 'Keluyuna nendara',
+	'authorprotect'            => 'Bunendara dolge mesutesik',
+	'authorprotect-desc'       => 'Nover da sutesik va bu dolge ar favesik nendar',
+	'authorprotect-notauthor'  => 'Rin me til sutesik va batu bu',
+	'authorprotect-confirm'    => 'Nendara',
+	'authorprotect-edit'       => 'Irutara va betara mu sutesik',
+	'authorprotect-move'       => 'Irutara va arrundara mu sutesik',
+	'authorprotect-expiry'     => 'Edjevla',
+	'authorprotect-reason'     => 'Lazava',
+	'authorprotect-intro'      => 'Favera va bata teza ta bunendara dolge mesutesik',
+	'authorprotect-success'    => 'Kiewaskiyina nendara !',
+	'authorprotect-failure'    => 'Keluyuna nendara',
+	'protect-level-author'     => 'Nendara dolge mesutesik',
+	'restriction-level-author' => 'Sutesikafa nendara',
 );
 
 /** Bulgarian (Български)
@@ -74,6 +83,13 @@ $messages['de'] = array(
 	'authorprotect-failure'    => 'Seite konnte nicht geschützt werden!',
 	'protect-level-author'     => 'Seitenbearbeitung auf Autoren beschränken',
 	'restriction-level-author' => 'Autor-geschützt',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'authorprotect-reason' => 'Λόγος',
 );
 
 /** Esperanto (Esperanto)
@@ -223,14 +239,19 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'authorprotect'           => 'ការពារទំព័រពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ។',
-	'authorprotect-desc'      => 'អនុញ្ញាតអោយអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
-	'authorprotect-notauthor' => 'អ្នកមិនមែនជាអ្នកនិពន្ឋទំព័រនេះទេ',
-	'authorprotect-expiry'    => 'កាលបរិច្ឆេទផុតកំនត់',
-	'authorprotect-reason'    => 'មូលហេតុ',
-	'authorprotect-success'   => 'ការការពារដោយជោគជ័យ!',
-	'authorprotect-failure'   => 'ការការពារបានបរាជ័យ',
-	'protect-level-author'    => 'ការពារពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ',
+	'authorprotect'            => 'ការពារទំព័រពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ។',
+	'authorprotect-desc'       => 'អនុញ្ញាតអោយអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
+	'authorprotect-notauthor'  => 'អ្នកមិនមែនជាអ្នកនិពន្ឋទំព័រនេះទេ',
+	'authorprotect-confirm'    => 'ការពារ',
+	'authorprotect-edit'       => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការកែប្រែបាន',
+	'authorprotect-move'       => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការប្ដូរទីតាំងបាន',
+	'authorprotect-expiry'     => 'កាលបរិច្ឆេទផុតកំនត់',
+	'authorprotect-reason'     => 'មូលហេតុ',
+	'authorprotect-intro'      => 'សូមប្រើប្រាស់សំនុំបែបបទនេះដើម្បីចាក់សោទំព័រនេះ',
+	'authorprotect-success'    => 'ការការពារដោយជោគជ័យ!',
+	'authorprotect-failure'    => 'ការការពារបានបរាជ័យ',
+	'protect-level-author'     => 'ការពារពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ',
+	'restriction-level-author' => 'ត្រូវបានការពារដោយអ្នកនិពន្ឋ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -258,6 +279,25 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'authorprotect-confirm' => 'Apsaugoti',
 	'authorprotect-reason'  => 'Priežastis',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'authorprotect'            => 'ലേഖകരല്ലാത്തവരില്‍ നിന്നും ഈ താള്‍ സം‌രക്ഷിക്കുക',
+	'authorprotect-desc'       => 'ഒരു താളിന്റെ സൃഷ്ടാവിനു പ്രസ്തുത താള്‍ മറ്റുള്ളവര്‍ തിരുത്തുന്നതു തടയാനുള്ള അനുമതി നല്‍കുന്നു',
+	'authorprotect-notauthor'  => 'താങ്കള്‍ ഈ താളിന്റെ സൃഷ്ടാവല്ല',
+	'authorprotect-confirm'    => 'സം‌രക്ഷിക്കുക',
+	'authorprotect-edit'       => 'തിരുത്താനുള്ള അവകാശം ലേഖകര്‍ക്കു മാത്രമായി പരിമിതപ്പെടുത്തുന്നു.',
+	'authorprotect-move'       => 'തലക്കെട്ടു മാറ്റാനുള്ള അവകാശം ലേഖകര്‍ക്കു മാത്രമായി പരിമിതപ്പെടുത്തുന്നു.',
+	'authorprotect-expiry'     => 'കാലാവധി',
+	'authorprotect-reason'     => 'കാരണം',
+	'authorprotect-intro'      => 'ലേഖകരല്ലാത്തവരില്‍ നിന്നു ഈ താള്‍ സം‌രക്ഷിക്കുവാന്‍ ഈ പത്രിക ഉപയോഗിക്കുക',
+	'authorprotect-success'    => 'വിജയകരമായി സം‌രക്ഷിച്ചിരിക്കുന്നു!',
+	'authorprotect-failure'    => 'സം‌രക്ഷിക്കുവാന്‍ സാധിച്ചില്ല',
+	'protect-level-author'     => 'ലേഖകരല്ലാത്തവരില്‍ നിന്നു സം‌രക്ഷിക്കുക',
+	'restriction-level-author' => 'ലേഖകര്‍ക്കു മാത്രമായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു',
 );
 
 /** Marathi (मराठी)
@@ -354,6 +394,14 @@ $messages['pl'] = array(
 	'authorprotect-failure'    => 'Zabezpieczenie nie powiodło się',
 	'protect-level-author'     => 'Zabezpieczenie przed wszystkimi poza autorami',
 	'restriction-level-author' => 'Tylko autorzy',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'authorprotect-expiry' => 'د پای موده',
+	'authorprotect-reason' => 'سبب',
 );
 
 /** Portuguese (Português)

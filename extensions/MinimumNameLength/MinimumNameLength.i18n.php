@@ -88,10 +88,12 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Suradnik13
  * @author Dnik
  */
 $messages['hr'] = array(
 	'minnamelength-error' => 'Vaše suradničko ime je prekratko. Duljina mora biti bar $1.',
+	'minnamelength-desc'  => 'Odredi najmanju dužinu suradničkog imena',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -152,6 +154,13 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'minnamelength-error' => "Äre Benotzernumm ass ze kuerz. D'Mindestlängt ass $1.",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'minnamelength-error' => 'നിങ്ങള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്തൃനാമം തീരെ ചെറുതാണ്‌. ഉപയോക്തൃനാമത്തിനു നാമത്തിനു വേണ്ട ഏറ്റവും കുറഞ്ഞ വലിപ്പം $1 ആണ്‌.',
 );
 
 /** Marathi (मराठी)

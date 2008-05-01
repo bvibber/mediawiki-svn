@@ -24,7 +24,7 @@ $messages['af'] = array(
 $messages['an'] = array(
 	'crossnamespacelinks'         => 'Binclos entre espazios de nombres diferents',
 	'crossnamespacelinks-desc'    => "[[Special:CrossNamespaceLinks|Listas de binclos entre espazios de nombres]] que no abrían d'esistir en {{SITENAME}}",
-	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de binclos dende pachinas d'o espazio de nombre prenzipal ta pachinas en atros espazios de nombres (sacaus os espazios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que son aconsellables.",
+	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de binclos dende pachinas d'o espazio de nombre prenzipal ta pachinas en atros espazios de nombres (sacaus os espazios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que no son aconsellables.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|binclo|binclos}} ta $3',
 );
 
@@ -433,11 +433,12 @@ $messages['lv'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Shijualex
+ * @author Praveenp
  */
 $messages['ml'] = array(
 	'crossnamespacelinks'         => 'അന്തര്‍ വിക്കി നേംസ്പേസ് കണ്ണികള്‍',
 	'crossnamespacelinks-desc'    => '{{SITENAME}} സം‌രംഭത്തില്‍ നിലവിലില്ലാത്ത [[Special:CrossNamespaceLinks|നേംസ്പേസ് കണ്ണികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക]]',
-	'crossnamespacelinks-summary' => 'മുഖ്യ നേംസ്പേസില്‍ നിന്നു മറ്റു നേംസ്പേസുകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നേംസ്പേസുകള്‍ ഒഴിച്ച്) കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താള്‍ പ്രദര്‍ശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശ്വാസകരമല്ല)',
+	'crossnamespacelinks-summary' => 'മുഖ്യ നേംസ്പേസില്‍ നിന്നു മറ്റു നേംസ്പേസുകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നേംസ്പേസുകള്‍ ഒഴിച്ച്) കണ്ണി ചേര്‍ക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താള്‍ പ്രദര്‍ശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശാസ്യകരമല്ല)',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികള്‍}} $3-ലേക്ക്',
 );
 

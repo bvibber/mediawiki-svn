@@ -94,6 +94,13 @@ $messages['hu'] = array(
 	'protectsection_forbidden'  => 'Megtagadva',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'protectsection_forbidden' => 'Dilarang',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

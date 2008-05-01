@@ -85,10 +85,12 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'randomincategory'         => 'Hazarda paĝo en kategorio',
-	'randomincategory-toolbox' => 'Hazarda paĝo',
-	'randomincategory-label'   => 'Kategorio:',
-	'randomincategory-submit'  => 'Ek!',
+	'randomincategory'            => 'Hazarda paĝo en kategorio',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Speciala paĝo]] por iri al hazarda paĝo en kategorio',
+	'randomincategory-toolbox'    => 'Hazarda paĝo',
+	'randomincategory-nocategory' => 'Kategorio $1 ne ekzistas aŭ estas malplena',
+	'randomincategory-label'      => 'Kategorio:',
+	'randomincategory-submit'     => 'Ek!',
 );
 
 /** Spanish (Español)
@@ -109,6 +111,13 @@ $messages['fr'] = array(
 	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
 	'randomincategory-label'      => 'Catégorie :',
 	'randomincategory-submit'     => 'Lancer',
+);
+
+/** Irish (Gaeilge)
+ * @author Moilleadóir
+ */
+$messages['ga'] = array(
+	'randomincategory-label' => 'Catagóir:',
 );
 
 /** Galician (Galego)
@@ -170,6 +179,15 @@ $messages['hu'] = array(
 	'randomincategory-nocategory' => '$1 névvel nem létezik kategória vagy üres.',
 	'randomincategory-label'      => 'Kategória:',
 	'randomincategory-submit'     => 'Menj',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'randomincategory-toolbox' => 'Kaca sembarang',
+	'randomincategory-label'   => 'Kategori:',
+	'randomincategory-submit'  => 'Tumuju',
 );
 
 /** Khmer (ភាសាខ្មែរ)

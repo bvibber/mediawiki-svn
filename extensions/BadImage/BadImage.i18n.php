@@ -113,19 +113,26 @@ $messages['ast'] = array(
 );
 
 /** Kotava (Kotava)
- * @author Nkosi ya Cabinda
  * @author Wikimistusik
+ * @author Nkosi ya Cabinda
  */
 $messages['avk'] = array(
-	'badimages'            => 'Ewavaja yo',
-	'badimages-add-btn'    => 'Loplekura',
-	'badimages-added'      => '$1 su zo kovexalar.',
-	'badimages-count'      => "'''$1''' ewava tid ewavaja.",
-	'badimages-name'       => 'Yolt :',
-	'badimages-reason'     => 'Lazava :',
-	'badimages-remove-btn' => 'Tioltera',
-	'badimages-log-name'   => 'Ewaveemaj',
-	'badimages-page'       => '{{ns:help}}:Ewaveemaj',
+	'badimages'                => 'Ewavaja yo',
+	'badimages-add-btn'        => 'Loplekura',
+	'badimages-added'          => '$1 su zo kovexalar.',
+	'badimages-count'          => "'''$1''' ewava tid ewavaja.",
+	'badimages-name'           => 'Yolt :',
+	'badimages-not-added'      => 'Ewava me zo roloplekur',
+	'badimages-not-removed'    => 'Ewava me zo rosular',
+	'badimages-reason'         => 'Lazava :',
+	'badimages-remove'         => '(sulara)',
+	'badimages-remove-btn'     => 'Tioltera',
+	'badimages-remove-confirm' => 'Vay gruyel da va $1 mou vexala djusulal :',
+	'badimages-removed'        => '$1 div vexala al zo malnarir',
+	'badimages-log-name'       => 'Ewaveemaj',
+	'badimages-log-add'        => '[[$1]] loplekuyun mo ewavajakirafa vexala',
+	'badimages-log-remove'     => '[[$1]] sulayan mou ewavajakirafa vexala',
+	'badimages-page'           => '{{ns:help}}:Ewaveemaj',
 );
 
 /** Bikol Central (Bikol Central)
@@ -172,7 +179,7 @@ $messages['bg'] = array(
 	'badimages-desc'           => 'Разширява възможностите на МедияУики за управление на списъка с непозволени файлове',
 	'badimages-add-btn'        => 'Добавяне',
 	'badimages-added'          => 'Файлът $1 беше добавен към списъка.',
-	'badimages-count'          => "Списъкът съдържа '''$1''' неприемливи файла.",
+	'badimages-count'          => "Списъкът съдържа '''$1''' {{PLURAL:$1|неприемлив файл|неприемливи файла}}.",
 	'badimages-name'           => 'Име:',
 	'badimages-not-added'      => 'Файлът не може да бъде добавен.',
 	'badimages-not-removed'    => 'Файлът не може да бъде премахнат.',
@@ -434,13 +441,14 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'badimages'                => 'Liste des images indésirables',
 	'badimages-desc'           => 'Augmente la capacité de la liste des images indésirables de MediaWiki',
 	'badimages-add-btn'        => 'Ajouter',
 	'badimages-added'          => '$1 a été ajoutée à la liste.',
-	'badimages-count'          => "Il y a '''$1''' images dans la liste des images indésirables.",
+	'badimages-count'          => "Il y a '''$1''' {{PLURAL:$1|image|images}} dans la liste des images indésirables.",
 	'badimages-name'           => 'Nom :',
 	'badimages-not-added'      => 'L’image n’a pas pu être ajoutée.',
 	'badimages-not-removed'    => 'L’image n’a pas pu être retirée.',
@@ -519,15 +527,15 @@ $messages['gag'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
- * @author SPQRobin
  * @author Toliño
+ * @author SPQRobin
  */
 $messages['gl'] = array(
 	'badimages'                => 'Listaxe de imaxes con fallas',
 	'badimages-desc'           => 'Incluír a listaxe de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn'        => 'Engadir',
 	'badimages-added'          => '$1 foi engadida á listaxe.',
-	'badimages-count'          => "Hai '''$1''' imaxes na listaxe de imaxes con fallas.",
+	'badimages-count'          => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na listaxe de imaxes con fallas.",
 	'badimages-name'           => 'Nome:',
 	'badimages-not-added'      => 'A imaxe non pode ser engadida.',
 	'badimages-not-removed'    => 'A imaxe non pode ser eliminada.',
@@ -561,7 +569,7 @@ $messages['hi'] = array(
 	'badimages-desc'           => 'मीडियाविकिकी गलत चित्र सूची दर्शाने की क्षमता बढायें',
 	'badimages-add-btn'        => 'बढायें',
 	'badimages-added'          => '$1 को सूची में डाला गया हैं।',
-	'badimages-count'          => "गलत चित्र सूची में कुल '''$1''' चित्र हैं।",
+	'badimages-count'          => "गलत चित्र सूची में कुल '''$1''' {{PLURAL:$1|चित्र|चित्र}} हैं।",
 	'badimages-name'           => 'नाम:',
 	'badimages-not-added'      => 'इस चित्र को डाल नहीं पायें।',
 	'badimages-not-removed'    => 'यह चित्र हटा नहीं सकतें।',
@@ -782,13 +790,14 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'badimages'                => 'បញ្ជី រូបភាពអន់',
 	'badimages-desc'           => 'បន្ថែម សមត្ថភាព នៃ បញ្ជីរូបភាពអន់ របស់ មីឌាវិគី',
 	'badimages-add-btn'        => 'បន្ថែម',
 	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
-	'badimages-count'          => "មាន '''$1''' រូបភាព លើបញ្ជី​ រូបភាពអន់ ។",
+	'badimages-count'          => "{{PLURAL:$1|មាន|មាន}} '''$1''' {{PLURAL:$1|រូបភាព|រូបភាព}} ក្នុងបញ្ជីរូបភាពមិនល្អ។",
 	'badimages-name'           => 'ឈ្មោះ៖',
 	'badimages-not-added'      => 'រូបភាព មិនអាចត្រូវបាន បន្ថែម ។',
 	'badimages-not-removed'    => 'រូបភាព មិនអាចត្រូវបាន ដកចេញ ។',
@@ -899,13 +908,14 @@ $messages['lt'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'badimages'                => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
 	'badimages-add-btn'        => 'ചേര്‍ക്കുക',
 	'badimages-added'          => '$1 പട്ടികയിലേക്കു ചേര്‍ത്തിരിക്കുന്നു',
-	'badimages-count'          => "മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍ '''$1''' ചിത്രങ്ങള്‍ ഉണ്ട്.",
-	'badimages-name'           => 'നാമം:',
+	'badimages-count'          => "മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍ '''$1''' {{PLURAL:$1|ചിത്രം|ചിത്രങ്ങള്‍}} ഉണ്ട്.",
+	'badimages-name'           => 'പേര്‌:',
 	'badimages-not-added'      => 'ഈ ചിത്രം ചേര്‍ക്കാന്‍ സാധിച്ചില്ല',
 	'badimages-not-removed'    => 'ഈ ചിത്രം നീക്കംചെയ്യാന്‍ സാധിച്ചില്ല',
 	'badimages-reason'         => 'കാരണം:',
@@ -914,6 +924,7 @@ $messages['ml'] = array(
 	'badimages-remove-confirm' => 'താങ്കള്‍ $1 പട്ടികയില്‍നിന്നും നീക്കാന്‍ ആഗ്രഹിക്കുന്നെന്നു ദയവായി സ്ഥിരീകരിക്കുക',
 	'badimages-removed'        => '$1 പട്ടികയില്‍നിന്നു നീക്കി',
 	'badimages-subheading'     => 'നിലവിലുള്ള ഇനങ്ങള്‍',
+	'badimages-unprivileged'   => 'പട്ടികയില്‍ മാറ്റം വരുത്തുവാന്‍ ആവശ്യമായ അനുമതി താങ്കള്‍ക്കില്ല',
 	'badimages-log-name'       => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
 	'badimages-log-add'        => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയിലേയ്ക്ക് [[$1]] ചേര്‍ത്തു',
 	'badimages-log-remove'     => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍നിന്ന് [[$1]] നീക്കംചെയ്തു',
@@ -1042,7 +1053,7 @@ $messages['oc'] = array(
 	'badimages-desc'           => 'Augmenta la capacitat de la lista dels imatges indesirables de MediaWiki',
 	'badimages-add-btn'        => 'Apondre',
 	'badimages-added'          => '$1 es estat ajustat a la lista.',
-	'badimages-count'          => "I a '''$1''' imatges dins la lista dels imatges indesirables.",
+	'badimages-count'          => "I a '''$1''' {{PLURAL:$1|imatge|imatges}} dins la lista dels imatges indesirables.",
 	'badimages-name'           => 'Nom :',
 	'badimages-not-added'      => 'L’imatge es pas pogut estat ajustat.',
 	'badimages-not-removed'    => 'L’imatge es pas pogut èsser levat.',
@@ -1062,8 +1073,8 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
- * @author Wpedzich
  * @author Sp5uhe
+ * @author Wpedzich
  * @author SPQRobin
  */
 $messages['pl'] = array(
@@ -1071,7 +1082,7 @@ $messages['pl'] = array(
 	'badimages-desc'           => 'Rozszerza możliwości listy nieprawidłowych plików graficznych w Mediawiki',
 	'badimages-add-btn'        => 'Dodaj',
 	'badimages-added'          => 'dodano $1 do listy.',
-	'badimages-count'          => "Jest '''$1''' grafik na liście złych grafik.",
+	'badimages-count'          => "{{PLURAL:$1|Jest|Są|Jest}} '''$1''' {{PLURAL:$1|grafika|grafiki|grafik}} na liście złych grafik.",
 	'badimages-name'           => 'Nazwa:',
 	'badimages-not-added'      => 'Nie udało się dodać tej grafiki.',
 	'badimages-not-removed'    => 'Nie udało się usunąć tej grafiki.',
@@ -1123,10 +1134,12 @@ $messages['ps'] = array(
 	'badimages-reason'     => 'سبب:',
 	'badimages-remove'     => '(غورځول)',
 	'badimages-remove-btn' => 'غورځول',
+	'badimages-subheading' => 'اوسني توکي',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Brunoy Anastasiya Seryozhenko
  */
 $messages['pt'] = array(
 	'badimages'                => 'Lista de imagens problemáticas',
@@ -1178,15 +1191,15 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
- * @author Ahonc
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'badimages'                => 'Список нежелательных изображений',
 	'badimages-desc'           => 'Расширяет возможности списка запрещённых изображений MediaWiki',
 	'badimages-add-btn'        => 'Добавить',
 	'badimages-added'          => '$1 добавлено в список.',
-	'badimages-count'          => "Всего в списке '''$1''' нежелательных изображений.",
+	'badimages-count'          => "Всего в списке '''$1''' {{PLURAL:$1|нежелательное изображение|нежелательных изображения|нежелательных изображений}}.",
 	'badimages-name'           => 'Имя:',
 	'badimages-not-added'      => 'Изображение не может быть добавлено.',
 	'badimages-not-removed'    => 'Изображение не может быть удалено.',
@@ -1447,7 +1460,7 @@ $messages['ta'] = array(
 	'badimages'             => 'பழுதான படிமங்களின் பட்டியல்',
 	'badimages-add-btn'     => 'சேர்',
 	'badimages-added'       => '$1 பட்டியலில் இணைக்கப்பட்டது.',
-	'badimages-count'       => "பழுதான படிமங்களின் பட்டியலில் '''$1''' படிமங்கள் உள்ளன.",
+	'badimages-count'       => "பழுதான படிமங்களின் பட்டியலில் '''$1''' {{PLURAL:$1|படிமம் உள்ளது.|படிமங்கள் உள்ளன.}}",
 	'badimages-name'        => 'பெயர்:',
 	'badimages-not-added'   => 'படிமத்தை இணைக்க முடியவில்லை.',
 	'badimages-not-removed' => 'படிமத்தை நீக்க முடியவில்லை.',

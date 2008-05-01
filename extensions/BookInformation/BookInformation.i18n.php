@@ -103,6 +103,20 @@ $messages['bcl'] = array(
 	'bookinfo-result-year' => 'Taon:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'bookinfo-header'            => 'Інфармацыя пра кнігу',
+	'bookinfo-result-title'      => 'Назва:',
+	'bookinfo-result-author'     => 'Аўтар:',
+	'bookinfo-result-publisher'  => 'Выдавецтва:',
+	'bookinfo-result-year'       => 'Год:',
+	'bookinfo-error-invalidisbn' => 'Уведзены няслушны ISBN.',
+	'bookinfo-purchase'          => 'Набыць гэту кнігу ў $1',
+	'bookinfo-provider'          => 'Крыніца інфармацыі: $1',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Borislav
@@ -592,7 +606,7 @@ $messages['jut'] = array(
 $messages['jv'] = array(
 	'bookinfo-header'            => 'Informasi buku',
 	'bookinfo-desc'              => 'Ngembangaké [[Special:Booksources]] mawa informasi saka sumber-sumber buku',
-	'bookinfo-result-title'      => 'Irah-irahan',
+	'bookinfo-result-title'      => 'Irah-irahan (judhul):',
 	'bookinfo-result-author'     => 'Pangripta:',
 	'bookinfo-result-publisher'  => 'Panerbit:',
 	'bookinfo-result-year'       => 'Taun:',
@@ -1090,6 +1104,13 @@ $messages['sv'] = array(
 	'bookinfo-error-noresponse'  => 'Fick inget svar eller det tog för lång tid att få svar.',
 	'bookinfo-purchase'          => 'Köp denna bok från $1',
 	'bookinfo-provider'          => 'Data hämtat från: $1',
+);
+
+/** Silesian (Ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'bookinfo-result-title' => 'Titel:',
 );
 
 /** Tamil (தமிழ்)

@@ -252,7 +252,9 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'selectcategory-title' => 'Välj kategorier',
+	'selectcategory-title'    => 'Välj kategorier',
+	'selectcategory-desc'     => 'Låter användaren välja från existerande kategorier när hen redigerar en sida',
+	'selectcategory-subtitle' => 'Shift+klick för att välja flera sammanhängande alternativ, Ctrl+klick för att välja ej sammanhängande alternativ.',
 );
 
 /** Telugu (తెలుగు)

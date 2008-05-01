@@ -178,6 +178,13 @@ $messages['cs'] = array(
 	'sitematrix-fishbowl'  => 'editování omezeno',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'sitematrix' => 'Rhestr holl brosiectau Wikimedia',
+);
+
 /** Danish (Dansk)
  * @author Morten
  */
@@ -1036,6 +1043,14 @@ $messages['sv'] = array(
 	'sitematrix-fishbowl'  => 'redigerinng begränsad',
 );
 
+/** Silesian (Ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'sitematrix-language'  => 'Godka',
+	'sitematrix-sitetotal' => 'Do kupy',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author Mpradeep
@@ -1050,6 +1065,7 @@ $messages['te'] = array(
 	'sitematrix-others'    => 'వికీమీడియాలోని ఇతర ప్రాజెక్టులు',
 	'sitematrix-total'     => "'''మొత్తం సంఖ్య: $1'''",
 	'sitematrix-sitetotal' => 'మొత్తం',
+	'sitematrix-private'   => 'అంతరంగిక',
 );
 
 $messages['tet'] = array(
@@ -1083,12 +1099,15 @@ $messages['to'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Mach
  * @author Erkan Yilmaz
  * @author לערי ריינהארט
  */
 $messages['tr'] = array(
-	'sitematrix'          => 'Tüm Wikimedia vikilerin listesi',
-	'sitematrix-language' => 'Dil',
+	'sitematrix'           => 'Tüm Wikimedia vikilerin listesi',
+	'sitematrix-language'  => 'Dil',
+	'sitematrix-others'    => 'Diğer Wikimedia projeleri',
+	'sitematrix-sitetotal' => 'Toplam',
 );
 
 /** Ukrainian (Українська)

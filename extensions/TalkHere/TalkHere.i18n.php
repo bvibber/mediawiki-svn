@@ -210,6 +210,14 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
 	'talkhere-collapse'    => 'Editor schować',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'talkhere-addcomment'  => 'tambah komentar',
+	'talkhere-beforeinput' => 'Panjenengan bisa nambah komentar ing ngisor iki',
+);
+
 /** ‫قازاقشا (جۇنگو)‬ (‫قازاقشا (جۇنگو)‬)
  * @author Alefzet
  */

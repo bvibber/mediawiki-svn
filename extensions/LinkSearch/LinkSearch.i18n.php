@@ -35,7 +35,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'linksearch'       => 'Mirar binclos web',
+	'linksearch'       => 'Mirar binclos ta pachinas web',
 	'linksearch-desc'  => '[[Special:Linksearch|Mirar pachinas con binclos esternos]] que concuerden con patrons espezificos',
 	'linksearch-pat'   => 'Mirar patrón:',
 	'linksearch-ns'    => 'Espazio de nombres:',
@@ -207,7 +207,7 @@ $messages['eo'] = array(
 	'linksearch-desc'  => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
 	'linksearch-pat'   => 'Serĉesprimo:',
 	'linksearch-ns'    => 'Nomspaco:',
-	'linksearch-ok'    => 'Serĉu:',
+	'linksearch-ok'    => 'Serĉu',
 	'linksearch-text'  => 'Regulesprimoj kiel "*.wikipedia.org" povas esti uzataj.<br />Subtenataj protokoloj: <tt>$1</tt>',
 	'linksearch-line'  => '$1 ligita de $2',
 	'linksearch-error' => 'Regulesprimoj povas aperi nur ĉe la komenco de la retnoda nomo.',
@@ -545,8 +545,8 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
 	'linksearch'      => 'ស្វែងរកតំណភ្ជាប់វិប',
@@ -554,7 +554,7 @@ $messages['km'] = array(
 	'linksearch-pat'  => 'ស្វែងរកគំរូ៖',
 	'linksearch-ns'   => 'លំហឈ្មោះ៖',
 	'linksearch-ok'   => 'ស្វែងរក',
-	'linksearch-line' => '$1 បានតភ្ជាប់ ពី $2',
+	'linksearch-line' => '$1បានតភ្ជាប់ពី$2',
 );
 
 $messages['la'] = array(
@@ -749,7 +749,7 @@ $messages['pl'] = array(
 	'linksearch-text'  => 'Można użyć symbolu wieloznacznego „*”. Dla przykładu „*.wikipedia.org” spowoduje wyszukanie wszystkich linków prowadzących do domeny „wikipedia.org” i jej poddomen.<br />
 Obsługiwane protokoły: <tt>$1</tt>',
 	'linksearch-line'  => '$1 link na stronie $2',
-	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
+	'linksearch-error' => 'Symbolu wieloznacznego można użyć wyłącznie na początku nazwy hosta.',
 );
 
 $messages['pms'] = array(

@@ -295,6 +295,19 @@ $messages['hsb'] = array(
 	'importusers-realname'                => 'woprawdźite mjeno',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'importusers-form-button'     => 'Impor',
+	'importusers-log'             => 'Log impor',
+	'importusers-log-summary'     => 'Ringkesan',
+	'importusers-log-summary-all' => 'Kabèh',
+	'importusers-password'        => 'tembung sandhi',
+	'importusers-email'           => 'e-mail',
+	'importusers-realname'        => 'jeneng asli',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -346,7 +359,9 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'importusers-uploadfile'      => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'importusers-log-summary-all' => 'എല്ലാം',
+	'importusers-email'           => 'ഇമെയില്‍',
 );
 
 /** Marathi (मराठी)
@@ -502,7 +517,7 @@ $messages['ps'] = array(
 	'importusers-log-summary-updated' => 'تازه',
 	'importusers-login-name'          => 'غونډال ته د ننوتنې نوم',
 	'importusers-password'            => 'پټنوم',
-	'importusers-email'               => 'برېښناليک',
+	'importusers-email'               => 'برېښليک',
 	'importusers-realname'            => 'اصلي نوم',
 );
 

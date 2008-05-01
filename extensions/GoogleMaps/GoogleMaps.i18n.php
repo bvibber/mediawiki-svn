@@ -486,6 +486,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-zoom-control'  => 'Πλοήγηση',
 	'gm-yes'           => 'Ναι',
 	'gm-no'            => 'Όχι',
+	'gm-search'        => 'Αναζήτηση',
 	'gm-meters'        => 'μέτρα',
 	'gm-miles'         => 'μίλια',
 	'gm-color-path'    => 'αλλάξτε χρώμα',
@@ -853,6 +854,13 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
+/** Irish (Gaeilge)
+ * @author Moilleadóir
+ */
+$wgGoogleMapsMessages['ga'] = array(
+	'gm-zoom-control' => 'Nascleanúint',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Alma
@@ -1213,7 +1221,25 @@ $wgGoogleMapsMessages['is'] = array(
  * @author Meursault2004
  */
 $wgGoogleMapsMessages['jv'] = array(
+	'gm-balloon-title'        => 'Irah-irahan (judhul):',
 	'gm-balloon-link-article' => 'Pranala menyang kaca iki (opsional):',
+	'gm-make-marker'          => 'Katrangan (mark-up wiki OK):',
+	'gm-remove'               => 'ilangana',
+	'gm-start-path'           => 'wiwitana sawijining dalan',
+	'gm-trace-area'           => 'runut sawijining tlatah',
+	'gm-load-map'             => 'Unggahna péta',
+	'gm-are-you-sure'         => 'Panjenengan pasti?',
+	'gm-zoom-control'         => 'Navigasi',
+	'gm-yes'                  => 'Iya',
+	'gm-no'                   => 'Ora',
+	'gm-search'               => 'Golèk',
+	'gm-meters'               => 'mèter',
+	'gm-miles'                => 'mil',
+	'gm-save-path'            => 'Simpen',
+	'gm-kml-export'           => 'Èkspor péta iki menyang KML',
+	'gm-earth'                => 'Bumi',
+	'gm-moon'                 => 'Wulan',
+	'gm-mars'                 => 'Mars',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1344,8 +1370,13 @@ $wgGoogleMapsMessages['lt'] = array(
  * @author Shijualex
  */
 $wgGoogleMapsMessages['ml'] = array(
-	'gm-yes'    => 'ശരി',
-	'gm-search' => 'തിരയുക',
+	'gm-remove'      => 'നീക്കം ചെയ്യുക',
+	'gm-yes'         => 'ശരി',
+	'gm-search'      => 'തിരയുക',
+	'gm-kml-loading' => 'ശേഖരിച്ചുകൊണ്ടിരിക്കുന്നു…',
+	'gm-earth'       => 'ഭൂമി',
+	'gm-moon'        => 'ചന്ദ്രന്‍',
+	'gm-mars'        => 'ചൊവ്വ',
 );
 
 /** Marathi (मराठी)

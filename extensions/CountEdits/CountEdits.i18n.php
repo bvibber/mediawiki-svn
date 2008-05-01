@@ -455,7 +455,10 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'countedits-ok' => 'ശരി',
+	'countedits'            => 'തിരത്തലുകള്‍ എണ്ണുക',
+	'countedits-username'   => 'ഉപയോക്തൃനാമം:',
+	'countedits-ok'         => 'ശരി',
+	'countedits-nosuchuser' => '$1 എന്ന പേരുള്ള ഉപയോക്താവ് നിലവിലില്ല.',
 );
 
 /** Marathi (मराठी)

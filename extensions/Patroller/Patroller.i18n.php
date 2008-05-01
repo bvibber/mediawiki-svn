@@ -160,6 +160,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'patrol-revert'          => 'Restarigu',
 	'patrol-revert-reason'   => 'Kialo:',
+	'patrol-skip'            => 'Forlasu',
 	'patrol-reverting'       => 'Restarigante: $1',
 	'patrol-reverted-ok'     => 'La redakto estis restarigita.',
 	'patrol-reverted-failed' => 'Ne eblis restarigi la redakton.',
@@ -398,6 +399,17 @@ $messages['it'] = array(
 	'patrol-resume' => 'Fare clic qui per riprendere.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'patrol-revert'        => 'Balèkna',
+	'patrol-revert-reason' => 'Alesan:',
+	'patrol-reasons'       => '* Vandalisme biasa
+* Tès pamula
+* Delengen kaca dhiskusi',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -421,6 +433,13 @@ $messages['lb'] = array(
 	'patrol-skip'          => 'Iwwersprangen',
 	'patrol-reverting'     => 'Zrécksetzen: $1',
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'patrol-revert-reason' => 'കാരണം:',
 );
 
 /** Marathi (मराठी)

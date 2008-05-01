@@ -250,6 +250,17 @@ $messages['ja'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'dt_xml_namespace' => 'Bilik nama',
+	'dt_xml_page'      => 'Kaca',
+	'dt_xml_name'      => 'Jeneng',
+	'dt_xml_title'     => 'Irah-irahan (judhul)',
+	'dt_xml_freetext'  => 'Tèks Bébas',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -283,6 +294,15 @@ $messages['lb'] = array(
 	'dt_xml_title'                => 'Titel',
 	'dt_xml_id'                   => 'Nummer',
 	'dt_xml_freetext'             => 'Fräien Text',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'dt_xml_namespace' => 'നേംസ്പേസ്',
+	'dt_xml_page'      => 'താള്‍',
+	'dt_xml_name'      => 'പേര്‌',
 );
 
 /** Marathi (मराठी)

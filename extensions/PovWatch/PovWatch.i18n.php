@@ -150,8 +150,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'povwatch_invalid_title'   => 'La enigita titolo estis nevalida',
 	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
 	'povwatch_title'           => 'Titolo:',
+	'povwatch_comment'         => 'Skribu komenton:',
 	'povwatch_added'           => 'aldonita',
 );
 
@@ -281,6 +283,13 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
  */
 $messages['hu'] = array(
 	'povwatch_title' => 'Cím:',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'povwatch_title' => 'Irah-irahan (judhul):',
 );
 
 /** Khmer (ភាសាខ្មែរ)

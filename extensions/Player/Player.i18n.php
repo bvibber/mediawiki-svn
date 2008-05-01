@@ -263,6 +263,18 @@ $messages['is'] = array(
 	'player-goto-file'     => 'skrá',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'player-file'          => 'Jeneng berkas',
+	'player-play'          => 'Main',
+	'player-not-allowed'   => 'format ora diparengaké',
+	'player-not-found'     => 'berkas ora ketemu',
+	'player-invalid-title' => 'judhul ora absah',
+	'player-goto-file'     => 'berkas',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -283,6 +295,13 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'player-title'       => 'Spiller',
 	'player-playertitle' => 'Spiller: $1',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'player-goto-page' => 'താള്‍',
 );
 
 /** Marathi (मराठी)

@@ -219,6 +219,13 @@ $messages['hu'] = array(
 	'editmsg-patch-success' => 'A javítás sikeresen befejeződött.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'editmsg-search' => 'Golèk',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

@@ -306,6 +306,16 @@ $messages['it'] = array(
 	'vote-caption' => 'La tua selezione:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'vote'                => 'Coblos',
+	'vote-submit'         => 'Coblos',
+	'vote-results-choice' => 'Pilihan',
+	'vote-login-link'     => 'mlebu log',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -326,6 +336,7 @@ $messages['lb'] = array(
 	'vote-view-results'   => "Kuckt d'Resultater",
 	'vote-results'        => 'Resultater vun der Ofstëmmung',
 	'vote-login'          => 'Dir musst $1 fir ofzestëmmen.',
+	'vote-login-link'     => 'aloggen',
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
 );
 
@@ -506,6 +517,7 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
+	'vote'                => 'Votar',
 	'vote-header'         => "Pode votar no '''Senhor Supremo do Mundo''' aqui!",
 	'vote-current'        => "O seu voto actual é a favor de '''$1'''.",
 	'vote-legend'         => 'Colocar ou corrigir voto',

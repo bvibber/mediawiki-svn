@@ -471,6 +471,14 @@ $messages['ja'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'duplicator-source' => 'Sumber:',
+	'duplicator-submit' => 'Duplikasi',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -495,6 +503,7 @@ $messages['lb'] = array(
 	'duplicator-dotalk'                => 'Een Doublon vun der Diskussiounssäit maachen (wann se existéiert)',
 	'duplicator-submit'                => 'Säit duplizéieren',
 	'duplicator-summary'               => 'Vun [[$1]] kopéiert',
+	'duplicator-success'               => "<big>'''[[$1]] gouf op [[$2]] kopéiert.'''</big>",
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|Versioun gouf|Versioune goufe}} kopéiert.',
 	'duplicator-success-talkcopied'    => "D'Diskussiounssäit gouf och kopéiert.",
 	'duplicator-success-talknotcopied' => "D'Diskussiounssäit konnt net kopéiert ginn.",

@@ -221,6 +221,14 @@ $4',
 	'todo-form-submit'      => 'Naprašowanje wotesłać',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'todo-new-queue'   => 'anyar',
+	'todo-list-cancel' => 'Batal',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -475,17 +483,38 @@ $4',
 
 /** Swedish (Svenska)
  * @author M.M.S.
- * @author M.M.S.
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'todo'                  => 'Uppgiftslista',
+	'todo-desc'             => 'Exprimentell personligt tillägg för [[Special:Todo|uppgiftslistor]].',
+	'todo-tab'              => 'uppgifter',
 	'todo-new-queue'        => 'ny',
+	'todo-mail-subject'     => 'Slutförde uppgift på $1s uppgiftslista',
+	'todo-mail-body'        => 'Du efterfrågade en e-postbekräftning om slutförningen av en uppgift på $1s uppgiftslista.
+
+Uppgift: $2
+Slutförd: $3
+
+Uppgiften har markerats som slutförd, med den här kommentaren:
+$4',
+	'todo-invalid-item'     => 'Missad eller ogiltig uppgift',
+	'todo-update-else-item' => 'Prövar att uppdatera en annan persons uppgifter',
 	'todo-unrecognize-type' => 'Okänd typ',
+	'todo-user-invalide'    => 'Uppgiften angiven som ogiltig, missad eller opassande användare.',
+	'todo-item-list'        => 'Dina uppgifter',
+	'todo-no-item'          => 'Inga uppgifter.',
+	'todo-invalid-owner'    => 'Ogiltig ägare av uppgiften',
 	'todo-add-queue'        => 'Lägg till kö…',
 	'todo-move-queue'       => 'Flytta till kö…',
+	'todo-list-for'         => 'Uppgiftslista för',
 	'todo-list-change'      => 'Ändra',
 	'todo-list-cancel'      => 'Avbryt',
+	'todo-new-item'         => 'Ny uppgift',
+	'todo-issue-summary'    => 'Sammandrag:',
 	'todo-form-details'     => 'Detaljer:',
+	'todo-form-email'       => 'Skriv in din e-postadress här för att motta meddelanden på e-post när uppgiften är slutförd:',
+	'todo-form-submit'      => 'Utför',
 );
 
 /** Telugu (తెలుగు)

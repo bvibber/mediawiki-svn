@@ -321,6 +321,13 @@ $messages['lb'] = array(
 	'block_title_error'            => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'block_title_error' => 'ഈ താളിന്റെ തലക്കെട്ടു അനുവദനീയമല്ല',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -42,6 +42,14 @@ $messages['el'] = array(
 	'stalepages-summary' => 'Αυτός είναι ένας κατάλογος από σελίδες που δεν έχουν υποστεί επεξεργασίες τις τελευταίες $1 ημέρες.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'stalepages'         => 'Malfreŝaj paĝoj',
+	'stalepages-summary' => 'Jen listo de paĝoj ne redaktitaj dum la lastaj $1 tagoj.',
+);
+
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur
@@ -116,6 +124,14 @@ $messages['oc'] = array(
 	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'stalepages'         => 'Páginas estagnadas',
+	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas nos últimos $1 dias.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -155,3 +171,4 @@ $messages['te'] = array(
 $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
 );
+

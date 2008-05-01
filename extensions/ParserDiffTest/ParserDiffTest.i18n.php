@@ -995,12 +995,13 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
- * @author Smeira
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'pdtest_page_missing' => 'Pad pavilöl no patuvon.',
 	'pdtest_no_changes'   => 'Votükams nonik petuvons.',
+	'pdtest_ok'           => 'Si!',
 	'pdtest_get_text'     => 'Getolöd vödemi se pad',
 	'pdtest_diff'         => 'Difs',
 	'pdtest_side_by_side' => 'Jonolöd leigodi',

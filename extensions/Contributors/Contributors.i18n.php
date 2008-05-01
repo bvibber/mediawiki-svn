@@ -193,11 +193,12 @@ $messages['dsb'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'contributors'            => 'Συνεισφέροντες',
-	'contributors-target'     => 'Τίτλος:',
-	'contributors-others'     => 'και $1 άλλοι',
-	'contributors-badtitle'   => 'Άκυρος τίτλος.',
-	'contributors-nosuchpage' => 'Η σελίδα $1 δεν υπάρχει.',
+	'contributors'             => 'Συνεισφέροντες',
+	'contributors-target'      => 'Τίτλος:',
+	'contributors-others-long' => "Υπάρχουν $1 άλλοι συνεισφέροντες σ' αυτήν τη σελίδα.",
+	'contributors-others'      => 'και $1 άλλοι',
+	'contributors-badtitle'    => 'Άκυρος τίτλος.',
+	'contributors-nosuchpage'  => 'Η σελίδα $1 δεν υπάρχει.',
 );
 
 /** Esperanto (Esperanto)
@@ -393,6 +394,13 @@ $messages['ja'] = array(
 	'contributors-others'      => '及びその他 $1 名',
 	'contributors-badtitle'    => '不正なページ名です。',
 	'contributors-nosuchpage'  => 'ページ $1 は存在しません。',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'contributors-target' => 'Irah-irahan (judhul):',
 );
 
 /** Kabyle (Taqbaylit)
