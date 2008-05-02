@@ -236,7 +236,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editindividual', $nature));
         $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');  
-        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br />");
+        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br>");
         
         $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
@@ -313,9 +313,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         $monthnames = substr($monthnames, 0, -1);
 
         $daynames = '';
-        for($i = 1; $i <= 12; $i++)
+        for($i = 1; $i <= 7; $i++)
             $daynames .= "'" . $wgContLang->getWeekdayName($i) . "',";
-        for($i = 1; $i <= 12; $i++)
+        for($i = 1; $i <= 7; $i++)
             $daynames .= "'" . $wgContLang->getWeekdayAbbreviation($i) . "',";
         $daynames = substr($daynames, 0, -1);
         
@@ -323,8 +323,23 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         $wgOut->addScript(<<<END
 <script type="text/javascript">
 // ===================================================================
-// * Copyright (c) 2008 Matt Kruse (javascripttoolbox.com)
-// * Dual licensed under the MIT and GPL licenses.
+// Author: Matt Kruse <matt@mattkruse.com>
+// WWW: http://www.mattkruse.com/
+//
+// NOTICE: You may use this code for any purpose, commercial or
+// private, without any further permission from the author. You may
+// remove this notice from your final code if you wish, however it is
+// appreciated by the author if at least my web site address is kept.
+//
+// You may *NOT* re-distribute this code in any way except through its
+// use. That means, you can include it in your product, or your web
+// site, or any other form where the code is actually being used. You
+// may not put the plain javascript up on your site for download or
+// include it in your javascript libraries for download. 
+// If you wish to share this code with others, please just point them
+// to the URL instead.
+// Please DO NOT link directly to my .js files from your site. Copy
+// the files to your server and use them there. Thank you.
 // ===================================================================
 
 
@@ -1691,7 +1706,7 @@ function CP_getCalendar() {
                 else {
                         result += '             <A CLASS="'+this.cssPrefix+'cpTodayText" HREF="javascript:'+windowref+this.returnFunction+'(\''+now.getFullYear()+'\',\''+(now.getMonth()+1)+'\',\''+now.getDate()+'\');'+windowref+'CP_hideCalendar(\''+this.index+'\');">'+this.todayText+'</A>';
                         }
-                result += '             <br />';
+                result += '             <BR>';
                 result += '     </TD></TR></TABLE></CENTER></TD></TR></TABLE>';
         }
 
@@ -1732,12 +1747,12 @@ function CP_getCalendar() {
         // Code for QUARTER display
         // ------------------------
         if (this.displayType=="quarter") {
-                result += '<br /><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
+                result += '<BR><TABLE WIDTH=120 BORDER=1 CELLSPACING=0 CELLPADDING=0 ALIGN=CENTER>';
                 for (var i=0; i<2; i++) {
                         result += '<TR>';
                         for (var j=0; j<2; j++) {
                                 var quarter = ((i*2)+j+1);
-                                result += '<TD WIDTH=50% ALIGN=CENTER><br /><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><br /><br /></TD>';
+                                result += '<TD WIDTH=50% ALIGN=CENTER><BR><A CLASS="'+this.cssPrefix+'cpText" HREF="javascript:'+windowref+this.returnQuarterFunction+'('+year+','+quarter+');'+windowref+'CP_hideCalendar(\''+this.index+'\');" CLASS="'+date_class+'">Q'+quarter+'</A><BR><BR></TD>';
                                 }
                         result += '</TR>';
                         }
