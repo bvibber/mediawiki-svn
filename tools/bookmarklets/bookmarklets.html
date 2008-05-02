@@ -1,0 +1,4 @@
+<h1>Handy bookmarklets</h1>
+<ul>
+<li><a href="javascript:function swapUrl(base) { if (base[4] == 's') { base = base.replace( /^https:\/\/secure\.wikimedia\.org\/(.*?)\/(.*?)\/(.*)$/, &quot;http://$2.$1.org/$3&quot;); base = base.replace( &quot;http://mediawiki.wikipedia&quot;, &quot;http://www.mediawiki&quot;); base = base.replace( /http:\/\/(meta|commons|office|internal)\.wikipedia/, &quot;http://$1.wikimedia&quot;); } else { base = base.replace( &quot;http://www.mediawiki&quot;, &quot;http://mediawiki.wikipedia&quot;); base = base.replace( /http:\/\/(meta|commons|office|internal)\.wikimedia/, &quot;http://$1.wikipedia&quot;); base = base.replace( /^http:\/\/(.*?)\.(.*?)\.org\/(.*)$/, &quot;https://secure.wikimedia.org/$2/$1/$3&quot;); } return base; } document.location=swapUrl(document.location.toString());">secure-switch</a></li>
+</ul>
