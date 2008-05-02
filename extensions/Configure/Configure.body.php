@@ -8,7 +8,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class SpecialConfigure extends SpecialPage {
 	protected static $initialized = false;
-	protected static $settings, $restricted, $arrayDefs, $settingsVersion;
+	protected static $settings, $restricted, $arrayDefs,
+		$notEditableSettings, $settingsVersion;
 	protected $conf;
 
 	// Static methods
@@ -17,14 +18,15 @@ class SpecialConfigure extends SpecialPage {
 	 * Load messages and initialise static variables
 	 */
 	protected static function loadSettingsDefs(){
-		if( !self::$initialized ){
-			self::$initialized = true;
-			require( dirname( __FILE__ ) . '/Configure.settings.php' );
-			self::$settings = $settings;
-			self::$restricted = $restricted;
-			self::$arrayDefs = $arrayDefs;
-			self::$settingsVersion = $settingsVersion;
-		}
+		if( self::$initialized )
+			return;
+		self::$initialized = true;
+		require( dirname( __FILE__ ) . '/Configure.settings.php' );
+		self::$settings = $settings;
+		self::$restricted = $restricted;
+		self::$arrayDefs = $arrayDefs;
+		self::$notEditableSettings = $notEditableSettings;
+		self::$settingsVersion = $settingsVersion;
 	}
 
 	/**
@@ -33,7 +35,7 @@ class SpecialConfigure extends SpecialPage {
 	 * @param string $setting setting name
 	 * @return bool
 	 */
-	protected static function isSettingAvailable( $setting ){
+	public static function isSettingAvailable( $setting ){
 		global $wgVersion;
 		self::loadSettingsDefs();
 		if( !array_key_exists( $setting, self::getAllSettings() ) )
@@ -53,7 +55,7 @@ class SpecialConfigure extends SpecialPage {
 	 *
 	 * @return array
 	 */
-	protected static function getAllSettings(){
+	public static function getAllSettings(){
 		static $arr = null;
 		if( is_array( $arr ) && !empty( $arr ) )
 			return $arr;
@@ -68,12 +70,34 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Get a simple array with all editable config settings
+	 *
+	 * @return array
+	 */
+	public static function getEditableSettings(){
+		static $arr = null;
+		if( is_array( $arr ) && !empty( $arr ) )
+			return $arr;
+		self::loadSettingsDefs();
+		$arr = array();
+		foreach( self::$settings as $section ){
+			foreach( $section as $group ){
+				foreach( $group as $setting => $type ){
+					if( !in_array( $setting, self::$notEditableSettings ) )
+						$arr[$setting] = $type;
+				}
+			}
+		}
+		return $arr;
+	}
+
+	/**
 	 * Get the type of a setting
 	 *
 	 * @param string $setting
 	 * @return mixed
 	 */
-	protected static function getSettingType( $setting ){
+	public static function getSettingType( $setting ){
 		$settings = self::getAllSettings();
 		if( isset( $settings[$setting] ) )
 			return $settings[$setting];
@@ -179,7 +203,7 @@ class SpecialConfigure extends SpecialPage {
 			}
 		}
 		$settings = array();
-		foreach( self::getAllSettings() as $name => $type ){
+		foreach( self::getEditableSettings() as $name => $type ){
 			if( in_array( $name, self::$restricted ) && !$allowedRestricted ){
 				$settings[$name] = $this->getSettingValue( $name );
 				continue;
@@ -658,7 +682,8 @@ class SpecialConfigure extends SpecialPage {
 			foreach( $groups as $group => $settings ){
 				$ret .= $this->buildTableHeading( 'configure-section-' . $group );
 				foreach( $settings as $setting => $type ){
-					$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
+					if( !in_array( $setting, self::$notEditableSettings ) )
+						$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
 				}
 			}
 			$ret .= Xml::closeElement( 'table' ) . "\n" .
