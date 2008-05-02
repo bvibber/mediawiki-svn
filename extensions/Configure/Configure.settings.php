@@ -807,6 +807,7 @@ $arrayDefs = array(
 	'wgSquidServers' => 'simple',
 	'wgSquidServersNoPurge' => 'simple',
 # Cookie
+	'wgCacheVaryCookies' => 'simple',
 	'wgHttpOnlyBlacklist' => 'simple',
 # Reduction
 	'wgDisableQueryPageUpdate' => 'simple',
@@ -916,7 +917,7 @@ $settingsVersion = array(
 	'wgDefaultLanguageVariant' => array( array( '1.9alpha', '>=' ) ),
 	'wgDisableQueryPageUpdate' => array( array( '1.9alpha', '>=' ) ),
 	'wgMaxMsgCacheEntrySize' => array( array( '1.9alpha', '>=' ) ),
-#	'wgParserTestFiles' => array( array( '1.9alpha', '>=' ) ),
+	'wgParserTestFiles' => array( array( '1.9alpha', '>=' ) ),
 	'wgPasswordReminderResendTime' => array( array( '1.9alpha', '>=' ) ),
 	'wgQueryCacheLimit' => array( array( '1.9alpha', '>=' ) ),
 	'wgRCChangedSizeThreshold' => array( array( '1.9alpha', '>=' ) ),
@@ -925,6 +926,7 @@ $settingsVersion = array(
 	'wgVariantArticlePath' => array( array( '1.9alpha', '>=' ) ),
 	'wgXhtmlDefaultNamespace' => array( array( '1.9alpha', '>=' ) ),
 	'wgXhtmlNamespaces' => array( array( '1.9alpha', '>=' ) ),
+	'wgSorbsUrl' => array( array( '1.9alpha', '>=' ) ),
 # 1.10
 	'wgAutoConfirmCount' => array( array( '1.10alpha', '>=' ) ),
 	'wgCommandLineDarkBg' => array( array( '1.10alpha', '>=' ) ),
@@ -935,6 +937,10 @@ $settingsVersion = array(
 	'wgNamespaceAliases' => array( array( '1.10alpha', '>=' ) ),
 	'wgNamespaceProtection' => array( array( '1.10alpha', '>=' ) ),
 	'wgNonincludableNamespaces' => array( array( '1.10alpha', '>=' ) ),
+	'wgSharpenReductionThreshold' => array( array( '1.10alpha', '>=' ) ),
+	'wgSharpenParameter' => array( array( '1.10alpha', '>=' ) ),
+	'wgDjvuDump' => array( array( '1.10alpha', '>=' ) ),
+	'wgDjvuOutputExtension' => array( array( '1.10alpha', '>=' ) ),
 # 1.11
 	'wgAPIModules' => array( array( '1.11alpha', '>=' ) ),
 	'wgAddGroups' => array( array( '1.11alpha', '>=' ) ),
@@ -972,6 +978,7 @@ $settingsVersion = array(
 	'wgForcedRawSMaxage' => array( array( '1.12alpha', '>=' ) ),
 	'wgMaxPPNodeCount' => array( array( '1.12alpha', '>=' ) ),
 	'wgParserConf' => array( array( '1.12alpha', '>=' ) ),
+	'wgMaxTemplateDepth' => array( array( '1.12alpha', '>=' ) ),
 	'wgSidebarCacheExpiry' => array( array( '1.12alpha', '>=' ) ),
 	'wgStatsMethod' => array( array( '1.12alpha', '>=' ) ),
 	'wgUseNPPatrol' => array( array( '1.12alpha', '>=' ) ),
@@ -991,6 +998,11 @@ $settingsVersion = array(
 	'wgEnableMWSuggest' => array( array( '1.13alpha', '>=' ) ),
 	'wgMWSuggestTemplate' => array( array( '1.13alpha', '>=' ) ),
 	'wgOpenSearchTemplate' => array( array( '1.13alpha', '>=' ) ),
+	'wgAPIMaxDBRows' => array( array( '1.13alpha', '>=' ) ),
+	'wgSitemapNamespaces' => array( array( '1.13alpha', '>=' ) ),
+	'wgCacheVaryCookies' => array( array( '1.13alpha', '>=' ) ),
+	'wgHttpOnlyBlacklist' => array( array( '1.13alpha', '>=' ) ),
+	'wgSpecialPageGroups' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
