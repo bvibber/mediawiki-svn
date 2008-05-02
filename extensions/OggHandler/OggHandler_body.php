@@ -492,7 +492,8 @@ class OggTransformOutput extends MediaTransformOutput {
 			$imgAttribs = array( 
 				'src' => $this->url,
 				'width' => $width,
-				'height' => $height );
+				'height' => $height,
+				'alt' => $alt );
 			$playerHeight = $height;
 		} else {
 			// Sound file
@@ -503,6 +504,7 @@ class OggTransformOutput extends MediaTransformOutput {
 					'src' => "$wgStylePath/common/images/icons/fileicon-ogg.png",
 					'width' => 125,
 					'height' => 125,
+					'alt' => $alt,
 				);
 			} else {
 				 // make an icon later if necessary
@@ -524,7 +526,8 @@ class OggTransformOutput extends MediaTransformOutput {
 				$imgAttribs = array( 
 					'src' => "$scriptPath/info.png",
 					'width' => 22,
-					'height' => 22
+					'height' => 22,
+					'alt' => $alt,
 				);
 				$linkAttribs['title'] = wfMsg( 'ogg-desc-link' );
 				$descIcon = Xml::tags( 'a', $linkAttribs, 
