@@ -664,6 +664,7 @@ $restricted = array(
 	'wgDBmwschema',
 	'wgDBmysql5',
 	'wgDBname',
+	'wgDBpassword',
 	'wgDBport',
 	'wgDBprefix',
 	'wgDBschema',
