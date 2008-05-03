@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
+	'right-makesysop'      => 'Modify user levels',
 );
 
 $messages['af'] = array(
