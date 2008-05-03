@@ -68,7 +68,7 @@
  			 	 	
  		//set default time range if null time range request
  		$this->article->mvTitle->setStartEndIfEmpty();
- 		//grab relevent article semantic properties (so far playback_resolution) for user overiting playback res
+ 		//grab relevent article semantic properties (so far playback_resolution) for user overwriting playback res
  		$this->grabSemanticProp();
  		
 		//set up the interface objects:

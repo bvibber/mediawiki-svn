@@ -49,9 +49,8 @@ if($stream_type=='audio'){
 	if(is_null($height) || $height===false)
 		$height = 20;	
 }
-//eveerything good output page: 
+//everything good output page: 
 output_page();
-
 
 function error_out($error=''){
 	output_page($error);

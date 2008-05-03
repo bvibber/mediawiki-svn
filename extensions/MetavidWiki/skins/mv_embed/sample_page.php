@@ -20,7 +20,7 @@ Here are some sample embeds:<br />
 <? 
 $sample_embed = array(); 
 
-$sample_embed[0]['tag']='<video id="v0" src="http://128.114.20.64/media/house_proceeding_12-17-07.ogg?t=0:00:10/0:01:00"></video>';
+$sample_embed[0]['tag']='<video id="v0" src="sample.ogg"></video>';
 $sample_embed[0]['desc']='basic usage with manual controls:<br />'. 
 					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br />';
@@ -36,7 +36,7 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 //$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 //		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
-$sample_embed[1]['tag'] = '<video roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
+$sample_embed[1]['tag'] = '<video roe="http://localhost/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
 

@@ -282,7 +282,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		
 		//pull up relevant template for given mvd type: 
-		//@@todo convert into automated template_key lookup
+		//@@todo convert into automated template_key lookup	
 		switch(strtolower($template_key)){
 			case 'ht_en':			
 				global $wgParser, $wgUser, $wgContLang;
@@ -304,7 +304,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			break;
 			default:					
 			break;
-		}
+		}		
 		//now add the text with categories if present:
 		$sk =& $wgUser->getSkin();
 		//run via parser to add in Category info: 
@@ -548,13 +548,13 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						//@@todo update for other smw types: 
 						if($key=='smw_Spoken_By'){
 							//update the request wpTextBox:
-							$wgRequest->data['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']] '.
+							$_REQUEST['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']] '.
 								trim($_REQUEST['wpTextbox1']);
 						}
 					}				
 				}
 			}
-		}
+		}			
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		$editPageAjax->mvd_id = $mvd_id;			
 		

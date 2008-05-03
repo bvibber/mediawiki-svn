@@ -198,9 +198,10 @@ class MV_SpecialExport {
 					$query = 'stream_name='.$this->stream_name.'&t='.$this->req_time.'&feed_format=cmml&tracks='.strtolower($row->mvd_type);		
 					$clink = $sTitle->getFullURL($query);			
 					$inline = (in_array(strtolower($row->mvd_type), $this->mvcp->mvd_tracks))?'true':'false';
-					//for now make ht_en the default layer														
+					//for now make ht_en the default layer		
+					$default_attr = (strtolower($row->mvd_type)=='ht_en')?'default="true"':'';												
 ?>
-				<mediaSource id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" inline="<?=$inline?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+				<mediaSource id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" <?=$default_attr?> inline="<?=$inline?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
 <?					//output inline cmml (if requested): 
 					if($inline=='true'){
 						$this->get_stream_cmml(true, $row->mvd_type);

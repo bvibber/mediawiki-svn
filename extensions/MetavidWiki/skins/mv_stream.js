@@ -444,7 +444,6 @@ function add_autocomplete(mvd_id){
 }
 //submit the adjust 
 
-/*also needs some work: */
 //use start time of elements in the to position pieces.
 function mv_add_new_fd_mvd(titleKey, node_html){
 	//js_log('add: ' + mv_result['titleKey'] + node_html);

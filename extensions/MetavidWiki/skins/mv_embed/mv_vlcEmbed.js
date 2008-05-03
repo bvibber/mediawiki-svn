@@ -266,11 +266,14 @@ var vlcEmbed = {
     fullscreen : function(){
 		this.vlc.video.toggleFullscreen();
     },
-    currentTime : function(seek_val){
-		//if we did not get a seek value then return the current time stamp: 
-		if(!seek_val){
-			return this.vlc.input.time;
+    /* returns current time in float seconds */ 
+    currentTime : function(){
+		if(typeof this.vlc != 'undefined' ){
+			if(typeof this.vlc.input != 'undefined' ){
+				return this.vlc.input.time/1000;	
+			}
 		}
+		return 0;
     },
     // get the embed vlc object 
     getVLC : function getVLC(){
