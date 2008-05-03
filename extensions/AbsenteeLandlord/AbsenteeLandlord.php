@@ -1,6 +1,6 @@
 <?php
 /** \file
-* \brief Contains code for the AbsenteeLandlord extension by Ryan Schmidt.
+* \brief Contains code for the AbsenteeLandlord extension by Ryan Schmidt and Tim Laqua.
 */
 
 if(!defined('MEDIAWIKI')) {   
@@ -12,11 +12,11 @@ $wgAbsenteeLandlordMaxDays = 90; //how many days do the sysops have to be inacti
 
 $wgExtensionCredits['other'][] = array(   
 	'name' => 'Absentee Landlord',   
-	'author' => 'Ryan Schmidt',   
+	'author' => 'Ryan Schmidt and Tim Laqua',   
 	'version' => '1.0',
-	'description' => $desc[$langcode],   
+	'description' => 'Auto-locks the wiki database if the sysops are all inactive for some time',   
 	'descriptionmsg' => 'absenteelandlord-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:AbsenteeLandlord',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:AbsenteeLandlord',
 );   
     
 $wgExtensionFunctions[] = 'efAbsenteeLandlord_Setup';
@@ -29,11 +29,11 @@ function efAbsenteeLandlord_Setup() {
 	$lasttouched = filemtime( dirname(__FILE__) . '/lasttouched.txt' );   
 	$check = time() - $lasttouched;   
 	
-	if( $check >= $timeout && ) {
+	if( $check >= $timeout ) {
 		global $wgUser;
 		$groups = $wgUser->getGroups();
 		
-		if( in_array( 'sysop', $groups ) ) {  
+		if( !in_array( 'sysop', $groups ) ) {  
 			global $wgReadOnly, $wgMessageCache;
 			
 			#Add Messages (don't need them unless we get here)
@@ -42,7 +42,7 @@ function efAbsenteeLandlord_Setup() {
 				  $wgMessageCache->addMessages( $messages[$key], $key );
 			}
 			
-			$wgReadOnly = ( wfMsg( 'absenteelandlord-reason' );   
+			$wgReadOnly = ( wfMsg( 'absenteelandlord-reason' ) );   
 		}
 	}   
 
