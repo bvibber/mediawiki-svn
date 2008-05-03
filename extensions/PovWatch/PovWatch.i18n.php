@@ -39,6 +39,8 @@ Click the button below to unsubscribe.',
 Click the button below to subscribe.',
 	'povwatch_subscribe'               => 'Subscribe',
 	'povwatch_added'                   => 'added',
+	'right-povwatch_admin'             => 'Administer user rights for adding pages to watchlists of other users',
+	'right-povwatch_user'              => 'Add pages to watchlists of other users',
 );
 
 /** Arabic (العربية)
