@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'makesysoptitle'       => 'Make a user into a sysop',
-	'makesysop-desc'       => 'Gives bureaucrats/stewards the ability to modify user levels',
+	'makesysop-desc'       => 'Gives bureaucrats the ability to make users into sysops or bureaucrats',
 	'makesysoptext'        => 'This form is used by bureaucrats to turn ordinary users into administrators. Type the name of the user in the box and press the button to make the user an administrator.',
 	'makesysopname'        => 'Name of the user:',
 	'makesysopsubmit'      => 'Make this user into a sysop',
@@ -27,7 +27,7 @@ $messages['en'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'right-makesysop'      => 'Modify user levels',
+	'right-makesysop'      => 'Make users into sysops or bureaucrats',
 );
 
 $messages['af'] = array(
@@ -608,6 +608,7 @@ $messages['he'] = array(
 	'group-steward'        => 'דיילים',
 	'group-steward-member' => 'דייל',
 	'grouppage-steward'    => '{{ns:project}}:דיילים',
+	'right-makesysop'      => 'הפיכת משתמשים למפעילי מערכת או לביורוקרטים',
 );
 
 /** Croatian (Hrvatski)

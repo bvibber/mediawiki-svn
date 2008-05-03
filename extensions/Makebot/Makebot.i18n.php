@@ -459,6 +459,8 @@ $messages['he'] = array(
 	'makebot-logpagetext'    => 'זהו יומן השינויים בהרשאות ה[[{{ns:help}}:בוט|בוט]] של המשתמשים.',
 	'makebot-logentrygrant'  => 'העניק הרשאת בוט למשתמש [[$1]]',
 	'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
+
+	'right-makebot' => 'הענקת וביטול הרשאת בוט',
 );
 
 $messages['hr'] = array(
