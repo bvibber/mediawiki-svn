@@ -55,6 +55,7 @@ $settings = array(
 			'wgDBmysql4' => 'bool',
 			'wgDBmysql5' => 'bool',
 			'wgDBname' => 'text',
+			'wgDBpassword' => 'text',
 			'wgDBport' => 'int',
 			'wgDBprefix' => 'text',
 			'wgDBschema' => 'text',
@@ -416,6 +417,7 @@ $settings = array(
 	),
 	'images' => array(
 		'images' => array(
+			'wgAllowImageMoving' => 'bool',
 			'wgCustomConvertCommand' => 'text',
 			'wgDjvuDump' => 'text',
 			'wgDjvuOutputExtension' => 'text',
@@ -1003,6 +1005,7 @@ $settingsVersion = array(
 	'wgCacheVaryCookies' => array( array( '1.13alpha', '>=' ) ),
 	'wgHttpOnlyBlacklist' => array( array( '1.13alpha', '>=' ) ),
 	'wgSpecialPageGroups' => array( array( '1.13alpha', '>=' ) ),
+	'wgAllowImageMoving' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

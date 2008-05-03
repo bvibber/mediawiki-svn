@@ -324,8 +324,12 @@ class SpecialConfigure extends SpecialPage {
 					throw new MWException( "Unknown setting type $type (setting name: \$$name)" );
 				}
 			}
-			if( isset( $settings[$name] ) && $settings[$name] === null )
-				unset( $settings[$name] );
+
+			if( isset( $settings[$name] ) ){
+				$settings[$name] = $this->cleanupSetting( $name, $settings[$name] );
+				if( $settings[$name] === null )
+					unset( $settings[$name] );
+			}
 		}
 
 		$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
@@ -334,6 +338,24 @@ class SpecialConfigure extends SpecialPage {
 		$class = $ok ? 'successbox' : 'errorbox';
 
 		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+	}
+
+	/**
+	 * Cleanup some settings to respect some behaviour of the core
+	 *
+	 * @param String $name setting name
+	 * @param mixed $val setting value
+	 */
+	protected function cleanupSetting( $name, $val ){
+		switch( $name ){
+		case 'wgSharedDB':
+			if( empty( $val ) )
+				return null;
+			else
+				return $val;
+		default:
+			return $val;
+		}
 	}
 
 	/**

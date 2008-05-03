@@ -1,7 +1,8 @@
 <?php
 
 /**
- * To find settings that aren't configurable by the extension.
+ * Maintenance script that find settings that aren't configurable by the
+ * extension.
  * Based on findhooks.php
  *
  * @addtogroup Extensions
@@ -14,6 +15,25 @@ $IP = "$dir/../..";
 @include( "$dir/../CorePath.php" ); // Allow override
 require_once( "$IP/maintenance/commandLine.inc" );
 
+# Functions
+
+/**
+ * Print a help message and exit
+ */
+function printHelp(){
+	echo "Script that find settings that aren't configurable by the extension.\n";
+	echo "\n";
+	echo "Usage:\n";
+	echo "  php findSettings.php [--help|--from-doc]\n";
+	echo "\n";
+	echo "options:\n";
+	echo "--help: display this screen\n";
+	echo "--from-doc: compare with settings from mediawiki.org instead settings\n";
+	echo "            from this extension\n";
+	echo "\n";
+	exit;
+}
+
 /**
  * Nicely output the array
  * @param $msg A message to show before the value
@@ -25,8 +45,20 @@ function printArray( $msg, $arr, $sort = true ) {
 	foreach($arr as $v) echo "$msg: $v\n";
 }
 
+# Main part
+
+if( isset( $options['help'] ) )
+	printHelp();
+
 // Get our settings defs
-$allSettings = array_keys( SpecialConfigure::getAllSettings() );
+if( isset( $options['from-doc'] ) ){
+	$cont = Http::get( 'http://www.mediawiki.org/w/index.php?title=Manual:Configuration_settings&action=raw' );
+	$m = array();
+	preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
+	$allSettings = array_unique( $m[1] );
+} else {
+	$allSettings = array_keys( SpecialConfigure::getAllSettings() );
+}
 
 // Now we'll need to open DefaultSettings.php
 $m = array();
