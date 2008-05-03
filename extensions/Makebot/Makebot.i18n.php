@@ -6,7 +6,7 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  */
 
 $messages = array();
@@ -219,6 +219,7 @@ $messages['de'] = array(
 	'makebot-logpagetext'    => 'Dieses Logbuch protokolliert alle [[Help:Bot|Botstatus]]-Änderungen.',
 	'makebot-logentrygrant'  => 'erteilte Botstatus für „[[$1]]“',
 	'makebot-logentryrevoke' => 'entfernte den Botstatus von „[[$1]]“',
+	'right-makebot'          => 'Botflag erteilen und entziehen',
 );
 
 /** Zazaki (Zazaki)

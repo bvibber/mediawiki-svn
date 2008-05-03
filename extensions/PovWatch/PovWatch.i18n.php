@@ -139,6 +139,8 @@ $messages['de'] = array(
 	'povwatch_subscribe_intro'         => 'Du bist nicht für PovWatch registriert. Klicke auf die Schaltfläche, um dich anzumelden.',
 	'povwatch_subscribe'               => 'Registrieren',
 	'povwatch_added'                   => 'hinzugefügt',
+	'right-povwatch_admin'             => 'Administriere Benutzerrechte zur Hinzufügung von Seiten zur Beobachtungsliste anderer Benutzer',
+	'right-povwatch_user'              => 'Hinzufügen von Seiten zur Beobachtungsliste anderer Benutzer',
 );
 
 /** Greek (Ελληνικά)

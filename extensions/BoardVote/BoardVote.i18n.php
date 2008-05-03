@@ -774,6 +774,8 @@ Dein Browser muss so konfiguriert sein, dass er Cookies von dem externen Wahlcom
 Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
 
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
+
+	'right-boardvote'         => 'Wahlen administrieren',
 );
 
 /** Zazaki (Zazaki)

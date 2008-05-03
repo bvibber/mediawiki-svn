@@ -325,6 +325,7 @@ $messages['de'] = array(
 	'group-steward'            => 'Stewards',
 	'group-steward-member'     => 'Steward',
 	'grouppage-steward'        => '{{ns:project}}:Stewards',
+	'right-makesysop'          => 'Benutzer zu Administratoren und Bürokraten machen',
 );
 
 $messages['el'] = array(
