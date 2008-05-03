@@ -31,6 +31,7 @@ $messages['en'] = array(
 	'makebot-logpagetext'     => 'This is a log of changes to users\' [[{{MediaWiki:Grouppage-bot}}|bot]] status.',
 	'makebot-logentrygrant'   => 'granted bot status to [[$1]]',
 	'makebot-logentryrevoke'  => 'removed bot status from [[$1]]',
+	'right-makebot'           => 'Grant and revoke bot flags',
 );
 
 /* Arabic */
