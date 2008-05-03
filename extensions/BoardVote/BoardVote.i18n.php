@@ -88,6 +88,8 @@ Vote open until July 12",
 You will be redirected to this external server in 20 seconds. [$1 Click here] to go there now.
 
 A security warning about an unsigned certificate may be displayed.',
+
+	'right-boardvote'         => 'Administer elections',
 );
 
 $messages['af'] = array(
