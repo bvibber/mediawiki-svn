@@ -8,8 +8,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class SpecialConfigure extends SpecialPage {
 	protected static $initialized = false;
-	protected static $settings, $restricted, $arrayDefs,
-		$notEditableSettings, $settingsVersion;
+	protected static $settings, $restricted, $restrictedGroups,
+		$arrayDefs, $notEditableSettings, $settingsVersion;
 	protected $conf;
 
 	// Static methods
@@ -24,6 +24,7 @@ class SpecialConfigure extends SpecialPage {
 		require( dirname( __FILE__ ) . '/Configure.settings.php' );
 		self::$settings = $settings;
 		self::$restricted = $restricted;
+		self::$restrictedGroups = $restrictedGroups;
 		self::$arrayDefs = $arrayDefs;
 		self::$notEditableSettings = $notEditableSettings;
 		self::$settingsVersion = $settingsVersion;
@@ -500,7 +501,7 @@ class SpecialConfigure extends SpecialPage {
 		$type = self::$arrayDefs[$conf];
 		if( $type == 'simple' ){
 			if( !$allowed ){
-				return "<pre>\n" . htmlspecialchars( implode( "\n", $default ) ) . "\n</pre>";
+				return "<pre>\n" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
 			}
 			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8'>";
 			if( is_array( $default ) )
@@ -696,20 +697,25 @@ class SpecialConfigure extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected function buildAllSettings(){
+		global $wgUser;
 		$ret = '';
 		foreach( self::$settings as $title => $groups ){
 			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
-				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n" .
-				Xml::openElement( 'table' ) . "\n";
-			foreach( $groups as $group => $settings ){
-				$ret .= $this->buildTableHeading( 'configure-section-' . $group );
-				foreach( $settings as $setting => $type ){
-					if( !in_array( $setting, self::$notEditableSettings ) )
-						$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
+				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n";
+			if( in_array( $title, self::$restrictedGroups ) && !$wgUser->isAllowed( 'configure-all' ) ){
+				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
+			} else {
+				$ret .= Xml::openElement( 'table' ) . "\n";
+				foreach( $groups as $group => $settings ){
+					$ret .= $this->buildTableHeading( 'configure-section-' . $group );
+					foreach( $settings as $setting => $type ){
+						if( !in_array( $setting, self::$notEditableSettings ) )
+							$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
+					}
 				}
+				$ret .= Xml::closeElement( 'table' ) . "\n";
 			}
-			$ret .= Xml::closeElement( 'table' ) . "\n" .
-				Xml::closeElement( 'fieldset' );
+			$ret .= Xml::closeElement( 'fieldset' );
 		}
 		return $ret;
 	}

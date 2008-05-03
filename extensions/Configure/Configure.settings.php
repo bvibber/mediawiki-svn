@@ -631,6 +631,7 @@ $settings = array(
  */
 $restricted = array(
 # General
+	'wgActionPaths',
 	'wgAppleTouchIcon',
 	'wgArticlePath',
 	'wgDiff3',
@@ -656,10 +657,12 @@ $restricted = array(
 	'wgUploadPath',
 	'wgVariantArticlePath',
 # Db
+	'wgAllDBsAreLocalhost',
 	'wgAlternateMaster',
 	'wgCheckDBSchema',
 	'wgDBAvgStatusPoll',
 	'wgDBClusterTimeout',
+	'wgDBerrorLog',
 	'wgDBminWordLen',
 	'wgDBmwschema',
 	'wgDBmysql5',
@@ -706,6 +709,7 @@ $restricted = array(
 # Rate limits
 	'wgRateLimitLog',
 # Proxies
+	'wgProxyKey',
 	'wgProxyScriptPath',
 	'wgSecretKey',
 # Squid
@@ -732,6 +736,13 @@ $restricted = array(
 # Misc
 	'wgMWSuggestTemplate',
 	'wgOpenSearchTemplate',
+);
+
+/**
+ * Group where all settings are restricted
+ */
+$restrictedGroups = array(
+	'db',
 );
 
 /**
