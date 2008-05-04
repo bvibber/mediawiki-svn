@@ -35,5 +35,6 @@ $wgGroupPermissions['bureaucrat']['userrights'] = false;
 
 # Register special page
 $wgSpecialPages['Makesysop'] = 'MakesysopPage';
+$wgSpecialPageGroups['Makesysop'] = 'permissions';
 $wgAutoloadClasses['MakesysopPage'] = "$dir/SpecialMakesysop_body.php";
 $wgAutoloadClasses['MakesysopForm'] = "$dir/SpecialMakesysop_body.php";
