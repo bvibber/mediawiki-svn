@@ -73,6 +73,20 @@ $messages['eo'] = array(
 	'onlinestatus-toggle-online'    => 'Konektita',
 );
 
+/** Spanish (Español)
+ * @author Cojoilustrado
+ */
+$messages['es'] = array(
+	'onlinestatus-desc'             => 'Crea una preferencia para mostrar si el usuario está conectado al wiki',
+	'onlinestatus-subtitle-offline' => 'Este usuario se encuentra desconectado',
+	'onlinestatus-subtitle-online'  => 'Este usuario se encuentra conectado',
+	'onlinestatus-toggles-desc'     => 'Tu estatus:',
+	'onlinestatus-toggles-explain'  => 'Esto te permite mostrar a otros usuarios si estás conectado en tu página de usuario.',
+	'onlinestatus-toggles-show'     => 'Muestra mi status en mi página de usuario',
+	'onlinestatus-toggle-offline'   => 'Desconectado',
+	'onlinestatus-toggle-online'    => 'Conectado',
+);
+
 /** French (Français)
  * @author IAlex
  */
