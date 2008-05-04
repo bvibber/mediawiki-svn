@@ -248,7 +248,7 @@ class MV_SpecialExport {
 		if(!$inline)header('Content-Type: text/xml');
 		//print the header:
 		if(!$inline)print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'."\n";		
-		if(!$inline)print '<!DOCTYPE cmml SYSTEM "cmml.dtd">'."\n";		
+		//if(!$inline)print '<!DOCTYPE cmml SYSTEM "http://svn.annodex.net/standards/cmml_2_0.dtd">'."\n";		
 		$tracks=array();
 		if(count($dbr->numRows($mvd_res))!=0){ 
 			global $wgOut;

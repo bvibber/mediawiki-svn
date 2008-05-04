@@ -727,8 +727,7 @@ textInterface.prototype = {
 			this.getParseCMML();
 		}
 		//start the autoscroll timer: 
-		this.setAutoScroll(true);
-		
+		this.setAutoScroll(true);		
 	},
 	//@@todo seperate out data loader & data display 
 	getParseCMML:function(){		
@@ -778,12 +777,15 @@ textInterface.prototype = {
 				url+='t='+seconds2ntp(req_time[0])+'/'+seconds2ntp(req_time[1])+'&';
 			}
 		}
-		js_log('do request on url:' + url);				
-		$j('#mv_loading_icon').css('display','inline');
+		//js_log('do request on url:' + url);				
+		//$j('#mv_loading_icon').css('display','inline');
 		do_request(url, function(data){
+			//js_log('wtf' + data.xml);
+			//js_log("load track data: "+ data.toString() );
 			//hide loading icon:
 			$j('#mv_loading_icon').css('display','none');						
 			$j.each(data.getElementsByTagName('clip'), function(inx, n){
+				js_log('on clip '+ n.getAttribute('id'));
 				var text_clip = {
 					start:n.getAttribute('start').replace('ntp:', ''),
 					end:n.getAttribute('end').replace('ntp:', ''),
@@ -791,10 +793,15 @@ textInterface.prototype = {
 					id:n.getAttribute('id')
 				}
 				$j.each(n.getElementsByTagName('body'), function(binx, bn){
-					text_clip.body = bn.textContent;
-				});
+					if(bn.textContent){
+						text_clip.body = bn.textContent;
+					}else if(bn.text){
+						text_clip.body = bn.text;
+					}
+				});				
 				_this.add_merge_text_clip(text_clip);
 			});
+			//js_log('done with merge insert text clips');
 			//done loading update availableTracks
 			_this.availableTracks[track_id].loaded=true;
 			_this.availableTracks[track_id].display=true;
@@ -813,14 +820,23 @@ textInterface.prototype = {
 					'</div>'+
 					text_clip.body + 
 			'</div>';
+						
+			if($j('#mmbody_'+this.pe.id).length==0)this.show();
+			
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
+				js_log('searching for insert point..');
 				if(!inserted){
+					js_log( ntp2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
 					if( ntp2seconds($j(this).attr('start')) > text_clip_start_time){
 						inserted=true;
+						
 						$j(this).before(insertHTML);
 					}
+				}else{
+					js_log('already inserted')
 				}
 			});
+			//js_log('should just append: '+insertHTML);
 			if(!inserted){
 				$j('#mmbody_'+this.pe.id ).append(insertHTML);
 			}			
@@ -834,21 +850,22 @@ textInterface.prototype = {
 		if($j('#metaBox_'+this.pe.id).length==0){
 			//append it to body relative to offset of this.pe
 			var loc = $j(this.pe).position();
+			js_log('got loc');
 			js_log('top ' +loc.top + ' left:'+loc.left );
 			var append ='<div style="position:absolute;z-index: 5001;' +
-						'top:'+(loc.top-4)+'px;' +
-						'left:'+(parseInt(loc.left)+parseInt(this.pe.width))+'px;' +
+						'top:'+(loc.top)+'px;' +
+						'left:'+(parseInt(loc.left)+parseInt(this.pe.width)+10)+'px;' +
 						'height:'+this.pe.height+'px;width:400px;' +
 						'background:white;border:solid black;" ' +
 					'id="metaBox_'+this.pe.id+'">' +
 					this.getMenu() +
 					this.getBody() + 
 					'</div>';
-			$j(this.pe).after(append);
+			$j(this.pe).after(append);			
 			//$j('body').append();
 		}else{
 			$j('#metaBox_'+this.pe.id).fadeIn("fast");
-		}
+		}		
 	},	
 	close:function(){
 		//the meta box: 
@@ -857,7 +874,7 @@ textInterface.prototype = {
 		$j('#metaText_'+this.pe.id).fadeIn('fast');	
 	},
 	getBody:function(){		
-		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;"/>';
+		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;height:'+(this.pe.height-20)+'px;overflow:auto;"/>';
 	},
 	getTsSelect:function(){
 		js_log('getTsSelect');
@@ -902,7 +919,7 @@ textInterface.prototype = {
 	},
 	monitor:function(){
 		//grab the time from the video object 
-		var cur_time = parseInt(this.pe.currentTime());			
+		var cur_time = parseInt( this.pe.currentTime() );			
 		if(cur_time!=0 && this.prevTimeScroll!=cur_time){
 			//search for current time:  flash red border trascript 
 			_this = this;
@@ -922,7 +939,9 @@ textInterface.prototype = {
 				this.scrollTimerId = setInterval('document.getElementById(\''+this.pe.id+'\').textInterface.monitor()', 500);
 			}
 			//jump to the current position: 
-			var cur_time = parseInt(this.pe.currentTime());	
+			var cur_time = parseInt (this.pe.currentTime());
+			js_log('cur time: '+ cur_time);
+						
 			_this = this;
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(cur_time > ntp2seconds($j(this).attr('start'))  ){	
@@ -939,16 +958,18 @@ textInterface.prototype = {
 	getMenu:function(){
 		var out='';
 		//add in loading icon: 
+		/*
 		out+= '<div class="mv_loading_icon" style="background:url(\''+mv_embed_path+'images/indicator.gif\');display:';
 		out+= (this.roe_data)? 'none':'inline';
 		out+='"/>';		
+		*/
 		var as_checked = (this.autoscroll)?'checked':'';
 		out+= '<div id="mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
 				'<a style="font-color:#000;" title="'+getMsg('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
 					'<img border="0" width="16" height="16" src="'+mv_embed_path + 'images/cancel.png"></a> ' + 
 				'<a style="font-color:#000;" title="'+getMsg('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
 					getMsg('select_transcript_set')+'</a> | ' + 
-				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked)" ' +
+				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
 				'type="checkbox" '+as_checked +'>'+getMsg('auto_scroll');
 		if(this.pe.linkback){
 			out+=' | <a style="font-color:#000;" title="'+getMsg('improve_transcript')+'" href="'+this.pe.linkback+'">'+
@@ -1394,6 +1415,7 @@ embedVideo.prototype = {
 		}
 		//show interface
 		this.textInterface.show();
+		//js_log('text interface should be show');
 	},
 	closeTextInterface:function(){
 		js_log('closeTextInterface '+ typeof this.textInterface);
@@ -1772,7 +1794,7 @@ function ntp2seconds(ntp){
 function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
- function do_request(req_url,callback,mv_json_response){
+ function do_request(req_url, callback, mv_json_response){
  	js_log('do request: ' + req_url);
 		if( parseUri(document.URL).host == parseUri(req_url).host){
 			//no proxy at all do a direct request: 
@@ -1786,12 +1808,14 @@ function mv_addLoadEvent(func) {
 		}else{
 			//check if MV_embed path matches document.URL then we can use the local proxy: 
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
-				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);
+				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);	
+				js_log("do ajax req:" +req_url);
 				$j.ajax({
 					type: "POST",
 					url:mv_embed_path + 'mv_data_proxy.php',
 					data:{url:req_url},
-					success:function(data){					
+					success:function(data){											
+						js_log("did ajax req:"+ typeof data);
 						callback(data);
 					}
 				});
@@ -1834,7 +1858,7 @@ function mv_jsdata_cb(response){
 	}			
 	global_req_cb[response['cb_inx']](response['pay_load']);
 }
-//load external via dom injection
+//load external js via dom injection
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
 	var e = document.createElement("script");
@@ -1889,7 +1913,26 @@ function getMvEmbedPath(){
 		js_log('already absolute');
 	}
 }
+if (typeof DOMParser == "undefined") {
+   DOMParser = function () {}
 
+   DOMParser.prototype.parseFromString = function (str, contentType) {
+      if (typeof ActiveXObject != "undefined") {
+         var d = new ActiveXObject("MSXML.DomDocument");
+         d.loadXML(str);
+         return d;
+      } else if (typeof XMLHttpRequest != "undefined") {
+         var req = new XMLHttpRequest;
+         req.open("GET", "data:" + (contentType || "application/xml") +
+                         ";charset=utf-8," + encodeURIComponent(str), false);
+         if (req.overrideMimeType) {
+            req.overrideMimeType(contentType);
+         }
+         req.send(null);
+         return req.responseXML;
+      }
+   }
+}
 /*
 * utility functions:
 */
@@ -1901,14 +1944,14 @@ function getMvEmbedPath(){
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}

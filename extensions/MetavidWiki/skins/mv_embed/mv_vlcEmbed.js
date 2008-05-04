@@ -273,7 +273,7 @@ var vlcEmbed = {
 				return this.vlc.input.time/1000;	
 			}
 		}
-		return 0;
+		return '0';
     },
     // get the embed vlc object 
     getVLC : function getVLC(){
