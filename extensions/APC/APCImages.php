@@ -219,7 +219,5 @@ class APCImages {
 		}
 
 		return imagepng( $image );
-
 	}
-
 }

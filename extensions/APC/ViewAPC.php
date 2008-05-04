@@ -9,12 +9,10 @@ if (!defined('MEDIAWIKI')) die();
  * @copyright Copyright © 2008, Niklas Laxström
  */
 
-
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Apc',
 	'version'        => '2008-05-04',
 	'author'         => 'Niklas Laxström',
-	'description'    => '[[Special:ViewAPC|Special page]] for viewing memory cache',
 	'descriptionmsg' => 'viewapc-desc',
 );
 

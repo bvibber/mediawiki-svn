@@ -95,7 +95,7 @@ class SpecialAPC extends SpecialPage {
 			}
 		}
 
-	
+
 		$dir = dirname( __FILE__ );
 		$wgOut->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css',
 			'href' => "$wgScriptPath/extensions/APC/apc.css?$wgStyleVersion", )
@@ -112,7 +112,7 @@ class SpecialAPC extends SpecialPage {
 		return Xml::element( 'a', array( 'href' => $target ) + $attribs, $name );
 	}
 
-	protected function getSelfURL( $overrides ) { 
+	protected function getSelfURL( $overrides ) {
 		$changed = $this->opts->getUnconsumedValues();
 		$target = $this->title->getLocalURL( wfArrayToCGI( $overrides, $changed ) );
 		return $target;
@@ -150,7 +150,7 @@ class SpecialAPC extends SpecialPage {
 	}
 
 	protected function mainMenu() {
-		
+
 
 		$clearParams = array(
 			'clearcache' => 1,
@@ -265,5 +265,4 @@ class SpecialAPC extends SpecialPage {
 			}
 		}
 	}
-
 }
