@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.2.3 - 4 May 2008
+  Added $wgSharedDBtables, $wgAdvancedSearchHighlighting and
+  $wgSearchHighlightBoundaries.
+
 0.2.2 - 3 May 2008
   * Fixed a bug when $wgSharedDB is set to an empty string
   * Added $wgDBpassword and $wgAllowImageMoving to the list of settings
