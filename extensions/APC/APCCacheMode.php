@@ -230,13 +230,14 @@ class APCCacheMode {
 	}
 
 	protected function options() {
-		global $wgLang;
+		global $wgLang, $wgScript;
 
 		$s =
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'viewapc-ls-options-legend' ) ) .
-			Xml::openElement( 'form', array( 'action' => $this->title->getLocalURl() ) );
+			Xml::openElement( 'form', array( 'action' => $wgScript ) );
 
+		$s .= Xml::hidden( 'title', $this->title->getPrefixedText() );
 		foreach ( $this->opts->getUnconsumedValues() as $key => $value ) {
 			$s .= Xml::hidden( $key, $value );
 		}
