@@ -548,7 +548,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						//@@todo update for other smw types: 
 						if($key=='smw_Spoken_By'){
 							//update the request wpTextBox:
-							$_REQUEST['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']] '.
+							$wgRequest->data['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']]'.
 								trim($_REQUEST['wpTextbox1']);
 						}
 					}				
@@ -566,12 +566,12 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			//$wgOut->addHTML($out);			
 			$mvTitle = new MV_Title($_REQUEST['title']);
 				
-			$parserOutput = $this->parse_format_text($_REQUEST['wpTextbox1'], $mvTitle);	
+			$parserOutput = $this->parse_format_text($wgRequest->data['wpTextbox1'], $mvTitle);	
 			$wgOut->addParserOutput($parserOutput);		
 			return $wgOut->getHTML() . '<div style="clear:both;"><hr></div>';
 		}	
 						
-		if($editPageAjax->edit()==false){			
+		if($editPageAjax->edit($wgRequest->data['wpTextbox1'])==false){			
 			if($mvd_id=='new'){
 				//get context info to position timeline element: 
 				$rt = (isset($_REQUEST['wgTitle']))?$_REQUEST['wgTitle']:null;
