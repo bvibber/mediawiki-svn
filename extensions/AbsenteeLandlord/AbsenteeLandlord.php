@@ -12,7 +12,7 @@ $wgAbsenteeLandlordMaxDays = 90; //how many days do the sysops have to be inacti
 
 $wgExtensionCredits['other'][] = array(   
 	'name' => 'Absentee Landlord',   
-	'author' => 'Ryan Schmidt and Tim Laqua',   
+	'author' => array( 'Ryan Schmidt', 'Tim Laqua' ),   
 	'version' => '1.0',
 	'description' => 'Auto-locks the wiki database if the sysops are all inactive for some time',   
 	'descriptionmsg' => 'absenteelandlord-desc',
@@ -25,7 +25,7 @@ $wgHooks['BeforePageDisplay'][] = 'efAbsenteeLandlord_MaybeDoTouch';
 function efAbsenteeLandlord_Setup() {
 	global $wgAbsenteeLandlordMaxDays;
 
-	$timeout = $wgAbsenteeLandlordMaxDays * 24 * 60 * 60 // # days * 24 hours * 60 minutes * 60 seconds   
+	$timeout = $wgAbsenteeLandlordMaxDays * 24 * 60 * 60; // # days * 24 hours * 60 minutes * 60 seconds   
 	$lasttouched = filemtime( dirname(__FILE__) . '/lasttouched.txt' );   
 	$check = time() - $lasttouched;   
 	
