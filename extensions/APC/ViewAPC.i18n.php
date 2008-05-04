@@ -5,7 +5,7 @@ $messages = array();
 $messages['en'] = array(
 	'viewapc'      => 'APC information',
 	'viewapc-desc' => '[[Special:ViewAPC|View and manage APC cache]] with MediaWiki',
-	'right-apc'    => 'Use all features in Special:APC',
+	'right-apc'    => 'Use all features in Special:ViewAPC',
 
 	'viewapc-apc-not-available' => 'No cache info available.
 APC does not appear to be running.',
