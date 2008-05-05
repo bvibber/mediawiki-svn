@@ -15,12 +15,12 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Resign',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
 	'description' => 'Gives users the ability to remove their permissions',
-	'descriptionmsg' =>  'resign-desc',
+	'descriptionmsg' => 'resign-desc',
 );
 
 # Add resign permission for every group set in the database
 foreach( $wgGroupPermissions as $key => $value ) {
-	if ( $key != '*' && $key != 'user' && $key != 'autoconfirmed' && $key != 'emailconfirmed' ) {
+	if( !in_array( $key, $wgImplicitGroups ) ) {
 		$wgGroupPermissions[$key]['resign'] = true;
 	}
 }
