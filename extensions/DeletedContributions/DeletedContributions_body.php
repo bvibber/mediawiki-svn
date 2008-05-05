@@ -335,14 +335,14 @@ function deletedContributionsForm( $options ) {
 		$f .= "\t" . Xml::hidden( $name, $value ) . "\n";
 	}
 
-	$f .= '<fieldset>' .
+	$f .=  Xml::openElement( 'fieldset' ) .
 		Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
-		wfMsgExt( 'sp-contributions-username', array( 'parseinline' ) ) . ' ' .
+		Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) .
 		Xml::input( 'target', 20, $options['target']) . ' '.
 		Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
 		Xml::namespaceSelector( $options['namespace'], '' ) .
 		Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
-		'</fieldset>' .
+		Xml::closeElement( 'fieldset' ) .
 		Xml::closeElement( 'form' );
 	return $f;
 }
