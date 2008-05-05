@@ -40,7 +40,7 @@ function wfLoadContribsLink( $id, $nt, &$links ) {
 function wfDeletedContributionsMessages( $specialpage, $par, $func ) {
 	if( $specialpage->name() == 'DeletedContributions' ) {
 		wfLoadExtensionMessages( 'DeletedContributions' );
-		$specialpage->setHeaders(); // set again so that it actually has the message
+		$specialpage->setHeaders(); // set again so that it actually has the fucking message
 	}
 	return true;
 }
