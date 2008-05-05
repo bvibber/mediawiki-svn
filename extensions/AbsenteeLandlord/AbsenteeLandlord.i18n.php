@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 #coding: utf-8
 /**
  * Internationalisation file for extension AbsenteeLandlord.
