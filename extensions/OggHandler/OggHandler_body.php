@@ -531,11 +531,11 @@ class OggTransformOutput extends MediaTransformOutput {
 				);
 				$linkAttribs['title'] = wfMsg( 'ogg-desc-link' );
 				$descIcon = Xml::tags( 'a', $linkAttribs, 
-					Xml::element( 'img', $imgAttribs, null ) );
+					Xml::element( 'img', $imgAttribs ) );
 				$thumb = '';
 			} elseif ( $imgAttribs ) {
 				$thumb = Xml::tags( 'a', $linkAttribs, 
-					Xml::element( 'img', $imgAttribs, null ) );
+					Xml::element( 'img', $imgAttribs ) );
 			} else {
 				$thumb = '';
 			}
@@ -544,7 +544,7 @@ class OggTransformOutput extends MediaTransformOutput {
 			// We don't respect the file-link option, click-through to download is not appropriate
 			$linkUrl = false;
 			if ( $imgAttribs ) {
-				$thumb = Xml::element( 'img', $imgAttribs, null );
+				$thumb = Xml::element( 'img', $imgAttribs );
 			} else {
 				$thumb = '';
 			}
@@ -579,8 +579,7 @@ class OggTransformOutput extends MediaTransformOutput {
 							'width' => 22,
 							'height' => 22,
 							'alt' => $msgStartPlayer
-						), 
-						null 
+						)
 					)
 				)
 			) .
