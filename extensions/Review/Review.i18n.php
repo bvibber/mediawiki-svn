@@ -491,6 +491,7 @@ $messages['jv'] = array(
 	'review_user_details_link'      => '(détail)',
 	'review_blocked'                => 'Panjenengan iku diblokir, mangga lungaa.',
 	'review_topic'                  => 'Topik',
+	'review_no_opinion'             => 'Ora ana komentar',
 	'review_comment'                => 'Komentar',
 );
 

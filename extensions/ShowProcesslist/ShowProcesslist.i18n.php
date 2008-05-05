@@ -172,6 +172,7 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'showprocesslist'       => 'Tuduhna Daftar Prosès',
 	'showprocesslist-user'  => 'Panganggo',
 	'showprocesslist-host'  => 'Tuwan',
 	'showprocesslist-time'  => 'Wektu',

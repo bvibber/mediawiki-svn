@@ -295,9 +295,12 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'povwatch_push'  => 'Surung',
-	'povwatch_title' => 'Irah-irahan (judhul):',
-	'povwatch_added' => 'ditambah',
+	'povwatch_unknown_subpage' => 'Subkaca ora dimangertèni',
+	'povwatch_push'            => 'Surung',
+	'povwatch_title'           => 'Irah-irahan (judhul):',
+	'povwatch_unsubscribe'     => 'Batal langganan',
+	'povwatch_subscribe'       => 'Langganan',
+	'povwatch_added'           => 'ditambah',
 );
 
 /** Khmer (ភាសាខ្មែរ)

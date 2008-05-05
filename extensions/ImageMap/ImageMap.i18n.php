@@ -123,9 +123,20 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Toniher
  */
 $messages['ca'] = array(
-	'imagemap_description' => 'Sobre aquesta imatge',
+	'imagemap_desc'               => "Permet mapes d'imatges clicables des del costat del client fent servir l'etiqueta <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image'           => '&lt;imagemap&gt;: cal especificar una imatge en la primera línia',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: la imatge no es vàlida o no existeix',
+	'imagemap_no_link'            => "&lt;imagemap&gt;: no s'ha trobat cap enllaç vàlid al final de la línia $1",
+	'imagemap_invalid_title'      => "&lt;imagemap&gt;: el títol no és vàlid a l'enllaç de la línia $1",
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: no hi ha coordenades suficients per a la forma de la línia $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: la forma de la línia $1 no és reconeixible, cada línia ha de començar amb una de les opcions següents: default, rect, circle or poly',
+	'imagemap_no_areas'           => "&lt;imagemap&gt;: s'ha d'especificar com a mínim una àrea",
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: la coordenada a la línia $1 no és vàlida, ha de ser un nombre',
+	'imagemap_invalid_desc'       => "&lt;imagemap&gt;: l'especificació de descripció no és vàlida, ha de ser una de: <tt>$1</tt>",
+	'imagemap_description'        => 'Quant a la imatge',
 );
 
 /** Czech (Česky)

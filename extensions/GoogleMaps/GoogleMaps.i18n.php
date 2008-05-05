@@ -1390,6 +1390,7 @@ $wgGoogleMapsMessages['ml'] = array(
 	'gm-remove'          => 'നീക്കം ചെയ്യുക',
 	'gm-no-zoom-control' => 'ഒന്നുമില്ല',
 	'gm-yes'             => 'ശരി',
+	'gm-no'              => 'അല്ല',
 	'gm-search'          => 'തിരയുക',
 	'gm-save-path'       => 'സേവ് ചെയ്യുക',
 	'gm-kml-loading'     => 'ശേഖരിച്ചുകൊണ്ടിരിക്കുന്നു…',

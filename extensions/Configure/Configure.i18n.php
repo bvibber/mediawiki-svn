@@ -176,9 +176,10 @@ $messages['ch'] = array(
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
+ * @author Danny B.
  */
 $messages['cs'] = array(
-	'configure'                       => 'Nastavení wiki',
+	'configure'                       => 'Konfigurace wiki',
 	'configure-desc'                  => 'Umožňuje oprávněným uživatelům měnit nastavení wiki prostřednictvím webového rozhraní',
 	'configure-summary'               => 'Tato speciální stránka Vám umožňuje konfiguraci této wiki. Další informace najdete na stránce [http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavení konfigurace]',
 	'configure-btn-save'              => 'Uložit nastavení',
@@ -606,11 +607,13 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-cookie'        => 'Cookiën',
 	'configure-section-upload'        => 'Eroplueden',
 	'configure-section-images'        => 'Biller',
+	'configure-section-antivirus'     => 'Antivirus',
 	'configure-section-specialpages'  => 'Spezialsäiten',
 	'configure-section-recentchanges' => 'Rezent Ännerungen',
 	'configure-section-users'         => 'Benotzer',
 	'configure-section-job'           => 'Aarbechten',
 	'configure-section-extension'     => 'Erweiderungen',
+	'configure-section-search'        => 'Sich',
 	'configure-section-misc'          => 'Verschiddenes',
 	'right-configure'                 => "D'Wiki configuréieren",
 );
@@ -621,6 +624,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 $messages['ml'] = array(
 	'configure'                       => 'വിക്കി ക്രമീകരിക്കുക',
 	'configure-btn-save'              => 'സജ്ജീകരണങ്ങള്‍ സേവ് ചെയ്യുക',
+	'configure-no-transwiki'          => 'മറ്റ് വിക്കികളിലെ ക്രമീകരണങ്ങള്‍ മാറ്റാന്‍ താങ്കള്‍ക്ക് അനുമതിയില്ല.',
 	'configure-section-db'            => 'ഡാറ്റാബേസ്',
 	'configure-section-email'         => 'ഇമെയില്‍',
 	'configure-section-enotif'        => 'ഇമെയില്‍ അറിയിപ്പ്',
@@ -634,6 +638,9 @@ $messages['ml'] = array(
 	'configure-section-recentchanges' => 'പുതിയ മാറ്റങ്ങള്‍',
 	'configure-section-users'         => 'ഉപയോക്താക്കള്‍',
 	'configure-section-search'        => 'തിരയൂ',
+	'configure-section-copyright'     => 'പകര്‍പ്പവകാശം',
+	'configure-setting-not-available' => 'മീഡിയാവിക്കിയുടെ ഈ പതിപ്പില്‍ ഈ ക്രമീകരണം ലഭ്യമല്ല,',
+	'right-configure'                 => 'വിക്കി ക്രമപ്പെടുത്തുക',
 );
 
 /** Marathi (मराठी)
@@ -835,6 +842,10 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 $messages['oc'] = array(
 	'configure'                        => 'Configurar lo wiki',
 	'configure-desc'                   => 'Permet als utilizaires amb las permisssions adequadas de configurar lo wiki via una pagina especiala',
+	'configure-desc-group'             => 'Gropes',
+	'configure-desc-key'               => 'Clau',
+	'configure-desc-ns'                => 'Espaci de noms',
+	'configure-desc-val'               => 'Valor',
 	'configure-summary'                => "Aquesta pagina especiala vos permet de configurar aqueste wiki, vejatz los [http://www.mediawiki.org/wiki/Manual:Configuration_settings/oc paramètres de configuracion] per mai d'entresenhas.",
 	'configure-btn-save'               => 'Salvagardar los reglatges',
 	'configure-directory-not-writable' => "Lo dorsièr utilizat per salvagardar la configuracion, <tt>$1</tt>, pòt pas èsser modificat.

@@ -572,6 +572,7 @@ Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì 
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author MCruz
  */
 $messages['pt'] = array(
 	'asksql'          => 'Consulta SQL',
@@ -582,7 +583,7 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
 	'sqlislogged'     => 'Por favor, note que todas as consultas são registadas.',
 	'sqlquery'        => 'Introduza consulta',
 	'querybtn'        => 'Submeter consulta',
-	'selectonly'      => 'Apenas consultas só de leitura são permitidas.',
+	'selectonly'      => 'Apenas são permitidas consultas só de leitura.',
 	'querysuccessful' => 'Consulta com sucesso',
 	'right-asksql'    => 'Fazer pesquisas SQL',
 );

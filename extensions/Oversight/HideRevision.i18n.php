@@ -155,6 +155,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'hiderevision'                => 'Revisiones escondíes permanentemente',
+	'hiderevision-desc'           => 'Oculta revisiones individuales a tolos usuarios por motivos llegales, etc.',
 	'group-oversight'             => 'Güeyadores',
 	'group-oversight-member'      => 'Güeyador',
 	'grouppage-oversight'         => '{{ns:project}}:Güeyador',

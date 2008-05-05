@@ -1197,6 +1197,7 @@ $messages['jbo'] = array(
 $messages['jv'] = array(
 	'mv_ogg_high_quality'    => 'Kwalitas dhuwur - Ogg Theora 900kbs',
 	'mv_duration_label'      => 'durasi',
+	'mv_save_changes'        => 'Simpen owah-owahan',
 	'mv_remove_reason'       => 'Alesan mbusak:',
 	'mv_upload_file'         => 'Unggahna berkas',
 	'mv_external_file'       => 'Berkas jaba',
@@ -1217,6 +1218,7 @@ $messages['jv'] = array(
 	'mv_search_or'           => 'utawa',
 	'mv_search_not'          => 'ora',
 	'mv_category'            => 'kategori',
+	'mv_remove_filter'       => 'ilangana filter',
 );
 
 /** Khmer (ភាសាខ្មែរ)

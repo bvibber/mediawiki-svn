@@ -57,6 +57,15 @@ $messages['bn'] = array(
 	'userimages-noimages' => '$1 কোন চিত্র আপলোড করেন নাই।',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'userimages-caption'  => 'Bildoj alŝutitaj de $1',
+	'userimages-noname'   => 'Nevalida salutnomo aŭ nenio provizita.',
+	'userimages-noimages' => '$1 havas neniujn alŝutojn de bildoj.',
+);
+
 $messages['ext'] = array(
 	'userimages-caption' => 'Imahis empuntás pol $1',
 	'userimages-noimages' => '$1 nu á empuntau denguna imahin.',

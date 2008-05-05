@@ -479,6 +479,7 @@ $messages['jv'] = array(
 	'openidfullname'       => 'Jeneng jangkep',
 	'openidemail'          => 'Alamat e-mail',
 	'openidlanguage'       => 'Basa',
+	'openidchoosefull'     => 'Jeneng pepak panjenengan ($1)',
 	'openidchoosepassword' => 'tembung sandhi:',
 );
 

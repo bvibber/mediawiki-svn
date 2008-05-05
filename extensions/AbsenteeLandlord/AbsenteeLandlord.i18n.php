@@ -29,6 +29,14 @@ $messages['de'] = array(
 	'absenteelandlord-desc'   => 'Automatisch Sperre der Datenbank, wenn die Administratoren für eine bestimmte Zeit inaktiv sind',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'absenteelandlord-reason' => 'La datumbazo estis aŭtomate ŝlosita pro neaktiveco de la administrantoj.',
+	'absenteelandlord-desc'   => 'Aŭtomate ŝlosas la vikian datumbazon se la administrantoj ĉiuj estas daŭre neaktiva.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -69,12 +77,28 @@ $messages['nl'] = array(
 	'absenteelandlord-desc'   => 'Sluit de database automatisch als de beheerders allemaal gedurende een bepaalde tijd inactief zijn',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'absenteelandlord-reason' => 'La banca de donadas es estada varrolhada perque los administrators son inactius.',
+	'absenteelandlord-desc'   => 'Varrolha automaticament la banca de donadas se totes los administrators son inactius dempuèi un cèrt temps',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'absenteelandlord-reason' => 'Baza danych została automatycznie zablokowana z powodu braku aktywności administratorów.',
 	'absenteelandlord-desc'   => 'Automatyczna blokada bazy danych wiki, jeśli wszyscy administratorzy będą nieaktywni przez określony czas',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'absenteelandlord-reason' => 'A base de dados foi automaticamente bloqueada devido a inactividade dos sysops.',
+	'absenteelandlord-desc'   => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inactivos por algum tempo',
 );
 
 /** Russian (Русский)

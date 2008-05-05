@@ -123,6 +123,14 @@ $messages['hsb'] = array(
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'smoothgallery-gallery-not-found'   => 'Galeri sing disuwun ora ana.',
+	'smoothgallery-javascript-disabled' => 'Javascript iku diperlokaké kanggo ndeleng galeri iki sacara bener.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

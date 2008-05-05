@@ -532,9 +532,11 @@ Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal diengg
 	'regexblock-block-log'       => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
 	'regexblock-already-blocked' => '$1 wis diblokir',
 	'regexblock-stats-username'  => 'Kanggo $1',
+	'regexblock-view-blocked'    => 'Ndeleng diblokir déning:',
 	'regexblock-view-all'        => 'Kabèh',
 	'regexblock-view-go'         => 'Golèk',
 	'regexblock-view-reason'     => 'alesan: $1',
+	'regexblock-view-block-by'   => 'diblokir déning',
 );
 
 /** Khmer (ភាសាខ្មែរ)

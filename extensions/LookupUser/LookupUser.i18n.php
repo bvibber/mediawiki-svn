@@ -96,13 +96,19 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'lookupuser'                   => 'Konsulti informon pri uzanto',
+	'lookupuser-desc'              => '[[Special:LookupUser|Konsulti informon]] pri uzanto kiel retadreso kaj identigo',
+	'lookupuser_intro'             => 'Enigi salutnomo rigardi la preferojn de tiu uzanto.',
+	'lookupuser_nonexistent'       => 'Eraro: Tiu uzanto ne ekzistas',
 	'lookupuser_authenticated'     => 'retpoŝta aŭtentkontrolo: $1',
 	'lookupuser_not_authenticated' => 'ne aŭtentita',
 	'lookupuser_id'                => 'Salutnomo: <tt>#$1</tt>',
 	'lookupuser_email'             => 'Retpoŝto: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_no_email'          => 'ne provizita',
 	'lookupuser_realname'          => 'Reala nomo: $1',
+	'lookupuser_registration'      => 'Dato de registrado: $1',
 	'lookupuser_no_registration'   => 'ne registrita',
+	'lookupuser_touched'           => 'Rikordo de uzanto estis laste ŝanĝita: $1',
 	'lookupuser_useroptions'       => 'Opcioj de uzanto:',
 );
 
@@ -211,8 +217,11 @@ $messages['jv'] = array(
 	'lookupuser_nonexistent'       => 'Kaluputan: Panganggo ora ana',
 	'lookupuser_authenticated'     => 'Pamastèn e-mail: $1',
 	'lookupuser_not_authenticated' => 'durung dipastèkaké',
+	'lookupuser_id'                => 'ID panganggo: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'Jeneng asli: $1',
+	'lookupuser_registration'      => 'Tanggal didaftar: $1',
+	'lookupuser_no_registration'   => 'ora direkam',
 	'lookupuser_useroptions'       => 'Opsi panganggo:',
 );
 

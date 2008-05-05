@@ -2542,6 +2542,7 @@ dir kënnt bis den 12. Juli ofstëmmen',
 Dir gitt an 20 Sekonnen op dësen externe Server virugeleed. [$1 Klickt hei] fir elo dohinn ze goen.
 
 Eng Sécherheetswarnung iwwer een net ënnerschriwwenen Zertifikat kann ugewise ginn.",
+	'right-boardvote'        => 'Walen administréieren',
 );
 
 /** Lezghian (Лезги)
@@ -3152,8 +3153,10 @@ $messages['pag'] = array(
 
 /** Pampanga (Kapampangan)
  * @author SPQRobin
+ * @author Katimawan2005
  */
 $messages['pam'] = array(
+	'boardvote'            => 'Alalan ning Wikimedia Board of Trustees',
 	'boardvote_novotes'    => 'Ala pang mig botu',
 	'boardvote_time'       => 'Oras',
 	'boardvote_user'       => 'Talagamit',
@@ -4316,6 +4319,7 @@ la votazion la xe verta fin al 12 de lujo',
 	'boardvote_welcome'      => "Benvegnù '''$1'''!",
 	'go_to_board_vote'       => 'Elezion 2007 del Board de Wikimedia',
 	'boardvote_redirecting'  => "Par verghe na mazor sicureza e trasparensa, el voto el se tien su un server esterno, a controlo indipendente. Te sarè reindirizà a sto server esterno in 20 secondi. [$1 Struca qua] par 'ndarghe diretamente. Podarìa vegner fora un aviso de sicureza riguardante un certificato de protezion mìa verificà.",
+	'right-boardvote'        => 'Aministra le elezion',
 );
 
 /** Vietnamese (Tiếng Việt)

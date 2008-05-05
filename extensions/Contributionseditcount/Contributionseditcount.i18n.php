@@ -125,6 +125,13 @@ $messages['ja'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions|利用者の投稿記録]]で編集回数を表示する',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'contributionseditcount' => 'Panganggo iki duwé $1 suntingan.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន

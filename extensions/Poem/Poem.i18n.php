@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'poem-desc' => 'يضيف الوسم <tt>&lt;poem&gt;</tt> لصياغة القصيدة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> pal formatu de poemes',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

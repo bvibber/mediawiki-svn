@@ -1122,6 +1122,7 @@ $messages['lb'] = array(
 	'ogg-play-sound'          => 'Tounfichier ofspillen',
 	'ogg-player-videoElement' => '<video>-Element',
 	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+	'ogg-player-thumbnail'    => 'Just als Bild weisen',
 	'ogg-player-selected'     => '(erausgewielt)',
 	'ogg-more'                => 'Méi ...',
 	'ogg-dismiss'             => 'Zoumaachen',

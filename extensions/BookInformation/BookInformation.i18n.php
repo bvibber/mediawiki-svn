@@ -905,6 +905,16 @@ $messages['os'] = array(
 	'bookinfo-purchase'      => 'Ацы чиныг алхæнæн ис ам:',
 );
 
+/** Pampanga (Kapampangan)
+ * @author Katimawan2005
+ */
+$messages['pam'] = array(
+	'bookinfo-desc'             => 'Miragdagan ya [[Special:Booksources]] kapamilatan ning impormasiun ibat king metung a web service',
+	'bookinfo-result-title'     => 'Bansag:',
+	'bookinfo-result-author'    => 'Talasulat',
+	'bookinfo-error-nosuchitem' => 'Ala yu o e meyakit ing bageng iti.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Derbeth

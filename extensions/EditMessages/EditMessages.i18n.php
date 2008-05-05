@@ -223,7 +223,8 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'editmsg-search' => 'Golèk',
+	'editmsg-search'     => 'Golèk',
+	'editmsg-new-search' => 'Panggolèkan anyar',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -314,8 +314,12 @@ $messages['jv'] = array(
 	'createsigndoc-address'           => 'Alamat omah:',
 	'createsigndoc-extaddress'        => 'Kutha, Negara bagéyan, Negara:',
 	'createsigndoc-phone'             => 'Nomer tilpun:',
+	'createsigndoc-bday'              => 'Tanggal lair:',
 	'createsigndoc-minage'            => 'Umur minimum:',
+	'createsigndoc-introtext'         => 'Introduksi:',
+	'createsigndoc-hidden'            => 'Kadelikaké',
 	'createsigndoc-optional'          => 'Opsional',
+	'createsigndoc-create'            => 'Nggawé',
 	'createsigndoc-error-generic'     => 'Luput: $1',
 	'createsigndoc-error-pagenoexist' => 'Luput: Kaca [[$1]] ora ana.',
 );

@@ -77,6 +77,7 @@ $messages['ar'] = array(
 $messages['ast'] = array(
 	'newuserlogpage'           => "Rexistru de creación d'usuarios",
 	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios",
+	'newuserlog-desc'          => 'Añade un [[Special:Log/newusers|rexistru de creación de cuentes]] a [[Special:Log]]',
 	'newuserlog-byemail'       => 'clave unviada per corréu electrónicu',
 	'newuserlog-create-entry'  => 'Usuariu nuevu',
 	'newuserlog-create2-entry' => 'creó una cuenta pa $1',
