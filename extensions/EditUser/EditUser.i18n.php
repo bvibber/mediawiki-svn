@@ -134,6 +134,7 @@ $messages['eo'] = array(
 	'edituser-username' => 'Nomo',
 	'edituser-dosearch' => 'Serĉu',
 	'edituser-nouser'   => 'La specifigita uzanto ne ekzistas',
+	'edituser-exempt'   => 'La specifigita uzanto ne estas redaktebla',
 );
 
 /** Spanish (Español)
@@ -255,11 +256,19 @@ $messages['ja'] = array(
 	'edituser-exempt'   => '指定された利用者は編集できません',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'edituser-dosearch' => 'Golèk',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'edituser-desc'     => 'អនុញ្ញាតអោយអ្នកប្រើប្រាស់មានសិទ្ធិកែប្រែចំនូលចិត្តរបស់អ្នកប្រើប្រាស់ដ៏ទៃ',
 	'edituser'          => 'កែប្រែអ្នកប្រើប្រាស់',
 	'edituser-username' => 'ឈ្មោះ',
 	'edituser-dosearch' => 'ស្វែងរក',

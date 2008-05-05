@@ -348,6 +348,7 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'ajax-se-desc'             => 'Tuduhna para panganggo sing lagi nyunting lan sing nyunting kaca sing padha',
 	'ajax-se-title'            => 'Saiki lagi nyunting:',
 	'ajax-se-idling'           => '($1d kapungkur)',
 	'ajax-se-pagedoesnotexist' => 'kaca ora ana',
@@ -744,10 +745,13 @@ $messages['uk'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'ajax-se-desc'             => 'Cho thành viên đang sửa biết có ai cũng đang sửa trang đó',
 	'ajax-se-title'            => 'Đang sửa đổi:',
 	'ajax-se-pending'          => 'chờ làm tươi ... (nhấn vào hộp này hoặc bắt đầu sửa đổi)',
 	'ajax-se-idling'           => '($1 giây trước)',
 	'ajax-se-pagedoesnotexist' => 'trang không tồn tại',
+	'ajax-se-userinvalid'      => 'LỖI: người dùng không hợp lệ',
+	'ajax-se-usernotfound'     => 'LỖI: không tìm thấy người dùng',
 );
 
 /** Volapük (Volapük)

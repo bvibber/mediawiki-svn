@@ -1125,6 +1125,13 @@ $wdMessages['hi'] = array(
 	'ow_Permission_denied'      => '<h2>अनुमति नहीं दी</h2>',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$wdMessages['hil'] = array(
+	'ow_history' => 'Saysay',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1258,6 +1265,7 @@ $wdMessages['hu'] = array(
  * @author Malafaya
  */
 $wdMessages['ia'] = array(
+	'ow_Language'            => 'Lingua',
 	'ow_LinkAttributeValues' => 'Ligamines',
 );
 
@@ -1265,6 +1273,47 @@ $wdMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 	'langman_title' => 'Pengelola bahasa',
 	'languages'=>'Wikidata: Pengelola bahasa',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$wdMessages['io'] = array(
+	'ow_save'                               => 'Registragar',
+	'ow_history'                            => 'Versionaro',
+	'ow_uiprefs'                            => 'Wikidata',
+	'ow_conceptmapping_no_action_specified' => 'Pardonez! Me ne savas quale "$1".',
+	'ow_Annotation'                         => 'Noto',
+	'ow_ClassAttributeAttribute'            => 'Atributo',
+	'ow_ClassAttributes'                    => 'Atributi di klaso',
+	'ow_ClassAttributeType'                 => 'Tipo',
+	'ow_ClassMembership'                    => 'Klaso-membrari',
+	'ow_Collection'                         => 'Kolektajo',
+	'ow_CollectionMembership'               => 'Kolektajo-membrari',
+	'ow_Definition'                         => 'Defino',
+	'ow_DefinedMeaningAttributes'           => 'Noto',
+	'ow_IdenticalMeaning'                   => 'Identa senco?',
+	'ow_GotoSource'                         => 'Irar al fonto',
+	'ow_Language'                           => 'Linguo',
+	'ow_LevelAnnotation'                    => 'Noto',
+	'ow_OptionAttribute'                    => 'Proprajo',
+	'ow_OptionAttributeOption'              => 'Selekto',
+	'ow_OptionAttributeOptions'             => 'Selekti',
+	'ow_PopupAnnotation'                    => 'Noto',
+	'ow_Relations'                          => 'Relati',
+	'ow_Spelling'                           => 'Espelado',
+	'ow_Synonyms'                           => 'Sinonimi',
+	'ow_SynonymsAndTranslations'            => 'Sinonimi e tradukuri',
+	'ow_Source'                             => 'Fonto',
+	'ow_TextAttribute'                      => 'Proprajo',
+	'ow_Text'                               => 'Texto',
+	'ow_TranslatedTextAttribute'            => 'Proprajo',
+	'ow_TranslatedTextAttributeValue'       => 'Texto',
+	'ow_LinkAttribute'                      => 'Proprajo',
+	'ow_LinkAttributeValues'                => 'Ligili',
+	'ow_Property'                           => 'Proprajo',
+	'ow_Value'                              => 'Valoro',
+	'ow_meaningsoftitle'                    => 'Senci di "$1"',
 );
 
 /** Japanese (日本語)
@@ -1316,36 +1365,71 @@ $wdMessages['jv'] = array(
 	'ow_history'                            => 'Sajarah',
 	'ow_datasets'                           => 'Sèlèksi data-set',
 	'ow_noedit_title'                       => 'Ora ana idin kanggo nyunting',
+	'ow_noedit'                             => 'Panjenengan ora diparengaké nyunting kaca-kaca ing dataset "$1".
+Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan kita]].',
 	'ow_uipref_datasets'                    => 'Pamandhangan baku',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<Ora ana sing disèlèksi>',
 	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
 	'ow_dm_OK'                              => 'OK',
 	'ow_dm_not_present'                     => 'ora dilebokaké',
+	'ow_dm_not_found'                       => 'ora ditemokaké ing basis data utawa rusak',
+	'ow_will_insert'                        => 'Bakal nyisipaké:',
 	'ow_available_contexts'                 => 'Kontèks sing ana',
+	'ow_add_concept_link'                   => 'Nambah pranala menyang konsèp liyané',
 	'ow_concept_panel'                      => 'Panèl Konsèp',
+	'ow_AlternativeDefinition'              => 'Définisi alternatif',
+	'ow_AlternativeDefinitions'             => 'Définisi alternatif',
 	'ow_Annotation'                         => 'Anotasi',
 	'ow_ClassAttributeLevel'                => 'Tingkatan',
 	'ow_ClassAttributeType'                 => 'Jenis',
 	'ow_Collection'                         => 'Kolèksi',
 	'ow_Definition'                         => 'Définisi',
 	'ow_DefinedMeaningAttributes'           => 'Anotasi',
+	'ow_DefinedMeaning'                     => 'Arti sing didéfinisi',
+	'ow_DefinedMeaningReference'            => 'Arti sing didéfinisi',
+	'ow_Expression'                         => 'Èksprèsi',
+	'ow_Expressions'                        => 'Èksprèsi',
+	'ow_IdenticalMeaning'                   => 'Tegesé mèmper?',
+	'ow_IncomingRelations'                  => 'Rélasi sing teka mlebu',
 	'ow_GotoSource'                         => 'Menyang sumber',
 	'ow_Language'                           => 'Basa',
 	'ow_LevelAnnotation'                    => 'Anotasi',
+	'ow_OptionAttribute'                    => 'Sifat',
 	'ow_OptionAttributeOption'              => 'Opsi',
+	'ow_OptionAttributeOptions'             => 'Opsi',
+	'ow_OptionAttributeValues'              => 'Bijih opsi',
 	'ow_PopupAnnotation'                    => 'Anotasi',
+	'ow_Relations'                          => 'Relasi',
+	'ow_RelationType'                       => 'Jenis rélasi',
 	'ow_Spelling'                           => 'Pasang aksara (éjaan)',
+	'ow_Synonyms'                           => 'Sinonim',
+	'ow_SynonymsAndTranslations'            => 'Sinonim lan jarwa',
 	'ow_Source'                             => 'Sumber',
+	'ow_SourceIdentifier'                   => 'Idèntifikator sumber',
+	'ow_TextAttribute'                      => 'Sifat',
 	'ow_Text'                               => 'Tèks',
 	'ow_TextAttributeValues'                => 'Tèks-tèks prasaja',
+	'ow_TranslatedTextAttribute'            => 'Sifat',
 	'ow_TranslatedText'                     => 'Tèks sing wis dipertal',
 	'ow_TranslatedTextAttributeValue'       => 'Tèks',
 	'ow_TranslatedTextAttributeValues'      => 'Tèks sing bisa dipertal',
+	'ow_LinkAttribute'                      => 'Sifat',
 	'ow_LinkAttributeValues'                => 'Pranala',
 	'ow_Property'                           => 'Sifat',
+	'ow_Value'                              => 'Bijih',
+	'ow_meaningsoftitle'                    => 'Arti saka "$1"',
 	'ow_meaningsofsubtitle'                 => '<em>Pranala wiki:</em> [[$1]]',
+	'ow_Permission_denied'                  => '<h2>IDIN DITOLAK</h2>',
+	'ow_copy_no_action_specified'           => 'Tulung rincèkna sawijining aksi',
 	'ow_copy_help'                          => 'Ing sawijining dina ing tembé, kita mbok-menawa bisa nulungi panjenengan.',
+	'ow_copy_successful'                    => '<h2>Kopi suksès</h2>
+Data panjenengan katoné wis dikopi sacara suksès.
+Aja lali mriksa manèh supaya pasti!',
+	'ow_copy_unsuccessful'                  => '<h3>Kopi ora suksès</h3>
+Ora ana operasi kopi sing wis dumadi.',
+	'ow_no_action_specified'                => '<h3>Ora ana aksi sing dispésifikasi</h3>
+Mbok-menawa panjenengan langsung tekan kaca iki? Biasané panjenengan ora perlu ing kéné.',
 );
 
 /** Georgian (ქართული)
@@ -1568,8 +1652,11 @@ $wdMessages['mai'] = array(
  * @author Shijualex
  */
 $wdMessages['ml'] = array(
-	'ow_history' => 'നാള്‍വഴി',
-	'ow_dm_OK'   => 'ശരി',
+	'ow_save'            => 'സേവ് ചെയ്യുക',
+	'ow_history'         => 'നാള്‍വഴി',
+	'ow_uipref_datasets' => 'സ്വതവെയുള്ള കാഴ്ച',
+	'ow_dm_OK'           => 'ശരി',
+	'ow_Language'        => 'ഭാഷ',
 );
 
 /** Marathi (मराठी)

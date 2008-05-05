@@ -94,12 +94,28 @@ $messages['oc'] = array(
 	'watchsubpages'      => 'Observar las sospaginas',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
+	'watchsubpages'      => 'وړوکي مخونه کتل',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'watchsubpages-desc' => 'Rýchlo [[Special:WatchSubpages|pridať všetky podstránky]] stránky do zoznamu sledovaných',
 	'watchsubpages'      => 'Sledovať podstránky',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
+	'watchsubpages'      => 'Надгледај подстранице',
 );
 
 /** Swedish (Svenska)

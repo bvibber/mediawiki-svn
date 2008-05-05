@@ -74,6 +74,13 @@ $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'usercontactlink-baduser' => 'jeneng panganggo ora bener',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

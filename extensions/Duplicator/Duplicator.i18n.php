@@ -475,8 +475,11 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'duplicator-source' => 'Sumber:',
-	'duplicator-submit' => 'Duplikasi',
+	'duplicator-options' => 'Opsi',
+	'duplicator-source'  => 'Sumber:',
+	'duplicator-dest'    => 'Tujuan:',
+	'duplicator-submit'  => 'Duplikasi',
+	'duplicator-summary' => 'Ditulad saka [[$1]]',
 );
 
 /** Khmer (ភាសាខ្មែរ)

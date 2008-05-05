@@ -186,6 +186,13 @@ $messages['hi'] = array(
 	'todo-form-details' => 'विस्तॄत ज़ानकारी:',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'todo-list-cancel' => 'Kanselahon',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -225,8 +232,17 @@ $4',
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'todo-new-queue'   => 'anyar',
-	'todo-list-cancel' => 'Batal',
+	'todo'              => 'Daftar tugas',
+	'todo-tab'          => 'tugas',
+	'todo-new-queue'    => 'anyar',
+	'todo-mail-subject' => 'Perkara sing wis dilaksanakaké ing daftar tugas $1',
+	'todo-add-queue'    => 'Tambah antrian…',
+	'todo-move-queue'   => 'Pindhahna menyang antrian…',
+	'todo-list-for'     => 'Daftar tugas kanggo',
+	'todo-list-change'  => 'Ganti',
+	'todo-list-cancel'  => 'Batal',
+	'todo-form-details' => 'Détail:',
+	'todo-form-submit'  => 'Kirimna kwéri',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -260,6 +276,15 @@ $messages['lb'] = array(
 	'todo-list-cancel'      => 'Annulléieren',
 	'todo-new-item'         => 'Neien Objet',
 	'todo-form-details'     => 'Detailer:',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'todo-new-queue'    => 'പുതിയത്',
+	'todo-list-cancel'  => 'റദ്ദാക്കുക',
+	'todo-form-details' => 'വിശദാംശങ്ങള്‍:',
 );
 
 /** Marathi (मराठी)

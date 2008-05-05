@@ -227,6 +227,24 @@ $messages['hu'] = array(
 	'formsave' => 'Mentés',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'form'                   => 'Formulir',
+	'formpattern'            => 'Formulir-$1',
+	'formtitlepattern'       => 'Tambah $1 anyar',
+	'formsave'               => 'Simpen',
+	'formarticleexists'      => 'Kacané ana',
+	'formarticleexiststext'  => 'Kaca [[$1]] wis ana.',
+	'formbadpagename'        => 'Jeneng kaca ala',
+	'formrequiredfielderror' => 'Lapangan $1 diperlokaké kanggo formulir iki.
+Tulung diisi.',
+	'formsavesummary'        => 'Kaca anyar nganggo [[Special:Form/$1]]',
+	'formsaveerror'          => 'Ana kaluputan nalika nyimpen formulir',
+	'formsaveerrortext'      => "Ana kaluputan sing ora dimangertèni nalika nyimpen kaca '$1'.",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -262,6 +280,13 @@ $messages['lb'] = array(
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename'       => 'Falsche Säitennumm',
 	'formsavesummary'       => 'Nei Säit, déi [[Special:Form/$1]] benotzt',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'formsave' => 'സേവ് ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

@@ -376,6 +376,13 @@ $messages['hi'] = array(
 	'createarticle'           => 'लेख बनाईयें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'createarticle' => 'Maghimo artikulo',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

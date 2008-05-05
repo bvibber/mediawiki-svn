@@ -389,6 +389,13 @@ $messages['id'] = array(
 	'imagemap_description'          => 'Tentang gambar ini',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'imagemap_description' => 'Pri ca imajo',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */

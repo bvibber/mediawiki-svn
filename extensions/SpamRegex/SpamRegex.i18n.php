@@ -191,6 +191,13 @@ $messages['hi'] = array(
 	'spamregex-summary-log'     => '(संक्षिप्त ज़ानकारी)',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'spamregex-summary-log' => '(Kabilogan)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -221,6 +228,14 @@ $messages['hsb'] = array(
 	'spamregex-summary-log'          => '(Zjeće)',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'spamregex-text'        => '(Tèks)',
+	'spamregex-summary-log' => '(Ringkesan)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -242,6 +257,13 @@ $messages['lb'] = array(
 	'spamregex-phrase-block-summary' => 'Saatz am Resumé spären',
 	'spamregex-text'                 => '(Text)',
 	'spamregex-summary-log'          => '(Resumé)',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'spamregex-summary-log' => '(ചുരുക്കം)',
 );
 
 /** Marathi (मराठी)

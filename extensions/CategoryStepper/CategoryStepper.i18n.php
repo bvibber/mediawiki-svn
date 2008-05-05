@@ -359,8 +359,10 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'categorystepper-desc'  => 'Hiển thị một hộp nhảy thể loại để cho phép thành viên duyệt tới và lui theo vần qua các thể loại của một trang',
 	'categorystepper-end'   => '(Cuối thể loại)',
 	'categorystepper-start' => '(Đầu thể loại)',
 );

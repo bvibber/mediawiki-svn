@@ -37,6 +37,13 @@ $messages['hsb'] = array(
 	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'tooltip-desc' => 'Nambahaké <tt><nowiki><tooltip></nowiki></tt> lan tag <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

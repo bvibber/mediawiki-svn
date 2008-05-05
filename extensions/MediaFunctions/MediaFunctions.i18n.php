@@ -95,6 +95,14 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist'     => '„$1” nem létezik',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'mediafunctions-invalid-title' => '"$1" iku dudu irah-irahan absah',
+	'mediafunctions-not-exist'     => '"$1" ora ana',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

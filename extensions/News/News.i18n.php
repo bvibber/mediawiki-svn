@@ -108,7 +108,20 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'newsextension-desc' => 'एखाद्या विकिवरील पानांमध्ये झालेले अलीकडील बदल आरएसएस फीड किंवा ऍटम फीड च्या स्वरुपात दर्शविते',
+	'newsextension-desc'          => 'एखाद्या विकिवरील पानांमध्ये झालेले अलीकडील बदल आरएसएस फीड किंवा ऍटम फीड च्या स्वरुपात दर्शविते',
+	'newsextension-unknownformat' => '$1: चुकीची फीड रुपरेषा : $2<br />',
+	'newsextension-feednotfound'  => '$1: फीड पृष्ठ सापडले नाही : $2<br />',
+	'newsextension-feedrequest'   => '$1: $2 साठीची फीड मागणी पूर्ण करीत आहे<br />',
+	'newsextension-checkok'       => '$1: HTTP सय ठीक, ३०४ हेडर पाठविले </br >',
+	'newsextension-checkok1'      => '$1: सय तपासणी-ठीक:  IMS $2 वि. $3 बदलले <br />',
+	'newsextension-purge'         => '$1: पर्ज, सयीकडे दुर्लक्ष करीत आहे<br />',
+	'newsextension-loggin'        => '$1: प्रवेश पूर्ण, सयीकडे दुर्लक्ष करीत आहे<br />',
+	'newsextension-outputting'    => '$1: सयीतील प्रत काढट आहे ($2): $3 < {$4}<br />',
+	'newsextension-stale'         => '$1: सय प्रत सापडली ($2): $3 >= {$4}<br />',
+	'newsextension-nofoundonpage' => '$1: पानावर फीड सापडला नाही: $2<br / >',
+	'newsextension-renderedfeed'  => '$1: रेंडर्ड फीड <br />',
+	'newsextension-cachingfeed'   => '$1: फीड सयीत टाकत आहे ($2)<br / >',
+	'newsextension-freshfeed'     => '$1: नवीन फीड बाहेर काढत आहे<br />',
 );
 
 /** Dutch (Nederlands)

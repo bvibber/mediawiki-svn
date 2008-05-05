@@ -479,6 +479,21 @@ $messages['hsb'] = array(
 	'review_comment'                                         => 'Komentar',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'review_error'                  => 'Ana sing salah!',
+	'review_total_statistics'       => 'Gunggungé',
+	'review_statistics_left_corner' => 'Révisi',
+	'review_version_link'           => 'Révisi #$1',
+	'review_version_statistic_cell' => '$1 saka $2',
+	'review_user_details_link'      => '(détail)',
+	'review_blocked'                => 'Panjenengan iku diblokir, mangga lungaa.',
+	'review_topic'                  => 'Topik',
+	'review_comment'                => 'Komentar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -508,7 +523,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'review_comment' => 'അഭിപ്രായം:',
+	'review_sidebar_title'     => 'സം‌ശോധനം',
+	'review_user_details_link' => '(വിശദാംശങ്ങള്‍:)',
+	'review_blocked'           => 'താങ്കള്‍ തടയപ്പെട്ടിക്കുന്നു. ഇവിടെ പ്രവേശനം ഇല്ല.',
+	'review_comment'           => 'അഭിപ്രായം:',
 );
 
 /** Marathi (मराठी)

@@ -98,6 +98,7 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'protectsection_modify'    => 'Panjenengan nyoba modifikasi kaca sing direksa',
 	'protectsection_forbidden' => 'Dilarang',
 );
 

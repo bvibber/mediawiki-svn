@@ -129,6 +129,16 @@ $messages['ja'] = array(
 	'purgecache-button'  => 'キャッシュ削除',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'purgecache'         => "Ngilangi ''cache''",
+	'purgecache-warning' => "Iki bakal ngosongaké tabèl-tabèl ''cache''.",
+	'purgecache-purged'  => 'Cache wis dikosongaké.',
+	'purgecache-button'  => 'Kosongna',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

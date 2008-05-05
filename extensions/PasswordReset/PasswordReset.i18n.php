@@ -272,7 +272,8 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'passwordreset-newpass' => 'Tembung sandhi anyar',
+	'passwordreset-username' => 'Jeneng panganggo',
+	'passwordreset-newpass'  => 'Tembung sandhi anyar',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -309,7 +310,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'passwordreset-username' => 'ഉപയോക്തൃനാമം',
+	'passwordreset-invalidusername' => 'അസാധുവായ ഉപയോക്തൃനാമം',
+	'passwordreset-username'        => 'ഉപയോക്തൃനാമം',
+	'passwordreset-newpass'         => 'പുതിയ രഹസ്യവാക്ക്',
+	'passwordreset-confirmpass'     => 'രഹസ്യവാക്ക് ഉറപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

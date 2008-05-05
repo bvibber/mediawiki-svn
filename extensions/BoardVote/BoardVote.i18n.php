@@ -258,6 +258,7 @@ $messages['ar'] = array(
 /** Asturian (Asturianu)
  * @author SPQRobin
  * @author Esbardu
+ * @author Siebrand
  */
 $messages['ast'] = array(
 	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
@@ -335,6 +336,7 @@ servidor esternu y controláu de forma independiente.
 Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa dir agora.
 
 Podría apaecer un avisu de seguridá tocante a un certificáu non firmáu.",
+	'right-boardvote'        => 'Alministrar les eleiciones',
 );
 
 /** Kotava (Kotava)
@@ -428,6 +430,7 @@ $1 за криптирани данни.</p>',
 След 20 секунди ще бъдете прехвърлени на външния сървър. [$1 Щракнете тук] за отиване сега.
 
 Възможно е да бъде показано предупреждение за неподписан сертификат.',
+	'right-boardvote'        => 'Администриране на изборите',
 );
 
 /** Bengali (বাংলা)
@@ -618,6 +621,7 @@ $messages['co'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Danny B.
  */
 $messages['cs'] = array(
 	'boardvote'              => 'Volby do Správní rady nadace Wikimedia',
@@ -684,6 +688,7 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 Budete přesměrování na tuto externí stránku za 20 sekund. Okamžitě tam můžete přejít [$1 kliknutím sem].
 
 Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
+	'right-boardvote'        => 'Administrace voleb',
 );
 
 /** Danish (Dansk)
@@ -1191,6 +1196,7 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
 
 Un avertissement concernant un certificat non signé sera peut-être affiché.',
+	'right-boardvote'        => 'Administrer les élections',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1513,6 +1519,7 @@ $messages['hi'] = array(
 आपको उस बाह्य सर्वरपर २० सेंकंदोंमें पहूंचाया जायेगा। अभी उधर जाने के लिये [$1 यहां क्लिक करें]।
 
 दस्तखत ना होने वाले सर्टिफिकेट्स के लिये सुरक्षा इशारा दिख सकता हैं।',
+	'right-boardvote'        => 'चुनावोंका प्रबंधन करें',
 );
 
 /** Croatian (Hrvatski)
@@ -1811,6 +1818,14 @@ szerveren bonyolítjuk a szavazást.
 Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmezetés jelenhet meg.',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'boardvote_user' => 'Usator',
+	'boardvote_days' => 'Dies',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  * @author Meursault2004
@@ -1886,6 +1901,7 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
  */
 $messages['io'] = array(
 	'boardvote_user'    => 'Uzanto',
+	'boardvote_days'    => 'Dii',
 	'boardvote_welcome' => "Bonveno, '''$1'''!",
 );
 
@@ -2167,6 +2183,7 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 Panjenengan bakal dialihaké menyang server èkstèrnal iki sajroning 20 detik. [$1 Kliken ing kéné] kanggo langsung manuju menyang kana.
 
 Sawijining pèngetan kaamanan ngenani sèrtifikat sing ora ditandhani mbok-menawa bakal dituduhaké.',
+	'right-boardvote'        => 'Ngurusi pemilu',
 );
 
 /** Georgian (ქართული)
@@ -2615,6 +2632,7 @@ Noe völg de versleuteldje versie. Deze is aopebaor en nao te zeen op [[Special:
 Geer wuuertj euver 20 second ómgeleid nao deze externe server. [$1 Klik hiej] óm d'r noe haer te gaon.
 
 't Is meugelik det geer 'n waorsjuwing krieg waeges 'n neet ónbekindj certificaat.",
+	'right-boardvote'        => 'Behieër verkeziginge',
 );
 
 /** Lumbaart (Lumbaart)
@@ -2835,6 +2853,7 @@ $messages['mr'] = array(
 तुम्हाला त्या बाह्य सर्व्हरवर २० सेंकंदात नेण्यात येईल. आत्ता तिथे जाण्यासाठी [$1 इथे टिचकी द्या].
 
 सही नसलेल्या सर्टिफिकेटसाठी सुरक्षापट्टी दिसू शकते.',
+	'right-boardvote'        => 'निवडणूकांचे प्रबंधन करा',
 );
 
 /** Erzya (эрзянь кель)
@@ -2902,6 +2921,7 @@ $messages['ne'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
+ * @author GerardM
  */
 $messages['nl'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezing',
@@ -2975,6 +2995,7 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>',
 U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er nu heen te gaan.
 
 Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certificaat.',
+	'right-boardvote'        => 'Verkiezingen beheren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -3040,6 +3061,7 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_welcome'      => "Velkommen, '''$1'''!",
 	'go_to_board_vote'       => 'Styrevalg i Wikimedia',
 	'boardvote_redirecting'  => 'Stemmegivingen blir avholdt på en ekstern tjener som kontrolleres av en uavhengig tredjepart for å øke sikkerheten og åpenheten rundt valget. Du blir omdirigert til denne tjener om 20&nbsp;sekunder. [$1 Klikk her] for å gå direkte til tjeneren. Du vil muligens få en sikkerhetsadvarsel om et usignert sertifikat.',
+	'right-boardvote'        => 'Administrere styrevalg',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -3105,6 +3127,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_welcome'      => "Benvengut '''$1'''!",
 	'go_to_board_vote'       => 'Tablèu de las eleccions Wikimèdia 2007',
 	'boardvote_redirecting'  => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+	'right-boardvote'        => 'Administrar las eleccions',
 );
 
 /** Ossetic (Иронау)
@@ -3213,6 +3236,7 @@ Oto zakodowana wersja. Będzie ona publicznie widoczna w [[Special:Boardvote/dum
 	'boardvote_welcome'      => "Witamy, '''$1'''!",
 	'go_to_board_vote'       => 'Wybory do Rady Powierniczej Fundacji Wikimedia 2007',
 	'boardvote_redirecting'  => 'Ze względu na bezpieczeństwo i przejrzystość, głosowanie odbywa się na zewnętrznym, niezależnie kontrolowanym serwerze. Zostaniesz przekierowany na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz. Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
+	'right-boardvote'        => 'Wybory administatorów',
 );
 
 $messages['pms'] = array(
@@ -3367,6 +3391,7 @@ A versão da encriptação segue-se, e será publicada em [[Special:Boardvote/du
 Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Clique aqui] para ser redireccionado agora.
 
 Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
+	'right-boardvote'        => 'Administrar eleições',
 );
 
 /** Quechua (Runa Simi)
@@ -3479,6 +3504,7 @@ $messages['ru'] = array(
 Вы будете перенаправлены на этот внешний сервер через 20 секунд. [$1 Нажмите сюда], чтобы перейти туда прямо сейчас.
 
 Может возникнуть сообщение о неподписанном сертификате.',
+	'right-boardvote'        => 'администрирование выборов',
 );
 
 /** Yakut (Саха тыла)
@@ -3622,6 +3648,7 @@ Nasleduje výsledná zakryptovaná verzia. Zobrazí sa verejne na [[Special:Boar
 Budete presmerovaní na túto externú stránku o 20 sekúnd. Okamžite tam prejdete [$1 kliknutím sem].
 
 Môže sa zobraziť bezpečnostné varovanie o nepodpísanom certifikáte.',
+	'right-boardvote'        => 'Spravovať voľby',
 );
 
 /** ћирилица (ћирилица)
@@ -3866,13 +3893,14 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Sannab
  * @author Lejonel
+ * @author Sannab
  * @author M.M.S.
  * @author SPQRobin
  */
 $messages['sv'] = array(
 	'boardvote'              => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
+	'boardvote-desc'         => '[[meta:Board elections|Val till Wikimedias styrelse]]',
 	'boardvote_entry'        => '* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
 * [[Special:Boardvote/vote|Rösta]]
 * [[Special:Boardvote/list|Lista röster]]
@@ -3940,6 +3968,7 @@ $1 för de krypterade uppgifterna.</p>',
 Du kommer bli omdirigerad till den externa servern inom 20 sekunder. [$1 Klicka här] för att gå dit nu.
 
 En säkerhetsvarning om ett osignerat certifikat kanske kommer att visas.',
+	'right-boardvote'        => 'Administrera styrelseval',
 );
 
 /** Silesian (Ślůnski)
@@ -4215,6 +4244,7 @@ $messages['uk'] = array(
 Ви будете переадресовані на цей зовнішній сервер через 20 секунд. [$1 Клацніть сюди], щоб перейти туди прямо зараз.
 
 Може з'явитися попередження про непідписаний сертифікат.",
+	'right-boardvote'        => 'Адміністрування виборів',
 );
 
 /** Vèneto (Vèneto)
@@ -4290,6 +4320,7 @@ la votazion la xe verta fin al 12 de lujo',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'boardvote'              => 'Bầu cử cho Ban Quản trị Wikimedia',
@@ -4342,7 +4373,7 @@ Kết quả là phiên bản đã mật mã hóa ở dưới. Trang [[Special:Bo
 	'boardvote_notstarted'   => 'Cuộc bầu cử chưa bắt đầu',
 	'boardvote_closed'       => 'Kỳ bầu cử này đã kết thúc rồi. Hãy xem [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kết quả bầu cử].',
 	'boardvote_edits_many'   => 'nhiều',
-	'group-boardvote'        => 'Các viên chức bầu cử',
+	'group-boardvote'        => 'Viên chức bầu cử',
 	'group-boardvote-member' => 'Viên chức bầu cử',
 	'grouppage-boardvote'    => '{{ns:project}}:Viên chức bầu cử',
 	'boardvote_blocked'      => 'Rất tiếc, tài khoản của bạn đã bị cấm. Các thành viên bị cấm không được phép bỏ phiếu.',
@@ -4353,6 +4384,7 @@ Kết quả là phiên bản đã mật mã hóa ở dưới. Trang [[Special:Bo
 Bạn sẽ được chuyển đến máy chủ này trong vòng 20 giây. Hãy [$1 nhấn chuột vào đây] để qua đấy ngay.
 
 Bạn có thể gặp lời cảnh cáo nói về một giấy chứng nhận chưa được ký.',
+	'right-boardvote'        => 'Bầu cử người quản trị',
 );
 
 /** Volapük (Volapük)

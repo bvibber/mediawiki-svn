@@ -58,9 +58,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'emailaddressimage-desc' => 'បន្ថែម <tt>&lt;email&gt;</tt> ដើម្បីបង្ហាញ អាស័យដ្ឋាន​អ៊ីមែវល៍ ជារូបភាព',
+	'emailaddressimage-desc' => 'បន្ថែម<tt>&lt;email&gt;</tt>ដើម្បីបង្ហាញអាសយដ្ឋាន​អ៊ីមែលជារូបភាព',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

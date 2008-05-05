@@ -444,6 +444,25 @@ $1',
 	'webstore_no_handler' => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'inplace_scaler_not_enough_params' => 'Paramèter ora cukup.',
+	'inplace_scaler_invalid_image'     => 'Gambar ora absah, ora bisa nemtokaké ukurané.',
+	'webstore_path_invalid'            => 'Jeneng berkasé ora absah.',
+	'webstore_dest_open'               => 'Ora bisa mbuka berkas tujuan "$1".',
+	'webstore_src_open'                => 'Ora bisa buka berkas sumber "$1".',
+	'webstore_temp_lock'               => 'Kaluputan ngunci berkas sementara "$1".',
+	'webstore_no_file'                 => 'Ora ana berkas sing diunggahaké.',
+	'webstore_invalid_zone'            => 'Zona invalid "$1".',
+	'webstore_404'                     => 'Berkas ora ditemokaké.',
+	'webstore_php_warning'             => 'Pèngetan PHP: $1',
+	'webstore_metadata_not_found'      => 'Berkas ora ditemokaké: $1',
+	'webstore_no_response'             => 'Ora ana wangsulan saka server',
+	'webstore_php_error'               => 'Katemu kaluputan PHP:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

@@ -690,6 +690,7 @@ $messages['li'] = array(
 # * [Bb]ar
 </pre>",
 	'usernameblacklist-invalid-lines' => "De volgende {{PLURAL:$1|regel|regel}} inne zwarte gebroekersnamelies {{PLURAL:$1|is|zeen}} ónzjuus; corrigeer {{PLURAL:$1|'m|die}} estebleef veurdetse de pazjena opsleis:",
+	'right-uboverride'                => 'De zwarte lies veur gebroekersname negere',
 );
 
 /* Lao */
@@ -772,6 +773,7 @@ Kies alstublieft een andere naam.',
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst met gebruikersnamen {{PLURAL:$1|is|zijn}} onjuist; corrigeer {{PLURAL:$1|hem|ze}} alstublieft voordat u de pagina opslaat:',
+	'right-uboverride'                => 'De zwarte lijst voor gebruikersnamen negeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -906,6 +908,7 @@ $messages['ru'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Следующая строка чёрного списка имён участников ошибочна, пожалуйста, исправьте её|Следующие строки чёрного списка имён участников ошибочны, пожалуйста, исправьте их}} перед сохранением:',
+	'right-uboverride'                => 'игнорирование чёрного списка имён участников',
 );
 
 /** Yakut (Саха тыла)

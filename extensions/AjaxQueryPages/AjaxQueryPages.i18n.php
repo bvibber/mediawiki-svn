@@ -74,6 +74,13 @@ $messages['ja'] = array(
 	'ajax-qp-desc' => 'AJAXを用いて[[Special:Shortpages]]のようなページ要求を行う',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'ajax-qp-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

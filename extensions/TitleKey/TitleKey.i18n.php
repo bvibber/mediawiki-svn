@@ -70,6 +70,13 @@ $messages['ja'] = array(
 	'titlekey-desc' => 'タイトルの前方一致検索を容易にする内部機構',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

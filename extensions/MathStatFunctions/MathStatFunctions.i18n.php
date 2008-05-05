@@ -134,6 +134,13 @@ $messages['ja'] = array(
         'msfunc_div_zero' => "0で割り算しました",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'msfunc_div_zero' => 'Dipara karo nul',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

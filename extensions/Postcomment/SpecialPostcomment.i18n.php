@@ -121,6 +121,14 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'postcomment_invalidrequest' => 'Panyuwunan ora absah.',
+	'postcomment_replyto'        => 'Wangsulan marang $1',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -141,6 +149,13 @@ $messages['lb'] = array(
 	'postcomment_notloggedin'              => 'Dir sidd net ugemeld.',
 	'postcomment_youareloggedinas'         => 'Dir sidd als $1 ugemelt',
 	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'postcomment_notloggedin' => 'താങ്കള്‍ ലോഗിന്‍ ചെയ്തിട്ടില്ല.',
 );
 
 /** Marathi (मराठी)

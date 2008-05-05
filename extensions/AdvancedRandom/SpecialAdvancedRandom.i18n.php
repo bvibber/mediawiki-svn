@@ -317,7 +317,8 @@ $messages['uk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'advancedrandom' => 'Ngẫu nhiên nâng cao',
+	'advancedrandom'      => 'Ngẫu nhiên nâng cao',
+	'advancedrandom-desc' => 'Lấy một trang ngẫu nhiên từ thảo luận hoặc trang chủ đề của ai đó liên kết đến một trang cho trướcm cí thể được dùng như [[Special:AdvancedRandom/Template:Featured/Talk]] để lấy một bài viết chọn lọc ngẫu nhiên hoặc như [[Special:AdvancedRandom/Template:GFDL/Image]] để lấy một tập tin GFDL ngẫu nhiên',
 );
 
 /** Yue (粵語)

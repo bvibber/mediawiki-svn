@@ -502,6 +502,15 @@ $messages['hu'] = array(
 	'bookinfo-provider'          => 'Adat ellátó: $1',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'bookinfo-result-title'  => 'Titulo:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-year'   => 'Anno:',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  * @author Meursault2004
@@ -758,7 +767,7 @@ $messages['lt'] = array(
 $messages['ml'] = array(
 	'bookinfo-header'            => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
 	'bookinfo-desc'              => '[[Special:Booksources]] എന്ന പ്രത്യേകതാള്‍ വെബ്ബ് സര്‍‌വീസിലെ വിവരവും ചേര്‍ത്ത് വികസിപ്പിക്കുന്നു.',
-	'bookinfo-result-title'      => 'തലക്കെട്ട്:',
+	'bookinfo-result-title'      => 'ശീര്‍ഷകം:',
 	'bookinfo-result-author'     => 'ഗ്രന്ഥകര്‍ത്താവ്:',
 	'bookinfo-result-publisher'  => 'പ്രസാധകന്‍:',
 	'bookinfo-result-year'       => 'വര്‍ഷം:',

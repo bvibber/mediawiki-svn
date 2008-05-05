@@ -172,6 +172,8 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'showprocesslist-user'  => 'Panganggo',
+	'showprocesslist-host'  => 'Tuwan',
 	'showprocesslist-time'  => 'Wektu',
 	'showprocesslist-state' => 'Negara bagéyan',
 	'showprocesslist-info'  => 'Info',
@@ -212,6 +214,7 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'showprocesslist-user' => 'ഉപയോക്താവ്',
+	'showprocesslist-time' => 'സമയം',
 );
 
 /** Marathi (मराठी)

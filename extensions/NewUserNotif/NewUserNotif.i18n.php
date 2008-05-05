@@ -133,6 +133,13 @@ $messages['ja'] = array(
 $4、$3上に$2でユーザーアカウントを作成しました。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'newusernotifsubj' => 'Notifikasi panganggo anyar kanggo $1',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -153,6 +160,13 @@ $messages['lb'] = array(
 	'newusernotifbody'  => 'Bonjour $1,
 
 E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'newusernotif-desc' => 'ഉപഭോക്തൃഅക്കൗണ്ടുകള്‍ ഉണ്ടാക്കി കഴിയുമ്പോള്‍ ഇമെയില്‍ വിജ്ഞാപനം അയക്കുന്നു',
 );
 
 /** Marathi (मराठी)

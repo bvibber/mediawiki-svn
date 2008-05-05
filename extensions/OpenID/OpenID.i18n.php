@@ -470,12 +470,16 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'openidoptional' => 'Opsional',
-	'openidrequired' => 'Diperlokaké',
-	'openidnickname' => 'Jeneng sesinglon',
-	'openidfullname' => 'Jeneng jangkep',
-	'openidemail'    => 'Alamat e-mail',
-	'openidlanguage' => 'Basa',
+	'openidxrds'           => 'Berkas Yadis',
+	'openidcancel'         => 'Vérifikasi dibatalaké',
+	'openidallowtrust'     => 'Marengaké $1 percaya karo rékening panganggo iki.',
+	'openidoptional'       => 'Opsional',
+	'openidrequired'       => 'Diperlokaké',
+	'openidnickname'       => 'Jeneng sesinglon',
+	'openidfullname'       => 'Jeneng jangkep',
+	'openidemail'          => 'Alamat e-mail',
+	'openidlanguage'       => 'Basa',
+	'openidchoosepassword' => 'tembung sandhi:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -521,6 +525,19 @@ $messages['lb'] = array(
 	'openidchoosemanual'       => 'E Numm vun ärer Wiel:',
 	'openidchoosepassword'     => 'Passwuert:',
 	'openidnousername'         => 'Kee Benotzernumm uginn.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'openidlogin'          => 'ഓപ്പണ്‍ ഐഡി ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
+	'openidusernameprefix' => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
+	'openidfullname'       => 'പൂര്‍ണ്ണനാമം',
+	'openidemail'          => 'ഇമെയില്‍ വിലാസം',
+	'openidlanguage'       => 'ഭാഷ',
+	'openidchoosefull'     => 'താങ്കളുടെ പൂര്‍ണ്ണനാമം ($1)',
+	'openidchoosepassword' => 'രഹസ്യവാക്ക്:',
 );
 
 /** Marathi (मराठी)

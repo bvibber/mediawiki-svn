@@ -550,6 +550,7 @@ $messages['jv'] = array(
 	'changeauthor-revview'           => 'Révisi #$1 saka $2',
 	'changeauthor-nosuchtitle'       => 'Ora ana kaca sing diarani "$1".',
 	'changeauthor-success'           => 'Panyuwunan panjenengan wis kasil diprosès.',
+	'changeauthor-logpagename'       => 'Log owah-owahan pangripta',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1080,17 +1081,34 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'changeauthor-search-box'        => 'Tìm kiếm phiên bản',
-	'changeauthor-pagename-or-revid' => 'Tên trang hay số phiên bản:',
-	'changeauthor-pagenameform-go'   => 'Tìm kiếm',
-	'changeauthor-comment'           => 'Lý do:',
-	'changeauthor-invalid-username'  => 'Tên người dùng “$1” không hợp lệ.',
-	'changeauthor-nosuchuser'        => 'Không có người dùng nào với tên “$1”.',
-	'changeauthor-revview'           => 'Phiên bản số $1 của $2',
-	'changeauthor-nosuchtitle'       => 'Không có trang nào với tên “$1”.',
+	'changeauthor'                      => 'Đổi tác giả của phiên bản',
+	'changeauthor-desc'                 => 'Chi phép thay đổi tác giả của một phiên bản',
+	'changeauthor-title'                => 'Đổi tác giả của một phiên bản',
+	'changeauthor-search-box'           => 'Tìm kiếm phiên bản',
+	'changeauthor-pagename-or-revid'    => 'Tên trang hay số phiên bản:',
+	'changeauthor-pagenameform-go'      => 'Tìm kiếm',
+	'changeauthor-comment'              => 'Lý do:',
+	'changeauthor-changeauthors-multi'  => 'Đổi tác giả',
+	'changeauthor-explanation-multi'    => "Với mẫu này bạn có thể thay đổi tác giả phiên bản.
+Chỉ cần thay đổi một hoặc nhiều tên người dùng trong danh sách phía dưới, thêm một lời chú thích (tùy chọn) và nhấn nút 'Đổi tác giả'.",
+	'changeauthor-changeauthors-single' => 'Đổi tác giả',
+	'changeauthor-explanation-single'   => "Với mẫu này bạn có thể thay đổi tác giả phiên bản,
+Chỉ cần thay đổi tên người dùng ở dưới, thêm một chú thích (tùy chọn) và nhấn vào nút 'Đổi tác giả'.",
+	'changeauthor-invalid-username'     => 'Tên người dùng “$1” không hợp lệ.',
+	'changeauthor-nosuchuser'           => 'Không có người dùng nào với tên “$1”.',
+	'changeauthor-revview'              => 'Phiên bản số $1 của $2',
+	'changeauthor-nosuchtitle'          => 'Không có trang nào với tên “$1”.',
+	'changeauthor-weirderror'           => 'Có lỗi lạ xuất hiện.
+Xin hãy thử yêu cầu lại.
+Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị tổn hại.',
+	'changeauthor-invalidform'          => 'Xin hãy dùng mẫu tại Special:ChangeAuthor chứ đừng dùng mẫu tự tạo.',
+	'changeauthor-success'              => 'Yêu cầu của bạn đã được thực hiện xong.',
+	'changeauthor-logentry'             => 'Đã đổi tác giả của phiên bản $2 của trang $1 từ $3 thành $4',
+	'changeauthor-logpagename'          => 'Nhật trình thay đổi tác giả',
 );
 
 /** Volapük (Volapük)

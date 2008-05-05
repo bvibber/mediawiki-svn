@@ -79,6 +79,15 @@ $messages['lb'] = array(
 	'signaturelogentry'    => "huet d'Dokument $1 ënnerschriwwen",
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'signaturelogpage'  => 'सही नोंद',
+	'signature-desc'    => 'डक्यूमेंटवर [[Special:SignDocument|सही]] करण्याची परवानगी देतो',
+	'signaturelogentry' => '$ डक्यूमेंट वर सही केली',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

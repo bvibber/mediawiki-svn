@@ -66,7 +66,7 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'parserdifftest'      => 'Test de difencies pal análisis sintáuticu',
+	'parserdifftest'      => 'Test de diferencies pal análisis sintáuticu',
 	'pdtest_no_target'    => "Nun s'especificó l'oxetivu.",
 	'pdtest_page_missing' => "La páxina especificada nun s'atopó na base de datos.",
 	'pdtest_no_changes'   => 'Nun se deteutaron cambeos.',

@@ -81,6 +81,15 @@ $messages['hsb'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Haćenje wutworjenja wužiwarskich kontow',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'acct_creation_global_soft_throttle_hit'      => 'Panggawéyan rékening anyar dipenggak sacara otomatis kanggo sawetara wektu amerga ana panyoban log mlebu anyar sing cacahé luar biasa akèhé. Tulung ditunggu pirang menit lan cobanen manèh.',
+	'acct_creation_global_hard_throttle_hit'      => "Panggawéyan rékening anyar dipenggak sacara otomatis kanggo sawetara detik kanggo ngurangi serangan banjiran régistrasi. Tulung ditunggu sawetara dhisik lan pencèten tombol 'reload' ing panjlajah wèb panjenengan kanggo ngirim manèh.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Watesana panggawéyan panganggo',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

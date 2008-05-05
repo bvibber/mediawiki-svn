@@ -400,7 +400,10 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'contributors-target' => 'Irah-irahan (judhul):',
+	'contributors-target'     => 'Irah-irahan (judhul):',
+	'contributors-submit'     => 'Tuduhna',
+	'contributors-badtitle'   => 'Irah-irahan ora absah.',
+	'contributors-nosuchpage' => 'Artikel $1 ora ditemokaké.',
 );
 
 /** Kabyle (Taqbaylit)
@@ -516,6 +519,13 @@ $messages['lb'] = array(
 	'contributors-others'      => 'a(n) $1 anerer',
 	'contributors-badtitle'    => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage'  => "D'Säit $1 gëtt et net.",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'contributors-target' => 'ശീര്‍ഷകം:',
 );
 
 /** Marathi (मराठी)

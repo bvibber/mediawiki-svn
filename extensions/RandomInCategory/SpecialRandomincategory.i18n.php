@@ -185,9 +185,11 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'randomincategory-toolbox' => 'Kaca sembarang',
-	'randomincategory-label'   => 'Kategori:',
-	'randomincategory-submit'  => 'Tumuju',
+	'randomincategory'            => 'Sembarang kaca ing kategori',
+	'randomincategory-toolbox'    => 'Kaca sembarang',
+	'randomincategory-nocategory' => 'Kategori $1 ora ana utawa kosong',
+	'randomincategory-label'      => 'Kategori:',
+	'randomincategory-submit'     => 'Tumuju',
 );
 
 /** Khmer (ភាសាខ្មែរ)

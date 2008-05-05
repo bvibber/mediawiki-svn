@@ -161,7 +161,8 @@ $messages['it'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'profiling-ok' => 'OK',
+	'profiling-ok'         => 'OK',
+	'profiling-data-count' => 'Cacah',
 );
 
 /** Khmer (ភាសាខ្មែរ)

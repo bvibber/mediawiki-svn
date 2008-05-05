@@ -184,6 +184,20 @@ $messages['hu'] = array(
 	'languageselector-setlang' => 'beállítás',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'languageselector' => 'Lingua',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'languageselector' => 'Linguo',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */
@@ -204,8 +218,9 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'languageselector'      => 'Basa',
-	'languageselector-desc' => 'Pamilih basa ana ing saben kaca, uga kanggo tamu',
+	'languageselector'         => 'Basa',
+	'languageselector-desc'    => 'Pamilih basa ana ing saben kaca, uga kanggo tamu',
+	'languageselector-setlang' => 'sèt',
 );
 
 /** Kazakh
@@ -267,6 +282,13 @@ $messages['li'] = array(
 $messages['lt'] = array(
 	'languageselector'         => 'Kalba',
 	'languageselector-setlang' => 'nustatyti',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'languageselector' => 'ഭാഷ',
 );
 
 /** Marathi (मराठी)

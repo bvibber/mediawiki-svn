@@ -20,10 +20,12 @@ $messages['en'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Alnokta
  * @author ترجمان05
  */
 $messages['ar'] = array(
-	'categoryintersection' => 'تقاطع تصنيف',
+	'categoryintersection'      => 'تقاطع تصنيف',
+	'categoryintersection-doit' => 'اعرض الصفحات في هذه التصنيفات',
 );
 
 /** Bulgarian (Български)
@@ -152,8 +154,9 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'categoryintersection'      => 'Intersèksi Kategori',
-	'categoryintersection-doit' => 'Deleng kaca-kaca ing kabèh kategori iki',
+	'categoryintersection'         => 'Intersèksi Kategori',
+	'categoryintersection-doit'    => 'Deleng kaca-kaca ing kabèh kategori iki',
+	'categoryintersection-results' => 'Panggolèkan iki ngasilaké $1 {{PLURAL:$1|pituwas|pituwas}}.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

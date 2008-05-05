@@ -232,6 +232,15 @@ $messages['it'] = array(
 	'filelist-image-desc' => 'disc',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'filelist'              => 'Daftar Berkas',
+	'filelist-show-list'    => 'Tuduhna daftar',
+	'filelist-show-gallery' => 'Tuduhna galeri',
+);
+
 /** Georgian (ქართული)
  * @author Siebrand
  */
@@ -315,8 +324,10 @@ $messages['mdf'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Siebrand
+ * @author Shijualex
  */
 $messages['ml'] = array(
+	'filelist'            => 'പ്രമാണങ്ങളുടെ പട്ടിക',
 	'filelist-image-desc' => 'കുറിപ്പ്',
 );
 
@@ -364,12 +375,14 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maire
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'filelist'              => 'Lista plików',
 	'filelist-desc'         => 'Strona specjalna z listą przesłanych plików',
 	'filelist-show-list'    => 'Pokaż listę',
 	'filelist-show-gallery' => 'Pokaż galerię',
+	'filelist-image-desc'   => 'opis',
 );
 
 /** Pashto (پښتو)

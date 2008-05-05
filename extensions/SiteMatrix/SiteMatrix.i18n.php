@@ -72,6 +72,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'sitematrix'           => 'Llista de wikis de Wikimedia',
+	'sitematrix-summary'   => 'Esta páxina especial llista toles wikis de Wikimedia.',
 	'sitematrix-desc'      => 'Amuesa una [[Special:SiteMatrix|llista de les wikis de Wikimedia]]',
 	'sitematrix-language'  => 'Llingua',
 	'sitematrix-project'   => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
@@ -504,6 +505,13 @@ $messages['hy'] = array(
 	'sitematrix-others' => 'Վիքիմեդիայի այլ նախագծեր',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'sitematrix-sitetotal' => 'Total',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -517,8 +525,13 @@ $messages['id'] = array(
 	'sitematrix-sitetotal' => 'Total',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
 $messages['io'] = array(
+	'sitematrix'          => 'Listo di wiki-i Wikimedia',
 	'sitematrix-language' => 'Linguo',
+	'sitematrix-private'  => 'privata',
 );
 
 /** Icelandic (Íslenska)

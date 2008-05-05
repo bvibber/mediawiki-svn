@@ -141,6 +141,13 @@ $messages['hr'] = array(
 	'onlinestatus-toggle-online'    => 'Spojen',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'onlinestatus-toggles-desc' => 'Status panjenengan:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -153,6 +160,18 @@ $messages['lb'] = array(
 	'onlinestatus-toggles-show'     => 'Online-Status op menger Benotzersäit weisen',
 	'onlinestatus-toggle-offline'   => 'Offline',
 	'onlinestatus-toggle-online'    => 'Online',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'onlinestatus-subtitle-offline' => 'ഈ ഉപയോക്താവ് നിലവില്‍ ഓഫ്‌ലൈന്‍ ആണ്‌',
+	'onlinestatus-subtitle-online'  => 'ഈ ഉപയോക്താവ് നിലവില്‍ ഓഫ്‌ലൈന്‍ ആണ്‌',
+	'onlinestatus-toggles-desc'     => 'നിങ്ങളുടെ സ്ഥിതി:',
+	'onlinestatus-toggles-explain'  => 'നിങ്ങളുടെ ഉപയോക്തൃതാള്‍ കാണുമ്പോള്‍ നിങ്ങള്‍ ഓണ്‍ലൈന്‍ ആണോ അല്ലയോ എന്നു മറ്റുള്ളവര്‍ക്ക് മനസ്സിലാക്കാന്‍ ഈ സം‌വിധാനം സഹായിക്കുന്നു.',
+	'onlinestatus-toggles-show'     => 'ഓണ്‍‌ലൈന്‍ സ്ഥിതി എന്റെ ഉപയോക്തൃതാളില്‍ പ്രദര്‍ശിപ്പിക്കുക',
+	'onlinestatus-toggle-offline'   => 'ഓഫ്‌ലൈന്‍',
 );
 
 /** Marathi (मराठी)
@@ -225,13 +244,32 @@ $messages['pl'] = array(
 	'onlinestatus-toggle-online'    => 'obecny',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'onlinestatus-subtitle-offline' => 'دم مهال همدا کارونکی بې ليکه دی',
+	'onlinestatus-subtitle-online'  => 'دم مهال همدا کارونکی پر ليکه دی',
+	'onlinestatus-toggles-desc'     => 'ستاسو دريځ:',
+	'onlinestatus-toggles-show'     => 'زما په کارن-مخ زما دريځ پرليکه ښکاره کول',
+	'onlinestatus-toggle-offline'   => 'بې ليکه',
+	'onlinestatus-toggle-online'    => 'پر ليکه',
+);
+
 /** Portuguese (Português)
+ * @author 555
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'onlinestatus-desc'         => 'Adiciona uma preferência para mostrar se o utilizador está correntemente presente no wiki ou não',
-	'onlinestatus-toggles-desc' => 'O seu estado:',
+	'onlinestatus-desc'             => 'Adiciona uma preferência para mostrar se o utilizador está correntemente presente no wiki ou não',
+	'onlinestatus-subtitle-offline' => 'Este utilizador encontra-se offline',
+	'onlinestatus-subtitle-online'  => 'Este utilizador encontra-se online',
+	'onlinestatus-toggles-desc'     => 'O seu estado:',
+	'onlinestatus-toggles-explain'  => 'Permite que seja exibido a outros utilizadores, através de sua página de usuário, se você se encontra online ou não.',
+	'onlinestatus-toggles-show'     => 'Exibir meu status de conexão em minha página de usuário',
+	'onlinestatus-toggle-offline'   => 'Offline',
+	'onlinestatus-toggle-online'    => 'Online',
 );
 
 /** Russian (Русский)

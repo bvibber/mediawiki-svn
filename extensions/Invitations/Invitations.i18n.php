@@ -267,9 +267,14 @@ $messages['hi'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'invitations-inviteform-title'    => 'Undhang sawijining panganggo supaya nganggo $1',
-	'invitations-inviteform-username' => 'Panganggo sing diundhang',
-	'invitations-inviteform-submit'   => 'Undhang',
+	'invite-logpage'                   => 'Log Undhangan',
+	'invitations-invitedlist-item'     => '<b>$1</b> (ana $2 undhangan)',
+	'invitations-feature-access'       => 'Panjenengan saiki ana aksès kanggo nganggo <i>$1</i>.',
+	'invitations-feature-notallowed'   => 'Panjenengan ora ana aksès nganggo <i>$1</i>.',
+	'invitations-inviteform-title'     => 'Undhang sawijining panganggo supaya nganggo $1',
+	'invitations-inviteform-username'  => 'Panganggo sing diundhang',
+	'invitations-inviteform-submit'    => 'Undhang',
+	'invitations-error-alreadyinvited' => 'Panganggo sing dispésifikasi panjenengan wis duwé aksès ing fitur iki!',
 );
 
 /** Khmer (ភាសាខ្មែរ)

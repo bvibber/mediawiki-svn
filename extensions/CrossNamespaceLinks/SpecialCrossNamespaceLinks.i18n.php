@@ -274,6 +274,13 @@ $messages['id'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 terpaut ke $3'
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligilo|ligili}} vers $3',
+);
+
 /** Icelandic (Íslenska)
  * @author Spacebirdy
  * @author SPQRobin

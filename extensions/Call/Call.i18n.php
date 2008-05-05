@@ -253,7 +253,8 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'call' => 'Celuk',
+	'call'              => 'Celuk',
+	'call-save-success' => 'Tèks sing kapacak ing ngisor iki wis disimpen ing kaca <big>[[$1]]</big> .',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -536,6 +537,31 @@ $messages['uk'] = array(
 	'call-save'         => "Вивід цього виклику буде збережений на сторінку ''$1''.",
 	'call-save-success' => 'Наступний текст був збережений на сторінку <big>[[$1]]</big>.',
 	'call-save-failed'  => 'Наступний текст НЕ був збережений на сторінку <big>[[$1]]</big>, оскільки ця сторінка вже існує.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'call'              => 'Gọi',
+	'call-desc'         => 'Tạo một siêu liên kết đến một tiêu bản (hoặc đến một trang wiki thông thường) bằng cách truyền tham số.
+Có thể được dùng tại dòng lệnh của trình duyệt hoặc trong văn bản wiki.',
+	'call-text'         => "Gói mở rộng Call mong đợi một trang wiki và những thông số tùy chọn của trang đó là tham số.
+
+Ví dụ 1: &nbsp; <tt>[[Special:Call/Tiêu bản của tôi,tham1=trị1]]</tt><br />
+Ví dụ 2: &nbsp; <tt>[[Special:Call/Thảo luận:Thảo luận của tôi,tham1=trị1]]</tt><br />
+Ví dụ 3: &nbsp; <tt>[[Special:Call/:Trang của tôi,tham1=trị1,tham2=trị2]]</tt><br />
+Ví dụ 4 (URL trình duyệt): &nbsp; <tt>http://tênmiền/wikitôi/index.php?Special:Call/:Trang của tôi,tham1=trị1</tt>
+
+<i>Gói mở rộng Call</i> sẽ gọi trang chỉ định và truyền tham số.<br />
+Bạn sẽ nhìn thấy nội dung của trang được gọi cùng với tựa đề của nó nhưng 'kiểu' của nó sẽ là một trang đặc biệt, có nghĩa là bạn không thể sửa đổi trang đó.<br />Nội dung bạn nhìn thấy có thể thay đổi tùy theo giá trị tham số bạn truyền vào.
+
+<i>Gói mở rộng Call</i> hữu hiệu trong việc xây dựng những ứng dụng tương tác với MediaWiki.<br />
+Xem ví dụ <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+Trong trường hợp có vấn đề bạn có thể thử <b>Special:Call/DebuG</b>",
+	'call-save'         => "Ngõ ra của lần gọi này sẽ được lưu vào trang có tên ''$1''.",
+	'call-save-success' => 'Văn bản sau đã được lưu vào trang <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Văn bản sau KHÔNG được lưu vào trang <big>[[$1]]</big> vì trang đó đã tồn tại.',
 );
 
 /** Volapük (Volapük)

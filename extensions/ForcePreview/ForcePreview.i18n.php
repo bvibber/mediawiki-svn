@@ -79,6 +79,13 @@ $messages['hsb'] = array(
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'forcepreview' => 'Simpen kaca (enggonen pratayang dhisik)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
@@ -181,5 +188,4 @@ $messages['vi'] = array(
 Lưu trang (sau khi xem thử)',
 	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
 );
-
 

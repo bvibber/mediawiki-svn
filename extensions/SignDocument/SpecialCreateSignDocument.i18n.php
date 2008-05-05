@@ -309,11 +309,15 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'createsigndoc-email'      => 'Alamat e-mail:',
-	'createsigndoc-address'    => 'Alamat omah:',
-	'createsigndoc-extaddress' => 'Kutha, Negara bagéyan, Negara:',
-	'createsigndoc-phone'      => 'Nomer tilpun:',
-	'createsigndoc-minage'     => 'Umur minimum:',
+	'createsigndoc-pagename'          => 'Kaca:',
+	'createsigndoc-email'             => 'Alamat e-mail:',
+	'createsigndoc-address'           => 'Alamat omah:',
+	'createsigndoc-extaddress'        => 'Kutha, Negara bagéyan, Negara:',
+	'createsigndoc-phone'             => 'Nomer tilpun:',
+	'createsigndoc-minage'            => 'Umur minimum:',
+	'createsigndoc-optional'          => 'Opsional',
+	'createsigndoc-error-generic'     => 'Luput: $1',
+	'createsigndoc-error-pagenoexist' => 'Luput: Kaca [[$1]] ora ana.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -362,7 +366,16 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'createsigndoc-pagename' => 'താള്‍:',
+	'createsigndoc-pagename'      => 'താള്‍:',
+	'createsigndoc-email'         => 'ഇമെയില്‍ വിലാസം:',
+	'createsigndoc-address'       => 'വീടിന്റെ വിലാസം:',
+	'createsigndoc-extaddress'    => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',
+	'createsigndoc-phone'         => 'ഫോണ്‍ നമ്പര്‍:',
+	'createsigndoc-bday'          => 'ജനനതീയ്യതി:',
+	'createsigndoc-minage'        => 'കുറഞ്ഞ പ്രായം:',
+	'createsigndoc-hidden'        => 'മറഞ്ഞിരിക്കുന്നത്',
+	'createsigndoc-create'        => 'താള്‍ സൃഷ്ടിക്കുക',
+	'createsigndoc-error-generic' => 'പിഴവ്: $1',
 );
 
 /** Marathi (मराठी)

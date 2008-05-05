@@ -397,7 +397,8 @@ $messages['hi'] = array(
  * @author Jose77
  */
 $messages['hil'] = array(
-	'regexblock-view-go' => 'Lakat',
+	'regexblock-form-reason' => 'Rason:',
+	'regexblock-view-go'     => 'Lakat',
 );
 
 /** Croatian (Hrvatski)
@@ -518,9 +519,22 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'regexblock-form-username' => 'Alamat IP utawa jeneng panganggo:',
-	'regexblock-view-all'      => 'Kabèh',
-	'regexblock-view-go'       => 'Golèk',
+	'regexblockstats'            => 'Statistik pamblokiran regex',
+	'regexblock-help'            => "Nganggoa formulir ing ngisor iki kanggo mblokir aksès panulisan saka sawijining alamat IP tartamtu utawa jeneng panganggo.
+Iki nanging namung kudu dilakokaké waé kanggo menggak vandalisme, lan miturut kawicaksanan sing ana.
+''Nganggo kaca iki panjenengan uga bisa mblokir panganggo-panganggo sing durung ana, lan uga mblokir panganggo sing duwé jeneng mèmper karo jeneng sing wis ana. Contoné « Test » bakal diblokir karo « Test 2 » lsp.
+Panjenengan uga bisa mblokir alamat-alamat IP sacara pol-polan, dadi tegesé ora ana sing bisa log mlebu saka kana lan nyunting kaca-kaca.
+Cathetan: alamat IP parsial bakal dianggep miturut jeneng panganggo yèn arep diblokir.
+Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal dienggo.",
+	'regexblock-form-username'   => 'Alamat IP utawa jeneng panganggo:',
+	'regexblock-form-reason'     => 'Alesan:',
+	'regexblock-form-match'      => 'Persis cocog',
+	'regexblock-block-log'       => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
+	'regexblock-already-blocked' => '$1 wis diblokir',
+	'regexblock-stats-username'  => 'Kanggo $1',
+	'regexblock-view-all'        => 'Kabèh',
+	'regexblock-view-go'         => 'Golèk',
+	'regexblock-view-reason'     => 'alesan: $1',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -572,10 +586,15 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'regexblock-form-reason' => 'കാരണം:',
-	'regexblock-form-expiry' => 'കാലാവധി:&#160;',
-	'regexblock-view-all'    => 'എല്ലാം',
-	'regexblock-view-go'     => 'പോകൂ',
+	'regexblock-form-reason'          => 'കാരണം:',
+	'regexblock-form-expiry'          => 'കാലാവധി:&#160;',
+	'regexblock-view-all'             => 'എല്ലാം',
+	'regexblock-view-go'              => 'പോകൂ',
+	'regexblock-view-reason'          => 'കാരണം: $1',
+	'regexblock-view-block-temporary' => 'കാലാവധി തീരുന്നത്',
+	'regexblock-view-block-expired'   => 'കാലാവധി തീരുന്നത്',
+	'regexblock-view-block-by'        => 'തടഞ്ഞത്',
+	'regexblock-view-block-unblock'   => 'സ്വതന്ത്രമാക്കുക',
 );
 
 /** Marathi (मराठी)

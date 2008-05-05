@@ -49,6 +49,14 @@ $messages['hsb'] = array(
 	'untidy' => 'Njeporjadny',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'tidy'   => 'Rapèkna',
+	'untidy' => 'Batal rapèkna',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

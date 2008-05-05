@@ -432,6 +432,14 @@ $messages['hi'] = array(
 	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:Ipblocklist]] का इस्तेमाल करें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'crosswikiblock-reason'   => 'Rason:',
+	'crosswikiunblock-reason' => 'Rason:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -534,10 +542,22 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'crosswikiblock-expiry'   => 'Kadaluwarsa:',
-	'crosswikiblock-reason'   => 'Alesan:',
-	'crosswikiblock-submit'   => 'Blokir panganggo iki',
-	'crosswikiunblock-reason' => 'Alesan:',
+	'crosswikiblock'                => 'Blokir panganggo ing wiki liya',
+	'crosswikiblock-expiry'         => 'Kadaluwarsa:',
+	'crosswikiblock-reason'         => 'Alesan:',
+	'crosswikiblock-submit'         => 'Blokir panganggo iki',
+	'crosswikiblock-anononly'       => 'Blokir para panganggo anonim waé',
+	'crosswikiblock-nocreate'       => 'Menggak panggawéyan rékening',
+	'crosswikiblock-noemail'        => 'Panganggo dipenggak ora olèh ngirim e-mail',
+	'crosswikiunblock-reason'       => 'Alesan:',
+	'crosswikiblock-noexpiry'       => 'Kadaluwarsa ora absah: $1.',
+	'crosswikiblock-alreadyblocked' => 'Panganggo $3 wis diblokir.',
+	'crosswikiblock-noblock'        => 'Panganggo iki ora diblokir.',
+	'crosswikiblock-success'        => "Panganggo '''$3''' bisa sacara suksès diblokir.
+
+Bali menyang:
+* [[Special:CrosswikiBlock|Formulir pamblokiran]]
+* [[$4]]",
 );
 
 /** Khmer (ភាសាខ្មែរ)

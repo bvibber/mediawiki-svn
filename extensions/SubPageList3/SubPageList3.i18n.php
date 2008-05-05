@@ -98,6 +98,15 @@ $messages['hsb'] = array(
 	'spl3_nosubpages' => '$1 nima podstrony za lisćinu.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'spl3-desc'       => 'Sacara otomatis nggawé daftar subkaca-subkaca sawijining kaca nganggo tag <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug'      => 'Bijih kanggo opsi $1 ora dimangertèni.',
+	'spl3_nosubpages' => '$1 ora nduwé subkaca-subkaca sing bisa dituduhaké.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

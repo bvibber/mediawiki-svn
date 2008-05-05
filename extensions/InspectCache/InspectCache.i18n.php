@@ -160,6 +160,13 @@ $messages['hi'] = array(
 	'inspectcache-list'    => 'सूची',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'inspectcache-delete' => 'Panason',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -196,8 +203,12 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Cache umum',
+	'inspectcache-get'     => 'Jupuk',
 	'inspectcache-delete'  => 'Busak',
 	'inspectcache-deleted' => 'Cache wis dikosongaké',
+	'inspectcache-list'    => 'Daftar',
 );
 
 /** Khmer (ភាសាខ្មែរ)

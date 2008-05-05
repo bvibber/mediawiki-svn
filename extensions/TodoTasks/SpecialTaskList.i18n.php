@@ -204,7 +204,25 @@ Twój přećelny zdźělenski system %s.',
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'tasklistemail' => '%s sing minulya',
+	'tasklist'               => 'Daftar Tugas',
+	'tasklistbyproject'      => 'Daftar Tugas Per Proyèk',
+	'tasklistunknownproject' => 'Proyèk ora ditepungi',
+	'tasklistunspecuser'     => 'Panganggo ora dispésifikasi',
+	'tasklistincorrectuser'  => 'Jeneng panganggo ora bener',
+	'tasklistemail'          => '%s sing minulya',
+	'tasklistmytasks'        => 'Tugas-tugasku',
+	'tasklistbyprojname'     => "Mènèhi Tugas-Tugas kanggo '''%s'''",
+	'tasklistchooseproj'     => 'Pilihen Proyèk:',
+	'tasklistprojdisp'       => 'Ndeleng',
+	'tasklistbyname'         => '== Daftar Tugas kanggo %s ==',
+	'tasklistnoprojects'     => "KALUPUTAN: Katoné panjenengan nyetèl '''\$wgUseProjects''', nanging ora nggawé [[MediaWiki:TodoTasksValidProjects]]. Delengen [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruksi Instalasi] kanggo détail sabanjuré.",
+	'tasklistemailbody'      => ',
+
+Sawijining wong mènèhi panjenengan Tugas anyar ing %s.
+
+Kanggo niliki Daftar Tugas panjenengan sing pepak mangga lungaa menyang %s.
+
+Sistém notifikasi panjenengan %s',
 );
 
 /** Khmer (ភាសាខ្មែរ)

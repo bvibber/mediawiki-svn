@@ -208,7 +208,12 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'lookupuser_realname' => 'Jeneng asli: $1',
+	'lookupuser_nonexistent'       => 'Kaluputan: Panganggo ora ana',
+	'lookupuser_authenticated'     => 'Pamastèn e-mail: $1',
+	'lookupuser_not_authenticated' => 'durung dipastèkaké',
+	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname'          => 'Jeneng asli: $1',
+	'lookupuser_useroptions'       => 'Opsi panganggo:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

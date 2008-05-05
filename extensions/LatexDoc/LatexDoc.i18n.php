@@ -171,6 +171,25 @@ $3',
 	'latexdoc_get_pdf'         => 'PDF letöltése',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'latexdoc_no_text'         => 'Kaca ora ngandhut tèks, ora bisa nggawé DVI',
+	'latexdoc_cant_create_dir' => 'Ora bisa nggawé dirèktori sementara $1',
+	'latexdoc_cant_write'      => 'Ora bisa nulis ing berkas $1',
+	'latexdoc_error'           => 'Kaluputan LaTeX
+
+Paréntah: $1
+
+Pituwas: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Gawé DVI',
+	'latexdoc_get_pdf'         => 'Gawé PDF',
+	'latexdoc-desc'            => 'Panyuntingan kolaboratif dokumèn-dokumèn LaTeX',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

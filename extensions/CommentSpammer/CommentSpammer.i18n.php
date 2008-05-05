@@ -155,6 +155,14 @@ $messages['ja'] = array(
 	'cspammer-log-page'           => 'スパム投稿ログ',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'commentspammer-save-blocked' => 'Alamat IP panjenengan iku dicurigani dienggo ngirim spam, dadi kaca iki ora disimpen.
+Kanggo menggak iki, [[Special:Userlogin|mangga log mlebu utawa nggawé rékening (akun)]].',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -328,5 +336,19 @@ $messages['uk'] = array(
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 Подробиці], [[Special:Blockip/$4|заблокувати]].',
 	'cspammerlogpagetext'         => "Запис редагувань, які були дозволені або відхилені у зв'язку з тим, чи було джерело відоме як спамер коментарів.",
 	'cspammer-log-page'           => 'Журнал спам-коментарів',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'commentspammer-save-blocked' => 'Địa chỉ IP của bạn bị nghi ngờ là một spam chú thích, do đó trang này không được lưu.
+[[Special:Userlogin|Hãy đăng nhập hoặc mở tài khoản]] để tránh điều này.',
+	'commentspammer-desc'         => 'Từ chối sửa đổi từ những người tình nghi là spammer chú thích trên một danh sách đen DNS',
+	'commentspammer-log-msg'      => 'sửa đổi từ [[Special:Contributions/$1|$1]] tại [[:$2]].',
+	'commentspammer-log-msg-info' => 'Lần spam cuối cùng là $1 {{PLURAL:$1|ngày|ngày}} trước, mức độ đe dọa $2, và mã vi phạm là $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Xem chi tiết], hoặc [[Special:Blockip/$4|cấm]].',
+	'cspammerlogpagetext'         => 'Bản lưu các sửa đổi đã được cho phép hoặc từ chối dựa trên nguồn đó có phải là một spammer chú thích đã biết hay không.',
+	'cspammer-log-page'           => 'Nhật trình Spammer chú thích',
 );
 

@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'gnuplot-desc' => 'Přidawa tafličku <code><nowiki><gnuplot></nowiki></code> za wužiwanje rozšěrjenja Gnuplot',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'gnuplot-desc' => 'Nambahaké tag <code><nowiki><gnuplot></nowiki></code> kanggo nrapaké Gnuplot',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -1007,14 +1007,26 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'math_CannotCreateTexFile'   => 'Ora bisa nggawé berkas tex',
-	'math_CannotRunLatex'        => 'Ora bisa nglakokaké latex',
-	'math_CannotWriteTexFile'    => 'Ora bisa nulis in berkas tex',
-	'math_IllegalCharacter'      => 'Ana karakter ilegal sing dilebokaké',
-	'math_InvalidColour'         => 'Warna "$1" iku ora absah',
-	'math_LatexFontNotSpecified' => 'Ora ana font LaTeX sing dispésifikasi kanggo "$1"',
-	'math_TooManyTokens'         => 'Input-é kedawan',
-	'math_UnrecognisedCommand'   => 'Paréntah "$1" ora ditepungi',
+	'math_CannotChangeDirectory'    => 'Ora bisa ngowahi dirèktori kerja',
+	'math_CannotCreateTexFile'      => 'Ora bisa nggawé berkas tex',
+	'math_CannotRunDvipng'          => 'Ora bisa nglakokaké dvipng',
+	'math_CannotRunLatex'           => 'Ora bisa nglakokaké latex',
+	'math_CannotWritePngDirectory'  => 'Ora bisa nulis menyang dirèktori wetonan PNG',
+	'math_CannotWriteTexFile'       => 'Ora bisa nulis in berkas tex',
+	'math_CasesRowTooBig'           => 'Namung olèh ana rong élemèn ing saben rèk saka blok "cases"',
+	'math_IllegalCharacter'         => 'Ana karakter ilegal sing dilebokaké',
+	'math_IllegalCommandInTextMode' => 'Paréntah "$1" iku ilegal ing modus tèks',
+	'math_InvalidColour'            => 'Warna "$1" iku ora absah',
+	'math_LatexFontNotSpecified'    => 'Ora ana font LaTeX sing dispésifikasi kanggo "$1"',
+	'math_LatexPackageUnavailable'  => 'Ora bisa nggawé PNG amerga pakèt LaTeX "$1" ora ana',
+	'math_MissingOpenBraceAfter'    => 'Ora ana akolade "{" sawisé "$1"',
+	'math_MissingOpenBraceAtEnd'    => 'Ora ana akolade "{" ing pungkasané input',
+	'math_MissingOpenBraceBefore'   => 'Ora ana akolade "{" sadurungé "$1"',
+	'math_NonAsciiInMathMode'       => 'Karakter non-ASCII namung olèh dienggo ing modus tèks
+Coba dokoken karakter sing problematis iki antara "\\text{...}".',
+	'math_PngIncompatibleCharacter' => 'Ora bisa nggawé PNG sacara bener sing ngandhut karakter $1',
+	'math_TooManyTokens'            => 'Input-é kedawan',
+	'math_UnrecognisedCommand'      => 'Paréntah "$1" ora ditepungi',
 );
 
 /** Khmer (ភាសាខ្មែរ)

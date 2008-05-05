@@ -136,3 +136,11 @@ $messages['uk'] = array(
 Створює її версію всередині сторінки, особливо корисно для Вікіновин.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'catfeed-desc' => 'Sử dụng những đoạn ngắn từ bản tin của thay đổi gần đây.
+Tạo ra một phiên bản nhúng vào trang, đặc biệt hữu ích cho Wikinews.',
+);
+

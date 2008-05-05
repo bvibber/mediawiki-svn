@@ -213,9 +213,11 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'importfreeimages'            => 'Impor Gambar-Gambar Bébas',
-	'importfreeimages_owner'      => 'Pangripta',
-	'importfreeimages_importthis' => 'impor iki',
+	'importfreeimages'                       => 'Impor Gambar-Gambar Bébas',
+	'importfreeimages_invalidurl'            => 'URL "$1" iku dudu gambar Flickr sing absah.',
+	'importfreeimages_owner'                 => 'Pangripta',
+	'importfreeimages_importthis'            => 'impor iki',
+	'importfreeimages_promptuserforfilename' => 'Tulung lebokna jeneng berkas tujuan:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -282,6 +282,13 @@ $messages['hi'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:निरीक्षक',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'patrol-revert-reason' => 'Rason:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -405,6 +412,7 @@ $messages['it'] = array(
 $messages['jv'] = array(
 	'patrol-revert'        => 'Balèkna',
 	'patrol-revert-reason' => 'Alesan:',
+	'patrol-skipped-ok'    => 'Nglirwakaké suntingan.',
 	'patrol-reasons'       => '* Vandalisme biasa
 * Tès pamula
 * Delengen kaca dhiskusi',
@@ -618,6 +626,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'patrol-revert'        => 'په څټ ګرځول',
 	'patrol-revert-reason' => 'سبب:',
 	'patrol-skip'          => 'تېرېدل',
 );

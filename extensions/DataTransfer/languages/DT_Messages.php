@@ -254,11 +254,14 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'dt_xml_namespace' => 'Bilik nama',
-	'dt_xml_page'      => 'Kaca',
-	'dt_xml_name'      => 'Jeneng',
-	'dt_xml_title'     => 'Irah-irahan (judhul)',
-	'dt_xml_freetext'  => 'Tèks Bébas',
+	'viewxml'                     => 'Ndeleng XML',
+	'dt_viewxml_categories'       => 'Kategori-kategori',
+	'dt_viewxml_simplifiedformat' => 'Format prasaja',
+	'dt_xml_namespace'            => 'Bilik nama',
+	'dt_xml_page'                 => 'Kaca',
+	'dt_xml_name'                 => 'Jeneng',
+	'dt_xml_title'                => 'Irah-irahan (judhul)',
+	'dt_xml_freetext'             => 'Tèks Bébas',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -300,9 +303,12 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'dt_xml_namespace' => 'നേംസ്പേസ്',
-	'dt_xml_page'      => 'താള്‍',
-	'dt_xml_name'      => 'പേര്‌',
+	'dt_viewxml_categories' => 'വിഭാഗങ്ങള്‍',
+	'dt_viewxml_namespaces' => 'നേംസ്പേസുകള്‍',
+	'dt_xml_namespace'      => 'നേംസ്പേസ്',
+	'dt_xml_page'           => 'താള്‍',
+	'dt_xml_name'           => 'പേര്‌',
+	'dt_xml_title'          => 'ശീര്‍ഷകം',
 );
 
 /** Marathi (मराठी)
@@ -407,6 +413,7 @@ $messages['os'] = array(
 $messages['pl'] = array(
 	'dt-desc'                     => 'Pozwala na importowanie i eksportowanie struktur danych zawartych w wywołaniach szablonu',
 	'viewxml'                     => 'Podgląd XML',
+	'dt_viewxml_docu'             => 'Wybierz, które spośród następujących kategorii i przestrzeni nazw chcesz podejrzeć w formacie XML.',
 	'dt_viewxml_categories'       => 'Kategorie',
 	'dt_viewxml_namespaces'       => 'Przestrzenie nazw',
 	'dt_viewxml_simplifiedformat' => 'Format uproszczony',

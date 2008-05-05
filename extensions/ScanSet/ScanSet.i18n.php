@@ -327,6 +327,14 @@ $messages['id'] = array(
 	'scanset_prev'                      => '&lt; Sebelumnya',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'scanset_next' => 'Sequanta &gt;',
+	'scanset_prev' => '&lt; Antea',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
@@ -552,7 +560,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'scanset_next' => 'راتلونکی &gt;',
+	'scanset_next' => 'راتلونکي &gt;',
 	'scanset_prev' => '&lt; پخوانی',
 );
 
@@ -718,6 +726,15 @@ $messages['tr'] = array(
 	'scanset_prev' => '&lt; Önceki',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'scanset-desc'         => 'Перегляд зображень відсканованих сторінок із CD/DVD-колекцій Андреаша Гроса (Andreas Grosz)',
+	'scanset_invalid_name' => 'ScanSet: помилка в назві набору знімків, або зазначений набір відсутній.',
+	'scanset_next'         => 'Наступна &gt;',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -740,10 +757,11 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'scanset-desc'         => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
-	'scanset_invalid_name' => 'ScanSet: Bộ trang quét không hợp lệ hay không tồn tại.',
-	'scanset_next'         => 'Sau →',
-	'scanset_prev'         => '← Trước',
+	'scanset-desc'           => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
+	'scanset_invalid_name'   => 'ScanSet: Bộ trang quét không hợp lệ hay không tồn tại.',
+	'scanset_invalid_volume' => 'ScanSet: Quyển không hợp lệ',
+	'scanset_next'           => 'Sau →',
+	'scanset_prev'           => '← Trước',
 );
 
 /** Volapük (Volapük)

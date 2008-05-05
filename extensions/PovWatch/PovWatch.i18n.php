@@ -162,8 +162,8 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
- * @author Grondin
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'povwatch'                         => 'Surveillance des guerres d’éditions',
@@ -194,6 +194,8 @@ Un journal de surveillance des articles inscrits est disponible sur [[Special:Po
 	'povwatch_subscribe_intro'         => 'Vous n’êtes pas inscrit sur la liste de surveillance des guerres d’édition. Cliquez sur le bouton ci-dessous pour vous inscrire.',
 	'povwatch_subscribe'               => 'Souscrire',
 	'povwatch_added'                   => 'ajouté',
+	'right-povwatch_admin'             => "Administrer les droits d’utilisateur pour l'ajout des pages à la liste de suivi des autres utilisateurs.",
+	'right-povwatch_user'              => 'Ajoute des pages à la liste de suivi des autres utilisateurs',
 );
 
 /** Galician (Galego)
@@ -293,7 +295,9 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'povwatch_push'  => 'Surung',
 	'povwatch_title' => 'Irah-irahan (judhul):',
+	'povwatch_added' => 'ditambah',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -378,6 +382,13 @@ $messages['li'] = array(
 	'povwatch_added'                   => 'toegevoeg',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'povwatch_title' => 'ശീര്‍ഷകം:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -417,6 +428,7 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author GerardM
  * @author SPQRobin
  */
 $messages['nl'] = array(
@@ -449,6 +461,8 @@ Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's k
 	'povwatch_subscribe_intro'         => 'U bent niet ingeschreven voor PovWatch. Klik op de onderstaande knop om u te abonneren.',
 	'povwatch_subscribe'               => 'Abonneren',
 	'povwatch_added'                   => 'toegevoegd',
+	'right-povwatch_admin'             => 'Beheer gebruikersrechten voor het toevoegen van artikelen aan de volglijst van andere gebruikers',
+	'right-povwatch_user'              => "Pagina's toevoegen aan de volglijst van andere gebruikers",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -492,6 +506,8 @@ Vær forsiktig når du skriver inn tittelen; også ikke-eksisterende sider kan l
 	'povwatch_subscribe_intro'         => 'Du abonnerer ikke på PovWatch. Klikk på knappen nedenfor for å abonnere.',
 	'povwatch_subscribe'               => 'Abonner',
 	'povwatch_added'                   => 'lagt til',
+	'right-povwatch_admin'             => 'Administrere brukerrettigheter for hvem som kan legge til sider i andre brukeres overvåkningslister',
+	'right-povwatch_user'              => 'Legge til sider i andres overvåkningslister',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -531,6 +547,8 @@ $messages['oc'] = array(
 	'povwatch_subscribe_intro'         => 'Sètz pas marcat(ada) sus la tièra de susvelhança de las guèrras d’edicions. Clicatz sul boton çaijós per vos marcar.',
 	'povwatch_subscribe'               => 'Soscriure',
 	'povwatch_added'                   => 'ajustat',
+	'right-povwatch_admin'             => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
+	'right-povwatch_user'              => 'Ajusta de paginas a la lista de seguit dels autres utilizaires',
 );
 
 /** Polish (Polski)
@@ -628,6 +646,8 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'povwatch_subscribe_intro'         => 'Nie ste prihlásený na odber PovWatch. Prihlásiť odber môžete kliknutím na tlačidlo dolu.',
 	'povwatch_subscribe'               => 'Prihlásiť odber',
 	'povwatch_added'                   => 'pridaný',
+	'right-povwatch_admin'             => 'Spravovať oprávnenie pridávať stránky do zoznamu sledovaných ostatných používateľov',
+	'right-povwatch_user'              => 'Pridávať stránku do zoznamu sledovaných ostatných používateľov',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -673,6 +693,8 @@ Kilcka på knappen nedan för att avsluta abonnemanget.',
 Klicka på knappen nedan för att abonnera.',
 	'povwatch_subscribe'               => 'Abonnera',
 	'povwatch_added'                   => 'tillaggd',
+	'right-povwatch_admin'             => 'Administrera användarrättigheter för vem som kan lägga till sidor i andra användares övervakningslistor',
+	'right-povwatch_user'              => 'Lägga till sidor i andras övervakningslistor',
 );
 
 /** Telugu (తెలుగు)

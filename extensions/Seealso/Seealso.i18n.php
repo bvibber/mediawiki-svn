@@ -128,6 +128,13 @@ $messages['is'] = array(
 	'seealso' => 'Tengt efni',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'seealso' => 'Uga delengen',
+);
+
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author AlefZet
  */

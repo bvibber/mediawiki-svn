@@ -272,6 +272,8 @@ $messages['jv'] = array(
 	'player-not-allowed'   => 'format ora diparengaké',
 	'player-not-found'     => 'berkas ora ketemu',
 	'player-invalid-title' => 'judhul ora absah',
+	'player-clicktoplay'   => 'Maina $1',
+	'player-goto-page'     => 'Kaca',
 	'player-goto-file'     => 'berkas',
 );
 

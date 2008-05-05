@@ -390,9 +390,20 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'usagestatisticsintervalday'   => 'Dina',
-	'usagestatisticsintervalweek'  => 'Minggu (saptawara)',
-	'usagestatisticsintervalmonth' => 'Sasi',
+	'specialuserstats'               => 'Statistik olèhé nganggo',
+	'usagestatistics'                => 'Statistik olèhé nganggo',
+	'usagestatisticsallusers'        => 'Kabèh panganggo',
+	'usagestatisticsinterval'        => 'Interval',
+	'usagestatisticstype'            => 'Jenis',
+	'usagestatisticsstart'           => 'Tanggal wiwitan',
+	'usagestatisticsend'             => 'Tanggal entèk',
+	'usagestatisticssubmit'          => 'Nggawé statistik',
+	'usagestatisticsintervalday'     => 'Dina',
+	'usagestatisticsintervalweek'    => 'Minggu (saptawara)',
+	'usagestatisticsintervalmonth'   => 'Sasi',
+	'usagestatisticscumulative'      => 'Kumulatif',
+	'usagestatisticscumulative-text' => 'kumulatif',
+	'usagestatisticscalselect'       => 'Pilih',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -438,6 +449,13 @@ $messages['lb'] = array(
 	'usagestatisticscalselect'       => 'Auswielen',
 	'usagestatistics-editindividual' => 'Individuell $1 Statistiken vun den Ännerunge pro Benotzer',
 	'usagestatistics-editpages'      => 'Individuell $1 Statistiken vun de Säite pro Benotzer',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'usagestatisticsintervalmonth' => 'മാസം',
 );
 
 /** Marathi (मराठी)
@@ -597,6 +615,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'specialuserstats'             => 'د کارونې شمار',
+	'usagestatistics'              => 'د کارونې شمار',
 	'usagestatisticsallusers'      => 'ټول کارونکي',
 	'usagestatisticsstart'         => 'د پيل نېټه',
 	'usagestatisticsend'           => 'د پای نېټه',

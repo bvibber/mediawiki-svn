@@ -181,7 +181,9 @@ $messages['it'] = array(
 $messages['jv'] = array(
 	'watchers_link_title'    => 'Sapa sing ngawasi kaca iki?',
 	'watchers_error_article' => '<b>Kaluputan:</b> Kaca iki ora ana.',
+	'watchers_header'        => 'Wong-wong sing ngawasi "$1"',
 	'watchers_noone_watches' => 'Ora ana sing ngawasi kaca iki.',
+	'watchers_less_than_x'   => 'Kurang saka $1 wong ngawasi kaca iki.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

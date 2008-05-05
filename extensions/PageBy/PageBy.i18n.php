@@ -166,15 +166,16 @@ $messages['it'] = array(
  */
 $messages['jv'] = array(
 	'pageby-first' => 'Kaca digawé déning $1, $2',
+	'pageby-anon'  => '<i>anonim</i>',
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
-	'pageby-first'        => 'ទំព័រ ត្រូវបាន បង្កើតឡើង ដោយ $1, $2',
-	'pageby-last'         => '<a href="$3">ផ្លាស់ប្តូរ</a> ចុងក្រោយ ដោយ $1, $2',
+	'pageby-first'        => 'ទំព័រត្រូវបានបង្កើតឡើងដោយ $1, $2',
+	'pageby-last'         => '<a href="$3">បានកែ</a>ចុងក្រោយ $1, $2',
 	'pageby-contributors' => 'អ្នករួមចំណែក៖',
 	'pageby-anon'         => '<i>អនាមិក</i>',
 );

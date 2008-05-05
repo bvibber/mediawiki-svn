@@ -91,6 +91,13 @@ $messages['ja'] = array(
 	'purge' => 'キャッシュ削除',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'purge' => 'kosongna',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

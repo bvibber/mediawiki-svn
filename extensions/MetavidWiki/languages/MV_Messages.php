@@ -973,6 +973,8 @@ $messages['hi'] = array(
 $messages['hil'] = array(
 	'mv_upload_file' => 'Karga file',
 	'mv_tool_search' => 'Pangita-a',
+	'mv_edit'        => 'Ilisan',
+	'mv_history'     => 'Saysay',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1193,9 +1195,28 @@ $messages['jbo'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'mv_duration_label' => 'durasi',
-	'mv_history'        => 'Sajarah',
-	'mv_remove'         => 'busak',
+	'mv_ogg_high_quality'    => 'Kwalitas dhuwur - Ogg Theora 900kbs',
+	'mv_duration_label'      => 'durasi',
+	'mv_remove_reason'       => 'Alesan mbusak:',
+	'mv_upload_file'         => 'Unggahna berkas',
+	'mv_external_file'       => 'Berkas jaba',
+	'mv_tool_search'         => 'Golèk',
+	'mv_tool_navigate'       => 'Navigasi',
+	'mv_tool_export'         => 'Èkspor',
+	'mv_play'                => 'Main',
+	'mv_edit'                => 'Sunting',
+	'mv_history'             => 'Sajarah',
+	'mv_edit_title'          => 'Sunting tèks',
+	'mv_remove'              => 'busak',
+	'mv_add_filter'          => 'Tambahna filter',
+	'mv_search_match'        => 'Golèk tèks',
+	'mv_search_spoken_by'    => 'Diwicarakaké déning',
+	'mv_search_category'     => 'Kategori',
+	'mv_search_smw_property' => 'Sifat-sifat sémantik',
+	'mv_search_and'          => 'lan',
+	'mv_search_or'           => 'utawa',
+	'mv_search_not'          => 'ora',
+	'mv_category'            => 'kategori',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1291,6 +1312,11 @@ $messages['mr'] = array(
 	'mv_ogg_low_quality'             => 'वेब स्ट्रीमेबल - ऑग थिओरा ३०० केबीपीएस',
 	'mv_ogg_high_quality'            => 'उच्च दर्जा - ऑग थिओरा ९०० केबीपीएस',
 	'mv_archive_org_link'            => 'Archive.org मध्ये एमपीईजी२ मूळ चा दुवा देते',
+	'ao_file_64Kb_MPEG4'             => 'आर्चिव्ह.ऑर्ग - mpeg4 64kbs',
+	'ao_file_256Kb_MPEG4'            => 'आर्चिव्ह.ऑर्ग - mpeg4 256kbs',
+	'ao_file_MPEG1'                  => 'आर्चिव्ह.ऑर्ग - mpeg1',
+	'ao_file_MPEG2'                  => 'आर्चिव्ह.ऑर्ग - mpeg2 मूळ',
+	'ao_file_flash_flv'              => 'आर्चिव्ह.ऑर्ग - फ्लश व्हिडियो',
 	'mv_error_stream_missing'        => '<span class="error">त्रुटी: या स्ट्रीमशी संबंधित व्हीडियो संचिका अस्तित्वात नाही.</span><br />कृपया प्रबंधकांना याची माहिती द्या.',
 	'mv_stream_meta'                 => 'स्ट्रीम पान',
 	'mv_add_stream'                  => 'मेटाविड स्ट्रीम वाढवा',

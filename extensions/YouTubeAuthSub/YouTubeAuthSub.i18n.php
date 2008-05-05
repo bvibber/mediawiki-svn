@@ -443,7 +443,10 @@ Hutt w.e.g. e bësse Gedold!',
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'youtubeauthsub_title'       => 'ശീര്‍ഷകം',
 	'youtubeauthsub_description' => 'വിവരണം',
+	'youtubeauthsub_password'    => 'യൂട്യൂബ് രഹസ്യവാക്ക്',
+	'youtubeauthsub_username'    => 'യൂട്യൂബ് യൂസര്‍നാമം',
 	'youtubeauthsub_category'    => 'വിഭാഗം',
 	'youtubeauthsub_submit'      => 'സമര്‍പ്പിക്കുക',
 );
@@ -905,12 +908,13 @@ $messages['th'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'youtubeauthsub'                     => 'Tải lên video YouTube',
 	'youtubeauthsub-desc'                => 'Để người dùng [[Special:YouTubeAuthSub|tải lên video]] thẳng từ YouTube',
 	'youtubeauthsub_info'                => 'Để tải lên video từ YouTube và chèn nó vào trang, hãy ghi vào những thông tin sau:',
-	'youtubeauthsub_title'               => 'Tên',
+	'youtubeauthsub_title'               => 'Tựa đề',
 	'youtubeauthsub_description'         => 'Miêu tả',
 	'youtubeauthsub_password'            => 'Mật khẩu YouTube',
 	'youtubeauthsub_username'            => 'Tên hiệu YouTube',

@@ -247,6 +247,14 @@ $messages['hu'] = array(
 	'multiupload-toolbox'              => 'Több fájl feltöltése',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'multipleupload'           => 'Ngunggahaké berkas',
+	'multiupload-fileuploaded' => 'Berkas diunggahaké.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
@@ -279,6 +287,14 @@ $messages['lb'] = array(
 	'multipleupload-saveallfiles'      => "All d'Fichiere späicheren",
 	'multipleupload-addresswarnings'   => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
 	'multiupload-fileuploaded'         => 'Fichier eropgelueden',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'multiupload-fileuploaded' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
+	'multiupload-toolbox'      => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
 );
 
 /** Marathi (मराठी)
@@ -409,6 +425,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'multipleupload'                   => 'Carregar ficheiros',
+	'multipleupload-desc'              => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários ficheiros de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
 	'multipleupload-saveallfiles'      => 'Gravar todos os ficheiros',
 	'multipleupload-page'              => '{{ns:project}}:Política de eliminação de ficheiros',

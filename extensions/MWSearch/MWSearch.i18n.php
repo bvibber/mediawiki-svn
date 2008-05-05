@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'mwsearch-desc' => 'إضافة MWSearch',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'mwsearch-desc' => 'Разширение за търсене в МедияУики',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

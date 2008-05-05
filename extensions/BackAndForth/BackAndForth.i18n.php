@@ -396,7 +396,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'backforth-next' => 'راتلونکی ($1)',
+	'backforth-next' => 'راتلونکي ($1)',
 	'backforth-prev' => 'پخوانی ($1)',
 );
 
@@ -532,6 +532,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'backforth-next' => 'Sau ($1)',
+	'backforth-desc' => 'Thêm các liên kết "Sau" và "Trước" đến trang theo thứ tự ABC vào đầu trang',
 	'backforth-prev' => 'Trước ($1)',
 );
 

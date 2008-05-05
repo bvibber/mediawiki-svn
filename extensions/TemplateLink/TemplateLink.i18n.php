@@ -102,6 +102,15 @@ $messages['ht'] = array(
 	'templatelink_newtitle' => '$1 (mete paj sa anndan yon lòt paj)',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'templatelink'          => 'Pranala Cithakan',
+	'templatelink_empty'    => 'Panjenengan kudu maringi paramèter.',
+	'templatelink_newtitle' => '$1 (transklusi)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន

@@ -256,6 +256,13 @@ $messages['hi'] = array(
 	'vote-results-count' => 'गिनती',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'vote-login-link' => 'mag sulod',
+);
+
 $messages['hsb'] = array(
 	'vote' => 'Hłosować',
 	'vote-header' => 'Móžeš tu za \'\'\'Supreme Overlord of the World\'\'\' hłosować!',
@@ -311,8 +318,19 @@ $messages['it'] = array(
  */
 $messages['jv'] = array(
 	'vote'                => 'Coblos',
+	'vote-header'         => "Panjenengan bisa milih '''Panguwasa Paling Dhuwur sa-Donya''' ing kéné!",
+	'vote-current'        => "Swara panjenengan saiki kanggo '''$1'''.",
+	'vote-caption'        => 'Pilihan panjenengan:',
+	'vote-choices'        => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
 	'vote-submit'         => 'Coblos',
+	'vote-registered'     => 'Coblosan panjenengan wis dirégistrasi.',
+	'vote-view-results'   => 'Deleng kasil',
+	'vote-results'        => 'Kasil coblosan',
 	'vote-results-choice' => 'Pilihan',
+	'vote-results-count'  => 'Cacah swara',
+	'vote-login'          => 'Panjenengan kudu $1 kanggo nyoblos.',
 	'vote-login-link'     => 'mlebu log',
 );
 
@@ -351,6 +369,15 @@ $messages['lt'] = array(
 	'vote-registered'   => 'Jūsų balsas buvo užregistruotas.',
 	'vote-view-results' => 'Žiūrėti rezultatus',
 	'vote-login-link'   => 'registruotis',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'vote'            => 'വോട്ട്',
+	'vote-submit'     => 'വോട്ട്',
+	'vote-login-link' => 'ലോഗിന്‍ ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

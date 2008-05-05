@@ -346,6 +346,13 @@ $allMessages['hi'] = array(
 	'whitelistnewtablereview'  => 'अवलोकन',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$allMessages['hil'] = array(
+	'whitelisttableedit' => 'Ilisan',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -357,17 +364,39 @@ $allMessages['hu'] = array(
  * @author Meursault2004
  */
 $allMessages['jv'] = array(
-	'whitelisttablemodifyall'  => 'Kabèh',
-	'whitelisttableedit'       => 'Sunting',
-	'whitelisttablenewdate'    => 'Tanggal Anyar:',
-	'whitelisttableremove'     => 'Busak',
-	'whitelistnewtabledate'    => 'Tanggal kadaluwarsa:',
-	'whitelistnewtableprocess' => 'Prosès',
-	'whitelistbadtitle'        => 'Judhul ala -',
-	'whitelistoverview'        => '== Paninjoan amba owah-owahan kanggo $1 ==',
-	'whitelistoverviewcd'      => "* Ngowahi tanggal menyang '''$1''' kanggo [[:$2|$2]]",
-	'whitelistrequest'         => 'Nyuwun aksès ing luwih akèh kaca',
-	'whitelistnever'           => 'ora tau',
+	'whitelist'                 => 'Kaca-kaca Daftar Putih',
+	'mywhitelistpages'          => 'Kaca-kacaku',
+	'whitelistfor'              => '<center>Informasi saiki kanggo <b>$1</b></center>',
+	'whitelisttablemodify'      => 'Modifikasi',
+	'whitelisttablemodifyall'   => 'Kabèh',
+	'whitelisttablemodifynone'  => 'Ora ana',
+	'whitelisttablepage'        => 'Kaca Wiki',
+	'whitelisttabletype'        => 'Jenis Aksès',
+	'whitelisttableexpires'     => 'Kadaluwarsa Ing',
+	'whitelisttablemodby'       => 'Pungkasan dimodifikasi déning',
+	'whitelisttablemodon'       => 'Pungkasan dimodifikasi ing',
+	'whitelisttableedit'        => 'Sunting',
+	'whitelisttablenewdate'     => 'Tanggal Anyar:',
+	'whitelisttablechangedate'  => 'Ganti Tanggal Kadaluwarsa',
+	'whitelisttablesetedit'     => 'Sèt kanggo Nyunting',
+	'whitelisttablesetview'     => 'Sèt kanggo Ndeleng',
+	'whitelisttableremove'      => 'Busak',
+	'whitelistnewtabledate'     => 'Tanggal kadaluwarsa:',
+	'whitelistnewtableedit'     => 'Set kanggo Nyunting',
+	'whitelistnewtableview'     => 'Set kanggo Ndeleng',
+	'whitelistnewtableprocess'  => 'Prosès',
+	'whitelistselectrestricted' => '== Sèlèksi Jeneng Panganggo Sing Diwatesi ==',
+	'whitelistpagelist'         => 'Kaca-kaca {{SITENAME}} kanggo $1',
+	'whitelistbadtitle'         => 'Judhul ala -',
+	'whitelistoverview'         => '== Paninjoan amba owah-owahan kanggo $1 ==',
+	'whitelistoverviewcd'       => "* Ngowahi tanggal menyang '''$1''' kanggo [[:$2|$2]]",
+	'whitelistoverviewrm'       => '* Ngilangi aksès kanggo [[:$1|$1]]',
+	'whitelistrequest'          => 'Nyuwun aksès ing luwih akèh kaca',
+	'whitelistrequestmsg'       => '$1 nyuwun aksès ing kaca-kaca iki:
+
+$2',
+	'whitelistrequestconf'      => 'Panyuwunan kaca-kaca anyar dikirimaké menyang $1',
+	'whitelistnever'            => 'ora tau',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -420,9 +449,16 @@ $allMessages['lb'] = array(
  * @author Shijualex
  */
 $allMessages['ml'] = array(
-	'whitelisttablemodifyall' => 'എല്ലാം',
-	'whitelisttableedit'      => 'തിരുത്തുക',
-	'whitelisttableremove'    => 'നീക്കം ചെയ്യുക',
+	'mywhitelistpages'         => 'എന്റെ താളുകള്‍',
+	'whitelisttablemodifyall'  => 'എല്ലാം',
+	'whitelisttablemodifynone' => 'ഒന്നുമില്ല',
+	'whitelisttablepage'       => 'വിക്കി താള്‍',
+	'whitelisttableexpires'    => 'കാലാവധി തീരുന്നത്',
+	'whitelisttableedit'       => 'തിരുത്തുക',
+	'whitelisttableview'       => 'കാണുക',
+	'whitelisttablenewdate'    => 'പുതിയ തീയ്യതി:',
+	'whitelisttableremove'     => 'നീക്കം ചെയ്യുക',
+	'whitelistnewtablereview'  => 'സം‌ശോധനം',
 );
 
 /** Marathi (मराठी)

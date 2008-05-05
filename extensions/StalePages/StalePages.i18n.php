@@ -80,6 +80,14 @@ $messages['hsb'] = array(
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'stalepages'         => 'Kaca-kaca sing kalalèkaké',
+	'stalepages-summary' => 'Ing ngisor iki kapacak daftar kaca-kaca sing ora disunting ing $1 dina pungkasan.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

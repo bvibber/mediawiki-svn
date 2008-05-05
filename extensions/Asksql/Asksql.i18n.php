@@ -34,6 +34,7 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Alnokta
  */
 $messages['ar'] = array(
 	'asksql'          => 'استعلام SQL',
@@ -46,6 +47,7 @@ $messages['ar'] = array(
 	'querybtn'        => 'تنفيذ الاستعلام',
 	'selectonly'      => 'فقط استعلامات القراءة فقط مسموحة.',
 	'querysuccessful' => 'الاستعلام ناجح',
+	'right-asksql'    => 'نفذ استعلامات إس كيو إل',
 );
 
 /** Asturian (Asturianu)
@@ -420,6 +422,7 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'asksql'          => 'Kwéri SQL',
+	'asksql-desc'     => 'Lakokna kwéri SQL ngliwati sawijining [[Special:Asksql|kaca astaméwa]]',
 	'sqlislogged'     => 'Élinga yèn kabèh kwéri bakal dicathet.',
 	'sqlquery'        => 'Lebokna kwéri',
 	'querybtn'        => 'Kirim kwéri',
@@ -485,6 +488,7 @@ $messages['mr'] = array(
 	'querybtn'        => 'पृच्छा पाठवा',
 	'selectonly'      => '’फक्त वाचण्यासाठी’ असलेल्या पृच्छाच पाठविता येतील.',
 	'querysuccessful' => 'पृच्छा यशस्वी',
+	'right-asksql'    => 'एसक्यूएल पृच्छा करा',
 );
 
 /** Dutch (Nederlands)
@@ -501,6 +505,7 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 	'querybtn'        => 'Voer zoekopdracht uit',
 	'selectonly'      => 'U kunt slechts alleen-lezen zoekopdrachten uitvoeren.',
 	'querysuccessful' => 'Zoekopdracht uitgevoerd',
+	'right-asksql'    => 'SQL-zoekopdrachten uitvoeren',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -598,8 +603,8 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 );
 
 /** Russian (Русский)
- * @author Ahonc
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'asksql'          => 'SQL-запрос',
@@ -612,6 +617,7 @@ $messages['ru'] = array(
 	'querybtn'        => 'Отправить запрос',
 	'selectonly'      => 'Разрешены только запросы на чтение.',
 	'querysuccessful' => 'Запрос выполнен',
+	'right-asksql'    => 'выполнение SQL-запросов',
 );
 
 /** Yakut (Саха тыла)
@@ -774,6 +780,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'asksql'          => 'Truy vấn SQL',
+	'asksql-desc'     => 'Thực hiện truy vấn SQL thông qua một [[Special:Asksql|trang đặc biệt]]',
 	'asksqltext'      => "Sử dụng mẫu ở dưới để viết truy vấn trực tiếp đến cơ sở dữ liệu.
 Sử dụng dấu nháy đơn ('giống như vầy') để phân cách chuỗi ký tự.
 Việc làm này thường kéo tải của máy chủ một cách đáng kể, do đó xin hãy dùng chức năng này một cách nhẹ nhàng.",
@@ -782,6 +789,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 	'querybtn'        => 'Gửi câu truy vấn',
 	'selectonly'      => 'Chỉ chấp nhận câu truy vấn "chỉ đọc"',
 	'querysuccessful' => 'Truy vấn thành công',
+	'right-asksql'    => 'Tạo truy vấn SQL',
 );
 
 /** Cantonese

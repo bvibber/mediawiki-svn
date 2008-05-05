@@ -102,6 +102,15 @@ $messages['ja'] = array(
 	'userimages-noimages' => '$1 は画像をアップロードしていません。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'userimages-caption'  => 'Berkas sing diunggahaké déning $1',
+	'userimages-noname'   => 'Jeneng panganggo ora absah utawa ora mènèhi.',
+	'userimages-noimages' => '$1 ora duwé pangunggahan gambar.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

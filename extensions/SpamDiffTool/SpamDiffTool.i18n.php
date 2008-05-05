@@ -239,6 +239,7 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'spamdifftool_option_none'   => 'ora ana',
 	'spamdifftool_submit_buttom' => 'Kirim',
 );
 

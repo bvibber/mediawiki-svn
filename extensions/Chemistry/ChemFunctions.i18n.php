@@ -345,14 +345,15 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'chemicalsources'        => 'Sumber-sumber kimia',
-	'chemicalsource-desc'    => 'Nambahna tag <nowiki><chemform></nowiki>, kanggo rumus kimia',
-	'chemFunctions_ListPage' => 'Sumber-sumber kimia',
-	'chemFunctions_CAS'      => 'Nomer CAS',
-	'chemFunctions_ATCCode'  => 'ATCCode',
-	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula'  => 'Formula',
-	'chemFunctions_Name'     => 'Jeneng IUPAC',
+	'chemicalsources'                  => 'Sumber-sumber kimia',
+	'chemicalsource-desc'              => 'Nambahna tag <nowiki><chemform></nowiki>, kanggo rumus kimia',
+	'chemFunctions_ListPage'           => 'Sumber-sumber kimia',
+	'chemFunctions_CAS'                => 'Nomer CAS',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Formula',
+	'chemFunctions_Name'               => 'Jeneng IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Inputé salah!',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -736,6 +737,7 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
@@ -746,6 +748,8 @@ $messages['vi'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS tại Đại học Oxford (Anh)</a><br /> (không có bộ tìm kiếm)',
 	'chemFunctions_CAS'                => 'Số CAS',
+	'chemFunctions_ATCCode'            => 'Mã ATC',
+	'chemFunctions_ECNumber'           => 'Số EC',
 	'chemFunctions_Formula'            => 'Công thức',
 	'chemFunctions_Name'               => 'Tên IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!',

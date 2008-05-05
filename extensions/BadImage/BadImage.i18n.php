@@ -587,6 +587,13 @@ $messages['hi'] = array(
 	'badimages-page'           => '{{ns:help}}:गलत चित्र सूची',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'badimages-reason' => 'Rason:',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
@@ -770,6 +777,7 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'badimages'                => 'Daftar gambar ala',
+	'badimages-desc'           => 'Ambakna kapabilitas daftar gambar ala MediaWiki',
 	'badimages-add-btn'        => 'Tambahna',
 	'badimages-added'          => '$1 wis ditambahaké ing daftar.',
 	'badimages-count'          => "{{PLURAL:$1|Ana|Ana}} '''$1''' {{PLURAL:$1|gambar|gambar-gambar}} ing daftar gambar ala.",
@@ -781,6 +789,7 @@ $messages['jv'] = array(
 	'badimages-remove-btn'     => 'Busak',
 	'badimages-remove-confirm' => 'Tulung didhedhes utawa dikonfirmasi yèn panjenengan arep mbusak $1 saka daftar:',
 	'badimages-removed'        => '$1 dibusak saka daftar.',
+	'badimages-subheading'     => 'Daftar saiki',
 	'badimages-log-name'       => 'Daftar gambar ala',
 	'badimages-log-header'     => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
 	'badimages-log-add'        => 'nambahaké [[$1]] menyang daftar gambar ala',
@@ -966,7 +975,7 @@ $messages['nl'] = array(
 	'badimages-desc'           => 'Uitbreiding voor de lijst met ongewenste afbeeldingen in MediaWiki',
 	'badimages-add-btn'        => 'Toevoegen',
 	'badimages-added'          => '$1 is toegevoegd.',
-	'badimages-count'          => "Er staan '''$1''' afbeeldingen op de verwijderlijst afbeeldingen.",
+	'badimages-count'          => "Er {{PLURAL:$1|staat|staan}} '''$1''' {{PLURAL:$1|afbeelding|afbeeldingen}} op de verwijderlijst van afbeeldingen.",
 	'badimages-name'           => 'Naam:',
 	'badimages-not-added'      => 'De afbeelding kon niet worden toegevoegd.',
 	'badimages-not-removed'    => 'De afbeelding kon niet verwijderd worden.',
@@ -1138,8 +1147,8 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
- * @author Malafaya
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'badimages'                => 'Lista de imagens problemáticas',
@@ -1588,7 +1597,7 @@ $messages['vi'] = array(
 	'badimages-desc'           => 'Mở rộng tính tương thích danh sách hình phản cảm của MediaWiki',
 	'badimages-add-btn'        => 'Thêm',
 	'badimages-added'          => 'Đã thêm $1 vào danh sách.',
-	'badimages-count'          => "Có '''$1''' hình trong danh sách hình phản cảm.",
+	'badimages-count'          => "{{PLURAL:$1|Có|Có}} '''$1''' hình trong danh sách hình phản cảm.",
 	'badimages-name'           => 'Tên:',
 	'badimages-not-added'      => 'Không thêm được hình.',
 	'badimages-not-removed'    => 'Không loại bỏ được hình.',

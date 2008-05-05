@@ -213,6 +213,13 @@ Postrowy,
 $2',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'userrightsnotifysubject' => 'Kaanggotan grup diganti ing $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

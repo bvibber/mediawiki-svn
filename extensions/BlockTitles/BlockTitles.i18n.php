@@ -511,6 +511,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'block_title_error_page_title' => 'Tên trang bị khóa',
+	'block_title_error-desc'       => 'Cung cấp cách cơ bản để ngăn chặn không cho lưu hoặc tạo ra những trang với tựa đề nhất định',
 	'block_title_error'            => 'Xin lỗi, không được phép lưu tên trang này.',
 );
 

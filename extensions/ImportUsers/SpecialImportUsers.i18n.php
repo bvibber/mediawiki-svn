@@ -266,7 +266,8 @@ $messages['hi'] = array(
  * @author Jose77
  */
 $messages['hil'] = array(
-	'importusers-uploadfile' => 'Karga file',
+	'importusers-uploadfile'  => 'Karga file',
+	'importusers-log-summary' => 'Kabilogan',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -299,13 +300,19 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'importusers-form-button'     => 'Impor',
-	'importusers-log'             => 'Log impor',
-	'importusers-log-summary'     => 'Ringkesan',
-	'importusers-log-summary-all' => 'Kabèh',
-	'importusers-password'        => 'tembung sandhi',
-	'importusers-email'           => 'e-mail',
-	'importusers-realname'        => 'jeneng asli',
+	'importusers-uploadfile'              => 'Unggahna berkas',
+	'importusers-form-button'             => 'Impor',
+	'importusers-user-added'              => 'Panganggo <b>%s</b> wis ditambah.',
+	'importusers-user-present-not-update' => 'Panganggo <b>%s</b> wis ana. Ora di-update.',
+	'importusers-log'                     => 'Log impor',
+	'importusers-log-summary'             => 'Ringkesan',
+	'importusers-log-summary-all'         => 'Kabèh',
+	'importusers-log-summary-added'       => 'Ditambah',
+	'importusers-log-summary-updated'     => 'Dimutakiraké',
+	'importusers-login-name'              => 'Jeneng log mlebu',
+	'importusers-password'                => 'tembung sandhi',
+	'importusers-email'                   => 'e-mail',
+	'importusers-realname'                => 'jeneng asli',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -360,8 +367,11 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'importusers-uploadfile'      => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
+	'importusers-log-summary'     => 'ചുരുക്കം',
 	'importusers-log-summary-all' => 'എല്ലാം',
+	'importusers-password'        => 'രഹസ്യവാക്ക്',
 	'importusers-email'           => 'ഇമെയില്‍',
+	'importusers-realname'        => 'യഥാര്‍ത്ഥ പേര്‌',
 );
 
 /** Marathi (मराठी)

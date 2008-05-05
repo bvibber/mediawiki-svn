@@ -159,6 +159,16 @@ $messages['ja'] = array(
 	'sc_gotomonth'        => 'この月を表示',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'sc_previousmonth' => 'Sasi sadurungé',
+	'sc_nextmonth'     => 'Sasi sabanjuré',
+	'sc_today'         => 'Dina iki',
+	'sc_gotomonth'     => 'Tumuju menyang sasi',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -188,6 +198,15 @@ $messages['lt'] = array(
 	'sc_nextmonth'        => 'Ateinantis mėnuo',
 	'sc_today'            => 'Šiandien',
 	'sc_gotomonth'        => 'Eiti į mėnesį',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'sc_previousmonth' => 'കഴിഞ്ഞ മാസം',
+	'sc_nextmonth'     => 'അടുത്ത മാസം',
+	'sc_today'         => 'ഇന്ന്',
 );
 
 /** Marathi (मराठी)

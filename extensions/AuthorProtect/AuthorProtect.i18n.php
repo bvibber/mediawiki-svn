@@ -26,12 +26,23 @@ $messages['en'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Alnokta
  * @author Meno25
  */
 $messages['ar'] = array(
-	'authorprotect-confirm' => 'حماية',
-	'authorprotect-expiry'  => 'تاريخ الانتهاء',
-	'authorprotect-reason'  => 'السبب',
+	'authorprotect'            => 'احمي الصفحة من غير المؤلفون',
+	'authorprotect-desc'       => 'يسمح لمؤلف الصفحة بأن يحميها من المستخدمون الأخرون',
+	'authorprotect-notauthor'  => 'أنت لست مؤلف هذه الصفحة',
+	'authorprotect-confirm'    => 'حماية',
+	'authorprotect-edit'       => 'احصر التعديل للمؤلفون',
+	'authorprotect-move'       => 'احصر النقل للمؤلفون',
+	'authorprotect-expiry'     => 'تاريخ الانتهاء',
+	'authorprotect-reason'     => 'السبب',
+	'authorprotect-intro'      => 'استخدم هذه الاستمارة لتقفل هذه الصفحة من غير المؤلفون',
+	'authorprotect-success'    => 'نجحت الحماية!',
+	'authorprotect-failure'    => 'فشلت الحماية',
+	'protect-level-author'     => 'احمي من غير المؤلفين',
+	'restriction-level-author' => 'حماية المؤلف',
 );
 
 /** Kotava (Kotava)
@@ -400,8 +411,17 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'authorprotect-expiry' => 'د پای موده',
-	'authorprotect-reason' => 'سبب',
+	'authorprotect'            => 'همدغه مخ د ناليکوالانو څخه ژغورل',
+	'authorprotect-desc'       => 'د يوه مخ ليکوال په دې توانوي چې خپله ليکنه د نورو کارونکو نه وژغوري',
+	'authorprotect-notauthor'  => 'تاسو د همدغه مخ ليکوال نه ياست',
+	'authorprotect-confirm'    => 'ژغورل',
+	'authorprotect-expiry'     => 'د پای موده',
+	'authorprotect-reason'     => 'سبب',
+	'authorprotect-intro'      => 'تاسو د لاندينۍ فورمې په کارولو سره همدا مخ د ناليکوالانو پر مخ تړۍ',
+	'authorprotect-success'    => 'ژغورنه مو بريالۍ وه!',
+	'authorprotect-failure'    => 'ژغورنه مو بريالۍ نه وه',
+	'protect-level-author'     => 'د ناليکوالانو نه ژغورل',
+	'restriction-level-author' => 'د ليکوالۍ-ژغورلی',
 );
 
 /** Portuguese (Português)

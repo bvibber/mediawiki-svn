@@ -346,6 +346,19 @@ $messages['ja'] = array(
 	'countedits-nocontribs'   => 'このウィキにおける投稿記録はありません。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'countedits'              => 'Cacahé suntingan',
+	'countedits-username'     => 'Jeneng panganggo:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'Ora ana panganggo mawa jeneng $1.',
+	'countedits-resultheader' => 'Pituwas kanggo $1',
+	'countedits-resulttext'   => '$1 wis nggawé $2 suntingan',
+	'countedits-mostactive'   => 'Kontributor paling aktif',
+);
+
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
 	'countedits' => 'تٷزەتۋ ساناۋ',

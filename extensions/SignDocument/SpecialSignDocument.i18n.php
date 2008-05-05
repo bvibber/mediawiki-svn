@@ -679,6 +679,7 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'sign-selectdoc'          => 'Dokumèn:',
 	'sign-realname'           => 'Jeneng:',
 	'sign-address'            => 'Dalan:',
 	'sign-city'               => 'Kutha:',
@@ -700,6 +701,9 @@ $messages['jv'] = array(
 	'sign-viewfield-email'    => 'E-mail',
 	'sign-viewfield-age'      => 'Umur',
 	'sign-viewfield-options'  => 'Opsi:',
+	'sign-closed'             => 'ditutup',
+	'sig-anonymous'           => '<i>Anonim</i>',
+	'sig-private'             => '<i>Pribadi</i>',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -786,29 +790,97 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'sign-selectdoc'               => 'പ്രമാണം:',
 	'sign-realname'                => 'പേര്‌:',
+	'sign-city'                    => 'പട്ടണം:',
+	'sign-state'                   => 'സംസ്ഥാനം:',
+	'sign-zip'                     => 'സിപ്പ് കോഡ്:',
+	'sign-country'                 => 'രാജ്യം:',
+	'sign-phone'                   => 'ഫോണ്‍ നമ്പര്‍:',
+	'sign-bday'                    => 'വയസ്സ്',
+	'sign-email'                   => 'ഇമെയില്‍ വിലാസം:',
+	'sign-list-hideaddress'        => 'വിലാസം പ്രദര്‍ശിപ്പിക്കരുത്',
+	'sign-list-hideextaddress'     => 'നഗരം, സംസ്ഥാനം, സിപ്പ് കോഡ്, രാജ്യം എന്നിവ പ്രദര്‍ശിപ്പിക്കരുത്',
+	'sign-list-hidephone'          => 'ഫോണ്‍ നമ്പര്‍ പ്രദര്‍ശിപ്പിക്കരുത്',
+	'sign-list-hidebday'           => 'വയസ്സ് പ്രദര്‍ശിപ്പിക്കരുത്',
+	'sign-list-hideemail'          => 'ഇമെയില്‍ വിലാസം പ്രദര്‍ശിപ്പിക്കരുത്',
 	'sign-viewfield-realname'      => 'പേര്‌',
+	'sign-viewfield-address'       => 'വിലാസം',
+	'sign-viewfield-city'          => 'പട്ടണം',
+	'sign-viewfield-state'         => 'സംസ്ഥാനം',
+	'sign-viewfield-country'       => 'രാജ്യം',
+	'sign-viewfield-zip'           => 'സിപ്പ്',
 	'sign-viewfield-ip'            => 'ഐപി വിലാസം',
+	'sign-viewfield-phone'         => 'ഫോണ്‍',
 	'sign-viewfield-email'         => 'ഇമെയില്‍',
+	'sign-viewfield-age'           => 'വയസ്സ്',
+	'sig-private'                  => "''സ്വകാര്യം''",
 	'sign-viewfield-reviewcomment' => 'അഭിപ്രായം',
 	'sign-review-comment'          => 'അഭിപ്രായം',
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
+	'signdocument'                  => 'डक्यूमेंट वर सही करा',
+	'sign-nodocselected'            => 'तुम्ही सही करू इच्छित असलेले डक्यूमेंट निवडा.',
+	'sign-selectdoc'                => 'डक्यूमेंट:',
+	'sign-error-nosuchdoc'          => 'मागितलेले डक्यूमेंट ($1) अस्तित्वात नाही',
 	'sign-realname'                 => 'नाव:',
+	'sign-address'                  => 'रस्ता पत्ता:',
+	'sign-city'                     => 'शहर:',
+	'sign-state'                    => 'राज्य:',
+	'sign-zip'                      => 'झिप कोड:',
+	'sign-country'                  => 'देश:',
+	'sign-phone'                    => 'दूरध्वनी क्रमांक:',
+	'sign-bday'                     => 'वय:',
+	'sign-email'                    => 'इ-मेल पत्ता:',
+	'sign-list-anonymous'           => 'अनामिक म्हणून नोंद करा',
+	'sign-list-hideaddress'         => 'पत्त्याची नोंद करू नका',
+	'sign-list-hideextaddress'      => 'शहर, राज्य, झिप व देश यांची नोंद करू नका',
+	'sign-list-hidephone'           => 'दूरध्वनी क्रमांकाची नोंद करू नका',
+	'sign-list-hidebday'            => 'वयाची नोंद करू नका',
+	'sign-list-hideemail'           => 'इ-मेल ची नोंद करू नका',
+	'sign-submit'                   => 'डक्यूमेंट वर सही करा',
+	'sign-view-selectfields'        => '<b>हे रकाने दाखवा:</b>',
+	'sign-viewfield-entryid'        => 'नोंद क्र',
+	'sign-viewfield-timestamp'      => 'वेळशिक्का',
 	'sign-viewfield-realname'       => 'नाव',
+	'sign-viewfield-address'        => 'पत्ता',
+	'sign-viewfield-city'           => 'शहर',
+	'sign-viewfield-state'          => 'राज्य',
 	'sign-viewfield-country'        => 'देश',
 	'sign-viewfield-zip'            => 'झीप(पीन)',
 	'sign-viewfield-ip'             => 'आयपी अंकपत्ता:',
+	'sign-viewfield-agent'          => 'सदस्य एजंट',
 	'sign-viewfield-phone'          => 'दूरध्वनी',
 	'sign-viewfield-email'          => 'विपत्र',
 	'sign-viewfield-age'            => 'वय',
 	'sign-viewfield-options'        => 'विकल्प',
+	'sign-sigadmin-close'           => 'सही करण्यावर बंदी घाला',
+	'sign-sigadmin-open'            => 'सही करण्याची परवानगी द्या',
 	'sign-signatures'               => 'सह्या',
+	'sign-viewsignatures'           => 'सह्या पहा',
+	'sign-closed'                   => 'बंद केलेले',
+	'sig-anonymous'                 => '<i>अनामिक</i>',
+	'sig-private'                   => '<i>खाजगी</i>',
+	'sign-sigdetails'               => 'सही माहिती',
+	'sign-emailto'                  => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                  => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|चर्चा]] • <!--
+-->[[Special:Contributions/$1|योगदान]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|सदस्याला ब्लक करा]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ब्लक नोंदी] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} आयपी तपासा])<!--
+--></span>',
+	'sign-viewfield-reviewcomment'  => 'शेरा',
+	'sign-detail-uniquequery-run'   => 'पृच्छा चालवा',
+	'sign-review-comment'           => 'शेरा',
 	'sign-uniquequery-similaremail' => 'तसलेच विपत्र',
 );
 

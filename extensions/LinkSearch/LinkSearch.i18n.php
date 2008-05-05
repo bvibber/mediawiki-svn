@@ -425,6 +425,13 @@ $messages['hu'] = array(
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'linksearch-ok' => 'Recercar',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

@@ -214,8 +214,15 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'talkhere-foottext'    => 'Komentar-komentar ing ndhuwur mbok-menawa ditinggalaké déning para pangunjung.
+
+Operator situs iki ora bisa dianggep tanggung jawab kanggo isi komentar-komentar kaya mengkono.',
+	'talkhere-talkpage'    => 'kaca dhiskusi',
+	'talkhere-notalk'      => "''(durung ana komentar)''",
 	'talkhere-addcomment'  => 'tambah komentar',
 	'talkhere-beforeinput' => 'Panjenengan bisa nambah komentar ing ngisor iki',
+	'talkhere-loading'     => 'ngunggahaké éditor…',
+	'talkhere-collapse'    => 'delikna éditor',
 );
 
 /** ‫قازاقشا (جۇنگو)‬ (‫قازاقشا (جۇنگو)‬)
@@ -288,6 +295,13 @@ $messages['lb'] = array(
 	'talkhere-notalk'      => "''(Nach keng Bemierkung)''",
 	'talkhere-addcomment'  => 'Bemierkung derbäisetzen',
 	'talkhere-beforeinput' => 'Dir kënnt eng Bemierkung hei ënnendrënner derbäisetzen.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'talkhere-talkpage' => 'സം‌വാദം താള്‍',
 );
 
 /** Marathi (मराठी)
