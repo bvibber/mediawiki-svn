@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 #coding: utf-8
 /**
  * Internationalisation file for extension AbsenteeLandlord.
@@ -19,6 +19,14 @@ $messages['en'] = array(
 $messages['bg'] = array(
 	'absenteelandlord-reason' => 'Базата от данни беше автоматично заключена поради неактивност на администраторите.',
 	'absenteelandlord-desc'   => 'Автоматично заключва базата от данни ако всички администратори са неактивни за известен период от време',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'absenteelandlord-reason' => 'Die Datenbank wurde automatisch gesperrt, da kein Administrator aktiv ist.',
+	'absenteelandlord-desc'   => 'Automatisch Sperre der Datenbank, wenn die Administratoren für eine bestimmte Zeit inaktiv sind',
 );
 
 /** French (Français)
