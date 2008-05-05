@@ -34,6 +34,7 @@ class APCHostMode {
 		$numMiss   = $wgLang->formatNum( $c['num_misses'] );
 		$numReqs   = $c['num_hits']+$c['num_misses'];
 		$cPeriod   = time()-$c['start_time'];
+		if ( !$cPeriod ) $cPeriod = 1;
 		$rateReqs  = APCUtils::formatReqPerS( $numReqs / $cPeriod );
 		$rateHits  = APCUtils::formatReqPerS( $c['num_hits'] / $cPeriod );
 		$rateMiss  = APCUtils::formatReqPerS( $c['num_misses'] / $cPeriod );
