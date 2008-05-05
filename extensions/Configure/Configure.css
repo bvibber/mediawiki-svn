@@ -1,0 +1,34 @@
+table.assoc,
+table.ns-array,
+table.ns-text,
+table.group-bool,
+table.group-array {
+	border: 1px solid #777;
+}
+
+table.assoc > tr > td,
+table.ns-array > tr > td,
+table.ns-text > tr > td,
+table.group-bool > tr > td,
+table.group-array > tr > td {
+	border: 1px solid #777;
+	padding: 3px;
+	margin: 3px;
+}
+
+td.disabled > hr {
+	border: 0;
+	color: #777 !important;
+	background-color: #777 !important;
+
+}
+
+span.array-disabled {
+	text-decoration: line-through;
+	color: #888;
+	font-style: italic;
+}
+
+span.array {
+	font-style: italic;
+}

@@ -191,11 +191,24 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Return true if the current user is allowed to configure all settings.
+	 * @return bool
+	 */
+	protected function isUserAllowedAll(){
+		static $allowed = null;
+		if( $allowed === null ){
+			global $wgUser;
+			$allowed = $wgUser->isAllowed( 'configure-all' );
+		}
+		return $allowed;
+	}
+
+	/**
 	 * Submit the posted request
 	 */
 	protected function doSubmit(){
-		global $wgConf, $wgOut, $wgRequest, $wgUser;
-		$allowedRestricted = $wgUser->isAllowed( 'configure-all' );
+		global $wgConf, $wgOut, $wgRequest;
+		$allowedRestricted = $this->isUserAllowedAll();
 		if( $wiki = $wgRequest->getVal( 'wpWiki', false ) ){
 			if( !$allowedRestricted ){
 				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
@@ -363,10 +376,10 @@ class SpecialConfigure extends SpecialPage {
 	 * Show the main form
 	 */
 	protected function showForm(){
-		global $wgOut, $wgUser, $wgRequest;
+		global $wgOut, $wgUser, $wgRequest, $wgScriptPath, $wgStyleVersion;
 
 		if( $wiki = $wgRequest->getVal( 'wiki', false ) ){
-			if( !$wgUser->isAllowed( 'configure-all' ) ){
+			if( !$this->isUserAllowedAll() ){
 				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
 				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
 				return;
@@ -392,6 +405,13 @@ class SpecialConfigure extends SpecialPage {
 			( $wiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => $wiki ) ) . "\n" : '' ) .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'form' )
+		);
+		$wgOut->addLink(
+			array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => "$wgScriptPath/extensions/Configure/Configure.css?$wgStyleVersion",
+			)
 		);
 	}
 
@@ -434,12 +454,7 @@ class SpecialConfigure extends SpecialPage {
 	 * @return String xhtml fragment
 	 */
 	protected function buildInput( $conf, $type, $default ){
-		$allowed = true;
-		if( in_array( $conf, self::$restricted ) ){
-			global $wgUser;
-			if( !$wgUser->isAllowed( 'configure-all' ) )
-				$allowed = false;
-		}
+		$allowed = ( !in_array( $conf, self::$restricted ) || $this->isUserAllowedAll() );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return htmlspecialchars( $default );
@@ -497,7 +512,7 @@ class SpecialConfigure extends SpecialPage {
 	 */
 	protected function buildArrayInput( $conf, $default, $allowed ){
 		if( !isset( self::$arrayDefs[$conf] ) || self::$arrayDefs[$conf] == 'array' )
-			return $allowed ? '<i>(array)</i>' : '<span style="text-decoration: line-through; color: #888; font-style: italic;">(array)</span>'; # FIXME
+			return $allowed ? '<span class="array">(array)</i>' : '<span class="array-disabled">(array)</span>';
 		$type = self::$arrayDefs[$conf];
 		if( $type == 'simple' ){
 			if( !$allowed ){
@@ -510,11 +525,14 @@ class SpecialConfigure extends SpecialPage {
 			return $text;
 		}
 		if( $type == 'assoc' ){
-			$text = '<table border="1">';
+			$keydesc = wfMsgHtml( 'configure-desc-key' );
+			$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$class = ( !$allowed ) ? array( 'class' => 'disabled' ) : array();
+			$text = "<table class='assoc'>\n<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
 			if( is_array( $default ) && count( $default ) > 0 ){
 				$i = 0;
 				foreach( $default as $key => $val ){
-					$text .= '<tr><td>';
+					$text .= '<tr>' . Xml::openElement( 'td', $class );
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
@@ -522,7 +540,7 @@ class SpecialConfigure extends SpecialPage {
 						) ) . "<br/>\n";
 					else
 						$text .= htmlspecialchars( $key );
-					$text .= '</td><td>';
+					$text .= '</td>' . Xml::openElement( 'td', $class );
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
@@ -547,7 +565,7 @@ class SpecialConfigure extends SpecialPage {
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
-					$text .= "<tr><td style='width:10em; height:1.5em;'><hr /></td><td style='width:10em; height:1.5em;'><hr /></td></tr>\n";
+					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr /></td><td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
 				}
 			}
 			$text .= '</table>';
@@ -570,28 +588,40 @@ class SpecialConfigure extends SpecialPage {
 		if( $type == 'ns-bool' ){
 			global $wgContLang;
 			$text = '';
+			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
 			foreach( $wgContLang->getNamespaces() as $ns => $name ){
 				$name = str_replace( '_', ' ', $name );
 				if( '' == $name ) {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
-				$text .= Xml::checkLabel( $name, 'wp'.$conf."-ns{$ns}", 'wp'.$conf."-ns{$ns}", ( isset( $default[$ns] ) && $default[$ns] ) ) . "\n";
+				$text .= Xml::checkLabel(
+					$name,
+					"wp{$conf}-ns{$ns}",
+					"wp{$conf}-ns{$ns}",
+					( isset( $default[$ns] ) && $default[$ns] ),
+					$attr
+				) . "\n";
 			}
 			return $text;
 		}
 		if( $type == 'ns-text' ){
 			global $wgContLang;
-			$text = '<table border="1">';
+			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
+			$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$text = "<table class='ns-text'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach( $wgContLang->getNamespaces() as $ns => $name ){
 				$name = str_replace( '_', ' ', $name );
 				if( '' == $name ) {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
 				$text .= '<tr><td>'. $name . '</td><td>';
-				$text .= Xml::element( 'input', array(
-					'name' => "wp{$conf}-ns{$ns}",
-					'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
-				) ) . "<br/>\n";
+				if( $allowed )
+					$text .= Xml::element( 'input', array(
+						'name' => "wp{$conf}-ns{$ns}",
+						'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
+					) ) . "\n";
+				else
+					$text .= htmlspecialchars( isset( $default[$ns] ) ? $default[$ns] : '' );
 				$text .= '</td></tr>';
 			}
 			$text .= '</table>';
@@ -599,7 +629,9 @@ class SpecialConfigure extends SpecialPage {
 		}
 		if( $type == 'ns-array' ){
 			global $wgContLang;
-			$text = '<table border="1">';
+			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
+			$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$text = "<table class='ns-array'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach( $wgContLang->getNamespaces() as $ns => $name ){
 				if( $ns < 0 )
 					continue;
@@ -641,7 +673,9 @@ class SpecialConfigure extends SpecialPage {
 				else
 					$all = array_diff( $all, User::getImplicitGroups() );
 			}
-			$text = '<table border="1" cellpadding="1">';
+			$groupdesc = wfMsgHtml( 'configure-desc-group' );
+			$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$text = "<table class='{$type}'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach( $iter as $group => $levs ){
 				$row = '<div style="-moz-column-count:2"><ul>';
 				foreach( $all as $right ){
@@ -697,12 +731,11 @@ class SpecialConfigure extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected function buildAllSettings(){
-		global $wgUser;
 		$ret = '';
 		foreach( self::$settings as $title => $groups ){
 			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
 				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n";
-			if( in_array( $title, self::$restrictedGroups ) && !$wgUser->isAllowed( 'configure-all' ) ){
+			if( in_array( $title, self::$restrictedGroups ) && !$this->isUserAllowedAll() ){
 				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
 			} else {
 				$ret .= Xml::openElement( 'table' ) . "\n";
