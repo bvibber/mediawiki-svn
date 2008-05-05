@@ -12,7 +12,7 @@
 if (!defined('MEDIAWIKI'))
 	die('Not an entry point.');
 
-define('NEWUSERMESSAGE_VERSION','1.0.1, 2008-02-10');
+define('NEWUSERMESSAGE_VERSION','1.1, 2008-05-05');
 
 $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
 
@@ -28,6 +28,10 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:NewUserMessage',
 );
 
+// Set the username of the user that makes the edit on user talk pages. If
+// this user does not exist, the new user will show up as editing user.
+$wgNewUserMessageEditor = 'Admin';
+
 /*
  * Add the template message if the users talk page doesn't already exist
  */
@@ -38,8 +42,23 @@ function wfCreateNewUserMessage($user) {
 	$talk = $user->getTalkPage();
 
 	if (!$talk->exists()) {
+		global $wgUser, $wgNewUserMessageEditor;
+
 		$article = new Article($talk);
+
+		// Need to make the edit on the user talk page in another
+		// user's context. Park the current user object and create
+		// a user object for $wgNewUserMessageEditor. If that user
+		// does not exist, make the edit with as the new user
+		// anyway.
+		$parkedWgUser = $wgUser;
+		$wgUser = User::newFromName( $wgNewUserMessageEditor );
+		if ( !$wgUser->idForName() ) {
+			$wgUser = $parkedWgUser;
+		}
+
 		$article->doEdit('{'.'{'."$wgNewUserMessageTemplate|$name}}", false, EDIT_MINOR);
+		$wgUser = $parkedWgUser;
 	}
 
 	return true;
