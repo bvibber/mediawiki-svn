@@ -46,7 +46,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	$wgAutoloadClasses['Makebot'] = dirname( __FILE__ ) . '/Makebot.class.php';
 	$wgSpecialPages['Makebot'] = 'Makebot';
-	$wgSpecialPageGroups['Makebot'] = 'permissions';
+	$wgSpecialPageGroups['Makebot'] = 'users';
 
 	/**
 	 * Populate the message cache and set up the auditing
