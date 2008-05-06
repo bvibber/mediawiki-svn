@@ -64,7 +64,8 @@ $wgExtensionFunctions[] = "wfLuceneSearch";
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MWSearch',
-	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
 	'descriptionmsg' => 'mwsearch-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MWSearch',

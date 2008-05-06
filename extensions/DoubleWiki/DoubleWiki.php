@@ -27,7 +27,8 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'DoubleWiki',
 	'author' => 'ThomasV',
 	'url' => 'http://wikisource.org/wiki/Wikisource:DoubleWiki_Extension',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description'    => 'Displays a page and its translation from another wiki on two columns of the same page',
 	'descriptionmsg' => 'doublewiki-desc',
 );

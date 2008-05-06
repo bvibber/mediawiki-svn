@@ -13,7 +13,8 @@ ExtensionFunctions.php</a></tt>.</p>
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ExpandTemplates',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
 	'description'    => 'Expands templates, parser functions and variables to show expanded wikitext and preview rendered page',

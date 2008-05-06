@@ -23,7 +23,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'url'            => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
 		'description'    => 'Special page allows local bureaucrats to grant and revoke bot permissions',
 		'descriptionmsg' => 'makebot-desc',
-		'version'        => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	 );
 
 	/**

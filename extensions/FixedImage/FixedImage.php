@@ -36,7 +36,8 @@ $wgFixedImageHooks = array(
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'FixedImage',
 	'author'         => 'Brion Vibber',
-	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description'    => 'Just include an image',
 	'descriptionmsg' => 'fixedimage-desc',
 );

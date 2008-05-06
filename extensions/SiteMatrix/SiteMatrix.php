@@ -10,7 +10,8 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'SiteMatrix',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
 	'description'    => 'Displays a list of Wikimedia wikis',
 	'descriptionmsg' => 'sitematrix-desc',

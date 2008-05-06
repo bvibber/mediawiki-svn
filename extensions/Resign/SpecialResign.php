@@ -11,7 +11,8 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rotem Liss',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'name' => 'Resign',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
 	'description' => 'Gives users the ability to remove their permissions',

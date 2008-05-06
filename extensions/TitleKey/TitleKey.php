@@ -21,7 +21,8 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'TitleKey',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Brion Vibber',
 	'description' => 'Title prefix search suggestion backend',
 	'descriptionmsg' => 'titlekey-desc',

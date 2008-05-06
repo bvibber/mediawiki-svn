@@ -19,7 +19,8 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'News', 
 	'author' => 'Daniel Kinzler, brightbyte.de', 
 	'url' => 'http://mediawiki.org/wiki/Extension:News',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description' => 'shows customized recent changes on a wiki pages or as RSS or Atom feed',
 	'descriptionmsg' => 'newsextension-desc',
 );

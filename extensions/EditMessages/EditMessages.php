@@ -9,7 +9,8 @@
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Edit Messages',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditMessages',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Tim Starling',
 	'descriptionmsg' => 'editmessages-desc',
 );

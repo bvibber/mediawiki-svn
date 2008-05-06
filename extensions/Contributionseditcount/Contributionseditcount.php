@@ -15,7 +15,8 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfContributionseditcount';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description' => 'Displays an edit count on Special:Contributions',
 	'descriptionmsg' => 'contributionseditcount-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',

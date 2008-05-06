@@ -23,7 +23,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rob Church',
 	'description' => 'Special page used to wipe the OBJECTCACHE table',
 	'descriptionmsg' => 'purgecache-desc',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 );
 
 $dir = dirname(__FILE__) . '/';

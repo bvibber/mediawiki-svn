@@ -58,7 +58,8 @@ $oaiAuditDatabase = false;
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'OAIRepository',
 	'author'         => 'Brion Vibber',
-	'version'        => preg_replace( '/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$' ), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description'    => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
 	'descriptionmsg' => 'oai-desc',
 );

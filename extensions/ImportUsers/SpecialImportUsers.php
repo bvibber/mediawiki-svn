@@ -19,7 +19,8 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Import Users',
 	'author' => 'Yuriy Ilkiv, Rouslan Zenetl',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',
 	'description' => 'Imports users in bulk from CSV-file; encoding: UTF-8',
 	'descriptionmsg' => 'importusers-desc',

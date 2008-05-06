@@ -7,7 +7,8 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'CommentPages',
-	'version'        => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author'         => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
 	'description'    => 'Comment pages for the main namespace',
 	'descriptionmsg' => 'commentpages-desc',

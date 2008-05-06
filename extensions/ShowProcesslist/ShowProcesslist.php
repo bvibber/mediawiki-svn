@@ -9,7 +9,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ShowProcesslist',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Show_Process_List',
 	'author'         => 'Brion VIBBER',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description'    => 'Display the output of SHOW FULL PROCESSLIST',
 	'descriptionmsg' => 'showprocesslist-desc',
 );

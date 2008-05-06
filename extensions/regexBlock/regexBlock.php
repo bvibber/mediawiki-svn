@@ -20,7 +20,8 @@ if($wgContactLink == ''){
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regex Block',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Bartek',
 	'description' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks.',
 	'descriptionmsg' => 'regexblock-desc',

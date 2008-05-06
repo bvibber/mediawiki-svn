@@ -37,7 +37,8 @@ $wgMiniPreviewMaxTotal = 15; # Maximum number of categories and galleries shown
  */
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MiniPreview',
-	'version' => preg_replace('/^.* (\d\d\d\d-\d\d-\d\d) .*$/', '\1', '$LastChangedDate$'), #just the date of the last change
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MiniPreview',
 	'description' => 'MiniPreview displays, next to an image, small previews of other images in the same categories or displayed on the same pages',
