@@ -19,8 +19,10 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Add resign permission for every group set in the database
-foreach( User::getAllGroups() as $group ) {
-	$wgGroupPermissions[$group]['resign'] = true;
+foreach( $wgGroupPermissions as $key => $value ) {
+	if( !in_array( $key, $wgImplicitGroups ) ) {
+		$wgGroupPermissions[$key]['resign'] = true;
+	}
 }
 
 # Add log action
