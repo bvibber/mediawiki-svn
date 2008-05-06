@@ -778,14 +778,13 @@ textInterface.prototype = {
 			}
 		}
 		//js_log('do request on url:' + url);				
-		//$j('#mv_loading_icon').css('display','inline');
+		//$j('#mv_loading_icon').css('display','inline');			
 		do_request(url, function(data){
 			//js_log('wtf' + data.xml);
 			//js_log("load track data: "+ data.toString() );
 			//hide loading icon:
-			$j('#mv_loading_icon').css('display','none');						
+			$j('#mv_loading_icon').css('display','none');				
 			$j.each(data.getElementsByTagName('clip'), function(inx, n){
-				js_log('on clip '+ n.getAttribute('id'));
 				var text_clip = {
 					start:n.getAttribute('start').replace('ntp:', ''),
 					end:n.getAttribute('end').replace('ntp:', ''),
@@ -800,8 +799,7 @@ textInterface.prototype = {
 					}
 				});				
 				_this.add_merge_text_clip(text_clip);
-			});
-			//js_log('done with merge insert text clips');
+			});			
 			//done loading update availableTracks
 			_this.availableTracks[track_id].loaded=true;
 			_this.availableTracks[track_id].display=true;
@@ -837,29 +835,30 @@ textInterface.prototype = {
 		}		
 	},
 	show:function(){
-		js_log("show text interface");
+		//js_log("show text interface");
 		/*fade out cc*/
 		$j('#metaText_'+this.pe.id).fadeOut('fast');		
 		/*slide in intefrace container*/
 		if($j('#metaBox_'+this.pe.id).length==0){
 			//append it to body relative to offset of this.pe
 			var loc = $j(this.pe).position();
-			js_log('got loc');
 			js_log('top ' +loc.top + ' left:'+loc.left );
-			var append ='<div style="position:absolute;z-index: 5001;' +
+			var mvboxHTML ='<div style="position:absolute;z-index: 5001;' +
 						'top:'+(loc.top)+'px;' +
 						'left:'+(parseInt(loc.left)+parseInt(this.pe.width)+10)+'px;' +
 						'height:'+this.pe.height+'px;width:400px;' +
 						'background:white;border:solid black;" ' +
-					'id="metaBox_'+this.pe.id+'">' +
+						'id="metaBox_'+this.pe.id+'">' +
 					this.getMenu() +
 					this.getBody() + 
-					'</div>';
-			$j(this.pe).after(append);			
+						'</div>';
+			$j(this.pe).after(mvboxHTML);			
 			//$j('body').append();
 		}else{
+			//if($j('#metaBox_'+this.pe.id).css('display')!='none'){
 			$j('#metaBox_'+this.pe.id).fadeIn("fast");
-		}		
+			//}
+		}	
 	},	
 	close:function(){
 		//the meta box: 
@@ -1127,9 +1126,9 @@ embedVideo.prototype = {
 						_this['linkback'] = n.getAttribute('href');
 					}
 				});
-			}
-			//could not find default video tag in roe: report video missing
+			}			
 			if(!_this['src']){
+				//could not find default video src for playback
 				$j(_this).html(getMsg('missing_video_stream'));				
 			}else{
 				//js_log("do callback roe data:"+_this['roe_data']+' '+ _this['src'] +' '+ _this['thumbnail'] + 'cb: '+ callback);
@@ -1304,7 +1303,7 @@ embedVideo.prototype = {
 	  	//not to be displayed in stream interface. 
 	  	if(this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
-		     '<a title="text tracks" href="#" onClick="document.getElementById(\''+this.id+'\').showTextInterface();return false;">';
+		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:document.getElementById(\''+this.id+'\').showTextInterface();">';
 		    thumb_html+=getTransparentPng({id:'metaText_'+this.id, width:"40", height:"27", border:"0", 
 						src:mv_embed_path + 'images/cc_meta_sm.png' });
 			thumb_html+='</div>';    	
@@ -1409,7 +1408,6 @@ embedVideo.prototype = {
 		}
 		//show interface
 		this.textInterface.show();
-		//js_log('text interface should be show');
 	},
 	closeTextInterface:function(){
 		js_log('closeTextInterface '+ typeof this.textInterface);
@@ -1803,7 +1801,7 @@ function mv_addLoadEvent(func) {
 			//check if MV_embed path matches document.URL then we can use the local proxy: 
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
 				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);	
-				js_log("do ajax req:" +req_url);
+				//alert("do ajax req:" +req_url);
 				$j.ajax({
 					type: "POST",
 					url:mv_embed_path + 'mv_data_proxy.php',
@@ -1934,18 +1932,18 @@ if (typeof DOMParser == "undefined") {
 	function js_log(string){
 	  if( window.console ){
 	        console.log(string); 
-	   }else{   	 
+	  }else{   	 
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}
