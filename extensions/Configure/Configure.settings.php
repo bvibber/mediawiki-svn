@@ -73,7 +73,6 @@ $settings = array(
 			'wgMasterWaitTimeout' => 'int',
 			'wgSearchType' => 'text',
 			'wgSharedDB' => 'text',
-			'wgSharedDBtables' => 'array',
 			'wgSlaveLagCritical' => 'int',
 			'wgSlaveLagWarning' => 'int',
 			'wgExternalServers' => 'array',
@@ -692,7 +691,6 @@ $restricted = array(
 	'wgMasterWaitTimeout',
 	'wgSearchType',
 	'wgSharedDB',
-	'wgSharedDBtables',
 	'wgSlaveLagCritical',
 	'wgSlaveLagWarning',
 	'wgExternalServers',
@@ -777,7 +775,6 @@ $arrayDefs = array(
 	'wgLocalDatabases' => 'simple',
 	'wgLBFactoryConf' => 'array',
 	'wgExternalServers' => 'array',
-	'wgSharedDBtables' => 'simple',
 # Email
 	'wgSMTP' => 'assoc',
 	'wgUsersNotifedOnAllChanges' => 'simple',
@@ -1027,7 +1024,6 @@ $settingsVersion = array(
 	'wgHttpOnlyBlacklist' => array( array( '1.13alpha', '>=' ) ),
 	'wgSpecialPageGroups' => array( array( '1.13alpha', '>=' ) ),
 	'wgAllowImageMoving' => array( array( '1.13alpha', '>=' ) ),
-	'wgSharedDBtables' => array( array( '1.13alpha', '>=' ) ),
 	'wgAdvancedSearchHighlighting' => array( array( '1.13alpha', '>=' ) ),
 	'wgSearchHighlightBoundaries' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
