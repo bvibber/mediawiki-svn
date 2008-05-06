@@ -180,169 +180,189 @@ class DeletedContribsPager extends IndexPager {
 
 }
 
-/**
- * Special page "deleted user contributions".
- * Shows a list of the deleted contributions of a user.
- *
- * @return	none
- * @param	$par	String: (optional) user name of the user for which to show the contributions
- */
-function wfSpecialDeletedContributions( $par = null ) {
-	global $wgUser, $wgOut, $wgLang, $wgRequest;
-
-	$options = array();
-
-	if ( isset( $par ) ) {
-		$target = $par;
-	} else {
-		$target = $wgRequest->getVal( 'target' );
+class DeletedContributionsPage extends SpecialPage {
+	function __construct() {
+		parent::__construct( 'DeletedContributions', 'deletedhistory',
+		/*listed*/ true, /*function*/ false, /*file*/ false );
 	}
 
-	if ( !strlen( $target ) ) {
-		$wgOut->addHTML( deletedContributionsForm( '' ) );
-		return;
-	}
+	/**
+	 * Special page "deleted user contributions".
+	 * Shows a list of the deleted contributions of a user.
+	 *
+	 * @return	none
+	 * @param	$par	String: (optional) user name of the user for which to show the contributions
+	 */
+	function execute( $par ) {
+		global $wgUser;
+		wfLoadExtensionMessages( 'DeletedContributions' );
+		$this->setHeaders();
 
-	$options['limit'] = $wgRequest->getInt( 'limit', 50 );
-	$options['target'] = $target;
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
+			
+		global $wgUser, $wgOut, $wgLang, $wgRequest;
 
-	$nt = Title::makeTitleSafe( NS_USER, $target );
-	if ( !$nt ) {
-		$wgOut->addHTML( deletedContributionsForm( '' ) );
-		return;
-	}
-	$id = User::idFromName( $nt->getText() );
+		$options = array();
 
-	$target = $nt->getText();
-	$wgOut->setSubtitle( deletedContributionsSub( $nt, $id ) );
+		if ( isset( $par ) ) {
+			$target = $par;
+		} else {
+			$target = $wgRequest->getVal( 'target' );
+		}
 
-	if ( ( $ns = $wgRequest->getVal( 'namespace', null ) ) !== null && $ns !== '' ) {
-		$options['namespace'] = intval( $ns );
-	} else {
-		$options['namespace'] = '';
-	}
+		if ( !strlen( $target ) ) {
+			$wgOut->addHTML( $this->getForm( '' ) );
+			return;
+		}
 
-	$wgOut->addHTML( deletedContributionsForm( $options ) );
+		$options['limit'] = $wgRequest->getInt( 'limit', 50 );
+		$options['target'] = $target;
 
-	$pager = new DeletedContribsPager( $target, $options['namespace'] );
-	if ( !$pager->getNumRows() ) {
-		$wgOut->addWikiText( wfMsg( 'nocontribs' ) );
-		return;
-	}
+		$nt = Title::makeTitleSafe( NS_USER, $target );
+		if ( !$nt ) {
+			$wgOut->addHTML( $this->getForm( '' ) );
+			return;
+		}
+		$id = User::idFromName( $nt->getText() );
 
-	# Show a message about slave lag, if applicable
-	if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
-		$wgOut->showLagWarning( $lag );
+		$target = $nt->getText();
+		$wgOut->setSubtitle( $this->getSubTitle( $nt, $id ) );
 
-	$wgOut->addHTML(
-		'<p>' . $pager->getNavigationBar() . '</p>' .
-		$pager->getBody() .
-		'<p>' . $pager->getNavigationBar() . '</p>' );
+		if ( ( $ns = $wgRequest->getVal( 'namespace', null ) ) !== null && $ns !== '' ) {
+			$options['namespace'] = intval( $ns );
+		} else {
+			$options['namespace'] = '';
+		}
 
-	# If there were contributions, and it was a valid user or IP, show
-	# the appropriate "footer" message - WHOIS tools, etc.
-	if( $target != 'newbies' ) {
-		$message = IP::isIPAddress( $target )
-			? 'sp-contributions-footer-anon'
-			: 'sp-contributions-footer';
+		$wgOut->addHTML( $this->getForm( $options ) );
+
+		$pager = new DeletedContribsPager( $target, $options['namespace'] );
+		if ( !$pager->getNumRows() ) {
+			$wgOut->addWikiText( wfMsg( 'nocontribs' ) );
+			return;
+		}
+
+		# Show a message about slave lag, if applicable
+		if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
+			$wgOut->showLagWarning( $lag );
+
+		$wgOut->addHTML(
+			'<p>' . $pager->getNavigationBar() . '</p>' .
+			$pager->getBody() .
+			'<p>' . $pager->getNavigationBar() . '</p>' );
+
+		# If there were contributions, and it was a valid user or IP, show
+		# the appropriate "footer" message - WHOIS tools, etc.
+		if( $target != 'newbies' ) {
+			$message = IP::isIPAddress( $target )
+				? 'sp-contributions-footer-anon'
+				: 'sp-contributions-footer';
 
 
-		$text = wfMsg( $message, $target );
-		if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
-			$wgOut->addHtml( '<div class="mw-contributions-footer">' );
-			$wgOut->addWikiText( $text );
-			$wgOut->addHtml( '</div>' );
+			$text = wfMsg( $message, $target );
+			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
+				$wgOut->addHtml( '<div class="mw-contributions-footer">' );
+				$wgOut->addWikiText( $text );
+				$wgOut->addHtml( '</div>' );
+			}
 		}
 	}
-}
 
-/**
- * Generates the subheading with links
- * @param $nt @see Title object for the target
- */
-function deletedContributionsSub( $nt, $id ) {
-	global $wgSysopUserBans, $wgLang, $wgUser;
+	/**
+	 * Generates the subheading with links
+	 * @param $nt @see Title object for the target
+	 */
+	function getSubTitle( $nt, $id ) {
+		global $wgSysopUserBans, $wgLang, $wgUser;
 
-	$sk = $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 
-	if ( 0 == $id ) {
-		$user = $nt->getText();
-	} else {
-		$user = $sk->makeLinkObj( $nt, htmlspecialchars( $nt->getText() ) );
-	}
-	$talk = $nt->getTalkPage();
-	if( $talk ) {
-		# Talk page link
-		$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'talkpagelinktext' ) );
-		if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
-			# Block link
-			if( $wgUser->isAllowed( 'block' ) )
-				$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ), wfMsgHtml( 'blocklink' ) );
-			# Block log link
-			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'sp-contributions-blocklog' ), 'type=block&page=' . $nt->getPrefixedUrl() );
+		if ( 0 == $id ) {
+			$user = $nt->getText();
+		} else {
+			$user = $sk->makeLinkObj( $nt, htmlspecialchars( $nt->getText() ) );
 		}
-		# Other logs link
-		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
-		# Link to undeleted contributions
-		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ), wfMsgHtml( 'contributions' ) );
+		$talk = $nt->getTalkPage();
+		if( $talk ) {
+			# Talk page link
+			$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'talkpagelinktext' ) );
+			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
+				# Block link
+				if( $wgUser->isAllowed( 'block' ) )
+					$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ), 
+						wfMsgHtml( 'blocklink' ) );
+				# Block log link
+				$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), 
+					wfMsgHtml( 'sp-contributions-blocklog' ), 'type=block&page=' . $nt->getPrefixedUrl() );
+			}
+			# Other logs link
+			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), 
+				wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
+			# Link to undeleted contributions
+			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ), 
+				wfMsgHtml( 'contributions' ) );
 
-		$links = implode( ' | ', $tools );
-	}
-
-	// Old message 'contribsub' had one parameter, but that doesn't work for
-	// languages that want to put the "for" bit right after $user but before
-	// $links.  If 'contribsub' is around, use it for reverse compatibility,
-	// otherwise use 'contribsub2'.
-	if( wfEmptyMsg( 'contribsub', wfMsg( 'contribsub' ) ) ) {
-		return wfMsgHtml( 'contribsub2', $user, $links );
-	} else {
-		return wfMsgHtml( 'contribsub', "$user ($links)" );
-	}
-}
-
-/**
- * Generates the namespace selector form with hidden attributes.
- * @param $options Array: the options to be included.
- */
-function deletedContributionsForm( $options ) {
-	global $wgScript, $wgTitle, $wgRequest;
-
-	$options['title'] = $wgTitle->getPrefixedText();
-	if ( !isset( $options['target'] ) ) {
-		$options['target'] = '';
-	} else {
-		$options['target'] = str_replace( '_' , ' ' , $options['target'] );
-	}
-
-	if ( !isset( $options['namespace'] ) ) {
-		$options['namespace'] = '';
-	}
-
-	if ( !isset( $options['contribs'] ) ) {
-		$options['contribs'] = 'user';
-	}
-
-	if ( $options['contribs'] == 'newbie' ) {
-		$options['target'] = '';
-	}
-
-	$f = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
-
-	foreach ( $options as $name => $value ) {
-		if ( in_array( $name, array( 'namespace', 'target', 'contribs' ) ) ) {
-			continue;
+			$links = implode( ' | ', $tools );
 		}
-		$f .= "\t" . Xml::hidden( $name, $value ) . "\n";
+
+		// Old message 'contribsub' had one parameter, but that doesn't work for
+		// languages that want to put the "for" bit right after $user but before
+		// $links.  If 'contribsub' is around, use it for reverse compatibility,
+		// otherwise use 'contribsub2'.
+		if( wfEmptyMsg( 'contribsub', wfMsg( 'contribsub' ) ) ) {
+			return wfMsgHtml( 'contribsub2', $user, $links );
+		} else {
+			return wfMsgHtml( 'contribsub', "$user ($links)" );
+		}
 	}
 
-	$f .=  Xml::openElement( 'fieldset' ) .
-		Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
-		Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) .
-		Xml::input( 'target', 20, $options['target']) . ' '.
-		Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
-		Xml::namespaceSelector( $options['namespace'], '' ) .
-		Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
-		Xml::closeElement( 'fieldset' ) .
-		Xml::closeElement( 'form' );
-	return $f;
+	/**
+	 * Generates the namespace selector form with hidden attributes.
+	 * @param $options Array: the options to be included.
+	 */
+	function getForm( $options ) {
+		global $wgScript, $wgTitle, $wgRequest;
+
+		$options['title'] = $wgTitle->getPrefixedText();
+		if ( !isset( $options['target'] ) ) {
+			$options['target'] = '';
+		} else {
+			$options['target'] = str_replace( '_' , ' ' , $options['target'] );
+		}
+
+		if ( !isset( $options['namespace'] ) ) {
+			$options['namespace'] = '';
+		}
+
+		if ( !isset( $options['contribs'] ) ) {
+			$options['contribs'] = 'user';
+		}
+
+		if ( $options['contribs'] == 'newbie' ) {
+			$options['target'] = '';
+		}
+
+		$f = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
+
+		foreach ( $options as $name => $value ) {
+			if ( in_array( $name, array( 'namespace', 'target', 'contribs' ) ) ) {
+				continue;
+			}
+			$f .= "\t" . Xml::hidden( $name, $value ) . "\n";
+		}
+
+		$f .=  Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
+			Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) .
+			Xml::input( 'target', 20, $options['target']) . ' '.
+			Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
+			Xml::namespaceSelector( $options['namespace'], '' ) .
+			Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' );
+		return $f;
+	}
 }
