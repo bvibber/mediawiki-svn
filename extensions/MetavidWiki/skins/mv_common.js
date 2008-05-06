@@ -15,11 +15,9 @@ function add_adjust_hooks(mvd_id, track_dur, o){
 		$j(this).css('border','solid red');
  		do_video_time_update( $j('#mv_end_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	},out:function(){
-		//@@todo restore "undefined 
-		$j(this).get(0).style.border=null;
+		$j(this).css('border','none');
 		do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
-	}});	
-	
+	}});		
 	//add onchange js hooks: 
 	$j('.mv_adj_hr').change(function(){
 		//preserve track duration for nav and seq:

@@ -819,21 +819,15 @@ textInterface.prototype = {
 						text_clip.start + ' to ' +text_clip.end+
 					'</div>'+
 					text_clip.body + 
-			'</div>';
-						
-			if($j('#mmbody_'+this.pe.id).length==0)this.show();
-			
+			'</div>';						
+			if($j('#mmbody_'+this.pe.id).length==0)this.show();			
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
-				js_log('searching for insert point..');
 				if(!inserted){
 					js_log( ntp2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
 					if( ntp2seconds($j(this).attr('start')) > text_clip_start_time){
-						inserted=true;
-						
+						inserted=true;						
 						$j(this).before(insertHTML);
 					}
-				}else{
-					js_log('already inserted')
 				}
 			});
 			//js_log('should just append: '+insertHTML);
