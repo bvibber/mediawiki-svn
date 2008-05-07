@@ -296,11 +296,15 @@ class SpecialConfigure extends SpecialPage {
 					$all = array();
 					$iter = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 					if( $arrType == 'group-bool' ){
-						foreach( $this->getSettingValue( 'wgGroupPermissions' ) as $rights )
-							$all = array_merge( $all, array_keys( $rights ) );
-						$all = array_unique( $all );
+						if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
+							$all = User::getAllRights();
+						} else {
+							foreach( $this->getSettingValue( 'wgGroupPermissions' ) as $rights )
+								$all = array_merge( $all, array_keys( $rights ) );
+							$all = array_unique( $all );
+						}
 					} else {
-						if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
+						if( $this->isSettingAvailable( 'wgImplicitGroups' ) ) // 1.12 +
 							$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
 						else
 							$all = array_diff( $all, User::getImplicitGroups() );
@@ -512,7 +516,7 @@ class SpecialConfigure extends SpecialPage {
 	 */
 	protected function buildArrayInput( $conf, $default, $allowed ){
 		if( !isset( self::$arrayDefs[$conf] ) || self::$arrayDefs[$conf] == 'array' )
-			return $allowed ? '<span class="array">(array)</i>' : '<span class="array-disabled">(array)</span>';
+			return $allowed ? '<span class="array">(array)</span>' : '<span class="array-disabled">(array)</span>';
 		$type = self::$arrayDefs[$conf];
 		if( $type == 'simple' ){
 			if( !$allowed ){
@@ -659,16 +663,20 @@ class SpecialConfigure extends SpecialPage {
 			$all = array();
 			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
 			if( $type == 'group-bool' ){
-				foreach( $default as $rights )
-					$all = array_merge( $all, array_keys( $rights ) );
-				$all = array_unique( $all );
+				if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
+						$all = User::getAllRights();
+				} else {
+					foreach( $default as $rights )
+						$all = array_merge( $all, array_keys( $rights ) );
+					$all = array_unique( $all );
+				}
 				$iter = $default;
 			} else {
 				$all = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 				$iter = array();
 				foreach( $all as $group )
 					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
-				if( $this->isSettingAvailable( 'wgImplicitGroups' ) )
+				if( $this->isSettingAvailable( 'wgImplicitGroups' ) ) // 1.12 +
 					$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 				else
 					$all = array_diff( $all, User::getImplicitGroups() );
