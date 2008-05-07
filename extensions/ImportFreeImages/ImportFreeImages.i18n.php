@@ -26,6 +26,13 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'importfreeimages_owner' => 'Outeur',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

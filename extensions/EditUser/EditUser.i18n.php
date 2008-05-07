@@ -27,6 +27,14 @@ $messages['krl'] = array(
 	'edituser-dosearch' => 'Ečindy',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'edituser-username' => 'Naam',
+	'edituser-dosearch' => 'Soek',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -260,6 +268,8 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'edituser'          => 'Sunting Panganggo',
+	'edituser-username' => 'Jeneng',
 	'edituser-dosearch' => 'Golèk',
 );
 
@@ -279,6 +289,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'edituser-dosearch' => '찾기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'edituser-dosearch' => 'Sagap',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

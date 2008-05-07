@@ -33,6 +33,13 @@ $messages['krl'] = array(
 	'editmsg-search' => 'Ečindy',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'editmsg-search' => 'Soek',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -240,6 +247,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'editmsg-search' => '찾기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'editmsg-search' => 'Sagap',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

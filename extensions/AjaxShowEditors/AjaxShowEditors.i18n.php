@@ -18,10 +18,12 @@ $messages['en'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author SPQRobin
  */
 $messages['af'] = array(
-	'ajax-se-title' => 'Op dit moment besig om te wysig:',
+	'ajax-se-title'            => 'Op dit moment besig om te wysig:',
+	'ajax-se-pagedoesnotexist' => 'bladsy bestaan nie',
 );
 
 /** Arabic (العربية)

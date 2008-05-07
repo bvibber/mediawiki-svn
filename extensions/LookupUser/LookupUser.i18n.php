@@ -219,6 +219,7 @@ $messages['jv'] = array(
 	'lookupuser_not_authenticated' => 'durung dipastèkaké',
 	'lookupuser_id'                => 'ID panganggo: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'ora diwènèhaké',
 	'lookupuser_realname'          => 'Jeneng asli: $1',
 	'lookupuser_registration'      => 'Tanggal didaftar: $1',
 	'lookupuser_no_registration'   => 'ora direkam',

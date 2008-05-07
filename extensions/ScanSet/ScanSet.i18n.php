@@ -22,6 +22,13 @@ $messages['en'] = array(
 	'scanset_prev'                      => '&lt; Prev',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'scanset_next' => 'Volgende &gt;',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

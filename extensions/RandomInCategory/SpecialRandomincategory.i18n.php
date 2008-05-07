@@ -205,6 +205,14 @@ $messages['km'] = array(
 	'randomincategory-submit'     => 'ទៅ',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'randomincategory-label'  => 'Kategorya:',
+	'randomincategory-submit' => 'Agto',
+);
+
 /** Latin (Latina)
  * @author UV
  */

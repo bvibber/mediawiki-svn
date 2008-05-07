@@ -1099,6 +1099,13 @@ $messages['ko'] = array(
 	'ogg-stop'  => '정지',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'ogg-more' => 'Raku pa...',
+);
+
 $messages['la'] = array(
 	'ogg-more' => 'Plus...',
 );

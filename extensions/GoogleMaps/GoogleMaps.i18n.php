@@ -89,6 +89,25 @@ $wgGoogleMapsMessages['krl'] = array(
 	'gm-search'       => 'Ečindy',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$wgGoogleMapsMessages['af'] = array(
+	'gm-balloon-title'   => 'Titel:',
+	'gm-remove'          => 'skrap',
+	'gm-width'           => 'Wydte',
+	'gm-height'          => 'Hoogte',
+	'gm-large'           => 'Groot',
+	'gm-medium'          => 'Medium',
+	'gm-small'           => 'Klein',
+	'gm-no-zoom-control' => 'Geen',
+	'gm-yes'             => 'Ja',
+	'gm-no'              => 'Nee',
+	'gm-search'          => 'Soek',
+	'gm-save-path'       => 'Stoor',
+	'gm-line-width'      => 'Wydte',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
@@ -1311,6 +1330,13 @@ $wgGoogleMapsMessages['km'] = array(
  */
 $wgGoogleMapsMessages['ko'] = array(
 	'gm-search' => '찾기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['krj'] = array(
+	'gm-search' => 'Sagap',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

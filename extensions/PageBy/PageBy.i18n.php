@@ -165,8 +165,9 @@ $messages['it'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'pageby-first' => 'Kaca digawé déning $1, $2',
-	'pageby-anon'  => '<i>anonim</i>',
+	'pageby-first'        => 'Kaca digawé déning $1, $2',
+	'pageby-contributors' => 'Para kontributor:',
+	'pageby-anon'         => '<i>anonim</i>',
 );
 
 /** Khmer (ភាសាខ្មែរ)

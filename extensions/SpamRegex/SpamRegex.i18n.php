@@ -232,6 +232,7 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'spamregex'             => 'SpamRegex',
 	'spamregex-text'        => '(Tèks)',
 	'spamregex-summary-log' => '(Ringkesan)',
 );

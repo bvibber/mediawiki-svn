@@ -60,6 +60,13 @@ $messages['hsb'] = array(
 	'signaturelogentry'    => 'je dokument $1 podpisał',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'signaturelogentry' => 'napak tangani dokumèn $1',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran
@@ -83,9 +90,10 @@ $messages['lb'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'signaturelogpage'  => 'सही नोंद',
-	'signature-desc'    => 'डक्यूमेंटवर [[Special:SignDocument|सही]] करण्याची परवानगी देतो',
-	'signaturelogentry' => '$ डक्यूमेंट वर सही केली',
+	'signaturelogpage'     => 'सही नोंद',
+	'signature-desc'       => 'डक्यूमेंटवर [[Special:SignDocument|सही]] करण्याची परवानगी देतो',
+	'signaturelogpagetext' => '[[Special:SignDocument]] वापरून डॉक्यूमेंटमध्ये वाढविलेल्या सर्व सह्यांची ही सूची आहे.',
+	'signaturelogentry'    => '$ डक्यूमेंट वर सही केली',
 );
 
 /** Dutch (Nederlands)

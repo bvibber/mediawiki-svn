@@ -208,6 +208,13 @@ $messages['hi'] = array(
 	'disabledusers-summary'            => 'यह ऐसे सदस्योंकी सूची हैं जिनके खाते PasswordReset का इस्तेमाल करके बंद कर दिये गये हैं।',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'passwordreset-username' => 'Ngalan sang Manog-gamit',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -272,8 +279,10 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'passwordreset-username' => 'Jeneng panganggo',
-	'passwordreset-newpass'  => 'Tembung sandhi anyar',
+	'passwordreset-username'    => 'Jeneng panganggo',
+	'passwordreset-newpass'     => 'Tembung sandhi anyar',
+	'passwordreset-confirmpass' => 'Konfirmasi tembung sandhi',
+	'passwordreset-submit'      => 'Reset tembung sandhi',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -26,6 +26,14 @@ $messages['en'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'dt_xml_name'  => 'Naam',
+	'dt_xml_title' => 'Titel',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -261,6 +269,7 @@ $messages['jv'] = array(
 	'dt_xml_page'                 => 'Kaca',
 	'dt_xml_name'                 => 'Jeneng',
 	'dt_xml_title'                => 'Irah-irahan (judhul)',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Tèks Bébas',
 );
 
@@ -279,6 +288,14 @@ $messages['km'] = array(
 	'dt_xml_title'                => 'ចំណងជើង',
 	'dt_xml_id'                   => 'អត្តសញ្ញាណ',
 	'dt_xml_freetext'             => 'អត្ថបទសេរី',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'dt_viewxml_categories' => 'Manga Kategorya',
+	'dt_xml_page'           => 'Pahina',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

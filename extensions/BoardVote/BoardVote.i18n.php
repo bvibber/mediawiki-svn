@@ -2420,6 +2420,13 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៧',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'boardvote_submit' => 'OK dun',
+);
+
 $messages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]

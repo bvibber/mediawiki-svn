@@ -43,6 +43,13 @@ Click the button below to subscribe.',
 	'right-povwatch_user'              => 'Add pages to watchlists of other users',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'povwatch_title' => 'Titel:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -298,6 +305,7 @@ $messages['jv'] = array(
 	'povwatch_unknown_subpage' => 'Subkaca ora dimangertèni',
 	'povwatch_push'            => 'Surung',
 	'povwatch_title'           => 'Irah-irahan (judhul):',
+	'povwatch_no_log'          => 'Ora ana èntri-èntri log',
 	'povwatch_unsubscribe'     => 'Batal langganan',
 	'povwatch_subscribe'       => 'Langganan',
 	'povwatch_added'           => 'ditambah',
@@ -427,6 +435,8 @@ $messages['mr'] = array(
 सदस्यत्व घेण्यासाठी खालील कळीवर टिचकी मारा.',
 	'povwatch_subscribe'               => 'सदस्यत्व घ्या',
 	'povwatch_added'                   => 'वाढविले',
+	'right-povwatch_admin'             => 'इतर सदस्यांच्या पहार्‍याच्या सूची मध्ये पाने वाढविण्यासाठी आवश्यक अशा सदस्य अधिकारांचे प्रबंधन करा',
+	'right-povwatch_user'              => 'इतर सदस्यांच्या पहार्‍याच्या सूचीत पाने वाढवा',
 );
 
 /** Dutch (Nederlands)

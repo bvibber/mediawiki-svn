@@ -157,6 +157,14 @@ $messages['lb'] = array(
 	'seealso' => 'Kuckt och',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'seealso'      => 'Zuug ouch',
+	'seealso-desc' => "Gelokalisieërdje köpkes 'Zuug ouch' mitte tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */

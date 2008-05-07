@@ -151,6 +151,8 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'minipreview-files_in_category'   => 'Gunggungé ana $1 berkas ing kategori iki.',
+	'minipreview-files_in_gallery'    => 'gunggungé ana $1 berkas ing galeri iki.',
 	'minipreview-no_category_gallery' => 'Ora ana kategori utawa galeri!',
 );
 

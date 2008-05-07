@@ -45,6 +45,13 @@ $messages['fr'] = array(
 	'absenteelandlord-desc'   => 'Vérouille automatiquement la base de données si tous les administrateurs sont inactifs depuis un certain temps',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'absenteelandlord-reason' => 'A base de datos foi fechada automaticamente debido á inactividade por parte dos administradores.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -67,6 +74,22 @@ $messages['jv'] = array(
 $messages['lb'] = array(
 	'absenteelandlord-reason' => "D'Datebank gouf automatesch gespaart well d'Administratueren net aktiv sinn.",
 	'absenteelandlord-desc'   => "Spärt d'Databank vn dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'absenteelandlord-reason' => 'De database is automatisch aafgeslaote waenges inactiviteit vanne behieërders.',
+	'absenteelandlord-desc'   => "Sluut de database automatisch wen de behieërders allemaol gedurendje 'ne bepaoldje tied inactief zeen",
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'absenteelandlord-reason' => 'प्रबंधकांकडून कार्ये न झाल्यामुळे विदागाराला आपोआप कुलुप लावण्यात आलेले आहे.',
+	'absenteelandlord-desc'   => 'प्रबंधकांकडून काही काळासाठी कुठलीही क्रिया न झाल्यान विदागाराला आपोआप कुलुप घालतो',
 );
 
 /** Dutch (Nederlands)

@@ -164,6 +164,7 @@ $messages['jv'] = array(
 	'profiling-ok'           => 'OK',
 	'profiling-data-process' => 'Prosès',
 	'profiling-data-count'   => 'Cacah',
+	'profiling-no-data'      => 'Ora ditemokaké data sing cocog.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -171,6 +172,13 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'profiling-ok' => 'យល់ព្រម',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'profiling-ok' => 'OK dun',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

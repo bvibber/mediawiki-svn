@@ -244,6 +244,15 @@ $messages['krl'] = array(
 	'mv_edit'        => 'Muokkaus',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'mv_tool_search' => 'Soek',
+	'mv_remove'      => 'skrap',
+	'mv_search_and'  => 'en',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Siebrand
@@ -1195,7 +1204,9 @@ $messages['jbo'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'metavid'                => 'Kaca Metavid',
 	'mv_ogg_high_quality'    => 'Kwalitas dhuwur - Ogg Theora 900kbs',
+	'mvexportsearch'         => 'Èkspor Metavid',
 	'mv_duration_label'      => 'durasi',
 	'mv_save_changes'        => 'Simpen owah-owahan',
 	'mv_remove_reason'       => 'Alesan mbusak:',
@@ -1204,11 +1215,17 @@ $messages['jv'] = array(
 	'mv_tool_search'         => 'Golèk',
 	'mv_tool_navigate'       => 'Navigasi',
 	'mv_tool_export'         => 'Èkspor',
+	'ht_en'                  => 'Transkripsi',
+	'anno_en'                => 'Anotasi lan Kategori',
+	'thomas_en'              => 'Transkripsi resmi',
 	'mv_play'                => 'Main',
 	'mv_edit'                => 'Sunting',
 	'mv_history'             => 'Sajarah',
 	'mv_edit_title'          => 'Sunting tèks',
 	'mv_remove'              => 'busak',
+	'mv_adjust'              => 'setèl',
+	'mv_start_desc'          => 'Wektu wiwitan',
+	'mv_end_desc'            => 'Wektu akir',
 	'mv_add_filter'          => 'Tambahna filter',
 	'mv_search_match'        => 'Golèk tèks',
 	'mv_search_spoken_by'    => 'Diwicarakaké déning',
@@ -1217,6 +1234,8 @@ $messages['jv'] = array(
 	'mv_search_and'          => 'lan',
 	'mv_search_or'           => 'utawa',
 	'mv_search_not'          => 'ora',
+	'mv_match'               => 'cocog',
+	'mv_spoken_by'           => 'diwicarakaké déning',
 	'mv_category'            => 'kategori',
 	'mv_remove_filter'       => 'ilangana filter',
 );
@@ -1263,6 +1282,17 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'mv_tool_search' => '찾기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'mv_tool_search'     => 'Sagap',
+	'mv_edit'            => 'Iislan',
+	'mv_history'         => 'Kasaysayan',
+	'mv_search_category' => 'Kategorya',
+	'mv_category'        => 'kategorya',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

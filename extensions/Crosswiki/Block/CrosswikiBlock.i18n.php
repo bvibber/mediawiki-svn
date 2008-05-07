@@ -54,6 +54,14 @@ Return to:
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'crosswikiblock-reason'   => 'Rede:',
+	'crosswikiunblock-reason' => 'Rede:',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

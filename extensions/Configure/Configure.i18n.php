@@ -80,6 +80,14 @@ Please create it or change it to use this extension.',
 	'right-configure-all'              => "Configure all wiki's settings",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'configure-desc-val'       => 'Waarde',
+	'configure-section-search' => 'Soek',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -524,6 +532,7 @@ $messages['hi'] = array(
  * @author Jose77
  */
 $messages['hil'] = array(
+	'configure-section-email'        => 'E-mail',
 	'configure-section-specialpages' => 'Pinasahi nga mga panid',
 );
 
@@ -532,11 +541,15 @@ $messages['hil'] = array(
  */
 $messages['jv'] = array(
 	'configure'                       => 'Konfigurasi wiki iki',
+	'configure-desc-key'              => 'Kunci',
+	'configure-desc-val'              => 'Bijih',
 	'configure-btn-save'              => 'Simpen setting',
+	'configure-edit-old'              => 'Pènget: panjenengan nyunting vèrsi <strong>lawas</strong> konfigurasi.',
 	'configure-error'                 => 'Konfigurasiné ora bisa disimpen',
 	'configure-saved'                 => 'Konfigurasiné wis disimpen',
 	'configure-section-general'       => 'Sètting umum',
 	'configure-section-db'            => 'Basis data',
+	'configure-section-db-notallowed' => 'Panjenengan ora pareng ngowahi sètting basis data.',
 	'configure-section-email'         => 'E-mail',
 	'configure-section-enotif'        => 'Notifikasi e-mail',
 	'configure-section-localization'  => 'Lokalisasi',
@@ -574,6 +587,15 @@ $messages['km'] = array(
 	'configure-section-specialpages'  => 'ទំព័រពិសេសៗ',
 	'configure-section-recentchanges' => 'បំលាស់ប្ដូរថ្មីៗ',
 	'configure-section-copyright'     => 'រក្សាសិទ្ឋ',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'configure-section-email'        => 'E-mail',
+	'configure-section-category'     => 'Manga Kategorya',
+	'configure-section-specialpages' => 'Manga espesyal nga pahina',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -649,6 +671,10 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'configure'                        => 'विकि कॉन्फिगर करा',
 	'configure-desc'                   => 'वेब वर आधारित इंटरफेस वापरून नोंदणी केलेल्या सदस्यांना विकि कॉन्फिगर करण्याची परवानगी द्या',
+	'configure-desc-group'             => 'गट',
+	'configure-desc-key'               => 'चावी',
+	'configure-desc-ns'                => 'नामविश्वे',
+	'configure-desc-val'               => 'किंमत',
 	'configure-summary'                => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
 	'configure-btn-save'               => 'सेटिंग्स जतन करा',
 	'configure-directory-not-writable' => 'सेटिंग साठविण्यात येणार्‍या <tt>$1</tt> धारिके मध्ये लिहू शकत नाही.
@@ -700,6 +726,7 @@ $messages['mr'] = array(
 	'configure-section-feed'           => 'फीड',
 	'configure-section-job'            => 'कार्ये',
 	'configure-section-extension'      => 'विस्तारकक्ष',
+	'configure-section-search'         => 'शोध',
 	'configure-section-copyright'      => 'प्रताधिकारीत',
 	'configure-section-htcp'           => 'HTCP मल्टीकास्ट',
 	'configure-section-misc'           => 'मिसलेनियस',
@@ -715,6 +742,10 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'configure'                        => 'Wiki-instellingen',
 	'configure-desc'                   => 'Alleen gebruikers met de juiste rechten kunnen instellingen voor de wiki maken',
+	'configure-desc-group'             => 'Groepen',
+	'configure-desc-key'               => 'Sleutel',
+	'configure-desc-ns'                => 'Naamruimten',
+	'configure-desc-val'               => 'Waarde',
 	'configure-summary'                => 'Via deze special pagina kunt u instellingen maken voor deze wiki. Zie [http://www.mediawiki.org/wiki/Manual:Configuration_settings Instellingen] voor meer informatie.',
 	'configure-btn-save'               => 'Instellingen opslaan',
 	'configure-directory-not-writable' => 'In de map waarin de instellingen worden opgeslagen, <tt>$1</tt>, kan niet geschreven worden.
@@ -1076,6 +1107,10 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'configure'                        => 'Konfigurácia wiki',
 	'configure-desc'                   => 'Umožňuje oprávneným používateľom konfigurovať wiki prostredníctvom webového rozhrania',
+	'configure-desc-group'             => 'Skupiny',
+	'configure-desc-key'               => 'Kľúč',
+	'configure-desc-ns'                => 'Menné priestory',
+	'configure-desc-val'               => 'Hodnota',
 	'configure-summary'                => 'Táto špeciálna stránka vám umožňuje konfiguráciu tejto wiki. Ďalšie informácie nájdete na stránke[http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavenie konfigurácie].',
 	'configure-btn-save'               => 'Uložiť nastavenia',
 	'configure-directory-not-writable' => 'Do tohto adresára, ktorý sa používa na ukladanie nastavení, <tt>$1</tt>, nie je možné zapisovať. Prosím, umožnite PHP zápis doňho, aby ste mohli používať toto rozšírenie.',
@@ -1178,6 +1213,10 @@ $messages['sr-ec'] = array(
 $messages['sv'] = array(
 	'configure'                        => 'Konfigurera wikin',
 	'configure-desc'                   => 'Låter användare med viss behörighet ändra wikins konfigurering genom ett nätbaserat gränssnitt',
+	'configure-desc-group'             => 'Grupper',
+	'configure-desc-key'               => 'Nyckel',
+	'configure-desc-ns'                => 'Namnrymder',
+	'configure-desc-val'               => 'Värde',
 	'configure-summary'                => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',
 	'configure-btn-save'               => 'Spara inställningar',
 	'configure-directory-not-writable' => 'Registret används till att lagra inställningarna, <tt>$1</tt>, är inte skrivbar.

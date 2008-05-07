@@ -25,6 +25,13 @@ $messages['en'] = array(
 	'restriction-level-author' => 'Author-protected',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'authorprotect-reason' => 'Rede',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

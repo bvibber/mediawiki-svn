@@ -567,6 +567,13 @@ $messages['hi'] = array(
 	'sign-review-comment'          => 'टिप्पणी',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'sign-viewfield-email' => 'E-mail',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Siebrand
@@ -679,7 +686,10 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'signdocument'                    => 'Tapak tangani Dokumèn',
+	'sign-nodocselected'              => 'Mangga milih dokumèn sing kepéngin panjenengan tapa tangani.',
 	'sign-selectdoc'                  => 'Dokumèn:',
+	'sign-error-nosuchdoc'            => 'Dokumèn sing panjenengan suwun iku ora ana.',
 	'sign-realname'                   => 'Jeneng:',
 	'sign-address'                    => 'Dalan:',
 	'sign-city'                       => 'Kutha:',
@@ -698,6 +708,7 @@ $messages['jv'] = array(
 	'sign-list-hideemail'             => 'Aja nuduhaké e-mail',
 	'sign-submit'                     => 'Napak astani dokumèn',
 	'sig-success'                     => 'Panjenengan bisa sacara suksès napak tangani dokumèn.',
+	'sign-view-selectfields'          => '<b>Lapangan-lapangan sing dituduhaké:</b>',
 	'sign-viewfield-realname'         => 'Jeneng',
 	'sign-viewfield-address'          => 'Alamat',
 	'sign-viewfield-city'             => 'Kutha',
@@ -710,9 +721,14 @@ $messages['jv'] = array(
 	'sign-viewfield-email'            => 'E-mail',
 	'sign-viewfield-age'              => 'Umur',
 	'sign-viewfield-options'          => 'Opsi:',
+	'sign-sigadmin-close'             => 'Patènana fitur tapak tangan',
+	'sign-sigadmin-open'              => 'Uripna fitur tapak tangan',
+	'sign-sigadmin-closesuccess'      => 'Fitur tapak tangan bisa dipatèni sacara suksès.',
+	'sign-sigadmin-opensuccess'       => 'Fitur tapak tangan bisa diuripaké sacara suksès.',
 	'sign-closed'                     => 'ditutup',
 	'sig-anonymous'                   => '<i>Anonim</i>',
 	'sig-private'                     => '<i>Pribadi</i>',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewcomment'    => 'Komentar',
 	'sign-detail-uniquequery'         => 'Èntitas sing mèmper',
 	'sign-detail-uniquequery-run'     => 'Lakokna kwéri',
@@ -759,6 +775,13 @@ $messages['km'] = array(
 	'sign-uniquequery-similaraddress' => 'អាសយដ្ឋានស្រដៀងគ្នា',
 	'sign-uniquequery-similarphone'   => 'ទូរស័ព្ទ ស្រដៀង',
 	'sign-uniquequery-similaremail'   => 'អ៊ីមែលស្រដៀងគ្នា',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'sign-viewfield-email' => 'E-mail',
 );
 
 $messages['la'] = array(
@@ -841,51 +864,70 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'signdocument'                  => 'डक्यूमेंट वर सही करा',
-	'sign-nodocselected'            => 'तुम्ही सही करू इच्छित असलेले डक्यूमेंट निवडा.',
-	'sign-selectdoc'                => 'डक्यूमेंट:',
-	'sign-error-nosuchdoc'          => 'मागितलेले डक्यूमेंट ($1) अस्तित्वात नाही',
-	'sign-realname'                 => 'नाव:',
-	'sign-address'                  => 'रस्ता पत्ता:',
-	'sign-city'                     => 'शहर:',
-	'sign-state'                    => 'राज्य:',
-	'sign-zip'                      => 'झिप कोड:',
-	'sign-country'                  => 'देश:',
-	'sign-phone'                    => 'दूरध्वनी क्रमांक:',
-	'sign-bday'                     => 'वय:',
-	'sign-email'                    => 'इ-मेल पत्ता:',
-	'sign-list-anonymous'           => 'अनामिक म्हणून नोंद करा',
-	'sign-list-hideaddress'         => 'पत्त्याची नोंद करू नका',
-	'sign-list-hideextaddress'      => 'शहर, राज्य, झिप व देश यांची नोंद करू नका',
-	'sign-list-hidephone'           => 'दूरध्वनी क्रमांकाची नोंद करू नका',
-	'sign-list-hidebday'            => 'वयाची नोंद करू नका',
-	'sign-list-hideemail'           => 'इ-मेल ची नोंद करू नका',
-	'sign-submit'                   => 'डक्यूमेंट वर सही करा',
-	'sign-view-selectfields'        => '<b>हे रकाने दाखवा:</b>',
-	'sign-viewfield-entryid'        => 'नोंद क्र',
-	'sign-viewfield-timestamp'      => 'वेळशिक्का',
-	'sign-viewfield-realname'       => 'नाव',
-	'sign-viewfield-address'        => 'पत्ता',
-	'sign-viewfield-city'           => 'शहर',
-	'sign-viewfield-state'          => 'राज्य',
-	'sign-viewfield-country'        => 'देश',
-	'sign-viewfield-zip'            => 'झीप(पीन)',
-	'sign-viewfield-ip'             => 'आयपी अंकपत्ता:',
-	'sign-viewfield-agent'          => 'सदस्य एजंट',
-	'sign-viewfield-phone'          => 'दूरध्वनी',
-	'sign-viewfield-email'          => 'विपत्र',
-	'sign-viewfield-age'            => 'वय',
-	'sign-viewfield-options'        => 'विकल्प',
-	'sign-sigadmin-close'           => 'सही करण्यावर बंदी घाला',
-	'sign-sigadmin-open'            => 'सही करण्याची परवानगी द्या',
-	'sign-signatures'               => 'सह्या',
-	'sign-viewsignatures'           => 'सह्या पहा',
-	'sign-closed'                   => 'बंद केलेले',
-	'sig-anonymous'                 => '<i>अनामिक</i>',
-	'sig-private'                   => '<i>खाजगी</i>',
-	'sign-sigdetails'               => 'सही माहिती',
-	'sign-emailto'                  => '<a href="mailto:$1">$1</a>',
-	'sign-iptools'                  => '<span class="plainlinksneverexpand"><!--
+	'signdocument'                    => 'डक्यूमेंट वर सही करा',
+	'sign-nodocselected'              => 'तुम्ही सही करू इच्छित असलेले डक्यूमेंट निवडा.',
+	'sign-selectdoc'                  => 'डक्यूमेंट:',
+	'sign-docheader'                  => '<div class="noarticletext">खाली दाखविलेल्या डॉक्यूमेंट "[[$1]]" वर सही करण्यासाठी हा अर्ज वापरा.
+कृपया संपूर्ण डॉक्यूमेंट वाचा, व जर तुम्ही त्यामधील मजकूराशी सहमत असाल, तर कृपया योग्य ते रकाने भरून सही करा.</div>',
+	'sign-error-nosuchdoc'            => 'मागितलेले डक्यूमेंट ($1) अस्तित्वात नाही',
+	'sign-realname'                   => 'नाव:',
+	'sign-address'                    => 'रस्ता पत्ता:',
+	'sign-city'                       => 'शहर:',
+	'sign-state'                      => 'राज्य:',
+	'sign-zip'                        => 'झिप कोड:',
+	'sign-country'                    => 'देश:',
+	'sign-phone'                      => 'दूरध्वनी क्रमांक:',
+	'sign-bday'                       => 'वय:',
+	'sign-email'                      => 'इ-मेल पत्ता:',
+	'sign-indicates-req'              => '<small><i><font color="red">*</font> आवश्यक रकाने दर्शवितो.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> सूचना: प्रबंधकांना यादीत नसलेली माहिती सुद्धा पाहता येईल.</i></small>',
+	'sign-list-anonymous'             => 'अनामिक म्हणून नोंद करा',
+	'sign-list-hideaddress'           => 'पत्त्याची नोंद करू नका',
+	'sign-list-hideextaddress'        => 'शहर, राज्य, झिप व देश यांची नोंद करू नका',
+	'sign-list-hidephone'             => 'दूरध्वनी क्रमांकाची नोंद करू नका',
+	'sign-list-hidebday'              => 'वयाची नोंद करू नका',
+	'sign-list-hideemail'             => 'इ-मेल ची नोंद करू नका',
+	'sign-submit'                     => 'डक्यूमेंट वर सही करा',
+	'sign-information'                => '<div class="noarticletext">हे डॉक्यूमेंट वाचण्यासाठी वेळ काढल्याबद्दल धन्यवाद.
+जर तुम्ही त्याच्याशी सहमत असाल, तर खालील योग्यते रकाने भरून व "डॉक्यूमेंट वर सही करा" या कळीवर टिचकी देऊन तुमची सहमती द्या.
+कृपया तपासून पहा की तुमची वैयक्तिक माहिती खरी आहे व तुमच्याशी संपर्क करण्याचे काहीतरी माध्यम उपलब्ध आहे.
+कृपया लक्षात असू द्या की तुमचा आयपी अंकपत्ता व इतर माहिती या अर्जासमवेत नोंदली जाईल. ज्यामुळे प्रबंधकांना परत परत केलेल्या सह्या वगळता येतील व तुमची माहिती तपासून पाहता येईल.
+उघड्या व अनामिक प्रॉक्सींमध्ये हे कार्य करणे शक्य होत नाही त्यामुळे अशा प्रॉक्सी वापरून केलेल्या सह्या ग्राह्य धरल्या जाणार नाहीत.
+जर तुम्ही प्रॉक्सी वापरत असाल तर कृपया दुसर्‍या कनेक्शन मधून सही करा.</div>
+
+$1',
+	'sig-success'                     => 'तुम्ही यशस्वीरित्या डॉक्यूमेंटवर सही केलेली आहे.',
+	'sign-view-selectfields'          => '<b>हे रकाने दाखवा:</b>',
+	'sign-viewfield-entryid'          => 'नोंद क्र',
+	'sign-viewfield-timestamp'        => 'वेळशिक्का',
+	'sign-viewfield-realname'         => 'नाव',
+	'sign-viewfield-address'          => 'पत्ता',
+	'sign-viewfield-city'             => 'शहर',
+	'sign-viewfield-state'            => 'राज्य',
+	'sign-viewfield-country'          => 'देश',
+	'sign-viewfield-zip'              => 'झीप(पीन)',
+	'sign-viewfield-ip'               => 'आयपी अंकपत्ता:',
+	'sign-viewfield-agent'            => 'सदस्य एजंट',
+	'sign-viewfield-phone'            => 'दूरध्वनी',
+	'sign-viewfield-email'            => 'विपत्र',
+	'sign-viewfield-age'              => 'वय',
+	'sign-viewfield-options'          => 'विकल्प',
+	'sign-viewsigs-intro'             => 'खाली <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span> साठी नोंदल्या गेलेल्या सह्या दर्शविल्या आहेत.',
+	'sign-sigadmin-currentlyopen'     => 'या डॉक्यूमेंटवर सही करता येऊ शकते.',
+	'sign-sigadmin-close'             => 'सही करण्यावर बंदी घाला',
+	'sign-sigadmin-currentlyclosed'   => 'या डॉक्यूमेंटवर सध्या सही करता येत नाही.',
+	'sign-sigadmin-open'              => 'सही करण्याची परवानगी द्या',
+	'sign-signatures'                 => 'सह्या',
+	'sign-sigadmin-closesuccess'      => 'सही करणे बंद केले.',
+	'sign-sigadmin-opensuccess'       => 'सही करणे सुरू केले.',
+	'sign-viewsignatures'             => 'सह्या पहा',
+	'sign-closed'                     => 'बंद केलेले',
+	'sign-error-closed'               => 'या डॉक्यूमेंटवर सध्या सही करता येत नाही.',
+	'sig-anonymous'                   => '<i>अनामिक</i>',
+	'sig-private'                     => '<i>खाजगी</i>',
+	'sign-sigdetails'                 => 'सही माहिती',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|चर्चा]] • <!--
 -->[[Special:Contributions/$1|योगदान]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
@@ -895,10 +937,20 @@ $messages['mr'] = array(
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ब्लक नोंदी] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} आयपी तपासा])<!--
 --></span>',
-	'sign-viewfield-reviewcomment'  => 'शेरा',
-	'sign-detail-uniquequery-run'   => 'पृच्छा चालवा',
-	'sign-review-comment'           => 'शेरा',
-	'sign-uniquequery-similaremail' => 'तसलेच विपत्र',
+	'sign-viewfield-stricken'         => 'स्ट्राईकन',
+	'sign-viewfield-reviewedby'       => 'तपासनीस',
+	'sign-viewfield-reviewcomment'    => 'शेरा',
+	'sign-detail-uniquequery'         => 'सारख्या एन्टिटीज',
+	'sign-detail-uniquequery-run'     => 'पृच्छा चालवा',
+	'sign-detail-strike'              => 'सही ठोका',
+	'sign-reviewsig'                  => 'सही पुन्हा तपासा',
+	'sign-review-comment'             => 'शेरा',
+	'sign-submitreview'               => 'अहवाल पाठवा',
+	'sign-uniquequery-similarname'    => 'सारखे नाव',
+	'sign-uniquequery-similaraddress' => 'सारखा पत्ता',
+	'sign-uniquequery-similarphone'   => 'सारखा दूरध्वनी',
+	'sign-uniquequery-similaremail'   => 'तसलेच विपत्र',
+	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ने [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] वर सही केली.',
 );
 
 /** Dutch (Nederlands)

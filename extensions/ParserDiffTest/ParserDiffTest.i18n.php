@@ -545,6 +545,13 @@ $messages['ko'] = array(
 	'pdt_comparing_page'  => '[[$1]]에서 출력 비교',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'pdtest_ok' => 'OK dun',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

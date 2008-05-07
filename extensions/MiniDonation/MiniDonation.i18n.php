@@ -99,6 +99,13 @@ $messages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'donationform-submit' => 'Donasi liwat PayPal',
+);
+
 $messages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );

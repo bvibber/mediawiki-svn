@@ -309,7 +309,9 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'createsigndocument'              => 'Uripna Panapak-tanganan Dokumèn',
 	'createsigndoc-pagename'          => 'Kaca:',
+	'createsigndoc-allowedgroup'      => 'Grup sing diparengaké:',
 	'createsigndoc-email'             => 'Alamat e-mail:',
 	'createsigndoc-address'           => 'Alamat omah:',
 	'createsigndoc-extaddress'        => 'Kutha, Negara bagéyan, Negara:',
@@ -344,6 +346,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'createsigndoc-create' => '만들기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'createsigndoc-pagename' => 'Pahina:',
 );
 
 $messages['la'] = array(
@@ -383,16 +392,34 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
-	'createsigndoc-pagename' => 'पान',
-	'createsigndoc-phone'    => 'दूरध्वनी क्रमांक',
-	'createsigndoc-bday'     => 'जन्मदिवस',
-	'createsigndoc-hidden'   => 'लपविलेले',
-	'createsigndoc-optional' => 'पर्यायी',
-	'createsigndoc-create'   => 'निर्मीतकरा',
+	'createsigndocument'                 => 'डॉक्यूमेंटवर सही करणे सुरू करा',
+	'createsigndoc-head'                 => "दिलेल्या पानासाठी एक 'डॉक्यूमेंटवर सही करा' पृष्ठ तयार करण्यासाठी या अर्जाचा वापर करा, ज्यामुळे सदस्यांना [[Special:SignDocument]] वापरून त्या पानावर सही करता येईल.
+कॄपया ज्या पानावर सही करणे सुरू करायचे ते पान निवडा, तसेच कुठल्या सदस्यगटांना या पानावर सही करू द्यायची ते ठरवा, कुठले रकाने सदस्यांना दिसले पाहिजेत तसेच कुठले रकाने वैकल्पिक ठेवायचे ते ठरवा, त्यानंतर कमीतकमी वयाची अट द्या (जर रिकामे ठेवले तर वयाची अट नाही); तसेच एक छोटीशी डॉक्यूमेंटची ओळख तसेच सदस्यांना सूचना द्या.
+
+<b>सध्या सही साठी डॉक्यूमेंट तयार झाल्यानंतर त्याला वगळण्याची कुठलिही सुविधा उपलब्ध नाही.</b> फक्त थेट डाटाबेसशी संपर्क करता येईल.
+तसेच, तसेच सही साठी उपलब्ध पानावर '''सध्याचा''' मजकूर दाखविला जाईल, जरी तो आज नंतर बदलला तरीही.
+कृपया हे डॉक्यूमेंट सही साठी उपलब्ध करण्यासाठी योग्य असल्याची खात्री करा, तसेच ''हा अर्ज पाठविण्यापूर्वी'' तुम्ही सर्व रकाने योग्य प्रकारे भरलेले आहेत, याची खात्री करा.",
+	'createsigndoc-pagename'             => 'पान',
+	'createsigndoc-allowedgroup'         => 'अधिकृत सदस्य गट:',
+	'createsigndoc-email'                => 'इ-मेल पत्ता:',
+	'createsigndoc-address'              => 'घरचा पत्ता:',
+	'createsigndoc-extaddress'           => 'शहर, राज्य, देश:',
+	'createsigndoc-phone'                => 'दूरध्वनी क्रमांक',
+	'createsigndoc-bday'                 => 'जन्मदिवस',
+	'createsigndoc-minage'               => 'कमीतकमी वय:',
+	'createsigndoc-introtext'            => 'ओळख:',
+	'createsigndoc-hidden'               => 'लपविलेले',
+	'createsigndoc-optional'             => 'पर्यायी',
+	'createsigndoc-create'               => 'निर्मीतकरा',
+	'createsigndoc-error-generic'        => 'त्रुटी: $1',
+	'createsigndoc-error-pagenoexist'    => 'त्रुटी: पान [[$1]] अस्तित्त्वात नाही.',
+	'createsigndoc-success'              => '[[$1]] वर आता सही करता येऊ शकेल.
+तपासण्यासाठी, [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} या पानाला] भेट द्या.',
+	'createsigndoc-error-alreadycreated' => 'डॉक्यूमेंट सही "$1" अगोदरच अस्तित्त्वात आहे.',
 );
 
 /** Dutch (Nederlands)

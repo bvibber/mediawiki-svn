@@ -172,12 +172,13 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'showprocesslist'       => 'Tuduhna Daftar Prosès',
-	'showprocesslist-user'  => 'Panganggo',
-	'showprocesslist-host'  => 'Tuwan',
-	'showprocesslist-time'  => 'Wektu',
-	'showprocesslist-state' => 'Negara bagéyan',
-	'showprocesslist-info'  => 'Info',
+	'showprocesslist'         => 'Tuduhna Daftar Prosès',
+	'showprocesslist-user'    => 'Panganggo',
+	'showprocesslist-host'    => 'Tuwan',
+	'showprocesslist-command' => 'Paréntah',
+	'showprocesslist-time'    => 'Wektu',
+	'showprocesslist-state'   => 'Negara bagéyan',
+	'showprocesslist-info'    => 'Info',
 );
 
 /** Georgian (ქართული)

@@ -25,6 +25,13 @@ $messages['en'] = array(
 	'contributors-nosuchpage'  => 'The page $1 does not exist.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'contributors-target' => 'Titel:',
+);
+
 /** Arabic (العربية)
  * @author Mido
  * @author Meno25
@@ -480,6 +487,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'contributors-submit' => '보이기',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'contributors-submit' => 'Ipakita',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

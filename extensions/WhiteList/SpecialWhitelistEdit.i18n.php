@@ -82,6 +82,14 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$allMessages['af'] = array(
+	'whitelisttablemodifynone' => 'Geen',
+	'whitelisttableremove'     => 'Skrap',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -418,6 +426,14 @@ $allMessages['km'] = array(
 	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
 	'whitelisttableremove'     => 'ដកចេញ',
 	'whitelistnewtabledate'    => 'កាលបរិច្ឆេទផុតកំណត់៖',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$allMessages['krj'] = array(
+	'whitelisttableedit' => 'Iislan',
+	'whitelistnever'     => 'Indi gid',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

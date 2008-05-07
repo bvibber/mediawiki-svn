@@ -47,6 +47,13 @@ $messages['krl'] = array(
 	'todo-list-cancel' => 'Keskevytä',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'todo-list-cancel' => 'Kanselleer',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -258,6 +265,13 @@ $messages['km'] = array(
 	'todo-list-cancel'  => 'បោះបង់',
 	'todo-new-item'     => 'របស់ថ្មី',
 	'todo-form-details' => 'លំអិត ៖',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'todo-list-cancel' => 'Kanselar',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

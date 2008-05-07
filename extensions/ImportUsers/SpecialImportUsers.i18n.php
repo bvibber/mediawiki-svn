@@ -268,6 +268,8 @@ $messages['hi'] = array(
 $messages['hil'] = array(
 	'importusers-uploadfile'  => 'Karga file',
 	'importusers-log-summary' => 'Kabilogan',
+	'importusers-password'    => 'kontra-senyas',
+	'importusers-email'       => 'e-mail',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -335,6 +337,13 @@ $messages['km'] = array(
 	'importusers-password'                => 'ពាក្យសំងាត់',
 	'importusers-email'                   => 'អ៊ីមែល',
 	'importusers-realname'                => 'ឈ្មោះពិត',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'importusers-email' => 'e-mail',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

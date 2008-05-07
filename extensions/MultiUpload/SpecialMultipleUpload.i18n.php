@@ -214,6 +214,13 @@ $messages['hi'] = array(
 	'multiupload-toolbox'              => 'एकसे ज्यादा फ़ाइल अपलोड करें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'multipleupload' => 'Mag karga mga files',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -251,8 +258,10 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'multipleupload'           => 'Ngunggahaké berkas',
-	'multiupload-fileuploaded' => 'Berkas diunggahaké.',
+	'multipleupload'              => 'Ngunggahaké berkas',
+	'multipleupload-saveallfiles' => 'Simpen kabèh berkas',
+	'multiupload-fileuploaded'    => 'Berkas diunggahaké.',
+	'multiupload-toolbox'         => 'Unggahna akèh berkas',
 );
 
 /** Khmer (ភាសាខ្មែរ)

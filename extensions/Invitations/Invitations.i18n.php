@@ -275,6 +275,7 @@ $messages['jv'] = array(
 	'invitations-inviteform-username'  => 'Panganggo sing diundhang',
 	'invitations-inviteform-submit'    => 'Undhang',
 	'invitations-error-alreadyinvited' => 'Panganggo sing dispésifikasi panjenengan wis duwé aksès ing fitur iki!',
+	'invitations-invite-success'       => 'Panjenengan bisa sacara suksès ngundhang $1 supaya nganggo fitur iki!',
 );
 
 /** Khmer (ភាសាខ្មែរ)

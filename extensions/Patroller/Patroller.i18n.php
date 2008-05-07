@@ -38,6 +38,13 @@ $messages['en'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'patrol-revert-reason' => 'Rede:',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

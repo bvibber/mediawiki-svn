@@ -178,6 +178,13 @@ $messages['km'] = array(
 	'findspam-notextfound' => 'ការរួមចំនែកមិនត្រូវបានរកមិនឃើញទេ',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'findspam-ok' => 'OK dun',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

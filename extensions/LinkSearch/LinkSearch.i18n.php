@@ -27,8 +27,13 @@ $messages['krl'] = array(
 	'linksearch-ok' => 'Ečindy',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ * @author SPQRobin
+ */
 $messages['af'] = array(
-	'linksearch'       => 'Soek webskakels',
+	'linksearch'    => 'Soek webskakels',
+	'linksearch-ok' => 'Soek',
 );
 
 /** Aragonese (Aragonés)
@@ -562,6 +567,13 @@ $messages['km'] = array(
 	'linksearch-ns'   => 'លំហឈ្មោះ៖',
 	'linksearch-ok'   => 'ស្វែងរក',
 	'linksearch-line' => '$1បានតភ្ជាប់ពី$2',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'linksearch-ok' => 'Sagap',
 );
 
 $messages['la'] = array(

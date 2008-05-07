@@ -25,10 +25,14 @@ $messages['en'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author SPQRobin
  */
 $messages['af'] = array(
-	'bookinfo-result-year' => 'Jaar:',
+	'bookinfo-result-title'     => 'Titel:',
+	'bookinfo-result-author'    => 'Outeur:',
+	'bookinfo-result-publisher' => 'Uitgewer:',
+	'bookinfo-result-year'      => 'Jaar:',
 );
 
 /** Aragonese (Aragonés)

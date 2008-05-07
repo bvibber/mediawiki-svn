@@ -234,6 +234,13 @@ $messages['hi'] = array(
 	'countedits-nocontribs'   => 'इस विकिपर योगदान नहीं किया हैं।',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'countedits-username' => 'Ngalan sang Manog-gamit:',
+);
+
 $messages['hr'] = array(
 	'countedits' => 'Broj uređivanja',
 	'countedits-warning' => '\'\'\'Upozorenje:\'\'\' Ne sudite knjigu po koricama. Ne sudite suradnike po njihovom broju uređivanja.',
@@ -413,6 +420,13 @@ $messages['km'] = array(
 	'countedits-resulttext'   => "គិតត្រឹមពេលនេះ'''$1'''បានចូលរួមចំនែកកែប្រែ'''$2'''កំនែប្រែ",
 	'countedits-mostactive'   => 'អ្នករួមចំនែកដែលសកម្មបំផុត',
 	'countedits-nocontribs'   => 'មិនមានការរួមចំនែកនៅក្នុងវិគីនេះទេ។',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'countedits-ok' => 'OK dun',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

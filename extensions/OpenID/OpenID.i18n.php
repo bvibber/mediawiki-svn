@@ -355,6 +355,13 @@ $messages['hi'] = array(
 	'openidloginlabel'              => 'ओपनID URL',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'openidchoosepassword' => 'kontra-senyas:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -471,6 +478,7 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
  */
 $messages['jv'] = array(
 	'openidxrds'           => 'Berkas Yadis',
+	'openiderror'          => 'Kaluputan vérifikasi',
 	'openidcancel'         => 'Vérifikasi dibatalaké',
 	'openidallowtrust'     => 'Marengaké $1 percaya karo rékening panganggo iki.',
 	'openidoptional'       => 'Opsional',
@@ -480,6 +488,7 @@ $messages['jv'] = array(
 	'openidemail'          => 'Alamat e-mail',
 	'openidlanguage'       => 'Basa',
 	'openidchoosefull'     => 'Jeneng pepak panjenengan ($1)',
+	'openidchoosemanual'   => 'Jeneng miturut pilihan panjenengan:',
 	'openidchoosepassword' => 'tembung sandhi:',
 );
 

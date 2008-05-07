@@ -1578,6 +1578,14 @@ $wdMessages['km'] = array(
 	'ow_copy_help'                          => 'យើង​អាចជួយអ្នក​នៅ​ថ្ងៃណាមួយ',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$wdMessages['krj'] = array(
+	'ow_history' => 'Kasaysayan',
+	'ow_dm_OK'   => 'OK dun',
+);
+
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
@@ -1605,6 +1613,7 @@ $wdMessages['lb'] = array(
 	'ow_AlternativeDefinitions'        => 'Alternativ Definitiounen',
 	'ow_ClassAttributeLevel'           => 'Niveau',
 	'ow_ClassAttributeType'            => 'Typ',
+	'ow_Collection'                    => 'Sammlung',
 	'ow_Definition'                    => 'Definitioun',
 	'ow_ExactMeanings'                 => 'Genee Bedeitungen',
 	'ow_Expression'                    => 'Ausdrock',
@@ -1631,6 +1640,13 @@ $wdMessages['lb'] = array(
 	'ow_meaningsofsubtitle'            => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_help'                     => 'Fréier oder spéider kënne mir iech hëllefen.',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$wdMessages['li'] = array(
+	'ow_save' => 'Opslaon',
 );
 
 /** Lithuanian (Lietuvių)

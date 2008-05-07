@@ -224,6 +224,14 @@ $messages['km'] = array(
 	'inspectcache-list'    => 'បញ្ជី',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'inspectcache-ok'     => 'OK dun',
+	'inspectcache-delete' => 'Para',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -161,6 +161,7 @@ $messages['ja'] = array(
 $messages['jv'] = array(
 	'commentspammer-save-blocked' => 'Alamat IP panjenengan iku dicurigani dienggo ngirim spam, dadi kaca iki ora disimpen.
 Kanggo menggak iki, [[Special:Userlogin|mangga log mlebu utawa nggawé rékening (akun)]].',
+	'commentspammer-log-msg'      => 'suntingan saka [[Special:Contributions/$1|$1]] menyang [[:$2]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

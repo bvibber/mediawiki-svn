@@ -519,24 +519,29 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'regexblockstats'            => 'Statistik pamblokiran regex',
-	'regexblock-help'            => "Nganggoa formulir ing ngisor iki kanggo mblokir aksès panulisan saka sawijining alamat IP tartamtu utawa jeneng panganggo.
+	'regexblockstats'                 => 'Statistik pamblokiran regex',
+	'regexblock-help'                 => "Nganggoa formulir ing ngisor iki kanggo mblokir aksès panulisan saka sawijining alamat IP tartamtu utawa jeneng panganggo.
 Iki nanging namung kudu dilakokaké waé kanggo menggak vandalisme, lan miturut kawicaksanan sing ana.
 ''Nganggo kaca iki panjenengan uga bisa mblokir panganggo-panganggo sing durung ana, lan uga mblokir panganggo sing duwé jeneng mèmper karo jeneng sing wis ana. Contoné « Test » bakal diblokir karo « Test 2 » lsp.
 Panjenengan uga bisa mblokir alamat-alamat IP sacara pol-polan, dadi tegesé ora ana sing bisa log mlebu saka kana lan nyunting kaca-kaca.
 Cathetan: alamat IP parsial bakal dianggep miturut jeneng panganggo yèn arep diblokir.
 Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal dienggo.",
-	'regexblock-form-username'   => 'Alamat IP utawa jeneng panganggo:',
-	'regexblock-form-reason'     => 'Alesan:',
-	'regexblock-form-match'      => 'Persis cocog',
-	'regexblock-block-log'       => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
-	'regexblock-already-blocked' => '$1 wis diblokir',
-	'regexblock-stats-username'  => 'Kanggo $1',
-	'regexblock-view-blocked'    => 'Ndeleng diblokir déning:',
-	'regexblock-view-all'        => 'Kabèh',
-	'regexblock-view-go'         => 'Golèk',
-	'regexblock-view-reason'     => 'alesan: $1',
-	'regexblock-view-block-by'   => 'diblokir déning',
+	'regexblock-form-username'        => 'Alamat IP utawa jeneng panganggo:',
+	'regexblock-form-reason'          => 'Alesan:',
+	'regexblock-form-match'           => 'Persis cocog',
+	'regexblock-block-log'            => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
+	'regexblock-already-blocked'      => '$1 wis diblokir',
+	'regexblock-stats-username'       => 'Kanggo $1',
+	'regexblock-stats-times'          => 'wis diblokir ing',
+	'regexblock-view-blocked'         => 'Ndeleng diblokir déning:',
+	'regexblock-view-all'             => 'Kabèh',
+	'regexblock-view-go'              => 'Golèk',
+	'regexblock-view-reason'          => 'alesan: $1',
+	'regexblock-view-reason-default'  => 'alesan umum',
+	'regexblock-view-block-infinite'  => 'blokade permanèn',
+	'regexblock-view-block-temporary' => 'kadaluwarsa ing',
+	'regexblock-view-block-expired'   => 'KADALUWARSA ing',
+	'regexblock-view-block-by'        => 'diblokir déning',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -558,6 +563,13 @@ $messages['km'] = array(
 	'regexblock-view-go'            => 'ទៅ',
 	'regexblock-view-reason'        => 'មូលហេតុ៖ $1',
 	'regexblock-view-block-unblock' => 'ឈប់ហាមឃាត់',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'regexblock-view-go' => 'Agto',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

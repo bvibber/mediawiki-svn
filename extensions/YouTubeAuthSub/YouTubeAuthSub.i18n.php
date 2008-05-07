@@ -45,6 +45,13 @@ Please be patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'youtubeauthsub_title' => 'Titel',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -398,6 +405,13 @@ $messages['km'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'សូមសរសេរការពិពណ៌នាអោយវីដេអូ។',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'youtubeauthsub_category' => 'Kategorya',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -437,6 +451,21 @@ Hutt w.e.g. e bësse Gedold!',
 	'youtubeauthsub_jserror_nokeywords'  => 'Gitt w.e.g. een oder méi Stechwierder un.',
 	'youtubeauthsub_jserror_notitle'     => 'Gitt w.e.g. een Titel fir de Video un.',
 	'youtubeauthsub_jserror_nodesc'      => 'Gitt w.e.g eng Beschreiwung vum Video.',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'youtubeauthsub'              => 'YouTubevideo uploade',
+	'youtubeauthsub_title'        => 'Naam',
+	'youtubeauthsub_description'  => 'Besjrieving',
+	'youtubeauthsub_password'     => 'YouTubewachwaord',
+	'youtubeauthsub_username'     => 'YouTubegebroeker',
+	'youtubeauthsub_keywords'     => 'Trèfwaord',
+	'youtubeauthsub_category'     => 'Categorie',
+	'youtubeauthsub_submit'       => 'Bievoge',
+	'youtubeauthsub_uploadbutton' => 'Upload',
 );
 
 /** Malayalam (മലയാളം)

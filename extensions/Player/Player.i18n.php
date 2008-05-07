@@ -286,6 +286,14 @@ $messages['km'] = array(
 	'player-goto-file' => 'ឯកសារ',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'player-goto-page' => 'Pahina',
+	'player-goto-file' => 'inayap',
+);
+
 $messages['la'] = array(
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',

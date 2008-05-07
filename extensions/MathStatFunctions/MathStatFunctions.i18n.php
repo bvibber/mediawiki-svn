@@ -138,6 +138,7 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'msfunc_inf'      => "Bijih kasilé iku infinitas (''tak terhingga'')",
 	'msfunc_div_zero' => 'Dipara karo nul',
 );
 

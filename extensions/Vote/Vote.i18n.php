@@ -33,6 +33,13 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'You must select one of the available options.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'vote-login-link' => 'teken in',
+);
+
 /* Arabic (Meno25) */
 $messages['ar'] = array(
 	'vote' => 'تصويت',

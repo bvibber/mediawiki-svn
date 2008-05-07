@@ -676,6 +676,14 @@ $messages['ko'] = array(
 	'expand_templates_preview'         => '미리보기',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'expand_templates_ok'      => 'OK dun',
+	'expand_templates_preview' => 'Bilid',
+);
+
 $messages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
 	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä

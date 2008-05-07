@@ -1015,6 +1015,7 @@ $messages['jv'] = array(
 	'math_CannotWriteTexFile'       => 'Ora bisa nulis in berkas tex',
 	'math_CasesRowTooBig'           => 'Namung olèh ana rong élemèn ing saben rèk saka blok "cases"',
 	'math_IllegalCharacter'         => 'Ana karakter ilegal sing dilebokaké',
+	'math_IllegalCommandInMathMode' => 'Paréntah "$1" iku ilegal ing modus math',
 	'math_IllegalCommandInTextMode' => 'Paréntah "$1" iku ilegal ing modus tèks',
 	'math_InvalidColour'            => 'Warna "$1" iku ora absah',
 	'math_LatexFontNotSpecified'    => 'Ora ana font LaTeX sing dispésifikasi kanggo "$1"',
