@@ -109,6 +109,7 @@ $wgIgnoredMessages = array(
 	'trackbackexcerpt',
 	'uploadfooter',
 	'listgrouprights-link',
+	'search-interwiki-custom',
 );
 
 /** Optional messages, which may be translated only if changed in the other language. */
@@ -150,6 +151,7 @@ $wgOptionalMessages = array(
 	'ancientpages-summary',
 	'unwatchedpages-summary',
 	'userrights-summary',
+	'userrights-irreversible-marker',
 	'brokenredirects-summary',
 	'deadendpages-summary',
 	'protectedpages-summary',
@@ -158,7 +160,6 @@ $wgOptionalMessages = array(
 	'lonelypages-summary',
 	'unusedtemplates-summary',
 	'fewestrevisions-summary',
-	'withoutinterwiki-summary',
 	'upload-summary',
 	'tog-nolangconversion',
 	'yourvariant',

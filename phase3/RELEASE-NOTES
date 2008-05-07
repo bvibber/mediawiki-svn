@@ -28,28 +28,38 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Removed $wgAlternateMaster, use $wgLBFactoryConf
 * (bug 13562) Misspelled option $wgUserNotifedOnAllChanges changed to
   $wgUserNotifiedOnAllChanges
+* (bug 12860) New option $wgSitemapNamespaces allows sitemaps to be generated
+  for only some namespaces
+* Removed the emailconfirmed implicit group by default. To re-add it, use:
+    $wgAutopromote['emailconfirmed'] = APCOND_EMAILCONFIRMED;
+  in your LocalSettings.php.
+* (bug 2396) New shared database configuration variables. $wgSharedPrefix allows
+  you to use a shared database with a different prefix. Or you can now use a local
+  database and use prefixes to separate wiki and the shared tables. And the new
+  $wgSharedTables variable allows you to specify a list of tables to share.
+  
 
 === New features in 1.13 ===
 
 * __HIDDENCAT__ on a category page causes the category to be hidden on the
-  article page.
+  article page
 * Don't show edit permissions errors on a red link click, just redirect to the
   article. This is so that readers who don't know what a red link is aren't
   confused when they are told they are range-blocked.
 * Add a new hook ImageBeforeProduceHTML to allow extensions to modify wikitext
-  image syntax output.
+  image syntax output
 * (bug 13100) Added 'preloadtitle' parameter to action=edit&section=new that
-  pre-fills the section title field.
-* (bug 13112) Added Special:RelatedChanges alias to Special:Recentchangeslinked
+  pre-fills the section title field
+* (bug 13112) Added Special:RelatedChanges alias to Special:RecentChangesLinked
 * (bug 13130) Moved edit token and autosummary fields above edit tools to
   reduce broken form submissions
 * Add --old-redirects-only option to maintenance/refreshLinks.php, to add old
   redirects to the redirect table
 * Add links to page and file deletion forms to edit predefined delete reasons 
 * (bug 13269) Added MediaWiki:Uploadfooter to the bottom of Special:Upload
-* (bug 2815) Search results for media now use thumb instead of text extract
+* (bug 2815) Search results for media now use thumbnail instead of text extract
 * When a page doesn't exist, the tab should say "create", not "edit"
-* (bug 12882) Added a span with class "patrollink" arround "Mark as patrolled"
+* (bug 12882) Added a span with class "patrollink" around "Mark as patrolled"
   link on diffs
 * Magic word formatnum can now take raw suffix to undo formatting
 * Add updatelog table to reliably permit updates that don't change the schema
@@ -58,22 +68,48 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 ** Use category table for more efficient display of Special:Categories
 * (bug 1459) Search for duplicate files by hash: Special:FileDuplicateSearch
 * (bug 9447) Added hooks for search result headings
-* Image redirects are now enabled
+* Image redirects are now enabled by default
 * (bug 13450) Email confirmation can now be canceled before the expiration
 * (bug 13490) Show upload/file size limit on upload form
-* Redesign of Special:Userrights
-* Make rev_deleted log entries more intelligible.
+* Redesign of Special:UserRights
+* Make rev_deleted log entries more intelligible
 * (bug 6943) Added PAGESINCATEGORY: magic word
 * (bug 13604) Added Special:ListGroupRights
-* Added message 'mainpage-description' as duplicate of 'mainpage' and added it
-  to message 'sidebar'
-** (bug 6332) Lacking entry Mainpage-url
-** (bug 8617) Separate main page url and name
+* (bug 6332, 8617) Added message 'mainpage-description' as duplicate of
+  'mainpage' and added it to message 'sidebar'
 * Automatically add old redirects to the redirect table when needed
-* (bug 6934) Allow separated inclusions, links, redirects on whatlinkshere
-* Add a footer (emailuser-footer) to the bottom of messages sent with
-  Special:EmailUser
+* (bug 6934) Allow inclusions, links, redirects to be separately toggled on or
+  off on Special:WhatLinksHere
 * Cache image redirects
+* (bug 10457) Organize Special:SpecialPages into sections
+* Add a new hook EditPageBeforeConflictDiff to allow extensions like FCKeditor
+  to modify the output for edit conflicts
+* Add class="nested" for <fieldset>s so fieldsets inside fieldsets get
+  a slightly less huge margin and padding
+* (bug 13527) Use sitemaps.org format 0.9 instead of a Google-specific format
+* Allow \C and \Q as TeX commands to match \R, \N, \Z
+* On Special:UserRights, when you can add a group you can't remove or remove
+  one you can't add, a notice is printed to warn you
+* (bug 12698) Create PAGESIZE parser function, to return the size of a page
+* Allow the "log in / create account" link in the toolbar to have different
+  text from Special:UserLogin title (new message 'nav-login-createaccount')
+* Say "log in / create account" if an anonymous user can create an account,
+  otherwise just "log in", consistently across skins
+* Special:Shortpages and Special:Longpages now returns pages in all content 
+  namespaces, not just NS_MAIN.
+* (bug 889) Improve conflict-handling between shared upload repository
+  and local one
+* Update documentation links in auto-generated LocalSettings.php
+* (bug 13584) The new hook SkinTemplateToolboxEnd was added.
+* (bug 709) Cannot rename/move images and other media files [EXPERIMENTAL]
+* Custom rollback summaries now accept the same arguments as the default message
+* (bug 12542) Added hooks for expansion of Special:Listusers
+* Drop-down AJAX search suggestions (turn on $wgEnableMWSuggest) 
+* More relevant search snippets (turn on $wgAdvancedSearchHighlighting)
+* (bug 13950) Allow users to watch the user/talk pages of users they block.
+* (bug 13970) Allow MonoBook-based skins to specify their own print stylesheet
+* Show image links on Special:Whatlinkshere
+* Use rel="start", "prev", "next" appropriately on Pager-based pages
 
 === Bug fixes in 1.13 ===
 
@@ -136,7 +172,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   so groups may optionally edit protected pages without having 'protect' perms
 * Disallow deletion of big pages by means of moving a page to its title and
   using the "delete and move" option.
-* (bug 13466) White space differences not shown in diffs
+* (bug 13466, 13632) White space differences not shown in diffs
 * (bug 1953) Search form now honors namespace selections more reliably
 * (bug 12294) Namespace class renamed to MWNamespace for PHP 5.3 compatibility
 * PHP 5.3 compatibility fix for wfRunHooks() called with no parameters
@@ -176,9 +212,52 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 13690) Fix PHP notice on accessing some URLs
 * Hide (undo) link if user isn't able to edit page
 * Invalidate cache of pages that includes images via redirects on upload
-* (bug 13705) Don't show rollback link in page history if called with dir=prev
+* (bug 13705) Don't show rollback link in page history on incorrect revisions
 * (bug 13708) Don't set "Search results" title when loading Special:Search
   without query
+* (bug 13736) Don't show MediaWiki:Anontalkpagetext on non-existant IP addresses
+* (bug 13728) Don't trim initial whitespace during section edits
+* (bug 13727) Don't delete log entries from recentchanges on page deletion
+* (bug 13752) Redirects to sections now work again
+* (bug 13725) Upload form watch checkbox state set correctly with wpDestFile
+* (bug 13756) Don't show the form and navigation links of Special:Newpages if
+  the page is included
+* When hiding things on WhatLinksHere, generated URLs should hide them too
+* Properly escape search terms with regex chars so they appear highlighted in
+  search results
+* (bug 13768) pt_title field encoding fixed
+* Do not display empty columns on Special:UserRights if all groups are
+  changeable or all unchangeable
+* Fix fatal error on calling PAGESINCATEGORY with invalid category name
+* (bug 13793) Special:Whatlinkshere filters wrong - after paginating instead of before
+* (bug 13796) Show links to parent pages even if some of them are missing
+* (bug 13816) Filter by main namespace doesn't work on WhatLinksHere
+* (bug 13822) Fatal error on some pages when calculating subpage subtitle
+* (bug 13824) AJAX search suggestion now works with non-SkinTemplate skins
+* Added 'application/x-dia-diagram' MediaWiki's known MIME types
+* (bug 13866) skins/common/shared.css - invalid attribute fixing
+* Hide edit section links on Special:Undelete
+* (bug 13860) Fix "Justify paragraphs" option for Modern skin
+* (bug 13168) accessibility links in Modern skin link to wrong anchor id
+* (bug 13185) No line break after 'subpages' class in Modern skin
+* (bug 13583) No "poweredby" in Modern skin
+* (bug 13880) "Printable" link in Modern skin now formats as print mode
+* (bug 13885) Bump default $wgSVGMaxSize from 1024 to 2048 pixels
+* (bug 13891) Show categories box even if all categories are hidden and user has
+  "show hidden categories" option on
+* (bug 13915) Undefined variable $wltsfield in includes/SpecialWatchlist.php
+* (bug 13913) Special:Whatlinkshere now has correct HTML markup
+* (bug 13905) Blacklist Mac IE from HttpOnly cookies; it eats them sometimes
+* (bug 13922) Fix bad HTML on empty Special:Prefixindex and Special:Allpages
+* (bug 13924) Fix bad HTML on power search form
+* (bug 13820) Fix updater for rev_parent_id population
+* (bug 13925) Fix bad HTML on search results list
+* (bug 13934) Fixing the link to GNU General Public License Version 2
+* Show correct accesskey prefix for Firefox 3 beta (Alt-Shift-, not Alt-)
+* (bug 13949) Special:PrefixIndex/AllPages paging links contain invalid XML
+* (bug 13770) Use Preprocessor_Hash by default to avoid missing DOM module errors
+* (bug 13982) Disable ccmeonemails preference when user-to-user mails disabled
+
 
 === API changes in 1.13 ===
 
@@ -224,6 +303,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11673) Return error 'unknown_action' in specified format
 * (bug 13618) Added rcprop=redirect and rcshow=redirect to list=recentchanges
 * (bug 13544) Added oldid parameter to action=parse to allow for parsing of old revisions
+* (bug 13718) Return the proper continue parameter for cmsort=timestamp
+* action=login now returns the correct waiting time in the details property
+* (bug 13792) Broken titles are now silently skipped in search results.
+* (bug 13819) exturlusage paging skipped an item
+* Fixed handling of usernames containing spaces in list=block
+* (bug 13836) Fixed fatal errors resulting from combining iiprop=metadata with
+  format=xml
+* (bug 13735) Added prop=categoryinfo module
+* (bug 13945) Retrieve cascading protection sources via inprop=protection
+* (bug 13965) Hardcoded 51 limit on titles is too limiting
 
 === Languages updated in 1.13 ===
 

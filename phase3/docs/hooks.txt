@@ -289,6 +289,7 @@ $reason: the reason (string) the article is being deleted
 $article: the article that was deleted
 $user: the user that deleted the article
 $reason: the reason the article was deleted
+$id: id of the article that was deleted
 
 'ArticleEditUpdateNewTalk': before updating user_newtalk when a user talk page was changed
 $article: article (object) of the user talk page
@@ -544,6 +545,14 @@ Alternatively, modifying $error and returning true will cause the contents of $e
 to be echoed at the top of the edit form as wikitext. Return true without altering
 $error to allow the edit to proceed.
 
+'EditPageBeforeConflictDiff': allows modifying the EditPage object and output
+when there's an edit conflict.  Return false to halt normal diff output; in
+this case you're responsible for computing and outputting the entire "conflict"
+part, i.e., the "difference between revisions" and "your text" headers and
+sections.
+&$editor: EditPage instance
+&$out: OutputPage instance
+
 'EditPageBeforeEditButtons':  allows modifying the edit buttons below the textarea in the edit form
 &$editpage: The current EditPage object
 &$buttons: Array of edit buttons "Save", "Preview", "Live", and "Diff"
@@ -603,6 +612,9 @@ $title: title object to the file
 $fileVersions: array of undeleted versions. Empty if all versions were restored
 $user: user who performed the undeletion
 $reason: reason
+
+'GetAvailableRights': after calculating a list of all available rights
+&$rights: Array of rights, which may be added to.
 
 'GetBlockedStatus': after loading blocking status of an user from the database
 $user: user (object) being checked
@@ -779,6 +791,9 @@ $title: title of the message (string)
 $message: value (string), change it to the message you want to define
 
 'MonoBookTemplateToolboxEnd': Called by Monobook skin after toolbox links have been rendered (useful for adding more)
+Note: this is only run for the Monobook skin.  To add items to the toolbox
+for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
+instead.
 $tools: array of tools
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
@@ -878,7 +893,7 @@ $form : PreferencesForm object
 
 'PrefixSearchBackend': Override the title prefix search used for OpenSearch and
 AJAX search suggestions. Put results into &$results outparam and return false.
-$ns : int namespace key to search in
+$ns : array of int namespace keys to search in
 $search : search term (not guaranteed to be conveniently normalized)
 $limit : maximum number of results to return
 &$results : out param: array of page names (strings)
@@ -907,6 +922,9 @@ $out: output page to render to, probably $wgOut
 'ResetPreferences': called at the end of PreferencesForm::resetPrefs
 $form: the PreferencesForm
 $user: the User object to load preferences from
+
+'RevisionInsertComplete': called after a revision is inserted into the DB
+$revision: the Revision
 
 'SavePreferences': called at the end of PreferencesForm::savePreferences; 
                    returning false prevents the preferences from being saved.
@@ -990,6 +1008,9 @@ $checkEdit: Whether or not the action=edit query should be added if appropriate.
 $sktemplate: SkinTemplate object
 $content_actions: array of tabs
 
+'SkinTemplateToolboxEnd': Called by SkinTemplate skins after toolbox links have been rendered (useful for adding more)
+$tools: array of tools
+
 'SpecialContributionsBeforeMainOutput': Before the form on Special:Contributions
 $id: User identifier
 
@@ -1060,9 +1081,6 @@ $user: user who did the move
 $pageid: database ID of the page that's been moved
 $redirid: database ID of the created redirect
 
-'TitleNormalizerBackconvert': convert a database key into a ui title when we have no ui title to use
-$dbkey: DB Key to backconvert
-
 'UndeleteShowRevision': called when showing a revision in Special:Undelete
 $title: title object related to the revision
 $rev: revision (object) that will be viewed
@@ -1103,6 +1121,10 @@ string &$error: output: HTML error to show if upload canceled by returning false
 'UploadComplete': Upon completion of a file upload
 $uploadForm: Upload form object. File can be accessed by $uploadForm->mLocalFile.
 
+'UserArrayFromResult': called when creating an UserArray object from a database result
+&$userArray: set this to an object to override the default object returned
+$res: database result used to create the object
+
 'userCan': To interrupt/advise the "user can do X to Y article" check.
 	If you want to display an error message, try getUserPermissionsErrors.
 $title: Title object being checked against
@@ -1126,6 +1148,21 @@ $template: SimpleTemplate instance for the form
 $user: User to get groups for
 &$groups: Current effective groups
 
+'UserGetEmail': called when getting an user email address
+$user: User object
+&$email: email, change this to override local email
+
+'UserGetEmailAuthenticationTimestamp': called when getting the timestamp of email authentification
+$user: User object
+&$timestamp: timestamp, change this to override local email authentification timestamp
+
+'UserGetImplicitGroups': Called in User::getImplicitGroups()
+&$groups: List of implicit (automatically-assigned) groups
+
+'UserGetRights': Called in User::getRights()
+$user: User to get rights for
+&$rights: Current rights
+
 'UserLoginComplete': after a user has logged in
 $user: the user object that was created on login
 $inject_html: Any HTML to inject after the "logged in" message.
@@ -1144,17 +1181,21 @@ $inject_html: Any HTML to inject after the "logged out" message.
 $user  : User object that was changed
 $add   : Array of strings corresponding to groups added
 $remove: Array of strings corresponding to groups removed
-		      
-'UserGetImplicitGroups': Called in User::getImplicitGroups()
-&$groups: List of implicit (automatically-assigned) groups
-
-'UserGetRights': Called in User::getRights()
-$user: User to get rights for
-&$rights: Current rights
 
 'UserRetrieveNewTalks': called when retrieving "You have new messages!" message(s)
 $user: user retrieving new talks messages
 $talks: array of new talks page(s)
+
+'UserSaveSettings': called when saving user settings
+$user: User object
+
+'UserSetEmail': called when changing user email address
+$user: User object
+&$email: new email, change this to override new email address
+
+'UserSetEmailAuthenticationTimestamp': called when setting the timestamp of email authentification
+$user: User object
+&$timestamp: new timestamp, change this to override local email authentification timestamp
 
 'UserToggles': called when initialising User::$mToggles, use this to add new toggles
 $toggles: array of toggles to add

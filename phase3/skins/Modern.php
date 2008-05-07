@@ -15,6 +15,15 @@ if( !defined( 'MEDIAWIKI' ) )
  * @addtogroup Skins
  */
 class SkinModern extends SkinTemplate {
+	/*
+	 * We don't like the default getPoweredBy, the icon clashes with the 
+	 * skin L&F.
+	 */
+	function getPoweredBy() {
+	global	$wgVersion;
+		return "<div class='mw_poweredby'>Powered by MediaWiki $wgVersion</div>";
+	}
+
 	function initPage( &$out ) {
 		SkinTemplate::initPage( $out );
 		$this->skinname  = 'modern';
@@ -52,10 +61,12 @@ class ModernTemplate extends QuickTemplate {
 		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
 		<?php $this->html('headlinks') ?>
 		<title><?php $this->text('pagetitle') ?></title>
+		<?php if(empty($this->data['printable']) ) { ?>
 		<style type="text/css" media="screen, projection">/*<![CDATA[*/
 			@import "<?php $this->text('stylepath') ?>/common/shared.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";
 			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css?<?php echo $GLOBALS['wgStyleVersion'] ?>";
 		/*]]>*/</style>
+		<?php } ?>
 		<link rel="stylesheet" type="text/css" <?php if(empty($this->data['printable']) ) { ?>media="print"<?php } ?> href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/print.css?<?php echo $GLOBALS['wgStyleVersion'] ?>" />
 		<!--[if lt IE 7]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 		
@@ -126,7 +137,7 @@ class ModernTemplate extends QuickTemplate {
 		<div id="contentSub"><?php $this->html('subtitle') ?></div>
 
 		<?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
-		<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
+		<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#mw_portlets"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
 
 		<?php $this->html('bodytext') ?>
 		<div class='mw_clear'></div>
@@ -215,8 +226,9 @@ class ModernTemplate extends QuickTemplate {
 		} elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
 				<li id="t-ispermalink"<?php echo $skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
 		}
-?>
-			</ul>
+
+		wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
+?>			</ul>
 		</div><!-- pBody -->
 	</div><!-- portlet -->
 
@@ -276,6 +288,7 @@ class ModernTemplate extends QuickTemplate {
 		}
 ?>
 			</ul>
+		<?php echo $this->html("poweredbyico"); ?>
 	</div>
 
 	<?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>

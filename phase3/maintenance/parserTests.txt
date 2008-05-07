@@ -3324,6 +3324,15 @@ cat
 <a href="/wiki/Category:MediaWiki_User%27s_Guide" title="Category:MediaWiki User's Guide">MediaWiki User's Guide</a>
 !! end
 
+!! test
+PAGESINCATEGORY invalid title fatal (r33546 fix)
+!! input
+{{PAGESINCATEGORY:<bogus>}}
+!! result
+<p>0
+</p>
+!! end
+
 ###
 ### Inter-language links
 ###
@@ -3838,7 +3847,7 @@ Image link to nonexistent file (bug 1850 - good)
 !! input
 [[:Image:No such.jpg]]
 !! result
-<p><a href="/index.php?title=Image:No_such.jpg&amp;action=edit&amp;redlink=1" class="new" title="No such.jpg (not yet written)">Image:No such.jpg</a>
+<p><a href="/index.php?title=Image:No_such.jpg&amp;action=edit&amp;redlink=1" class="new" title="Image:No such.jpg (not yet written)">Image:No such.jpg</a>
 </p>
 !! end
 
@@ -5854,6 +5863,20 @@ start
 ====bba====
 ===bc===
 ==c==
+xxx
+!! end
+
+!! test
+Section replacement test with initial whitespace (bug 13728)
+!! options
+replace=2,"xxx"
+!! input
+ Preformatted initial line
+==a==
+===a===
+!! result
+ Preformatted initial line
+==a==
 xxx
 !! end
 

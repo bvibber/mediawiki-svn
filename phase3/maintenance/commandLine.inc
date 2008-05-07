@@ -37,7 +37,9 @@ $optionsWithArgs[] = 'conf'; # For specifying the location of LocalSettings.php
 $optionsWithArgs[] = 'aconf'; # As above for AdminSettings.php
 
 $self = array_shift( $argv );
-$IP = realpath( dirname( __FILE__ ) . '/..' );
+$IP = ( getenv('MW_INSTALL_PATH') !== false
+	? getenv('MW_INSTALL_PATH')
+	: realpath( dirname( __FILE__ ) . '/..' ) );
 #chdir( $IP );
 require_once( "$IP/StartProfiler.php" );
 
@@ -235,4 +237,4 @@ $wgShowSQLErrors = true;
 require_once( "$IP/includes/Setup.php" );
 require_once( "$IP/install-utils.inc" );
 $wgTitle = null; # Much much faster startup than creating a title object
-set_time_limit(0);
+@set_time_limit(0);

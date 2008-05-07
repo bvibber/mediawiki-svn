@@ -57,7 +57,7 @@ $wgMysqlUpdates = array(
 	// 1.5
 	array( 'do_schema_restructuring' ),
 	array( 'add_field', 'logging',       'log_params',       'patch-log_params.sql' ),
-	array( 'do_logging_encoding' ),
+	array( 'check_bin', 'logging',       'log_title',        'patch-logging-title.sql', ),
 	array( 'add_field', 'archive',       'ar_rev_id',        'patch-archive-rev_id.sql' ),
 	array( 'add_field', 'page',          'page_len',         'patch-page_len.sql' ),
 	array( 'do_inverse_timestamp' ),
@@ -138,7 +138,10 @@ $wgMysqlUpdates = array(
 	array( 'add_table', 'category',                          'patch-category.sql' ),
 	array( 'do_category_population' ),
 	array( 'add_field', 'archive',       'ar_parent_id',     'patch-ar_parent_id.sql'),
+	array( 'add_field', 'user_newtalk',  'user_last_timestamp', 'patch-user_last_timestamp.sql'),
 	array( 'do_populate_parent_id' ),
+	array( 'check_bin', 'protected_titles', 'pt_title',      'patch-pt_title-encoding.sql', ),
+	array( 'maybe_do_profiling_memory_update' ),
 	array( 'add_field', 'page',          'page_title_ui',    'patch-page_title_ui.sql'),
 	array( 'do_populate_page_title_ui' ),
 	array( 'do_username_schema_change' ),
@@ -448,20 +451,20 @@ function do_user_update() {
  * 1.4 betas were missing the 'binary' marker from logging.log_title,
  * which causes a collation mismatch error on joins in MySQL 4.1.
  */
-function do_logging_encoding() {
+function check_bin( $table, $field, $patchFile ) {
 	global $wgDatabase, $wgDBtype;
 	if ($wgDBtype != 'mysql')
 		return;
-	$logging = $wgDatabase->tableName( 'logging' );
-	$res = $wgDatabase->query( "SELECT log_title FROM $logging LIMIT 0" );
+	$tableName = $wgDatabase->tableName( $table );
+	$res = $wgDatabase->query( "SELECT $field FROM $tableName LIMIT 0" );
 	$flags = explode( ' ', mysql_field_flags( $res->result, 0 ) );
 	$wgDatabase->freeResult( $res );
 
 	if( in_array( 'binary', $flags ) ) {
-		echo "Logging table has correct title encoding.\n";
+		echo "$table table has correct $field encoding.\n";
 	} else {
-		echo "Fixing title encoding on logging table... ";
-		dbsource( archive( 'patch-logging-title.sql' ), $wgDatabase );
+		echo "Fixing $field encoding on $table table... ";
+		dbsource( archive( $patchFile ), $wgDatabase );
 		echo "ok\n";
 	}
 }
@@ -981,6 +984,19 @@ function do_categorylinks_indices_update() {
 	}
 }
 
+function maybe_do_profiling_memory_update() {
+	global $wgDatabase;
+	if ( !$wgDatabase->tableExists( 'profiling' ) ) {
+		// Simply ignore
+	} elseif ( $wgDatabase->fieldExists( 'profiling', 'pf_memory' ) ) {
+		echo "profiling table has pf_memory field.\n";
+	} else {
+		echo "Adding pf_memory field to table profiling...";
+		dbsource( archive( 'patch-profiling-memory.sql' ), $wgDatabase );
+		echo "ok\n";
+	}
+}
+
 function do_stats_init() {
 	// Sometimes site_stats table is not properly populated.
 	global $wgDatabase;
@@ -1163,7 +1179,10 @@ function do_populate_parent_id() {
 		echo "...rev_parent_id column already populated.\n";
 		return;
 	}
-	require_once( 'populateParentId.php' );
+	require_once( 'populateParentId.inc' );
+	
+	global $wgDatabase;
+	populate_rev_parent_id( $wgDatabase );
 }
 
 function do_populate_page_title_ui() {
@@ -1440,6 +1459,7 @@ function do_postgres_updates() {
 		array("oldimage",      "oi_minor_mime",        "TEXT NOT NULL DEFAULT 'unknown'"),
 		array("oldimage",      "oi_sha1",              "TEXT NOT NULL DEFAULT ''"),
 		array("page_restrictions", "pr_id",            "INTEGER NOT NULL UNIQUE DEFAULT nextval('pr_id_val')"),
+		array("profiling",     "pf_memory",            "NUMERIC(18,10) NOT NULL DEFAULT 0"),
 		array("recentchanges", "rc_deleted",           "SMALLINT NOT NULL DEFAULT 0"),
 		array("recentchanges", "rc_log_action",        "TEXT"),
         array("recentchanges", "rc_log_type",          "TEXT"),
@@ -1449,6 +1469,7 @@ function do_postgres_updates() {
 		array("recentchanges", "rc_params",            "TEXT"),
 		array("revision",      "rev_len",              "INTEGER"),
 		array("revision",      "rev_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
+		array("user_newtalk",  "user_last_timestamp",  "TIMESTAMPTZ"),
 	);
 
 

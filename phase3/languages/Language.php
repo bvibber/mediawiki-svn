@@ -176,8 +176,7 @@ class Language {
 	}
 
 	function getFallbackLanguageCode() {
-		$this->load();
-		return $this->fallback;
+		return self::getFallbackFor( $this->mCode );
 	}
 
 	/**
@@ -1564,6 +1563,7 @@ class Language {
 			} else {
 				# Fall back to English if local list is incomplete
 				$magicWords =& Language::getMagicWords();
+				if ( !isset($magicWords[$mw->mId]) ) { throw new MWException("Magic word not found" ); }
 				$rawEntry = $magicWords[$mw->mId];
 			}
 		}
@@ -2055,10 +2055,12 @@ class Language {
 
 			# Try the global cache
 			$memcKey = wfMemcKey('localisation', $code );
+			$fbMemcKey = wfMemcKey('fallback', $cache['fallback'] );
 			$cache = $wgMemc->get( $memcKey );
 			if ( $cache ) {
 				if ( self::isLocalisationOutOfDate( $cache ) ) {
 					$wgMemc->delete( $memcKey );
+					$wgMemc->delete( $fbMemcKey );
 					$cache = false;
 					wfDebug( "Language::loadLocalisation(): localisation cache for $code had expired\n" );
 				} else {
@@ -2147,6 +2149,7 @@ class Language {
 		self::$mLocalisationCache[$code] = $cache;
 		if ( !$disableCache ) {
 			$wgMemc->set( $memcKey, $cache );
+			$wgMemc->set( $fbMemcKey, (string) $cache['fallback'] );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -2180,8 +2183,22 @@ class Language {
 	 * Get the fallback for a given language
 	 */
 	static function getFallbackFor( $code ) {
+		if ( $code === 'en' ) return false;
+
+		global $wgMemc;
+		$memcKey = wfMemcKey( 'fallback', $code );
+		$fbcode = $wgMemc->get( $memcKey );
+
+		if ( is_string($fbcode) ) {
+			wfDebug( __METHOD__ . ": got fallback for $code from memc: '$fbcode'\n" );
+			if ( $fbcode === '' ) $fbcode = false;
+			return $fbcode;
+		}
+		
 		self::loadLocalisation( $code );
-		return self::$mLocalisationCache[$code]['fallback'];
+		$fbcode = self::$mLocalisationCache[$code]['fallback'];
+		$wgMemc->set( $memcKey, (string) $fbcode );
+		return $fbcode;
 	}
 
 	/** 
