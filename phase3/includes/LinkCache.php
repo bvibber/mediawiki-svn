@@ -125,7 +125,7 @@ class LinkCache {
 	 * @return integer
 	 */
 	public function addLinkObj( &$nt, $len = -1, $redirect = NULL ) {
-		global $wgAntiLockFlags;
+		global $wgAntiLockFlags, $wgTitleNormalizer;
 		$title = $nt->getPrefixedDBkey();
 		if ( $this->isBadLink( $title ) ) { return 0; }
 		$id = $this->getGoodLinkID( $title );
