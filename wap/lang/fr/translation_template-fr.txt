@@ -1,0 +1,46 @@
+﻿Translation template for HawPedia
+
+please use utf-8 editor
+
+translations.php:
+=================
+(empty strings to be filled out)
+"About" => "À propos",
+"Back" => "Précédent",
+"Call" => "Appel",
+"Contents" => "Contenu",
+"Continue" => "Continuer",
+"Copyright" => "Droit d'auteur",
+"external link" => "lien externe",
+"for" => "pour",
+"Found articles for:" => "Trouver des articles pour:",
+"Home" => "Accueil", // meaning here is "homepage"
+"Language" => "Langage",
+"MP3 conversion failed" => "Conversion MP3 échouée",
+"No wikipedia article found for" => "Pas d'article Wikipédia trouvé pour:",
+"Not available" => "Pas disponible",
+"please press" => "svp appuyez", //meaning pressing a button, even virtual. Otherwise "please press on" would be "svp appuyez sur". If it's a Web link, "svp cliquez"
+"Save" => "Enregistrer",
+"Settings" => "Préférences",
+"Spoken Wikipedia" => "Articles audio", //that's the title of the spoken project in french!
+"Wikipedia" => "Wikipédia",
+"Wikipedia currently not available" => "Wikipédia actuellement non disponible",
+"wikipedia export error" => "Erreur d'exportation de Wikipédia",
+
+about_text.php
+==============
+(englisch string at the right side is to be replaced)
+"title" => "À propos de HawPedia",
+"text" => "HawPedia permet un accès à Wikipédia sur les appareils mobiles tels que les téléphones mobiles ou les assistants personnels. HawPedia ne livre pas de contenu, mais reflète l'actuel contenu de Wikipédia dans un format optimisé pour les appareils mobiles.",
+"imp1" => "Le responsable de HawPedia est:",
+"title" => "À propos de Wikipédia",
+"text" => 'Wikipédia est une encyclopédie libre rédigée par une communauté de volontaires. Parfois de fausses informations peuvent se glisser dans Wikipédia; utilisez des références additionelles.',
+"imp1" => "Wikipédia est opéré par:",
+
+copyright_text.php
+==================
+(englisch string at the right side is to be replaced)
+"Copyright" => "Droit d'auteur",
+"gfdlText" => "Cet article est issu de Wikipédia et disponible sous les temres de la licence de documentation libre GNU (GFDL).",
+"Source" => "Source",
+"History" => "Historique"); //as shown as history/version tab on the wikipedia (who edited and when has been edited)
