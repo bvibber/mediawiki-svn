@@ -1,6 +1,6 @@
 <?php
 
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Skin per page',
 	'version'        => '1.0',
 	'author'         => 'Tim Starling',
