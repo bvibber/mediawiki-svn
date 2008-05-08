@@ -90,6 +90,7 @@ function mvSetupExtension(){
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
+	require_once( dirname(__FILE__) . '/specials/MV_SpecialMVAdmin.php');
 
 
 	/**********************************************/

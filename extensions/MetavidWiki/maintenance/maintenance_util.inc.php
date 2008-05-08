@@ -1,6 +1,6 @@
 <?php
 /*
- * metavid2mvWiki.inc.php Created on Jan 19, 2008
+ * maintenance_util.inc.php Created on Jan 19, 2008
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http:/metavid.ucsc.edu/code
