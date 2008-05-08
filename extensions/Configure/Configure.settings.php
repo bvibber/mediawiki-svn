@@ -77,6 +77,7 @@ $settings = array(
 			'wgSharedTables'  => 'array',
 			'wgSlaveLagCritical' => 'int',
 			'wgSlaveLagWarning' => 'int',
+			'wgSQLiteDataDir' => 'text',
 			'wgExternalServers' => 'array',
 		),
 	),
@@ -698,6 +699,7 @@ $restricted = array(
 	'wgSharedTables',
 	'wgSlaveLagCritical',
 	'wgSlaveLagWarning',
+	'wgSQLiteDataDir',
 	'wgExternalServers',
 # Emal
 	'wgSMTP',
@@ -1030,6 +1032,7 @@ $settingsVersion = array(
 	'wgAvailableRights' => array( array( '1.13alpha', '>=' ) ),
 	'wgSharedPrefix' => array( array( '1.13alpha', '>=' ) ),
 	'wgSharedTables' => array( array( '1.13alpha', '>=' ) ),
+	'wgSQLiteDataDir' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

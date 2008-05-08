@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.2.7 - 8 May 2008
+  Added $wgSQLiteDataDir.
+
 0.2.6 - 7 May 2008
   * Use User::getAllGroups() if available
   * Added $wgSharedPrefix and $wgSharedTables
