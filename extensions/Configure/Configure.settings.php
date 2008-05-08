@@ -750,13 +750,6 @@ $restricted = array(
 );
 
 /**
- * Group where all settings are restricted
- */
-$restrictedGroups = array(
-	'db',
-);
-
-/**
  * As there can be a lot of array types, try to define their type
  *
  * Types used:

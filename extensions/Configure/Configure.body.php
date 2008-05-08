@@ -8,8 +8,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class SpecialConfigure extends SpecialPage {
 	protected static $initialized = false;
-	protected static $settings, $restricted, $restrictedGroups,
-		$arrayDefs, $notEditableSettings, $settingsVersion;
+	protected static $settings, $restricted, $arrayDefs,
+		$notEditableSettings, $settingsVersion;
 	protected $conf;
 
 	// Static methods
@@ -24,7 +24,6 @@ class SpecialConfigure extends SpecialPage {
 		require( dirname( __FILE__ ) . '/Configure.settings.php' );
 		self::$settings = $settings;
 		self::$restricted = $restricted;
-		self::$restrictedGroups = $restrictedGroups;
 		self::$arrayDefs = $arrayDefs;
 		self::$notEditableSettings = $notEditableSettings;
 		self::$settingsVersion = $settingsVersion;
@@ -734,6 +733,24 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Return true if all settings in this section are restricted
+	 *
+	 * @param Array $sectArr one value of self::$settings array
+	 */
+	protected function isSectionRestricted( $sectArr ){
+		if( $this->isUserAllowedAll() )
+			return false;
+		$settings = array();
+		foreach( $sectArr as $name => $sect ){
+			foreach( array_keys( $sect ) as $setting ){
+				if( !in_array( $setting, self::$restricted ) && !in_array( $setting, self::$notEditableSettings ) )
+					return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Build the content of the form
 	 *
 	 * @return xhtml
@@ -743,7 +760,7 @@ class SpecialConfigure extends SpecialPage {
 		foreach( self::$settings as $title => $groups ){
 			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
 				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n";
-			if( in_array( $title, self::$restrictedGroups ) && !$this->isUserAllowedAll() ){
+			if( $this->isSectionRestricted( $groups ) ){
 				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
 			} else {
 				$ret .= Xml::openElement( 'table' ) . "\n";
