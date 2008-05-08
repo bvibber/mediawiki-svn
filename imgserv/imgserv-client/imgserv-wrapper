@@ -1,0 +1,7 @@
+#! /bin/sh
+# This is an example wrapper script for imgserv.  You can use it instead of
+# the normal binary if you need to change the server or port, which isn't
+# possible from MediaWiki.
+SERVER="localhost"
+PORT="8765"
+/data/home/river/imgserv/imgserv-client/imgserv -s$SERVER -p$PORT "$@"
