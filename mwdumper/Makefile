@@ -40,7 +40,7 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/PageFilter.java \
   src/org/mediawiki/importer/Revision.java \
   src/org/mediawiki/importer/Siteinfo.java \
-  src/org/mediawiki/importer/Sphinx.java \
+  src/org/mediawiki/importer/SphinxWriter.java \
   src/org/mediawiki/importer/SqlFileStream.java \
   src/org/mediawiki/importer/SqlLiteral.java \
   src/org/mediawiki/importer/SqlStream.java \
