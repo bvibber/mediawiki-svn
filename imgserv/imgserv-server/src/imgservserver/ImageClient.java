@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -33,13 +36,17 @@ import org.apache.batik.transcoder.TranscodingHints;
 import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.batik.transcoder.image.TIFFTranscoder;
+import pngds.PNGResizer;
 
 public class ImageClient extends Thread {
 	Socket	client;
 	BufferedInputStream reader;
+	Configuration config;
+	int pngcount = 0;
 	
-	public ImageClient(Socket cl) {
+	public ImageClient(Socket cl, Configuration c) {
 		client = cl;
+		config = c;
 		
 		try {
 			handleRequest();
@@ -119,6 +126,16 @@ public class ImageClient extends Thread {
 			return;
 		}
 
+		if (config.getUsepngds() &&
+				informat.equals("png") && outformat.equals("png") &&
+				width != -1 && height != -1)
+		{
+			transcodepngds(len, width, height);
+			reader.close();
+			client.close();
+			return;
+		}
+		
 		/* If we get here, we're about to receive the data. */
 		byte[] data = new byte[len];
 		int r, offs = 0, n;
@@ -146,6 +163,7 @@ public class ImageClient extends Thread {
 		OutputStream clout = client.getOutputStream();
 		clout.write(status.getBytes());
 		clout.write(out);
+		reader.close();
 		client.close();
 	}
 	
@@ -164,7 +182,67 @@ public class ImageClient extends Thread {
 		
 		throw new IOException("Unexpected end of stream looking for \\r\\n");
 	}
-	
+
+	private int transcodepngds(int len, int width, int height) 
+	throws IOException {
+		String inp = config.getTmpdir() + "/pngds_" + Thread.currentThread().getId()
+				+ "." + pngcount;
+		String outp = config.getTmpdir() + "/pngds_" + Thread.currentThread().getId()
+				+ "." + pngcount + ".out";
+		File inf = new File(inp);
+		File outf = new File(outp);
+		pngcount++;
+		
+		/*
+		 * Copy data from the client into the temp file.
+		 */
+		FileOutputStream ins = new FileOutputStream(inf);
+		byte[] buf = new byte[8192];
+		int r = 0, n;
+		for (;;) {
+			n = reader.read(buf, 0, 8192);
+			if (n == -1) {
+				System.out.printf("%% Unexpected EOF reading from client.\n");
+				return -1;
+			}
+			
+			ins.write(buf, 0, n);
+			r += n;
+			if (r >= len)
+				break;
+		}
+		ins.close();
+		ins = null;
+				
+		int ret = PNGResizer.resize(inp, outp, height, height);
+		
+		if (ret == -1) {
+			System.out.printf("%% pngds resizing failed.\n");
+		}
+		
+		/*
+		 * Write the converted file back to the client.
+		 */
+		String status = "OK " + outf.length() + "\r\n";
+		OutputStream clout = client.getOutputStream();
+		clout.write(status.getBytes());
+		
+		FileInputStream outs = new FileInputStream(outf);
+		for (;;) {
+			n = outs.read(buf, 0, 8192);
+			if (n == -1)
+				break;
+			clout.write(buf, 0, n);
+		}
+		inf.delete();
+		outf.delete();
+		
+		clout.close();
+		outs.close();
+		
+		return ret;
+	}
+
 	private byte[] transcodeRaster(String informat, String outformat, 
 			int width, int height,
 			byte[] data) throws IOException {

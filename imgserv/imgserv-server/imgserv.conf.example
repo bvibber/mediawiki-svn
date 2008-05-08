@@ -1,0 +1,9 @@
+# Use pngds to resize PNG images.  This allows you to resize pNG images
+# of any size, limited only by available disk space.
+#
+# libpngds.so must be on the Java system library path for this to work.
+usepngds=true
+
+# Temporary directory.  Must be set if you use pngds, otherwise it's
+# ignored.
+tmpdir=/tmp

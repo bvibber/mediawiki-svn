@@ -16,9 +16,11 @@ import java.net.Socket;
 
 public class RequestListener {
 	ServerSocket sock;
+	Configuration config;
 	
-	public RequestListener(int port) throws IOException {
-		sock = new ServerSocket(port);
+	public RequestListener(Configuration c) throws IOException {
+		config = c;
+		sock = new ServerSocket(c.getPort());
 	}
 	
 	public void run() throws IOException {
@@ -26,7 +28,7 @@ public class RequestListener {
 			Socket newclient;
 			newclient = sock.accept();
 			
-			ImageClient client = new ImageClient(newclient);
+			ImageClient client = new ImageClient(newclient, config);
 			client.start();
 		}
 	}
