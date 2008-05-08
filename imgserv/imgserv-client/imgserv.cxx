@@ -50,7 +50,7 @@ int	c;
 			height = atoi(optarg);
 			break;
 		case 'p':
-			server = atoi(optarg);
+			port = atoi(optarg);
 			break;
 		default:
 			usage();
