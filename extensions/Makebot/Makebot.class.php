@@ -38,7 +38,7 @@ class MakeBot extends SpecialPage {
 		$wgOut->addHtml( $this->makeSearchForm() );
 
 		if( $this->target != '' ) {
-			$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
+			//$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
 			$user = User::newFromName( $this->target );
 			if( is_object( $user ) && !is_null( $user ) ) {
 				global $wgVersion;
@@ -53,7 +53,7 @@ class MakeBot extends SpecialPage {
 					$canBecomeBot = $this->canBecomeBot( $user );
 					if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
 						# Exists, check botness
-						if( in_array( 'bot', $user->mGroups ) ) {
+						if( in_array( 'bot', $user->getGroups() ) ) {
 							# Has a bot flag
 							$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
 							$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
@@ -135,8 +135,10 @@ class MakeBot extends SpecialPage {
 		}
 		$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
 		# Comment field
+		$form .= wfOpenElement( 'tr' );
 		$form .= wfOpenElement( 'td', array( 'align' => 'right' ) );
 		$form .= wfElement( 'label', array( 'for' => 'comment' ), wfMsg( 'makebot-comment' ) );
+		$form .= wfCloseElement( 'td' );
 		$form .= wfOpenElement( 'td' );
 		$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'comment', 'id' => 'comment', 'size' => 45, 'maxlength' => 255 ) );
 		$form .= wfCloseElement( 'td' ) . wfCloseElement( 'tr' );
@@ -182,9 +184,8 @@ class MakeBot extends SpecialPage {
 	 */
 	function canBecomeBot( &$user ) {
 		global $wgMakeBotPrivileged;
-		$user->loadFromDatabase();
 		return $wgMakeBotPrivileged ||
-				( !in_array( 'sysop', $user->mGroups ) &&
-				  !in_array( 'bureaucrat', $user->mGroups ) );
+				( !in_array( 'sysop', $user->getGroups() ) &&
+				  !in_array( 'bureaucrat', $user->getGroups() ) );
 	}
 }

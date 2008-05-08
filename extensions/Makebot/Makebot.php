@@ -15,7 +15,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	define( 'MW_MAKEBOT_GRANT', 1 );
 	define( 'MW_MAKEBOT_REVOKE', 2 );
 
-	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
 	$wgExtensionCredits['specialpage'][] = array(
 		'name'           => 'MakeBot',
@@ -23,8 +22,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'url'            => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
 		'description'    => 'Special page allows local bureaucrats to grant and revoke bot permissions',
 		'descriptionmsg' => 'makebot-desc',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
+		'svn-date' => '$LastChangedDate$',
+		'svn-revision' => '$LastChangedRevision$',
 	 );
 
 	/**
@@ -32,6 +31,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	$dir = dirname(__FILE__) . '/';
 	$wgExtensionMessagesFiles['Makebot'] = $dir . 'Makebot.i18n.php';	
+
 	/**
 	 * Determines who can use the extension; as a default, bureaucrats are permitted
 	 */
@@ -50,16 +50,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgSpecialPageGroups['Makebot'] = 'users';
 
 	/**
-	 * Populate the message cache and set up the auditing
+	 * Set up the auditing
 	 */
-	function efMakeBot() {
-		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgLogTypes[] = 'makebot';
-		$wgLogNames['makebot'] = 'makebot-logpage';
-		$wgLogHeaders['makebot'] = 'makebot-logpagetext';
-		$wgLogActions['makebot/grant']  = 'makebot-logentrygrant';
-		$wgLogActions['makebot/revoke'] = 'makebot-logentryrevoke';
-	}
+	$wgLogTypes[] = 'makebot';
+	$wgLogNames['makebot'] = 'makebot-logpage';
+	$wgLogHeaders['makebot'] = 'makebot-logpagetext';
+	$wgLogActions['makebot/grant']  = 'makebot-logentrygrant';
+	$wgLogActions['makebot/revoke'] = 'makebot-logentryrevoke';
 
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
