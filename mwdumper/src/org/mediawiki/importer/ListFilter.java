@@ -43,6 +43,7 @@ public class ListFilter extends PageFilter {
 		while (line != null) {
 			if (!line.startsWith("#")) {
 				String title = line.trim();
+				title = title.replace("_", " ");
 				if (title.startsWith(":"))
 					title = line.substring(1);
 				
