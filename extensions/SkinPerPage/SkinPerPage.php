@@ -1,6 +1,14 @@
 <?php
 
-$oldCredits = $wgExtensionCredits; // save extension credits
+$wgExtensionCredits['specialpage'][] = array(
+	'name'           => 'Skin per page',
+	'version'        => '1.0',
+	'author'         => 'Tim Starling',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:SkinPerPage',
+	'descriptionmsg' => 'skinperpage-desc',
+);
+
+$wgExtensionMessagesFiles['SkinPerPage'] = dirname( __FILE__ ) . "/SkinPerPage.i18n.php";
 
 $wgExtensionFunctions[] = array( 'SkinPerPage', 'setup' );
 $wgHooks['OutputPageParserOutput'][] = 'SkinPerPage::outputHook';
@@ -24,6 +32,3 @@ class SkinPerPage {
 		return true;
 	}
 }
-
-// Restore extension credits
-$wgExtensionCredits = $oldCredits; 
