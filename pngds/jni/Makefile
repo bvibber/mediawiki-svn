@@ -3,6 +3,7 @@ CXX			= CC
 JAVA			= /usr/java
 CPPFLAGS		= -DNO_CRC -I.. -I$(JAVA)/include
 CPPFLAGS_solaris	= -I$(JAVA)/include/solaris
+CPPFLAGS_linux		= -I$(JAVA)/include/linux
 CFLAGS			= -g
 LDFLAGS			=
 LIBS			= -lz
@@ -31,6 +32,8 @@ solaris: pngds_PNGResizer.h
 solaris-gcc: pngds_PNGResizer.h
 	gcc -fPIC -shared $(CFLAGS) $(CPPFLAGS) $(CPPFLAGS_solaris) $(SRCS) PNGResizer.c -o libpngds.so $(LIBS)
 
+linux: pngds_PNGResizer.h
+	gcc -fPIC -shared $(CFLAGS) $(CPPFLAGS) $(CPPFLAGS_linux) $(SRCS) PNGResizer.c -o libpngds.so $(LIBS)
 clean:
 	rm -f libpngds.so pngds/PNGResizer.class pngds_PNGResizer.h *.o
 
