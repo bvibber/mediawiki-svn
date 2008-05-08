@@ -38,17 +38,19 @@ class APCCacheMode {
 				if (md5($entry[$this->fieldKey]) !== $object) continue;
 
 				foreach($entry as $key => $value) {
-					$value = $this->formatValue( $key, $value );
 					switch ($key) {
 						case 'num_hits':
 							$value = $wgLang->formatNum( $value ) .
 								$wgLang->formatNum( sprintf(" (%.2f%%)", $value*100/$cache['num_hits'] ) );
 							break;
 						case 'deletion_time':
+							$value = $this->formatValue( $key, $value );
 							if ( !$value ) {
 								$value = wfMsg( 'viewapc-display-no-delete' );
 								break;
 							}
+						default:
+							$value = $this->formatValue( $key, $value );
 					}
 
 					$s .= APCUtils::tableRow( $r=1-$r,
