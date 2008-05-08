@@ -406,3 +406,14 @@ $messages['tr'] = array(
 	'findspam-ok' => 'Tamam',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'findspam'             => 'Tìm spam',
+	'findspam-desc'        => 'Thêm một [[Special:FindSpam|trang đặc biệt]] cho phép bạn tìm các spam mới thêm gần đây',
+	'findspam-ip'          => 'Địa chỉ IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Không tìm thấy đóng góp',
+);
+

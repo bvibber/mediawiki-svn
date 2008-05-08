@@ -239,17 +239,18 @@ $4',
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'todo'              => 'Daftar tugas',
-	'todo-tab'          => 'tugas',
-	'todo-new-queue'    => 'anyar',
-	'todo-mail-subject' => 'Perkara sing wis dilaksanakaké ing daftar tugas $1',
-	'todo-add-queue'    => 'Tambah antrian…',
-	'todo-move-queue'   => 'Pindhahna menyang antrian…',
-	'todo-list-for'     => 'Daftar tugas kanggo',
-	'todo-list-change'  => 'Ganti',
-	'todo-list-cancel'  => 'Batal',
-	'todo-form-details' => 'Détail:',
-	'todo-form-submit'  => 'Kirimna kwéri',
+	'todo'                  => 'Daftar tugas',
+	'todo-tab'              => 'tugas',
+	'todo-new-queue'        => 'anyar',
+	'todo-mail-subject'     => 'Perkara sing wis dilaksanakaké ing daftar tugas $1',
+	'todo-unrecognize-type' => 'Jenisé ora ditepungi',
+	'todo-add-queue'        => 'Tambah antrian…',
+	'todo-move-queue'       => 'Pindhahna menyang antrian…',
+	'todo-list-for'         => 'Daftar tugas kanggo',
+	'todo-list-change'      => 'Ganti',
+	'todo-list-cancel'      => 'Batal',
+	'todo-form-details'     => 'Détail:',
+	'todo-form-submit'      => 'Kirimna kwéri',
 );
 
 /** Khmer (ភាសាខ្មែរ)

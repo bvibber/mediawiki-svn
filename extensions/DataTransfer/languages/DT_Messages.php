@@ -627,6 +627,7 @@ $messages['vi'] = array(
 	'dt_xml_field'                => 'Trường',
 	'dt_xml_name'                 => 'Tên',
 	'dt_xml_title'                => 'Tựa đề',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Văn bản Tự do',
 );
 

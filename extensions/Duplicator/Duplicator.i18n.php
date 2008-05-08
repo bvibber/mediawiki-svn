@@ -897,7 +897,29 @@ $messages['tr'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'duplicator-options' => 'Tùy chọn',
+	'duplicator'                       => 'Nhân bản một trang',
+	'duplicator-desc'                  => 'Tạo ra bản sao độc lập của trang với đầy đủ lịch sử sửa đổi',
+	'duplicator-toolbox'               => 'Nhân bản trang này',
+	'duplicator-header'                => 'Trang này cho phép nhân bản hoàn toàn một trang, tạo ra những bản sao độc lập tất cả các lịch sử.
+Việc này hữu dụng cho việc phân phối trang, v.v.',
+	'duplicator-options'               => 'Tùy chọn',
+	'duplicator-source'                => 'Nguồn:',
+	'duplicator-dest'                  => 'Đích:',
+	'duplicator-dotalk'                => 'Nhân bản trang thảo luận (nếu có thể)',
+	'duplicator-submit'                => 'Nhân bản',
+	'duplicator-summary'               => 'Được chép từ [[$1]]',
+	'duplicator-success'               => "<big>'''[[$1]] đã được chép sang [[$2]].'''</big>",
+	'duplicator-success-revisions'     => 'Đã chép $1 {{PLURAL:$1|phiên bản|phiên bản}}.',
+	'duplicator-success-talkcopied'    => 'Trang thảo luận cũng đã được chép.',
+	'duplicator-success-talknotcopied' => 'Không thể chép trang thảo luận.',
+	'duplicator-failed'                => 'Không thể nhân bản trang.
+Có lỗi lạ xảy ra.',
+	'duplicator-source-invalid'        => 'Xin hãy cung cấp tựa đề nguồn hợp lệ.',
+	'duplicator-source-notexist'       => '[[$1]] không tồn tại. Xin hãy cung cấp tựa đề của một trang tồn tại.',
+	'duplicator-dest-invalid'          => 'Xin hãy cung cấp tựa đề đích hợp lệ.',
+	'duplicator-dest-exists'           => '[[$1]] đã tồn tại. Xin hãy cung cấp một tựa đề đích chưa tồn tại.',
+	'duplicator-toomanyrevisions'      => '[[$1]] có quá nhiều ($2) phiên bản và không chép được.
+Giới hạn hiện nay là $3.',
 );
 
 /* Cantonese (Shinjiman) */

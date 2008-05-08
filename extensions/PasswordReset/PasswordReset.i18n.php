@@ -279,10 +279,14 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'passwordreset-username'    => 'Jeneng panganggo',
-	'passwordreset-newpass'     => 'Tembung sandhi anyar',
-	'passwordreset-confirmpass' => 'Konfirmasi tembung sandhi',
-	'passwordreset-submit'      => 'Reset tembung sandhi',
+	'passwordreset-invalidusername' => 'Jeneng panganggo ora absah',
+	'passwordreset-emptyusername'   => 'Jeneng panganggo kosong',
+	'passwordreset-nopassmatch'     => 'Tembung sandhiné ora cocog',
+	'passwordreset-badtoken'        => 'Token panyuntingan ora absah',
+	'passwordreset-username'        => 'Jeneng panganggo',
+	'passwordreset-newpass'         => 'Tembung sandhi anyar',
+	'passwordreset-confirmpass'     => 'Konfirmasi tembung sandhi',
+	'passwordreset-submit'          => 'Reset tembung sandhi',
 );
 
 /** Khmer (ភាសាខ្មែរ)

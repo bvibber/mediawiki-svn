@@ -407,8 +407,11 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'contributors'            => 'Para kontributor',
+	'contributors-toolbox'    => 'Para kontributor utama',
 	'contributors-target'     => 'Irah-irahan (judhul):',
 	'contributors-submit'     => 'Tuduhna',
+	'contributors-subtitle'   => 'Para kontributor utama kanggo $1',
 	'contributors-badtitle'   => 'Irah-irahan ora absah.',
 	'contributors-nosuchpage' => 'Artikel $1 ora ditemokaké.',
 );

@@ -345,10 +345,16 @@ riddler|Riddler',
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'vote-view-results' => 'បង្ហាញ​លទ្ឋផល',
-	'vote-results'      => 'លទ្ឋផលនៃការបោះឆ្នោត',
-	'vote-login'        => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
-	'vote-login-link'   => 'ឡុកអ៊ីន',
+	'vote'                => 'បោះឆ្នោត',
+	'vote-current'        => "អ្នកកំពុងបោះឆ្នោតអោយ '''$1'''។",
+	'vote-submit'         => 'បោះឆ្នោត',
+	'vote-registered'     => 'សំលេងឆ្នោតរបស់អ្នកត្រូវបានកត់ចូលបញ្ជី។',
+	'vote-view-results'   => 'បង្ហាញ​លទ្ឋផល',
+	'vote-results'        => 'លទ្ឋផលនៃការបោះឆ្នោត',
+	'vote-results-choice' => 'ជំរើស',
+	'vote-login'          => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
+	'vote-login-link'     => 'ឡុកអ៊ីន',
+	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជំរើសមួយក្នុងចំនោមជំរើសទាំងឡាយដែលបានផ្ដល់អោយ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

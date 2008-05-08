@@ -48,6 +48,13 @@ $messages['hu'] = array(
 	'woopra-desc' => 'Lehetővé teszi a [http://www.woopra.com/ Woopra Live Tracking Software] számára, hogy a MediaWikin dolgozzon',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'woopra-desc' => 'អនុញ្ញាតអោយ [http://www.woopra.com/ Woopra Live Tracking Software] ធ្វើការតំលើងមេឌាវិគី(MediaWiki)របស់អ្នក។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

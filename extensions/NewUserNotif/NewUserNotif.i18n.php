@@ -137,7 +137,11 @@ $4、$3上に$2でユーザーアカウントを作成しました。',
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'newusernotifsubj' => 'Notifikasi panganggo anyar kanggo $1',
+	'newusernotifsubj'  => 'Notifikasi panganggo anyar kanggo $1',
+	'newusernotif-desc' => 'Kirim notifikasi e-mail menawa rékening-rékening panganggo digawé',
+	'newusernotifbody'  => 'Salam $1,
+
+Sawijining rékening panganggo, $2, wis digawé ing $3 jam $4.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -166,7 +170,11 @@ E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'newusernotifsubj'  => '$1 സം‌രംഭത്തിനു വേണ്ടിയുള്ള ഉപയോക്തൃഅറിയിപ്പ് സംവിധാനം.',
 	'newusernotif-desc' => 'ഉപഭോക്തൃഅക്കൗണ്ടുകള്‍ ഉണ്ടാക്കി കഴിയുമ്പോള്‍ ഇമെയില്‍ വിജ്ഞാപനം അയക്കുന്നു',
+	'newusernotifbody'  => 'പ്രിയ $1,
+
+$2 എന്ന ഒരു പുതിയ ഉപയോക്തൃഅക്കൗണ്ട്, $3 സം‌രംഭത്തില്‍ $4നു  സൃഷ്ടിക്കപ്പെട്ടിരിക്കുന്നു.',
 );
 
 /** Marathi (मराठी)

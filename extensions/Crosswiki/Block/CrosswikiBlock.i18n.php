@@ -558,6 +558,7 @@ $messages['jv'] = array(
 	'crosswikiblock-nocreate'       => 'Menggak panggawéyan rékening',
 	'crosswikiblock-noemail'        => 'Panganggo dipenggak ora olèh ngirim e-mail',
 	'crosswikiunblock-reason'       => 'Alesan:',
+	'crosswikiblock-dbnotfound'     => 'Basis data $1 ora ana',
 	'crosswikiblock-noexpiry'       => 'Kadaluwarsa ora absah: $1.',
 	'crosswikiblock-alreadyblocked' => 'Panganggo $3 wis diblokir.',
 	'crosswikiblock-noblock'        => 'Panganggo iki ora diblokir.',
@@ -1202,16 +1203,49 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
- * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'crosswikiblock-desc'           => 'Cho phép cấm thành viên tại các wiki khác qua một [[Special:Crosswikiblock|trang đặc biệt]]',
+	'crosswikiblock'                => 'Cấm thành viên tại wiki khác',
+	'crosswikiblock-header'         => 'Trang này cho phép cấm thành viên tại wiki khác.
+Xin hãy kiểm tra xem bạn có được phép thực hiện điều này tại wiki này hay không và hành động của bạn có theo đúng tất cả các quy định hay không.',
+	'crosswikiblock-target'         => 'Địa chỉ IP hoặc tên người dùng và wiki đích:',
+	'crosswikiblock-expiry'         => 'Hết hạn:',
 	'crosswikiblock-reason'         => 'Lý do:',
 	'crosswikiblock-submit'         => 'Cấm',
 	'crosswikiblock-anononly'       => 'Chỉ cấm thành viên vô danh',
+	'crosswikiblock-nocreate'       => 'Không cho tạo tài khoản',
 	'crosswikiblock-autoblock'      => 'Tự động cấm các địa chỉ IP mà thành viên này sử dụng',
+	'crosswikiblock-noemail'        => 'Không cho gửi thư điện tử',
+	'crosswikiunblock'              => 'Bỏ cấm thành viên tại wiki khác',
+	'crosswikiunblock-header'       => 'Trang này cho phép bỏ cấm thành viên tại wiki khác.
+Xin hãy kiểm tra xem bạn có được phép thực hiện điều này tại wiki này hay không và hành động của bạn có theo đúng tất cả các quy định hay không.',
+	'crosswikiunblock-user'         => 'Tên người dùng, địa chỉ IP hoặc mã số cấm và wiki đích:',
 	'crosswikiunblock-reason'       => 'Lý do:',
+	'crosswikiunblock-submit'       => 'Bỏ cấm thành viên này',
+	'crosswikiunblock-success'      => "Thành viên '''$1''' đã được bỏ cấm.
+
+Quay trở lại:
+* [[Special:CrosswikiBlock|Mẫu cấm]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Chưa nhập tên người dùng',
+	'crosswikiblock-local'          => 'Giao diện này không hỗ trợ cấm tại wiki này. Hãy dùng [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Cơ sở dữ liệu $1 không tồn tại',
+	'crosswikiblock-noname'         => '“$1” không phải là tên hợp lệ.',
+	'crosswikiblock-nouser'         => 'Không tìm thấy thành viên “$3”.',
+	'crosswikiblock-noexpiry'       => 'Thời hạn cấm không hợp lệ: $1.',
+	'crosswikiblock-noreason'       => 'Chưa đưa ra lý do.',
+	'crosswikiblock-notoken'        => 'Bằng chứng sửa đổi không hợp lệ.',
 	'crosswikiblock-alreadyblocked' => '“$3” đã bị cấm rồi.',
+	'crosswikiblock-noblock'        => 'Thành viên này không bị cấm.',
+	'crosswikiblock-success'        => "Thành viên '''$3''' đã bị cấm.
+
+Quay trở về:
+* [[Special:CrosswikiBlock|Mẫu cấm]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Giao diện này không hỗ trợ bỏ cấm tại wiki này. Hãy dùng [[Special:Ipblocklist]]',
 );
 
 /** Volapük (Volapük)

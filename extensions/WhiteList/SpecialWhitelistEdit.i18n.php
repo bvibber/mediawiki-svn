@@ -372,6 +372,7 @@ $allMessages['hu'] = array(
  * @author Meursault2004
  */
 $allMessages['jv'] = array(
+	'whitelistedit'             => 'Editor Aksès Daftar Putih',
 	'whitelist'                 => 'Kaca-kaca Daftar Putih',
 	'mywhitelistpages'          => 'Kaca-kacaku',
 	'whitelistfor'              => '<center>Informasi saiki kanggo <b>$1</b></center>',
@@ -384,6 +385,7 @@ $allMessages['jv'] = array(
 	'whitelisttablemodby'       => 'Pungkasan dimodifikasi déning',
 	'whitelisttablemodon'       => 'Pungkasan dimodifikasi ing',
 	'whitelisttableedit'        => 'Sunting',
+	'whitelisttableview'        => 'Ndeleng',
 	'whitelisttablenewdate'     => 'Tanggal Anyar:',
 	'whitelisttablechangedate'  => 'Ganti Tanggal Kadaluwarsa',
 	'whitelisttablesetedit'     => 'Sèt kanggo Nyunting',
@@ -405,6 +407,7 @@ $allMessages['jv'] = array(
 $2',
 	'whitelistrequestconf'      => 'Panyuwunan kaca-kaca anyar dikirimaké menyang $1',
 	'whitelistnever'            => 'ora tau',
+	'whitelistnummatches'       => '- pituwas $1 sing cocog',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -411,7 +411,20 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'hiderevision'                => 'Daŭre kaŝu reviziojn',
+	'hiderevision-desc'           => 'Kaŝi individuajn reviziojn de ĉiuj uzantoj por leĝaj kialoj, ktp.',
+	'group-oversight'             => 'Kontrolantoj',
+	'group-oversight-member'      => 'Kontrolado',
+	'grouppage-oversight'         => '{{ns:project}}:Kontrolado',
+	'right-oversight'             => 'Rigardi antaŭe kaŝitan revizion',
+	'hiderevision-prompt'         => 'Nombro de revizio por forigi:',
 	'hiderevision-continue'       => 'Kontinuu',
+	'hiderevision-text'           => "Ĉi tiu ago '''nur''' estu uzata por la jenaj kazoj:
+* Netaŭga persona informo
+*: ''hejmaj adresoj kaj nombroj de telefono, personaj ŝtataj nombroj de identigo, ktp''
+
+'''Misuzo de ĉi tiu sistemo kaŭzos perdon de privilegioj.'''
+
+Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skribita en la protokolo kaj povas esti restarigita de datumbaza administranto se eraro estas farita.",
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-status'         => 'Revizio $1: $2',
@@ -419,6 +432,7 @@ $messages['eo'] = array(
 	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
+	'oversight'                   => 'Kontrolado',
 	'oversight-view'              => 'detaloj',
 	'oversight-difference'        => '(Diferenco de la antaŭa lasta revizio)',
 	'oversight-prev'              => 'Lasta antaŭa revizio',

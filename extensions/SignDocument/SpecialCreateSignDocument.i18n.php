@@ -679,20 +679,29 @@ $messages['ss'] = array(
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'createsigndocument'              => 'Möjliggör dokument signering',
-	'createsigndoc-pagename'          => 'Sida:',
-	'createsigndoc-email'             => 'E-postadress:',
-	'createsigndoc-address'           => 'Gatuadress:',
-	'createsigndoc-extaddress'        => 'Ort, delstat, land:',
-	'createsigndoc-phone'             => 'Telefonnummer:',
-	'createsigndoc-bday'              => 'Födelsedatum:',
-	'createsigndoc-minage'            => 'Minimiålder:',
-	'createsigndoc-introtext'         => 'Introduktion:',
-	'createsigndoc-hidden'            => 'dolt',
-	'createsigndoc-optional'          => 'Frivilligt',
-	'createsigndoc-create'            => 'Skapa',
-	'createsigndoc-error-generic'     => 'Fel: $1',
-	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
+	'createsigndocument'                 => 'Möjliggör dokument signering',
+	'createsigndoc-head'                 => "Använd detta formulär för att skapa ett \"signaturdokument\" för denna sida, så att användare kan signera det via [[Special:SignDocument]].
+Var god ange sidans namn, vilken användargrupp som ska kunna signera det, vilka fält som ska vara synliga för användarna, vilka som ska vara valfria, minimumålder för att kunna signera dokumentet (om detta inte anges, finns det ingen gräns), och en kort introduktionstext som beskriver dokumentet och ger instruktioner till användarna.
+
+<b>Det finns inget sätt att radera eller ändra signaturdokument efter att de har skapats</b> utan direkt databastillgång.
+Texten på sidan på signatursidan kommer också vara den ''nuvarande'' texten, oavsätt av vilka ändringar som görs efter i dag.
+Var hundra procent säker på att dokumentet är stabilt när det signeras, och var också säker på att du anger alla fält som de ska vara, ''innan du sparar detta formulär''.",
+	'createsigndoc-pagename'             => 'Sida:',
+	'createsigndoc-allowedgroup'         => 'Tillåten grupp:',
+	'createsigndoc-email'                => 'E-postadress:',
+	'createsigndoc-address'              => 'Gatuadress:',
+	'createsigndoc-extaddress'           => 'Ort, delstat, land:',
+	'createsigndoc-phone'                => 'Telefonnummer:',
+	'createsigndoc-bday'                 => 'Födelsedatum:',
+	'createsigndoc-minage'               => 'Minimiålder:',
+	'createsigndoc-introtext'            => 'Introduktion:',
+	'createsigndoc-hidden'               => 'dolt',
+	'createsigndoc-optional'             => 'Frivilligt',
+	'createsigndoc-create'               => 'Skapa',
+	'createsigndoc-error-generic'        => 'Fel: $1',
+	'createsigndoc-error-pagenoexist'    => 'Fel: Sidan [[$1]] finns inte.',
+	'createsigndoc-success'              => 'Dokumentsignering har stängts av för [[$1]]. För att signera det, besök [{{fullurl:Special:SignDocument|doc=$2}} den här sidan].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen "$1" finns redan.',
 );
 
 /** Silesian (ślůnski)

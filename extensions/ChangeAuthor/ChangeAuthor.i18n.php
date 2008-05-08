@@ -271,7 +271,7 @@ Bonvolu reprovi vian peton.
 Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
 	'changeauthor-success'              => 'Via peto estis traktita sukcese.',
 	'changeauthor-logentry'             => 'Ŝanĝis aŭtoron de $2 de $1 de $3 al $4',
-	'changeauthor-logpagename'          => 'Loglibro pri ŝanĝoj de aŭtoroj',
+	'changeauthor-logpagename'          => 'Protokolo pri ŝanĝoj de aŭtoroj',
 );
 
 /** Spanish (Español)
@@ -540,17 +540,20 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'changeauthor'                   => 'Ngganti révisi pangripta',
-	'changeauthor-search-box'        => 'Golèk révisi',
-	'changeauthor-pagename-or-revid' => 'ID jeneng kaca utawa révisi:',
-	'changeauthor-pagenameform-go'   => 'Tumuju',
-	'changeauthor-comment'           => 'Komentar:',
-	'changeauthor-invalid-username'  => 'Jeneng panganggo "$1" ora absah.',
-	'changeauthor-nosuchuser'        => 'Ora ana panganggo "$1".',
-	'changeauthor-revview'           => 'Révisi #$1 saka $2',
-	'changeauthor-nosuchtitle'       => 'Ora ana kaca sing diarani "$1".',
-	'changeauthor-success'           => 'Panyuwunan panjenengan wis kasil diprosès.',
-	'changeauthor-logpagename'       => 'Log owah-owahan pangripta',
+	'changeauthor'                      => 'Ngganti révisi pangripta',
+	'changeauthor-title'                => 'Ganti pangripta sawijining révisi',
+	'changeauthor-search-box'           => 'Golèk révisi',
+	'changeauthor-pagename-or-revid'    => 'ID jeneng kaca utawa révisi:',
+	'changeauthor-pagenameform-go'      => 'Tumuju',
+	'changeauthor-comment'              => 'Komentar:',
+	'changeauthor-changeauthors-multi'  => 'Ganti (para) pangripta',
+	'changeauthor-changeauthors-single' => 'Ganti pangripta',
+	'changeauthor-invalid-username'     => 'Jeneng panganggo "$1" ora absah.',
+	'changeauthor-nosuchuser'           => 'Ora ana panganggo "$1".',
+	'changeauthor-revview'              => 'Révisi #$1 saka $2',
+	'changeauthor-nosuchtitle'          => 'Ora ana kaca sing diarani "$1".',
+	'changeauthor-success'              => 'Panyuwunan panjenengan wis kasil diprosès.',
+	'changeauthor-logpagename'          => 'Log owah-owahan pangripta',
 );
 
 /** Khmer (ភាសាខ្មែរ)

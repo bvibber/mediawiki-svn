@@ -125,8 +125,12 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'postcomment_invalidrequest' => 'Panyuwunan ora absah.',
-	'postcomment_replyto'        => 'Wangsulan marang $1',
+	'postcomment_notloggedin'              => 'Panjenengan ora log mlebu.',
+	'postcomment_youareloggedinas'         => 'Panjenengan log mlebu minangka $1',
+	'postcomment_addcommentdiscussionpage' => 'Tambahna komentar panjenengan ing kaca dhiskusi iki',
+	'postcomment_leavemessagefor'          => 'Tinggalna pesen kanggo $1',
+	'postcomment_invalidrequest'           => 'Panyuwunan ora absah.',
+	'postcomment_replyto'                  => 'Wangsulan marang $1',
 );
 
 /** Khmer (ភាសាខ្មែរ)

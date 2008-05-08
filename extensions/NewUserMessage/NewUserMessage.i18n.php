@@ -106,6 +106,13 @@ $messages['lb'] = array(
 	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'newusermessage-desc' => 'പുതിയ ഉപയോക്താക്കളുടെ സം‌വാദം താളില്‍  [[MediaWiki:NewUserMessage|സന്ദേശം]] ചേര്‍ക്കുന്നു.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

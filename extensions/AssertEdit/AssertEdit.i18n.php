@@ -40,6 +40,15 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'assert_edit_title'   => 'Зацьверджаньне не атрымалася',
+	'assert_edit_desc'    => 'Дадае зацьверджаньні рэдагаваньняў для выкарыстаньня робатамі',
+	'assert_edit_message' => 'Вызначанае зацьверджаньне ($1) не атрымалася.',
+);
+
 /** Bulgarian (Български)
  * @author Borislav
  */

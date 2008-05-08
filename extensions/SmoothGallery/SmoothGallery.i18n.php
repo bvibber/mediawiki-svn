@@ -284,12 +284,22 @@ $messages['sr-ec'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'smoothgallery'                    => 'SmoothGalleri',
-	'smoothgallery-desc'               => 'Låter användare skapa gallerier med bilder som blivit uppladdade.
+	'smoothgallery'                     => 'SmoothGalleri',
+	'smoothgallery-desc'                => 'Låter användare skapa gallerier med bilder som blivit uppladdade.
 Innehåller de flesta av SmoothGalleris alternativ',
-	'smoothgallery-title'              => 'SmoothGalleri',
-	'smoothgallery-smoothgallerytitle' => 'SmoothGalleri: $1',
-	'smoothgallery-error'              => '<b>Fel med SmoothGalleri:</b>',
+	'smoothgallery-title'               => 'SmoothGalleri',
+	'smoothgallery-smoothgallerytitle'  => 'SmoothGalleri: $1',
+	'smoothgallery-error'               => '<b>Fel med SmoothGalleri:</b>',
+	'smoothgallery-gallery-not-found'   => 'Galleriet som du efterfrågade finns inte.',
+	'smoothgallery-not-found'           => 'Inga bilder lades till i galleriet.
+Lägg till minst en bild.',
+	'smoothgallery-no-images'           => 'Inga bilder hittades i galleriet.
+Försäkra dej om att alla bilder finns.
+Följande bilder hittades inte: $1',
+	'smoothgallery-invalid-images'      => 'Följande efterfrågade bilder var av en ogiltig typ: $1',
+	'smoothgallery-unexpected-error'    => 'Du var ett oväntat fel.
+Var god lämna en felrapport.',
+	'smoothgallery-javascript-disabled' => 'Javascript behövs för att visa det här galleriet korrekt.',
 );
 
 /** Vietnamese (Tiếng Việt)

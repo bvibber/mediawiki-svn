@@ -68,7 +68,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'commentspammer-log-msg' => 'redakto de [[Special:Contributions/$1|$1]] al [[:$2]].',
-	'cspammer-log-page'      => 'Loglibro de komentaj spamistoj',
+	'cspammer-log-page'      => 'Protokolo de komentaj spamistoj',
 );
 
 /** French (Français)

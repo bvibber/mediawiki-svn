@@ -124,6 +124,14 @@ $messages['hi'] = array(
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'mibbit'       => 'Mibbit Chat',
+	'right-mibbit' => 'Marengaké nganggo chat Mibbit',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

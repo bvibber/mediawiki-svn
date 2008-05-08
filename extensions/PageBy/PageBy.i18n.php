@@ -166,6 +166,7 @@ $messages['it'] = array(
  */
 $messages['jv'] = array(
 	'pageby-first'        => 'Kaca digawé déning $1, $2',
+	'pageby-last'         => 'Ing pungkasan <a href="$3">dimodifikasi</a> déning $1, $2',
 	'pageby-contributors' => 'Para kontributor:',
 	'pageby-anon'         => '<i>anonim</i>',
 );

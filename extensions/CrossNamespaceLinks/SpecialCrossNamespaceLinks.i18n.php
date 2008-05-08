@@ -49,6 +49,15 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'crossnamespacelinks'      => 'Спасылкі паміж прасторамі назваў',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Сьпіс спасылак паміж прасторамі назваў]], якіх не павінна існаваць ў {{GRAMMAR:месны|{{SITENAME}}}}',
+	'crossnamespacelinkstext'  => '$1: $2 {{PLURAL:$2|спасылка|спасылкі|спасылак}} на $3',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  * @author Borislav

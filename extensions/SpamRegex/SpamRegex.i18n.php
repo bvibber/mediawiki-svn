@@ -232,9 +232,12 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'spamregex'             => 'SpamRegex',
-	'spamregex-text'        => '(Tèks)',
-	'spamregex-summary-log' => '(Ringkesan)',
+	'spamregex'                 => 'SpamRegex',
+	'spamregex-block-message'   => "Ukara '''$1''' wis diblokir.",
+	'spamregex-warning-1'       => 'Wènèhana ukara sing kudu diblokir.',
+	'spamregex-already-blocked' => '"$1" wis diblokir',
+	'spamregex-text'            => '(Tèks)',
+	'spamregex-summary-log'     => '(Ringkesan)',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -445,6 +448,8 @@ $messages['sma'] = array(
  */
 $messages['sv'] = array(
 	'spamregex'             => 'SpamRegex',
+	'spamregex-desc'        => '[[Special:Spamregex|Filtrera ut]] oönskade fraser i redigerade sidor, baserade på reguljära uttryck',
+	'spamregex_summary'     => 'Texten hittades i sidans sammanfattning.',
 	'spamregex-log-1'       => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
 	'spamregex-log-2'       => ' på $1',
 	'spamregex-text'        => '(Text)',

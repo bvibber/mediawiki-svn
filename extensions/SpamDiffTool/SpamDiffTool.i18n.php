@@ -454,9 +454,11 @@ Staal sicher, dät du nit komplette Domains blokkierst, do der separate Benutser
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Siebrand
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'spamdifftool'                  => 'Hantera svarta listan för spam',
+	'spamdifftool-desc'             => 'Ger en enkel möjlighet att lägga till nya element i spamsvartlistan från diffsidor',
 	'spamdifftool_cantedit'         => 'Du har tyvärr inte behörighet att redigera svarta listan för spam.',
 	'spamdifftool_notext'           => "Ingen text lades till i svarta listan för spam. Klicka <a href='$1'>här</a> för att fortsätta.",
 	'spamdifftool_confirm'          => "Bekräfta att du vill lägga till följande poster i svarta listan för spam. (Rapportera problem <a href='$1' target='new'>här</a>.)",

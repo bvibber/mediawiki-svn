@@ -315,7 +315,7 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'edituser-dosearch' => 'തിരയുക',
+	'edituser-dosearch' => 'തിരയൂ',
 );
 
 /** Marathi (मराठी)
@@ -511,10 +511,17 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'edituser-desc'     => 'Cho phép những thành viên đặc quyền được sửa đổi tùy chọn của thành viên khác',
+	'edituser'          => 'Sửa chữa Thành viên',
+	'edituser-logout'   => 'Đăng xuất thành viên',
+	'edituser-username' => 'Tên',
 	'edituser-dosearch' => 'Tìm kiếm',
+	'edituser-nouser'   => 'Thành viên chỉ định không tồn tại',
+	'edituser-exempt'   => 'Thành viên chỉ định không sửa được',
 );
 
 /** Volapük (Volapük)

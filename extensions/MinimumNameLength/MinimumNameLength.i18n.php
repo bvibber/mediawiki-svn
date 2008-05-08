@@ -121,6 +121,13 @@ $messages['ja'] = array(
 	'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'minnamelength-error' => 'Jeneng panganggo panjenengan kecendhaken. Dawané sacara minimal kudu $1.',
+);
+
 /* Kazakh default */
 $messages['kk'] = array(
 	'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',

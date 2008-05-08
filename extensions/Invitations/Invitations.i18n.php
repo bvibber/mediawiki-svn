@@ -137,8 +137,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'invite-logpage'                        => 'Loglibro de invitado',
-	'invite-logpagetext'                    => 'Ĉi tiu loglibro de uzantoj invitantaj inter ili mem por uzi variajn programerojn.',
+	'invite-logpage'                        => 'Protokolo de invitado',
+	'invite-logpagetext'                    => 'Ĉi tiu protokolo de uzantoj invitantaj inter ili mem por uzi variajn programerojn.',
 	'invite-logentry'                       => 'Vi invitis $1 por uzi la <i>$2</i> programeron.',
 	'invitations'                           => 'Administru invitojn por programeroj',
 	'invitations-desc'                      => 'Permesas [[Special:Invitations|administradon de novaj programeroj]] tiel limigante atingon al ili per invito-sistemo',

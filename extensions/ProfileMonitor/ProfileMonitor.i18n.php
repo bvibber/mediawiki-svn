@@ -161,6 +161,7 @@ $messages['it'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'profiling-wildcard'     => 'Nganggo wildcard',
 	'profiling-ok'           => 'OK',
 	'profiling-data-process' => 'Prosès',
 	'profiling-data-count'   => 'Cacah',

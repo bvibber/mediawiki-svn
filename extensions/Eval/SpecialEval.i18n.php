@@ -277,10 +277,16 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'eval_code' => 'Mã nguồn',
+	'eval'        => 'Đánh giá',
+	'eval-desc'   => 'Thêm một [[Special:Eval|giao diện]] vào hàm <code>eval()</code>',
+	'eval_submit' => 'Đánh giá',
+	'eval_escape' => 'Thoát ngõ ra',
+	'eval_out'    => 'Ngõ ra',
+	'eval_code'   => 'Mã nguồn',
 );
 
 /** Volapük (Volapük)

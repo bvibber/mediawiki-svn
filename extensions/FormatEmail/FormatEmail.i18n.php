@@ -277,3 +277,14 @@ $messages['tg-cyrl'] = array(
 $2',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'email-desc'   => 'Cho phép thêm phần đầu/cuối tùy chọn vào thư điện tử người dùng.',
+	'email_footer' => '----------------------------------------------------------------------------
+E-mail này được gửi đến cho bạn từ hệ thống e-mail của $1.
+
+$2',
+);
+

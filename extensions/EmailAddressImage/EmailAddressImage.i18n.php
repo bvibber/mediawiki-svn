@@ -148,3 +148,10 @@ $messages['tg-cyrl'] = array(
 	'emailaddressimage-desc' => 'Барои намои нишонаи почтаи электронӣ чун акс <tt>&lt;email&gt;</tt>-ро илова мекунад',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'emailaddressimage-desc' => 'Thêm <tt>&lt;email&gt;</tt> để hiển thị địa chỉ thư điện tử dưới dạng hình ảnh',
+);
+

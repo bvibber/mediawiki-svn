@@ -116,3 +116,10 @@ $messages['sv'] = array(
 	'contributorsaddon-desc' => 'Lägger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'contributorsaddon-desc' => 'Thêm popup onMouseOver của JS vào liên kết "Những người đóng góp chính"',
+);
+

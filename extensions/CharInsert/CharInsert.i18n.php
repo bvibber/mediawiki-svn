@@ -94,6 +94,13 @@ $messages['ja'] = array(
 	'charinsert-desc' => '[[MediaWiki:Edittools|特殊文字の挿入]]を行うJavaScriptボックスを追加する',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'charinsert-desc' => 'Marengaké digawéné kothak JavaScript kanggo [[MediaWiki:Edittools|nyisipaké karakter non-standar]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

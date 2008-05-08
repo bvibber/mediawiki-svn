@@ -733,6 +733,15 @@ $messages['lez'] = array(
 	'bookinfo-result-year' => 'Йис:',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'bookinfo-result-title'  => 'Titulo:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-year'   => 'Anio:',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */

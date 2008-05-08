@@ -477,19 +477,25 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'openidxrds'           => 'Berkas Yadis',
-	'openiderror'          => 'Kaluputan vérifikasi',
-	'openidcancel'         => 'Vérifikasi dibatalaké',
-	'openidallowtrust'     => 'Marengaké $1 percaya karo rékening panganggo iki.',
-	'openidoptional'       => 'Opsional',
-	'openidrequired'       => 'Diperlokaké',
-	'openidnickname'       => 'Jeneng sesinglon',
-	'openidfullname'       => 'Jeneng jangkep',
-	'openidemail'          => 'Alamat e-mail',
-	'openidlanguage'       => 'Basa',
-	'openidchoosefull'     => 'Jeneng pepak panjenengan ($1)',
-	'openidchoosemanual'   => 'Jeneng miturut pilihan panjenengan:',
-	'openidchoosepassword' => 'tembung sandhi:',
+	'openidxrds'               => 'Berkas Yadis',
+	'openiderror'              => 'Kaluputan vérifikasi',
+	'openidcancel'             => 'Vérifikasi dibatalaké',
+	'openidfailure'            => 'Vérifikasi gagal',
+	'openidtrustinstructions'  => 'Mangga dipriksa yèn panjenengan péngin mbagi data karo $1.',
+	'openidallowtrust'         => 'Marengaké $1 percaya karo rékening panganggo iki.',
+	'openidnopolicy'           => 'Situs iki durung spésifikasi kawicaksanan privasi.',
+	'openidoptional'           => 'Opsional',
+	'openidrequired'           => 'Diperlokaké',
+	'openidnickname'           => 'Jeneng sesinglon',
+	'openidfullname'           => 'Jeneng jangkep',
+	'openidemail'              => 'Alamat e-mail',
+	'openidlanguage'           => 'Basa',
+	'openidchooseinstructions' => 'Kabèh panganggo prelu jeneng sesinglon;
+panjenengan bisa milih salah siji saka opsi ing ngisor iki.',
+	'openidchoosefull'         => 'Jeneng pepak panjenengan ($1)',
+	'openidchooseauto'         => 'Jeneng ($1) sing digawé sacara otomatis',
+	'openidchoosemanual'       => 'Jeneng miturut pilihan panjenengan:',
+	'openidchoosepassword'     => 'tembung sandhi:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

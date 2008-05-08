@@ -60,6 +60,14 @@ $messages['hi'] = array(
 	'absenteelandlord-desc'   => 'प्रबंधकोंद्वारा कुछ समय तक कोईभी कार्य ना किये जाने पर डाटाबेस को अपनेआप ताला लगा देता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'absenteelandlord-reason' => 'Baza je automatski zaključana uslijed neaktivnosti administratora.',
+	'absenteelandlord-desc'   => 'Automatski zaključava wiki bazu ukoliko su svi administratori neaktivni  neko vrijeme',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -98,6 +106,14 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'absenteelandlord-reason' => 'De database is automatisch afgesloten vanwege inactiviteit van de beheerders.',
 	'absenteelandlord-desc'   => 'Sluit de database automatisch als de beheerders allemaal gedurende een bepaalde tijd inactief zijn',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author H92
+ */
+$messages['no'] = array(
+	'absenteelandlord-reason' => 'Databasen er automatisk låst på grunn av inaktivitet fra administratorene.',
+	'absenteelandlord-desc'   => 'Autolåser wikiens databatse hvis alle administratorene er inaktive over en tid',
 );
 
 /** Occitan (Occitan)
@@ -140,11 +156,27 @@ $messages['sk'] = array(
 	'absenteelandlord-desc'   => 'Automaticky zamyká wiki databázu ak sú všetci správcovia po určitú dobu neaktívny',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'absenteelandlord-reason' => 'Ju Doatenboank wuude automatisk speerd, deer naan Administrator aktiv is.',
+	'absenteelandlord-desc'   => 'Automatisk Speere fon ju Doatenboank, wan aal Administratore foar ne bestimde Tied inaktiv sunt',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'absenteelandlord-reason' => 'Databasen har automatiskt låsts på grund av frånvaro från administratörerna.',
 	'absenteelandlord-desc'   => 'Auto-låser wikins databas om alla administratörer är frånvarande någon tid',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'absenteelandlord-reason' => 'Cơ sở dữ liệu đã bị tự động khóa do không có người quản lý nào hoạt động.',
+	'absenteelandlord-desc'   => 'Tự động khóa cơ sở dữ liệu nếu tất cả người quản lý đều không hoạt động vào một thời điểm',
 );
 

@@ -174,6 +174,7 @@ $messages['bg'] = array(
 	'viewapc-ls-sort-size'        => 'Размер',
 	'viewapc-ls-sort-name'        => 'Име',
 	'viewapc-version-info'        => 'Информация за версията',
+	'viewapc-version-changelog'   => 'Дневник на промените',
 );
 
 /** Esperanto (Esperanto)
@@ -218,7 +219,7 @@ $messages['eo'] = array(
 	'viewapc-ls-limit-none'         => 'Ĉiu',
 	'viewapc-delete-failed'         => 'Malsukcesis forigi kaŝmemoreron <nowiki>$1</nowiki>.',
 	'viewapc-version-info'          => 'Versia informo',
-	'viewapc-version-changelog'     => 'Loglibro de ŝanĝoj',
+	'viewapc-version-changelog'     => 'Protokolo de ŝanĝoj',
 	'viewapc-version-ok'            => 'Vi operacias la plej lastan version de APC ($1)',
 	'viewapc-filecache-cleared'     => "'''''Dosiera kaŝejo forviŝita.'''''",
 	'viewapc-usercache-cleared'     => "'''''Kaŝmemoro de programaro estis forviŝita.'''''",
@@ -446,10 +447,15 @@ $messages['hi'] = array(
  */
 $messages['jv'] = array(
 	'viewapc'                       => 'Informasi APC',
+	'viewapc-desc'                  => "[[Special:ViewAPC|Ndeleng lan ngurusi ''cache'' APC]] karo MediaWiki",
 	'right-apc'                     => 'Nganggo kabèh fitur ing Special:APC',
+	'viewapc-apc-not-available'     => "Ora ana info ''cache'' sing kacepakaké.
+APC katoné ora mlaku.",
 	'viewapc-clear-confirm'         => 'Panjenengan kepéngin ngosongaké cache?',
 	'viewapc-clear-user-cache'      => 'Kosongna cache panganggo',
 	'viewapc-mode-system-cache'     => "Èntri-èntri ''cache'' sistém",
+	'viewapc-mode-system-cache-dir' => 'Èntri-èntri per dirèktori',
+	'viewapc-mode-user-cache'       => "Èntri-èntri ''cache'' panganggo",
 	'viewapc-mode-version-check'    => 'Priksa vèrsi',
 	'viewapc-info-general'          => 'Informasi umum',
 	'viewapc-apc-version'           => 'Vèrsi APC',
@@ -458,6 +464,7 @@ $messages['jv'] = array(
 	'viewapc-filecache-info'        => "Informasi ''cache'' berkas",
 	'viewapc-usercache-info'        => "Informasi ''cache'' panganggo",
 	'viewapc-cached-files'          => "Berkas-berkas sing di-''cache''",
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|berkas|berkas-berkas}} ($2)',
 	'viewapc-rps'                   => '$1 panyuwunan per detik',
 	'viewapc-info-runtime'          => 'Informasi runtime',
 	'viewapc-memory-usage-detailed' => "Panggunan M'emori<nr />
@@ -772,6 +779,21 @@ De nieuwere versie $2 is beschikbaar op http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared'     => "'''''Applicatiecache opgeschoond.'''''",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author H92
+ */
+$messages['no'] = array(
+	'viewapc'                   => 'APC-informasjon',
+	'viewapc-desc'              => '[[Special:ViewAPC|Vis og behandle APC-cachen]] med MediaWiki',
+	'right-apc'                 => 'Bruk alle funksjoner i Special:ViewAPC',
+	'viewapc-apc-not-available' => 'Ingen infomasjon om cachen er tilgjengelig.
+APC ser ikke ut til å fungere.',
+	'viewapc-clear-confirm'     => 'Vil du tømme cachen?',
+	'viewapc-clear-user-cache'  => 'Tøm brukercachen',
+	'viewapc-clear-code-cache'  => 'Tøm opocode-cachen',
+	'viewapc-mode-stats'        => 'Vis statistikk',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -878,6 +900,31 @@ Sembla que APC fonciona pas.",
 Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Amagatal dels fichièrs suprimit.'''''",
 	'viewapc-usercache-cleared'     => "'''''Amagatal de l'aplicacion suprimit.'''''",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'viewapc-clear-confirm'      => 'Czy chcesz wyczyścić pamięć podręczną?',
+	'viewapc-clear-user-cache'   => 'Czyść pamięć podręczną użytkownika',
+	'viewapc-clear-code-cache'   => 'Czyść operacyjną pamięć podręczną',
+	'viewapc-mode-stats'         => 'Pokaż statystyki serwera',
+	'viewapc-mode-system-cache'  => 'Zawartość pamięci podręcznej systemu',
+	'viewapc-mode-user-cache'    => 'Zawartość pamięci podręcznej użytkownika',
+	'viewapc-mode-version-check' => 'Sprawdź wersję',
+	'viewapc-info-general'       => 'Podstawowe informacje',
+	'viewapc-start-time'         => 'Uruchomiony',
+	'viewapc-uptime'             => 'Pracuje przez',
+	'viewapc-upload-support'     => 'Obsługa przesyłania plików na serwer',
+	'viewapc-filecache-info'     => 'Informacje o pamięci podręcznej',
+	'viewapc-usercache-info'     => 'Informacje o pamięci podręcznej użytkownika',
+	'viewapc-hits'               => 'Trafienia',
+	'viewapc-misses'             => 'Chybienia',
+	'viewapc-hitrate'            => 'Tempo trafień',
+	'viewapc-missrate'           => 'Tempo chybień',
+	'viewapc-rps'                => '$1 żądań na sekundę',
+	'viewapc-memory-usage'       => 'Wykorzystanie pamięci',
 );
 
 /** Russian (Русский)
@@ -1169,5 +1216,113 @@ APC verkar inte fungera.',
 Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Filcachen rensad.'''''",
 	'viewapc-usercache-cleared'     => "'''''Appliceringscachen rensad.'''''",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'viewapc'                       => 'Thông tin APC',
+	'viewapc-desc'                  => '[[Special:ViewAPC|Xem và quản lý bộ đệm APC]] bằng MediaWiki',
+	'right-apc'                     => 'Sử dụng tất cả các tính năng trong Special:ViewAPC',
+	'viewapc-apc-not-available'     => 'Không có thông tin về bộ nhớ đệm.
+Dường như APC đang tắt.',
+	'viewapc-clear-confirm'         => 'Bạn có muốn xóa bộ nhớ đệm?',
+	'viewapc-clear-user-cache'      => 'Xóa bộ nhớ đệm người dùng',
+	'viewapc-clear-code-cache'      => 'Xóa bộ nhớ đệm tính toán mã máy',
+	'viewapc-mode-stats'            => 'Xem thống kê máy chủ',
+	'viewapc-mode-system-cache'     => 'Các mục bộ đệm hệ thống',
+	'viewapc-mode-system-cache-dir' => 'Các mục theo từng thư mục',
+	'viewapc-mode-user-cache'       => 'Các mục bộ đệm người dùng',
+	'viewapc-mode-version-check'    => 'Kiểm tra phiên bản',
+	'viewapc-info-general'          => 'Thông tin chung',
+	'viewapc-apc-version'           => 'Phiên bản APC',
+	'viewapc-php-version'           => 'Phiên bản PHP',
+	'viewapc-shared-memory'         => 'Bộ nhớ chia sẻ',
+	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 phân đoạn $2|Mỗi $2 có $1 phân đoạn}}.<br />
+(bộ nhớ $3, đang khóa $4)',
+	'viewapc-start-time'            => 'Thời gian bắt đầu',
+	'viewapc-uptime'                => 'Thời gian tải lên',
+	'viewapc-upload-support'        => 'Hỗ trợ tải tập tin lên',
+	'viewapc-filecache-info'        => 'Thông tin bộ đệm tập tin',
+	'viewapc-usercache-info'        => 'Thông tin bộ đệm người dùng',
+	'viewapc-cached-files'          => 'Tập tin lưu đệm',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|tập tin|tập tin}} ($2)',
+	'viewapc-hits'                  => 'Số trúng',
+	'viewapc-misses'                => 'Số lỡ',
+	'viewapc-requests'              => 'Tỷ lệ yêu cầu',
+	'viewapc-hitrate'               => 'Tỷ lệ trúng',
+	'viewapc-missrate'              => 'Tỷ lệ lỡ',
+	'viewapc-insertrate'            => 'Tỷ lệ chèn',
+	'viewapc-cachefull'             => 'Số đếm đầy bộ đệm',
+	'viewapc-rps'                   => '$1 yêu cầu một giây',
+	'viewapc-info-runtime'          => 'Thời gian chạy',
+	'viewapc-info-memory'           => 'Sơ đồ tình trạng máy chủ',
+	'viewapc-memory-usage-detailed' => 'Bộ nhớ sử dụng<br />
+(các miếng để chỉ các phân đoạn)',
+	'viewapc-memory-usage'          => 'Bộ nhớ sử dụng',
+	'viewapc-cache-efficiency'      => 'Trúng và lỡ',
+	'viewapc-memory-free'           => 'Trống: $1 ($2)',
+	'viewapc-memory-used'           => 'Dùng: $1 ($2)',
+	'viewapc-memory-hits'           => 'Trúng: $1 ($2)',
+	'viewapc-memory-miss'           => 'Lỡ: $1 ($2)',
+	'viewapc-memoryfragmentation'   => 'Bộ nhớ sử dụng và các phân mảnh chi tiết',
+	'viewapc-fragmentation-info'    => 'Phân mảnh: $1 ($2 trên $3 trong tổng số $4 {{PLURAL:$4|phân mảnh|phân mảnh}})',
+	'viewapc-fragmentation-none'    => 'Phân mảnh: không có phân mảnh',
+	'viewapc-display-attribute'     => 'Thuộc tính',
+	'viewapc-display-value'         => 'Giá trị',
+	'viewapc-display-filename'      => 'Tên tập tin',
+	'viewapc-display-device'        => 'Thiết bị',
+	'viewapc-display-info'          => 'Tên',
+	'viewapc-display-ttl'           => 'Thời hạn',
+	'viewapc-display-inode'         => 'Inode',
+	'viewapc-display-type'          => 'Kiểu',
+	'viewapc-display-type-file'     => 'Tập tin lưu đệm',
+	'viewapc-display-type-user'     => 'Dữ liệu ứng dụng lưu đệm',
+	'viewapc-display-num_hits'      => 'Số hit',
+	'viewapc-display-mtime'         => 'Chỉnh sửa',
+	'viewapc-display-creation_time' => 'Khởi tạo',
+	'viewapc-display-deletion_time' => 'Xóa',
+	'viewapc-display-no-delete'     => 'Chưa xóa',
+	'viewapc-display-access_time'   => 'Truy cập',
+	'viewapc-display-ref_count'     => 'Số tham khảo',
+	'viewapc-display-mem_size'      => 'Kích thước',
+	'viewapc-display-stored-value'  => 'Giá trị lưu trữ',
+	'viewapc-ls-options-legend'     => 'Tùy chọn',
+	'viewapc-ls-options'            => 'Tầm vực: $1 Sắp xếp: $2$3$4 Tìm kiếm: $5 $6',
+	'viewapc-ls-submit'             => 'Xem!',
+	'viewapc-ls-header-name'        => 'Tên',
+	'viewapc-ls-header-hits'        => 'Số trúng',
+	'viewapc-ls-header-size'        => 'Kích thước',
+	'viewapc-ls-header-accessed'    => 'Lần truy cập cuối',
+	'viewapc-ls-header-modified'    => 'Lần sửa đổi cuối',
+	'viewapc-ls-header-created'     => 'Khởi tạo',
+	'viewapc-ls-header-deleted'     => 'Xóa',
+	'viewapc-ls-header-timeout'     => 'Hết hạn',
+	'viewapc-ls-delete'             => '[Xóa ngay]',
+	'viewapc-ls-scope-active'       => 'Hoạt động',
+	'viewapc-ls-scope-deleted'      => 'Đã xóa',
+	'viewapc-ls-scope-both'         => 'Cả hai',
+	'viewapc-ls-sort-hits'          => 'Số trúng',
+	'viewapc-ls-sort-size'          => 'Kích thước',
+	'viewapc-ls-sort-name'          => 'Tên',
+	'viewapc-ls-sort-accessed'      => 'Lần truy cập cuối',
+	'viewapc-ls-sort-modified'      => 'Lần sửa đổi cuối',
+	'viewapc-ls-sort-created'       => 'Khởi tạo',
+	'viewapc-ls-sort-deleted'       => 'Xóa',
+	'viewapc-ls-sort-timeout'       => 'Hết hạn',
+	'viewapc-ls-limit-none'         => 'Tất cả',
+	'viewapc-ls-more'               => "''Còn $1 {{PLURAL:$1|mục|mục}} nữa''",
+	'viewapc-ls-nodata'             => "''Không có dữ liệu trùng khớp''",
+	'viewapc-delete-ok'             => 'Đã xóa mục lưu đệm <nowiki>$1</nowiki>.',
+	'viewapc-delete-failed'         => 'Không xóa được mục lưu đệm <nowiki>$1</nowiki>.',
+	'viewapc-version-info'          => 'Thông tin phiên bản',
+	'viewapc-version-changelog'     => 'Nhật trình thay đổi',
+	'viewapc-version-failed'        => 'Không thể truy xuất thông tin phiên bản.',
+	'viewapc-version-ok'            => 'Bạn đang chạy phiên bản mới nhất của APC ($1)',
+	'viewapc-version-old'           => 'Bạn đang chạy một phiên bản cũ của APC ($1).
+Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared'     => "'''''Đã tẩy bộ đệm tập tin.'''''",
+	'viewapc-usercache-cleared'     => "'''''Đã tẩy bộ đệm ứng dụng.'''''",
 );
 

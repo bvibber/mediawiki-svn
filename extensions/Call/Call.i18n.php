@@ -254,7 +254,11 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'call'              => 'Celuk',
+	'call-desc'         => 'Nggawé pranala menyang sawijining cithakan (utawa kaca wiki biasa) nganggo paramèter.
+Bisa dienggo ing baris paréntah panjlajah utawa sajroning tèks wiki.',
+	'call-save'         => "Kasil panyelukan iki bakal disimpen ing sawijining kaca sing diarani ''$1''.",
 	'call-save-success' => 'Tèks sing kapacak ing ngisor iki wis disimpen ing kaca <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Tèks ing ngisor iki ORA disimpen ing kaca <big>[[$1]]</big> amerga kaca iku wis ana.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

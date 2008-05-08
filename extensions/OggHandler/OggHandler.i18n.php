@@ -1137,6 +1137,13 @@ $messages['lb'] = array(
 	'ogg-desc-link'           => 'Iwwer dëse Fichier',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'ogg-more' => 'Plu…',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias

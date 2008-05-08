@@ -1025,6 +1025,7 @@ $messages['jv'] = array(
 	'math_MissingOpenBraceBefore'   => 'Ora ana akolade "{" sadurungé "$1"',
 	'math_NonAsciiInMathMode'       => 'Karakter non-ASCII namung olèh dienggo ing modus tèks
 Coba dokoken karakter sing problematis iki antara "\\text{...}".',
+	'math_NotEnoughArguments'       => 'Ora cukup argumèn sing diwènèhaké kanggo "$1"',
 	'math_PngIncompatibleCharacter' => 'Ora bisa nggawé PNG sacara bener sing ngandhut karakter $1',
 	'math_TooManyTokens'            => 'Input-é kedawan',
 	'math_UnrecognisedCommand'      => 'Paréntah "$1" ora ditepungi',

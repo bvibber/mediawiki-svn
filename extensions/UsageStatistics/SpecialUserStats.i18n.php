@@ -715,6 +715,7 @@ $messages['sv'] = array(
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Veeven
+ * @author Siebrand
  */
 $messages['te'] = array(
 	'specialuserstats'             => 'వాడుక గణాంకాలు',
@@ -732,6 +733,7 @@ $messages['te'] = array(
 	'usagestatisticsintervalday'   => 'రోజు',
 	'usagestatisticsintervalweek'  => 'వారం',
 	'usagestatisticsintervalmonth' => 'నెల',
+	'usagestatisticscumulative'    => 'సంచిత',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

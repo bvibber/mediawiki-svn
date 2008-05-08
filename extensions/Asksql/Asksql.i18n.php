@@ -206,7 +206,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'asksql'          => 'SQL-serĉomendo',
 	'asksql-desc'     => 'Faru SQL-serĉomendoj per [[Special:Asksql|speciala paĝo]]',
-	'sqlislogged'     => 'Bonvolu noti ke ĉiuj serĉomendoj estas listigitaj en la loglibro.',
+	'sqlislogged'     => 'Bonvolu noti ke ĉiuj serĉomendoj estas listigitaj en la protokolo.',
 	'sqlquery'        => 'Entajpu SQL-serĉomendon',
 	'querybtn'        => 'Sendu SQL-serĉomendon',
 	'selectonly'      => 'Nur nurlegecaj serĉomendoj estas permesitaj.',
@@ -708,6 +708,7 @@ Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.",
 	'querybtn'        => 'Reek ju Oufroage ien',
 	'selectonly'      => 'Bloot schrieuwschutsede Oufroagen sunt ferlööwed.',
 	'querysuccessful' => 'Oufroage glukked',
+	'right-asksql'    => 'Uutfierenge fon SQL-Oufroagen',
 );
 
 /** Sundanese (Basa Sunda)

@@ -358,6 +358,8 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'countedits'              => 'Cacahé suntingan',
+	'countedits-warning'      => "'''Pènget:''' Aja mbiji sawijining buku amerga samaké.
+Aja mbiji para kontributor amerga cacah suntingané.",
 	'countedits-username'     => 'Jeneng panganggo:',
 	'countedits-ok'           => 'OK',
 	'countedits-nosuchuser'   => 'Ora ana panganggo mawa jeneng $1.',
@@ -854,6 +856,9 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'countedits'              => 'Đếm các sửa đổi',
+	'countedits-desc'         => '[[Special:CountEdits|Trang đặc biệt]] đếm số lần sửa đổi của thành viên và hiển thị danh sách mười người đóng góp nhiều nhất',
+	'countedits-warning'      => "'''Chú ý:''' Đừng trông mặt mà bắt hình dong.
+Đừng đánh giá thành viên chỉ qua số lượng đóng góp của họ.",
 	'countedits-username'     => 'Tên người dùng:',
 	'countedits-ok'           => 'Đếm',
 	'countedits-nosuchuser'   => 'Không có thành viên với tên $1.',

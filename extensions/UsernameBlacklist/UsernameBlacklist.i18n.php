@@ -115,6 +115,14 @@ $messages['be'] = array(
 	'usernameblacklist-invalid-lines' => 'Наступны{{PLURAL:$1| радок|я радкі}} ў "чорным спісе" ўдзельнікаў некарэктны{{PLURAL:$1||я}}; папраўце {{PLURAL:$1|яго|іх}} перад запісваннем:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'blacklistedusername'     => 'Забароненае імя ўдзельніка',
+	'blacklistedusernametext' => 'Імя ўдзельніка, якое Вы абралі, знаходзіцца ў [[MediaWiki:Usernameblacklist|сьпісе забароненых]]. Калі ласка, абярыце іншае імя ўдзельніка.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Borislav
@@ -1102,6 +1110,7 @@ $messages['vi'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Dòng|Những dòng}} sau đây trong Danh sách đen về tên người dùng bị sai; xin hãy sửa chữa {{PLURAL:$1|nó|chúng}} trước khi lưu:',
+	'right-uboverride'                => 'Bỏ qua danh sách tên người dùng bị cấm',
 );
 
 /** Cantonese

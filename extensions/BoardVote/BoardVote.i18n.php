@@ -2562,6 +2562,13 @@ $messages['lez'] = array(
 	'boardvote_welcome'    => "Ша буюр '''$1'''!",
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'boardvote_user' => 'Usor',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias
@@ -3870,6 +3877,7 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_redirecting'  => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
+	'right-boardvote'        => 'Woalen administrierje',
 );
 
 /** Sundanese (Basa Sunda)

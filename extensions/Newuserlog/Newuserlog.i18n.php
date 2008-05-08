@@ -257,12 +257,12 @@ $messages['eml'] = array(
 );
 
 /** Esperanto (Esperanto)
- * @author Tlustulimu
  * @author Yekrats
+ * @author Tlustulimu
  */
 $messages['eo'] = array(
-	'newuserlogpage'           => 'Uzantokreada loglibro',
-	'newuserlogpagetext'       => 'Ĉi tio estas loglibro de uzantokreadoj',
+	'newuserlogpage'           => 'Protokolo de uzanto-kreado',
+	'newuserlogpagetext'       => 'Ĉi tio estas protokolo de uzantokreadoj',
 	'newuserlog-byemail'       => 'pasvorto sendita retpoŝte',
 	'newuserlog-create-entry'  => 'Nova uzanto',
 	'newuserlog-create2-entry' => 'kreis konton por $1',

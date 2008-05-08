@@ -21,6 +21,13 @@ $messages['de'] = array(
 	'preloader-desc' => 'Ermöglicht das Hinzufügen pro Namensraum anpassbarer Vorlagen bei der Erstellung neuer Seiten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'preloader-desc' => 'Provizas ŝanĝeblan norman tekston laŭ nomspaco por novaj paĝoj',
+);
+
 /** French (Français)
  * @author Grondin
  */

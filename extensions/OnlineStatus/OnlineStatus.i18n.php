@@ -145,7 +145,12 @@ $messages['hr'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'onlinestatus-toggles-desc' => 'Status panjenengan:',
+	'onlinestatus-subtitle-offline' => "Panganggo iki saiki lagi ana sajabaning jaringan (''offline'')",
+	'onlinestatus-subtitle-online'  => "Panganggo iki saiki lagi ana sajroning jaringan (''online'')",
+	'onlinestatus-toggles-desc'     => 'Status panjenengan:',
+	'onlinestatus-toggles-show'     => "Tuduhna status \"sajroning jaringan\" (''online'') ing kaca panganggoku",
+	'onlinestatus-toggle-offline'   => "Sajabaning jaringan (''offline'')",
+	'onlinestatus-toggle-online'    => "Sajroning jaringan (''online'')",
 );
 
 /** Luxembourgish (Lëtzebuergesch)

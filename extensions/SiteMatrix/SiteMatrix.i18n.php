@@ -686,6 +686,13 @@ $messages['lb'] = array(
 	'sitematrix-fishbowl'  => 'ännere limitéiert',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'sitematrix-language' => 'Lingua',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias
@@ -1171,6 +1178,7 @@ $messages['vi'] = array(
 	'sitematrix-others'    => 'Các dự án khác của Wikimedia',
 	'sitematrix-total'     => "'''Tổng cộng: $1'''",
 	'sitematrix-sitetotal' => 'Tổng cộng',
+	'sitematrix-private'   => 'riêng tư',
 	'sitematrix-fishbowl'  => 'hạn chế sửa đổi',
 );
 

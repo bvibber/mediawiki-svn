@@ -258,10 +258,12 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'multipleupload'              => 'Ngunggahaké berkas',
-	'multipleupload-saveallfiles' => 'Simpen kabèh berkas',
-	'multiupload-fileuploaded'    => 'Berkas diunggahaké.',
-	'multiupload-toolbox'         => 'Unggahna akèh berkas',
+	'multipleupload'                   => 'Ngunggahaké berkas',
+	'multipleupload-ignoreallwarnings' => "Lirwakna '''kabèh pèngetan''' lan simpenen berkas-berkasé kepriyé waé.",
+	'multipleupload-saveallfiles'      => 'Simpen kabèh berkas',
+	'multipleupload-page'              => '{{ns:project}}:Kawicaksanan pambusakan berkas',
+	'multiupload-fileuploaded'         => 'Berkas diunggahaké.',
+	'multiupload-toolbox'              => 'Unggahna akèh berkas',
 );
 
 /** Khmer (ភាសាខ្មែរ)

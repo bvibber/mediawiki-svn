@@ -737,9 +737,15 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'scanset-desc'         => 'Перегляд зображень відсканованих сторінок із CD/DVD-колекцій Андреаша Гроса (Andreas Grosz)',
-	'scanset_invalid_name' => 'ScanSet: помилка в назві набору знімків, або зазначений набір відсутній.',
-	'scanset_next'         => 'Наступна &gt;',
+	'scanset-desc'                      => 'Перегляд зображень відсканованих сторінок із CD/DVD-колекцій Андреаша Гроса (Andreas Grosz)',
+	'scanset_no_name'                   => 'ScanSet: ви повинні зазначити назву колекції знімків, наприклад &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: помилка в назві набору знімків, або зазначений набір відсутній.',
+	'scanset_unrecognised_index_format' => 'ScanSet: невідомий формат індексу',
+	'scanset_opendir_error'             => 'ScanSet: помилка, неможливо відкрити директорію $1',
+	'scanset_no_files'                  => 'ScanSet: не знайдено файлів у зазначеній директорії.',
+	'scanset_no_volumes'                => 'ScanSet: не знайдено директорій для томів',
+	'scanset_missing_index_file'        => 'ScanSet: індексний файл $1 не знайдений',
+	'scanset_next'                      => 'Наступна &gt;',
 );
 
 /** Vèneto (Vèneto)
@@ -761,14 +767,22 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'scanset-desc'           => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
-	'scanset_invalid_name'   => 'ScanSet: Bộ trang quét không hợp lệ hay không tồn tại.',
-	'scanset_invalid_volume' => 'ScanSet: Quyển không hợp lệ',
-	'scanset_next'           => 'Sau →',
-	'scanset_prev'           => '← Trước',
+	'scanset-desc'                      => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: Bạn hãy chỉ rõ một tên tập để quét, ví dụ &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Bộ trang quét không hợp lệ hay không tồn tại.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Không biết định dạng chỉ số này',
+	'scanset_opendir_error'             => 'ScanSet: Lỗi, không thể mở thư mục $1',
+	'scanset_no_files'                  => 'ScanSet: Không có tập tin nào trong thư mục chỉ định.',
+	'scanset_no_volumes'                => 'ScanSet: Không tìm thấy gói thư mục',
+	'scanset_missing_index_file'        => 'ScanSet: Không tìm thấy tập tin chỉ số $1',
+	'scanset_index_file_error'          => 'ScanSet: Lỗi trong định dạng tập tin chỉ số tại dòng $1',
+	'scanset_invalid_volume'            => 'ScanSet: Quyển không hợp lệ',
+	'scanset_next'                      => 'Sau →',
+	'scanset_prev'                      => '← Trước',
 );
 
 /** Volapük (Volapük)

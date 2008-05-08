@@ -420,6 +420,7 @@ $messages['jv'] = array(
 	'patrol-revert'        => 'Balèkna',
 	'patrol-revert-reason' => 'Alesan:',
 	'patrol-reverting'     => 'Mbalèkaké: $1',
+	'patrol-reverted-ok'   => 'Suntingané dibalèkaké.',
 	'patrol-skipped-ok'    => 'Nglirwakaké suntingan.',
 	'patrol-reasons'       => '* Vandalisme biasa
 * Tès pamula

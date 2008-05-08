@@ -393,7 +393,19 @@ $messages['km'] = array(
 	'youtubeauthsub_category'            => 'ចំនាត់ថ្នាក់ក្រុម',
 	'youtubeauthsub_submit'              => 'ស្នើឡើង',
 	'youtubeauthsub_clickhere'           => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
+	'youtubeauthsub_success'             => "សូមអបអរសាទរ!
+
+វីដេអូរបស់អ្នកបានផ្ទុកឡើងហើយ។
+
+ដើម្បីមើលវីដេអូរបស់អ្នក សូមចុច<a href='http://www.youtube.com/watch?v=$1'>ទីនេះ</a>។
+
+យូធ្យូប(YouTube)អាចត្រូវការពេលវេលាមួយរយៈដើម្បីរៀបចំវីដេអូនេះ។ ហេតុនេះវាអាចនឹងមិនទាន់អាចមើលបានទេនៅពេលនេះ។
+
+ដើម្បីបញ្ជូលវីដេអូរបស់អ្នកទៅក្នុងទំព័រមួយរបស់វិគី សូមចំលងកូដខាងក្រោមបញ្ជូលទៅក្នុងទំព័រនោះ៖
+
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'ដើម្បីផ្ទុកវីដេអូឡើង អ្នកនឹងត្រូវឡុកអ៊ីនទៅក្នុងយូធ្យូប(YouTube)ជាមុនសិន។',
+	'youtubeauthsub_uploadhere'          => 'ផ្ទុកឡើងវីដេអូរបស់អ្នកពីទីនេះ៖',
 	'youtubeauthsub_uploadbutton'        => 'ផ្ទុកឡើង',
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}។
 
@@ -401,6 +413,8 @@ $messages['km'] = array(
 	'youtubeauthsub_summary'             => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
 	'youtubeauthsub_uploading'           => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
 សូម​មានការអត់ធ្មត់។',
+	'youtubeauthsub_viewpage'            => 'ម្យ៉ាងវិញទៀត អ្នកក៏អាចមើលវីដេអូរបស់អ្នក[[$1|ទីនេះ]]។',
+	'youtubeauthsub_jserror_nokeywords'  => 'សូមបញ្ជូលពាក្យគន្លឹះមួយឬច្រើន',
 	'youtubeauthsub_jserror_notitle'     => 'សូមដាក់ចំនងជើងអោយវីដេអូ។',
 	'youtubeauthsub_jserror_nodesc'      => 'សូមសរសេរការពិពណ៌នាអោយវីដេអូ។',
 );

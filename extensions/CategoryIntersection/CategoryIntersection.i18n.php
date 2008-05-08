@@ -154,9 +154,10 @@ $messages['is'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'categoryintersection'         => 'Intersèksi Kategori',
-	'categoryintersection-doit'    => 'Deleng kaca-kaca ing kabèh kategori iki',
-	'categoryintersection-results' => 'Panggolèkan iki ngasilaké $1 {{PLURAL:$1|pituwas|pituwas}}.',
+	'categoryintersection'               => 'Intersèksi Kategori',
+	'categoryintersection-doit'          => 'Deleng kaca-kaca ing kabèh kategori iki',
+	'categoryintersection-maxcategories' => 'Cacahé intersèksi kategori sing diparengaké yaiku $1.',
+	'categoryintersection-results'       => 'Panggolèkan iki ngasilaké $1 {{PLURAL:$1|pituwas|pituwas}}.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

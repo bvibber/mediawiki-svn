@@ -299,6 +299,14 @@ $messages['th'] = array(
 	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'contributionseditcount'      => 'Thành viên này có $1 lần sửa đổi.',
+	'contributionseditcount-desc' => 'Hiển thị số lần sửa đổi tại [[Special:Contributions]]',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

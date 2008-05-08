@@ -78,3 +78,10 @@ $messages['sv'] = array(
 	'gotocategory-desc' => 'Checkar sökord upp mot kategorinamnrymden för "Gå"-funktionaliteten i sökboxen',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'gotocategory-desc' => "Kiểm tra cụm từ tìm kiếm trong không gian tên Thể loại: để dùng cho chức năng Xem 'nhảy ngay tới trang'",
+);
+

@@ -211,6 +211,8 @@ $messages['jv'] = array(
 	'tasklistincorrectuser'  => 'Jeneng panganggo ora bener',
 	'tasklistemail'          => '%s sing minulya',
 	'tasklistmytasks'        => 'Tugas-tugasku',
+	'tasklistbyprojectbad'   => "Proyèk '''%s''' iku dudu proyèk absah.
+Kanggo daftar proyèk-proyèk sing absah, mangga mirsani [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'     => "Mènèhi Tugas-Tugas kanggo '''%s'''",
 	'tasklistchooseproj'     => 'Pilihen Proyèk:',
 	'tasklistprojdisp'       => 'Ndeleng',
