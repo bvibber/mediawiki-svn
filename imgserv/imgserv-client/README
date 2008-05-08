@@ -1,0 +1,4 @@
+This is the imgserv client.  It works with the imgserv server which is found in
+../imgserv-server.
+
+It is written in C++ and only runs on Unix.
