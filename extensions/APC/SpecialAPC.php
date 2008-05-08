@@ -75,6 +75,10 @@ class SpecialAPC extends SpecialPage {
 
 		// clear cache
 		if ( $this->opts->consumeValue( 'clearcache' ) ) {
+			if ( !$wgUser->isAllowed( 'apc' ) ) {
+				$wgOut->permissionRequired( 'apc' );
+				return;
+			}
 			$usermode = $this->opts->getValue( 'mode' ) === self::MODE_USER_CACHE;
 			$mode = $usermode ? 'user' : 'opcode';
 			apc_clear_cache( $mode );
@@ -87,6 +91,10 @@ class SpecialAPC extends SpecialPage {
 
 		$delete = $this->opts->consumeValue( 'delete' );
 		if ( $delete ) {
+			if ( !$wgUser->isAllowed( 'apc' ) ) {
+				$wgOut->permissionRequired( 'apc' );
+				return;
+			}
 			$result = apc_delete( $delete );
 			if ( $result ) {
 				$wgOut->addWikiMsg( 'viewapc-delete-ok', $delete );
@@ -150,7 +158,10 @@ class SpecialAPC extends SpecialPage {
 	}
 
 	protected function mainMenu() {
-
+		global $wgUser;
+		if ( !$wgUser->isAllowed( 'apc' ) ) {
+			return;
+		}
 
 		$clearParams = array(
 			'clearcache' => 1,
