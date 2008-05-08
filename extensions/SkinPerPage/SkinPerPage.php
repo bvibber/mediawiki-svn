@@ -1,4 +1,9 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
+
+/**
+ * @addtogroup Extensions
+ */
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Skin per page',
@@ -23,7 +28,7 @@ class SkinPerPage {
 		$parser->mOutput->spp_skin = trim( $text );
 		return '';
 	}
-	
+
 	static function outputHook( $out, $parserOutput ) {
 		global $wgUser;
 		if ( isset( $parserOutput->spp_skin ) ) {
