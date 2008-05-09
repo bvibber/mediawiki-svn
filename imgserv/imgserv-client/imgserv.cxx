@@ -6,6 +6,7 @@
 #include	<ios>
 #include	<sstream>
 #include	<vector>
+#include	<iterator>
 
 #include	<sys/types.h>
 #include	<sys/socket.h>
@@ -25,6 +26,7 @@ namespace {
 	void usage();
 	int safe_write(int s, void *data, size_t n);
 	std::string extract_extension(std::string const &);
+	void dump_data(char *data, std::size_t n);
 
 }
 
@@ -197,63 +199,118 @@ int	c;
 	std::cerr << "done, " << wr << " bytes\n";
 	std::cerr << "% Waiting for reply...";
 
-	/*
-	 * The reply is either "OK <size>\r\n<data>", or "ERROR <message>\r\n";
-	 */
-	int offs = 0;
-	std::fill(v.begin(), v.end(), 0);
+	enum {
+		READING_STATUS,
+		READING_CHUNK_SIZE,
+		READING_CHUNK
+	} state = READING_STATUS;
+	int chunksize;
+	int bufpos = 0;
+	int buflen = 0;
+	ssize_t z;
+	std::string s;
+	std::vector<char>::iterator it, bufstart, bufend;
+	static std::string const rn = "\r\n";
+	std::size_t outsize = 0;
+
 	for (;;) {
-		ssize_t r;
-		r = read(sock, &buf[0] + offs, buf.size() - offs - 1);
-		if (r == -1) {
-			std::cerr << "read error: " <<
-				std::strerror(errno) << '\n';
-			return 1;
-		}
-
-		if (r == 0) {
-			std::cerr << "unexpected end of file\n";
-			return 1;
-		}
-
-		offs += r;
-
-		char *rn = std::strstr(&buf[0], "\r\n");
-		if (rn != NULL) {
-			if (std::memcmp(&buf[0], "ERROR ", 6) == 0) {
-				std::cerr << "server error: "
-					<< std::string(&buf[0] + 6, rn)
-					<< '\n';
+		if (buflen == 0) {
+			z = read(sock, &buf[0], buf.size());
+			if (z == -1) {
+				std::cerr << "% Read error from server: "
+					<< std::strerror(errno) << '\n';
 				return 1;
-			} else if (std::memcmp(&buf[0], "OK ", 3) == 0) {
-				std::cerr << "ok\n";
-				outfile.write(rn + 2, 
-					(&buf[0] + offs) - (rn + 2));
-				break;
+			} else if (z == 0) {
+				std::cerr << "% Unexpected EOF from server.\n";
+				return 1;
 			}
+
+			//dump_data(&buf[0], z);
+			buflen = z;
+			bufpos = 0;
 		}
 
-		if (offs > 256) {
-			std::cerr << "too much garbage before reply.\n";
-			return 1;
-		}
-	}
+		bufstart = buf.begin() + bufpos;
+		bufend = buf.begin() + buflen - bufpos;
 
-	ssize_t outsize = 0;
-	for (;;) {
-		ssize_t n;
-		if ((n = read(sock, &buf[0], buf.size())) == -1) {
-			std::cerr << "read error: " << 
-				std::strerror(errno) << '\n';
-			return 1;
-		}
+		switch (state) {
+		case READING_STATUS:
+			it = std::search(bufstart, bufend,
+					rn.begin(), rn.end());
+			if (it != bufend) {
+				int len = std::distance(bufstart, it);
+				s.insert(s.end(), bufstart, it);
+				bufpos += len + 2;
+				buflen -= len + 2;
+				if (s == "OK") {
+					std::cout << "ok.\n";
+				} else {
+					if (s.substr(0, 5) == "ERROR") {
+						std::cout << "error: " << s.substr(6) << '\n';
+					} else {
+						std::cout << "error: unknown status\n";
+					}
+					return 1;
+				}
 
-		if (n == 0)
+				state = READING_CHUNK_SIZE;
+				s = "";
+				continue;
+			} else {
+				if (s.size() + buflen > 8192) {
+					std::cout << "error: header too long\n";
+					return 1;
+				}
+
+				s.insert(s.end(), bufstart, bufend);
+				buflen = bufpos = 0;
+			}
 			break;
 
-		outsize += n;
-		outfile.write(&buf[0], n);
+		case READING_CHUNK_SIZE:
+			i = 4 - s.size();
+			while (i && buflen) {
+				s += buf[bufpos];
+				bufpos++;
+				buflen--;
+				i--;
+			}
+
+			if (i == 0) {
+				chunksize = std::strtol(s.c_str(), NULL, 16);
+				if (chunksize == 0)
+					goto done;
+				state = READING_CHUNK;
+				s = "";
+			}
+			continue;
+
+		case READING_CHUNK:
+			it = bufstart + std::min(chunksize, buflen);
+			std::copy(bufstart, it, std::ostream_iterator<char>(outfile));
+			outsize += std::distance(bufstart, it);
+
+			if (buflen >= chunksize) {
+				/* finished this chunk */
+				buflen -= chunksize;
+				bufpos += chunksize;
+				state = READING_CHUNK_SIZE;
+			} else {
+				chunksize -= buflen;
+				bufpos = buflen = 0;
+
+				if (chunksize == 0) {
+					state = READING_CHUNK_SIZE;
+					continue;
+				}
+			}
+			continue;
+
+		default:
+			abort();
+		}
 	}
+done:;
 
 	std::cerr << "% Wrote " << outsize << " bytes to " << argv[1] << '\n';
 }
@@ -289,6 +346,15 @@ extract_extension(std::string const &fname)
 	if ((n = fname.rfind('.')) == std::string::npos)
 		return "";
 	return fname.substr(n + 1);
+}
+
+void
+dump_data(char *s, std::size_t n) 
+{
+	while (n--) {
+		std::printf("%02x", (int)(unsigned char)*s);
+		s++;
+	}
 }
 
 }

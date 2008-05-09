@@ -46,7 +46,12 @@ grant codeBase "file:\${here}/lib/-" {
         permission java.io.FilePermission "\${here}/lib/-", "read";
 };
 EOF
-java -Djava.security.manager -Djava.security.policy=imgserv.policy -jar imgserv-server.jar "\$@"
+exec java -Djava.security.manager -Djava.security.policy=imgserv.policy -jar imgserv-server.jar "\$@"
+__EOF__
+
+cat >bin/run.sh <<__EOF__
+#! /bin/sh
+exec nohup bin/start.sh "\$@" &
 __EOF__
 
 chmod 755 bin/start.sh
