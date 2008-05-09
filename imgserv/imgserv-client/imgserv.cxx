@@ -24,6 +24,7 @@ namespace {
 
 	void usage();
 	int safe_write(int s, void *data, size_t n);
+	std::string extract_extension(std::string const &);
 
 }
 
@@ -60,6 +61,16 @@ int	c;
 	argc -= optind;
 	argv += optind;
 
+	if (argc != 2) {
+		usage();
+		return 1;
+	}
+
+	if (informat.empty())
+		informat = extract_extension(argv[0]);
+	if (outformat.empty())
+		outformat = extract_extension(argv[1]);
+
 	if (informat.empty()) {
 		std::cerr << "% No input format specified.\n";
 		usage();
@@ -74,11 +85,6 @@ int	c;
 
 	if (port == 0) {
 		std::cerr << "% Invalid port specified.\n";
-		usage();
-		return 1;
-	}
-
-	if (argc < 2) {
 		usage();
 		return 1;
 	}
@@ -257,7 +263,7 @@ namespace {
 void 
 usage()
 {
-	std::cerr << "usage: " << prognam << " -i <informat> -o <outformat> [-p port] [-s server] [-w width] [-h height] <infile> <outfile>\n";
+	std::cerr << "usage: " << prognam << " [-i <informat>] [-o <outformat>] [-p port] [-s server] [-w width] [-h height] <infile> <outfile>\n";
 }
 
 int
@@ -274,6 +280,15 @@ safe_write(int s, void *data, size_t n)
 	}
 
 	return 0;
+}
+
+std::string
+extract_extension(std::string const &fname)
+{
+	std::string::size_type n;
+	if ((n = fname.rfind('.')) == std::string::npos)
+		return "";
+	return fname.substr(n + 1);
 }
 
 }
