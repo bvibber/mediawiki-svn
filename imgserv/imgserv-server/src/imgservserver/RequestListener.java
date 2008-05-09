@@ -11,6 +11,7 @@
 package imgservserver;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -20,7 +21,11 @@ public class RequestListener {
 	
 	public RequestListener(Configuration c) throws IOException {
 		config = c;
-		sock = new ServerSocket(c.getPort());
+		InetAddress bind = config.getBindAddress();
+		if (bind == null)
+			sock = new ServerSocket(c.getPort(), 10);
+		else
+			sock = new ServerSocket(c.getPort(), 10, bind);
 	}
 	
 	public void run() throws IOException {

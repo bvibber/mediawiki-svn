@@ -7,3 +7,7 @@ usepngds=true
 # Temporary directory.  Must be set if you use pngds, otherwise it's
 # ignored.
 tmpdir=/tmp
+
+# Port and IP to bind to.
+port=8765
+bind=localhost
