@@ -480,6 +480,7 @@ $messages['fa'] = array(
 	'group-oversight'             => 'ناظران',
 	'group-oversight-member'      => 'ناظر',
 	'grouppage-oversight'         => '{{ns:project}}:ناظر',
+	'right-oversight'             => 'مشاهدهٔ نسخه‌ای که قبلاً پنهان شده',
 	'hiderevision-prompt'         => 'شماره نسخه‌ای که حذف می‌شود:',
 	'hiderevision-continue'       => 'ادامه',
 	'hiderevision-text'           => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
