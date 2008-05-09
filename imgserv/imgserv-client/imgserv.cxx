@@ -22,6 +22,7 @@ namespace {
 	int width, height;
 	std::string server = "localhost";
 	int port = 8765;
+	int verbose;
 
 	void usage();
 	int safe_write(int s, void *data, size_t n);
@@ -35,7 +36,7 @@ main(int argc, char **argv)
 {
 int	c;
 	prognam = argv[0];
-	while ((c = getopt(argc, argv, "i:o:s:p:w:h:")) != -1) {
+	while ((c = getopt(argc, argv, "i:o:s:p:w:h:v")) != -1) {
 		switch (c) {
 		case 'i':
 			informat = optarg;
@@ -54,6 +55,9 @@ int	c;
 			break;
 		case 'p':
 			port = atoi(optarg);
+			break;
+		case 'v':
+			verbose++;
 			break;
 		default:
 			usage();
@@ -112,7 +116,7 @@ int	c;
 		return 1;
 	}
 
-	int sock, i;
+	int sock = -1, i;
 	struct addrinfo hints, *res, *r;
 	std::memset(&hints, 0, sizeof(hints));
 	hints.ai_socktype = SOCK_STREAM;
@@ -138,25 +142,34 @@ int	c;
 		else
 			canon = hostname;
 
-		std::cerr << "% Trying " << canon << " (" <<
-			hostname << ") port " << portname << "... " << std::flush;
+		if (verbose)
+			std::cerr << "% Trying " << hostname << ":" << portname << "...\n";
 		if ((sock = socket(r->ai_family, r->ai_socktype, r->ai_protocol)) == -1) {
-			std::cerr << "failed: " << std::strerror(errno) << '\n';
+			std::cerr << "% Connection to " << hostname <<
+				":" << port << " failed: " << std::strerror(errno) << '\n';
+			sock = -1;
 			continue;
 		}
 
 		if (connect(sock, r->ai_addr, r->ai_addrlen) == -1) {
-			std::cerr << "failed: " << std::strerror(errno) << '\n';
+			std::cerr << "% Connection to " << hostname <<
+				":" << port << " failed: " << std::strerror(errno) << '\n';
 			close(sock);
+			sock = -1;
 			continue;
 		}
 
-		std::cerr << "connected.\n";
+		if (verbose)
+			std::cerr << "% Connected.\n";
 		freeaddrinfo(res);
 		break;
 	}
 
-	std::cerr << "% Writing input file to server... " << std::flush;
+	if (sock == -1)
+		return 1;
+
+	if (verbose)
+		std::cerr << "% Writing input file to server.\n";
 
 	std::ostringstream strm;
 	strm 	<< "INFORMAT " << informat << "\r\n"
@@ -183,7 +196,7 @@ int	c;
 		insize -= infile.gcount();
 
 		if (insize < 0) {
-			std::cerr << "input file was too long!\n";
+			std::cerr << "% Input file was too long!\n";
 			return 1;
 		}
 
@@ -192,12 +205,14 @@ int	c;
 	}
 
 	if (insize) {
-		std::cerr << "input file was too short!\n";
+		std::cerr << "% Input file was too short!\n";
 		return 1;
 	}
 
-	std::cerr << "done, " << wr << " bytes\n";
-	std::cerr << "% Waiting for reply...";
+	if (verbose) {
+		std::cerr << "% Done, bytes written = " << wr << '\n';
+		std::cerr << "% Waiting for reply...\n";
+	}
 
 	enum {
 		READING_STATUS,
@@ -243,12 +258,13 @@ int	c;
 				bufpos += len + 2;
 				buflen -= len + 2;
 				if (s == "OK") {
-					std::cout << "ok.\n";
+					if (verbose)
+						std::cout << "% Server reports: success.\n";
 				} else {
 					if (s.substr(0, 5) == "ERROR") {
-						std::cout << "error: " << s.substr(6) << '\n';
+						std::cout << "% Server error: " << s.substr(6) << '\n';
 					} else {
-						std::cout << "error: unknown status\n";
+						std::cout << "% Server error: unknown status\n";
 					}
 					return 1;
 				}
@@ -258,7 +274,7 @@ int	c;
 				continue;
 			} else {
 				if (s.size() + buflen > 8192) {
-					std::cout << "error: header too long\n";
+					std::cout << "% Protocol error: header too long\n";
 					return 1;
 				}
 
@@ -312,7 +328,8 @@ int	c;
 	}
 done:;
 
-	std::cerr << "% Wrote " << outsize << " bytes to " << argv[1] << '\n';
+	if (verbose)
+		std::cerr << "% Wrote " << outsize << " bytes to " << argv[1] << '\n';
 }
 
 namespace {
@@ -320,7 +337,7 @@ namespace {
 void 
 usage()
 {
-	std::cerr << "usage: " << prognam << " [-i <informat>] [-o <outformat>] [-p port] [-s server] [-w width] [-h height] <infile> <outfile>\n";
+	std::cerr << "usage: " << prognam << " [-v] [-i <informat>] [-o <outformat>] [-p port] [-s server] [-w width] [-h height] <infile> <outfile>\n";
 }
 
 int
