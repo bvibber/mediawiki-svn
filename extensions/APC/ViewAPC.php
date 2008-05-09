@@ -11,7 +11,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Apc',
-	'version'        => '2008-05-08',
+	'version'        => '2008-05-09',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'viewapc-desc',
 );

@@ -74,7 +74,8 @@ class SpecialAPC extends SpecialPage {
 
 
 		// clear cache
-		if ( $this->opts->consumeValue( 'clearcache' ) ) {
+		if ( $this->opts->getValue( 'clearcache' ) ) {
+			$this->opts->setValue( 'clearcache', '' ); //TODO: reset
 			if ( !$wgUser->isAllowed( 'apc' ) ) {
 				$wgOut->permissionRequired( 'apc' );
 				return;
@@ -89,8 +90,9 @@ class SpecialAPC extends SpecialPage {
 			}
 		}
 
-		$delete = $this->opts->consumeValue( 'delete' );
+		$delete = $this->opts->getValue( 'delete' );
 		if ( $delete ) {
+			$this->opts->setValue( 'delete', '' ); //TODO: reset
 			if ( !$wgUser->isAllowed( 'apc' ) ) {
 				$wgOut->permissionRequired( 'apc' );
 				return;
@@ -121,13 +123,13 @@ class SpecialAPC extends SpecialPage {
 	}
 
 	protected function getSelfURL( $overrides ) {
-		$changed = $this->opts->getUnconsumedValues();
+		$changed = $this->opts->getChangedValues();
 		$target = $this->title->getLocalURL( wfArrayToCGI( $overrides, $changed ) );
 		return $target;
 	}
 
 	protected function selfLink2( $title, $overrides ) {
-		$changed = $this->opts->getUnconsumedValues();
+		$changed = $this->opts->getChangedValues();
 		$target = $this->title->getLocalURL( wfArrayToCGI( $overrides, $changed ) );
 		return Xml::tags( 'a', array( 'href' => $target ), $title );
 	}

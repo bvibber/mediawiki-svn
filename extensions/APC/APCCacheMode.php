@@ -74,7 +74,7 @@ class APCCacheMode {
 
 	// sortable table header in "scripts for this host" view
 	protected function sortHeader( $title, $overrides ) {
-		$changed = $this->opts->getUnconsumedValues();
+		$changed = $this->opts->getChangedValues();
 		$target = $this->title->getLocalURL( wfArrayToCGI( $overrides, $changed ) );
 		return Xml::tags( 'a', array( 'href' => $target ), $title );
 	}
@@ -240,9 +240,6 @@ class APCCacheMode {
 			Xml::openElement( 'form', array( 'action' => $wgScript ) );
 
 		$s .= Xml::hidden( 'title', $this->title->getPrefixedText() );
-		foreach ( $this->opts->getUnconsumedValues() as $key => $value ) {
-			$s .= Xml::hidden( $key, $value );
-		}
 
 		$options = array();
 		$scope = $this->opts->consumeValue( 'scope' );
@@ -279,8 +276,12 @@ class APCCacheMode {
 		$limitSelector = Xml::tags( 'select', array( 'name' => 'limit' ), implode( "\n", $options ) );
 
 
-		$searchBox = Xml::input( 'searchi', 25, $this->opts->getValue( 'searchi' ) );
+		$searchBox = Xml::input( 'searchi', 25, $this->opts->consumeValue( 'searchi' ) );
 		$submit = Xml::submitButton( wfMsg( 'viewapc-ls-submit' ) );
+
+		foreach ( $this->opts->getUnconsumedValues() as $key => $value ) {
+			$s .= Xml::hidden( $key, $value );
+		}
 
 		$s .= wfMsgHtml( 'viewapc-ls-options', $scopeSelector, $sortSelector,
 			$sortdirSelector, $limitSelector, $searchBox, $submit );
