@@ -194,6 +194,13 @@ $messages['lb'] = array(
 	'profiling-no-data'      => 'Näischt fonnt vun dem wat Dir gesicht hutt.',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'profiling-ok' => 'Oce',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -464,6 +464,13 @@ $messages['lb'] = array(
 	'countedits-nocontribs'   => 'Keng Ännerungen op dëser Wiki.',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'countedits-ok' => 'Oce',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */

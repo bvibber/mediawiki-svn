@@ -237,6 +237,14 @@ $messages['hy'] = array(
 	'backforth-prev' => 'Նախորդ ($1)',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'backforth-next' => 'Sequanta ($1)',
+	'backforth-prev' => 'Antea ($1)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -316,9 +324,11 @@ $messages['lt'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'backforth-next' => 'അടുത്ത ($1)',
+	'backforth-desc' => 'താളുകളുടെ മുകളില്‍ "അടുത്തത്" "മുന്‍പുള്ളത്" എന്നീ നാവിഗേഷണല്‍ കണ്ണികള്‍ ചേര്‍ക്കുന്നു',
 	'backforth-prev' => 'മുന്നെയുള്ള ($1)',
 );
 

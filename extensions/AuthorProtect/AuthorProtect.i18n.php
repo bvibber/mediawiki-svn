@@ -215,6 +215,13 @@ $messages['hi'] = array(
 	'restriction-level-author' => 'लेखक-सुरक्षित',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'authorprotect-reason' => 'Motivo',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

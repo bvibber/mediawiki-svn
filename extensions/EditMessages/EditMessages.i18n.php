@@ -230,6 +230,8 @@ $messages['hu'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'editmessages'       => 'Sunting pesent',
+	'editmsg-target'     => 'Pesen tujuan:',
 	'editmsg-search'     => 'Golèk',
 	'editmsg-new-search' => 'Panggolèkan anyar',
 );

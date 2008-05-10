@@ -368,6 +368,13 @@ $allMessages['hu'] = array(
 	'whitelisttablemodifynone' => 'Nincs',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$allMessages['is'] = array(
+	'whitelistnever' => 'aldrei',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -181,6 +181,13 @@ $messages['hu'] = array(
 	'randomincategory-submit'     => 'Menj',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'randomincategory-label' => 'Flokkur:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

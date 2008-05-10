@@ -122,6 +122,13 @@ $messages['hu'] = array(
 	'msfunc_div_zero' => 'Nullával való osztás',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'msfunc_div_zero' => 'Divido per zero',
+);
+
 $messages['it'] = array(
         'msfunc_nan' => "Il risultato non è un numero" ,
         'msfunc_inf' => "Il risultato è infinito" ,

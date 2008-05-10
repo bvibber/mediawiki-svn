@@ -455,7 +455,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'deletedcontributions' => 'د کارونکي ونډې ړنګې شوې',
+	'deletedcontributions'      => 'د کارونکي ونډې ړنګې شوې',
+	'deletedcontributions-desc' => 'يو پازوال په دې توانوي چې د يوه کارونکي [[Special:DeletedContributions|ړنګ شوي سمادېدنې وڅاري]]',
 );
 
 /** Portuguese (Português)

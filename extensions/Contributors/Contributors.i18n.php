@@ -479,6 +479,7 @@ $messages['km'] = array(
 	'contributors-legend'      => 'បង្កើត​បញ្ជី​ឈ្មោះ​អ្នករួមចំនែក​ចំបងៗទៅកាន់ទំព័រមួយ',
 	'contributors-target'      => 'ចំណងជើង៖',
 	'contributors-submit'      => 'បង្ហាញ',
+	'contributors-subtitle'    => 'អ្នករួមចំនែកចំបងរបស់ $1',
 	'contributors-others-long' => 'មានអ្នករួមចំនែក​ដទៃ $1 នាក់ទៀត​ចំពោះ​ទំព័រនេះ។',
 	'contributors-others'      => 'និង $1 នាក់ផ្សេងទៀត',
 	'contributors-badtitle'    => 'ចំនងជើង​គ្មានសុពលភាព',

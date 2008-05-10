@@ -1193,6 +1193,14 @@ $messages['hu'] = array(
 	'mv_search_not'           => 'nem',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'mv_search_category' => 'Flokkur',
+	'mv_category'        => 'flokkur',
+);
+
 /** Lojban (Lojban)
  * @author Malafaya
  */

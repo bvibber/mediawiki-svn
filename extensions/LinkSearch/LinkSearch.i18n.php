@@ -594,6 +594,13 @@ $messages['lb'] = array(
 	'linksearch-line' => '$1 verlinkt vun $2',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'linksearch-ok' => 'Xerca',
+);
+
 /** Limburgish (Limburgs)
  * @author Matthias
  * @author Ooswesthoesbes

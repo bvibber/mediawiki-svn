@@ -972,6 +972,7 @@ $messages['ps'] = array(
 	'bookinfo-result-publisher'  => 'خپرونکی:',
 	'bookinfo-result-year'       => 'کال:',
 	'bookinfo-error-invalidisbn' => 'تاسو يو ناسم ISBN ليکلی.',
+	'bookinfo-error-nosuchitem'  => 'يا خو همدا توکی نه شته او يا هم و نه موندلای شو.',
 	'bookinfo-purchase'          => 'همدا کتاب د $1 نه وپېرۍ',
 );
 

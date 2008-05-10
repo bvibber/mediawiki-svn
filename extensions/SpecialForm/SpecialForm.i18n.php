@@ -247,21 +247,23 @@ Tulung diisi.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Chhorran
  */
 $messages['km'] = array(
-	'form'                  => 'បែបបទ',
-	'formnoname'            => 'គ្មាន ឈ្មោះបែបបទ',
-	'formbadname'           => 'ឈ្មោះបែបបទ មិនល្អ',
+	'form'                  => 'សំនុំបែបបទ',
+	'formnoname'            => 'គ្មានឈ្មោះសំនុំបែបបទ',
+	'formbadname'           => 'ឈ្មោះសំនុំបែបបទមិនល្អ',
 	'formbadnametext'       => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
-	'formpattern'           => '$1-បែបបទ',
+	'formpattern'           => '$1-សំនុំបែបបទ',
+	'formtitlepattern'      => 'បន្ថែម $1 ថ្មី',
 	'formsave'              => 'រក្សាទុក',
 	'formarticleexists'     => 'ទំព័រ​មានរួចហើយ',
 	'formarticleexiststext' => 'ទំព័រ [[$1]] មានរួចហើយ។',
-	'formbadpagename'       => 'ឈ្មោះទំព័រ មិនល្អ',
+	'formbadpagename'       => 'ឈ្មោះទំព័រមិនល្អ',
 	'formsavesummary'       => 'ទំព័រថ្មី ប្រើប្រាស់ [[Special:Form/$1]]',
-	'formsaveerror'         => 'កំហុស រក្សាទុក បែបបទ',
+	'formsaveerror'         => 'កំហុសរក្សាទុកសំនុំបែបបទ',
+	'formsaveerrortext'     => "មានកំហុសមិនស្គាល់មួយក្នុងការរក្សាទុកទំព័រ '$1'។",
 );
 
 $messages['la'] = array(

@@ -175,6 +175,9 @@ $messages['eo'] = array(
 	'patrol-reasons'         => '* Simpla vandalismo
 * Novula testo
 * Vidu diskuto-paĝon',
+	'patrol-resume'          => 'Klaku ĉi tie por reaktivigi.',
+	'group-patroller'        => 'Patrolantoj',
+	'group-patroller-member' => 'Patrolanto',
 );
 
 /* Spanish (Titoxd) */

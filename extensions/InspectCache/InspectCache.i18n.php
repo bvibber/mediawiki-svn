@@ -243,6 +243,13 @@ $messages['lb'] = array(
 	'inspectcache-list'    => 'Lëscht',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'inspectcache-ok' => 'Oce',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

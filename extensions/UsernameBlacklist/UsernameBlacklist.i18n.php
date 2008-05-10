@@ -455,7 +455,7 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'usernameblacklist-desc'          => 'Egy [[MediaWiki:Usernameblacklist|feketelista]] segítségével megakadályozhatjuk a listán szereplő reguláris kifejezésekre illeszkedő felhasználói nevek létrehozását.',
 	'blacklistedusername'             => 'Feketelistás felhasználónév',
-	'blacklistedusernametext'         => 'Az általad választott felhasználónév megegyezik az egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
+	'blacklistedusernametext'         => 'Az általad választott felhasználónév megegyezik az egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat!',
 	'usernameblacklist'               => '<pre>
 # Az ebben a listában található bejegyzések egy reguláris kifejezés részei lesznek
 # adott felhasználónevek tiltására regisztrációkor. Mindegyik elemnek felsorolásban kell

@@ -264,11 +264,14 @@ $messages['kab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  * @author Siebrand
  */
 $messages['km'] = array(
-	'filelist-show-list'    => 'បង្ហាញ បញ្ជី',
-	'filelist-show-gallery' => 'បង្ហាញ ទីតាំងពិពណ៌',
+	'filelist'              => 'បញ្ជីឯកសារ',
+	'filelist-desc'         => 'ទំព័រពិសេសសំរាប់ឯកសារផ្ទុកឡើងនានាដែលបានកត់ទុកក្នុងបញ្ជី',
+	'filelist-show-list'    => 'បង្ហាញបញ្ជី',
+	'filelist-show-gallery' => 'បង្ហាញវិចិត្រសាល',
 	'filelist-image-desc'   => 'លំដាប់ចុះ',
 );
 

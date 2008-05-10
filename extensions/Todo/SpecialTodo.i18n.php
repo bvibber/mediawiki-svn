@@ -258,14 +258,15 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'todo'              => 'បញ្ជីកិច្ចការ​ត្រូវ​ធ្វើ',
-	'todo-tab'          => 'ត្រូវធ្វើ',
-	'todo-new-queue'    => 'ថ្មី',
-	'todo-add-queue'    => 'បន្ថែម ជួររង់ចាំ...',
-	'todo-list-change'  => 'ផ្លាស់ប្តូរ',
-	'todo-list-cancel'  => 'បោះបង់',
-	'todo-new-item'     => 'របស់ថ្មី',
-	'todo-form-details' => 'លំអិត ៖',
+	'todo'                  => 'បញ្ជីកិច្ចការ​ត្រូវ​ធ្វើ',
+	'todo-tab'              => 'ត្រូវធ្វើ',
+	'todo-new-queue'        => 'ថ្មី',
+	'todo-unrecognize-type' => 'ប្រភេទមិនស្គាល់',
+	'todo-add-queue'        => 'បន្ថែម ជួររង់ចាំ...',
+	'todo-list-change'      => 'ផ្លាស់ប្តូរ',
+	'todo-list-cancel'      => 'បោះបង់',
+	'todo-new-item'         => 'របស់ថ្មី',
+	'todo-form-details'     => 'លំអិត ៖',
 );
 
 /** Kinaray-a (Kinaray-a)

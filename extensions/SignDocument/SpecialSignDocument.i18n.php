@@ -335,6 +335,7 @@ $messages['eo'] = array(
 	'sign-viewfield-phone'         => 'Telefono',
 	'sign-viewfield-email'         => 'Retadreso',
 	'sign-viewfield-age'           => 'Aĝo',
+	'sign-viewfield-options'       => 'Preferoj',
 	'sign-closed'                  => 'fermita',
 	'sig-anonymous'                => '<i>Anonima</i>',
 	'sig-private'                  => '<i>Privata</i>',

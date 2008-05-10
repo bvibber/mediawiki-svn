@@ -894,6 +894,7 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 Vi estos alidirektita al ĉi servilo en 20 sekundoj. [$1 Klaku ĉi tien] iri tie nun. 
 
 Sekureca averto pri nevalida atesto eble estos montrata.',
+	'right-boardvote'        => 'Administri balotadojn',
 );
 
 /** Spanish (Español)
@@ -1901,6 +1902,7 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
  * @author Malafaya
  */
 $messages['io'] = array(
+	'boardvote_time'    => 'Tempo',
 	'boardvote_user'    => 'Uzanto',
 	'boardvote_days'    => 'Dii',
 	'boardvote_welcome' => "Bonveno, '''$1'''!",
@@ -2567,7 +2569,8 @@ $messages['lez'] = array(
  * @author Malafaya
  */
 $messages['lfn'] = array(
-	'boardvote_user' => 'Usor',
+	'boardvote_user'   => 'Usor',
+	'boardvote_submit' => 'Oce',
 );
 
 /** Limburgish (Limburgs)

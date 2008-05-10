@@ -738,7 +738,7 @@ $wdMessages['eo'] = array(
 	'ow_LevelAnnotation'                    => 'Prinotado',
 	'ow_OptionAttribute'                    => 'Eco',
 	'ow_OptionAttributeOption'              => 'Opcio',
-	'ow_OptionAttributeOptions'             => 'Opcioj',
+	'ow_OptionAttributeOptions'             => 'Preferoj',
 	'ow_OptionAttributeValues'              => 'Valutoj de opcioj',
 	'ow_OtherDefinedMeaning'                => 'Alia difinita signifo',
 	'ow_PopupAnnotation'                    => 'Prinotado',
@@ -1640,6 +1640,40 @@ $wdMessages['lb'] = array(
 	'ow_meaningsofsubtitle'            => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_help'                     => 'Fréier oder spéider kënne mir iech hëllefen.',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$wdMessages['lfn'] = array(
+	'ow_save'                         => 'Fisa',
+	'ow_history'                      => 'Istoria',
+	'ow_dm_OK'                        => 'Oce',
+	'ow_Annotation'                   => 'Nota',
+	'ow_ClassAttributeLevel'          => 'Nivel',
+	'ow_ClassAttributeType'           => 'Tipo',
+	'ow_Collection'                   => 'Colieda',
+	'ow_Definition'                   => 'Defini',
+	'ow_DefinedMeaningAttributes'     => 'Nota',
+	'ow_Language'                     => 'Lingua',
+	'ow_LevelAnnotation'              => 'Nota',
+	'ow_OptionAttribute'              => 'Propria',
+	'ow_PopupAnnotation'              => 'Nota',
+	'ow_Relations'                    => 'Relatas',
+	'ow_RelationType'                 => 'Tipo de relata',
+	'ow_Spelling'                     => 'Spele',
+	'ow_Synonyms'                     => 'Sinonimes',
+	'ow_SynonymsAndTranslations'      => 'Sinonimes e traduis',
+	'ow_TextAttribute'                => 'Propria',
+	'ow_Text'                         => 'Testo',
+	'ow_TranslatedTextAttribute'      => 'Propria',
+	'ow_TranslatedTextAttributeValue' => 'Testo',
+	'ow_LinkAttribute'                => 'Propria',
+	'ow_LinkAttributeValues'          => 'Lias',
+	'ow_Property'                     => 'Propria',
+	'ow_Value'                        => 'Valua',
+	'ow_meaningsoftitle'              => 'Sinifias de "$1"',
+	'ow_meaningsofsubtitle'           => '<em>Lia vici:</em> [[$1]]',
 );
 
 /** Limburgish (Limburgs)

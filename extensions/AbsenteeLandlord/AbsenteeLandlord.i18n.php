@@ -50,6 +50,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'absenteelandlord-reason' => 'A base de datos foi fechada automaticamente debido á inactividade por parte dos administradores.',
+	'absenteelandlord-desc'   => 'Fecha automaticamente a base de datos wiki se todos os administradores están inactivos durante algún tempo',
 );
 
 /** Hindi (हिन्दी)
@@ -61,11 +62,12 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Suradnik13
  */
 $messages['hr'] = array(
 	'absenteelandlord-reason' => 'Baza je automatski zaključana uslijed neaktivnosti administratora.',
-	'absenteelandlord-desc'   => 'Automatski zaključava wiki bazu ukoliko su svi administratori neaktivni  neko vrijeme',
+	'absenteelandlord-desc'   => 'Automatski zaključava wiki bazu ukoliko su svi administratori neaktivni neko vrijeme',
 );
 
 /** Javanese (Basa Jawa)
@@ -92,6 +94,14 @@ $messages['li'] = array(
 	'absenteelandlord-desc'   => "Sluut de database automatisch wen de behieërders allemaol gedurendje 'ne bepaoldje tied inactief zeen",
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'absenteelandlord-reason' => 'സിസോപ്പുകള്‍ നിഷ്ക്രിയരായിരുന്നതു മൂലം ഡാറ്റാബേസ് യാന്ത്രികമായി ബന്ധിക്കപ്പെട്ടിരിക്കുന്നു.',
+	'absenteelandlord-desc'   => 'സിസോപ്പുമാര്‍ ഒരു നിശ്ചിത സമയ പരിധിയില്‍ കൂടുതല്‍ നിഷ്ക്രിയരായിരുന്നാല്‍ ഡാറ്റാബേസ് യാന്ത്രികമായി ബന്ധിക്കപ്പെടുന്നു.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -109,11 +119,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author H92
  */
 $messages['no'] = array(
 	'absenteelandlord-reason' => 'Databasen er automatisk låst på grunn av inaktivitet fra administratorene.',
-	'absenteelandlord-desc'   => 'Autolåser wikiens databatse hvis alle administratorene er inaktive over en tid',
+	'absenteelandlord-desc'   => 'Låser wikiens database automatisk om alle administratorer er inaktiv i et visst tidsrom',
 );
 
 /** Occitan (Occitan)

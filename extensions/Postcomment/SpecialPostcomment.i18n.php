@@ -55,6 +55,7 @@ $messages['eo'] = array(
 	'postcomment_youareloggedinas' => 'Vi estas ensalutita kiel $1',
 	'postcomment_on'               => 'Je',
 	'postcomment_said'             => 'diris',
+	'postcomment_invalidrequest'   => 'Nevalida peto.',
 	'postcomment_replyto'          => 'Respondo al $1',
 );
 

@@ -695,6 +695,14 @@ $messages['id'] = array(
 	'badimages-page'           => '{{ns:help}}:Daftar berkas tidak sah',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'badimages-name'   => 'Nomo:',
+	'badimages-reason' => 'Motivo:',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -790,6 +798,7 @@ $messages['jv'] = array(
 	'badimages-remove-confirm' => 'Tulung didhedhes utawa dikonfirmasi yèn panjenengan arep mbusak $1 saka daftar:',
 	'badimages-removed'        => '$1 dibusak saka daftar.',
 	'badimages-subheading'     => 'Daftar saiki',
+	'badimages-unprivileged'   => '(Panjenengan ora ana hak cukup kanggo ngowahi daftar)',
 	'badimages-log-name'       => 'Daftar gambar ala',
 	'badimages-log-header'     => 'Ing ngisor iki kapacak log owah-owahan kanggo [[{{MediaWiki:Badimages-page}}|daftar gambar ala]].',
 	'badimages-log-add'        => 'nambahaké [[$1]] menyang daftar gambar ala',

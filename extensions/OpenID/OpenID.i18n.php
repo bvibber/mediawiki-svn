@@ -197,6 +197,7 @@ vi povas selekti el unu la jenaj opcioj.',
 	'openidchoosemanual'       => 'Nomo de via elekto:',
 	'openidchoosepassword'     => 'pasvorto:',
 	'openidnousername'         => 'Neniu salutnomo estis donita.',
+	'openidbadusername'        => 'Fuŝa salutnomo donita.',
 );
 
 /** French (Français)

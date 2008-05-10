@@ -571,6 +571,13 @@ $messages['lb'] = array(
 	'pdt_comparing_page'  => 'Vergäich vun de Reslutater vum Parser fir [[$1]]',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'pdtest_ok' => 'Oce',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  * @author Matthias

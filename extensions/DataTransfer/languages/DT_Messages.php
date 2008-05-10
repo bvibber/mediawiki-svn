@@ -239,6 +239,13 @@ $messages['hu'] = array(
 	'dt_xml_title' => 'Cím',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'dt_xml_page' => 'Síða',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

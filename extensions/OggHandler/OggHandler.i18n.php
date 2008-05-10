@@ -818,6 +818,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'ogg-more'    => 'Plus…',
 	'ogg-dismiss' => 'Klozar',
 );
 

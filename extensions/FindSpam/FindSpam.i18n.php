@@ -196,6 +196,13 @@ $messages['lb'] = array(
 	'findspam-notextfound' => 'Keng Kontributioune fonnt',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'findspam-ok' => 'Oce',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex

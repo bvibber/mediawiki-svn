@@ -427,6 +427,7 @@ $messages['eo'] = array(
 Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skribita en la protokolo kaj povas esti restarigita de datumbaza administranto se eraro estas farita.",
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
+	'hiderevision-noreason'       => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status'         => 'Revizio $1: $2',
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
 	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',

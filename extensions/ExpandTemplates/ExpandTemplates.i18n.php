@@ -478,7 +478,7 @@ $messages['hu'] = array(
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Kiértékeli a sablonokat, az értelmező-funkciókat és a változókat]], így megtekinthető a kész wikiszöveg, valamint az oldal',
 	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
 Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a változókat (pl. <nowiki>{{</nowiki>CURRENTDAY}}) is – mindent, ami a kettős kapcsos zárójelek között van.',
-	'expand_templates_title'           => 'Szöveg címe, például &#123;&#123;PAGENAME}} sablonhoz:',
+	'expand_templates_title'           => 'Szöveg címe, például {{PAGENAME}} sablonhoz:',
 	'expand_templates_input'           => 'Vizsgálandó szöveg',
 	'expand_templates_output'          => 'Eredmény',
 	'expand_templates_xml_output'      => 'XML kimenet',
@@ -716,6 +716,13 @@ $messages['lb'] = array(
 	'expand_templates_remove_comments' => 'Bemierkunge läschen',
 	'expand_templates_generate_xml'    => "Weis d'Struktur vum XML",
 	'expand_templates_preview'         => 'Kucken ouni ofzespäicheren',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'expand_templates_ok' => 'Oce',
 );
 
 /** Limburgish (Limburgs)

@@ -28,6 +28,13 @@ $messages['de'] = array(
 	'pnghandler-desc' => 'Ändere die Größe von PNGs mit Hilfe von "pngds"',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pnghandler-desc' => 'Aligrandigi PNG-bildojn kun pngds',
+);
+
 /** French (Français)
  * @author Urhixidur
  */
