@@ -70,9 +70,9 @@ class MVAdmin extends SpecialPage {
 				header( "Content-type: text/html; charset=UTF-8" );
 
 				global $botUserName, $valid_attributes, $states_ary;
-				require_once("extensions/MetavidWiki/maintenance/metavid2mvWiki.inc.php");
-				require_once("extensions/MetavidWiki/maintenance/maintenance_util.inc.php");
-				require_once("extensions/MetavidWiki/maintenance/metavid_gov_templates.php");
+				require_once("$mvgIP/maintenance/metavid2mvWiki.inc.php");
+				require_once("$mvgIP/maintenance/maintenance_util.inc.php");
+				require_once("$mvgIP/maintenance/metavid_gov_templates.php");
 				require_once( "$IP/install-utils.inc" );
 
 				print '<p><b>Creating database tables</b><p><pre>';

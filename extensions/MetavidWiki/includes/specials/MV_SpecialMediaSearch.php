@@ -681,11 +681,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		while($row = $dbr->fetchObject($result)){
 			$page_title = $row->cl_sortkey;
 			//bold matching part of title: 
-			$bs = stripos($page_title, $val);		
+			$bs = stripos($page_title, $val);								
 			if($bs!==false){	
-				$page_title_bold = substr($page_title, 0, $bs) . '<b>'.substr($page_title, $bs+strlen($val) ) . '</b>';
+					$page_title_bold = substr($page_title, 0, $bs) .
+					 '<b>'.substr($page_title, $bs, strlen($val)) .
+					 '</b>' . substr($page_title, $bs+strlen($val)); 
 			}else{
-				$page_title_bold = 	$page_title;
+					$page_title_bold = $page_title;
 			} 
 			//$page_title_bold = str_ireplace($val, '<b>'.$val.'</b>',$page_title);
 			$out.=$page_title.'|'.$page_title_bold.'|no_image'."\n";

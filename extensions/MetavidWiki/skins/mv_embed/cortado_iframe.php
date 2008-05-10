@@ -68,7 +68,7 @@ function output_page($error=''){
 	<title>cortado_embed</title>
 	<?if($parent_domain){?>
 	<script type="text/javascript">
-		window.domain = 'www.parent.domain.com';
+		window.domain = '<?=$parent_domain?>';
 	</script>
 	<?}?>
 	<style type="text/css">
