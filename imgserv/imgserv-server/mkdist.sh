@@ -20,6 +20,7 @@ mkdir lib
 mkdir bin
 cp -r ../dist/lib/* lib/
 cp -r ../dist/*.jar .
+cp log4j.properties dist/
 
 chmod 644 lib/*
 chmod 644 *.jar

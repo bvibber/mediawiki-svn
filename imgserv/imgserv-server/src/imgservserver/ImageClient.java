@@ -16,24 +16,40 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import org.apache.log4j.Logger;
 import pngds.PNGResizer;
 
 public class ImageClient extends Thread {
+	private static Logger logger = Logger.getLogger(ImageClient.class);
+	
 	Socket	client;
 	ImageClientInputStream reader;
 	ImageClientOutputStream writer;
 	Configuration config;
 	int pngcount = 0;
 	
+	void error(String fmt, Object... args) {
+		logger.error(String.format("[%s] %s", 
+				client.getRemoteSocketAddress().toString(),
+				String.format(fmt, args)));
+	}
+
+	void info(String fmt, Object... args) {
+		logger.error(String.format("[%s] %s", 
+				client.getRemoteSocketAddress().toString(),
+				String.format(fmt, args)));
+	}
+
 	public ImageClient(Socket cl, Configuration c) {
 		client = cl;
 		config = c;
-		
+	}
+	
+	public void run() {
 		try {
 			handleRequest();
 		} catch (Exception e) {
-			System.out.printf("%% Error occurred handling client request: %s\n",
-					e.toString());
+			error("Error occurred handling client request: %s", e.toString());
 			return;
 		} finally {
 			try {
@@ -72,8 +88,13 @@ public class ImageClient extends Thread {
 			String line = reader.readLine();
 			String[] args = line.split(" ");
 			
+			if (args.length == 0) {
+				error("Invalid command from client: empty line.");
+				return;
+			}
+			
 			if (args.length < 2) {
-				System.out.printf("%% Invalid command from client.\n");
+				error("Invalid command from client: not enough arguments.");
 				return;
 			}
 			
@@ -93,18 +114,19 @@ public class ImageClient extends Thread {
 				len = Integer.parseInt(args[1]);
 				break;
 			} else {
-				System.out.printf("%% Invalid command from client.\n");
+				error("Invalid command from client: \"%s\" unrecognised.",
+						args[0]);
 				return;
 			}
 		}
 		
 		if (informat == null) {
-			System.out.printf("%% No input format received.\n");
+			error("No input format received.");
 			return;
 		}
 
 		if (outformat == null) {
-			System.out.printf("%% No output format received.\n");
+			error("No output format received.");
 			return;
 		}
 
@@ -124,7 +146,7 @@ public class ImageClient extends Thread {
 		for (;;) {
 			n = reader.read(data, offs, len - offs);
 			if (n == -1) {
-				System.out.printf("%% Unexpected EOF reading from client.\n");
+				error("Unexpected EOF reading from client.");
 				return;
 			}
 			
@@ -148,18 +170,17 @@ public class ImageClient extends Thread {
 			*/
 			tr.transcode(informat, outformat, width, height, data, writer);
 		} catch (ImageTranscoderException e) {
-			String error = e.getMessage();
+			String errorstr = e.getMessage();
 			Throwable cause = e;
 			while ((cause = cause.getCause()) != null) {
-				error = error + ": " + cause.getMessage();
+				errorstr = errorstr + ": " + cause.getMessage();
 			}
 			
 			writer.cancel();
-			String status = "ERROR " + error + "\r\n";
+			String status = "ERROR " + errorstr + "\r\n";
 			writer.write(status.getBytes());
 			
-			System.err.printf("%% [client: %s] %s\n", client.getRemoteSocketAddress().toString(),
-					error);
+			error("%s", errorstr);
 		}
 		
 		writer.close();
@@ -186,7 +207,7 @@ public class ImageClient extends Thread {
 		for (;;) {
 			n = reader.read(buf, 0, 8192);
 			if (n == -1) {
-				System.out.printf("%% Unexpected EOF reading from client.\n");
+				error("Unexpected EOF reading from client.");
 				return -1;
 			}
 			
@@ -201,7 +222,7 @@ public class ImageClient extends Thread {
 		int ret = PNGResizer.resize(inp, outp, height, height);
 		
 		if (ret == -1) {
-			System.out.printf("%% pngds resizing failed.\n");
+			error("pngds resizing failed.");
 		}
 		
 		/*

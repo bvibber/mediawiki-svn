@@ -14,23 +14,29 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class Main {
+	private static Logger logger = Logger.getLogger(ImageClient.class);
+
     public static void main(String[] args) {
 		int i = 0;
 		String configfile = null;
 		
+		PropertyConfigurator.configure("log4j.properties");
+		
 		while (i < args.length) {
 			if (args[i].equals("-c")) {
 				if (i + 1 >= args.length) {
-					System.err.println("% Option '-c' requires an argument.");
+					logger.fatal("Option '-c' requires an argument.");
 					System.exit(1);
 				}
 				
 				configfile = args[i + 1];
 				i += 2;
 			} else {
-				System.err.printf("%% Option '%s' not recognised.\n", args[i]);
+				logger.fatal("Option \""+args[i]+"\" not recognised.");
 				System.exit(1);
 			}
 		}
@@ -41,19 +47,18 @@ public class Main {
 			if (configfile != null)
 				config.load(new FileInputStream(new File(configfile)));
 		} catch (Exception e) {
-			System.err.printf("%% Cannot load configuration file \"%s\": %s\n",
-					configfile, e.getMessage());
+			logger.fatal("Cannot load configuration file \""+configfile+"\": "+e.getMessage());
 			System.exit(1);
 		}
 
 		Configuration c = new Configuration(config);
 		
 		try {
+			logger.info("Startup successful.");
 			RequestListener listener = new RequestListener(c);
 			listener.run();
 		} catch (IOException e) {
-			System.out.printf("% Error occurred in request loop: %s",
-					e.getMessage());
+			logger.fatal("Error occurred in request loop: " + e.getMessage());
 		}
     }
 
