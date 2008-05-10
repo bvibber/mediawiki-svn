@@ -13,6 +13,7 @@ package imgservserver;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Iterator;
@@ -81,15 +82,20 @@ implements MultiFormatImageReader, MultiFormatImageWriter {
 		}
 
 		ImageWriter imgw = writers.next();
-		imgw.setOutput(new MemoryCacheImageOutputStream(out));
+		MemoryCacheImageOutputStream mout = null;
 		
 		try {
+			mout = new MemoryCacheImageOutputStream(out);
+			imgw.setOutput(mout);
 			imgw.write(image);
 		} catch (Exception e) {
 			throw new ImageTranscoderException(
 					"Cannot write image to client", e);
+		} finally {
+			if (mout != null)
+				try {
+					mout.close();
+				} catch (IOException e) {}
 		}
 	}
-
-	
 }

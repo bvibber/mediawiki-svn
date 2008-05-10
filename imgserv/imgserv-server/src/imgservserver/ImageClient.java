@@ -50,6 +50,7 @@ public class ImageClient extends Thread {
 			handleRequest();
 		} catch (Exception e) {
 			error("Error occurred handling client request: %s", e.toString());
+			e.printStackTrace();
 			return;
 		} finally {
 			try {

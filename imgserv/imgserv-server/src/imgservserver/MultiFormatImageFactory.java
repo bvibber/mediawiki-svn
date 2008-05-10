@@ -30,34 +30,27 @@ public class MultiFormatImageFactory {
 	}
 	
 	static String[][] normalisedNames = {
-		{ "png", "png" },
-		{ "PNG", "png" },
-		{ "jpeg", "jpeg" },
-		{ "JPEG", "jpeg" },
-		{ "JPG", "jpeg" },
 		{ "jpg", "jpeg" },
-		{ "bmp", "bmp" },
-		{ "BMP", "bmp" },
-		{ "tiff", "tiff" },
 		{ "tif", "tiff" },
-		{ "TIFF", "tiff" },
-		{ "TIF", "tiff" },
-		{ "svg", "svg" },
-		{ "SVG", "svg" },
+		{ "pbm", "pnm" },
+		{ "pgm", "pnm" },
+		{ "ppm", "pnm" },
 	};
 	
 	static String normaliseName(String name) {
 		for(String[] s : normalisedNames) {
-			if (s[0].equals(name))
+			if (s[0].equalsIgnoreCase(name))
 				return s[1];
 		}
 		
-		return null;
+		return name;
 	}
 	static ImageHandler[] readers = {
 		new ImageHandler("png", ImageIOImageHandler.class),
 		new ImageHandler("jpeg", ImageIOImageHandler.class),
 		new ImageHandler("bmp", ImageIOImageHandler.class),
+		new ImageHandler("gif", ImageIOImageHandler.class),
+		new ImageHandler("pnm", ImageIOImageHandler.class),
 		new ImageHandler("tiff", TIFFImageHandler.class),
 		new ImageHandler("svg", SVGImageHandler.class),
 	};
@@ -66,6 +59,8 @@ public class MultiFormatImageFactory {
 		new ImageHandler("png", ImageIOImageHandler.class),
 		new ImageHandler("jpeg", ImageIOImageHandler.class),
 		new ImageHandler("bmp", ImageIOImageHandler.class),
+		new ImageHandler("pnm", ImageIOImageHandler.class),
+		new ImageHandler("gif", ImageIOImageHandler.class),
 		new ImageHandler("tiff", TIFFImageHandler.class),
 	};
 
@@ -78,16 +73,16 @@ public class MultiFormatImageFactory {
 	
 	static Object getHandler(ImageHandler[] list, String format) 
 	throws ImageTranscoderException {
-		format = normaliseName(format);
+		String format_ = normaliseName(format);
 		
-		ImageHandler h = findHandler(list, format);
+		ImageHandler h = findHandler(list, format_);
 		if (h == null)
 			throw new ImageTranscoderException(
 					"No handler found for type \"" + format + "\"");
 		
 		Class c = h.getHandler();
 		try {
-			return c.getConstructor(String.class).newInstance(format);
+			return c.getConstructor(String.class).newInstance(format_);
 		} catch (Exception e) {
 			throw new ImageTranscoderException(
 					"Cannot instantiate handler for format \""+format+"\"", e);
