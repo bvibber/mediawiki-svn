@@ -416,6 +416,9 @@ class SpecialConfigure extends SpecialPage {
 				'href' => "$wgScriptPath/extensions/Configure/Configure.css?$wgStyleVersion",
 			)
 		);
+		if( is_callable( array( $wgOut, 'addScriptFile' ) ) ){ # 1.13 +
+			$wgOut->addScriptFile( 'prefs.js' );
+		}
 	}
 
 	/**

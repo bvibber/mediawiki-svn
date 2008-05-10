@@ -628,7 +628,8 @@ $settings = array(
 			'wgSpamRegex' => 'text',
 			'wgStyleVersion' => 'int',
 			'wgUpdateRowsPerQuery' => 'int',
-			'wgUseCommaCount' => 'int',
+			'wgUseAutomaticEditSummaries' => 'bool',
+			'wgUseCommaCount' => 'bool',
 			'wgUseETag' => 'bool',
 			'wgUseExternalEditor' => 'bool',
 			'wgUseTrackbacks' => 'bool',
@@ -1033,6 +1034,7 @@ $settingsVersion = array(
 	'wgSharedPrefix' => array( array( '1.13alpha', '>=' ) ),
 	'wgSharedTables' => array( array( '1.13alpha', '>=' ) ),
 	'wgSQLiteDataDir' => array( array( '1.13alpha', '>=' ) ),
+	'wgUseAutomaticEditSummaries' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
