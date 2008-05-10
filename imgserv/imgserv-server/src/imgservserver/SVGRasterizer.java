@@ -19,6 +19,8 @@ import java.net.URL;
 
 import java.util.Map;
 
+import org.apache.batik.bridge.EmbededExternalResourceSecurity;
+import org.apache.batik.bridge.EmbededScriptSecurity;
 import org.apache.batik.bridge.ExternalResourceSecurity;
 import org.apache.batik.bridge.NoLoadExternalResourceSecurity;
 import org.apache.batik.bridge.NoLoadScriptSecurity;
@@ -221,13 +223,13 @@ public class SVGRasterizer {
 			@Override
 			public ScriptSecurity getScriptSecurity(String scripttype, 
 					ParsedURL scripturl, ParsedURL docurl) {
-				return new NoLoadScriptSecurity(scripttype);
+				return new EmbededScriptSecurity(scripttype, scripturl, docurl);
 			}
 
 			@Override
 			public ExternalResourceSecurity getExternalResourceSecurity(
 					ParsedURL resource, ParsedURL docurl) {
-				return new NoLoadExternalResourceSecurity();
+				return new EmbededExternalResourceSecurity(resource);
 			}
 		};
 
