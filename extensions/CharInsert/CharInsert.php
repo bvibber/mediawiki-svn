@@ -103,7 +103,7 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	} else {
 		$extra = '';
 	}
-	return wfElement( 'a',
+	return Xml::element( 'a',
 		array(
 			'onclick' => "insertTags('$estart','$eend','');return false",
 			'href'    => '#' ),
