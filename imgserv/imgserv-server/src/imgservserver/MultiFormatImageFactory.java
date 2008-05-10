@@ -45,6 +45,7 @@ public class MultiFormatImageFactory {
 		
 		return name;
 	}
+	
 	static ImageHandler[] readers = {
 		new ImageHandler("png", ImageIOImageHandler.class),
 		new ImageHandler("jpeg", ImageIOImageHandler.class),

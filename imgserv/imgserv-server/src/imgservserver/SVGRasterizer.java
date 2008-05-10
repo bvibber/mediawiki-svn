@@ -4,7 +4,6 @@
  * This software is published under the terms of the Apache Software License *
  * version 1.1, a copy of which has been included with this distribution in  *
  * the LICENSE file.                                                         *
-
  *****************************************************************************/
 
 package imgservserver;
@@ -13,8 +12,6 @@ import java.awt.image.BufferedImage;
 
 import java.awt.Paint;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.Reader;
 
@@ -22,6 +19,11 @@ import java.net.URL;
 
 import java.util.Map;
 
+import org.apache.batik.bridge.ExternalResourceSecurity;
+import org.apache.batik.bridge.NoLoadExternalResourceSecurity;
+import org.apache.batik.bridge.NoLoadScriptSecurity;
+import org.apache.batik.bridge.ScriptSecurity;
+import org.apache.batik.bridge.UserAgent;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
@@ -29,6 +31,7 @@ import org.apache.batik.transcoder.TranscodingHints;
 
 import org.apache.batik.transcoder.image.ImageTranscoder;
 
+import org.apache.batik.util.ParsedURL;
 import org.w3c.dom.svg.SVGDocument;
 
 /**
@@ -209,6 +212,24 @@ public class SVGRasterizer {
      * An image transcoder that stores the resulting image.
      */
     protected class Rasterizer extends ImageTranscoder {
+		/*
+		 * A user-agent that doesn't allow any external resource loading.
+		 */
+		protected class ReferenceRestrictedTranscoderUserAgent 
+		extends SVGAbstractTranscoderUserAgent {
+
+			@Override
+			public ScriptSecurity getScriptSecurity(String scripttype, 
+					ParsedURL scripturl, ParsedURL docurl) {
+				return new NoLoadScriptSecurity(scripttype);
+			}
+
+			@Override
+			public ExternalResourceSecurity getExternalResourceSecurity(
+					ParsedURL resource, ParsedURL docurl) {
+				return new NoLoadExternalResourceSecurity();
+			}
+		};
 
         public BufferedImage createImage(int w, int h) {
             return new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
@@ -218,17 +239,11 @@ public class SVGRasterizer {
             throws TranscoderException {
             SVGRasterizer.this.img = img;
         }
-    }
 
-/*    // debug
-    public static void main(String [] args) throws Exception {
-        SVGRasterizer r = new SVGRasterizer(new File(args[0]).toURL());
-        r.setBackgroundColor(java.awt.Color.white);
-        BufferedImage img = r.createBufferedImage();
-        javax.swing.JFrame f = new javax.swing.JFrame();
-        f.getContentPane().add(new javax.swing.JLabel(new javax.swing.ImageIcon(img)), java.awt.BorderLayout.CENTER);
-        f.pack();
-        f.show();
-    }*/
+		@Override
+		protected UserAgent createUserAgent() {
+			return new ReferenceRestrictedTranscoderUserAgent();
+		}
+    }
 }
 

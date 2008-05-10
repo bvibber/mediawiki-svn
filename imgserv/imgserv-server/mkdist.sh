@@ -28,26 +28,7 @@ chmod 644 *.jar
 cat >bin/start.sh <<__EOF__
 #! /bin/sh
 here=\`pwd\`
-cat >imgserv.policy <<EOF
-grant codeBase "file:\${here}/imgserv-server.jar" {
-        permission java.security.AllPermission;
-};
-
-grant codeBase "file:\${here}/lib/pngds.jar" {
-        permission java.security.AllPermission;
-};
-
-grant codeBase "file:\${here}/lib/-" {
-        permission java.awt.AWTPermission "*";
-        permission java.io.SerializablePermission "*";
-        permission java.lang.reflect.ReflectPermission "*";
-        permission java.lang.RuntimePermission "*";
-        permission java.util.PropertyPermission "*", "read,write";
-        permission java.util.logging.LoggingPermission "control";
-        permission java.io.FilePermission "\${here}/lib/-", "read";
-};
-EOF
-exec java -Djava.security.manager -Djava.security.policy=imgserv.policy -jar imgserv-server.jar "\$@"
+exec java -jar imgserv-server.jar "\$@"
 __EOF__
 
 cat >bin/run.sh <<__EOF__
