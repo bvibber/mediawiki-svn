@@ -51,7 +51,7 @@ var javaEmbed = {
 			//load directly in the page.. 
 			// (media must be on the same server or applet must be signed) 
 			return ''+
-			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.2.1.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
+			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped_r34336.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
 				'<param name="url" value="'+this.src+'" /> ' + "\n"+
 				'<param name="local" value="false"/>'+ "\n"+
 				'<param name="keepaspect" value="true" />'+ "\n"+
@@ -64,8 +64,7 @@ var javaEmbed = {
 		}
     },
     postEmbedJS:function(){
-		this.getJCE();		
-		alert(this.jce.id);
+		this.getJCE();	
     },
     //get java cortado embed object
     getJCE:function(){
