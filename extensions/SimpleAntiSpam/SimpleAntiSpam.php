@@ -26,8 +26,8 @@ $wgHooks['EditPage::attemptSave'][] = 'efSimpleAntiSpamCheck';
 //add the form field
 function efSimpleAntiSpamField(&$editpage, &$out) {
 	wfLoadExtensionMessages('simpleantispam');
-	$out->addHTML("<div id=\"antispam-containter\" style=\"display: none\">\n
-<label for=\"wpAntispam\">".wfMsg('simpleantispam-label')."</label> <input type=\"text\" name=\"wpAntispam\" value=\"\" />\n
+	$out->addHTML("<div id=\"antispam-containter\" style=\"display: none\">
+<label for=\"wpAntispam\">".wfMsgExt('simpleantispam-label', array( 'parseinline', 'escapenoentities' ))."</label> <input type=\"text\" name=\"wpAntispam\" value=\"\" />
 </div>\n");
 	return true;
 }
@@ -47,10 +47,10 @@ function efSimpleAntiSpamCheck($editpage) {
 //don't try to localize the messages in this function, you'll just fail epicly
 function efSimpleAntiSpamInstall() {
 	$i = <<<EOM
-		This is an extension to the MediaWiki software and cannot be used standalone.
-		To install this on the wiki, add the following line to LocalSettings.php:
-			<tt>require_once("\$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");</tt>
-		To verify the installation, browse to the Special:Version page on your wiki.
+		This is an extension to the MediaWiki software and cannot be used standalone.\n
+		To install this on the wiki, add the following line to LocalSettings.php:\n
+			<tt>require_once("\$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");</tt>\n
+		To verify the installation, browse to the Special:Version page on your wiki.\n
 EOM;
 	echo($i);
 	return;
