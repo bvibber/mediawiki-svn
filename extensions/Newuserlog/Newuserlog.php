@@ -21,24 +21,20 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Ævar Arnfjörð Bjarmason'
 );
 
-$wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionMessagesFiles['Newuserlog'] = dirname(__FILE__) . '/Newuserlog.i18n.php';
 
-function wfNewuserlog() {
-	# Add a new log type
-	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-	$wgLogTypes[]                      = 'newusers';
-	$wgLogNames['newusers']            = 'newuserlogpage';
-	$wgLogHeaders['newusers']          = 'newuserlogpagetext';
-	$wgLogActions['newusers/newusers'] = 'newuserlogentry';
-	$wgLogActions['newusers/create']   = 'newuserlog-create-entry';
-	$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
-	# Run this hook on new account creation
-	global $wgHooks;
-	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
-	# Run this hook on Special:Log
-	$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
-}
+# Add a new log type
+$wgLogTypes[]                      = 'newusers';
+$wgLogNames['newusers']            = 'newuserlogpage';
+$wgLogHeaders['newusers']          = 'newuserlogpagetext';
+$wgLogActions['newusers/newusers'] = 'newuserlogentry';
+$wgLogActions['newusers/create']   = 'newuserlog-create-entry';
+$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
+
+# Run this hook on new account creation
+$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
+# Run this hook on Special:Log
+$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
 function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	global $wgUser, $wgContLang, $wgVersion;
