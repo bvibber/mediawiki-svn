@@ -188,15 +188,20 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Morten
+ * @author M.M.S.
+ * @author Jan Friberg
  */
 $messages['da'] = array(
 	'sitematrix'           => 'Alle Wikimedias wikier',
+	'sitematrix-summary'   => 'Denne specialside oplister alle Wikimedias wikier.',
 	'sitematrix-desc'      => 'Viser en [[Special:SiteMatrix|liste med alle Wikimedias wikier]]',
 	'sitematrix-language'  => 'Sprog',
 	'sitematrix-project'   => 'Projektnavn, interprojektlink og interwikilink',
 	'sitematrix-others'    => 'Andre projekter under Wikimedia',
 	'sitematrix-total'     => "'''I alt $1 wikier'''",
 	'sitematrix-sitetotal' => 'I alt',
+	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'redigering begrænset',
 );
 
 /** German (Deutsch)
@@ -382,8 +387,8 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Alma
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  */
 $messages['gl'] = array(
 	'sitematrix'           => 'Listaxe dos wikis de Wikimedia',
@@ -394,6 +399,8 @@ $messages['gl'] = array(
 	'sitematrix-others'    => 'Outros proxectos de Wikimedia',
 	'sitematrix-total'     => "'''Suma total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privado',
+	'sitematrix-fishbowl'  => 'editado restrinxido',
 );
 
 $messages['grc'] = array(
@@ -1060,7 +1067,7 @@ $messages['sv'] = array(
 	'sitematrix-total'     => "'''Totalt antal: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privat',
-	'sitematrix-fishbowl'  => 'redigerinng begränsad',
+	'sitematrix-fishbowl'  => 'redigering begränsad',
 );
 
 /** Silesian (Ślůnski)

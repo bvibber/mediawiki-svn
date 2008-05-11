@@ -611,8 +611,13 @@ Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'changeauthor-pagenameform-go' => 'പോകൂ',
-	'changeauthor-comment'         => 'അഭിപ്രായം:',
+	'changeauthor-pagename-or-revid' => 'താളിന്റെ പേര്‌ അല്ലെങ്കില്‍ പതിപ്പിന്റെ ഐഡി:',
+	'changeauthor-pagenameform-go'   => 'പോകൂ',
+	'changeauthor-comment'           => 'അഭിപ്രായം:',
+	'changeauthor-invalid-username'  => '"$1" എന്നത് അസാധുവായ ഉപയോക്തൃനാമമാണ്‌.',
+	'changeauthor-nosuchuser'        => '"$1" എന്ന ഉപയോക്താവ് നിലവിലില്ല.',
+	'changeauthor-revview'           => '$2ന്റെ #$1 എന്ന പതിപ്പ്',
+	'changeauthor-nosuchtitle'       => '"$1" എന്ന താള്‍ നിലവിലില്ല.',
 );
 
 /** Marathi (मराठी)

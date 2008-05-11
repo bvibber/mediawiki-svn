@@ -1070,6 +1070,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'math-desc'                  => '&lt;math&gt; എന്നീ ടാഗുകള്‍ക്കുള്ള MathML ഔട്ട്പുട്ട്',
+	'math_CannotCreateTexFile'   => 'tex പ്രമാണം സൃഷ്ടിക്കുവാന്‍ കഴിഞ്ഞില്ല',
+	'math_CannotRunLatex'        => 'latex പ്രവര്‍ത്തിപ്പിക്കുവാന്‍ കഴിഞ്ഞില്ല',
+	'math_CannotWriteTexFile'    => 'tex പ്രമാണത്തിലേക്ക് എഴുതുവാന്‍ കഴിഞ്ഞില്ല',
 	'math_InvalidColour'         => '"$1" എന്ന നിറം അസാധുവാണ്‌',
 	'math_MismatchedBeginAndEnd' => '"$1"  "$2" എന്നീ രണ്ട് നിര്‍ദ്ദേശങ്ങള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
 );

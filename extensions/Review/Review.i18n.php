@@ -526,6 +526,7 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'review_sidebar_title'     => 'സം‌ശോധനം',
+	'review_total_statistics'  => 'മൊത്തം',
 	'review_user_details_link' => '(വിശദാംശങ്ങള്‍:)',
 	'review_blocked'           => 'താങ്കള്‍ തടയപ്പെട്ടിക്കുന്നു. ഇവിടെ പ്രവേശനം ഇല്ല.',
 	'review_comment'           => 'അഭിപ്രായം:',

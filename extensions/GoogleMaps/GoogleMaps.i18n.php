@@ -1230,10 +1230,12 @@ $wgGoogleMapsMessages['hu'] = array(
 
 /** Icelandic (Íslenska)
  * @author SPQRobin
+ * @author S.Örvarr.S
  */
 $wgGoogleMapsMessages['is'] = array(
-	'gm-yes' => 'Já',
-	'gm-no'  => 'Nei',
+	'gm-yes'       => 'Já',
+	'gm-no'        => 'Nei',
+	'gm-save-path' => 'Vista',
 );
 
 /** Javanese (Basa Jawa)
@@ -1412,6 +1414,13 @@ $wgGoogleMapsMessages['lt'] = array(
 	'gm-earth'            => 'Žemė',
 	'gm-moon'             => 'Mėnulis',
 	'gm-mars'             => 'Marsas',
+);
+
+/** Latvian (Latviešu)
+ * @author Yyy
+ */
+$wgGoogleMapsMessages['lv'] = array(
+	'gm-kml-loading' => 'ielādējas...',
 );
 
 /** Malayalam (മലയാളം)

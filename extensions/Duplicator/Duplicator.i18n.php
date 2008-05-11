@@ -515,6 +515,13 @@ $messages['lb'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'duplicator-source' => 'സ്രോതസ്സ്:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

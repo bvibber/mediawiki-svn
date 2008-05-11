@@ -213,6 +213,15 @@ $messages['lb'] = array(
 	'watchers_less_than_x'   => 'Manner wéi $1 Benotzer iwwerwaachen dës Säit.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'watchers'               => 'നിരീക്ഷകര്‍',
+	'watchers_link_title'    => 'ഈ താള്‍ ആരൊക്കെ നിരീക്ഷിക്കുന്നു?',
+	'watchers_noone_watches' => 'ഈ താള്‍ ആരും നിരീക്ഷിക്കുന്നില്ല.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
@@ -337,5 +346,18 @@ $messages['te'] = array(
 	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
 	'watchers_header'        => '"$1"గురు ఈ పేజీని చూస్తున్నారు',
 	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'watchers'               => 'Osservadori',
+	'watchers_link_title'    => "Chi tien d'ocio sta pagina?",
+	'watchers_error_article' => '<b>Erór:</b> sta pagina no la esiste.',
+	'watchers_header'        => 'Utenti che tien d\'ocio "$1"',
+	'watchers_noone_watches' => "Nissuni tien d'ocio sta pagina.",
+	'watchers_x_or_more'     => "$1 o più persone sta tegnendo d'ocio sta pagina.",
+	'watchers_less_than_x'   => "Manco de $1 persone tien d'ocio sta pagina.",
 );
 

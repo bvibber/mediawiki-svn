@@ -140,6 +140,13 @@ $messages['lb'] = array(
 	'nstab-comments'    => 'Kommentar',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'commentpages-desc' => 'മുഖ്യ നേംസ്പേസിനുള്ള കമെന്റ് താളുകള്‍',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

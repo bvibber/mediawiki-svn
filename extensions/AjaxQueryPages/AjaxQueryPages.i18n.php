@@ -88,6 +88,13 @@ $messages['lb'] = array(
 	'ajax-qp-desc' => 'AJAX op Säite mat Offroen derbäisetzen esou wéi dat de Fall ass op [[Special:Shortpages]]',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'ajax-qp-desc' => "Voog get AJAX bie aan QueryPAges wie [[Special:Shortpages|kótte pazjena's]]",
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

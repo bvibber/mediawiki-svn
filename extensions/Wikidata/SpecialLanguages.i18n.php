@@ -374,6 +374,7 @@ $wdMessages['bg'] = array(
 	'ow_IncomingRelations'            => 'Входящи релации',
 	'ow_Language'                     => 'Език',
 	'ow_LevelAnnotation'              => 'Анотация',
+	'ow_OptionAttributeOptions'       => 'Настройки',
 	'ow_PopupAnnotation'              => 'Анотация',
 	'ow_Relations'                    => 'Релации',
 	'ow_RelationType'                 => 'Тип релация',
@@ -1316,6 +1317,13 @@ $wdMessages['io'] = array(
 	'ow_meaningsoftitle'                    => 'Senci di "$1"',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$wdMessages['is'] = array(
+	'ow_save' => 'Vista',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -1702,11 +1710,17 @@ $wdMessages['mai'] = array(
  * @author Shijualex
  */
 $wdMessages['ml'] = array(
+	'langman_title'      => 'ഭാഷാ പരിപാലകന്‍',
 	'ow_save'            => 'സേവ് ചെയ്യുക',
 	'ow_history'         => 'നാള്‍വഴി',
+	'ow_noedit_title'    => 'തിരുത്തുവാനുള്ള അനുമതി ഇല്ല',
 	'ow_uipref_datasets' => 'സ്വതവെയുള്ള കാഴ്ച',
+	'ow_uiprefs'         => 'വിക്കിഡാറ്റ',
+	'ow_none_selected'   => '<ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല>',
 	'ow_dm_OK'           => 'ശരി',
+	'ow_Collection'      => 'ശേഖരം',
 	'ow_Language'        => 'ഭാഷ',
+	'ow_Source'          => 'സ്രോതസ്സ്',
 );
 
 /** Marathi (मराठी)

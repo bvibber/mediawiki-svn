@@ -451,6 +451,13 @@ $messages['id'] = array(
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
 
+/** Iloko (Ilokano)
+ * @author Saluyot
+ */
+$messages['ilo'] = array(
+	'linksearch' => 'Biroken dagiti panilpo a web',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

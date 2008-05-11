@@ -389,6 +389,7 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'vote'            => 'വോട്ട്',
+	'vote-caption'    => 'നിങ്ങള്‍ തിരഞ്ഞെടുത്തത്:',
 	'vote-submit'     => 'വോട്ട്',
 	'vote-login-link' => 'ലോഗിന്‍ ചെയ്യുക',
 );

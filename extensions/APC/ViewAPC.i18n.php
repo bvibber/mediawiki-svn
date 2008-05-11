@@ -285,7 +285,7 @@ APC ei näytä olevan käytössä.',
 	'viewapc-display-ttl'           => 'Elinikä',
 	'viewapc-display-inode'         => 'Inode',
 	'viewapc-display-type'          => 'Tyyppi',
-	'viewapc-display-type-file'     => 'käännetty tiedosto',
+	'viewapc-display-type-file'     => 'jäsennetty tiedosto',
 	'viewapc-display-type-user'     => 'välimuistitettu sovellusdata',
 	'viewapc-display-num_hits'      => 'Osumia',
 	'viewapc-display-mtime'         => 'Muutettu',
@@ -319,7 +319,19 @@ APC ei näytä olevan käytössä.',
 	'viewapc-ls-sort-created'       => 'luontiaika',
 	'viewapc-ls-sort-deleted'       => 'poistoaika',
 	'viewapc-ls-sort-timeout'       => 'elinikä',
+	'viewapc-ls-limit-none'         => 'kaikki',
+	'viewapc-ls-more'               => "''$1 {{PLURAL:$1|näyttämätön muistitietue|näyttämätöntä muistitietuetta}} lisää''",
+	'viewapc-ls-nodata'             => "''Ei kriteerejä vastaavia muistitietueita''",
+	'viewapc-delete-ok'             => 'Muistitietue <nowiki>$1</nowiki> on poistettu.',
+	'viewapc-delete-failed'         => 'Muistitietueen <nowiki>$1</nowiki> poistaminen epäonnistui.',
+	'viewapc-version-info'          => 'Versiotiedot',
 	'viewapc-version-changelog'     => 'Muutoshistoria',
+	'viewapc-version-failed'        => 'Versiotietojen hakeminen epäonnistui.',
+	'viewapc-version-ok'            => 'Käytössä on uusin versio APC:stä ($1).',
+	'viewapc-version-old'           => 'Käytössä on vanha APC-versio ($1).
+Uudempi versio ($2) on saatavilla osoitteesta http://pecl.php.net/package/APC/$2 .',
+	'viewapc-filecache-cleared'     => "'''''Tiedostomuisti tyhjennettiin.'''''",
+	'viewapc-usercache-cleared'     => "'''''Sovellusmuisti tyhjennettiin.'''''",
 );
 
 /** French (Français)
@@ -654,6 +666,7 @@ APC katoné ora mlaku.",
 	'viewapc-ls-sort-created'       => 'Digawé',
 	'viewapc-ls-sort-deleted'       => 'Dibusak',
 	'viewapc-ls-limit-none'         => 'Kabèh',
+	'viewapc-ls-more'               => "''Isih ana luwih saka $1 {{PLURAL:$1|èntri|èntri-èntri}}''",
 	'viewapc-ls-nodata'             => "''Ora ana data sing cocog''",
 	'viewapc-delete-ok'             => "Èntri ''cache'' <nowiki>$1</nowiki> wis dibusak.",
 	'viewapc-delete-failed'         => "Gagal mbusak èntri ''cache'' <nowiki>$1</nowiki>.",
@@ -710,6 +723,16 @@ $messages['lb'] = array(
 Eng méi nei Versioun $2 ass op http://pecl.php.net/package/APC/$2 disponibel.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'viewapc-memory-free' => 'Vrie: $1 ($2)',
+	'viewapc-memory-used' => 'Gebroek: $1 ($2)',
+	'viewapc-memory-hits' => 'Geraak: $1 ($2)',
+	'viewapc-memory-miss' => 'Gemis: $1 ($2)',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -719,9 +742,11 @@ $messages['ml'] = array(
 	'viewapc-mode-version-check'    => 'പതിപ്പ് പരിശോധിക്കുക',
 	'viewapc-info-general'          => 'പൊതുവായ വിവരങ്ങള്‍',
 	'viewapc-php-version'           => 'PHP പതിപ്പ്',
+	'viewapc-start-time'            => 'തുടങ്ങുന്ന സമയം',
 	'viewapc-uptime'                => 'പ്രവര്‍ത്തനനിരതമായ സമയം',
 	'viewapc-upload-support'        => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യാനുള്ള സൗകര്യം',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|പ്രമാണം|പ്രമാണങ്ങള്‍}} ($2)',
+	'viewapc-requests'              => 'അഭ്യര്‍ത്ഥനയുടെ തോത്',
 	'viewapc-memory-free'           => 'ലഭ്യമായത്: $1 ($2)',
 	'viewapc-memory-used'           => 'ഉപയോഗിക്കപ്പെട്ടത്: $1 ($2)',
 	'viewapc-display-filename'      => 'പ്രമാണത്തിന്റെ പേര്‌',
@@ -746,6 +771,7 @@ $messages['ml'] = array(
 	'viewapc-ls-sort-deleted'       => 'മായ്ച്ചത്',
 	'viewapc-ls-sort-timeout'       => 'സമയം കഴിഞ്ഞു',
 	'viewapc-ls-limit-none'         => 'എല്ലാം',
+	'viewapc-version-info'          => 'പതിപ്പിന്റെ വിവരണം',
 );
 
 /** Marathi (मराठी)

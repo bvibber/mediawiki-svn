@@ -410,9 +410,13 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'ajax-se-title'   => 'Memènteel aant bewèrke:',
-	'ajax-se-pending' => "Herfrisse aant äöbere... (klik op deze bóks of sjtart 't bewèrke)",
-	'ajax-se-idling'  => '($1s geleje)',
+	'ajax-se-desc'             => "Guuef gebroekers die 'ne pazjena bewèrke aan, wae dezelfdje pazjena aan 't bewèrke is",
+	'ajax-se-title'            => 'Memènteel aant bewèrke:',
+	'ajax-se-pending'          => "Herfrisse aant äöbere... (klik op deze bóks of sjtart 't bewèrke)",
+	'ajax-se-idling'           => '($1s geleje)',
+	'ajax-se-pagedoesnotexist' => 'pazjena besteit neet',
+	'ajax-se-userinvalid'      => 'FÓWT: óngeljige gebroeker',
+	'ajax-se-usernotfound'     => 'FÓWT: gebroeker neet gevónje',
 );
 
 /** Lao (ລາວ)

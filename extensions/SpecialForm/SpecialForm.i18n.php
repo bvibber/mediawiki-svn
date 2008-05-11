@@ -227,6 +227,13 @@ $messages['hu'] = array(
 	'formsave' => 'Mentés',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'formsave' => 'Vista',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

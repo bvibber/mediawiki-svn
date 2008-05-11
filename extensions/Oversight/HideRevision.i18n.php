@@ -655,6 +655,7 @@ $messages['gl'] = array(
 	'group-oversight'             => 'Supervisores',
 	'group-oversight-member'      => 'Supervisor',
 	'grouppage-oversight'         => '{{ns:project}}:Supervisor',
+	'right-oversight'             => 'Ver unha revisión agochada previa',
 	'hiderevision-prompt'         => 'Número de revisión a eliminar:',
 	'hiderevision-continue'       => 'Continuar',
 	'hiderevision-text'           => "Isto debe ser usado '''só''' para os seguintes casos:

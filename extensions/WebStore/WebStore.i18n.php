@@ -497,6 +497,14 @@ $messages['lb'] = array(
 	'webstore_php_error'               => 'Dës PHP Feeler sinn opgetratt:',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'webstore_404'                => 'പ്രമാണം കണ്ടില്ല.',
+	'webstore_metadata_not_found' => 'പ്രമാണം കണ്ടില്ല: $1',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

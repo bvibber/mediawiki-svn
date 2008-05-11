@@ -36,6 +36,13 @@ $messages['fr'] = array(
 	'skinperpage-desc' => 'ajoute la balise <tt>&lt;skin&gt;</tt> pour utiliser différentes interfaces par page',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
+);
+
 /** Limburgish (Limburgs)
  * @author Matthias
  */

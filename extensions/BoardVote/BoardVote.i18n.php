@@ -692,20 +692,25 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
 /** Danish (Dansk)
- * @author Morten
  * @author M.M.S.
+ * @author Morten
  * @author Jon Harald Søby
+ * @author Jan Friberg
  */
 $messages['da'] = array(
-	'boardvote'         => 'Valg af medlemmer til Wikimedias bestyrelse',
-	'boardvote-desc'    => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
-	'boardvote_entry'   => '* [[Special:Boardvote/vote|Stem]]
+	'boardvote'          => 'Valg af medlemmer til Wikimedias bestyrelse',
+	'boardvote-desc'     => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
+	'boardvote_entry'    => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
-	'boardvote_user'    => 'Bruger',
-	'boardvote_ip'      => 'IP',
-	'boardvote_submit'  => 'OK',
-	'boardvote_welcome' => "Velkommen '''$1'''!",
+	'boardvote_time'     => 'Tid',
+	'boardvote_user'     => 'Bruger',
+	'boardvote_edits'    => 'Redigeringer',
+	'boardvote_days'     => 'Dage',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'Klik her',
+	'boardvote_submit'   => 'OK',
+	'boardvote_welcome'  => "Velkommen '''$1'''!",
 );
 
 $messages['de'] = array(
@@ -1362,6 +1367,7 @@ até o momento. $1 para os datos encriptados.</p>',
 Vai ser redirixido cara a este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
+	'right-boardvote'        => 'Administrar as eleccións',
 );
 
 /** Manx (Gaelg)
@@ -2796,6 +2802,7 @@ $messages['ml'] = array(
 നിങ്ങള്‍ 20 സെക്കന്റിനുള്ളില്‍ യാന്ത്രികമായി ആ സെര്‍‌വറിലേക്കു ആനയിക്കപ്പെടും. അവിടേക്കു പോകാന്‍ [$1 ഇവിടെ] ഞെക്കാവുന്നതും ആണ്‌. 
 
 ഒപ്പിടാത്ത സര്‍ട്ടിഫിക്കറ്റിനെ കുറിച്ചുള്ള സുരക്ഷാസന്ദേശം ചിലപ്പോള്‍ പ്രദര്‍ശിപ്പിക്കപ്പെട്ടേക്കാം.',
+	'right-boardvote'        => 'കാര്യനിര്‍വാഹക തിരഞ്ഞെടുപ്പ്',
 );
 
 /** Marathi (मराठी)

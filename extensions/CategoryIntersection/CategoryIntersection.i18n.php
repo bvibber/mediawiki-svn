@@ -188,7 +188,8 @@ $messages['lo'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'categoryintersection-doit' => 'ഈ വിഭാഗത്തിലുള്ള താളുകളെല്ലാം പ്രദര്‍ശിപ്പിക്കുക',
+	'categoryintersection-doit'    => 'ഈ വിഭാഗത്തിലുള്ള താളുകളെല്ലാം പ്രദര്‍ശിപ്പിക്കുക',
+	'categoryintersection-results' => 'തിരച്ചിലില്‍ $1 {{PLURAL:$1|ഫലം|ഫലങ്ങള്‍}} കിട്ടി.',
 );
 
 /** Marathi (मराठी)

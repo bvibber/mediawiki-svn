@@ -168,6 +168,22 @@ $messages['oc'] = array(
   #</pre><!-- Daissatz aquesta linha tala coma es -->',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editsubpages-desc' => 'Umożliwia administratorom odblokowanie edycji strony i jej wszystkich podstron dla niezalogowanych użytkowników poprzez [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '  #<!-- nie zmieniaj treści tej linii --><pre>
+# Umieść poniżej nazwy stron, które chcesz odblokować wpisując
+# * NazwaStrony
+# Każda nazwa odblokowywanej strony musi być poprzedzona gwiazdką.
+# Wszystko inne zostanie uznane za komentarz.
+# NazwaStrony może być [[odnośnikiem]] i jest czuła na wielkość znaków.
+# Strony dyskusji zostaną automatycznie odblokowane.
+# Zobacz http://www.mediawiki.org/wiki/Extension:EditSubpages jeśli chcesz uzyskać więcej informacji.
+  #</pre><!-- nie zmieniaj treści tej linii -->',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -266,5 +282,4 @@ $messages['vi'] = array(
 # Xem http://www.mediawiki.org/wiki/Extension:EditSubpages để có thêm thông tin
   #</pre><!-- đừng sửa vào dòng này -->',
 );
-
 

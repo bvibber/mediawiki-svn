@@ -325,7 +325,9 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'block_title_error' => 'ഈ താളിന്റെ തലക്കെട്ടു അനുവദനീയമല്ല',
+	'block_title_error_page_title' => 'നിരോധിക്കപ്പെട്ട തലക്കെട്ട്',
+	'block_title_error-desc'       => 'ചില പ്രത്യേക തലക്കെട്ടുള്ള ലേഖനങ്ങള്‍ സൃഷ്ടിക്കുന്നതോ സേവ് ചെയ്യുന്നതോ തടയാന്‍ സഹായിക്കുന്നു',
+	'block_title_error'            => 'ഈ താളിന്റെ തലക്കെട്ടു അനുവദനീയമല്ല',
 );
 
 /** Marathi (मराठी)

@@ -409,6 +409,7 @@ $messages['ja'] = array(
 $messages['jv'] = array(
 	'contributors'            => 'Para kontributor',
 	'contributors-toolbox'    => 'Para kontributor utama',
+	'contributors-legend'     => 'Tuduhna daftar kontributor utama sawijining kaca',
 	'contributors-target'     => 'Irah-irahan (judhul):',
 	'contributors-submit'     => 'Tuduhna',
 	'contributors-subtitle'   => 'Para kontributor utama kanggo $1',

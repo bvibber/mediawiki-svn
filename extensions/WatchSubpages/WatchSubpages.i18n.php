@@ -70,6 +70,13 @@ $messages['lb'] = array(
 	'watchsubpages'      => 'Ënner-Säiten iwwerwaachen',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'watchsubpages' => 'സബ്‌താളുകള്‍ ശ്രദ്ധിക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

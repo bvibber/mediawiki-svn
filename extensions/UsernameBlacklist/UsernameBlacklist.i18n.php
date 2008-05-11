@@ -501,9 +501,14 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Entri|Entri}} pada daftar hitam nama pengguna {{PLURAL:$1|ini|berikut}} tidak valid; silakan perbaiki {{PLURAL:$1|entri|entri}} tersebut sebelum disimpan:',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ * @author Spacebirdy
+ */
 $messages['is'] = array(
-	'blacklistedusername' => 'Bannað notendanafn',
-	'blacklistedusernametext' => 'Þetta notendanafn sem þú hefur valið passar við [[MediaWiki:Usernameblacklist|listann með bönnuðum notendanöfnum]]. Vinsamlegast veldu annað nafn.',
+	'blacklistedusername'     => 'Bannað notendanafn',
+	'blacklistedusernametext' => 'Notandanafnið sem þú valdir passar við [[MediaWiki:Usernameblacklist|listann með bönnuðum notandanöfnum]].
+Vinsamlegast veldu annað nafn.',
 );
 
 /** Italian (Italiano)

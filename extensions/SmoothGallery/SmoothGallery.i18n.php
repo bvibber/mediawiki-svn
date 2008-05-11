@@ -139,6 +139,19 @@ $messages['km'] = array(
 	'smoothgallery-javascript-disabled' => 'តំរូវអោយមាន Javascript ដើម្បី មើលបានល្អ ទីតាំងពិពណ៌ នេះ ។',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'smoothgallery'                    => 'मुलायमप्रेक्षा',
+	'smoothgallery-desc'               => 'उपयोगकर्त्यांना चढवलेल्या चित्रणांपासून दीर्घा(प्रेक्षा)बनवण्याकरिता अनुमति देते. 
+मुलायमदिर्घा(प्रेक्षा) बनविण्याकरिता सर्वाधिक पर्याय उपलब्ध करून देते.',
+	'smoothgallery-title'              => 'मुलायमप्रेक्षा',
+	'smoothgallery-smoothgallerytitle' => 'मुलायमप्रेक्षा $1',
+	'smoothgallery-error'              => 'मुलायमप्रेक्षा त्रूटी',
+	'smoothgallery-gallery-not-found'  => 'विनंती केलेली प्रेक्षा(दिर्घा) अस्तित्वात नाही.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

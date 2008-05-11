@@ -484,7 +484,9 @@ $allMessages['ml'] = array(
 	'whitelisttableview'       => 'കാണുക',
 	'whitelisttablenewdate'    => 'പുതിയ തീയ്യതി:',
 	'whitelisttableremove'     => 'നീക്കം ചെയ്യുക',
+	'whitelistnewtabledate'    => 'കാലാവധി തീരുന്ന തീയ്യതി:',
 	'whitelistnewtablereview'  => 'സം‌ശോധനം',
+	'whitelistnever'           => 'ഒരിക്കലും അരുത്:',
 );
 
 /** Marathi (मराठी)
