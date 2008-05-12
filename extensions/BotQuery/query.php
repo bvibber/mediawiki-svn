@@ -98,6 +98,20 @@ define( 'GN_ENUM_CHOICES',  2 );
 // Use this constant to avoid filtering by namespace
 define( 'NS_ALL_NAMESPACES', -10123 );
 
+// Forward-compat safety checks
+if( !@$wgEnableAPI ) {
+	wfHttpError( 403, 'Forbidden',
+		"MediaWiki API is not enabled for this site. " .
+		"Add the following line to your LocalSettings.php\n\n" .
+		"\$wgEnableAPI=true;" );
+	return;
+}
+
+if( !@$wgGroupPermissions['*']['read'] ) {
+	wfHttpError( 403, 'Forbidden',
+		"MediaWiki API is unavailable for this site due to restricted permissions." );
+	return;
+}
 
 $bqp = new BotQueryProcessor( $startTime );
 $bqp->execute();
