@@ -354,8 +354,8 @@ function fillDestFilenameMulti(i) {
 	<form id='upload' method='post' enctype='multipart/form-data' action=\"$action\">
 		<table border='0'>
 		<tr>
-			<td align='left'><label for='wpUploadFile'><b>{$sourcefilename}:</b></label></td>
-			<td align='left'><label for='wpDestFile'><b>{$destfilename}:</b></label></td>
+			<td align='left'><label for='wpUploadFile'><b>{$sourcefilename}</b></label></td>
+			<td align='left'><label for='wpDestFile'><b>{$destfilename}</b></label></td>
 			<td align='left' valign='middle'><b>{$summary}</b></td>
 		</tr>");
 	for ($i = 0; $i < $wgMaxUploadFiles; $i++) {
@@ -399,11 +399,11 @@ function fillDestFilenameMulti(i) {
 			$uploadsource = htmlspecialchars( $this->mUploadSource );
 
 			$wgOut->addHTML( "
-			        <td align='right' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus:</label></td>
+			        <td align='right' nowrap='nowrap'><label for='wpUploadCopyStatus'>$filestatus</label></td>
 			        <td><input tabindex='5' type='text' name='wpUploadCopyStatus' id='wpUploadCopyStatus' value=\"$copystatus\" size='40' /></td>
 		        </tr>
 			<tr>
-		        	<td align='right'><label for='wpUploadCopyStatus'>$filesource:</label></td>
+		        	<td align='right'><label for='wpUploadCopyStatus'>$filesource</label></td>
 			        <td><input tabindex='6' type='text' name='wpUploadSource' id='wpUploadCopyStatus' value=\"$uploadsource\" size='40' /></td>
 			</tr>
 			<tr>
