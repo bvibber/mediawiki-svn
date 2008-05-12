@@ -183,6 +183,7 @@ $messages['jv'] = array(
 	'watchers_error_article' => '<b>Kaluputan:</b> Kaca iki ora ana.',
 	'watchers_header'        => 'Wong-wong sing ngawasi "$1"',
 	'watchers_noone_watches' => 'Ora ana sing ngawasi kaca iki.',
+	'watchers_x_or_more'     => '$1 utawa luwih panganggo ngawasi kaca iki.',
 	'watchers_less_than_x'   => 'Kurang saka $1 wong ngawasi kaca iki.',
 );
 

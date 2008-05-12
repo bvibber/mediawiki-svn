@@ -210,6 +210,7 @@ $messages['jv'] = array(
 	'tasklistunspecuser'     => 'Panganggo ora dispésifikasi',
 	'tasklistincorrectuser'  => 'Jeneng panganggo ora bener',
 	'tasklistemail'          => '%s sing minulya',
+	'tasklistemailsubject'   => '[%s] Owah-owahan ing Daftar Tugas',
 	'tasklistmytasks'        => 'Tugas-tugasku',
 	'tasklistbyprojectbad'   => "Proyèk '''%s''' iku dudu proyèk absah.
 Kanggo daftar proyèk-proyèk sing absah, mangga mirsani [[MediaWiki:TodoTasksValidProjects]].",

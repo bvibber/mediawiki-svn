@@ -239,6 +239,7 @@ $messages['is'] = array(
  */
 $messages['jv'] = array(
 	'form'                   => 'Formulir',
+	'formbadname'            => 'Jeneng formulir ala',
 	'formbadnametext'        => 'Ora ana formulir mawa jeneng iku.',
 	'formpattern'            => 'Formulir-$1',
 	'formtitlepattern'       => 'Tambah $1 anyar',

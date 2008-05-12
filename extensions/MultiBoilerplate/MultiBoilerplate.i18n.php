@@ -76,6 +76,13 @@ $messages['hsb'] = array(
 	'multiboilerplate-submit' => 'Začitać',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'multiboilerplate-submit' => 'Unggahna',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

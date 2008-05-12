@@ -67,6 +67,13 @@ $messages['hsb'] = array(
 	'rightfunctions-restcasc' => '$1 (z překrywacych žórłow)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'rightfunctions' => 'Parser Funktiounen déi vun de Benotzerrechter ofhänken',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

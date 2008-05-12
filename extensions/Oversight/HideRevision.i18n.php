@@ -869,6 +869,7 @@ $messages['hu'] = array(
 	'group-oversight'             => 'adatvédelmi biztosok',
 	'group-oversight-member'      => 'adatvédelmi biztos',
 	'grouppage-oversight'         => '{{ns:project}}:Adatvédelmi biztosok',
+	'right-oversight'             => 'korábban elrejtett változatok megtekintése',
 	'hiderevision-prompt'         => 'Eltávolítandó változat:',
 	'hiderevision-continue'       => 'Folytatódik',
 	'hiderevision-text'           => "Ez az eszköz '''csak''' az alábbi esetekben használható:

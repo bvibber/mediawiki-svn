@@ -89,6 +89,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'povwatch_desc'                    => 'Разширение за [[Special:PovWatch|добавяне на страници в списъка за наблюдение]] на други потребители',
+	'povwatch_no_session'              => 'Грешка: Формулярът не може да бъде изпратен заради загуба на данни от сесията.',
 	'povwatch_not_allowed_push'        => 'Вие не сте PovWatch администратор, затова не можете да включвате страници в списъците за наблюдение.',
 	'povwatch_already_subscribed'      => 'Вече сте се записал/а за PovWatch',
 	'povwatch_subscribed'              => 'Сега сте записан/а за PovWatch',
@@ -102,8 +103,11 @@ $messages['bg'] = array(
 	'povwatch_unknown_subpage'         => 'Непозната подстраница.',
 	'povwatch_title'                   => 'Заглавие:',
 	'povwatch_no_log'                  => 'Дневникът не съдържа записи.',
+	'povwatch_no_subscribers'          => 'Няма записани потребители.',
 	'povwatch_unsubscribe'             => 'Отписване',
 	'povwatch_subscribe'               => 'Записване',
+	'right-povwatch_admin'             => 'Администриране на потребителските права за добавяне на страници в списъка за наблюдение на другите потребители',
+	'right-povwatch_user'              => 'добавяне на страници в списъка за наблюдение на други потребители',
 );
 
 /** Danish (Dansk)

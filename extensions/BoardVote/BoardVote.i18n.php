@@ -1081,6 +1081,20 @@ $messages['fi'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
+	'boardvote_intro'        => '<p>Tervetuloa N:teen Wikimedian johtokunnan vaaleihin. Äänestämme N:ää ihmistä edustamaan Wikimedian projektien yhteisöjä.
+He määrittävät sen suunnan, jonka Wikimedian projektit tulevaisuudessa ottavat, ja edustavat <em>sinun</em> etujasi ja huoliasi johtokunnalle.
+He päättävät tavoista hankkia varoja ja niiden käytöstä.</p>
+
+<p>Lue ehdokkaiden lausunnot ja vastaukset kysymyksiin huolellisesti ennen äänestämistä.
+Jokainen ehdokas on tunnettu ja arvostettu käyttäjä, joka on käyttänyt huomattavasti aikaa luodakseen näistä projekteista helppopääsyisen ympäristön vapaan tiedon levittämiseen.</p>
+
+<p>Voit äänestää niin montaa ehdokasta kuin haluat.
+Ehdokkaat, joilla on eniten ääniä jossakin asemassa, julistetaan voittajaksi.
+Tasaäänten sattuessa, järjestetään uusintavaalit.</p>
+
+<p>Lisätietoja:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/FIXME" class="external">Usein kysytyt kysymykset</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/FIXME" class="external">Ehdokkaat</a></li></ul>',
 	'boardvote_intro_change' => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
 	'boardvote_entered'      => 'Kiitos. Äänesi on tallennettu.
 
@@ -1824,6 +1838,7 @@ szerveren bonyolítjuk a szavazást.
 20 másodpercen belül át leszel irányítva a külső szerverre. [$1 Kattints ide], ha nem szeretnél várni.
 
 Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmezetés jelenhet meg.',
+	'right-boardvote'        => 'választások irányítása',
 );
 
 /** Interlingua (Interlingua)

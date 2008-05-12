@@ -1321,7 +1321,10 @@ $wdMessages['io'] = array(
  * @author S.Örvarr.S
  */
 $wdMessages['is'] = array(
-	'ow_save' => 'Vista',
+	'ow_save'            => 'Vista',
+	'ow_uipref_datasets' => 'Sjálfgefið útlit',
+	'ow_uiprefs'         => 'Wikigögn',
+	'ow_dm_OK'           => 'Í lagi',
 );
 
 /** Japanese (日本語)
@@ -1392,6 +1395,7 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_ClassAttributeLevel'                => 'Tingkatan',
 	'ow_ClassAttributeType'                 => 'Jenis',
 	'ow_Collection'                         => 'Kolèksi',
+	'ow_CollectionMembership'               => 'Kaanggotan kolèksi',
 	'ow_Definition'                         => 'Définisi',
 	'ow_DefinedMeaningAttributes'           => 'Anotasi',
 	'ow_DefinedMeaning'                     => 'Arti sing didéfinisi',

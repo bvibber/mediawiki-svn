@@ -32,6 +32,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'purgecache'         => 'Изчистване на складираното копие',
+	'purgecache-desc'    => '[[Special:PurgeCache|Специална страница]], използвана за изчистване на таблицата OBJECTCACHE',
 	'purgecache-warning' => 'Това ще изчисти таблиците със складирани копия.',
 	'purgecache-purged'  => 'Складираното копие беше изчистено.',
 	'purgecache-button'  => 'Изчистване',

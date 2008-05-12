@@ -143,6 +143,8 @@ $messages['bg'] = array(
 	'openidemail'                   => 'Електронна поща',
 	'openidlanguage'                => 'Език',
 	'openidnotavailable'            => 'Избраното потребителско име ($1) вече се използва от друг потребител.',
+	'openidchooseinstructions'      => 'Всички потребители трябва да имат потребителско име;
+можете да изберете своето от предложенията по-долу.',
 	'openidchoosefull'              => 'Вашето пълно име ($1)',
 	'openidchooseauto'              => 'Автоматично генерирано име ($1)',
 	'openidchoosemanual'            => 'Име по избор:',

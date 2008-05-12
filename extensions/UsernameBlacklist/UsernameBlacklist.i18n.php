@@ -310,6 +310,7 @@ $messages['fi'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Seuraava listan rivi ei ole kelvollinen|Seuraavat listan rivit eivät ole kelvollisia}}. Korjaa {{PLURAL:$1|se|ne}} ennen tallentamista.',
+	'right-uboverride'                => 'Ohittaa käyttäjätunnusten mustalista',
 );
 
 /** French (Français)
@@ -465,6 +466,7 @@ $messages['hu'] = array(
 # * Kovács [Jj]ános
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Az alábbi {{PLURAL:$1|sor hibás|sorok hibásak}} a felhasználói nevek feketelistájában; {{PLURAL:$1|javítsd|javítsd őket}} mentés előtt:',
+	'right-uboverride'                => 'felhasználói nevek feketelistájának figyelmen kívül hagyása',
 );
 
 $messages['hy'] = array(

@@ -236,6 +236,7 @@ $messages['jv'] = array(
 	'spamregex-block-message'   => "Ukara '''$1''' wis diblokir.",
 	'spamregex-warning-1'       => 'Wènèhana ukara sing kudu diblokir.',
 	'spamregex-already-blocked' => '"$1" wis diblokir',
+	'spamregex-phrase-block'    => 'Ukara sing diblokir:',
 	'spamregex-text'            => '(Tèks)',
 	'spamregex-summary-log'     => '(Ringkesan)',
 );

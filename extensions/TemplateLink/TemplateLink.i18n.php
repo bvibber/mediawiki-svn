@@ -161,8 +161,13 @@ $messages['oc'] = array(
 	'templatelink_newtitle' => '$1 (tranclut)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-		'templatelink_empty' => 'Musisz podać parametr',
+	'templatelink_empty'    => 'Musisz podać parametr',
+	'templatelink_newtitle' => '$1 (po transkluzji)',
 );
 
 $messages['pms'] = array(

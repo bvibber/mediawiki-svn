@@ -92,15 +92,16 @@ $4',
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'todo'              => 'Списък със задачи',
-	'todo-desc'         => 'Експериментално разширение за създаване на персонален [[Special:Todo|списък със задачи]]',
-	'todo-add-queue'    => 'Добавяне на опашка…',
-	'todo-move-queue'   => 'Преместване в опашка…',
-	'todo-list-for'     => 'Списък със задачи за',
-	'todo-list-change'  => 'Промяна',
-	'todo-list-cancel'  => 'Отмяна',
-	'todo-form-details' => 'Детайли:',
-	'todo-form-submit'  => 'Изпращане на заявка',
+	'todo'                  => 'Списък със задачи',
+	'todo-desc'             => 'Експериментално разширение за създаване на персонален [[Special:Todo|списък със задачи]]',
+	'todo-unrecognize-type' => 'Неразпознат тип',
+	'todo-add-queue'        => 'Добавяне на опашка…',
+	'todo-move-queue'       => 'Преместване в опашка…',
+	'todo-list-for'         => 'Списък със задачи за',
+	'todo-list-change'      => 'Промяна',
+	'todo-list-cancel'      => 'Отмяна',
+	'todo-form-details'     => 'Детайли:',
+	'todo-form-submit'      => 'Изпращане на заявка',
 );
 
 /** Danish (Dansk)
@@ -249,6 +250,8 @@ $messages['jv'] = array(
 	'todo-list-for'         => 'Daftar tugas kanggo',
 	'todo-list-change'      => 'Ganti',
 	'todo-list-cancel'      => 'Batal',
+	'todo-new-item'         => 'Item anyar',
+	'todo-issue-summary'    => 'Ringkesan:',
 	'todo-form-details'     => 'Détail:',
 	'todo-form-submit'      => 'Kirimna kwéri',
 );

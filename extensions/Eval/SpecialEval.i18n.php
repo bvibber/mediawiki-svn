@@ -32,6 +32,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'eval-desc' => 'Добавя [[Special:Eval|интерфейс]] за функцията <code>eval()</code>',
 	'eval_code' => 'Код',
 );
 

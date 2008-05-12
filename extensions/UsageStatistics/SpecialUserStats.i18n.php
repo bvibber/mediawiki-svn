@@ -392,6 +392,7 @@ $messages['is'] = array(
 $messages['jv'] = array(
 	'specialuserstats'               => 'Statistik olèhé nganggo',
 	'usagestatistics'                => 'Statistik olèhé nganggo',
+	'usagestatisticsfor'             => '<h2>Statistik panggunan kanggo [[User:$1|$1]]</h2>',
 	'usagestatisticsallusers'        => 'Kabèh panganggo',
 	'usagestatisticsinterval'        => 'Interval',
 	'usagestatisticstype'            => 'Jenis',

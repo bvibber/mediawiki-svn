@@ -201,7 +201,8 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'countedits'              => 'Contar edicións',
 	'countedits-desc'         => '[[Special:CountEdits|Páxina especial]] que conta as edicións dos usuarios e proporciona unha listaxe dos dez que máis contribuíron',
-	'countedits-warning'      => "'''Advertencia:''' As aparencias enganan. Non xulgue a un colaborador polo seu número de edicións.",
+	'countedits-warning'      => "'''Advertencia:''' as aparencias enganan.
+Non xulgue a un colaborador polo seu número de edicións.",
 	'countedits-username'     => 'Nome de usuario:',
 	'countedits-ok'           => 'De acordo',
 	'countedits-nosuchuser'   => 'Non existe ningún usuario chamado $1.',

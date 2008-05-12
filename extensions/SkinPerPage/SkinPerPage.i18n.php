@@ -29,6 +29,13 @@ $messages['fa'] = array(
 	'skinperpage-desc' => 'برچسب <tt>&lt;skin&gt;</tt> را اضافه می‌کند تا بتوان در هر صفحه از پوسته‌ای متفاوت استفاده کرد',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'skinperpage-desc' => 'Lisää <tt><nowiki><skin></nowiki></tt>-elementin, jolla voi vaihtaa ulkoasua sivukohtaisesti.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -36,11 +43,32 @@ $messages['fr'] = array(
 	'skinperpage-desc' => 'ajoute la balise <tt>&lt;skin&gt;</tt> pour utiliser différentes interfaces par page',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'skinperpage-desc' => 'हर पन्नेपर अलग त्वचा इस्तेमाल करने के लिये उपयुक्त ऐसा <tt>&lt;skin&gt;</tt> टैग बढाता हैं',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'skinperpage-desc' => '<tt>&lt;skin&gt;</tt> tag, ami segítségével laponként más felületet lehet beállítani',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
 $messages['jv'] = array(
 	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'skinperpage-desc' => 'Setzt de <tt>&lt;skin&gt;</tt> Tag derbäi den et erlaabt verschidde Layouten (Skins) ze benotzen',
 );
 
 /** Limburgish (Limburgs)

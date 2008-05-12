@@ -184,6 +184,7 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'multipleupload'                   => 'Enviar ficheiros',
@@ -197,7 +198,7 @@ Escolla \"Navegar\" (ou \"Browse\") e escolla cada un dos ficheiros que queira e
 Pode introducir un '''Nome de ficheiro de destino''' opcional e fornecer un '''Resumo''' que describa o seu ficheiro.
 
 Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Multipleupload-page}}|política de eliminación de ficheiros]].",
-	'multiupload-fileuploaded'         => 'Arquivo cargado.',
+	'multiupload-fileuploaded'         => 'Ficheiro cargado.',
 	'multiupload-toolbox'              => 'Cargar múltiples arquivos',
 );
 

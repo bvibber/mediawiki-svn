@@ -1257,6 +1257,7 @@ $messages['jv'] = array(
 	'mv_remove_filter'               => 'ilangana filter',
 	'mv_advaced_search'              => 'Panggolèkan média sacara canggih',
 	'mv_view_wiki_page'              => 'Ndeleng kaca wiki',
+	'mv_match_text'                  => '~  $1 sing cocog',
 	'mv_new_ht_en'                   => 'Transkripsi anyar',
 	'mv_protect_source_material'     => 'Bahan sumber asli direksa saka panyuntingan',
 );
