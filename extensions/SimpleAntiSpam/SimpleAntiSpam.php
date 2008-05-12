@@ -11,12 +11,12 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
-'name' => 'SimpleAntiSpam',
-'description' => 'Adds a simple spam/bot check to forms',
-'descriptionmsg' => 'simpleantispam-desc',
-'author' => 'Ryan Schmidt',
-'url' => 'http://www.mediawiki.org/wiki/Extension:SimpleAntiSpam',
-'version' => '1.0',
+	'name'           => 'SimpleAntiSpam',
+	'description'    => 'Adds a simple spam/bot check to forms',
+	'descriptionmsg' => 'simpleantispam-desc',
+	'author'         => 'Ryan Schmidt',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:SimpleAntiSpam',
+	'version'        => '1.0',
 );
 
 $wgExtensionMessagesFiles['simpleantispam'] = dirname(__FILE__) . '/SimpleAntiSpam.i18n.php';
