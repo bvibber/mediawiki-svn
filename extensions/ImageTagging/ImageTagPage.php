@@ -18,6 +18,12 @@ $wgExtensionCredits['other'][] = array(
 $wgHooks['ArticleFromTitle'][] = 'wfArticleFromTitle';
 
 
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['TaggedImages'] = $dir . 'SpecialTaggedImages.php';
+$wgSpecialPages['TaggedImages'] = 'TaggedImages';
+
+
+
 /********************
  * End Trie Handlers
  ********************/
@@ -30,8 +36,8 @@ function wfCheckArticleImageTags($outputPage, $text)
     {
         $db =& wfGetDB(DB_SLAVE);
         $res = $db->query("SELECT article_tag, tag_rect, unique_id, COUNT(article_tag) AS count FROM ".
-			" `$wgDBname`.`imagetags` ".
-			" WHERE article_tag='" . addslashes($wgTitle->getText()). "'" .  /*LIMIT 1"*/          " GROUP BY article_tag" );
+						  $db->tableName('imagetags').
+						  " WHERE article_tag='" . addslashes($wgTitle->getText()). "' GROUP BY article_tag" );
 
         if ($o = $db->fetchObject($res)) {
             $taggedImagesObj = Title::newFromText('TaggedImages', NS_SPECIAL);
@@ -92,12 +98,14 @@ function addTag($action, $article)
         wfPurgeTitle($imgTitle);
 
         $db =& wfGetDB(DB_MASTER);
-        $db->insert("`$wgDBname`.`imagetags`", 
-        array(  'img_page_id' => 0,//$img->getTitle()->getArticleID(),
-		'img_name' => $imgName,
-		'article_tag' => $tagName,
-		'tag_rect' => $tagRect,
-		'user_text' => $userText));
+        $db->insert('imagetags',
+        array(
+			  'img_page_id' => 0,
+			  'img_name' => $imgName,
+			  'article_tag' => $tagName,
+			  'tag_rect' => $tagRect,
+			  'user_text' => $userText)
+			 );
 
        $wgOut->clearHTML();
        $wgOut->addHTML("<!-- added tag for image $imgName to database! -->");
@@ -108,7 +116,8 @@ function addTag($action, $article)
        $logComment = "Image [[$link|$imgName]] was tagged to article [[$tagName]] by $userText";
        $logPage->addEntry( 'tag', $imgTitle, $logComment);
 
-       EmailNotification::notifyOnPageChange($imgTitle, wfTimestampNow(), $logComment, false);
+	   $enotif = new EmailNotification;
+       $enotif->notifyOnPageChange($wgUser, $imgTitle, wfTimestampNow(), $logComment, false);
     }
     else {
         $wgOut->clearHTML();
@@ -150,7 +159,7 @@ function removeTag($action, $article)
         wfPurgeTitle($imgTitle);
 
         $db =& wfGetDB(DB_MASTER);
-        $db->delete("`$wgDBname`.`imagetags`", array('unique_id' => $tagID));
+        $db->delete('imagetags', array('unique_id' => $tagID));
 
         $wgOut->clearHTML();
         $wgOut->addHTML("<!-- removed tag to database! -->");
@@ -160,7 +169,8 @@ function removeTag($action, $article)
         $logComment = "Removed tag to article [[$tagName]] by $userText";
         $logPage->addEntry( 'tag', $imgTitle, $logComment);
 
-        EmailNotification::notifyOnPageChange($imgTitle, wfTimestampNow(), $logComment, false);
+	   $enotif = new EmailNotification;
+       $enotif->notifyOnPageChange($wgUser, $imgTitle, wfTimestampNow(), $logComment, false);
     }
     else {
         $wgOut->clearHTML();
@@ -391,7 +401,6 @@ function wfImageTagPageSetup() {
   $wgMessageCache->addMessage('removetagsuccess', "Removed tag.");
   $wgMessageCache->addMessage('oneactionatatimemessage', "Removed tag.");
   $wgMessageCache->addMessage('canteditneedloginmessage', "You can't edit this page.  It may be because you need to login to tag images.  Do you want to login now?");
-  $wgMessageCache->addMessage('canteditothermessage', "You can't edit this page, either because you don't have the rights, or because this page has been locked for other reasons.  For more information, see http://www.wikia.com/wiki/Protection");
   $wgMessageCache->addMessage('oneactionatatimemessage', "Sorry, only one tagging action at a time.  Please wait for the existing action to complete.");
   $wgMessageCache->addMessage('oneuniquetagmessage', "Sorry, this image already has a tag with this name.");
   $wgMessageCache->addMessage('imagetag_seemoreimages', 'See more images of &#8220;$1&#8221; ($2)');
@@ -401,31 +410,26 @@ function wfImageTagPageSetup() {
 class ImageTagPage extends ImagePage
 {
     function openShowImage() {
-        global $wgOut, $wgUser, $wgServer, $wgImageTaggingPath, $wgStyleVersion;
+        global $wgOut, $wgUser, $wgServer, $wgImageTaggingPath, $wgStyleVersion, $wgJsMimeType, $wgScriptPath;
 
 	wfProfileIn( __METHOD__ );
 
-	// TKL 2007-03-09: get files only from extensions directory, and not from skins/common
-	if ( $wgImageTaggingPath == '' ) {  $wgImageTaggingPath = '/wiki/extensions/wikia/ImageTagging/';  }
 
-        $wgOut->addScript('<script type="text/javascript" src="' . $wgImageTaggingPath . 'img_tagging.js?'.$wgStyleVersion.'" charset="utf-8"></script>');
-        $wgOut->addScript('<script type="text/javascript" src="' . $wgImageTaggingPath . 'json.js?'.$wgStyleVersion.'" charset="utf-8"></script>');
+	global $wgJsMimeType, $wgScriptPath ;
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/img_tagging.js?$wgStyleVersion\"></script>\n" );
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/json.js?$wgStyleVersion\"></script>\n" );
 
-	// TKL commented out 2007-03-06
-        // $wgOut->addHTML('<script type="text/javascript"> var baseUrl = "{$wgServer}/wiki/"; </script>');
-	// $wgOut->addScript('<script type="text/javascript" src="' . $wgImageTaggingPath . 'WSuggest.js"></script>');
+	$imgName = $this->getTitle()->getText();
+	$wgOut->addHTML("<input type='hidden' value='$imgName' id='imgName' />");
+	$wgOut->addHTML("<input type='hidden' value='$wgScriptPath/extensions/magTagging' id='imgPath' />");
 
-        $imgName = $this->getTitle()->getText();
-        $wgOut->addHTML("<input type='hidden' value='" . $imgName . "' id='imgName' />");
-        $wgOut->addHTML("<input type='hidden' value='" . $wgImageTaggingPath . "' id='imgPath' />");
-
-        if ( $wgUser->isLoggedIn() )
-            $wgOut->addHTML("<input type='hidden' value='1' id='userLoggedIn'/>");
-
-        if ( $wgUser->isAllowed('edit') && 
-             $this->mTitle->userCanEdit() &&
-             ( $this->mTitle->isProtected('edit') == false || in_array( 'sysop', $wgUser->getGroups() ) ) )
-            $wgOut->addHTML("<input type='hidden' value='1' id='canEditPage'/>");
+	if ( $wgUser->isLoggedIn() )
+		$wgOut->addHTML("<input type='hidden' value='1' id='userLoggedIn'/>");
+	
+	if ( $wgUser->isAllowed('edit') && 
+		 $this->mTitle->userCanEdit() &&
+		 ( $this->mTitle->isProtected('edit') == false || in_array( 'sysop', $wgUser->getGroups() ) ) )
+		$wgOut->addHTML("<input type='hidden' value='1' id='canEditPage'/>");
 
         $this->modifiedImagePageOpenShowImage();
 

@@ -5,7 +5,7 @@
  * @subpackage SpecialPage
  */
 
-define(TAGGEDIMGS_PER_PAGE, 12);
+define('TAGGEDIMGS_PER_PAGE', 12);
 
 
 $wgExtensionFunctions[] = 'wfSpecialTaggedImages';
@@ -64,27 +64,31 @@ class TaggedImages extends SpecialPage
 
         $db =& wfGetDB(DB_SLAVE);
 
-        # COUNT(img_name) AS img_count
-/*
-	$res = $db->query("SELECT " . ( $this->mQuery ? "" : "DISTINCT " ) . "imagetags.img_name, image.img_timestamp FROM " .
-		      " `$wgDBname`.`imagetags` LEFT JOIN `$wgDBname`.`image` ON imagetags.img_name = image.img_name ".
-		      ( $this->mQuery ? " WHERE article_tag='" . $this->mQuery . "'" : "" ) .
-		      " GROUP BY unique_id " . 
-		      " ORDER BY image.img_timestamp desc " .
-		      " LIMIT " . ($this->mStartPage * TAGGEDIMGS_PER_PAGE) . 
-		      ", " . TAGGEDIMGS_PER_PAGE);
-*/
+		$WHERECLAUSE = '';
+		if ($this->mQuery) {
+			$WHERECLAUSE = " WHERE article_tag='$this->mQuery'";
+		}
 
-	$res = $db->query("SELECT image.img_name, image.img_timestamp FROM starwars.image WHERE image.img_name IN (SELECT imagetags.img_name FROM imagetags ".($this->mQuery ? " WHERE imagetags.article_tag='" . $this->mQuery . "'" : "")." GROUP by imagetags.unique_id) ORDER BY image.img_timestamp DESC LIMIT " . ($this->mStartPage * TAGGEDIMGS_PER_PAGE) . ", " . TAGGEDIMGS_PER_PAGE);
+		$imagetable = $db->tableName( 'image' );
+		$imagetagstable = $db->tableName( 'imagetags' );
 
+		$SQL = "
+SELECT img_name, img_timestamp
+FROM $imagetable
+WHERE img_name IN
+  (SELECT img_name FROM $imagetagstable $WHERECLAUSE)
+ORDER BY img_timestamp DESC";
+
+		$SQL = $db->LimitResult($SQL, TAGGEDIMGS_PER_PAGE, $this->mStartPage * TAGGEDIMGS_PER_PAGE);
+
+		$res = $db->query($SQL);
 	while ($o = $db->fetchObject($res)) {
 	    $img = Image::newFromName($o->img_name);
             $this->add($img, '');
         }
         $db->freeResult($res);
 
-        $res = $db->query("SELECT COUNT(img_name) as img_count FROM " .
-                          " `$wgDBname`.`imagetags` ".
+        $res = $db->query("SELECT COUNT(img_name) as img_count FROM $imagetagstable".
                           ( $this->mQuery ? " WHERE article_tag='" . $this->mQuery . "'" : "" ) .
                           " GROUP BY article_tag");
         if ( $o = $db->fetchObject($res) ) {
