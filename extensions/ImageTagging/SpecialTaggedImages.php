@@ -10,7 +10,6 @@ define(TAGGEDIMGS_PER_PAGE, 12);
 
 $wgExtensionFunctions[] = 'wfSpecialTaggedImages';
 
-
 function wfSpecialTaggedImages() {
 	global $wgMessageCache;
 
@@ -41,13 +40,14 @@ class TaggedImages extends SpecialPage
         global $wgRequest;
         global $wgOut;
 
-	$wgOut->addScript("<style type=\"text/css\">/*<![CDATA[*/ @import \"$GLOBALS[wgScriptPath]/extensions/wikia/ImageTagging/img_tagging.css?$GLOBALS[wgStyleVersion]\"; /*]]>*/</style>\n");
+	$wgOut->addScript("<style type=\"text/css\">/*<![CDATA[*/ @import \"$GLOBALS[wgScriptPath]/extensions/ImageTagging/img_tagging.css?$GLOBALS[wgStyleVersion]\"; /*]]>*/</style>\n");
 
         $this->mQuery = preg_replace( "/[\"'<>]/", "", $wgRequest->getText('q') );
         $this->mStartPage = preg_replace( "/[\"'<>]/", "", $wgRequest->getVal('page') );
         $this->mCount = 0;
-	if ( ! $this->mStartPage ) $this->mStartPage = 0;
-        $this->mImages = array();
+		if ( ! $this->mStartPage )
+			$this->mStartPage = 0;
+		$this->mImages = array();
 		
         SpecialPage::SpecialPage("TaggedImages");
     }
