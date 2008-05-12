@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.2.8',
+	'version' => '0.3.0',
 );
 
 ## Adding new rights...
@@ -27,7 +27,10 @@ $wgGroupPermissions['bureaucrat']['configure'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 
-# Adding internationalisation...
+## Define some functions
+require_once( $dir . 'Configure.func.php' );
+
+## Adding internationalisation...
 if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) ){
 	$wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
 } else {
@@ -38,50 +41,11 @@ if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) 
 $wgAutoloadClasses['SpecialConfigure'] = $dir . 'Configure.body.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
 
+## Add the ajax function
+$wgAjaxExportList[] = 'efConfigureAjax';
+
 ## Default path for the serialized files
 $wgConfigureFilesPath = "$IP/serialized";
 
-/**
- * Initalize the settings stored in a serialized file.
- * This have to be done before the end of LocalSettings.php but is in a function
- * because administrators might configure some settings between the moment where
- * the file is loaded and the execution of these function.
- * Settings are not filled only if they doesn't exists because of a security
- * hole if the register_globals feature of PHP is enabled.
- *
- * @param String $wiki
- */
-function efConfigureSetup( $wiki = 'default' ){
-	global $wgConf, $wgConfigureFilesPath;
-
-	# Create the new configuration object...
-	$oldConf = $wgConf;
-	require_once( dirname( __FILE__ ) . '/Configure.obj.php' );
-	$wgConf = new WebConfiguration( $wiki, $wgConfigureFilesPath );
-
-	# Copy the existing settings...
-	$wgConf->suffixes = $oldConf->suffixes;
-	$wgConf->wikis = $oldConf->wikis;
-	$wgConf->settings = $oldConf->settings;
-	$wgConf->localVHosts = $oldConf->localVHosts;
-
-	# Load the new configuration, and fill in the settings
-	$wgConf->initialise();
-	$wgConf->extract();
-}
-
-/**
- * Function that loads the messages in $wgMessageCache, it is used for backward
- * compatibility with 1.10 and older versions
- */
-function efConfigureLoadMessages(){
-	if( function_exists( 'wfLoadExtensionMessages' ) ){
-		wfLoadExtensionMessages( 'Configure' );
-	} else {
-		global $wgMessageCache;
-		require( dirname( __FILE__ ) . '/Configure.i18n.php' );
-		foreach( $messages as $lang => $messages ){
-			$wgMessageCache->addMessages( $messages, $lang );
-		}
-	}
-}
+## Styles versions
+$wgConfigureStyleVersion = '1';

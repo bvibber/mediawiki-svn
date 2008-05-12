@@ -293,7 +293,16 @@ class SpecialConfigure extends SpecialPage {
 				case 'group-bool':
 				case 'group-array':
 					$all = array();
-					$iter = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
+					if( isset( $_REQUEST['wp'.$name.'-vals'] ) ){
+						$iter = explode( "\n", $_REQUEST['wp'.$name.'-vals'] );
+						foreach( $iter as &$group ){
+							// Our own Sanitizer::unescapeId() :)
+							$group = urldecode( str_replace( array( '.', "\r" ), array( '%', '' ), substr( $group, strlen( $name ) + 3 ) ) );
+						}
+						unset( $group ); // Unset the reference, just in case
+					} else { // No javascript ?
+						$iter = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
+					}
 					if( $arrType == 'group-bool' ){
 						if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
 							$all = User::getAllRights();
@@ -311,10 +320,17 @@ class SpecialConfigure extends SpecialPage {
 					foreach( $iter as $group ){
 						foreach( $all as $right ){
 							$id = 'wp'.$name.'-'.$group.'-'.$right;
-							if( $arrType == 'group-bool' )
-								$settings[$name][$group][$right] = $wgRequest->getCheck( $id );
-							else if( $wgRequest->getCheck( $id ) )
+							if( $arrType == 'group-bool' ){
+								$encId = Sanitizer::escapeId( $id );
+								if( $id != $encId ){
+									$val = $wgRequest->getCheck( str_replace( '.', '_', $encId ) ) || $wgRequest->getCheck( $encId ) || $wgRequest->getCheck( $id );
+								} else {
+									$val = $wgRequest->getCheck( $id );
+								}
+								$settings[$name][$group][$right] = $val;
+							} else if( $wgRequest->getCheck( $id ) ){
 								$settings[$name][$group][] = $right;
+							}
 						}
 					}
 					break;
@@ -379,7 +395,7 @@ class SpecialConfigure extends SpecialPage {
 	 * Show the main form
 	 */
 	protected function showForm(){
-		global $wgOut, $wgUser, $wgRequest, $wgScriptPath, $wgStyleVersion;
+		global $wgOut, $wgUser, $wgRequest;
 
 		if( $wiki = $wgRequest->getVal( 'wiki', false ) ){
 			if( !$this->isUserAllowedAll() ){
@@ -394,7 +410,7 @@ class SpecialConfigure extends SpecialPage {
 		$wgOut->addHtml(
 			$this->buildOldVersionSelect() . "\n" .
 
-			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action ) ) . "\n" .
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'configure-form' ) ) . "\n" .
 			Xml::openElement( 'div', array( 'id' => 'preferences' ) ) . "\n" .
 
 			$this->buildAllSettings() . "\n" .
@@ -409,16 +425,7 @@ class SpecialConfigure extends SpecialPage {
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'form' )
 		);
-		$wgOut->addLink(
-			array(
-				'rel' => 'stylesheet',
-				'type' => 'text/css',
-				'href' => "$wgScriptPath/extensions/Configure/Configure.css?$wgStyleVersion",
-			)
-		);
-		if( is_callable( array( $wgOut, 'addScriptFile' ) ) ){ # 1.13 +
-			$wgOut->addScriptFile( 'prefs.js' );
-		}
+		$this->injectScriptsAndStyles();
 	}
 
 	/**
@@ -440,6 +447,49 @@ class SpecialConfigure extends SpecialPage {
 		$text .= "</ul>";
 		return $text;
 	}
+
+	/**
+	 * Inject JavaScripts and Stylesheets in page output
+	 */
+	protected function injectScriptsAndStyles() {
+		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
+		$wgOut->addLink(
+			array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}",
+			)
+		);
+		if( is_callable( array( $wgOut, 'addScriptFile' ) ) ){ # 1.13 +
+			$wgOut->addScriptFile( 'prefs.js' );
+		}
+		if( is_callable( array( 'Xml', 'encodeJsVar' ) ) ){ # 1.9 +
+			$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
+			$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
+			$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
+			$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
+			$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
+		} else {
+			$add = '"' . Xml::escapeJsString( wfMsg( 'configure-js-add' ) ). '"';
+			$remove = '"' . Xml::escapeJsString( wfMsg( 'configure-js-remove' ) ) . '"';
+			$removeRow = '"' . Xml::escapeJsString( wfMsg( 'configure-js-remove-row' ) ) . '"';
+			$promptGroup = '"' . Xml::escapeJsString( wfMsg( 'configure-js-prompt-group' ) ) . '"';
+			$groupExists = '"' . Xml::escapeJsString( wfMsg( 'configure-js-group-exists' ) ) . '"';
+		}
+		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
+		$script = array(
+			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
+			"var wgConfigureAdd = {$add};",
+			"var wgConfigureRemove = {$remove};",
+			"var wgConfigureRemoveRow = {$removeRow};",
+			"var wgConfigurePromptGroup = {$promptGroup};",
+			"var wgConfigureGroupExists = {$groupExists};",
+			"var wgConfigureUseAjax = {$ajax};",
+		 	"/*]]>*/</script>",
+			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
+		);
+		$wgOut->addScript( implode( "\n\t\t", $script ) . "\n" );
+	} 
 
 	/**
 	 * Like before but only for the header
@@ -534,7 +584,8 @@ class SpecialConfigure extends SpecialPage {
 			$keydesc = wfMsgHtml( 'configure-desc-key' );
 			$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$class = ( !$allowed ) ? array( 'class' => 'disabled' ) : array();
-			$text = "<table class='assoc'>\n<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
+			$encConf = htmlspecialchars( $conf );
+			$text = "<table class='assoc' id='{$encConf}'>\n<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
 			if( is_array( $default ) && count( $default ) > 0 ){
 				$i = 0;
 				foreach( $default as $key => $val ){
@@ -685,7 +736,8 @@ class SpecialConfigure extends SpecialPage {
 			}
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
 			$valdesc = wfMsgHtml( 'configure-desc-val' );
-			$text = "<table class='{$type}'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
+			$encConf = htmlspecialchars( $conf );
+			$text = "<table id= '{$encConf}' class='{$type}'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach( $iter as $group => $levs ){
 				$row = '<div style="-moz-column-count:2"><ul>';
 				foreach( $all as $right ){
@@ -701,7 +753,8 @@ class SpecialConfigure extends SpecialPage {
 				}
 				$row .= '</ul></div>';
 				$groupName = User::getGroupName( $group );
-				$text .= "<tr>\n<td>$groupName</td>\n<td>$row</td>\n</tr>";
+				$encId = Sanitizer::escapeId( 'wp'.$conf.'-'.$group );
+				$text .= "<tr id=\"{$encId}\">\n<td>{$groupName}</td>\n<td>{$row}</td>\n</tr>";
 			}
 			$text .= '</table>';
 			return $text;

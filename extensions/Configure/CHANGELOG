@@ -1,9 +1,14 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.3.0 - 12 May 2008
+  Added JavaScript to allow to add or remove items in associative array and
+  in $wgGroupPermissions. The latter require ajax enabled to work
+
+
 0.2.8 - 10 May 2008
   * Load prefs.js in 1.13 +
-  * Added $wgUseAutomaticEditSummaries
+  * Added $wgUseAutomaticEditSummaries.
 
 0.2.7 - 8 May 2008
   Added $wgSQLiteDataDir.
@@ -35,6 +40,7 @@ Localisation updates are done on betawiki and aren't listed here.
 0.2.0 - 1 May 2008
   Rewrote the part that generate the form, will now use $settings variable that
   is defined Configure.settings.php to put the variables into groups.
+
 
 0.1.5 - 26 April 2008
   Now check that the directory used to store the settings is writable.

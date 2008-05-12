@@ -1,3 +1,15 @@
+/**
+ * CSS stylesheet for Configure extension
+ *
+ * @author Alexandre Emsenhuber
+ * @license GPLv2 or higher
+ * @addtogroup Extensions
+ */
+
+/**
+ * tables borders
+ */
+
 table.assoc,
 table.ns-array,
 table.ns-text,
@@ -16,8 +28,11 @@ table.group-array > tr > td {
 	margin: 3px;
 }
 
+/**
+ * disabled settings
+ */
 td.disabled > hr {
-	border: 0;
+	border: 0 !important;
 	color: #777 !important;
 	background-color: #777 !important;
 
@@ -31,4 +46,15 @@ span.array-disabled {
 
 span.array {
 	font-style: italic;
+}
+
+/**
+ * JavaScript stuff
+ */
+td.button {
+	border: 0 !important;
+}
+
+input.button-add {
+	float: right;
 }
