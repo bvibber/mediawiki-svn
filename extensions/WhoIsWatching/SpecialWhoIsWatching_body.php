@@ -22,7 +22,7 @@ class WhoIsWatching extends SpecialPage
     }
 
     function execute($par) {
-        global $wgRequest, $wgOut, $wgCanonicalNamespaceNames;
+        global $wgRequest, $wgOut, $wgCanonicalNamespaceNames, $whoiswatching_nametype;
 
         $this->setHeaders();
         $wgOut->setPagetitle(wfMsg('whoiswatching'));
@@ -68,7 +68,10 @@ class WhoIsWatching extends SpecialPage
         $res = $dbr->select( 'watchlist', 'wl_user', array('wl_namespace'=>$ns, 'wl_title'=>$title), __METHOD__);
         for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $u = User::newFromID($row->wl_user);
-            $watchingusers[$row->wl_user] = ":[[:User:" . $u->getName() . "|" . $u->getRealName() . "]]";
+            if (($whoiswatching_nametype == 'UserName') || ($u->getRealName() == ''))
+                $watchingusers[$row->wl_user] = ":[[User:" . $u->getName() . "]]";
+            else
+                $watchingusers[$row->wl_user] = ":[[:User:" . $u->getName() . "|" . $u->getRealName() . "]]";
         }
 
         asort($watchingusers);

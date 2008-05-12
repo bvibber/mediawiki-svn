@@ -10,7 +10,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'version'     => '0.4',
+    'version'     => '0.5',
     'name'        => 'WhoIsWatching',
     'author'      => 'Paul Grinberg, Siebrand Mazeland',
     'email'       => 'gri6507 at yahoo dot com',
@@ -22,6 +22,9 @@ $wgAutoloadClasses['WhoIsWatching'] = dirname(__FILE__) . '/SpecialWhoIsWatching
 $wgSpecialPages['WhoIsWatching'] = 'WhoIsWatching';
 $wgHooks['LoadAllMessages'][] = 'WhoIsWatching::loadMessages';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'whoiswatching';
+
+# Set the following to either 'UserName' or 'RealName' to display the list of watching users as such.
+$whoiswatching_nametype = 'RealName';
 
 function whoiswatching(&$specialPageArray, $code) {
   # The localized title of the special page is among the messages of the extension:
