@@ -79,7 +79,7 @@ class SpecialForm extends SpecialPage
 	# Load and parse a form article from the DB
 	
 	function loadForm($name) {
-		$nt = Title::makeTitleSafe(NS_MEDIAWIKI, wfMsg('formpattern', $name));
+		$nt = Title::makeTitleSafe(NS_MEDIAWIKI, wfMsgForContent('formpattern', $name));
 
 		# article exists?
 
@@ -101,7 +101,7 @@ class SpecialForm extends SpecialPage
 	function showForm($form, $errmsg = NULL) {
 		global $wgOut, $wgRequest, $wgParser, $wgTitle;
 
-		$self = SpecialPage::getTitleFor(wfMsg('form') . '/' . $form->name);
+		$self = SpecialPage::getTitleFor(wfMsgForContent('form') . '/' . $form->name);
 
 		$wgOut->setPageTitle($form->title);
 
@@ -207,12 +207,18 @@ class SpecialForm extends SpecialPage
 
 			$text .= "}}";
 
+			if (!$this->checkSave($nt[$i], $text)) {
+				# Just break here; output already sent
+				return;
+			}
+				
 			$title = $nt[$i]->GetPrefixedText();
 			
 			wfDebug("SpecialForm: saving article with index '$i' and title '$title'\n");
 
 			$article = new Article($nt[$i]);
 
+			  
 			if (!$article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW)) {
 				$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext', array($title));
 				return; # Don't continue
@@ -238,6 +244,60 @@ class SpecialForm extends SpecialPage
 		return $title;
 	}
 
+	# Had to crib some checks from EditPage.php, since they're not done in Article.php
+	
+	function checkSave($nt, $text) {
+		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgMaxArticleSize, $wgOut;
+
+		$matches = array();
+		$errortext = "";
+
+		$editPage = new FakeEditPage($nt);
+		
+		# FIXME: more specific errors, copied from EditPage.php
+		
+		if ($wgSpamRegex && preg_match($wgSpamRegex, $text, $matches)) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if ($wgFilterCallback && $wgFilterCallback($nt, $text, 0)) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if (!wfRunHooks('EditFilter', array($editPage, $text, 0, &$errortext))) {
+			# Hooks usually print their own error
+			return false;
+		} else if ($errortext != '') {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if ($wgUser->isBlockedFrom($nt, false)) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if ((int)(strlen($text) / 1024) > $wgMaxArticleSize) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if (!$wgUser->isAllowed('edit')) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if (wfReadOnly()) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		} else if ($wgUser->pingLimiter()) {
+			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
+			return false;
+		}
+		
+		return true;
+	}
+}
+
+# Dummy class for extensions that support EditFilter hook
+
+class FakeEditPage {
+
+	var $mTitle;
+	
+	function FakeEditPage(&$nt) {
+		$this->mTitle = $nt;
+	}
 }
 
 class Form {
@@ -251,9 +311,9 @@ class Form {
 	function Form($name, $text) {
 
 		$this->name = $name;
-		$this->title = wfMsg('formtitlepattern', $name);
+		$this->title = wfMsgForContent('formtitlepattern', $name);
 		$this->template = array();
-		$this->template[0] = wfMsg('formtemplatepattern', $name);
+		$this->template[0] = wfMsgForContent('formtemplatepattern', $name);
 
 		$this->fields = array();
 		$this->namePattern = array();

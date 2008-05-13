@@ -15,3 +15,4 @@
 + create more than one article from one form
 - text field validation with regexes on client and server
 - file upload fields (for uploading an associated image)
+- add new page creations to a special:log file
