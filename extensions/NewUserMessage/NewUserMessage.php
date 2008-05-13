@@ -12,7 +12,7 @@
 if (!defined('MEDIAWIKI'))
 	die('Not an entry point.');
 
-define('NEWUSERMESSAGE_VERSION','1.1.1, 2008-05-13');
+define('NEWUSERMESSAGE_VERSION','1.1.2, 2008-05-13');
 
 // Specify a template to wrap the new user message within
 $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
@@ -21,7 +21,10 @@ $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
 // this user does not exist, the new user will show up as editing user.
 $wgNewUserMessageEditor = 'Admin';
 
-// Sepcify whether or not the new user message creation should show up in recent changes
+// Edit summary for the recent changes entry of a new users message
+$wgNewUserEditSummary = "Adding [[MediaWiki:NewUserMessage|welcome message]] to new user's talk page";
+
+// Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserSupressRC = false;
 
 // Should the new user message creation be a minor edit?
@@ -45,7 +48,7 @@ $wgExtensionCredits['other'][] = array(
  * Add the template message if the users talk page doesn't already exist
  */
 function wfCreateNewUserMessage($user) {
-	global $wgNewUserMessageTemplate, $wgNewUserMinorEdit, $wgNewUserSupressRC;
+	global $wgNewUserMessageTemplate, $wgNewUserMinorEdit, $wgNewUserSupressRC, $wgNewUserEditSummary;
 
 	$name = $user->getName();
 	$talk = $user->getTalkPage();
@@ -70,7 +73,7 @@ function wfCreateNewUserMessage($user) {
 		if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
 		if ($wgNewUserSupressRC) $flags = $flags | EDIT_SUPPRESS_RC;
 
-		$article->doEdit('{'.'{'."$wgNewUserMessageTemplate|$name}}", false, $flags);
+		$article->doEdit('{'.'{'."$wgNewUserMessageTemplate|$name}}", $wgNewUserEditSummary, $flags);
 		$wgUser = $parkedWgUser;
 	}
 
