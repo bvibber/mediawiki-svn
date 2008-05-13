@@ -119,7 +119,7 @@ class LinkSearchPage extends QueryPage {
 
 		$encSQL = '';
 		if ( isset ($this->mNs) && !$wgMiserMode )
-			$encSQL = 'AND page_namespace=' . $this->mNs;
+			$encSQL = 'AND page_namespace=' . $dbr->addQuotes( $this->mNs );
 		
 		$use_index = $dbr->useIndexClause( $clause );
 		return
