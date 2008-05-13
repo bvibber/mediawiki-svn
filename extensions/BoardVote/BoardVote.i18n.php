@@ -1461,7 +1461,7 @@ $messages['he'] = array(
 	'boardvote_needadmin'     => "רק מנהלי הבחירות יכולים לבצע פעולה זו.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:{{ns:special}}:Boardvote/vote}}\">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 12 ביולי",
 	'boardvote_notstarted'    => 'ההצבעה עדיין לא התחילה',
-	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו את ב[http://meta.wikimedia.org/wiki/Board elections/2008/Results הדף על תוצאות הבחירות] בקרוב.',
+	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו את ב[http://meta.wikimedia.org/wiki/Board_elections/2008/Results הדף על תוצאות הבחירות] בקרוב.',
 	'boardvote_edits_many'    => 'הרבה',
 	'group-boardvote'         => 'מנהלי הבחירות לחבר הנאמנים',
 	'group-boardvote-member'  => 'מנהל הבחירות לחבר הנאמנים',
