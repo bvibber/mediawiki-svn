@@ -778,7 +778,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt an der Wahl teilzunehmen.',
 +	'boardvote_bot'           => 'Entschuldigung, aber dein Benutzerkonto ist im registrierten Wiki als Bot gekennzeichnet. Bots dürfen nicht abstimmen.',
 	'boardvote_welcome'       => "Willkommen '''$1'''!",
-	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2007',
+	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting'   => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
 
 Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
