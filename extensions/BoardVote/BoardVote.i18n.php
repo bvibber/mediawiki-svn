@@ -30,8 +30,8 @@ candidate with the most votes in each position will be declared the winner of th
 position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board elections/2008\" class=\"external\">Board elections 2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board elections/2008/Candidates\" class=\"external\">Candidates</a></li></ul>",
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Candidates</a></li></ul>",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
 you approve of.</p>",
@@ -75,7 +75,7 @@ $1 for the encrypted data.</p>",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:
 Vote open until July 12",
 	'boardvote_notstarted'    => 'Voting has not yet started',
-	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board elections/2008/Results the elections page for results] soon.',
+	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
@@ -723,7 +723,7 @@ $messages['de'] = array(
 * [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]",
 	'boardvote_intro'         => '<blockquote>
 <p>
-Willkommen zur vierten Wahl zum Wikimedia-Kuratorium, dem Verwaltungsorgan der Wikimedia-Foundation. Es werden drei Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren. Diese drei Benutzer werden für einen Zeitraum von zwei Jahren gewählt. Sie werden dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und sie repräsentieren <em>deine</em> Interessen und Belange. Sie werden neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.
+Willkommen zur Wahl 2008 zum Wikimedia-Kuratorium, dem Verwaltungsorgan der Wikimedia-Foundation. Es wird ein Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren. Dieser wird für einen Zeitraum von zwei Jahren gewählt. Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und sie repräsentieren <em>deine</em> Interessen und Belange. Sie werden neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.
 </p>
 
 <p>Vor deiner Wahl lies bitte die Kandidatenvorstellungen und ihre Antworten auf Fragen. Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
@@ -733,8 +733,8 @@ Willkommen zur vierten Wahl zum Wikimedia-Kuratorium, dem Verwaltungsorgan der W
 <p>Bitte beachte, dass du nur aus einem Projekt heraus wählen darfst. Auch wenn du jeweils mehr als 400 Bearbeitungen in mehreren Projekten hast, so berechtigt dies nicht zu einer Doppelabstimmung. Wenn du deine Stimmabgabe ändern möchtest, wähle bitte erneut von dem Projekt, in dem du bereits vorher abgestimmt hast.</p>
 
 <p>Weitere Informationen:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ/de" class="external">Election FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/de" class="external">Candidates</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Kuratoriumwahl 2008</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li></ul>",
 </blockquote>',
 	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt. Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern. Markiere dazu die Kästchen der Kandidaten, die du befürwortest.</p>",
 	'boardvote_entered'       => "Danke, deine Stimme wurde gespeichert.
@@ -752,11 +752,10 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
-	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.
-
-Dein Browser muss so konfiguriert sein, dass er Cookies von dem externen Wahlcomputer <tt>wikimedia.spi-inc.org</tt> akzeptiert.",
-	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
-	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor dem $2 getätigt haben und deine erste Bearbeitung muss vor dem $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
+	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. 
+	Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, und der mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt hat.",
+	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
+	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
 	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
 	'boardvote_time'          => "Zeit",
 	'boardvote_user'          => "Benutzer",
@@ -770,14 +769,14 @@ Dein Browser muss so konfiguriert sein, dass er Cookies von dem externen Wahlcom
 	'boardvote_strike'        => "Stimme streichen",
 	'boardvote_unstrike'      => "Stimmstreichung zurücknehmen",
 	'boardvote_needadmin'     => "Nur Wahladministratoren können diese Aktion durchführen.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>:  ", # to be updated before the next election
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>:  ",
 	'boardvote_notstarted'    => 'Die Wahl hat noch nicht begonnen',
-	'boardvote_closed'        => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Election_results_2006/De im Meta-Wiki] einsehbar.', # to be updated before the next election
-	'boardvote_edits_many'    => 'viele',
+	'boardvote_closed'        => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki] einsehbar.',
 	'group-boardvote'         => 'Wahl-Administratoren',
 	'group-boardvote-member'  => 'Wahl-Administrator',
 	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
 	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt an der Wahl teilzunehmen.',
++	'boardvote_bot'           => 'Entschuldigung, aber dein Benutzerkonto ist im registrierten Wiki als Bot gekennzeichnet. Bots dürfen nicht abstimmen.',
 	'boardvote_welcome'       => "Willkommen '''$1'''!",
 	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2007',
 	'boardvote_redirecting'   => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
