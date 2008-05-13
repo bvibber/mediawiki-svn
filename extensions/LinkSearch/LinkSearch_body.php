@@ -90,16 +90,16 @@ class LinkSearchPage extends QueryPage {
 	 * Return an appropriately formatted LIKE query and the clause
 	 */
 	static function mungeQuery( $query , $prot ) {
-		$clause = 'el_index';
+		$field = 'el_index';
 		$rv = LinkFilter::makeLike( $query , $prot );
 		if ($rv === false) {
 			//makeLike doesn't handle wildcard in IP, so we'll have to munge here.
 			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$|^(:?[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*\*\s*$/', $query)) {
 				$rv = $prot . rtrim($query, " \t*") . '%';
-				$clause = 'el_to';
+				$field = 'el_to';
 			}
 		}
-		return array( $rv, $clause );
+		return array( $rv, $field );
 	}
 
 	function linkParameters() {
@@ -118,7 +118,8 @@ class LinkSearchPage extends QueryPage {
 		$encSearch = $dbr->addQuotes( $stripped );
 
 		$encSQL = '';
-		if ( isset ($this->mNs) && !$wgMiserMode ) $encSQL = 'AND page_namespace=' . $this->mNs;
+		if ( isset ($this->mNs) && !$wgMiserMode )
+			$encSQL = 'AND page_namespace=' . $this->mNs;
 		
 		$use_index = $dbr->useIndexClause( $clause );
 		return
