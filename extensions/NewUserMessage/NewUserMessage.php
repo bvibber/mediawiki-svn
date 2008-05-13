@@ -22,7 +22,7 @@ $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
 $wgNewUserMessageEditor = 'Admin';
 
 // Edit summary for the recent changes entry of a new users message
-$wgNewUserEditSummary = "Adding [[MediaWiki:NewUserMessage|welcome message]] to new user's talk page";
+$wgNewUserEditSummary = "Adding [[$wgNewUserMessageTemplate|welcome message]] to new user's talk page";
 
 // Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserSupressRC = false;
@@ -39,7 +39,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'NewUserMessage',
 	'version'        => NEWUSERMESSAGE_VERSION,
 	'author'         => "[http://www.organicdesign.co.nz/User:Nad Nad]",
-	'description'    => "Add a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
+	'description'    => "Add a [[$wgNewUserMessageTemplate|message]] to newly created user's talk pages",
 	'descriptionmsg' => 'newusermessage-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:NewUserMessage',
 );
