@@ -123,7 +123,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 
 	function execute( $par ) {
-		global $wgOut, $wgBoardVoteStartDate, $wgBoardVoteEndDate,
+		global $wgOut, $wgBoardVoteStartDate, $wgBoardVoteEndDate;
 
 		$this->init( $par );
 		$this->setHeaders();
