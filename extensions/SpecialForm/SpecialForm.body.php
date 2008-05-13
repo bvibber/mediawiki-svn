@@ -288,9 +288,9 @@ class Form {
 				$field->setName($matches[1]);
 				$field->setLabel($matches[2]);
 				$field->setFieldType($matches[3]);
-				if ($matches[4]) {
+				if (count($matches) > 4 && $matches[4]) {
 					$field->setDescription($matches[5]);
-					if ($matches[6]) {
+					if (count($matches) > 6 && $matches[6]) {
 						$rawOptions = explode(',', $matches[7]);
 						foreach ($rawOptions as $rawOption) {
 							if (preg_match('/^(\w+)=(.+)/', $rawOption, $optMatches)) {
