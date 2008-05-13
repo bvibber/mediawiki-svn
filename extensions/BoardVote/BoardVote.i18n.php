@@ -693,20 +693,25 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
 /** Danish (Dansk)
- * @author Morten
  * @author M.M.S.
+ * @author Morten
  * @author Jon Harald Søby
+ * @author Jan Friberg
  */
 $messages['da'] = array(
-	'boardvote'         => 'Valg af medlemmer til Wikimedias bestyrelse',
-	'boardvote-desc'    => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
-	'boardvote_entry'   => '* [[Special:Boardvote/vote|Stem]]
+	'boardvote'          => 'Valg af medlemmer til Wikimedias bestyrelse',
+	'boardvote-desc'     => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
+	'boardvote_entry'    => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
-	'boardvote_user'    => 'Bruger',
-	'boardvote_ip'      => 'IP',
-	'boardvote_submit'  => 'OK',
-	'boardvote_welcome' => "Velkommen '''$1'''!",
+	'boardvote_time'     => 'Tid',
+	'boardvote_user'     => 'Bruger',
+	'boardvote_edits'    => 'Redigeringer',
+	'boardvote_days'     => 'Dage',
+	'boardvote_ip'       => 'IP',
+	'boardvote_dumplink' => 'Klik her',
+	'boardvote_submit'   => 'OK',
+	'boardvote_welcome'  => "Velkommen '''$1'''!",
 );
 
 $messages['de'] = array(
@@ -895,6 +900,7 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 Vi estos alidirektita al ĉi servilo en 20 sekundoj. [$1 Klaku ĉi tien] iri tie nun. 
 
 Sekureca averto pri nevalida atesto eble estos montrata.',
+	'right-boardvote'        => 'Administri balotadojn',
 );
 
 /** Spanish (Español)
@@ -1060,6 +1066,7 @@ $messages['fa'] = array(
 شما ظرف ۲۰ ثانیه به کارگزار خارجی هدایت می‌شود. برای این که الآن به آن‌جا بروید [$1 این‌جا کلیک کنید].
 
 ممکن است یک پیام امنیتی در مورد گواهینامه غیر مجاز دریافت کنید.',
+	'right-boardvote'        => 'مدیریت انتخابات',
 
 );
 
@@ -1375,6 +1382,7 @@ até o momento. $1 para os datos encriptados.</p>',
 Vai ser redirixido cara a este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
+	'right-boardvote'        => 'Administrar as eleccións',
 );
 
 /** Manx (Gaelg)
@@ -1916,6 +1924,7 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
  * @author Malafaya
  */
 $messages['io'] = array(
+	'boardvote_time'    => 'Tempo',
 	'boardvote_user'    => 'Uzanto',
 	'boardvote_days'    => 'Dii',
 	'boardvote_welcome' => "Bonveno, '''$1'''!",
@@ -2436,6 +2445,13 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៧',
 );
 
+/** Kinaray-a (Kinaray-a)
+ * @author Jose77
+ */
+$messages['krj'] = array(
+	'boardvote_submit' => 'OK dun',
+);
+
 $messages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
@@ -2569,6 +2585,14 @@ $messages['lez'] = array(
 	'boardvote_strike'     => 'Ягъун',
 	'boardvote_edits_many' => 'гзаф',
 	'boardvote_welcome'    => "Ша буюр '''$1'''!",
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'boardvote_user'   => 'Usor',
+	'boardvote_submit' => 'Oce',
 );
 
 /** Limburgish (Limburgs)
@@ -2794,6 +2818,7 @@ $messages['ml'] = array(
 നിങ്ങള്‍ 20 സെക്കന്റിനുള്ളില്‍ യാന്ത്രികമായി ആ സെര്‍‌വറിലേക്കു ആനയിക്കപ്പെടും. അവിടേക്കു പോകാന്‍ [$1 ഇവിടെ] ഞെക്കാവുന്നതും ആണ്‌. 
 
 ഒപ്പിടാത്ത സര്‍ട്ടിഫിക്കറ്റിനെ കുറിച്ചുള്ള സുരക്ഷാസന്ദേശം ചിലപ്പോള്‍ പ്രദര്‍ശിപ്പിക്കപ്പെട്ടേക്കാം.',
+	'right-boardvote'        => 'കാര്യനിര്‍വാഹക തിരഞ്ഞെടുപ്പ്',
 );
 
 /** Marathi (मराठी)
@@ -3879,6 +3904,7 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_redirecting'  => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
+	'right-boardvote'        => 'Woalen administrierje',
 );
 
 /** Sundanese (Basa Sunda)
