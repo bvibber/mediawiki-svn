@@ -121,8 +121,8 @@ $messages['an'] = array(
 <p>Bustet puede botar por tantos candidatos como quiera. O candidato con más botos en cada puesto será declarato o ganador de ixe puesto. Caso d'empazar á botos, se ferá una nueba eslezión entre os candidatos empazatos.</p>
 
 <p>Ta más informazión, mire-se:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2008\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2008\" class=\"external\">Candidates</a></li></ul>",
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Candidates</a></li></ul>",
 	'boardvote_intro_change' => "<p>Ya ha botato denantes. Manimenos puede cambiar o suyo boto si quiere
 fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada
 candidato que quiera aprebar</p>",
@@ -284,8 +284,8 @@ posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevará
 cabu una eleición de desempate.</p>
 
 <p>Pa más información, ver:</p>
-<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Election_FAQ_2008/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la eleición (FAQ)</a></li>
-<li><a href=\\\"http://meta.wikimedia.org/wiki/Election_candidates_2008/Es\\\" class=\\\"external\\\">Candidatos</a></li></ul>",
+<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Board_elections/2008/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la eleición (FAQ)</a></li>
+<li><a href=\\\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Es\\\" class=\\\"external\\\">Candidatos</a></li></ul>",
 	'boardvote_intro_change' => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l
 formulariu d'embaxo. Por favor rellena les casielles d'al llau de cada candidatu
 que quieras aprobar.</p>",
@@ -453,8 +453,8 @@ $messages['bn'] = array(
 <p>আপনি ইচ্ছামত একাধিক প্রার্থীর জন্য ভোট দিতে পারেন। প্রত্যেক পদের জন্য প্রার্থী যিনি সবচেয়ে বেশি ভোট পাবেন তাকে ঐ পদের জন্য বিজয়ী ঘোষণা করা হবে। সমান সংখ্যক ভোট প্রাপ্ত হলে, চূড়ান্ত নির্বাচন অনুষ্ঠিত হবে।</p>
 
 <p>আরও তথ্যের জন্য, দেখুন:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">নির্বাচন সংক্রান্ত প্রশ্নসমূহ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">প্রার্থীগণ</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">নির্বাচন সংক্রান্ত প্রশ্নসমূহ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">প্রার্থীগণ</a></li></ul>',
 	'boardvote_intro_change' => '<p>আপনি আগে ভোট দিয়েছে। আপনি নিচের ফরম থেকে আপনার ভোট পরিবর্তন করতে পারেন। আপনি যে প্রার্থীকে অনুমোদন করেন দয়াকরে প্রত্যেকের পাশের চেক বক্সে টিক দিন।</p>',
 	'boardvote_entered'      => 'ধন্যবাদ, আপনার ভোট গন্য করা হয়েছে।
 
@@ -849,13 +849,13 @@ $messages['eo'] = array(
 * [[Speciala:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
 	'boardvote_intro'        => '<p>Bonvenon al la tria baloto por la Administra Konsilantaro de \'\'Wikimedia\'\'. Ni vocxdonas por anstatauxi unu demisiintan delegiton kiu reprezentu la uzantarojn de la diversaj projektoj de \'\'Wikimedia\'\' <!--- : la <strong>Reprezentanto de la Kontribuantaj Aktivaj Uzantoj</strong> kaj la <strong>Reprezentanto de la Volontulaj Uzantoj</strong> --->. Tiu helpos difini la estontan direkton, kiun la projektoj de Wikimedia sekvos, individue kaj grupe, kaj reprezentas <em>viajn</em> interesojn kaj zorgojn en la Administrantaro. la Konsilantaro decidas pri rimedoj por estigi enspezojn kaj la uzon de la kolektita mono. </p>
 
-<p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la <a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Eo" class="external">kandidatoj</a> antaux ol vocxodoni. Cxiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dedicxita al disvolvigxo kaj libera disdono de homaj scioj.  </p>
+<p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la <a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Eo" class="external">kandidatoj</a> antaux ol vocxodoni. Cxiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dedicxita al disvolvigxo kaj libera disdono de homaj scioj.  </p>
 
 <p>Vi povas vocxdoni por tiom da kandidatoj <!-- en cxiu kategorio--> kiom vi volas. La kandidato ricevinta la plej multajn vocxojn por la posteno estos deklarita la gajninto de la posteno. Okaze de egala nombro da vocxoj, dua baloto estos organizita.</p>
 
 <p>Por pli da informoj bonvolu legi:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008/Eo" class="external">Plej oftaj demandoj pri la baloto</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Eo" class="external">Kandidatoj</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Eo" class="external">Plej oftaj demandoj pri la baloto</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Eo" class="external">Kandidatoj</a></li></ul>',
 	'boardvote_intro_change' => '<p>Vi estas jam balotita. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kanditatoj kiujn vi elektas.</p>',
 	'boardvote_entered'      => 'Dankon! Via baloto estas registrita.
 
@@ -921,8 +921,8 @@ $messages['es'] = array(
 <p>Puedes votar por tantos candidatos como desees. El candidato que acumule la mayor cantidad de votos en cada posición será considerado el ganador en esa posición. En caso de igual cantidad de votos en un puesto, se llevará a cabo una votación para desempatar.</p>
 
 <p>Para más información, lee:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Election FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Candidates</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Election FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li></ul>',
 	'boardvote_notloggedin'  => 'No has iniciado sesión. Para votar, debes tener una cuenta con al menos $1 contribuciones antes del $2 y haber hecho la primera edición antes del $3.',
 	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección. Necesitas tener $3 ediciones antes del $2 y haber hecho tu primera edición antes del $5.',
 	'boardvote_user'         => 'Usuario',
@@ -1019,8 +1019,8 @@ $messages['fa'] = array(
 تعداد آرای چند نامزد برابر شد، رای‌گیری دیگری برای آن‌ها انجام خواهد شد.</p>
 
 <p>برای اطلاع بیشتر، به نشانی‌های زیر مراجعه کنید:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">پرسش‌های متداول در مورد انتخابات</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">نامزدها</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">پرسش‌های متداول در مورد انتخابات</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">نامزدها</a></li></ul>',
 	'boardvote_intro_change' => '<p>شما پیش از این رای داده‌اید. با این حال می‌توانید با استفاده از فرم زیر
 رای خود را تغییر دهید. لطفاً جعبه کنار نام نامزدهایی که مورد قبول‌تان هستند
 را علامت بزنید.</p>',
@@ -1175,8 +1175,8 @@ Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de 
 <p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s\'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
 
 <p>Pour plus d\'information, voyez :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">FAQ sur les élections</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">Candidat-e-s</a></li></ul>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">FAQ sur les élections</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">Candidat-e-s</a></li></ul>
 ',
 	'boardvote_intro_change' => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>',
 	'boardvote_entered'      => 'Merci, votre vote a été enregistré.
@@ -1249,8 +1249,8 @@ Tôs los candidats sont des utilisators rèspèctâs, qu’ont balyê tot plen d
 <p>Vos pouede votar por atant de candidats que vos lo souhètâd. Celi que remporterat lo més de vouèx serat dècllarâ èlu por lo pôsto uquint s’est presentâ. En câs de balotâjo, y arat un voto/una votacion de dèpartâjo.</p>
 
 <p>Por més d’enformacion, vêde :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="extiw" title="« meta:Election FAQ 2008 » : pâge multilinga">FdeQ sur les èlèccions</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Fr" class="extiw" title="« meta:Election candidates 2008/Fr » : pâge en francês">Candidat(e)s</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="extiw" title="« meta:Election FAQ 2008 » : pâge multilinga">FdeQ sur les èlèccions</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Fr" class="extiw" title="« meta:Election candidates 2008/Fr » : pâge en francês">Candidat(e)s</a></li></ul>',
 	'boardvote_intro_change' => '<p>Vos éd ja votâ. Portant vos pouede modifiar
 voutron voto/voutra votacion en utilisent lo formulèro ce-desot. Marci de marcar les câses en regârd de châque candidat qu’at voutron supôrt.</p>',
 	'boardvote_entered'      => 'Marci, voutron voto/voutra votacion at étâ enregistrâ.
@@ -1420,8 +1420,8 @@ $messages['he'] = array(
 <p>באפשרותכם להצביע עבור מספר מועמדים. המועמדים עם מירב ההצבעות בכל עמדה יוכרזו כמנצחים בעמדה זו. במידה ויתקיים שיוויון בין מספר מועמדים, תתבצע הצבעה נוספת ביניהם.</p>
 
 <p>למידע נוסף, ראו:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2008\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2008\" class=\"external\">המועמדים</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">המועמדים</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס המצורף למטה. אנא סמנו את תיבת הסימון ליד כל אחד מהמועמדים המועדפים עליכם.</p>",
 	'boardvote_entered'       => "תודה לכם, הצבעתכם נרשמה.
@@ -1499,8 +1499,8 @@ $messages['hi'] = array(
 अगर एक जगहके लिये एकसे ज्यादा उम्मीदवारोंको समान वोट मिलें तो उप-चुनाव लिया जायेगा।</p>
 
 <p>कृपया अधिक ज़ानकारी के लिये देखें:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">चुनाव के बारे में प्राय: पूछे जाने वाले सवाल</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">उम्मीदवार</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">चुनाव के बारे में प्राय: पूछे जाने वाले सवाल</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">उम्मीदवार</a></li></ul>',
 	'boardvote_intro_change' => '<p>आपने पहले मत दिया हुआ हैं। अगर आप उसमें बदलाव करना चाहते हैं तो निचे दिये ढाँचे का इस्तेमाल करें। कृपया आप प्रमाणित करनेवाले उम्मीदवार के आगे दिये बक्सेमें सही का चिन्ह दें।</p>',
 	'boardvote_entered'      => 'धन्यवाद, आपका वोट मिल गया हैं।
 
@@ -1716,8 +1716,8 @@ Tout itilizatè sa yo se itilizatè epi respè, ki bay anpil tan ak efò pou fè
 <p>Ou mèt vote pou tout kandida ou ta renmen bay vwa pa ou. Kandida an ki ap mennen plis vwa ke ap eli, chwazi pou travay li mande a. Si toutfwa li ta genyen ezitasyon an plizyè kandida, ke genyen yon vòt pou depataje yo.</p>
 
 <p>Pou konnen plis, gade:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">FAQ anlè eleksyon yo</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">kandida yo</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">FAQ anlè eleksyon yo</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">kandida yo</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ou vote deja.Men ou kapab modifye vòt ou a, itilize fòmilè sa a anba. Koche kaz ki ap koresponn ak kandida ke ou ap soutni.</p></p>',
 	'boardvote_entered'      => 'Mèsi, vòt ou an anrejistre.
 
@@ -1801,8 +1801,8 @@ jelentkezők közül a legtöbb szavazatot birtokló jelölt fog kapni. Holtvers
 esetén rendkívüli választást írunk ki.</p>
 
 <p>További részleteket a következő helyeken tudhatsz meg:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">gyakran ismételt kérdések (FAQ)</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">a jelöltek bemutatkozó lapjai</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">gyakran ismételt kérdések (FAQ)</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">a jelöltek bemutatkozó lapjai</a></li></ul>',
 	'boardvote_intro_change' => '<p>Már szavaztál. A szavazatodat módosíthatod a lenti űrlap kitöltésével. Válaszd ki azokat a jelölteket, akikre szavazni szeretnél.</p>',
 	'boardvote_entered'      => 'Köszönjük, a szavazatodat rögzítettük.
 
@@ -2055,8 +2055,8 @@ $messages['ja'] = array(
 	'boardvote_intro'        => '2008年度の選挙は終了しました。
 
 <p>より詳細な情報はこちらをご覧ください:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">候補者一覧</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">候補者一覧</a></li></ul>',
 	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票する候補者の変更は、以下のフォームから行うことができます。支持する候補者の投票欄をチェックしてください。</p>',
 	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
 
@@ -2123,8 +2123,8 @@ $messages['jut'] = array(
 <p>Det må du gerne stemme for nemlig mange ansøgere nemlig jer savn. ansøger hos den højst stemmer i hver holdning vil være erklæret den vinder i at holdning I tilfælde af en baste , en opstille - ned af stemmeafgivning vil være besad.</p>
 
 <p>Før mær informåsje, sæg:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Eleksje FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Kandidåter</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Eleksje FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidåter</a></li></ul>',
 	'boardvote_intro_change' => '<p>Du har stemme i nærværelse af. Hvordan end det må du gerne lave om på jeres stemme benytter den skema nedenstående. Behage indskrive den bokse næst efter hver ansøger hvem jer godkende i.</p>',
 	'boardvote_notloggedin'  => 'Du er ikke journaliseret i. Hen til stemme , jer skal hjælp en beretning hos det vil sige $1 bidrag i nærværelse af $2, og hos en først redigere i nærværelse af $3.',
 	'boardvote_notqualified' => 'Du erst ikke kwalifærn til stemme en dette eleksje. Du nødst til har $3 redigærenge førdette $2, ønd diin erste redigærenge mu derfør $5 være.',
@@ -2641,8 +2641,8 @@ stemme voor iddere positie wordt tot winnaar oetgerope voor de betreffende
 positie. In geval de stemme stake wordt er een tweede ronde gehoude.</p>
 
 <p>Meer informatie:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Bestuursverkiezing FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Kandidate</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Bestuursverkiezing FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidate</a></li></ul>',
 	'boardvote_intro_change' => "<p>Geer höb al gestömp. Geer kintj uche stöm verangere via 't óngersäöndje formeleer. Vink estebleef de vekskes nao edere kanditaat daet geer steuntj aan.</p>",
 	'boardvote_entered'      => 'Danke. Uche stöm is verwerk.
 
@@ -2778,7 +2778,7 @@ $messages['ml'] = array(
 
 
 <p>കൂടുതല്‍ വിവരത്തിനു, കാണുക:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">തിരഞ്ഞെടുപ്പ് പതിവു ചോദ്യങ്ങള്‍</a></li>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">തിരഞ്ഞെടുപ്പ് പതിവു ചോദ്യങ്ങള്‍</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/en" class="external">സ്ഥാനാര്‍ത്ഥികള്‍</a></li></ul>',
 	'boardvote_intro_change' => '<p>താങ്കള്‍ ഇതിനു മുന്‍പ് വോട്ട് ചെയ്തിട്ടുണ്ട്. പക്ഷെ താഴെയുള്ള പത്രിക ഉപയോഗിച്ചു താങ്കള്‍ക്കു താങ്കളുടെ വോട്ടില്‍ മാറ്റം വരുത്താവുന്നതാണ്‌. താങ്കള്‍ പിന്തുണയ്ക്കുന്ന സ്ഥാനാര്‍ത്ഥികളുടെ പേരിനു സമീപമുള്ള ബോക്സില്‍ ക്ലിക്ക് ചെയ്ത് അവരെ അംഗീകരിക്കുക.</p>',
 	'boardvote_entered'      => 'വളരെ നന്ദി, താങ്കളുടെ വോട്ട് രേഖപ്പെടുത്തിയിരിക്കുന്നു.
@@ -2870,8 +2870,8 @@ $messages['mr'] = array(
 जर एका जागेसाठी एकापेक्षा जास्त उमेदवारांमध्ये बरोबरी झाली तर उप-मतदान घेण्यात येईल.</p>
 
 <p>कृपया अधिक माहितीसाठी पहा:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">मतदानाबाबत नेहमी विचारले जाणारे प्रश्न</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">उमेदवार</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">मतदानाबाबत नेहमी विचारले जाणारे प्रश्न</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">उमेदवार</a></li></ul>',
 	'boardvote_intro_change' => '<p>तुम्ही पूर्वी मत दिलेले आहे. जर तुम्हांला त्यात बदल करायचा असेल तर खालील अर्ज वापरा. कृपया आपणांस योग्य वाटणार्‍या उमेदवारापुढील चौकोनात बरोबरची खूण करा.</p>',
 	'boardvote_entered'      => 'धन्यवाद, तुमचे मत नोंदले गेलेले आहे.
 
@@ -3153,7 +3153,7 @@ $messages['oc'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòte]]
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
-	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008/Oc" class="extiw" title="meta:Election_FAQ_2008/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Oc" class="extiw" title="meta:Election_candidates_2008/Oc">Candidat-a-s</a></li></ul>',
+	'boardvote_intro'        => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Oc" class="extiw" title="meta:Election_FAQ_2008/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Oc" class="extiw" title="meta:Election_candidates_2008/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change' => "<p>Ja avètz votat. Çaquelà, podètz modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòstre supòrt.</p></p>",
 	'boardvote_entered'      => "Mercé, vòstre vòte es estat enregistrat. 
 
@@ -3264,7 +3264,7 @@ rozpowszechnianiu ludzkiej wiedzy.</p>
 
 <p>Więcej informacji:</p>
 <ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2008" class="external">FAQ wyborów</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/" class="external">Kandydaci</a></li></ul>',
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/" class="external">Kandydaci</a></li></ul>',
 	'boardvote_intro_change' => '<p>Już głosowałeś w tych wyborach. Możesz jednak zmienić swoje głosy za pomocą poniższego formularza. Zaznacz kandydatów, na których głosujesz.</p>',
 	'boardvote_entered'      => 'Dziękujemy, twój głos został zapisany.
 
@@ -3418,8 +3418,8 @@ $messages['pt'] = array(
 <p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
 
 <p>Para mais informações, consulte:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">FAQ de eleição</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Candidatos</a></li></ul>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ de eleição</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li></ul>
 ',
 	'boardvote_intro_change' => '<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>',
 	'boardvote_entered'      => 'Obrigado, o seu voto foi registado.
@@ -3532,7 +3532,7 @@ $messages['ru'] = array(
 <p>Вы можете голосовать за любое число кандидатов. Кандидат, набравший наибольшее число голосов на любую из двух позиций, будет объявлен победителем в выборах на эту позицию. В случае равенства кандидатов будет проведено повторное голосование с выбыванием наименее популярных кандидатов.</p>
 
 <p>Дополнительная информация:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Часто задаваемые вопросы о выборах</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008/Ru" class="external">Кандидаты</a></li></ul>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Часто задаваемые вопросы о выборах</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Ru" class="external">Кандидаты</a></li></ul>
 ',
 	'boardvote_intro_change' => '<p>Вы уже проголосовали. Тем не менее, с помощью приведённой ниже формы вы можете изменить свое решение. Пожалуйста, отметьте тех кандидатов, кандидатуры которых вы поддерживаете.</p>',
 	'boardvote_entered'      => 'Спасибо, ваш голос учтён.
@@ -3604,7 +3604,7 @@ $messages['sah'] = array(
 <p>Биир киһи хас баҕарар кандидаакка куоластыан сөп. Саамай элбэх куолаһы ылбыт кандидааттар кыайыыны ылыахтара. Куолас тэҥнэһэр түбэлтэтигэр иккистээн куоластааһын ыытыллыаҕа.</p>
 
 <p>Эбии маны көрүөххэ сөп:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Быыбар туһунан элбэхтик бэриллэр ыйытыылар</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008/Ru" class="external">Кандидааттар</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Быыбар туһунан элбэхтик бэриллэр ыйытыылар</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Ru" class="external">Кандидааттар</a></li></ul>',
 	'boardvote_intro_change' => '<p>Эн куоластаабыккын. Ол гынан баран манна баар куорманы туһанан урукку быһаарыныыгын уларытыаххын сөп. Өйүөххүн баҕарар кандидааттаргын бэлиэтээ.</p>',
 	'boardvote_entered'      => 'Махтал, эн куолаһыҥ ааҕылынна.
 
@@ -3681,8 +3681,8 @@ počtom hlasov hlasov na každej pozícii bude vyhlásený za víťaza danej
 pozície. V prípade remízy sa bude konať ďalšia voľba medzi nimi.</p>
 
 <p>Viac informácií nájdete na:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Často kladené otázky o voľbách</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Kandidáti</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Často kladené otázky o voľbách</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidáti</a></li></ul>',
 	'boardvote_intro_change' => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
 	'boardvote_entered'      => 'Ďakujeme, váš hlas bol zaznamenaný.
 
@@ -3756,8 +3756,8 @@ $messages['sr-ec'] = array(
 ће бити проглашени победником тог положаја. У случају нерешеног, ново гласање ће бити одржано.</p>
 
 <p>За више информација, погледајте:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Најчешће постављена питања избора</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Кандидати</a></li></ul>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Најчешће постављена питања избора</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Кандидати</a></li></ul>
 ',
 	'boardvote_intro_change' => '<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
 Молимо одаберите кандидате за које гласате.</p>',
@@ -3823,8 +3823,8 @@ ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog zna
 će biti proglašeni pobednikom tog položaja. U slučaju nerešenog, novo glasanje će biti održano.</p>
 
 <p>Za više informacija, pogledajte:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2008\" class=\"external\">Najčešće postavljena pitanja izbora</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2008\" class=\"external\">Kandidati</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Najčešće postavljena pitanja izbora</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidati</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
 Molimo odaberite kandidate za koje glasate.</p>",
@@ -4004,7 +4004,7 @@ $messages['sv'] = array(
 <li><a href="http://meta.wikipedia.org/wiki/Election_candidates_2008/Sv" class="external">Kandidaterna</a></li></ul>',
 	'boardvote_intro_change' => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
 
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2008/Sv" class="external">Kandidaternas presentationer</a></li>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Sv" class="external">Kandidaternas presentationer</a></li>',
 	'boardvote_entered'      => 'Tack för det. Din röst är registrerad.
 
 Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som :
@@ -4172,8 +4172,8 @@ $messages['tg-cyrl'] = array(
 <p>Шумо метавонед ба ҳар теъдоди номзад, ки мехоҳед раъй бидиҳед. Номзаде бо бештарин раъй дар ҳар мақом, ғолиби ҳамон мақом хоҳад гашт. Дар ҳолате, ки раъйи чанд номзадҳо баробар шавад, раъйгирии дигаре барои онҳо анҷом хоҳад шуд.</p>
 
 <p>Барои иттилооти бештар, нигаред:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Пурсишҳо дар мавриди Интихобот</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Номзадҳо</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Пурсишҳо дар мавриди Интихобот</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Номзадҳо</a></li></ul>',
 	'boardvote_intro_change' => '<p>Шумо пеш аз ин раъй додаед. Бо ин ҳол метавонед бо истифода аз форми зерин раъйи худро тағйир диҳед. Лутфан ҷабъаи канори номи номзадҳое, ки мавриди қабулатон ҳастанд аломати раъй бизанед.</p>',
 	'boardvote_entered'      => 'Аз шумо миннатдорем, раъйи шумо сабт шуд.
 
@@ -4281,7 +4281,7 @@ $messages['uk'] = array(
 <p>Ви можете голосувати за будь-яку кількість кандидатів. Кандидат, який набере найбільшу кількість голосів на будь-яку з двох позицій, буде оголошений переможцем у виборах на цю позицію. У випадку рівності голосів буде проведене повторне голосування з вибуванням найменш популярних кандидатів.</p>
 
 <p>Додаткова інформація:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Часті питання про вибори</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008/Uk" class="external">Кандидати</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Часті питання про вибори</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Uk" class="external">Кандидати</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ви вже проголосували. Тим не менш, за допомогою наведеної нижче форми ви можете змінити своє рішення. Будь ласка, помітьте кандидатів, яких ви підтримуєте.</p>',
 	'boardvote_entered'      => 'Дякуємо, ваш голос врахований.
 
@@ -4425,8 +4425,8 @@ $messages['vi'] = array(
 
 <p>Để biết thêm về bầu cử này, xem:</p>
 <ul>
-<li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Hỏi đáp về bầu cử</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Giới thiệu các ứng cử viên</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Hỏi đáp về bầu cử</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Giới thiệu các ứng cử viên</a></li>
 </ul>',
 	'boardvote_intro_change' => '<p>Bạn đã bỏ phiếu rồi, nhưng có thể đổi phiếu dùng biểu mẫu ở dưới. Xin hãy đánh hộp kiểm bên cạnh mọi ứng cử viên mà bạn muốn ủng hộ.</p>',
 	'boardvote_entered'      => 'Cám ơn bạn, lá phiếu của bạn đã được lưu thành công. Bạn có thể ghi xuống những chi tiết ở dưới để nhớ lựa chọn. Lá phiếu của bạn là:
@@ -4494,8 +4494,8 @@ $messages['vo'] = array(
 <p>Kanol vögodön gönü steifädans mödik, if vilol. Tefü cal alik, steifädan labü vögods mödikün posteton as gaenan. If steifädans anik labons vögodamödoti ot, daväl nulik pojenükon.</p>
 
 <p>Ad dagetön nünis pluik, reidolös:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Daväl: SSP</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Steifädans</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Daväl: SSP</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Steifädans</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ya evögodol. Kanol ye votükön vögodi olik me fomet dono. Välolös bokilis nilü steifädans, kelis büuköl.</p>',
 	'boardvote_entered'      => 'Danö! Vögod olik peregistaron.
 
@@ -4631,8 +4631,8 @@ $messages['yue'] = array(
 <p>你可以向幾多位候選人投票都得。響每個位置中獲得最多票數嘅候選人會成為優勝者。如果有打和嘅情況，會另設決勝回合。</p>
 
 <p>要睇更多嘅資料，睇吓：</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2008\" class=\"external\">選舉FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2008\" class=\"external\">候選人</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">選舉FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">候選人</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>你已經投咗票。
 但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>",
@@ -4705,8 +4705,8 @@ De kandidaot mie de miste stemm\'n voe iedere positie wor tot winnaer uuteropen 
 In \'t heval dan de stemm\'n staken wor der een twidde ronde ehouwen.</p>
 
 <p>Meêr informaotie:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2008" class="external">Bestuursverkiezieng FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2008" class="external">Kandidaoten</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Bestuursverkiezieng FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaoten</a></li></ul>',
 	'boardvote_intro_change' => "<p>Je ei a estemd.
 Je kan je stemme wiezigen via 't onderstaende formulier.
 Vienk asjeblieft de vakjes an neffen iedere kandidaot die a je steun.</p>",
@@ -4878,4 +4878,3 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'boardvote_time' => 'Isikhathi',
 );
-
