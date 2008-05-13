@@ -9,7 +9,8 @@ class GoToBoardVotePage extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgOut, $wgDBname, $site, $lang, $wgLang, $wgUser;
-		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgBoardVoteFirstEdit;
+		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
+		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
 
 		$this->setHeaders();
 		if ( $wgUser->isLoggedIn() ) {
@@ -26,8 +27,9 @@ class GoToBoardVotePage extends SpecialPage {
 			$wgOut->addMeta( 'http:Refresh', '20;url=' . htmlspecialchars( $url ) );
 		} else {
 			$wgOut->addWikiText( wfMsg( "boardvote_notloggedin", $wgBoardVoteEditCount,
-				$wgLang->timeanddate( $wgBoardVoteCountDate ),
-				$wgLang->timeanddate( $wgBoardVoteFirstEdit )
+				$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
+				$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
+				$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
 			) );
 		}
 

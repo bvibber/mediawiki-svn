@@ -13,8 +13,8 @@ $messages['en'] = array(
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
-	'boardvote_intro'         => "<p>Welcome to the second elections for the Wikimedia Board of Trustees. We are
-voting for two people to represent the community of users on the various
+	'boardvote_intro'         => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees. We are
+voting for one person to represent the community of users on the various
 Wikimedia projects. They will help to determine the future direction
 that the Wikimedia projects will take, individually and as a group, and
 represent <em>your</em> interests and concerns to the Board of Trustees. They will
@@ -30,8 +30,8 @@ candidate with the most votes in each position will be declared the winner of th
 position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>",
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board elections/2008\" class=\"external\">Board elections 2008</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board elections/2008/Candidates\" class=\"external\">Candidates</a></li></ul>",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
 you approve of.</p>",
@@ -53,11 +53,11 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 [[Special:Boardvote/entry|Back]]",
 	'boardvote_nosession'     => "Your Wikimedia user ID could not be determined.
 Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:Boardvote]]</nowiki>.
-You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+You must use an account with at least $1 contributions before $2, and have made at least $3 contrbutions between $4 and $5.",
 	'boardvote_notloggedin'   => "You are not logged in.
-To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+To vote, you must use an account with at least $1 contributions before $2, and have made at least $3 contrbutions between $4 and $5.",
 	'boardvote_notqualified'  => "You are not qualified to vote in this election.
-You need to have made $3 edits before $2, and your first edit must be before $5.",
+You need to have made at least $1 contributions before $2, and have made at least $3 contrbutions between $4 and $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
@@ -75,14 +75,15 @@ $1 for the encrypted data.</p>",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:
 Vote open until July 12",
 	'boardvote_notstarted'    => 'Voting has not yet started',
-	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for results] soon.',
+	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board elections/2008/Results the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 	'boardvote_blocked'       => 'Sorry, you have been blocked on your registered wiki. Blocked users are not allowed to vote.',
+	'boardvote_bot'           => 'Sorry, you are flag as a bot on your registered wiki. Bot account are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
-	'go_to_board_vote'        => 'Wikimedia Board Elections 2007',
+	'go_to_board_vote'        => 'Wikimedia Board Elections 2008',
 	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an external, independently controlled server.
 
 You will be redirected to this external server in 20 seconds. [$1 Click here] to go there now.
@@ -692,25 +693,20 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 );
 
 /** Danish (Dansk)
- * @author M.M.S.
  * @author Morten
+ * @author M.M.S.
  * @author Jon Harald Søby
- * @author Jan Friberg
  */
 $messages['da'] = array(
-	'boardvote'          => 'Valg af medlemmer til Wikimedias bestyrelse',
-	'boardvote-desc'     => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
-	'boardvote_entry'    => '* [[Special:Boardvote/vote|Stem]]
+	'boardvote'         => 'Valg af medlemmer til Wikimedias bestyrelse',
+	'boardvote-desc'    => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
+	'boardvote_entry'   => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
-	'boardvote_time'     => 'Tid',
-	'boardvote_user'     => 'Bruger',
-	'boardvote_edits'    => 'Redigeringer',
-	'boardvote_days'     => 'Dage',
-	'boardvote_ip'       => 'IP',
-	'boardvote_dumplink' => 'Klik her',
-	'boardvote_submit'   => 'OK',
-	'boardvote_welcome'  => "Velkommen '''$1'''!",
+	'boardvote_user'    => 'Bruger',
+	'boardvote_ip'      => 'IP',
+	'boardvote_submit'  => 'OK',
+	'boardvote_welcome' => "Velkommen '''$1'''!",
 );
 
 $messages['de'] = array(
@@ -899,7 +895,6 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 Vi estos alidirektita al ĉi servilo en 20 sekundoj. [$1 Klaku ĉi tien] iri tie nun. 
 
 Sekureca averto pri nevalida atesto eble estos montrata.',
-	'right-boardvote'        => 'Administri balotadojn',
 );
 
 /** Spanish (Español)
@@ -1065,7 +1060,6 @@ $messages['fa'] = array(
 شما ظرف ۲۰ ثانیه به کارگزار خارجی هدایت می‌شود. برای این که الآن به آن‌جا بروید [$1 این‌جا کلیک کنید].
 
 ممکن است یک پیام امنیتی در مورد گواهینامه غیر مجاز دریافت کنید.',
-	'right-boardvote'        => 'مدیریت انتخابات',
 
 );
 
@@ -1381,7 +1375,6 @@ até o momento. $1 para os datos encriptados.</p>',
 Vai ser redirixido cara a este servidor externo en 20 segundos. [$1 Prema aquí] para ir a el agora.
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
-	'right-boardvote'        => 'Administrar as eleccións',
 );
 
 /** Manx (Gaelg)
@@ -1923,7 +1916,6 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
  * @author Malafaya
  */
 $messages['io'] = array(
-	'boardvote_time'    => 'Tempo',
 	'boardvote_user'    => 'Uzanto',
 	'boardvote_days'    => 'Dii',
 	'boardvote_welcome' => "Bonveno, '''$1'''!",
@@ -2444,13 +2436,6 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៧',
 );
 
-/** Kinaray-a (Kinaray-a)
- * @author Jose77
- */
-$messages['krj'] = array(
-	'boardvote_submit' => 'OK dun',
-);
-
 $messages['ksh'] = array(
 	'boardvote'               => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Affshtemme]]
@@ -2584,14 +2569,6 @@ $messages['lez'] = array(
 	'boardvote_strike'     => 'Ягъун',
 	'boardvote_edits_many' => 'гзаф',
 	'boardvote_welcome'    => "Ша буюр '''$1'''!",
-);
-
-/** Lingua Franca Nova (Lingua Franca Nova)
- * @author Malafaya
- */
-$messages['lfn'] = array(
-	'boardvote_user'   => 'Usor',
-	'boardvote_submit' => 'Oce',
 );
 
 /** Limburgish (Limburgs)
@@ -2817,7 +2794,6 @@ $messages['ml'] = array(
 നിങ്ങള്‍ 20 സെക്കന്റിനുള്ളില്‍ യാന്ത്രികമായി ആ സെര്‍‌വറിലേക്കു ആനയിക്കപ്പെടും. അവിടേക്കു പോകാന്‍ [$1 ഇവിടെ] ഞെക്കാവുന്നതും ആണ്‌. 
 
 ഒപ്പിടാത്ത സര്‍ട്ടിഫിക്കറ്റിനെ കുറിച്ചുള്ള സുരക്ഷാസന്ദേശം ചിലപ്പോള്‍ പ്രദര്‍ശിപ്പിക്കപ്പെട്ടേക്കാം.',
-	'right-boardvote'        => 'കാര്യനിര്‍വാഹക തിരഞ്ഞെടുപ്പ്',
 );
 
 /** Marathi (मराठी)
@@ -3903,7 +3879,6 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_redirecting'  => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
-	'right-boardvote'        => 'Woalen administrierje',
 );
 
 /** Sundanese (Basa Sunda)

@@ -23,11 +23,13 @@ $wgGPGCommand = "gpg";
 $wgGPGRecipient = "boardvote";
 $wgGPGHomedir = false;
 $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
-$wgBoardVoteEditCount = 400;
-$wgBoardVoteFirstEdit = '20070301000000';
-$wgBoardVoteCountDate = '20070601000000';
-$wgBoardVoteStartDate = '20070628000000';
-$wgBoardVoteEndDate =   '20070708000000';
+$wgBoardVoteEditCount = 600;
+$wgBoardVoteRecentEditCount = 50;
+$wgBoardVoteCountDate = '20080301000000';
+$wgBoardVoteRecentFirstCountDate = '20080101000000';
+$wgBoardVoteRecentCountDate = '20080530000000';
+$wgBoardVoteStartDate = '20080601000000';
+$wgBoardVoteEndDate =   '20080622000000';
 $wgBoardVoteDBServer = $wgDBserver;
 
 # Vote admins

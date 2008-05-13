@@ -23,12 +23,12 @@ class BoardVotePage extends UnlistedSpecialPage {
 			!preg_match( $regex, $lang )
 		) {
 			wfDebug( __METHOD__.": Invalid parameter\n" );
-			return array( false, false, false );
+			return array( false, false, false, false );
 		}
 
-		$url = "https://secure.wikimedia.org/$site/$lang/w/query.php?what=userinfo&format=php";
-		#$url = "http://$lang.$site.org/w/query.php?what=userinfo&format=php";
-		#$url = "http://eva/w2/extensions/BotQuery/query.php?what=userinfo&format=php";
+		$url = "https://secure.wikimedia.org/$site/$lang/w/query.php?what=userinfo&uiisblocked&format=php";
+		#$url = "http://$lang.$site.org/w/query.php?what=userinfo&uiisblocked&format=php";
+		#$url = "http://eva/w2/extensions/BotQuery/query.php?what=userinfo&uiisblocked&format=php";
 		wfDebug( "Fetching URL $url\n" );
 		$c = curl_init( $url );
 		#curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
@@ -40,23 +40,24 @@ class BoardVotePage extends UnlistedSpecialPage {
 		if ( !$value ) {
 			wfDebug( __METHOD__.": No response from server\n" );
 			$_SESSION['bvCurlError'] = curl_error( $c );
-			return array( false, false, false );
+			return array( false, false, false, false );
 		}
 
 		$decoded = unserialize( $value );
 		if ( isset( $decoded['meta']['user']['anonymous'] ) ) {
 			wfDebug( __METHOD__.": User is not logged in\n" );
-			return array( false, false, false );
+			return array( false, false, false, false );
 		}
 		if ( !isset( $decoded['meta']['user']['name'] ) ) {
 			wfDebug( __METHOD__.": No username in response\n" );
-			return array( false, false, false );
+			return array( false, false, false, false );
 		}
 		wfDebug( __METHOD__." got response for user {$decoded['meta']['user']['name']}@$db\n" );
 		return array(
 			$decoded['meta']['user']['name'] . '@' . $db,
 			$db,
 			isset( $decoded['meta']['user']['blocked'] ),
+			isset( $decoded['meta']['user']['bot'] )
 		);
 	}
 
@@ -78,8 +79,8 @@ class BoardVotePage extends UnlistedSpecialPage {
 				$this->mRemoteSite,
 				$this->mRemoteLanguage
 			);
-			list( $this->mUserKey, $this->mDBname, $this->mBlocked ) = $info;
-			list( $_SESSION['bvUserKey'], $_SESSION['bvDBname'], $_SESSION['bvBlocked'] ) = $info;
+			list( $this->mUserKey, $this->mDBname, $this->mBlocked, $this->mBot ) = $info;
+			list( $_SESSION['bvUserKey'], $_SESSION['bvDBname'], $_SESSION['bvBlocked'], $_SESSION['bvBot'] ) = $info;
 			if ( !is_null( $wgRequest->getVal( 'uselang' ) ) ) {
 				$_SESSION['bvLang'] = $wgRequest->getVal( 'uselang' );
 			} else {
@@ -89,15 +90,18 @@ class BoardVotePage extends UnlistedSpecialPage {
 			$this->mUserKey = $_SESSION['bvUserKey'];
 			$this->mDBname = $_SESSION['bvDBname'];
 			$this->mBlocked = $_SESSION['bvBlocked'];
+			$this->mBot = $_SESSION['bvBot'];
 		} elseif ( defined( 'BOARDVOTE_ALLOW_LOCAL' ) ) {
 			global $wgUser, $wgDBname;
 			$this->mUserKey = $wgUser->getName() . "@" . $wgDBname;
 			$this->mDBname = $wgDBname;
 			$this->mBlocked = $wgUser->isBlocked();
+			$this->mBot = $wgUser->isBot();
 		} else {
 			$this->mUserKey = false;
 			$this->mDBname = false;
 			$this->mBlocked = false;
+			$this->mBot = false;
 		}
 
 		$this->mPosted = $wgRequest->wasPosted();
@@ -119,8 +123,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 
 	function execute( $par ) {
-		global $wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate,
-			$wgBoardVoteFirstEdit, $wgOut;
+		global $wgOut, $wgBoardVoteStartDate, $wgBoardVoteEndDate,
 
 		$this->init( $par );
 		$this->setHeaders();
@@ -143,16 +146,18 @@ class BoardVotePage extends UnlistedSpecialPage {
 			$wgOut->addWikiText( wfMsg( 'boardvote_blocked' ) );
 			return;
 		}
+		
+		if ( $this->mBot ) {
+			$wgOut->addWikiText( wfMsg( 'boardvote_bot' ) );
+			return;
+		}
 
 		if ( wfTimestampNow() > $wgBoardVoteEndDate ) {
 			$this->mFinished = true;
+			
+			$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
 		} else {
 			$this->mFinished = false;
-		}
-
-
-		if ( $this->mFinished ) {
-				$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
 		}
 
 		if ( $this->mAction == "list" ) {
@@ -300,18 +305,24 @@ class BoardVotePage extends UnlistedSpecialPage {
 	}
 
 	function notLoggedIn() {
-		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
+		global $wgOut, $wgLang;
+		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
+		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
 		$wgOut->addWikiText( wfMsg( "boardvote_nosession", $wgBoardVoteEditCount,
-			$wgLang->timeanddate( $wgBoardVoteCountDate ),
-			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
+			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
+			$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
+			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
 	   	) );
 	}
 
 	function notQualified() {
-		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
-		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", '[unknown]',
-			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount, '[unknown]',
-			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
+		global $wgOut, $wgLang;
+		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
+		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
+		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $wgBoardVoteEditCount,
+			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
+			$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
+			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
 		) );
 	}
 
