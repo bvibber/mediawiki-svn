@@ -25,6 +25,13 @@ $messages['de'] = array(
 	'skinperpage-desc' => 'Ergänzt das <tt>&lt;skin&gt;</tt>-Tag, um pro Seite unterschiedliche Skins zu nutzen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'skinperpage-desc' => 'Aldonas etikedon <tt>&lt;skin&gt;</tt> por uzi variajn etosojn en la paĝo',
+);
+
 $messages['fa'] = array(
 	'skinperpage-desc' => 'برچسب <tt>&lt;skin&gt;</tt> را اضافه می‌کند تا بتوان در هر صفحه از پوسته‌ای متفاوت استفاده کرد',
 );
@@ -120,6 +127,13 @@ $messages['pt'] = array(
 	'skinperpage-desc' => 'Adiciona a tag <tt>&lt;skin&gt;</tt> para usar temas diferentes por página',
 );
 
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'skinperpage-desc' => 'Добавляет тег <tt>&lt;skin&gt;</tt> для указания оформления страницы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -132,6 +146,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'skinperpage-desc' => 'Lägger till <tt>&lt;skin&gt;</tt>-taggen för att använda olika utseenden per sida',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'skinperpage-desc' => 'Zonta el tag <tt>&lt;skin&gt;</tt> par doparar skin difarenti par pagina',
 );
 
 /** Vietnamese (Tiếng Việt)

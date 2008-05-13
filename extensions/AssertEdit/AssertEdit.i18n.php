@@ -85,6 +85,13 @@ $messages['cs'] = array(
 	'assert_edit_message' => 'Uvedený předpoklad ($1) selhal.',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'assert_edit_title' => 'Forsikring mislykkedes',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

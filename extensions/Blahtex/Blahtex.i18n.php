@@ -1070,12 +1070,23 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'math-desc'                  => '&lt;math&gt; എന്നീ ടാഗുകള്‍ക്കുള്ള MathML ഔട്ട്പുട്ട്',
-	'math_CannotCreateTexFile'   => 'tex പ്രമാണം സൃഷ്ടിക്കുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_CannotRunLatex'        => 'latex പ്രവര്‍ത്തിപ്പിക്കുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_CannotWriteTexFile'    => 'tex പ്രമാണത്തിലേക്ക് എഴുതുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_InvalidColour'         => '"$1" എന്ന നിറം അസാധുവാണ്‌',
-	'math_MismatchedBeginAndEnd' => '"$1"  "$2" എന്നീ രണ്ട് നിര്‍ദ്ദേശങ്ങള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
+	'math-desc'                             => '&lt;math&gt; എന്നീ ടാഗുകള്‍ക്കുള്ള MathML ഔട്ട്പുട്ട്',
+	'math_CannotCreateTexFile'              => 'tex പ്രമാണം സൃഷ്ടിക്കുവാന്‍ കഴിഞ്ഞില്ല',
+	'math_CannotRunLatex'                   => 'latex പ്രവര്‍ത്തിപ്പിക്കുവാന്‍ കഴിഞ്ഞില്ല',
+	'math_CannotWriteTexFile'               => 'tex പ്രമാണത്തിലേക്ക് എഴുതുവാന്‍ കഴിഞ്ഞില്ല',
+	'math_InvalidColour'                    => '"$1" എന്ന നിറം അസാധുവാണ്‌',
+	'math_MismatchedBeginAndEnd'            => '"$1"  "$2" എന്നീ രണ്ട് നിര്‍ദ്ദേശങ്ങള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
+	'math_UnavailableSymbolFontCombination' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ടില്‍ ലഭ്യമല്ല',
+	'math_UnexpectedNextCell'               => '"&" എന്ന നിര്‍ദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകള്‍ക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
+	'math_UnexpectedNextRow'                => '"\\\\" എന്ന നിര്‍ദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകള്‍ക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
+	'math_UnmatchedBegin'                   => '"\\begin"  ടാഗ് "\\end" ടാഗില്ലാതെ കാണുന്നു',
+	'math_UnmatchedCloseBrace'              => 'ബ്രാക്കറ്റ് അടയ്ക്കുന്ന ചിഹ്നമായ "}"  ബ്രാക്കറ്റ് തുറക്കുന്ന ചിഹ്നമായ "{" ഇല്ലാതെ കാണുന്നു',
+	'math_UnmatchedEnd'                     => '"\\end" ടാഗ് "\\begin" ടാഗില്ലാതെ കാണുന്നു',
+	'math_UnmatchedLeft'                    => '"\\left" ടാഗ് "\\right" ടാഗില്ലാതെ കാണുന്നു',
+	'math_UnmatchedOpenBrace'               => 'ബ്രാക്കറ്റ് തുറക്കുന്ന ചിഹ്നമായ "{" ബ്രാക്കറ്റ് അടയ്ക്കുന്ന ചിഹ്നമായ "}" ഇല്ലാതെ കാണുന്നു',
+	'math_UnmatchedOpenBracket'             => '"[" എന്ന ബ്രാക്കറ്റ്ചിഹ്നം "]" എന്ന ബ്രാകറ്റ്ചിഹ്നമില്ലാതെ കാണുന്നു',
+	'math_UnmatchedRight'                   => '"\\right" ടാഗ് "\\left" ടാഗില്ലാതെ കാണുന്നു',
+	'math_UnrecognisedCommand'              => 'തിരച്ചറിയാന്‍ പറ്റാഞ്ഞ നിര്‍ദ്ദേശം "$1"',
 );
 
 /** Marathi (मराठी)

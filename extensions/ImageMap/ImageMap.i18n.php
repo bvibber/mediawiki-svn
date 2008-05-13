@@ -528,7 +528,17 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'imagemap_description' => 'Iwwert dëst Bild',
+	'imagemap_desc'               => 'Erlaabt et Biller ze benotzen déi een uklicke ka mat Hellëf vum Tag <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image'           => '&lt;imagemap&gt;-Feeler: Dir musst an der éischter Linn e Bild uginn',
+	'imagemap_invalid_image'      => "&lt;imagemap&gt;-Feeler: d'Bild ass ongëltig oder net do",
+	'imagemap_no_link'            => '&lt;imagemap&gt;-Feeler: Um Enn vun der Zeil $1 gouf kee gëltege Link fonnt',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;-Feeler: ongëltigen Titel am Link an der Zeil $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;-Feeler: Ze wéineg Koordinaten an der Zeil $1 fir den Ëmress',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;-Feeler: Onbekannte Form an der Zeil $1. All Zeile muss matt engem vun dëse Parameter ufänken: <tt>default, rect, circle</tt> oder <tt>poly</tt>',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;-Feeler: Dir musst mindestens eng Fläch definéieren',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;-Feeler: Ongëlteg Koordinaten an der Zeil $1: et sinn nëmmen Zuelen erlaabt',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;-Feeler: Ongëltegen „desc“-Parameter, méiglech sinn: <tt>$1</tt>',
+	'imagemap_description'        => 'Iwwert dëst Bild',
 );
 
 /** Limburgish (Limburgs)

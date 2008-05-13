@@ -193,6 +193,13 @@ $messages['lb'] = array(
 	'pageby-anon'         => '<i>anonym Benotzer</i>',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'pageby-contributors' => 'സംഭാവന ചെയ്തവര്‍:',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author Kaustubh

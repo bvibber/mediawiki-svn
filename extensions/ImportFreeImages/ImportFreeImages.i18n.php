@@ -266,8 +266,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'importfreeimages_owner' => 'ലേഖകന്‍',
-	'importfreeimages_next'  => 'അടുത്ത $1',
+	'importfreeimages'            => 'സൗജന്യ ചിത്രങ്ങള്‍ ഇറക്കുമതി ചെയ്യുക',
+	'importfreeimages_invalidurl' => '"$1" എന്ന URL സാധുവായ ഒരു ഫ്ലിക്കര്‍ ചിത്രം അല്ല.',
+	'importfreeimages_owner'      => 'ലേഖകന്‍',
+	'importfreeimages_next'       => 'അടുത്ത $1',
 );
 
 /** Marathi (मराठी)

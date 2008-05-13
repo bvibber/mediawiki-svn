@@ -90,6 +90,13 @@ $messages['av'] = array(
 	'newuserlog-create-entry' => 'ЦIияв гIахьалчи',
 );
 
+/** Kotava (Kotava)
+ * @author Sab
+ */
+$messages['avk'] = array(
+	'newuserlog-create-entry' => 'Warzaf favesik',
+);
+
 $messages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );

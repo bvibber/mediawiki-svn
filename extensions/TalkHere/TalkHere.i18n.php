@@ -124,10 +124,15 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'talkhere-talkpage'   => 'diskuto-paĝo',
-	'talkhere-notalk'     => "''(ankoraŭ neniuj komentoj)''",
-	'talkhere-addcomment' => 'aldonu komenton',
-	'talkhere-loading'    => 'ŝarĝante redaktilon...',
+	'talkhere-foottext'    => 'La supraj komentoj eble estis faritaj de vizitantoj.
+
+La operaciistoj de la retejo ne estas respondeca pri la enhavo de tiaj komentoj.',
+	'talkhere-talkpage'    => 'diskuto-paĝo',
+	'talkhere-notalk'      => "''(ankoraŭ neniuj komentoj)''",
+	'talkhere-addcomment'  => 'aldonu komenton',
+	'talkhere-beforeinput' => 'Vi povas aldoni komenton suben',
+	'talkhere-loading'     => 'ŝarĝante redaktilon...',
+	'talkhere-collapse'    => 'kaŝi redaktilon',
 );
 
 /** Spanish (Español)

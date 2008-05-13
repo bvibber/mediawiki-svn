@@ -590,6 +590,13 @@ $messages['hi'] = array(
 	'viewapc-usercache-cleared'     => "'''''एप्लिकेशन कैशे खाली कर दी गई हैं।'''''",
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'viewapc-ls-submit' => 'Sige!',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -761,12 +768,17 @@ $messages['ml'] = array(
 	'viewapc-uptime'                => 'പ്രവര്‍ത്തനനിരതമായ സമയം',
 	'viewapc-upload-support'        => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യാനുള്ള സൗകര്യം',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|പ്രമാണം|പ്രമാണങ്ങള്‍}} ($2)',
+	'viewapc-hits'                  => 'ഹിറ്റുകള്‍',
 	'viewapc-requests'              => 'അഭ്യര്‍ത്ഥനയുടെ തോത്',
+	'viewapc-hitrate'               => 'ഹിറ്റിന്റെ തോത്',
+	'viewapc-rps'                   => 'സെക്കന്റില്‍ $1 അഭ്യര്‍ത്ഥനകള്‍',
 	'viewapc-memory-free'           => 'ലഭ്യമായത്: $1 ($2)',
 	'viewapc-memory-used'           => 'ഉപയോഗിക്കപ്പെട്ടത്: $1 ($2)',
+	'viewapc-display-value'         => 'മൂല്യം',
 	'viewapc-display-filename'      => 'പ്രമാണത്തിന്റെ പേര്‌',
 	'viewapc-display-info'          => 'പേര്‌',
 	'viewapc-display-ttl'           => 'കാലാവധി',
+	'viewapc-display-num_hits'      => 'ഹിറ്റുകള്‍',
 	'viewapc-display-creation_time' => 'സൃഷ്ടിക്കപ്പെട്ട സമയം',
 	'viewapc-display-deletion_time' => 'മായ്ക്കപ്പെട്ട സമയം',
 	'viewapc-display-no-delete'     => 'മായ്ച്ചിട്ടില്ല',
@@ -774,7 +786,9 @@ $messages['ml'] = array(
 	'viewapc-ls-options-legend'     => 'ഐച്ഛികങ്ങള്‍',
 	'viewapc-ls-submit'             => 'പോകൂ!',
 	'viewapc-ls-header-name'        => 'പേര്‌',
+	'viewapc-ls-header-hits'        => 'ഹിറ്റുകള്‍',
 	'viewapc-ls-header-size'        => 'വലിപ്പം',
+	'viewapc-ls-header-accessed'    => 'അവസാനമായി സന്ദര്‍ശിച്ചത്',
 	'viewapc-ls-header-modified'    => 'അവസാനമായി തിരുത്തല്‍ നടത്തിയ തീയതി',
 	'viewapc-ls-header-created'     => 'സൃഷ്ടിച്ചിരിക്കുന്നു',
 	'viewapc-ls-header-deleted'     => 'മായ്ച്ചിരിക്കുന്നു',
@@ -783,9 +797,10 @@ $messages['ml'] = array(
 	'viewapc-ls-scope-active'       => 'സജീവം',
 	'viewapc-ls-scope-deleted'      => 'മായ്ച്ചിരിക്കുന്നു',
 	'viewapc-ls-scope-both'         => 'രണ്ടും',
+	'viewapc-ls-sort-hits'          => 'ഹിറ്റുകള്‍',
 	'viewapc-ls-sort-size'          => 'വലിപ്പം',
 	'viewapc-ls-sort-name'          => 'പേര്‌',
-	'viewapc-ls-sort-accessed'      => 'അവസാനമായി പരിശോധിച്ചത്',
+	'viewapc-ls-sort-accessed'      => 'അവസാനമായി സന്ദര്‍ശിച്ചത്',
 	'viewapc-ls-sort-modified'      => 'അവസാനമായി തിരുത്തല്‍ നടത്തിയ തീയതി',
 	'viewapc-ls-sort-created'       => 'സൃഷ്ടിച്ചത്',
 	'viewapc-ls-sort-deleted'       => 'മായ്ച്ചത്',
@@ -794,6 +809,7 @@ $messages['ml'] = array(
 	'viewapc-ls-more'               => "''ഇനി $1 {{PLURAL:$1|ഇനം|ഇനങ്ങള്‍}} കുടിയുണ്ട്''",
 	'viewapc-ls-nodata'             => "''ചേര്‍ച്ചയുള്ള ഡാറ്റ ഒന്നുമില്ല''",
 	'viewapc-version-info'          => 'പതിപ്പിന്റെ വിവരണം',
+	'viewapc-version-changelog'     => 'മാറ്റങ്ങളുടെ പ്രവര്‍ത്തനരേഖ',
 	'viewapc-version-failed'        => 'പതിപ്പിനെക്കുറിച്ചുള്ള വിവരം ശേഖരിക്കാന്‍ കഴിഞ്ഞില്ല.',
 );
 

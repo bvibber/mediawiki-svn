@@ -178,9 +178,10 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'newusermessage-desc' => 'Lägger till ett [[MediaWiki:NewUserMessage|meddelande]] till nyligen skapade användardiskussions sidor',
+	'newusermessage-desc' => 'Lägger ett [[MediaWiki:NewUserMessage|meddelande]] på nyligen registrerade användares diskussionssidor',
 );
 
 /** Telugu (తెలుగు)

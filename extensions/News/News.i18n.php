@@ -130,7 +130,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'newsextension-desc'          => 'Aangepaste recente wijzigingen weergeven op een wikipagina, of als RSS-feed of Atom-feed',
-	'newsextension-unknownformat' => '$1: onbekend feed-formaat: $2<br />',
+	'newsextension-unknownformat' => '$1: onbekend feedformaat: $2<br />',
 	'newsextension-feednotfound'  => '$1: feed-pagina niet gevonden: $2<br />',
 	'newsextension-feedrequest'   => '$1: bezig met afhandelen van feed-aanvraag voor $2<br />',
 	'newsextension-nofoundonpage' => '$1: geen feed gevonden op pagina: $2<br />',

@@ -492,10 +492,14 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'countedits'            => 'തിരത്തലുകള്‍ എണ്ണുക',
-	'countedits-username'   => 'ഉപയോക്തൃനാമം:',
-	'countedits-ok'         => 'ശരി',
-	'countedits-nosuchuser' => '$1 എന്ന പേരുള്ള ഉപയോക്താവ് നിലവിലില്ല.',
+	'countedits'              => 'തിരത്തലുകള്‍ എണ്ണുക',
+	'countedits-username'     => 'ഉപയോക്തൃനാമം:',
+	'countedits-ok'           => 'ശരി',
+	'countedits-nosuchuser'   => '$1 എന്ന പേരുള്ള ഉപയോക്താവ് നിലവിലില്ല.',
+	'countedits-resultheader' => '$1ന്റെ ഫലങ്ങള്‍',
+	'countedits-resulttext'   => '$1 ഈ വിക്കിയില്‍ $2 തിരുത്തലുകള്‍ നടത്തിയിരിക്കുന്നു',
+	'countedits-mostactive'   => 'ഏറ്റവും സജീവരായ ഉപയോക്താക്കള്‍',
+	'countedits-nocontribs'   => 'ഈ വിക്കിയില്‍ സജീവമായി സംഭാവന ചെയ്യുന്നവരില്ല',
 );
 
 /** Marathi (मराठी)

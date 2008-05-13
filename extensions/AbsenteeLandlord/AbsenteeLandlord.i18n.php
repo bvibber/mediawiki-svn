@@ -21,6 +21,13 @@ $messages['bg'] = array(
 	'absenteelandlord-desc'   => 'Автоматично заключва базата от данни ако всички администратори са неактивни за известен период от време',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'absenteelandlord-reason' => "La base de dades s'ha blocat automàticament a causa de la inactivitat dels seus administradors.",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

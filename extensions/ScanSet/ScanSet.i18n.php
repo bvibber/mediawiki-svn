@@ -186,13 +186,14 @@ $messages['fa'] = array(
 	'scanset_prev'                      => '< قبلی',
 );
 
-
 /** Finnish (Suomi)
  * @author Nike
  */
 $messages['fi'] = array(
-	'scanset_next' => 'Seuraava →',
-	'scanset_prev' => '← Edellinen',
+	'scanset-desc'           => 'Mahdollistaa Andreas Groszin CD- ja DVD-kokoelmien skannattujen kuvien katselun.',
+	'scanset_invalid_volume' => 'Scanset: Väärä kirja',
+	'scanset_next'           => 'Seuraava →',
+	'scanset_prev'           => '← Edellinen',
 );
 
 /** French (Français)

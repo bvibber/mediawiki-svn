@@ -88,6 +88,7 @@ This page is only applicable to restricted users",
 $allMessages['af'] = array(
 	'whitelisttablemodifynone' => 'Geen',
 	'whitelisttableremove'     => 'Skrap',
+	'whitelistnever'           => 'nooit',
 );
 
 /** Arabic (العربية)
@@ -450,6 +451,7 @@ $allMessages['krj'] = array(
  * @author Robby
  */
 $allMessages['lb'] = array(
+	'whitelist-desc'           => "Ännert d'Rechter vu Benotzer mat limitéierte Rechter",
 	'whitelist'                => "''Whiteliste''-Säiten",
 	'mywhitelistpages'         => 'Meng Säiten',
 	'whitelisttablemodify'     => 'Änneren',
@@ -466,6 +468,7 @@ $allMessages['lb'] = array(
 	'whitelistbadtitle'        => 'Schlechten Titel -',
 	'whitelistoverview'        => '== Iwwersiicht vun den Ännerunge vun $1 ==',
 	'whitelistoverviewcd'      => "* Datum vun '''$1''' ännere  fir [[:$2|$2]]",
+	'whitelistrequest'         => 'Zougang zu méi Säite froen',
 	'whitelistrequestconf'     => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever'           => 'nie',
 	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',

@@ -225,6 +225,7 @@ $messages['fi'] = array(
 	'querybtn'        => 'Lähetä kysely',
 	'selectonly'      => 'Ainoastaan vain luku -kyselyt ovat sallittuja.',
 	'querysuccessful' => 'Kysely onnistui',
+	'right-asksql'    => 'Tehdä SQL-kyselyitä',
 );
 
 /** French (Français)

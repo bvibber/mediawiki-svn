@@ -37,6 +37,7 @@ $messages['en'] = array(
  * @author Arnobarnard
  */
 $messages['af'] = array(
+	'usagestatisticstype'          => 'Tipe',
 	'usagestatisticsintervalday'   => 'Dag',
 	'usagestatisticsintervalweek'  => 'Week',
 	'usagestatisticsintervalmonth' => 'Maand',

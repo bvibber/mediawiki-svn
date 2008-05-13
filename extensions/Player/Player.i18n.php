@@ -311,8 +311,9 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'player-not-found' => 'പ്രമാണം കണ്ടില്ല.',
-	'player-goto-page' => 'താള്‍',
+	'player-not-found'     => 'പ്രമാണം കണ്ടില്ല.',
+	'player-invalid-title' => 'അസാധുവായ ശീര്‍ഷകം',
+	'player-goto-page'     => 'താള്‍',
 );
 
 /** Marathi (मराठी)

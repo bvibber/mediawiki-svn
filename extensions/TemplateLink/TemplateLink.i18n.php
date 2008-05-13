@@ -72,7 +72,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'templatelink' => 'Ŝablona Ligilo',
+	'templatelink'          => 'Ŝablona Ligilo',
+	'templatelink_empty'    => 'Vi devas enigi parametron.',
+	'templatelink_newtitle' => '$1 (transinkluzivita)',
 );
 
 $messages['fr'] = array(

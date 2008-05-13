@@ -215,6 +215,7 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'showprocesslist-id'   => 'ഐഡി',
 	'showprocesslist-user' => 'ഉപയോക്താവ്',
 	'showprocesslist-time' => 'സമയം',
 );

@@ -312,7 +312,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'invitations-inviteform-submit' => 'ക്ഷണിക്കുക',
+	'invitations-feature-notallowed'  => 'നിങ്ങള്‍ക്ക്  <i>$1</i> ഉപയോഗിക്കാനുള്ള അനുമതി ഇല്ല.',
+	'invitations-inviteform-title'    => '$1 ഉപയോഗിക്കുവാന്‍ വേണ്ടി ഉപയോക്താവിനെ ക്ഷണിക്കുക',
+	'invitations-inviteform-username' => 'ക്ഷണിക്കപ്പെടേണ്ട ഉപയോക്താവ്',
+	'invitations-inviteform-submit'   => 'ക്ഷണിക്കുക',
 );
 
 /** Marathi (मराठी)

@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التي قاموا بإنشائها فقط',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editown-desc' => "Uzantoj sen la ''editall'' rajto nur povas redakti paĝojn kiujn ili mem kreis",
+);
+
 /** French (Français)
  * @author Grondin
  */

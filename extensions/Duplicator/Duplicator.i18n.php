@@ -37,6 +37,13 @@ An unknown error occurred.',
 The current limit is $3.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'duplicator-source' => 'Bron:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Gharbeia
@@ -520,7 +527,18 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'duplicator-source' => 'സ്രോതസ്സ്:',
+	'duplicator'                       => 'താളിന്റെ പകര്‍പ്പ് ഉണ്ടാക്കുക',
+	'duplicator-desc'                  => 'എല്ലാ തിരുത്തല്‍ ചരിത്രത്തോടും കൂടി ഒരു താളിന്റെ പകര്‍പ്പ് ഉണ്ടാക്കുന്നു',
+	'duplicator-toolbox'               => 'ഈ താളിന്റെ പകര്‍പ്പ് ഉണ്ടാക്കുക',
+	'duplicator-source'                => 'സ്രോതസ്സ്:',
+	'duplicator-submit'                => 'പകര്‍പ്പെടുക്കുക',
+	'duplicator-summary'               => '[[$1]]ല്‍ നിന്നു പകര്‍ത്തിയത്',
+	'duplicator-success'               => "<big>'''[[$1]] എന്ന താള്‍ [[$2]]ലേക്കു പകര്‍ത്തി.'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|പതിപ്പ്|പതിപ്പുകള്‍}} പകര്‍ത്തി.',
+	'duplicator-success-talkcopied'    => 'സം‌വാദം താളും പകര്‍ത്തി',
+	'duplicator-success-talknotcopied' => 'സം‌വാദം താള്‍ പകര്‍ത്തുവാന്‍ കഴിഞ്ഞില്ല',
+	'duplicator-failed'                => 'താളിന്റെ പകര്‍പ്പെടുക്കാന്‍ സാധിച്ചില്ല. അജ്ഞാതമായ കാരണം മൂലം എന്തോ പിഴവ് സംഭവിച്ചു.',
+	'duplicator-source-invalid'        => 'സാധുവായൊരു സ്രോതസ്സ് തലക്കെട്ട് കൊടുക്കുക.',
 );
 
 /** Marathi (मराठी)

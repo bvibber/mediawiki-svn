@@ -378,6 +378,7 @@ $messages['ml'] = array(
 	'importusers-uploadfile'      => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'importusers-log-summary'     => 'ചുരുക്കം',
 	'importusers-log-summary-all' => 'എല്ലാം',
+	'importusers-login-name'      => 'ലോഗിന്‍ നാമം',
 	'importusers-password'        => 'രഹസ്യവാക്ക്',
 	'importusers-email'           => 'ഇമെയില്‍',
 	'importusers-realname'        => 'യഥാര്‍ത്ഥ പേര്‌',

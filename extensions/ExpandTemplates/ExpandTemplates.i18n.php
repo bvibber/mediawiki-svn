@@ -432,6 +432,13 @@ $messages['hi'] = array(
 	'expand_templates_preview'         => 'झलक',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Jose77
+ */
+$messages['hil'] = array(
+	'expand_templates_preview' => 'Ipakita subong',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  * @author Dnik

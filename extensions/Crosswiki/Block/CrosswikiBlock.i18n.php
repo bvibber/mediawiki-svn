@@ -637,11 +637,19 @@ Zréck op:
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'crosswikiblock-expiry'   => 'കാലാവധി:',
-	'crosswikiblock-reason'   => 'കാരണം:',
-	'crosswikiblock-submit'   => 'ഈ ഉപയോക്താവിനെ തടയുക',
-	'crosswikiunblock-reason' => 'കാരണം:',
-	'crosswikiunblock-submit' => 'ഈ ഉപയോക്താവിനെ സ്വതന്ത്രമാക്കുക',
+	'crosswikiblock-expiry'     => 'കാലാവധി:',
+	'crosswikiblock-reason'     => 'കാരണം:',
+	'crosswikiblock-submit'     => 'ഈ ഉപയോക്താവിനെ തടയുക',
+	'crosswikiblock-nocreate'   => 'അക്കൗണ്ട് സൃഷ്ടിക്കുന്നത് തടയുക',
+	'crosswikiblock-noemail'    => 'ഇമെയില്‍ അയക്കുന്നതില്‍ നിന്നു ഉപയോക്താവിനെ തടയുക',
+	'crosswikiunblock-reason'   => 'കാരണം:',
+	'crosswikiunblock-submit'   => 'ഈ ഉപയോക്താവിനെ സ്വതന്ത്രമാക്കുക',
+	'crosswikiblock-dbnotfound' => '$1 എന്ന ഡാറ്റബേസ് നിലവിലില്ല',
+	'crosswikiblock-noname'     => '"$1" എന്നതു സാധുവായ ഉപയോക്തൃനാമമല്ല.',
+	'crosswikiblock-nouser'     => '"$3" എന്ന ഉപയോക്താവിനെ കണ്ടില്ല.',
+	'crosswikiblock-noexpiry'   => 'അസാധുവായ കാലാവധി: $1.',
+	'crosswikiblock-noreason'   => 'കാരണമൊന്നും സൂചിപ്പിച്ചിട്ടില്ല.',
+	'crosswikiblock-noblock'    => 'ഈ ഉപയോക്താവിനെ തടഞ്ഞിട്ടില്ല.',
 );
 
 /** Marathi (मराठी)

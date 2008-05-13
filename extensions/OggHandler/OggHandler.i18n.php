@@ -157,6 +157,14 @@ href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descar
 	'ogg-desc-link'           => 'Tocante a esti archivu',
 );
 
+/** Kotava (Kotava)
+ * @author Sab
+ */
+$messages['avk'] = array(
+	'ogg-download'  => 'Iyeltakkalvajara',
+	'ogg-desc-link' => 'Icde bat iyeltak',
+);
+
 /** Bikol Central*/
 $messages['bcl'] = array(
 	'ogg-more' => 'Dakol pa..',

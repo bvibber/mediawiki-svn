@@ -327,12 +327,14 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'viewxml'               => 'XML കാണുക',
 	'dt_viewxml_categories' => 'വിഭാഗങ്ങള്‍',
 	'dt_viewxml_namespaces' => 'നേംസ്പേസുകള്‍',
 	'dt_xml_namespace'      => 'നേംസ്പേസ്',
 	'dt_xml_page'           => 'താള്‍',
 	'dt_xml_name'           => 'പേര്‌',
 	'dt_xml_title'          => 'ശീര്‍ഷകം',
+	'dt_xml_id'             => 'ഐഡി',
 );
 
 /** Marathi (मराठी)

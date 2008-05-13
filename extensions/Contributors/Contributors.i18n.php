@@ -544,7 +544,16 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'contributors-target' => 'ശീര്‍ഷകം:',
+	'contributors'             => 'സംഭാവന ചെയ്തവര്‍',
+	'contributors-toolbox'     => 'സംഭാവന ചെയ്ത പ്രമുഖര്‍',
+	'contributors-legend'      => 'ഒരു താളിലെ മുഖ്യ സംഭാവനക്കാരെ പ്രദര്‍ശിപ്പിക്കുന്നു',
+	'contributors-target'      => 'ശീര്‍ഷകം:',
+	'contributors-submit'      => 'പ്രദര്‍ശിപ്പിക്കുക',
+	'contributors-subtitle'    => '$1ലെ മുഖ്യ സംഭാവക്കാര്‍',
+	'contributors-others-long' => 'ഈ താളിനു $1 മറ്റു സംഭാവക്കാര്‍ കൂടിയുണ്ട്.',
+	'contributors-others'      => '$1 മറ്റുള്ളവര്‍',
+	'contributors-badtitle'    => 'അസാധുവായ ശീര്‍ഷകം.',
+	'contributors-nosuchpage'  => '$1 എന്ന താള്‍ നിലവിലില്ല.',
 );
 
 /** Marathi (मराठी)

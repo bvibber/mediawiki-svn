@@ -256,6 +256,7 @@ $messages['lfn'] = array(
 $messages['ml'] = array(
 	'inspectcache-ok'     => 'ശരി',
 	'inspectcache-delete' => 'മായ്ക്കുക',
+	'inspectcache-list'   => 'പട്ടിക',
 );
 
 /** Marathi (मराठी)

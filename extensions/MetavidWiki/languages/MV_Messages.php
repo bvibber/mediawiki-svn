@@ -984,6 +984,7 @@ $messages['hil'] = array(
 	'mv_tool_search' => 'Pangita-a',
 	'mv_edit'        => 'Ilisan',
 	'mv_history'     => 'Saysay',
+	'mv_search_and'  => 'kag',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1553,6 +1554,7 @@ $messages['nl'] = array(
 	'mv_ogg_low_quality'             => 'Via het web te streamen ogg theora, gehost op metavid',
 	'mv_ogg_high_quality'            => 'Hoge kwaliteit ogg theora, gehost op metavid',
 	'mv_archive_org_link'            => 'Links naar de originele mpeg2 op Archive.org',
+	'ao_file_MPEG2'                  => 'Archive.org - mpeg2 origineel',
 	'mv_error_stream_missing'        => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />Rapporteer dit alstublieft aan de sitebeheerder.',
 	'mv_stream_meta'                 => 'Streampagina',
 	'mv_add_stream'                  => 'Metavid stream toevoegen',

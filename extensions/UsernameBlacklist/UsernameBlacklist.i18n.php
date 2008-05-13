@@ -688,6 +688,7 @@ $messages['lb'] = array(
 # * [Bb]ar
 </pre>",
 	'usernameblacklist-invalid-lines' => 'Déi folgend {{PLURAL:$1|Linn|Linnen}} an der Lëscht vun de verbuedene Benotzernimm {{PLURAL:$1|ass|sinn}} ongültig; w.e.g virum Ofspäichere verbesseren:',
+	'right-uboverride'                => 'Lëscht vun onerwënschte Benotzernimm ignoréieren',
 );
 
 /** Limburgish (Limburgs)

@@ -607,13 +607,17 @@ $messages['lb'] = array(
 $messages['ml'] = array(
 	'regexblock-form-reason'          => 'കാരണം:',
 	'regexblock-form-expiry'          => 'കാലാവധി:&#160;',
+	'regexblock-form-match'           => 'കൃത്യമായി യോജിക്കുന്നവ',
+	'regexblock-stats-times'          => 'തടയപ്പെട്ടത്',
 	'regexblock-view-all'             => 'എല്ലാം',
 	'regexblock-view-go'              => 'പോകൂ',
+	'regexblock-view-match'           => '(കൃത്യമായി യോജിക്കുന്നവ)',
 	'regexblock-view-reason'          => 'കാരണം: $1',
 	'regexblock-view-block-temporary' => 'കാലാവധി തീരുന്നത്',
 	'regexblock-view-block-expired'   => 'കാലാവധി തീരുന്നത്',
 	'regexblock-view-block-by'        => 'തടഞ്ഞത്',
 	'regexblock-view-block-unblock'   => 'സ്വതന്ത്രമാക്കുക',
+	'regexblock-view-time'            => '$1 ന്‌',
 );
 
 /** Marathi (मराठी)

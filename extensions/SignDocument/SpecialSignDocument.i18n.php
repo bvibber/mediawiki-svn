@@ -453,6 +453,7 @@ $1',
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  * @author Siebrand
  */
 $messages['gl'] = array(
@@ -514,13 +515,13 @@ $1',
 	'sign-sigdetails'                 => 'Detalles da sinatura',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+-->[[User:$1|$1]] ([[User talk:$1|conversa]] • <!--
 -->[[Special:Contributions/$1|contribucións]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|bloquear usuario]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} bloquear rexistro] • <!--
+-->[[Special:Blockip/$1|bloquear o usuario]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} rexistro de bloqueos] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar IP])<!--
 --></span>',
 	'sign-viewfield-stricken'         => 'Tachado',

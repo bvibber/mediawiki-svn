@@ -37,8 +37,10 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Arnobarnard
  */
 $messages['af'] = array(
+	'badimages-add-btn'    => 'Voeg by',
 	'badimages-name'       => 'Naam:',
 	'badimages-reason'     => 'Rede:',
 	'badimages-remove'     => '(skrap)',
@@ -944,8 +946,10 @@ $messages['ml'] = array(
 	'badimages-subheading'     => 'നിലവിലുള്ള ഇനങ്ങള്‍',
 	'badimages-unprivileged'   => 'പട്ടികയില്‍ മാറ്റം വരുത്തുവാന്‍ ആവശ്യമായ അനുമതി താങ്കള്‍ക്കില്ല',
 	'badimages-log-name'       => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
+	'badimages-log-header'     => '[[{{MediaWiki:Badimages-page}}|ഉപയോഗശൂന്യമായ ചിത്രങ്ങളുടെ പട്ടികയില്‍]] വന്ന മാറ്റങ്ങളുടെ പ്രവര്‍ത്തനരേഖയാണിത്.',
 	'badimages-log-add'        => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയിലേയ്ക്ക് [[$1]] ചേര്‍ത്തു',
 	'badimages-log-remove'     => 'മോശം ചിത്രങ്ങളുടെ പട്ടികയില്‍നിന്ന് [[$1]] നീക്കംചെയ്തു',
+	'badimages-page'           => '{{ns:help}}:ഉപയോഗശൂന്യമായ ചിത്രങ്ങളുടെ പട്ടിക',
 );
 
 /** Marathi (मराठी)
@@ -1180,6 +1184,13 @@ $messages['pt'] = array(
 	'badimages-log-add'        => 'adicionada [[$1]] na lista de imagens problemáticas',
 	'badimages-log-remove'     => 'removida [[$1]] da lista de imagens problemáticas',
 	'badimages-page'           => '{{ns:help}}:Lista de imagens problemáticas',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Brunoy Anastasiya Seryozhenko
+ */
+$messages['pt-br'] = array(
+	'badimages' => 'Listagem de imagens ruins',
 );
 
 /** Rhaeto-Romance (Rumantsch)

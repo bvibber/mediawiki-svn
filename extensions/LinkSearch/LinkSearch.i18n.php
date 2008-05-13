@@ -79,6 +79,14 @@ $messages['ast'] = array(
 	'linksearch-error' => 'Los comodinos namái puen apaecer al entamu del nome del güéspede.',
 );
 
+/** Kotava (Kotava)
+ * @author Sab
+ */
+$messages['avk'] = array(
+	'linksearch-ns' => 'Yoltxo :',
+	'linksearch-ok' => 'Aneyara',
+);
+
 $messages['bcl'] = array(
 	'linksearch-ok'    => 'Hanápon',
 	'linksearch-line'  => '$1 an nakatakod sa $2',
