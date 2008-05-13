@@ -565,7 +565,10 @@ $settings = array(
 	'extension' => array(
 		'extension' => array(
 			'wgAllowSlowParserFunctions' => 'bool',
+			'wgAPIListModules' => 'array',
+			'wgAPIMetaModules' => 'array',
 			'wgAPIModules' => 'array',
+			'wgAPIPropModules' => 'array',
 			'wgAutoloadClasses' => 'array',
 			'wgAvailableRights' => 'array',
 			'wgDisableInternalSearch' => 'bool',
@@ -861,6 +864,10 @@ $arrayDefs = array(
 	'wgLogTypes' => 'simple',
 	'wgSpecialPageGroups' => 'assoc',
 # Extensions
+	'wgAPIListModules' => 'assoc',
+	'wgAPIMetaModules' => 'assoc',
+	'wgAPIModules' => 'assoc',
+	'wgAPIPropModules' => 'assoc',
 	'wgAvailableRights' => 'simple',
 	'wgExceptionHooks' => 'array',
 	'wgExtensionCredits' => 'array',
@@ -880,7 +887,10 @@ $arrayDefs = array(
  * be set by extensions, ...
  */
 $notEditableSettings = array(
+	'wgAPIListModules',
+	'wgAPIMetaModules',
 	'wgAPIModules',
+	'wgAPIPropModules',
 	'wgAjaxExportList',
 	'wgAuth',
 	'wgAutoloadClasses',
