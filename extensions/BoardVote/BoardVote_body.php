@@ -540,7 +540,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 	function validVote() {
 		foreach ( $this->mVotedFor as $rank ) {
 			if ( $rank != '' ) {
-				if ( !ereg( "^[1-9]\d?$", $rank ) ) {
+				if ( !preg_match( '/^[1-9]\d?$/', $rank ) ) {
 					return false;
 				}
 			}
