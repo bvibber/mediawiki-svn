@@ -229,12 +229,13 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
-	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
-	'newuserlog-desc'          => 'Fügt ein Logbuch der [[Special:Log/newusers|Benutzerneuanmeldungen]] hinzu',
-	'newuserlog-byemail'       => 'das Passwort wurde per E-Mail versandt',
-	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
-	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
+	'newuserlogpage'              => 'Neuanmeldungs-Logbuch',
+	'newuserlogpagetext'          => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
+	'newuserlog-desc'             => 'Fügt ein Logbuch der [[Special:Log/newusers|Benutzerneuanmeldungen]] hinzu',
+	'newuserlog-byemail'          => 'das Passwort wurde per E-Mail versandt',
+	'newuserlog-create-entry'     => 'Benutzer wurde neu registriert',
+	'newuserlog-create2-entry'    => 'erstellte Benutzerkonto für $1',
+	'newuserlog-autocreate-entry' => 'Benutzerkonto wurde automatisch erstellt',
 );
 
 /** Lower Sorbian (Dolnoserbski)
