@@ -37,8 +37,6 @@ $wgHooks['AuthPluginAutoCreate'][] = 'wfNewuserlogAutoCreate';
 # Run this hook on Special:Log
 $wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
-# Run this hook on new account creation
-$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
 # Run this hook on Special:Log
 $wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
