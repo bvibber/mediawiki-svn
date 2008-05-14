@@ -21,7 +21,7 @@ They will decide on ways to generate income and the allocation of moneys raised.
 <p>Please read the candidates' statements and responses to queries carefully before voting.
 Each of the candidates is a respected user, who has contributed considerable time and effort to making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.</p>
 
-<p>Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite...).
+<p>Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite, ...).
 You may give the same preference to more than one candidate and may keep candidates unranked.
 It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
 
@@ -81,8 +81,10 @@ Vote open until June 22",
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
-	'boardvote_blocked'       => 'Sorry, you have been blocked on your registered wiki. Blocked users are not allowed to vote.',
-	'boardvote_bot'           => 'Sorry, you are flag as a bot on your registered wiki. Bot account are not allowed to vote.',
+	'boardvote_blocked'       => 'You have been blocked on your registered wiki.
+Blocked users are not allowed to vote.',
+	'boardvote_bot'           => 'You are flag as a bot on your registered wiki.
+Bot accounts are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
 	'go_to_board_vote'        => 'Wikimedia Board Elections 2008',
 	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an external, independently controlled server.
