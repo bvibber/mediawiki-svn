@@ -4,7 +4,6 @@
 	require_once("WikiDataAPI.php"); // for bootstrapCollection
 	require_once("Utilities.php"); 
 	
-	$wgAvailableRights[] = 'importtsv';
 	$wgGroupPermissions['bureaucrat']['importtsv'] = true;
 	$wgAvailableRights[] = 'importtsv';
 	$wgExtensionFunctions[] = 'wfSpecialImportTSV';
