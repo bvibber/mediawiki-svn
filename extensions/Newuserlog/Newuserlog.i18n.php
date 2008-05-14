@@ -406,11 +406,13 @@ $messages['hak'] = array(
 );
 
 $messages['he'] = array(
-	'newuserlogpage'           => 'יומן רישום משתמשים',
-	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',
-	'newuserlog-byemail'       => 'הסיסמה נשלחה בדוא"ל',
-	'newuserlog-create-entry'  => 'משתמש חדש',
-	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
+	'newuserlogpage'              => 'יומן רישום משתמשים',
+	'newuserlogpagetext'          => 'זהו יומן המכיל הרשמות של משתמשים.',
+	'newuserlog-desc'             => 'מוסיף [[Special:Log/newusers|יומן רישום חשבונות]] ל[[Special:Log|דף היומנים]]',
+	'newuserlog-byemail'          => 'הסיסמה נשלחה בדוא"ל',
+	'newuserlog-create-entry'     => 'משתמש חדש',
+	'newuserlog-create2-entry'    => 'יצר חשבון עבור $1',
+	'newuserlog-autocreate-entry' => 'חשבון שנוצר אוטומטית',
 );
 
 /** Hindi (हिन्दी)
