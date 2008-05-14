@@ -13,23 +13,17 @@ $messages['en'] = array(
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
-	'boardvote_intro'         => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees. We are
-voting for one person to represent the community of users on the various
-Wikimedia projects. They will help to determine the future direction
-that the Wikimedia projects will take, individually and as a group, and
-represent <em>your</em> interests and concerns to the Board of Trustees. They will
-decide on ways to generate income and the allocation of moneys raised.</p>
+	'boardvote_intro'         => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees.
+We are voting for one person to represent the community of users on the various Wikimedia projects.
+They will help to determine the future direction that the Wikimedia projects will take, individually and as a group, and represent <em>your</em> interests and concerns to the Board of Trustees.
+They will decide on ways to generate income and the allocation of moneys raised.</p>
 
-<p>Please read the candidates' statements and responses to queries carefully
-before voting. Each of the candidates is a respected user, who has contributed
-considerable time and effort to making these projects a welcoming environment
-committed to the pursuit and free distribution of human knowledge.</p>
+<p>Please read the candidates' statements and responses to queries carefully before voting.
+Each of the candidates is a respected user, who has contributed considerable time and effort to making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.</p>
 
-<p>Please rank the candidates according to your preferences by filling in a number 
-beside the box (1 = favourite candidate, 2 = second favourite...). You may give the 
-same preference to more than one candidate and may keep candidates unranked. It is 
-presumed that you prefers all ranked candidates to all not ranked candidates and 
-that you are indifferent between all not ranked candidates.</p>
+<p>Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite...).
+You may give the same preference to more than one candidate and may keep candidates unranked.
+It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
 
 <p>The winner of the election will be calculated using the Schulze method.</p>
 
