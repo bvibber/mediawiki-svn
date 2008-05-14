@@ -44,22 +44,20 @@ if( !isset($wgWhiteListRestrictedGroup))
 	$wgWhiteListRestrictedGroup = 'restricted';
 if( !isset($wgWhiteListManagerGroup))
 	$wgWhiteListManagerGroup = 'manager';
-if( !isset($wgWhiteListRestrictedRight))
-	$wgWhiteListRestrictedRight = 'restricttowhitelist';
-if( !isset($wgWhiteListManagerRight))
-	$wgWhiteListManagerRight = 'editwhitelist';
 
 # Define groups and rights
 if( !isset($wgGroupPermissions['*']['usewhitelist']))
 	$wgGroupPermissions['*']['usewhitelist'] = false;
 if( !isset($wgGroupPermissions[$wgWhiteListRestrictedGroup]['edit']))
 	$wgGroupPermissions[$wgWhiteListRestrictedGroup]['edit'] = true;
-if( !isset($wgGroupPermissions[$wgWhiteListRestrictedGroup][$wgWhiteListRestrictedRight]))
-	$wgGroupPermissions[$wgWhiteListRestrictedGroup][$wgWhiteListRestrictedRight] = true;
-if( !isset($wgGroupPermissions['*'][$wgWhiteListManagerRight]))
-	$wgGroupPermissions['*'][$wgWhiteListManagerRight] = false;
-if( !isset($wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRight]))
-	$wgGroupPermissions[$wgWhiteListManagerGroup][$wgWhiteListManagerRight] = true;
+if( !isset($wgGroupPermissions[$wgWhiteListRestrictedGroup]['restricttowhitelist']))
+	$wgGroupPermissions[$wgWhiteListRestrictedGroup]['restricttowhitelist'] = true;
+if( !isset($wgGroupPermissions['*']['editwhitelist']))
+	$wgGroupPermissions['*']['editwhitelist'] = false;
+if( !isset($wgGroupPermissions[$wgWhiteListManagerGroup]['editwhitelist']))
+	$wgGroupPermissions[$wgWhiteListManagerGroup]['editwhitelist'] = true;
+$wgAvailableRights[] = 'editwhitelist';
+$wgAvailableRights[] = 'restricttowhitelist';
 
 # Define default global overrides
 if( !isset($wgWhitelistOverride['always']['read']) )

@@ -38,6 +38,9 @@ $wgGroupPermissions['user']['vote'] = true;
  */
 $wgGroupPermissions['bureaucrat']['voteadmin'] = true;
 
+$wgAvailableRights[] = 'vote';
+$wgAvailableRights[] = 'voteadmin';
+
 /**
  * Extension setup function
  */

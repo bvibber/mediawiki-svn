@@ -45,13 +45,11 @@ class WhitelistExec
 	 */
 	static function CheckWhitelist(&$title, &$wgUser, $action, &$result) {
 
-		global $wgWhiteListRestrictedRight;
-
 		$override = WHITELIST_NOACTION;
 
 
 		/* Bail if the user isn't restricted.... */
-		if( !in_array($wgWhiteListRestrictedRight, $wgUser->getRights()) ) {
+		if( !in_array('restricttowhitelist', $wgUser->getRights()) ) {
 			$result = null; /* don't care */
 			return true; /* Later functions can override */
 		}

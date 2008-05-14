@@ -6,6 +6,7 @@
 	
 	$wgAvailableRights[] = 'exporttsv';
 	$wgGroupPermissions['bureaucrat']['exporttsv'] = true;
+	$wgAvailableRights[] = 'exporttsv';
 	$wgExtensionFunctions[] = 'wfSpecialExportTSV';
 
 	function wfSpecialExportTSV() {

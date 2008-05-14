@@ -34,6 +34,7 @@ $wgBoardVoteDBServer = $wgDBserver;
 
 # Vote admins
 $wgGroupPermissions['boardvote']['boardvote'] = true;
+$wgAvailableRights[] = 'boardvote';
 
 $wgExtensionMessagesFiles['BoardVote'] = dirname(__FILE__) . '/BoardVote.i18n.php';
 

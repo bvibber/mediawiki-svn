@@ -49,9 +49,7 @@ require_once("$IP/includes/SpecialPage.php");
 class WhitelistEdit extends SpecialPage
 {
     function WhitelistEdit() {
-        global $wgWhiteListManagerRight;
-
-        SpecialPage::SpecialPage("WhitelistEdit", $wgWhiteListManagerRight);
+        SpecialPage::SpecialPage("WhitelistEdit", 'editwhitelist');
 
         # the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
         # so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
@@ -625,9 +623,7 @@ function wfAddRestrictedPagesTab(&$personal_urls, $wgTitle)
 class WhiteList extends SpecialPage
 {
     function WhiteList() {
-        global $wgWhiteListRestrictedRight;
-
-        SpecialPage::SpecialPage("WhiteList", $wgWhiteListRestrictedRight);
+        SpecialPage::SpecialPage("WhiteList", 'restricttowhitelist');
 
         # the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
         # so, to make this work with multiple versions of MediaWiki, let's load the messages nicely

@@ -39,6 +39,8 @@ $wgGroupPermissions['todo']['todo'] = true;
 $wgGroupPermissions['*']['todosubmit'] = true;
 $wgGroupPermissions['user']['todosubmit'] = true;
 $wgGroupPermissions['sysop']['todosubmit'] = true;
+$wgAvailableRights[] = 'todo';
+$wgAvailableRights[] = 'todosubmit';
 
 function todoSetup() {
 	wfLoadExtensionMessages( 'todoAddTab' );

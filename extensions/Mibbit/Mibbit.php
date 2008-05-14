@@ -42,3 +42,4 @@ $wgMibbitAllowAnonymous  = true;
 $wgGroupPermissions[ '*'     ][ 'mibbit' ] = false;
 $wgGroupPermissions[ 'user'  ][ 'mibbit' ] = true;
 $wgGroupPermissions[ 'sysop' ][ 'mibbit' ] = true;
+$wgAvailableRights[] = 'mibbit';

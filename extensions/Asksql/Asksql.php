@@ -36,6 +36,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $wgAllowSysopQueries = true;
 $wgSqlLogFile = "{$wgUploadDirectory}/sqllog_mFhyRe6";
+$wgAvailableRights[] = 'asksql';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Asksql'] = $dir . 'Asksql.i18n.php';

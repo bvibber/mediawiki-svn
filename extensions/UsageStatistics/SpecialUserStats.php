@@ -23,6 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 
 $wgUserStatsGlobalRight = 'viewsystemstats';
+$wgAvailableRights[] = 'viewsystemstats';
 
 # define the permissions to view systemwide statistics
 $wgGroupPermissions['*'][$wgUserStatsGlobalRight] = false;

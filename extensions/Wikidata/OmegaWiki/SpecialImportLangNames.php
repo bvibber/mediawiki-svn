@@ -4,6 +4,7 @@
 	require_once("Wikidata.php");
 	$wgAvailableRights[] = 'languagenames';
 	$wgGroupPermissions['bureaucrat']['languagenames'] = true;
+	$wgAvailableRights[] = 'languagenames';
 
 	$wgExtensionFunctions[] = 'wfSpecialImportLangNames';
 	function wfSpecialImportLangNames() {

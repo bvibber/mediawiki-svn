@@ -32,6 +32,7 @@ $wgGroupPermissions['steward'   ]['makesysop' ] = true;
 $wgGroupPermissions['steward'   ]['userrights'] = true;
 $wgGroupPermissions['bureaucrat']['makesysop' ] = true;
 $wgGroupPermissions['bureaucrat']['userrights'] = false;
+$wgAvailableRights[] = 'makesysop';
 
 # Register special page
 $wgSpecialPages['Makesysop'] = 'MakesysopPage';

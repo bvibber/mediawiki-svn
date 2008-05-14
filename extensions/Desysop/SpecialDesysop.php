@@ -32,6 +32,7 @@ $wgExtensionMessagesFiles['Desysop'] = dirname(__FILE__) . '/SpecialDesysop.i18n
 $wgAlternateMaster = array();
 
 $wgGroupPermissions['bureaucrat']['desysop'] = true;
+$wgAvailableRights[] = 'desysop';
 
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {

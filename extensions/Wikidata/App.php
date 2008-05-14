@@ -51,6 +51,8 @@ $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
 #$wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
 $wgGroupPermissions['wikidata-omega']['wikidata-copy']=true;
+$wgAvailableRights[] = 'editwikidata-uw';
+$wgAvailableRights[] = 'wikidata-copy';
 
 # The permission needed to do ...
 $wgCommunity_dc="uw";

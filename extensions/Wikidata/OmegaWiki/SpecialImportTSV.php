@@ -6,6 +6,7 @@
 	
 	$wgAvailableRights[] = 'importtsv';
 	$wgGroupPermissions['bureaucrat']['importtsv'] = true;
+	$wgAvailableRights[] = 'importtsv';
 	$wgExtensionFunctions[] = 'wfSpecialImportTSV';
 
 	function wfSpecialImportTSV() {

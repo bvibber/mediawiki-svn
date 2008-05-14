@@ -25,6 +25,7 @@ foreach( $wgGroupPermissions as $key => $value ) {
 		$wgGroupPermissions[$key]['resign'] = true;
 	}
 }
+$wgAvailableRights[] = 'resign';
 
 # Add log action
 $wgLogActions['rights/resign'] = 'resign-logentry';
