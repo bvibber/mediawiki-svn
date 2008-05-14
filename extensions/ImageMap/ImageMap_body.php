@@ -70,7 +70,8 @@ class ImageMap {
 				$imageHTML = $parser->makeImage( $imageTitle, $options );
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
-				$domDoc = DOMDocument::loadXML( $imageHTML );
+				$domDoc = new DOMDocument();
+				$domDoc->loadXML( $imageHTML );
 				$xpath = new DOMXPath( $domDoc );
 				$imgs = $xpath->query( '//img' );
 				if ( !$imgs->length ) {
