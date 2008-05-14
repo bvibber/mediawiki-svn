@@ -11,7 +11,7 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Icon',
-	'version'        => '1.4.1',
+	'version'        => '1.5',
 	'author'         => 'Tim Laqua',
 	'description'    => 'Allows you to use images as icons and icon links',
 	'descriptionmsg' => 'icon-desc',
@@ -47,10 +47,13 @@ function efIcon_LanguageGetMagic( &$magicWords, $langCode ) {
 
 function efIcon_Render(&$parser, $img, $alt=null, $width=null, $page=null) {
 	$ititle = Title::newFromText( $img );
-
+	
 	// this really shouldn't happen... not much we can do here.
 	if (!is_object($ititle))
 		return '';
+
+	// add to parser image collection so it this shows up on the image's links/what links here voodoo
+	$parser->mOutput->addImage($ititle->getDBkey());
 
 	// check if we are dealing with an InterWiki link
 	if ( $ititle->isLocal() ) {
