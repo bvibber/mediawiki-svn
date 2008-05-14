@@ -30,6 +30,12 @@ $wgLogHeaders['newusers']          = 'newuserlogpagetext';
 $wgLogActions['newusers/newusers'] = 'newuserlogentry';
 $wgLogActions['newusers/create']   = 'newuserlog-create-entry';
 $wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
+$wgLogActions['newusers/autocreate'] = 'newuserlog-autocreate-entry';
+# Run this hook on new account creation
+$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
+$wgHooks['AuthPluginAutoCreate'][] = 'wfNewuserlogAutoCreate';
+# Run this hook on Special:Log
+$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
 # Run this hook on new account creation
 $wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
@@ -38,7 +44,6 @@ $wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
 function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	global $wgUser, $wgContLang, $wgVersion;
-	wfLoadExtensionMessages( 'Newuserlog' );
 
 	if( is_null( $user ) ) {
 		// Compatibility with old versions which didn't pass the parameter
@@ -46,8 +51,6 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	}
 
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
-	$contribs = wfMsgForContent( 'contribslink' );
-	$block = wfMsgForContent( 'blocklink' );
 
 	if( $user->getName() == $wgUser->getName() ) {
 		$message = '';
@@ -58,6 +61,9 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 		// For compatability: From 1.10alpha the 'user tools' are used at special:log
 		// see bug 4756: Long usernames break block link in new user log entries
 
+		wfLoadExtensionMessages( 'Newuserlog' );
+		$contribs = wfMsgForContent( 'contribslink' );
+		$block = wfMsgForContent( 'blocklink' );
 		$action = 'create2';
 		$message = '';
 		if ( version_compare( $wgVersion, '1.10alpha', '>=' ) ) {
@@ -73,6 +79,12 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( $action, $user->getUserPage(), $message, array( $user->getId() ) );
 
+	return true;
+}
+
+function wfNewuserlogAutoCreate( $user ) {
+	$log = new LogPage( 'newusers' );
+	$log->addEntry( 'autocreate', $user->getUserPage(), '', array( $user->getId() ) );
 	return true;
 }
 
