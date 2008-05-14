@@ -106,11 +106,12 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 		$this->mPosted = $wgRequest->wasPosted();
 		if ( method_exists( $wgRequest, 'getArray' ) ) {
-			$this->mVotedFor = $wgRequest->getArray( "votedfor", array() );
+			$this->mVotedFor = $wgRequest->getArray( "candidate", array() );
 		} else {
-			$this->mVotedFor = $wgRequest->getVal( "votedfor", array() );
+			$this->mVotedFor = $wgRequest->getVal( "candidate", array() );
 		}
 		$this->mId = $wgRequest->getInt( "id", 0 );
+		$this->mValidVote = $this->mPosted ? $this->validVote() : false;
 
 		$this->mHasVoted = $this->hasVoted();
 
@@ -175,7 +176,12 @@ class BoardVotePage extends UnlistedSpecialPage {
 				if ( !$this->isQualified( $this->mUserKey ) ) {
 					$this->notQualified();
 				} elseif ( $this->mPosted ) {
-					$this->logVote();
+					if ( $this->mValidVote ) {
+						$this->logVote();
+					} else {
+						$this->displayInvalidVoteError();
+						$this->displayVote();
+					}
 				} else {
 					$this->displayVote();
 				}
@@ -287,10 +293,10 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 		global $wgUser;
 		$token = htmlspecialchars( $wgUser->editToken() );
-		$text .= "<tr><td>&nbsp;</td><td>
-		  <input name=\"submit\" type=\"submit\" value=\"$ok\">
-		  <input type='hidden' name='edit_token' value=\"{$token}\" />
-		  </td></tr></table></form>";
+		$text .= "<tr><td>&nbsp;</td>
+		  <td><input name=\"submit\" type=\"submit\" value=\"$ok\">
+		  <input type='hidden' name='edit_token' value=\"{$token}\" /></td>
+		  </tr></table></form>";
 		$text .= wfMsg( "boardvote_footer" );
 		$wgOut->addHTML( $text );
 	}
@@ -298,7 +304,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 	function voteEntry( $index, $candidate ) {
 		return "
 		<tr><td align=\"right\">
-		  <input type=\"checkbox\" name=\"votedfor[{$index}]\" value=\"1\">
+		  <input type=\"text\" maxlength=\"2\" size=\"2\" name=\"candidate[{$index}]\" />
 		</td><td align=\"left\">
 		  $candidate
 		</td></tr>";
@@ -325,17 +331,32 @@ class BoardVotePage extends UnlistedSpecialPage {
 			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
 		) );
 	}
+	
+	function displayInvalidVoteError() {
+		global $wgOut;
+		$wgOut->addWikiText( wfMsg( "boardvote_invalidentered" ) );
+	}
 
 	function getRecord() {
 		global $wgBoardCandidates;
 
-		$record =
-		  "I voted for: " . implode( ", ", wfArrayLookup( $wgBoardCandidates, $this->mVotedFor ) ). "\n";
+		$record = "I prefer: ";
+	  	$num_candidates = count( $wgBoardCandidates );
+		$cnt = 0;
+		foreach ( $this->mVotedFor as $i => $rank ) {
+			$cnt++;
+			
+			$record .= $wgBoardCandidates[ $i ] . "[";
+			$record .= ( $rank == '' ) ? 100 : $rank;
+			$record .= "]";
+			$record .= ( $cnt != $num_candidates ) ? ", " : "";
+		}
+		$record .= "\n";
 
 		// Pad it out with spaces to a constant length, so that the encrypted record is secure
-		$padLength = array_sum( array_map( 'strlen', $wgBoardCandidates ) ) + count( $wgBoardCandidates ) * 2 + 20;
-		//           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^
-		//               length of the candidate names added together            room for separators           extra
+		$padLength = array_sum( array_map( 'strlen', $wgBoardCandidates ) ) +     $num_candidates * 8    + 20;
+		//           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^
+		//               length of the candidate names added together         room for rank & separators   extra
 
 		$record = str_pad( $record, $padLength );
 		return $record;
@@ -514,5 +535,17 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 		$title = Title::makeTitle( NS_SPECIAL, "Boardvote" );
 		$wgOut->redirect( $title->getFullURL( "action=list" ) );
+	}
+	
+	function validVote() {
+		foreach ( $this->mVotedFor as $rank ) {
+			if ( $rank != '' ) {
+				if ( !ereg( "^[1-9]\d?$", $rank ) ) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 }

@@ -25,16 +25,21 @@ before voting. Each of the candidates is a respected user, who has contributed
 considerable time and effort to making these projects a welcoming environment
 committed to the pursuit and free distribution of human knowledge.</p>
 
-<p>You may vote for as many candidates as you want. The
-candidate with the most votes in each position will be declared the winner of that
-position. In the event of a tie, a run-off election will be held.</p>
+<p>Please rank the candidates according to your preferences by filling in a number 
+beside the box (1 = favourite candidate, 2 = second favourite...). You may give the 
+same preference to more than one candidate and may keep candidates unranked. It is 
+presumed that you prefers all ranked candidates to all not ranked candidates and 
+that you are indifferent between all not ranked candidates.</p>
+
+<p>The winner of the election will be calculated using the Schulze method.</p>
 
 <p>For more information, see:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Candidates</a></li></ul>",
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Candidates</a></li>
+<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze method</a></li></ul>",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
-your vote using the form below. Please check the boxes next to each candidate whom
-you approve of.</p>",
+your vote using the form below. Please rank the candidates in your order of preferences, whereby a smaller number 
+indicate a higher preference for that particular candidate.</p>",
 	'boardvote_footer'        => "&nbsp;", # Do not translate this
 	'boardvote_entered'       => "Thank you, your vote has been recorded.
 
@@ -51,6 +56,8 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]",
+	'boardvote_invalidentered'=> "<p><strong>Error</strong>: candidate preference must be expressed in positive whole number only (1, 2, 3, ....), or 
+left empty.</p>",
 	'boardvote_nosession'     => "Your Wikimedia user ID could not be determined.
 Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:Boardvote]]</nowiki>.
 You must use an account with at least $1 contributions before $2, and have made at least $3 contributions between $4 and $5.",
@@ -73,7 +80,7 @@ $1 for the encrypted data.</p>",
 	'boardvote_unstrike'      => "Unstrike",
 	'boardvote_needadmin'     => "Only election administrators can perform this operation.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:
-Vote open until July 12",
+Vote open until June 22",
 	'boardvote_notstarted'    => 'Voting has not yet started',
 	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
