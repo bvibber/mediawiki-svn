@@ -8,15 +8,14 @@
 $messages = array();
 
 $messages['en'] = array(
-	'newuserlogpage'           => 'User creation log',
-	'newuserlogpagetext'       => 'This is a log of user creations',
-	'newuserlog-desc'          => 'Adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
-	'newuserlogentry'          => '', # For compatibility, do not translate this
-	'newuserlog-byemail'       => 'password sent by e-mail',
-	'newuserlog-create-entry'  => 'New user',
-	'newuserlog-create2-entry' => 'created account for $1',
+	'newuserlogpage'              => 'User creation log',
+	'newuserlogpagetext'          => 'This is a log of user creations',
+	'newuserlog-desc'             => 'Adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
+	'newuserlogentry'             => '', # For compatibility, do not translate this
+	'newuserlog-byemail'          => 'password sent by e-mail',
+	'newuserlog-create-entry'     => 'New user',
+	'newuserlog-create2-entry'    => 'created account for $1',
 	'newuserlog-autocreate-entry' => 'Account created automatically',
-	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # For compatibility <= MW 1.9, do not translate this
 );
 
 $messages['af'] = array(

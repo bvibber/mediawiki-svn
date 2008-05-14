@@ -27,7 +27,7 @@ $wgExtensionMessagesFiles['Newuserlog'] = dirname(__FILE__) . '/Newuserlog.i18n.
 $wgLogTypes[]                      = 'newusers';
 $wgLogNames['newusers']            = 'newuserlogpage';
 $wgLogHeaders['newusers']          = 'newuserlogpagetext';
-$wgLogActions['newusers/newusers'] = 'newuserlogentry';
+$wgLogActions['newusers/newusers'] = 'newuserlogentry'; // For compatibility with older log entries
 $wgLogActions['newusers/create']   = 'newuserlog-create-entry';
 $wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
 $wgLogActions['newusers/autocreate'] = 'newuserlog-autocreate-entry';
@@ -58,22 +58,12 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	} else {
 		// Links not necessary for self-creations, they will appear already in
 		// recentchanges and special:log view for the creating user.
-		// For compatability: From 1.10alpha the 'user tools' are used at special:log
-		// see bug 4756: Long usernames break block link in new user log entries
 
 		wfLoadExtensionMessages( 'Newuserlog' );
 		$contribs = wfMsgForContent( 'contribslink' );
 		$block = wfMsgForContent( 'blocklink' );
 		$action = 'create2';
-		$message = '';
-		if ( version_compare( $wgVersion, '1.10alpha', '>=' ) ) {
-			if( $byEmail ) {
-				$message = wfMsgForContent( 'newuserlog-byemail' );
-			}
-		} else {
-			$message = wfMsgForContent( 'newuserlog-create-text',
-				$user->getName(), $talk, $contribs, $block );
-		}
+		$message = $byEmail ? wfMsgForContent( 'newuserlog-byemail' ) : '';
 	}
 
 	$log = new LogPage( 'newusers' );
