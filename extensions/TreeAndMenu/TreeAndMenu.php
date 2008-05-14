@@ -10,7 +10,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.0, 2008-04-17');
+define('TREEANDMENU_VERSION','1.0.1, 2008-05-15');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -159,17 +159,19 @@ class TreeAndMenu {
 			}
 
 			# PASS-2: build the JavaScript and replace into $text
-			$parents = array(); # parent node for each depth
-			$parity  = array(); # keep track of odd/even rows for each depth
-			$last    = -1;
-			$nodes   = '';
-			foreach ($rows as $node => $info) {
+			$parents   = array(); # parent node for each depth
+			$parity    = array(); # keep track of odd/even rows for each depth
+			$node      = 0;
+			$last      = -1;
+			$nodes     = '';
+			foreach ($rows as $info) {
 				$node++;
 				list($id,$depth,$icon,$item,$start) = $info;
 				$args  = $this->args[$id];
 				$type  = $args['type'];
-				if (!isset($args['root'])) $args['root'] = ''; # tmp - need to handle rootless trees
 				$end   = $node == count($rows) || $rows[$node][4];
+				if (!isset($args['root'])) $args['root'] = ''; # tmp - need to handle rootless trees
+				if ($start) $node = 1;
 		
 				# Append node script for this row
 				if ($depth > $last) $parents[$depth] = $node-1;
@@ -200,7 +202,6 @@ class TreeAndMenu {
 								$$pos .= "<a href=\"javascript: {$this->uniqname}$id.{$arg}All();\">&nbsp;{$arg} all</a>&nbsp;";
 						if ($top) $top = "<p>&nbsp;$top</p>";				
 						if ($bottom) $bottom = "<p>&nbsp;$bottom</p>";
-						if ($root) $add = "tree.add(0,-1,'$root');"; 
 						$html = "$top<div class='$class' id='$id'>
 								<script type=\"$wgJsMimeType\">
 									// TreeAndMenu{$this->version}
