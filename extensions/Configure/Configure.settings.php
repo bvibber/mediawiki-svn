@@ -498,6 +498,7 @@ $settings = array(
 			'wgExportMaxHistory' => 'int',
 			'wgImportTargetNamespace' => 'text',
 			'wgLogActions' => 'array',
+			'wgLogActionsHandlers' => 'array',
 			'wgLogHeaders' => 'array',
 			'wgLogNames' => 'array',
 			'wgLogRestrictions' => 'array',
@@ -858,6 +859,7 @@ $arrayDefs = array(
 	'wgBrowserBlackList' => 'simple',
 # Special pages
 	'wgLogActions' => 'assoc',
+	'wgLogActionsHandlers' => 'assoc',
 	'wgLogHeaders' => 'assoc',
 	'wgLogNames' => 'assoc',
 	'wgLogRestrictions' => 'assoc',
@@ -909,6 +911,7 @@ $notEditableSettings = array(
 	'wgInputEncoding', // Too old
 	'wgJobClasses',
 	'wgLogActions',
+	'wgLogActionsHandlers',
 	'wgLogHeaders',
 	'wgLogNames',
 	'wgLogTypes',
