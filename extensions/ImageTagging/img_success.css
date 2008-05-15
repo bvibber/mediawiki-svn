@@ -8,8 +8,8 @@ body {
     position: relative;
     border:1px solid #bbbbbb;
     width:450px;
-    height: 32px; 
-    padding:5px;  
+    height: 32px;
+    padding:5px;
 }
 
 #alignControls {
@@ -47,7 +47,7 @@ img.alignControl:hover {
     position: absolute;
     top: 10px;
     left: 6px;
-} 
+}
 
 #thumbSizeValue {
     position: absolute;
@@ -60,7 +60,7 @@ img.alignControl:hover {
 	padding:5px;
 	width: 450px;
 }
-     
+
 
 html>body #slider { left:44px; }
 #wrapper {
