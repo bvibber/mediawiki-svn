@@ -11,9 +11,10 @@ $messages = array();
  * @author Ross McClure
  */
 $messages['en'] = array(
-	'forum_by' => 'by',
-	'forum_edited' => ' - Last edited',
-	'forum_never' => 'Never',
-	'forum_toofew' => 'DPL Forum: Too few categories!',
-	'forum_toomany' => 'DPL Forum: Too many categories!'
+	'dplforum-desc'    => 'DPL-based forum extension',
+	'dplforum-by'      => 'by',
+	'dplforum-edited'  => ' - Last edited',
+	'dplforum-never'   => 'Never',
+	'dplforum-toofew'  => 'DPL Forum: Too few categories!',
+	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
