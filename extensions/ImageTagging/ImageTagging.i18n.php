@@ -12,9 +12,9 @@ $messages = array();
  * @author Tristan Harris
  */
 $messages['en'] = array(
-	'taggedimages'                          => 'Tagged Images',
+	'taggedimages'                          => 'Tagged images',
 	'imagetagging-desc'                     => 'Lets a user select regions of an embedded image and associate a page with that region',
-	'imagetagging-addimagetag'              => 'Tag this Image',
+	'imagetagging-addimagetag'              => 'Tag this image',
 	'imagetagging-article'                  => 'Page:',
 	'imagetagging-articletotag'             => 'Page to tag',
 	'imagetagging-imghistory'               => 'History',
