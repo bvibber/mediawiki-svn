@@ -576,7 +576,7 @@ END
 	<li><a href="javascript:addImageTags()">' . wfMsgHtml( 'imagetagging-addimagetag' ) . '</a>'. wfMsg('imagetagging-new') .'</li>'
 	. '</ul>';
 
-			$r .= '<div id="tagStatusDiv" style="margin: 5px 5px 10px 5px; padding: 10px; border: solid 1px #ffe222; background: #fffbe2; display: none;"><table style="background-color: #fffbe2;"><tr><td width="450" height="30" align="center" style="padding-left: 20px;"><img src="/skins/common/progress-wheel.gif" id="progress_wheel" style="display:none;"><div id="tagging_message" style="background: #fffbe2;">' . wfMsgHtml('imagetagging-tagging-instructions') . '</td><td valign="middle"><input type="button" onclick="doneAddingTags();" id="done_tagging" name="done_tagging" value="' . wfMsgHtml('imagetagging-done-button') . '" /></div></td></tr></table></div>';
+			$r .= '<div id="tagStatusDiv" style="margin: 5px 5px 10px 5px; padding: 10px; border: solid 1px #ffe222; background: #fffbe2; display: none;"><table style="background-color: #fffbe2;"><tr><td width="450" height="30" align="center" style="padding-left: 20px;"><img src="/extensions/ImageTagging/progress-wheel.gif" id="progress_wheel" style="display:none;"><div id="tagging_message" style="background: #fffbe2;">' . wfMsgHtml('imagetagging-tagging-instructions') . '</td><td valign="middle"><input type="button" onclick="doneAddingTags();" id="done_tagging" name="done_tagging" value="' . wfMsgHtml('imagetagging-done-button') . '" /></div></td></tr></table></div>';
 
 			$r .= "<div style='position: absolute; font: verdana, sans-serif; top: 10px; left: 10px; display: none; width:284px; height:24px; padding: 4px 6px; background-color: #eeeeee; color: #444444; border: 2px solid #555555; z-index:2;' id='tagEditField'>
 
