@@ -5,7 +5,6 @@
  * @addtogroup Extensions
  */
 
-
 $messages = array();
 
 /** English
@@ -13,6 +12,8 @@ $messages = array();
  * @author Tristan Harris
  */
 $messages['en'] = array(
+	'taggedimages'                          => 'Tagged Images',
+	'imagetagging-desc'                     => 'Lets a user select regions of an embedded image and associate a page with that region',
 	'imagetagging-addimagetag'              => 'Tag this Image',
 	'imagetagging-article'                  => 'Page:',
 	'imagetagging-articletotag'             => 'Page to tag',
@@ -42,5 +43,4 @@ Please wait for the existing action to complete.',
 	'imagetagging-taggedimages-title'       => 'Images of "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Displaying $1 - $2 of $3 images of "$4"',
 	'imagetagging-taggedimages-total'       => '"$1"; image(s) total',
-	'imagetagging-taggedimages'             => 'Tagged Images',
 );

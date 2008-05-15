@@ -7,8 +7,6 @@
 
 define('TAGGEDIMGS_PER_PAGE', 12);
 
-$wgSpecialPages['TaggedImages'] = 'TaggedImages';
-
 /**
  * Photos tagged gallery
  *
