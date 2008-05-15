@@ -98,22 +98,17 @@
 
 <h2>Odběr</h2>
 <ul>
-	<li><a href="/atom.xml">Atom</a></li>
-	<li><a href="/rss10.xml">RSS 1.0</a></li>
-	<li><a href="/rss20.xml">RSS 2.0</a></li>
+	<li><a href="/atom.xml" type="application/atom+xml">Atom</a></li>
+	<li><a href="/rss10.xml" type="application/rss+xml">RSS 1.0</a></li>
+	<li><a href="/rss20.xml" type="application/rss+xml">RSS 2.0</a></li>
 </ul>
 
 <h2>O&nbsp;Planetě Wikimedia</h2>
 <p>
-<i>Planeta Wikimedia je a combined view on what Wikimedia project participants have to say in their blogs about wikis. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Více informací… (anglicky)</a></i>
+<i>Planeta Wikimedia je sdružený přehled toho, co účastníci projektů nadace Wikimedia napsali na svých blozích o&nbsp;různých wiki. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Více informací… (anglicky)</a></i>
 </p>
 
 <h2>Účastníci</h2>
-<p>
-	<a href="/foafroll.xml"><abbr title="Friend of a Friend">FOAF</abbr></a> •
-	<a href="/opml.xml"><abbr titile="Outline Processor Markup Language">OPML</abbr></a>
-</p>
-<hr>
 <ul>
 <TMPL_LOOP Channels>
 	<li>
@@ -121,10 +116,15 @@
 	</li>
 </TMPL_LOOP>
 </ul>
+<hr>
+<p>
+	<a href="/foafroll.xml" type="application/rdf+xml"><abbr title="Friend of a Friend">FOAF</abbr></a> •
+	<a href="/opml.xml" type="application/xml"><abbr title="Outline Processor Markup Language">OPML</abbr></a>
+</p>
 
 <p>
 <strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/cs">Přidejte svůj blog</a></strong><br>
-<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">Požádejte o&nbsp;nový jazyk</a>
+<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language" hreflang="en">Požádejte o&nbsp;nový jazyk</a>
 </p>
 
 <p>
