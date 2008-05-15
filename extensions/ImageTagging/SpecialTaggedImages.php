@@ -7,38 +7,22 @@
 
 define('TAGGEDIMGS_PER_PAGE', 12);
 
-
-$wgExtensionFunctions[] = 'wfSpecialTaggedImages';
-
-function wfSpecialTaggedImages() {
-	global $wgMessageCache;
-
-	$wgMessageCache->addMessage('taggedimages_title', 'Images of \'$1\'');
-	$wgMessageCache->addMessage('taggedimages_total', '&#8220;$1&#8221; image(s) total');
-	$wgMessageCache->addMessage('taggedimages_displaying', 'Displaying $1 - $2 of $3 images of &#8220;$4&#8221;');
-	$wgMessageCache->addMessage('taggedimages', 'Tagged Images');
-
-	SpecialPage::addPage( new TaggedImages );
-}
+$wgSpecialPages['TaggedImages'] = 'TaggedImages';
 
 /**
  * Photos tagged gallery
  *
  * Add images to the gallery using add(), then render that list to HTML using toHTML().
- *
- * @package MediaWiki
  */
-class TaggedImages extends SpecialPage
-{
+class TaggedImages extends SpecialPage {
+
     var $mQuery, $mImages;
 
-    /**
+ /**
      * Create a new tagged images object.
      */
-    function TaggedImages() {
-	global $wgLang, $wgAllowRealName;
-        global $wgRequest;
-        global $wgOut;
+	function TaggedImages() {
+	global $wgLang, $wgAllowRealName, $wgRequest, $wgOut;
 
 	$wgOut->addScript("<style type=\"text/css\">/*<![CDATA[*/ @import \"$GLOBALS[wgScriptPath]/extensions/ImageTagging/img_tagging.css?$GLOBALS[wgStyleVersion]\"; /*]]>*/</style>\n");
 
@@ -49,16 +33,15 @@ class TaggedImages extends SpecialPage
 			$this->mStartPage = 0;
 		$this->mImages = array();
 		
-        SpecialPage::SpecialPage("TaggedImages");
+        SpecialPage::SpecialPage('TaggedImages');
     }
 	
-    /**
+ /**
      * Start doing stuff
      * @access public
      */
-    function execute() {
-        global $wgDBname;
-	global $wgOut;
+	function execute() {
+	global $wgDBname, $wgOut;
 
 	wfProfileIn( __METHOD__ );
 
@@ -72,12 +55,7 @@ class TaggedImages extends SpecialPage
 		$imagetable = $db->tableName( 'image' );
 		$imagetagstable = $db->tableName( 'imagetags' );
 
-		$SQL = "
-SELECT img_name, img_timestamp
-FROM $imagetable
-WHERE img_name IN
-  (SELECT img_name FROM $imagetagstable $WHERECLAUSE)
-ORDER BY img_timestamp DESC";
+		$SQL = "SELECT img_name, img_timestamp FROM $imagetable WHERE img_name IN (SELECT img_name FROM $imagetagstable $WHERECLAUSE) ORDER BY img_timestamp DESC";
 
 		$SQL = $db->LimitResult($SQL, TAGGEDIMGS_PER_PAGE, $this->mStartPage * TAGGEDIMGS_PER_PAGE);
 
@@ -96,14 +74,14 @@ ORDER BY img_timestamp DESC";
         }
         $db->freeResult($res);
 
-	$wgOut->setPageTitle( wfMsg('taggedimages_title', $this->mQuery ? $this->mQuery : "all" ) );
+	$wgOut->setPageTitle( wfMsg('imagetagging-taggedimages-title', $this->mQuery ? $this->mQuery : "all" ) );
 	$wgOut->setRobotpolicy('noindex,nofollow');
         $wgOut->addHTML($this->toHTML());
 
 	wfProfileOut( __METHOD__ );
     }
 
-    /**
+ /**
      * Add an image to the gallery.
      *
      * @param Image  $image  Image object that is added to the gallery
@@ -113,7 +91,7 @@ ORDER BY img_timestamp DESC";
 	$this->mImages[] = array( &$image, $html );
     }
 
-    /**
+ /**
      * Add an image at the beginning of the gallery.
      *
      * @param Image  $image  Image object that is added to the gallery
@@ -124,7 +102,7 @@ ORDER BY img_timestamp DESC";
     }
 
 
-    /**
+ /**
      * isEmpty() returns true if the gallery contains no images
      */
     function isEmpty() {
@@ -140,7 +118,7 @@ ORDER BY img_timestamp DESC";
 
 	$queryTitle = Title::newFromText($this->mQuery, NS_MAIN);
 
-	$html = wfMsg('taggedimages_displaying', $this->mStartPage*TAGGEDIMGS_PER_PAGE + 1, min(($this->mStartPage+1)*TAGGEDIMGS_PER_PAGE,$this->mCount), $this->mCount, '<a href="' . $queryTitle->getLocalURL() . '">' . $this->mQuery . '</a>');
+	$html = wfMsg('imagetagging-taggedimages-displaying', $this->mStartPage*TAGGEDIMGS_PER_PAGE + 1, min(($this->mStartPage+1)*TAGGEDIMGS_PER_PAGE,$this->mCount), $this->mCount, '<a href="' . $queryTitle->getLocalURL() . '">' . $this->mQuery . '</a>');
 
 	wfProfileOut( __METHOD__ );
 	return $html;
@@ -193,7 +171,7 @@ ORDER BY img_timestamp DESC";
 	return $html;
     }
 
-    /**
+ /**
      * Return a HTML representation of the image gallery
      *
      * For each image in the gallery, display
@@ -263,6 +241,3 @@ ORDER BY img_timestamp DESC";
     }
 
 } //class
-
-
-?>

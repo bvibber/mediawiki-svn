@@ -1,5 +1,12 @@
 <?php
-
+/**
+  * ImageTagging extension by Wikia, Inc.
+  * Lets a user select regions of an embedded image and associate an article with that region
+  *
+  * @author Tristan Harris
+  * @author Tomasz Klim
+  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+  */
 $wgHooks['UnknownAction'][] = 'addTag';
 $wgHooks['UnknownAction'][] = 'removeTag';
 $wgHooks['UnknownAction'][] = 'tagSearch';
@@ -8,32 +15,28 @@ $wgExtensionFunctions[] = 'wfImageTagPageSetup';
 $wgExtensionCredits['other'][] = array(
     'name' => 'Image Tagging',
     'author' => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
-    //'version' => 1.0,
-    'url' => 'http://www.wikia.com/wiki/Help:Image_tagging',
-    'description' => 'Wikia Image Tagging',
+    'version' => 1.0,
+    'url' => 'http://www.mediawiki.org/wiki/Extension:ImageTagging',
+    'description' => 'Lets a user select regions of an embedded image and associate an article with that region',
 );
 
 // other hooks to try: 'ParserAfterTidy', ...
 #$wgHooks['OutputPageBeforeHTML'][] = 'wfCheckArticleImageTags';
 $wgHooks['ArticleFromTitle'][] = 'wfArticleFromTitle';
 
-
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['TaggedImages'] = $dir . 'SpecialTaggedImages.php';
+$wgExtensionMessagesFiles['ImageTagging'] = $dir . 'ImageTagging.i18n.php';
 $wgSpecialPages['TaggedImages'] = 'TaggedImages';
-
-
 
 /********************
  * End Trie Handlers
  ********************/
 
-function wfCheckArticleImageTags($outputPage, $text)
-{
+function wfCheckArticleImageTags($outputPage, $text) {
     global $wgOut, $wgDBname, $wgTitle;
 
-    if ( $outputPage->isArticle() )
-    {
+    if ( $outputPage->isArticle() ) {
         $db =& wfGetDB(DB_SLAVE);
         $res = $db->query("SELECT article_tag, tag_rect, unique_id, COUNT(article_tag) AS count FROM ".
 						  $db->tableName('imagetags').
@@ -60,19 +63,17 @@ function wfCheckArticleImageTags($outputPage, $text)
              font-size:100%;
              text-transform:none;
              white-space:nowrap;" id="coordinates" class="plainlinksneverexpand">
-            ' . wfMsg('imagetag_seemoreimages', $titleText, $o->count) .
+            ' . wfMsg('imagetagging-imagetag-seemoreimages', $titleText, $o->count) .
              '</span></a>'); 
         }
     }
     return true;
 }
 
-
 // TKL 2006-03-07: it doesn't work in new MediaWiki, modification required in includes/Wiki.php (class name change only)
 // $wgNamespaceTemplates[NS_IMAGE] = 'ImageTagPage'; 
 
-function addTag($action, $article)
-{
+function addTag($action, $article) {
     if($action != 'addTag') return true;
 
     global $wgRequest, $wgTitle, $wgDBname, $wgOut, $wgUser;
@@ -91,8 +92,7 @@ function addTag($action, $article)
     $imgName = preg_replace( "/[\"'<>]/", "", $imgName );
 
     $img = Image::newFromName($imgName);
-    if ($img)
-    {
+    if ($img) {
         $imgTitle = $img->getTitle();
 
         wfPurgeTitle($imgTitle);
@@ -113,13 +113,12 @@ function addTag($action, $article)
 
        $logPage = new LogPage( 'tag' );
        $link = basename( $img->title->getLocalURL() );
-       $logComment = "Image [[$link|$imgName]] was tagged to article [[$tagName]] by $userText";
+       $logComment = wfMsg('imagetagging-log-tagged', $link, $imgName, $tagName, $userText);
        $logPage->addEntry( 'tag', $imgTitle, $logComment);
 
 	   $enotif = new EmailNotification;
        $enotif->notifyOnPageChange($wgUser, $imgTitle, wfTimestampNow(), $logComment, false);
-    }
-    else {
+    } else {
         $wgOut->clearHTML();
         $wgOut->addHTML("<!-- ERROR: img named $imgName -->
                         <script type='text/javascript'>
@@ -131,9 +130,7 @@ function addTag($action, $article)
     return false;
 }
 
-
-function removeTag($action, $article)
-{
+function removeTag($action, $article) {
     if ($action != 'removeTag') return true;
 
     global $wgRequest, $wgTitle, $wgOut, $wgDBname, $wgUser;
@@ -152,8 +149,7 @@ function removeTag($action, $article)
     $imgName = preg_replace( "/[\"'<>]/", "", $imgName );
 
     $img = Image::newFromName($imgName);
-    if ($img)
-    {
+    if ($img) {
         $imgTitle = $img->getTitle();
 
         wfPurgeTitle($imgTitle);
@@ -166,13 +162,12 @@ function removeTag($action, $article)
         $wgOut->addHTML( wfGetImageTags($img, $imgName) );
 
         $logPage = new LogPage( 'tag' );
-        $logComment = "Removed tag to article [[$tagName]] by $userText";
+        $logComment = wfMsg('imagetagging-logentry', $tagName, $userText);
         $logPage->addEntry( 'tag', $imgTitle, $logComment);
 
 	   $enotif = new EmailNotification;
        $enotif->notifyOnPageChange($wgUser, $imgTitle, wfTimestampNow(), $logComment, false);
-    }
-    else {
+    } else {
         $wgOut->clearHTML();
         $wgOut->addHTML("<!-- ERROR: img named $imgName -->
                         <script type='text/javascript'>
@@ -184,8 +179,7 @@ function removeTag($action, $article)
     return false;
 }
 
-function tagSearch($action, $article)
-{
+function tagSearch($action, $article) {
   if($action != 'tagSearch') return true;
 
   global $wgRequest, $wgTitle, $wgDBname, $wgOut, $wgUser;
@@ -256,8 +250,8 @@ function wfTagSearchHitXML( $result, $terms ) {
   }
   $sk =& $wgUser->getSkin();
 
-  $contextlines=5;
-  $contextchars=50;
+  $contextlines = 5;
+  $contextchars = 50;
 
   $link = $sk->makeKnownLinkObj( $t );
   $revision = Revision::newFromTitle( $t );
@@ -301,8 +295,7 @@ function wfTagSearchHitXML( $result, $terms ) {
   return "<result>\n<link>{$link}</link>\n<context>{$extract}</context>\n</result>\n";
 }
 
-function wfPurgeTitle($title)
-{
+function wfPurgeTitle($title) {
   global $wgUseSquid;
 
   wfProfileIn( __METHOD__ );
@@ -321,7 +314,6 @@ function wfPurgeTitle($title)
 
   wfProfileOut( __METHOD__ );
 }
-
 
 function wfGetImageTags($img, $imgName) {
     global $wgDBname;
@@ -357,16 +349,16 @@ function wfGetImageTags($img, $imgName) {
 
 	$specialImagesTitle = Title::newFromText("Special:TaggedImages");
 
-        $imagesLink = '<a onmouseover="tagBoxPercent(' . $o->tag_rect . ', false)" onmouseout="hideTagBox()" href="' . $specialImagesTitle->escapeFullURL("q=".$o->article_tag) . '">' . wfMsgHtml('images') . '</a>';
+        $imagesLink = '<a onmouseover="tagBoxPercent(' . $o->tag_rect . ', false)" onmouseout="hideTagBox()" href="' . $specialImagesTitle->escapeFullURL("q=".$o->article_tag) . '">' . wfMsgHtml('imagetagging-images') . '</a>';
 
-        $removeLink = '<a href="#" onclick="removeTag(' . $o->unique_id . ', this, \'' . addslashes( $o->article_tag ) . '\'); return false;">' . wfMsgHtml('removetag') . '</a>';
+        $removeLink = '<a href="#" onclick="removeTag(' . $o->unique_id . ', this, \'' . addslashes( $o->article_tag ) . '\'); return false;">' . wfMsgHtml('imagetagging-removetag') . '</a>';
 
         $html .= $span . $articleLink . ' (' . $imagesLink . ' | ' . $removeLink . ')</span>';
     }
     $db->freeResult($res);
 
     if ( $html )
-        $html = 'In this image: ' . $html;
+        $html = wfMsg('imagetagging-inthisimage', $html);
 
     wfProfileOut( __METHOD__ );
     return $html;
@@ -387,41 +379,24 @@ function wfArticleFromTitle( &$title, &$article ) {
 }
 
 function wfImageTagPageSetup() {
-  global $wgMessageCache,$wgLogTypes;
-  $wgMessageCache->addMessage('addimagetag',"Tag this Image");
-  $wgMessageCache->addMessage('images',"images");
-  $wgMessageCache->addMessage('removetag', "remove tag");
-  $wgMessageCache->addMessage('done_button', "Done Tagging");
-  $wgMessageCache->addMessage('tag_button', "Tag");
-  $wgMessageCache->addMessage('tagcancel_button', "Cancel");
-  $wgMessageCache->addMessage('tagging_instructions', 'Click on people or things in the image to tag them. ');
-  $wgMessageCache->addMessage('addingtag', "Adding tag...");
-  $wgMessageCache->addMessage('removingtag', "removing tag...");
-  $wgMessageCache->addMessage('addtagsuccess', "Added tag.");
-  $wgMessageCache->addMessage('removetagsuccess', "Removed tag.");
-  $wgMessageCache->addMessage('oneactionatatimemessage', "Removed tag.");
-  $wgMessageCache->addMessage('canteditneedloginmessage', "You can't edit this page.  It may be because you need to login to tag images.  Do you want to login now?");
-  $wgMessageCache->addMessage('oneactionatatimemessage', "Sorry, only one tagging action at a time.  Please wait for the existing action to complete.");
-  $wgMessageCache->addMessage('oneuniquetagmessage', "Sorry, this image already has a tag with this name.");
-  $wgMessageCache->addMessage('imagetag_seemoreimages', 'See more images of &#8220;$1&#8221; ($2)');
- 
-  $wgLogTypes[] = 'tag';
+	global $wgLogTypes;
 
-class ImageTagPage extends ImagePage
-{
+	$wgLogTypes[] = 'tag';
+	wfLoadExtensionMessages('ImageTagging');
+
+class ImageTagPage extends ImagePage {
     function openShowImage() {
-        global $wgOut, $wgUser, $wgServer, $wgImageTaggingPath, $wgStyleVersion, $wgJsMimeType, $wgScriptPath;
+        global $wgOut, $wgUser, $wgServer, $wgStyleVersion, $wgJsMimeType, $wgScriptPath;
 
 	wfProfileIn( __METHOD__ );
 
-
-	global $wgJsMimeType, $wgScriptPath ;
+	global $wgJsMimeType, $wgScriptPath;
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/img_tagging.js?$wgStyleVersion\"></script>\n" );
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/json.js?$wgStyleVersion\"></script>\n" );
 
 	$imgName = $this->getTitle()->getText();
 	$wgOut->addHTML("<input type='hidden' value='$imgName' id='imgName' />");
-	$wgOut->addHTML("<input type='hidden' value='$wgScriptPath/extensions/magTagging' id='imgPath' />");
+	$wgOut->addHTML("<input type='hidden' value='$wgScriptPath/extensions/ImageTagging' id='imgPath' />");
 
 	if ( $wgUser->isLoggedIn() )
 		$wgOut->addHTML("<input type='hidden' value='1' id='userLoggedIn'/>");
@@ -584,7 +559,7 @@ END
 
 
 
-  /**
+/**
    * Create the TOC
    *
    * @access private
@@ -597,17 +572,17 @@ END
 
     $r = '<ul id="filetoc">
 <li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
-<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
+<li><a href="#filehistory">' . wfMsgHtml( 'imagetagging-imghistory' ) . '</a></li>
 <li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
       ($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
-<li><a href="javascript:addImageTags()">' . wfMsgHtml( 'addimagetag' ) . '</a><sup><font color=red>New!</font></sup></li>' 
+<li><a href="javascript:addImageTags()">' . wfMsgHtml( 'imagetagging-addimagetag' ) . '</a>'. wfMsg('imagetagging-new') .'</li>' 
 . '</ul>';
 
-    $r .= '<div id="tagStatusDiv" style="margin: 5px 5px 10px 5px; padding: 10px; border: solid 1px #ffe222; background: #fffbe2; display: none;"><table style="background-color: #fffbe2;"><tr><td width="450" height="30" align="center" style="padding-left: 20px;"><img src="/skins/common/progress-wheel.gif" id="progress_wheel" style="display:none;"><div id="tagging_message" style="background: #fffbe2;">' . wfMsgHtml('tagging_instructions') . '</td><td valign="middle"><input type="button" onclick="doneAddingTags();" id="done_tagging" name="done_tagging" value="' . wfMsgHtml('done_button') . '" /></div></td></tr></table></div>';
+    $r .= '<div id="tagStatusDiv" style="margin: 5px 5px 10px 5px; padding: 10px; border: solid 1px #ffe222; background: #fffbe2; display: none;"><table style="background-color: #fffbe2;"><tr><td width="450" height="30" align="center" style="padding-left: 20px;"><img src="/skins/common/progress-wheel.gif" id="progress_wheel" style="display:none;"><div id="tagging_message" style="background: #fffbe2;">' . wfMsgHtml('imagetagging-tagging-instructions') . '</td><td valign="middle"><input type="button" onclick="doneAddingTags();" id="done_tagging" name="done_tagging" value="' . wfMsgHtml('imagetagging-done-button') . '" /></div></td></tr></table></div>';
 
     $r .= "<div style='position: absolute; font: verdana, sans-serif; top: 10px; left: 10px; display: none; width:284px; height:24px; padding: 4px 6px; background-color: #eeeeee; color: #444444; border: 2px solid #555555; z-index:2;' id='tagEditField'>
 
-<span style='position: absolute; left: 4px; top: 6px;'>Article:</span>
+<span style='position: absolute; left: 4px; top: 6px;'>". wfMsg('imagetagging-article') ."</span>
 
 <!-- TAH: don't use the popup just yet
 <select name='tagType'>
@@ -616,10 +591,10 @@ END
 </select> 
 -->";
 
-    $r .= "<input style='position: absolute; left: 189px; top: 6px; width: 39px; height: 20px;' type='submit' name='Tag' value='" . wfMsgHtml('tag_button') . "' onclick='submitTag()'/>";
-    $r .= "<input style='position: absolute; left: 232px; top: 6px; width: 60px; height: 20px;' type='button' name='Cancel' value='" . wfMsgHtml('tagcancel_button') . "' onclick='hideTagBox()'/>";
+    $r .= "<input style='position: absolute; left: 189px; top: 6px; width: 39px; height: 20px;' type='submit' name='". wfMsgHtml('imagetagging-tag-button') ."' value='" . wfMsgHtml('imagetagging-tag-button') . "' onclick='submitTag()'/>";
+    $r .= "<input style='position: absolute; left: 232px; top: 6px; width: 60px; height: 20px;' type='button' name='" . wfMsgHtml('imagetagging-tagcancel-button') . "' value='" . wfMsgHtml('imagetagging-tagcancel-button') . "' onclick='hideTagBox()'/>";
 
-    $r .= "<input type='text' style='position: absolute; left: 46px; top: 6px; background-color:white; width: 140px; height:18px;' name='articleTag' id='articleTag'  value='' title='Article to tag' onkeyup='typeTag(event);' />";
+    $r .= "<input type='text' style='position: absolute; left: 46px; top: 6px; background-color:white; width: 140px; height:18px;' name='articleTag' id='articleTag'  value='' title='". wfMsgHtml('imagetagging-articletotag') ."' onkeyup='typeTag(event);' />";
 
     $r .= '</div>';
 
@@ -630,19 +605,18 @@ END
     // TAH: adding this to grab edit tokens from javascript
     $token = $wgUser->editToken();
     $r .= "<input type=\"hidden\" value=\"$token\" name=\"wpEditToken\" id=\"wpEditToken\" />\n";
-    $r .= "<input type=\"hidden\" id=\"addingtagmessage\" value=\"" . wfMsg('addingtag') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"removingtagmessage\" value=\"" . wfMsg('removingtag') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"addtagsuccessmessage\" value=\"" . wfMsg('addtagsuccess') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"removetagsuccessmessage\" value=\"" . wfMsg('removetagsuccess') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"addingtagmessage\" value=\"" . wfMsg('imagetagging-addingtag') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"removingtagmessage\" value=\"" . wfMsg('imagetagging-removingtag') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"addtagsuccessmessage\" value=\"" . wfMsg('imagetagging-addtagsuccess') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"removetagsuccessmessage\" value=\"" . wfMsg('imagetagging-removetagsuccess') . "\">\n";
 
-    $r .= "<input type=\"hidden\" id=\"oneactionatatimemessage\" value=\"" . wfMsg('oneactionatatimemessage') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"canteditneedloginmessage\" value=\"" . wfMsg('canteditneedloginmessage') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"canteditothermessage\" value=\"" . wfMsg('canteditothermessage') . "\">\n";
-    $r .= "<input type=\"hidden\" id=\"oneuniquetagmessage\" value=\"" . wfMsg('oneuniquetagmessage') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"oneactionatatimemessage\" value=\"" . wfMsg('imagetagging-oneactionatatimemessage') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"canteditneedloginmessage\" value=\"" . wfMsg('imagetagging-canteditneedloginmessage') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"canteditothermessage\" value=\"" . wfMsg('imagetagging-canteditothermessage') . "\">\n";
+    $r .= "<input type=\"hidden\" id=\"oneuniquetagmessage\" value=\"" . wfMsg('imagetagging-oneuniquetagmessage') . "\">\n";
 
     return $r;
   }
 }
 
 }
-?>
