@@ -37,9 +37,6 @@ $wgHooks['AuthPluginAutoCreate'][] = 'wfNewuserlogAutoCreate';
 # Run this hook on Special:Log
 $wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
-# Run this hook on Special:Log
-$wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
-
 function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	global $wgUser, $wgContLang, $wgVersion;
 
@@ -47,6 +44,7 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 		// Compatibility with old versions which didn't pass the parameter
 		$user = $wgUser;
 	}
+	wfLoadExtensionMessages( 'Newuserlog' );
 
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
 
@@ -57,7 +55,6 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 		// Links not necessary for self-creations, they will appear already in
 		// recentchanges and special:log view for the creating user.
 
-		wfLoadExtensionMessages( 'Newuserlog' );
 		$contribs = wfMsgForContent( 'contribslink' );
 		$block = wfMsgForContent( 'blocklink' );
 		$action = 'create2';
@@ -71,6 +68,7 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 }
 
 function wfNewuserlogAutoCreate( $user ) {
+	wfLoadExtensionMessages( 'Newuserlog' );
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( 'autocreate', $user->getUserPage(), '', array( $user->getId() ) );
 	return true;
