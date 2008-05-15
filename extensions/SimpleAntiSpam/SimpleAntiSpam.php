@@ -1,9 +1,9 @@
 <?php
-/*
-* SimpleSpam extension by Ryan Schmidt
-* Adds a simple spam/bot check to forms
-* Does not affect real users in any way/shape/form
-*/
+/**
+  * SimpleSpam extension by Ryan Schmidt
+  * Adds a simple spam/bot check to forms
+  * Does not affect real users in any way/shape/form
+  */
 
 if(!defined('MEDIAWIKI')) {
 	efSimpleAntiSpamInstall();
@@ -19,13 +19,13 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.0',
 );
 
-$wgExtensionMessagesFiles['simpleantispam'] = dirname(__FILE__) . '/SimpleAntiSpam.i18n.php';
+$wgExtensionMessagesFiles['SimpleAntiSpam'] = dirname(__FILE__) . '/SimpleAntiSpam.i18n.php';
 $wgHooks['EditPage::showEditForm:fields'][] = 'efSimpleAntiSpamField';
 $wgHooks['EditPage::attemptSave'][] = 'efSimpleAntiSpamCheck';
 
 //add the form field
 function efSimpleAntiSpamField(&$editpage, &$out) {
-	wfLoadExtensionMessages('simpleantispam');
+	wfLoadExtensionMessages('SimpleAntiSpam');
 	$out->addHTML("<div id=\"antispam-containter\" style=\"display: none;\">
 <label for=\"wpAntispam\">".wfMsgExt('simpleantispam-label', array( 'parseinline' ))."</label> <input type=\"text\" name=\"wpAntispam\" id=\"wpAntispam\" value=\"\" />
 </div>\n");
