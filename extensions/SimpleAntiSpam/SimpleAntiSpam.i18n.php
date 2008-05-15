@@ -19,11 +19,12 @@ Do '''NOT''' fill this in!",
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Nike
  */
 $messages['fi'] = array(
-	'simpleantispam' => 'Muokkauksesi laukaisi mainostentorjujamekanismin',
+	'simpleantispam'       => 'Muokkauksesi laukaisi mainostentorjujamekanismin',
 	'simpleantispam-label' => "Mainostenvastainen tarkistus. '''ÄLÄ''' täytä tätä!",
-	'simpleantispam-desc' => 'Lisää yksinkertaisen mainos/bottitarkistuksen lomakkeisiin',
+	'simpleantispam-desc'  => 'Lisää yksinkertaisen mainos- ja bottitarkistuksen lomakkeisiin.',
 );
 
 /** French (Français)

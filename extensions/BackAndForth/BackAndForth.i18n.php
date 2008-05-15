@@ -67,6 +67,16 @@ $messages['bcl'] = array(
 	'backforth-prev' => 'Nakaagi ($1)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Siebrand
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'backforth-next' => 'Наступны ($1)',
+	'backforth-desc' => 'Дадайце "Наступную" і "Папярэднюю" спасылкі ў альфабэтычным парадку на версе старонкі',
+	'backforth-prev' => 'Папярэдні ($1)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -225,6 +225,14 @@ $messages['te'] = array(
 	'mediafunctions-not-exist'     => '"$1" అనేది లేదు',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'mediafunctions-invalid-title' => '"$1" no\'l xe un titolo valido',
+	'mediafunctions-not-exist'     => '"$1" no l\'esiste mìa',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -117,7 +117,7 @@ $messages['be'] = array(
 	'already_bureaucrat'   => 'Гэты карыстальнік ужо мае статус бюракрата',
 );
 
-$messages['be-x-old'] = array(
+$messages['be-tarask'] = array(
 	'makesysopname'        => 'Імя ўдзельніка/ўдзельніцы:',
 	'makesysop'            => 'Зрабіць удзельніка адміністратарам',
 	'already_sysop'        => 'Гэты ўдзельнік ужо зьяўляецца адміністратарам',
@@ -1219,7 +1219,6 @@ $messages['sd'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Robbot
  */
 $messages['sk'] = array(
 	'makesysoptitle'           => 'Urob z používateľa správcu',

@@ -395,6 +395,16 @@ $messages['lb'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, Feeler bei der Saisie!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'chemicalsources'        => 'രാസ സ്രോതസ്സുകള്‍',
+	'chemFunctions_ListPage' => 'രാസ സ്രോതസ്സുകള്‍',
+	'chemFunctions_Formula'  => 'ഫോര്‍മുല',
+	'chemFunctions_Name'     => 'IUPAC പേര്‌',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -734,6 +744,24 @@ $messages['uk'] = array(
 	'chemFunctions_Formula'            => 'Формула',
 	'chemFunctions_Name'               => 'Назва ІЮПАК',
 	'chemFunctions_ChemFormInputError' => 'Chemform: помилка вводу!',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'chemicalsources'                  => 'Informassion sui conposti chìmeghi',
+	'chemicalsource-desc'              => 'Zonta el tag <nowiki><chemform></nowiki>, par le fòrmule chìmeghe',
+	'chemFunctions_ListPage'           => 'Informassion sui conposti chìmeghi',
+	'chemFunctions_DataList'           => 'Qua soto ghe xe na lista de colegamenti a siti in do che te podi catar informassion sui conposti chìmeghi che te serchi.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del conposto $MIXCASNameFormula presso el NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Scheda de sicurezza MSDS presso la Oxford University (UK) (riçerca non ativa)</a><br />',
+	'chemFunctions_CAS'                => 'Nùmaro CAS',
+	'chemFunctions_ATCCode'            => 'ATCCode',
+	'chemFunctions_ECNumber'           => 'ECNumber',
+	'chemFunctions_Formula'            => 'Formula',
+	'chemFunctions_Name'               => 'Nome IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Input mìa giusto!',
 );
 
 /** Vietnamese (Tiếng Việt)

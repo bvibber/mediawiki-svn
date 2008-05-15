@@ -170,7 +170,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'vote'            => 'Voĉdonu',
 	'vote-submit'     => 'Balotu',
-	'vote-login-link' => 'ensalutu',
+	'vote-login-link' => 'ensaluti',
 );
 
 $messages['ext'] = array(

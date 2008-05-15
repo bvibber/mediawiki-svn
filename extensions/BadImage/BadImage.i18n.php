@@ -254,6 +254,7 @@ $messages['br'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  * @author Li-sung
  */
 $messages['cs'] = array(
@@ -261,7 +262,7 @@ $messages['cs'] = array(
 	'badimages-desc'           => 'Rozšiřuje schopnosti seznamu špatných souborů MediaWiki',
 	'badimages-add-btn'        => 'Přidat',
 	'badimages-added'          => '$1 byl přidán do seznamu',
-	'badimages-count'          => "Na seznamu špatných souborů je '''$1''' soubor{{plural:$1||y|ů}}.",
+	'badimages-count'          => "Na seznamu špatných souborů {{plural:$1|je|jsou|je}} '''$1''' {{plural:$1|soubor|soubory|souborů}}.",
 	'badimages-name'           => 'Název:',
 	'badimages-not-added'      => 'Soubor nebylo možné přidat.',
 	'badimages-not-removed'    => 'Soubor nebylo možné odstranit',
@@ -374,7 +375,7 @@ $messages['eo'] = array(
 	'badimages-not-added'      => 'Ne eblas aldoni la bildon.',
 	'badimages-not-removed'    => 'Ne eblas forigi la bildon.',
 	'badimages-reason'         => 'Kialo:',
-	'badimages-remove'         => '(forigu)',
+	'badimages-remove'         => '(forigi)',
 	'badimages-remove-btn'     => 'Forigu',
 	'badimages-remove-confirm' => 'Bonvolu konfirmi ke vi volas forigi $1 el la listo:',
 	'badimages-removed'        => '$1 estis forigita el la listo.',

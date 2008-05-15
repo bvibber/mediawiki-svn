@@ -306,6 +306,14 @@ $messages['th'] = array(
 	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'contributionseditcount'      => 'Sto utente el gà fato $1 modifiche.',
+	'contributionseditcount-desc' => 'Mostra un contegio dei contributi su [[Special:Contributions]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

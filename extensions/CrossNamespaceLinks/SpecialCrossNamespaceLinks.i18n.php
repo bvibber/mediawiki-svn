@@ -590,7 +590,6 @@ $messages['sah'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Danny B.
- * @author Robbot
  */
 $messages['sk'] = array(
 	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
@@ -700,15 +699,14 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
- * @author Robbot
  */
 $messages['vec'] = array(
-	'crossnamespacelinks'         => "Collegamenti da un namespace a l'altro",
+	'crossnamespacelinks'         => "Colegamenti da un namespace a l'altro",
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Elenco dei colegamenti tra namespace]] che no dovarìa esìstar su {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Sta pagina la presenta un elenco de colegamenti tra le pagine del namespace prinçipale e le pagine de altri namespace, che no dovarìà èssar doparà.
 
 Xe esclusi i colegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
-	'crossnamespacelinkstext'     => '$1: $2 cołegamento/i $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|cołegamento|cołegamenti}} a $3',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -243,3 +243,12 @@ $messages['tg-cyrl'] = array(
 	'templatelink_empty' => 'Шумо бояд параметре пешниҳод кунед.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'templatelink'          => 'Colegamento al template',
+	'templatelink_empty'    => 'Ti gà da fornir un parametro.',
+	'templatelink_newtitle' => '$1 (trasclusión)',
+);
+

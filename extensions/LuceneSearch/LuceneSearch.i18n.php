@@ -1380,7 +1380,6 @@ Ye can rake the wiki wi an ootside rake service:',
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Robbot
  */
 $messages['sk'] = array(
 	'lucene-desc'           => 'Rozhranie pre vyhľadávač Apache Lucene',

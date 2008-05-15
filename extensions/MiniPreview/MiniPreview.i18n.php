@@ -175,6 +175,14 @@ $messages['lb'] = array(
 	'minipreview-no_category_gallery' => 'Keng Kategorien oder Galerien!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'minipreview-files_in_category' => 'ഈ വിഭാഗത്തില്‍ മൊത്തം $1 ഫയലുകള്‍.',
+	'minipreview-files_in_gallery'  => 'ഈ ഗാലറിയില്‍ മൊത്തം $1 ഫയലുകള്‍.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

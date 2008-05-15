@@ -112,6 +112,13 @@ $messages['frp'] = array(
 	'advancedrandom-desc' => 'Obtint una pâge a l’hasârd dês una discussion ou un lim d’un sujèt vers una pâge balyê. Pôt étre utilisâ coment [[Special:AdvancedRandom/Template:Featured/Talk]] por obtegnir un articllo de qualitât a l’hasârd ou ben coment [[Special:AdvancedRandom/Template:GFDL/Image]] por obtegnir un fichiér desot licence GFDL a l’hasârd.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'advancedrandom' => 'Acceso aleatorio avanzado',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

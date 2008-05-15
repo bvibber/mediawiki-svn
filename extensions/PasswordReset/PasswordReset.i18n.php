@@ -324,6 +324,7 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'passwordreset'                 => 'രഹസ്യവാക്ക് പുനഃക്രമീകരിക്കുക',
 	'passwordreset-invalidusername' => 'അസാധുവായ ഉപയോക്തൃനാമം',
 	'passwordreset-nopassmatch'     => 'രഹസ്യ വാക്കുകള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
 	'passwordreset-username'        => 'ഉപയോക്തൃനാമം',

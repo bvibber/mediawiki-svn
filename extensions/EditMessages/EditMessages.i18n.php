@@ -120,7 +120,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'editmessages'           => 'Redeaktu mesaĝojn',
 	'editmsg-target'         => 'Cela mesaĝo:',
-	'editmsg-search'         => 'Serĉu',
+	'editmsg-search'         => 'Serĉi',
 	'editmsg-get-patch'      => 'Generu flikaĵon',
 	'editmsg-new-search'     => 'Nova serĉo',
 	'editmsg-warning-parse3' => '* Fino de valuta ĉeno ne trovita: $1',
@@ -164,6 +164,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'editmessages'          => 'Editar mensaxes',
+	'editmsg-target'        => 'Obxectivo da mensaxe:',
 	'editmsg-search'        => 'Procurar',
 	'editmsg-get-patch'     => 'Xerar parche',
 	'editmsg-new-search'    => 'Nova busca',

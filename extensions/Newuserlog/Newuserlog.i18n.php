@@ -63,12 +63,13 @@ $messages['ang'] = array(
  * @author Mido
  */
 $messages['ar'] = array(
-	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
-	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
-	'newuserlog-desc'          => 'يضيف [[Special:Log/newusers|سجل بإنشاء الحسابات]] إلى [[Special:Log]]',
-	'newuserlog-byemail'       => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
-	'newuserlog-create-entry'  => 'مستخدم جديد',
-	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
+	'newuserlogpage'              => 'سجل إنشاء الحسابات الجديدة',
+	'newuserlogpagetext'          => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
+	'newuserlog-desc'             => 'يضيف [[Special:Log/newusers|سجل بإنشاء الحسابات]] إلى [[Special:Log]]',
+	'newuserlog-byemail'          => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
+	'newuserlog-create-entry'     => 'مستخدم جديد',
+	'newuserlog-create2-entry'    => 'أنشأ الحساب الخاص باسم $1',
+	'newuserlog-autocreate-entry' => 'الحساب تم إنشاؤه تلقائيا',
 );
 
 /** Asturian (Asturianu)
@@ -200,16 +201,18 @@ $messages['crh-cyrl'] = array(
 );
 
 /** Czech (Česky)
- * @author Martin Kozák
  * @author Li-sung
+ * @author Martin Kozák
+ * @author Danny B.
  */
 $messages['cs'] = array(
-	'newuserlogpage'           => 'Kniha nových uživatelů',
-	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
-	'newuserlog-desc'          => 'Přidává do [[Special:Log|protokolovacích záznamů]] přehled [[Special:Log/newusers|nově zaregistrovaných uživatelů]].',
-	'newuserlog-byemail'       => 'heslo zasláno e-mailem',
-	'newuserlog-create-entry'  => 'Nově založený uživatel',
-	'newuserlog-create2-entry' => 'založil účet pro $1',
+	'newuserlogpage'              => 'Kniha nových uživatelů',
+	'newuserlogpagetext'          => 'Toto je záznam nově zaregistrovaných uživatelů.',
+	'newuserlog-desc'             => 'Přidává do [[Special:Log|protokolovacích záznamů]] přehled [[Special:Log/newusers|nově zaregistrovaných uživatelů]].',
+	'newuserlog-byemail'          => 'heslo zasláno e-mailem',
+	'newuserlog-create-entry'     => 'Nově založený uživatel',
+	'newuserlog-create2-entry'    => 'založil účet pro $1',
+	'newuserlog-autocreate-entry' => 'Účet vytvořen automaticky',
 );
 
 /** Danish (Dansk)
@@ -339,14 +342,16 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Hégésippe Cormier
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
-	'newuserlogpage'           => 'Historique des créations de comptes',
-	'newuserlogpagetext'       => 'Journal des créations de comptes utilisateurs.',
-	'newuserlog-desc'          => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]] à [[Special:Log]]',
-	'newuserlog-byemail'       => 'mot de passe envoyé par courriel',
-	'newuserlog-create-entry'  => 'Nouvel utilisateur',
-	'newuserlog-create2-entry' => 'compte créé pour $1',
+	'newuserlogpage'              => 'Historique des créations de comptes',
+	'newuserlogpagetext'          => 'Journal des créations de comptes utilisateurs.',
+	'newuserlog-desc'             => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]] à [[Special:Log]]',
+	'newuserlog-byemail'          => 'mot de passe envoyé par courriel',
+	'newuserlog-create-entry'     => 'Nouvel utilisateur',
+	'newuserlog-create2-entry'    => 'compte créé pour $1',
+	'newuserlog-autocreate-entry' => 'Compte créé automatiquement',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -624,11 +629,12 @@ $messages['ku'] = array(
  * @author UV
  */
 $messages['la'] = array(
-	'newuserlogpage'           => 'Index rationum novarum creatarum',
-	'newuserlogpagetext'       => 'Hic est index rationum novarum creatarum',
-	'newuserlog-byemail'       => 'tessera missa litteris electronicis',
-	'newuserlog-create-entry'  => 'Usor novus',
-	'newuserlog-create2-entry' => 'creavit rationem pro $1',
+	'newuserlogpage'              => 'Index rationum novarum creatarum',
+	'newuserlogpagetext'          => 'Hic est index rationum novarum creatarum',
+	'newuserlog-byemail'          => 'tessera missa litteris electronicis',
+	'newuserlog-create-entry'     => 'Usor novus',
+	'newuserlog-create2-entry'    => 'creavit rationem pro $1',
+	'newuserlog-autocreate-entry' => 'Ratio automatice creata',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -694,16 +700,17 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
- * @author Jacob.jose
  * @author Shijualex
+ * @author Jacob.jose
  */
 $messages['ml'] = array(
-	'newuserlogpage'           => 'പുതിയ ഉപയോക്താക്കളുടെ പട്ടിക',
-	'newuserlogpagetext'       => 'പുതിയതായി അംഗത്വമെടുത്ത ഉപയോക്താക്കളുടെ പട്ടിക താഴെ കാണാം.',
-	'newuserlog-desc'          => '[[Special:Log]] ലേക്ക് [[Special:Log/newusers|അക്കൗണ്ട്  സൃഷ്ടിക്കുന്നതിന്റെ പ്രവര്‍ത്തനരേഖ]] ചേര്‍ക്കുന്നു',
-	'newuserlog-byemail'       => 'രഹസ്യവാക്ക് ഇ-മെയില്‍ വഴി അയച്ചിരിക്കുന്നു',
-	'newuserlog-create-entry'  => 'പുതിയ ഉപയോക്താവ്',
-	'newuserlog-create2-entry' => '$1 എന്ന ഉപയോക്താവിനുവേണ്ടി അക്കൗണ്ട് സൃഷ്ടിച്ചിരിക്കുന്നു',
+	'newuserlogpage'              => 'പുതിയ ഉപയോക്താക്കളുടെ പട്ടിക',
+	'newuserlogpagetext'          => 'പുതിയതായി അംഗത്വമെടുത്ത ഉപയോക്താക്കളുടെ പട്ടിക താഴെ കാണാം.',
+	'newuserlog-desc'             => '[[Special:Log]] ലേക്ക് [[Special:Log/newusers|അക്കൗണ്ട്  സൃഷ്ടിക്കുന്നതിന്റെ പ്രവര്‍ത്തനരേഖ]] ചേര്‍ക്കുന്നു',
+	'newuserlog-byemail'          => 'രഹസ്യവാക്ക് ഇ-മെയില്‍ വഴി അയച്ചിരിക്കുന്നു',
+	'newuserlog-create-entry'     => 'പുതിയ ഉപയോക്താവ്',
+	'newuserlog-create2-entry'    => '$1 എന്ന ഉപയോക്താവിനുവേണ്ടി അക്കൗണ്ട് സൃഷ്ടിച്ചിരിക്കുന്നു',
+	'newuserlog-autocreate-entry' => 'അക്കൗണ്ട് യാന്ത്രികമായി ഉണ്ടാക്കിയിരിക്കുന്നു',
 );
 
 /** Marathi (मराठी)
@@ -764,12 +771,13 @@ $messages['new'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
-	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
-	'newuserlog-desc'          => 'Voegt een [[Special:Log/newusers|logboek van nieuwe gebruikers]] toe aan de [[Special:Log|logboeken]]',
-	'newuserlog-byemail'       => 'wachtwoord is verzonden per e-mail',
-	'newuserlog-create-entry'  => 'Nieuwe gebruiker',
-	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
+	'newuserlogpage'              => 'Logboek nieuwe gebruikers',
+	'newuserlogpagetext'          => 'Hieronder staan de nieuw ingeschreven gebruikers',
+	'newuserlog-desc'             => 'Voegt een [[Special:Log/newusers|logboek van nieuwe gebruikers]] toe aan de [[Special:Log|logboeken]]',
+	'newuserlog-byemail'          => 'wachtwoord is verzonden per e-mail',
+	'newuserlog-create-entry'     => 'Nieuwe gebruiker',
+	'newuserlog-create2-entry'    => 'heeft gebruiker $1 ingeschreven',
+	'newuserlog-autocreate-entry' => 'Gebruiker automatisch aangemaakt',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -784,16 +792,17 @@ $messages['nn'] = array(
 	'newuserlog-create2-entry' => 'oppretta konto for $1',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'newuserlogpage'           => 'Brukeropprettelseslogg',
-	'newuserlogpagetext'       => 'Dette er en logg over brukeropprettelser',
-	'newuserlog-desc'          => 'Legger til en [[Special:Log/newusers|logg over nyopprettede kontoer]] på [[Special:Log]]',
-	'newuserlog-byemail'       => 'passord sendt på e-post',
-	'newuserlog-create-entry'  => 'Ny bruker',
-	'newuserlog-create2-entry' => 'opprettet konto for $1',
+	'newuserlogpage'              => 'Brukeropprettelseslogg',
+	'newuserlogpagetext'          => 'Dette er en logg over brukeropprettelser',
+	'newuserlog-desc'             => 'Legger til en [[Special:Log/newusers|logg over nyopprettede kontoer]] på [[Special:Log]]',
+	'newuserlog-byemail'          => 'passord sendt på e-post',
+	'newuserlog-create-entry'     => 'Ny bruker',
+	'newuserlog-create2-entry'    => 'opprettet konto for $1',
+	'newuserlog-autocreate-entry' => 'Konto opprettet automatisk',
 );
 
 /** Occitan (Occitan)
@@ -820,12 +829,13 @@ $messages['pag'] = array(
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'newuserlogpage'           => 'Nowi użytkownicy',
-	'newuserlogpagetext'       => 'To jest rejestr ostatnio utworzonych kont użytkowników',
-	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
-	'newuserlog-byemail'       => 'hasło zostało wysłane e-mailem',
-	'newuserlog-create-entry'  => '– nowy użytkownik',
-	'newuserlog-create2-entry' => 'utworzono nowe konto $1',
+	'newuserlogpage'              => 'Nowi użytkownicy',
+	'newuserlogpagetext'          => 'To jest rejestr ostatnio utworzonych kont użytkowników',
+	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
+	'newuserlog-byemail'          => 'hasło zostało wysłane e-mailem',
+	'newuserlog-create-entry'     => '– nowy użytkownik',
+	'newuserlog-create2-entry'    => 'utworzono nowe konto $1',
+	'newuserlog-autocreate-entry' => 'Konto użytkownika utworzono automatycznie',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -851,12 +861,13 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'newuserlogpage'           => 'Registo de criação de utilizadores',
-	'newuserlogpagetext'       => 'Este é um registo de novas contas de utilizador',
-	'newuserlog-desc'          => 'Adiciona um [[{{ns:special}}:Log/newusers|registo de criação de contas]] a [[{{ns:special}}:Log]]',
-	'newuserlog-byemail'       => 'palavra-chave enviada por correio-electrónico',
-	'newuserlog-create-entry'  => 'Novo utilizador',
-	'newuserlog-create2-entry' => 'criou conta para $1',
+	'newuserlogpage'              => 'Registo de criação de utilizadores',
+	'newuserlogpagetext'          => 'Este é um registo de novas contas de utilizador',
+	'newuserlog-desc'             => 'Adiciona um [[{{ns:special}}:Log/newusers|registo de criação de contas]] a [[{{ns:special}}:Log]]',
+	'newuserlog-byemail'          => 'palavra-chave enviada por correio-electrónico',
+	'newuserlog-create-entry'     => 'Novo utilizador',
+	'newuserlog-create2-entry'    => 'criou conta para $1',
+	'newuserlog-autocreate-entry' => 'Conta criada automaticamente',
 );
 
 /** Quechua (Runa Simi)
@@ -880,12 +891,13 @@ $messages['ro'] = array(
  * @author .:Ajvol:.
  */
 $messages['ru'] = array(
-	'newuserlogpage'           => 'Журнал регистрации участников',
-	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',
-	'newuserlog-desc'          => 'Добавляет [[Special:Log/newusers|журнал создания учётных записей]] на страницу [[Special:Log]]',
-	'newuserlog-byemail'       => 'пароль отправлен по эл. почте',
-	'newuserlog-create-entry'  => 'Новый участник',
-	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
+	'newuserlogpage'              => 'Журнал регистрации участников',
+	'newuserlogpagetext'          => 'Список недавно зарегистрировавшихся участников',
+	'newuserlog-desc'             => 'Добавляет [[Special:Log/newusers|журнал создания учётных записей]] на страницу [[Special:Log]]',
+	'newuserlog-byemail'          => 'пароль отправлен по эл. почте',
+	'newuserlog-create-entry'     => 'Новый участник',
+	'newuserlog-create2-entry'    => 'cоздал новую учётную запись: $1',
+	'newuserlog-autocreate-entry' => 'Учётная запись создана автоматически',
 );
 
 /** Yakut (Саха тыла)
@@ -901,16 +913,16 @@ $messages['sah'] = array(
 );
 
 /** Slovak (Slovenčina)
- * @author Robbot
  * @author Helix84
  */
 $messages['sk'] = array(
-	'newuserlogpage'           => 'Záznam vytvorených používateľov',
-	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
-	'newuserlog-desc'          => 'Pridáva [[Special:Log/newusers|záznam vytvorených používateľov]] na stránku [[Special:Log]]',
-	'newuserlog-byemail'       => 'heslo poslané emailom',
-	'newuserlog-create-entry'  => 'Nový používateľ',
-	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
+	'newuserlogpage'              => 'Záznam vytvorených používateľov',
+	'newuserlogpagetext'          => 'Toto je záznam naposledy vytvorených používateľských účtov',
+	'newuserlog-desc'             => 'Pridáva [[Special:Log/newusers|záznam vytvorených používateľov]] na stránku [[Special:Log]]',
+	'newuserlog-byemail'          => 'heslo poslané emailom',
+	'newuserlog-create-entry'     => 'Nový používateľ',
+	'newuserlog-create2-entry'    => 'Bol vytvorený účet pre $1',
+	'newuserlog-autocreate-entry' => 'Účet vytvorený automaticky',
 );
 
 $messages['sq'] = array(
@@ -961,14 +973,16 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Sannab
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'newuserlogpage'           => 'Logg över nya användare',
-	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
-	'newuserlog-desc'          => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]] i [[Special:Log]]',
-	'newuserlog-byemail'       => 'lösenord skickat med e-post',
-	'newuserlog-create-entry'  => 'Ny användare',
-	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
+	'newuserlogpage'              => 'Logg över nya användare',
+	'newuserlogpagetext'          => 'Detta är en logg över nyligen skapade användarkonton',
+	'newuserlog-desc'             => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]] i [[Special:Log]]',
+	'newuserlog-byemail'          => 'lösenord skickat med e-post',
+	'newuserlog-create-entry'     => 'Ny användare',
+	'newuserlog-create2-entry'    => 'skapade användarkonto för $1',
+	'newuserlog-autocreate-entry' => 'Konto skapades automatiskt',
 );
 
 /** Telugu (తెలుగు)
@@ -1052,15 +1066,15 @@ $messages['ur'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
- * @author Robbot
  */
 $messages['vec'] = array(
-	'newuserlogpage'           => 'Registro utenti novi',
-	'newuserlogpagetext'       => 'Questo xè el log dei novi utenti registrai',
-	'newuserlog-desc'          => 'Zontae un [[Special:Log/newusers|registro dei utenti creà]] a la [[Special:Log|pagina dei registri]]',
-	'newuserlog-byemail'       => 'password spedìa par e-mail',
-	'newuserlog-create-entry'  => 'se gà registrà',
-	'newuserlog-create2-entry' => 'ga registrà el nome utente $1',
+	'newuserlogpage'              => 'Registro utenti novi',
+	'newuserlogpagetext'          => 'Sto qua el xè el registro dei novi utenti registrai',
+	'newuserlog-desc'             => 'Zonta un [[Special:Log/newusers|registro dei utenti creà]] a la [[Special:Log|pagina dei registri]]',
+	'newuserlog-byemail'          => 'password spedìa par e-mail',
+	'newuserlog-create-entry'     => 'se gà registrà',
+	'newuserlog-create2-entry'    => 'ga registrà el nome utente $1',
+	'newuserlog-autocreate-entry' => 'Account creà automaticamente',
 );
 
 /** Vietnamese (Tiếng Việt)

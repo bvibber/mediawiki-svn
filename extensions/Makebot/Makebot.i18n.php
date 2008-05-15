@@ -947,7 +947,6 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Robbot
  */
 $messages['sk'] = array(
 	'makebot'                => 'Udeliť alebo odobrať status bota',

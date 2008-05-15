@@ -528,6 +528,13 @@ $messages['km'] = array(
 	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
 );
 
+/** Korean (한국어)
+ * @author Ficell
+ */
+$messages['ko'] = array(
+	'openidchoosepassword' => '비밀번호:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -559,6 +566,7 @@ $messages['lb'] = array(
 $messages['ml'] = array(
 	'openidlogin'          => 'ഓപ്പണ്‍ ഐഡി ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
 	'openidusernameprefix' => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
+	'openidnickname'       => 'ചെല്ലപ്പേര്',
 	'openidfullname'       => 'പൂര്‍ണ്ണനാമം',
 	'openidemail'          => 'ഇമെയില്‍ വിലാസം',
 	'openidlanguage'       => 'ഭാഷ',

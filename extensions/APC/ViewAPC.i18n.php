@@ -146,6 +146,16 @@ $messages['af'] = array(
 	'viewapc-ls-sort-created'   => 'Geskep',
 );
 
+/** Arabic (العربية)
+ * @author Alnokta
+ */
+$messages['ar'] = array(
+	'viewapc-mode-version-check' => 'افحص النسخة',
+	'viewapc-info-general'       => 'معلومات عامة',
+	'viewapc-memory-usage'       => 'استعمال الذاكرة',
+	'viewapc-ls-limit-none'      => 'الكل',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -453,6 +463,7 @@ $messages['gl'] = array(
 	'viewapc-info-general'          => 'Información xeral',
 	'viewapc-apc-version'           => 'Versión APC',
 	'viewapc-php-version'           => 'Versión PHP',
+	'viewapc-filecache-info'        => 'Información da memoria caché do ficheiro',
 	'viewapc-usercache-info'        => 'Información caché do usuario',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|ficheiro|ficheiros}} ($2)',
 	'viewapc-display-filename'      => 'Nome do ficheiro',
@@ -480,6 +491,7 @@ $messages['gl'] = array(
 	'viewapc-ls-sort-created'       => 'Creado',
 	'viewapc-ls-sort-deleted'       => 'Borrado',
 	'viewapc-ls-limit-none'         => 'Todos',
+	'viewapc-filecache-cleared'     => "'''''A memoria caché do ficheiro foi borrada.'''''",
 );
 
 /** Hindi (हिन्दी)
@@ -628,6 +640,7 @@ APC katoné ora mlaku.",
 	'viewapc-apc-version'           => 'Vèrsi APC',
 	'viewapc-php-version'           => 'Vèrsi PHP',
 	'viewapc-shared-memory'         => 'Mémori sing dibagi',
+	'viewapc-start-time'            => 'Wektu wiwit',
 	'viewapc-upload-support'        => 'Panyengkuyungan pangunggahan berkas',
 	'viewapc-filecache-info'        => "Informasi ''cache'' berkas",
 	'viewapc-usercache-info'        => "Informasi ''cache'' panganggo",
@@ -779,6 +792,7 @@ $messages['ml'] = array(
 	'viewapc-display-info'          => 'പേര്‌',
 	'viewapc-display-ttl'           => 'കാലാവധി',
 	'viewapc-display-num_hits'      => 'ഹിറ്റുകള്‍',
+	'viewapc-display-mtime'         => 'വ്യത്യാസം വരുത്തിയത്',
 	'viewapc-display-creation_time' => 'സൃഷ്ടിക്കപ്പെട്ട സമയം',
 	'viewapc-display-deletion_time' => 'മായ്ക്കപ്പെട്ട സമയം',
 	'viewapc-display-no-delete'     => 'മായ്ച്ചിട്ടില്ല',

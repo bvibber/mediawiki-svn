@@ -272,6 +272,14 @@ $messages['tg-cyrl'] = array(
 	'seealso' => 'Нигаред низ',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'seealso'      => 'Varda anca',
+	'seealso-desc' => "Le intestassion 'See also' le xe localizà doparando el tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

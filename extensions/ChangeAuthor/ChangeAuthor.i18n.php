@@ -611,13 +611,23 @@ Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'changeauthor-pagename-or-revid' => 'താളിന്റെ പേര്‌ അല്ലെങ്കില്‍ പതിപ്പിന്റെ ഐഡി:',
-	'changeauthor-pagenameform-go'   => 'പോകൂ',
-	'changeauthor-comment'           => 'അഭിപ്രായം:',
-	'changeauthor-invalid-username'  => '"$1" എന്നത് അസാധുവായ ഉപയോക്തൃനാമമാണ്‌.',
-	'changeauthor-nosuchuser'        => '"$1" എന്ന ഉപയോക്താവ് നിലവിലില്ല.',
-	'changeauthor-revview'           => '$2ന്റെ #$1 എന്ന പതിപ്പ്',
-	'changeauthor-nosuchtitle'       => '"$1" എന്ന താള്‍ നിലവിലില്ല.',
+	'changeauthor'                      => 'പതിപ്പിന്റെ ലേഖകനെ മാറ്റുക',
+	'changeauthor-desc'                 => 'ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റുവാന്‍ സാധിക്കുന്നു',
+	'changeauthor-title'                => 'ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റുക',
+	'changeauthor-search-box'           => 'പതിപ്പുകള്‍ തിരയുക',
+	'changeauthor-pagename-or-revid'    => 'താളിന്റെ പേര്‌ അല്ലെങ്കില്‍ പതിപ്പിന്റെ ഐഡി:',
+	'changeauthor-pagenameform-go'      => 'പോകൂ',
+	'changeauthor-comment'              => 'അഭിപ്രായം:',
+	'changeauthor-changeauthors-multi'  => 'ലേഖകരെ മാറ്റുക',
+	'changeauthor-explanation-multi'    => "ഈ താള്‍ ഉപയോഗിച്ച് താങ്കള്‍ക്ക് ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റാവുന്നതാണ്‌. 
+താഴെയുള്ള പട്ടികയില്‍ ഒന്നോ അതിലധികമോ ഉപയോക്തൃനാമങ്ങള്‍ മാറ്റിയിട്ട്, അഭിപ്രായം രേഖപ്പെടുത്തിയതിനു ശേഷം (നിര്‍ബന്ധമില്ല), 'ലേഖകരെ മാറ്റുക' എന്ന ബട്ടണ്‍ ഞെക്കുക.",
+	'changeauthor-changeauthors-single' => 'ലേഖകനെ മാറ്റുക',
+	'changeauthor-invalid-username'     => '"$1" എന്നത് അസാധുവായ ഉപയോക്തൃനാമമാണ്‌.',
+	'changeauthor-nosuchuser'           => '"$1" എന്ന ഉപയോക്താവ് നിലവിലില്ല.',
+	'changeauthor-revview'              => '$2ന്റെ #$1 എന്ന പതിപ്പ്',
+	'changeauthor-nosuchtitle'          => '"$1" എന്ന താള്‍ നിലവിലില്ല.',
+	'changeauthor-success'              => 'താങ്കളുടെ അഭ്യര്‍ത്ഥനയുടെ നടപടിക്രമങ്ങള്‍ വിജയകരമായി പൂര്‍ത്തിയാക്കിയിരിക്കുന്നു.',
+	'changeauthor-logpagename'          => 'ലേഖകരെ മാറ്റിയതിന്റെ പ്രവര്‍ത്തനരേഖ',
 );
 
 /** Marathi (मराठी)

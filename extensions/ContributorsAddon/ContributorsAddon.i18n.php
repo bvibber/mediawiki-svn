@@ -116,6 +116,13 @@ $messages['sv'] = array(
 	'contributorsaddon-desc' => 'Lägger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'contributorsaddon-desc' => 'Zonta un popup "onMouseOver" fato in JavaScript sui colegamenti ai "Magiori Contribudori"',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

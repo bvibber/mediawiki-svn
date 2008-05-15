@@ -613,6 +613,25 @@ $messages['tr'] = array(
 	'player-file' => 'Dosya adı',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'player'               => 'Riprodutor',
+	'player-desc'          => 'Un riprodutor multimedial che va coi plugin normali del browser, e na [[Special:Player|pagina speciale]]',
+	'player-title'         => 'Riprodutor',
+	'player-playertitle'   => 'Riprodutor: $1',
+	'player-file'          => 'Nome del file',
+	'player-play'          => 'Avanti',
+	'player-not-allowed'   => 'formato mìa permesso',
+	'player-not-found'     => 'file mìa catà',
+	'player-invalid-title' => 'titolo mìa valido',
+	'player-clicktoplay'   => 'Riprodùsi $1',
+	'player-goto-player'   => 'riprodutor',
+	'player-goto-page'     => 'Pagina',
+	'player-goto-file'     => 'file',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

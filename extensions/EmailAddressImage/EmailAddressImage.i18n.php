@@ -78,6 +78,13 @@ $messages['lt'] = array(
 	'emailaddressimage-desc' => 'Prideda <tt>&lt;email&gt;</tt>, kad rodytų elektroninio pašto adresą kaip paveikslėlį',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'emailaddressimage-desc' => 'ഇമെയില്‍ വിലാസം ചിത്രമായി കാണിക്കുവാന്‍ വേണ്ടി <tt>&lt;email&gt;</tt> ചേര്‍ക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

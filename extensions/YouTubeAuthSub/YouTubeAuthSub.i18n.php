@@ -949,6 +949,44 @@ $messages['th'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'กรุณาใส่คำอธิบายสำหรับคลิปวิดีโอนี้ด้วย',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'youtubeauthsub'                     => 'Carga un video de YouTube',
+	'youtubeauthsub-desc'                => 'Permeti ai utenti de [[Special:YouTubeAuthSub|cargar dei video diretamente su YouTube',
+	'youtubeauthsub_info'                => 'Par cargar un video su YouTube e inserirlo in te na pagina, inpenìssi el modulo con le seguenti informassion:',
+	'youtubeauthsub_title'               => 'Titolo',
+	'youtubeauthsub_description'         => 'Descrission',
+	'youtubeauthsub_password'            => 'Password de YouTube',
+	'youtubeauthsub_username'            => 'Nome utente su YouTube',
+	'youtubeauthsub_keywords'            => 'Parole chiave',
+	'youtubeauthsub_category'            => 'Categoria',
+	'youtubeauthsub_submit'              => 'Invia',
+	'youtubeauthsub_clickhere'           => 'Struca qua par far login su YouTube',
+	'youtubeauthsub_tokenerror'          => "No s'à mìa podù generar el token de autorizassion, próa a agiornar la pagina.",
+	'youtubeauthsub_success'             => "Conplimenti!
+El to video el xe stà cargà.
+Par vardar sto video struca <a href='http://www.youtube.com/watch?v=$1'>chì</a>.
+Podarìa volerghe del tenpo a YouTube par elaborar el to video, quindi el podarìa no èssar gnancora pronto.
+
+Par inserir sto video in te na pagina de sta wiki, inserìssi el còdese seguente drento na pagina:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Par cargar un video, ti ga prima de far login su YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Carga el to video da chì:',
+	'youtubeauthsub_uploadbutton'        => 'Carga',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Sto video se pol vardarlo [http://www.youtube.com/watch?v=$1 chì]',
+	'youtubeauthsub_summary'             => 'Cargar un video de YouTube',
+	'youtubeauthsub_uploading'           => "So drio cargar el to video.
+Par piaser speta n'atimo.",
+	'youtubeauthsub_viewpage'            => 'In alternativa, ti pol védar el to video [[$1|chì]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Par piaser, inserissi una o più parole chiave.',
+	'youtubeauthsub_jserror_notitle'     => 'Par piaser inserissi un titolo par el video.',
+	'youtubeauthsub_jserror_nodesc'      => 'Par piaser inserissi na descrission par el video.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

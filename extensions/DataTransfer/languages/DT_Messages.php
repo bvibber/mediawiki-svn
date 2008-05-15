@@ -166,6 +166,8 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Siebrand
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'viewxml'                     => 'Ver XML',
@@ -178,6 +180,7 @@ $messages['gl'] = array(
 	'dt_xml_field'                => 'Campo',
 	'dt_xml_name'                 => 'Nome',
 	'dt_xml_title'                => 'Título',
+	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Texto Libre',
 );
 

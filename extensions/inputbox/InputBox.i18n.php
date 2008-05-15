@@ -867,7 +867,6 @@ $messages['si'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Robbot
  */
 $messages['sk'] = array(
 	'inputbox-desc'           => 'Umožňuje vloženie preddefinovaných HTML formulárov',

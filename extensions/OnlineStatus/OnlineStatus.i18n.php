@@ -177,6 +177,7 @@ $messages['ml'] = array(
 	'onlinestatus-toggles-explain'  => 'നിങ്ങളുടെ ഉപയോക്തൃതാള്‍ കാണുമ്പോള്‍ നിങ്ങള്‍ ഓണ്‍ലൈന്‍ ആണോ അല്ലയോ എന്നു മറ്റുള്ളവര്‍ക്ക് മനസ്സിലാക്കാന്‍ ഈ സം‌വിധാനം സഹായിക്കുന്നു.',
 	'onlinestatus-toggles-show'     => 'ഓണ്‍‌ലൈന്‍ സ്ഥിതി എന്റെ ഉപയോക്തൃതാളില്‍ പ്രദര്‍ശിപ്പിക്കുക',
 	'onlinestatus-toggle-offline'   => 'ഓഫ്‌ലൈന്‍',
+	'onlinestatus-toggle-online'    => 'ഓണ്‍ലൈന്‍',
 );
 
 /** Marathi (मराठी)

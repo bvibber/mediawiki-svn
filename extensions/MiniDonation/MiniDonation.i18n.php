@@ -240,6 +240,13 @@ $messages['tg-cyrl'] = array(
 	'donationform-submit' => 'Ҳадя тавассути PayPal',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'donationform-submit' => 'Dona tramite PayPal',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -140,7 +140,7 @@ $messages['eo'] = array(
 	'edituser'          => 'Redaktu Uzanton',
 	'edituser-logout'   => 'Elsalutu uzanton',
 	'edituser-username' => 'Nomo',
-	'edituser-dosearch' => 'Serĉu',
+	'edituser-dosearch' => 'Serĉi',
 	'edituser-nouser'   => 'La specifigita uzanto ne ekzistas',
 	'edituser-exempt'   => 'La specifigita uzanto ne estas redaktebla',
 );
@@ -315,7 +315,13 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'edituser-desc'     => 'വിശേഷാവകാശമുള്ള ഉപയോക്താക്കള്‍ക്ക് മറ്റ് ഉപയോക്താക്കളുടെ ക്രമീകരണങ്ങള്‍ തിരുത്തുവാനുള്ള സൗകര്യം കൊടുക്കുന്നു.',
+	'edituser'          => 'ഉപയോക്താവിന്റെ ക്രമീകരണം തിരുത്തുക',
+	'edituser-logout'   => 'ഉപയോക്താവില്‍ നിന്നു ലോഗൗട്ട് ചെയ്യുക',
+	'edituser-username' => 'പേര്‌',
 	'edituser-dosearch' => 'തിരയൂ',
+	'edituser-nouser'   => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്താവ് നിലവിലില്ല',
+	'edituser-exempt'   => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്താവിന്റെ ക്രമീകരണം തിരുത്തുവാന്‍ സാധിക്കില്ല',
 );
 
 /** Marathi (मराठी)

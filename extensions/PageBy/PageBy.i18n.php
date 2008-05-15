@@ -198,6 +198,7 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'pageby-contributors' => 'സംഭാവന ചെയ്തവര്‍:',
+	'pageby-anon'         => '<i>അജ്ഞാതര്‍</i>',
 );
 
 /** Marathi (मराठी)

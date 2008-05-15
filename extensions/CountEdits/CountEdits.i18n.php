@@ -862,6 +862,22 @@ $messages['tr'] = array(
 	'countedits-username' => 'Kullanıcı:',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'countedits'              => 'Contegio dei contributi',
+	'countedits-desc'         => '[[Special:CountEdits|Pagina speciale]] che conta i contributi utente e fornisse na classifica dei magiori contribudori',
+	'countedits-warning'      => "'''Ocio:''' No bisogna giudicar i libri par la so copertina, e no bisogna giudicar i contribudori par el so nùmaro de contributi.",
+	'countedits-username'     => 'Nome utente:',
+	'countedits-ok'           => 'OK',
+	'countedits-nosuchuser'   => 'No ghe xe nissun utente che gabia nome $1.',
+	'countedits-resultheader' => "Risultati par l'utente $1",
+	'countedits-resulttext'   => '$1 gà efetuà $1 modifiche',
+	'countedits-mostactive'   => 'Autori col magior nùmaro de contributi',
+	'countedits-nocontribs'   => 'No ghe xe stà nissun contributo su sta wiki.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

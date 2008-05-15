@@ -165,7 +165,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'patrol-revert'          => 'Restarigu',
+	'patrol-revert'          => 'Restarigi',
 	'patrol-revert-reason'   => 'Kialo:',
 	'patrol-skip'            => 'Forlasu',
 	'patrol-reverting'       => 'Restarigante: $1',

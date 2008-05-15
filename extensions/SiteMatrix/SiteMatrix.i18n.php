@@ -1157,7 +1157,6 @@ $messages['ur'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
- * @author Robbot
  */
 $messages['vec'] = array(
 	'sitematrix'           => 'Ełenco de tuti i projeti Wikimedia ne le varie lengoe',

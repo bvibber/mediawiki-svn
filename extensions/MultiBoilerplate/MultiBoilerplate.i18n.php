@@ -98,6 +98,13 @@ $messages['lb'] = array(
 	'multiboilerplate-submit' => 'Lueden',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'multiboilerplate-submit' => 'ലോഡ് ചെയ്യുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

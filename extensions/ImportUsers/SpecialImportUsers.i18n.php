@@ -132,7 +132,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'importusers'                         => 'Importu Uzantojn',
-	'importusers-uploadfile'              => 'Alŝutu dosieron',
+	'importusers-uploadfile'              => 'Alŝuti dosieron',
 	'importusers-form-button'             => 'Importu',
 	'importusers-user-added'              => 'Uzanto <b>%s</b> estis aldonita.',
 	'importusers-user-present-update'     => 'Uzanto <b>%s</b> jam ekzistas. Ĝisdatigita.',
@@ -337,6 +337,13 @@ $messages['km'] = array(
 	'importusers-password'                => 'ពាក្យសំងាត់',
 	'importusers-email'                   => 'អ៊ីមែល',
 	'importusers-realname'                => 'ឈ្មោះពិត',
+);
+
+/** Korean (한국어)
+ * @author Ficell
+ */
+$messages['ko'] = array(
+	'importusers-password' => '비밀번호',
 );
 
 /** Kinaray-a (Kinaray-a)

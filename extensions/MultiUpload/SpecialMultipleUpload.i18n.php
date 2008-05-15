@@ -305,8 +305,11 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'multiupload-fileuploaded' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
-	'multiupload-toolbox'      => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload'              => 'പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload-saveallfiles' => 'എല്ലാ പ്രമാണങ്ങളും സൂക്ഷിക്കുക',
+	'multipleupload-page'         => '{{ns:project}}:പ്രമാണങ്ങള്‍ മായ്ക്കുന്നതിനെക്കുറിച്ചുള്ള നയം',
+	'multiupload-fileuploaded'    => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
+	'multiupload-toolbox'         => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

@@ -158,6 +158,13 @@ $messages['uk'] = array(
 	'didyoumean-desc' => 'Додає посилання до сторінок зі «схожими» заголовками',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'didyoumean-desc' => 'Zonta colegamenti a pagine con titoli "somejanti"',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

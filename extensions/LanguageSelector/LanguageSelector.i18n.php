@@ -484,6 +484,15 @@ $messages['tr'] = array(
 	'languageselector' => 'Dil',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'languageselector'         => 'Lengua',
+	'languageselector-desc'    => 'Un seletor de la lengua su tute le pagine, anca par i visitatori',
+	'languageselector-setlang' => 'selessiona',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

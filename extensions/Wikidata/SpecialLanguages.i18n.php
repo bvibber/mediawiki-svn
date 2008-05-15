@@ -1714,17 +1714,19 @@ $wdMessages['mai'] = array(
  * @author Shijualex
  */
 $wdMessages['ml'] = array(
-	'langman_title'      => 'ഭാഷാ പരിപാലകന്‍',
-	'ow_save'            => 'സേവ് ചെയ്യുക',
-	'ow_history'         => 'നാള്‍വഴി',
-	'ow_noedit_title'    => 'തിരുത്തുവാനുള്ള അനുമതി ഇല്ല',
-	'ow_uipref_datasets' => 'സ്വതവെയുള്ള കാഴ്ച',
-	'ow_uiprefs'         => 'വിക്കിഡാറ്റ',
-	'ow_none_selected'   => '<ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല>',
-	'ow_dm_OK'           => 'ശരി',
-	'ow_Collection'      => 'ശേഖരം',
-	'ow_Language'        => 'ഭാഷ',
-	'ow_Source'          => 'സ്രോതസ്സ്',
+	'langman_title'        => 'ഭാഷാ പരിപാലകന്‍',
+	'ow_save'              => 'സേവ് ചെയ്യുക',
+	'ow_history'           => 'നാള്‍വഴി',
+	'ow_noedit_title'      => 'തിരുത്തുവാനുള്ള അനുമതി ഇല്ല',
+	'ow_uipref_datasets'   => 'സ്വതവെയുള്ള കാഴ്ച',
+	'ow_uiprefs'           => 'വിക്കിഡാറ്റ',
+	'ow_none_selected'     => '<ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല>',
+	'ow_dm_OK'             => 'ശരി',
+	'ow_Collection'        => 'ശേഖരം',
+	'ow_Language'          => 'ഭാഷ',
+	'ow_Source'            => 'സ്രോതസ്സ്',
+	'ow_Value'             => 'മൂല്യം',
+	'ow_Permission_denied' => '<h2>പ്രവേശനം നിഷേധിച്ചിരിക്കുന്നു</h2>',
 );
 
 /** Marathi (मराठी)

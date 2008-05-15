@@ -11,11 +11,25 @@ $messages['en'] = array(
 	'skinperpage-desc' => 'Adds <tt>&lt;skin&gt;</tt> tag to use different skins per page',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'skinperpage-desc' => 'يضيف وسم <tt>&lt;skin&gt;</tt> لاستخدام واجهات مختلفة لكل صفحة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
 	'skinperpage-desc' => 'Добавя етикета <tt>&lt;skin&gt;</tt> за използване на различни облици на страниците',
+);
+
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'skinperpage-desc' => 'Přidává tag <code>&lt;skin&gt;</code> umožňující zvolit jiný motiv vzhledu pro jednotlivé stránky',
 );
 
 /** German (Deutsch)

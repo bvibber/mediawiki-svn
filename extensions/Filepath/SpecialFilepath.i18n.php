@@ -493,7 +493,6 @@ $messages['sah'] = array(
 );
 
 /** Slovak (Slovenčina)
- * @author Robbot
  * @author Helix84
  */
 $messages['sk'] = array(

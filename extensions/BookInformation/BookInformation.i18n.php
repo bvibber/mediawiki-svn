@@ -925,6 +925,7 @@ $messages['pam'] = array(
 	'bookinfo-desc'             => 'Miragdagan ya [[Special:Booksources]] kapamilatan ning impormasiun ibat king metung a web service',
 	'bookinfo-result-title'     => 'Bansag:',
 	'bookinfo-result-author'    => 'Talasulat',
+	'bookinfo-result-publisher' => 'Talabulalag (Publisher):',
 	'bookinfo-error-nosuchitem' => 'Ala yu o e meyakit ing bageng iti.',
 );
 

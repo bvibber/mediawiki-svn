@@ -271,6 +271,15 @@ $messages['te'] = array(
 	'selectcategory-title' => 'వర్గాలను ఎంచుకోండి',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'selectcategory-title'    => 'Selessiona le categorie',
+	'selectcategory-desc'     => "Permete a l'utente de siegliar tra le categorie esistenti quando el modifica na pagina",
+	'selectcategory-subtitle' => 'Struca el boton del mouse tegnendo macà MAIUSC par selessionar più voçi adiacenti o CTRL par selessionar più voçi non adiacenti.',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
