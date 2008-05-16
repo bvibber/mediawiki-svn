@@ -5,7 +5,7 @@
  *
  * @addtogroup SpecialPage
  *
- * @author Bartek
+ * @author Bartek Łapiński
  * @copyright Copyright © 2007, Wikia Inc.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 */
@@ -17,8 +17,9 @@ if(!defined('MEDIAWIKI'))
 $wgExtensionFunctions[] = 'wfRegexBlockStatsPageSetup';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regex Block Stats',
-	'author' => 'Bartek',
-	'description' => 'Displays block statistics for the regexblock extension',
+	'author' => 'Bartek Łapiński',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RegexBlock',
+	'description' => 'Displays block statistics for the regexBlock extension',
 	'descriptionmsg' => 'regexblock-stat-desc',
 );
 
@@ -26,7 +27,7 @@ $wgExtensionCredits['specialpage'][] = array(
 function wfRegexBlockStatsPageSetup () {
 	global $IP;
 	if (!wfSimplifiedRegexCheckSharedDB())
-		return ;
+		return;
 	require_once($IP. '/includes/SpecialPage.php');
 	/* name, restrictions, */
 	SpecialPage::addPage(new SpecialPage('Regexblockstats', 'regexblock', false, 'wfRegexBlockStatsCore', false));
@@ -34,17 +35,17 @@ function wfRegexBlockStatsPageSetup () {
 
 /* special page core function */
 function wfRegexBlockStatsCore () {
-	global $wgOut, $wgUser, $wgRequest ;
-	$wgOut->setPageTitle (wfMsg('regexblock-stats-title')) ;
-	$username = $wgRequest->getVal ('target') ;
-	$wgOut->setSubtitle (wfMsg('regexblock-stats-username',$username)) ;	
-	$scL = new RegexBlockStatsList () ;
-	$scL->showList ('',$username) ;
+	global $wgOut, $wgUser, $wgRequest;
+	$wgOut->setPageTitle (wfMsg('regexblock-stats-title'));
+	$username = $wgRequest->getVal('target');
+	$wgOut->setSubtitle (wfMsg('regexblock-stats-username', $username));	
+	$scL = new RegexBlockStatsList();
+	$scL->showList('', $username);
 }
 
 /* list class  */
 class RegexBlockStatsList {
-	var $numResults ;
+	var $numResults;
 
 	/* constructor */
 	function RegexBlockStatsList () {
@@ -53,53 +54,53 @@ class RegexBlockStatsList {
 	
 	/* show it up */
 	function showList ($error, $username) {
-		global $wgOut, $wgRequest ;
+		global $wgOut, $wgRequest;
 		/* no list when no user */
 		if ("" == $username)
-			return false ;
-		$this->fetchNumResults ($username) ;
-		$this->showPrevNext ($wgOut) ;
-		$wgOut->addHTML ("<ul>") ; 
-		$this->fetchLogs ($username) ;
-		$wgOut->addHTML ("</ul>") ; 
-		$this->showPrevNext ($wgOut) ;		
+			return false;
+		$this->fetchNumResults($username);
+		$this->showPrevNext($wgOut);
+		$wgOut->addHTML("<ul>"); 
+		$this->fetchLogs($username);
+		$wgOut->addHTML("</ul>"); 
+		$this->showPrevNext($wgOut);		
 	}
 
 	/* fetch number of all rows */
 	function fetchNumResults ($username) {
-		global $wgMemc, $wgSharedDB ;
-		$dbr = &wfGetDB (DB_SLAVE) ;
-		$query_count = "SELECT COUNT(*) as n FROM ".wfRegexBlockGetStatsTable()." WHERE stats_user = ".$dbr->addQuotes ($username) ;
-		$res_count = $dbr->query($query_count) ;
+		global $wgMemc, $wgSharedDB;
+		$dbr = &wfGetDB (DB_SLAVE);
+		$query_count = "SELECT COUNT(*) as n FROM ".wfRegexBlockGetStatsTable()." WHERE stats_user = ".$dbr->addQuotes ($username);
+		$res_count = $dbr->query($query_count);
 		$row_count = $dbr->fetchObject ($res_count);
-		$this->numResults = $row_count->n ;
-		$dbr->freeResult ($res_count) ;
+		$this->numResults = $row_count->n;
+		$dbr->freeResult ($res_count);
 	}
 
 	/* fetch all logs */
 	function fetchLogs ($username) {
-		global $wgOut, $wgSharedDB, $wgDBname, $wgRequest, $wgLang ;
+		global $wgOut, $wgSharedDB, $wgDBname, $wgRequest, $wgLang;
 		/* from database */
 		list( $limit, $offset ) = $wgRequest->getLimitOffset();
 		$dbr =& wfGetDB (DB_SLAVE);
 		$query = "SELECT stats_user, stats_blocker, stats_timestamp, stats_ip 
 			  FROM ".wfRegexBlockGetStatsTable()." 
 			  WHERE stats_user={$dbr->addQuotes($username)} 
-			  ORDER BY stats_timestamp DESC LIMIT $offset,$limit" ;
-		$res = $dbr->query ($query) ;			
+			  ORDER BY stats_timestamp DESC LIMIT $offset,$limit";
+		$res = $dbr->query($query);			
 		while ($row = $dbr->fetchObject($res)) {
 			$time = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->stats_timestamp ), true );
-			$wgOut->addHTML("<li><b>{$row->stats_user}</b> ".wfMsg('regexblock-stats-times')." <b>{$time}</b>, ".wfMsg('regexblock-stats-logging')." <b>{$row->stats_ip}</b></li>") ;
+			$wgOut->addHTML("<li><b>{$row->stats_user}</b> ".wfMsg('regexblock-stats-times')." <b>{$time}</b>, ".wfMsg('regexblock-stats-logging')." <b>{$row->stats_ip}</b></li>");
 		}
-		$dbr->freeResult ($res) ;			
+		$dbr->freeResult($res);			
 	}
 
 	/* init for showprevnext */
 	function showPrevNext( &$out ) {
 		global $wgContLang, $wgRequest;
 		list( $limit, $offset ) = $wgRequest->getLimitOffset();
-		$target = 'target=' . urlencode ( $wgRequest->getVal ('target') ) ;
-		$mode = '&mode=' . urlencode ( $wgRequest->getVal ('mode') ) ;
+		$target = 'target=' . urlencode ( $wgRequest->getVal('target') );
+		$mode = '&mode=' . urlencode ( $wgRequest->getVal('mode') );
 		$html = wfViewPrevNext(
 			$offset,
 			$limit,

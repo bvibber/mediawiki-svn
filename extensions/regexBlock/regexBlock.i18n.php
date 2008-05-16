@@ -31,7 +31,7 @@ If no reason is specified, a default generic reason will be used.\'\'',
 	'regexblock-unblock-log'          => 'User name or IP address \'\'\'$1\'\'\' has been unblocked.',
 	'regexblock-unblock-error'        => 'Error unblocking $1.
 Probably there is no such user.',
-	'regexblock-form-username'        => 'IP Adress or username:',
+	'regexblock-form-username'        => 'IP address or username:',
 	'regexblock-form-reason'          => 'Reason:',
 	'regexblock-form-expiry'          => 'Expiry:&#160;',
 	'regexblock-form-match'           => 'Exact match',
