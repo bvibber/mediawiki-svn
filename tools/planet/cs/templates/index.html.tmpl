@@ -94,21 +94,27 @@
 
 <div class="sidebar">
 
-<img src="images/logo.png" width="136" height="136" alt="logo Planeta Wikimedia">
+<img id="logo" src="images/logo.png" width="136" height="136" alt="logo Planeta Wikimedia">
 
-<h2>Odběr</h2>
+<div id="feeds">
+<h2 id="odber">Odběr</h2>
 <ul>
-	<li><a href="/atom.xml" type="application/atom+xml">Atom</a></li>
-	<li><a href="/rss10.xml" type="application/rss+xml">RSS 1.0</a></li>
-	<li><a href="/rss20.xml" type="application/rss+xml">RSS 2.0</a></li>
+	<li id="atom"><a href="/atom.xml" type="application/atom+xml">Atom</a></li>
+	<li id="rss10"><a href="/rss10.xml" type="application/rss+xml">RSS 1.0</a></li>
+	<li id="rss20"><a href="/rss20.xml" type="application/rss+xml">RSS 2.0</a></li>
 </ul>
+</div>
 
-<h2>O&nbsp;Planetě Wikimedia</h2>
+<div id="about">
+<h2 id="o-planete-wikimedia">O&nbsp;Planetě Wikimedia</h2>
 <p>
-<i>Planeta Wikimedia je sdružený přehled toho, co účastníci projektů nadace Wikimedia napsali na svých blozích o&nbsp;různých wiki. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia" hreflang="en">Více informací… (anglicky)</a></i>
+<i>Planeta Wikimedia je sdružený přehled toho, co účastníci projektů nadace Wikimedia napsali na svých blozích o&nbsp;různých wiki.<br>
+<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia" hreflang="en">Více informací… (anglicky)</a></i>
 </p>
+</div>
 
-<h2>Účastníci</h2>
+<div id="subscriptions">
+<h2 id="ucastnici">Účastníci</h2>
 <ul>
 <TMPL_LOOP Channels>
 	<li>
@@ -118,13 +124,14 @@
 </ul>
 <hr>
 <p>
-	<a href="/foafroll.xml" type="application/rdf+xml"><abbr title="Friend of a Friend">FOAF</abbr></a> •
-	<a href="/opml.xml" type="application/xml"><abbr title="Outline Processor Markup Language">OPML</abbr></a>
+	<a id="foaf" href="/foafroll.xml" type="application/rdf+xml"><abbr title="Friend of a Friend">FOAF</abbr></a> •
+	<a id="opml" href="/opml.xml" type="application/xml"><abbr title="Outline Processor Markup Language">OPML</abbr></a>
 </p>
+</div>
 
 <p>
-<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/cs">Přidejte svůj blog</a></strong><br>
-<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language" hreflang="en">Požádejte o&nbsp;nový jazyk</a>
+<strong id="addblog"><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/cs">Přidejte svůj blog</a></strong><br>
+<a id="requestlang" href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language" hreflang="en">Požádejte o&nbsp;nový jazyk</a>
 </p>
 
 <p>
@@ -137,12 +144,15 @@ Poslední aktualizace:<br>
 Běží na <a href="http://www.planetplanet.org/" hreflang="en"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a>
 </p>
 
-<h2>Vyloučení odpovědnosti</h2>
+<div id="disclaimer">
+<h2 id="vylouceni-odpovednosti">Vyloučení odpovědnosti</h2>
 <p>
-Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafoundation.org/">Wikimedia Foundation</a> pro účely usnadnění sdílení informací a&nbsp;názorů mezi členy Wikimedia komunity. Agregace příspěvků z&nbsp;weblogů je počítačově řízený proces a&nbsp;Wikimedia Foundation není zodpovědná za žádný materiál dodaný účastníky této online komunity.
+Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafoundation.org/" lang="en" hreflang="en">Wikimedia Foundation</a> pro účely usnadnění sdílení informací a&nbsp;názorů mezi členy Wikimedia komunity. Agregace příspěvků z&nbsp;weblogů je počítačově řízený proces a&nbsp;Wikimedia Foundation není zodpovědná za žádný materiál dodaný účastníky této online komunity.
 </p>
+</div>
 
-<h2>V&nbsp;jiných jazycích:</h2>
+<div id="otherlangs">
+<h2 id="v-jinych-jazycich">V&nbsp;jiných jazycích:</h2>
 <ul>
 	<li><a href="http://ar.planet.wikimedia.org" lang="ar" hreflang="ar">العربية</a></li>
 	<li><a href="http://de.planet.wikimedia.org" lang="de" hreflang="de">Deutsch</a></li>
@@ -154,7 +164,9 @@ Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafo
 	<li><a href="http://sr.planet.wikimedia.org" lang="sr" hreflang="sr">Српски / Srpski</a></li>
 	<li><a href="http://zh.planet.wikimedia.org" lang="zh" hreflang="zh">中文</a></li>
 </ul>
+</div>
 
+<div id="planetarium">
 <h2>Planetárium:</h2>
 <ul>
 	<li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
@@ -167,6 +179,7 @@ Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafo
 	<li><a href="http://planet.fedoraproject.org/">Planet Fedora</a></li>
 	<li><a href="http://intelligentdesigns.net/Planet_tracker">další…</a></li>
 </ul>
+</div>
 
 </div>
 

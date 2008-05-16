@@ -94,3 +94,11 @@ a.new:visited, #p-personal a.new:visited {
 	color: #a55858;
 }
 
+img.face {
+	float: right;
+	background-color: #fff;
+	margin: 0 -15px 15px 15px;
+	border: 1px solid #aaa;
+	border-width: 0 0 1px 1px;
+	padding: 15px;
+}
