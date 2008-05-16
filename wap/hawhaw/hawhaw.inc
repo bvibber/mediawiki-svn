@@ -3,7 +3,7 @@
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
 // Copyright (C) 2008 Norbert Huffschmid
-// Last modified: 6. April 2008
+// Last modified: 14. May 2008
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -21,8 +21,13 @@
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
 //
-// changes against V5.17:
-// - consider additional XHTML devices: Aspen Simulator and Android
+// changes against V5.18:
+// improved browser detection for:
+// - PalmOS
+// - Minimo
+// - PIE
+// - Blackberry
+// - Nintendo DS
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -43,7 +48,7 @@
 ###################################
 
 // miscellaneous constants
-define("HAW_HAW_VERSION", "HAWHAW V5.18B");
+define("HAW_HAW_VERSION", "HAWHAW V5.19B");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 if (defined("HAW_TERA_WURFL_PATH"))
   define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
@@ -2353,6 +2358,7 @@ class HAW_deck
           strstr($ua_low, "lynx") ||
           strstr($ua_low, "avantgo") ||
           strstr($ua_low, "pendragonweb") ||
+          strstr($ua_low, "blackberry") ||
           strstr($ua_low, "j-"))
         $this->ml = HAW_HTML;   // HTML-based browser
       else
@@ -2393,8 +2399,15 @@ class HAW_deck
              strstr($ua_low, "reqwirelessweb") ||
              strstr($ua_low, "pendragonweb") ||
              strstr($ua_low, "palmos") ||
+             strstr($ua_low, "palmsource") ||
+             strstr($ua_low, "/palm") ||
              strstr($ua_low, "windows ce") ||
-             strstr(strtolower($HTTP_UA_OS),      "windows ce") ||
+             strstr($ua_low, "minimo") ||
+             strstr($ua_low, "wm5 pie") ||
+             strstr($ua_low, "wm6 pie") ||
+             strstr($ua_low, "blackberry") ||
+             strstr($ua_low, "nitro)") ||
+             strstr(strtolower($HTTP_UA_OS), "windows ce") ||
              strstr($HTTP_USER_AGENT, "Mozilla/4.7"))
     {
       // PDA browser detected  (or poor old Netscape 4.7x which messes with CSS)
