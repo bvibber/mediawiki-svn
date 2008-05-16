@@ -3,12 +3,11 @@ if ( ! defined( 'MEDIAWIKI' ) )
     die();
 
 /**#@+
- * An extension that allows users to upload multiple photos at once.
+ * An extension that allows users to upload multiple files at once.
  *
  * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:MultiUpload
- *
  *
  * @author Travis Derouin <travis@wikihow.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
@@ -22,6 +21,7 @@ $wgExtensionFunctions[] = 'wfMultipleUpload';
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'MultipleUpload',
 	'author'         => 'Travis Derouin',
+	'version'        => '1.0',
 	'description'    => 'Allows users to upload several files at once.',
 	'descriptionmsg' => 'multipleupload-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
@@ -141,8 +141,8 @@ class MultipleUploadForm extends UploadForm {
             $this->mIgnoreWarning = true;
 
 			$this->mUploadError = $this->mUploadErrorArray [$x];
-			$this->mDestFile = $this->mDestFileArray [$x];
-			$this->mUploadDescription = $this->mUploadDescriptionArray [$x];
+			$this->mDesiredDestName = $this->mDestFileArray [$x];
+			$this->mComment = $this->mUploadDescriptionArray [$x];
 			$wgOut->addHTML("<tr><td>");
 			parent::processUpload();
 			$wgOut->addHTML("</td></tr>");
@@ -242,8 +242,7 @@ class MultipleUploadForm extends UploadForm {
 		$reupload = wfMsgHtml( 'reupload' );
 		$iw = wfMsgWikiHtml( 'multipleupload-ignoreallwarnings' );
 		$reup = wfMsgWikiHtml( 'reuploaddesc' );
-		if ( $wgUseCopyrightUpload )
-		{
+		if ( $wgUseCopyrightUpload ) {
 			$copyright =  "
 	<input type='hidden' name='wpUploadCopyStatus' value=\"" . htmlspecialchars( $this->mUploadCopyStatus ) . "\" />
 	<input type='hidden' name='wpUploadSource' value=\"" . htmlspecialchars( $this->mUploadSource ) . "\" />
@@ -410,7 +409,7 @@ function fillDestFilenameMulti(i) {
 		");
 		}
 
-		$wgOut->addHtml( "
+		$wgOut->addHTML( "
 		<td>
  			<input tabindex='7' type='checkbox' name='wpWatchthis' id='wpWatchthis' $watchChecked value='true' />
 			<label for='wpWatchthis'>" . wfMsgHtml( 'watchthis' ) . "</label>
