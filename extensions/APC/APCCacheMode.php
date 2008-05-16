@@ -37,6 +37,7 @@ class APCCacheMode {
 			foreach( $cache[$list] as $entry ) {
 				if (md5($entry[$this->fieldKey]) !== $object) continue;
 
+				$size = 0;
 				foreach($entry as $key => $value) {
 					switch ($key) {
 						case 'num_hits':
@@ -49,6 +50,8 @@ class APCCacheMode {
 								$value = wfMsg( 'viewapc-display-no-delete' );
 								break;
 							}
+						case 'mem_size':
+							$size = $value;
 						default:
 							$value = $this->formatValue( $key, $value );
 					}
@@ -60,10 +63,16 @@ class APCCacheMode {
 				}
 
 				if ( $this->userMode ) {
-					$value = var_export(apc_fetch($entry[$this->fieldKey]),true);
-					$s .= APCUtils::tableRow( $r=1-$r,
+					if ( $size > 1024*1024 ) {
+						$s .= APCUtils::tableRow( $r=1-$r,
 						wfMsgHtml( 'viewapc-display-stored-value' ),
-						Xml::element( 'pre', null, $value ) );
+						wfMsgExt( 'viewapc-display-too-big', 'parseinline' ) );
+					} else {
+						$value = var_export(apc_fetch($entry[$this->fieldKey]),true);
+						$s .= APCUtils::tableRow( $r=1-$r,
+							wfMsgHtml( 'viewapc-display-stored-value' ),
+							Xml::element( 'pre', null, $value ) );
+					}
 				}
 			}
 		}

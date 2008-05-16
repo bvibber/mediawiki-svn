@@ -79,6 +79,7 @@ APC does not appear to be running.',
 	'viewapc-display-ref_count'     => 'Reference count',
 	'viewapc-display-mem_size'      => 'Size',
 	'viewapc-display-stored-value'  => 'Stored value',
+	'viewapc-display-too-big'       => "''Content is too large to show.''",
 
 	'viewapc-ls-options-legend' => 'Options',
 	'viewapc-ls-options'        => 'Scope: $1 Sorting: $2$3$4 Search: $5 $6',
