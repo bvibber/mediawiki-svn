@@ -152,6 +152,25 @@ $messages['ext'] = array(
 	'talkhere-collapse' => 'açonchal eitol',
 );
 
+/** Finnish
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'talkhere-title'       => '$1',
+	'talkhere-headtext'    => '',
+	'talkhere-foottext'    => 'Ylläolevat kommentit saattavat olla vierailijoiden jättämiä.
+
+Tämän sivuston ylläpitäjät eivät voi ottaa vastuuta kyseisten kommenttien sisällöstä.',
+	'talkhere-talkpage'    => 'keskustelusivu',
+	'talkhere-notalk'      => "''(ei kommentteja toistaiseksi)''",
+	'talkhere-addcomment'  => 'lisää kommentti',
+	'talkhere-beforeinput' => 'Voit lisätä kommentin alapuolelle',
+	'talkhere-afterinput'  => '',
+	'talkhere-afterform'   => '',
+	'talkhere-loading'     => 'ladataan editoria…',
+	'talkhere-collapse'    => 'piilota editori',
+);
+
 /** French (Français)
  * @author Rémi Kaupp
  * @author Urhixidur
