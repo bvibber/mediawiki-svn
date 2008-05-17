@@ -12,12 +12,15 @@ $messages = array();
  * @author http://www.strategywiki.org/wiki/User:Prod
  */
 $messages['en'] = array(
-	'watchsubpages'      => 'Watch subpages',
-	'watchsubpages-addedtowatchlist' => 'The following has been added to your watchlist.',
-	'watchsubpages-addtitles' => 'Add Titles',
-	'watchsubpages-addtitlestowatchlist' => 'Add titles to watchlist',
-	'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
-	'watchsubpages-form' => 'Select the titles to add to your watchlist below. To add a title, check the box next to it, and click Add Titles.<br /><br />When checking or unchecking multiple titles, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.<br /><br />',
+	'watchsubpages'                      => 'Watch subpages',
+	'watchsubpages-addedtowatchlist'     => 'The following has been added to your watchlist.',
+	'watchsubpages-addtitles'            => 'Add pages',
+	'watchsubpages-addtitlestowatchlist' => 'Add pages to watchlist',
+	'watchsubpages-desc'                 => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
+	'watchsubpages-form'                 => 'Select the pages to add to your watchlist below.
+To add a page, check the box next to it, and click "Add pages".
+
+When checking or unchecking multiple pages, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.',
 );
 
 /** Arabic (العربية)
