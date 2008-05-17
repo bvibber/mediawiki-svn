@@ -19,6 +19,7 @@ $wgExtensionCredits['other'][] = array(
 # Default settings
 $wgBoardVoteDB = "boardvote";
 $wgBoardCandidates = array();
+/* $wgBoardCandidates = array( "John Doe", "Jane Doe", "Joe Bloggs", "John Smith", "A. N. Other" ); */
 $wgGPGCommand = "gpg";
 $wgGPGRecipient = "boardvote";
 $wgGPGHomedir = false;

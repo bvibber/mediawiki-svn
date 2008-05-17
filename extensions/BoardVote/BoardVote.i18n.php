@@ -15,17 +15,23 @@ $messages['en'] = array(
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
 	'boardvote_intro'         => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees.
 We are voting for one person to represent the community of users on the various Wikimedia projects.
-They will help to determine the future direction that the Wikimedia projects will take, individually and as a group, and represent <em>your</em> interests and concerns to the Board of Trustees.
+They will help to determine the future direction that the Wikimedia projects will take, individually 
+and as a group, and represent <em>your</em> interests and concerns to the Board of Trustees.
 They will decide on ways to generate income and the allocation of moneys raised.</p>
 
 <p>Please read the candidates' statements and responses to queries carefully before voting.
-Each of the candidates is a respected user, who has contributed considerable time and effort to making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.</p>
+Each of the candidates is a respected user, who has contributed considerable time and effort to 
+making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.</p>
 
 <p>Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite, ...).
 You may give the same preference to more than one candidate and may keep candidates unranked.
 It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
 
-<p>The winner of the election will be calculated using the Schulze method.</p>
+<p>The winner of the election will be calculated using the Schulze method, with <em>winning votes</em> 
+as the default measure for the strength of a pairwise defeat, using <em>margins</em> as a backup measure for tie breaking during
+the selection of the critical paths. In the unlikely event of a tie, a tie-breaking ranking of the candidates will be calculated 
+using <em>random ballot</em>. In the highly unlikely event there remains a tie for the winning position after exhaustion of all available ballot,
+a run-off election will be held. Ties for non-winning position in the final ranking of candidates will not be resolve.</p>
 
 <p>For more information, see:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
@@ -33,7 +39,8 @@ It is presumed that you prefer all ranked candidates to all not ranked candidate
 <li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze method</a></li></ul>",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please rank the candidates in your order of preferences, whereby a smaller number 
-indicate a higher preference for that particular candidate.</p>",
+indicate a higher preference for that particular candidate. You may give the same preference to more than one
+candidate and may keep candidates unranked.</p>",
 	'boardvote_footer'        => "&nbsp;", # Do not translate this
 	'boardvote_entered'       => "Thank you, your vote has been recorded.
 

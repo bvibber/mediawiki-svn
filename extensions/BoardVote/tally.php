@@ -92,7 +92,7 @@ fwrite( $vfs, "\n=== Margins ===\n" );
 output_table( $vfs, $marginMatrix );
 fwrite( $vfs, "\n== Strengths of the strongest paths ==\n=== Winning votes ===\n" );
 output_table( $vfs, $beatpathWVMatrix );
-fwrite( $vfs, "\n=== Margins ===\n" );
+fwrite( $vfs, "\n=== Modified Margins ===\n" );
 output_table( $vfs, $beatpathMMatrix );
 fwrite( $vfs, "\n== Ranked results ==\n" );
 array_flip( $orderedCandidates );
