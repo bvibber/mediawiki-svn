@@ -99,7 +99,7 @@ bool parse_url(char *url, struct info *in) {
 	if (strcmp(dir,"wiki"))
 		return false; /* no /wiki/ part :( */
 	in->title=TAIL;
-	TOKENIZE(in->title,"?");
+	TOKENIZE(in->title,"?#");
 
 	TOKENIZE(host,".");
 	in->language=HEAD;
