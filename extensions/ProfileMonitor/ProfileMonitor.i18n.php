@@ -205,7 +205,8 @@ $messages['lfn'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'profiling-ok' => 'ശരി',
+	'profiling-ok'           => 'ശരി',
+	'profiling-data-process' => 'പ്രക്രിയ',
 );
 
 /** Marathi (मराठी)

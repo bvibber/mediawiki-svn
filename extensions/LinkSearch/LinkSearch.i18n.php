@@ -1029,6 +1029,7 @@ $messages['to'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'linksearch-ns' => 'İsimalanı:',
 	'linksearch-ok' => 'Ara',
 );
 

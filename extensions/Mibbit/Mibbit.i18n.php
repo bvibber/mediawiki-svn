@@ -89,6 +89,13 @@ Wenn Sie angemeldet sind, wird Ihr Nickname automatisch vorbelegt.
 Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert werden.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mibbit' => 'Mibbit Babililo',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin

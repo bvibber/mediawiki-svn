@@ -448,13 +448,33 @@ $messages['sma'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'spamregex'             => 'SpamRegex',
-	'spamregex-desc'        => '[[Special:Spamregex|Filtrera ut]] oönskade fraser i redigerade sidor, baserade på reguljära uttryck',
-	'spamregex_summary'     => 'Texten hittades i sidans sammanfattning.',
-	'spamregex-log-1'       => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
-	'spamregex-log-2'       => ' på $1',
-	'spamregex-text'        => '(Text)',
-	'spamregex-summary-log' => '(Sammanfattning)',
+	'spamregex'                      => 'SpamRegex',
+	'spamregex-desc'                 => '[[Special:Spamregex|Filtrera ut]] oönskade fraser i redigerade sidor, baserade på reguljära uttryck',
+	'spamregex_summary'              => 'Texten hittades i sidans sammanfattning.',
+	'spamregex-intro'                => 'Använd det här formuläret för att effektivt blockera uttryck från att sparas på sidorna.
+Om texten innehåller det angivna uttrycket, kommer ändringen inte att sparas, och en förklaring kommer visas för användaren som försökte att spara sidan.
+Var observant på att uttryck inte bör vara för korta eller för vanliga.',
+	'spamregex-page-title'           => 'Blockering av oönskade uttryck med reguljära uttryck',
+	'spamregex-currently-blocked'    => "'''Nuvarande blockerade fraser:'''",
+	'spamregex-no-currently-blocked' => "'''Det finns inga blockerade fraser.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
+	'spamregex-log-2'                => ' på $1',
+	'spamregex-page-title-1'         => 'Blockera fras med hjälp av reguljära uttryck',
+	'spamregex-unblock-success'      => 'Avblockering lyckades',
+	'spamregex-unblock-message'      => "Frasen '''$1''' är inte längre blockerad.",
+	'spamregex-page-title-2'         => 'Blockera fraser från att kunna sparas med hjälp av reguljära uttryck',
+	'spamregex-block-success'        => 'Blockering lyckades',
+	'spamregex-block-message'        => "Frasen '''$1''' har blockerats.",
+	'spamregex-warning-1'            => 'Ange en fras att blockera.',
+	'spamregex-error-1'              => 'Ogiltigt reguljärt uttryck.',
+	'spamregex-warning-2'            => 'Du måste välja minst en blockeringsmetod.',
+	'spamregex-already-blocked'      => '"$1" är redan blockerad',
+	'spamregex-phrase-block'         => 'Fras att blockera:',
+	'spamregex-phrase-block-text'    => 'blockera fras i sidtext',
+	'spamregex-phrase-block-summary' => 'blockera fras i sammanfattning',
+	'spamregex-block-submit'         => 'Blockera&nbsp;den&nbsp;här&nbsp;frasen',
+	'spamregex-text'                 => '(Text)',
+	'spamregex-summary-log'          => '(Sammanfattning)',
 );
 
 /** Tamil (தமிழ்)

@@ -141,9 +141,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'spamdifftool'             => 'Kontrolu spaman nigraliston',
-	'spamdifftool_option_none' => 'nenio',
-	'spamdifftool_block'       => 'Forbaru:',
+	'spamdifftool'               => 'Kontrolu spaman nigraliston',
+	'spamdifftool_option_none'   => 'nenio',
+	'spamdifftool_block'         => 'Forbaru:',
+	'spamdifftool_submit_buttom' => 'Ek',
 );
 
 /** French (Français)

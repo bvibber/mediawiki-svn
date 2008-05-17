@@ -768,7 +768,7 @@ $messages['km'] = array(
 	'sign-viewfield-phone'            => 'ទូរស័ព្ទ',
 	'sign-viewfield-email'            => 'អ៊ីមែល',
 	'sign-viewfield-age'              => 'អាយុ',
-	'sign-viewfield-options'          => 'ជំរើស',
+	'sign-viewfield-options'          => 'ជំរើសនានា',
 	'sign-signatures'                 => 'ហត្ថលេខា',
 	'sign-closed'                     => 'ត្រូវបានបិទ',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
@@ -1691,6 +1691,14 @@ $messages['sv'] = array(
 	'sign-list-hidebday'              => 'Lista inte ålder',
 	'sign-list-hideemail'             => 'Lista inte e-post',
 	'sign-submit'                     => 'Signera dokumentet',
+	'sign-information'                => '<div class="noarticletext">Tack för att du har tagit dig tiden till att läsa igenom det här dokumentet.
+Om du är enig med det, var god visa ditt stöd genom att fylla i de nödvändiga fälten nedan och klicka på "Signera dokument".
+Försäkra dig om att din personliga information är korrekt, och att vi har en möjlighet att kontakta dig för att bekräfta din identitet.
+Notera att din IP-adress och annan identifierbar information kommer att användas av moderatorer för att eliminera dublettsignaturer och att bekräfta giltigheten av din personliga informaton.
+När sidan används av öppna och anonymiserade proxyservrar hindrar det vår möjlighet att göra det här, då kommer signaturer från vissa proxyservrar troligen inte att räknas med.
+Om du är ansluten via en proxyserver, koppla från den och använd en vanlig uppkoppling när du signerar.</div>
+
+$1',
 	'sig-success'                     => 'Du har signerat dokumentet lyckat.',
 	'sign-view-selectfields'          => '<b>Fält som visas:</b>',
 	'sign-viewfield-entryid'          => 'Inskrifts-ID',

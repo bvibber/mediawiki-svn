@@ -119,6 +119,13 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -67,6 +67,16 @@ $messages['no'] = array(
 	'simpleantispam-desc'  => 'Legger til en enkel spam-/robot-sjekk på skjemaer',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'simpleantispam'       => 'Vòstre cambiament a desenclavat lo mecanisme antispam',
+	'simpleantispam-label' => "Verificacion antispam.
+Inscrigatz '''PAS RES''' dedins !",
+	'simpleantispam-desc'  => 'Ajusta al formulari la verificacion d’un bòt spamaire',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

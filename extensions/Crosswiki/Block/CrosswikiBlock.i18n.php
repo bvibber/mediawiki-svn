@@ -580,14 +580,14 @@ $messages['km'] = array(
 	'crosswikiblock'                => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគីផ្សេង',
 	'crosswikiblock-target'         => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
 	'crosswikiblock-expiry'         => 'ផុតកំណត់ ៖',
-	'crosswikiblock-reason'         => 'ហេតុផល ៖',
+	'crosswikiblock-reason'         => 'មូលហេតុ៖',
 	'crosswikiblock-submit'         => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​នេះ',
 	'crosswikiblock-anononly'       => 'រាំងខ្ទប់​តែ​អ្នកប្រើប្រាស់​អនាមិក',
 	'crosswikiblock-nocreate'       => 'បង្ការ​ការបង្កើត​គណនី',
 	'crosswikiblock-noemail'        => 'បង្ការ​អ្នកប្រើប្រាស់​ពី​ការផ្ញើ​អ៊ីមែល',
 	'crosswikiunblock'              => 'លែងរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគី​ផ្សេង',
 	'crosswikiunblock-user'         => 'ឈ្មោះអ្នកប្រើប្រាស់, អាស័យដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
-	'crosswikiunblock-reason'       => 'ហេតុផល ៖',
+	'crosswikiunblock-reason'       => 'មូលហេតុ៖',
 	'crosswikiunblock-submit'       => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
 	'crosswikiblock-nousername'     => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
 	'crosswikiblock-dbnotfound'     => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
@@ -1215,6 +1215,13 @@ $messages['tg-cyrl'] = array(
 Баргардед ба:
 * [[Special:CrosswikiBlock|Форми бастан]]
 * [[$4]]",
+);
+
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$messages['tr'] = array(
+	'crosswikiunblock-reason' => 'Neden:',
 );
 
 /** Vietnamese (Tiếng Việt)

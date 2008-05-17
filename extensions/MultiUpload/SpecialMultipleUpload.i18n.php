@@ -130,7 +130,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'multipleupload'              => 'Alŝutu dosierojn',
+	'multipleupload'              => 'Alŝuti dosierojn',
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
 	'multiupload-fileuploaded'    => 'Dosiero alŝutita.',
 );

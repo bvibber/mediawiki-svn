@@ -30,6 +30,14 @@ $messages['ar'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'seealso'      => 'Глядзіце таксама',
+	'seealso-desc' => 'Лякалізаваны загаловак «Глядзіце таксама» з дапамогай тэга <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

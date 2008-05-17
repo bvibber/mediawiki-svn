@@ -1347,7 +1347,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'mv_save_changes'        => 'മാറ്റങ്ങള്‍ സേവ് ചെയ്യുക',
+	'mv_metavid_file'        => 'സെര്‍‌വറില്‍ നിലവിലുള്ള പ്രമാണം',
 	'mv_upload_file'         => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
+	'mv_external_file'       => 'ബാഹ്യ പ്രമാണം',
 	'mv_tool_search'         => 'തിരയൂ',
 	'mv_tool_export'         => 'എക്സ്പോര്‍ട്ട്',
 	'mv_watch_clip'          => 'ക്ലിപ്പ് കാണുക',
@@ -2123,9 +2126,15 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'mv_save_changes'      => 'Zapisz zmiany',
-	'mv_label_stream_type' => 'Typ strumienia',
-	'mv_remove'            => 'usuń',
+	'mv_add_stream_submit'   => 'Dodaj strumień',
+	'mv_save_changes'        => 'Zapisz zmiany',
+	'mv_removed_file_stream' => 'Usunięto plik strumienia: $1',
+	'mv_file_list'           => 'Pliki strumienia',
+	'mv_label_stream_name'   => 'Nazwa strumienia',
+	'mv_label_stream_desc'   => 'Opis strumienia',
+	'mv_remove_reason'       => 'Powód usunięcia',
+	'mv_label_stream_type'   => 'Typ strumienia',
+	'mv_remove'              => 'usuń',
 );
 
 /** Pashto (پښتو)

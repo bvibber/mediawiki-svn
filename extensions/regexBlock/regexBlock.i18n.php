@@ -1220,6 +1220,13 @@ $messages['tg-cyrl'] = array(
 	'regexblock-view-time'            => 'дар $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$messages['tr'] = array(
+	'regexblock-form-reason' => 'Neden:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -526,8 +526,11 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'review_sidebar_title'     => 'സം‌ശോധനം',
+	'review_save'              => 'സം‌ശോധനം സേവ് ചെയ്യുക',
+	'review_page_link'         => 'സം‌ശോധന സ്ഥിതിവിവരക്കണക്കുകള്‍',
 	'review_total_statistics'  => 'മൊത്തം',
 	'review_user_details_link' => '(വിശദാംശങ്ങള്‍:)',
+	'review_page_review'       => '"$1" എന്ന താളിന്റെ സം‌ശോധനം',
 	'review_blocked'           => 'താങ്കള്‍ തടയപ്പെട്ടിക്കുന്നു. ഇവിടെ പ്രവേശനം ഇല്ല.',
 	'review_comment'           => 'അഭിപ്രായം:',
 );
@@ -737,14 +740,14 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'review_sidebar_title'                   => 'Kontrola',
-	'review-desc'                            => 'Narzędzie ponownej [[Special:Review|recenzji]] artykułów.',
-	'review_topic_page'                      => 'Tematy recenzji',
-	'review_save'                            => 'Zapisz recenzję',
-	'review_your_review'                     => 'Twoja recenzja dla tej strony lub wersji:',
-	'review_page_link'                       => 'statystyka wykonanych recenzji',
-	'review_for_page'                        => 'Recenzja strony „$1”',
-	'review_for_user'                        => 'Recenzja użytkownika „$1”',
+	'review_sidebar_title'                   => 'oceń',
+	'review-desc'                            => 'Narzędzie ponownej [[Special:Review|oceny]] artykułów.',
+	'review_topic_page'                      => 'Oceniane tematy',
+	'review_save'                            => 'Zapisz ocenę',
+	'review_your_review'                     => 'Twoja ocena tej strony lub wersji',
+	'review_page_link'                       => 'statystyka oceniania',
+	'review_for_page'                        => 'Ocena strony „$1”',
+	'review_for_user'                        => 'Ocena artykułów użytkownika „$1”',
 	'review_error'                           => 'Wystąpił błąd!',
 	'review_no_reviews_for_page'             => 'Brak obecnie recenzji dla artykułu „$1”.',
 	'review_total_statistics'                => 'Podsumowanie',

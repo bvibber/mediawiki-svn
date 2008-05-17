@@ -387,8 +387,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author McMonster
  */
 $messages['pl'] = array(
+	'editmessages'          => 'Edytuj wiadomości',
 	'editmsg-search'        => 'Szukaj',
 	'editmsg-new-search'    => 'Nowe wyszukiwanie',
 	'editmsg-apply-patch'   => 'Zastosuj poprawkę',

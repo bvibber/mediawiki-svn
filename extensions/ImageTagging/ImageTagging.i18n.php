@@ -54,8 +54,16 @@ $messages['bg'] = array(
 	'imagetagging-tagcancel-button' => 'Отказване',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'imagetagging-tagcancel-button' => 'Nuligi',
+);
+
 /** French (Français)
  * @author Grondin
+ * @author Cedric31
  */
 $messages['fr'] = array(
 	'taggedimages'                          => 'Images balisées',
@@ -124,6 +132,37 @@ Desexa acceder ao sistema agora?',
 	'imagetagging-taggedimages-title'       => 'Imaxes de "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Amosando da $1 á $2, dun total de $3 imaxes de "$4"',
 	'imagetagging-taggedimages-total'       => '"$1"; imaxe(s) en total',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'imagetagging-article'                 => 'Säit:',
+	'imagetagging-images'                  => 'Biller',
+	'imagetagging-inthisimage'             => 'Op dësem Bild: $1',
+	'imagetagging-tagcancel-button'        => 'Zréck',
+	'imagetagging-imagetag-seemoreimages'  => 'Kuckt méi Biller vu(n) "$1" ($2)',
+	'imagetagging-taggedimages-title'      => 'Biller vun "$1"',
+	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
+	'imagetagging-taggedimages-total'      => '"$1"; Bild/Biller am ganzen',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'imagetagging-addimagetag'      => 'ഈ ചിത്രം ടാഗ് ചെയ്യുക',
+	'imagetagging-article'          => 'താള്‍:',
+	'imagetagging-imghistory'       => 'നാള്‍വഴി',
+	'imagetagging-images'           => 'ചിത്രങ്ങള്‍',
+	'imagetagging-inthisimage'      => 'ഈ ചിത്രത്തില്‍: $1',
+	'imagetagging-tag-button'       => 'ടാഗ്',
+	'imagetagging-tagcancel-button' => 'റദ്ദാക്കുക',
+	'imagetagging-addingtag'        => 'ടാഗ് ചേര്‍ക്കുന്നു...',
+	'imagetagging-removingtag'      => 'ടാഗ് ഒഴിവാക്കുന്നു...',
+	'imagetagging-addtagsuccess'    => 'ടാഗ് ചേര്‍ത്തു.',
+	'imagetagging-removetagsuccess' => 'ടാഗ് ഒഴിവാക്കി.',
 );
 
 /** Dutch (Nederlands)
@@ -198,6 +237,42 @@ Vil du logge inn nå?',
 	'imagetagging-taggedimages-total'       => '«$1»; bilde(r) totalt',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'taggedimages'                          => 'Imatges balisats',
+	'imagetagging-desc'                     => "Permet a un utilizaire de seleccionar las regions d’un imatge incrustat per l'associar a una pagina.",
+	'imagetagging-addimagetag'              => 'Balisar aqueste imatge',
+	'imagetagging-article'                  => 'Pagina :',
+	'imagetagging-articletotag'             => 'Pagina de balisar',
+	'imagetagging-imghistory'               => 'Istoric',
+	'imagetagging-images'                   => 'imatges',
+	'imagetagging-inthisimage'              => 'Dins aqueste imatge : $1',
+	'imagetagging-logentry'                 => 'Balisa levada de la pagina [[$1]] per $2',
+	'imagetagging-log-tagged'               => "L'imatge [[$1|$2]] es estat balisat per la pagina [[$3]] per $4",
+	'imagetagging-new'                      => '<sup><span style="color:red">Novèl !</span></sup>',
+	'imagetagging-removetag'                => 'levar la balisa',
+	'imagetagging-done-button'              => 'Balisatge efectuat',
+	'imagetagging-tag-button'               => 'Balisa',
+	'imagetagging-tagcancel-button'         => 'Anullar',
+	'imagetagging-tagging-instructions'     => 'Clicar sus las personas o las causas dins l’imatge per las balisar.',
+	'imagetagging-addingtag'                => 'Balisa en cors d’ajust…',
+	'imagetagging-removingtag'              => 'Balisa en cors de levament…',
+	'imagetagging-addtagsuccess'            => 'Balisa ajustada.',
+	'imagetagging-removetagsuccess'         => 'Balisa levada.',
+	'imagetagging-oneactionatatimemessage'  => "Una accion de balisatge es permesa a l'encòp.
+Esperatz la fin de l’accion en cors.",
+	'imagetagging-canteditneedloginmessage' => 'Podètz pas modificar aquesta pagina.
+Aquò poiriá èsser perque avètz besonh de vos connectar per balisar los imatges.
+Vos volètz connectar ara ?',
+	'imagetagging-oneuniquetagmessage'      => 'Aqueste imatge ja a una balisa amb aqueste nom.',
+	'imagetagging-imagetag-seemoreimages'   => 'Vejatz mai d’imatges de « $1 » ($2)',
+	'imagetagging-taggedimages-title'       => 'Imatges de « $1 »',
+	'imagetagging-taggedimages-displaying'  => 'Afichatge de $1 - $2 sus $3 imatges de « $4 »',
+	'imagetagging-taggedimages-total'       => '« $1 » : soma dels imatges',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -210,6 +285,45 @@ $messages['pl'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'taggedimages' => 'Taggade bilder',
+	'taggedimages'                          => 'Märkta bilder',
+	'imagetagging-desc'                     => 'Låter en användare välja områden på en bild och länka de områdena till en sida',
+	'imagetagging-addimagetag'              => 'Märk den här bilden',
+	'imagetagging-article'                  => 'Sida:',
+	'imagetagging-articletotag'             => 'Sida som ska märkas',
+	'imagetagging-imghistory'               => 'Historik',
+	'imagetagging-images'                   => 'bilder',
+	'imagetagging-inthisimage'              => 'På den här bilden: $1',
+	'imagetagging-logentry'                 => 'Tog bort märkning till sidan [[$1]] av $2',
+	'imagetagging-log-tagged'               => 'Bilden [[$1|$2]] märktes till sidan [[$3]] av $4',
+	'imagetagging-new'                      => '<sup><span style="color:red">Ny!</span></sup>',
+	'imagetagging-removetag'                => 'ta bort märkning',
+	'imagetagging-done-button'              => 'Färdig med att märka',
+	'imagetagging-tag-button'               => 'Märk',
+	'imagetagging-tagcancel-button'         => 'Avbryt',
+	'imagetagging-tagging-instructions'     => 'Klicka på folk eller saker på bilden för att märka dom.',
+	'imagetagging-addingtag'                => 'Lägger till märkning...',
+	'imagetagging-removingtag'              => 'Tar bort märkning...',
+	'imagetagging-addtagsuccess'            => 'Lade till märkning.',
+	'imagetagging-removetagsuccess'         => 'Tog bort märkning.',
+	'imagetagging-oneactionatatimemessage'  => 'Endast en märkningshandling är den här gången tillåten.
+Var god vänta tills den föregående handlingen är färdig.',
+	'imagetagging-canteditneedloginmessage' => 'Du kan inte redigera den här sidan.
+Det kan bero på att man måste logga in för att märka bilder.
+Vill du logga in nu?',
+	'imagetagging-oneuniquetagmessage'      => 'Den här bilden har redan en märkning med det här namnet.',
+	'imagetagging-imagetag-seemoreimages'   => 'Se mer bilder av "$1" ($2)',
+	'imagetagging-taggedimages-title'       => 'Bilder av "$1"',
+	'imagetagging-taggedimages-displaying'  => 'Visar $1 - $2 av $3 bilder av "$4"',
+	'imagetagging-taggedimages-total'       => '"$2"; bild(er) totalt',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'imagetagging-article'            => 'Sayfa:',
+	'imagetagging-imghistory'         => 'Geçmiş',
+	'imagetagging-images'             => 'Resimler',
+	'imagetagging-taggedimages-title' => '"$1" resimleri',
 );
 

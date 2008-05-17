@@ -382,8 +382,8 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
- * @author ArnoLagrange
  * @author Yekrats
+ * @author ArnoLagrange
  * @author Amikeco
  */
 $messages['eo'] = array(
@@ -396,11 +396,11 @@ $messages['eo'] = array(
 	'ogg-long-multiplexed'    => '(Kunigita aŭdio/video ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute)',
 	'ogg-long-general'        => '(Ogg-mediodosiero, longeco $2, $3)',
 	'ogg-long-error'          => '(Nevalida ogg-dosiero: $1)',
-	'ogg-play'                => 'Legu',
-	'ogg-pause'               => 'Paŭzu',
-	'ogg-stop'                => 'Haltu',
-	'ogg-play-video'          => 'Montru videon',
-	'ogg-play-sound'          => 'Aŭdigu sonon',
+	'ogg-play'                => 'Legi',
+	'ogg-pause'               => 'Paŭzi',
+	'ogg-stop'                => 'Halti',
+	'ogg-play-video'          => 'Montri videon',
+	'ogg-play-sound'          => 'Aŭdigi sonon',
 	'ogg-no-player'           => 'Ŝajnas ke via sistemo malhavas ian medilegilan programon por legi tian dosieron. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti iun</a>.',
 	'ogg-no-xiphqt'           => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime. 

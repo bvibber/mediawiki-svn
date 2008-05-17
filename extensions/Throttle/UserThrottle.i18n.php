@@ -146,3 +146,14 @@ $messages['stq'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar eenige Sekonden unnerbreeken, uum ne Floud fon Registrierengen tou reduzierjen. Täiw n Sät un tai dan dän Näileede-Knoop an dien Browser.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'acct_creation_global_soft_throttle_hit'      => 'Skapande av konton har automatiskt stängts av under ett ögonblick på grund av ett ovanligt högt antal inloggningsförsök.
+Var god vänta några minuter och pröva igen.',
+	'acct_creation_global_hard_throttle_hit'      => 'Skapande av konton har automatiskt stängts av under några sekunder för att reducera massregistreringsangrepp.
+Var god vänta en liten stund och tryck på "uppdatera" i webbläsaren för att pröva igen.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Begränsar antal konton som kan skapas under en tidsperiod',
+);
+

@@ -417,7 +417,7 @@ $messages['eo'] = array(
 	'grouppage-oversight'         => '{{ns:project}}:Kontrolado',
 	'right-oversight'             => 'Rigardi antaŭe kaŝitan revizion',
 	'hiderevision-prompt'         => 'Nombro de revizio por forigi:',
-	'hiderevision-continue'       => 'Kontinuu',
+	'hiderevision-continue'       => 'Kontinui',
 	'hiderevision-text'           => "Ĉi tiu ago '''nur''' estu uzata por la jenaj kazoj:
 * Netaŭga persona informo
 *: ''hejmaj adresoj kaj nombroj de telefono, personaj ŝtataj nombroj de identigo, ktp''
@@ -425,10 +425,12 @@ $messages['eo'] = array(
 '''Misuzo de ĉi tiu sistemo kaŭzos perdon de privilegioj.'''
 
 Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skribita en la protokolo kaj povas esti restarigita de datumbaza administranto se eraro estas farita.",
+	'hiderevision-reason'         => 'Kialo (estos protokolita private)',
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
 	'hiderevision-noreason'       => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status'         => 'Revizio $1: $2',
+	'hiderevision-success'        => 'Arkivita kaj forigita sukcese.',
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
 	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
@@ -1010,13 +1012,15 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 /** Japanese (日本語)
  * @author JtFuruhata
  * @author Kahusi
+ * @author Marine-Blue
  */
 $messages['ja'] = array(
 	'hiderevision'                => '永久的な版の秘匿',
 	'hiderevision-desc'           => '法律上の理由などにより特定版を全利用者から閲覧不可能にする',
-	'group-oversight'             => '秘匿版確認者',
-	'group-oversight-member'      => '秘匿版確認者',
-	'grouppage-oversight'         => '{{ns:project}}:秘匿版確認',
+	'group-oversight'             => 'Oversight',
+	'group-oversight-member'      => 'Oversight',
+	'grouppage-oversight'         => '{{ns:project}}:Oversight',
+	'right-oversight'             => '秘匿前の版を閲覧する',
 	'hiderevision-prompt'         => '秘匿する特定版ID:',
 	'hiderevision-continue'       => '続ける',
 	'hiderevision-text'           => "これは、'''以下の場合に限って'''使用すべきです：
@@ -2193,8 +2197,10 @@ $messages['tg-cyrl'] = array(
 
 /** Turkish (Türkçe)
  * @author SPQRobin
+ * @author Karduelis
  */
 $messages['tr'] = array(
+	'hiderevision-continue'      => 'Devam',
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
 );
 

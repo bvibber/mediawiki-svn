@@ -128,7 +128,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'sitenotice_close' => 'Kaŝu',
+	'sitenotice_close' => 'Kaŝi',
 	'sitenotice-desc'  => 'Permesas al uzantoj fermi la vikinoticon.',
 );
 

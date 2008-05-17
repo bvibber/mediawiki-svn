@@ -168,6 +168,13 @@ $messages['lb'] = array(
 	'msfunc_div_zero' => 'Divisioun duerch null',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'msfunc_div_zero' => 'പൂജ്യം കൊണ്ടുള്ള ഹരണം',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -97,7 +97,7 @@ $messages['eo'] = array(
 	'inspectcache-parser'  => 'Sintaksa kaŝmemoro',
 	'inspectcache-message' => 'Mesaĝa kaŝmemoro',
 	'inspectcache-get'     => 'Akiru',
-	'inspectcache-delete'  => 'Forigu',
+	'inspectcache-delete'  => 'Forigi',
 	'inspectcache-deleted' => 'Forigita Kaŝmemoro',
 	'inspectcache-list'    => 'Listo',
 );

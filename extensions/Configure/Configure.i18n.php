@@ -323,6 +323,7 @@ $messages['eo'] = array(
 	'configure-btn-save'              => 'Konservi preferojn',
 	'configure-edit-old'              => 'Averto: vi redaktas <strong>malnovan</strong> version de la agordo.',
 	'configure-error'                 => 'La konfiguro ne eblis esti konservita.',
+	'configure-js-remove'             => 'Forigi',
 	'configure-no-old'                => 'Neniu malnova versio de la konfiguro havebla',
 	'configure-no-transwiki'          => 'Vi ne estas permesita ŝanĝi konfigurojn en aliaj vikioj',
 	'configure-old-versions'          => 'Listo de malnovaj versioj de la konfiguro:',
@@ -614,6 +615,7 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'configure-desc-val'              => 'តំលៃ',
 	'configure-section-general'       => 'ការកំនត់ទូទៅនានា',
 	'configure-section-db'            => 'មូលដ្ឋានទិន្នន័យ',
 	'configure-section-db-notallowed' => 'អ្នកមិនត្រូវបានអនុញ្ញាតិអោយធ្វើការផ្លាស់ប្ដូរការកំនត់ផ្សេងៗរបស់មូលដ្ឋានទិន្នន័យទេ។',
@@ -944,6 +946,11 @@ $messages['oc'] = array(
 Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-edit-old'               => 'Atencion : sètz a modificar una version <strong>anciana</strong> de la configuracion.',
 	'configure-error'                  => 'La configuracion a pas pogut èsser salvagardada',
+	'configure-js-add'                 => 'Ajustar una entrada novèla',
+	'configure-js-group-exists'        => 'Error : lo grop existís ja.',
+	'configure-js-prompt-group'        => 'Picatz lo nom novèl del grop :',
+	'configure-js-remove'              => 'Suprimir',
+	'configure-js-remove-row'          => "Suprimir l'entrada",
 	'configure-no-directory'           => "Lo dorsièr utilizat per salvagadar la configuracion, <tt>$1</tt>, existís pas, mercés de lo crear o de lo cambiar per qu'aquesta extension foncione.",
 	'configure-no-old'                 => 'I a pas de version anciana de la configuracion.',
 	'configure-no-setup'               => 'Vos cal explicitament apelar la foncion <code>efConfigureSetup()</code> dins vòstre fichièr LocalSettings.php per utilizar aquesta extension.',
@@ -1005,6 +1012,7 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author McMonster
  */
 $messages['pl'] = array(
 	'configure'                        => 'Konfiguracja wiki',
@@ -1019,6 +1027,9 @@ $messages['pl'] = array(
 Ustaw uprawnienia do zapisu dla PHP, jeśli chcesz korzystać z tego rozszerzenia.',
 	'configure-edit-old'               => 'Uwaga: zmieniasz teraz <strong>starą</strong> wersję konfiguracji.',
 	'configure-error'                  => 'Konfiguracja nie może zostać zapisana.',
+	'configure-js-add'                 => 'Dodaj nowy wpis',
+	'configure-js-remove'              => 'Usuń',
+	'configure-js-remove-row'          => 'Usuń ten wpis',
 	'configure-no-directory'           => 'Katalog <tt>$1</tt> wykorzystywany do przetrzymywania konfiguracji nie istnieje.
 Utwórz katalog lub wybierz inny jeśli chcesz korzystać z tego rozszerzenia.',
 	'configure-no-old'                 => 'Brak dostępnych starych wersji konfiguracji',

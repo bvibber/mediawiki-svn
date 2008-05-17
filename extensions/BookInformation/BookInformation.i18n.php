@@ -698,6 +698,7 @@ $messages['km'] = array(
 	'bookinfo-result-year'       => 'ឆ្នាំ៖',
 	'bookinfo-error-invalidisbn' => 'លេខ ISBN មិនត្រឹមត្រូវ​ត្រូវបានបញ្ចូល។',
 	'bookinfo-error-nosuchitem'  => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
+	'bookinfo-error-noresponse'  => 'គ្មានចំលើយ ឬ សំនើបានអស់ពេល។',
 	'bookinfo-purchase'          => 'ជាវសៀវភៅនេះ​ពី $1',
 	'bookinfo-provider'          => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );

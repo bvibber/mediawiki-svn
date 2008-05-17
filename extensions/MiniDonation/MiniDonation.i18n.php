@@ -39,7 +39,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'donationform-submit' => 'Donacu per PayPal',
+	'donationform-submit' => 'Donaci per PayPal',
 );
 
 /** Spanish (Español)

@@ -294,6 +294,7 @@ $messages['os'] = array(
  * @author McMonster
  */
 $messages['pl'] = array(
+	'findspam'    => 'Znajdź spam',
 	'findspam-ip' => 'Adres IP:',
 );
 

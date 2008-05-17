@@ -59,7 +59,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'minnamelength-error' => 'Via uzantonomo estas tro mallonga. La minimuma longo estas $1.',
+	'minnamelength-error' => 'Via salutnomo estas tro mallonga. La minimuma longo estas $1.',
 );
 
 $messages['fi'] = array(

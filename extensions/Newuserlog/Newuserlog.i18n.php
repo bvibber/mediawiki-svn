@@ -272,11 +272,12 @@ $messages['eml'] = array(
  * @author Tlustulimu
  */
 $messages['eo'] = array(
-	'newuserlogpage'           => 'Protokolo de uzanto-kreado',
-	'newuserlogpagetext'       => 'Ĉi tio estas protokolo de uzantokreadoj',
-	'newuserlog-byemail'       => 'pasvorto sendita retpoŝte',
-	'newuserlog-create-entry'  => 'Nova uzanto',
-	'newuserlog-create2-entry' => 'kreis konton por $1',
+	'newuserlogpage'              => 'Protokolo de uzanto-kreado',
+	'newuserlogpagetext'          => 'Ĉi tio estas protokolo de uzantokreadoj',
+	'newuserlog-byemail'          => 'pasvorto sendita retpoŝte',
+	'newuserlog-create-entry'     => 'Nova uzanto',
+	'newuserlog-create2-entry'    => 'kreis konton por $1',
+	'newuserlog-autocreate-entry' => 'Konto kreita aŭtomate',
 );
 
 /** Spanish (Español)
@@ -424,12 +425,13 @@ $messages['he'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'newuserlogpage'           => 'नये सदस्योंकी सूची',
-	'newuserlogpagetext'       => 'यह नये सदस्योंकी सूची हैं।',
-	'newuserlog-desc'          => '[[Special:Log]] में [[Special:Log/newusers|नये सदस्योंकी सूची]] बढायें।',
-	'newuserlog-byemail'       => 'कूटशब्द इ-मेल द्वारा भेजा गया हैं',
-	'newuserlog-create-entry'  => 'नवीन सदस्य',
-	'newuserlog-create2-entry' => '$1 के लिये खाता खोला',
+	'newuserlogpage'              => 'नये सदस्योंकी सूची',
+	'newuserlogpagetext'          => 'यह नये सदस्योंकी सूची हैं।',
+	'newuserlog-desc'             => '[[Special:Log]] में [[Special:Log/newusers|नये सदस्योंकी सूची]] बढायें।',
+	'newuserlog-byemail'          => 'कूटशब्द इ-मेल द्वारा भेजा गया हैं',
+	'newuserlog-create-entry'     => 'नवीन सदस्य',
+	'newuserlog-create2-entry'    => '$1 के लिये खाता खोला',
+	'newuserlog-autocreate-entry' => 'खाता अपनेआप खोल दिया हैं',
 );
 
 /** Croatian (Hrvatski)
@@ -588,16 +590,18 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Lovekhmer
  * @author Chhorran
+ * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'newuserlogpage'           => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
-	'newuserlogpagetext'       => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
-	'newuserlog-desc'          => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃ ការបង្កើត គណនី]] ទៅ [[Special:Log]]',
-	'newuserlog-byemail'       => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
-	'newuserlog-create-entry'  => 'អ្នកប្រើប្រាស់ថ្មី',
-	'newuserlog-create2-entry' => "បានបង្កើតគណនីសំរាប់'''$1'''",
+	'newuserlogpage'              => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
+	'newuserlogpagetext'          => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
+	'newuserlog-desc'             => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃ ការបង្កើត គណនី]] ទៅ [[Special:Log]]',
+	'newuserlog-byemail'          => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
+	'newuserlog-create-entry'     => 'អ្នកប្រើប្រាស់ថ្មី',
+	'newuserlog-create2-entry'    => "បានបង្កើតគណនីសំរាប់'''$1'''",
+	'newuserlog-autocreate-entry' => 'គណនីត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ',
 );
 
 /** Korean (한국어)
@@ -717,12 +721,13 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'newuserlogpage'           => 'नवीन सदस्यांची नोंद',
-	'newuserlogpagetext'       => 'ही नवीन सदस्यांची नोंद यादी आहे.',
-	'newuserlog-desc'          => '[[Special:Log]] मध्ये [[Special:Log/newusers|नवीन सदस्य नोंदणी सूची]] वाढविते.',
-	'newuserlog-byemail'       => 'परवलीचा शब्द इमेलमार्फत पाठविलेला आहे',
-	'newuserlog-create-entry'  => 'नवीन सदस्य',
-	'newuserlog-create2-entry' => '$1 साठी सदस्यत्व घेतले.',
+	'newuserlogpage'              => 'नवीन सदस्यांची नोंद',
+	'newuserlogpagetext'          => 'ही नवीन सदस्यांची नोंद यादी आहे.',
+	'newuserlog-desc'             => '[[Special:Log]] मध्ये [[Special:Log/newusers|नवीन सदस्य नोंदणी सूची]] वाढविते.',
+	'newuserlog-byemail'          => 'परवलीचा शब्द इमेलमार्फत पाठविलेला आहे',
+	'newuserlog-create-entry'     => 'नवीन सदस्य',
+	'newuserlog-create2-entry'    => '$1 साठी सदस्यत्व घेतले.',
+	'newuserlog-autocreate-entry' => 'खाते आपोआप तयार झाले',
 );
 
 /** Malay (Bahasa Melayu)
@@ -809,12 +814,13 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newuserlogpage'           => 'Istoric de las creacions de comptes',
-	'newuserlogpagetext'       => "Jornal de las creacions de comptes d'utilizaires",
-	'newuserlog-desc'          => 'Ajusta un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
-	'newuserlog-byemail'       => 'senhal mandat per corrièr electronic',
-	'newuserlog-create-entry'  => 'Utilizaire novèl',
-	'newuserlog-create2-entry' => 'compte creat per $1',
+	'newuserlogpage'              => 'Istoric de las creacions de comptes',
+	'newuserlogpagetext'          => "Jornal de las creacions de comptes d'utilizaires",
+	'newuserlog-desc'             => 'Ajusta un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
+	'newuserlog-byemail'          => 'senhal mandat per corrièr electronic',
+	'newuserlog-create-entry'     => 'Utilizaire novèl',
+	'newuserlog-create2-entry'    => 'compte creat per $1',
+	'newuserlog-autocreate-entry' => 'Compte creat automaticament',
 );
 
 /** Pangasinan (Pangasinan)

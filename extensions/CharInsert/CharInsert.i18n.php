@@ -48,7 +48,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za zasajźenje specielnych znamješkow',
+	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za [[MediaWiki:Edittools|zasajźenje specielnych znamješkow]]',
 );
 
 /** Esperanto (Esperanto)

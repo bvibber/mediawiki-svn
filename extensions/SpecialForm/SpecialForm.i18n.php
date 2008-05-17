@@ -147,7 +147,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'formsave'              => 'Konservu',
+	'formsave'              => 'Konservi',
 	'formarticleexists'     => 'Paĝo ekzistas',
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
 	'formbadpagename'       => 'Fuŝa paĝnomo',
@@ -527,22 +527,30 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author M.M.S.
  * @author Lejonel
- * @author M.M.S.
- * @author M.M.S.
  */
 $messages['sv'] = array(
-	'form'                  => 'Formulär',
-	'formnoname'            => 'Formulärnamn saknas',
-	'formnonametext'        => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',
-	'formbadname'           => 'Felaktigt formulärnamn',
-	'formbadnametext'       => 'Det finns inget formulär med det namnet.',
-	'formpattern'           => '$1-formulär',
-	'formtitlepattern'      => 'Lägg till ny $1',
-	'formsave'              => 'Spara',
-	'formarticleexists'     => 'Sidan existerar',
-	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',
-	'formbadpagename'       => 'Dåligt sidnamn',
+	'form'                         => 'Formulär',
+	'formnoname'                   => 'Formulärnamn saknas',
+	'formnonametext'               => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',
+	'formbadname'                  => 'Felaktigt formulärnamn',
+	'formbadnametext'              => 'Det finns inget formulär med det namnet.',
+	'formpattern'                  => '$1-formulär',
+	'formtitlepattern'             => 'Lägg till ny $1',
+	'formsave'                     => 'Spara',
+	'formindexmismatch'            => 'Det här formuläret har opassande namnmönster och mallar som startar på index $1.',
+	'formarticleexists'            => 'Sidan existerar',
+	'formarticleexiststext'        => 'Sidan [[$1]] finns redan.',
+	'formbadpagename'              => 'Dåligt sidnamn',
+	'formbadpagenametext'          => 'Formulärdatan du skrev in utgör ett ogiltigt sidnamn, "$1".',
+	'formrequiredfieldpluralerror' => 'Fälten $1 behövs för det här formuläret.
+Var god fyll i dom.',
+	'formrequiredfielderror'       => 'Fältet $1 behövs för det här formuläret.
+Var god fyll i det.',
+	'formsavesummary'              => 'Ny sida använder [[Special:Form/$1]]',
+	'formsaveerror'                => 'Fel under sparning av formuläret',
+	'formsaveerrortext'            => 'Det uppstod ett okänt fel under sparning av sidan "$1".',
 );
 
 /** Telugu (తెలుగు)

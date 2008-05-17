@@ -188,6 +188,14 @@ $messages['lt'] = array(
 	'specialwhoiswatchingusage'   => 'Šis specialus puslapis negali būti naudojamas paprastai. Prašome naudoti [[MediaWiki:Number_of_watching_users_pageview]] puslapį, kad apibrėžtumėte įėjimo punktą į šį specialųjį puslapį.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'whoiswatching'               => 'ആരൊക്കെയാണ്‌ വിക്കിതാള്‍ നിരീക്ഷിക്കുന്നത്',
+	'specialwhoiswatchingthepage' => 'ആരാണു നിരീക്ഷിക്കുന്നത് %s',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

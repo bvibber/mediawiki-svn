@@ -703,7 +703,7 @@ $wdMessages['el'] = array(
 $wdMessages['eo'] = array(
 	'langman_title'                         => 'Lingva administrilo',
 	'languages'                             => 'Vikidatenoj: Lingva administrilo',
-	'ow_save'                               => 'Konservu',
+	'ow_save'                               => 'Konservi',
 	'ow_history'                            => 'Historio',
 	'ow_noedit_title'                       => 'Neniu permeso por redakti',
 	'ow_uipref_datasets'                    => 'Defaŭlta vido',
@@ -734,7 +734,7 @@ $wdMessages['eo'] = array(
 	'ow_ExpressionMeanings'                 => 'Esprimaj signifoj',
 	'ow_Expressions'                        => 'Esprimoj',
 	'ow_IdenticalMeaning'                   => 'Identa signifo?',
-	'ow_GotoSource'                         => 'Iru al fonto',
+	'ow_GotoSource'                         => 'Iri al fonto',
 	'ow_Language'                           => 'Lingvo',
 	'ow_LevelAnnotation'                    => 'Prinotado',
 	'ow_OptionAttribute'                    => 'Eco',
@@ -763,7 +763,7 @@ $wdMessages['eo'] = array(
 	'ow_meaningsoftitle'                    => 'Signifoj de "$1"',
 	'ow_meaningsofsubtitle'                 => '<em>Vikiligilo:</em> [[$1]]',
 	'ow_Permission_denied'                  => '<h2>PERMESO NEITA</h2>',
-	'ow_copy_no_action_specified'           => 'Bonvolu specifigu agon',
+	'ow_copy_no_action_specified'           => 'Bonvolu specifigi agon',
 	'ow_copy_help'                          => 'Iutage, ne eble helpos vin.',
 );
 

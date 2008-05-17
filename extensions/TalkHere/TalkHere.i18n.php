@@ -152,21 +152,18 @@ $messages['ext'] = array(
 	'talkhere-collapse' => 'açonchal eitol',
 );
 
-/** Finnish
+/** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Nike
  */
 $messages['fi'] = array(
-	'talkhere-title'       => '$1',
-	'talkhere-headtext'    => '',
 	'talkhere-foottext'    => 'Ylläolevat kommentit saattavat olla vierailijoiden jättämiä.
 
 Tämän sivuston ylläpitäjät eivät voi ottaa vastuuta kyseisten kommenttien sisällöstä.',
 	'talkhere-talkpage'    => 'keskustelusivu',
 	'talkhere-notalk'      => "''(ei kommentteja toistaiseksi)''",
 	'talkhere-addcomment'  => 'lisää kommentti',
-	'talkhere-beforeinput' => 'Voit lisätä kommentin alapuolelle',
-	'talkhere-afterinput'  => '',
-	'talkhere-afterform'   => '',
+	'talkhere-beforeinput' => 'Voit lisätä kommentin alle',
 	'talkhere-loading'     => 'ladataan editoria…',
 	'talkhere-collapse'    => 'piilota editori',
 );
@@ -477,6 +474,9 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
  * @author Lejonel
  */
 $messages['sv'] = array(
+	'talkhere-foottext'    => 'Kommentarerna ovan kan har lagts till av besökare.
+
+Sajtens operatörer kan inte ta ansvar för innehållet i vissa kommentarer.',
 	'talkhere-talkpage'    => 'diskussionssida',
 	'talkhere-notalk'      => "''(inga kommentarer ännu)''",
 	'talkhere-addcomment'  => 'lägg till kommentar',

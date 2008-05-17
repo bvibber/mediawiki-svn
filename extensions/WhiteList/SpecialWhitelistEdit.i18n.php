@@ -231,7 +231,7 @@ $allMessages['eo'] = array(
 	'whitelist'                 => 'Blanklisto Paĝoj',
 	'mywhitelistpages'          => 'Miaj Paĝoj',
 	'whitelistfor'              => '<center>Nuna informo por <b>$1</b></center>',
-	'whitelisttablemodify'      => 'Modifu',
+	'whitelisttablemodify'      => 'Modifi',
 	'whitelisttablemodifyall'   => 'Ĉiuj',
 	'whitelisttablemodifynone'  => 'Neniu',
 	'whitelisttablepage'        => 'Vikia Paĝo',
@@ -479,6 +479,7 @@ $allMessages['lb'] = array(
  */
 $allMessages['ml'] = array(
 	'mywhitelistpages'         => 'എന്റെ താളുകള്‍',
+	'whitelisttablemodify'     => 'തിരുത്തുക',
 	'whitelisttablemodifyall'  => 'എല്ലാം',
 	'whitelisttablemodifynone' => 'ഒന്നുമില്ല',
 	'whitelisttablepage'       => 'വിക്കി താള്‍',
@@ -488,8 +489,10 @@ $allMessages['ml'] = array(
 	'whitelisttablenewdate'    => 'പുതിയ തീയ്യതി:',
 	'whitelisttableremove'     => 'നീക്കം ചെയ്യുക',
 	'whitelistnewtabledate'    => 'കാലാവധി തീരുന്ന തീയ്യതി:',
+	'whitelistnewtableprocess' => 'പ്രക്രിയ',
 	'whitelistnewtablereview'  => 'സം‌ശോധനം',
 	'whitelistnever'           => 'ഒരിക്കലും അരുത്:',
+	'whitelistnummatches'      => '- $1 യോജിച്ച ഫലങ്ങള്‍',
 );
 
 /** Marathi (मराठी)

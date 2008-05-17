@@ -480,10 +480,29 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'tasklist'               => 'Uppgiftslista',
+	'tasklist-parser-desc'   => 'lägger till parser funktionen <nowiki>{{#todo:}}</nowiki för tilldelning av uppgifter',
+	'tasklist-special-desc'  => 'Lägger till en specialsida för granskning av [[Special:TaskList|uppgifter]]',
+	'tasklistbyproject'      => 'Uppgiftslista efter projekt',
 	'tasklistunknownproject' => 'Okänt projekt',
+	'tasklistunspecuser'     => 'Användare ej angiven',
 	'tasklistincorrectuser'  => 'Felaktigt användarnamn',
+	'tasklistemail'          => 'Kära %s',
+	'tasklistemailsubject'   => '[%s] Uppgiftslistsändring',
+	'tasklistmytasks'        => 'Mina uppgifter',
+	'tasklistbyprojectbad'   => "'''%s''' är inte ett giltigt projekt.
+För en lista över giltiga projekt, se [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "Tilldelade uppgifter för '''%s'''",
 	'tasklistchooseproj'     => 'Välj projekt:',
 	'tasklistprojdisp'       => 'Visa',
+	'tasklistbyname'         => '== Uppgiftslista för %s ==',
+	'tasklistnoprojects'     => "FEL: Det ser ut som om du har satt på '''\$wgUseProjects''' utan att skapa [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installationsinstruktionerna] för mer detaljer.",
+	'tasklistemailbody'      => ',
+
+Någon har givit dig en ny uppgift på %s.
+
+Gå till %s för att se din fullständiga uppgiftslista.
+
+Från %ss meddelningssystem.',
 );
 
 /** Telugu (తెలుగు)

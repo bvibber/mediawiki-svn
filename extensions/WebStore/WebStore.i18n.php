@@ -878,9 +878,15 @@ $1',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'webstore_invalid_zone' => 'Ogiltig zon "$1".',
-	'webstore_404'          => 'Filen hittades inte.',
-	'webstore_php_warning'  => 'PHP-varning: $1',
+	'inplace_access_disabled'          => 'Tillgången till den här tjänsten har stängts av för alla klienter.',
+	'inplace_access_denied'            => 'Den här tjänsten begränsas av klientens IP.',
+	'inplace_scaler_no_temp'           => 'Ingen giltig temporär mapp.
+Ange $wgLocalTmpDirectory till en skrivbar mapp.',
+	'inplace_scaler_not_enough_params' => 'Inte några parametrar.',
+	'inplace_scaler_invalid_image'     => 'Ogiltig bild, kunde inte fastslå storlek.',
+	'webstore_invalid_zone'            => 'Ogiltig zon "$1".',
+	'webstore_404'                     => 'Filen hittades inte.',
+	'webstore_php_warning'             => 'PHP-varning: $1',
 );
 
 /** Telugu (తెలుగు)

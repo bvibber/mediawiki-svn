@@ -175,19 +175,20 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'youtubeauthsub'                    => 'Alŝutu YouTube Video',
+	'youtubeauthsub'                    => 'Alŝuti YouTube Video',
 	'youtubeauthsub_title'              => 'Titolo',
 	'youtubeauthsub_description'        => 'Priskribo',
 	'youtubeauthsub_password'           => 'YouTube Pasvorto',
 	'youtubeauthsub_username'           => 'YouTube Salutnomo',
 	'youtubeauthsub_keywords'           => 'Ŝlosilvortoj',
 	'youtubeauthsub_category'           => 'Kategorio',
-	'youtubeauthsub_submit'             => 'Enigu',
+	'youtubeauthsub_submit'             => 'Ek',
 	'youtubeauthsub_clickhere'          => 'Klaku ĉi tien por ensaluti YouTube-on',
-	'youtubeauthsub_uploadbutton'       => 'Alŝutu',
+	'youtubeauthsub_uploadbutton'       => 'Alŝuti',
 	'youtubeauthsub_code'               => '{{#ev:youtube|$1}}.
 
 La video povas estis spektita [http://www.youtube.com/watch?v=$1 ĉi tie]',
+	'youtubeauthsub_summary'            => 'Alŝutante YouTube videon',
 	'youtubeauthsub_uploading'          => 'Via video estas alŝutanta.
 Bonvolu pacienciĝi.',
 	'youtubeauthsub_viewpage'           => 'Alternative, vi povas spekti vian videon [[$1|ĉi tie]].',

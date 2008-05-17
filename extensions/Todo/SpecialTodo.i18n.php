@@ -130,7 +130,7 @@ $messages['eo'] = array(
 	'todo-tab'          => 'tasko',
 	'todo-new-queue'    => 'nova',
 	'todo-list-change'  => 'Ŝanĝu',
-	'todo-list-cancel'  => 'Nuligu',
+	'todo-list-cancel'  => 'Nuligi',
 	'todo-form-details' => 'Detaloj:',
 );
 

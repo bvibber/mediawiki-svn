@@ -197,6 +197,8 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'pageby-first'        => '$1, $2 നാണ്‌ താള്‍ സൃഷ്ടിച്ചത്',
+	'pageby-last'         => '$1, $2 നാണ്‌ അവസാനമായി <a href="$3">തിരുത്തിയത്</a>',
 	'pageby-contributors' => 'സംഭാവന ചെയ്തവര്‍:',
 	'pageby-anon'         => '<i>അജ്ഞാതര്‍</i>',
 );

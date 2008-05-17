@@ -330,7 +330,7 @@ $messages['dsb'] = array(
 	'badimages'                => 'Lisćina špatnych wobrazow',
 	'badimages-add-btn'        => 'Pśidaś',
 	'badimages-added'          => '$1 bu lisćinje pśidany.',
-	'badimages-count'          => "Lisćina špatnych wobrazow wopśimjejo '''$1''' {{PLURAL:$1|wobraz|wobrazej|wobrazy}}.",
+	'badimages-count'          => "{{PLURAL:$1|Jo|Stej|Su|Jo}} '''$1''' {{PLURAL:$1||wobraz|wobrazej|wobraze|wobrazow}} na lisćinje špatnych wobrazow.",
 	'badimages-name'           => 'Mě:',
 	'badimages-not-added'      => 'Wobraz njeda se pśidaś.',
 	'badimages-not-removed'    => 'Wobraz njeda se wótwónoźeś.',
@@ -822,7 +822,7 @@ $messages['km'] = array(
 	'badimages-name'           => 'ឈ្មោះ៖',
 	'badimages-not-added'      => 'រូបភាព មិនអាចត្រូវបាន បន្ថែម ។',
 	'badimages-not-removed'    => 'រូបភាព មិនអាចត្រូវបាន ដកចេញ ។',
-	'badimages-reason'         => 'ហេតុផល៖',
+	'badimages-reason'         => 'មូលហេតុ៖',
 	'badimages-remove'         => '(ដកចេញ)',
 	'badimages-remove-btn'     => 'ដកចេញ',
 	'badimages-remove-confirm' => 'សូមបញ្ជាក់ទទួលស្គាល់ ថា អ្នកប្រាថ្នា ដកចេញ $1 ពីបញ្ជី ៖',
@@ -1573,13 +1573,14 @@ $messages['th'] = array(
 
 /** Turkish (Türkçe)
  * @author Srhat
+ * @author Suelnur
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'badimages-add-btn'    => 'Ekle',
 	'badimages-count'      => "Kötü resim listesinde '''$1''' resim bulunmaktadır.",
 	'badimages-name'       => 'İsim:',
-	'badimages-reason'     => 'Sebep:',
+	'badimages-reason'     => 'Neden:',
 	'badimages-remove-btn' => 'Sil',
 	'badimages-removed'    => 'Listeden $1 silindi.',
 );

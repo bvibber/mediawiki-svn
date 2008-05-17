@@ -88,16 +88,30 @@ $messages['ml'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'watchsubpages-desc' => "Snel [[Special:WatchSubpages|alle subpagina's]] voor een pagina's aan de volglijst toevoegen",
-	'watchsubpages'      => "Subpagina's volgen",
+	'watchsubpages'                      => "Subpagina's volgen",
+	'watchsubpages-addedtowatchlist'     => 'Het volgende is toegevoegd aan uw volglijst.',
+	'watchsubpages-addtitles'            => "Pagina's toevoegen",
+	'watchsubpages-addtitlestowatchlist' => "Pagina's aan volglijst toevoegen",
+	'watchsubpages-desc'                 => "Snel [[Special:WatchSubpages|alle subpagina's]] voor een pagina's aan de volglijst toevoegen",
+	'watchsubpages-form'                 => "Selecteer hieronder de pagina's die u aan uw volglijst wilt toevoegen.
+Selecteer de vakjes naast de paginanaam en klik op \"Pagina's toevoegen\".
+
+Om meerdere pagina's tegelijk te selecteren of te deselecteren, kunt u na het selecteren van de eerste pagina uit de lijst de laatste pagina selecteren terwijl u de shifttoets ingedrukt houdt.",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Legg til alle undersider]] av en side til overvåkningslisten',
-	'watchsubpages'      => 'Overvåk undersider',
+	'watchsubpages'                      => 'Overvåk undersider',
+	'watchsubpages-addedtowatchlist'     => 'Følgende har blitt lagt til i overvåkningslisten din.',
+	'watchsubpages-addtitles'            => 'Legg til sider',
+	'watchsubpages-addtitlestowatchlist' => 'Legg til sider til overvåkningslisten',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Legg til alle undersider]] av en side til overvåkningslisten',
+	'watchsubpages-form'                 => 'Velg sidene du ønsker å legge til i overvåkningslisten din.
+For å legge til en side, merk av i boksen ved siden av den og klikk på «Legg til sider».
+
+Når du merker eller fjerner merking av flere sider, kan du holde nede «Shift»-knappen for å velge bokser som kommer etter hverandre ved å trykke på den siste av sidene du vil merke.',
 );
 
 /** Occitan (Occitan)
@@ -136,8 +150,11 @@ $messages['sr-ec'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Lägg till alla undersidor]] av en sida till övervakningslistan',
-	'watchsubpages'      => 'Övervaka undersidor',
+	'watchsubpages'                      => 'Övervaka undersidor',
+	'watchsubpages-addedtowatchlist'     => 'De följande har lagts till till din övervakningslista.',
+	'watchsubpages-addtitles'            => 'Lägg till sidor',
+	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till övervakningslista',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Lägg till alla undersidor]] av en sida till övervakningslistan',
 );
 
 /** Vietnamese (Tiếng Việt)

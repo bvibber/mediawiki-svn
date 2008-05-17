@@ -492,9 +492,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'duplicator-options' => 'ជំរើស',
+	'duplicator-options' => 'ជំរើសនានា',
 	'duplicator-source'  => 'ប្រភព ៖',
 	'duplicator-dest'    => 'គោលដៅ ៖',
 	'duplicator-summary' => 'បានចំលងពី [[$1]]',

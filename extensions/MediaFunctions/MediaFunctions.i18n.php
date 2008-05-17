@@ -119,6 +119,14 @@ $messages['lb'] = array(
 	'mediafunctions-not-exist'     => '"$1" gëtt et net',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'mediafunctions-invalid-title' => '"$1" എന്നത് സാധുവായ തലക്കെട്ടല്ല',
+	'mediafunctions-not-exist'     => '"$1" എന്ന താള്‍ നിലവിലില്ല',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author Kaustubh

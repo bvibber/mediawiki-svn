@@ -167,7 +167,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'patrol-revert'          => 'Restarigi',
 	'patrol-revert-reason'   => 'Kialo:',
-	'patrol-skip'            => 'Forlasu',
+	'patrol-skip'            => 'Forlasi',
 	'patrol-reverting'       => 'Restarigante: $1',
 	'patrol-reverted-ok'     => 'La redakto estis restarigita.',
 	'patrol-reverted-failed' => 'Ne eblis restarigi la redakton.',
@@ -175,6 +175,7 @@ $messages['eo'] = array(
 	'patrol-reasons'         => '* Simpla vandalismo
 * Novula testo
 * Vidu diskuto-paĝon',
+	'patrol-another'         => 'Montri alian redakton, se haveblan.',
 	'patrol-resume'          => 'Klaku ĉi tie por reaktivigi.',
 	'group-patroller'        => 'Patrolantoj',
 	'group-patroller-member' => 'Patrolanto',
@@ -432,9 +433,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'patrol-revert-reason' => 'ហេតុផល ៖',
+	'patrol-revert-reason' => 'មូលហេតុ៖',
 	'patrol-skip'          => 'រំលង',
 );
 
@@ -857,6 +859,13 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'patrol-revert-reason' => 'Сабаб:',
 	'patrol-skip'          => 'Ҷаҳиш',
+);
+
+/** Turkish (Türkçe)
+ * @author Suelnur
+ */
+$messages['tr'] = array(
+	'patrol-revert-reason' => 'Neden:',
 );
 
 /** Ukrainian (Українська)

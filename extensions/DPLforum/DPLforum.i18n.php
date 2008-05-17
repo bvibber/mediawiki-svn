@@ -30,6 +30,20 @@ $messages['bg'] = array(
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
 );
 
+/** French (Français)
+ * @author IAlex
+ * @author Cedric31
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'dplforum-desc'    => 'DPL basée sur l’extension forum',
+	'dplforum-by'      => 'par',
+	'dplforum-edited'  => '  - Dernière modification',
+	'dplforum-never'   => 'Jamais',
+	'dplforum-toofew'  => 'DPL Forum : Pas assez de catégories !',
+	'dplforum-toomany' => 'DPL Forum : Trop de catégories !',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -40,6 +54,18 @@ $messages['gl'] = array(
 	'dplforum-never'   => 'Nunca',
 	'dplforum-toofew'  => 'Foro DPL: moi poucas categorías!',
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'dplforum-desc'    => 'DPL-baséiert Forumerweiderungen',
+	'dplforum-by'      => 'vum',
+	'dplforum-edited'  => "- Vir d'läscht geännert",
+	'dplforum-never'   => 'Ni',
+	'dplforum-toofew'  => 'DPL Forum: Ze wéineg Kategorien!',
+	'dplforum-toomany' => 'DPL Forum: Ze wéineg Kategorien!',
 );
 
 /** Dutch (Nederlands)
@@ -66,6 +92,25 @@ $messages['no'] = array(
 	'dplforum-toomany' => 'DPL-forum: For mange kategorier.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'dplforum-desc'    => 'DPL basada sus l’extension fòrum',
+	'dplforum-by'      => 'per',
+	'dplforum-edited'  => '  - Darrièr cambiament',
+	'dplforum-never'   => 'Pas jamai',
+	'dplforum-toofew'  => 'DPL Forum : Pas pro de categorias !',
+	'dplforum-toomany' => 'DPL Forum : Tròp de categorias !',
+);
+
+/** Polish (Polski)
+ * @author McMonster
+ */
+$messages['pl'] = array(
+	'dplforum-never' => 'Nigdy',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -73,5 +118,29 @@ $messages['ps'] = array(
 	'dplforum-never'   => 'هېڅکله',
 	'dplforum-toofew'  => 'DPL Forum: لږ شمېر وېشنيزې!',
 	'dplforum-toomany' => 'DPL Forum: ګڼ شمېر وېشنيزې!',
+);
+
+/** Russian (Русский)
+ * @author .:Ajvol:.
+ */
+$messages['ru'] = array(
+	'dplforum-desc'    => 'Форумное расширение, основанное на DPL',
+	'dplforum-by'      => 'от',
+	'dplforum-edited'  => '  - последняя правка',
+	'dplforum-never'   => 'Никогда',
+	'dplforum-toofew'  => 'Форум DPL: Слишком мало категорий!',
+	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'dplforum-desc'    => 'Forumtillägg baserat på DPL',
+	'dplforum-by'      => 'av',
+	'dplforum-edited'  => '  - senast ändrad',
+	'dplforum-never'   => 'Aldrig',
+	'dplforum-toofew'  => 'DPL-forum: För få kategorier!',
+	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
 );
 

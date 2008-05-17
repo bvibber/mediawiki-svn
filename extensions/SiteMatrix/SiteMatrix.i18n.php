@@ -643,8 +643,8 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
- * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Chhorran
  */
 $messages['km'] = array(
 	'sitematrix'           => 'បញ្ជីវិគីនៃវិគីមេឌា',
@@ -654,6 +654,7 @@ $messages['km'] = array(
 	'sitematrix-others'    => 'គំរោងវិគីមេឌាផ្សេងៗទៀត',
 	'sitematrix-total'     => "'''សរុប: $1'''",
 	'sitematrix-sitetotal' => 'សរុប',
+	'sitematrix-private'   => 'ឯកជន',
 );
 
 /** Korean (한국어)
@@ -1116,6 +1117,13 @@ $messages['tg-cyrl'] = array(
 	'sitematrix-sitetotal' => 'Кул',
 	'sitematrix-private'   => 'шахсӣ',
 	'sitematrix-fishbowl'  => 'вироишкунӣ маҳдуд шудааст',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'sitematrix-private' => 'ส่วนตัว',
 );
 
 /** Tonga (faka-Tonga)
