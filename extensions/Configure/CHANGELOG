@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.3.1 - 17 May 2008
+  * Added $wgRCFilterByAge, $wgRCLinkLimits and $wgRCLinkDays
+  * Modified section of some settings
+
 0.3.0 - 12 May 2008
   Added JavaScript to allow to add or remove items in associative array and
   in $wgGroupPermissions. The latter require ajax enabled to work
