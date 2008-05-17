@@ -28,7 +28,7 @@ It is presumed that you prefer all ranked candidates to all not ranked candidate
 <p>The winner of the election will be calculated using the Schulze method, with <em>winning votes</em> as the default measure for the strength of a pairwise defeat, using <em>margins</em> as a backup measure for tie breaking during the selection of the critical paths.
 In the unlikely event of a tie, a tie-breaking ranking of the candidates will be calculated using <em>random ballot</em>.
 In the highly unlikely event there remains a tie for the winning position after exhaustion of all available ballot, a run-off election will be held.
-Ties for non-winning position in the final ranking of candidates will not be resolve.</p>
+Ties for non-winning position in the final ranking of candidates will not be resolved.</p>
 
 <p>For more information, see:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
