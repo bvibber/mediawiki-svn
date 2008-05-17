@@ -24,7 +24,7 @@ class SpecialEmailArticle extends SpecialPage {
 		$db =& wfGetDB(DB_SLAVE);
 		$param = str_replace('_',' ',$param);
 
-		wfLoadExtensionMessages( 'EmailArticle' )
+		wfLoadExtensionMessages( 'EmailArticle' );
 
 		$this->setHeaders();
 
