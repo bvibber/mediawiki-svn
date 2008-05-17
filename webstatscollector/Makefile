@@ -12,9 +12,12 @@ LDFLAGS+=-L/opt/local/lib/ -ldb-4.3 -lpthread
 #LDFLAGS+=-ldb
 CFLAGS+=-Wall -g
 
-all: collector
+all: collector filter
 
 collector: collector.h collector.c export.c
+
+filter: filter.c
+	cc -o filter filter.c
 
 #export: collector.h export.c
 
