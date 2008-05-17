@@ -1,12 +1,16 @@
 <?php
 /**
-* MediaWiki TreeAndMenu Extension
-* - See http://www.mediawiki.org/wiki/Extension:TreeAndMenu for installation and usage details
-* - Sww http://www.organicdesign.co.nz/Extension_talk:TreeAndMenu.php for development notes and disucssion
-* - Licenced under LGPL (http://www.gnu.org/copyleft/lesser.html)
-* - Author:  http://www.organicdesign.co.nz/nad
-* - Started: 2008-04-17 (This code is Extension:Treeview5.php with Son of Suckerfish dropdown menus added)
-*/
+ * TreeAndMenu extension - Adds #tree and #menu parser functions for collapsible treeview's and dropdown menus
+ *
+ * See http://www.mediawiki.org/wiki/Extension:TreeAndMenu for installation and usage details
+ * See http://www.organicdesign.co.nz/Extension_talk:TreeAndMenu.php for development notes and disucssion
+ * 
+ * @package MediaWiki
+ * @subpackage Extensions
+ * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
+ * @copyright © 2007 Aran Dunkley
+ * @licence GNU General Public Licence 2.0 or later
+ */
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
