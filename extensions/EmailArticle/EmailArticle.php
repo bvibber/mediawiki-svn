@@ -22,7 +22,7 @@ $wgEmailArticleAllowRemoteAddr = array($_SERVER['SERVER_ADDR'],'127.0.0.1'); # A
 $wgEmailArticleAllowAllUsers   = false;              # Whether to allow sending to all users (the "user" group)
 $wgEmailArticleToolboxLink     = 'Send to email';    # Link title for toolbox link (set to "" to not have any link in toolbox)
 $wgEmailArticleActionLink      = 'email';            # Link title for action link (set to "" to not have any action link)
-$wgPhpMailerClass              = dirname(__FILE__).'/phpmailer/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
+$wgPhpMailerClass              = dirname(__FILE__).'/phpMailer_v2.1.0beta2/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
 
 if ($wgEmailArticleGroup) $wgGroupPermissions['sysop'][$wgEmailArticleGroup] = true;
 
