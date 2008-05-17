@@ -1,4 +1,11 @@
 <?php
+/**
+ * Watch Guide Subpages - an extension for
+ * adding all subpages of a guide to the users watchlist
+ *
+ * @author Prod (http://www.strategywiki.org/wiki/User:Prod)
+ */
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
         echo <<<EOT
@@ -13,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Watch Guide Subpages',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
-	'url' => 'http://www.strategywiki.org/wiki/User:Prod',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WatchSubpages',
 	'description' => 'Quickly add all subpages of a guide to the users watchlist',
 	'descriptionmsg' => 'watchsubpages-desc',
 );

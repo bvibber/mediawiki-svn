@@ -12,8 +12,12 @@ $messages = array();
  * @author http://www.strategywiki.org/wiki/User:Prod
  */
 $messages['en'] = array(
-	'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
 	'watchsubpages'      => 'Watch subpages',
+	'watchsubpages-addedtowatchlist' => 'The following has been added to your watchlist.',
+	'watchsubpages-addtitles' => 'Add Titles',
+	'watchsubpages-addtitlestowatchlist' => 'Add titles to watchlist',
+	'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
+	'watchsubpages-form' => 'Select the titles to add to your watchlist below. To add a title, check the box next to it, and click Add Titles.<br /><br />When checking or unchecking multiple titles, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.<br /><br />',
 );
 
 /** Arabic (العربية)
@@ -140,4 +144,3 @@ $messages['vi'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 	'watchsubpages'      => 'Theo dõi các trang con',
 );
-

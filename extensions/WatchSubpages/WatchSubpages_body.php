@@ -1,7 +1,6 @@
 <?php
 #restrict to subpages
-class WatchSubpages extends SpecialPage
-{
+class WatchSubpages extends SpecialPage {
 	function WatchSubpages() {
 		SpecialPage::SpecialPage( 'Watchsubpages', 'watchsubpages' );
 	}
@@ -33,7 +32,7 @@ class WatchSubpages extends SpecialPage
 			$toWatch = array_diff( $titles, $current );
 			$this->watchTitles( $toWatch, $wgUser );
 			$wgUser->invalidateCache();
-			$wgOut->addHtml( 'The following has been added to your watchlist.' );
+			$wgOut->addHTML( wfMsg('watchsubpages-addedtowatchlist') );
 			$this->showTitles( $toWatch, $wgOut, $wgUser->getSkin() );
 		}
 		$this->showForm( $wgOut, $wgUser, $namespace, trim($guidename, "/") );
@@ -43,7 +42,7 @@ class WatchSubpages extends SpecialPage
 	 * Extract a list of titles from a blob of text, returning
 	 * (prefixed) strings; unwatchable titles are ignored
 	 *
-	 * @param mixed $list
+	 * @param $list mixed
 	 * @return array
 	 */
 	private function extractTitles( $list ) {
@@ -68,7 +67,7 @@ class WatchSubpages extends SpecialPage
 	 * Prepare a list of titles on a user's watchlist (excluding talk pages)
 	 * and return an array of (prefixed) strings
 	 *
-	 * @param User $user
+	 * @param $user User
 	 * @return array
 	 */
 	private function getWatchlist( $user ) {
@@ -99,8 +98,8 @@ class WatchSubpages extends SpecialPage
 	 * $titles can be an array of strings or Title objects; the former
 	 * is preferred, since Titles are very memory-heavy
 	 *
-	 * @param array $titles An array of strings, or Title objects
-	 * @param User $user
+	 * @param $titles array: an array of strings, or Title objects
+	 * @param $user User
 	 */
 	private function watchTitles( $titles, $user ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -132,9 +131,9 @@ class WatchSubpages extends SpecialPage
 	 * $titles can be an array of strings or Title objects; the former
 	 * is preferred, since Titles are very memory-heavy
 	 *
-	 * @param array $titles An array of strings, or Title objects
-	 * @param OutputPage $output
-	 * @param Skin $skin
+	 * @param $titles Array: an array of strings, or Title objects
+	 * @param $output OutputPage
+	 * @param $skin Skin
 	 */
 	private function showTitles( $titles, $output, $skin ) {
 		$talk = wfMsgHtml( 'talkpagelinktext' );
@@ -150,24 +149,24 @@ class WatchSubpages extends SpecialPage
 		}
 		$batch->execute();
 		// Print out the list
-		$output->addHtml( "<ul>\n" );
+		$output->addHTML( "<ul>\n" );
 		foreach( $titles as $title ) {
 			if( !$title instanceof Title )
 				$title = Title::newFromText( $title );
 			if( $title instanceof Title ) {
-				$output->addHtml( "<li>" . $skin->makeLinkObj( $title )
+				$output->addHTML( "<li>" . $skin->makeLinkObj( $title )
 				. ' (' . $skin->makeLinkObj( $title->getTalkPage(), $talk ) . ")</li>\n" );
 			}
 		}
-		$output->addHtml( "</ul>\n" );
+		$output->addHTML( "</ul>\n" );
 	}
 
 	/**
 	 * Show the standard watchlist editing form
 	 *
-	 * @param OutputPage $output
-	 * @param User $user
-	 * @param GuideName $guide
+	 * @param $output OutputPage
+	 * @param $user User
+	 * @param $guide GuideName
 	 */
 	private function showForm( $output, $user, $namespace, $guide ) {
 		global $wgScript, $wgContLang;
@@ -202,8 +201,8 @@ class WatchSubpages extends SpecialPage
 		$form .= Xml::openElement( 'form', array( 'method' => 'post',
 			'action' => $self->getLocalUrl( 'guide=' . $guide ) ) );
 		$form .= Xml::hidden( 'token', $user->editToken( 'watchsubpages' ) );
-		$form .= '<fieldset><legend>Add titles to watchlist</legend>';
-		$form .= 'Select the titles to add to your watchlist below. To add a title, check the box next to it, and click Add Titles.<br /><br />When checking or unchecking multiple titles, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.<br /><br />';
+		$form .= '<fieldset><legend>'.wfMsg('watchsubpages-addtitles').'</legend>';
+		$form .= wfMsg('watchsubpages-form');
 		foreach( $this->getPrefixlistInfo( $namespace, $guide . '/' ) as $namespace => $pages ) {
 			$form .= '<h2>' . $this->getNamespaceHeading( $namespace ) . '</h2>';
 			$form .= '<ul>';
@@ -213,9 +212,9 @@ class WatchSubpages extends SpecialPage
 			}
 			$form .= '</ul>';
 		}
-		$form .= '<p>' . Xml::submitButton( 'Add Titles' ) . '</p>';
+		$form .= '<p>' . Xml::submitButton( wfMsg('watchsubpages-addtitles') ) . '</p>';
 		$form .= '</fieldset></form>';
-		$output->addHtml( $form );
+		$output->addHTML( $form );
 	}
 
 	/**
@@ -223,7 +222,7 @@ class WatchSubpages extends SpecialPage
 	 * and return as a two-dimensional array with namespace, title and
 	 * redirect status
 	 *
-	 * @param GuideName $guide
+	 * @param $guide GuideName
 	 * @return array
 	 */
 	private function getPrefixlistInfo( $namespace = NS_MAIN, $guide ) {
@@ -267,7 +266,7 @@ class WatchSubpages extends SpecialPage
 	/**
 	 * Get the correct "heading" for a namespace
 	 *
-	 * @param int $namespace
+	 * @param $namespace int
 	 * @return string
 	 */
 	private function getNamespaceHeading( $namespace ) {
@@ -277,8 +276,8 @@ class WatchSubpages extends SpecialPage
 	}
 
 	/**
-	 * @param int $ns the namespace of the article
-	 * @param string $text the name of the article
+	 * @param $ns int: the namespace of the article
+	 * @param $text string: the name of the article
 	 * @return array( int namespace, string dbkey, string pagename ) or NULL on error
 	 * @static (sort of)
 	 * @access private
@@ -308,9 +307,9 @@ class WatchSubpages extends SpecialPage
 	 * Build a single list item containing a check box selecting a title
 	 * and a link to that title, with various additional bits
 	 *
-	 * @param Title $title
-	 * @param bool $redirect
-	 * @param Skin $skin
+	 * @param $title Title
+	 * @param $redirect bool
+	 * @param $skin Skin
 	 * @return string
 	 */
 	private function buildLine( $title, $redirect, $skin ) {
