@@ -6,7 +6,7 @@
  * (at your option) any later version.
  *
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2007 Roan Kattouw 
+ * @copyright Copyright © 2007 Roan Kattouw 
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows changing the author of a revision
@@ -38,40 +38,35 @@ $wgHooks['userCan'][] = 'EditOwn';
 
 $wgEditOwnExcludedNamespaces = array();
 
-function EditOwn($title, $user, $action, &$result)
-{
+function EditOwn($title, $user, $action, &$result) {
 		static $cache = array();
 		global $wgEditOwnExcludedNamespaces;
 		if(!is_array($wgEditOwnExcludedNamespaces))
 				// Prevent PHP from whining
 				$wgEditOwnExcludedNamespaces = array();
 		
-		if($action != 'edit' || $user->isAllowed('editall') || in_array($title->getNamespace(), $wgEditOwnExcludedNamespaces))
-		{
+		if($action != 'edit' || $user->isAllowed('editall') || in_array($title->getNamespace(), $wgEditOwnExcludedNamespaces)) {
 				$result = null;
 				return true;
 		}
 		
-		if(isset($cache[$user->getName()][$title->getArticleId()]))
-		{
+		if(isset($cache[$user->getName()][$title->getArticleId()])) {
 				$result = $cache[$user->getName()][$title->getArticleId()];
 				return is_null($result);
 		}
 		
 		// Since there's no easy way to get the first revision, we'll just do a DB query
-		$dbr = wfGetDb(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$res = $dbr->select('revision', Revision::selectFields(),
 							array('rev_page' => $title->getArticleId()),
 							__METHOD__, array('ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 1));
-		if(!($row = $dbr->fetchObject($res)))
-		{
+		if(!($row = $dbr->fetchObject($res))) {
 				// Nonexistent title? Creation is allowed
 				$result = $cache[$user->getName()][$title->getArticleId()] = null;
 				return true;
 		}
 		$rev = new Revision($row);
-		if($user->getName() == $rev->getRawUserText())
-		{
+		if($user->getName() == $rev->getRawUserText()) {
 				$result = $cache[$user->getName()][$title->getArticleId()] = null;
 				return true;
 		}

@@ -28,6 +28,13 @@ $messages['eo'] = array(
 	'editown-desc' => "Uzantoj sen la ''editall'' rajto nur povas redakti paĝojn kiujn ili mem kreis",
 );
 
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'editown-desc' => 'Käyttäjät ilman editall-oikeutta voivat muokata vain itse luomiaan sivuja',
+);
+
 /** French (Français)
  * @author Grondin
  */
