@@ -172,6 +172,8 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'msfunc_nan'      => 'ഫലമായി കിട്ടിയ മൂല്യം സംഖ്യയല്ല',
+	'msfunc_inf'      => 'ഫലമായി കിട്ടിയത് അനന്തം (infinity) ആണ്‌.',
 	'msfunc_div_zero' => 'പൂജ്യം കൊണ്ടുള്ള ഹരണം',
 );
 

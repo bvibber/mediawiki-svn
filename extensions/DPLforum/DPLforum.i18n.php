@@ -120,6 +120,15 @@ $messages['ps'] = array(
 	'dplforum-toomany' => 'DPL Forum: ګڼ شمېر وېشنيزې!',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'dplforum-by'     => 'por',
+	'dplforum-edited' => '  - Última edição',
+	'dplforum-never'  => 'Nunca',
+);
+
 /** Russian (Русский)
  * @author .:Ajvol:.
  */

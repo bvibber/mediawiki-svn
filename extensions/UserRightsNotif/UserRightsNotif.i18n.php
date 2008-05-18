@@ -238,6 +238,23 @@ $2',
 	'userrightsnotif-desc'    => 'Schéckt dem Benotzer eng Informatioun per E-mail wa seng Rechter änneren',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'userrightsnotifybody' => 'നമസ്കാരം $1.
+
+താങ്കളുടെ $2ലുള്ള ഗ്രൂപ്പ് അംഗത്വം $3, $4 നു മാറ്റി എന്നറിയിക്കാനാണ്‌ ഈ കത്ത്.
+
+ചേര്‍ത്തത്: $5
+ഒഴിവാക്കിയത്: $6
+
+ആശംസകളോടെ,
+
+$2',
+	'userrightsnotif-desc' => 'അവകാശങ്ങളില്‍ വന്ന വ്യത്യാസങ്ങളെക്കുറിച്ച് ഉപയോക്താക്കള്‍ക്ക് ഇമെയില്‍ അറിയിപ്പ് അയക്കുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

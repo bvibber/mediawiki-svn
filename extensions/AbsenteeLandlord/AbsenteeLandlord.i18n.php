@@ -198,6 +198,14 @@ $messages['sv'] = array(
 	'absenteelandlord-desc'   => 'Auto-låser wikins databas om alla administratörer är frånvarande någon tid',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'absenteelandlord-reason' => 'База даних була автоматично заблокована через неактивність адміністраторів.',
+	'absenteelandlord-desc'   => 'Автоматично блокує базу даних вікі-проекту, якщо жоден з адміністраторів не проявляє активності певний час',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

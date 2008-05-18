@@ -862,6 +862,13 @@ $messages['tr'] = array(
 	'countedits-username' => 'Kullanıcı:',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'countedits-ok' => 'ОК',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

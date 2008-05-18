@@ -605,9 +605,21 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'regexblock-unblock-success'      => 'സ്വതന്ത്രമാക്കല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'regexblock-unblock-log'          => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപിവിലാസം സ്വതന്ത്രമാക്കിയിരിക്കുന്നു.",
+	'regexblock-unblock-error'        => '$1നെ സ്വതന്ത്രമാക്കുന്നതില്‍ പിശക്. അങ്ങനെയൊരു ഉപയോക്താവ് നിലവിലില്ലായിരിക്കും എന്നതാവും കാരണം.',
+	'regexblock-form-username'        => 'ഐപി വിലാസം അല്ലെങ്കില്‍ ഉപയോക്തൃനാമം:',
 	'regexblock-form-reason'          => 'കാരണം:',
 	'regexblock-form-expiry'          => 'കാലാവധി:&#160;',
 	'regexblock-form-match'           => 'കൃത്യമായി യോജിക്കുന്നവ',
+	'regexblock-form-account-block'   => 'പുതിയ അക്കൗണ്ടുകള്‍ സൃഷ്ടിക്കുന്നതു തടയുക',
+	'regexblock-form-submit'          => '&nbsp;ഈ&nbsp; ഉപയോക്താവിനെ തടയുക',
+	'regexblock-block-log'            => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപി വിലാസം തടയപ്പെട്ടിരിക്കുന്നു.",
+	'regexblock-block-success'        => 'തടയല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'regexblock-form-submit-empty'    => 'തടയുവാന്‍ വേണ്ടിയുള്ള ഉപയോക്തൃനാമമോ ഐപി വിലാസമോ ചേര്‍ക്കുക.',
+	'regexblock-form-submit-expiry'   => 'ദയവായി തടയലിനു ഒരു കാലാവധി തിരഞ്ഞെടുക്കുക.',
+	'regexblock-already-blocked'      => '$1 ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
+	'regexblock-stats-username'       => '$1നു വേണ്ടി',
 	'regexblock-stats-times'          => 'തടയപ്പെട്ടത്',
 	'regexblock-view-all'             => 'എല്ലാം',
 	'regexblock-view-go'              => 'പോകൂ',

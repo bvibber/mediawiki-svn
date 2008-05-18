@@ -272,8 +272,10 @@ $messages['ml'] = array(
 	'lookupuser_not_authenticated' => 'സ്ഥിരീകരിച്ചിട്ടില്ല',
 	'lookupuser_id'                => 'ഉപയോക്തൃ ഐഡി: <tt>#$1</tt>',
 	'lookupuser_email'             => 'ഇമെയില്‍: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'നല്‍കിയിട്ടില്ല',
 	'lookupuser_realname'          => 'ശരിയായ പേര്: $1',
 	'lookupuser_registration'      => 'രജിസ്റ്റര്‍ ചെയ്ത തീയതി: $1',
+	'lookupuser_no_registration'   => 'റെക്കോര്‍ഡ് ചെയ്തിട്ടില്ല',
 	'lookupuser_touched'           => 'ഉപയോക്താവിന്റെ വിവരങ്ങള്‍ അവസാനം തിരുത്തിയത്: $1',
 );
 

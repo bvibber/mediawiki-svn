@@ -712,7 +712,10 @@ Cadascun dels candidats és un usuari respectat, que ha destinat un temps i un e
 Podeu donar la mateixa posició de preferència a més d\'un candidat i també podeu deixar candidats sense número de posició.
 S\'assumeix que preferiu els candidat ordenats als que heu deixat sense ordenar i que l\'ordre entre els candidats no marcats us és indiferent.</p>
 
-<p>El guanyador de l\'elecció es calcularà segons el mètode de Schulze.</p>
+<p>El guanyador de la votació es calcularà segons el mètode de Schulze, amb <em>vots guanyadors</em> com a mesura per defecte de la força de victòria entre parells, i fent servir <em>marges</em> com a mesura de desempat en la selecció de camins crítics.
+En l\'improbable cas d\'un empat, el rànquing de desempat dels candidats es calcularà amb una ordenació de <em>vots aleatoris</em>.
+En l\'altament improbable cas d\'un empat per a una posició guanyadora després d\'exhaurir tota alternativa del vot, es farà una segona votació de desempat.
+Els empats per a posicions del rànquing final que no influeixin el resultat dels candidats que han de ser elegits no es resoldran.</p>
 
 <p>Per a més informació, vegeu:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Eleccions al Consell 2008</a></li>
@@ -1321,7 +1324,7 @@ $messages['fr'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
 * [[Special:Boardvote/dump|Enregistrements cryptés]]',
-	'boardvote_intro'          => '<p>Bienvenue aux troisièmes élections du conseil d\'administration de <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation Inc.</a></i>.
+	'boardvote_intro'          => '<p>Bienvenue aux  élections 2008 du conseil d\'administration de <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">la Wikimedia Foundation</a></i>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
 Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et <i>vos</i> préoccupations auprès du conseil d\'administration.
 Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
@@ -1329,10 +1332,15 @@ Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
 <p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
 Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
 
-<p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s\'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
+<p>Ranger les candidats pour qui vous votez selon vos préférences (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs canditation ou bien ne ranger aucun candidat. Il sera présumé que vous préférerez tous les candidats rangés par à ceux qui ne le sont pas et qui cela vous laisse indifférent pour ces derniers.</>
+
+<p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze, avec <em>des votes gagnants</em> comme mesure par défaut pour l’ampleur d’une défaite par pair, utilisant <em>des marges</em> lors d’un départage d’une égalité lors de la sélection d’une étape critique.
+Dans l’hypothèse improbable d’une égalité, un départage rangeant les candidats sera calculé utilisant le <em>ballotage aléatoire</em>.
+Dans le cas, encore plus improbable, d\'une nouvelle égalité à l’issue de toutes les procédures de ballotages utilisées, une élection complémentaire sera tenue.
+Les égalités pour les positions non gagnante dans le partage finial des candidats ne seront pas résolues.</p>
 
 <p>Pour plus d\'information, voyez :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">FAQ sur les élections</a></li>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">Élections 2008 au Conseil d’administration</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">Candidat-e-s</a></li></ul>',
 	'boardvote_intro_change'   => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>',
 	'boardvote_entered'        => 'Merci, votre vote a été enregistré.
@@ -1765,7 +1773,8 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
- * @author Siebrand
+ * @author Suradnik13
+ * @author SieBot
  */
 $messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
@@ -1817,16 +1826,18 @@ $1 za šifrirane podatke.</p>',
 	'boardvote_unstrike'     => 'Poništi poništenje',
 	'boardvote_needadmin'    => 'Samo administratori izbora mogu obaviti ovaj postupak',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Odbor Wikimedije</a>:
-Glasanje otvoreno do 22 June',
+Glasovanje je otvoreno do 22. lipnja',
 	'boardvote_notstarted'   => 'Glasanje još nije započelo',
-	'boardvote_closed'       => 'Glasanje je završeno, pogledajte uskoro [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En stranicu s rezultatima izbora].',
+	'boardvote_closed'       => 'Glasovanje je završeno, pogledajte uskoro [http://meta.wikimedia.org/wiki/Board_elections/2008/Results stranicu s rezultatima izbora].',
 	'boardvote_edits_many'   => 'mnogi',
 	'group-boardvote'        => 'Administratori izbora za Odbor',
 	'group-boardvote-member' => 'Administrator izbora za Odbor',
 	'grouppage-boardvote'    => '{{ns:project}}:Administrator izbora za Odbor',
 	'boardvote_blocked'      => 'Nažalost, blokirani ste na Vašoj registriranoj wiki. Blokiranim suradnicima nije dozvoljeno glasanje.',
+	'boardvote_bot'          => 'Dodjeljena vam je bot zastavica na vašoj matičnoj wiki.<br>
+Bot suradničkim računima nije dopušteno glasovanje.',
 	'boardvote_welcome'      => "Dobrodošli '''$1'''!",
-	'go_to_board_vote'       => 'Izbori za Odbor Wikimedije 2007.',
+	'go_to_board_vote'       => 'Izbori za Odbor Wikimedije 2008.',
 	'boardvote_redirecting'  => 'Radi poboljšane sigurnosti i transparentnosti, glasanje se odvija na vanjskom, neovisno kontroliranom serveru.
 
 Bit ćete preusmjereni na taj vanjski server za 20 sekundi. [$1 Kliknite ovdje] da odete tamo odmah.
@@ -3757,7 +3768,9 @@ A versão da encriptação segue-se, e será publicada em [[Special:Boardvote/du
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Voltar]]',
-	'boardvote_nosession'    => 'Não foi possível determinar o seu ID de utilizador Wikimedia. Por favor, efectue login no wiki onde está qualificado e vá a <nowiki>[[Special:Boardvote]]</nowiki>. Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e com a primeira edição antes de $3.',
+	'boardvote_nosession'    => 'Não foi possível determinar o seu ID de utilizador Wikimedia.
+Por favor, efectue login no wiki onde está qualificado a votar e vá a <nowiki>[[Special:Boardvote]]</nowiki>.
+Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
 	'boardvote_notloggedin'  => 'Não se encontra autentificado. De modo a poder votar, deve utilizar uma conta com pelo menos $1 contribuições antes de $2.',
 	'boardvote_notqualified' => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
 	'boardvote_novotes'      => 'Ninguém votou até ao momento.',
@@ -4411,27 +4424,34 @@ $messages['ta'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
- * @author Mpradeep
- * @author Siebrand
  * @author Chaduvari
+ * @author Mpradeep
  */
 $messages['te'] = array(
-	'boardvote'              => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
-	'boardvote-desc'         => '[[meta:Board elections|వికీమీడియా ట్రస్టీల బోర్డు ఎన్నికలు]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|వోటెయ్యండి]]
+	'boardvote'                => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
+	'boardvote-desc'           => '[[meta:Board elections|వికీమీడియా ట్రస్టీల బోర్డు ఎన్నికలు]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|వోటెయ్యండి]]
 * [[Special:Boardvote/list|ఇప్పటివరకు వచ్చిన ఓట్ల జాబీతా]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
-	'boardvote_intro'        => '<p>వికీమీడియా ట్రస్టు బోర్డు రెండవ ఎన్నికలకు స్వాగతం. వివిధ వికీమీడియా ప్రాజెక్టులలో సభ్యుల ప్రతినిధులుగా ఉండేందుకు ఇద్దరిని ఎన్నుకుంటున్నాం. భవిష్యత్తులో వికీమీడియా ప్రాజెక్టులకు దిశానిర్దేశం చెయ్యడంలో వాళ్ళు పాత్ర వహిస్తారు. <em>మీ</em> అభిప్రాయాలు, అభీష్టాలను ట్రస్టు బోర్డు వద్ద వినిపిస్తారు. ధనసమీకరణ పద్ధతులు, ధన వినియోగ పద్ధతులను నిర్ణయిస్తారు.</p>
+	'boardvote_intro'          => '<p>వికీమీడియా ట్రస్టు బోర్డు 2008 ఎన్నికకు స్వాగతం. వివిధ వికీమీడియా ప్రాజెక్టులలో సభ్యుల ప్రతినిధిగా ఉండేందుకు ఒకరిని ఎన్నుకుంటున్నాం. భవిష్యత్తులో వికీమీడియా ప్రాజెక్టులకు దిశానిర్దేశం చెయ్యడంలో వాళ్ళు పాత్ర వహిస్తారు. <em>మీ</em> అభిప్రాయాలు, అభీష్టాలను ట్రస్టు బోర్డు వద్ద వినిపిస్తారు. ధనసమీకరణ పద్ధతులు, ధన వినియోగ పద్ధతులను నిర్ణయిస్తారు.</p>
 
 <p>వోటేసేముందు అభ్యర్థుల ప్రకటనలు, వివిధ ప్రశ్నలకు వారిచ్చిన సమాధానాలను జాగ్రత్తగా చదవండి. ప్రతి అభ్యర్థి కూడా ఓ గౌరవ సభ్యులే.., ఈ ప్రాజెక్టులను తీర్చిదిద్దడంలో తమ శక్తియుక్తులు ఉపయోగించిన వారే.., విజ్ఞానాన్ని ఉచితంగా జనబాహుళ్యానికి అందించడంలో అంకితమైనవారే.</p>
 
-<p>మీ ఇష్టమొచ్చినంతమంది అభ్యర్థులకు మీరు వోట్లేయవచ్చు. ప్రతీ స్థానంలోను అత్యధిక వోట్లు పొందిన అభ్యర్థి ఎన్నికవుతారు. పోటీ టై అయితే, అమీతుమీ ఎన్నిక జరుగుతుంది.</p>
+<p>అభ్యర్థి పేరు పక్కనే ఉన్న పెట్టెలో ఒక అంకె వేసి వారికి ర్యాంకులు ఇవ్వండి (1 = మొదటి ఎంపిక, 2 = రెండవ ఎంపిక...). ఒకే ర్యాంకును ఒకరి కంటే ఎక్కువ మందికి ఇవ్వవచ్చు, కొందరికి ర్యాంకు ఇవ్వకనే పోవచ్చు. ఏ ర్యాంకూ ఇవ్వని అభ్యర్ధుల కంటే ర్యాంకు ఇచ్చిన అభ్యర్ధులే మీకు నచ్చి నట్లుగా భావిస్తాము. ర్యాంకు ఇవ్వని అభ్యర్ధుల పట్ల మీకు ఏ అభిప్రాయమూ లేనట్లు భావిస్తాము.</p>
 
-<p>మరింత సమాచారనికై, చూడండి:</p>
-<ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2008" class="external">ఎన్నికల ప్రశ్నలు</a></li>
-<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2008" class="external">అభ్యర్థులు</a></li></ul>',
-	'boardvote_intro_change' => '<p>మీరిప్పటికే వోటు చేసారు. అయితే, కింది ఫారమును వాడి మీ వోటును మార్చవచ్చు. మీరు ఆమోదించదలచిన అభ్యర్థుల పేర్లకు ఎదురుగా ఉన్న పెట్టెలలో టిక్కు పెట్టండి.</p>',
-	'boardvote_entered'      => 'మీ వోటు నమోదయింది, ధన్యవాదాలు!
+<p>ఎన్నిక ఫలితాన్ని షుల్జ్ పద్ధతి ద్వారా నిర్ణయిస్తాము. అభ్యర్ధి జతల మధ్య గెలుపోటములు నిర్ధారించేందుకు <em>గెలుపు వోట్లు</em> డిఫాల్టు కొలత, <em>మార్జిన్లేమో</em> క్రిటికల్ పాత్‌ల ఎంపికలో టై బ్రేకు కోసం బాకప్‌గా ఉంటాయి. 
+అరుదుగా ఏర్పడే టై విషయంలో, <em>రాండమ్ బాలట్</em> ద్వారా టై-బ్రేకు చేస్తాము.</p>
+
+మొదటి స్థానానికి చాలా అరుదుగా తప్ప జరగని టై ఏర్పడితే, అన్ని ఎన్నికలూ అయిపోయాక, రన్-ఆఫ్ ఎన్నిక జరుగుతుంది.
+
+మొదటి స్థానానికి కాక ఇతర స్థానాలకు టై ఏర్పడినప్పటికీ అమీతుమీ జరగదు
+
+<p>మరింత సమాచారానికై, చూడండి:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">బోర్డు ఎన్నికలు 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">అభ్యర్థులు</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">షుల్జ్ పద్ధతి</a></li></ul>',
+	'boardvote_intro_change'   => '<p>మీరిప్పటికే వోటు చేసారు. అయితే, కింది ఫారమును వాడి మీ వోటును మార్చవచ్చు. మీరు ఆమోదించదలచిన అభ్యర్థుల పేర్లకు ఎదురుగా ఉన్న పెట్టెలలో టిక్కు పెట్టండి.</p>',
+	'boardvote_entered'        => 'మీ వోటు నమోదయింది, ధన్యవాదాలు!
 
 కావాలనుకుంటే మీరు కింది వివరాలను జాగ్రత్తచేసుకోవచ్చు. మీ వోటింగు రికార్డు:
 
@@ -4446,37 +4466,45 @@ $messages['te'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|వెనక్కు]]',
-	'boardvote_nosession'    => 'మీ వికీమీడియా వాడుకరి ఐడీని నిర్ధారించుకోలేకున్నాం. మీకు సభ్యత్వం ఉన్న వికీలో లాగినయ్యి, <nowiki>[[Special:Boardvote]]</nowiki> కు వెళ్ళండి. మీరు వాడే ఖాతాతో $2 నాటికి కనీసం $1 రచనలు చేసి ఉండాలి. అలాగే మొదటి దిద్దుబాటు $3 కంటే ముందు చేసి ఉండాలి.',
-	'boardvote_notloggedin'  => 'మీరు లోనికి ప్రవేశించలేదు. వోటేసేందుకు, మీకు ఓ ఖాతా ఉండి $2కి ముందు కనీసం $1 మార్పులు చేసివుండాలి, మరియు $3కి ముందు మొదటి మార్పు చేసివుండాలి.',
-	'boardvote_notqualified' => 'ఈ ఎన్నికలో వోటేసేందుకు మీకు అర్హత లేదు. $2కి ముందు మీరు $3 మార్పులు చేసివుండాలి, మరియు మీ మొదటి మార్పు $5 కంటే ముందు జరిగివుండాలి.',
-	'boardvote_novotes'      => 'ఇంకా ఎవరూ ఓటెయ్యలేదు.',
-	'boardvote_time'         => 'సమయం',
-	'boardvote_user'         => 'వాడుకరి',
-	'boardvote_edits'        => 'దిద్దుబాట్లు',
-	'boardvote_days'         => 'రోజులు',
-	'boardvote_ip'           => 'ఐపీ',
-	'boardvote_ua'           => 'వాడుకరి ఏజెంటు',
-	'boardvote_listintro'    => '<p>ఇప్పటివరకు నమోదైన వోట్ల జాబితా ఇది. కోడీకరించబడిన డేటా కొరకు $1.</p>',
-	'boardvote_dumplink'     => 'ఇక్కడ నొక్కండి',
-	'boardvote_submit'       => 'సరే',
-	'boardvote_strike'       => 'కొట్టివేయు',
-	'boardvote_unstrike'     => 'కొట్టెయ్యవద్దు',
-	'boardvote_needadmin'    => 'ఎన్నికల నిర్వాహకులు మాత్రమే ఈ పని చెయ్యగలరు.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూలై 22 June వోటెయ్యవచ్చు',
-	'boardvote_notstarted'   => 'వోటింగు ఇంకా మొదలు కాలేదు',
-	'boardvote_closed'       => 'వోటింగు పూర్తయింది. త్వరలో వెలువడనున్న ఫలితాల కోసం [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En ఎన్నికల పేజీ] చూడండి',
-	'boardvote_edits_many'   => 'చాలా',
-	'group-boardvote'        => 'బోర్డు వోటు నిర్వాహకులు',
-	'group-boardvote-member' => 'బోర్డు వోటు నిర్వాహకులు',
-	'grouppage-boardvote'    => '{{ns:project}}:బోర్డు వోటు నిర్వహణ',
-	'boardvote_blocked'      => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
-	'boardvote_welcome'      => "స్వాగతం '''$1'''!",
-	'go_to_board_vote'       => 'వికీమీడియా బోర్డు ఎన్నికలు 2007',
-	'boardvote_redirecting'  => 'మెరుగైన భద్రత మరియు పారదర్శకత కొరకు, వోటింగుని బయటి, స్వతంత్ర నియంత్రిత సేవికపై నడుపుతున్నాం.
+	'boardvote_invalidentered' => '<p><strong>లోపం</strong>: అభ్యర్ధి ఎంపికను ఏదైనా ధన, పూర్ణ సంఖ్య ద్వారా మాత్రమే తెలియజేయాలి (1, 2, 3, ....), లేదా 
+ఖాళీగా వదిలెయ్యాలి.</p>',
+	'boardvote_nosession'      => 'మీ వికీమీడియా వాడుకరి ఐడీని నిర్ధారించుకోలేకున్నాం. 
+మీకు వోటేసే అర్హత ఉన్న వికీలో లాగినయ్యి, <nowiki>[[Special:Boardvote]]</nowiki> కు వెళ్ళండి. మీరు వాడే ఖాతాతో $2 నాటికి కనీసం $1 మార్పుచేర్పులు చేసి ఉండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
+	'boardvote_notloggedin'    => 'మీరు లాగిన్ అయి లేరు.
+వోటేసేందుకు, మీకు ఓ ఖాతా ఉండి, $2కి ముందు కనీసం $1 మార్పులు చేసివుండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
+	'boardvote_notqualified'   => 'ఈ ఎన్నికలో వోటేసేందుకు మీకు అర్హత లేదు. 
+$2 కి ముందు మీరు కనీసం $3 మార్పులు చేసివుండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
+	'boardvote_novotes'        => 'ఇంకా ఎవరూ ఓటెయ్యలేదు.',
+	'boardvote_time'           => 'సమయం',
+	'boardvote_user'           => 'వాడుకరి',
+	'boardvote_edits'          => 'దిద్దుబాట్లు',
+	'boardvote_days'           => 'రోజులు',
+	'boardvote_ip'             => 'ఐపీ',
+	'boardvote_ua'             => 'వాడుకరి ఏజెంటు',
+	'boardvote_listintro'      => '<p>ఇప్పటివరకు నమోదైన వోట్ల జాబితా ఇది. కోడీకరించబడిన డేటా కొరకు $1.</p>',
+	'boardvote_dumplink'       => 'ఇక్కడ నొక్కండి',
+	'boardvote_submit'         => 'సరే',
+	'boardvote_strike'         => 'కొట్టివేయు',
+	'boardvote_unstrike'       => 'కొట్టెయ్యవద్దు',
+	'boardvote_needadmin'      => 'ఎన్నికల నిర్వాహకులు మాత్రమే ఈ పని చెయ్యగలరు.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">వికీమీడియా బోర్డు ఎన్నికలు</a>:  జూన్ 22 వరకు వోటెయ్యవచ్చు',
+	'boardvote_notstarted'     => 'వోటింగు ఇంకా మొదలు కాలేదు',
+	'boardvote_closed'         => 'వోటింగు పూర్తయింది. త్వరలో వెలువడే [http://meta.wikimedia.org/wiki/Board_elections/2008/Results ఫలితాల కోసం ఎన్నికల పేజీ] చూడండి',
+	'boardvote_edits_many'     => 'చాలా',
+	'group-boardvote'          => 'బోర్డు వోటు నిర్వాహకులు',
+	'group-boardvote-member'   => 'బోర్డు వోటు నిర్వాహకులు',
+	'grouppage-boardvote'      => '{{ns:project}}:బోర్డు వోటు నిర్వహణ',
+	'boardvote_blocked'        => 'క్షమించండి, మీరు నమోదైన వికీలో మీమ్మల్ని నిషేధించారు. నిషేధించిన వాడుకరులకు వోటెయ్యడానికి అనుమతిలేదు.',
+	'boardvote_bot'            => 'మీరు నమోదు చేసుకున్న వికీలో మిమ్మల్ని బాట్‌గా గుర్తించారు.
+బాట్ ఖాతాలకు వోటేసే అనుమతి లేదు.',
+	'boardvote_welcome'        => "స్వాగతం '''$1'''!",
+	'go_to_board_vote'         => 'వికీమీడియా బోర్డు ఎన్నికలు 2008',
+	'boardvote_redirecting'    => 'మెరుగైన భద్రత మరియు పారదర్శకత కొరకు, వోటింగుని బయటి, స్వతంత్ర నియంత్రిత సేవికపై నడుపుతున్నాం.
 
 20 క్షణాల్లో మీమ్మల్ని అక్కడికి చేరుస్తాం. ఇప్పుడే అక్కడికి వెళ్ళడానికి [$1 ఇక్కడ నొక్కండి].
 
 సంతకంలేని దృవపత్రం గురించి ఓ భద్రతా హెచ్చరిక చూపించబడవచ్చు.',
+	'right-boardvote'          => 'ఎన్నికలను నిర్వహించు',
 );
 
 /** Tetum (Tetun)
@@ -4604,14 +4632,21 @@ $messages['uk'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Проголосувати]]
 * [[Special:Boardvote/list|Переглянути список тих, хто вже проголосував]]
 * [[Special:Boardvote/dump|Переглянути зашифрований запис голосів]]',
-	'boardvote_intro'          => '<p>Ласкаво просимо на вибори до Ради повірених фонду «Вікімедіа». Ми голосуємо з метою обрати двох представників спільнот користувачів різник проектів Вікімедіа. Вони повинні будуть допомагати нам визначити напрямок майбутнього розвитку проектів і представляти <em>ваші</em> інтереси в раді повірених. Вони покликані вирішувати проблеми залучення фінансування і розміщення залучених ресурсів.</p>
+	'boardvote_intro'          => '<p>Ласкаво просимо на вибори до Ради повірених фонду «Вікімедіа».
+Ми голосуємо з метою обрати представника спільнот користувачів різних проектів Вікімедіа. Вони повинні будуть допомагати нам визначити напрямок майбутнього розвитку проектів і представляти <em>ваші</em> інтереси в Раді повірених.
+Він покликаний вирішувати проблеми залучення фінансування і розміщення залучених ресурсів.</p>
 
-<p>Будь ласка, уважно прочитайте заяви кандидатів і відповіді на них перед тим, як голосувати. Усі кандидати — поважні користувачі, які пожертвували істотним часом і зусиллями, щоб покращити наші проекти і зробити їх привабливим середовищем, ціль якої пошук і вільне розповсюдження знань людства.</p>
+<p>Будь ласка, уважно прочитайте заяви кандидатів і відповіді на них перед тим, як голосувати. Усі кандидати — поважні користувачі, які пожертвували істотним часом і зусиллями, щоб покращити наші проекти і зробити їх привабливим середовищем, мета якого — пошук і вільне поширення знань людства.</p>
 
-<p>Ви можете голосувати за будь-яку кількість кандидатів. Кандидат, який набере найбільшу кількість голосів на будь-яку з двох позицій, буде оголошений переможцем у виборах на цю позицію. У випадку рівності голосів буде проведене повторне голосування з вибуванням найменш популярних кандидатів.</p>
+<p>Будь ласка, розташуйте кандидатів у поярдку, що відображає ваші вподобання, заповнивши поля числами (1 — найкращий, 2 — наступний за вподобанням ...)
+Ви можете зазначити однакове число для кількох кандидатів, або не зазначати навпроти деяких кандидатів числа. Це буде означати, що серед ваших обранців ви нікому не надаєте перевагу, але виділяєте їх серед інших кандидатів.</p>
+
+<p>Переможець буде визначений за допомогою метода Шульца.</p>
 
 <p>Додаткова інформація:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Часті питання про вибори</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Uk" class="external">Кандидати</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/uk" class="external">Виборих до Ради повріених 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Uk" class="external">Кандидати</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Метод Шульца</a></li></ul>',
 	'boardvote_intro_change'   => '<p>Ви вже проголосували. Тим не менш, за допомогою наведеної нижче форми ви можете змінити своє рішення. Будь ласка, помітьте кандидатів, яких ви підтримуєте.</p>',
 	'boardvote_entered'        => 'Дякуємо, ваш голос врахований.
 

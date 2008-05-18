@@ -247,8 +247,9 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'randomincategory-label'  => 'വിഭാഗം:',
-	'randomincategory-submit' => 'പോകൂ',
+	'randomincategory-nocategory' => '$1 എന്ന വിഭാഗം നിലവിലില്ല അല്ലെങ്കില്‍ ശൂന്യമാണ്‌',
+	'randomincategory-label'      => 'വിഭാഗം:',
+	'randomincategory-submit'     => 'പോകൂ',
 );
 
 /** Marathi (मराठी)

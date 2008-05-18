@@ -403,7 +403,12 @@ $messages['li'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'povwatch_title' => 'ശീര്‍ഷകം:',
+	'povwatch_invalid_title'   => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ശീര്‍ഷകം അസാധുവാണ്‌',
+	'povwatch_unknown_subpage' => 'അജ്ഞാതമായ ഉപതാള്‍.',
+	'povwatch_title'           => 'ശീര്‍ഷകം:',
+	'povwatch_comment'         => 'അഭിപ്രായം രേഖപ്പെടുത്തുക:',
+	'povwatch_no_subscribers'  => 'വരിക്കാര്‍ നിലവിലില്ല.',
+	'povwatch_added'           => 'ചേര്‍ത്തു',
 );
 
 /** Marathi (मराठी)

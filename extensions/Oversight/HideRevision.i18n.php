@@ -1361,6 +1361,7 @@ $messages['ml'] = array(
 	'group-oversight'             => 'മേല്‍നോട്ടക്കാര്‍',
 	'group-oversight-member'      => 'മേല്‍നോട്ടം',
 	'grouppage-oversight'         => '{{ns:project}}:മേല്‍നോട്ടം',
+	'right-oversight'             => 'മുന്‍പ് മറക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
 	'hiderevision-prompt'         => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐഡി',
 	'hiderevision-continue'       => 'തുടരുക',
 	'hiderevision-reason'         => 'കാരണം (സ്വകാര്യമായി സൂക്ഷിക്കും):',

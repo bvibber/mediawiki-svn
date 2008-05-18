@@ -207,6 +207,7 @@ $messages['ml'] = array(
 	'sc_previousmonth' => 'കഴിഞ്ഞ മാസം',
 	'sc_nextmonth'     => 'അടുത്ത മാസം',
 	'sc_today'         => 'ഇന്ന്',
+	'sc_gotomonth'     => 'മാസത്തിലേക്ക് പോവുക',
 );
 
 /** Marathi (मराठी)

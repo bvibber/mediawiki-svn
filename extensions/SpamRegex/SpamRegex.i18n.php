@@ -268,7 +268,8 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'spamregex-summary-log' => '(ചുരുക്കം)',
+	'spamregex-already-blocked' => '"$1" ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
+	'spamregex-summary-log'     => '(ചുരുക്കം)',
 );
 
 /** Marathi (मराठी)

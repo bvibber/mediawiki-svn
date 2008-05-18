@@ -388,10 +388,17 @@ $messages['lt'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'vote'            => 'വോട്ട്',
-	'vote-caption'    => 'നിങ്ങള്‍ തിരഞ്ഞെടുത്തത്:',
-	'vote-submit'     => 'വോട്ട്',
-	'vote-login-link' => 'ലോഗിന്‍ ചെയ്യുക',
+	'vote'               => 'വോട്ട്',
+	'vote-current'       => "താങ്കളുടെ നിലവിലുള്ള വോട്ട് '''$1'''വിനാണ്‌.",
+	'vote-caption'       => 'നിങ്ങള്‍ തിരഞ്ഞെടുത്തത്:',
+	'vote-submit'        => 'വോട്ട്',
+	'vote-registered'    => 'താങ്കളുടെ വോട്ട് രേഖപ്പെടുത്തിയിരിക്കുന്നു.',
+	'vote-view-results'  => 'ഫലങ്ങള്‍ കാണുക',
+	'vote-results'       => 'വോട്ടെടുപ്പിന്റെ ഫലം',
+	'vote-results-count' => 'എണ്ണം',
+	'vote-results-none'  => 'നിലവില്‍ വോട്ടുകളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.',
+	'vote-login'         => 'വോട്ടു ചെയ്യാന്‍ താങ്കള്‍ $1  ചെയ്തിരിക്കണം.',
+	'vote-login-link'    => 'ലോഗിന്‍ ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

@@ -121,13 +121,14 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
 	'inspectcache'         => 'Inspeccionar a caché',
 	'inspectcache-ok'      => 'De acordo',
 	'inspectcache-general' => 'Caché xeral',
+	'inspectcache-parser'  => 'Analizador da memoria caché',
 	'inspectcache-message' => 'Caché das mensaxes',
 	'inspectcache-get'     => 'Obter',
 	'inspectcache-delete'  => 'Eliminar',
@@ -482,5 +483,12 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'inspectcache-delete' => 'Ҳафз',
 	'inspectcache-list'   => 'Феҳрист',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'inspectcache-ok' => 'ОК',
 );
 

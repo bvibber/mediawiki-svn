@@ -160,7 +160,14 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'postcomment_notloggedin' => 'താങ്കള്‍ ലോഗിന്‍ ചെയ്തിട്ടില്ല.',
+	'postcomment_discussionprotected'      => 'ഈ സം‌വാദം താള്‍ കൂടുതല്‍ പോസ്റ്റുകള്‍ ഇടുന്നതില്‍ നിന്നു സം‌രക്ഷിക്കപ്പെട്ടിരിക്കുന്നു.',
+	'postcomment_notloggedin'              => 'താങ്കള്‍ ലോഗിന്‍ ചെയ്തിട്ടില്ല.',
+	'postcomment_youareloggedinas'         => 'താങ്കള്‍ $1 ആയി ലോഗിന്‍ ചെയ്തിരിക്കുന്നു',
+	'postcomment_addcommentdiscussionpage' => 'ഈ സം‌വാദം താളില്‍ താങ്കളുടെ അഭിപ്രായം ചേര്‍ക്കുക',
+	'postcomment_leavemessagefor'          => '$1നു ഒരു സന്ദേശം ഇടുക',
+	'postcomment_said'                     => 'പറഞ്ഞു',
+	'postcomment_invalidrequest'           => 'അസാധുവായ അഭ്യര്‍ത്ഥന.',
+	'postcomment_replyto'                  => '$1നുള്ള മറുപടി',
 );
 
 /** Marathi (मराठी)

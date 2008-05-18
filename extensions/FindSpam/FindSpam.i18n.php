@@ -414,6 +414,13 @@ $messages['tr'] = array(
 	'findspam-ok' => 'Tamam',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'findspam-ok' => 'ОК',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

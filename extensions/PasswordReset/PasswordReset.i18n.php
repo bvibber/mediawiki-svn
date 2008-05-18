@@ -326,13 +326,18 @@ $messages['lb'] = array(
 $messages['ml'] = array(
 	'passwordreset'                 => 'രഹസ്യവാക്ക് പുനഃക്രമീകരിക്കുക',
 	'passwordreset-invalidusername' => 'അസാധുവായ ഉപയോക്തൃനാമം',
+	'passwordreset-emptyusername'   => 'ശൂന്യമായ ഉപയോക്തൃനാമം',
 	'passwordreset-nopassmatch'     => 'രഹസ്യ വാക്കുകള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
 	'passwordreset-username'        => 'ഉപയോക്തൃനാമം',
 	'passwordreset-newpass'         => 'പുതിയ രഹസ്യവാക്ക്',
 	'passwordreset-confirmpass'     => 'രഹസ്യവാക്ക് ഉറപ്പിക്കുക',
+	'passwordreset-submit'          => 'രഹസ്യവാക്ക് പുനഃക്രമീകരിക്കുക',
+	'passwordreset-success'         => 'ഈ ഉപയോക്തൃഐഡിയുടെ രഹസ്യവാക്ക് പുനഃക്രമീകരിച്ചു: $1',
 	'passwordreset-disableuser'     => 'ഉപയോക്തൃഅക്കൗണ്ട് ഡിസേബിള്‍ ചെയ്യണമോ?',
 	'passwordreset-disablesuccess'  => 'ഉപയോക്തൃ അക്കൗണ്ട് ഡിസേബിള്‍ ചെയ്തിരിക്കുന്നു. (ഉപയോക്തൃ ഐഡി: $1)',
+	'passwordreset-accountdisabled' => 'അക്കൗണ്ട് പ്രവര്‍ത്തനരഹിതമാക്കിയിരിക്കുന്നു',
 	'disabledusers'                 => 'ഡിസേബിള്‍ ചെയ്യപ്പെട്ട ഉപയോക്താക്കള്‍',
+	'disabledusers-summary'         => 'രഹസ്യവാക്ക് പുനഃക്രമീകരണത്തിലൂടെ പ്രവര്‍ത്തനരഹിതമാക്കിയ ഉപയോക്താക്കളുടെ പട്ടിക.',
 );
 
 /** Marathi (मराठी)

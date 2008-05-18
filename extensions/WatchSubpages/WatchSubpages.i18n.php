@@ -57,8 +57,15 @@ $messages['de'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'watchsubpages-desc' => 'Ajouter rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi.',
-	'watchsubpages'      => 'Observer les sous-pages',
+	'watchsubpages'                      => 'Observer les sous-pages',
+	'watchsubpages-addedtowatchlist'     => 'La suivante a été ajoutée à votre liste de suivi.',
+	'watchsubpages-addtitles'            => 'Ajouter des pages',
+	'watchsubpages-addtitlestowatchlist' => 'Ajouter des pages à la liste de suivi',
+	'watchsubpages-desc'                 => 'Ajouter rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi.',
+	'watchsubpages-form'                 => 'Sélectionner les pages à ajouter à votre liste de suivi ci-dessous.
+Pour ajouter une page, cocher la case après elle, et cliquez « Ajouter des pages ».
+
+Pour cocher ou décocher plusieurs pages, le fait de tenir enfoncée la touche « Majuscule » permet de sélectionner toute une série de case en cliquant de part et d’autre de la rangée à sélectionner.',
 );
 
 /** Galician (Galego)
@@ -164,3 +171,4 @@ $messages['vi'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 	'watchsubpages'      => 'Theo dõi các trang con',
 );
+

@@ -469,6 +469,7 @@ $messages['gl'] = array(
 	'viewapc-filecache-info'        => 'Información da memoria caché do ficheiro',
 	'viewapc-usercache-info'        => 'Información caché do usuario',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|ficheiro|ficheiros}} ($2)',
+	'viewapc-memory-usage'          => 'Uso da memoria',
 	'viewapc-display-filename'      => 'Nome do ficheiro',
 	'viewapc-display-info'          => 'Nome',
 	'viewapc-display-mtime'         => 'Modificado',
@@ -1419,6 +1420,7 @@ Nowa wersja $2 dostępna jest na stronie http://pecl.php.net/package/APC/$2',
 
 /** Russian (Русский)
  * @author .:Ajvol:.
+ * @author Ahonc
  */
 $messages['ru'] = array(
 	'viewapc'                       => 'Сведения об APC',
@@ -1431,7 +1433,7 @@ $messages['ru'] = array(
 	'viewapc-clear-code-cache'      => 'Очистка кэша opcode',
 	'viewapc-mode-stats'            => 'Просмотр статистики узла',
 	'viewapc-mode-system-cache'     => 'Записи системного кэша',
-	'viewapc-mode-system-cache-dir' => 'Записи по дидекториям',
+	'viewapc-mode-system-cache-dir' => 'Записи по директориям',
 	'viewapc-mode-user-cache'       => 'Записи пользовательского кэша',
 	'viewapc-mode-version-check'    => 'Проверка версии',
 	'viewapc-info-general'          => 'Общие сведения',
@@ -1708,6 +1710,24 @@ APC verkar inte fungera.',
 Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Filcachen rensad.'''''",
 	'viewapc-usercache-cleared'     => "'''''Appliceringscachen rensad.'''''",
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'viewapc'                       => 'Відомості про APC',
+	'viewapc-desc'                  => '[[Special:ViewAPC|Перегляд та керування кешем APC]] в MediaWiki',
+	'right-apc'                     => 'використання всіх можливостей Special:ViewAPC',
+	'viewapc-apc-not-available'     => 'Немає відомостей про кеш.
+Очевидно, APC не працює.',
+	'viewapc-clear-confirm'         => 'Ви хочете очистити кеш?',
+	'viewapc-clear-user-cache'      => 'Очищення кешу користувача',
+	'viewapc-clear-code-cache'      => 'Очищення кешу opcode',
+	'viewapc-mode-stats'            => 'Перегляд статистики вузла',
+	'viewapc-mode-system-cache'     => 'Записи системного кешу',
+	'viewapc-mode-system-cache-dir' => 'Записи за директоріями',
+	'viewapc-mode-user-cache'       => 'Записи кешу користувача',
 );
 
 /** Vietnamese (Tiếng Việt)

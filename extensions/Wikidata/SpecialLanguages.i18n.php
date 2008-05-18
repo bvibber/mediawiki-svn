@@ -3228,6 +3228,13 @@ $wdMessages['tr'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Metin',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$wdMessages['uk'] = array(
+	'ow_dm_OK' => 'ОК',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
