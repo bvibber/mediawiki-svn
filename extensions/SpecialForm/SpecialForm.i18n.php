@@ -297,7 +297,17 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'formsave' => 'സേവ് ചെയ്യുക',
+	'form'                  => 'ഫോം',
+	'formnoname'            => 'ഫോമിനു പേരില്ല',
+	'formnonametext'        => 'ഫോമിനു ഒരു പേരു നിര്‍ബന്ധമായും കൊടുക്കണം, ഉദാ: "Special:Form/Nameofform".',
+	'formbadname'           => 'അസാധുവായ ഫോം നാമം',
+	'formbadnametext'       => 'ആ പേരില്‍ ഒരു ഫോമില്ല.',
+	'formpattern'           => '$1-ഫോം',
+	'formtitlepattern'      => 'പുതിയ $1 ചേര്‍ക്കുക',
+	'formsave'              => 'സേവ് ചെയ്യുക',
+	'formarticleexists'     => 'താള്‍ നിലവിലുണ്ട്',
+	'formarticleexiststext' => '[[$1]] എന്ന താള്‍ നിലവിലുണ്ട്.',
+	'formbadpagename'       => 'അസാധുവായ താള്‍ നാമം',
 );
 
 /** Marathi (मराठी)

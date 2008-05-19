@@ -838,6 +838,7 @@ $messages['ml'] = array(
 	'viewapc-display-filename'      => 'പ്രമാണത്തിന്റെ പേര്‌',
 	'viewapc-display-info'          => 'പേര്‌',
 	'viewapc-display-ttl'           => 'കാലാവധി',
+	'viewapc-display-type'          => 'തരം',
 	'viewapc-display-num_hits'      => 'ഹിറ്റുകള്‍',
 	'viewapc-display-mtime'         => 'വ്യത്യാസം വരുത്തിയത്',
 	'viewapc-display-creation_time' => 'സൃഷ്ടിക്കപ്പെട്ട സമയം',

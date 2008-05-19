@@ -333,13 +333,13 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
- * @author Jacob.jose
  * @author Shijualex
+ * @author Jacob.jose
  */
 $messages['ml'] = array(
 	'backforth-next' => 'അടുത്ത ($1)',
 	'backforth-desc' => 'താളുകളുടെ മുകളില്‍ "അടുത്തത്" "മുന്‍പുള്ളത്" എന്നീ നാവിഗേഷണല്‍ കണ്ണികള്‍ ചേര്‍ക്കുന്നു',
-	'backforth-prev' => 'മുന്നെയുള്ള ($1)',
+	'backforth-prev' => 'മുമ്പത്തെ ($1)',
 );
 
 /** Marathi (मराठी)

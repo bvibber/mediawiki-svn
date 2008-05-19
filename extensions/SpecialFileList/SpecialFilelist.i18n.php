@@ -326,12 +326,15 @@ $messages['mdf'] = array(
 );
 
 /** Malayalam (മലയാളം)
- * @author Siebrand
  * @author Shijualex
+ * @author Siebrand
  */
 $messages['ml'] = array(
-	'filelist'            => 'പ്രമാണങ്ങളുടെ പട്ടിക',
-	'filelist-image-desc' => 'കുറിപ്പ്',
+	'filelist'              => 'പ്രമാണങ്ങളുടെ പട്ടിക',
+	'filelist-desc'         => 'അപ്‌ലോഡ് ചെയ്ത പ്രമാണങ്ങള്‍ പ്രദര്‍ശിപ്പിക്കുന്ന പ്രത്യേക താള്‍',
+	'filelist-show-list'    => 'പട്ടിക പ്രദര്‍ശിപ്പിക്കുക',
+	'filelist-show-gallery' => 'ചിത്ര ഗാലറി പ്രദര്‍ശിപ്പിക്കുക',
+	'filelist-image-desc'   => 'കുറിപ്പ്',
 );
 
 /** Mongolian (Монгол)

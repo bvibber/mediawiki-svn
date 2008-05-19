@@ -780,11 +780,16 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
+ * @author Dalibor Bosits
  * @author Dnik
  */
 $messages['hr'] = array(
 	'hiderevision'                => 'Trajno sakrij uređivanja',
 	'hiderevision-desc'           => 'Sakrijte pojedine inačice od svih korisnika zbog pravnih razloga ili sl.',
+	'group-oversight'             => 'Nadzornici',
+	'group-oversight-member'      => 'Nadzornik',
+	'grouppage-oversight'         => '{{ns:project}}:Nadzor',
+	'right-oversight'             => 'Gledanje prethodno skrivenih izmjena',
 	'hiderevision-prompt'         => 'Oznaka (broj) uređivanja koju sakrivate:',
 	'hiderevision-continue'       => 'Nastavi',
 	'hiderevision-text'           => "Ovaj alat treba biti uporabljen '''samo''' u slijedećim slučajevima:

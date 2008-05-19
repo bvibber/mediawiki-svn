@@ -2634,8 +2634,8 @@ $messages['kk-arab'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
- * @author Chhorran
  * @author Lovekhmer
+ * @author Chhorran
  */
 $messages['km'] = array(
 	'boardvote'              => 'ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា',
@@ -2670,7 +2670,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_days'         => 'ចំនួនថ្ងៃ',
 	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>នេះជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ ។ $1 សំរាប់​ទិន្នន័យ​បំលែង​ជា​អក្សរកូដ ។</p>',
-	'boardvote_dumplink'     => 'ចុចទីនេះ',
+	'boardvote_dumplink'     => 'សូមចុចទីនេះ',
 	'boardvote_submit'       => 'យល់ព្រម',
 	'boardvote_strike'       => 'គូសចេញ',
 	'boardvote_unstrike'     => 'លែងគូសចេញ',
@@ -3731,16 +3731,16 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
- * @author 555
  * @author Brunoy Anastasiya Seryozhenko
+ * @author 555
  */
 $messages['pt'] = array(
-	'boardvote'              => 'Eleições para o Board of Trustees da Wikimedia Foundation',
-	'boardvote-desc'         => '[[meta:Board elections|Eleições para o Conselho de Administração da Wikimedia]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Votar]]
+	'boardvote'                => 'Eleições para o Board of Trustees da Wikimedia Foundation',
+	'boardvote-desc'           => '[[meta:Board elections|Eleições para o Conselho de Administração da Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listar votos por data]]
 * [[Special:Boardvote/dump|Dados encriptados da eleição]]',
-	'boardvote_intro'        => '
+	'boardvote_intro'          => '
 <p>Bem-vindo à segunda edição das eleições para o Comité da Fundação Wikimedia. A votação irá designar duas pessoas para representar a comunidade de utilizadores nos vários projectos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a seguir pelos projectos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comité. Irão, também, tomar as decisões respeitantes ao financiamento e alocação de fundos.</p>
 
 <p>Por favor, leia cuidadosamente os discursos dos candidatos e respostas a perguntas antes de votar. Cada um dos candidatos é um utilizador respeitado, consideravelmente em tempo e dedicação para tornar estes projectos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
@@ -3751,8 +3751,8 @@ $messages['pt'] = array(
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ de eleição</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li></ul>
 ',
-	'boardvote_intro_change' => '<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>',
-	'boardvote_entered'      => 'Obrigado, o seu voto foi registado.
+	'boardvote_intro_change'   => '<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>',
+	'boardvote_entered'        => 'Obrigado, o seu voto foi registado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
 
@@ -3767,40 +3767,45 @@ A versão da encriptação segue-se, e será publicada em [[Special:Boardvote/du
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Voltar]]',
-	'boardvote_nosession'    => 'Não foi possível determinar o seu ID de utilizador Wikimedia.
+	'boardvote_invalidentered' => '<p><strong>Erro</strong>: as preferências dos candidatos devem ser expressas em números inteiros positivos apenas (1, 2, 3, ....), ou 
+deixe vazio.</p>',
+	'boardvote_nosession'      => 'Não foi possível determinar o seu ID de utilizador Wikimedia.
 Por favor, efectue login no wiki onde está qualificado a votar e vá a <nowiki>[[Special:Boardvote]]</nowiki>.
 Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
-	'boardvote_notloggedin'  => 'Não se encontra autentificado. De modo a poder votar, deve utilizar uma conta com pelo menos $1 contribuições antes de $2.',
-	'boardvote_notqualified' => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
-	'boardvote_novotes'      => 'Ninguém votou até ao momento.',
-	'boardvote_time'         => 'Data',
-	'boardvote_user'         => 'Utilizador',
-	'boardvote_edits'        => 'Contribuições',
-	'boardvote_days'         => 'Dias',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Agente do utilizador',
-	'boardvote_listintro'    => '<p>Esta é uma lista de todos votos registados até à data. $1 para os dados encriptados.</p>',
-	'boardvote_dumplink'     => 'Clique aqui',
-	'boardvote_submit'       => 'OK',
-	'boardvote_strike'       => 'Riscar',
-	'boardvote_unstrike'     => 'Limpar risco',
-	'boardvote_needadmin'    => 'Apenas administradores podem efectuar esta operação.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho',
-	'boardvote_notstarted'   => 'A votação ainda não começou',
-	'boardvote_closed'       => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/Pt a página de eleições para os resultados] brevemente.',
-	'boardvote_edits_many'   => 'muitos',
-	'group-boardvote'        => 'Board vote administradores',
-	'group-boardvote-member' => 'Board vote administrador',
-	'grouppage-boardvote'    => '{{ns:project}}:Administrador da votação para o Conselho',
-	'boardvote_blocked'      => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo. Utilizadores bloqueados não estão autorizados a votar.',
-	'boardvote_welcome'      => "Bem-vindo, '''$1'''!",
-	'go_to_board_vote'       => 'Eleições para o Conselho de Administração da Wikimedia 2008',
-	'boardvote_redirecting'  => 'Para maior segurança e transparência, estamos a realizar a votação num servidor externo controlado independentemente.
+	'boardvote_notloggedin'    => 'Você não está logado.
+Para votar, você deve usar uma conta com pelo menos $1 contribuições antes de $2, e com contribuições feitas pelo menos $3 entre $4 e $5.',
+	'boardvote_notqualified'   => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
+	'boardvote_novotes'        => 'Ninguém votou até ao momento.',
+	'boardvote_time'           => 'Data',
+	'boardvote_user'           => 'Utilizador',
+	'boardvote_edits'          => 'Contribuições',
+	'boardvote_days'           => 'Dias',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Agente do utilizador',
+	'boardvote_listintro'      => '<p>Esta é uma lista de todos votos registados até à data. $1 para os dados encriptados.</p>',
+	'boardvote_dumplink'       => 'Clique aqui',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Riscar',
+	'boardvote_unstrike'       => 'Limpar risco',
+	'boardvote_needadmin'      => 'Apenas administradores podem efectuar esta operação.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho',
+	'boardvote_notstarted'     => 'A votação ainda não começou',
+	'boardvote_closed'         => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/Pt a página de eleições para os resultados] brevemente.',
+	'boardvote_edits_many'     => 'muitos',
+	'group-boardvote'          => 'Board vote administradores',
+	'group-boardvote-member'   => 'Board vote administrador',
+	'grouppage-boardvote'      => '{{ns:project}}:Administrador da votação para o Conselho',
+	'boardvote_blocked'        => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo. Utilizadores bloqueados não estão autorizados a votar.',
+	'boardvote_bot'            => "Você possui uma permissão de ''Bot'' em sua Wiki.
+Contas com permissão de ''Bot'' não podem votar.",
+	'boardvote_welcome'        => "Bem-vindo, '''$1'''!",
+	'go_to_board_vote'         => 'Eleições para o Conselho de Administração da Wikimedia 2008',
+	'boardvote_redirecting'    => 'Para maior segurança e transparência, estamos a realizar a votação num servidor externo controlado independentemente.
 
 Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Clique aqui] para ser redireccionado agora.
 
 Um aviso de segurança sobre um certificado não assinado poderá eventualmente ser apresentado.',
-	'right-boardvote'        => 'Administrar eleições',
+	'right-boardvote'          => 'Administrar eleições',
 );
 
 /** Quechua (Runa Simi)

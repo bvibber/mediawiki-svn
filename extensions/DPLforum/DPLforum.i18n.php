@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
 
+/** Arabic (العربية)
+ * @author Alnokta
+ */
+$messages['ar'] = array(
+	'dplforum-by' => 'بواسطة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

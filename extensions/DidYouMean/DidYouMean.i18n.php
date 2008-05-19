@@ -144,6 +144,13 @@ $messages['sv'] = array(
 	'didyoumean-desc' => 'Lägger till länkar till sidor med "liknande" titlar',
 );
 
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'didyoumean-desc' => '"ఒకే విధమైన" పేర్లు కలిగిన పేజీలకు లింకులు ఇస్తుంది',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */

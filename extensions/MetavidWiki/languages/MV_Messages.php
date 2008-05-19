@@ -1368,6 +1368,7 @@ $messages['ml'] = array(
 	'mediasearch'                 => 'മീഡിയാപ്രമാണ തിരച്ചില്‍',
 	'mv_search_match'             => 'തിരച്ചില്‍ ടെക്സ്റ്റ്',
 	'mv_search_category'          => 'വിഭാഗം',
+	'mv_search_and'               => 'ഉം',
 	'mv_category'                 => 'വിഭാഗം',
 	'mv_view_wiki_page'           => 'വിക്കി താള്‍ കാണുക',
 	'mv_match_text'               => '~  $1 യോജിക്കുന്ന ഫലങ്ങള്‍',

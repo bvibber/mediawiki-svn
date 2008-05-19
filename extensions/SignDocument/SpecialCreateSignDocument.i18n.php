@@ -380,13 +380,16 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'createsigndoc-pagename'          => 'താള്‍:',
+	'createsigndoc-allowedgroup'      => 'അനുവദനീയമായ ഗ്രൂപ്പ്:',
 	'createsigndoc-email'             => 'ഇമെയില്‍ വിലാസം:',
 	'createsigndoc-address'           => 'വീടിന്റെ വിലാസം:',
 	'createsigndoc-extaddress'        => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',
 	'createsigndoc-phone'             => 'ഫോണ്‍ നമ്പര്‍:',
 	'createsigndoc-bday'              => 'ജനനതീയ്യതി:',
 	'createsigndoc-minage'            => 'കുറഞ്ഞ പ്രായം:',
+	'createsigndoc-introtext'         => 'പ്രാരംഭം:',
 	'createsigndoc-hidden'            => 'മറഞ്ഞിരിക്കുന്നത്',
+	'createsigndoc-optional'          => 'നിര്‍ബന്ധമില്ല',
 	'createsigndoc-create'            => 'താള്‍ സൃഷ്ടിക്കുക',
 	'createsigndoc-error-generic'     => 'പിഴവ്: $1',
 	'createsigndoc-error-pagenoexist' => 'പിശക്: [[$1]] എന്ന താള്‍ നിലവിലില്ല.',

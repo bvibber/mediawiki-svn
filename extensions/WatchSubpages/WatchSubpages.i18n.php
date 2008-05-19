@@ -88,7 +88,11 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'watchsubpages' => 'സബ്‌താളുകള്‍ ശ്രദ്ധിക്കുക',
+	'watchsubpages'                      => 'സബ്‌താളുകള്‍ ശ്രദ്ധിക്കുക',
+	'watchsubpages-addedtowatchlist'     => 'തഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്നവ താങ്കള്‍ ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് ചേര്‍ത്തിരിക്കുന്നു.',
+	'watchsubpages-addtitles'            => 'താളുകള്‍ ചേര്‍ക്കുക',
+	'watchsubpages-addtitlestowatchlist' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്കു താളുകള്‍ ചേര്‍ക്കുക',
+	'watchsubpages-desc'                 => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് [[Special:WatchSubpages|ഒരു താളിന്റെ എല്ലാ ഉപതാളുകളും]] ശീഘ്രമായി ചേര്‍ക്കുക',
 );
 
 /** Dutch (Nederlands)
@@ -125,8 +129,15 @@ Når du merker eller fjerner merking av flere sider, kan du holde nede «Shift»
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'watchsubpages-desc' => 'Apondre rapidament [[Special:WatchSubpages|totas las sospaginas]] a la tièra de seguit.',
-	'watchsubpages'      => 'Observar las sospaginas',
+	'watchsubpages'                      => 'Observar las sospaginas',
+	'watchsubpages-addedtowatchlist'     => 'La seguenta es estada aponduda a vòstra lista de seguit.',
+	'watchsubpages-addtitles'            => 'Apondre de paginas',
+	'watchsubpages-addtitlestowatchlist' => 'Apondre de paginas a la lista de seguit',
+	'watchsubpages-desc'                 => 'Apondre rapidament [[Special:WatchSubpages|totas las sospaginas]] a la tièra de seguit.',
+	'watchsubpages-form'                 => "Seleccionar las paginas d'apondre a vòstra lista de seguit çaijós.
+Per apondre una pagina, marcatz la casa aprèp ela, e clicatz « Apondre de paginas ».
+
+Per marcar o desmarcar mai d'una pagina, lo fach de téner quichada la tòca « Majuscula » permet de seleccionar tota una seria de casa en clicant de part e d’autra de la rengada de seleccionar.",
 );
 
 /** Pashto (پښتو)

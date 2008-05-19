@@ -272,6 +272,16 @@ Fir är komlett Aufgabelësch  ze gesinn, gitt w.e.g. op %s.
 Äre frëndleche  %s Informatiounssystem',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'tasklistunknownproject' => 'അജ്ഞാതമായ സം‌രംഭം',
+	'tasklistincorrectuser'  => 'തെറ്റായ ഉപയോക്തൃനാമം',
+	'tasklistemail'          => 'നമസ്കാരം %s',
+	'tasklistprojdisp'       => 'പ്രദര്‍ശിപ്പിക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

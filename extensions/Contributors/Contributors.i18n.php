@@ -882,8 +882,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Chaduvari
  */
 $messages['te'] = array(
+	'contributors'             => 'రచయితలు',
 	'contributors-toolbox'     => 'ముఖ్య రచయితలు',
 	'contributors-legend'      => 'పేజీకి ముఖ్య రచయితలను చూపించు',
 	'contributors-target'      => 'శీర్షిక:',

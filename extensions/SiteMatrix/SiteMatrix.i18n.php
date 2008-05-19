@@ -763,6 +763,7 @@ $messages['ml'] = array(
 	'sitematrix-others'    => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങള്‍',
 	'sitematrix-total'     => "'''മൊത്തം എണ്ണം: $1'''",
 	'sitematrix-sitetotal' => 'മൊത്തം',
+	'sitematrix-private'   => 'സ്വകാര്യം',
 );
 
 /** Marathi (मराठी)

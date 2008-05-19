@@ -457,7 +457,21 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'specialuserstats'             => 'ഉപയോഗത്തിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
+	'usagestatistics'              => 'ഉപയോഗത്തിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
+	'usagestatisticsallusers'      => 'എല്ലാ ഉപയോക്താക്കളും',
+	'usagestatisticsinterval'      => 'ഇടവേള',
+	'usagestatisticstype'          => 'തരം',
+	'usagestatisticsstart'         => 'തുടങ്ങുന്ന തീയ്യതി',
+	'usagestatisticsend'           => 'അവസാനിക്കുന്ന തീയ്യതി',
+	'usagestatisticssubmit'        => 'സ്ഥിതിവിവരക്കണക്ക് ഉത്പാദിപ്പിക്കുക',
+	'usagestatisticsnostart'       => '* <font color=red>ദയവായി ഒരു തുടക്ക തീയ്യതി ചേര്‍ക്കുക</font>',
+	'usagestatisticsnoend'         => '* <font color=red>ദയവായി ഒരു ഒടുക്ക തീയ്യതി ചേര്‍ക്കുക</font>',
+	'usagestatisticsbadstartend'   => '<b>അസാധുവായ <i>തുടക്ക</i> അല്ലെങ്കില്‍ <i>ഒടുക്ക</i> തീയ്യതി!</b>',
+	'usagestatisticsintervalday'   => 'ദിവസം',
+	'usagestatisticsintervalweek'  => 'ആഴ്ച',
 	'usagestatisticsintervalmonth' => 'മാസം',
+	'usagestatisticscalselect'     => 'തിരഞ്ഞെടുക്കുക',
 );
 
 /** Marathi (मराठी)

@@ -156,6 +156,15 @@ $messages['lt'] = array(
 	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'userimages-caption'  => '$1 അപ്‌ലോഡ് ചെയ്ത ചിത്രങ്ങള്‍',
+	'userimages-noname'   => 'അസാധുവായ ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഒന്നും കൊടുത്തിട്ടില്ല.',
+	'userimages-noimages' => '$1 ചിത്രങ്ങള്‍ അപ്‌ലോഡ് ചെയ്തിട്ടില്ല.',
+);
+
 /* nld / Dutch */
 $messages['nl'] = array(
 	'userimages-caption' => 'Afbeeldingen toegevoegd door $1',

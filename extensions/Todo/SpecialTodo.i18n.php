@@ -302,7 +302,9 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'todo-new-queue'    => 'പുതിയത്',
+	'todo-list-change'  => 'മാറ്റം',
 	'todo-list-cancel'  => 'റദ്ദാക്കുക',
+	'todo-new-item'     => 'പുതിയ ഇനം',
 	'todo-form-details' => 'വിശദാംശങ്ങള്‍:',
 );
 

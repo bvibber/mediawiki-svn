@@ -487,12 +487,24 @@ $messages['li'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'youtubeauthsub_title'       => 'ശീര്‍ഷകം',
-	'youtubeauthsub_description' => 'വിവരണം',
-	'youtubeauthsub_password'    => 'യൂട്യൂബ് രഹസ്യവാക്ക്',
-	'youtubeauthsub_username'    => 'യൂട്യൂബ് യൂസര്‍നാമം',
-	'youtubeauthsub_category'    => 'വിഭാഗം',
-	'youtubeauthsub_submit'      => 'സമര്‍പ്പിക്കുക',
+	'youtubeauthsub'                    => 'യൂട്യൂബ് വീഡിയോ അപ്‌ലോഡ് ചെയ്യുക',
+	'youtubeauthsub-desc'               => 'യൂട്യൂബിലേക്കു നേരിട്ട് [[Special:YouTubeAuthSub|വീഡിയോ അപ്‌ലോഡ് ചെയ്യാന്‍]] ഉപയോക്താക്കളെ സഹായിക്കുന്നു',
+	'youtubeauthsub_title'              => 'ശീര്‍ഷകം',
+	'youtubeauthsub_description'        => 'വിവരണം',
+	'youtubeauthsub_password'           => 'യൂട്യൂബ് രഹസ്യവാക്ക്',
+	'youtubeauthsub_username'           => 'യൂട്യൂബ് യൂസര്‍നാമം',
+	'youtubeauthsub_keywords'           => 'കീവേര്‍ഡുകള്‍',
+	'youtubeauthsub_category'           => 'വിഭാഗം',
+	'youtubeauthsub_submit'             => 'സമര്‍പ്പിക്കുക',
+	'youtubeauthsub_clickhere'          => 'യൂട്യൂബിലേക്ക് ലോഗിന്‍ ചെയ്യാന്‍ ഇവിടെ ഞെക്കുക',
+	'youtubeauthsub_uploadhere'         => 'നിങ്ങളുടെ വീഡിയോ ഇവിടെ നിന്നും അപ്‌ലോഡ് ചെയ്യുക:',
+	'youtubeauthsub_uploadbutton'       => 'അപ്‌ലോഡ്',
+	'youtubeauthsub_summary'            => 'യൂട്യൂബ് വീഡിയോ അപ്‌ലോഡ് ചെയ്തുകൊണ്ടിരിക്കുന്നു',
+	'youtubeauthsub_uploading'          => 'താങ്കളുടെ വീഡിയോ അപ്‌ലോഡ് ചെയ്യപ്പെട്ടിരിക്കുന്നു. ദയവായി കാത്തിരിക്കൂ.',
+	'youtubeauthsub_viewpage'           => 'താങ്കള്‍ക്ക് താങ്കളുടെ വീഡിയോ [[$1|ഇവിടെ നിന്നും]] കാണാവുന്നതാണ്‌.',
+	'youtubeauthsub_jserror_nokeywords' => 'ഒന്നോ അതിലധികമോ കീവേര്‍ഡുകള്‍ ചേര്‍ക്കുക.',
+	'youtubeauthsub_jserror_notitle'    => 'വീഡിയോയ്ക്കു ഒരു ശീര്‍ഷകം ചേര്‍ക്കുക.',
+	'youtubeauthsub_jserror_nodesc'     => 'വീഡിയോയെപ്പറ്റി ഒരു ലഘുവിവരണം ചേര്‍ക്കുക.',
 );
 
 /** Marathi (मराठी)

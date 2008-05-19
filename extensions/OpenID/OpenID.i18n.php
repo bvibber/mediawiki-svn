@@ -571,6 +571,7 @@ $messages['ml'] = array(
 	'openidsuccess'            => 'സ്ഥിരീകരണം വിജയിച്ചു',
 	'openidusernameprefix'     => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
 	'openidnopolicy'           => 'സൈറ്റ് സ്വകാര്യതാ നയം കൊടുത്തിട്ടില്ല.',
+	'openidoptional'           => 'നിര്‍ബന്ധമില്ല',
 	'openidrequired'           => 'അത്യാവശ്യമാണ്‌',
 	'openidnickname'           => 'ചെല്ലപ്പേര്',
 	'openidfullname'           => 'പൂര്‍ണ്ണനാമം',

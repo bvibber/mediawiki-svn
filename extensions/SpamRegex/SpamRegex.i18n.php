@@ -268,6 +268,9 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'spamregex-log-2'           => '$1 ന്‌',
+	'spamregex-unblock-success' => 'സ്വതന്ത്രമാക്കല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'spamregex-block-success'   => 'തടയല്‍ വിജയിച്ചിരിക്കുന്നു',
 	'spamregex-already-blocked' => '"$1" ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
 	'spamregex-summary-log'     => '(ചുരുക്കം)',
 );
