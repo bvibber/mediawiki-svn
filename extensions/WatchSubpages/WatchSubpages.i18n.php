@@ -49,8 +49,12 @@ $messages['ca'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'watchsubpages-desc' => 'Schnelles [[Special:WatchSubpages|Hinzufügen aller Unterseiten]] einer Seite zur Beobachtungsliste',
-	'watchsubpages'      => 'Beobachte Unterseiten',
+	'watchsubpages'                      => 'Beobachte Unterseiten',
+	'watchsubpages-addedtowatchlist'     => 'Die folgenden Seiten wurden deiner Beobachtungsliste hinzugefügt.',
+	'watchsubpages-addtitles'            => 'Seite hinzufügen',
+	'watchsubpages-addtitlestowatchlist' => 'Seiten zur Beobachtungsliste hinzufügen',
+	'watchsubpages-desc'                 => 'Schnelles [[Special:WatchSubpages|Hinzufügen aller Unterseiten]] einer Seite zur Beobachtungsliste',
+	'watchsubpages-form'                 => 'Wähle die Seiten aus, die deiner Beobachtungsliste hinzugefügt werden sollen.',
 );
 
 /** French (Français)
