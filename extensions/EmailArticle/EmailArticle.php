@@ -27,7 +27,7 @@ $wgPhpMailerClass              = dirname(__FILE__).'/phpMailer_v2.1.0beta2/class
 if ($wgEmailArticleGroup) $wgGroupPermissions['sysop'][$wgEmailArticleGroup] = true;
 
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['EmailArticle'] = $dir . 'EmailArticle_body.php';
+$wgAutoloadClasses['SpecialEmailArticle'] = $dir . 'EmailArticle_body.php';
 $wgExtensionMessagesFiles['EmailArticle'] = $dir . 'EmailArticle.i18n.php';
 $wgSpecialPages['EmailArticle'] = 'SpecialEmailArticle';
 
