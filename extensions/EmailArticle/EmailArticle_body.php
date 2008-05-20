@@ -30,7 +30,7 @@ class SpecialEmailArticle extends SpecialPage {
 
 		# Get info from request or set to defaults
 		$this->title    = isset($_REQUEST['ea-title'])    ? $_REQUEST['ea-title']    : $param;
-		$this->subject  = isset($_REQUEST['ea-subject'])  ? $_REQUEST['ea-subject']  : "\"{$this->title}\" ". wfMsg('ea-articlesend' ,$wgSitename );
+		$this->subject  = isset($_REQUEST['ea-subject'])  ? $_REQUEST['ea-subject']  : '' . wfMsg('ea-articlesend', $this->title, $wgSitename );
 		$this->header   = isset($_REQUEST['ea-header'])   ? $_REQUEST['ea-header']   : '';
 		$this->cat      = isset($_REQUEST['ea-cat'])      ? $_REQUEST['ea-cat']      : '';
 		$this->group    = isset($_REQUEST['ea-group'])    ? $_REQUEST['ea-group']    : '';

@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => "=== E-mailing [[$1]] page ===",
 	'ea-fromgroup'        => 'From group:',
-	'ea-articlesend'      => 'article sent from $1',
+	'ea-articlesend'      => '"$1" article sent from $2',
 	'ea-noarticle'        => "Please specify a page to send, for example [[Special:EmailArticle/Main Page]].",
 	'ea-norecipients'     => "No valid e-mail addresses found!",
 	'ea-listrecipients'   => "=== List of $1 {{PLURAL:$1|recipient|recipients}} ===",
