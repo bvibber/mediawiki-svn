@@ -119,6 +119,7 @@ class WhitelistEdit extends SpecialPage
             $date = ($NewExpiryDate == '') ? "" : date("Y-m-d H:i:s", strtotime($NewExpiryDate));
             foreach ($modify_array as $entry => $rowid)
             {
+                $dbr->begin();
                 if ($doit)
                 {
                     $dbr->update('whitelist',
@@ -138,10 +139,12 @@ class WhitelistEdit extends SpecialPage
                                                  );
                     $wgOut->addWikiText(wfMsg('whitelistoverviewcd', $date, $pagename));
                 }
+                $dbr->commit();
             }
         } else if (($action == 'SetEdit') || ($action == 'SetView')) {
             foreach ($modify_array as $entry => $rowid)
             {
+                $dbr->begin();
                 if ($doit)
                 {
                     $dbr->update('whitelist',
@@ -165,10 +168,12 @@ class WhitelistEdit extends SpecialPage
                                              )
                                        );
                 }
+                $dbr->commit();
             }
         } else if ($action == 'Remove') {
             foreach ($modify_array as $entry => $rowid)
             {
+                $dbr->begin();
                 if ($doit)
                 {
                     $dbr->delete('whitelist',
@@ -185,6 +190,7 @@ class WhitelistEdit extends SpecialPage
                                                  );
                     self::DisplayWildCardMatches($pagename,wfMsg('whitelistoverviewrm', $pagename),-1);
                 }
+                $dbr->commit();
             }
         }
 
@@ -264,6 +270,7 @@ class WhitelistEdit extends SpecialPage
         global $wgUser;
 
         # this is for some reason a case insensitive search, so be ware!!!
+        $dbr->begin();
         if (!$dbr->selectRow('whitelist',
                                 array('wl_id'),
                                 array('wl_user_id'    => $contractorId,
@@ -281,6 +288,7 @@ class WhitelistEdit extends SpecialPage
                             ),
                         __METHOD__
                     );
+        $dbr->commit();
     }
 
     function DisplayContractorEditDetails($contractorId)
@@ -452,14 +460,18 @@ END;
         $wgOut->addHTML('<select name="contractor">');
 
         $users = array();
+        $dbr->begin();
         $res = $dbr->select( 'user_groups', 'ug_user', array('ug_group'=>$wgWhiteListRestrictedGroup), __METHOD__);
+        $dbr->commit();
         for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $u = User::newFromID($row->ug_user);
-            $users[$u->getRealName()] = $row->ug_user;
+            $users[$row->ug_user] = $u->getRealName();
+            if ($users[$row->ug_user] == "")
+                $users[$row->ug_user] = $u->getName();
         }
         $dbr->freeResult($res);
-        ksort($users);
-        foreach ($users as $name => $id)
+        asort($users);
+        foreach ($users as $id => $name )
             $wgOut->addHTML("<option value=\"$id\">".$name."</option>");
         $wgOut->addHTML('</select> ');
         $wgOut->addHTML("<input type=\"submit\" value=\"" . wfMsg('whitelistnewtableprocess') . "\" />");
@@ -469,6 +481,7 @@ END;
 
     function contractorWhitelistTable($dbr, $contractorId)
     {
+        $dbr->begin();
         $res = $dbr->select('whitelist',
                             array('wl_id',
                                 'wl_page_title',
@@ -481,6 +494,7 @@ END;
                                 ),
                             __METHOD__
                             );
+        $dbr->commit();
         return $res;
     }
 
@@ -501,19 +515,19 @@ END;
         if (preg_match($pattern, $wl_pattern, $matches))
         {
             $found = array();
-            $found[title] = $matches[4];
-            $found[ns] = '%';
+            $found['title'] = $matches[4];
+            $found['ns'] = '%';
 
             $ns = Language::Factory($wgContLanguageCode);
             if ($matches[1] == ':' && $matches[2] == '' )
-                $found[ns] = NS_MAIN;
+                $found['ns'] = NS_MAIN;
             if ($nsindex = $ns->getNsIndex($matches[3]))
-                $found[ns] = $nsindex;
-            if (!is_int($found[ns]) && ($found[ns] == '%'))
-                $found[title] = $wl_pattern;
+                $found['ns'] = $nsindex;
+            if (!is_int($found['ns']) && ($found['ns'] == '%'))
+                $found['title'] = $wl_pattern;
 
-            $found[title] = str_replace('*', '%',  $found[title]);
-            $found[title] = str_replace(' ', '_',  $found[title]);
+            $found['title'] = str_replace('*', '%',  $found['title']);
+            $found['title'] = str_replace(' ', '_',  $found['title']);
             array_push($expanded, $found);
 
             # process the talk categories as well as the underlying categories
@@ -532,15 +546,19 @@ END;
 
         foreach ($expanded as $entry)
         {
-            $sql = "SELECT page_id FROM ". $dbr->tableName('page') ." WHERE `page_namespace` LIKE '$entry[ns]' AND `page_title` LIKE '$entry[title]'";
+            $sql = "SELECT page_id FROM ". $dbr->tableName('page') .
+                   " WHERE `page_namespace` LIKE '" . $entry['ns'] .
+                   "' AND `page_title` LIKE '" . $entry['title'] . "'";
             if ($wgWhitelistWildCardInsensitive)
             {
                 $sql = "SELECT page_id FROM " .
                        $dbr->tableName('page') .
-                       " WHERE UPPER(`page_namespace`) LIKE '" . strtoupper($entry[ns]) . "'" .
-                       " AND UPPER(`page_title`) LIKE '" . strtoupper($entry[title]) . "'";
+                       " WHERE UPPER(`page_namespace`) LIKE '" . strtoupper($entry['ns']) . "'" .
+                       " AND UPPER(`page_title`) LIKE '" . strtoupper($entry['title']) . "'";
             }
+            $dbr->begin();
             $res = $dbr->query($sql, __METHOD__);
+            $dbr->commit();
             for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res))
                 array_push($whitelisted, $row->page_id);
             $dbr->freeResult($res);
@@ -705,7 +723,9 @@ class WhiteList extends SpecialPage
         $wgOut->addHTML('<select name="manager">');
 
         $users = array();
+        $dbr->begin();
         $res = $dbr->select( 'user_groups', 'ug_user', array('ug_group'=>$wgWhiteListManagerGroup), __METHOD__);
+        $dbr->commit();
         for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
             $u = User::newFromID($row->ug_user);
             $users[$u->getRealName()] = $row->ug_user;

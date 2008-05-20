@@ -64,9 +64,10 @@ class WhitelistExec
 
 		/* Check global allow/deny lists */
 		$override = self::GetOverride($true_title, $action);
-
-		#if( WHITELIST_NOACTION == $override )
-		#	$override = self::IsAllowedExact( $true_title, $wgUser, $action );
+                
+                /* Check if page is on whitelist */
+                if( WHITELIST_NOACTION == $override )
+                        $override = self::IsAllowedNamespace( $true_title, $wgUser, $action );
 
 		/* Check if page is on whitelist */
 		if( WHITELIST_NOACTION == $override )
@@ -170,26 +171,19 @@ class WhitelistExec
 			return WHITELIST_NOACTION;
 	}
 
-	static function IsAllowedExact( &$title, &$wgUser, $action)
-	{
-		$dbr = wfGetDB( DB_SLAVE );
-		$db_return_cols = array( 'wl_expires_on' );
-		$db_conditions = array(
-			'wl_user_id' => $wgUser->getId(),
-			'wl_page_title' => $title->getPrefixedText()
-		);
-		$db_result = $dbr->selectRow('whitelist', $db_return_cols,
-			$db_conditions, __METHOD__ );
+        static function IsAllowedNamespace( &$title, &$wgUser, $action)
+        {
 
-		if( $db_result ) {
-			if(strtotime($db_result->wl_expires_on) < strtotime(date("Y-m-d H:i:s")))
-				return WHITELIST_NOACTION; /* Expired */
-			else
-				return WHITELIST_GRANT;
-		}
-		else
-			return WHITELIST_NOACTION;
-	}
+                $page_ns = $title->getNsText();
+                if(     ($page_ns == 'Mediawiki' ) ||
+                        ($page_ns == 'Image' ) || 
+                        ($page_ns == 'Help' ) )
+                {
+                        return WHITELIST_GRANT;
+                }
+
+                return WHITELIST_NOACTION;
+        }
 
 
 	/* Check whether the page is whitelisted.
@@ -230,7 +224,9 @@ class WhitelistExec
 		/* Loop through each result returned and
 		 * check for matches.
 		 */
+                $dbr->begin();
 		$db_results = $dbr->query( $sql , __METHOD__, true);
+                $dbr->commit();
 		while( $db_result = $dbr->fetchObject($db_results) )
 		{
 			if( self::RegexCompare($title, $db_result->wl_page_title) )
