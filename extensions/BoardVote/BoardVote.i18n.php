@@ -878,29 +878,37 @@ $messages['da'] = array(
 	'boardvote_welcome'  => "Velkommen '''$1'''!",
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
 	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',
-	'boardvote_entry'         => "* [[meta:Board elections/2008/Candidates/de|Kandidatenvorstellungen]]
-* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
+	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]",
-	'boardvote_intro'         => '<blockquote>
-<p>
-Willkommen zur Wahl 2008 zum Wikimedia-Kuratorium, dem Verwaltungsorgan der Wikimedia-Foundation. Es wird ein Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren. Dieser wird für einen Zeitraum von zwei Jahren gewählt. Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und sie repräsentieren <em>deine</em> Interessen und Belange. Sie werden neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.
-</p>
+	'boardvote_intro'         => "<p>Willkommen zur Wahl 2008 des Wikimedia-Kuratoriums, dem Verwaltungsorgan der Wikimedia-Foundation.
+	Es wird 1 Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren.
+	Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und er repräsentiert <em>deine</em> Interessen und Belange gegenüber dem Wikimedia-Kuratoriums.
+	Er wird neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.</p>
 
-<p>Vor deiner Wahl lies bitte die Kandidatenvorstellungen und ihre Antworten auf Fragen. Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
+	<p>Bitte lies die Kandidatenvorstellungen und ihre Antworten auf Fragen.
+	Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
 
-<p>Du darfst für so viele Kandidaten stimmen wie du möchtest. Die drei Kandidaten mit den meisten Stimmen werden die Sieger sein. Gibt es ein Unentschieden, wird es eine Stichwahl geben.</p>
+	<p>Bitte reihe die Kandidaten nach deinen Vorstellungen auf, indem du eine Nummer in die Kästchen eingibst (1 = Favorit, 2 = zweiter Favorit, ...)
+	Du darfst dieselbe Rangnummer für mehrere Kandidaten verwenden und du darfst Kandidaten auslassen.
+	Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnummer vorziehst und dass du unentschlossen bist bei den Kandidaten ohne Rangnummer.</p>
 
-<p>Bitte beachte, dass du nur aus einem Projekt heraus wählen darfst. Auch wenn du jeweils mehr als 400 Bearbeitungen in mehreren Projekten hast, so berechtigt dies nicht zu einer Doppelabstimmung. Wenn du deine Stimmabgabe ändern möchtest, wähle bitte erneut von dem Projekt, in dem du bereits vorher abgestimmt hast.</p>
+	<p>Der Gewinnder der Wahl wird nach der Schulze-Methode berechnet.</p>
 
-<p>Weitere Informationen:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Kuratoriumwahl 2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li></ul>",
-</blockquote>',
-	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt. Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern. Markiere dazu die Kästchen der Kandidaten, die du befürwortest.</p>",
+	<p>Weitere Informationen:</p>
+	<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Kuratoriumwahl 2008</a></li>
+	<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li>
+	<li><a href=\"http://de.wikipedia.org/wiki/Schulze-Methode\" class=\"external\">Schulze-Methode</a></li></ul>",
+	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt.
+	Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern.
+	Bitte ordne die Kandidaten in deiner Wunschreihenfolge an, wobei eine kleinere Zahl den Vorrang für diesen Kandidaten bedeutet.
+	Du kannst dieselbe Zahl mehr als einem Kandidaten geben und du kannst Kandidaten auslassen.</p>",
 	'boardvote_entered'       => "Danke, deine Stimme wurde gespeichert.
 
 Wenn du möchtest, kannst du folgende Details festhalten. Deine Abstimmungsaufzeichnung ist:
@@ -916,7 +924,9 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
-	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. 
+	'boardvote_invalidentered'=> "<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, ...) oder lasse das/die Kästchen leer.</p>",
+	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
+	Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. 
 	Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, und der mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt hat.",
 	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
 	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
@@ -933,21 +943,22 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 	'boardvote_strike'        => "Stimme streichen",
 	'boardvote_unstrike'      => "Stimmstreichung zurücknehmen",
 	'boardvote_needadmin'     => "Nur Wahladministratoren können diese Aktion durchführen.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>:  ",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>: Die Wahl ist bis zum 22. Juni möglich.",
 	'boardvote_notstarted'    => 'Die Wahl hat noch nicht begonnen',
 	'boardvote_closed'        => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki] einsehbar.',
+	'boardvote_edits_many'    => 'viele',
 	'group-boardvote'         => 'Wahl-Administratoren',
 	'group-boardvote-member'  => 'Wahl-Administrator',
 	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
-	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt an der Wahl teilzunehmen.',
+	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt, an der Wahl teilzunehmen.',
 	'boardvote_bot'           => 'Entschuldigung, aber dein Benutzerkonto ist im registrierten Wiki als Bot gekennzeichnet. Bots dürfen nicht abstimmen.',
 	'boardvote_welcome'       => "Willkommen '''$1'''!",
 	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting'   => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
 
-Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
+	Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
 
-Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
+	Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 
 	'right-boardvote'         => 'Wahlen administrieren',
 );
