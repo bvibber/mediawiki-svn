@@ -3808,6 +3808,43 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
 	'right-boardvote'          => 'Administrar eleições',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Brunoy Anastasiya Seryozhenko
+ */
+$messages['pt-br'] = array(
+	'boardvote_intro'        => '<p>Bem-vindo às eleições de 2008 para o Comitê da Fundação Wikimedia. A votação irá designar duas pessoas para representar a comunidade de usuários nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a seguir pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê. Irão, também, tomar as decisões respeitantes ao financiamento e alocação de fundos.</p>
+
+<p>Por favor, leia cuidadosamente os discursos dos candidatos e respostas a perguntas antes de votar. Cada um dos candidatos é um usuário respeitado, consideravelmente em tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
+
+<p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
+
+<p>Para mais informações, consulte:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ de eleição</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li></ul>',
+	'boardvote_intro_change' => '<p>Você já votou. Porém, você pode mudar
+seu voto usando o formulário abaixo. Por favor, liste os candidatos de acordo com suas preferências, onde o menor número 
+indica uma alta preferências por um candidato em particular. Você também pode dar a mesma preferência para mais de um
+candidato e pode manter os outros candidatos fora da classificação geral.</p>',
+	'boardvote_entered'      => 'Obrigado, o seu voto foi registado.
+
+Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
+
+<pre>$1</pre>
+
+Foi encriptado com a chave pública dos Administradores da Eleição:
+
+<pre>$2</pre>
+
+A versão da encriptação continua, e será publicada em [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Voltar]]',
+	'boardvote_nosession'    => 'Não foi possível determinar o seu ID de usuário da Wikimedia.
+Por favor, efetue login na wiki onde está qualificado a votar e vá até <nowiki>[[Special:Boardvote]]</nowiki>.
+Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */
@@ -4000,18 +4037,17 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Siebrand
  */
 $messages['sk'] = array(
-	'boardvote'              => 'Voľby do Správnej rady Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Voľby do Rady Rady správcov Wikimedia]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovať]]
+	'boardvote'                => 'Voľby do Správnej rady Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections|Voľby do Rady Rady správcov Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Hlasovať]]
 * [[Special:Boardvote/list|Zobraziť doterajšie hlasy]]
 * [[Special:Boardvote/dump|Vypísať kryptovaný záznam volieb]]',
-	'boardvote_intro'        => '<p>Vitajte v druhých voľbách do Rady správcov Wikimedia. Hlasujeme za
-dvoch ľudí, ktorí budú reprezentovať komunitu používateľov rozličných
-projektov Wikimedia. Pomôžu určiť budúce smerovanie projektov Wikimedia,
-ako jednotlivci a ako skupina, a budú reprezentovať <em>vaše</em>
+	'boardvote_intro'          => '<p>Vitajte vo voľbách do Rady správcov Wikimedia 2008.
+Hlasujeme za jednu osobu, ktorá bude reprezentovať komunitu používateľov rozličných projektov Wikimedia.
+Rada pomôže určiť budúce smerovanie projektov Wikimedia,
+ako jednotlivci a ako skupina, a zvolení zástupcovia budú reprezentovať <em>vaše</em>
 záujmy v Rade správcov. Budú rozhodovať o spôsoboch tvorby zisku
 a rozdelení získaných peňazí.</p>
 
@@ -4020,15 +4056,16 @@ než zahlasujete. Každý z kandidátov je rešpektovaný používateľ, ktorý 
 nezanedbateľným časom a snahou urobiť z týchto projektov príjemné prostredie
 oddané zbieraniu a šíreniu ľudského poznania.</p>
 
-<p>Môžete hlasovať za toľko kandidátov, koľko chcete. Kandidát s najväčším
-počtom hlasov hlasov na každej pozícii bude vyhlásený za víťaza danej
-pozície. V prípade remízy sa bude konať ďalšia voľba medzi nimi.</p>
+<p>Prosím, zoraďte kandidátov podľa vašich preferencií tak, že napíšete vedľa neho číslo (1 = najobľúbenejší kandidát, 2 = druhý najobľúbenejší atď.). Rovnakú preferenciu môžete udeliť viac ako jednému kandidátovi a môžete aj ponechať kandidátov neohodnotených. Predpokladá sa, že uprednostňujete všetkých ohodnotených kandidátov pred neohodnotenými a že nemáte rozdiel v preferenciách medzi neohodnotenými kandidátmi.</p>
 
-<p>Viac informácií nájdete na:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Často kladené otázky o voľbách</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidáti</a></li></ul>',
-	'boardvote_intro_change' => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
-	'boardvote_entered'      => 'Ďakujeme, váš hlas bol zaznamenaný.
+<p>Víťaz volieb sa určí Schulzeho metódou, pričom <em>víťazné hlasy</em> budú štandardnou mierkou sily pri dvojici víťazných kandidátov a <em>hraničnými hlasmi</em> ako záložnou mierkou v prípade tie breaku počas výberu kritických ciest. V nepravdepodobnom prípade remízy sa tie break vypočíta na základe <em>náhodného hlasu</em>.
+Vo veľmi nepravdepodobnom prípade, že po vyčerpaní všetkých dostupných hlasov zostane na víťaznej pozícii remíza, uskutočnia sa ďalšie voľby medzi víťaznými kandidátmi. Remízy nevýherných pozícií vo finálnom hodnotení sa riešiť nebudú.</p>
+
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Voľby do Rady 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidáti</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulzeho metóda</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
+	'boardvote_entered'        => 'Ďakujeme, váš hlas bol zaznamenaný.
 
 Ak si želáte, môžete si uchovať nasledovné podrobnosti. Váš záznam o hlasovaní je:
 
@@ -4043,38 +4080,46 @@ Nasleduje výsledná zakryptovaná verzia. Zobrazí sa verejne na [[Special:Boar
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Späť]]',
-	'boardvote_nosession'    => 'Nedá sa určiť váš používateľský ID na projekte Wikimedia. Prosím, prihláste sa na wiki, na ktorej ste oprávnení a choďte na <nowiki>[[Special:Boardvote]]</nowiki>. Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý má prvú úpravu pred $3.',
-	'boardvote_notloggedin'  => 'Nie ste prihlásený. Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý má prvú úpravu pred $3.',
-	'boardvote_notqualified' => 'Nemáte oprávnenie hlasovať v týchto voľbách. Museli by ste urobiť $3 úprav pred $2 a vaša prvá úprava by musela byť pred $5.',
-	'boardvote_novotes'      => 'Nikto ešte nevolil.',
-	'boardvote_time'         => 'Čas',
-	'boardvote_user'         => 'Používateľ',
-	'boardvote_edits'        => 'Úpravy',
-	'boardvote_days'         => 'Dni',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Prehliadač',
-	'boardvote_listintro'    => '<p>Toto je zoznam všetkých doteraz zaznamenaných hlasov. Kliknutím sem získate $1.</p>',
-	'boardvote_dumplink'     => 'kryptované údaje',
-	'boardvote_submit'       => 'OK',
-	'boardvote_strike'       => 'Začiarknuť',
-	'boardvote_unstrike'     => 'Zrušiť začiarknutie',
-	'boardvote_needadmin'    => 'Túto operáciu môžu vykonávať iba správcovia hlasovania.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Voľby do Rady Wikimedia</a>:  Hlasovanie je otvorené do 22 June',
-	'boardvote_notstarted'   => 'Hlasovanie sa ešte nezačalo.',
-	'boardvote_closed'       => 'Hlasovanie je teraz zatvorené, čoskoro budú dostupné [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En výsledky na stránke hlasovania].',
-	'boardvote_edits_many'   => 'mnoho',
-	'group-boardvote'        => 'Správcovia volieb do Rady',
-	'group-boardvote-member' => 'Správca volieb do Rady',
-	'grouppage-boardvote'    => '{{ns:project}}:Správca volieb do Rady',
-	'boardvote_blocked'      => 'Je nám ľúto, boli ste zablokovaní na wiki na ktorej ste zaregistrovaný. Zablokovaní používatelia nemôžu hlasovať.',
-	'boardvote_welcome'      => "Vitaj '''$1'''!",
-	'go_to_board_vote'       => 'Voľby do Správnej rady Wikimedia 2007',
-	'boardvote_redirecting'  => 'Pre lepšiu bezpečnosť a transparentnosť prevádzkujeme voľby na externom, nezávisle riadenom serveri.
+	'boardvote_invalidentered' => '<p><strong>Chyba</strong>: preferencie kandidátov je potrebné vyjadriť iba prirodzeným číslom (1, 2, 3, ...) alebo nechať nevyplnené.</p>',
+	'boardvote_nosession'      => 'Nedá sa určiť váš používateľský ID na projekte Wikimedia.
+Prosím, prihláste sa na wiki, na ktorej ste oprávnení a choďte na <nowiki>[[Special:Boardvote]]</nowiki>.
+Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 úpravy medzi $4 a $5.',
+	'boardvote_notloggedin'    => 'Nie ste prihlásený.
+Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 úprav medzi $4 a $5.',
+	'boardvote_notqualified'   => 'Nemáte oprávnenie hlasovať v týchto voľbách.
+Museli by ste urobiť $3 úprav pred $2 a aspoň $3 úprav medzi $4 a $5.',
+	'boardvote_novotes'        => 'Nikto ešte nevolil.',
+	'boardvote_time'           => 'Čas',
+	'boardvote_user'           => 'Používateľ',
+	'boardvote_edits'          => 'Úpravy',
+	'boardvote_days'           => 'Dni',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Prehliadač',
+	'boardvote_listintro'      => '<p>Toto je zoznam všetkých doteraz zaznamenaných hlasov. Kliknutím sem získate $1.</p>',
+	'boardvote_dumplink'       => 'kryptované údaje',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Začiarknuť',
+	'boardvote_unstrike'       => 'Zrušiť začiarknutie',
+	'boardvote_needadmin'      => 'Túto operáciu môžu vykonávať iba správcovia hlasovania.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Voľby do Rady Wikimedia</a>:
+Hlasovanie je otvorené do 22. júna',
+	'boardvote_notstarted'     => 'Hlasovanie sa ešte nezačalo.',
+	'boardvote_closed'         => 'Hlasovanie je teraz zatvorené, čoskoro budú dostupné [http://meta.wikimedia.org/wiki/Board_elections/2008/Results výsledky na stránke hlasovania].',
+	'boardvote_edits_many'     => 'mnoho',
+	'group-boardvote'          => 'Správcovia volieb do Rady',
+	'group-boardvote-member'   => 'Správca volieb do Rady',
+	'grouppage-boardvote'      => '{{ns:project}}:Správca volieb do Rady',
+	'boardvote_blocked'        => 'Je nám ľúto, boli ste zablokovaní na wiki na ktorej ste zaregistrovaný. Zablokovaní používatelia nemôžu hlasovať.',
+	'boardvote_bot'            => 'Na wiki, kde ste zaregistrovaný, ste označený ako robot.
+Účty robotov nemajú oprávnenie hlasovať.',
+	'boardvote_welcome'        => "Vitaj '''$1'''!",
+	'go_to_board_vote'         => 'Voľby do Rady správcov Wikimedia 2008',
+	'boardvote_redirecting'    => 'Pre lepšiu bezpečnosť a transparentnosť prevádzkujeme voľby na externom, nezávisle riadenom serveri.
 
 Budete presmerovaní na túto externú stránku o 20 sekúnd. Okamžite tam prejdete [$1 kliknutím sem].
 
 Môže sa zobraziť bezpečnostné varovanie o nepodpísanom certifikáte.',
-	'right-boardvote'        => 'Spravovať voľby',
+	'right-boardvote'          => 'Spravovať voľby',
 );
 
 /** ћирилица (ћирилица)

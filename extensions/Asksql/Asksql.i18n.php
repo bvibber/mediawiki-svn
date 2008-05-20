@@ -473,6 +473,14 @@ $messages['lt'] = array(
 	'querysuccessful' => 'Užklausa sėkminga.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'sqlquery' => 'ചോദ്യം (query) ചേര്‍ക്കുക',
+	'querybtn' => 'ചോദ്യം (query) സമര്‍പ്പിക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

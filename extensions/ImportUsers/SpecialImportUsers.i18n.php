@@ -30,6 +30,16 @@ $messages['en'] = array(
 	'importusers-realname'                => 'real name',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'importusers-log-summary-all' => 'Alle',
+	'importusers-password'        => 'wagwoord',
+	'importusers-email'           => 'e-pos',
+	'importusers-realname'        => 'regte naam',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -382,15 +392,19 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'importusers-uploadfile'        => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
-	'importusers-form-button'       => 'ഇറക്കുമതി',
-	'importusers-log-summary'       => 'ചുരുക്കം',
-	'importusers-log-summary-all'   => 'എല്ലാം',
-	'importusers-log-summary-added' => 'ചേര്‍ത്തു',
-	'importusers-login-name'        => 'ലോഗിന്‍ നാമം',
-	'importusers-password'          => 'രഹസ്യവാക്ക്',
-	'importusers-email'             => 'ഇമെയില്‍',
-	'importusers-realname'          => 'യഥാര്‍ത്ഥ പേര്‌',
+	'importusers'                      => 'ഉപയോക്താക്കളെ ഇറക്കുമതി ചെയ്യുക',
+	'importusers-uploadfile'           => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
+	'importusers-form-replace-present' => 'നിലവിലുള്ള ഉപയോക്താക്കളെ റീപ്ലേസ് ചെയ്യുക',
+	'importusers-form-button'          => 'ഇറക്കുമതി',
+	'importusers-log'                  => 'ഇറക്കുമതി പ്രവര്‍ത്തനരേഖ',
+	'importusers-log-summary'          => 'ചുരുക്കം',
+	'importusers-log-summary-all'      => 'എല്ലാം',
+	'importusers-log-summary-added'    => 'ചേര്‍ത്തു',
+	'importusers-log-summary-updated'  => 'പുതുക്കിയിരിക്കുന്നു',
+	'importusers-login-name'           => 'ലോഗിന്‍ നാമം',
+	'importusers-password'             => 'രഹസ്യവാക്ക്',
+	'importusers-email'                => 'ഇമെയില്‍',
+	'importusers-realname'             => 'യഥാര്‍ത്ഥ പേര്‌',
 );
 
 /** Marathi (मराठी)

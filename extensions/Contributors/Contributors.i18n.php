@@ -30,6 +30,7 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'contributors-target' => 'Titel:',
+	'contributors-submit' => 'Wys',
 );
 
 /** Arabic (العربية)

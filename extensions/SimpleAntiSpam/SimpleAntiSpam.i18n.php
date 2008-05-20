@@ -81,6 +81,7 @@ Inscrigatz '''PAS RES''' dedins !",
  * @author Helix84
  */
 $messages['sk'] = array(
+	'simpleantispam'       => 'Vaša úprava spustila antispamový mechanizmus',
 	'simpleantispam-label' => "Antispamová kontrola.
 '''NEVYPĹŇAJTE''' nasledovné!",
 	'simpleantispam-desc'  => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',

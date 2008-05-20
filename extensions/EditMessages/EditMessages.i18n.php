@@ -282,12 +282,14 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'editmessages-desc'  => 'എണ്ണത്തില്‍ കൂടുതലുള്ള Messages*.php പ്രമാണങ്ങള്‍ [[Special:EditMessages|വെബ്ബില്‍ കൂടി തിരുത്താനുള്ള സം‌വിധാനം]]',
-	'editmessages'       => 'സന്ദേശങ്ങള്‍ തിരുത്തുക',
-	'editmsg-target'     => 'തിരുത്താനുള്ള സന്ദേശം:',
-	'editmsg-search'     => 'തിരയൂ',
-	'editmsg-show-list'  => '"$1" എന്ന സന്ദേശത്തിന്റെ മൂല്യങ്ങള്‍ കാണിക്കുന്നു.',
-	'editmsg-new-search' => 'പുതിയ തിരച്ചില്‍',
+	'editmessages-desc'     => 'എണ്ണത്തില്‍ കൂടുതലുള്ള Messages*.php പ്രമാണങ്ങള്‍ [[Special:EditMessages|വെബ്ബില്‍ കൂടി തിരുത്താനുള്ള സം‌വിധാനം]]',
+	'editmessages'          => 'സന്ദേശങ്ങള്‍ തിരുത്തുക',
+	'editmsg-target'        => 'തിരുത്താനുള്ള സന്ദേശം:',
+	'editmsg-search'        => 'തിരയൂ',
+	'editmsg-show-list'     => '"$1" എന്ന സന്ദേശത്തിന്റെ മൂല്യങ്ങള്‍ കാണിക്കുന്നു.',
+	'editmsg-new-search'    => 'പുതിയ തിരച്ചില്‍',
+	'editmsg-no-patch'      => '"patch" കമാന്റ് ഓടിക്കാന്‍ പറ്റിയില്ല',
+	'editmsg-patch-success' => 'വിജയകരമായി പാച്ച് ചെയ്തിരിക്കുന്നു.',
 );
 
 /** Marathi (मराठी)

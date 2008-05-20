@@ -41,7 +41,9 @@ The current limit is $3.',
  * @author Arnobarnard
  */
 $messages['af'] = array(
-	'duplicator-source' => 'Bron:',
+	'duplicator-options' => 'Opsies',
+	'duplicator-source'  => 'Bron:',
+	'duplicator-dest'    => 'Bestemming:',
 );
 
 /** Arabic (العربية)
@@ -532,6 +534,7 @@ $messages['ml'] = array(
 	'duplicator-desc'                  => 'എല്ലാ തിരുത്തല്‍ ചരിത്രത്തോടും കൂടി ഒരു താളിന്റെ പകര്‍പ്പ് ഉണ്ടാക്കുന്നു',
 	'duplicator-toolbox'               => 'ഈ താളിന്റെ പകര്‍പ്പ് ഉണ്ടാക്കുക',
 	'duplicator-source'                => 'സ്രോതസ്സ്:',
+	'duplicator-dest'                  => 'ലക്ഷ്യം:',
 	'duplicator-submit'                => 'പകര്‍പ്പെടുക്കുക',
 	'duplicator-summary'               => '[[$1]]ല്‍ നിന്നു പകര്‍ത്തിയത്',
 	'duplicator-success'               => "<big>'''[[$1]] എന്ന താള്‍ [[$2]]ലേക്കു പകര്‍ത്തി.'''</big>",
@@ -540,6 +543,10 @@ $messages['ml'] = array(
 	'duplicator-success-talknotcopied' => 'സം‌വാദം താള്‍ പകര്‍ത്തുവാന്‍ കഴിഞ്ഞില്ല',
 	'duplicator-failed'                => 'താളിന്റെ പകര്‍പ്പെടുക്കാന്‍ സാധിച്ചില്ല. അജ്ഞാതമായ കാരണം മൂലം എന്തോ പിഴവ് സംഭവിച്ചു.',
 	'duplicator-source-invalid'        => 'സാധുവായൊരു സ്രോതസ്സ് തലക്കെട്ട് കൊടുക്കുക.',
+	'duplicator-source-notexist'       => '[[$1]] നിലവിലില്ല. ദയവായി നിലവിലുള്ള ഒരു താളിന്റെ ശീര്‍ഷകം ചേര്‍ക്കുക.',
+	'duplicator-dest-invalid'          => 'ദയവായി സാധുവായ ഒരു ലക്ഷ്യ ശീര്‍ഷകം ചേര്‍ക്കുക.',
+	'duplicator-dest-exists'           => '[[$1]] നിലവിലുണ്ട്. ദയവായി നിലവിലില്ലാത്ത ഒരു ലക്ഷ്യതാളിന്റെ ശീര്‍ഷകം ചേര്‍ക്കുക.',
+	'duplicator-toomanyrevisions'      => '[[$1]]നു വളരെയധികം($2) പതിപ്പുകള്‍ ഉണ്ട്; അതിനാല്‍ പകര്‍ത്താന്‍ സാദ്ധ്യമല്ല. നിലവിലുള്ള പരിധി $3 ആണ്‌.',
 );
 
 /** Marathi (मराठी)

@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'multiboilerplate-submit' => 'Load',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'multiboilerplate-submit' => 'Laai',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta

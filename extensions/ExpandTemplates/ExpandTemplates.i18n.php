@@ -25,8 +25,13 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_preview'         => 'Preview',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ * @author SPQRobin
+ */
 $messages['af'] = array(
-	'expandtemplates'                  => 'Brei sjablone uit',
+	'expandtemplates'     => 'Brei sjablone uit',
+	'expand_templates_ok' => 'OK',
 );
 
 /** Aragonese (Aragonés)

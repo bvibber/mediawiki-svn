@@ -209,6 +209,13 @@ $3',
 	'latexdoc-desc'            => 'សំណុំឯកសារ LaTeX',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'latexdoc_cant_write' => '$1 എന്ന പ്രമാണത്തിലേക്കു എഴുതുന്നതിനു കഴിഞ്ഞില്ല',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

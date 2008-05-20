@@ -68,10 +68,12 @@ Probably there is no such user.',
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Arnobarnard
  */
 $messages['af'] = array(
 	'regexblock-form-reason'    => 'Rede:',
 	'regexblock-stats-username' => 'Vir $1',
+	'regexblock-view-all'       => 'alle',
 	'regexblock-view-reason'    => 'rede: $1',
 	'regexblock-view-time'      => 'op $1',
 );

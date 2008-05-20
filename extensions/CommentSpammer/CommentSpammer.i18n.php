@@ -175,6 +175,13 @@ $messages['lb'] = array(
 	'cspammer-log-page'           => 'Bemierkung Spammer Logbuch',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'commentspammer-log-msg' => '[[Special:Contributions/$1|$1]]ല്‍ നിന്ന് [[:$2]]ല്‍ ഉള്ള തിരുത്തലുകള്‍.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

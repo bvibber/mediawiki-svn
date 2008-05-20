@@ -306,6 +306,7 @@ $messages['ml'] = array(
 	'todo-list-cancel'  => 'റദ്ദാക്കുക',
 	'todo-new-item'     => 'പുതിയ ഇനം',
 	'todo-form-details' => 'വിശദാംശങ്ങള്‍:',
+	'todo-form-submit'  => 'ചോദ്യം (query) സമര്‍പ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

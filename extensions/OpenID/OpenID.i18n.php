@@ -103,7 +103,9 @@ There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID pro
  * @author Arnobarnard
  */
 $messages['af'] = array(
-	'openidlanguage' => 'Taal',
+	'openidemail'          => 'E-pos adres',
+	'openidlanguage'       => 'Taal',
+	'openidchoosepassword' => 'wagwoord:',
 );
 
 /** Arabic (العربية)
@@ -565,32 +567,36 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'openidlogin'              => 'ഓപ്പണ്‍ ഐഡി ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
-	'openidcancel'             => 'സ്ഥിരീകരണം റദ്ദാക്കിയിരിക്കുന്നു',
-	'openidfailure'            => 'സ്ഥിരീകരണം പരാജയപ്പെട്ടു',
-	'openidsuccess'            => 'സ്ഥിരീകരണം വിജയിച്ചു',
-	'openidusernameprefix'     => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
-	'openidnopolicy'           => 'സൈറ്റ് സ്വകാര്യതാ നയം കൊടുത്തിട്ടില്ല.',
-	'openidoptional'           => 'നിര്‍ബന്ധമില്ല',
-	'openidrequired'           => 'അത്യാവശ്യമാണ്‌',
-	'openidnickname'           => 'ചെല്ലപ്പേര്',
-	'openidfullname'           => 'പൂര്‍ണ്ണനാമം',
-	'openidemail'              => 'ഇമെയില്‍ വിലാസം',
-	'openidlanguage'           => 'ഭാഷ',
-	'openidnotavailable'       => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത വിളിപ്പേര്‌ ($1) മറ്റൊരാള്‍ ഉപയോഗിക്കുന്നതാണ്‌.',
-	'openidchooseinstructions' => 'എല്ലാ ഉപയോക്താക്കള്‍ക്കും ഒരു വിളിപ്പേരു ആവശ്യമാണ്‌. താഴെ കൊടുത്തിരിക്കുന്നവയില്‍ നിന്നു ഒരെണ്ണം നിങ്ങള്‍ക്ക് തിരഞ്ഞെടുക്കാവുന്നതാണ്‌.',
-	'openidchoosefull'         => 'താങ്കളുടെ പൂര്‍ണ്ണനാമം ($1)',
-	'openidchooseurl'          => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡിയില്‍ നിന്നു തിരഞ്ഞെടുത്ത ഒരു പേര്‌ ($1)',
-	'openidchooseauto'         => 'യാന്ത്രികമായി ഉണ്ടാക്കിയ പേര്‌ ($1)',
-	'openidchooseexisting'     => 'ഈ വിക്കിയില്‍ നിലവിലുള്ള അക്കൗണ്ട്:',
-	'openidchoosepassword'     => 'രഹസ്യവാക്ക്:',
-	'openidconvertsuccess'     => 'ഓപ്പണ്‍ ഐഡിയിലേക്ക് വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു',
-	'openidconvertsuccesstext' => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡി $1ലേക്കു വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു.',
-	'openidconvertyourstext'   => 'ഇതു ഇപ്പോള്‍ തന്നെ നിങ്ങളുടെ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
-	'openidconvertothertext'   => 'ഇതു മറ്റാരുടേയോ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
-	'openidnousername'         => 'ഉപയോക്തൃനാമം തിരഞ്ഞെടുത്തിട്ടില്ല.',
-	'openidbadusername'        => 'അസാധുവായ ഉപയോക്തൃനാമമാണു തിരഞ്ഞെടുത്തിരിക്കുന്നത.',
-	'openidloginlabel'         => 'ഓപ്പണ്‍‌ഐഡി വിലാസം',
+	'openidlogin'                   => 'ഓപ്പണ്‍ ഐഡി ഉപയോഗിച്ച് ലോഗിന്‍ ചെയ്യുക',
+	'openidserver'                  => 'OpenID സെര്‍‌വര്‍',
+	'openidcancel'                  => 'സ്ഥിരീകരണം റദ്ദാക്കിയിരിക്കുന്നു',
+	'openidfailure'                 => 'സ്ഥിരീകരണം പരാജയപ്പെട്ടു',
+	'openidsuccess'                 => 'സ്ഥിരീകരണം വിജയിച്ചു',
+	'openidusernameprefix'          => 'ഓപ്പണ്‍ ഐഡി ഉപയോക്താവ്',
+	'openidserverlogininstructions' => '$3യിലേക്ക് $2 എന്ന ഉപയോക്താവായി (ഉപയോക്തൃതാള്‍ $1) ലോഗിന്‍ ചെയ്യുവാന്‍ താങ്കളുടെ രഹസ്യവാക്ക് താഴെ രേഖപ്പെടുത്തുക.',
+	'openidtrustinstructions'       => '$1 താങ്കളുടെ ഡാറ്റ പങ്കുവെക്കണമോ എന്ന കാര്യം പരിശോധിക്കുക.',
+	'openidnopolicy'                => 'സൈറ്റ് സ്വകാര്യതാ നയം കൊടുത്തിട്ടില്ല.',
+	'openidoptional'                => 'നിര്‍ബന്ധമില്ല',
+	'openidrequired'                => 'അത്യാവശ്യമാണ്‌',
+	'openidnickname'                => 'ചെല്ലപ്പേര്',
+	'openidfullname'                => 'പൂര്‍ണ്ണനാമം',
+	'openidemail'                   => 'ഇമെയില്‍ വിലാസം',
+	'openidlanguage'                => 'ഭാഷ',
+	'openidnotavailable'            => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത വിളിപ്പേര്‌ ($1) മറ്റൊരാള്‍ ഉപയോഗിക്കുന്നതാണ്‌.',
+	'openidchooseinstructions'      => 'എല്ലാ ഉപയോക്താക്കള്‍ക്കും ഒരു വിളിപ്പേരു ആവശ്യമാണ്‌. താഴെ കൊടുത്തിരിക്കുന്നവയില്‍ നിന്നു ഒരെണ്ണം നിങ്ങള്‍ക്ക് തിരഞ്ഞെടുക്കാവുന്നതാണ്‌.',
+	'openidchoosefull'              => 'താങ്കളുടെ പൂര്‍ണ്ണനാമം ($1)',
+	'openidchooseurl'               => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡിയില്‍ നിന്നു തിരഞ്ഞെടുത്ത ഒരു പേര്‌ ($1)',
+	'openidchooseauto'              => 'യാന്ത്രികമായി ഉണ്ടാക്കിയ പേര്‌ ($1)',
+	'openidchoosemanual'            => 'താങ്കള്‍ക്ക് ഇഷ്ടമുള്ള ഒരു പേര്‌:',
+	'openidchooseexisting'          => 'ഈ വിക്കിയില്‍ നിലവിലുള്ള അക്കൗണ്ട്:',
+	'openidchoosepassword'          => 'രഹസ്യവാക്ക്:',
+	'openidconvertsuccess'          => 'ഓപ്പണ്‍ ഐഡിയിലേക്ക് വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു',
+	'openidconvertsuccesstext'      => 'താങ്കളുടെ ഓപ്പണ്‍‌ഐഡി $1ലേക്കു വിജയകരമായി പരിവര്‍ത്തനം ചെയ്തിരിക്കുന്നു.',
+	'openidconvertyourstext'        => 'ഇതു ഇപ്പോള്‍ തന്നെ നിങ്ങളുടെ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
+	'openidconvertothertext'        => 'ഇതു മറ്റാരുടേയോ ഓപ്പണ്‍‌ഐഡിയാണ്‌.',
+	'openidnousername'              => 'ഉപയോക്തൃനാമം തിരഞ്ഞെടുത്തിട്ടില്ല.',
+	'openidbadusername'             => 'അസാധുവായ ഉപയോക്തൃനാമമാണു തിരഞ്ഞെടുത്തിരിക്കുന്നത.',
+	'openidloginlabel'              => 'ഓപ്പണ്‍‌ഐഡി വിലാസം',
 );
 
 /** Marathi (मराठी)

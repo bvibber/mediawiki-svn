@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'inspectcache-list'    => 'List',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'inspectcache-ok' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

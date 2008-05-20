@@ -156,8 +156,15 @@ $messages['ps'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'watchsubpages-desc' => 'Rýchlo [[Special:WatchSubpages|pridať všetky podstránky]] stránky do zoznamu sledovaných',
-	'watchsubpages'      => 'Sledovať podstránky',
+	'watchsubpages'                      => 'Sledovať podstránky',
+	'watchsubpages-addedtowatchlist'     => 'Nasledovné bolo pridané do vášho zoznamu sledovaných:',
+	'watchsubpages-addtitles'            => 'Pridať stránky',
+	'watchsubpages-addtitlestowatchlist' => 'Pridať stránky do zoznamu sledovaných',
+	'watchsubpages-desc'                 => 'Rýchlo [[Special:WatchSubpages|pridať všetky podstránky]] stránky do zoznamu sledovaných',
+	'watchsubpages-form'                 => 'Vyberte stránky, ktoré chcete pridať do svojho zoznamu sledovaných.
+Stránku pridáte tak, že označíte pole vedľa nej a kliknete na „Pridať stránky”.
+
+Pri označovaní alebo odznačovaní viacerých stránok môžete držaním klávesu Shift a kliknutím na začiatok a koniec rozsahu vybrať viacero po sebe idúcich polí súčasne.',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

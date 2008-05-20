@@ -18,6 +18,14 @@ $messages['en'] = array(
 	'categorystepper-start' => '(Start of category)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'categorystepper-end'   => '(Einde van kategorie)',
+	'categorystepper-start' => '(Begin van kategorie)',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

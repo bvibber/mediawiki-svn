@@ -55,6 +55,16 @@ If this error keeps showing up, the database is probably broken.',
 	'changeauthor-rev'                  => 'r$1',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'changeauthor-search-box'       => 'Soek hersienings',
+	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
+	'changeauthor-nosuchuser'       => 'Geen gebruiker "$1".',
+	'changeauthor-revview'          => 'Hersiening #$1 van $2',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -552,6 +562,9 @@ $messages['jv'] = array(
 	'changeauthor-nosuchuser'           => 'Ora ana panganggo "$1".',
 	'changeauthor-revview'              => 'Révisi #$1 saka $2',
 	'changeauthor-nosuchtitle'          => 'Ora ana kaca sing diarani "$1".',
+	'changeauthor-weirderror'           => 'Ana kaluputan anèh sing dumadi.
+Mangga diulang manèh panyuwunan panjenengan.
+Yèn kaluputan iki tetep dumadi manèh, tegesé basis data iki mbok-menawa rusak.',
 	'changeauthor-success'              => 'Panyuwunan panjenengan wis kasil diprosès.',
 	'changeauthor-logpagename'          => 'Log owah-owahan pangripta',
 );

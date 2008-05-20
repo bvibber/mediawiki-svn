@@ -146,6 +146,13 @@ $messages['lb'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'eval_code' => 'കോഡ്',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -29,7 +29,12 @@ $messages['en'] = array(
 	'player-goto-file'        => 'file',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ * @author Arnobarnard
+ */
 $messages['af'] = array(
+	'player-file'      => 'Lêernaam',
 	'player-goto-page' => 'Bladsy',
 );
 
@@ -311,10 +316,14 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'player'               => 'പ്ലെയര്‍',
+	'player-title'         => 'പ്ലെയര്‍',
+	'player-playertitle'   => 'പ്ലെയര്‍: $1',
 	'player-play'          => 'പ്രവര്‍ത്തിപ്പിക്കുക',
 	'player-not-found'     => 'പ്രമാണം കണ്ടില്ല.',
 	'player-invalid-title' => 'അസാധുവായ ശീര്‍ഷകം',
 	'player-clicktoplay'   => '$1 പ്രവര്‍ത്തിപ്പിക്കുക',
+	'player-goto-player'   => 'പ്ലെയര്‍',
 	'player-goto-page'     => 'താള്‍',
 	'player-goto-file'     => 'പ്രമാണം',
 );

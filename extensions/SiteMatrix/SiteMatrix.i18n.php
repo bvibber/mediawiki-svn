@@ -21,12 +21,14 @@ $messages['en'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author SPQRobin
  * @author לערי ריינהארט
  */
 $messages['af'] = array(
-	'sitematrix'          => "Lys van Wikimedia-wiki's",
-	'sitematrix-language' => 'Taal',
+	'sitematrix'           => "Lys van Wikimedia-wiki's",
+	'sitematrix-language'  => 'Taal',
+	'sitematrix-sitetotal' => 'Totaal',
 );
 
 /** Aragonese (Aragonés)
@@ -335,7 +337,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'sitematrix'           => 'Liste des wikis de Wikimedia Foundation',
-	'sitematrix-summary'   => 'Ce page spéciale affiche tous les wikis de la Fondation Wikimedia.',
+	'sitematrix-summary'   => 'Cette page spéciale affiche tous les wikis de la Wikimedia Foundation.',
 	'sitematrix-desc'      => 'Affiche une [[Special:SiteMatrix|liste de wikis de la Fondation Wikimedia]]',
 	'sitematrix-language'  => 'Langue',
 	'sitematrix-project'   => 'Nom du projet, lien interprojet et lien interwiki',

@@ -49,6 +49,13 @@ $messages['en'] = array(
 	'review_comment' => "Comment",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'review_total_statistics' => 'Totaal',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

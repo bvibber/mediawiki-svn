@@ -139,12 +139,14 @@ $messages['af'] = array(
 	'viewapc-display-info'      => 'Naam',
 	'viewapc-display-type'      => 'Tipe',
 	'viewapc-display-mem_size'  => 'Grootte',
+	'viewapc-ls-options-legend' => 'Opsies',
 	'viewapc-ls-header-name'    => 'Naam',
 	'viewapc-ls-header-size'    => 'Grootte',
 	'viewapc-ls-header-created' => 'Geskep',
 	'viewapc-ls-sort-size'      => 'Grootte',
 	'viewapc-ls-sort-name'      => 'Naam',
 	'viewapc-ls-sort-created'   => 'Geskep',
+	'viewapc-ls-limit-none'     => 'Alle',
 );
 
 /** Arabic (العربية)
@@ -819,6 +821,7 @@ $messages['li'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'viewapc'                       => 'APCയെക്കുറിച്ചുള്ള വിവരണം',
 	'viewapc-clear-confirm'         => 'താങ്കള്‍ക്ക് കാഷെ ക്ലിയര്‍ ചെയ്യണമോ?',
 	'viewapc-clear-user-cache'      => 'ഉപയോക്തൃകാഷെ ക്ലിയര്‍ ചെയ്യുക',
 	'viewapc-mode-version-check'    => 'പതിപ്പ് പരിശോധിക്കുക',
@@ -873,6 +876,10 @@ $messages['ml'] = array(
 	'viewapc-version-info'          => 'പതിപ്പിന്റെ വിവരണം',
 	'viewapc-version-changelog'     => 'മാറ്റങ്ങളുടെ പ്രവര്‍ത്തനരേഖ',
 	'viewapc-version-failed'        => 'പതിപ്പിനെക്കുറിച്ചുള്ള വിവരം ശേഖരിക്കാന്‍ കഴിഞ്ഞില്ല.',
+	'viewapc-version-ok'            => 'താങ്കള്‍ APCയുടെ ഏറ്റവും പുതിയ പതിപ്പാണ്‌ ഉപയോഗിക്കുന്നത് ($1)',
+	'viewapc-version-old'           => 'താങ്കള്‍ APCയുടെ പഴയ പതിപ്പാണ്‌ ഉപയോഗിക്കുന്നത്  ($1).  പുതിയ പതിപ്പായ $2,  http://pecl.php.net/package/APC/$2 എന്ന കണ്ണിയില്‍ നിന്നു ലഭ്യമാണ്‌.',
+	'viewapc-filecache-cleared'     => "'''''ഫയല്‍ കാഷെ വൃത്തിയാക്കി.'''''",
+	'viewapc-usercache-cleared'     => "'''''ആപ്ലിക്കേഷന്‍ കാഷെ വൃത്തിയാക്കി.'''''",
 );
 
 /** Marathi (मराठी)
@@ -1565,6 +1572,7 @@ Zdá sa, že APC nebeží.',
 	'viewapc-display-ref_count'     => 'Počet odkazov',
 	'viewapc-display-mem_size'      => 'Veľkosť',
 	'viewapc-display-stored-value'  => 'Uložená hodnota',
+	'viewapc-display-too-big'       => "''Nie je možné zobraziť obsah, pretože je príliš veľký.''",
 	'viewapc-ls-options-legend'     => 'Voľby',
 	'viewapc-ls-options'            => 'Rozsah: $1 Triedenie: $2$3$4 Hľadanie: $5 $6',
 	'viewapc-ls-submit'             => 'Vykonať',

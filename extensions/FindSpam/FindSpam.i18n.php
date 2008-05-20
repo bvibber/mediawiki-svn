@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'findspam-notextfound' => 'No contributions found',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

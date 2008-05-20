@@ -127,14 +127,20 @@ $wdMessages['krl'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Arnobarnard
  */
 $wdMessages['af'] = array(
 	'ow_save'                         => 'Stoor',
 	'ow_history'                      => 'Geskiedenis',
+	'ow_dm_OK'                        => 'OK',
+	'ow_ClassAttributeType'           => 'Tipe',
+	'ow_Collection'                   => 'Versameling',
 	'ow_Expression'                   => 'Uitdrukking',
 	'ow_Expressions'                  => 'Uitdrukkings',
 	'ow_GotoSource'                   => 'Gaan na bron',
 	'ow_Language'                     => 'Taal',
+	'ow_OptionAttributeOptions'       => 'Opsies',
+	'ow_Source'                       => 'Bron',
 	'ow_TranslatedTextAttributeValue' => 'Teks',
 	'ow_LinkAttributeValues'          => 'Skakels',
 );

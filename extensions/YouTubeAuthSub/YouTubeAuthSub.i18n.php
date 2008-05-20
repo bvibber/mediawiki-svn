@@ -49,7 +49,8 @@ Please be patient.',
  * @author Arnobarnard
  */
 $messages['af'] = array(
-	'youtubeauthsub_title' => 'Titel',
+	'youtubeauthsub_title'    => 'Titel',
+	'youtubeauthsub_category' => 'Kategorie',
 );
 
 /** Aragonese (Aragonés)

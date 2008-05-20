@@ -33,8 +33,13 @@ To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} th
 	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ * @author SPQRobin
+ */
 $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
+	'createsigndoc-email'    => 'E-pos adres',
 );
 
 $messages['ang'] = array(

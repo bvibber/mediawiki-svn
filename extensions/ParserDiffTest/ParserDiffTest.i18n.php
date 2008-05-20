@@ -23,6 +23,13 @@ $messages['en'] = array(
 	'pdt_comparing_page'  => 'Comparing parser output from [[$1]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'pdtest_ok' => 'OK',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

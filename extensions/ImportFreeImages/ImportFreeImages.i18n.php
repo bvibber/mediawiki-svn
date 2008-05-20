@@ -266,10 +266,13 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'importfreeimages'            => 'സൗജന്യ ചിത്രങ്ങള്‍ ഇറക്കുമതി ചെയ്യുക',
-	'importfreeimages_invalidurl' => '"$1" എന്ന URL സാധുവായ ഒരു ഫ്ലിക്കര്‍ ചിത്രം അല്ല.',
-	'importfreeimages_owner'      => 'ലേഖകന്‍',
-	'importfreeimages_next'       => 'അടുത്ത $1',
+	'importfreeimages'                => 'സൗജന്യ ചിത്രങ്ങള്‍ ഇറക്കുമതി ചെയ്യുക',
+	'importfreeimages_nophotosfound'  => "'$1' എന്ന തിരച്ചില്‍ ക്രൈറ്റീയ ഉപയോഗിച്ച് ചിത്രങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല. ഒന്നു കൂടി ശ്രമിക്കൂ.",
+	'importfreeimages_invalidurl'     => '"$1" എന്ന URL സാധുവായ ഒരു ഫ്ലിക്കര്‍ ചിത്രം അല്ല.',
+	'importfreeimages_owner'          => 'ലേഖകന്‍',
+	'importfreeimages_importthis'     => 'ഇതു ഇറക്കുമതി ചെയ്യുക',
+	'importfreeimages_next'           => 'അടുത്ത $1',
+	'importfreeimages_filefromflickr' => '<b>[$2]</b> എന്ന ഉപയോക്താവിന്റെ  ഫ്ലിക്കറില്‍ നിന്നുള്ള $1. ചിത്രത്തിലേക്കുള്ള URL',
 );
 
 /** Marathi (मराठी)

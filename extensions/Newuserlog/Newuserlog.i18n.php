@@ -505,10 +505,11 @@ $messages['io'] = array(
  * @author SPQRobin
  */
 $messages['is'] = array(
-	'newuserlogpage'           => 'Skrá yfir nýja notendur',
-	'newuserlogpagetext'       => 'Þetta er skrá yfir nýskráða notendur',
-	'newuserlog-create-entry'  => 'Nýr notandi',
-	'newuserlog-create2-entry' => 'bjó til notanda fyrir $1',
+	'newuserlogpage'              => 'Skrá yfir nýja notendur',
+	'newuserlogpagetext'          => 'Þetta er skrá yfir nýskráða notendur',
+	'newuserlog-create-entry'     => 'Nýr notandi',
+	'newuserlog-create2-entry'    => 'bjó til notanda fyrir $1',
+	'newuserlog-autocreate-entry' => 'Aðgangur búinn sjálfkrafa til',
 );
 
 /** Italian (Italiano)
@@ -526,14 +527,16 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Suisui
  * @author JtFuruhata
+ * @author Marine-Blue
  */
 $messages['ja'] = array(
-	'newuserlogpage'           => 'アカウント作成記録',
-	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
-	'newuserlog-desc'          => '[[Special:Log/newusers|アカウント作成記録]]を[[Special:Log|ログ]]に追加する',
-	'newuserlog-byemail'       => 'パスワードを電子メールで送信しました',
-	'newuserlog-create-entry'  => '新規利用者',
-	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
+	'newuserlogpage'              => 'アカウント作成記録',
+	'newuserlogpagetext'          => '以下は最近作成されたアカウントの一覧です。',
+	'newuserlog-desc'             => '[[Special:Log/newusers|アカウント作成記録]]を[[Special:Log|ログ]]に追加する',
+	'newuserlog-byemail'          => 'パスワードを電子メールで送信しました',
+	'newuserlog-create-entry'     => '新規利用者',
+	'newuserlog-create2-entry'    => 'アカウント $1 が作成されました',
+	'newuserlog-autocreate-entry' => 'アカウントが自動的に作成されました',
 );
 
 /** Jutish (Jysk)
@@ -656,15 +659,17 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Tibor
  * @author Matthias
  */
 $messages['li'] = array(
-	'newuserlogpage'           => 'Logbook nuuj gebroekers',
-	'newuserlogpagetext'       => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
-	'newuserlog-desc'          => "Voegt 'n [[Special:Log/newusers|logbook van nuje gebroejkers]] toe aan de [[special:Log|logbuuek]].",
-	'newuserlog-byemail'       => 'wachwaord is verzönje per e-mail',
-	'newuserlog-create-entry'  => "is 'ne nuje gebroeker",
-	'newuserlog-create2-entry' => 'haet de gebroeker [[$1]] aangemaak',
+	'newuserlogpage'              => 'Logbook nuuj gebroekers',
+	'newuserlogpagetext'          => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
+	'newuserlog-desc'             => "Voegt 'n [[Special:Log/newusers|logbook van nuje gebroejkers]] toe aan de [[special:Log|logbuuek]].",
+	'newuserlog-byemail'          => 'wachwaord is verzönje per e-mail',
+	'newuserlog-create-entry'     => "is 'ne nuje gebroeker",
+	'newuserlog-create2-entry'    => 'haet de gebroeker [[$1]] aangemaak',
+	'newuserlog-autocreate-entry' => 'Gebroeker automatisch aangemaak',
 );
 
 $messages['lo'] = array(
@@ -1056,12 +1061,13 @@ $messages['ty'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'newuserlogpage'           => 'Журнал нових користувачів',
-	'newuserlogpagetext'       => 'Список нещодавно зареєстрованих користувачів',
-	'newuserlog-desc'          => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
-	'newuserlog-byemail'       => 'пароль надісланий електронною поштою',
-	'newuserlog-create-entry'  => 'Новий користувач',
-	'newuserlog-create2-entry' => 'створив обліковий запис $1',
+	'newuserlogpage'              => 'Журнал нових користувачів',
+	'newuserlogpagetext'          => 'Список нещодавно зареєстрованих користувачів',
+	'newuserlog-desc'             => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
+	'newuserlog-byemail'          => 'пароль надісланий електронною поштою',
+	'newuserlog-create-entry'     => 'Новий користувач',
+	'newuserlog-create2-entry'    => 'створив обліковий запис $1',
+	'newuserlog-autocreate-entry' => 'Обліковий запис створений автоматично',
 );
 
 $messages['ur'] = array(
@@ -1088,12 +1094,13 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'newuserlogpage'           => 'Nhật trình mở tài khoản',
-	'newuserlogpagetext'       => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
-	'newuserlog-desc'          => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]] vào [[Special:Log|danh sách nhật trình]]',
-	'newuserlog-byemail'       => 'gửi mật khẩu qua thư điện tử',
-	'newuserlog-create-entry'  => 'Tài khoản mới',
-	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',
+	'newuserlogpage'              => 'Nhật trình mở tài khoản',
+	'newuserlogpagetext'          => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
+	'newuserlog-desc'             => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]] vào [[Special:Log|danh sách nhật trình]]',
+	'newuserlog-byemail'          => 'gửi mật khẩu qua thư điện tử',
+	'newuserlog-create-entry'     => 'Tài khoản mới',
+	'newuserlog-create2-entry'    => 'đã tạo tài khoản mới với tên $1',
+	'newuserlog-autocreate-entry' => 'Tài khoản được tạo tự động',
 );
 
 $messages['vls'] = array(

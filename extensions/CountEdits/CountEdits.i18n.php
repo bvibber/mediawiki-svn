@@ -26,10 +26,12 @@ Do not judge contributors by their edit count.",
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Arnobarnard
  * @author SPQRobin
  */
 $messages['af'] = array(
 	'countedits-username' => 'Gebruikersnaam:',
+	'countedits-ok'       => 'OK',
 );
 
 /** Arabic (العربية)
@@ -493,6 +495,9 @@ $messages['lt'] = array(
  */
 $messages['ml'] = array(
 	'countedits'              => 'തിരത്തലുകള്‍ എണ്ണുക',
+	'countedits-desc'         => 'ഉപയോക്താക്കളുടെ തിരുത്തലുകള്‍ എണ്ണി ഏറ്റവും കൂടുതല്‍ തിരുത്തലുകളുള്ള പത്തു പേരുടെ പട്ടിക കാണുവാന്‍ സഹായിക്കുന്ന [[Special:CountEdits|പ്രത്യേക താള്‍]]',
+	'countedits-warning'      => "'''മുന്നറിയിപ്പ്:''' പുസ്തകത്തിന്റെ പുറംചട്ട കൊണ്ട് ഒരു പുസ്തകത്തെ വിലയിരിരുത്തരുത്. 
+ഉപയോക്താക്കളുടെ തിരുത്തലുകളുടെ എണ്ണം വച്ച് അവരെ വിലയിരുത്തരുത്.",
 	'countedits-username'     => 'ഉപയോക്തൃനാമം:',
 	'countedits-ok'           => 'ശരി',
 	'countedits-nosuchuser'   => '$1 എന്ന പേരുള്ള ഉപയോക്താവ് നിലവിലില്ല.',

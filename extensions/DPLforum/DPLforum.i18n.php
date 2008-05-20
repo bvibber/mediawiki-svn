@@ -75,6 +75,14 @@ $messages['lb'] = array(
 	'dplforum-toomany' => 'DPL Forum: Ze wéineg Kategorien!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'dplforum-edited' => '- അവസാനമായി തിരുത്തിയത്',
+	'dplforum-never'  => 'ഒരിക്കലും അരുത്',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -148,6 +156,18 @@ $messages['ru'] = array(
 	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'dplforum-desc'    => 'Rozšírenie DPL fórum',
+	'dplforum-by'      => ',',
+	'dplforum-edited'  => '  - posledná úprava',
+	'dplforum-never'   => 'Nikdy',
+	'dplforum-toofew'  => 'DPL fórum: Príliš málo kategórií!',
+	'dplforum-toomany' => 'DPL fórum: Príliš mnoho kategórií!',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */
@@ -158,5 +178,17 @@ $messages['sv'] = array(
 	'dplforum-never'   => 'Aldrig',
 	'dplforum-toofew'  => 'DPL-forum: För få kategorier!',
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'dplforum-desc'    => 'Gói mở rộng diễn đàn dựa trên DPL',
+	'dplforum-by'      => 'bởi',
+	'dplforum-edited'  => '  - Lần sửa đổi cuối',
+	'dplforum-never'   => 'Chưa bao giờ',
+	'dplforum-toofew'  => 'Diễn đàn DPL: Quá ít thể loại!',
+	'dplforum-toomany' => 'Diễn đàn DPL: Quá nhiều thể loại!',
 );
 

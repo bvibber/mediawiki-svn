@@ -248,9 +248,13 @@ $messages['krl'] = array(
  * @author Arnobarnard
  */
 $messages['af'] = array(
-	'mv_tool_search' => 'Soek',
-	'mv_remove'      => 'skrap',
-	'mv_search_and'  => 'en',
+	'mv_tool_search'     => 'Soek',
+	'mv_edit'            => 'Wysig',
+	'mv_history'         => 'Geskiedenis',
+	'mv_remove'          => 'skrap',
+	'mv_search_category' => 'Kategorie',
+	'mv_search_and'      => 'en',
+	'mv_category'        => 'kategorie',
 );
 
 /** Arabic (العربية)

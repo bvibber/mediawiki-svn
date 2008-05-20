@@ -86,7 +86,9 @@ This page is only applicable to restricted users",
  * @author Arnobarnard
  */
 $allMessages['af'] = array(
+	'whitelisttablemodifyall'  => 'Alle',
 	'whitelisttablemodifynone' => 'Geen',
+	'whitelisttableedit'       => 'Wysig',
 	'whitelisttableremove'     => 'Skrap',
 	'whitelistnever'           => 'nooit',
 );

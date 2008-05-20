@@ -144,6 +144,13 @@ $messages['lt'] = array(
 	'icon-badwidth' => 'Blogas plotis',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'icon-badwidth' => 'അസാധുവായ വീതി',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

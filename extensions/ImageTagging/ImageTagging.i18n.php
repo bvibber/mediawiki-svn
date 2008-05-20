@@ -45,6 +45,13 @@ Please wait for the existing action to complete.',
 	'imagetagging-taggedimages-total'       => '"$1"; image(s) total',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'imagetagging-imghistory' => 'Geskiedenis',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -152,17 +159,22 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'imagetagging-addimagetag'      => 'ഈ ചിത്രം ടാഗ് ചെയ്യുക',
-	'imagetagging-article'          => 'താള്‍:',
-	'imagetagging-imghistory'       => 'നാള്‍വഴി',
-	'imagetagging-images'           => 'ചിത്രങ്ങള്‍',
-	'imagetagging-inthisimage'      => 'ഈ ചിത്രത്തില്‍: $1',
-	'imagetagging-tag-button'       => 'ടാഗ്',
-	'imagetagging-tagcancel-button' => 'റദ്ദാക്കുക',
-	'imagetagging-addingtag'        => 'ടാഗ് ചേര്‍ക്കുന്നു...',
-	'imagetagging-removingtag'      => 'ടാഗ് ഒഴിവാക്കുന്നു...',
-	'imagetagging-addtagsuccess'    => 'ടാഗ് ചേര്‍ത്തു.',
-	'imagetagging-removetagsuccess' => 'ടാഗ് ഒഴിവാക്കി.',
+	'imagetagging-addimagetag'            => 'ഈ ചിത്രം ടാഗ് ചെയ്യുക',
+	'imagetagging-article'                => 'താള്‍:',
+	'imagetagging-imghistory'             => 'നാള്‍വഴി',
+	'imagetagging-images'                 => 'ചിത്രങ്ങള്‍',
+	'imagetagging-inthisimage'            => 'ഈ ചിത്രത്തില്‍: $1',
+	'imagetagging-removetag'              => 'ടാഗ് മാറ്റുക',
+	'imagetagging-tag-button'             => 'ടാഗ്',
+	'imagetagging-tagcancel-button'       => 'റദ്ദാക്കുക',
+	'imagetagging-addingtag'              => 'ടാഗ് ചേര്‍ക്കുന്നു...',
+	'imagetagging-removingtag'            => 'ടാഗ് ഒഴിവാക്കുന്നു...',
+	'imagetagging-addtagsuccess'          => 'ടാഗ് ചേര്‍ത്തു.',
+	'imagetagging-removetagsuccess'       => 'ടാഗ് ഒഴിവാക്കി.',
+	'imagetagging-oneuniquetagmessage'    => 'ഈ ചിത്രത്തിനു ഈ പേരുള്ള ടാഗ് ഇപ്പോള്‍ തന്നെയുണ്ട്',
+	'imagetagging-imagetag-seemoreimages' => '"$1"ന്റെ കൂടുതല്‍ ചിത്രങ്ങള്‍ കാണുക ($2)',
+	'imagetagging-taggedimages-title'     => '"$1"ന്റെ ചിത്രങ്ങള്‍',
+	'imagetagging-taggedimages-total'     => 'മൊത്തം "$1"; ചിത്രങ്ങള്‍',
 );
 
 /** Dutch (Nederlands)
@@ -281,6 +293,42 @@ $messages['pl'] = array(
 	'imagetagging-tagcancel-button' => 'Anuluj',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'taggedimages'                          => 'Označené obrázky',
+	'imagetagging-desc'                     => 'Umožňuje používateľom vybrať oblasti vloženého obrázka a k danej oblasti priradiť stránku.',
+	'imagetagging-addimagetag'              => 'Označiť tento obrázok',
+	'imagetagging-article'                  => 'Stránka:',
+	'imagetagging-articletotag'             => 'Označiť stránku:',
+	'imagetagging-imghistory'               => 'História',
+	'imagetagging-images'                   => 'obrázky',
+	'imagetagging-inthisimage'              => 'V tomto obrázku: $1',
+	'imagetagging-logentry'                 => '$2 odstránil zmačku na stránku [[$1]]',
+	'imagetagging-log-tagged'               => '$4 označil obrázok [[$1|$2]] na stránku [[$3]]',
+	'imagetagging-new'                      => '<sup><span style="color:red">Nové!</span></sup>',
+	'imagetagging-removetag'                => 'odstrániť štítok',
+	'imagetagging-done-button'              => 'Ukončiť označovanie',
+	'imagetagging-tag-button'               => 'Značka',
+	'imagetagging-tagcancel-button'         => 'Zrušiť',
+	'imagetagging-tagging-instructions'     => 'Kliknutím na ľudí alebo veci na obrázku ich môžete označiť.',
+	'imagetagging-addingtag'                => 'Pridáva sa značka…',
+	'imagetagging-removingtag'              => 'Odstraňuje sa značka…',
+	'imagetagging-addtagsuccess'            => 'Pridaná značka.',
+	'imagetagging-removetagsuccess'         => 'Odstránená značka.',
+	'imagetagging-oneactionatatimemessage'  => 'Je možné naraz označovať iba jeden obrázok.
+Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
+	'imagetagging-canteditneedloginmessage' => 'Túto stránku nemôžete upravovať.
+Možno je to preto, že sa musíte prihlásiť, aby ste mohli označovať obrázky.
+Chcete sa teraz prihlásiť?',
+	'imagetagging-oneuniquetagmessage'      => 'Tento obrázok už má značku s takýmto názvom.',
+	'imagetagging-imagetag-seemoreimages'   => 'Zobraziť viac obrázkov „$1” ($2)',
+	'imagetagging-taggedimages-title'       => 'Obrázky „$1”',
+	'imagetagging-taggedimages-displaying'  => 'Zobrazujú sa $1 - $2 z $3 obrázkov „$4”',
+	'imagetagging-taggedimages-total'       => '„$1”; celkom obrázkov',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -325,5 +373,41 @@ $messages['tr'] = array(
 	'imagetagging-imghistory'         => 'Geçmiş',
 	'imagetagging-images'             => 'Resimler',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'taggedimages'                          => 'Hình có gắn thẻ',
+	'imagetagging-desc'                     => 'Cho phép người dùng lựa chọn những khu vực của một hình được nhúng vào và gắn một trang vào khu vực đó',
+	'imagetagging-addimagetag'              => 'Gắn thẻ hình này',
+	'imagetagging-article'                  => 'Trang:',
+	'imagetagging-articletotag'             => 'Trang gắn thẻ',
+	'imagetagging-imghistory'               => 'Lịch sử',
+	'imagetagging-images'                   => 'hình',
+	'imagetagging-inthisimage'              => 'Trong hình này: $1',
+	'imagetagging-logentry'                 => '$2 đã bỏ thẻ cho trang [[$1]]',
+	'imagetagging-log-tagged'               => 'Hình [[$1|$2]] đã được gắn vào trang [[$3]] bởi $4',
+	'imagetagging-new'                      => '<sup><span style="color:red">Mới!</span></sup>',
+	'imagetagging-removetag'                => 'bỏ thẻ',
+	'imagetagging-done-button'              => 'Đã gắn thẻ xong',
+	'imagetagging-tag-button'               => 'Thẻ',
+	'imagetagging-tagcancel-button'         => 'Bãi bỏ',
+	'imagetagging-tagging-instructions'     => 'Nhấn vào người hoặc vật trong hình để gắn thẻ cho chúng.',
+	'imagetagging-addingtag'                => 'Đang thêm thẻ…',
+	'imagetagging-removingtag'              => 'Đang bỏ thẻ…',
+	'imagetagging-addtagsuccess'            => 'Đã thêm thẻ.',
+	'imagetagging-removetagsuccess'         => 'Đã bỏ thẻ.',
+	'imagetagging-oneactionatatimemessage'  => 'Chỉ cho phép một tác vụ gắn thẻ vào một thời điểm.
+Xin hãy chờ tác vụ hoàn thành.',
+	'imagetagging-canteditneedloginmessage' => 'Bạn không sửa đổi trang này.
+Có thể do bạn cần phải đăng nhập mới gắn thẻ cho hình được.
+Bạn có muốn đăng nhập ngay bây giờ?',
+	'imagetagging-oneuniquetagmessage'      => 'Hình này đã có một thẻ với tên này.',
+	'imagetagging-imagetag-seemoreimages'   => 'Xem nhiều hình của "$1" hơn ($2)',
+	'imagetagging-taggedimages-title'       => 'Hình của "$1"',
+	'imagetagging-taggedimages-displaying'  => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
+	'imagetagging-taggedimages-total'       => '"$1"; hình tổng cộng',
 );
 

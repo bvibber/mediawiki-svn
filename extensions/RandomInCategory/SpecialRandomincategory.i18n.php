@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'randomincategory-label' => 'Kategorie:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

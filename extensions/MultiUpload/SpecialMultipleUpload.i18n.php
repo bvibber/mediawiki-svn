@@ -183,14 +183,14 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
 
 /** Galician (Galego)
  * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
 	'multipleupload'                   => 'Enviar ficheiros',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todas as advertencias''' e gardar os ficheiros igual.",
 	'multipleupload-saveallfiles'      => 'Gardar todos os ficheiros',
-	'multipleupload-addresswarnings'   => 'Atenda as advertencias antes volver a enviar ficheiros.',
+	'multipleupload-addresswarnings'   => 'Faga caso das advertencias antes volver enviar ficheiros.',
 	'multipleupload-text'              => "Envíe varios ficheiros aquí.
 
 Escolla \"Navegar\" (ou \"Browse\") e escolla cada un dos ficheiros que queira enviar. Pode enviar entre 1 e \$1 ficheiros de cada vez.

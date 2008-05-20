@@ -98,12 +98,16 @@ $1',
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Arnobarnard
  */
 $messages['af'] = array(
 	'sign-realname'           => 'Naam:',
 	'sign-city'               => 'Stad:',
+	'sign-email'              => 'E-pos adres:',
 	'sign-viewfield-realname' => 'Naam',
 	'sign-viewfield-city'     => 'Stad',
+	'sign-viewfield-email'    => 'E-pos',
+	'sign-viewfield-options'  => 'Opsies',
 );
 
 $messages['ang'] = array(

@@ -24,6 +24,13 @@ $messages['en'] = array(
 	'profiling-no-data'      => 'No matching data found.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Arnobarnard
+ */
+$messages['af'] = array(
+	'profiling-ok' => 'OK',
+);
+
 $messages['ar'] = array(
 	'profiling' => 'معالجة البيانات',
 	'profiling-process' => 'معالجة العملية:',

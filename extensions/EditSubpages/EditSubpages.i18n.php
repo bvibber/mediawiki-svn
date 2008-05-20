@@ -102,6 +102,13 @@ $messages['lb'] = array(
 	'editsubpages-desc' => "Erlaabt engem Adiministrateur fir d'Spär vu Säiten opzehiewen an all Ënnersäite vun däer Säit fir anonym Ännerungen via [[MediaWiki:Unlockedpages|Säiten denen hir Spär opgehuewen ass]]",
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'editsubpages-desc' => 'സിസോപ്പിനു അജ്ഞാതരുടെ തിരുത്തലിനു വേണ്ടി ഒരു താളും അതിന്റെ ഉപതാളുകളും സ്വതന്ത്രക്കുവാന്‍ സാധിക്കുന്നു. [[MediaWiki:Unlockedpages]]',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
