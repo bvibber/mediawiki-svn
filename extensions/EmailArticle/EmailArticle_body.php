@@ -30,7 +30,7 @@ class SpecialEmailArticle extends SpecialPage {
 
 		# Get info from request or set to defaults
 		$this->title    = isset($_REQUEST['ea-title'])    ? $_REQUEST['ea-title']    : $param;
-		$this->subject  = isset($_REQUEST['ea-subject'])  ? $_REQUEST['ea-subject']  : "\"{$this->title}\" article sent from $wgSitename";
+		$this->subject  = isset($_REQUEST['ea-subject'])  ? $_REQUEST['ea-subject']  : "\"{$this->title}\" ". wfMsg('ea-articlesend' ,$wgSitename );
 		$this->header   = isset($_REQUEST['ea-header'])   ? $_REQUEST['ea-header']   : '';
 		$this->cat      = isset($_REQUEST['ea-cat'])      ? $_REQUEST['ea-cat']      : '';
 		$this->group    = isset($_REQUEST['ea-group'])    ? $_REQUEST['ea-group']    : '';
@@ -78,7 +78,7 @@ class SpecialEmailArticle extends SpecialPage {
 			$selected = $group == $this->group ? ' selected' : '';
 			if ($wgEmailArticleAllowAllUsers || $group != 'user') $groups .= "<option$selected>$group</option>";
 		}
-		$wgOut->addHTML("<tr><td>From group:</td><td><select name=\"ea-group\">$groups</select></td></tr>\n");
+		$wgOut->addHTML("<tr><td>".wfMsg('ea-fromgroup')."</td><td><select name=\"ea-group\">$groups</select></td></tr>\n");
 		$wgOut->addHTML('</table>');
 
 		# Addition of named list
@@ -131,7 +131,8 @@ class SpecialEmailArticle extends SpecialPage {
 
 		# Set error and bail if user not in postmaster group, and request not from trusted address
 		if ($wgEmailArticleGroup && !in_array($wgEmailArticleGroup,$wgUser->getGroups()) && !in_array($_SERVER['REMOTE_ADDR'],$wgEmailArticleAllowRemoteAddr)) {
-			$wgOut->addWikiText(wfMsg('ea-error',$this->title,'Permission denied'));
+			$denied = wfMsg('ea-denied');
+			$wgOut->addWikiText(wfMsg('ea-error',$this->title, $denied ));
 			return false;
 		}
 
