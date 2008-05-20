@@ -17,7 +17,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@wikitravel.org>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if (defined('MEDIAWIKI')) {
@@ -54,9 +54,7 @@ if (defined('MEDIAWIKI')) {
 
 	# Hook for article save
 	
-	function syslogArticleSave(&$article, &$user, &$text, $summary,
-							   $isminor, $iswatch, $section)
-	{
+	function syslogArticleSave(&$article, &$user, &$text, $summary, $isminor, $iswatch, $section) {
 		$title = $article->mTitle;
 		syslog(LOG_NOTICE, "User '" . $user->getName() . "' saved '" .
 			   $title->getPrefixedText() .
@@ -130,6 +128,12 @@ if (defined('MEDIAWIKI')) {
 	# Add to global list of extensions
 	
 	$wgExtensionFunctions[] = 'setupSyslog';
+	
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'Syslog',
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Syslog',
+		'description' => 'An extension to log events to the system logger',
+		'version' => '1.0'
+	);
 }
-
-
