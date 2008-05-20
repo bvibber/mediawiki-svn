@@ -136,3 +136,57 @@ $messages['oc'] = array(
 	'ea-selectcss'        => "Seleccionar un fuèlh d'estil CSS",
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'emailarticle'        => 'E-posta sida',
+	'ea-desc'             => 'Skicka en renderad HTML-sida till en e-postadress eller en lista över adresser som använder [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading'          => '=== E-posta sidan [[$1]] ===',
+	'ea-noarticle'        => 'Var god ange en sida att skicka, för exempel [[Special:EmailArticle/Main Page]].',
+	'ea-norecipients'     => 'Inga giltiga e-postadresser hittades!',
+	'ea-listrecipients'   => '=== Lista över $1 {{PLURAL:$1|mottagare|mottagare}} ===',
+	'ea-error'            => "'''Fel under sändande av [[$1]]:''' ''$2''",
+	'ea-sent'             => "Sidan [[$1]] har skickats till '''$2''' {{PLURAL:$2|mottagare|mottagare}} av [[User:$3|$3]].",
+	'ea-selectrecipients' => 'Ange mottagare',
+	'ea-compose'          => 'Komponera innehåll',
+	'ea-selectlist'       => "Ytterligare mottagare som sidtitlar eller e-postadresser
+*''separera element med, ; * \\n
+*''listor kan innehålla mallar och parser-funktioner''",
+	'ea-show'             => 'Visa mottagare',
+	'ea-send'             => 'Skicka!',
+	'ea-subject'          => 'Ange ett ämne för e-brevet',
+	'ea-header'           => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
+	'ea-selectcss'        => 'Ange en CSS-stilmall',
+);
+
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'ea-send' => 'పంపించు!',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'emailarticle'        => 'Trang thư điện tử',
+	'ea-desc'             => 'Gửi trang HTML giản lược đến một địa chỉ hoặc danh sách các địa chỉ thư điện tử dùng [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading'          => '=== Gửi trang [[$1]] ===',
+	'ea-noarticle'        => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailArticle/Trang_Chính]].',
+	'ea-norecipients'     => 'Không tìm thấy địa chỉ thư điện tử hợp lệ!',
+	'ea-listrecipients'   => '=== Danh sách $1 {{PLURAL:$1|người nhận|người nhận}} ===',
+	'ea-error'            => "'''Lỗi khi gửi [[$1]]:''' ''$2''",
+	'ea-sent'             => "Trang [[$1]] đã được [[User:$3|$3]] gửi thành công đến '''$2''' {{PLURAL:$2|người nhận|người nhận}}.",
+	'ea-selectrecipients' => 'Chọn người nhận',
+	'ea-compose'          => 'Soạn nội dung',
+	'ea-selectlist'       => "Những người nhận khác theo tựa đề trang hoặc địa chỉ thư điện tử
+*''phân cách các mục bằng , ; * \\n
+*''danh sách có thể chứa tiêu bản và hàm cú pháp''",
+	'ea-show'             => 'Hiển thị người nhận',
+	'ea-send'             => 'Gửi!',
+	'ea-subject'          => 'Nhập vào dòng tiêu đề cho thư điện tử',
+	'ea-header'           => 'Gắn nội dung với thông điệp tùy chọn (văn bản wiki)',
+	'ea-selectcss'        => 'Lựa chọn một kiểu trình bày CSS',
+);
