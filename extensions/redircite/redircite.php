@@ -6,7 +6,7 @@
  * (at your option) any later version.
  *
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2007 Roan Kattouw 
+ * @copyright Copyright © 2007 Roan Kattouw 
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows for abbreviated inline citations.
@@ -25,16 +25,14 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Redircite'
 );
 
-function redircite_setup()
-{
+function redircite_setup() {
 	global $wgParser, $wgHooks;
 	$wgParser->setHook('redircite', 'redircite_render');
 	$wgHooks['ParserAfterTidy'][] = 'redircite_afterTidy';
 }
 
 $markerList = array();
-function redircite_render($input, $args, $parser)
-{
+function redircite_render($input, $args, $parser) {
 	// Generate HTML code and add it to the $markerList array
 	// Add "xx-redircite-marker-NUMBER-redircite-xx" to the output,
 	// which will be translated to the HTML stored in $markerList by
@@ -61,8 +59,7 @@ function redircite_render($input, $args, $parser)
 	return $marker;
 }
 
-function redircite_afterTidy(&$parser, &$text)
-{
+function redircite_afterTidy(&$parser, &$text) {
 	// Translate the markers added by redircite_render() to the HTML
 	// associated with them through $markerList
 	global $markerList;
@@ -70,4 +67,3 @@ function redircite_afterTidy(&$parser, &$text)
 		$text = preg_replace("/xx-redircite-marker-$i-redircite-xx/", $output, $text);
 	return true;
 }
-?>
