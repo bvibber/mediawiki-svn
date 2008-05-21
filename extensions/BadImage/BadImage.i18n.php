@@ -1502,13 +1502,15 @@ $messages['ta'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author వైజాసత్య
  * @author Mpradeep
  */
 $messages['te'] = array(
 	'badimages'                => 'పాడైన బొమ్మల జాబితా',
+	'badimages-desc'           => 'మీడియావికీ యొక్క చెడు బొమ్మల జాబితాను తయారుచేసే సామర్ధ్యాన్ని పొడిగించు',
 	'badimages-add-btn'        => 'చేర్చు',
 	'badimages-added'          => '$1ని జాబితాలో చేర్చాం.',
-	'badimages-count'          => "చెడు బొమ్మల జాబితాలో '''$1''' బొమ్మలున్నాయి.",
+	'badimages-count'          => "చెడు బొమ్మల జాబితాలో '''$1''' {{PLURAL:$1|బొమ్మ ఉన్నది|బొమ్మలున్నాయి}}.",
 	'badimages-name'           => 'పేరు:',
 	'badimages-not-added'      => 'బొమ్మని చేర్చలేకపోయాం.',
 	'badimages-not-removed'    => 'బొమ్మని తొలగించలేకపోయాం.',

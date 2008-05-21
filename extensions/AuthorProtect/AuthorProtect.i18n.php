@@ -534,6 +534,14 @@ $messages['sv'] = array(
 	'restriction-level-author' => 'författarskyddad',
 );
 
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'authorprotect-expiry' => 'గడువు ముగిసే సమయం',
+	'authorprotect-reason' => 'కారణము',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

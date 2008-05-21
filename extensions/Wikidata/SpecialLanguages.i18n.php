@@ -3246,9 +3246,10 @@ $wdMessages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $wdMessages['uk'] = array(
-	'ow_dm_OK' => 'ОК',
+	'ow_dm_OK' => 'Гаразд',
 );
 
 /** Vietnamese (Tiếng Việt)

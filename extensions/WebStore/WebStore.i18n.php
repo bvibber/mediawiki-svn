@@ -929,6 +929,17 @@ Ange $wgLocalTmpDirectory till en skrivbar mapp.',
 	'webstore_php_warning'             => 'PHP-varning: $1',
 	'webstore_metadata_not_found'      => 'Filen hittades inte: $1',
 	'webstore_postfile_not_found'      => 'Fil som ska postas hittades inte.',
+	'webstore_scaler_empty_response'   => 'Bildskaleraren gav ett tomt svar med en 200-responskod.
+Detta kan bero på ett fatalt PHP-fel i skaleraren.',
+	'webstore_invalid_response'        => 'Ogiltigt svar från servern:
+
+$1',
+	'webstore_no_response'             => 'Inget svar från servern.',
+	'webstore_backend_error'           => 'Fel från lagringsservern:
+
+$1',
+	'webstore_php_error'               => 'PHP-fel hittades:',
+	'webstore_no_handler'              => 'Ingen behandlare för ändring av denna MIME-typ',
 );
 
 /** Telugu (తెలుగు)

@@ -114,8 +114,9 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'forcepreview'      => 'Pagina opslaan (de bewerking eerst ter controle weergeven)',
-	'forcepreview-desc' => 'Bewerkingen voor gebruikers zonder rechten eerst ter controle weergeven',
+	'forcepreview'             => 'Pagina opslaan (de bewerking eerst ter controle weergeven)',
+	'forcepreview-desc'        => 'Bewerkingen voor gebruikers zonder rechten eerst ter controle weergeven',
+	'right-forcepreviewexempt' => 'Kan een pagina opslaan zonder bewerking ter controle te bekijken',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -160,10 +161,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'forcepreview'      => 'Spara (förhandsgranska först)',
-	'forcepreview-desc' => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
+	'forcepreview'             => 'Spara (förhandsgranska först)',
+	'forcepreview-desc'        => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
+	'right-forcepreviewexempt' => 'Kanske spara utan att använda Visa förhandsgranskning',
 );
 
 /** Telugu (తెలుగు)

@@ -85,6 +85,13 @@ $messages['jv'] = array(
 	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'skinperpage-desc' => 'Deit dä <tt>&lt;skin&gt;</tt>-Befäähl dobeij, öm fö jeede Sigk et Ußsinn ongerscheedlesh beshtemme ze könne',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

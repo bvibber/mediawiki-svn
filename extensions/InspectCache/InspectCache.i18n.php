@@ -494,8 +494,9 @@ $messages['tg-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $messages['uk'] = array(
-	'inspectcache-ok' => 'ОК',
+	'inspectcache-ok' => 'Гаразд',
 );
 

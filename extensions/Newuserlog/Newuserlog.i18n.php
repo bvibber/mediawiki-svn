@@ -501,15 +501,16 @@ $messages['io'] = array(
 
 /** Icelandic (Íslenska)
  * @author Spacebirdy
- * @author Jóna Þórunn
+ * @author S.Örvarr.S
  * @author SPQRobin
+ * @author Jóna Þórunn
  */
 $messages['is'] = array(
 	'newuserlogpage'              => 'Skrá yfir nýja notendur',
 	'newuserlogpagetext'          => 'Þetta er skrá yfir nýskráða notendur',
 	'newuserlog-create-entry'     => 'Nýr notandi',
 	'newuserlog-create2-entry'    => 'bjó til notanda fyrir $1',
-	'newuserlog-autocreate-entry' => 'Aðgangur búinn sjálfkrafa til',
+	'newuserlog-autocreate-entry' => 'Aðgangur búinn til sjálfkrafa',
 );
 
 /** Italian (Italiano)

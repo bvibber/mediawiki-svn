@@ -2781,12 +2781,12 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'boardvote'              => 'Wale fir de Wikimedia Board of Trustees',
-	'boardvote-desc'         => "[[meta:Board elections|Wale vum Conseil d'administration vu Wikimedia]]",
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Ofstëmmen]]
+	'boardvote'                => 'Wale fir de Wikimedia Board of Trustees',
+	'boardvote-desc'           => "[[meta:Board elections|Wale vum Conseil d'administration vu Wikimedia]]",
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Ofstëmmen]]
 * [[Special:Boardvote/list|Lëscht vun de Stëmmen bis haut]]
 * [[Special:Boardvote/dump|Verschlësselt Donnéeë vun der Ofstëmmung]]',
-	'boardvote_intro'        => "<p>Wëllkomm bei de Wale vn 2008 fir de Wikimedia Board of Trustees. Mir wielen eng Persoun, déi d'Benotzer vun de verschiddene Wikimedia-Projete representéiert. Si wäert dobäi hëllefe fir z'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéiert. Si wäert och dobäi hëllefen, Konzepter z'entwéckelen, fir d'Recetten an d'Spende fir Wikimedia z'erhéijen.</p>
+	'boardvote_intro'          => "<p>Wëllkomm bei de Wale vn 2008 fir de Wikimedia Board of Trustees. Mir wielen eng Persoun, déi d'Benotzer vun de verschiddene Wikimedia-Projete representéiert. Si wäert dobäi hëllefe fir z'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéiert. Si wäert och dobäi hëllefen, Konzepter z'entwéckelen, fir d'Recetten an d'Spende fir Wikimedia z'erhéijen.</p>
 
 <p>Liest w.e.g. d'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d'Verbreedung vu fräiem Wëssen aluet.</p>
 
@@ -2803,8 +2803,8 @@ Wann 2 Kandidaten déi net gewanne kënnen de selwescht Score hunn gëtt hirt Kl
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board Walen 2008</a></li>
 <li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li>
 <li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze-Method</a></li></ul>",
-	'boardvote_intro_change' => "<p>Dir hutt schonn ofgestëmmt. Dir kënnt är Stëmm awer mat dem Formulaire ënnedrënner änneren. Klickt op d'Këschten niewent de Kandidaten fir déi Dir wiele wëllt.</p>",
-	'boardvote_entered'      => "Merci, är Stëmm gouf gespäichert.
+	'boardvote_intro_change'   => "<p>Dir hutt schonn ofgestëmmt. Dir kënnt är Stëmm awer mat dem Formulaire ënnedrënner änneren. Klickt op d'Këschten niewent de Kandidaten fir déi Dir wiele wëllt.</p>",
+	'boardvote_entered'        => "Merci, är Stëmm gouf gespäichert.
 
 Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
 
@@ -2819,45 +2819,46 @@ D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[S
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zréck]]",
-	'boardvote_nosession'    => "Är Wikimedia Benotzernummer (ID) konnt net festgestallt ginn.
+	'boardvote_invalidentered' => "<p><strong>Feeler:</strong> D'Präferenz vun de Kandidaten muss a ganze, positiven Zuelen ausgedréckt ginn (1, 2, 3, ...) oder loosst eidelgelooss ginn.</p>",
+	'boardvote_nosession'      => "Är Wikimedia Benotzernummer (ID) konnt net festgestallt ginn.
 Logged iech w.e.g. an déi Wiki an wou dir d'Bedingunge vun de Walen erfëllt a gitt op <nowiki>[[Special:Boardvote]]</nowiki>.
 Dir musst e Benotzerkont benotzen mat mindestens $1 Kontributiounen virum $2, an Dir musst mindestens $3 Kontributiounen tëschent dem $4 an dem $5 gemaach hun.",
-	'boardvote_notloggedin'  => 'Dir sidd net agelogged.
+	'boardvote_notloggedin'    => 'Dir sidd net agelogged.
 Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 Kontributioune virum $2, an Dir musst mindestens $3 Kontributiounen tëschent dem $4 a(n) $5 gemaach hunn.',
-	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. 
+	'boardvote_notqualified'   => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. 
 Dir musst mindestens $3 Kontributioune virum $2 gemaacht hunn, a mindestens $3 Kontrutiounen tëschent dem $4 a(n) $5 gemaach hun.',
-	'boardvote_novotes'      => 'Et huet nach keen ofgestëmmt.',
-	'boardvote_time'         => 'Zäit',
-	'boardvote_user'         => 'Benotzer',
-	'boardvote_edits'        => 'Ännerungen',
-	'boardvote_days'         => 'Deeg',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Vertrieder vum Benotzer',
-	'boardvote_listintro'    => '<p>Dëst ass eng Lëscht mat all Stëmmen déi bis haut gespäichert goufen.
+	'boardvote_novotes'        => 'Et huet nach keen ofgestëmmt.',
+	'boardvote_time'           => 'Zäit',
+	'boardvote_user'           => 'Benotzer',
+	'boardvote_edits'          => 'Ännerungen',
+	'boardvote_days'           => 'Deeg',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Vertrieder vum Benotzer',
+	'boardvote_listintro'      => '<p>Dëst ass eng Lëscht mat all Stëmmen déi bis haut gespäichert goufen.
 $1 fir déi verschlëselt Daten.</p>',
-	'boardvote_dumplink'     => 'Hei klicken',
-	'boardvote_submit'       => 'Ofstëmmen',
-	'boardvote_strike'       => 'Stëmm läschen',
-	'boardvote_unstrike'     => 'Annulléierung vun der Stëmm ophiewen',
-	'boardvote_needadmin'    => 'Nëmme Administrateure vun de Walen kënnen dëst maachen.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Wale fir de Wikimedia Board of Trustees</a>:
+	'boardvote_dumplink'       => 'Hei klicken',
+	'boardvote_submit'         => 'Ofstëmmen',
+	'boardvote_strike'         => 'Stëmm läschen',
+	'boardvote_unstrike'       => 'Annulléierung vun der Stëmm ophiewen',
+	'boardvote_needadmin'      => 'Nëmme Administrateure vun de Walen kënnen dëst maachen.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Wale fir de Wikimedia Board of Trustees</a>:
 dir kënnt bis den 22. Juni ofstëmmen',
-	'boardvote_notstarted'   => "D'Ofstëmmung huet nach net ugefaang",
-	'boardvote_closed'       => "D'Wale sinn eriwwer. D'Resultat fannt Dir geschwënn [http://meta.wikimedia.org/wiki/Election_results_2008/En hei].",
-	'boardvote_edits_many'   => 'vill',
-	'group-boardvote'        => 'Administrateure vun de Wale fir de Wikimedia Board of Trustees',
-	'group-boardvote-member' => "Administrateur vun de Wale vum Conseil d'administration",
-	'grouppage-boardvote'    => "{{ns:project}}: Administrateur vun de Wale vum Conseil d'administration",
-	'boardvote_blocked'      => 'Dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
-	'boardvote_bot'          => 'Pardon, Dir hutt de Botte-Statut op ärer Wiki. Bot-Konten si bäi de Walen net zougelooss.',
-	'boardvote_welcome'      => "Wëllkomm '''$1'''!",
-	'go_to_board_vote'       => '"Wikimedia Board" Walen 2008',
-	'boardvote_redirecting'  => "Aus Sécherheetsgrënn a wéinst der Transparenz sinn d'Walen op engem externen an onofhägeg kontrolléierte Server.
+	'boardvote_notstarted'     => "D'Ofstëmmung huet nach net ugefaang",
+	'boardvote_closed'         => "D'Wale sinn eriwwer. D'Resultat fannt Dir geschwënn [http://meta.wikimedia.org/wiki/Election_results_2008/En hei].",
+	'boardvote_edits_many'     => 'vill',
+	'group-boardvote'          => 'Administrateure vun de Wale fir de Wikimedia Board of Trustees',
+	'group-boardvote-member'   => "Administrateur vun de Wale vum Conseil d'administration",
+	'grouppage-boardvote'      => "{{ns:project}}: Administrateur vun de Wale vum Conseil d'administration",
+	'boardvote_blocked'        => 'Dir gouft op ärer Wiki gespaart. Gespaarte Benotzer däerfen net wielen.',
+	'boardvote_bot'            => 'Pardon, Dir hutt de Botte-Statut op ärer Wiki. Bot-Konten si bäi de Walen net zougelooss.',
+	'boardvote_welcome'        => "Wëllkomm '''$1'''!",
+	'go_to_board_vote'         => '"Wikimedia Board" Walen 2008',
+	'boardvote_redirecting'    => "Aus Sécherheetsgrënn a wéinst der Transparenz sinn d'Walen op engem externen an onofhägeg kontrolléierte Server.
 
 Dir gitt an 20 Sekonnen op dësen externe Server virugeleed. [$1 Klickt hei] fir elo dohinn ze goen.
 
 Eng Sécherheetswarnung iwwer een net ënnerschriwwenen Zertifikat kann ugewise ginn.",
-	'right-boardvote'        => 'Walen administréieren',
+	'right-boardvote'          => 'Walen administréieren',
 );
 
 /** Lezghian (Лезги)
@@ -4740,7 +4741,7 @@ $messages['uk'] = array(
 	'boardvote_listintro'      => '<p>Це список всіх прийнятих на даний момент бюлетенів для голосування.
 У зашифрованому вигляді вони доступні $1.</p>',
 	'boardvote_dumplink'       => 'тут',
-	'boardvote_submit'         => 'ОК',
+	'boardvote_submit'         => 'Гаразд',
 	'boardvote_strike'         => 'Закреслити',
 	'boardvote_unstrike'       => 'Прибрати закреслення',
 	'boardvote_needadmin'      => 'Ця операція доступна лише адміністрації виборів.',

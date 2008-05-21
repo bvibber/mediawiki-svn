@@ -376,9 +376,9 @@ $messages['gl'] = array(
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar wikitexto expandido e unha vista previa da páxina renderizada',
 	'expand_templates_intro'           => 'Esta páxina especial toma texto e amplía todos os modelos dentro del recursivamente.
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash; de feito, case calquera cousa entre chaves duplas.
+<nowiki>{{</nowiki>CURRENTDAY}} &mdash;de feito, case calquera cousa entre chaves duplas.
 Faino chamando a etapa de análise correspondente do propio MediaWiki.',
-	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}} etc.:',
+	'expand_templates_title'           => 'Título do contexto, para {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Texto de entrada:',
 	'expand_templates_output'          => 'Resultado',
 	'expand_templates_xml_output'      => 'saída XML',
@@ -1225,7 +1225,7 @@ $messages['uk'] = array(
 	'expand_templates_input'           => 'Вхідний текст:',
 	'expand_templates_output'          => 'Результат',
 	'expand_templates_xml_output'      => 'XML-вивід',
-	'expand_templates_ok'              => 'ОК',
+	'expand_templates_ok'              => 'Гаразд',
 	'expand_templates_remove_comments' => 'Вилучити коменатрі',
 	'expand_templates_generate_xml'    => 'Показати дерево аналізу XML',
 	'expand_templates_preview'         => 'Попередній перегляд',

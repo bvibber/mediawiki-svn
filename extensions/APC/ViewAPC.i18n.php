@@ -151,8 +151,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author ترجمان05
  */
 $messages['ar'] = array(
+	'viewapc-clear-confirm'      => 'هل تريد إفراغ الذّاكرة الوسيطة ؟',
 	'viewapc-mode-version-check' => 'افحص النسخة',
 	'viewapc-info-general'       => 'معلومات عامة',
 	'viewapc-memory-usage'       => 'استعمال الذاكرة',
@@ -1737,6 +1739,37 @@ $messages['uk'] = array(
 	'viewapc-mode-system-cache'     => 'Записи системного кешу',
 	'viewapc-mode-system-cache-dir' => 'Записи за директоріями',
 	'viewapc-mode-user-cache'       => 'Записи кешу користувача',
+	'viewapc-mode-version-check'    => 'Перевірка версії',
+	'viewapc-info-general'          => 'Загальні відомості',
+	'viewapc-apc-version'           => 'Версія APC',
+	'viewapc-php-version'           => 'Версія PHP',
+	'viewapc-shared-memory'         => "Загальна пам'ять",
+	'viewapc-start-time'            => 'Час початку',
+	'viewapc-upload-support'        => 'Підтримка завантаження файлів',
+	'viewapc-filecache-info'        => 'Відомості про кеш файлів',
+	'viewapc-usercache-info'        => 'Відомості про кеш користувача',
+	'viewapc-cached-files'          => 'Кешовані файли',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|файл|файли|файлів}} ($2)',
+	'viewapc-hits'                  => 'Попадань',
+	'viewapc-misses'                => 'Промахів',
+	'viewapc-requests'              => 'Інтенсивність запитів',
+	'viewapc-hitrate'               => 'Інтенсивність попадань',
+	'viewapc-missrate'              => 'Інтенсивність промахів',
+	'viewapc-insertrate'            => 'Інтенсивність вставок',
+	'viewapc-cachefull'             => 'Повний розмір кешу',
+	'viewapc-rps'                   => '$1 запитів на секунду',
+	'viewapc-info-runtime'          => 'Відомості про роботу',
+	'viewapc-info-memory'           => 'Діаграми стану вузла',
+	'viewapc-memory-usage-detailed' => "Використання памяті<br />
+(сектори кола позначають фрагменти пам'яті)",
+	'viewapc-memory-usage'          => "Використання пам'яті",
+	'viewapc-cache-efficiency'      => 'Попадання і промахи',
+	'viewapc-memory-free'           => 'Вільно: $1 ($2)',
+	'viewapc-memory-used'           => 'Використано: $1 ($2)',
+	'viewapc-memory-hits'           => 'Попадань: $1 ($2)',
+	'viewapc-memory-miss'           => 'Промахів: $1 ($2)',
+	'viewapc-memoryfragmentation'   => "Детальніше про використання пам'яті і фрагментацію",
+	'viewapc-fragmentation-info'    => 'Фрагментація: $1 ($2 з $3 в $4 {{PLURAL:$4|фрагменті|фрагментах|фрагментах}})',
 );
 
 /** Vietnamese (Tiếng Việt)

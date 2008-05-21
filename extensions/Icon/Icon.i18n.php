@@ -14,9 +14,14 @@ $messages['en'] = array(
 	'icon-desc'     => 'Allows you to use images as icons and icon links',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author ترجمان05
+ */
 $messages['ar'] = array(
 	'icon-badimage' => 'صورة سيئة',
 	'icon-badwidth' => 'عرض سيىء',
+	'icon-desc'     => 'يسمح لك لإستعمال الصّور كأيقونات و روابط أيقونة',
 );
 
 /** Kotava (Kotava)

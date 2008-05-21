@@ -316,7 +316,7 @@ $messages['tg-cyrl'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'advancedrandom'      => 'Просунута випадкова',
+	'advancedrandom'      => 'Покращена випадкова',
 	'advancedrandom-desc' => 'Видає випадкову сторінку, з підсторінки або сторінки обговорення якої є посилання на зазначену сторінку. Може використовуватися за зразком [[Special:AdvancedRandom/Template:Featured/Talk]], щоб отримати випадкову вибрану статтю, або [[Special:AdvancedRandom/Template:GFDL/Image]], щоб отримати випадковий GFDL-файл.',
 );
 

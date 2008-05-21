@@ -959,6 +959,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $messages['uk'] = array(
 	'parserdifftest'      => 'Перевірка змін синтаксичного аналізатора',
@@ -969,7 +970,7 @@ $messages['uk'] = array(
 	'pdtest_time_report'  => '<b>$1</b> зайняло $2 секунд, <b>$3</b> зайняло $4 секунд.',
 	'pdtest_title'        => 'Назва сторінки:',
 	'pdtest_text'         => 'Вхідний текст:',
-	'pdtest_ok'           => 'ОК',
+	'pdtest_ok'           => 'Гаразд',
 	'pdtest_get_text'     => 'Отримати текст зі сторінки',
 	'pdtest_diff'         => 'Відмінності',
 	'pdtest_side_by_side' => 'Порівняння виводу',

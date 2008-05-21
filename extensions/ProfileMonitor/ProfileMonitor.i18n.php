@@ -413,9 +413,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $messages['uk'] = array(
-	'profiling-ok' => 'ОК',
+	'profiling-ok' => 'Гаразд',
 );
 
 /* Cantonese (Shinjiman) */

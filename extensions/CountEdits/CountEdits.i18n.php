@@ -869,9 +869,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $messages['uk'] = array(
-	'countedits-ok' => 'ОК',
+	'countedits-ok' => 'Гаразд',
 );
 
 /** Vèneto (Vèneto)

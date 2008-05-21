@@ -214,6 +214,7 @@ $3',
  */
 $messages['ml'] = array(
 	'latexdoc_cant_write' => '$1 എന്ന പ്രമാണത്തിലേക്കു എഴുതുന്നതിനു കഴിഞ്ഞില്ല',
+	'latexdoc_get_pdf'    => 'PDF എടുക്കുക',
 );
 
 /** Marathi (मराठी)

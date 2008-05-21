@@ -200,6 +200,13 @@ $messages['sv'] = array(
 	'mwsearch-desc' => 'MWSearch-programtillägg',
 );
 
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'mwsearch-desc' => 'మీ.వి.శోధనా పొడిగింపు',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */

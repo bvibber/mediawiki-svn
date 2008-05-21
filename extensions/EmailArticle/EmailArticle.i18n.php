@@ -41,10 +41,13 @@ $messages['fr'] = array(
 	'emailarticle'        => 'Envoyer l’article par courriel',
 	'ea-desc'             => 'Envoie le rendu d’une page HTML à une adresse électronique où à une liste d’adresses en utilisant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading'          => '=== Envoi de la page [[$1]] par courrier électronique ===',
+	'ea-fromgroup'        => 'Depuis le groupe :',
+	'ea-articlesend'      => 'Page « $1 » envoyée depuis $2',
 	'ea-noarticle'        => 'Veuillez spécifier une page à envoyer, par exemple [[Special:EmailArticle/Accueil]]',
 	'ea-norecipients'     => 'Aucune adresse courriel de trouvée !',
 	'ea-listrecipients'   => '=== Liste de $1 {{PLURAL:$1|destinataire|destinataires}} ===',
 	'ea-error'            => "'''Erreur de l’envoi de [[$1]] :''' ''$2''",
+	'ea-denied'           => 'Permission refusée',
 	'ea-sent'             => "L'article [[$1]] a été envoyé avec succès à '''$2''' {{PLURAL:$2|destinataire|destinataires}} par [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Sélectionner les destinataires',
 	'ea-compose'          => 'Composer le contenu',
@@ -58,13 +61,43 @@ $messages['fr'] = array(
 	'ea-selectcss'        => 'Sélectionner une feuille de style CSS',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'emailarticle'        => 'Enviar a páxina por correo electrónico',
+	'ea-desc'             => 'Enviar páxinas HTML renderizadas a un enderezo de correo electrónico (ou a varios correos) usando [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading'          => '=== Enviando a páxina "[[$1]]" ===',
+	'ea-fromgroup'        => 'Desde o grupo:',
+	'ea-articlesend'      => 'O artigo "$1" foi enviado desde $2',
+	'ea-noarticle'        => 'Por favor, especifique a páxina que quere enviar, por exemplo: [[Special:EmailArticle/Main Page]].',
+	'ea-norecipients'     => 'Non foi atopado ningún enderezo de correo electrónico válido!',
+	'ea-listrecipients'   => '=== {{PLURAL:$1|Nome do destinatario|Listaxe dos $1 destinatarios}} ===',
+	'ea-error'            => "'''Erro no envío de \"[[\$1]]\":''' ''\$2''",
+	'ea-denied'           => 'Permiso denegado',
+	'ea-sent'             => 'A páxina "[[$1]]" foi enviada con éxito a \'\'\'$2\'\'\' {{PLURAL:$2|destinatario|destinatarios}} por [[User:$3|$3]].',
+	'ea-selectrecipients' => 'Seleccionar os destinatarios',
+	'ea-compose'          => 'Compoñer o contido',
+	'ea-selectlist'       => "Destinatarios adicionais como títulos de páxinas ou correos electrónicos
+*''separar os ítems con , ; * \\n
+*''a listaxe`pode conter modelos e funcións analíticas''",
+	'ea-show'             => 'Amosar os destinatarios',
+	'ea-send'             => 'Enviar!',
+	'ea-subject'          => 'Introducir un asunto ao correo electrónico',
+	'ea-header'           => 'Engadir o contido cunha mensaxe opcional (texto wiki)',
+	'ea-selectcss'        => 'Seleccionar unha folla de estilo CSS',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'emailarticle'        => 'Säit per Mail schécken',
 	'ea-heading'          => '=== Säit [[$1]] peer E-Mail verschécken ===',
+	'ea-fromgroup'        => 'Vun der Grupp:',
+	'ea-articlesend'      => 'D\'Säit "$1" gouf verschéckt vum $2',
 	'ea-norecipients'     => 'Keng gëlteg E-Mailadress fonnt',
+	'ea-denied'           => 'Rechter refuséiert',
 	'ea-selectrecipients' => 'Adressaten erauswielen',
 	'ea-show'             => 'Adressate weisen',
 	'ea-send'             => 'Schécken!',
@@ -95,10 +128,13 @@ $messages['nl'] = array(
 	'emailarticle'        => 'Pagina e-mailen',
 	'ea-desc'             => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Pagina [[$1]] e-mailen ===',
+	'ea-fromgroup'        => 'Van groep:',
+	'ea-articlesend'      => 'Pagina "$1" is vanuit $2 verstuurd',
 	'ea-noarticle'        => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:EmailArticle/Hoofdpagina]].',
 	'ea-norecipients'     => 'Er is geen geldig e-mailadres opgegeven!',
 	'ea-listrecipients'   => '=== Lijst met $1 {{PLURAL:$1|ontvanger|ontvangers}} ===',
 	'ea-error'            => "'''Fout bij het versturen van [[$1]]:''' ''$2''",
+	'ea-denied'           => 'U hebt geen rechten om deze handeling uit te voeren',
 	'ea-sent'             => "Pagina [[$1]] is verstuurd naar '''$2''' {{PLURAL:$2|ontvanger|ontvangers}} door [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Ontvangers selecteren',
 	'ea-compose'          => 'Inhoud samenstellen',
@@ -119,10 +155,13 @@ $messages['oc'] = array(
 	'emailarticle'        => 'Mandar l’article per corrièr electronic',
 	'ea-desc'             => 'Manda lo rendut d’una pagina HTML a una adreça electronica o a una tièra d’adreças en utilizant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading'          => '=== Mandadís de la pagina [[$1]] per corrièr electronic ===',
+	'ea-fromgroup'        => 'Dempuèi lo grop :',
+	'ea-articlesend'      => 'Pagina « $1 » mandada dempuèi $2',
 	'ea-noarticle'        => 'Especificatz una pagina de mandar, per exemple [[Special:EmailArticle/Acuèlh]]',
 	'ea-norecipients'     => "Cap d'adreça de corrièr electronic pas trobada !",
 	'ea-listrecipients'   => '=== Tièra de $1 {{PLURAL:$1|destinatari|destinataris}} ===',
 	'ea-error'            => "'''Error del mandadís de [[$1]] :''' ''$2''",
+	'ea-denied'           => 'Permission refusada',
 	'ea-sent'             => "L'article [[$1]] es estat mandat amb succès a '''$2''' {{PLURAL:$2|destinatari|destinataris}} per [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Seleccionar los destinataris',
 	'ea-compose'          => 'Compausar lo contengut',
@@ -136,6 +175,33 @@ $messages['oc'] = array(
 	'ea-selectcss'        => "Seleccionar un fuèlh d'estil CSS",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'emailarticle'        => 'Poslať stránku emailom',
+	'ea-desc'             => 'Poslať stránku vo formáte HTML na emailovú adresu alebo zoznam adries pomocou [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading'          => '=== Poslanie stránky [[$1]] emailom ===',
+	'ea-fromgroup'        => 'Zo skupiny:',
+	'ea-articlesend'      => 'Článok „$1” poslaný z $2',
+	'ea-noarticle'        => 'Prosím, uveďte stránku, ktorú chcete poslať, napr. [[Special:EmailArticle/Hlavná stránka]].',
+	'ea-norecipients'     => 'Nebola nájdená platná emailová adresa!',
+	'ea-listrecipients'   => '=== Zoznam $1 {{PLURAL:$1|príjemcu|príjemcov}} ===',
+	'ea-error'            => "'''Chyba pri odosielaní [[$1]]:''' ''$2''",
+	'ea-denied'           => 'Nemáte potrebné oprávnenie',
+	'ea-sent'             => "[[User:$3|$3]] úspešne poslal stránku [[$1]] '''$2''' {{PLURAL:$2|používateľovi|používateľom}}.",
+	'ea-selectrecipients' => 'Vybrať príjemcov',
+	'ea-compose'          => 'Napísať obsah správy',
+	'ea-selectlist'       => "Ďalší príjemci vo forme názvov stránok alebo emailových adries
+*''položky oddeľujte pomocu , ; * \\n
+*''zoznam môže obsahovať šablóny a funkcie syntaktického analyzátora''",
+	'ea-show'             => 'Zobraziť príjemcov',
+	'ea-send'             => 'Poslať!',
+	'ea-subject'          => 'Zadajte predmet emailu',
+	'ea-header'           => 'Pred obsah pridať (nepovinne) správu (wikitext)',
+	'ea-selectcss'        => 'Vyberte CSS štýl',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -143,10 +209,13 @@ $messages['sv'] = array(
 	'emailarticle'        => 'E-posta sida',
 	'ea-desc'             => 'Skicka en renderad HTML-sida till en e-postadress eller en lista över adresser som använder [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== E-posta sidan [[$1]] ===',
+	'ea-fromgroup'        => 'Från grupp:',
+	'ea-articlesend'      => 'Artikeln "$1" skickades från $2',
 	'ea-noarticle'        => 'Var god ange en sida att skicka, för exempel [[Special:EmailArticle/Main Page]].',
 	'ea-norecipients'     => 'Inga giltiga e-postadresser hittades!',
 	'ea-listrecipients'   => '=== Lista över $1 {{PLURAL:$1|mottagare|mottagare}} ===',
 	'ea-error'            => "'''Fel under sändande av [[$1]]:''' ''$2''",
+	'ea-denied'           => 'Åtkomst nekas',
 	'ea-sent'             => "Sidan [[$1]] har skickats till '''$2''' {{PLURAL:$2|mottagare|mottagare}} av [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Ange mottagare',
 	'ea-compose'          => 'Komponera innehåll',
@@ -190,3 +259,4 @@ $messages['vi'] = array(
 	'ea-header'           => 'Gắn nội dung với thông điệp tùy chọn (văn bản wiki)',
 	'ea-selectcss'        => 'Lựa chọn một kiểu trình bày CSS',
 );
+

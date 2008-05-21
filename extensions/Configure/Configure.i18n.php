@@ -1449,6 +1449,18 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'right-configure-all'              => 'Konfigurera alla inställningar på wikin',
 );
 
+/** Telugu (తెలుగు)
+ * @author వైజాసత్య
+ */
+$messages['te'] = array(
+	'configure-section-email'        => 'ఈ-మెయిల్',
+	'configure-section-localization' => 'స్థానికీకరణ',
+	'configure-section-timezone'     => 'కాలమండలం',
+	'configure-section-category'     => 'వర్గాలు',
+	'configure-section-images'       => 'బొమ్మలు',
+	'configure-section-copyright'    => 'కాపీహక్కులు',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
