@@ -20,7 +20,7 @@
  * @addtogroup Extensions
  */
 
-/* arch-tag: Mediawiki extension file for 404-handler caching */
+/* arch-tag: MediaWiki extension file for 404-handler caching */
 
 if (defined('MEDIAWIKI')) {
 
@@ -746,8 +746,14 @@ else if (typeof window.attachEvent != \"undefined\") {
 			break;
 		}
 	}
-
+	
 	$wgExtensionFunctions[] = 'setupCache404';
+	
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'Cache404',
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Cache404',
+		'description' => 'An extension for doing 404-handler caching',
+		'version' => CACHE404_VERSION
+	);
 }
-
-
