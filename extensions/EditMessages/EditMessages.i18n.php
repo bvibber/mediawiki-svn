@@ -425,7 +425,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'editmessages-desc'        => '[[Special:EditMessages|Редактирование через веб-интерфейс]] большого количества файлов Messages*.php',

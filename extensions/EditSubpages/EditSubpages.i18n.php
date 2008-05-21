@@ -208,7 +208,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'editsubpages-desc' => 'Позволяет администраторам с помощью [[MediaWiki:Unlockedpages]] открыть для анонимного редактирования страницу и её подстраницы',

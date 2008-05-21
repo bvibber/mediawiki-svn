@@ -176,7 +176,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'protectsection_add_remove' => 'Вы пытаетесь добавить или удалить защищённый раздел',

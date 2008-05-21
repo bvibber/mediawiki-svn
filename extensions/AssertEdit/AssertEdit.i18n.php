@@ -371,7 +371,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'assert_edit_title'   => 'Утверждение не выполняется',

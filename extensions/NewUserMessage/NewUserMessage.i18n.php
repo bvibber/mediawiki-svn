@@ -156,7 +156,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'newusermessage-desc' => 'Добавляет [[MediaWiki:NewUserMessage|сообщение]] на страницу обсуждения недавно зарегистрированного участника',

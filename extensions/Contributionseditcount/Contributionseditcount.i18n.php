@@ -234,7 +234,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'contributionseditcount'      => 'Этот участник сделал $1 правок.',

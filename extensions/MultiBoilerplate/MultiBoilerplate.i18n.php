@@ -157,7 +157,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'multiboilerplate-desc'   => 'Позволяет пользователям выбирать типовые тексты из выпадающего списка над полем редактирования',

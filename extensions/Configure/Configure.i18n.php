@@ -1237,7 +1237,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Flrn
  */
 $messages['ru'] = array(

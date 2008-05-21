@@ -234,7 +234,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author VasilievVV
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'msfunc_nan'      => 'Результат не является числом',

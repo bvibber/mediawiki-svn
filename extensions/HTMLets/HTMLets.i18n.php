@@ -68,7 +68,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'htmlets-desc' => 'Позволяет вам включать из файлов фрагменты HTML с помощью тега <tt><nowiki><htmlet></nowiki></tt>',

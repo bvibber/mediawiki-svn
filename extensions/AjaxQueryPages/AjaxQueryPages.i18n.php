@@ -145,7 +145,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'ajax-qp-desc' => 'Добавляет немного AJAX в QueryPages, например, [[Special:Shortpages]]',

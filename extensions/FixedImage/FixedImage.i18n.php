@@ -96,7 +96,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'fixedimage-desc' => 'Добавляет тег <tt><nowiki><fundraising></nowiki></tt> как изображение',

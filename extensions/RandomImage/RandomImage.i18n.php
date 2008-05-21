@@ -89,7 +89,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'randomimage-desc' => 'Позволяет случайно выбирать медиа с помощью <tt>&lt;randomimage /&gt;</tt>',

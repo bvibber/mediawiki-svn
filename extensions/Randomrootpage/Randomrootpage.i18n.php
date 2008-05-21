@@ -103,7 +103,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'randomrootpage'      => 'Случайная корневая страница',

@@ -613,7 +613,7 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Ahonc
  */
 $messages['ru'] = array(

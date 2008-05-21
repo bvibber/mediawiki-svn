@@ -1429,7 +1429,7 @@ Nowa wersja $2 dostępna jest na stronie http://pecl.php.net/package/APC/$2',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Ahonc
  */
 $messages['ru'] = array(

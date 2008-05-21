@@ -273,7 +273,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'postcomment_discussionprotected'      => 'Страница обсуждения была защищена от размещения новых сообщений',

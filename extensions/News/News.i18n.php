@@ -165,7 +165,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'newsextension-desc' => 'Показывает настроенный список свежих правок на вики-страницах или ленте RSS или Atom',

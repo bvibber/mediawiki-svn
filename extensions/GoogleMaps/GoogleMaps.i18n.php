@@ -2086,7 +2086,7 @@ Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet 
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $wgGoogleMapsMessages['ru'] = array(
 	'gm-incompatible-browser'      => 'Для просмотра карты воспользуйтесь <a href=\\"http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499\\">совместимым броузером</a>.',

@@ -115,7 +115,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'crowdauthentication-desc' => 'Модуль аутентификации для Atlassian Crowd',

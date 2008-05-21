@@ -830,7 +830,7 @@ $messages['roa-rup'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'inputbox-desc'           => 'Позволяет включать заранее определённые HTML-формы',

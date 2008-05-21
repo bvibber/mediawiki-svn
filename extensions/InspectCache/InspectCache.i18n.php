@@ -393,7 +393,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author VasilievVV
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'inspectcache'         => 'Просмотр кэша',

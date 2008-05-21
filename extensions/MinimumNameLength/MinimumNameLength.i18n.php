@@ -228,7 +228,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'minnamelength-error' => 'Ваше имя участника слишком коротко. Минимальная длина — $1.',

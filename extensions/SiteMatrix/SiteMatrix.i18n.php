@@ -963,7 +963,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'sitematrix'           => 'Список проектов Викимедиа',

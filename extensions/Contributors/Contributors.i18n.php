@@ -754,7 +754,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'contributors'             => 'Авторы',

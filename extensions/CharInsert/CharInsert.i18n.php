@@ -151,7 +151,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'charinsert-desc' => 'Позволяет создать JavaScript-поле для [[MediaWiki:Edittools|вставки необычных символов]]',

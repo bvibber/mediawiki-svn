@@ -242,7 +242,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'poem-desc' => 'Добавляет тег <tt>&lt;poem&gt;</tt> для форматирования стихов',

@@ -70,7 +70,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'navigationpopups-desc' => 'Загружает скрипты всплывающей навигации Люпина (Lupin) в MediaWiki',

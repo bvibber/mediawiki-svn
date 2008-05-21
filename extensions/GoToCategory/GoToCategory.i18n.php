@@ -58,7 +58,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'gotocategory-desc' => 'Проверка условий поиска в категориях: пространство имён для функции «Перейти на страницу»',

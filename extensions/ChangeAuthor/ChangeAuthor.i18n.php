@@ -875,7 +875,7 @@ Kay pantasqa musuqmanta kanqaptinqa, willañiqintin waqllisqachá.',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'changeauthor'                      => 'Изменение автора правки',

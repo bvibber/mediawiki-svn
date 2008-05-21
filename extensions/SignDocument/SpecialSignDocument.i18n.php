@@ -1488,7 +1488,7 @@ $messages['rm'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'signdocument'                    => 'Подписание документа',

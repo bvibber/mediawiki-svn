@@ -436,7 +436,7 @@ Em caso de problemas, poderá experimentar <b>Special:Call/DebuG</b>",
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Ahonc
  */
 $messages['ru'] = array(

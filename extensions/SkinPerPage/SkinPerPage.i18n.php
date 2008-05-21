@@ -149,7 +149,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'skinperpage-desc' => 'Добавляет тег <tt>&lt;skin&gt;</tt> для указания оформления страницы',

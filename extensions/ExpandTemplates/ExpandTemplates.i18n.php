@@ -989,7 +989,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',

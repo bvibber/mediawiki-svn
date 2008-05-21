@@ -78,7 +78,7 @@ $messages['oc'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'preloader-desc' => 'Предоставляет настраиваемые по пространствам имён типовые тексты для новых страниц',

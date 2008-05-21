@@ -82,7 +82,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'tog-microid' => 'Опубликуйте <a href="http://microid.org/">MicroID</a>, чтобы подтвердить учётную запись с внешними службами',

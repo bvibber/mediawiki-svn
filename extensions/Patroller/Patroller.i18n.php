@@ -698,7 +698,7 @@ $messages['rm'] = array(
 
 /** Russian (Русский)
  * @author Illusion
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'patrol'                 => 'Патрулирование',

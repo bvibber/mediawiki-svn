@@ -124,7 +124,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'didyoumean-desc' => 'Добавляет ссылки на страницы с «похожими» названиями',

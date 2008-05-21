@@ -258,7 +258,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'advancedrandom'      => 'Продвинутая случайная',

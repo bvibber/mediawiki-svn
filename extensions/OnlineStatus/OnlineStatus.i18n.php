@@ -279,7 +279,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'onlinestatus-desc'             => 'Добавляет настройку, определяющую присутствие участника на сайте в данный момент',

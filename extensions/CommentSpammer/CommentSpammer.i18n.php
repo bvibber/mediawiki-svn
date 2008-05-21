@@ -262,7 +262,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Ahonc
  */
 $messages['ru'] = array(

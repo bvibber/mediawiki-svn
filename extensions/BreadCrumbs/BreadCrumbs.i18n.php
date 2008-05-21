@@ -173,7 +173,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'breadcrumbs-desc' => 'Показывает путь пользователей по вики.',

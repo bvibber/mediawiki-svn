@@ -291,7 +291,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'pageby-desc'         => 'Показывает авторов на вики-странице, если на ней указан тег <code><nowiki><pageby></nowiki></code>',

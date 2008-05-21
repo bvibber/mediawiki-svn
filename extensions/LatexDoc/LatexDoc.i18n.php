@@ -333,7 +333,7 @@ $3',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'latexdoc_no_text'         => 'Страница не содержит текста, невозможно создать DVI',

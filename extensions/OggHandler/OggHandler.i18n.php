@@ -1577,7 +1577,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'ogg-desc'                => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',

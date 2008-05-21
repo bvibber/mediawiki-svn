@@ -1189,7 +1189,7 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'makesysoptitle'           => 'Сделать пользователя администратором',

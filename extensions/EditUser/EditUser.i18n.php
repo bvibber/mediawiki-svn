@@ -423,7 +423,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'edituser-desc'     => 'Позволяет привилегированным участникам править настройки других участников',

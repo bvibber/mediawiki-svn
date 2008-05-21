@@ -420,7 +420,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'block_title_error_page_title' => 'Запрещённое название',

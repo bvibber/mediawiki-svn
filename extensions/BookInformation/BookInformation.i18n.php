@@ -1021,7 +1021,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'bookinfo-header'            => 'Информация о книге',

@@ -756,7 +756,7 @@ Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'youtubeauthsub'                    => 'Загрузка видео YouTube',

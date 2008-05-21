@@ -167,7 +167,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'absenteelandlord-reason' => 'База данных была автоматически заблокирована из-за неактивности администраторов.',

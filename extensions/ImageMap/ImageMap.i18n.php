@@ -750,7 +750,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'imagemap_desc'               => 'Позволяет указывать срабатывающие на нажатие карты изображений на стороне клиента с помощью тега <tt><nowiki><imagemap></nowiki></tt>',

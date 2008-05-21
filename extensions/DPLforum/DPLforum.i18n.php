@@ -145,7 +145,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'dplforum-desc'    => 'Форумное расширение, основанное на DPL',

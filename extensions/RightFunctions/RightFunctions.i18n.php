@@ -121,7 +121,7 @@ $messages['pl'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'rightfunctions'          => 'Функции парсера на основе разрешений',

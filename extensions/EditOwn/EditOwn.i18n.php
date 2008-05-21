@@ -120,7 +120,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'editown-desc' => 'Участники без права «editall» могут править только страницы, которые сами создали',

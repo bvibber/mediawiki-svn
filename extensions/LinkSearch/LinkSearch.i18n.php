@@ -846,7 +846,7 @@ $messages['rm'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',

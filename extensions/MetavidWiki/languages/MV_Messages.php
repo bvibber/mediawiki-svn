@@ -2319,7 +2319,7 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  * @author Siebrand
  */
 $messages['ru'] = array(

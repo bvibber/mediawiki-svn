@@ -957,7 +957,7 @@ Voltar para:
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'crosswikiblock-desc'           => 'Позволяет блокировать участников на других вики с помощью [[Special:Crosswikiblock|служебной страницы]]',

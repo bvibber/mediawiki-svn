@@ -230,7 +230,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'doublewiki-desc' => 'Показывает страницу и её перевод из другой вики в виде двух колонок',

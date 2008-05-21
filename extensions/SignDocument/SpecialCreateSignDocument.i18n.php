@@ -607,7 +607,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'createsigndocument'                 => 'Включить сбор подписей для документа',

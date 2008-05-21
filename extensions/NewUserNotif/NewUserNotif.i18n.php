@@ -250,7 +250,7 @@ Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'newusernotifsubj'  => 'Уведомление о новом участнике $1',

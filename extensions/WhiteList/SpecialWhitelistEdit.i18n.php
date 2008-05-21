@@ -770,7 +770,7 @@ $allMessages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $allMessages['ru'] = array(
 	'whitelistnewtableprocess' => 'Процесс',

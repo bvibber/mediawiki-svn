@@ -205,7 +205,7 @@ $messages['qu'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'commentpages-desc' => 'Страницы комментариев для основного пространства имён',

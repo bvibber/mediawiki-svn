@@ -103,7 +103,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'gnuplot-desc' => 'Добавляет тег <code><nowiki><gnuplot></nowiki></code> для использования Gnuplot',

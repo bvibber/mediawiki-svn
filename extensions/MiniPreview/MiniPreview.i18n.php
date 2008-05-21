@@ -304,7 +304,7 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
 );
 
 /** Russian (Русский)
- * @author .:Ajvol:.
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'minipreview-desc'                => 'МиниПредпросмотр показывает около изображения миниатюры других медиа-файлов из той же категории или расположенных на той же страницы',
