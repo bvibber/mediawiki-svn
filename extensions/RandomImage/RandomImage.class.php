@@ -43,7 +43,7 @@ class RandomImage {
 		if( isset( $options['float'] ) ) {
 			$float = strtolower( $options['float'] );
 			// TODO: Use magic words instead
-			if( in_array( $float, array( 'left', 'right', 'centre' ) ) )
+			if( in_array( $float, array( 'left', 'right', 'center' ) ) )
 				$this->float = $float;
 		}
 		if( isset( $options['choices'] ) ) {
@@ -115,7 +115,7 @@ class RandomImage {
 	 * @return string
 	 */
 	protected function removeMagnifier( $html ) {
-		$doc = DOMDocument::loadXml( $html );
+		$doc = DOMDocument::loadHTML( $html );
 		$xpath = new DOMXPath( $doc );
 		foreach( $xpath->query( '//div[@class="magnify"]' ) as $mag )
 			$mag->parentNode->removeChild( $mag );
@@ -137,15 +137,19 @@ class RandomImage {
 				} elseif( preg_match( "!^(.*?)\n!i", $text, $matches ) ) {
 					$this->caption = $matches[1];
 				} else {
-					$this->caption = $text;
+					if($text) {
+						$this->caption = $text;
+					} else {
+						$this->caption='&#32;';
+					}
 				}
 			} else {
-				$this->caption = '';
+				$this->caption = '&#32;';
 			}
 		}
 		return $this->caption;
 	}
-	
+
 	/**
 	 * Select a random image
 	 *
