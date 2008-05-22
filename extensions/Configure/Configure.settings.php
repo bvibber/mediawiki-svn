@@ -2,6 +2,11 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
+ * @file
+ * @ingroup Extensions
+ */
+
+/**
  * Array mapping all editable settings to their type depending of their section
  * First two keys will be used to show sections
  * These settings are more or less in the same order as
@@ -667,121 +672,6 @@ $settings = array(
 );
 
 /**
- * Settings that can be modified only by users with 'configure-all' right
- */
-$restricted = array(
-# General
-	'wgActionPaths',
-	'wgAppleTouchIcon',
-	'wgArticlePath',
-	'wgDiff3',
-	'wgFavicon',
-	'wgLogo',
-	'wgMathDirectory',
-	'wgMathPath',
-	'wgProto',
-	'wgRedirectScript',
-	'wgScript',
-	'wgScriptExtension',
-	'wgScriptPath',
-	'wgServer',
-	'wgServerName',
-	'wgStyleDirectory',
-	'wgStylePath',
-	'wgStyleSheetPath',
-	'wgTmpDirectory',
-	'wgUsePathInfo',
-	'wgUploadBaseUrl',
-	'wgUploadDirectory',
-	'wgUploadNavigationUrl',
-	'wgUploadPath',
-	'wgVariantArticlePath',
-# Db
-	'wgAllDBsAreLocalhost',
-	'wgAlternateMaster',
-	'wgCheckDBSchema',
-	'wgDBAvgStatusPoll',
-	'wgDBClusterTimeout',
-	'wgDBerrorLog',
-	'wgDBminWordLen',
-	'wgDBmwschema',
-	'wgDBmysql5',
-	'wgDBname',
-	'wgDBpassword',
-	'wgDBport',
-	'wgDBprefix',
-	'wgDBschema',
-	'wgDBserver',
-	'wgDBservers',
-	'wgDBTableOptions',
-	'wgDBtransactions',
-	'wgDBts2schema',
-	'wgDBtype',
-	'wgDBuser',
-	'wgDefaultExternalStore',
-	'wgLBFactoryConf',
-	'wgLegacySchemaConversion',
-	'wgLocalDatabases',
-	'wgMasterWaitTimeout',
-	'wgSearchType',
-	'wgSharedDB',
-	'wgSharedPrefix',
-	'wgSharedTables',
-	'wgSlaveLagCritical',
-	'wgSlaveLagWarning',
-	'wgSQLiteDataDir',
-	'wgExternalServers',
-# Emal
-	'wgSMTP',
-# Debug
-	'wgDebugLogFile',
-	'wgDebugLogGroups',
-	'wgUDPProfilerHost',
-	'wgUDPProfilerPort',
-# Cache
-	'wgFileCacheDirectory',
-	'wgLocalMessageCache',
-	'wgMemCachedServers',
-# Access
-	'wgAddGroups',
-	'wgGroupPermissions',
-	'wgGroupsAddToSelf',
-	'wgGroupsRemoveFromSelf',
-	'wgRemoveGroups',
-	'wgReadOnlyFile',
-# Rate limits
-	'wgRateLimitLog',
-# Proxies
-	'wgProxyKey',
-	'wgProxyScriptPath',
-	'wgSecretKey',
-# Squid
-	'wgInternalServer',
-	'wgSquidServers',
-	'wgSquidServersNoPurge',
-# Img
-	'wgFileStore',
-	'wgHTTPProxy',
-	'wgLocalFileRepo',
-	'wgThumbnailScriptPath',
-# Parser
-	'wgTidyBin',
-	'wgTidyConf',
-# Special pages
-	'wgRC2UDPAddress',
-	'wgRC2UDPPort',
-# Extensions
-	'wgDisableInternalSearch',
-	'wgExternalStores',
-# htcp
-	'wgHTCPMulticastAddress',
-	'wgHTCPPort',
-# Misc
-	'wgMWSuggestTemplate',
-	'wgOpenSearchTemplate',
-);
-
-/**
  * As there can be a lot of array types, try to define their type
  *
  * Types used:
@@ -909,6 +799,135 @@ $arrayDefs = array(
 	'wgRedirectSources' => 'simple',
 	'wgRestrictionTypes' => 'simple',
 	'wgSitemapNamespaces' => 'simple',
+);
+
+/**
+ * Settings that can be modified only by users with 'configure-all' right
+ */
+$editRestricted = array(
+# General
+	'wgActionPaths',
+	'wgAppleTouchIcon',
+	'wgArticlePath',
+	'wgDiff3',
+	'wgFavicon',
+	'wgLogo',
+	'wgMathDirectory',
+	'wgMathPath',
+	'wgProto',
+	'wgRedirectScript',
+	'wgScript',
+	'wgScriptExtension',
+	'wgScriptPath',
+	'wgServer',
+	'wgServerName',
+	'wgStyleDirectory',
+	'wgStylePath',
+	'wgStyleSheetPath',
+	'wgTmpDirectory',
+	'wgUsePathInfo',
+	'wgUploadBaseUrl',
+	'wgUploadDirectory',
+	'wgUploadNavigationUrl',
+	'wgUploadPath',
+	'wgVariantArticlePath',
+# Db
+	'wgAllDBsAreLocalhost',
+	'wgAlternateMaster',
+	'wgCheckDBSchema',
+	'wgDBAvgStatusPoll',
+	'wgDBClusterTimeout',
+	'wgDBerrorLog',
+	'wgDBminWordLen',
+	'wgDBmwschema',
+	'wgDBmysql5',
+	'wgDBname',
+	'wgDBpassword',
+	'wgDBport',
+	'wgDBprefix',
+	'wgDBschema',
+	'wgDBserver',
+	'wgDBservers',
+	'wgDBTableOptions',
+	'wgDBtransactions',
+	'wgDBts2schema',
+	'wgDBtype',
+	'wgDBuser',
+	'wgDefaultExternalStore',
+	'wgLBFactoryConf',
+	'wgLegacySchemaConversion',
+	'wgLocalDatabases',
+	'wgMasterWaitTimeout',
+	'wgSearchType',
+	'wgSharedDB',
+	'wgSharedPrefix',
+	'wgSharedTables',
+	'wgSlaveLagCritical',
+	'wgSlaveLagWarning',
+	'wgSQLiteDataDir',
+	'wgExternalServers',
+# Emal
+	'wgSMTP',
+# Debug
+	'wgDebugLogFile',
+	'wgDebugLogGroups',
+	'wgUDPProfilerHost',
+	'wgUDPProfilerPort',
+# Cache
+	'wgFileCacheDirectory',
+	'wgLocalMessageCache',
+	'wgMemCachedServers',
+# Access
+	'wgAddGroups',
+	'wgGroupPermissions',
+	'wgGroupsAddToSelf',
+	'wgGroupsRemoveFromSelf',
+	'wgRemoveGroups',
+	'wgReadOnlyFile',
+# Rate limits
+	'wgRateLimitLog',
+# Proxies
+	'wgProxyKey',
+	'wgProxyScriptPath',
+	'wgSecretKey',
+# Squid
+	'wgInternalServer',
+	'wgSquidServers',
+	'wgSquidServersNoPurge',
+# Img
+	'wgFileStore',
+	'wgHTTPProxy',
+	'wgLocalFileRepo',
+	'wgThumbnailScriptPath',
+# Parser
+	'wgTidyBin',
+	'wgTidyConf',
+# Special pages
+	'wgRC2UDPAddress',
+	'wgRC2UDPPort',
+# Extensions
+	'wgDisableInternalSearch',
+	'wgExternalStores',
+# htcp
+	'wgHTCPMulticastAddress',
+	'wgHTCPPort',
+# Misc
+	'wgMWSuggestTemplate',
+	'wgOpenSearchTemplate',
+);
+
+/**
+ * Settings that can be viewed only by users with 'viewconfig-all' right
+ * because they can contain passwords
+ */
+$viewRestricted = array(
+# Db
+	'wgDBpassword',
+	'wgDBservers',
+	'wgLBFactoryConf',
+	'wgExternalServers',
+# Emal
+	'wgSMTP',
 );
 
 /**

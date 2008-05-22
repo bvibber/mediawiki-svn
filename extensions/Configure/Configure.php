@@ -5,7 +5,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * Special page to allow users to configure the wiki by a web based interface
  * Require MediaWiki version 1.7.0 or greater
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Alexandre Emsenhuber
  */
 
@@ -16,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.3.1',
+	'version' => '0.3.2',
 );
 
 ## Adding new rights...
@@ -24,6 +25,9 @@ $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
 $wgGroupPermissions['bureaucrat']['configure'] = true;
 #$wgGroupPermissions['developer']['configure-all'] = true;
+
+$wgGroupPermissions['sysop']['viewconfig'] = true;
+$wgGroupPermissions['bureaucrat']['viewconfig-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 
@@ -38,8 +42,10 @@ if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) 
 }
 
 ## Adding the new special page...
-$wgAutoloadClasses['SpecialConfigure'] = $dir . 'Configure.body.php';
+$wgAutoloadClasses['SpecialConfigure'] = $dir . 'SpecialConfigure.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
+$wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
+$wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
 
 ## Add the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

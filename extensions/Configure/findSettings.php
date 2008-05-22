@@ -5,7 +5,8 @@
  * extension.
  * Based on findhooks.php
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Alexandre Emsenhuber
  * @license GPLv2 or higher
  */

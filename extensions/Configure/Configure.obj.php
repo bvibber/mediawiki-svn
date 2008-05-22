@@ -9,7 +9,7 @@ if( !class_exists( 'SiteConfiguration' ) )
 /**
  * Class that hold the configuration
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 class WebConfiguration extends SiteConfiguration {
 	protected $mDir;            // Directory of files, *with* leading /
@@ -22,7 +22,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param string $path path to the directory that contains the configuration
 	 *                     files
 	 */
-	function __construct( $wiki = 'default', $path = null ){
+	public function __construct( $wiki = 'default', $path = null ){
 		if( $path === null ){
 			global $IP;
 			$path = "$IP/serialized/";
@@ -37,7 +37,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * Load the configuration from the conf-now.ser file in the $this->mDir
 	 * directory
 	 */
-	function initialise(){
+	public function initialise(){
 		$file = $this->getFileName();
 		if( !file_exists( $file ) )
 			# maybe the first time the user use this extensions, do not override
@@ -70,7 +70,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param String $wiki wiki name or false to use the current one
 	 * @return bool true on success
 	 */
-	function saveNewSettings( $settings, $wiki = false ){
+	public function saveNewSettings( $settings, $wiki = false ){
 		if( !is_array( $settings ) || $settings === array() )
 			# hmmm
 			return false;
@@ -89,7 +89,7 @@ class WebConfiguration extends SiteConfiguration {
 	/**
 	 * extract settings for this wiki in $GLOBALS
 	 */
-	function extract(){
+	public function extract(){
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
 		$rewrites = array( 'wiki' => $this->mWiki, 'site' => $site, 'lang' => $lang );
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
@@ -99,7 +99,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * Get the current file name
 	 * @return String full path to the file
 	 */
-	function getFileName(){
+	protected function getFileName(){
 		return "{$this->mDir}conf-now.ser";
 	}
 
@@ -109,7 +109,7 @@ class WebConfiguration extends SiteConfiguration {
 	 *                   current timestamp
 	 * @return String full path to the file
 	 */
-	function getArchiveFileName( $ts = null ){
+	protected function getArchiveFileName( $ts = null ){
 		global $IP;
 
 		if( $ts === null )
@@ -123,7 +123,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
 	 */
-	function listArchiveFiles(){
+	public function listArchiveFiles(){
 		if( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
@@ -141,7 +141,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	function getOldSettings( $ts ){
+	public function getOldSettings( $ts ){
 		$file = $this->getArchiveFileName( $ts );
 		if( !file_exists( $file ) )
 			# maybe the time the user use this extensions, do not override
@@ -163,7 +163,16 @@ class WebConfiguration extends SiteConfiguration {
 	 *
 	 * @return String
 	 */
-	function getDir(){
+	public function getDir(){
 		return $this->mDir;
+	}
+	
+	/**
+	 * Get the wiki in use
+	 *
+	 * @return String
+	 */
+	public function getWiki(){
+		return $this->mWiki;
 	}
 }

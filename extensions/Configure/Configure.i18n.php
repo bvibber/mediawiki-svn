@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Configure.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -91,8 +92,10 @@ Please create it or change it to use this extension.',
 	'configure-section-htcp'           => 'HTCP multicast',
 	'configure-section-misc'           => 'Miscellaneous',
 	'configure-setting-not-available'  => 'This setting is not available in this version of MediaWiki',
+	'configure-view-not-allowed'       => 'You are not allowd to see this setting',
 	'right-configure'                  => 'Configure the wiki',
 	'right-configure-all'              => "Configure all wiki's settings",
+	'viewconfig'                       => "View Wiki's configuration",
 );
 
 /** Afrikaans (Afrikaans)
@@ -467,8 +470,10 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-htcp'           => 'HTCP multicanal',
 	'configure-section-misc'           => 'Autres',
 	'configure-setting-not-available'  => "Ce paramètre n'est pas disponible sur cette version de MediaWiki",
+	'configure-view-not-allowed'       => "Vous n'êtes pas autorisé à voir ce paramètre",
 	'right-configure'                  => 'Configurer le wiki',
 	'right-configure-all'              => 'Configurer tous les paramètres du wiki',
+	'viewconfig'                       => 'Voir la configuration du wiki',
 );
 
 /** Galician (Galego)

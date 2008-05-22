@@ -4,11 +4,12 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * Special page allows authorised users to configure the wiki
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 class SpecialConfigure extends SpecialPage {
 	protected static $initialized = false;
-	protected static $settings, $restricted, $arrayDefs,
+	protected static $settings, $arrayDefs, $editRestricted, $viewRestricted,
 		$notEditableSettings, $settingsVersion;
 	protected $conf;
 
@@ -23,8 +24,9 @@ class SpecialConfigure extends SpecialPage {
 		self::$initialized = true;
 		require( dirname( __FILE__ ) . '/Configure.settings.php' );
 		self::$settings = $settings;
-		self::$restricted = $restricted;
 		self::$arrayDefs = $arrayDefs;
+		self::$editRestricted = $editRestricted;
+		self::$viewRestricted = $viewRestricted;
 		self::$notEditableSettings = $notEditableSettings;
 		self::$settingsVersion = $settingsVersion;
 	}
@@ -32,7 +34,7 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Return true if the setting is available in this version of MediaWiki
 	 *
-	 * @param string $setting setting name
+	 * @param $setting String: setting name
 	 * @return bool
 	 */
 	public static function isSettingAvailable( $setting ){
@@ -94,7 +96,7 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Get the type of a setting
 	 *
-	 * @param string $setting
+	 * @param $setting String: setting name
 	 * @return mixed
 	 */
 	public static function getSettingType( $setting ){
@@ -108,16 +110,16 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct( $name = 'Configure', $right = 'configure' ) {
 		efConfigureLoadMessages();
-		parent::__construct( 'Configure', 'configure' );
+		parent::__construct( $name, $right );
 		self::loadSettingsDefs();
 	}
 
 	/**
 	 * Show the special page
 	 *
-	 * @param mixed $par Parameter passed to the page
+	 * @param $par Mixed: parameter passed to the page
 	 */
 	public function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut, $wgConf;
@@ -157,7 +159,7 @@ class SpecialConfigure extends SpecialPage {
 			$versions = $wgConf->listArchiveFiles();
 			if( in_array( $version, $versions ) ){
 				 $conf = $wgConf->getOldSettings( $version );
-				 $this->conf = $conf['default'];
+				 $this->conf = $conf[$wgConf->getWiki()];
 				 $wgOut->addWikiText( wfMsgNoTrans( 'configure-edit-old' ) );
 			} else {
 				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
@@ -178,7 +180,7 @@ class SpecialConfigure extends SpecialPage {
 
 	/**
 	 * Retrieve the value of $setting
-	 * @param string $setting setting name
+	 * @param $setting String: setting name
 	 * @return mixed value of $setting
 	 */
 	protected function getSettingValue( $setting ){
@@ -203,13 +205,21 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Return true if the current user is allowed to configure $setting.
+	 * @return bool
+	 */
+	protected function userCanEdit( $setting ){
+		return ( !in_array( $setting, self::$editRestricted ) || $this->isUserAllowedAll() );
+	}
+
+	/**
 	 * Submit the posted request
 	 */
 	protected function doSubmit(){
 		global $wgConf, $wgOut, $wgRequest;
-		$allowedRestricted = $this->isUserAllowedAll();
+
 		if( $wiki = $wgRequest->getVal( 'wpWiki', false ) ){
-			if( !$allowedRestricted ){
+			if( !$this->isUserAllowedAll() ){
 				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
 				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
 				return;
@@ -217,7 +227,7 @@ class SpecialConfigure extends SpecialPage {
 		}
 		$settings = array();
 		foreach( self::getEditableSettings() as $name => $type ){
-			if( in_array( $name, self::$restricted ) && !$allowedRestricted ){
+			if( !$this->userCanEdit( $name ) ){
 				$settings[$name] = $this->getSettingValue( $name );
 				continue;
 			}
@@ -376,8 +386,9 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Cleanup some settings to respect some behaviour of the core
 	 *
-	 * @param String $name setting name
-	 * @param mixed $val setting value
+	 * @param $name String: setting name
+	 * @param $val Mixed: setting value
+	 * @return Mixed
 	 */
 	protected function cleanupSetting( $name, $val ){
 		switch( $name ){
@@ -494,7 +505,7 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Like before but only for the header
 	 *
-	 * @param String $msg name of the message to display
+	 * @param $msg String: name of the message to display
 	 * @return String xhtml fragment
 	 */
 	protected function buildTableHeading( $msg ){
@@ -504,13 +515,13 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Build an input for $conf setting with $default as default value
 	 *
-	 * @param String $conf name of the setting
-	 * @param String $type type of the setting
-	 * @param String $default default value
+	 * @param $conf String: name of the setting
+	 * @param $type String: type of the setting
+	 * @param $default String: default value
 	 * @return String xhtml fragment
 	 */
 	protected function buildInput( $conf, $type, $default ){
-		$allowed = ( !in_array( $conf, self::$restricted ) || $this->isUserAllowedAll() );
+		$allowed = $this->userCanEdit( $conf );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return htmlspecialchars( $default );
@@ -562,9 +573,9 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Build an input for an array setting
 	 *
-	 * @param str $conf setting name
-	 * @param mixed $default current value (but should be array :)
-	 * @param bool $allowed
+	 * @param $conf String: setting name
+	 * @param $default Mixed: current value (but should be array :)
+	 * @param $allowed Boolean
 	 */
 	protected function buildArrayInput( $conf, $default, $allowed ){
 		if( !isset( self::$arrayDefs[$conf] ) || self::$arrayDefs[$conf] == 'array' )
@@ -764,11 +775,11 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Build a table row for $conf setting with $default as default value
 	 *
-	 * @parm String $msg message name to display, use $conf if the message is
-	 *                   empty
-	 * @param String $conf name of the setting
-	 * @param String $type type of the setting
-	 * @param String $default default value
+	 * @parm $msg String: message name to display, use $conf if the message is
+	 *            empty
+	 * @param $conf String: name of the setting
+	 * @param $type String: type of the setting
+	 * @param $default String: default value
 	 * @return String xhtml fragment
 	 */
 	protected function buildTableRow( $msg, $conf, $type, $default ){
@@ -791,7 +802,7 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Return true if all settings in this section are restricted
 	 *
-	 * @param Array $sectArr one value of self::$settings array
+	 * @param $sectArr Array: one value of self::$settings array
 	 */
 	protected function isSectionRestricted( $sectArr ){
 		if( $this->isUserAllowedAll() )
@@ -799,7 +810,7 @@ class SpecialConfigure extends SpecialPage {
 		$settings = array();
 		foreach( $sectArr as $name => $sect ){
 			foreach( array_keys( $sect ) as $setting ){
-				if( !in_array( $setting, self::$restricted ) && !in_array( $setting, self::$notEditableSettings ) )
+				if( !in_array( $setting, self::$editRestricted ) && !in_array( $setting, self::$notEditableSettings ) )
 					return false;
 			}
 		}

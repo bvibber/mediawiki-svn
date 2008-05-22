@@ -4,15 +4,16 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * Functions for Configure extension
  *
+ * @file
  * @author Alexandre Emsenhuber
  * @license GPLv2 or higher
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 /**
  * Ajax function to create checkboxes for a new group in $wgGroupPermissions
  *
- * @param String $group new group name
+ * @param $group String: new group name
  * @return either <err#> if group already exist or html fragment
  */
 function efConfigureAjax( $group ){
@@ -55,7 +56,7 @@ function efConfigureAjax( $group ){
  * Settings are not filled only if they doesn't exists because of a security
  * hole if the register_globals feature of PHP is enabled.
  *
- * @param String $wiki
+ * @param $wiki String
  */
 function efConfigureSetup( $wiki = 'default' ){
 	global $wgConf, $wgConfigureFilesPath;
