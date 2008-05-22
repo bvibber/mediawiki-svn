@@ -94,8 +94,8 @@ Please create it or change it to use this extension.',
 	'configure-setting-not-available'  => 'This setting is not available in this version of MediaWiki',
 	'configure-view-not-allowed'       => 'You are not allowd to see this setting',
 	'right-configure'                  => 'Configure the wiki',
-	'right-configure-all'              => "Configure all wiki's settings",
-	'viewconfig'                       => "View Wiki's configuration",
+	'right-configure-all'              => "Configure all wiki settings",
+	'viewconfig'                       => "View wiki configuration",
 );
 
 /** Afrikaans (Afrikaans)
