@@ -33,10 +33,10 @@ function efSimpleAntiSpamField(&$editpage, &$out) {
 }
 
 //check for the field and if it isn't empty, negate the save
-function efSimpleAntiSpamCheck($editpage) {
+function efSimpleAntiSpamCheck( $editpage ) {
 	global $wgRequest;
-	if($wgRequest->getText('wpAntispam') !== '') {
-		wfLoadExtensionMessages('simpleantispam');
+	if($wgRequest->getVal( 'wpAntispam' ) !== '') {
+		wfLoadExtensionMessages( 'SimpleAntiSpam' );
 		$editpage->spamPage();
 		return false;
 	}
@@ -52,6 +52,6 @@ function efSimpleAntiSpamInstall() {
 			<tt>require_once("\$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php");</tt>\n
 		To verify the installation, browse to the Special:Version page on your wiki.\n
 EOM;
-	echo($i);
+	echo $i;
 	return;
 }
