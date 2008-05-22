@@ -87,7 +87,7 @@ Vote open until June 22",
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 	'boardvote_blocked'       => 'You have been blocked on your registered wiki.
 Blocked users are not allowed to vote.',
-	'boardvote_bot'           => 'You are flaged as a bot on your registered wiki.
+	'boardvote_bot'           => 'You are flagged as a bot on your registered wiki.
 Bot accounts are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
 	'go_to_board_vote'        => 'Wikimedia Board Elections 2008',
