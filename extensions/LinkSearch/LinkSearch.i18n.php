@@ -1052,7 +1052,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'linksearch'       => 'Çerca colegamenti foresti',
-	'linksearch-desc'  => '[[Special:Linksearch|Cata fora le pagine con colegamenti foresti]] che corispe a criteri specificà',
+	'linksearch-desc'  => '[[Special:Linksearch|Cata fora le pagine con colegamenti foresti]] che corisponde a criteri specificà',
 	'linksearch-pat'   => 'Pattern de riçerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Çerca',

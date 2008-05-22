@@ -120,6 +120,15 @@ $messages['lb'] = array(
 	'protectsection_forbidden'  => 'Verbueden',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'protectsection_add_remove' => 'സം‌രക്ഷിക്കപ്പെട്ട ഒരു വിഭാഗത്തെയാണ്‌ താങ്കള്‍ ചേര്‍ക്കാനോ ഒഴിവാക്കാനോ ശ്രമിക്കുന്നത്',
+	'protectsection_modify'     => 'സം‌രക്ഷിക്കപ്പെട്ട ഉള്ളടക്കമാണ്‌ താങ്കള്‍ തിരുത്താന്‍ ശ്രമിക്കുന്നത്',
+	'protectsection_forbidden'  => 'വിലക്കപ്പെട്ടത്',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

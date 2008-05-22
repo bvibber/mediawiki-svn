@@ -34,8 +34,10 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'watchsubpages-desc' => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',
-	'watchsubpages'      => 'Наблюдаване на подстраниците',
+	'watchsubpages'                      => 'Наблюдаване на подстраниците',
+	'watchsubpages-addtitles'            => 'Добавяне на страниците',
+	'watchsubpages-addtitlestowatchlist' => 'Добавяне на страници в списъка за наблюдение',
+	'watchsubpages-desc'                 => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',
 );
 
 /** Catalan (Català)
@@ -184,6 +186,13 @@ $messages['sv'] = array(
 	'watchsubpages-addtitles'            => 'Lägg till sidor',
 	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till övervakningslista',
 	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Lägg till alla undersidor]] av en sida till övervakningslistan',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'watchsubpages-desc' => 'Zonta in pressia [[Special:WatchSubpages|tute le sotopagine]] de na pagina ai osservati speciali',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -101,6 +101,7 @@ Please create it or change it to use this extension.',
 $messages['af'] = array(
 	'configure-desc-group'           => 'Groepe',
 	'configure-desc-val'             => 'Waarde',
+	'configure-js-remove'            => 'Skrap',
 	'configure-section-db'           => 'Databasis',
 	'configure-section-email'        => 'E-pos',
 	'configure-section-timezone'     => 'Tydsone',
@@ -165,6 +166,7 @@ $messages['bg'] = array(
 За използване на това разширение е необходимо да промените правата й.',
 	'configure-edit-old'               => 'Предупреждение: редактирате <strong>стара</strong> версия на настройките.',
 	'configure-error'                  => 'Настройките не могат да бъдат съхранени',
+	'configure-js-remove'              => 'Изтриване',
 	'configure-no-directory'           => 'Използваната за съхранение на настройките директория, <tt>$1</tt>, не съществува.
 Необходимо е тя да бъде създадена или да бъде променена, за да може да се използва разширението.',
 	'configure-no-old'                 => 'Няма налична стара версия на настройките',
@@ -1156,6 +1158,7 @@ Utwórz katalog lub wybierz inny jeśli chcesz korzystać z tego rozszerzenia.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'configure-desc-val'              => 'ارزښت',
 	'configure-no-transwiki'          => 'تاسو ته په نورو ويکي ګانو کې د سمبالښت د بدلولو اجازه نشته',
 	'configure-section-db'            => 'ډاټابېز',
 	'configure-section-email'         => 'برېښليک',
@@ -1477,6 +1480,14 @@ $messages['uk'] = array(
 	'configure-no-old'       => 'Немає доступної старої версії конфігурації',
 	'configure-no-setup'     => 'Ви повинні явно викликати <code>efConfigureSetup()</code> у вашому LocalSettings.php файлі, щоб використати це розширення.',
 	'configure-no-transwiki' => 'Вам не дозволено змінювати налаштування в інших вікі',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'right-configure'     => 'Configura la wiki',
+	'right-configure-all' => 'Configura tute le inpostassion de la wiki',
 );
 
 /** Vietnamese (Tiếng Việt)

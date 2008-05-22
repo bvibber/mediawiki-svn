@@ -429,6 +429,17 @@ $messages['uk'] = array(
 	'findspam-ok' => 'Гаразд',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'findspam'             => 'Cata spam',
+	'findspam-desc'        => 'Zonta na [[Special:FindSpam|pagina speciale]] che la permete de catar el spam zontà de recente',
+	'findspam-ip'          => 'Indirisso IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Nissun contributo catà',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

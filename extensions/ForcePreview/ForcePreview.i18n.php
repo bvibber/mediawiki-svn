@@ -51,8 +51,9 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'forcepreview'      => 'Sauvegarde la page (lance en premier la prévisualisation)',
-	'forcepreview-desc' => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
+	'forcepreview'             => 'Sauvegarde la page (lance en premier la prévisualisation)',
+	'forcepreview-desc'        => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
+	'right-forcepreviewexempt' => "Peut être sauvegardé sans l'utilisation de la prévisualisation",
 );
 
 /** Galician (Galego)

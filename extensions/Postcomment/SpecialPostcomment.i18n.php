@@ -257,6 +257,7 @@ $messages['ps'] = array(
 	'postcomment_youareloggedinas' => 'تاسو د $1 په نوم غونډال ته ننوتلی',
 	'postcomment_leavemessagefor'  => 'د $1 لپاره يو پيغام پرېږدی',
 	'postcomment_invalidrequest'   => 'ناسمه غوښتنه.',
+	'postcomment_replyto'          => '$1 ته ځواب ورکول',
 );
 
 /** Portuguese (Português)

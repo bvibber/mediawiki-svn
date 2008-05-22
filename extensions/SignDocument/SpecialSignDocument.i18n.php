@@ -836,8 +836,12 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'signdocument'                    => 'പ്രമാണത്തില്‍ ഒപ്പിടുക',
+	'sign-nodocselected'              => 'താങ്കള്‍ ഒപ്പിടുവാന്‍ ആഗ്രഹിക്കുന്ന പ്രമാണം തിരഞ്ഞെടുക്കുക',
 	'sign-selectdoc'                  => 'പ്രമാണം:',
+	'sign-error-nosuchdoc'            => 'താങ്കള്‍ ആവശ്യപ്പെട്ട പ്രമാണം ($1) നിലവിലില്ല.',
 	'sign-realname'                   => 'പേര്‌:',
+	'sign-address'                    => 'വിലാസം:',
 	'sign-city'                       => 'പട്ടണം:',
 	'sign-state'                      => 'സംസ്ഥാനം:',
 	'sign-zip'                        => 'സിപ്പ് കോഡ്:',
@@ -845,12 +849,16 @@ $messages['ml'] = array(
 	'sign-phone'                      => 'ഫോണ്‍ നമ്പര്‍:',
 	'sign-bday'                       => 'വയസ്സ്',
 	'sign-email'                      => 'ഇമെയില്‍ വിലാസം:',
+	'sign-indicates-req'              => '<small><i><font color="red">*</font> നിര്‍ബന്ധമായും ചേര്‍ക്കേണ്ട ഫീല്‍ഡിനെ സൂചിപ്പിക്കുന്നു.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> കുറിപ്പ്: പട്ടികയില്‍ ചേര്‍ത്തിട്ടില്ലാത്ത വിവരങ്ങള്‍ മോഡരേറ്ററുമാര്‍ക്ക് ഇപ്പോഴും ദൃശ്യമാകും.</i></small>',
 	'sign-list-hideaddress'           => 'വിലാസം പ്രദര്‍ശിപ്പിക്കരുത്',
 	'sign-list-hideextaddress'        => 'നഗരം, സംസ്ഥാനം, സിപ്പ് കോഡ്, രാജ്യം എന്നിവ പ്രദര്‍ശിപ്പിക്കരുത്',
 	'sign-list-hidephone'             => 'ഫോണ്‍ നമ്പര്‍ പ്രദര്‍ശിപ്പിക്കരുത്',
 	'sign-list-hidebday'              => 'വയസ്സ് പ്രദര്‍ശിപ്പിക്കരുത്',
 	'sign-list-hideemail'             => 'ഇമെയില്‍ വിലാസം പ്രദര്‍ശിപ്പിക്കരുത്',
+	'sign-submit'                     => 'പ്രമാണത്തില്‍ ഒപ്പിടുക',
 	'sig-success'                     => 'താങ്കള്‍ പ്രമാണത്തില്‍ വിജയകരമായി ഒപ്പിട്ടിരിക്കുന്നു.',
+	'sign-view-selectfields'          => '<b>പ്രദര്‍ശിപ്പിക്കേണ്ട ഫീല്‍ഡുകള്‍:</b>',
 	'sign-viewfield-realname'         => 'പേര്‌',
 	'sign-viewfield-address'          => 'വിലാസം',
 	'sign-viewfield-city'             => 'പട്ടണം',
@@ -884,6 +892,7 @@ $messages['ml'] = array(
 	'sign-uniquequery-similaraddress' => 'ഒരേപോലുള്ള വിലാസം',
 	'sign-uniquequery-similarphone'   => 'ഒരേപോലുള്ള ഫോണ്‍',
 	'sign-uniquequery-similaremail'   => 'ഒരേ പോലുള്ള ഇമെയില്‍',
+	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1],  [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2]ല്‍ ഒപ്പിട്ടു.',
 );
 
 /** Marathi (मराठी)

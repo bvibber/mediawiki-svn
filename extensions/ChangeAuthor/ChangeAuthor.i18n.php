@@ -271,6 +271,8 @@ $messages['eo'] = array(
 	'changeauthor-pagenameform-go'      => 'Ek!',
 	'changeauthor-comment'              => 'Komento:',
 	'changeauthor-changeauthors-multi'  => 'Ŝanĝu aŭtoro(j)n',
+	'changeauthor-explanation-multi'    => "Kun ĉi tiu paĝo vi povas ŝanĝi aŭtorojn de revizioj.
+Simple ŝanĝu unu aŭ pliajn salutnomojn en la jena listo, aldonu komenton (nedeviga) kaj klaku la butonon 'Ŝanĝi aŭtoro(j)n'.",
 	'changeauthor-changeauthors-single' => 'Ŝanĝu aŭtoron',
 	'changeauthor-invalid-username'     => 'Nevalida salutnomo "$1".',
 	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',

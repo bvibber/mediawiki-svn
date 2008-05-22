@@ -475,6 +475,7 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'boardvote'            => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
@@ -486,7 +487,7 @@ $messages['be-tarask'] = array(
 	'boardvote_days'       => 'Дні',
 	'boardvote_ip'         => 'IP-адрасы',
 	'boardvote_ua'         => 'Браўзэр',
-	'boardvote_listintro'  => '<p>Гэта сьпіс усіх запісаных галасоў на бягучы момант. $1 дзеля зашыфраваных зьвестак.</p>',
+	'boardvote_listintro'  => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
 	'boardvote_strike'     => 'Закрэсьліць',
 	'boardvote_unstrike'   => 'Адкрэсьліць',
 	'boardvote_needadmin'  => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',

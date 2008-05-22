@@ -192,10 +192,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'absenteelandlord-reason' => 'Databasen har automatiskt låsts på grund av frånvaro från administratörerna.',
-	'absenteelandlord-desc'   => 'Auto-låser wikins databas om alla administratörer är frånvarande någon tid',
+	'absenteelandlord-reason' => 'Databasen har låsts automatiskt på grund av att administratörerna inte har varit aktiva.',
+	'absenteelandlord-desc'   => 'Låser automatiskt wikins databas om alla administratörer är frånvarande under en viss tid',
 );
 
 /** Ukrainian (Українська)
@@ -204,6 +205,14 @@ $messages['sv'] = array(
 $messages['uk'] = array(
 	'absenteelandlord-reason' => 'База даних була автоматично заблокована через неактивність адміністраторів.',
 	'absenteelandlord-desc'   => 'Автоматично блокує базу даних вікі-проекту, якщо жоден з адміністраторів не проявляє активності певний час',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'absenteelandlord-reason' => 'El database el xe stà blocà automaticamente visto che i aministradori no i xera ativi.',
+	'absenteelandlord-desc'   => 'Bloca automaticamente el database de la wiki se i aministradori i resta tuti inativi par un çerto periodo',
 );
 
 /** Vietnamese (Tiếng Việt)

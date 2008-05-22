@@ -24,7 +24,8 @@ $messages['en'] = array(
  * @author Arnobarnard
  */
 $messages['af'] = array(
-	'inspectcache-ok' => 'OK',
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Skrap',
 );
 
 /** Arabic (العربية)

@@ -166,6 +166,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'viewapc'                     => 'Информация за APC',
+	'viewapc-info-general'        => 'Обща информация',
 	'viewapc-apc-version'         => 'Версия на APC',
 	'viewapc-php-version'         => 'Версия на РНР',
 	'viewapc-shared-memory'       => 'Споделена памет',
@@ -197,6 +198,8 @@ $messages['bg'] = array(
  */
 $messages['eo'] = array(
 	'viewapc'                       => 'APC-informo',
+	'viewapc-apc-not-available'     => 'Neniu informo pri kaŝmemoro estas havebla.
+APC verŝajne ne funkcias.',
 	'viewapc-clear-confirm'         => 'Ĉu vi volas forviŝi la kaŝmemoron?',
 	'viewapc-clear-user-cache'      => 'Forviŝi kaŝmemoron de uzantoj',
 	'viewapc-mode-version-check'    => 'Kontroli version',
@@ -824,10 +827,12 @@ $messages['li'] = array(
  */
 $messages['ml'] = array(
 	'viewapc'                       => 'APCയെക്കുറിച്ചുള്ള വിവരണം',
+	'right-apc'                     => 'Special:ViewAPCലുള്ള എല്ലാ സവിശേഷതകളും ഉപയോഗിക്കുക',
 	'viewapc-clear-confirm'         => 'താങ്കള്‍ക്ക് കാഷെ ക്ലിയര്‍ ചെയ്യണമോ?',
 	'viewapc-clear-user-cache'      => 'ഉപയോക്തൃകാഷെ ക്ലിയര്‍ ചെയ്യുക',
 	'viewapc-mode-version-check'    => 'പതിപ്പ് പരിശോധിക്കുക',
 	'viewapc-info-general'          => 'പൊതുവായ വിവരങ്ങള്‍',
+	'viewapc-apc-version'           => 'APC പതിപ്പ്',
 	'viewapc-php-version'           => 'PHP പതിപ്പ്',
 	'viewapc-start-time'            => 'തുടങ്ങുന്ന സമയം',
 	'viewapc-uptime'                => 'പ്രവര്‍ത്തനനിരതമായ സമയം',
@@ -850,6 +855,8 @@ $messages['ml'] = array(
 	'viewapc-display-deletion_time' => 'മായ്ക്കപ്പെട്ട സമയം',
 	'viewapc-display-no-delete'     => 'മായ്ച്ചിട്ടില്ല',
 	'viewapc-display-mem_size'      => 'വലിപ്പം',
+	'viewapc-display-stored-value'  => 'സൂക്ഷിച്ചുവച്ച മൂല്യം',
+	'viewapc-display-too-big'       => "''വലിപ്പം കൂടിയതിനാല്‍ ഉള്ളടക്കം പ്രദര്‍ശിപ്പിക്കുവാന്‍ പറ്റില്ല.''",
 	'viewapc-ls-options-legend'     => 'ഐച്ഛികങ്ങള്‍',
 	'viewapc-ls-submit'             => 'പോകൂ!',
 	'viewapc-ls-header-name'        => 'പേര്‌',
@@ -1426,6 +1433,16 @@ Możliwe, że APC nie jest uruchomione.',
 Nowa wersja $2 dostępna jest na stronie http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Pamięć podręczna plików została wyczyszczona.'''''",
 	'viewapc-usercache-cleared'     => "'''''Pamięć podręczna aplikacji została wyczyszczona.'''''",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'viewapc-memory-usage'  => 'د حافظې کارېدنه',
+	'viewapc-memory-free'   => 'تش: $1 ($2)',
+	'viewapc-memory-used'   => 'ډک: $1 ($2)',
+	'viewapc-display-value' => 'ارزښت',
 );
 
 /** Russian (Русский)

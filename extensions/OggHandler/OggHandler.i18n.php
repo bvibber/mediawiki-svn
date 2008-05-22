@@ -1511,18 +1511,20 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'ogg-short-audio'     => 'Ogg $1 غږيزه دوتنه، $2',
-	'ogg-short-video'     => 'Ogg $1 ويډيويي دوتنه، $2',
-	'ogg-short-general'   => 'Ogg $1 رسنيزه دوتنه، $2',
-	'ogg-play'            => 'غږول',
-	'ogg-stop'            => 'درول',
-	'ogg-play-video'      => 'ويډيو غږول',
-	'ogg-play-sound'      => 'غږ غږول',
-	'ogg-player-selected' => '(ټاکل شوی)',
-	'ogg-more'            => 'نور...',
-	'ogg-dismiss'         => 'تړل',
-	'ogg-download'        => 'دوتنه ښکته کول',
-	'ogg-desc-link'       => 'د همدې دوتنې په اړه',
+	'ogg-short-audio'         => 'Ogg $1 غږيزه دوتنه، $2',
+	'ogg-short-video'         => 'Ogg $1 ويډيويي دوتنه، $2',
+	'ogg-short-general'       => 'Ogg $1 رسنيزه دوتنه، $2',
+	'ogg-play'                => 'غږول',
+	'ogg-stop'                => 'درول',
+	'ogg-play-video'          => 'ويډيو غږول',
+	'ogg-play-sound'          => 'غږ غږول',
+	'ogg-player-videoElement' => '<ويډيو> توکی',
+	'ogg-player-selected'     => '(ټاکل شوی)',
+	'ogg-use-player'          => 'غږونکی کارول:',
+	'ogg-more'                => 'نور...',
+	'ogg-dismiss'             => 'تړل',
+	'ogg-download'            => 'دوتنه ښکته کول',
+	'ogg-desc-link'           => 'د همدې دوتنې په اړه',
 );
 
 /** Portuguese (Português)

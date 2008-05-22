@@ -786,6 +786,14 @@ $messages['uk'] = array(
 	'querysuccessful' => 'Запит виконано',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'asksql'      => 'Query SQL',
+	'asksql-desc' => 'Esegue query SQL mediante na [[Special:Asksql|pagina speciale]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

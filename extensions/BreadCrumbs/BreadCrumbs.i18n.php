@@ -228,6 +228,13 @@ $messages['uk'] = array(
 	'breadcrumbs-desc' => 'Показує шлях користувачів по вікі.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'breadcrumbs-desc' => 'Mostra el percorso dei utenti atraverso la wiki.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

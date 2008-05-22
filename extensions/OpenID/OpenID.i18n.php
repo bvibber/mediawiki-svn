@@ -486,6 +486,13 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : ezek a blogszolgáltatók mind biztosítanak OpenID-t, a következő formákban: ''<nowiki>http://felhasználónév.blogspot.com/</nowiki>'', ''<nowiki>http://felhasználónév.wordpress.com/</nowiki>'', ''<nowiki>http://felhasználónév.livejournal.com/</nowiki>'', or ''<nowiki>http://felhasználónév.vox.com/</nowiki>''.",
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'openidchoosepassword' => 'lykilorð:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -911,11 +918,15 @@ $messages['os'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'openidnickname'       => 'کورنی نوم',
+	'openidfullname'       => 'بشپړ نوم',
 	'openidemail'          => 'برېښليک پته',
 	'openidlanguage'       => 'ژبه',
 	'openidchoosefull'     => 'ستاسو بشپړ نوم ($1)',
 	'openidchoosemanual'   => 'ستاسو د خوښې يو نوم:',
 	'openidchoosepassword' => 'پټنوم:',
+	'openidnousername'     => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
+	'openidbadusername'    => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
 );
 
 /** Portuguese (Português)

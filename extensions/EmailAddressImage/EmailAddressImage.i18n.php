@@ -162,6 +162,13 @@ $messages['tg-cyrl'] = array(
 	'emailaddressimage-desc' => 'Барои намои нишонаи почтаи электронӣ чун акс <tt>&lt;email&gt;</tt>-ро илова мекунад',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'emailaddressimage-desc' => 'Zonta <tt>&lt;email&gt;</tt> par mostrar un indirisso e-mail come imagine',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

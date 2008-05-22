@@ -562,6 +562,13 @@ $messages['uk'] = array(
 	'restriction-level-author' => 'Авторський захист',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'authorprotect-desc' => "Permete a l'autor de na pagina de protègiarla da i altri utenti",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

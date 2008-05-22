@@ -215,6 +215,8 @@ $messages['ml'] = array(
 	'profiling-ok'           => 'ശരി',
 	'profiling-data-process' => 'പ്രക്രിയ',
 	'profiling-data-count'   => 'എണ്ണം',
+	'profiling-data-time'    => 'സമയം (എല്ലാം)',
+	'profiling-data-average' => 'സമയം (ശരാശരി)',
 	'profiling-no-data'      => 'യോജിക്കുന്ന ഡാറ്റ കണ്ടില്ല.',
 );
 

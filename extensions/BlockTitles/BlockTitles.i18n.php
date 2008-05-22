@@ -510,6 +510,13 @@ $messages['uk'] = array(
 	'block_title_error'            => 'Вибачте, сторінка з подібною назвою не може бути збережена.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'block_title_error-desc' => 'Fornisse na maniera senpliçe par inpedir el salvatagio o la creassion de pagine con çerti titoli',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

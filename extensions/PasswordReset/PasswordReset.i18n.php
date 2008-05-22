@@ -489,8 +489,10 @@ $messages['ps'] = array(
 	'passwordreset-nopassmatch'     => 'پټنومونه مو کټ مټ د يو بل سره سمون نه خوري',
 	'passwordreset-username'        => 'کارن-نوم',
 	'passwordreset-newpass'         => 'نوی پټنوم',
+	'passwordreset-disableuser'     => 'آيا په رښتيا دا کارن-حساب ناچارنول غواړۍ؟',
 	'passwordreset-disablesuccess'  => 'کارن-حساب مو ناچارند شوی (د کارونکي پېژند: $1)',
 	'passwordreset-accountdisabled' => 'کارن-حساب مو ناچارن شوی',
+	'disabledusers'                 => 'ناچارن شوي کارونکي',
 );
 
 /** Portuguese (Português)

@@ -160,6 +160,13 @@ $messages['lb'] = array(
 	'selectcategory-subtitle' => 'Shift + Maus fir méi Rubriken hannereneen unzewielen, Ctrl + Maus fir eenzel Rubriken unzewielen',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'selectcategory-title' => 'വിഭാഗങ്ങള്‍ തിരഞ്ഞെടുക്കുക',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

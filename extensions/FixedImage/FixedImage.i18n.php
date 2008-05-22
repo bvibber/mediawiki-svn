@@ -124,6 +124,13 @@ $messages['te'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> అనే టాగుని బొమ్మగా చేరుస్తుంది',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'fixedimage-desc' => 'Zonta el tag <tt><nowiki><fundraising></nowiki></tt> come imagine',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

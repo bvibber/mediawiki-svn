@@ -748,6 +748,13 @@ $messages['uk'] = array(
 	'ajax-se-usernotfound'     => 'ПОМИЛКА: користувач не знайдений',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ajax-se-desc' => 'Mostra i utenti che sta modificando la stessa pagina',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen

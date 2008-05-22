@@ -384,20 +384,22 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'createsigndoc-pagename'          => 'താള്‍:',
-	'createsigndoc-allowedgroup'      => 'അനുവദനീയമായ ഗ്രൂപ്പ്:',
-	'createsigndoc-email'             => 'ഇമെയില്‍ വിലാസം:',
-	'createsigndoc-address'           => 'വീടിന്റെ വിലാസം:',
-	'createsigndoc-extaddress'        => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',
-	'createsigndoc-phone'             => 'ഫോണ്‍ നമ്പര്‍:',
-	'createsigndoc-bday'              => 'ജനനതീയ്യതി:',
-	'createsigndoc-minage'            => 'കുറഞ്ഞ പ്രായം:',
-	'createsigndoc-introtext'         => 'പ്രാരംഭം:',
-	'createsigndoc-hidden'            => 'മറഞ്ഞിരിക്കുന്നത്',
-	'createsigndoc-optional'          => 'നിര്‍ബന്ധമില്ല',
-	'createsigndoc-create'            => 'താള്‍ സൃഷ്ടിക്കുക',
-	'createsigndoc-error-generic'     => 'പിഴവ്: $1',
-	'createsigndoc-error-pagenoexist' => 'പിശക്: [[$1]] എന്ന താള്‍ നിലവിലില്ല.',
+	'createsigndoc-pagename'             => 'താള്‍:',
+	'createsigndoc-allowedgroup'         => 'അനുവദനീയമായ ഗ്രൂപ്പ്:',
+	'createsigndoc-email'                => 'ഇമെയില്‍ വിലാസം:',
+	'createsigndoc-address'              => 'വീടിന്റെ വിലാസം:',
+	'createsigndoc-extaddress'           => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',
+	'createsigndoc-phone'                => 'ഫോണ്‍ നമ്പര്‍:',
+	'createsigndoc-bday'                 => 'ജനനതീയ്യതി:',
+	'createsigndoc-minage'               => 'കുറഞ്ഞ പ്രായം:',
+	'createsigndoc-introtext'            => 'പ്രാരംഭം:',
+	'createsigndoc-hidden'               => 'മറഞ്ഞിരിക്കുന്നത്',
+	'createsigndoc-optional'             => 'നിര്‍ബന്ധമില്ല',
+	'createsigndoc-create'               => 'താള്‍ സൃഷ്ടിക്കുക',
+	'createsigndoc-error-generic'        => 'പിഴവ്: $1',
+	'createsigndoc-error-pagenoexist'    => 'പിശക്: [[$1]] എന്ന താള്‍ നിലവിലില്ല.',
+	'createsigndoc-success'              => '[[$1]] പ്രമാണഒപ്പിടല്‍ വിജയകരമായി പ്രവര്‍ത്തനസജ്ജമാക്കിയിരിക്കുന്നു. അതു പരീക്ഷിക്കുവാന്‍ ദയവായി [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ഈ താള്‍] സന്ദര്‍ശിക്കുക.',
+	'createsigndoc-error-alreadycreated' => 'പ്രമാണ ഒപ്പിടല്‍ "$1" നിലവിലുണ്ട്.',
 );
 
 /** Marathi (मराठी)

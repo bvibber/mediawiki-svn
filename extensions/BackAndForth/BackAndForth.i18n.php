@@ -547,6 +547,15 @@ $messages['uk'] = array(
 	'backforth-prev' => 'Попер. ($1)',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'backforth-next' => 'Sucessivi ($1)',
+	'backforth-desc' => 'Zonta in sima a le pagine i colegamenti ai "Sucessivi" e "Preçedenti" in tel\'ordine alfabetico',
+	'backforth-prev' => 'Preçedenti ($1)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

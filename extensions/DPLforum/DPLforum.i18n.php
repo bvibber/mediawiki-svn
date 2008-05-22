@@ -79,8 +79,10 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'dplforum-edited' => '- അവസാനമായി തിരുത്തിയത്',
-	'dplforum-never'  => 'ഒരിക്കലും അരുത്',
+	'dplforum-edited'  => '- അവസാനമായി തിരുത്തിയത്',
+	'dplforum-never'   => 'ഒരിക്കലും അരുത്',
+	'dplforum-toofew'  => 'DPL Forum: വളരെ കുറച്ച് വിഭാഗങ്ങള്‍',
+	'dplforum-toomany' => 'DPL Forum: വളരെയധികം വിഭാഗങ്ങള്‍ ‍!',
 );
 
 /** Dutch (Nederlands)

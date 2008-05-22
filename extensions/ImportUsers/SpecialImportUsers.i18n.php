@@ -308,6 +308,13 @@ $messages['hsb'] = array(
 	'importusers-realname'                => 'woprawdźite mjeno',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'importusers-password' => 'lykilorð',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

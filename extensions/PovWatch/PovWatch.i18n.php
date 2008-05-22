@@ -403,12 +403,26 @@ $messages['li'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'povwatch_invalid_title'   => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ശീര്‍ഷകം അസാധുവാണ്‌',
-	'povwatch_unknown_subpage' => 'അജ്ഞാതമായ ഉപതാള്‍.',
-	'povwatch_title'           => 'ശീര്‍ഷകം:',
-	'povwatch_comment'         => 'അഭിപ്രായം രേഖപ്പെടുത്തുക:',
-	'povwatch_no_subscribers'  => 'വരിക്കാര്‍ നിലവിലില്ല.',
-	'povwatch_added'           => 'ചേര്‍ത്തു',
+	'povwatch_subscribed'              => 'താങ്കള്‍ ഇപ്പോള്‍ PovWatchന്റെ വരിക്കാരനാണ്‌',
+	'povwatch_not_subscribed'          => 'താങ്കള്‍ PovWatch-ല്‍ വരിക്കാരനല്ല. അതിനാല്‍ അണ്‍‌സബ്‌സ്ക്രൈബ് ചെയ്യുന്നതിനു സാദ്ധ്യമല്ല,',
+	'povwatch_unsubscribed'            => 'താങ്കള്‍ ഇപ്പോള്‍ PovWatchല്‍ നിന്നു അണ്‍സബ്‌സ്ക്രൈബ് ചെയ്തിരിക്കുന്നു.',
+	'povwatch_invalid_title'           => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ശീര്‍ഷകം അസാധുവാണ്‌',
+	'povwatch_subscriber_list'         => '[[Special:PovWatch/subscribers|വരിക്കാരുടെ പട്ടിക]] ലഭ്യമാണ്‌.',
+	'povwatch_subscriber_list_intro'   => '<strong>വരിക്കാരുടെ പട്ടിക</strong>',
+	'povwatch_not_allowed_subscribers' => 'PovWatchന്റെ വരിക്കാരുടെ പട്ടിക കാണുന്നതിനു താങ്കള്‍ക്ക് അനുവാദമില്ല',
+	'povwatch_unknown_subpage'         => 'അജ്ഞാതമായ ഉപതാള്‍.',
+	'povwatch_title'                   => 'ശീര്‍ഷകം:',
+	'povwatch_comment'                 => 'അഭിപ്രായം രേഖപ്പെടുത്തുക:',
+	'povwatch_no_log'                  => 'പ്രവര്‍ത്തന രേഖയില്‍ വിവരം ചേര്‍ത്തിട്ടില്ല.',
+	'povwatch_no_subscribers'          => 'വരിക്കാര്‍ നിലവിലില്ല.',
+	'povwatch_unsubscribe_intro'       => 'താങ്കള്‍ PovWatch-ല്‍ അംഗത്വമെടുത്തിരിക്കുന്നു. അംഗത്വം വിടാന്‍ താഴെയുള്ള ബട്ടണ്‍ ഞെക്കുക.',
+	'povwatch_unsubscribe'             => 'അണ്‍‌സബ്‌സ്ക്രൈബ്',
+	'povwatch_subscribe_intro'         => 'താങ്കള്‍ PovWatchല്‍ അംഗത്വം എടുത്തിട്ടില്ല. 
+അംഗത്വം എടുക്കാന്‍ താഴെയുള്ള ബട്ടണ്‍ ഞെക്കുക.',
+	'povwatch_subscribe'               => 'സബ്‌സ്ക്രൈബ്',
+	'povwatch_added'                   => 'ചേര്‍ത്തു',
+	'right-povwatch_admin'             => "മറ്റു ഉപയോക്താക്കളുടെ '''ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടിക'''യിലേക്കു താളുകള്‍ ചേര്‍ക്കാനുള്ള ഉപയോക്ത അവകാശം പരിപാലിക്കുക",
+	'right-povwatch_user'              => "മറ്റു ഉപയോക്താക്കളുടെ '''ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടിക'''യിലേക്കു താളുകള്‍ ചേര്‍ക്കുക",
 );
 
 /** Marathi (मराठी)
@@ -586,7 +600,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'povwatch_title' => 'سرليک:',
+	'povwatch_invalid_title' => 'ستاسو ځانګړی شوی سرليک سم نه وو',
+	'povwatch_title'         => 'سرليک:',
 );
 
 /** Portuguese (Português)

@@ -86,6 +86,15 @@ $messages['lb'] = array(
 	'signaturelogentry'    => "huet d'Dokument $1 ënnerschriwwen",
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'signature-desc'       => 'പ്രമാണത്തില്‍ [[Special:SignDocument|ഒപ്പിടല്‍]] അനുവദിക്കുക.',
+	'signaturelogpagetext' => '[[Special:SignDocument]] ഉപയോഗിച്ച് പ്രമാണങ്ങളിലേക്ക് ചേര്‍ക്കപ്പെട്ട ഒപ്പിടലിന്റെ പ്രവര്‍ത്തനരേഖയാണ്‌ ഇത്.',
+	'signaturelogentry'    => '$1 എന്ന പ്രമാണത്തില്‍ ഒപ്പിട്ടിരിക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

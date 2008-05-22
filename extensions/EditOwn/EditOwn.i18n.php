@@ -77,6 +77,13 @@ $messages['lb'] = array(
 	'editown-desc' => 'Benotzer ouni "editall"-Rechter kënnen nëmme Säiten ànneren déi si ugeluecht hunn',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'editown-desc' => 'editall അവകാശം ഇല്ലാത്ത ഉപയോക്താക്കള്‍ക്ക് അവര്‍ സൃഷ്ടിച്ച താളുകള്‍ മാത്രമേ തിരുത്താന്‍ സാധിക്കൂ.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

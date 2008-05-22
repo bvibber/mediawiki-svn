@@ -34,6 +34,14 @@ $messages['en'] = array(
 	'ea-selectcss'        => 'Select a CSS stylesheet',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'ea-listrecipients' => '=== Списък на $1 {{PLURAL:$1|получател|получателя}} ===',
+	'ea-send'           => 'Изпращане!',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -110,9 +118,13 @@ $messages['lb'] = array(
 $messages['ml'] = array(
 	'emailarticle'        => 'ഇമെയില്‍ താള്‍',
 	'ea-heading'          => '=== [[$1]] എന്ന താള്‍ ഇമെയില്‍ ചെയ്യുന്നു ===',
+	'ea-fromgroup'        => 'ഗ്രൂപ്പ്:',
+	'ea-articlesend'      => '$2 സം‌രംഭത്തില്‍ നിന്നു "$1" എന്ന താള്‍ അയച്ചു',
 	'ea-noarticle'        => 'അയക്കുവാന്‍ വേണ്ടി ഒരു താള്‍ തിരഞ്ഞെടുക്കുക. ഉദാ: [[Special:EmailArticle/Main Page]]',
 	'ea-norecipients'     => 'സാധുവായ ഇമെയില്‍ വിലാസങ്ങള്‍ കണ്ടില്ല!',
 	'ea-listrecipients'   => '=== $1 {{PLURAL:$1|സ്വീകര്‍ത്താവിന്റെ|സ്വീകര്‍ത്താക്കളുടെ}} പട്ടിക ===',
+	'ea-error'            => "'''[[$1]] അയക്കുന്നതില്‍ പിഴവ്:''' ''$2''",
+	'ea-denied'           => 'അനുവാദം നിഷേധിച്ചിരിക്കുന്നു',
 	'ea-sent'             => "[[User:$3|$3]] എന്ന ഉപയോക്താവ് [[$1]] എന്ന താള്‍ വിജയകരമായി '''$2''' {{PLURAL:$2|സ്വീകര്‍ത്താവിനു|സ്വീകര്‍ത്താക്കള്‍ക്ക്}} അയച്ചിരിക്കുന്നു.",
 	'ea-selectrecipients' => 'സ്വീകര്‍ത്താക്കളെ‍ തിരഞ്ഞെടുക്കുക',
 	'ea-compose'          => 'ഉള്ളടക്കം ചേര്‍ക്കുക',
@@ -146,6 +158,33 @@ $messages['nl'] = array(
 	'ea-subject'          => 'Voer een onderwerp in voor de e-mail',
 	'ea-header'           => 'Laat de pagina-inhoud vooraf gaan door een bericht (in wikitekst)',
 	'ea-selectcss'        => 'Selecteer een CSS',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'emailarticle'        => 'Send side som e-post',
+	'ea-desc'             => 'Send HTML-side til en eller flere e-postadresser ved hjelp av [http://phpmailer.sourceforge.net/ phpmailer].',
+	'ea-heading'          => '=== Send siden [[$1]] som e-post ===',
+	'ea-fromgroup'        => 'Fra gruppe:',
+	'ea-articlesend'      => 'Siden «$1» sendt fra $2',
+	'ea-noarticle'        => 'Oppgi en side du vil sende, for eksempel [[Special:EmailArticle/{{MediaWiki:Mainpage}}]].',
+	'ea-norecipients'     => 'Ingen gyldige e-postadresser funnet.',
+	'ea-listrecipients'   => '=== Liste over $1 {{PLURAL:$1|mottaker|mottakere}} ===',
+	'ea-error'            => "'''Feil under sending av [[$1]]:''' ''$2''",
+	'ea-denied'           => 'Ingen adgang',
+	'ea-sent'             => "Siden [[$1]] ble sendt til '''$2''' {{PLURAL:$2|mottaker|mottakere}} av [[User:$3|$3]].",
+	'ea-selectrecipients' => 'Velg mottakere',
+	'ea-compose'          => 'Skriv inn innhold',
+	'ea-selectlist'       => "Ytterligere mottakere som sidetitler eller e-postadresser
+* ''skill elementer med , ; * \\n
+* ''listen kan inneholde maler og parserfunksjoner''",
+	'ea-show'             => 'Vis mottakere',
+	'ea-send'             => 'Send',
+	'ea-subject'          => 'Skriv inn et emne for e-posten',
+	'ea-header'           => 'Fyll innholdet med en valgfri beskjed (wikitekst)',
+	'ea-selectcss'        => 'Angi en CSS-stilmal',
 );
 
 /** Occitan (Occitan)

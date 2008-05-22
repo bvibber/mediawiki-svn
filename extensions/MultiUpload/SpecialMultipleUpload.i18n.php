@@ -432,6 +432,15 @@ $messages['ps'] = array(
 	'multipleupload'                   => 'دوتنې پورته کول',
 	'multipleupload-ignoreallwarnings' => "'''ټول ګواښونه''' بابېزه وګڼه او په هر ډول چې وي دوتنې خوندي کړه.",
 	'multipleupload-saveallfiles'      => 'ټولې دوتنې خوندي کول',
+	'multipleupload-text'              => "همدلته په يو وخت کې ګڼ شمېر دوتنې پورته کول.
+
+Choose 'Browse' and select each file you wish to upload.
+You can upload from 1 to $1 files at a time.
+
+You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
+
+Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
+	'multiupload-fileuploaded'         => 'دوتنه مو پورته شوه.',
 	'multiupload-toolbox'              => 'ګڼ شمېر دوتنې پورته کول',
 );
 

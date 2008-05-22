@@ -545,6 +545,7 @@ $messages['ml'] = array(
 	'review_total_statistics'                => 'മൊത്തം',
 	'review_statistics_left_corner'          => 'പതിപ്പ്',
 	'review_version_link'                    => 'പതിപ്പ് #$1',
+	'review_statistic_cell'                  => 'ശരാശരി: $1 of $2<br />($4 ഉപയോക്താക്കള്‍, $5 അജ്ഞാതര്‍)',
 	'review_version_statistic_cell'          => '$1 ന്റെ $2',
 	'review_version_reviews_link'            => '<small>(പതിപ്പിന്റെ സം‌ശോധനങ്ങള്‍)</small>',
 	'review_concerns_page'                   => 'ഈ സം‌ശോധനം "$1" എന്ന താളിനെ കുറിച്ചാണ്‌.',
