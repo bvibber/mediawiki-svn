@@ -158,22 +158,60 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'imagetagging-addimagetag'            => 'ഈ ചിത്രം ടാഗ് ചെയ്യുക',
-	'imagetagging-article'                => 'താള്‍:',
-	'imagetagging-imghistory'             => 'നാള്‍വഴി',
-	'imagetagging-images'                 => 'ചിത്രങ്ങള്‍',
-	'imagetagging-inthisimage'            => 'ഈ ചിത്രത്തില്‍: $1',
-	'imagetagging-removetag'              => 'ടാഗ് മാറ്റുക',
-	'imagetagging-tag-button'             => 'ടാഗ്',
-	'imagetagging-tagcancel-button'       => 'റദ്ദാക്കുക',
-	'imagetagging-addingtag'              => 'ടാഗ് ചേര്‍ക്കുന്നു...',
-	'imagetagging-removingtag'            => 'ടാഗ് ഒഴിവാക്കുന്നു...',
-	'imagetagging-addtagsuccess'          => 'ടാഗ് ചേര്‍ത്തു.',
-	'imagetagging-removetagsuccess'       => 'ടാഗ് ഒഴിവാക്കി.',
-	'imagetagging-oneuniquetagmessage'    => 'ഈ ചിത്രത്തിനു ഈ പേരുള്ള ടാഗ് ഇപ്പോള്‍ തന്നെയുണ്ട്',
-	'imagetagging-imagetag-seemoreimages' => '"$1"ന്റെ കൂടുതല്‍ ചിത്രങ്ങള്‍ കാണുക ($2)',
-	'imagetagging-taggedimages-title'     => '"$1"ന്റെ ചിത്രങ്ങള്‍',
-	'imagetagging-taggedimages-total'     => 'മൊത്തം "$1"; ചിത്രങ്ങള്‍',
+	'imagetagging-addimagetag'             => 'ഈ ചിത്രം ടാഗ് ചെയ്യുക',
+	'imagetagging-article'                 => 'താള്‍:',
+	'imagetagging-articletotag'            => 'ടാഗ് ചെയ്യാനുള്ള താള്‍',
+	'imagetagging-imghistory'              => 'നാള്‍വഴി',
+	'imagetagging-images'                  => 'ചിത്രങ്ങള്‍',
+	'imagetagging-inthisimage'             => 'ഈ ചിത്രത്തില്‍: $1',
+	'imagetagging-logentry'                => '[[$1]] എന്ന  താളിലെ ടാഗ്  $2 മാറ്റിയിരിക്കുന്നു',
+	'imagetagging-log-tagged'              => '[[$1|$2]] എന്ന ചിത്രം [[$3]] എന്ന താളിലേക്ക്  $4 ടാഗ് ചെയ്തിരിക്കുന്നു',
+	'imagetagging-removetag'               => 'ടാഗ് മാറ്റുക',
+	'imagetagging-tag-button'              => 'ടാഗ്',
+	'imagetagging-tagcancel-button'        => 'റദ്ദാക്കുക',
+	'imagetagging-addingtag'               => 'ടാഗ് ചേര്‍ക്കുന്നു...',
+	'imagetagging-removingtag'             => 'ടാഗ് ഒഴിവാക്കുന്നു...',
+	'imagetagging-addtagsuccess'           => 'ടാഗ് ചേര്‍ത്തു.',
+	'imagetagging-removetagsuccess'        => 'ടാഗ് ഒഴിവാക്കി.',
+	'imagetagging-oneuniquetagmessage'     => 'ഈ ചിത്രത്തിനു ഈ പേരുള്ള ടാഗ് ഇപ്പോള്‍ തന്നെയുണ്ട്',
+	'imagetagging-imagetag-seemoreimages'  => '"$1"ന്റെ കൂടുതല്‍ ചിത്രങ്ങള്‍ കാണുക ($2)',
+	'imagetagging-taggedimages-title'      => '"$1"ന്റെ ചിത്രങ്ങള്‍',
+	'imagetagging-taggedimages-displaying' => '"$4"ന്റെ  $3 ചിത്രങ്ങളില്‍  $1 - $2 വരെയുള്ള  പ്രദര്‍ശിപ്പിക്കുന്നു',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'taggedimages'                          => 'खूणा केलेली चित्रे',
+	'imagetagging-desc'                     => 'एखाद्या सदस्याला चित्रातील क्षेत्रे निवडणे व त्या क्षेत्राला एखादे पान जोडण्याची अनुमती देते',
+	'imagetagging-addimagetag'              => 'या चित्रावर खूण करा',
+	'imagetagging-article'                  => 'पान:',
+	'imagetagging-articletotag'             => 'खूण करण्यासाठीचे पान',
+	'imagetagging-imghistory'               => 'इतिहास',
+	'imagetagging-images'                   => 'चित्रे',
+	'imagetagging-inthisimage'              => 'या चित्रामध्ये: $1',
+	'imagetagging-logentry'                 => '$2 ने [[$1]] पानाची खूण काढली',
+	'imagetagging-log-tagged'               => '$4 ने [[$1|$2]] या चित्राची खूण  [[$3]] या पानावर दिली',
+	'imagetagging-new'                      => '<sup><span style="color:red">नवीन!</span></sup>',
+	'imagetagging-removetag'                => 'खूण काढा',
+	'imagetagging-done-button'              => 'खूण दिली',
+	'imagetagging-tag-button'               => 'खूण',
+	'imagetagging-tagcancel-button'         => 'रद्द करा',
+	'imagetagging-tagging-instructions'     => 'या चित्रातील माणसे किंवा वस्तूंवर खूणा करण्यासाठी टिचकी द्या',
+	'imagetagging-addingtag'                => 'खूण देत आहे...',
+	'imagetagging-removingtag'              => 'खूण काढत आहे...',
+	'imagetagging-addtagsuccess'            => 'खूण वाढविली.',
+	'imagetagging-removetagsuccess'         => 'खूण काढली.',
+	'imagetagging-oneactionatatimemessage'  => 'एकावेळी एकच खूण देता येईल.
+कृपया चालू असलेली क्रिया पूर्ण होईपर्यंत वाट पहा.',
+	'imagetagging-canteditneedloginmessage' => 'तुम्ही हे पान संपादित करू शकत नाही.
+कदाचित याचे कारण म्हणजे खूणा देण्यासाठी तुम्ही प्रवेश करणे आवश्यक असेल.
+तुम्ही आता प्रवेश करू इच्छिता का?',
+	'imagetagging-oneuniquetagmessage'      => 'या चित्राला याच नावाची खूण अगोदरच दिलेली आहे.',
+	'imagetagging-imagetag-seemoreimages'   => '"$1" ($2) ची अजून चित्रे पहा',
+	'imagetagging-taggedimages-title'       => '"$1" ची चित्रे',
+	'imagetagging-taggedimages-displaying'  => '"$4" ची $3 चित्रांपैकी $1 - $2 दर्शविली आहेत',
 );
 
 /** Dutch (Nederlands)
@@ -362,6 +400,15 @@ Vill du logga in nu?',
 	'imagetagging-taggedimages-title'       => 'Bilder av "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Visar $1 - $2 av $3 bilder av "$4"',
 	'imagetagging-taggedimages-total'       => '"$2"; bild(er) totalt',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'imagetagging-article'    => 'పేజీ:',
+	'imagetagging-imghistory' => 'చరిత్ర',
+	'imagetagging-images'     => 'బొమ్మలు',
 );
 
 /** Turkish (Türkçe)

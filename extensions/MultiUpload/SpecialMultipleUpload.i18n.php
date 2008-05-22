@@ -305,11 +305,13 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'multipleupload'              => 'പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
-	'multipleupload-saveallfiles' => 'എല്ലാ പ്രമാണങ്ങളും സൂക്ഷിക്കുക',
-	'multipleupload-page'         => '{{ns:project}}:പ്രമാണങ്ങള്‍ മായ്ക്കുന്നതിനെക്കുറിച്ചുള്ള നയം',
-	'multiupload-fileuploaded'    => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
-	'multiupload-toolbox'         => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload'                   => 'പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload-desc'              => '[[Special:MultipleUpload|ഒരേ സമയം നിരവധി പ്രമാണങ്ങള്‍ ഒരുമിച്ച് അപ്‌ലോഡ് ചെയ്യാന്‍]] ഉപയോക്താക്കള്‍ക്ക് അനുമതി നല്‍കുന്നു',
+	'multipleupload-ignoreallwarnings' => "'''എല്ലാ മുന്നറിയിപ്പുകളും''' അവഗണിച്ച് പ്രമാണങ്ങള്‍ സേവ് ചെയ്യുക.",
+	'multipleupload-saveallfiles'      => 'എല്ലാ പ്രമാണങ്ങളും സൂക്ഷിക്കുക',
+	'multipleupload-page'              => '{{ns:project}}:പ്രമാണങ്ങള്‍ മായ്ക്കുന്നതിനെക്കുറിച്ചുള്ള നയം',
+	'multiupload-fileuploaded'         => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
+	'multiupload-toolbox'              => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

@@ -334,6 +334,13 @@ $messages['ta'] = array(
 	'onlinestatus-toggle-online'    => 'இணைப்பில்',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'onlinestatus-toggles-desc' => 'మీ స్థితి:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

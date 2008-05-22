@@ -41,7 +41,7 @@ $messages['de'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'crowdauthentication-desc' => 'Plugiciel d’authenfication pour l’affluence de l’Atlas',
+	'crowdauthentication-desc' => 'Module d’authenfication pour l’affluence de l’Atlas',
 );
 
 /** Hindi (हिन्दी)

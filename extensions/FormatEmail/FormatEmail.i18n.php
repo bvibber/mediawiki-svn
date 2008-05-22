@@ -136,6 +136,16 @@ Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt
 $2',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+{{SITENAME}} സം‌രംഭത്തിലൂടെ $1 എന്ന ഉപയോക്താവ് അയച്ചതാണ്‌ ഈ ഇമെയില്‍.
+
+$2',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

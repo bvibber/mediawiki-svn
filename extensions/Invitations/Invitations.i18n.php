@@ -331,6 +331,9 @@ $messages['ml'] = array(
 	'invitations-inviteform-title'          => '$1 ഉപയോഗിക്കുവാന്‍ വേണ്ടി ഉപയോക്താവിനെ ക്ഷണിക്കുക',
 	'invitations-inviteform-username'       => 'ക്ഷണിക്കപ്പെടേണ്ട ഉപയോക്താവ്',
 	'invitations-inviteform-submit'         => 'ക്ഷണിക്കുക',
+	'invitations-error-baduser'             => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്തൃനാമം നിലവിലുള്ളതായി കാണുന്നില്ല.',
+	'invitations-error-alreadyinvited'      => 'താങ്കള്‍ തിരഞ്ഞെടുത്ത ഉപയോക്താവിനു ഇപ്പോള്‍ തന്നെ ഈ സവിശേഷത ലഭ്യമാണ്‌.',
+	'invitations-invite-success'            => 'ഈ സവിശേഷത ഉപയോഗിക്കുവാന്‍ താങ്കള്‍ $1നെ വിജയകരമായി ക്ഷണിച്ചിരിക്കുന്നു!',
 );
 
 /** Marathi (मराठी)

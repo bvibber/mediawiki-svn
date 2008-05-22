@@ -887,6 +887,15 @@ Var tålmodig.',
 	'youtubeauthsub_jserror_nodesc'      => 'Var god välj en beskrivning för videon.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'youtubeauthsub_title'       => 'శీర్షిక',
+	'youtubeauthsub_description' => 'వివరణ',
+	'youtubeauthsub_category'    => 'వర్గం',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */

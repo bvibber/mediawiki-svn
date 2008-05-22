@@ -546,6 +546,7 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'contributors'             => 'സംഭാവന ചെയ്തവര്‍',
+	'contributors-desc'        => 'ഒരു താളില്‍ സംഭാവന ചെയ്ത മുഖ്യ ലേഖകരുടെ വിവരം',
 	'contributors-toolbox'     => 'സംഭാവന ചെയ്ത പ്രമുഖര്‍',
 	'contributors-legend'      => 'ഒരു താളിലെ മുഖ്യ സംഭാവനക്കാരെ പ്രദര്‍ശിപ്പിക്കുന്നു',
 	'contributors-target'      => 'ശീര്‍ഷകം:',

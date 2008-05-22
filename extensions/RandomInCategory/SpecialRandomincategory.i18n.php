@@ -375,7 +375,7 @@ $messages['sk'] = array(
 	'randomincategory-toolbox'    => 'Náhodná stránka',
 	'randomincategory-nocategory' => 'Kategória $1 neexistuje alebo je prázdna',
 	'randomincategory-label'      => 'Kategória:',
-	'randomincategory-submit'     => 'Choď',
+	'randomincategory-submit'     => 'Vykonať',
 );
 
 /** Seeltersk (Seeltersk)

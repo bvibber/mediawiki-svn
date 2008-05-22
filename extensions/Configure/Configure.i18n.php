@@ -727,6 +727,7 @@ $messages['ml'] = array(
 	'configure-btn-save'              => 'സജ്ജീകരണങ്ങള്‍ സേവ് ചെയ്യുക',
 	'configure-edit-old'              => 'മുന്നറിയിപ്പ്: താങ്കള്‍ ക്രമീകരണത്തിന്റെ <strong>പഴയൊരു</strong> പതിപ്പാണ്‌ തിരുത്തുന്നത്.',
 	'configure-error'                 => 'ക്രമീകരണം സേവ് ചെയ്യുന്നതിനു കഴിഞ്ഞില്ല',
+	'configure-js-add'                => 'പുതിയൊരു ഇനം ചേര്‍ക്കുക',
 	'configure-js-group-exists'       => 'പിശക്: ഗ്രൂപ്പ് നിലവിലുണ്ട്.',
 	'configure-js-prompt-group'       => 'പുതിയ ഗ്രൂപ്പിനു ഒരു പേരു ചേര്‍ക്കുക:',
 	'configure-js-remove'             => 'മായ്ക്കുക',
@@ -748,6 +749,7 @@ $messages['ml'] = array(
 	'configure-section-stats'         => 'സൈറ്റിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
 	'configure-section-category'      => 'വിഭാഗങ്ങള്‍',
 	'configure-section-groups'        => 'ഗ്രൂപ്പുകള്‍',
+	'configure-section-block'         => 'തടയപ്പെട്ടവര്‍',
 	'configure-section-proxy'         => 'പ്രോക്സികള്‍',
 	'configure-section-cookie'        => 'കുക്കികള്‍',
 	'configure-section-upload'        => 'അപ്‌ലോഡ്',
@@ -759,6 +761,7 @@ $messages['ml'] = array(
 	'configure-section-recentchanges' => 'പുതിയ മാറ്റങ്ങള്‍',
 	'configure-section-users'         => 'ഉപയോക്താക്കള്‍',
 	'configure-section-feed'          => 'ഫീഡ്',
+	'configure-section-extension'     => 'എക്സ്‌റ്റെസ്റ്റെഷനുകള്‍',
 	'configure-section-search'        => 'തിരയൂ',
 	'configure-section-copyright'     => 'പകര്‍പ്പവകാശം',
 	'configure-section-misc'          => 'മറ്റുള്ളവ',
@@ -782,6 +785,11 @@ $messages['mr'] = array(
 हे एक्स्टेंशन वापर्ण्यासाठी कृपया तिला लिखाण योग्य करा.',
 	'configure-edit-old'               => 'इशारा: तुम्ही कॉन्फिगरेशनची एक <strong>जुनी</strong> आवृत्ती संपादित आहात.',
 	'configure-error'                  => 'कॉन्फिगरेशन जतन करू शकलेलो नाही',
+	'configure-js-add'                 => 'नवीन नोंद वाढवा',
+	'configure-js-group-exists'        => 'त्रुटी: गट अगोदरच अस्तित्वात आहे',
+	'configure-js-prompt-group'        => 'नवीन गटाचे नाव द्या:',
+	'configure-js-remove'              => 'वगळा',
+	'configure-js-remove-row'          => 'ही नोंद वगळा',
 	'configure-no-directory'           => 'सेटिंग जतन करणारी डिरेक्टरी <tt>$1</tt>, अस्तित्वात नाही.
 कृपया ती तयार करा अथवा बदला.',
 	'configure-no-old'                 => 'या कॉन्फिगरेशनची जुनी आवृत्ती उपलब्ध नाही',
@@ -794,13 +802,21 @@ $messages['mr'] = array(
 	'configure-section-paths'          => 'पाथ',
 	'configure-section-db'             => 'डाटाबेस',
 	'configure-section-db-notallowed'  => 'तुम्हाला डाटाबेसचे सेटिंग बदलण्याची परवानगी नाही.',
+	'configure-section-load-balancing' => 'लोड समांतर करा',
+	'configure-section-mysql'          => 'MySQL विशिष्ट',
+	'configure-section-postgres'       => 'PostgreSQL विशिष्ट',
+	'configure-section-sqlite'         => 'SQLite विशिष्ट',
 	'configure-section-email'          => 'इ-मेल',
 	'configure-section-enotif'         => 'इ-मेल नोटिफिकेशन',
 	'configure-section-localization'   => 'स्थानिकीकरण',
+	'configure-section-timezone'       => 'वेळक्षेत्र',
+	'configure-section-zh-conversion'  => 'चिनी लिप्यंतरण',
 	'configure-section-debug'          => 'डिबगिंग',
 	'configure-section-profiling'      => 'प्रोफिलिंग',
 	'configure-section-site'           => 'संकेतस्थळ कस्टमायझेशन',
+	'configure-section-css-js'         => 'सीएसएस व जावास्क्रीप्ट',
 	'configure-section-namespaces'     => 'नामविश्वे',
+	'configure-section-stats'          => 'संकेतस्थळ सांख्यिकी',
 	'configure-section-skin'           => 'त्वचा',
 	'configure-section-category'       => 'वर्ग',
 	'configure-section-cache'          => 'सय',
@@ -914,8 +930,10 @@ Maak die map alstublieft aan, of verander de instelling voordat u deze extensie 
 	'configure-section-htcp'           => 'HTCP multicast',
 	'configure-section-misc'           => 'Diversen',
 	'configure-setting-not-available'  => 'Deze instelling is niet beschikbaar in deze versie van MediaWiki',
+	'configure-view-not-allowed'       => 'U hebt geen rechten om deze instellingen te wijzigen',
 	'right-configure'                  => 'Wiki-instellingen maken',
 	'right-configure-all'              => 'Alle wiki-instellingen maken',
+	'viewconfig'                       => 'Wiki-instellingen bekijken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1458,15 +1476,24 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 );
 
 /** Telugu (తెలుగు)
+ * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'configure-section-email'        => 'ఈ-మెయిల్',
-	'configure-section-localization' => 'స్థానికీకరణ',
-	'configure-section-timezone'     => 'కాలమండలం',
-	'configure-section-category'     => 'వర్గాలు',
-	'configure-section-images'       => 'బొమ్మలు',
-	'configure-section-copyright'    => 'కాపీహక్కులు',
+	'configure-desc-group'            => 'గుంపులు',
+	'configure-js-remove'             => 'తొలగించు',
+	'configure-section-general'       => 'సాధారణ అమరికలు',
+	'configure-section-email'         => 'ఈ-మెయిల్',
+	'configure-section-localization'  => 'స్థానికీకరణ',
+	'configure-section-timezone'      => 'కాలమండలం',
+	'configure-section-stats'         => 'సైటు గణాంకాలు',
+	'configure-section-category'      => 'వర్గాలు',
+	'configure-section-groups'        => 'గుంపులు',
+	'configure-section-images'        => 'బొమ్మలు',
+	'configure-section-specialpages'  => 'ప్రత్యేక పేజీలు',
+	'configure-section-recentchanges' => 'ఇటీవలి మార్పులు',
+	'configure-section-search'        => 'అన్వేషణ',
+	'configure-section-copyright'     => 'కాపీహక్కులు',
 );
 
 /** Ukrainian (Українська)

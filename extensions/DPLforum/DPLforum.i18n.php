@@ -85,6 +85,18 @@ $messages['ml'] = array(
 	'dplforum-toomany' => 'DPL Forum: വളരെയധികം വിഭാഗങ്ങള്‍ ‍!',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'dplforum-desc'    => 'DPL-आधारित चर्चासत्र विस्तार',
+	'dplforum-by'      => 'कडून',
+	'dplforum-edited'  => '- शेवटी बदललेली',
+	'dplforum-never'   => 'कधीच नाही',
+	'dplforum-toofew'  => 'डीपीएल चर्चासत्र: खूपच कमी वर्ग!',
+	'dplforum-toomany' => 'डीपीएल चर्चासत्र: खूप जास्त वर्ग!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -961,6 +961,7 @@ $messages['mr'] = array(
 	'viewapc-display-ref_count'     => 'संदर्भ मोजणी',
 	'viewapc-display-mem_size'      => 'आकार',
 	'viewapc-display-stored-value'  => 'साठविलेली किंमत',
+	'viewapc-display-too-big'       => "''मजकूर दाखविण्यासाठी खूप मोठा आहे.''",
 	'viewapc-ls-options-legend'     => 'विकल्प',
 	'viewapc-ls-options'            => 'स्कोप: $1 सॉर्टिंग: $2$3$4 शोध: $5 $6',
 	'viewapc-ls-submit'             => 'चला!',
@@ -1513,12 +1514,46 @@ $messages['ru'] = array(
 	'viewapc-display-deletion_time' => 'Удалён',
 	'viewapc-display-no-delete'     => 'Не удалён',
 	'viewapc-display-access_time'   => 'Обращение',
+	'viewapc-display-ref_count'     => 'Количество ссылок',
+	'viewapc-display-mem_size'      => 'Размер',
+	'viewapc-display-stored-value'  => 'Хранимое значение',
+	'viewapc-display-too-big'       => "''Содержимое невозможно показать из-за его большого размера.''",
 	'viewapc-ls-options-legend'     => 'Настройки',
+	'viewapc-ls-options'            => 'Фильтр: $1 Сортировка: $2$3$4 Поиск: $5 $6',
 	'viewapc-ls-submit'             => 'Выполнить',
 	'viewapc-ls-header-name'        => 'Имя',
 	'viewapc-ls-header-hits'        => 'Попаданий',
 	'viewapc-ls-header-size'        => 'Размер',
 	'viewapc-ls-header-accessed'    => 'Последнее обращение',
+	'viewapc-ls-header-modified'    => 'Последнее изменение',
+	'viewapc-ls-header-created'     => 'Создано',
+	'viewapc-ls-header-deleted'     => 'Удалено',
+	'viewapc-ls-header-timeout'     => 'Тайм-аут',
+	'viewapc-ls-delete'             => '[Удалить]',
+	'viewapc-ls-scope-active'       => 'Активно',
+	'viewapc-ls-scope-deleted'      => 'Удалено',
+	'viewapc-ls-scope-both'         => 'Оба',
+	'viewapc-ls-sort-hits'          => 'Попаданий',
+	'viewapc-ls-sort-size'          => 'Размер',
+	'viewapc-ls-sort-name'          => 'Имя',
+	'viewapc-ls-sort-accessed'      => 'Последнее обращение',
+	'viewapc-ls-sort-modified'      => 'Последнее изменение',
+	'viewapc-ls-sort-created'       => 'Создано',
+	'viewapc-ls-sort-deleted'       => 'Удалено',
+	'viewapc-ls-sort-timeout'       => 'Тайм-аут',
+	'viewapc-ls-limit-none'         => 'Все',
+	'viewapc-ls-more'               => "''Есть ещё $1 {{PLURAL:$1|запись|записи|записей}}''",
+	'viewapc-ls-nodata'             => "''Нет подходящих данных''",
+	'viewapc-delete-ok'             => 'Запись кэша <nowiki>$1</nowiki> удалена.',
+	'viewapc-delete-failed'         => 'Ошибка удаления записи кэша <nowiki>$1</nowiki>.',
+	'viewapc-version-info'          => 'Информация о версии',
+	'viewapc-version-changelog'     => 'Журнал изменений',
+	'viewapc-version-failed'        => 'Невозможно получить информацию о версии.',
+	'viewapc-version-ok'            => 'Вы используете последнюю версию APC ($1)',
+	'viewapc-version-old'           => 'Вы используете старую версию APC ($1).
+Новая версия ($2) доступна по адресу http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared'     => "'''''Файловый кэш очищен.'''''",
+	'viewapc-usercache-cleared'     => "'''''Кэш приложений очищен.'''''",
 );
 
 /** Slovak (Slovenčina)
@@ -1738,6 +1773,17 @@ APC verkar inte fungera.',
 Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Filcachen rensad.'''''",
 	'viewapc-usercache-cleared'     => "'''''Appliceringscachen rensad.'''''",
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'viewapc-ls-options-legend' => 'ఎంపికలు',
+	'viewapc-ls-header-size'    => 'పరిమాణం',
+	'viewapc-ls-sort-size'      => 'పరిమాణం',
+	'viewapc-ls-sort-name'      => 'పేరు',
+	'viewapc-ls-limit-none'     => 'అన్నీ',
 );
 
 /** Ukrainian (Українська)

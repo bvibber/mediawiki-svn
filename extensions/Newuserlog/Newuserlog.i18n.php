@@ -324,16 +324,17 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Jack Phoenix
  * @author Crt
+ * @author Jack Phoenix
  */
 $messages['fi'] = array(
-	'newuserlogpage'           => 'Uudet käyttäjät',
-	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
-	'newuserlog-desc'          => 'Lisää lokin [[Special:Log/newusers|luoduista käyttäjätunnuksista]].',
-	'newuserlog-byemail'       => 'salasana lähetetty sähköpostitse',
-	'newuserlog-create-entry'  => 'Uusi käyttäjä',
-	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
+	'newuserlogpage'              => 'Uudet käyttäjät',
+	'newuserlogpagetext'          => 'Tämä on loki luoduista käyttäjätunnuksista.',
+	'newuserlog-desc'             => 'Lisää lokin [[Special:Log/newusers|luoduista käyttäjätunnuksista]].',
+	'newuserlog-byemail'          => 'salasana lähetetty sähköpostitse',
+	'newuserlog-create-entry'     => 'Uusi käyttäjä',
+	'newuserlog-create2-entry'    => 'loi käyttäjätunnuksen tunnukselle $1',
+	'newuserlog-autocreate-entry' => 'Automaattisesti luotu käyttäjätunnus',
 );
 
 $messages['fo'] = array(
@@ -437,16 +438,17 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
- * @author Dnik
  * @author Dalibor Bosits
+ * @author Dnik
  */
 $messages['hr'] = array(
-	'newuserlogpage'           => 'Evidencija novih suradnika',
-	'newuserlogpagetext'       => 'Ispod je popis nedavno otvorenih suradničkih imena',
-	'newuserlog-desc'          => 'Dodaje [[Special:Log/newusers|evidencije suradničkih računa]] u [[Special:Log|evidencije]]',
-	'newuserlog-byemail'       => 'lozinka poslana e-poštom',
-	'newuserlog-create-entry'  => 'Novi suradnik',
-	'newuserlog-create2-entry' => 'kreiran je novi suradnik $1',
+	'newuserlogpage'              => 'Evidencija novih suradnika',
+	'newuserlogpagetext'          => 'Ispod je popis nedavno otvorenih suradničkih imena',
+	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|evidencije suradničkih računa]] u [[Special:Log|evidencije]]',
+	'newuserlog-byemail'          => 'lozinka poslana e-poštom',
+	'newuserlog-create-entry'     => 'Novi suradnik',
+	'newuserlog-create2-entry'    => 'kreiran je novi suradnik $1',
+	'newuserlog-autocreate-entry' => 'Automatski stvoren račun',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

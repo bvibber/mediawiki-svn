@@ -103,12 +103,22 @@ $messages['lb'] = array(
 	'forcepreview-desc' => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'forcepreview'             => 'താള്‍ സേവ് ചെയ്യുക (ആദ്യം പ്രിവ്യൂ ഉപയോഗിക്കുക)',
+	'forcepreview-desc'        => 'സാധാരണ ഉപയോക്താക്കള്‍‍ക്കു നിര്‍ബന്ധമായും പ്രിവ്യൂ നടപ്പിലാക്കുക',
+	'right-forcepreviewexempt' => 'പ്രിവ്യൂ കാണുക എന്ന സം‌വിധാനം ഉപയോഗിക്കാതെ സേവ് ചെയ്യുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'forcepreview'      => 'पान जतन करा (आधी झलक पहा)',
-	'forcepreview-desc' => 'कमी अधिकार असणार्‍या सदस्यांसाठी जाणूनबुजून झलक दाखवा',
+	'forcepreview'             => 'पान जतन करा (आधी झलक पहा)',
+	'forcepreview-desc'        => 'कमी अधिकार असणार्‍या सदस्यांसाठी जाणूनबुजून झलक दाखवा',
+	'right-forcepreviewexempt' => 'झलक पहा चा वापर न करता पाठविता येईल',
 );
 
 /** Dutch (Nederlands)
@@ -156,8 +166,9 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'forcepreview'      => 'Uložiť stránku (najprv zobraziť náhľad)',
-	'forcepreview-desc' => 'Vynútiť náhľad u neprivilegovaných používateľov',
+	'forcepreview'             => 'Uložiť stránku (najprv zobraziť náhľad)',
+	'forcepreview-desc'        => 'Vynútiť náhľad u neprivilegovaných používateľov',
+	'right-forcepreviewexempt' => 'Je možné uložiť bez použitia Zobraziť náhľad',
 );
 
 /** Swedish (Svenska)

@@ -1200,11 +1200,13 @@ Det finns många [http://wiki.openid.net/Public_OpenID_providers leverantörer a
  * @author Veeven
  */
 $messages['te'] = array(
-	'openidoptional' => 'ఐచ్చికం',
-	'openidrequired' => 'తప్పనిసరి',
-	'openidfullname' => 'పూర్తిపేరు',
-	'openidemail'    => 'ఈ-మెయిల్ చిరునామా',
-	'openidlanguage' => 'భాష',
+	'openidoptional'       => 'ఐచ్చికం',
+	'openidrequired'       => 'తప్పనిసరి',
+	'openidfullname'       => 'పూర్తిపేరు',
+	'openidemail'          => 'ఈ-మెయిల్ చిరునామా',
+	'openidlanguage'       => 'భాష',
+	'openidchoosefull'     => 'మీ పూర్తి పేరు ($1)',
+	'openidchoosepassword' => 'సంకేతపదం:',
 );
 
 /** Tetum (Tetun)

@@ -47,6 +47,16 @@ Fëllt '''näischt''' hei ënnendrënner aus!",
 	'simpleantispam-desc'  => 'Setzt eng einfach Spam/Bot Kontroll a Formulairen derbäi',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'simpleantispam'       => 'तुमच्या संपादनामुळे चिखलणी विरोधक चाळणी सुरु झालेली आहे',
+	'simpleantispam-label' => "चिखलणी विरोधक तपासणी.
+हे भरू '''नका'''!",
+	'simpleantispam-desc'  => 'अर्जांमध्ये एक साधी स्पॅम/सांगकाम्या तपासणी वाढवितो',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

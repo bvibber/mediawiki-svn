@@ -150,6 +150,7 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'eval_out'  => 'ഔട്ട്പുട്ട്',
 	'eval_code' => 'കോഡ്',
 );
 
