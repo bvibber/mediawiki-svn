@@ -39,7 +39,7 @@ function wfCheckArticleImageTags($outputPage, $text) {
 	global $wgOut, $wgDBname, $wgTitle;
 
 	if ( $outputPage->isArticle() ) {
-		$db =& wfGetDB(DB_SLAVE);
+		$db = wfGetDB(DB_SLAVE);
 		$res = $db->query("SELECT article_tag, tag_rect, unique_id, COUNT(article_tag) AS count FROM ".
 		$db->tableName('imagetags').
 		" WHERE article_tag='" . addslashes($wgTitle->getText()). "' GROUP BY article_tag" );
@@ -99,7 +99,7 @@ function addTag($action, $article) {
 
 		wfPurgeTitle($imgTitle);
 
-		$db =& wfGetDB(DB_MASTER);
+		$db = wfGetDB(DB_MASTER);
 		$db->insert('imagetags',
 		array(
 		'img_page_id' => 0,
@@ -155,7 +155,7 @@ function removeTag($action, $article) {
 
 		wfPurgeTitle($imgTitle);
 
-		$db =& wfGetDB(DB_MASTER);
+		$db = wfGetDB(DB_MASTER);
 		$db->delete('imagetags', array('unique_id' => $tagID));
 
 		$wgOut->clearHTML();
@@ -245,11 +245,11 @@ function wfTagSearchHitXML( $result, $terms ) {
 	wfProfileIn( __METHOD__ );
 
 	$t = $result->getTitle();
-	if( is_null( $t ) ) {
+	if( !$t instanceof Title ) {
 		wfProfileOut( __METHOD__ );
 		return "<!-- Broken link in search result -->\n";
 	}
-	$sk =& $wgUser->getSkin();
+	$sk = $wgUser->getSkin();
 
 	$contextlines = 5;
 	$contextchars = 50;
@@ -305,7 +305,7 @@ function wfPurgeTitle($title) {
 
 	if ( $wgUseSquid ) {
 		// Commit the transaction before the purge is sent
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->immediateCommit();
 
 		// Send purge
@@ -324,7 +324,7 @@ function wfGetImageTags($img, $imgName) {
 	wfProfileIn( __METHOD__ );
 
 	$sk = $wgUser->getSkin();
-	$db =& wfGetDB(DB_SLAVE);
+	$db = wfGetDB(DB_SLAVE);
 	$db->selectDB($wgDBname);
 	$res = $db->select(
 	array("imagetags"),
