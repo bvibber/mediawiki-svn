@@ -42,7 +42,6 @@ Please wait for the existing action to complete.',
 	'imagetagging-imagetag-seemoreimages'   => 'See more images of "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Images of "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Displaying $1 - $2 of $3 images of "$4"',
-	'imagetagging-taggedimages-total'       => '"$1"; image(s) total',
 );
 
 /** Afrikaans (Afrikaans)
