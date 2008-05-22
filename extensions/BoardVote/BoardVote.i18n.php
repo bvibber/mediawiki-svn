@@ -87,7 +87,7 @@ Vote open until June 22",
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 	'boardvote_blocked'       => 'You have been blocked on your registered wiki.
 Blocked users are not allowed to vote.',
-	'boardvote_bot'           => 'You are flag as a bot on your registered wiki.
+	'boardvote_bot'           => 'You are flaged as a bot on your registered wiki.
 Bot accounts are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
 	'go_to_board_vote'        => 'Wikimedia Board Elections 2008',
@@ -1168,12 +1168,12 @@ $messages['ext'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'boardvote'              => 'انتخابات هیئت امنای ویکی‌مدیا',
-	'boardvote-desc'         => '[[meta:Board elections|انتخابات هیئت امنای ویکی‌مدیا]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|رای دادن]]
+	'boardvote'                => 'انتخابات هیئت امنای ویکی‌مدیا',
+	'boardvote-desc'           => '[[meta:Board elections|انتخابات هیئت امنای ویکی‌مدیا]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|رای دادن]]
 * [[Special:Boardvote/list|فهرست آرا تا کنون]]
 * [[Special:Boardvote/dump|فهرست رمزنگاری‌شده آرا]]',
-	'boardvote_intro'        => '<p>به دومین انتخابات هیئت امنای ویکی‌مدیا خوش آمدید.
+	'boardvote_intro'          => '<p>به دومین انتخابات هیئت امنای ویکی‌مدیا خوش آمدید.
 ما برای انتخاب دو نفر به عنوان نماینده جامعه کاربران
 پروژه‌های مختلف ویکی‌مدیا رای می‌دهیم. آن‌ها در تعیین جهت‌گیری‌های
 بعدی پروژه‌های ویکی مدیا، به تنهایی و به عنوان یک گروه، کمک می‌کنند
@@ -1192,10 +1192,10 @@ $messages['fa'] = array(
 <p>برای اطلاع بیشتر، به نشانی‌های زیر مراجعه کنید:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">پرسش‌های متداول در مورد انتخابات</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">نامزدها</a></li></ul>',
-	'boardvote_intro_change' => '<p>شما پیش از این رای داده‌اید. با این حال می‌توانید با استفاده از فرم زیر
+	'boardvote_intro_change'   => '<p>شما پیش از این رای داده‌اید. با این حال می‌توانید با استفاده از فرم زیر
 رای خود را تغییر دهید. لطفاً جعبه کنار نام نامزدهایی که مورد قبول‌تان هستند
 را علامت بزنید.</p>',
-	'boardvote_entered'      => 'از شما متشکریم، رای شما ثبت شد.
+	'boardvote_entered'        => 'از شما متشکریم، رای شما ثبت شد.
 
 اگر مایل باشید می‌توانید توضیحات زیر را برای بایگانی نگاه دارید. رای شما چنین ثبت شده‌است:
 
@@ -1211,39 +1211,42 @@ $messages['fa'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|بازگشت]]',
-	'boardvote_nosession'    => 'سیستم قادر به تشخیص نام کاربری شما در ویکی‌مدیا نیست. لطفاً در همان ویکی که در آن مجاز به رای دادن هستید وارد شوید، و به <nowiki>[[Special:Boardvote]]</nowiki> بروید. برای رای دادن شما باید از یک حساب کاربری استفاده کنید که حداقل $1 مشارکت تا پیش از $2 داشته باشد، و اولین ویرایش توسط ‌آن قبل از $3 انجام شده باشد.',
-	'boardvote_notloggedin'  => 'شما به سیستم وارد نشده‌اید. برای رای دادن، شما باید از یک حساب کاربری با $1 مشارکت تا پیش از $2، که اولین ویرایش توسط آن قبل از $3 انجام شده باشد استفاده کنید.',
-	'boardvote_notqualified' => 'شما مجاز به رای دادن نیستید. شما باید دست کم $3 ویرایش تا قبل از #2 انجام داده باشید، و اولین ویرایش شما قبل از $5 انجام شده باشد.',
-	'boardvote_novotes'      => 'هنوز کسی رای نداده‌است.',
-	'boardvote_time'         => 'زمان',
-	'boardvote_user'         => 'کاربر',
-	'boardvote_edits'        => 'ویرایش‌ها',
-	'boardvote_days'         => 'روزها',
-	'boardvote_ip'           => 'نشانی اینترنتی',
-	'boardvote_ua'           => 'عامل کاربر (user agent)',
-	'boardvote_listintro'    => '<p>این فهرستی از تمام آرای ثبت شده تا کنون است. برای آرای رمزگذاری شده $1.</p>',
-	'boardvote_dumplink'     => 'این‌جا کلیک کنید',
-	'boardvote_submit'       => 'تایید',
-	'boardvote_strike'       => 'خط زدن',
-	'boardvote_unstrike'     => 'از خط‌خوردگی در آوردن',
-	'boardvote_needadmin'    => 'فقط مدیران انتخابات می‌توانند این کار را انجام بدهند.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">انتخابات هیئت امنای ویکی‌مدیا</a>:  رای‌گیری تا ۱۲ ژوئیه ادامه دارد',
-	'boardvote_notstarted'   => 'رای‌گیری هنوز شروع نشده‌است',
-	'boardvote_closed'       => 'رای‌گیری پایان یافته‌است، به زودی می‌توانید [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En صفحه نتایج رای‌گیری] را ببینید.',
-	'boardvote_edits_many'   => 'خیلی',
-	'group-boardvote'        => 'مدیران انتخابات هیئت امنا',
-	'group-boardvote-member' => 'مدیر انتخابات هیئت امنا',
-	'grouppage-boardvote'    => '{{ns:project}}:مدیر انتخابات هیئت امنا',
-	'boardvote_blocked'      => 'متاسفانه دسترسی شما در ویکی مورد نظر قطع شده‌است. کاربرانی که دسترسی‌شان قطع شده اجازه رای دادن ندارند.',
-	'boardvote_welcome'      => "'''$1''' خوش‌آمدید!",
-	'go_to_board_vote'       => 'انتخابات سال ۲۰۰۷ هیئت امنای ویکی‌مدیا',
-	'boardvote_redirecting'  => 'برای افزایش امینت و شفافیت، ما رای‌گیری را روی یک کارگزار
+	'boardvote_invalidentered' => '<p><strong>خطا</strong>: میزان ترجیح نامزد باید به صورت یک عدد صحیح مثبت (۱، ۲، ۳ ....) بیان شود، یا خالی گذاشته شود.</p>',
+	'boardvote_nosession'      => 'سیستم قادر به تشخیص نام کاربری شما در ویکی‌مدیا نیست. لطفاً در همان ویکی که در آن مجاز به رای دادن هستید وارد شوید، و به <nowiki>[[Special:Boardvote]]</nowiki> بروید. برای رای دادن شما باید از یک حساب کاربری استفاده کنید که حداقل $1 مشارکت تا پیش از $2 داشته باشد، و اولین ویرایش توسط ‌آن قبل از $3 انجام شده باشد.',
+	'boardvote_notloggedin'    => 'شما به سیستم وارد نشده‌اید. برای رای دادن، شما باید از یک حساب کاربری با $1 مشارکت تا پیش از $2، که اولین ویرایش توسط آن قبل از $3 انجام شده باشد استفاده کنید.',
+	'boardvote_notqualified'   => 'شما مجاز به رای دادن نیستید. شما باید دست کم $3 ویرایش تا قبل از #2 انجام داده باشید، و اولین ویرایش شما قبل از $5 انجام شده باشد.',
+	'boardvote_novotes'        => 'هنوز کسی رای نداده‌است.',
+	'boardvote_time'           => 'زمان',
+	'boardvote_user'           => 'کاربر',
+	'boardvote_edits'          => 'ویرایش‌ها',
+	'boardvote_days'           => 'روزها',
+	'boardvote_ip'             => 'نشانی اینترنتی',
+	'boardvote_ua'             => 'عامل کاربر (user agent)',
+	'boardvote_listintro'      => '<p>این فهرستی از تمام آرای ثبت شده تا کنون است. برای آرای رمزگذاری شده $1.</p>',
+	'boardvote_dumplink'       => 'این‌جا کلیک کنید',
+	'boardvote_submit'         => 'تایید',
+	'boardvote_strike'         => 'خط زدن',
+	'boardvote_unstrike'       => 'از خط‌خوردگی در آوردن',
+	'boardvote_needadmin'      => 'فقط مدیران انتخابات می‌توانند این کار را انجام بدهند.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">انتخابات هیئت امنای ویکی‌مدیا</a>:  رای‌گیری تا ۱۲ ژوئیه ادامه دارد',
+	'boardvote_notstarted'     => 'رای‌گیری هنوز شروع نشده‌است',
+	'boardvote_closed'         => 'رای‌گیری پایان یافته‌است، به زودی می‌توانید [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En صفحه نتایج رای‌گیری] را ببینید.',
+	'boardvote_edits_many'     => 'خیلی',
+	'group-boardvote'          => 'مدیران انتخابات هیئت امنا',
+	'group-boardvote-member'   => 'مدیر انتخابات هیئت امنا',
+	'grouppage-boardvote'      => '{{ns:project}}:مدیر انتخابات هیئت امنا',
+	'boardvote_blocked'        => 'متاسفانه دسترسی شما در ویکی مورد نظر قطع شده‌است. کاربرانی که دسترسی‌شان قطع شده اجازه رای دادن ندارند.',
+	'boardvote_bot'            => 'شما در ویکی خودتان پرچم ربات دارید.
+حساب‌های مربوط به ربات‌ها اجازهٔ رای دادن ندارند.',
+	'boardvote_welcome'        => "'''$1''' خوش‌آمدید!",
+	'go_to_board_vote'         => 'انتخابات سال ۲۰۰۷ هیئت امنای ویکی‌مدیا',
+	'boardvote_redirecting'    => 'برای افزایش امینت و شفافیت، ما رای‌گیری را روی یک کارگزار
 خارجی که به طور مستقل اداره می‌شود انجام می‌دهیم.
 
 شما ظرف ۲۰ ثانیه به کارگزار خارجی هدایت می‌شود. برای این که الآن به آن‌جا بروید [$1 این‌جا کلیک کنید].
 
 ممکن است یک پیام امنیتی در مورد گواهینامه غیر مجاز دریافت کنید.',
-	'right-boardvote'        => 'مدیریت انتخابات',
+	'right-boardvote'          => 'مدیریت انتخابات',
 
 );
 

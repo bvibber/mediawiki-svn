@@ -313,12 +313,13 @@ $messages['eu'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'newuserlogpage'           => 'سیاههٔ ایجاد کاربر',
-	'newuserlogpagetext'       => 'این سیاهه‌ای از نامهای کاربریِ تازه‌ساخته‌شده است',
-	'newuserlog-desc'          => '[[Special:Log/newusers|سیاهه‌ای از حساب‌های کاربری ایجاد شده]] را به [[Special:Log]] می‌افزاید',
-	'newuserlog-byemail'       => 'گذرواژه با پست الکترونیکی ارسال شد',
-	'newuserlog-create-entry'  => 'کاربر جدید',
-	'newuserlog-create2-entry' => 'برای $1 حساب کاربری ایجاد کرد',
+	'newuserlogpage'              => 'سیاههٔ ایجاد کاربر',
+	'newuserlogpagetext'          => 'این سیاهه‌ای از نامهای کاربریِ تازه‌ساخته‌شده است',
+	'newuserlog-desc'             => '[[Special:Log/newusers|سیاهه‌ای از حساب‌های کاربری ایجاد شده]] را به [[Special:Log]] می‌افزاید',
+	'newuserlog-byemail'          => 'گذرواژه با پست الکترونیکی ارسال شد',
+	'newuserlog-create-entry'     => 'کاربر جدید',
+	'newuserlog-create2-entry'    => 'برای $1 حساب کاربری ایجاد کرد',
+	'newuserlog-autocreate-entry' => 'حساب به طور خودکار ساخته شد',
 
 );
 
