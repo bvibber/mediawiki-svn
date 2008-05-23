@@ -285,6 +285,15 @@ class SpecialConfigure extends SpecialPage {
 					}
 					$settings[$name] = $arr;
 					break;
+				case 'ns-simple':
+					global $wgContLang;
+					$arr = array();
+					foreach( $wgContLang->getNamespaces() as $ns => $unused ){
+						if( $wgRequest->getCheck( 'wp' . $name . '-ns' . strval( $ns ) ) )
+							$arr[] = $ns;
+					}
+					$settings[$name] = $arr;
+					break;
 				case 'ns-array':
 					global $wgContLang;
 					$arr = array();
@@ -653,7 +662,7 @@ class SpecialConfigure extends SpecialPage {
 			$text .= "</textarea>\n";
 			return $text;
 		}
-		if( $type == 'ns-bool' ){
+		if( $type == 'ns-bool' || $type == 'ns-simple' ){
 			global $wgContLang;
 			$text = '';
 			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
@@ -662,11 +671,16 @@ class SpecialConfigure extends SpecialPage {
 				if( '' == $name ) {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
+				if( $type == 'ns-bool' ){
+					$checked = isset( $default[$ns] ) && $default[$ns];
+				} else {
+					$checked = in_array( $ns, (array)$default );
+				}
 				$text .= Xml::checkLabel(
 					$name,
 					"wp{$conf}-ns{$ns}",
 					"wp{$conf}-ns{$ns}",
-					( isset( $default[$ns] ) && $default[$ns] ),
+					$checked,
 					$attr
 				) . "\n";
 			}
@@ -790,7 +804,9 @@ class SpecialConfigure extends SpecialPage {
 		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
 		if( wfEmptyMsg( $msg, $msgVal ) )
 			$msgVal = "\$$conf";
-		$td1 = Xml::openElement( 'td', $align ) . $msgVal . '</td>';
+		$url = 'http://www.mediawiki.org/wiki/Manual:$' . $conf;
+		$link = Xml::element( 'a', array( 'href' => $url, 'class' => 'configure-doc' ), $msgVal );
+		$td1 = Xml::openElement( 'td', $align ) . $link . '</td>';
 		if( $this->isSettingAvailable( $conf ) )
 			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $type, $default ) . '</td>';
 		else

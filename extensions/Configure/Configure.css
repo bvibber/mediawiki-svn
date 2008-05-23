@@ -29,6 +29,19 @@ table.group-array > tr > td {
 }
 
 /**
+ * links
+ */
+a.configure-doc,
+a.configure-doc:hover,
+a.configure-doc:active {
+	color: #021488;
+}
+
+a.configure-doc:visited {
+	color: #0318d8;
+}
+
+/**
  * disabled settings
  */
 td.disabled > hr {

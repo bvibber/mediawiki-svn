@@ -17,15 +17,20 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.3.2',
+	'version' => '0.3.3',
 );
 
 ## Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
+$wgAvailableRights[] = 'viewconfig';
+$wgAvailableRights[] = 'viewconfig-all';
+
+## Rights for Special:Configure
 $wgGroupPermissions['bureaucrat']['configure'] = true;
 #$wgGroupPermissions['developer']['configure-all'] = true;
 
+## Rights for Special:ViewConfig
 $wgGroupPermissions['sysop']['viewconfig'] = true;
 $wgGroupPermissions['bureaucrat']['viewconfig-all'] = true;
 
@@ -54,4 +59,4 @@ $wgAjaxExportList[] = 'efConfigureAjax';
 $wgConfigureFilesPath = "$IP/serialized";
 
 ## Styles versions
-$wgConfigureStyleVersion = '1';
+$wgConfigureStyleVersion = '2';

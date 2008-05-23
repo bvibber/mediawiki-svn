@@ -1,6 +1,5 @@
 <?php
 if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * @file
  * @ingroup Extensions
@@ -341,18 +340,20 @@ $settings = array(
 			'wgSpamRegex' => 'text',
 			'wgWhitelistRead' => 'array',
 		),
+		'block' => array(
+			'wgBlockAllowsUTEdit' => 'bool',
+			'wgSysopEmailBans' => 'bool',
+			'wgSysopRangeBans' => 'bool',
+			'wgSysopUserBans' => 'bool',
+		),
+	),
+	'groups' => array(
 		'groups' => array(
 			'wgGroupPermissions' => 'array',
 			'wgAddGroups' => 'array',
 			'wgRemoveGroups' => 'array',
 			'wgGroupsAddToSelf' => 'array',
 			'wgGroupsRemoveFromSelf' => 'array',
-		),
-		'block' => array(
-			'wgBlockAllowsUTEdit' => 'bool',
-			'wgSysopEmailBans' => 'bool',
-			'wgSysopRangeBans' => 'bool',
-			'wgSysopUserBans' => 'bool',
 		),
 	),
 	'rates' => array(
@@ -408,6 +409,7 @@ $settings = array(
 			'wgDisableSearchUpdate' => 'bool',
 			'wgDisableTextSearch' => 'bool',
 			'wgAPIMaxDBRows' => 'int',
+			'wgMaximumMovedPages' => 'int',
 			'wgMiserMode' => 'bool',
 			'wgShowHostnames' => 'bool',
 			'wgUseDumbLinkUpdate' => 'bool',
@@ -676,10 +678,11 @@ $settings = array(
  *
  * Types used:
  * - simple: single dimension array with numeric key
- * - assoc: single dimension array with associative key => val
- * - ns-bool: single dimension array with namespaces numbers in the key and a
- *            boolean value
- * - ns-text: same as ns-bool but with a string in the value
+ * - assoc:  single dimension array with associative key => val
+ * - ns-bool:   single dimension array with namespaces numbers in the key and a
+ *              boolean value
+ * - ns-text:   same as ns-bool but with a string in the value
+ * - ns-simple: like simple, but values are restricted to namespaces index
  * - group-bool: two dimensions array with group name in first key, right name
  *               in the second and boolean value
  * - group-array: two dimensions array with group name in first key and then
@@ -719,6 +722,7 @@ $arrayDefs = array(
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-text',
 	'wgNonincludableNamespaces' => 'ns-bool',
+	'wgSitemapNamespaces' => 'ns-simple',
 	'wgArticleRobotPolicies' => 'assoc',
 # Skins
 	'wgSkipSkins' => 'simple',
@@ -798,7 +802,6 @@ $arrayDefs = array(
 	'wgGrammarForms' => 'array',
 	'wgRedirectSources' => 'simple',
 	'wgRestrictionTypes' => 'simple',
-	'wgSitemapNamespaces' => 'simple',
 );
 
 /**
@@ -1097,6 +1100,7 @@ $settingsVersion = array(
 	'wgRCFilterByAge' => array( array( '1.13alpha', '>=' ) ),
 	'wgRCLinkLimits' => array( array( '1.13alpha', '>=' ) ),
 	'wgRCLinkDays' => array( array( '1.13alpha', '>=' ) ),
+	'wgMaximumMovedPages' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
