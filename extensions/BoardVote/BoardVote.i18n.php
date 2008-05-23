@@ -895,9 +895,9 @@ $messages['de'] = array(
 
 	<p>Bitte reihe die Kandidaten nach deinen Vorstellungen auf, indem du eine Nummer in die Kästchen eingibst (1 = Favorit, 2 = zweiter Favorit, ...)
 	Du darfst dieselbe Rangnummer für mehrere Kandidaten verwenden und du darfst Kandidaten auslassen.
-	Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnummer vorziehst und dass du unentschlossen bist bei den Kandidaten ohne Rangnummer.</p>
+	Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnummer vorziehst, und dass du unentschlossen bist bei den Kandidaten ohne Rangnummer.</p>
 
-	<p>Der Gewinnder der Wahl wird nach der Schulze-Methode berechnet.</p>
+	<p>Der Gewinner der Wahl wird nach der Schulze-Methode berechnet. Für weitere Informationen hierzu siehe die offiziellen Wahlseiten.</p>
 
 	<p>Weitere Informationen:</p>
 	<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Kuratoriumwahl 2008</a></li>

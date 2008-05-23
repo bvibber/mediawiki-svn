@@ -17,6 +17,15 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'simpleantispam'       => 'Deine Bearbeitung hat den Spamschutz ausgelöst.',
+	'simpleantispam-label' => "Spamschutz-Prüfung. Hier '''nichts''' eintragen!",
+	'simpleantispam-desc'  => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
