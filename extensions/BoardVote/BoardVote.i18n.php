@@ -25,10 +25,7 @@ Each of the candidates is a respected user, who has contributed considerable tim
 You may give the same preference to more than one candidate and may keep candidates unranked.
 It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
 
-<p>The winner of the election will be calculated using the Schulze method, with <em>winning votes</em> as the default measure for the strength of a pairwise defeat, using <em>margins</em> as a backup measure for tie breaking during the selection of the critical paths.
-In the unlikely event of a tie, a tie-breaking ranking of the candidates will be calculated using <em>random ballot</em>.
-In the highly unlikely event there remains a tie for the winning position after exhaustion of all available ballot, a run-off election will be held.
-Ties for non-winning position in the final ranking of candidates will not be resolved.</p>
+<p>The winner of the election will be calculated using the Schulze method. For more information, see the official election pages.</p>
 
 <p>For more information, see:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
