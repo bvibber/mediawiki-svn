@@ -6,8 +6,6 @@
 
 $keywords = Array(
 "Go" => "Consulter", // submit button for article request
-"Special:Export" => "Special:Exporter",
-"Special:Search" => "Special:Recherche",
 'Image:'	=> 'Image:',
 'http://upload.wikimedia.org/wikipedia/'	=> 'http://upload.wikimedia.org/wikipedia/',
 'left'		=> 'left',

@@ -6,9 +6,6 @@
 
 $keywords = Array(
 "Go" => "Idi", // submit button for article request
-"Special:Export" => "%D0%9F%D0%BE%D1%81%D0%B5%D0%B1%D0%BD%D0%BE:Export",
-"Special:Search" => "%D0%9F%D0%BE%D1%81%D0%B5%D0%B1%D0%BD%D0%BE:Search",
-'Special:ExpandTemplates' => '%D0%9F%D0%BE%D1%81%D0%B5%D0%B1%D0%BD%D0%BE:ExpandTemplates',
 'Image:'	=> 'Bild:',
 'http://upload.wikimedia.org/wikipedia/'	=> 'http://upload.wikimedia.org/wikipedia/',
 'left'		=> 'left',

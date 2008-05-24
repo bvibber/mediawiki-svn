@@ -178,38 +178,56 @@ function translate_wikipedia_keyword($keyword) {
 
 function export_wikipedia($searchTerm)
 {
-	$result = array();
-
-	$export_keyword = translate_wikipedia_keyword('Special:Export');
+	if (strpos( $searchTerm, '|' ) !== false) {
+		// Invalid input will confuse API
+		return false;
+	}
 	
-	$searchTerm = str_replace(" ", "_", $searchTerm); // blanks must become underscores
+	// Fetch via MediaWiki API
+	$lang = $_SESSION['language'];
+	$url = "http://$lang.wikipedia.org/w/api.php?" .
+		http_build_query(
+			array(
+				'action' => 'query',
+				'prop' => 'revisions',
+				'titles' => $searchTerm,
+				'rvprop' => 'content',
+				'redirects' => 'true',
+				'format' => 'php' ),
+			'',
+			'&'
+		);
 	
-	// get wikipedia xml file
 	$ch = curl_init();
-	$url = "http://" . $_SESSION['language'] . ".wikipedia.org/wiki/" . $export_keyword . "/" . $searchTerm;
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$curlResultString = curl_exec($ch);
 	if (!is_string($curlResultString))
-	  hawpedia_error(hawtra("Wikipedia currently not available")); // exits internally
+		hawpedia_error(hawtra("Wikipedia currently not available")); // exits internally
 
 	curl_close($ch);
 
-	// determine page title
-	if (!preg_match("%<title>(.*)</title>%", $curlResultString, $matches))
-	  return false; // search term not found
-	  
-	$result['title'] = $matches[1];
-	
-	// determine wiki text
-	if (!preg_match("/(<text [^>]*>)/", $curlResultString, $matches))
+	$data = @unserialize( $curlResultString ); // We better trust the foreign site!
+	if (!$data)
 	  hawpedia_error(hawtra("wikipedia export error")); // exits internally
-	$textStart = strpos($curlResultString, $matches[1]) + strlen($matches[1]);
-	$textEnd = strpos($curlResultString, "</text>");
-	$result['wikitext'] = substr($curlResultString, $textStart, $textEnd - $textStart);
-
-	return $result;
+	
+	if (!empty($data['query']['pages'])) {
+		reset($data['query']['pages']);
+		$page = current($data['query']['pages']);
+		
+		if (!empty($page['revisions'])) {
+			reset($page['revisions']);
+			$revision = current($page['revisions']);
+			
+			return array(
+				'title'    => $page['title'],
+				'wikitext' => $revision['*'] );
+		}
+	}
+	
+	// search term not found
+	return false;
 }
 
 
@@ -229,44 +247,43 @@ function uri_exists($uri)
 	return $status == 200;
 }
 
-function search_articles($article)
+function search_articles($searchTerm)
 {
 	// search related articles (after export has failed)
 	
-	$result = array();
-
-	$search_keyword = translate_wikipedia_keyword('Special:Search');
-	
-	$article = str_replace(" ", "_", $article); // blanks must become underscores
-
 	// get wikipedia search result (in html format)
+	$lang = $_SESSION['language'];
+	$url = "http://$lang.wikipedia.org/w/api.php?" .
+		http_build_query(
+			array(
+				'action' => 'query',
+				'list' => 'search',
+				'srwhat' => 'text', // Shouldn't be necessary; API should ignore
+				'srsearch' => $searchTerm,
+				'format' => 'php' ),
+			'',
+			'&'
+		);
+	
 	$ch = curl_init();
-	$url = "http://" . $_SESSION['language'] . ".wikipedia.org/wiki/" . $search_keyword . "?search=" . $article;
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$curlResultString = curl_exec($ch);
 	if (!is_string($curlResultString))
-	  hawpedia_error(hawtra("Wikipedia currently not available")); // exits internally
-
+		hawpedia_error(hawtra("Wikipedia currently not available")); // exits internally
 	curl_close($ch);
-
-  // extract article links from html
-  preg_match_all("%1em;\"><a href=\"/wiki/([^?\"]*)%", $curlResultString, $matches);
-  
-  for ($i=0; $i < count($matches[1]); $i++) {
-		// iterate over found articles (no category links!)
-    if (!strstr($matches[1][$i], ":"))
-      $result[] = $matches[1][$i];
-      
-    if (count($result) >= 10)
-      break; // consider not more than 10 links 
-  }
-
-  if (count($result) == 0)
-    return 0; // nothing found
-  else
-    return $result;
+	
+	$data = @unserialize($curlResultString);
+	if (!empty($data['query']['search'])) {
+		$result = array();
+		foreach($data['query']['search'] as $hit) {
+			$result[] = $hit['title'];
+		}
+		return $result;
+	} else {
+		return 0; // nothing found
+	}
 }
 
 function show_related_articles($articles, $searchterm)

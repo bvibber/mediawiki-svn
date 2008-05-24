@@ -36,15 +36,6 @@ if (!$export_result) {
 $title = $export_result['title'];
 $wikitext = $export_result['wikitext'];
 
-if (preg_match("/^#REDIRECT:?\s*\[\[(.*)\]\]/i", $wikitext, $matches))
-{
-	// perform redirection (only once - no endless loops!!!)
-	$_GET['go'] = $matches[1];
-  $export_result = export_wikipedia($_GET['go']);
-  $title = $export_result['title'];
-  $wikitext = $export_result['wikitext'];
-}
-
 // remove all templates
 $wikitext = remove_section($wikitext, "{{", "}}");
 
@@ -52,20 +43,18 @@ $wikitext = remove_section($wikitext, "{{", "}}");
 $wikitext = remove_section($wikitext, "{|", "|}");
 
 // remove all references
-$wikitext = remove_section($wikitext, "&lt;ref&gt;", "&lt;/ref&gt;");
+$wikitext = remove_section($wikitext, "<ref>", "</ref>");
 
 // remove image galleries
-$wikitext = remove_section($wikitext, "&lt;gallery&gt;", "&lt;/gallery&gt;");
+$wikitext = remove_section($wikitext, "<gallery>", "</gallery>");
 
 // remove all comments
 $wikitext = remove_section($wikitext, "<!--", "-->");
-$wikitext = remove_section($wikitext, "&lt;!--", "--&gt;");
 
 // remove wikipedia controls
 $wikitext = remove_controls($wikitext);
 
 // replace html entities
-$wikitext = str_replace("&amp;", "&", $wikitext);
 // throws warning PHP4: http://bugs.php.net/bug.php?id=25670
 $wikitext = @html_entity_decode($wikitext, ENT_QUOTES, 'UTF-8');
 
@@ -96,8 +85,9 @@ if (isset($_GET['mode']) && ($_GET['mode'] == "content"))
     $chapter = trim($matches[1][$i]);
     
   	$link = new HAW_link(trim($matches[1][$i]),
-  	                     $_SERVER['SCRIPT_NAME'] . '?go=' .
-  	                     $_GET['go'] . "&chapter=" . urlencode($chapter));
+  	                     $_SERVER['SCRIPT_NAME'] .
+  	                     '?go=' . urlencode($_GET['go']) .
+  	                     "&chapter=" . urlencode($chapter));
   	
   	$link->set_voice_dtmf($i+1); // enable dtmf control
   	$link->set_voice_input("");  // disable voice input (new in hawhaw.inc V5.13)

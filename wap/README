@@ -55,11 +55,14 @@ Changes:
 + Template, parser function and constant expansion added.
   It uses the Special:ExpandTemplates interface, and
   can be switched off in config.php
+  [Does not appear to actually exist. --brion 2008-05]
 + Language es (spanish) added. (Few translations are incomplete)
 + Language nds (lower saxon) added. (Some incomplete translations)
-+ Lanugage ksh (K�lsch/Ripuarian languages) added.
++ Lanugage ksh (Kölsch/Ripuarian languages) added.
 + whatever I forgot to mention :-)
-
++ 2008-05-24: Page loading switched from Special:Export to API
++ 2008-05-24: Search switched from broken screen-scrape to API
++ 2008-05-24: Titles with "&" now display correctly.
 
 Open Issues:
 ------------
