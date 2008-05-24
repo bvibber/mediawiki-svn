@@ -1,3 +1,0 @@
-content pow       jar:pow.jar!/content/ xpcnativewrappers=yes
-skin 	pow classic/1.0 jar:pow.jar!/skin/
-locale  pow       en-US   jar:pow.jar!/locale/en-US/

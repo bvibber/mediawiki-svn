@@ -1,4 +1,0 @@
-2007-06-10 10:33:12127.0.0.1 /pow/htdocs/
-2007-06-10 10:33:12127.0.0.1 /pow/htdocs/pow.css
-2007-06-10 10:33:14127.0.0.1 /pow/htdocs/favicon.ico
-2007-06-10 10:33:15127.0.0.1 /pow/htdocs/favicon.ico
