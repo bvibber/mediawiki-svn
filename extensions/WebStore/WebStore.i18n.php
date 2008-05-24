@@ -492,6 +492,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
+	'webstore_path_invalid'            => 'De Numm vum Fichier war ongëlteg.',
 	'webstore_no_file'                 => 'Et gouf kee Fichier eropgelueden.',
 	'webstore_404'                     => 'De Fichier gouf net fonnt.',
 	'webstore_php_warning'             => 'PHP Warnung: $1',
@@ -679,13 +680,13 @@ $messages['oc'] = array(
 	'webstore_metadata_not_found'      => 'Fichièr pas trobat : $1',
 	'webstore_postfile_not_found'      => "Fichièr d'enregistrar pas trobat.",
 	'webstore_scaler_empty_response'   => "L’escandilhatge de l'imatge a balhat una responsa nulla amb un còde de 200 responsas. Aquò poiriá èsser degut a una error de l'escandilhatge.",
-	'webstore_invalid_response'        => 'Responsa invalida dempuèi lo serveire :  
+	'webstore_invalid_response'        => 'Responsa invalida dempuèi lo servidor :  
 
 $1',
-	'webstore_no_response'             => 'Lo serveire respondís pas',
-	'webstore_backend_error'           => 'Error dempuèi lo serveire de stocatge :  
+	'webstore_no_response'             => 'Lo servidor respon pas',
+	'webstore_backend_error'           => "Error dempuèi lo servidor d'estocatge :  
 
-$1',
+$1",
 	'webstore_php_error'               => 'Las errors PHP seguentas son susvengudas',
 	'webstore_no_handler'              => 'Aqueste tipe MIME pòt pas èsser transformat.',
 );

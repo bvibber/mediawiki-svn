@@ -216,7 +216,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'linksearch'       => 'Serĉu retajn ligilojn',
+	'linksearch'       => 'Serĉi retajn ligilojn',
 	'linksearch-desc'  => '[[Special:Linksearch|Trovu paĝojn kun eksteraj ligiloj]] laŭ specifa esprimo',
 	'linksearch-pat'   => 'Serĉesprimo:',
 	'linksearch-ns'    => 'Nomspaco:',
@@ -582,6 +582,13 @@ $messages['km'] = array(
 	'linksearch-ns'   => 'លំហឈ្មោះ៖',
 	'linksearch-ok'   => 'ស្វែងរក',
 	'linksearch-line' => '$1បានតភ្ជាប់ពី$2',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'linksearch' => '웹 링크 찾기',
 );
 
 /** Kinaray-a (Kinaray-a)

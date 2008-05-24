@@ -66,6 +66,13 @@ Probably there is no such user.',
 	'regexblock-view-time'            => 'on $1',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'regexblock-stats-username' => '$1 лан',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
@@ -198,6 +205,13 @@ $messages['cy'] = array(
 $messages['da'] = array(
 	'regexblock-form-reason'    => 'Begrundelse:',
 	'regexblock-stats-username' => 'For $1',
+);
+
+/** German (Deutsch)
+ * @author Purodha
+ */
+$messages['de'] = array(
+	'regexblock-form-reason' => 'Grund:',
 );
 
 /** Greek (Ελληνικά)
@@ -579,6 +593,13 @@ $messages['krj'] = array(
 	'regexblock-view-go' => 'Agto',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'regexblock-form-reason' => 'Aanlass:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -595,6 +616,7 @@ $messages['lb'] = array(
 	'regexblock-stats-username'     => 'Fir $1',
 	'regexblock-stats-times'        => 'gespaart den',
 	'regexblock-view-all'           => 'Alleguer',
+	'regexblock-view-go'            => 'Lass',
 	'regexblock-view-reason'        => 'Grond: $1',
 	'regexblock-view-block-by'      => 'gespaart vum',
 	'regexblock-view-block-unblock' => 'Spär ophiewen',

@@ -402,7 +402,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'player'               => 'Lector',
-	'player-desc'          => "Lector multimèdia incorporat qu'utiliza los plugins corrents del navigaire e mai una [[Special:Player|pagina especiala]]",
+	'player-desc'          => "Lector multimèdia incorporat qu'utiliza los plugins corrents del navigador e mai una [[Special:Player|pagina especiala]]",
 	'player-title'         => 'Lector',
 	'player-playertitle'   => 'Lector : $1',
 	'player-file'          => 'Nom de fichièr',

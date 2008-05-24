@@ -86,7 +86,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'findspam'             => 'Trovu spamon',
+	'findspam'             => 'Trovi spamon',
 	'findspam-ip'          => 'IP adreson:',
 	'findspam-ok'          => 'Ek!',
 	'findspam-notextfound' => 'Neniuj kontribuoj trovitaj',

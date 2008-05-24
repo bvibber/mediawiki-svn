@@ -434,6 +434,13 @@ $messages['krj'] = array(
 	'countedits-ok' => 'OK dun',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'countedits-username' => 'Metmaacher Name:',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

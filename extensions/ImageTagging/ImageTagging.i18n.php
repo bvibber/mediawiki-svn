@@ -44,11 +44,39 @@ Please wait for the existing action to complete.',
 	'imagetagging-taggedimages-displaying'  => 'Displaying $1 - $2 of $3 images of "$4"',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'imagetagging-tagcancel-button' => 'Чарташ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
 $messages['af'] = array(
 	'imagetagging-imghistory' => 'Geskiedenis',
+);
+
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'imagetagging-addimagetag'        => 'وسم هذه الصورة',
+	'imagetagging-article'            => 'صفحة:',
+	'imagetagging-articletotag'       => 'صفحة للوسم',
+	'imagetagging-imghistory'         => 'تاريخ',
+	'imagetagging-images'             => 'صور',
+	'imagetagging-new'                => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag'          => 'إزالة وسم',
+	'imagetagging-done-button'        => 'إنتهى الوسم',
+	'imagetagging-tag-button'         => 'وسم',
+	'imagetagging-tagcancel-button'   => 'إلغاء',
+	'imagetagging-addingtag'          => 'إضافة وسم...',
+	'imagetagging-removingtag'        => 'إزالة وسم...',
+	'imagetagging-addtagsuccess'      => 'أُضيف الوسم.',
+	'imagetagging-removetagsuccess'   => 'أُزيل الوسم.',
+	'imagetagging-taggedimages-title' => 'صور "$1"',
 );
 
 /** Bulgarian (Български)
@@ -64,7 +92,13 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'imagetagging-tagcancel-button' => 'Nuligi',
+	'imagetagging-article'            => 'Paĝo',
+	'imagetagging-imghistory'         => 'Historio',
+	'imagetagging-images'             => 'bildoj',
+	'imagetagging-inthisimage'        => 'En ĉi tiu bildo: $1',
+	'imagetagging-removetag'          => 'forigi etikedon',
+	'imagetagging-tagcancel-button'   => 'Nuligi',
+	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
 );
 
 /** French (Français)
@@ -145,13 +179,13 @@ Desexa acceder ao sistema agora?',
  */
 $messages['lb'] = array(
 	'imagetagging-article'                 => 'Säit:',
+	'imagetagging-imghistory'              => 'Versiounen',
 	'imagetagging-images'                  => 'Biller',
 	'imagetagging-inthisimage'             => 'Op dësem Bild: $1',
 	'imagetagging-tagcancel-button'        => 'Zréck',
 	'imagetagging-imagetag-seemoreimages'  => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title'      => 'Biller vun "$1"',
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
-	'imagetagging-taggedimages-total'      => '"$1"; Bild/Biller am ganzen',
 );
 
 /** Malayalam (മലയാളം)

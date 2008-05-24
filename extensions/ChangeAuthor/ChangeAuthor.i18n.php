@@ -265,7 +265,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'changeauthor'                      => 'Ŝanĝu aŭtoron de revizio',
 	'changeauthor-desc'                 => 'Permesas la ŝanĝadon de aŭtoro de revizio',
-	'changeauthor-title'                => 'Ŝanĝu la aŭtoron de revizio',
+	'changeauthor-title'                => 'Ŝanĝi la aŭtoron de revizio',
 	'changeauthor-search-box'           => 'Serĉu reviziojn',
 	'changeauthor-pagename-or-revid'    => 'Paĝnomo aŭ revizia identigo:',
 	'changeauthor-pagenameform-go'      => 'Ek!',
@@ -273,7 +273,7 @@ $messages['eo'] = array(
 	'changeauthor-changeauthors-multi'  => 'Ŝanĝu aŭtoro(j)n',
 	'changeauthor-explanation-multi'    => "Kun ĉi tiu paĝo vi povas ŝanĝi aŭtorojn de revizioj.
 Simple ŝanĝu unu aŭ pliajn salutnomojn en la jena listo, aldonu komenton (nedeviga) kaj klaku la butonon 'Ŝanĝi aŭtoro(j)n'.",
-	'changeauthor-changeauthors-single' => 'Ŝanĝu aŭtoron',
+	'changeauthor-changeauthors-single' => 'Ŝanĝi aŭtoron',
 	'changeauthor-invalid-username'     => 'Nevalida salutnomo "$1".',
 	'changeauthor-nosuchuser'           => 'Neniu uzanto "$1".',
 	'changeauthor-revview'              => 'Revizio #$1 de $2',

@@ -34,12 +34,49 @@ $messages['en'] = array(
 	'ea-selectcss'        => 'Select a CSS stylesheet',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'ea-heading'      => '=== مراسلة صفحة [[$1]] ===',
+	'ea-fromgroup'    => 'من مجموعة:',
+	'ea-articlesend'  => 'الصفحة "$1" أُرسلت من $2',
+	'ea-norecipients' => 'لا عناوين بريد إلكتروني صحيحة وُجدت!',
+	'ea-send'         => 'أرسل!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'ea-listrecipients' => '=== Списък на $1 {{PLURAL:$1|получател|получателя}} ===',
-	'ea-send'           => 'Изпращане!',
+	'ea-fromgroup'        => 'От група:',
+	'ea-noarticle'        => 'Необходимо е да се посочи страница, която да бъде изпратена, напр. [[Special:EmailArticle/Начална страница]].',
+	'ea-norecipients'     => 'Не бяха намерени валидни адреси за е-поща!',
+	'ea-listrecipients'   => '=== Списък на $1 {{PLURAL:$1|получател|получателя}} ===',
+	'ea-error'            => "'''Грешка при изпращане на [[$1]]:''' ''$2''",
+	'ea-selectrecipients' => 'Избиране на получатели',
+	'ea-show'             => 'Показване на получателите',
+	'ea-send'             => 'Изпращане!',
+	'ea-selectcss'        => 'Избиране на CSS стил',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'emailarticle'        => 'Retpoŝtigi paĝon',
+	'ea-heading'          => '=== Retpoŝtigante paĝon [[$1]] ===',
+	'ea-fromgroup'        => 'De grupo:',
+	'ea-articlesend'      => 'Paĝo "$1" sendita de $2',
+	'ea-noarticle'        => 'Bonvolu enigi paĝon por retsendi, ekz-e [[Special:EmailArticle/Main Page]].',
+	'ea-norecipients'     => 'Neniaj validaj retadresoj trovitaj!',
+	'ea-listrecipients'   => '=== Listo de $1 {{PLURAL:$1|ricevonto|ricevontoj}} ===',
+	'ea-error'            => "'''Eraro sendante [[$1]]:''' ''$2''",
+	'ea-denied'           => 'Malpermesite',
+	'ea-sent'             => "Paĝo [[$1]] sendita sukcese al '''$2''' {{PLURAL:$2|ricevonto|ricevontoj}} de [[User:$3|$3]].",
+	'ea-selectrecipients' => 'Selektu ricevontojn',
+	'ea-compose'          => 'Skribu enhavon',
+	'ea-send'             => 'Sendi!',
 );
 
 /** French (Français)

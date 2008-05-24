@@ -17,6 +17,13 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'simpleantispam-desc' => 'Добавя прост формуляр за проерка за спам/роботи',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -44,6 +51,16 @@ $messages['fr'] = array(
 	'simpleantispam-label' => "Vérification anti-spam.
 Ne '''RIEN''' inscrire dedans !",
 	'simpleantispam-desc'  => 'Ajoute au formulaire la vérification d’un bot spammeur',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'simpleantispam'       => 'आपके बदलावोंसे ऍंटी-स्पॅम मेकेनिझम शुरू हो गया हैं',
+	'simpleantispam-label' => "ऍन्टी-स्पैम जाँच.
+इसे भरें '''नहीं'''!",
+	'simpleantispam-desc'  => 'फ़ार्ममें सादी स्पैम/बोट जाँच बढाता हैं',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -94,6 +111,16 @@ $messages['oc'] = array(
 	'simpleantispam-label' => "Verificacion antispam.
 Inscrigatz '''PAS RES''' dedins !",
 	'simpleantispam-desc'  => 'Ajusta al formulari la verificacion d’un bòt spamaire',
+);
+
+/** Portuguese (Português)
+ * @author 555
+ */
+$messages['pt'] = array(
+	'simpleantispam'       => 'A sua edição activou o mecanismo anti-spam',
+	'simpleantispam-label' => "Verificação de spam
+'''NÃO''' preencha isto!",
+	'simpleantispam-desc'  => 'Adiciona em formulários um verificador de spam simples',
 );
 
 /** Slovak (Slovenčina)

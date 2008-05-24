@@ -125,7 +125,7 @@ V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'call'              => 'Voku',
+	'call'              => 'Voki',
 	'call-save'         => "La eligo de ĉi tiu voko estus konservita al paĝo nomata ''$1''.",
 	'call-save-success' => 'La jena teksto estis konservita al paĝo <big>[[$1]]</big> .',
 	'call-save-failed'  => 'La jena teksto NE estis konservita al paĝo <big>[[$1]]</big> ĉar tiu paĝo jam ekzistas.',
@@ -370,12 +370,12 @@ Om du har noen problemer kan du prøve <b>Special:Call/DebuG</b>.',
  */
 $messages['oc'] = array(
 	'call'              => 'Ampèl',
-	'call-desc'         => 'Crèa un ligam ipertèxt vèrs un modèl o un article wiki normals tot i passant de paramètres. Pòt èsser utilizada en linha de comanda dempuèi un navigaire o a travèrs un tèxt wiki.',
+	'call-desc'         => 'Crèa un ligam ipertèxt vèrs un modèl o un article wiki normals tot i passant de paramètres. Pòt èsser utilizada en linha de comanda dempuèi un navigador o a travèrs un tèxt wiki.',
 	'call-text'         => "L’extension Ampèl a besonh d’una pagina wiki e de paramètres facultatius per aquesta darrièra.<br /><br />
 Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèl,parm1=value1]]</tt><br />
 Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br />
 Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemple 4 (Adreça per navigaire) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,parm1=value1</tt><br /><br />
+Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,parm1=value1</tt><br /><br />
 
 L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala mas poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.<br />Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br />A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />En cas de problèmas, podètz ensajar <b>Special:Call/DebuG</b>",
 	'call-save'         => "Çò qu'es indicat per aqueste ampèl poiriá èsser salvat vèrs una pagina intitolada ''$1''.",

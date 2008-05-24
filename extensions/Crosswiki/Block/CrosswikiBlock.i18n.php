@@ -255,7 +255,7 @@ Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutm
 	'crosswikiblock-target'         => 'IP-adreso aŭ uzanto-nomo kaj cela vikio:',
 	'crosswikiblock-expiry'         => 'Findato:',
 	'crosswikiblock-reason'         => 'Kialo:',
-	'crosswikiblock-submit'         => 'Forbaru ĉi uzanton',
+	'crosswikiblock-submit'         => 'Forbari ĉi tiun uzanton',
 	'crosswikiblock-anononly'       => 'Forbaru nur anonimajn uzantojn',
 	'crosswikiblock-nocreate'       => 'Preventu kreadon de kontoj',
 	'crosswikiblock-autoblock'      => 'Aŭtomate forbaru la lastan IP-adreson uzatan de ĉi uzanto, kaj iujn ajn postajn el kiujn ili provas redakti.',
@@ -596,6 +596,14 @@ $messages['km'] = array(
 	'crosswikiblock-noreason'       => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 	'crosswikiblock-alreadyblocked' => 'អ្នកប្រើប្រាស់ $3 ត្រូវបាន រាំងខ្ទប់ ហើយ ។',
 	'crosswikiblock-noblock'        => 'អ្នកប្រើប្រាស់នេះ មិនត្រូវបាន​ រាំងខ្ទប់ ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'crosswikiblock-reason'   => 'Aanlass:',
+	'crosswikiunblock-reason' => 'Aanlass:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

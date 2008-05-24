@@ -201,7 +201,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'imagemap_description' => 'Pri ĉi bildo',
+	'imagemap_description' => 'Pri ĉi tiu bildo',
 );
 
 /** Basque (Euskara)

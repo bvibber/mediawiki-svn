@@ -524,6 +524,7 @@ $messages['lb'] = array(
 	'review_version_link'           => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
 	'review_user_details_link'      => '(Detailer)',
+	'review_blocked'                => 'Dir sidd gespaart.',
 	'review_no_opinion'             => 'Keng Meenung',
 	'review_comment'                => 'Bemierkung',
 );

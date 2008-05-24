@@ -74,7 +74,7 @@ Komando: $1
 Eligo: $2
 
 $3',
-	'latexdoc_get_pdf'    => 'Akiru PDF-on',
+	'latexdoc_get_pdf'    => 'Akiri PDF-on',
 );
 
 /** French (Français)

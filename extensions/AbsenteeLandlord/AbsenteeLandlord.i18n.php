@@ -13,6 +13,14 @@ $messages['en'] = array(
 	'absenteelandlord-desc'   => 'Auto-locks the wiki database if the sysops are all inactive for some time',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'absenteelandlord-reason' => 'أُقفلت قاعدة البيانات تلقائيا نظرا لعدم نشاط الإداريين.',
+	'absenteelandlord-desc'   => 'قفل قاعدة بيانات الويكي تلقائيا إذا كان كل الإداريين غير نشطين لبعض الوقت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -46,10 +54,11 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Grondin
  */
 $messages['fr'] = array(
-	'absenteelandlord-reason' => 'La base de données a été vérouillée car les administrateurs sont inactifs.',
-	'absenteelandlord-desc'   => 'Vérouille automatiquement la base de données si tous les administrateurs sont inactifs depuis un certain temps',
+	'absenteelandlord-reason' => 'La base de données a été verrouillée à cause de l’inactivité des administrateurs.',
+	'absenteelandlord-desc'   => 'Verrouille automatiquement la base de données si tous les administrateurs sont inactifs depuis un certain temps',
 );
 
 /** Galician (Galego)

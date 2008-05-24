@@ -150,15 +150,36 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Alnokta
  * @author ترجمان05
  */
 $messages['ar'] = array(
-	'viewapc-clear-confirm'      => 'هل تريد إفراغ الذّاكرة الوسيطة ؟',
-	'viewapc-mode-version-check' => 'افحص النسخة',
-	'viewapc-info-general'       => 'معلومات عامة',
-	'viewapc-memory-usage'       => 'استعمال الذاكرة',
-	'viewapc-ls-limit-none'      => 'الكل',
+	'viewapc-clear-confirm'         => 'هل تريد إفراغ الذّاكرة الوسيطة ؟',
+	'viewapc-mode-version-check'    => 'افحص النسخة',
+	'viewapc-info-general'          => 'معلومات عامة',
+	'viewapc-memory-usage'          => 'استعمال الذاكرة',
+	'viewapc-memory-free'           => 'حرّة: $1 ($2)',
+	'viewapc-memory-used'           => 'مستخدمة: $1 ($2)',
+	'viewapc-memory-miss'           => 'مفقودات: $1 ($2)',
+	'viewapc-display-info'          => 'اسم',
+	'viewapc-display-type'          => 'نوع',
+	'viewapc-display-creation_time' => 'مُنشأة',
+	'viewapc-display-mem_size'      => 'حجم',
+	'viewapc-ls-options-legend'     => 'خيارات',
+	'viewapc-ls-submit'             => 'اذهب!',
+	'viewapc-ls-header-size'        => 'حجم',
+	'viewapc-ls-header-created'     => 'مُنشأة',
+	'viewapc-ls-header-deleted'     => 'محذوفة',
+	'viewapc-ls-delete'             => '[حذف الآن]',
+	'viewapc-ls-scope-active'       => 'نشطة',
+	'viewapc-ls-scope-deleted'      => 'محذوفة',
+	'viewapc-ls-sort-size'          => 'حجم',
+	'viewapc-ls-sort-name'          => 'اسم',
+	'viewapc-ls-sort-created'       => 'مُنشأة',
+	'viewapc-ls-sort-deleted'       => 'محذوفة',
+	'viewapc-ls-limit-none'         => 'الكل',
+	'viewapc-version-info'          => 'معلومات الإصدار',
 );
 
 /** Bulgarian (Български)
@@ -225,6 +246,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-submit'             => 'Ek!',
 	'viewapc-ls-header-name'        => 'Nomo',
 	'viewapc-ls-header-size'        => 'Pezo',
+	'viewapc-ls-header-modified'    => 'Laste modifita',
 	'viewapc-ls-header-created'     => 'Kreita',
 	'viewapc-ls-header-deleted'     => 'Forigita',
 	'viewapc-ls-delete'             => '[Forigi nun]',
@@ -233,9 +255,12 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-scope-both'         => 'Ambaŭ',
 	'viewapc-ls-sort-size'          => 'Pezo',
 	'viewapc-ls-sort-name'          => 'Nomo',
+	'viewapc-ls-sort-modified'      => 'Laste modifita',
 	'viewapc-ls-sort-created'       => 'Kreita',
 	'viewapc-ls-sort-deleted'       => 'Forigita',
 	'viewapc-ls-limit-none'         => 'Ĉiu',
+	'viewapc-ls-nodata'             => "''Nenia dateno trafas''",
+	'viewapc-delete-ok'             => 'Ero de kaŝmemoro <nowiki>$1</nowiki> estas forigita.',
 	'viewapc-delete-failed'         => 'Malsukcesis forigi kaŝmemoreron <nowiki>$1</nowiki>.',
 	'viewapc-version-info'          => 'Versia informo',
 	'viewapc-version-changelog'     => 'Protokolo de ŝanĝoj',
@@ -760,6 +785,15 @@ $messages['km'] = array(
 	'viewapc-ls-limit-none'         => 'ទាំងអស់',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'viewapc-display-num_hits' => 'Treffer',
+	'viewapc-ls-header-hits'   => 'Treffer',
+	'viewapc-ls-sort-hits'     => 'Treffer',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1231,7 +1265,7 @@ Sembla que APC fonciona pas.",
 	'viewapc-clear-confirm'         => "Volètz suprimir l'amagatal ?",
 	'viewapc-clear-user-cache'      => "Suprimir l'amagatal utilizaire",
 	'viewapc-clear-code-cache'      => "Suprimir l'amagatal dels còdes operacions",
-	'viewapc-mode-stats'            => 'Veire las estatisticas del serveire',
+	'viewapc-mode-stats'            => 'Veire las estatisticas del servidor',
 	'viewapc-mode-system-cache'     => "Entradas de l'amagatal sistèma",
 	'viewapc-mode-system-cache-dir' => 'Entradas per repertòri',
 	'viewapc-mode-user-cache'       => "Entradas de l'amagatal utilizaire",
@@ -1258,7 +1292,7 @@ Sembla que APC fonciona pas.",
 	'viewapc-cachefull'             => "Compte d'amagatal plen",
 	'viewapc-rps'                   => '$1 requèstas per segonda',
 	'viewapc-info-runtime'          => 'Entresenhas de foncionament',
-	'viewapc-info-memory'           => "Diagramas de l'estatut del serveire",
+	'viewapc-info-memory'           => "Diagramas de l'estatut del servidor",
 	'viewapc-memory-usage-detailed' => 'Utilizacion de la memòria<br />
 (las divèrsas serias indican de fragments)',
 	'viewapc-memory-usage'          => 'Utilizacion de la memòria',

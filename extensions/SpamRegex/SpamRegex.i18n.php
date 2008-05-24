@@ -252,13 +252,16 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'spamregex_summary'              => 'Dësen Test gouf am Resumé vun der Säit fonnt',
 	'spamregex-currently-blocked'    => "'''Sätz déi elo gespaart sinn:'''",
 	'spamregex-no-currently-blocked' => "'''Et gëtt keng gespaarte Sätz.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ewech huelen]) derbäigest vum",
 	'spamregex-log-2'                => 'den $1',
 	'spamregex-unblock-success'      => 'Spär ass opgehuewen',
 	'spamregex-block-success'        => 'Gespaart',
 	'spamregex-block-message'        => "De Saatz '''$1''' gouf gespaart.",
 	'spamregex-already-blocked'      => '"$1" ass scho gespaart',
+	'spamregex-phrase-block'         => 'Saatz fir ze spären',
 	'spamregex-phrase-block-summary' => 'Saatz am Resumé spären',
 	'spamregex-text'                 => '(Text)',
 	'spamregex-summary-log'          => '(Resumé)',

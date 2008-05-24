@@ -569,7 +569,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
 	'gm-geocode-preface'           => 'Klaku la mapon por aldoni punkton, aŭ salti al urbo, lando, aŭ adreso:',
 	'gm-no-search-preface'         => 'Klaku la mapon por aldoni punkton.',
 	'gm-search'                    => 'Serĉi',
-	'gm-clear-search'              => 'forviŝu serĉ-rezultojn',
+	'gm-clear-search'              => 'forviŝi serĉ-rezultojn',
 	'gm-meters'                    => 'metroj',
 	'gm-miles'                     => 'mejloj',
 	'gm-editing-path'              => 'Klaku la mapon por aldoni pliajn punktojn al ĉi tiun vojon.',
@@ -1803,9 +1803,9 @@ $wgGoogleMapsMessages['no'] = array(
  * @author Cedric31
  */
 $wgGoogleMapsMessages['oc'] = array(
-	'gm-incompatible-browser'      => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigaire compatible</a>.',
+	'gm-incompatible-browser'      => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigador compatible</a>.',
 	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navigaires compatibles.',
-	'gm-no-editor'                 => 'Malurosament, vòstre navigaire supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
+	'gm-no-editor'                 => 'Malurosament, vòstre navigador supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title'             => 'Títol :',
 	'gm-balloon-link-article'      => 'Ligam cap a aquesta pagina (opcional) :',
 	'gm-make-marker'               => 'Legenda (wiki anotacion OK):',

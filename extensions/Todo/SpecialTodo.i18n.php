@@ -291,6 +291,7 @@ $messages['lb'] = array(
 	'todo-update-else-item' => "Versuch engem anere seng Objeten z'aktualiséieren",
 	'todo-item-list'        => 'Är Objeten',
 	'todo-no-item'          => 'Keng Objeten op der Lëscht vun den Aufgaben.',
+	'todo-list-for'         => 'Lëscht vun den Aufgabe fir',
 	'todo-list-change'      => 'Änneren',
 	'todo-list-cancel'      => 'Annulléieren',
 	'todo-new-item'         => 'Neien Objet',

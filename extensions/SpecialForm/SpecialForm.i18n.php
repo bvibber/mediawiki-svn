@@ -291,6 +291,7 @@ $messages['lb'] = array(
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename'       => 'Falsche Säitennumm',
 	'formsavesummary'       => 'Nei Säit, déi [[Special:Form/$1]] benotzt',
+	'formsaveerror'         => 'Feeler beim Späichere vum Formulaire',
 );
 
 /** Malayalam (മലയാളം)

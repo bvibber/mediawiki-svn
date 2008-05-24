@@ -130,20 +130,22 @@ $messages['nl'] = array(
 	'right-forcepreviewexempt' => 'Kan een pagina opslaan zonder bewerking ter controle te bekijken',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'forcepreview'      => 'Lagre side (forhåndsvis først)',
-	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+	'forcepreview'             => 'Lagre side (forhåndsvis først)',
+	'forcepreview-desc'        => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+	'right-forcepreviewexempt' => 'Kan lagre uten å måtte se forhåndsvisning først',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'forcepreview'      => 'Salvagarda la pagina (amòda en primièr la previsualizacion)',
-	'forcepreview-desc' => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
+	'forcepreview'             => 'Salvagarda la pagina (amòda en primièr la previsualizacion)',
+	'forcepreview-desc'        => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
+	'right-forcepreviewexempt' => "Pòt èsser salvagardat sens l'utilizacion de la previsualizacion",
 );
 
 /** Portuguese (Português)
@@ -173,12 +175,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
- * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'forcepreview'             => 'Spara (förhandsgranska först)',
 	'forcepreview-desc'        => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
-	'right-forcepreviewexempt' => 'Kanske spara utan att använda Visa förhandsgranskning',
+	'right-forcepreviewexempt' => 'Kan spara utan att visa förhandsgranskning',
 );
 
 /** Telugu (తెలుగు)

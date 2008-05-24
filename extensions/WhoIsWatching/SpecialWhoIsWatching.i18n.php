@@ -328,3 +328,14 @@ $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 
+/** Taiwan Chinese (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'whoiswatching'                => 'wiki頁面監視者',
+	'specialwhoiswatchingthepage'  => '%s位頁面監視者',
+	'specialwhoiswatchingusage'    => '此特殊頁面無法單獨使用，請使用[[MediaWiki:Number_of_watching_users_pageview]]以定義通往此頁的入口。',
+	'specialwhoiswatchingaddusers' => '新增用戶以監視此頁',
+	'specialwhoiswatchingaddbtn'   => '加入所選用戶',
+);
+

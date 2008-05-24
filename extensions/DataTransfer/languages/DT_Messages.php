@@ -313,10 +313,11 @@ $messages['krj'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'dt-desc'                     => 'Erlaabt den Import an den Export vu strukturéierten Daten déi beim Opruffe vu Schabloune benotzt ginn.',
 	'viewxml'                     => 'XML weisen',
 	'dt_viewxml_docu'             => 'Wielt w.e.g. ënnert dëse Kategorien an Nimmraim fir am XML-Format unzeweisen.',
 	'dt_viewxml_categories'       => 'Kategorien',
-	'dt_viewxml_namespaces'       => 'Nimmraim',
+	'dt_viewxml_namespaces'       => 'Nummraim',
 	'dt_viewxml_simplifiedformat' => 'Vereinfachte Format',
 	'dt_xml_namespace'            => 'Nummraum',
 	'dt_xml_page'                 => 'Säit',

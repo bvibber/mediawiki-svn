@@ -137,8 +137,8 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'edituser'          => 'Redaktu Uzanton',
-	'edituser-logout'   => 'Elsalutu uzanton',
+	'edituser'          => 'Redakti Uzanton',
+	'edituser-logout'   => 'Elsaluti uzanton',
 	'edituser-username' => 'Nomo',
 	'edituser-dosearch' => 'Serĉi',
 	'edituser-nouser'   => 'La specifigita uzanto ne ekzistas',

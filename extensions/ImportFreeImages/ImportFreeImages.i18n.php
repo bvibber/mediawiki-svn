@@ -111,12 +111,12 @@ $messages['eo'] = array(
 	'importfreeimages'                       => 'Importu Senpagajn Bildojn',
 	'importfreeimages-desc'                  => 'Ebligas fojon [[Special:ImportFreeImages|importi ĝuste permesmarkitajn fotojn]] de [http://www.flickr.com Flickr]',
 	'importfreeimages_description'           => 'Ĉi paĝo ebligas al vi serĉi ĝuste permesmarkitajn fotojn de Flickr kaj importi ilin al vian vikion.',
-	'importfreeimages_noapikey'              => 'Vi ne konfiguris vian Flickr API-ŝlosilo. Fari tiel, bonvolu akiri API-ŝlosilon de
+	'importfreeimages_noapikey'              => 'Vi ne konfiguris vian Flickr API-ŝlosilo. Fari tiel, bonvolu akiri API-ŝlosilon de 
 [http://www.flickr.com/services/api/misc.api_keys.html ĉi tie] kaj baskuli wgFlickrAPIKey en ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Neniaj fotoj estis trovitaj por via serĉesprimo '$1'; bonvolu reprovi.",
 	'importfreeimages_invalidurl'            => 'La URL-o "$1" ne estas valida bildo de Flickr.',
 	'importfreeimages_owner'                 => 'Aŭtoro',
-	'importfreeimages_importthis'            => 'Importu ĉi tiun',
+	'importfreeimages_importthis'            => 'importi ĉi tiun',
 	'importfreeimages_next'                  => 'Sekvaj $1',
 	'importfreeimages_filefromflickr'        => '$1 de uzanto <b>[$2]</b> de Flickr. Originala URL-o',
 	'importfreeimages_promptuserforfilename' => 'Bonvolu enigi celan dosiernomon:',

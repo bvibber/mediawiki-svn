@@ -854,6 +854,51 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 	'right-boardvote'        => 'Administrace voleb',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'boardvote'              => 'Etholiad Bwrdd Ymddiriedolwyr Sefydliad Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections|Etholiad Bwrdd Ymddiriedolwyr Wikimedia]]',
+	'boardvote_entry'        => "* [[Special:Boardvote/vote|Pleidleisio]]
+* [[Special:Boardvote/list|Rhestri'r pleidleisiau hyd yn hyn]]
+* [[Special:Boardvote/dump|Cael gwared ar gofnod pleidlais wedi'i amgryptio]]",
+	'boardvote_notloggedin'  => 'Nid ydych wedi mewngofnodi.
+Er mwyn pleidleisio, rhaid i chi ddefnyddio cyfrif sydd ag o leiaf $1 o gyfraniadau cyn $2 ynghlwm wrtho, ac sydd wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
+	'boardvote_notqualified' => 'Nid ydych yn gymwys i bleidleisio yn yr etholiad hwn.
+Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf $1 gwaith cyn $2, a gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
+	'boardvote_novotes'      => 'Nid oes neb wedi pleidleisio eto.',
+	'boardvote_time'         => 'Amser',
+	'boardvote_user'         => 'Defnyddiwr',
+	'boardvote_edits'        => 'Golygiadau',
+	'boardvote_days'         => 'Diwrnodau',
+	'boardvote_ua'           => 'Asiant defnyddiwr',
+	'boardvote_listintro'    => '<p>Dyma restr yr holl bleidleisiau sydd wedi eu cofnodi hyd yn hyn.
+$1 ar gyfer y data wedi ei amgryptio.</p>',
+	'boardvote_dumplink'     => 'Cliciwch yma',
+	'boardvote_submit'       => 'Iawn',
+	'boardvote_needadmin'    => 'Dim ond gweinyddwyr yr etholiad allant weithredu hwn.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Etholiad Bwrdd Wikimedia</a>:
+Pleidleisio\'n bosib hyd at 22 Mehefin',
+	'boardvote_closed'       => 'Daeth y pleidleisio i ben, bydd y canlyniadau ar gael cyn bo hir ar y [http://meta.wikimedia.org/wiki/Board_elections/2008/Results dudalen canlyniadau].',
+	'boardvote_edits_many'   => 'llawer',
+	'group-boardvote'        => 'Gweinyddwyr etholiad y Bwrdd',
+	'group-boardvote-member' => 'Gweinyddwr etholiad y Bwrdd',
+	'grouppage-boardvote'    => '{{ns:project}}:Gweinyddwr etholiad y Bwrdd',
+	'boardvote_blocked'      => 'Mae bloc arnoch ar eich wici cofrestredig.
+Ni chaniateir i ddefnyddwyr sydd wedi eu blocio i bleidleisio.',
+	'boardvote_bot'          => 'Mae marc bot ar eich cyfrif ar eich wici cofrestredig.
+Ni chaniateir i gyfrifon bot bleidleisio.',
+	'boardvote_welcome'      => "Croeso '''$1'''!",
+	'go_to_board_vote'       => 'Etholiad 2008 i Fwrdd Wikimedia',
+	'boardvote_redirecting'  => "Er mwyn gwella ar warchodaeth ac amlygrwydd, rydym yn cynnal y bleidlais ar weinydd allanol, annibynol.
+
+Fe gewch eich ailgyfeirio at y gweinydd allanol hwn ymhen 20 eiliad. [$1 Cliciwch yma] i fynd yno'n syth.
+
+Hwyrach y gwelwch rybudd gwarchodaeth ynglŷn â thystysgrif heb ei arwyddo.",
+	'right-boardvote'        => 'Gweinyddu etholiadau',
+);
+
 /** Danish (Dansk)
  * @author M.M.S.
  * @author Morten
@@ -1041,9 +1086,13 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 <pre>$3</pre>
 
 [[Speciala:Boardvote/entry|Reen]]',
-	'boardvote_nosession'    => 'Via uzanto-identigo de WikiMedia ne estas determinebla. Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>. Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj kun unua redakto antaŭ $3.',
-	'boardvote_notloggedin'  => 'Vi ne estas ensalutinta. Voĉdoni vi povas nepre el uzula konto kun minimume $1 kontribuoj antaŭ $2, kies unua estu antaŭ $3.',
-	'boardvote_notqualified' => 'Vi ne rajtas voĉdoni en ĉi baloto. Vi nepre estu redaktinta $3-foje antaŭ $2, vi redaktis $1-foje. Ankaŭ via unua redakto estis je $4, necesus ke estu antaŭ $5.',
+	'boardvote_nosession'    => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
+Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>.
+Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre havas $3 kontribuojn inter $3 kaj $5.',
+	'boardvote_notloggedin'  => 'Vi ne estas ensalutinta.
+Por voĉdoni, vi povas nepre el uzanto-konto kun almenaŭ $1 kontribuoj antaŭ $2, kaj faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
+	'boardvote_notqualified' => 'Vi ne rajtas voĉdoni en ĉi tiu baloto.
+Vi nepre devis fari almenaŭ $1 kontribuojn antaŭ $2, kaj faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
 	'boardvote_novotes'      => 'Neniu ne jam voĉdonis.',
 	'boardvote_time'         => 'Tempo',
 	'boardvote_user'         => 'Uzanto',
@@ -1058,7 +1107,7 @@ La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:
 	'boardvote_strike'       => 'Trastreku',
 	'boardvote_unstrike'     => 'Maltrastreku',
 	'boardvote_needadmin'    => 'Nur balotadministrantoj povas fari tiun agon.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Baloto por la Administra Konsilantaro de Wikimedia</a>: Baloto malfermita ĝis la 22 June.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Baloto por la Administra Konsilantaro de Wikimedia</a>: Baloto malfermita ĝis la 22-a de junio.',
 	'boardvote_notstarted'   => 'Balotado ne jam komenciĝis',
 	'boardvote_closed'       => 'La Balotado estas ŝlosita. Vidu la [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/eo rezultojn].',
 	'boardvote_edits_many'   => 'multaj',
@@ -1078,6 +1127,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
 
 /** Spanish (Español)
  * @author Lin linao
+ * @author Bengoa
  */
 $messages['es'] = array(
 	'boardvote'              => 'Elección del Consejo de Administración de la Fundación Wikimedia',
@@ -1259,7 +1309,7 @@ $messages['fi'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
-	'boardvote_intro'        => '<p>Tervetuloa Wikimedian johtokunnan vuoden 2008 vaaleihin. Äänestämme N:ää ihmistä edustamaan Wikimedian projektien yhteisöjä.
+	'boardvote_intro'        => '<p>Tervetuloa Wikimedian johtokunnan vuoden 2008 vaaleihin. Äänestämme henkilöitä edustamaan Wikimedian projektien yhteisöjä.
 He määrittävät sen suunnan, jonka Wikimedian projektit tulevaisuudessa ottavat, ja edustavat <em>sinun</em> etujasi ja huoliasi johtokunnalle.
 He päättävät tavoista hankkia varoja ja niiden käytöstä.</p>
 
@@ -1270,9 +1320,12 @@ Jokainen ehdokas on tunnettu ja arvostettu käyttäjä, joka on käyttänyt huom
 Ehdokkaat, joilla on eniten ääniä jossakin asemassa, julistetaan voittajaksi.
 Tasaäänten sattuessa, järjestetään uusintavaalit.</p>
 
+<p>Vaalivoittaja lasketaan käyttämällä Schulzen menetelmää.</p>
+
 <p>Lisätietoja:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Johtokuntavaalit 2008</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Ehdokkaat</a></li></ul>',
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Ehdokkaat</a></li>
+<li><a href="http://fi.wikipedia.org/wiki/Schulzen_menetelmä" class="external">Schulzen menetelmä</a></li></ul>',
 	'boardvote_intro_change' => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
 	'boardvote_entered'      => 'Kiitos. Äänesi on tallennettu.
 
@@ -1344,16 +1397,14 @@ Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
 <p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
 Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
 
-<p>Ranger les candidats pour qui vous votez selon vos préférences (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs canditation ou bien ne ranger aucun candidat. Il sera présumé que vous préférerez tous les candidats rangés par à ceux qui ne le sont pas et qui cela vous laisse indifférent pour ces derniers.</>
+<p>Ranger les candidats pour qui vous votez selon vos préférences à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs canditats ou bien n’en ranger aucun. Il sera présumé que vous préférerez tous les candidats rangés par rapport à ceux qui ne le sont pas vous laissant indifférent pour ces derniers.</>
 
-<p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze, avec <em>des votes gagnants</em> comme mesure par défaut pour l’ampleur d’une défaite par pair, utilisant <em>des marges</em> lors d’un départage d’une égalité lors de la sélection d’une étape critique.
-Dans l’hypothèse improbable d’une égalité, un départage rangeant les candidats sera calculé utilisant le <em>ballotage aléatoire</em>.
-Dans le cas, encore plus improbable, d\'une nouvelle égalité à l’issue de toutes les procédures de ballotages utilisées, une élection complémentaire sera tenue.
-Les égalités pour les positions non gagnante dans le partage finial des candidats ne seront pas résolues.</p>
+<p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze.
 
 <p>Pour plus d\'information, voyez :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Fr" class="extiw" title="meta:Election_FAQ_2008/Fr">Élections 2008 au Conseil d’administration</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Fr" class="extiw" title="meta:Election_candidates_2008/Fr">Candidat-e-s</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Élection 2008 au Conseil d’administration</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidats</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Méthode Schulze</a></li></ul>',
 	'boardvote_intro_change'   => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>',
 	'boardvote_entered'        => 'Merci, votre vote a été enregistré.
 
@@ -1411,6 +1462,7 @@ Un avertissement concernant un certificat non signé sera peut-être affiché.',
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  * @author Siebrand
+ * @author SieBot
  */
 $messages['frp'] = array(
 	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
@@ -1520,7 +1572,7 @@ Cada un dos candidatos é un usuario respectado, que lle ten dedicado tempo e es
 Poderá dar a mesma preferencia a máis dun candidato e deixar candidatos sen valorar.
 Suponse que prefire os candidatos valorados aos que non o están e que é indiferente para vostede a orde dos non valorados.</p>
 
-<p>O gañador da elección será calculado usando o método Schulze.</p>
+<p>O gañador da elección será calculado usando o método Schulze. Para obter máis información, consulte as páxinas oficiais das eleccións.</p>
 
 <p>Se quere máis información, visite:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Eleccións do Consello de Administración da Wikimedia do ano 2008</a></li>
@@ -1711,10 +1763,7 @@ $messages['hi'] = array(
 आप एक से ज्यादा सदस्योंको एक ही पसंद दे सकतें हैं या किसी उम्मीदवार को पसंद नहीं भी दे सकतें हैं।
 ऐसा माना जायेगा की जिन्हें आपने क्रमांक दिये हैं वे आपकी पसंद हैं और अन्य उम्मीदवारोंके बारे में आपको ज़ानकारी नहीं हैं।</p>
 
-<p>चुनाव का विजेता शुल्झ पद्धती द्वारा घोषित किया जायेगा, जिसमें <em>विजयी मत</em> को जोडीमें हार के लिये गिना जायेगा, और <em>मार्जिन</em> को टाइब्रेकमें इस्तेमाल किया जायेगा।
-अगर टाई हो जाता हैं, तो टाईब्रेक गुणांकन <em>रैंडम बैलेट</em> गिनकर निकाला जायेगा।
-अगर उसके बाद भी टाई हो जाता है, तो विजेता चुनने के लिये एक उप-चुनाव लिया जायेगा, जो बहुतही आखिरी स्थिती में लिया जायेगा।
-न जीते हुए पोजिशन्स में हुए टाई को सुलझाया नहीं जायेगा।</p>
+<p>चुनाव का विजेता शुल्झ पद्धती द्वारा घोषित किया जायेगा। अधिक ज़ानकारी के लिये, अधिकृत चुनाव पन्ने देखें।</p>
 
 <p>कृपया अधिक ज़ानकारी के लिये देखें:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">चुनाव के बारे में प्राय: पूछे जाने वाले सवाल</a></li>
@@ -2089,12 +2138,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
- * @author IvanLanin
+ * @author Rex
  * @author Meursault2004
  */
 $messages['id'] = array(
-	'boardvote'              => 'Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Pemilihan Dewan Kepercayaan Wikimedia]]',
+	'boardvote'              => 'Pemilihan anggota Dewan Pengawas Wikimedia Foundation',
+	'boardvote-desc'         => '[[meta:Board elections|Pemilihan Dewan Pengawas Wikimedia Foundation]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Berikan suara]]
 * [[Special:Boardvote/list|Daftar suara hingga saat ini]]
 * [[Special:Boardvote/dump|Data pemilihan terenkripsi]]',
@@ -2784,23 +2833,20 @@ $messages['lb'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Ofstëmmen]]
 * [[Special:Boardvote/list|Lëscht vun de Stëmmen bis haut]]
 * [[Special:Boardvote/dump|Verschlësselt Donnéeë vun der Ofstëmmung]]',
-	'boardvote_intro'          => "<p>Wëllkomm bei de Wale vn 2008 fir de Wikimedia Board of Trustees. Mir wielen eng Persoun, déi d'Benotzer vun de verschiddene Wikimedia-Projete representéiert. Si wäert dobäi hëllefe fir z'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéiert. Si wäert och dobäi hëllefen, Konzepter z'entwéckelen, fir d'Recetten an d'Spende fir Wikimedia z'erhéijen.</p>
+	'boardvote_intro'          => '<p>Wëllkomm bei de Wale vn 2008 fir de Wikimedia Board of Trustees. Mir wielen eng Persoun, déi d\'Benotzer vun de verschiddene Wikimedia-Projete representéiert. Si wäert dobäi hëllefe fir z\'entscheeden, wellech Richtung fir déi verschidde Wikimedia-Projeten ageschloe gëtt, ob eleng oder als Grupp, an <em>är</em> Interessen a Standpunkter beim Board of Trustees representéiert. Si wäert och dobäi hëllefen, Konzepter z\'entwéckelen, fir d\'Recetten an d\'Spende fir Wikimedia z\'erhéijen.</p>
 
-<p>Liest w.e.g. d'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d'Verbreedung vu fräiem Wëssen aluet.</p>
+<p>Liest w.e.g. d\'Stellungnahm vun de Kandidaten an hir Äntwerten op Froen, éier Dir fir ee stëmmt. All Kandidat ass e respektéierte Benotzer, dee mat vill Zäit a Gedold dozou bäigedroen huet, aus de Projeten en Ëmfeld ze schafen, dat fir d\'Verbreedung vu fräiem Wëssen aluet.</p>
 
-<p>Klasséiert d'Kandidate w.e.g. no ärer Preferenz an dem Dir eng Zuel an d'Kescht hannert den Numm schreiwt (1 = ären 1. Choix , 2= ären 2. Choix, ...).
+<p>Klasséiert d\'Kandidate w.e.g. no ärer Preferenz an dem Dir eng Zuel an d\'Kescht hannert den Numm schreiwt (1 = ären 1. Choix , 2= ären 2. Choix, ...).
 Dir kënnt och méi Kandidaten déi selwescht Preferenz ginn an esouguer fir kandidate stëmmen ouni eng Preferenz ofzeginn.
 Et gëtt ugeholl datt dir all déi Kandidaten, denen hir Preferenz Dir uginn hutt, dene Kandidate virzitt denen Dir keng Preferenz ginn hutt an datt iech all Kandidaten bei deenen Dir keng Preferenz uginn hutt iech gläich léif sinn.</p>
 
-<p>De Gewënner vun der Wal gëtt mat hellëf vun der Schulze Method errechent, mat <em>Gewënstëmmen</em> als Mooss fir d'Stärkt vun enger puerweiser Néierlag.
-An dem Fall, wat kaum unzehuelen ass, wou et zu engem Rampo kënnt, gëtt een tie-braking Score fir d'Kandidaten errechent mat Hellëf vun engem <em>random ballot</em>.
-Sollt och de Score d'selwescht sinn, kënnt et zu engem zweeten Tour vun de Walen.
-Wann 2 Kandidaten déi net gewanne kënnen de selwescht Score hunn gëtt hirt Klassement net weider errechent</p>
+<p>De Gewënner vun der Wal gëtt mat hellëf vun der Schulze Method errechent. Fir méi Informatiounen, kuckt déi offiziel Säit vun de Walen</p>
 
 <p>Fir méi Informatiounen, kuckt:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board Walen 2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li>
-<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze-Method</a></li></ul>",
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Board Walen 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze-Method</a></li></ul>',
 	'boardvote_intro_change'   => "<p>Dir hutt schonn ofgestëmmt. Dir kënnt är Stëmm awer mat dem Formulaire ënnedrënner änneren. Klickt op d'Këschten niewent de Kandidaten fir déi Dir wiele wëllt.</p>",
 	'boardvote_entered'        => "Merci, är Stëmm gouf gespäichert.
 
@@ -3149,10 +3195,7 @@ $messages['mr'] = array(
 <p>कुठल्याही उमेदवाराला तुमच्या पसंतीनुसार क्रमांक द्या. (1 = मुख्य पसंती, 2 = दुसरी पसंती,...)
 तुम्ही कितीही उमेदवारांना सारख्या पसंती देऊ शकता तसेच एखाद्या उमेदवाराला पसंती नाही दिलीत तरी चालेल. असे मानण्यात येईल की तुमची पसंती ही फक्त तुम्ही क्रमांक दिलेल्या उमेदवारांनाच आहे व तुम्ही क्रमांक न दिलेल्या उमेदवारांबद्दल तुम्ही अनभिज्ञ आहात.</p>
 
-<p>मतदानाचा विजेता शुल्झ पद्धत वापरून काढण्यात येईल, ज्यामध्ये <em>विजयी मत</em> जोडी मध्ये हार-जीत ठरविण्याकरीता वापरण्यात येईल, तसेच <em>मार्जिन</em> चा वापर टायब्रेक करण्यासाठी होईल.
-जर टाय झाला तर, टायब्रेक गुणांकन <em>रँडम बॅलेट</em> वापरून करण्यात येईल.
-जर त्यानंतरही टाय झालेला असेल, तर विजेता निवडण्यासाठी उप-मतदान घेण्यात येईल, जे होणे खूप दुर्लभ आहे.
-इतर जागांवर झालेले टाय सोडविण्यात येणार नाहीत.</p>
+<p>मतदानाचा विजेता शुल्झ पद्धत वापरून काढण्यात येईल. अधिक माहितीसाठी, अधिकृत निवडणूक पाने पहा.</p>
 
 
 <p>कृपया अधिक माहितीसाठी पहा:</p>
@@ -3301,10 +3344,7 @@ U kunt kandidaten hetzelfe aantal punten geven, en ook kandidaten geen punten ge
 Er wordt aangenomen dat u een voorkeur heeft voor kandidaten die u punten geeft boven kandidaten die u geen punten geeft.
 Voor kandidaten die u geen punten geeft wordt aangenomen dat u voor die groep geen voorkeursvolgorde hebt.</p>
 
-<p>De winnaar van de verkiezing wordt berekend via de Schulze-methode, met <em>winnende stemmen</em> als de standaardmethode voor de sterkte in een paar, gebruikmakend van <em>marges</em> als beslissingsmethode in de kritische paden.
-Als de stemmen staken, wordt de uitslag berekend met behulp van <em>random ballot</em>.
-In zeer onwaarschijnlijke geval dat de stemmen dan nog steeds staken, wordt er een beslissingsverkiezing gehouden.
-Gelijke plaatsing op niet-winnende posities wordt niet opgelost.</p>
+<p>De winnaar van de verkiezing wordt berekend via de Schulze-methode. Meer informatie hierover treft u aan op de officiële verkiezingspagina\'s</p>
 
 <p>Meer informatie:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/nl" class="external">Bestuursverkiezing 2008</a></li>
@@ -3474,7 +3514,7 @@ Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temp
 
 <p>Per mai d\'informacion, vejatz :</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Board elections 2008</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidats</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method</a></li></ul>',
 	'boardvote_intro_change'   => "<p>Ja avètz votat. Çaquelà, podètz modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòstre supòrt.</p></p>",
 	'boardvote_entered'        => "Mercé, vòstre vòte es estat enregistrat. 
@@ -3520,7 +3560,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_bot'            => "O planhèm, avètz l'estatut de bòt sus wiki enregistrat. Los comptes de Bòt son autorizats a votar.",
 	'boardvote_welcome'        => "Benvengut '''$1'''!",
 	'go_to_board_vote'         => 'Eleccions 2008 al Conselh d’administracion de la Wikimèdia',
-	'boardvote_redirecting'    => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un serveire extèrn e independent. Seretz redirigit vèrs aqueste serveire extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+	'boardvote_redirecting'    => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un servidor extèrn e independent. Seretz redirigit vèrs aqueste servidor extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
 	'right-boardvote'          => 'Administrar las eleccions',
 );
 
@@ -4068,8 +4108,7 @@ oddané zbieraniu a šíreniu ľudského poznania.</p>
 
 <p>Prosím, zoraďte kandidátov podľa vašich preferencií tak, že napíšete vedľa neho číslo (1 = najobľúbenejší kandidát, 2 = druhý najobľúbenejší atď.). Rovnakú preferenciu môžete udeliť viac ako jednému kandidátovi a môžete aj ponechať kandidátov neohodnotených. Predpokladá sa, že uprednostňujete všetkých ohodnotených kandidátov pred neohodnotenými a že nemáte rozdiel v preferenciách medzi neohodnotenými kandidátmi.</p>
 
-<p>Víťaz volieb sa určí Schulzeho metódou, pričom <em>víťazné hlasy</em> budú štandardnou mierkou sily pri dvojici víťazných kandidátov a <em>hraničnými hlasmi</em> ako záložnou mierkou v prípade tie breaku počas výberu kritických ciest. V nepravdepodobnom prípade remízy sa tie break vypočíta na základe <em>náhodného hlasu</em>.
-Vo veľmi nepravdepodobnom prípade, že po vyčerpaní všetkých dostupných hlasov zostane na víťaznej pozícii remíza, uskutočnia sa ďalšie voľby medzi víťaznými kandidátmi. Remízy nevýherných pozícií vo finálnom hodnotení sa riešiť nebudú.</p>
+<p>Víťaz volieb sa určí Schulzeho metódou. Viac informácií na oficiálnych stránkach volieb.</p>
 
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Voľby do Rady 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidáti</a></li>
@@ -4641,6 +4680,13 @@ $messages['tg-cyrl'] = array(
 Мумкин аст як пайёми амнияти дар мавриди гувоҳиномаи  ғайримиҷоз дарёфт кунед.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'boardvote_user' => 'ผู้ใช้',
+);
+
 /** Tonga (faka-Tonga)
  * @author SPQRobin
  */
@@ -4697,7 +4743,7 @@ $messages['uk'] = array(
 
 <p>Будь ласка, уважно прочитайте заяви кандидатів і відповіді на них перед тим, як голосувати. Усі кандидати — поважні користувачі, які пожертвували істотним часом і зусиллями, щоб покращити наші проекти і зробити їх привабливим середовищем, мета якого — пошук і вільне поширення знань людства.</p>
 
-<p>Будь ласка, розташуйте кандидатів у поярдку, що відображає ваші вподобання, заповнивши поля числами (1 — найкращий, 2 — наступний за вподобанням ...)
+<p>Будь ласка, розташуйте кандидатів у порядку, що відображає ваші вподобання, заповнивши поля числами (1 — найкращий, 2 — наступний за вподобанням ...)
 Ви можете зазначити однакове число для кількох кандидатів, або не зазначати навпроти деяких кандидатів числа. Це буде означати, що серед ваших обранців ви нікому не надаєте перевагу, але виділяєте їх серед інших кандидатів.</p>
 
 <p>Переможець буде визначений за допомогою метода Шульца.</p>

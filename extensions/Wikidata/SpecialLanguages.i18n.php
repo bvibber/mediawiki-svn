@@ -2265,7 +2265,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_Permission_denied'                  => '<h2>PERMISSION REFUSADA</h2>',
 	'ow_copy_no_action_specified'           => "Mercé d'especificar una accion",
 	'ow_copy_help'                          => 'Ajuda de venir...',
-	'ow_please_proved_dmid'                 => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del serveire.',
+	'ow_please_proved_dmid'                 => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
 	'ow_please_proved_dc1'                  => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br>
 Contactatz l’administrator.',
 	'ow_please_proved_dc2'                  => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br>
@@ -2273,7 +2273,7 @@ Contactatz l’administrator.',
 	'ow_copy_successful'                    => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful'                  => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
 	'ow_no_action_specified'                => "<h3>Cap d'accion es pas estada especificada</h3> Benlèu, seriatz vengut sus aquesta pagina dirèctament ? Avètz pas besonh, en principi, d'èsser aicí.",
-	'ow_db_consistency_not_found'           => "<h2>Error</h2> Un problèma es estat trobat dins la banca de donadas. Wikidata pòt pas trobar de donadas validas ligadas al numèro de sens definit. Poiriá èsser perdut. Contactatz l'operator o l'administrator del serveire.",
+	'ow_db_consistency_not_found'           => "<h2>Error</h2> Un problèma es estat trobat dins la banca de donadas. Wikidata pòt pas trobar de donadas validas ligadas al numèro de sens definit. Poiriá èsser perdut. Contactatz l'operator o l'administrator del servidor.",
 );
 
 /** Ossetic (Иронау)

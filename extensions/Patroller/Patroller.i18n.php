@@ -440,6 +440,13 @@ $messages['km'] = array(
 	'patrol-skip'          => 'រំលង',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'patrol-revert-reason' => 'Aanlass:',
+);
+
 $messages['la'] = array(
 	'patrol-revert-reason' => 'Causa:',
 );

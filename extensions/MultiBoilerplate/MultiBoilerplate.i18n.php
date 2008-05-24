@@ -47,7 +47,7 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'multiboilerplate-submit' => 'Ŝarĝi',
+	'multiboilerplate-submit' => 'Alŝuti',
 );
 
 /** French (Français)

@@ -95,6 +95,14 @@ $messages['km'] = array(
 	'stalepages-summary' => 'នេះ ជា បញ្ជី នៃ ទំព័រ បានត្រូវ កែប្រែ ក្នុង $1 ថ្ងៃចុងក្រោយ ។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'stalepages'         => 'Ahl Sigge',
+	'stalepages-summary' => 'Hee küt en Leß med Sigge, di {{PLURAL:$1|zick ennem Daach|de letzte $1 Daare|hück noch}} nit jeänndert woode sen.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -109,6 +117,14 @@ $messages['lb'] = array(
 $messages['ml'] = array(
 	'stalepages'         => 'പഴക്കം തട്ടിയ താളുകള്‍',
 	'stalepages-summary' => 'കഴിഞ്ഞ $1 ദിവസങ്ങളാ‍യി ഒരിക്കല്‍പ്പോലും തിരുത്തപ്പെടാത്ത താളുകളുടെ പട്ടികയാണ് ഇത്.',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Purodha
+ */
+$messages['nds'] = array(
+	'stalepages'         => 'Olle Sieden',
+	'stalepages-summary' => 'Dat is en List van de Sieden, die siet {{PLURAL:1 Dag|$1 Dagen}} nit änndert warn.',
 );
 
 $messages['nl'] = array(

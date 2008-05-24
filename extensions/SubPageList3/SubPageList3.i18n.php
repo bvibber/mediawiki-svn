@@ -37,6 +37,13 @@ $messages['en'] = array(
         'spl3_nosubpages' => '$1 has no subpages to list.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'spl3_nosubpages' => '$1 لا تمتلك أي صفحات فرعية لوضعها في قائمة.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

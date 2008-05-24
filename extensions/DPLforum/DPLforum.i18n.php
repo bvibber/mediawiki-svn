@@ -20,10 +20,12 @@ $messages['en'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Alnokta
  */
 $messages['ar'] = array(
-	'dplforum-by' => 'بواسطة',
+	'dplforum-by'    => 'بواسطة',
+	'dplforum-never' => 'أبدا',
 );
 
 /** Bulgarian (Български)
@@ -35,6 +37,13 @@ $messages['bg'] = array(
 	'dplforum-never'   => 'Никога',
 	'dplforum-toofew'  => 'DPL Форум: Твърде малко категории!',
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'dplforum-never' => 'Neniam',
 );
 
 /** French (Français)

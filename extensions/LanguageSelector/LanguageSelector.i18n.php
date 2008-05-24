@@ -109,7 +109,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'languageselector'         => 'Lingvo',
 	'languageselector-desc'    => 'Lingvo-selektilo en ĉiuj paĝo, ankaŭ por vizitantoj',
-	'languageselector-setlang' => 'faru',
+	'languageselector-setlang' => 'fari',
 );
 
 /** Extremaduran (Estremeñu)

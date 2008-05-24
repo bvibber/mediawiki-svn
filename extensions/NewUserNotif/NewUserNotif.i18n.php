@@ -61,6 +61,7 @@ Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'newusernotifsubj' => 'Nova notigado de uzanto $1',
 	'newusernotifbody' => 'Saluton $1,
 
 Nova konto por uzanto, $2, estis kreita je $3 $4.',

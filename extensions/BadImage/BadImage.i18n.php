@@ -368,7 +368,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'badimages'                => 'Nevalida bildo-listo',
 	'badimages-desc'           => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
-	'badimages-add-btn'        => 'Aldonu',
+	'badimages-add-btn'        => 'Aldoni',
 	'badimages-added'          => '$1 estis enlistigita.',
 	'badimages-count'          => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de nevalidaj bildoj.",
 	'badimages-name'           => 'Nomo:',
@@ -380,7 +380,7 @@ $messages['eo'] = array(
 	'badimages-remove-confirm' => 'Bonvolu konfirmi ke vi volas forigi $1 el la listo:',
 	'badimages-removed'        => '$1 estis forigita el la listo.',
 	'badimages-subheading'     => 'Nunaj listanoj',
-	'badimages-unprivileged'   => 'Vi ne havas suficxan permison sxangxi la liston.',
+	'badimages-unprivileged'   => 'Vi ne sufiĉe rajtas ŝanĝi la liston.',
 	'badimages-log-name'       => 'Nevalida bildo-listo',
 	'badimages-log-header'     => 'Jen protokolo de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
 	'badimages-log-add'        => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
@@ -834,6 +834,14 @@ $messages['km'] = array(
 	'badimages-log-add'        => 'បានបន្ថែម [[$1]] ទៅ បញ្ជី រូបភាពអន់',
 	'badimages-log-remove'     => 'បានដកចេញ [[$1]] ពី បញ្ជី រូបភាពអន់',
 	'badimages-page'           => '{{ns:help}}:បញ្ជី រូបភាពអន់',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'badimages-add-btn' => 'Donn dobei',
+	'badimages-reason'  => 'Aanlass:',
 );
 
 /** Kurdish (Kurdî / كوردی)

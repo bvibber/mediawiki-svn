@@ -94,15 +94,30 @@ $allMessages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Meno25
  */
 $allMessages['ar'] = array(
+	'mywhitelistpages'         => 'صفحاتي',
+	'whitelistfor'             => '<center>المعلومات الحالية ل<b>$1</b></center>',
+	'whitelisttablemodify'     => 'تعديل',
 	'whitelisttablemodifyall'  => 'الكل',
 	'whitelisttablemodifynone' => 'لا شيء',
+	'whitelisttablepage'       => 'صفحة ويكي',
+	'whitelisttablemodby'      => 'آخر تعديل بواسطة',
+	'whitelisttablemodon'      => 'آخر تعديل في',
 	'whitelisttableedit'       => 'تعديل',
 	'whitelisttableview'       => 'عرض',
+	'whitelisttablenewdate'    => 'تاريخ جديد:',
+	'whitelisttablechangedate' => 'تغيير تاريخ إنتهاء الصلاحية',
+	'whitelisttablesetedit'    => 'ضبط للتعديل',
+	'whitelisttablesetview'    => 'ضبط للعرض',
 	'whitelisttableremove'     => 'إزالة',
+	'whitelistnewtableedit'    => 'ضبط للتعديل',
+	'whitelistnewtableview'    => 'ضبط للعرض',
 	'whitelistnewtableprocess' => 'عملية',
+	'whitelistnewtablereview'  => 'مراجعة',
+	'whitelistbadtitle'        => 'عنوان سيء -',
 	'whitelistnever'           => 'أبدا',
 );
 
@@ -465,11 +480,16 @@ $allMessages['lb'] = array(
 	'whitelisttableedit'       => 'Änneren',
 	'whitelisttableview'       => 'Weisen',
 	'whitelisttablenewdate'    => 'Neien Datum:',
+	'whitelisttablesetedit'    => 'Ännerungsparameter',
 	'whitelisttableremove'     => 'Zréckzéien',
+	'whitelistnewtableedit'    => 'Ännerungsparameter',
+	'whitelistnewtablereview'  => 'Nokucken',
 	'whitelistpagelist'        => 'Säite vu(n) {{SITENAME}} fir $1',
 	'whitelistbadtitle'        => 'Schlechten Titel -',
 	'whitelistoverview'        => '== Iwwersiicht vun den Ännerunge vun $1 ==',
 	'whitelistoverviewcd'      => "* Datum vun '''$1''' ännere  fir [[:$2|$2]]",
+	'whitelistoverviewsa'      => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
+	'whitelistoverviewrm'      => '* Autorisatioun fir [[:$1|$1]] gët ewechgeholl',
 	'whitelistrequest'         => 'Zougang zu méi Säite froen',
 	'whitelistrequestconf'     => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever'           => 'nie',

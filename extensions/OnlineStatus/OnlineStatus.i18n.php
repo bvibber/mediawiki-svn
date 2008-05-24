@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'onlinestatus-toggles-desc' => 'حالتك:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

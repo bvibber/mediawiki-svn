@@ -24,10 +24,13 @@ When checking or unchecking multiple pages, holding the shift key allows you to 
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Meno25
  */
 $messages['ar'] = array(
-	'watchsubpages' => 'مراقبة الصفحات الفرعية',
+	'watchsubpages'                      => 'مراقبة الصفحات الفرعية',
+	'watchsubpages-addtitles'            => 'إضافة صفحات',
+	'watchsubpages-addtitlestowatchlist' => 'إضافة صفحات إلى قائمة المراقبة',
 );
 
 /** Bulgarian (Български)

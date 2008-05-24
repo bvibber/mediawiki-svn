@@ -301,6 +301,13 @@ $messages['km'] = array(
 	'passwordreset-confirmpass'     => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'passwordreset-username' => 'Metmaacher Name',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

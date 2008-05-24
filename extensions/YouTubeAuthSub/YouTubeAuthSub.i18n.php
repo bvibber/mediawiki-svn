@@ -61,14 +61,30 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Meno25
  */
 $messages['ar'] = array(
-	'youtubeauthsub_title'        => 'عنوان',
-	'youtubeauthsub_description'  => 'وصف',
-	'youtubeauthsub_category'     => 'تصنيف',
-	'youtubeauthsub_submit'       => 'تنفيذ',
-	'youtubeauthsub_uploadbutton' => 'رفع',
+	'youtubeauthsub'                    => 'رفع فيديو يوتيوب',
+	'youtubeauthsub_title'              => 'عنوان',
+	'youtubeauthsub_description'        => 'وصف',
+	'youtubeauthsub_password'           => 'كلمة سر يوتيوب',
+	'youtubeauthsub_username'           => 'اسم مستخدم يوتيوب',
+	'youtubeauthsub_keywords'           => 'كلمات مفتاحية',
+	'youtubeauthsub_category'           => 'تصنيف',
+	'youtubeauthsub_submit'             => 'تنفيذ',
+	'youtubeauthsub_clickhere'          => 'أنقر هنا لتسجيل الدخول لليوتيوب',
+	'youtubeauthsub_uploadbutton'       => 'رفع',
+	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
+	'youtubeauthsub_jserror_notitle'    => 'رجاءً أدخل عنوانا للفيديو.',
+	'youtubeauthsub_jserror_nodesc'     => 'رجاءً أدخل وصفا للفيديو.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
 );
 
 /** Bulgarian (Български)
