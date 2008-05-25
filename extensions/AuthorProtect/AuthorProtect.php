@@ -13,7 +13,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Author Protect',
 	'author' => 'Ryan Schmidt',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
-	'version' => '1.0',
+	'version' => '1.1',
 	'description'    => 'Allows the author of a page to protect it from other users',
 	'descriptionmsg' => 'authorprotect-desc',
 );
@@ -26,6 +26,7 @@ $wgGroupPermissions['user']['authorprotect'] = true; //registered users can prot
 $wgHooks['SkinTemplateContentActions'][] = 'efMakeContentAction';
 $wgHooks['UnknownAction'][] = 'efAuthorProtectForm';
 $wgHooks['userCan'][] = 'efAuthorProtectDelay';
+$wgRestrictionLevels[] = 'author'; //so sysops, etc. using the normal protection interface can protect and unprotect it at the author level
 
 function efAuthorProtectDelay($title, &$user, $action, $result) {
 	$user->mRights = null;
@@ -64,6 +65,7 @@ function efMakeContentAction(&$cactions) {
 }
 
 function efAuthorProtectForm($action, &$article) {
+	global $wgTitle;
 	if($action == 'authorprotect') {
 		wfLoadExtensionMessages('AuthorProtect');
 		global $wgOut, $wgUser, $wgRequest, $wgRestrictionTypes;
@@ -80,8 +82,22 @@ function efAuthorProtectForm($action, &$article) {
 					}
 					$restrictions = array();
 					foreach( $wgRestrictionTypes as $type ) {
-						if( $wgRequest->getCheck("check-{$type}") )
+						$rest = $wgTitle->getRestrictions($type);
+						if( $rest !== array() ) {
+							if(!$wgUser->isAllowed($rest[0]) && !in_array('author', $rest) ) {
+								$restrictions[$type] = $rest[0]; //don't let them lower the protection level
+								continue;
+							}
+						}
+						if( $wgRequest->getCheck("check-{$type}") ) {
 							$restrictions[$type] = 'author';
+						} else {
+							if( in_array( 'author', $rest ) ) {
+								$restrictions[$type] = '';
+							} else {
+								$restrictions[$type] = $rest !== array() ? $rest[0] : ''; //we're not setting it
+							}
+						}
 					}
 					$success = doProtect( $restrictions, $wgRequest->getText('wpReason'), $wgRequest->getText('wpExpiryTime') );
 					if($success) {
@@ -108,7 +124,12 @@ function makeProtectForm() {
 	$form = '<p>' . wfMsg('authorprotect-intro') . '</p>';
 	$form .= wfOpenElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl('action=authorprotect') ) );
 	foreach( $wgRestrictionTypes as $type ) {
-		$checked = in_array( 'author', $wgTitle->getRestrictions( $type ) );
+		$rest = $wgTitle->getRestrictions($type);
+		if( $rest !== array() ) {
+			if(!$wgUser->isAllowed($rest[0]) && !in_array('author', $rest) )
+				continue; //it's protected at a level higher than them, so don't let them change it so they can now mess with stuff
+		}
+		$checked = in_array( 'author', $rest );
 		$array = array( 'type' => 'checkbox', 'name' => 'check-' . $type, 'value' => $type );
 		if($checked)
 			$array = array_merge( $array, array( 'checked' => 'checked' ) );
@@ -145,14 +166,34 @@ function protectMessage($title) {
 
 // do the protection, copied from Article.php's updateRestrictions then modified
 // so that it isn't so picky about having the 'protect' right.
-function doProtect( $limit = array(), $reason = '', $expiry = null ) {
+function doProtect( $limit = array(), $reason = '', &$expiry = '' ) {
 	global $wgUser, $wgRestrictionTypes, $wgContLang, $wgTitle;
 
 	$id = $wgTitle->getArticleID();
 	if( wfReadOnly() || $id == 0 ) {
 		return false;
 	}
+	
+	if ( strlen( $expiry ) == 0 ) {
+		$expiry = 'infinite';
+	}
 
+	if ( $expiry == 'infinite' || $expiry == 'indefinite' ) {
+		$expiry = Block::infinity();
+	} else {
+		# Convert GNU-style date, on error returns -1 for PHP <5.1 and false for PHP >=5.1
+		$expiry = strtotime( $expiry );
+
+		if ( $expiry < 0 || $expiry === false ) {
+			//invalid expiry, rewrite to infinity
+			$expiry = Block::infinity();
+		} else {
+			// Fixme: non-qualified absolute times are not in users specified timezone
+			// and there isn't notice about it in the ui
+			$expiry = wfTimestamp( TS_MW, $expiry );
+		}
+	}
+	
 	// Take this opportunity to purge out expired restrictions
 	Title::purgeExpiredRestrictions();
 
@@ -164,9 +205,7 @@ function doProtect( $limit = array(), $reason = '', $expiry = null ) {
 
 	$current = Article::flattenRestrictions( $current );
 	$updated = Article::flattenRestrictions( $limit );
-
 	$changed = ( $current != $updated );
-	$changed = $changed || ($wgTitle->areRestrictionsCascading() != $cascade);
 	$changed = $changed || ($wgTitle->mRestrictionsExpiry != $expiry);
 	$protect = ( $updated != '' );
 
