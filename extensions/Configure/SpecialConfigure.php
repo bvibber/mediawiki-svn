@@ -119,7 +119,7 @@ class SpecialConfigure extends SpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page
+	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut, $wgConf;

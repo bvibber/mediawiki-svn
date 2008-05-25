@@ -51,7 +51,7 @@ td.disabled > hr {
 
 }
 
-span.array-disabled {
+span.array-disabled, span.disabled {
 	text-decoration: line-through;
 	color: #888;
 	font-style: italic;

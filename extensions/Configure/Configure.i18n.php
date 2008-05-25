@@ -94,8 +94,10 @@ Please create it or change it to use this extension.',
 	'configure-setting-not-available'  => 'This setting is not available in this version of MediaWiki',
 	'configure-view-not-allowed'       => 'You are not allowed to see this setting',
 	'right-configure'                  => 'Configure the wiki',
-	'right-configure-all'              => "Configure all wiki settings",
-	'viewconfig'                       => "View wiki configuration",
+	'right-configure-all'              => 'Configure all wiki settings',
+	'right-viewconfig'                 => 'View wiki configuration',
+	'right-viewconfig-all'             => 'View all wiki configuration',
+	'viewconfig'                       => 'View wiki configuration',
 );
 
 /** Afrikaans (Afrikaans)
@@ -492,6 +494,8 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-view-not-allowed'       => "Vous n'êtes pas autorisé à voir ce paramètre",
 	'right-configure'                  => 'Configurer le wiki',
 	'right-configure-all'              => 'Configurer tous les paramètres du wiki',
+	'right-viewconfig'                 => 'Voir la configuration du wiki',
+	'right-viewconfig-all'             => 'Voir toute la configuration du wiki',
 	'viewconfig'                       => 'Voir la configuration du wiki',
 );
 

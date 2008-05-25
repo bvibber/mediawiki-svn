@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.3.4',
+	'version' => '0.3.5',
 );
 
 ## Adding new rights...
@@ -46,17 +46,19 @@ if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) 
 	$wgHooks['LoadAllMessages'][] = 'efConfigureLoadMessages';
 }
 
-## Adding the new special page...
+## Adding the new special pages...
+## Special:Configure
 $wgAutoloadClasses['SpecialConfigure'] = $dir . 'SpecialConfigure.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
+## Special:ViewConfig
 $wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
 $wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
 
-## Add the ajax function
+## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';
 
 ## Default path for the serialized files
 $wgConfigureFilesPath = "$IP/serialized";
 
 ## Styles versions
-$wgConfigureStyleVersion = '2';
+$wgConfigureStyleVersion = '3';

@@ -1,25 +1,30 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.3.5 - 25 May 2008
+  * Fixed a bug, Special:ViewConfig was checking for viewconfigure-all right
+    instead of viewconfig-all.
+  * In Special:ViewConfig, unviewabled setting are now displayed in grey.
+
 0.3.4 - 24 May 2008
   Added $wgPerLanguageCaching.
 
 0.3.3 - 23 May 2008
-  * Link setting to documentation on www.mediawiki.org
-  * Added $wgMaximumMovedPages
-  * $wgSitemapNamespaces now looks like other namespace settings
+  * Link setting to documentation on www.mediawiki.org.
+  * Added $wgMaximumMovedPages.
+  * $wgSitemapNamespaces now looks like other namespace settings.
 
 0.3.2 - 22 May 2008
   Added Special:ViewConfig to allow sysop by default to see the current
-  configuration
+  configuration.
 
 0.3.1 - 17 May 2008
   * Added $wgRCFilterByAge, $wgRCLinkLimits and $wgRCLinkDays
-  * Modified section of some settings
+  * Modified section of some settings.
 
 0.3.0 - 12 May 2008
   Added JavaScript to allow to add or remove items in associative array and
-  in $wgGroupPermissions. The latter require ajax enabled to work
+  in $wgGroupPermissions. The latter require ajax enabled to work.
 
 
 0.2.8 - 10 May 2008
@@ -30,8 +35,8 @@ Localisation updates are done on betawiki and aren't listed here.
   Added $wgSQLiteDataDir.
 
 0.2.6 - 7 May 2008
-  * Use User::getAllGroups() if available
-  * Added $wgSharedPrefix and $wgSharedTables
+  * Use User::getAllGroups() if available.
+  * Added $wgSharedPrefix and $wgSharedTables.
 
 0.2.5 - 6 May 2008
   Removed $wgSharedDBtables.

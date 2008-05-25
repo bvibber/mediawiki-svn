@@ -20,7 +20,7 @@ class SpecialViewConfig extends SpecialConfigure {
 	/**
 	 * Show the special page
 	 *
-	 * @param mixed $par Parameter passed to the page
+	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut, $wgConf;
@@ -59,7 +59,7 @@ class SpecialViewConfig extends SpecialConfigure {
 		static $allowed = null;
 		if( $allowed === null ){
 			global $wgUser;
-			$allowed = $wgUser->isAllowed( 'viewconfigure-all' );
+			$allowed = $wgUser->isAllowed( 'viewconfig-all' );
 		}
 		return $allowed;
 	}
@@ -74,7 +74,7 @@ class SpecialViewConfig extends SpecialConfigure {
 
 	protected function buildInput( $conf, $type, $default ){
 		if( in_array( $conf, parent::$viewRestricted ) && !$this->isUserAllowedAll() )
-			return wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) );
+			return '<span class="disabled">' . wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) . '</span>';
 		return parent::buildInput( $conf, $type, $default );
 	}
 
@@ -155,7 +155,7 @@ class SpecialViewConfig extends SpecialConfigure {
 	/**
 	 * Return true if all settings in this section are restricted
 	 *
-	 * @param Array $sectArr one value of self::$settings array
+	 * @param $sectArr Array: one value of self::$settings array
 	 */
 	protected function isSectionRestricted( $sectArr ){
 		return false;
