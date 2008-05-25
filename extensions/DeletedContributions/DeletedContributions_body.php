@@ -262,7 +262,7 @@ class DeletedContributionsPage extends SpecialPage {
 				: 'sp-contributions-footer';
 
 
-			$text = wfMsg( $message, $target );
+			$text = wfMsgNoTrans( $message, $target );
 			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
 				$wgOut->addHtml( '<div class="mw-contributions-footer">' );
 				$wgOut->addWikiText( $text );
