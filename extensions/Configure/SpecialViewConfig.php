@@ -72,12 +72,6 @@ class SpecialViewConfig extends SpecialConfigure {
 		return false;
 	}
 
-	protected function buildInput( $conf, $type, $default ){
-		if( in_array( $conf, parent::$viewRestricted ) && !$this->isUserAllowedAll() )
-			return '<span class="disabled">' . wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) . '</span>';
-		return parent::buildInput( $conf, $type, $default );
-	}
-
 	/**
 	 * Just in case, security
 	 */

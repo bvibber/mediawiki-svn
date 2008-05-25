@@ -209,7 +209,9 @@ class SpecialConfigure extends SpecialPage {
 	 * @return bool
 	 */
 	protected function userCanEdit( $setting ){
-		return ( !in_array( $setting, self::$editRestricted ) || $this->isUserAllowedAll() );
+		return ( ( !in_array( $setting, self::$viewRestricted )
+			&& !in_array( $setting, self::$editRestricted ) )
+			|| $this->isUserAllowedAll() );
 	}
 
 	/**
@@ -530,6 +532,8 @@ class SpecialConfigure extends SpecialPage {
 	 * @return String xhtml fragment
 	 */
 	protected function buildInput( $conf, $type, $default ){
+		if( in_array( $conf, self::$viewRestricted ) && !$this->isUserAllowedAll() )
+			return '<span class="disabled">' . wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) . '</span>';
 		$allowed = $this->userCanEdit( $conf );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )

@@ -32,7 +32,7 @@ $wgGroupPermissions['bureaucrat']['configure'] = true;
 
 ## Rights for Special:ViewConfig
 $wgGroupPermissions['sysop']['viewconfig'] = true;
-$wgGroupPermissions['bureaucrat']['viewconfig-all'] = true;
+#$wgGroupPermissions['developer']['viewconfig-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 

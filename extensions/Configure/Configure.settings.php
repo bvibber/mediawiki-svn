@@ -932,6 +932,9 @@ $viewRestricted = array(
 	'wgExternalServers',
 # Emal
 	'wgSMTP',
+# Proxy
+	'wgProxyKey',
+	'wgSecretKey',
 );
 
 /**
