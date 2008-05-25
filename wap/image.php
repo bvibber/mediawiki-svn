@@ -26,7 +26,7 @@
 			$h = imagesy($imgSource);
 			$img = imagecreatetruecolor($w, $h);
 			$white = imagecolorallocate($img, 255, 255, 255);
-			imagefill($img, 0, 0, $white);
+			imagefilledrectangle($img, 0, 0, $w, $h, $white);
 			imagecopyresampled($img, $imgSource,
 				0, 0, // dst
 				0, 0, // src
