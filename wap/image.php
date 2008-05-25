@@ -19,7 +19,19 @@
 #			$img = imagecreatefromsvg($src);
 #			break;
 		case 'png' :
-			$img = imagecreatefrompng($src);
+			// Reapply onto a white bg,
+			// otherwise it ends up on black which is ugly.
+			$imgSource = imagecreatefrompng($src);
+			$w = imagesx($imgSource);
+			$h = imagesy($imgSource);
+			$img = imagecreatetruecolor($w, $h);
+			$white = imagecolorallocate($img, 255, 255, 255);
+			imagefill($img, 0, 0, $white);
+			imagecopyresampled($img, $imgSource,
+				0, 0, // dst
+				0, 0, // src
+				$w, $h, // dst
+				$w, $h); // src
 			break;
 		case 'bmp' :
 			$img = imagecreatefrombmp($src);
