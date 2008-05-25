@@ -11,7 +11,9 @@
 
 $messages = array();
 
-/* English (Rob Church) */
+/** English
+ * @author Rob Church
+ */
 $messages['en'] = array(
 	'makebot'                 => 'Grant or revoke bot status',
 	'makebot-desc'            => 'Special page allows local bureaucrats to grant and revoke bot permissions',
@@ -34,9 +36,12 @@ $messages['en'] = array(
 	'right-makebot'           => 'Grant and revoke bot flags',
 );
 
-/* Arabic */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'makebot'                 => 'منح أو سحب صلاحية بوت',
+	'makebot-desc'            => 'صفحة خاصة تسمح للبيروقراطيين المحليين بمنح وسحب سماحات البوت',
 	'makebot-header'          => '\'\'\'يمكن للبيروقراط المحلي استخدام هذه الصفحة لإعطاء [[مساعدة:بوت|صلاحية بوت]] لحساب مستخدم آخر.\'\'\'<br />تخفي صلاحية البوت تعديلات المستخدم من صفحة أحدث التغييرات و القوائم المماثلة، و هذا يعتبر مفيدا إلى المستخدمين الذين يقومون بتعديلات آلية. يجب أن يكون هذا تبعا للسياسات المتبعة.',
 	'makebot-username'        => 'اسم المستخدم:',
 	'makebot-search'          => 'اذهب',
@@ -53,6 +58,7 @@ $messages['ar'] = array(
 	'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[{{MediaWiki:Grouppage-bot}}|البوت]].',
 	'makebot-logentrygrant'   => 'منح صلاحية بوت إلى [[$1]]',
 	'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
+	'right-makebot'           => 'منح وسحب أعلام البوت',
 );
 
 /** Asturian (Asturianu)
