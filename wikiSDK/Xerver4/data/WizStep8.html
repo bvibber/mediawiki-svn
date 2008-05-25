@@ -1,0 +1,724 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 8 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+
+gotWindowsWarning=false;
+function haveSeenWindowsWarning()
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")==-1)	//Om man inte har windows
+		return true;	// Så säger vi att vi redan sett meddelandet så vi slipper se det
+
+	if (!gotWindowsWarning)
+	{
+		gotWindowsWarning=true;
+		return false;
+	}
+		return true;
+}
+
+
+
+
+function removeProtFolders()
+{
+	if (document.myForm.allFoldersAndZones.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.allFoldersAndZones.options[document.myForm.allFoldersAndZones.selectedIndex].text+".\nDo you want to remove it?"))
+		{
+			removeElementByIndex(allProtFolders, document.myForm.allFoldersAndZones.selectedIndex)
+			updateProtFoldersList();
+			updateListOfUsers();
+		}
+	}
+	else
+	{
+		alert("Please select the folder you want to remove.");
+	}
+}
+
+
+
+function removeProtUsers()
+{
+	if (document.myForm.allUsers.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.allUsers.options[document.myForm.allUsers.selectedIndex].text+".\nDo you want to remove it?"))
+		{
+			tmpDirSelected=document.myForm.allFoldersAndZones.selectedIndex;
+			removeUserByIndex(allProtFolders, document.myForm.allUsers.selectedIndex, document.myForm.allFoldersAndZones.selectedIndex)
+			updateProtFoldersList();
+			document.myForm.allFoldersAndZones.selectedIndex=tmpDirSelected;
+			updateListOfUsers();
+		}
+	}
+	else
+	{
+		alert("Please select the user you want to delete.");
+	}
+}
+
+
+
+
+function addProtUsers()
+{
+	if (document.myForm.allFoldersAndZones.selectedIndex!=-1)
+	{
+		line=document.myForm.allFoldersAndZones.options[document.myForm.allFoldersAndZones.selectedIndex].value
+		folder=giveFolderWithoutAsterix(line.substring(0,line.indexOf("<<@>>")));
+		realm=line.substring(line.indexOf("<<@>>")+"<<@>>".length,line.lastIndexOf("<<@>>"));
+		if (line.substring(line.indexOf("<<@>>")-1,line.indexOf("<<@>>"))=="*")
+			subfolder="true";
+		else
+			subfolder="false";
+
+		addProtFoldersWindow=window.open("/?action=showAddProtFrameSetup&showInFrame=addUser&folderValue="+escape(folder)+"&realmValue="+escape(realm)+"&subfoldersValue="+escape(subfolder),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=350");
+		addProtFoldersWindow.focus();
+	}
+	else
+		alert("Please select the folder you like to add a user to.")
+}
+
+
+function addProtFolders()
+{
+	addProtFoldersWindow=window.open("/?action=showAddProtFrameSetup&showInFrame=addFolder","addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=350");
+	addProtFoldersWindow.focus();
+}
+
+
+function nollstallVarden()
+{
+	clearSelectBox(document.myForm.allFoldersAndZones);
+	clearSelectBox(document.myForm.allUsers);
+}
+
+
+
+var allaKataloger=new Array();
+var allProtFolders=new Array();
+function createProtectedList(argAllaKataloger, allProtected)
+{
+	if (argAllaKataloger==null || argAllaKataloger=="" || argAllaKataloger=="undefined")
+		allaKataloger=new Array();
+	else
+		allaKataloger=argAllaKataloger.split(",");
+
+	if (allProtected==null || allProtected=="" || allProtected=="undefined")
+		allProtFolders=new Array();
+	else
+		allProtFolders=allProtected.split("<<$>>");
+
+	nollstallVarden();
+	updateProtFoldersList();
+}
+
+function updateProtFoldersList()
+{
+	clearSelectBox(document.myForm.allFoldersAndZones);
+	for (ii=0; ii<allProtFolders.length; ii++)
+		addStringToSelectBox(allProtFolders[ii], allProtFolders[ii].substring(0,allProtFolders[ii].lastIndexOf("<<@>>")).split("<<@>>")[0]+"    ["+allProtFolders[ii].substring(0,allProtFolders[ii].lastIndexOf("<<@>>")).split("<<@>>")[1]+"]",document.myForm.allFoldersAndZones);
+}
+
+
+function updateListOfUsers()
+{
+	if (document.myForm.allFoldersAndZones.selectedIndex!=-1)
+	{
+		raden=document.myForm.allFoldersAndZones.options[document.myForm.allFoldersAndZones.selectedIndex].value;
+		arrayOfUsers=raden.substring(raden.lastIndexOf("<<@>>")+"<<@>>".length).split(";")
+		clearSelectBox(document.myForm.allUsers);
+		for (i=0; i<arrayOfUsers.length; i++)
+			addStringToSelectBox(document.myForm.allFoldersAndZones.options[document.myForm.allFoldersAndZones.selectedIndex].value, arrayOfUsers[i], document.myForm.allUsers);
+	}
+	else	//no folder is selected
+		clearSelectBox(document.myForm.allUsers);	//remove all users from list (no folder will be selected anymore)
+}
+
+
+function addStringToSelectBox(value, txt, selectBox)	//selctBox=document.form.name
+{
+	selectBox.options[++selectBox.length-1]=new Option(txt, value);
+}
+
+
+function clearSelectBox(selectBox)	//selctBox=document.form.name
+{
+	while (selectBox.length>0)
+		selectBox.options[0]=null;
+}
+
+function giveFolderWithoutAsterix(folder)
+{
+	if (folder.substring(folder.length-1)=="*")
+		return folder.substring(0,folder.length-1);
+	else
+		return folder;
+}
+
+function numberOfUsersAtFolder(thisFolder)	//thisFolder can be "c:/dir/*"
+{
+	for (i=0; i<allProtFolders.length; i++)
+		if (giveFolderWithoutAsterix(allProtFolders[i].substring(0,allProtFolders[i].indexOf("<<@>>")))==thisFolder)
+			if (allProtFolders[i].substring(allProtFolders[i].lastIndexOf("<<@>>")+"<<@>>".length)=="")
+				return 0;
+			else
+				return allProtFolders[i].substring(allProtFolders[i].lastIndexOf("<<@>>")+"<<@>>".length).split(";").length;
+	return -1;	//folder does not exists
+}
+
+
+function numberOfUsersByIndex(index)
+{
+	if (allProtFolders[index].substring(allProtFolders[index].lastIndexOf("<<@>>")+"<<@>>".length)=="")
+		return 0;
+	else
+		return allProtFolders[index].substring(allProtFolders[index].lastIndexOf("<<@>>")+"<<@>>".length).split(";").length;
+
+	return -1;	//folder does not exists
+}
+
+function userExists(user, index)
+{
+	userList=allProtFolders[index].substring(allProtFolders[index].lastIndexOf("<<@>>")+"<<@>>".length).split(";");
+	for (jj=0; jj<userList.length; jj++)
+		if (userList[jj].substring(0,userList[jj].indexOf(":"))==user)
+			return true;
+
+	return false;
+}
+
+
+function changeElementUpdatePassword(user, password, index)
+{
+	userList=allProtFolders[index].substring(allProtFolders[index].lastIndexOf("<<@>>")+"<<@>>".length).split(";");
+	for (jj=0; jj<userList.length; jj++)
+		if (userList[jj].substring(0,userList[jj].indexOf(":"))==user)
+			userList[jj]=user+":"+password;
+
+	tmpLine=allProtFolders[index].substring(0,allProtFolders[index].lastIndexOf("<<@>>")+"<<@>>".length)
+	for (jj=0; jj<userList.length; jj++)
+		tmpLine+=userList[jj]+";";
+
+	tmpLine=tmpLine.substring(0,tmpLine.length-1)
+	allProtFolders[index]=tmpLine;
+}
+
+function addLineToProtDatabase(theFolder, theRealm, theUserName, thePass, subfolders)
+{
+	if (numberOfUsersAtFolder(theFolder)==-1)	//folder is not already shared
+		if (subfolders)	//also share subfolders
+			allProtFolders[allProtFolders.length++]=theFolder+"*"+"<<@>>"+theRealm+"<<@>>"+theUserName+":"+thePass;
+		else	//don't share subfolders
+			allProtFolders[allProtFolders.length++]=theFolder+"<<@>>"+theRealm+"<<@>>"+theUserName+":"+thePass;
+	else	//folder is already shared
+		for (i=0; i<allProtFolders.length; i++)
+			if (giveFolderWithoutAsterix(allProtFolders[i].substring(0,allProtFolders[i].indexOf("<<@>>")))==theFolder)
+			{
+				if (userExists(theUserName, i))
+				{
+					changeElementUpdatePassword(theUserName, thePass, i);
+				}
+				else
+				{
+					if (numberOfUsersByIndex(i)=="0")
+					{
+						allProtFolders[i]+=theUserName+":"+thePass;
+					}
+					else
+					{
+						allProtFolders[i]+=";"+theUserName+":"+thePass;
+					}
+					break;
+				}
+			}
+
+	updateProtFoldersList();
+	document.myForm.allFoldersAndZones.selectedIndex=getIndexByFolder(theFolder);	//Select the folder that has been created/updated
+	updateListOfUsers();	//Now we show all users for this directory
+}
+
+
+
+//If an element in myArray is longer than str, only compare the first str.length char. For example: "abc" is equal to "abc123"
+function stringIsInSelectBoxEqualLength(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str.toLowerCase()==myArray[i].value.substring(0,str.length).toLowerCase())
+			return true;
+	return false;
+}
+
+
+//If an element in myArray is longer than str, only compare the first str.length char. For example: "abc" is equal to "abc123"
+function stringIsInArrayEqualLength(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str.toLowerCase()==myArray[i].substring(0,str.length).toLowerCase())
+			return true;
+	return false;
+}
+
+//Returns true if "oneFolder" is a shared directory. The list of directories are given by "sharedFolders".
+function folderIsShared(oneFolder, sharedFolders)
+{
+	for (i=0; i<sharedFolders.length; i++)
+	{
+		tmpDir=sharedFolders[i];
+
+		if (tmpDir.substring(tmpDir.length-1)=="*")	//If the folder ends with an "*"
+		{
+			tmpDir=tmpDir.substring(0,tmpDir.length-1)	//"c:/folder/*" ==> "c:/folder/"
+
+		if (oneFolder.substring(0,tmpDir.length).toLowerCase()==tmpDir.toLowerCase())
+			return true;
+		}
+		else if (oneFolder.toLowerCase()==tmpDir.toLowerCase())	//If the subfolders are not shared, the folders must be equal
+			return true;
+		
+	}
+	return false;
+}
+
+function fixaRattMedSlash(url)
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+	{
+		if (url.indexOf("/")!=-1)  //om man har / i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a UNIX-style path.\n\nA path in Windows shall not use /, but instead \\.\nExamples:\nWrong: c:/windows/\nCorrect: c:\\windows\\\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "/","\\")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "/","\\");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+	else 
+	{
+		if (url.indexOf("\\")!=-1)	 //om man har \ i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a Windows path.\n\nA path in UNIX, Linux or Mac shall not use \\, but instead /.\nExamples:\nWrong: \\files\\\nCorrect: /files/\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "\\","//")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "\\","//");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+}
+
+
+//Denna funktion lägger till / eller \ beroende på vad som redan finns i "url".
+function fixaRattMedSlashIslutet(url)
+{
+	if (url.substring(url.length-1)!="\\" && url.substring(url.length-1)!="/")	//Man har inte någon slash i slutet
+	{
+		if (url.indexOf("\\")!=-1)	//Man har redan \ i url
+		{
+			url+="\\";
+		}
+		else// if (url.indexOf("/")!=-1)
+		{
+			url+="/";
+		}
+	}
+	
+	return url;
+}
+
+
+function fixaRattMedEnhetsbokstav(url)
+{
+	if (url.substring(1,2)!=":")	//Om [man inte varnats tidigare] och om [man inte har : som andra tecken i sin adress]
+		if (!haveSeenWindowsWarning() && confirm("The path to your directory is:\n"+url+"\n\nIf you are using Windows the path should start with your drive letter such as (c:\\).\n\nPress OK to change your path to something else.\nPress Cancel to ignore this message and add this to your list with directories."))
+		{
+			gotWindowsWarning=false;	//Visa varningen framöver
+			return "";	//Avbryt
+		}
+
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+		return url.substring(0,1).toLowerCase()+url.substring(1);	//Gör "C:/mapp/" ==> "c:/mapp/"
+	else
+		return url;
+}
+
+function sokOchErsatt(bigString, gammalStr, nyStr)	//Sök "bigString" efter "gammalStr" och ersätt med "NyStr"
+{
+	storStrang=bigString;
+	for (i=0; i<=storStrang.length-gammalStr.length; i++)
+	{
+		if (storStrang.substring(i,i+gammalStr.length)==(gammalStr))
+		{
+			storStrang=storStrang.substring(0,i)+nyStr+storStrang.substring(i+gammalStr.length);
+			i+=nyStr.length-1;	//Utan detta så går loopen för all evighet om man t.ex. har strängen "ab/cd" och ersätter "/" med "//"
+		}
+	}
+	return storStrang;
+}
+
+function stringIsInArray(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str==myArray[i].value)
+			return true;
+	return false;
+}
+
+
+function removeElementByIndex(allProtFolders, index)
+{
+	for (jj=index; jj<allProtFolders.length-1; jj++)
+		allProtFolders[jj]=allProtFolders[jj+1];
+
+	allProtFolders.length--;
+}
+
+function removeUserByIndex(allProtFolders, indexUser, indexFolder)
+{
+/*
+	if (numberOfUsersByIndex(indexFolder)==1)
+		if (confirm("You are about to remove the last user who can login at XXXXXXXXXXXXXXXXXXXXXXXX"))
+			removeElementByIndex(allProtFolders, indexFolder);	//also remove folder
+	else
+	{
+*/
+		listOfUsers=allProtFolders[indexFolder].substring(allProtFolders[indexFolder].lastIndexOf("<<@>>")+"<<@>>".length).split(";");
+		for (jj=indexUser; jj<listOfUsers.length-1; jj++)
+			listOfUsers[jj]=listOfUsers[jj+1];
+
+		listOfUsers.length--;	//listOfUsers now contains all users we want
+		newLine=allProtFolders[indexFolder].substring(0,allProtFolders[indexFolder].lastIndexOf("<<@>>")+"<<@>>".length)
+		for (jj=0; jj<listOfUsers.length; jj++)
+			newLine+=listOfUsers[jj]+";";
+
+		if (listOfUsers.length!=-1 && listOfUsers.length!=0)
+			newLine=newLine.substring(0,newLine.length-1);
+
+		allProtFolders[indexFolder]=newLine;
+//	}
+}
+
+
+function getIndexByFolder(folder)
+{
+	for (jj=0; jj<allProtFolders.length; jj++)
+		if (allProtFolders[jj].substring(0,folder.length)==folder)
+			return jj;
+
+	return -1;	//Folder does not exists
+}
+
+
+function changeElementShareSubfolders(index, subfolders)
+{
+	if (index==-1)
+		return false;
+
+	tmpFolder=giveFolderWithoutAsterix(allProtFolders[index].substring(0,allProtFolders[index].indexOf("<<@>>")));
+	if (subfolders)	//the folder shall be shared with all subfolders
+		allProtFolders[index]=tmpFolder+"*"+allProtFolders[index].substring(allProtFolders[index].indexOf("<<@>>"));
+	else
+		allProtFolders[index]=tmpFolder+allProtFolders[index].substring(allProtFolders[index].indexOf("<<@>>"));
+
+	return true;
+}
+
+function changeElementNewRealm(index, realm)
+{
+	if (index==-1)
+		return false;
+
+	allProtFolders[index]=allProtFolders[index].substring(0,allProtFolders[index].indexOf("<<@>>")+"<<@>>".length)+realm+allProtFolders[index].substring(allProtFolders[index].lastIndexOf("<<@>>"))
+
+	return true;
+}
+
+
+function editSelectedFolder()
+{
+	if (document.myForm.allFoldersAndZones.selectedIndex!=-1)
+	{
+		line=document.myForm.allFoldersAndZones.options[document.myForm.allFoldersAndZones.selectedIndex].value
+		folder=giveFolderWithoutAsterix(line.substring(0,line.indexOf("<<@>>")));
+		realm=line.substring(line.indexOf("<<@>>")+"<<@>>".length,line.lastIndexOf("<<@>>"));
+		if (line.substring(line.indexOf("<<@>>")-1,line.indexOf("<<@>>"))=="*")
+			subfolder="checked";
+		else
+			subfolder="";
+		addProtFoldersWindow=window.open("/?action=showAddProtDirSetup&folderValue="+escape(folder)+"&realmValue="+escape(realm)+"&subfoldersValue="+escape(subfolder),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=350");
+		addProtFoldersWindow.focus();
+	}
+	else
+		alert("Please select the folder you like to edit.")
+}
+
+
+
+
+function removeQuoteFromURL(url)
+{
+	if (url.charAt(0)=="\"")
+		url=url.substring(1);
+	if (url.charAt(url.length-1)=="\"")
+		url=url.substring(0,url.length-1);
+	return url;
+}
+
+
+function addThisProt(theFolder, theRealm, theUserName, thePass1, thePass2, subfolders)
+{
+	theFolder=removeQuoteFromURL(theFolder);
+
+	if (theFolder=="" || theRealm=="" || theUserName=="" || thePass1=="" || thePass2=="")
+	{
+		showAlertXerverHelp("Please enter something in all fields.")
+		return false;
+	}
+
+	if (	theFolder.indexOf("<<@>>")!=-1 ||	theFolder.indexOf("<<$>>")!=-1 ||
+		theRealm.indexOf("<<@>>")!=-1 ||	theRealm.indexOf("<<$>>")!=-1 ||
+		theUserName.indexOf("<<@>>")!=-1 ||	theUserName.indexOf("<<$>>")!=-1 ||
+		thePass1.indexOf("<<@>>")!=-1 ||	thePass1.indexOf("<<$>>")!=-1)
+	{
+		showAlertXerverHelp("No fields should contain <<@>> or <<$>>.")
+		return false;
+	}
+
+	if (thePass1.toLowerCase().indexOf("password")!=-1)
+	{
+		showAlertXerverHelp("Please press the \"SetPassword\" buttons to choose a username/password.")
+		return false;
+	}
+
+	if (thePass1!=thePass2)
+	{
+		showAlertXerverHelp("The passwords are not equal.\nThe two passwords must be equal!")
+		return false;
+	}
+
+	nyURLtmp=fixaRattMedEnhetsbokstav(theFolder);
+	if (nyURLtmp=="")
+	{
+		return false;
+	}
+	else
+	{
+		theFolder=nyURLtmp;
+	}
+
+	if (	(theFolder.lastIndexOf(".")>theFolder.lastIndexOf("\\") && (theFolder.indexOf("/")==-1)) ||
+		(theFolder.lastIndexOf(".")>theFolder.lastIndexOf("/") && theFolder.indexOf("\\")==-1))
+		if (!haveSeenWindowsWarning() && confirm("Is "+theFolder+" a folder or a file?\nPress OK if it is a file.\nPress Cancel if it is a folder."))
+		{
+			gotWindowsWarning=false;	//Visa varningen framöver
+			showAlertXerverHelp("You can only set password protection to folders, not to files.\nPlease change "+theFolder+" to a directory.");
+			return false;
+		}
+
+	theFolder=fixaRattMedSlash(theFolder);
+	theFolder=fixaRattMedSlashIslutet(theFolder);
+
+	if (stringIsInSelectBoxEqualLength(theFolder, document.myForm.allFoldersAndZones.options))
+	{
+		changeElementNewRealm(i, theRealm);
+	}
+
+	if (stringIsInArrayEqualLength(theFolder, allProtFolders) || stringIsInArrayEqualLength(theFolder+"*", allProtFolders))	//Om adressen redan finns i listan...
+		for (i=0; i<allProtFolders.length; i++)	//Om man tidigare bara delat ut mappen (inte underkataloger), i så fall ska vi nu uppdatera fältet så att även underkatalogerna blir utdelade (och tvärt om, dvs. man först hade delat ut underkatalogerna och inte vill det mera)
+			if (theFolder==giveFolderWithoutAsterix(allProtFolders[i].substring(0,allProtFolders[i].indexOf("<<@>>"))))
+			{
+				changeElementShareSubfolders(i, subfolders);
+			}
+
+
+	if (!folderIsShared(theFolder, allaKataloger))	//If you try to protect a directory which you have NOT shared...
+	{
+		if(confirm("WARNING!\n\nYour directory ("+theFolder+") is NOT shared!\nCreateing an user account for a directory DOES NOT automatically add that directory to the list of shared directories.\n\nThis means that if someone visits this directory he will get a \"403 Forbidden\" error message, as the user does not have permission to view the content of "+theFolder+".\n\n\nDo you want to add "+theFolder+" to your list with shared directories? (This means that "+theUserName+" will be able to view the content of this directory)"))
+			if (confirm("Do you also want to share the subfolders to "+theFolder+"?\n\nOK = Yes, share "+theFolder+" and all subfolders.\nCancel = No, share only "+theFolder+"."))
+				allaKataloger[allaKataloger.length++]=theFolder+"*";
+			else
+				allaKataloger[allaKataloger.length++]=theFolder;
+	}
+
+	addLineToProtDatabase(theFolder, theRealm, theUserName, thePass1, subfolders);
+	showAlertXerverHelp(theUserName+" has been added to the list.\nYou might at any moment add more users to the list.");
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
+function submitForm()
+{
+	nyAddress="action=wizardStep9&direction=forward&save=yes&protectedFolders=";
+
+	if (allProtFolders.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<allProtFolders.length; i++)
+		{
+			tmpHarLagtTillKomma=true;
+			nyAddress+=allProtFolders[i]+"<<$>>";
+		}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-"<<$>>".length);
+	}
+
+	nyAddress+="&sharedPaths="
+
+	if (allaKataloger.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<allaKataloger.length; i++)
+			if (allaKataloger[i]!="")
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=allaKataloger[i]+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 8 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+
+
+<B>Password protected folders and zones (resources)</B>
+<BR>
+<SELECT NAME="allFoldersAndZones" SIZE=4 onChange="updateListOfUsers()"><!--  onChange="status=this.options[this.selectedIndex].value;" -->
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+<!--
+<OPTION VALUE="c:\*">c:\*
+-->
+</SELECT>
+<BR>
+<INPUT TYPE="button" NAME="addProtFoldersButton" VALUE="Add" onClick="addProtFolders()"><INPUT TYPE="button" NAME="removeProtFoldersButton" VALUE="Remove" onClick="removeProtFolders()"><INPUT TYPE=button VALUE="Edit" onClick="editSelectedFolder()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('This is a list with all folders you have choosed to protect with a password.\n\nEach folder must belong to one (and only one) zone.\nWhen a user goes from one zone to another he will be prompted for a username and password again, disregarding if he previously has login.\nThis is for increased security.\nAlso, if logging is enabled you can see which user has login to which zone.');">
+
+<P>
+<B>Users for this folder</B>
+<BR>
+<SELECT NAME="allUsers" SIZE=4><!--  onChange="status=this.options[this.selectedIndex].value;" -->
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+<!--
+<OPTION VALUE="c:\*">c:\*
+-->
+</SELECT>
+<BR>
+<INPUT TYPE="button" NAME="addProtFoldersButton" VALUE="Add" onClick="addProtUsers()"><INPUT TYPE="button" NAME="removeProtFoldersButton" VALUE="Remove" onClick="removeProtUsers()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('When you have selected a folder from the list above, you will see all users who have access to that particular folder in this list.');">
+
+<P>
+<BR>
+
+
+
+
+<TABLE BORDER=1 BGCOLOR="#cccccc" CELLSPACING=0 CELLPADDING=2>
+<TR BGCOLOR="#aaaaaa"><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>What is a password protected folder?</B>
+</FONT>
+</TD></TR><TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+You have previously chosen which folders that should be shared.
+If you want you can as well password protect the folders that you have shared.
+<P>
+
+When someone visits a folder that you have protected with a password
+the visitor will see a login prompt. If the visitor has an account/password
+(which you shall create above) he will get access to view the content of that folder.
+<P>
+
+Xerver uses a well-known secure one-way crypto, which by today has no known
+decrypting algorithms.
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<BR>
+
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep7&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Setup!</TITLE>
+
+<SCRIPT LANGUAGE=javascript>
+function openXerverSetup()
+{
+	addDirWindow=window.open("/action=wizardFrames","XerverSetup","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=630,height=465");
+	addDirWindow.focus();
+}
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR=white TEXT=black>
+
+
+	<TABLE WIDTH='500' BORDER='0' CELLPADDING=0 CELLSPACING=0>
+	<TR>
+	<TD>
+	<CENTER>
+	<A HREF="javascript:openXerverSetup()">
+	<IMG SRC='?action=showLogo' BORDER=0 ALT="Xerver Logo">
+	</A>
+
+		<TABLE WIDTH='500' BORDER=0 CELLPADDING=0 CELLSPACING=0>
+		<TR>
+		<TD VALIGN=top WIDTH=339>
+
+			<CENTER>
+			<A HREF="javascript:openXerverSetup()" STYLE="text-decoration:none;">
+			<FONT FACE='arial,verdana' SIZE='+2'>
+			<B>
+			Start FTP Setup</B>
+			</FONT>
+			</A>
+			</CENTER>
+
+			<BR>
+			<BR>
+			<BR>
+
+			<B>
+			<FONT FACE='arial,verdana' SIZE='-1'>
+			Xerver Wizard will guide you
+			<BR>
+			through this setup program.
+			</FONT>
+			<P>
+
+			<FONT FACE='arial,verdana' SIZE='-2'>
+			This is the setup for the FTP server only.
+			<BR>
+			The HTTP server setup is running at
+			<A HREF="http://127.0.0.1:32123/">port 32123</A>.
+			</FONT>
+
+			</B>
+
+		</TD><TD WIDTH=261>
+
+			<A HREF="javascript:openXerverSetup()"><IMG SRC="?action=showBigWizard" BORDER=0 WIDTH=261 HEIGHT=326 ALT="Xerver Wizard"></A>
+
+		</TD></TR>
+		</TABLE>
+	</CENTER>
+
+	</TD></TR>
+	</TABLE>
+
+</BODY>
+</HTML>
+

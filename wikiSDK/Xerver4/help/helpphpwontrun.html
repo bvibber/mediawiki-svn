@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+
+
+
+
+<B>I have installed PHP. But my scripts won't run anyway. Why?</B>
+<P>
+	This has actually nothing to do with Xerver.
+	The problem is that your system's path to PHP is incorrect.
+	The path to PHP is set in a environment variable called PATH.
+	A valid PATH variable can <U>for example</U> be:
+	<BR>
+	<TT>C:\WINNT\system32;C:\WINNT\;C:\PHP\;D:\Something\Else\</TT> (Windows users)
+	<BR>
+	...or...
+	<BR>
+	<TT>/usr/openwin/bin:/opt/local/bin:/opt/pd/bin:/opt/gnu/bin:/opt/local/java/jdk/bin:.</TT> (UNIX users)
+	<P>
+
+	You can add the path to PHP to your PATH variable if you follow these steps:
+	<P>
+	<B>Windows NT/2000/XP users:</B>
+	<OL>
+	<LI> Go to Contol Panel/System.
+	<LI> Advanced tab
+	<LI> Press Environment Variable
+	<LI> Check the PATH variable under "System Variables".
+	<LI> Press Edit...
+	<LI> Don't erase what you see here, but add the path to PHP to the beginning of this line and press OK. (For example: If the PATH variable is <B>C:\WINNT\system32;C:\WINNT\</B> and PHP.exe is located at <B>C:\PHP\</B>, change the PATH to <B>C:\PHP\;C:\WINNT\system32;C:\WINNT\</B>)
+	<LI> Press OK.
+	<LI> Press OK again.
+	<LI> Start Xerver (if already running, close Xerver and restart it).
+	</OL>
+
+
+
+	<B>Windows 95/98/ME users:</B>
+	<OL>
+	<LI> Open c:\autoexec.bat with notepad (or another text editor).
+	<LI> Scroll down to the last line.
+	<LI> Add this line to the bottom of the autoexec.bat file: <B>set PATH=pathToPHP;%PATH%</B> where pathToPHP is the folder where PHP.exe is located. (For example: If PHP.exe is located at <B>C:\PHP\</B>, this line shall be added to the bottom of autoexec.bat: <B>set PATH=C:\PHP\;%PATH%</B>)
+	<LI> Save your settings to c:\autoexec.bat.
+	<LI> Restart your computer.
+	</OL>
+
+
+
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

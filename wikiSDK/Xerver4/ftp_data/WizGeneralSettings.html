@@ -1,0 +1,195 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+function submitForm()
+{
+	nyAddress="action=wizardStep2&direction=forward&save=yes";
+
+	nyAddress+="&portNr="+document.myForm.portNr.value;
+	nyAddress+="&allowFolderListing="+document.myForm.allowFolderListing.options[document.myForm.allowFolderListing.selectedIndex].value;
+	nyAddress+="&shareHiddenFiles="+document.myForm.shareHiddenFiles.options[document.myForm.shareHiddenFiles.selectedIndex].value;
+	nyAddress+="&allowCGIScript="+document.myForm.allowCGIScript.options[document.myForm.allowCGIScript.selectedIndex].value;
+
+//	alert(nyAddress)
+	self.location.replace("/"+escape(nyAddress));
+	return true;
+}
+
+
+function setPortNr(nr)
+{
+	document.myForm.portNr.value=nr;
+}
+
+function setShowAlias(nr)
+{
+	if (nr==0 ||nr==1 || nr==2)
+		document.myForm.showAlias.selectedIndex=nr;
+}
+
+function setGuestAccount(nr)
+{
+	if (nr==0 ||nr==1)
+		document.myForm.guestAccount.selectedIndex=nr;
+}
+
+function setLogFile(logFile)
+{
+	document.myForm.logFile.value=logFile;
+}
+
+
+function sendForm()
+{
+	portNr=document.myForm.portNr.value;
+
+	if (portNr!=parseInt(portNr))
+	{
+		showAlertXerverHelp("The port number must be a number.");
+		return false;
+	}
+
+	if (portNr>65535 || portNr<1)
+	{
+		showAlertXerverHelp("The port number shall not be larger than 65535 and it shall indeed not be less than 1.");
+		return false;
+	}
+
+	if (portNr=='32123' || portNr=='32124')
+	{
+		document.myForm.portNr.value="21";
+		showAlertXerverHelp("Please don't use the ports 32123 or 32124.\nIt's reserved for Xervers Setup tools.\nFeel free to use anything but 32123 and 32124.");
+		return false;
+	}
+
+	if ((portNr>=49151 || portNr<=1024) && portNr!=21)
+	{
+		if (portNr>=49151)
+			reason="The port number you have choosen ("+portNr+") is greater than 49151.";
+		else // (portNr<=1024)
+			reason="The port number you have choosen ("+portNr+") is less than 1024.";
+
+		if (!confirm(reason+"\nTo avoid future problems you are recommended to change port number to 21 or something between 1024 and 49151.\n\nPress OK to use "+portNr+" as port number anyway.\nPress Cancel to change port number to something else."))
+		{
+			return false;
+		}
+	}
+
+//else if ((this.value>=49151 || this.value<=1024) && this.value!=21){this.value='21';
+//showAlertXerverHelp('Please don\'t use that port number.\nYou must pick a port between 1024 and 49151 (or port 21, which is the default FTP port).');}
+
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS">
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+
+<CENTER>
+<H3>Xerver FTP Setup</H3>
+</CENTER>
+
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get ONSUBMIT="return sendForm()">
+<INPUT TYPE="hidden" NAME="action" VALUE="saveConfig">
+
+
+
+<B>Port:</B> <INPUT TYPE="text" NAME="portNr" VALUE="" SIZE=5 onChange="if (this.value=='32123' || this.value=='32124'){this.value='21';showAlertXerverHelp('Please don\'t use the ports 32123 or 32124.\nIt\'s reserved for Xervers Setup tools.\nFeel free to use anything but 32123 and 32124.');}">
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('If you don\'t know what this is, enter 21 in this field.\n\nIf you choose something else than 21, you must tell your FTP client what port you have choosen here.\n\nExample: If you enter 5021 in this field, you must change settings in your FTP client so that it will connect to port 5021.\n')">
+
+<BR>
+Please choose which port you want to use. We recommend port "21",
+which is the standard port for FTP servers. If you are already using port 21
+(or if port 21 doesn't work for you), you might want to use port 5021.
+If you don't want use port 21, you are strongly recommended to pick a port between 1024 and 49151.
+<P>
+<BR>
+
+
+<B>When a user lists the content of / (root), what shall the user see?</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('If you don\'t understand this, choose to list everything (and hide nothing).\n\nWhen a user makes a directory listing for / (his root), you can choose if he shall see his aliases (if you have created any aliases for his account) or if he shall see the directories in his root or if he shall see both aliases and directories.')">
+<BR>
+<SELECT NAME="showAlias">
+	<OPTION VALUE="0">List aliases. Hide files and folders.</OPTION>
+	<OPTION VALUE="1">List files and folders. Hide aliases.</OPTION>
+	<OPTION VALUE="2" SELECTED>List files, folders and aliases. (RECOMMENDED)</OPTION>
+</SELECT>
+<P>
+<BR>
+
+<B>Allow anonymous login?</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('Choose yes if you want everyone on internet to be able to connect to your FTP server.\n\nChoose no if you want to create accounts for everyone that shall be able to connect to your server.');">
+<BR>
+<SELECT NAME="guestAccount">
+	<OPTION VALUE="0" SELECTED>No</OPTION>
+	<OPTION VALUE="1">Yes</OPTION>
+</SELECT>
+<BR>
+If you choose to allow anonymous login everyone can login to your server with your guest account (called "guest").
+<BR>
+You can set the permissions for this "guest" account under the "account" tabs.
+<P>
+<BR>
+
+
+<B>Log file name</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('This is a traditional log file showing detailed information about all commands that are sent to and from the server.\n\nIf you prefer not to have a log file, leave this field blank.')">
+<BR>
+<INPUT TYPE="text" NAME="logFile" VALUE="">
+<BR>
+For example <I>XerverFTP.log</I> or <I>c:\logs\xerverFTP.log</I>.
+<BR>
+Unless an absolute path is specified, the log file is created in the Xerver directory.
+<P>
+<BR>
+
+
+
+
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<!-- INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/action=wizardGeneralSettings&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="submit" VALUE="Save and Next Step --&gt;">
+</P>
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+
+</TD></TR>
+</TABLE>
+

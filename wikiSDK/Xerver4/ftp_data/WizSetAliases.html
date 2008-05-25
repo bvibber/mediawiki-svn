@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function userNameIs(user)
+{
+	document.myForm.userName.value=user;
+	document.write("<HR>Current user: <B>"+user+"</B>");
+}
+
+/*
+function addAliasToList(name,path)
+{
+	lastElement=document.myForm.aliasList.length++;
+	document.myForm.aliasList[lastElement].value=name+"="+path;
+	document.myForm.aliasList[lastElement].text=name+"="+path;
+}
+*/
+
+
+
+function removeAliases()
+{
+	removeThese="";
+	nr=document.myForm.aliasCheckbox.length;
+	if (nr+""=="undefined")	//There is only one checkbox
+	{
+		if (document.myForm.aliasCheckbox.checked)
+		{
+			removeThese=document.myForm.aliasCheckbox.value;
+		}
+	}
+	else	//There is more than one checkbox
+	{
+		for (i=0; i<nr; i++)
+		{
+			if (document.myForm.aliasCheckbox[i].checked)
+			{
+				removeThese+=document.myForm.aliasCheckbox[i].value+",";
+			}
+		}
+		removeThese=removeThese.substring(0,removeThese.length-1);
+	}
+
+
+	if (removeThese=="")
+		alert("You have not checked which aliases you want to remove.")
+	else if (confirm("Are you sure you want to remove these aliases from the list?"))
+		location.replace("/?action=save&userName="+document.myForm.userName.value+"&type=removeAlias&removeThese="+removeThese);
+}
+
+
+function aliasNameIsOK()
+{
+	allowedList="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+
+	aliasName=document.myForm.newAliasName.value;
+
+	if (aliasName=="")
+	{
+		return false;
+	}
+
+	for (i=0;i<aliasName.length; i++)
+	{
+		if (allowedList.indexOf(aliasName.charAt(i))==-1)
+			return false;
+	}
+
+	return true;
+}
+
+
+function sendForm()
+{
+	if (document.myForm.newAliasName.value=="")
+	{
+		alert("Please enter an alias name.")
+		return false;
+	}
+
+	if (!aliasNameIsOK())
+	{
+		alert("An alias name shall only contain letters (a-z), digits (0-9) and underscores (_).")
+		return false;
+	}
+
+	if (document.myForm.newAliasPath.value=="")
+	{
+		alert("Please select a path to which the alias shall point to.")
+		return false;
+	}
+
+	return true;
+}
+
+
+
+
+
+
+function replace(str,oldChar,newChar)
+{
+	for (i=0;i<str.length; i++)
+	{
+		if (str.substring(i,i+1)==oldChar)
+			str=str.substring(0,i)+newChar+str.substring(i+1,str.length);
+	}
+
+	return str;
+}
+
+
+
+
+function dirChoosen(path)
+{
+	document.myForm.newAliasPath.value=path;
+}
+function browseFolders()
+{
+	browseWindow=window.open('/action=chooseDirectory&currentPath='+replace(escape(document.myForm.newAliasPath.value),'+','%2B'),'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS"> 
+
+
+</HEAD>
+<BODY BGCOLOR=white TEXT=black LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0">
+
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get onSubmit="return sendForm()">
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=8 BGCOLOR=lightgreen>
+<TR><TD>
+<U><B>Set aliases</B></U>
+</TD></TR>
+</TABLE>
+<BR>
+
+
+<TABLE BORDER=0 CELLPADDING=4>
+<TR><TD>Alias name:<BR><SPAN CLASS="small">For example "music"</SPAN></TD><TD><INPUT TYPE="text" NAME="newAliasName"></TD></TR>
+<TR><TD>Alias path:<BR><SPAN CLASS="small">For example "c:\mymusic\"</SPAN></TD><TD><INPUT TYPE="text" NAME="newAliasPath"><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."></TD></TR>
+<TR><TD COLSPAN=2><INPUT TYPE="submit" VALUE="Add new alias"></TD></TR>
+</TABLE>
+
+
+<INPUT TYPE="hidden" NAME="userName">
+<INPUT TYPE="hidden" NAME="action" VALUE="save">
+<INPUT TYPE="hidden" NAME="type" VALUE="addAlias">
+<P>
+<BR>
+
+
+
+
+
+
+
+

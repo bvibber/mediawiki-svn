@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function oldBrowser()	//True iff browser is not IE 4+, Netscape 7 or Opera
+{
+	return	!(navigator.appVersion.indexOf("MSIE")!=-1) &&	//is not IE
+		!(navigator.userAgent.indexOf("Mozilla/5")!=-1);	//Is not NN6, NN7 or Mozilla
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="#cccccc" LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+<FONT FACE="verdana,arial" SIZE="-1">
+
+<TABLE CELLPADDING=2 CELLSPACING=0 BORDER=0 HEIGHT="100%" WIDTH="100%">
+<TR>
+<TH VALIGN=top onCLick="parent.mainsetup.location.href='/action=wizardGeneralSettings';"
+    onMouseOver="this.style.backgroundColor='#aaaaaa';"
+    onMouseOut="this.style.backgroundColor='';"><FONT FACE="verdana,arial" SIZE="-1"><A HREF="/action=wizardGeneralSettings" TARGET="mainsetup">General settings</A></FONT></TH>
+<TH><FONT FACE="verdana,arial" SIZE="-1">&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TH>
+<TH VALIGN=top onCLick="parent.mainsetup.location.href='/action=wizardUserFrames';"
+    onMouseOver="this.style.backgroundColor='#aaaaaa';"
+    onMouseOut="this.style.backgroundColor='';"><FONT FACE="verdana,arial" SIZE="-1"><A HREF="/action=wizardUserFrames" TARGET="mainsetup">User accounts</A></FONT></TH>
+<TH><FONT FACE="verdana,arial" SIZE="-1">&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TH>
+<TH VALIGN=top onCLick="parent.mainsetup.location.href='/action=wizardAdvancedSettings';"
+    onMouseOver="this.style.backgroundColor='#aaaaaa';"
+    onMouseOut="this.style.backgroundColor='';"><FONT FACE="verdana,arial" SIZE="-1"><A HREF="/action=wizardAdvancedSettings" TARGET="mainsetup">Advanced settings</A></FONT></TH>
+<TH><FONT FACE="verdana,arial" SIZE="-1">&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TH>
+<TH VALIGN=top onCLick="window.open('http://www.javascript.nu/xerver/','newWindow')"
+    onMouseOver="this.style.backgroundColor='#aaaaaa';"
+    onMouseOut="this.style.backgroundColor='';"><FONT FACE="verdana,arial" SIZE="-1"><A HREF="javascript:if(oldBrowser())void(window.open('http://www.javascript.nu/xerver/','newWindow'))">Xerver Homepage</A></FONT></TH>
+</TR>
+</TABLE>
+
+
+
+</FONT>
+</BODY>
+</HTML>

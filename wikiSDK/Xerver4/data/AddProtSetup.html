@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Add Protected Folder</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function submitForm()
+{
+	if (document.addProtWinForm.realm.value=="")
+		document.addProtWinForm.realm.value="Xerver";
+
+	if (document.addProtWinForm.folder.value=="")
+	{
+		top.opener.showAlertXerverHelp("Please enter something in all fields.");
+		return false;
+	}
+
+	if (	document.addProtWinForm.folder.value.indexOf("<<@>>")!=-1 || document.addProtWinForm.folder.value.indexOf("<<$>>")!=-1 ||
+		document.addProtWinForm.realm.value.indexOf("<<@>>")!=-1 || document.addProtWinForm.realm.value.indexOf("<<$>>")!=-1)
+	{
+		top.opener.showAlertXerverHelp("No fields should contain <<@>> or <<$>>.");
+		return false;
+	}
+
+	if (	document.addProtWinForm.folder.value.indexOf("&")!=-1 || document.addProtWinForm.realm.value.indexOf("&")!=-1)
+	{
+		top.opener.showAlertXerverHelp("No fields should contain &.");
+		return false;
+	}
+
+	self.location.replace("/?action=showAddProtFrameSetup&showInFrame=addUser&folderValue="+escape(document.addProtWinForm.folder.value)+"&realmValue="+escape(document.addProtWinForm.realm.value)+"&subfoldersValue="+escape(document.addProtWinForm.subfolders.checked));
+	return true;
+}
+
+
+
+function dirChoosen(path)
+{
+	document.addProtWinForm.folder.value=path;
+}
+
+function browseFolders()
+{
+	browseWindow=window.open('/?action=chooseDirectory&currentPath='+document.addProtWinForm.folder.value,'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<FONT FACE="arial,verdana" SIZE="-1">
+<B>Which folder do you want to protect with a username/password?</B>
+<BR>
+<FORM NAME="addProtWinForm" ACTION="/?action=showAddProtUserSetup" onSubmit="submitForm();return false;">
+
+<TABLE BORDER=0 CELLPADDING=1 CELLSPACING=0>
+<TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+	<B>Folder:</B></TD><TD><INPUT TYPE=text NAME="folder" SIZE=40><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="top.opener.showAlertXerverHelp('Enter the location of the folder you want to protect with a password.\n\nTo help you remember the exact location of the folder, you can press the \'Browse\' button.');">
+</FONT></TD></TR><TR><TD COLSPAN=2>
+	<FONT SIZE="-2" FACE="arial,verdana">
+	You can use the browse button if you don't remember the exact location of your folder.
+	<BR>
+	<FONT COLOR="red">Remember that you should share a directory, not a single file.</FONT>
+	</FONT>
+	<BR>
+	<BR>
+</FONT></TD></TR><TR><TD COLSPAN=2><FONT FACE="arial,verdana" SIZE="-1">
+	<INPUT TYPE=checkbox NAME="subfolders" SIZE=40> Check this box if you also want to protect all subfolders.
+	<BR>
+	<BR>
+</FONT></TD></TR><TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+	<B>Zone (Resource):</B></TD><TD><INPUT TYPE=text NAME="realm" SIZE=15 VALUE="Xerver"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="top.opener.showAlertXerverHelp('Each folder must belong to one (and only one) zone.\nWhen a user goes from one zone to another he will be prompted for a username and password again, disregarding if he previously has login.\nThis is for increased security.\nAlso, if logging is enabled you can see which user has login to which zone.\n\nLet us say someone login with User:AAA and Pass:BBB to a folder which belongs to zone CCC.\nWhen this user visits another folder which belongs to zone DDD, he has to login again.');">
+</FONT></TD></TR><TR><TD COLSPAN=2>
+	<FONT COLOR="red" SIZE="-2" FACE="arial,verdana">
+	If you are unsure about what this means, please enter the same zone name
+	for all your folders (for example: enter "Xerver" as your zone for every folder
+	you protect).
+	</FONT>
+	<BR>
+	<BR>
+</TD></TR><TR><TD COLSPAN=2>
+<INPUT TYPE=button VALUE="Save" onClick="submitForm()">
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

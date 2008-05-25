@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Add Protected Folder</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function getQueryLine(name)
+{
+	query=location.search.substring(1,location.search.length).split("&");
+	for (i=0; i<query.length; i++)
+	{
+		tmp=query[i].split("=");
+		thisName=unescape(tmp[0]);
+		thisValue=unescape(tmp[1]);
+		if (name==thisName)
+			return thisValue;
+	}
+
+	return "";
+}
+
+
+function getNewQuery(name, newValue)
+{
+	newQuery="";
+	query=unescape(location.search.substring(1,location.search.length)).split("&");
+	for (i=0; i<query.length; i++)
+	{
+		tmp=query[i].split("=");
+		thisName=tmp[0];
+		thisValue=tmp[1];
+		if (name==thisName)
+			newQuery+=name+"="+escape(newValue)+"&";
+		else
+			newQuery+=escape(thisName)+"="+escape(thisValue)+"&";
+	}
+	newQuery=newQuery.substring(0,newQuery.length-1);
+
+	location="/?"+newQuery;
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<FONT FACE="arial,verdana" SIZE="-1">
+<B>Please create a username/password for this folder?</B>
+<BR>
+<FORM NAME="addProtWinForm" onSubmit="if (document.addProtWinForm.folder.value!='' && document.addProtWinForm.realm.value!='' && document.addProtWinForm.username.value!='' && document.addProtWinForm.pass1.value!='' && document.addProtWinForm.pass2.value!=''){top.addThisProt(document.addProtWinForm.folder.value, document.addProtWinForm.realm.value, document.addProtWinForm.username.value, document.addProtWinForm.pass1.value, document.addProtWinForm.pass2.value, document.addProtWinForm.subfolders.value);}else{top.opener.showAlertXerverHelp('Please enter something in all fields.')};return false;">
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+	document.write("<TT><B>Folder:</B> "+getQueryLine('folderValue')+"<INPUT TYPE=hidden NAME='folder' VALUE='"+getQueryLine('folderValue')+"'> ");
+	document.write("<A HREF='#' onClick=\"newDir=prompt('Change folder:',document.addProtWinForm.folder.value);if (newDir!=null && newDir!='')getNewQuery('folderValue', newDir);return true;\">Edit</A></TT><BR>");
+
+	document.write("<INPUT TYPE=hidden NAME='subfolders' SIZE=40 VALUE='"+getQueryLine('subfoldersValue')+"'>");
+	if (getQueryLine('subfoldersValue')=="true")
+	{
+		document.write("<TT><B>Subfolders:</B> Protected ");
+		document.write("<A HREF='#' onClick=\"getNewQuery('subfoldersValue', 'false');return true;\">Edit</A></TT><BR>");
+	}
+	else
+	{
+		document.write("<TT><B>Subfolders:</B> Not protected ");
+		document.write("<A HREF='#' onClick=\"getNewQuery('subfoldersValue', 'true');return true;\">Edit</A></TT><BR>");
+	}
+
+
+	document.write("<TT><B>Zone:</B> "+getQueryLine('realmValue')+"<INPUT TYPE=hidden NAME='realm' SIZE=15 VALUE='"+getQueryLine('realmValue')+"'> ");
+	document.write("<A HREF='#' onClick=\"newRealm=prompt('Change zone:',document.addProtWinForm.realm.value);if (newRealm!=null && newRealm!='')getNewQuery('realmValue', newRealm);return true;\">Edit</A></TT><BR>");
+//-->
+</SCRIPT>
+
+
+
+
+<TABLE BORDER=0 CELLPADDING=1 CELLSPACING=0>
+<TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+	<B>User name:</B></TD><TD><INPUT TYPE=text NAME="username" SIZE=15>
+</FONT></TD></TR><TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+	<B>Password:</B></TD><TD><INPUT TYPE=button VALUE="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetPassword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" NAME="pass1" onClick="parent.empty.location.href='/?action=promptForPassword&passNr=1&uniqe='+(new Date()).getTime();"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="top.opener.showAlertXerverHelp('For advanced users:\nXerver uses a secure one-way crypto to ensure your security!\nThe same security is used by the browser when someone visits a secury folder. Xerver tells the browser to ask for a username/password and send it *encrypted* over the network (Internet).\nXerver will receive the encrypted username/password and match it with the Xerver database on your hard drive (all usernames/passwords are, of course, stored with a well-known one-way crypto which by today has no known decrypting methods).');">
+</FONT></TD></TR><TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+	<B>Re-enter Password:</B></TD><TD><INPUT TYPE=button VALUE="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetPassword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" NAME="pass2" onClick="parent.empty.location.href='/?action=promptForPassword&passNr=2&uniqe='+(new Date()).getTime();">
+</FONT></TD></TR><TR><TD COLSPAN=2><FONT FACE="arial,verdana" SIZE="-1">
+	<BR><INPUT TYPE=button VALUE="Add account" onClick="if (document.addProtWinForm.folder.value!='' && document.addProtWinForm.realm.value!='' && document.addProtWinForm.username.value!='' && document.addProtWinForm.pass1.value!='' && document.addProtWinForm.pass2.value!=''){top.addThisProt(document.addProtWinForm.folder.value, document.addProtWinForm.realm.value, document.addProtWinForm.username.value, document.addProtWinForm.pass1.value, document.addProtWinForm.pass2.value, document.addProtWinForm.subfolders.value);}else{top.opener.showAlertXerverHelp('Please enter something in all fields.')};">
+</FONT>
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+</FONT>
+
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

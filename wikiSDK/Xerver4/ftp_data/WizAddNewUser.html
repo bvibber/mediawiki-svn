@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function userNameIs(user)
+{
+	document.myForm.userName.value=user;
+	document.write("<HR>Current user: <B>"+user+"</B>");
+}
+
+function rootIs(root)
+{
+	document.myForm.newValue.value=root;
+}
+
+
+
+function dirChoosen(path)
+{
+	document.myForm.root.value=path;
+}
+function browseFolders()
+{
+	browseWindow=window.open('/action=chooseDirectory&currentPath='+document.myForm.root.value,'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+
+
+function usernameIsOK()
+{
+	allowedList="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+
+	username=document.myForm.userName.value;
+
+	if (username=="")
+	{
+		return false;
+	}
+
+	for (i=0;i<username.length; i++)
+	{
+		if (allowedList.indexOf(username.charAt(i))==-1)
+			return false;
+	}
+
+	return true;
+}
+
+
+function sendForm()
+{
+	if (document.myForm.userName.value=="")
+	{
+		alert("Please enter an account name.")
+		return false;
+	}
+
+	if (!usernameIsOK())
+	{
+		alert("An account name shall only contain letters, digits and underscores (_).")
+		return false;
+	}
+
+	if (document.myForm.root.value=="")
+	{
+		alert("Please select a root for this user.")
+		return false;
+	}
+
+	if (document.myForm.password1.value!=document.myForm.password2.value)
+	{
+		alert("Your passwords does not match.")
+		return false;
+	}
+
+	if (document.myForm.password1.value=="")
+	{
+		alert("For security reasons you can not create users with empty passwords.\nYou must enter a password for all accounts.\nYou can use the guest account if you want an account without password.")
+		return false;
+	}
+
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS"> 
+
+
+</HEAD>
+<BODY BGCOLOR=white TEXT=black LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0">
+
+
+
+<FORM NAME="myForm" ACTION="/" METHOD="get" ONSUBMIT="return sendForm()">
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=8 BGCOLOR=lightgreen>
+<TR><TD>
+<U><B>Create a new account</B></U>
+</TD></TR>
+</TABLE>
+<BR>
+
+<TABLE BORDER=0 CELLPADDING=4>
+<TR><TD>New account name:<BR><SPAN CLASS="small">For example "john"</SPAN></TD><TD><INPUT TYPE="text" NAME="userName"></TD></TR>
+<TR><TD>Set root:<BR><SPAN CLASS="small">For example "c:\john\files\"</SPAN></TD><TD><INPUT TYPE="text" NAME="root"><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."></TR>
+<TR><TD>Set password:</TD><TD><INPUT TYPE="password" NAME="password1"></TD></TR>
+<TR><TD>Re-enter password:</TD><TD><INPUT TYPE="password" NAME="password2"></TD></TR>
+</TABLE>
+<P>
+
+
+
+
+
+<INPUT TYPE="hidden" NAME="action" VALUE="save">
+<INPUT TYPE="hidden" NAME="type" VALUE="addUser">
+
+
+<INPUT TYPE="submit" VALUE="Create new account">
+
+
+</FORM>
+
+
+

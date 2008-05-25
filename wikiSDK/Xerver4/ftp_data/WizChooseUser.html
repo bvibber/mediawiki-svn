@@ -1,0 +1,310 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+
+
+function addUserToList(user)
+{
+//	usersArray=argUsers.split(",");
+//	for (i=0; i<usersArray.length; i++)
+//	{
+		lastElement=document.myForm.userList.length++;
+		document.myForm.userList[lastElement].value=user;//usersArray[i];
+		if (user=="guest")
+			document.myForm.userList[lastElement].text="*"+user+"*";//usersArray[i];
+		else
+			document.myForm.userList[lastElement].text=user;//usersArray[i];
+//	}
+}
+
+
+
+
+function copyUser()
+{
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	oldUsername=document.myForm.userList[document.myForm.userList.selectedIndex].value;
+	newUsername=prompt("All settings for the account "+oldUsername+" will be copied to a new account called:",oldUsername);
+	if (newUsername!=null && newUsername!="" && newUsername!="undefined" && newUsername!=oldUsername)
+	{
+		if (usernameIsOK(newUsername))
+		{
+			location.replace("/action=save&type=copy&username="+oldUsername+"&newValue="+newUsername+"&currentlyVisiting="+document.myForm.currentlyVisiting.value);
+//			parent.usercontent.location.replace("/action=wizardEmpty");
+			return true;
+		}
+		else
+		{
+			alert("An account name shall only contain letters, digits and underscores (_).")
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+
+
+function changeUserName()
+{
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	oldUsername=document.myForm.userList[document.myForm.userList.selectedIndex].value;
+
+	if (oldUsername=="guest")
+	{
+		alert("The guest account is a default account that can not be renamed or removed.\n\nIf you don't want a guest account, feel free to disable anonymous logins in the setup.");
+		return false;
+	}
+
+	newUsername=prompt("New account name:",oldUsername);
+	if (newUsername!=null && newUsername!="" && newUsername!="undefined" && newUsername!=oldUsername)
+	{
+		if (usernameIsOK(newUsername))
+		{
+			location.replace("/action=save&type=rename&username="+oldUsername+"&newValue="+newUsername+"&currentlyVisiting="+document.myForm.currentlyVisiting.value);
+//			parent.usercontent.location.replace("/action=wizardEmpty");
+			return true;
+		}
+		else
+		{
+			alert("An account name shall only contain letters, digits and underscores (_).")
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+function usernameIsOK(username)
+{
+	allowedList="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+
+	if (username=="")
+	{
+		return false;
+	}
+
+	for (i=0;i<username.length; i++)
+	{
+		if (allowedList.indexOf(username.charAt(i))==-1)
+			return false;
+	}
+
+	return true;
+}
+
+
+
+
+function removeUser()
+{
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	oldUsername=document.myForm.userList[document.myForm.userList.selectedIndex].value;
+
+	if (oldUsername=="guest")
+	{
+		alert("The guest account is a default account that can not be renamed or removed.\n\nIf you don't want a guest account, feel free to disable anonymous logins in the setup.");
+		return false;
+	}
+
+	if (confirm("Are you sure you want to remove account "+oldUsername+"?\n\nYou can not undo this!"))
+	{
+		location.replace("/action=save&type=remove&username="+oldUsername+"&currentlyVisiting="+document.myForm.currentlyVisiting.value);
+//		parent.usercontent.location.replace("/action=wizardEmpty");
+		return true;
+	}
+	else
+	{
+		alert("Account "+oldUsername+" was not removed.")
+		return false;
+	}
+}
+
+function setPassword()
+{
+	document.myForm.currentlyVisiting.value="password";
+
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	oldUsername=document.myForm.userList[document.myForm.userList.selectedIndex].value;
+
+	if (oldUsername=="guest")
+	{
+		alert("You can't set a password for the guest account. Any password given by a client will be accepted as a valid password.\n\nIf you don't want a guest account, feel free to disable anonymous logins in the setup.");
+		return false;
+	}
+
+	parent.usercontent.location.replace("/action=wizardSetPassword&username="+document.myForm.userList[document.myForm.userList.selectedIndex].value);
+	return true;
+}
+
+
+function setRoot()
+{
+	document.myForm.currentlyVisiting.value="root";
+
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	parent.usercontent.location.replace("/action=wizardSetRoot&username="+document.myForm.userList[document.myForm.userList.selectedIndex].value);
+	return true;
+}
+
+
+function setAliases()
+{
+	document.myForm.currentlyVisiting.value="aliases";
+
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	parent.usercontent.location.replace("/action=wizardSetAliases&username="+document.myForm.userList[document.myForm.userList.selectedIndex].value);
+	return true;
+}
+
+function setPermissions()
+{
+	document.myForm.currentlyVisiting.value="permissions";
+
+	//We must choose a user, and not the first option "[Accounts]"
+	if (document.myForm.userList.selectedIndex==0 || document.myForm.userList.selectedIndex==-1)
+	{
+		alert("Please choose an account.");
+		return false;
+	}
+
+	parent.usercontent.location.replace("/action=wizardSetPermissions&username="+document.myForm.userList[document.myForm.userList.selectedIndex].value);
+	return true;
+}
+
+function setVisiting(page)
+{
+	document.myForm.currentlyVisiting.value=page;
+}
+
+function goToVisiting()
+{
+visiting=document.myForm.currentlyVisiting.value;
+	if(visiting=="password" && "guest"!=document.myForm.userList[document.myForm.userList.selectedIndex].value)
+		setPassword();
+	if(visiting=="root")
+		setRoot();
+	if(visiting=="permissions")
+		setPermissions();
+	if(visiting=="aliases")
+		setAliases();
+}
+
+
+function oldBrowser()	//True iff browser is not IE 4+, Netscape 7 or Opera
+{
+	return	!(navigator.appVersion.indexOf("MSIE")!=-1) &&	//is not IE
+		!(navigator.userAgent.indexOf("Mozilla/5")!=-1);	//Is not NN6, NN7 or Mozilla
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS">
+
+
+</HEAD>
+<BODY BGCOLOR="#cccccc" LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="2" MARGINWIDTH="2">
+
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+<INPUT TYPE="hidden" VALUE="" NAME="currentlyVisiting">
+
+
+<TABLE CELLPADDING=2 CELLSPACING=0 BORDER=0 WIDTH="100%">
+<TR><TD><SELECT NAME="userList" ONCHANGE="if (document.myForm.userList.selectedIndex!=0){goToVisiting();}">
+<OPTION>[Accounts]
+</SELECT></TD>
+<TR onCLick="parent.usercontent.location.href='/action=wizardAddNewUser';"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-2"><A HREF="/action=wizardAddNewUser" TARGET="usercontent">Create a new account</A></FONT></TD></TR>
+<TR><TD><FONT FACE="verdana,arial" SIZE="-1">&nbsp;</FONT></TD></TR>
+<TR onClick="setPassword()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(setPassword())">Change password</A></FONT></TD></TR>
+<TR onClick="setRoot()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(setRoot())">Set root</A></FONT></TD></TR>
+<TR onClick="setPermissions()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(setPermissions())">Shared directories</A></FONT></TD></TR>
+<TR onClick="setAliases()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(setAliases())">Set aliases</A></FONT></TD></TR>
+<TR><TD><FONT FACE="verdana,arial" SIZE="-1">&nbsp;</FONT></TD></TR>
+<TR onClick="changeUserName()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(changeUserName())">Rename account</A></FONT></TD></TR>
+<TR onClick="removeUser()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(removeUser())">Remove account</A></FONT></TD></TR>
+<TR onClick="copyUser()"
+    onMouseOver="this.style.backgroundColor='orange';"
+    onMouseOut="this.style.backgroundColor='';"><TD><FONT FACE="verdana,arial" SIZE="-1"><A HREF="#" onClick="if(oldBrowser())void(copyUser())">Copy account</A></FONT></TD></TR>
+</TABLE>
+
+</FORM>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+	currentlyVisiting=location.href
+	currentlyVisiting=currentlyVisiting.substring(currentlyVisiting.indexOf("currentlyVisiting"))
+	if (currentlyVisiting.indexOf("&")!=-1)	//"currentlyVisiting=abc&..." ==> "currentlyVisiting=abc"
+		currentlyVisiting=currentlyVisiting.substring(0,currentlyVisiting.indexOf("&"))
+	//else //We have already "currentlyVisiting=abc"
+
+	currentlyVisiting=currentlyVisiting.substring(currentlyVisiting.indexOf("=")+1)
+	document.myForm.currentlyVisiting.value=currentlyVisiting;
+//-->
+</SCRIPT>
+
+

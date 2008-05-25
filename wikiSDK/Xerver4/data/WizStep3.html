@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 3 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+gotWindowsWarning=false;
+function haveSeenWindowsWarning()
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")==-1)	//Om man inte har windows
+		return true;	// Så säger vi att vi redan sett meddelandet så vi slipper se det
+
+	if (!gotWindowsWarning)
+	{
+		gotWindowsWarning=true;
+		return false;
+	}
+		return true;
+}
+
+
+function suggestRoot(allData)	//Suggest the shortest folder-name as the root folder... (this will only be run if no root has already been suggested)
+{
+	allFolders=allData.split(",");
+
+	//remove * at end of folders
+	for (i=0; i<allFolders.length; i++)
+		if (allFolders[i].substring(allFolders[i].length-1)=="*")
+			allFolders[i]=allFolders[i].substring(0,allFolders[i].length-1)
+
+	//if folders exists (it must exist by now, I think)
+	if (allFolders.length>0)
+	{
+		suggestedRoot=allFolders[0];	//The first folder is the suggested root...
+		for (i=0; i<allFolders.length; i++)
+			if (allFolders[i].length<suggestedRoot.length)	//...unless there is a folder with a shorter name...
+			suggestedRoot=allFolders[i];
+
+		document.myForm.rootPath.value=suggestedRoot;
+	}
+}
+
+
+
+
+
+function fixaRattMedSlash(url)
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+	{
+		if (url.indexOf("/")!=-1)  //om man har / i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a UNIX-style path.\n\nA path in Windows shall not use /, but instead \\.\nExamples:\nWrong: c:/windows/\nCorrect: c:\\windows\\\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "/","\\")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "/","\\");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+	else 
+	{
+		if (url.indexOf("\\")!=-1)	 //om man har \ i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a Windows path.\n\nA path in UNIX, Linux or Mac shall not use \\, but instead /.\nExamples:\nWrong: \\files\\\nCorrect: /files/\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "\\","//")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "\\","//");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+}
+
+//Denna funktion lägger till / eller \ beroende på vad som redan finns i "url".
+function fixaRattMedSlashIslutet(url)
+{
+	if (url.substring(url.length-1)!="\\" && url.substring(url.length-1)!="/")	//Man har inte någon slash i slutet
+	{
+		if (url.indexOf("\\")!=-1)	//Man har redan \ i url
+		{
+			url+="\\";
+		}
+		else// if (url.indexOf("/")!=-1)
+		{
+			url+="/";
+		}
+	}
+	
+	return url;
+}
+
+
+function sokOchErsatt(bigString, gammalStr, nyStr)	//Sök "bigString" efter "gammalStr" och ersätt med "NyStr"
+{
+	storStrang=bigString;
+	for (i=0; i<=storStrang.length-gammalStr.length; i++)
+	{
+		if (storStrang.substring(i,i+gammalStr.length)==(gammalStr))
+		{
+			storStrang=storStrang.substring(0,i)+nyStr+storStrang.substring(i+gammalStr.length);
+			i+=nyStr.length-1;	//Utan detta så går loopen för all evighet om man t.ex. har strängen "ab/cd" och ersätter "/" med "//"
+		}
+	}
+	return storStrang;
+}
+
+
+function updateRootPath()
+{
+	theRoot=document.myForm.rootPath.value;
+	theRoot=fixaRattMedSlash(theRoot);
+	theRoot=fixaRattMedSlashIslutet(theRoot);
+	document.myForm.rootPath.value=theRoot;
+}
+
+
+function submitForm()
+{
+	updateRootPath();
+
+	nyAddress="action=wizardStep4&direction=forward&save=yes";
+
+	nyAddress+="&rootPath="+escape(document.myForm.rootPath.value);
+
+//	alert(nyAddress)
+	self.location.replace("/?"+nyAddress);
+	return true;
+}
+
+
+
+
+function dirChoosen(path)
+{
+	document.myForm.rootPath.value=path;
+}
+
+function browseFolders()
+{
+	browseWindow=window.open('/?action=chooseDirectory&currentPath='+document.myForm.rootPath.value,'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 3 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+
+
+<B>Your Root:</B> <INPUT TYPE="text" NAME="rootPath" VALUE="c:\" SIZE="50" onChange="updateRootPath()"><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('If you are unsure about what you shall enter here, we recommend that you enter c:\\ (if you are using Microsoft Windows).\nHowever, if you know that you won\'t share files outside an particular folder, such as c:\\John\\homepages\\, you might want to use c:\\John\\homepages\\ as your root.')">
+<P>
+
+
+
+
+
+<TABLE BORDER=1 BGCOLOR="#cccccc" CELLSPACING=0 CELLPADDING=2>
+<TR BGCOLOR="#aaaaaa"><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>What is a root?</B>
+</FONT>
+</TD></TR><TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+Let's say your root is <B>c:\AAA\</B>.
+<BR>
+When you visit <B>http://www.yourserver.com/</B> you will see the files and folders in <B>c:\AAA\</B>.
+<BR>
+When you visit <B>http://www.yourserver.com/BBB/</B> you will see the files and folders in <B>c:\AAA\BBB\</B>.
+<P>
+<BR>
+<P>
+<B>Advanced users:</B> You will later be able to create "virtual directories" (also known as "alias").
+
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<BR>
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep2&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

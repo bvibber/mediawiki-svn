@@ -1,0 +1,450 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 4 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+gotWindowsWarning=false;
+function haveSeenWindowsWarning()
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")==-1)	//Om man inte har windows
+		return true;	// Så säger vi att vi redan sett meddelandet så vi slipper se det
+
+	if (!gotWindowsWarning)
+	{
+		return false;
+		gotWindowsWarning=true;
+	}
+		return true;
+}
+
+
+
+
+function removeAlias()
+{
+	if (document.myForm.aliasNames.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.aliasNames.options[document.myForm.aliasNames.selectedIndex].text+".\nDo you want to remove it?"))
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.aliasNames.options[document.myForm.aliasNames.selectedIndex]=new Option();
+			else
+				document.myForm.aliasNames.options[document.myForm.aliasNames.selectedIndex]=null;
+			//document.myForm.aliasNames.options[document.myForm.aliasNames.selectedIndex]=null;
+
+	}
+	else
+	{
+		alert("Please select the alias you want to remove.");
+	}
+}
+
+
+
+
+
+function addAlias()
+{
+	addAliasWindow=window.open(escape("/?action=showAddAliasSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=470,height=270");
+	addAliasWindow.focus();
+}
+
+
+
+
+
+function laggTillDirectoryUtanKontroll(url)
+{
+	document.myForm.aliasNames.options[++document.myForm.aliasNames.length-1]=new Option(url, url)
+}
+
+function nollstallVarden()
+{
+	while (document.myForm.aliasNames.length>0)
+		document.myForm.aliasNames.options[0]=null;
+}
+
+
+
+var allaKataloger=new Array();
+function createAliasList(argAllaKataloger, allaAlias)
+{
+	allaKataloger=argAllaKataloger.split(",");
+	nollstallVarden()
+
+	if (allaAlias.split(",").length!=-1 && allaAlias!="")
+		for (ii=0; ii<allaAlias.split(",").length; ii++)
+			laggTillDirectoryUtanKontroll(allaAlias.split(",")[ii]);
+}
+
+
+
+
+
+//If an element in myArray is longer than str, only compare the first str.length char. For example: "abc" is equal to "abc123"
+function stringIsInSelectBoxEqualLength(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str.toLowerCase()==myArray[i].value.substring(0,str.length).toLowerCase())
+			return true;
+	return false;
+}
+
+
+//If an element in myArray is longer than str, only compare the first str.length char. For example: "abc" is equal to "abc123"
+function stringIsInArrayEqualLength(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str.toLowerCase()==myArray[i].substring(0,str.length).toLowerCase())
+			return true;
+	return false;
+}
+
+//Returns true if "oneFolder" is a shared directory. The list of directories are given by "sharedFolders".
+function folderIsShared(oneFolder, sharedFolders)
+{
+	for (i=0; i<sharedFolders.length; i++)
+	{
+		tmpDir=sharedFolders[i];
+		if (tmpDir.substring(tmpDir.length-1)=="*")	//If the folder ends with an "*"
+		{
+			tmpDir=tmpDir.substring(0,tmpDir.length-1)	//"c:/folder/*" ==> "c:/folder/"
+
+		if (oneFolder.substring(0,tmpDir.length).toLowerCase()==tmpDir.toLowerCase())
+			return true;
+		}
+		else if (oneFolder.toLowerCase()==tmpDir.toLowerCase())	//If the subfolders are not shared, the folders must be equal
+			return true;
+		
+	}
+	return false;
+}
+
+
+
+function fixaRattMedSlash(url)
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+	{
+		if (url.indexOf("/")!=-1)  //om man har / i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a UNIX-style path.\n\nA path in Windows shall not use /, but instead \\.\nExamples:\nWrong: c:/windows/\nCorrect: c:\\windows\\\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "/","\\")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "/","\\");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+	else 
+	{
+		if (url.indexOf("\\")!=-1)	 //om man har \ i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a Windows path.\n\nA path in UNIX, Linux or Mac shall not use \\, but instead /.\nExamples:\nWrong: \\files\\\nCorrect: /files/\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "\\","//")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "\\","//");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+}
+
+
+//Denna funktion lägger till / eller \ beroende på vad som redan finns i "url".
+function fixaRattMedSlashIslutet(url)
+{
+	if (url.substring(url.length-1)!="\\" && url.substring(url.length-1)!="/")	//Man har inte någon slash i slutet
+	{
+		if (url.indexOf("\\")!=-1)	//Man har redan \ i url
+		{
+			url+="\\";
+		}
+		else// if (url.indexOf("/")!=-1)
+		{
+			url+="/";
+		}
+	}
+	
+	return url;
+}
+
+
+function fixaRattMedEnhetsbokstav(url)
+{
+	if (url.substring(1,2)!=":")	//Om [man inte varnats tidigare] och om [man inte har : som andra tecken i sin adress]
+		if (!haveSeenWindowsWarning() && confirm("The path to your directory is:\n"+url+"\n\nIf you are using Windows the path should start with your drive letter such as (c:\\).\n\nPress OK to change your path to something else.\nPress Cancel to ignore this message and add this to your list with directories."))
+		{
+			gotWindowsWarning=false;	//Visa varningen framöver
+			return "";	//Avbryt
+		}
+
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+		return url.substring(0,1).toLowerCase()+url.substring(1);	//Gör "C:/mapp/" ==> "c:/mapp/"
+	else
+		return url;
+}
+
+
+function sokOchErsatt(bigString, gammalStr, nyStr)	//Sök "bigString" efter "gammalStr" och ersätt med "NyStr"
+{
+	storStrang=bigString;
+	for (i=0; i<=storStrang.length-gammalStr.length; i++)
+	{
+		if (storStrang.substring(i,i+gammalStr.length)==(gammalStr))
+		{
+			storStrang=storStrang.substring(0,i)+nyStr+storStrang.substring(i+gammalStr.length);
+			i+=nyStr.length-1;	//Utan detta så går loopen för all evighet om man t.ex. har strängen "ab/cd" och ersätter "/" med "//"
+		}
+	}
+	return storStrang;
+}
+
+function stringIsInArray(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str==myArray[i].value)
+			return true;
+	return false;
+}
+
+
+
+
+
+
+function removeQuoteFromURL(url)
+{
+	if (url.charAt(0)=="\"")
+		url=url.substring(1);
+	if (url.charAt(url.length-1)=="\"")
+		url=url.substring(0,url.length-1);
+	return url;
+}
+
+
+
+function addThisAlias(theAlias,theFolder)
+{
+	theFolder=removeQuoteFromURL(theFolder);
+	theFolder=fixaRattMedSlashIslutet(theFolder);
+	theFolder=fixaRattMedEnhetsbokstav(theFolder);
+
+	theAlias=sokOchErsatt(theAlias,"\\","/");	//"fold1\fold2" ==> "fold1/fold2"
+
+	while (theAlias!=sokOchErsatt(theAlias,"//","/"))	//"fold1////fold2" ==> "fold1/fold2"
+		theAlias=sokOchErsatt(theAlias,"//","/");
+
+	if (theAlias.substring(0,1)!="/")
+		theAlias="/"+theAlias;		//"alias" ==> "/alias"
+
+	if (theAlias.substring(theAlias.length-1)!="/")
+		theAlias=theAlias+"/";		//"/alias" ==> "/alias/"
+
+	if (theAlias=="")	//alias minimum length: ("/a/".length==3)
+		return false;
+
+	if (theFolder=="")	//alias minimum length: ("/a/".length==3)
+		return false;
+
+	if (theAlias.length < 3 || theAlias.indexOf("=")!=-1 || theAlias.indexOf(",")!=-1)	//alias minimum length: ("/a/".length==3)
+	{
+		showAlertXerverHelp("Your alias should use this format:\t/myFolder/\nThis format is invalid:\t\t"+theAlias+"\n\nYour alias should not contain a comma (,) or a =.")
+		return false;
+	}
+
+	if (theFolder.indexOf(",")!=-1)
+	{
+		showAlertXerverHelp("Your directory path should not contain a comma (,)")
+		return false;
+	}
+
+	if (stringIsInSelectBoxEqualLength(theAlias, document.myForm.aliasNames.options))
+	{
+		showAlertXerverHelp("You have already added "+theAlias+" to your list.")
+		return false;
+	}
+
+	if (!folderIsShared(theFolder, allaKataloger))	//If you try to point an alias to a directory which you have NOT shared...
+	{
+		if(confirm("WARNING!\n\nYour alias ("+theAlias+") is pointing to a directory ("+theFolder+") which you have NOT shared!\nPointing an alias to a directory DOES NOT automatically add that directory to the list of shared directories.\n\nThis means that if someone visits http://www.yourdomain.com"+theAlias+" he will get a \"403 Forbidden\" error message, as the user does not have permission to view the content of "+theFolder+".\n\n\nDo you want to add "+theFolder+" to your list with shared directories? (This means that everyone will be able to view the content of this directory)"))
+			if (confirm("Do you also want to share the subfolders to "+theFolder+"?\n\nOK = Yes, share "+theFolder+" and all subfolders.\nCancel = No, share only "+theFolder+"."))
+				allaKataloger[allaKataloger.length++]=theFolder+"*";
+			else
+				allaKataloger[allaKataloger.length++]=theFolder;
+
+	}
+
+
+	if (theAlias.indexOf("\"")==-1)
+	{
+		if (theFolder==null)	//If "addThisScriptExtension" has been called from the "sidanHarLaddatKlart" function (the setup page has been loaded and the values from the .js-file are being set now)
+			document.myForm.aliasNames.options[++document.myForm.aliasNames.length-1]=new Option(theAlias, theAlias)
+		else
+			document.myForm.aliasNames.options[++document.myForm.aliasNames.length-1]=new Option(theAlias+"="+theFolder, theAlias)
+
+	}
+	else
+		showAlertXerverHelp("There is a \" in your file extension.\nSo it can't possibly be a valid file extension.")
+}
+
+
+
+
+
+
+
+
+
+
+
+function submitForm()
+{
+	nyAddress="action=wizardStep5&direction=forward&save=yes&aliasNames=";
+
+	if (document.myForm.aliasNames.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<document.myForm.aliasNames.length; i++)
+			if (document.myForm.aliasNames.options[i].text!="")	//Om det INTE är ett element som raderats i Opera (där raderas de inte på riktigt, där blir de bara tomma strängar) 
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=document.myForm.aliasNames.options[i].text+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+	nyAddress+="&sharedPaths="
+
+	if (allaKataloger.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<allaKataloger.length; i++)
+			if (allaKataloger[i]!="")
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=allaKataloger[i]+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 4 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+
+
+
+<B>Add alias</B> <INPUT TYPE="button" NAME="addAliasButton" VALUE="Add Alias" onClick="addAlias()"><INPUT TYPE="button" NAME="removeAliasButton" VALUE="Remove Alias" onClick="removeAlias()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('If you don\'t understand what an alias is:\nDon\'t mind, you don\'t have to use aliases.\n\nXerver doesn\'t support only first level aliases (such as http://server.com/alias1/), but also multilevel aliases (such as http://server.com/alias1/alias2/).');">
+<BR>
+<SELECT NAME="aliasNames" SIZE=4><!--  onChange="status=this.options[this.selectedIndex].value;" -->
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+<!--
+<OPTION VALUE="c:\*">c:\*
+-->
+</SELECT>
+<P>
+<BR>
+
+<TABLE BORDER=1 BGCOLOR="#cccccc" CELLSPACING=0 CELLPADDING=2>
+<TR BGCOLOR="#aaaaaa"><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>What is an alias?</B>
+</FONT>
+</TD></TR><TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+Let's say your root is <B>c:\AAA\</B>.
+<BR>
+<BR>
+When you visit <B>http://www.yourserver.com/</B> you will see the files and folders in <B>c:\AAA\</B>.
+<BR>
+When you visit <B>http://www.yourserver.com/BBB/</B> you will see the files and folders in <B>c:\AAA\BBB\</B>.
+<P>
+
+However, if you want, you can create an alias called <B>/CCC/</B> and point it to <B>x:\DDD\</B>.
+<BR>
+When you visit <B>http://www.yourserver.com/CCC/</B> you will see the files and folders in <B>x:\DDD\</B>.
+<BR>
+When you visit <B>http://www.yourserver.com/CCC/EEE/</B> you will see the files and folders in <B>x:\DDD\EEE\</B>.
+
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<BR>
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep3&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

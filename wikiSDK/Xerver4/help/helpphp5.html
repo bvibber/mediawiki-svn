@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+
+
+
+
+<B>I'm using PHP 5 and I can't run my scripts.</B>
+<P>
+PHP 5 uses "php-cgi" (php-cgi.exe) to run php-scripts
+while older PHP versions (PHP 4 or older)
+are all using "php" (php.exe) to run php-scripts.
+<BR>
+Xerver is by default configured for PHP 4 which uses "php".
+If you have PHP 5 or plan to install PHP 5, make sure that
+you in the fifth step in Xerver Setup have "php=php-cgi"
+in the scroll list (default is "php=php").
+<P>
+
+In other words:
+<OL>
+<LI> Start Xerver Setup.
+<LI> Visit http://localhost:32123/.
+<LI> Go to step 5.
+<LI> Select "php=php".
+<LI> Press "Remove script extension" (and confirm).
+<LI> Press "Add script extension".
+<LI> Fill in "php" for "file extension".
+<LI> Fill in "php-cgi" for "Command to run script with".
+<LI> Press "Add to list".
+<LI> Press "Save and Next Step".
+<LI> You are done.
+</OL>
+
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

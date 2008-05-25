@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 9 / 9 ]</TITLE>
+
+
+<STYLE TYPE="text/css">
+<!--
+TABLE	{font-family:verdana,arial; font-size: 11px;}
+TR	{font-family:verdana,arial; font-size: 11px;}
+TD	{font-family:verdana,arial; font-size: 11px;}
+//-->
+</STYLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+//
+function selectCorrectRadio(value)
+{
+	for (i=0; i<document.myForm.useLowSystemResources.length; i++)
+	{
+		if (document.myForm.useLowSystemResources[i].value==value)
+		{
+			document.myForm.useLowSystemResources[i].checked=true;
+		}
+		else
+		{
+			document.myForm.useLowSystemResources[i].checked=false;
+		}
+	}
+}
+
+
+
+
+function submitForm()
+{
+	value="";
+
+	for (i=0; i<document.myForm.useLowSystemResources.length; i++)
+		if (document.myForm.useLowSystemResources[i].checked)
+		{
+			value=document.myForm.useLowSystemResources[i].value
+		}
+
+	if (value!="")
+		self.location.replace("/?action=setupDone&direction=forward&save=yes&startupWindowMode="+value);
+}
+
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 9 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get onSubmit="return false;">
+
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+<IMG SRC='?action=showSmallWizard' BORDER=0>
+</TD><TD>
+<B>
+<FONT FACE='arial,verdana' SIZE='-1'>
+Congratulations!<BR>
+This is the last step of this setup.<BR>
+You have to decide which user interface
+you want to use when you run Xerver.<BR>
+Most people should choose the recommended default layout.
+</FONT>
+</B>
+</TD></TR>
+</TABLE>
+<BR>
+
+<B>
+<INPUT TYPE="radio" NAME="useLowSystemResources" VALUE="2" CHECKED>
+Xerver Default - All features enabled (<FONT COLOR="red">Recommended</FONT>)!<BR>
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR><TD WIDTH="50">&nbsp;</TD><TD>
+Most users should choose this. Everything is activated by default.
+</TD></TR>
+</TABLE>
+<P>
+
+
+<INPUT TYPE="radio" NAME="useLowSystemResources" VALUE="3">
+Xerver Default - Starting minimized<BR>
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR><TD WIDTH="50">&nbsp;</TD><TD>
+This is the same as the default option, but the window is started minimized.
+This means for example that no Xerver-tab will be shown in the Windows taskbar.
+</TD></TR>
+</TABLE>
+<P>
+
+
+<FONT FACE='arial,verdana' SIZE='-1'>
+<INPUT TYPE="radio" NAME="useLowSystemResources" VALUE="0">
+Xerver Minimum<BR>
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR><TD WIDTH="50">&nbsp;</TD><TD>
+This will run just the core Xerver webserver kernel and nothing else.
+There is no user interface activated, so you will have to kill the process using
+CTRL+ALT+DEL (or similar on your operating system).
+<BR>
+The Setup pages are also disabled and you will have to manually
+start Setup.exe (or "java Setup") to run Setup.
+<BR>
+There is no way to start Xerver FTP server using Xerver Minimum.
+</TD></TR>
+</TABLE>
+<P>
+
+<INPUT TYPE="radio" NAME="useLowSystemResources" VALUE="1">
+Xerver Minimum - With GUI<BR>
+<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+<TR><TD WIDTH="50">&nbsp;</TD><TD>
+This is like "Xerver Minimum", but there is a trivial user interface allowing
+you to close the Window to shut down Xerver. You don't have to kill the process
+with CTRL+ALT+DEL when you want to terminate the application.
+</TD></TR>
+</TABLE>
+<P>
+
+
+</FONT>
+</B>
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep8&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FORM>
+
+<BR>
+
+<B>What shall I choose?</B>
+<BR>
+If you are unsure what to pick, you probably should choose
+Xerver Maximum which is the  recommended options for most users.
+
+
+
+</FONT>
+</TD></TR>
+</TABLE>

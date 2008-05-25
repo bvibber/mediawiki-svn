@@ -1,0 +1,192 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Setup!</TITLE>
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function setupXerver()
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")==-1)	//user uses windows windows
+	{
+		rootPath="/";
+		sharedPaths="/*";
+	}
+	else
+	{
+		rootPath="c:\\";
+		sharedPaths="c:\\*";
+	}
+
+
+
+	for (i=0; i<document.myForm.myChoice.length; i++)
+		if (document.myForm.myChoice[i].checked)
+		{
+			if (document.myForm.myChoice[i].value=="public")
+			{
+				indexNames="index.html,index.htm,index.shtml,default.html,default.asp,index.php,index.phtml,index.pl,index.cgi";
+				fileExtensions="";
+				runnableExtensions="php=php,php3=php,php4=php,phtml=php,pl=perl,cgi=perl,exe=,bat=";
+				aliasNames="";
+				protectedFolders="";
+				allowFolderListing="1";
+				allowTheseFileExtensions="0";
+				useLowSystemResources="2";
+				allowCGIScript="1";
+			}
+			else if (document.myForm.myChoice[i].value=="testCGI")
+			{
+				indexNames="index.html,index.htm,index.shtml,default.html,default.asp,index.php,index.phtml,index.pl,index.cgi";
+				fileExtensions="";
+				runnableExtensions="php=php,php3=php,php4=php,phtml=php,pl=perl,cgi=perl,exe=,bat=";
+				aliasNames="";
+				protectedFolders="c:\\*<<@>>Xerver<<@>>";
+				allowFolderListing="1";
+				allowTheseFileExtensions="0";
+				useLowSystemResources="2";
+				allowCGIScript="1";
+			}	
+			else if (document.myForm.myChoice[i].value=="fileSharing")
+			{
+				indexNames="";
+				fileExtensions="";
+				runnableExtensions="php=php,php3=php,php4=php,phtml=php,pl=perl,cgi=perl,exe=,bat=";
+				aliasNames="";
+				protectedFolders="c:\\*<<@>>Xerver<<@>>";
+				allowFolderListing="1";
+				allowTheseFileExtensions="0";
+				useLowSystemResources="2";
+				allowCGIScript="0";
+			}
+			else if (document.myForm.myChoice[i].value=="nothing")
+			{
+				self.location.replace("/?action=wizardStep1&direction=forward");
+				break;
+			}
+
+			self.location.replace("/?action=wizardStep1&direction=forward&save=yes"+
+			"&rootPath="+escape(rootPath)+
+			"&sharedPaths="+escape(sharedPaths)+
+			"&indexNames="+escape(indexNames)+
+			"&fileExtensions="+escape(fileExtensions)+
+			"&runnableExtensions="+escape(runnableExtensions)+
+			"&aliasNames="+escape(aliasNames)+
+			"&protectedFolders="+escape(protectedFolders)+
+			"&allowFolderListing="+escape(allowFolderListing)+
+			"&allowTheseFileExtensions="+escape(allowTheseFileExtensions)+
+			"&useLowSystemResources="+escape(useLowSystemResources)+
+			"&allowCGIScript="+escape(allowCGIScript));
+		}
+}
+
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Welcome to Xerver Setup!</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get onSubmit="return false;">
+
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+<IMG SRC='?action=showSmallWizard' BORDER=0>
+</TD><TD>
+<B>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<!--
+Hmm, before we start<BR>
+the setup, tell me for<BR>
+what purpose you are<BR>
+going to use Xerver.<P>
+After you tell me this<BR>
+I will automatically<BR>
+configure Xerver for<BR>
+your needs.
+-->
+<TABLE BORDER=1 CELLPADDING=2 CELLSPACING=0 BGCOLOR="#eeeeee">
+<TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+This setup consists of 9 quick steps.
+<BR>
+You can use the menu to the left to jump to another step in this setup.
+<BR>
+However, changes you make will only be saved when you press the Next-button (below).
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+By telling the Xerver auto configuration tool
+for what purpose are you going to use the server
+Xerver will automatically be configured
+to best suit your needs.
+<P>
+You can of course change settings again during the
+setup if you are not satisfied with the default configuration.
+
+</FONT>
+</B>
+</TD></TR>
+</TABLE>
+<BR>
+
+<B>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<INPUT TYPE="radio" NAME="myChoice" VALUE="public"> 
+I will use Xerver as a public webserver,
+allowing everyone to view my homepage(s).
+<P>
+
+<INPUT TYPE="radio" NAME="myChoice" VALUE="testCGI"> 
+I want to use Xerver to test my CGI-scripts
+on my local computer. No one but myself should
+be able to read the content on my hard drive.
+<P>
+
+<INPUT TYPE="radio" NAME="myChoice" VALUE="fileSharing"> 
+I want to use Xerver as a file-sharing server.
+Only people with a username and a password
+should have access to the files I have shared.
+<P>
+
+<INPUT TYPE="radio" NAME="myChoice" CHECKED VALUE="nothing"> 
+<FONT COLOR="red">I have run setup before! Don't run auto config!</FONT>
+<P>
+
+
+</FONT>
+<FONT SIZE="-2" FACE="verdana,arial">
+Note: Please choose the option which <U>best</U>
+describes your needs. After this step Xerver
+will be configured and you will
+be taken to Xerver Setup, where you can change
+settings to Xerver.
+</FONT>
+</B>
+
+
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Next Step --&gt;" onClick="setupXerver()">
+</P>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+</HTML>

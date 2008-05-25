@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Wizard Help</TITLE>
+
+
+<STYLE TYPE="text/css">
+<!--
+TABLE	{font-family:verdana,arial; font-size: 10px;}
+TR	{font-family:verdana,arial; font-size: 10px;}
+TD	{font-family:verdana,arial; font-size: 10px; font-weight:bold;}
+//-->
+</STYLE>
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function getQueryLine(name)
+{
+	query=location.search.substring(1,location.search.length).split("&");
+	for (i=0; i<query.length; i++)
+	{
+		tmp=query[i].split("=");
+		thisName=unescape(tmp[0]);
+		thisValue=unescape(tmp[1]);
+		if (name==thisName)
+			return thisValue;
+	}
+
+	return "";
+}
+
+
+
+function sokOchErsatt(bigString, gammalStr, nyStr)	//Sök "bigString" efter "gammalStr" och ersätt med "NyStr"
+{
+	storStrang=bigString;
+	for (i=0; i<=storStrang.length-gammalStr.length; i++)
+	{
+		if (storStrang.substring(i,i+gammalStr.length)==(gammalStr))
+		{
+			storStrang=storStrang.substring(0,i)+nyStr+storStrang.substring(i+gammalStr.length);
+			i+=nyStr.length-1;	//Utan detta så går loopen för all evighet om man t.ex. har strängen "ab/cd" och ersätter "/" med "//"
+		}
+	}
+	return storStrang;
+}
+
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<IMG SRC="/?action=showSmallWizard">
+</TD><TD>
+<FONT FACE="verdana,arial" SIZE="-1">
+<B>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write(sokOchErsatt(getQueryLine("titleText"),"\n","<BR>"));
+//-->
+</SCRIPT>
+</B>
+</FONT>
+<P>
+
+<FONT FACE="verdana,arial" SIZE="-2">
+<B>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write(sokOchErsatt(getQueryLine("helpText"),"\n","<BR>"));
+//-->
+</SCRIPT>
+</B>
+
+
+<BR><BR>
+</FONT>
+</TD></TR>
+</TABLE>
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+</TD><TD ALIGN="right">
+<FORM>
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Close" onCLick="top.close()">
+</P>
+</FORM>
+</TD></TR>
+</TABLE>
+
+</BODY>
+</HTML>

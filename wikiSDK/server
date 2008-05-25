@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case "$1" in
+	config)
+		cp -f scriptRes/Xerver2.cfg.base Xerver4/data/Xerver2.cfg
+		sed "s!%phproot%!`cat configData/phproot | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
+		sed "s!%htdocs%!`cat configData/docroot | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
+		sed "s!%logfile%!`cat configData/logfile | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
+		sed "s!%port%!`cat configData/port | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
+		;;
+	run)
+		cd Xerver4
+		java -jar xerver.jar Server
+		;;
+	*)
+		echo "Usage: $0 config - Build configfile from settings"
+		echo "Usage: $0 run    - Run webserver, use ctrl+c or close window to kill"
+		;;
+esac
+
+exit 0

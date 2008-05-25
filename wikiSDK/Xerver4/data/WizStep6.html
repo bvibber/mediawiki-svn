@@ -1,0 +1,234 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 6 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+
+function createIndexFileList(allIndexFiles)
+{
+	nollstallVarden();
+
+	if (allIndexFiles.split(",").length!=-1)
+		for (ii=0; ii<allIndexFiles.split(",").length; ii++)
+			addThisIndex(allIndexFiles.split(",")[ii],null);
+}
+
+
+
+function nollstallVarden()
+{
+	while (document.myForm.indexNames.length>0)
+		document.myForm.indexNames.options[0]=null;
+}
+
+
+
+
+
+
+
+
+function stringIsInArray(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str==myArray[i].value)
+			return true;
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function addIndex()
+{
+	addIndWindow=window.open(escape("/?action=showAddIndSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=230");
+	addIndWindow.focus();
+}
+
+
+
+
+function addThisIndex(thisIndex)
+{
+	if (thisIndex=="")
+		return false;
+
+	if (thisIndex.indexOf(",")!=-1 || thisIndex.indexOf("\\")!=-1 || thisIndex.indexOf("/")!=-1 || thisIndex.indexOf("\"")!=-1)
+	{
+		showAlertXerverHelp("Your index-file can not contain these characters:\n  ,  /  \\  \"");
+		return false;
+	}
+
+	if (stringIsInArray(thisIndex, document.myForm.indexNames.options))
+	{
+		showAlertXerverHelp("You have already added "+thisIndex+" to your list with index files.")
+		return false;
+	}
+
+	if (thisIndex.indexOf("\"")==-1)
+	{
+		document.myForm.indexNames.options[++document.myForm.indexNames.length-1]=new Option(thisIndex, thisIndex)
+//		document.myForm.indexNames.options[++document.myForm.indexNames.length-1].value=thisIndex;
+//		document.myForm.indexNames.options[document.myForm.indexNames.length-1].text=thisIndex;
+	}
+	else
+		showAlertXerverHelp("There is a \" in your index file.\nSo it can't possibly be a valid file.")
+}
+
+
+function removeIndex()
+{
+	if (document.myForm.indexNames.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.indexNames.options[document.myForm.indexNames.selectedIndex].text+".\nDo you want to remove it?"))
+//			document.myForm.indexNames.options[document.myForm.indexNames.selectedIndex]=null;
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.indexNames.options[document.myForm.indexNames.selectedIndex]=new Option();
+			else
+				document.myForm.indexNames.options[document.myForm.indexNames.selectedIndex]=null;
+	}
+	else
+	{
+		alert("Please select the index file you want to remove.");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+function submitForm()
+{
+	nyAddress="action=wizardStep7&direction=forward&save=yes&indexNames=";
+
+	if (document.myForm.indexNames.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<document.myForm.indexNames.length; i++)
+			if (document.myForm.indexNames.options[i].text!="")	//Om det INTE är ett element som raderats i Opera (där raderas de inte på riktigt, där blir de bara tomma strängar)
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=document.myForm.indexNames.options[i].text+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 6 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+<B>Default index-files</B>
+<BR>
+<INPUT TYPE="button" NAME="addIndexButton" VALUE="Add index file" onClick="addIndex()"><INPUT TYPE="button" NAME="removeIndButton" VALUE="Remove index file" onClick="removeIndex()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('An index file is a file that will be shown by default if someone visits a directory.\nExample: If someone is visiting http://www.yourwebsite.com/directory/ and if there is an index file in this directory (for example index.html) this file will be shown for the visitor.\n\nIn case that you have more than one index file in your directory, the files should be ordered with the file you prefer to show at the top of this list.\n\nIf you don\'t have an website you want to share and you are using this web server just as a file-sharing application (maybe you just want to share your music files with your friends), we recommend that you don\'t have any index files at all.\nHowever, if you have a homepage, you might want to add index.htm, index.html etc. as index files.');">
+<BR>
+<SELECT NAME="indexNames" SIZE=4 onChange="status=this.options[this.selectedIndex].value;">
+
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+<!--
+<OPTION VALUE="index.html">index.html
+<OPTION VALUE="index.htm">index.htm
+<OPTION VALUE="index.shtml">index.shtml
+<OPTION VALUE="index.shtm">index.shtm
+-->
+</SELECT>
+<P>
+<BR>
+
+
+<TABLE BORDER=1 BGCOLOR="#cccccc" CELLSPACING=0 CELLPADDING=2>
+<TR BGCOLOR="#aaaaaa"><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>What is an index file?</B>
+</FONT>
+</TD></TR><TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+Let's say someone visits <B>http://www.yourdomain.com/AAA/</B>.
+<P>
+If you have no index files the visitor will see a list of all files and folders located in <B>/AAA/</B>
+(if folder listing is enabled, of course).
+<BR>
+If you have an index file (for example <B>index.html</B>) in <B>/AAA/</B>, this will be shown
+(the visitor will see <B>http://www.yourdomain.com/AAA/index.html</B>).
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<BR>
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep5&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

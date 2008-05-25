@@ -1,0 +1,330 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 5 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+
+function createRunnableExtList(allFileExt)
+{
+	nollstallVarden();
+
+	if (allFileExt.split(",").length!=-1)
+		for (ii=0; ii<allFileExt.split(",").length; ii++)
+			addThisScriptExtension(allFileExt.split(",")[ii],null);
+}
+
+
+
+function nollstallVarden()
+{
+	while (document.myForm.runnableExtensions.length>0)
+		document.myForm.runnableExtensions.options[0]=null;
+}
+
+
+
+
+
+
+
+function addScriptExtension()
+{
+	addScriptExtWindow=window.open(escape("/?action=showAddScriptExtSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=400");
+	addScriptExtWindow.focus();
+}
+
+
+
+
+
+
+//If an element in myArray is longer than str, only compare the first str.length char. For example: "abc" is equal to "abc123"
+function stringIsInSelectBoxTextEqualLength(str, myArray)	//Note that we compare the "[obj].text" value and not the "[obj].value" value
+{
+	for (i=0; i<myArray.length; i++)
+	{
+		if (str.toLowerCase()==myArray[i].text.substring(0,str.length).toLowerCase())
+			return true;
+	}
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//addThisScriptExtension(runnableScriptExtension,runnableScriptCommand)
+//can eithe be called with addThisScriptExtension("php=php-cgi",null)
+//or with addThisScriptExtension("php","php-cgi")
+function addThisScriptExtension(runnableScriptExtension,runnableScriptCommand)
+{
+	if (runnableScriptExtension=="")
+		return false;
+
+	if (runnableScriptCommand==null && stringIsInSelectBoxTextEqualLength(runnableScriptExtension, document.myForm.runnableExtensions.options))	//called by automatic whenpage loads and list is propagated
+	{
+		showAlertXerverHelp("You have already added "+runnableScriptExtension+" to your list with runnable file extensions.")
+		return false;
+	}
+	else if (runnableScriptCommand!=null && stringIsInSelectBoxTextEqualLength(runnableScriptExtension+"=", document.myForm.runnableExtensions.options))  //user manually adds a script extension. If user adds extension "php" we compare "php=" so that user shall not be prevented to add for example "php" because he already has "php4" in list
+	{
+		showAlertXerverHelp("You have already added "+runnableScriptExtension+" to your list with runnable file extensions.")
+		return false;
+	}
+
+
+//	if (runnableScriptExtension.indexOf("\"")==-1)
+//	{
+		if (runnableScriptCommand==null)	//If "addThisScriptExtension" has been called from the "sidanHarLaddatKlart" function (the setup page has been loaded and the values from the .js-file are being set now)
+			document.myForm.runnableExtensions.options[++document.myForm.runnableExtensions.length-1]=new Option(runnableScriptExtension, runnableScriptExtension)
+		else
+			document.myForm.runnableExtensions.options[++document.myForm.runnableExtensions.length-1]=new Option(runnableScriptExtension+"="+runnableScriptCommand, runnableScriptExtension)
+
+//	}
+//	else
+//		showAlertXerverHelp("There is a \" in your file extension.\nSo it can't possibly be a valid file extension.")
+}
+
+
+function removeScriptExtension()
+{
+	if (document.myForm.runnableExtensions.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex].text+".\nDo you want to remove it?"))
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=new Option();
+			else
+				document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=null;
+			//document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=null;
+
+	}
+	else
+	{
+		alert("Please select the file extension/command you want to remove.");
+	}
+}
+
+
+
+
+
+function addExtension()
+{
+	addExtWindow=window.open(escape("/Setup:showAddExtSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=200");
+
+	addExtWindow.focus();
+}
+
+
+
+function addThisExtension(extension)
+{
+	if (extension=="")
+		return false;
+
+	if (stringIsInArray(extension, document.form.runnableExtensions.options))
+	{
+		showAlertXerverHelp("You have already added "+extension+" to your list with file extensions.")
+		return false;
+	}
+
+
+	if (extension.indexOf("\"")==-1)
+	{
+		document.myForm.runnableExtensions.options[++document.myForm.runnableExtensions.length-1]=new Option(extension, extension)
+//		document.myForm.runnableExtensions.options[++document.myForm.runnableExtensions.length-1].value=extension;
+//		document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.length-1].text=extension;
+	}
+	else
+		showAlertXerverHelp("There is a \" in your file extension.\nSo it can't possibly be a valid file extension.")
+}
+
+
+function removeExtension()
+{
+	if (document.myForm.runnableExtensions.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex].text+".\nDo you want to remove it?"))
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=new Option();
+			else
+				document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=null;
+			//document.myForm.runnableExtensions.options[document.myForm.runnableExtensions.selectedIndex]=null;
+
+	}
+	else
+	{
+		alert("Please select the file extension you want to remove.");
+	}
+}
+
+
+
+
+
+
+
+
+function submitForm()
+{
+	nyAddress="action=wizardStep6&direction=forward&save=yes&runnableExtensions=";
+
+	if (document.myForm.runnableExtensions.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<document.myForm.runnableExtensions.length; i++)
+			if (document.myForm.runnableExtensions.options[i].text!="")	//Om det INTE är ett element som raderats i Opera (där raderas de inte på riktigt, där blir de bara tomma strängar)
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=document.myForm.runnableExtensions.options[i].text+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 5 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+The list below shows file extensions that should be run and not be downloaded when a visitor visits the file.
+<BR>
+The format of the list is:
+<BR>
+<I>fileExtension=commandToRunThisFile</I>
+<P>
+Example:
+<BR>
+<I>pl=perl</I>
+<BR>
+<I>php4=php</I>
+
+<P>
+<INPUT TYPE="button" NAME="addExtButton" VALUE="Add script extension" onClick="addScriptExtension()"><INPUT TYPE="button" NAME="removeExtButton" VALUE="Remove script extension" onClick="removeScriptExtension()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('Xerver can be used to run CGI-scripts.\nThis means that you can run guestbooks, formmails, wwwboards etc. with Xerver.\n\nHowever, you have to decide which file extensions that should be considered \'runnable files\'.\n\nFor example: If you want your perl-scripts to be runnable, you must tell Xerver that all files that ends with \'.cgi\' or \'.pl\' should be considered perl files and that these files shall be executed, not downloaded, when a visitor visits the file.\nPerl-scripts are executed with a command called \'perl\'.\nPHP-scripts are executed with a command called \'php\'.\n\nThis means that Xerver can run ANY script language that you can run on your computer.');">
+<BR>
+<SELECT NAME="runnableExtensions" SIZE=4 onChange="status=this.options[this.selectedIndex].value;">
+
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+
+<!--
+<OPTION VALUE="php=php">php=php
+<OPTION VALUE="php3=php">php3=php
+<OPTION VALUE="php4=php">php4=php
+<OPTION VALUE="phtml=php">phtml=php
+<OPTION VALUE="pl=perl">pl=perl
+<OPTION VALUE="cgi=perl">cgi=perl
+-->
+</SELECT>
+<P>
+<BR>
+
+<FONT COLOR=red>
+<B>Important message to Windows users that will run PHP scripts:</B>
+<BR>
+PHP 5 uses "php-cgi" to run php-scripts
+while older PHP versions (PHP 4 or older)
+are all using "php" to run php-scripts.
+<BR>
+Xerver is by default configured for PHP 4 which uses "php".
+If you have PHP 5 or plan to install PHP 5, make sure that
+you have "php=php-cgi" in the scroll list above.
+</FONT>
+<P>
+
+
+<TABLE BORDER=1 BGCOLOR="#cccccc" CELLSPACING=0 CELLPADDING=2>
+<TR BGCOLOR="#aaaaaa"><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>What is this?</B>
+</FONT>
+</TD></TR><TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+If you want to run CGI-scripts with Xerver, you have to tell Xerver
+which file extensions should be considered CGI-files.
+<BR>
+When someone visits a CGI-file (for example "guestbook.php")
+Xerver won't show the content of the file,
+but will execute the script.
+However, different script types are run with different commands
+on your computer. Sounds difficult? It's not!
+<P>
+The command for Perl-script is "perl".
+<BR>
+The command for PHP-script is "php" (or "php-cgi").
+<BR>
+However, some files are runnable without a command,
+such as "exe" files on windows. The command
+for exe-files is "" (nothing).
+
+</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<BR>
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep4&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

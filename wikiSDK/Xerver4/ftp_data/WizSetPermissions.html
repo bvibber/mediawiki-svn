@@ -1,0 +1,366 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+
+
+function userNameIs(user)
+{
+	document.myForm.userName.value=user;
+	document.write("<HR>Current user: <B>"+user+"</B>");
+}
+
+/*
+function addAliasToList(name,path)
+{
+	lastElement=document.myForm.aliasList.length++;
+	document.myForm.aliasList[lastElement].value=name+"="+path;
+	document.myForm.aliasList[lastElement].text=name+"="+path;
+}
+*/
+
+
+
+function removeAliases()
+{
+	removeThese="";
+	nr=document.myForm.aliasCheckbox.length;
+//alert(nr)
+	if (nr+""=="undefined")	//There is only one checkbox
+	{
+//alert(document.myForm.aliasCheckbox.checked)
+		if (document.myForm.aliasCheckbox.checked)
+		{
+			removeThese=document.myForm.aliasCheckbox.value;
+		}
+	}
+	else	//There is more than one checkbox
+	{
+		for (i=0; i<nr; i++)
+		{
+//			alert(document.myForm.aliasCheckbox[i].checked)
+			if (document.myForm.aliasCheckbox[i].checked)
+			{
+				removeThese+=document.myForm.aliasCheckbox[i].value+",";
+			}
+		}
+		removeThese=removeThese.substring(0,removeThese.length-1);
+	}
+
+
+	if (removeThese=="")
+		alert("You have not checked which aliases you want to remove.")
+	else if (confirm("Are you sure you want to remove these aliases from the list?"))
+		location.replace("/?action=save&userName="+document.myForm.userName.value+"&type=removeAlias&removeThese="+removeThese);
+}
+
+
+
+
+function sendForm()
+{
+	if (document.myForm.newPermissionPath.value=="")
+	{
+		alert("Please select a directory you want that "+document.myForm.userName.value+" shall have access to.")
+		return false;
+	}
+
+	if (document.myForm.userName.value=="guest" &&
+		(document.myForm.thisCreate.checked || document.myForm.thisWrite.checked))
+	{
+		if (!confirm("WARNING!\nYou are giving the guest user permission to write files to your harddrive!\nThis means that anyone can upload files, including viruses or files with illegal content, to your harddrive.\nThe files can of course not be executed by the guest user, but they will be stored on your hardrive.\n\nAre you sure you want to continue?\n\nPress OK if you want give the guest user these permissions.\nPress Cancel if you want to abort."))
+		{
+			return false;
+		}
+	}
+
+/*****************
+	checkBoxData="";
+	if (document.myForm.thisSubdir.checked)
+	{
+		checkBoxData="&thisSubdir=on";
+	}
+	if (document.myForm.thisRead.checked)
+	{
+		checkBoxData="&thisRead=on";
+	}
+	if (document.myForm.thisWrite.checked)
+	{
+		checkBoxData="&thisWrite=on";
+	}
+	if (document.myForm.thisCreate.checked)
+	{
+		checkBoxData="&thisCreate=on";
+	}
+	if (document.myForm.thisList.checked)
+	{
+		checkBoxData="&thisList=on";
+	}
+
+	location.replace("/action=save&type=addPermissions&userName="+document.myForm.userName.value+"&newPermissionPath="+document.myForm.newPermissionPath.value+checkBoxData);
+************************/
+	return true;
+}
+
+
+
+function updatePermissions()
+{
+	OKToSave=true;
+	if (document.myForm.userName.value=="guest")
+	{
+		isGuestUser=true;
+		hasShowedVarning=false;	//No matter what...
+	}
+	else
+	{
+		isGuestUser=false;
+		hasShowedVarning=false;	//No matter what...
+	}
+
+
+	newPermissionStr="";
+	nr=document.myForm.write.length;
+	if (nr+""=="undefined")	//There is only one checkbox
+	{
+		newPermissionStr+=replace(escape(document.myForm.path0.value),'+','%2B');
+		if (document.myForm.subdir.checked)
+		{
+			newPermissionStr+="*";
+		}
+		newPermissionStr+=";";
+		if (document.myForm.write.checked)
+		{
+			if (isGuestUser && !hasShowedVarning)
+			{
+				OKToSave=confirm("WARNING!\nYou are giving the guest user permission to write files to your harddrive!\nThis means that anyone can upload files, including viruses or files with illegal content, to your harddrive.\nThe files can of course not be executed by the guest user, but they will be stored on your hardrive.\n\nAre you sure you want to continue?\n\nPress OK if you want give the guest user these permissions.\nPress Cancel if you want to abort.")
+				hasShowedVarning=true;
+			}
+			newPermissionStr+="w";
+		}
+		if (document.myForm.read.checked)
+		{
+			newPermissionStr+="r";
+		}
+		if (document.myForm.create.checked)
+		{
+			if (isGuestUser && !hasShowedVarning)
+			{
+				OKToSave=confirm("WARNING!\nYou are giving the guest user permission to write files to your harddrive!\nThis means that anyone can upload files, including viruses or files with illegal content, to your harddrive.\nThe files can of course not be executed by the guest user, but they will be stored on your hardrive.\n\nAre you sure you want to continue?\n\nPress OK if you want give the guest user these permissions.\nPress Cancel if you want to abort.")
+				hasShowedVarning=true;
+			}
+			newPermissionStr+="c";
+		}
+		if (document.myForm.list.checked)
+		{
+			newPermissionStr+="l";
+		}
+	}
+	else	//There is more than one checkbox
+	{
+		for (i=0; i<nr; i++)
+		{
+			newPermissionStr+=replace(escape(eval("document.myForm.path"+i+".value")),'+','%2B');
+;
+			if (document.myForm.subdir[i].checked)
+			{
+				newPermissionStr+="*";
+			}
+			newPermissionStr+=";";
+			if (document.myForm.write[i].checked)
+			{
+				if (isGuestUser && !hasShowedVarning)
+				{
+					OKToSave=confirm("WARNING!\nYou are giving the guest user permission to write files to your harddrive!\nThis means that anyone can upload files, including viruses or files with illegal content, to your harddrive.\nThe files can of course not be executed by the guest user, but they will be stored on your hardrive.\n\nAre you sure you want to continue?\n\nPress OK if you want give the guest user these permissions.\nPress Cancel if you want to abort.")
+					hasShowedVarning=true;
+				}
+				newPermissionStr+="w";
+			}
+			if (document.myForm.read[i].checked)
+			{
+				newPermissionStr+="r";
+			}
+			if (document.myForm.create[i].checked)
+			{
+				if (isGuestUser && !hasShowedVarning)
+				{
+					OKToSave=confirm("WARNING!\nYou are giving the guest user permission to write files to your harddrive!\nThis means that anyone can upload files, including viruses or files with illegal content, to your harddrive.\nThe files can of course not be executed by the guest user, but they will be stored on your hardrive.\n\nAre you sure you want to continue?\n\nPress OK if you want give the guest user these permissions.\nPress Cancel if you want to abort.")
+					hasShowedVarning=true;
+				}
+				newPermissionStr+="c";
+			}
+			if (document.myForm.list[i].checked)
+			{
+				newPermissionStr+="l";
+			}
+			newPermissionStr+=",";
+		}
+		newPermissionStr=newPermissionStr.substring(0,newPermissionStr.length-1);
+	}
+
+	if (OKToSave && (hasShowedVarning || confirm("Are you sure you want to change settings?")))
+		location.replace("/?action=save&userName="+document.myForm.userName.value+"&type=updatePermissions&newValue="+newPermissionStr);
+}
+
+
+
+
+function removePermissions(removeThisIndex)
+{
+	newPermissionStr="";
+	nr=document.myForm.write.length;
+	if (nr+""=="undefined")	//There is only one checkbox
+	{
+		newPermissionStr="";
+	}
+	else	//There is more than one checkbox
+	{
+		for (i=0; i<nr; i++)
+		{
+			if (i!=removeThisIndex)
+			{
+				newPermissionStr+=replace(escape(eval("document.myForm.path"+i+".value")),'+','%2B');
+				if (document.myForm.subdir[i].checked)
+				{
+					newPermissionStr+="*";
+				}
+				newPermissionStr+=";";
+				if (document.myForm.write[i].checked)
+				{
+					newPermissionStr+="w";
+				}
+				if (document.myForm.read[i].checked)
+				{
+					newPermissionStr+="r";
+				}
+				if (document.myForm.create[i].checked)
+				{
+					newPermissionStr+="c";
+				}
+				if (document.myForm.list[i].checked)
+				{
+					newPermissionStr+="l";
+				}
+				newPermissionStr+=",";
+			}
+		}
+		newPermissionStr=newPermissionStr.substring(0,newPermissionStr.length-1);
+	}
+
+	if (confirm("Are you sure you want to unshare\n"+eval("document.myForm.path"+removeThisIndex+".value")+"?"))
+		location.replace("/?action=save&userName="+document.myForm.userName.value+"&type=updatePermissions&newValue="+newPermissionStr);
+
+}
+
+
+function replace(str,oldChar,newChar)
+{
+	for (ii=0;ii<str.length; ii++)
+	{
+		if (str.substring(ii,ii+1)==oldChar)
+			str=str.substring(0,ii)+newChar+str.substring(ii+1,str.length);
+	}
+
+	return str;
+}
+
+
+
+function dirChoosen(path)
+{
+	document.myForm.newPermissionPath.value=path;
+}
+function browseFolders()
+{
+	browseWindow=window.open('/?action=chooseDirectory&currentPath='+replace(escape(document.myForm.newPermissionPath.value),'+','%2B'),'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS">
+
+
+</HEAD>
+<BODY BGCOLOR=white TEXT=black LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0">
+
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get ONSUBMIT="return sendForm()">
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=8 BGCOLOR=lightgreen>
+<TR><TD>
+<U><B>Set permissions for shared directories</B></U>
+</TD></TR>
+</TABLE>
+<BR>
+
+
+<B>Share folder</B>
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('Here you can choose which folders this user shall be allowed to browse.\nYou shall also decide what permissions this user shall have for each specific folder.\n')">
+
+<BR>
+
+<BR>
+
+<TABLE WIDTH="100%" BGCOLOR="lightblue" BORDER=2 BORDERCOLORDARK=black BORDERCOLORLIGHT=black BORDERCOLOR=black CELLPADDING=5 CELLSPACING=0>
+<TR><TD>
+
+Choose folder:
+<BR>
+<INPUT TYPE="text" NAME="newPermissionPath" SIZE=40><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse...">
+<P>
+
+Permissions for this folder:
+
+<TABLE BGCOLOR="#cccccc" BORDER=2 BORDERCOLORDARK=black BORDERCOLORLIGHT=black BORDERCOLOR=black CELLPADDING=2 CELLSPACING=0>
+<TR>
+<TH CLASS=smallheader><A HREF="javascript:alert('Write permissions:\nUser can delete, overwrite and create files/folders in this folder.')" TITLE="">Write</A></TH>
+<TH CLASS=smallheader><A HREF="javascript:alert('Read permissions:\nUser can read and download files in this folder.')" TITLE="User can read and download files in this folder.">Read</A></TH>
+<TH CLASS=smallheader><A HREF="javascript:alert('Create new files:\nUser can can create new files/folders, but can not delete or overwrite existing files.')" TITLE="User can can create new files/folders, but might not delete or overwrite existing files.">Create</A></TH>
+<TH CLASS=smallheader><A HREF="javascript:alert('List directories:\nUser can see the what files/folders are stored in this directory.')" TITLE="User can see the what files/folders are stored in this directory.">List</A></TH>
+<TH CLASS=smallheader><A HREF="javascript:alert('Subdirectories:\nAll permissions for this folder shall also apply for subdirectories.')" TITLE="All permissions for this folder shall also apply for subdirectories.">Subdir.</A></TH>
+<TD ROWSPAN=2 BGCOLOR="#eeeeee">
+Below you can find explainations
+<BR>
+for what the different
+<BR>
+permissions means.</TD></TR>
+<TR BGCOLOR="#eeeeee"><TD><INPUT TYPE=checkbox NAME=thisWrite></TD><TD><INPUT TYPE=checkbox NAME=thisRead></TD><TD><INPUT TYPE=checkbox NAME=thisCreate></TD><TD><INPUT TYPE=checkbox NAME=thisList CHECKED></TD><TD><INPUT TYPE=checkbox NAME=thisSubdir CHECKED></TD></TR>
+</TABLE>
+
+<P ALIGN="right">
+<INPUT TYPE="submit" VALUE="Share folder">
+</P>
+</TD></TR>
+</TABLE>
+
+
+<INPUT TYPE="hidden" NAME="userName">
+<INPUT TYPE="hidden" NAME="action" VALUE="save">
+<INPUT TYPE="hidden" NAME="type" VALUE="addPermissions">
+<P>
+<BR>
+
+
+
+
+
+
+
+

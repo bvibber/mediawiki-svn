@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>Add Protected Folder</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function addThisProt(theFolder, theRealm, theUserName, thePass1, thePass2, subfolders)
+{
+	opener.addThisProt(theFolder, theRealm, theUserName, thePass1, thePass2, subfolders)
+}
+
+function getQueryLine(name)
+{
+	query=location.search.substring(1,location.search.length).split("&");
+	for (i=0; i<query.length; i++)
+	{
+		tmp=query[i].split("=");
+		thisName=unescape(tmp[0]);
+		thisValue=unescape(tmp[1]);
+		if (name==thisName)
+			return thisValue;
+	}
+
+	return "";
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+	document.write("<FRAMESET ROWS='1,*' BORDER=0 FRAMEBORDER=0 FRAMESPACING=0 NORESIZE>");
+	document.write("<FRAME SRC='/?action=showEmptyPage' NAME=empty SCROLLING=no>");
+
+	if (getQueryLine("showInFrame")=="addFolder")
+		document.write("<FRAME SRC=\"/?action=showAddProtSetup\" NAME=content>");
+	else if (getQueryLine("showInFrame")=="addUser")
+		document.write("<FRAME SRC=\"/?action=showAddProtUserSetup&folderValue="
+		+ escape(getQueryLine("folderValue"))
+		+'&subfoldersValue='+getQueryLine("subfoldersValue")
+		+'&realmValue='+escape(getQueryLine("realmValue"))
+		+"\" NAME=content>");
+	else
+		document.write("<FRAME SRC=\"/?action=showEmptyPage\" NAME=content>");	//this will never happen
+
+	document.write("</FRAMESET>");
+//-->
+</SCRIPT>
+
+
+</HTML>

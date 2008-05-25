@@ -1,0 +1,394 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 2 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+gotWindowsWarning=false;
+function haveSeenWindowsWarning()
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")==-1)	//Om man inte har windows
+		return true;	// Så säger vi att vi redan sett meddelandet så vi slipper se det
+
+	if (!gotWindowsWarning)
+	{
+		gotWindowsWarning=true;
+		return false;
+	}
+		return true;
+}
+
+
+
+
+
+function addDirectory()
+{
+	addDirWindow=window.open(escape("/?action=showAddDirSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=620,height=200");
+	addDirWindow.focus();
+}
+
+
+
+function removeDirectory()
+{
+	if (document.myForm.sharedPaths.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.sharedPaths.options[document.myForm.sharedPaths.selectedIndex].text+".\nDo you want to remove it from this list?"))
+		{
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.sharedPaths.options[document.myForm.sharedPaths.selectedIndex]=new Option();
+			else
+				document.myForm.sharedPaths.options[document.myForm.sharedPaths.selectedIndex]=null;
+		}
+	}
+	else
+	{
+		alert("Please select the folder you want to remove.");
+	}
+
+}
+
+
+
+
+
+function laggTillDirectoryUtanKontroll(url)
+{
+	document.myForm.sharedPaths.options[++document.myForm.sharedPaths.length-1]=new Option(url, url)
+}
+
+function nollstallVarden()
+{
+	while (document.myForm.sharedPaths.length>0)
+		document.myForm.sharedPaths.options[0]=null;
+}
+
+function createFolderList(allData)
+{
+	nollstallVarden()
+
+	if (allData.split(",").length!=-1)
+		for (ii=0; ii<allData.split(",").length; ii++)
+			laggTillDirectoryUtanKontroll(allData.split(",")[ii]);
+}
+
+
+
+
+
+
+
+
+function fixaRattMedSlash(url)
+{
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+	{
+		if (url.indexOf("/")!=-1)  //om man har / i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a UNIX-style path.\n\nA path in Windows shall not use /, but instead \\.\nExamples:\nWrong: c:/windows/\nCorrect: c:\\windows\\\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "/","\\")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "/","\\");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+	else 
+	{
+		if (url.indexOf("\\")!=-1)	 //om man har \ i url...
+		{
+			if (!haveSeenWindowsWarning() && confirm("It seems like you have used a Windows path.\n\nA path in UNIX, Linux or Mac shall not use \\, but instead /.\nExamples:\nWrong: \\files\\\nCorrect: /files/\n\nDo you want to change...\n"+url+"\n...to...\n"+sokOchErsatt(url, "\\","//")))
+			{
+				gotWindowsWarning=false;	//Visa varningen framöver
+				return sokOchErsatt(url, "\\","//");
+			}
+			else
+			{
+				return url;
+			}
+		}
+		else
+		{
+			return url;
+		}
+	}
+}
+
+
+//Denna funktion lägger till / eller \ beroende på vad som redan finns i "url".
+function fixaRattMedSlashIslutet(url)
+{
+	if (url.substring(url.length-1)!="\\" && url.substring(url.length-1)!="/")	//Man har inte någon slash i slutet
+	{
+		if (url.indexOf("\\")!=-1)	//Man har redan \ i url
+		{
+			url+="\\";
+		}
+		else// if (url.indexOf("/")!=-1)
+		{
+			url+="/";
+		}
+	}
+	
+	return url;
+}
+
+function fixaRattMedEnhetsbokstav(url)
+{
+	if (url.substring(1,2)!=":")	//Om [man inte varnats tidigare] och om [man inte har : som andra tecken i sin adress]
+		if (!haveSeenWindowsWarning() && confirm("The path to your directory is:\n"+url+"\n\nIf you are using Windows the path should start with your drive letter such as (c:\\).\n\nPress OK to change your path to something else.\nPress Cancel to ignore this message and add this to your list with directories."))
+		{
+			gotWindowsWarning=false;	//Visa varningen framöver
+			return "";	//Avbryt
+		}
+
+	if (navigator.appVersion.toLowerCase().indexOf("win")!=-1)	//Om man har windows
+		return url.substring(0,1).toLowerCase()+url.substring(1);	//Gör "C:/mapp/" ==> "c:/mapp/"
+	else
+		return url;
+}
+
+function sokOchErsatt(bigString, gammalStr, nyStr)	//Sök "bigString" efter "gammalStr" och ersätt med "NyStr"
+{
+	storStrang=bigString;
+	for (i=0; i<=storStrang.length-gammalStr.length; i++)
+	{
+		if (storStrang.substring(i,i+gammalStr.length)==(gammalStr))
+		{
+			storStrang=storStrang.substring(0,i)+nyStr+storStrang.substring(i+gammalStr.length);
+			i+=nyStr.length-1;	//Utan detta så går loopen för all evighet om man t.ex. har strängen "ab/cd" och ersätter "/" med "//"
+		}
+	}
+	return storStrang;
+}
+
+function stringIsInArray(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str==myArray[i].value)
+			return true;
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+function removeQuoteFromURL(url)
+{
+	if (url.charAt(0)=="\"")
+		url=url.substring(1);
+	if (url.charAt(url.length-1)=="\"")
+		url=url.substring(0,url.length-1);
+	return url;
+}
+
+
+
+
+promptForAsterix=true;
+function addThisDirectory(url, addSubdirectories)
+{
+	url=removeQuoteFromURL(url);
+
+	if (url=="")
+		return false;//addDirectory();
+
+	if (url.indexOf(",")!=-1)
+	{
+		showAlertXerverHelp("You can't share a folder that has an comma (,) in it's path.");
+		return false;//addDirectory();
+	}
+
+	if (url.substring(url.length-1)=="\"" && url.substring(0,1)=="\"")	// '"c:/mapp/"' ==> 'c:/mapp/'
+		url=url.substring(1,url.length-1);
+
+	nyURLtmp=fixaRattMedEnhetsbokstav(url);
+	if (nyURLtmp=="")
+	{
+		return false;
+	}
+	else
+	{
+		url=nyURLtmp;
+	}
+
+	if (	(url.lastIndexOf(".")>url.lastIndexOf("\\") && (url.indexOf("/")==-1)) ||
+		(url.lastIndexOf(".")>url.lastIndexOf("/") && url.indexOf("\\")==-1))
+		if (!haveSeenWindowsWarning() && confirm("Is "+url+" a folder or a file?\nPress OK if it is a file.\nPress Cancel if it is a folder."))
+		{
+			gotWindowsWarning=false;	//Visa varningen framöver
+			showAlertXerverHelp("You must enter the path to the DIRECTORY you want to share.\nYou can't share a single file.");
+			return false;
+		}
+
+	url=fixaRattMedSlash(url);
+	url=fixaRattMedSlashIslutet(url);
+
+
+
+	if (url.indexOf("\"")!=-1)
+	{
+		showAlertXerverHelp("There is a \" in your directory name.\nSo it can't possibly be a valid directory.")
+		return false;//addDirectory();
+	}
+
+
+//alert(stringIsInArray(url, document.myForm.sharedPaths.options) +"  "+ stringIsInArray(url+"*", document.myForm.sharedPaths.options))
+	if (stringIsInArray(url, document.myForm.sharedPaths.options) || stringIsInArray(url+"*", document.myForm.sharedPaths.options))	//Om adressen redan finns i listan...
+		for (i=0; i<document.myForm.sharedPaths.length; i++)	//Om man tidigare bara delat ut mappen (inte underkataloger), i så fall ska vi nu uppdatera fältet så att även underkatalogerna blir utdelade (och tvärt om, dvs. man först hade delat ut underkatalogerna och inte vill det mera)
+			if (url==document.myForm.sharedPaths.options[i].value || url+"*"==document.myForm.sharedPaths.options[i].value)
+			{
+				//taBortDettaElement(document.myForm.sharedPaths.options[i]);
+				if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+					document.myForm.sharedPaths.options[i]=new Option();
+				else
+					document.myForm.sharedPaths.options[i]=null;
+				break;				
+			}
+
+
+
+			if (addSubdirectories)
+			{
+				laggTillDirectoryUtanKontroll(url+"*")
+					if (promptForAsterix)
+					{
+						showAlertXerverHelp("The * next to the directory means that all subfolders to that directory has been shared.")
+						promptForAsterix=false;
+					}
+			}
+			else
+			{
+				laggTillDirectoryUtanKontroll(url)
+			}
+
+
+	return false;//addDirectory();
+}
+
+
+
+
+
+
+
+function submitForm()
+{
+	if (document.myForm.sharedPaths.length==0)
+	{
+		showAlertXerverHelp("Please share at least one folder.");
+		return false;
+	}
+
+	nyAddress="action=wizardStep3&direction=forward&save=yes&sharedPaths=";
+
+	if (document.myForm.sharedPaths.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<document.myForm.sharedPaths.length; i++)
+			if (document.myForm.sharedPaths.options[i].text!="")	//Om det INTE är ett element som raderats i Opera (där raderas de inte på riktigt, där blir de bara tomma strängar) 
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=document.myForm.sharedPaths.options[i].text+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 2 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+
+
+
+<B>Add directories</B> <INPUT TYPE="button" NAME="addDirButton" VALUE="Add directory" onClick="addDirectory()"><INPUT TYPE="button" NAME="removeDirButton" VALUE="Remove directory" onClick="removeDirectory()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('Files (not subfolders) in these directories can be viewed by visitors to your web server.\nVisitors can NOT remove or edit files in a folder.\n\nTo share more folders, press the [Add directory] button.\n\nIf a directory has a * in the end of the directory name, you have chosen to share both files AND subfolders in that directory.');">
+<BR>
+Please choose which directories you want to share.
+The content of a shared folder can be viewed by anyone on Internet
+(unless you protect the folder with a password).
+The setup will later ask you which folders you want to protect with a password.
+<BR>
+<SELECT NAME="sharedPaths" SIZE=4><!--  onChange="status=this.options[this.selectedIndex].value;" -->
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+<!--
+<OPTION VALUE="c:\*">c:\*
+-->
+</SELECT>
+<P>
+<BR>
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep1&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

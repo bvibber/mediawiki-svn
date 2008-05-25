@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<TITLE>Create Alias</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function dirChoosen(path)
+{
+	document.addAliasWinForm.theFolder.value=path;
+}
+
+function browseFolders()
+{
+	window.open('/?action=chooseDirectory&currentPath='+document.addAliasWinForm.theFolder.value,'browse','width=500,height=400,scrollbars=yes')
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<FONT FACE="arial,verdana" SIZE="-1">
+<B>Please choose which aliases ("virtual directories") you want:</B>
+<BR>
+<FORM NAME="addAliasWinForm" onSubmit="if (document.addAliasWinForm.theAlias.value!=''){opener.addThisAlias(document.addAliasWinForm.theAlias.value,document.addAliasWinForm.theFolder.value);};return false;">
+
+<B>Alias:</B>
+<BR>
+http://www.yourdomain.com/<INPUT TYPE=text NAME="theAlias" SIZE=20>
+<P>
+
+<B>Will point to:</B>
+<BR>
+<FONT FACE='arial,verdana' SIZE='-2'>
+<B>
+You can use the browse button if you don't remember the exact location of your folder.
+</B>
+</FONT>
+<BR>
+<INPUT TYPE=text NAME="theFolder" SIZE=40><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="top.opener.showAlertXerverHelp('Enter the location of the folder, which the alias should point to.\n\nTo help you remember the exact location of the folder, you can press the \'Browse\' button.');">
+<BR>
+<I>For example: c:\some\folder\</I>
+
+<BR>
+<BR>
+<INPUT TYPE=button VALUE="Create Alias" onClick="if (document.addAliasWinForm.theAlias.value!=''){opener.addThisAlias(document.addAliasWinForm.theAlias.value,document.addAliasWinForm.theFolder.value);}"><INPUT TYPE="button" VALUE="Close" onClick="top.close();">
+
+</FONT>
+</FORM>
+
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

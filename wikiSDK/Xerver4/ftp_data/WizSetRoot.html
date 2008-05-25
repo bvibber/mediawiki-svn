@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function userNameIs(user)
+{
+	document.myForm.userName.value=user;
+	document.write("<HR>Current user: <B>"+user+"</B>");
+}
+
+function rootIs(root)
+{
+	document.myForm.newValue.value=root;
+}
+
+
+function sendForm()
+{
+	if (document.myForm.newValue.value=="")
+	{
+		alert("Please choose a root to share.");
+		return false;
+	}
+
+	//location="/action=save&type=root&userName="+document.myForm.userName.value+"&newValue="+document.myForm.newValue.value;
+	return true;
+}
+
+
+
+function replace(str,oldChar,newChar)
+{
+	for (i=0;i<str.length; i++)
+	{
+		if (str.substring(i,i+1)==oldChar)
+			str=str.substring(0,i)+newChar+str.substring(i+1,str.length);
+	}
+
+	return str;
+}
+
+
+function dirChoosen(path)
+{
+	document.myForm.newValue.value=path;
+}
+function browseFolders()
+{
+	browseWindow=window.open('/?action=chooseDirectory&currentPath='+replace(escape(document.myForm.newValue.value),'+','%2B'),'browse','width=500,height=400,scrollbars=yes')
+	browseWindow.focus();
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS"> 
+
+
+</HEAD>
+<BODY BGCOLOR=white TEXT=black LINK="blue" VLINK="darkblue" ALINK="orange" MARGINHEIGHT="0" TOPMARGIN="0">
+
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get ONSUBMIT="sendForm()">
+
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=8 BGCOLOR=lightgreen>
+<TR><TD>
+<U><B>Set root</B></U>
+</TD></TR>
+</TABLE>
+<BR>
+
+
+Set root:
+<INPUT TYPE="text" NAME="newValue" SIZE=40><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse...">
+<INPUT TYPE="hidden" NAME="userName">
+<INPUT TYPE="hidden" NAME="action" VALUE="save">
+<INPUT TYPE="hidden" NAME="type" VALUE="root">
+
+<P>
+<INPUT TYPE="submit" VALUE="Save Root">
+
+
+</FORM>
+<BR>
+
+

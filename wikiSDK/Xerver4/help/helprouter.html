@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+
+
+<B>I have a router. Can I use Xerver?</B>
+<P>
+	This is actually not a web server issue, but a network issue.
+	<BR>
+	You must configure your router to forward the incoming connections
+	to your server computer.
+	<BR>
+	However, how you do this depends on how your network is built up.
+	An excellent website that will describe this in great detail is:
+	<BR>
+	<A HREF="http://www.dslwebserver.com/main/router.html" TARGET="_blank">http://www.dslwebserver.com/main/router.html</A>
+	<P>
+	Hopefully, after reading the website above you should know:
+	<UL>
+	<LI> The difference between a local IP (your Local Area Network IP (LAN))
+		and your outer IP (your Wide Area Network IP (WAN))
+	<LI> The difference between having static internal (LAN) IP addresses
+		and having dynamic internal (LAN) IP addresses.
+		Also, you must understand that your server computer (the one
+		running Xerver) must have a static internal (LAN) IP address.
+	<LI> You must understand that you should configure the router to redirect
+		connections from a certain port (in your case port 80 as you want to
+		use a web server) to the server computer using the server computers
+		internal (LAN) IP address.
+	</UL>
+	<P>
+	Hopefully you shall now be able to configure your network so
+	that you can run Xerver on a server computer even if it's behind a router.
+
+<P>
+
+<B>How do I configure my router?</B>
+<P>
+
+How you configure your router depends on what router you have, but with most
+routers you can find your router's setup page by visiting:
+<BR>
+<A HREF="http://192.168.0.1/" TARGET="_blank">http://192.168.0.1/</A>
+<P>
+If you don't have a router the above link will most likely not work for you.
+<P>
+
+If you are not sure how to enable port forwarding on your router,
+an excellent website that shows how you can configure your router is:
+<BR>
+<A HREF="http://www.portforward.com/routers.htm" TARGET="_blank">http://www.portforward.com/routers.htm</A>
+<BR>
+You will tell the website what router you have (brand and model) and it
+will show you step by step screen shots of how you can enable port forwarding
+with your particular router.
+<P>
+
+Visit the above address to configure your router so that it forwards a certain port
+(any port of your choice) to that port on your computer that you have told
+Xerver to listen to.
+<BR>
+<B>Example:</B>
+<BR>
+Let us say that you want to use both
+Xerver Web Server and Xerver FTP Server. You want to run these servers
+on your computer on port 5080 for the web server and 4321 for the FTP server.
+However, you want that your users shall not use these ports, but instead
+you want them to use the default ports (which for a web server is 80 and
+for a FTP server is 21). Now you must configure your router so that it
+forwards all incoming connections at port 80 to 5080 and all incoming
+connections at port 21 to port 4321 to your server computer (the one running Xerver).
+Your users won't know that you run the servers on port 5080 and 4321,
+since they will use port 80 and 21 on the router and this is what they see.
+<P>
+Remember that when you configure your router you must tell it to which computer
+the incoming connections shall be redirected to (since you might have several different
+computers behind your router and it needs to know which of these computers shall
+get the incoming connections (which is the computer that runs Xerver)).
+<BR>
+<B>Example:</B>
+<BR>
+You might have 2 computers and 1 router. Your router's (outer) IP that it gets from
+your ISP might for example be 66.249.64.256 (this is actually a made up dummy IP
+that no one has). Its (local) IP might be
+<A HREF="http://192.168.0.1/" TARGET="_blank">http://192.168.0.1/</A>
+(where you can visit the router to change its settings).
+Your two computers might have these (local) IP addresses:
+192.168.0.2 and 192.168.0.3 (you can easily find out your computers
+<A HREF="helpfindip.html">local IP addresses</A>).
+<BR>
+Let us assume that you want 192.168.0.2 to be the server computer which runs
+Xerver. 192.168.0.3 might be any other computer you have at home.
+<BR>
+Let us say, as in the previous example, that you want redirect port 80 to 5080
+and port 21 to 4321.
+<BR>
+Now you must tell the router to redirect
+all incoming connections from port 80 to port 5080 at computer 192.168.0.2 and
+all incoming connections from port 21 to port 4321 at computer 192.168.0.2.
+How this can be done varies in different routers, but most routers have this
+under a menu called "virtual servers", "port forwarding", "port mapping",
+"port redirecting" or something similar.
+<BR>
+Your users will not know anything about your computers 192.168.0.2
+and 192.168.0.3. Neither do they know about that you run Xerver on
+port 5080 respectively 4321. As far as your users are concerned
+you might as well have one computer with the IP 66.249.64.256
+that listens to port 80 and 21, which are the ports they use
+and know about.
+<P>
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

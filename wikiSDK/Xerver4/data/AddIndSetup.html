@@ -1,0 +1,33 @@
+
+<HTML>
+<HEAD>
+<TITLE>Add index file</TITLE>
+</HEAD>
+<BODY BGCOLOR='white' link='red' text='black' vlink='#ff00ff'>
+<TABLE BORDER='0' CELLPADDING=0 CELLSPACING=0 WIDTH='100%'>
+<TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>Which file shall be used as an index file?</B>
+<BR>
+<FORM NAME="addIndWinForm" onSubmit="opener.addThisIndex(document.addIndWinForm.indexToShare.value);return false;">
+<INPUT TYPE=text NAME="indexToShare" SIZE=40>
+<BR>
+<INPUT TYPE=button VALUE='Add Index file' onClick="opener.addThisIndex(document.addIndWinForm.indexToShare.value);"><INPUT TYPE="button" VALUE="Close" onClick="top.close();">
+
+<P>
+
+For example:
+<BR>
+<I>index.html</I>
+<BR>
+or
+<BR>
+<I>index.htm</I>
+
+
+</FONT>
+</FORM>
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

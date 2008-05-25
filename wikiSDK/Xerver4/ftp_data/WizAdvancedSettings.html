@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver FTP Setup!</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+function submitForm()
+{
+	nyAddress="action=wizardStep2&direction=forward&save=yes";
+
+	nyAddress+="&portNr="+document.myForm.portNr.value;
+	nyAddress+="&allowFolderListing="+document.myForm.allowFolderListing.options[document.myForm.allowFolderListing.selectedIndex].value;
+	nyAddress+="&shareHiddenFiles="+document.myForm.shareHiddenFiles.options[document.myForm.shareHiddenFiles.selectedIndex].value;
+	nyAddress+="&allowCGIScript="+document.myForm.allowCGIScript.options[document.myForm.allowCGIScript.selectedIndex].value;
+
+//	alert(nyAddress)
+	self.location.replace("/"+escape(nyAddress));
+	return true;
+}
+
+
+function setMaxIdleTime(nr)
+{
+	document.myForm.maxIdleTime.value=nr;
+}
+
+function setMaxNOOPAllowed(nr)
+{
+	document.myForm.maxNOOPAllowed.value=nr;
+}
+
+function setDataPortNr(nr)
+{
+	document.myForm.dataPortNr.value=nr;
+}
+
+function setPassiveRange(range)
+{
+	document.myForm.passiveRange.value=range;
+
+	firstComma = range.indexOf(",");
+	if (firstComma != -1)
+	{
+		document.myForm.passiveRangeMin.value=range.substring(0,firstComma);
+		document.myForm.passiveRangeMax.value=range.substring(firstComma + 1);
+	}
+}
+
+function setLocalIP(localIP)
+{
+	document.myForm.localIP.value=localIP;
+}
+
+function setOuterIP(outerIP)
+{
+	document.myForm.outerIP.value=outerIP;
+}
+
+function sendForm()
+{
+	dataPortNr=document.myForm.dataPortNr.value;
+
+	if (dataPortNr!=parseInt(dataPortNr))
+	{
+		showAlertXerverHelp("The port number must be a number.");
+		return false;
+	}
+
+	if (dataPortNr>65535 || dataPortNr<1)
+	{
+		showAlertXerverHelp("The port number shall not be larger than 65535 and it shall indeed not be less than 1.");
+		return false;
+	}
+
+	if (dataPortNr=='32123' || dataPortNr=='32124')
+	{
+		document.myForm.dataPortNr.value="20";
+		showAlertXerverHelp("Please don't use the ports 32123 or 32124.\nIt's reserved for Xervers Setup tools.\nFeel free to use anything but 32123 and 32124.");
+		return false;
+	}
+
+	if ((dataPortNr>=49151 || dataPortNr<=1024) && dataPortNr!=20)
+	{
+		if (dataPortNr>=49151)
+			reason="The port number you have choosen ("+dataPortNr+") is greater than 49151.";
+		else // (dataPortNr<=1024)
+			reason="The port number you have choosen ("+dataPortNr+") is less than 1024.";
+
+		if (!confirm(reason+"\nTo avoid future problems you are recommended to change port number to 20.\n\nIf port 20 doesn't work, use another port between 1024 and 49151.\n\nPress OK to use "+dataPortNr+" as port number anyway.\nPress Cancel to change port number to something else."))
+		{
+			return false;
+		}
+	}
+
+
+	maxIdleTime=document.myForm.maxIdleTime.value;
+	if (maxIdleTime!=parseInt(maxIdleTime) || maxIdleTime<0)
+	{
+		showAlertXerverHelp(maxIdleTime+' is not a positive integer value.\nPlease change the value.');
+		document.myForm.maxIdleTime.value=parseInt(maxIdleTime);
+		return false;
+	}
+
+
+	maxNOOPAllowed=document.myForm.maxNOOPAllowed.value;
+	if (maxNOOPAllowed!=parseInt(maxNOOPAllowed) || maxNOOPAllowed<0)
+	{
+		showAlertXerverHelp(maxNOOPAllowed+' is not a positive integer value.\nPlease change the value.');
+		document.myForm.maxNOOPAllowed.value=parseInt(maxNOOPAllowed);
+		return false;
+	}
+
+	passiveRangeMin = document.myForm.passiveRangeMin.value;
+	passiveRangeMax = document.myForm.passiveRangeMax.value;
+	if (passiveRangeMin == "" && passiveRangeMax == "")
+	{
+		document.myForm.passiveRange.value = "";
+	}
+	else if (	passiveRangeMin == parseInt(passiveRangeMin) &&
+				passiveRangeMax == parseInt(passiveRangeMax) &&
+				passiveRangeMin != "" &&
+				passiveRangeMax != "" &&
+				0 <= passiveRangeMin &&
+				passiveRangeMin <= passiveRangeMax &&
+				passiveRangeMax <= 65535)
+	{
+		document.myForm.passiveRange.value = passiveRangeMin + "," + passiveRangeMax;
+	}
+	else
+	{
+		//Invalid format
+		showAlertXerverHelp('The passiveRange does not have a correct format. You should either leave both fields empty or you should enter two integer values. The first integer value must be less than or equal to the second integer value and both values must be in the range 0 to 65535.\n\nValid examples are for example:\n2000 and 2500\n20000 and 20100');
+		return false;
+	}
+
+	localIP=document.myForm.localIP.value;
+	localIPParts = localIP.split(".");
+	if (localIP == "")
+	{
+		//Not specify IP is ok.
+	}
+	else if (	localIPParts.length == 4 &&
+				localIPParts[0] == parseInt(localIPParts[0]) &&
+				localIPParts[1] == parseInt(localIPParts[1]) &&
+				localIPParts[2] == parseInt(localIPParts[2]) &&
+				localIPParts[3] == parseInt(localIPParts[3]) &&
+				0 <= localIPParts[0] &&
+				localIPParts[0] <= 255 &&
+				0 <= localIPParts[1] &&
+				localIPParts[1] <= 255 &&
+				0 <= localIPParts[2] &&
+				localIPParts[2] <= 255 &&
+				0 <= localIPParts[3] &&
+				localIPParts[3] <= 255)
+	{
+		//Valid IP is ok
+	}
+	else
+	{
+		showAlertXerverHelp('The local IP that you have specified does not have a correct format. The field should either be left blank or a correct IP address should be specified.\n\nExamples of valid IP addresses:\n1.2.3.4\n192.168.1.100');
+		document.myForm.localIP.focus();
+		return false;
+	}
+
+
+	outerIP=document.myForm.outerIP.value;
+	outerIPParts = outerIP.split(".");
+	if (outerIP == "")
+	{
+		//Not specify IP is ok.
+	}
+	else if (	outerIPParts.length == 4 &&
+				outerIPParts[0] == parseInt(outerIPParts[0]) &&
+				outerIPParts[1] == parseInt(outerIPParts[1]) &&
+				outerIPParts[2] == parseInt(outerIPParts[2]) &&
+				outerIPParts[3] == parseInt(outerIPParts[3]) &&
+				0 <= outerIPParts[0] &&
+				outerIPParts[0] <= 255 &&
+				0 <= outerIPParts[1] &&
+				outerIPParts[1] <= 255 &&
+				0 <= outerIPParts[2] &&
+				outerIPParts[2] <= 255 &&
+				0 <= outerIPParts[3] &&
+				outerIPParts[3] <= 255)
+	{
+		//Valid IP is ok
+	}
+	else
+	{
+		showAlertXerverHelp('The outer IP that you have specified does not have a correct format. The field should either be left blank or a correct IP address should be specified.\n\nExamples of valid IP addresses:\n1.2.3.4\n192.168.1.100');
+		document.myForm.outerIP.focus();
+		return false;
+	}
+
+
+//else if ((this.value>=49151 || this.value<=1024) && this.value!=21){this.value='21';
+//showAlertXerverHelp('Please don\'t use that port number.\nYou must pick a port between 1024 and 49151 (or port 21, which is the default FTP port).');}
+
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+<LINK REL=STYLESHEET HREF="/?action=showStyleSheets" TYPE="TEXT/CSS">
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+
+<CENTER>
+<H3>Xerver FTP Setup</H3>
+</CENTER>
+
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get ONSUBMIT="return sendForm()">
+<INPUT TYPE="hidden" NAME="action" VALUE="saveConfig">
+
+
+
+<B>Data port:</B> <INPUT TYPE="text" NAME="dataPortNr" VALUE="" SIZE=5 MAXLENGTH=5 onChange="if (this.value=='32123' || this.value=='32124'){this.value='20';showAlertXerverHelp('Please don\'t use the ports 32123 or 32124.\nIt\'s reserved for Xervers Setup tools.\nFeel free to use anything but 32123 and 32124.');}else if (this.value!=parseInt(this.value) || this.value<0){alert(this.value+' is not a positive integer value.\nPlease change the value.');this.value='';this.focus();} else if (this.value!=20){if (!confirm('Are you really sure you want change the data port?\n\nIf you are not sure what you are doing, you better let the data port remain 20.\n\nOK = I want change data port to '+this.value+'.\nCancel = Let the data port be 20 (recommended).')){this.value=20}}">
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('If you don\'t know what this is, let it be 20, which is the default data port.\n\nHowever, in case you are in a network where port 20 is blocked or already in use, you might feel free to change the port here.\n\nIf you don\'t want use port 20, you are strongly recommended to pick a port between 1024 and 49151.\n\nThis is not the port clients shall connect to (which normally is set to 21)!\n\nThe data port is used when the server connects to the client after a PORT request is recieved from the client.\n')">
+
+<BR>
+This is not the port clients shall connect to (which normally is set to 21)!
+<BR>
+The data port is used when the server connects to the client after a PORT request is recieved from the client.
+
+<P>
+<BR>
+
+
+<B>Maximum idle time</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('This is the maximum time a user can be connected to the server without sending any commands.\nIf the user don\'t do anything for this period of time, the user will be disconnected.\nThe user can reconnect again after being disconnected.\n\nTo disable this feature, set the value to 0.\n')">
+<BR>
+<INPUT TYPE="text" NAME="maxIdleTime" VALUE="" SIZE=6 MAXLENGTH=6 onChange="if (this.value!=parseInt(this.value) || this.value<0){alert(this.value+' is not a positive integer value.\nPlease change the value.');this.value='';this.focus();}"> seconds
+<BR>
+To disable this feature, set the value to 0.
+<P>
+<BR>
+
+
+<B>Maxmimum number of NOOPs</B>
+<INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('Here you decide how many NOOP-commands the user is allowed to send in a row without sending any other commands.\nThis is to make sure that a user will not be idle too long and only send a lot of NOOP commands.\n\nAfter that the user has sent this many NOOPs in a row the client will be disconnected.\nThe user can reconnect again after being disconnected.\n\nTo disable this feature, set the value to 0.\n');">
+<BR>
+<INPUT TYPE="text" NAME="maxNOOPAllowed" VALUE="" SIZE=6 MAXLENGTH=6 onChange="if (this.value!=parseInt(this.value) || this.value<0){alert(this.value+' is not a positive integer value.\nPlease change the value.');this.value='';this.focus();}">
+<BR>
+To disable this feature, set the value to 0.
+<P>
+<BR>
+
+
+<B>Passive port range:</B>
+<BR>
+<B>Min port:</B> <INPUT TYPE="text" NAME="passiveRangeMin" VALUE="" SIZE=5 maxlength=5 onChange="if (this.value!=parseInt(this.value) || this.value<0){alert(this.value+' is not a positive integer value.\nPlease change the value.');this.value='';this.focus();}">
+<BR>
+<B>Max port:</B> <INPUT TYPE="text" NAME="passiveRangeMax" VALUE="" SIZE=5 maxlength=5 onChange="if (this.value!=parseInt(this.value) || this.value<0){alert(this.value+' is not a positive integer value.\nPlease change the value.');this.value='';this.focus();}">
+
+<INPUT TYPE="hidden" NAME="passiveRange" VALUE="" SIZE=5>
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('If you don\'t know what this is, leave the field empty.\n\nWhen an FTP client connects to the FTP server it can request the server to open a port number in order for the client to connect to this port number. By default Xerver will open a randomly selected port for the client to connect to. However, the problem is that if Xerver is running behind a routers or firewall that is blocking all ports that have not manually been opened the client will not be able to connect to Xerver unless the router/firewall is configured to redirect all ports to the server that runs Xerver. This is seldom desired. Instead it\'s more wise to configure the router/firewall to redirect a specific range of ports to the server running Xerver (say ports from 20000 to 21000). With this setting you can then force Xerver to try to open a port in this specific range. Xerver would then look for a free port in this range. When the FTP client tries to connect to the port number (which now is in the correct range) the connection would be passed on from the router to the server running Xerver.\n\nIf no open ports are available in the range you specify, Xerver will try to open another random port number (possibly outside the port range).')">
+<BR>
+Your firewall or router configuration may allow only a select range of ports to
+accept incoming connections. You can limit the ports that the FTP server will use
+by entering a range of ports. To allow the server to use
+any available port, leave both fields blank.
+You should either specify both a "min port" and "max port" value, or not specify any values at all.
+<p>
+<BR>
+
+
+
+<B>Local IP:</B>
+<INPUT TYPE="text" NAME="localIP" VALUE="" SIZE=10 maxlength=15>
+<BR>
+<B>Outer (external) IP:</B> <INPUT TYPE="text" NAME="outerIP" VALUE="" SIZE=10 maxlength=15>
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('Xerver will by default determine your local and outer IP address, but you are here given the option to force Xerver to use a manually entered IP address. You can choose if you want to specify both the local and outer IP address, or just one of them, or no IP address at all.\n\nThe outer IP address is the IP address your ISP (internet service provider) has assigned to you and if you have a router it is likely that this IP goes to the router.\nThe local IP should be the IP address your computer is known by in your own local network.')">
+<BR>
+Xerver can automatically determine what local IP and outer IP you have.
+Most users should leave these fields blank and let Xerver automatically
+determine what IP addresses your computer has. However, if you want manually
+force Xerver to use a certain local IP address and/or outer IP address,
+enter the IP addresses you want to use here.
+<p>
+<BR>
+
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<!-- INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/action=wizardGeneralSettings&direction=back')" -->
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="submit" VALUE="Save and Next Step --&gt;">
+</P>
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+
+</TD></TR>
+</TABLE>
+

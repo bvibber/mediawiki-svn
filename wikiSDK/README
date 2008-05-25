@@ -4,14 +4,15 @@ $Date$
 wikiSDK is an attempt at creating a developer frendly SDK (Software Development Kit) for MediaWiki.
 
 == Included ==
-Included in the SDK are the scripts for use with the SDK and a potentially modified copy of POW USB [1] to act as the WebServer.
+Included in the SDK are the scripts for use with the SDK and a copy of Xerver4 [1] to act as the WebServer.
 
-  [1] http://davidkellogg.com/wiki/ POW (Plain Old Webserver)
+  [1] http://www.javascript.nu/xerver/
 
 == Usage ==
 === Use on Windows ===
 Requirements:
-* cygwin (SDK Scripts are written in Bash)
+* Python (The latest version can be installed from http://python.org/download/)
+* cygwin (SDK Scripts are written in Bash; Use the setup.exe script downloaded from http://cygwin.com/)
 * Subversion (TortoiseSVN is helpfull for a UI form, but you will need the cygwin package for the bash scripts)
 * PHP Binaries (Recomended package is the PHP zip package from http://www.php.net/downloads.php#v5)
 
@@ -19,7 +20,9 @@ Setup:
 [1] Checkout the SDK from Subversion.
   svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/wikiSDK/ wikiSDK/
 [2] cd into your wikiSDK directory using the Cygwin terminal.
-[3] 
+[3] Run `./config` and enter in the paths and data needed. Remember to use \ on windows instead of / or things will break.
+[4] Run `./server config` to create a new webserver configuration file.
+[5] When you need to use the webserver to view things, just type `./server run` to start it up. ctrl+c or close the window to shutdown.
 
 === Use on Mac OS X ===
 

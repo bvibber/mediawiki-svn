@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+<B>Problems when running scripts</B>
+<P>
+If you (1) are using Windows and (2) have perl-scripts and (3)
+you are used to start Xerver with "StartXerver.exe" you might notice that everytime
+someone runs a perl-script with your webserver a dos-prompt will popup
+and then close down (very quickly).
+<BR>
+If you have this problem, the solution is to:
+<OL>
+<LI> Create an empty text file in your Xerver directory (call it "StartXerverShortcut.txt").
+<LI> Open the text file, write "java Start" and save the file.
+<LI> Now rename the file to "StartXerverShortcut.bat".
+<LI> Done! Run "StartXerverShortcut.bat" every time you want to start Xerver. (When you run "StartXerverShortcut.bat" a dos-prompt will open, don't close it until you want to shut down Xerver).
+
+<!--
+<LI> Create a shortcut (open Windows Explorer, go to your Xerver directory, right click on a empty area, choose to create a shortcut).
+<LI> Don't click the browse button, just enter "java Start" (without the ") (IMPORTANT: It's cAsE SeNsItIvE).
+<LI> Press "Next".
+<LI> Enter "Start Xerver Shortcut".
+<LI> Press "Done"
+<LI> Now, right click your shortcut.
+<LI> Choose properties
+<LI> If there is anything in "Start from", remove the text and enter a dot (.) in this field.
+<LI> Press OK.
+<LI> Done! Start Xerver by clicking on "Start Xerver Shortcut" next time you want to start Xerver. The perl popup window will be gone.
+-->
+</OL>
+
+
+
+
+
+
+
+
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

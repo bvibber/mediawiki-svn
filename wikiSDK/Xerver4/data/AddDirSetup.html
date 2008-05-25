@@ -1,0 +1,44 @@
+
+<HTML>
+<HEAD>
+<TITLE>Add directory</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function dirChoosen(path)
+{
+	document.addDirWinForm.folderToShare.value=path;
+}
+
+function browseFolders()
+{
+	window.open('/?action=chooseDirectory&currentPath='+document.addDirWinForm.folderToShare.value,'browse','width=500,height=400,scrollbars=yes')
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR='white' link='red' text='black' vlink='#ff00ff'>
+<TABLE BORDER='0' CELLPADDING=0 CELLSPACING=0 WIDTH='100%'>
+<TR><TD>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<B>Which directory do you want to share?</B>
+<BR>
+<FONT FACE='arial,verdana' SIZE='-2'>
+<B>
+You can use the browse button if you don't remember the exact location of your folder.
+</B>
+</FONT>
+<BR>
+<FORM NAME="addDirWinForm" onSubmit='opener.addThisDirectory(document.addDirWinForm.folderToShare.value,document.addDirWinForm.shareSubfolders.checked); return false;'>
+<INPUT TYPE=text NAME="folderToShare" SIZE=60><INPUT TYPE="button" onClick="browseFolders()" VALUE="Browse..."><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="top.opener.showAlertXerverHelp('Enter the location of a folder you want to share.\nThe content of a shared folder can be viewed by anyone on Internet (unless you protect the folder with a password). The setup will later ask you which folders you want to protect with a password.\n\nTo help you remember the exact location of the folder, you can press the \'Browse\' button.');">
+<BR>
+<INPUT TYPE=checkbox NAME=shareSubfolders> Check this if you also want share all subfolders
+<BR>
+<INPUT TYPE=button VALUE='Share Directory' onClick='opener.addThisDirectory(document.addDirWinForm.folderToShare.value,document.addDirWinForm.shareSubfolders.checked)'><INPUT TYPE="button" VALUE="Close" onClick="top.close();">
+</FONT>
+</FORM>
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

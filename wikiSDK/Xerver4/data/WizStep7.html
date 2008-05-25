@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 7 / 9 ]</TITLE>
+
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+
+
+
+function createFileExtList(allIndexFiles)
+{
+	nollstallVarden();
+
+	if (allIndexFiles.split(",").length!=-1)
+		for (ii=0; ii<allIndexFiles.split(",").length; ii++)
+			addThisExtension(allIndexFiles.split(",")[ii],null);
+}
+
+
+
+function nollstallVarden()
+{
+	while (document.myForm.fileExtensions.length>0)
+		document.myForm.fileExtensions.options[0]=null;
+}
+
+
+
+
+
+
+
+
+function stringIsInArray(str, myArray)
+{
+	for (i=0; i<myArray.length; i++)
+		if (str==myArray[i].value)
+			return true;
+	return false;
+}
+
+
+
+
+
+
+
+function addExtension()
+{
+	addExtWindow=window.open(escape("/?action=showAddExtSetup"),"addInfoWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=230");
+	addExtWindow.focus();
+}
+
+
+
+function addThisExtension(extension)
+{
+	if (extension=="")
+		return false;
+
+	if (extension.indexOf(",")!=-1 || extension.indexOf("\\")!=-1 || extension.indexOf("/")!=-1 || extension.indexOf("\"")!=-1)
+	{
+		showAlertXerverHelp("Your file extension can not contain these characters:\n  ,  /  \\  \"");
+		return false;
+	}
+
+	if (stringIsInArray(extension, document.myForm.fileExtensions.options))
+	{
+		showAlertXerverHelp("You have already added "+extension+" to your list with file extensions.")
+		return false;
+	}
+
+
+//	if (extension.indexOf("\"")==-1)
+//	{
+		document.myForm.fileExtensions.options[++document.myForm.fileExtensions.length-1]=new Option(extension, extension)
+//		document.myForm.fileExtensions.options[++document.myForm.fileExtensions.length-1].value=extension;
+//		document.myForm.fileExtensions.options[document.myForm.fileExtensions.length-1].text=extension;
+//	}
+//	else
+//		alert("There is a \" in your file extension.\nSo it can't possibly be a valid file extension.")
+}
+
+
+function removeExtension()
+{
+	if (document.myForm.fileExtensions.selectedIndex>=0)
+	{
+		if (confirm("You have selected "+document.myForm.fileExtensions.options[document.myForm.fileExtensions.selectedIndex].text+".\nDo you want to remove it?"))
+			if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1)	//Om man kör opera
+				document.myForm.fileExtensions.options[document.myForm.fileExtensions.selectedIndex]=new Option();
+			else
+				document.myForm.fileExtensions.options[document.myForm.fileExtensions.selectedIndex]=null;
+			//document.myForm.fileExtensions.options[document.myForm.fileExtensions.selectedIndex]=null;
+
+	}
+	else
+	{
+		alert("Please select the file extension you want to remove.");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+function submitForm()
+{
+	nyAddress="action=wizardStep8&direction=forward&save=yes&allowTheseFileExtensions="+document.myForm.allowTheseFileExtensions.selectedIndex+"&fileExtensions=";
+
+	if (document.myForm.fileExtensions.length>0)
+	{
+		tmpHarLagtTillKomma=false;
+		for (i=0; i<document.myForm.fileExtensions.length; i++)
+			if (document.myForm.fileExtensions.options[i].text!="")	//Om det INTE är ett element som raderats i Opera (där raderas de inte på riktigt, där blir de bara tomma strängar)
+			{
+				tmpHarLagtTillKomma=true;
+				nyAddress+=document.myForm.fileExtensions.options[i].text+",";
+			}
+		if (tmpHarLagtTillKomma)
+			nyAddress=nyAddress.substring(0,nyAddress.length-1);
+	}
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 7 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=get>
+
+
+<B>Shared file extensions</B>
+<BR>
+<SELECT NAME="allowTheseFileExtensions">
+	<OPTION VALUE="0" SELECTED>All files should be downloadable, except those with an extension listed below</OPTION>
+	<OPTION VALUE="1">Only files with an extension listed below should be downloadable</OPTION>
+</SELECT>
+
+<BR>
+<INPUT TYPE="button" NAME="addExtButton" VALUE="Add file extension" onClick="addExtension()"><INPUT TYPE="button" NAME="removeExtButton" VALUE="Remove file extension" onClick="removeExtension()"><INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('Files that are not shared can\'t be downloaded.\nWhen someone browses your directories, only your shared files will be shown.\n\nExample 1: You don\'t want people to download your exe and doc files:\nChoose \'All files should be downloadable, except those with an extension listed below\' and add doc and exe to the list.\n\nExample 2: You ONLY want to share music files on your hard drive:\nAdd \'mp3\' and \'wma\' to this list and choose \'Only files with an extension listed below should be downloadable\'. Now everyone will be able to browse your hard drive, but ONLY your mp3 and wma files will be listed (and only these files can be downloaded).');">
+<BR>
+<SELECT NAME="fileExtensions" SIZE=4 onChange="status=this.options[this.selectedIndex].value;">
+<OPTION VALUE="-----------------------------------------------------------------------------------------------">-----------------------------------------------------------------------------------------------
+</SELECT>
+<P>
+<BR>
+
+
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardStep6&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

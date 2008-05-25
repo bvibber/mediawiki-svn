@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<TITLE>Xerver Setup [ 1 / 9 ]</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function showXerverHelp(helpTxt,titleTxt)
+{
+	if (titleTxt=="undefined" || titleTxt==null || titleTxt=="")
+		titleTxt="Xerver Wizard Help";
+
+//NOTE:	if (parseInt(navigator.appVersion)>=4 && navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.toLowerCase().indexOf("opera")==-1)
+//NOTE:		showHelp("/?"+escape("action=showWizardHelp&helpText="+helpTxt+"&titleText="+titleTxt),"width=400,height=200");
+
+		addDirWindow=window.open("/?action=showWizardHelp&helpText="+escape(helpTxt)+"&titleTxt="+escape(titleTxt),"XerverWizardHelp","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=330");
+		addDirWindow.focus();
+}
+
+function showAlertXerverHelp(helpTxt)
+{
+	showXerverHelp(helpTxt,"");
+}
+
+function submitForm()
+{
+	logFile = document.myForm.logFile.value;
+	if (logFile.indexOf("\"") != -1)
+	{
+		showAlertXerverHelp("Your log file can not contain a \" character. Please enter a valid file name or the absolute path to the file without any \" characters.")
+		return false;
+	}
+
+
+	nyAddress="action=wizardStep2&direction=forward&save=yes";
+
+	nyAddress+="&portNr="+document.myForm.portNr.value;
+	nyAddress+="&allowFolderListing="+document.myForm.allowFolderListing.options[document.myForm.allowFolderListing.selectedIndex].value;
+	nyAddress+="&shareHiddenFiles="+document.myForm.shareHiddenFiles.options[document.myForm.shareHiddenFiles.selectedIndex].value;
+	nyAddress+="&allowCGIScript="+document.myForm.allowCGIScript.options[document.myForm.allowCGIScript.selectedIndex].value;
+	nyAddress+="&logFile="+document.myForm.logFile.value;
+
+//	alert(nyAddress)
+	self.location.replace("/?"+escape(nyAddress));
+	return true;
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="white" TEXT="black">
+<TABLE WIDTH='400' BORDER='0'>
+<TR><TD>
+<FONT FACE='verdana,arial'>
+<CENTER>
+<H3>Xerver Setup [ 1 / 9 ]</H3>
+</CENTER>
+</FONT>
+<FONT FACE='arial,verdana' SIZE='-1'>
+<P>
+
+
+<FORM NAME="myForm" ACTION="/" METHOD=GET onSubmit="return false;">
+
+
+<B>Port:</B> <INPUT TYPE="text" NAME="portNr" VALUE="" onChange="if (this.value=='32123'){this.value='80';showAlertXerverHelp('Please don\'t use the port 32123.\nIt\'s reserved for Xervers Setup tool.\nFeel free to use anything but 32123.');}else if ((this.value>=49151 || this.value<=1024) && this.value!=80){this.value='80';
+showAlertXerverHelp('Please don\'t use that port number.\nYou must pick a port between 1024 and 49151 (or port 80, which is the default HTTP port).');}">
+<INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick="showXerverHelp('If you don\'t know what this is, enter 80 in this field.\n\nYou will be able to see your webpages from:\nhttp://localhost:PORTNR/\n\nExample: If you enter 5080 in this field, you can visit your website via:\nhttp://localhost:5080/\n')">
+
+<BR>
+Please choose which port you want to use. We recommend port "80",
+which is the standard port for web servers. If you are already using port 80
+(or if port 80 doesn't work for you), you might want to use port 5080,
+which is also a common port for web servers.
+If you don't want use port 80, you must pick a port between 1024 and 49151.
+<P>
+<BR>
+
+
+<B>Directory listing allowed?</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('If you allow directory listing, people will be able to see which files and folders you have in ALL your shared directories.\nKeep in mind, if you have an index file in your directory, the directory won\'t be listed. The index file will be showed instead.')">
+<BR>
+<SELECT NAME="allowFolderListing">
+	<OPTION VALUE="0">Don't allow directory listing</OPTION>
+	<OPTION VALUE="1" SELECTED>Allow directory listing</OPTION>
+</SELECT>
+<BR>
+If you choose to allow directory listing you will allow people to browse your shared directories.
+<P>
+<BR>
+
+<B>Share hidden files?</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('This option allows you to protect hidden files from being viewed by visitors to your webserver.\n\nIf you don\'t share your hidden files people can\'t download your hidden files, nor can they see the hidden files if they list the content of a folder (Windows: files marked as hidden in the file system; UNIX: files with a name starting with a dot(.)).');">
+<BR>
+<SELECT NAME="shareHiddenFiles">
+	<OPTION VALUE="0">Don't share hidden files</OPTION>
+	<OPTION VALUE="1" SELECTED>Share hidden files</OPTION>
+</SELECT>
+<BR>
+If you choose to not share hidden files, no hidden files will be shared,
+even if they are in a folder you have shared.
+<P>
+<BR>
+
+
+
+
+<B>Allow CGI-scripts to run?</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('If you want to run scripts written in Perl, PHP (or any other scripts) you have to enable CGI-scripts here.\nIf you enable CGI, the Setup Wizard will later on ask you for more details about which scripts you want to run.');">
+<BR>
+<SELECT NAME="allowCGIScript">
+	<OPTION VALUE="0">Don't enable CGI-scripts</OPTION>
+	<OPTION VALUE="1" SELECTED>Enable CGI-scripts</OPTION>
+</SELECT>
+<BR>
+If you for example want to set up a guestbook, wwwboard or poll you must enable CGI-scripts.
+<P>
+<BR>
+
+
+
+<B>Log file name:</B> <INPUT TYPE="button" VALUE="&nbsp;&nbsp;?&nbsp;&nbsp;" onClick="showXerverHelp('This is a traditional log file with information such as what files are being accessed, at what time and by what IP address.\n\nIf you prefer not to have a log file, leave this field blank.');">
+<BR>
+<INPUT NAME="logFile" TYPE=text>
+<BR>
+For example <I>XerverWebserver.log</I> or <I>c:\logs\xerver.log</I>.
+<BR>
+Unless an absolute path is specified, the log file is created in the Xerver directory.
+<P>
+<BR>
+
+
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<INPUT TYPE="button" VALUE="&lt;-- Back" onClick="location.replace('/?action=wizardGeneralSettings&direction=back')">
+</TD><TD ALIGN="right">
+<P ALIGN="right">
+<INPUT TYPE="button" VALUE="Save and Next Step --&gt;" onClick="submitForm()">
+</P>
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+
+</FONT>
+</TD></TR>
+</TABLE>
+

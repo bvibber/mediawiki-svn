@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+<B>How do I start Xerver as a background process?</B>
+<P>
+(Related help page: <A HREF="helpwindowsstartup.html">How do I start Xerver when Windows starts?</A>)
+<P>
+
+Follow these steps to start Xerver <B>Web Server</B> as a background server:
+<OL>
+<LI> Copy <I>XerverMinimumResources.exe</I> from the folder <I>otherStartupFiles</I> to the Xerver directory
+(where xerver.jar is located).
+<LI> Next time you start Xerver Web Server, use <I>XerverMinimumResources.exe</I> instead of StartXerver.exe.
+</OL>
+<P>
+<BR>
+
+Follow these steps to start Xerver <B>FTP Server</B> as a background server:
+<OL>
+<LI> Copy <I>FTPServer.exe</I> from the folder <I>otherStartupFiles</I> to the Xerver directory
+(where xerver.jar is located).
+<LI> Next time you start Xerver FTP Server, use <I>FTPServer.exe</I> instead of StartXerver.exe.
+</OL>
+<P>
+<BR>
+
+Follow these steps to start Xerver <B>FTP Local Setup</B> (only your IP can access setup) as a background server:
+<OL>
+<LI> Copy <I>FTPServerLocalSetup.exe</I> from the folder <I>otherStartupFiles</I> to the Xerver directory
+(where xerver.jar is located).
+<LI> Next time you want change settings to Xerver FTP Server, use <I>FTPServerLocalSetup.exe</I> instead of StartXerver.exe.
+<LI> You can now change settings to Xerver FTP Server at http://localhost:32124/ (only accessable to your computer locally).
+	 If you already have an instance of Xerver FTP Server running, don't forget to restart the server for changes to take effect.
+</OL>
+<P>
+<BR>
+
+Follow these steps to start Xerver <B>FTP Remote Setup</B> (all IP addresses can access setup) as a background server:
+<OL>
+<LI> Copy <I>FTPServerRemoteSetup.exe</I> from the folder <I>otherStartupFiles</I> to the Xerver directory
+(where xerver.jar is located).
+<LI> Next time you want change settings to Xerver FTP Server, use <I>FTPServerRemoteSetup.exe</I> instead of StartXerver.exe.
+<LI> You can now change settings to Xerver FTP Server at http://localhost:32124/ (accessable from any computer).
+	 If you already have an instance of Xerver FTP Server running, don't forget to restart the server for changes to take effect.
+</OL>
+<P>
+<BR>
+
+
+Note that Xerver will start and run without a window (GUI).
+If you want to close Xerver, just press CTRL + ALT + DEL and delete "javaw.exe".
+
+
+
+
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

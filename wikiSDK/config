@@ -1,0 +1,36 @@
+#!/bin/sh
+
+config ()
+{
+	echo "$3"
+	echo -n "$1"
+	if [ -e ./configData/$1 ]; then
+		DEFAULT=$(cat ./configData/$1)
+	else
+		DEFAULT=$2
+	fi
+	echo -n " [$DEFAULT]: "
+	read -r VAL
+	if [ "$VAL" ]; then
+		if [ $CYGPATH ]; then
+			VAL=`cygpath -w "$VAL"`
+		fi
+		echo $VAL > ./configData/$1
+	else
+		if [ ! -e ./configData/$1 ]; then
+			echo "$2" > ./configData/$1
+		fi
+	fi
+	echo
+}
+
+CYGPATH=
+if [ -x /usr/bin/cygpath ]; then
+	echo "cygpath exists, using it to convert paths."
+	CYGPATH=1
+fi
+
+config phproot /usr/bin "The root where the PHP binaries can be found. %phproot%/php and %phproot%/php-cgi should be valid. Include the trailing slash."
+config docroot "$PWD/htdocs" "The web root for the wiki setups. Normally the htdocs subdirectory. Include the trailing slash."
+config logfile "$PWD/htdocs/server.log" "The logfile for the webserver to log to. Normally inside the htdocs so SVN doesn't catch it."
+config port    8000 "The port on which to run the webserver."

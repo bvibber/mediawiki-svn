@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<TITLE>Add Script Extension</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<FONT FACE="arial,verdana" SIZE="-1">
+<B>Which file extension do you want to be a runnable file?</B>
+<BR>
+<FORM NAME="addScriptExtWinForm" onSubmit="if (document.addScriptExtWinForm.runnableScriptExtension.value.indexOf('.')==-1){opener.addThisScriptExtension(document.addScriptExtWinForm.runnableScriptExtension.value,document.addScriptExtWinForm.runnableScriptCommand.value);}else{alert('You have a . (dot) in your extension. Your extension can\'t contain a dot.');};return false;">
+
+File extension: <INPUT TYPE=text NAME="runnableScriptExtension" SIZE=10>
+<BR>
+Command to run script with: <INPUT TYPE=text NAME="runnableScriptCommand" SIZE=10>
+
+<BR>
+<INPUT TYPE=button VALUE="Add to list" onClick="if (document.addScriptExtWinForm.runnableScriptExtension.value.indexOf('.')==-1){opener.addThisScriptExtension(document.addScriptExtWinForm.runnableScriptExtension.value,document.addScriptExtWinForm.runnableScriptCommand.value);}else{alert('You have a . (dot) in your extension. Your extension can\'t contain a dot.');}"><INPUT TYPE="button" VALUE="Close" onClick="top.close();">
+
+</FONT>
+</FORM>
+
+<PRE>
+For example:
+Extension	Command
+pl		perl
+cgi		perl
+exe				
+php		php
+phtml		php
+</PRE>
+
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

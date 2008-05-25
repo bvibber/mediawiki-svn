@@ -1,0 +1,79 @@
+############################################################################
+################################ XERVER.CFG ################################
+############################################################################
+
+This file is for advanced users only.
+
+DON'T EDIT THE Xerver.cfg MANUALLY IF YOU DON'T KNOW WHAT YOU ARE DOING!
+
+You are recommended to use the real setup if you want change settings to Xerver.
+For more information about the setup, please read the ReadMe.txt.
+If you are currently running Xerver, your changes to Xerver.cfg will take
+place AFTER you have restarted Xerver.
+
+Xerver.cfg is a line based setup-file. Each line contains information about
+your settings. You can manually change these settings, however, you are NOT
+recommended to change settings manually.
+
+
+Xerver.cfg:
+Line	Description
+1	port number
+2	index files, comma separated list
+3	shared directories, comma separated list	(  each folder MUST end with / or \  )
+4	file extensions, comma separated list
+5	root	(  MUST end with / or \ )
+6	list with runnable file extenssions. The format is: "php=php,php3=php,php4=php,phtml=php,pl=perl,cgi=perl,exe="
+7	list with aliases. The format is: "/D/=d:\,/music/=e:\myMusic\mp3\,/music/others/Mozart/=c:\mozart\".
+8	list with password protected files. The format for each element is "path<<@>>zone<<@>>listWithUsers". Each element is separated with <<$>>. "listWithUsers" is a list with users and passwords (encrypted) "UserName:encryptedPass;UserName2:encryptedPass2;UserName3:encryptedPass3". Example of this line: "d:\mysecret\*<<@>>SecretZone<<@>>Leonardo:cTpx;John:cXFxOnFxcQ==<<$>>d:\temp\*<<@>>JohnsHome<<@>>John:cXFxOnFxcQ=="
+9	allow directory listing? (1=true; 0=false)
+10	allow file extensions at line 4 to be shown? (1=true; 0=false)
+11	allow hidden files to be shown? (1=true; 0=false)
+12	startup mode (0=with no window; 1=with simple AWT window; 2=with advanced Swing window)
+13	allow CGI-scripts? (1=true; 0=false)
+14	path to log file
+
+EXAMPLE (Xerver.cfg):
+Line	Description
+1	80
+2	index.html,index.htm,index.shtml,index.shtm
+3	c:\*,d:\myHomepage\,h:\music\*
+4	
+5	c:\
+6	php=php,php3=php,php4=php,phtml=php,pl=perl,cgi=perl,exe=
+7	/WWW/=d:\myHomepage\,/music/=h:\music\
+8	c:\winnt\*<<@>>OS-files<<@>><<$>>c:\temp\*<<@>>Secrets<<@>>Leonardo:cTpx;John:cXFxOnFxcQ==
+9	1
+10	0
+11	1
+12	2
+13	1
+14	XerverWebserver.log
+
+
+############################################################################
+############################################################################
+############################################################################
+
+Additional descriptions:
+
+Line 3:
+* If you want to share all subfolders to a directory, add a wildcard (*) at the end of the folders name (example: "c:\myDoc\*")
+
+Line 7:
+* An alias shall begin AND end with /. The folder path shall end with a /.
+* Aliases are not CaSe SeNsItIvE.
+
+Line 8:
+* If you want to protect all subfolders to a protected directory, add a wildcard (*) at the end of the folders name (example: "c:\myDoc\*")
+* UserName doesn't have to be the username which is used to encrypt the password. UserName is good for one purpose only: You can identify which encrypted password belongs to which user. Xerver has no use for UserName, but to log the name.
+Line 9 MUST be 1 or 0 (1 or "something else") (1 = allow directory listing; 0 = don't allow)
+Line 10 MUST be 1 or 0 (1 or "something else") (1 = allow files with a file extension at line 4 to be shown; 0 = permission to these file extensions shall be denied)
+Line 11 MUST be 1 or 0 (1 or "something else") (1 = allow hidden files to be shown; 0 don't allow)
+Line 12 MUST be 2 or 1 or 0 (0=with no window; 1=with simple AWT window; 2=with advanced Swing window)
+Line 13 MUST be 1 or 0 (1 or "something else") (1 = allow perl-scripts to be run; 0 don't allow)
+Line 14 can both be an absolute and a relative path
+
+Xerver.cfg shall NOT be ended with an empty line (\n).
+Xerver.cfg shall only have 14 lines, no more, no less.
+

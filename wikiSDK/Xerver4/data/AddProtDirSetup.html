@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<TITLE>Add Protected Folder</TITLE>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function getQueryLine(name)
+{
+	query=location.search.substring(1,location.search.length).split("&");
+	for (i=0; i<query.length; i++)
+	{
+		tmp=query[i].split("=");
+		thisName=unescape(tmp[0]);
+		thisValue=unescape(tmp[1]);
+		if (name==thisName)
+			return thisValue;
+	}
+
+	return "";
+}
+
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="white" link="red" text="black" vlink="#ff00ff">
+<TABLE BORDER="0" CELLPADDING=0 CELLSPACING=0 WIDTH="100%">
+<TR><TD>
+<FONT FACE="arial,verdana" SIZE="-1">
+<B>Which folder do you want to protect with a username/password?</B>
+<BR>
+<FORM NAME="addProtWinForm" onSubmit="opener.changeElementShareSubfolders(opener.getIndexByFolder(document.addProtWinForm.folder.value),document.addProtWinForm.subfolders.checked);opener.changeElementNewRealm(opener.getIndexByFolder(document.addProtWinForm.folder.value),document.addProtWinForm.realm.value);return false;">
+
+<TABLE BORDER=0 CELLPADDING=1 CELLSPACING=0>
+<TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+<SCRIPT LANGUAGE="javascript">
+<!--
+	document.write("<B>Folder:</B></TD><TD><TT>"+getQueryLine('folderValue')+"</TT><INPUT TYPE=hidden NAME='folder' VALUE='"+getQueryLine('folderValue')+"' SIZE=40>");
+//-->
+</SCRIPT>
+</FONT></TD></TR><TR><TD COLSPAN=2><FONT FACE="arial,verdana" SIZE="-1">
+<SCRIPT LANGUAGE="javascript">
+<!--
+	document.write("<INPUT TYPE=checkbox NAME='subfolders' SIZE=40 "+getQueryLine('subfoldersValue')+"> Check this box if you also want to protect all subfolders.");
+//-->
+</SCRIPT>
+</FONT></TD></TR><TR><TD><FONT FACE="arial,verdana" SIZE="-1">
+<SCRIPT LANGUAGE="javascript">
+<!--
+	document.write("<B>Zone:</B></TD><TD><INPUT TYPE=text NAME='realm' SIZE=15 VALUE='"+getQueryLine('realmValue')+"'><INPUT TYPE='button' VALUE='&nbsp;&nbsp;?&nbsp;&nbsp;' onClick=\"top.opener.showAlertXerverHelp('Each folder must belong to one (and only one) zone.\\nWhen a user goes from one zone to another he will be prompted for a username and password again, disregarding if he previously has login.\\nThis is for increased security.\\nAlso, if logging is enabled you can see which user has login to which zone.\\n\\nLet us say someone login with User:AAA and Pass:BBB to a folder which belongs to zone CCC.\\nWhen this user visits another folder which belongs to zone DDD, he has to login again.');\">");
+//-->
+</SCRIPT>
+</FONT></TD></TR><TR><TD COLSPAN=2>
+	<FONT COLOR="red" SIZE="-2" FACE="arial,verdana">
+	If you are unsure about what this means, please enter the same zone name
+	for all your folders (for example: enter "Xerver" as your zone for every folder
+	you protect).
+	</FONT>
+</TD></TR><TR><TD COLSPAN=2>
+<INPUT TYPE=button VALUE="Save" onClick="opener.changeElementShareSubfolders(opener.getIndexByFolder(document.addProtWinForm.folder.value),document.addProtWinForm.subfolders.checked);opener.changeElementNewRealm(opener.getIndexByFolder(document.addProtWinForm.folder.value),document.addProtWinForm.realm.value);opener.updateProtFoldersList();opener.document.myForm.allFoldersAndZones.selectedIndex=opener.getIndexByFolder(document.addProtWinForm.folder.value);top.close();">
+</TD></TR>
+</TABLE>
+
+
+</FORM>
+
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

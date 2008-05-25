@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+
+<TABLE WIDTH="500" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD>
+
+
+<FONT FACE="arial" SIZE="-1">
+
+<CENTER>
+<H2>Welcome to Xerver Help Online!</H2>
+</CENTER>
+<BR>
+
+
+
+<B>"No input file specified"-error</B>
+<P>
+	If you are using PHP version 4.3.2 or later and you try
+	to run a PHP-script you will get a "No input file specified"-error
+	(if you use PHP 4.3.1 you won't have this problem).
+<P>
+	To solve this problem you can either install PHP 4.3.1 or you can follow these steps:
+	<OL>
+	<LI> Open your <B>php.ini</B> file
+	(for Windows users it's located in their Windows-directory,
+	for example <B>c:\windows\php.ini</B>).
+	<LI> Search for this line:
+	<BR>
+	<B>doc_root =</B>
+	<BR>
+	When you have found this line, replace it with
+	<BR>
+	<B>doc_root = <FONT COLOR="red">c:\myXerverRootFolder\</FONT></B>
+	<BR>
+	Where <B><FONT COLOR="red">c:\myXerverRootFolder\</FONT></B> shall be
+	your Xerver root-directory (you choose this directory during the Xerver setup).
+	<LI> Save <B>php.ini</B>.
+	<LI> You are done! Your PHP-scripts will now work!
+	</OL>
+<P>
+	Most users can stop reading now as the description above
+	is enough to make your PHP-scripts working.
+	<HR>
+	<BR>
+
+	However, a more accurate description is given below:
+	<BR>
+	After you have changed your <B>php.ini</B> your PHP-scripts will
+	work fine only <U>as long as they are not in a virtual directory</U>.
+	<P>
+
+	If you have PHP-scripts in a virtual directory and you want them
+	to be runnable you shall follow these steps:
+	<OL>
+	<LI> First assume your alias name is "cgi-bin" (it can be something else as well)
+	and it points
+	to <B>c:\john\homepage\cgi-bin\</B> (important: to make this work your
+	alias name MUST be the same as the end of your real directory path,
+	you can not have an alias called "cgi-bin" pointing to a folder called
+	<B>c:\john\homepage\dummyName\</B>).
+	<LI> Open your <B>php.ini</B> file
+	(for Windows users it's located in their Windows-directory,
+	for example <B>c:\windows\php.ini</B>).
+	<LI> Search for this line:
+	<BR>
+	<B>doc_root =</B>
+	<BR>
+	When you have found this line, replace it with
+	<BR>
+	<B>doc_root = <FONT COLOR="red">c:\john\homepage\</FONT></B>
+	<BR>
+	Where <B><FONT COLOR="red">c:\john\homepage\</FONT></B> shall be
+	the directory to which your alias points to
+	<U>except the directory having the same name as your alias(!!)</U>.
+	<BR>
+	(To make sure no one misunderstands this: if your alias points to
+	<B>c:\john\homepage\cgi-bin\</B> then your alias must be <B>\cgi-bin\</B>
+	and you must write <B>c:\john\homepage\</B> (and not <B>c:\john\homepage\cgi-bin\</B>)
+	in your <B>php.ini</B>.
+	<LI> Save <B>php.ini</B>.
+	<LI> You are done! As long as your PHP-scripts are located in
+	<B>c:\john\homepage\cgi-bin\</B> and your visitor visits them from
+	<B>http://www.yourserver.com/cgi-bin/script.php</B> they will work!
+	(Actually your scripts can also be located in subdirectories to cgi-bin,
+	for example <B>http://www.yourserver.com/cgi-bin/something/script2.php</B>).
+	</OL>
+	<BR>
+
+	<B>Note:</B> If you have more than one virtual directory, only one of them
+	can contain PHP-scripts.
+
+
+
+<BR>
+<BR>
+
+
+
+
+
+
+<P>
+<HR>
+<CENTER>
+<FONT SIZE="-1" FACE="arial,verdana">
+<A HREF="http://www.JavaScript.nu/xerver/" TARGET="_blank">Xerver Homepage</A>
+</FONT>
+</CENTER>
+
+
+
+
+</TD></TR>
+</TABLE>
+
+
+
+
+
+</BODY>
+</HTML>

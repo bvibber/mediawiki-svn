@@ -1,0 +1,630 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome to Xerver Help Online!</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" TEXT="black" VLINK="red" MARGINHEIGHT="0" TOPMARGIN="0" LEFTMARGIN="5" MARGINWIDTH="5">
+
+
+
+
+
+<STYLE TYPE="text/css">
+<!--
+/* Don't remove this line: Script by Omid Rouhani from JavaScript.nu */
+
+
+/*	Nedan ändrar du färgen i de rutor där länkarna finns:		*/
+.menyLankarTD	{background-color:#cccccc}
+
+/*	Nedan ändrar du färgen i de rutor där menyerna finns:		*/
+.menyMenyTD		{background-color:#000C86}
+
+/*	Nedan ändrar du textstorlek, textfärg och typsnitt på länkarn		*/
+.menyLankarA	{font-family:'MS Sans Serif',arial,verdana; font-size:12px; color:black; text-decoration:none;}
+
+/*	Nedan ändrar du textstorlek, textfärg och typsnitt på menyern		*/
+.menyMenyA		{font-family:'MS Sans Serif',arial,verdana; font-size:12px; color:white; font-weight:bold; text-decoration:none;}
+
+
+/*  OM DU SKA HA ÖVER 20 MENYER, LÄS DETTA:
+ *  För varje rubrik som du har ska du MINST en rad nedan.
+ *  Har du t.ex. 5 olika "menyer" (varje "ruta" med menyer/länkar är en meny) ska du ha
+ *  minst 5 rader nedan, men du kan även ha flera om du vill. Du får dock inte ha färre
+ *  än 5 rader i så fall.
+ *
+ *  Dvs, du ska ha MINST LIKA MÅNGA RADER NEDAN SOM DU HAR MENYER.
+ *  (Börja med 0 (noll) och gå uppåt)
+ */
+
+#menyLager0 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager1 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager2 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager3 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager4 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager5 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager6 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager7 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager8 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager9 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager10 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager11 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager12 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager13 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager14 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager15 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager16 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager17 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager18 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager19 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+#menyLager20 {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:10;}
+
+
+/*	Ändra inte raden nedan	*/
+#helaMenynsLager {position:absolute; visibility:hidden; background-color:#FFFFFF; z-index:5;}
+//-->
+</STYLE>
+
+
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--This is one of many scripts which are available at:     *---
+//--http://www.JavaScript.nu/javascript                     *---
+//--This script is FREE, but you MUST let these lines       *---
+//--remain if you use this script.                          *---
+
+function initieraNodvandigaVariabler()
+{
+
+// ###########################################################################
+// ################ NEDAN ÄNDRAR DU INSTÄLLNINGARNA I SCRIPTET ###############
+// ###########################################################################
+
+
+//***---Lagrets placering räknat från översta vänstra hörnet:
+	placeringToppen=10;
+	placeringVanster=2;
+
+//***---Rubrikernas/länkarnas storlek i bredd och höjd.
+	varRutasHojd=20;
+	varRutasBredd=160;
+
+//***---När man trycker på en meny kommer länkarna poppa upp i en ruta. Ofta vill man ha denna ruta lite förskjuten (t.ex. lite åt höger och lite nedåt). Denna förskjutning gör du här.
+	forskjutningAtVanster=30;
+	forskjutningNedat=8;
+
+//***---Man kan få färgade ramar runt sina rutor. Ange färgen här. (testa dig gärna fram!)
+	fargKringHelaMenyn="black";	//Färg på den ram som omsluter hela menysystemet
+	fargKringLagren="red";		//Färg runt menyerna (som kan innehålla länkar/menyrubriker)
+	fargKringVarjeRuta="orange";	//Färg runt varje länk/menyrubrik
+
+//***---Ovan har du angett färgerna på tre olika sorters ramar. Du kanske dock inte vill ha några ramar alls. Då kan du ange det här. (1=ha ram; 0=ha inte ram). Anger du alltså tre nollor här blir de tre färgerna ovan betydelselösa (de syns inte).
+	ramRuntHelaMenyn=1;		//1=ha ram; 0=ha inte ram
+	ramRuntVarjeMeny=1;		//1=ha ram; 0=ha inte ram
+	ramRuntVarjeRuta=0;		//1=ha ram; 0=ha inte ram
+
+//***---Med Explorer 4 (och senare) kan man få rutorna att byta färg då man för musen över rutan. Här anger du färgen som rutan ska få.
+	menyerFargMedMus="blue";	//Menyerna ska få denna färg
+	lankarFargMedMus="eeeeee";	//Länkarna ska få denna färg
+
+//***---Om du inte har FRAMES på din sida (eller om du inte vet vad det är), strunta i detta: Här anger du din default-target, dvs. såvida du inte anger en annan TARGET till en viss länk så kommer den ha detta TARGET-värde.
+	defaultTarget="main";
+
+//***---Här anger du avståndet mellan texten i en ruta till rutans kanter. Ett rekommenderat värde är 2.
+	cellpaddingVarde=2;
+
+
+	initieraOvrigaVariabler()	//Ändra INTE denna rad
+}						//Ändra INTE denna rad
+
+
+
+function skrivUtMenyer()		//Ändra INTE denna rad
+{						//Ändra INTE denna rad
+	allTextAttSkrivaUt="";		//Ändra INTE denna rad
+
+
+// ###########################################################################
+// ############ NEDAN ANGER DU VILKA MENYER OCH LÄNKAR DU VILL HA ############
+// ###########################################################################
+//
+//
+// OBS! LÄS DESSA INSTRUKTIONER NOGA!
+//
+// Detta script har mycket stora anpassningsmöjligheter och kan t.ex:
+// 1) Ha ett obegränsat antal menyer under varandra.
+// 2) Ha ett obegränsat antal länkar under varje meny.
+// 3) Ha en fullt godtycklig struktur (hierarki) vad gäller katalogerna och länkarna.
+// 4) Om du inte vet vad "Frames" är så ignorera detta:
+//    Varje länk kan ha en unik TARGET. Anger du inte ett TARGET-värde så används
+//    default-värdet som du fått ange längre upp i detta script.
+//
+// Innan du får bygga upp din meny, tänk på följande:
+// * En "meny" betyder den rubrik där man trycker för att få se fler länkar (och/eller fler menyer).
+// * En "länk" är helt enkelt en länk som man trycker på.
+//
+// När du bygger din meny så anger du kommandon som "liknar":
+//
+// SYNTAXEN ÄR:					STRUKTUREN BLIR:
+// <menu> Min meny 1				- Min meny 1
+//    <link> Min länk 1				---Min länk 1
+//    <link> Min länk 2				---Min länk 2
+// </menu>
+// <menu> Min meny 2				-Min meny 2
+//    <link> Min länk 3				---Min länk 3
+//    <link> Min länk 4				---Min länk 4
+//    <link> Min länk 5				---Min länk 5
+// </menu>
+// <menu> Min meny 3				-Min meny 3
+//    <menu> Min meny 4				---Min meny 4
+//       <link> Min länk 6			------Min länk 6
+//       <link> Min länk 7			------Min länk 7
+//    </menu>					---
+//    <link> Min länk 8				---Min länk 8
+//    <link> Min länk 9				---Min länk 9
+// </menu>
+//
+//
+// Som du ser finns endast tre olika syntax (<link>, <menu> och </menu>).
+// Skrivsättet är dock lite mer komplicerat.
+// Du skriver dina kommandon på följande sätt:
+//	skapaLager("<menu>","Rubrik")
+//	skapaLager("<link>","Länkens namn","http-adress","target-värde")
+//	skapaLager("</menu>")
+//
+// Notera att du inte behöver ange ett target-värde om du inte vill.
+// Nedan ser du ett exempel på hur man gör.
+// Skulle du skriva några syntax fel så har scriptet en inbyggd
+// felsökare som varnar dig. Så det är bara att sätta igång och bygga :)
+
+
+
+
+
+
+
+
+
+
+
+	skapaLager("<menu>","About Xerver")
+		skapaLager("<menu>","License")
+			skapaLager("<link>","Is Xerver free?","helpisxerverfree.html")
+			skapaLager("<link>","Xerver License","../license.txt")
+		skapaLager("</menu>")
+		skapaLager("<link>","What is Xerver?","helpwhatisxerver.html")
+	skapaLager("</menu>")
+	skapaLager("<menu>","How do I...")
+		skapaLager("<menu>","Run scripts")
+			skapaLager("<menu>","Perl")
+				skapaLager("<link>","I can't run my Perl scripts. Why? ","helpcantrunperl.html")
+				skapaLager("<link>","I have installed Perl. But my scripts won't run anyway. Why? ","helpperlwontrun.html")
+				skapaLager("<link>","Perl Hello World-script","helpperlhelloworld.html")
+			skapaLager("</menu>")
+			skapaLager("<menu>","PHP")
+				skapaLager("<link>","I can't run my PHP scripts. Why? ","helpcantrunphp.html")
+				skapaLager("<link>","I use PHP 5 and can't run scripts","helpphp5.html")
+				skapaLager("<link>","I have installed PHP. But my scripts won't run anyway. Why? ","helpphpwontrun.html")
+//				skapaLager("<link>","\"No input file specified\"-error","helpphpnoinputfile.html")
+			skapaLager("<link>","PHP Hello World-script","helpphphelloworld.html")
+			skapaLager("</menu>")
+			skapaLager("<menu>","Other")
+				skapaLager("<link>","What more scripts can I run?","helprunotherscripts.html")
+			skapaLager("</menu>")
+			skapaLager("<link>","Problems...","helpproblemwithscripts.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","Basic help")
+		skapaLager("<link>","Autostart at Windows startup","helpwindowsstartup.html")
+		skapaLager("<link>","Start Xerver","helpstartxerver.html")
+		skapaLager("<link>","Uninstall Xerver","helpuninstall.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","Features")
+			skapaLager("<link>","Password protection to folders","helppasswordtofolders.html")
+			skapaLager("<link>","How do I start Xerver as a background process?","helpbackgroundprocess.html")
+			skapaLager("<link>","How can I use my own error pages (for example \"404 File Not Found\")?","helpownerrorpages.html")
+//			skapaLager("<link>","How do I start Xerver with low system resources?","helpdifferentrunmodes.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","FTP Server")
+			skapaLager("<link>","Start only the FTP Server","helpftpserveronly.html")
+		skapaLager("</menu>")
+	skapaLager("</menu>")
+	skapaLager("<menu>","Problems")
+		skapaLager("<menu>","Network problems")
+			skapaLager("<link>","I can reach my website from my own computer. But my friends can't view my site. Why?","helpfriendscantbrowse.html")
+			skapaLager("<link>","I have a router. Can I use Xerver?","helprouter.html")
+			skapaLager("<link>","How can I find my IP address?","helpfindip.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","HTTP Errors")
+			skapaLager("<link>","403 Forbidden","help403forbidden.html")
+		skapaLager("</menu>")
+		skapaLager("<link>","I can't run Xerver. Why?","helprunxerver.html")
+		skapaLager("<link>","How do I know if I have Java installed?","helpjavainstalled.html")
+	skapaLager("</menu>")
+	skapaLager("<link>","Xerver Homepage","http://www.javascript.nu/xerver/","_blank")
+
+
+
+
+
+
+
+
+
+/*
+	skapaLager("<menu>","Start using")
+		skapaLager("<link>","What is Xerver?","helpwhatisxerver.html")
+		skapaLager("<link>","How do I start Xerver?","helpstartxerver.html")
+		skapaLager("<link>","How do I uninstall Xerver?","helpuninstall.html")
+		skapaLager("<link>","I can't run Xerver. Why?","helprunxerver.html")
+		skapaLager("<link>","How do I know if I have Java installed?","helpjavainstalled.html")
+	skapaLager("</menu>")
+
+	skapaLager("<menu>","Run scripts")
+		skapaLager("<menu>","Perl")
+			skapaLager("<link>","I can't run my Perl scripts. Why? ","helpcantrunperl.html")
+			skapaLager("<link>","I have installed Perl. But my scripts won't run anyway. Why? ","helpperlwontrun.html")
+			skapaLager("<link>","Perl Hello World-script","helpperlhelloworld.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","PHP")
+			skapaLager("<link>","I can't run my PHP scripts. Why? ","helpcantrunphp.html")
+			skapaLager("<link>","I have installed PHP. But my scripts won't run anyway. Why? ","helpphpwontrun.html")
+//			skapaLager("<link>","\"No input file specified\"-error","helpphpnoinputfile.html")
+			skapaLager("<link>","PHP Hello World-script","helpphphelloworld.html")
+		skapaLager("</menu>")
+		skapaLager("<menu>","Other")
+			skapaLager("<link>","What more scripts can I run?","helprunotherscripts.html")
+		skapaLager("</menu>")
+		skapaLager("<link>","Problems...","helpproblemwithscripts.html")
+	skapaLager("</menu>")
+
+	skapaLager("<menu>","Network problems")
+		skapaLager("<link>","I can reach my website from my own computer. But my friends can't view my site. Why?","helpfriendscantbrowse.html")
+		skapaLager("<link>","I have a router. Can I use Xerver?","helprouter.html")
+		skapaLager("<link>","How can I find my IP address?","helpfindip.html")
+	skapaLager("</menu>")
+
+	skapaLager("<menu>","HTTP Errors")
+		skapaLager("<link>","403 Forbidden","help403forbidden.html")
+	skapaLager("</menu>")
+
+	skapaLager("<menu>","Options/Features")
+		skapaLager("<link>","Password protection to folders","helppasswordtofolders.html")
+		skapaLager("<link>","How can I use my own error pages (for example \"404 File Not Found\")?","helpownerrorpages.html")
+//		skapaLager("<link>","What does the \"run Xerver with extremely low system resources\" mean? ","helplowsystemresources.html")
+		skapaLager("<link>","How do I start Xerver with low system resources?","helpdifferentrunmodes.html")
+		skapaLager("<link>","How do I start Xerver as a background process?","helpdifferentrunmodes.html")
+	skapaLager("</menu>")
+
+	skapaLager("<menu>","License")
+		skapaLager("<link>","Is Xerver free?","helpisxerverfree.html")
+		skapaLager("<link>","Xerver License","../license.txt")
+	skapaLager("</menu>")
+
+	skapaLager("<link>","Xerver Homepage","http://www.javascript.nu/xerver/","_blank")
+*/
+
+
+
+// ###########################################################################
+// ############### ÄNDRA INGET NEDAN OM DU INTE VET VAD DU GÖR ###############
+// ###########################################################################
+
+
+skapaLager("<end>");	//Avslutar utskrivningen. TA INTE BORT!!!
+document.write(allTextAttSkrivaUt);
+}
+
+
+
+
+function initieraOvrigaVariabler()
+{
+	antalUtplaceradeLager=0;	//Håller reda på hur många lager som skrivits ut
+	arIKatalogNiva=0;			//Håller reda på hur många steg ner i katalogstrukturen man är
+	antalLagerNer=new Array(0);	//Temporärt innehåller den hur många steg ner man gått per katalognivå så man vet vart undermenyer ska ritas ut.
+	lagerSomVisas=new Array(0);	//1=lager visas, 0=lager visas inte (index i array=index på lager)
+	indexPaLagerIHierarki=new Array(0);			//Temporärt innehåller den vilka index som hierarkin består av, t.ex. "3,6,7" ==> lager 7 ligger i lager 6 som ligger i lager 3, som inte ligger i något annat lager. Denna variabel är temporär och värdet ändras under uppbyggnaden av lagrena
+	buffradTextAttSkrivaUtPerLager=new Array(0);	//Lagrar det som ska skrivas ut så att inte "lager hamnar i lager"
+
+	antalLagerNer[0]=0;
+	lagerSomVisas[0]=0;
+	indexPaLagerIHierarki[0]=-1;
+	buffradTextAttSkrivaUtPerLager[0]="";
+
+	allaLagersStartattribut=new Array(0);	//I denna kommer det lagras vart ett lager ligger och vad den har för Z-index (lagernamn,ZIndex, xKor, yKor)
+	forstaGangenManSkriverUt=true;
+
+	helaMenynNamnDIV="helaMenynsLager";
+	menyNamnDIV="menyLager";
+	konstantForZIndex=15;
+
+	startHTMLRamRuntTabellHelaMenyn="<TABLE BORDER='"+ramRuntHelaMenyn+"' CELLPADDING=0 CELLSPACING=0 BORDERCOLORDARK='"+fargKringHelaMenyn+"' BORDERCOLORLIGHT='"+fargKringHelaMenyn+"' BORDERCOLOR='"+fargKringHelaMenyn+"'><TR><TD>";
+	startHTMLRamRuntTabell="<TABLE BORDER='"+ramRuntVarjeMeny+"' CELLPADDING=0 CELLSPACING=0 BORDERCOLORDARK='"+fargKringLagren+"' BORDERCOLORLIGHT='"+fargKringLagren+"' BORDERCOLOR='"+fargKringLagren+"'><TR><TD>";
+	slutHTMLRamRuntTabell="</TD></TR></TABLE>";
+}
+
+
+
+function initieraLagrensAttribut()
+{
+	placera(helaMenynNamnDIV,placeringVanster,placeringToppen);
+	visa(helaMenynNamnDIV);
+	sattLagrensAttribut();
+}
+
+
+function geTotaltAntalStegNer(katalogNiva)
+{
+	tmpAntalSteg=0;
+	for (jj=0;jj<=katalogNiva;jj++)
+	{
+		tmpAntalSteg+=antalLagerNer[jj];
+	}
+	return tmpAntalSteg-katalogNiva;
+}
+
+
+
+
+
+function placeraVidDessaKoordinater()
+{
+	return ""+(new Array(placeringVanster+arIKatalogNiva*forskjutningAtVanster,placeringToppen+forskjutningNedat*arIKatalogNiva+geTotaltAntalStegNer(arIKatalogNiva)*varRutasHojd));
+}
+
+
+function visaDessaLager(lagerManTrycktPa, listaMedLager)
+{
+	tmpLagerVisades=lagerSomVisas[lagerManTrycktPa]
+	doljAllaLager();
+	listaMedLagerArray=listaMedLager.split(",")
+	for (iii=0;iii<listaMedLagerArray.length;iii++)
+	{
+		if (!(tmpLagerVisades==1 && listaMedLagerArray[iii]==lagerManTrycktPa))	//Om [lagret man trycker på inte visas] och [vi kollar på det lager jag tyckt på]
+		{
+			lagerSomVisas[listaMedLagerArray[iii]]=1;
+			visa(menyNamnDIV+listaMedLagerArray[iii])
+			//break;
+		}
+	}
+}
+
+
+function doljAllaLager()
+{
+	for (iii=0;iii<antalUtplaceradeLager;iii++)
+	{
+		lagerSomVisas[iii]=0;
+		dolj(menyNamnDIV+iii)
+	}
+}
+
+function lagraLagretsAttribut(namn,ZIndex, xKor, yKor)
+{
+	allaLagersStartattribut[allaLagersStartattribut.length++]=new Array(namn,ZIndex, xKor, yKor);
+}
+
+function sattLagrensAttribut()
+{
+	for (i=0;i<antalUtplaceradeLager;i++)
+	{
+		placera(allaLagersStartattribut[i][0],allaLagersStartattribut[i][2],allaLagersStartattribut[i][3])
+		sattZIndex(allaLagersStartattribut[i][0],allaLagersStartattribut[i][1])
+	}
+}
+
+
+
+
+
+function skapaLager(typ,namn,url,target)
+{
+	typ=typ.toLowerCase();
+
+	if (target+""=="undefined" || target==null || target=="")
+		target=defaultTarget;
+
+	if (target.toLowerCase()=="_blank")
+		target="MyBlankWin";
+
+	if (url+""=="undefined" || url==null || url=="")
+		url="";
+
+	if (forstaGangenManSkriverUt)
+	{
+		forstaGangenManSkriverUt=false;
+		allTextAttSkrivaUt+=("<DIV ID='"+helaMenynNamnDIV+"'>");
+		allTextAttSkrivaUt+=(startHTMLRamRuntTabellHelaMenyn+"<TABLE BORDER="+ramRuntVarjeRuta+" CELLPADDING="+cellpaddingVarde+" CELLSPACING=0 WIDTH='"+varRutasBredd+"' BORDERCOLORDARK='"+fargKringVarjeRuta+"' BORDERCOLORLIGHT='"+fargKringVarjeRuta+"' BORDERCOLOR='"+fargKringVarjeRuta+"'>")
+	}
+
+	if (typ=="<end>")
+	{
+		allTextAttSkrivaUt+=("</TABLE>"+slutHTMLRamRuntTabell)
+		allTextAttSkrivaUt+=("</DIV>")
+
+		if (arIKatalogNiva>0)
+			alert("VARNING!\n\nDu har "+arIKatalogNiva+" st <menu> fler än du har </menu>.\nAntalet <menu> och </menu> MÅSTE vara lika många.\n\nScriptet kommer troligtvis inte att fungera om du inte rättar till felet!")
+		else if (arIKatalogNiva<0)
+			alert("VARNING!\n\nDu har "+(-arIKatalogNiva)+" st </menu> fler än du har <menu>.\nAntalet <menu> och </menu> MÅSTE vara lika många.\n\nScriptet kommer troligtvis inte att fungera om du inte rättar till felet!")
+	}
+	else if (typ=="<menu>")
+	{
+		antalLagerNer[antalLagerNer.length++]=0;
+		lagerSomVisas[lagerSomVisas.length++]=0;
+		indexPaLagerIHierarki[indexPaLagerIHierarki.length++]=-1;
+		buffradTextAttSkrivaUtPerLager[buffradTextAttSkrivaUtPerLager.length++]="";
+
+		indexPaLagerIHierarki[arIKatalogNiva]=antalUtplaceradeLager;
+
+		tmpIndexPaLagerIHierarkiStrang="";
+		for (ii=0;ii<indexPaLagerIHierarki.length;ii++)
+		{
+			if (indexPaLagerIHierarki[ii]==-1)
+				break;
+
+			tmpIndexPaLagerIHierarkiStrang+=indexPaLagerIHierarki[ii]+",";
+		}
+		tmpIndexPaLagerIHierarkiStrang=tmpIndexPaLagerIHierarkiStrang.substring(0,tmpIndexPaLagerIHierarkiStrang.length-1)
+
+		tmpIEInfo="";
+		tmpIckeIEAHREF="javascript:void(0)";
+		if (document.all)
+		{
+			tmpIEInfo="STYLE=\"cursor:hand\" onClick=\"visaDessaLager("+antalUtplaceradeLager+",'"+tmpIndexPaLagerIHierarkiStrang+"')\" onMouseOver=\"this.style.backgroundColor='"+menyerFargMedMus+"'\" onMouseOut=\"this.style.backgroundColor=''\"";
+		}
+		else
+		{
+			tmpIckeIEAHREF="javascript:visaDessaLager("+antalUtplaceradeLager+",'"+tmpIndexPaLagerIHierarkiStrang+"')";
+		}
+
+		if (arIKatalogNiva>0)
+		{
+			buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=("<TR WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"'><TD CLASS='menyMenyTD' WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"' "+tmpIEInfo+"><A HREF=\""+tmpIckeIEAHREF+"\" CLASS='menyMenyA'>"+namn+"</A></TD></TR>");
+			buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=("</TABLE>")
+		}
+		else
+		{
+			allTextAttSkrivaUt+=("<TR WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"'><TD CLASS='menyMenyTD' WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"' "+tmpIEInfo+"><A HREF=\""+tmpIckeIEAHREF+"\" CLASS='menyMenyA'>"+namn+"</A></TD></TR>");
+			allTextAttSkrivaUt+=("</TABLE>")
+		}
+
+		antalLagerNer[arIKatalogNiva]++;
+		arIKatalogNiva++;
+
+		buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=("<DIV ID='"+menyNamnDIV+(antalUtplaceradeLager++)+"'>");
+		buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=(startHTMLRamRuntTabell+"<TABLE BORDER="+ramRuntVarjeRuta+" CELLPADDING="+cellpaddingVarde+" CELLSPACING=0 WIDTH='"+varRutasBredd+"' BORDERCOLORDARK='"+fargKringVarjeRuta+"' BORDERCOLORLIGHT='"+fargKringVarjeRuta+"' BORDERCOLOR='"+fargKringVarjeRuta+"'>")
+
+		lagraLagretsAttribut(menyNamnDIV+(antalUtplaceradeLager-1),konstantForZIndex+arIKatalogNiva,placeraVidDessaKoordinater().split(",")[0],placeraVidDessaKoordinater().split(",")[1])
+
+	}
+	else if (typ=="</menu>")
+	{
+		antalLagerNer[arIKatalogNiva]=0;
+		arIKatalogNiva--;
+		indexPaLagerIHierarki[arIKatalogNiva]=-1;
+
+		buffradTextAttSkrivaUtPerLager[arIKatalogNiva+1]+=("</TABLE>"+slutHTMLRamRuntTabell)
+		buffradTextAttSkrivaUtPerLager[arIKatalogNiva+1]+=("</DIV>");
+		document.write(buffradTextAttSkrivaUtPerLager[arIKatalogNiva+1]);
+		buffradTextAttSkrivaUtPerLager[arIKatalogNiva+1]="";
+
+		if (arIKatalogNiva>0)
+			buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=("<TABLE BORDER="+ramRuntVarjeRuta+" CELLPADDING="+cellpaddingVarde+" CELLSPACING=0 WIDTH='"+varRutasBredd+"' BORDERCOLORDARK='"+fargKringVarjeRuta+"' BORDERCOLORLIGHT='"+fargKringVarjeRuta+"' BORDERCOLOR='"+fargKringVarjeRuta+"'>")
+		else
+			allTextAttSkrivaUt+=("<TABLE BORDER="+ramRuntVarjeRuta+" CELLPADDING="+cellpaddingVarde+" CELLSPACING=0 WIDTH='"+varRutasBredd+"' BORDERCOLORDARK='"+fargKringVarjeRuta+"' BORDERCOLORLIGHT='"+fargKringVarjeRuta+"' BORDERCOLOR='"+fargKringVarjeRuta+"'>")
+
+	}
+	else if (typ=="<link>")
+	{
+		tmpIEInfo="";
+		if (document.all)
+		{
+			tmpIEInfo="STYLE=\"cursor:hand\" onClick=\"window.open('"+url+"','"+target+"')\" onMouseOver=\"this.style.backgroundColor='"+lankarFargMedMus+"'\" onMouseOut=\"this.style.backgroundColor=''\"";
+		}
+		antalLagerNer[arIKatalogNiva]++;
+		if (arIKatalogNiva>0)
+			buffradTextAttSkrivaUtPerLager[arIKatalogNiva]+=("<TR WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"'><TD CLASS='menyLankarTD' WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"' "+tmpIEInfo+"><A HREF='"+url+"' TARGET='"+target+"' CLASS='menyLankarA'>"+namn+"</A><BR></TD></TR>");
+		else
+			allTextAttSkrivaUt+=("<TR WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"'><TD CLASS='menyLankarTD' WIDTH='"+varRutasBredd+"' HEIGHT='"+varRutasHojd+"' "+tmpIEInfo+"><A HREF='"+url+"' TARGET='"+target+"' CLASS='menyLankarA'>"+namn+"</A><BR></TD></TR>");
+	}
+	else if (typ+""=="undefined" || typ==null || typ=="")
+		alert("ERROR:\nDu har anropat 'skapaLager' utan att ange ett giltigt kommando!\n\nVänligen använd något av följande kommandon:\n<menu>, <link> eller </menu>")
+	else
+		alert("ERROR:\n"+typ+" är inte ett giltigt kommando.\nGiltiga kommandon är:\n<menu>, <link> samt </menu>")	//Ska inte kunna komma
+}
+
+
+
+
+
+
+
+// ###########################################################################
+// ################ÄNDRA INGET NEDAN OM DU INTE VET VAD DU GÖR################
+// ###########################################################################
+
+//Notera, nya argument i denna "placera"!
+function placera(lager,hoger,ner)		//Placerar ett lager exakt på ett ställe
+{
+	if (document.all)
+	{
+		document.all[lager].style.pixelLeft=hoger;
+		document.all[lager].style.pixelTop=ner;
+	}
+	else if (document.layers)
+	{
+		document.layers[lager].left=hoger;
+		document.layers[lager].top=ner;
+	}
+	else if (document.getElementById)
+	{
+		document.getElementById(lager).style.left=hoger;
+		document.getElementById(lager).style.top=ner;
+	}
+}
+
+
+
+
+function dolj(lager)				//Gör ett lager osynligt
+{
+	if (document.all)
+	{
+		document.all[lager].style.visibility="hidden";
+	}
+	else if (document.layers)
+	{
+		document.layers[lager].visibility="hidden";
+	}
+	else if (document.getElementById)
+	{
+		document.getElementById(lager).style.visibility="hidden";
+	}
+}
+
+
+function visa(lager)				//Visar ett lager
+{
+	if (document.all)
+	{
+		document.all[lager].style.visibility="visible";
+	}
+	else if (document.layers)
+	{
+		document.layers[lager].visibility="visible";
+	}
+	else if (document.getElementById)
+	{
+		document.getElementById(lager).style.visibility="visible";
+	}
+}
+
+
+function sattZIndex(lager,nyttZIndex)				//Visar ett lager
+{
+	if (document.all)
+	{
+		document.all[lager].style.zIndex=nyttZIndex;
+	}
+	else if (document.layers)
+	{
+		document.layers[lager].zIndex=nyttZIndex;
+	}
+	else if (document.getElementById)
+	{
+		document.getElementById(lager).style.zIndex=nyttZIndex;
+	}
+}
+
+
+
+initieraNodvandigaVariabler();
+skrivUtMenyer();
+initieraLagrensAttribut();
+//-->
+</SCRIPT>
+
+
+
+</BODY>
+</HTML>
