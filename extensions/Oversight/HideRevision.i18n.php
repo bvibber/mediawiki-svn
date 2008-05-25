@@ -1453,6 +1453,7 @@ $messages['nds'] = array(
 	'oversight-log-hiderev'      => 'en Ännern vun $1 rutnahmen',
 	'oversight'                  => 'Oversight',
 	'oversight-view'             => 'Details',
+	'oversight-hidden'           => 'Versteken Version',
 );
 
 /** Nedersaksisch (Nedersaksisch)

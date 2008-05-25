@@ -545,6 +545,13 @@ $messages['ko'] = array(
 	'openidchoosepassword' => '비밀번호:',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'openidlanguage' => 'Sproch',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

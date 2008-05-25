@@ -673,6 +673,13 @@ $messages['ko'] = array(
 	'sitematrix-others'   => '다른 위키미디어 프로젝트 목록',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sitematrix-language' => 'Sproch',
+);
+
 $messages['la'] = array(
 	'sitematrix' => 'Wikimediae wiki omnia',
 	'sitematrix-language' => 'Lingua',
@@ -803,6 +810,7 @@ $messages['nan'] = array(
  */
 $messages['nds'] = array(
 	'sitematrix'           => 'List vun de Wikimedia-Wikis',
+	'sitematrix-summary'   => 'Disse Spezialsied wiest all Wikimedia-Wikis.',
 	'sitematrix-desc'      => 'Wiest en [[{{ns:Special}}:SiteMatrix|List vun all Wikimedia-Wikis]]',
 	'sitematrix-language'  => 'Spraak',
 	'sitematrix-project'   => 'Naam vun dat Projekt, Interprojekt-Lenk un Interwiki-Lenk',

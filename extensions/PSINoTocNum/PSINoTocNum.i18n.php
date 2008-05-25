@@ -7,6 +7,13 @@ $messages['en'] = array(
 	'psinotocnum-desc' => 'New MagicWord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'psinotocnum-desc' => 'Нова вълшебна думичка „<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>“',
+);
+
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
 );
@@ -37,6 +44,27 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'psinotocnum-desc' => 'Voegt het magische woord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>" to',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'psinotocnum-desc' => 'Legger til det magiske ordet «<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>»',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'psinotocnum-desc' => 'Mot magic novèl « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'psinotocnum-desc' => 'Nové magické slovo „<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>”',
 );
 
 /** Swedish (Svenska)

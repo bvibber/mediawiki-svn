@@ -154,6 +154,8 @@ $messages['lb'] = array(
 	'postcomment_notloggedin'              => 'Dir sidd net ugemeld.',
 	'postcomment_youareloggedinas'         => 'Dir sidd als $1 ugemelt',
 	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
+	'postcomment_invalidrequest'           => 'Ongëlteg Ufro.',
+	'postcomment_replyto'                  => 'Äntwert fir $1',
 );
 
 /** Malayalam (മലയാളം)

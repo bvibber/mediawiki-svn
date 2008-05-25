@@ -116,16 +116,18 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
- * @author Spiritia
+ * @author Daggerstab
  * @author Borislav
+ * @author Spiritia
  */
 $messages['bg'] = array(
-	'newuserlogpage'           => 'Дневник на регистрациите',
-	'newuserlogpagetext'       => 'В този дневник се записват регистрациите на потребители.',
-	'newuserlog-desc'          => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с [[Special:Log|дневниците]]',
-	'newuserlog-byemail'       => 'паролата е изпратена по е-поща',
-	'newuserlog-create-entry'  => 'Нов потребител',
-	'newuserlog-create2-entry' => 'създаване на сметка за $1',
+	'newuserlogpage'              => 'Дневник на регистрациите',
+	'newuserlogpagetext'          => 'В този дневник се записват регистрациите на потребители.',
+	'newuserlog-desc'             => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с [[Special:Log|дневниците]]',
+	'newuserlog-byemail'          => 'паролата е изпратена по е-поща',
+	'newuserlog-create-entry'     => 'Нов потребител',
+	'newuserlog-create2-entry'    => 'създаване на сметка за $1',
+	'newuserlog-autocreate-entry' => 'Автоматично създадена сметка',
 );
 
 /** Bengali (বাংলা)
@@ -184,20 +186,22 @@ $messages['ce'] = array(
  * @author Alessandro
  */
 $messages['crh-latn'] = array(
-	'newuserlogpage'           => 'Yañı qullanıcı jurnalı',
-	'newuserlogpagetext'       => 'Eñ sоñki qayd оlğan qullanıcı jurnalı',
-	'newuserlog-create-entry'  => 'Yañı qullanıcı',
-	'newuserlog-create2-entry' => '$1 içün esap açtı',
+	'newuserlogpage'              => 'Yañı qullanıcı jurnalı',
+	'newuserlogpagetext'          => 'Eñ sоñki qayd оlğan qullanıcı jurnalı',
+	'newuserlog-create-entry'     => 'Yañı qullanıcı',
+	'newuserlog-create2-entry'    => '$1 içün esap açtı',
+	'newuserlog-autocreate-entry' => 'Esap avtomatik olaraq yaratıldı',
 );
 
 /** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
  * @author Alessandro
  */
 $messages['crh-cyrl'] = array(
-	'newuserlogpage'           => 'Янъы къулланыджы журналы',
-	'newuserlogpagetext'       => 'Энъ сонъки къайд олгъан къулланыджы журналы',
-	'newuserlog-create-entry'  => 'Янъы къулланыджы',
-	'newuserlog-create2-entry' => '$1 ичюн эсап ачты',
+	'newuserlogpage'              => 'Янъы къулланыджы журналы',
+	'newuserlogpagetext'          => 'Энъ сонъки къайд олгъан къулланыджы журналы',
+	'newuserlog-create-entry'     => 'Янъы къулланыджы',
+	'newuserlog-create2-entry'    => '$1 ичюн эсап ачты',
+	'newuserlog-autocreate-entry' => 'Эсап автоматик оларакъ яратылды',
 );
 
 /** Czech (Česky)
@@ -242,14 +246,16 @@ $messages['de'] = array(
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
+ * @author Tlustulimu
  */
 $messages['dsb'] = array(
-	'newuserlogpage'           => 'Protokol nowych wužywarjow',
-	'newuserlogpagetext'       => 'To jo protokol wó nowych wužywarskich kontow.',
-	'newuserlog-desc'          => 'Pśidawa protokol wó [[Special:Log/newusers|nowych wužywarskich kontach]] k [[Special:Log]]',
-	'newuserlog-byemail'       => 'Pótajne słowo bu pśez e-mail pósłane.',
-	'newuserlog-create-entry'  => 'Nowy wužywaŕ',
-	'newuserlog-create2-entry' => 'konto za $1 napórane.',
+	'newuserlogpage'              => 'Protokol nowych wužywarjow',
+	'newuserlogpagetext'          => 'To jo protokol wó nowych wužywarskich kontow.',
+	'newuserlog-desc'             => 'Pśidawa protokol wó [[Special:Log/newusers|nowych wužywarskich kontach]] k [[Special:Log]]',
+	'newuserlog-byemail'          => 'Pótajne słowo bu pśez e-mail pósłane.',
+	'newuserlog-create-entry'     => 'Nowy wužywaŕ',
+	'newuserlog-create2-entry'    => 'konto za $1 napórane.',
+	'newuserlog-autocreate-entry' => 'Wužywarske konto bu awtomatiski kreěrowane.',
 );
 
 $messages['el'] = array(
@@ -453,14 +459,16 @@ $messages['hr'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Tlustulimu
  */
 $messages['hsb'] = array(
-	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
-	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
-	'newuserlog-desc'          => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]] k [[Special:Log]]',
-	'newuserlog-byemail'       => 'Hesło z e-mejlku pósłane',
-	'newuserlog-create-entry'  => 'Nowy wužiwar',
-	'newuserlog-create2-entry' => 'konto za wužiwarja $1 wutworjene',
+	'newuserlogpage'              => 'Protokol nowych wužiwarjow',
+	'newuserlogpagetext'          => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
+	'newuserlog-desc'             => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]] k [[Special:Log]]',
+	'newuserlog-byemail'          => 'Hesło z e-mejlku pósłane',
+	'newuserlog-create-entry'     => 'Nowy wužiwar',
+	'newuserlog-create2-entry'    => 'konto za wužiwarja $1 wutworjene',
+	'newuserlog-autocreate-entry' => 'Wužiwarske konto bu awtomatisce kreěrowane.',
 );
 
 /** Hungarian (Magyar)
@@ -653,12 +661,13 @@ $messages['la'] = array(
  * @author SPQRobin
  */
 $messages['lb'] = array(
-	'newuserlogpage'           => 'Logbuch vun den neien Umeldungen',
-	'newuserlogpagetext'       => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
-	'newuserlog-desc'          => 'Setzt eng [[Special:Log/newusers|Lëscht vun de neie Benotzerkonten]] op [[Special:Log]] derbäi',
-	'newuserlog-byemail'       => "d'Passwuert gouf per E-Mail geschéckt",
-	'newuserlog-create-entry'  => 'Neie Benotzer',
-	'newuserlog-create2-entry' => "Benotzerkonto fir den/d' $1 gemaach",
+	'newuserlogpage'              => 'Logbuch vun den neien Umeldungen',
+	'newuserlogpagetext'          => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
+	'newuserlog-desc'             => 'Setzt eng [[Special:Log/newusers|Lëscht vun de neie Benotzerkonten]] op [[Special:Log]] derbäi',
+	'newuserlog-byemail'          => "d'Passwuert gouf per E-Mail geschéckt",
+	'newuserlog-create-entry'     => 'Neie Benotzer',
+	'newuserlog-create2-entry'    => "Benotzerkonto fir den/d' $1 gemaach",
+	'newuserlog-autocreate-entry' => 'Benotzerkont gouf automatesch gemaach',
 );
 
 /** Limburgish (Limburgs)
@@ -760,9 +769,19 @@ $messages['myv'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'newuserlogpage'          => 'Ne’e-Bruker-Logbook',
-	'newuserlogpagetext'      => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
-	'newuserlog-create-entry' => 'Nee Bruker',
+	'newuserlogpage'           => 'Ne’e-Bruker-Logbook',
+	'newuserlogpagetext'       => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
+	'newuserlog-byemail'       => 'Passwoord per E-Mail toschickt',
+	'newuserlog-create-entry'  => 'Nee Bruker',
+	'newuserlog-create2-entry' => 'hett Brukerkonto opstellt för $1',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'newuserlog-byemail'          => 'wachwoord is verzunnen via de liendepos',
+	'newuserlog-autocreate-entry' => 'Gebruker autematisch an-emaak',
 );
 
 /** Nepali (नेपाली)

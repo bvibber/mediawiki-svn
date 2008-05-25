@@ -1604,6 +1604,13 @@ $wdMessages['krj'] = array(
 	'ow_dm_OK'   => 'OK dun',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$wdMessages['ksh'] = array(
+	'ow_Language' => 'Sproch',
+);
+
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */

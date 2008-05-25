@@ -519,12 +519,15 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_page_link'              => 'Statistike vum Nokucken',
+	'review_error'                  => 'Et ass eppes falsch!',
 	'review_total_statistics'       => 'Total',
 	'review_statistics_left_corner' => 'Versioun',
 	'review_version_link'           => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
 	'review_user_details_link'      => '(Detailer)',
 	'review_blocked'                => 'Dir sidd gespaart.',
+	'review_topic'                  => 'Thema',
 	'review_no_opinion'             => 'Keng Meenung',
 	'review_comment'                => 'Bemierkung',
 );

@@ -17,6 +17,16 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'simpleantispam'       => 'تعديلك نشط أداة منع السبام',
+	'simpleantispam-label' => "اختبار ضد السبام.
+'''لا''' تملأ هذا!",
+	'simpleantispam-desc'  => 'يضيف اختبار سبام/بوت بسيط للاستمارات',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -141,6 +151,16 @@ $messages['sv'] = array(
 	'simpleantispam-label' => "Anti-spam koll.
 Fyll '''INTE''' i det här!",
 	'simpleantispam-desc'  => 'Lägger till en enkel spam/robot koll till formulär',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'simpleantispam'       => 'La to modifica la ga fato scatar el mecanismo de controlo anti spam.',
+	'simpleantispam-label' => "Controlo anti spam.
+'''NO STA''' scrivar gnente qua de soto!",
+	'simpleantispam-desc'  => 'Zonta ai moduli un senplice controlo de spam/bot.',
 );
 
 /** Vietnamese (Tiếng Việt)

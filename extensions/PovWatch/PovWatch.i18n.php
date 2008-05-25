@@ -364,6 +364,7 @@ Klickt the Knäppchen hei ënnendrënner fir iech ofzemelden.",
 Klickt op de Knäppchen hei ënnendrënner fir iech anzeschreiwen.",
 	'povwatch_subscribe'               => 'Aschreiwen',
 	'povwatch_added'                   => 'derbäigesat',
+	'right-povwatch_user'              => 'Säiten op Iwwerwaachungslëschte vun anere Benotzer derbäisetzen',
 );
 
 /** Limburgish (Limburgs)

@@ -360,6 +360,13 @@ $messages['krj'] = array(
 	'createsigndoc-pagename' => 'Pahina:',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'createsigndoc-create' => 'Aanläje',
+);
+
 $messages['la'] = array(
 	'createsigndoc-pagename' => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
@@ -376,6 +383,7 @@ $messages['lb'] = array(
 	'createsigndoc-bday'              => 'Geburtsdag:',
 	'createsigndoc-minage'            => 'Mindesalter:',
 	'createsigndoc-hidden'            => 'Verstoppt',
+	'createsigndoc-optional'          => 'Fakultativ',
 	'createsigndoc-error-generic'     => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
 );

@@ -417,6 +417,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'scanset-desc' => 'Gescannte Säite weise mat den CD/DVD Astellunge vum Andreas Grosz',
 	'scanset_next' => 'Nächst &gt;',
 	'scanset_prev' => '&lt; Vireg',
 );
@@ -482,6 +483,14 @@ $messages['mr'] = array(
 	'scanset_invalid_volume'            => 'स्कॅनसेट: चुकीचे घनमान',
 	'scanset_next'                      => 'पुढील &gt;',
 	'scanset_prev'                      => '&lt; मागील',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'scanset_next' => 'Tokamen →',
+	'scanset_prev' => '← Vörig',
 );
 
 /** Dutch (Nederlands)

@@ -701,12 +701,15 @@ $messages['lb'] = array(
 	'configure'                       => "D'Wiki configuréieren",
 	'configure-desc'                  => "Erlaabt et den autoriséierte Benotzer fir d'Wiki iwwert de Web ze configuréieren",
 	'configure-desc-group'            => 'Gruppen',
+	'configure-desc-key'              => 'Schlëssel',
 	'configure-desc-ns'               => 'Nummraim',
+	'configure-desc-val'              => 'Wert',
 	'configure-summary'               => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save'              => 'Confuguratioun späicheren',
 	'configure-edit-old'              => 'Passt op: Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun.',
 	'configure-error'                 => "D'Configuration konnt net gespäichert ginn",
 	'configure-js-remove'             => 'Läschen',
+	'configure-js-remove-row'         => 'Dës Donnée läschen',
 	'configure-no-directory'          => "De Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, gëtt et net.
 
 Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
@@ -720,9 +723,11 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-db-notallowed' => "Dir hutt net déi néideg Rechter fir d'Astellunge vun der Datebank z'änneren.",
 	'configure-section-email'         => 'E-Mail',
 	'configure-section-enotif'        => 'Informatioun per E-Mail',
+	'configure-section-localization'  => 'Lokalisatioun',
 	'configure-section-timezone'      => 'Zäitzon',
 	'configure-section-css-js'        => 'CSS a JavaScript',
 	'configure-section-namespaces'    => 'Nummraim',
+	'configure-section-stats'         => 'Statistike vum Site',
 	'configure-section-category'      => 'Kategorien',
 	'configure-section-access'        => 'Zougang',
 	'configure-section-groups'        => 'Gruppen',
@@ -739,7 +744,10 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-extension'     => 'Erweiderungen',
 	'configure-section-search'        => 'Sich',
 	'configure-section-misc'          => 'Verschiddenes',
+	'configure-setting-not-available' => 'Dës Astellung kann an dëser Versioun vu MediaWiki net geännert ginn',
+	'configure-view-not-allowed'      => 'Dir sidd net autoriséiert fir dës Astellung ze gesinn',
 	'right-configure'                 => "D'Wiki configuréieren",
+	'viewconfig'                      => 'Konfiguratioun vun der Wiki weisen',
 );
 
 /** Malayalam (മലയാളം)
@@ -960,6 +968,8 @@ Maak die map alstublieft aan, of verander de instelling voordat u deze extensie 
 	'configure-view-not-allowed'       => 'U hebt geen rechten om deze instellingen te wijzigen',
 	'right-configure'                  => 'Wiki-instellingen maken',
 	'right-configure-all'              => 'Alle wiki-instellingen maken',
+	'right-viewconfig'                 => 'Wiki-instellingen bekijken',
+	'right-viewconfig-all'             => 'Alle wiki-instellingen bekijken',
 	'viewconfig'                       => 'Wiki-instellingen bekijken',
 );
 

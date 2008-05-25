@@ -751,10 +751,13 @@ $messages['mr'] = array(
 	'right-uboverride'                => 'सदस्य नाव ब्लॅक यादी कडे दुर्लक्ष करा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 $messages['nds'] = array(
-	'blacklistedusername' => 'Brukernaam op de swarte List',
-	'blacklistedusernametext' => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',
-	'usernameblacklist' => '<pre>
+	'blacklistedusername'             => 'Brukernaam op de swarte List',
+	'blacklistedusernametext'         => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',
+	'usernameblacklist'               => '<pre>
 # Indrääg in disse List warrt as Deel vun en regulären Utdruck bruukt,
 # bi dat Blocken vun Brukernaams bi dat Anmellen över de swarte List. Jeder Indrag schall Deel vun
 # ene List mit # dor vör wesen, to’n Bispeel
@@ -763,6 +766,7 @@ $messages['nds'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Disse {{PLURAL:$1|Reeg|Regen}} in de swarte List för Brukernaams {{PLURAL:$1|is|sünd}} nich bi de Reeg; korrigeer dat doch bevör du spiekerst:',
+	'right-uboverride'                => 'De swarte List för Brukernaams ümgahn',
 );
 
 /** Nepali (नेपाली)

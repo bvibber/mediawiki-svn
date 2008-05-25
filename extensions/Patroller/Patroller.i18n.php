@@ -462,6 +462,7 @@ $messages['lb'] = array(
 	'patrol-skip'          => 'Iwwersprangen',
 	'patrol-reverting'     => 'Zrécksetzen: $1',
 	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
+	'patrol-resume'        => 'Hei clicke fir weiderzefueren.',
 );
 
 /** Malayalam (മലയാളം)

@@ -36,6 +36,14 @@ $messages['ca'] = array(
 	'absenteelandlord-reason' => "La base de dades s'ha blocat automàticament a causa de la inactivitat dels seus administradors.",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'absenteelandlord-reason' => 'Databáze byla automaticky zamknuta z důvodu neaktivity správců.',
+	'absenteelandlord-desc'   => 'Automaticky zamyká wiki databázi, pokud jsou všichni správci po určitou dobu neaktivní',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

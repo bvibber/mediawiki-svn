@@ -66,6 +66,13 @@ $messages['fr'] = array(
 	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères non-standards]]',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'charinsert-desc' => 'Permite a creación dunha caixa de JavaScript para [[MediaWiki:Edittools|inserir caracteres que non son estándar]]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

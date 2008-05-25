@@ -370,6 +370,13 @@ $messages['krj'] = array(
 	'importusers-email' => 'e-mail',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'importusers-log-summary-all' => 'All',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

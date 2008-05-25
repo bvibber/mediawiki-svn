@@ -362,6 +362,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'vote'                => 'Ofstëmmen',
+	'vote-caption'        => 'Är Wiel:',
 	'vote-submit'         => 'Ofstëmmen',
 	'vote-registered'     => 'Är Stëmm gouf ofgespäichert.',
 	'vote-view-results'   => "Kuckt d'Resultater",

@@ -1332,6 +1332,7 @@ $messages['lb'] = array(
 	'mv_remove_reason'    => 'Grond vum Läschen:',
 	'mv_upload_file'      => 'Fichier eroplueden',
 	'mv_tool_search'      => 'Sichen',
+	'mv_tool_navigate'    => 'Navigéieren',
 	'mv_tool_export'      => 'Exportéieren',
 	'mv_time_separator'   => '$1 op $2',
 	'mv_edit'             => 'Änneren',
@@ -1346,6 +1347,7 @@ $messages['lb'] = array(
 	'mv_spoken_by'        => 'Geschwat vum',
 	'mv_category'         => 'Kategorie',
 	'mv_view_wiki_page'   => 'Wiki-Säit gesinn',
+	'mv_save_sequence'    => 'Sequenz späicheren',
 );
 
 /** Malayalam (മലയാളം)

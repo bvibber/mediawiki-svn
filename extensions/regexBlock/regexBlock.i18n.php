@@ -598,31 +598,36 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'regexblock-form-reason' => 'Aanlass:',
+	'regexblock-view-all'    => 'All',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'regexblock'                    => 'Begrëffer fir e Benotzer oder eng IP-Adress ze spären',
-	'regexblock-reason-name'        => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
-	'regexblock-unblock-success'    => 'Spär opgehuewen',
-	'regexblock-unblock-log'        => "D'Spär vum Benotzer oder vun der IP-Adress '''$1'''' gouf opgehuewen.",
-	'regexblock-form-username'      => 'IP-Adress oder Benotzer:',
-	'regexblock-form-reason'        => 'Grond:',
-	'regexblock-form-submit'        => 'Dëse&nbsp;Benotzer&nbsp;spären',
-	'regexblock-block-success'      => "D'Spär ass elo ageschalt",
-	'regexblock-already-blocked'    => '$1 ass scho gespaart.',
-	'regexblock-stats-username'     => 'Fir $1',
-	'regexblock-stats-times'        => 'gespaart den',
-	'regexblock-view-all'           => 'Alleguer',
-	'regexblock-view-go'            => 'Lass',
-	'regexblock-view-reason'        => 'Grond: $1',
-	'regexblock-view-block-by'      => 'gespaart vum',
-	'regexblock-view-block-unblock' => 'Spär ophiewen',
-	'regexblock-view-stats'         => '(Statistik)',
-	'regexblock-view-empty'         => "D'Lëscht vun de gespaarte Benotzer an IP-Adressen ass eidel.",
-	'regexblock-view-time'          => 'den $1',
+	'regexblock'                     => 'Begrëffer fir e Benotzer oder eng IP-Adress ze spären',
+	'regexblock-reason-name'         => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
+	'regexblock-unblock-success'     => 'Spär opgehuewen',
+	'regexblock-unblock-log'         => "D'Spär vum Benotzer oder vun der IP-Adress '''$1'''' gouf opgehuewen.",
+	'regexblock-form-username'       => 'IP-Adress oder Benotzer:',
+	'regexblock-form-reason'         => 'Grond:',
+	'regexblock-form-account-block'  => 'Uleeë vun neie Benotzerkonte spären',
+	'regexblock-form-submit'         => 'Dëse&nbsp;Benotzer&nbsp;spären',
+	'regexblock-block-log'           => "De Benotzer oder d'IP-Adress '''$1''' gouf gespaart.",
+	'regexblock-block-success'       => "D'Spär ass elo ageschalt",
+	'regexblock-already-blocked'     => '$1 ass scho gespaart.',
+	'regexblock-stats-username'      => 'Fir $1',
+	'regexblock-stats-times'         => 'gespaart den',
+	'regexblock-currently-blocked'   => 'Aktuell gespaarten Adressen:',
+	'regexblock-view-all'            => 'Alleguer',
+	'regexblock-view-go'             => 'Lass',
+	'regexblock-view-reason'         => 'Grond: $1',
+	'regexblock-view-block-infinite' => 'permanent Spär',
+	'regexblock-view-block-by'       => 'gespaart vum',
+	'regexblock-view-block-unblock'  => 'Spär ophiewen',
+	'regexblock-view-stats'          => '(Statistik)',
+	'regexblock-view-empty'          => "D'Lëscht vun de gespaarte Benotzer an IP-Adressen ass eidel.",
+	'regexblock-view-time'           => 'den $1',
 );
 
 /** Malayalam (മലയാളം)

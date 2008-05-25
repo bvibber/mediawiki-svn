@@ -284,6 +284,8 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'form'                  => 'Formulaire',
+	'formnoname'            => 'Keen Numm vum Formulaire',
+	'formbadname'           => 'Falsche Numm vum Formulaire',
 	'formpattern'           => '$1-Formulaire',
 	'formtitlepattern'      => 'Nei $1 derbäisetzen',
 	'formsave'              => 'Späicheren',

@@ -310,6 +310,9 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'player-title'       => 'Spiller',
 	'player-playertitle' => 'Spiller: $1',
+	'player-file'        => 'Numm vum Fichier',
+	'player-goto-page'   => 'Säit',
+	'player-goto-file'   => 'Fichier',
 );
 
 /** Malayalam (മലയാളം)

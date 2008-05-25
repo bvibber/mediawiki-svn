@@ -654,11 +654,13 @@ $messages['mr'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'parserdifftest'    => 'Parser-Differenz-Test',
-	'pdtest_no_changes' => 'Keen Ünnerscheed funnen.',
-	'pdtest_ok'         => 'OK',
-	'pdtest_get_text'   => 'Text halen vun de Siet',
-	'pdtest_diff'       => 'Ünnerscheed',
+	'parserdifftest'     => 'Parser-Differenz-Test',
+	'pdtest_no_changes'  => 'Keen Ünnerscheed funnen.',
+	'pdtest_time_report' => '<b>$1</b> hett $2 Sekunnen bruukt, <b>$3</b> hett $4 Sekunnen bruukt.',
+	'pdtest_title'       => 'Kontexttitel:',
+	'pdtest_ok'          => 'OK',
+	'pdtest_get_text'    => 'Text halen vun de Siet',
+	'pdtest_diff'        => 'Ünnerscheed',
 );
 
 /** Dutch (Nederlands)

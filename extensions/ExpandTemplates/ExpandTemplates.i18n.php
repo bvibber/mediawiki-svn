@@ -372,7 +372,7 @@ $messages['fur'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'expandtemplates'                  => 'Ampliar modelos',
+	'expandtemplates'                  => 'Ampliar os modelos',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar wikitexto expandido e unha vista previa da páxina renderizada',
 	'expand_templates_intro'           => 'Esta páxina especial toma texto e amplía todos os modelos dentro del recursivamente.
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
@@ -696,6 +696,9 @@ $messages['krj'] = array(
 	'expand_templates_preview' => 'Bilid',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
 	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä
@@ -706,8 +709,8 @@ sinn kriss wat erus kütt.',
 	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input'           => 'Wat De üvverpröfe wells:',
 	'expand_templates_output'          => 'Wat erus kütt es',
-	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
+	'expand_templates_preview'         => 'Vör-Aansich',
 );
 
 $messages['la'] = array(

@@ -464,6 +464,13 @@ $allMessages['krj'] = array(
 	'whitelistnever'     => 'Indi gid',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$allMessages['ksh'] = array(
+	'whitelisttablemodifyall' => 'All ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

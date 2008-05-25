@@ -858,45 +858,85 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
  * @author Lloffiwr
  */
 $messages['cy'] = array(
-	'boardvote'              => 'Etholiad Bwrdd Ymddiriedolwyr Sefydliad Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Etholiad Bwrdd Ymddiriedolwyr Wikimedia]]',
-	'boardvote_entry'        => "* [[Special:Boardvote/vote|Pleidleisio]]
+	'boardvote'                => 'Etholiad Bwrdd Ymddiriedolwyr Sefydliad Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections|Etholiad Bwrdd Ymddiriedolwyr Wikimedia]]',
+	'boardvote_entry'          => "* [[Special:Boardvote/vote|Pleidleisio]]
 * [[Special:Boardvote/list|Rhestri'r pleidleisiau hyd yn hyn]]
 * [[Special:Boardvote/dump|Cael gwared ar gofnod pleidlais wedi'i amgryptio]]",
-	'boardvote_notloggedin'  => 'Nid ydych wedi mewngofnodi.
+	'boardvote_intro'          => "<p>Croeso i etholiad 2008 ar gyfer Bwrdd Ymddiriedolwyr Wikimedia.
+Rydym yn cynnal etholiad i ethol un person i gynrychioli cymuned defnyddwyr prosiectau Wikimedia.
+Bydd y cynrychiolydd yn cyfrannu at bennu dyfodol y gwahanol brosiectau Wikimedia, bob yn un ac un ac hefyd at ei gilydd; bydd hefyd yn siarad o'ch plaid <em>chi</em>'r defnyddwyr ar Fwrdd yr Ymddiriedolwyr.
+Byddant yn penderfynu ar ffyrdd i godi arian ac ar ddosraniad yr arian a godir.</p>
+
+<p>Cyn pleidleisio darllenwch datganiadau'r ymgeiswyr a'u hatebion i gwestiynau'n ofalus. Mae pob un o'r ymgeiswyr yn ddefnyddiwr o barch, sydd wedi ymroi'n sylweddol at brosiectau Wikimedia, i'w gwneud yn groesawgar tra'n hybu amcan o gasglu gwybodaeth a'i rannu'n rhad.</p>
+
+<p>Byddwch gystal â gosod yr ymgeiswyr yn y trefn y maent yn orau gennych trwy lanw rhif wrth y blwch (1 = yr ymgeisydd sydd orau gennych, 2 = yr ail orau, ...). 
+Gallwch roi'r un rhif i fwy nag un ymgeisydd, a gallwch adael rhai ymgeiswyr heb rif ac felly heb fynegi barn arnynt.
+Rydym yn cymryd yn ganiataol bod yn well gennych yr ymgeiswyr sydd wedi derbyn rhif i'r rhai sydd heb rif ac nad oes yn well gennych un o'r ymgeiswyr heb rif na'i gilydd.</p>
+
+<p>Bydd enillydd yr etholiad yn cael ei benderfynu trwy ddefnyddio dull Schultze. Am ragor o wybodaeth, gweler tudalennau swyddogol yr etholiad.</p>
+
+<p>Am ragor o wybodaeth, gweler:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a><li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\"
+class=\"external\">Candidates</a></li>
+<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze method</a></li></ul>",
+	'boardvote_intro_change'   => "<p>Rydych eisoes wedi bwrw pleidlais. Gallwch newid eich pleidlais drwy ddefnyddio'r ffurflen isod. Byddwch gystal â gosod yr ymgeiswyr yn y trefn y maent yn orau gennych, gan roi rhif is i'r rhai sydd yn well gennych. Gallwch roi'r un rhif i fwy nag un ymgeisydd, a gallwch adael rhai ymgeiswyr heb rif ac felly heb fynegi barn arnynt.</p>",
+	'boardvote_entered'        => "Diolch, rydym wedi cofnodi'ch pleidlais.
+
+Os dymunwch, gallwch gofnodi'r manylion canlynol. Cofnod eich pleidlais yw:
+
+<pre>$1</pre>
+
+Cafodd ei amgryptio ag allwedd cyhoeddus Gweinyddwyr yr Etholiad:
+
+<pre>$2</pre>
+
+Fe ddilyn y fersiwn wedi ei amgryptio. Fe gaiff ei arddangos yn gyhoeddus ar [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Nôl]]",
+	'boardvote_invalidentered' => "<p><stron>Gwall</strong>: rhaid rhoi'ch pleidlais ar ffurf rhif cyfan positif yn unig (1, 2, 3, ...), neu
+trwy adael blwch yn wag.</p>",
+	'boardvote_nosession'      => "Ni ellid adnabod eich ID defnyddiwr Wikimedia.
+Byddwch gystal â mewngofnodi ar y wici lle rydych yn gymwys i bleidleisio, a chewch i <nowiki>[[Special:Boardvote]]</nowiki>.
+Rhaid defnyddio cyfrif ac o leiaf $1 o gyfraniadau cyn $2 arno, a'ch bod wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5 arno.",
+	'boardvote_notloggedin'    => 'Nid ydych wedi mewngofnodi.
 Er mwyn pleidleisio, rhaid i chi ddefnyddio cyfrif sydd ag o leiaf $1 o gyfraniadau cyn $2 ynghlwm wrtho, ac sydd wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
-	'boardvote_notqualified' => 'Nid ydych yn gymwys i bleidleisio yn yr etholiad hwn.
+	'boardvote_notqualified'   => 'Nid ydych yn gymwys i bleidleisio yn yr etholiad hwn.
 Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf $1 gwaith cyn $2, a gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
-	'boardvote_novotes'      => 'Nid oes neb wedi pleidleisio eto.',
-	'boardvote_time'         => 'Amser',
-	'boardvote_user'         => 'Defnyddiwr',
-	'boardvote_edits'        => 'Golygiadau',
-	'boardvote_days'         => 'Diwrnodau',
-	'boardvote_ua'           => 'Asiant defnyddiwr',
-	'boardvote_listintro'    => '<p>Dyma restr yr holl bleidleisiau sydd wedi eu cofnodi hyd yn hyn.
+	'boardvote_novotes'        => 'Nid oes neb wedi pleidleisio eto.',
+	'boardvote_time'           => 'Amser',
+	'boardvote_user'           => 'Defnyddiwr',
+	'boardvote_edits'          => 'Golygiadau',
+	'boardvote_days'           => 'Diwrnodau',
+	'boardvote_ua'             => 'Asiant defnyddiwr',
+	'boardvote_listintro'      => '<p>Dyma restr yr holl bleidleisiau sydd wedi eu cofnodi hyd yn hyn.
 $1 ar gyfer y data wedi ei amgryptio.</p>',
-	'boardvote_dumplink'     => 'Cliciwch yma',
-	'boardvote_submit'       => 'Iawn',
-	'boardvote_needadmin'    => 'Dim ond gweinyddwyr yr etholiad allant weithredu hwn.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Etholiad Bwrdd Wikimedia</a>:
+	'boardvote_dumplink'       => 'Cliciwch yma',
+	'boardvote_submit'         => 'Iawn',
+	'boardvote_needadmin'      => 'Dim ond gweinyddwyr yr etholiad allant weithredu hwn.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Etholiad Bwrdd Wikimedia</a>:
 Pleidleisio\'n bosib hyd at 22 Mehefin',
-	'boardvote_closed'       => 'Daeth y pleidleisio i ben, bydd y canlyniadau ar gael cyn bo hir ar y [http://meta.wikimedia.org/wiki/Board_elections/2008/Results dudalen canlyniadau].',
-	'boardvote_edits_many'   => 'llawer',
-	'group-boardvote'        => 'Gweinyddwyr etholiad y Bwrdd',
-	'group-boardvote-member' => 'Gweinyddwr etholiad y Bwrdd',
-	'grouppage-boardvote'    => '{{ns:project}}:Gweinyddwr etholiad y Bwrdd',
-	'boardvote_blocked'      => 'Mae bloc arnoch ar eich wici cofrestredig.
+	'boardvote_notstarted'     => "Nid yw'r pleidleisio wedi dechrau eto",
+	'boardvote_closed'         => 'Daeth y pleidleisio i ben, bydd y canlyniadau ar gael cyn bo hir ar y [http://meta.wikimedia.org/wiki/Board_elections/2008/Results dudalen canlyniadau].',
+	'boardvote_edits_many'     => 'llawer',
+	'group-boardvote'          => 'Gweinyddwyr etholiad y Bwrdd',
+	'group-boardvote-member'   => 'Gweinyddwr etholiad y Bwrdd',
+	'grouppage-boardvote'      => '{{ns:project}}:Gweinyddwr etholiad y Bwrdd',
+	'boardvote_blocked'        => 'Mae bloc arnoch ar eich wici cofrestredig.
 Ni chaniateir i ddefnyddwyr sydd wedi eu blocio i bleidleisio.',
-	'boardvote_bot'          => 'Mae marc bot ar eich cyfrif ar eich wici cofrestredig.
+	'boardvote_bot'            => 'Mae marc bot ar eich cyfrif ar eich wici cofrestredig.
 Ni chaniateir i gyfrifon bot bleidleisio.',
-	'boardvote_welcome'      => "Croeso '''$1'''!",
-	'go_to_board_vote'       => 'Etholiad 2008 i Fwrdd Wikimedia',
-	'boardvote_redirecting'  => "Er mwyn gwella ar warchodaeth ac amlygrwydd, rydym yn cynnal y bleidlais ar weinydd allanol, annibynol.
+	'boardvote_welcome'        => "Croeso '''$1'''!",
+	'go_to_board_vote'         => 'Etholiad 2008 i Fwrdd Wikimedia',
+	'boardvote_redirecting'    => "Er mwyn gwella ar warchodaeth ac amlygrwydd, rydym yn cynnal y bleidlais ar weinydd allanol, annibynol.
 
 Fe gewch eich ailgyfeirio at y gweinydd allanol hwn ymhen 20 eiliad. [$1 Cliciwch yma] i fynd yno'n syth.
 
 Hwyrach y gwelwch rybudd gwarchodaeth ynglŷn â thystysgrif heb ei arwyddo.",
-	'right-boardvote'        => 'Gweinyddu etholiadau',
+	'right-boardvote'          => 'Gweinyddu etholiadau',
 );
 
 /** Danish (Dansk)
@@ -3429,7 +3469,18 @@ $messages['no'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Liste over stemmer]]
 * [[Special:Boardvote/dump|Dump med kryptert stemmehistorie]]',
-	'boardvote_intro'          => '<p>(informasjon)</p>',
+	'boardvote_intro'          => '<p>Velkommen til Wikimedias styrevalg 2008. Her stemmer Wikimedias bidragsytere inn ett medlem til styret for å representere brukerne på de forskjellige prosjektene. Styremedlemmene bestemmer hvilken retning Wikimedia-prosjektene skal ta i fremtiden, og representerer <em>dine</em> interesser i styret. De vil avgjøre på hvilke måter stiftelsen kan samle penger, og hvordan disse skal brukes.</p>
+
+<p>Vennligst les kandidatenes presentasjoner og deres svar på spørsmål før du stemmer. Alle kandidatene er respektable brukere som har brukt mye tid og energi på å gjøre Wikimedia-prosjektene bedre.</p>
+
+<p>For å stemme på kandidater fyller du inn et nummer i boksen. Du rangerer kandidatene etter hvor mye du vil at hver kandidat skal bli valgt; skriver du «1» er den kandidaten din førstepreferanse, skriver du «2» er det andrepreferanse, osv. Du kan brukere samme tall på flere kandidater, og du trenger ikke å rangere alle kandidatene. Systemet forutsetter at du foretrekker rangerte kandidat foran de du ikke har rangert, og at du ikke har noen formening om kandidater du ikke har rangert.</p>
+
+<p>Hvem som vinner valget beregnes ved hjelp av Schulze-metoden. For mer informasjon om dette se, de offisielle valgsidene.</p>
+
+<p>For mer informasjon, se:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/nb" class="external">Styrevalg 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/nb" class="external">Kandidater</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze-methoden</a> (engelsk)</li></ul>',
 	'boardvote_intro_change'   => '<p>Du har stemt før. Du kan imidlertid endre din stemme ved hjelp av skjemaet nedenunder. Vennligst merk av boksene ved siden av kandidatene du vil gå god for.</p>',
 	'boardvote_entered'        => 'Takk, din stemme er registrert.
 
@@ -3467,7 +3518,7 @@ For å stemme må du ha gjort minst $1 redigeringer før $2, og ha gjort minst $
 	'boardvote_unstrike'       => 'Fjern strykning',
 	'boardvote_needadmin'      => 'Kun valgadministratorer kan utføre dette.',
 	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Styrevalg i Wikimedia</a>:
-Valget er åpent til 22. juni',
+Valget er åpent til 22. juni kl. 00.00 (UTC)',
 	'boardvote_notstarted'     => 'Valget har ikke startet',
 	'boardvote_closed'         => 'Stemmefasen er nå stengt, se [http://meta.wikimedia.org/w/index.php?title=Board_elections/2008/nb&uselang=nb resultatsiden] snart.',
 	'boardvote_edits_many'     => 'mange',
@@ -4829,7 +4880,7 @@ Ognuno dei candidati el xe un utente rispetà, che el gà contribuìo con molto 
 Te pol darghe la stessa preferensa a pi de un candidati, sensa specificar un ordine.
 Se presume che te preferissi i candidati a cui te ghè dato un voto a quei sensa voto, e che tra tuti quei sensa voto no ti gà nissuna preferensa.</p>
 
-<p>El vinçidor de le elessioni el vegnarà calcolà doparando el metodo de Schulze.</p>
+<p>El vinçidor de le elessioni el vegnarà calcolà doparando el metodo de Schulze. Par savérghene piessè, varda le pagine ufisiali de le elezion.</p>
 
 <p>Par saverghene piassè, varda:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board elections/2008" class="external">Elezion del Consejo 2008</a></li>

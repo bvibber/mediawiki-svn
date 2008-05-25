@@ -251,6 +251,13 @@ $messages['km'] = array(
 	'languageselector-setlang' => 'ប្តូរ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'languageselector' => 'Sproch',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

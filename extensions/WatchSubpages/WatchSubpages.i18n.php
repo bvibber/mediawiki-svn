@@ -89,8 +89,10 @@ $messages['gl'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'watchsubpages-desc' => "Séier [[Special:WatchSubpages|all Ënner-Säiten]] vun enger Säit op d'Iwwerwwachungslëscht derbäisetzen",
-	'watchsubpages'      => 'Ënner-Säiten iwwerwaachen',
+	'watchsubpages'                      => 'Ënner-Säiten iwwerwaachen',
+	'watchsubpages-addtitles'            => 'Säiten derbäisetzen',
+	'watchsubpages-addtitlestowatchlist' => "Säiten op d'Iwwerwaachungslëscht derbäisetzen",
+	'watchsubpages-desc'                 => "Séier [[Special:WatchSubpages|all Ënner-Säiten]] vun enger Säit op d'Iwwerwwachungslëscht derbäisetzen",
 );
 
 /** Malayalam (മലയാളം)

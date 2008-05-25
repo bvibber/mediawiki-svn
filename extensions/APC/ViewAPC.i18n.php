@@ -792,6 +792,7 @@ $messages['ksh'] = array(
 	'viewapc-display-num_hits' => 'Treffer',
 	'viewapc-ls-header-hits'   => 'Treffer',
 	'viewapc-ls-sort-hits'     => 'Treffer',
+	'viewapc-ls-limit-none'    => 'All',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -813,6 +814,7 @@ $messages['lb'] = array(
 	'viewapc-memory-usage'          => 'Benotzung vun der Memoire',
 	'viewapc-memory-free'           => 'Fräi: $1 ($2)',
 	'viewapc-memory-used'           => 'Benotzt: $1 ($2)',
+	'viewapc-fragmentation-none'    => 'Fragmentatioun: keng Fragmentatioun',
 	'viewapc-display-value'         => 'Wert',
 	'viewapc-display-filename'      => 'Numm vum Fichier',
 	'viewapc-display-info'          => 'Numm',
@@ -822,6 +824,7 @@ $messages['lb'] = array(
 	'viewapc-display-no-delete'     => 'Net geläscht',
 	'viewapc-display-mem_size'      => 'Gréisst',
 	'viewapc-display-stored-value'  => 'Gespäicherte Wert',
+	'viewapc-display-too-big'       => "''Den Inhalt ass ze grouss fir ën ze weisen.''",
 	'viewapc-ls-options-legend'     => 'Optiounen',
 	'viewapc-ls-submit'             => 'Lass!',
 	'viewapc-ls-header-name'        => 'Numm',
