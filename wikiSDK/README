@@ -15,14 +15,19 @@ Requirements:
 * cygwin (SDK Scripts are written in Bash; Use the setup.exe script downloaded from http://cygwin.com/)
 * Subversion (TortoiseSVN is helpfull for a UI form, but you will need the cygwin package for the bash scripts)
 * PHP Binaries (Recomended package is the PHP zip package from http://www.php.net/downloads.php#v5)
+* MySQL binaries (Recomended package is the one Without installer from http://dev.mysql.com/downloads/mysql/5.0.html#win32
+    You can unzip that into a directory then copy the my-medium.ini to my.ini in the same directory and you're good to go)
 
 Setup:
 [1] Checkout the SDK from Subversion.
   svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/wikiSDK/ wikiSDK/
 [2] cd into your wikiSDK directory using the Cygwin terminal.
-[3] Run `./config` and enter in the paths and data needed. Remember to use \ on windows instead of / or things will break.
+[3] Run `./config` and enter in the paths and data needed. Remember to run from the cygwin terminal so cygpath is used to correct things.
 [4] Run `./server config` to create a new webserver configuration file.
-[5] When you need to use the webserver to view things, just type `./server run` to start it up. ctrl+c or close the window to shutdown.
+[5] Run `./setup webdocs` to create the basic helper documents in the webroot and `./setup phpmyadmin` to get a copy of pypMyAdmin for
+      administration of your sql server.
+[6] When you need to use the webserver to view things, just type `./server web` to start it up. ctrl+c or close the window to shutdown.
+[7] When you need to use the sql server, just type `./server sql` to start it up. ctrl+c to shutdown.
 
 === Use on Mac OS X ===
 

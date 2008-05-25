@@ -2,19 +2,39 @@
 
 case "$1" in
 	config)
-		cp -f scriptRes/Xerver2.cfg.base Xerver4/data/Xerver2.cfg
-		sed "s!%phproot%!`cat configData/phproot | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
-		sed "s!%htdocs%!`cat configData/docroot | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
-		sed "s!%logfile%!`cat configData/logfile | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
-		sed "s!%port%!`cat configData/port | sed 's/\\\\/\\\\\\\\/g' -`!" -i Xerver4/data/Xerver2.cfg
+		echo "Configuring Xerver2.cfg"
+		cp -f scriptRes/Xerver2.cfg ./Xerver4/data/Xerver2.cfg
+		sed "s!%phproot%!`cat configData/phproot | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./Xerver4/data/Xerver2.cfg
+		sed "s!%htdocs%!`cat configData/docroot | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./Xerver4/data/Xerver2.cfg
+		sed "s!%logfile%!`cat configData/logfile | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./Xerver4/data/Xerver2.cfg
+		sed "s!%port%!`cat configData/port | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./Xerver4/data/Xerver2.cfg
+		sed "s!%phpini%!`cat configData/phpini | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./Xerver4/data/Xerver2.cfg
+		
+		if [ -x /usr/bin/cygpath ]; then
+			echo "Configuring php.ini for windows mode."
+			cp -f scriptRes/php.ini-win ./php.ini
+			sed "s!%phproot%!`cat configData/phproot | sed 's/\\\\/\\\\\\\\/g' -`!" -i ./php.ini
+		else
+			echo "Non-windows mode has not been setup yet."
+		fi
 		;;
-	run)
+	web)
 		cd Xerver4
 		java -jar xerver.jar Server
 		;;
+	sql)
+		cd "`cat configData/mysqlroot`"
+		cd bin
+		./mysqld --standalone
+		;;
+	server)
+		$0 web&
+		$0 sql
 	*)
-		echo "Usage: $0 config - Build configfile from settings"
-		echo "Usage: $0 run    - Run webserver, use ctrl+c or close window to kill"
+		echo "Usage: $0 config - Build configfiles from settings"
+		echo "Usage: $0 web    - Run webserver, use ctrl+c or close window to kill"
+		echo "Usage: $0 sql    - Run sql server, use ctrl+c to kill"
+		echo "Usage: $0 server - Run the webserver and sql server, use ctrl+c to kill both"
 		;;
 esac
 
