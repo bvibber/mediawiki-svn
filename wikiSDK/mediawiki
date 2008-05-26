@@ -1,0 +1,34 @@
+#!/bin/sh
+
+case "$1" in
+	source)
+		cd sources
+		mkdir -p mw
+		cd mw
+		if [ $2 ]; then
+			VERSION=`echo "$2" | sed 's/\./_/g' - | sed 's/^\(1_[0-9]\+\).*$/\1/' -`
+			if [ -e $VERSION ]; then
+				echo "Updating $VERSION"
+				cd $VERSION
+				svn update
+			else
+				echo "Downloading mw$VERSION"
+				svn checkout http://svn.wikimedia.org/svnroot/mediawiki/branches/REL$VERSION/phase3/ $VERSION
+			fi
+		else
+			if [ -e trunk ]; then
+				echo "Updating trunk"
+				cd trunk
+				svn update
+			else
+				echo "Downloading trunk"
+				svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3/ trunk
+			fi
+		fi
+		;;
+	*)
+		echo "Usage: $0 source [version] - Download or update sources for trunk or a branch version of MediaWiki."
+		;;
+esac
+
+exit 0
