@@ -44,6 +44,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'makesysoptitle'           => 'ترقية مستخدم لمدير نظام',
+	'makesysop-desc'           => 'يعطي البيروقراطين القدرة على جعل المستخدمين مديري نظام أو بيروقراطيين',
 	'makesysoptext'            => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق واضغط الزر لتجعل المستخدم إداريا.',
 	'makesysopname'            => 'اسم المستخدم:',
 	'makesysopsubmit'          => 'اجعل هذا المستخدم مدير نظام',
@@ -61,6 +62,7 @@ $messages['ar'] = array(
 	'group-steward'            => 'مضيفون',
 	'group-steward-member'     => 'مضيف',
 	'grouppage-steward'        => '{{ns:project}}:مضيفون',
+	'right-makesysop'          => 'جعل المستخدمين مديري نظام أو بيروقراطيين',
 );
 
 /** Asturian (Asturianu)
