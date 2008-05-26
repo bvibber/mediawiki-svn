@@ -8,14 +8,21 @@ if( !isset( $argv[1] ) ) {
 	die( "You must provide a vote log file on the command line.\n" );
 }
 
-$boardCandidates = array();
-/*
-$boardCandidates = array(	"John Doe" => "A",
-							"Jane Doe" => "B",
-							"Joe Bloggs" => "C",
-							"John Smith" => "D",
-							"A. N. Other" => "E" );
-*/
+$boardCandidates = array(	"Ad Huikeshoven" => "A",
+							"Alex Bakharev" => "B", 
+							"Craig Spurrier" => "C", 
+							"Dan Rosenthal" => "D", 
+							"Gregory Kohs" => "E",
+							"Harel Cain" => "F", 
+							"Jussi-Ville Heiskanen" => "G", 
+							"Kurt M. Weber" => "H", 
+							"Matthew Bisanz" => "I", 
+							"Paul Williams" => "J",
+							"Ray Saintonge" => "K", 
+							"Ryan Postlethwaite" => "L", 
+							"Samuel Klein" => "M", 
+							"Steve Smith" => "N", 
+							"Ting Chen" => "O" );
 
 $end = "-----END PGP MESSAGE-----";
 $contents = file_get_contents( $argv[1] );
