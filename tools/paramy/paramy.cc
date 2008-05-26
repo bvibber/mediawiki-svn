@@ -10,9 +10,6 @@
 
 #define BUF 1024*1024
 #define QBUF 1024*1024*16
-#define MAXDEPTH 100
-#define MINDEPTH 30
-#define NUMTHREADS 6
 
 int main(int, char*[]);
 void handle_stream(FILE *);
@@ -131,7 +128,7 @@ void dispatch(char *q) {
 
 void async_dispatch(char *q){
 	pthread_mutex_lock(&mutex);
-	if (work_queue.size()>MAXDEPTH)
+	if (work_queue.size()>opt_numthreads*3)
 		pthread_cond_wait(&canwrite, &mutex);
 		
 	work_queue.push_back(strdup(q));
@@ -153,7 +150,7 @@ void * async_worker(void *)
 			pthread_cond_wait(&canread, &mutex);
 		}
 		
-		if(work_queue.size()<MINDEPTH)
+		if(work_queue.size()<opt_numthreads)
 			pthread_cond_signal(&canwrite);
 			
 		char *query=work_queue.front();
