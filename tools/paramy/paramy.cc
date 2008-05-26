@@ -29,7 +29,7 @@ pthread_cond_t canwrite = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 char *opt_username=NULL,*opt_password=NULL,*opt_hostname=NULL,*opt_database=NULL,*opt_charset=NULL;
-int opt_port=0;
+int opt_port=0,opt_numthreads=8;
 
 bool endofwork=false;
 std::deque<char *> work_queue;
@@ -38,24 +38,26 @@ MYSQL *syncmysql;
 
 int main (int argc, char **argv)
 {
-	pthread_t thr[NUMTHREADS];
+	pthread_t *thr;
 	void * status;
 	
 	char c;
 	static char *optiongroups[] = {"client","paramy",(char *)NULL};
 	mysql_library_init(argc,argv,optiongroups);
 	
-	while ((c = getopt (argc,argv, "u:p:h:d:P:c:")) != -1) switch (c) {
+	while ((c = getopt (argc,argv, "u:p:h:d:P:c:n:")) != -1) switch (c) {
 		case 'u': opt_username=strdup(optarg); break;
 		case 'p': opt_password=strdup(optarg); break;
 		case 'h': opt_hostname=strdup(optarg); break;
 		case 'd': opt_database=strdup(optarg); break;
 		case 'c': opt_charset=strdup(optarg); break;
 		case 'P': opt_port=atoi(optarg); break;
+		case 'n': opt_numthreads=atoi(optarg); break;
 		default: usage();
 	}
 	
-	for (int nthreads = NUMTHREADS; nthreads--; )
+	thr=(pthread_t *)malloc(sizeof(pthread_t)*opt_numthreads);
+	for (int nthreads = opt_numthreads; nthreads--; )
 		pthread_create(&thr[nthreads], NULL, async_worker, NULL);
 
 	syncmysql = connect();
@@ -66,7 +68,7 @@ int main (int argc, char **argv)
 	endofwork=true;
 	pthread_cond_broadcast(&canread);
 	pthread_mutex_unlock(&mutex);
-	for (int nthreads = NUMTHREADS; nthreads--; )
+	for (int nthreads = opt_numthreads; nthreads--; )
 		pthread_join(thr[nthreads], &status);
 	return 0;
 }
@@ -196,6 +198,6 @@ void execute(MYSQL * mysql,char *q) {
 
 void usage() {
 	printf("Parallel MySQL dump loader\n"\
-		"Usage: paramy [-u username] [-p password] [-h host] [-P port] [-d database] [-c charset]\n\n");
+		"Usage: paramy [-u username] [-p password] [-h host] [-P port] [-d database] [-c charset] [-n threads]\n\n");
 	exit(0);
 }
