@@ -27,8 +27,9 @@ $messages['ar'] = array(
  * @author sokai
  */
 $messages['de'] = array( 
-	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
-	'forcepreview-desc' => 'Vorschau für unpriviligierte Benutzer erzwingen',
+	'forcepreview'             => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview-desc'        => 'Vorschau für unpriviligierte Benutzer erzwingen',
+	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );
 
 /** Esperanto (Esperanto)
