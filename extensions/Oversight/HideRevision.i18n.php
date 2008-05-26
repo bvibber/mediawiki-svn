@@ -697,10 +697,12 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 /* Hebrew (Rotem Liss) */
 $messages['he'] = array(
 	'hiderevision'                => 'מחיקת גרסאות לצמיתות',
+	'hiderevision-desc'           => 'הסתרת גרסאות מסוימות מכל המשתמשים, מסיבות חוקיות וכדומה',
 	'group-oversight'             => 'מסתירים',
 	'group-oversight-member'      => 'מסתיר',
 	'grouppage-oversight'         => '{{ns:project}}:מסתיר',
 	'right-oversight'             => 'צפייה בגרסה שהוסתרה',
+	'right-hiderevision'          => 'בדיקה ושחזור של גרסאות המוסתרות ממפעילי המערכת',
 	'hiderevision-prompt'         => 'מספר גרסה למחיקה:',
 	'hiderevision-continue'       => 'המשך',
 	'hiderevision-text'           => "יש להשתמש באפשרות זו '''אך ורק''' במקרים הבאים:
