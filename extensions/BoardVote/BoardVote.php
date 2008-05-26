@@ -1,7 +1,5 @@
 <?php
 
-define( "BOARDVOTE_REDIRECT_ONLY", true );
-
 # Wikimedia Foundation Board of Trustees Election
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
@@ -12,7 +10,6 @@ if (!defined('MEDIAWIKI')) {
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
 	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
@@ -21,9 +18,8 @@ $wgExtensionCredits['other'][] = array(
 
 # Default settings
 $wgBoardVoteDB = "boardvote";
-$wgBoardCandidates = array( "Ad Huikeshoven", "Alex Bakharev", "Craig Spurrier", "Dan Rosenthal", "Gregory Kohs",
-							"Harel Cain", "Jussi-Ville Heiskanen", "Kurt M. Weber", "Matthew Bisanz", "Paul Williams",
-							"Ray Saintonge", "Ryan Postlethwaite", "Samuel Klein", "Steve Smith", "Ting Chen" );
+$wgBoardCandidates = array();
+/* $wgBoardCandidates = array( "John Doe", "Jane Doe", "Joe Bloggs", "John Smith", "A. N. Other" ); */
 $wgGPGCommand = "gpg";
 $wgGPGRecipient = "boardvote";
 $wgGPGHomedir = false;
