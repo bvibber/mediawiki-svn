@@ -1,5 +1,5 @@
-CXXFLAGS=-g -I/usr/local/mysql/include/mysql/
-LDFLAGS=-L/usr/local/mysql/lib/mysql -lmysqlclient_r
+CXXFLAGS=-g `mysql_config --include`
+LDFLAGS=`mysql_config --libs_r`
 
 paramy: paramy.cc
 
