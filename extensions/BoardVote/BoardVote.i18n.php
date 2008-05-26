@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'boardvote'               => "Wikimedia Board of Trustees election",
-	'boardvote-desc'          => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|Wikimedia Board of Trustees election]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
@@ -104,7 +104,7 @@ A security warning about an unsigned certificate may be displayed.',
  */
 $messages['af'] = array(
 	'boardvote'                => 'Wikimedia-Trusteeraadverkiesing',
-	'boardvote-desc'           => '[[meta:Board elections|Wikimedia Raad van Trustees verkiesing]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wikimedia Raad van Trustees verkiesing]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Lys stemme tot op datum]]
 * [[Special:Boardvote/dump|Laai geïnkripteerde verkiesing rekord af]]',
@@ -197,7 +197,7 @@ U sal na hierdie bediener aangestuur word binne 20 sekondes. [$1 Kliek hier] om 
  */
 $messages['an'] = array(
 	'boardvote'              => "Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia",
-	'boardvote-desc'         => "[[meta:Board elections|Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia]]",
+	'boardvote-desc'         => "[[meta:Board elections/2008|Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia]]",
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Botar]]
 * [[Special:Boardvote/list|Amostrar os botos dica agora]]
 * [[Special:Boardvote/dump|Bulcar o rechistro zifrato d'a elezión]]",
@@ -273,7 +273,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'boardvote'                => 'انتخابات مجلس أمناء ويكيميديا',
-	'boardvote-desc'           => '[[meta:Board elections|انتخابات مجلس أمناء ويكيميديا]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|انتخابات مجلس أمناء ويكيميديا]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|صوت]]
 * [[Special:Boardvote/list|عرض الأصوات لغاية اليوم]]
 * [[Special:Boardvote/dump|نسخة مخزنة من سجل الانتخابات]]',
@@ -360,7 +360,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
-	'boardvote-desc'         => "[[meta:Board elections|Eleiciones pal Conseyu d'Alministración de Wikimedia]]",
+	'boardvote-desc'         => "[[meta:Board elections/2008|Eleiciones pal Conseyu d'Alministración de Wikimedia]]",
 	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
@@ -476,7 +476,7 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'boardvote'            => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
-	'boardvote-desc'       => '[[meta:Board elections|Выбары ў Апякунскую раду фундацыі Wikimedia]]',
+	'boardvote-desc'       => '[[meta:Board elections/2008|Выбары ў Апякунскую раду фундацыі Wikimedia]]',
 	'boardvote_novotes'    => 'Яшчэ ніхто не прагаласаваў.',
 	'boardvote_time'       => 'Час',
 	'boardvote_user'       => 'Удзельнік',
@@ -503,7 +503,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
-	'boardvote-desc'         => '[[meta:Board elections|Избори за борда на Уикимедия]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Избори за борда на Уикимедия]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласуване]]
 * [[Special:Boardvote/list|Списък на гласовете до ммента]]
 * [[Special:Boardvote/dump|Извличане на криптирана информация]]',
@@ -566,7 +566,7 @@ $1 за криптирани данни.</p>',
  */
 $messages['bn'] = array(
 	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাস্টিজ-এর নির্বাচন',
-	'boardvote-desc'         => '[[meta:Board elections|উইকিমিডিয়া ট্রাষ্টিবোর্ডের নির্বাচন]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|উইকিমিডিয়া ট্রাষ্টিবোর্ডের নির্বাচন]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|ভোট দিন]]
 * [[Special:Boardvote/list|এ পর্যন্ত দেওয়া ভোটের তালিকা]]
 * [[Special:Boardvote/dump|গুপ্তায়িত নির্বাচন রেকর্ড ডাম্প করা হোক]]',
@@ -635,7 +635,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'boardvote'              => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Dilennadeg da Guzul-merañ Diazezadur Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Dilennadeg da Guzul-merañ Diazezadur Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vot]]
 * [[Special:Boardvote/list|Roll ar mouezhioù evit poent]]
 * [[Special:Boardvote/dump|Enrolladennoù sifrennet]]',
@@ -694,7 +694,7 @@ Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel mar
  */
 $messages['ca'] = array(
 	'boardvote'                => "Eleccions al Consell d'Administració de la Fundació Wikimedia",
-	'boardvote-desc'           => "[[meta:Board elections|eleccions al Consell d'administració de Wikimedia]]",
+	'boardvote-desc'           => "[[meta:Board elections/2008|eleccions al Consell d'administració de Wikimedia]]",
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Voteu]]
 * [[Special:Boardvote/list|Llista de vots emesos]]
 * [[Special:Boardvote/dump|Dades encriptades de la votació]]',
@@ -786,7 +786,7 @@ $messages['co'] = array(
  */
 $messages['cs'] = array(
 	'boardvote'              => 'Volby do Správní rady nadace Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Volby do správní rady nadace Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Volby do správní rady nadace Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Hlasovat]]
 * [[Special:Boardvote/list|Seznam již hlasujících]]
 * [[Special:Boardvote/dump||Šifrovaný záznam hlasování]]',
@@ -859,7 +859,7 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
  */
 $messages['cy'] = array(
 	'boardvote'                => 'Etholiad Bwrdd Ymddiriedolwyr Sefydliad Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections|Etholiad Bwrdd Ymddiriedolwyr Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Etholiad Bwrdd Ymddiriedolwyr Wikimedia]]',
 	'boardvote_entry'          => "* [[Special:Boardvote/vote|Pleidleisio]]
 * [[Special:Boardvote/list|Rhestri'r pleidleisiau hyd yn hyn]]
 * [[Special:Boardvote/dump|Cael gwared ar gofnod pleidlais wedi'i amgryptio]]",
@@ -947,7 +947,7 @@ Hwyrach y gwelwch rybudd gwarchodaeth ynglŷn â thystysgrif heb ei arwyddo.",
  */
 $messages['da'] = array(
 	'boardvote'          => 'Valg af medlemmer til Wikimedias bestyrelse',
-	'boardvote-desc'     => '[[meta:Board elections|Valg af medlemmer til Wikimedias bestyrelse]]',
+	'boardvote-desc'     => '[[meta:Board elections/2008|Valg af medlemmer til Wikimedias bestyrelse]]',
 	'boardvote_entry'    => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Vis alle stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmefortegnelse]]',
@@ -966,7 +966,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
-	'boardvote-desc'          => '[[meta:Board elections|Wahlen zum Wikimedia-Kuratorium]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|Wahlen zum Wikimedia-Kuratorium]]',
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]",
@@ -1070,7 +1070,7 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'boardvote'             => 'Εκλογές για το Διοιηκτικό Συμβούλιο του Ιδρύματος Wikimedia',
-	'boardvote-desc'        => '[[meta:Board elections|Εκλογές για το Διοικητικό Συμβούλιο του Wikimedia]]',
+	'boardvote-desc'        => '[[meta:Board elections/2008|Εκλογές για το Διοικητικό Συμβούλιο του Wikimedia]]',
 	'boardvote_novotes'     => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_time'        => 'Ώρα',
 	'boardvote_user'        => 'Χρήστης',
@@ -1097,7 +1097,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'boardvote'              => 'Baloto por la "Administra Konsilantaro de Wikimedia Fondaĵo"',
-	'boardvote-desc'         => '[[meta:Board elections|Baloto de "Administra Konsilantaro de Wikimedia Fondaĵo"]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Baloto de "Administra Konsilantaro de Wikimedia Fondaĵo"]]',
 	'boardvote_entry'        => '* [[Speciala:Boardvote/vote|Baloto]]
 * [[Speciala:Boardvote/list|Ĝisdata balotlisto]]
 * [[Speciala:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
@@ -1171,7 +1171,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
  */
 $messages['es'] = array(
 	'boardvote'              => 'Elección del Consejo de Administración de la Fundación Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Elección del Consejo de Administración de la Fundación Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Elección del Consejo de Administración de la Fundación Wikimedia]]',
 	'boardvote_intro'        => '<p>Bienvenido a la segunda elección del Consejo de Administración de la Fundación Wikimedia. Estamos votando por dos personas para que representen a la comunidad de usuarios de todos los proyectos de Wikimedia. Los dos candidatos elegidos yudarán a determinar la dirección que tomarán en el futuro los proyectos de Wikimedia, individualmente y como grupo, y representan <em>tus</em> intereses y preocupaciones ante el Consejo de Administración. Ellos decidirán la forma de obtener financiamiento y el destino del dinero recaudado.</p>
 
 <p>Por favor, antes de votar lee cuidadosamente las afirmaciones de los candidatos y sus respuestas a las consultas. Cada uno de ellos es un usuario respetado, que ha contribuido con mucho tiempo y esfuerzo para crear en estos proyectos un buen ambiente agradable destinado a la promoción y libre distribución del conocimiento humano.</p>
@@ -1256,7 +1256,7 @@ $messages['ext'] = array(
  */
 $messages['fa'] = array(
 	'boardvote'                => 'انتخابات هیئت امنای ویکی‌مدیا',
-	'boardvote-desc'           => '[[meta:Board elections|انتخابات هیئت امنای ویکی‌مدیا]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|انتخابات هیئت امنای ویکی‌مدیا]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|رای دادن]]
 * [[Special:Boardvote/list|فهرست آرا تا کنون]]
 * [[Special:Boardvote/dump|فهرست رمزنگاری‌شده آرا]]',
@@ -1345,7 +1345,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'boardvote'              => 'Wikimedian johtokunnan valtuutettujen vaalit',
-	'boardvote-desc'         => '[[meta:Board elections|Wikimedian johtokunnan valtuutettujen vaalit]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wikimedian johtokunnan valtuutettujen vaalit]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
@@ -1425,7 +1425,7 @@ $messages['fo'] = array(
  */
 $messages['fr'] = array(
 	'boardvote'                => 'Élections au conseil d’administration de Wikimedia Foundation',
-	'boardvote-desc'           => "[[meta:Board elections|Élections au conseil d'administration de Wikimedia Foundation]]",
+	'boardvote-desc'           => "[[meta:Board elections/2008|Élections au conseil d'administration de Wikimedia Foundation]]",
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
 * [[Special:Boardvote/dump|Enregistrements cryptés]]',
@@ -1506,7 +1506,7 @@ Un avertissement concernant un certificat non signé sera peut-être affiché.',
  */
 $messages['frp'] = array(
 	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
-	'boardvote-desc'         => '[[meta:Board elections|Èlèccions u Consèly d’administracion de la Wikimedia Foundation]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Èlèccions u Consèly d’administracion de la Wikimedia Foundation]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Voto/votacion]]
 * [[Special:Boardvote/list|Lista des votos/de les votacions enregistrâs]]
 * [[Special:Boardvote/dump|Enregistraments criptâs]]',
@@ -1596,7 +1596,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'boardvote'                => 'Eleccións dos Membros do Consello de Administración da Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections|Eleccións dos Membros do Consello de Administración da Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Eleccións dos Membros do Consello de Administración da Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
 * [[Special:Boardvote/dump|Crear un baleiramento do rexistro cifrado das eleccións]]',
@@ -1703,7 +1703,7 @@ $messages['haw'] = array(
 
 $messages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
-	'boardvote-desc'          => '[[meta:Board elections|בחירות לחבר הנאמנים של ויקימדיה]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|בחירות לחבר הנאמנים של ויקימדיה]]',
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
 * [[{{ns:special}}:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
 * [[{{ns:special}}:Boardvote/dump|ההעתק המוצפן של הבחירות]]",
@@ -1785,7 +1785,7 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'boardvote'                => 'विकिमीडिया विश्वस्त मंडल चुनाव',
-	'boardvote-desc'           => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडलका चुनाव]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|विकिमीडिया विश्वस्त मंडलका चुनाव]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|मत दें]]
 * [[Special:Boardvote/list|आजतकके मतोंकी सूची]]
 * [[Special:Boardvote/dump|एन्क्रिप्ट की हुई मतोंकी सूची डम्प करें]]',
@@ -1875,7 +1875,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
-	'boardvote-desc'         => '[[meta:Board elections|Izbori za Vijeće povjerenika Wikimedije]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Izbori za Vijeće povjerenika Wikimedije]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Glas]]
 * [[Special:Boardvote/list|Pregled glasova do sada]]
 * [[Special:Boardvote/dump|Kreiraj šifrirani zapis o glasanju]]',
@@ -1947,7 +1947,7 @@ Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
  */
 $messages['hsb'] = array(
 	'boardvote'              => 'Wólby za kuratorij Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Wólby kuratorija Wikimedije]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wólby kuratorija Wikimedije]]',
 	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
 * [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
 * [[{{ns:special}}:Boardvote/dump|Zaklučowane wólbne zapiski]]',
@@ -2017,7 +2017,7 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
  */
 $messages['ht'] = array(
 	'boardvote'              => 'Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a',
-	'boardvote-desc'         => '[[meta:Board elections|Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Eleksyon nan konsèy adminstrasyon fondasyon Wikimedya a]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vòt]]
 * [[Special:Boardvote/list|Lis vòt anrejistre]]
 * [[Special:Boardvote/dump|Anrejistreman kripte]]',
@@ -2093,7 +2093,7 @@ W ap dirije nan sèvè dewò sa nan 20 segonn. [$1 Klike isit] pou ale nan paj a
  */
 $messages['hu'] = array(
 	'boardvote'              => 'Wikimedia Kuratórium választás',
-	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Kuratórium választás]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wikimedia Kuratórium választás]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Szavazz!]]
 * [[Special:Boardvote/list|Szavazatok listája]]
 * [[Special:Boardvote/dump|Választási jegyzőkönyv titkosított dump-ja]]',
@@ -2183,7 +2183,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'boardvote'              => 'Pemilihan anggota Dewan Pengawas Wikimedia Foundation',
-	'boardvote-desc'         => '[[meta:Board elections|Pemilihan Dewan Pengawas Wikimedia Foundation]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Pemilihan Dewan Pengawas Wikimedia Foundation]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Berikan suara]]
 * [[Special:Boardvote/list|Daftar suara hingga saat ini]]
 * [[Special:Boardvote/dump|Data pemilihan terenkripsi]]',
@@ -2290,7 +2290,7 @@ sem að þú styður.</p>',
  */
 $messages['it'] = array(
 	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
-	'boardvote-desc'         => '[[meta:Board elections|Elezioni del Consiglio direttivo Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Elezioni del Consiglio direttivo Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]',
@@ -2363,7 +2363,7 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
  */
 $messages['ja'] = array(
 	'boardvote'              => 'ウィキメディア財団 理事選挙',
-	'boardvote-desc'         => '[[meta:Board elections|ウィキメディア財団 理事選挙]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|ウィキメディア財団 理事選挙]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|現在までの投票]]
 * [[Special:Boardvote/dump|暗号化された投票データのダンプ]]',
@@ -2427,7 +2427,7 @@ $messages['ja'] = array(
  */
 $messages['jut'] = array(
 	'boardvote'              => 'Valg åf velemmer til Wikimedias bestyrelse',
-	'boardvote-desc'         => '[[meta:Board elections|Valg åf velemmer til Wikimedias bestyrelse]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Valg åf velemmer til Wikimedias bestyrelse]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stemme]]
 * [[Special:Boardvote/list|Ves ål stemmer til dato]]
 * [[Special:Boardvote/dump|Dump krypteret stemmeførtegnelse]]',
@@ -2475,7 +2475,7 @@ to date. $1 før æ enkriptet data.</p>",
  */
 $messages['jv'] = array(
 	'boardvote'              => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Pamilihan Déwan Kapercayan Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Pamilihan Déwan Kapercayan Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Coblos]]
 * [[Special:Boardvote/list|Daftar coblosan nganti saiki]]
 * [[Special:Boardvote/dump|Data pamilihan sing diènkripsi]]',
@@ -2737,7 +2737,7 @@ $messages['kk-arab'] = array(
  */
 $messages['km'] = array(
 	'boardvote'              => 'ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា',
-	'boardvote-desc'         => '[[meta:Board elections|ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា]]',
 	'boardvote_intro_change' => '<p>អ្នក​បានបោះឆ្នោត​ម្តងហើយ។ តែអ្នកអាច​ផ្លាស់ប្ដូរ​ការបោះឆ្នោត​របស់អ្នក​ដោយប្រើប្រាស់​សំនុំបែបបទ​ខាងក្រោម។ សូមគូស​នៅក្នុង​ប្រអបពីមុខ​ឈ្មោះបេក្ខជន​ដែលអ្នក​សំរេច​បោះឆ្នោត​អោយ។​</p>',
 	'boardvote_entered'      => 'សូមអរគុណ! ការបោះឆ្នោតរបស់អ្នកត្រូវបានរក្សាទុកហើយ។
 
@@ -2792,7 +2792,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
  */
 $messages['ko'] = array(
 	'boardvote'             => '위키미디어 이사회 선거',
-	'boardvote-desc'        => '[[meta:Board elections|위키미디어 이사회 선거]]',
+	'boardvote-desc'        => '[[meta:Board elections/2008|위키미디어 이사회 선거]]',
 	'boardvote_entry'       => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
@@ -2869,7 +2869,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'boardvote'                => 'Wale fir de Wikimedia Board of Trustees',
-	'boardvote-desc'           => "[[meta:Board elections|Wale vum Conseil d'administration vu Wikimedia]]",
+	'boardvote-desc'           => "[[meta:Board elections/2008|Wale vum Conseil d'administration vu Wikimedia]]",
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Ofstëmmen]]
 * [[Special:Boardvote/list|Lëscht vun de Stëmmen bis haut]]
 * [[Special:Boardvote/dump|Verschlësselt Donnéeë vun der Ofstëmmung]]',
@@ -2969,7 +2969,7 @@ $messages['lfn'] = array(
  */
 $messages['li'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
-	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkezing]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wikimedia Board of Trustees-verkezing]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Stöm]]
 * [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
 * [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
@@ -3073,7 +3073,7 @@ $messages['loz'] = array(
  */
 $messages['lt'] = array(
 	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
-	'boardvote-desc'         => '[[meta:Board elections|Vikimedijos Valdytojų tarybos rinkimai]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Vikimedijos Valdytojų tarybos rinkimai]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
 * [[Special:Boardvote/dump|Koduoti rinkimų rezultatai]]',
@@ -3124,7 +3124,7 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
  */
 $messages['ml'] = array(
 	'boardvote'                => 'വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തിരഞ്ഞെടുപ്പ്',
-	'boardvote-desc'           => '[[meta:Board elections|വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തെരഞ്ഞെടുപ്പ്]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തെരഞ്ഞെടുപ്പ്]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|വോട്ട് ചെയ്യുക]]
 * [[Special:Boardvote/list|ഇന്നുവരെയുള്ള വോട്ടുകള്‍ നിരത്തുക]]
 * [[Special:Boardvote/dump|എന്‍‌ക്രിപ്റ്റ് ചെയ്ത തെരഞ്ഞെടുപ്പ് റിക്കാര്‍ഡുകള്‍ ശേഖരിക്കുക]]',
@@ -3220,7 +3220,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'boardvote'                => 'विकिमीडिया विश्वस्त मंडळ निवडणूक',
-	'boardvote-desc'           => '[[meta:Board elections|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|विकिमीडिया विश्वस्त मंडळाची निवडणूक]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|मत द्या]]
 * [[Special:Boardvote/list|आजपर्यंतच्या मतांची यादी]]
 * [[Special:Boardvote/dump|एन्क्रीप्ट केलेली मतांची यादी डम्प करा]]',
@@ -3324,7 +3324,7 @@ $messages['nan'] = array(
  */
 $messages['nds'] = array(
 	'boardvote'              => 'Wahlen to dat Wikimedia-Kuratorium',
-	'boardvote-desc'         => '[[meta:Board elections|Wahlen to dat Wikimedia-Kuratorium]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wahlen to dat Wikimedia-Kuratorium]]',
 	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Afstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bet nu al afgevene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verslötelte Wahlindrääg]]',
@@ -3367,7 +3367,7 @@ $messages['ne'] = array(
  */
 $messages['nl'] = array(
 	'boardvote'                => 'Wikimedia Board of Trustees-verkiezing',
-	'boardvote-desc'           => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezing]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wikimedia Board of Trustees-verkiezing]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Uitgebrachte stemmen bekijken]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
@@ -3465,7 +3465,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'boardvote'                => 'Valg til Wikimedia-styret',
-	'boardvote-desc'           => '[[meta:Board elections|Styrevalg i Wikimedia Foundation]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Styrevalg i Wikimedia Foundation]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Liste over stemmer]]
 * [[Special:Boardvote/dump|Dump med kryptert stemmehistorie]]',
@@ -3549,7 +3549,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'boardvote'                => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
-	'boardvote-desc'           => "[[meta:Board elections|Eleccions al Conselh d'administracion de Wikimèdia]]",
+	'boardvote-desc'           => "[[meta:Board elections/2008|Eleccions al Conselh d'administracion de Wikimèdia]]",
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vòte]]
 * [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
@@ -3661,7 +3661,7 @@ $messages['pam'] = array(
  */
 $messages['pl'] = array(
 	'boardvote'                => 'Wybory do Rady Powierniczej Fundacji Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections|Wybory do Rady Powierniczej Fundacji Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wybory do Rady Powierniczej Fundacji Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Głosuj]]
 * [[Special:Boardvote/list|Pokaż listę głosów]]
 * [[Special:Boardvote/dump|Zrzut zakodowanych danych wyborów]]',
@@ -3837,7 +3837,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'boardvote'                => 'Eleições para o Board of Trustees da Wikimedia Foundation',
-	'boardvote-desc'           => '[[meta:Board elections|Eleições para o Conselho de Administração da Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Eleições para o Conselho de Administração da Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listar votos por data]]
 * [[Special:Boardvote/dump|Dados encriptados da eleição]]',
@@ -3951,7 +3951,7 @@ Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feit
  */
 $messages['qu'] = array(
 	'boardvote'             => 'Wikimedia sunqullisqa runakunata akllanakuy',
-	'boardvote-desc'        => '[[meta:Board elections|Wikimedia sunqullisqa runakunata akllanakuy]]',
+	'boardvote-desc'        => '[[meta:Board elections/2008|Wikimedia sunqullisqa runakunata akllanakuy]]',
 	'boardvote_entry'       => '* [[Special:Boardvote/vote|Runata akllay]]
 * [[Special:Boardvote/list|Ña akllanapaq nisqa kunkakuna]]
 * [[Special:Boardvote/dump|Pakaykusqa akllana qillqamusqakuna]]',
@@ -3995,7 +3995,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'boardvote'                => 'Выборы в Совет поверенных фонда «Викимедиа»',
-	'boardvote-desc'           => '[[meta:Board elections|Выборы в Совет поверенных Викимедиа]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Выборы в Совет поверенных Викимедиа]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Проголосовать]]
 * [[Special:Boardvote/list|Посмотреть список уже проголосовавших]]
 * [[Special:Boardvote/dump|Посмотреть зашифрованную запись голосов]]',
@@ -4075,7 +4075,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'boardvote'              => '"Викимедиа" Сүбэтин быыбара',
-	'boardvote-desc'         => '[[meta:Board elections|Викимедиа пуондатын Сүбэтигэр быыбар]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Викимедиа пуондатын Сүбэтигэр быыбар]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Куоластыырга]]
 * [[Special:Boardvote/list|Куоластаабыттар испииһэктэрэ]]
 * [[Special:Boardvote/dump|Куоластааһын хаамыыта (ким туохха куоластаабыта көрдөрүллүбэт)]]',
@@ -4141,7 +4141,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'boardvote'                => 'Voľby do Správnej rady Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections|Voľby do Rady Rady správcov Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Voľby do Rady Rady správcov Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Hlasovať]]
 * [[Special:Boardvote/list|Zobraziť doterajšie hlasy]]
 * [[Special:Boardvote/dump|Vypísať kryptovaný záznam volieb]]',
@@ -4364,7 +4364,7 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
  */
 $messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
-	'boardvote-desc'         => '[[meta:Board elections|Woalen tou dät Wikimedia-Kuratorium]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Woalen tou dät Wikimedia-Kuratorium]]',
 	'boardvote_entry'        => '* [[meta:Board elections/2008/Candidates/de|Kandidoatenfoarstaalengen]]
 * [[{{ns:special}}:Boardvote/vote|Oustämme]]
 * [[{{ns:special}}:Boardvote/list|Bit nu ouroate Stämmen]]
@@ -4475,7 +4475,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'boardvote'                => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
-	'boardvote-desc'           => '[[meta:Board elections|Val till Wikimedias styrelse]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Val till Wikimedias styrelse]]',
 	'boardvote_entry'          => '* [[m:Election_candidates_2008/Sv|Kandidaternas presentationer]]
 * [[Special:Boardvote/vote|Rösta]]
 * [[Special:Boardvote/list|Lista röster]]
@@ -4578,7 +4578,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'boardvote'                => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
-	'boardvote-desc'           => '[[meta:Board elections|వికీమీడియా ట్రస్టీల బోర్డు ఎన్నికలు]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|వికీమీడియా ట్రస్టీల బోర్డు ఎన్నికలు]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|వోటెయ్యండి]]
 * [[Special:Boardvote/list|ఇప్పటివరకు వచ్చిన ఓట్ల జాబీతా]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
@@ -4669,7 +4669,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'boardvote'              => 'Интихоботи Ҳайати Амнои Викимедиа',
-	'boardvote-desc'         => '[[meta:Board elections|Интихоботи Ҳайати Амнои Викимедиа]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Интихоботи Ҳайати Амнои Викимедиа]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Раъй додан]]
 * [[Special:Boardvote/list|Феҳристи раъй то кунун]]
 * [[Special:Boardvote/dump|Феҳристи рамзнигорӣ шудаи интихобот]]',
@@ -4784,7 +4784,7 @@ $messages['ty'] = array(
  */
 $messages['uk'] = array(
 	'boardvote'                => 'Вибори до Ради повірених фонду «Вікімедіа»',
-	'boardvote-desc'           => '[[meta:Board elections|Вибори до Ради повірених Вікімедіа]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Вибори до Ради повірених Вікімедіа]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Проголосувати]]
 * [[Special:Boardvote/list|Переглянути список тих, хто вже проголосував]]
 * [[Special:Boardvote/dump|Переглянути зашифрований запис голосів]]',
@@ -4865,7 +4865,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'boardvote'                => 'Elezion del Consejo diretivo de la Wikimedia Foundation',
-	'boardvote-desc'           => '[[meta:Board elections|Elezion del Consejo diretivo Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Elezion del Consejo diretivo Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Varda i voti epressi fin desso]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrada]]',
@@ -4944,7 +4944,7 @@ la votazion la xe verta fin al 22 de giugno',
  */
 $messages['vi'] = array(
 	'boardvote'                => 'Bầu cử Ban Quản trị Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections|Bầu cử Ban Quản trị Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Bầu cử Ban Quản trị Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Bỏ phiếu]]
 * [[Special:Boardvote/list|Danh sách những lá phiếu đến nay]]
 * [[Special:Boardvote/dump|Hồ sơ bầu cử mật mã hóa]]',
@@ -5024,7 +5024,7 @@ Bạn có thể gặp lời cảnh cáo nói về chứng nhận điện tử ch
  */
 $messages['vo'] = array(
 	'boardvote'              => 'Daväl Kipedalefa Fünoda: Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections|Daväl Kipedalefa Fünoda: Wikimedia]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Daväl Kipedalefa Fünoda: Wikimedia]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vögodön]]
 * [[Special:Boardvote/list|Lised vögodas jünuik]]
 * [[Special:Boardvote/dump|Davälaregistar pejüföl]]',
@@ -5160,7 +5160,7 @@ $1 po les dnêyes sourdant des bultins.</p>',
 
 $messages['yue'] = array(
 	'boardvote'               => "Wikimedia理事委員會選舉",
-	'boardvote-desc'          => '[[meta:Board elections|Wikimedia理事委員會選舉]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|Wikimedia理事委員會選舉]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
 * [[Special:Boardvote/dump|選舉記錄傾印]]",
@@ -5231,7 +5231,7 @@ $1去睇加密嘅資料。</p>",
  */
 $messages['zea'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezieng',
-	'boardvote-desc'         => '[[meta:Board elections|Wikimedia Board of Trustees-verkiezieng]]',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wikimedia Board of Trustees-verkiezieng]]',
 	'boardvote_intro'        => '<p>Welkom bie de twidde verkieziengen voe de Wikimedia Board of Trustees.
 We kiezen twi persoônen die an de gebrukersgemeênschap vertehenwoordihen in de verschill\'nde Wikimedia-projecten.
 Ze bepaelen mede de toekomstihe richtieng van Wikimedia-projecten, individueêl en as hroep, en behartihen <em>uw</em> belangen en zurhen bie de Board of Trustees.
@@ -5280,7 +5280,7 @@ $messages['zh-classical'] = array(
 
 $messages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
-	'boardvote-desc'          => '[[meta:Board elections|维基媒体基金会理事会选举]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|维基媒体基金会理事会选举]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
 * [[Special:Boardvote/dump|加密的选举数据]]",
@@ -5347,7 +5347,7 @@ $messages['zh-hans'] = array(
 
 $messages['zh-hant'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
-	'boardvote-desc'          => '[[meta:Board elections|維基媒體基金會理事會選舉]]',
+	'boardvote-desc'          => '[[meta:Board elections/2008|維基媒體基金會理事會選舉]]',
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
 * [[Special:Boardvote/list|至今已投票列表]]
 * [[Special:Boardvote/dump|加密的選舉資料]]",
