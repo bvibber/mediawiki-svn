@@ -64,6 +64,9 @@ Changes:
 + 2008-05-24: Search switched from broken screen-scrape to API
 + 2008-05-24: Titles with "&" now display correctly.
 + 2008-05-25: Transparent PNGs now flattened on white BG instead of black
++ 2008-05-26: Image thumb lookups now down via API for future-proofing,
+  correction of name normalization issues, and safety for the image.php
+  interface.
 
 Open Issues:
 ------------

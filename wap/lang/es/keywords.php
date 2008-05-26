@@ -7,7 +7,6 @@
 $keywords = Array(
 "Go"		 => 'Buscar', // submit button for article request
 'Image:'	=> 'Imagen:',
-'http://upload.wikimedia.org/wikipedia/'	=> 'http://upload.wikimedia.org/wikipedia/',
 'left'		=> 'left',
 'center'	=> 'center',
 'right'		=> 'right',

@@ -7,7 +7,6 @@
 $keywords = Array(
 "Go" => " Ir ", // submit button for article request
 'Image:'	=> 'Imagem:',
-'http://upload.wikimedia.org/wikipedia/'	=> 'http://upload.wikimedia.org/wikipedia/',
 'left'		=> 'left',
 'center'	=> 'center',
 'right'		=> 'right',

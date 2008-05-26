@@ -149,17 +149,6 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 			if (!defined('DISABLE_IMAGES') || !DISABLE_IMAGES) {
 				$temp = namespace_regex('Image:','/');
 				if (preg_match($temp, $po['page'])) {
-					#          // image source
-					#	  $imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
-					#	  $temp = md5($imagename);
-					##http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-					#	  $po['src'] = (translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').
-					#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
-					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-					#			$imagename . DIRECTORY_SEPARATOR.
-					#			HAWIKI_DISP_WIDTH.'px-'.$imagename);
 					// isolate image description.
 					$temp = substr($wikipage, strlen($link[0]));
 					$ltemp = -1;
@@ -176,48 +165,16 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 						array('/\[\[([^|\]]+\|)([^\]]*)\]\]/', '/\[\[([^|\]]+)\]\]/'),
 						array('$2', '$1'), $temp);
 					// raw image source
-					// - try wiki, if not there, it has to be on commons
-					// - URL without scaling is e.g. http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/xyz.jpg
 					$imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
-					$imagename = str_replace( ' ', '_', $imagename );
-					$encImageName = urlencode( $imagename );
-					$imagetype = strtolower(preg_replace('/^.*\./', '.', $imagename));
-					$temp = md5($imagename);
-					#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
-					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-					$img_url_tail = ( '/'. 
-						substr($temp,0,1) . '/'.
-						substr($temp,0,2) . '/'.
-						$encImageName );
-					$img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
-					# echo '<br />'.
-					$img_w_url_head = ( $img_url_head . $_SESSION['language'] );
-					$img_c_url_head = ( $img_url_head . 'commons' );
-					$img_w_raw_url = ( $img_w_url_head . $img_url_tail );
-					$img_c_raw_url = ( $img_c_url_head . $img_url_tail );
-					if(uri_exists($img_w_raw_url))
-					{
-						$img_raw_url =& $img_w_raw_url;
-						$img_url_head =& $img_w_url_head;
-					}
-					else
-						//FIXME: image not on commons, then ? (we safe bandwith ignoring this possibility here)
-						#  if(uri_exists($img_c_raw_url)) 
-					{
-						$img_raw_url =& $img_c_raw_url;
-						$img_url_head =& $img_c_url_head;
-					}
-					#  else
-					#  {
-					#  	$img_raw_uwl = FALSE;
-					#  }
+					
 					// image width
 					// - if width given in wiki code, use it,
-					//   - else get it from the image.
+					//   - else use HAWIKI_DISP_WIDTH.
 					// - if width is less than both IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH, use it,
 					//   - else use the minimum of IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH.
-					// - don't request scaling to original size (unless wiki code gives a width)
-					$width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
+					// - if requested width is bigger than the image, server will return
+					//   us the smaller one anyway.
+					$width = 0;
 					$temp = substr($wikipage, strlen($link[0]));
 					$temp = preg_replace('/\[\[[^\]]*\]\]/', '_', $temp);	// get rid of links
 					$temp = explode("|", $temp); // isolate elements
@@ -226,54 +183,22 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 						if(preg_match('/^[0-9]+px$/', trim($tmp)))
 							$width = 0+preg_replace('/[^0-9]+/', '', $tmp); //keep last.
 					}
-					if(0 >= $width)
-					{
-						$width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
-						$temp = @(getimagesize($img_raw_url));
-						$temp = ( isset($temp[0]) ? $temp[0] : $width );
-						if(($temp > IMG_MAX_WIDTH) || ($temp > HAWIKI_DISP_WIDTH))
-						{
-							$width = $temp;	// thumbnail only if known and too wide.
-						}
-					}
-					$width = min($width, IMG_MAX_WIDTH, HAWIKI_DISP_WIDTH);
-					// image source
-					#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-					#	  $po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
-					#	  		translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').	// else load from wmf server
-					#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
-					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-					#			$imagename . 
-					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
-					#          $po["token"] = HAWIKI_TOKEN_IMAGE;
-					#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-					#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
-					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-					#			$imagename );
-					#	  $img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
-
-					#	  = ( DIRECTORY_SEPARATOR. 
-					#			$imagename . 
-					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
-					# echo '<br />'.
-					if ( $imagetype == '.svg' ) {
-						$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}.png";
-					} elseif ( $imagetype == '.png' ) {
-						if ( $width ) {
-							$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}";
-						} else {
-							$po['src'] = "image.php?$img_url_head$img_url_tail";
-						}
+					if ($width) {
+						$width = min($width, IMG_MAX_WIDTH, HAWIKI_DISP_WIDTH);
 					} else {
-						if ( $width ) {
-							$po['src'] = "$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}";
-						} else {
-							$po['src'] = "$img_url_head$img_url_tail";
-						}
+						$width = HAWIKI_DISP_WIDTH;
 					}
+					
+					// We'll pass on the image info to our image.php,
+					// which sends to Wikipedia's API to get the actual URL
+					// of the appropriately-sized thumbnail or original image,
+					// then we convert formats on our end.
+					$imageInfo = array(
+						"name" => $imagename,
+						"language" => $_SESSION["language"],
+						"width" => $width );
+					$po["src"] = "image.php?" . http_build_query($imageInfo, "", "&");
+							
 					$po["token"] = HAWIKI_TOKEN_IMAGE;
 					return($po);
 				}
