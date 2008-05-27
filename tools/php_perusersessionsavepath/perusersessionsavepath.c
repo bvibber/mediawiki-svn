@@ -19,7 +19,7 @@
 #define SESSION_DIR	".php_sessions"
 
 /*ARGSUSED*/
-PHP_MINIT_FUNCTION(perusersessionsavepath)
+PHP_RINIT_FUNCTION(perusersessionsavepath)
 {
 struct passwd	*pwd = NULL;
 struct stat	 sb;
@@ -40,7 +40,7 @@ char		*path = NULL;
 	}
 
 	zend_alter_ini_entry("session.save_path", sizeof("session.save_path"),
-				path, strlen(path), PHP_INI_ALL, PHP_INI_STAGE_RUNTIME);
+				path, strlen(path), PHP_INI_USER, PHP_INI_STAGE_RUNTIME);
 
 end:
 	if (pwd)
@@ -51,7 +51,7 @@ end:
 }
 
 /*ARGSUSED*/
-PHP_RINIT_FUNCTION(perusersessionsavepath) {
+PHP_MINIT_FUNCTION(perusersessionsavepath) {
 	return SUCCESS;
 }
 
