@@ -646,7 +646,8 @@ class SpecialConfigure extends SpecialPage {
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
-					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr /></td><td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
+					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr />
+						</td><td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
 				}
 			}
 			$text .= '</table>';
@@ -805,6 +806,7 @@ class SpecialConfigure extends SpecialPage {
 
 		$align = array();
 		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
+		$align['valign'] = 'top';
 		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
 		if( wfEmptyMsg( $msg, $msgVal ) )
 			$msgVal = "\$$conf";
@@ -814,7 +816,8 @@ class SpecialConfigure extends SpecialPage {
 		if( $this->isSettingAvailable( $conf ) )
 			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $type, $default ) . '</td>';
 		else
-			$td2 = Xml::openElement( 'td', $align ) . wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
+			$td2 = Xml::openElement( 'td', $align ) . 
+				wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
 
 		return '<tr>' . $td1 . $td2 . "</tr>\n";
 	}
@@ -855,7 +858,8 @@ class SpecialConfigure extends SpecialPage {
 					$ret .= $this->buildTableHeading( 'configure-section-' . $group );
 					foreach( $settings as $setting => $type ){
 						if( !in_array( $setting, self::$notEditableSettings ) )
-							$ret .= $this->buildTableRow( 'configure-setting-' . $setting, $setting, $type, $this->getSettingValue( $setting ) );
+							$ret .= $this->buildTableRow( 'configure-setting-' . $setting, 
+								$setting, $type, $this->getSettingValue( $setting ) );
 					}
 				}
 				$ret .= Xml::closeElement( 'table' ) . "\n";
