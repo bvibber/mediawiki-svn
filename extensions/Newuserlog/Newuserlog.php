@@ -69,7 +69,7 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 
 function wfNewuserlogAutoCreate( $user ) {
 	wfLoadExtensionMessages( 'Newuserlog' );
-	$log = new LogPage( 'newusers' );
+	$log = new LogPage( 'newusers', false );
 	$log->addEntry( 'autocreate', $user->getUserPage(), '', array( $user->getId() ) );
 	return true;
 }
