@@ -215,6 +215,14 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Return true if the current user is allowed to see $setting.
+	 * @return bool
+	 */
+	protected function userCanRead( $setting ){
+		return ( !in_array( $setting, self::$viewRestricted ) || $this->isUserAllowedAll() );
+	}
+
+	/**
 	 * Submit the posted request
 	 */
 	protected function doSubmit(){
@@ -532,7 +540,7 @@ class SpecialConfigure extends SpecialPage {
 	 * @return String xhtml fragment
 	 */
 	protected function buildInput( $conf, $type, $default ){
-		if( in_array( $conf, self::$viewRestricted ) && !$this->isUserAllowedAll() )
+		if( !$this->userCanRead( $conf ) )
 			return '<span class="disabled">' . wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) . '</span>';
 		$allowed = $this->userCanEdit( $conf );
 		if( $type == 'text' || $type == 'int' ){
@@ -646,8 +654,8 @@ class SpecialConfigure extends SpecialPage {
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
-					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr />
-						</td><td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
+					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr /></td>" .
+						"<td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
 				}
 			}
 			$text .= '</table>';
