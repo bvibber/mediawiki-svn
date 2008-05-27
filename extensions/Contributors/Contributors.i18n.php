@@ -502,6 +502,13 @@ $messages['krj'] = array(
 	'contributors-submit' => 'Ipakita',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'contributors-submit' => 'Zeije',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

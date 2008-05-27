@@ -575,10 +575,16 @@ $messages['ko'] = array(
 	'createarticle'           => '문서 만들기',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
-	'tryexact'       => 'Versök en akkurate Üvvereinstimmung:',
-	'searchfulltext' => 'Sök durch dä janze Tex',
-	'createarticle'  => 'Atikkel enrichte',
+	'inputbox-desc'           => 'Bestemmpte HTML-Formulare könne enjebonge wääde',
+	'inputbox-error-no-type'  => 'Wat för en Zoot Kaste wells De dann han?',
+	'inputbox-error-bad-type' => 'De Zoot „$1“ för et Feld för jet enzejevve kenne mer nit, De moss schunn „create“, „comment“, „search“ oder „search2“ doför aanjevve.',
+	'tryexact'                => 'Versök en akkurate Üvvereinstimmung:',
+	'searchfulltext'          => 'Sök durch dä janze Tex',
+	'createarticle'           => 'Sigg aanlääje',
 );
 
 $messages['ku-latn'] = array(

@@ -42,6 +42,13 @@ $messages['fr'] = array(
 	'titlekey-desc' => "Retour vers la fin de la suggestion de recherche d'un préfixe de titre",
 );
 
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'titlekey-desc' => 'शीर्षक उपपद खोज सजेशन बॅकएन्ड',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -75,6 +82,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'titlekey-desc' => 'शीर्षक उपपद शोध सल्ला बॅकएन्ड',
 );
 
 /** Dutch (Nederlands)

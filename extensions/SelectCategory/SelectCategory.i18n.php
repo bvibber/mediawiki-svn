@@ -38,9 +38,11 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'selectcategory-title'    => 'Избор на категории',
+	'selectcategory-desc'     => 'Позволява на потребителя при редактиране на страница да избира и добавя от съществуващите категории',
 	'selectcategory-subtitle' => 'Shift + ляв бутон на мишката за избор на множество последователни записи, Ctrl + ляв бутон на мишката за избор на непоследователни записи.',
 );
 

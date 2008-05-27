@@ -677,7 +677,16 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'sitematrix-language' => 'Sproch',
+	'sitematrix'           => 'Lėß med alle Wikkimedija Wikiß',
+	'sitematrix-summary'   => 'De <span class="plainlinks">[http://www.wikimedia.org/ WikkiMedija Shtefftong]</span> hälld_enne Houfe Wikkis am loufe. Hee sen se all em Övverbleck ze sinn.',
+	'sitematrix-desc'      => 'Zeish en [[Special:SiteMatrix|{{int:Sitematrix}}]]',
+	'sitematrix-language'  => 'Sproch',
+	'sitematrix-project'   => 'Dem Projek singe Name, dä Lengk zwesche de Projekte, un dä Engerwiki Lengk',
+	'sitematrix-others'    => 'Noch mieh Projekte vun de Wikimedia-Steftung',
+	'sitematrix-total'     => "Zosamme jezallt: '''$1'''",
+	'sitematrix-sitetotal' => 'Zosamme',
+	'sitematrix-private'   => '(nit öffentlesch)',
+	'sitematrix-fishbowl'  => '(et Ändere is beschrängk)',
 );
 
 $messages['la'] = array(

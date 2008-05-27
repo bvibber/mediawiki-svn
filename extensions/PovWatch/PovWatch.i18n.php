@@ -52,6 +52,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'povwatch'                         => 'مراقبة بي أو في',
@@ -82,6 +83,7 @@ $messages['ar'] = array(
 	'povwatch_subscribe_intro'         => 'أنت غير مشترك في مراقبة بي أو في. اضغط الزر بالأسفل للاشتراك.',
 	'povwatch_subscribe'               => 'اشتراك',
 	'povwatch_added'                   => 'تمت الإضافة',
+	'right-povwatch_user'              => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
 );
 
 /** Bulgarian (Български)

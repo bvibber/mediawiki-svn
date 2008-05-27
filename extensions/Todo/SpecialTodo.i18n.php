@@ -100,6 +100,7 @@ $messages['bg'] = array(
 	'todo-list-for'         => 'Списък със задачи за',
 	'todo-list-change'      => 'Промяна',
 	'todo-list-cancel'      => 'Отмяна',
+	'todo-issue-summary'    => 'Резюме:',
 	'todo-form-details'     => 'Детайли:',
 	'todo-form-submit'      => 'Изпращане на заявка',
 );
@@ -277,6 +278,43 @@ $messages['km'] = array(
  */
 $messages['krj'] = array(
 	'todo-list-cancel' => 'Kanselar',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'todo'                  => 'Opjaveliss',
+	'todo-desc'             => 'Ene Zosatz för en persönliche [[Special:Todo|Opjaveliss]] för zem Ußprobeere',
+	'todo-tab'              => 'Opjav',
+	'todo-new-queue'        => 'neu',
+	'todo-mail-subject'     => 'Erledichte Opjav en däm $1 sing Opjaveliss',
+	'todo-mail-body'        => 'Do häs Der en E-Mail jewönsch, wann en Opjav erledich wöhr, die De em $1 en sing Opjaveliss jedonn häs. He is se:
+
+De Opjav: $2
+Enjedrage: $3
+
+Se wood als erledich makeet mit dä Bemerkung:
+$4
+
+Ene schone Jroß.',
+	'todo-invalid-item'     => 'Die Opjav fäält, odder se es kapott',
+	'todo-update-else-item' => 'Enem andere Metmaacher sing Opjave ändere',
+	'todo-unrecognize-type' => 'Di Aat Opjaav kenne mer nit',
+	'todo-user-invalide'    => 'Die Opjav es kapott, nit doh, odder dä Medmaacher kann jaa kein Opjave han.',
+	'todo-item-list'        => 'Ding Opjave',
+	'todo-no-item'          => 'Kein Opjave en de Liss.',
+	'todo-invalid-owner'    => 'Dä Medmaacher för die Opjaav is nit mööschlesch',
+	'todo-add-queue'        => 'En Schlang dobei donn&nbsp;…',
+	'todo-move-queue'       => 'En de Schlang donn&nbsp;…',
+	'todo-list-for'         => 'Opjaveliss för',
+	'todo-list-change'      => 'Ändere',
+	'todo-list-cancel'      => 'Draanjevve',
+	'todo-new-item'         => 'En neu Opjav',
+	'todo-issue-summary'    => 'Zosammefassung:',
+	'todo-form-details'     => 'Einzelheite:',
+	'todo-form-email'       => 'Öm en E-Mail ze krijje, wann di Opjav avjeschlosse weed, jiv Ding E-Mai Adress hee en:',
+	'todo-form-submit'      => 'Loß Jonn!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

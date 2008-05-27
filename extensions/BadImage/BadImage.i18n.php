@@ -841,6 +841,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'badimages-add-btn' => 'Donn dobei',
+	'badimages-name'    => 'Name:',
 	'badimages-reason'  => 'Aanlass:',
 );
 

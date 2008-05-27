@@ -202,9 +202,10 @@ $messages['tg-cyrl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'forcepreview'      => '
+	'forcepreview'             => '
 
 Lưu trang (sau khi xem thử)',
-	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
+	'forcepreview-desc'        => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
+	'right-forcepreviewexempt' => 'Có thể lưu mà không sử dụng Xem trước',
 );
 

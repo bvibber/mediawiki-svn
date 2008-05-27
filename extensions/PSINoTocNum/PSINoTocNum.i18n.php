@@ -7,6 +7,13 @@ $messages['en'] = array(
 	'psinotocnum-desc' => 'New MagicWord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -23,6 +30,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'psinotocnum-desc' => 'Nova palabra máxica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'psinotocnum-desc' => 'Määt dat Zauberwoot <code><nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki></code> en et Wiki',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -1608,7 +1608,8 @@ $wdMessages['krj'] = array(
  * @author Purodha
  */
 $wdMessages['ksh'] = array(
-	'ow_Language' => 'Sproch',
+	'ow_Language'            => 'Sproch',
+	'ow_LinkAttributeValues' => 'Links',
 );
 
 /** Kurdish (Kurdî / كوردی)

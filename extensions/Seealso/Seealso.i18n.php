@@ -223,7 +223,8 @@ $messages['oc'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'seealso' => 'دا هم وګورۍ',
+	'seealso'      => 'دا هم وګورۍ',
+	'seealso-desc' => "د <code><nowiki><داهم وګورۍ></nowiki></code> پټې په کارولو سره د 'دا هم وګورۍ' سرليک ځای پر ځای کېږي.",
 );
 
 /** Portuguese (Português)

@@ -91,6 +91,7 @@ $messages['ast'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Специална страница]] за сравняване на изходните резултати на два различни парсера',
 	'pdtest_no_target'    => 'Не беше посочена цел.',
 	'pdtest_page_missing' => 'Поисканата страница не беше открита в базата данни.',
 	'pdtest_no_changes'   => 'Не са направени промени.',

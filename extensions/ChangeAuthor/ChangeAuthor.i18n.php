@@ -596,6 +596,13 @@ $messages['krj'] = array(
 	'changeauthor-pagenameform-go' => 'Agto',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'changeauthor-pagenameform-go' => 'Loß Jonn!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

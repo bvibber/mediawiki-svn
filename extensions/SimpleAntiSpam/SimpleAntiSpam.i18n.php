@@ -31,7 +31,19 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'simpleantispam-desc' => 'Добавя прост формуляр за проерка за спам/роботи',
+	'simpleantispam-label' => "Проверка за спам.
+Необходимо е да '''НЕ''' попълвате това поле!",
+	'simpleantispam-desc'  => 'Добавя прост формуляр за проерка за спам/роботи',
+);
+
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'simpleantispam'       => 'Vaše úprava spustila antispamový mechanismus',
+	'simpleantispam-label' => "Antispamová kontrola.
+'''NEVYPLŇUJTE''' následující!",
+	'simpleantispam-desc'  => 'Přidává do formulářů jednoduchou kontrolu botů/spamu.',
 );
 
 /** German (Deutsch)
@@ -131,6 +143,16 @@ $messages['pt'] = array(
 	'simpleantispam-label' => "Verificação de spam
 '''NÃO''' preencha isto!",
 	'simpleantispam-desc'  => 'Adiciona em formulários um verificador de spam simples',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'simpleantispam'       => 'Ваша правка включила механизм анти-спама',
+	'simpleantispam-label' => 'Анти-спам проверка.
+НЕ заполняйте это!',
+	'simpleantispam-desc'  => 'Добавляет на форму простую проверку на спам и ботов',
 );
 
 /** Slovak (Slovenčina)

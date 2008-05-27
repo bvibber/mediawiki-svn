@@ -82,8 +82,8 @@ $messages['ar'] = array(
 );
 
 /** Bulgarian (Български)
- * @author Spiritia
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'spamdifftool'                  => 'Управление на Черния списък за спам',
@@ -91,6 +91,8 @@ $messages['bg'] = array(
 	'spamdifftool_notext'           => "Не е въведен текст, който да бъде добавен в Черния списък за спам. <a href='$1'>Продължаване</a>.",
 	'spamdifftool_confirm'          => "Необходимо е потвърждение за добавяне на записите в списъка със спам (Нередности могат да се съобщават <a href='$1' target='new'>на тази страница</a>.)",
 	'spamdifftool_summary'          => 'Добавяне към черния списък със спам',
+	'spamdifftool_no_urls_detected' => "Не бяха засечени уеб адреси.
+Натиснете <a href='$1'>тук</a> за връщане.",
 	'spamdifftool_spam_link_text'   => 'добавяне в спам',
 	'spamdifftool_option_domain'    => 'всичко от този домейн',
 	'spamdifftool_option_subdomain' => 'всичко от този поддомейн',
@@ -264,6 +266,13 @@ $messages['km'] = array(
 	'spamdifftool_option_none'      => 'ទទេ',
 	'spamdifftool_block'            => 'ការហាមឃាត់៖',
 	'spamdifftool_submit_buttom'    => 'ដាក់ស្នើ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'spamdifftool_submit_buttom' => 'Faßhallde!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

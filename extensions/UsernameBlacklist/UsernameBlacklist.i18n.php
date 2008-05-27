@@ -659,6 +659,13 @@ $messages['ko'] = array(
 	'usernameblacklist-invalid-lines' => '사용자 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'right-uboverride' => 'De Liss met verbodde Metmaacher-Name övverjonn',
+);
+
 /* Kurdi */
 $messages['ku'] = array(
 	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',

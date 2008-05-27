@@ -41,6 +41,7 @@ $messages['en'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'spl3_debug'      => 'قيمة غير معروفة للخيار $1.',
 	'spl3_nosubpages' => '$1 لا تمتلك أي صفحات فرعية لوضعها في قائمة.',
 );
 

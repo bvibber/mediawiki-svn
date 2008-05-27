@@ -443,6 +443,13 @@ $messages['km'] = array(
 	'querysuccessful' => 'សំណួរអង្កេត បានជោគជ័យ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'querybtn' => 'Loß Jonn!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

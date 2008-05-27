@@ -227,6 +227,13 @@ $messages['krj'] = array(
 	'randomincategory-submit' => 'Agto',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'randomincategory-submit' => 'Loß Jonn!',
+);
+
 /** Latin (Latina)
  * @author UV
  */

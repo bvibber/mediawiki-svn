@@ -139,6 +139,19 @@ $messages['jv'] = array(
 	'right-mibbit' => 'Marengaké nganggo chat Mibbit',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mibbit'        => 'Mibbit IRC Chat',
+	'mibbit-desc'   => 'Brenk de [[Special:Mibbit|Mibbit Sondersigg]] wo dröver mer met ander Metmaacher fum Wiki em IRC quatsche kann',
+	'mibbit-header' => "Hee die Sondersigg määt et möschlesch, met ander Metmaacher övver ene Chat zosamme ze Ärbeide.
+Öm en Verbindong opzemaache, klick op dä „Connect“-Link.
+Wann De enjelogg bes, is Dinge Metmaacher-Name ald als Chat-Name vorjeschlage.
+Namelose Medmaacher krijje ene automatisch erfonge Name, ävver beeds kam'mer ändere.",
+	'right-mibbit'  => 'Dä Mibbit Chat es zojelohße',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

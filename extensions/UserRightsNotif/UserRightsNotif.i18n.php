@@ -220,6 +220,24 @@ $messages['jv'] = array(
 	'userrightsnotifysubject' => 'Kaanggotan grup diganti ing $1',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'userrightsnotifysubject' => 'De Medmaacher ier Jroppe woote verändert op $1',
+	'userrightsnotifybody'    => 'Dach $1.
+
+Am $4 hät dä Metmaacher $3 Ding Metmaacher-Jroppe
+em Wiki §2 verändert, un hät Dich
+dobeijedonn in $5,
+eruß jenomme uß $6.
+
+Enne schöne Jroß!
+
+$2',
+	'userrightsnotif-desc'    => 'Scheck en E-Mail aan dä Medmaacher, wann em sing Rääschte (övver Metmaacher-Jroppe) verändert woode sin',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

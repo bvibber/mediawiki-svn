@@ -175,6 +175,7 @@ $messages['bg'] = array(
 	'regexblock-view-block-by'        => 'блокиран от',
 	'regexblock-view-block-unblock'   => 'отблокиране',
 	'regexblock-view-stats'           => '(статистика)',
+	'regexblock-view-empty'           => 'Списъкът на блокирани имена и адреси е празен.',
 	'regexblock-view-time'            => 'на $1',
 );
 
@@ -599,6 +600,7 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'regexblock-form-reason' => 'Aanlass:',
 	'regexblock-view-all'    => 'All',
+	'regexblock-view-go'     => 'Loß Jonn!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

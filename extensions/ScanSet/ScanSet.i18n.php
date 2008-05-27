@@ -86,8 +86,9 @@ $messages['ast'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'scanset_next' => 'Следващи &gt;',
-	'scanset_prev' => '&lt; Предишни',
+	'scanset_opendir_error' => 'ScanSet: Грешка, не може да бъде отворена директория $1',
+	'scanset_next'          => 'Следващи &gt;',
+	'scanset_prev'          => '&lt; Предишни',
 );
 
 /** Bengali (বাংলা)

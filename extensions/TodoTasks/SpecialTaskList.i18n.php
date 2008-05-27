@@ -242,6 +242,13 @@ $messages['km'] = array(
 	'tasklistchooseproj'     => 'ជ្រើសយក​គំរោង ៖',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'tasklistbyname' => '== Opjaveliss för %s ==',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

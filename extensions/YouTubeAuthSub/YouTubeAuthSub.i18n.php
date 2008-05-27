@@ -444,6 +444,13 @@ $messages['krj'] = array(
 	'youtubeauthsub_category' => 'Kategorya',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'youtubeauthsub_submit' => 'Loß Jonn!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -1061,6 +1061,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'math-desc'                             => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_InvalidColour'                    => 'D\'Faarw "$1" gëtt et net',
+	'math_MissingOpenBraceAtEnd'            => 'Eng "{" feelt um Ënn vun der Saisie',
 	'math_NotEnoughArguments'               => 'Dir hutt net genuch Parameter ugi fir "$1"',
 	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',

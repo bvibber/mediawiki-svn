@@ -259,6 +259,13 @@ $messages['krj'] = array(
 	'editmsg-search' => 'Sagap',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editmsg-search' => 'Sööke',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

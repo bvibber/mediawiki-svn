@@ -701,15 +701,15 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
-	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä
-komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, speziell Name,
-un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ â€¦ }} Klammere
-üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze
-sinn kriss wat erus kütt.',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Schablone, Parserfunktione un Variable oplöse]] en der komplette Wikitex un dä aanzeije',
+	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, spezielle Name, un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ … }} Klammere üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze sinn kriss wat erus kütt.',
 	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input'           => 'Wat De üvverpröfe wells:',
 	'expand_templates_output'          => 'Wat erus kütt es',
+	'expand_templates_xml_output'      => 'XML ußjevve',
+	'expand_templates_ok'              => 'Loß Jonn!',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
+	'expand_templates_generate_xml'    => 'Och dä XML-Parser-Boum zeije',
 	'expand_templates_preview'         => 'Vör-Aansich',
 );
 

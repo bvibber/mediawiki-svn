@@ -235,6 +235,7 @@ $messages['bg'] = array(
 	'sign-bday'                    => 'Възраст:',
 	'sign-email'                   => 'Адрес за е-поща:',
 	'sign-indicates-req'           => '<small><i><font color="red">*</font> задължително поле</i></small>',
+	'sign-hide-note'               => '<small><i><font color="red">**</font> Забележка: Информацията, която не се показана ще бъде видима за модераторите.</i></small>',
 	'sign-list-hideaddress'        => 'Без показване на адрес',
 	'sign-list-hideextaddress'     => 'Без показване на град, щат, пощенски код или държава',
 	'sign-list-hidephone'          => 'Без показване на телефон',
@@ -680,6 +681,13 @@ $messages['hu'] = array(
 	'sign-email'    => 'E-mail cím:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'sign-viewfield-agent' => 'Aplikasi pengguna',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */
@@ -788,6 +796,14 @@ $messages['km'] = array(
  */
 $messages['krj'] = array(
 	'sign-viewfield-email' => 'E-mail',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sign-realname'           => 'Name:',
+	'sign-viewfield-realname' => 'Name',
 );
 
 $messages['la'] = array(

@@ -160,6 +160,20 @@ $messages['jv'] = array(
 	'onlinestatus-toggle-online'    => "Sajroning jaringan (''online'')",
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'onlinestatus-desc'             => 'Erlaub en de Enstellunge för de Metmaacher e Krützje, öm op de Metmaachersigg ze zeije, of mer Online es odder nit.',
+	'onlinestatus-subtitle-offline' => 'Dä Metmaacher is em Momang nit doh',
+	'onlinestatus-subtitle-online'  => 'Dä Metmaacher is jrad online',
+	'onlinestatus-toggles-desc'     => 'Dinge Online-Stattus:',
+	'onlinestatus-toggles-explain'  => 'Dat hee määt et möchlech, dat ander Metmaacher om Dinge Metmaachersigg nohloore künne, of De online bes odder nit.',
+	'onlinestatus-toggles-show'     => 'Zeich minge Online-Stattus op minge Metmachersigg',
+	'onlinestatus-toggle-offline'   => 'Offline',
+	'onlinestatus-toggle-online'    => 'Online',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

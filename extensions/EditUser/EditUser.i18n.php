@@ -298,6 +298,14 @@ $messages['krj'] = array(
 	'edituser-dosearch' => 'Sagap',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'edituser-username' => 'Metmaacher Name',
+	'edituser-dosearch' => 'Sööke',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

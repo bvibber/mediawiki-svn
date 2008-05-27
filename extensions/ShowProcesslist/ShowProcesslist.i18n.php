@@ -168,6 +168,14 @@ $messages['hsb'] = array(
 	'showprocesslist-info'    => 'Informacija',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'showprocesslist-user' => 'Pengguna',
+	'showprocesslist-time' => 'Waktu',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -196,6 +204,13 @@ $messages['km'] = array(
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
 	'showprocesslist-time' => 'ពេលវេលា',
 	'showprocesslist-info' => 'ពត៌មាន',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'showprocesslist-user' => 'Metmaacher',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

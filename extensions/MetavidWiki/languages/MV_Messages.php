@@ -1322,6 +1322,14 @@ $messages['krj'] = array(
 	'mv_category'        => 'kategorya',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mv_tool_search' => 'Sööke',
+	'mv_search_and'  => ', un',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

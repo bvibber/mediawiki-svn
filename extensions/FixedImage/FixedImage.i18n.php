@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'fixedimage-desc' => 'Adds <tt><nowiki><fundraising></nowiki></tt> tag as an image',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'fixedimage-desc' => 'يضيف وسم <tt><nowiki><fundraising></nowiki></tt> كصورة',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

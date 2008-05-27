@@ -101,7 +101,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'newsextension-desc' => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
+	'newsextension-desc'          => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
+	'newsextension-unknownformat' => '$1: onbekannte Feed Format: $2<br />',
 );
 
 /** Marathi (मराठी)

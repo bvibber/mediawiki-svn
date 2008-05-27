@@ -184,6 +184,7 @@ $messages['bg'] = array(
 За използване на това разширение е необходимо да промените правата й.',
 	'configure-edit-old'               => 'Предупреждение: редактирате <strong>стара</strong> версия на настройките.',
 	'configure-error'                  => 'Настройките не могат да бъдат съхранени',
+	'configure-js-group-exists'        => 'Грешка: групата вече съществува.',
 	'configure-js-remove'              => 'Изтриване',
 	'configure-no-directory'           => 'Използваната за съхранение на настройките директория, <tt>$1</tt>, не съществува.
 Необходимо е тя да бъде създадена или да бъде променена, за да може да се използва разширението.',
@@ -224,8 +225,11 @@ $messages['bg'] = array(
 	'configure-section-copyright'      => 'Авторско право',
 	'configure-section-misc'           => 'Разни',
 	'configure-setting-not-available'  => 'Тази настройка не е налична в използваната версия на МедияУики',
+	'configure-view-not-allowed'       => 'Не ви е позволено да виждате тази настройка',
 	'right-configure'                  => 'Конфигуриране на уикито',
 	'right-configure-all'              => 'Конфигуриране на всички уикита',
+	'right-viewconfig'                 => 'Преглед на конфигурацията на уикито',
+	'viewconfig'                       => 'Преглед на конфигурацията на уикито',
 );
 
 /** Chamorro (Chamoru)
@@ -512,6 +516,9 @@ $messages['gl'] = array(
 	'configure-btn-save'              => 'Gardar as configuracións',
 	'configure-edit-old'              => 'Aviso: está editando unha versión <strong>vella</strong> da configuración.',
 	'configure-error'                 => 'A configuración non pode ser gardada',
+	'configure-js-add'                => 'Engadir unha nova entrada',
+	'configure-js-group-exists'       => 'Erro: o grupo xa existe.',
+	'configure-js-prompt-group'       => 'Insira o nome do novo grupo:',
 	'configure-js-remove'             => 'Eliminar',
 	'configure-js-remove-row'         => 'Eliminar esta entrada',
 	'configure-no-directory'          => 'O directorio usado para almacenar as configuracións, <tt>$1</tt>, non existe.
@@ -530,10 +537,13 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-section-enotif'        => 'Notificación por correo electrónico',
 	'configure-section-localization'  => 'Localización',
 	'configure-section-timezone'      => 'Zona horaria',
+	'configure-section-zh-conversion' => 'Conversa chinesa',
 	'configure-section-debug'         => 'Depurando',
 	'configure-section-profiling'     => 'Facendo o perfil',
 	'configure-section-site'          => 'Personalización do sitio',
+	'configure-section-css-js'        => 'CSS e JavaScript',
 	'configure-section-namespaces'    => 'Espazos de nomes',
+	'configure-section-stats'         => 'Estatísticas do sitio',
 	'configure-section-skin'          => 'Apariencias',
 	'configure-section-category'      => 'Categorías',
 	'configure-section-cache'         => 'Caché',
@@ -564,6 +574,9 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-setting-not-available' => 'A configuración non está dispoñible nesta versión de MediaWiki',
 	'right-configure'                 => 'Configurar o wiki',
 	'right-configure-all'             => 'Configurar todos os parámetros do wiki',
+	'right-viewconfig'                => 'Ver a configuración do wiki',
+	'right-viewconfig-all'            => 'Ver toda a configuración do wiki',
+	'viewconfig'                      => 'Ver a configuración do wiki',
 );
 
 /** Hindi (हिन्दी)
@@ -692,6 +705,16 @@ $messages['krj'] = array(
 	'configure-section-email'        => 'E-mail',
 	'configure-section-category'     => 'Manga Kategorya',
 	'configure-section-specialpages' => 'Manga espesyal nga pahina',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'configure-desc-group'           => 'Jroppe',
+	'configure-desc-ns'              => 'Appachtemangs',
+	'configure-section-namespaces'   => 'Appachtemangs',
+	'configure-section-specialpages' => 'Sondersigge',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1053,6 +1076,8 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-view-not-allowed'       => 'Du har ikke tillatelse til å se denne innstillingen',
 	'right-configure'                  => 'Konfigurere wikien',
 	'right-configure-all'              => 'Konfigurere innstillinger på alle wikier',
+	'right-viewconfig'                 => 'Se wikikonfigurasjon',
+	'right-viewconfig-all'             => 'Se alle wikikonfigurasjoner',
 	'viewconfig'                       => 'Vis wikikonfigurasjon',
 );
 
@@ -1394,6 +1419,8 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-view-not-allowed'       => 'Nemáte oprávnenie zobraziť toto nastavenie',
 	'right-configure'                  => 'Nastavenie wiki',
 	'right-configure-all'              => 'Nastavenie všetkých wiki',
+	'right-viewconfig'                 => 'Zobraziť konfiguráciu wiki',
+	'right-viewconfig-all'             => 'Zobraziť konfiguráciu všetkých wiki',
 	'viewconfig'                       => 'Zobraziť konfiguráciu wiki',
 );
 
@@ -1402,9 +1429,15 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
  */
 $messages['sr-ec'] = array(
 	'configure'                       => 'Конфигуришите вики',
+	'configure-desc-group'            => 'Групе',
+	'configure-desc-key'              => 'Кључ',
+	'configure-desc-ns'               => 'Именски простори',
 	'configure-btn-save'              => 'Сними подешавања',
 	'configure-edit-old'              => 'Пажња: мењате <strong>стару</strong> верзију подешавања',
 	'configure-error'                 => 'Подешавања не могу бити снимљена',
+	'configure-js-remove'             => 'Обриши',
+	'configure-js-remove-row'         => 'Обриши овај упис',
+	'configure-section-general'       => 'Основна подешавања',
 	'configure-section-paths'         => 'Путање',
 	'configure-section-db'            => 'Базе података',
 	'configure-section-email'         => 'Е-пошта',
@@ -1412,6 +1445,7 @@ $messages['sr-ec'] = array(
 	'configure-section-localization'  => 'Локализација',
 	'configure-section-site'          => 'Прилагођавање сајта',
 	'configure-section-namespaces'    => 'Именски простори',
+	'configure-section-stats'         => 'Статистике сајта',
 	'configure-section-skin'          => 'Коже',
 	'configure-section-category'      => 'Категорије',
 	'configure-section-cache'         => 'Кеш',
@@ -1517,6 +1551,8 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-view-not-allowed'       => 'Du är inte tillåten att se den här inställningen',
 	'right-configure'                  => 'Konfigurera wikin',
 	'right-configure-all'              => 'Konfigurera alla inställningar på wikin',
+	'right-viewconfig'                 => 'Visa wikiinställningar',
+	'right-viewconfig-all'             => 'Visa alla wikiinställningar',
 	'viewconfig'                       => 'Visa wikikonfigurering',
 );
 

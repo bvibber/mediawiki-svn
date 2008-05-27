@@ -472,16 +472,17 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
- * @author Dorgan
  * @author Dani
+ * @author Dorgan
  */
 $messages['hu'] = array(
-	'newuserlogpage'           => 'Új felhasználók naplója',
-	'newuserlogpagetext'       => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
-	'newuserlog-desc'          => 'A [[Special:Log|rendszernaplókat]] kiegészíti az [[Special:Log/newusers|új felhasználói fiókok készítésének naplójával]]',
-	'newuserlog-byemail'       => 'a jelszót kiküldtük a megadott e-mail címre',
-	'newuserlog-create-entry'  => 'új felhasználóként regisztrált',
-	'newuserlog-create2-entry' => 'új felhasználót hozott létre $1 néven',
+	'newuserlogpage'              => 'Új felhasználók naplója',
+	'newuserlogpagetext'          => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
+	'newuserlog-desc'             => 'A [[Special:Log|rendszernaplókat]] kiegészíti az [[Special:Log/newusers|új felhasználói fiókok készítésének naplójával]]',
+	'newuserlog-byemail'          => 'a jelszót kiküldtük a megadott e-mail címre',
+	'newuserlog-create-entry'     => 'új felhasználóként regisztrált',
+	'newuserlog-create2-entry'    => 'új felhasználót hozott létre $1 néven',
+	'newuserlog-autocreate-entry' => 'Felhasználói fiók automatikusan létrehozva',
 );
 
 $messages['hy'] = array(

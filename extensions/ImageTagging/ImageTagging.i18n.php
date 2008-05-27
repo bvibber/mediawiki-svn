@@ -174,6 +174,13 @@ Desexa acceder ao sistema agora?',
 	'imagetagging-taggedimages-total'       => '"$1"; imaxe(s) en total',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'imagetagging-tagcancel-button' => 'Draanjevve',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

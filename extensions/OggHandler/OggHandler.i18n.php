@@ -1115,6 +1115,11 @@ $messages['krj'] = array(
 	'ogg-more' => 'Raku pa...',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array();
+
 $messages['la'] = array(
 	'ogg-more' => 'Plus...',
 );

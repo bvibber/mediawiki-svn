@@ -108,6 +108,13 @@ $messages['jv'] = array(
 	'charinsert-desc' => 'Marengaké digawéné kothak JavaScript kanggo [[MediaWiki:Edittools|nyisipaké karakter non-standar]]',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'charinsert-desc' => 'Määt en Javascrip Knöppsche mööschlesch för [[MediaWiki:Edittools|Sönderbochstave un frempshprochijje Bochstave enzeföje]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

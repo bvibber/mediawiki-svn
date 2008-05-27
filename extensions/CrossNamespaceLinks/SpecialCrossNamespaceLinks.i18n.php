@@ -109,6 +109,16 @@ $messages['cs'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'crossnamespacelinks'         => 'Cysylltiadau rhwng dau barth',
+	'crossnamespacelinks-desc'    => "Yn rhestru'r [[Special:CrossNamespaceLinks|cysylltiadau rhwng parthau]] na ddylent fod ar {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Fe ddilyn rhestr y cysylltiadau rhwng tudalennau yn y prif barth a rhai mewn parthau eraill (heblaw am y parthau {{ns:special}}, {{ns:talk}}, {{ns:project}}, a {{ns:template}}). Ni chymeradwyir defnyddio'r cysylltiadau hyn.",
+	'crossnamespacelinkstext'     => "$1: {{PLURAL:$2|Nid oes dim cysylltiad arni|mae arni $2 cysylltiad|mae arni $2 gysylltiad|mae arni $2 chysylltiad|mae arni $2 chysylltiad|mae arni $2 o gysylltiadau}} â'r parth $3",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

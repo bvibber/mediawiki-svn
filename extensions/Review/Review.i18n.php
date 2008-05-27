@@ -163,6 +163,7 @@ $messages['bg'] = array(
 	'review_version_link'           => 'Редакция #$1',
 	'review_version_statistic_cell' => '$1 от $2',
 	'review_user_details_link'      => '(детайли)',
+	'review_blocked'                => 'Вие сте блокиран, разкарайте се.',
 	'review_topic'                  => 'Тема',
 	'review_rating'                 => 'Рейтинг',
 	'review_comment'                => 'Коментар',
@@ -513,6 +514,14 @@ $messages['km'] = array(
 	'review_topic'             => 'ប្រធានបទ',
 	'review_no_opinion'        => 'គ្មានមតិ',
 	'review_comment'           => 'យោបល់',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'review_total_statistics'  => 'Zosamme',
+	'review_user_details_link' => '(Einzelheite)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

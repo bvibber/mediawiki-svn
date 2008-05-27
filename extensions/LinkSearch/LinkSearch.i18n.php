@@ -588,7 +588,9 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'linksearch' => '웹 링크 찾기',
+	'linksearch'     => '웹 링크 찾기',
+	'linksearch-pat' => '검색 패턴:',
+	'linksearch-ok'  => '검색',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -596,6 +598,13 @@ $messages['ko'] = array(
  */
 $messages['krj'] = array(
 	'linksearch-ok' => 'Sagap',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'linksearch-ok' => 'Sööke',
 );
 
 $messages['la'] = array(

@@ -187,6 +187,8 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'viewapc'                     => 'Информация за APC',
+	'right-apc'                   => 'използване на всички възможности на Special:ViewAPC',
+	'viewapc-mode-version-check'  => 'Проверка на версията',
 	'viewapc-info-general'        => 'Обща информация',
 	'viewapc-apc-version'         => 'Версия на APC',
 	'viewapc-php-version'         => 'Версия на РНР',
@@ -789,9 +791,13 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'viewapc-display-info'     => 'Name',
 	'viewapc-display-num_hits' => 'Treffer',
+	'viewapc-ls-submit'        => 'Loß Jonn!',
+	'viewapc-ls-header-name'   => 'Name',
 	'viewapc-ls-header-hits'   => 'Treffer',
 	'viewapc-ls-sort-hits'     => 'Treffer',
+	'viewapc-ls-sort-name'     => 'Name',
 	'viewapc-ls-limit-none'    => 'All',
 );
 
@@ -814,6 +820,7 @@ $messages['lb'] = array(
 	'viewapc-memory-usage'          => 'Benotzung vun der Memoire',
 	'viewapc-memory-free'           => 'Fräi: $1 ($2)',
 	'viewapc-memory-used'           => 'Benotzt: $1 ($2)',
+	'viewapc-fragmentation-info'    => 'Fragmentatioun: $1 ($2 vun $3 an $4 {{PLURAL:$4|Fragment|Fragmenter}})',
 	'viewapc-fragmentation-none'    => 'Fragmentatioun: keng Fragmentatioun',
 	'viewapc-display-value'         => 'Wert',
 	'viewapc-display-filename'      => 'Numm vum Fichier',

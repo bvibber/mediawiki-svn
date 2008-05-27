@@ -309,6 +309,13 @@ $messages['krj'] = array(
 	'dt_xml_page'           => 'Pahina',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'dt_xml_name' => 'Name',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

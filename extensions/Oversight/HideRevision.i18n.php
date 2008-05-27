@@ -1298,6 +1298,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'right-hiderevision'  => 'Versione vun Sigge beloore un zeröck holle, di sujaa för de Wiki-Köbesse verstoche sin',
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
+	'oversight-view'      => 'Einzelheite',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

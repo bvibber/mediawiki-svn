@@ -1384,6 +1384,13 @@ $wgGoogleMapsMessages['krj'] = array(
 	'gm-search' => 'Sagap',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$wgGoogleMapsMessages['ksh'] = array(
+	'gm-search' => 'Sööke',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
