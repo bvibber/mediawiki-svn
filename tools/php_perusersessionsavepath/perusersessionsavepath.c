@@ -69,6 +69,7 @@ PHP_RSHUTDOWN_FUNCTION(perusersessionsavepath) {
 PHP_MINFO_FUNCTION(perusersessionsavepath) {
 	php_info_print_table_start();
 	php_info_print_table_row(2, "Per-user session save path", "enabled");
+	php_info_print_table_row(2, "Session directory", "$HOME/" SESSION_DIR);
 	php_info_print_table_end();
 }
 
