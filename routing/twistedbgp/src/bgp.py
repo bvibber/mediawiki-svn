@@ -159,7 +159,7 @@ class IPPrefix(object):
                 self.prefix = prefix
             elif type(prefix) is int:
                 # tuple (ipint, prefixlen)
-                self.prefix = struct.pack('!I', prefix)[0]
+                self.prefix = struct.pack('!I', prefix)
             else:
                 # Assume prefix is a sequence of octets
                 self.prefix = "".join(map(chr, prefix))
@@ -209,6 +209,18 @@ class IPPrefix(object):
 
     def ipToInt(self):
         return reduce(lambda x, y: x * 256 + y, map(ord, self.prefix))
+
+    def netmask(self):
+        return ~( (1 << (len(self.prefix)*8 - self.prefixlen)) - 1)
+
+    def mask(self, prefixlen, shorten=False):
+        # DEBUG
+        assert len(self.prefix) == 4
+        
+        masklen = len(self.prefix) * 8 - prefixlen
+        self.prefix = struct.pack('!I', self.ipToInt() >> masklen << masklen)
+        if shorten: self.prefixlen = prefixlen
+        return self
 
 class IPv4IP(IPPrefix):
     """Class that represents a single non-prefix IPv4 IP."""
