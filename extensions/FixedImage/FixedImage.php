@@ -36,8 +36,9 @@ $wgFixedImageHooks = array(
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'FixedImage',
 	'author'         => 'Brion Vibber',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:FixedImage',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Just include an image',
 	'descriptionmsg' => 'fixedimage-desc',
 );

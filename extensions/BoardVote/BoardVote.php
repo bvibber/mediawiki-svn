@@ -9,10 +9,11 @@ if (!defined('MEDIAWIKI')) {
 
 # Extension credits
 $wgExtensionCredits['other'][] = array(
-	'name' => 'BoardVote',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
-	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
+	'name'           => 'BoardVote',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
 	'descriptionmsg' => 'boardvote-desc',
 );
 
