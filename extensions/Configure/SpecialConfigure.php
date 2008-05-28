@@ -412,6 +412,7 @@ class SpecialConfigure extends SpecialPage {
 	protected function cleanupSetting( $name, $val ){
 		switch( $name ){
 		case 'wgSharedDB':
+		case 'wgLocalMessageCache':
 			if( empty( $val ) )
 				return null;
 			else
