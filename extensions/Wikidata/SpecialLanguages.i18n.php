@@ -1119,15 +1119,32 @@ $wdMessages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Ashishbhatnagar72
  * @author Kaustubh
  */
 $wdMessages['hi'] = array(
+	'datasearch'                => 'Wikidata: आंकडा़ खोज',
+	'langman_title'             => 'भाषा प्रबंधक',
+	'languages'                 => 'Wikidata: भाषा प्रबंधक',
 	'ow_save'                   => 'संजोयें',
 	'ow_history'                => 'इतिहास',
+	'ow_noedit_title'           => 'संपादन की अनुमति नहीं है',
+	'ow_noedit'                 => 'आपको डाटासेट "$1" में पन्ने संपादन करने की अनुमति नहीं है. कृपया हमारी [[{{MediaWiki:Ow editing policy url}}|संपादन नीति]] देखें.',
+	'ow_none_selected'          => '<कुछ चयनित नहीं>',
 	'ow_dm_OK'                  => 'ओके',
+	'ow_dm_not_present'         => 'प्रवेश नहीं किया गया',
+	'ow_will_insert'            => 'निम्न को अन्तर्निविष्ट करेगा:',
+	'ow_AlternativeDefinition'  => 'वैकल्पिक परिभाषा',
+	'ow_AlternativeDefinitions' => 'वैकल्पिक परिभाषाएं',
+	'ow_ApproximateMeanings'    => 'सन्निकट अर्थ',
+	'ow_ClassAttributeLevel'    => 'स्तर',
+	'ow_ClassAttributeType'     => 'प्रकार',
 	'ow_Collection'             => 'कलेक्शन',
+	'ow_Definition'             => 'परिभाषा',
 	'ow_Language'               => 'भाषा',
+	'ow_OptionAttributeOption'  => 'विकल्प',
 	'ow_OptionAttributeOptions' => 'विकल्प',
+	'ow_Relations'              => 'संबन्ध',
 	'ow_Source'                 => 'स्रोत',
 	'ow_Permission_denied'      => '<h2>अनुमति नहीं दी</h2>',
 );

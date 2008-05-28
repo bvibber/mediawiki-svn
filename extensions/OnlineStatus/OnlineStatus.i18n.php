@@ -54,6 +54,20 @@ $messages['ca'] = array(
 	'onlinestatus-toggle-online'    => 'Connectat',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'onlinestatus-desc'             => 'Přidá možnost zobrazovat, zda je uživatel na wiki momentálně přítomný nebo ne',
+	'onlinestatus-subtitle-offline' => 'Tento uživatel je momentálně odpojený',
+	'onlinestatus-subtitle-online'  => 'Tento uživatel je momentálně připojený',
+	'onlinestatus-toggles-desc'     => 'Váš stav:',
+	'onlinestatus-toggles-explain'  => 'Toto Vám umožní zobrazovat na vaší uživatelské stránce ostatním uživatelům, zda jste ve skutečnosti připojen nebo ne.',
+	'onlinestatus-toggles-show'     => 'Zobrazovat můj stav na mojí uživatelské stránce',
+	'onlinestatus-toggle-offline'   => 'Odpojený',
+	'onlinestatus-toggle-online'    => 'Připojený',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

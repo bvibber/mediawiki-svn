@@ -37,6 +37,14 @@ $messages['bn'] = array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'contributionseditcount'      => 'Aquest usuari té $1 contribucions.',
+	'contributionseditcount-desc' => 'Mostra un recompte de contribucions a [[Special:Contributions]]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

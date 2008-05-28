@@ -1135,6 +1135,7 @@ $messages['lb'] = array(
 	'ogg-long-audio'          => '(Ogg-$1-Tounfichier, Dauer: $2, $3)',
 	'ogg-long-video'          => '(Ogg-$1-Videofichier, Dauer: $2, $4×$5 Pixel, $3)',
 	'ogg-long-multiplexed'    => '(Ogg-Toun-/Video-Fichier, $1, Dauer: $2, $4×$5 Pixel, $3)',
+	'ogg-long-general'        => '(Ogg Media-Fichier, Dauer $2, $3)',
 	'ogg-long-error'          => '(Ongëltegen Ogg-Fichier: $1)',
 	'ogg-play'                => 'Ofspillen',
 	'ogg-pause'               => 'Paus',

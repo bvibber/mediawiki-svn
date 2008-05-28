@@ -315,6 +315,13 @@ $messages['kn'] = array(
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'backforth-next' => 'Nähkß ($1)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

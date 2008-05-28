@@ -294,10 +294,25 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'spamdifftool_option_none' => 'कोणतेचानाही',
+	'spamdifftool'                  => 'स्पम ब्लकलिस्टचे व्यवस्थापन करा',
+	'spamdifftool-desc'             => 'फरक पानांमधून स्पॅम ब्लकलिस्ट मध्ये नोंदी वाढविण्याचा सोपा मार्ग देते',
+	'spamdifftool_cantedit'         => 'माफकरा - स्पॅम ब्लॅकलिस्ट संपादित करण्याची तुम्हाला परवानगी नाही.',
+	'spamdifftool_notext'           => "स्पॅम ब्लॅकलिस्ट मध्ये वाढविण्यासाठी मजकूर नाही.
+पुढे जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या.",
+	'spamdifftool_confirm'          => "तुम्ही या नोंदी स्पॅम ब्लॅकलिस्ट मध्ये वाढवू इच्छिता याची खात्री करा.
+(अडचण नोंदविण्यासाठी <a href='$1' target='new'>इथे</a> टिचकी द्या.)",
+	'spamdifftool_summary'          => 'स्पॅम ब्लॅकलिस्ट मध्ये वाढवित आहे',
+	'spamdifftool_spam_link_text'   => 'स्पॅम मध्ये वाढवा',
+	'spamdifftool_option_domain'    => 'या डोमेन मधील सर्व',
+	'spamdifftool_option_subdomain' => 'या सबडोमेन मधील सर्व',
+	'spamdifftool_option_directory' => 'हा सबडोमेन व डिरेक्टरी',
+	'spamdifftool_option_none'      => 'कोणतेचानाही',
+	'spamdifftool_block'            => 'ब्लॉक:',
+	'spamdifftool_submit_buttom'    => 'पाठवा',
 );
 
 /** Dutch (Nederlands)

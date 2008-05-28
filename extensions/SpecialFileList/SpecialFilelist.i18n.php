@@ -344,6 +344,16 @@ $messages['mn'] = array(
 	'filelist-image-desc' => 'тайлбар',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'filelist'              => 'संचिका यादी',
+	'filelist-show-list'    => 'यादी दाखवा',
+	'filelist-show-gallery' => 'प्रदर्शन दाखवा',
+	'filelist-image-desc'   => 'माहिती',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

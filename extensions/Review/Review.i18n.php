@@ -214,6 +214,13 @@ $messages['br'] = array(
 	'review_comment'                                         => 'Notenn',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'review_comment' => 'Comentari',
+);
+
 /** Danish (Dansk)
  * @author Morten
  */

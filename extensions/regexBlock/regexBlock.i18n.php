@@ -528,6 +528,14 @@ $messages['hsb'] = array(
 	'regexblock-view-time'            => '$1',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'regexblock-form-reason' => 'Alasan:',
+	'regexblock-view-all'    => 'Semua',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  * @author S.Örvarr.S

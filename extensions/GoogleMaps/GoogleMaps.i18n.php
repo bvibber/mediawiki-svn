@@ -1265,6 +1265,14 @@ $wgGoogleMapsMessages['hu'] = array(
 	'gm-mars'             => 'Mars',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$wgGoogleMapsMessages['id'] = array(
+	'gm-no-zoom-control' => 'Tidak ada',
+	'gm-no'              => 'Tidak',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  * @author S.Örvarr.S

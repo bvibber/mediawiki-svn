@@ -259,6 +259,13 @@ $messages['hu'] = array(
 	'passwordreset-accountdisabled'    => 'A felhasználói fiók le lett tiltva',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'passwordreset-username' => 'Nama pengguna',
+);
+
 $messages['ie'] = array(
 	'passwordreset-username' => 'Vor nómine usatori',
 	'passwordreset-newpass' => 'Nov passa-parol',

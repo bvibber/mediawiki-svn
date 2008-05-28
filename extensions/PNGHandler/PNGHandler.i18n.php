@@ -21,6 +21,13 @@ $messages['bg'] = array(
 	'pnghandler-desc' => 'Преоразмеряване на PNG с помощта на pngds',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'pnghandler-desc' => 'Mění velikost PNG obrázků pomocí pngds',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

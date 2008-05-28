@@ -60,8 +60,13 @@ Els usuaris anònims en tindran un d'automàtic, però els podeu canviar.",
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'mibbit'      => 'Mibbit Chat',
-	'mibbit-desc' => 'Přidáva [[Special:Mibbit|speciální stránku]], pomocí které můžete komunikovat s ostatními uživateli wiki v reálném čase',
+	'mibbit'        => 'Mibbit Chat',
+	'mibbit-desc'   => 'Přidáva [[Special:Mibbit|speciální stránku]], pomocí které můžete komunikovat s ostatními uživateli wiki v reálném čase',
+	'mibbit-header' => 'Tato speciální stránka Vám umožňuje spolupracovat v reálném čase s ostatními uživateli wiki.
+Připojíte se jednoduše stisknutím tlačítka „Připojit“.
+Pokud jste přihlášený, vaše uživatelské jméno se vyplní automaticky.
+Anonymním uživatelům se jméno vygeneruje automaticky, ale je možné ho změnit.',
+	'right-mibbit'  => 'Používat Mibbit chat',
 );
 
 

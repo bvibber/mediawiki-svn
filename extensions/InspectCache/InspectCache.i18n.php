@@ -68,6 +68,13 @@ Diverkañ',
 	'inspectcache-list'   => 'Roll',
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'inspectcache-delete' => 'поничьжє́ниѥ',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -239,6 +246,13 @@ $messages['km'] = array(
 $messages['krj'] = array(
 	'inspectcache-ok'     => 'OK dun',
 	'inspectcache-delete' => 'Para',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'inspectcache-delete' => 'Fottschmieße',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

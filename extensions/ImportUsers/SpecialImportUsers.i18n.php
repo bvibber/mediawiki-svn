@@ -308,6 +308,13 @@ $messages['hsb'] = array(
 	'importusers-realname'                => 'woprawdźite mjeno',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'importusers-log-summary-all' => 'Semua',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

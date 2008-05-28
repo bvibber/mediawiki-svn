@@ -88,6 +88,36 @@ $messages['bg'] = array(
 	'imagetagging-tagcancel-button' => 'Отказване',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'taggedimages'                         => 'Označené obrázky',
+	'imagetagging-desc'                    => 'Umožňuje uživatelům vybrat oblasti vloženého obrázku a k dané oblasti přiřadti stránku.',
+	'imagetagging-addimagetag'             => 'Označit tento obrázek',
+	'imagetagging-article'                 => 'Stránka:',
+	'imagetagging-articletotag'            => 'Označit stránku:',
+	'imagetagging-imghistory'              => 'Historie',
+	'imagetagging-images'                  => 'obrázky',
+	'imagetagging-inthisimage'             => 'V tomto obrázku: $1',
+	'imagetagging-logentry'                => '$2 odstranil značku na stránku [[$1]]',
+	'imagetagging-log-tagged'              => '$4 označil obrázek [[$1|$2]] na stránku [[$3]]',
+	'imagetagging-new'                     => '<sup><span style="color: red;">Nové!</span></sup>',
+	'imagetagging-removetag'               => 'odstranit značku',
+	'imagetagging-done-button'             => 'Ukončit označování',
+	'imagetagging-tag-button'              => 'Značka',
+	'imagetagging-tagcancel-button'        => 'Zrušit',
+	'imagetagging-tagging-instructions'    => 'Kliknutím na ludi nebo věci na obrázku je můžete označit.',
+	'imagetagging-addingtag'               => 'Přidává se značka…',
+	'imagetagging-removingtag'             => 'Odstraňuje se značka…',
+	'imagetagging-addtagsuccess'           => 'Přidána značka.',
+	'imagetagging-removetagsuccess'        => 'Odstraněna značka.',
+	'imagetagging-oneuniquetagmessage'     => 'Tento obrázek už má značku s takovým názvem.',
+	'imagetagging-imagetag-seemoreimages'  => 'Zobrazit více obrázků „$1” ($2)',
+	'imagetagging-taggedimages-title'      => 'Obrázky „$1”',
+	'imagetagging-taggedimages-displaying' => 'Zobrazuje se $1 - $2 z $3 obrázků „$4”',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

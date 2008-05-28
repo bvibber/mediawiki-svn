@@ -54,6 +54,13 @@ $messages['bg'] = array(
 	'showprocesslist-info'    => 'Информация',
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'showprocesslist-user' => 'по́льꙃєватєл҄ь',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

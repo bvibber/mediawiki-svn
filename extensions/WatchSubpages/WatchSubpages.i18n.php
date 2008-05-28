@@ -50,6 +50,21 @@ $messages['ca'] = array(
 	'watchsubpages' => 'Vigila subpàgines',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'watchsubpages'                      => 'Sledovat podstránky',
+	'watchsubpages-addedtowatchlist'     => 'Následující stránky byly přidány do vaše seznamu sledovaných stránek:',
+	'watchsubpages-addtitles'            => 'Přidat stránky',
+	'watchsubpages-addtitlestowatchlist' => 'Přidat stránky do seznamu sledovaných',
+	'watchsubpages-desc'                 => 'Rychle [[{{special:WatchSubpages}}|přidat všechny podstránky]] stránky do seznamu sledovaných',
+	'watchsubpages-form'                 => 'Vyberte stránky, které chcete přidat do svého seznamu sledovaných stránek.
+Stránku přidáte tak, že označíte pole vedle něj a kliknete na „Pridat stránky“.
+
+Při označování nebo odznačování více stránek můžete držením klávesy Shift a kliknutím na začatek a konec rozsahu yvbrat více po sobě jdoucích polí současně.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -104,6 +119,13 @@ $messages['ml'] = array(
 	'watchsubpages-addtitles'            => 'താളുകള്‍ ചേര്‍ക്കുക',
 	'watchsubpages-addtitlestowatchlist' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്കു താളുകള്‍ ചേര്‍ക്കുക',
 	'watchsubpages-desc'                 => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് [[Special:WatchSubpages|ഒരു താളിന്റെ എല്ലാ ഉപതാളുകളും]] ശീഘ്രമായി ചേര്‍ക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'watchsubpages-addtitles' => 'पाने वाढवा',
 );
 
 /** Dutch (Nederlands)

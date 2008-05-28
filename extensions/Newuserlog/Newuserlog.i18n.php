@@ -106,12 +106,13 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'newuserlogpage'           => 'Журнал стварэньня рахункаў',
-	'newuserlogpagetext'       => 'Гэта журнал стварэньня рахункаў удзельнікаў і ўдзельніц',
-	'newuserlog-desc'          => 'Дадае [[Special:Log/newusers|журнал стварэньня рахункаў]] у [[Special:Log]]',
-	'newuserlog-byemail'       => 'Пароль адасланы па электроннай пошце',
-	'newuserlog-create-entry'  => 'Новы ўдзельнік',
-	'newuserlog-create2-entry' => 'створаны рахунак для $1',
+	'newuserlogpage'              => 'Журнал стварэньня рахункаў',
+	'newuserlogpagetext'          => 'Гэта журнал стварэньня рахункаў удзельнікаў і ўдзельніц',
+	'newuserlog-desc'             => 'Дадае [[Special:Log/newusers|журнал стварэньня рахункаў]] у [[Special:Log]]',
+	'newuserlog-byemail'          => 'Пароль адасланы па электроннай пошце',
+	'newuserlog-create-entry'     => 'Новы ўдзельнік',
+	'newuserlog-create2-entry'    => 'створаны рахунак для $1',
+	'newuserlog-autocreate-entry' => 'Рахунак створаны аўтаматычна',
 );
 
 /** Bulgarian (Български)
@@ -254,8 +255,8 @@ $messages['dsb'] = array(
 	'newuserlog-desc'             => 'Pśidawa protokol wó [[Special:Log/newusers|nowych wužywarskich kontach]] k [[Special:Log]]',
 	'newuserlog-byemail'          => 'Pótajne słowo bu pśez e-mail pósłane.',
 	'newuserlog-create-entry'     => 'Nowy wužywaŕ',
-	'newuserlog-create2-entry'    => 'konto za $1 napórane.',
-	'newuserlog-autocreate-entry' => 'Wužywarske konto bu awtomatiski kreěrowane.',
+	'newuserlog-create2-entry'    => 'Konto za $1 napórane.',
+	'newuserlog-autocreate-entry' => 'Wužywarske konto bu awtomatiski napórane',
 );
 
 $messages['el'] = array(
@@ -397,12 +398,13 @@ $messages['ga'] = array(
  * @author Prevert
  */
 $messages['gl'] = array(
-	'newuserlogpage'           => 'Rexistro de usuarios',
-	'newuserlogpagetext'       => 'Este é un rexistro de creación de usuarios',
-	'newuserlog-desc'          => 'Engada un [[Special:Log/newusers|rexistro de creación de contas]] a [[Special:Log]]',
-	'newuserlog-byemail'       => 'contrasinal enviado por correo electrónico',
-	'newuserlog-create-entry'  => 'Novo usuario',
-	'newuserlog-create2-entry' => 'creada unha conta para $1',
+	'newuserlogpage'              => 'Rexistro de creación de usuarios',
+	'newuserlogpagetext'          => 'Este é un rexistro de creación de contas de usuario.',
+	'newuserlog-desc'             => 'Engade un [[Special:Log/newusers|rexistro de creación de contas]] en [[Special:Log]]',
+	'newuserlog-byemail'          => 'contrasinal enviado por correo electrónico',
+	'newuserlog-create-entry'     => 'Novo usuario',
+	'newuserlog-create2-entry'    => 'creou unha conta para "$1"',
+	'newuserlog-autocreate-entry' => 'Conta de usuario creada automaticamente',
 );
 
 /** Manx (Gaelg)
@@ -467,8 +469,8 @@ $messages['hsb'] = array(
 	'newuserlog-desc'             => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]] k [[Special:Log]]',
 	'newuserlog-byemail'          => 'Hesło z e-mejlku pósłane',
 	'newuserlog-create-entry'     => 'Nowy wužiwar',
-	'newuserlog-create2-entry'    => 'konto za wužiwarja $1 wutworjene',
-	'newuserlog-autocreate-entry' => 'Wužiwarske konto bu awtomatisce kreěrowane.',
+	'newuserlog-create2-entry'    => 'Konto za wužiwarja $1 wutworjene',
+	'newuserlog-autocreate-entry' => 'Wužiwarske konto bu awtomatisce wutworjene.',
 );
 
 /** Hungarian (Magyar)
@@ -494,14 +496,16 @@ $messages['hy'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
-	'newuserlogpage'           => 'Log pengguna baru',
-	'newuserlogpagetext'       => 'Di bawah ini adalah log pendaftaran pengguna baru',
-	'newuserlog-desc'          => 'Menambahkan [[Special:Log/newusers|log pembuatan akun]] di [[Special:Log]]',
-	'newuserlog-byemail'       => 'kata sandi dikirim melalui surat-e',
-	'newuserlog-create-entry'  => 'mendaftar sebagai pengguna',
-	'newuserlog-create2-entry' => 'mendaftarkan akun untuk $1',
+	'newuserlogpage'              => 'Log pengguna baru',
+	'newuserlogpagetext'          => 'Di bawah ini adalah log pendaftaran pengguna baru',
+	'newuserlog-desc'             => 'Menambahkan [[Special:Log/newusers|log pembuatan akun]] di [[Special:Log]]',
+	'newuserlog-byemail'          => 'kata sandi dikirim melalui surat-e',
+	'newuserlog-create-entry'     => 'mendaftar sebagai pengguna',
+	'newuserlog-create2-entry'    => 'mendaftarkan akun untuk $1',
+	'newuserlog-autocreate-entry' => 'akun pengguna dibuat secara otomatis',
 );
 
 /** Ido (Ido)
@@ -527,14 +531,16 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Melos
  */
 $messages['it'] = array(
-	'newuserlogpage'           => 'Registro nuovi utenti',
-	'newuserlogpagetext'       => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
-	'newuserlog-desc'          => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
-	'newuserlog-byemail'       => 'password inviata via mail',
-	'newuserlog-create-entry'  => 'si è registrato',
-	'newuserlog-create2-entry' => 'ha registrato il nome utente $1',
+	'newuserlogpage'              => 'Registro nuovi utenti',
+	'newuserlogpagetext'          => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
+	'newuserlog-desc'             => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
+	'newuserlog-byemail'          => 'password inviata via mail',
+	'newuserlog-create-entry'     => 'si è registrato',
+	'newuserlog-create2-entry'    => 'ha registrato il nome utente $1',
+	'newuserlog-autocreate-entry' => 'Account creato automaticamente',
 );
 
 /** Japanese (日本語)
@@ -869,8 +875,8 @@ $messages['pl'] = array(
 	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
 	'newuserlog-byemail'          => 'hasło zostało wysłane e-mailem',
 	'newuserlog-create-entry'     => '– nowy użytkownik',
-	'newuserlog-create2-entry'    => 'utworzono nowe konto $1',
-	'newuserlog-autocreate-entry' => 'Konto użytkownika utworzono automatycznie',
+	'newuserlog-create2-entry'    => '– utworzył konto $1',
+	'newuserlog-autocreate-entry' => '– konto utworzone automatycznie',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -909,11 +915,13 @@ $messages['pt'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'newuserlogpage'           => "Rakiquna kamariy hallch'a",
-	'newuserlogpagetext'       => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am",
-	'newuserlog-byemail'       => 'e-chaskiwan kachasqa yaykuna rima',
-	'newuserlog-create-entry'  => 'Musuq ruraq',
-	'newuserlog-create2-entry' => 'kamarin $1-paq rakiqunata',
+	'newuserlogpage'              => "Rakiquna kamariy hallch'a",
+	'newuserlogpagetext'          => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am",
+	'newuserlog-desc'             => "[[Special:Log/newusers|Rakiquna kamariy hallch'asqata]] yapan [[Special:Log|tukuy hallch'ayuq p'anqaman]]",
+	'newuserlog-byemail'          => 'e-chaskiwan kachasqa yaykuna rima',
+	'newuserlog-create-entry'     => 'Musuq ruraq',
+	'newuserlog-create2-entry'    => 'kamarin $1-paq rakiqunata',
+	'newuserlog-autocreate-entry' => 'Kikinmanta kamarisqa rakiquna',
 );
 
 $messages['ro'] = array(
@@ -960,18 +968,27 @@ $messages['sk'] = array(
 	'newuserlog-autocreate-entry' => 'Účet vytvorený automaticky',
 );
 
+/** Albanian (Shqip)
+ * @author Dori
+ */
 $messages['sq'] = array(
-	'newuserlog-create-entry'  => 'Përdorues i ri',
-	'newuserlog-create2-entry' => 'krijoi llogarin për përdouesin $1',
-	'newuserlogpage'           => 'Regjistri i llogarive',
-	'newuserlogpagetext'       => 'Ky është një regjistër i llogarive të fundit që janë hapur',
+	'newuserlogpage'              => 'Regjistri i llogarive',
+	'newuserlogpagetext'          => 'Ky është një regjistër i llogarive të fundit që janë hapur',
+	'newuserlog-create-entry'     => 'Përdorues i ri',
+	'newuserlog-create2-entry'    => 'krijoi llogarin për përdouesin $1',
+	'newuserlog-autocreate-entry' => 'Llogaria u hap automatikisht',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
 $messages['sr-ec'] = array(
-	'newuserlogpage'           => 'историја креирања корисника',
-	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника',
-	'newuserlog-create-entry'  => 'Нови корисник',
-	'newuserlog-create2-entry' => 'направио налог за $1',
+	'newuserlogpage'              => 'историја креирања корисника',
+	'newuserlogpagetext'          => 'Ово је историја скорашњих креација корисника',
+	'newuserlog-desc'             => 'Додаје [[Special:Log/newusers|историју прављења налога]] у [[Special:Log]]',
+	'newuserlog-create-entry'     => 'Нови корисник',
+	'newuserlog-create2-entry'    => 'направио налог за $1',
+	'newuserlog-autocreate-entry' => 'налог аутоматски направљен',
 );
 
 $messages['sr-el'] = array(

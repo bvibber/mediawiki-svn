@@ -261,6 +261,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'usernameblacklist-desc' => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
 	'blacklistedusername'    => 'Malpermesita uzantnomo',
+	'right-uboverride'       => 'Astataŭigi la salutnoman nigraliston',
 );
 
 $messages['eu'] = array(
@@ -485,6 +486,7 @@ $messages['hy'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  * @author Meursault2004
  */
 $messages['id'] = array(
@@ -501,6 +503,7 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Entri|Entri}} pada daftar hitam nama pengguna {{PLURAL:$1|ini|berikut}} tidak valid; silakan perbaiki {{PLURAL:$1|entri|entri}} tersebut sebelum disimpan:',
+	'right-uboverride'                => 'Abaikan daftar hitam nama pengguna',
 );
 
 /** Icelandic (Íslenska)

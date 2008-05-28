@@ -60,6 +60,13 @@ $messages['hu'] = array(
 	'fixedimage-desc' => 'A <tt><nowiki><fundraising></nowiki></tt> taget képként jeleníti meg',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'fixedimage-desc' => 'Adds tag <tt><nowiki><fundraising></nowiki></tt> sebagai sebuah gambar',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

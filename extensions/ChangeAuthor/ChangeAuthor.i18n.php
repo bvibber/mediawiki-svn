@@ -176,10 +176,32 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Jordi Roqué
  * @author SMP
  */
 $messages['ca'] = array(
-	'changeauthor-pagenameform-go' => 'Vés-hi',
+	'changeauthor'                      => 'Canviar autor de revisions',
+	'changeauthor-desc'                 => "Permet canviar l'autor d'una revisió",
+	'changeauthor-title'                => "Canviar l'autor d'una revisió",
+	'changeauthor-search-box'           => 'Cercar revisions',
+	'changeauthor-pagename-or-revid'    => 'Nom de la pàgina o referència de la revisió:',
+	'changeauthor-pagenameform-go'      => 'Vés-hi',
+	'changeauthor-comment'              => 'Comentari:',
+	'changeauthor-changeauthors-multi'  => "Canvi d'autor(s)",
+	'changeauthor-explanation-multi'    => "Amb aquesta pantalla es poden canviar autors de revisions.<br>
+Només cal que canvieu un o més noms d'usuaris de la llista, afegiu un comentari (opcional) i pitgeu el botó 'Canvi d'autor(s)'.",
+	'changeauthor-changeauthors-single' => "Canvi d'autor",
+	'changeauthor-explanation-single'   => "Amb aquesta pantalla podeu canviar l'autor d'una revisió.<br>
+Només cal que canvieu el nom de l'usuari, afegiu un comentari (opcional) i pitgeu el botó 'Canvi d'autor'.",
+	'changeauthor-invalid-username'     => 'Nom d\'usuari "$1" invàlid.',
+	'changeauthor-nosuchuser'           => 'L\'usuari "$1" no existeix.',
+	'changeauthor-revview'              => 'Revisió número $1 de $2',
+	'changeauthor-nosuchtitle'          => 'No hi ha cap pàgina anomenada "$1".',
+	'changeauthor-weirderror'           => "Ha ocorregut un error poc comú. 
+Si us plau, intenteu-ho de nou. 
+Si l'error persisteix, és probable que la base de dades estigui avariada.",
+	'changeauthor-success'              => 'La vostra petició ha estat processada satisfactòriament.',
+	'changeauthor-logpagename'          => "Registre de canvis d'autor",
 );
 
 /** Chamorro (Chamoru)
@@ -213,6 +235,13 @@ $messages['cs'] = array(
 	'changeauthor-success'              => 'Vaše požadavky byly úspěšně zpracovány.',
 	'changeauthor-logentry'             => 'Autor $2 z $1 byl změněn z $3 na $4',
 	'changeauthor-logpagename'          => 'Záznam změn autorů',
+);
+
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'changeauthor-pagenameform-go' => 'прѣиди́',
 );
 
 /** Danish (Dansk)

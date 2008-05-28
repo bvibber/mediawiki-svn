@@ -103,6 +103,13 @@ $messages['ml'] = array(
 	'usercontactlink-baduser' => 'തെറ്റായ ഉപയോക്തൃനാമം',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'usercontactlink-baduser' => 'चुकीचे सदस्यनाव',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

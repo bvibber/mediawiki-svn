@@ -290,10 +290,17 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'tasklistmytasks' => 'माझ्या जबाबदार्‍या',
+	'tasklist'               => 'कार्य यादी',
+	'tasklistunknownproject' => 'अनोळखी प्रकल्प',
+	'tasklistunspecuser'     => 'न दिलेला सदस्य',
+	'tasklistincorrectuser'  => 'चुकीचे सदस्यनाव',
+	'tasklistemail'          => 'प्रिय %s',
+	'tasklistmytasks'        => 'माझ्या जबाबदार्‍या',
+	'tasklistchooseproj'     => 'प्रकल्प निवडा:',
 );
 
 /** Dutch (Nederlands)

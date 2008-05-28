@@ -144,15 +144,25 @@ $messages['km'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
-	'smoothgallery'                    => 'मुलायमप्रेक्षा',
-	'smoothgallery-desc'               => 'उपयोगकर्त्यांना चढवलेल्या चित्रणांपासून दीर्घा(प्रेक्षा)बनवण्याकरिता अनुमति देते. 
+	'smoothgallery'                     => 'मुलायमप्रेक्षा',
+	'smoothgallery-desc'                => 'उपयोगकर्त्यांना चढवलेल्या चित्रणांपासून दीर्घा(प्रेक्षा)बनवण्याकरिता अनुमति देते. 
 मुलायमदिर्घा(प्रेक्षा) बनविण्याकरिता सर्वाधिक पर्याय उपलब्ध करून देते.',
-	'smoothgallery-title'              => 'मुलायमप्रेक्षा',
-	'smoothgallery-smoothgallerytitle' => 'मुलायमप्रेक्षा $1',
-	'smoothgallery-error'              => 'मुलायमप्रेक्षा त्रूटी',
-	'smoothgallery-gallery-not-found'  => 'विनंती केलेली प्रेक्षा(दिर्घा) अस्तित्वात नाही.',
+	'smoothgallery-title'               => 'मुलायमप्रेक्षा',
+	'smoothgallery-smoothgallerytitle'  => 'मुलायमप्रेक्षा $1',
+	'smoothgallery-error'               => 'मुलायमप्रेक्षा त्रूटी',
+	'smoothgallery-gallery-not-found'   => 'विनंती केलेली प्रेक्षा(दिर्घा) अस्तित्वात नाही.',
+	'smoothgallery-not-found'           => 'प्रदर्शनात चित्रे वाढविलेली नाहीत.
+कृपया कमीतकमी एक चित्र वाढवा.',
+	'smoothgallery-no-images'           => 'प्रदर्शनात एकही चित्र सापडले नाही.
+कृपया खात्री करा की मागितलेली सर्व चित्रे अस्तित्वात आहेत.
+खालील चित्रे सापडली नाहीत: $1',
+	'smoothgallery-invalid-images'      => 'खालील मागितलेली चित्रे चुकीच्या प्रकारातील आहेत: $1',
+	'smoothgallery-unexpected-error'    => 'एक अनपेक्षित त्रुटी आलेली आहे.
+कृपया त्रुटी अहवाल पाठवा.',
+	'smoothgallery-javascript-disabled' => 'हे प्रदर्शन पाहण्यासाठी जावास्क्रीप्टची गरज आहे.',
 );
 
 /** Dutch (Nederlands)

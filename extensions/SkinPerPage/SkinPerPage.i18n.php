@@ -78,6 +78,13 @@ $messages['hu'] = array(
 	'skinperpage-desc' => '<tt>&lt;skin&gt;</tt> tag, ami segítségével laponként más felületet lehet beállítani',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'skinperpage-desc' => 'Menambahkan tag <tt>&lt;kulit&gt;</tt> untuk menggunakan kulit yang berbeda per halaman',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

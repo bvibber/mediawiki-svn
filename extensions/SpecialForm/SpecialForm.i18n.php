@@ -314,10 +314,19 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'formsave' => 'जतन करा',
+	'form'              => 'अर्ज',
+	'formnoname'        => 'अर्ज नाव नाही',
+	'formbadname'       => 'चुकीचे अर्ज नाव',
+	'formpattern'       => '$1-अर्ज',
+	'formtitlepattern'  => 'नवीन वाढवा $1',
+	'formsave'          => 'जतन करा',
+	'formarticleexists' => 'पान अस्तित्वात आहे',
+	'formbadpagename'   => 'चुकीचे पान नाव',
+	'formsaveerror'     => 'अर्ज जतन करण्यात त्रुटी',
 );
 
 $messages['nl'] = array(

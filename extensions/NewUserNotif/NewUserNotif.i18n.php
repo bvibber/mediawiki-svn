@@ -161,7 +161,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'newusernotifsubj'  => 'Informatioun iwwer e neie Benotzer op $1',
-	'newusernotif-desc' => 'Schöckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
+	'newusernotif-desc' => 'Schéckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
 	'newusernotifbody'  => 'Bonjour $1,
 
 E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',

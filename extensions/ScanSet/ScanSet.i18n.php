@@ -414,6 +414,13 @@ $messages['km'] = array(
 	'scanset_prev' => '&lt; មុន',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'scanset_next' => 'Nääks →',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -267,6 +267,14 @@ $messages['bg'] = array(
 	'sign-review-comment'          => 'Коментар',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'sign-viewfield-reviewcomment' => 'Comentari',
+	'sign-review-comment'          => 'Comentari',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

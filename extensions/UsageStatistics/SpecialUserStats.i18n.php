@@ -476,16 +476,20 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
-	'usagestatisticsallusers'      => 'सर्व सदस्य',
-	'usagestatisticsinterval'      => 'मध्यंतर',
-	'usagestatisticstype'          => 'प्रकार',
-	'usagestatisticsend'           => 'शेवटची तारीख',
-	'usagestatisticsintervalday'   => 'दिवस',
-	'usagestatisticsintervalweek'  => 'आठवडा',
-	'usagestatisticsintervalmonth' => 'महीना',
-	'usagestatisticscalselect'     => 'निवडा',
+	'usagestatisticsallusers'        => 'सर्व सदस्य',
+	'usagestatisticsinterval'        => 'मध्यंतर',
+	'usagestatisticstype'            => 'प्रकार',
+	'usagestatisticsstart'           => 'सुरुवातीचा दिनांक',
+	'usagestatisticsend'             => 'शेवटची तारीख',
+	'usagestatisticsintervalday'     => 'दिवस',
+	'usagestatisticsintervalweek'    => 'आठवडा',
+	'usagestatisticsintervalmonth'   => 'महीना',
+	'usagestatisticscumulative'      => 'एकूण',
+	'usagestatisticscumulative-text' => 'एकूण',
+	'usagestatisticscalselect'       => 'निवडा',
 );
 
 /** Dutch (Nederlands)

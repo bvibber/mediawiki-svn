@@ -386,6 +386,14 @@ $allMessages['hu'] = array(
 	'whitelisttablemodifynone' => 'Nincs',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$allMessages['id'] = array(
+	'whitelisttablemodifyall'  => 'Semua',
+	'whitelisttablemodifynone' => 'Tidak ada',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -537,7 +545,23 @@ $allMessages['ml'] = array(
  * @author Kaustubh
  */
 $allMessages['mr'] = array(
+	'mywhitelistpages'         => 'माझी पाने',
+	'whitelisttablemodify'     => 'बदला',
+	'whitelisttablemodifyall'  => 'सर्व',
 	'whitelisttablemodifynone' => 'काहीही नाही',
+	'whitelisttablepage'       => 'विकि पान',
+	'whitelisttabletype'       => 'ऍक्सेस प्रकार',
+	'whitelisttableexpires'    => 'समाप्ती',
+	'whitelisttableedit'       => 'संपादन',
+	'whitelisttableview'       => 'पहा',
+	'whitelisttablenewdate'    => 'नवीन तारीख:',
+	'whitelisttablechangedate' => 'समाप्तीची तारीख बदला',
+	'whitelisttableremove'     => 'काढा',
+	'whitelistnewtabledate'    => 'समाप्तीची तारीख:',
+	'whitelistnewtableprocess' => 'कार्य',
+	'whitelistbadtitle'        => 'चुकीचे शीर्षक -',
+	'whitelistnever'           => 'कधीही नाही',
+	'whitelistnummatches'      => ' - $1 जुळण्या',
 );
 
 /** Dutch (Nederlands)

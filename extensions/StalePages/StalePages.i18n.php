@@ -119,6 +119,13 @@ $messages['ml'] = array(
 	'stalepages-summary' => 'കഴിഞ്ഞ $1 ദിവസങ്ങളാ‍യി ഒരിക്കല്‍പ്പോലും തിരുത്തപ്പെടാത്ത താളുകളുടെ പട്ടികയാണ് ഇത്.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'stalepages' => 'शिळी पाने',
+);
+
 /** Low German (Plattdüütsch)
  * @author Purodha
  */

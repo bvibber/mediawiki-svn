@@ -493,6 +493,14 @@ Wróćo k:
 	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'crosswikiblock-reason'   => 'Alasan:',
+	'crosswikiunblock-reason' => 'Alasan:',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

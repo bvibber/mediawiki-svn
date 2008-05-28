@@ -102,6 +102,13 @@ $messages['hu'] = array(
 	'mwsearch-desc' => 'MWSearch beépülő modul',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -216,6 +216,112 @@ $messages['bg'] = array(
 	'viewapc-version-changelog'   => 'Дневник на промените',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'viewapc'                       => 'Informace o APC',
+	'viewapc-desc'                  => '[[{{#special:ViewAPC}}|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
+	'right-apc'                     => 'Použít všechny funkce na Special:ViewAPC',
+	'viewapc-apc-not-available'     => 'Nejsou dostupné žádné informace o vyrovnávací paměti.
+Zdá se, že APC neběží.',
+	'viewapc-clear-confirm'         => 'Opravdu chcete vyčistit vyrovnávací paměť?',
+	'viewapc-clear-user-cache'      => 'Vyčistit uživatelskou vyrovnávací paměť',
+	'viewapc-clear-code-cache'      => 'Vyčistit vyrovnávací paměť opcode',
+	'viewapc-mode-stats'            => 'Zobrazit statistiky hostitele',
+	'viewapc-mode-system-cache'     => 'Položky systémové vyrovnávací paměti',
+	'viewapc-mode-system-cache-dir' => 'Položky adresářů',
+	'viewapc-mode-user-cache'       => 'Položky uživatelské vyrovnávací paměti',
+	'viewapc-mode-version-check'    => 'Zkontrolovat verzi',
+	'viewapc-info-general'          => 'Všeobecné informace',
+	'viewapc-apc-version'           => 'Verze APC',
+	'viewapc-php-version'           => 'Verze PHP',
+	'viewapc-shared-memory'         => 'Sdílená paměť',
+	'viewapc-shared-memory-details' => '$1 {{plural:$1|segment z $2|segmenty, každý $2|segmentů, každý $2}}.<br />
+($3 paměť, $4 zámky)',
+	'viewapc-start-time'            => 'Čas spuštění',
+	'viewapc-uptime'                => 'Doba běhu',
+	'viewapc-upload-support'        => 'Podpora nahrávání souborů',
+	'viewapc-filecache-info'        => 'Informace o vyrovnávací paměti souborů',
+	'viewapc-usercache-info'        => 'Informace o uživatelské vyrovnávací paměti',
+	'viewapc-cached-files'          => 'Souborů ve vyrovnávací paměti',
+	'viewapc-cached-files-d'        => '$1 {{plural:$1|soubor|soubory|souborů}} ($2)',
+	'viewapc-hits'                  => 'Zásahy',
+	'viewapc-misses'                => 'Minutí',
+	'viewapc-requests'              => 'Četnost požadavků',
+	'viewapc-hitrate'               => 'Četnost zásahů',
+	'viewapc-missrate'              => 'Četnost minutí',
+	'viewapc-insertrate'            => 'Četnost vložení',
+	'viewapc-cachefull'             => 'Celkový počet ve vyrovnávací paměti',
+	'viewapc-rps'                   => '$1 požadavků za sekundu',
+	'viewapc-info-memory'           => 'Diagramy stavu hostitele',
+	'viewapc-memory-usage'          => 'Využití paměti',
+	'viewapc-cache-efficiency'      => 'Zásahy a minutí',
+	'viewapc-memory-free'           => 'Volné: $1 ($2)',
+	'viewapc-memory-used'           => 'Použito: $1 ($2)',
+	'viewapc-memory-hits'           => 'Zásahy: $1 ($2)',
+	'viewapc-memory-miss'           => 'Minutí: $1 ($2)',
+	'viewapc-memoryfragmentation'   => 'Podrobnosti o využití paměti a fragmentaci',
+	'viewapc-fragmentation-info'    => 'Fragmentace: $1 ($2 z $3 {{plural:$4|v $4 fragmentu|ve $4 fragmentech|v $4 fragmentech}})',
+	'viewapc-fragmentation-none'    => 'Fragmentace: žádná fragmentace',
+	'viewapc-display-attribute'     => 'Vlastnost',
+	'viewapc-display-value'         => 'Hodnota',
+	'viewapc-display-filename'      => 'Název souboru',
+	'viewapc-display-device'        => 'Zařízení',
+	'viewapc-display-info'          => 'Název',
+	'viewapc-display-ttl'           => 'Čas vypršení',
+	'viewapc-display-inode'         => 'Inode',
+	'viewapc-display-type'          => 'Typ',
+	'viewapc-display-type-file'     => 'Soubor ve vyrovnávací paměti',
+	'viewapc-display-type-user'     => 'Data aplikace ve vyrovnávací paměti',
+	'viewapc-display-num_hits'      => 'Zásahy',
+	'viewapc-display-mtime'         => 'Změněné',
+	'viewapc-display-creation_time' => 'Vytvořoné',
+	'viewapc-display-deletion_time' => 'Smazané',
+	'viewapc-display-no-delete'     => 'Nesmazané',
+	'viewapc-display-access_time'   => 'Přístupů',
+	'viewapc-display-ref_count'     => 'Počet odkazů',
+	'viewapc-display-mem_size'      => 'Velikost',
+	'viewapc-display-stored-value'  => 'Uložená hodnota',
+	'viewapc-display-too-big'       => "''Obsah je příliš velký pro zobrazení.''",
+	'viewapc-ls-options-legend'     => 'Nastavení',
+	'viewapc-ls-options'            => 'Rozsah: $1 Třídění: $2$3$4 Hledání: $5 $6',
+	'viewapc-ls-submit'             => 'Udělat!',
+	'viewapc-ls-header-name'        => 'Název',
+	'viewapc-ls-header-hits'        => 'Zásahy',
+	'viewapc-ls-header-size'        => 'Velikost',
+	'viewapc-ls-header-accessed'    => 'Poslední přístup',
+	'viewapc-ls-header-modified'    => 'Poslední změna',
+	'viewapc-ls-header-created'     => 'Vytvořeno',
+	'viewapc-ls-header-deleted'     => 'Smazáno',
+	'viewapc-ls-header-timeout'     => 'Čas vypršení',
+	'viewapc-ls-delete'             => '[Smazat nyní]',
+	'viewapc-ls-scope-active'       => 'Aktivní',
+	'viewapc-ls-scope-deleted'      => 'Smazáno',
+	'viewapc-ls-scope-both'         => 'Obě',
+	'viewapc-ls-sort-hits'          => 'Zásahy',
+	'viewapc-ls-sort-size'          => 'Velikost',
+	'viewapc-ls-sort-name'          => 'Nzev',
+	'viewapc-ls-sort-accessed'      => 'Poslední přístup',
+	'viewapc-ls-sort-modified'      => 'Poslední změny',
+	'viewapc-ls-sort-created'       => 'Vytvořeno',
+	'viewapc-ls-sort-deleted'       => 'Smazáno',
+	'viewapc-ls-sort-timeout'       => 'Čas vypršení',
+	'viewapc-ls-limit-none'         => 'Všechno',
+	'viewapc-ls-more'               => "''{{plural:$1|Existuje|Existují|Existuje}} ještě $1 {{plural:$1|položka|položky|položek}}''",
+	'viewapc-ls-nodata'             => "''Neexistují odpovídající data''",
+	'viewapc-delete-ok'             => 'Položka vyrovnávací paměti <nowiki>„$1“</nowiki> je smazána.',
+	'viewapc-delete-failed'         => 'Nepodařilo se smazat položku vyrovnávací paměti <nowiki>„$1“</nowiki>.',
+	'viewapc-version-info'          => 'Informace o verzi',
+	'viewapc-version-changelog'     => 'Záznam změn',
+	'viewapc-version-failed'        => 'Nepodařilo se zíkat informace o verzi',
+	'viewapc-version-ok'            => 'Používáte nejnovější verzi APC ($1).',
+	'viewapc-version-old'           => 'Používáte starší verzi APC ($1).
+Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
+	'viewapc-filecache-cleared'     => "'''''Vyrovnávací paměť souborů byla vyčištěna.'''''",
+	'viewapc-usercache-cleared'     => "'''''Vyrovnávací paměť aplikace byla vyčištěna.'''''",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -647,6 +753,13 @@ $messages['hil'] = array(
 	'viewapc-ls-submit' => 'Sige!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'viewapc-ls-limit-none' => 'Semua',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -808,6 +921,7 @@ $messages['lb'] = array(
 	'viewapc'                       => 'Informatiounen iwwer APC',
 	'right-apc'                     => 'Benotz all Fonctionalitéite vun Spezial:ViewAPC',
 	'viewapc-clear-confirm'         => 'Wëllt Dir de Cache eidel maachen?',
+	'viewapc-clear-user-cache'      => 'Benotzer Cache eidel maachen',
 	'viewapc-mode-stats'            => "D'Statistike vum Server weisen",
 	'viewapc-mode-version-check'    => 'Versioun nokucken',
 	'viewapc-info-general'          => 'Allgemeng Informatiounen',

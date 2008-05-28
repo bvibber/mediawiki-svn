@@ -279,11 +279,16 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'spamregex-log-2'       => '$1वर',
-	'spamregex-summary-log' => 'आढावा',
+	'spamregex'                 => 'स्पॅमरेजएक्स',
+	'spamregex-log-2'           => '$1वर',
+	'spamregex-unblock-success' => 'अनब्लॉक यशस्वी',
+	'spamregex-block-success'   => 'ब्लॉक यशस्वी',
+	'spamregex-text'            => '(मजकूर)',
+	'spamregex-summary-log'     => 'आढावा',
 );
 
 /** Dutch (Nederlands)

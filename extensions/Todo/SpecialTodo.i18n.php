@@ -349,13 +349,21 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'todo'              => 'करण्याची यादी',
+	'todo-tab'          => 'करावयाच्या गोष्टी',
 	'todo-new-queue'    => 'नवे',
+	'todo-item-list'    => 'तुमचे आयटेम्स',
+	'todo-no-item'      => 'करावयाच्या नोंदी नाहीत.',
+	'todo-add-queue'    => 'रांग वाढवा...',
 	'todo-list-change'  => 'बदल',
 	'todo-list-cancel'  => 'रद्द करा',
+	'todo-new-item'     => 'नवीन नोंद',
 	'todo-form-details' => 'तपशील:',
+	'todo-form-submit'  => 'पृच्छा पाठवा',
 );
 
 /** Dutch (Nederlands)

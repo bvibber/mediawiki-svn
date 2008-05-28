@@ -94,6 +94,14 @@ $messages['hr'] = array(
 	'absenteelandlord-desc'   => 'Automatski zaključava wiki bazu ukoliko su svi administratori neaktivni neko vrijeme',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'absenteelandlord-reason' => 'Basis data telah dikunci secara otomatis karena ketidakaktifan para opsis.',
+	'absenteelandlord-desc'   => 'Mengunci basis data wiki secara otomatis jika seluruh opsis tidak aktif selama periode tertentu.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -84,6 +84,25 @@ $messages['bg'] = array(
 	'authorprotect-failure'   => 'Защитата беше неуспешна',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'authorprotect'            => 'Zabránit neautorským úpravám',
+	'authorprotect-desc'       => 'Umožní autorovi stránky zabránit ostatním uživatelům upravovat ji',
+	'authorprotect-notauthor'  => 'Nejste autorem této stránky',
+	'authorprotect-confirm'    => 'Změnit úroveň ochrany',
+	'authorprotect-edit'       => 'Umožnit úpravy pouze autorům',
+	'authorprotect-move'       => 'Umožnit přesouvání jen autorům',
+	'authorprotect-expiry'     => 'Čas vypršení',
+	'authorprotect-reason'     => 'Důvod',
+	'authorprotect-intro'      => 'Tento formulář slouží k zamknutí této stránky všem uživatelům kromě autorů.',
+	'authorprotect-success'    => 'Zamknutí proběhlo úspěšně!',
+	'authorprotect-failure'    => 'Zamknutí neproběhlo úspěšně',
+	'protect-level-author'     => 'Ochránit před neautorskými úpravami',
+	'restriction-level-author' => 'Jen pro autory',
+);
+
 /**  German (Deutsch)
  * @author Raimond Spekking
  */
@@ -332,7 +351,7 @@ $messages['mr'] = array(
 	'authorprotect'            => 'लेखक नसणार्‍यांपासून पान सुरक्षित करा',
 	'authorprotect-desc'       => 'एखाद्या लेखकाला त्याने लिहिलेले पान इतरांपासून सुरक्षित करण्याची अनुमती देतो',
 	'authorprotect-notauthor'  => 'तुम्ही या लेखाचे लेखक नाहीत',
-	'authorprotect-confirm'    => 'सुरक्षीत करा',
+	'authorprotect-confirm'    => 'सुरक्षा पातळ्या बदला',
 	'authorprotect-edit'       => 'फक्त लेखकांनाच संपादन करू द्या',
 	'authorprotect-move'       => 'फक्त लेखकांनाच स्थानांतरण करू द्या',
 	'authorprotect-expiry'     => 'रद्दीकरण वेळ',
@@ -404,12 +423,13 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Derbeth
+ * @author Leinad
  */
 $messages['pl'] = array(
 	'authorprotect'            => 'Zabezpiecz stronę przed wszystkimi poza autorami',
 	'authorprotect-desc'       => 'Autor strony może ją zabezpieczyć przed innymi użytkownikami',
 	'authorprotect-notauthor'  => 'Nie jesteś autorem tej strony',
-	'authorprotect-confirm'    => 'Zabezpiecz',
+	'authorprotect-confirm'    => 'Zmień poziom zabezpieczenia',
 	'authorprotect-edit'       => 'Ogranicz możliwość edycji do autorów',
 	'authorprotect-move'       => 'Ogranicz możliwość przenoszenia do autorów',
 	'authorprotect-expiry'     => 'Upływa',
@@ -464,7 +484,7 @@ $messages['ru'] = array(
 	'authorprotect'            => 'Защита страницы от не-авторов',
 	'authorprotect-desc'       => 'Разрешает автору страницы защищать её от правок других участников',
 	'authorprotect-notauthor'  => 'Вы не являетесь автором этой страницы',
-	'authorprotect-confirm'    => 'Защитить',
+	'authorprotect-confirm'    => 'Изменить уровни защиты',
 	'authorprotect-edit'       => 'править могут только авторы',
 	'authorprotect-move'       => 'переименовывать могут только авторы',
 	'authorprotect-expiry'     => 'Срок защиты',

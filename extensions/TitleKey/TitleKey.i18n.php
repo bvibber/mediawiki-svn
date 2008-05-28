@@ -126,6 +126,13 @@ $messages['pt'] = array(
 	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'titlekey-desc' => 'Движок поисковых подсказок по первым буквам названия',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

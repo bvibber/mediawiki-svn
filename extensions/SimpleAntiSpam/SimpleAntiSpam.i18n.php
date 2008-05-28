@@ -85,6 +85,16 @@ $messages['hi'] = array(
 	'simpleantispam-desc'  => 'फ़ार्ममें सादी स्पैम/बोट जाँच बढाता हैं',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'simpleantispam'       => 'Suntingan Anda memicu mekanisme anti-spam',
+	'simpleantispam-label' => "Pemeriksaan anti-spam.
+Masukan ini '''DILARANG'''!",
+	'simpleantispam-desc'  => 'Tambahkan pemeriksaan spam/bot sederhana ke formulir-formulir',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -39,6 +39,18 @@ $messages['bg'] = array(
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'dplforum-desc'    => 'Rozšíření DPL fórum',
+	'dplforum-by'      => ',',
+	'dplforum-edited'  => '  - poslední úprava',
+	'dplforum-never'   => 'Nikdy',
+	'dplforum-toofew'  => 'DPL fórum: Příliš málo kategorií!',
+	'dplforum-toomany' => 'DPL fórum: Příliš mnoho kategorií!',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

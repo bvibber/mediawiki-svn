@@ -90,6 +90,13 @@ $messages['jv'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Watesana panggawéyan panganggo',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'सदस्य निर्मिती प्रतिबंधित करा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

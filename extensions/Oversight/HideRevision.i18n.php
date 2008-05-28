@@ -933,12 +933,18 @@ Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elves
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Rex
  * @author Meursault2004
  * @author Borgx
  */
 $messages['id'] = array(
 	'hiderevision'                => 'Sembunyikan revisi',
 	'hiderevision-desc'           => 'Menyembunyikan revisi-revisi individu dari semua pengguna untuk alasan legal, dll.',
+	'group-oversight'             => 'Pengawas suntingan',
+	'group-oversight-member'      => 'Pengawas suntingan',
+	'grouppage-oversight'         => '{{ns:project}}:Pengawas suntingan',
+	'right-oversight'             => 'Lihat revisi yang telah disembunyikan',
+	'right-hiderevision'          => 'Tinjau dan kembalikan revisi-revisi yang disembunyikan terhadap Opsis',
 	'hiderevision-prompt'         => 'Nomor revisi untuk dihilangkan:',
 	'hiderevision-continue'       => 'Lanjutkan',
 	'hiderevision-text'           => "Ini hanya diproses '''hanya''' dalam kasus:
@@ -965,7 +971,7 @@ administrator basis data jika Anda membuat kesalahan.",
 *Halaman telah dihapus
 *Revisi yang disembunyikan merupakan revisi pertama',
 	'oversight-log-hiderev'       => 'menghapus sebuah suntingan dari $1',
-	'oversight'                   => 'Log penghapusan revisi secara permanen',
+	'oversight'                   => 'Pengawas suntingan',
 	'oversight-view'              => 'detil',
 	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
 	'oversight-prev'              => 'revisi terdahulu terakhir',

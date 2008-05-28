@@ -523,15 +523,19 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
+ * @author לערי ריינהארט
  */
 $messages['id'] = array(
-	"sitematrix"           => "Daftar wiki Wikimedia",
-	'sitematrix-desc'      => 'Menampilkan suatu [[Special:SiteMatrix|daftar wiki Wikimedia]]',
-	'sitematrix-language'  => 'Bahasa',
-	'sitematrix-project'   => 'Nama proyek, pranala interproyek dan pranala interwiki',
-	'sitematrix-others'    => 'Proyek lain Wikimedia',
-	'sitematrix-total'     => "'''Jumlah total: $1'''",
-	'sitematrix-sitetotal' => 'Total',
+	'sitematrix'          => 'Daftar wiki Wikimedia',
+	'sitematrix-summary'  => 'Halaman istimewa ini memuat daftar dari seluruh wiki Wikimedia.',
+	'sitematrix-desc'     => 'Menampilkan suatu [[Special:SiteMatrix|daftar wiki Wikimedia]]',
+	'sitematrix-language' => 'Bahasa',
+	'sitematrix-project'  => 'Nama proyek, pranala interproyek dan pranala interwiki',
+	'sitematrix-others'   => 'Proyek lain Wikimedia',
+	'sitematrix-total'    => "'''Jumlah total: $1'''",
+	'sitematrix-private'  => 'privat',
+	'sitematrix-fishbowl' => 'penyuntingan tidak diperbolehkan',
 );
 
 /** Ido (Ido)
