@@ -722,7 +722,7 @@ $arrayDefs = array(
 	'wgNamespacesToBeSearchedDefault' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-text',
-	'wgNonincludableNamespaces' => 'ns-bool',
+	'wgNonincludableNamespaces' => 'ns-simple',
 	'wgSitemapNamespaces' => 'ns-simple',
 	'wgArticleRobotPolicies' => 'assoc',
 # Skins

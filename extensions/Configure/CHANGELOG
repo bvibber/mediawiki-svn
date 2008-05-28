@@ -2,8 +2,9 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.3.7 - 28 May 2008
-  If $wgLocalMessageCache is set to an empty value, message cache won't use
-  anymore files to cache localisations.
+  * If $wgLocalMessageCache is set to an empty value, message cache won't use
+    anymore files to cache localisations.
+  * Fixed type of $wgNonincludableNamespaces.
 
 0.3.6 - 27 May 2008
   Added configure-section-groups-notallowed message, was missing.
