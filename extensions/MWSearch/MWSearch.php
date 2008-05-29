@@ -552,7 +552,7 @@ class LuceneSearchSet extends SearchResultSet {
 		if( $data === false ) {
 			// Network error or server error
 			wfProfileOut( $fname );
-			return false;
+			return null;
 		} else {
 			$inputLines = explode( "\n", trim( $data ) );
 			$resultLines = array_map( 'trim', $inputLines );
