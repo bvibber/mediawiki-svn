@@ -1,5 +1,4 @@
 <?php
-
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( !$IP ) {
 	exit;
@@ -7,12 +6,12 @@ if ( !$IP ) {
 require_once( $IP . '/maintenance/commandLine.inc' );
 
 $dbr = wfGetDB( DB_SLAVE );
-$fname = 'voterList.quick.php';
+$fname = 'voterList.php';
 $maxUser = $dbr->selectField( 'user', 'MAX(user_id)', false );
 $server = str_replace( 'http://', '', $wgServer );
 $listFile = fopen( "voter-list", "a" );
 
-for ( $user = 0; $user <= $maxUser; $user++ ) {
+for ( $user = 1; $user <= $maxUser; $user++ ) {
 	$oldEdits = $dbr->selectField( 
 		'revision', 
 		'COUNT(*)',
@@ -32,18 +31,24 @@ for ( $user = 0; $user <= $maxUser; $user++ ) {
 		$fname
 	);
 	if ( $oldEdits >= 600 && $newEdits >= 50 ) {
-		$userRow = $dbr->selectField(
-			'user',
-			array( 'user_name', 'user_email' ),
-			array( 'user_id' => $user ),
-			$fname
-		);
-		if ( $userRow === false ) {
-			fwrite( STDERR, "User row missing for user_id $user!\n" );
-			continue;
+		$userObj = User::newFromId( $user );
+		$props = array();
+		if ( $userObj->isAllowed( 'bot' ) ) {
+			$props[] = 'bot';
 		}
+		$isBlocked = $userObj->isBlocked();
+		if ( $userObj->isBlocked() 
+			&& $userObj->mBlock->mExpiry == 'infinity' )
+		{
+			$props[] = 'indefblocked';
+		}
+		$props = implode( ',', $props );
+		$email = $userObj->getEmail();
+		$editCount = $userObj->getEditCount();
+		$name = $userObj->getName();
 
-		fwrite( $listFile, "$wgDBname\t{$userRow->user_name}\t{$userRow->user_email}\n" );
+		fwrite( $listFile, "$wgDBname\t$server\t$name\t" . 
+			"$email\t$editCount\t$props\n" );
 	}
 }
 fclose( $listFile );
