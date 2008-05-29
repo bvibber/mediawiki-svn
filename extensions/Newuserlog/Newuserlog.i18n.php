@@ -289,14 +289,17 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Titoxd
  * @author Lin linao
  */
 $messages['es'] = array(
-	'newuserlogpage'           => 'Registro de creación de usuarios',
-	'newuserlogpagetext'       => 'Este es un registro de creación de usuarios',
-	'newuserlog-byemail'       => 'contraseña enviada por correo electrónico',
-	'newuserlog-create-entry'  => 'Usuario nuevo',
-	'newuserlog-create2-entry' => 'creó una cuenta para $1',
+	'newuserlogpage'              => 'Registro de creación de usuarios',
+	'newuserlogpagetext'          => 'Este es un registro de creación de usuarios',
+	'newuserlog-desc'             => 'Añade un [[Special:Log/newusers|registro de creación de cuentas]] a [[Special:Log|Especial:Log]]',
+	'newuserlog-byemail'          => 'contraseña enviada por correo electrónico',
+	'newuserlog-create-entry'     => 'Usuario nuevo',
+	'newuserlog-create2-entry'    => 'creó una cuenta para $1',
+	'newuserlog-autocreate-entry' => 'Cuenta creada automáticamente',
 );
 
 $messages['et'] = array(
@@ -851,7 +854,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'newuserlogpage'              => 'Istoric de las creacions de comptes',
 	'newuserlogpagetext'          => "Jornal de las creacions de comptes d'utilizaires",
-	'newuserlog-desc'             => 'Ajusta un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
+	'newuserlog-desc'             => 'Apondís un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
 	'newuserlog-byemail'          => 'senhal mandat per corrièr electronic',
 	'newuserlog-create-entry'     => 'Utilizaire novèl',
 	'newuserlog-create2-entry'    => 'compte creat per $1',
@@ -1082,13 +1085,15 @@ $messages['to'] = array(
 /** Turkish (Türkçe)
  * @author Uğur Başak
  * @author Srhat
+ * @author Karduelis
  */
 $messages['tr'] = array(
-	'newuserlogpage'           => 'Yeni kullanıcı kayıtları',
-	'newuserlogpagetext'       => 'En son kaydolan kullanıcı kayıtları',
-	'newuserlog-byemail'       => 'eposta yoluyla şifre gönderilmiştir',
-	'newuserlog-create-entry'  => 'Yeni kullanıcı',
-	'newuserlog-create2-entry' => '$1 yeni hesap oluşturdu',
+	'newuserlogpage'              => 'Yeni kullanıcı kayıtları',
+	'newuserlogpagetext'          => 'En son kaydolan kullanıcı kayıtları',
+	'newuserlog-byemail'          => 'eposta yoluyla şifre gönderilmiştir',
+	'newuserlog-create-entry'     => 'Yeni kullanıcı',
+	'newuserlog-create2-entry'    => '$1 yeni hesap oluşturdu',
+	'newuserlog-autocreate-entry' => 'Otomatik hesap oluşturuldu',
 );
 
 /** Tahitian (Reo Mā`ohi)

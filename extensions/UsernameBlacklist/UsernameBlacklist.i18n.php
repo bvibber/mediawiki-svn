@@ -264,6 +264,13 @@ $messages['eo'] = array(
 	'right-uboverride'       => 'Astataŭigi la salutnoman nigraliston',
 );
 
+/** Spanish (Español)
+ * @author Titoxd
+ */
+$messages['es'] = array(
+	'blacklistedusernametext' => 'El nombre de usuario que has seleccionado está en la [[MediaWiki:Usernameblacklist|lista de nombres no permitidos]]. Por favor, elige otro.',
+);
+
 $messages['eu'] = array(
 	'blacklistedusername' => 'Zerrenda beltzeko erabiltzaile izena',
 	'blacklistedusernametext' => 'Hautatu duzun erabiltzaile izena [[MediaWiki:Usernameblacklist|zerrenda beltzean]] ageri da. Aukeratu ezazu beste bat.',
@@ -848,7 +855,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'usernameblacklist-desc'          => "Ajusta una [[MediaWiki:Usernameblacklist|lista negra dels noms d'utilizaire]] per restrenher la creacion dels comptes d'utilizaires fasent partida d'una o mantuna expression regulara.",
+	'usernameblacklist-desc'          => "Apondís una [[MediaWiki:Usernameblacklist|lista negra dels noms d'utilizaire]] per restrenher la creacion dels comptes d'utilizaires fasent partida d'una o mantuna expression regulara.",
 	'blacklistedusername'             => 'Noms d’utilizaires en lista negra',
 	'blacklistedusernametext'         => "Lo nom d’utilizaire qu'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.",
 	'usernameblacklist'               => "<pre> # Las dintradas d'aquesta lista seràn utilizadas en tant qu'expressions regularas # per empachar la creacion de noms d'utilizaires interdiches. Cada item deu # far partida d'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>",

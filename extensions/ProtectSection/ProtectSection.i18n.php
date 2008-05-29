@@ -234,3 +234,10 @@ $messages['tg-cyrl'] = array(
 	'protectsection_forbidden' => 'Мамнӯъ',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'protectsection_forbidden' => 'Yasaklanmış',
+);
+

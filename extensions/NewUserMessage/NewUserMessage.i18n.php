@@ -145,7 +145,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newusermessage-desc' => "Ajusta un [[MediaWiki:NewUserMessage|messatge]] dins la pagina de discussion d'un utilizaire novèl.",
+	'newusermessage-desc' => "Apondís un [[MediaWiki:NewUserMessage|messatge]] dins la pagina de discussion d'un utilizaire novèl.",
 );
 
 /** Portuguese (Português)

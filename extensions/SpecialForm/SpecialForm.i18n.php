@@ -401,8 +401,8 @@ $messages['oc'] = array(
 	'formrequiredfieldpluralerror' => 'Los camps $1 son requeses dins aqueste formulari.',
 	'formrequiredfielderror'       => 'Lo camp $1 es requés dins aqueste formulari.',
 	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Formulari/$1]]",
-	'formsaveerror'                => "Una error s'es producha pendent la salvagàrdia.",
-	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent la salvagàrdia de ''$1''.",
+	'formsaveerror'                => "Una error s'es producha pendent lo salvament.",
+	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent lo salvament de ''$1''.",
 );
 
 /** Polish (Polski)

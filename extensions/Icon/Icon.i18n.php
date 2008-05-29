@@ -286,10 +286,12 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'icon-badimage' => 'Hình không hợp lệ',
 	'icon-badwidth' => 'Độ ngang không hợp lệ',
+	'icon-desc'     => 'Cho phép bạn sử dụng hình ảnh làm biểu tượng và liên kết biểu tượng',
 );
 
 $messages['zh-hant'] = array(

@@ -1422,8 +1422,8 @@ $messages['oc'] = array(
 	'ogg-short-video'         => 'Fichièr vidèo Ogg $1, $2',
 	'ogg-short-general'       => 'Fichièr mèdia Ogg $1, $2',
 	'ogg-long-audio'          => '(Fichièr son Ogg $1, durada $2, $3)',
-	'ogg-long-video'          => '(Fichièr vidèo Ogg $1, durada $2, $4×$5 pixels, $3)',
-	'ogg-long-multiplexed'    => '(Fichièr multiplexat audio/vidèo Ogg, $1, durada $2, $4×$5 pixels, $3)',
+	'ogg-long-video'          => '(Fichièr vidèo Ogg $1, durada $2, $4×$5 pixèls, $3)',
+	'ogg-long-multiplexed'    => '(Fichièr multiplexat àudio/vidèo Ogg, $1, durada $2, $4×$5 pixèls, $3)',
 	'ogg-long-general'        => '(Fichièr mèdia Ogg, durada $2, $3)',
 	'ogg-long-error'          => '(Fichièr Ogg invalid : $1)',
 	'ogg-play'                => 'Legir',
@@ -1678,6 +1678,27 @@ $messages['sk'] = array(
 	'ogg-dismiss'             => 'Zatvoriť',
 	'ogg-download'            => 'Stiahnuť súbor',
 	'ogg-desc-link'           => 'O tomto súbore',
+);
+
+/** Albanian (Shqip)
+ * @author Dori
+ */
+$messages['sq'] = array(
+	'ogg-short-audio'   => 'Skedë zanore Ogg $1, $2',
+	'ogg-short-video'   => 'Skedë pamore Ogg $1, $2',
+	'ogg-short-general' => 'Skedë mediatike Ogg $1, $2',
+	'ogg-long-audio'    => '(Skedë zanore Ogg $1, kohëzgjatja $2, $3)',
+	'ogg-long-video'    => '(Skedë pamore Ogg $1, kohëzgjatja $2, $4×$5 pixel, $3)',
+	'ogg-play'          => 'Fillo',
+	'ogg-pause'         => 'Pusho',
+	'ogg-stop'          => 'Ndalo',
+	'ogg-play-video'    => 'Fillo videon',
+	'ogg-play-sound'    => 'Fillo zërin',
+	'ogg-no-player'     => 'Ju kërkojmë ndjesë por sistemi juaj nuk ka mundësi për të kryer këtë veprim. Mund të <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">shkarkoni një mjet</a> tjetër.',
+	'ogg-more'          => 'Më shumë...',
+	'ogg-dismiss'       => 'Mbylle',
+	'ogg-download'      => 'Shkarko skedën',
+	'ogg-desc-link'     => 'Rreth kësaj skede',
 );
 
 /** ћирилица (ћирилица)

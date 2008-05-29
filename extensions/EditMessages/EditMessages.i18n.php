@@ -71,6 +71,13 @@ $messages['bn'] = array(
 	'editmsg-search' => 'অনুসন্ধান',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'editmsg-search' => 'Cerca',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

@@ -127,7 +127,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'ajax-qp-desc' => "Ajusta d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages]]",
+	'ajax-qp-desc' => "Apondís d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages]]",
 );
 
 /** Polish (Polski)

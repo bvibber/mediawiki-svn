@@ -1114,6 +1114,13 @@ $wdMessages['gv'] = array(
 	'ow_LinkAttributeValues'          => 'Kianglaghyn',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$wdMessages['haw'] = array(
+	'ow_history' => 'He aha i ho‘ololi ‘ia ai',
+);
+
 $wdMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
@@ -2206,7 +2213,7 @@ $wdMessages['oc'] = array(
 	'datasearch'                            => 'Wikidata: Recèrca de donadas',
 	'langman_title'                         => 'Gestion de las lengas',
 	'languages'                             => 'Wikidata: Gestion de las lengas',
-	'ow_save'                               => 'Salvagardar',
+	'ow_save'                               => 'Salvar',
 	'ow_history'                            => 'Istoric',
 	'ow_datasets'                           => 'Seleccion de las donadas definidas',
 	'ow_noedit_title'                       => "Cap de permission d'editar.",
@@ -2233,7 +2240,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_will_insert'                        => 'Inserirà los seguents :',
 	'ow_contents_of_mapping'                => 'Contengut de la planificacion',
 	'ow_available_contexts'                 => 'Contèxtes disponibles',
-	'ow_add_concept_link'                   => 'Ajusta un ligam als autres concèptes',
+	'ow_add_concept_link'                   => 'Apondís un ligam als autres concèptes',
 	'ow_concept_panel'                      => 'Ventalh de concèptes',
 	'ow_dm_badtitle'                        => "Aquesta pagina punta pas sus cap de concèpte o sens definit. Verificatz l'adreça internet.",
 	'ow_dm_missing'                         => "Aquesta pagina sembla pas puntar vèrs un concèpte o sens inexistent. Verificatz l'adreça internet.",

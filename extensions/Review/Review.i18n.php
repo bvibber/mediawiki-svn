@@ -495,6 +495,13 @@ $messages['hsb'] = array(
 	'review_comment'                                         => 'Komentar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'review_total_statistics' => 'Total',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -739,7 +746,6 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'review_sidebar_title'                                   => 'Revision',
@@ -751,7 +757,7 @@ $messages['oc'] = array(
 # Las donadas dins l'òrdre son : ## identificant numeric (>0) ## nom ## espandida (>1) ## significacion de la valor mai pichona (ex. « marrit ») ## significacion de la valor mai granda (ex. « bon ») # .... # Per exemple, se cal solament causir « non » o « òc », l'espandida val 2. # Per exemple, se cal causir entre « mejancièr », « marrit », « de melhorar », « plan » o « fòrt plan », l'espandida val 5. # .... 1:Qualitat:5:marrit:bon 2:Prèst per 1.0:2:non:òc",
 	'review_topic_page'                                      => 'Subjèctes a revision',
 	'review_sidebar_explanation'                             => 'La bóstia de marcar a esquèrra tota significa totjorn « sens opinion ».',
-	'review_save'                                            => 'Salvagardar la revision',
+	'review_save'                                            => 'Salvar la revision',
 	'review_your_review'                                     => "Vòstra revision d'aquesta pagina o revision :",
 	'review_sidebar_you_have_other_reviews_for_this_article' => "Ja avètz revisat las autras versions d'aquesta pagina. Vòstras autras evaluacions seràn fusionadas amb aquesta se avètz seleccionat « sens opinion ».",
 	'review_page_link'                                       => 'Estatisticas de revisions',
@@ -772,7 +778,7 @@ $messages['oc'] = array(
 	'review_user_page_list'                                  => 'Lo contributor a revisat las paginas seguentas :',
 	'review_user_details_link'                               => '(detalhs)',
 	'review_do_merge'                                        => "Fusionar mos passatges en revista de las autras revisions d'aquesta pagina amb aquesta",
-	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Vòstra revision es estada salvagardada.</span>",
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Vòstra revision es estada salvada.</span>",
 	'revision_review_this_page_version_link'                 => 'Revisar aquesta version de la pagina',
 	'review_page_review'                                     => 'Revision de la pagina « $1 »',
 	'review_blocked'                                         => 'Sètz blocat(ada).',

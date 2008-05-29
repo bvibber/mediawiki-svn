@@ -291,6 +291,15 @@ $messages['te'] = array(
 	'msfunc_div_zero' => 'సున్నాతో భాగాహారం',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'msfunc_nan'      => 'Kết quả trả về không phải là số',
+	'msfunc_inf'      => 'Kết quả trả về là vô hạn',
+	'msfunc_div_zero' => 'Chia cho zero',
+);
+
 $messages['yue'] = array(
         'msfunc_nan' => "結果唔係個數" ,
         'msfunc_inf' => "結果數值係無限" ,

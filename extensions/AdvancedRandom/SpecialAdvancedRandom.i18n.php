@@ -173,6 +173,13 @@ $messages['km'] = array(
 	'advancedrandom' => 'ភាពចៃដន្យ​កំរិតខ្ពស់',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'advancedrandom' => '향상된 임의 문서',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

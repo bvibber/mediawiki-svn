@@ -356,6 +356,7 @@ $messages['eo'] = array(
 	'sign-viewfield-reviewedby'    => 'Kontrolanto',
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-review-comment'          => 'Komento',
+	'sign-submitreview'            => 'Aldoni recenzon',
 );
 
 $messages['ext'] = array(

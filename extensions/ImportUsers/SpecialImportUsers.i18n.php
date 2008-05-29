@@ -780,12 +780,30 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'importusers-uploadfile'        => 'Tải tập tin lên',
-	'importusers-log-summary-all'   => 'Tất cả',
-	'importusers-log-summary-added' => 'Được thêm vào',
+	'importusers'                         => 'Nhập khẩu Thành viên',
+	'importusers-desc'                    => 'Nhập nhiều thành viên từ tậptin CSV; mã hóa: UTF-8',
+	'importusers-uploadfile'              => 'Tải tập tin lên',
+	'importusers-form-caption'            => 'Tập CSV đầu vào (UTF-8)',
+	'importusers-form-file'               => 'Định dạng tập tin người dùng (csv):',
+	'importusers-form-replace-present'    => 'Thay thế những thành viên hiện có',
+	'importusers-form-button'             => 'Nhập khẩu',
+	'importusers-user-added'              => 'Thành viên <b>%s</b> đã được thêm vào.',
+	'importusers-user-present-update'     => 'Thành viên <b>%s</b> đã tồn tại. Đã cập nhật.',
+	'importusers-user-present-not-update' => 'Thành viên <b>%s</b> đã tồn tại. Không cập nhật.',
+	'importusers-user-invalid-format'     => 'Dữ liệu thành viên tại dòng #%s có định dạng sai hoặc bỏ trống. Bỏ qua.',
+	'importusers-log'                     => 'Nhật trình nhập',
+	'importusers-log-summary'             => 'Tóm tắt',
+	'importusers-log-summary-all'         => 'Tất cả',
+	'importusers-log-summary-added'       => 'Được thêm vào',
+	'importusers-log-summary-updated'     => 'Đã cập nhật',
+	'importusers-login-name'              => 'Tên đăng nhập',
+	'importusers-password'                => 'mật khẩu',
+	'importusers-email'                   => 'thư điện tử',
+	'importusers-realname'                => 'tên thật',
 );
 
 /** Volapük (Volapük)

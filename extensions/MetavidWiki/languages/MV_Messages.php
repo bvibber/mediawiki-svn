@@ -474,8 +474,10 @@ $messages['bn'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
+	'mv_tool_search'     => 'Cerca',
 	'mv_edit'            => 'Edita',
 	'mv_search_category' => 'Categoria',
 	'mv_category'        => 'categoria',
@@ -818,6 +820,14 @@ $messages['gv'] = array(
 	'mv_search_and'      => 'as',
 	'mv_search_or'       => 'ny',
 	'mv_category'        => 'ronney',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'mv_edit'    => 'E ho‘opololei',
+	'mv_history' => 'He aha i ho‘ololi ‘ia ai',
 );
 
 /** Hindi (हिन्दी)
@@ -1976,12 +1986,12 @@ $messages['oc'] = array(
 	'ao_file_flash_flv'              => 'Archive.org - flash vidèo',
 	'mv_error_stream_missing'        => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul sit d\'aministracion.',
 	'mv_stream_meta'                 => 'Pagina de flus',
-	'mv_add_stream'                  => "Ajust d'un flus metavid",
+	'mv_add_stream'                  => "Apondís d'un flus metavid",
 	'mv_edit_stream'                 => 'Modificar un flus metavid',
 	'mvexportsearch'                 => 'Exportar Metavid',
 	'mvexportsequence'               => 'Sequéncia d’exportacion de Metavid',
 	'mvexportstream'                 => 'Flus d’exportacion de Metavid',
-	'mv_add_stream_page'             => "Ajust d'un flus metavid",
+	'mv_add_stream_page'             => "Apondís d'un flus metavid",
 	'mv_edit_strea_docu'             => "<b>Editar l'administracion dels fluses</b> <br /> per qu'un utilizaire pòsca veire o editar la pagina $1 de visualizacion.",
 	'mv_add_stream_docu'             => "<p>Apondre un flus novèl amb lo camp çaijós.</p><p>Mai d'entrenhas son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajuston d'un flus.",
 	'mv_add_stream_submit'           => 'Apondre un flus',
@@ -1994,7 +2004,7 @@ $messages['oc'] = array(
 	'mv_duration_label'              => 'durada',
 	'mv_file_desc_label'             => 'msg de desc del flus',
 	'mv_delete_stream_file'          => 'referéncia del fichièr de flus suprimit',
-	'mv_save_changes'                => 'Salvagardar las modificacions',
+	'mv_save_changes'                => 'Salvar las modificacions',
 	'mv_file_with_same_desc'         => 'Error : fichièr de flus amb la meteissa clau de descripcion  <i>$1</i> ja presenta',
 	'mv_updated_stream_files'        => 'Mesa a jorn dels enregistraments dels fichièrs de flus',
 	'mv_removed_file_stream'         => 'Fichièr de flus levat : $1',
@@ -2068,13 +2078,13 @@ $messages['oc'] = array(
 	'mv_remove'                      => 'levar',
 	'mv_remove_title'                => 'levar aqueste segment de metadonadas',
 	'mv_adjust'                      => 'apondre',
-	'mv_adjust_submit'               => "Salvagardar l'ajustament",
+	'mv_adjust_submit'               => "Salvar l'ajustament",
 	'mv_adjust_title'                => 'Apondre lo començament e la fin de la durada',
 	'mv_adjust_preview'              => "Previsualizar l'ajustament",
 	'mv_adjust_preview_stop'         => 'Arrestar la previsualizacion',
-	'mv_adjust_default_reason'       => "Ajustament de l'interfàcia metavid",
+	'mv_adjust_default_reason'       => "Apondís de l'interfàcia metavid",
 	'mv_adjust_old_title_missing'    => 'La pagina que sètz a desplaçar dempuèi ($1) existís pas.',
-	'mv_adjust_ok_move'              => 'Succès, ajustament...',
+	'mv_adjust_ok_move'              => 'Succès, apondís...',
 	'mv_start_desc'                  => 'Durada al començament',
 	'mv_end_desc'                    => 'Durada a la fin',
 	'mv_of'                          => '&#32;de&#32;',
@@ -2109,8 +2119,8 @@ $messages['oc'] = array(
 	'mv_match_text_one'              => '~ 1 ocuréncia',
 	'mv_edit_sequence'               => 'Edicion de la sequéncia : $1',
 	'mv_sequence_player_title'       => 'lector de sequéncia',
-	'mv_save_sequence'               => 'Salvagardar la sequéncia',
-	'mv_sequence_page_desc'          => 'Salvagardar la sequéncia actuala',
+	'mv_save_sequence'               => 'Salvar la sequéncia',
+	'mv_sequence_page_desc'          => 'Salvar la sequéncia actuala',
 	'mv_sequence_add'                => 'Apondre de clips',
 	'mv_sequence_add_manual'         => 'Apondre per nom',
 	'mv_sequence_add_manual_desc'    => 'Apondre de clips per nom de flus',

@@ -601,7 +601,7 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'countedits'              => 'Comptaire d’edicions',
+	'countedits'              => 'Comptador d’edicions',
 	'countedits-desc'         => '[[Special:CountEdits|Pagina especiala]] comptabilizant lo nombre d’edicions dels utilizaires e provesissent la lista dels dètz melhors contributors.',
 	'countedits-warning'      => "'''Avertiment''' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.",
 	'countedits-username'     => "Nom d'utilizaire :",

@@ -499,6 +499,26 @@ $messages['tg-cyrl'] = array(
 	'lookupuser_registration' => 'Таърихи сабти ном: $1',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'lookupuser'                   => 'Tra thông tin thành viên',
+	'lookupuser-desc'              => '[[Special:LookupUser|Tra thông tin]] về một thành viên như địa chỉ thư điện tử và mã số',
+	'lookupuser_intro'             => 'Gõ tên người dùng để xem tùy chọn của thành viên đó.',
+	'lookupuser_nonexistent'       => 'Lỗi: Thành viên không tồn tại',
+	'lookupuser_authenticated'     => 'Xác nhận thư điện tử: $1',
+	'lookupuser_not_authenticated' => 'chưa xác nhận',
+	'lookupuser_id'                => 'Mã số thành viên: <tt>#$1</tt>',
+	'lookupuser_email'             => 'Thư điện tử: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'không cung cấp',
+	'lookupuser_realname'          => 'Tên thật: $1',
+	'lookupuser_registration'      => 'Ngày đăng ký: $1',
+	'lookupuser_no_registration'   => 'không lưu trữ',
+	'lookupuser_touched'           => 'Bản ghi lại lần cuối truy cập: $1',
+	'lookupuser_useroptions'       => 'Lựa chọn của thành viên:',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

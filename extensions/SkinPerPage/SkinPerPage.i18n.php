@@ -138,7 +138,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'skinperpage-desc' => 'ajusta la balisa <tt>&lt;skin&gt;</tt> per utilizar diferentas interfàcias per pagina',
+	'skinperpage-desc' => 'Apondís la balisa <tt>&lt;skin&gt;</tt> per utilizar diferentas interfàcias per pagina',
 );
 
 /** Polish (Polski)

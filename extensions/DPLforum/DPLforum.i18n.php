@@ -39,6 +39,13 @@ $messages['bg'] = array(
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'dplforum-never' => 'Mai',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -215,7 +215,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'contributionseditcount'      => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
-	'contributionseditcount-desc' => 'Aficha un comptaire d’edicions sus la pagina [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Aficha un comptador d’edicions sus la pagina [[Special:Contributions]]',
 );
 
 $messages['pl'] = array(

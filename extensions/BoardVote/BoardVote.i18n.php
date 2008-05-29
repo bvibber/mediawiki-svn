@@ -1222,6 +1222,8 @@ Vi nepre devis fari almenaŭ $1 kontribuojn antaŭ $2, kaj faris almenaŭ $3 kon
 	'group-boardvote-member' => 'Balotadministranto',
 	'grouppage-boardvote'    => '{{ns:project}}:Balotadministranto',
 	'boardvote_blocked'      => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
+	'boardvote_bot'          => 'Vi estas markita kiel roboto en via registrita vikio.
+Robotaj kontoj ne estas permesita voĉdoni.',
 	'boardvote_welcome'      => "Bonvenon '''$1'''!",
 	'go_to_board_vote'       => '2008 Balotado de Wikimedia Administrantaro',
 	'boardvote_redirecting'  => 'Por pli bona sekureco kaj travidebleco, ni konduktas la voĉdonadon ĉe ekstera sendepende kontrolita servilo. 
@@ -1234,6 +1236,8 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
 
 /** Spanish (Español)
  * @author Lin linao
+ * @author Titoxd
+ * @author Siebrand
  * @author Bengoa
  */
 $messages['es'] = array(
@@ -1248,13 +1252,19 @@ $messages['es'] = array(
 <p>Para más información, lee:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Election FAQ</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li></ul>',
-	'boardvote_notloggedin'  => 'No has iniciado sesión. Para votar, debes tener una cuenta con al menos $1 contribuciones antes del $2 y haber hecho la primera edición antes del $3.',
-	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección. Necesitas tener $3 ediciones antes del $2 y haber hecho tu primera edición antes del $5.',
+	'boardvote_notloggedin'  => 'No has iniciado sesión. 
+Para votar, necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
+	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección. 
+Necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
+	'boardvote_novotes'      => 'Nadie ha votado todavía.',
+	'boardvote_time'         => 'Tiempo',
 	'boardvote_user'         => 'Usuario',
 	'boardvote_edits'        => 'Ediciones',
+	'boardvote_days'         => 'Días',
 	'boardvote_ip'           => 'IP',
 	'boardvote_dumplink'     => 'Haz click aquí',
 	'boardvote_notstarted'   => 'La votación todavía no ha comenzado',
+	'boardvote_closed'       => 'El período de votación finalizó. Pronto podrás ver el resultado [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/es en la página de las elecciones].',
 	'boardvote_welcome'      => "¡Bienvenido, '''$1'''!",
 	'boardvote_redirecting'  => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
@@ -4320,106 +4330,17 @@ Môže sa zobraziť bezpečnostné varovanie o nepodpísanom certifikáte.',
 	'right-boardvote'          => 'Spravovať voľby',
 );
 
-/** Serbian (Српски / Srpski)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Kale
- */
-$messages['sr'] = array(
-	'boardvote'                => 'Избор за Одбор повереника Задужбине Викимедија',
-	'boardvote-desc'           => '[[meta:Board elections/2008/sr|Избори за Викимедијин Одбор повереника]]',
-	'boardvote_entry'          => '* [[Special:Boardvote/vote|Гласај]]
-* [[Special:Boardvote/list|Списак досадашњих гласова]]
-* [[Special:Boardvote/dump|Шифрован запис гласања]]',
-	'boardvote_intro'          => '<p>Добродошли на Изборе за Викимедијин Одбор повереника 2008.
-Гласамо за једну особу која треба да представља заједницу корисника различитих Викимедијиних пројеката.
-Та особа ће помоћи у обликовању будућег правца којим ће Викимедијини пројекти ићи, како појединачно тако и као скуп, и представљаће <em>ваше</em> интересе и бриге Одбору повереника.
-Одлучиваће, такође, о начинима прикупљања средстава и расподели прикупљеног новца.</p>
-
-<p>Молимо вас да пре гласања пажљиво прочитате изјаве кандидата и одговоре на постављена питања.
-Сваки од кандидата је цењени корисник који је значајном количином времена и напора допринео томе да ови пројекти буду пријатно окружење посвећено стремљењу ка, и слободној дистрибуцији људског знања.</p>
-
-<p>Молимо вас рангирајте кандидате сходно вашој наклоности уписивањем броја поред квадратића (1 = фаворит, 2 = други по реду, ...).
-Можете назначити и исту наклоњеност према више од једног кандидата, а можете и оставити кандидате нерангиранима.
-Узима се претпоставка да сте наклоњенији свим рангираним кандидатима више него свим нерангираним, као и да сте подједнако индиферентни према свим нерангираним кандидатима.</p>
-
-<p>Победник избора ће бити добијен применом Шулцовог метода. За више информација погледајте званичне странице избора.</p>
-
-<p>For more information, see:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/sr" class="external">Избори за Одбор 2008.</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/sr" class="external">Кандидати</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Шулцов метод (текст на енглеском језику)</a></li></ul>',
-	'boardvote_intro_change'   => '<p>Већ сте гласали. Ипак, можете променити
-ваш глас користећи формулар испод. Молимо рангирајте кандидате сходно редоследу ваше наклоњености, при чему мањи број
-означава већу наклоњеност према датом кандидату. Можете назначити исту наклоњеност према више
-од једног кандидата а можете и оставити кандидате нерангиранима.</p>',
-	'boardvote_entered'        => 'Хвала вам, ваш глас је забележен.
-
-Уколико желите, можете сачувати следеће детаље. Број записа вашег гласа је:
-
-<pre>$1</pre>
-
-Шифриран је јавним кључем администратора гласања:
-
-<pre>$2</pre>
-
-Следи резултујућа шифрирана верзија. Биће јавно доступна на [[Special:Boardvote/dump]].
-
-<pre>$3</pre>
-
-[[Special:Boardvote/entry|Назад]]',
-	'boardvote_invalidentered' => '<p><strong>Грешка</strong>: наклоњеност кандидату мора се изразити искључиво као позитиван цели број (1, 2, 3, ....), или се
-поље може оставити празно.</p>',
-	'boardvote_nosession'      => 'Ваш Викимедијин кориснички ID се не може утврдити.
-Молимо вас, пријавите се на викију где задовољавате предуслове за право гласа, и идите на <nowiki>[[Special:Boardvote]]</nowiki>.
-Морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
-	'boardvote_notloggedin'    => 'Нисте пријављени.
-Да бисте гласали, морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
-	'boardvote_notqualified'   => 'Не задовољавате услове за гласање на овим изборима.
-Неопходно је да сте направили најмање $1 измена пре $2, и најмање $3 измена између $4 и $5.',
-	'boardvote_novotes'        => 'Нико још увек није гласао.',
-	'boardvote_time'           => 'Време',
-	'boardvote_user'           => 'Корисник',
-	'boardvote_edits'          => 'Измена',
-	'boardvote_days'           => 'Дана',
-	'boardvote_ip'             => 'ИП',
-	'boardvote_ua'             => 'Кориснички агент',
-	'boardvote_listintro'      => '<p>Ово је списак свих гласова који су снимљени до сада.
-$1 за шифроване податке.</p>',
-	'boardvote_dumplink'       => 'Кликните овде',
-	'boardvote_submit'         => 'У реду',
-	'boardvote_strike'         => 'Прецртај',
-	'boardvote_unstrike'       => 'Непрецртано',
-	'boardvote_needadmin'      => 'Само администратори гласања могу да изврше ову операцију.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:
-Гласање отворено до 22. јуна',
-	'boardvote_notstarted'     => 'Гласање још није почело',
-	'boardvote_closed'         => 'Гласање је завршено, ускоро погледајте [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/sr страну посвећену резултатима избора].',
-	'boardvote_edits_many'     => 'много',
-	'group-boardvote'          => 'Администратори гласања за Одбор',
-	'group-boardvote-member'   => 'Администратор гласања за Одбор',
-	'grouppage-boardvote'      => '{{ns:project}}:Администратор гласања за Одбор',
-	'boardvote_blocked'        => 'Жао нам је, блокирани сте на вашој Вики.
-Блокираним корисницима није дозвољено да гласају.',
-	'boardvote_bot'            => 'Означени сте као бот на вашем викију.
-Бот налозима није дозвољено да гласају.',
-	'boardvote_welcome'        => "Добродошли '''$1'''!",
-	'go_to_board_vote'         => 'Избори за Викимедијин Одбор 2008.',
-	'boardvote_redirecting'    => 'Из разлога побољшане сигурности и транспарентности, гласање спроводимо на спољашњем, независно констролисаном серверу.
-
-Бићете преусмерени на овај спољашњи сервер кроз 20 секунди. [$1 Кликните овде] да бисте одмах отишли тамо.
-
-Може се појавити сигурносно упозорење о непотписаном сертификату.',
-	'right-boardvote'          => 'Администрирај изборе',
-);
-
-/** ћирилица (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'boardvote'              => 'Избор за Одбор повереника Викимедија Фондације',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласај]]
+	'boardvote'                => 'Избор за Одбор повереника Викимедија Фондације',
+	'boardvote-desc'           => '[[meta:Board elections/2008/sr|Избори за Викимедијин Одбор повереника]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Гласај]]
 * [[Special:Boardvote/list|Списак гласова до датума]]
 * [[Special:Boardvote/dump|Енкриптован запис гласања]]',
-	'boardvote_intro'        => '
+	'boardvote_intro'          => '
 <p>Добро дошли на треће изборе за Викимедијин Одбор повереника.
 Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката.
 Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу,
@@ -4437,9 +4358,9 @@ $messages['sr-ec'] = array(
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Најчешће постављена питања избора</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Кандидати</a></li></ul>
 ',
-	'boardvote_intro_change' => '<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
+	'boardvote_intro_change'   => '<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
 Молимо одаберите кандидате за које гласате.</p>',
-	'boardvote_entered'      => 'Хвала вам, ваш глас је снимљен.
+	'boardvote_entered'        => 'Хвала вам, ваш глас је снимљен.
 
 Уколико желите, можете сачувати следеће детаље. Ваше гласачки снимак је:
 
@@ -4454,32 +4375,45 @@ $messages['sr-ec'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Назад]]',
-	'boardvote_notloggedin'  => 'Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.',
-	'boardvote_notqualified' => 'Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.',
-	'boardvote_novotes'      => 'Још нико није гласао.',
-	'boardvote_time'         => 'Време',
-	'boardvote_user'         => 'Корисник',
-	'boardvote_edits'        => 'Измена',
-	'boardvote_days'         => 'Дана',
-	'boardvote_ip'           => 'ИП',
-	'boardvote_ua'           => 'Кориснички агент',
-	'boardvote_listintro'    => '<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>',
-	'boardvote_dumplink'     => 'Кликните овде',
-	'boardvote_submit'       => 'У реду',
-	'boardvote_strike'       => 'Прецртано',
-	'boardvote_unstrike'     => 'Непрецртано',
-	'boardvote_needadmin'    => 'Само администратори гласања могу да изводе ову операцију.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра',
-	'boardvote_notstarted'   => 'Гласање још није почело',
-	'boardvote_closed'       => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En страницу за гласање за резултате] ускоро.',
-	'boardvote_edits_many'   => 'много',
-	'group-boardvote'        => 'изборна комисија',
-	'group-boardvote-member' => 'изборна комисија',
-	'grouppage-boardvote'    => '{{ns:project}}:Администратор гласања за Одбор',
-	'boardvote_blocked'      => 'Жао нам је, блокирани сте на вашој Вики. Блокираним корисницима је забрањено да гласају.',
-	'boardvote_welcome'      => "Добро дошли '''$1'''!",
-);
+	'boardvote_invalidentered' => '<p><strong>Грешка</strong>: наклоњеност кандидату мора се изразити искључиво као позитиван цели број (1, 2, 3, ....), или се
+поље може оставити празно.</p>',
+	'boardvote_nosession'      => 'Ваш Викимедијин кориснички ID се не може утврдити.
+Молимо вас, пријавите се на викију где задовољавате предуслове за право гласа, и идите на <nowiki>[[Special:Boardvote]]</nowiki>.
+Морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
+	'boardvote_notloggedin'    => 'Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.',
+	'boardvote_notqualified'   => 'Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.',
+	'boardvote_novotes'        => 'Још нико није гласао.',
+	'boardvote_time'           => 'Време',
+	'boardvote_user'           => 'Корисник',
+	'boardvote_edits'          => 'Измена',
+	'boardvote_days'           => 'Дана',
+	'boardvote_ip'             => 'ИП',
+	'boardvote_ua'             => 'Кориснички агент',
+	'boardvote_listintro'      => '<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>',
+	'boardvote_dumplink'       => 'Кликните овде',
+	'boardvote_submit'         => 'У реду',
+	'boardvote_strike'         => 'Прецртано',
+	'boardvote_unstrike'       => 'Непрецртано',
+	'boardvote_needadmin'      => 'Само администратори гласања могу да изводе ову операцију.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра',
+	'boardvote_notstarted'     => 'Гласање још није почело',
+	'boardvote_closed'         => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En страницу за гласање за резултате] ускоро.',
+	'boardvote_edits_many'     => 'много',
+	'group-boardvote'          => 'изборна комисија',
+	'group-boardvote-member'   => 'изборна комисија',
+	'grouppage-boardvote'      => '{{ns:project}}:Администратор гласања за Одбор',
+	'boardvote_blocked'        => 'Жао нам је, блокирани сте на вашој Вики. Блокираним корисницима је забрањено да гласају.',
+	'boardvote_bot'            => 'Означени сте као бот на вашем викију.
+Бот налозима није дозвољено да гласају.',
+	'boardvote_welcome'        => "Добро дошли '''$1'''!",
+	'go_to_board_vote'         => 'Избори за Викимедијин Одбор 2008.',
+	'boardvote_redirecting'    => 'Из разлога побољшане сигурности и транспарентности, гласање спроводимо на спољашњем, независно констролисаном серверу.
 
+Бићете преусмерени на овај спољашњи сервер кроз 20 секунди. [$1 Кликните овде] да бисте одмах отишли тамо.
+
+Може се појавити сигурносно упозорење о непотписаном сертификату.',
+	'right-boardvote'          => 'Администрирај изборе',
+);
 
 $messages['sr-el'] = array(
 	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
@@ -5130,6 +5064,7 @@ la votazion la xe verta fin al 22 de giugno',
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen
+ * @author Siebrand
  */
 $messages['vi'] = array(
 	'boardvote'                => 'Bầu cử Ban Quản trị Wikimedia',
@@ -5137,11 +5072,19 @@ $messages['vi'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Bỏ phiếu]]
 * [[Special:Boardvote/list|Danh sách những lá phiếu đến nay]]
 * [[Special:Boardvote/dump|Hồ sơ bầu cử mật mã hóa]]',
-	'boardvote_intro'          => '<p>Chào mừng bạn đã tới cuộc bầu cử năm 2008 cho Ban Quản tri Wikimedia. Chúng ta sẽ bầu cho hai người đại diện cho cộng đồng thành viên trên các dự án Wikimedia. Họ sẽ cùng định hướng tương lai của các dự án, với tư cách cá nhân hoặc theo nhóm, và sẽ thể hiện những ý muốn và mối quan tâm <em>của bạn</em> tại Ban Quản trị. Họ sẽ quyết định về cách làm thế nào để tạo thu nhập và sử dụng số tiền hợp lý.</p>
+	'boardvote_intro'          => '<p>Chào mừng bạn đã tới cuộc bầu cử năm 2008 cho Ban Quản tri Wikimedia. 
+Chúng ta sẽ bầu ra một người đại diện cho cộng đồng thành viên trên các dự án Wikimedia. 
+Họ sẽ cùng định hướng tương lai của các dự án, với tư cách cá nhân hoặc theo nhóm, và sẽ thể hiện những ý muốn và mối quan tâm <em>của bạn</em> tại Ban Quản trị. 
+Họ sẽ quyết định về cách làm thế nào để tạo thu nhập và sử dụng số tiền hợp lý.</p>
 
-<p>Xin hãy đọc những lời tuyên bố và trả lời của những ứng cử viên cẩn thận trước khi bỏ phiếu. Mỗi ứng cử viên đều là thành viên được cộng đồng kính trọng, và họ đã đóng góp nhiều sức lực và thì giờ để làm mỗi dự án trở nên ngày càng gần gũi với mục tiêu theo đuổi và phổ biến thông tin một cách tự do.</p>
+<p>Xin hãy đọc những lời tuyên bố và trả lời của những ứng cử viên cẩn thận trước khi bỏ phiếu. 
+Mỗi ứng cử viên đều là thành viên được cộng đồng kính trọng, và họ đã đóng góp nhiều sức lực và thì giờ để làm mỗi dự án trở nên ngày càng gần gũi với mục tiêu theo đuổi và phổ biến thông tin một cách tự do.</p>
 
-<p>Bạn được phép bỏ phiếu cho hơn một ứng cử viên. Người ứng cử được nhiều lá phiếu nhất trong mỗi vị trí được bầu sẽ là được giữ vị trí đó. Nếu trường hợp là hai người cùng số phiếu thì sẽ bầu cử lại.</p>
+<p>Xin hãy xếp thứ hạng cho các ứng cử viên theo lựa chọn của bạn bằng cách điền một con số bên cạnh hộp (1 = ứng cử viên ưa thích, 2 = ưa thích thứ hai, ...).
+Bạn có thể đưa ra sự lựa chọn ưu tiên cho nhiều hơn một ứng cử viên và cũng có thể không xếp hạng cho ứng cử viên.
+Chúng tôi sẽ cho là bạn thích tất cả các ứng viên được xếp hạng hơn là tất cả các ứng viên không xếp hạng và rằng bạn xem các thành viên không xếp hạng là như nhau.</p>
+
+<p>Người chiến thắng trong cuộc bầu cử sẽ được chọn ra nhờ phương pháp Schulze. Để biết thêm thông tin, mời xem các trang bầu cử chính thức.</p>
 
 <p>Để biết thêm về bầu cử này, xem:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Board elections 2008</a></li>

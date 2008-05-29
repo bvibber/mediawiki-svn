@@ -149,7 +149,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'purge'      => 'purgar',
-	'purge-desc' => "Ajusta un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
+	'purge-desc' => "Apondís un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
 );
 
 /** Polish (Polski)

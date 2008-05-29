@@ -418,6 +418,25 @@ $3',
 	'latexdoc-desc'            => 'Вироиши ҳамдастии парвандаҳои LaTeX',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'latexdoc_no_text'         => 'Trang không chúa ký tự, không thể tạo ra DVI',
+	'latexdoc_cant_create_dir' => 'Không thể tạo ra thư mục tạm $1',
+	'latexdoc_cant_write'      => 'Không thể ghi ra tập tin $1',
+	'latexdoc_error'           => 'Lỗi LaTeX
+
+Lệnh: $1
+
+Xuất: $2
+
+$3',
+	'latexdoc_get_dvi'         => 'Truy xuất DVI',
+	'latexdoc_get_pdf'         => 'Truy xuất PDF',
+	'latexdoc-desc'            => 'Sửa đổi tập thể các tài liệu LaTeX',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

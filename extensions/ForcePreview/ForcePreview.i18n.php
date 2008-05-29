@@ -144,9 +144,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'forcepreview'             => 'Salvagarda la pagina (amòda en primièr la previsualizacion)',
+	'forcepreview'             => 'Salva la pagina (amòda en primièr la previsualizacion)',
 	'forcepreview-desc'        => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
-	'right-forcepreviewexempt' => "Pòt èsser salvagardat sens l'utilizacion de la previsualizacion",
+	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
 );
 
 /** Portuguese (Português)

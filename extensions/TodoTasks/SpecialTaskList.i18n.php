@@ -367,8 +367,8 @@ Fra %ss varslingssystem',
  */
 $messages['oc'] = array(
 	'tasklist'               => 'Lista de prètzfaches',
-	'tasklist-parser-desc'   => 'Ajusta <nowiki>{{#todo:}}</nowiki> una foncion parser per assignar de prètzfaches',
-	'tasklist-special-desc'  => 'Ajusta una pagina especiala per revisar [[Special:TaskList|la lista dels prètzfaches assignats]]',
+	'tasklist-parser-desc'   => 'Apondís <nowiki>{{#todo:}}</nowiki> una foncion parser per assignar de prètzfaches',
+	'tasklist-special-desc'  => 'Apondís una pagina especiala per revisar [[Special:TaskList|la lista dels prètzfaches assignats]]',
 	'tasklistbyproject'      => 'Lista de prètzfaches per projècte',
 	'tasklistunknownproject' => 'Projècte desconegut',
 	'tasklistunspecuser'     => 'Contributor desconegut',

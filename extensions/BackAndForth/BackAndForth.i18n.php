@@ -397,7 +397,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'backforth-next' => 'Seguent ($1)',
-	'backforth-desc' => 'Ajusta « Seguent » e « Precedent » a la pagina dels ligams alfabetics en naut de las paginas',
+	'backforth-desc' => 'Apondís « Seguent » e « Precedent » a la pagina dels ligams alfabetics en naut de las paginas',
 	'backforth-prev' => 'Precedent ($1)',
 );
 

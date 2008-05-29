@@ -225,7 +225,7 @@ $messages['no'] = array(
  * @author Siebrand
  */
 $messages['oc'] = array(
-	'commentspammer-save-blocked' => "Vòstra adreça IP es la d'una persona sospechada de crear de spams, la pagina es pas estada salvagardada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.",
+	'commentspammer-save-blocked' => "Vòstra adreça IP es la d'una persona sospechada de crear de spams, la pagina es pas estada salvada. [[Special:Userlogin|Conectatz-vos o creatz un compte]] per contornar aqueste interdich.",
 	'commentspammer-desc'         => 'Regèta las modificacions suspectadas de spams a partir d’una lista negra figurant dins lo projècte HoneyPot DNS',
 	'commentspammer-log-msg'      => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => "Lo darrièr spam remonta a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivèl d'alèrta es a $2 e lo còde d'atac es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vejatz los detalhs] o [[Special:Blockip/$4|blocatz]].",

@@ -86,6 +86,13 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'edituser-dosearch' => 'Cerca',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

@@ -534,10 +534,23 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'importfreeimages_owner' => 'Tác giả',
+	'importfreeimages'                       => 'Nhập khẩu hình tự do',
+	'importfreeimages-desc'                  => 'Là một cách để [[Special:ImportFreeImages|nhập khẩu những hình ảnh được cấp phép thích hợp]] từ [http://www.flickr.com Flickr]',
+	'importfreeimages_description'           => 'Trang này cho phép bạn tìm những hình ảnh được cấp phép thích hợp từ Flickr và truyền chúng vào wiki của bạn.',
+	'importfreeimages_noapikey'              => 'Bạn chưa cấu hình Khóa API Flickr của bạn.
+Để làm điều đó, hãy lấy một khóa API từ [http://www.flickr.com/services/api/misc.api_keys.html đây] và thiết lập biến wgFlickrAPIKey trong ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => 'Không tìm thấy hình nào phù hợp với tiêu chí tìm kiếm ‘$1’ của bạn, xin hãy thử lại.',
+	'importfreeimages_invalidurl'            => 'Địa chỉ URL “$1” không phải hình Flickr hợp lệ.',
+	'importfreeimages_owner'                 => 'Tác giả',
+	'importfreeimages_importthis'            => 'nhập cái này',
+	'importfreeimages_next'                  => '$1 sau',
+	'importfreeimages_filefromflickr'        => '$1 bởi người dùng <b>[$2]</b> của Flickr. Địa chỉ URL gốc',
+	'importfreeimages_promptuserforfilename' => 'Xin hãy nhập vào tên tập tin đích:',
+	'importfreeimages_returntoform'          => "Hoặc, nhấn vào <a href='$1'>đây</a> để quay trở lại kết quả tìm kiếm",
 );
 
 /** Volapük (Volapük)

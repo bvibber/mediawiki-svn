@@ -89,3 +89,10 @@ $messages['sv'] = array(
 	'htmlets-desc' => 'Låter dig infoga HTML-kod från filer med hjälp av taggen <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'htmlets-desc' => 'Cho phép bạn nhúng những đoạn HTML từ tập tin dùng thẻ <tt><nowiki><htmlet></nowiki></tt>',
+);
+

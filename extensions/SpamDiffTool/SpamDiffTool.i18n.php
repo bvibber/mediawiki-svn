@@ -383,7 +383,7 @@ Qualas son las que volètz apondre a la Lista Negra dels Spams ?
 Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas.
 Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
 
-Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptaires d'utilizaires tals coma blogpost.com, geocities.com, etc.",
+Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptadors d'utilizaires tals coma blogpost.com, geocities.com, etc.",
 	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
 	'spamdifftool_spam_link_text'   => 'apondre als spams',
 	'spamdifftool_option_domain'    => 'tot dempuèi aqueste domeni',

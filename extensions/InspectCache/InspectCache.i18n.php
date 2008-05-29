@@ -515,3 +515,19 @@ $messages['uk'] = array(
 	'inspectcache-ok' => 'Гаразд',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'inspectcache'         => 'Kiểm tra bộ nhớ đệm',
+	'inspectcache-desc'    => 'Một công cụ gỡ rối đơn giản để kiểm tra nội dung của bộ đệm dùng chung',
+	'inspectcache-ok'      => 'OK',
+	'inspectcache-general' => 'Bộ đệm tổng quát',
+	'inspectcache-parser'  => 'Bộ đệm cú pháp',
+	'inspectcache-message' => 'Bộ đệm thông báo',
+	'inspectcache-get'     => 'Truy xuất',
+	'inspectcache-delete'  => 'Xóa',
+	'inspectcache-deleted' => 'Bộ đệm đã xóa',
+	'inspectcache-list'    => 'Liệt kê',
+);
+

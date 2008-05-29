@@ -1819,7 +1819,7 @@ $wgGoogleMapsMessages['no'] = array(
  */
 $wgGoogleMapsMessages['oc'] = array(
 	'gm-incompatible-browser'      => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigador compatible</a>.',
-	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navigaires compatibles.',
+	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navigadors compatibles.',
 	'gm-no-editor'                 => 'Malurosament, vòstre navigador supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title'             => 'Títol :',
 	'gm-balloon-link-article'      => 'Ligam cap a aquesta pagina (opcional) :',
@@ -1864,7 +1864,7 @@ $wgGoogleMapsMessages['oc'] = array(
 	'gm-meters'                    => 'mètres',
 	'gm-miles'                     => 'milas',
 	'gm-editing-path'              => 'Clicatz sus la mapa per apondre d’autres punts a aqueste trajècte.',
-	'gm-save-path'                 => 'Salvagardar',
+	'gm-save-path'                 => 'Salvar',
 	'gm-edit-path'                 => 'Apondre de punts',
 	'gm-show-path'                 => 'afichar los punts',
 	'gm-color-path'                => 'Cambiar de color',

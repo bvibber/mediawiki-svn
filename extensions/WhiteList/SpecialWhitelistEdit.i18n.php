@@ -155,10 +155,12 @@ $2',
 
 /** Catalan (Català)
  * @author SMP
+ * @author Jordi Roqué
  */
 $allMessages['ca'] = array(
 	'whitelisttablemodifynone' => 'Cap',
 	'whitelisttableedit'       => 'Edita',
+	'whitelistnever'           => 'mai',
 );
 
 /** Chamorro (Chamoru)
@@ -357,6 +359,13 @@ Pode usar * ou %, como tamén o carácter "comodín"',
 $2',
 	'whitelistnever'           => 'nunca',
 	'whitelistnummatches'      => '  - $1 coincidencias',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$allMessages['haw'] = array(
+	'whitelisttableedit' => 'E ho‘opololei',
 );
 
 /** Hindi (हिन्दी)
@@ -700,7 +709,7 @@ $allMessages['oc'] = array(
 	'whitelisttablesetedit'     => 'Paramètres per l’edicion',
 	'whitelisttablesetview'     => 'Paramètres per visionar',
 	'whitelisttableremove'      => 'Levar',
-	'whitelistnewpagesfor'      => 'Ajusta de paginas novèlas a la lista blanca de <b>$1</b><br />
+	'whitelistnewpagesfor'      => 'Apondís de paginas novèlas a la lista blanca de <b>$1</b><br />
 Utilizatz siá lo caractèr * siá %',
 	'whitelistnewtabledate'     => 'Data d’expiracion :',
 	'whitelistnewtableedit'     => "Paramètres d'edicion",
@@ -715,7 +724,7 @@ Utilizatz siá lo caractèr * siá %',
 	'whitelistoverviewcd'       => "Modificacion de la data de '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewsa'       => "* configurar l'accès de '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewrm'       => '* Retirament de l’accès a [[:$1|$1]]',
-	'whitelistoverviewna'       => "* Ajusta [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
+	'whitelistoverviewna'       => "* Apondís [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
 	'whitelistrequest'          => 'Demanda d’accès a mai de paginas',
 	'whitelistrequestmsg'       => '$1 a demandat l’accès a las paginas seguentas :
 

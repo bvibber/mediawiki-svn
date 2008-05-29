@@ -106,7 +106,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'didyoumean-desc' => 'Ajusta de ligams a las paginas amb de títols « semblables »',
+	'didyoumean-desc' => 'Apondís de ligams a las paginas amb de títols « semblables »',
 );
 
 /** Polish (Polski)

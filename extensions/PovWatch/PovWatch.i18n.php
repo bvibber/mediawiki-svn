@@ -589,7 +589,7 @@ $messages['oc'] = array(
 	'povwatch_subscribe'               => 'Soscriure',
 	'povwatch_added'                   => 'ajustat',
 	'right-povwatch_admin'             => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
-	'right-povwatch_user'              => 'Ajusta de paginas a la lista de seguit dels autres utilizaires',
+	'right-povwatch_user'              => 'Apondís de paginas a la lista de seguit dels autres utilizaires',
 );
 
 /** Polish (Polski)

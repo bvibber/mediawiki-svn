@@ -99,7 +99,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'fixedimage-desc' => 'Ajusta la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
+	'fixedimage-desc' => 'Apondís la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
 );
 
 /** Portuguese (Português)

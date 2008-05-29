@@ -217,7 +217,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'poem-desc' => 'Ajusta la balisa <tt>&lt;poem&gt;</tt> pel formatatge dels poèmas',
+	'poem-desc' => 'Apondís la balisa <tt>&lt;poem&gt;</tt> pel formatatge dels poèmas',
 );
 
 /** Polish (Polski)

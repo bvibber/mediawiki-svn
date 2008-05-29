@@ -85,7 +85,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'gnuplot-desc' => 'Ajusta la balisa <code><nowiki><gnuplot></nowiki></code> per poder utilizar Gnuplot',
+	'gnuplot-desc' => 'Apondís la balisa <code><nowiki><gnuplot></nowiki></code> per poder utilizar Gnuplot',
 );
 
 /** Polish (Polski)

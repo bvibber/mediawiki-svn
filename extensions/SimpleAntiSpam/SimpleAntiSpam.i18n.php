@@ -55,6 +55,14 @@ $messages['de'] = array(
 	'simpleantispam-desc'  => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'simpleantispam-label' => 'Kontrolo kontraŭ spamo.
+NE ENIGU ion ajn!',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
@@ -142,7 +150,7 @@ $messages['oc'] = array(
 	'simpleantispam'       => 'Vòstre cambiament a desenclavat lo mecanisme antispam',
 	'simpleantispam-label' => "Verificacion antispam.
 Inscrigatz '''PAS RES''' dedins !",
-	'simpleantispam-desc'  => 'Ajusta al formulari la verificacion d’un bòt spamaire',
+	'simpleantispam-desc'  => 'Apondís al formulari la verificacion d’un bòt tarabastejaire',
 );
 
 /** Portuguese (Português)

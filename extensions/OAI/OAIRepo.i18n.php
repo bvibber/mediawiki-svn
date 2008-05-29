@@ -60,6 +60,13 @@ $messages['nl'] = array(
 	'oai-desc' => 'Biedt een interface naar de [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH-repository]',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'oai-desc' => 'Provesís una interfàcia de depaus [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -72,6 +79,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'oai-desc' => 'Poskytuje rozhranie k úložisku [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'oai-desc' => 'Cung cấp giao diện lưu trữ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Cantonese

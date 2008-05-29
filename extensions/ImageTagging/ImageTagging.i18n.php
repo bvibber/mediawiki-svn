@@ -204,6 +204,13 @@ Desexa acceder ao sistema agora?',
 	'imagetagging-taggedimages-total'       => '"$1"; imaxe(s) en total',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'imagetagging-imghistory' => 'He aha i ho‘ololi ‘ia ai',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
