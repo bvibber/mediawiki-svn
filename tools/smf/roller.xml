@@ -2,8 +2,8 @@
 <!DOCTYPE service_bundle
   SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
 
-<service_bundle type='manifest' name='fisheye'>
-  <service name='application/fisheye' type='service' version='1'>
+<service_bundle type='manifest' name='roller'>
+  <service name='application/roller' type='service' version='1'>
     <create_default_instance enabled='false' />
 
     <dependency
@@ -15,25 +15,25 @@
     </dependency>
 
     <exec_method type='method' name='start'
-      exec='/opt/wmf/smf/method-fisheye %m'
+      exec='/opt/wmf/smf/method-roller %m'
       timeout_seconds='60'>
       <method_context>
-        <method_credential user='fisheye' />
+        <method_credential user='roller' />
       </method_context>
     </exec_method>
 
-    <exec_method type='method' name='stop' exec='/opt/wmf/smf/method-fisheye %m' timeout_seconds='60'>
+    <exec_method type='method' name='stop' exec='/opt/wmf/smf/method-roller %m' timeout_seconds='60'>
       <method_context>
-        <method_credential user='fisheye' />
+        <method_credential user='roller' />
       </method_context>
     </exec_method>
 
       <property_group name='startd' type='framework'>
-	<propval name='duration' type='astring' value='child' />
+	<propval name='duration' type='astring' value='transient' />
       </property_group>
 
     <template>
-      <common_name><loctext xml:lang='C'>FishEye</loctext></common_name>
+      <common_name><loctext xml:lang='C'>Apache Roller</loctext></common_name>
     </template>
   </service>
 </service_bundle>

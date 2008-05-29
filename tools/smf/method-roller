@@ -7,10 +7,10 @@ getproparg() {
         [ -n "$val" ] && echo $val
 }
 
-installdir=`getproparg fisheye/install-dir`
+rollerdir=`getproparg roller/install-dir`
 
-[[ -z "$installdir" ]] && {
-	echo >&2 "fisheye/install-dir property is not set"
+[[ -z "$rollerdir" ]] && {
+	echo >&2 "roller/install-dir property is not set"
 	exit 1
 }
 
@@ -19,10 +19,10 @@ export JAVA_HOME
 
 case "$1" in
 	start)
-		cd $installdir && exec bin/run.sh
+		cd $rollerdir && ../start-roller.sh
 		;;
 	stop)
-		cd $installdir && exec bin/stop.sh
+		cd $rollerdir && bin/shutdown.sh
 		;;
 	*)
 		echo >&2 "usage: $0 <start|stop>"
