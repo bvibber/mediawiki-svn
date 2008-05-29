@@ -300,6 +300,14 @@ class ApiWikiData extends ApiBase {
 			} catch (Exception $exception) {
 				$printer->addErrorMessage($exception->getTraceAsString());
 			}
+		} elseif($type == 'listCollections') {
+			try { # effin error handler suxx0rs. This way at least I see what I'm doing wrong
+				$printer->suppress_output();	# this is prolly not the best solution ^^;;
+				print $this->listCollections();
+			} catch (Exception $exception) {
+				$printer->addErrorMessage($exception->getTraceAsString());
+			}
+
 		}
 		
 	}
@@ -322,7 +330,8 @@ class ApiWikiData extends ApiBase {
 					'relation',
 					'dump',
 					'collection',
-					'translation'
+					'translation',
+					'listCollections'
 				)
 			),
 			'expression' => null,
@@ -366,13 +375,14 @@ class ApiWikiData extends ApiBase {
 		return array (
 			'type' => array (
 				'Query type.',
-				'expression:     query an expression.',
-				'definedmeaning: defined meaning by id',
-				'randomdm:       a random defined meaning',
-				'relation:       find relations or related defined meanings',
-				'dump:		 provide partial xml dumps (parameters are same as for random_dm)',
-				'collection:	a listing of collection members (defined meaning id only by by collection_id)',
-				'translation:	defined meaning by id, but only translated text and synonyms/translations (faster query)'
+				'expression:		query an expression.',
+				'definedmeaning:	defined meaning by id',
+				'randomdm:		a random defined meaning',
+				'relation:		find relations or related defined meanings',
+				'dump:			provide partial xml dumps (parameters are same as for random_dm)',
+				'collection:		a listing of collection members (defined meaning id only)',
+				'translation:		defined meaning by id, but only translated text and synonyms/translations (faster query)',
+				'listCollections:	provide a list of collections: id, name (defined meaning dmid, defining expression spelling) , count (number of items in collection)'
 			),
 			'expression' => 'For type \'expression\': the expression.',
 			'explanguage' => 'For type \'expression\': the expression language. Omit to search all languages.',
@@ -530,6 +540,7 @@ class ApiWikiData extends ApiBase {
 			$translated_text=$translated_text_list->addChild("translated-text",$row["text_text"]);
 			$translated_text->addAttribute("language",$row["iso639_3"]);
 		}
+
 		#synonyms-translations-list
 		$query="SELECT syntrans_sid, identical_meaning, iso639_3, spelling FROM uw_syntrans, uw_expression, language
 			WHERE	uw_syntrans.defined_meaning_id=\"$dmid\"
@@ -550,5 +561,42 @@ class ApiWikiData extends ApiBase {
 
 		return $xml->asXML();
 	}
+
+	public function listCollections() {
+
+		$xml=new SimpleXMLElement("<wikidata></wikidata>");
+		$body=$xml->addChild('body');
+	
+		#query
+		$query="SELECT uw_collection.collection_id, collection_mid, spelling, counts.total FROM  
+				uw_collection, uw_defined_meaning, uw_expression,
+				( 
+				SELECT collection_id,count(*) AS total FROM uw_collection_contents 
+				GROUP by collection_id
+				) counts 
+			WHERE uw_collection.collection_id=counts.collection_id 
+			AND uw_collection.collection_mid=uw_defined_meaning.defined_meaning_id 
+			AND uw_expression.expression_id=uw_defined_meaning.expression_id  
+			ORDER BY spelling
+			";
+
+		$dbr=& wfGetDB(DB_SLAVE);
+		try {
+			$result=$dbr->query($query);
+		} catch (Exception $e) {echo $e->getTraceAsString(); echo mysql_error();}
+		
+		$collections_list=$body->addchild("collections_list");
+		while($row=mysql_fetch_assoc($result)) {
+			$collection=$collections_list->addChild("collection");
+			$collection->addAttribute("id",$row["collection_id"]);
+			$name=$collection->addChild("name",$row["spelling"]);
+			$name->addAttribute("dmid",$row["collection_mid"]);
+			$collection->addChild("count",$row["total"]);
+
+		}
+
+		return $xml->asXML();
+	}
+
 }
 ?>
