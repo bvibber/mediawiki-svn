@@ -14,9 +14,12 @@ class SiteMatrix
 	public $langlist, $sites, $names, $hosts;
 	public $specialRewrites, $hidden, $specials, $matrix, $count, $countPerSite;
 
-	public function __construct()
-	{
+	public function __construct(){
 		global $wgLocalDatabases, $IP, $wgSiteMatrixFile;
+
+		if( file_exists( "$IP/InitialiseSettings.php" ) ) {
+			require_once "$IP/InitialiseSettings.php";
+		}
 
 		$this->langlist = array_map( 'trim', file( $wgSiteMatrixFile ) );
 		sort( $this->langlist );
