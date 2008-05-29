@@ -34,7 +34,6 @@ class ApiWikiData extends ApiBase {
 	private $rintseIsRight = false;
 
 	public function __construct($main, $action) {
-		throw new Exception("where do I come from? Where do I go?");
 		parent :: __construct($main, $action, 'wd');
 	}
 
