@@ -9,13 +9,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 global $IP;
 require_once( $IP.'/languages/Names.php' );
 
-class SiteMatrix
-{
+class SiteMatrix {
 	public $langlist, $sites, $names, $hosts;
 	public $specialRewrites, $hidden, $specials, $matrix, $count, $countPerSite;
 
 	public function __construct(){
-		global $wgLocalDatabases, $IP, $wgSiteMatrixFile;
+		global $wgLocalDatabases, $IP, $wgSiteMatrixFile, $wgConf;
 
 		if( file_exists( "$IP/InitialiseSettings.php" ) ) {
 			require_once "$IP/InitialiseSettings.php";
