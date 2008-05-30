@@ -151,6 +151,10 @@ class View {
 			<fieldset class='settings'>
 			<input type='submit' value='peek' name='peek' />
 			<input type='submit' value='skip ->' name='skip' />
+			<input type='submit' value='do not ask again' name='hide' />
+			".
+			#<input type='submit' value='never ask again' name='never_ask' />
+			"
 			<input type='submit' value='abort exercise' name='abort' />
 			<input type='submit' value='list answers' name='list_answers' />
 			</fieldset>

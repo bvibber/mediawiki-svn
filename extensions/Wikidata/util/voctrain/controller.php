@@ -167,6 +167,17 @@ class Controller {
 
 			#...so we can take advantage of that local caching ;-)
 			$this->model->saveExercise($exercise,$userName);
+		} elseif (isset($_REQUEST['hide'])) { # don't ask again this session
+			if (!isset($_REQUEST['questionDmid']))
+				throw new Exception("Hide requested, but no dmid integer supplied");
+			$exercise->hideQuestion_byDMID($_REQUEST['questionDmid']);
+			$this->model->saveExercise($exercise,$userName);
+			$continue=true;
+				
+		} elseif (isset($_REQUEST['never_ask'])) { # blacklist permanently
+			#to be done
+			echo "never ask not yet implemented";
+			$continue=true;
 		}
 
 		if ($continue) { # Let's go ahead and ask the next question
