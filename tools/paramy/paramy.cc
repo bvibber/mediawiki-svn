@@ -8,8 +8,14 @@
 
 #include <mysql.h>
 
+// maximum size of a query
+#define QBUF 1024*1024*32
+
+// parsing buffer size
 #define BUF 1024*1024
-#define QBUF 1024*1024*16
+
+// String with Length :) 
+#define SL(x) x,sizeof(x)-1
 
 int main(int, char*[]);
 void handle_stream(FILE *);
@@ -20,13 +26,13 @@ void execute(MYSQL *, char *);
 MYSQL *connect();
 void usage();
 
-
 pthread_cond_t canread = PTHREAD_COND_INITIALIZER;
 pthread_cond_t canwrite = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 char *opt_username=NULL,*opt_password=NULL,*opt_hostname=NULL,*opt_database=NULL,*opt_charset=NULL;
 int opt_port=0,opt_numthreads=8;
+int opt_force=0;
 
 bool endofwork=false;
 std::deque<char *> work_queue;
@@ -42,7 +48,7 @@ int main (int argc, char **argv)
 	static char *optiongroups[] = {"client","paramy",(char *)NULL};
 	mysql_library_init(argc,argv,optiongroups);
 	
-	while ((c = getopt (argc,argv, "u:p:h:d:P:c:n:")) != -1) switch (c) {
+	while ((c = getopt (argc,argv, "u:p:h:d:P:c:n:f")) != -1) switch (c) {
 		case 'u': opt_username=strdup(optarg); break;
 		case 'p': opt_password=strdup(optarg); break;
 		case 'h': opt_hostname=strdup(optarg); break;
@@ -50,6 +56,7 @@ int main (int argc, char **argv)
 		case 'c': opt_charset=strdup(optarg); break;
 		case 'P': opt_port=atoi(optarg); break;
 		case 'n': opt_numthreads=atoi(optarg); break;
+		case 'f': opt_force=1; break;
 		default: usage();
 	}
 	
@@ -71,18 +78,19 @@ int main (int argc, char **argv)
 }
 
 void handle_stream(FILE *in) {
-	char *buffer=(char *)malloc(BUF);
-	char *qbuf=(char *)malloc(BUF);
+	char *sbuf=(char *)malloc(BUF+2);
+	char *qbuf=(char *)malloc(QBUF+2);
 	char instring=0;
 	char inescape=0;
+	unsigned long long overflow=0;
 	char atstart=1;
 	size_t l;
 	
 	char *bpos, *qpos, c;
 	
 	qpos=qbuf;
-	while(l=fread(buffer,1,BUF,in)) {
-		bpos=buffer;
+	while(l=fread(sbuf,1,BUF,in)) {
+		bpos=sbuf;
 		while(l--) {
 			c=*bpos++;
 			
@@ -94,11 +102,21 @@ void handle_stream(FILE *in) {
 			
 			/* fill in query buffer */
 			*qpos++=c;
-			if(!instring && c==';') { 
+
+			if (qpos-qbuf>QBUF || overflow) {
+				overflow++;
+				qpos=qbuf;
+			}
+
+			if((!instring && c==';')) { 
 				*qpos++=0; 
-				dispatch(qbuf);
+				if(!overflow)
+					dispatch(qbuf);
+				else
+					fprintf(stderr,"Overflowed the query buffer: query %llu bytes too large!\n",overflow);
 				qpos=qbuf; 
 				atstart=1;
+				overflow=0;
 			}
 			/* Starting quoted string */
 			if(!instring && (c=='\'' || c=='"' || c=='`')) {
@@ -120,7 +138,9 @@ void handle_stream(FILE *in) {
 }
 
 void dispatch(char *q) {
-	if (!strncmp(q,"INSERT INTO",strlen("INSERT INTO")))
+	if(!strncmp(q,SL("LOCK TABLES ")))
+		return;
+	if (opt_numthreads>1 && !strncmp(q,SL("INSERT INTO")))
 		async_dispatch(q);
 	else
 		execute(syncmysql,q);
@@ -188,13 +208,14 @@ MYSQL *connect() {
 
 void execute(MYSQL * mysql,char *q) {
 	if(mysql_query(mysql,q)) {
-		fprintf(stderr,"Error occured: %s\nQuery:%s\n\n",mysql_error(mysql),q);
-		exit(-1);
+		fprintf(stderr,"Error (%d) occured: %s\nQuery:\n%s\n\n",mysql_errno(mysql),mysql_error(mysql),q);
+		if (!opt_force)
+			exit(-1);
 	}
 }
 
 void usage() {
 	printf("Parallel MySQL dump loader\n"\
-		"Usage: paramy [-u username] [-p password] [-h host] [-P port] [-d database] [-c charset] [-n threads]\n\n");
+		"Usage: paramy [-u username] [-p password] [-h host] [-P port] [-d database] [-c charset] [-n threads] [-f]\n\n");
 	exit(0);
 }
