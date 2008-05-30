@@ -21,6 +21,13 @@ $messages['bg'] = array(
 	'psinotocnum-desc' => 'Нова вълшебна думичка „<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>“',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'psinotocnum-desc' => 'Ergänzt das magische Wort "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
 );
