@@ -57,9 +57,14 @@ class SpecialEmailArticle extends SpecialPage {
 
 		# If $wgEmailArticleContactsCat is set, create a select list of all categories
 		if ($wgEmailArticleContactsCat) {
-			$cl = $db->tableName('categorylinks');
 			$cats = '';
-			$result = $db->query("SELECT cl_from FROM $cl WHERE cl_to = '$wgEmailArticleContactsCat' ORDER BY cl_sortkey");
+			$result = $db->select(
+				'categorylinks',
+				'cl_from',
+				'cl_to = '.$db->addQuotes($wgEmailArticleContactsCat),
+				__METHOD__,
+				array('ORDER BY' => 'cl_sortkey')
+			);
 			if ($result instanceof ResultWrapper) $result = $result->result;
 			if ($result) while ($row = $db->fetchRow($result)) {
 				$t = Title::newFromID($row[0]);
@@ -97,9 +102,14 @@ class SpecialEmailArticle extends SpecialPage {
 		$wgOut->addHTML("<textarea name=\"ea-header\" rows=\"5\">{$this->header}</textarea><br />\n");
 
 		# CSS
-		$page = $db->tableName('page');
 		$csss = '';
-		$result = $db->query("SELECT page_id FROM $page WHERE page_title LIKE '%.css' ORDER BY page_title");
+		$result = $db->select(
+			'page',
+			'page_id',
+			'page_title LIKE \'%.css\'',
+			__METHOD__,
+			array('ORDER BY' => 'page_title')
+		);
 		if ($result instanceof ResultWrapper) $result = $result->result;
 		if ($result) while ($row = $db->fetchRow($result)) {
 			$t = Title::newFromID($row[0])->getPrefixedText();
@@ -142,20 +152,25 @@ class SpecialEmailArticle extends SpecialPage {
 
 		# Get contact article titles from selected cat
 		if ($this->cat) {
-			$cl     = $db->tableName('categorylinks');
-			$result = $db->query("SELECT cl_from FROM $cl WHERE cl_to = '{$this->cat}' ORDER BY cl_sortkey");
-			while ($row = mysql_fetch_row($result)) $this->addRecipient(Title::newFromID($row[0]));
+			$result = $db->select(
+				'categorylinks',
+				'cl_from',
+				'cl_to = '.$db->addQuotes($this->cat),
+				__METHOD__,
+				array('ORDER BY' => 'cl_sortkey')
+			);
+			if ($result instanceof ResultWrapper) $result = $result->result;
+			if ($result) while ($row = $db->fetchRow($result)) $this->addRecipient(Title::newFromID($row[0]));
 		}
 
 		# Get email addresses from users in selected group
 		if ($this->group && ($wgEmailArticleAllowAllUsers || $this->group != 'user')) {
-			$u  = str_replace('`','',$db->tableName('user'));
-			$ug = str_replace('`','',$db->tableName('user_groups'));
-			if ($this->group == 'user') $sql = "SELECT user_email FROM $u WHERE user_email != ''";
-			else $sql = "SELECT $u.user_email FROM $u,$ug WHERE $ug.ug_user = $u.user_id AND $ug.ug_group = '{$this->group}'";
-			$result = $db->query($sql);
+			$group = $db->addQuotes($this->group);
+			$result = $this->group == 'user'
+				? $db->select('user', 'user_email', 'user_email != \'\'', __METHOD__)
+				: $db->select(array('user', 'user_groups'), 'user_email', 'ug_user = user_id AND ug_group = $group', __METHOD__);
 			if ($result instanceof ResultWrapper) $result = $result->result;
-			while ($row = $db->fetchRow($result)) $this->addRecipient($row[0]);
+			if ($result) while ($row = $db->fetchRow($result)) $this->addRecipient($row[0]);
 		}
 
 		# Recipients from list (expand templates in wikitext)
