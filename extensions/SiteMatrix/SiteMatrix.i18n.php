@@ -1257,6 +1257,8 @@ $messages['yue'] = array(
 	'sitematrix-others'    => 'Wikimedia嘅其它計劃',
 	'sitematrix-total'     => "'''總計: $1'''",
 	'sitematrix-sitetotal' => '總數',
+	'sitematrix-private'   => '私用',
+	'sitematrix-fishbowl'  => '編輯限制',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -1271,6 +1273,8 @@ $messages['zh-hans'] = array(
 	'sitematrix-others'    => '维基媒体的其它计划',
 	'sitematrix-total'     => "'''合计：$1'''",
 	'sitematrix-sitetotal' => '总数',
+	'sitematrix-private'   => '私用',
+	'sitematrix-fishbowl'  => '编辑限制',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1285,6 +1289,8 @@ $messages['zh-hant'] = array(
 	'sitematrix-others'    => '維基媒體的其它計劃',
 	'sitematrix-total'     => "'''合計：$1'''",
 	'sitematrix-sitetotal' => '總數',
+	'sitematrix-private'   => '私用',
+	'sitematrix-fishbowl'  => '編輯限制',
 );
 
 $messages['zh-tw'] = array(

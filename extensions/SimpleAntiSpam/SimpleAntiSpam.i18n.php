@@ -213,3 +213,31 @@ Xin '''ĐỪNG''' điền gì vào!",
 	'simpleantispam-desc'  => 'Thêm một kiểm tra spam/bot vào mẫu',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'simpleantispam'       => '你嘅編輯已經觸發咗防垃圾裝置',
+	'simpleantispam-label' => "反垃圾檢查。
+'''唔好'''加入呢個！",
+	'simpleantispam-desc'  => '加一個簡單嘅垃圾／機械人檢查表格',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'simpleantispam'       => '您的编辑已经触发了防垃圾装置',
+	'simpleantispam-label' => "反垃圾检查。
+'''不要'''加入这个！",
+	'simpleantispam-desc'  => '加一个简单的垃圾／机械人检查表格',
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'simpleantispam'       => '您的編輯已經觸發了防垃圾裝置',
+	'simpleantispam-label' => "反垃圾檢查。
+'''不要'''加入這個！",
+	'simpleantispam-desc'  => '加一個簡單的垃圾／機械人檢查表格',
+);

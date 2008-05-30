@@ -1158,6 +1158,7 @@ $messages['yue'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '下面響用戶名黑名單嘅{{PLURAL:$1|一行|咁多行}}唔正確；請響儲存之前改正{{PLURAL:$1|佢|佢哋}}:',
+	'right-uboverride'                => '覆蓋用戶名黑名單',
 );
 
 /** Chinese Simplified
@@ -1175,6 +1176,7 @@ $messages['zh-hans'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '以下在用户名黑名单中{{PLURAL:$1|一行|多行}}不正确；请于保存之前改正{{PLURAL:$1|它|它们}}:',
+	'right-uboverride'                => '覆盖用户名称黑名单',
 );
 
 /** Chinese Traditional
@@ -1192,5 +1194,6 @@ $messages['zh-hant'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '以下在用戶名黑名單中{{PLURAL:$1|一行|多行}}不正確；請於保存之前改正{{PLURAL:$1|它|它們}}:',
+	'right-uboverride'                => '覆蓋用戶名稱黑名單',
 );
 

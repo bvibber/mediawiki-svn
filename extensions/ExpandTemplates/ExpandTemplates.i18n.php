@@ -1296,6 +1296,7 @@ $messages['yue'] = array(
 	'expand_templates_xml_output'      => 'XML輸出',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => '拎走注釋',
+	'expand_templates_generate_xml'    => '顯示XML語法樹',
 	'expand_templates_preview'         => '預覽',
 );
 
@@ -1309,6 +1310,7 @@ $messages['zh-hans'] = array(
 	'expand_templates_xml_output'      => 'XML输出',
 	'expand_templates_ok'              => '确定',
 	'expand_templates_remove_comments' => '移除注释',
+	'expand_templates_generate_xml'    => '显示XML语法树',
 	'expand_templates_preview'         => '预览',
 );
 
@@ -1322,6 +1324,7 @@ $messages['zh-hant'] = array(
 	'expand_templates_xml_output'      => 'XML輸出',
 	'expand_templates_ok'              => '確定',
 	'expand_templates_remove_comments' => '移除注釋',
+	'expand_templates_generate_xml'    => '顯示XML語法樹',
 	'expand_templates_preview'         => '預覽',
 );
 

@@ -190,3 +190,23 @@ $messages['vi'] = array(
 	'skinperpage-desc' => 'Thêm thẻ <tt>&lt;skin&gt;</tt> để dùng các hình dạng khác nhau cho mỗi trang',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'skinperpage-desc' => '加<tt>&lt;skin&gt;</tt>標籤響每一版用唔同嘅皮',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'skinperpage-desc' => '加入<tt>&lt;skin&gt;</tt>标签在每一页面中使用不同的皮肤',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'skinperpage-desc' => '加入<tt>&lt;skin&gt;</tt>標籤在每一頁面中使用不同的面版',
+);
