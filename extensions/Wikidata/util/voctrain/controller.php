@@ -29,16 +29,17 @@ class Controller {
 	 * Urk, bit confuzzeled on the $_REQUEST, should tidy!
 	 */
 	public function execute() {
-		$this->login();
-		$logged_in=$this->auth->checkAuth();
-		if ($_REQUEST["action"]=="logout")
-			$logged_in=false;
-		$this->view->header($logged_in);
 		# require login for all but new users.
 		if (isset($_REQUEST['new_user'])) {
 			$this->new_user();
 			exit;
 		}
+
+		$this->login();
+		$logged_in=$this->auth->checkAuth();
+		if ($_REQUEST["action"]=="logout")
+			$logged_in=false;
+		$this->view->header($logged_in);
 		$logged_in=$this->auth->checkAuth();
 		if ($logged_in) {
 			$action=$_REQUEST["action"];
@@ -201,7 +202,10 @@ class Controller {
 		$success=$auth->addUser($username, $password);
 		if ($success===true) {
 			$this->auth->setAuth($username);
+			$this->view->header(true);
 			$this->view->userAdded($username);
+			$this->view->footer();
+			exit;
 		} else {
 			var_dump($success);
 		}
