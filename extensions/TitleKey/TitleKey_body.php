@@ -199,7 +199,7 @@ class TitleKey {
 			),
 			__METHOD__,
 			array(
-				'ORDER BY' => 'tk_namespace, tk_key',
+				'ORDER BY' => 'tk_key',
 				'LIMIT' => $limit ) );
 		
 		// Reformat useful data for future printing by JSON engine
