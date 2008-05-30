@@ -13,7 +13,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('EMAILARTICLE_VERSION','1.0.9, 2008-01-19');
+define('EMAILARTICLE_VERSION','1.0.10, 2008-05-30');
 
 $wgEmailArticleGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailArticleContactsCat     = '';                 # This specifies the name of a category containing categories of contact articles
