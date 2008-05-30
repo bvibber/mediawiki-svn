@@ -193,15 +193,17 @@ class View {
 	public function allQuestionsTable($exercise) {
 		print "<table>";
 		print "<tr><th>Definition</th><th>Question</th><th>Answer(s)</th></tr>";
-		$exercise->rewind();
-		foreach ($exercise as $question) {
-			print "<tr>";
-			print "<td>".implode(",<br/>",$question->getQuestionDefinitions())."</td>";
-			print "<td>".implode(", ",$question->getQuestionWords())."</td>";
-			print "<td>".implode(", ",$question->getAnswers())."</td>";
-			print "</tr>";
-			flush();
-		}
+		try {
+			$exercise->rewind();
+			foreach ($exercise as $question) {
+				print "<tr>";
+				print "<td>".implode(",<br/>",$question->getQuestionDefinitions())."</td>";
+				print "<td>".implode(", ",$question->getQuestionWords())."</td>";
+				print "<td>".implode(", ",$question->getAnswers())."</td>";
+				print "</tr>";
+				flush();
+			}
+		} catch (NoMoreQuestionsException $ignored) {/*If this happens here, it's no problem*/}	
 		print "</table>";
 	}
 

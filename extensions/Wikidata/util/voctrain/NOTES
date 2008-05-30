@@ -14,22 +14,22 @@ Have fun, and good luck learning!
 
 == INSTALL ==
 
-requirements:
+Requirements:
 * PHP 5.2 or later
 * mysql 
 * pear::auth
 * pear::db
 * php cURL library
 
-checkout from svn:
+Checkout from svn:
 	svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Wikidata/util/voctrain
 
-create a new database for trainer, set it up using
+Create a new database for trainer, set it up using
 	mysql (your settings here) < trainer.sql
 
-Ensure your database supports utf-8.
+(Ensure your database supports utf-8.)
 
-create settings
+Create settings
 	cp settings.php.example settings.php    
 
 And edit for your local situation (mysql info needs to be provided twice for now... sorry).
@@ -41,10 +41,10 @@ Point users to trainer.php to use.
 == Code reading ==
 
 
-- Not exactly MVC pattern, but still organised back-end, control, and output into separate files.
+- Not proper MVC pattern IMO, but still organised back-end, control, and output into separate files.
 trainer.php is entry point, sets things up, then calls Controller->execute();
 
-- Most of the time is spent in run_exercise.
+- Most of the time is spent in Controller->run_exercise().
 
 - Expensive xml requests from the wikidata api are executed lazily on
 an as-needed basis, and the resulting data is cached locally. This

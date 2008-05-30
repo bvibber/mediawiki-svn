@@ -5,8 +5,9 @@ require_once("settings.php");
 
 require_once("Auth.php");
 
-# This shouldn't be here at all but PEAR:Auth hates me.
-# see also: Controller::__construct() and Controller::login() and Controller::logout()
+/** This shouldn't be here at all but PEAR:Auth hates me.
+ * see also: Controller::__construct() , Controller::login() , Controller::logout()
+ */
 function _displayLogin($username = null, $status = null, &$auth = null) {
 	echo "<form method=\"post\" action=\"trainer.php\">";
 	echo"User name: <input type=\"text\" name=\"username\" /><br>";
@@ -114,7 +115,7 @@ class Controller {
 	}
 
 	/** Most used part of the program. Performs the actual excercise
-	 * question and answer session, until We_Are_Done. */
+	 * question and answer session, until exercise is complete()-d . */
 	public function run_exercise($continue=false) {
 		# obtain an exercise
 		$userName=$this->auth->getUsername();
@@ -131,8 +132,8 @@ class Controller {
 
 			if (!isset($_REQUEST['userAnswer']))
 				throw new Exception("Answer submitted, but no userAnswer string supplied");
-
 			$userAnswer=$_REQUEST['userAnswer'];
+
 			$correct=$question->submitAnswer($userAnswer);
 			$this->model->saveExercise($exercise,$userName);
 			$this->view->answer($question, $correct);
@@ -148,20 +149,23 @@ class Controller {
 		} elseif (isset($_REQUEST['skip'])) {# Skip this question for now
 			$continue=true;
 
-		} elseif (isset($_REQUEST['abort'])) {
+		} elseif (isset($_REQUEST['abort'])) {# end the exercise now.
 			$this->abort($exercise);
 
-		} elseif (isset($_REQUEST['continue'])) { # continue after viewing answer $this->view->answer() or ...->list()
+		} elseif (isset($_REQUEST['continue'])) { # continue after viewing answer(s) $this->view->answer() or ...->list()
 			$continue=true;
 
-		} elseif (isset($_REQUEST['list_answers'])) {
+		} elseif (isset($_REQUEST['list_answers'])) { # list all answers. can be slow.
 
-			#iterating is currently a destructive operation (oops), so save and restore exercise state
+			# Exercise objects implement caching and lazy lookup. Since we're basically
+			# looking everything up ANYWAY,  we might as well cache iti too. :-P
+
+			#iterating is currently a destructive operation (oops), so save and restore exercise state...
 			$state=$exercise->getCurrentSubset();
-			$this->view->listAnswers($exercise); # uses iteration (ouw)
+			$this->view->listAnswers($exercise); # <- uses iterator (ouw)
 			$exercise->setCurrentSubset($state);
 
-			#because we want to take advantage of local caching ;-)
+			#...so we can take advantage of that local caching ;-)
 			$this->model->saveExercise($exercise,$userName);
 		}
 
@@ -173,7 +177,6 @@ class Controller {
 			}
 		}
 	}
-
 	
 	/** We are done with the exercise.  Let's tidy up.*/	
 	public function complete($exercise) {
@@ -181,13 +184,11 @@ class Controller {
 		$this->model->complete($exercise);
 	}
 
-	/** Similar to above, except user terminated exercise.*/	
+	/** Similar to complete() above, except user terminated exercise.*/	
 	public function abort($exercise) {
 		$this->view->aborted();
 		$this->model->complete($exercise);
 	}
-
-
 
 	/** Create a new user */
 	public function new_user() {
