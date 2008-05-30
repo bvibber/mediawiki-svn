@@ -185,7 +185,11 @@ class TitleKey {
 		return false;
 	}
 	
-	static function prefixSearch( $ns, $search, $limit ) {
+	static function prefixSearch( $namespaces, $search, $limit ) {
+		$ns = array_shift( $namespaces ); // support only one namespace
+		if( in_array( NS_MAIN, $namespaces ) )
+			$ns = NS_MAIN; // if searching on many always default to main 
+		
 		$key = self::normalize( $search );
 		
 		$dbr = wfGetDB( DB_SLAVE );
