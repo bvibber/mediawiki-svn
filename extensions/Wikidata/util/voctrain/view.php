@@ -2,6 +2,29 @@
 
 require_once("settings.php");
 
+$header_printed=false;
+/** This shouldn't be here at all but PEAR:Auth hates me.
+ * see also: Controller::__construct() , Controller::login() , Controller::logout()
+ */
+function _displayLogin($username = null, $status = null, &$auth = null) {
+	global $header_printed;
+	if (!$header_printed) {
+		$view=new View();
+		$view->header(false);
+	}
+	echo "<h1>Log In. Omegawiki vocabulary trainer</h1>";
+	echo "<form method=\"post\" action=\"trainer.php\">";
+	echo '<fieldset class="settings">';
+	echo"<div class='datarow'><label>User name: </label><input type=\"text\" name=\"username\" /></div><br/>";
+	echo "<div class='datarow'><label>Password: </label><input type=\"password\" name=\"password\" /></div><br/>";
+	echo '</fieldset>';
+	echo '<fieldset class="settings">';
+	echo '<div class="datarow"><input type="submit" value="Login"/> <input type="submit" value="Create new user" name="new_user"></div>';
+	echo '</fieldset>';
+	echo "</form>";
+}
+
+
 /** ~MVC:  Generate html for user interface */
 class View {
 
@@ -36,62 +59,59 @@ class View {
 	/** Big form, allows user to set parameters for their next exercise */
 	public function exercise_setup($collectionList) {
 		print "
-		<form method='post' action='trainer.php'>
-		<h2> choose collection </h2>
-		".$this->collectionTable($collectionList)."
-
+		<h1>Set up your exercise</h1>
+		<form method='post' action='?'>
+		<h2> collection </h2>
+		<fieldset class=settings>
+		<div class='datarow'>
+		".$this->collectionSelect($collectionList)."
+		</div>
+		</fieldset>
 		<h2>number of questions</h2>
-		<ul><!-- this needs css, or will look fugly -->
-		<li><input type='radio' value='10' name='exercise_size' />10</li>
-		<li><input type='radio' value='25' name='exercise_size' checked />25</li>
-		<li><input type='radio' value='50' name='exercise_size'/>50</li>
-		<li><input type='radio' value='100' name='exercise_size'/>100</li>
-		<li><input type='text' size='4' value='' name='exercise_size_other'>other</li>
-		</ul>
+		<fieldset class='settings'>
+		<div class='datarow'><input type='radio' value='10' name='exercise_size' /><label>10</label></div><br/>
+		<div class='datarow'><input type='radio' value='25' name='exercise_size' checked /><label>25</label></div><br/>
+		<div class='datarow'><input type='radio' value='50' name='exercise_size' /><label>50</label></div><br/>
+		<div class='datarow'><input type='radio' value='75' name='exercise_size' /><label>75</label></div><br/>
+		<div class='datarow'><input type='text' size='4' value='' name='exercise_size_other'>other</div><br/>
+		</fieldset>
+		</p>
+		</fieldset>
 		<h2>languages</h2>
+		<fieldset class='settings'>
 		<!-- should be a dropdown, perhaps -->
 		Please specify the languages you want to test in <a href='http://www.sil.org/ISO639-3/codes.asp'>ISO-639-3 format</a>. (eg, eng for English, deu for Deutch (German)). Depending on your test set, some combinations might work better than others.
-		<ul>
-		<li>Questions: <input type='text' value='eng' name='questionLanguage'/></li>
-		<li>Answers: <input type='text' value='deu' name='answerLanguage'/></li>
-		</ul>
+		<div class='datarow'><label>Questions:</label> <input type='text' value='eng' name='questionLanguage'/></div><br/>
+		<div class='datarow'><label>Answers: </label><input type='text' value='deu' name='answerLanguage'/></li></div><br/>
 		<hr/>
+		</p>
 		<input type='submit' value='start exercise'/> 
+		</form>
 		";
 	}
 
-	public function collectionTable($collectionList) {
-		$table="<table>\n";
-		$table.="
-			<tr>
-				<th>collection</th>
-				<th>max number of questions</th>
-			</tr>\n";
+	public function collectionSelect($collectionList) {
+		$select="<select name='collection'>\n";
 		foreach ($collectionList as $collection) {
-			$table .= "
-				<tr>
-					<td> 
-						<input 
-							type='radio' 
-							value='".$collection["id"]."' 
-							name='collection'";
+			$select .= "	<option
+						value='".$collection["id"]."' "; 
 
 			global $default_collection; # can be set in settings.php
 			if ((int) $collection["id"] == $default_collection) { # check-mark default collection
-				$table.= "
-							checked";
+				$select.= "
+							selected";
 			}
 
-			$table.= "
-						/> 
-					".$collection->name." </td>
-					<th> ".$collection->count." </th>
-				</tr>
+			$select.= "
+						> 
+					".$collection->name." 
+					(".$collection->count.")
+				</option>
 			";
 			flush();
 		}
-		$table.= "</table>\n";
-		return $table;
+		$select.= "</select>\n";
+		return $select;
 	}
 
 	/** ask a question */
@@ -106,29 +126,29 @@ class View {
 
 		print"<form method='post' action='?action=run_exercise'>
 			There are $questions_remaining questions remaining, out of a total of $questions_total.
-			<h2>Question</h2>
+			<h1>Question</h1>
 			<hr>
-			<h3>Definition</h3>
-			<small><i>Dictionary definition to help you</i></small>
-			<p>
+			<h2>Definition</h2>
+			<p class='result'>
+			<i>Dictionary definition to help you:</i><br/>
 			$definitions 
 			</p>
 			<hr>
-			<h3>Word</h3>
-			<small><i>The word to translate</i></small>
-			<p>
+			<h2>Word</h2>
+			<p class='result'>
+			<i>The word to translate:</i><br/>
 			$words
 			</p>
 			<hr>
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
-			<h3>Answer</h3>
-			<small><i>Please type your answer here</i></small>
+			<h2>Answer</h2>
+			<fieldset class='settings'>
+			<i>Please type your answer here</i><br/>
 
-			<fieldset>
-			<b>Answer</b>: <input type='text' value='' name='userAnswer' />
+			<input type='text' value='' name='userAnswer' />
 			<input type='submit' value='submit answer' name='submitAnswer' />
 			</fieldset>
-			<fieldset>
+			<fieldset class='settings'>
 			<input type='submit' value='peek' name='peek' />
 			<input type='submit' value='skip ->' name='skip' />
 			<input type='submit' value='abort exercise' name='abort' />
@@ -181,8 +201,12 @@ class View {
 	public function listAnswers($exercise) {
 		print "<h1> list of questions and answers </h1>";
 		$this->allQuestionsTable($exercise);
+		print"<fieldset class='settings'>";
 		print"<form method='post' action='?action=run_exercise'>";
+		print "<div style='float:right;'>";
 		print"<input type='submit' value='continue ->' name='continue' />";
+		print"</div>";
+		print"</fieldset>";
 		print"</form>";
 	}
 
@@ -218,12 +242,11 @@ class View {
 	}
 
 	/** fugly function to print HTML header */
-	public function header() {
+	public function header($showlogout=true) {
 print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
         <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 
 
                 <link rel="stylesheet" type="text/css" media="screen, projection" href="../ow/styles.css" />
@@ -233,16 +256,24 @@ print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
                 <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "http://www.omegawiki.org/skins/monobook/main.css?55"; /*]]>*/</style>
                 <link rel="stylesheet" type="text/css" media="print" href="http://www.omegawiki.org/skins/common/commonPrint.css?55" />
                 <link rel="stylesheet" type="text/css" media="handheld" href="http://www.omegawiki.org/skins/monobook/handheld.css?55" />
+                <link rel="stylesheet" type="text/css" media="screen" href="css/training.css" />
 
 </head>
 <body>
-<a href="?action=logout">logout</a>
+<div id="container">
 ';
+		if ($showlogout) {
+			print'<a href="?action=logout">logout</a>';
+		}
+		global $header_printed;
+		$header_printed=true;
 	}
 
 	/** fugly function to print HTML footer */
 	public function footer() {
 print'
+<p class="footer">Powered by <a href="http://www.omegawiki.org/">Omegawiki</a></p>
+</div>
 </body>
 </html>
 ';

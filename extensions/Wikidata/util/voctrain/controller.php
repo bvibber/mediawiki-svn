@@ -5,16 +5,7 @@ require_once("settings.php");
 
 require_once("Auth.php");
 
-/** This shouldn't be here at all but PEAR:Auth hates me.
- * see also: Controller::__construct() , Controller::login() , Controller::logout()
- */
-function _displayLogin($username = null, $status = null, &$auth = null) {
-	echo "<form method=\"post\" action=\"trainer.php\">";
-	echo"User name: <input type=\"text\" name=\"username\" /><br>";
-	echo "Password: <input type=\"password\" name=\"password\" /><br>";
-	echo '<input type="submit" value="Login"/> <input type="submit" value="Create new user" name="new_user">';
-	echo "</form>";
-}
+
 
 /** ~MVC  Accept user input and coordinate model and view. */
 class Controller {
@@ -34,31 +25,37 @@ class Controller {
 		$this->auth=$auth;
 	}
 
-	/** Entry point. Examine $_REQUEST and decide what to do */
+	/** Entry point. Examine $_REQUEST and decide what to do 
+	 * Urk, bit confuzzeled on the $_REQUEST, should tidy!
+	 */
 	public function execute() {
+		$this->login();
+		$logged_in=$this->auth->checkAuth();
+		if ($_REQUEST["action"]=="logout")
+			$logged_in=false;
+		$this->view->header($logged_in);
 		# require login for all but new users.
 		if (isset($_REQUEST['new_user'])) {
 			$this->new_user();
 			exit;
 		}
-		$this->login();
-		
-		$this->view->header();
+		$logged_in=$this->auth->checkAuth();
+		if ($logged_in) {
+			$action=$_REQUEST["action"];
+			if (in_array($action,array(
+				"hello",
+				"logout",
+				"create_exercise",
+				"run_exercise",
+				"complete_exercise"
+				))){
 
-		$action=$_REQUEST["action"];
-		if (in_array($action,array(
-			"hello",
-			"logout",
-			"create_exercise",
-			"run_exercise",
-			"complete_exercise"
-			))){
-
-			$this->$action();
-		} elseif ($action===null) {
-			$this->default_action();
-		}else {
-			$this->view->actionUnknown($action);
+				$this->$action();
+			} elseif ($action===null) {
+				$this->default_action();
+			}else {
+				$this->view->actionUnknown($action);
+			}
 		}
 		$this->view->footer();
 	}
@@ -110,6 +107,7 @@ class Controller {
 		} else {
 			$collectionList=$this->model->collectionList();
 			$this->view->exercise_setup($collectionList);
+			$this->view->footer();
 			exit;
 		}
 	}
@@ -123,6 +121,7 @@ class Controller {
 		$exercise=$this->model->getExercise($userName);
 		if ($exercise===null) {
 			$exercise=$this->create_exercise();
+			#$continue=true;
 		}
 		
 		if (isset($_REQUEST['submitAnswer'])) { #User submitted answer
@@ -213,8 +212,10 @@ class Controller {
 	public function login() {
 		$this->auth->start();
 		if (!$this->auth->checkAuth()) {
-			exit;
+			return false;
+			#exit;
 		}
+		return true;
 	}
 
 	/** allow user to log out, and display log-in screen again 
@@ -222,7 +223,8 @@ class Controller {
 	public function logout() {
 		if (!$this->auth->checkAuth()) {
 			$this->view->permissionDenied();
-			exit;
+			#exit;
+			return false;
 		}
 		$this->auth->logout();
 		$this->auth->start();
