@@ -546,12 +546,12 @@ class SpecialConfigure extends SpecialPage {
 		$allowed = $this->userCanEdit( $conf );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
-				return htmlspecialchars( $default );
+				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			return Xml::element( 'input', array( 'name' => 'wp' . $conf, 'type' => 'text', 'value' => $default ) );
 		}
 		if( $type == 'bool' ){
 			if( !$allowed )
-				return wfBoolToStr( $default );
+				return '<code>' . ( $default ? 'true' : 'false' ) . '</code>';
 			if( $default )
 				$checked = array( 'checked' => 'checked' );
 			else
@@ -564,26 +564,32 @@ class SpecialConfigure extends SpecialPage {
 		if( $type == 'lang' ){
 			// Code taken from Xml.php, Xml::LanguageSelector only available since 1.11 and Xml::option since 1.8
 			$languages = Language::getLanguageNames( true );
-			if( !array_key_exists( $default, $languages ) ) {
-				$languages[$default] = $default;
+
+			if( $allowed ){
+				if( !array_key_exists( $default, $languages ) ) {
+					$languages[$default] = $default;
+				}
+				ksort( $languages );
+
+				$options = "\n";
+				foreach( $languages as $code => $name ) {
+					$attribs = array( 'value' => $code );
+					if( $code == $default )
+						$attribs['selected'] = 'selected';
+					$options .= Xml::element( 'option', $attribs, "$code - $name" ) . "\n";
+				}
+
+				return Xml::openElement( 'select', array( 'id' => 'wp' . $conf, 'name' => 'wp' . $conf ) ) .
+					$options . "</select>";
+			} else {
+				return '<code>' . ( isset( $languages[$default] ) ?
+					htmlspecialchars( "$default - " . $languages[$default] ) :
+					htmlspecialchars( $default ) ) . '</code>';
 			}
-			ksort( $languages );
-
-			$options = "\n";
-			foreach( $languages as $code => $name ) {
-				$attribs = array( 'value' => $code );
-				if( $code == $default )
-					$attribs['selected'] = 'selected';
-				$options .= Xml::element( 'option', $attribs, "$code - $name" ) . "\n";
-			}
-
-			return Xml::openElement( 'select', array( 'id' => 'wp' . $conf, 'name' => 'wp' . $conf ) ) .
-				$options . "</select>";
-
 		}
 		if( is_array( $type ) ){
 			if( !$allowed )
-				return htmlspecialchars( $default );
+				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			$ret = "\n";
 			foreach( $type as $val => $name ){
 				$ret .= Xml::radioLabel( $name, 'wp'.$conf, $val, 'wp'.$conf.$val, $default == $val ) . "\n";
@@ -605,7 +611,7 @@ class SpecialConfigure extends SpecialPage {
 		$type = self::$arrayDefs[$conf];
 		if( $type == 'simple' ){
 			if( !$allowed ){
-				return "<pre>\n" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
+				return "<pre>" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
 			}
 			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8'>";
 			if( is_array( $default ) )
@@ -629,7 +635,7 @@ class SpecialConfigure extends SpecialPage {
 							'type' => 'text', 'value' => $key
 						) ) . "<br/>\n";
 					else
-						$text .= htmlspecialchars( $key );
+						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
 					$text .= '</td>' . Xml::openElement( 'td', $class );
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
@@ -637,7 +643,7 @@ class SpecialConfigure extends SpecialPage {
 							'type' => 'text', 'value' => $val
 						) ) . "<br/>\n";
 					else
-						$text .= htmlspecialchars( $val );
+						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
 					$text .= '</td></tr>';
 					$i++;
 				}
@@ -745,7 +751,7 @@ class SpecialConfigure extends SpecialPage {
 					( isset( $default[$ns] ) ? implode( "\n", $default[$ns] ) : '' ) .
 					Xml::closeElement( 'textarea' ) . "<br/>\n";
 				else 
-					$text .= "<pre>\n" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n", $default[$ns] ) ) : '' ) . "\n</pre>";
+					$text .= "<pre>" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n", $default[$ns] ) ) : '' ) . "\n</pre>";
 				$text .= '</td></tr>';
 			}
 			$text .= '</table>';
