@@ -88,6 +88,7 @@ class View {
 					<th> ".$collection->count." </th>
 				</tr>
 			";
+			flush();
 		}
 		$table.= "</table>\n";
 		return $table;
@@ -122,13 +123,17 @@ class View {
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<h3>Answer</h3>
 			<small><i>Please type your answer here</i></small>
-			<p>
+
+			<fieldset>
 			<b>Answer</b>: <input type='text' value='' name='userAnswer' />
-			</p>
 			<input type='submit' value='submit answer' name='submitAnswer' />
+			</fieldset>
+			<fieldset>
 			<input type='submit' value='peek' name='peek' />
 			<input type='submit' value='skip ->' name='skip' />
 			<input type='submit' value='abort exercise' name='abort' />
+			<input type='submit' value='list answers' name='list_answers' />
+			</fieldset>
 			</form>
 		";
 	}
@@ -157,7 +162,7 @@ class View {
 			<hr>
 			Question: $words
 			<hr>
-			Answer: $answers
+			Answer (one of): $answers
 			<hr>
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<input type='submit' value='continue ->' name='continue' />
@@ -169,7 +174,25 @@ class View {
 	public function complete($exercise) {
 		
 		print "<h1> Exercise complete </h1>";
+		$this->allQuestionsTable($exercise);
+		print "<a href='?action=create_exercise'>Start a new exercise</a>";
+	}
+
+	public function listAnswers($exercise) {
+		print "<h1> list of questions and answers </h1>";
+		$this->allQuestionsTable($exercise);
+		print"<form method='post' action='?action=run_exercise'>";
+		print"<input type='submit' value='continue ->' name='continue' />";
+		print"</form>";
+	}
+
+	/** prints all questions out in a table.
+	 * using a flush() between each item.
+	 * this might not work out right... possibly needs heavy duty css :-/
+	 */
+	public function allQuestionsTable($exercise) {
 		print "<table>";
+		print "<tr><th>Definition</th><th>Question</th><th>Answer(s)</th></tr>";
 		$exercise->rewind();
 		foreach ($exercise as $question) {
 			print "<tr>";
@@ -177,9 +200,9 @@ class View {
 			print "<td>".implode(", ",$question->getQuestionWords())."</td>";
 			print "<td>".implode(", ",$question->getAnswers())."</td>";
 			print "</tr>";
+			flush();
 		}
 		print "</table>";
-		print "<a href='?action=create_exercise'>Start a new exercise</a>";
 	}
 
 

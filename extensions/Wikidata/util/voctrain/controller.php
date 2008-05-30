@@ -151,15 +151,23 @@ class Controller {
 		} elseif (isset($_REQUEST['abort'])) {
 			$this->abort($exercise);
 
-		} elseif (isset($_REQUEST['continue'])) { # continue after viewing answer $this->view->answer()
+		} elseif (isset($_REQUEST['continue'])) { # continue after viewing answer $this->view->answer() or ...->list()
 			$continue=true;
 
+		} elseif (isset($_REQUEST['list_answers'])) {
+
+			#iterating is currently a destructive operation (oops), so save and restore exercise state
+			$state=$exercise->getCurrentSubset();
+			$this->view->listAnswers($exercise); # uses iteration (ouw)
+			$exercise->setCurrentSubset($state);
+
+			#because we want to take advantage of local caching ;-)
+			$this->model->saveExercise($exercise,$userName);
 		}
 
 		if ($continue) { # Let's go ahead and ask the next question
 			try {
 				$this->view->ask($exercise);
-				$this->model->saveExercise($exercise,$userName);
 			} catch (NoMoreQuestionsException $We_Are_Done) {
 				$this->complete($exercise);
 			}

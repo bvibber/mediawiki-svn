@@ -1,3 +1,67 @@
+== Summary (jargon)==
+
+The vocabulary trainer is a php based web-application,
+using the WikiData XML API provided by Omegawiki
+to provide a flashcard system for training vocabulary.
+
+The default setup looks up data across the internet from
+omegawiki.org.
+
+Data is fetched lazily as-needed, and then cached locally,
+on a per-exercise basis.
+
+Have fun, and good luck learning! 
+
+== INSTALL ==
+
+requirements:
+* PHP 5.2 or later
+* mysql 
+* pear::auth
+* pear::db
+* php cURL library
+
+checkout from svn:
+	svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Wikidata/util/voctrain
+
+create a new database for trainer, set it up using
+	mysql (your settings here) < trainer.sql
+
+Ensure your database supports utf-8.
+
+create settings
+	cp settings.php.example settings.php    
+
+And edit for your local situation (mysql info needs to be provided twice for now... sorry).
+Typically only the mysql info needs to be changed anyway.
+
+Point users to trainer.php to use.
+
+
+== Code reading ==
+
+
+- Not exactly MVC pattern, but still organised back-end, control, and output into separate files.
+trainer.php is entry point, sets things up, then calls Controller->execute();
+
+- Most of the time is spent in run_exercise.
+
+- Expensive xml requests from the wikidata api are executed lazily on
+an as-needed basis, and the resulting data is cached locally. This
+is done on a per-exercise basis. (If you start a new exercise,
+the data is fetched again). This is a reasonable compromise. 
+You can still benefit from improvements to the database over time,
+but at the same time there is some speedup gain, and the
+exercise remains stable until it's finished. (if someone
+changes an entry after a particular question has been asked
+or shown, this doesn't count towards the current exercise)
+
+- functions.php contains a lot of legacy code, should clean that
+up sometime.
+
+
+==Small notes ==
+
 Hmmm, oops, got my view and  controller tangled...
 I should have made the view an observer of the model instead... <sigh>
 
@@ -5,3 +69,6 @@ And then I now realize I'd have a clear state to work with.
 
 Well, live and learn. Will try and fix that when going for feature completion
 there's stuff that'd give me headaches otherwise.
+
+
+

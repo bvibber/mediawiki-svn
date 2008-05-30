@@ -2,7 +2,7 @@
 
 
 /** where do I find the omegawiki api */
-$ow_api_location = 'http://they/wikidata/api.php?action=wikidata';
+$ow_api_location = 'http://www.omegawiki.org/api.php?action=wikidata';
 
 /** basic information on where to find the mysql database */
 $mysql_info=array(
