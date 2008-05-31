@@ -231,6 +231,7 @@ $messages['zh-hans'] = array(
 	'simpleantispam-label' => "反垃圾检查。
 '''不要'''加入这个！",
 	'simpleantispam-desc'  => '加一个简单的垃圾／机械人检查表格',
+);
 
 /** Chinese (Traditional)
  * @author Shinjiman
