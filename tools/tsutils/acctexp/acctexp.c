@@ -14,20 +14,35 @@
 #include <shadow.h>
 
 int
-main()
+main(argc, argv)
+	int argc;
+	char **argv;
 {
 struct spwd	*spwent;
 struct passwd	*pwent;
+char const	*uname = NULL;
 uid_t		 uid;
 time_t		 when;
 char		 res[256];
 struct tm	 *whentm;
-	uid = getuid();
-	if ((pwent = getpwuid(uid)) == NULL) {
-		(void) fprintf(stderr, "getpwuid: %s\n", strerror(errno));
-		return 1;
+	if (argc > 1) {
+		if (getgid() != getegid()) {
+			(void) fprintf(stderr, "only the super-user may view"
+				" the account expiry data of another user\n");
+			return 1;
+		}
+
+		uname = argv[1];
+	} else {
+		uid = getuid();
+		if ((pwent = getpwuid(uid)) == NULL) {
+			(void) fprintf(stderr, "getpwuid: %s\n", strerror(errno));
+			return 1;
+		}
+
+		uname = pwent->pw_name;
 	}
-	if ((spwent = getspnam(pwent->pw_name)) == NULL) {
+	if ((spwent = getspnam(uname)) == NULL) {
 		(void) fprintf(stderr, "getspnam: %s\n", strerror(errno));
 		return 1;
 	}
@@ -45,9 +60,9 @@ struct tm	 *whentm;
 	}
 	(void) strftime(res, sizeof(res) - 1, "%A, %d %B %Y", whentm);
 	res[sizeof(res) - 1] = '\0';
-	(void) printf("Your account will expire on %s.\n", res);
+	if (argc > 1)
+		(void) printf("The account \"%s\" will expire on %s.\n", uname, res);
+	else
+		(void) printf("Your account will expire on %s.\n", res);
 	return 0;
 }
-	
-
-	
