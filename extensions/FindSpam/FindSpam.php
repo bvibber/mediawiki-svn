@@ -13,6 +13,7 @@ $wgAvailableRights[] = 'findspam';
 $wgGroupPermissions['sysop']['findspam'] = true;
 
 $wgSpecialPages['FindSpam'] = 'FindSpamPage';
+$wgSpecialPageGroups['FindSpam'] = 'spam';
 $wgAutoloadClasses['FindSpamPage'] = dirname(__FILE__) . '/FindSpam_body.php';
 
 $dir = dirname(__FILE__) . '/';

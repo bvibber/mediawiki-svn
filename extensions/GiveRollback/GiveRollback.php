@@ -25,6 +25,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['GiveRollback'] = $dir . 'GiveRollback.i18n.php';
 $wgAutoloadClasses['GiveRollback'] = $dir . 'GiveRollback.page.php';
 $wgSpecialPages['Giverollback'] = 'GiveRollback';
+$wgSpecialPageGroups['Giverollback'] = 'users';
 $wgAvailableRights[] = 'giverollback';
 
 $wgExtensionFunctions[] = 'efGiveRollback';

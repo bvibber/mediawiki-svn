@@ -19,6 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $wgSpecialPages['Randomrootpage'] = 'SpecialRandomrootpage';
+$wgSpecialPageGroups['Randomrootpage'] = 'pages';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Randomrootpage'] = $dir . 'Randomrootpage.i18n.php';

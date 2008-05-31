@@ -37,6 +37,7 @@ $wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
 $wgAutoloadClasses['ChangeAuthor'] = $dir . 'ChangeAuthor.body.php';
 
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
+$wgSpecialPageGroups['ChangeAuthor'] = 'pagetools';
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'ChangeAuthorLocalizedPageName';
 
 $wgLogTypes[] = 'changeauth';

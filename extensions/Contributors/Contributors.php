@@ -22,6 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionMessagesFiles['Contributors'] = dirname(__FILE__) . '/Contributors.i18n.php';
 	$wgAutoloadClasses['SpecialContributors'] = dirname( __FILE__ ) . '/Contributors.page.php';
 	$wgSpecialPages['Contributors'] = 'SpecialContributors';
+	$wgSpecialPageGroups['Contributors'] = 'pages';
 
 	/**
 	 * Intelligent cut-off limit; see below

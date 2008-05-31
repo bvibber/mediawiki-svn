@@ -34,3 +34,4 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ResignPage'] = $dir . 'SpecialResign.i18n.php';
 $wgAutoloadClasses['ResignPage'] = $dir . 'SpecialResign_body.php';
 $wgSpecialPages['Resign'] = 'ResignPage';
+$wgSpecialPageGroups['Resign'] = 'users';

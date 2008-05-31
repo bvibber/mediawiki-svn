@@ -58,6 +58,8 @@ $wgAutoloadClasses['SpecialOversight'] = $dir . 'HideRevision_body.php';
 
 $wgSpecialPages['HideRevision'] = 'HideRevisionForm';
 $wgSpecialPages['Oversight'] = 'SpecialOversight';
+$wgSpecialPageGroups['HideRevision'] = 'pagetools';
+$wgSpecialPageGroups['Oversight'] = 'pagetools';
 
 $wgHooks['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 $wgHooks['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
