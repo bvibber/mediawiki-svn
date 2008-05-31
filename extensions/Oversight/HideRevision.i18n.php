@@ -1159,116 +1159,167 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 
 /* Kazakh Arabic (AlefZet) */
 $messages['kk-arab'] = array(
-	'hiderevision'                => 'نۇسقالاردى تۇراقتى جاسىرۋ',
-	'hiderevision-prompt'         => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
-	'hiderevision-continue'       => 'جالعاستىرۋ',
-	'hiderevision-text'           => "بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
-* جەكە دەرەكتەر تەرٸس بولسا
-*: ''ٷي مەكەن جايى جٵنە تەلەفون نٶمٸرٸ, ٵلەۋمەتتٸك ساقتاندىرۋ نٶمٸرٸ, ت.ب.''
+	'hiderevision'           => 'تۇزەتۋلەردى تۇراقتى جاسىرۋ',
+	'hiderevision-desc'      => 'زاڭدى تالاپتار جانە تاعى سولاي سەبەپتەرىمەن جەكە تۇزەتۋلەردى جاسىرۋ.',
+	'group-oversight'        => 'انىقتاۋشىلار',
+	'group-oversight-member' => 'انىقتاۋشى',
+	'grouppage-oversight'    => '{{ns:project}}:انىقتاۋشىلار',
+	'right-oversight'        => 'الدىندا جاسىرىلعان تۇزەتۋدى كورۋ',
+	'right-hiderevision'     => 'اكىمشىلەردەن جاسىرىلعان تۇزەتۋلەردى شولىپ شىعۋ جانە قالپىنا كەلتىرۋ',
 
-'''بۇل جٷيە قىزمەتٸن تەرٸس پايدالانساڭىز, قۇقىقتارىڭىز ٶشٸرٸلەدٸ.'''
+	// Empty form
+	'hiderevision-prompt'   => 'جويىلاتىن تۇزەتۋ ٴومىرى:',
+	'hiderevision-continue' => 'جالعاستىر',
 
-الاستاتىلعان دانالار توراپ بويىنشا ٵركٸمگەدە كٶرٸنبەيدٸ,
-دەگەنمەن, جويۋلار جازىلىپ الىنادى جٵنە قاتە ٵرەكەت بولسا,
-دەرەكقور ٵكٸمشٸسٸ قولمەن قايتادان كەلتٸرۋگە مٷمكٸن.",
-	'hiderevision-reason'         => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
-	'hiderevision-submit'         => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
-	'hiderevision-tab'            => 'نۇسقانى جاسىر',
-	'hiderevision-norevisions'    => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
-	'hiderevision-noreason'       => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
-	'hiderevision-status'         => '$1 نۇسقاسى: $2',
-	'hiderevision-success'        => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
+	// Confirmation form
+	'hiderevision-text'   => "بۇل ''تەك''' كەلەسى جاعدايلار بولسا قولدانىلۋ ٴجون:
+* لايىقسىز جەكە دەرەكتەر
+*: ''ٴۇي مەكەنجايى جانە تەلەفون نومىرلەرى, جەكە الەۋمەتتىك كودتارى, ت.ب.''
+
+'''وسى جۇيەنىڭ قىزمەتىنە قىييانات كورسەتۋى رۇقساتتار وشىرىلۋىنە كەلتىرەدى.'''
+
+الاستالعان دانالار توراپ بويىنشا اركىمگەدە كورىنبەيدى, دەگەنمەن, جويۋلار جۋرنالعا جازىلىپ الىنادى جانە قاتەلىك جاساساڭىز, دەرەكقور اكىمشىسى بۇنى قولمەن قالپىنا كەلتىرۋى مۇمكىن.",
+	'hiderevision-reason' => 'سەبەبى (جەكەشە جازىلىپ الىنادى):',
+	'hiderevision-submit' => 'بۇل دەرەكتى تۇراقتى جاسىر',
+
+	// Tab displayed to allowed users on old revision display
+	'hiderevision-tab' => 'تۇزەتۋدى جاسىر',
+
+	// Status & errors on action
+	'hiderevision-norevisions'    => 'ەش تۇزەتۋ جويۋعا بەلگىلەنبەگەن.',
+	'hiderevision-noreason'       => 'بۇل جويۋ سەبەبىن جازىپ بەرۋىڭىز ٴتىيىستى.',
+	'hiderevision-status'         => '$1 تۇزەتۋى: $2',
+	'hiderevision-success'        => 'ٴساتتى مۇراعاتالدى جانە جويىلدى.',
 	'hiderevision-error-missing'  => 'دەرەكقوردا تابىلمادى.',
-	'hiderevision-error-current'  => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
-	'hiderevision-error-delete'   => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
-	'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
-	'oversight-nodiff'            => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
-* بەت جويلعان
-* جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
-	'oversight-log-hiderev'       => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
-	'oversight'                   => 'بەت نۇسقالارىن جاسىرۋ',
-	'oversight-view'              => 'ەگجەي-تەگجەيلەرٸ',
-	'oversight-difference'        => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
-	'oversight-prev'              => 'الدىڭعى نۇسقا',
-	'oversight-hidden'            => 'جاسىرىلعان نۇسقا',
-	'oversight-header'            => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
-بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
+	'hiderevision-error-current'  => 'بەتتىڭ سوڭعى وڭدەمەسى جويىلمايدى.
+الدىنان بۇل وزگەرىستەن قايتارىڭىز.',
+	'hiderevision-error-delete'   => 'مۇراعاتتالىنبادى; بۇل الدىنان جويىلعان با?',
+	'hiderevision-archive-status' => '$1 كەزىندەگى تۇزەتۋ جويىلدى: $2',
+	'oversight-nodiff'            => 'وزگەرىستەر اڭىستالىنبايدى, ويتكەنى وسى ارادا بۇل بەتتىڭ اعىمدا ەش الدىڭعى تۇزەتۋى جوق. سەبەبى:
+* نە بەت جويىلعان
+* نە جاسىرىلعان تۇزەتۋ ەڭ العاشقىسى بولدى',
+
+	// Logging
+	'oversight-log-hiderev' => '$1 كەزىندەگى وڭدەمە جويىلدى',
+	
+	// Oversight review page
+	'oversight'            => 'انىقتاۋ',
+	'oversight-view'       => 'ەگجەي-تەگجەيلەرى',
+	'oversight-difference' => '(قالعان الدىڭعى تۇزەتۋمەن ايىرماشىلىق)',
+	'oversight-prev'       => 'سوڭعى الدىڭعى تۇزەتۋ',
+	'oversight-hidden'     => 'جاسىرىلعان تۇزەتۋ',
+	'oversight-header'     => 'تومەندە بارشا كورۋىنەن تۇراقتى جاسىرىلعان تۇزەتۋ ٴتىزىمى كەلتىرىلەدى.
+بۇل مالىمەت بارشاعا اشىلۋى انىقتاۋشى رۇقساتتارى تۇراقتى وشىرىلۋىنە كەلتىرۋ مۇمكىن.',
 );
 
 /* Kazakh Cyrillic (AlefZet) */
 $messages['kk-cyrl'] = array(
-	'hiderevision'                => 'Нұсқаларды тұрақты жасыру',
-	'hiderevision-prompt'         => 'Жойылатын нұсқа нөмірі:',
-	'hiderevision-continue'       => 'Жалғастыру',
-	'hiderevision-text'           => "Бұл ''тек''' келесі жағдайларда қолданылу қажет:
-* Жеке деректер теріс болса
-*: ''үй мекен жайы және телефон нөмірі, әлеуметтік сақтандыру нөмірі, т.б.''
+	'hiderevision'           => 'Түзетулерді тұрақты жасыру',
+	'hiderevision-desc'      => 'Заңды талаптар және тағы солай себептерімен жеке түзетулерді жасыру.',
+	'group-oversight'        => 'Анықтаушылар',
+	'group-oversight-member' => 'анықтаушы',
+	'grouppage-oversight'    => '{{ns:project}}:Анықтаушылар',
+	'right-oversight'        => 'Алдында жасырылған түзетуді көру',
+	'right-hiderevision'     => 'Әкімшілерден жасырылған түзетулерді шолып шығу және қалпына келтіру',
 
-'''Бұл жүйе қызметін теріс пайдалансаңыз, құқықтарыңыз өшіріледі.'''
+	// Empty form
+	'hiderevision-prompt'   => 'Жойылатын түзету өмірі:',
+	'hiderevision-continue' => 'Жалғастыр',
 
-Аластатылған даналар торап бойынша әркімгеде көрінбейді,
-дегенмен, жоюлар жазылып алынады және қате әрекет болса,
-дерекқор әкімшісі қолмен қайтадан келтіруге мүмкін.",
-	'hiderevision-reason'         => 'Себебі (жеке жазылып алынады):',
-	'hiderevision-submit'         => 'Деректерді тұрақты жасыру',
-	'hiderevision-tab'            => 'Нұсқаны жасыр',
-	'hiderevision-norevisions'    => 'Жоюға ешқандай нусқа белгіленбеген.',
-	'hiderevision-noreason'       => 'Бұл жоюдың себебін жазып беріңіз.',
-	'hiderevision-status'         => '$1 нұсқасы: $2',
-	'hiderevision-success'        => 'Сәтті мұрағаталды және жойлды.',
+	// Confirmation form
+	'hiderevision-text'   => "Бұл ''тек''' келесі жағдайлар болса қолданылу жөн:
+* Лайықсыз жеке деректер
+*: ''үй мекенжайы және телефон нөмірлері, жеке әлеуметтік кодтары, т.б.''
+
+'''Осы жүйенің қызметіне қиянат көрсетуі рұқсаттар өшірілуіне келтіреді.'''
+
+Аласталған даналар торап бойынша әркімгеде көрінбейді, дегенмен, жоюлар журналға жазылып алынады және қателік жасасаңыз, дерекқор әкімшісі бұны қолмен қалпына келтіруі мүмкін.",
+	'hiderevision-reason' => 'Себебі (жекеше жазылып алынады):',
+	'hiderevision-submit' => 'Бұл деректі тұрақты жасыр',
+
+	// Tab displayed to allowed users on old revision display
+	'hiderevision-tab' => 'Түзетуді жасыр',
+
+	// Status & errors on action
+	'hiderevision-norevisions'    => 'Еш түзету жоюға белгіленбеген.',
+	'hiderevision-noreason'       => 'Бұл жою себебін жазып беруіңіз тиісті.',
+	'hiderevision-status'         => '$1 түзетуі: $2',
+	'hiderevision-success'        => 'Сәтті мұрағаталды және жойылды.',
 	'hiderevision-error-missing'  => 'Дерекқорда табылмады.',
-	'hiderevision-error-current'  => 'Беттің соңғы түзетуі жойылынбады. Алдынан бұл түзетуді қайтарыңыз.',
-	'hiderevision-error-delete'   => 'Мұрағатталынбады; алдынан жойылғанба?',
-	'hiderevision-archive-status' => '$1 кезіндегі нұсқа жойылды: $2',
-	'oversight-nodiff'            => 'Өзгерістер байқалынбайды, өйткені ағымда бұл беттің алдыңғы нұсқасы жоқ. Қай-қайсысы болуы мүмкін:
-* Бет жойлған
-* Жасырылған нұсқа бірінші болған',
-	'oversight-log-hiderev'       => '$1 кезіндегі түзету жойылды',
-	'oversight'                   => 'Бет нұсқаларын жасыру',
-	'oversight-view'              => 'егжей-тегжейлері',
-	'oversight-difference'        => '(Алдынан қалған нұсқамен айырмашылық)',
-	'oversight-prev'              => 'Алдыңғы нұсқа',
-	'oversight-hidden'            => 'Жасырылған нұсқа',
-	'oversight-header'            => 'Төменде баршадан тұрақты жасырылған нұсқалар тізімі беріледі.
-Бұл мәліметті баршаға ашқанда Нұсқа жасырушы құқықтарыңыз әрдайым өшіріледі.',
+	'hiderevision-error-current'  => 'Беттің соңғы өңдемесі жойылмайды.
+Алдынан бұл өзгерістен қайтарыңыз.',
+	'hiderevision-error-delete'   => 'Мұрағатталынбады; бұл алдынан жойылған ба?',
+	'hiderevision-archive-status' => '$1 кезіндегі түзету жойылды: $2',
+	'oversight-nodiff'            => 'Өзгерістер аңысталынбайды, өйткені осы арада бұл беттің ағымда еш алдыңғы түзетуі жоқ. Себебі:
+* Не бет жойылған
+* Не жасырылған түзету ең алғашқысы болды',
+
+	// Logging
+	'oversight-log-hiderev' => '$1 кезіндегі өңдеме жойылды',
+	
+	// Oversight review page
+	'oversight'            => 'Анықтау',
+	'oversight-view'       => 'егжей-тегжейлері',
+	'oversight-difference' => '(Қалған алдыңғы түзетумен айырмашылық)',
+	'oversight-prev'       => 'Соңғы алдыңғы түзету',
+	'oversight-hidden'     => 'Жасырылған түзету',
+	'oversight-header'     => 'Төменде барша көруінен тұрақты жасырылған түзету тізімі келтіріледі.
+Бұл мәлімет баршаға ашылуы Анықтаушы рұқсаттары тұрақты өшірілуіне келтіру мүмкін.',
 );
 
 /* Kazakh Latin (AlefZet) */
 $messages['kk-latn'] = array(
-	'hiderevision'                => 'Nusqalardı turaqtı jasırw',
-	'hiderevision-prompt'         => 'Joýılatın nusqa nömiri:',
-	'hiderevision-continue'       => 'Jalğastırw',
-	'hiderevision-text'           => "Bul ''tek''' kelesi jağdaýlarda qoldanılw qajet:
-* Jeke derekter teris bolsa
-*: ''üý meken jaýı jäne telefon nömiri, älewmettik saqtandırw nömiri, t.b.''
+	'hiderevision'           => 'Tüzetwlerdi turaqtı jasırw',
+	'hiderevision-desc'      => 'Zañdı talaptar jäne tağı solaý sebepterimen jeke tüzetwlerdi jasırw.',
+	'group-oversight'        => 'Anıqtawşılar',
+	'group-oversight-member' => 'anıqtawşı',
+	'grouppage-oversight'    => '{{ns:project}}:Anıqtawşılar',
+	'right-oversight'        => 'Aldında jasırılğan tüzetwdi körw',
+	'right-hiderevision'     => 'Äkimşilerden jasırılğan tüzetwlerdi şolıp şığw jäne qalpına keltirw',
 
-'''Bul jüýe qızmetin teris paýdalansañız, quqıqtarıñız öşiriledi.'''
+	// Empty form
+	'hiderevision-prompt'   => 'Joýılatın tüzetw ömiri:',
+	'hiderevision-continue' => 'Jalğastır',
 
-Alastatılğan danalar torap boýınşa ärkimgede körinbeýdi,
-degenmen, joywlar jazılıp alınadı jäne qate äreket bolsa,
-derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
-	'hiderevision-reason'         => 'Sebebi (jeke jazılıp alınadı):',
-	'hiderevision-submit'         => 'Derekterdi turaqtı jasırw',
-	'hiderevision-tab'            => 'Nusqanı jasır',
-	'hiderevision-norevisions'    => 'Joywğa eşqandaý nwsqa belgilenbegen.',
-	'hiderevision-noreason'       => 'Bul joywdıñ sebebin jazıp beriñiz.',
-	'hiderevision-status'         => '$1 nusqası: $2',
-	'hiderevision-success'        => 'Sätti murağataldı jäne joýldı.',
+	// Confirmation form
+	'hiderevision-text'   => "Bul ''tek''' kelesi jağdaýlar bolsa qoldanılw jön:
+* Laýıqsız jeke derekter
+*: ''üý mekenjaýı jäne telefon nömirleri, jeke älewmettik kodtarı, t.b.''
+
+'''Osı jüýeniñ qızmetine qïyanat körsetwi ruqsattar öşirilwine keltiredi.'''
+
+Alastalğan danalar torap boýınşa ärkimgede körinbeýdi, degenmen, joywlar jwrnalğa jazılıp alınadı jäne qatelik jasasañız, derekqor äkimşisi bunı qolmen qalpına keltirwi mümkin.",
+	'hiderevision-reason' => 'Sebebi (jekeşe jazılıp alınadı):',
+	'hiderevision-submit' => 'Bul derekti turaqtı jasır',
+
+	// Tab displayed to allowed users on old revision display
+	'hiderevision-tab' => 'Tüzetwdi jasır',
+
+	// Status & errors on action
+	'hiderevision-norevisions'    => 'Eş tüzetw joywğa belgilenbegen.',
+	'hiderevision-noreason'       => 'Bul joyw sebebin jazıp berwiñiz tïisti.',
+	'hiderevision-status'         => '$1 tüzetwi: $2',
+	'hiderevision-success'        => 'Sätti murağataldı jäne joýıldı.',
 	'hiderevision-error-missing'  => 'Derekqorda tabılmadı.',
-	'hiderevision-error-current'  => 'Bettiñ soñğı tüzetwi joýılınbadı. Aldınan bul tüzetwdi qaýtarıñız.',
-	'hiderevision-error-delete'   => 'Murağattalınbadı; aldınan joýılğanba?',
-	'hiderevision-archive-status' => '$1 kezindegi nusqa joýıldı: $2',
-	'oversight-nodiff'            => 'Özgerister baýqalınbaýdı, öýtkeni ağımda bul bettiñ aldıñğı nusqası joq. Qaý-qaýsısı bolwı mümkin:
-* Bet joýlğan
-* Jasırılğan nusqa birinşi bolğan',
-	'oversight-log-hiderev'       => '$1 kezindegi tüzetw joýıldı',
-	'oversight'                   => 'Bet nusqaların jasırw',
-	'oversight-view'              => 'egjeý-tegjeýleri',
-	'oversight-difference'        => '(Aldınan qalğan nusqamen aýırmaşılıq)',
-	'oversight-prev'              => 'Aldıñğı nusqa',
-	'oversight-hidden'            => 'Jasırılğan nusqa',
-	'oversight-header'            => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
-Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
+	'hiderevision-error-current'  => 'Bettiñ soñğı öñdemesi joýılmaýdı.
+Aldınan bul özgeristen qaýtarıñız.',
+	'hiderevision-error-delete'   => 'Murağattalınbadı; bul aldınan joýılğan ba?',
+	'hiderevision-archive-status' => '$1 kezindegi tüzetw joýıldı: $2',
+	'oversight-nodiff'            => 'Özgerister añıstalınbaýdı, öýtkeni osı arada bul bettiñ ağımda eş aldıñğı tüzetwi joq. Sebebi:
+* Ne bet joýılğan
+* Ne jasırılğan tüzetw eñ alğaşqısı boldı',
+
+	// Logging
+	'oversight-log-hiderev' => '$1 kezindegi öñdeme joýıldı',
+	
+	// Oversight review page
+	'oversight'            => 'Anıqtaw',
+	'oversight-view'       => 'egjeý-tegjeýleri',
+	'oversight-difference' => '(Qalğan aldıñğı tüzetwmen aýırmaşılıq)',
+	'oversight-prev'       => 'Soñğı aldıñğı tüzetw',
+	'oversight-hidden'     => 'Jasırılğan tüzetw',
+	'oversight-header'     => 'Tömende barşa körwinen turaqtı jasırılğan tüzetw tizimi keltiriledi.
+Bul mälimet barşağa aşılwı Anıqtawşı ruqsattarı turaqtı öşirilwine keltirw mümkin.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
