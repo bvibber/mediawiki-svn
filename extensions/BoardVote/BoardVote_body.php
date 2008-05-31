@@ -15,25 +15,31 @@ class BoardVotePage extends UnlistedSpecialPage {
 		parent::__construct( "Boardvote" );
 	}
 
-	function getUserFromRemote( $sid, $db, $site, $lang ) {
-		$regex = '/^[\w.-]+$/';
-		if ( !preg_match( $regex, $sid ) ||
-			!preg_match( $regex, $db ) ||
-			!preg_match( $regex, $site ) ||
-			!preg_match( $regex, $lang )
-		) {
-			wfDebug( __METHOD__.": Invalid parameter\n" );
+	function getUserFromRemote( $sid, $casid, $db, $site, $lang ) {
+		$regex0 = '/^[\w.-]*$/';
+		$regex1 = '/^[\w.-]+$/';
+		foreach ( array( 'sid', 'db', 'site', 'lang' ) as $var ) {
+			if ( !preg_match( $regex1, $$var ) ) {
+				wfDebug( __METHOD__." Invalid parameter: $var\n" );
+				return array( false, false, false, false );
+			}
+		}
+		if ( !preg_match( $regex0, $casid ) ) {
+			wfDebug( __METHOD__.": Invalid parameter: casid\n" );
 			return array( false, false, false, false );
 		}
 
 		$url = "https://secure.wikimedia.org/$site/$lang/w/query.php?what=userinfo&uiisblocked&format=php";
 		#$url = "http://$lang.$site.org/w/query.php?what=userinfo&uiisblocked&format=php";
-		#$url = "http://eva/w2/extensions/BotQuery/query.php?what=userinfo&uiisblocked&format=php";
+		#$url = "http://shimmer/farm/testwiki/extensions/BotQuery/query.php?what=userinfo&uiisblocked&format=php";
 		wfDebug( "Fetching URL $url\n" );
 		$c = curl_init( $url );
 		#curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
 		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $c, CURLOPT_COOKIE, "{$db}_session=" . urlencode( $sid ) );
+		curl_setopt( $c, CURLOPT_COOKIE, 
+			"{$db}_session=" . urlencode( $sid ) . ';' . 
+			"centralauth_Session=" . urlencode( $casid )
+		);
 		curl_setopt( $c, CURLOPT_FOLLOWLOCATION, true );
 		curl_setopt( $c, CURLOPT_FAILONERROR, true );
 		$value = curl_exec( $c );
@@ -68,6 +74,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 		}
 
 		$this->mRemoteSession = $wgRequest->getVal( 'sid' );
+		$this->mCentralSession = $wgRequest->getVal( 'casid' );
 		$this->mRemoteDB = $wgRequest->getVal( 'db' );
 		$this->mRemoteSite = $wgRequest->getVal( 'site' );
 		$this->mRemoteLanguage = $wgRequest->getVal( 'lang' );
@@ -75,6 +82,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 		if ( $this->mRemoteSession ) {
 			$info = $this->getUserFromRemote(
 				$this->mRemoteSession,
+				$this->mCentralSession,
 				$this->mRemoteDB,
 				$this->mRemoteSite,
 				$this->mRemoteLanguage

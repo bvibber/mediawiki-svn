@@ -13,10 +13,22 @@ class GoToBoardVotePage extends SpecialPage {
 		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
 
 		$this->setHeaders();
+
+		global $wgCentralAuthCookiePrefix;
+		if ( isset( $wgCentralAuthCookiePrefix ) 
+			&& isset( $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'] ) )
+		{
+			$centralSessionId = $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'];
+		} else {
+			$centralSessionId = '';
+		}
+
 		if ( $wgUser->isLoggedIn() ) {
+			#$url = 'http://shimmer/farm/frwiki/index.php?' . wfArrayToCGI( array(
 			$url = 'https://wikimedia.spi-inc.org/index.php?' . wfArrayToCGI( array(
 				'title' => 'Special:Boardvote' . ( $par ? "/$par" : '' ),
 				'sid' => session_id(),
+				'casid' => $centralSessionId,
 				'db' => $wgDBname,
 				'site' => $site,
 				'lang' => $lang,
