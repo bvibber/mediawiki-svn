@@ -184,8 +184,13 @@ class MV_SpecialExport {
 		<? foreach($this->file_list as $file){ 				
 				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
 				$dSrc=($file->getPathType()=='url_anx')?$this->mvTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
+				//if not ogg include start and end times in the attribute: 
+				//@@todo in the future support client side ogg seeking (and don't automaticly put .anx at the end)  
+				$startendattr= (htmlentities($file->getContentType())!='video/ogg')?
+					'start="ntp:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
+					' end="ntp:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
 			?>
-				<mediaSource id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" />	
+				<mediaSource id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" <?=$startendattr?>/>	
 		<?}?>
 	</switch>
 		</track>

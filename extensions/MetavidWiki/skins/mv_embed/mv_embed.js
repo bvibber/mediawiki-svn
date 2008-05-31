@@ -53,6 +53,7 @@ gMsg['ogg-player-oggPlugin']='Generic Ogg Plugin';
 gMsg['ogg-player-quicktime-mozilla']='Quicktime Plugin';
 gMsg['ogg-player-quicktime-activex']='Quicktime ActiveX';
 gMsg['ogg-player-cortado']='Java Cortado';
+gMsg['ogg-player-flowplayer']='Flowplayer';
 gMsg['ogg-player-selected']=' (selected)';
 gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
 		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
@@ -197,7 +198,7 @@ var embedTypes = {
 	 // List of players in order of preference
 	 playerType:false,
 	 // List of players in order of preference (vlc is pretty good on linux (but should not be installed in OSX) 
-	 players: ['videoElement','vlc-mozilla', 'vlc-activex', 'oggPlay', 'cortado', 'oggPlugin', 'quicktime-mozilla', 'quicktime-activex'],
+	 players: ['videoElement','vlc-mozilla', 'vlc-activex', 'oggPlay', 'cortado', 'oggPlugin', 'quicktime-mozilla', 'quicktime-activex', 'flowplayer'],
 	 init: function(){
 		//detect supported types
 		this.detect();
@@ -247,9 +248,10 @@ var embedTypes = {
 	 			return 'oggplay'; break;
 	 		case 'cortado':
 	 			return 'java';break;
+            case 'flowplayer':
+                return 'flash';
 	 		case 'oggPlugin':
-	 			return 'generic';
-	 		break;
+	 			return 'generic'; break;
 	 		default:
 	 			return null;
 	 	}
@@ -377,6 +379,10 @@ var embedTypes = {
 			
 				if ( type == 'video/quicktime' ) {
 					this.clientSupports['quicktime-mozilla'] = true;
+					continue;
+				}
+   				if(type=='application/x-shockwave-flash'){
+					this.clientSupports['flowplayer']= true;
 					continue;
 				}
 			}
@@ -1081,13 +1087,19 @@ embedVideo.prototype = {
 	//parse roe file and store data in this object
 	getParseROE: function(callback){
 		var _this = this;
-		do_request(this.roe, function(data){			
-			js_log("on: "+_this.id + " got data "+ data);
+		do_request(this.roe, function(data){	
+			js_log('got DATA!!!!!!!');
+			//$j.each(data.getElementsByTagName('mediaSource'), function(inx, n){
+			//	alert('found mediaSource');
+			//});
+			elm = data.getElementById('html_linkback');			
+			js_log("on: "+_this.id + " got data "+ data.length + ' test elm:' + elm.getAttribute('rel'));
 			if(typeof data == 'object' ){
-				js_log('type of data is object');
+				js_log('type of data is object, data:'+ data.toString());
 				_this.roe_data = data;
 				var cmml_available=false;
 				$j.each(_this.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
+					js_log(' on element: ' + n.getAttribute('content-type'));
 					if(n.getAttribute('content-type')=='video/ogg' && n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
 						_this['src'] = n.getAttribute("src");
@@ -1429,7 +1441,7 @@ embedVideo.prototype = {
 		 var select_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
 				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+	
-			 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</sapn>'+
+			 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
 			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
 		var dl_list='';		
 		//set to loading if we don't have the roe data yet: 
@@ -1838,12 +1850,19 @@ function mv_jsdata_cb(response){
 	//switch on content type: 
 	switch(response['content-type']){
 		case 'text/plain':
-			//global_req_cb[response['cb_inx']](response['pay_load']);
 		break;
 		case 'text/xml':
 			if(typeof response['pay_load'] == 'string'){
-				//attempt to parse as xml 
-				var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");
+				js_log(response['pay_load']);				
+				//attempt to parse as xml for IE 
+				if(embedTypes.msie){
+					var xmldata=new ActiveXObject("Microsoft.XMLDOM");
+					xmldata.async="false";
+					xmldata.loadXML(response['pay_load']);					
+				}else{ //for others (firefox, safari etc) 
+					var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");				
+				}
+				//@@todo hanndle xml parser errors
 				if(xmldata)response['pay_load']=xmldata;
 			}
 		break
@@ -1936,14 +1955,14 @@ if (typeof DOMParser == "undefined") {
 	     /*
 	      * IE and non-firebug debug:
 	      */	     
-	     /*var log_elm = document.getElementById('mv_js_log');
+	     var log_elm = document.getElementById('mv_js_log');
 	     if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }*/
+	     }
 	   }
 	}
 //}

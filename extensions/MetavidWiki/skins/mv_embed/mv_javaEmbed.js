@@ -72,7 +72,8 @@ var javaEmbed = {
 	    	this.jce = $j('#'+this.pid).get(0);
     	}else{
     		//set via iframe refrence:     		
-    		this.jce =  $j('#iframe_'+this.pid).get(0).contentDocument.getElementById(this.pid);
+    		//(does not work even if we set window.domain on the remote iframe) 
+    		//this.jce =  $j('#iframe_'+this.pid).get(0).contentDocument.getElementById(this.pid);
     	}
     },
     pause:function(){

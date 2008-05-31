@@ -27,7 +27,7 @@ include_once($IP . '/includes/SpecialPage.php');
  * Code based on Semantic Media Wiki equivelant
  */
 
-SpecialPage :: addPage(new MVAdmin());
+
 
 
 class MVAdmin extends SpecialPage {
@@ -118,4 +118,4 @@ class MVAdmin extends SpecialPage {
 	}
 
 }
-
+SpecialPage :: addPage(new MVAdmin());

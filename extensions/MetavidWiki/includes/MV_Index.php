@@ -359,12 +359,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		 			AGAINST('$ftq' IN BOOLEAN MODE) ";
 		 	}
 		 	//date range stuff is SLOW when its the only filter (pulls up matches for everything)
-		 	if($snq!='' || $ftq!='')
+		 	if($snq!='' || $ftq!='' && isset($date_range_andor))
 		 		$sql.=$date_range_andor;
 	 		$sql.=" $date_range_where ";	 		
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
-		//echo "SQL:".$sql;  			
+		//echo "SQL:".$sql." \n";  			
  		$result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
  		
  		$this->numResults=$dbr->numRows($result);
