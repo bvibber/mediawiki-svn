@@ -31,6 +31,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['AssertEdit'] = $dir . 'AssertEdit.i18n.php';
 $wgAutoloadClasses['AssertEdit'] = $dir . 'AssertEdit_body.php';
 $wgHooks['AlternateEdit'][] = 'efAssertEditHook';
+$wgHooks['APIEditBeforeSave'][] = 'efAssertApiEditHook';
 
 function efAssertEditHook( &$editpage ) {
 	global $wgOut, $wgRequest;
@@ -69,4 +70,28 @@ function efAssertEditHook( &$editpage ) {
 		$wgOut->returnToMain( false, $editpage->mTitle );
 		return false;
 	}
+}
+function efAssertApiEditHook( &$editPage, $textBox, &$result ) {
+	global $wgOut, $wgRequest;
+
+	$assertName = $wgRequest->getVal( 'assert' );
+	$pass = true;
+
+	if ( $assertName != '' ) {
+		$pass = AssertEdit::callAssert( $assertName, false );
+		if ( !$pass ) 
+			$result['assert'] = $assertName;
+	}
+
+	//check for negative assert
+	if ( $pass ) {
+		$assertName = $wgRequest->getVal( 'nassert' );
+		if ( $assertName != '' ) {
+			$pass = AssertEdit::callAssert( $assertName, true );
+		}
+		if ( !$pass )
+			$result['nassert'] = $assertName;
+	}
+	
+	return $pass == true;
 }
