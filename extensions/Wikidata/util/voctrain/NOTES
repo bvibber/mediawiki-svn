@@ -37,6 +37,37 @@ Typically only the mysql info needs to be changed anyway.
 
 Point users to trainer.php to use.
 
+== Special extra parameters ==
+
+Martin asked if we could link people to a different default dataset.
+So I added that in.
+
+for instance
+trainer.php?defaultCollection=376322
+
+Will currently switch the default question-set to Destinazione Italia on startup.
+To get a list of valid id's you can provide at any one moment in time, read the following, which should be fairly parsable:
+
+	http://www.omegawiki.org/api.php?action=wikidata&wdtype=listCollections
+
+(too lazy to write a stylesheet)
+
+<collection id="145263">
+	<name dmid="6448">Swadesh list</name>
+	<count>325</count>
+</collection>
+
+Says the collection id for the swadesh list is 145263, (and incidentally also
+mentions that there are 325 items, and you can get the name translated into other languages 
+using the dmid 6448...more on that some other time)
+
+right now all we want to know is that we can link people to
+	trainer.php?defaultCollection=1452638
+
+Remember to make that a proper URL :-P . For instance, to try this out on the omegawiki.org server, you do:
+
+	http://www.omegawiki.org/extensions/Wikidata/util/voctrain/trainer.php?defaultCollection=1452638
+
 
 == Code reading ==
 

@@ -12,8 +12,16 @@ function _displayLogin($username = null, $status = null, &$auth = null) {
 		$view=new View();
 		$view->header(false);
 	}
+	# I shouldn't be dealing with $_REQUEST here neither... but this function
+	# breaks all the other rules anyways :-P
+
 	echo "<h1>Log In. Omegawiki vocabulary trainer</h1>";
-	echo "<form method=\"post\" action=\"trainer.php\">";
+	if (isset($_REQUEST["defaultCollection"])) {
+		$defaultCollection=(int) $_REQUEST["defaultCollection"];
+		echo "<form method=\"post\" action=\"trainer.php?defaultCollection=$defaultCollection\">";
+	} else {
+		echo "<form method=\"post\" action=\"trainer.php\">";
+	}
 	echo '<fieldset class="settings">';
 	echo"<div class='datarow'><label>User name: </label><input type=\"text\" name=\"username\" /></div><br/>";
 	echo "<div class='datarow'><label>Password: </label><input type=\"password\" name=\"password\" /></div><br/>";
@@ -57,14 +65,14 @@ class View {
 	}
 
 	/** Big form, allows user to set parameters for their next exercise */
-	public function exercise_setup($collectionList) {
+	public function exercise_setup($collectionList, $defaultCollection=null) {
 		print "
 		<h1>Set up your exercise</h1>
 		<form method='post' action='?'>
 		<h2> collection </h2>
 		<fieldset class=settings>
 		<div class='datarow'>
-		".$this->collectionSelect($collectionList)."
+		".$this->collectionSelect($collectionList, $defaultCollection)."
 		</div>
 		</fieldset>
 		<h2>number of questions</h2>
@@ -90,14 +98,19 @@ class View {
 		";
 	}
 
-	public function collectionSelect($collectionList) {
+	public function collectionSelect($collectionList, $defaultCollection=null) {
+		
+		if ($defaultCollection===null) {
+			global $default_collection; # can be set in settings.php
+			$defaultCollection=$default_collection;
+		}
+		
 		$select="<select name='collection'>\n";
 		foreach ($collectionList as $collection) {
 			$select .= "	<option
 						value='".$collection["id"]."' "; 
 
-			global $default_collection; # can be set in settings.php
-			if ((int) $collection["id"] == $default_collection) { # check-mark default collection
+			if ((int) $collection["id"] == $defaultCollection) { # check-mark default collection
 				$select.= "
 							selected";
 			}
@@ -114,15 +127,21 @@ class View {
 		return $select;
 	}
 
-	/** ask a question */
-	public function ask($exercise) { #throws NoMoreQuestionsException
-		$question=$exercise->nextQuestion();
+	public function peek_at($exercise, $question) {
+		$this->ask($exercise, true, $question);	
+	}
+
+	/** ask a question  (or peek at it)*/
+	public function ask($exercise, $peek=false, $question=null) { #throws NoMoreQuestionsException
+		if ($question===null) {
+			$question=$exercise->nextQuestion();
+		}
 		$definitions=implode(",<br/>",$question->getQuestionDefinitions());
 		$words=implode(", ",$question->getQuestionWords());
 		$questionDmid=$question->getDmid();
 		$questions_remaining=$exercise->countQuestionsRemaining();
 		$questions_total=$exercise->countQuestionsTotal();
-		
+		$answers=implode(", ",$question->getAnswers());
 
 		print"<form method='post' action='?action=run_exercise'>
 			There are $questions_remaining questions remaining, out of a total of $questions_total.
@@ -142,7 +161,12 @@ class View {
 			<hr>
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<h2>Answer</h2>
-			<fieldset class='settings'>
+			<fieldset class='settings'>";
+			if ($peek) {
+				print"
+					<i>peek:</i>$answers<br/>";
+			}
+			print"
 			<i>Please type your answer here</i><br/>
 
 			<input type='text' value='' name='userAnswer' />
@@ -151,7 +175,7 @@ class View {
 			<fieldset class='settings'>
 			<input type='submit' value='peek' name='peek' />
 			<input type='submit' value='skip ->' name='skip' />
-			<input type='submit' value='do not ask again' name='hide' />
+			<input type='submit' value='I know it/do not ask again' name='hide' />
 			".
 			#<input type='submit' value='never ask again' name='never_ask' />
 			"

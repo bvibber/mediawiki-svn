@@ -76,6 +76,7 @@ class Controller {
 	public function create_exercise() {
 		$questionLanguage=null;
 		$answerLanguage=null;
+		$defaultCollection=null;
 
 		$user=$this->auth->getUsername();
 
@@ -86,6 +87,9 @@ class Controller {
 		if (isset($_REQUEST['answerLanguage'])) {
 			$answerLanguage=$_REQUEST['answerLanguage'];
 		}
+
+		if (isset($_REQUEST["defaultCollection"]))
+			$defaultCollection=(int) $_REQUEST["defaultCollection"];
 		
 		if (isset($_REQUEST['exercise_size']) ) {
 			return $this->model->createExercise(
@@ -107,7 +111,7 @@ class Controller {
 				);
 		} else {
 			$collectionList=$this->model->collectionList();
-			$this->view->exercise_setup($collectionList);
+			$this->view->exercise_setup($collectionList, $defaultCollection);
 			$this->view->footer();
 			exit;
 		}
@@ -141,10 +145,12 @@ class Controller {
 		} elseif (isset($_REQUEST['peek'])) { # user peeks at answer, with no consequences
 			if (!isset($_REQUEST['questionDmid']))
 				throw new Exception("Answer submitted, but no dmid integer supplied");
-
 			$question=$exercise->getQuestion((int) $_REQUEST['questionDmid']);
-			$this->view->answer($question, null);
-			$this->model->saveExercise($exercise,$userName);
+			#$question=$exercise->getQuestion((int) $_REQUEST['questionDmid']);
+			#$this->view->answer($question, null);
+			#$this->model->saveExercise($exercise,$userName);
+			
+			$this->view->peek_at($exercise, $question);
 
 		} elseif (isset($_REQUEST['skip'])) {# Skip this question for now
 			$continue=true;
@@ -182,7 +188,7 @@ class Controller {
 
 		if ($continue) { # Let's go ahead and ask the next question
 			try {
-				$this->view->ask($exercise);
+				$this->view->ask($exercise, $peek);
 			} catch (NoMoreQuestionsException $We_Are_Done) {
 				$this->complete($exercise);
 			}
