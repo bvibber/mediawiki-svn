@@ -34,7 +34,9 @@ class BoardVotePage extends UnlistedSpecialPage {
 		#$url = "http://shimmer/farm/testwiki/extensions/BotQuery/query.php?what=userinfo&uiisblocked&format=php";
 		wfDebug( "Fetching URL $url\n" );
 		$c = curl_init( $url );
-		#curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
+		// Use the default SSL certificate file
+		// Necessary on some versions of cURL, others do this by default
+		curl_setopt( $c, CURLOPT_CAINFO, '/etc/ssl/certs/ca-certificates.crt' );
 		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
 		curl_setopt( $c, CURLOPT_COOKIE, 
 			"{$db}_session=" . urlencode( $sid ) . ';' . 
