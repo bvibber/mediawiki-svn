@@ -296,7 +296,6 @@ $settings = array(
 			'wgCheckSerialized' => 'bool',
 			'wgLocalMessageCacheSerialized' => 'bool',
 			'wgMaxMsgCacheEntrySize' => 'int',
-			'wgPerLanguageCaching' => 'bool',
 		),
 		'memcached' => array(
 			'wgLinkCacheMemcached' => 'bool',
@@ -1105,7 +1104,6 @@ $settingsVersion = array(
 	'wgRCLinkLimits' => array( array( '1.13alpha', '>=' ) ),
 	'wgRCLinkDays' => array( array( '1.13alpha', '>=' ) ),
 	'wgMaximumMovedPages' => array( array( '1.13alpha', '>=' ) ),
-	'wgPerLanguageCaching' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

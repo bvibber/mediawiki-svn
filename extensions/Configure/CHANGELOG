@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.3.9 - 31 May 2008
+  Removed $wgPerLanguageCaching.
+
 0.3.8 - 30 May 2008
   Fixed display of not editable settings.
 
