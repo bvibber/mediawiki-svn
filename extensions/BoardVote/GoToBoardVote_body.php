@@ -14,13 +14,17 @@ class GoToBoardVotePage extends SpecialPage {
 
 		$this->setHeaders();
 
-		global $wgCentralAuthCookiePrefix;
-		if ( isset( $wgCentralAuthCookiePrefix ) 
-			&& isset( $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'] ) )
-		{
-			$centralSessionId = $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'];
-		} else {
-			$centralSessionId = '';
+		$centralSessionId = '';
+		if ( class_exists( 'CentralAuthUser' ) ) {
+			global $wgCentralAuthCookiePrefix;
+			if ( isset( $wgCentralAuthCookiePrefix ) 
+				&& isset( $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'] ) )
+			{
+				$centralSessionId = $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'];
+			} elseif ( isset( $_COOKIE[$wgCentralAuthCookiePrefix . 'Token'] ) )  {
+				$centralUser = CentralAuthUser::getInstance( $wgUser );
+				$centralSessionId = $centralUser->setGlobalCookies( true );
+			}
 		}
 
 		if ( $wgUser->isLoggedIn() ) {
