@@ -4,7 +4,7 @@
  *
  * @addtogroup Extensions
  * @author isb1009 <isb1009 at gmail dot com>
- * @copyright Â© 2008 isb1009
+ * @copyright © 2008 isb1009
  * @licence GNU General Public Licence 2.0
  */
 
@@ -15,11 +15,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2 Alpha',
+	'version'        => '0.2.2rev0.5 Beta',
 	'author'         => 'isb1009',
-	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking. Based on Google Analytics Integration by Tim Laqua.',
+	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats. Based on Google Analytics Integration by Tim Laqua.',
 	'descriptionurl' => 'piwik-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
 );
@@ -29,11 +29,10 @@ $wgExtensionCredits['other'][] = array(
 $wgHooks['SkinAfterBottomScripts'][]  = 'efPiwikHookText';
 
 $wgPiwikIDSite = "";
-$wgPiwikURLpiwikjs = "";
-$wgPiwikURLpiwikphp = "";
+$wgPiwikURL = "";
 $wgPiwikIgnoreSysops = true;
 $wgPiwikIgnoreBots = true;
-
+$wgPiwikCustomJS = "";
 
 function efPiwikHookText(&$skin, &$text='') {
 	$text .= efAddPiwik();
@@ -41,27 +40,24 @@ function efPiwikHookText(&$skin, &$text='') {
 }
 
 function efAddPiwik() {
-	global $wgPiwikIDSite, $wgPiwikURLpiwikjs, $wgPiwikURLpiwikphp, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser;
+	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS;
 	if (!$wgUser->isAllowed('bot') || !$wgPiwikIgnoreBots) {
 		if (!$wgUser->isAllowed('protect') || !$wgPiwikIgnoreSysops) {
 			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURLpiwikjs) AND !empty($wgPiwikURLpiwikphp)) {
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
 <a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
-<script language="javascript" src="{$wgPiwikURLpiwikjs}" type="text/javascript"></script>
+<script language="javascript" src="{$wgScriptPath}/extensions/piwik/piwik-mw.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 piwik_action_name = '';
 piwik_idsite = {$wgPiwikIDSite};
-piwik_url = '{$wgPiwikURLpiwikphp}';
+piwik_url = '{$wgPiwikURL}piwik.php';
 piwik_log(piwik_action_name, piwik_idsite, piwik_url);
-		if( source.className == "image" ) {
-		_pk_link_type = 'link';
-		_pk_not_site_hostname = 0;
-		}
+{$wgPiwikCustomJS}
 //-->
 </script><object>
-<noscript><p>Web analytics <img src="{$wgPiwikURLpiwikphp}" style="border:0" alt="piwik"/></p>
+<noscript><p>Web analytics <img src="{$wgPiwikURL}/piwik.php" style="border:0" alt="piwik"/></p>
 </noscript></object></a>
 <!-- /Piwik -->
 PIWIK;
@@ -77,9 +73,25 @@ PIWIK;
 
 	return $funcOutput;
 }
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['Piwik'] = $dir . 'Piwik_specialpage.php'; # Tell MediaWiki to load the extension body.
+$wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';
+$wgSpecialPages['Piwik'] = 'Piwik'; # Let MediaWiki know about your new special page.
+$wgHooks['LanguageGetSpecialPageAliases'][] = 'Piwik'; # Add any aliases for the special page.
 
-// Alias for efAddPiwik - backwards compatibility.
-function addPiwik() {
-	return efAddPiwik();
+ 
+function Piwik(&$specialPageArray, $code) {
+  # The localized title of the special page is among the messages of the extension:
+
+  wfLoadExtensionMessages('Piwik');
+  $text = wfMsg('piwik');
+ 
+  # Convert from title in text form to DBKey and put it into the alias array:
+  $title = Title::newFromText($text);
+  $specialPageArray['Piwik'][] = $title->getDBKey();
+ 
+  return true;
 }
-?>
+
+///Alias for efAddPiwik - backwards compatibility.
+function addPiwik() { return efAddPiwik(); }
