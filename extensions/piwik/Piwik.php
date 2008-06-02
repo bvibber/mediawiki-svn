@@ -4,7 +4,7 @@
  *
  * @addtogroup Extensions
  * @author isb1009 <isb1009 at gmail dot com>
- * @copyright © 2008 isb1009
+ * @copyright Â© 2008 isb1009
  * @licence GNU General Public Licence 2.0
  */
 
@@ -18,6 +18,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
 	'version'        => '0.2.2rev0.5 Beta',
+	'svn-date'       => '$LastChangedDate:$',
+	'svn-revision'   => '$LastChangedRevision:$',
 	'author'         => 'isb1009',
 	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats. Based on Google Analytics Integration by Tim Laqua.',
 	'descriptionurl' => 'piwik-desc',

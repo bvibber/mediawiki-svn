@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Internationalisation file for extension Piwik Integration.
  *
@@ -18,6 +18,17 @@ $messages['en'] = array(
 	'browsers' => 'Browsers',
 );
 
+/** Catalan (Català)
+ * @author Isb1009
+ */
+$messages['ca'] = array(
+	'piwik-desc' => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per a fer les estadístiques',
+	'piwik' => 'Piwik',
+	'lastvisits' => 'Darreres visites',
+	'countries' => 'Pa&iuml;sos',
+	'browsers' => 'Navegadors',
+);
+
 /** Spanish (Castellano)
  * @author Isb1009
  */
@@ -29,13 +40,4 @@ $messages['es'] = array(
 	'browsers' => 'Navegadores',
 );
 
-/** Catalan (Catal� )
- * @author Isb1009
- */
-$messages['ca'] = array(
-	'piwik-desc' => 'Insereix el codi de Piwik dins les p� gines del MediaWiki per a fer les estadístiques',
-	'piwik' => 'Piwik',
-	'lastvisits' => 'Darreres visites',
-	'countries' => 'Pa&iuml;sos',
-	'browsers' => 'Navegadors',
-);
+
