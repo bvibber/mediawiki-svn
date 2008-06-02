@@ -1,11 +1,11 @@
 <?php
 /**
  * This extension is a simple framework for spambot checks and trigger payloads.
- * The aim is to allow for private development and limited collaboration on 
+ * The aim is to allow for private development and limited collaboration on
  * filters for common spam tools such as XRumer.
  *
- * XRumer is actively maintained to keep up to date with the latest antispam 
- * measures in forum, blog and wiki software. I don't want to make it easy for 
+ * XRumer is actively maintained to keep up to date with the latest antispam
+ * measures in forum, blog and wiki software. I don't want to make it easy for
  * them by giving them our source code.
  *
  * To install, put this in LocalSettings.php:
@@ -31,7 +31,17 @@ $wgAntiBotPayloads = array(
 
 /** END CONFIGURATION */
 
-/** 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'AntiBot',
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:AntiBot',
+	'author' => 'Tim Starling',
+	'description' => 'Simple framework for spambot checks and trigger payloads',
+	'descriptionmsg' => 'antibot-desc',
+);
+
+/**
  * A map of payload types to callbacks
  * This may be extended by plugins.
  */
@@ -40,7 +50,6 @@ $wgAntiBotPayloadTypes = array(
 	'quiet' => array( 'AntiBot', 'quiet' ),
 	'fail' => array( 'AntiBot', 'fail' ),
 );
-
 
 # Load plugins
 foreach ( glob( dirname( __FILE__ ) . '/active/*.php' ) as $file ) {
@@ -89,4 +98,3 @@ class AntiBot {
 		return 'fail';
 	}
 }
-

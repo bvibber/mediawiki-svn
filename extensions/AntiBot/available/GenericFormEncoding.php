@@ -1,13 +1,14 @@
 <?php
 
 /**
- * This is a sample filter plugin which will hit a lot of bots, good and bad. 
+ * This is a sample filter plugin which will hit a lot of bots, good and bad.
  *
- * Apparently it's hard work writing an encoder for multipart/form-data, 
- * so generally only the browsers bother with it, and the bots send 
- * application/x-www-form-urlencoded regardless of the form's enctype 
+ * Apparently it's hard work writing an encoder for multipart/form-data,
+ * so generally only the browsers bother with it, and the bots send
+ * application/x-www-form-urlencoded regardless of the form's enctype
  * attribute.
  */
+
 $wgHooks['EditFilterMerged'][] = 'AntiBot_GenericFormEncoding::onEditFilterMerged';
 class AntiBot_GenericFormEncoding {
 	function onEditFilterMerged( $editPage, $text, &$hookError ) {
@@ -25,4 +26,3 @@ class AntiBot_GenericFormEncoding {
 		return true;
 	}
 }
-
