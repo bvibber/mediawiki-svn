@@ -5309,8 +5309,8 @@ $messages['yue'] = array(
 
 <p>要睇更多嘅資料，睇吓：</p>
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">理事會選舉2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">候選人</a></li>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/yue\" class=\"external\">理事會選舉2008</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/yue\" class=\"external\">候選人</a></li>
 <li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze方法</a></li></ul>",
 	'boardvote_intro_change'  => "<p>你已經投咗票。
 但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>",
